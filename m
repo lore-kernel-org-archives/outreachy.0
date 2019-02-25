@@ -1,109 +1,111 @@
 X-GM-THRID: 6661416853760376832
-X-Received: by 2002:ab0:1a5:: with SMTP id 34mr11315542ual.15.1551177873808;
-        Tue, 26 Feb 2019 02:44:33 -0800 (PST)
+X-Received: by 2002:a2e:5c88:: with SMTP id q130mr1100139ljb.2.1551128186181;
+        Mon, 25 Feb 2019 12:56:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:ab84:: with SMTP id u126ls983440vke.0.gmail; Tue, 26 Feb
- 2019 02:44:33 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbmLfEext8GrcWmEtdhpECJB+5JvTn77lstWPMpA5+KyMbmawgPUV8UX1cYJYpEZH3PFwvr
-X-Received: by 2002:a1f:9b4e:: with SMTP id d75mr11522828vke.10.1551177873228;
-        Tue, 26 Feb 2019 02:44:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551177873; cv=none;
+Received: by 2002:a2e:5b42:: with SMTP id p63ls1744025ljb.0.gmail; Mon, 25 Feb
+ 2019 12:56:25 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYAno2mc2ttj+137dxU8G7tl7oV2EL5zzHzvI+VRN3pIuQTHDVB16ll1hCTjIx8uplaNNn2
+X-Received: by 2002:a2e:9d93:: with SMTP id c19mr1096827ljj.25.1551128185281;
+        Mon, 25 Feb 2019 12:56:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551128185; cv=none;
         d=google.com; s=arc-20160816;
-        b=mPOJ5soIQSQvi0nPCtdcY+M6iW2KB9xu01bhRcfdcVpFBGobwwIAJxnr9hEkUp6XtW
-         L4kaDw3ip0tB/Sz2E7c3KV9J1ERgaFOxDAJk7excnFZ3+Eo7F1ke2QDsGY6axxC5bWHp
-         Ibb7fXsp1lf+7Ahwo+tMEjC+VwCFaKG46dKL97QXmb07poDLSiBFkIbCkbEDUUn3iZok
-         O40ela4WSb27/fFD78eSHdjO0pTVpWXcO4sMzyCs7iU32tOkibr4b5L3MKiL39S2P4Xa
-         8SpBHQxdDYg0ssBG0bIRlqgQNfOoLcc5swLEWwQvOwvzTSUeIRUe4BlbqvjzwxBM3/YZ
-         4XwA==
+        b=k9b8OXx2c/fxHpPdQ+sU7EPkpuPVb6NkrPPq6dg3RRuMtDXBaobTW/1vQlOwu4Ab5z
+         o1t3zjxe5H9iplFiYFGne09YbprIdFTWfvO0d67A4H669awujoHGBUf5OnHtLuea8HEA
+         0DpoJmye3hW8QDYKRkS+ru2y8gBieEEC7+dlk9FsWXnt1SJg8bPM6RC0MfD43y9Ic+hD
+         S6EVsiljtI3ggOUKBvAmBIwHpttnvJ1IumbctXpeF8yMgIH/C4aUTfE0M/eBJYRiIfBP
+         vb6slnPtwXi175jQSpSc4KaFX0YBUhC5LCRYTYqXOr0HeZnkb9JzwL1/hheF9Ki5gqFS
+         Glxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=LC09y2LxjAKx7EvMs+LdYNn0r4dfhWuBfu2ZVTwZQ7A=;
-        b=Fqsj9NPNYCJB3t4isoVKUU7M1oqapDE8bh6LDa5GTAwUv7u6BgQOSZijRX6XBwpgrK
-         vBHtMhnLPnbK+LNGZAnhy9tfv5NlUz6GGOZsAoiXF+EyIPclqroyyZ0RMyh5Yq2i2iqa
-         v6Z2mwYWGJxd2XGJnHF0c8h05ovoRBUntZrh8Mq5+HYnUZPP78slzqfFvku9zurHmUC9
-         rcrpXvFTxYtzmH1RZtF4Rcd2EIuU42kEkuSb+XsTPlM5UkvEmRB0yhOCC8+4frxGdn4Y
-         Pr0Bd/xFmf6vKcUB0RMNFhOlkZQDqb9M5nAATZNVobIZS2/cgtE5azrogWgJ9S5WOMSD
-         YOBw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=+yWeYWqW2/ohoCD5XcAsXar+Al+Fd6UJY5/O6psKSNE=;
+        b=HAXzspdlHh/q/ZMDlG+T/uEmEMdsG7KS5lRisA1mIaaraWbyXAnzd95pBHkgVCu7/W
+         /pQccwY2xqrdi5pL0gP4sLVfnMoq3HV4/p4+05Ewa/HbP3LPJwO3GVvwfvgCRkKyK+aF
+         TW6etkf58BuLzKxeo8aFK6y80KoZ0F3sJVwkWOBooIJksamrU5KCkCaRnwiJSJaFXu7S
+         X0T9bFYSLzAOmDaLQxcyVjheucJ4Tb9daTgxa6phBsAcsCfENlm1KxeRLWdWi3xdSwh9
+         2UjTYKDC1DunPZ57+VW9+mXKbpk3GDdZNQBqF33AxdKAFspMvcJAwrFK6RRjUVzn7u18
+         d/NA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YmsdevuW;
-       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id c15si223434vsp.2.2019.02.26.02.44.33
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 19si391057lje.4.2019.02.25.12.56.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Feb 2019 02:44:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 25 Feb 2019 12:56:25 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YmsdevuW;
-       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 7C2F02173C;
-	Tue, 26 Feb 2019 10:44:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551177872;
-	bh=XziEJ2gao8MEBB1AitW9wUo6SbkX+WsN3jDXwHSZigE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YmsdevuWEThVbMf3XTQ/ersNpmkwxUP0o6GtOPwWCu5MdgXg8pnX34zwb2NgUGFrY
-	 a+NCdH/NqxBZkMGnT/P/++c2N1Q4CQAo/iSIFWyhGhhuLIvkKVZiNEX6zXpk+sM0y6
-	 uvRV4wkoVuZ6YDnqD+8y3a9Kn3rvuFSOw3GZPD54=
-Date: Tue, 26 Feb 2019 11:44:29 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,412,1544482800"; 
+   d="scan'208";a="297297734"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Feb 2019 21:56:24 +0100
+Date: Mon, 25 Feb 2019 21:56:23 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: vt6655: Fix check - Lines should not end with a
- '('
-Message-ID: <20190226104429.GA20834@kroah.com>
-References: <20190225180235.14346-1-madhumithabiw@gmail.com>
+cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: vt6655: Fix check - Lines
+ should not end with a '('
+In-Reply-To: <20190225171403.393-1-madhumithabiw@gmail.com>
+Message-ID: <alpine.DEB.2.21.1902252154390.2481@hadrien>
+References: <20190225171403.393-1-madhumithabiw@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190225180235.14346-1-madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, Feb 25, 2019 at 12:02:35PM -0600, Madhumitha Prabakaran wrote:
+
+
+On Mon, 25 Feb 2019, Madhumitha Prabakaran wrote:
+
 > Improve readibility
-> 
+>
 > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 > ---
->  drivers/staging/vt6655/card.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-> index 5dedc7aad384..6042f0bcd3f8 100644
-> --- a/drivers/staging/vt6655/card.c
-> +++ b/drivers/staging/vt6655/card.c
-> @@ -62,12 +62,11 @@ static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
->  
->  static
->  void
-> -s_vCalculateOFDMRParameter(
-> -	unsigned char byRate,
-> -	u8 bb_type,
-> -	unsigned char *pbyTxRate,
-> -	unsigned char *pbyRsvTime
-> -);
-> +s_vCalculateOFDMRParameter
-> +	(unsigned char byRate,
-> +	 u8 bb_type,
-> +	 unsigned char *pbyTxRate,
-> +	 unsigned char *pbyRsvTime);
+> Changes in v2
+>  -Make a commit message imperative.
+>  -Use multiple lines to improve readibility
+>
+>  drivers/staging/vt6655/baseband.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+> index d8321e7fd68b..35bbff807df9 100644
+> --- a/drivers/staging/vt6655/baseband.c
+> +++ b/drivers/staging/vt6655/baseband.c
+> @@ -1704,8 +1704,10 @@ static const unsigned short awcFrameTime[MAX_RATE] = {
+>   * Return Value: FrameTime
+>   *
+>   */
+> -unsigned int BBuGetFrameTime(unsigned char byPreambleType,				unsigned char byPktType,
+> -	unsigned int cbFrameLength,							unsigned short wRate)
+> +unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+> +	unsigned char byPktType,
+> +	unsigned int cbFrameLength,
+> +	unsigned short wRate)
 
-There's so much wrong with these few lines to start with, you can make
-this look a lot better all at once.
+This is just inviting another patch to line up the parameters to the right
+of the (.  I would have expected that checkpatch would have complained
+about this.
 
-How about this change instead:
+>  {
+>  	unsigned int uFrameTime;
+>  	unsigned int uPreamble;
 
-static void s_vCalculateOFDMRParameter(unsigned char byRate, u8 bb_type,
-				       unsigned char *pbyTxRate,
-				       unsigned char *pbyRsvTime);
+This looks ripe for some other changes - not using camel case and not
+encoding types in variable names (the u).
 
-Isn't that much more readable over the initial, and even your change?
+julia
 
-thanks,
-
-greg k-h
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190225171403.393-1-madhumithabiw%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
