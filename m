@@ -1,113 +1,88 @@
-X-GM-THRID: 6616182704123674624
-X-Received: by 2002:a19:a551:: with SMTP id o78-v6mr19195lfe.8.1540450077382;
-        Wed, 24 Oct 2018 23:47:57 -0700 (PDT)
+X-GM-THRID: 6661153650381946880
+X-Received: by 2002:aca:58d6:: with SMTP id m205mr10552304oib.34.1551095444516;
+        Mon, 25 Feb 2019 03:50:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:7b11:: with SMTP id w17-v6ls316788lfc.55.gmail; Wed, 24
- Oct 2018 23:47:56 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fZll2m2xDtqPQKBvMz8AqiA0ZdXfMQbO0VBE0XtT06DOqkYMmsjiE3nz5p4YAEHSjTVCvb
-X-Received: by 2002:a19:2c8d:: with SMTP id s135-v6mr18511lfs.30.1540450076159;
-        Wed, 24 Oct 2018 23:47:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540450076; cv=none;
+Received: by 2002:a05:6830:114f:: with SMTP id x15ls5514489otq.3.gmail; Mon,
+ 25 Feb 2019 03:50:43 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ9W9ORIjWq+dO4EaFqS5TlxvymgUvd2Ib91OODNTMZDKRg+uIXu4l/ZiGAwgOOCsY3p3ht
+X-Received: by 2002:a9d:2c61:: with SMTP id f88mr10910013otb.68.1551095443267;
+        Mon, 25 Feb 2019 03:50:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551095443; cv=none;
         d=google.com; s=arc-20160816;
-        b=XlwYVekrB542nblLHINp/nZ9gBYUchjqcfVPlVLSsyENkqPSxgx29k46P6kuPkRaD2
-         jjPHOAFkd5fmuKaUsi0Fs+OCFdRp8oVFO3KGxdAFvmHC3PVjrUT3/LuufENuIicHeFeV
-         HUTltRywkPt87UHogJpiY/paNgw2fjiGpyiY6OIVX4wB83MQojkeb+vxT3hP3thr231P
-         boMZhOAu4kmarU+pFn2R10FgMTimxpp0ptxMojMsPRzxMeiS/N54p/a3N0cKvrVfinec
-         nnx+I7/jIGQmrJtizxt85tdBVu0L1mdhiKJCQDtxDwCOemXq9ZllTLNojHBdl83khn2q
-         6yPg==
+        b=TD9Uc4AAbv9B0+XNMyGVShr74tOw7wDcwty3L052BrLC8pC4pbF7svZqKTqH8lcVzb
+         YRckzpgcEk19rXMByC6QR7cxskI+RE+L19tWADuZLdYhXAcnxtDxig8tETv6DtVraw4B
+         BqJfyoj3qqhpiS6L7MFkxtcmaAjY51geUww5w6laKAXje4wQr1pWrG4sRCsOHYamh+7y
+         ltT7BkyFiyuVSU7t9Z3FHEa0NoRsaZ1mgew1ergxIpIKlYtgN4S2K7jl6rgri2VTbCfa
+         uRQw0HzNItcXEPLzeOVMGJDCbCNHb1dHvPFSColj0cPBghmmSP1z0P3HhLIMfbT7WITp
+         c5jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=4bjPY/9+kOMpLAsG4AgU79iRt62nELwZgxB1PsizjwA=;
-        b=w8X6Ndyq8THmLao/x6Hp+9a4bENaMZbXx+ifIZH8E6AMVBIm6XpTOFYv19vaC+DAHO
-         rc90blROSEzT/vhiTeyHnpNJMzUQxfcnXbc2wONivxsx91Ey2m0M/krAgkrYmRlzPAq1
-         +ebDOz1M3PoKW1jsZX5MlwhNtTvSXiNVNR086jotgyJSIFxYE9pK88cW6QjfIKlYlU6G
-         b+E+Ht/vdbyyAYZmdLRSMPPwdLHz/G4j7kqhDPJ7fJitFjIpKMHPRBP1MHUGzpPnD3S2
-         2dUuemG5d/sVZg6BLgp7xKTlSaWEfLZKMYxnFaurmUcvRZIgjeZSo3BBXyZzDrSQUMUO
-         yH+g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version;
+        bh=/EZbf+V3wnDzWcvfxt0qlwfqKTOnBAYHxBhYQOTSpSY=;
+        b=zAfyUEErFj6S4LLFK0hHXuhmOX2rC7Ojo0oNjLZXcfL0jOqcxTpVhg8sTzfz7BJuDj
+         5q28lEz5PGgF+/+2aGXRHxPTEdI+PzyB2AKXrRvTJg4Dx9oAPeXKVNup0d4I1jC6Y0XU
+         nys3mKvK/dYY++Nmch0WRrI2XNYOjCbpu70hX2LudndleATs3YMFuUXUgitAj++muwq5
+         9p51c32aHW3nQSAPqQINAlFVKCmJKrgYa91ukExlMkXI/b9GGQ37kIs8NuIFEDFBseYE
+         m0H73y8GwS4vluFhmTDcFe66hcA7tgU8XIEd/UOMbpjUJ99liZ496X2kEX3aewG97rkH
+         RM3A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JSsjziPl;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id a79-v6si249089ljf.1.2018.10.24.23.47.56
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.110 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa06-09.prod.phx3.secureserver.net (p3plsmtpa06-09.prod.phx3.secureserver.net. [173.201.192.110])
+        by gmr-mx.google.com with ESMTPS id m124si380723oib.3.2019.02.25.03.50.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Oct 2018 23:47:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        Mon, 25 Feb 2019 03:50:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.110 as permitted sender) client-ip=173.201.192.110;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JSsjziPl;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id q6-v6so8012256wrw.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 24 Oct 2018 23:47:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=4bjPY/9+kOMpLAsG4AgU79iRt62nELwZgxB1PsizjwA=;
-        b=JSsjziPl3rGizbbzixUn6FkvN3Vu/2tXm85Kf+1miXf21HsfjsxdGaBmXTPTbJ8cSn
-         gcLYbIwO6yTYcmOQ6tQQIrHa7/gPFv5oYU+dlknjvIrsxzxNHQnNRccgApS+5RvEHFGA
-         KvoqDabm7a8ndUVeoDP0b5uNvsZ1XvZmH1kC6klMf/9EMmkMdKqNkNX7k9cfr/8KW+NC
-         ceyNCe8supgzfZk3ZjAbIU7CxLssby1DqkUd8mXUYQmUhAzBW1ypDV+cscFVZ+eph4v1
-         g38HjX82Qpv1bc5GahvfkfFPVWomaOPK2YNri/jiLmB7J/4t9C0oh8LRUhsMT4oDLmE9
-         asvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=4bjPY/9+kOMpLAsG4AgU79iRt62nELwZgxB1PsizjwA=;
-        b=OE3MtzSSlrUsef1s57Nc45vGnrPWOh6AGCwvlDjLz0Pq3jdtczml1dzqgYH2djsG5c
-         gI1H8LFqJOdrEKJUy9oKbt25jo0fd2wiFEURgd+KN6/A1cRwCHs4YqmrQuGb2ntpp0pu
-         V2xRdpCH9Hl2QC8pm9JcaPrvpHhnYNH6Ksaj/94bb8+Gk9ZKft8cIzegfDXl5HaWdnGP
-         JT/XHTFRisJOhxCWHQXUIVZAsRFkU83oKI/dNPBRaAh3iUmaMfzdJ4nWDkxI/3eKlKB8
-         uugdH/CGGODFukKM0O9syuqY29y/w2EPguY20rAbjB6w8G2di6WJJ6yQ/jGdVSS/qmbW
-         sjCA==
-X-Gm-Message-State: AGRZ1gII/8z+AjGi2MVu1wqOb1qwvbNEXuhX/qLgnzkaKk2jXTds7L/v
-	g34rAyATB8LesNg9povfgYtmDuAJobA=
-X-Received: by 2002:a05:6000:1008:: with SMTP id a8mr421262wrx.271.1540450075237;
-        Wed, 24 Oct 2018 23:47:55 -0700 (PDT)
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from xubuntu-vm (host86-167-247-131.range86-167.btcentralplus.com. [86.167.247.131])
-        by smtp.gmail.com with ESMTPSA id j189-v6sm401067wmb.12.2018.10.24.23.47.54
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Oct 2018 23:47:54 -0700 (PDT)
-Date: Thu, 25 Oct 2018 07:47:52 +0100
-From: Kim Bradley <kim.jamie.bradley@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: rts5208: Reduce line length < 80 characters
-Message-ID: <20181025064748.GA2067@xubuntu-vm>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.110 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-lf1-f50.google.com ([209.85.167.50])
+	by :SMTPAUTH: with ESMTPSA
+	id yEmPgax3wOJJoyEmQgYCU2; Mon, 25 Feb 2019 04:50:42 -0700
+Received: by mail-lf1-f50.google.com with SMTP id p1so6605780lfk.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 03:50:41 -0800 (PST)
+X-Gm-Message-State: AHQUAuZ4rpqxCX4H0G62BdN/+VC4LgDxg53qSo8P0MbDOI3yyi2YloPY
+	Xl/tov4AzU3f2urJ6YxRYtsXMHHDIL6IcZipza0=
+X-Received: by 2002:a19:e347:: with SMTP id c7mr9776502lfk.137.1551095440827;
+ Mon, 25 Feb 2019 03:50:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20190223111751.14620-1-jbi.octave@gmail.com> <20190223125932.GC16686@kroah.com>
+ <CAAaskFCUXvPjTZXY_k1zohpVc-ij6sUoB4EcrsYRKU+ortXf4Q@mail.gmail.com> <20190224075553.GB31123@kroah.com>
+In-Reply-To: <20190224075553.GB31123@kroah.com>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Mon, 25 Feb 2019 17:20:29 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbKbASMqei6p+Kd2F1uYsoERjqT0vb+oDva4RGL0biHdmg@mail.gmail.com>
+Message-ID: <CAK-LDbKbASMqei6p+Kd2F1uYsoERjqT0vb+oDva4RGL0biHdmg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] net: ax25: Fix multiple blank lines warning
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfDgvg+zxcL6AoPTsXRAkfH+ING6PxADLImNICCTCvfNQlYh7s9yIiDmxE4ywxnNTnTkK5i6UzYWBQvsV1fQP8E3GLLfUvldxq2jYpDXLigV83w5GXKcS
+ bJcYMR1LdqdCnDR/zqH4Ne2VFR9YmXAFhJJTV6NAX/FwpXW0bdsnWFfC/6jgjJeMXrJIMaAWt5v0x5XhygTrgLdYDNdD+99X7Uk=
 
-Fix checkpatch warning by moving function argument onto next
-line, which reduces line length to < 80 characters.
+On Sun, Feb 24, 2019 at 1:25 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Sat, Feb 23, 2019 at 04:17:36PM +0300, Ivan Ivanov wrote:
+> > as usual, Outreachy is doing stiuupid almost-useless commits like
+> > remove two blank lines or fix a tiny typo. They are trying hard to
+>
+> <snip>
+>
+> To let those of you on the outreachy list that might have received this
+> junk know, the poster has been now banned from all kernel mailing lists
+> for doing this type of nonsense.
 
-Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
----
- drivers/staging/rts5208/ms.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks.
 
-diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
-index 9f846e53abec..c0d1fb10ddb3 100644
---- a/drivers/staging/rts5208/ms.c
-+++ b/drivers/staging/rts5208/ms.c
-@@ -1735,8 +1735,8 @@ static int ms_copy_page(struct rtsx_chip *chip, u16 old_blk, u16 new_blk,
- 						i, extra[0]);
- 					MS_SET_BAD_BLOCK_FLG(ms_card);
- 
--					ms_set_page_status(log_blk, SET_PS_ERROR,
--							   extra,
-+					ms_set_page_status(log_blk,
-+							   SET_PS_ERROR, extra,
- 							   MS_EXTRA_SIZE);
- 					ms_write_extra_data(chip, new_blk, i,
- 							    extra,
--- 
-2.19.1
-
+> Very sorry about this, this type of behaivor is not ok and is not
+> condoned by the Linux kernel community at all.
+>
+> greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190224075553.GB31123%40kroah.com.
+> For more options, visit https://groups.google.com/d/optout.
 
