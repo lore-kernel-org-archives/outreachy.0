@@ -1,88 +1,88 @@
 X-GM-THRID: 6661107741495394304
-X-Received: by 2002:a50:b361:: with SMTP id r30mr957973edd.8.1551106924656;
-        Mon, 25 Feb 2019 07:02:04 -0800 (PST)
+X-Received: by 2002:a17:906:350e:: with SMTP id r14mr1921033eja.10.1551106836883;
+        Mon, 25 Feb 2019 07:00:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:32c1:: with SMTP id k1ls2614691ejk.9.gmail; Mon, 25
- Feb 2019 07:02:03 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia3otMRgCLEFZ+HhYhsGGYizUTqh23jvzIbp5OUCCy0NsghuCIoGWxkyv5xQkkI4DQpU3jv
-X-Received: by 2002:a17:906:14c2:: with SMTP id y2mr1203987ejc.11.1551106923961;
-        Mon, 25 Feb 2019 07:02:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551106923; cv=none;
+Received: by 2002:a17:906:32c1:: with SMTP id k1ls2613437ejk.9.gmail; Mon, 25
+ Feb 2019 07:00:36 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYsfa10JiOzqfoQP4XC/Spe+FvFj6DrbnewBSbcVuwO85/z0p8M9yXR6gwFZpokpoFlqafi
+X-Received: by 2002:a17:906:2641:: with SMTP id i1mr1917596ejc.9.1551106836029;
+        Mon, 25 Feb 2019 07:00:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551106836; cv=none;
         d=google.com; s=arc-20160816;
-        b=w2yS0oZS5pPBysig9ToI7RTdWs/TllbjmaywvGfxbpdzVHqAHHjlkiE4BXVY0Xn1f1
-         ewTMKAR/qhx1anNTH+OrTO4uBv6/ltzdZztaD9DsJsthN+5o+El03oIHf/PO0S8SIEP3
-         uZGpmXCLSwKhkA6x/vHeUE2yYwPTGQZnDFqPhRCx+gMwK/mTWOzbjIfeCMLueyWYz9OC
-         OcIz7ROc/rsC4m8D6jRhBJFnhvjfd10tA7xPrimT+3E06fOjdt8VU+bgifAIXEOKubbZ
-         dtYn+YmWM3eI9s6sSbfB7lVZBHhmXkM5Enc6jFopASVa15cdg6DAZMNcvmDFTlnBYJlq
-         gaYw==
+        b=A5w0VdJ5NQx/LUrYNz35u341iLD4bryN7YuX1r6qNgVbOo1UlMs5oD3FehccjTyHaf
+         v0hw1NSBMgkHU4BTIMbAmoeksB537Zrrz2wZF4gU7g3TLNQrNEdCIebW6IftyjOKpNY0
+         oXU3BYe/LdOpRnd7YgBGm3pWwcyqoaa4WHZrHKofYLqAT1gDG0t3dxStf08SKwVkyVVL
+         px+GwraMSYkpAExBvD9JbesXDqJWaSaHYMrxQ9qX1Syp/bFAh8ac0lRmLARmIu75dKWD
+         Cw4iGPkergUk4KD43f6VOfeu9h8ZVX/BIgi/Z32h4GZtiXSvvR4HJfRI/9OyNmCNbADI
+         n5eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
          :subject:dkim-signature;
-        bh=qhesp+HT3akPWUG2uS0zStPzmGMgkEBN1II3u+x+WRk=;
-        b=gIeHVXoqZFJGaThtlkGAupKziY9kcVZH6iL24FLKGTO/ngewzD8wrcwrNNugn6ugRi
-         SXRrewiuqayTE+NRVz558LH4d1BjP9opj5xJNkVVjT5O7wJMHSZ8gfVA8CKKn8d4IwXH
-         RAvIQLgh/gzayy5sQ4u5F+L+BCD9PCHEbLAWmJJW0oWiD7TI7c9HoX0owxJZCzfAzwdE
-         eQWGNIyHF6BBEoHyYMYVNMMMcmcYZv/ZT1llwByw7NlRS4wrhsNGgJEGqfrU/Pp5MNV5
-         K4epvS0YApUFb+Xe+RBK5HTo96gPUm/O+5L0LyWWJnKWG8jUV7O1fd5vW4C/ppvVWHm2
-         lU8A==
+        bh=ijFgIq7HrtDe3Pnq7wsz4z5sBLTupTXLQdlOgsv8bFU=;
+        b=T7u+5RfyyLJiOpGDdQHpnP+JOyV+MTSJ6v2OOnASLJg0RIBMUgFTQ0xZvWtFpnfVZC
+         37d0wFtIQJU52CgNHJvWQI7sLpMZjUKa++H0BdI8iJEkWk8LbyHZJC5L8KZ5ays0hW92
+         +NqJ4JPvEGUwk15ExmS9ZPX82j9CaJbCqttgZnVZHZF703AunElTXV5UFXZKpGERip64
+         nMI+s7SekytWoWfMQS44BtDKvmY+glHi5SiqwH4mZSrLbmwMIT+TxOu9uGD1pQa6rS9d
+         PKWzbyOkZBB8TM3onE2Vq5jCIm2ktOL5USv/8jIJaF6402JCrhUjvfGVGeU49BQEnjtj
+         Y0iQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BezYYU0M;
-       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dot2slt1;
+       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <matthias.bgg@gmail.com>
-Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com. [2a00:1450:4864:20::532])
-        by gmr-mx.google.com with ESMTPS id c7si203636ejx.1.2019.02.25.07.02.03
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com. [2a00:1450:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id h12si338499edh.4.2019.02.25.07.00.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 07:02:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) client-ip=2a00:1450:4864:20::532;
+        Mon, 25 Feb 2019 07:00:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) client-ip=2a00:1450:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BezYYU0M;
-       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dot2slt1;
+       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x532.google.com with SMTP id f2so7775495edy.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 07:02:03 -0800 (PST)
+Received: by mail-ed1-x52a.google.com with SMTP id j89so7788434edb.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 07:00:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=qhesp+HT3akPWUG2uS0zStPzmGMgkEBN1II3u+x+WRk=;
-        b=BezYYU0MsHtVUwsT0n37WG8B42lfbTxKI1oy4A8yx9W2wXeGToav8PskkYrIfzfdOM
-         JUVNiAB6QLf7nLekZVWcJU7dDYk1UAOB4oqvx304lMNs4mQFmeUtTLBLxcUSNlmMMJuR
-         76ua2j4zNWZZvl/wtOPZQdoy0EbSqef9DgVCAGOpnFAJS4dzLfre5BGaPNP4FoY5GL3A
-         DIfbe1txb5oMpK2puFY3HIeNwxIeoLP892fl+FAUt/g2szOSXeSms7vQjJ43BwmzVpPw
-         heUn8XlYhSzEt+d7Sk6YKV3GtJIvvK69K6pF4KtPiqXUcnENinWX2yvErck8uwNLkI6q
-         gtPg==
+        bh=ijFgIq7HrtDe3Pnq7wsz4z5sBLTupTXLQdlOgsv8bFU=;
+        b=dot2slt1/HYubdvIYIBR1uNJcyGBRDm0Tl4RUQwg1yTbOMJCKQj5qVJxVZcQTmoMry
+         JbQuM9BKx1j6hjwU1OOuI9UE2SrJkw20+gp3fga/5R8hYfD4XbilVie72VE0GFL6ersI
+         /xHFgs+YZqU7z59dUBa4w3hCPv7KkShdGmk++xnmWOKyRBuvqEp2G4mdu15H8f10ncwZ
+         A/xUes7Z8GMIES3vM1ViOLiWvtgrAhsUlXAJ7nYd4X0PHi3hqlbKw0uj6MGVXjN9G+Sm
+         fZOm45RDljeS4xKe/eqDC9aH6BL4+EBof2G2EZfM4CnEFF8moK9vJ55+7oy1F7UVY1Pa
+         4NXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
          :message-id:date:user-agent:mime-version:in-reply-to
          :content-language:content-transfer-encoding;
-        bh=qhesp+HT3akPWUG2uS0zStPzmGMgkEBN1II3u+x+WRk=;
-        b=MQuN4Le4hwC/VeGhUvBts5ZutvmGOkkIWmRW++az1sVTHGxo7L4Qo4xLj7VwZPFfD8
-         ZUqoRUEmTuwAXXYoXa5AFdeJvL3IQ5oZKOjOLd5bjBJ7Vg0RJONXJcVn1+uenipIKlS5
-         XfymgTyyK2RqGAekh4U6qmj7WLaa3RvuxlFhIikJLjPXCNwK1Dgg7vsS6wun3D6LFaIK
-         1yRz8JxS7s99G8AowekkYUiDMcW9h3sxRBCf5O9wXCBUy7yAvBzGg/RG3LSwlULIjRtJ
-         ifrkQEzrDd9vs0Tyo7iPNgjdnKN1J6shuKuvL/Jc84FMhxCa2bCjkvuNpEHoGXzWfqHD
-         mNtQ==
-X-Gm-Message-State: AHQUAua3OHDpUJSNTSS4G3MzjjyYWUKDPEP/9eNp2IR/dHLEcvUIBEOv
-	MfSkfDosRJfbdIw3Yted3ls=
-X-Received: by 2002:a17:906:68f:: with SMTP id u15mr13121019ejb.147.1551106923689;
-        Mon, 25 Feb 2019 07:02:03 -0800 (PST)
+        bh=ijFgIq7HrtDe3Pnq7wsz4z5sBLTupTXLQdlOgsv8bFU=;
+        b=iiajfiM6UGz03RFaqAsFFldE6rvWwiw/biCxghbHSm6UmpTKU9Uiu4k7T5gCSiSLAj
+         9pB40wuhey6J8cYmqqhy9rty/oy0Cp/k70+9j/W54XaAecO6tal+XVDh6zCYcyP56i9m
+         3LXpwSg630ZL0MKYeiKgx1W7M0/LCK8Zbddeq6zOTQZMxatzpZVSNZYJHWPuHpEUqtKQ
+         +mYuN98JXcn7a/Ox5MBK4ZMwumMj0YV00Amtx+4R+5jxwyPrZ7GCXhqqfUXIuqYBUjaE
+         CS24Ql7HZWoW28zp7XEI7snOsxqNU+bu53byL8N5Wior5bS6Drz5gpscm7FLaRf2WWzY
+         ICXQ==
+X-Gm-Message-State: AHQUAuaGUQCAbcXFFNuBKDMvlda7gdGHbkLZC1HFu3UEyRhCLCwpM/ee
+	8YZaIE5EhoPsl0Nnerx2B6M=
+X-Received: by 2002:a50:adfa:: with SMTP id b55mr15174780edd.160.1551106835638;
+        Mon, 25 Feb 2019 07:00:35 -0800 (PST)
 Return-Path: <matthias.bgg@gmail.com>
 Received: from ziggy.stardust ([37.223.147.22])
-        by smtp.gmail.com with ESMTPSA id fx9sm1786151ejb.51.2019.02.25.07.02.01
+        by smtp.gmail.com with ESMTPSA id p30sm2671503edd.85.2019.02.25.07.00.34
         (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 07:02:01 -0800 (PST)
-Subject: Re: [PATCH v2 2/2] Staging: mt7621_dma: Prefer unsigned int over just
- unsigned
+        Mon, 25 Feb 2019 07:00:34 -0800 (PST)
+Subject: Re: [PATCH v2 1/2] Staging: mt761-dma: Alignment should match open
+ paranthesis
 To: Bhanusree Pola <bhanusreemahesh@gmail.com>,
  outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 References: <20190225144932.8922-1-bhanusreemahesh@gmail.com>
- <20190225144932.8922-3-bhanusreemahesh@gmail.com>
+ <20190225144932.8922-2-bhanusreemahesh@gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
@@ -178,12 +178,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  pac005PuhxCWkKTJz3gCmznnoat4GCnL5gy/m0Qk45l4PFqwWXVLo9AQg2Kp3mlIFZ6fsEKI
  AN5hxlbNvNb9V2Zo5bFZjPWPFTxOteM0omUAS+QopwU0yPLLGJVf2iCmItHcUXI+r2JwH1CJ
  jrHWeQEI2ucSKsNa8FllDmG/fQ==
-Message-ID: <2612cbd8-3632-a6f6-6b59-4b906326050e@gmail.com>
-Date: Mon, 25 Feb 2019 16:02:00 +0100
+Message-ID: <930cbb2d-a340-3d8f-14a2-c09fe0e11985@gmail.com>
+Date: Mon, 25 Feb 2019 16:00:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <20190225144932.8922-3-bhanusreemahesh@gmail.com>
+In-Reply-To: <20190225144932.8922-2-bhanusreemahesh@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -191,32 +191,29 @@ Content-Transfer-Encoding: 7bit
 
 
 On 25/02/2019 15:49, Bhanusree Pola wrote:
-> Replace 'unsigned' with 'unsigned int' to be specific with data type.
+> Adjust "dev_dbg" parameters to match alignment with open paranthesis
 > Issue found with checkpatch.pl
 > 
 > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
 >  drivers/staging/mt7621-dma/mtk-hsdma.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> index 20c8879d4979..7b2cdd2829a5 100644
+> index d67a2504adb1..20c8879d4979 100644
 > --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
 > +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> @@ -191,7 +191,7 @@ static inline u32 mtk_hsdma_read(struct mtk_hsdam_engine *hsdma, u32 reg)
->  }
+> @@ -242,7 +242,7 @@ static void hsdma_dump_desc(struct mtk_hsdam_engine *hsdma,
+>  	int i;
 >  
->  static inline void mtk_hsdma_write(struct mtk_hsdam_engine *hsdma,
-> -				   unsigned reg, u32 val)
-> +				   unsigned int reg, u32 val)
-
-You could align to the open paranthesis as well?
-
-Regards,
-Matthias
-
->  {
->  	writel(val, hsdma->base + reg);
->  }
+>  	dev_dbg(hsdma->ddev.dev, "tx idx: %d, rx idx: %d\n",
+> -			chan->tx_idx, chan->rx_idx);
+> +		chan->tx_idx, chan->rx_idx);
+>  
+>  	for (i = 0; i < HSDMA_DESCS_NUM; i++) {
+>  		tx_desc = &chan->tx_ring[i];
 > 
 
