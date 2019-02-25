@@ -1,75 +1,77 @@
 X-GM-THRID: 6661088091510407168
-X-Received: by 2002:aca:4911:: with SMTP id w17mr13028137oia.5.1551141184664;
-        Mon, 25 Feb 2019 16:33:04 -0800 (PST)
+X-Received: by 2002:ab0:25c2:: with SMTP id y2mr8645080uan.22.1551108976860;
+        Mon, 25 Feb 2019 07:36:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:afc3:: with SMTP id y186ls48671oie.4.gmail; Mon, 25 Feb
- 2019 16:33:03 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZbsE72u5Xt7QRevw4PBafkk1e9sKoQ+GxmkS/qV9ZGKwQojNX+zPFqPgSIBkMj+bQ2bu7w
-X-Received: by 2002:aca:62c3:: with SMTP id w186mr12888070oib.33.1551141183903;
-        Mon, 25 Feb 2019 16:33:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551141183; cv=none;
+Received: by 2002:a67:7d03:: with SMTP id y3ls3188979vsc.3.gmail; Mon, 25 Feb
+ 2019 07:36:16 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaxYGKEuafiLZbYSRKjee9AytOtetQKCr2hCBSMEx5inmoAtE3rWQdylxllxr0a6Yaj/IZp
+X-Received: by 2002:a67:ad14:: with SMTP id t20mr8967394vsl.21.1551108976383;
+        Mon, 25 Feb 2019 07:36:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551108976; cv=none;
         d=google.com; s=arc-20160816;
-        b=bTTiCAvCMqPih5DwLV7wkyiz33Lb/02l5+5UjwhElEFRhmZPrg/WLhvf3jtCLDe7YD
-         vgyS/gTeomW2B3rybu/us3WyXg5e3ZoEXAwUKktcqj0Q7EmcEek06ChPcCfKyCgf+G+m
-         wTE9E+rO24NLQMVfiFRkGkcanSFLL+U/BF8tVGrY+WI1OQIV4bQS2Ko+7/q+AQoXxLyy
-         iZL3XaqsqBnI+o9HtBFAVCn69FcQe30T6kfTOstl/U12UQNHX45MEs6CUAZhZ73isqSm
-         o3YRxL3WCPKJUv5d4Z7hHt62HxmNBDwWdZze+1++/wb2/Nk3YI4T09CaiA7+REg+GlRj
-         1Zrw==
+        b=rI91uLa2Qz6NoDq2ROg9uJhWgWROxBr58341pgERsNeCu87lD24oKf8ZPikFYoVM7j
+         5eH5xy+GlGLEi4wI6+VF5imOzGKQO/46x2q05s56Dr+so+9j0su4nMYpbzrLxPkzP6lU
+         JBFcYH0biM/jcDquEw2HwxHlymufGzFmzN6pxD+q4SsTGldgCsPPgr7bqnDoj0scwXKC
+         UGw5SL9DcJk+DXOOTd/2LHQley/QQgNoeRP9RHR7d8YnLZmrZ3XeJ70uMttHXC2/Lo4a
+         2JV7Z9/QyyK3MVg78/qNB7gDYZWRs0ww6lpQlJzHKT+8oKFJVBwUbCEk7lyPNYgAC6Jc
+         68CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ON/ewYiUGayOpXS/qs3aVugTgtY6e3juh5E+O0UpA4Q=;
-        b=oFbEp8rjnafplC03F4DhI7dIsSmqAY2DIqBhuKk3c3/4c3OkUWMnCDiTVKiwYT7AXM
-         oUXnGgNfKM9b4+CshhRgTh8/cW2DQ46ybo9LyUiie1G4N6U/vzVvD49piXmZrH3IZCn5
-         pwSxhN5NVSf/ARi9bQUo4sRPNzLIFlVTNMyZghsx+WQS3kaB0Ncne5T70SKigyHAOUfJ
-         hQllkh8Q5rBBf7KGSq2J8mTawP9xnS28BCLTJ2NmOWD3YRy9Jf3xg6NHDcOxjOAQBk4A
-         PSpxOYJjvUvC39cTlaESwrXdaeAvlju0hjuQQ333Pu6BQjAFAVFdtLyvzgVFCls27c0v
-         no9w==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=6suAVZkVE7dqew+0tFdefovdH6dDgJo79Rl04LxPzQc=;
+        b=wI/COuIhbx+RyDaOS/3pv54e7XLJLRtWk/GN2duxhJmSvqfZSmuKfOgJmj25ejkK1n
+         9D1wgmF4giPsd8BhrwT5Dy9scajG1wC6PfIX8S3vVGNDRTm4Stdnew35wQncvf03Eua9
+         DVFWo3h7eUtsFgFUb/Drqdww+S9MVN9h2tM5+wKtGsr5xirZiBpaGJuCtV3fybagIfge
+         y4I4bO/f7XvAs04ZoTSspmvSAuQKFl60vgPxfZWJthl7nKO5a6gVCRUhbsfAzh7pIpdo
+         1Z5Y/jVXJcyANNi+PdkgqJ4TV9XxpTD2g9eLC7pSix3Q3F2l5nBFYn3CY43P1LpPPHqr
+         yCiA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WLXbKaYG;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Rk3vbgzt;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com. [2607:f8b0:4864:20::52e])
-        by gmr-mx.google.com with ESMTPS id l92si441892otc.4.2019.02.25.16.33.03
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id z24si582969uar.0.2019.02.25.07.36.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 16:33:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) client-ip=2607:f8b0:4864:20::52e;
+        Mon, 25 Feb 2019 07:36:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WLXbKaYG;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Rk3vbgzt;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52e.google.com with SMTP id e17so3250392pgd.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 16:33:03 -0800 (PST)
+Received: by mail-pf1-x441.google.com with SMTP id n125so4673641pfn.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 07:36:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ON/ewYiUGayOpXS/qs3aVugTgtY6e3juh5E+O0UpA4Q=;
-        b=WLXbKaYGKLzorhyqHnHiLFPxuYcc5Wvx7tz7C0tqNma2yfQkyHd6Yu5DM5o28pyXeV
-         SnJSz0HSVtWSTSHQfPVZlOA0SMRsDD+ZFVPQzGqgl1yvoCeKWLTwtliKJoLkVhAm9XZJ
-         NLpzHTzqTP/D+FZlbC0ngIr2+29llbL+XyVx9hfJiPW472tyjwlLc8bUlte5ar2evSD2
-         RSZcw5UdeRLSB5tL2Hc8TSThwEKc6KzzsCB9BFCl8lWnOxI1kqeJQ1ZPjwCbKF9lvEcv
-         6R51yRYC8SRGbOTvfUyeoF2BFBAKPul7gmnJVid878QDedPBgZvlJNt25npXhIfZ5Sl0
-         YFCA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=6suAVZkVE7dqew+0tFdefovdH6dDgJo79Rl04LxPzQc=;
+        b=Rk3vbgztv0iaCGTetMbJ8Ktl1jrdj6dVkgdcw9iV8rZOMpoJjPfrjq8nv8jEIQBJLL
+         KdmpWKj7ABNuEjF02hhHDZKjucs2nQ9CTvlZu1Ew8isrsaPsCeG+rudJH4IpuMbfkBbJ
+         OmFReh939JTVT2OOwBLAVa0UFMqI8OQVQ0W/PyHoW9Aa6xzHXJFfzwqJwkODvQ7xPi2n
+         y0L8XYpi54Erj7OiW6lcJY/fzGtWtd0+ymx3nn+e/iTot4bX7ZnmR7oGGE8JbA4QXBTi
+         4z0sa+7HDkgjquCEkJxyS5AcfBxB+f9Z9ZDg2sjLQD+7UTc4BoDdN6HiDWhwnv4d7cU2
+         1FbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ON/ewYiUGayOpXS/qs3aVugTgtY6e3juh5E+O0UpA4Q=;
-        b=YrFnjec9NrOt6bgMape9r9KHy6N9M9wSy61/0ddb4j+p7TERa6QyJGhP4codh23dLF
-         zsdBYsmHJJ8uEUA9QRdXM6yJ0barkmM8vbJHYwD5MjO+7BAey4eBY/AKKu45JsrYyTQ7
-         JAYP/9hojsk3a1hqwnIb63dpSAfuLfv3jBz2ys0TaEnn+J1NQIE0CcGaBLI7MQMe/O5N
-         2uTvSpCSzkvX4PkXQCF/e4t2K82ZVFFiib0hxcs2C+fq3fZGoglIrUCAcVAnOCCzezbT
-         t+bADoedJxP7lG9XyDr1hW5u06s0VtMSUWj3EqFR47jsHUT76dh30ttEM7gIpS2pzHzC
-         iDCg==
-X-Gm-Message-State: AHQUAubjAfEqHq980jrHtgSE9I8zaRpoqGRpaTgojZ8akavN5KtIT7Pr
-	9BeYv1I11BaTVyiAjfDSuc+kBmFU4qA=
-X-Received: by 2002:a63:4005:: with SMTP id n5mr21148498pga.86.1551141183356;
-        Mon, 25 Feb 2019 16:33:03 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=6suAVZkVE7dqew+0tFdefovdH6dDgJo79Rl04LxPzQc=;
+        b=JuhrFUHGgohctDOJbI9OCcjB9FNKc5KFM3Qisaf7Mw3PISzKtmYif4sTN9GmexDRvl
+         suishyvXtY/jNf0Sz/bbhJ/djVybnArAx0vw1jK2B43HpAaZiCGwVYyqgAqAmykmPLU5
+         dn3stcK+IXjBG5Q8qVBaZ0nO41HlOW3JyVhrObeVfnjv+6P0Hf/yE6oN9jpsVFwiXVIM
+         axwfi/ClaxwMnZroa61xQqkPV5eOZqnvKYMFBlXcno0VXdsdZQH1x0NCgyUkCQXvenxU
+         qGU36YujPcxBFkkPg7Xlmcm6oCJ5DmFc59VDcCWFCSp2mO5OLrashMwZENkimVcgxI9U
+         VnzQ==
+X-Gm-Message-State: AHQUAuboKmfDunV2Klc8xg+TTrHaf+vOIm0R1gPQONiJgZ8CScVjZScN
+	GewIjHd7udnb7fVYhiXunA51tsZPl5Y=
+X-Received: by 2002:a63:f556:: with SMTP id e22mr19671472pgk.321.1551108975359;
+        Mon, 25 Feb 2019 07:36:15 -0800 (PST)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id i14sm14415486pgt.82.2019.02.25.16.33.00
+        by smtp.googlemail.com with ESMTPSA id f18sm14048855pgf.26.2019.02.25.07.36.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 16:33:02 -0800 (PST)
+        Mon, 25 Feb 2019 07:36:14 -0800 (PST)
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -77,42 +79,34 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Mark Greer <mgreer@animalcreek.com>,
 	Johan Hovold <johan@kernel.org>,
 	Alex Elder clear <elder@kernel.org>
-Subject: [PATCH v4 0/4] Staging: greybus: Fix various checkpatch.pl issues
-Date: Tue, 26 Feb 2019 06:02:43 +0530
-Message-Id: <20190226003247.15574-1-bhanusreemahesh@gmail.com>
+Subject: [PATCH v3 4/4] Staging: greybus: Do not use multiple blank lines
+Date: Mon, 25 Feb 2019 21:05:46 +0530
+Message-Id: <20190225153546.10484-5-bhanusreemahesh@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190225153546.10484-1-bhanusreemahesh@gmail.com>
+References: <20190225153546.10484-1-bhanusreemahesh@gmail.com>
 
-Staging: greybus: Fix various checkpatch.pl issuesThis patch series cleans various checkpatch.pl issues
-CHECK: Alignment should match open parenthesis
-CHECK: Blank lines aren't necessary before a close brace '}'
-CHECK: Please use a blank line after function/struct/union/enum declarations
+Remove unnecessary blank line
+issue found with checkpatch.pl:
 CHECK: Please don't use multiple blank lines
 
-v2:
-   [PATCH 1/4]: Commit log modified
-   [PATCH 2/4]: Commit log modified
-   [PATCH 3/4]: Commit log modified
-   [PATCH 4/4]: Commit log modified
-v3:
-  Include all the mailing list
-v4:
-  [PATCH 1/4]: Subject line corrected
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+---
+ drivers/staging/greybus/control.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Bhanusree Pola (4):
-  Staging: greybus: Alignment should match open paranthesis
-  Staging: greybus: Blank lines not required before '}'
-  Staging: greybus: Use a blank line after declarations
-  Staging: greybus: Do not use multiple blank lines
-
- drivers/staging/greybus/audio_topology.c | 1 -
- drivers/staging/greybus/bundle.c         | 2 +-
- drivers/staging/greybus/bundle.h         | 1 +
- drivers/staging/greybus/connection.h     | 2 +-
- drivers/staging/greybus/control.c        | 1 -
- drivers/staging/greybus/control.h        | 1 +
- drivers/staging/greybus/core.c           | 2 +-
- 7 files changed, 5 insertions(+), 5 deletions(-)
-
+diff --git a/drivers/staging/greybus/control.c b/drivers/staging/greybus/control.c
+index ffa41d31896d..a9e8b6036cac 100644
+--- a/drivers/staging/greybus/control.c
++++ b/drivers/staging/greybus/control.c
+@@ -15,7 +15,6 @@
+ #define GB_CONTROL_VERSION_MAJOR	0
+ #define GB_CONTROL_VERSION_MINOR	1
+ 
+-
+ static int gb_control_get_version(struct gb_control *control)
+ {
+ 	struct gb_interface *intf = control->connection->intf;
 -- 
 2.17.1
 
