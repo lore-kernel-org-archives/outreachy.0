@@ -1,121 +1,93 @@
-X-GM-THRID: 6672387662802845696
-X-Received: by 2002:adf:edc6:: with SMTP id v6mr5509854wro.189.1553536314870;
-        Mon, 25 Mar 2019 10:51:54 -0700 (PDT)
+X-GM-THRID: 6662079194667679744
+X-Received: by 2002:a6b:e719:: with SMTP id b25mr11858013ioh.30.1551177387741;
+        Tue, 26 Feb 2019 02:36:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:e94b:: with SMTP id m11ls303067wrn.5.gmail; Mon, 25 Mar
- 2019 10:51:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwM6AgtKvamgj/HRal2oSzIDjMvmHlu5VGX2+S8t1+qz+NI//dzg2YWVMnRuXltnWLmGxQE
-X-Received: by 2002:a5d:68c6:: with SMTP id p6mr17510610wrw.321.1553536314092;
-        Mon, 25 Mar 2019 10:51:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553536314; cv=none;
+Received: by 2002:a24:147:: with SMTP id 68ls763212itk.1.gmail; Tue, 26 Feb
+ 2019 02:36:26 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ibec1Vsqmfsovg9Yq1rag1jgC2IQ/u95yOzvof073E3YeQAcgxEMYRjfxrJpWtMeK4W+Epd
+X-Received: by 2002:a24:94c6:: with SMTP id j189mr1973667ite.18.1551177386922;
+        Tue, 26 Feb 2019 02:36:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551177386; cv=none;
         d=google.com; s=arc-20160816;
-        b=M/fihvXsCF0ZMEDPvdRJPF54xDYwEIAp/fMIeKpl7Pxv7XDtIfkqSIeKtB9oUaNr4b
-         YjXpBeyEh2w0XNIfz9Shqn/jEe9aNBmv1TS8VJhtia+LZColOEt5zsHwgvPGYvvkrHu6
-         5lLYkwUpFAlUDrbn2EkDnYdxOIcdIMcMmN+ECZsdnXaVkcCB317fqmAAHvsfQc4xE1N0
-         Q6YwK7wCr+NbkKxIlZYkDQ2Z/VVrfX0hvOnkltNUlTUmvto7/T7oM9Qca2pf2QSI+Fum
-         nnaDvEMUVkuUKlrgPLsnIhR+xOJho6InujMjGdFe7gg7yVvXPwl1HvsNAD4N738Uy79q
-         JH4A==
+        b=bUEfvzeYolbO3cGit7vyYtqEb9zGVqC/LzUmHsquMm2AailECrEuIVIEBuH3OnCcf9
+         ayx8QrPrdK6sm3cnskicRfuOuigO66V9B7KMIuJ/k/Xm9fQ0GNkoBSJN+f+Hf0MJSqx1
+         Laavs5sR0bSxIZC2f++S9f+ARzAqU5o1g76fv74BfiOCm9AZDCH7mxcp+z3AwBba41+C
+         5KsR0MdWHe3X9XTMXr0/DUMsqqZTz+ut2bJUZ/w6XD3jNAbcc3CCcMZFT/y9ihs9xACG
+         fviF/ZqyoBjkWhLX/WAAOhs+3sg+w0qnKqYcJolDNvwopApizGSRgP+bEBRHbHJVoPgN
+         vMKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=TdbWgR6gpWnke8SnOU25bhxOVlqUlsphrvx7TsvVdDM=;
-        b=AYNaZcqNeAGh/GHqomAGjMlpYFf+WNxVDSy49y4qg9xavVtfwMArdS/5z1SM1qQ9co
-         0WOJ/qzgUTkW8ZJFFfHnkdcFUtqUDE+WXvFTKufikhXRPNqkbdqBhLK9AIu+4QgGWcI3
-         WdRHwCDkm5MvRK+0lkyVpTzbYORsQTUv+NjvcPk52auGFTfNOiROCjg5OpJU3Sd3NwJJ
-         Uqt7tkpXOQDKDo2H9rjvla+90AUFX0uxK2J32j4rqsUrk1VWCi7EhjIS8wy1+pTfPfsK
-         IjGZqeBaNd0Y54yxMWzpCnLPPZ2pvIXPkXFPsG+EeAdOKZjgH/KTvkj7vOyem4YEomct
-         BtrA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=yDeSThohI4jYPgclRGNUdGQ8mvrYBFwjxhvu098SpcY=;
+        b=RB9Olg7T+ZWnzIVxlS91HEKI+xwZ+mFToND4lLLQphxjdD749V80ch7pu4V42krUC/
+         Nq8RCQyytPksns+fA0vrbi4SNXT03PXuCMPg8Z0XMewJ5yHgCoPVLCgkFuqoybE7S+kq
+         TkdWAbaj0GHaHrCH04FL4JQaQx4sHgS7ZechzVgV5b6nHTyebOIXv6yVRxXloyimocsC
+         8Am9YFak2N2h0fbQU4eMIjtqsQXhtorNSUD2DIujTdXmUUuhjwtb284yVuZTDzJHb2L9
+         jfpNpYcJ61JQ2YLzfz3fPYMo41KSbP6NE8PWPz6jtvgUBIeEYmTJcA7FgtQeHHPijeBs
+         J5MQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c+lBzzcE;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id n13si38739wmh.1.2019.03.25.10.51.54
+       dkim=pass header.i=@kernel.org header.s=default header.b=srBMO1FS;
+       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id j6si732030itb.0.2019.02.26.02.36.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Mar 2019 10:51:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+        Tue, 26 Feb 2019 02:36:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c+lBzzcE;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id p10so11274289wrq.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Mar 2019 10:51:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=TdbWgR6gpWnke8SnOU25bhxOVlqUlsphrvx7TsvVdDM=;
-        b=c+lBzzcEsO6b5rUSeH+AyDyTILOIUs4i5MvV/sG5uXwfePOE2SEjGJUxiZhVyNaAIo
-         xgOsM/JEXlw83TYroI0JJ0XSU3uV2q+GdCts7xd8VynRzjdT48psVqA02DO78TZag3qP
-         eDfEvP3R0RL00c+Eop/7g9xKw8W+9rZA6ENez5AUuRg8ricInfPfyulY8jClbft7EXV9
-         ZIYjbM5HSnhpDBZZUkHt5p+bGI0y7YgwQmcHZkUzqvREFxe1nEHcS/YsCxqom5me7hSM
-         7onWf76kp2w/76dzBCNkGp3cc+TZ4yG7XJqJmRoXPU+2e/0os00R577pLf2HBQRG54Dm
-         ZTeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=TdbWgR6gpWnke8SnOU25bhxOVlqUlsphrvx7TsvVdDM=;
-        b=dIsvObMCDvMyQKNAScJQWRkpjhXwYXyVXt/2jAtXWwHzgKeeOArCXExFLP/m7pzx62
-         uAcxZEdmtPe9uSLdFrEGvl8CP2HbXF6Q/+rLqd0VlJ80NWt902SPTjiW5yVh1LUBmRKf
-         7Sge/PnSNL7Ue40Lw3MVOWHB50zXyetO2cs9EC1pDgUtkE746hwDtip1seLfAWW8NroJ
-         Pm4PG/roK4C4/PvaxUfs6PKSe9O2PT/cnkWXDhGJPZ41JABVer6TpaidnyZA/QJoIeta
-         NPzraikI/OyG1/HZEuRkukPBYLjh9t/GEv0WCrTkC9RwF95G5e28Ys0VSc0a7DpxwupF
-         0avA==
-X-Gm-Message-State: APjAAAX/UgpJDWszGfL9P+mo8e+Lx7ickJ6gcf1Ao9b+UwuAgc6yekWy
-	MkIvzhnR/qD3dGVKfyWndQ==
-X-Received: by 2002:adf:9c91:: with SMTP id d17mr3165910wre.285.1553536313648;
-        Mon, 25 Mar 2019 10:51:53 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
-        by smtp.gmail.com with ESMTPSA id z11sm6621991wmf.12.2019.03.25.10.51.52
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2019 10:51:53 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: grekh@linuxfoundation.org
-Cc: sudipm.mukherjee@gmail.com,
-	outreachy-kernel@googlegroups.com,
-	jules.octave@outlook.com
-Subject: [PATCH] staging: sm750fb: lower case to fix camelcase checkpatch warning
-Date: Mon, 25 Mar 2019 17:51:46 +0000
-Message-Id: <20190325175146.17404-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=srBMO1FS;
+       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 952512146F;
+	Tue, 26 Feb 2019 10:36:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551177386;
+	bh=JRjt3EagDJlykvXnUocBBg7hVr9x+8o8dz7RnREN8bs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=srBMO1FSzZSBotDxWf+6YVAyIeEzK0Gc+YqocujcpII/0wOV/8I/FNaWw/n1pizeI
+	 /rJfRFJHHSp8NrYcufilt6OzVpuDMpieqikjMx97rysf2spWTIyOvv+qn1oQQIxQJt
+	 kWauRx9Nh9uKkHkt+VEyLQElg/o2AYH/uhStHHK0=
+Date: Tue, 26 Feb 2019 11:36:23 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: mt7621-eth: add SPDX GPL-2.0 license
+ identifier ---added punctuation to v1 changelog text
+Message-ID: <20190226103623.GA26036@kroah.com>
+References: <20190225230929.3861-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190225230929.3861-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Lower case to fix CamelCase checkpatch.pl warning
-"CHECK: Avoid CamelCase: <ulActualMxClk>".
+On Mon, Feb 25, 2019 at 11:09:29PM +0000, Jules Irenge wrote:
+> Add SPDX GPL-2.0 license to fix missing SPDX warning
+>  reported by checkpatch.pl.
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/mt7621-eth/ethtool.h | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/mt7621-eth/ethtool.h b/drivers/staging/mt7621-eth/ethtool.h
+> index 40b4cf011660..d0e97ae0d82e 100644
+> --- a/drivers/staging/mt7621-eth/ethtool.h
+> +++ b/drivers/staging/mt7621-eth/ethtool.h
+> @@ -1,3 +1,4 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*   This program is free software; you can redistribute it and/or modify
+>   *   it under the terms of the GNU General Public License as published by
+>   *   the Free Software Foundation; version 2 of the License
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 6bdf643707c2..3fe4479401e5 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -56,7 +56,7 @@ static unsigned int get_mxclk_freq(void)
- static void set_chip_clock(unsigned int frequency)
- {
- 	struct pll_value pll;
--	unsigned int ulActualMxClk;
-+	unsigned int ul_actual_mx_clk;
- 
- 	/* Cheok_0509: For SM750LE, the chip clock is fixed. Nothing to set. */
- 	if (sm750_get_chip_type() == SM750LE)
-@@ -76,7 +76,7 @@ static void set_chip_clock(unsigned int frequency)
- 		 * Return value of sm750_calc_pll_value gives the actual
- 		 * possible clock.
- 		 */
--		ulActualMxClk = sm750_calc_pll_value(frequency, &pll);
-+		ul_actual_mx_clk = sm750_calc_pll_value(frequency, &pll);
- 
- 		/* Master Clock Control: MXCLK_PLL */
- 		poke32(MXCLK_PLL_CTRL, sm750_format_pll_reg(&pll));
--- 
-2.20.1
+When you do this, the follow-on patch afterward should remove the two
+paragraphs of the license "boiler plate" text.
 
+thanks,
+
+greg k-h
 
