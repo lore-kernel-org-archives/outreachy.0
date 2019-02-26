@@ -1,154 +1,136 @@
 X-GM-THRID: 6661416853760376832
-X-Received: by 2002:aca:de02:: with SMTP id v2mr13988972oig.0.1551184933139;
-        Tue, 26 Feb 2019 04:42:13 -0800 (PST)
+X-Received: by 2002:aca:d597:: with SMTP id m145mr14216595oig.51.1551184849325;
+        Tue, 26 Feb 2019 04:40:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:5d11:: with SMTP id b17ls4734121oti.8.gmail; Tue, 26 Feb
- 2019 04:42:10 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbHxqRPYzABJ4teOAT4adbilTSqkkGsA8KpIfREpzhnmM9V7aeSSfCzm/mZ69ipSwDj/h3i
-X-Received: by 2002:a05:6830:1092:: with SMTP id y18mr14279223oto.42.1551184930412;
-        Tue, 26 Feb 2019 04:42:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551184930; cv=none;
+Received: by 2002:a9d:62c:: with SMTP id 41ls7202065otn.2.gmail; Tue, 26 Feb
+ 2019 04:40:45 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYSe6SzQ/wVd5Jd+lhoUTc48WJ6UYQTRQsJAye5fxcVqCwXPijMASewSlCb9j49KNKG41vD
+X-Received: by 2002:a9d:6f0a:: with SMTP id n10mr13390370otq.47.1551184845799;
+        Tue, 26 Feb 2019 04:40:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551184845; cv=none;
         d=google.com; s=arc-20160816;
-        b=DjmK37oOq4CwjF5pb+ZAnKuU45pI7jhaI1CBiSN+ZOOrmvD/9lhtEaIqUQ+z4+GWJU
-         +8/PApO4R/uBHbHE4j7CH5GXHd1+NpY1lnTqcvaQP91fH9oQxNPKmUY/gbfL7wL1dAya
-         SH+mlBn+pTg0U9YODZ0rX3yRcfenGuLKDlo4L5MnxCxKFTlk3dckluv4FobaHWgt/pwW
-         w71CLRb98V/sQWFoa5BCOj8kciZ/UqwmMqhWF+MWGALzYtOSYcsHCZZVYNKvPOwdajwz
-         QjI/JnNI8CIZeYeWZJw9l4GETb3dC4Kq8BbkgT4A9x+hZyr/7QCSONX0MFST+pB67kjx
-         WdUw==
+        b=Evp6Sp9do8nAyZ+NJrkZe9g8YPJxmFQFwAUpWfFvMmc4IOUpJL9/HzdP9kRa/bosZt
+         6R4+sP2OliU1b8LrkUceZgccTDHc4aR0ce3nOshgsnmZq4AQEXqwg3b9mOgAP+tclwpx
+         fp3IEy3znfEiqMxsWVTKai4AZGOAH/pk8lVTW3uFbrE+LNkXeIhV3W9ilqhf1xIa9oeD
+         6BSYK4FIdyLb7zeJnJDeE4Xec4Yj4O5FxQYCc5mXG5UVXLSGblV8dRLpX15CYcLFzd89
+         LTPbL3S+swWttu+p0oxZgZmcI2PpnwOEO7plfaxiElqXBfMrhM/iont7CUpA3TF4bhp5
+         uDVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=vkAWaTt/p+DED8u9MaqOR6EdbFqAeM+yRuNztHNwxso=;
-        b=N7kjvtzdXmF4S5R4rkvhrglW9z7L+tR7pCeBapDz0OEjUa/usRSv78EHtoFMYYergV
-         59LKJG5DvhsjrcoCyo4yxGi4t/FvuGIQNFEaUpIgbrUcDBNfBZEPsBRbdxaVB/MbfIXy
-         TLp49VroHOJ4fsgoxnBSNIujAEEcBZcRl/Vp6lr4PV8SM3hHvgWtGgCkFeCAxAOsn+jw
-         t0bg3e88aIwe6A4KA1RO40VR8O7EjfMCYpAAmdJ1l15KQLfKmd039MPmFsgnDahES3yF
-         Q5d4WlQ2mmURQJqo6cUz3Iuq4FnAFp2I+XZ9+Q9ekAs6F6D0LJtgGTghqcjxAHjGNRUc
-         tzbQ==
+        bh=36G0x5ewdpQ5UzdMmYyBU6XTiI4zZkw4vZ6DUVYopQY=;
+        b=NY8LsLCK6NWGyrNFKvaKP53P6QKujuibBhzuGiXetQjqAPMUnGv24zVYnMojteGRuV
+         9XPkdai5CdGneNjppvjoNY+CpnMIebSLWVHOsz+Gm2dYv5/hl8BtMQbhCHCiGEWQe2tL
+         NwQ/qBQsbyjnwTWj0TSgDvB9riUE4SScLsTxcS+4IRKOzfqcLOFlJUvOOIeh4b/I9+Qd
+         R8lPKkjLz0wOsxspKOIwOHYpakEx8yrSj2XZoJQHLOFNo6/RsPfB9/zE3LlZZ55Ty76L
+         ojMM+sUHpKuCyLnT5kw/G98F/+g7FKBHhCjNlW3zcV+F44ECyP9nMW24bgbZXYMRkUd9
+         /K4g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I+FYTu6y;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ph05gMtp;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22e as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com. [2607:f8b0:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id v129si607501oib.0.2019.02.26.04.42.10
+Received: from mail-oi1-x22e.google.com (mail-oi1-x22e.google.com. [2607:f8b0:4864:20::22e])
+        by gmr-mx.google.com with ESMTPS id m3si508173otc.3.2019.02.26.04.40.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Feb 2019 04:42:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) client-ip=2607:f8b0:4864:20::342;
+        Tue, 26 Feb 2019 04:40:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22e as permitted sender) client-ip=2607:f8b0:4864:20::22e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I+FYTu6y;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ph05gMtp;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22e as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x342.google.com with SMTP id n71so10910348ota.10
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 04:42:10 -0800 (PST)
+Received: by mail-oi1-x22e.google.com with SMTP id q81so10181275oic.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 04:40:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=vkAWaTt/p+DED8u9MaqOR6EdbFqAeM+yRuNztHNwxso=;
-        b=I+FYTu6yu+wu7sWBoJRY/dmLm0r0bPpYBoWyfkGoOKPZh+SUeXyakVhtSwmMQ2HqS7
-         ZbwUUApgoDlGyCT5hQytC4gBL70cBJcr+BbT2ReS510V0kvCvSFhKJ1ElTRcTwaIP/ws
-         +Cd8w11D5m/+CZ0s8qYvsMopO7/JdxUT/SQj53ykRO4de3jBdaDuIzmE7xPPVvRpTFO5
-         nU0obPAFhaFmEGl6ZMonX5a6uO7ffK8hU9mZT456MlsKlkFOi7jRlFE/bQYNKQblh9+W
-         HA1lwQ/ysjHy0pewwaEt5pb9Cffbkxp+5IeA6S0UZZ/Z3joazjH0KrMFEiIUL3go1hqk
-         Ykuw==
+        bh=36G0x5ewdpQ5UzdMmYyBU6XTiI4zZkw4vZ6DUVYopQY=;
+        b=ph05gMtp7H07zr6iaP5K3ox6t1omGfrrzYJmQ+vekeJKWuL6DTGqQ2PrBtnRY8Fg3Q
+         jM6wqF2JTzX45AunSYXVpZZTmIsMsAmmR8uhuZuQ4nv7kwz+IuaNAtM0WFfIf5s2yQbY
+         iecL4mijLcWBpTs4EidWLPBXGz9Z4RztON6LryJIqbOgnTqWCapolVg0KG0SqCjnze6f
+         Sul3fbTuKQAIDZ2+Qc87zG3TgujWLlDNVUXBzHc6M9CC2rDDehONJ6VvGN2/t/7f2WFm
+         RuSKIDoTeVomFLaU3bAZwsqNlvhDwsmVMZS3bmigTIYmp0GTqv28kpHdJpIgXd9XQng4
+         2F+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=vkAWaTt/p+DED8u9MaqOR6EdbFqAeM+yRuNztHNwxso=;
-        b=c0N918MTSkv6KYCzszFTTe2SN6ahoxwrRjZEXCPAxTsTnI3GCt4taVw3qbeOm6SSxT
-         Z/+rDvQoz5Nt1hLg2/OmXXLipe5cWjGHfPxuWllF1y7jS0r0F7VtlcuFVxbOA+X5trPV
-         VVtMbnT3Hu1gKjrntvbtSrqsVl4hDwITdXWxvwGR4E4HHCx5QgH32YYepYqWftsMZEUG
-         OdcMNb5A3iQF24Y6/eziYGq/TP5Vm1yjX8U+m96eKeboYP6eADYeXPBk6Qh//Ro4DF+A
-         o1bwYhTVN/t/2rAOBzqQlUjFxyfAQP8mHy36MlmJQU5Cra5ZISRV7QHRznuLxjp9+v9Y
-         8GVw==
-X-Gm-Message-State: AHQUAubJnW4Xvg42HRGPGALljDUDLxXXjIt4YYWTZ6ZhWaDYf7n68XZZ
-	qycenP22+AKXR9CRKXLQOxCjJBavwd0=
-X-Received: by 2002:a05:6830:13d3:: with SMTP id e19mr14380656otq.85.1551184930082;
-        Tue, 26 Feb 2019 04:42:10 -0800 (PST)
+        bh=36G0x5ewdpQ5UzdMmYyBU6XTiI4zZkw4vZ6DUVYopQY=;
+        b=LokP85v/fz6GKWbUVwmw+Bs3fMMzWILDYSak2pKAp9rUfZdy23BS/MuwZEHTjOBGuh
+         6hKMpDi20Ayf2hyRjs53Y8qHwIpKU/by57P/hrpFyM1fdMxEZ5voi9D85T+B/aBgT886
+         Ubtkn831ecFZap9UjkJ4l+2Mm3O1kkjl7H5LAZ4hqgGUvsV5kr5h/s8/5Yx3rPTZbTKo
+         cDJsXjsHR5OAey3ggzFvFRubq30xBWZvTAtXI0+pEAixiwjO6UQxQzD/GSWo85jrFIIY
+         dodUEMFtnCsD9ItSgV1uJO/GTPSUngyZ0GJh/+Z6vwcw7wLhs4RXsdY5LPo5x8zqlF5s
+         Nt3w==
+X-Gm-Message-State: AHQUAuZ+0r/nGYzvS3yB5Vf+sVqKnuST+xxwNI7scUrSYpZL+IZLckLx
+	+QYBuhQ9DZ55vZy6LAeZTnDUO1gJpPI=
+X-Received: by 2002:aca:c142:: with SMTP id r63mr2266780oif.98.1551184845358;
+        Tue, 26 Feb 2019 04:40:45 -0800 (PST)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id s126sm4075751oia.24.2019.02.26.04.42.09
+        by smtp.gmail.com with ESMTPSA id w200sm5350238oif.13.2019.02.26.04.40.44
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Feb 2019 04:42:09 -0800 (PST)
-Date: Tue, 26 Feb 2019 06:42:07 -0600
+        Tue, 26 Feb 2019 04:40:44 -0800 (PST)
+Date: Tue, 26 Feb 2019 06:40:42 -0600
 From: Madhumthia Prabakaran <madhumithabiw@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: vt6655: Fix check - Lines
- should not end with a '('
-Message-ID: <20190226124206.GB356@madhuleo>
-References: <20190225171403.393-1-madhumithabiw@gmail.com>
- <alpine.DEB.2.21.1902252154390.2481@hadrien>
+To: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Staging: vt6655: Fix check - Lines should not end with a
+ '('
+Message-ID: <20190226124040.GA356@madhuleo>
+References: <20190225180235.14346-1-madhumithabiw@gmail.com>
+ <20190226104429.GA20834@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1902252154390.2481@hadrien>
+In-Reply-To: <20190226104429.GA20834@kroah.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Mon, Feb 25, 2019 at 09:56:23PM +0100, Julia Lawall wrote:
-> 
-> 
-> On Mon, 25 Feb 2019, Madhumitha Prabakaran wrote:
-> 
+On Tue, Feb 26, 2019 at 11:44:29AM +0100, Greg KH wrote:
+> On Mon, Feb 25, 2019 at 12:02:35PM -0600, Madhumitha Prabakaran wrote:
 > > Improve readibility
-> >
+> > 
 > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 > > ---
-> > Changes in v2
-> >  -Make a commit message imperative.
-> >  -Use multiple lines to improve readibility
-> >
-> >  drivers/staging/vt6655/baseband.c | 6 ++++--
-> >  1 file changed, 4 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-> > index d8321e7fd68b..35bbff807df9 100644
-> > --- a/drivers/staging/vt6655/baseband.c
-> > +++ b/drivers/staging/vt6655/baseband.c
-> > @@ -1704,8 +1704,10 @@ static const unsigned short awcFrameTime[MAX_RATE] = {
-> >   * Return Value: FrameTime
-> >   *
-> >   */
-> > -unsigned int BBuGetFrameTime(unsigned char byPreambleType,				unsigned char byPktType,
-> > -	unsigned int cbFrameLength,							unsigned short wRate)
-> > +unsigned int BBuGetFrameTime(unsigned char byPreambleType,
-> > +	unsigned char byPktType,
-> > +	unsigned int cbFrameLength,
-> > +	unsigned short wRate)
+> >  drivers/staging/vt6655/card.c | 11 +++++------
+> >  1 file changed, 5 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+> > index 5dedc7aad384..6042f0bcd3f8 100644
+> > --- a/drivers/staging/vt6655/card.c
+> > +++ b/drivers/staging/vt6655/card.c
+> > @@ -62,12 +62,11 @@ static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
+> >  
+> >  static
+> >  void
+> > -s_vCalculateOFDMRParameter(
+> > -	unsigned char byRate,
+> > -	u8 bb_type,
+> > -	unsigned char *pbyTxRate,
+> > -	unsigned char *pbyRsvTime
+> > -);
+> > +s_vCalculateOFDMRParameter
+> > +	(unsigned char byRate,
+> > +	 u8 bb_type,
+> > +	 unsigned char *pbyTxRate,
+> > +	 unsigned char *pbyRsvTime);
 > 
-> This is just inviting another patch to line up the parameters to the right
-> of the (.  I would have expected that checkpatch would have complained
-> about this.
+> There's so much wrong with these few lines to start with, you can make
+> this look a lot better all at once.
 > 
-> >  {
-> >  	unsigned int uFrameTime;
-> >  	unsigned int uPreamble;
+> How about this change instead:
 > 
-> This looks ripe for some other changes - not using camel case and not
-> encoding types in variable names (the u).
+> static void s_vCalculateOFDMRParameter(unsigned char byRate, u8 bb_type,
+> 				       unsigned char *pbyTxRate,
+> 				       unsigned char *pbyRsvTime);
 > 
-> julia
+> Isn't that much more readable over the initial, and even your change?
 > 
-> > --
-> > 2.17.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190225171403.393-1-madhumithabiw%40gmail.com.
-> > For more options, visit https://groups.google.com/d/optout.
-> >
+> thanks,
 > 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1902252154390.2481%40hadrien.
-> For more options, visit https://groups.google.com/d/optout.
-I will fix it and change the commit message 
+> greg k-h
+I will update and send it
 
 Madhumitha
 
