@@ -1,80 +1,111 @@
 X-GM-THRID: 6662414152906047488
-X-Received: by 2002:aca:ecd7:: with SMTP id k206mr1020489oih.22.1551278655737;
-        Wed, 27 Feb 2019 06:44:15 -0800 (PST)
+X-Received: by 2002:a25:c04c:: with SMTP id c73mr9830804ybf.80.1551214175690;
+        Tue, 26 Feb 2019 12:49:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:5c05:: with SMTP id o5ls1112407otk.6.gmail; Wed, 27 Feb
- 2019 06:44:15 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibk1Mo5TAxS8qB7hXadPoQTjZjsHsKFj2AWycoErIHOHjx1JI74K1ewMjpHt8EjxLlnVO8q
-X-Received: by 2002:a9d:6c58:: with SMTP id g24mr2087995otq.10.1551278655275;
-        Wed, 27 Feb 2019 06:44:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551278655; cv=none;
+Received: by 2002:a81:1f57:: with SMTP id f84ls558549ywf.1.gmail; Tue, 26 Feb
+ 2019 12:49:34 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZLbTo0tJ4wYarX2mgwzRwo8f1IRuPBFspzfZfdBpupsFgBWegUS90fbVMKH0SyPckeMIsd
+X-Received: by 2002:a81:3cd7:: with SMTP id j206mr8522944ywa.11.1551214174732;
+        Tue, 26 Feb 2019 12:49:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551214174; cv=none;
         d=google.com; s=arc-20160816;
-        b=hJXwJHCKCwzNVQXbVxVIfEJzf/xB9jwokACaJZx2tQnUOwkStCkrN8u2B931ctwY2I
-         wphyagULyzAAMQkhtBEarOHNVRVnXsDZo2vaRwwP6y/hk22gUIC+M0d2SASruCfiV5+Y
-         M5unIoZIMr7t9O9y9w7VKYjRoHr1/P0GQ0yXNMYw80+7h5CtEDVZkEPYUwnLK6A2wjs9
-         uEijeRYsObHW40pViJdoq5ScwVS1pwvWuG0ln3Qe8cbzyaEo6Yij2pGUpV0T1I+1dGHc
-         663V2igemn1s4/kC0xJUs4XE13+AWG3NmdHI5Thtw/QFYZOxfVMjJcVtzmdtOEWr/Iji
-         pOTg==
+        b=FeaLnbMSgODtayOr+O0hNMIJx2lNb8fx6rVUf1wZrSZD7Yg3R/67JnYNcrIR0h2VoM
+         AgFfQUUtOMwlSytP4wlKbYN6LeKSntC32CcDf8PIR6YmB2Lvn9EZxiRiftRs+jfX9bIB
+         JKNc9rGNFaNuvG0uAlKCYUlsH0xbwyhPZEdOYK3jcyVdyzsHyemMBpxG9sDzcJ4cvM1E
+         p/fuGJzzdM/AJ1V7XLIeLsfcfWdGRQUzarhphGZnMQ8FOkJR8IjhcoPaMoqVnK5YCCHL
+         p9hpokYq3je9fDZD+BFU3i4ZZzJIT+0n8Wlkr+IRLREuhmlKDhk1ShSy6/9uIlw2SRtr
+         +ZlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=TrqqvZlpGXG9nfjsnvPtC0nASMwJF6gHeRT7t46eLuI=;
-        b=e3FxcuAPjXeRyg4OL5DdDUHTcIzKE2MoJSE6eky8e9PCjroqN2/e5bdr4miwIa1gFf
-         frQJKMwJTkHPuXhD75gcTkNmIs3Ynv7KXKTUE1FFYXUFyc6liXlPxJ0Dcc3F/4HvNYyu
-         ufTFqx37mPScDeH9wVQhv/7lCspgP+PeMGAnkPTKhyUXjCvDSPouEmh7YR7Ty9OcjwYd
-         g1CUSqUVP/hLHC/SCRgo4K7O/7yKi6TQ1cg5WynVawx/dyulDGrNvDYxIl38eAT3ApHE
-         fivwtBG/f2H4jpHeC5DZ2ERyTlQcQYtMb6pQtszhOQuWgoUDHkd3WZziCeBgpu6FTlQT
-         8pvA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=n3EE+3GBKfz3pjzVCe/2NDmvoMXtrL4SGE6ZG39T/ik=;
+        b=lwLWII1kW07HkmTHccJNjL71hcBX4M1XJC5AStDy+hYOtv4jtkLJnLwuWInHrZNf0A
+         jjDxyK4NSyRKlj33R+MZa9QFJWRRoegCei0nK6hN/6Vnmr3UA8gYREA4A9qLhBbybkQD
+         B/HocxKFImTFbj+0abigtwZxauMoBJhXz8qe/KOn6KeuG7X1f5dMa3VeKaHVm3Jt8bij
+         R5dVC3TYV2Ma9xT0wYMboZcMGWy+YGFbvcMDr6ofCcgc0ylaIXEwYo0J6Hihql5ulbAR
+         YGSGMHz1kaDDA5pb/AcxxbFOcfhnbJyUQ2GblB+Oojb6ozfISCi/BWlhMNoE9A49nDHn
+         ZBww==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Pm9nN1Nw;
-       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id x31si970168otb.1.2019.02.27.06.44.15
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MKx8sMfp;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id x187si557868ybc.5.2019.02.26.12.49.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Feb 2019 06:44:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 26 Feb 2019 12:49:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Pm9nN1Nw;
-       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 33CC32083D;
-	Wed, 27 Feb 2019 14:44:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551278654;
-	bh=W2buzpkZqYgpH4HUI/MVnMMz/TN9vSqkGJjNB7WcEEk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Pm9nN1NwWCu3mGQAtwIWjtzBDe8hJIhTKdX+GBjzWDqotMHAJayLpkdHZE8S7YD7H
-	 iJq+VDXm+qp4qKAVQYinS/wA4NdVQQd5gHs8SDcAR7BAGqNrduJWIUKaNFmH7zdcGa
-	 0eNC2+E3duC5m1sHoIPGyFwaPnfnP1xQqTg9Eiq0=
-Date: Wed, 27 Feb 2019 15:44:11 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2] Staging: Alignment of function declaration
-Message-ID: <20190227144411.GB21288@kroah.com>
-References: <20190226204929.3933-1-madhumithabiw@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190226204929.3933-1-madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MKx8sMfp;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x343.google.com with SMTP id 98so12399704oty.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 12:49:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=n3EE+3GBKfz3pjzVCe/2NDmvoMXtrL4SGE6ZG39T/ik=;
+        b=MKx8sMfp+L1lYDIZEfgz/BVOT0/An3+1q0Y3uGFilSnVwhpjbZpc+lk/Ur9P/pn7BO
+         vdE0Th3MM6RqEOhnpcE/AlZxZ+OuHNrK1YDJRaQwQ0pEIV/cG3tJ/lKvBvuleW/XmJXX
+         X+Lv0Lhh/JR/pzNu9xuQtHkQqcbAbfAgmfAh6MdYRGg3qXfqC6y+ZXslihFvOHUbjNLY
+         ArPnr/u9UorfGKp16lE8Cx1JF9zOObHpyBpgEQUocdxE6aErlVW7GnpCHgKyZ7Q8Yc6k
+         OFML6jqmgzwvXCg1iU02d+/b3/+ydpDLY9CHMJXPgL5wBSRDA6zRmWtsAEO4bmAHgfj/
+         8lWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=n3EE+3GBKfz3pjzVCe/2NDmvoMXtrL4SGE6ZG39T/ik=;
+        b=Jp7nSV0Teg28aiieQUHHW+FuVaIqTN8XMzGsyHvEmE/CD7viX4RgOIc+3eLqqJCb+l
+         bpi16bocTtdEq4h/60PcqCwE6ok5XKjYxubCR71uAYdwJoqQFghc1JetZ0W0YZmVL+81
+         /wMQQs/I1jP8PX6V4du7HdDMgTF/ovwgbpfD156/nxili3wv8M5n7ANNl/DVTSuksL9i
+         +3J2IthQDDhROjcBFdJelcQZ+yZhY4ED1Vjpwkg78t1IkF0raaPczkgDYnrOT+KZaRLO
+         iu2Bt79J5Is5yGUqJWYan5ShOg2I8pnd3xJPjn3bOMWruVDYA/HPfVvsxlsS1HKkpDhr
+         Pv7A==
+X-Gm-Message-State: AHQUAuaXz4WoXw8lxJLbWxTiZ7jxx4stTD/pTgBs9faCel1U87sIY1s1
+	zksJlYuF2eTVxtxbgodBmOQ=
+X-Received: by 2002:a9d:6748:: with SMTP id w8mr17064281otm.252.1551214174065;
+        Tue, 26 Feb 2019 12:49:34 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id g128sm5733771oif.56.2019.02.26.12.49.33
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Feb 2019 12:49:33 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH v2] Staging: Alignment of function declaration
+Date: Tue, 26 Feb 2019 14:49:29 -0600
+Message-Id: <20190226204929.3933-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Tue, Feb 26, 2019 at 02:49:29PM -0600, Madhumitha Prabakaran wrote:
-> Align function arguments and function return type to improve
-> readability.
-> 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
-> Changes in v2
-> - Modified subject line and commit log
+Align function arguments and function return type to improve
+readability.
 
-Same here, you need the driver name in the subject.
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+Changes in v2
+- Modified subject line and commit log
+---
+ drivers/staging/vt6655/card.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index 6f197dcc3b8f..8d0182f5725c 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -499,8 +499,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv)
+ 	return bResult;
+ }
+ 
+-void
+-CARDvSafeResetTx(struct vnt_private *priv)
++void CARDvSafeResetTx(struct vnt_private *priv)
+ {
+ 	unsigned int uu;
+ 	struct vnt_tx_desc *pCurrTD;
+-- 
+2.17.1
 
-greg k-h
 
