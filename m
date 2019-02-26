@@ -1,102 +1,113 @@
 X-GM-THRID: 6661088091510407168
-X-Received: by 2002:a62:ae16:: with SMTP id q22mr8238570pff.147.1551177959374;
-        Tue, 26 Feb 2019 02:45:59 -0800 (PST)
+X-Received: by 2002:a02:3f1d:: with SMTP id d29mr9331453jaa.4.1551141195052;
+        Mon, 25 Feb 2019 16:33:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:2c81:: with SMTP id s123ls3297460pgs.6.gmail; Tue, 26
- Feb 2019 02:45:58 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibgt5h+ReYy1ZmO1sSSuQelmZ0p9q1I3XayMkMCz0nqrw6BuiLA7dNYb08bQvcrztY/4XLO
-X-Received: by 2002:a62:148e:: with SMTP id 136mr8116850pfu.70.1551177958610;
-        Tue, 26 Feb 2019 02:45:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551177958; cv=none;
+Received: by 2002:a24:7d8e:: with SMTP id b136ls366562itc.5.canary-gmail; Mon,
+ 25 Feb 2019 16:33:14 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZLwFjIXa1VVvNZXZspKrkOFxTjmonrI9ecQl5uVs/UOb6V7tA7k040w0OILGMIRy+YtU5q
+X-Received: by 2002:a24:9fc4:: with SMTP id c187mr932581ite.23.1551141194367;
+        Mon, 25 Feb 2019 16:33:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551141194; cv=none;
         d=google.com; s=arc-20160816;
-        b=GH+1AnFgD674KIENDjeUESO9RVI5hxswFV3qeTd8uncquGgkFeWeLRM9s6pVUvbF4Z
-         0WOyYDkEWSzhMEP/TX63l2X3FxTHB2UnowkqNLYy8/KyAMccGvneIm9II+JRpxSsTejR
-         IB7pnOD2OTEmMmgrs77/g9FSCs/eHO6jGOVw8SOd8MX98xwBa87Bjudenwn4U94ehJUR
-         yQX8SKHXU5mvxEKdCSaWJDBLrdahwBMT/kV1arqaYGn+BTEuL1oaIgr5aA9SmOuymXkb
-         spnCOb89lUstOLFRcq7RZ0AaqDohTxT83TMrt51IFBm8dyWc09yR3jyAClJFOSDQBZLz
-         CwpA==
+        b=ZN6cK5hmIatdG8pk5vffgr7ulEMIbPtkrZe04NF2J3tdBS8R7/uBfFypVmHo8ks1kF
+         FTsyuhmrOn0aq+ltUDMClxMLLlnc4TyB4bdYjRdLowsWCdEOAnPKWSI2pyQaLcbxWb4x
+         7+0zMMq3hAThC6RFLI1ckx3sRkOljqZC0ujzXskKG8o3TF/wep9rGIyfpUqLW8T8R31S
+         TIKDS8R0UtWeC6C4kSaQcCoP/YU1rdsrRLTa7i8itZXkYwxxNhDyoJEiTIhIk3Te7PAq
+         +RWv1MKjdBpOdOFT1u/k6oFtDGKryEoZEeXwjOFcspsqtc2MbiDULboVp3AM2aD259ZE
+         D4mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=lVi31G9nxVAkQNbYkKlfrTjncH+p9YhcRd5/HPNp1c8=;
-        b=kdzXJqf46pNb2S7kcpqf4OfHhY3ClkcTRsrrVBuNufDF1Fzj/0fAy9dpqS0s5VTimb
-         7SbM6LpOA5NqixTo0Nwq+smu6uE+t8OoFaNUKQF+3XFYp7dlMTvW+UcLxJqrkMUr7kW3
-         QRpL1bYvSMrFgmieEP+Bn9T20HSKKcjLInBDmE8Ruhdyk2Etmo9QJctSTfjhjJ36ZW4Z
-         zUmjc5jK10B4+4IpfZWI1WkQZq6wWK3yUcfw00QfJJXv9/kmA4SdYRGu16je/dYqi8HB
-         RLTGKsp25vo8RQJuaqSilRIkR6tKDfzXBlOImw6ZqQQZadcPqsceM3me8qEwdPZHTDcR
-         QJYQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=6suAVZkVE7dqew+0tFdefovdH6dDgJo79Rl04LxPzQc=;
+        b=cR+zr8hnAMBCwlO2WFZqSXqqRKaYb/7NGK/xIMf3XydoPJR8UaLT7OuH5wkvGsRdq9
+         VPM26x+JK6FLjrL9RLQy4MXP10sHMFxonQECrFWeQC/IS2dvnmobW1RhELyjwzRMg0H2
+         f1q5l2lJdaBc+5iRHDBD41Cud/lMPGtx7duoLd/pYOkPSZnlo65aSgMZWwXj1orsVdI/
+         pCJ965u6S3XXr7wShotH/YpuLvfC7fF3IbetDFe/whDSE9kHlSxl61yvOIB9Hq0/z2Km
+         eZuCsdxI8rs+LMoBKYbAQRzlrJm96Qr8R3migXgdt5OqPpd2spwLsjk9XXTe0BdhC96N
+         P2xQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=rCjLn7Ez;
-       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id q140si618866pgq.2.2019.02.26.02.45.58
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KiylYIhr;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com. [2607:f8b0:4864:20::62c])
+        by gmr-mx.google.com with ESMTPS id 184si591742iou.3.2019.02.25.16.33.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Feb 2019 02:45:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 25 Feb 2019 16:33:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) client-ip=2607:f8b0:4864:20::62c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=rCjLn7Ez;
-       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id DB0FB2173C;
-	Tue, 26 Feb 2019 10:45:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551177958;
-	bh=T75Mq7eVGBtNsQ2JkG/8vGyxPTW1xlVlnjkpJNe3vPQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rCjLn7EzWAzaqlWEoqvUoF4VQNPPftwcOVssmvEKD2v3Bn7PxOrqifzhJmObSPc/p
-	 cQn2L7lLNEbOXmRYo2kFp4aVu9H2PSopbQ2P3ITT4jzpLNGXzDFf9Umfm6Qjt+9nng
-	 7KEA95pIioeF8x0zlWy1JcnJ9ZvTU/mf+z226Yf0=
-Date: Tue, 26 Feb 2019 11:45:55 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KiylYIhr;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x62c.google.com with SMTP id bj4so5293255plb.7
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 16:33:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=6suAVZkVE7dqew+0tFdefovdH6dDgJo79Rl04LxPzQc=;
+        b=KiylYIhriNWlWfuZMEfbeHjdAFD+cKWO5Nwhyf6GGY8veAjzUv1/zc39b9bLGIAQQB
+         3wEIZtp1muI+KNKDnBfYQieo1AfeXiQSbamH4EyMTUnBlZo8VI12PNsB31pjg/rp23sL
+         Uszx0Uawmmhei8e4jr6/mh0I/BHWCG42Q771WXoZ+bebvnvflC2lZn4t3pVruK/8jNdD
+         8yj/elOhiyK9lVNgWYsqUGUBuWQiFq9bxH0OrdBLM58ALcCEVApccJKLn0pyrqMmpdCm
+         ewgPePud6mgFL/uAmi7kscuptINBD8m7cYpQAR63T5Ih/sQGFY9D2EIVBHDwoF9OGklI
+         1wjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=6suAVZkVE7dqew+0tFdefovdH6dDgJo79Rl04LxPzQc=;
+        b=Z0JDYbJkE9fTeSlq5AV+ufzDVoY2NHTfhVN2fEF0hNX0S2muj6YdIl0olFrdjHSj66
+         Lts9A4LTc4ta1CL57CdgyVhxydfB63KQCdjCT66PMmfy+p3DzM2EYjCqWS4RJa2Nc9RY
+         twSIG9fxPzGEcwIOOG02pbaE8t/JJTFBnabLSNatwmdqri/c3UOWxnYDvSMkPk2T8Be3
+         wa67TVIbiGqW6HX50Ix/f5VUhQFRDuvK7XhU70GXbsEV9RpLOuIeBvfulijSzUHKOmtu
+         nDET346Ev3WLMu0V/HsLHT6ckXxs9PbqHoUyvRplF/GcKHfHfOjgmFdK5Y4Qtse8aARn
+         kPsQ==
+X-Gm-Message-State: AHQUAuZXSdY1ueksgVbx1wVHKd6dF3XiyzsAjP5/ssUZ/HbnLSMEqRg8
+	PAoSVSA6qV4MHhKyEA9GrhGoHOEDr9s=
+X-Received: by 2002:a17:902:284b:: with SMTP id e69mr22604466plb.11.1551141193823;
+        Mon, 25 Feb 2019 16:33:13 -0800 (PST)
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from localhost.localdomain ([183.83.84.116])
+        by smtp.googlemail.com with ESMTPSA id i14sm14415486pgt.82.2019.02.25.16.33.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Feb 2019 16:33:13 -0800 (PST)
+From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
 	Mark Greer <mgreer@animalcreek.com>,
 	Johan Hovold <johan@kernel.org>,
 	Alex Elder clear <elder@kernel.org>
-Subject: Re: [PATCH v3 3/4] Staging: greybus: Use a blank line after
- declarations
-Message-ID: <20190226104555.GB20834@kroah.com>
-References: <20190225153546.10484-1-bhanusreemahesh@gmail.com>
- <20190225153546.10484-4-bhanusreemahesh@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190225153546.10484-4-bhanusreemahesh@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Subject: [PATCH v4 4/4] Staging: greybus: Do not use multiple blank lines
+Date: Tue, 26 Feb 2019 06:02:47 +0530
+Message-Id: <20190226003247.15574-5-bhanusreemahesh@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190226003247.15574-1-bhanusreemahesh@gmail.com>
+References: <20190226003247.15574-1-bhanusreemahesh@gmail.com>
 
-On Mon, Feb 25, 2019 at 09:05:45PM +0530, Bhanusree Pola wrote:
-> Clean checkpatch.pl issue:
-> CHECK: Please use a blank line after function/struct/union/enum declarations
-> Insert blank line after declarations in bundle.h and control.h files.
-> 
-> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-> ---
->  drivers/staging/greybus/bundle.h  | 1 +
->  drivers/staging/greybus/control.h | 1 +
->  2 files changed, 2 insertions(+)
-> 
-> diff --git a/drivers/staging/greybus/bundle.h b/drivers/staging/greybus/bundle.h
-> index 8734d2055657..4aaf7a0880fd 100644
-> --- a/drivers/staging/greybus/bundle.h
-> +++ b/drivers/staging/greybus/bundle.h
-> @@ -31,6 +31,7 @@ struct gb_bundle {
->  
->  	struct list_head	links;	/* interface->bundles */
->  };
-> +
->  #define to_gb_bundle(d) container_of(d, struct gb_bundle, dev)
+Remove unnecessary blank line
+issue found with checkpatch.pl:
+CHECK: Please don't use multiple blank lines
 
-This is one place where the coding "guidelines" don't make sense.  We do
-a lot of #define with container_of right after a structure to make it
-obvious that this is to be used with that structure.  It's a common
-pattern in the kernel, so this is fine as-is.
+Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+---
+ drivers/staging/greybus/control.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/greybus/control.c b/drivers/staging/greybus/control.c
+index ffa41d31896d..a9e8b6036cac 100644
+--- a/drivers/staging/greybus/control.c
++++ b/drivers/staging/greybus/control.c
+@@ -15,7 +15,6 @@
+ #define GB_CONTROL_VERSION_MAJOR	0
+ #define GB_CONTROL_VERSION_MINOR	1
+ 
+-
+ static int gb_control_get_version(struct gb_control *control)
+ {
+ 	struct gb_interface *intf = control->connection->intf;
+-- 
+2.17.1
 
-greg k-h
 
