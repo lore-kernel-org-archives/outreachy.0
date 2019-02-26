@@ -1,96 +1,110 @@
 X-GM-THRID: 6661965770833002496
-X-Received: by 2002:a9d:6e97:: with SMTP id a23mr2037598otr.54.1551278744900;
-        Wed, 27 Feb 2019 06:45:44 -0800 (PST)
+X-Received: by 2002:a1c:10c:: with SMTP id 12mr409359wmb.8.1551203800865;
+        Tue, 26 Feb 2019 09:56:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:c189:: with SMTP id r131ls652135oif.6.gmail; Wed, 27 Feb
- 2019 06:45:44 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZ3NDszsmMXPD8l20MuOjeZrNe5pDfiwrZneX8xIlycQG+xUIJTernJdRAzhN3S5o0orLwt
-X-Received: by 2002:aca:d6c7:: with SMTP id n190mr963028oig.41.1551278744386;
-        Wed, 27 Feb 2019 06:45:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551278744; cv=none;
+Received: by 2002:adf:b458:: with SMTP id v24ls1778768wrd.2.gmail; Tue, 26 Feb
+ 2019 09:56:40 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY+qw4E95ihMYLoeHhbbPkEiZPy685U1aT8Dg5V4MyKKlmybvvL9fSuKpQ3/JLgoVGGqwNa
+X-Received: by 2002:adf:ee01:: with SMTP id y1mr1431865wrn.10.1551203799982;
+        Tue, 26 Feb 2019 09:56:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551203799; cv=none;
         d=google.com; s=arc-20160816;
-        b=oxfUX0pWV0mVSYnHTwR/O+Y70BUpnaMIx1+LtKiTiSK2Zpri32ycYG3U62+cXsm+3d
-         Shll80UaFMedfJl9eVzEzuaM7iC8d0fDWGtPcEgIKXXSAmsGU85zrIzVIOZXkMoPpDUj
-         gWVxZ0yCQEhI5tCkBJEPbB1XYxi1jXgzJM86x1RIjyErLHFsvgahn+FFZnl51qs8UJXB
-         qj4BiorY0LV1QI161OGWbT9vh8y5GZsN0nn1JdMeDTV5/6YYx20XaAFXZd0HvqBNN0m2
-         23Mlk2LYIBRV0MzWPiKGi7NLJiF3vEoXGNrnLexG90myaf0R0X8IoHxW8xiJ/7141dE1
-         eiuA==
+        b=AnQtMESOuqEK64b2V/Dqdkq+cAxM5HkJn0L4Od7FPXAcgqHOxFF0JO24r6eVErhBfW
+         zaiLnDK4qVRBqMgxzmzZMDxuZEVr0tFPmhfd1DqLkXhENsA4ndrDJUhIQyeqKSI60xZA
+         jD70pkjW/rYJQvBzfVFp6g+YOc8mak31GNLcarRSe0ILbIAHiaGK7/tpRfp6fa7XFsuh
+         s8CVdyOtNuuXWMF7adWOMQhh+y03jhHuHWE+xztDEaFoK4WDy2OZAmS+pb7UqxZ4LIlO
+         QhI8ZZUF1DTfo+UF2ypejZW5HJ2vlHdt8e1k5i8zJ18Dveke1Q/2mprY683b2ITtZRGm
+         lnIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=uBnVE9HBOs/F4kArd1HuJy51uaMUsp4ogO7CopjcqiM=;
-        b=f8zP5ja1dw7vyl8gT297n04O/wezpPCR4aV3lRk0gmAa4SyXwkH8+aelEpDNfpIzgp
-         d6r8ClezHE41cFstqZxWC6xJDiFJsRx1Hg7BU93CL5o0eN5BMte7hnpmTblqjm8QcEb1
-         g3zMsToFgynEQc8PAf2oPi3tykJPOCv8JZE8s8nfwqu59LC4sWjXGkKk98A0vZQ15LzO
-         enVA3y/8AavvYTUsEd9udk4xgIyXyq37dfqv7hQRWjOpxGK/IA8F3XfD2sh84BjlXCGf
-         2x2Uu/+3ZLoq18Fa7Tx1AukqZPqIcecRLmmMvg9ZoQXzOAlUWR8OeuqRAiu14nHiP6rY
-         jgnA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=rpnFV6WtF50WUa189D3g1BarN2CC+XWEEMk2OyvPvqk=;
+        b=hnoV7mAKe1/RkjPMOqgsJL7wOTwyteCyFNAz1K1V7m0Y/igvbwcyMWSliyBEhlKXhI
+         HWkbHtGhrm4x/2zoEjfpjrcALQ6lHKyUPYkxcls+gN7w11FhrYNJ2y3jEgQ4OKQ/oGMW
+         6R6mMEWdwJvLzoCiDbmZT2MAk1aJM27g20VIdqI0ljg1YFf0E3gstR4vg2LsM/7K0w5x
+         10Bu/o5XMduk+0lEr895PIo0Uw3YA5Y6CTR9b7o9+8uu40NO6WAI4uRgqywhMMg3VKL6
+         wFCl4HOSAZChRgyN7HXKBAeKfziKaP2za4pmXub2xlKFIJNzJZNjyRhGDBT1qwcLdkic
+         FxbQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=idTrAaWh;
-       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id x31si970361otb.1.2019.02.27.06.45.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m5Pb99HX;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id t25si2759wmh.2.2019.02.26.09.56.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Feb 2019 06:45:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 26 Feb 2019 09:56:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=idTrAaWh;
-       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 2C2E42083D;
-	Wed, 27 Feb 2019 14:45:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551278743;
-	bh=wrBKr9tChXLnakx3di1ULB8CCpZjyELbmbguMtT9ln0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=idTrAaWhAmCXs1qzELHiyo9Lv2PyxoZ5UoUEcRNy3tozaSZhodMtYJl1DUiYmD4iq
-	 o31bp38KOdWAl6ZdRmyS5Y3yaS4TMu94BJG+N1PJOR0m7E22qrLWm5NIxUFJY0dbYJ
-	 nLnYusSRYArKA574gMx0fnRn6pZ7j8M+e4m9PaN8=
-Date: Wed, 27 Feb 2019 15:45:41 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jules Irenge <jbi.octave@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m5Pb99HX;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x444.google.com with SMTP id l5so14970966wrw.6
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 09:56:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=rpnFV6WtF50WUa189D3g1BarN2CC+XWEEMk2OyvPvqk=;
+        b=m5Pb99HXVbnOLCLyDgaOdkgxtgNK3Cj9GU0iY/M6niZO7oTr8t9mpBX7K3lFlKr4yZ
+         HIa2pxU71K8fzmsFWlf1Yd6wVP73Tq9QSnIjWKnbuqbpuD3MzQs/oDOTTOGZFyhJibqu
+         qhvFn31QhDLr2+I6iSN8d68Uo4nwhp9yjHhLFZHUTjxQ64Qoyy3K4GZCCb49/9G26gPC
+         4+jkOpZnxVeXHGOr/kSH8NfnBTEuGkuo+PZlYI28HZiZ51iGUl+1ASXgxafmEa7qrCK9
+         6v5GpY4zwJtmLfMFmdmdDzbfjpH+GyuV4xQ6vV3UtmoNThmPO2PGgcS7pXa5tFrAD9AY
+         9EhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=rpnFV6WtF50WUa189D3g1BarN2CC+XWEEMk2OyvPvqk=;
+        b=L8WcamCKT6zuEqTNr2JIlsadvkbhO0jpm7umxU90vJZF5Ywx7ap70aXRTx5LKXhBt6
+         KUit+xWIIDqMorpoiVBxvtxv/+/f8G1i8M8e4oFnfF8zxpwLzDUzn1R/3ru4ohQVhG+X
+         zuK8RVIkV/fC18rICN25pmySLbo8DVuvFvZsg7Mv6em7N4noLu2+QVMO8DeVE88NJ3xP
+         i2bEiH48eJAtxEV1Lwomc7wZpYxXy594tywqKZNrlrhwgdXAA2mFE3SZA7WvAakRoEG2
+         DZFkdkIyULSLp+MUG9cLDWRy6rJ1h0SopQ5NBpILquGYb8n5VUlJv3V+VhMr1/seqbfs
+         +Pbg==
+X-Gm-Message-State: AHQUAub0T16d4DwxxZMHJHLOtJDeruSOfRQg/ZBtdIwWmE4xiEj5rQtp
+	seQ8LPF65PwbFUP3aITZmRFyRNM=
+X-Received: by 2002:a05:6000:1142:: with SMTP id d2mr17043255wrx.43.1551203799357;
+        Tue, 26 Feb 2019 09:56:39 -0800 (PST)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
+        by smtp.gmail.com with ESMTPSA id t69sm155143wmt.16.2019.02.26.09.56.38
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Feb 2019 09:56:38 -0800 (PST)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v3] staging: mt7621-eth: add SPDX GPL-2.0 license
- identifier
-Message-ID: <20190227144541.GC21288@kroah.com>
-References: <20190226175631.17161-1-jbi.octave@gmail.com>
+Subject: [PATCH v3] staging: mt7621-eth: add SPDX GPL-2.0 license identifier
+Date: Tue, 26 Feb 2019 17:56:31 +0000
+Message-Id: <20190226175631.17161-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190226175631.17161-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Content-Transfer-Encoding: 8bit
 
-On Tue, Feb 26, 2019 at 05:56:31PM +0000, Jules Irenge wrote:
-> Add SPDX GPL-2.0 license to fix missing SPDX warning
->  reported by checkpatch.pl.
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  Changes since v3:
->  * Made commit message clearer
->  * Added punctuation
-> 
->  drivers/staging/mt7621-eth/ethtool.h | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/mt7621-eth/ethtool.h b/drivers/staging/mt7621-eth/ethtool.h
-> index 40b4cf011660..d0e97ae0d82e 100644
-> --- a/drivers/staging/mt7621-eth/ethtool.h
-> +++ b/drivers/staging/mt7621-eth/ethtool.h
-> @@ -1,3 +1,4 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
->  /*   This program is free software; you can redistribute it and/or modify
->   *   it under the terms of the GNU General Public License as published by
->   *   the Free Software Foundation; version 2 of the License
+Add SPDX GPL-2.0 license to fix missing SPDX warning
+ reported by checkpatch.pl.
 
-This should be a patch series, first one does this, the second one
-removes the license boiler plate.
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ Changes since v3:
+ * Made commit message clearer
+ * Added punctuation
 
-thanks,
+ drivers/staging/mt7621-eth/ethtool.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-greg k-h
+diff --git a/drivers/staging/mt7621-eth/ethtool.h b/drivers/staging/mt7621-eth/ethtool.h
+index 40b4cf011660..d0e97ae0d82e 100644
+--- a/drivers/staging/mt7621-eth/ethtool.h
++++ b/drivers/staging/mt7621-eth/ethtool.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*   This program is free software; you can redistribute it and/or modify
+  *   it under the terms of the GNU General Public License as published by
+  *   the Free Software Foundation; version 2 of the License
+-- 
+2.20.1
+
 
