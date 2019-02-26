@@ -1,148 +1,154 @@
-X-GM-THRID: 6950254518663643136
-X-Received: by 2002:a25:bad0:: with SMTP id a16mr36707808ybk.441.1618232233571;
-        Mon, 12 Apr 2021 05:57:13 -0700 (PDT)
+X-GM-THRID: 6661416853760376832
+X-Received: by 2002:aca:de02:: with SMTP id v2mr13988972oig.0.1551184933139;
+        Tue, 26 Feb 2019 04:42:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:1342:: with SMTP id 63ls7399041ybt.8.gmail; Mon, 12 Apr
- 2021 05:57:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzro8IpewQNnL31+0HT+KVbcXCU90psmIj6t+X8Bi7kIEFrXLvkw3frdll3xm5vx/FS0qGV
-X-Received: by 2002:a25:ade7:: with SMTP id d39mr30811711ybe.31.1618232232620;
-        Mon, 12 Apr 2021 05:57:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618232232; cv=none;
+Received: by 2002:a9d:5d11:: with SMTP id b17ls4734121oti.8.gmail; Tue, 26 Feb
+ 2019 04:42:10 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbHxqRPYzABJ4teOAT4adbilTSqkkGsA8KpIfREpzhnmM9V7aeSSfCzm/mZ69ipSwDj/h3i
+X-Received: by 2002:a05:6830:1092:: with SMTP id y18mr14279223oto.42.1551184930412;
+        Tue, 26 Feb 2019 04:42:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551184930; cv=none;
         d=google.com; s=arc-20160816;
-        b=DHTS43CBKCUltnzIVQfXxpbWqTGE/iVNv2sx7LRCGLMzUvummuuIaYhtzf7OgJdlSt
-         CsiY6cTUIyHkrTTGYu6D62Y6UaYXs9jtnCcL6CEqZ8cb87RlAHwdyem6nIUgijK2KfLQ
-         zCMBSHvBLy09iVlje5pM/9RAxQt8/eKKFAGpLmGROUUHz/A3amsTLvvgHFnkOgrUW1RC
-         IE6qO6qKweN5564bhMN9Zq0m4EjiKqv+miQqFvUPRt63hOPV/9c4l7AlS0tlANGFr9De
-         fB4V1fMbh3LarzD/QpnNfAENuBhfn2dg8KiIoY4IUSjo/iRuNyaA18eKaNJMZfHBH17t
-         HThA==
+        b=DjmK37oOq4CwjF5pb+ZAnKuU45pI7jhaI1CBiSN+ZOOrmvD/9lhtEaIqUQ+z4+GWJU
+         +8/PApO4R/uBHbHE4j7CH5GXHd1+NpY1lnTqcvaQP91fH9oQxNPKmUY/gbfL7wL1dAya
+         SH+mlBn+pTg0U9YODZ0rX3yRcfenGuLKDlo4L5MnxCxKFTlk3dckluv4FobaHWgt/pwW
+         w71CLRb98V/sQWFoa5BCOj8kciZ/UqwmMqhWF+MWGALzYtOSYcsHCZZVYNKvPOwdajwz
+         QjI/JnNI8CIZeYeWZJw9l4GETb3dC4Kq8BbkgT4A9x+hZyr/7QCSONX0MFST+pB67kjx
+         WdUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=x7tmmZHrCVQE02Px5t5c/UG1yYUMoOazF7ZKUu9ZpuU=;
-        b=H3+1I9rAwlw6gqXQhJ3klHaHuFCtkxcopos80t5uFMur9J4UwBqqew8IXwI/Mvob6k
-         nrQbc19nipLQVZ9Ccg0NMf8wPBkF0qcHQpi2FTTqABb86kGYILlhY4su3Klvj3uTjel0
-         n82J8OH9KYjQhMfUbBYwfXQ0kLjmElAnZUmtj0vJnV6iyvqnXRrI6SYpLJxt8Zx7TW0T
-         nlK2MWl3C+opHZK171vCusbo6AKlBcdcFzlr6nyjA18VJeSAHgJaXvkgQvtlueKvgbJb
-         N9Y7ccbAG1nejyO9I0vCYCI1Icmkr4YmVoXr0ee8lc19rphn0Jh3jvMIYq5tqlys+H9e
-         PCvA==
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=vkAWaTt/p+DED8u9MaqOR6EdbFqAeM+yRuNztHNwxso=;
+        b=N7kjvtzdXmF4S5R4rkvhrglW9z7L+tR7pCeBapDz0OEjUa/usRSv78EHtoFMYYergV
+         59LKJG5DvhsjrcoCyo4yxGi4t/FvuGIQNFEaUpIgbrUcDBNfBZEPsBRbdxaVB/MbfIXy
+         TLp49VroHOJ4fsgoxnBSNIujAEEcBZcRl/Vp6lr4PV8SM3hHvgWtGgCkFeCAxAOsn+jw
+         t0bg3e88aIwe6A4KA1RO40VR8O7EjfMCYpAAmdJ1l15KQLfKmd039MPmFsgnDahES3yF
+         Q5d4WlQ2mmURQJqo6cUz3Iuq4FnAFp2I+XZ9+Q9ekAs6F6D0LJtgGTghqcjxAHjGNRUc
+         tzbQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bG0J3T9h;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I+FYTu6y;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x72f.google.com (mail-qk1-x72f.google.com. [2607:f8b0:4864:20::72f])
-        by gmr-mx.google.com with ESMTPS id q185si654851ybc.1.2021.04.12.05.57.12
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com. [2607:f8b0:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id v129si607501oib.0.2019.02.26.04.42.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 05:57:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) client-ip=2607:f8b0:4864:20::72f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 26 Feb 2019 04:42:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) client-ip=2607:f8b0:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bG0J3T9h;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I+FYTu6y;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x72f.google.com with SMTP id x11so13072378qkp.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:57:12 -0700 (PDT)
+Received: by mail-ot1-x342.google.com with SMTP id n71so10910348ota.10
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 04:42:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
+        h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=x7tmmZHrCVQE02Px5t5c/UG1yYUMoOazF7ZKUu9ZpuU=;
-        b=bG0J3T9h0gD7RFwfNzKPHOpVtBGHDC9e4xfbvB/QjXJZsoROBH322oIhWOFt5ydN0P
-         1anCaW9cFkl95K0dNa+EbRMXAoPlXdrJx/e+se+pX2glviRXmq3OhrFFPY51YvC3ajn+
-         83hUxE2xXl9vp1qfzUjp8D0oX2JYcx+LW89E6owH8J/SATk7ABbi7x0yPotpnPoYT1tp
-         Qx/gClqyN/42t0LjlexgVS5y1uBh4ECm545BJhY0d/VMPNO4GjoPgZ8Cl41UFTzUeyPg
-         9RKFFB17yrw2osPKw+yR5EFHYdcJjyI1SYsI62WeNfQtNeTavOvnyTfcLSc1/76Lt8xs
-         zhPQ==
+        bh=vkAWaTt/p+DED8u9MaqOR6EdbFqAeM+yRuNztHNwxso=;
+        b=I+FYTu6yu+wu7sWBoJRY/dmLm0r0bPpYBoWyfkGoOKPZh+SUeXyakVhtSwmMQ2HqS7
+         ZbwUUApgoDlGyCT5hQytC4gBL70cBJcr+BbT2ReS510V0kvCvSFhKJ1ElTRcTwaIP/ws
+         +Cd8w11D5m/+CZ0s8qYvsMopO7/JdxUT/SQj53ykRO4de3jBdaDuIzmE7xPPVvRpTFO5
+         nU0obPAFhaFmEGl6ZMonX5a6uO7ffK8hU9mZT456MlsKlkFOi7jRlFE/bQYNKQblh9+W
+         HA1lwQ/ysjHy0pewwaEt5pb9Cffbkxp+5IeA6S0UZZ/Z3joazjH0KrMFEiIUL3go1hqk
+         Ykuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+        h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=x7tmmZHrCVQE02Px5t5c/UG1yYUMoOazF7ZKUu9ZpuU=;
-        b=o0SoZXbgh1PLBW4yL1aQUlP4aDNmo3+xbKjrbRXNCQaFEF34NxevvcAPbV9zvzyVAx
-         VDawtlLsWLRAS7lTx7QJ3UmopVV5GYM+JMT/zSCseeZInrFoRFwOSdzhGkYWVP81+Cx7
-         9dBoPpY3zkiAS8tqt4dw2pY7veil7UlWhjAcXEsY0j0Ped28XuGiS1GIocYaXgnwqH9Y
-         BB4ybHN5qlgXMij4hbtoWx38xvEM+RpqAcSmqLs/xcMueoaI9I+jQ5hN1pLgF6hsbBGu
-         j/4nGMyYPWrfmyQCKxjE6ezwHdnHcELTdO1tcDktv2UG1NUm5oxWkdKG33HfXHKjWlsf
-         3NEg==
-X-Gm-Message-State: AOAM531gqh3mvH5qUN/FseU+z0viSARnebX6OJcK4M+JF70rG/uSa1K3
-	F19VcVkhH+gG7ilplqyL975IIAhn65+v2fLq
-X-Received: by 2002:a05:620a:1592:: with SMTP id d18mr4863797qkk.329.1618232232193;
-        Mon, 12 Apr 2021 05:57:12 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([2001:1284:f016:a037:476a:dfcd:f18f:9ad5])
-        by smtp.gmail.com with ESMTPSA id t198sm3824160qke.44.2021.04.12.05.57.11
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Mon, 12 Apr 2021 05:57:11 -0700 (PDT)
-Date: Mon, 12 Apr 2021 09:57:09 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 1/4 v2] staging: media: omap4iss: Replace
- macro function by static inline function in file iss.c
-Message-ID: <e302566a3d9e5180ab27eb2c2824fd1b678a6d99.1618231618.git.alinesantanacordeiro@gmail.com>
-References: <cover.1618231618.git.alinesantanacordeiro@gmail.com>
+        bh=vkAWaTt/p+DED8u9MaqOR6EdbFqAeM+yRuNztHNwxso=;
+        b=c0N918MTSkv6KYCzszFTTe2SN6ahoxwrRjZEXCPAxTsTnI3GCt4taVw3qbeOm6SSxT
+         Z/+rDvQoz5Nt1hLg2/OmXXLipe5cWjGHfPxuWllF1y7jS0r0F7VtlcuFVxbOA+X5trPV
+         VVtMbnT3Hu1gKjrntvbtSrqsVl4hDwITdXWxvwGR4E4HHCx5QgH32YYepYqWftsMZEUG
+         OdcMNb5A3iQF24Y6/eziYGq/TP5Vm1yjX8U+m96eKeboYP6eADYeXPBk6Qh//Ro4DF+A
+         o1bwYhTVN/t/2rAOBzqQlUjFxyfAQP8mHy36MlmJQU5Cra5ZISRV7QHRznuLxjp9+v9Y
+         8GVw==
+X-Gm-Message-State: AHQUAubJnW4Xvg42HRGPGALljDUDLxXXjIt4YYWTZ6ZhWaDYf7n68XZZ
+	qycenP22+AKXR9CRKXLQOxCjJBavwd0=
+X-Received: by 2002:a05:6830:13d3:: with SMTP id e19mr14380656otq.85.1551184930082;
+        Tue, 26 Feb 2019 04:42:10 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id s126sm4075751oia.24.2019.02.26.04.42.09
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Feb 2019 04:42:09 -0800 (PST)
+Date: Tue, 26 Feb 2019 06:42:07 -0600
+From: Madhumthia Prabakaran <madhumithabiw@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: vt6655: Fix check - Lines
+ should not end with a '('
+Message-ID: <20190226124206.GB356@madhuleo>
+References: <20190225171403.393-1-madhumithabiw@gmail.com>
+ <alpine.DEB.2.21.1902252154390.2481@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1618231618.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <alpine.DEB.2.21.1902252154390.2481@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Replace macro function by static inline function.
-Issue suggested by Julia.
+On Mon, Feb 25, 2019 at 09:56:23PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Mon, 25 Feb 2019, Madhumitha Prabakaran wrote:
+> 
+> > Improve readibility
+> >
+> > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > ---
+> > Changes in v2
+> >  -Make a commit message imperative.
+> >  -Use multiple lines to improve readibility
+> >
+> >  drivers/staging/vt6655/baseband.c | 6 ++++--
+> >  1 file changed, 4 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+> > index d8321e7fd68b..35bbff807df9 100644
+> > --- a/drivers/staging/vt6655/baseband.c
+> > +++ b/drivers/staging/vt6655/baseband.c
+> > @@ -1704,8 +1704,10 @@ static const unsigned short awcFrameTime[MAX_RATE] = {
+> >   * Return Value: FrameTime
+> >   *
+> >   */
+> > -unsigned int BBuGetFrameTime(unsigned char byPreambleType,				unsigned char byPktType,
+> > -	unsigned int cbFrameLength,							unsigned short wRate)
+> > +unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+> > +	unsigned char byPktType,
+> > +	unsigned int cbFrameLength,
+> > +	unsigned short wRate)
+> 
+> This is just inviting another patch to line up the parameters to the right
+> of the (.  I would have expected that checkpatch would have complained
+> about this.
+> 
+> >  {
+> >  	unsigned int uFrameTime;
+> >  	unsigned int uPreamble;
+> 
+> This looks ripe for some other changes - not using camel case and not
+> encoding types in variable names (the u).
+> 
+> julia
+> 
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190225171403.393-1-madhumithabiw%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1902252154390.2481%40hadrien.
+> For more options, visit https://groups.google.com/d/optout.
+I will fix it and change the commit message 
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
-
-Changes since v1:
- - Insert file path in commit message
-
- drivers/staging/media/omap4iss/iss.c | 24 +++++++++++++-----------
- 1 file changed, 13 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-index c89f268a..3bbc39e 100644
---- a/drivers/staging/media/omap4iss/iss.c
-+++ b/drivers/staging/media/omap4iss/iss.c
-@@ -27,22 +27,24 @@
- #include "iss.h"
- #include "iss_regs.h"
- 
--#define ISS_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###ISS " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_##name))
-+static inline iss_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###ISS " #name "=0x%08x\n",
-+		iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_##name));
-+}
- 
- static void iss_print_status(struct iss_device *iss)
- {
- 	dev_dbg(iss->dev, "-------------ISS HL Register dump-------------\n");
- 
--	ISS_PRINT_REGISTER(iss, HL_REVISION);
--	ISS_PRINT_REGISTER(iss, HL_SYSCONFIG);
--	ISS_PRINT_REGISTER(iss, HL_IRQSTATUS(5));
--	ISS_PRINT_REGISTER(iss, HL_IRQENABLE_SET(5));
--	ISS_PRINT_REGISTER(iss, HL_IRQENABLE_CLR(5));
--	ISS_PRINT_REGISTER(iss, CTRL);
--	ISS_PRINT_REGISTER(iss, CLKCTRL);
--	ISS_PRINT_REGISTER(iss, CLKSTAT);
-+	iss_print_register(iss, HL_REVISION);
-+	iss_print_register(iss, HL_SYSCONFIG);
-+	iss_print_register(iss, HL_IRQSTATUS(5));
-+	iss_print_register(iss, HL_IRQENABLE_SET(5));
-+	iss_print_register(iss, HL_IRQENABLE_CLR(5));
-+	iss_print_register(iss, CTRL);
-+	iss_print_register(iss, CLKCTRL);
-+	iss_print_register(iss, CLKSTAT);
- 
- 	dev_dbg(iss->dev, "-----------------------------------------------\n");
- }
--- 
-2.7.4
-
+Madhumitha
 
