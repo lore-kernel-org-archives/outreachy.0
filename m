@@ -1,112 +1,99 @@
-X-GM-THRID: 6753034664415330304
-X-Received: by 2002:a0d:c246:: with SMTP id e67mr14798458ywd.393.1572313407510;
-        Mon, 28 Oct 2019 18:43:27 -0700 (PDT)
+X-GM-THRID: 6661982581807906816
+X-Received: by 2002:a5b:cc8:: with SMTP id e8mr4806320ybr.0.1551177751359;
+        Tue, 26 Feb 2019 02:42:31 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:6ed6:: with SMTP id j205ls2155451ywc.13.gmail; Mon, 28
- Oct 2019 18:43:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxpMvVLFLM7FQrLOO4DcrlWDR3qfKMisyVP+zhl6FrT4geVmETxKXomifq8MZG3msSbq5kT
-X-Received: by 2002:a81:9952:: with SMTP id q79mr15078357ywg.89.1572313405536;
-        Mon, 28 Oct 2019 18:43:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572313405; cv=none;
+Received: by 2002:a25:c042:: with SMTP id c63ls5617071ybf.4.gmail; Tue, 26 Feb
+ 2019 02:42:30 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaRWvCvo7ATajj/gou5sGEpviI206VehRum84FWVn6kCQIipliOyCShVcm54EG/Tv2KVlPC
+X-Received: by 2002:a5b:d04:: with SMTP id y4mr8315545ybp.13.1551177750465;
+        Tue, 26 Feb 2019 02:42:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551177750; cv=none;
         d=google.com; s=arc-20160816;
-        b=PHvyM8HCj1XbGgIwnays0nsG3YStZQM0jqsLw/xMvm0WSY6xFjOdiSNUAlh1FI61Ec
-         N4gffL8BkIJq0JYWMI62DkrioF+mSxFKjFryfwd9w963jBbTyEw3T4l21DtwmrmTLFhM
-         e+4atWyzt6mCi9xXk2GA0xgfHAsMoXUxaSeTKtEFPv9bItdteCIubh3Q0FmsHBqvsqK0
-         bXTo8v0v+M9hlxF7FGm6QB8sGO4c3uDjLslFLcf3Tr5hrUR+UQcTOyUN8SeCFgJzBmgl
-         gwo73EOAUc2LJwVZcPtMV0V09rLAwE4sfNyEmVgCmRfacv9b4w5K1ClzQMmjFdN8rbPk
-         TI3w==
+        b=kBBI6CSoiHWpTo0rO6rrMtxa+rKCE85Fg81xGs8+V68BEPdtTOdhXJVFbL8xaevVqd
+         +kTivtIeznbLLahZYMbD50QUuf3yOsXEhRxdxNIg8hfldueoxwrL3yUC/flAhvE4EFPB
+         dElEK33u85c/34sG415mlByLHrzNkgGaQUwtNAkeOjeIAxBdSBbdfGjkWki1sHa964Jx
+         8PClxGNQh1X4Oud/nNR3fKZqt/jQgnF+S+k5AX6QobrsA5qo/uS8CSzP7Dz5j7ttCiJk
+         Udl1hJma7+SUbsJD1+iJg7jJ9rJkgFyEEaoxjdfTV+QZEHKRt9UCjXR3XQad6He+7jz1
+         iWpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=BHHKDkrvC4BZQPC9acPCLWkbuvwPNUCU1LdyX5p7xGc=;
-        b=f3Tv9aTYSLLTACxIiNPIOvLwT9izckD8aTmEIXJ3VboHbZoMi4mCuQPMRCsbCiljCX
-         owyu6zzcAetLWFudA/wuOi23J5AO/H7UJwkICbOm8uhaDeih6l+Lv89Yv1uJI3ZLZhXI
-         zF9k9Xfnvp5WvBA8BFPM14Lqhbwwt5qNDmihB8XSUSSyPmD3dfXuvhLUMKDbz6YBnyot
-         2GxB0LX/KghYPDxxT8Hy0ZSKm2GCEJpf5p+RbAXJenL4mcd8hztcb21P7QWdrpYYIVVu
-         cem05ki3Swu79I8jH3xy91Eu5qfxXi55HPssBqjnSE/MYfL5UbIbE1FbMIxCgNxUvqxB
-         AoDA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=xW54W95wK7c05fNWxRA51YNECRmslmcCul/JrWeLg7w=;
+        b=PyvnXRm2y10zXj7+NMx39IJJQxGb1J/KoyAVcKGnnnZMsOXLYDtUh/gWRKRx3YPckd
+         hSkGQfsdlqu+g84MTNNHLxn5mFnX855XRD33gLEUremkt479bj+iEjI80S11AyBL6u4r
+         vkuSxktjvN+NUSwjW3ZXMYNNaHeOGSitDJ4TecJScp0TBN0G+u9hX5uOyL3z761fHEyE
+         Ewz22Ees2J+NxOpkeo3tPf5aHpjvFUUAk9eFDUQpMwPgeRQo5vuhvRwuzmGw4xxo/zpz
+         zlvDHgXUObh96ti3FI7DuCDHjYafvcJhoOUTMxGBoj4lUwhqkm6szb0+UxWxnIhrk1x/
+         w6tA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V+NRsZnS;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::733 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x733.google.com (mail-qk1-x733.google.com. [2607:f8b0:4864:20::733])
-        by gmr-mx.google.com with ESMTPS id c5si12298ywn.5.2019.10.28.18.43.25
+       dkim=pass header.i=@kernel.org header.s=default header.b=RwInbBNR;
+       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id j16si396057ywa.2.2019.02.26.02.42.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2019 18:43:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::733 as permitted sender) client-ip=2607:f8b0:4864:20::733;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 26 Feb 2019 02:42:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V+NRsZnS;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::733 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x733.google.com with SMTP id g21so10574108qkm.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 28 Oct 2019 18:43:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=BHHKDkrvC4BZQPC9acPCLWkbuvwPNUCU1LdyX5p7xGc=;
-        b=V+NRsZnSrhbWtb1cKoFmRuRrzMGQfakcuaG4zAflDwBbHRd4mSt9Q68RMf88gioHTa
-         mGQDxZwh6Fj8rCU8574qQaJq7lyHkhF6I9SEuHPCWzruYkKLQTok9lLCZBlIGw+Wva02
-         /ayVhQoRzaga00rwqgXxDIR+2JFqsv2maLTpgMqgzKEAg0AgTgiifbsk25Khjr0rMkuK
-         hP9cpxIvMo4LvEyV+JvhDF0H+jAOkjrVqZSyE6B/I8LxzaUQnQ5tZ4Od1S+NPIulwHXA
-         5qAYWoEsa+bhcTIKQU0LTHZ/iZk3O7LrRBtv1jJTXXnr8PV9oN3QGDxkgl3SroHKlnOr
-         qvvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=BHHKDkrvC4BZQPC9acPCLWkbuvwPNUCU1LdyX5p7xGc=;
-        b=LVhkmRfeyWuLaUw+4tcMw1P4q3qkkjOEJy77CDyt6TQJSTERAFbw4rBBZw5MKpuK9G
-         BWjXXKU2yJSpprMmZrxiKQK4BFD/ARRYPE5W9o62zZN8iJbXkPDDD0M1guk/AV5wD4gR
-         2r2+9ms50pUYLk+52benYh+sl0ujr+ZPPQIdaCIYGwG5kj6O3vWBRuIhNhzR0fCPdHfP
-         Wno17xdZnG3ALv2WIV5x7ZUVoekzOuY4fs8eqN7cUfMjAhjrkvJaCCRVwh3TI9dB+bxt
-         CpnNSL2LZsTVPB4SOx2eVqB65kwCmta+aykMm7YLQkVN6RWFFIdcN/0cypBx+DMrHmI8
-         tclw==
-X-Gm-Message-State: APjAAAVpc6p3D7uhp1+e86DF20KQPe7svJ4OBcEMQqgU5GSVYI0fGqqH
-	/JFx3RrivqNaHcpWnor9yiiruR3pFM/MQg==
-X-Received: by 2002:a37:dc45:: with SMTP id v66mr17521790qki.345.1572313404932;
-        Mon, 28 Oct 2019 18:43:24 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain ([2804:14c:483:ade:87ad:69fb:5b32:cf88])
-        by smtp.gmail.com with ESMTPSA id 197sm6698394qkh.80.2019.10.28.18.43.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2019 18:43:24 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org,
-	kim.jamie.bradley@gmail.com,
-	nishkadg.linux@gmail.com,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH 0/5] staging: rts5208: Eliminate the use of CamelCase
-Date: Mon, 28 Oct 2019 22:43:11 -0300
-Message-Id: <20191029014316.6452-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=RwInbBNR;
+       spf=pass (google.com: domain of srs0=gmmv=rb=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=GmMv=RB=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id D93582173C;
+	Tue, 26 Feb 2019 10:42:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551177749;
+	bh=dspkEIJ+V940JZvOpk/qOu9dT6fvqZRWkJaoDSUcJt8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RwInbBNRMEUYABlLeKtOnc2W4JlI39vvN6RuqYVfo/Q1Ajd1STVp7U3ioYdHlprnR
+	 xMU9t4jPIJjT4NKGZQ0IV6h6Svcdicatc+r//C2xsjjqpCggimKvhqsLf9obUXUiUh
+	 Y6O952CdOULf6hEvrSsH8yRKSH8mAayAvdUj8Mj8=
+Date: Tue, 26 Feb 2019 11:42:26 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Cc: outreachy-kernel@googlegroups.com,
+	Larry Finger <Larry.Finger@lwfinger.net>
+Subject: Re: [PATCH] Staging: rtlwifi: rtl8822be: Use __func__ instead of
+ func name
+Message-ID: <20190226104226.GA20764@kroah.com>
+References: <20190226002243.15322-1-bhanusreemahesh@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190226002243.15322-1-bhanusreemahesh@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Cleans up checks of "Avoid CamelCase" in tree rts5208
+On Tue, Feb 26, 2019 at 05:52:43AM +0530, Bhanusree Pola wrote:
+> Fix checkpatch warning:
+> WARNING: Prefer using '"%s...", __func__' to using 'rtl8822be_set_fw_rsvdpagepkt', this function's name, in a string
+> 
+> Use __func__ instead of using complete function name.
+> Avoid line over 80 characters
+> 
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+>  drivers/staging/rtlwifi/rtl8822be/fw.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtlwifi/rtl8822be/fw.c b/drivers/staging/rtlwifi/rtl8822be/fw.c
+> index f061dd1382aa..43a56962e37a 100644
+> --- a/drivers/staging/rtlwifi/rtl8822be/fw.c
+> +++ b/drivers/staging/rtlwifi/rtl8822be/fw.c
+> @@ -736,10 +736,10 @@ void rtl8822be_set_fw_rsvdpagepkt(struct ieee80211_hw *hw, bool b_dl_finished)
+>  	totalpacketlen = TOTAL_RESERVED_PKT_LEN;
+>  
+>  	RT_PRINT_DATA(rtlpriv, COMP_CMD, DBG_LOUD,
+> -		      "rtl8822be_set_fw_rsvdpagepkt(): HW_VAR_SET_TX_CMD: ALL\n",
+> +		      ("%s: HW_VAR_SET_TX_CMD: ALL\n", __func__),
 
+You did not even compile your change :(
 
-Gabriela Bittencourt (5):
-  staging: rts5208: Eliminate the use of Camel Case in file ms.c
-  staging: rts5208: Eliminate the use of Camel Case in file ms.h
-  staging: rts5208: Eliminate the use of Camel Case in file xd.c
-  staging: rts5208: Eliminate the use of Camel Case in file xd.h
-  staging: rts5208: Eliminate the use of Camel Case in file sd.h
+This is not correct C, please fix up and always test your patches before
+sending them out.
 
- drivers/staging/rts5208/ms.c | 86 ++++++++++++++++++------------------
- drivers/staging/rts5208/ms.h | 70 ++++++++++++++---------------
- drivers/staging/rts5208/sd.h |  2 +-
- drivers/staging/rts5208/xd.c |  8 ++--
- drivers/staging/rts5208/xd.h |  6 +--
- 5 files changed, 86 insertions(+), 86 deletions(-)
+thanks,
 
--- 
-2.20.1
-
+greg k-h
 
