@@ -1,109 +1,106 @@
-X-GM-THRID: 6753896393761357824
-X-Received: by 2002:ac8:4a92:: with SMTP id l18mr4545206qtq.256.1572514044953;
-        Thu, 31 Oct 2019 02:27:24 -0700 (PDT)
+X-GM-THRID: 6662033797389746176
+X-Received: by 2002:ab0:641a:: with SMTP id x26mr6423617uao.12.1551200612671;
+        Tue, 26 Feb 2019 09:03:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:2276:: with SMTP id o51ls558753qtc.12.gmail; Thu, 31 Oct
- 2019 02:27:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyrxZs2l/seuY7lb9Yq5e3J9HSbiBFdEuSbmG8jKoWfiBxh5cuxpLa0lhM4wgGJEkl1XDgl
-X-Received: by 2002:ac8:67ca:: with SMTP id r10mr4742703qtp.124.1572514043077;
-        Thu, 31 Oct 2019 02:27:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572514043; cv=none;
+Received: by 2002:a67:7d03:: with SMTP id y3ls4035479vsc.3.gmail; Tue, 26 Feb
+ 2019 09:03:31 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYuSSDv1JtwF4ymKtlPzgH65vtpkmAN3EYSaifjWkSTRbRBJjDRbVmt2BklpDe8P31zR9sw
+X-Received: by 2002:a67:ed05:: with SMTP id l5mr11505179vsp.23.1551200611774;
+        Tue, 26 Feb 2019 09:03:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551200611; cv=none;
         d=google.com; s=arc-20160816;
-        b=NLYYkb9pYtnXQhj9CxaOi+Guj9SaOfxv97L2ySmNhArn+N92ljQXMcenyD7STuiIg0
-         Ez1vBwua9Ej4GzvTbRsqraRmwCKpibkseUBq2OYPwZHu151HEW92T1fxc1ZueMBaIj6e
-         my5W29jvcIz0rAm/Pa+jDlTxnit51ukD4Yceu2PTr45k6abYD3GDHIrsLcvz7MZZxp2F
-         vH3RhVug5Gj2h93N8chD5n710J87Xu6daern5MsWtkL9bFNrDaQl6L77k03ld6duBupR
-         lznQ+FM6WmEW5UcCNXHBoq9AWcUC9F04mbkbkrzPEro8hSeAp9h3IXLaHK+gLUorBAlZ
-         kX5Q==
+        b=lpUEd/lBuDxYA91ub4pAUrHrOxUIC7Yq3FSPwrlGtNenL0U8G4zPQxWv5+hvxgi1gk
+         f2LIjflW2fniZB7ugVbMpeCoyfVGJAxYUNcz0lP70eIxZ7TuoSfglPINrh5aIiH9gy4l
+         cQiA3+KQJaJiCcpoPTQox2pnZL0aIzwNUssRo2NjsRICiHK4aEE2yd2tS01eNNZaEeWk
+         qmeTjvVJC7aXEN02doOzbOGRAmkZrJAi5BdyEKOnir+6vEvYfXGXs7zvHtpIrnAeht1n
+         FX0/G2dYN6OlYKKrWTXBGhqcnqeWklrKnfV3KHghn+ueOTCkZ1/DORtNte1eYT5l4DFp
+         KO/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6ai1NjXdRze9tPXyPjzCWyWOAYSITBxzOlXdR2l9swo=;
-        b=YHKjsGuX0le0XIZSn4Zpv9+E0kYhxUIlatFBVwMiOFQ7o8BrE+xJ2k8WHOoO4zbADc
-         F9BwKXz5H6jsALXsyI2RI1VB41OKmECK7jaE4Vo7c5XrbVaRhcLK7vvoC5bLNn9NT4j9
-         8pb2Q1hnoTWLcqUw0xsb0g2A40lyTVG0KpmES++ZVd+ggC9rm6fIcTP7KXZa3ZvEb2GT
-         armxRRdhLhUd8PucKBgbW9qBrr7gjIOx90xBvVC06LUuN/I9npPxYrzDiD5XduFUJP9v
-         p3oJsDqd9TZIMTNXtl8ifdoQSvW8bdLNhjY7J5rgih4nzacWouQCJYT7Suh8PMfEDTK5
-         Hk/g==
+        bh=RPp5L8mtc5csOa07RKobOinSSP0cxmzrOMuOgRKR94c=;
+        b=MhMhhAPA3M2UT4rwpW9p/wt1I5OJyfHl/Y7JPPQLamhE9G+R+V4P9CVhQAv31iWVe2
+         EmWzZOQWLs8FYbTks+Tyo3rTB8uPawhgd6QgCSvuDxn18JKyEhLQhhrmc53GNwEnuSio
+         bRn6Hy1OwTRa12QsLe04gSV2I0OLkFc+7lM/NpClzooOZh/RA3wqWZaasxaQtOu4g/gL
+         QnCXP7gd0bwAfu/h0niiD01KeePIoEnvP/0WF0QPNQXgEBgHer/9mEJqKWQjRKVWR5RW
+         WX/qpOs8Hh6CvlmzXcIC4JLKAeoxqS/YGGg9FVyfr6e3Odut2JGe/jbAaAyjOOENK0f0
+         ju3A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eH+UXna9;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eZ2pXP7R;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com. [2607:f8b0:4864:20::52e])
-        by gmr-mx.google.com with ESMTPS id x135si150282qka.3.2019.10.31.02.27.23
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x230.google.com (mail-oi1-x230.google.com. [2607:f8b0:4864:20::230])
+        by gmr-mx.google.com with ESMTPS id q85si338012vke.5.2019.02.26.09.03.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 31 Oct 2019 02:27:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) client-ip=2607:f8b0:4864:20::52e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 26 Feb 2019 09:03:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) client-ip=2607:f8b0:4864:20::230;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eH+UXna9;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eZ2pXP7R;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52e.google.com with SMTP id u23so3687402pgo.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 02:27:23 -0700 (PDT)
+Received: by mail-oi1-x230.google.com with SMTP id q81so10921686oic.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 09:03:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=6ai1NjXdRze9tPXyPjzCWyWOAYSITBxzOlXdR2l9swo=;
-        b=eH+UXna9yiW2uy3G6jkKLk5R46VYy/8eouF7sjBxiaybhqZ1h0UjDuDxlqjjQCy8Vm
-         cy5yVSvgKca+hDlPQNCCwBBV6pbnXHLaKYEkzw1E2pOZF+5IXNXnUkqJ+Eg0pG987J1o
-         pg9jW4+VodlT4RNQobPcgA2J8ph2dpgH3A++TFJGOAKahd2/khW/DA2rwQFD+07VfjcW
-         L8y+08hCO+g2TJcwARuLs+N7RTTS1ZTt9oVFzhxfl2vd0PG/aZ1FHoAdYhqHVjVcdiuc
-         uAcdzgrWGsY8NA+9ETCgwTG0Quvasd1MGRCqoxQqdv2tsQUSuhuJwFzAiQtmvB8zMzQg
-         Y6zg==
+        bh=RPp5L8mtc5csOa07RKobOinSSP0cxmzrOMuOgRKR94c=;
+        b=eZ2pXP7RUCXUspS6c79jmYCuXT/574IJowm4Q2rcQFWvijgGVpOPL8oG/kwHcWJj3o
+         pzqJmpG7sY1AZMbphR3liCqrVIohhtg8IO2hjkA/uWIjNQlA6a2yOzHDd8GmeK1Go5Vh
+         AvigNjoqRH19AtCKlkHesgwRI+DsTpwO15TIt+9qaRwVk8zwA9NxzDD5R76EsQOp7CtL
+         7Lu6DNhzqX2ppuVvZRiBvCsSCdNWBQ6AlM0EgMp2sUx78d/XNI3lBHxmoXeMQGO+b+YM
+         0LjK5gD7aY11j/URME51W2nOQrkc3QHwBtHnNOv8VHTWtvYu771oQ8HbiHF3vDDCohut
+         nGYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=6ai1NjXdRze9tPXyPjzCWyWOAYSITBxzOlXdR2l9swo=;
-        b=T0WCX4/xRsrK1WWr3z9SVY5pDSI+krV+F4T5HFGmLwZfcUrARpztL42A0O3p9h8qL7
-         WBXLDFRohqJeYyQg3/MX8QyhxAEG+UWpDk+9qwpkVikDPlJNFCn8nj05PXiqD5kG0U2O
-         90n3vjJzPONGN/wVf+WR8AtvkmABOq+dUFpYpbJdH2TJbigwCm8DJTnYbV3TvCOCYw2s
-         Hn7ABoVerDlihJ5ZcYAiXE6YNWTloafEyKeW4A5X8cuyYFH0wRoYHhE17yUHOZL+LaUC
-         sa8p9RVC3KmX9uLpO30B0EjHNjVYbstNA2pAEJGJxZ1gPQy8yQc38CKlR6jDCbJO6wxV
-         nfIw==
-X-Gm-Message-State: APjAAAUABeWDmpxDCJJfE5bVm9qieEiPDLuUhEazW7+vUgaalVkJ8UT6
-	EpKuSMLiVvrOPKMWoaG3vLM=
-X-Received: by 2002:a65:4c41:: with SMTP id l1mr5394841pgr.163.1572514042125;
-        Thu, 31 Oct 2019 02:27:22 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id b5sm2904520pfp.149.2019.10.31.02.27.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Oct 2019 02:27:21 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: eric@anholt.net,
-	wahrenst@gmx.net,
+        bh=RPp5L8mtc5csOa07RKobOinSSP0cxmzrOMuOgRKR94c=;
+        b=SVibNFy/Gtp/vQDUs9MxGW2w4e1xiHocU8RBSzQaDDdwlQumeZPN0QudY6K3AC/ibX
+         UqGykvreWLGc0z8pXA8057rygqtgLA3fF8/YiSqLZ4l23NP41qFcGuu8lNM4OLjbLGjP
+         LSVg5V0TJE22No7TXNy7akA6uK4T8OhiLpsVPn71T4JKCiHrMD4xHW0Ocr1gI6pgEYKD
+         BVyTR8mDum3q74yaj2SFHIfVZjLPAy6hkSyYZcZcc5fnjmJIQI99IW/YnTfZCCPor+cP
+         TcDIuFAjIGtJ4gYJktqBg240qFmKkMmUXFgi9dDSNTQV7vHEb5S9zqwjVE0DKprLRlZg
+         zsDA==
+X-Gm-Message-State: AHQUAua2KlLCW34gWSiovt/qmoIuYG0JsTByvWAORhwhhaqtRXutS1KV
+	2f3tlaThe+9QGi3KYwZj5DA=
+X-Received: by 2002:aca:851:: with SMTP id 78mr3136758oii.60.1551200611250;
+        Tue, 26 Feb 2019 09:03:31 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id s21sm6061623oie.52.2019.02.26.09.03.30
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Feb 2019 09:03:30 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
 	gregkh@linuxfoundation.org,
-	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH 0/2] staging: vc04_services: Remove typedefs
-Date: Thu, 31 Oct 2019 02:27:11 -0700
-Message-Id: <cover.1572513863.git.jamal.k.shareef@gmail.com>
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: vt6655: Alignment should match open parenthesis
+Date: Tue, 26 Feb 2019 11:03:26 -0600
+Message-Id: <20190226170326.18500-1-madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
-This patch removes typedefs from vc04_services files.
+Fix the check to improve readibility
+CHECK: Alignment should match open parenthesis
 
-Jamal Shareef (2):
-  staging: vc04_services: Remove typedefs in vchi
-  staging: vc04_services: Remove vchiq_arm typedefs
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/vt6655/device_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- .../bcm2835-audio/bcm2835-vchiq.c             |   6 +-
- .../vc04_services/bcm2835-audio/bcm2835.h     |   2 +-
- .../vc04_services/bcm2835-camera/mmal-vchiq.c |   6 +-
- .../vc04_services/interface/vchi/vchi.h       |  79 ++++----
- .../interface/vchi/vchi_common.h              |  25 +--
- .../interface/vchiq_arm/vchiq_2835_arm.c      |  10 +-
- .../interface/vchiq_arm/vchiq_arm.c           | 168 ++++++++--------
- .../interface/vchiq_arm/vchiq_arm.h           |  32 +--
- .../interface/vchiq_arm/vchiq_core.c          | 116 +++++------
- .../interface/vchiq_arm/vchiq_core.h          |  90 +++++----
- .../interface/vchiq_arm/vchiq_debugfs.c       |  14 +-
- .../interface/vchiq_arm/vchiq_debugfs.h       |   4 +-
- .../interface/vchiq_arm/vchiq_if.h            |  92 +++++----
- .../interface/vchiq_arm/vchiq_ioctl.h         |   4 +-
- .../interface/vchiq_arm/vchiq_shim.c          | 182 +++++++++---------
- 15 files changed, 410 insertions(+), 420 deletions(-)
-
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index c9097e7367d8..d7227e804f31 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -805,7 +805,7 @@ static bool device_alloc_rx_buf(struct vnt_private *priv,
+ }
+ 
+ static void device_free_rx_buf(struct vnt_private *priv,
+-				struct vnt_rx_desc *rd)
++			       struct vnt_rx_desc *rd)
+ {
+ 	struct vnt_rd_info *rd_info = rd->rd_info;
+ 
 -- 
 2.17.1
 
