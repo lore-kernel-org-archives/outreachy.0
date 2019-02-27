@@ -1,118 +1,89 @@
 X-GM-THRID: 6662431164424257536
-X-Received: by 2002:a24:1303:: with SMTP id 3mr91897itz.40.1551285813578;
-        Wed, 27 Feb 2019 08:43:33 -0800 (PST)
+X-Received: by 2002:a63:2b8a:: with SMTP id r132mr1115143pgr.62.1551278919587;
+        Wed, 27 Feb 2019 06:48:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:4203:: with SMTP id i3ls523309itb.1.canary-gmail; Wed,
- 27 Feb 2019 08:43:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzXugLXh+H4t2mt/iw9CPk1X5qXPZ0xr6Pt2J7ibK2euuYRq+QwIQb2NkzW1XukQ4xb0+V3
-X-Received: by 2002:a24:7647:: with SMTP id z68mr76571itb.27.1551285812827;
-        Wed, 27 Feb 2019 08:43:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551285812; cv=none;
+Received: by 2002:a62:59d7:: with SMTP id k84ls568949pfj.6.gmail; Wed, 27 Feb
+ 2019 06:48:38 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZRLxGpCr2WyKYGGF6M34zYwWOZlziG/MD27k5c0POYy4BGlroGElqq1daIj0E+SRHmLRXB
+X-Received: by 2002:a62:475b:: with SMTP id u88mr766705pfa.18.1551278918783;
+        Wed, 27 Feb 2019 06:48:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551278918; cv=none;
         d=google.com; s=arc-20160816;
-        b=DqyA8zyA2S75h433btP8gADC011Uwh7FtXLKedx4ELpX0PrbX2R6TBZ0QR4QOemPtA
-         Vxjm10/+VVnDdUS/fXLz1I0Y4gsVWlZivJZGOgBjAPumIGWf5Ym+HRp7SoiGTTYFxLc2
-         pa+ufSLjUxIRYed2euJiVB7T8eFn9b4dWuX7SdbtCsQYcI4ju/ZLNEhpcveXbc/1eGSu
-         rJVILgbTLZ7/nf7BY60blPx0T71qUBWT7n4JSYneqyIVkoaLofxPxLsuPu76EznkL/mk
-         5C/4ho7odV2Q1k7R7gIwHp6VHHizY5ZxIgjbjtKC74qdxDFhFAHFoYPdaOkClBDg7XGA
-         JMUA==
+        b=u8J3/JihWbNnNHPpcvD6uamRdPW9LjUkbeO1VjdZVztj9XYKHgCmqVv7xyTSlpajPy
+         bdDIYKkreeQwg0OTa3ez89Ace4DpOajH/MENkwN9yastdiiDPkLKWpIeB3luBING7vtf
+         iHtISdbZ62d345saJJWFxUrAXtF5nHrDFVegF4JnHzw5JfNRR33lg9c4DmWo2nQ/ePN8
+         gYLcUMtI7s0jvQOSEY3BJJ+R8wTxMg8n9SQTt3+qB72/VLtApjCVw1Vf9Ghb7QlnvMZh
+         clmSCW7O3mhaeKJEeiGsl1Xi/cJld3jJtL/T4UgIaHQm9Dmcp53rgot20CozYLtYxD+t
+         JTcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=TWcmSBmP15HSDMRidkHSQm4hcPM7sAyjXJJSYi6BTzk=;
-        b=l/C9vlcOjdzOwX2jmncKFcqjbSZJu0zuD/EK1NLTP6QkpQzjeAWxs4IF+A4q0D+Y6u
-         bNCQ4q/0B4LFaLToXwydQgyJZvDlPj3t1rZiqgbjV1fC6Nq+tjixFxgZNkjedYE6fJEv
-         6q/1uPRYwl7xntnU8VNWAbs9NEAQx13h58GCGXCoJj3MyCeQbefRF08b4Vk4wKHnEQoJ
-         JRnvzkXkiFvI8/wdvnZzLU3ov+btOsMUanqpFUp8iaddrK0N4RMVDRIwS57HWV3Ri98d
-         3xFl+PpmRzjqi2ga3pjt8MCxa0aC8EeRgVwXDj2RN6zT57YRcz989kBbbI6mgWALrKk2
-         O5wg==
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=F4qqMYxqg1i4VEkIgot0hkUnmorPr4d4jK/JxrZTaDU=;
+        b=Sx855iziKScpyf6hs0zRT+h2m1S3Qe6giSEU1tqeR4BWSZLlBm79ADH3vswIL9f/W/
+         owx4dnAP+a3YvDRW9xCfTzP9b/qC4DMm3DUXYFcgUbVuK9y+20JRjbvj0pbj6zPBxm2z
+         lg+c0QBUeLHNw6vsE4SjV8DjfP38zQ/0kbpnwgMgYxLSCJ3cgeAtY7TleuUCth8DqYpf
+         4UQERuPKVcZ/b1bxYtQMLf+wnUhTMEnQyvEYYs/nbA2C/yBL3VodhLFqJhOR7g6t2i0P
+         7VjGoO3fIHr7JXrZIcpqkhcZH4w8/bAG1rS2eAVbSnawI7NsI7JdYed7Xc/KeXzjV66s
+         JkaQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NaUm7auq;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x242.google.com (mail-oi1-x242.google.com. [2607:f8b0:4864:20::242])
-        by gmr-mx.google.com with ESMTPS id 184si828553iou.3.2019.02.27.08.43.32
+       dkim=pass header.i=@kernel.org header.s=default header.b=fLATprav;
+       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id f79si1052730pff.4.2019.02.27.06.48.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Feb 2019 08:43:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) client-ip=2607:f8b0:4864:20::242;
+        Wed, 27 Feb 2019 06:48:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NaUm7auq;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x242.google.com with SMTP id g16so13982535oib.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Feb 2019 08:43:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=TWcmSBmP15HSDMRidkHSQm4hcPM7sAyjXJJSYi6BTzk=;
-        b=NaUm7auqeLVW6pX7WweikDc0pwITSjLU0wMVC2OEKO7DHnG1Vnd85KftiUg0466piN
-         qlnZGPFNHnopSrUw2bfi3S6Oul+t/imw4XlZYpH7jxkV3M96MlKKKHYaSgpvReUZ7wOx
-         FvjFzfBH6i5N8fHV/aMK0Y373vHyhhDI6rGZ9NxXPpCZRi/NM8pVxgknHG0RoR4ximei
-         YIVB3478lzlxzeWwo2GBk+qCVxs53r6O9CKr9KINcPv7HqYuALc9PNiAyaqrRF8CWH/P
-         QxiCY2GfN0Xc5eAebwsY/GhjGiuIocEnQMFdzskNj4CBl1NQHcK68LgzeCrvlp58ZOiZ
-         OSNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=TWcmSBmP15HSDMRidkHSQm4hcPM7sAyjXJJSYi6BTzk=;
-        b=OSROBAg/O6j2yAraBzttgBPjOXYfiOFUQIoE8PxP0RCUp6wuCjQow7PsiabsLZcS5m
-         cPtDXTilyzRlFmoU716gL00v07fXqEUiEHjziTToG6jSlaD+as3Cx/Ysa6wsHajeyQhd
-         x23h6rz+z3ZU+vU+Du03VAguIGhhTNl2Q9MpgVBb1ij6hMZyQE0K3+4NFYj3ak9EBfmc
-         r/I1tf9qGAIVgqYRVrEjwHPxezaKL9e7LMV2pBC6TgJcpwGSQZ7GvDY/QnN4hBOOvxnI
-         ZWz3+wOjY8XktmLqqoDCDkTYz7lEKAf1p34vZ1uu48RM4+7EWF8slwDGuENV/XTPNC9L
-         l22A==
-X-Gm-Message-State: AHQUAuaD2DfPuHtciUupuYjJ39PMZqFG2nNqgI201NUigApH33PPI/zd
-	Ewmx2M68NGKNPIKmf9lkIiQ=
-X-Received: by 2002:aca:ecd7:: with SMTP id k206mr112656oih.67.1551285812245;
-        Wed, 27 Feb 2019 08:43:32 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id n76sm7983148ota.51.2019.02.27.08.43.31
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Feb 2019 08:43:31 -0800 (PST)
-Date: Wed, 27 Feb 2019 10:43:29 -0600
-From: Madhumthia Prabakaran <madhumithabiw@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>, forest@alittletooquiet.net,
-	outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@kernel.org header.s=default header.b=fLATprav;
+       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 132232083D;
+	Wed, 27 Feb 2019 14:48:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551278918;
+	bh=hx4vDQDtS3WtqDU9tkSTi8pPn9l/3Hvy26/dU/JAxeU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fLATpravG9DYVtXvfcVL3kV0VIt03c4UTGrYn1MYfOGyD1qyaptDN8Phtzn6XNG9I
+	 zFWIEjeu6NhQfFyttpRPoOIV7x7NICdMmNEv3jCE6qb6YjhscqAMDW67ZVHyZGeQKL
+	 PDlPMn4gpFZzfsELPszO31m3JAamnoZLSPDqkSw8=
+Date: Wed, 27 Feb 2019 15:48:36 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH v2] Staging: vt6655: Modify comment style for SPDX
  License Identifier
-Message-ID: <20190227164328.GB22354@madhuleo>
+Message-ID: <20190227144836.GA32231@kroah.com>
 References: <20190226215531.5196-1-madhumithabiw@gmail.com>
- <20190227144836.GA32231@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190227144836.GA32231@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20190226215531.5196-1-madhumithabiw@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-On Wed, Feb 27, 2019 at 03:48:36PM +0100, Greg KH wrote:
-> On Tue, Feb 26, 2019 at 03:55:31PM -0600, Madhumitha Prabakaran wrote:
-> > FIx the warning by changing comment style based on header file type as
-> > per License identifier syntax
-> > 
-> > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> > ---
-> > Changes in v2
-> > - Modified subject line and commit log
-> > 
-> >  drivers/staging/vt6655/baseband.h | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
-> > index f2b6a98de2c1..0cc2e07829c5 100644
-> > --- a/drivers/staging/vt6655/baseband.h
-> > +++ b/drivers/staging/vt6655/baseband.h
-> > @@ -1,4 +1,4 @@
-> > -* SPDX-License-Identifier: GPL-2.0+ */
-> > +/* SPDX-License-Identifier: GPL-2.0+ */
+On Tue, Feb 26, 2019 at 03:55:31PM -0600, Madhumitha Prabakaran wrote:
+> FIx the warning by changing comment style based on header file type as
+> per License identifier syntax
 > 
-> This patch does not apply to my tree :(
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> ---
+> Changes in v2
+> - Modified subject line and commit log
 > 
+>  drivers/staging/vt6655/baseband.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+> index f2b6a98de2c1..0cc2e07829c5 100644
+> --- a/drivers/staging/vt6655/baseband.h
+> +++ b/drivers/staging/vt6655/baseband.h
+> @@ -1,4 +1,4 @@
+> -* SPDX-License-Identifier: GPL-2.0+ */
+> +/* SPDX-License-Identifier: GPL-2.0+ */
 
-
-I didn't understand why it doesn't apply to your tree. 
+This patch does not apply to my tree :(
 
 
