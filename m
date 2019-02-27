@@ -1,126 +1,102 @@
-X-GM-THRID: 6467580145196597248
-X-Received: by 10.25.19.201 with SMTP id 70mr272275lft.35.1505850848932;
-        Tue, 19 Sep 2017 12:54:08 -0700 (PDT)
+X-GM-THRID: 6662431164424257536
+X-Received: by 2002:a19:6454:: with SMTP id b20mr229157lfj.1.1551296772896;
+        Wed, 27 Feb 2019 11:46:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.130.138 with SMTP id e132ls42448wmd.22.canary-gmail; Tue,
- 19 Sep 2017 12:54:08 -0700 (PDT)
-X-Received: by 10.28.134.137 with SMTP id i131mr234376wmd.29.1505850848016;
-        Tue, 19 Sep 2017 12:54:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505850848; cv=none;
+Received: by 2002:a2e:5551:: with SMTP id j78ls344837ljb.11.gmail; Wed, 27 Feb
+ 2019 11:46:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwGuxXLFYVtScnCUzNQ4ZCFpZTU5agS2uxQmWu1qBU2aymw1pW5IICZsyIyFKNvln/jHinX
+X-Received: by 2002:a2e:9d93:: with SMTP id c19mr285031ljj.25.1551296772106;
+        Wed, 27 Feb 2019 11:46:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551296772; cv=none;
         d=google.com; s=arc-20160816;
-        b=GoHURunD+x93x5OjwxRPIWme2qgziRT8j9sgysOcUq5YfdATXINsqJ2X7Jz5tKpooo
-         pXdzQasZFzoGAf/BR4KRKdLQ7wolnA7memkSxo+/I66bs70YKXZjVxhdoYNSW84C0pZd
-         aXe0DGEvvDs8OuxFBopphME2eGhAjNFHuMtt28nClAceXSpa+04VfUT1n6G0JvuANqW2
-         VJ7U8lSn/pv1XjwftRv+wgbtaIYPgvWUo2PkXRgqYlOvOWBQ+Ulelj8PURVy0GSrN/wY
-         q6tUKCmwEgBwf2BoL2Nqw7Q10pRmMmYwbn0+mKQhaUaPz8CPtyFDMf+1YLgsXnwgzTiz
-         1SeQ==
+        b=AYs4L6x50Z4rKZea9haL+FtTcd7BVGvBFOd8BhbL7qVutc7d/Ok3AdB7WkV/wi65/q
+         M5KNypn/r3Obt1wX6uR543vhpSom48CUyKoS7/8vpTpf+rmdrhLNKosds3QP/BkK5vSc
+         qriKVmp5r3CIfAnzHpdipH+Q3WrHRoQo/YYZc1ex8Osgex5zEt/LOjSnamTX7j7ZHiuY
+         KJfCUMvqByFHpKSBXy++Gwa/nN7/LO30x01Z597w6ngaoCZfGx3k6PcHm/xQRqiACorv
+         Wcrx8frHQ2WHsvmEgx1AMCdsqOq3ZR6EuL5az+d3Q7O0aMqE2Z18uMxsSYd8LAzILQcw
+         k97w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:date:from:dkim-signature:arc-authentication-results;
-        bh=FMrgP99UdNw5QKcuUva5QQzEb6RjI7f37Ei0TYezJMA=;
-        b=FmtEP+/Gk5CLtcqkSWHyR/QG+URsv3NwNoVNyqUNL61gJDauW78vbNIka4qYyx4Vvo
-         ZnA1ASGEbixlBBUHfdISS35tl2PztGA2bkXrYnjOkJghNaCLCIHE7Atn1fJWqfNebjYd
-         MTvAO7G6jGcAQL3StvT3O8E/kOqPyivTzLDGFfbzxHJ6v/ZVWTeRVpldSNDerXO8Qnn4
-         DK0hnqvGrHNScCvmQh8e81k7Un7eUVLvOu5fZCBlD+a7O6Aawrd/f1J4WFKoI40OGBST
-         nY0ktNh4AnxDPjkZKDsulGF7rlG+LJukT4hf96HfM54z8bj5c/ZJo5fnSmCBfUPfDsuw
-         WWlw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=j3igSVOGHN8eufw80z7EJ572ZfFEDIhjLe9AmZFBcB8=;
+        b=uuBjAi/oD/Gj/7DwOvWNCUAJ6EfVt3mLIOtMC6nHOdcJAsqtrzdXhYU48FMWXHDY1W
+         2dgs4EYBRagg/Hx0QhEsaD0p+6iOIsPzgxobjkZVP0m/INMTZuZ6fYUO9YKDddkxuTAa
+         mixFRuNqE9H7MAaE3C8By4SqyKDuc0gO2TDqH8ZutOrwbrE4hGpugfUY8mh4kwIYxTtV
+         3iXlhbOxbFAn/KC/xTPeP8wVDT1bqfaWNdzw9oejgQu2PPrVz1A6tRQaPsMoyMtKm7Uh
+         RhDD/fuF8wtrLJEfd5slzjEqjAl4/zEpqbzHmaa8BfVBARrg3L2JPeT4/SAgwfBHAWLy
+         qqMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZDanLndV;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wr0-x241.google.com (mail-wr0-x241.google.com. [2a00:1450:400c:c0c::241])
-        by gmr-mx.google.com with ESMTPS id l133si3755wmb.3.2017.09.19.12.54.07
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a6si487801lfl.2.2019.02.27.11.46.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Sep 2017 12:54:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) client-ip=2a00:1450:400c:c0c::241;
+        Wed, 27 Feb 2019 11:46:12 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZDanLndV;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c0c::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x241.google.com with SMTP id k20so348648wre.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Sep 2017 12:54:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FMrgP99UdNw5QKcuUva5QQzEb6RjI7f37Ei0TYezJMA=;
-        b=ZDanLndV2MDroJfzfXfBCyglmlxUSy78NTm/14NxTfRUQ9zW2bZ3x1kmQEGsn4wzr+
-         Ym32xfJxNxMz+NFwK/a0WbUAOwEecYLiWlwHxpYkqj4icY9yBdv9jyB9Qu42EKq0pvuI
-         O22z6v6W+uZSRDHZad1/SExXrx20E3tKIUEQO6yLu1pFp9DdOW5TrvUtlzurIeKGyED2
-         84gV3g5evY3AF7egZlGi23VCif34zprv/Wb23hyTVgXaTHY0bJ6rY/jBYVHbq2Cq/vvm
-         vTDFZcLuEt7J6psxjeAI74FGy+Y30YUbxujqrGPjzwfvfteKWPmSAD/njkTDJr8BbTC8
-         KfPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FMrgP99UdNw5QKcuUva5QQzEb6RjI7f37Ei0TYezJMA=;
-        b=aIJKEn/Mk8y86eutqfcRZ8NXzBQ7a3fC6wYkB4UPBHWGcTiWe7rpG+QZIIJOBHVCb9
-         Ah5WCVnOFjYHw4LZtAskPWN/axixdGk1rOS1SYgcEl6PCrSX4ZA6Fwb/Kj/ADN/bGloG
-         a9DrIuqUFKeF1Wq/4SrhH8LYW1gZOrkjEgBofIYU1QyvsdbHzeie09yVcJ+1dQ4SQBnB
-         kJGCwXdSZmLYbVXd1Pi3hq0loTGd1Nyd566RvrNCme8hoyxrcymnHAHVzvPJ3TDRaByL
-         9NUyDiUbFJm38axx0REpScHG0cdESpWt7Wpqqpc2K5KvIk1UKqQM1ByQ48t092JmXcw6
-         m6+A==
-X-Gm-Message-State: AHPjjUg4uUdj/LmNi8MfYIsIig/zo8QxZXTsXpJOAr9xHchNvp8Wuq1Q
-	73YinZLRdyhus5KB0Cqci4bLMfu0
-X-Google-Smtp-Source: AOwi7QD8bGcVbX0mg8aWXa0Ihc4syzV1TVjZ/EtXwjWWcFPc9Ge3X9zfqhg9r+ULXo+4XbHgG5F5hA==
-X-Received: by 10.223.135.252 with SMTP id c57mr2202593wrc.204.1505850847749;
-        Tue, 19 Sep 2017 12:54:07 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([86.124.247.82])
-        by smtp.gmail.com with ESMTPSA id m201sm64231wma.13.2017.09.19.12.54.06
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 19 Sep 2017 12:54:07 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-X-Google-Original-From: Georgiana Chelu <georgiana.chelu93@example.com>
-Date: Tue, 19 Sep 2017 22:54:06 +0300
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: rtl8192u: ieee80211: Use netdev_info instead of
- printk
-Message-ID: <20170919195406.n6kztu5q3pnduhir@fireworks>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,420,1544482800"; 
+   d="scan'208";a="371203715"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2019 20:46:11 +0100
+Date: Wed, 27 Feb 2019 20:46:10 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Madhumthia Prabakaran <madhumithabiw@gmail.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, forest@alittletooquiet.net, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH v2] Staging: vt6655: Modify comment
+ style for SPDX License Identifier
+In-Reply-To: <20190227164328.GB22354@madhuleo>
+Message-ID: <alpine.DEB.2.21.1902272045490.2561@hadrien>
+References: <20190226215531.5196-1-madhumithabiw@gmail.com> <20190227144836.GA32231@kroah.com> <20190227164328.GB22354@madhuleo>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20170113 (1.7.2)
+Content-Type: text/plain; charset=US-ASCII
 
-Replace printk with netdev_info because struct ieee80211_device
-contains a net_device structure.
 
-Issue found by checkpatch.pl script.
-WARNING: Prefer [subsystem eg: netdev]_info([subsystem]dev, ... then
-dev_info(dev, ... then pr_info(...  to printk(KERN_INFO ...
 
-Signed-off-by: Georgiana Chelu <georgiana.chelu93@example.com>
----
- drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Wed, 27 Feb 2019, Madhumthia Prabakaran wrote:
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-index 8aa38dcf0dfd..0f86195680e8 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-@@ -143,7 +143,7 @@ static struct sk_buff *ieee80211_ADDBA(struct ieee80211_device *ieee, u8 *Dst, P
- 
- 	if (ACT_ADDBARSP == type) {
- 		// Status Code
--		printk(KERN_INFO "=====>to send ADDBARSP\n");
-+		netdev_info(ieee->dev, "=====>to send ADDBARSP\n");
- 
- 		put_unaligned_le16(StatusCode, tag);
- 		tag += 2;
-@@ -345,7 +345,7 @@ int ieee80211_rx_ADDBAReq(struct ieee80211_device *ieee, struct sk_buff *skb)
- 	pBaTimeoutVal = (u16 *)(tag + 5);
- 	pBaStartSeqCtrl = (PSEQUENCE_CONTROL)(req + 7);
- 
--	printk(KERN_INFO "====================>rx ADDBAREQ from :%pM\n", dst);
-+	netdev_info(ieee->dev, "====================>rx ADDBAREQ from :%pM\n", dst);
- //some other capability is not ready now.
- 	if ((ieee->current_network.qos_data.active == 0) ||
- 		(!ieee->pHTInfo->bCurrentHTSupport)) //||
--- 
-2.11.0
+> On Wed, Feb 27, 2019 at 03:48:36PM +0100, Greg KH wrote:
+> > On Tue, Feb 26, 2019 at 03:55:31PM -0600, Madhumitha Prabakaran wrote:
+> > > FIx the warning by changing comment style based on header file type as
+> > > per License identifier syntax
+> > >
+> > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > > ---
+> > > Changes in v2
+> > > - Modified subject line and commit log
+> > >
+> > >  drivers/staging/vt6655/baseband.h | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+> > > index f2b6a98de2c1..0cc2e07829c5 100644
+> > > --- a/drivers/staging/vt6655/baseband.h
+> > > +++ b/drivers/staging/vt6655/baseband.h
+> > > @@ -1,4 +1,4 @@
+> > > -* SPDX-License-Identifier: GPL-2.0+ */
+> > > +/* SPDX-License-Identifier: GPL-2.0+ */
+> >
+> > This patch does not apply to my tree :(
+> >
+>
+>
+> I didn't understand why it doesn't apply to your tree.
 
+The - line is not a valid comment.  That is surely not what there was
+before in the kernel.
+
+julia
+
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190227164328.GB22354%40madhuleo.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
