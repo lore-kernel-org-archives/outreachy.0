@@ -1,108 +1,110 @@
-X-GM-THRID: 6802291814363561984
-X-Received: by 2002:a05:600c:248:: with SMTP id 8mr395244wmj.182.1583781981095;
-        Mon, 09 Mar 2020 12:26:21 -0700 (PDT)
+X-GM-THRID: 6662713846690480128
+X-Received: by 2002:a19:ec13:: with SMTP id b19mr247909lfa.16.1551301738251;
+        Wed, 27 Feb 2019 13:08:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:a5c6:: with SMTP id o189ls524151wme.2.canary-gmail; Mon,
- 09 Mar 2020 12:26:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv7Dqqk+8A+c3WGZiA4MBexHGqMSGs9wmEy9ijfDFmG8x4owArK7tHnECxvAU8SlefbV71d
-X-Received: by 2002:a1c:5541:: with SMTP id j62mr811718wmb.40.1583781979688;
-        Mon, 09 Mar 2020 12:26:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583781979; cv=none;
+Received: by 2002:a2e:5b42:: with SMTP id p63ls371163ljb.0.gmail; Wed, 27 Feb
+ 2019 13:08:57 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYaJ975CJIkJ4vJuAQXCtq5gSm2oAmio2SQTFypmCrsqjpFHLuP4mABXNgVnzZgtbugXbc0
+X-Received: by 2002:a2e:9613:: with SMTP id v19mr314533ljh.16.1551301737436;
+        Wed, 27 Feb 2019 13:08:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551301737; cv=none;
         d=google.com; s=arc-20160816;
-        b=0uYpCyt9PCNk6av7lEl5vqXxVkVlAM3Utg9ZmMnPKy6/9ajy2R8ixi2VmF/G5JLh6l
-         5taVxPZsSK//lvmNwNoZrwvr1h04tU/g24OWygiqh/w0exGe5FU3xjvl4AtD86MNDvS0
-         HJjzSjS59qFEFTfWeBswVQkE0BVXFwRn9unmc7CVR3SDrbREgYNoJGbm2PNkd/DC0nlP
-         qiyEOJg99kSaNUDEtgJUuwmf7GefkdB0iLOgOwNWLRUndAelHBCgzXdmWMFcVvg1a0gv
-         iZmOqE5poC0RBtR3E/7LMfF1yd5WqhaPFDcDvqMYON8fnJ831MnIpQLiCL28em+DUdQ7
-         c4Xg==
+        b=FRw7MD4s2mLxW/7GkAKfOxg8HNxQ6huzyDPb9R4kKRopIN4U/1C7KoatLjhfKrnpCJ
+         WAM9zzK7+t5VOHsL5qU+HsBB7/cQfBP6eQS5bXZyM9I1BbWrL4AA/gUBgRRhADNc83zV
+         tpJpE9S1RsI+KpVuJV3G0ohQ1ELzLmRTfsbYCQSDLeWlHIbOlOoF0c22vnpQFTIBD/c4
+         Q5dQDrYYA/44wOR1y38d8gJm1OU1LMY5ZhVZiN+ePhfThY7lCEskXwX/KmdA2Z3LsA9C
+         VF2aeg/RUfq3KZm1rjUuNfHNGR1EXEXqzwnyqeq25AkihFs3LpJRGKFslwJxkgriVcRD
+         gyOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9ncFUUH08gg9iNpsrmq703WArQQwtUVrot+IvPSNEbY=;
-        b=oyXXrFi/v0kmM7gZFw/o3c72sCqHquA7uXOo1x4Rdm9nibaQ3Kw08lvNEWVYCUqy4T
-         SCVWNM63M6sBDpMu3Z2PdA7ezvhlq6q6Ube0B17Cw/SeMqMMFfJOVcuk7LiEtWGPfCsN
-         5mfMgX5vCxNGJxErSuQ3QVHjinuVDDqvpIS4x/ZxomsyeYXaFSsuTqtUwkc1XFl4SLwV
-         vc9VFlmKHOqFXC5ptOelOPLHrVr+BFHPNvJnBXA/XC3MM2/IlY+nCPbJF06pelw1YLPA
-         Q5Ecqgu0gRaNCZ6IlkXxBpu1V71pY7bp51Sp2Xk4L399lKco7sIkfbha4g+MFcUt4dld
-         N6MQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=1FcCvKEDM5mdOABtFeazGLMaLIeZp2YgpjEYMgk/FGQ=;
+        b=RJJ6/n7XOAzY3+CBdp4FIKl+MjJJfL1RT5r1z0uyhicE0Vs71J9BItQYdtTgwuBU3k
+         R+snz+G4kgo/Whk3oySU6HgueuH3lO7uecQ28cB4J0AjvBFPg5WzMjToPyeG4iAW98b1
+         cKhowrSUIeF9fRfhdkvkWjphoFgiLmYQ22L7JtAqYvOTaEWjzWcTwOSINB4+JmhwwU4u
+         iYmD/UKpdciq4aPQLdtVdFvw7ziNRsUBh8i3/gceZb3I4xgmUI0CiUnq96QQup4fmAit
+         6rU462t2yeTB6rXyrdDQLyrAlsiOUBLjTtsS3eVb+1gGBX3SRunPJzjP5p7dRepMUSHT
+         2cJA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=FvEZMUHT;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id w20si40389wmk.0.2020.03.09.12.26.19
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y26si72703lfl.1.2019.02.27.13.08.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Mar 2020 12:26:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 27 Feb 2019 13:08:57 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=FvEZMUHT;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wm1-x342.google.com with SMTP id g62so618584wme.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 12:26:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=9ncFUUH08gg9iNpsrmq703WArQQwtUVrot+IvPSNEbY=;
-        b=FvEZMUHTUFA57MewO49nAMESLvaQSrGYHZWdbHY0rRztzqPWkwZ6F8gmI1sBXM6WUP
-         1IdEfhRxoW2tGweSFSU51ipouzFfHFPhEUN+EvHvbt1InKD/CrFxSPhY76Srmlc8yfDC
-         0GBaPQaejqbkoFJ+vdRXRVwFUlhBQT5xUBu7Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9ncFUUH08gg9iNpsrmq703WArQQwtUVrot+IvPSNEbY=;
-        b=fkwoyYqaaabERQR8HKhSzLjg2AdbKXJGKmyON5osjyf3IKQ3YcA6Cry5OO1bCtvoyS
-         Se92JbpwQqVwvcIppBXsnbqmyT5Lmn7jhLyBkJWTGi5Bd9pKGDcAcIo3uEMAhYkWe+pY
-         MBZCvxuftKcH2Y0WmDkMJsAYk1mtDzIbGTPHDoFitiX5zsv5bmqVvonnMh5QgKVzbTWZ
-         dC3VnOlFTw7Xkxz4lCx5Dod4OSOea6fRB3L7HhzsmYwopIgKPmBPuHgf0L93cCUuQu4z
-         DZQw2QYetmHDNE0knrN+1ZvaedtfBC67V3EkMbppv4oQty9VwtWABru5g4CUVwKhcP67
-         z1mA==
-X-Gm-Message-State: ANhLgQ3Tj2cQcvHeOwmjo0y3zahRY7rkUeLZnwGm3BA+y1ZiRg/n5ZaZ
-	4CwSvnYvWhks/dMm1kxWu6EIPBeFfJf7Ng==
-X-Received: by 2002:a1c:1b0e:: with SMTP id b14mr770544wmb.8.1583781978677;
-        Mon, 09 Mar 2020 12:26:18 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id x5sm31855wrv.67.2020.03.09.12.26.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Mar 2020 12:26:18 -0700 (PDT)
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net
-Subject: [PATCH] staging: vt6655: power.c: remove unused code and improve formatting
-Date: Mon,  9 Mar 2020 20:26:10 +0100
-Message-Id: <20200309192610.23541-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,420,1544482800"; 
+   d="scan'208";a="371211622"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2019 22:08:56 +0100
+Date: Wed, 27 Feb 2019 22:08:55 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: vt6655: Alignment of
+ function declaration
+In-Reply-To: <20190227205040.9881-1-madhumithabiw@gmail.com>
+Message-ID: <alpine.DEB.2.21.1902272208290.2561@hadrien>
+References: <20190227205040.9881-1-madhumithabiw@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove unused code and improve formatting.
 
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
- drivers/staging/vt6655/power.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/vt6655/power.c b/drivers/staging/vt6655/power.c
-index bfd598a93b04..f1c221f5dcd2 100644
---- a/drivers/staging/vt6655/power.c
-+++ b/drivers/staging/vt6655/power.c
-@@ -58,14 +58,11 @@ void PSvEnablePowerSaving(struct vnt_private *priv,
- 	if (priv->op_mode != NL80211_IFTYPE_ADHOC) {
- 		/* set AID */
- 		VNSvOutPortW(priv->PortOffset + MAC_REG_AIDATIM, wAID);
--	} else {
--		/* set ATIM Window */
--#if 0 /* TODO atim window */
--		MACvWriteATIMW(priv->PortOffset, pMgmt->wCurrATIMWindow);
--#endif
- 	}
-+
- 	/* Set AutoSleep */
- 	MACvRegBitsOn(priv->PortOffset, MAC_REG_PSCFG, PSCFG_AUTOSLEEP);
-+
- 	/* Set HWUTSF */
- 	MACvRegBitsOn(priv->PortOffset, MAC_REG_TFTCTL, TFTCTL_HWUTSF);
- 
--- 
-2.17.1
+On Wed, 27 Feb 2019, Madhumitha Prabakaran wrote:
 
+> Align function arguments and function type to improve readability.
+>
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> ---
+> Changes in v4-
+> - Log message and git diff are matching. Change is made on code in
+> Greg's tree
+>
+> Changes in v3-
+> - Included driver name in subject line
+>
+> Changes in v2-
+> - Modified subject line and commit log
+> ---
+>  drivers/staging/vt6655/card.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+> index 52e9e6b90b56..3226dbaab3bb 100644
+> --- a/drivers/staging/vt6655/card.c
+> +++ b/drivers/staging/vt6655/card.c
+> @@ -506,10 +506,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv)
+>  	return bResult;
+>  }
+>
+> -void
+> -CARDvSafeResetTx(
+> -	struct vnt_private *priv
+> -)
+> +void CARDvSafeResetTx(struct vnt_private *priv)
+
+This looks better.  I pulled Greg's tree and this applied fine.
+
+julia
+
+>  {
+>  	unsigned int uu;
+>  	struct vnt_tx_desc *pCurrTD;
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190227205040.9881-1-madhumithabiw%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
