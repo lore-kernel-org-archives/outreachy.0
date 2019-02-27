@@ -1,119 +1,105 @@
 X-GM-THRID: 6662713846690480128
-X-Received: by 2002:a05:6830:2113:: with SMTP id i19mr3153627otc.9.1551300647504;
-        Wed, 27 Feb 2019 12:50:47 -0800 (PST)
+X-Received: by 2002:a1c:200e:: with SMTP id g14mr64671wmg.13.1551296662810;
+        Wed, 27 Feb 2019 11:44:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6830:114f:: with SMTP id x15ls1615085otq.3.gmail; Wed,
- 27 Feb 2019 12:50:46 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IY5ciOf3G6gIWIwsG7YNgbJgETHQmzf7wUIY1qwr7sqdedLfOd/V3mx/kkbFSiq7ko08om4
-X-Received: by 2002:a9d:6c58:: with SMTP id g24mr3060030otq.10.1551300646499;
-        Wed, 27 Feb 2019 12:50:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551300646; cv=none;
+Received: by 2002:a7b:c843:: with SMTP id c3ls26280wml.7.canary-gmail; Wed, 27
+ Feb 2019 11:44:21 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZG0jQo7B4oJ3VLoAS+N/XNI3JU2m59AZNhvkCbowm2lqr/hk+IXzQjRm7LS2HsR85+tx7f
+X-Received: by 2002:a1c:a846:: with SMTP id r67mr65942wme.18.1551296661898;
+        Wed, 27 Feb 2019 11:44:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551296661; cv=none;
         d=google.com; s=arc-20160816;
-        b=03cJRjOzLa44tDEFQJaPFV3PfCshRqfMnUtHMN6GhHEfC0Y9AgMMQcfv+6aPeY2ISI
-         E8HLjMGTa6nJv8a5oRyItgSciIkprutf3PGr7o7anAfDcZwOqpjNEtq8L1s9VFeyoXGt
-         8w1Pm4ms58KTK1Wqidp6qrWq9yJaEVkRdTt94jl4boPehZDxNc5r6IFe63LqdrcrMD2C
-         e4K+e9eI4XBZBNyvyzp50HyUcri+nRaD7kj1fp18glm7iBWPkf9n5t1y1pe8SCb8lhpa
-         43T6x7mHLkyMotuIZIuiYHqNF5BfrtGGcNg7O0p5e4EPffLF22N/eQVk7j7cLq0yO4aN
-         KxTQ==
+        b=0QrZOHNhyEIr/gTj+RSC7Q6L5IQc2JZQOswNLmNp38kgLjClGiTWhNUFsnhjeg5L49
+         AphdDVyYr349ODeT/mRYhp7A2CD795s5i71ZngbCYvcKKkAexiY599gLQ6Xv6weEZ8rr
+         tQ9MjCmdkDRTHudXOf0zce/ePtHT2Y7/7jxLIeukjQFsZyLtRPAcitgeNJ+nm+ZTgMrQ
+         8XtXHIynuSV4eMP8kf5VCjRf+6DTVnSiE5sem1Rqa2/oBO6zjUTbl/cdWK35bzzJV7Bt
+         F78B4JrkpnAUIDCd1lfATFa8I36Fe83D4Bij9RXzI0//iaDQX/G12zOzhFUGRnrjABRr
+         2RYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jGYr3urRnvPxrzoyUN0dGaB6AHYqPOnbY1ZKyctNi9I=;
-        b=LXUdYD29UOBLDa/P/yodaoWBytxzrQ8BG9W0KkGwR+Qh16MqhoVRFlz5b+CnQhBLr3
-         Xe5M2f5/zyVBxyr130chPWI3EP/9izseguKQZB0EtaCTz4XNBjCcSs97vo1AGraKZlDy
-         DKQpInso2d7GlMNXmNR6fD8qhbTM+p0msQGg/zol4n5Tkq+SicVdER59qa27YEVIyzxJ
-         weaiSSJB8Q5xYJh9v5IykZwV8OxHlZpjapW07Voq0YNiGOpr0RCXwoMM1+r3ReQHcpEF
-         4+57FhhhQv0AYfwc3qKMAE6t8Y4NsG/bpYyiiY7YhMweSTFazg14S9sZX31iR7BNVOol
-         8ZiA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=DsU/Zhi3Ot/JnYgnvjdH3YG3mdE0GY5kbcrjpbykZFw=;
+        b=PE3G4K8dyiW/1RIJ2K2+4DP5BwgCZDaiAYskS0ScIRhGo0LnCSEj8GvABA4f0i/1bf
+         J6h80mMmDNl11Or/FFygMDh3C2Mlo0auk6e7wqpZg1IDMA1Tx6wUqXg6DuV2t1WRvk+Z
+         OyPgw0ivyEiaFCQHV9GofhIhcNqfQxA0NWCiqroqx/RAdSofVTTgO4Rf0mwtXNBc5nss
+         oYS869Ji7PmcoSe1zAG6fRC6wUmW/3SxzgDywH78bA46kR0IkMI6u5b/yv6ixXMMC7Q7
+         yVteP+tVxbwmKDBRZV3BcBdWHSlxw07nUnolOoRqS29K7041wOAEh7JrSBTf84cCkPrA
+         KjCg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Eo34wjM8;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
-        by gmr-mx.google.com with ESMTPS id 135si954268oia.1.2019.02.27.12.50.46
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 60si97011wra.3.2019.02.27.11.44.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Feb 2019 12:50:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
+        Wed, 27 Feb 2019 11:44:21 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Eo34wjM8;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x241.google.com with SMTP id t206so14650448oib.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Feb 2019 12:50:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=jGYr3urRnvPxrzoyUN0dGaB6AHYqPOnbY1ZKyctNi9I=;
-        b=Eo34wjM8xm2HhFhl/f8gkUW/kOZjFUeQ7acw5FnZiDF13VtrS0mSKn5v3emDPodHsu
-         kbdSCF/ukzuK5i2hqni5kxs3RY8dPUZPCOOWEug0pnn4JH82SCfm4YzJ16aLYdyP3hU8
-         3nkKEJnjlQV27ztp7FZDPy9ygQNm7fhIpIMeAPUE2fbq+iZAfasazO3aLSHj/8cfVY1z
-         2v3KoZqAdOQ153w/+KtS3NNlAXXW+R7OnT3+uc3W9EzVK6G7k4l9eVH3DN+9UTQhen5u
-         99SkxayOpOXJNzgkY0smsdMvQriOKR8o7kmuBEmfohPJHIWQcTOSMuF+zkMZoMvxRR1I
-         6AiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jGYr3urRnvPxrzoyUN0dGaB6AHYqPOnbY1ZKyctNi9I=;
-        b=eUJ4flDb/6sF9LLZwtbAkd+GRo9/zaaiMlLS9wIsyhBl4CmeqKev2ytAiFpgVj8iWL
-         BEvCjyXvIlvHgKL7FOdIwjhupUvQoMTQTDakiMVIHfLL82raIHh452/bF1sr5zQOgMRQ
-         MpqF6SGGsNQJzCM7e4lSwxF3xWUasIkH5MgBF+HYS0a0tLJV+jgptImnl8dTbCUoUcKK
-         6f1dkJHZmtOpiRakIHDouLNfYjrQGUctrVaBA+66rjlDNu3g+F9gwpCOhw9ZBvxKE/22
-         5wZn6sgV7dY2j+L2lH7JjnFXWlt2MSpubewozztVB15ch42skyvfCR2h0p+4M7OoqlQp
-         oPlg==
-X-Gm-Message-State: AHQUAuZ3c5EakZoVd7o2qpQglvjXhXA2gEgjfy+bTV2Cldg739feo5xA
-	z4Qo/K8VpCRBPhrAlNzi2s4qsvTJaEJIYQ==
-X-Received: by 2002:aca:7503:: with SMTP id q3mr812069oic.76.1551300646150;
-        Wed, 27 Feb 2019 12:50:46 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id h205sm7061498oib.11.2019.02.27.12.50.43
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Feb 2019 12:50:44 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v4] Staging: vt6655: Alignment of function declaration
-Date: Wed, 27 Feb 2019 14:50:40 -0600
-Message-Id: <20190227205040.9881-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,420,1544482800"; 
+   d="scan'208";a="371203528"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Feb 2019 20:44:21 +0100
+Date: Wed, 27 Feb 2019 20:44:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: vt6655: Alignment of
+ function declaration
+In-Reply-To: <20190227161227.22128-1-madhumithabiw@gmail.com>
+Message-ID: <alpine.DEB.2.21.1902272043301.2561@hadrien>
+References: <20190227161227.22128-1-madhumithabiw@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Align function arguments and function type to improve readability.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
-Changes in v4-
-- Log message and git diff are matching. Change is made on code in
-Greg's tree
 
-Changes in v3-
-- Included driver name in subject line
+On Wed, 27 Feb 2019, Madhumitha Prabakaran wrote:
 
-Changes in v2-
-- Modified subject line and commit log
----
- drivers/staging/vt6655/card.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+> Align function arguments and function type to improve readability.
+>
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> ---
+> Changes in v3-
+> -Included driver name in subject line
+>
+> Changes in v2-
+> - Modified subject line and commit log
+> ---
+>  drivers/staging/vt6655/card.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+> index 2996bf614caa..8d0182f5725c 100644
+> --- a/drivers/staging/vt6655/card.c
+> +++ b/drivers/staging/vt6655/card.c
+> @@ -499,7 +499,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv)
+>  	return bResult;
+>  }
+>
+> -void CARDvSafeResetTx(truct vnt_private *priv)
 
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index 52e9e6b90b56..3226dbaab3bb 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -506,10 +506,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv)
- 	return bResult;
- }
- 
--void
--CARDvSafeResetTx(
--	struct vnt_private *priv
--)
-+void CARDvSafeResetTx(struct vnt_private *priv)
- {
- 	unsigned int uu;
- 	struct vnt_tx_desc *pCurrTD;
--- 
-2.17.1
+This is invalid code and clearly was not in the kernel previously.  I
+think that you are making your changes based on some change you previously
+made, rather than based on the code in Greg's tree.
 
+julia
+
+> +void CARDvSafeResetTx(struct vnt_private *priv)
+>  {
+>  	unsigned int uu;
+>  	struct vnt_tx_desc *pCurrTD;
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190227161227.22128-1-madhumithabiw%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
