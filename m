@@ -1,91 +1,116 @@
-X-GM-THRID: 6466685388473761792
-X-Received: by 10.98.204.139 with SMTP id j11mr16530355pfk.11.1505642521774;
-        Sun, 17 Sep 2017 03:02:01 -0700 (PDT)
+X-GM-THRID: 6662401888511590400
+X-Received: by 2002:a9d:76d9:: with SMTP id p25mr2065291otl.11.1551278869534;
+        Wed, 27 Feb 2019 06:47:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.197.65 with SMTP id v62ls589358iof.12.gmail; Sun, 17 Sep
- 2017 03:02:00 -0700 (PDT)
-X-Received: by 10.202.106.129 with SMTP id f123mr7672450oic.42.1505642520911;
-        Sun, 17 Sep 2017 03:02:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505642520; cv=none;
+Received: by 2002:a05:6830:164a:: with SMTP id h10ls1068905otr.7.gmail; Wed,
+ 27 Feb 2019 06:47:49 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ibjn/tW6+nCmQ94ZfZx+qo25qFtwdmX4u47lP7MT6rWfwkuQSIbbrf1SPeBF8IGDVCWtFkX
+X-Received: by 2002:a9d:6c9a:: with SMTP id c26mr2001674otr.27.1551278869042;
+        Wed, 27 Feb 2019 06:47:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551278869; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgo4rS8JBbZbVnW80l1GqJAayN33XXS+a3bjZVZjkVMc4OxGShnNJlPa+IH5/ggZD6
-         m6mPnbyHzUSv2zQfB3wMFKKaGq3oBFJ7MvglC6HTC/TOlO4Xv2FWpWdh0FdPXpEi+t2R
-         vKo7YA1+BH57y3sjIxxrxQ8ElaLgdcfhSFPvE1qiBoAtF8C/jmZGWA1Kb/3gHO/dFp54
-         meCU4UkTA5qEkwPDiE8aQGuFIkHYI3ln8HHAOuOzTfKJ9TqigvR9hjgZQoJgQylUjatV
-         PXAcsK15wCTLDnQ6cU7I3XY819BS1KsQVBLx9CgXFuiCHj0HB8SbM3gI6nYsNEQ8yRIJ
-         nDWg==
+        b=xoDR9BwsL1omZ92OrFfpuLMuZVu73E5t/E7oKFraK1x1Wrwk8/lGwd7zvpqJqj2xoL
+         HszfVOk0Xj2Af3/M7IwyjKvdpoMVln5N5c4xCKuep9r6YVriUvoGDv2oq7K3cgCdEs9W
+         ooTzkmP0elyuZ6yEbVWX7y5f05oS8KAF/zaspxVhbJ0r7DLZaT1fVs43UUl7j7NA6N/C
+         XcaNsFYN7yF7mWh7Myc1FTajZjK618pYDBb2GPwP1O83wTumRCs/cdsCpnFHypYjCWPH
+         XIs82q3ykGNCdT1kpFchKDdr+dscC7KCB3cccQ2cuvGeJ7mUNrfJNgg+XvLNMlxLVtXx
+         hcNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=F03b4ear/ChJbHEmTEvlxygdlC3LCYVOkCulvarZYEI=;
-        b=CwZ77QJWIeh0yHsA7kztbsda4wCzTlO15k6AJREkVDJfZ0pL9bLYUQy9x9I8hNh4MC
-         8U2tCC4COawYEqgYGAOMA8hgWGCs5SrDo9woxP/xTH4ZbSfUMp39hi7fpiENanPXuMOL
-         jfmF3AiM+hKcEzAQ0CU4CKIBwz5UyrRPXpe40Ipa7n4OH2Q+HyB8k9oYt5G1eyuwNlYQ
-         W4eFveQobMYj0i38shRK3Gu4FlLWk7Df59kzZHoFxUKaRqFDkhknfnTNj7jxldet4Anu
-         BmCWrKnOeuxq4yjBferYKA8HDB+8JPWIuwwIOB5ATAX3m67MJB/FQ4XHydGrGaORUhyT
-         DftA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=UaauvPVQVJnmZnS+lLGoGboxWaXakoaU58Xth4jF3vQ=;
+        b=XKmVU5bmgIOXRy75I0yvIHGBFCvq4y0Y9hrU07ZoUT1vawNE3fnAhNydFrrl5dxRGG
+         GJmIJVyVUKuIy15nl8am1ewxpR6oOYI0aQRvZzniy2Q2QUxvmr6r/Ssx7PWAXQBl5b3N
+         MuItLgMFcJY+X5D56jkyd3GBCIwG0O5WTo/OawI2LCTFsOxqUzLukcyRiejxLNzFxKqs
+         fMar7GHdXguJ7utJ6nCYIcGR8jxdxETj8/CVq1LmmnHhYQJwhP5ywDKCk0gENGIBmw5t
+         osEHO98w2SMOI1UsfYf6+5udFiX6al8afBcX7vJZtu5zv+ljTGCO3nkQRfw+4M3YAziY
+         5/vQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OQFE95gQ;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:400e:c05::236 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <himshijain.hj@gmail.com>
-Received: from mail-pg0-x236.google.com (mail-pg0-x236.google.com. [2607:f8b0:400e:c05::236])
-        by gmr-mx.google.com with ESMTPS id w11si286064pfk.4.2017.09.17.03.02.00
+       dkim=pass header.i=@kernel.org header.s=default header.b=UksSYmCt;
+       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 135si887314oia.1.2019.02.27.06.47.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Sep 2017 03:02:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:400e:c05::236 as permitted sender) client-ip=2607:f8b0:400e:c05::236;
+        Wed, 27 Feb 2019 06:47:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OQFE95gQ;
-       spf=pass (google.com: domain of himshijain.hj@gmail.com designates 2607:f8b0:400e:c05::236 as permitted sender) smtp.mailfrom=himshijain.hj@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x236.google.com with SMTP id u18so3615754pgo.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Sep 2017 03:02:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=F03b4ear/ChJbHEmTEvlxygdlC3LCYVOkCulvarZYEI=;
-        b=OQFE95gQmsVg2EueHoYsuaNHRMWLpQXAZWt/OSu+DC2ELRKMoUjGfrXcnVU4x69BMw
-         a4fr0QJ70S1ZwbLvtNP5HwKrBuQAE/OBRxkU/HmBZYAgEI+b4GLWsGkL3ynC1Zv9t/Vb
-         YQwfzkaf3GG8UGCZH94d520NXge0iPWgXZToJxU50yykxSJany1GHAaU+MYCTkANgEuL
-         lQRp8fuhKLEbTZ7Vc0iSPbRxaFChliKxcR3GwpOhOt6xFD+GoiUuglBUkIfDOKB1Tr2I
-         ufy6YVEo7IvBMqwLdeShwVbC+vnMiaHtNFWEbqBpi3NSVpyl56ud47+9nkrG00Xw9Zav
-         xs8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=F03b4ear/ChJbHEmTEvlxygdlC3LCYVOkCulvarZYEI=;
-        b=BASIqDptqyY5jBmQlFcRJWrS6u7/5J8FPkZyqTJlT9Vl3gplJ9/uxFrKuAE+pj+CB1
-         QWIhFTjvGlQ4MO7CjWFSIooeZpW3z4d9F/VqcBIXmDWQJsg/3YOD11T1BDvCEOHGzKNH
-         FGeyv01l2BBjRVY+1aMriOcdICw/OKQKRKijQ50cC1FMgXHSACN+0QejqbhwB5P08x/p
-         VB8h+PM5LP4cXE+M6A0S59g0AWOAPegqFXzdHo7kaPo7nV0JNJ4OxfWBMBqBXvp6ZD8X
-         LJzNB0zoMtnlvhoF8q6KxaN7ZldswJHrYYSbRqMhP3jDgPWW5ufCkAWIxvqA1aNCou+i
-         ue+w==
-X-Gm-Message-State: AHPjjUg15MpvtgysoXwU9fFFCQs1ZKW65iiLhL9C5gJG3XeWX+SoDbo4
-	POP44h0zCzBxFvEbjsQ=
-X-Google-Smtp-Source: AOwi7QCaU7kUgeEdlUcjLTAAujxqmCb+VkNDfNI9gPdHIKZlu2ygCNxTQjGQnM3OWjyCewpTNIqD9A==
-X-Received: by 10.159.218.75 with SMTP id x11mr9031151plv.92.1505642520280;
-        Sun, 17 Sep 2017 03:02:00 -0700 (PDT)
-Return-Path: <himshijain.hj@gmail.com>
-Received: from localhost ([223.190.21.169])
-        by smtp.gmail.com with ESMTPSA id k13sm8975892pgo.51.2017.09.17.03.01.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Sep 2017 03:01:59 -0700 (PDT)
-Date: Sun, 17 Sep 2017 15:31:52 +0530
-From: himanshi <himshijain.hj@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [KERNEL NEWBIES ACCESS]Himanshi Jain
-Message-ID: <20170917100152.GA4187@himanshi-Inspiron-5558>
+       dkim=pass header.i=@kernel.org header.s=default header.b=UksSYmCt;
+       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B92042083D;
+	Wed, 27 Feb 2019 14:47:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551278868;
+	bh=/hBMWui59IVU9jpX9vMhvB/evDIj8NUrBVP8k5x93Rc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UksSYmCt23ZUU3KqcV84Ks8WYDZQXaUmDKVIGvaQ71wHCRjz8I3KaFYHUbiHDo7JE
+	 GsrbGs3/T+4esIFKzspltvMWn6r4f8512YalvbI3ZTJ/FHAcg1UXyq2Irs/GvUV+PX
+	 YbwB8L2KDFlJDusbn8KHIVpuIZabOvNyvvULESPw=
+Date: Wed, 27 Feb 2019 15:47:44 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: vt6655: Alignment of
+ function parameters
+Message-ID: <20190227144744.GD21288@kroah.com>
+References: <20190226200150.2708-1-madhumithabiw@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20190226200150.2708-1-madhumithabiw@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-This is to request to please grant edit privileges on my username:
-Himanshi Jain
+On Tue, Feb 26, 2019 at 02:01:50PM -0600, Madhumitha Prabakaran wrote:
+> This patch align the function parameters to improve readibility.
+> 
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> 
+> ---
+> Changes in v2
+> -Make a commit message imperative
+> -Use multiple lines to improve readibility
+> 
+> Changes in v3
+> -Commit message and subject line are modified
+> -Alignment of function parameters
+> ---
+>  drivers/staging/vt6655/baseband.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+> index 35bbff807df9..e3fecd732c88 100644
+> --- a/drivers/staging/vt6655/baseband.c
+> +++ b/drivers/staging/vt6655/baseband.c
+> @@ -1705,9 +1705,9 @@ static const unsigned short awcFrameTime[MAX_RATE] = {
+>   *
+>   */
+>  unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+> -	unsigned char byPktType,
+> -	unsigned int cbFrameLength,
+> -	unsigned short wRate)
+> +		unsigned char byPktType,
+> +		unsigned int cbFrameLength,
+> +		unsigned short wRate)
 
-Thank you!
+They should line up with the variable above it, so this should end up
+looking like:
+unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+			     unsigned char byPktType,
+			     unsigned int cbFrameLength,
+			     unsigned short wRate)
+
+But, given that there is no need to put one variable per line, you can
+shorten this and make it look like:
+
+unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+			     unsigned char byPktType,
+			     unsigned int cbFrameLength, unsigned short wRate)
+
+thanks,
+
+greg k-h
 
