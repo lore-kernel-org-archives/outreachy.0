@@ -1,130 +1,96 @@
-X-GM-THRID: 4475579269120
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9816ab370498a2c8,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.91.76 with SMTP id cc12mr444340wib.7.1425041320068;
-        Fri, 27 Feb 2015 04:48:40 -0800 (PST)
+X-GM-THRID: 6661965770833002496
+X-Received: by 2002:a9d:6e97:: with SMTP id a23mr2037598otr.54.1551278744900;
+        Wed, 27 Feb 2019 06:45:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.240.202 with SMTP id wc10ls112633wic.10.canary; Fri, 27
- Feb 2015 04:48:39 -0800 (PST)
-X-Received: by 10.180.83.168 with SMTP id r8mr445778wiy.6.1425041319775;
-        Fri, 27 Feb 2015 04:48:39 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from mail-we0-x235.google.com (mail-we0-x235.google.com. [2a00:1450:400c:c03::235])
-        by gmr-mx.google.com with ESMTPS id el6si110735wib.2.2015.02.27.04.48.39
+Received: by 2002:aca:c189:: with SMTP id r131ls652135oif.6.gmail; Wed, 27 Feb
+ 2019 06:45:44 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ3NDszsmMXPD8l20MuOjeZrNe5pDfiwrZneX8xIlycQG+xUIJTernJdRAzhN3S5o0orLwt
+X-Received: by 2002:aca:d6c7:: with SMTP id n190mr963028oig.41.1551278744386;
+        Wed, 27 Feb 2019 06:45:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551278744; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oxfUX0pWV0mVSYnHTwR/O+Y70BUpnaMIx1+LtKiTiSK2Zpri32ycYG3U62+cXsm+3d
+         Shll80UaFMedfJl9eVzEzuaM7iC8d0fDWGtPcEgIKXXSAmsGU85zrIzVIOZXkMoPpDUj
+         gWVxZ0yCQEhI5tCkBJEPbB1XYxi1jXgzJM86x1RIjyErLHFsvgahn+FFZnl51qs8UJXB
+         qj4BiorY0LV1QI161OGWbT9vh8y5GZsN0nn1JdMeDTV5/6YYx20XaAFXZd0HvqBNN0m2
+         23Mlk2LYIBRV0MzWPiKGi7NLJiF3vEoXGNrnLexG90myaf0R0X8IoHxW8xiJ/7141dE1
+         eiuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=uBnVE9HBOs/F4kArd1HuJy51uaMUsp4ogO7CopjcqiM=;
+        b=f8zP5ja1dw7vyl8gT297n04O/wezpPCR4aV3lRk0gmAa4SyXwkH8+aelEpDNfpIzgp
+         d6r8ClezHE41cFstqZxWC6xJDiFJsRx1Hg7BU93CL5o0eN5BMte7hnpmTblqjm8QcEb1
+         g3zMsToFgynEQc8PAf2oPi3tykJPOCv8JZE8s8nfwqu59LC4sWjXGkKk98A0vZQ15LzO
+         enVA3y/8AavvYTUsEd9udk4xgIyXyq37dfqv7hQRWjOpxGK/IA8F3XfD2sh84BjlXCGf
+         2x2Uu/+3ZLoq18Fa7Tx1AukqZPqIcecRLmmMvg9ZoQXzOAlUWR8OeuqRAiu14nHiP6rY
+         jgnA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=idTrAaWh;
+       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id x31si970361otb.1.2019.02.27.06.45.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 04:48:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) client-ip=2a00:1450:400c:c03::235;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 27 Feb 2019 06:45:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of mahfouz.saif.elyazal@gmail.com designates 2a00:1450:400c:c03::235 as permitted sender) smtp.mail=mahfouz.saif.elyazal@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x235.google.com with SMTP id p10so18012387wes.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 04:48:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=koYUW4S/R/0u5D2OPIFFdscAs+Y9XM1AWcpxcjLYg3E=;
-        b=U4WXoe92p72axpgJzEysK3EH9WsvUch1RsfsVCoQwPOxPpqWwDwQBBusxBFveE3d0D
-         VFkSVo0NwwO8+qrRnxiyNJL8yNUpVgjwOFzk7BzUUFpG3MBtBMf+KfEyLzTjnH7eKZIE
-         O4yjiznRWAl2jGC3xA+8RRuPf6vioZy9Q5vleYYoAP8j2OKKYVm1dBet2H+VicPBWS2I
-         tNEZwFpgBF8vu6wTCCDhePpnTkBVvKCoVRFwz54P++c/dy/BFsEhXIKY4Kof9zPrPhwQ
-         CaScXn+He8nngBDNhlAPXLfnWdj9e+wj5rjcIItwiWt82S0Djb/DzaiSIU0BFNQ7M19Q
-         3xDA==
-X-Received: by 10.194.97.139 with SMTP id ea11mr590112wjb.108.1425041319630;
-        Fri, 27 Feb 2015 04:48:39 -0800 (PST)
-Return-Path: <mahfouz.saif.elyazal@gmail.com>
-Received: from localhost.localdomain ([196.205.192.222])
-        by mx.google.com with ESMTPSA id hd5sm2669939wib.21.2015.02.27.04.48.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Fri, 27 Feb 2015 04:48:39 -0800 (PST)
-Date: Fri, 27 Feb 2015 14:48:32 +0200
-From: Aya Mahfouz <mahfouz.saif.elyazal@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 00/24] remove unused variables
-Message-ID: <cover.1425034998.git.mahfouz.saif.elyazal@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=idTrAaWh;
+       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 2C2E42083D;
+	Wed, 27 Feb 2019 14:45:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551278743;
+	bh=wrBKr9tChXLnakx3di1ULB8CCpZjyELbmbguMtT9ln0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=idTrAaWhAmCXs1qzELHiyo9Lv2PyxoZ5UoUEcRNy3tozaSZhodMtYJl1DUiYmD4iq
+	 o31bp38KOdWAl6ZdRmyS5Y3yaS4TMu94BJG+N1PJOR0m7E22qrLWm5NIxUFJY0dbYJ
+	 nLnYusSRYArKA574gMx0fnRn6pZ7j8M+e4m9PaN8=
+Date: Wed, 27 Feb 2019 15:45:41 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3] staging: mt7621-eth: add SPDX GPL-2.0 license
+ identifier
+Message-ID: <20190227144541.GC21288@kroah.com>
+References: <20190226175631.17161-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20190226175631.17161-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-This patchset is concerned with removing variables that were used only
-once to store the value of a function and then return it. The following
-coccinelle script was used to discover the pattern and resolve it:
+On Tue, Feb 26, 2019 at 05:56:31PM +0000, Jules Irenge wrote:
+> Add SPDX GPL-2.0 license to fix missing SPDX warning
+>  reported by checkpatch.pl.
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  Changes since v3:
+>  * Made commit message clearer
+>  * Added punctuation
+> 
+>  drivers/staging/mt7621-eth/ethtool.h | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/mt7621-eth/ethtool.h b/drivers/staging/mt7621-eth/ethtool.h
+> index 40b4cf011660..d0e97ae0d82e 100644
+> --- a/drivers/staging/mt7621-eth/ethtool.h
+> +++ b/drivers/staging/mt7621-eth/ethtool.h
+> @@ -1,3 +1,4 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*   This program is free software; you can redistribute it and/or modify
+>   *   it under the terms of the GNU General Public License as published by
+>   *   the Free Software Foundation; version 2 of the License
 
-@@
-identifier len,f;
-@@
+This should be a patch series, first one does this, the second one
+removes the license boiler plate.
 
--int len;
- ... when != len
-     when strict
--len =
-+return
-        f(...);
--return len;
+thanks,
 
-Aya Mahfouz (24):
-  staging: wlan-ng: remove unused variable
-  staging: wlan-ng: remove unused variable
-  staging: vt6655: remove unused variable
-  staging: rtl8188eu: os_dep: remove unused variable
-  staging: rtl8188eu: os_dep: remove unused variable
-  staging: lustre: ptlrpc: remove unused variable
-  staging: lustre: osc: remove unused variable
-  staging: lustre: obdecho: remove unused variable
-  staging: lustre: obdclass: remove unused variable
-  staging: lustre: obdclass: remove unused variable
-  staging: lustre: mgc: remove unused variable
-  staging: wlan-ng: remove unused variable
-  staging: lustre: mdc: remove unused variable
-  staging: lustre: lov: remove unused variable
-  staging: lustre: lmv: remove unused variables
-  staging: lustre: llite: remove unused variable
-  staging: lustre: llite: remove unused variable
-  staging: lustre: llite: remove unused variable
-  staging: lustre: llite: remove unused variable
-  staging: iio: meter: remove unused variable
-  staging: iio: meter: remove unused variables
-  staging: iio: light: remove unused variable
-  staging: fbtft: remove unused variable
-  staging: dgap: remove unused variable
-
- drivers/staging/dgap/dgap.c                         |  5 +----
- drivers/staging/fbtft/fbtft-core.c                  |  4 +---
- drivers/staging/iio/light/tsl2583.c                 |  4 +---
- drivers/staging/iio/meter/ade7758_core.c            | 10 ++--------
- drivers/staging/iio/meter/ade7759.c                 |  5 +----
- drivers/staging/lustre/lustre/llite/dcache.c        |  5 +----
- drivers/staging/lustre/lustre/llite/file.c          |  4 +---
- drivers/staging/lustre/lustre/llite/lproc_llite.c   |  5 +----
- drivers/staging/lustre/lustre/llite/vvp_io.c        |  5 +----
- drivers/staging/lustre/lustre/lmv/lmv_obd.c         |  8 ++------
- drivers/staging/lustre/lustre/lov/lov_obd.c         |  5 ++---
- drivers/staging/lustre/lustre/mdc/mdc_locks.c       |  4 +---
- drivers/staging/lustre/lustre/mdc/mdc_request.c     |  4 +---
- drivers/staging/lustre/lustre/mgc/mgc_request.c     |  5 +----
- drivers/staging/lustre/lustre/obdclass/dt_object.c  |  5 +----
- drivers/staging/lustre/lustre/obdclass/lu_object.c  |  6 +-----
- drivers/staging/lustre/lustre/obdecho/echo_client.c |  5 +----
- drivers/staging/lustre/lustre/osc/lproc_osc.c       |  5 +----
- drivers/staging/lustre/lustre/ptlrpc/nrs.c          |  5 +----
- drivers/staging/rtl8188eu/os_dep/ioctl_linux.c      |  4 +---
- drivers/staging/rtl8188eu/os_dep/usb_ops_linux.c    | 16 +++-------------
- drivers/staging/vt6655/rxtx.c                       |  6 +-----
- drivers/staging/wlan-ng/prism2mib.c                 | 11 ++---------
- drivers/staging/wlan-ng/prism2sta.c                 |  5 +----
- 24 files changed, 30 insertions(+), 111 deletions(-)
-
--- 
-1.9.3
-
-
--- 
-Kind Regards,
-Aya Saif El-yazal Mahfouz
+greg k-h
 
