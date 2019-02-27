@@ -1,106 +1,123 @@
 X-GM-THRID: 6662711106976350208
-X-Received: by 2002:a37:c383:: with SMTP id r3mr1011737qkl.25.1551285764714;
-        Wed, 27 Feb 2019 08:42:44 -0800 (PST)
+X-Received: by 2002:a17:902:724c:: with SMTP id c12mr946339pll.16.1551285599804;
+        Wed, 27 Feb 2019 08:39:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:39c3:: with SMTP id m61ls841229qte.0.gmail; Wed, 27 Feb
- 2019 08:42:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxhrlhfdgm7qL8+rx1v9jVQ2UZxl4zXBjeeyb/TOv4A3A6meUCGJa+yH6I1lUocJvMh+ujr
-X-Received: by 2002:aed:39c7:: with SMTP id m65mr1703120qte.2.1551285764018;
-        Wed, 27 Feb 2019 08:42:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551285764; cv=none;
+Received: by 2002:a17:902:8216:: with SMTP id x22ls1013531pln.3.gmail; Wed, 27
+ Feb 2019 08:39:59 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYlwX3NU+/Kzb8/d/bFgbUP5RmRvk4KiJbAXwM+uiyEvvMjRZQjL6VDCkqIWrLR24IKMGd0
+X-Received: by 2002:a17:902:4181:: with SMTP id f1mr938679pld.123.1551285599100;
+        Wed, 27 Feb 2019 08:39:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551285599; cv=none;
         d=google.com; s=arc-20160816;
-        b=AyuptHVguubYse+YFI8mRtHH6Hn3BSfdSX896+ldRTmDrig6iVucort5n2/5QKa14J
-         QTaVrMw4d9g3yY0M4THGjDXtCVEUQBM4+rEFXH1sWMt9nhLXrMY7hrUOggT+0JaXjjEi
-         RGp+q+P//0b7jrt6jlu80e1HxZU/ttN/wcvvrBvqh3aTe5saPluUhoUqfUtwhZE1inQP
-         gPbRZGX1MD45orHA85frlQ3mOKnUq0VkScwTSjuK/W8qFpv663G8QjVXhPUpWdQ7tUMX
-         VA1fCzNZHo7wBcomT+JrV+yFAuUQe7q3+lscz8EJoTvsrijV/Ujh39KmQxVsiLSRWuQj
-         L9Qg==
+        b=0rU5UqXbzwCxBd0K8ms+0YZahssmo61uEzP6jhmwyyIyqWJzzeRjdq7x51cWf9ibEl
+         A8y4xLdzrdXy8VOIvkPsL/gEqUVrqTdcIylIi0y6Pl4ykdjyiN5MqDpXt292RWcYxsw7
+         fmGqU1aOXm/niWVE8JO0dBN9edye4D2k2/aA2ear23UzHR88A7bHNOt2uDTQIPOOrz1u
+         0TZYPIuLFHk5UJfY10gl3USWuceeqLw5ppjYt9T1aHMbUpzgB2XP6VuV+3LUylEAQOr3
+         57bbBnQiMR12Mce6DvyIQCZ+OJIDxmu8Ps8rL4fbWkHfr0qmAJyHpJk/9djrYQJaLnE6
+         Bc2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=3pI3l55Tq3+56D3hxzaLp7ooUi7Yq39vSJIK/3g5ii8=;
-        b=MZAH+LSbbZf62R3qJUmfO/sw+xw3wIuG2NUyxB+1sRglH7uvmXlqlbLD0znMYROqu4
-         maolbncOHhwreSBPwReIZrztPd7hdP2sADeLfRSyGvOaSOynNsCEfhhjZVSBsggS0FK+
-         4vo+D1ZAWn2ylc40AI4irnRdAC7SqPYV7vMXOFBgYsRhnuJG/xbQUHeXKNeakLq68qpK
-         HcLnZRPykNTyF/QBpU3hLLx8SC+mz24rsLm6jtsODfpz/F57MjjsqJ6LLYY1JdtmpfK9
-         kedhumixha895XUj33LeHKqqgepYexZId6uN9D0XMfJv9hCRXT+qNZEpqQYNiIsGnazA
-         Bxig==
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=I6N/4HNA0aNfVD0nu9uaTl1qQSAFnAGcpMmFWmM4YyA=;
+        b=U8FFDyTFLa4hpH9WF3wxyQqkHU+TRmR1XXtMsYAOHJ9xYw6JX4MqNJkmvKacpva/j0
+         bmFdFr9woZ1pMPVNOKR4ieK1jYGRbh6thTcC0UBmRHeStoOZflmOmhrx1SXRbpkf5X8q
+         YrcNCPGVTXkEczsY+VMXltmTkEBjEPdStZh4QXUws5pOPhiGh5gKpM5RTxC3Z1BtYG0c
+         YAfZjnyIPYf5rUgKdz4TzY3JrgAHCOpf3IM3w1gkc9nFhmFEBVMqZ0MeXGlmOTcNTTLU
+         0b8DPnr6gOhXL4oREoNXAum2p012NhS+3FHfUGugWOuOV7BsEeVjJiZWCZclIVSGInm9
+         UbVg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=BFPk0AGM;
-       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
-Return-Path: <SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id i11si886609qkk.4.2019.02.27.08.42.43
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UYqZVEQQ;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id b38si567179plb.1.2019.02.27.08.39.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Feb 2019 08:42:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 27 Feb 2019 08:39:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=BFPk0AGM;
-       spf=pass (google.com: domain of srs0=y1qt=rc=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=y1QT=RC=linuxfoundation.org=gregkh@kernel.org"
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 5F574217F5;
-	Wed, 27 Feb 2019 16:42:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551285762;
-	bh=3DMcpisBj89XZ7yQCXzoJpQJFpIYYiu1o9bd3QXhcUo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BFPk0AGM6/gJP01W9u39iB3J+WA/pNSwHuqK5Li2Q4hCyfcXq/iAMh6tFfZXc7YGY
-	 8HlDFwUW/FiXMtZP15XldW1iozOsXkjUwzVnccm5abyPFh+oZjC0oHabxOnBreBoCm
-	 L13DdOUGi6KFKHQhjbFmsc4QGOohLgSLhUgAmUNc=
-Date: Wed, 27 Feb 2019 17:42:40 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumthia Prabakaran <madhumithabiw@gmail.com>
-Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UYqZVEQQ;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x343.google.com with SMTP id n71so14878397ota.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Feb 2019 08:39:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=I6N/4HNA0aNfVD0nu9uaTl1qQSAFnAGcpMmFWmM4YyA=;
+        b=UYqZVEQQnng3kvb/hjGSpmyZlH9A1/lS2ZzM+Mp4MNtndWhzqVgN3eMm2lNY5riPHx
+         4cGRqt5+EQ1W9VmnzEpwx3DgqcAXcn2kc41+8kQF3JwPLXV1x6o5smy7Z/oEr5pGfr2h
+         kFADZJWPtLCjetpF7jvnOn820sX5XJxrhBMMFaalKXzZRvWi4ynd+Qy1wkqG+f1aa73W
+         +BNJi6/8qzpvdiNFPB5Aq9ZNIsCXLVFfsaBAC0eE8r+pkIYcMOIufLDNxCBWQQeN/eLP
+         l6jHEkXJAp+29yQh6v9F6sMj5VH2yuVvzlrOwe02ohsAiE8j8aUjQ8j5OLHBYAkg8mmk
+         VuOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=I6N/4HNA0aNfVD0nu9uaTl1qQSAFnAGcpMmFWmM4YyA=;
+        b=K7eKPZfpYOxPoZ9S9qWJsHPAXBkDjYOI+SlkcG5j7j+sejPwx95lgsEIzxBZNoxqDZ
+         KzsPpQNtxkIwBv6eYMloSRSSw6Vdc9dAL1PsjWZI8JkEvCe/OznRyYJOIGWvFyrZLYQS
+         dqIWc3Yu50SvIqzx4tBjTQUMHivbohOJcGVkVG2518bFkOzy9pUwC9BB4lCuK2t8euWX
+         Lyf3K2YDKxa+mbt+f4IEDwztvnAJZmJIVDBjODzvs7s9oIz5mGxZEN0BaWGj4ON5cAkV
+         d3QagKdiXR3kBQnz/K+MNgndAv0umWWG6uVBS2dBVmgoijtFLe6WZvnE62irh09gt/KS
+         /yOg==
+X-Gm-Message-State: AHQUAuYi3QDasfxntVGQe+4il5x8rDYsBY0yDTnSRDPYLLJxabMHl5dU
+	ciyTrzgcBduwhLSaoxxr+s+l3bNKY/guaw==
+X-Received: by 2002:a9d:73d7:: with SMTP id m23mr2866028otk.142.1551285598067;
+        Wed, 27 Feb 2019 08:39:58 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id q5sm6487284otf.73.2019.02.27.08.39.56
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Feb 2019 08:39:57 -0800 (PST)
+Date: Wed, 27 Feb 2019 10:39:52 -0600
+From: Madhumthia Prabakaran <madhumithabiw@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>, forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v3] Staging: vt6655: Alignment of
  static function declaration
-Message-ID: <20190227164240.GA11873@kroah.com>
+Message-ID: <20190227163950.GA22354@madhuleo>
 References: <20190227160148.21914-1-madhumithabiw@gmail.com>
  <20190227162834.GC23972@kroah.com>
- <20190227163950.GA22354@madhuleo>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190227163950.GA22354@madhuleo>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+In-Reply-To: <20190227162834.GC23972@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, Feb 27, 2019 at 10:39:52AM -0600, Madhumthia Prabakaran wrote:
-> On Wed, Feb 27, 2019 at 05:28:34PM +0100, Greg KH wrote:
-> > On Wed, Feb 27, 2019 at 10:01:48AM -0600, Madhumitha Prabakaran wrote:
-> > > Align function arguments and function return type to improve
-> > > readability.
-> > > 
-> > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> > > ---
-> > > Changes in v3
-> > > - Included driver name in subject line.
-> > > 
-> > > Changes in v2
-> > > - Improved alignment of function declaration
-> > > - Modified subject line and commit log
-> > > ---
-> > >  drivers/staging/vt6655/card.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-> > > index 229137f29690..8d0182f5725c 100644
-> > > --- a/drivers/staging/vt6655/card.c
-> > > +++ b/drivers/staging/vt6655/card.c
-> > > @@ -62,7 +62,7 @@ static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
-> > >  
-> > >  static void s_vCalculateOFDMRParameter(unsigned char byRate, u8 bb_type,
-> > >  				       unsigned char *pbyTxRate,
-> > > -				       unsigned char *pbyRsvTime)
-> > > +				       unsigned char *pbyRsvTime);
+On Wed, Feb 27, 2019 at 05:28:34PM +0100, Greg KH wrote:
+> On Wed, Feb 27, 2019 at 10:01:48AM -0600, Madhumitha Prabakaran wrote:
+> > Align function arguments and function return type to improve
+> > readability.
 > > 
-> > The patch does not do what your changelog text says it is doing :(
+> > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > ---
+> > Changes in v3
+> > - Included driver name in subject line.
+> > 
+> > Changes in v2
+> > - Improved alignment of function declaration
+> > - Modified subject line and commit log
+> > ---
+> >  drivers/staging/vt6655/card.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+> > index 229137f29690..8d0182f5725c 100644
+> > --- a/drivers/staging/vt6655/card.c
+> > +++ b/drivers/staging/vt6655/card.c
+> > @@ -62,7 +62,7 @@ static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
+> >  
+> >  static void s_vCalculateOFDMRParameter(unsigned char byRate, u8 bb_type,
+> >  				       unsigned char *pbyTxRate,
+> > -				       unsigned char *pbyRsvTime)
+> > +				       unsigned char *pbyRsvTime);
 > 
-> I want to ensure whether you mean 'git diff' is not same as it is stated in commit log. I think, i didn't reset the commited patch and just edited the subject line. Please correct me, if I'm wrong
+> The patch does not do what your changelog text says it is doing :(
 
-I have no idea what you did here, but the diff here is not doing what
-your changelog says it is doing.  So something got out of sync.
+I want to ensure whether you mean 'git diff' is not same as it is stated in commit log. I think, i didn't reset the commited patch and just edited the subject line. Please correct me, if I'm wrong
 
-greg k-h
 
