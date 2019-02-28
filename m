@@ -1,133 +1,150 @@
 X-GM-THRID: 6662791794901647360
-X-Received: by 2002:a25:296:: with SMTP id 144mr753023ybc.55.1551388470681;
-        Thu, 28 Feb 2019 13:14:30 -0800 (PST)
+X-Received: by 2002:a1c:a846:: with SMTP id r67mr115298wme.18.1551387093638;
+        Thu, 28 Feb 2019 12:51:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:4c4:: with SMTP id 187ls1953386ybe.11.gmail; Thu, 28 Feb
- 2019 13:14:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzqOVNB1AmO3S4ZXxY99i4IZdZ+66mjMT1tSzPTup97X4KsmNS6DmHIJ1Kh+YziVjKKTPy2
-X-Received: by 2002:a25:3b89:: with SMTP id i131mr821172yba.26.1551388469977;
-        Thu, 28 Feb 2019 13:14:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551388469; cv=none;
+Received: by 2002:adf:eb09:: with SMTP id s9ls1493035wrn.12.gmail; Thu, 28 Feb
+ 2019 12:51:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqymcqv/R1Z9VEXrnO5n//EhOEr5TG+TFanAsyiQrBUfVCMvEAeAPmx00KHfZbc6BuLludMn
+X-Received: by 2002:adf:ea81:: with SMTP id s1mr74378wrm.19.1551387092818;
+        Thu, 28 Feb 2019 12:51:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551387092; cv=none;
         d=google.com; s=arc-20160816;
-        b=cW/bSnK3NC+UlHQX6w6uiHH8Vb++Bl8ZwgBo+1xWFL/oRSQHNryY6q5iGQLQivV1YB
-         dKOWMdXUaKwWA/CFu7GhQSGORex1knleH0JE3zUPnYEWCmaAyzxGpMd3oLP1Tgg0fNHB
-         /o49a6wNjydRITpQ9J2zsKOHXsPBO85+0clLD6KOVMD8Rxi33EyikcziwtFzYIQLfJ09
-         N89bEXBo9CRQR2vxRIdJqsWxFVw6/RHXYjBS63++VPqrB34Sm2aTCDLfws6A9H0UvaSa
-         e4DffvRED4UhSz+Npe83gk8W4KpjO1O1A7hawpixevWfSfYYdTriOBxaUtoEQAp1VXtm
-         f+Mw==
+        b=HWRgnsGjc4RFu6ijl+KPuwe13GR0VGkCVImaCbAJ/5HLjSJ1luoaC8kW7X4JTUO/iP
+         3lDejMgCIPzcFvBIbmDaGy9yZwctmK5eziSAaGC11pXvk4iz6LD9eb0/ALrmKJSWUfmL
+         0kZcQqStSUBFck7KinTQI7eOtWNdSbYLVso5bwIXgAiHPqSRR86Ei9HNIlqLXnAgsBsT
+         EIjyBT3QyQg5bIAzDsuRyZJbguuubK5n3ICdejl3xpmZWWhwlM/n3zpOc2i+grVmmsIp
+         AbiT+UVrcM3SL4+xquKIN4vg02pLm/arUGhDQ4uzkDIv587wVEqVoTzmI7R3+7RzGui0
+         jgfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=exHS7DT0rcaQhixgkyKzD/NrS5RL2YlFDbUDw8mw7Ig=;
-        b=OqEXhgWpwu7TrVnfRm7EyzqFruLpucPNyNdQY+xxAVeIGLldllDXw61ykWxO/CKENF
-         PuDysdJWpYC6LN4bO59LFwui8YRvZxE9qTMgx2KqzxWizV5IY1IdzSTvRPnwRJPsOMOr
-         rxDpbrr/DlsFsPjehCBDiLa6RhG+xIUImkNfq71C3UFngujXpAthsiJfY5pL8zrJultj
-         jgpbZHCtPLN6TmbHxo+rwAE1PhgXx3RJrbtaQO9qdQ+ooI7RuuHx6jSncUrTk0lke0/B
-         mhRgzYwYtij9SW5URMMQBf8s+rGHRia3kDBomWKbRtnKjGYmwoAt8wH0kIV6slOpnuT+
-         YYwA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=XoKeLtz3CGXpjQ/ma+CJM3oVKBrnOyZYMiMnCmydHGo=;
+        b=AljYpTVfj06XRIUbVRK9vCQGfpWmLnkPiL+XGPLJiUzYnYOwEBcJpJ+CaQ6jyOq5cp
+         x2uY+1VpP1FYzvZf7Zh9Xs7+32Y0Np7WWwcr/k0Rjx8QzLkCtejl1hB7TQJM8pfZiH8z
+         LCten4+PQcF6bYD4MftOeHdQlhBb7bws51Us2ub2xxGLaz7r31askvje2vaWUS/PDSuB
+         GXkKKdj0YHWCz1AMJY91haEbNg4thDDjos5dSIjaTPPXukAgiaj4vPD5taAkzFVlWxZC
+         zxObuj7/CX/xiRdmxuzL9FtJDQnxjNgl23uxdkkEqVT7Rkzn79gOWik5pRNIABCT1ffS
+         /Uaw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=h8k83FM4;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22f as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x22f.google.com (mail-oi1-x22f.google.com. [2607:f8b0:4864:20::22f])
-        by gmr-mx.google.com with ESMTPS id t14si764210ybg.3.2019.02.28.13.14.29
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 109si752580wrb.0.2019.02.28.12.51.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 13:14:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22f as permitted sender) client-ip=2607:f8b0:4864:20::22f;
+        Thu, 28 Feb 2019 12:51:32 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=h8k83FM4;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22f as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x22f.google.com with SMTP id g16so17751670oib.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Feb 2019 13:14:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=exHS7DT0rcaQhixgkyKzD/NrS5RL2YlFDbUDw8mw7Ig=;
-        b=h8k83FM4INl43Yu6WxiznsBh3yhkq/4TAQrgOVsA7DItecM0j+zt571WWmiCqasQyq
-         ywr+A1gFrHOzvCbjDYl0UsL7gR/P5iPuphyy+cCmnsCvBro2zIfvVKbkWYCqI9VkDieE
-         NOgMAkLAT06SUdshcHqAK6VOdqzCdv+DiSKrxEVKFDXF1K2nqcKKWgcMy9a4602g6XSt
-         QnDMSD1JBeA7LGL1nzmuqaheNjHOPkRCPjQFEUdsu3YvDpIRf9bertU51TXCPop1srnP
-         UMl1fiCGYGEsk9IzHRbkFXdzSKlBUnhHMQEi3YMDXWQ4NvDwjYiidmBYG0oUGGRexZ2W
-         RTzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=exHS7DT0rcaQhixgkyKzD/NrS5RL2YlFDbUDw8mw7Ig=;
-        b=EMfif6EAEva8xc3cAMolRZ849bcPdYRsd5F/kHDtj4jqYcC2CCCsBgkGNsxXW725Ju
-         7hztbhD9ezEW0LjrY7Qz+hioE0D7BdpbpzGS/cHofl75yYmN/bJJLvgXfMw11wmC3X95
-         Pvo0JkhaMDfghJDZgTy98Fthk2bOnPTwxHOzcxlaw4/3ORzx+aeprfhnr+BxEcElq1aY
-         zVLw0Li6P3DqMNrbLBfD3T3DYl5CGDPDGD8tZ6xBnz/LMxNQt0HhcumKTqyUwrOKnkPV
-         OPK1dTAvupm5/944PyCKbkF1z/UDXugf1pcvIQNYgrdQQ0vgrQe50GLbroOJNYD70ksc
-         6YNw==
-X-Gm-Message-State: AHQUAuZL0wqF+UTsMJTh34o/RQyTLUBXTLqyQ7homAPnXIYFEp2XTTy1
-	zjUpIK5N/04MeVmwLkWvR8mZYvVlHO3H0w==
-X-Received: by 2002:aca:d946:: with SMTP id q67mr1216420oig.102.1551388468291;
-        Thu, 28 Feb 2019 13:14:28 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id p10sm7738871otq.34.2019.02.28.13.14.26
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Feb 2019 13:14:27 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v6] Staging: vt6655: Align a static function declaration
-Date: Thu, 28 Feb 2019 15:14:22 -0600
-Message-Id: <20190228211422.26979-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,424,1544482800"; 
+   d="scan'208";a="297716927"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Feb 2019 21:51:32 +0100
+Date: Thu, 28 Feb 2019 21:51:32 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Madhumthia Prabakaran <madhumithabiw@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v5] Staging: vt6655: Align a static
+ function declaration
+In-Reply-To: <20190228204639.GA26488@madhuleo>
+Message-ID: <alpine.DEB.2.21.1902282149440.3134@hadrien>
+References: <20190228202810.26235-1-madhumithabiw@gmail.com> <alpine.DEB.2.21.1902282140240.3134@hadrien> <20190228204639.GA26488@madhuleo>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Align function arguments and function return type to improve
-readability.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
-Changes since v6:
-- Started again to recommit from greg's version due to code duplication
 
-Changes in v5:
-- Commit log and code diff are matching. In last commit, there was error
-from my side while reevaluating and commiting it again
+On Thu, 28 Feb 2019, Madhumthia Prabakaran wrote:
 
-Changes in v4:
-- Commit log and code diff are matching
+> On Thu, Feb 28, 2019 at 09:40:58PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Thu, 28 Feb 2019, Madhumitha Prabakaran wrote:
+> >
+> > > Align function arguments and function return type to improve readabilty.
+> > >
+> > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > > ---
+> > > Changes in v5
+> > > - Commit log and code diff are matching. In last commit, there was error
+> > > from my side while reevaluating and commiting it again.
+> > >
+> > > Changes in v4
+> > > - Commit log and code diff are matching
+> > >
+> > > Changes in v3
+> > > - Included driver name in subject line.
+> > >
+> > > Changes in v2
+> > > - Improved alignment of function declaration
+> > > - Modified subject line and commit log
+> > > ---
+> > >  drivers/staging/vt6655/card.c | 15 ++++-----------
+> > >  1 file changed, 4 insertions(+), 11 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+> > > index 3226dbaab3bb..f858f97cf119 100644
+> > > --- a/drivers/staging/vt6655/card.c
+> > > +++ b/drivers/staging/vt6655/card.c
+> > > @@ -60,14 +60,9 @@ static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
+> > >
+> > >  /*---------------------  Static Functions  --------------------------*/
+> > >
+> > > -static
+> > > -void
+> > > -s_vCalculateOFDMRParameter(
+> > > -	unsigned char byRate,
+> > > -	u8 bb_type,
+> > > -	unsigned char *pbyTxRate,
+> > > -	unsigned char *pbyRsvTime
+> > > -);
+> > > +static void s_vCalculateOFDMRParameter(unsigned char byRate, u8 bb_type,
+> > > +				       unsigned char *pbyTxRate,
+> > > +				       unsigned char *pbyRsvTime);
+> > >
+> > >  /*---------------------  Export Functions  --------------------------*/
+> > >
+> > > @@ -84,9 +79,7 @@ s_vCalculateOFDMRParameter(
+> > >   *
+> > >   * Return Value: none
+> > >   */
+> > > -static
+> > > -void
+> > > -s_vCalculateOFDMRParameter(
+> > > +static void s_vCalculateOFDMRParameter(
+> > >  	unsigned char byRate,
+> > >  	u8 bb_type,
+> > >  	unsigned char *pbyTxRate,
+> >
+> > You could realign the parameter list here as in the other case.
+> >
+> > julia
+> >
+> > > --
+> > > 2.17.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190228202810.26235-1-madhumithabiw%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1902282140240.3134%40hadrien.
+> > For more options, visit https://groups.google.com/d/optout.
+>
+> I realigned the parameter list for function s_vCalculateOFDMRParameter. I don't know why it is showing in a mail like that after EXPORT FUNCTION
+> Please correct me, if I'm understanding it in a wrong way
 
-Changes in v3:
-- Included driver name in subject line.
+Indeed, there seems to be some code duplication.  I would suggest to get
+rid of all of your commits and go back to Greg's version and start over.
 
-Changes in v2:
-- Improved alignment of function declaration
-- Modified subject line and commit log
----
- drivers/staging/vt6655/card.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index 3226dbaab3bb..6ecbe925026d 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -60,14 +60,9 @@ static const unsigned short cwRXBCNTSFOff[MAX_RATE] = {
- 
- /*---------------------  Static Functions  --------------------------*/
- 
--static
--void
--s_vCalculateOFDMRParameter(
--	unsigned char byRate,
--	u8 bb_type,
--	unsigned char *pbyTxRate,
--	unsigned char *pbyRsvTime
--);
-+static void s_vCalculateOFDMRParameter(unsigned char byRate, u8 bb_type,
-+				       unsigned char *pbyTxRate,
-+				       unsigned char *pbyRsvTime);
- 
- /*---------------------  Export Functions  --------------------------*/
- 
--- 
-2.17.1
-
+julia
 
