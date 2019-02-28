@@ -1,211 +1,103 @@
 X-GM-THRID: 6663088716189270016
-Date: Thu, 28 Feb 2019 19:18:36 -0800 (PST)
-From: etsai042@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <7cbedee6-4634-4634-830e-0084b6e921f7@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.1902282110390.3134@hadrien>
-References: <20190228162703.14828-1-etsai042@gmail.com>
- <alpine.DEB.2.21.1902282110390.3134@hadrien>
+X-Received: by 2002:a2e:994b:: with SMTP id r11mr46627ljj.15.1551384740009;
+        Thu, 28 Feb 2019 12:12:20 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a2e:2c7:: with SMTP id y68ls815216lje.10.gmail; Thu, 28 Feb
+ 2019 12:12:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzr6O89QZM8dLIPYUf5HyPb5Is9lMkHkI8Y2Ahc/jHt4PKLqxQH5k7yi1HQPwVVH6VjB/X3
+X-Received: by 2002:a2e:909a:: with SMTP id l26mr46472ljg.1.1551384739041;
+        Thu, 28 Feb 2019 12:12:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551384739; cv=none;
+        d=google.com; s=arc-20160816;
+        b=L5rEMQnga8Hlhjzk6k7Th43DMW6Tb5Q6O1DjyssYu4oyFQrqURza7kr+zUX7MaG+WP
+         IqnXvu9hYuU8+hnkAzxatntbfgoD6F/fDkfKtm4LUiXlGD+lrwDxpfpW/+W/6K5EKlLE
+         raAHN7vj9Eo85oMl8jVZE5ehjpcM8A2yOkW3f5qcYJ9iA5FFocujaIYdkqqxUo5M4ltx
+         VlLDD897cjITXMnn/6RiquHrlYNaCughOhx21QoSHwblVBLG+llR6K2gsen+2NGTk0u3
+         CulI5X7WQucITiQDKqRZLglqMKH5I60ApeN78WsBNgNDL+yuJSEQ5qtkDQmd9aaS8c8/
+         anKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=JZ/TnabX4mOafmBxTvhqDFt/q64FV5w3shZ7dY7e4zw=;
+        b=qs6t2AXcXXSd3E1hKVKqmB8APQoh1nQpckOJ3AVLaaz4FSLQuhEKhZ6WwKHdrYzJih
+         3RZaRHEVjvix9q6R/G8iOkpoDfn2lSXM96/EJk9PuYYGuiSZ+NPoB3zSAkgUswMktuc3
+         V3g5qD2MFZz/+b3stQcRztw3oYG5XYT6NwGKSxAZvyboVDzdM6LGDqBh/1Z6+ykZVdrY
+         GvJP/4qtrgnvBwgn5cpvVsVB7KlEkW/DZ6ZWNntHSzOBFPkqcaafmmkfNCVeOOyU5Mo9
+         +jH5oISs5X3mrwi6vQD6qMX0U2xdOCx/7TjegAKE3jzWE5z9+f/JYeWXvQPKhGU0MMOl
+         gRog==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id x12si491226ljb.2.2019.02.28.12.12.18
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Feb 2019 12:12:19 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,424,1544482800"; 
+   d="scan'208";a="297715109"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Feb 2019 21:12:18 +0100
+Date: Thu, 28 Feb 2019 21:12:17 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Elisa Tsai <etsai042@gmail.com>
+cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] Staging: fpgaboot: Delete newline at
  end of file
+In-Reply-To: <20190228162703.14828-1-etsai042@gmail.com>
+Message-ID: <alpine.DEB.2.21.1902282110390.3134@hadrien>
+References: <20190228162703.14828-1-etsai042@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_89_627094834.1551410316300"
-X-Google-Token: EIzJ4uMFt26qciYFqxI0
-X-Google-IP: 128.199.125.193
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_89_627094834.1551410316300
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_90_1966889601.1551410316301"
 
-------=_Part_90_1966889601.1551410316301
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 
-Hi, Julia! There is a checkpatch.pl warning=20
-of drivers/staging/gs_fpgaboot/Kconfig because, as it is written in=20
-Documentation/kbuild/kconfig-language.txt (line178):
-------------
-Every line starts with a key word and can be followed by multiple
-- help text: "help" or "---help---"
-  This defines a help text. The end of the help text is determined by
-  the indentation level, this means it ends at the first line which has
-  a smaller indentation than the first line of the help text.
-  "---help---" and "help" do not differ in behaviour, "---help---" is
-  used to help visually separate configuration logic from help within
-  the file as an aid to developers.
-------------
-The newline at the end of Kconfig file is the reason of this warning,=20
-deleting it is the change I made. I did not made major change to its=20
-context, just fixed its code style.
+On Fri, 1 Mar 2019, Elisa Tsai wrote:
 
-=E5=9C=A8 2019=E5=B9=B43=E6=9C=881=E6=97=A5=E6=98=9F=E6=9C=9F=E4=BA=94 UTC+=
-8=E4=B8=8A=E5=8D=884:12:20=EF=BC=8CJulia Lawall=E5=86=99=E9=81=93=EF=BC=9A
+> From: E-Tsai <etsai042@gmail.com>
 >
+> This patch fixes the checkpatch.pl warning:
+> WARNING: please write a paragraph that describes the config symbol fully
 >
->
-> On Fri, 1 Mar 2019, Elisa Tsai wrote:=20
->
-> > From: E-Tsai <etsa...@gmail.com <javascript:>>=20
-> >=20
-> > This patch fixes the checkpatch.pl warning:=20
-> > WARNING: please write a paragraph that describes the config symbol full=
-y=20
-> >=20
-> > Signed-off-by: E-Tsai <etsa...@gmail.com <javascript:>>=20
->
-> If your real name is Elisa Tsai, you should put that.=20
->
-> > ---=20
-> >  drivers/staging/gs_fpgaboot/Kconfig | 2 +-=20
-> >  1 file changed, 1 insertion(+), 1 deletion(-)=20
-> >=20
-> > diff --git a/drivers/staging/gs_fpgaboot/Kconfig=20
-> b/drivers/staging/gs_fpgaboot/Kconfig=20
-> > index 550645291fab..f1179eef2d78 100644=20
-> > --- a/drivers/staging/gs_fpgaboot/Kconfig=20
-> > +++ b/drivers/staging/gs_fpgaboot/Kconfig=20
-> > @@ -5,4 +5,4 @@ config GS_FPGABOOT=20
-> >          tristate "Xilinx FPGA firmware download module"=20
-> >          default n=20
-> >          help=20
-> > -          Xilinx FPGA firmware download module=20
-> > +          Xilinx FPGA firmware download module=20
->
-> I don't see the change here.=20
->
-> This is probably not the best first patch to send, because without=20
-> expertise in the device, you won't know what paragraph to write.=20
->
-> julia=20
->
-> > \ No newline at end of file=20
-> > --=20
-> > 2.17.1=20
-> >=20
-> > --=20
-> > You received this message because you are subscribed to the Google=20
-> Groups "outreachy-kernel" group.=20
-> > To unsubscribe from this group and stop receiving emails from it, send=
-=20
-> an email to outreachy-kern...@googlegroups.com <javascript:>.=20
-> > To post to this group, send email to outreach...@googlegroups.com=20
-> <javascript:>.=20
-> > To view this discussion on the web visit=20
-> https://groups.google.com/d/msgid/outreachy-kernel/20190228162703.14828-1=
--etsai042%40gmail.com.=20
->
-> > For more options, visit https://groups.google.com/d/optout.=20
-> >=20
->
+> Signed-off-by: E-Tsai <etsai042@gmail.com>
 
-------=_Part_90_1966889601.1551410316301
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+If your real name is Elisa Tsai, you should put that.
 
-<div dir=3D"ltr">Hi, Julia! There is a checkpatch.pl warning of=C2=A0driver=
-s/staging/gs_fpgaboot/Kconfig because, as it is written in Documentation/kb=
-uild/kconfig-language.txt (line178):<div><div><div>------------<br></div><d=
-iv>Every line starts with a key word and can be followed by multiple</div><=
-div><div>- help text: &quot;help&quot; or &quot;---help---&quot;</div><div>=
-=C2=A0 This defines a help text. The end of the help text is determined by<=
-/div><div>=C2=A0 the indentation level, this means it ends at the first lin=
-e which has</div><div>=C2=A0 a smaller indentation than the first line of t=
-he help text.</div><div>=C2=A0 &quot;---help---&quot; and &quot;help&quot; =
-do not differ in behaviour, &quot;---help---&quot; is</div><div>=C2=A0 used=
- to help visually separate configuration logic from help within</div><div>=
-=C2=A0 the file as an aid to developers.</div></div></div><div>------------=
-</div><div>The newline at the end of Kconfig file is the reason of this war=
-ning, deleting it is the change I made. I did not made major change to its =
-context, just fixed its code style.</div></div><br>=E5=9C=A8 2019=E5=B9=B43=
-=E6=9C=881=E6=97=A5=E6=98=9F=E6=9C=9F=E4=BA=94 UTC+8=E4=B8=8A=E5=8D=884:12:=
-20=EF=BC=8CJulia Lawall=E5=86=99=E9=81=93=EF=BC=9A<blockquote class=3D"gmai=
-l_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;=
-padding-left: 1ex;">
-<br>
-<br>On Fri, 1 Mar 2019, Elisa Tsai wrote:
-<br>
-<br>&gt; From: E-Tsai &lt;<a href=3D"javascript:" target=3D"_blank" gdf-obf=
-uscated-mailto=3D"si9Ass51CAAJ" rel=3D"nofollow" onmousedown=3D"this.href=
-=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascri=
-pt:&#39;;return true;">etsa...@gmail.com</a>&gt;
-<br>&gt;
-<br>&gt; This patch fixes the <a href=3D"http://checkpatch.pl" target=3D"_b=
-lank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.co=
-m/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQ=
-jCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&=
-#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x2=
-6sntz\x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">=
-checkpatch.pl</a> warning:
-<br>&gt; WARNING: please write a paragraph that describes the config symbol=
- fully
-<br>&gt;
-<br>&gt; Signed-off-by: E-Tsai &lt;<a href=3D"javascript:" target=3D"_blank=
-" gdf-obfuscated-mailto=3D"si9Ass51CAAJ" rel=3D"nofollow" onmousedown=3D"th=
-is.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;j=
-avascript:&#39;;return true;">etsa...@gmail.com</a>&gt;
-<br>
-<br>If your real name is Elisa Tsai, you should put that.
-<br>
-<br>&gt; ---
-<br>&gt; =C2=A0drivers/staging/gs_fpgaboot/<wbr>Kconfig | 2 +-
-<br>&gt; =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>&gt;
-<br>&gt; diff --git a/drivers/staging/gs_fpgaboot/<wbr>Kconfig b/drivers/st=
-aging/gs_fpgaboot/<wbr>Kconfig
-<br>&gt; index 550645291fab..f1179eef2d78 100644
-<br>&gt; --- a/drivers/staging/gs_fpgaboot/<wbr>Kconfig
-<br>&gt; +++ b/drivers/staging/gs_fpgaboot/<wbr>Kconfig
-<br>&gt; @@ -5,4 +5,4 @@ config GS_FPGABOOT
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0tristate &qu=
-ot;Xilinx FPGA firmware download module&quot;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0default n
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0help
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0Xilinx FPG=
-A firmware download module
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0Xilinx FPG=
-A firmware download module
-<br>
-<br>I don&#39;t see the change here.
-<br>
-<br>This is probably not the best first patch to send, because without
-<br>expertise in the device, you won&#39;t know what paragraph to write.
-<br>
-<br>julia
-<br>
-<br>&gt; \ No newline at end of file
-<br>&gt; --
-<br>&gt; 2.17.1
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
-ailto=3D"si9Ass51CAAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
-ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
-turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"si9Ass51CAAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
-.google.com/d/msgid/outreachy-kernel/20190228162703.14828-1-etsai042%40gmai=
-l.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;h=
-ttps://groups.google.com/d/msgid/outreachy-kernel/20190228162703.14828-1-et=
-sai042%40gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;https://g=
-roups.google.com/d/msgid/outreachy-kernel/20190228162703.14828-1-etsai042%4=
-0gmail.com&#39;;return true;">https://groups.google.com/d/<wbr>msgid/outrea=
-chy-kernel/<wbr>20190228162703.14828-1-<wbr>etsai042%40gmail.com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br></blockquote></div>
-------=_Part_90_1966889601.1551410316301--
+> ---
+>  drivers/staging/gs_fpgaboot/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/gs_fpgaboot/Kconfig b/drivers/staging/gs_fpgaboot/Kconfig
+> index 550645291fab..f1179eef2d78 100644
+> --- a/drivers/staging/gs_fpgaboot/Kconfig
+> +++ b/drivers/staging/gs_fpgaboot/Kconfig
+> @@ -5,4 +5,4 @@ config GS_FPGABOOT
+>  	tristate "Xilinx FPGA firmware download module"
+>  	default n
+>  	help
+> -	  Xilinx FPGA firmware download module
+> +	  Xilinx FPGA firmware download module
 
-------=_Part_89_627094834.1551410316300--
+I don't see the change here.
+
+This is probably not the best first patch to send, because without
+expertise in the device, you won't know what paragraph to write.
+
+julia
+
+> \ No newline at end of file
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190228162703.14828-1-etsai042%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
