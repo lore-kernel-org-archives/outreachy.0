@@ -1,102 +1,79 @@
-X-GM-THRID: 6950332332596264960
-X-Received: by 2002:a1c:6a06:: with SMTP id f6mr274853wmc.179.1618250350247;
-        Mon, 12 Apr 2021 10:59:10 -0700 (PDT)
+X-GM-THRID: 6663113562499579904
+X-Received: by 2002:a24:3a4a:: with SMTP id m71mr687412itm.12.1551377312561;
+        Thu, 28 Feb 2019 10:08:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:600c:9a6:: with SMTP id w38ls90827wmp.2.gmail; Mon, 12
- Apr 2021 10:59:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUEHhLM4cc2jYEAomNOK2Nw22Wq9L20yqMyRaRk28qKQCONEufPbIZPctDddvPvxG5QECZ
-X-Received: by 2002:a1c:6489:: with SMTP id y131mr340395wmb.0.1618250348965;
-        Mon, 12 Apr 2021 10:59:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618250348; cv=none;
+Received: by 2002:a24:ac44:: with SMTP id m4ls1650163iti.3.gmail; Thu, 28 Feb
+ 2019 10:08:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxJjiJUxCcVgYO0E8rboQzZqS6j/PmR78s0GBoUALvzGnTttpzsiAYItr+VeEX6QMyHq2d/
+X-Received: by 2002:a24:7d8a:: with SMTP id b132mr643515itc.20.1551377311686;
+        Thu, 28 Feb 2019 10:08:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551377311; cv=none;
         d=google.com; s=arc-20160816;
-        b=xXldrHhF9yyeuofCPtx/IhnGEwku/TxTMOvGBAMpSJbMyOgMYbSfsCDaAVoA1BvIm7
-         iG9EnI/K0MyExDAyZIZ5UPIk7wVPqKtV4ZW4PMOLAnWGBaQB+M8XDvPDY09qyRwIwPM9
-         9orwFMLqGjxFidLBcAnOGWj51oelCpgxl/H+OljvK7mkY06Y7JORfCZ3N/TXnN6vqXx6
-         AFbJ306DFcLQN3ncDG97qZGjLxR/BghZAtONNAivd9wbPGJ5jxamJaUpxTbhy83Y9j7B
-         ENRJ1Fv3iqp4mDFoozRzfUMMiqsdKdJHuAfF0xsW9oEu1Bm5mGfvlrah36H4rqb/Ghux
-         7QCQ==
+        b=zatl+QeHa5QrStqGHwmxulJe7+0ge9rfTrWRlukszSh7rtg/QGDsk+39/FDP/2z0Cw
+         TOeMgsKA1oR9w4heJrJSTL7OlyysUuxTEQ46VZaKXOYM+/zqpY5Q1FlPUEX0fZFN8Ev2
+         upfspFOrc2ykpP3VjembvvquMo0C8VRAcfy8kOUMd/t5XRbPS7r3rmiVJVM3PGSyPYgi
+         pSkqeMR7G4rvhrmOZLik+YfUfg6xkvSLpbCOF4alvYak03nYyb96fzxIPfIWjGY1OJ7b
+         /WgUhuyzCaXouVYOS5LqGDj4e/V35Jon9mVW3EJBo/ya9XdxbETHy9M9Uyc88DIRwTZM
+         +qMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=H/wwcGG3rNXNsZQgkGk7QbLfEu6ULkdlrYbUXwHoD98=;
-        b=w57Lb3PCLGwCBml6yjmrfgYKDdgsfQbf5sBnzz88qj9oGTQlMeelb6lIxW8unuSBt4
-         ui7a1kPrGl7wRDQvWkWLbceNawXp6A+RIdxpo+a4VlPnPZlaITIC37baffmREUCEDlHp
-         CQZTprtSC1OEUdNduBc47eBd0rrvw6PhnVLaDOwYs/O/P6+zfncGsSM2qDjVY1UvUGbX
-         qbATUep6D/ovriRgnfV8W+lPc/t8PyTaWe+rFSgw8WKtQwXYWpMaNNBkzqbM9WE5vDQs
-         SrvJmFKSE0qnXgaU5U6QDIxrubMAo0PvjKOua++Ifokly5iI54uxbfEGVpcaUNr8/D1C
-         ex5Q==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=BMAOv7R1/86NCahi3e1o4rdkdvHLvouG02pGsS51uec=;
+        b=L802qaPFzjj6wA/ZZTjwUPhve2M0Nbfljm81GFT5YeVbCULiFVb9NuzKqgxq89wBjr
+         MqEYnJB8/ptvzUrU6lkYRu6SkUmoftJIICL5YBMgZ9xfVdA9j8hR4KrqXlCirqwl8WZc
+         WuUt8xbv+GTK+EzD3MVfdmC+EGXPATcrjlFpGNlvpgp30EWHli8yfeeVEviH4jYjQSJN
+         mB+993rVTzJudMixndrk8zPGkGrY6IqZdazopJNkiGEbWWQhiQKQ18K6TEhjCXpc665H
+         sOLpapnlm4WX71hDkVHASLZrdG3oGrDsfHhmrHJKIyZ0VCCTBuysFsiq3UA49KnXpS9c
+         /oiQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kHnoF8nN;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com. [2a00:1450:4864:20::531])
-        by gmr-mx.google.com with ESMTPS id t124si21780wmb.3.2021.04.12.10.59.08
+       dkim=pass header.i=@kernel.org header.s=default header.b=rhLRpe0X;
+       spf=pass (google.com: domain of srs0=kx9h=rd=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=kX9h=RD=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=kX9h=RD=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id x76si102579itb.1.2019.02.28.10.08.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 10:59:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) client-ip=2a00:1450:4864:20::531;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Feb 2019 10:08:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=kx9h=rd=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kHnoF8nN;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x531.google.com with SMTP id w18so16208628edc.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 10:59:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=H/wwcGG3rNXNsZQgkGk7QbLfEu6ULkdlrYbUXwHoD98=;
-        b=kHnoF8nNrf8iq5HdVKMzM6b8YJRKVAxeWL8MlhUNzfwMdNjyfM7Y3PIDrGZCFh5n6V
-         DZbSRNWF0jfw3Zoa9SsLWtYsTMI8m5/eP0usAF7P7Edv6LRPahDNLgTdVfZhPqg7DKOo
-         adNPHS1OvMS5ShLem6OUVzK7BVf8soeRc6HXeekSJEbPTA0Mn82Huo92OyCaOuF9+kTM
-         oHeqt0CUmj19qdQMvrqY8K8cA2kInXmE1nyZo8uPpcby9ebsLzgrGpxLuViHra7/MtSv
-         dOgMVlomqvf14hrxLqYc9jJIQHx3MUcmQH7xU9X6xKdZILuAfNrD/4ya964yV+piI2YZ
-         vZKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=H/wwcGG3rNXNsZQgkGk7QbLfEu6ULkdlrYbUXwHoD98=;
-        b=Dc4tEPlW5+E2sq6Obdy4fHVfoa5vZ+x15xqCXCgE0YPD6mOvOUQDfb3foCpmJecTWn
-         KIrjt9l4Kpmgho99V0HtCW5UrlaiwmO4cNq/Ptq496OXKH1nqL82KrGfuifzEb0MRL5q
-         ktw28ZaWzlAhmxemK/vy9ZuRSJzuwc/HWxjt52Ck2TmiYgkV9O38yutSc0rvn11rSF4S
-         lcJjDFr7yhcPnYdO1TLozkqctJgKQ0G1Gum+e4Ng5/69q0d1s9w7P6RPZhul36p4K3ti
-         UjL6YfaOC2hebeajPE/ZeT5z2WUmyanT3iXiz7/EyFOVvWnwgOr6AVZhucjTq/k4hxnE
-         E9/w==
-X-Gm-Message-State: AOAM5319U6cZuOnGwau2jJO+Lki7G3gxDm+lPgM11iAVT9mV8c50w3uP
-	FMbZgp/DweyT0bhmbtYQXJ5oqcWRLCnF1fhY
-X-Received: by 2002:a05:6402:2054:: with SMTP id bc20mr17256693edb.334.1618250348558;
-        Mon, 12 Apr 2021 10:59:08 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id gz20sm6300534ejc.25.2021.04.12.10.59.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 10:59:08 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH 0/2] Remove spaces and blank lines  
-Date: Mon, 12 Apr 2021 19:59:01 +0200
-Message-Id: <20210412175903.17819-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=rhLRpe0X;
+       spf=pass (google.com: domain of srs0=kx9h=rd=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=kX9h=RD=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5F26F20863;
+	Thu, 28 Feb 2019 18:08:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551377310;
+	bh=vzFCKx4iXNFDeBEWpj5Y1biplFPj15h5pT8r1A0NrXk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rhLRpe0XzfuEN3yaiiZQICN5genbRItyp9b6alnHvLGyZRr3kNpqufhFAyN6S+c1a
+	 eEbuOrzIY04X7BpdIfzKrfR1OzpzofWA+cglTKf5x7tgrfV+8AN3xNtz9kcgFPBvB0
+	 G87fD8eGsYFkN5hvxH3QoYuuhaX/njZlDkWNOhyk=
+Date: Thu, 28 Feb 2019 19:08:28 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: mt7621-eth: Add SPDX identifier and remove
+ license text
+Message-ID: <20190228180828.GA30982@kroah.com>
+References: <20190228180328.7954-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190228180328.7954-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Removed spaces before tabs and multiple blank lines from Hal8723BReg.h
-for readability improvement. Issues detected by checkpatch.pl.
+On Thu, Feb 28, 2019 at 06:03:28PM +0000, Jules Irenge wrote:
+> Add the SPDX GPL-2.0 license identifier to fix checkpatch.pl warning
+> Issue found by checkpatch.pl warning:
+> "WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
+> Remove license boilerplate text
 
-Fabio M. De Francesco (2):
-  staging: rtl8723bs: hal Remove spaces before tabs
-  staging: rtl8723bs: hal: Remove multiple blank lines
+You are doing two different things here, so this should be two different
+patches.  Please make a patch series doing this and resend it.
 
- drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 43 +++++++++------------
- 1 file changed, 18 insertions(+), 25 deletions(-)
+thanks,
 
--- 
-2.31.1
-
+greg k-h
 
