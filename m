@@ -1,117 +1,93 @@
-X-GM-THRID: 6658167413174960128
-Date: Fri, 15 Feb 2019 02:10:04 -0800 (PST)
-From: supriya supugade <supu024135@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <8f0752e6-39e1-4047-8899-19866fdfe045@googlegroups.com>
-Subject: I didnt get message in log like "I can modify the Linux kernel!"
+X-GM-THRID: 6663027370941743104
+X-Received: by 2002:a25:654:: with SMTP id 81mr4079171ybg.67.1551366883014;
+        Thu, 28 Feb 2019 07:14:43 -0800 (PST)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a25:2304:: with SMTP id j4ls1338972ybj.5.gmail; Thu, 28 Feb
+ 2019 07:14:42 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IboqH+Bgpqrilx6YLtq5LVhpttQf9xVdznyOCC1lpmHY6aNT8m7poiQ7vQVARnJ1LM8DPDe
+X-Received: by 2002:a25:4e86:: with SMTP id c128mr4078361ybb.12.1551366882181;
+        Thu, 28 Feb 2019 07:14:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551366882; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EJyKKE5uP5LU48LQrTrrJWBth8Hz3Xvv6fGPXdVgJsNcyOdC5PJAeR6q0e+3ewMBlH
+         oKrLv8t3c2nmTEs0Kj9qEhL/+cgTrf4OpW++ElGSytv2xD/UhL5BmtoCaF+wJx+QrEjI
+         xbzR8ophMtLSgeV9l6DW66xyBlCBZ2eXwXNpTrdcrAaOHR2KkIpOxKDAdRC3CmRHh1WX
+         604FAjGLlCMHPmnInu7HYdkrBRBDB9YFXAPKcKp2VI9eaa4tLqOLjUcFlBjiDRxMDm3I
+         eo1vMt2rZD4CaoS14WM6tIefHJnJ89QvppvFJ7CPkSkmZTRih/h3cN5B/GGy82fVAzaI
+         q1gQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=pu+IH59zKudF3ODkMmfd+6kBG2GJ+35HaESScMRnHrY=;
+        b=JINtdyqw22IkQGq9c5zCANykNqOTBLrOtMfMoNm1Hhkh4MIserlsWLdcP60RW+TDhP
+         fP5JCHqY4WPn2Dl50g0EQNrEJARg56fgEIFwKdOp5SLtROgheRZDQykI5sV1cqwvMcSy
+         pH9LpV8v4zV+QzC+nEDJiYPoXTiNCJXi4zsDT0rieaXoKTAngn8zoqYrJQtyXqVp9Cag
+         a6/4xvj8vqn9gAYb4s57ByIxs0olBb+aaodW4LyajPzwsleCwlIiV305p0ShAalx/PDL
+         E6+xNoGDVD3OCkYYrZfa7QyihWmtVqmE0b2G+Cmj68taNp/9dpVh2AAmuw+/jNsztA9/
+         fdGA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=i7uqUtZX;
+       spf=pass (google.com: domain of srs0=kx9h=rd=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=kX9h=RD=linuxfoundation.org=gregkh@kernel.org"
+Return-Path: <SRS0=kX9h=RD=linuxfoundation.org=gregkh@kernel.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id r128si1416737ywd.0.2019.02.28.07.14.42
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Feb 2019 07:14:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of srs0=kx9h=rd=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=i7uqUtZX;
+       spf=pass (google.com: domain of srs0=kx9h=rd=linuxfoundation.org=gregkh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom="SRS0=kX9h=RD=linuxfoundation.org=gregkh@kernel.org"
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id C0E8420C01;
+	Thu, 28 Feb 2019 15:14:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551366881;
+	bh=oRbmPphIAEBMsU9Z6frQIVKijVc+CCjQ0dPsyIhsQpg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=i7uqUtZXr5zBFZnji+h0Mpp0y3C9pi5SI+1+GUcslQJe5afDOD71xVlGz1C0x1u9z
+	 7UNuhphHLfOv9hx2qYa5nWOsjGtAJCs/MoUDp9McSeqBZ14nuiOSzHYh/hnupLkItp
+	 PZg25Yb0s4HbzxlOwuwTuUJg6P/E5IVRmmXgGzdQ=
+Date: Thu, 28 Feb 2019 16:14:38 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Cc: Michael Kelley <mikelley@microsoft.com>,
+	Outreachy <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH v2 1/1] staging: speakup: fix line over 80 characters.
+Message-ID: <20190228151438.GB1360@kroah.com>
+References: <20190228122904.GA16782@bhagyashri-Lenovo-G570>
+ <CAOMPgjhjgt2bv3pL4weJjx6VgfV8Bfrmdfu31esFB8CPKusGgQ@mail.gmail.com>
+ <20190228140038.GA16345@kroah.com>
+ <CAOMPgjh3MA0WBs+WA4BVm6zrydsxiXa-oXPUkYNRAw3mNCKArQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_253_301552315.1550225404111"
-X-Google-Token: EPyfmuMF9FoubTDglZw0
-X-Google-IP: 49.207.51.216
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAOMPgjh3MA0WBs+WA4BVm6zrydsxiXa-oXPUkYNRAw3mNCKArQ@mail.gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-------=_Part_253_301552315.1550225404111
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_254_510228295.1550225404112"
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-------=_Part_254_510228295.1550225404112
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+A: No.
+Q: Should I include quotations after my reply?
 
- 
-I am following the link "https://kernelnewbies.org/FirstKernelPatch"
+http://daringfireball.net/2007/07/on_top
 
-and modifying the driver in native Linux. I made a change in the 
-e1000_main.c file i.e inserted the line 
+On Thu, Feb 28, 2019 at 07:59:24PM +0530, Bhagyashri Dighole wrote:
+> My apologies Greg, Above message was for one of my subordinate who wants to
+> contribute to the project. I was helping her to understand the patch
+> submission process, verifying her patch and accedentally messed up the
+> email thread during reply.
 
-"printk(KERN_DEBUG "I can modify the Linux kernel!\n");" After recompiling 
-the kernel and rebooting it, I don't get the 
+I do not understand, are you not the one who wrote and contributed this
+patch?  Do you have multiple working on this at the same time,
+contributing with one "name"?
 
-message "I can modify the Linux kernel!\" in the log files on typing "dmesg 
-| less". I am getting following error during installing changes.
+This feels very odd...
 
-Makefile:1281: recipe for target '_modinst_' failed
-make[1]: *** [_modinst_] Error 2
-Makefile:296: recipe for target '__build_one_by_one' failed
-make: *** [__build_one_by_one] Error 2
-
-How should I proceed further?
-Feb 11 
-
-------=_Part_254_510228295.1550225404112
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"> <div class=3D"F0XO1GC-nb-gb"><div tabindex=3D"0" class=3D=
-"F0XO1GC-H-d" role=3D"button" aria-pressed=3D"false" aria-label=3D"Star thi=
-s post"><input type=3D"text" tabindex=3D"-1" aria-hidden=3D"true" style=3D"=
-opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; positio=
-n: absolute;"><span></span></div></div> <div class=3D"F0XO1GC-ed-a">    <di=
-v tabindex=3D"0" class=3D"F0XO1GC-nb-P"><input type=3D"text" tabindex=3D"-1=
-" aria-hidden=3D"true" style=3D"opacity: 0; height: 1px; width: 1px; z-inde=
-x: -1; overflow: hidden; position: absolute;"><div><div style=3D"overflow: =
-auto"><div style=3D"max-height: 10000px"><div dir=3D"ltr"><div style=3D"tex=
-t-align:left"><span style=3D"font-family: times new roman, serif;"><font si=
-ze=3D"4">I am following the link &quot;https://kernelnewbies.org/FirstKerne=
-lPatch&quot;</font></span></div><div style=3D"text-align:left"><span style=
-=3D"font-family: times new roman, serif;"><font size=3D"4"><br></font></spa=
-n></div><div style=3D"text-align:left"><span style=3D"font-family: times ne=
-w roman, serif;"><font size=3D"4">and modifying the driver in native Linux.=
- I made a change in the e1000_main.c file i.e inserted the line <br></font>=
-</span></div><div style=3D"text-align:left"><span style=3D"font-family: tim=
-es new roman, serif;"><font size=3D"4"><br></font></span></div><div style=
-=3D"text-align:left"><span style=3D"font-family: times new roman, serif;"><=
-font size=3D"4">&quot;printk(KERN_DEBUG &quot;I can modify the Linux kernel=
-!\n&quot;);&quot; After recompiling the kernel and rebooting it, I don&#39;=
-t get the <br></font></span></div><div style=3D"text-align:left"><span styl=
-e=3D"font-family: times new roman, serif;"><font size=3D"4"><br></font></sp=
-an></div><div style=3D"text-align:left"><span style=3D"font-family: times n=
-ew roman, serif;"><font size=3D"4">message &quot;I can modify the Linux ker=
-nel!\&quot; in the log files on typing &quot;dmesg | less&quot;. I am getti=
-ng following error during installing changes.</font></span></div><div style=
-=3D"text-align:left"><span style=3D"font-family: times new roman, serif;"><=
-font size=3D"4"><br></font></span></div><div style=3D"text-align:left"><spa=
-n style=3D"font-family: times new roman, serif;"><font size=3D"4">Makefile:=
-1281: recipe for target &#39;_modinst_&#39; failed<br>make[1]: *** [_modins=
-t_] Error 2<br>Makefile:296: recipe for target &#39;__build_one_by_one&#39;=
- failed<br>make: *** [__build_one_by_one] Error 2<br><br></font></span></di=
-v><div style=3D"text-align:left"><span style=3D"font-family: times new roma=
-n, serif;"><font size=3D"4"> How should I proceed further?</font></span></d=
-iv></div></div></div></div></div></div><table class=3D"F0XO1GC-nb-O" cellsp=
-acing=3D"0" cellpadding=3D"0"><tbody><tr><td class=3D"F0XO1GC-nb-R" valign=
-=3D"top" align=3D"left"><span class=3D"_username"><span class=3D"F0XO1GC-D-=
-a" style=3D"color: rgb(34, 34, 34);"></span></span>  <span></span> </td>   =
-<td valign=3D"top" align=3D"right"> <div class=3D"F0XO1GC-nb-e"><div tabind=
-ex=3D"0" role=3D"button" class=3D"F0XO1GC-n-a jfk-button-standard F0XO1GC-n=
--f F0XO1GC-nb-i F0XO1GC-nb-A" aria-disabled=3D"false" aria-label=3D"Post re=
-ply"><img src=3D"cid:autoGeneratedInlineImage1" class=3D"gwt-Image F0XO1GC-=
-n-d" aria-hidden=3D"true" width=3D"21" height=3D"21"><input type=3D"text" t=
-abindex=3D"-1" aria-hidden=3D"true" style=3D"opacity: 0; height: 1px; width=
-: 1px; z-index: -1; overflow: hidden; position: absolute;"><span class=3D"F=
-0XO1GC-n-e"></span></div><span class=3D"F0XO1GC-nb-i F0XO1GC-nb-f"><div tab=
-index=3D"0" role=3D"button" class=3D"F0XO1GC-n-a jfk-button-standard F0XO1G=
-C-k-c F0XO1GC-nb-k F0XO1GC-n-i F0XO1GC-n-h" aria-haspopup=3D"true" aria-con=
-trols=3D"gwt-uid-3081" aria-expanded=3D"false" aria-label=3D"More message a=
-ctions" id=3D"b_action_6Q2dJD6HAQAJ"><input type=3D"text" tabindex=3D"-1" a=
-ria-hidden=3D"true" style=3D"opacity: 0; height: 1px; width: 1px; z-index: =
--1; overflow: hidden; position: absolute;"><span class=3D"F0XO1GC-n-e"><spa=
-n></span></span><span class=3D"F0XO1GC-k-a"><span class=3D"F0XO1GC-k-b" rol=
-e=3D"menu"></span></span></div></span></div> <div class=3D"F0XO1GC-nb-R F0X=
-O1GC-nb-T"> <span class=3D"F0XO1GC-nb-Q F0XO1GC-b-Db" title=3D"Monday, Febr=
-uary 11, 2019 at 1:35:48 PM UTC+5:30">Feb 11</span> </div> </td> </tr> </tb=
-ody></table></div>
-------=_Part_254_510228295.1550225404112--
-
-------=_Part_253_301552315.1550225404111
-Content-Type: image/png; name="Auto Generated Inline Image 1"
-Content-Transfer-Encoding: base64
-Content-Disposition: inline; filename="Auto Generated Inline Image 1"
-X-Attachment-Id: autoGeneratedInlineImage1
-Content-ID: <autoGeneratedInlineImage1>
-
-iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAjUlEQVR42mP4//8/A7Uxw6ihtDMU
-C5hPgI8BCBkKMuA/Hj7JhjZADUhA45NtaAJUcz8aH4bXA3EBECsQa2gCkkZsBqLj+eiGYzMUphim
-8D8R+D0QG1DTpRgGkxum+6H4Ppr4fUKxn4AW+/04Yl8AqgZmQQI106kANMjOUztHgQy+T4yhpIKE
-0aKPdoYCAImSEHtctDUUAAAAAElFTkSuQmCC
-------=_Part_253_301552315.1550225404111--
+greg k-h
 
