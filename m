@@ -1,102 +1,129 @@
 X-GM-THRID: 6663286701018841088
-X-Received: by 2002:a6b:f215:: with SMTP id q21mr2081783ioh.25.1551427376552;
-        Fri, 01 Mar 2019 00:02:56 -0800 (PST)
+X-Received: by 2002:a5b:b89:: with SMTP id l9mr1632112ybq.2.1551427364243;
+        Fri, 01 Mar 2019 00:02:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:41a6:: with SMTP id b38ls2245957itd.2.canary-gmail; Fri,
- 01 Mar 2019 00:02:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzDq0LiFfSh/Qdtb6KbDdP6+YvqcAEm+bLZH90y2g0105PoCu1kY7+4nuRaB1mC4UCPFG9q
-X-Received: by 2002:a24:7d8a:: with SMTP id b132mr2364173itc.20.1551427375808;
-        Fri, 01 Mar 2019 00:02:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551427375; cv=none;
+Received: by 2002:a25:c042:: with SMTP id c63ls2453292ybf.4.gmail; Fri, 01 Mar
+ 2019 00:02:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxarNZUb2l/bk1ZSzc7xJEKl8AgwnIDTqFMQOPDnk+duoqLptPpDm3CB78RPUD8MggjlRGF
+X-Received: by 2002:a25:654:: with SMTP id 81mr1848915ybg.67.1551427363311;
+        Fri, 01 Mar 2019 00:02:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551427363; cv=none;
         d=google.com; s=arc-20160816;
-        b=SDC+t1akVV8iBQA805EmOGwqizG6JAozzq5xFJqgokrsF0XRm/CzHKP4Hl2L+4sKB8
-         AM2TCpagugzCMrpZJ0QqlufXQQKGUzlm/rW4MuLD3cx0TFOOe8N4fcu14pv3PnKMgRhW
-         bfvAbYOOdtYtT10/URv+uPi+OpeXvF2DRwpK5lXTTxziaDN+DYkxqCMqojN+oAzGBkmc
-         3qY61109vbV0YT20No7bXZS0LJ6elbSm9ry4Ij5bqZ/bhSGRKF2QiTxwzWiAUqOC2aWF
-         f4kl3nQldT6KlgMvhPM6H2yhAVUVbyObPnLS5foqbr2uvh+eYVr71MaOB/jwxfFuDkC+
-         8YQw==
+        b=seSiq39NtpxTVcHoTD4SJXJ7n/M+iCgL1tS0cpENseS/N0Yz4rH/pGlAWhLmynXl42
+         i0Ux3QYQqaOwHpJsTo0C6dwurJr9U+l6sw1VQCTs6hf5Wp7TWhePOulwtAcJt9ZYJNBI
+         oRU8/fxGqavH4Bkj0Jlf7jYHgAhYtruCIHTKAPZ9n1J9MhE82KyHF8m+4tHv6Agys3ud
+         C686RhInqqdHMMXwHSfFSucFqhW65SsGdTeaTTgh+DnACPddMkY/D6VSYqtYuJPK4DhJ
+         Gil/Ks32zCiR0WEGNgEwbOxPjt0v+8Q9t/6DyYKxIeZb08xe1YF7BqnU+n/b0wiKTwnu
+         0yIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=3j5X/uysOnhRbKuQSI8TPQ04UkrLAd7rWNbzZzYaNCk=;
-        b=AbhiOHKtk7aGZVksQE8dfBhq41IEvvYmgbbC3lwApjz+n251GjFdMJEqxGWtnaeo65
-         ClJ3KK4QgNSybxg3j81xh9BzDzSPIPGsoMb+a+xBFgEglCq362DHIyXmS711xPdrhBrJ
-         RDfqUgcn3z0sHGrUFrxqcliO5xkmW8iQMZOE/i7LtsEA8CnWbZeSOvuDS9AajqZZZ/qB
-         Sux7wQbX9C1XTry+NJEhLD7EWoYR9NpeBGbBg8i9sb9D2NmOQvsLUzVT3q/sKwUOAmKz
-         LxladMQ8DaMtHphENfe/EbHla8NJ2myS7LEUKT1NRSwYfWMaczJOwTI6PCB1WYnd6ptw
-         3sWg==
+        bh=1SSN4W0qNBUK6AcY9t+zBe9wZGW+QM+o742GDsv0E9I=;
+        b=lmyNada+trVRfXRfDcDGFxhwWM2taiFJICVN2iHKvtA13aIo8BUgdQO2WwAf2MgnCx
+         E8+g35E9JTPnyJRy31jcWTktI5Y5vW4Vpd2FXWmhmYH5auBVrPvVTvoWnaKHee+d/rFf
+         +U04onYmVFu8W6/SiZPevSA8OCd5wJ2dHfJ8q14OuF73IupNpwSDu7GxTGOeIaIYK9is
+         nPCg6mSGZbWqit7uoPwyEvD0WAhrJcDVNyTLUcoRDFso1Ra80RZuptaVGdx7O8Em42RP
+         9z1EDwF0rAUGGJzelfIYDL38Nn/R6UDLdJyB3kUJx3x9TvhThDPjbSuJAlnvBNckWaMq
+         udLA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=CeQcD6WZ;
+       dkim=pass header.i=@kernel.org header.s=default header.b=SBxBZIu0;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id y7si1132511iof.5.2019.03.01.00.02.55
+        by gmr-mx.google.com with ESMTPS id l39si1495371ywh.5.2019.03.01.00.02.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Mar 2019 00:02:55 -0800 (PST)
+        Fri, 01 Mar 2019 00:02:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=CeQcD6WZ;
+       dkim=pass header.i=@kernel.org header.s=default header.b=SBxBZIu0;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6E1702087E;
-	Fri,  1 Mar 2019 08:02:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id BCDE32087E;
+	Fri,  1 Mar 2019 08:02:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551427374;
-	bh=HOVWVBBmLVIkmPSLFqJSmMdRqbjXQfdZHSXqat1h6KY=;
+	s=default; t=1551427361;
+	bh=Wjyj3dEzGvtjcBD+NFBSPF04MXQZ0jbNRwNqoBsU8Pc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CeQcD6WZ32Gjl6qXXBpWdCcUDwtjb42jiA/xrQSEF1xt8VvLFQx7+4mvIZY/k0AL+
-	 zkoIMsRP8/3wkxpZS5ryR+VjLPB6GyB7ZpRtlMS6Nj6C+j1Be/IucLBQ+57zOKF74D
-	 x5luiUav1eLYCBUP3NErS83PkmROW6DLx899Uj+Q=
-Date: Fri, 1 Mar 2019 09:02:52 +0100
+	b=SBxBZIu0X5qEUtU3X08XqC2niyFumCSaGkJymgWfjiBZvmYkUtsHiV3aYer/l0Hwg
+	 xi3eEEEIHSNgm18BbdsC85pl3uvjblItUncOm1sLmsA1yrnK2tUvm7Z07xNOrU9Ouq
+	 dnckEWA1IEcsyYWBdcdhWz5wPoRBfjKcaPmXCsqk=
+Date: Fri, 1 Mar 2019 09:02:37 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Himadri Pandya <himadri18.07@gmail.com>
 Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 2/3] staging: rtl8712: rename bSurpriseRemoved to
- surprise_removed
-Message-ID: <20190301080252.GF13643@kroah.com>
+Subject: Re: [PATCH 1/3] staging: rtl8712: rename bDriverStopped to
+ driver_stopped
+Message-ID: <20190301080237.GE13643@kroah.com>
 References: <20190301051505.55407-1-himadri18.07@gmail.com>
- <20190301051505.55407-2-himadri18.07@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190301051505.55407-2-himadri18.07@gmail.com>
+In-Reply-To: <20190301051505.55407-1-himadri18.07@gmail.com>
 User-Agent: Mutt/1.11.3 (2019-02-01)
 
-On Fri, Mar 01, 2019 at 10:45:04AM +0530, Himadri Pandya wrote:
-> Fix checkpatch.pl warning: Avoid CamelCase by renaming struct variable
-> bSurpriseRemoved to surprise_removed.
+On Fri, Mar 01, 2019 at 10:45:03AM +0530, Himadri Pandya wrote:
+> Fix checkpatch warning: Avoid CameCase for struct variable
+> bDriverStopped by renaming it to driver_stopped.
 > 
 > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
 > ---
->  drivers/staging/rtl8712/drv_types.h       |  2 +-
->  drivers/staging/rtl8712/os_intfs.c        |  2 +-
->  drivers/staging/rtl8712/rtl8712_cmd.c     |  4 ++--
->  drivers/staging/rtl8712/rtl8712_io.c      |  4 ++--
->  drivers/staging/rtl8712/rtl8712_led.c     |  6 +++---
->  drivers/staging/rtl8712/rtl8712_recv.c    | 10 +++++-----
->  drivers/staging/rtl8712/rtl871x_eeprom.c  | 23 +++++++++++------------
->  drivers/staging/rtl8712/rtl871x_mlme.c    |  6 +++---
->  drivers/staging/rtl8712/rtl871x_pwrctrl.c |  4 ++--
->  drivers/staging/rtl8712/usb_intf.c        |  6 +++---
->  drivers/staging/rtl8712/usb_ops_linux.c   | 16 ++++++++--------
->  11 files changed, 41 insertions(+), 42 deletions(-)
+>  drivers/staging/rtl8712/drv_types.h           |  3 +--
+>  drivers/staging/rtl8712/os_intfs.c            |  2 +-
+>  drivers/staging/rtl8712/rtl8712_cmd.c         |  4 ++--
+>  drivers/staging/rtl8712/rtl8712_io.c          |  4 ++--
+>  drivers/staging/rtl8712/rtl8712_led.c         |  6 +++---
+>  drivers/staging/rtl8712/rtl8712_recv.c        | 10 +++++-----
+>  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 16 ++++++++--------
+>  drivers/staging/rtl8712/rtl871x_mlme.c        |  6 +++---
+>  drivers/staging/rtl8712/rtl871x_pwrctrl.c     |  4 ++--
+>  drivers/staging/rtl8712/usb_intf.c            |  2 +-
+>  drivers/staging/rtl8712/usb_ops_linux.c       | 18 +++++++++---------
+>  11 files changed, 37 insertions(+), 38 deletions(-)
 > 
 > diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
-> index 60c5ed55ab04..ac00aa64c7bf 100644
+> index 48d62fe6c8d4..60c5ed55ab04 100644
 > --- a/drivers/staging/rtl8712/drv_types.h
 > +++ b/drivers/staging/rtl8712/drv_types.h
-> @@ -146,7 +146,7 @@ struct _adapter {
+> @@ -145,7 +145,7 @@ struct _adapter {
+>  	struct	hal_priv	halpriv;
 >  	struct	led_priv	ledpriv;
 >  	struct mp_priv  mppriv;
->  	s32	driver_stopped;
-> -	s32	bSurpriseRemoved;
-> +	s32	surprise_removed;
+> -	s32	bDriverStopped;
+> +	s32	driver_stopped;
 
-Same as before 'bool' please.
+This is odd.  The "b" implies that this is a "boolean" flag, not a s32
+value.  Why not also change this to 'bool' at the same time to preserve
+that type information.
+
+>  	s32	bSurpriseRemoved;
+>  	s32	bSuspended;
+>  	u32	IsrContent;
+> @@ -180,4 +180,3 @@ static inline u8 *myid(struct eeprom_priv *peepriv)
+>  u8 r8712_usb_hal_bus_init(struct _adapter *adapter);
+>  
+>  #endif /*__DRV_TYPES_H__*/
+> -
+
+No need to delete this line in the same patch :(
+
+
+> diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
+> index 2d3f38007299..bd2ffd0ebde9 100644
+> --- a/drivers/staging/rtl8712/os_intfs.c
+> +++ b/drivers/staging/rtl8712/os_intfs.c
+> @@ -374,7 +374,7 @@ static int netdev_open(struct net_device *pnetdev)
+>  
+>  	mutex_lock(&padapter->mutex_start);
+>  	if (!padapter->bup) {
+> -		padapter->bDriverStopped = false;
+> +		padapter->driver_stopped = false;
+
+See you are using it as a boolean, might as well have it be a real
+boolean.
 
 thanks,
 
