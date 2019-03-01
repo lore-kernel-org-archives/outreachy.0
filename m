@@ -1,102 +1,103 @@
 X-GM-THRID: 6663442013681090560
-X-Received: by 2002:a17:906:c9d2:: with SMTP id hk18mr879634ejb.5.1551485608607;
-        Fri, 01 Mar 2019 16:13:28 -0800 (PST)
+X-Received: by 2002:a17:902:2aab:: with SMTP id j40mr2178438plb.61.1551470468365;
+        Fri, 01 Mar 2019 12:01:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:358c:: with SMTP id o12ls269867ejb.0.gmail; Fri, 01
- Mar 2019 16:13:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxwUBgkfW9A9rrTXSMnUw4hkE+K7aqY02MoWTJvkD1TXKVp9i5GGgvVQc3zitwybgYxYCSa
-X-Received: by 2002:a17:906:16c6:: with SMTP id t6mr287747ejd.6.1551485607900;
-        Fri, 01 Mar 2019 16:13:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551485607; cv=none;
+Received: by 2002:a62:6e02:: with SMTP id j2ls3878775pfc.5.gmail; Fri, 01 Mar
+ 2019 12:01:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqytHWLhl3qHZsZBFJ8nprxXovJhqTiONsgLYQOuC5qtbZ5NdLJ35J8J0OAYcpefja9FCpqC
+X-Received: by 2002:a63:88c1:: with SMTP id l184mr2668238pgd.128.1551470467575;
+        Fri, 01 Mar 2019 12:01:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551470467; cv=none;
         d=google.com; s=arc-20160816;
-        b=XXIGDl+l2IN5CSjUvnE6RxudfAopYatmx9T6bN+I3ZrJSxBzvGoiCqkVsZPca5tJ6N
-         LBVo2/ESNBH02nTQKwZu9JGpv33Tf3wr3Am2BfaBQ6Y/AhTJN8VXzlHBPssSuLKVeqa4
-         gIBpNUD0IcLtMlnU9AD4kZ4xWN+R6jwrdFFq8ruBpqjD1/PEN/9dv/QzNDbb2pzdef/6
-         XwpM2v0lL9aQFl9a/+ZdU7tGpAiYFCB5I/dy+jD1h0yKfd8TGeYtPrArN1sgTEt5iGpK
-         MS5FrJg8V0Zbyrk3/fvzSxM4f3X3SNsg40vDzUqRf0rIqmzSqXnuUcjIVfJDVQDYbpdT
-         IbMQ==
+        b=hENraHks6J/Dqi2WnmZ1u+oPLOyBqVGEPUfF55fnMjlkrKRlDQOx/vzN/9aFvBPjR5
+         vNZjXGif2mhyXIcgLIJVNdZIbcVsMrkgPyELWLPqZUO47nmRL7hjsy711smdsm9F5EQB
+         kOhfLakF2ZpfA9uOtkYnlz8WO1CS3Zg4FKalZLeMvEl5Zau4r2wSNxe/HECnDa4uKRFp
+         TRD8Hskq7VnEPzaRkLdYiYyMe3s/yH+9K2FcpjQJWfiI0UDlmUuAC9Qap2/7h0a9Haj+
+         YFgQ0cyZa9o2OLXSTQj06b7FxyPJA7vudlwKQ1lyR1/QnxuIxPHVBO/9LjyIS5fmr3iW
+         C9Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=vqnqEOJoJmV3gnIHnome28Kr7ZmjJ9O01lENwgp71tc=;
-        b=WBIP4G/nmyYheV5REGIE/AlMCeYMg0kb3ELmzISRKP/a2QeO+YHDBImlZyVIfYI3dH
-         VWPCsbPWAqKTBOyjRztR8QbbpvkfCNyGe0rhw4A1W4Vx2/W4ys2GNiqR07X26BuAZhQ4
-         T0K58VRLBP08oXN0h0FO9ABAXaBHm8yOWQMxJETXey2Dy5RgrJdrHimX+AJvvuiN9FFo
-         IpjlvUj4mAm0Wi18ra6ImFqMR72CNQgeSKS1Z/Kx3bgV3Y0QwOgYDMkQGTkzfbXeyL/y
-         2RWUlzuKN5VP0XklUO69DBrfHmpWs83I+ejVRzI6oiVxtllasLYXWteSDQkcAq6lumiK
-         fTww==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ZJ69htjMIAH3ZY832W80qUVwvIt0et6QdG/53Fv4ciA=;
+        b=hJ43mDC/gkiiWIC1PRWxqMmEQdzfeYVi8nQ0FFMxmz/L/0DtFqhxOZW938oEGUxqGQ
+         CRVhJh+Bxdp5Gfz8uY1+hOGvpCGHxPZ4LC5tA/wq6rm1AHxa0p73MizMAd7uGd4VUJ53
+         FWcvyIpqIkO0/AJ9/vqtwkuGhpRm7qn+iLgUfOq3hkwjf2WkiyTdtMML/WMCEXjGg0yF
+         m4Jfj7V1oSJ2s4M+jdjftCeIAImqNoyuGOBGOSP/RKW0kBnMNUTjWw5gXAoiXL1W0SXI
+         ZMcauU49rczy8gL7G+eJnslzyu+lu/6cOQbnvIuzNQ7qm3lhXQPDwRs3EkZDm557DzK5
+         85ig==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PBYHfE48;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::429 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com. [2a00:1450:4864:20::429])
-        by gmr-mx.google.com with ESMTPS id h12si918399edh.4.2019.03.01.16.13.27
+       dkim=pass header.i=@kernel.org header.s=default header.b="sv12D/cS";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id h15si1140994plr.5.2019.03.01.12.01.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Mar 2019 16:13:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::429 as permitted sender) client-ip=2a00:1450:4864:20::429;
+        Fri, 01 Mar 2019 12:01:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PBYHfE48;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::429 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x429.google.com with SMTP id w2so27621765wrt.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Mar 2019 16:13:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=vqnqEOJoJmV3gnIHnome28Kr7ZmjJ9O01lENwgp71tc=;
-        b=PBYHfE48Kl1hmSKwzrDmtapIrLj0onDBu4IrxYcEq+/rYZWsXFaBAGs0dPQoBp4wq6
-         JEWBW9WF4NYhKo3nyQ78Q82W2D7psjKHe82Jdv2PD/jujQiqOHf+nLq/2NhDq7Jbdg9z
-         UpNo90eL7B3ieYeMuZnS7XPhkMH2U/7lAzIw8l1Zg4nUswwWKfxbm94be2/0UADffTZO
-         1MiVjTj5VuXKfCiQazTss8GZvDCjOU1TOl7o8qja2MXBDNEKpWAGTz9LWae0vHLcebM/
-         Hmhhh0D1TsbvN5C2PLJ8zFXDPvaraf/iNKedpZBi3XR0xWv/srOBxneAkcp/fQjmGB9c
-         m4dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=vqnqEOJoJmV3gnIHnome28Kr7ZmjJ9O01lENwgp71tc=;
-        b=gfid2aWzQwQeTs3rdmajEc3vLRZF4u5+2FYJJMv4Sx5eodeVPwDgTS5yp0vQJCT7UI
-         bkr84iZ1bwtlLc2ukYqbCclpiq9aULCpHN1zR7FHk95SCHsuIR/3tDTEEnZ1cecV8c2J
-         XLQgCDYBBFTxE2T1wP7YFPme24XaHOsyL0DOwiZ+oKKOqjafPkehYps5v2Tvrd858mXH
-         33diQ/x/Gs/0MCDy1BpAOts5bg9onglS02Fo4p2isXk7whBJR83oGTb14hL1qeKufcNS
-         Ct/+th/R9t4yp8jWA6QWmpVhIJKRTdzEMwJSxUKjU+rVPwrOinDTdSQbQUrDXxSvVtMn
-         6szg==
-X-Gm-Message-State: APjAAAUO3yWSWO/SmhhaXWgIWw5t976WmP8Fy++75tNIRHnghUbdM9KO
-	Xm2+oTkHn2+4WwcAIj6z6PPaRJ4=
-X-Received: by 2002:adf:ffcd:: with SMTP id x13mr4981733wrs.20.1551485607474;
-        Fri, 01 Mar 2019 16:13:27 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
-        by smtp.gmail.com with ESMTPSA id z15sm41551608wrh.18.2019.03.01.16.13.26
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Mar 2019 16:13:26 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b="sv12D/cS";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id C97C220848;
+	Fri,  1 Mar 2019 20:01:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551470467;
+	bh=qlSm/knF/Jm+F4yMuKm9hXD5uDBF1Dru7qgx+0n4mNw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sv12D/cSI0bxNne1jkh2/TOg89zfruEnumDnTyaJVFKh8NbuO7Ie9OQ4tsA6mx6qj
+	 Ushg21atNz7kDCWPe8KatLVtS7HhF50aWQkVmpsBhO8BJJ+3OTSUH6l6bciRGMy4Dd
+	 Ww63zyVnSpl4KOfUwy+knxcm7w/YugaNIxxYupdE=
+Date: Fri, 1 Mar 2019 21:01:04 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Octave <jbi.octave@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: mt7621-dma: SPDX license cleanups
-Date: Sat,  2 Mar 2019 00:11:13 +0000
-Message-Id: <20190302001115.20477-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+Subject: Re: [PATCH 1/2] staging: mt7621-dma: add SPDX GPL-2.0 or later
+ version license identifier
+Message-ID: <20190301200104.GA19353@kroah.com>
+References: <20190301151801.7886-1-jbi.octave@gmail.com>
+ <20190301151801.7886-2-jbi.octave@gmail.com>
+ <20190301153935.GA3877@kroah.com>
+ <CAOuULM6W1PtuaysLX7=z+nXhXnM35Wyz65Gx++urmrLJcbGe2w@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAOuULM6W1PtuaysLX7=z+nXhXnM35Wyz65Gx++urmrLJcbGe2w@mail.gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
- This patch series adds SPDX license identifier to fix missing and
- malformed warning generated by checkpatch.pl tool 
- then removes unnecessary license boilerplates.
-         Now that we have the spdx specified,
-         the license text is not necessary.
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-Jules Irenge (2):
-  staging: mt7621-dma: add SPDX GPL-2.0+ license identifier
-  staging: mt7621-dma: Remove license boilerplate text
+A: No.
+Q: Should I include quotations after my reply?
 
- drivers/staging/mt7621-dma/mtk-hsdma.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
 
--- 
-2.20.1
+http://daringfireball.net/2007/07/on_top
 
+On Fri, Mar 01, 2019 at 05:38:58PM +0000, Jules Octave wrote:
+> Some people say  GPL-2.0+ has deprecated (
+> https://www.drupal.org/project/lightning/issues/2938910 ) but I will
+
+That is drupal, not the kernel.
+
+> change it to GPL-2.0+.
+> I tried looking  on  https://spdx.org/licenses/
+
+That's a nice place to read as well, but we are using an "older" version
+of spdx.
+
+Always read the in-kernel documentation, we write it for a reason :)
+
+Look at Documentation/process/license-rules.rst please, it shows that
+you should use the "GPL-2.0+" marking.
+
+thanks,
+
+greg k-h
 
