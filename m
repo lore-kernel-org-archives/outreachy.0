@@ -1,98 +1,79 @@
-X-GM-THRID: 6619601914535346176
-X-Received: by 2002:a24:2f03:: with SMTP id j3-v6mr473190itj.15.1541246174948;
-        Sat, 03 Nov 2018 04:56:14 -0700 (PDT)
+X-GM-THRID: 6663210271515869184
+X-Received: by 2002:aed:2ac3:: with SMTP id t61mr1990483qtd.37.1551427170192;
+        Thu, 28 Feb 2019 23:59:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:f80a:: with SMTP id o10-v6ls3427902ioh.2.gmail; Sat, 03
- Nov 2018 04:56:13 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5efylK3ZK3B+cZZj96S+b5gq60gRm3k48JikjUsAz3I85NhbJMMeS3o27M9pjAqi1lwF1Sn
-X-Received: by 2002:a6b:5311:: with SMTP id h17-v6mr7229433iob.11.1541246173794;
-        Sat, 03 Nov 2018 04:56:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1541246173; cv=pass;
+Received: by 2002:a0c:aa9d:: with SMTP id f29ls3104051qvb.4.gmail; Thu, 28 Feb
+ 2019 23:59:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwLsd5hXDBln+yo7+Q4D5LDCbnbWHVJgSRa7vYuvSOFS0Jqrc1xD0s6eciZI51CZSK49UxP
+X-Received: by 2002:a0c:89d2:: with SMTP id 18mr1966001qvs.9.1551427169696;
+        Thu, 28 Feb 2019 23:59:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551427169; cv=none;
         d=google.com; s=arc-20160816;
-        b=s3vsDtNTKekD2GrvDfehYVPHf+Ur5WQQi14HY9RsquYHI7G1EJeOgWBJ9JUI2CT7gk
-         5hVJkfl+NEKYfMnVIBRer1ObXMKyawq310Do1Bn1AfnaJTnFBC4bJVGU9SAt0Ff3tsAS
-         +MaEDrH2y0pnt9e4kKZfiogz1I+z0aFIVN5YJOxe8bR8/C9eQA+GZ/rCKeI99ybAha3u
-         KBMAQHgPXntbToMVy3i647fXyGwun670irf8IvqfhIjxUjvPGOGQX5zAdkOYZig140gC
-         TcLIBErqBfSiVSQ7PRgDpryKjCnllopdR0kgPBe80qHtji32+74Sa+Un8wh7C0x1j/x4
-         XLDA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=vKkPMu6JQGGNx4ejwX72O/J789qREPBc3BI9D82chYA=;
-        b=KZvykXxrGRGtqwYLSFm4ydBQHkQAJOMuzjuG7XTp/G6xz5m1VPiUwlNOFvUmx41N0/
-         j8VN2Wdrb4J9CT7x/rUD7TCCHjkS6uPzxMpo7Afe0k+xhcMNotXas0pNWWf21mAXCl3H
-         ZeRpZOJPsuKELb1cyPxUfldhtdB3wJ+wSuKobq/jwmGoZstCg/PTV2igAn1E+Wf7DYXm
-         uiVo9/6W9Nd6ECmEUCHuZgcQl6fhgl0yADnyOCHAtwb8S2m7vGyScpZavvacp2SgJqm1
-         4cBtX3Cho2G+G+KcZfS1So9wH9Pi5BWesEFjhOhiT/BQ/5IswYEdRtfo9qCEsPDDcASu
-         +yMg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=MqAbohKx;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id z137-v6si1088639iof.2.2018.11.03.04.56.12
+        b=F8zEUdFIRIqJcpaQzzsutmgt7rgDQasEKPzwlvkUwGrZya1zaFvrzV3rtBpA9Ydbv7
+         bB89doYBxc8RdHT4gUXvxvGcfGJnBJ1IL8Otr57slGo+XBJIYjSUf3ZNdW1eiapzO9SY
+         J0rZOj82qa6FqnJd2wCxdzKjN4I7EYxz2px3mlJ9msNkUQPCO6bTlrkhH0cB91wcwxlp
+         bAnktEQFV/y9sI37hRr3DDNCe2i1lbfn0U3YoLvZrkqo+Z2Aw6WFmC219ur248hFL+lu
+         vg8uXccFe/VzbMQn4Wlh+cOrnMIf3MvUgdQsNafsN4SMhiQMBlcg8OKAgCpRJJxz0UJ9
+         xX9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=u5DM2v8LAVBlIILnPrV23bnZ44f0vSwhzDlT2mTO1Z8=;
+        b=TDmI1Zy3VM2pLbjR66T92jUAfLrLsUhrH/LaS1DAg7UOCKy5p8qT9H/A5+nlMBB//Z
+         bFwM33izYcdrOECNKt5UiOSRhnxsT66nqELMqKpZuFPsBwJXPG3kAO7aWpek3fYbeu2S
+         u90A5UqzfeOoM1lQYNPtnWKAeNvGfHpTMlEhIE2zLEK2f8XoLREY18vhGmu7KB3zHXXw
+         sjaiFep0bXJk8eWa5c9wUvbquuVcklzO3lyKY87URT+cATYTwsXbCdE2VsxJe158FqVU
+         H4ZpV6R/eL4r1gnDkzCZEVOJODFvGgnbMos9UkKUldkS0aWmF+wROKPpqajMmuBDkw59
+         1bpg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=BK1Zhxj7;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id p1si1116354qkg.3.2019.02.28.23.59.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Nov 2018 04:56:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        Thu, 28 Feb 2019 23:59:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=MqAbohKx;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541246167; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=N3JbxWCNntFuxQccOR9aVkRi9kYT8CRZJPxWIDHSVCmTODADYOz5nMTkCHEOyh9tBEFV5jJ7RcawA+JfGel/69jK+nHZ2KUX1QSfGjq+e7ACzJKkVh6FLmYpbnK4Xv+uy0uJftOjY9EWD6bAX8qRkX8QbXcmGM5GYp19KeMfvmY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541246167; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=vKkPMu6JQGGNx4ejwX72O/J789qREPBc3BI9D82chYA=; 
-	b=G3ncRETKfeYcslrp4/ez6v4wCuZcC/XZgRDCLtPJq/2Z9QTosOljSitpLVTTRGTLHrYukuu+ZJpr0OOa+olI49tsaspb+uUE4ojkLS3Sh2v8MG8+lQb8jM/nsovOMOHJS7Dc8CTNhtBihST97BG+d/eHr4NfQrYxDIL6H1ZE6kQ=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541246167;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=588; bh=vKkPMu6JQGGNx4ejwX72O/J789qREPBc3BI9D82chYA=;
-	b=MqAbohKx1xPaYlr9HSQO3cB2VXpZePXLuv7WDKMSiYpYoER80Imbe0gB6LuN1WXm
-	E9YaCGbsVa/gxMN1CrZ1B0NCYBPuf6tikVAGk4fAGZo7Ou90yPvGQdVCSnxmWV23EYM
-	U4r3ux6iav0XqjhB+AyFPKl9B8jA8FpEAa/WshWk=
-Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 154124616695758.8182163066524; Sat, 3 Nov 2018 12:56:06 +0100 (CET)
-Date: Sat, 3 Nov 2018 11:56:05 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v4 0/5] staging: greybus: address minor styling issues
-Message-ID: <cover.1541246060.git.code@wizofe.uk>
+       dkim=pass header.i=@kernel.org header.s=default header.b=BK1Zhxj7;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 240902087E;
+	Fri,  1 Mar 2019 07:59:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551427168;
+	bh=LmZr6tGmTHyO6Hh6PEHSCv7fnvAUqZIdf5R+cyA6zvQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BK1Zhxj7xUaXYRAdGgMsw0prtbjv5RZI9Ksqehw3U0ZEH0cxctYxJbt9yQlL5ftz/
+	 BF2katTtfWBSenb4nKEwbSyEqN/1UPUqmhyeXr46BGvmMLwD3P+Z/ClGfu9xCHKazv
+	 Llo05aRaOmb+WaFhOZrBUOB8RJNGzLxC0hMr5tNY=
+Date: Fri, 1 Mar 2019 08:59:26 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [v3 1/2] staging: mt7621-eth: Add SPDX license identifier
+Message-ID: <20190301075926.GC13643@kroah.com>
+References: <20190301001417.16556-1-jbi.octave@gmail.com>
+ <20190301001417.16556-2-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+In-Reply-To: <20190301001417.16556-2-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Changed in v5:
-	- Rebase the patchset onto gregkh's staging source tree
-	- Decouple unrelevant patches to two separate commits
+On Fri, Mar 01, 2019 at 12:14:16AM +0000, Jules Irenge wrote:
+> Add the SPDX GPL-2.0 license identifier to fix checkpatch.pl warning
+> Issue reported by checkpatch.pl warning:
+> "WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 
-Ioannis Valasakis (5):
-  staging: greybus: align parameters to parentheses
-  staging: greybus: shorten comparison to NULL
-  staging: greybus: insert blank line after struct
-  staging: greybus correct SPDX License Identifier
-  staging: greybus: align arguments with parentheses
+This is fine, but where did the PATCH go in the subject line?
 
- drivers/staging/greybus/control.h | 5 +++--
- drivers/staging/greybus/core.c    | 6 +++---
- 2 files changed, 6 insertions(+), 5 deletions(-)
+thanks,
 
--- 
-2.19.1
-
-
--- 
-ta
-ioannis
-
+greg k-h
 
