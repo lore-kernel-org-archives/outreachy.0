@@ -1,109 +1,118 @@
 X-GM-THRID: 6663332445434150912
-X-Received: by 2002:aca:62c3:: with SMTP id w186mr2245850oib.33.1551428347468;
-        Fri, 01 Mar 2019 00:19:07 -0800 (PST)
+X-Received: by 2002:a24:5714:: with SMTP id u20mr2466413ita.6.1551427982827;
+        Fri, 01 Mar 2019 00:13:02 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:d685:: with SMTP id n127ls3534270oig.2.gmail; Fri, 01
- Mar 2019 00:19:06 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibnq8bzetiyRo4VSD4G5sGFIGQE0QAwK/o0bJxX2cXPxVFvnAaW8OrAGR1sesYR/i4L4y3E
-X-Received: by 2002:aca:3b83:: with SMTP id i125mr2172419oia.49.1551428346888;
-        Fri, 01 Mar 2019 00:19:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551428346; cv=none;
+Received: by 2002:a24:5a55:: with SMTP id v82ls2238899ita.0.canary-gmail; Fri,
+ 01 Mar 2019 00:13:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqztIRuUMJPPvfE5LRNIDUjhv+bfTY8sduEsJLtbfJH3/VbWJ25MgcXAVYU5ImpAmcKu1Lja
+X-Received: by 2002:a05:660c:2c6:: with SMTP id j6mr2493282itd.9.1551427982251;
+        Fri, 01 Mar 2019 00:13:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551427982; cv=none;
         d=google.com; s=arc-20160816;
-        b=YsODk+oegPDGCdZX6gC3DHLoB8nrkRYhin4LTNoADK5lJgQwQ5mMZk2pDsbV6eRD9O
-         dsKbUl4ZWTVe/tagjiPdrr63/jjlkTgZRBciYFU8ze/8+8Cz3Uv6IXnsaH182zp2IL+D
-         24WX47TZIbb7E1ajpPkXOmPTbhqlI6J//1Dw7RgFRrFD2WKCUBX8Xyy9nENhNyhY8tcB
-         u7u33gMRx5do0Kh32VnzY6B3BKL9aO36RtYeXj432DA+/grA2vPmbIDqqqlLij9I51co
-         tnaMtSgrtIpCXbkcnnqAI7Ru/UtZHGMXZNiX5C5lydFcFdX0ek9xu8Y+N5VytLLubSG/
-         EQGw==
+        b=LH1XYs7yDCiiDpqbUQLB1yG5XkyNNJogYURkca8tXJ8mxNY4x7QQmqTVrM+ZYyAdQm
+         4D9w4Q0NPAZgGWgrcZFepwO1sBhF72IdaNYFJAL43bJWZ+ye+aH9C3GbD/gO8zfeC9Xh
+         rd/Ew26ix1Btrj3vYHCcfR4cHYV8NarhhKd4RNiKCDomzIzCBjQ/wfl7iHwscYr/iiWm
+         gF6+VndGn9Vqf1l+/Tlz9+EXEe9Rvg4Y77hKJtAm9yXKIFKTnKKEe8vk549nE0ZtYPuG
+         d0TA9nnloS1tBISYAkATQ9Y4Cyjeen3n3dNdmnG33mxvDc/yZaQ9dTOHBIpCTHN4TssP
+         GmKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=rWwqXCizKX46jwhGoplDPh2pL2IXlG04fkomHcLPr0Y=;
-        b=hRGUsQyB2E0YtgK2ZkM59UXaHS1B62bYlzn8B/IMpX8oFSN7As8Lt0UlV3PRNYyJoF
-         HXcf/rRqlABox1KFUhxIVZJT0mMgkkJw2TEpw2F4vyQN7vjMfzvJrwd0G+cCj5eiRHcm
-         ZxGU23jDvW1g3q5w7eXGzHNVzQDTKLmLdv0RSrpLDzI9KbGo0ku4XYkYmEiHJYYF8Q3J
-         oQ4aePuuzTthEPA61mc3btwgQsQv7yXpcDduKcDzol5rw853oUSTGWAOXbFeunyZyfQP
-         kDRWJx3alvyc+iDjSo5EHS4VUnp4DkYYXH6UA73mxSvDkoT9duxz0NRSnU9m3ej+F9uB
-         LC8w==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qS76vMWLmSKHCWivI9efvwI8q4aeuDtrl2dguVZ5hLk=;
+        b=ot5V2lkNtBxOIXaQgFgJ7wCJXujTafTq00+9b9Y/T+s4naeQKEO3ko747bpsl0i8wt
+         MZUzdIU1NnA7BVF6hWTrVgKCq4Tu45SL4OliZpRXWL3uOEcn5cWo3nQmyYPyED1OV/3X
+         uq+w6WjrY3eD0j4mwmjyCNfWSSivaWnOUrmtLYOiQgq+/0lK2qpiqe2vHXW9i3i/IMlX
+         oDOiGA5i4m4OMF2GcFDMkBctW+PpMyLJO6lnTX1EYZwIiGJKvpv4GH/pOajkrwUZsZd0
+         kSXVo5StbwVIPRSyvqF77NJ/yceFdt/0Xc4C8k48co6f8i07RrlLP2Izb2YfkhPAhjLq
+         hmPQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=2uV7PXbA;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id d128si522596oia.3.2019.03.01.00.19.06
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I1kpp2UG;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <etsai042@gmail.com>
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id x22si346250ita.0.2019.03.01.00.13.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Mar 2019 00:19:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Fri, 01 Mar 2019 00:13:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=2uV7PXbA;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 751C82186A;
-	Fri,  1 Mar 2019 08:19:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551428346;
-	bh=Tv+BzXMoEV2oQ4inDMfG1XVtbtOICAzreQ/zokQ3O0s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=2uV7PXbAlkFyjjg5XFs4TgWTOuVxLQDXJVBcqlIWgqyIIc0uNrBGcqwVs26v3eCwf
-	 MVgvA0Q03SzF6tvwLr9tP+9FKFIO2gBfdA6WuWWmtzZQkogvIDYS2E8dSNfz7Gzd7F
-	 36m290FqktBA3vSVgDDNEvM/9urOp4egTc+tuVzw=
-Date: Fri, 1 Mar 2019 09:19:03 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Wentao Cai <etsai042@gmail.com>
-Cc: Rob Springer <rspringer@google.com>,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I1kpp2UG;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x543.google.com with SMTP id b2so11077126pgl.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Mar 2019 00:13:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=qS76vMWLmSKHCWivI9efvwI8q4aeuDtrl2dguVZ5hLk=;
+        b=I1kpp2UGYgYNk6f4AQBIFOodyyf8M7Jz/AEuzs2PDFiGjNPhk4VQw2p7q2DQFMWAa+
+         C9bQdC+6b9Wh2x4i3uqJJvRBz6WF5bA3n2r/c0UJVDFsqaOq7aCE3U/Rvomv6gM6bK2S
+         /8fycw16fvSMNd/qakRFqyJUf3Hm1OFSTkt9t85Xzt6Yp1tiWW/hN8cXlKMfGjvt7kaM
+         lH6kC2xeOm3wiDsI6VEFagktRpTHVBRTk+x177sNDDi+VhKt6zrZ+N4GAujHKRx47d64
+         4+ubcEsAiNFD4eEOb4EyNM9K3ZQhAuUsFLsidUWotYH/drsJ7ekteJvrw/d9D/aNI1df
+         5YoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=qS76vMWLmSKHCWivI9efvwI8q4aeuDtrl2dguVZ5hLk=;
+        b=AtQQU2va3vkSj/noJ7xU2HUF4Oa0fEu9FuVNYjqc2eYHMcRsvGQNAM0Ih+XTi/NADO
+         ADvgxpVDqBAR/UdIYQy7JuecWIv/BheLInz+g0WxnA3yT1nRf5qQyzmSPCzljKbGbI06
+         mYwf6mfyjGL7nWy18fNxk5qARaueS1tvZqaK7TF8mDS8QdvQdjEvdrnZVx5qT5+6gpcg
+         LDpmF9TvRThQYaseJf3XsYkKU6QDrzPkXT/NA7sgNTh88u2goUIiGql1yzICEbuCmYyD
+         R9qgC7i4XouUqcHfpRlwOIju7ObH+xlh97PaeOWcLulCUf9ulDL9VVl21cdvO177rHf2
+         CAyA==
+X-Gm-Message-State: APjAAAW2txeWH/a0Er0JLj4mZ6RP5NgZZNS3EJ9fJ9mkfRSvMVnCJM6l
+	C7faFHw+p+tDYR9naWX3VNM=
+X-Received: by 2002:a65:5c4b:: with SMTP id v11mr224344pgr.411.1551427981666;
+        Fri, 01 Mar 2019 00:13:01 -0800 (PST)
+Return-Path: <etsai042@gmail.com>
+Received: from localhost.localdomain ([112.122.31.150])
+        by smtp.googlemail.com with ESMTPSA id z67sm42378300pfi.152.2019.03.01.00.12.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 01 Mar 2019 00:13:00 -0800 (PST)
+From: Wentao Cai <etsai042@gmail.com>
+To: Rob Springer <rspringer@google.com>,
 	Todd Poynor <toddpoynor@google.com>,
-	Ben Chan <benchan@chromium.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: gasket: Replace symbolic permissions with octal
- permissions
-Message-ID: <20190301081903.GA7969@kroah.com>
-References: <20190301081238.6440-1-etsai042@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190301081238.6440-1-etsai042@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+	Ben Chan <benchan@chromium.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com,
+	Wentao Cai <etsai042@gmail.com>
+Subject: [PATCH] Staging: gasket: Replace symbolic permissions with octal permissions
+Date: Fri,  1 Mar 2019 16:12:38 +0800
+Message-Id: <20190301081238.6440-1-etsai042@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Fri, Mar 01, 2019 at 04:12:38PM +0800, Wentao Cai wrote:
-> This patch fixes the checkpatch.pl warning:
-> WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
-> 
-> Signed-off-by: Wentao Cai <etsai042@gmail.com>
-> ---
->  drivers/staging/gasket/gasket_sysfs.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
-> index 151e8edd28ea..708ee43175ba 100644
-> --- a/drivers/staging/gasket/gasket_sysfs.h
-> +++ b/drivers/staging/gasket/gasket_sysfs.h
-> @@ -40,7 +40,7 @@
->   */
->  #define GASKET_END_OF_ATTR_ARRAY                                               \
->  	{                                                                      \
-> -		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),   \
-> +		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),      \
+This patch fixes the checkpatch.pl warning:
+WARNING: Symbolic permissions 'S_IRUGO' are not preferred. Consider using octal permissions '0444'.
 
-This is fun, it keeps coming up and no one looks in the archives to see
-why I keep rejecting it :)
+Signed-off-by: Wentao Cai <etsai042@gmail.com>
+---
+ drivers/staging/gasket/gasket_sysfs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-This should be __ATTR_NULL(), but really, the whole macro can be deleted.
+diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
+index 151e8edd28ea..708ee43175ba 100644
+--- a/drivers/staging/gasket/gasket_sysfs.h
++++ b/drivers/staging/gasket/gasket_sysfs.h
+@@ -40,7 +40,7 @@
+  */
+ #define GASKET_END_OF_ATTR_ARRAY                                               \
+ 	{                                                                      \
+-		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),   \
++		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),      \
+ 		.data.attr_type = 0,                                           \
+ 	}
+ 
+@@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {
+ 
+ #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
+ 	{                                                                      \
+-		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
++		.attr = __ATTR(_name, 0444, _show_function, NULL),             \
+ 		.data.attr_type = _attr_type                                   \
+ 	}
+ 
+-- 
+2.17.1
 
->  		.data.attr_type = 0,                                           \
->  	}
->  
-> @@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {
->  
->  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)                     \
->  	{                                                                      \
-> -		.attr = __ATTR(_name, S_IRUGO, _show_function, NULL),          \
-> +		.attr = __ATTR(_name, 0444, _show_function, NULL),             \
-
-__ATTR_RO() please.
-
-thanks,
-
-greg k-h
 
