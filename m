@@ -1,91 +1,111 @@
 X-GM-THRID: 6663223880955461632
-X-Received: by 2002:a9d:7654:: with SMTP id o20mr2031667otl.70.1551427075984;
-        Thu, 28 Feb 2019 23:57:55 -0800 (PST)
+X-Received: by 2002:ac8:25a7:: with SMTP id e36mr1420171qte.9.1551402717771;
+        Thu, 28 Feb 2019 17:11:57 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4541:: with SMTP id s62ls3451851oia.7.gmail; Thu, 28 Feb
- 2019 23:57:55 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZzQ/CXg+pvCVDXWZ+AgQ8o+tzWtCBlohFEXt3fzUzQTQUJE5k0DBtEJQrjburFchTcGNKM
-X-Received: by 2002:aca:ecd7:: with SMTP id k206mr2202047oih.22.1551427075209;
-        Thu, 28 Feb 2019 23:57:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551427075; cv=none;
+Received: by 2002:ac8:24ef:: with SMTP id t44ls3056878qtt.4.gmail; Thu, 28 Feb
+ 2019 17:11:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxb7/Nw5qIGm5sWZd1jbR+A+QdW9AJekkLO9etx8Q6AtoM/9uGDoOPiTaex9xc9KTQ5DTub
+X-Received: by 2002:ac8:297d:: with SMTP id z58mr1379920qtz.3.1551402717052;
+        Thu, 28 Feb 2019 17:11:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551402717; cv=none;
         d=google.com; s=arc-20160816;
-        b=KatUuSBKcLntgpYqoR1MD+yIggrZ2NaaF2P8xeNoNG7nm21DolpQRRQtxQY8WsxxmF
-         EeVDBuW0yILqXlEoAu6eZ1eSQluKBbYi+scNL5TXPZnVg63Ct0yseAeyCQK8elXwI1p1
-         AMcx/lwNfdWLLwcUhX7rQX3yPDEKAyQQCrtGm1MqIdmKW1jkgm72Qw1SC1zH6XthrvQl
-         e/YiYTVnN2QtEyOEOiGKfmWDx7msWnPE5Xx/Tw3zXtWX01r3m79eVB51QbvI5qHrd3/h
-         XqK7tdMK7SMjVMLHnOQAXNMGOFp+1kXqpxfD8fprzQ4nlZjEC2QnE3G3mGD8iqDSRRe9
-         HXXw==
+        b=Ft0SFiU1JVyGe+a4xIRMKa2D1aZFJWJUlZAtoDXkiUoa3ndW+eKuvLysxpgVUccw69
+         28cnNcpAwlgQDaew9axuFXQzCuswdQFNESF3eUoBUWxX/CFE/tOOiOIlOZnUgofTShj9
+         sTdRJJ97gEbgf3d4ab9HHIb7xn1zJ08/aQogBr/wvQTZSuvjibQXaA4UaOQ1bvlmh+43
+         mI+oOCeWsrGl1S2pj2urehcdznRrZr1CAsggkLhP3vLLmmQWeCwIVJLPhTO84mQKrEh2
+         H7GT8Jn+uRMDm/s/LRDmpEOtvWsiv8zPjrRibv56M/M05zOwncr8DvHH/GqhY3CuSdrT
+         8ZbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=aPtEa2aJ/StQAxLSihSmNa2RVUNMnQ9xXJDQRe5SQ/M=;
-        b=Fjb+ma34OddOtQFcCmxdmBqFUi/KMqRwvnmhv7ONQYBOQLH9BIuWX1nvjDykxPugtT
-         o8cnLuyQCPmpgHRkGkjdp93YPaYjLrPCPvzi4VFqo5i7rKhAZTEn5TvN3SaFc4E08wGD
-         bhXOhubs/Y6FOFXgYLJtlVeBNABmtABW/whTkNHl/F2Su8Y3VfgzliX3DPY95QqzNtXt
-         Yp/JMhoIVNxbalzdsIduOZN5xtF/mfaW+ZL+Aqjwzi4cGOyj31T+QW3bnscaIhz4LYIZ
-         rsnZQ2sPRUHm4OcBtX7rEg/YkvBgL39s6/oS/KiRowZhwbXwk7shCRzkOsB5Fm3HHOeM
-         uNEw==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=EFV89KryPvAp86krWsYs1aVBIrMyAxLCih1NZxzougY=;
+        b=WUvDjetVWd2V688TA67twnNFvWz8Ke5rnQPwiSbJhfGndsaPabhaHhlDWS4mo5ZhBg
+         LFQOfrlj6vAmHa/ldhjBQSfpTuakJ9DbRJZZ/+r87e2rf0g8leUgOtjapPhfJBcqo+fm
+         7L+xplAFWLnKNFPtSbVOP4jNcx33XDRNODrbpxKCa45a1K87mCJ59l34xTNmT5wBCRq6
+         RgFggLKzfPV45YvQlUCP7ePZMX0xAky2aaEbjLN80QMGcOxxB0hc7G5rozy/XXtDEaD3
+         v/bZW39J56VVE78qxQF+cSkrFRZRH7TESV+4R7F3u505V+3wmp8UKo4WvzUiC0zfoxcQ
+         2Ykw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=JSlvWhjX;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id q206si844955oic.2.2019.02.28.23.57.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=anTHj0yg;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id m1si1435722qtc.2.2019.02.28.17.11.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 23:57:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 28 Feb 2019 17:11:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=JSlvWhjX;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id DBFAF20838;
-	Fri,  1 Mar 2019 07:57:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551427074;
-	bh=qd4pLqThNLmPSd2vxTzTNI0dVd4X86gPc4SMILwQqtM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JSlvWhjX1bhPDx8v9jV+dNIcjPdhNkl8pBDsPn4JZZoOPIoFETyK8kSEovhQaELJt
-	 qbpgMKQtHSUwV5Yq8RvlWaWRU3w4v3rPVY+riUrQqd8/ylICKJiIEqOuUzfeTFNky6
-	 HDHuRE55QMbOWF0YzdPzc3Ko8bpaLPFxzShuFTe4=
-Date: Fri, 1 Mar 2019 08:57:51 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 0/2] Staging: vt6655: Fix comment style of SPDX-License
-Message-ID: <20190301075751.GA13643@kroah.com>
-References: <cover.1551402120.git.madhumithabiw@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=anTHj0yg;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x343.google.com with SMTP id z19so19561770otm.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Feb 2019 17:11:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=EFV89KryPvAp86krWsYs1aVBIrMyAxLCih1NZxzougY=;
+        b=anTHj0ygJ+8lVOjv4MkFE+GjA4Mr7KmDxfF3pgzhLD6NhdOCbHFbRXtlFAvvGwZC1d
+         PpuozFAhTbI+uAc6ybzdQK+Q1NI1v9rQVanf4ItZq8HANx3M8D+/U9OrWGl0Z+O+f0QW
+         8kRhRuH9aYZFmyJseEG+xub+cjpyfn70tKcDZl6P0X2juc9rD+wWPviwy2kcHZI/PkdT
+         HM7zboSB/y3TBPi4QZFWldfMaDg0RHWMYfy2H/oUPo4kkrjlwZ2scAJu4+ddwZ8dd59j
+         om1WazEzd2Rrm7msmdmNOhOnvHQXMhx6IvMuvw7jTEopqJVXcGGEs1o3yKYs39nPLQdV
+         0NTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=EFV89KryPvAp86krWsYs1aVBIrMyAxLCih1NZxzougY=;
+        b=XC+QPUwuFWHIkrvV6bdfDnSTq6/KgaTVxjZAHz5qtKHRGCsAYufY2Ma8p4uBr7vZtl
+         2kZvsnN3y9ZO7rsMGaGM2SOWRChNfc7wP5pezmHBQPhaS+TDz+sdotFTOeljiAjCTvOP
+         AyCdON5JldztKZ2JHU97Pkfsyx+oe7cLx/XxjeuY11fPalZxxhLDfl0QgD0vNSPgEcsQ
+         UGW3HmRuUOHuVWQhWyymgpzTvl+LIbAUdMfv+YU1qRxaps5BWlKLe5B2b7lfsNS5IdJ7
+         GyYCbQdM+RKUGbw8crZooQ0FLLd8QfyXxrx1tr5/AuFsisxs7xmSg258F9Il7lqX3hRd
+         7HGw==
+X-Gm-Message-State: APjAAAW1ff2Xd3I9fH0tHQM23zUcDRqcMBQJJhtEtd95ipYYBKJGDltl
+	9w9Sc+J+j73yl8ZTNm3x1pA=
+X-Received: by 2002:a9d:4799:: with SMTP id b25mr1782769otf.294.1551402716492;
+        Thu, 28 Feb 2019 17:11:56 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id r124sm8704439oia.35.2019.02.28.17.11.55
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Feb 2019 17:11:55 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH 2/2] Staging: vt6655: Fix comment style of SPDX License Identifier
+Date: Thu, 28 Feb 2019 19:11:39 -0600
+Message-Id: <bcf367421208a4c9777f41226f232e6612c82308.1551402120.git.madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1551402120.git.madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+References: <cover.1551402120.git.madhumithabiw@gmail.com>
+In-Reply-To: <cover.1551402120.git.madhumithabiw@gmail.com>
+References: <cover.1551402120.git.madhumithabiw@gmail.com>
 
-On Thu, Feb 28, 2019 at 07:11:37PM -0600, Madhumitha Prabakaran wrote:
-> Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-> 
-> This patchset fixes the comment styles of SPDX-License Identifier based
-> on License Identifier syntax.
-> 
-> Madhumitha Prabakaran (2):
->   Staging: vt6655: Modify comment style of SPDX License Identifier
->   Staging: vt6655: Fix comment style of SPDX License Identifier
+Modify comment style of SPDX License Identifer based on header file type
+as per License identifer syntax.
 
-You really are doing the same thing to two different files, so this
-could be:
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/vt6655/desc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  Staging: vt6655: channel.h: Fix comment style of SPDX License Identifier
-  Staging: vt6655: desc.h: Fix comment style of SPDX License Identifier
+diff --git a/drivers/staging/vt6655/desc.h b/drivers/staging/vt6655/desc.h
+index b4a0037b40c1..d4572847b08a 100644
+--- a/drivers/staging/vt6655/desc.h
++++ b/drivers/staging/vt6655/desc.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++/* SPDX-License-Identifier: GPL-2.0+ */
+ /*
+  * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
+  * All rights reserved.
+-- 
+2.17.1
 
-right?  That makes it more obvious what is going on here, and you don't
-have to "reword" the subject lines to be different in tiny ways.
-
-Also, this is a v2 series, right?  Please make it v3 next time you
-resend it.
-
-thanks,
-
-greg k-h
 
