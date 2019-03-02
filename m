@@ -1,161 +1,131 @@
-X-GM-THRID: 6394469036665602048
-X-Received: by 10.25.40.17 with SMTP id o17mr2090459lfo.25.1488828341327;
-        Mon, 06 Mar 2017 11:25:41 -0800 (PST)
+X-GM-THRID: 6663862445889552384
+X-Received: by 2002:a5d:4a87:: with SMTP id o7mr542450wrq.18.1551556395804;
+        Sat, 02 Mar 2019 11:53:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.21.65 with SMTP id 1ls1520084ljv.35.gmail; Mon, 06 Mar 2017
- 11:25:40 -0800 (PST)
-X-Received: by 10.46.7.10 with SMTP id 10mr2560513ljh.1.1488828340664;
-        Mon, 06 Mar 2017 11:25:40 -0800 (PST)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id h198si90398wmg.1.2017.03.06.11.25.40
+Received: by 2002:a1c:81cb:: with SMTP id c194ls1034803wmd.14.canary-gmail;
+ Sat, 02 Mar 2019 11:53:14 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZZb1sxe8ZRul+8wWg//9YJ040eVeuaMnZzUbyUTe+5e71MjXS5Vofp0AvEGjYm3CbySwyj
+X-Received: by 2002:a1c:f107:: with SMTP id p7mr684887wmh.12.1551556394944;
+        Sat, 02 Mar 2019 11:53:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551556394; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oqRXYYMVgXjozpnr2lldL43+FpWx7629y6dggOZStpJMo4r9WBpqFddQXFG/l47StR
+         GtEHUpUsr7zsbGMFAcU4/MDUPQLVGHpoJ0hyAVoC3IkvAMvrIvaXwPKjac6tf92XY+d5
+         dwGsFBu1n85RGyJUmYeXNF1LsBnFMFemCu/KmaOE/SmkkJ3w8FGS9BikdJMnLGLDWfac
+         nkdi3g4YM/Vy1s2OnogzFzGxejyj5TcZWJMeOkjBigF2uv+U5CPUBaz2uzI2HknkhngP
+         PPoWXiv7jFOTjx7RzObMvDIHeWmnX4QoZ/BvRUnFaugDL4AwpfKw03UQbwFjBk1IEozy
+         HYaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=KKpfAtw9J4Gqd03ELHfCZAaivCvLjMN6yR3aXlzzovQ=;
+        b=t7QwRHRMVzVnjuvtfjOyk9WOuFFau9dmz0zHW0mOsmEhQbRHtNOcoSY1vypduidEj7
+         rrnxyawakGXEszB49ErK0R4pGCCWP50kAMCd7L7jIdZj4nGNcRWAYNL5zdq9qLkiTmYx
+         dgHkrV6+aYZEiJQLqGyZEz+Wbosg9J3UOuAJl+VRaazxzZWG0bOUT3srXVVv/KIzMrNT
+         xDpD/vCl69h60atx5bsvUzFHcXQqvXONGt8EEno3HZ31orEBqEhhSdBLz0FiAkD6Ow+A
+         b8pTW5S4px+U3cdHQIfTbB9IdwazIcUws4uoxLfKnjcvZXvfNokMqtCK7HuAflTwbIKt
+         FzJQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id g10si86586wmk.1.2019.03.02.11.53.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Mar 2017 11:25:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Sat, 02 Mar 2019 11:53:14 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id z63so13192690wmg.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Mar 2017 11:25:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=LwK2PX8TikPolrdZ/9jRdYdLo5G0nJWENavojVPBJpo=;
-        b=vNtZuj6IDO4+AOi8Yny80ybRLotUohMRR7IyiQv0yQBX7oq6cU2IbKpWV9pF9SpzPo
-         a6SjIeUWmy1QbCHBp7C9mUrYOlJbKlUgstGbT+qxIDhNqXzK5xQL4IlAcFmDKm6iuhDv
-         coLvyFUawMRKDJwZqVdHD/jIJly435RAwzlxjI6ttFCZAcmrdPmVOx+NCwkjHhWVaZa8
-         CX1cgEtLg6M/L1tDAu1IcInomxftdLGAVi7n1r0HNz8a0vD3Jwn8EqPQ/jKKAMRZJFRl
-         X2Rp+LCRN7KDZVHEVCtJpE8S/BaKQVH71B2nJU1M/PAjz7+121rzqaAnfrErS2GqSlZm
-         09+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=LwK2PX8TikPolrdZ/9jRdYdLo5G0nJWENavojVPBJpo=;
-        b=oFM3fsbvdra9yzRSrUjAR3UQhDCgbnk1MEYEuKcc/3fzbUxrGjcFhAkViTO04+KyrV
-         qrhppDiHfeReGSjZeLgGutaDfF89GjxGhdcAKKlvmKZAErZdOecJfKUSf+vFJi2Gh80K
-         PyxrG18bLlH7gbO9DELHfkct+bmahRJrih/6p/XJOzGlIOROc2lGaJUNue8n/4Aqwkau
-         BwioBTGkMvHbFYGjkBsklSlxWyjeZJhNo6D3kfi8olg6BdJbt0oVv3JuBIsbEIfhyGph
-         AJ12BXuH7QlWJJ1r+fLt2TZgwRCbsLMBjJINF/bGUHNAhwI9LWvwGXRelaO75SpRweOS
-         sN3A==
-X-Gm-Message-State: AMke39mmXrJJTbAkGNRS7OI72gsxHzFVdZqc48bIm+afsZ9phlzb2fjkVZIOSRIZFmk3aA==
-X-Received: by 10.28.145.130 with SMTP id t124mr5923781wmd.39.1488828340420;
-        Mon, 06 Mar 2017 11:25:40 -0800 (PST)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id v18sm28162172wrc.41.2017.03.06.11.25.39
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 06 Mar 2017 11:25:39 -0800 (PST)
-Date: Mon, 6 Mar 2017 21:25:38 +0200
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH] media:atomisp:pci Remove unnecessary variable
-Message-ID: <20170306192538.GA5241@fireworks>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,433,1544482800"; 
+   d="scan'208";a="371637144"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Mar 2019 20:53:14 +0100
+Date: Sat, 2 Mar 2019 20:53:14 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: idebleenasen@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] Fixed Warning: line over 80
+ characters
+In-Reply-To: <1bf62906-43a2-4233-90c4-0bc8cc53f0eb@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.1903022051060.11898@hadrien>
+References: <1551551350-111229-1-git-send-email-idebleenasen@gmail.com> <alpine.DEB.2.21.1903021937500.11898@hadrien> <1bf62906-43a2-4233-90c4-0bc8cc53f0eb@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; boundary="8323329-73724498-1551556394=:11898"
 
-Remove the local variable "ret" because its initial
-value does not change during the function execution.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
----
- drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c           | 5 ++---
- .../media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c  | 4 +---
- drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c     | 4 +---
- drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c       | 3 +--
- 4 files changed, 5 insertions(+), 11 deletions(-)
+--8323329-73724498-1551556394=:11898
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
-index 0a0652a..bc09914 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/atomisp_ioctl.c
-@@ -557,8 +557,6 @@ const struct atomisp_format_bridge *atomisp_get_format_bridge_from_mbus(u32
- static int atomisp_querycap(struct file *file, void *fh,
- 			    struct v4l2_capability *cap)
- {
--	int ret = 0;
--
- 	memset(cap, 0, sizeof(struct v4l2_capability));
- 
- 	WARN_ON(sizeof(DRIVER) > sizeof(cap->driver) ||
-@@ -574,7 +572,8 @@ static int atomisp_querycap(struct file *file, void *fh,
- 	cap->device_caps = V4L2_CAP_VIDEO_CAPTURE |
- 	    V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_OUTPUT;
- 	cap->capabilities = cap->device_caps | V4L2_CAP_DEVICE_CAPS;
--	return ret;
-+
-+	return 0;
- }
- 
- /*
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c
-index 239ef31..2ed5162 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/isys/src/isys_init.c
-@@ -105,8 +105,6 @@ input_system_error_t ia_css_isys_init(void)
- #elif defined(USE_INPUT_SYSTEM_VERSION_2401)
- input_system_error_t ia_css_isys_init(void)
- {
--	input_system_error_t error = INPUT_SYSTEM_ERR_NO_ERROR;
--
- 	ia_css_isys_csi_rx_lut_rmgr_init();
- 	ia_css_isys_ibuf_rmgr_init();
- 	ia_css_isys_dma_channel_rmgr_init();
-@@ -120,7 +118,7 @@ input_system_error_t ia_css_isys_init(void)
- 	isys_irqc_status_enable(ISYS_IRQ1_ID);
- 	isys_irqc_status_enable(ISYS_IRQ2_ID);
- 
--	return error;
-+	return INPUT_SYSTEM_ERR_NO_ERROR;
- }
- #endif
- 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
-index 1210c21..bc4b623 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
-@@ -37,12 +37,10 @@ enum ia_css_err
- ia_css_mipi_frame_specify(const unsigned int size_mem_words,
- 				const bool contiguous)
- {
--	enum ia_css_err err = IA_CSS_SUCCESS;
--
- 	my_css.size_mem_words = size_mem_words;
- 	(void)contiguous;
- 
--	return err;
-+	return IA_CSS_SUCCESS;
- }
- 
- #ifdef ISP2401
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c
-index 00b2d16..9caf0b6 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c
-@@ -825,7 +825,6 @@ configure_isp_from_args(
- 	bool two_ppc,
- 	bool deinterleaved)
- {
--	enum ia_css_err err = IA_CSS_SUCCESS;
- #ifdef ISP2401
- 	struct ia_css_pipe *pipe = find_pipe_by_num(pipeline->pipe_num);
- 	const struct ia_css_resolution *res;
-@@ -853,7 +852,7 @@ configure_isp_from_args(
- 	/* Remove support for TNR2 once TNR3 fully integrated */
- 	ia_css_tnr3_configure(binary, (const struct ia_css_frame **)args->tnr_frames);
- #endif
--	return err;
-+	return IA_CSS_SUCCESS;
- }
- 
- static void
--- 
-2.7.4
 
+
+On Sat, 2 Mar 2019, idebleenasen@gmail.com wrote:
+
+> On Sunday, March 3, 2019 at 12:10:55 AM UTC+5:30, Julia Lawall wrote:
+>       You need a log message.  Even if everything seems obvious from the subject
+>       line.  The subject line and the log message should be in the imperative.
+>       So that would be Fix, rather than Fixed.
+>
+>       The log message should say what you have done and why.  Fix doesn't really
+>       do either.  You have fixed something, but one doesn't know what change you
+>       have made nor why you chose to make that change.
+>
+>       Presumably you found this issue using checkpatch.  So you could say "Issue
+>       found using checkpatch" to make that clear.
+>
+>       julia
+>
+>       On Sat, 2 Mar 2019, Debleena Sen wrote:
+>
+>       > Signed-off-by: Debleena Sen <ideble...@gmail.com>
+>       > ---
+>       >  drivers/staging/pi433/rf69.c | 3 ++-
+>       >  1 file changed, 2 insertions(+), 1 deletion(-)
+>       >
+>       > diff --git a/drivers/staging/pi433/rf69.c b/drivers/staging/pi433/rf69.c
+>       > index e19b9ce..0c189a7 100644
+>       > --- a/drivers/staging/pi433/rf69.c
+>       > +++ b/drivers/staging/pi433/rf69.c
+>       > @@ -563,7 +563,8 @@ bool rf69_get_flag(struct spi_device *spi, enum flag flag)
+>       >  {
+>       >          switch (flag) {
+>       >          case mode_switch_completed:
+>       > -                return (rf69_read_reg(spi, REG_IRQFLAGS1) & MASK_IRQFLAGS1_MODE_READY);
+>       > +                return (rf69_read_reg(spi, REG_IRQFLAGS1) &
+>       > +                        MASK_IRQFLAGS1_MODE_READY);
+>       >          case ready_to_receive:
+>       >                  return (rf69_read_reg(spi, REG_IRQFLAGS1) & MASK_IRQFLAGS1_RX_READY);
+>       >          case ready_to_send:
+>       > --
+>       > 2.7.4
+>       >
+>       > --
+>       > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kern...@googlegroups.com.
+>       > To post to this group, send email to outreach...@googlegroups.com.
+>       > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1551551350-111229-1-git-send-email-idebleenasen%40gmail.com.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+> I'm sorry for not adding the log message. This was my first patch and I was a bit confused about the process. I'll keep this in mind for future.
+>
+> Yes I did find the issue after running checkpatch.pl on pi433/rf69.c
+>
+> The checkpatch.pl warning was: [WARNING]: line over 80 charaters #566
+>
+> So I reformatted the line to remove the warning. Is this a valid patch?
+
+The change looks ok.  You need to send a v2 though to address the log
+message issue.
+
+I wonder also about the ... in the Signed off by email address.  Did you
+do that or was it generated for you?  It could be nicer to have the
+complete address.
+
+julia
+--8323329-73724498-1551556394=:11898--
 
