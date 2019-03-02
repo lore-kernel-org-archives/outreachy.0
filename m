@@ -1,107 +1,98 @@
 X-GM-THRID: 6663442013681090560
-X-Received: by 2002:a17:906:d541:: with SMTP id gk1mr1035711ejb.0.1551516006189;
-        Sat, 02 Mar 2019 00:40:06 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:406:: with SMTP id d6ls431558eja.7.gmail; Sat, 02
- Mar 2019 00:40:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy/1aFNiqj2jxsbspXA8UsQlip7KM5uYz0tkuaj19/FypJI2KQDijzjC1t9HqizeVBYe97d
-X-Received: by 2002:a17:906:2346:: with SMTP id m6mr1023954eja.15.1551516005365;
+X-Received: by 2002:a1c:4e0c:: with SMTP id g12mr610381wmh.9.1551516005507;
         Sat, 02 Mar 2019 00:40:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551516005; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a1c:ca1a:: with SMTP id a26ls1395314wmg.8.gmail; Sat, 02 Mar
+ 2019 00:40:04 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ6Whn+T/qEidb41EN0h/RmSZR6CPbpfi6AhEBz848H8r7hz/U9uq52TaY3vC1yGtEqWoBo
+X-Received: by 2002:a1c:2545:: with SMTP id l66mr584906wml.14.1551516004664;
+        Sat, 02 Mar 2019 00:40:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551516004; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y2qNWy1aK7gYEMhfeqdfRAyVbtY24iDiVxmboNiHIyJ8M9UzgIYWbDkCSdWzg45njg
-         nypToZdVAiIy/1My/QLKranPY66VRsk1t8jawNnTTjywFZbGz/Yg6TcuW17Wu/vj0/Ym
-         IUdntXa39cMKwCJ5qOtOZSOX17CX6Gbs0p+TCoG+G/ZJS6N3A4m4Rt8Y66Jyp9q175XV
-         0nfD4eC2FRx9TeVD7jBmbYr2LSHIgHi0sbhgIOCsrvchtutUXWqJepcMgHeJc0O3Zxkn
-         0tY0jjuY9qzCAZ3LUYS+/puA9g2tQPo3BftLk/ndhRCSNdYw/1K5qZOOvSG9o9p6usCr
-         aDbQ==
+        b=ISflL3vmYt3T2FD0t1nzmSk212onbe0c1z5x48R+W1CNinn0kRX9d+MkWKKx1Smnm1
+         dA7vmRp/B+MP+waAsy0PGM0Y4RNKTl36+FjvAQslVkEScNEOPT8kExdAB37n3mKZorab
+         gOEOjGTjx7gwylkRvYhuusiHiBuk0LBpSq6mD5ZHHNHlXTnaI45pXKYYk+0n3L+PRe2Z
+         ego96er9EcNsqXBbkuIVirjCEbo8ep66cesG5puo/BPQhxAkAUkcckJMFobm2gwa5Lcd
+         JzzQFWwCYGI/TZiEGIOqCVVYEFEJUBrg/XIGbStdxQFqIXK5z7muGbni4okcykzUg69x
+         B7TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=VbJvsX9LQ4yeEMF+8VjAjloOJ5239y6J93Q/wda6O0U=;
-        b=Dk3cCsv/UNGQji0uFuExjZ7zTsMo5Nc7dDqLuVRG6az9iG21DCaX0eEwdgBZaI5tA/
-         P+Pa7Gar38bCqVotdL0nOqUmqFQXbLztWttLSl/Q+oIXBz7boFm7CeoRfJuwQyOnzATZ
-         B0H7IdASes4VZUzy9d3jJVbuldsmzuH9beHb3jq/swkEvTGLc9HnbAq4e9ng8zTXxDWK
-         kdfVQIaiOpf3LVsacCllAgwEy8VRiPiEqPVQ+xWyhLChQzVQTd1405DcW9TuI0bk31FG
-         FD3XcvW5+neo5xE9aJNQOlaZcM8hz7P3hkVv2vp9xYWkCQnfktftfgMzuTiNlBoXYK1D
-         k/FA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=mi4FCF2wG/R2ZuR8ItroKye1nrerC1w4+6DfyZ3ca0Y=;
+        b=xdo1g14CWBCeHaGV0y+mD93rqi5I1y1nAF4nn8YcZFTHb8XOizrZA5rcZ3OC7TN6eP
+         wdY7YPiUVE1pPBQHi8KgRcbHmA88rzEO58FfgO/zVSho8UU4O8hBlCJMgbp9SW8QLcSo
+         IA6uyNGx8wV32ZyMPpjY6/Kl33jZ7XC/6SfbK+eazZRIeHmiHfUQ59jfLZ2/wl9phyAz
+         uXu5NV8qld8jObQkxWEJjLBKLO4Z/TOZW41iarmv2fdecr0ln8fvLZ6oUm9vn4Y16HgA
+         YruS8QaOoxrg3aApkT416e2sUeWIvIL6gR5B+8xC5dXYW4yFafcrqnr33Wj+Hd6ptHqb
+         v4Fg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XmSyKEHP;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tPgzniU0;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::42b as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id r37si31394edd.2.2019.03.02.00.40.05
+Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com. [2a00:1450:4864:20::42b])
+        by gmr-mx.google.com with ESMTPS id b134si36151wmd.2.2019.03.02.00.40.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 02 Mar 2019 00:40:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        Sat, 02 Mar 2019 00:40:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::42b as permitted sender) client-ip=2a00:1450:4864:20::42b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XmSyKEHP;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tPgzniU0;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::42b as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id l5so256786wrw.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 02 Mar 2019 00:40:05 -0800 (PST)
+Received: by mail-wr1-x42b.google.com with SMTP id q1so254723wrp.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 02 Mar 2019 00:40:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=VbJvsX9LQ4yeEMF+8VjAjloOJ5239y6J93Q/wda6O0U=;
-        b=XmSyKEHPWTCwGY3Cj12bUg2DqntGKJxedA3TemRBhNLN2EaCXBT5TKerrArQ+ocSOb
-         /TAlT02pq1DSojN/qE9YVloXwVSCwjr42EK/CvGG2NR8tTC/2aMlRS/8UpdVtNBABq9z
-         AlywRFGJ6VxDPePDv8MoyWilQ+A3bZ7QEaSfg9FkF4oGNSrbSIz9fo7ud3EMlLpLBZac
-         ts1wiPMYsaup+c+QZeYaMhNEvusUX2Lzw6w6xZPjTyN7OcLIDzFmm+3XoWS02DDLEyus
-         Cq+Bdv5jAHhMvmQZ2cSAsMUyMRdjuac5hUnvxYEBEZEWZa5aJfJwutDYl36APMMz88pv
-         5Vqw==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=mi4FCF2wG/R2ZuR8ItroKye1nrerC1w4+6DfyZ3ca0Y=;
+        b=tPgzniU0Ycz6dtQT4cH2eWj8kZfuopIZUw4YoZNS/O7BEhrjsc2TqyKBdJ+av4Y9IC
+         +gUuzBcF+7MgQMcgIU2o8jiL1rkV/P2pHkUXH4V5KwSBO+g/Lf36twHyNOgK93us0o8W
+         O3GcGopIwWsJO0iC/W9aY6Gfn/D0TjE5xYDpDYK99Wn3UuUuap8yvFLMBAyuH0/SDNpX
+         qJJri/Z6TYClfg12RuugQAUCOEqfR/JeTp7Jrjs4UUjskTKGcE1FpwFh2bLsjwH2cUDw
+         7SoOuj1pkZ1mG8NRoyUW2LXO2yYOEOFueCxD5//ZvOk+22t9MOmMYMSXa/ME3mOm0+7d
+         aa8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=VbJvsX9LQ4yeEMF+8VjAjloOJ5239y6J93Q/wda6O0U=;
-        b=e7mU42LP84VJzPftBfsRgjDCd9vQ5YhapbDb55FW3HtONVsyVLOXGz7TTWroc5NG7y
-         Rd1brmWSrf0dUiYkiuoo3ZxNbAFIvhJwptFkINqUU/FErUtp5cOSx8v6kMJ+hz+5BuRN
-         e5yQWMmX+hnWPlcY+e74KKBrO1xENneRww+hI4/a59jTDT4eIONnygK/XjUiPlecT68N
-         ns/Bubv0/zknLKr1NE9x+zW7E3VFVJ8gMrGvX8HNgJSxAN5dXWQDOtRWhnzqUvQujGxa
-         BteHaa19FpwHEUv7lYwcLkFglvvGUE+ApoBuKTA5dpbjU40i1HwsH7Z6AEkXb7ARtyU0
-         TPhg==
-X-Gm-Message-State: APjAAAX9rzOvTeG51ud/DmMEPC1mzI+kS05HcwjygydafIbIpwsNmlgd
-	8yiCYpCsBd70QzHQJC+Xpg==
-X-Received: by 2002:adf:f846:: with SMTP id d6mr6441785wrq.53.1551516004880;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=mi4FCF2wG/R2ZuR8ItroKye1nrerC1w4+6DfyZ3ca0Y=;
+        b=e3n1Xq8JStqIjCh3Fge59UfOq/psAFbD+VU8GJUu6p+Jx3DNJMwmKRia220408ZUIo
+         58PndxZNj3pU3I1J6ffkpZ3CZYWkgqFqP0My6lWA84yLwaQtEwcsg7AS57/EpM84MEDE
+         mRnx1x/gE54w8Pr5sFTZy5hXdxh6BmZC1AuJuM3/1ZFooYj9YA3KMjZvvgoLebn2q1G8
+         euhumh0IFllFXBWutafbxDTIlgstkzGnGz2Lkoqypg//zP0O7ZZrwGQ1R2jvqoPq6JjR
+         +gBDrgIfSgGEIEMEuPXMncfnNE9edBTBHbvRu+0VPe0yX5szxShdZpubgSJEUnZRCpMF
+         Mx3A==
+X-Gm-Message-State: APjAAAXyRXJxatOtjp9bUTDgNsOs4VnmadH0oyENaffnc2N2ge/jSDxU
+	qb3PywscLTulSl5sLUbHWKHVmVU=
+X-Received: by 2002:adf:9dc4:: with SMTP id q4mr6443546wre.330.1551516004182;
         Sat, 02 Mar 2019 00:40:04 -0800 (PST)
 Return-Path: <jbi.octave@gmail.com>
 Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
-        by smtp.gmail.com with ESMTPSA id a8sm1176332wmh.26.2019.03.02.00.40.04
+        by smtp.gmail.com with ESMTPSA id a8sm1176332wmh.26.2019.03.02.00.40.03
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Mar 2019 00:40:04 -0800 (PST)
+        Sat, 02 Mar 2019 00:40:03 -0800 (PST)
 From: Jules Irenge <jbi.octave@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/2] staging: mt7621-dma: add SPDX GPL-2.0+ license identifier
-Date: Sat,  2 Mar 2019 08:32:39 +0000
-Message-Id: <20190302083240.23894-2-jbi.octave@gmail.com>
+Subject: [PATCH v2 0/2] staging: mt7621-dma: SPDX license cleanups
+Date: Sat,  2 Mar 2019 08:32:38 +0000
+Message-Id: <20190302083240.23894-1-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190302083240.23894-1-jbi.octave@gmail.com>
-References: <20190302083240.23894-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Add SPDX GPL-2.0+ to fix missing SPDX warning
- reported by checkpatch.pl.
+ This v2 series made commit message more clear, corrected grammar in code comment
+ and added punctuation.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/mt7621-dma/mtk-hsdma.c | 1 +
- 1 file changed, 1 insertion(+)
+Jules Irenge (2):
+  staging: mt7621-dma: add SPDX GPL-2.0+ license identifier
+  staging: mt7621-dma: remove license boilerplate text
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index d67a2504adb1..7d69586f23c0 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
- /*
-  *  Copyright (C) 2015, Michael Lee <igvtee@gmail.com>
-  *  MTK HSDMA support
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
 -- 
 2.20.1
 
