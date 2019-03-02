@@ -1,292 +1,115 @@
 X-GM-THRID: 6663442013681090560
-X-Received: by 2002:a1c:761a:: with SMTP id r26mr614970wmc.1.1551516543187;
-        Sat, 02 Mar 2019 00:49:03 -0800 (PST)
+X-Received: by 2002:a2e:253:: with SMTP id 80mr500376ljc.27.1551516007382;
+        Sat, 02 Mar 2019 00:40:07 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:2e0a:: with SMTP id u10ls598258wmu.10.canary-gmail; Sat,
- 02 Mar 2019 00:49:02 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IahbdqENkfkCOgJlVe56eROVL1GDssSi5iYvGYN+SC5E14jlNvJMLgx5sRksyHGANqC9Mo5
-X-Received: by 2002:a7b:c002:: with SMTP id c2mr594769wmb.0.1551516542193;
-        Sat, 02 Mar 2019 00:49:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551516542; cv=none;
+Received: by 2002:a2e:3e16:: with SMTP id l22ls1406425lja.2.gmail; Sat, 02 Mar
+ 2019 00:40:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyEKV612yfaIdpQ6VxznEVZPMjMhOTyVUSGvAjU4ytHhXC5KypI2ZZT+qP1iR9GT9B5CIIC
+X-Received: by 2002:a2e:391d:: with SMTP id g29mr526402lja.17.1551516006351;
+        Sat, 02 Mar 2019 00:40:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551516006; cv=none;
         d=google.com; s=arc-20160816;
-        b=ebS1DMB2f8TmCmbuIn369MFm7AEqc0+W8Ke3Spz3THcLFJAAVwF+EO3A0cbABpsDrn
-         xSYrG0icM2yiRAnkLo0kpdbwOpOK7fQSuiX8ejrx5l7FoYURhUTCC8FTjStBnqi6Oenj
-         CdqjxVbqkQDNLsyXtEPt4EIXqm9eQIjR4ods5yo3+D6W9XsgBMEXQo5m5vMzXDwJeWO/
-         yB1+d9mY+oWBOzp8JuP8LFYtQ3Z9e5DSW2FT6ZkHrBfKbVW5WzUIg16E++KpdKHEvmD+
-         qa6PO/WrbFCbEbqsb9r8aZKV93lHmy7Abs5igev/IZ8qwwqGSAXGppdyr1eEFTH2m1y5
-         heKg==
+        b=t+3bRQNWjCLanU9H6gy2X+B2QxnK9hGW8FE7swX/Q1EilZ6+bPouD//tgi82dT2NUD
+         GLGt1VJiCtvBqaW0ebpZzCtHCfVvSz5/oV9Xkq+Bc6sQJxeZnJVzGXf0W1Ut2MlOtN4B
+         W7mxcRRDr2iO5XbS8P0yla61ZVysrtszSFl8aVRy0EtEecKEgsgq3ls4DPYP5aFRiIgy
+         nl8QPqLatbKOhruwD6GhklF5QgR8SEQUnThE19v7jWWuEwJYvmzo+iPIQpCKIVABPmRb
+         ovN8kj5ax3UKiw1cTIcNo7saLAFlL/vbGhWo3+hFxxaKe9gv6TURYTLQFXcftuOntT85
+         3QtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=PS6a11UNuPxDaWWkMYuJUGaGvWzXJec2AX5zJAiKNl8=;
-        b=akgVvOmGjOxRpUTXVdHQoFmJthBCyRGkPl6+ErkxtOjGH1NWmTh+Y3zuRolzNHFhF2
-         iH/k/utizxJL+DGmXpKW64yc9C0KSyquPOoWT9CGz+6oSv7c59mwSrGzwxdZttJs6RR4
-         KBRCCZjj0y+wcF2Nq+IP2TE72sMnfHzVaOlOb5mGE2j8YOsuFfWSSy0A/T8amvh6qrYP
-         WhLUU0RKb79EfNrcqtM7c3VxWa53wBg3/VmeCbegoWGzKgUA4haCMMtXtBwkV7SfWyxZ
-         eMWwTbViw6wVPZVLtgYHL2PXivr4Nva2Y77nUeDBIP52VfshM+iGNizf9RUFTd1H28u2
-         uAPw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=NBqdqR344ydi+yX7D9iGiZxZB7Mt06YdjALv/X9SfXw=;
+        b=ZK8apBsl07WDlj2KgVrzDPS0gLe6FxQ3U7jx+cNKtZWLVwLiJEB+QWuzB17+BbYoUY
+         shwYlkPTPFqSvYCAHw/S0D9db0JHAzQEVBVJB86lhouK9WlHuNBgMKUdvlEhgprVHfSs
+         ePkRulLkhoxiqU9w0+2foP31EFhq2oNWEogcO06BATHPeD7kDcsTChzmw09FA3o8hSj8
+         meQAHiC9CN5jPJsBmFMbWFvVYsVDWtpQeGdUharSHUPkMWR+WmQADmI9TPvJ6WytmgzK
+         WQJWK8XcJd1EV7UQ2zq+vk50j3JoOk+MiCbo5BvjO6kIMrKzhH0b6VCi3OtUTemwrNdd
+         YHbw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=k7qR1Rjd;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::543 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XBCLqLWi;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
-Received: from mail-ed1-x543.google.com (mail-ed1-x543.google.com. [2a00:1450:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id b134si36863wmd.2.2019.03.02.00.49.02
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id v27si9971lje.0.2019.03.02.00.40.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 02 Mar 2019 00:49:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::543 as permitted sender) client-ip=2a00:1450:4864:20::543;
+        Sat, 02 Mar 2019 00:40:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=k7qR1Rjd;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::543 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XBCLqLWi;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x543.google.com with SMTP id g19so302705edp.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 02 Mar 2019 00:49:02 -0800 (PST)
+Received: by mail-wr1-x441.google.com with SMTP id w2so245097wrt.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 02 Mar 2019 00:40:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
-        bh=PS6a11UNuPxDaWWkMYuJUGaGvWzXJec2AX5zJAiKNl8=;
-        b=k7qR1RjdJSUntoZl4cFmWsPN5ffvGCdPBR/MgBpzSdClzSoj4n7h9jHnNIdQqn+Mfu
-         oMPn2rzlzya0H4JG/QVQxAHP1wNyHeAnX1EWN1MeTceIu0gW+CxdJGY9dtbpPeU+uaD3
-         4Mp37MJ2aOnCDT7/DcezByGXIcOwGhnHLaPI2/XAkBIK0OjuufYOXNArk4fiKAxB23hC
-         e3f83KiFoCUHiMPEnPtCb91n9AMFPtb0LqoAg0cPT89yMm4W3kWoBKaq6Ih+bK1bYMhF
-         kewBrpN+TPt8j3TdZsCUZ3bC6Z2zpKGiAC6O6z18xM/mavuHF0r6sJYKU+55+daV7b50
-         ceog==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=NBqdqR344ydi+yX7D9iGiZxZB7Mt06YdjALv/X9SfXw=;
+        b=XBCLqLWiuoG6XKSDCC2jRB1gIrp/pmoIbK3WocG/xMed9kEMH6gYgTTm9gNBI7thAZ
+         WV+y6tGeKO6HsUpsUTjMmglGLeKGggl07/tNLm38Jy9RnDU40PfRtdGN3IMRvpVHDzmi
+         mZnc5HWUVpDAB6u0UTc+hsqcSulQoLp5XwqC2hy+xYfoHno4/Qcb11tZjVAytJ2vz/Zw
+         3hjaoqFva4BPRpbGWtOhddAaTyMitcppD4eiNk1OAqpVl3s8VBaLpRlHzkzFfonbZQkt
+         PMgYy+Wog+AwEr/4n/vO+OxkEfr+42zz3z1CzUirUDDRtKW9guPyh0hHsieXmqtgLJG5
+         0bYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to;
-        bh=PS6a11UNuPxDaWWkMYuJUGaGvWzXJec2AX5zJAiKNl8=;
-        b=JbbPTebTWjh+K0kpaZgmYd8BrczmoV5NuAH+Ommvdz+4yKdSp2USPQiQCAIDrPOZu0
-         T8qMavRnQVPadeT0vDdRLR8sfn2QzrqoNpcAmEg/LElJmr9HXCTUWF1avn9uxVlbUd0+
-         ia58heNa58VDbDYgogHyiusCr+vGcvTnQqhidQ4Vf5ugWT632gq+1JIWRUXftg/Pq/iS
-         OXOCb5qdSQ1BRuQoVCnfHPAfxCte/qaez5QNkI5BFJt1lW7qtaouuclPrIZzld05P9Ni
-         4V1u1URK55tvsr1mK7a2vCII5diCfHj6W+2qPla5TB6O9vxdHfvbeexxowe8BHT4D0Dx
-         qOKw==
-X-Gm-Message-State: APjAAAVy7mQsd2Ybw+xuCrOfLdXja1YbY9ettCjTk8JqJw1xuOx+hVna
-	n4HZBYSi6gl75gsszFlUK5J14k3VJ00+TCXreg==
-X-Received: by 2002:a17:906:812:: with SMTP id e18mr5698122ejd.28.1551516541708;
- Sat, 02 Mar 2019 00:49:01 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=NBqdqR344ydi+yX7D9iGiZxZB7Mt06YdjALv/X9SfXw=;
+        b=ujggSJL89CE8EKt0LUe+wRKyVUDBH7BKXYtrp+6E/0/7VUIRxzDqQK1e32rpPP7Gg7
+         BbqZU8g0jaRFp8ao3j491gKRrysNL4szjuEAdyTY7S/F5obgwioSqMuL+J1ei5Xn5ROJ
+         XkXltydQs+OdtHkcj1gnOf1HWxntPNLL77oitWPrJ289bC8GJxuMvLCWZVjYXKMgv01s
+         fZJU4YdwHQPNGeUtLqsszCHmFLSlCxNd1hFCf94oC0C/sLEdiBTevICMd2PdbJII4j0/
+         U9kLRjEZMpYlml1HSilABAp8lMxJs0GIt2EbHeHQ8yv2OooT2so/ezxjZ6Cti4i4eST+
+         Jq2g==
+X-Gm-Message-State: APjAAAVBPNVY0MKFfMBy0KyMU/4ZgjLJi16E6oFMNckbUCBqfcSy2L/h
+	dQ+qqesQ2jFW4HO2Wf6Gag==
+X-Received: by 2002:adf:b784:: with SMTP id s4mr6065593wre.155.1551516005537;
+        Sat, 02 Mar 2019 00:40:05 -0800 (PST)
+Return-Path: <jbi.octave@gmail.com>
+Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
+        by smtp.gmail.com with ESMTPSA id a8sm1176332wmh.26.2019.03.02.00.40.04
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 02 Mar 2019 00:40:05 -0800 (PST)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2 2/2] staging: mt7621-dma: remove license boilerplate text
+Date: Sat,  2 Mar 2019 08:32:40 +0000
+Message-Id: <20190302083240.23894-3-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190302083240.23894-1-jbi.octave@gmail.com>
+References: <20190302083240.23894-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-References: <20190302001115.20477-1-jbi.octave@gmail.com> <20190302001115.20477-3-jbi.octave@gmail.com>
- <alpine.DEB.2.21.1903020731330.2572@hadrien> <CAOuULM6ZhqFr3VZmi05tO=30hz=hLQti7TtMY6abAE=k67KD1Q@mail.gmail.com>
- <alpine.DEB.2.21.1903020906590.2572@hadrien>
-In-Reply-To: <alpine.DEB.2.21.1903020906590.2572@hadrien>
-From: Jules Octave <jbi.octave@gmail.com>
-Date: Sat, 2 Mar 2019 08:48:24 +0000
-Message-ID: <CAOuULM6XJ1cNzJ4mdFVcj10bZxmN=tDipcmuhzuBB7mLRjim2w@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: mt7621-dma: Remove
- license boilerplate text
-To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="00000000000054f05e0583189823"
+Content-Transfer-Encoding: 8bit
 
---00000000000054f05e0583189823
-Content-Type: text/plain; charset="UTF-8"
+Remove license boilerplate text.
 
-On Sat, 2 Mar 2019 at 08:36, Julia Lawall <julia.lawall@lip6.fr> wrote:
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
->
->
-> On Sat, 2 Mar 2019, Jules Octave wrote:
->
-> > On Sat, 2 Mar 2019 at 06:32, Julia Lawall <julia.lawall@lip6.fr> wrote:
-> >
-> >
-> >       On Sat, 2 Mar 2019, Jules Irenge wrote:
-> >
-> >       > Removes license boilerplate text
-> >
-> >       The log message should be in the imperative.  No "s" at the end
-> >       of the
-> >       verb.
-> >
-> >       Please put a period at the end of the sentence.
-> >
-> >       The log message should explain why you are removing it, ie it is
-> >       redundant
-> >       now that there is the SPDX identifier.
-> >
-> >       julia
-> >
-> >       >
-> >       > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> >       > ---
-> >       >  drivers/staging/mt7621-dma/mtk-hsdma.c | 6 ------
-> >       >  1 file changed, 6 deletions(-)
-> >       >
-> >       > diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c
-> >       b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> >       > index 7d69586f23c0..e4a522f3b448 100644
-> >       > --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-> >       > +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> >       > @@ -2,12 +2,6 @@
-> >       >  /*
-> >       >   *  Copyright (C) 2015, Michael Lee <igvtee@gmail.com>
-> >       >   *  MTK HSDMA support
-> >       > - *
-> >       > - *  This program is free software; you can redistribute it
-> >       and/or modify it
-> >       > - *  under  the terms of the GNU General       Public License
-> >       as published by the
-> >       > - *  Free Software Foundation;  either version 2 of the
-> >       License, or (at your
-> >       > - *  option) any later version.
-> >       > - *
-> >       >   */
-> >       >
-> >       >  #include <linux/dmaengine.h>
-> >       > --
-> >       > 2.20.1
-> >       >
-> >       > --
-> >       > You received this message because you are subscribed to the
-> >       Google Groups "outreachy-kernel" group.
-> >       > To unsubscribe from this group and stop receiving emails from
-> >       it, send an email to
-> >       outreachy-kernel+unsubscribe@googlegroups.com.
-> >       > To post to this group, send email to
-> >       outreachy-kernel@googlegroups.com.
-> >       > To view this discussion on the web visithttps://
-> groups.google.com/d/msgid/outreachy-kernel/20190302001115.20477-3-j
-> >       bi.octave%40gmail.com.
-> >       > For more options, visit https://groups.google.com/d/optout.
-> >       >
-> >
-> >
-> > I will do so. Thanks.
->
-> >This is not the ideal place for comments either.  The response just be
-> >right under the text you are responding to.  You aren't responding to
->
-> >For more options, visit https://groups.google.com/d/optout.
->
-> >julia
+diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+index 7d69586f23c0..e4a522f3b448 100644
+--- a/drivers/staging/mt7621-dma/mtk-hsdma.c
++++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+@@ -2,12 +2,6 @@
+ /*
+  *  Copyright (C) 2015, Michael Lee <igvtee@gmail.com>
+  *  MTK HSDMA support
+- *
+- *  This program is free software; you can redistribute it and/or modify it
+- *  under  the terms of the GNU General	 Public License as published by the
+- *  Free Software Foundation;  either version 2 of the License, or (at your
+- *  option) any later version.
+- *
+  */
+ 
+ #include <linux/dmaengine.h>
+-- 
+2.20.1
 
-
-Thanks. I take good note.
-
---00000000000054f05e0583189823
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"></div><br><div class=3D"gmail_quote"><div=
- dir=3D"ltr" class=3D"gmail_attr">On Sat, 2 Mar 2019 at 08:36, Julia Lawall=
- &lt;<a href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">julia.lawall=
-@lip6.fr</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D=
-"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
-ft:1ex"><br>
-<br>
-On Sat, 2 Mar 2019, Jules Octave wrote:<br>
-<br>
-&gt; On Sat, 2 Mar 2019 at 06:32, Julia Lawall &lt;<a href=3D"mailto:julia.=
-lawall@lip6.fr" target=3D"_blank">julia.lawall@lip6.fr</a>&gt; wrote:<br>
-&gt;<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0On Sat, 2 Mar 2019, Jules Irenge wrote:<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Removes license boilerplate text<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0The log message should be in the imperative.=
-=C2=A0 No &quot;s&quot; at the end<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0of the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0verb.<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0Please put a period at the end of the senten=
-ce.<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0The log message should explain why you are r=
-emoving it, ie it is<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0redundant<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0now that there is the SPDX identifier.<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0julia<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; Signed-off-by: Jules Irenge &lt;<a href=
-=3D"mailto:jbi.octave@gmail.com" target=3D"_blank">jbi.octave@gmail.com</a>=
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; ---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 drivers/staging/mt7621-dma/mtk-hs=
-dma.c | 6 ------<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 1 file changed, 6 deletions(-)<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; diff --git a/drivers/staging/mt7621-dma=
-/mtk-hsdma.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0b/drivers/staging/mt7621-dma/mtk-hsdma.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; index 7d69586f23c0..e4a522f3b448 100644=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; --- a/drivers/staging/mt7621-dma/mtk-hs=
-dma.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; +++ b/drivers/staging/mt7621-dma/mtk-hs=
-dma.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; @@ -2,12 +2,6 @@<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 /*<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0*=C2=A0 Copyright (C) 2015,=
- Michael Lee &lt;<a href=3D"mailto:igvtee@gmail.com" target=3D"_blank">igvt=
-ee@gmail.com</a>&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0*=C2=A0 MTK HSDMA support<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; - *<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; - *=C2=A0 This program is free software=
-; you can redistribute it<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0and/or modify it<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; - *=C2=A0 under=C2=A0 the terms of the =
-GNU General=C2=A0 =C2=A0 =C2=A0 =C2=A0Public License<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0as published by the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; - *=C2=A0 Free Software Foundation;=C2=
-=A0 either version 2 of the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0License, or (at your<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; - *=C2=A0 option) any later version.<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; - *<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 =C2=A0*/<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;=C2=A0 #include &lt;linux/dmaengine.h&gt=
-;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; --<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; 2.20.1<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; --<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; You received this message because you a=
-re subscribed to the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0Google Groups &quot;outreachy-kernel&quot; g=
-roup.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; To unsubscribe from this group and stop=
- receiving emails from<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0it, send an email to<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"mailto:outreachy-kernel%2Bunsubsc=
-ribe@googlegroups.com" target=3D"_blank">outreachy-kernel+unsubscribe@googl=
-egroups.com</a>.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; To post to this group, send email to<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"mailto:outreachy-kernel@googlegro=
-ups.com" target=3D"_blank">outreachy-kernel@googlegroups.com</a>.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; To view this discussion on the web visi=
-thttps://<a href=3D"http://groups.google.com/d/msgid/outreachy-kernel/20190=
-302001115.20477-3-j" rel=3D"noreferrer" target=3D"_blank">groups.google.com=
-/d/msgid/outreachy-kernel/20190302001115.20477-3-j</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0bi.octave%<a href=3D"http://40gmail.com" rel=
-=3D"noreferrer" target=3D"_blank">40gmail.com</a>.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt; For more options, visit <a href=3D"http=
-s://groups.google.com/d/optout" rel=3D"noreferrer" target=3D"_blank">https:=
-//groups.google.com/d/optout</a>.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; I will do so. Thanks.=C2=A0<br>
-<br>
-&gt;This is not the ideal place for comments either.=C2=A0 The response jus=
-t be<br>
-&gt;right under the text you are responding to.=C2=A0 You aren&#39;t respon=
-ding to<br>
-<br>
-&gt;For more options, visit <a href=3D"https://groups.google.com/d/optout" =
-rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/optout</a>=
-.<br>
-<br>
-&gt;julia</blockquote><div>=C2=A0</div><div>Thanks. I take good note.<br></=
-div></div></div>
-
---00000000000054f05e0583189823--
 
