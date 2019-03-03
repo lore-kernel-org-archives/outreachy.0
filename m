@@ -1,1249 +1,499 @@
-X-GM-THRID: 6339082417419059200
-X-Received: by 10.98.129.195 with SMTP id t186mr2248878pfd.17.1475932639104;
-        Sat, 08 Oct 2016 06:17:19 -0700 (PDT)
+X-GM-THRID: 6663286701018841088
+X-Received: by 2002:ac2:548b:: with SMTP id t11mr692121lfk.9.1551601465402;
+        Sun, 03 Mar 2019 00:24:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.18.85 with SMTP id a82ls2513529ioj.7.gmail; Sat, 08 Oct
- 2016 06:17:14 -0700 (PDT)
-X-Received: by 10.36.50.149 with SMTP id j143mr912353ita.15.1475932634637;
-        Sat, 08 Oct 2016 06:17:14 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id d11si2842467pfl.2.2016.10.08.06.17.14
+Received: by 2002:a2e:5d5d:: with SMTP id r90ls1579354ljb.7.gmail; Sun, 03 Mar
+ 2019 00:24:24 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxML4Pu6F13m25NNQfjhBNAfwWygYmDQMLLbRIiUM7BJHSc7tyvmGmRXn7RVWkYbXYigDA+
+X-Received: by 2002:a2e:8593:: with SMTP id b19mr635935lji.5.1551601464551;
+        Sun, 03 Mar 2019 00:24:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551601464; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QOccFrxIyj2o2L6M1qXU04KSYDYdQ9f4SbzzrMHJmHAoyduoRs+MNtM7V+kzxWjQtP
+         1uGiMK0cZMzDzO7I9cJBzN8cmzDid306uDWv/+jCbIWfuS+hPsHQ4bfpBkVF/UH+FuKb
+         4U+FoaaWLcu28BgnjZes+/83N1Azf1AJugnRhyiLmgYoZOzzDEM4EmF8/DMMjfAlVb62
+         IqDIoXIZW/9UlalHUZ1aZORcQkkw5NSjd9gPOJ+wsjZpjFcHcfUH1NpdAWCDRvrnNnSg
+         9fvsI0L1TU9twLV7Y0CaOLZCmZEc2gQpgEduJftzvDM/9uUoFC2DD90VrxE7eMnnL7v6
+         c6OA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=NhuwoyOs+UVMVTD5spE8rEkcefb19nOhe5IN5SxRgBQ=;
+        b=i6+EO5l50O3+kr0aVbpEOMd9fM7/O+izwJfRH/Do9rI12ro73mP1q/rbyJgXlGSJDY
+         6OnyjALgudbxeJr1TE5yzmiToTtfcWu1LNA76vPZ5mrRg9uvpQwh6WfVjkwWpUVrHcx0
+         gs5n07FBn07zFHXf9ZTo43e4qm/f3Wa5maL4INAHeg9/DE4B+Do8XG4oAx/8MiTP0fad
+         yW2PNxfai6KIKw0abCmphfleOIfjhFIOkVo/NDbvqdKy0TPXrSSwk3n8wkQqvwU6sQi7
+         dfunaGfBbi6aM56cdjp0IPYROYIIGYUTB997swWrmrXnSIbwSLiqzhvcW0VKOJAQBGhs
+         Cojw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y1si59655lfj.5.2019.03.03.00.24.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 06:17:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Sun, 03 Mar 2019 00:24:24 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id i85so4423119pfa.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 06:17:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=d51xrvFegVm+8l9fWMb46Fjout667qUpjtOR+dEA+dQ=;
-        b=Z4I31o2nDa8cD60Z0XCWy6CrKSzjesAKCp/HLAWQXAabzG6mpS11xehQsTXw0D5Wac
-         fyJq1VBPjOq+B5tdMmnwskbYhbZSztPoUrrDES9ZBIxzU8ClIVsqEaOE+/hg3kG86v4G
-         C0dNB9t8LdXYVFvarOA4NQ/tOy6Au6MEh5jkd/CFzdHscrhCUcMxtQeY1+jV9QmsGWIK
-         vEFazap9EzjUDamqVvui6NKgHDaEBL3O67lahotxWSkQdAPeMh2ipt5RwhSx1P+dYyBo
-         /q5N+63whPYxjfRlOmafBfN13AESs1nR7wU1GH7rU7Y651CkdV/uK1qgQ7RFpck2yycW
-         vlvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=d51xrvFegVm+8l9fWMb46Fjout667qUpjtOR+dEA+dQ=;
-        b=ZJvEsn9pWDNZxJnpUmvlFzlAeXAPH4FgBdCLWh+mRQbXcoRWxwO2daFGavd9hoVP+9
-         qQOFsuO2JcYTkLSKi73qkL3aJ11MP5tmta9oQU9Sjc2ofGURwRw0pU1hpJfCj3Hyzmik
-         y36XBd6TjPPeNTAqjDwt/cTln8qpBPFHyx5kPOZkOuE7rZOAEnofE+LImybkD4fY7vOe
-         W8hi8w/M/3SBRzC2Ei2K4tJNbD6FpSxkO54u2xrPDsaYuMa7yQxY3ZU81jqFtDz8YP8I
-         B3E36ElCcL8NYSwuNbgZC6IihL9In92BCK1lFw4gsBV1DJ3mnGd4Aoeg85xy9B+mM/cY
-         qNRw==
-X-Gm-Message-State: AA6/9RlMmNAytjIU2fV985eIrIFHvd6QvrNeRk6W2noy/paC+xP3xj/nTnGAw71fu54bvQ==
-X-Received: by 10.98.87.69 with SMTP id l66mr35269636pfb.128.1475932634145;
-        Sat, 08 Oct 2016 06:17:14 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([103.62.68.129])
-        by smtp.gmail.com with ESMTPSA id t5sm21411048pfi.78.2016.10.08.06.17.11
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 06:17:13 -0700 (PDT)
-Date: Sat, 8 Oct 2016 18:47:09 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net
-Cc: rvarsha016@gmail.com
-Subject: [PATCH] Staging: vt6655: Replace dwIoBase by dwiobase
-Message-ID: <20161008131709.GA489@euri>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,435,1544482800"; 
+   d="scan'208";a="371661257"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2019 09:24:23 +0100
+Date: Sun, 3 Mar 2019 09:24:23 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Himadri Pandya <himadri18.07@gmail.com>
+cc: Larry.Finger@lwfinger.net, floarian.c.schilhabel@googlemail.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 2/3] staging: rtl8712: rename
+ bSurpriseRemoved to surprise_removed
+In-Reply-To: <20190303081808.83540-3-himadri18.07@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903030921440.3207@hadrien>
+References: <20190303081808.83540-1-himadri18.07@gmail.com> <20190303081808.83540-3-himadri18.07@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.0 (2016-08-17)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes the checkpatch issue of CamelCase by replacing dwIoBase with dwiobase.
 
-CHECK: Avoid CamelCase: <dwIoBase>
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/vt6655/baseband.c |  52 +++---
- drivers/staging/vt6655/baseband.h |   8 +-
- drivers/staging/vt6655/card.c     |  30 ++--
- drivers/staging/vt6655/mac.h      | 322 +++++++++++++++++++-------------------
- drivers/staging/vt6655/rf.c       |  64 ++++----
- drivers/staging/vt6655/srom.c     |  32 ++--
- drivers/staging/vt6655/srom.h     |   6 +-
- 7 files changed, 257 insertions(+), 257 deletions(-)
+On Sun, 3 Mar 2019, Himadri Pandya wrote:
 
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index de503a3..aa57cfa 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -1916,7 +1916,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *      byBBAddr    - address of register in Baseband
-  *  Out:
-  *      pbyData     - data read
-@@ -1927,24 +1927,24 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
- bool BBbReadEmbedded(struct vnt_private *priv,
- 		     unsigned char byBBAddr, unsigned char *pbyData)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	unsigned short ww;
- 	unsigned char byValue;
- 
- 	/* BB reg offset */
--	VNSvOutPortB(dwIoBase + MAC_REG_BBREGADR, byBBAddr);
-+	VNSvOutPortB(dwiobase + MAC_REG_BBREGADR, byBBAddr);
- 
- 	/* turn on REGR */
--	MACvRegBitsOn(dwIoBase, MAC_REG_BBREGCTL, BBREGCTL_REGR);
-+	MACvRegBitsOn(dwiobase, MAC_REG_BBREGCTL, BBREGCTL_REGR);
- 	/* W_MAX_TIMEOUT is the timeout period */
- 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
--		VNSvInPortB(dwIoBase + MAC_REG_BBREGCTL, &byValue);
-+		VNSvInPortB(dwiobase + MAC_REG_BBREGCTL, &byValue);
- 		if (byValue & BBREGCTL_DONE)
- 			break;
- 	}
- 
- 	/* get BB data */
--	VNSvInPortB(dwIoBase + MAC_REG_BBREGDATA, pbyData);
-+	VNSvInPortB(dwiobase + MAC_REG_BBREGDATA, pbyData);
- 
- 	if (ww == W_MAX_TIMEOUT) {
- 		pr_debug(" DBG_PORT80(0x30)\n");
-@@ -1958,7 +1958,7 @@ bool BBbReadEmbedded(struct vnt_private *priv,
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *      byBBAddr    - address of register in Baseband
-  *      byData      - data to write
-  *  Out:
-@@ -1970,20 +1970,20 @@ bool BBbReadEmbedded(struct vnt_private *priv,
- bool BBbWriteEmbedded(struct vnt_private *priv,
- 		      unsigned char byBBAddr, unsigned char byData)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	unsigned short ww;
- 	unsigned char byValue;
- 
- 	/* BB reg offset */
--	VNSvOutPortB(dwIoBase + MAC_REG_BBREGADR, byBBAddr);
-+	VNSvOutPortB(dwiobase + MAC_REG_BBREGADR, byBBAddr);
- 	/* set BB data */
--	VNSvOutPortB(dwIoBase + MAC_REG_BBREGDATA, byData);
-+	VNSvOutPortB(dwiobase + MAC_REG_BBREGDATA, byData);
- 
- 	/* turn on BBREGCTL_REGW */
--	MACvRegBitsOn(dwIoBase, MAC_REG_BBREGCTL, BBREGCTL_REGW);
-+	MACvRegBitsOn(dwiobase, MAC_REG_BBREGCTL, BBREGCTL_REGW);
- 	/* W_MAX_TIMEOUT is the timeout period */
- 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
--		VNSvInPortB(dwIoBase + MAC_REG_BBREGCTL, &byValue);
-+		VNSvInPortB(dwiobase + MAC_REG_BBREGCTL, &byValue);
- 		if (byValue & BBREGCTL_DONE)
- 			break;
- 	}
-@@ -2000,7 +2000,7 @@ bool BBbWriteEmbedded(struct vnt_private *priv,
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *      byRevId     - Revision ID
-  *      byRFType    - RF type
-  *  Out:
-@@ -2014,7 +2014,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
- {
- 	bool bResult = true;
- 	int        ii;
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	unsigned char byRFType = priv->byRFType;
- 	unsigned char byLocalID = priv->byLocalID;
- 
-@@ -2036,8 +2036,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 					byVT3253B0_AGC4_RFMD2959[ii][0],
- 					byVT3253B0_AGC4_RFMD2959[ii][1]);
- 
--			VNSvOutPortD(dwIoBase + MAC_REG_ITRTMSET, 0x23);
--			MACvRegBitsOn(dwIoBase, MAC_REG_PAPEDELAY, BIT(0));
-+			VNSvOutPortD(dwiobase + MAC_REG_ITRTMSET, 0x23);
-+			MACvRegBitsOn(dwiobase, MAC_REG_PAPEDELAY, BIT(0));
- 		}
- 		priv->abyBBVGA[0] = 0x18;
- 		priv->abyBBVGA[1] = 0x0A;
-@@ -2076,8 +2076,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 				byVT3253B0_AGC[ii][0],
- 				byVT3253B0_AGC[ii][1]);
- 
--		VNSvOutPortB(dwIoBase + MAC_REG_ITRTMSET, 0x23);
--		MACvRegBitsOn(dwIoBase, MAC_REG_PAPEDELAY, BIT(0));
-+		VNSvOutPortB(dwiobase + MAC_REG_ITRTMSET, 0x23);
-+		MACvRegBitsOn(dwiobase, MAC_REG_PAPEDELAY, BIT(0));
- 
- 		priv->abyBBVGA[0] = 0x14;
- 		priv->abyBBVGA[1] = 0x0A;
-@@ -2098,7 +2098,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		 * 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted)
- 		 */
- 
--		/*bResult &= BBbWriteEmbedded(dwIoBase,0x09,0x41);*/
-+		/*bResult &= BBbWriteEmbedded(dwiobase,0x09,0x41);*/
- 
- 		/* Init ANT B select,
- 		 * RX Config CR10 = 0x28->0x2A,
-@@ -2106,7 +2106,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		 * make the ANT_A, ANT_B inverted)
- 		 */
- 
--		/*bResult &= BBbWriteEmbedded(dwIoBase,0x0a,0x28);*/
-+		/*bResult &= BBbWriteEmbedded(dwiobase,0x0a,0x28);*/
- 		/* Select VC1/VC2, CR215 = 0x02->0x06 */
- 		bResult &= BBbWriteEmbedded(priv, 0xd7, 0x06);
- 
-@@ -2154,7 +2154,7 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		priv->ldBmThreshold[2] = 0;
- 		priv->ldBmThreshold[3] = 0;
- 		/* Fix VT3226 DFC system timing issue */
--		MACvSetRFLE_LatchBase(dwIoBase);
-+		MACvSetRFLE_LatchBase(dwiobase);
- 		/* {{ RobertYu: 20050104 */
- 	} else if (byRFType == RF_AIROHA7230) {
- 		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
-@@ -2167,11 +2167,11 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		/* Init ANT B select,TX Config CR09 = 0x61->0x45,
- 		 * 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted)
- 		 */
--		/*bResult &= BBbWriteEmbedded(dwIoBase,0x09,0x41);*/
-+		/*bResult &= BBbWriteEmbedded(dwiobase,0x09,0x41);*/
- 		/* Init ANT B select,RX Config CR10 = 0x28->0x2A,
- 		 * 0x2A->0x28(VC1/VC2 define, make the ANT_A, ANT_B inverted)
- 		 */
--		/*bResult &= BBbWriteEmbedded(dwIoBase,0x0a,0x28);*/
-+		/*bResult &= BBbWriteEmbedded(dwiobase,0x0a,0x28);*/
- 		/* Select VC1/VC2, CR215 = 0x02->0x06 */
- 		bResult &= BBbWriteEmbedded(priv, 0xd7, 0x06);
- 		/* }} */
-@@ -2259,7 +2259,7 @@ void BBvSetVGAGainOffset(struct vnt_private *priv, unsigned char byData)
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *  Out:
-  *      none
-  *
-@@ -2280,7 +2280,7 @@ BBvSoftwareReset(struct vnt_private *priv)
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *  Out:
-  *      none
-  *
-@@ -2302,7 +2302,7 @@ BBvPowerSaveModeON(struct vnt_private *priv)
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *  Out:
-  *      none
-  *
-diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
-index a732fba..d03089f 100644
---- a/drivers/staging/vt6655/baseband.h
-+++ b/drivers/staging/vt6655/baseband.h
-@@ -58,11 +58,11 @@
- #define TOP_RATE_2M         0x00200000
- #define TOP_RATE_1M         0x00100000
- 
--#define bbvclearfoe(dwIoBase)				\
--	BBbWriteEmbedded(dwIoBase, 0xB1, 0)
-+#define bbvclearfoe(dwiobase)				\
-+	BBbWriteEmbedded(dwiobase, 0xB1, 0)
- 
--#define BBvSetFOE(dwIoBase)				\
--	BBbWriteEmbedded(dwIoBase, 0xB1, 0x0C)
-+#define BBvSetFOE(dwiobase)				\
-+	BBbWriteEmbedded(dwiobase, 0xB1, 0x0C)
- 
- unsigned int
- BBuGetFrameTime(
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index dbcea44..5c1589a 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -36,7 +36,7 @@
-  *
-  * Revision History:
-  *      06-10-2003 Bryan YC Fan:  Re-write codes to support VT3253 spec.
-- *      08-26-2003 Kyle Hsu:      Modify the defination type of dwIoBase.
-+ *      08-26-2003 Kyle Hsu:      Modify the defination type of dwiobase.
-  *      09-01-2003 Bryan YC Fan:  Add vUpdateIFS().
-  *
-  */
-@@ -938,20 +938,20 @@ u64 CARDqGetTSFOffset(unsigned char byRxRate, u64 qwTSF1, u64 qwTSF2)
-  */
- bool CARDbGetCurrentTSF(struct vnt_private *priv, u64 *pqwCurrTSF)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	unsigned short ww;
- 	unsigned char byData;
- 
--	MACvRegBitsOn(dwIoBase, MAC_REG_TFTCTL, TFTCTL_TSFCNTRRD);
-+	MACvRegBitsOn(dwiobase, MAC_REG_TFTCTL, TFTCTL_TSFCNTRRD);
- 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
--		VNSvInPortB(dwIoBase + MAC_REG_TFTCTL, &byData);
-+		VNSvInPortB(dwiobase + MAC_REG_TFTCTL, &byData);
- 		if (!(byData & TFTCTL_TSFCNTRRD))
- 			break;
- 	}
- 	if (ww == W_MAX_TIMEOUT)
- 		return false;
--	VNSvInPortD(dwIoBase + MAC_REG_TSFCNTR, (u32 *)pqwCurrTSF);
--	VNSvInPortD(dwIoBase + MAC_REG_TSFCNTR + 4, (u32 *)pqwCurrTSF + 1);
-+	VNSvInPortD(dwiobase + MAC_REG_TSFCNTR, (u32 *)pqwCurrTSF);
-+	VNSvInPortD(dwiobase + MAC_REG_TSFCNTR + 4, (u32 *)pqwCurrTSF + 1);
- 
- 	return true;
- }
-@@ -989,7 +989,7 @@ u64 CARDqGetNextTBTT(u64 qwTSF, unsigned short wBeaconInterval)
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase        - IO Base
-+ *      dwiobase        - IO Base
-  *      wBeaconInterval - Beacon Interval
-  *  Out:
-  *      none
-@@ -999,16 +999,16 @@ u64 CARDqGetNextTBTT(u64 qwTSF, unsigned short wBeaconInterval)
- void CARDvSetFirstNextTBTT(struct vnt_private *priv,
- 			   unsigned short wBeaconInterval)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	u64 qwNextTBTT = 0;
- 
- 	CARDbGetCurrentTSF(priv, &qwNextTBTT); /* Get Local TSF counter */
- 
- 	qwNextTBTT = CARDqGetNextTBTT(qwNextTBTT, wBeaconInterval);
- 	/* Set NextTBTT */
--	VNSvOutPortD(dwIoBase + MAC_REG_NEXTTBTT, (u32)qwNextTBTT);
--	VNSvOutPortD(dwIoBase + MAC_REG_NEXTTBTT + 4, (u32)(qwNextTBTT >> 32));
--	MACvRegBitsOn(dwIoBase, MAC_REG_TFTCTL, TFTCTL_TBTTSYNCEN);
-+	VNSvOutPortD(dwiobase + MAC_REG_NEXTTBTT, (u32)qwNextTBTT);
-+	VNSvOutPortD(dwiobase + MAC_REG_NEXTTBTT + 4, (u32)(qwNextTBTT >> 32));
-+	MACvRegBitsOn(dwiobase, MAC_REG_TFTCTL, TFTCTL_TBTTSYNCEN);
- }
- 
- /*
-@@ -1028,12 +1028,12 @@ void CARDvSetFirstNextTBTT(struct vnt_private *priv,
- void CARDvUpdateNextTBTT(struct vnt_private *priv, u64 qwTSF,
- 			 unsigned short wBeaconInterval)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 
- 	qwTSF = CARDqGetNextTBTT(qwTSF, wBeaconInterval);
- 	/* Set NextTBTT */
--	VNSvOutPortD(dwIoBase + MAC_REG_NEXTTBTT, (u32)qwTSF);
--	VNSvOutPortD(dwIoBase + MAC_REG_NEXTTBTT + 4, (u32)(qwTSF >> 32));
--	MACvRegBitsOn(dwIoBase, MAC_REG_TFTCTL, TFTCTL_TBTTSYNCEN);
-+	VNSvOutPortD(dwiobase + MAC_REG_NEXTTBTT, (u32)qwTSF);
-+	VNSvOutPortD(dwiobase + MAC_REG_NEXTTBTT + 4, (u32)(qwTSF >> 32));
-+	MACvRegBitsOn(dwiobase, MAC_REG_TFTCTL, TFTCTL_TBTTSYNCEN);
- 	pr_debug("Card:Update Next TBTT[%8llx]\n", qwTSF);
- }
-diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-index 030f529..86a78707 100644
---- a/drivers/staging/vt6655/mac.h
-+++ b/drivers/staging/vt6655/mac.h
-@@ -554,341 +554,341 @@
- 
- /*---------------------  Export Macros ------------------------------*/
- 
--#define MACvRegBitsOn(dwIoBase, byRegOfs, byBits)			\
-+#define MACvRegBitsOn(dwiobase, byRegOfs, byBits)			\
- do {									\
- 	unsigned char byData;						\
--	VNSvInPortB(dwIoBase + byRegOfs, &byData);			\
--	VNSvOutPortB(dwIoBase + byRegOfs, byData | (byBits));		\
-+	VNSvInPortB(dwiobase + byRegOfs, &byData);			\
-+	VNSvOutPortB(dwiobase + byRegOfs, byData | (byBits));		\
- } while (0)
- 
--#define MACvWordRegBitsOn(dwIoBase, byRegOfs, wBits)			\
-+#define MACvWordRegBitsOn(dwiobase, byRegOfs, wBits)			\
- do {									\
- 	unsigned short wData;						\
--	VNSvInPortW(dwIoBase + byRegOfs, &wData);			\
--	VNSvOutPortW(dwIoBase + byRegOfs, wData | (wBits));		\
-+	VNSvInPortW(dwiobase + byRegOfs, &wData);			\
-+	VNSvOutPortW(dwiobase + byRegOfs, wData | (wBits));		\
- } while (0)
- 
--#define MACvDWordRegBitsOn(dwIoBase, byRegOfs, dwBits)			\
-+#define MACvDWordRegBitsOn(dwiobase, byRegOfs, dwBits)			\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + byRegOfs, &dwData);			\
--	VNSvOutPortD(dwIoBase + byRegOfs, dwData | (dwBits));		\
-+	VNSvInPortD(dwiobase + byRegOfs, &dwData);			\
-+	VNSvOutPortD(dwiobase + byRegOfs, dwData | (dwBits));		\
- } while (0)
- 
--#define MACvRegBitsOnEx(dwIoBase, byRegOfs, byMask, byBits)		\
-+#define MACvRegBitsOnEx(dwiobase, byRegOfs, byMask, byBits)		\
- do {									\
- 	unsigned char byData;						\
--	VNSvInPortB(dwIoBase + byRegOfs, &byData);			\
-+	VNSvInPortB(dwiobase + byRegOfs, &byData);			\
- 	byData &= byMask;						\
--	VNSvOutPortB(dwIoBase + byRegOfs, byData | (byBits));		\
-+	VNSvOutPortB(dwiobase + byRegOfs, byData | (byBits));		\
- } while (0)
- 
--#define MACvRegBitsOff(dwIoBase, byRegOfs, byBits)			\
-+#define MACvRegBitsOff(dwiobase, byRegOfs, byBits)			\
- do {									\
- 	unsigned char byData;						\
--	VNSvInPortB(dwIoBase + byRegOfs, &byData);			\
--	VNSvOutPortB(dwIoBase + byRegOfs, byData & ~(byBits));		\
-+	VNSvInPortB(dwiobase + byRegOfs, &byData);			\
-+	VNSvOutPortB(dwiobase + byRegOfs, byData & ~(byBits));		\
- } while (0)
- 
--#define MACvWordRegBitsOff(dwIoBase, byRegOfs, wBits)			\
-+#define MACvWordRegBitsOff(dwiobase, byRegOfs, wBits)			\
- do {									\
- 	unsigned short wData;						\
--	VNSvInPortW(dwIoBase + byRegOfs, &wData);			\
--	VNSvOutPortW(dwIoBase + byRegOfs, wData & ~(wBits));		\
-+	VNSvInPortW(dwiobase + byRegOfs, &wData);			\
-+	VNSvOutPortW(dwiobase + byRegOfs, wData & ~(wBits));		\
- } while (0)
- 
--#define MACvDWordRegBitsOff(dwIoBase, byRegOfs, dwBits)			\
-+#define MACvDWordRegBitsOff(dwiobase, byRegOfs, dwBits)			\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + byRegOfs, &dwData);			\
--	VNSvOutPortD(dwIoBase + byRegOfs, dwData & ~(dwBits));		\
-+	VNSvInPortD(dwiobase + byRegOfs, &dwData);			\
-+	VNSvOutPortD(dwiobase + byRegOfs, dwData & ~(dwBits));		\
- } while (0)
- 
--#define MACvGetCurrRx0DescAddr(dwIoBase, pdwCurrDescAddr)	\
--	VNSvInPortD(dwIoBase + MAC_REG_RXDMAPTR0,		\
-+#define MACvGetCurrRx0DescAddr(dwiobase, pdwCurrDescAddr)	\
-+	VNSvInPortD(dwiobase + MAC_REG_RXDMAPTR0,		\
- 		    (unsigned long *)pdwCurrDescAddr)
- 
--#define MACvGetCurrRx1DescAddr(dwIoBase, pdwCurrDescAddr)	\
--	VNSvInPortD(dwIoBase + MAC_REG_RXDMAPTR1,		\
-+#define MACvGetCurrRx1DescAddr(dwiobase, pdwCurrDescAddr)	\
-+	VNSvInPortD(dwiobase + MAC_REG_RXDMAPTR1,		\
- 		    (unsigned long *)pdwCurrDescAddr)
- 
--#define MACvGetCurrTx0DescAddr(dwIoBase, pdwCurrDescAddr)	\
--	VNSvInPortD(dwIoBase + MAC_REG_TXDMAPTR0,		\
-+#define MACvGetCurrTx0DescAddr(dwiobase, pdwCurrDescAddr)	\
-+	VNSvInPortD(dwiobase + MAC_REG_TXDMAPTR0,		\
- 		    (unsigned long *)pdwCurrDescAddr)
- 
--#define MACvGetCurrAC0DescAddr(dwIoBase, pdwCurrDescAddr)	\
--	VNSvInPortD(dwIoBase + MAC_REG_AC0DMAPTR,		\
-+#define MACvGetCurrAC0DescAddr(dwiobase, pdwCurrDescAddr)	\
-+	VNSvInPortD(dwiobase + MAC_REG_AC0DMAPTR,		\
- 		    (unsigned long *)pdwCurrDescAddr)
- 
--#define MACvGetCurrSyncDescAddr(dwIoBase, pdwCurrDescAddr)	\
--	VNSvInPortD(dwIoBase + MAC_REG_SYNCDMAPTR,		\
-+#define MACvGetCurrSyncDescAddr(dwiobase, pdwCurrDescAddr)	\
-+	VNSvInPortD(dwiobase + MAC_REG_SYNCDMAPTR,		\
- 		    (unsigned long *)pdwCurrDescAddr)
- 
--#define MACvGetCurrATIMDescAddr(dwIoBase, pdwCurrDescAddr)	\
--	VNSvInPortD(dwIoBase + MAC_REG_ATIMDMAPTR,		\
-+#define MACvGetCurrATIMDescAddr(dwiobase, pdwCurrDescAddr)	\
-+	VNSvInPortD(dwiobase + MAC_REG_ATIMDMAPTR,		\
- 		    (unsigned long *)pdwCurrDescAddr)
- 
- /* set the chip with current BCN tx descriptor address */
--#define MACvSetCurrBCNTxDescAddr(dwIoBase, dwCurrDescAddr)	\
--	VNSvOutPortD(dwIoBase + MAC_REG_BCNDMAPTR,		\
-+#define MACvSetCurrBCNTxDescAddr(dwiobase, dwCurrDescAddr)	\
-+	VNSvOutPortD(dwiobase + MAC_REG_BCNDMAPTR,		\
- 		     dwCurrDescAddr)
- 
- /* set the chip with current BCN length */
--#define MACvSetCurrBCNLength(dwIoBase, wCurrBCNLength)		\
--	VNSvOutPortW(dwIoBase + MAC_REG_BCNDMACTL+2,		\
-+#define MACvSetCurrBCNLength(dwiobase, wCurrBCNLength)		\
-+	VNSvOutPortW(dwiobase + MAC_REG_BCNDMACTL+2,		\
- 		     wCurrBCNLength)
- 
--#define MACvReadBSSIDAddress(dwIoBase, pbyEtherAddr)		\
-+#define MACvReadBSSIDAddress(dwiobase, pbyEtherAddr)		\
- do {								\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 1);		\
--	VNSvInPortB(dwIoBase + MAC_REG_BSSID0,			\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 1);		\
-+	VNSvInPortB(dwiobase + MAC_REG_BSSID0,			\
- 		    (unsigned char *)pbyEtherAddr);		\
--	VNSvInPortB(dwIoBase + MAC_REG_BSSID0 + 1,		\
-+	VNSvInPortB(dwiobase + MAC_REG_BSSID0 + 1,		\
- 		    pbyEtherAddr + 1);				\
--	VNSvInPortB(dwIoBase + MAC_REG_BSSID0 + 2,		\
-+	VNSvInPortB(dwiobase + MAC_REG_BSSID0 + 2,		\
- 		    pbyEtherAddr + 2);				\
--	VNSvInPortB(dwIoBase + MAC_REG_BSSID0 + 3,		\
-+	VNSvInPortB(dwiobase + MAC_REG_BSSID0 + 3,		\
- 		    pbyEtherAddr + 3);				\
--	VNSvInPortB(dwIoBase + MAC_REG_BSSID0 + 4,		\
-+	VNSvInPortB(dwiobase + MAC_REG_BSSID0 + 4,		\
- 		    pbyEtherAddr + 4);				\
--	VNSvInPortB(dwIoBase + MAC_REG_BSSID0 + 5,		\
-+	VNSvInPortB(dwiobase + MAC_REG_BSSID0 + 5,		\
- 		    pbyEtherAddr + 5);				\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 0);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 0);		\
- } while (0)
- 
--#define MACvWriteBSSIDAddress(dwIoBase, pbyEtherAddr)		\
-+#define MACvWriteBSSIDAddress(dwiobase, pbyEtherAddr)		\
- do {								\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 1);		\
--	VNSvOutPortB(dwIoBase + MAC_REG_BSSID0,			\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 1);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_BSSID0,			\
- 		     *(pbyEtherAddr));				\
--	VNSvOutPortB(dwIoBase + MAC_REG_BSSID0 + 1,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_BSSID0 + 1,		\
- 		     *(pbyEtherAddr + 1));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_BSSID0 + 2,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_BSSID0 + 2,		\
- 		     *(pbyEtherAddr + 2));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_BSSID0 + 3,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_BSSID0 + 3,		\
- 		     *(pbyEtherAddr + 3));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_BSSID0 + 4,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_BSSID0 + 4,		\
- 		     *(pbyEtherAddr + 4));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_BSSID0 + 5,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_BSSID0 + 5,		\
- 		     *(pbyEtherAddr + 5));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 0);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 0);		\
- } while (0)
- 
--#define MACvReadEtherAddress(dwIoBase, pbyEtherAddr)		\
-+#define MACvReadEtherAddress(dwiobase, pbyEtherAddr)		\
- do {								\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 1);		\
--	VNSvInPortB(dwIoBase + MAC_REG_PAR0,			\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 1);		\
-+	VNSvInPortB(dwiobase + MAC_REG_PAR0,			\
- 		    (unsigned char *)pbyEtherAddr);		\
--	VNSvInPortB(dwIoBase + MAC_REG_PAR0 + 1,		\
-+	VNSvInPortB(dwiobase + MAC_REG_PAR0 + 1,		\
- 		    pbyEtherAddr + 1);				\
--	VNSvInPortB(dwIoBase + MAC_REG_PAR0 + 2,		\
-+	VNSvInPortB(dwiobase + MAC_REG_PAR0 + 2,		\
- 		    pbyEtherAddr + 2);				\
--	VNSvInPortB(dwIoBase + MAC_REG_PAR0 + 3,		\
-+	VNSvInPortB(dwiobase + MAC_REG_PAR0 + 3,		\
- 		    pbyEtherAddr + 3);				\
--	VNSvInPortB(dwIoBase + MAC_REG_PAR0 + 4,		\
-+	VNSvInPortB(dwiobase + MAC_REG_PAR0 + 4,		\
- 		    pbyEtherAddr + 4);				\
--	VNSvInPortB(dwIoBase + MAC_REG_PAR0 + 5,		\
-+	VNSvInPortB(dwiobase + MAC_REG_PAR0 + 5,		\
- 		    pbyEtherAddr + 5);				\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 0);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 0);		\
- } while (0)
- 
--#define MACvWriteEtherAddress(dwIoBase, pbyEtherAddr)		\
-+#define MACvWriteEtherAddress(dwiobase, pbyEtherAddr)		\
- do {								\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 1);		\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAR0,			\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 1);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAR0,			\
- 		     *pbyEtherAddr);				\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAR0 + 1,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAR0 + 1,		\
- 		     *(pbyEtherAddr + 1));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAR0 + 2,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAR0 + 2,		\
- 		     *(pbyEtherAddr + 2));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAR0 + 3,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAR0 + 3,		\
- 		     *(pbyEtherAddr + 3));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAR0 + 4,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAR0 + 4,		\
- 		     *(pbyEtherAddr + 4));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAR0 + 5,		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAR0 + 5,		\
- 		     *(pbyEtherAddr + 5));			\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 0);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 0);		\
- } while (0)
- 
--#define MACvClearISR(dwIoBase)						\
--	VNSvOutPortD(dwIoBase + MAC_REG_ISR, IMR_MASK_VALUE)
-+#define MACvClearISR(dwiobase)						\
-+	VNSvOutPortD(dwiobase + MAC_REG_ISR, IMR_MASK_VALUE)
- 
--#define MACvStart(dwIoBase)						\
--	VNSvOutPortB(dwIoBase + MAC_REG_HOSTCR,				\
-+#define MACvStart(dwiobase)						\
-+	VNSvOutPortB(dwiobase + MAC_REG_HOSTCR,				\
- 		     (HOSTCR_MACEN | HOSTCR_RXON | HOSTCR_TXON))
- 
--#define MACvRx0PerPktMode(dwIoBase)					\
--	VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL0, RX_PERPKT)
-+#define MACvRx0PerPktMode(dwiobase)					\
-+	VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL0, RX_PERPKT)
- 
--#define MACvRx0BufferFillMode(dwIoBase)					\
--	VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL0, RX_PERPKTCLR)
-+#define MACvRx0BufferFillMode(dwiobase)					\
-+	VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL0, RX_PERPKTCLR)
- 
--#define MACvRx1PerPktMode(dwIoBase)					\
--	VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL1, RX_PERPKT)
-+#define MACvRx1PerPktMode(dwiobase)					\
-+	VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL1, RX_PERPKT)
- 
--#define MACvRx1BufferFillMode(dwIoBase)					\
--	VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL1, RX_PERPKTCLR)
-+#define MACvRx1BufferFillMode(dwiobase)					\
-+	VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL1, RX_PERPKTCLR)
- 
--#define MACvRxOn(dwIoBase)						\
--	MACvRegBitsOn(dwIoBase, MAC_REG_HOSTCR, HOSTCR_RXON)
-+#define MACvRxOn(dwiobase)						\
-+	MACvRegBitsOn(dwiobase, MAC_REG_HOSTCR, HOSTCR_RXON)
- 
--#define MACvReceive0(dwIoBase)						\
-+#define MACvReceive0(dwiobase)						\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + MAC_REG_RXDMACTL0, &dwData);		\
-+	VNSvInPortD(dwiobase + MAC_REG_RXDMACTL0, &dwData);		\
- 	if (dwData & DMACTL_RUN)					\
--		VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL0, DMACTL_WAKE); \
-+		VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL0, DMACTL_WAKE); \
- 	else								\
--		VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL0, DMACTL_RUN); \
-+		VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL0, DMACTL_RUN); \
- } while (0)
- 
--#define MACvReceive1(dwIoBase)						\
-+#define MACvReceive1(dwiobase)						\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + MAC_REG_RXDMACTL1, &dwData);		\
-+	VNSvInPortD(dwiobase + MAC_REG_RXDMACTL1, &dwData);		\
- 	if (dwData & DMACTL_RUN)					\
--		VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL1, DMACTL_WAKE); \
-+		VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL1, DMACTL_WAKE); \
- 	else								\
--		VNSvOutPortD(dwIoBase + MAC_REG_RXDMACTL1, DMACTL_RUN); \
-+		VNSvOutPortD(dwiobase + MAC_REG_RXDMACTL1, DMACTL_RUN); \
- } while (0)
- 
--#define MACvTxOn(dwIoBase)						\
--	MACvRegBitsOn(dwIoBase, MAC_REG_HOSTCR, HOSTCR_TXON)
-+#define MACvTxOn(dwiobase)						\
-+	MACvRegBitsOn(dwiobase, MAC_REG_HOSTCR, HOSTCR_TXON)
- 
--#define MACvTransmit0(dwIoBase)						\
-+#define MACvTransmit0(dwiobase)						\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + MAC_REG_TXDMACTL0, &dwData);		\
-+	VNSvInPortD(dwiobase + MAC_REG_TXDMACTL0, &dwData);		\
- 	if (dwData & DMACTL_RUN)					\
--		VNSvOutPortD(dwIoBase + MAC_REG_TXDMACTL0, DMACTL_WAKE); \
-+		VNSvOutPortD(dwiobase + MAC_REG_TXDMACTL0, DMACTL_WAKE); \
- 	else								\
--		VNSvOutPortD(dwIoBase + MAC_REG_TXDMACTL0, DMACTL_RUN); \
-+		VNSvOutPortD(dwiobase + MAC_REG_TXDMACTL0, DMACTL_RUN); \
- } while (0)
- 
--#define MACvTransmitAC0(dwIoBase)					\
-+#define MACvTransmitAC0(dwiobase)					\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + MAC_REG_AC0DMACTL, &dwData);		\
-+	VNSvInPortD(dwiobase + MAC_REG_AC0DMACTL, &dwData);		\
- 	if (dwData & DMACTL_RUN)					\
--		VNSvOutPortD(dwIoBase + MAC_REG_AC0DMACTL, DMACTL_WAKE); \
-+		VNSvOutPortD(dwiobase + MAC_REG_AC0DMACTL, DMACTL_WAKE); \
- 	else								\
--		VNSvOutPortD(dwIoBase + MAC_REG_AC0DMACTL, DMACTL_RUN); \
-+		VNSvOutPortD(dwiobase + MAC_REG_AC0DMACTL, DMACTL_RUN); \
- } while (0)
- 
--#define MACvTransmitSYNC(dwIoBase)					\
-+#define MACvTransmitSYNC(dwiobase)					\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + MAC_REG_SYNCDMACTL, &dwData);		\
-+	VNSvInPortD(dwiobase + MAC_REG_SYNCDMACTL, &dwData);		\
- 	if (dwData & DMACTL_RUN)					\
--		VNSvOutPortD(dwIoBase + MAC_REG_SYNCDMACTL, DMACTL_WAKE); \
-+		VNSvOutPortD(dwiobase + MAC_REG_SYNCDMACTL, DMACTL_WAKE); \
- 	else								\
--		VNSvOutPortD(dwIoBase + MAC_REG_SYNCDMACTL, DMACTL_RUN); \
-+		VNSvOutPortD(dwiobase + MAC_REG_SYNCDMACTL, DMACTL_RUN); \
- } while (0)
- 
--#define MACvTransmitATIM(dwIoBase)					\
-+#define MACvTransmitATIM(dwiobase)					\
- do {									\
- 	unsigned long dwData;						\
--	VNSvInPortD(dwIoBase + MAC_REG_ATIMDMACTL, &dwData);		\
-+	VNSvInPortD(dwiobase + MAC_REG_ATIMDMACTL, &dwData);		\
- 	if (dwData & DMACTL_RUN)					\
--		VNSvOutPortD(dwIoBase + MAC_REG_ATIMDMACTL, DMACTL_WAKE); \
-+		VNSvOutPortD(dwiobase + MAC_REG_ATIMDMACTL, DMACTL_WAKE); \
- 	else								\
--		VNSvOutPortD(dwIoBase + MAC_REG_ATIMDMACTL, DMACTL_RUN); \
-+		VNSvOutPortD(dwiobase + MAC_REG_ATIMDMACTL, DMACTL_RUN); \
- } while (0)
- 
--#define MACvTransmitBCN(dwIoBase)					\
--	VNSvOutPortB(dwIoBase + MAC_REG_BCNDMACTL, BEACON_READY)
-+#define MACvTransmitBCN(dwiobase)					\
-+	VNSvOutPortB(dwiobase + MAC_REG_BCNDMACTL, BEACON_READY)
- 
--#define MACvClearStckDS(dwIoBase)					\
-+#define MACvClearStckDS(dwiobase)					\
- do {									\
- 	unsigned char byOrgValue;					\
--	VNSvInPortB(dwIoBase + MAC_REG_STICKHW, &byOrgValue);		\
-+	VNSvInPortB(dwiobase + MAC_REG_STICKHW, &byOrgValue);		\
- 	byOrgValue = byOrgValue & 0xFC;					\
--	VNSvOutPortB(dwIoBase + MAC_REG_STICKHW, byOrgValue);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_STICKHW, byOrgValue);		\
- } while (0)
- 
--#define MACvReadISR(dwIoBase, pdwValue)				\
--	VNSvInPortD(dwIoBase + MAC_REG_ISR, pdwValue)
-+#define MACvReadISR(dwiobase, pdwValue)				\
-+	VNSvInPortD(dwiobase + MAC_REG_ISR, pdwValue)
- 
--#define MACvWriteISR(dwIoBase, dwValue)				\
--	VNSvOutPortD(dwIoBase + MAC_REG_ISR, dwValue)
-+#define MACvWriteISR(dwiobase, dwValue)				\
-+	VNSvOutPortD(dwiobase + MAC_REG_ISR, dwValue)
- 
--#define MACvIntEnable(dwIoBase, dwMask)				\
--	VNSvOutPortD(dwIoBase + MAC_REG_IMR, dwMask)
-+#define MACvIntEnable(dwiobase, dwMask)				\
-+	VNSvOutPortD(dwiobase + MAC_REG_IMR, dwMask)
- 
--#define MACvIntDisable(dwIoBase)				\
--	VNSvOutPortD(dwIoBase + MAC_REG_IMR, 0)
-+#define MACvIntDisable(dwiobase)				\
-+	VNSvOutPortD(dwiobase + MAC_REG_IMR, 0)
- 
--#define MACvSelectPage0(dwIoBase)				\
--		VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 0)
-+#define MACvSelectPage0(dwiobase)				\
-+		VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 0)
- 
--#define MACvSelectPage1(dwIoBase)				\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 1)
-+#define MACvSelectPage1(dwiobase)				\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 1)
- 
--#define MACvReadMIBCounter(dwIoBase, pdwCounter)			\
--	VNSvInPortD(dwIoBase + MAC_REG_MIBCNTR, pdwCounter)
-+#define MACvReadMIBCounter(dwiobase, pdwCounter)			\
-+	VNSvInPortD(dwiobase + MAC_REG_MIBCNTR, pdwCounter)
- 
--#define MACvPwrEvntDisable(dwIoBase)					\
--	VNSvOutPortW(dwIoBase + MAC_REG_WAKEUPEN0, 0x0000)
-+#define MACvPwrEvntDisable(dwiobase)					\
-+	VNSvOutPortW(dwiobase + MAC_REG_WAKEUPEN0, 0x0000)
- 
--#define MACvEnableProtectMD(dwIoBase)					\
-+#define MACvEnableProtectMD(dwiobase)					\
- do {									\
- 	unsigned long dwOrgValue;					\
--	VNSvInPortD(dwIoBase + MAC_REG_ENCFG, &dwOrgValue);		\
-+	VNSvInPortD(dwiobase + MAC_REG_ENCFG, &dwOrgValue);		\
- 	dwOrgValue = dwOrgValue | EnCFG_ProtectMd;			\
--	VNSvOutPortD(dwIoBase + MAC_REG_ENCFG, dwOrgValue);		\
-+	VNSvOutPortD(dwiobase + MAC_REG_ENCFG, dwOrgValue);		\
- } while (0)
- 
--#define MACvDisableProtectMD(dwIoBase)					\
-+#define MACvDisableProtectMD(dwiobase)					\
- do {									\
- 	unsigned long dwOrgValue;					\
--	VNSvInPortD(dwIoBase + MAC_REG_ENCFG, &dwOrgValue);		\
-+	VNSvInPortD(dwiobase + MAC_REG_ENCFG, &dwOrgValue);		\
- 	dwOrgValue = dwOrgValue & ~EnCFG_ProtectMd;			\
--	VNSvOutPortD(dwIoBase + MAC_REG_ENCFG, dwOrgValue);		\
-+	VNSvOutPortD(dwiobase + MAC_REG_ENCFG, dwOrgValue);		\
- } while (0)
- 
--#define MACvEnableBarkerPreambleMd(dwIoBase)				\
-+#define MACvEnableBarkerPreambleMd(dwiobase)				\
- do {									\
- 	unsigned long dwOrgValue;					\
--	VNSvInPortD(dwIoBase + MAC_REG_ENCFG, &dwOrgValue);		\
-+	VNSvInPortD(dwiobase + MAC_REG_ENCFG, &dwOrgValue);		\
- 	dwOrgValue = dwOrgValue | EnCFG_BarkerPream;			\
--	VNSvOutPortD(dwIoBase + MAC_REG_ENCFG, dwOrgValue);		\
-+	VNSvOutPortD(dwiobase + MAC_REG_ENCFG, dwOrgValue);		\
- } while (0)
- 
--#define MACvDisableBarkerPreambleMd(dwIoBase)				\
-+#define MACvDisableBarkerPreambleMd(dwiobase)				\
- do {									\
- 	unsigned long dwOrgValue;					\
--	VNSvInPortD(dwIoBase + MAC_REG_ENCFG, &dwOrgValue);		\
-+	VNSvInPortD(dwiobase + MAC_REG_ENCFG, &dwOrgValue);		\
- 	dwOrgValue = dwOrgValue & ~EnCFG_BarkerPream;			\
--	VNSvOutPortD(dwIoBase + MAC_REG_ENCFG, dwOrgValue);		\
-+	VNSvOutPortD(dwiobase + MAC_REG_ENCFG, dwOrgValue);		\
- } while (0)
- 
--#define MACvSetBBType(dwIoBase, byTyp)					\
-+#define MACvSetBBType(dwiobase, byTyp)					\
- do {									\
- 	unsigned long dwOrgValue;					\
--	VNSvInPortD(dwIoBase + MAC_REG_ENCFG, &dwOrgValue);		\
-+	VNSvInPortD(dwiobase + MAC_REG_ENCFG, &dwOrgValue);		\
- 	dwOrgValue = dwOrgValue & ~EnCFG_BBType_MASK;			\
- 	dwOrgValue = dwOrgValue | (unsigned long)byTyp;			\
--	VNSvOutPortD(dwIoBase + MAC_REG_ENCFG, dwOrgValue);		\
-+	VNSvOutPortD(dwiobase + MAC_REG_ENCFG, dwOrgValue);		\
- } while (0)
- 
--#define MACvReadATIMW(dwIoBase, pwCounter)				\
--	VNSvInPortW(dwIoBase + MAC_REG_AIDATIM, pwCounter)
-+#define MACvReadATIMW(dwiobase, pwCounter)				\
-+	VNSvInPortW(dwiobase + MAC_REG_AIDATIM, pwCounter)
- 
--#define MACvWriteATIMW(dwIoBase, wCounter)				\
--	VNSvOutPortW(dwIoBase + MAC_REG_AIDATIM, wCounter)
-+#define MACvWriteATIMW(dwiobase, wCounter)				\
-+	VNSvOutPortW(dwiobase + MAC_REG_AIDATIM, wCounter)
- 
--#define MACvWriteCRC16_128(dwIoBase, byRegOfs, wCRC)		\
-+#define MACvWriteCRC16_128(dwiobase, byRegOfs, wCRC)		\
- do {								\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 1);		\
--	VNSvOutPortW(dwIoBase + byRegOfs, wCRC);		\
--	VNSvOutPortB(dwIoBase + MAC_REG_PAGE1SEL, 0);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 1);		\
-+	VNSvOutPortW(dwiobase + byRegOfs, wCRC);		\
-+	VNSvOutPortB(dwiobase + MAC_REG_PAGE1SEL, 0);		\
- } while (0)
- 
--#define MACvGPIOIn(dwIoBase, pbyValue)					\
--	VNSvInPortB(dwIoBase + MAC_REG_GPIOCTL1, pbyValue)
-+#define MACvGPIOIn(dwiobase, pbyValue)					\
-+	VNSvInPortB(dwiobase + MAC_REG_GPIOCTL1, pbyValue)
- 
--#define MACvSetRFLE_LatchBase(dwIoBase)                                 \
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_RFLEOPT)
-+#define MACvSetRFLE_LatchBase(dwiobase)                                 \
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_RFLEOPT)
- 
- bool MACbIsRegBitsOn(struct vnt_private *, unsigned char byRegOfs,
- 		     unsigned char byTestBits);
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 447882c..9735369 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -410,7 +410,7 @@ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *  Out:
-  *      none
-  *
-@@ -419,16 +419,16 @@ static const unsigned long dwAL7230ChannelTable2[CB_MAX_CHANNEL] = {
-  */
- static bool s_bAL7230Init(struct vnt_private *priv)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	int     ii;
- 	bool ret;
- 
- 	ret = true;
- 
- 	/* 3-wire control for normal mode */
--	VNSvOutPortB(dwIoBase + MAC_REG_SOFTPWRCTL, 0);
-+	VNSvOutPortB(dwiobase + MAC_REG_SOFTPWRCTL, 0);
- 
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPECTI  |
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPECTI  |
- 							 SOFTPWRCTL_TXPEINV));
- 	BBvPowerSaveModeOFF(priv); /* RobertYu:20050106, have DC value for Calibration */
- 
-@@ -436,7 +436,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
- 		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[ii]);
- 
- 	/* PLL On */
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
- 
- 	/* Calibration */
- 	MACvTimer0MicroSDelay(priv, 150);/* 150us */
-@@ -449,7 +449,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
- 	/* TXDCOC:disable, RCK:disable */
- 	ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[CB_AL7230_INIT_SEQ-1]);
- 
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE3    |
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE3    |
- 							 SOFTPWRCTL_SWPE2    |
- 							 SOFTPWRCTL_SWPECTI  |
- 							 SOFTPWRCTL_TXPEINV));
-@@ -458,7 +458,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
- 
- 	/* PE1: TX_ON, PE2: RX_ON, PE3: PLLON */
- 	/* 3-wire control for power saving mode */
--	VNSvOutPortB(dwIoBase + MAC_REG_PSPWRSIG, (PSSIG_WPE3 | PSSIG_WPE2)); /* 1100 0000 */
-+	VNSvOutPortB(dwiobase + MAC_REG_PSPWRSIG, (PSSIG_WPE3 | PSSIG_WPE2)); /* 1100 0000 */
- 
- 	return ret;
- }
-@@ -468,26 +468,26 @@ static bool s_bAL7230Init(struct vnt_private *priv)
-  */
- static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byChannel)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	bool ret;
- 
- 	ret = true;
- 
- 	/* PLLON Off */
--	MACvWordRegBitsOff(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
-+	MACvWordRegBitsOff(dwiobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
- 
- 	ret &= IFRFbWriteEmbedded(priv, dwAL7230ChannelTable0[byChannel - 1]);
- 	ret &= IFRFbWriteEmbedded(priv, dwAL7230ChannelTable1[byChannel - 1]);
- 	ret &= IFRFbWriteEmbedded(priv, dwAL7230ChannelTable2[byChannel - 1]);
- 
- 	/* PLLOn On */
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
- 
- 	/* Set Channel[7] = 0 to tell H/W channel is changing now. */
--	VNSvOutPortB(dwIoBase + MAC_REG_CHANNEL, (byChannel & 0x7F));
-+	VNSvOutPortB(dwiobase + MAC_REG_CHANNEL, (byChannel & 0x7F));
- 	MACvTimer0MicroSDelay(priv, SWITCH_CHANNEL_DELAY_AL7230);
- 	/* Set Channel[7] = 1 to tell H/W channel change is done. */
--	VNSvOutPortB(dwIoBase + MAC_REG_CHANNEL, (byChannel | 0x80));
-+	VNSvOutPortB(dwiobase + MAC_REG_CHANNEL, (byChannel | 0x80));
- 
- 	return ret;
- }
-@@ -497,7 +497,7 @@ static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byCha
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *      dwData      - data to write
-  *  Out:
-  *      none
-@@ -507,15 +507,15 @@ static bool s_bAL7230SelectChannel(struct vnt_private *priv, unsigned char byCha
-  */
- bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	unsigned short ww;
- 	unsigned long dwValue;
- 
--	VNSvOutPortD(dwIoBase + MAC_REG_IFREGCTL, dwData);
-+	VNSvOutPortD(dwiobase + MAC_REG_IFREGCTL, dwData);
- 
- 	/* W_MAX_TIMEOUT is the timeout period */
- 	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
--		VNSvInPortD(dwIoBase + MAC_REG_IFREGCTL, &dwValue);
-+		VNSvInPortD(dwiobase + MAC_REG_IFREGCTL, &dwValue);
- 		if (dwValue & IFREGCTL_DONE)
- 			break;
- 	}
-@@ -531,7 +531,7 @@ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *  Out:
-  *      none
-  *
-@@ -540,19 +540,19 @@ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData)
-  */
- static bool RFbAL2230Init(struct vnt_private *priv)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	int     ii;
- 	bool ret;
- 
- 	ret = true;
- 
- 	/* 3-wire control for normal mode */
--	VNSvOutPortB(dwIoBase + MAC_REG_SOFTPWRCTL, 0);
-+	VNSvOutPortB(dwiobase + MAC_REG_SOFTPWRCTL, 0);
- 
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPECTI  |
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPECTI  |
- 							 SOFTPWRCTL_TXPEINV));
- 	/* PLL  Off */
--	MACvWordRegBitsOff(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
-+	MACvWordRegBitsOff(dwiobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
- 
- 	/* patch abnormal AL2230 frequency output */
- 	IFRFbWriteEmbedded(priv, (0x07168700+(BY_AL2230_REG_LEN<<3)+IFREGCTL_REGW));
-@@ -562,7 +562,7 @@ static bool RFbAL2230Init(struct vnt_private *priv)
- 	MACvTimer0MicroSDelay(priv, 30); /* delay 30 us */
- 
- 	/* PLL On */
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
- 
- 	MACvTimer0MicroSDelay(priv, 150);/* 150us */
- 	ret &= IFRFbWriteEmbedded(priv, (0x00d80f00+(BY_AL2230_REG_LEN<<3)+IFREGCTL_REGW));
-@@ -571,20 +571,20 @@ static bool RFbAL2230Init(struct vnt_private *priv)
- 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
- 	ret &= IFRFbWriteEmbedded(priv, dwAL2230InitTable[CB_AL2230_INIT_SEQ-1]);
- 
--	MACvWordRegBitsOn(dwIoBase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE3    |
-+	MACvWordRegBitsOn(dwiobase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE3    |
- 							 SOFTPWRCTL_SWPE2    |
- 							 SOFTPWRCTL_SWPECTI  |
- 							 SOFTPWRCTL_TXPEINV));
- 
- 	/* 3-wire control for power saving mode */
--	VNSvOutPortB(dwIoBase + MAC_REG_PSPWRSIG, (PSSIG_WPE3 | PSSIG_WPE2)); /* 1100 0000 */
-+	VNSvOutPortB(dwiobase + MAC_REG_PSPWRSIG, (PSSIG_WPE3 | PSSIG_WPE2)); /* 1100 0000 */
- 
- 	return ret;
- }
- 
- static bool RFbAL2230SelectChannel(struct vnt_private *priv, unsigned char byChannel)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	bool ret;
- 
- 	ret = true;
-@@ -593,10 +593,10 @@ static bool RFbAL2230SelectChannel(struct vnt_private *priv, unsigned char byCha
- 	ret &= IFRFbWriteEmbedded(priv, dwAL2230ChannelTable1[byChannel - 1]);
- 
- 	/* Set Channel[7] = 0 to tell H/W channel is changing now. */
--	VNSvOutPortB(dwIoBase + MAC_REG_CHANNEL, (byChannel & 0x7F));
-+	VNSvOutPortB(dwiobase + MAC_REG_CHANNEL, (byChannel & 0x7F));
- 	MACvTimer0MicroSDelay(priv, SWITCH_CHANNEL_DELAY_AL2230);
- 	/* Set Channel[7] = 1 to tell H/W channel change is done. */
--	VNSvOutPortB(dwIoBase + MAC_REG_CHANNEL, (byChannel | 0x80));
-+	VNSvOutPortB(dwiobase + MAC_REG_CHANNEL, (byChannel | 0x80));
- 
- 	return ret;
- }
-@@ -681,7 +681,7 @@ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType,
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase    - I/O base address
-+ *      dwiobase    - I/O base address
-  *      uChannel    - channel number
-  *      bySleepCnt  - SleepProgSyn count
-  *
-@@ -691,12 +691,12 @@ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType,
- bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
- 			 u16 uChannel)
- {
--	void __iomem *dwIoBase = priv->PortOffset;
-+	void __iomem *dwiobase = priv->PortOffset;
- 	int   ii;
- 	unsigned char byInitCount = 0;
- 	unsigned char bySleepCount = 0;
- 
--	VNSvOutPortW(dwIoBase + MAC_REG_MISCFFNDEX, 0);
-+	VNSvOutPortW(dwiobase + MAC_REG_MISCFFNDEX, 0);
- 	switch (byRFType) {
- 	case RF_AIROHA:
- 	case RF_AL2230S:
-@@ -758,7 +758,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase       - I/O base address
-+ *      dwiobase       - I/O base address
-  *      dwRFPowerTable - RF Tx Power Setting
-  *  Out:
-  *      none
-@@ -830,7 +830,7 @@ bool RFbSetPower(
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase       - I/O base address
-+ *      dwiobase       - I/O base address
-  *      dwRFPowerTable - RF Tx Power Setting
-  *  Out:
-  *      none
-diff --git a/drivers/staging/vt6655/srom.c b/drivers/staging/vt6655/srom.c
-index ee99277..6cd1bc6 100644
---- a/drivers/staging/vt6655/srom.c
-+++ b/drivers/staging/vt6655/srom.c
-@@ -64,7 +64,7 @@
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase        - I/O base address
-+ *      dwiobase        - I/O base address
-  *      byContntOffset  - address of EEPROM
-  *  Out:
-  *      none
-@@ -72,7 +72,7 @@
-  * Return Value: data read
-  *
-  */
--unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
-+unsigned char SROMbyReadEmbedded(void __iomem *dwiobase,
- 				 unsigned char byContntOffset)
- {
- 	unsigned short wDelay, wNoACK;
-@@ -81,18 +81,18 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
- 	unsigned char byOrg;
- 
- 	byData = 0xFF;
--	VNSvInPortB(dwIoBase + MAC_REG_I2MCFG, &byOrg);
-+	VNSvInPortB(dwiobase + MAC_REG_I2MCFG, &byOrg);
- 	/* turn off hardware retry for getting NACK */
--	VNSvOutPortB(dwIoBase + MAC_REG_I2MCFG, (byOrg & (~I2MCFG_NORETRY)));
-+	VNSvOutPortB(dwiobase + MAC_REG_I2MCFG, (byOrg & (~I2MCFG_NORETRY)));
- 	for (wNoACK = 0; wNoACK < W_MAX_I2CRETRY; wNoACK++) {
--		VNSvOutPortB(dwIoBase + MAC_REG_I2MTGID, EEP_I2C_DEV_ID);
--		VNSvOutPortB(dwIoBase + MAC_REG_I2MTGAD, byContntOffset);
-+		VNSvOutPortB(dwiobase + MAC_REG_I2MTGID, EEP_I2C_DEV_ID);
-+		VNSvOutPortB(dwiobase + MAC_REG_I2MTGAD, byContntOffset);
- 
- 		/* issue read command */
--		VNSvOutPortB(dwIoBase + MAC_REG_I2MCSR, I2MCSR_EEMR);
-+		VNSvOutPortB(dwiobase + MAC_REG_I2MCSR, I2MCSR_EEMR);
- 		/* wait DONE be set */
- 		for (wDelay = 0; wDelay < W_MAX_TIMEOUT; wDelay++) {
--			VNSvInPortB(dwIoBase + MAC_REG_I2MCSR, &byWait);
-+			VNSvInPortB(dwiobase + MAC_REG_I2MCSR, &byWait);
- 			if (byWait & (I2MCSR_DONE | I2MCSR_NACK))
- 				break;
- 			PCAvDelayByIO(CB_DELAY_LOOP_WAIT);
-@@ -102,8 +102,8 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
- 			break;
- 		}
- 	}
--	VNSvInPortB(dwIoBase + MAC_REG_I2MDIPT, &byData);
--	VNSvOutPortB(dwIoBase + MAC_REG_I2MCFG, byOrg);
-+	VNSvInPortB(dwiobase + MAC_REG_I2MDIPT, &byData);
-+	VNSvOutPortB(dwiobase + MAC_REG_I2MCFG, byOrg);
- 	return byData;
- }
- 
-@@ -112,20 +112,20 @@ unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase        - I/O base address
-+ *      dwiobase        - I/O base address
-  *  Out:
-  *      pbyEepromRegs   - EEPROM content Buffer
-  *
-  * Return Value: none
-  *
-  */
--void SROMvReadAllContents(void __iomem *dwIoBase, unsigned char *pbyEepromRegs)
-+void SROMvReadAllContents(void __iomem *dwiobase, unsigned char *pbyEepromRegs)
- {
- 	int     ii;
- 
- 	/* ii = Rom Address */
- 	for (ii = 0; ii < EEP_MAX_CONTEXT_SIZE; ii++) {
--		*pbyEepromRegs = SROMbyReadEmbedded(dwIoBase,
-+		*pbyEepromRegs = SROMbyReadEmbedded(dwiobase,
- 						    (unsigned char)ii);
- 		pbyEepromRegs++;
- 	}
-@@ -136,21 +136,21 @@ void SROMvReadAllContents(void __iomem *dwIoBase, unsigned char *pbyEepromRegs)
-  *
-  * Parameters:
-  *  In:
-- *      dwIoBase        - I/O base address
-+ *      dwiobase        - I/O base address
-  *  Out:
-  *      pbyEtherAddress - Ethernet Address buffer
-  *
-  * Return Value: none
-  *
-  */
--void SROMvReadEtherAddress(void __iomem *dwIoBase,
-+void SROMvReadEtherAddress(void __iomem *dwiobase,
- 			   unsigned char *pbyEtherAddress)
- {
- 	unsigned char ii;
- 
- 	/* ii = Rom Address */
- 	for (ii = 0; ii < ETH_ALEN; ii++) {
--		*pbyEtherAddress = SROMbyReadEmbedded(dwIoBase, ii);
-+		*pbyEtherAddress = SROMbyReadEmbedded(dwiobase, ii);
- 		pbyEtherAddress++;
- 	}
- }
-diff --git a/drivers/staging/vt6655/srom.h b/drivers/staging/vt6655/srom.h
-index 531bf00..753a3fd 100644
---- a/drivers/staging/vt6655/srom.h
-+++ b/drivers/staging/vt6655/srom.h
-@@ -90,12 +90,12 @@
- 
- /*---------------------  Export Functions  --------------------------*/
- 
--unsigned char SROMbyReadEmbedded(void __iomem *dwIoBase,
-+unsigned char SROMbyReadEmbedded(void __iomem *dwiobase,
- 				 unsigned char byContntOffset);
- 
--void SROMvReadAllContents(void __iomem *dwIoBase, unsigned char *pbyEepromRegs);
-+void SROMvReadAllContents(void __iomem *dwiobase, unsigned char *pbyEepromRegs);
- 
--void SROMvReadEtherAddress(void __iomem *dwIoBase,
-+void SROMvReadEtherAddress(void __iomem *dwiobase,
- 			   unsigned char *pbyEtherAddress);
- 
- #endif /* __EEPROM_H__*/
--- 
-2.7.4
+> Fix checkpatch warning: Avoid Camelcase by renaming struct variable
+> bSurpriseRemoved to surprise_removed.
 
+This would be both more concise and more informative as:
+
+Rename structure field bSurpriseRemoved to surprise_removed to avoid camel
+case.  Suggested by checkpatch.
+
+The interesting part is that you have renamed something, and why you
+renamed it.  The checkpatch reference sort of helps the reader place the
+patch in the grand scheme of possible changes and gives acknowledgement to
+the tool that was used, but should not be the main focus of the log
+message.
+
+julia
+
+>
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+> Changes in V2:
+> 	- Change type to bool as the variable is used as a boolean.
+> ---
+>  drivers/staging/rtl8712/drv_types.h       |  2 +-
+>  drivers/staging/rtl8712/os_intfs.c        |  2 +-
+>  drivers/staging/rtl8712/rtl8712_cmd.c     |  4 ++--
+>  drivers/staging/rtl8712/rtl8712_io.c      |  4 ++--
+>  drivers/staging/rtl8712/rtl8712_led.c     |  6 +++---
+>  drivers/staging/rtl8712/rtl8712_recv.c    | 10 +++++-----
+>  drivers/staging/rtl8712/rtl871x_eeprom.c  | 23 +++++++++++------------
+>  drivers/staging/rtl8712/rtl871x_mlme.c    |  6 +++---
+>  drivers/staging/rtl8712/rtl871x_pwrctrl.c |  4 ++--
+>  drivers/staging/rtl8712/usb_intf.c        |  6 +++---
+>  drivers/staging/rtl8712/usb_ops_linux.c   | 16 ++++++++--------
+>  11 files changed, 41 insertions(+), 42 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
+> index e990118092c5..acee68d3d152 100644
+> --- a/drivers/staging/rtl8712/drv_types.h
+> +++ b/drivers/staging/rtl8712/drv_types.h
+> @@ -146,7 +146,7 @@ struct _adapter {
+>  	struct	led_priv	ledpriv;
+>  	struct mp_priv  mppriv;
+>  	bool	driver_stopped;
+> -	s32	bSurpriseRemoved;
+> +	bool	surprise_removed;
+>  	s32	bSuspended;
+>  	u32	IsrContent;
+>  	u32	ImrContent;
+> diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
+> index bd2ffd0ebde9..41ba1eeea2f2 100644
+> --- a/drivers/staging/rtl8712/os_intfs.c
+> +++ b/drivers/staging/rtl8712/os_intfs.c
+> @@ -375,7 +375,7 @@ static int netdev_open(struct net_device *pnetdev)
+>  	mutex_lock(&padapter->mutex_start);
+>  	if (!padapter->bup) {
+>  		padapter->driver_stopped = false;
+> -		padapter->bSurpriseRemoved = false;
+> +		padapter->surprise_removed = false;
+>  		padapter->bup = true;
+>  		if (rtl871x_hal_init(padapter) != _SUCCESS)
+>  			goto netdev_open_error;
+> diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
+> index c7437f979252..1ffd984c25a4 100644
+> --- a/drivers/staging/rtl8712/rtl8712_cmd.c
+> +++ b/drivers/staging/rtl8712/rtl8712_cmd.c
+> @@ -317,7 +317,7 @@ int r8712_cmd_thread(void *context)
+>  	while (1) {
+>  		if (wait_for_completion_interruptible(cmd_queue_comp))
+>  			break;
+> -		if (padapter->driver_stopped || padapter->bSurpriseRemoved)
+> +		if (padapter->driver_stopped || padapter->surprise_removed)
+>  			break;
+>  		if (r8712_register_cmd_alive(padapter) != _SUCCESS)
+>  			continue;
+> @@ -369,7 +369,7 @@ int r8712_cmd_thread(void *context)
+>  			memcpy((u8 *)pcmdbuf, pcmd->parmbuf, pcmd->cmdsz);
+>  			while (check_cmd_fifo(padapter, wr_sz) == _FAIL) {
+>  				if (padapter->driver_stopped ||
+> -				    padapter->bSurpriseRemoved)
+> +				    padapter->surprise_removed)
+>  					break;
+>  				msleep(100);
+>  				continue;
+> diff --git a/drivers/staging/rtl8712/rtl8712_io.c b/drivers/staging/rtl8712/rtl8712_io.c
+> index ab775e721bf2..384cbdb05e19 100644
+> --- a/drivers/staging/rtl8712/rtl8712_io.c
+> +++ b/drivers/staging/rtl8712/rtl8712_io.c
+> @@ -68,7 +68,7 @@ void r8712_read_mem(struct _adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
+>  {
+>  	struct intf_hdl *hdl = &adapter->pio_queue->intf;
+>
+> -	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
+> +	if (adapter->driver_stopped || adapter->surprise_removed)
+>  		return;
+>
+>  	hdl->io_ops._read_mem(hdl, addr, cnt, pmem);
+> @@ -85,7 +85,7 @@ void r8712_read_port(struct _adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
+>  {
+>  	struct intf_hdl *hdl = &adapter->pio_queue->intf;
+>
+> -	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
+> +	if (adapter->driver_stopped || adapter->surprise_removed)
+>  		return;
+>
+>  	hdl->io_ops._read_port(hdl, addr, cnt, pmem);
+> diff --git a/drivers/staging/rtl8712/rtl8712_led.c b/drivers/staging/rtl8712/rtl8712_led.c
+> index deceef345056..a899a93dfcbb 100644
+> --- a/drivers/staging/rtl8712/rtl8712_led.c
+> +++ b/drivers/staging/rtl8712/rtl8712_led.c
+> @@ -109,7 +109,7 @@ static void SwLedOn(struct _adapter *padapter, struct LED_871x *pLed)
+>  {
+>  	u8	LedCfg;
+>
+> -	if (padapter->bSurpriseRemoved || padapter->driver_stopped)
+> +	if (padapter->surprise_removed || padapter->driver_stopped)
+>  		return;
+>  	LedCfg = r8712_read8(padapter, LEDCFG);
+>  	switch (pLed->LedPin) {
+> @@ -137,7 +137,7 @@ static void SwLedOff(struct _adapter *padapter, struct LED_871x *pLed)
+>  {
+>  	u8	LedCfg;
+>
+> -	if (padapter->bSurpriseRemoved || padapter->driver_stopped)
+> +	if (padapter->surprise_removed || padapter->driver_stopped)
+>  		return;
+>  	LedCfg = r8712_read8(padapter, LEDCFG);
+>  	switch (pLed->LedPin) {
+> @@ -816,7 +816,7 @@ static void BlinkTimerCallback(struct timer_list *t)
+>  	/* This fixed the crash problem on Fedora 12 when trying to do the
+>  	 * insmod;ifconfig up;rmmod commands.
+>  	 */
+> -	if (pLed->padapter->bSurpriseRemoved || pLed->padapter->driver_stopped)
+> +	if (pLed->padapter->surprise_removed || pLed->padapter->driver_stopped)
+>  		return;
+>  	schedule_work(&pLed->BlinkWorkItem);
+>  }
+> diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+> index bca4edde18b4..9e0943185638 100644
+> --- a/drivers/staging/rtl8712/rtl8712_recv.c
+> +++ b/drivers/staging/rtl8712/rtl8712_recv.c
+> @@ -542,7 +542,7 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
+>  			/*indicate this recv_frame*/
+>  			if (!pattrib->amsdu) {
+>  				if (!padapter->driver_stopped &&
+> -				    !padapter->bSurpriseRemoved) {
+> +				    !padapter->surprise_removed) {
+>  					/* indicate this recv_frame */
+>  					r8712_recv_indicatepkt(padapter,
+>  							       prframe);
+> @@ -577,7 +577,7 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
+>  		r8712_wlanhdr_to_ethhdr(prframe);
+>  		if (pattrib->qos != 1) {
+>  			if (!padapter->driver_stopped &&
+> -			    !padapter->bSurpriseRemoved) {
+> +			    !padapter->surprise_removed) {
+>  				r8712_recv_indicatepkt(padapter, prframe);
+>  				return _SUCCESS;
+>  			} else {
+> @@ -626,7 +626,7 @@ void r8712_reordering_ctrl_timeout_handler(void *pcontext)
+>  	struct  __queue *ppending_recvframe_queue =
+>  				 &preorder_ctrl->pending_recvframe_queue;
+>
+> -	if (padapter->driver_stopped || padapter->bSurpriseRemoved)
+> +	if (padapter->driver_stopped || padapter->surprise_removed)
+>  		return;
+>  	spin_lock_irqsave(&ppending_recvframe_queue->lock, irql);
+>  	r8712_recv_indicatepkts_in_order(padapter, preorder_ctrl, true);
+> @@ -644,14 +644,14 @@ static int r8712_process_recv_indicatepkts(struct _adapter *padapter,
+>  		if (recv_indicatepkt_reorder(padapter, prframe) != _SUCCESS) {
+>  			/* including perform A-MPDU Rx Ordering Buffer Control*/
+>  			if (!padapter->driver_stopped &&
+> -			    !padapter->bSurpriseRemoved)
+> +			    !padapter->surprise_removed)
+>  				return _FAIL;
+>  		}
+>  	} else { /*B/G mode*/
+>  		retval = r8712_wlanhdr_to_ethhdr(prframe);
+>  		if (retval != _SUCCESS)
+>  			return retval;
+> -		if (!padapter->driver_stopped && !padapter->bSurpriseRemoved) {
+> +		if (!padapter->driver_stopped && !padapter->surprise_removed) {
+>  			/* indicate this recv_frame */
+>  			r8712_recv_indicatepkt(padapter, prframe);
+>  		} else {
+> diff --git a/drivers/staging/rtl8712/rtl871x_eeprom.c b/drivers/staging/rtl8712/rtl871x_eeprom.c
+> index 948bd0c757b5..0027d8eb22fa 100644
+> --- a/drivers/staging/rtl8712/rtl871x_eeprom.c
+> +++ b/drivers/staging/rtl8712/rtl871x_eeprom.c
+> @@ -37,7 +37,7 @@ static void shift_out_bits(struct _adapter *padapter, u16 data, u16 count)
+>  {
+>  	u16 x, mask;
+>
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		goto out;
+>  	mask = 0x01 << (count - 1);
+>  	x = r8712_read8(padapter, EE_9346CR);
+> @@ -46,7 +46,7 @@ static void shift_out_bits(struct _adapter *padapter, u16 data, u16 count)
+>  		x &= ~_EEDI;
+>  		if (data & mask)
+>  			x |= _EEDI;
+> -		if (padapter->bSurpriseRemoved)
+> +		if (padapter->surprise_removed)
+>  			goto out;
+>  		r8712_write8(padapter, EE_9346CR, (u8)x);
+>  		udelay(CLOCK_RATE);
+> @@ -54,7 +54,7 @@ static void shift_out_bits(struct _adapter *padapter, u16 data, u16 count)
+>  		down_clk(padapter, &x);
+>  		mask >>= 1;
+>  	} while (mask);
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		goto out;
+>  	x &= ~_EEDI;
+>  	r8712_write8(padapter, EE_9346CR, (u8)x);
+> @@ -65,7 +65,7 @@ static u16 shift_in_bits(struct _adapter *padapter)
+>  {
+>  	u16 x, d = 0, i;
+>
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		goto out;
+>  	x = r8712_read8(padapter, EE_9346CR);
+>  	x &= ~(_EEDO | _EEDI);
+> @@ -73,7 +73,7 @@ static u16 shift_in_bits(struct _adapter *padapter)
+>  	for (i = 0; i < 16; i++) {
+>  		d <<= 1;
+>  		up_clk(padapter, &x);
+> -		if (padapter->bSurpriseRemoved)
+> +		if (padapter->surprise_removed)
+>  			goto out;
+>  		x = r8712_read8(padapter, EE_9346CR);
+>  		x &= ~(_EEDI);
+> @@ -117,17 +117,17 @@ static void eeprom_clean(struct _adapter *padapter)
+>  {
+>  	u16 x;
+>
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		return;
+>  	x = r8712_read8(padapter, EE_9346CR);
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		return;
+>  	x &= ~(_EECS | _EEDI);
+>  	r8712_write8(padapter, EE_9346CR, (u8)x);
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		return;
+>  	up_clk(padapter, &x);
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		return;
+>  	down_clk(padapter, &x);
+>  }
+> @@ -194,11 +194,11 @@ u16 r8712_eeprom_read16(struct _adapter *padapter, u16 reg) /*ReadEEprom*/
+>  	tmp8_clk_new = tmp8_clk_ori | 0x20;
+>  	if (tmp8_clk_new != tmp8_clk_ori)
+>  		r8712_write8(padapter, 0x10250003, tmp8_clk_new);
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		goto out;
+>  	/* select EEPROM, reset bits, set _EECS */
+>  	x = r8712_read8(padapter, EE_9346CR);
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		goto out;
+>  	x &= ~(_EEDI | _EEDO | _EESK | _EEM0);
+>  	x |= _EEM1 | _EECS;
+> @@ -218,4 +218,3 @@ u16 r8712_eeprom_read16(struct _adapter *padapter, u16 reg) /*ReadEEprom*/
+>  		r8712_write8(padapter, 0x102502f1, tmp8_ori);
+>  	return data;
+>  }
+> -
+> diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+> index a10a5fbabb33..c666e038f43e 100644
+> --- a/drivers/staging/rtl8712/rtl871x_mlme.c
+> +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+> @@ -174,7 +174,7 @@ sint r8712_if_up(struct _adapter *padapter)
+>  {
+>  	sint res;
+>
+> -	if (padapter->driver_stopped || padapter->bSurpriseRemoved ||
+> +	if (padapter->driver_stopped || padapter->surprise_removed ||
+>  	    !check_fwstate(&padapter->mlmepriv, _FW_LINKED)) {
+>  		res = false;
+>  	} else {
+> @@ -1055,7 +1055,7 @@ void _r8712_join_timeout_handler(struct _adapter *adapter)
+>  	unsigned long irqL;
+>  	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
+>
+> -	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
+> +	if (adapter->driver_stopped || adapter->surprise_removed)
+>  		return;
+>  	spin_lock_irqsave(&pmlmepriv->lock, irqL);
+>  	_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
+> @@ -1084,7 +1084,7 @@ void r8712_scan_timeout_handler (struct _adapter *adapter)
+>
+>  void _r8712_dhcp_timeout_handler (struct _adapter *adapter)
+>  {
+> -	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
+> +	if (adapter->driver_stopped || adapter->surprise_removed)
+>  		return;
+>  	if (adapter->pwrctrlpriv.pwr_mode != adapter->registrypriv.power_mgnt)
+>  		r8712_set_ps_mode(adapter, adapter->registrypriv.power_mgnt,
+> diff --git a/drivers/staging/rtl8712/rtl871x_pwrctrl.c b/drivers/staging/rtl8712/rtl871x_pwrctrl.c
+> index ab2be8507941..2beafc7742b3 100644
+> --- a/drivers/staging/rtl8712/rtl871x_pwrctrl.c
+> +++ b/drivers/staging/rtl8712/rtl871x_pwrctrl.c
+> @@ -32,7 +32,7 @@ void r8712_set_rpwm(struct _adapter *padapter, u8 val8)
+>  		if (pwrpriv->rpwm_retry == 0)
+>  			return;
+>  	}
+> -	if (padapter->driver_stopped || padapter->bSurpriseRemoved)
+> +	if (padapter->driver_stopped || padapter->surprise_removed)
+>  		return;
+>  	rpwm = val8 | pwrpriv->tog;
+>  	switch (val8) {
+> @@ -117,7 +117,7 @@ static void _rpwm_check_handler (struct _adapter *padapter)
+>  {
+>  	struct pwrctrl_priv *pwrpriv = &padapter->pwrctrlpriv;
+>
+> -	if (padapter->driver_stopped || padapter->bSurpriseRemoved)
+> +	if (padapter->driver_stopped || padapter->surprise_removed)
+>  		return;
+>  	if (pwrpriv->cpwm != pwrpriv->rpwm)
+>  		schedule_work(&pwrpriv->rpwm_workitem);
+> diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
+> index cb66ed4bbeac..674c31155cdd 100644
+> --- a/drivers/staging/rtl8712/usb_intf.c
+> +++ b/drivers/staging/rtl8712/usb_intf.c
+> @@ -271,7 +271,7 @@ static void r8712_usb_dvobj_deinit(struct _adapter *padapter)
+>  void rtl871x_intf_stop(struct _adapter *padapter)
+>  {
+>  	/*disable_hw_interrupt*/
+> -	if (!padapter->bSurpriseRemoved) {
+> +	if (!padapter->surprise_removed) {
+>  		/*device still exists, so driver can do i/o operation
+>  		 * TODO:
+>  		 */
+> @@ -298,7 +298,7 @@ void r871x_dev_unload(struct _adapter *padapter)
+>  		r8712_stop_drv_threads(padapter);
+>
+>  		/*s5.*/
+> -		if (!padapter->bSurpriseRemoved) {
+> +		if (!padapter->surprise_removed) {
+>  			padapter->hw_init_completed = false;
+>  			rtl8712_hal_deinit(padapter);
+>  		}
+> @@ -600,7 +600,7 @@ static void r871xu_dev_remove(struct usb_interface *pusb_intf)
+>  		/* never exit with a firmware callback pending */
+>  		wait_for_completion(&padapter->rtl8712_fw_ready);
+>  		if (drvpriv.drv_registered)
+> -			padapter->bSurpriseRemoved = true;
+> +			padapter->surprise_removed = true;
+>  		unregister_netdev(pnetdev); /* will call netdev_close() */
+>  		flush_scheduled_work();
+>  		udelay(1);
+> diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
+> index c4e66f19349e..8df308df35c6 100644
+> --- a/drivers/staging/rtl8712/usb_ops_linux.c
+> +++ b/drivers/staging/rtl8712/usb_ops_linux.c
+> @@ -149,7 +149,7 @@ static void usb_write_mem_complete(struct urb *purb)
+>  		if (purb->status == (-ESHUTDOWN))
+>  			padapter->driver_stopped = true;
+>  		else
+> -			padapter->bSurpriseRemoved = true;
+> +			padapter->surprise_removed = true;
+>  	}
+>  	complete(&pintfpriv->io_retevt_comp);
+>  }
+> @@ -164,7 +164,7 @@ void r8712_usb_write_mem(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *wmem)
+>  	struct usb_device *pusbd = pdvobj->pusbdev;
+>  	struct urb *piorw_urb = pintfpriv->piorw_urb;
+>
+> -	if ((padapter->driver_stopped) || (padapter->bSurpriseRemoved) ||
+> +	if ((padapter->driver_stopped) || (padapter->surprise_removed) ||
+>  	    (padapter->pwrctrlpriv.pnp_bstop_trx))
+>  		return;
+>  	/* translate DMA FIFO addr to pipehandle */
+> @@ -186,7 +186,7 @@ static void r8712_usb_read_port_complete(struct urb *purb)
+>  	struct _adapter *padapter = (struct _adapter *)precvbuf->adapter;
+>  	struct recv_priv *precvpriv = &padapter->recvpriv;
+>
+> -	if (padapter->bSurpriseRemoved || padapter->driver_stopped)
+> +	if (padapter->surprise_removed || padapter->driver_stopped)
+>  		return;
+>  	if (purb->status == 0) { /* SUCCESS */
+>  		if ((purb->actual_length > (MAX_RECVBUF_SZ)) ||
+> @@ -254,7 +254,7 @@ u32 r8712_usb_read_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *rmem)
+>  	struct recv_priv *precvpriv = &adapter->recvpriv;
+>  	struct usb_device *pusbd = pdvobj->pusbdev;
+>
+> -	if (adapter->driver_stopped || adapter->bSurpriseRemoved ||
+> +	if (adapter->driver_stopped || adapter->surprise_removed ||
+>  	    adapter->pwrctrlpriv.pnp_bstop_trx || !precvbuf)
+>  		return _FAIL;
+>  	r8712_init_recvbuf(adapter, precvbuf);
+> @@ -315,8 +315,8 @@ void r8712_xmit_bh(void *priv)
+>  	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+>
+>  	if (padapter->driver_stopped ||
+> -	    padapter->bSurpriseRemoved) {
+> -		netdev_err(padapter->pnetdev, "xmit_bh => driver_stopped or bSurpriseRemoved\n");
+> +	    padapter->surprise_removed) {
+> +		netdev_err(padapter->pnetdev, "xmit_bh => driver_stopped or surprise_removed\n");
+>  		return;
+>  	}
+>  	ret = r8712_xmitframe_complete(padapter, pxmitpriv, NULL);
+> @@ -360,7 +360,7 @@ static void usb_write_port_complete(struct urb *purb)
+>  			break;
+>  		}
+>  	}
+> -	if (padapter->bSurpriseRemoved)
+> +	if (padapter->surprise_removed)
+>  		return;
+>  	switch (purb->status) {
+>  	case 0:
+> @@ -390,7 +390,7 @@ u32 r8712_usb_write_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *wmem)
+>  	struct usb_device *pusbd = pdvobj->pusbdev;
+>  	struct pkt_attrib *pattrib = &pxmitframe->attrib;
+>
+> -	if ((padapter->driver_stopped) || (padapter->bSurpriseRemoved) ||
+> +	if ((padapter->driver_stopped) || (padapter->surprise_removed) ||
+>  	    (padapter->pwrctrlpriv.pnp_bstop_trx))
+>  		return _FAIL;
+>  	for (i = 0; i < 8; i++) {
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190303081808.83540-3-himadri18.07%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
