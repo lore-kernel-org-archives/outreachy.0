@@ -1,112 +1,152 @@
-X-GM-THRID: 6806467742549409792
-X-Received: by 2002:a2e:818e:: with SMTP id e14mr7361796ljg.104.1584754265819;
-        Fri, 20 Mar 2020 18:31:05 -0700 (PDT)
+X-GM-THRID: 6664125238569074688
+X-Received: by 2002:a1c:c00d:: with SMTP id q13mr933174wmf.5.1551629673325;
+        Sun, 03 Mar 2019 08:14:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:10c2:: with SMTP id k2ls1291548lfg.9.gmail; Fri, 20
- Mar 2020 18:31:04 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuha+lW8Q6zGovmn7yH1o7+3GYG6n06Oo30X2vPUnazCAGd6SBXtroiMB7mpPp7dsf7bD26
-X-Received: by 2002:a19:8292:: with SMTP id e140mr6945512lfd.137.1584754264344;
-        Fri, 20 Mar 2020 18:31:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584754264; cv=none;
+Received: by 2002:a1c:48c:: with SMTP id 134ls1171835wme.5.gmail; Sun, 03 Mar
+ 2019 08:14:32 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZdlGScaaekJYqaE+Cs489iBZ0jAo0C+/2a7zNukOOkzJhVtGxt2rGuyU272MRE6GuPp3a7
+X-Received: by 2002:a1c:cb8d:: with SMTP id b135mr927454wmg.22.1551629672544;
+        Sun, 03 Mar 2019 08:14:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551629672; cv=none;
         d=google.com; s=arc-20160816;
-        b=CmFAQnv3b8OrR8M/WgZEw+B37H7Z3EXWltmDrlGqQL2pK5hWBDxXQuYJpH+Z0lBCd4
-         xmLfon63zTKM2iucmFYYEqaRi0m43Q/zjwIBuAT63gElhfq3q7jnG9FxA/wh+MgOuRrb
-         J5xEHC38Ayc4PJReIxSBZaVmp1ew6xgU63smM3fmPg/+rO70W2+UUvAVFdlYhGTzkZL/
-         59lnddiRLqyUbozW8CcMnyp/0AJFsEm9AYTb6scsFPtMs5pGWeqMPvd6lrGwhRp1epwp
-         JTqiSbDtLxA+epwUyhSuxgKOVpyOFN0QaUXniMxymeBHLZHzewcw9ERmcRIrYSrfNkli
-         ueIA==
+        b=atF+UvlOFcMUmL4X21wVuf86rDdrt796tG510bqRMFAPxIxlj33UFlRZLn56WEqxZo
+         TjZ6RjNir2KB1M5Ne65UhUSWCBeU4NeO7QfZOcBd2n+Bmayql9dq+w4Q8LF680xL3bBo
+         NQNToxELRR2g5Vb1NeYILvhPbA3g7zYrz0NJZ8lN5nIKo9W0pvuVJBXbRz7jByRfQ9E6
+         WnIKNNLOEbi6oIa3gmkU7NDG+Hmq45lnCvy1zSTUpvzS+48iMiqc5BDMFLMDRPP1RMam
+         Pm3SrPWlH45bfjFwnijIdN8vPahiHMZQ9NrILiEifDqs/FnhH9n3sX+OYgMwZDfIUbef
+         JK8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Mae23w+R2wdNgAaWsowZpO49mEcnuWx8RZX8mK1tcvY=;
-        b=PdJTtjGVlRo29Zjfyhw9aKRJOuHmKLucfgrWtdvfZZ1qUWJXHZwfITyO906owG66Fk
-         3aKCJTVGrkUXxjBoUHdvoJg+S9Fepx+zJiB2e5pkGeWdpjAB9ZCm/0ruTOV5BZWMzqsP
-         GS5++lHxGvyth0uz63c7MT1TrRR8yfq9T517OK6vCZ4+Ghm6AcO8Zk3GZBmTGKGgIywr
-         0Iz9kSIyISas1aMUSohbBP/cEwy6eT0FUsew/JHw0zAL2H0eq+AG8sUaVlBSe695QZAr
-         pKt9KeV5OKj+paVIcXEyUABqj9em0pwOT/agilgSG5nOo1Nzqo080q8zgbcJrD7lQNZd
-         2mPw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=WODsOsSgWtCdqmv7KbqW/1P2uqPZcUZZyTLF5E18y4I=;
+        b=XUIh5M7a0JCqOfGkX+hP6lfunCBkxoufHcLdZIJvsJ3rgKB8umMsQO66X5dfLeymG8
+         z3j/SN/pTlzs7PapOlsczGyZtDkodgUzQvqZTiPGS9Eiv6iAY+9wYoa7rytaOwemZnaK
+         RcCHTDY9R6lXbdHzT15yrgUPGTRLrGZDVByaMveSpkxtpDdbeuIaAAgTiCM1rYUk5bRv
+         AFuzTw8OvwWqUMFlml9An/ekETWcNCOB5HugLBqSsSNlIAdO/BWF148hNA/qN+zLYH5q
+         SWQx+cW/RPvQqxgXLN11xyDwxcGEijko7DMcM4u0JxpHzohv7TC/s927MvS6q3NPZZjQ
+         yhgw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U8kl3SPS;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
-        by gmr-mx.google.com with ESMTPS id s17si557817ljm.5.2020.03.20.18.31.04
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id o184si107780wma.0.2019.03.03.08.14.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Mar 2020 18:31:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Mar 2019 08:14:32 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U8kl3SPS;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x241.google.com with SMTP id 19so8459496ljj.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2020 18:31:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Mae23w+R2wdNgAaWsowZpO49mEcnuWx8RZX8mK1tcvY=;
-        b=U8kl3SPSxGCnnLhmiGNnWLUv9pMaWIq7SLtUcJ/GF/Bp0zm6xj/pDKHkHLiX+2sg6M
-         W0b9S9/M/2KHbZ7HgIGyvXPUWqHWn1tJ5Ir3PNpuB79NBSumvM3NUIlb7tUi3v0a9I6w
-         3VUgPYRaQ1+Cu8WJXbf6m/9cXv1wjt6qfScUgLGmDoFONlbjTkbUKdZrbvDn9fIVkb4/
-         tCxj1JS/RmCTtlGdFXAtY5HtjUIm0Q2Z0owjfTi+aRyyfijcoj6opteW6YtMDPIEOqZv
-         oIBU4Qy2fKsA1kyU85PV/fO69c0IO3kxTcL5/4Q74qDQGiDtXWR7P9sjODmOrHCq1Leb
-         1c1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Mae23w+R2wdNgAaWsowZpO49mEcnuWx8RZX8mK1tcvY=;
-        b=BXhtBU/BTcsbTW9p2drpvY1gXctzzE5JSALekoKrgdiwuu8Pu93krPibQYAhO76xGT
-         IIQhQrfwmlvcTOw8PhV7Nu13y6Ggr/d6oTWRkXnE6/0UtQBJDX0ESuxmIqD3yoI2R4bB
-         w2SnyZKGGArcbRloKSi5o6fVjTlA9nvLRBNqo/xrp2M/QMIPFq2ClR0vGLlB8v7uW1LN
-         h+0sDPZ1h/UIwcjnKdu+/Dz+U7QKPVW5HaeLpo7c1Fa+NEZYwDdnBzGuItIcephF8BjQ
-         KYQ6ZQ1LONapofFs61fSxSpc4H4AeB8W0Jkhfp562EgFBhPjuZ2Ug6qHsSrcAVpL3oV9
-         SlfQ==
-X-Gm-Message-State: ANhLgQ0Ya4Rpq4u6EMo+3GNYJToGBk0YOMJEweoIFXbV0/TMPTLQGY3h
-	e+nxmpa89sm9W3Aro//xQmN6iyaXO50=
-X-Received: by 2002:a2e:9f0e:: with SMTP id u14mr6712869ljk.142.1584754264135;
-        Fri, 20 Mar 2020 18:31:04 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.68.50])
-        by smtp.gmail.com with ESMTPSA id o16sm4515751ljp.53.2020.03.20.18.31.03
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Mar 2020 18:31:03 -0700 (PDT)
-Date: Sat, 21 Mar 2020 04:31:01 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: hp100: Block comments use a trailing */ on a
- separate line
-Message-ID: <20200321013101.GA17131@siyah2>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,436,1544482800"; 
+   d="scan'208";a="371684463"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2019 17:14:32 +0100
+Date: Sun, 3 Mar 2019 17:14:32 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: idebleenasen@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wlan-ng: Fix alignment match
+ issue
+In-Reply-To: <0baf5675-eda3-4e64-95e4-694f82155da2@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.1903031713230.2543@hadrien>
+References: <1551612545-54801-1-git-send-email-idebleenasen@gmail.com> <alpine.DEB.2.21.1903031230510.3207@hadrien> <0baf5675-eda3-4e64-95e4-694f82155da2@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; boundary="8323329-1424128806-1551629672=:2543"
 
-Moved to the bottom line */ for block comments
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
----
- drivers/staging/hp/hp100.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+--8323329-1424128806-1551629672=:2543
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/hp/hp100.h b/drivers/staging/hp/hp100.h
-index 7239b94..a331587 100644
---- a/drivers/staging/hp/hp100.h
-+++ b/drivers/staging/hp/hp100.h
-@@ -538,7 +538,8 @@
- /* Tx or Rx Ring Entry */
- typedef struct hp100_ring {
- 	u_int *pdl;		/* Address of PDLs PDH, dword before
--				 * this address is used for rx hdr */
-+				 * this address is used for rx hdr 
-+				 */ 
- 	u_int pdl_paddr;	/* Physical address of PDL */
- 	struct sk_buff *skb;
- 	struct hp100_ring *next;
--- 
-2.7.4
 
+
+On Sun, 3 Mar 2019, idebleenasen@gmail.com wrote:
+
+>
+>
+> On Sunday, March 3, 2019 at 5:01:38 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>       On Sun, 3 Mar 2019, Debleena Sen wrote:
+>
+>       > Use tab to match alignment with open parenthesis to remove
+>       > checkpatch.pl check:
+>       > CHECK: Alignment should match open parenthesis
+>       >
+>       > Signed-off-by: Debleena Sen <ideble...@gmail.com>
+>       > ---
+>       >  drivers/staging/wlan-ng/prism2mgmt.c | 4 ++--
+>       >  1 file changed, 2 insertions(+), 2 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/wlan-ng/prism2mgmt.c
+>       b/drivers/staging/wlan-ng/prism2mgmt.c
+>       > index 7350fe5..7d2a140 100644
+>       > --- a/drivers/staging/wlan-ng/prism2mgmt.c
+>       > +++ b/drivers/staging/wlan-ng/prism2mgmt.c
+>       > @@ -228,8 +228,8 @@ int prism2mgmt_scan(struct wlandevice
+>       *wlandev, void *msgp)
+>       >                  __le16 wordbuf[17];
+>       >
+>       >                  result = hfa384x_drvr_setconfig16(hw,
+>       >
+>       -                                        HFA384x_RID_CNFROAMINGMODE,
+>       >-                                        HFA384x_ROAMMODE_HOSTSCAN_HOSTROAM
+>       );
+>       > +                                                
+>        HFA384x_RID_CNFROAMINGMODE,
+>       > +                                                
+>        HFA384x_ROAMMODE_HOSTSCAN_HOSTROAM);
+>
+>       You are now over 80 characters for the third argument.  So it
+>       would be
+>       better to leave the code as is.
+>
+>       julia
+>
+>       >                  if (result) {
+>       >                          netdev_err(wlandev->netdev,
+>       >                                     "setconfig(ROAMINGMODE)
+>       failed. result=%d\n",
+>       > --
+>       > 2.7.4
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an email to outreachy-kern...@googlegroups.com.
+>       > To post to this group, send email to
+>       outreach...@googlegroups.com.
+>       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/1551612545-54801-1-git-s
+>       end-email-idebleenasen%40gmail.com.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+>
+> Ok. But when I ran checkpatch.pl on the updated file the warning of more
+> than 80 characters didn't show up. So I thought to commit the changes. 
+
+OK, perhaps check patch doesn't give the warning in some cases.  But I
+think that the less indented arguments are not so bad, and not exceeding
+80 characters is better as long as the code remains readable in other
+ways.
+
+julia
+
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/0baf5675-eda3-4e64-95e4-
+> 694f82155da2%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1424128806-1551629672=:2543--
 
