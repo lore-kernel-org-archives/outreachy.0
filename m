@@ -1,106 +1,133 @@
-X-GM-THRID: 6620561568029474816
-X-Received: by 2002:adf:e50f:: with SMTP id j15-v6mr980903wrm.5.1541469611357;
-        Mon, 05 Nov 2018 18:00:11 -0800 (PST)
+X-GM-THRID: 6664078765132349440
+X-Received: by 2002:a5d:4908:: with SMTP id x8mr666706wrq.5.1551629601339;
+        Sun, 03 Mar 2019 08:13:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:9d17:: with SMTP id k23-v6ls2206081wre.17.gmail; Mon, 05
- Nov 2018 18:00:10 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cZdXAKsOB3YIF8xAm1sjNNL9x6uPBwDriX0XavFB+4ZrUcWOv9RYW7qB+HggSExTZHwttY
-X-Received: by 2002:a5d:6b03:: with SMTP id v3-v6mr2379578wrw.28.1541469610579;
-        Mon, 05 Nov 2018 18:00:10 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1541469610; cv=pass;
+Received: by 2002:adf:8241:: with SMTP id 59ls2954086wrb.5.gmail; Sun, 03 Mar
+ 2019 08:13:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwGrQq1WyNHXGZcgtF4Jyi1tqVFV/1YYJwi+bRyKtPyYsszWdpZxQcwM+zIo/W7v8UAJgaG
+X-Received: by 2002:adf:8121:: with SMTP id 30mr698128wrm.22.1551629600485;
+        Sun, 03 Mar 2019 08:13:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551629600; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xhe6I70z6J/LcrNzfmrjJ8r80jwdzkzMyUnXAfix0zBA5FYbWoELBVYufO9f3mENgd
-         v8kl6xBdWAwa4HQheWkp6HNZ/zVBdxtjcUBmet2eJONsMMXtk632Jmr9yR/jESEBxM0+
-         ewObvUFLLSIng0gFOFRBNfIPHKdAkfZaISdm5QbtC0wpss8j7IFEtph+FZ6ifeKwEq3J
-         hnlV+p2+A8TVCkUVbQDk/YNNKd4WZqMxQVOHc6lST0Z154lOzhfL3B5NIVebWXV38qMd
-         0ylkfRsmmS6Y/aWqX2AORPCnjsoaNik1iZzb1FjoYLrBhR5SbprN8XI8+r6oGAfYgUbk
-         Mrhg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=t0oJcQ+tzOiC3lgS88/33MzZFEubltmxspc1XCPEUyY=;
-        b=sMJErPfePCWrLiEcdas5k6FlnIZgBmtaG02uyV1iFvI9Db+Ear/kE8fjIyaeQNiuYF
-         IV/TAEpdv6zMnIaZu+dmd0N1jHukHLfbPt+iMDWteKkmCoK4DP7wwtalCuB6UxY20sbK
-         J6g5axmFhd8V0kTgbFgNmLqqqk5a23Tym4Yrf/ycWwkj7q/VpZjTKtfoXA6OAVBdUNrt
-         11Od4TMZFx1ddeDB+wjZwjHp56ZGxULdaOD/kSw0hMnJAlll4mWH4mLU+3OkMZ1uBIQe
-         9Qwh423vVXToMb0sBilfaBQgptZ88jq6Aq1OVOzdPsz4IHG6G2dlLOJZWtXePek16/1Q
-         USbg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=XjqQqmdW;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id 18-v6si266404wrb.2.2018.11.05.18.00.10
+        b=ZzYX2Hv1OZiravuufW8PJxpJHsLQo1avMrx7ZYJmnojljH9UPBtRNF8eRSdh32Jx3S
+         mJ9Rq9DYpAjtx+oonj2oriKGSsakBm2GstqBpZa8x2+b8sCqGcRv/iX149f/8Qt1mTXU
+         BKMmtFOTkjPUUEg1DJS/JYSh0Y3uCHT5lFjS9pUnHzuLfGYdCY2q7xaByFYYrblSD+Ph
+         hg0YJyb0C2/5e1fHwAclThlWgTiOEiJa4f+Apr64s7Ububb1Nu+YMu1DgcsG8xeqFKHu
+         CklcxAjLzv7U+h1rYF1bDULRXs/j/kZQzIFxgj71qmsDRq0umTFXZtUkY+eXXoJHP1O2
+         fEPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=qmejj57XKVgiMwjfzsowO1mk1BIYsu1EK8gVHSlS8zU=;
+        b=sUBwaam8OWGlsBFZZi8bM46YxQb557ZEn/Y6dhbOuOZiw3743voP7YnBgA3Dkc2SUI
+         x5ghFkd0tplifeo99g6vBqJBx9DCd01ws0MPbd7vv/Fg2zZsoF5zUALV9DhmpADXs2aj
+         BREn4IZRqz8FBaHcGlUTCB8sWPQ3VFlsFKyY2Q8beVrBbVjJ3/TNfnYcZjfZoMIZH+LU
+         oBkc6WuWTfxUpBZKzbjt8JXVYKvqZI2SrrsrzKwr+uWaAjX1gKFBi6JTeaYxEiP729eo
+         5+1vU6zQila7XnIkPZMDKGSJGsCHFEcsWLTgskciEaoqAjDyrVnPjaCaPxXw675UUvjf
+         zhhw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id t22si220383wmj.2.2019.03.03.08.13.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Nov 2018 18:00:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        Sun, 03 Mar 2019 08:13:20 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=XjqQqmdW;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541469607; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=JQq2nqgE26wGD4+EJ+D78N2FRb8BL5eoxTC/qVQIRYPSIh0irYytdYW8EUYqR4eKMEL1E6wK3xuyS67AJbzNpJx85eSm1wk3FBgn5/5EDX2IJp5uKIvMSinjko4bl/kumDJGJiAJy1EqBgsgoOWM0TNWZbBIxIcRi9L9bU4l91U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541469607; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=t0oJcQ+tzOiC3lgS88/33MzZFEubltmxspc1XCPEUyY=; 
-	b=G03N6M3XfElcIjVNC0OkIJ/cn0x8iWE3kMW99BfIrpW+BJHX6u17lznRjPdl7Z8CD71a2YsLsEaT6ok/NCDBQShXDCD3AbRsVqFLsWB9HywlQhI+qAA5XhDZnldHxIFmx1Ky3scMg39ZZM+Ev0suyv0CWOZgcPFQCAyvuMWlvfs=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541469607;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=1413; bh=t0oJcQ+tzOiC3lgS88/33MzZFEubltmxspc1XCPEUyY=;
-	b=XjqQqmdWvB6iaGyH+xDD4XRlIzsYTKFMHAbccM4Y5xg4WPdOZmwGAYHvXsuwjjMU
-	TwoNfLzx7E0WjKpOQm8fPs/iUcZoeaD83FAww9vdb4LIMe053oe9akaK1+0DvgZeZGO
-	qAu4ZcjZNb7TVKER7Wag/UHffioJK4LnrBstdyy0=
-Received: from kvasir.local (90.252.88.110 [90.252.88.110]) by mx.zoho.eu
-	with SMTPS id 1541469606815872.0175765727315; Tue, 6 Nov 2018 03:00:06 +0100 (CET)
-Date: Tue, 6 Nov 2018 02:00:05 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 0/2] staging: dacinci: add license and remove fsf mail address
-Message-ID: <cover.1541469543.git.code@wizofe.uk>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,436,1544482800"; 
+   d="scan'208";a="371684388"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2019 17:13:04 +0100
+Date: Sun, 3 Mar 2019 17:13:03 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Outreachy <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: fbtft: Replace udelay to
+ usleep_range
+In-Reply-To: <CAOMPgji0B8yCzT8gsF+PPEeCxdxSWOAX=cf+6rwQ+wHMLXyXqA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.1903031712280.2543@hadrien>
+References: <20190303082902.GA16698@bhagyashri-Lenovo-G570> <20190303083430.GA30460@kroah.com> <CAOMPgjgN1WroEoqpDA-s1t5NVDrDJDtKCMDD=_JgAEeHh7g6dw@mail.gmail.com> <20190303142737.GA30271@kroah.com>
+ <CAOMPgji0B8yCzT8gsF+PPEeCxdxSWOAX=cf+6rwQ+wHMLXyXqA@mail.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+Content-Type: multipart/mixed; boundary="8323329-2144033075-1551629584=:2543"
 
-Add missing SPDX License Identifiers and remove FSF mail address from
-the copyright notice.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Ioannis Valasakis (2):
-  staging: davinci: add missing SPDX License Identifier
-  staging: davinci: remove FSF mail address from copyright
-
- drivers/staging/media/davinci_vpfe/davinci_vpfe_user.h  | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipe.c        | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipe.h        | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c     | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.h     | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipeif.c      | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipeif.h      | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_ipipeif_user.h | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_isif.c         | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_isif.h         | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_isif_regs.h    | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_resizer.c      | 4 +---
- drivers/staging/media/davinci_vpfe/dm365_resizer.h      | 4 +---
- drivers/staging/media/davinci_vpfe/vpfe.h               | 4 +---
- drivers/staging/media/davinci_vpfe/vpfe_mc_capture.c    | 4 +---
- drivers/staging/media/davinci_vpfe/vpfe_mc_capture.h    | 4 +---
- drivers/staging/media/davinci_vpfe/vpfe_video.c         | 4 +---
- drivers/staging/media/davinci_vpfe/vpfe_video.h         | 4 +---
- 18 files changed, 18 insertions(+), 54 deletions(-)
-
--- 
-2.19.1
+--8323329-2144033075-1551629584=:2543
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
 
+
+On Sun, 3 Mar 2019, Bhagyashri Dighole wrote:
+
+> I got the point.
+
+You have top posted again.  You need to put your response under the text
+that it refers to, as I have done here.
+
+julia
+
+>
+> Thanks
+>
+> On Sun, Mar 3, 2019 at 7:57 PM Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org> wrote:
+>
+>       A: http://en.wikipedia.org/wiki/Top_post
+>       Q: Were do I find info about this thing called top-posting?
+>       A: Because it messes up the order in which people normally read
+>       text.
+>       Q: Why is top-posting such a bad thing?
+>       A: Top-posting.
+>       Q: What is the most annoying thing in e-mail?
+>
+>       A: No.
+>       Q: Should I include quotations after my reply?
+>
+>       http://daringfireball.net/2007/07/on_top
+>
+>       On Sun, Mar 03, 2019 at 07:46:55PM +0530, Bhagyashri Dighole
+>       wrote:
+>       > Hi,
+>       > I have gone through "Documentation/timers/timers-howto.txt",
+>       It is
+>       > mentioned that we can put 10us-20us gap between min_range and
+>       max_range. In
+>       > above situation `udelay(20)` our min_range is 20 and max_range
+>       is 30.
+>
+>       That type of delay range can be set, yes, but what are you
+>       helping here?
+>       Also, can the hardware really support this type of longer
+>       delay?  Some
+>       hardware types can not as it is trying to rely on some sort of
+>       semi-regular delays.  Or could the delay be shorter?  It's
+>       really hard
+>       to know without knowing what the hardware is expecting and being
+>       able to
+>       test it.
+>
+>       thanks,
+>
+>       greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CAOMPgji0B8yCzT8gsF%2BPP
+> EeCxdxSWOAX%3Dcf%2B6rwQ%2BwHMLXyXqA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-2144033075-1551629584=:2543--
 
