@@ -1,113 +1,97 @@
 X-GM-THRID: 6664067951305424896
-X-Received: by 2002:a67:6948:: with SMTP id e69mr11340467vsc.26.1551679552445;
-        Sun, 03 Mar 2019 22:05:52 -0800 (PST)
+X-Received: by 2002:a05:6000:1ce:: with SMTP id t14mr667805wrx.29.1551607597702;
+        Sun, 03 Mar 2019 02:06:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:7e57:: with SMTP id z84ls3240262vsc.2.gmail; Sun, 03 Mar
- 2019 22:05:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx0D4wUA7rMOZa/gN/M9yt6me+9JhQLHWblYrGB3k2U6Rx3QyvpICNKkPlK1LNWJzfxjSkD
-X-Received: by 2002:a67:edc2:: with SMTP id e2mr11436882vsp.35.1551679551731;
-        Sun, 03 Mar 2019 22:05:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551679551; cv=none;
+Received: by 2002:a1c:2d49:: with SMTP id t70ls1058727wmt.12.canary-gmail;
+ Sun, 03 Mar 2019 02:06:37 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaG0FDYjEhl6PysPcAC++iMidlzVpGYORx44XQakHvhSLVZcAVRA2Fsu6obVRzpRd/Vs/9M
+X-Received: by 2002:a1c:4087:: with SMTP id n129mr865115wma.13.1551607596989;
+        Sun, 03 Mar 2019 02:06:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551607596; cv=none;
         d=google.com; s=arc-20160816;
-        b=pJfkS8/gymufPSgOFNaPw8IOWlElCLRdca3YFUpCL1JQXrL3ePhOp9fkf6vsUR61bV
-         Fm+W83f37dT0lsVk3y+Ml8J/moA/52fEji4EEIQzTWn7g31gRV1e5Bc62QTm37CuCIe6
-         7zMI3TU4towND6EWmhsrvf5N392zC9UptHltduEr4stNX6JbE3b4dngneHsvR0Ub1QjU
-         7VXuxpBXKzlAH6rOXEXem/ikqL1UqiELzq8hup13FiJ0MOY52bG/rBiZycbFbe/vOy3f
-         pbJ7LC9DnRNJnDjMACTOXOky/uhhetfqy0n80lSQePnBkYlqP+mThfF5ParmDPJ3l8It
-         kZLA==
+        b=DYOC8c8RLlODEQYmO6ConcHIRwIWVgBK+AhtnnUOP0+e4Fxag8upyzikjffkoUW5Zq
+         LkORn5zFoG8oKYBeiBUTz5P30naGtNG2ycIbwnZD7qVC1szQRMN1OOuX2G6DmOu6CSLW
+         9oh6Y1BueLXCdfvyXlK58N+Xwxu0QgfG0BK2HKhYax4T+eHnYRjgDF4FmmBTgg+NomOb
+         IB8FRFq9K4+roLjAMwn/Y7xcI5L4Ihr8FKZogFENivmNEe5BovTcWCi2j216ILNqSAD2
+         TjEjsPamNoBK+pwfoVYG7omZMeD/smRxnUknZLwg/Bqv5a6BuvWiNYdNVA3orZdChNPp
+         JWUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DCDTnTxhCo2oKPxnlpl5PIIL+W4cnxayJjaWT818sjk=;
-        b=ObtR6A3I6dTXB9lk7ve2B78yqMgwrz+A2Ggmbf//qOZAwQW5/Gx/l6cb6+66JXrdVp
-         6VGKFQtw+BbR0enoc1x60vbJKdYhTAY72wEHhPhvGXRzo2ehW0VLWRjzNv5omp9PzuI8
-         VV7BFi2tsSWPptPJiAQXFAhjsa00E6EAo7xyiJDRBzAj6J21iR54YwtCj5tw3+yT+xCB
-         GUnl/rVefI6vQv7s2rfOEyax4NbgTTMPVh8U+TThHX3+/IbyazQt2ZYlZFOPjinbY4I5
-         6aynEehGXH4unznnHezb2bhPpqOvHNQsGcu4jkglmIcn5TjgNzgLwG0yWjzECnRb7Sar
-         oVJA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=E1je7YiDS36WYMV0hHHfEEi7jB6/pkuBXiINyGEQUBk=;
+        b=tR/oHL4i1WBWp1ZVjPIFq8AdcvIhq8khMrU6FPTiOHvONgGqra7ATulMOFFH+24MRD
+         Jhla12+gAzO7u9+czfQhMaOIvaxCKinOCQQNNgIULHcNx3+4TDO+0qNRBiOs81mOx3OC
+         H+AJdOjsVEpJf5sv3WS2ZR1w7+CqBRMHQr3jwY6BV0q0/y93o3JG+YXrRofCRaXL3qTN
+         sYCLT230nnNqEg8t5+kJ1piWM/UACV5iv2G5309/728BZDruvfdM80kg6tDJYkyt+O8v
+         ugXHZsxT76NE2PuKvNDC9VM3OpQNCOCPdb9TYZX5o9tmh+cKS1nnxeOPdNLcsTM3qcuk
+         p+7A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GkKcCVKV;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <idebleenasen@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id e17si274576vke.0.2019.03.03.22.05.51
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id g10si148541wmk.1.2019.03.03.02.06.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 22:05:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Sun, 03 Mar 2019 02:06:36 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GkKcCVKV;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id v21so2192104pfm.12
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 22:05:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=DCDTnTxhCo2oKPxnlpl5PIIL+W4cnxayJjaWT818sjk=;
-        b=GkKcCVKVqF11HiTPmzWzNT+ywfWD1NV38eNeYoBrn9vvyrw3UuTu+pNSyLuWO6sk5p
-         MwqSUfLW7TnmOGeR2oHOT+tglcz0Kaf6CVx32sVICdOQbbrpt9xWh6BeemqAHNU6Tx4n
-         sAoOLkLaV9pLK7WHbehB2lU367Q20+FrFkKGHJ5mqBecNibTqIglcW/hiSdiUXJMiaXp
-         NnPX9RSRsaGO8fJl4gFtmt5ITnbUgToRir7H4aNfz2lbak9Y/d846ll/FUxsb1gWra/E
-         j3yvEafFkFmxuqjeD/qNwU7kPEAca/Ny4qsIplfNeVEI8mPTqZ+zfoLDaq+2/fChhIu7
-         Tnlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=DCDTnTxhCo2oKPxnlpl5PIIL+W4cnxayJjaWT818sjk=;
-        b=eNq7cFZB9UqQoWR7DA+dcvkYHvpKF+9oLcJN+f16904im7Y1OBL+rbK3yupzaFDEsD
-         bzSUookPIcgIs9audEmSsCHrfRizNC+adAKgzwrYCYI9OXABZbOsUE6fy1IPifqbudzd
-         G1fLmyd0kOmInkNJTh1QEaBViLwyBPZWI3hHS2OEQvC/ZhePMy/Eoa+BQA+wddIxJ7l9
-         xq7aHKGs3mbiaLCKG8pRWt4sxHb+0BdHiTb3ZGQFQhYKAKLFuHDEpEf1OVTzf4ujRS5h
-         /wPFKRcNpU19KGDo1oadXFhJbyVwW3Ky2gHXQye1EPipa1CZ7WR+477z6ZjXmH49QeLX
-         vmTw==
-X-Gm-Message-State: APjAAAWJdF8BnzorgyQZvMMz4ouyEHlVhkBSKwr59oE+JyVB513meX4i
-	XYJjx2sDv1WZO3ZPKtkY3D8=
-X-Received: by 2002:a63:31c1:: with SMTP id x184mr16618720pgx.352.1551679550875;
-        Sun, 03 Mar 2019 22:05:50 -0800 (PST)
-Return-Path: <idebleenasen@gmail.com>
-Received: from ubuntu.localdomain ([114.29.227.68])
-        by smtp.googlemail.com with ESMTPSA id y7sm7523671pgf.42.2019.03.03.22.05.48
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 03 Mar 2019 22:05:50 -0800 (PST)
-From: Debleena Sen <idebleenasen@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Debleena Sen <idebleenasen@gmail.com>
-Subject: [PATCH] Staging: pi433: Fix line over 80 characters issue
-Date: Sun,  3 Mar 2019 22:05:30 -0800
-Message-Id: <1551679530-2635-1-git-send-email-idebleenasen@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,435,1544482800"; 
+   d="scan'208";a="297912907"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2019 11:06:36 +0100
+Date: Sun, 3 Mar 2019 11:06:35 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Debleena Sen <idebleenasen@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: pi433: Fix line over 80
+ characters issue
+In-Reply-To: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903031106230.3207@hadrien>
+References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Delete extra whitespace and tab space to remove
-checkpatch.pl warning:
-WARNING: line over 80 characters
 
-Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
----
- drivers/staging/pi433/pi433_if.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
-index b231463..53928af 100644
---- a/drivers/staging/pi433/pi433_if.c
-+++ b/drivers/staging/pi433/pi433_if.c
-@@ -45,10 +45,10 @@
- #include "pi433_if.h"
- #include "rf69.h"
- 
--#define N_PI433_MINORS			BIT(MINORBITS) /*32*/	/* ... up to 256 */
--#define MAX_MSG_SIZE			900	/* min: FIFO_SIZE! */
--#define MSG_FIFO_SIZE			65536   /* 65536 = 2^16  */
--#define NUM_DIO				2
-+#define N_PI433_MINORS		BIT(MINORBITS) /*32*/	/* ... up to 256 */
-+#define MAX_MSG_SIZE		900	/* min: FIFO_SIZE! */
-+#define MSG_FIFO_SIZE		65536   /* 65536 = 2^16  */
-+#define NUM_DIO			2
- 
- static dev_t pi433_dev;
- static DEFINE_IDR(pi433_idr);
--- 
-2.7.4
+On Sun, 3 Mar 2019, Debleena Sen wrote:
 
+> Break the line and match the indentation to remove the
+> checkpatch.pl warning:
+> WARNING: line over 80 characters
+>
+> Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/pi433/rf69.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/pi433/rf69.c b/drivers/staging/pi433/rf69.c
+> index e19b9ce..0c189a7 100644
+> --- a/drivers/staging/pi433/rf69.c
+> +++ b/drivers/staging/pi433/rf69.c
+> @@ -563,7 +563,8 @@ bool rf69_get_flag(struct spi_device *spi, enum flag flag)
+>  {
+>  	switch (flag) {
+>  	case mode_switch_completed:
+> -		return (rf69_read_reg(spi, REG_IRQFLAGS1) & MASK_IRQFLAGS1_MODE_READY);
+> +		return (rf69_read_reg(spi, REG_IRQFLAGS1) &
+> +			MASK_IRQFLAGS1_MODE_READY);
+>  	case ready_to_receive:
+>  		return (rf69_read_reg(spi, REG_IRQFLAGS1) & MASK_IRQFLAGS1_RX_READY);
+>  	case ready_to_send:
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1551607296-33723-1-git-send-email-idebleenasen%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
