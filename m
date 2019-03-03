@@ -1,85 +1,90 @@
 X-GM-THRID: 6663286701018841088
-X-Received: by 2002:a0c:93f2:: with SMTP id g47mr5701882qvg.4.1551601113333;
-        Sun, 03 Mar 2019 00:18:33 -0800 (PST)
+X-Received: by 2002:a1f:f8c1:: with SMTP id w184mr9009604vkh.13.1551600245038;
+        Sun, 03 Mar 2019 00:04:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:dc42:: with SMTP id v63ls1077210qki.3.gmail; Sun, 03 Mar
- 2019 00:18:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwGBoZXgn+mb21Md7LtqCfKqVKRaqesEvFU70gd58Cm/0Swm/FXfIG6EV1XCtsE3y1ssoCR
-X-Received: by 2002:a05:620a:13d2:: with SMTP id g18mr7742569qkl.10.1551601112708;
-        Sun, 03 Mar 2019 00:18:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551601112; cv=none;
+Received: by 2002:a9f:2743:: with SMTP id a61ls431218uaa.0.gmail; Sun, 03 Mar
+ 2019 00:04:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzQpsWf+jCNRdJUro2G14akiC28pTVevd3N6oO/Zpy/VT57nv0tJrQzgG23SkJ28YA18oA5
+X-Received: by 2002:ab0:b17:: with SMTP id b23mr8815202uak.10.1551600244270;
+        Sun, 03 Mar 2019 00:04:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551600244; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eful+HM1KGrNhVG4ZxmKfO1UYeXImYiyC10pxzKFhWVG07fmLd77EfvMVlZUUZE7Rx
-         fjvuCAJoIJ6V2j88mMJs2JXkcxFJvNAvFu8DjmYUlg78ZF0jKnlOafPfUuzlkCRC8NA5
-         QfcrL+DcbJcHQGcqFi6ZlwqT2m2AC4HzQJhjl+idpX46D7IDrDIln1Skh3cx6/CoxgPv
-         3zMDKqPLvapxoCGauXDR7m6WZ4NByLxU0EfC3Mzx2FIonmgnDJLU6VhQ0SPJiArFKW05
-         KlfArsQudG1vDuMT66U2JExXDinu93SVO+qSuy98uShW6zMCOv4MacJFQBbmJaUr4YtD
-         OcGA==
+        b=hGov5AOJPE8aMbSYQTDHDVcayYp1KNEMc1+1QCmDEvGyGTnlVgWe3SEUyIgP9xU0Tm
+         HeoXaS0Cey4Tiyr4DKf58gQZXM6haobprL6/K7oHsunZjTjUtcB9XRY7ci6sNIooxsPj
+         cE3jvvpskvdFX0vDbEj1XfKX1BuE6WlekbhOpJHOEsgVMBMM/vbK9uadKFRPoZqcncDX
+         8XfC/0mTu84Tj+XnlZdsUWTlMN5KCS8yKPgdCawYkMjOjWRxRdDf5lEx1XwN4HQDU+MD
+         UZgplh6oeFcTY8eARYxxLExRLMP+UHI3LzJYAVrIeNAnZxwSgvuHKmNPb+gcmU6fpM7F
+         TW5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=EAiKgs18dVmg1CkgnJyzmST7ezh/mIeItaVRx5r7Y5A=;
-        b=FdRFs6Q1maozmGEsSiS5AsdIygSIzaFnIKULDAO6EdjB+tCu77qhZogJIdrB28LM+2
-         AROmu7EV8et0vsDib9zHkHGaapDJ/TkguS+GYP0zRAw6N0Yst3wmSymwV16q5sHaIyMP
-         QMGZLP3sDdr12+gYi7/xbSm+pW4ngy0xdkDpi+TbENXTxEMrB06sazda07AKcE7f55+9
-         mS6c9n601j3r7XUNa4KcZKvz53O/0kyWua+zlkyb9YFHb+lDXp84riJdxwh77hFnyFec
-         3NswXnOolFNjEN8ix4yQnnrfTtDYU1f2IbTqr5vhRBWvnd9ErdR4DDrFCqviY7H20KhP
-         x2uQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=3iiTyFxk8D9mZWddP58HkTPFRKqnYY7V+rrzKYe2Td4=;
+        b=ND8ahZPWEAo3ulfcJTNaCBa83sbk109N6WWSM3T2SyMj8MqLBwWxMtjw9HHzAHMA2b
+         FeRiRQRVqznNG+0W9yUF0g7LP6ZixCgu6TBgHLPfqN3u4YyiAigPCGiEQIPChHhNt50R
+         sN0dgzN7sdpzXx1czU3ZndGAHO0j9BW4kE/DV9Dme+RStGilpwif50mQ3mBtkocKTbKq
+         1o/TFgU9ryJGQtm3k/RwVvpZkk+iTOBbaZaNnFRoGW/edh0pU4b6RuaWmO2cDZrNbt61
+         2/e144X1WfeUtD8uFXWALLHVJn2GsPzHn7ANb0GLd45puOzEqY/UQrZmIzNbG4R/KKTl
+         HyZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Wne/WKqF";
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="r/nuTB00";
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id t79si162874qke.0.2019.03.03.00.18.32
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id s73si182282vkd.1.2019.03.03.00.04.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 00:18:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Sun, 03 Mar 2019 00:04:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Wne/WKqF";
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="r/nuTB00";
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id n22so988668pfa.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 00:18:32 -0800 (PST)
+Received: by mail-pl1-x641.google.com with SMTP id q3so1032104pll.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 00:04:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=EAiKgs18dVmg1CkgnJyzmST7ezh/mIeItaVRx5r7Y5A=;
-        b=Wne/WKqFyVuVv6O8BURDd0hLcdtzbsYrqf00Rw6E0bBz5OXMnkEv1IEZiAZ3XSsORu
-         I+hV85/7Ml6YljiIXh1WA5KW01IIMZ+C4CT0orD9cJ53OqRrlJZcK4s4/3w6h27GxWDS
-         N+xFiz6kDU7nkw5Zv5YW3DLf/85iKiYGz4IBz/9TToGxDe1B+sSMoUWqVeqYJLfAh+W5
-         gcM6zlwUpK0UM+JEewb+8bydH0ubBtx/Jmf1f1ztR9inLbLajD5m08KwQ7O2ttgC5Ki+
-         Pup9vtl2HVfFxEJrcMNM+NXD/N/Jy+Xgrdex/E487WnJxlet4hOKgKUs027h67fvvIRd
-         mUrw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=3iiTyFxk8D9mZWddP58HkTPFRKqnYY7V+rrzKYe2Td4=;
+        b=r/nuTB006aY4MMEcapsfjLpz7/OC56wMLwjTT2zbR3NhDlwiqsCu5gbydYCYjzNyDo
+         NTci5qeZf9Prlk6PJasJROFNZjtx85cVrbl5KDLVG+ZbwgRLZqGLS3Hp2Ywh6WEGaK6p
+         KldUS/c5YRQrVyb73sf9BU+jsPwH937wFVVQGkjXJNgYVBQb4qZIwAws3zMoUY21m30o
+         G87E7WWisED4ytSDN7U9wQUc4uenbSx0C+QjVAcT8HYvhkReuRG2nn1BsSNQnk2FytHa
+         PkvPsWpZlJuYU7C7R9NN7+16dbr2SU0N2q7KuUxxTDmoOAnAWoIe8M/G4opfpCh1ftIv
+         lajA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=EAiKgs18dVmg1CkgnJyzmST7ezh/mIeItaVRx5r7Y5A=;
-        b=LcU8wuhXYDVUbSDQ3YiWKBQs2T8E2JbdqO7cGJj7PAEi1Nd4Fw2XSGPFXD6FysKeTK
-         YoSmgfXqJW+zoPiQZxutdSGLtMjyBDN05cKSrGS/dJDmiZEhu5MMBvbWnK1jhz53L0Uw
-         LYke0o67LbzqvqqLQ4zNZezSiiQ6RTOoF6ZA/gRidyFWmQb6ofZZkJluag1BSVUBQ/1x
-         rBs9hHpYVVRgmpF3u9xkBWEKpKBb/+E/T9SyJGeb+kBWyU1pfVBFgxtNGpvnCCQzZZGx
-         e4OufboTCaEhK92PR1tWhd7AG423yFoyAPjqKlCw0MDzuZLwE6F7t6nhrjkTO4rooLDH
-         tKSg==
-X-Gm-Message-State: APjAAAWrdvlsdEr3YRRjm2NvdqRtB/zpVGY0ncrAY96In7zAbqEMy/c7
-	7lfSd12azeIlYWF2P9wa0RMH1HlzLL8=
-X-Received: by 2002:a63:a11:: with SMTP id 17mr13134148pgk.310.1551601111799;
-        Sun, 03 Mar 2019 00:18:31 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=3iiTyFxk8D9mZWddP58HkTPFRKqnYY7V+rrzKYe2Td4=;
+        b=UPrypiRz4hy3zs3HzmqPlZaT5HmkZ2416KSRxxd69Je8k5m+FJ0fHsDp6/RG9i2+Cv
+         9KBtnQdJDCD+zSLUEsvQ2Q0beWSVfOggXd4B9E6b40qkULB9zr5HFkHGk+LEsrX4KqqM
+         MziCbGaXu9L76+VT6CqOSZ2XP89ClanS9eFKDjwzGjIXlmNCxK/lNeI4p3ajsrJaNNDE
+         TyZxT1NxQd89a3vGHH5Kd+E3YlOSZdrOEvSLdTNbjtF4GO9uzKiT6Tfvkf+ULagHNa/I
+         shLlkx5YiXhOeBAM/CGxioLUfQXPzWVwRer9mcoLUzcd5RvCUtiJA0pINtgkZ3mdtV02
+         bJow==
+X-Gm-Message-State: APjAAAUGcYWsIChN2W53lck1Vskrb70HHh1Gz91bVjVKAJHAN/Ygv24z
+	/DLbNFGR0esl97atfoQr/DU=
+X-Received: by 2002:a17:902:bd82:: with SMTP id q2mr14348888pls.65.1551600243538;
+        Sun, 03 Mar 2019 00:04:03 -0800 (PST)
 Return-Path: <himadri18.07@gmail.com>
 Received: from localhost.localdomain (mx.daiict.ac.in. [220.225.53.35])
-        by smtp.googlemail.com with ESMTPSA id o6sm10924580pgo.27.2019.03.03.00.18.29
+        by smtp.googlemail.com with ESMTPSA id j20sm4005118pfh.141.2019.03.03.00.04.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 00:18:31 -0800 (PST)
+        Sun, 03 Mar 2019 00:04:02 -0800 (PST)
 From: Himadri Pandya <himadri18.07@gmail.com>
 To: Larry.Finger@lwfinger.net,
-	floarian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org
+	florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.com,
+	julia.lawall@lip6.fr
 Cc: outreachy-kernel@googlegroups.com,
 	Himadri Pandya <himadri18.07@gmail.com>
 Subject: [PATCH v2 0/3] fix checkpatch warning: Avoid CamelCase
-Date: Sun,  3 Mar 2019 13:48:05 +0530
-Message-Id: <20190303081808.83540-1-himadri18.07@gmail.com>
+Date: Sun,  3 Mar 2019 13:33:41 +0530
+Message-Id: <20190303080344.83233-1-himadri18.07@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190301104842.75482-1-himadri18.07@gmail.com>
+References: <20190301104842.75482-1-himadri18.07@gmail.com>
 
 This patchset renames following three variables of struct _adapter to
 fix checkpatch warning: Avoid CamelCase
@@ -91,23 +96,15 @@ v2:
  - Change types of these variable to bool as they are used as boolean
 
 Himadri Pandya (3):
-  staging: rtl8712: rename bDriverStopped to driver_stopped
-  staging: rtl8712: rename bSurpriseRemoved to surprise_removed
-  staging: rtl8712: rename bSuspended to suspended
+  arch: powerpc/kexec: Add missing of_node-put() in
+    default_machine_kexec_prepare()
+  arch: powerpc/hlwd-pic: Add missing of_node-put() in hlwd_pic_probe()
+  arch: powerpc: add missing of_node_put for device_node "cc"
 
- drivers/staging/rtl8712/drv_types.h           |  6 ++---
- drivers/staging/rtl8712/os_intfs.c            |  4 +--
- drivers/staging/rtl8712/rtl8712_cmd.c         |  6 ++---
- drivers/staging/rtl8712/rtl8712_io.c          |  4 +--
- drivers/staging/rtl8712/rtl8712_led.c         |  6 ++---
- drivers/staging/rtl8712/rtl8712_recv.c        | 16 ++++++------
- drivers/staging/rtl8712/rtl871x_eeprom.c      | 23 ++++++++--------
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 16 ++++++------
- drivers/staging/rtl8712/rtl871x_mlme.c        |  6 ++---
- drivers/staging/rtl8712/rtl871x_pwrctrl.c     |  4 +--
- drivers/staging/rtl8712/usb_intf.c            | 12 ++++-----
- drivers/staging/rtl8712/usb_ops_linux.c       | 26 +++++++++----------
- 12 files changed, 64 insertions(+), 65 deletions(-)
+ arch/powerpc/kernel/machine_kexec_64.c        | 4 +++-
+ arch/powerpc/platforms/embedded6xx/hlwd-pic.c | 3 ++-
+ arch/powerpc/platforms/powermac/smp.c         | 8 ++++----
+ 3 files changed, 9 insertions(+), 6 deletions(-)
 
 -- 
 2.17.1
