@@ -1,464 +1,114 @@
 X-GM-THRID: 6663286701018841088
-X-Received: by 2002:a67:e10c:: with SMTP id d12mr8785604vsl.22.1551601116469;
-        Sun, 03 Mar 2019 00:18:36 -0800 (PST)
+X-Received: by 2002:a0c:93f2:: with SMTP id g47mr5701882qvg.4.1551601113333;
+        Sun, 03 Mar 2019 00:18:33 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:7e57:: with SMTP id z84ls2882375vsc.2.gmail; Sun, 03 Mar
- 2019 00:18:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqygO3tCOszFA6IIA7myE+0WYD1iCqrDKW50UcnZOXoEuqIGAb5x7GxJQ42jDJagIFhpXwbN
-X-Received: by 2002:a67:edc2:: with SMTP id e2mr8722409vsp.35.1551601115820;
-        Sun, 03 Mar 2019 00:18:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551601115; cv=none;
+Received: by 2002:a37:dc42:: with SMTP id v63ls1077210qki.3.gmail; Sun, 03 Mar
+ 2019 00:18:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwGBoZXgn+mb21Md7LtqCfKqVKRaqesEvFU70gd58Cm/0Swm/FXfIG6EV1XCtsE3y1ssoCR
+X-Received: by 2002:a05:620a:13d2:: with SMTP id g18mr7742569qkl.10.1551601112708;
+        Sun, 03 Mar 2019 00:18:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551601112; cv=none;
         d=google.com; s=arc-20160816;
-        b=DZcY2GfAzks92FiapDNq7MqLjt789Tia53jeXRTl/hruO/cEqbiNhiy08g5AI/mxjg
-         a7He/KPSZ2ESiLWogoC2jo5izvoD/NRnmxYCj+MYePPUY/n/9ZnCzeuszTXgY/HCekC6
-         WqzeCJvK7BhswJkizstXT2IARhAFVYaGg/FC6lElNMI0qmBrdxFeg0Cm8OlvAjnXLMKk
-         njKk4e3+yyw/ONBbtm/012Kkx1Rc42GDaFfKOPh89e5ZPr1C15n92etx06Jhxtl4yuZa
-         I3f8TMny3ipchRnlNAloLsRTuTmY4sydbLLpMN6nq8/H//y6+kDXOhs/k2QCfCFKvro8
-         sFnQ==
+        b=Eful+HM1KGrNhVG4ZxmKfO1UYeXImYiyC10pxzKFhWVG07fmLd77EfvMVlZUUZE7Rx
+         fjvuCAJoIJ6V2j88mMJs2JXkcxFJvNAvFu8DjmYUlg78ZF0jKnlOafPfUuzlkCRC8NA5
+         QfcrL+DcbJcHQGcqFi6ZlwqT2m2AC4HzQJhjl+idpX46D7IDrDIln1Skh3cx6/CoxgPv
+         3zMDKqPLvapxoCGauXDR7m6WZ4NByLxU0EfC3Mzx2FIonmgnDJLU6VhQ0SPJiArFKW05
+         KlfArsQudG1vDuMT66U2JExXDinu93SVO+qSuy98uShW6zMCOv4MacJFQBbmJaUr4YtD
+         OcGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=8j069KM2SBlQpcZ+mqQzH98xjJPYnlfQSVFdqOY5YsA=;
-        b=fuo8YHLZ3V/yRIicDva4hEZfVaChYeg8cW2Bb5uG47YhCe2OlDxkkL5up5OD/Ev+yK
-         Fncu5E5jy5EqOVibAt+RBHBYuPN9kkrWadtMk/Ze1OoEWO/If3FuFlYa5xno0ZUDO8D7
-         OmXlHbtIvcmBGsQKe8g2T8i5VTRB4ri9k7kdNcz57cjGtc+/+3UfdSznpw3p5P1v10vx
-         uUnKqxbBAgtPag0SAkQySNvNvhdoEiEJZsts6SdKJ6Pi9nMKr15oYDbjR6S7aLG2CDwA
-         OSnRkYTblYlASnOcjipEQ/QTpoz+GZmTsK3RlgDEbJnIhPYwnujWzhiS0dO2Rpe+xbPu
-         bCZw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=EAiKgs18dVmg1CkgnJyzmST7ezh/mIeItaVRx5r7Y5A=;
+        b=FdRFs6Q1maozmGEsSiS5AsdIygSIzaFnIKULDAO6EdjB+tCu77qhZogJIdrB28LM+2
+         AROmu7EV8et0vsDib9zHkHGaapDJ/TkguS+GYP0zRAw6N0Yst3wmSymwV16q5sHaIyMP
+         QMGZLP3sDdr12+gYi7/xbSm+pW4ngy0xdkDpi+TbENXTxEMrB06sazda07AKcE7f55+9
+         mS6c9n601j3r7XUNa4KcZKvz53O/0kyWua+zlkyb9YFHb+lDXp84riJdxwh77hFnyFec
+         3NswXnOolFNjEN8ix4yQnnrfTtDYU1f2IbTqr5vhRBWvnd9ErdR4DDrFCqviY7H20KhP
+         x2uQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vauA2Qef;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Wne/WKqF";
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id k19si181255vsm.0.2019.03.03.00.18.35
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id t79si162874qke.0.2019.03.03.00.18.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 00:18:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Sun, 03 Mar 2019 00:18:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vauA2Qef;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Wne/WKqF";
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id h1so979234pfo.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 00:18:35 -0800 (PST)
+Received: by mail-pf1-x442.google.com with SMTP id n22so988668pfa.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 00:18:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=8j069KM2SBlQpcZ+mqQzH98xjJPYnlfQSVFdqOY5YsA=;
-        b=vauA2Qef/idcEC74yUE2U6XK28N4VTUuBsIV3LD7n/+FrnoGrVPkCyfqUxSVwcbP3a
-         eAAgQaCiAvXtqwaIENjKYoyaR1yMNJLOhIxNLIP3vF3reiZ35YXA4mc6Ni8arKtevsc+
-         vHIEHAj3HFD5YuVvHBMDorDNOZymXhGTYxsLhAygcQ7D+kFpHFs7QD997hAUvZkZJTPD
-         Ub3jB9jrhx4EtgpXXjZM0ad20M3DJLCUsyC1M89XGGWDFed9SYJt/0+h7M11T1KcSUjB
-         NxOH2LDZ7wbwxjspcLYRGFLlbVf0ebO/P1PHPgxKWtHyVNAIl9PsNqdvJlbFxHWsGEcf
-         cd5A==
+        h=from:to:cc:subject:date:message-id;
+        bh=EAiKgs18dVmg1CkgnJyzmST7ezh/mIeItaVRx5r7Y5A=;
+        b=Wne/WKqFyVuVv6O8BURDd0hLcdtzbsYrqf00Rw6E0bBz5OXMnkEv1IEZiAZ3XSsORu
+         I+hV85/7Ml6YljiIXh1WA5KW01IIMZ+C4CT0orD9cJ53OqRrlJZcK4s4/3w6h27GxWDS
+         N+xFiz6kDU7nkw5Zv5YW3DLf/85iKiYGz4IBz/9TToGxDe1B+sSMoUWqVeqYJLfAh+W5
+         gcM6zlwUpK0UM+JEewb+8bydH0ubBtx/Jmf1f1ztR9inLbLajD5m08KwQ7O2ttgC5Ki+
+         Pup9vtl2HVfFxEJrcMNM+NXD/N/Jy+Xgrdex/E487WnJxlet4hOKgKUs027h67fvvIRd
+         mUrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=8j069KM2SBlQpcZ+mqQzH98xjJPYnlfQSVFdqOY5YsA=;
-        b=gESMuCMqUysBNVizoLF5ElUBr95eWu12t6vsGXpbYWxhLqshX+W2KNou7wk3Ht++gg
-         EaomgnWX0uNBryQvCWEbWdOV2iaYsHzwPJiIrYcVXQVwh4hiD00aoyf+ZwC306g0MJMt
-         1KA59+w8KC2Qb5NUjYvUQG3dM9a8Q8lkx9d8mQL2A0oVke/NQGnqrpNj4Z7TFQHOk63I
-         Gi678AwxxNwcXZKJLbBohHVXt3OSuISK+cS28Ek5KqVW05T4/FRgYbqHMiW/umqaiP4s
-         Y4bOFuwCgbg62U5Mmolw+DglvCZEiODWReCMVZuF+zp3UgCN+693BsempyWwnR/X425x
-         y/Bw==
-X-Gm-Message-State: AHQUAubZiHrSyXhDQZ8To3GJ98J7bNoZ9fraf4Lw3zeiQGaT0rkwIUAA
-	1ZIsf+b5OeSwsm5vB6QA+v8=
-X-Received: by 2002:a62:ed0c:: with SMTP id u12mr14676647pfh.88.1551601114658;
-        Sun, 03 Mar 2019 00:18:34 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=EAiKgs18dVmg1CkgnJyzmST7ezh/mIeItaVRx5r7Y5A=;
+        b=LcU8wuhXYDVUbSDQ3YiWKBQs2T8E2JbdqO7cGJj7PAEi1Nd4Fw2XSGPFXD6FysKeTK
+         YoSmgfXqJW+zoPiQZxutdSGLtMjyBDN05cKSrGS/dJDmiZEhu5MMBvbWnK1jhz53L0Uw
+         LYke0o67LbzqvqqLQ4zNZezSiiQ6RTOoF6ZA/gRidyFWmQb6ofZZkJluag1BSVUBQ/1x
+         rBs9hHpYVVRgmpF3u9xkBWEKpKBb/+E/T9SyJGeb+kBWyU1pfVBFgxtNGpvnCCQzZZGx
+         e4OufboTCaEhK92PR1tWhd7AG423yFoyAPjqKlCw0MDzuZLwE6F7t6nhrjkTO4rooLDH
+         tKSg==
+X-Gm-Message-State: APjAAAWrdvlsdEr3YRRjm2NvdqRtB/zpVGY0ncrAY96In7zAbqEMy/c7
+	7lfSd12azeIlYWF2P9wa0RMH1HlzLL8=
+X-Received: by 2002:a63:a11:: with SMTP id 17mr13134148pgk.310.1551601111799;
+        Sun, 03 Mar 2019 00:18:31 -0800 (PST)
 Return-Path: <himadri18.07@gmail.com>
 Received: from localhost.localdomain (mx.daiict.ac.in. [220.225.53.35])
-        by smtp.googlemail.com with ESMTPSA id o6sm10924580pgo.27.2019.03.03.00.18.32
+        by smtp.googlemail.com with ESMTPSA id o6sm10924580pgo.27.2019.03.03.00.18.29
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 00:18:33 -0800 (PST)
+        Sun, 03 Mar 2019 00:18:31 -0800 (PST)
 From: Himadri Pandya <himadri18.07@gmail.com>
 To: Larry.Finger@lwfinger.net,
 	floarian.c.schilhabel@googlemail.com,
 	gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH v2 1/3] staging: rtl8712: rename bDriverStopped to driver_stopped
-Date: Sun,  3 Mar 2019 13:48:06 +0530
-Message-Id: <20190303081808.83540-2-himadri18.07@gmail.com>
+Subject: [PATCH v2 0/3] fix checkpatch warning: Avoid CamelCase
+Date: Sun,  3 Mar 2019 13:48:05 +0530
+Message-Id: <20190303081808.83540-1-himadri18.07@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190303081808.83540-1-himadri18.07@gmail.com>
-References: <20190303081808.83540-1-himadri18.07@gmail.com>
 
-Fix checkpatch warning: Avoid CameCase for struct variable
-bDriverStopped by renaming it to driver_stopped.
+This patchset renames following three variables of struct _adapter to
+fix checkpatch warning: Avoid CamelCase
+ - bDriverStopped -> driver_stopped
+ - bSurpriseRemoved -> surprise_removed
+ - bSuspended -> suspended
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
----
-Changes in V2:
-	- Change type to bool as the variable is being used as boolean.
----
- drivers/staging/rtl8712/drv_types.h           |  2 +-
- drivers/staging/rtl8712/os_intfs.c            |  2 +-
- drivers/staging/rtl8712/rtl8712_cmd.c         |  4 ++--
- drivers/staging/rtl8712/rtl8712_io.c          |  4 ++--
- drivers/staging/rtl8712/rtl8712_led.c         |  6 +++---
- drivers/staging/rtl8712/rtl8712_recv.c        | 10 +++++-----
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 16 ++++++++--------
- drivers/staging/rtl8712/rtl871x_mlme.c        |  6 +++---
- drivers/staging/rtl8712/rtl871x_pwrctrl.c     |  4 ++--
- drivers/staging/rtl8712/usb_intf.c            |  2 +-
- drivers/staging/rtl8712/usb_ops_linux.c       | 18 +++++++++---------
- 11 files changed, 37 insertions(+), 37 deletions(-)
+v2:
+ - Change types of these variable to bool as they are used as boolean
 
-diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
-index 48d62fe6c8d4..e990118092c5 100644
---- a/drivers/staging/rtl8712/drv_types.h
-+++ b/drivers/staging/rtl8712/drv_types.h
-@@ -145,7 +145,7 @@ struct _adapter {
- 	struct	hal_priv	halpriv;
- 	struct	led_priv	ledpriv;
- 	struct mp_priv  mppriv;
--	s32	bDriverStopped;
-+	bool	driver_stopped;
- 	s32	bSurpriseRemoved;
- 	s32	bSuspended;
- 	u32	IsrContent;
-diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
-index 2d3f38007299..bd2ffd0ebde9 100644
---- a/drivers/staging/rtl8712/os_intfs.c
-+++ b/drivers/staging/rtl8712/os_intfs.c
-@@ -374,7 +374,7 @@ static int netdev_open(struct net_device *pnetdev)
- 
- 	mutex_lock(&padapter->mutex_start);
- 	if (!padapter->bup) {
--		padapter->bDriverStopped = false;
-+		padapter->driver_stopped = false;
- 		padapter->bSurpriseRemoved = false;
- 		padapter->bup = true;
- 		if (rtl871x_hal_init(padapter) != _SUCCESS)
-diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
-index 1920d02f7c9f..c7437f979252 100644
---- a/drivers/staging/rtl8712/rtl8712_cmd.c
-+++ b/drivers/staging/rtl8712/rtl8712_cmd.c
-@@ -317,7 +317,7 @@ int r8712_cmd_thread(void *context)
- 	while (1) {
- 		if (wait_for_completion_interruptible(cmd_queue_comp))
- 			break;
--		if (padapter->bDriverStopped || padapter->bSurpriseRemoved)
-+		if (padapter->driver_stopped || padapter->bSurpriseRemoved)
- 			break;
- 		if (r8712_register_cmd_alive(padapter) != _SUCCESS)
- 			continue;
-@@ -368,7 +368,7 @@ int r8712_cmd_thread(void *context)
- 			pcmdbuf += 2; /* 8 bytes alignment */
- 			memcpy((u8 *)pcmdbuf, pcmd->parmbuf, pcmd->cmdsz);
- 			while (check_cmd_fifo(padapter, wr_sz) == _FAIL) {
--				if (padapter->bDriverStopped ||
-+				if (padapter->driver_stopped ||
- 				    padapter->bSurpriseRemoved)
- 					break;
- 				msleep(100);
-diff --git a/drivers/staging/rtl8712/rtl8712_io.c b/drivers/staging/rtl8712/rtl8712_io.c
-index 8eb79f73c014..ab775e721bf2 100644
---- a/drivers/staging/rtl8712/rtl8712_io.c
-+++ b/drivers/staging/rtl8712/rtl8712_io.c
-@@ -68,7 +68,7 @@ void r8712_read_mem(struct _adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
- {
- 	struct intf_hdl *hdl = &adapter->pio_queue->intf;
- 
--	if (adapter->bDriverStopped || adapter->bSurpriseRemoved)
-+	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
- 		return;
- 
- 	hdl->io_ops._read_mem(hdl, addr, cnt, pmem);
-@@ -85,7 +85,7 @@ void r8712_read_port(struct _adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
- {
- 	struct intf_hdl *hdl = &adapter->pio_queue->intf;
- 
--	if (adapter->bDriverStopped || adapter->bSurpriseRemoved)
-+	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
- 		return;
- 
- 	hdl->io_ops._read_port(hdl, addr, cnt, pmem);
-diff --git a/drivers/staging/rtl8712/rtl8712_led.c b/drivers/staging/rtl8712/rtl8712_led.c
-index 07fcf9b9b811..deceef345056 100644
---- a/drivers/staging/rtl8712/rtl8712_led.c
-+++ b/drivers/staging/rtl8712/rtl8712_led.c
-@@ -109,7 +109,7 @@ static void SwLedOn(struct _adapter *padapter, struct LED_871x *pLed)
- {
- 	u8	LedCfg;
- 
--	if (padapter->bSurpriseRemoved || padapter->bDriverStopped)
-+	if (padapter->bSurpriseRemoved || padapter->driver_stopped)
- 		return;
- 	LedCfg = r8712_read8(padapter, LEDCFG);
- 	switch (pLed->LedPin) {
-@@ -137,7 +137,7 @@ static void SwLedOff(struct _adapter *padapter, struct LED_871x *pLed)
- {
- 	u8	LedCfg;
- 
--	if (padapter->bSurpriseRemoved || padapter->bDriverStopped)
-+	if (padapter->bSurpriseRemoved || padapter->driver_stopped)
- 		return;
- 	LedCfg = r8712_read8(padapter, LEDCFG);
- 	switch (pLed->LedPin) {
-@@ -816,7 +816,7 @@ static void BlinkTimerCallback(struct timer_list *t)
- 	/* This fixed the crash problem on Fedora 12 when trying to do the
- 	 * insmod;ifconfig up;rmmod commands.
- 	 */
--	if (pLed->padapter->bSurpriseRemoved || pLed->padapter->bDriverStopped)
-+	if (pLed->padapter->bSurpriseRemoved || pLed->padapter->driver_stopped)
- 		return;
- 	schedule_work(&pLed->BlinkWorkItem);
- }
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 5bf9070b7a28..bca4edde18b4 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -541,7 +541,7 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
- 				  (preorder_ctrl->indicate_seq + 1) % 4096;
- 			/*indicate this recv_frame*/
- 			if (!pattrib->amsdu) {
--				if (!padapter->bDriverStopped &&
-+				if (!padapter->driver_stopped &&
- 				    !padapter->bSurpriseRemoved) {
- 					/* indicate this recv_frame */
- 					r8712_recv_indicatepkt(padapter,
-@@ -576,7 +576,7 @@ static int recv_indicatepkt_reorder(struct _adapter *padapter,
- 		/* s1. */
- 		r8712_wlanhdr_to_ethhdr(prframe);
- 		if (pattrib->qos != 1) {
--			if (!padapter->bDriverStopped &&
-+			if (!padapter->driver_stopped &&
- 			    !padapter->bSurpriseRemoved) {
- 				r8712_recv_indicatepkt(padapter, prframe);
- 				return _SUCCESS;
-@@ -626,7 +626,7 @@ void r8712_reordering_ctrl_timeout_handler(void *pcontext)
- 	struct  __queue *ppending_recvframe_queue =
- 				 &preorder_ctrl->pending_recvframe_queue;
- 
--	if (padapter->bDriverStopped || padapter->bSurpriseRemoved)
-+	if (padapter->driver_stopped || padapter->bSurpriseRemoved)
- 		return;
- 	spin_lock_irqsave(&ppending_recvframe_queue->lock, irql);
- 	r8712_recv_indicatepkts_in_order(padapter, preorder_ctrl, true);
-@@ -643,7 +643,7 @@ static int r8712_process_recv_indicatepkts(struct _adapter *padapter,
- 	if (phtpriv->ht_option == 1) { /*B/G/N Mode*/
- 		if (recv_indicatepkt_reorder(padapter, prframe) != _SUCCESS) {
- 			/* including perform A-MPDU Rx Ordering Buffer Control*/
--			if (!padapter->bDriverStopped &&
-+			if (!padapter->driver_stopped &&
- 			    !padapter->bSurpriseRemoved)
- 				return _FAIL;
- 		}
-@@ -651,7 +651,7 @@ static int r8712_process_recv_indicatepkts(struct _adapter *padapter,
- 		retval = r8712_wlanhdr_to_ethhdr(prframe);
- 		if (retval != _SUCCESS)
- 			return retval;
--		if (!padapter->bDriverStopped && !padapter->bSurpriseRemoved) {
-+		if (!padapter->driver_stopped && !padapter->bSurpriseRemoved) {
- 			/* indicate this recv_frame */
- 			r8712_recv_indicatepkt(padapter, prframe);
- 		} else {
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index e723357ac8c0..ad9b2f76d04a 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -1118,9 +1118,9 @@ static int r8711_wx_set_scan(struct net_device *dev,
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	u8 status = true;
- 
--	if (padapter->bDriverStopped) {
--		netdev_info(dev, "In %s: bDriverStopped=%d\n",
--			    __func__, padapter->bDriverStopped);
-+	if (padapter->driver_stopped) {
-+		netdev_info(dev, "In %s: driver_stopped=%d\n",
-+			    __func__, padapter->driver_stopped);
- 		return -1;
- 	}
- 	if (!padapter->bup)
-@@ -1175,7 +1175,7 @@ static int r8711_wx_get_scan(struct net_device *dev,
- 	char *stop = ev + wrqu->data.length;
- 	u32 ret = 0, cnt = 0;
- 
--	if (padapter->bDriverStopped)
-+	if (padapter->driver_stopped)
- 		return -EINVAL;
- 	while (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY |
- 			     _FW_UNDER_LINKING)) {
-@@ -1938,7 +1938,7 @@ static int r871x_get_ap_info(struct net_device *dev,
- 	u8 bssid[ETH_ALEN];
- 	char data[33];
- 
--	if (padapter->bDriverStopped || (pdata == NULL))
-+	if (padapter->driver_stopped || (pdata == NULL))
- 		return -EINVAL;
- 	while (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY |
- 			     _FW_UNDER_LINKING)) {
-@@ -2002,7 +2002,7 @@ static int r871x_set_pid(struct net_device *dev,
- 	struct _adapter *padapter = netdev_priv(dev);
- 	struct iw_point *pdata = &wrqu->data;
- 
--	if ((padapter->bDriverStopped) || (pdata == NULL))
-+	if ((padapter->driver_stopped) || (pdata == NULL))
- 		return -EINVAL;
- 	if (copy_from_user(&padapter->pid, pdata->pointer, sizeof(int)))
- 		return -EINVAL;
-@@ -2018,7 +2018,7 @@ static int r871x_set_chplan(struct net_device *dev,
- 	struct iw_point *pdata = &wrqu->data;
- 	int ch_plan = -1;
- 
--	if ((padapter->bDriverStopped) || (pdata == NULL)) {
-+	if ((padapter->driver_stopped) || (pdata == NULL)) {
- 		ret = -EINVAL;
- 		goto exit;
- 	}
-@@ -2038,7 +2038,7 @@ static int r871x_wps_start(struct net_device *dev,
- 	struct iw_point *pdata = &wrqu->data;
- 	u32   u32wps_start = 0;
- 
--	if ((padapter->bDriverStopped) || (pdata == NULL))
-+	if ((padapter->driver_stopped) || (pdata == NULL))
- 		return -EINVAL;
- 	if (copy_from_user((void *)&u32wps_start, pdata->pointer, 4))
- 		return -EFAULT;
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 3f17ef6f7e39..a10a5fbabb33 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -174,7 +174,7 @@ sint r8712_if_up(struct _adapter *padapter)
- {
- 	sint res;
- 
--	if (padapter->bDriverStopped || padapter->bSurpriseRemoved ||
-+	if (padapter->driver_stopped || padapter->bSurpriseRemoved ||
- 	    !check_fwstate(&padapter->mlmepriv, _FW_LINKED)) {
- 		res = false;
- 	} else {
-@@ -1055,7 +1055,7 @@ void _r8712_join_timeout_handler(struct _adapter *adapter)
- 	unsigned long irqL;
- 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
- 
--	if (adapter->bDriverStopped || adapter->bSurpriseRemoved)
-+	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
- 		return;
- 	spin_lock_irqsave(&pmlmepriv->lock, irqL);
- 	_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
-@@ -1084,7 +1084,7 @@ void r8712_scan_timeout_handler (struct _adapter *adapter)
- 
- void _r8712_dhcp_timeout_handler (struct _adapter *adapter)
- {
--	if (adapter->bDriverStopped || adapter->bSurpriseRemoved)
-+	if (adapter->driver_stopped || adapter->bSurpriseRemoved)
- 		return;
- 	if (adapter->pwrctrlpriv.pwr_mode != adapter->registrypriv.power_mgnt)
- 		r8712_set_ps_mode(adapter, adapter->registrypriv.power_mgnt,
-diff --git a/drivers/staging/rtl8712/rtl871x_pwrctrl.c b/drivers/staging/rtl8712/rtl871x_pwrctrl.c
-index 351984fe254e..ab2be8507941 100644
---- a/drivers/staging/rtl8712/rtl871x_pwrctrl.c
-+++ b/drivers/staging/rtl8712/rtl871x_pwrctrl.c
-@@ -32,7 +32,7 @@ void r8712_set_rpwm(struct _adapter *padapter, u8 val8)
- 		if (pwrpriv->rpwm_retry == 0)
- 			return;
- 	}
--	if (padapter->bDriverStopped || padapter->bSurpriseRemoved)
-+	if (padapter->driver_stopped || padapter->bSurpriseRemoved)
- 		return;
- 	rpwm = val8 | pwrpriv->tog;
- 	switch (val8) {
-@@ -117,7 +117,7 @@ static void _rpwm_check_handler (struct _adapter *padapter)
- {
- 	struct pwrctrl_priv *pwrpriv = &padapter->pwrctrlpriv;
- 
--	if (padapter->bDriverStopped || padapter->bSurpriseRemoved)
-+	if (padapter->driver_stopped || padapter->bSurpriseRemoved)
- 		return;
- 	if (pwrpriv->cpwm != pwrpriv->rpwm)
- 		schedule_work(&pwrpriv->rpwm_workitem);
-diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-index 005010de9997..cb66ed4bbeac 100644
---- a/drivers/staging/rtl8712/usb_intf.c
-+++ b/drivers/staging/rtl8712/usb_intf.c
-@@ -289,7 +289,7 @@ void r871x_dev_unload(struct _adapter *padapter)
- {
- 	if (padapter->bup) {
- 		/*s1.*/
--		padapter->bDriverStopped = true;
-+		padapter->driver_stopped = true;
- 
- 		/*s3.*/
- 		rtl871x_intf_stop(padapter);
-diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
-index ee5968808332..c4e66f19349e 100644
---- a/drivers/staging/rtl8712/usb_ops_linux.c
-+++ b/drivers/staging/rtl8712/usb_ops_linux.c
-@@ -147,7 +147,7 @@ static void usb_write_mem_complete(struct urb *purb)
- 
- 	if (purb->status != 0) {
- 		if (purb->status == (-ESHUTDOWN))
--			padapter->bDriverStopped = true;
-+			padapter->driver_stopped = true;
- 		else
- 			padapter->bSurpriseRemoved = true;
- 	}
-@@ -164,7 +164,7 @@ void r8712_usb_write_mem(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *wmem)
- 	struct usb_device *pusbd = pdvobj->pusbdev;
- 	struct urb *piorw_urb = pintfpriv->piorw_urb;
- 
--	if ((padapter->bDriverStopped) || (padapter->bSurpriseRemoved) ||
-+	if ((padapter->driver_stopped) || (padapter->bSurpriseRemoved) ||
- 	    (padapter->pwrctrlpriv.pnp_bstop_trx))
- 		return;
- 	/* translate DMA FIFO addr to pipehandle */
-@@ -186,7 +186,7 @@ static void r8712_usb_read_port_complete(struct urb *purb)
- 	struct _adapter *padapter = (struct _adapter *)precvbuf->adapter;
- 	struct recv_priv *precvpriv = &padapter->recvpriv;
- 
--	if (padapter->bSurpriseRemoved || padapter->bDriverStopped)
-+	if (padapter->bSurpriseRemoved || padapter->driver_stopped)
- 		return;
- 	if (purb->status == 0) { /* SUCCESS */
- 		if ((purb->actual_length > (MAX_RECVBUF_SZ)) ||
-@@ -218,11 +218,11 @@ static void r8712_usb_read_port_complete(struct urb *purb)
- 		case -EPIPE:
- 		case -ENODEV:
- 		case -ESHUTDOWN:
--			padapter->bDriverStopped = true;
-+			padapter->driver_stopped = true;
- 			break;
- 		case -ENOENT:
- 			if (!padapter->bSuspended) {
--				padapter->bDriverStopped = true;
-+				padapter->driver_stopped = true;
- 				break;
- 			}
- 			/* Fall through. */
-@@ -254,7 +254,7 @@ u32 r8712_usb_read_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *rmem)
- 	struct recv_priv *precvpriv = &adapter->recvpriv;
- 	struct usb_device *pusbd = pdvobj->pusbdev;
- 
--	if (adapter->bDriverStopped || adapter->bSurpriseRemoved ||
-+	if (adapter->driver_stopped || adapter->bSurpriseRemoved ||
- 	    adapter->pwrctrlpriv.pnp_bstop_trx || !precvbuf)
- 		return _FAIL;
- 	r8712_init_recvbuf(adapter, precvbuf);
-@@ -314,9 +314,9 @@ void r8712_xmit_bh(void *priv)
- 	struct _adapter *padapter = priv;
- 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
- 
--	if (padapter->bDriverStopped ||
-+	if (padapter->driver_stopped ||
- 	    padapter->bSurpriseRemoved) {
--		netdev_err(padapter->pnetdev, "xmit_bh => bDriverStopped or bSurpriseRemoved\n");
-+		netdev_err(padapter->pnetdev, "xmit_bh => driver_stopped or bSurpriseRemoved\n");
- 		return;
- 	}
- 	ret = r8712_xmitframe_complete(padapter, pxmitpriv, NULL);
-@@ -390,7 +390,7 @@ u32 r8712_usb_write_port(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *wmem)
- 	struct usb_device *pusbd = pdvobj->pusbdev;
- 	struct pkt_attrib *pattrib = &pxmitframe->attrib;
- 
--	if ((padapter->bDriverStopped) || (padapter->bSurpriseRemoved) ||
-+	if ((padapter->driver_stopped) || (padapter->bSurpriseRemoved) ||
- 	    (padapter->pwrctrlpriv.pnp_bstop_trx))
- 		return _FAIL;
- 	for (i = 0; i < 8; i++) {
+Himadri Pandya (3):
+  staging: rtl8712: rename bDriverStopped to driver_stopped
+  staging: rtl8712: rename bSurpriseRemoved to surprise_removed
+  staging: rtl8712: rename bSuspended to suspended
+
+ drivers/staging/rtl8712/drv_types.h           |  6 ++---
+ drivers/staging/rtl8712/os_intfs.c            |  4 +--
+ drivers/staging/rtl8712/rtl8712_cmd.c         |  6 ++---
+ drivers/staging/rtl8712/rtl8712_io.c          |  4 +--
+ drivers/staging/rtl8712/rtl8712_led.c         |  6 ++---
+ drivers/staging/rtl8712/rtl8712_recv.c        | 16 ++++++------
+ drivers/staging/rtl8712/rtl871x_eeprom.c      | 23 ++++++++--------
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 16 ++++++------
+ drivers/staging/rtl8712/rtl871x_mlme.c        |  6 ++---
+ drivers/staging/rtl8712/rtl871x_pwrctrl.c     |  4 +--
+ drivers/staging/rtl8712/usb_intf.c            | 12 ++++-----
+ drivers/staging/rtl8712/usb_ops_linux.c       | 26 +++++++++----------
+ 12 files changed, 64 insertions(+), 65 deletions(-)
+
 -- 
 2.17.1
 
