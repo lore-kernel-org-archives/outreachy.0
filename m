@@ -1,112 +1,139 @@
-X-GM-THRID: 6806661932796346368
-X-Received: by 2002:a17:902:9a4c:: with SMTP id x12mr12639101plv.297.1584799478744;
-        Sat, 21 Mar 2020 07:04:38 -0700 (PDT)
+X-GM-THRID: 6664084258635644928
+X-Received: by 2002:adf:e702:: with SMTP id c2mr665084wrm.31.1551607969421;
+        Sun, 03 Mar 2019 02:12:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b58e:: with SMTP id a14ls3421528pls.5.gmail; Sat, 21
- Mar 2020 07:04:37 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvxQIwaVjxVdGK/wa4SU/ArJTtsxsF34ECU6Luf8W7ni4nB9/8EAY5Vqlxz0Cn+9q5B604E
-X-Received: by 2002:a17:902:a5c6:: with SMTP id t6mr12768572plq.323.1584799477176;
-        Sat, 21 Mar 2020 07:04:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584799477; cv=none;
+Received: by 2002:a1c:2356:: with SMTP id j83ls1202568wmj.4.gmail; Sun, 03 Mar
+ 2019 02:12:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwiYMG74/3e6bdkNSPtnxoAeCQGCSWycqQPW064hBWC2k/dQPtq4F8KLicQIqID3m1+cLif
+X-Received: by 2002:a1c:9d91:: with SMTP id g139mr658793wme.24.1551607968449;
+        Sun, 03 Mar 2019 02:12:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551607968; cv=none;
         d=google.com; s=arc-20160816;
-        b=JbC5nqFIQap1wR1g3Z/ELvwTx4BNDmmEbPwsmL3d9fXAI2sN/6BH9QHsvga9xTtSTK
-         4NE/+RT5ckkrfpr5XaQxZZMXBHynrebpKZhL3xK7sGdViOr3Bqsd0lFs7A80N0T6b2Sh
-         h0TCYQI7HVXxR9xpZyJxAls6bMhVdh+HxlMWX7GOq81pcOQif8q9A0FDw4A8mt0sZ5KB
-         /rqFKD4s/VbaU1oXZRFbQL0xxe5NhwGlzkgG4ldUHxc3R9aWCpeSW5yLeUJx7ENPqFZb
-         cw/3qnUbYsXUfaIYj/yxxYiU+nLVuUGlcTPxD+NFG1Fxn0lE5tljKBMURB6mAOCaF3mm
-         Mg0A==
+        b=hlfT2M06Kr7kQE8P0gPTNA2t4B4KV/I2Dq2gi+r7/bWSL/9eShrqu1ooZbbRTnk0Zf
+         yfFlfE1HJlBil4HHdX4dFfDybCzwqNdGZ/fdqZ7m6zv1cUOQe7ZKqPkwW+YqDbKxo8Ye
+         UuxHDJzyA/r+/S2IINSy6t4A9l1ILe1yGj8LeaO97PudJkmD/HsSjWzwM7f9TRQupPta
+         jA8B0mLfQuX5eYi9fnOFkBfOA6M8l6wt8fVP2Sp6u/ialtFdXNR5oaRGH6LZ8E5bVIVn
+         sBedOmHWLEysbyq7XdsZv4d10CriwIQ4tOlBD6hqkkfB6kSSa+Y25pFXwE+koYtFnYle
+         +ivQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=J9eGr1XRuuMVhT4BB0OXqzh8ZUNEQwk5lWfXIehE4RU=;
-        b=tl5yNCntDWmCXl7k0sfqYwaQdPpbWJJEXs1/TgVTOPlajgPk6aPLtPYKj2MzpSjLmw
-         rsvMh/1hWcsWB1Gr0TwQQmd8zOqv1qojGz187+dMf5XV4oEflnIf4E1uhOhEtdCx1QvV
-         jN5aeMGv6e4LfDKGORPiphGfqedre4Lv27oXQ8KE7BvMotaMQfm9DEeobP2TQ2pWvBcw
-         fGpCnBvUgwoFMnbFyKdvQNmEALkpJeDBOWGw+ImUDOMQDj7xVKq2m71/dF5WcVdQAtiK
-         JpaieyYku4BEXMI71164oraTuKVRnfFLT0l643oDJM5mJ01Np0bHbLP23aybYo/409iA
-         saaQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=iSz2Sya9LARaiA5PeG0gZMn+wtC38JednV7tqV5cTR4=;
+        b=SEKFzOinneNOtb78mv5keUfEfB9RytEUtRTRSJlIlMg1Tcn4TXIGMcwZ7kiEcf6y5U
+         9ONX6ATGskK/v7HhhIJ6TaSUwOIiAxmntKEV54ZdOsS5VrymRTtNqdAqb0KxyVWKUls4
+         s2eX7Cxy5cnfgiNrDBJtQeXnz7SZnakempt5oBFqZeR8Ed9Lb1e6v/VTRXvad19O2BtJ
+         F1F/+Q013cllMGnSAXBG2yREDmHfCHUcnQioszMVP39CknPqswXKwYJZpXj4YEQI4fAt
+         tcGP+HeUJPfUG8jBnjDW9uu6Hn7bbA0wm22Aq20vp6woSZpNeWeb0uEVpIQnLfNQhqhg
+         UUwg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=skHcS7F3;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id 188si677783pfb.1.2020.03.21.07.04.37
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 60si109228wra.3.2019.03.03.02.12.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Mar 2020 07:04:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Mar 2019 02:12:48 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=skHcS7F3;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id np9so3778988pjb.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 07:04:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=J9eGr1XRuuMVhT4BB0OXqzh8ZUNEQwk5lWfXIehE4RU=;
-        b=skHcS7F3YJWvMX4rRiycVWZ7L8rACzYJkh6R1+nulg0+KzXQS2OcNPrqfQjZgnJGVX
-         +O1jF/a7lmk/2Uqx76M+eoKLfgwz2chvOz0q68gUN3liu3cBVVSKVgSSCX8scFOxnzhB
-         im1AMBM/pu+fA1VJbHiqLkgAnLuurIahr8G/2YOAUeZg32wzUuFpofhTcffvbDRBhMMH
-         Lyb/7HhK1tsbzfAraKZ+jmap7FQCec8AI7vfPZF84S1hr1fKn9JmguxcTK+YOfCM+Rou
-         HFBedKFyAGEapSfaHZsKonbU4NdBwAw1T5GQfkgyXvwWqT2dh3J4Yfpfj9IYRYb6EZIx
-         0qIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=J9eGr1XRuuMVhT4BB0OXqzh8ZUNEQwk5lWfXIehE4RU=;
-        b=WajQ3EFHP/qz8s4vW2UIq5HS7+og+pydo6PN5HxgV5+QIj8XwJHJO+DRB/xM7rQN0y
-         OkYTPJFrP0gAoS5wcEMRjXfMD4TEj3gCZLNZvCdfZdfdHxq6l7I05QOmcm2++gXZrevq
-         ajrtQfBWS3C94UWWTz81jUiRNRmRwDTbXJ+gSbV268T5Qa83xAVHzKXirsaGzlcQlCCA
-         El0p1+R2H+OpbktrlZFi7bVMKrxW8n2HzbjFTeVIjK9wZHwud+9aL4RkXZ8SOQIvUMIA
-         Ycv9Fll3mRZkiepGhpjyeHhhTQzZHh1I3IVKXxe7Cri4HWbres0klnUad1yZyNzNt9NM
-         Xj5g==
-X-Gm-Message-State: ANhLgQ0W1Db5TiZMX5hd1u2iPL0rW9cQdimppRVvtbWI6fo/U6FVy4yz
-	WjWn7rK1VaZYplDiTbxtZ0/Y8ynqGSI=
-X-Received: by 2002:a17:902:7b87:: with SMTP id w7mr14025772pll.214.1584799476391;
-        Sat, 21 Mar 2020 07:04:36 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from simran-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g2sm1257540pfh.193.2020.03.21.07.04.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2020 07:04:35 -0700 (PDT)
-Date: Sat, 21 Mar 2020 19:34:31 +0530
-From: Simran Singhal <singhalsimran0@gmail.com>
-To: gregkh@linuxfoundation.org, jeremy@azazel.net,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: kpc2000: Removing multiple blank lines
-Message-ID: <20200321140430.GA18933@simran-Inspiron-5558>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,435,1544482800"; 
+   d="scan'208";a="297913253"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Mar 2019 11:12:47 +0100
+Date: Sun, 3 Mar 2019 11:12:47 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Himadri Pandya <himadri18.07@gmail.com>
+cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com, 
+    gregkh@linuxfoundation.org, julia.lawall@lip6.fr, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3 3/3] staging: rtl8712: rename bSuspended to
+ suspended
+In-Reply-To: <20190303100859.4945-1-himadri18.07@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903031112000.3207@hadrien>
+References: <20190303085013.3491-4-himadri18.07@gmail.com> <20190303100859.4945-1-himadri18.07@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes the checkpatch warning by removing multiple blank
-lines.
-CHECK: Please don't use multiple blank lines
 
-Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
----
- drivers/staging/kpc2000/kpc2000/pcie.h | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/kpc2000/kpc2000/pcie.h b/drivers/staging/kpc2000/kpc2000/pcie.h
-index cb815c30faa4..f1fc91b4c704 100644
---- a/drivers/staging/kpc2000/kpc2000/pcie.h
-+++ b/drivers/staging/kpc2000/kpc2000/pcie.h
-@@ -6,7 +6,6 @@
- #include "../kpc.h"
- #include "dma_common_defs.h"
- 
--
- /*      System Register Map (BAR 1, Start Addr 0)
-  *
-  *  BAR Size:
--- 
-2.17.1
+On Sun, 3 Mar 2019, Himadri Pandya wrote:
 
+> Rename structure field bSuspended to suspended to avoid camelcase.
+> Suggested by checkpatch.
+>
+> Changes in V2:
+>         - Change type to bool as the variable is used as a boolean.
+
+I'm not sure what this represents. If you want to make a change in a patch
+in a series, you need to send the whole series again.  And the problem of
+Changes in V2 being above the --- has not been resolved.
+
+julia
+
+>
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+> Changes in V3:
+> 	- Include the type change in changelog text
+> 	- Change the log message to make it more concise and informative
+> ---
+>  drivers/staging/rtl8712/drv_types.h     | 2 +-
+>  drivers/staging/rtl8712/usb_intf.c      | 4 ++--
+>  drivers/staging/rtl8712/usb_ops_linux.c | 2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/drv_types.h b/drivers/staging/rtl8712/drv_types.h
+> index acee68d3d152..9ae86631fa8b 100644
+> --- a/drivers/staging/rtl8712/drv_types.h
+> +++ b/drivers/staging/rtl8712/drv_types.h
+> @@ -147,7 +147,7 @@ struct _adapter {
+>  	struct mp_priv  mppriv;
+>  	bool	driver_stopped;
+>  	bool	surprise_removed;
+> -	s32	bSuspended;
+> +	bool	suspended;
+>  	u32	IsrContent;
+>  	u32	ImrContent;
+>  	u8	EepromAddressSize;
+> diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
+> index 674c31155cdd..7478bbd3de78 100644
+> --- a/drivers/staging/rtl8712/usb_intf.c
+> +++ b/drivers/staging/rtl8712/usb_intf.c
+> @@ -196,7 +196,7 @@ static int r871x_suspend(struct usb_interface *pusb_intf, pm_message_t state)
+>  	struct _adapter *padapter = netdev_priv(pnetdev);
+>
+>  	netdev_info(pnetdev, "Suspending...\n");
+> -	padapter->bSuspended = true;
+> +	padapter->suspended = true;
+>  	rtl871x_intf_stop(padapter);
+>  	if (pnetdev->netdev_ops->ndo_stop)
+>  		pnetdev->netdev_ops->ndo_stop(pnetdev);
+> @@ -220,7 +220,7 @@ static int r871x_resume(struct usb_interface *pusb_intf)
+>  	netif_device_attach(pnetdev);
+>  	if (pnetdev->netdev_ops->ndo_open)
+>  		pnetdev->netdev_ops->ndo_open(pnetdev);
+> -	padapter->bSuspended = false;
+> +	padapter->suspended = false;
+>  	rtl871x_intf_resume(padapter);
+>  	return 0;
+>  }
+> diff --git a/drivers/staging/rtl8712/usb_ops_linux.c b/drivers/staging/rtl8712/usb_ops_linux.c
+> index 8df308df35c6..9d290bc2fdb7 100644
+> --- a/drivers/staging/rtl8712/usb_ops_linux.c
+> +++ b/drivers/staging/rtl8712/usb_ops_linux.c
+> @@ -221,7 +221,7 @@ static void r8712_usb_read_port_complete(struct urb *purb)
+>  			padapter->driver_stopped = true;
+>  			break;
+>  		case -ENOENT:
+> -			if (!padapter->bSuspended) {
+> +			if (!padapter->suspended) {
+>  				padapter->driver_stopped = true;
+>  				break;
+>  			}
+> --
+> 2.17.1
+>
+>
 
