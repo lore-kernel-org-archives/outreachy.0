@@ -1,105 +1,156 @@
 X-GM-THRID: 6664067951305424896
-X-Received: by 2002:ac8:285d:: with SMTP id 29mr265889qtr.14.1551769434907;
-        Mon, 04 Mar 2019 23:03:54 -0800 (PST)
+X-Received: by 2002:a62:121d:: with SMTP id a29mr7753178pfj.103.1551727849432;
+        Mon, 04 Mar 2019 11:30:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:6394:: with SMTP id x142ls3352827qkb.7.gmail; Mon, 04
- Mar 2019 23:03:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwA8+nBLR04VXpzpThp+hT2pRMegTANfjGtRFons04/jzsR0zEuQs87CYuzCl7awvaYce7c
-X-Received: by 2002:ae9:e508:: with SMTP id w8mr540411qkf.8.1551769434340;
-        Mon, 04 Mar 2019 23:03:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551769434; cv=none;
+Received: by 2002:a17:902:282b:: with SMTP id e40ls8597924plb.6.gmail; Mon, 04
+ Mar 2019 11:30:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzYM7ZWxdnCc4nYRSVII6nQjvycf4hfkpGMGPYIv6KdZLN4oWeIhxOZdnnhjJCYFaAs47xA
+X-Received: by 2002:a17:902:b60a:: with SMTP id b10mr6408109pls.147.1551727848764;
+        Mon, 04 Mar 2019 11:30:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551727848; cv=none;
         d=google.com; s=arc-20160816;
-        b=DSqnCx7Odb3BebQ/KU9xKUzDhqQ6fZKWtQMgAV7jH6VdhblpaN7KkTSYiV36ENhCbu
-         Hz5nvfw5z9GFjDzydY+oB1GOT0gJI3OJPuoU9iaLE1sgluuuKzUYoyvcdIUTF8pkz+jy
-         blMR+yBCCrANzvNlHA0r8jFGZlrfNwQY6y13sdJ2ohbtYkITk7YNPl7eXiO5pjxwQUJ5
-         u9Pz+ZuRmPvVPujxbhziQ2yX77kfq9g1UicCGS5Of/uTaXsHdiPBmjLYAgLYcDfN0/JR
-         GHykAVhrHfvfe2hCK6a7T18mXGiDEErCHq4eMCmD1IaMhpeLIP05NFRTCjk9GWmVBXL8
-         4cfw==
+        b=aeESCJXex8m0uWHYTOtdEDw3Wt7j8ECCMtq3M4VpdMTo/JS9p0DLEXGQ28jiVmgHJ7
+         NZBE9kJKmbCx1hNBHRH+r9cNpV8XzUz4+n7ZEzNDXMJ7x0QnXii7Y70mLPHI3C4ZN4B1
+         yGuuw0/lkRyXG7KZu6sR9J/Wk7LGzHg7xWk8gQQdR63UqTnlL+LmgdjqQN8nVDmE4qvh
+         mgvh4PW2T/6OSUxFvmA6qvKkIpjofOdP2oMPPoCYC+CSPjNtVwxErDFL0O3FouJhf6vV
+         SEkkOk4JOT17jSDML9JWwQO8oNbLBhFeFmiY5kCea2sE9OOuhpk/uAACp+P0U3w9sV+3
+         vZkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=SfkejaDfp62rJIcvNgorsh1UikK0ruCmrhNdDeOPn8A=;
-        b=G3QNnhbDY3fESdyO5ar52xbi/JAsgqcAn8Mqhe6nRpC2fqEoyEZfB0RjBlJ8oUU+FM
-         9r/ku4x+33uxyW4SppTzANg3ZxKN0xL6+bZ3s4bXyyKvXL4FcXHkUvp12AP8iYmt+/Wo
-         1VnkctB/4G3yiJ9z+vGFmvHZKlNpDSZeYK5QiJ5REuUVTkvs11XFylQsHtksdLC41lPb
-         6MrZdOEWuos/Lrdd79yIcDCH91LqXKlcUAJKb6SPFpCfG2sV60tj/4BXOTZlJt9CXXLk
-         flrOu2b6rKRmKfbn/MbwMHmW4YnXgndXnb3hjbFgsFCJNR/MZZ7abnAyQ9tRGcpCQFlI
-         SU5g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=XjbTg58/Lbc8asCpfubGNHk48ecKWy3cnrwwVeSnPX0=;
+        b=1AH9Nw+V32D6MX9+vVq/LYmRaGUNTFDfkfexebayMVOakgToLEwMFRMvYA6xcdnWfh
+         XwYEJnGYHZSXfvTI0UofaIMhM8SCk1WDrNagCmAMe6YhvBp7EZXMNWAEbmA6yFWLwtLp
+         Lids3Suv07RbkK8L6l+ohfJy7egLbpe9CSvsS0ZVzuqbS7Pcl0swog2VTyekzRhHaKiJ
+         73Ztqer2ypju27RFC/+/nXltlAwd7cCQJ3qEIfVJ7au4YUbtoWEZK6AtT9FjCd3ZzHO/
+         JcoXhI/Fu5d2PsnMpA1CbiKTPKihfb572RSxOzLFMBH+5oO4SWosMiyXf+1jFPSFTmPT
+         bBaA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Z2sFX07G;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id u65si439031qkc.5.2019.03.04.23.03.54
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X29JubLK;
+       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <idebleenasen@gmail.com>
+Received: from mail-ot1-x32b.google.com (mail-ot1-x32b.google.com. [2607:f8b0:4864:20::32b])
+        by gmr-mx.google.com with ESMTPS id e71si335585pfc.1.2019.03.04.11.30.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 23:03:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 04 Mar 2019 11:30:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) client-ip=2607:f8b0:4864:20::32b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Z2sFX07G;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id C163B2082C;
-	Tue,  5 Mar 2019 07:03:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551769433;
-	bh=0s/wyoHC/4KQUie+1PwSJoZuuD6/RxSHgraR6oyJJ94=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Z2sFX07GKNPwIqTHP8jVVaX9QdioB+CI2NI4fDnzTmj80c+pAyvI/Ha/fbUCWqtHc
-	 RORTYrS5LSxQ4Zl+8KDQwOGcnSLrnyRpDyIWMM1dyfiVPDXIqGWUTLmdR6cP7Ctt+Y
-	 GWfhDc+Kin3owZ6CRbelb1A6uP8+B3cqaFnF1WV8=
-Date: Tue, 5 Mar 2019 08:03:50 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Debleena Sen <idebleenasen@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [PATCH v3] Staging: pi433: Fix line over 80 characters issue
-Message-ID: <20190305070350.GB1538@kroah.com>
-References: <1551720850-101768-1-git-send-email-idebleenasen@gmail.com>
- <20190304190130.GC13830@kroah.com>
- <CACw+u4GJOEuSj4fGQ0bmD3BMcRn1M=X16QKEGtp0psi8=MHiLQ@mail.gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X29JubLK;
+       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x32b.google.com with SMTP id g1so5222621otj.11
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 11:30:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=XjbTg58/Lbc8asCpfubGNHk48ecKWy3cnrwwVeSnPX0=;
+        b=X29JubLKKJvw3Gpyi8hJfaRsydRlZ+tbyxzWE4OJnkU60hiYw4JZtzgp1OrjuAPQ/C
+         rwisLHyzF2Tu6aenduC6D2B+bBRa108zwst6Wmmoc4Ppk3avsu7BavnxJ6uShU9X13wy
+         evqs7pBPjFTfhfxyxt98zkgpuIp+mN1bkHHePvH+TJBVfE2Wrys08awSZ45ya/NLwleB
+         VG8hzEmWAo4641eM0J1312cB+4f/OuqaKXeh9tgOtNXiOHCLjTbeiWwggSiU+nznqBnB
+         tKpUMVI6hLi9iYvJk21vX1DcN7Ry16DHlTTWVZj2D51AEV+LTv4fWvBCAYZ+oriihyFr
+         TFMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=XjbTg58/Lbc8asCpfubGNHk48ecKWy3cnrwwVeSnPX0=;
+        b=PdhrTOUvZ8UvExZoC5522N/BhqpT8On1Uas/Z4t9ylqqP/0yA2R52Tiqd++snM25AR
+         AXYSdgU+jzUCVQZd4t7Zi6yWMvUYeKUf7VSuAxFAfJkUXwYU7z9T+dYmc+fzfeGHUsVi
+         mznsKWot3esTb50NqQqh7JPsC9S833ZsMZoMLYF3D0obWgZxjItrYo4W19P44GTWvHia
+         1fnH4M8WHByxLvil9SkRYG+fIZRHygvxtnfiXVtPXRb0eGgOGkAFOontnTFMMHIiiGqE
+         Bz3AVlr/WPDazQYIdeIVe9H3RkmtJVBAImyfQUC/CahvLWVMdBrlX5hZQTPXRn/mHiMA
+         OOWw==
+X-Gm-Message-State: APjAAAWYkrqMu/DUAibvKEhvxJ2GhZ8ZZmDBPzh+JnEqJE7J/i/HNNen
+	9ZNmseIaCb0bjnlVzc0ktb+PQNClYdyeVJaGV/o=
+X-Received: by 2002:a9d:5f15:: with SMTP id f21mr12808868oti.212.1551727848420;
+ Mon, 04 Mar 2019 11:30:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CACw+u4GJOEuSj4fGQ0bmD3BMcRn1M=X16QKEGtp0psi8=MHiLQ@mail.gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+References: <1551720850-101768-1-git-send-email-idebleenasen@gmail.com> <20190304190130.GC13830@kroah.com>
+In-Reply-To: <20190304190130.GC13830@kroah.com>
+From: Debleena Sen <idebleenasen@gmail.com>
+Date: Tue, 5 Mar 2019 01:00:37 +0530
+Message-ID: <CACw+u4GJOEuSj4fGQ0bmD3BMcRn1M=X16QKEGtp0psi8=MHiLQ@mail.gmail.com>
+Subject: Re: [PATCH v3] Staging: pi433: Fix line over 80 characters issue
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="000000000000317adb058349cbd7"
 
-On Tue, Mar 05, 2019 at 01:00:37AM +0530, Debleena Sen wrote:
-> On Tue, Mar 5, 2019 at 12:31 AM Greg KH <gregkh@linuxfoundation.org> wrote:
-> 
-> > On Mon, Mar 04, 2019 at 09:34:10AM -0800, Debleena Sen wrote:
-> > > Delete extra whitespace and tab space and use one tab space to
-> > > remove the checkpatch.pl warning:
-> > > WARNING: line over 80 characters
-> > >
-> > > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
-> > >
-> > > Changes in v3:
-> > >       - Add version change log
-> > > Changes in v2:
-> > >       - Add "and use one tab space" to the log message
-> > > ---
-> > >  drivers/staging/pi433/pi433_if.c | 8 ++++----
-> > >  1 file changed, 4 insertions(+), 4 deletions(-)
-> >
-> > The "changes in" lines go below the --- line, not above it :(
-> >
-> > (note, one kernel subsystem does want it above the line, the graphics
-> > developers.  But they are crazy anyway and like doing things
-> > differently, so don't worry about them just yet...)
-> >
-> > thanks,
-> >
-> > greg k-h
-> >
-> 
-> How do I put them below "---"?
-> I tried to but couldn't understand how :'((
+--000000000000317adb058349cbd7
+Content-Type: text/plain; charset="UTF-8"
 
-You have to edit the patch itself, after you run 'git format-patch'.
+On Tue, Mar 5, 2019 at 12:31 AM Greg KH <gregkh@linuxfoundation.org> wrote:
 
-thanks,
+> On Mon, Mar 04, 2019 at 09:34:10AM -0800, Debleena Sen wrote:
+> > Delete extra whitespace and tab space and use one tab space to
+> > remove the checkpatch.pl warning:
+> > WARNING: line over 80 characters
+> >
+> > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+> >
+> > Changes in v3:
+> >       - Add version change log
+> > Changes in v2:
+> >       - Add "and use one tab space" to the log message
+> > ---
+> >  drivers/staging/pi433/pi433_if.c | 8 ++++----
+> >  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> The "changes in" lines go below the --- line, not above it :(
+>
+> (note, one kernel subsystem does want it above the line, the graphics
+> developers.  But they are crazy anyway and like doing things
+> differently, so don't worry about them just yet...)
+>
+> thanks,
+>
+> greg k-h
+>
 
-greg k-h
+How do I put them below "---"?
+I tried to but couldn't understand how :'((
+
+--000000000000317adb058349cbd7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Tue, Mar 5, 2019 at 12:31 AM Greg KH &=
+lt;<a href=3D"mailto:gregkh@linuxfoundation.org" target=3D"_blank">gregkh@l=
+inuxfoundation.org</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
+1px solid rgb(204,204,204);padding-left:1ex">On Mon, Mar 04, 2019 at 09:34:=
+10AM -0800, Debleena Sen wrote:<br>
+&gt; Delete extra whitespace and tab space and use one tab space to<br>
+&gt; remove the <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=
+=3D"_blank">checkpatch.pl</a> warning:<br>
+&gt; WARNING: line over 80 characters<br>
+&gt; <br>
+&gt; Signed-off-by: Debleena Sen &lt;<a href=3D"mailto:idebleenasen@gmail.c=
+om" target=3D"_blank">idebleenasen@gmail.com</a>&gt;<br>
+&gt; <br>
+&gt; Changes in v3:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Add version change log<br>
+&gt; Changes in v2:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Add &quot;and use one tab space&quot; to t=
+he log message<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/pi433/pi433_if.c | 8 ++++----<br>
+&gt;=C2=A0 1 file changed, 4 insertions(+), 4 deletions(-)<br>
+<br>
+The &quot;changes in&quot; lines go below the --- line, not above it :(<br>
+<br>
+(note, one kernel subsystem does want it above the line, the graphics<br>
+developers.=C2=A0 But they are crazy anyway and like doing things<br>
+differently, so don&#39;t worry about them just yet...)<br>
+<br>
+thanks,<br>
+<br>
+greg k-h<br></blockquote><div><br></div><div>How do I put them below &quot;=
+---&quot;?=C2=A0</div><div>I tried to but couldn&#39;t understand how :&#39=
+;((=C2=A0</div></div></div>
+
+--000000000000317adb058349cbd7--
 
