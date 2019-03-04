@@ -1,100 +1,107 @@
 X-GM-THRID: 6663863789016842240
-X-Received: by 2002:a17:906:4312:: with SMTP id j18mr1022231ejm.12.1551685376256;
-        Sun, 03 Mar 2019 23:42:56 -0800 (PST)
+X-Received: by 2002:a24:7647:: with SMTP id z68mr10426082itb.27.1551662960639;
+        Sun, 03 Mar 2019 17:29:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:b136:: with SMTP id k51ls4409924edd.6.gmail; Sun, 03 Mar
- 2019 23:42:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzNqPojmGGEwHbLdqiJ3Hf6onx5SXbZJ/DhVcdEWv3uINxUhhXUWa6gax176MQIk7+JzUJ3
-X-Received: by 2002:a50:ba2b:: with SMTP id g40mr2218494edc.1.1551685375607;
-        Sun, 03 Mar 2019 23:42:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551685375; cv=none;
+Received: by 2002:a24:147:: with SMTP id 68ls4148115itk.1.gmail; Sun, 03 Mar
+ 2019 17:29:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrZIi3Mlr9avCio/P50sV73VokDgg+e/tYujNpN1Gn/G3axqznQjrg4D6XPTYjH5l3uBml
+X-Received: by 2002:a24:dd91:: with SMTP id t139mr182999itf.30.1551662959796;
+        Sun, 03 Mar 2019 17:29:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551662959; cv=none;
         d=google.com; s=arc-20160816;
-        b=SEJqQfgBevZ/5zfpQFeArj5XeRKm28zzzOaXjEecJFedlu6XXiCSvQBU2tN34l+Tmq
-         Rhv8WN0jztI4HAhDoQdhUeIVRistiSUrWLaHOVzzIaLIheiea59HfnbVLKB84b8CGV06
-         tk9mdTO+4SSpkj1hEm+xd8B9dMxQ6Pr+jWbqCqz3i8nLbvacsORaEqERt2Q8DxObqBOu
-         Fr18pL4ffL4Qfd2Ui7BGv995pY2xrWC2Bc0/B19q9VzvpG4PjP5pajKFHNDIGy8MtNY5
-         CyOKqcpGVw9bmU+aNCuCR0iaqrWQpT8GMw60LQjyDBPOKogb2Q8pwfDh3SsMAcFxeoqN
-         xNgA==
+        b=I5X4bbfqUFxEmG3l0hEYLUKtu7gK1FT6WEAdc1UVaEs+V849zp5Swdt0Ju5SL2EAUu
+         TIdqR6KEmUHUeY+E4P2jh8BM5MZFqOGYpeJcpErjvZVZZpJL+TaDC1wLBoLr5JNHDEdT
+         VakC+f/Z8fzbakY2YoLrinvPOAabIHdozShz0Nx/HW6hcbYTrFxcno3qMxq7JgB/bmpx
+         MA+fUgOVqkjxYzqcKXrdWkOrZplT5TfXFCWy0LzFxMM8rUxcVhvEiAVwUQocJkY5tW6I
+         12J+vzVxZmJIK+tbqRS557iCkGnLTt72fzVzvkB4XfeblZ+lSg1oDj4Qr6ivvI1Dcbk4
+         00yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=DbWpHnDDc29Uv/qisX5nn39bzAxs+p3WPIpYNYbaRV4=;
-        b=a4uuPYpQCGR5GlRMsM+X6gBNOtCZOWipIUh0i9OMb0w34rB5pI4p8kAme1JhwNyvIY
-         Fr+wlUZNPfZpjTwJpFTxvMxrgu/1wQiCwr5fGywnuUg1laFF0zTkNqsQj5gs5e9DoChU
-         3K5YsnBdK8iR/2YlCpay7yaoLbuFHS9K34Osi6EiwdCpoWgNHFwu6DVJRpvCKoIsBEE4
-         uAuZSadNOMOAKC7Dh9J4nj3wBA6K7ngpc2gQaP8vNLkXHgqzNMXW09I/eDh4+dcjphkK
-         jHpxjVmpUQ5k/VivvCLNHGbzoJ/BIWBc4N1/Qrp6rP6prKf69UVQWo6VUB0EcAVEBSGJ
-         J75g==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=kNYHfViUQROGvmIXz1c9a51GTRVhWCDwH77yMBdt3EE=;
+        b=WePRUpNXfA58W8ZeZwUZrxjBu4h+McoDYFYjHG8JIHoKq7Kqu4co6AxJCVSCZtstGk
+         ixgCBhWELoW0TAAZ5HxawT6eNCJwaXqxTADLPiafSZjdasRo8u5RtTRp0SzkRXGOS/Dl
+         vLfQWHNj9IUzbWLZZUJEqUSIZSd+RlPentBQyrEBM99Uy78bfsfiKt/eJ4KF3RIVjJH/
+         qJj7dLBO4ANE6LMYGYSZbRd57tLFY52SK6wbagW5VwTLhOAMrApRRI4HUP9lTepsVq0K
+         5mCOcrD2tJ+ElVCQbjMWrmddN1dniAmWbro6eTV8TWAWlTK1kzAF0H153n7AkFGoJkC5
+         C3Dw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id z19si245579edd.3.2019.03.03.23.42.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r+aJtZ9I;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x242.google.com (mail-oi1-x242.google.com. [2607:f8b0:4864:20::242])
+        by gmr-mx.google.com with ESMTPS id d127si269919iof.1.2019.03.03.17.29.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 23:42:55 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 03 Mar 2019 17:29:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) client-ip=2607:f8b0:4864:20::242;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,439,1544482800"; 
-   d="scan'208";a="371726266"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Mar 2019 08:42:55 +0100
-Date: Mon, 4 Mar 2019 08:42:54 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Fix line over 80
- characters
-In-Reply-To: <20190304011949.17148-1-madhumithabiw@gmail.com>
-Message-ID: <alpine.DEB.2.21.1903040842080.2559@hadrien>
-References: <20190304011949.17148-1-madhumithabiw@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r+aJtZ9I;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-oi1-x242.google.com with SMTP id q81so2590223oic.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 17:29:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=kNYHfViUQROGvmIXz1c9a51GTRVhWCDwH77yMBdt3EE=;
+        b=r+aJtZ9IQwJQexPGIVSKWYoeBxFgP1vXKbni9xAIpRDdCmij7j3piX0Nw5/0c+PziQ
+         mvkDpDAkMSH98CO7SPfn9ASjfT7Qt+qSsGaq2TaZhXKWvohy4kDqkVBe+MZlp8FDWT73
+         EdIJOoVBWkjXI9gp27on5+uB+1s9YLMqaoA6pS+Z+Xwd36JXemdwLdO9oISK79zdDdgD
+         9Tz7q8D4WPcspUsPXAYpgo9tBt2wgGii9OYG1rRP3hKXHERraNgOk31tYyU96TIhEQYM
+         6RL6Dj1CUn5XVNyzBkMmpNXSZGQIV5GrwhhdGbu+vRjHWWwOl2/MnvGJ6EOF2Iz+XJaG
+         y/hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=kNYHfViUQROGvmIXz1c9a51GTRVhWCDwH77yMBdt3EE=;
+        b=WSYs4ivPOCMEB/VgDKQjhJ0i4Z9e5HLPwNkW48iZCtHZDx8rcTY6lj8XiPtrAAkCCU
+         KgnZWehJ80hc4D3QVatZA+6VsFQYVgvYG16HmsBbZW98JSFLbaBEKycK7Y782KfexO1K
+         OeizeIjx7n0EU+XV5drzscM3sERZjAuk6f6xW2MBbX1Vlx4x68l4XLdw1Yzn719t5QDD
+         gD0AeMTI9CmmTXQnivIslUphIOr//UJ3jwEvt8PtRGMvLx5zUbSxd5pKrK//5heE4I3a
+         lTVTAwoshtib6ZroB5wpvNSDkRhuDUog1IzIqoOZPLjichlsSqBaobOngvJlBMdK4XQy
+         Xtrg==
+X-Gm-Message-State: APjAAAXouNQqjsVib81kT14eLaPUKqu/+G+1Q3TTX+Cp0LA1NDlGz9GW
+	bBolrAlcIDZrZRD2np9Kvws=
+X-Received: by 2002:aca:fccd:: with SMTP id a196mr10721175oii.108.1551662959235;
+        Sun, 03 Mar 2019 17:29:19 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id w18sm1936036otp.70.2019.03.03.17.29.18
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 03 Mar 2019 17:29:18 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: vt6655: Fix line over 80 characters
+Date: Sun,  3 Mar 2019 19:29:14 -0600
+Message-Id: <20190304012914.17346-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
+Fix the warning by checkpatch.pl
+WARNING: line over 80 characters
 
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/vt6655/card.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On Sun, 3 Mar 2019, Madhumitha Prabakaran wrote:
+diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
+index 6bbbbe1314d5..490cecf8fb9d 100644
+--- a/drivers/staging/vt6655/card.h
++++ b/drivers/staging/vt6655/card.h
+@@ -62,6 +62,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv);
+ bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type);
+ bool CARDbUpdateTSF(struct vnt_private *priv, unsigned char byRxRate,
+ 		    u64 qwBSSTimestamp);
+-bool CARDbSetBeaconPeriod(struct vnt_private *priv, unsigned short wBeaconInterval);
++bool CARDbSetBeaconPeriod(struct vnt_private *priv,
++			  unsigned short wBeaconInterval);
+ 
+ #endif /* __CARD_H__ */
+-- 
+2.17.1
 
-> Fix the warning issued by checkpatch.pl
-> WARNING: line over 80 characters
->
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
->  drivers/staging/vt6655/card.h | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
-> index d71022aa3f86..6bbbbe1314d5 100644
-> --- a/drivers/staging/vt6655/card.h
-> +++ b/drivers/staging/vt6655/card.h
-> @@ -44,7 +44,8 @@ struct vnt_private;
->  void CARDvSetRSPINF(struct vnt_private *priv, u8 bb_type);
->  void CARDvUpdateBasicTopRate(struct vnt_private *priv);
->  bool CARDbIsOFDMinBasicRate(struct vnt_private *priv);
-> -void CARDvSetLoopbackMode(struct vnt_private *priv, unsigned short wLoopbackMode);
-> +void CARDvSetLoopbackMode(struct vnt_private *priv,
-> +			  unsigned short wLoopbackMode);
-
-I have the impression that this function is actually never used.  Maybe
-you can try to get rid of it.
-
-julia
-
->  bool CARDbSoftwareReset(struct vnt_private *priv);
->  void CARDvSetFirstNextTBTT(struct vnt_private *priv,
->  			   unsigned short wBeaconInterval);
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190304011949.17148-1-madhumithabiw%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
