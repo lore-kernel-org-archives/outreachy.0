@@ -1,97 +1,113 @@
 X-GM-THRID: 6664067951305424896
-X-Received: by 2002:a63:7444:: with SMTP id e4mr6612265pgn.89.1551685614772;
-        Sun, 03 Mar 2019 23:46:54 -0800 (PST)
+X-Received: by 2002:a67:6948:: with SMTP id e69mr11340467vsc.26.1551679552445;
+        Sun, 03 Mar 2019 22:05:52 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:59d7:: with SMTP id k84ls6401598pfj.6.gmail; Sun, 03 Mar
- 2019 23:46:54 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZYRZOIigh8KgIL84nhrdFEu4goATcFWnbZIZwW1HmCHgvqpMP0+5HGwOokJJNQ9B/X6OzS
-X-Received: by 2002:aa7:8296:: with SMTP id s22mr6427617pfm.135.1551685614083;
-        Sun, 03 Mar 2019 23:46:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551685614; cv=none;
+Received: by 2002:a67:7e57:: with SMTP id z84ls3240262vsc.2.gmail; Sun, 03 Mar
+ 2019 22:05:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx0D4wUA7rMOZa/gN/M9yt6me+9JhQLHWblYrGB3k2U6Rx3QyvpICNKkPlK1LNWJzfxjSkD
+X-Received: by 2002:a67:edc2:: with SMTP id e2mr11436882vsp.35.1551679551731;
+        Sun, 03 Mar 2019 22:05:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551679551; cv=none;
         d=google.com; s=arc-20160816;
-        b=sxt5O59bBQW9N9gJSaHODJpGaEhDjGLpejbsnZJWcR0cNraARia86FyvdfXboWBsS2
-         TzLtgmZUpKD1QRj6f8r0aCp0ZvIinr+zwbhEekK06u1bBD7jowU0EXwz1ezMaOXQRLZY
-         qSqV2WL894mrU2mykrfRt6qUeXYjaFik+tXVDCH+xTm98taQgQysz2MpJTpmC6SoP1hy
-         QsHUVe7iew1DNg+Z75LP9dlHoE0Fw+AArmUryGrVRnA9aE+dM5qhVfYKTHgFa5I79mT5
-         dnOnjJvZuOAVhKtxbUxtn4fAmUERDCrBSP6kyLLRrrZk1KUhE4pLCK+k8Tue0RAXkc8j
-         Lc2Q==
+        b=pJfkS8/gymufPSgOFNaPw8IOWlElCLRdca3YFUpCL1JQXrL3ePhOp9fkf6vsUR61bV
+         Fm+W83f37dT0lsVk3y+Ml8J/moA/52fEji4EEIQzTWn7g31gRV1e5Bc62QTm37CuCIe6
+         7zMI3TU4towND6EWmhsrvf5N392zC9UptHltduEr4stNX6JbE3b4dngneHsvR0Ub1QjU
+         7VXuxpBXKzlAH6rOXEXem/ikqL1UqiELzq8hup13FiJ0MOY52bG/rBiZycbFbe/vOy3f
+         pbJ7LC9DnRNJnDjMACTOXOky/uhhetfqy0n80lSQePnBkYlqP+mThfF5ParmDPJ3l8It
+         kZLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=+HPaHZEnlx8FAYgzILOeSh6uhG1YaWKUHeH5eB1VCQ8=;
-        b=DvCA7zyQuphQitV9kwaHW0IpPrxHZuiCDdfdfJZPK0tjk79BwHWoi4Yji53QZ1/k0M
-         2vYKaqmVflibO36lF/42uEzgNXIyMRCpqAbno7Qkfjtdsj6yK5JgiDcskU8LWPETen2c
-         bPfVFy2E/lj5m2rUvv25i33dJpycVmxLwBfSGypph3S517N8tI1fYwCVnHFTxp0mj5Lz
-         Z+al4ASG0N3ahAz+1+cvS10KlY35oZoSfHs0+F5LiKYkWW0GbGm86fWGt2rVqECr2iMO
-         iEvxaQKEaHHZzI1BwLd6g+iUujavwGsL1JjqPFF1WncFrTvhTOJCV4sTfLsBZm+7SWCI
-         tTKw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=DCDTnTxhCo2oKPxnlpl5PIIL+W4cnxayJjaWT818sjk=;
+        b=ObtR6A3I6dTXB9lk7ve2B78yqMgwrz+A2Ggmbf//qOZAwQW5/Gx/l6cb6+66JXrdVp
+         6VGKFQtw+BbR0enoc1x60vbJKdYhTAY72wEHhPhvGXRzo2ehW0VLWRjzNv5omp9PzuI8
+         VV7BFi2tsSWPptPJiAQXFAhjsa00E6EAo7xyiJDRBzAj6J21iR54YwtCj5tw3+yT+xCB
+         GUnl/rVefI6vQv7s2rfOEyax4NbgTTMPVh8U+TThHX3+/IbyazQt2ZYlZFOPjinbY4I5
+         6aynEehGXH4unznnHezb2bhPpqOvHNQsGcu4jkglmIcn5TjgNzgLwG0yWjzECnRb7Sar
+         oVJA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="RgZPX/XJ";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id r133si265042pgr.4.2019.03.03.23.46.54
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GkKcCVKV;
+       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <idebleenasen@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id e17si274576vke.0.2019.03.03.22.05.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 23:46:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 03 Mar 2019 22:05:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="RgZPX/XJ";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 57E9020836;
-	Mon,  4 Mar 2019 07:46:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551685613;
-	bh=yKBUr5NU856FddEaQad3Q5ieJrA8mYrr+Yh9HPjWwMY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RgZPX/XJFSTJDQNIc7XfbrLlUawB1dkYav6L31WSY8z94/Gb0xPvu7EBxNPuNwFuy
-	 rM90+Gb/VaQgGSATKkYLJpA1KXWw0PPDGopqyWydJ5EjTvAqeWpcKZM1QuCnRLjnMD
-	 Eul4XhCA6tEoaXIiP7ly7k66FHKYnk/JSplEkAxA=
-Date: Mon, 4 Mar 2019 08:46:50 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Debleena Sen <idebleenasen@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: pi433: Fix line over 80 characters issue
-Message-ID: <20190304074650.GC22711@kroah.com>
-References: <1551679530-2635-1-git-send-email-idebleenasen@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1551679530-2635-1-git-send-email-idebleenasen@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GkKcCVKV;
+       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id v21so2192104pfm.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 22:05:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=DCDTnTxhCo2oKPxnlpl5PIIL+W4cnxayJjaWT818sjk=;
+        b=GkKcCVKVqF11HiTPmzWzNT+ywfWD1NV38eNeYoBrn9vvyrw3UuTu+pNSyLuWO6sk5p
+         MwqSUfLW7TnmOGeR2oHOT+tglcz0Kaf6CVx32sVICdOQbbrpt9xWh6BeemqAHNU6Tx4n
+         sAoOLkLaV9pLK7WHbehB2lU367Q20+FrFkKGHJ5mqBecNibTqIglcW/hiSdiUXJMiaXp
+         NnPX9RSRsaGO8fJl4gFtmt5ITnbUgToRir7H4aNfz2lbak9Y/d846ll/FUxsb1gWra/E
+         j3yvEafFkFmxuqjeD/qNwU7kPEAca/Ny4qsIplfNeVEI8mPTqZ+zfoLDaq+2/fChhIu7
+         Tnlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=DCDTnTxhCo2oKPxnlpl5PIIL+W4cnxayJjaWT818sjk=;
+        b=eNq7cFZB9UqQoWR7DA+dcvkYHvpKF+9oLcJN+f16904im7Y1OBL+rbK3yupzaFDEsD
+         bzSUookPIcgIs9audEmSsCHrfRizNC+adAKgzwrYCYI9OXABZbOsUE6fy1IPifqbudzd
+         G1fLmyd0kOmInkNJTh1QEaBViLwyBPZWI3hHS2OEQvC/ZhePMy/Eoa+BQA+wddIxJ7l9
+         xq7aHKGs3mbiaLCKG8pRWt4sxHb+0BdHiTb3ZGQFQhYKAKLFuHDEpEf1OVTzf4ujRS5h
+         /wPFKRcNpU19KGDo1oadXFhJbyVwW3Ky2gHXQye1EPipa1CZ7WR+477z6ZjXmH49QeLX
+         vmTw==
+X-Gm-Message-State: APjAAAWJdF8BnzorgyQZvMMz4ouyEHlVhkBSKwr59oE+JyVB513meX4i
+	XYJjx2sDv1WZO3ZPKtkY3D8=
+X-Received: by 2002:a63:31c1:: with SMTP id x184mr16618720pgx.352.1551679550875;
+        Sun, 03 Mar 2019 22:05:50 -0800 (PST)
+Return-Path: <idebleenasen@gmail.com>
+Received: from ubuntu.localdomain ([114.29.227.68])
+        by smtp.googlemail.com with ESMTPSA id y7sm7523671pgf.42.2019.03.03.22.05.48
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 03 Mar 2019 22:05:50 -0800 (PST)
+From: Debleena Sen <idebleenasen@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Debleena Sen <idebleenasen@gmail.com>
+Subject: [PATCH] Staging: pi433: Fix line over 80 characters issue
+Date: Sun,  3 Mar 2019 22:05:30 -0800
+Message-Id: <1551679530-2635-1-git-send-email-idebleenasen@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Sun, Mar 03, 2019 at 10:05:30PM -0800, Debleena Sen wrote:
-> Delete extra whitespace and tab space to remove
-> checkpatch.pl warning:
-> WARNING: line over 80 characters
-> 
-> Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
-> ---
->  drivers/staging/pi433/pi433_if.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
-> index b231463..53928af 100644
-> --- a/drivers/staging/pi433/pi433_if.c
-> +++ b/drivers/staging/pi433/pi433_if.c
-> @@ -45,10 +45,10 @@
->  #include "pi433_if.h"
->  #include "rf69.h"
->  
-> -#define N_PI433_MINORS			BIT(MINORBITS) /*32*/	/* ... up to 256 */
-> -#define MAX_MSG_SIZE			900	/* min: FIFO_SIZE! */
-> -#define MSG_FIFO_SIZE			65536   /* 65536 = 2^16  */
-> -#define NUM_DIO				2
-> +#define N_PI433_MINORS		BIT(MINORBITS) /*32*/	/* ... up to 256 */
-> +#define MAX_MSG_SIZE		900	/* min: FIFO_SIZE! */
-> +#define MSG_FIFO_SIZE		65536   /* 65536 = 2^16  */
+Delete extra whitespace and tab space to remove
+checkpatch.pl warning:
+WARNING: line over 80 characters
 
-The comment above should also use a tab, right?
+Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+---
+ drivers/staging/pi433/pi433_if.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+index b231463..53928af 100644
+--- a/drivers/staging/pi433/pi433_if.c
++++ b/drivers/staging/pi433/pi433_if.c
+@@ -45,10 +45,10 @@
+ #include "pi433_if.h"
+ #include "rf69.h"
+ 
+-#define N_PI433_MINORS			BIT(MINORBITS) /*32*/	/* ... up to 256 */
+-#define MAX_MSG_SIZE			900	/* min: FIFO_SIZE! */
+-#define MSG_FIFO_SIZE			65536   /* 65536 = 2^16  */
+-#define NUM_DIO				2
++#define N_PI433_MINORS		BIT(MINORBITS) /*32*/	/* ... up to 256 */
++#define MAX_MSG_SIZE		900	/* min: FIFO_SIZE! */
++#define MSG_FIFO_SIZE		65536   /* 65536 = 2^16  */
++#define NUM_DIO			2
+ 
+ static dev_t pi433_dev;
+ static DEFINE_IDR(pi433_idr);
+-- 
+2.7.4
 
-greg k-h
 
