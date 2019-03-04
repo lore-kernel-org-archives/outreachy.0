@@ -1,146 +1,116 @@
 X-GM-THRID: 6663863789016842240
-X-Received: by 2002:a24:6f15:: with SMTP id x21mr149258itb.2.1551720230336;
-        Mon, 04 Mar 2019 09:23:50 -0800 (PST)
+X-Received: by 2002:a24:5e94:: with SMTP id h142mr36470itb.35.1551718872603;
+        Mon, 04 Mar 2019 09:01:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:5a0a:: with SMTP id v10ls10897ita.2.gmail; Mon, 04 Mar
- 2019 09:23:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqztEOMYurn0fSSAdadKz2ETEGuqocEmcOhasYg9ketPH9MxmVH6Eb9CQX8jl32lLbSMKHOt
-X-Received: by 2002:a24:78cb:: with SMTP id p194mr121245itc.7.1551720229533;
-        Mon, 04 Mar 2019 09:23:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551720229; cv=none;
+Received: by 2002:a24:194d:: with SMTP id b74ls2666604itb.3.canary-gmail; Mon,
+ 04 Mar 2019 09:01:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz0CG3/EF9oEuNLadtq17tHw+ZP6tCP6NqGWMhAKEl9DecZa7Fug7PxxqEXcFGEE1ZlJiAF
+X-Received: by 2002:a24:e984:: with SMTP id f126mr54822ith.1.1551718871844;
+        Mon, 04 Mar 2019 09:01:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551718871; cv=none;
         d=google.com; s=arc-20160816;
-        b=UA9Vc0ai8BBQDrPFSWHzEf5Fq7vqCwBRKOLqGn33VKvJbPsrnhUiaMRAGrf+osOlLd
-         geSNzMZRixjGXkO5aE5ozbWRNCNlW3fvweYWbIisjhfuC5ooEyLRimuQLNVTMYJN0evE
-         7B62tXhKSDGgrQ0hCmGcv44hCUWWN/G/E8vkaK3VTwLMil62gzs9CsLTwIfg1IR1yw2E
-         DxxXUN361tqF6cwB5rTUQSXeEem39UPHtuQyhREU2Wf2KhYDHZVuDueBMIU/sWGCk6Ac
-         9xkMadA5s+2j3Y9bGy0ecq5BpxhcbSXWlwQUeK9JoVPX6cX1X9+EdH+NFC4RNqTcAzC2
-         buBg==
+        b=Gmdg8TEatLnZ1J7ZGwFeaM9qJCL5+WAo4iaFYX45pbEPjfBt2v3DDPRzSJZ2SNa18C
+         qaCcvByKGUl5h5puHVE3U0/0903t4RJcwbR6iSA5qFL5NE5S4nXh1uN4sCE2k77X7QfG
+         JTgKaPgvwLa4+c1CBpygHUjiCa9nYenPSRIj+zLs7i/UtY/55B5HqdZHHPc6OTmQi/E5
+         MwQx5dono0+KAteJmG6tO7W0Bgy0L3Vv91NXfAe2vRXNyTmth5GcFzo5iobwdp0UgE/s
+         RoFvXEKpfZQhwfHCepen23ElExbHchat2nPIXTJUWQn/htobKj6IOdvhglNPnRaYZutX
+         8OYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=H6Qliv9lmQdZkuVLqFvuhRG5EBaOf15AxDXX2rpNO6I=;
-        b=t+i+B21ZSOxJrdVs2BMt+9F52hKgvgn01AYiHcF7ro6cM0hVkIcYf3UIwFZG7sJ8cw
-         N3kAbdJh50g5G/wViglZbFwo1fVDvRCzsoqfyMZpH1/XOucfmqjASX7d0tcAP3QY37yj
-         uZAro7SHqqb2ZxAX37ASkt/k1e1ndOSOHe5Plw4GwKZwE9OAjcOXYK9J/wo9cHzR3cSj
-         XCrksbcrJ+mla2DC+3Xyv8ypmw2hBDOzyIyrqyZiRAYUaQzcfjZzIDeNjDNJg6zey3tj
-         rJOMoU6Yh+fk3di1Cu1A1826LVnEkFt9IZMnGmRHcZNydyHi9nHElvPhGfMTbY49sO07
-         fqqQ==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=5YBA4F2wKU+omTuR+vgYUQD929OZ4gq0tGvDTeihBn4=;
+        b=ZYBHU7jVPbX9IrJsCP/1BY4zLAl2wnP3xrnoEEdB9wLCDMFpWl64Mgb3yjD62a1PRd
+         ZsQKzJZWkZx6SO4l/Ke3Q1Uxq0er/fo3tD/r+aiRjUDE6QEvM4rb9oG+kBjtL0SdTHjG
+         AuAA08j26g2j41Hok/tlH+ID4Zw5gZXsfQDdAR5WawLaod3zFVPO9SoKF70j2hjyGfmV
+         nYHNYK5Z5djr7T126BsOC+GkYhmUSUem+B8Gn1VViPcWKBJrwrZjBxSU7nydiDoLmPeE
+         F5xgKoxKyHRaxuJobq1Viph43hvTwBMBjbl/5BwT+8GFI3rm4kCaaDDrZVHTJ9igU5ji
+         Yo4Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tFNM0RI3;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="I/4m79ZV";
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x231.google.com (mail-oi1-x231.google.com. [2607:f8b0:4864:20::231])
-        by gmr-mx.google.com with ESMTPS id v63si390333iof.0.2019.03.04.09.23.49
+Received: from mail-oi1-x244.google.com (mail-oi1-x244.google.com. [2607:f8b0:4864:20::244])
+        by gmr-mx.google.com with ESMTPS id c191si431078itc.1.2019.03.04.09.01.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 09:23:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) client-ip=2607:f8b0:4864:20::231;
+        Mon, 04 Mar 2019 09:01:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) client-ip=2607:f8b0:4864:20::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tFNM0RI3;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="I/4m79ZV";
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x231.google.com with SMTP id j10so4447361oij.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 09:23:49 -0800 (PST)
+Received: by mail-oi1-x244.google.com with SMTP id z14so4413432oid.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 09:01:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=H6Qliv9lmQdZkuVLqFvuhRG5EBaOf15AxDXX2rpNO6I=;
-        b=tFNM0RI3s+cHDL5xbtlwtxYHJp+K9fgALUTC/ilA+4KgsKeOFZyU4i8rHb3++z27y3
-         lIZ7awsmMk0VyYPiSzXQxfCaiLlKUNv3Ha1SPyVsOjZ1xHrLKkHHW/VprBkarltMb7oR
-         Uv4XK4GpSKUq3grZA+8lvrOytWKCXLD6UV7h19yGgPYRs8CFVZL6r38dUG9W9EgDXFcB
-         ERHsG6HDhtQOTPoghl+GHUyZD0TzoiWPgphJsc0UcELUVVCJpjs1qYIFlD9PlD00zqhF
-         lGf/MHD+XWtrpkPdx4WPsSKMnIvGdqc+HhZXtTcOv4CnRvwZvLiFcJsfy5FfBhZLyqIW
-         TfiQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=5YBA4F2wKU+omTuR+vgYUQD929OZ4gq0tGvDTeihBn4=;
+        b=I/4m79ZVFN6h3m33To683QqTXm58GGIjzpSy73ZY//ygufAv/5TDbWZngsOcSH5byE
+         jFENM7PEAfMcgimPCefCgxkRM3Sj7XVszjVXfOfJmfFYTc6mrF1+v4lhU1pFTeAHcata
+         q7DEdwH670craDfO/pJxTAl/Hvstl1Xq7MGOrcAqncWTqI4v3B0vx8bufr6p/EBLkPdO
+         fiUa6Szb0BZ916uLm2Ggbm0AmvsVIHY78V9m2JjYyl28isHgNuf+7Gsktt6t4q2q12Hg
+         fNV8CN8ZctzAFxRvQPPlI3SemLypE4EQ4w6mQgq0DG8gJfczOw50DmmT6eTcuNs2V6fO
+         S15A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=H6Qliv9lmQdZkuVLqFvuhRG5EBaOf15AxDXX2rpNO6I=;
-        b=fCHF6zpF04PWm1as9QQ8G2dUrgOaELDsTJtGxk3WLBa3fenTDuYVeCkS0RLF7fw4ha
-         00e9RP8h6rad27YIgQvfCKXQWKGbiN+f6HK9IqahV3XTPNnHmESg84ksA501iXSoLHS5
-         y+81mm7vJqXH0WxbvsGsSovW/EY03+KQ9EIzuYeMfjnUN5zSWdD+qU/tfXuRTFL1FQ4s
-         TT1lMy0tqy0TmwaQI/hMw5ZQcmbJEpBx4wWRmJB3O9NbReL2jBAjU6+lv5OsJkykCwVA
-         NfUxxCe4tbgPImWcpPiu0bCYzFdPyRUmi+QrQ4Xrb06phXLneQOZLg/ZJ5JCOj0xtNBF
-         u8iw==
-X-Gm-Message-State: AHQUAuYz3j6xN1nPi4sp5vrpMT1WjNLEKWB0a+XFA1dq8omNYlTpvHFm
-	nU1TTDA5IUEPZOaJOBaO5+g=
-X-Received: by 2002:aca:3209:: with SMTP id y9mr12943327oiy.145.1551720229015;
-        Mon, 04 Mar 2019 09:23:49 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=5YBA4F2wKU+omTuR+vgYUQD929OZ4gq0tGvDTeihBn4=;
+        b=m5gyxWyqETzxtB6hmLqrL2Um9Zfopif/ONldnQxDf1KybVehla0s+DFWOElEAjCRlA
+         PTCwKZx16Dq3DwogXQ6LYnOinY2xk35SHujZHPAc8kXzHViE0oU4KuT3J6adLblfs1xV
+         kU/P5c15gX++Kdq1rrgAIxXgmBQ6SkXWuLgDdyuzCwvq+JObCIzSfvS6xLvYdh6VIMBO
+         jNVxa57GCUni23UroGvHWJ4VzjGkPX+VYf2ak5m0sZAdsFrgiy39p3rdsThpCNdUQWcp
+         LOaXNnTpu/B3dP7QWQmci2pxEDmHvATMwHUpKXbZIAen6tc5TAls4+8tpv/7j4boPQ8I
+         U3rQ==
+X-Gm-Message-State: AHQUAuZd/Zal8uLZLha9DOJMQ3QBpfgEHjoIdi0SblmtmakXV04hEiyV
+	TDHmB0dQkr8NAvoYcykcezI=
+X-Received: by 2002:aca:fd91:: with SMTP id b139mr12862252oii.170.1551718871410;
+        Mon, 04 Mar 2019 09:01:11 -0800 (PST)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id q1sm2642195oth.42.2019.03.04.09.23.48
+        by smtp.gmail.com with ESMTPSA id f7sm2670227otb.56.2019.03.04.09.01.10
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Mar 2019 09:23:48 -0800 (PST)
-Date: Mon, 4 Mar 2019 11:23:46 -0600
-From: Madhumthia Prabakaran <madhumithabiw@gmail.com>
-To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Fix line over 80
- characters
-Message-ID: <20190304172344.GA22591@madhuleo>
-References: <20190304011949.17148-1-madhumithabiw@gmail.com>
- <alpine.DEB.2.21.1903040842080.2559@hadrien>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1903040842080.2559@hadrien>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+        Mon, 04 Mar 2019 09:01:10 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH v5 2/2] Staging: vt6655: desc.h: Fix comment style of SPDX-License Identifier
+Date: Mon,  4 Mar 2019 11:00:53 -0600
+Message-Id: <75d9a943717da2fb9e9aa3e52c74219d332e59b5.1551718323.git.madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1551718323.git.madhumithabiw@gmail.com>
+References: <cover.1551718323.git.madhumithabiw@gmail.com>
+ <cover.1551718323.git.madhumithabiw@gmail.com>
+In-Reply-To: <cover.1551718323.git.madhumithabiw@gmail.com>
+References: <cover.1551718323.git.madhumithabiw@gmail.com>
 
-On Mon, Mar 04, 2019 at 08:42:54AM +0100, Julia Lawall wrote:
-> 
-> 
-> On Sun, 3 Mar 2019, Madhumitha Prabakaran wrote:
-> 
-> > Fix the warning issued by checkpatch.pl
-> > WARNING: line over 80 characters
-> >
-> > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> > ---
-> >  drivers/staging/vt6655/card.h | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
-> > index d71022aa3f86..6bbbbe1314d5 100644
-> > --- a/drivers/staging/vt6655/card.h
-> > +++ b/drivers/staging/vt6655/card.h
-> > @@ -44,7 +44,8 @@ struct vnt_private;
-> >  void CARDvSetRSPINF(struct vnt_private *priv, u8 bb_type);
-> >  void CARDvUpdateBasicTopRate(struct vnt_private *priv);
-> >  bool CARDbIsOFDMinBasicRate(struct vnt_private *priv);
-> > -void CARDvSetLoopbackMode(struct vnt_private *priv, unsigned short wLoopbackMode);
-> > +void CARDvSetLoopbackMode(struct vnt_private *priv,
-> > +			  unsigned short wLoopbackMode);
-> 
-> I have the impression that this function is actually never used.  Maybe
-> you can try to get rid of it.
-> 
-> julia
-> 
-> >  bool CARDbSoftwareReset(struct vnt_private *priv);
-> >  void CARDvSetFirstNextTBTT(struct vnt_private *priv,
-> >  			   unsigned short wBeaconInterval);
-> > --
-> > 2.17.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190304011949.17148-1-madhumithabiw%40gmail.com.
-> > For more options, visit https://groups.google.com/d/optout.
-> >
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903040842080.2559%40hadrien.
-> For more options, visit https://groups.google.com/d/optout.
+Fix comment style of SPDX License Identifier for header file based on
+License Identifier syntax.
 
-None of the function declarations in card.h is used with itself. But the CARDvSetLoopbackMode function is used in card.c. Whether we can remove it, considering the fact that it is used in card.c or not. I'm not sure regarding it. 
+---
+Change in v5:
+- Subject line edited
 
-thanks,
-madhumitha
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/vt6655/desc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/vt6655/desc.h b/drivers/staging/vt6655/desc.h
+index b4a0037b40c1..d4572847b08a 100644
+--- a/drivers/staging/vt6655/desc.h
++++ b/drivers/staging/vt6655/desc.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++/* SPDX-License-Identifier: GPL-2.0+ */
+ /*
+  * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
+  * All rights reserved.
+-- 
+2.17.1
 
 
