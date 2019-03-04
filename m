@@ -1,77 +1,77 @@
 X-GM-THRID: 6664583241254567936
-X-Received: by 2002:aca:4588:: with SMTP id s130mr12510970oia.44.1551719205196;
+X-Received: by 2002:aca:3409:: with SMTP id b9mr7083775oia.29.1551719205189;
         Mon, 04 Mar 2019 09:06:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:a80d:: with SMTP id r13ls3164592oie.0.gmail; Mon, 04 Mar
- 2019 09:06:44 -0800 (PST)
-X-Received: by 2002:aca:4e93:: with SMTP id c141mr12023749oib.27.1551719204757;
+Received: by 2002:aca:5dc1:: with SMTP id r184ls3009239oib.5.gmail; Mon, 04
+ Mar 2019 09:06:44 -0800 (PST)
+X-Received: by 2002:aca:4812:: with SMTP id v18mr12046501oia.30.1551719204757;
         Mon, 04 Mar 2019 09:06:44 -0800 (PST)
-Received: by 2002:aca:aa46:0:0:0:0:0 with SMTP id t67msoie;
-        Mon, 4 Mar 2019 08:59:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw+Ql+is90nWRHrkTsxIzXuw/dXqL90pnvflYtblOfROBu8kC9KENj5HS876HNRu0Dgcwsx
-X-Received: by 2002:a63:f95b:: with SMTP id q27mr7446444pgk.18.1551718746811;
-        Mon, 04 Mar 2019 08:59:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551718746; cv=none;
+Received: by 2002:aca:c3d2:0:0:0:0:0 with SMTP id t201msoif;
+        Mon, 4 Mar 2019 08:57:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzZreK0wgR2BPS0r0qi1NIz2xge60NJFi+Svh9AKs9QXqG5+GOkV/xKHqqZdSTIymPAn3R+
+X-Received: by 2002:a9d:4d92:: with SMTP id u18mr12544341otk.14.1551718662896;
+        Mon, 04 Mar 2019 08:57:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551718662; cv=none;
         d=google.com; s=arc-20160816;
-        b=BAki8QP7HgZzDx+qHYzRPnNZy9QgFUsbX08cLcG1Tw3Bn+gNpcLhTrMXvagzZUhhVK
-         YVpvIT/1Cwp/CpBpHo4XC7IHL8cwItuhOFeyITogX10+l6lm1NULqK2GjddUEpYfntAY
-         mQhUnhVe/PVrEBnVlsuPD6I2tbwaBIf21yfQdKXj3NRa9ING7zv7XnKt7zTcf61FzM/Z
-         jnyaeGUgbC4hJPTFA9DO4sx22POcTxafErUcfaAq5Ibyi6P1uFPqp9Xhqo4rGp5g3k2z
-         6PKFEvnFTcbT2cYqKSzdkmp0vdxtfWBUzANiB82XwRk/NlWF2KdPopG88pj869j3j9iQ
-         M4Hg==
+        b=bl+j8jNqC9O3zF0p65LLjKNqi11WbP+GSmAGECjjdwZ/5yF1CMAwktlyYjO5lX2LSM
+         0PLi7HmRkL00bETJMwk98Sx/W7NJSxbn3Y/B+4C/Ctcj2R7WI51MUzaQyLdSGIHAubfU
+         vGj0EWyab8ZmqXa+ZlwuvfWOG69GXkO1GrhfvKDF1UxKiOtq2RrUlzWT1NO/u8td4dFF
+         9JOwqBPWqlQxQIWf/37Yj8CBjdWF8c8waDW4VSfyUu9Hi6Z7OhqVjJZEK/qGowa6odp+
+         TnVcAitLwJ9C0u/L+Nficl4DlPovtHjG2i2DU+O337qeRoFL1AG/W9u4VbjR7phz871U
+         DXBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:dkim-signature;
-        bh=YnBeIBSpkt4HaDQNmkn+2Wws8xAsG1Qw3x0LTzt/8MM=;
-        b=e2Cbwf/xt7vuo2g+RPWkumAGXuPE8KZT8krp5RblVLuUGkx0cJK6oSeETOSW72KGou
-         wyzeg8ujKozMrW5rAElEPOuXJLAjhobob395+HGusqhobHw7g8aJMsanj6UcgXiuytXm
-         NIdUuiKjOMV+yFIbHxhAwzWb+I4QLK7/BRS7IqwkmcHA8A/9IffDVRPI/4E0yX1cFpqm
-         iHSR5aN6Gwbgqav1JSF0MWQOrCSfLOYZ1VQYEPbD5SOtR1X4tFdoICNXqRZDyTN1mAfH
-         dkDtqBaqVb6lY5NkC9GsCXzPsZXxD8nRSuQalDuraHATV2AlkJSAqcXQgUryV7jr7Hfd
-         cAOQ==
+        bh=MG2GBrOpzeKRpNl9aOPU5EULD+8fEO4yaEsBDda83SQ=;
+        b=wEWcFHAa9ykCd9i33qEpcRWkmzyT6Y6vEXDkDl6Dh+vC+iuipjggQNCMu6ZLXFczm5
+         cyXucQ9MnKZMifHAikzlBuuDFWA0uTta4HINUImEavHKfddiIvgsqGE5zkQK4xVhg1c9
+         uy1mHjGToMOry9ApqbhDZTSF0AFwjPIyyxh2dkz7sBoNJvLNN0daFHKWZ/QD04cNjMv4
+         imwZdmcH4bJIeEpfiQdevUpZRiFcZhgAR8UtgsRwP/Q3Hs7p5cTxwHeDPCfwsnPWwe92
+         nTMh1M+Jc91SdWlK2q25QakJ7Sp1ahrMEQqEAHGORJd5NdadqdP86zAMeLBKfs0iDj+S
+         Xfgw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=Ym8W2uVX;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.140 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=alFyQazC;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.40 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
 Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic310-20.consmr.mail.sg3.yahoo.com (sonic310-20.consmr.mail.sg3.yahoo.com. [106.10.244.140])
-        by gmr-mx.google.com with ESMTPS id 3si300478pfs.4.2019.03.04.08.59.06
+Received: from sonic311-23.consmr.mail.sg3.yahoo.com (sonic311-23.consmr.mail.sg3.yahoo.com. [106.10.244.40])
+        by gmr-mx.google.com with ESMTPS id f96si260628otb.2.2019.03.04.08.57.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 08:59:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.140 as permitted sender) client-ip=106.10.244.140;
+        Mon, 04 Mar 2019 08:57:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.40 as permitted sender) client-ip=106.10.244.40;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=Ym8W2uVX;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.140 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=alFyQazC;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.40 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1551718744; bh=YnBeIBSpkt4HaDQNmkn+2Wws8xAsG1Qw3x0LTzt/8MM=; h=From:To:Cc:Subject:Date:From:Subject; b=Ym8W2uVXku/j6vNFZr85/Xff/HajuA4h0hH0E2yc+IVmthEV82+VmK3uw73YU1E0FodJQpMUjQUn87UgDRQlkCGTChiLwcEyFapeBeYs8fha3/+eTtNeTN5rt+AukG7kwv0g+bxH7Pm35LgMKlVdkkc0LucPBANj0rIzUEIL35tBbt8FycG+QAXPeV/qMoJ42D6k1aScXGXY/+AKcsz1SQpfpyww3Y80ySqaGR2nNdR6zmg5uZKi+J1gZcXVc4yim3JZqPspoulgDl4A573ijqNRK9tu72UnJCkkznVs1y0bxfMtkixWBesZdvRZcWzH0IlRyM+iSNDmb6iLdM9nsw==
-X-YMail-OSG: exDrhb4VM1ntbbi7j.7.nYfKUP.b08t.xsJXUW5qDneWz65Vmuc8Z1ohFZcjyQs
- _whn0GUwqLoMcbVjeuA6qA6Y5DZ0lpBZq7aXF.dp..maKsjcb1JpH9oVrscKligmcMCMB588IZOt
- lAhn0l1H.hHpVsbXbmYM0AgwvIT9ZdUSauyqqCc7swzbtgSQOUVbpoN5NgOTsnfhn1.xz21A64T4
- ww5_uMov2ERJ57GSO3pdMaDosy4qrAMMxeZD8A9R9i_kF5q_FA3cfVVle8.nQoelOT12c4IiKdsi
- X1P.oW2p78FR_RrnOW9m.6zStALOQTMKRgWAdJoVmLtKS83eTjCEYL.5vBC2ta7q.4oS6GfmGCEH
- fCg0WFkKfyjQ5YY7DrD7DiJi_sgcE7nuDk0bL_tC4NnQpdlfkBSlxde2o4br1e5lHMLcVu8DVhuK
- whw8JHUH.lwEaDjDaQC5DdtWnfr96_F0V8jpSg.2jRNlYgMZ5.5bdxnFOF3w29EAYiOP7v870pds
- 6aRESBbnSMarRCQeojnCddgy2yhAX5s1ixN2fq49YUHE2IQ6cufaLaSW4MrcPibpR7990h71bs0H
- EQCXKhe7T.jy0_3bRSaHrmerIEAMUcXBui6EdEXAi.3BFPAmJNZ7ZXoi.uYEg.P0s4id3Rn2CcOH
- 8kk8WJ6I1ol4Zg8tOrXzPUglxCIrkuxuYEPlcc8p36UgmTqixUooWBjAfDFgYI6ee_PIpLghliEU
- vrn7eQw1E_qSW1iqcpuHhLLYddPT36qi9kaOSPpzjzeQ7qKnL7mDJpp97qfAgwwsCSVH4_ElY.vL
- xUBbPyqSRFWrnnBkTWhYH5IsiJWMSAqecEtIePhWTPDn8dNWf_axfQINJyu7kEu9sBQk0TWgxALt
- QBY7NiXw3zHYuQ9g_kNUNsTRZ02HuPrtWKK7UMS4VH7WWsy.KCqz2LDHwVokejaxW1ZquMNWN7RH
- Fpl1bTbCvQ5vht4IDb0ITDm1dFarTqaMAs69mFBq.lUrE.OKalT8zqaxgDjXvGWTfxHyScf0K4SW
- IBt6nxGyYWsLwI4..OfyB3wxhQGhUaV5ZNz6DUVzfubZIRVk11ETJHo6SPn7JfYVOPXUpuaa3PO0
- ZZPHnhl8yd8..AHweJ_o-
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic310.consmr.mail.sg3.yahoo.com with HTTP; Mon, 4 Mar 2019 16:59:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1551718659; bh=MG2GBrOpzeKRpNl9aOPU5EULD+8fEO4yaEsBDda83SQ=; h=From:To:Cc:Subject:Date:From:Subject; b=alFyQazCvrwa8BxFEu1kCteFCWoI8eVFiSkJ5AEK9n5LadrpXgVdRS9ujzZQI7EdUWSkUQQmiJ/kEjDswF4Q1tOCDxWf7hcfGmiUaJyu4AseCzC7uCv2/0+8oQvq44vRFf25zGqa4aolTPFOwRikgB86a09sHIY4RF+Wyke/AwNM0P5YYUfxDRpQBECT02k34BfkXFMTlccxDtG0v6RuOLqffmmHQLyeC40m+szFw0GjiHM1N9l/n8D76pQqqu//QCiwd2qOmuaPZqndSSlGGxApAAST6EJemedu45rh5qGxxmnaWoht81c5ejs2EY8UneLlzwlPxCUM8Fk7GphIag==
+X-YMail-OSG: 2wr4DU0VM1mKhclmvVVaA3QnRfc2oawPP8KqH04HtSJ815Fog9rG1leFd7bV3Yh
+ cVCa7a0o.pMI18Rc0.YeEIZU8Y8Db3AwIzN3kn.1ejIDDh1pSbWmZClk5bNL5j2ceaw7rDkKNSiO
+ 5HqAwZlUXkmo6edUXlT0RY7x7a0O_zU92maH0E1hK8fllcHSbFdHznqeRlfLUWKTEqZ2AG2Bdlo4
+ UIxlEBLocU2VnZS5m9U..qvzyzJAaPlUFunneJzYpe3J_yZKn7jbIbNiZziRyPkO2ybdMJ4uzykf
+ JgmRGqA77fJed5Bw4Zk4rIkZ0z47N6bZIGr9AZ0kA3s2Wg2e.IMhDSeJsCv1_j4_sEJJCr3Xan_E
+ Muw0UQkpDO6X1emfsvU7im5eElhquJMNl2t_HWyrEowus105gBGsQsnn0UIjgzSlFTrIt9TZAn_g
+ WpByFykcY_W.TySCYiwRaL_7_.X0Bv8vjmU53KkSGJ7sqzmQkLNCDOJGhg43CCcCqeUMJoXBrabG
+ 94hPtikohw1Obn7ZXPz9lqGqysyl0orohER6TQDAIYzkDukawxaKBJ68nqLEEroHGd_D_lbgCJ5w
+ x.mCMN_mSBS4AN7YQbc00LrBwgeo3z3QhRuFGpnTJ_mnOcopNrIvadtjW1DGy.l5CMHn7bE5j6cB
+ pfw.UEuYJzNIpNBSNBscVhfxCvngI_0aB54vKYzbUDD0rrm0B5x6lKi51zUOufYUwxrIsaEP9VUD
+ 9oeomzNXsCsn2oENkAyK8K85ySDZEhfx.k0qUpVl96RRnfKyVYJ7.0GO..2c0EokP.hs31L45cri
+ mktuETwiVgfklOtr_ApDj_hxkexJdzfxMgBprUnPHRFzDJNmSdMZyIHQXFo9_K4kDzNGL66c0gzj
+ .vHACZ8.89J6bKPRbKG9sDeFkQKhGBChI4WhTDialZWzJBoZAmHV.JQ548tHG0aEVN5jeCsrpUOq
+ PNjv0YzQ6eh6dqruTqlXjq_wmvY3iEmarvJod7yHkKAG90ENeblWf4b8MZ4rErc87wcyc3KgvM39
+ 4nMyQ87EgaWhvJNNBedsXd0r7SVo8oZA0cZwSNUpfxa562tQXsmNH8shttn0iexTwRvvoTsL71UO
+ HuLXgW3O3Kezno0j_
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic311.consmr.mail.sg3.yahoo.com with HTTP; Mon, 4 Mar 2019 16:57:39 +0000
 Received: from 157.40.35.255 (EHLO localhost.localdomain) ([157.40.35.255])
-          by smtp412.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID e46a4c68dd68ecbd736d3473004fc453;
-          Mon, 04 Mar 2019 16:59:03 +0000 (UTC)
+          by smtp430.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 6ac477fa106f9f21964eac499ab7cc8d;
+          Mon, 04 Mar 2019 16:57:39 +0000 (UTC)
 From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 Subject: [PATCH v2] staging: gdm724x: Add brackets around parameter
-Date: Mon,  4 Mar 2019 22:28:53 +0530
-Message-Id: <20190304165853.24844-1-nishka.dasgupta@yahoo.com>
+Date: Mon,  4 Mar 2019 22:27:29 +0530
+Message-Id: <20190304165729.24744-1-nishka.dasgupta@yahoo.com>
 X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -82,7 +82,7 @@ by Checkpatch.
 Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 ---
 Changes in v2:
-- Driver name added to subject line.
+- Add driver name to subject line.
 
  drivers/staging/gdm724x/netlink_k.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
