@@ -1,92 +1,106 @@
 X-GM-THRID: 6664599065309741056
-X-Received: by 2002:a25:50c7:: with SMTP id e190mr570954ybb.37.1551772169092;
-        Mon, 04 Mar 2019 23:49:29 -0800 (PST)
+X-Received: by 2002:a9d:46a:: with SMTP id 97mr12283537otc.4.1551722890894;
+        Mon, 04 Mar 2019 10:08:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:50cb:: with SMTP id e194ls1855141ybb.12.gmail; Mon, 04
- Mar 2019 23:49:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzWa8ksqx0f00vikK5AbgKxuARds7MdLpnm5O8y8pN//HR3hDHxzYNwJ+XlxODv/X7/0M5f
-X-Received: by 2002:a25:3249:: with SMTP id y70mr533264yby.70.1551772168655;
-        Mon, 04 Mar 2019 23:49:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551772168; cv=none;
+Received: by 2002:a9d:5d11:: with SMTP id b17ls7704820oti.8.gmail; Mon, 04 Mar
+ 2019 10:08:10 -0800 (PST)
+X-Received: by 2002:a9d:6753:: with SMTP id w19mr12809147otm.24.1551722890252;
+        Mon, 04 Mar 2019 10:08:10 -0800 (PST)
+Received: by 2002:aca:aa46:0:0:0:0:0 with SMTP id t67msoie;
+        Mon, 4 Mar 2019 10:00:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy5EHT272DhN9ATcNs0F6ehSBFlfB1DgGwWX2AOUkuAEFwVh+gGI8S9ZfKgz0M+BwOpEqoy
+X-Received: by 2002:a63:d04a:: with SMTP id s10mr7732661pgi.141.1551722417801;
+        Mon, 04 Mar 2019 10:00:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551722417; cv=none;
         d=google.com; s=arc-20160816;
-        b=wS1Apm/3lJyNNl1WYqjHwsOOHd18e196YOCPRpz+8L1ZrEHz4eWUR0IBc5WTn7vZUp
-         oMfZSyEpnj0Z9fCZJ3Kd9J2F4pru/fitZXdjfnsQy4SNrtHeHT2/iX2ff5Id/wQibMJf
-         L68YTjsZCI/EUM6CFQaLi0TlC3jL5bhBwAialdVpLnN+v3Ty9MqpR/ZyL75rThkjpHGY
-         4nri5frROwNPlCxLHn2yB041oNoX2Qlbee0W2dnNPFwqmOsLuWykW4GCCW41mxXPO18i
-         QcXVFHh0F2vM8c5E7GwNnwhi7bZcvqVfdEtLtLDBChbQ0K2QKA+XE9CshTFva6nsheyX
-         j6WQ==
+        b=tFhqvGh6jsUUjwTrxEIkPHDMX++2cY7H+Qw1wUkFtYyz9R46dzhJKq3H/VMsKYTbB6
+         lWZJGzcwH2YW058MDFPs4nvOgzfgZfrF54ZNYnwVqm8tD0MySc2DGHX9+HhqbXHVvX65
+         L9mvDc8xoX0LudrVnQrDlBVMh1zC/XLh76+uxg1ic+dmVGuCgYWwueWsMGROr7GM1rEQ
+         5ozg3j8pu23JOzl+D/4z5QrZELrXpdkpBkIZJXRElE51yqjIpPJA+WqnMBNDhYc8p9j+
+         RKRm5SKFybQX0WgEPsIJz9SxI7K00drBlt+J4at6vh7/cM4KgPLXu9xTANmq9gk73nDv
+         I/iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=lDOYZYlhwMfUEzS2/MTtNZNnLWGpqneisbENPuJuizw=;
-        b=L5fr8PXEA9XWxdg12BNMj0krQFfSTn5H1FHITGroidvB/Ewd2FAusZ4DXUxKs3RW9W
-         GCQFrD/+2xg2nkCy3u4NDKxlazFsyTFX4JIfOL9/+LijQkUNj4lDmnphQTAq2XiW6dgo
-         CoT22PxoT5On8dT2axlwBCJ6ZNn2GKoxiQo3QvXyyskq+MzJm4rtDon7cGon4zUAk9Eb
-         zQREXvwsy3pxv6JFD0Z57ZbUpxrcZpSJzoidCUi34OA1bv/gBAbbbMHga4f1fur2G30x
-         TTgotUWPZLjCu6BSo2N/y9Hrp7dpfOSujhGFpoRzzTA8t3fQiBfppuhhcvQ8cvIwbLYw
-         w1Rw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=gsbkSOSJDyJtk8WfcI2cR0pj0ELeHqNsVPnJPHICEfs=;
+        b=PNMJMgGiwkY/irKyOMZz7pbSk56IT4F6XjRy/Xy3sJum7i6qQKSbuEy6ESJafHWji7
+         17qOViW9wO7wd1Gfy6e2GSopME5DVesz8wGCP8umnsopahne+Z6BMsy80BYvIsEOZQn6
+         VS3L1zlnSLljOQKT/U/3fWDmOGtghuOUHHFLXrh8VPDZF4eAwDME58wtsnxbIPQVGZLK
+         8AYwHqiSeQNGV0vU3rsKZxLEaY1a4NEiHi7c7RvEOOKIwIfR/5yQgSEtuY0o3X5FiZSe
+         fK62hdfdXxI5wE4Tb7JYnA0zyaJ6xR7IzCvGkq+WDWy9oUPpQsIvif6AD7KyEcXozIur
+         OWoA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="XPrrc/YP";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k62si385006ybb.4.2019.03.04.23.49.28
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=izadw1Zf;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.140 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic306-20.consmr.mail.sg3.yahoo.com (sonic306-20.consmr.mail.sg3.yahoo.com. [106.10.241.140])
+        by gmr-mx.google.com with ESMTPS id z184si325602pgd.0.2019.03.04.10.00.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 23:49:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 04 Mar 2019 10:00:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.140 as permitted sender) client-ip=106.10.241.140;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="XPrrc/YP";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 487C52082C;
-	Tue,  5 Mar 2019 07:49:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551772167;
-	bh=kg5uZGB8XZdk7cYW2OTP7v06j+mw1OPi3Q8MWVE8QSw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XPrrc/YPlTUaiTu8udX2KcEiGk7ltUuVPFp7D7FpzkvJZeZIfp5Arl5wechCLW03v
-	 8cobph9s5Vp7KHjOQUDVWm84QbgWCw2LEd8MHl5nErHgdKG8TMwnwDoFPK9ev/a7Xw
-	 lcbpYClyZxidpVe9SWrNlehKq1bX53E9j1qQAYxY=
-Date: Tue, 5 Mar 2019 08:49:25 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: octeon-usb: Add brackets around parameter
-Message-ID: <20190305074925.GA6956@kroah.com>
-References: <20190304175954.782-1-nishka.dasgupta@yahoo.com>
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=izadw1Zf;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.140 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1551722415; bh=gsbkSOSJDyJtk8WfcI2cR0pj0ELeHqNsVPnJPHICEfs=; h=From:To:Cc:Subject:Date:From:Subject; b=izadw1Zfeby8+sEaKPRVK8Cv4yvjqX6GMjJlNI7Dq216tGLq/5JOvXcyE4GINvomjF7evss7nzVi8cFKnBh5D15JqbKITGmtRJmuo/hQjItUBl2vTSULi5PkDKP0RxpnoMdDRViRSHDznyRlvNg8aGML7FzNFW0hrdDN/dffVU1VMEYbdbuITLXCAIjT/0Ruu3KfqW18TVd6kW3Vnj8O/aegGR0I2/Q8fuZ0uWk52qerYnlymINM5NU/M34gavx5uYP1YDkhs+ulXBR0AF0HQedvgBRFYDgFyYL/O3ELUMyPNMeKMx1bLwNZ6otFbFzPviVefRLhUZkiZZ45k8quCw==
+X-YMail-OSG: bsuJ7cQVM1mrIKJraLQ2TydxhY8U70oqw0wRM8Joj9Pc8tUJI3psTrd3djw5Tz9
+ X5dk.fwWTdsVnYHKgp7Dmi1p47gx90jo.XQYnEpZcmFJG3sIjjXoPSU2bszEjZ0aFkC_sOZ5X_ML
+ Q58rgvWEs8RwicqB2wUur4e0Ah6z5LAO9r1KvNdjBX1HcUmhq3drNkUs9no7W72MleJRxkqGXKJn
+ gvo1ltjhJc8wY3l_qe1alOP8IqGx7l3KfuJF0fJoXogX6MAeztSDOwxzIKcHSDKTJO9dSu5vM52t
+ TjPeFyOmgV4MPihR9qsBZFjQ_ivjHNcv3jWoZWdxFYPripe2CcYKj7R5X1abDVNVTWAtYQfW3xtq
+ 6poNkM4i9hFDekTn8eVr08X95VzMkKeh9hkpW6ja57HVVhyxX8yjR5QEsdQs5q._NZkSBukM_eQ6
+ FKm9fMGVQDzNlWMg0nYWS4ZS5g.Lf9ZdiBZ2fagTzwLgLvlR.cap0iRhzNTfC8hjfS4B5uGeUzY3
+ zyLkNcmBxyeQDu.ItUvw2veOtnDvokbQ0FSsP4AUNj55xWuPbCalWOsqkNVSByw6_lAnUtdZZ8ee
+ CckyT.XwcXt9a2vQMFYYMa9Xr9RmIzVPC.HTM9fzF896FK9qFXtOw9HGaDeXkgpW6IxaU9j8sbim
+ IYtMVbxYelEjcQiCvlrC29lzU9883Gr19blftWH10ccDR8FsBzZh_EY9yzuHJN17.9K1LU7fH5tM
+ C_yzKV9GgXJ_4LdnJq7tE57ZP1.YP.2FIunfqejPsuyXsPAEIq1v6lkl.R9fLh_7i0Vsubt_ygFf
+ HWa3pZKUzbAcvVT7ux.GFBPjs3zNbXh3QRSjq1C7Z_xoMyksxy7PWrYNK9ET96qURwVHcfKoVOwq
+ LVLe._wRsJ2nmor.c_7jIoh6.BbLMIQEmUOhWDYlndoQRr5Y9A87H_MKdenhDrzv3vQbG__MDUjv
+ si3s_NwSyORN7RfCgwkCFbs2WfwwAHg9e9fgNVrKmLk0Qj7_pytj24H1566SR.agCt4xKKy8zmS6
+ ufwtYoksnP94o4pgtKaEhvl8hK9iLtR440HnDxjA02PDGA5j_H6fHHV2oK49OxV4vLoySyrfPHa2
+ fuznFo_vuHj.y7euyjw--
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic306.consmr.mail.sg3.yahoo.com with HTTP; Mon, 4 Mar 2019 18:00:15 +0000
+Received: from 157.40.35.255 (EHLO localhost.localdomain) ([157.40.35.255])
+          by smtp401.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 7196807b11ec098d0facdb8cde6b3ec9;
+          Mon, 04 Mar 2019 18:00:12 +0000 (UTC)
+From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Subject: [PATCH] staging: octeon-usb: Add brackets around parameter
+Date: Mon,  4 Mar 2019 23:29:54 +0530
+Message-Id: <20190304175954.782-1-nishka.dasgupta@yahoo.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190304175954.782-1-nishka.dasgupta@yahoo.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Content-Transfer-Encoding: 8bit
 
-On Mon, Mar 04, 2019 at 11:29:54PM +0530, Nishka Dasgupta wrote:
-> Add brackets around macro parameter to avoid precedence issues. Issue
-> found by checkpatch.
-> 
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-> ---
->  drivers/staging/octeon-usb/octeon-hcd.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/octeon-usb/octeon-hcd.h b/drivers/staging/octeon-usb/octeon-hcd.h
-> index 0ee74f63fdbf..073d679e292c 100644
-> --- a/drivers/staging/octeon-usb/octeon-hcd.h
-> +++ b/drivers/staging/octeon-usb/octeon-hcd.h
-> @@ -86,9 +86,9 @@
->  #define CVMX_USBNXBID1(bid) (((bid) & 1) * 0x10000000ull)
->  #define CVMX_USBNXBID2(bid) (((bid) & 1) * 0x100000000000ull)
->  
-> -#define CVMX_USBNXREG1(reg, bid) \
-> +#define CVMX_USBNXREG1((reg), bid) \
->  	(CVMX_ADD_IO_SEG(0x0001180068000000ull | reg) + CVMX_USBNXBID1(bid))
-> -#define CVMX_USBNXREG2(reg, bid) \
-> +#define CVMX_USBNXREG2((reg), bid) \
->  	(CVMX_ADD_IO_SEG(0x00016F0000000000ull | reg) + CVMX_USBNXBID2(bid))
+Add brackets around macro parameter to avoid precedence issues. Issue
+found by checkpatch.
 
-Change is not needed :(
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+---
+ drivers/staging/octeon-usb/octeon-hcd.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.h b/drivers/staging/octeon-usb/octeon-hcd.h
+index 0ee74f63fdbf..073d679e292c 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.h
++++ b/drivers/staging/octeon-usb/octeon-hcd.h
+@@ -86,9 +86,9 @@
+ #define CVMX_USBNXBID1(bid) (((bid) & 1) * 0x10000000ull)
+ #define CVMX_USBNXBID2(bid) (((bid) & 1) * 0x100000000000ull)
+ 
+-#define CVMX_USBNXREG1(reg, bid) \
++#define CVMX_USBNXREG1((reg), bid) \
+ 	(CVMX_ADD_IO_SEG(0x0001180068000000ull | reg) + CVMX_USBNXBID1(bid))
+-#define CVMX_USBNXREG2(reg, bid) \
++#define CVMX_USBNXREG2((reg), bid) \
+ 	(CVMX_ADD_IO_SEG(0x00016F0000000000ull | reg) + CVMX_USBNXBID2(bid))
+ 
+ #define CVMX_USBNX_CLK_CTL(bid)		CVMX_USBNXREG1(0x10, bid)
+-- 
+2.19.1
 
 
