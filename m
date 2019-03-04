@@ -1,112 +1,118 @@
-X-GM-THRID: 6801919650078654464
-X-Received: by 2002:ab0:2ea9:: with SMTP id y9mr7069937uay.42.1583695330512;
-        Sun, 08 Mar 2020 12:22:10 -0700 (PDT)
+X-GM-THRID: 6663863789016842240
+X-Received: by 2002:a81:4fcc:: with SMTP id d195mr10092910ywb.4.1551728775415;
+        Mon, 04 Mar 2019 11:46:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:2096:: with SMTP id g144ls78034vkg.7.gmail; Sun, 08 Mar
- 2020 12:22:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt1mvuOrmPEWY44tAK125fP+6UlpQgrt922P/rg1VC2AJS6llXDnJ3dVbU3cpQgNDgwbiIE
-X-Received: by 2002:a1f:45cd:: with SMTP id s196mr3110690vka.102.1583695328720;
-        Sun, 08 Mar 2020 12:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583695328; cv=none;
+Received: by 2002:a25:2304:: with SMTP id j4ls1320105ybj.5.gmail; Mon, 04 Mar
+ 2019 11:46:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwuRGLMzCb5qNViclUiwViddNsjPEvUCcwEgMnf1JDYBS1ir/2jwivipN12kCs/YmqR0Yfh
+X-Received: by 2002:a25:e642:: with SMTP id d63mr11039821ybh.53.1551728774731;
+        Mon, 04 Mar 2019 11:46:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551728774; cv=none;
         d=google.com; s=arc-20160816;
-        b=E7qAy1CaqG8/J1AxFiGxL4DsnP/V+e9IG4q0h6wdNWXCLPzDg5fwWh+YPzQL+CyLNE
-         XNkW58VhhLr9oQBTipeZxWMOXMS+tt0Faf9vtgLVcTmPLSaxo30JLrdh+pHPJ7s08Bk+
-         a5VHMr9N3rfNqvUMc2fHYE0F4ysfNPdxVtRULgpQasTUqubZsSZ5zveJuEFDDxq8jlvg
-         YVKxvtnao/9xKj31l4xg4Oj5Pa5E8nUepCHrIwa3NcLNqNXc93PnYYguH+nkgFyTD4FM
-         BBC97MnE7GACCChWtGK+hO+D+q27UUKOmfrRR0zP06X4wxs51Us9W0yQadeM/uD0CDMO
-         iAjg==
+        b=b+3guKORUM1veXQ5Fx5uUCAuMbMbrNUMPN/OY7itDPZq4gfTdZR9zH7mVDv2L9QRwj
+         k1gy0vLvmQ14o6PpB9fkt59B9SyGLev6FRu7gATO8kyJqpOoCWmd/w+kwAzkGdbJ39Rq
+         f7vFUvhlzMcHBMV+OKLbArFOFC4H5nbK2SQXrZmvvNaDRu7oEPT0HlzqN4wOo7u8rgpu
+         totRWnrkyGhHuGh/e15rzxfoLA3MIuZPR9TLFoNtOSJNZvoTkMoA5pDpIY6KPQ0e5kr5
+         +bjUqOT+/sUe3VeToZLzwvU2SEVSZKFxzRI1IYu7v/a9/GYL1THN9p4eGeQgUULu6RPg
+         nYaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=CHPt46wsL19wRxnDRWINkgudvnaGkseqZPfxEjONV8o=;
-        b=z+QCygRuEvYLqRmsBRcE/GvocotMEJpC9v5DAAqrrgMowDZ7pUE9R+PRaXV1EwYB9s
-         T7f8+AyainVhW2F54h7+Q/eDEeqUQkgnlJkNam/JLCvNIumUfodDEWlfAu3HBY9a6s/c
-         N9z9IyV7+nsPcglkiYQ+rlOsVzUvLBqNWz/HnzWu1jgubgmHR2Emf0ZZ6/3zzKp2x8qi
-         V72X65s3eaoXx5U3vzsENikTV2t+JB8ryW2VajUWBQVp53clknPorTTHHq6OuAqN+LMS
-         wh46vg2eZNEHrvTM2QbtFvhjmEb/MIMlx7bPrpv65FzGQk8QyJjJy3CaU6C7n0jIL99/
-         Y4ag==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=BZmjW7Bnsy4tu8qvPb/CzLDsojVcHwMgkNf/80UtAfY=;
+        b=TUodUhp8q0Uv/6/WeSlFgGEkdceW0UxKzF+w4u7uk8dcJUCU8Hz9xG6/eCi+uTgS2/
+         TScXT+mfHAOZg4SBJ2t3Ad5Va6amVqR1JObTo/6SLzDG1RF91FG/OAzNF8dX8WbBnBYR
+         QiFNY/utsWO4gJ5I/w4AV3xiCdAsb3rNzguR87KpG9be37sgu6CLwyRAiHKyHNaQSiL6
+         U7m0bePu9xyXclKYuUH9PcTEmUTkGC3RDexD32yHzqg3pPYi3ALho4/TkZ2+pT4d7/8q
+         RdmOkH2V1jQixQR3JYthpEd/1rYLHv7dTJHeD5JdXtICclzuNpN02C1RRxbzhBkaknKq
+         XoLw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qYm3VcqX;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ug+lb4QP;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::234 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
-        by gmr-mx.google.com with ESMTPS id l24si70767vka.5.2020.03.08.12.22.08
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x234.google.com (mail-oi1-x234.google.com. [2607:f8b0:4864:20::234])
+        by gmr-mx.google.com with ESMTPS id t128si311160ywa.4.2019.03.04.11.46.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 08 Mar 2020 12:22:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 04 Mar 2019 11:46:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::234 as permitted sender) client-ip=2607:f8b0:4864:20::234;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qYm3VcqX;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ug+lb4QP;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::234 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x642.google.com with SMTP id f8so3076185plt.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 12:22:08 -0700 (PDT)
+Received: by mail-oi1-x234.google.com with SMTP id j10so4821885oij.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 11:46:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id;
-        bh=CHPt46wsL19wRxnDRWINkgudvnaGkseqZPfxEjONV8o=;
-        b=qYm3VcqXfjE+ASqxyrrUExTc/0TgxqnlC3o+J2cpfIsm3q9byi/yC0npQtxR9dAk+s
-         1mzKYSvWwPsweZiIV1dgkuk5F5qhaMldW4sA8Xi65wSuOgHlcLoKNDfYvRpY5wxZOecI
-         yc4ffsS5KXe34PBpE1M+ZfUtGh3Obq3y26g+nxA46NQLeY08vd0DG4sNYVSjUjxIGmwI
-         wr9itJUheZpQsiLzFZWFixH894oyiy12DSfxQmrjOujwJ+hiG0fwahUqicgP8rkFtQ8x
-         9Cwl5W1I0X8KQLTqoDtorF5B9iC62i4gsvZF4WQh7MsB8kmJHBwI5GYulq1cnZondrQt
-         Vy8Q==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=BZmjW7Bnsy4tu8qvPb/CzLDsojVcHwMgkNf/80UtAfY=;
+        b=Ug+lb4QPEBmuzULWLkmZ37V3FhTl37SvUwiPzlZ8Q/UPqmhNidFOWKgL0yf01Ib7l7
+         YKYeFp5Ic8xBvwlRSXZeC3rw0i9itniOR5djaqB8YmOjsQr3hfX9YYjWSljHQLoRkhsc
+         Fm3nldrsWkpImLXFwLwrej1n95Ow3EWbQXeryh3sBApZftZvtr6Vv5rWTfsfZ0anBpw6
+         KIBctUI4Dy0fp1Yfk9gQtidPCaOwrlkgpb63aa+tZaWFW5ndbgxmemlaZr29PTiUwoMi
+         5V/JI3f79VVybfptByuFeFTOhusKukI8asndrdU4aRxcav/KrkxQsDj/vrx2JFc+t8DW
+         h9sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=CHPt46wsL19wRxnDRWINkgudvnaGkseqZPfxEjONV8o=;
-        b=JMqyViE9AnJ500FtOPOuH8hxiwr1qGRoMjG6vsgahnJMvjhYZdlRfH6mi/98kUwMHh
-         jn1aLNRBbBgfBswGrH9dh0tDkKhlO1gT4wsLioX3DO5sSqnrdlIyJKuogKvkf5skf4u0
-         KPIPjg70fZjpx3EnK0iOTOwlIuoDQ7xc04gDmFWquBddNReQGLr23nYuDXG2DBdq8Ucl
-         fJOHbY6rDztHGKnwFY0E1IsColTS9qtH0xcWbE3K+SyPQK0wdw3HBklf8KEA89+bbEg3
-         YkdV7ZDgVMyoNDVIQfO0w7ilnvt4EG7uSrh748P/ydJiU/YwzskCGQnCZNcd4vDF0sgh
-         qiaA==
-X-Gm-Message-State: ANhLgQ1aS6263IR9UYSmTCTLmM/7MOqeCZSKIwf1uPhKlZhoNaQ31W+N
-	8lnNMX6c8tnZQDPcSkhk/jY=
-X-Received: by 2002:a17:902:6b86:: with SMTP id p6mr12834064plk.315.1583695327755;
-        Sun, 08 Mar 2020 12:22:07 -0700 (PDT)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from localhost.localdomain ([1.23.250.201])
-        by smtp.gmail.com with ESMTPSA id q12sm42157418pfh.158.2020.03.08.12.22.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 08 Mar 2020 12:22:07 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: Larry.Finger@lwfinger.net,
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=BZmjW7Bnsy4tu8qvPb/CzLDsojVcHwMgkNf/80UtAfY=;
+        b=rlKuH3x24q4AXE8jUpCqQQ5It1w2Was3UKzdpDnzmP6p0B8uSKD/9AiLMFcNCVJaCA
+         PhPWLxIIyZ+ELSAuoXH5POvwzvkIuy99sQrbPFEprzjkKi3kcBxGSMOkopQJjX7LWTHu
+         3gmEcEBvYMmXWhsUZpda0fKyXfuKw0LHiie5VG8XnFMFs7F5gVW9nS0N2sm8JzsYprlt
+         7fuTgsp6S8FpRpAAhlLoGdj3Uisu4KstfMpLx2K8btCoNQJgZNh4WfHqyCamJJUf68hF
+         5cts6MzQ+smhpMFaE8XKVXFvXduecOV6qeMtWS2Qq33diYgobdDrQPQwvhhE96LhDH6q
+         WXww==
+X-Gm-Message-State: AHQUAubIbUuJvmC9g6QNax/0wCM6+eNO4grM3e0rHqe30AkQO7q3lN/2
+	gkCUgppFFMetIZZe8Duvnc4=
+X-Received: by 2002:aca:e612:: with SMTP id d18mr13679457oih.52.1551728774431;
+        Mon, 04 Mar 2019 11:46:14 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id u24sm2841099otj.44.2019.03.04.11.46.13
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Mar 2019 11:46:13 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
 	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	sbrivio@redhat.com,
-	daniel.baluta@gmail.com,
-	nramas@linux.microsoft.com,
-	hverkuil@xs4all.nl,
-	shreeya.patel23498@gmail.com
-Subject: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Add space around operator
-Date: Mon,  9 Mar 2020 00:51:52 +0530
-Message-Id: <20200308192152.26403-1-shreeya.patel23498@gmail.com>
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH v6 2/2] Staging: vt6655: desc.h: Fix comment style of SPDX-License Identifier
+Date: Mon,  4 Mar 2019 13:45:56 -0600
+Message-Id: <fe25000bd4e41085fe4c917f43daf413401ec84b.1551727866.git.madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1551727866.git.madhumithabiw@gmail.com>
+References: <cover.1551718323.git.madhumithabiw@gmail.com>
+ <cover.1551727866.git.madhumithabiw@gmail.com>
+In-Reply-To: <cover.1551727866.git.madhumithabiw@gmail.com>
+References: <cover.1551727866.git.madhumithabiw@gmail.com>
 
-Add space around & operator for improving the code
-readability.
+Fix comment style of SPDX License Identifier for header file based on
+License Identifier syntax.
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+
 ---
- drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +-
+Change in v6:
+- Included changelog below Signed-off-by
+
+Change in v5:
+- Edited subject line
+---
+ drivers/staging/vt6655/desc.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index e764436e120f..8da955e8343b 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -924,7 +924,7 @@ static void rtw_joinbss_update_network(struct adapter *padapter, struct wlan_net
- 	/* update fw_state will clr _FW_UNDER_LINKING here indirectly */
- 	switch (pnetwork->network.InfrastructureMode) {
- 	case Ndis802_11Infrastructure:
--		if (pmlmepriv->fw_state&WIFI_UNDER_WPS)
-+		if (pmlmepriv->fw_state & WIFI_UNDER_WPS)
- 			pmlmepriv->fw_state = WIFI_STATION_STATE|WIFI_UNDER_WPS;
- 		else
- 			pmlmepriv->fw_state = WIFI_STATION_STATE;
+diff --git a/drivers/staging/vt6655/desc.h b/drivers/staging/vt6655/desc.h
+index b4a0037b40c1..d4572847b08a 100644
+--- a/drivers/staging/vt6655/desc.h
++++ b/drivers/staging/vt6655/desc.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++/* SPDX-License-Identifier: GPL-2.0+ */
+ /*
+  * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
+  * All rights reserved.
 -- 
 2.17.1
 
