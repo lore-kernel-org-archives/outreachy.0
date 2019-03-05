@@ -1,103 +1,114 @@
 X-GM-THRID: 6663618170330284032
-X-Received: by 2002:a24:2ed2:: with SMTP id i201mr2001644ita.3.1551772358631;
-        Mon, 04 Mar 2019 23:52:38 -0800 (PST)
+X-Received: by 2002:a9d:735a:: with SMTP id l26mr12600983otk.51.1551745466637;
+        Mon, 04 Mar 2019 16:24:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:911:: with SMTP id 17ls611027itm.5.gmail; Mon, 04 Mar
- 2019 23:52:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxU2Lo2YQqpqn3en8aCtI9C/TDdXPM2clI/X+bRJPNQ0N/l11Xnf9Ckm5ev+g2sHvPw3GiE
-X-Received: by 2002:a24:6241:: with SMTP id d62mr1892473itc.18.1551772357913;
-        Mon, 04 Mar 2019 23:52:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551772357; cv=none;
+Received: by 2002:aca:3189:: with SMTP id x131ls333617oix.2.gmail; Mon, 04 Mar
+ 2019 16:24:26 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyDt3UrH67YQwHunlBjIBDAlsrqdV6/HCaVtjqOF+mmhnZaJGCywxQ3wHJ85xLA70RsQBDg
+X-Received: by 2002:aca:4911:: with SMTP id w17mr13586214oia.5.1551745466025;
+        Mon, 04 Mar 2019 16:24:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551745466; cv=none;
         d=google.com; s=arc-20160816;
-        b=nqH3XZneHiiD6o3+dbDqF0hBJmaz4C2cSjTsCmmC41UzRcVA3vcTncNWy1IClzrezw
-         W46r+FtFJ+9zvzD7F72qdCJ7JduhQx/cfSjiXFhpQTJ/M1jxKze6Q5F589ohKdzKqjiq
-         cXPYFX6M5u5ZA/PIyxPvU5BXzZb3pFnpRcW357i7Sn61BtWm07CucWHkrTiJulhGprtF
-         xo0GAA43Jpc+nJmgUwau0kVb93Wg5tljSTe015PuPVcEFwO72Lkd0nlHNUXGYsYfV5vq
-         dO3sRd2w1UcfE7j/mMh0q2CRJ8tPf1lRRzPP8VZlHckYynWDNI/vYIRYKh/Y3Bj00+vQ
-         /Zyg==
+        b=u4H22AG8+dnGy6Dad7E22rrjlGYR9ycLf/wTIdpSAl8+GBsBUmY6EiYJQTImQd3MJn
+         WLd1swhUmroQ4pIOws2LZgy72vB9oxpwExEF44VfeWOPCG2FUKIb9ciFDKE0OHUIwqbu
+         GYR4FIL3odD1cJBTnkJAz7IPj1dBYNU+LDl6WKYZ5bCjn7Am7f2G8ebwYRW3JFdWCzsM
+         t7R8cmCxnGLt7gJYC/HtXOye18Udh7MnwzdOvDZTvubDuRPMQNKB3zFH1bY5GO6PlEnf
+         lfamVhGp9D5ZN9cT2zDSc8VQyJB1A4YTu6Kl7Rcb+6pXPLnd0Qo5agPB3nutUp9SJmBL
+         ofIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=I0ZRojNPgnzgcBklbRFsiUvPZQwWhIiabFywHMFEG34=;
-        b=fPWMYXycmFV4ShnuUgYfK5ZnDnD5dEEbQHbgwZe9RW7W3NhIDAqsL/8e2l3CO/HY3R
-         0xuIb+bVuknFKmOpooTKzTSFYXUKr1wzvQ2QdOnBT3peojJt58Ih3zFdS/B8VdK1CGCf
-         25mQ+EOZEO+ZFq3X/fSMg+NSoAC/GsrkDBEkIRtPPk4vbenzvmC7OLOcAwpp1FtYTD4h
-         GOnnI6dY/4laV+bEYw/j4IBUhVByCWDvKYhTGJCF7fqO+dljBtVgsdmkQv16pRplNbFd
-         6tLP8GYMwjRPfQrucH2A0LwgB8DHWkj0GuIi3gORXUUinZCEcZ09eTjH1lQiZGmjxd2S
-         mseQ==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=h0kTcG1C3nCyH6BFVXDI0Agz09VGpFy0x/kjpnAvEzk=;
+        b=czSAUTEBLeAHhFnIra8ObxBAz+gfebAG/clcdgOCDn1YWgx/dS5goly1MFCxDVgmAU
+         PiAXbwtHgggAkOvP04FoL4x+o04aoDTRrGo/09ot89KDoy9I/WcKhcQenKt50WvKds8Z
+         +VzNc3kREpZ4QRwRg1V7WuPHBUueT0Cn9524n1eWWtgnyGpS8ExlgEYcS3fSNb9ex8cJ
+         35v1In7cB0/e+Y5nB1r0x75kb3OQKxdi2H4l6conUIdVMYPOPEq93AjVqoM8OUXIISFR
+         4yhQvAsutDcPuYNLi4iVizXtOcq/iyIBBxj0BBgAfvM4fFay7pPNHECn2K1vDsIcJAAB
+         +DcA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="AN/H5y4r";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id y7si524423iof.5.2019.03.04.23.52.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LmGP0pas;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x334.google.com (mail-ot1-x334.google.com. [2607:f8b0:4864:20::334])
+        by gmr-mx.google.com with ESMTPS id l6si529752otn.5.2019.03.04.16.24.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 23:52:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 04 Mar 2019 16:24:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) client-ip=2607:f8b0:4864:20::334;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="AN/H5y4r";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id A25F22082C;
-	Tue,  5 Mar 2019 07:52:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551772357;
-	bh=0CXrBcof+xZEqq6xTNX/w2Nl2Jk2h3naNZOW2Rcy2Ko=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AN/H5y4rAmVhJRyDAgWsQrj1AuTjyn1ML4YTOIX+Aw34p14NXU/AULiC12KA/Gl+c
-	 3nC96ceTarDPAtkk0MJDBIX23dbgl9V/tykRF6164dBGFWyGItTOFAXrht3kj72ZP4
-	 PxSYjTYDr4n6StzxmGv97by1nU4adNDOHryjHPSE=
-Date: Tue, 5 Mar 2019 08:52:34 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/5] Staging: vt6655: Fix warning
- about preprocessor conditionals
-Message-ID: <20190305075234.GD6956@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LmGP0pas;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x334.google.com with SMTP id v62so5921773otb.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Mar 2019 16:24:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=h0kTcG1C3nCyH6BFVXDI0Agz09VGpFy0x/kjpnAvEzk=;
+        b=LmGP0pasXAzYhoItOzKW3savoTYs748VwTkpEPrgj/tG/92LaESp6odaowVNVQA+v7
+         N6D/KrUES10pQc5VAmS6q3O8R3wO6kGvUqZhB7c83UJgNF3bvFYqyZb5mGKvVJj8PZFY
+         pfsnaXJpqcSht7xbzm6OMEKjzfdFrz9rYE8SOUUncR8cuhYGdRIQN9pogK5GbFtxvyF6
+         VvQPG73jeGV4sES3iNVz/rXIi/pzKwyrbDDchsHAMLcN3O8U5y7Hw4youds6XiKOTgyC
+         jAlcGvDmRl6DK+2/AuixGilZN7jVbX+2Sz6xaiPwNiP91GoyJI72QKIzF5YVnxYQ76FX
+         zHTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=h0kTcG1C3nCyH6BFVXDI0Agz09VGpFy0x/kjpnAvEzk=;
+        b=aR0FvWzqMHH4i1HPqLFlto1ivLy5Y9YgoLkwdtAKW4ycdbmhz3Rnlfx3JJ0UvEjFFB
+         4ucBmHCVxX8NWRMt563mo/9T/jbfgAQe6hiXsQfnB9d5x0RCk7/pdsdIomKNHBPE699N
+         RxAqRxHhY8/5cSNVTcWt0eveevXAtA9EyieOUto5eus92F3vjj7rgewamnhgxqmi4hYr
+         3MORmzXn9Qi75GK1ohu+CALqzvBCDpn7sstT060o5f5XGN3gtoAJ4I6Na6BsDwWVDnIV
+         U6+9e0USC36DMnsoMqvjZcQloVLSntarp7WdIZD5UTxE5fv6H58CFvQd6k3GDo7cS0Ft
+         My7Q==
+X-Gm-Message-State: APjAAAXt9b4O7pgPSkS04h+4mAae5UsnG0nSNibRNzzyMCfSWw10CrjF
+	j9hQJK3VroPo9qYOMnPW7I4MigTVfDE=
+X-Received: by 2002:a9d:7986:: with SMTP id h6mr14782298otm.88.1551745465780;
+        Mon, 04 Mar 2019 16:24:25 -0800 (PST)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
+        by smtp.gmail.com with ESMTPSA id s21sm3421136ois.2.2019.03.04.16.24.24
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Mar 2019 16:24:25 -0800 (PST)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH 5/5] Staging: vt6655: Fix space around binary operator
+Date: Mon,  4 Mar 2019 18:24:03 -0600
+Message-Id: <14e333a7c15e2335ddf48b0ec5fbcb2519b51a9d.1551745071.git.madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1551745071.git.madhumithabiw@gmail.com>
 References: <cover.1551745071.git.madhumithabiw@gmail.com>
- <478765abb9c231a9eda7ccf35e243017f074bae7.1551745071.git.madhumithabiw@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <478765abb9c231a9eda7ccf35e243017f074bae7.1551745071.git.madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+In-Reply-To: <cover.1551745071.git.madhumithabiw@gmail.com>
+References: <cover.1551745071.git.madhumithabiw@gmail.com>
 
-On Mon, Mar 04, 2019 at 06:24:01PM -0600, Madhumitha Prabakaran wrote:
-> Fix the warning by removing code between #if and #endif, as coding style
-> say the compiler will constant-fold the conditional away and include or
-> exclude the block of code as with an endif.
-> 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
->  drivers/staging/vt6655/power.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/staging/vt6655/power.c b/drivers/staging/vt6655/power.c
-> index d6c581b31569..c2a7c120a94d 100644
-> --- a/drivers/staging/vt6655/power.c
-> +++ b/drivers/staging/vt6655/power.c
-> @@ -64,7 +64,6 @@ PSvEnablePowerSaving(
->  	} else {
->  		/* set ATIM Window */
->  #if 0 /* TODO atim window */
-> -		MACvWriteATIMW(priv->PortOffset, pMgmt->wCurrATIMWindow);
->  #endif
->  	}
->  	/* Set AutoSleep */
+Fix the check as per Linux kernel style for use of spaces
+CHECK: spaces preferred around that '-'
 
-When you removed this line, you then ended up with:
-	#if 0
-	#endif
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/vt6655/rf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-which does not make much sense :)
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index 825b6ab5c0de..fd09b9771cf5 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -792,7 +792,7 @@ bool RFbSetPower(
+ 			byDec = byPwr + 10;
+ 
+ 		if (byDec >= priv->byMaxPwrLevel)
+-			byDec = priv->byMaxPwrLevel-1;
++			byDec = priv->byMaxPwrLevel - 1;
+ 
+ 		byPwr = byDec;
+ 		break;
+-- 
+2.17.1
 
-As this is a "TODO" item, I would just leave this alone for now.
-Hopefully someone will fix this correctly in the future.
-
-thanks,
-
-greg k-h
 
