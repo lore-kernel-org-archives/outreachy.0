@@ -1,110 +1,154 @@
-X-GM-THRID: 6526226538878205952
-X-Received: by 10.55.27.27 with SMTP id b27mr4320562qkb.53.1519505525163;
-        Sat, 24 Feb 2018 12:52:05 -0800 (PST)
+X-GM-THRID: 6664864545484308480
+X-Received: by 2002:adf:822f:: with SMTP id 44mr1289258wrb.2.1551784701724;
+        Tue, 05 Mar 2019 03:18:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.237.47.196 with SMTP id m62ls5654220qtd.7.gmail; Sat, 24 Feb
- 2018 12:52:03 -0800 (PST)
-X-Google-Smtp-Source: AG47ELupwp98Jd0Wg4SnQIl3iYwzxTV8eseMVq9RQ2eYctX6wm/Wd9FkiaGSx3iVDqS/J6OvbnEU
-X-Received: by 10.237.58.98 with SMTP id n89mr4431881qte.41.1519505523703;
-        Sat, 24 Feb 2018 12:52:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519505523; cv=none;
+Received: by 2002:a5d:400e:: with SMTP id n14ls2151276wrp.16.gmail; Tue, 05
+ Mar 2019 03:18:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzMzB/Y4juRWvQe1frPkIUEH6Vv3wsVLR2aO7rCACVmrRDv/eOb5XFgpD3p3kOdr6qGJ1sK
+X-Received: by 2002:adf:ee01:: with SMTP id y1mr1287274wrn.10.1551784700959;
+        Tue, 05 Mar 2019 03:18:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551784700; cv=none;
         d=google.com; s=arc-20160816;
-        b=FIX32BnoZhnztyj10Yik6Tv29kWQ6hZq1k9f8e684lNooXCZQ3xjgxP54udVwnP70Y
-         NelgaZuALVTwxG8iTznWjAbPRu1kmZGxo5aXlcR+ghZPSE4IhZXLlbYzkEViMWZFdN9d
-         DuqTWT99Luor+6rW4XzHsGBrrw0gyJgp3gEhxbUDZrUl/Uvs5Iur+mECl19/JPw0vzSQ
-         vKt0uUU5Cx5B1NaVm8Dx3H/aUaA+sgEcBWP0qdGB7K/Xp486fVCISjyi8hOi0vQlCeTi
-         cl1yI8GKJQqN/Iu7cDShoU0aoVGuBdjLehd3CKuf1t6UVOTSHgYNiIsSCof9w0HyVkIn
-         de1Q==
+        b=BDeL4updnpJ0ZKolUU5ZvpoKiyYA8fVB5+maSdtHMA42OekxyfAkUkwPCHT8ycX0Y3
+         8B8BIHCWoNdEPshQnsrzt/c7PINLulImXmpbWUbMi/gsKAXQh/Bih3WYknoqqvGBAky3
+         2QQkRln8YFxyoQ4+u0OY44uHK0L1Hrz3CslWnj2/emiKVTsSVseWahvk1i7zXIKUwmDO
+         8IasOlnznqOuRx9Mwkp3eM0Kud5JirFKpO0Otwy+qfrAjE6xVZ3XgJe+OYz/XOxPSfa9
+         NDN9V9tsL0ZHb9Wgqojw3B2jtGHnOuU+c1EW7vUQGEfvWMr8ehi0Eo/Ah/x57odlI0Gm
+         z5Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=SUXY5F1bwzMnQHRyJPyN988/fqtco7H/29NVciayIHk=;
-        b=Oh5we1IwEBimvkbtbXtOWY8Vz8JSo+0EYn8uB2KyRvfNoSyGL2HMDUlGHWxzKtGv1D
-         qeAXM5OMCVL5l7Kk9+a2M+ZilWMZF6RWKW0d+ijItAIOsL5ELvUFZ8wBJhCiuIn8Nf6h
-         w+fUGZ0BHWj9WrZcDUpK843R5EEQdpLJwGf7ZrRvYokF4gRK52QEbX44eA56MOurPJqO
-         gbNNkYxT6PetSX6wxgB8LTJSz1yzomp5u0VjYgJY2Cm59R1BmG0HHEhmKIA+PgQvaUV9
-         /saevT8dgeCWtNWzhh4ls2kJ21qDfmYMbFGOF/U3gy8fYPQrIeKzCWwOIQFXPSZL4s9J
-         zFwg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=kIQhEfJeRhyQF8uWOQdcuT9T5nTru9fGcGPs3w8OsL0=;
+        b=fqLqSYcpKSRjpz4qkHVA3BYHkjxZb8HFs3ydztNpi+wZUipMqX7DQr8MMT7kLPtqs5
+         Yw9WukYSdaO2saNbizpyAZUyODPCK/MYdEyf3BHPVhFDtk7/v4ck+Disjxsgyen15+yK
+         uXb7Wk1hAoNi4q9C60Hwjm85zbw/jQ2ivaNjXf3yVhdL+nBFdzmLvEFOa+XKqNnd+ig6
+         eUITloT/U2oejBVi8ETQa2jNrcU4e/AEGuTUp6pKScx/fw1BI1rthMv97arUZgQq5LIz
+         IMaLy0/rdabvk3cZbXB1Uv2mVIT+Z8ca0s6RX7RaLkx6tx8PY/vyV8JGMN8l1TywgYPR
+         cuDw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kOibNSnL;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q+6cp5oW;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id k9si250035qti.5.2018.02.24.12.52.03
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id 60si295267wra.3.2019.03.05.03.18.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Feb 2018 12:52:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Tue, 05 Mar 2019 03:18:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kOibNSnL;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q+6cp5oW;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id g12so4701152pgs.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Feb 2018 12:52:03 -0800 (PST)
+Received: by mail-wr1-x441.google.com with SMTP id q1so9016995wrp.7
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 03:18:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=SUXY5F1bwzMnQHRyJPyN988/fqtco7H/29NVciayIHk=;
-        b=kOibNSnLW2HsRTDQ6CthZ6w+2Dz8/VPMub4QJxb8gydw6Gi6gVPyylUd/Bm9hEcfQ4
-         37XqOHA7z4AZvWx/8tE0G7m0klGsTOQnBNjC5qIyHzlo2aPajfDIrbRezVw8IK5sn2k2
-         8Kx7jOfgs0by8+6G3MXihrbg745aq/9RfyeovPwL9hU2WgxCpP4k6LwFHkyyJk4mCRlB
-         lDImkoiFT5jFVtwBt4JazWNz4MS7PvXrHm7HJ32xOLE9s3lPld9TdykaYu6u1IFaaKgS
-         j3482hln0lYX5mrz7NAFuVg6f/yXIoTL/IRjb/RDauTuE/skOyieL/vCxzA5DkbyZNJD
-         L1gA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=kIQhEfJeRhyQF8uWOQdcuT9T5nTru9fGcGPs3w8OsL0=;
+        b=Q+6cp5oWx3+R8wrEecd1OHNj8VxYckCrrdu9BUd8Orp/oxZ6i0d7bbwyleYPyOSaXz
+         ZvMVn+qJXic5ixATnAErBS00cKXkeJPTmiM0GQVVuZkaNyuvJYnyhPsnB74/sh5ZNvGG
+         is+eLIpkVHoZlud9AUvPbIlYM6yXIrKUz4QGRZtUiE9lyyA+zRLefL8EVsLKioLa2e/V
+         LoGPNzeKwnomH5VzeBEeAwqkI5lAOlVT9vWCN5NmGxfbREEqwb23V15zjt3Ngi7Ka/dI
+         8w8tmI37RKcbb4PAAvSO/PoYSYl3azrDrECItpR8mZo4fry+SVU/+WYbxWDo1jJzL26m
+         gMUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=SUXY5F1bwzMnQHRyJPyN988/fqtco7H/29NVciayIHk=;
-        b=eZSERyhR+wizFgqARbW4w/leP9hEiUrooxVWvmVRt6JeoxZOQs/fJcSfOoO91oZu2Z
-         HbIM6w14jCLWvqOEkYV1g37xv8VcL+5a2gnlggJHJ6aThTlSZplc68e7Fwtg7/oy6Lip
-         w8ikJ2/e1SkAkX3nKpSTEBPsuXdRTwm2e4VIl6WEN3tIauwkbeiMsnE+PKpssRP5m8qt
-         txILgmpEGhUbUTXTN2RNyHoOkT/NFeU5K0vW8XQGIHnYFVOMCCDiTP5a1LUWWS2voGuk
-         HMnJNUs3oyJMru1YGl6hhZbBKr6mvKV7MJbov700nKbuMNV6ad7nF720QfxVVsbsMekY
-         2oRQ==
-X-Gm-Message-State: APf1xPDJJBdxdg3lYhk8d1ez4Ed4B13IGnTUi2VN+MchYw7G1YT/NxKY
-	Xb7zrUCdrTjSxC4yv4vvfpgF4Q==
-X-Received: by 10.98.233.21 with SMTP id j21mr5828198pfh.123.1519505522816;
-        Sat, 24 Feb 2018 12:52:02 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id f12sm11122854pfe.155.2018.02.24.12.52.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Feb 2018 12:52:01 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: garsilva@embeddedor.com,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH v2] staging: use structure pointer to get the size of the structure
-Date: Sat, 24 Feb 2018 12:51:56 -0800
-Message-Id: <1519505516-10389-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=kIQhEfJeRhyQF8uWOQdcuT9T5nTru9fGcGPs3w8OsL0=;
+        b=Qe1sLLlAsuIJSyq+rcisrxGOM5ypyX+ah7yCxv+XRSkKdFpzmauDvWlIZvrJeWBbFD
+         60T5oWpwfKBVN66pynxtlxIuR5RgTfIhcbf129hsI44nrQszyNwgKBHzqlHK5LADzShL
+         R8/G3NCEeSyQt6JKdfZkn9yxQKbT+7jAY7cPrp/pvSkqcEwXTdeWW5aeff8PL0dXcHRH
+         Mtv8uSeVRo+9nYTrTmWznELKD3FUA1OivIZ7DW23DmUO/RCwzzSP56fiE9zCAbUt0MPK
+         6pWVk2NLc3EtGqZBLHe3H8o5UiK81WjOMTBPGzEcsIvwL6WcP54FtrBbSCf32JxYqM7b
+         DfOQ==
+X-Gm-Message-State: APjAAAWJn9whFujEhODj8ZQPpChishPuK+Q8B6Gyniko6d/Y9ddts/FR
+	i9OeoISKHM9dYfm0V6sXbDdLSk0u
+X-Received: by 2002:a5d:620f:: with SMTP id y15mr15072332wru.101.1551784700347;
+        Tue, 05 Mar 2019 03:18:20 -0800 (PST)
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from pthm ([2a02:2f0a:b600:4700:9c19:34c6:5e3b:e162])
+        by smtp.gmail.com with ESMTPSA id d2sm9939849wrq.94.2019.03.05.03.18.19
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 05 Mar 2019 03:18:19 -0800 (PST)
+Date: Tue, 5 Mar 2019 13:18:18 +0200
+From: Daniela Mormocea <daniela.mormocea@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: ralink-gdma: Avoid unnecessary line continuations
+ in string
+Message-ID: <20190305111818.GA16216@pthm>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Use pointer to the structure to get the size of the structure. Issue
-found using checkpatch.
+Fix split string in multiple lines
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
 ---
-Change in v2:
- - Use single line when the number of characters is less than 80
- drivers/staging/rtl8192e/rtllib_wx.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/ralink-gdma/ralink-gdma.c | 39 +++++++++++++++----------------
+ 1 file changed, 19 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 03fbff0..74d4d2d 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -371,8 +371,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 		struct lib80211_crypt_data *new_crypt;
+diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
+index 7dada05..a43d9b8 100644
+--- a/drivers/staging/ralink-gdma/ralink-gdma.c
++++ b/drivers/staging/ralink-gdma/ralink-gdma.c
+@@ -268,14 +268,14 @@ static int gdma_dma_terminate_all(struct dma_chan *c)
  
- 		/* take WEP into use */
--		new_crypt = kzalloc(sizeof(struct lib80211_crypt_data),
--				    GFP_KERNEL);
-+		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
- 		if (new_crypt == NULL)
- 			return -ENOMEM;
- 		new_crypt->ops = lib80211_get_crypto_ops("R-WEP");
+ static void rt305x_dump_reg(struct gdma_dma_dev *dma_dev, int id)
+ {
+-	dev_dbg(dma_dev->ddev.dev, "chan %d, src %08x, dst %08x, ctr0 %08x, " \
+-			"ctr1 %08x, intr %08x, signal %08x\n", id,
+-			gdma_dma_read(dma_dev, GDMA_REG_SRC_ADDR(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_DST_ADDR(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_CTRL0(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_CTRL1(id)),
+-			gdma_dma_read(dma_dev, GDMA_RT305X_STATUS_INT),
+-			gdma_dma_read(dma_dev, GDMA_RT305X_STATUS_SIGNAL));
++	dev_dbg(dma_dev->ddev.dev, "chan %d, src %08x, dst %08x, ctr0 %08x, ctr1 %08x, intr %08x, signal %08x\n",
++		id,
++		gdma_dma_read(dma_dev, GDMA_REG_SRC_ADDR(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_DST_ADDR(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_CTRL0(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_CTRL1(id)),
++		gdma_dma_read(dma_dev, GDMA_RT305X_STATUS_INT),
++		gdma_dma_read(dma_dev, GDMA_RT305X_STATUS_SIGNAL));
+ }
+ 
+ static int rt305x_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
+@@ -342,18 +342,17 @@ static int rt305x_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
+ 
+ static void rt3883_dump_reg(struct gdma_dma_dev *dma_dev, int id)
+ {
+-	dev_dbg(dma_dev->ddev.dev, "chan %d, src %08x, dst %08x, ctr0 %08x, " \
+-			"ctr1 %08x, unmask %08x, done %08x, " \
+-			"req %08x, ack %08x, fin %08x\n", id,
+-			gdma_dma_read(dma_dev, GDMA_REG_SRC_ADDR(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_DST_ADDR(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_CTRL0(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_CTRL1(id)),
+-			gdma_dma_read(dma_dev, GDMA_REG_UNMASK_INT),
+-			gdma_dma_read(dma_dev, GDMA_REG_DONE_INT),
+-			gdma_dma_read(dma_dev, GDMA_REG_REQSTS),
+-			gdma_dma_read(dma_dev, GDMA_REG_ACKSTS),
+-			gdma_dma_read(dma_dev, GDMA_REG_FINSTS));
++	dev_dbg(dma_dev->ddev.dev, "chan %d, src %08x, dst %08x, ctr0 %08x, ctr1 %08x, unmask %08x, done %08x, req %08x, ack %08x, fin %08x\n",
++		id,
++		gdma_dma_read(dma_dev, GDMA_REG_SRC_ADDR(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_DST_ADDR(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_CTRL0(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_CTRL1(id)),
++		gdma_dma_read(dma_dev, GDMA_REG_UNMASK_INT),
++		gdma_dma_read(dma_dev, GDMA_REG_DONE_INT),
++		gdma_dma_read(dma_dev, GDMA_REG_REQSTS),
++		gdma_dma_read(dma_dev, GDMA_REG_ACKSTS),
++		gdma_dma_read(dma_dev, GDMA_REG_FINSTS));
+ }
+ 
+ static int rt3883_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
 -- 
 2.7.4
 
