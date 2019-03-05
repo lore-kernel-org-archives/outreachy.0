@@ -1,146 +1,84 @@
 X-GM-THRID: 6664067951305424896
-X-Received: by 2002:a0c:89d2:: with SMTP id 18mr1630151qvs.9.1551794456890;
-        Tue, 05 Mar 2019 06:00:56 -0800 (PST)
+X-Received: by 2002:a63:cc:: with SMTP id 195mr63597pga.7.1551771622040;
+        Mon, 04 Mar 2019 23:40:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:ba29:: with SMTP id w41ls3831259qvf.6.gmail; Tue, 05 Mar
- 2019 06:00:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxiNOLGdqWV2cB8xFv+msFagbu69xU93SArM7poMd5FCZJEvSBKh9rg0R6oDEaAbq5ClMOd
-X-Received: by 2002:a0c:945c:: with SMTP id i28mr1612355qvi.57.1551794456308;
-        Tue, 05 Mar 2019 06:00:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551794456; cv=none;
+Received: by 2002:a63:8f45:: with SMTP id r5ls7285751pgn.8.gmail; Mon, 04 Mar
+ 2019 23:40:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwGOwtThuquVwxV11iNTaRn71GNc9TCiCL2Cw8cAUJQfR++xS2D/uK8Qbh3zt14iKPtORrX
+X-Received: by 2002:a63:4a17:: with SMTP id x23mr62841pga.55.1551771621315;
+        Mon, 04 Mar 2019 23:40:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551771621; cv=none;
         d=google.com; s=arc-20160816;
-        b=ViIGqODHHvOxO21sADKU0ekq9jlcYKHObOs3qRLbmSlhLUJMyCGu7deHvx3Qt3DYKl
-         KEBsHItAGzS4Dq6sE05jId5GG0hDjstnC6mZIiZ6K0/4RMgpk4HhJb3YzfaVKKKbERJ/
-         Zi7C0lvi6ondH+Sf1uaBcsce8Pvy3RJGLVTnIBgCNLc0MSr3F1Zuagyjn0bhy7hrH/lS
-         85YpAC1LcIXV61xxzAjPrDHGaEJ7WEB/6E+gWk2etg3WCnwrtxvvxXduvCLRyYWDXt4y
-         6AUgaJjjrqOkZiKIJ3uI6X0KypSVrmrHx1UdBC+JwinXWXVPC0fWVu/xfQNG47+Djvrk
-         iJjw==
+        b=0XiDNAh60+pFeYoenn2bwR8nOnbgPWubuC21OkfsLMhUBTPzVGcgbokeWSCpNyB6Ge
+         IRbid2DzEVaM6gi1Ykrir2eG4DaiD0pvNyK60jtv4VDeeEQyzAaLK2wTZffeCaCFr+i2
+         SS4Nf8lU1KciwfKsYNZHaFFJBetp/lInsOdkx+qvcuve0pWyOB13DwS2VGg9Fd1pYhik
+         bnegPH/W530zO4VRnicCqETCUovcSXDvx2cvlxA/m2L2V3TPyd+RhUSC3NwVMtHg8VuW
+         /XVG+zUjHCrDPe+zzwl6EeUhI4SP3k6kKU02K7Osfd2wYwOvY3vbifIBBId+p5GXiCuw
+         /TXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=GViAqhYntn7RBnUXNxLLZlKHfqeg0Z7rAlJ0uTwPOIk=;
-        b=fOrn5P3CBb5xnCTn4QTRwINoaCsLHyqnUjp3S6addt6Tdr5accFAVmykSiASm7ivA9
-         q89HsRQBVRPfxBFdc4UJ8LJ8cT/83qTeAqwmh/nDtFmpFFNz9eO0XBmdEL9ANhsOo4ao
-         wvRCJzULRFnmIDwNjCtG7B/hdmpRyoTOwYAU19wPbBBAZI57j0Tqm9gEPa6WrJcpg6ag
-         s26PoOY5b8XvpQLFZvAmn8qx+rxKTcWgXPaaI+szoBUnzN4mBN0pUYOByyhv1Z3kKoe0
-         nuslbjmGxfq15j8iR11eEOnjSC25K2bVgtRcKlB4h0zfl9IKdDvPtLnRx4aC+tX0X2ch
-         w9eA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=TKtOV6/aYnODbVXQLBe9e3tbWuZNG/WUOnkZ9C+szF0=;
+        b=N3X6j60tDO0oHygq541P9FQiXdNu1s9zLaIKMaKAY0bN14PxuVnZd+RO888kOgheNC
+         g3HCwddS/1wOKAgGzW0SKXYt9fTMGPu/5qX/ANBzQ+HFI+gtZP7dQRg2ThO4/FNYXsuO
+         AvHnYr06c88KrF09kbAb8Bxu7F9PJj2udfaJmMApToCGln7OfZwbDB7KExwNg2TWwvCr
+         bq4/9vOGLOqkt9fctMhkThBL3PSV+Vvh2qsZ8NvwBWYUQsh4PKEDyWML0bejSs1DHGUI
+         b6SCcQt9CHoNM8r6+Gvatn1PkRfTnjU3hoFE5lH3azJS5ENLuM7wPUWTGM2mw32IkyPi
+         WcYg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="D6t/ynIw";
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::32d as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <idebleenasen@gmail.com>
-Received: from mail-ot1-x32d.google.com (mail-ot1-x32d.google.com. [2607:f8b0:4864:20::32d])
-        by gmr-mx.google.com with ESMTPS id e12si243698qtg.5.2019.03.05.06.00.56
+       dkim=pass header.i=@kernel.org header.s=default header.b=uWasjMeK;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 197si84307pgc.1.2019.03.04.23.40.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 06:00:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::32d as permitted sender) client-ip=2607:f8b0:4864:20::32d;
+        Mon, 04 Mar 2019 23:40:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="D6t/ynIw";
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::32d as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x32d.google.com with SMTP id z19so7483274otm.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 06:00:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=GViAqhYntn7RBnUXNxLLZlKHfqeg0Z7rAlJ0uTwPOIk=;
-        b=D6t/ynIwtRLM1SE8flE7e6/9lJBGsJnQc+Px7Q+UlR09wGwDjnDWLKHkRntDPnO7c4
-         QI5Qxk+knjRUp38yAc2pD2HsaDDj0r5ltmSW/MFUZmL7KgHUTJy445vVE1lqQbgiHnrg
-         n7nfGWo/XWwDE+yuQocIclHxBO0a9VzDd7uZdaGhlL8Okp5FpCXcX0TOQZ/sDa8ctdqv
-         J1PtfaKum843DfuYF+Psh8xtOE3+OdxeQ243sfGpd6t454Fe555JBLPeM6w2XFPonFy/
-         wLzNlB0DWU593dvMxGaGL/hfVhGfv2spMQENOQ9OwkjJm2WlsGH+OcmkU342eip5wqp+
-         iugQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=GViAqhYntn7RBnUXNxLLZlKHfqeg0Z7rAlJ0uTwPOIk=;
-        b=JAmeveLQ4pI9XPi9Tt4CdvVnZBFSLe+ozlKY84mEfxi5646Eqy34EnYqC4h8NkHYLa
-         /K/e37BfTpl9nRJablbvZIN3cLm8TzyYsHSSwIzyqeaz9W0AEcbiDmeKL6AqPPdJwu+K
-         FIdZsU96w4BDzcsuFK9Ktf0ugWvG/rzrECINYGOTi7gVNj2EDARGWlXfpWVuzNRt1whi
-         HOAxH9Oeu/jtKjM8Y5/mEbd1WkNz0iKSXZCaGE8HzhnIFRgTEDM4WqwvQSYCBHarrpQg
-         heL9xPnqmZXWiS+KnmiGrZrUVp7UEEDAl6CR/hWvMkwusotxZC2QUH+QK/pRGQKMAtfV
-         ORLg==
-X-Gm-Message-State: APjAAAW3Gn1PE/hgU/jGji0W4Tf4LiwcMK5kkGpc33iQBJNVObHnSx42
-	oB3Is88SezOgJyy7+Y57AdrVp0wPlvaZzlXW8VU=
-X-Received: by 2002:a9d:30d8:: with SMTP id r24mr978833otg.194.1551794455275;
- Tue, 05 Mar 2019 06:00:55 -0800 (PST)
-MIME-Version: 1.0
-References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com> <20190305074018.GA6158@kroah.com>
-In-Reply-To: <20190305074018.GA6158@kroah.com>
-From: Debleena Sen <idebleenasen@gmail.com>
-Date: Tue, 5 Mar 2019 19:30:43 +0530
-Message-ID: <CACw+u4EcNWBF-KNox4MDzS+ZtYYxvN4fyLgxhCvFx=B4JSuCTw@mail.gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=uWasjMeK;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 880D920663;
+	Tue,  5 Mar 2019 07:40:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551771621;
+	bh=5F2F+VFHwhhKoOkBF30/4I/IA8HHN8YPnqDH7xB1CgE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uWasjMeKV2YOtbHkpvSsB1yjE8hE5D+B2LM3ZHu+xdCIYC79/LtHQGqfwa2yIHdoB
+	 AW1r3wevYztxZNPR1wvH4Ai27Jdke9pGV3qMLaWY0J/++XSQDtDE+9790o0KDONHQW
+	 sEV7NZ945aj0UHN1rwLd/UZEDf/03d2Y5RCLrOXs=
+Date: Tue, 5 Mar 2019 08:40:18 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Debleena Sen <idebleenasen@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH v4] Staging: pi433: Fix line over 80 characters issue
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary="000000000000456b270583594dd3"
+Message-ID: <20190305074018.GA6158@kroah.com>
+References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
---000000000000456b270583594dd3
-Content-Type: text/plain; charset="UTF-8"
+On Sun, Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:
+> Break the line and match the indentation to remove the
+> checkpatch.pl warning:
+> WARNING: line over 80 characters
+> 
+> Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+> ---
+>  drivers/staging/pi433/rf69.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
- On Tue, 5 Mar 2019, 13:10 Greg KH, <gregkh@linuxfoundation.org> wrote:
+What changed from the previous versions?  That information always goes
+below the --- line please.
 
-> On Sun, Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:
-> > Break the line and match the indentation to remove the
-> > checkpatch.pl warning:
-> > WARNING: line over 80 characters
-> >
-> > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
-> > ---
-> >  drivers/staging/pi433/rf69.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> What changed from the previous versions?  That information always goes
-> below the --- line please.
->
-> Please fix up and resend.
->
-> thanks,
->
-> greg k-h
->
+Please fix up and resend.
 
-Will do.
+thanks,
 
-Thnaks,
-Debleena
-
---000000000000456b270583594dd3
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"auto">=C2=A0On Tue, 5 Mar 201=
-9, 13:10 Greg KH, &lt;<a href=3D"mailto:gregkh@linuxfoundation.org" target=
-=3D"_blank">gregkh@linuxfoundation.org</a>&gt; wrote:</div></div><div class=
-=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Sun, =
-Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:<br>
-&gt; Break the line and match the indentation to remove the<br>
-&gt; <a href=3D"http://checkpatch.pl" rel=3D"noreferrer noreferrer" target=
-=3D"_blank">checkpatch.pl</a> warning:<br>
-&gt; WARNING: line over 80 characters<br>
-&gt; <br>
-&gt; Signed-off-by: Debleena Sen &lt;<a href=3D"mailto:idebleenasen@gmail.c=
-om" rel=3D"noreferrer" target=3D"_blank">idebleenasen@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/pi433/rf69.c | 3 ++-<br>
-&gt;=C2=A0 1 file changed, 2 insertions(+), 1 deletion(-)<br>
-<br>
-What changed from the previous versions?=C2=A0 That information always goes=
-<br>
-below the --- line please.<br>
-<br>
-Please fix up and resend.<br>
-<br>
-thanks,<br>
-<br>
-greg k-h<br></blockquote><div><br></div><div>Will do.=C2=A0</div><div><br><=
-/div><div>Thnaks,=C2=A0</div><div>Debleena</div></div>
-</div>
-
---000000000000456b270583594dd3--
+greg k-h
 
