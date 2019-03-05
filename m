@@ -1,221 +1,163 @@
-X-GM-THRID: 6954316272717791232
-X-Received: by 2002:a17:906:c348:: with SMTP id ci8mr3715771ejb.303.1619177933760;
-        Fri, 23 Apr 2021 04:38:53 -0700 (PDT)
+X-GM-THRID: 6664782574497300480
+X-Received: by 2002:a25:50c7:: with SMTP id e190mr1789144ybb.37.1551807975161;
+        Tue, 05 Mar 2019 09:46:15 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:b216:: with SMTP id p22ls4341265ejz.4.gmail; Fri, 23
- Apr 2021 04:38:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOXPVkC2eqrdbTgpk0X1kspxxkSc0x28nUQ7RMAcNj8hTfUVX8T15fj1lChaveh1XRhQKu
-X-Received: by 2002:a17:906:2c19:: with SMTP id e25mr3678846ejh.483.1619177932063;
-        Fri, 23 Apr 2021 04:38:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619177932; cv=none;
+Received: by 2002:a25:3888:: with SMTP id f130ls1161594yba.5.gmail; Tue, 05
+ Mar 2019 09:46:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyLvFmUtnxNjLgmweyzHYsQ41myqwzYvbZACFlCT+aU9AjaoIamC5KXnLWnPLJeYXvquTJh
+X-Received: by 2002:a25:3249:: with SMTP id y70mr1662868yby.70.1551807974200;
+        Tue, 05 Mar 2019 09:46:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551807974; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdj7hnq8S2Ud/NkcJwDC9Zp7BcRUjIFgNyi768W5GIzIZKcrMVdV4CExngfxm3emQC
-         Ea5yFHtIFQk/Y2saC9eW/3XzAOt2CCD+tBjR5edrxacWjCmOE/wZQHPOoMtmZMehQ6BK
-         PBV8p8IPBe7p64UMKdEeacSIUQnIq+C2eN/P7IXLVDb/xyYcmgm5SBdVHxudMzkk7YHR
-         X0U2WEwsyxQmwVBbVs8bu/AIeagKGriv9ehbAMkdN1LNiHtguTh3DvEmUV8NSjRRFIBf
-         zRqtirVQDcyb6E0yezQ05m8qui+1noqE8ywxsLtp63RvCKAKO9oqVU/FrQSq/BZUys+3
-         ArRg==
+        b=xnx4Pshl/f1NzUX7PzmGGt6OEOauEcjXMaEcNZwFoBC/qAEV4mUdJE9hOm/KpM+Qie
+         60jbgxwqq7vuSBtw4plaiiMb5k8H4gw7rHGXfmvP0hlSCfCuNAGksFqzH+9NZPNpJeTd
+         CRI7KyltoqvDAqSeE8V0F4HtD4ORAOtSM8P+zOutTy3pG30cD3s5U6ekf7RL90be6fGg
+         /xPpA86YqpMcU06z8EmlIwRl6acfeYREYDFkuIC/Y/t5Xj+astBCJUPtJXhIxWlkiRnE
+         cod1bte0HFC7kS8cxFvOy4ez1+WsUsOUO9i8KTpJrDZ0Fc86MyPV/+hxtos4S96HLARa
+         zVbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=tfwQKZxXdDYllkxh+HP2o7b8Xma124w7u9YX5ihdThk=;
-        b=Lo6fjUOgRjGYzx3qFzeF++vX948unNeYA3LWu4gKGxFMqwnpwdFAVhobjPCyxP76Aa
-         Rc9MrRSvLw2kQ7c4qP+dT7No7ENx6CUshrojrq1+Kc+rHeacFJAhGdhg2IQFOfotG/nX
-         B2SxsSnILC5zMIJasKX1/pau4ata2JstMyFF6BESJN61xTbbbthBoQCz1+WcqSadf1Bi
-         PmqSwAidWubjRMNsD3U8KyoB1KmPB+iCnXPgqaqaVf+GOpOUDTqLttKD7sVNJW9MaBmw
-         r9iv1StxLHwM0XOQLWOyaXNLibvAc+TnAKKaR/jAsoSb/QKpVAdMN8WpJ8MKyvpnq9Mg
-         Uoxw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=PXZAtQXCqtO6XPChNbsimk4Ek+7rXOUq1OcU0mHkH+0=;
+        b=z1GgQoTVuz/ga0zBKKqd1e1y4XIL4Sc/CWoDmmCazYLCkhwkM7G2sf/zXaq0CQEEPT
+         k4N5O7dmT9Y5J6HHiFixmFy6DyD/B3aV0yaytfkaYbiNMQfQVNj+T5BstHsptXnVra5u
+         JQ54n+6frOIS4hBaMoUCs/8MW/vQax7M6hNZDPci1O2fHRAvWJcGxr87oIJVg378gyvy
+         5YukXEgeLi5OB3ICQNsdZtg2X68ApD1QDixm3RJz/9gYiAMLESG/stdEHgxFkteOq7Dz
+         Q8Kgi9UXLzSMH6UJDvBX/AYOsmnSvZ9bxDe8tjE/vg10wb+GzwhwpjVW9wdTpela+AVn
+         ZDbw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=B0suzuxi;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iKHtQqYZ;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::831 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
-        by gmr-mx.google.com with ESMTPS id y16si806817edq.2.2021.04.23.04.38.52
+Return-Path: <digholebhagyashri@gmail.com>
+Received: from mail-qt1-x831.google.com (mail-qt1-x831.google.com. [2607:f8b0:4864:20::831])
+        by gmr-mx.google.com with ESMTPS id j16si494043ywa.2.2019.03.05.09.46.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Apr 2021 04:38:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 05 Mar 2019 09:46:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::831 as permitted sender) client-ip=2607:f8b0:4864:20::831;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=B0suzuxi;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iKHtQqYZ;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::831 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62b.google.com with SMTP id r12so73436364ejr.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Apr 2021 04:38:52 -0700 (PDT)
+Received: by mail-qt1-x831.google.com with SMTP id d2so9804804qti.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 09:46:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tfwQKZxXdDYllkxh+HP2o7b8Xma124w7u9YX5ihdThk=;
-        b=B0suzuxifCcOfPo/dFqrCu+ZPlTvcWsFMBQ3qhXvoW30sjRxdGR3uDnk/8bKkUgmVp
-         buVA60RHa7KMqBACHOi6zaxbTshOmcTRfmMPt/piPoz7R+qrvjdSxzFG+G35R/nZ4w4f
-         VnYgbrGVEJdI8+FtAJ0H4kjzb5QQb3erUWGy7jo39EfgtBo3/wT4K0hejCrl325etzB2
-         2GZE10id4/elX95fiEsvqTzyWWWECUSIJstXZWnQKBbTbf3lOGmHILZDTQyHS2kLGHK2
-         ieYXAE63EEkMTgHVR4XzNSUYguPHBJjsoeJPG791p+N64ZMW/pMHBdpFVPB3R7j2GRUV
-         UAlg==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=PXZAtQXCqtO6XPChNbsimk4Ek+7rXOUq1OcU0mHkH+0=;
+        b=iKHtQqYZvFpLKQbxlNWAsEmYnRhvvDrIjsabTRY7NU5YXsA0456vNgwCL0oGrmwZAM
+         cI18OK8YquKIxMKZbNgya2wanrnAdOHdLtaQVfI//Xs7+iKTc+e16mcgpybAhWDZCD63
+         N+C5XN/ZWwQg5g+4h9xfOKgcVzJHLQA6bI1QlX5SNd72FaFsQFOp2vwmolcxyqT5d0Ms
+         1L1k2QNWsY6NtTxXjzlxrt7YL5WF+TRnfyHth9z1yBB4Jl/1r0Ym8QsZk+CgvIj/U7Xx
+         x1UrWPtp40IH3ATqmcOKUYVOrq47SZryStrUrLR0lWd40JGaxZ75kSh9z1kIYcyhbGsD
+         kz6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tfwQKZxXdDYllkxh+HP2o7b8Xma124w7u9YX5ihdThk=;
-        b=n0wEd2nkjHw+2ylWtgBkruNvnzCmr4SWzIn+AeBOXnAGo1zYboBsUEGQoYU2Q28rmn
-         7JiJODNuXvOcZNLBBLqHyjsxOg97tAK54BDIsvm2LtGw5QodQqMjIGf493IIaw09nogY
-         6qSPNTXthnouOyj8xp7ffaEV4FR27l0zozBgkPGm3lBq8K60lFlaQyHUvJrz1iemfOUb
-         xzIwZzFtRF89x6KFOZHHRLBGViB5kYQ0v1Gqw0e1XHovAZZxogLtEYwYArnS032m1nHh
-         IYgi3vYdM9yUxpLADkyLEaRa9TNcf4PeOuscNzdYnu+VCWim0efsYybXAxYuExjoMGFo
-         0NBQ==
-X-Gm-Message-State: AOAM533tgqahoRN3Dp2spHV2oIpplD7O6Fz6s3kB+Tt9L5k+fJZTDl00
-	/Hpgw3z3z306v2xrSPcigOj3zj1j1n9cPLRb
-X-Received: by 2002:a17:907:2662:: with SMTP id ci2mr3628395ejc.467.1619177931579;
-        Fri, 23 Apr 2021 04:38:51 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id bm26sm3804553ejb.82.2021.04.23.04.38.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Apr 2021 04:38:51 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] drm/amd/amdgpu: Fix errors in documentation of function parameters
-Date: Fri, 23 Apr 2021 13:38:46 +0200
-Message-Id: <20210423113846.29651-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=PXZAtQXCqtO6XPChNbsimk4Ek+7rXOUq1OcU0mHkH+0=;
+        b=eOuJv6ybtQrFerZXKcqFqqftlcmr2pIiz43jv7eSRH7k9T+Afq1l0f8AYUnaIKaRNi
+         Y8J2FtRNZmVt7AJjzvVNNNpeeBtZU6KnjV637Q/aN7jDu+w85vvhFbHgw9PVkO+I6hQx
+         3QKM7wsnFWbAidXjLAd7+1whUCqaXooc2crcHW40ChG8EXEzCtj111IVAFtJCydkvsvo
+         FvcqGNeAqeBryomxyhOcdoCOL1KSj0BBsKzBHtsc9eYAwx6RNR17rVROdVO5o95tLGo2
+         JfcAjvmZRU0vHdJspaQznihzlTcsPGC02bmwlzjtwu7AsNps/Q05cfnlamq5N83yWSk6
+         Pnmg==
+X-Gm-Message-State: APjAAAV7a6Jee0QdwevQlT2+QEuW2daVwDdp6QukKdV0K5xFff8BBIeI
+	5G5XVdJtJgFiMVr5sHV+eYbSPGcIjc57X3m6NcQ=
+X-Received: by 2002:aed:3c0f:: with SMTP id t15mr2418226qte.282.1551807973764;
+ Tue, 05 Mar 2019 09:46:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190305162229.GA32171@bhagyashri-Lenovo-G570> <alpine.DEB.2.20.1903051726230.3701@hadrien>
+In-Reply-To: <alpine.DEB.2.20.1903051726230.3701@hadrien>
+From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Date: Tue, 5 Mar 2019 23:15:32 +0530
+Message-ID: <CAOMPgjjtgqAA5qMrsBKcwbz3Gph2OhBSX8FZJrj2OK5yV=O=QA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 2/2] staging: fbtft: Avoid CamelCase.
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-In the function documentation, I removed the excess parameters,
-described the undocumented ones, and fixed the syntax errors.
+On Tue, Mar 5, 2019 at 9:59 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>
+> On Tue, 5 Mar 2019, Bhagyashri Dighole wrote:
+>
+> > Fix coding style issues detected by checkpatch.pl `CHECK: Avoid
+> > CamelCase`.
+>
+> Good job on making the function.  However the subject line and the log
+> message are not really appropriate any more.  Say what you did (convert a
+> macro to a function) and why (improve type safety).  The camel case thign
+> is sort of a lucky accident that led you to the problem.
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c          | 12 ++++++------
- drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_fence.c  |  4 +++-
- drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_gfx_v9.c |  8 ++++----
- 3 files changed, 13 insertions(+), 11 deletions(-)
+Thanks.
+I will update it with the proper subject.
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-index 2e9b16fb3fcd..bf2939b6eb43 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-@@ -76,7 +76,7 @@ struct amdgpu_atif {
- /**
-  * amdgpu_atif_call - call an ATIF method
-  *
-- * @handle: acpi handle
-+ * @atif: acpi handle
-  * @function: the ATIF function to execute
-  * @params: ATIF function params
-  *
-@@ -166,7 +166,6 @@ static void amdgpu_atif_parse_functions(struct amdgpu_atif_functions *f, u32 mas
- /**
-  * amdgpu_atif_verify_interface - verify ATIF
-  *
-- * @handle: acpi handle
-  * @atif: amdgpu atif struct
-  *
-  * Execute the ATIF_FUNCTION_VERIFY_INTERFACE ATIF function
-@@ -240,8 +239,7 @@ static acpi_handle amdgpu_atif_probe_handle(acpi_handle dhandle)
- /**
-  * amdgpu_atif_get_notification_params - determine notify configuration
-  *
-- * @handle: acpi handle
-- * @n: atif notification configuration struct
-+ * @atif: acpi handle
-  *
-  * Execute the ATIF_FUNCTION_GET_SYSTEM_PARAMETERS ATIF function
-  * to determine if a notifier is used and if so which one
-@@ -304,7 +302,7 @@ static int amdgpu_atif_get_notification_params(struct amdgpu_atif *atif)
- /**
-  * amdgpu_atif_query_backlight_caps - get min and max backlight input signal
-  *
-- * @handle: acpi handle
-+ * @atif: acpi handle
-  *
-  * Execute the QUERY_BRIGHTNESS_TRANSFER_CHARACTERISTICS ATIF function
-  * to determine the acceptable range of backlight values
-@@ -363,7 +361,7 @@ static int amdgpu_atif_query_backlight_caps(struct amdgpu_atif *atif)
- /**
-  * amdgpu_atif_get_sbios_requests - get requested sbios event
-  *
-- * @handle: acpi handle
-+ * @atif: acpi handle
-  * @req: atif sbios request struct
-  *
-  * Execute the ATIF_FUNCTION_GET_SYSTEM_BIOS_REQUESTS ATIF function
-@@ -899,6 +897,8 @@ void amdgpu_acpi_fini(struct amdgpu_device *adev)
- /**
-  * amdgpu_acpi_is_s0ix_supported
-  *
-+ * @adev: amdgpu_device_pointer
-+ *
-  * returns true if supported, false if not.
-  */
- bool amdgpu_acpi_is_s0ix_supported(struct amdgpu_device *adev)
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_fence.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_fence.c
-index 5af464933976..98d31ebad9ce 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_fence.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_fence.c
-@@ -111,6 +111,8 @@ static const char *amdkfd_fence_get_timeline_name(struct dma_fence *f)
-  *  a KFD BO and schedules a job to move the BO.
-  *  If fence is already signaled return true.
-  *  If fence is not signaled schedule a evict KFD process work item.
-+ *
-+ *  @f: dma_fence
-  */
- static bool amdkfd_fence_enable_signaling(struct dma_fence *f)
- {
-@@ -131,7 +133,7 @@ static bool amdkfd_fence_enable_signaling(struct dma_fence *f)
- /**
-  * amdkfd_fence_release - callback that fence can be freed
-  *
-- * @fence: fence
-+ * @f: dma_fence
-  *
-  * This function is called when the reference count becomes zero.
-  * Drops the mm_struct reference and RCU schedules freeing up the fence.
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_gfx_v9.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_gfx_v9.c
-index b43e68fc1378..ed3014fbb563 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_gfx_v9.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd_gfx_v9.c
-@@ -719,7 +719,7 @@ static void unlock_spi_csq_mutexes(struct amdgpu_device *adev)
- }
- 
- /**
-- * @get_wave_count: Read device registers to get number of waves in flight for
-+ * get_wave_count: Read device registers to get number of waves in flight for
-  * a particular queue. The method also returns the VMID associated with the
-  * queue.
-  *
-@@ -755,19 +755,19 @@ static void get_wave_count(struct amdgpu_device *adev, int queue_idx,
- }
- 
- /**
-- * @kgd_gfx_v9_get_cu_occupancy: Reads relevant registers associated with each
-+ * kgd_gfx_v9_get_cu_occupancy: Reads relevant registers associated with each
-  * shader engine and aggregates the number of waves that are in flight for the
-  * process whose pasid is provided as a parameter. The process could have ZERO
-  * or more queues running and submitting waves to compute units.
-  *
-  * @kgd: Handle of device from which to get number of waves in flight
-  * @pasid: Identifies the process for which this query call is invoked
-- * @wave_cnt: Output parameter updated with number of waves in flight that
-+ * @pasid_wave_cnt: Output parameter updated with number of waves in flight that
-  * belong to process with given pasid
-  * @max_waves_per_cu: Output parameter updated with maximum number of waves
-  * possible per Compute Unit
-  *
-- * @note: It's possible that the device has too many queues (oversubscription)
-+ * Note: It's possible that the device has too many queues (oversubscription)
-  * in which case a VMID could be remapped to a different PASID. This could lead
-  * to an iaccurate wave count. Following is a high-level sequence:
-  *    Time T1: vmid = getVmid(); vmid is associated with Pasid P1
--- 
-2.31.1
+> >
+> > Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+> > ---
+> > Changes in v2:
+> >   -- Make conversion from macro to inline function.
+> >
+> >  drivers/staging/fbtft/fb_watterott.c | 9 +++++----
+> >  1 file changed, 5 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
+> > index 502d67f..90b7c07 100644
+> > --- a/drivers/staging/fbtft/fb_watterott.c
+> > +++ b/drivers/staging/fbtft/fb_watterott.c
+> > @@ -90,9 +90,10 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+> >       return 0;
+> >  }
+> >
+> > -#define RGB565toRGB332(c) ((((c) & 0xE000) >> 8) |\
+> > -                        (((c) & 000700) >> 6) |\
+> > -                        (((c) & 0x0018) >> 3))
+> > +inline int rgb565_to_rgb332(u16 c)
+> > +{
+> > +     return ((c & 0xE000) >> 8)  | ((c & 000700) >> 6) | ((c & 0x0018) >> 3);
+>
+> This is getting really close to 80 characters.  It's fine though, but
+> still there is no need to make the code wider than it has to be.  You can
+> remove the extra space before the first |.
 
+Sure.
+
+>
+> julia
+>
+> > +}
+> >
+> >  static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
+> >  {
+> > @@ -116,7 +117,7 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
+> >       for (i = start_line; i <= end_line; i++) {
+> >               pos[1] = cpu_to_be16(i);
+> >               for (j = 0; j < par->info->var.xres; j++) {
+> > -                     buf8[j] = RGB565toRGB332(*vmem16);
+> > +                     buf8[j] = rgb565_to_rgb332(*vmem16);
+> >                       vmem16++;
+> >               }
+> >               ret = par->fbtftops.write(par,
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190305162229.GA32171%40bhagyashri-Lenovo-G570.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.1903051726230.3701%40hadrien.
+> For more options, visit https://groups.google.com/d/optout.
 
