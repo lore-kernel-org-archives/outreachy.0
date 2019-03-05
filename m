@@ -1,362 +1,862 @@
-X-GM-THRID: 6748167848535785472
-X-Received: by 2002:a17:906:3053:: with SMTP id d19mr37672238ejd.109.1571180263896;
-        Tue, 15 Oct 2019 15:57:43 -0700 (PDT)
+X-GM-THRID: 6664915605845442560
+X-Received: by 2002:adf:ee89:: with SMTP id b9mr1309935wro.23.1551797828650;
+        Tue, 05 Mar 2019 06:57:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:b02:: with SMTP id bm2ls4548906edb.5.gmail; Tue, 15
- Oct 2019 15:57:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqywY6CGmlpdEn/LKY337dxW0xs8fiKqYqdhHczbv/yopxQqIP6SdMrbC1IXSqfS3lBiPnUk
-X-Received: by 2002:aa7:c895:: with SMTP id p21mr36504622eds.38.1571180262979;
-        Tue, 15 Oct 2019 15:57:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571180262; cv=none;
+Received: by 2002:a1c:c645:: with SMTP id w66ls390923wmf.3.gmail; Tue, 05 Mar
+ 2019 06:57:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwBKu4nuivN0JXwfCUBMYK961oviCHIPABkkBCvf3Td/c3ATTwDNZlWJcPHZifSwrkHujpq
+X-Received: by 2002:a1c:9c93:: with SMTP id f141mr335055wme.10.1551797827733;
+        Tue, 05 Mar 2019 06:57:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551797827; cv=none;
         d=google.com; s=arc-20160816;
-        b=ODf5m7XSO2NePMDs+OIXDtEaGdAFucUGthN2687z9MMKYcRH9jlyHhX0WIXl9nLBkM
-         yieewsQvdhWd/F+ASpLNF9Uu2MOXMUWS2zWKw2GYVXtnL+GhBt+u12ldh4rnwaCvqLX8
-         YUfEU8qDXrl1iMx2mlcjKDhLixT12HfspYUoqgwBypOkXcsUoi0Vm4glIpOgq0pFpuCP
-         EZ2DLLQZQrGx003lgiPVLC3JRyJKBiDNhbhm51+PUk7KIAZqJVQLMV0faAtrsh5DqviS
-         I353M9mrDgsOt2gnarM2ylqLl1ma7dvVZGNpU5XUlmCi6lJ/cwoqSpqXvyCyY2bnQooL
-         Zv/w==
+        b=qPpd29F/+U8BhxGQjK4/J2gOl+0HjoIP6J3z9PoPQRgjUt9eOACnkUMKXOJLI6SBUh
+         T4a/DISBjqFNSOfy7rNtUBK8/pGeU+xN2a3yaJBJ6vbxFWSrUvi8di+pt5e7faX+is0r
+         7ACeEgl26ybmhABnko3eRYR5AwFhyGMB/wz0rASHribWmdPJ/9A6hJuaNg2fo8LigmgI
+         UNv2GoR8WVnpHWXXfByqpmnT3ib6D6UBTpfzedwYyDFpTGiyGfsKaqW9Mork2szlWEDH
+         ftfOQEvudX01zoyhr+kkQqcupZ9s1dONICrmYSCsT2YLcaf2h2CKk35hAr4wZ0pn6um/
+         XI3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=dxsR+jE7HQ+WwH+XNT4goBtNaDbshv4XV8JQAUdUe/Y=;
-        b=hUoVymtHTFCfYHLlNaVnHj3memv9tu+s+9pS+5NMpq79Pn1/7B9XyWJD/rpWgAsWNb
-         lDplguIFsP/PdY7djTG0rzEHpUASWcWMY7h1BN5ujjRM9ThIhWYZ4NbuZTKY/Jip72nT
-         fyWoDbiz20wAYeRl5QHNJXUqr0/f7LzYt8nG0xqiaN+BgvjNHpT4Ksq+nONAXYfuQWFo
-         EcnK2Gyd0GU8kxVUYGFhFVPuUSLygD/IwZSzV+7x8lh/ndlMg4ttnxTwYJa5AbiEqcNr
-         zbN4m59IJ5Urw8ZSClWjmx11lnijwAGoZejMdeJuYdhnJEUC0KIlgq2Pv0qL3uvekhI9
-         hRBQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=4Gq5AWd395nH3zMwcm31Tr8S+HSNPvtuUT8iRVW50Hc=;
+        b=B5GYuf7VYVN3H8H7h7w6DSFZQm3Y5VK7j8tC/6+/JZmZ1i4SlA224VzeGhi02SOoxd
+         0jaTPoT2Q//ZRItvxYB7XepBnlGCwsuKdawPkpXH8lw42yB/H2mEun2Bh7/epYxca2ZU
+         TPNWsafPr5L1pBRfOQIs4Ok0jIK4C3rIdJwUrMG4ds0gEqlqZW5pN9vrlMsM2tzziMcN
+         C9ZCFbcOf7JHuq6OHsINK/eW+DN7pJ3XBLbF9mAukPGWjiC8ka36N8fveLcOmDjkJw11
+         fbd0F5R126KfAL1WkQsE9J5cvWKEowd7H4Kc88Jx4ES6fsbaKH/QaUvBtM5S5gULFeZV
+         Qeqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mCWYtCkM;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id c31si949845edb.0.2019.10.15.15.57.42
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id q192si346852wme.3.2019.03.05.06.57.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Oct 2019 15:57:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 05 Mar 2019 06:57:07 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mCWYtCkM;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id j18so25714109wrq.10
-        for <outreachy-kernel@googlegroups.com>; Tue, 15 Oct 2019 15:57:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=dxsR+jE7HQ+WwH+XNT4goBtNaDbshv4XV8JQAUdUe/Y=;
-        b=mCWYtCkMlxCQLcNFRhscJ1ikgpdYrHHAxxvJNrjS9S75FvygxTgBv7Ibzm5m09JXFK
-         JNfYmSGWe+Byu4hPnLmJWifBxS1xcDe8pa+zNxzf1l7nsow01mpBy1xYL6pmyO+vCQ9h
-         sUmwcnXDqIk1Pj+OMGetWdzWd2lhNVVA0bDOQWaa+OnqvObmSw5U6YtGioCDKRbYhGl2
-         v/ol+6DivktrI1vT45Zx4D4oBsYEVWDZ98a0fiQD/putQk93O3/jj+U9Pmu5UD7jbb9I
-         1xZKPLxroi6/0SMouMoHVddLj6ivPoyjx/2LIhbH3PjV5hF/YTDkHY5GoC+dzt50qEF1
-         HF7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=dxsR+jE7HQ+WwH+XNT4goBtNaDbshv4XV8JQAUdUe/Y=;
-        b=ZAbAZ14GL4xICFeJsmyAd2fuscnwLUpluPapbS0w4LdSWOZ/1FqJo38YORAtQuPDMV
-         /XebCVL8Kagrk2jv//ivOiORhVa5lgxxI8ZzjCVm7dR3s85vqRrqr5yd2YrgIKb0Z1fM
-         W2NHCLOgSyp5qBR/2Tn080HER1wzzr0YRQ4QqOSXew8gA3p0nO072zOQrTJXxnr1Em0k
-         RRhWJiHE7jNG+NbmDhYtm9LEvXpQlfgZ3NW7dszJxSexKvyfZd2u6AepG2uf1pASLv/z
-         YuGRY6G6I69p7B45g6uuQgepk4Abqu/3boKdUHfyS7hldKwHOTc3GDO1+mv2JpPHdAtc
-         bGyg==
-X-Gm-Message-State: APjAAAXQIxvIuY7FGnrGRq7bkeWx2UzvjF+bJqlB8Laza7Qecj8tB09Y
-	HMj7ztuoYTlrdqKXMPqqD+eXauV6Z368b+8=
-X-Received: by 2002:adf:c641:: with SMTP id u1mr564599wrg.361.1571180262270;
-        Tue, 15 Oct 2019 15:57:42 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.googlemail.com with ESMTPSA id e3sm530596wme.39.2019.10.15.15.57.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2019 15:57:41 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: eric@anholt.net,
-	wahrenst@gmx.net,
-	gregkh@linuxfoundation.org,
-	bcm-kernel-feedback-list@broadcom.com,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH] staging: vc04_services: fix line over 80 characters checks warning
-Date: Tue, 15 Oct 2019 23:57:16 +0100
-Message-Id: <20191015225716.10563-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,444,1544482800"; 
+   d="scan'208";a="372027644"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2019 15:57:07 +0100
+Date: Tue, 5 Mar 2019 15:57:01 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Avoid camelcase
+In-Reply-To: <20190305143241.14118-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903051554140.3701@hadrien>
+References: <20190305143241.14118-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Fix line over 80 characters checks warning.
-Issue detected by checkpatch tool.
+> -unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+> -			     unsigned char byPktType,
+> -			     unsigned int cbFrameLength, unsigned short wRate)
+> +unsigned int BBUGETFRAMETIME(unsigned char BYPREAMBLETYPE,
+> +			     unsigned char BYPKTTYPE,
+> +			     unsigned int CBFRAMELENGTH, unsigned short WRATE)
+>  {
+> -	unsigned int uFrameTime;
+> -	unsigned int uPreamble;
+> -	unsigned int uTmp;
+> -	unsigned int uRateIdx = (unsigned int)wRate;
+> -	unsigned int uRate = 0;
+> +	unsigned int UFRAMETIME;
+> +	unsigned int UPREAMBLE;
+> +	unsigned int UTMP;
+> +	unsigned int URATEIDX = (unsigned int)WRATE;
+> +	unsigned int URATE = 0;
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- .../vc04_services/interface/vchi/vchi_cfg.h   | 150 ++++++++++--------
- 1 file changed, 88 insertions(+), 62 deletions(-)
+Local variables should be in lower case.  _ can be used to separate words.
+There should not be the little characters at the front to indicate the
+variable types.
 
-diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_cfg.h b/drivers/staging/vc04_services/interface/vchi/vchi_cfg.h
-index 89aa4e6122cd..dbb6a5f07a79 100644
---- a/drivers/staging/vc04_services/interface/vchi/vchi_cfg.h
-+++ b/drivers/staging/vc04_services/interface/vchi/vchi_cfg.h
-@@ -4,13 +4,17 @@
- #ifndef VCHI_CFG_H_
- #define VCHI_CFG_H_
- 
--/****************************************************************************************
-- * Defines in this first section are part of the VCHI API and may be examined by VCHI
-- * services.
-- ***************************************************************************************/
--
--/* Required alignment of base addresses for bulk transfer, if unaligned transfers are not enabled */
--/* Really determined by the message driver, and should be available from a run-time call. */
-+/*****************************************************************************
-+ * Defines in this first section are part of the VCHI API and may be examined
-+ * by VCHI services.
-+ *****************************************************************************/
-+
-+/* Required alignment of base addresses for bulk transfer, if unaligned
-+ * transfers are not enabled
-+ *
-+ * Really determined by the message driver, and should be available from
-+ * a run-time call.
-+ */
- #ifndef VCHI_BULK_ALIGN
- #   if __VCCOREVER__ >= 0x04000000
- #       define VCHI_BULK_ALIGN 32 // Allows for the need to do cache cleans
-@@ -19,12 +23,15 @@
- #   endif
- #endif
- 
--/* Required length multiple for bulk transfers, if unaligned transfers are not enabled */
--/* May be less than or greater than VCHI_BULK_ALIGN */
--/* Really determined by the message driver, and should be available from a run-time call. */
-+/* Required length multiple for bulk transfers, if unaligned transfers are
-+ * not enabled
-+ * May be less than or greater than VCHI_BULK_ALIGN
-+ * Really determined by the message driver, and should be available from
-+ * a run-time call.
-+ */
- #ifndef VCHI_BULK_GRANULARITY
- #   if __VCCOREVER__ >= 0x04000000
--#       define VCHI_BULK_GRANULARITY 32 // Allows for the need to do cache cleans
-+#	define VCHI_BULK_GRANULARITY 32 // Allows for the need of cache cleans
- #   else
- #       define VCHI_BULK_GRANULARITY 16
- #   endif
-@@ -39,19 +46,22 @@
- #   endif
- #endif
- 
--/******************************************************************************************
-- * Defines below are system configuration options, and should not be used by VCHI services.
-- *****************************************************************************************/
-+/*******************************************************************************
-+ * Defines below are system configuration options, and should not be used by
-+ * VCHI services.
-+ ******************************************************************************/
- 
--/* How many connections can we support? A localhost implementation uses 2 connections,
-- * 1 for host-app, 1 for VMCS, and these are hooked together by a loopback MPHI VCFW
-- * driver. */
-+/* How many connections can we support? A localhost implementation
-+ * uses 2 connections, 1 for host-app, 1 for VMCS,
-+ * and these are hooked together by a loopback MPHI VCFW  driver.
-+ */
- #ifndef VCHI_MAX_NUM_CONNECTIONS
- #   define VCHI_MAX_NUM_CONNECTIONS 3
- #endif
- 
--/* How many services can we open per connection? Extending this doesn't cost processing time, just a small
-- * amount of static memory. */
-+/* How many services can we open per connection? Extending this doesn't cost
-+ * processing time, just a small amount of static memory.
-+ */
- #ifndef VCHI_MAX_SERVICES_PER_CONNECTION
- #  define VCHI_MAX_SERVICES_PER_CONNECTION 36
- #endif
-@@ -66,8 +76,9 @@
- #   define VCHI_MAX_BULK_RX_CHANNELS_PER_CONNECTION 1 // 1 MPHI
- #endif
- 
--/* How many receive slots do we use. This times VCHI_MAX_MSG_SIZE gives the effective
-- * receive queue space, less message headers. */
-+/* How many receive slots do we use. This times VCHI_MAX_MSG_SIZE gives
-+ * the effective receive queue space, less message headers.
-+ */
- #ifndef VCHI_NUM_READ_SLOTS
- #  if defined(VCHI_LOCAL_HOST_PORT)
- #     define VCHI_NUM_READ_SLOTS 4
-@@ -76,92 +87,107 @@
- #  endif
- #endif
- 
--/* Do we utilise overrun facility for receive message slots? Can aid peer transmit
-- * performance. Only define on VideoCore end, talking to host.
-+/* Do we utilise overrun facility for receive message slots? Can aid peer
-+ * transmit performance. Only define on VideoCore end, talking to host.
-  */
- //#define VCHI_MSG_RX_OVERRUN
- 
--/* How many transmit slots do we use. Generally don't need many, as the hardware driver
-- * underneath VCHI will usually have its own buffering. */
-+/* How many transmit slots do we use. Generally don't need many,
-+ * as the hardware driver underneath VCHI will usually have its own buffering
-+ */
- #ifndef VCHI_NUM_WRITE_SLOTS
- #  define VCHI_NUM_WRITE_SLOTS 4
- #endif
- 
--/* If a service has held or queued received messages in VCHI_XOFF_THRESHOLD or more slots,
-- * then it's taking up too much buffer space, and the peer service will be told to stop
-- * transmitting with an XOFF message. For this to be effective, the VCHI_NUM_READ_SLOTS
-- * needs to be considerably bigger than VCHI_NUM_WRITE_SLOTS, or the transmit latency
-- * is too high. */
-+/* If a service has held or queued received messages in VCHI_XOFF_THRESHOLD
-+ * or more slots, then it's taking up too much buffer space, and the peer
-+ * service will be told to stop transmitting with an XOFF message.
-+ * For this to be effective, the VCHI_NUM_READ_SLOTS needs to be considerably
-+ * bigger than VCHI_NUM_WRITE_SLOTS, or the transmit latency is too high.
-+ */
- #ifndef VCHI_XOFF_THRESHOLD
- #  define VCHI_XOFF_THRESHOLD (VCHI_NUM_READ_SLOTS / 2)
- #endif
- 
--/* After we've sent an XOFF, the peer will be told to resume transmission once the local
-- * service has dequeued/released enough messages that it's now occupying
-- * VCHI_XON_THRESHOLD slots or fewer. */
-+/* After we've sent an XOFF, the peer will be told to resume transmission once
-+ * the local service has dequeued/released enough messages that it's now
-+ * occupying VCHI_XON_THRESHOLD slots or fewer.
-+ */
- #ifndef VCHI_XON_THRESHOLD
- #  define VCHI_XON_THRESHOLD (VCHI_NUM_READ_SLOTS / 4)
- #endif
- 
--/* A size below which a bulk transfer omits the handshake completely and always goes
-- * via the message channel, if bulk auxiliary is being sent on that service. (The user
-- * can guarantee this by enabling unaligned transmits).
-- * Not API. */
-+/* A size below which a bulk transfer omits the handshake completely and always
-+ * goes via the message channel, if bulk auxiliary is being sent on that
-+ * service. (The user can guarantee this by enabling unaligned transmits).
-+ * Not API.
-+ */
- #ifndef VCHI_MIN_BULK_SIZE
- #  define VCHI_MIN_BULK_SIZE    (VCHI_MAX_MSG_SIZE / 2 < 4096 ? VCHI_MAX_MSG_SIZE / 2 : 4096)
- #endif
- 
--/* Maximum size of bulk transmission chunks, for each interface type. A trade-off between
-- * speed and latency; the smaller the chunk size the better change of messages and other
-- * bulk transmissions getting in when big bulk transfers are happening. Set to 0 to not
-- * break transmissions into chunks.
-+/* Maximum size of bulk transmission chunks, for each interface type.
-+ * A trade-off between speed and latency; the smaller the chunk size
-+ * the better change of messages and other bulk transmissions getting
-+ * in when big bulk transfers are happening.
-+ * Set to 0 to not break transmissions into chunks.
-  */
- #ifndef VCHI_MAX_BULK_CHUNK_SIZE_MPHI
- #  define VCHI_MAX_BULK_CHUNK_SIZE_MPHI (16 * 1024)
- #endif
- 
--/* NB Chunked CCP2 transmissions violate the letter of the CCP2 spec by using "JPEG8" mode
-- * with multiple-line frames. Only use if the receiver can cope. */
-+/* NB Chunked CCP2 transmissions violate the letter of the CCP2 spec
-+ * by using "JPEG8" mode with multiple-line frames. Only use if the
-+ * receiver can cope.
-+ */
- #ifndef VCHI_MAX_BULK_CHUNK_SIZE_CCP2
- #  define VCHI_MAX_BULK_CHUNK_SIZE_CCP2 0
- #endif
- 
--/* How many TX messages can we have pending in our transmit slots. Once exhausted,
-- * vchi_msg_queue will be blocked. */
-+/* How many TX messages can we have pending in our transmit slots.
-+ * Once exhausted, vchi_msg_queue will be blocked.
-+ */
- #ifndef VCHI_TX_MSG_QUEUE_SIZE
- #  define VCHI_TX_MSG_QUEUE_SIZE           256
- #endif
- 
--/* How many RX messages can we have parsed in the receive slots. Once exhausted, parsing
-- * will be suspended until older messages are dequeued/released. */
-+/* How many RX messages can we have parsed in the receive slots.
-+ * Once exhausted, parsing
-+ * will be suspended until older messages are dequeued/released.
-+ */
- #ifndef VCHI_RX_MSG_QUEUE_SIZE
- #  define VCHI_RX_MSG_QUEUE_SIZE           256
- #endif
- 
--/* Really should be able to cope if we run out of received message descriptors, by
-- * suspending parsing as the comment above says, but we don't. This sweeps the issue
-- * under the carpet. */
-+/* Really should be able to cope if we run out of received message descriptors,
-+ * by suspending parsing as the comment above says, but we don't.
-+ * This sweeps the issue under the carpet.
-+ */
- #if VCHI_RX_MSG_QUEUE_SIZE < (VCHI_MAX_MSG_SIZE/16 + 1) * VCHI_NUM_READ_SLOTS
- #  undef VCHI_RX_MSG_QUEUE_SIZE
- #  define VCHI_RX_MSG_QUEUE_SIZE ((VCHI_MAX_MSG_SIZE/16 + 1) * VCHI_NUM_READ_SLOTS)
- #endif
- 
--/* How many bulk transmits can we have pending. Once exhausted, vchi_bulk_queue_transmit
-- * will be blocked. */
-+/* How many bulk transmits can we have pending. Once exhausted,
-+ * vchi_bulk_queue_transmit  will be blocked.
-+ */
- #ifndef VCHI_TX_BULK_QUEUE_SIZE
- #  define VCHI_TX_BULK_QUEUE_SIZE           64
- #endif
- 
--/* How many bulk receives can we have pending. Once exhausted, vchi_bulk_queue_receive
-- * will be blocked. */
-+/* How many bulk receives can we have pending. Once exhausted,
-+ * vchi_bulk_queue_receive will be blocked.
-+ */
- #ifndef VCHI_RX_BULK_QUEUE_SIZE
- #  define VCHI_RX_BULK_QUEUE_SIZE           64
- #endif
- 
--/* A limit on how many outstanding bulk requests we expect the peer to give us. If
-- * the peer asks for more than this, VCHI will fail and assert. The number is determined
-- * by the peer's hardware - it's the number of outstanding requests that can be queued
-- * on all bulk channels. VC3's MPHI peripheral allows 16. */
-+/* A limit on how many outstanding bulk requests we expect the peer to give us.
-+ * If the peer asks for more than this, VCHI will fail and assert.
-+ * The number is determined by the peer's hardware
-+ *  - it's the number of outstanding requests that can be queued
-+ * on all bulk channels. VC3's MPHI peripheral allows 16.
-+ */
- #ifndef VCHI_MAX_PEER_BULK_REQUESTS
- #  define VCHI_MAX_PEER_BULK_REQUESTS       32
- #endif
-@@ -173,15 +199,15 @@
- 
- #ifndef VCHI_CCP2TX_MANUAL_POWER
- 
--/* Timeout (in milliseconds) for putting the CCP2TX interface into IDLE state. Set
-- * negative for no IDLE.
-+/* Timeout (in milliseconds) for putting the CCP2TX interface into IDLE state.
-+ * Set negative for no IDLE.
-  */
- #  ifndef VCHI_CCP2TX_IDLE_TIMEOUT
- #    define VCHI_CCP2TX_IDLE_TIMEOUT        5
- #  endif
- 
--/* Timeout (in milliseconds) for putting the CCP2TX interface into OFF state. Set
-- * negative for no OFF.
-+/* Timeout (in milliseconds) for putting the CCP2TX interface into OFF state.
-+ * Set negative for no OFF.
-  */
- #  ifndef VCHI_CCP2TX_OFF_TIMEOUT
- #    define VCHI_CCP2TX_OFF_TIMEOUT         1000
--- 
-2.21.0
+This makes a really big patch that is not easy to review.  Consider just
+working on one set of variables instead, for example all of the local
+variables in a single function.
 
+julia
+
+
+>
+> -	if (uRateIdx > RATE_54M)
+> +	if (URATEIDX > RATE_54M)
+>  		return 0;
+>
+> -	uRate = (unsigned int)awcFrameTime[uRateIdx];
+> +	URATE = (unsigned int)AWCFRAMETIME[URATEIDX];
+>
+> -	if (uRateIdx <= 3) {          /* CCK mode */
+> -		if (byPreambleType == 1) /* Short */
+> -			uPreamble = 96;
+> -		else
+> -			uPreamble = 192;
+> +		if (URATEIDX <= 3) {          /* CCK mode */
+> +			if (BYPREAMBLETYPE == 1) /* Short */
+> +				UPREAMBLE = 96;
+> +			else
+> +				UPREAMBLE = 192;
+>
+> -		uFrameTime = (cbFrameLength * 80) / uRate;  /* ????? */
+> -		uTmp = (uFrameTime * uRate) / 80;
+> -		if (cbFrameLength != uTmp)
+> -			uFrameTime++;
+> +			UFRAMETIME = (CBFRAMELENGTH * 80) / URATE;  /* ????? */
+> +			UTMP = (UFRAMETIME * URATE) / 80;
+> +			if (CBFRAMELENGTH != UTMP)
+> +				UFRAMETIME++;
+>
+> -		return uPreamble + uFrameTime;
+> -	}
+> -	uFrameTime = (cbFrameLength * 8 + 22) / uRate; /* ???????? */
+> -	uTmp = ((uFrameTime * uRate) - 22) / 8;
+> -	if (cbFrameLength != uTmp)
+> -		uFrameTime++;
+> +			return UPREAMBLE + UFRAMETIME;
+> +		}
+> +		UFRAMETIME = (CBFRAMELENGTH * 8 + 22) / URATE; /* ???????? */
+> +		UTMP = ((UFRAMETIME * URATE) - 22) / 8;
+> +	if (CBFRAMELENGTH != UTMP)
+> +		UFRAMETIME++;
+>
+> -	uFrameTime = uFrameTime * 4;    /* ??????? */
+> -	if (byPktType != PK_TYPE_11A)
+> -		uFrameTime += 6;     /* ?????? */
+> +	UFRAMETIME = UFRAMETIME * 4;    /* ??????? */
+> +	if (BYPKTTYPE != PK_TYPE_11A)
+> +		UFRAMETIME += 6;     /* ?????? */
+>
+> -	return 20 + uFrameTime; /* ?????? */
+> +	return 20 + UFRAMETIME; /* ?????? */
+>  }
+>
+>  /*
+> @@ -1768,7 +1768,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+>  	u32 count = 0;
+>  	u32 tmp;
+>  	int ext_bit;
+> -	u8 preamble_type = priv->byPreambleType;
+> +	u8 preamble_type = priv->BYPREAMBLETYPE;
+>
+>  	bit_count = frame_length * 8;
+>  	ext_bit = false;
+> @@ -1899,34 +1899,34 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+>   * Parameters:
+>   *  In:
+>   *      iobase      - I/O base address
+> - *      byBBAddr    - address of register in Baseband
+> + *      BYBBADDR    - address of register in Baseband
+>   *  Out:
+> - *      pbyData     - data read
+> + *      PBYDATA     - data read
+>   *
+>   * Return Value: true if succeeded; false if failed.
+>   *
+>   */
+> -bool BBbReadEmbedded(struct vnt_private *priv,
+> -		     unsigned char byBBAddr, unsigned char *pbyData)
+> +bool BBBREADEMBEDDED(struct vnt_private *priv,
+> +		     unsigned char BYBBADDR, unsigned char *PBYDATA)
+>  {
+> -	void __iomem *iobase = priv->PortOffset;
+> +	void __iomem *iobase = priv->PORTOFFSET;
+>  	unsigned short ww;
+> -	unsigned char byValue;
+> +	unsigned char BYVALUE;
+>
+>  	/* BB reg offset */
+> -	VNSvOutPortB(iobase + MAC_REG_BBREGADR, byBBAddr);
+> +	VNSVOUTPORTB(iobase + MAC_REG_BBREGADR, BYBBADDR);
+>
+>  	/* turn on REGR */
+> -	MACvRegBitsOn(iobase, MAC_REG_BBREGCTL, BBREGCTL_REGR);
+> +	MACVREGBITSON(iobase, MAC_REG_BBREGCTL, BBREGCTL_REGR);
+>  	/* W_MAX_TIMEOUT is the timeout period */
+>  	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+> -		VNSvInPortB(iobase + MAC_REG_BBREGCTL, &byValue);
+> -		if (byValue & BBREGCTL_DONE)
+> +		VNSVINPORTB(iobase + MAC_REG_BBREGCTL, &BYVALUE);
+> +		if (BYVALUE & BBREGCTL_DONE)
+>  			break;
+>  	}
+>
+>  	/* get BB data */
+> -	VNSvInPortB(iobase + MAC_REG_BBREGDATA, pbyData);
+> +	VNSVINPORTB(iobase + MAC_REG_BBREGDATA, PBYDATA);
+>
+>  	if (ww == W_MAX_TIMEOUT) {
+>  		pr_debug(" DBG_PORT80(0x30)\n");
+> @@ -1941,32 +1941,32 @@ bool BBbReadEmbedded(struct vnt_private *priv,
+>   * Parameters:
+>   *  In:
+>   *      iobase      - I/O base address
+> - *      byBBAddr    - address of register in Baseband
+> - *      byData      - data to write
+> + *      BYBBADDR    - address of register in Baseband
+> + *      BYDATA      - data to write
+>   *  Out:
+>   *      none
+>   *
+>   * Return Value: true if succeeded; false if failed.
+>   *
+>   */
+> -bool BBbWriteEmbedded(struct vnt_private *priv,
+> -		      unsigned char byBBAddr, unsigned char byData)
+> +bool BBBWRITEEMBEDDED(struct vnt_private *priv,
+> +		      unsigned char BYBBADDR, unsigned char BYDATA)
+>  {
+> -	void __iomem *iobase = priv->PortOffset;
+> +	void __iomem *iobase = priv->PORTOFFSET;
+>  	unsigned short ww;
+> -	unsigned char byValue;
+> +	unsigned char BYVALUE;
+>
+>  	/* BB reg offset */
+> -	VNSvOutPortB(iobase + MAC_REG_BBREGADR, byBBAddr);
+> +	VNSVOUTPORTB(iobase + MAC_REG_BBREGADR, BYBBADDR);
+>  	/* set BB data */
+> -	VNSvOutPortB(iobase + MAC_REG_BBREGDATA, byData);
+> +	VNSVOUTPORTB(iobase + MAC_REG_BBREGDATA, BYDATA);
+>
+>  	/* turn on BBREGCTL_REGW */
+> -	MACvRegBitsOn(iobase, MAC_REG_BBREGCTL, BBREGCTL_REGW);
+> +	MACVREGBITSON(iobase, MAC_REG_BBREGCTL, BBREGCTL_REGW);
+>  	/* W_MAX_TIMEOUT is the timeout period */
+>  	for (ww = 0; ww < W_MAX_TIMEOUT; ww++) {
+> -		VNSvInPortB(iobase + MAC_REG_BBREGCTL, &byValue);
+> -		if (byValue & BBREGCTL_DONE)
+> +		VNSVINPORTB(iobase + MAC_REG_BBREGCTL, &BYVALUE);
+> +		if (BYVALUE & BBREGCTL_DONE)
+>  			break;
+>  	}
+>
+> @@ -1984,7 +1984,7 @@ bool BBbWriteEmbedded(struct vnt_private *priv,
+>   *  In:
+>   *      iobase      - I/O base address
+>   *      byRevId     - Revision ID
+> - *      byRFType    - RF type
+> + *      BYRFTYPE    - RF type
+>   *  Out:
+>   *      none
+>   *
+> @@ -1992,95 +1992,95 @@ bool BBbWriteEmbedded(struct vnt_private *priv,
+>   *
+>   */
+>
+> -bool BBbVT3253Init(struct vnt_private *priv)
+> +bool BBBVT3253INIT(struct vnt_private *priv)
+>  {
+> -	bool bResult = true;
+> +	bool BRESULT = true;
+>  	int        ii;
+> -	void __iomem *iobase = priv->PortOffset;
+> -	unsigned char byRFType = priv->byRFType;
+> -	unsigned char byLocalID = priv->byLocalID;
+> +	void __iomem *iobase = priv->PORTOFFSET;
+> +	unsigned char BYRFTYPE = priv->BYRFTYPE;
+> +	unsigned char BYLOCALID = priv->BYLOCALID;
+>
+> -	if (byRFType == RF_RFMD2959) {
+> -		if (byLocalID <= REV_ID_VT3253_A1) {
+> +	if (BYRFTYPE == RF_RFMD2959) {
+> +		if (BYLOCALID <= REV_ID_VT3253_A1) {
+>  			for (ii = 0; ii < CB_VT3253_INIT_FOR_RFMD; ii++)
+> -				bResult &= BBbWriteEmbedded(priv,
+> -					byVT3253InitTab_RFMD[ii][0],
+> -					byVT3253InitTab_RFMD[ii][1]);
+> +				BRESULT &= BBBWRITEEMBEDDED(priv,
+> +					BYVT3253INITTAB_RFMD[ii][0],
+> +					BYVT3253INITTAB_RFMD[ii][1]);
+>
+>  		} else {
+>  			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
+> -				bResult &= BBbWriteEmbedded(priv,
+> -					byVT3253B0_RFMD[ii][0],
+> -					byVT3253B0_RFMD[ii][1]);
+> +				BRESULT &= BBBWRITEEMBEDDED(priv,
+> +					BYVT3253B0_RFMD[ii][0],
+> +					BYVT3253B0_RFMD[ii][1]);
+>
+>  			for (ii = 0; ii < CB_VT3253B0_AGC_FOR_RFMD2959; ii++)
+> -				bResult &= BBbWriteEmbedded(priv,
+> -					byVT3253B0_AGC4_RFMD2959[ii][0],
+> -					byVT3253B0_AGC4_RFMD2959[ii][1]);
+> +				BRESULT &= BBBWRITEEMBEDDED(priv,
+> +					BYVT3253B0_AGC4_RFMD2959[ii][0],
+> +					BYVT3253B0_AGC4_RFMD2959[ii][1]);
+>
+> -			VNSvOutPortD(iobase + MAC_REG_ITRTMSET, 0x23);
+> -			MACvRegBitsOn(iobase, MAC_REG_PAPEDELAY, BIT(0));
+> +			VNSVOUTPORTD(iobase + MAC_REG_ITRTMSET, 0x23);
+> +			MACVREGBITSON(iobase, MAC_REG_PAPEDELAY, BIT(0));
+>  		}
+> -		priv->abyBBVGA[0] = 0x18;
+> -		priv->abyBBVGA[1] = 0x0A;
+> -		priv->abyBBVGA[2] = 0x0;
+> -		priv->abyBBVGA[3] = 0x0;
+> -		priv->ldBmThreshold[0] = -70;
+> -		priv->ldBmThreshold[1] = -50;
+> -		priv->ldBmThreshold[2] = 0;
+> -		priv->ldBmThreshold[3] = 0;
+> -	} else if ((byRFType == RF_AIROHA) || (byRFType == RF_AL2230S)) {
+> +		priv->ABYBBVGA[0] = 0x18;
+> +		priv->ABYBBVGA[1] = 0x0A;
+> +		priv->ABYBBVGA[2] = 0x0;
+> +		priv->ABYBBVGA[3] = 0x0;
+> +		priv->LDBMTHRESHOLD[0] = -70;
+> +		priv->LDBMTHRESHOLD[1] = -50;
+> +		priv->LDBMTHRESHOLD[2] = 0;
+> +		priv->LDBMTHRESHOLD[3] = 0;
+> +	} else if ((BYRFTYPE == RF_AIROHA) || (BYRFTYPE == RF_AL2230S)) {
+>  		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AIROHA2230[ii][0],
+> -				byVT3253B0_AIROHA2230[ii][1]);
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AIROHA2230[ii][0],
+> +				BYVT3253B0_AIROHA2230[ii][1]);
+>
+>  		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
+> -
+> -		priv->abyBBVGA[0] = 0x1C;
+> -		priv->abyBBVGA[1] = 0x10;
+> -		priv->abyBBVGA[2] = 0x0;
+> -		priv->abyBBVGA[3] = 0x0;
+> -		priv->ldBmThreshold[0] = -70;
+> -		priv->ldBmThreshold[1] = -48;
+> -		priv->ldBmThreshold[2] = 0;
+> -		priv->ldBmThreshold[3] = 0;
+> -	} else if (byRFType == RF_UW2451) {
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AGC[ii][0], BYVT3253B0_AGC[ii][1]);
+> +
+> +		priv->ABYBBVGA[0] = 0x1C;
+> +		priv->ABYBBVGA[1] = 0x10;
+> +		priv->ABYBBVGA[2] = 0x0;
+> +		priv->ABYBBVGA[3] = 0x0;
+> +		priv->LDBMTHRESHOLD[0] = -70;
+> +		priv->LDBMTHRESHOLD[1] = -48;
+> +		priv->LDBMTHRESHOLD[2] = 0;
+> +		priv->LDBMTHRESHOLD[3] = 0;
+> +	} else if (BYRFTYPE == RF_UW2451) {
+>  		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_UW2451; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_UW2451[ii][0],
+> -				byVT3253B0_UW2451[ii][1]);
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_UW2451[ii][0],
+> +				BYVT3253B0_UW2451[ii][1]);
+>
+>  		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AGC[ii][0],
+> -				byVT3253B0_AGC[ii][1]);
+> -
+> -		VNSvOutPortB(iobase + MAC_REG_ITRTMSET, 0x23);
+> -		MACvRegBitsOn(iobase, MAC_REG_PAPEDELAY, BIT(0));
+> -
+> -		priv->abyBBVGA[0] = 0x14;
+> -		priv->abyBBVGA[1] = 0x0A;
+> -		priv->abyBBVGA[2] = 0x0;
+> -		priv->abyBBVGA[3] = 0x0;
+> -		priv->ldBmThreshold[0] = -60;
+> -		priv->ldBmThreshold[1] = -50;
+> -		priv->ldBmThreshold[2] = 0;
+> -		priv->ldBmThreshold[3] = 0;
+> -	} else if (byRFType == RF_UW2452) {
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AGC[ii][0],
+> +				BYVT3253B0_AGC[ii][1]);
+> +
+> +		VNSVOUTPORTB(iobase + MAC_REG_ITRTMSET, 0x23);
+> +		MACVREGBITSON(iobase, MAC_REG_PAPEDELAY, BIT(0));
+> +
+> +		priv->ABYBBVGA[0] = 0x14;
+> +		priv->ABYBBVGA[1] = 0x0A;
+> +		priv->ABYBBVGA[2] = 0x0;
+> +		priv->ABYBBVGA[3] = 0x0;
+> +		priv->LDBMTHRESHOLD[0] = -60;
+> +		priv->LDBMTHRESHOLD[1] = -50;
+> +		priv->LDBMTHRESHOLD[2] = 0;
+> +		priv->LDBMTHRESHOLD[3] = 0;
+> +	} else if (BYRFTYPE == RF_UW2452) {
+>  		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_UW2451; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_UW2451[ii][0],
+> -				byVT3253B0_UW2451[ii][1]);
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_UW2451[ii][0],
+> +				BYVT3253B0_UW2451[ii][1]);
+>
+>  		/* Init ANT B select,
+>  		 * TX Config CR09 = 0x61->0x45,
+>  		 * 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted)
+>  		 */
+>
+> -		/*bResult &= BBbWriteEmbedded(iobase,0x09,0x41);*/
+> +		/*BRESULT &= BBBWRITEEMBEDDED(iobase,0x09,0x41);*/
+>
+>  		/* Init ANT B select,
+>  		 * RX Config CR10 = 0x28->0x2A,
+> @@ -2088,100 +2088,100 @@ bool BBbVT3253Init(struct vnt_private *priv)
+>  		 * make the ANT_A, ANT_B inverted)
+>  		 */
+>
+> -		/*bResult &= BBbWriteEmbedded(iobase,0x0a,0x28);*/
+> +		/*BRESULT &= BBBWRITEEMBEDDED(iobase,0x0a,0x28);*/
+>  		/* Select VC1/VC2, CR215 = 0x02->0x06 */
+> -		bResult &= BBbWriteEmbedded(priv, 0xd7, 0x06);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0xd7, 0x06);
+>
+>  		/* {{RobertYu:20050125, request by Jack */
+> -		bResult &= BBbWriteEmbedded(priv, 0x90, 0x20);
+> -		bResult &= BBbWriteEmbedded(priv, 0x97, 0xeb);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0x90, 0x20);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0x97, 0xeb);
+>  		/* }} */
+>
+>  		/* {{RobertYu:20050221, request by Jack */
+> -		bResult &= BBbWriteEmbedded(priv, 0xa6, 0x00);
+> -		bResult &= BBbWriteEmbedded(priv, 0xa8, 0x30);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0xa6, 0x00);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0xa8, 0x30);
+>  		/* }} */
+> -		bResult &= BBbWriteEmbedded(priv, 0xb0, 0x58);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0xb0, 0x58);
+>
+>  		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
+> -
+> -		priv->abyBBVGA[0] = 0x14;
+> -		priv->abyBBVGA[1] = 0x0A;
+> -		priv->abyBBVGA[2] = 0x0;
+> -		priv->abyBBVGA[3] = 0x0;
+> -		priv->ldBmThreshold[0] = -60;
+> -		priv->ldBmThreshold[1] = -50;
+> -		priv->ldBmThreshold[2] = 0;
+> -		priv->ldBmThreshold[3] = 0;
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AGC[ii][0], BYVT3253B0_AGC[ii][1]);
+> +
+> +		priv->ABYBBVGA[0] = 0x14;
+> +		priv->ABYBBVGA[1] = 0x0A;
+> +		priv->ABYBBVGA[2] = 0x0;
+> +		priv->ABYBBVGA[3] = 0x0;
+> +		priv->LDBMTHRESHOLD[0] = -60;
+> +		priv->LDBMTHRESHOLD[1] = -50;
+> +		priv->LDBMTHRESHOLD[2] = 0;
+> +		priv->LDBMTHRESHOLD[3] = 0;
+>  		/* }} RobertYu */
+>
+> -	} else if (byRFType == RF_VT3226) {
+> +	} else if (BYRFTYPE == RF_VT3226) {
+>  		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AIROHA2230[ii][0],
+> -				byVT3253B0_AIROHA2230[ii][1]);
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AIROHA2230[ii][0],
+> +				BYVT3253B0_AIROHA2230[ii][1]);
+>
+>  		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
+> -
+> -		priv->abyBBVGA[0] = 0x1C;
+> -		priv->abyBBVGA[1] = 0x10;
+> -		priv->abyBBVGA[2] = 0x0;
+> -		priv->abyBBVGA[3] = 0x0;
+> -		priv->ldBmThreshold[0] = -70;
+> -		priv->ldBmThreshold[1] = -48;
+> -		priv->ldBmThreshold[2] = 0;
+> -		priv->ldBmThreshold[3] = 0;
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AGC[ii][0], BYVT3253B0_AGC[ii][1]);
+> +
+> +		priv->ABYBBVGA[0] = 0x1C;
+> +		priv->ABYBBVGA[1] = 0x10;
+> +		priv->ABYBBVGA[2] = 0x0;
+> +		priv->ABYBBVGA[3] = 0x0;
+> +		priv->LDBMTHRESHOLD[0] = -70;
+> +		priv->LDBMTHRESHOLD[1] = -48;
+> +		priv->LDBMTHRESHOLD[2] = 0;
+> +		priv->LDBMTHRESHOLD[3] = 0;
+>  		/* Fix VT3226 DFC system timing issue */
+> -		MACvSetRFLE_LatchBase(iobase);
+> +		MACVSETRFLE_LATCHBASE(iobase);
+>  		/* {{ RobertYu: 20050104 */
+> -	} else if (byRFType == RF_AIROHA7230) {
+> +	} else if (BYRFTYPE == RF_AIROHA7230) {
+>  		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AIROHA2230[ii][0],
+> -				byVT3253B0_AIROHA2230[ii][1]);
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AIROHA2230[ii][0],
+> +				BYVT3253B0_AIROHA2230[ii][1]);
+>
+>  		/* {{ RobertYu:20050223, request by JerryChung */
+>  		/* Init ANT B select,TX Config CR09 = 0x61->0x45,
+>  		 * 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted)
+>  		 */
+> -		/*bResult &= BBbWriteEmbedded(iobase,0x09,0x41);*/
+> +		/*BRESULT &= BBBWRITEEMBEDDED(iobase,0x09,0x41);*/
+>  		/* Init ANT B select,RX Config CR10 = 0x28->0x2A,
+>  		 * 0x2A->0x28(VC1/VC2 define, make the ANT_A, ANT_B inverted)
+>  		 */
+> -		/*bResult &= BBbWriteEmbedded(iobase,0x0a,0x28);*/
+> +		/*BRESULT &= BBBWRITEEMBEDDED(iobase,0x0a,0x28);*/
+>  		/* Select VC1/VC2, CR215 = 0x02->0x06 */
+> -		bResult &= BBbWriteEmbedded(priv, 0xd7, 0x06);
+> +		BRESULT &= BBBWRITEEMBEDDED(priv, 0xd7, 0x06);
+>  		/* }} */
+>
+>  		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
+> -			bResult &= BBbWriteEmbedded(priv,
+> -				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
+> -
+> -		priv->abyBBVGA[0] = 0x1C;
+> -		priv->abyBBVGA[1] = 0x10;
+> -		priv->abyBBVGA[2] = 0x0;
+> -		priv->abyBBVGA[3] = 0x0;
+> -		priv->ldBmThreshold[0] = -70;
+> -		priv->ldBmThreshold[1] = -48;
+> -		priv->ldBmThreshold[2] = 0;
+> -		priv->ldBmThreshold[3] = 0;
+> +			BRESULT &= BBBWRITEEMBEDDED(priv,
+> +				BYVT3253B0_AGC[ii][0], BYVT3253B0_AGC[ii][1]);
+> +
+> +		priv->ABYBBVGA[0] = 0x1C;
+> +		priv->ABYBBVGA[1] = 0x10;
+> +		priv->ABYBBVGA[2] = 0x0;
+> +		priv->ABYBBVGA[3] = 0x0;
+> +		priv->LDBMTHRESHOLD[0] = -70;
+> +		priv->LDBMTHRESHOLD[1] = -48;
+> +		priv->LDBMTHRESHOLD[2] = 0;
+> +		priv->LDBMTHRESHOLD[3] = 0;
+>  		/* }} RobertYu */
+>  	} else {
+>  		/* No VGA Table now */
+> -		priv->bUpdateBBVGA = false;
+> -		priv->abyBBVGA[0] = 0x1C;
+> +		priv->BUPDATEBBVGA = false;
+> +		priv->ABYBBVGA[0] = 0x1C;
+>  	}
+>
+> -	if (byLocalID > REV_ID_VT3253_A1) {
+> -		BBbWriteEmbedded(priv, 0x04, 0x7F);
+> -		BBbWriteEmbedded(priv, 0x0D, 0x01);
+> +	if (BYLOCALID > REV_ID_VT3253_A1) {
+> +		BBBWRITEEMBEDDED(priv, 0x04, 0x7F);
+> +		BBBWRITEEMBEDDED(priv, 0x0D, 0x01);
+>  	}
+>
+> -	return bResult;
+> +	return BRESULT;
+>  }
+>
+>  /*
+> @@ -2197,42 +2197,42 @@ bool BBbVT3253Init(struct vnt_private *priv)
+>   *
+>   */
+>  void
+> -BBvSetShortSlotTime(struct vnt_private *priv)
+> +BBVSETSHORTSLOTTIME(struct vnt_private *priv)
+>  {
+> -	unsigned char byBBRxConf = 0;
+> -	unsigned char byBBVGA = 0;
+> +	unsigned char BYBBRXCONF = 0;
+> +	unsigned char BYBBVGA = 0;
+>
+> -	BBbReadEmbedded(priv, 0x0A, &byBBRxConf); /* CR10 */
+> +	BBBREADEMBEDDED(priv, 0x0A, &BYBBRXCONF); /* CR10 */
+>
+> -	if (priv->bShortSlotTime)
+> -		byBBRxConf &= 0xDF; /* 1101 1111 */
+> +	if (priv->BSHORTSLOTTIME)
+> +		BYBBRXCONF &= 0xDF; /* 1101 1111 */
+>  	else
+> -		byBBRxConf |= 0x20; /* 0010 0000 */
+> +		BYBBRXCONF |= 0x20; /* 0010 0000 */
+>
+>  	/* patch for 3253B0 Baseband with Cardbus module */
+> -	BBbReadEmbedded(priv, 0xE7, &byBBVGA);
+> -	if (byBBVGA == priv->abyBBVGA[0])
+> -		byBBRxConf |= 0x20; /* 0010 0000 */
+> +	BBBREADEMBEDDED(priv, 0xE7, &BYBBVGA);
+> +	if (BYBBVGA == priv->ABYBBVGA[0])
+> +		BYBBRXCONF |= 0x20; /* 0010 0000 */
+>
+> -	BBbWriteEmbedded(priv, 0x0A, byBBRxConf); /* CR10 */
+> +	BBBWRITEEMBEDDED(priv, 0x0A, BYBBRXCONF); /* CR10 */
+>  }
+>
+> -void BBvSetVGAGainOffset(struct vnt_private *priv, unsigned char byData)
+> +void BBVSETVGAGAINOFFSET(struct vnt_private *priv, unsigned char BYDATA)
+>  {
+> -	unsigned char byBBRxConf = 0;
+> +	unsigned char BYBBRXCONF = 0;
+>
+> -	BBbWriteEmbedded(priv, 0xE7, byData);
+> +	BBBWRITEEMBEDDED(priv, 0xE7, BYDATA);
+>
+> -	BBbReadEmbedded(priv, 0x0A, &byBBRxConf); /* CR10 */
+> +	BBBREADEMBEDDED(priv, 0x0A, &BYBBRXCONF); /* CR10 */
+>  	/* patch for 3253B0 Baseband with Cardbus module */
+> -	if (byData == priv->abyBBVGA[0])
+> -		byBBRxConf |= 0x20; /* 0010 0000 */
+> -	else if (priv->bShortSlotTime)
+> -		byBBRxConf &= 0xDF; /* 1101 1111 */
+> +	if (BYDATA == priv->ABYBBVGA[0])
+> +		BYBBRXCONF |= 0x20; /* 0010 0000 */
+> +	else if (priv->BSHORTSLOTTIME)
+> +		BYBBRXCONF &= 0xDF; /* 1101 1111 */
+>  	else
+> -		byBBRxConf |= 0x20; /* 0010 0000 */
+> -	priv->byBBVGACurrent = byData;
+> -	BBbWriteEmbedded(priv, 0x0A, byBBRxConf); /* CR10 */
+> +		BYBBRXCONF |= 0x20; /* 0010 0000 */
+> +	priv->BYBBVGACURRENT = BYDATA;
+> +	BBBWRITEEMBEDDED(priv, 0x0A, BYBBRXCONF); /* CR10 */
+>  }
+>
+>  /*
+> @@ -2248,12 +2248,12 @@ void BBvSetVGAGainOffset(struct vnt_private *priv, unsigned char byData)
+>   *
+>   */
+>  void
+> -BBvSoftwareReset(struct vnt_private *priv)
+> +BBVSOFTWARERESET(struct vnt_private *priv)
+>  {
+> -	BBbWriteEmbedded(priv, 0x50, 0x40);
+> -	BBbWriteEmbedded(priv, 0x50, 0);
+> -	BBbWriteEmbedded(priv, 0x9C, 0x01);
+> -	BBbWriteEmbedded(priv, 0x9C, 0);
+> +	BBBWRITEEMBEDDED(priv, 0x50, 0x40);
+> +	BBBWRITEEMBEDDED(priv, 0x50, 0);
+> +	BBBWRITEEMBEDDED(priv, 0x9C, 0x01);
+> +	BBBWRITEEMBEDDED(priv, 0x9C, 0);
+>  }
+>
+>  /*
+> @@ -2269,13 +2269,13 @@ BBvSoftwareReset(struct vnt_private *priv)
+>   *
+>   */
+>  void
+> -BBvPowerSaveModeON(struct vnt_private *priv)
+> +BBVPOWERSAVEMODEON(struct vnt_private *priv)
+>  {
+> -	unsigned char byOrgData;
+> +	unsigned char BYORGDATA;
+>
+> -	BBbReadEmbedded(priv, 0x0D, &byOrgData);
+> -	byOrgData |= BIT(0);
+> -	BBbWriteEmbedded(priv, 0x0D, byOrgData);
+> +	BBBREADEMBEDDED(priv, 0x0D, &BYORGDATA);
+> +	BYORGDATA |= BIT(0);
+> +	BBBWRITEEMBEDDED(priv, 0x0D, BYORGDATA);
+>  }
+>
+>  /*
+> @@ -2291,13 +2291,13 @@ BBvPowerSaveModeON(struct vnt_private *priv)
+>   *
+>   */
+>  void
+> -BBvPowerSaveModeOFF(struct vnt_private *priv)
+> +BBVPOWERSAVEMODEOFF(struct vnt_private *priv)
+>  {
+> -	unsigned char byOrgData;
+> +	unsigned char BYORGDATA;
+>
+> -	BBbReadEmbedded(priv, 0x0D, &byOrgData);
+> -	byOrgData &= ~(BIT(0));
+> -	BBbWriteEmbedded(priv, 0x0D, byOrgData);
+> +	BBBREADEMBEDDED(priv, 0x0D, &BYORGDATA);
+> +	BYORGDATA &= ~(BIT(0));
+> +	BBBWRITEEMBEDDED(priv, 0x0D, BYORGDATA);
+>  }
+>
+>  /*
+> @@ -2306,7 +2306,7 @@ BBvPowerSaveModeOFF(struct vnt_private *priv)
+>   * Parameters:
+>   *  In:
+>   *      priv          - Device Structure
+> - *      byAntennaMode    - Antenna Mode
+> + *      BYANTENNAMODE    - Antenna Mode
+>   *  Out:
+>   *      none
+>   *
+> @@ -2315,22 +2315,22 @@ BBvPowerSaveModeOFF(struct vnt_private *priv)
+>   */
+>
+>  void
+> -BBvSetTxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode)
+> +BBVSETXANTENNAMODE(struct vnt_private *priv, unsigned char BYANTENNAMODE)
+>  {
+> -	unsigned char byBBTxConf;
+> +	unsigned char BYBBTXCONF;
+>
+> -	BBbReadEmbedded(priv, 0x09, &byBBTxConf); /* CR09 */
+> -	if (byAntennaMode == ANT_DIVERSITY) {
+> +	BBBREADEMBEDDED(priv, 0x09, &BYBBTXCONF); /* CR09 */
+> +	if (BYANTENNAMODE == ANT_DIVERSITY) {
+>  		/* bit 1 is diversity */
+> -		byBBTxConf |= 0x02;
+> -	} else if (byAntennaMode == ANT_A) {
+> +		BYBBTXCONF |= 0x02;
+> +	} else if (BYANTENNAMODE == ANT_A) {
+>  		/* bit 2 is ANTSEL */
+> -		byBBTxConf &= 0xF9; /* 1111 1001 */
+> -	} else if (byAntennaMode == ANT_B) {
+> -		byBBTxConf &= 0xFD; /* 1111 1101 */
+> -		byBBTxConf |= 0x04;
+> +		BYBBTXCONF &= 0xF9; /* 1111 1001 */
+> +	} else if (BYANTENNAMODE == ANT_B) {
+> +		BYBBTXCONF &= 0xFD; /* 1111 1101 */
+> +		BYBBTXCONF |= 0x04;
+>  	}
+> -	BBbWriteEmbedded(priv, 0x09, byBBTxConf); /* CR09 */
+> +	BBBWRITEEMBEDDED(priv, 0x09, BYBBTXCONF); /* CR09 */
+>  }
+>
+>  /*
+> @@ -2339,7 +2339,7 @@ BBvSetTxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode)
+>   * Parameters:
+>   *  In:
+>   *      priv          - Device Structure
+> - *      byAntennaMode    - Antenna Mode
+> + *      BYANTENNAMODE    - Antenna Mode
+>   *  Out:
+>   *      none
+>   *
+> @@ -2348,25 +2348,25 @@ BBvSetTxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode)
+>   */
+>
+>  void
+> -BBvSetRxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode)
+> +BBVSETRXANTENNAMODE(struct vnt_private *priv, unsigned char BYANTENNAMODE)
+>  {
+> -	unsigned char byBBRxConf;
+> +	unsigned char BYBBRXCONF;
+>
+> -	BBbReadEmbedded(priv, 0x0A, &byBBRxConf); /* CR10 */
+> -	if (byAntennaMode == ANT_DIVERSITY) {
+> -		byBBRxConf |= 0x01;
+> +	BBBREADEMBEDDED(priv, 0x0A, &BYBBRXCONF); /* CR10 */
+> +	if (BYANTENNAMODE == ANT_DIVERSITY) {
+> +		BYBBRXCONF |= 0x01;
+>
+> -	} else if (byAntennaMode == ANT_A) {
+> -		byBBRxConf &= 0xFC; /* 1111 1100 */
+> -	} else if (byAntennaMode == ANT_B) {
+> -		byBBRxConf &= 0xFE; /* 1111 1110 */
+> -		byBBRxConf |= 0x02;
+> +	} else if (BYANTENNAMODE == ANT_A) {
+> +		BYBBRXCONF &= 0xFC; /* 1111 1100 */
+> +	} else if (BYANTENNAMODE == ANT_B) {
+> +		BYBBRXCONF &= 0xFE; /* 1111 1110 */
+> +		BYBBRXCONF |= 0x02;
+>  	}
+> -	BBbWriteEmbedded(priv, 0x0A, byBBRxConf); /* CR10 */
+> +	BBBWRITEEMBEDDED(priv, 0x0A, BYBBRXCONF); /* CR10 */
+>  }
+>
+>  /*
+> - * Description: BBvSetDeepSleep
+> + * Description: BBVSETDEEPSLEEP
+>   *
+>   * Parameters:
+>   *  In:
+> @@ -2378,15 +2378,15 @@ BBvSetRxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode)
+>   *
+>   */
+>  void
+> -BBvSetDeepSleep(struct vnt_private *priv, unsigned char byLocalID)
+> +BBVSETDEEPSLEEP(struct vnt_private *priv, unsigned char BYLOCALID)
+>  {
+> -	BBbWriteEmbedded(priv, 0x0C, 0x17); /* CR12 */
+> -	BBbWriteEmbedded(priv, 0x0D, 0xB9); /* CR13 */
+> +	BBBWRITEEMBEDDED(priv, 0x0C, 0x17); /* CR12 */
+> +	BBBWRITEEMBEDDED(priv, 0x0D, 0xB9); /* CR13 */
+>  }
+>
+>  void
+> -BBvExitDeepSleep(struct vnt_private *priv, unsigned char byLocalID)
+> +BBVEXITDEEPSLEEP(struct vnt_private *priv, unsigned char BYLOCALID)
+>  {
+> -	BBbWriteEmbedded(priv, 0x0C, 0x00); /* CR12 */
+> -	BBbWriteEmbedded(priv, 0x0D, 0x01); /* CR13 */
+> +	BBBWRITEEMBEDDED(priv, 0x0C, 0x00); /* CR12 */
+> +	BBBWRITEEMBEDDED(priv, 0x0D, 0x01); /* CR13 */
+>  }
+> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+> index 0cc2e07829c5..3a6294b3bf1f 100644
+> --- a/drivers/staging/vt6655/baseband.h
+> +++ b/drivers/staging/vt6655/baseband.h
+> @@ -46,30 +46,30 @@
+>  #define TOP_RATE_2M         0x00200000
+>  #define TOP_RATE_1M         0x00100000
+>
+> -unsigned int BBuGetFrameTime(unsigned char byPreambleType,
+> -			     unsigned char byPktType,
+> -			     unsigned int cbFrameLength,
+> -			     unsigned short wRate);
+> +unsigned int BBUGETFRAMETIME(unsigned char BYPREAMBLETYPE,
+> +			     unsigned char BYPKTTYPE,
+> +			     unsigned int CBFRAMELENGTH,
+> +			     unsigned short WRATE);
+>
+>  void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+>  		       u16 tx_rate, u8 pkt_type, struct vnt_phy_field *phy);
+>
+> -bool BBbReadEmbedded(struct vnt_private *priv, unsigned char byBBAddr,
+> -		     unsigned char *pbyData);
+> -bool BBbWriteEmbedded(struct vnt_private *priv, unsigned char byBBAddr,
+> -		      unsigned char byData);
+> +bool BBBREADEMBEDDED(struct vnt_private *priv, unsigned char BYBBADDR,
+> +		     unsigned char *PBYDATA);
+> +bool BBBWRITEEMBEDDED(struct vnt_private *priv, unsigned char BYBBADDR,
+> +		      unsigned char BYDATA);
+>
+> -void BBvSetShortSlotTime(struct vnt_private *priv);
+> -void BBvSetVGAGainOffset(struct vnt_private *priv, unsigned char byData);
+> +void BBVSETSHORTSLOTTIME(struct vnt_private *priv);
+> +void BBVSETVGAGAINOFFSET(struct vnt_private *priv, unsigned char BYDATA);
+>
+>  /* VT3253 Baseband */
+> -bool BBbVT3253Init(struct vnt_private *priv);
+> -void BBvSoftwareReset(struct vnt_private *priv);
+> -void BBvPowerSaveModeON(struct vnt_private *priv);
+> -void BBvPowerSaveModeOFF(struct vnt_private *priv);
+> -void BBvSetTxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode);
+> -void BBvSetRxAntennaMode(struct vnt_private *priv, unsigned char byAntennaMode);
+> -void BBvSetDeepSleep(struct vnt_private *priv, unsigned char byLocalID);
+> -void BBvExitDeepSleep(struct vnt_private *priv, unsigned char byLocalID);
+> +bool BBBVT3253INIT(struct vnt_private *priv);
+> +void BBVSOFTWARERESET(struct vnt_private *priv);
+> +void BBVPOWERSAVEMODEON(struct vnt_private *priv);
+> +void BBVPOWERSAVEMODEOFF(struct vnt_private *priv);
+> +void BBVSETXANTENNAMODE(struct vnt_private *priv, unsigned char BYANTENNAMODE);
+> +void BBVSETRXANTENNAMODE(struct vnt_private *priv, unsigned char BYANTENNAMODE);
+> +void BBVSETDEEPSLEEP(struct vnt_private *priv, unsigned char BYLOCALID);
+> +void BBVEXITDEEPSLEEP(struct vnt_private *priv, unsigned char BYLOCALID);
+>
+>  #endif /* __BASEBAND_H__ */
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190305143241.14118-1-jbi.octave%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
