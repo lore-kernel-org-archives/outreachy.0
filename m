@@ -1,97 +1,114 @@
-X-GM-THRID: 6467836648401928192
-X-Received: by 10.46.80.25 with SMTP id e25mr69229ljb.26.1505910569431;
-        Wed, 20 Sep 2017 05:29:29 -0700 (PDT)
+X-GM-THRID: 6664844369829298176
+X-Received: by 2002:a17:906:c9d2:: with SMTP id hk18mr2819112ejb.5.1551783462976;
+        Tue, 05 Mar 2019 02:57:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.54.141 with SMTP id y13ls5183wmh.6.canary-gmail; Wed, 20
- Sep 2017 05:29:28 -0700 (PDT)
-X-Received: by 10.28.215.195 with SMTP id o186mr426421wmg.9.1505910568512;
-        Wed, 20 Sep 2017 05:29:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505910568; cv=none;
+Received: by 2002:a50:8b8a:: with SMTP id m10ls5579867edm.7.gmail; Tue, 05 Mar
+ 2019 02:57:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwJ8b+eKTYHW5nXSF0Teic8ZLnCw1uAveDG04xzpuQSqGHuSXPbnnNn2UYjkrsoob95ukbf
+X-Received: by 2002:a50:8ed8:: with SMTP id x24mr3225117edx.10.1551783462186;
+        Tue, 05 Mar 2019 02:57:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551783462; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qrnnqb7/mSCF+ZWKCoLQNZoGpC5OKMlcZFlwNPxgnT5bewZN16OBxhmHrAaRVrzono
-         dXLzCGL0gcBtwaJk8rh9cRLcIeE52Ihgxad2/U/oUl8Adz3lI7QgFQjXDBbnpVvVLV8U
-         Si3dgMx1tw+Zvoi4UTvhVupq8qt9fdXuwQ7P0qnl7PqgEY4KFRPrAcaYG6vHl0JGMFya
-         c0O8s10Ta8H/3KbTFmVhPF6bjymrOzSZVk7rCst+OrhGy2QlE/Xt7DS8VyMINofQSaIb
-         F0POLnU8F3rv47KKGcSvq4ozFMvwSXGcHrDK/MQrOa6zJsEMzSe9fEcDW0qJwjyl741Y
-         0tlA==
+        b=KsuL2VwgQZ+uNzk96WFMg7WpEPE0/RtdT3zoQto6nqQeX4Ql5/aUxd2UYLboGXNu5p
+         ZReqTLqs8PtsY6Ni4Tie9Gej9MsPY5BSjumxP3zWwwiFcmFctHC03QbeSBOVPW6XjrjL
+         QV7IW3Yg4r7AkJXcPe7D6NY/QKsq17xoFkBunTVxYAcIrzH63iL6+5hfCZY6A2TnapiQ
+         wLOi/oOeJgjm7RBKsO7GIF3jZPamH0osj1Lb4+57BC4CdvlScmPP6P6dmHOLtatOrRvJ
+         yMFAlCQnucb5qo7UFvAUpR6iDcvj5TxqU2R6nuCkJs7W4inoqrFsECh370fHBwVwpWlj
+         7Bvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=cK5TLONZnWjpoyU8WxjCY4/43b0kG0aDddtlhy9c6yQ=;
-        b=GtkPaJ7sMjB8PNdGZ7wFqo1fte+Yq78BMN1spZL88XXYg51gGOfWM8y+G8+jFY0YYh
-         SMOQRJmk2PNvrwZGUgmqwKtItPgIvDEMZiDBIOiHpBJD7FND6Ce71irBbYazJJESEZB7
-         KDA1aXWyb+x8iK5Tfw/4RJN5zPfs6reSqJ6n4Zp7YessWpTW75SNEEYzl9dbuzLpybU3
-         FwwpKZ4o42KSbAq8hhb09DhshHEpS6lmV/2cD7hroHu9v17/n1NXEqqSp3tt1GfJjn29
-         rrHWsw2AfGJ0glRH3FKPKyiFJzgTX1UNDNAQFku0XfUtnAXofyO8GJOD2aQoUu/y9dIc
-         Vazw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=l7UkoQNcxzjFWMAilAESW7WjqQD7mP8k2ZmlbiG4z58=;
+        b=m/OFALeauOQiOoaLv5eZKf1UCAd7NhlOqEvLMPiWG2UQAlKrdsqjktapSjLB1fE87W
+         KzwpyN+uMt/tPnr8hEQKBaDrGTd5jnSSy0vCNMAW+DndVogxjOKWTAa3i3QCh1bwQx1Z
+         x0NEkzOgZ/qBcihZFxKHyJzrZAkAVlJ4QGTqDtrlwud457wY0Xr4NZuROU6vo9IoiK6m
+         IOPXGwzEHts+KtiJc7gV18CH7ckQpuoEQ+NpBsMiD6J75t9XGqpzG4EypyMON8eZAjv1
+         6YVco6FhdwnVxc0us+QDGHPF054tpGaBQXshtvlR/Z+Z/MPcERfsy9eLhQ/vQB5Oh6Xk
+         0LIQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pVtjHLsV;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id q145si166569wme.4.2017.09.20.05.29.28
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oN24mEYk;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::435 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com. [2a00:1450:4864:20::435])
+        by gmr-mx.google.com with ESMTPS id c7si321975ejx.1.2019.03.05.02.57.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Sep 2017 05:29:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Tue, 05 Mar 2019 02:57:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::435 as permitted sender) client-ip=2a00:1450:4864:20::435;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pVtjHLsV;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id r136so2297516wmf.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Sep 2017 05:29:28 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oN24mEYk;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::435 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x435.google.com with SMTP id r5so8925469wrg.9
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 02:57:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=cK5TLONZnWjpoyU8WxjCY4/43b0kG0aDddtlhy9c6yQ=;
-        b=pVtjHLsVYvMskM7dfD1HnVZ6LR5+0i+dDfA7L1DxfuNXdpahDEWDUXC/93PLassuOn
-         CFs6GQY+ZI/5DybNM7HdE9vPCmimL5uMYdzyr16wt5IZ2vjUmJ7NTlPkWsi7C4mS3G4T
-         urni/rKUiKuaqbOeLczaseq1EbQDJd9yVT2R95XjhtGCzKAv7j8CN0I+D5orOCInBJq6
-         C982sXsodDkW7mv/N+iKH7+FdOil1R7HkFVJqSa0FJLDbDlUMmuC59LADarv7H0nStf1
-         EZ/doxqZy4l57ObXLITnHAm5BMR/End6hKY07nq2HIMdT6QhGUd49VKRMPkVatW13HxS
-         iAdA==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=l7UkoQNcxzjFWMAilAESW7WjqQD7mP8k2ZmlbiG4z58=;
+        b=oN24mEYkS2qpOfjIyChoOhv9MM0vIq3GOGVU8kdv/LCNYWkAIMKT5dvmJPyg1rRRml
+         DyiHx/icuPCmZ13D/+osH3pePszmt8V6PE+JquK3yvWGvinSSeZcIW5MdPohva2pYsKo
+         i9q0Rj0Xvc2vZu4gRKOewsIQiQHHcNKL50Oprvwy+cd6MT+gbA2A8+4bMQwRuaOx8Kp8
+         LdpKP7Pk89EGL/zScK0HeAFXevK0Nr3hVVvfiJe2W+Ny57luikHwpqcndsIJIpxLT5g6
+         N4AEFyPda3GSj+rxR0zUmbgy0YzxjfQObr696uu9vYkVL1K0fBoNk8PnCgJmWoF0y3Uf
+         kl0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=cK5TLONZnWjpoyU8WxjCY4/43b0kG0aDddtlhy9c6yQ=;
-        b=eantM5wu+cnFhK1KaYqC/1B7yPeYv5MDr0nHn39IWgS4ABmuECeFiJeCWJkFwmQxHX
-         kRCAmki0cHKeTHJME3hOvAsRZYKhYrHLavy/zQpxzempKGD1+QL8oVRkQieckPZA/TAB
-         fqrxhbI+ISvxW8KGrJNUg0TlhBmJ3vXVJgAnzafDDjeqDbTu8R8ESExIFJneDrUHxjp4
-         O4DVZeEouEY0TppiXo2f6HuOsIISiH8f2gtXhQeFM4YoOZspiF+M7aa6EzyTfOTrMXg0
-         Z2MklsU5SgoHYLeHYEZJoeV4VETMdqoH0Iswuzwfg8G5F7da7eBKwROYxffzkVQC3+Br
-         o9ew==
-X-Gm-Message-State: AHPjjUgwJrapMsYf72a4O0qrBf8S8svQqPNRxZZsBSxgiMdv9UBnIwfR
-	OZWjGzyca+Gvp2aQSVeQUvvO4aK2
-X-Google-Smtp-Source: AOwi7QBVcabj39Yq+SntzD+SN2NCQL6GAI9U6mrV4jYQB0WUbY3EP8mOL6V15JPY8ttfhOaieVMeqA==
-X-Received: by 10.28.113.200 with SMTP id d69mr4157711wmi.152.1505910568245;
-        Wed, 20 Sep 2017 05:29:28 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
-        by smtp.gmail.com with ESMTPSA id t141sm1643608wme.33.2017.09.20.05.29.27
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=l7UkoQNcxzjFWMAilAESW7WjqQD7mP8k2ZmlbiG4z58=;
+        b=t98my7kLhZKmJ9YuBnf17JIaC0+3l6ncxkbX1skTxIfciMwdMkpWnxAkeHVwN7XoWZ
+         1PGfTUBOx/xQFcNJqzdmFcfkto6H9mLlBkfdUTQO5uSh5gmftPuXVl5pOYqEjVFv7HSo
+         wU/RePwBKVbo8fe106t+9LZXuVXaJ6Vf5CBLCUtJ3BivRvuxuYiGyGzd63KGE9OaMzUU
+         1YcfWnQKoRgVnk1V7dw6V/E2IC7ne9YLEd0gZ6FQIzQLz8SsYu9a/uc6g/3kYZaXXcjg
+         KItFs/IKCAaAh8aBIH5pAoh9Iq+Yvt6IvOqc+ana3xyxEMNr3Ix35kPzS9F1VwWcXja5
+         HwfQ==
+X-Gm-Message-State: APjAAAXOcTZQUuECCKl0ZBiuj1tE7qBhuK460eWJbjcsUTobfGFrFgvJ
+	Xu9p+uGZZwBPy2C/hjnS5NlHUyt9
+X-Received: by 2002:a5d:6641:: with SMTP id f1mr16171483wrw.279.1551783461608;
+        Tue, 05 Mar 2019 02:57:41 -0800 (PST)
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from pthm ([2a02:2f0a:b600:4700:9c19:34c6:5e3b:e162])
+        by smtp.gmail.com with ESMTPSA id e7sm13418278wrw.35.2019.03.05.02.57.40
+        for <outreachy-kernel@googlegroups.com>
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 20 Sep 2017 05:29:27 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
+        Tue, 05 Mar 2019 02:57:40 -0800 (PST)
+Date: Tue, 5 Mar 2019 12:57:39 +0200
+From: Daniela Mormocea <daniela.mormocea@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/4] Staging: media: atomisp: Fix style issues
-Date: Wed, 20 Sep 2017 05:28:45 -0700
-Message-Id: <cover.1505909511.git.georgiana.chelu93@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Subject: [PATCH v2] staging: iio: Line over 80 characters
+Message-ID: <20190305105739.GA15583@pthm>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-This patchset fix coding style issues found by checkpatch.pl.
+Fix line over 80 characters, warning by checkpatch
 
-Georgiana Chelu (4):
-  Staging: media: atomisp: Use unsigned int instead of unsigned
-  Staging: media: atomisp: Add blank line after declarations
-  Staging: media: atomisp: pci: Move open brace '{' on the next line
-  Staging: media: atomisp: pci: Place constant on the right side in
-    comparissons
+Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+---
 
- .../atomisp/pci/atomisp2/atomisp_compat_css20.c    | 27 +++++++++++++++-------
- 1 file changed, 19 insertions(+), 8 deletions(-)
+Changes in v2:
+-fix wrong split of line
 
+ drivers/staging/iio/addac/adt7316.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
+index 6f7891b..5e5d3d9 100644
+--- a/drivers/staging/iio/addac/adt7316.c
++++ b/drivers/staging/iio/addac/adt7316.c
+@@ -2155,7 +2155,8 @@ int adt7316_probe(struct device *dev, struct adt7316_bus *bus,
+ 	else
+ 		chip->dac_bits = 8;
+ 
+-	chip->ldac_pin = devm_gpiod_get_optional(dev, "adi,ldac", GPIOD_OUT_LOW);
++	chip->ldac_pin = devm_gpiod_get_optional(dev, "adi,ldac",
++						GPIOD_OUT_LOW);
+ 	if (IS_ERR(chip->ldac_pin)) {
+ 		ret = PTR_ERR(chip->ldac_pin);
+ 		dev_err(dev, "Failed to request ldac GPIO: %d\n", ret);
 -- 
 2.7.4
 
