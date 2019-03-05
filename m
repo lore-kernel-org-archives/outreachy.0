@@ -1,97 +1,92 @@
-X-GM-THRID: 6666794148561944576
-X-Received: by 2002:a67:ed05:: with SMTP id l5mr18429590vsp.23.1552233972721;
-        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
+X-GM-THRID: 6664599065309741056
+X-Received: by 2002:a25:50c7:: with SMTP id e190mr570954ybb.37.1551772169092;
+        Mon, 04 Mar 2019 23:49:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:94c2:: with SMTP id w185ls132238vkd.1.gmail; Sun, 10 Mar
- 2019 09:06:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz6z9piZW6OvylPhS8i5wRg0S9xr+DRNZt2zoq1YekeXgxJW+n7tOzJaoF36iBqAbn2cU4Z
-X-Received: by 2002:a1f:aa03:: with SMTP id t3mr17981571vke.21.1552233972091;
-        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552233972; cv=none;
+Received: by 2002:a25:50cb:: with SMTP id e194ls1855141ybb.12.gmail; Mon, 04
+ Mar 2019 23:49:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzWa8ksqx0f00vikK5AbgKxuARds7MdLpnm5O8y8pN//HR3hDHxzYNwJ+XlxODv/X7/0M5f
+X-Received: by 2002:a25:3249:: with SMTP id y70mr533264yby.70.1551772168655;
+        Mon, 04 Mar 2019 23:49:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551772168; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xr1dQWo06XueW9dF7S+tVIJYZyao9oAx46kKNnnhTElA2J7ulKTiAb1O9ZQufwx4P2
-         C7egqD/Dzj/6foGWqpJe+fO8lPhnGtGICEZstP2IEfbtIsQSKVCr1iLtnmvjQ7plNTBE
-         EVmtbVfVNWZTaUy7cDHMuxJfgbU0i0oIpxvWiPkqukVXAftSYhRnD1X3YLoF9OLzgsT4
-         ULAdpmWVDeK4snTdSSjdwysFlCUolMr7E502Q1ekoVearKMlkO8NaPGqrG9mTSb8nBbU
-         OHbQFWknYfXMjWxa7p17+GSrvCRZXsc9HhIsEk0iZvkLW9SOdR8ipOWxIfq3FwYBFFej
-         1aIQ==
+        b=wS1Apm/3lJyNNl1WYqjHwsOOHd18e196YOCPRpz+8L1ZrEHz4eWUR0IBc5WTn7vZUp
+         oMfZSyEpnj0Z9fCZJ3Kd9J2F4pru/fitZXdjfnsQy4SNrtHeHT2/iX2ff5Id/wQibMJf
+         L68YTjsZCI/EUM6CFQaLi0TlC3jL5bhBwAialdVpLnN+v3Ty9MqpR/ZyL75rThkjpHGY
+         4nri5frROwNPlCxLHn2yB041oNoX2Qlbee0W2dnNPFwqmOsLuWykW4GCCW41mxXPO18i
+         QcXVFHh0F2vM8c5E7GwNnwhi7bZcvqVfdEtLtLDBChbQ0K2QKA+XE9CshTFva6nsheyX
+         j6WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GcVOIvrV50lDsoD0pLfM8nQReP3lIaU7j7myhkQaFZg=;
-        b=fpEVUEDGsFJf5p+goEQugNFFiZCQ8b4aqZrZf5phj2vl5NHeAyzmQ92zpUtNE0FjAA
-         lskVIr9ZaUQ9KhuKEPIU0YQcTp3m52D/siKguLiOqHRD0hZy33o26XbdqejnIzisqbrt
-         qpWLgrJexu1DqI3sOBkno0cM7DCZEfADyzAI9gNKdpPQ35Xi3r/E8UB8Rry+0Km3wpTS
-         CANjA0Y7t33bZvaPeltFqNipx9vNFAEXrmLhsoCFNhTAOZgaIecRNRvqlIpCF2cv+369
-         kLYf1JAKCu5ohYNRU6h41oNSV9K6sJM9FtBBbQQMjKMzulEw0iVNlOBWZxHE/wOu5eM6
-         5tig==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=lDOYZYlhwMfUEzS2/MTtNZNnLWGpqneisbENPuJuizw=;
+        b=L5fr8PXEA9XWxdg12BNMj0krQFfSTn5H1FHITGroidvB/Ewd2FAusZ4DXUxKs3RW9W
+         GCQFrD/+2xg2nkCy3u4NDKxlazFsyTFX4JIfOL9/+LijQkUNj4lDmnphQTAq2XiW6dgo
+         CoT22PxoT5On8dT2axlwBCJ6ZNn2GKoxiQo3QvXyyskq+MzJm4rtDon7cGon4zUAk9Eb
+         zQREXvwsy3pxv6JFD0Z57ZbUpxrcZpSJzoidCUi34OA1bv/gBAbbbMHga4f1fur2G30x
+         TTgotUWPZLjCu6BSo2N/y9Hrp7dpfOSujhGFpoRzzTA8t3fQiBfppuhhcvQ8cvIwbLYw
+         w1Rw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uEftzgwC;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id b19si125777vkf.3.2019.03.10.09.06.12
+       dkim=pass header.i=@kernel.org header.s=default header.b="XPrrc/YP";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id k62si385006ybb.4.2019.03.04.23.49.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Mon, 04 Mar 2019 23:49:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uEftzgwC;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id r124so2095080pgr.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=GcVOIvrV50lDsoD0pLfM8nQReP3lIaU7j7myhkQaFZg=;
-        b=uEftzgwCWc2p4PxMlstSEyFFtHENYbJ2wjYLrMBBxXy5gLSSRo4UZj4v5wj+32LTjF
-         BVQEMH3a6rpkgDZsSGVDqr/Uu/znE6mCas01qM8IfqV4t1CG9ieDpCvJ8qImv+z87ZRp
-         QzRNx+qcxlxAdBBxjRkNYPD5hyh5RQuQSDVw6exBEw8iLYVqGLFq43GQ/i6InUxvdEga
-         AG8+gHrk7unbIWgKynUW+DIrfaARGkLY8PvCoTQ1vVAOUnHRr7Rg+Dk64evNWNiSuNYN
-         yaqwzmfFHDeXwoUW5GXL6/rTjpuyCNAMkNh7gLvM+AHTdPircezmQu5vlYrRMDCgb9J0
-         YnDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=GcVOIvrV50lDsoD0pLfM8nQReP3lIaU7j7myhkQaFZg=;
-        b=ef0AjqNBdb4vUZD9K6+jd/BCmUht/cITu3iMUeIPFOf8lY6NDwIltkOWRXeELOauEL
-         uMGq/vyX+E6X7HgWfjXjKif6uBTySCtkD6WYm6nFX39FLv4hJG+n0Rf0uFybgottYXwS
-         30C0Zp2NL8ikZbpfTktWgF+AoaYsCH1wGB6ng5v4wN4A8U/J9uQHh3B4MEgzzsfIxTVK
-         sDd9lruvDu5Sdn/Qu5Um82wJCyB2ab9nC8wKc+3o3zGZCtO9cPmhafkI9dZcjr0zMXSY
-         bGnLYFz7iOAp6qtAtu81hq0zoYvRHWjYEnN80wbVoY+VHmTn+xb10Mra+Oid6I8NRDLH
-         DkeQ==
-X-Gm-Message-State: APjAAAWsU7l6eZyK59f0pb/S36n3enLEr7BMrZUG2Qc7J7bSs7oUqdoB
-	3QPvXzmNkSueElM3N3fBEu+h38BB4sY=
-X-Received: by 2002:a17:902:2ec1:: with SMTP id r59mr29214478plb.334.1552233970935;
-        Sun, 10 Mar 2019 09:06:10 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id x23sm10000292pfe.0.2019.03.10.09.06.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 09:06:10 -0700 (PDT)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/2] Staging: rtl8192u: Remove typedef struct types
-Date: Sun, 10 Mar 2019 21:35:52 +0530
-Message-Id: <20190310160554.4479-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b="XPrrc/YP";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 487C52082C;
+	Tue,  5 Mar 2019 07:49:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551772167;
+	bh=kg5uZGB8XZdk7cYW2OTP7v06j+mw1OPi3Q8MWVE8QSw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XPrrc/YPlTUaiTu8udX2KcEiGk7ltUuVPFp7D7FpzkvJZeZIfp5Arl5wechCLW03v
+	 8cobph9s5Vp7KHjOQUDVWm84QbgWCw2LEd8MHl5nErHgdKG8TMwnwDoFPK9ev/a7Xw
+	 lcbpYClyZxidpVe9SWrNlehKq1bX53E9j1qQAYxY=
+Date: Tue, 5 Mar 2019 08:49:25 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: octeon-usb: Add brackets around parameter
+Message-ID: <20190305074925.GA6956@kroah.com>
+References: <20190304175954.782-1-nishka.dasgupta@yahoo.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190304175954.782-1-nishka.dasgupta@yahoo.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-This patch series removes typedefs for various structures to maintain
-Linux KernelCoding style.
-Using typedefs for structures is discouraged.
+On Mon, Mar 04, 2019 at 11:29:54PM +0530, Nishka Dasgupta wrote:
+> Add brackets around macro parameter to avoid precedence issues. Issue
+> found by checkpatch.
+> 
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+> ---
+>  drivers/staging/octeon-usb/octeon-hcd.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/octeon-usb/octeon-hcd.h b/drivers/staging/octeon-usb/octeon-hcd.h
+> index 0ee74f63fdbf..073d679e292c 100644
+> --- a/drivers/staging/octeon-usb/octeon-hcd.h
+> +++ b/drivers/staging/octeon-usb/octeon-hcd.h
+> @@ -86,9 +86,9 @@
+>  #define CVMX_USBNXBID1(bid) (((bid) & 1) * 0x10000000ull)
+>  #define CVMX_USBNXBID2(bid) (((bid) & 1) * 0x100000000000ull)
+>  
+> -#define CVMX_USBNXREG1(reg, bid) \
+> +#define CVMX_USBNXREG1((reg), bid) \
+>  	(CVMX_ADD_IO_SEG(0x0001180068000000ull | reg) + CVMX_USBNXBID1(bid))
+> -#define CVMX_USBNXREG2(reg, bid) \
+> +#define CVMX_USBNXREG2((reg), bid) \
+>  	(CVMX_ADD_IO_SEG(0x00016F0000000000ull | reg) + CVMX_USBNXBID2(bid))
 
-Bhanusree Pola (2):
-  Staging: rtl8192u: Avoid typedefs for structure types
-  Staging: rtl8192: Remove occurances of typedef struct datatypes
-
- .../staging/rtl8192u/ieee80211/ieee80211.h    | 30 +++++++++----------
- .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 12 ++++----
- .../rtl8192u/ieee80211/rtl819x_TSProc.c       | 10 +++----
- 3 files changed, 26 insertions(+), 26 deletions(-)
-
--- 
-2.17.1
+Change is not needed :(
 
 
