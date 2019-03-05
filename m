@@ -1,86 +1,156 @@
-X-GM-THRID: 6619835502508900352
-X-Received: by 2002:a17:902:243:: with SMTP id 61-v6mr92785plc.73.1541300560919;
-        Sat, 03 Nov 2018 20:02:40 -0700 (PDT)
+X-GM-THRID: 6664934799750201344
+X-Received: by 2002:a17:906:1d16:: with SMTP id n22mr180455ejh.14.1551801059196;
+        Tue, 05 Mar 2019 07:50:59 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b483:: with SMTP id y3-v6ls4119850plr.3.gmail; Sat,
- 03 Nov 2018 20:02:40 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fcLnz+N9TZxmkEhZmU28BNbfPRWFJ30kkUl4zLmW01j/soeSDn0h/nj5PkcSIB4ifKGnWv
-X-Received: by 2002:a17:902:6184:: with SMTP id u4-v6mr1365072plj.132.1541300560050;
-        Sat, 03 Nov 2018 20:02:40 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1541300560; cv=pass;
+Received: by 2002:a50:9fad:: with SMTP id c42ls5847631edf.1.gmail; Tue, 05 Mar
+ 2019 07:50:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwHMD87jbDot7ZwR+3uJqTOWXMLW6/743Qc9S/rJjusVomFgu3k4Gvza6v06IpvrBgnedFX
+X-Received: by 2002:a50:915d:: with SMTP id f29mr3465348eda.12.1551801058267;
+        Tue, 05 Mar 2019 07:50:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551801058; cv=none;
         d=google.com; s=arc-20160816;
-        b=UHZG+ERVPUy2JFE3NqQTJr3U7DJEQrA4euLSb6xV5uUNtlzLkCyaCEhUi+NfEJUXwW
-         OvgZKJYD+nykIpUsoSgKjeLCA7Oxq4CUsiOGme2d7aeDbFZf8I3aKIc4MTEItS6VzOyW
-         2vQRCnB7v2DR0ftoseM1V2WNZIDm5QXfVmii/yAbvxEfa8DcDR8/m7A7UPdFEmCeb3EQ
-         2OAa5wu0nWrij8sF5dx1Dnk//AV1tk9AakFNBAhgJlh2SrRbrJ9bUWBZeHC4VsluLlKu
-         VkVw806X0758tPCy0ksjdDt2E5mxo9jVGwny4f4VZhFG39I72ehMx4XAUjKi4/kEdjD4
-         PQ3w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=tPE+kigRW37vb83FDI0UPRfUABBN7DmMUxgbvhRj+7U=;
-        b=K+RgEVC6l6sqEZ3ytQ6Ak9mMhMqGNyFDRdunp7fvc5uR6iWvEyiMY91etT4YHRakd/
-         UeAT+1NSBI0BBnaaJ0pcbPphEZmjlfaV7hm4lx0UnuKGNqR3qAGzyK9JagNcKA2+9U4J
-         4Eexij1b1toUUeCMoEolyt+XpVGwTSXBjOqvDv+08vE/z/5vhqJRKtuFzRFcLFLg1V06
-         Wd8RPUvaSF8OPtltYQVVp8pzKu7TxEAC6zvNAc/HyrDsAR+yt2fzXYiyuvMWLorn8TVP
-         inrNuPl0HDuO/JzCG32PXxvwN32pDfM2j8AkNTEg8Yf/tdvRml2KgWdpv8ze9x4ayZXB
-         DaaA==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b="Wy3/jD4V";
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id o12-v6si46733pfk.4.2018.11.03.20.02.38
+        b=R2QtgLXGoubgGejii0u3zwsB9LbFa8TEuky8+SxFL++g8laSyGYI5pYU0RT1id9Zqg
+         GkQQJuAF6/5VqAhcJCCXP8Aj2SXZOeSy5g0bpZBLpbt0/EKVKzVDC4QZh4fyrJ2wRYgM
+         8tS+WuOogcYo3HyahDahi/zxf6jDqRJwGTPIwhR4Gz0jQk4YCrDAlvKxuSjZxC9nNQkK
+         IJR19gXvlR1H3OQxWQTC9AZFU4C7aPu0HouHSlS3z172qgxzm/u9bHATE3ksVX9Cis11
+         5NvIJxZnsTyYf9yYxGJWJuep0C6vr/xd753G5PAd3hPHoj2YRryvGOu28ZvH6ZO3NHbP
+         4N+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=iHBHtWY6v9ZrUvXFg+Gg6WVYqt3fKpgMXAPzmcMAte8=;
+        b=kJ4kV7N9ZkDxoAVTgdVc0Wv1WTNDStT/UzmSJIOyxfv3+lyK0HbxFsejnFw3mA3vvT
+         T3iDU5kY4RefXeVT/QPuTLDHWtIaqOEmKuN5fj5OoDgB4PkApwiQ87xHSHJLA6BE1XKe
+         nYci8pRsXhejdl4kZNAokkZ67ffnxp86y8NJCGL1+qoGSo+sNz5o0eqyUQDoIBedUKPu
+         2P+KiPPK/eIOvC31pR8ausiRpszDTaLdBkIh3mb5XnSnwsM9mmHN4IYtp5Hwf8k8azQU
+         Ji31Vxz3uykDHzgigttv3nWQcu5K+K7l7YMlEuzzznNZVYdwFVJRAjf289PrrKGaM+Ik
+         Am7g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oLqpMEgg;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id z19si435439edd.3.2019.03.05.07.50.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Nov 2018 20:02:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        Tue, 05 Mar 2019 07:50:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b="Wy3/jD4V";
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541300555; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=LLBvQ7BUdOoCE8XoNaV6fiirE8gOP0sV85u+sri2fMaYMCJ/LZxT0VXoMGDlqJFkOy19rgWLOyi5Pw1L2/ZIw2kvohKLhvZ+cgyZyV1GLwg7kqIQWkOUVuy7hlIZrK/44hXrg7PdCKvgB/3MHxiAyqWTlTJGCK0l1vaJQA+oBfs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541300555; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=tPE+kigRW37vb83FDI0UPRfUABBN7DmMUxgbvhRj+7U=; 
-	b=N6h1XjIrsnNTVy28BsV8FbQ2+/c1+/vJLhEJXAMjH0/rUkOugjM9rStSh/52T74COMC6GRgh5qZpz6un0bydstgRZOIKjcH6+lOZA9KcoywTJtNhiib23JIm7SXcBlcTCIvRxOKN9xq4UX/pUG2wHFFpAevtO05aY8gvcfLa7pE=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541300555;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=248; bh=tPE+kigRW37vb83FDI0UPRfUABBN7DmMUxgbvhRj+7U=;
-	b=Wy3/jD4V4rjC2oREnes2pHrCzfuRoXkxa5OoOIPwPwu0Qtjurdqk9S5tFoTMCuZx
-	l+AZqYGgqsNuKVnEqMc03HBdzCoLMlQm5ZYAHJnWfyUT0xosPEY22f8eGfqScvf+O46
-	/mc/zvveRGrpuxMFf3Ewex/r0t29xplFkhwtAHk8=
-Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 1541300553245745.4479316460398; Sun, 4 Nov 2018 04:02:33 +0100 (CET)
-Date: Sun, 4 Nov 2018 03:02:31 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oLqpMEgg;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x444.google.com with SMTP id w2so10002770wrt.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 07:50:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=iHBHtWY6v9ZrUvXFg+Gg6WVYqt3fKpgMXAPzmcMAte8=;
+        b=oLqpMEggD4hFncsKM2ZfyXoXd7b6I0U894qrCaNlIRdDCN1Ji8V0ZP68BHGjyzkC6U
+         5Hq40aYFCsX0qJ10g+4lnbDFEktOldx+TlSNsvSTBR8t9VJjd7v4ouBUqNeIq2pogTAY
+         +VxRBNwle+Xr88XazL57tRBxkIlEwZPMTDTjtm8LypM0afPm3hBxJKJwgOb7BP3vIcNs
+         va7engovsnfjywaGXy2H9U0WBtMcE7M6nWlf4rpNztW6oqxOIjoBBPjBr6NMua8Yv3QG
+         pjsx4wT2bxLvsF4XMkvbRDXnQ5dfTfzL/FqdRuDPjW932k6ol8G05Pe4/J3YuFSGolB+
+         hE9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=iHBHtWY6v9ZrUvXFg+Gg6WVYqt3fKpgMXAPzmcMAte8=;
+        b=tmXHpAYsxa2dx4E3eqyBxpIbvpKg+OLlYyiVEnRSKRfgHpi6FrB0TwFrKE9X3TH+WO
+         B73zoYfkbtZPYESVlfoDiINYx6TwlU7sargcg3caLm6d0uoQcyJ5jvwhzOvNKS83U6+X
+         cVe7Ywog6ErmZw1lb0xYiUDR1HcxVKgb683TIjJuyfnqqXnovf1DaAXoCMy8SRAAxfQO
+         2VKCWv3s6x5VSFcDeW+F6e6nMdC0nL2rlv9QybsdiZc6Bk2YAzrPO8FcaGPC/O6wPKwU
+         Ssa0zUrs306BGKiT62qs+xTBM9FZywADgwzPcNLPzING/u0F2FQyYwewSnROx0e4Kbfq
+         DBkQ==
+X-Gm-Message-State: APjAAAWYQphNuD3q/A2kQ64oMqEQ1Xba6JF79qL3FjJEO9sWmw2omrhX
+	M450UfPDitc59UnGUfVp5EmPD/tE
+X-Received: by 2002:adf:eb89:: with SMTP id t9mr7708572wrn.21.1551801057691;
+        Tue, 05 Mar 2019 07:50:57 -0800 (PST)
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from pthm ([141.85.233.105])
+        by smtp.gmail.com with ESMTPSA id t3sm20147945wmc.20.2019.03.05.07.50.56
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 05 Mar 2019 07:50:57 -0800 (PST)
+Date: Tue, 5 Mar 2019 17:50:55 +0200
+From: Daniela Mormocea <daniela.mormocea@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH 0/2] staging: zoran remove braces and replace BIT macro
-Message-ID: <cover.1541300498.git.code@wizofe.uk>
+Subject: [PATCH] staging: vc04-services: bcm2835-audio:  Fix alignment issues
+Message-ID: <20190305155055.GA22992@pthm>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Ioannis Valasakis (2):
-  staging: zoran: replace masking with  BIT macro
-  staging: zoran: remove unnecessary braces
+Fix all the alignment with open parenthesis issues
+detected by checkpatch
 
- drivers/staging/media/zoran/zoran_device.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+---
+ drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+index a6ec72a..4c2cae9 100644
+--- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
++++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-ctl.c
+@@ -68,7 +68,7 @@ static int snd_bcm2835_ctl_get(struct snd_kcontrol *kcontrol,
+ }
+ 
+ static int snd_bcm2835_ctl_put(struct snd_kcontrol *kcontrol,
+-				struct snd_ctl_elem_value *ucontrol)
++			       struct snd_ctl_elem_value *ucontrol)
+ {
+ 	struct bcm2835_chip *chip = snd_kcontrol_chip(kcontrol);
+ 	int val, *valp;
+@@ -129,7 +129,7 @@ static const struct snd_kcontrol_new snd_bcm2835_ctl[] = {
+ };
+ 
+ static int snd_bcm2835_spdif_default_info(struct snd_kcontrol *kcontrol,
+-	struct snd_ctl_elem_info *uinfo)
++					  struct snd_ctl_elem_info *uinfo)
+ {
+ 	uinfo->type = SNDRV_CTL_ELEM_TYPE_IEC958;
+ 	uinfo->count = 1;
+@@ -137,7 +137,7 @@ static int snd_bcm2835_spdif_default_info(struct snd_kcontrol *kcontrol,
+ }
+ 
+ static int snd_bcm2835_spdif_default_get(struct snd_kcontrol *kcontrol,
+-	struct snd_ctl_elem_value *ucontrol)
++					 struct snd_ctl_elem_value *ucontrol)
+ {
+ 	struct bcm2835_chip *chip = snd_kcontrol_chip(kcontrol);
+ 	int i;
+@@ -153,7 +153,7 @@ static int snd_bcm2835_spdif_default_get(struct snd_kcontrol *kcontrol,
+ }
+ 
+ static int snd_bcm2835_spdif_default_put(struct snd_kcontrol *kcontrol,
+-	struct snd_ctl_elem_value *ucontrol)
++					 struct snd_ctl_elem_value *ucontrol)
+ {
+ 	struct bcm2835_chip *chip = snd_kcontrol_chip(kcontrol);
+ 	unsigned int val = 0;
+@@ -172,7 +172,7 @@ static int snd_bcm2835_spdif_default_put(struct snd_kcontrol *kcontrol,
+ }
+ 
+ static int snd_bcm2835_spdif_mask_info(struct snd_kcontrol *kcontrol,
+-	struct snd_ctl_elem_info *uinfo)
++				       struct snd_ctl_elem_info *uinfo)
+ {
+ 	uinfo->type = SNDRV_CTL_ELEM_TYPE_IEC958;
+ 	uinfo->count = 1;
+@@ -180,7 +180,7 @@ static int snd_bcm2835_spdif_mask_info(struct snd_kcontrol *kcontrol,
+ }
+ 
+ static int snd_bcm2835_spdif_mask_get(struct snd_kcontrol *kcontrol,
+-	struct snd_ctl_elem_value *ucontrol)
++				      struct snd_ctl_elem_value *ucontrol)
+ {
+ 	/*
+ 	 * bcm2835 supports only consumer mode and sets all other format flags
 -- 
-2.19.1
-
+2.7.4
 
 
