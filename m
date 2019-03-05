@@ -1,111 +1,101 @@
-X-GM-THRID: 6670781063292256256
-X-Received: by 2002:a6b:6a11:: with SMTP id x17mr1174666iog.35.1553162248195;
-        Thu, 21 Mar 2019 02:57:28 -0700 (PDT)
+X-GM-THRID: 6664664784241164288
+X-Received: by 2002:a1c:a702:: with SMTP id q2mr199134wme.0.1551771523933;
+        Mon, 04 Mar 2019 23:38:43 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:28cf:: with SMTP id h198ls1574880ith.3.gmail; Thu, 21
- Mar 2019 02:57:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylTYL3Sd6MSrsy2ZCA8M5ppKsFryhFvJ2hHkX6BPK5+EChsEVog60leF972sDCopDjIG34
-X-Received: by 2002:a24:1fc8:: with SMTP id d191mr563537itd.29.1553162247233;
-        Thu, 21 Mar 2019 02:57:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553162247; cv=none;
+Received: by 2002:adf:b458:: with SMTP id v24ls3950664wrd.2.gmail; Mon, 04 Mar
+ 2019 23:38:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxDKsMa0P+Db//Qn2wdQt5BRiKZHONzFnJETGCENcbQHk2LVgcE/7kJhABB7e/LJOhd69dV
+X-Received: by 2002:adf:ee89:: with SMTP id b9mr1148488wro.23.1551771523279;
+        Mon, 04 Mar 2019 23:38:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551771523; cv=none;
         d=google.com; s=arc-20160816;
-        b=dkSvgjYi2f5vIeZRE9XvHMcGITV9AnFETGFG1r5H+/bgYxvRybou3cFC22iSaGrtPw
-         ky2DAj1adTuiiv+JD1TLta33sUhlsa3i5wdzlCQYXIyMi4Qdrf+TvyqMzmVETD+SXK+w
-         MuhB6BErDXunsP6qQvADSKrLs5IbBcg3SpOt/cfjC5yAlvdQzw8/2/3zChKxYzGZXFuu
-         xwQuKAX+KSIHssfblxgqC4hfpuQM/oqLd5UAM9xg4OlDX63fN3JGDrl2jIfmZghhbFfh
-         pdtMwD0L6WNijKCh+wP29gquhhiYrh3t91dVUKw1YOXPBoPPdmSmjhEimFK2WQOF9Tdg
-         q/sA==
+        b=oo4ErwMGZc2sZN8zEAk/6hnSyvdfW3JY8QhxmXgWtAOFPerx0MG/feojrtF8ngmtJi
+         ZzEd/cBHbOtTAT5eGo5kTN+/LSkdx+QfX5EdWeTNX2WtZDMyu1F2wTJrukGm9QAcayV1
+         75Tck5tRLFSqm+WCz6sQsXaSP9kSqx7EeTh67aT/vnRDPIOtpkG0f72/iBHJ0lgw+qAZ
+         armZTwNXx0c5mcrYTKfdGFto9I088dTuEdr9Fz77aNVrMHOfwtja/vlxS+lDVON10tZ+
+         844thWJhCZ+yEgKFnnidONKe1mndMRmidZCUl/YJlYR4V/mgI8eCqZ2MysmPfPWBh9Ry
+         OVsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7DpcCKZ3BK0kLHSKSyU9sSKEL4p01tr/xWVmYmQz1VY=;
-        b=SzpHwpdzaELg7E+a2PQ9LNh0GpP8Ms4yMFNPAYqNyjguk8RKIjDL+st1iQotytais2
-         dEUsMJpIpMpeu4tJNnsD4SeyuQvvR4iiToM62/Rld0Vv8CqagDSUZkyCh7Vezulz0CnX
-         tx/PlXYeUKzCV3ravw2OeAdlaBlv78MBW1QAtZQLHJZvuVyAdiJ65FPoJWJ2wK8DvOSf
-         Hn2JkeBEfBN8TMEusl0Z8LF7m4aYJzOIMG86fu0sswaoAQQfSXc5/UJYxyhDDjLlvtD+
-         rxfmDKHN8T3nMFKMrpteq/fW3cmSSB1a1bA75ry97GOi+8jPSbRLs95zxa3PmJRzh0a6
-         Akag==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=oacPYGVmx94D5L/vOAq7jbUwMBxD6oHczp7fHDpt5Fo=;
+        b=V5oAGws+URa4A3FxF6fWqSkiw4gLqJFoLoeH/YtuR1wx3KYAD7+pen0PEP4LCn4Qq5
+         u1b+Jxniv4dYVuR5ajWBzXgezPBtv+fTYE1csZQDx3mwrVgq+1aM9EX22vgrYDRcpNnY
+         UaymLb+ztUbier6JctEA6Zw8IXE3Qr74iNavoXnEJeqqn1s0G9bDGyZ3k6McT6oNTf2K
+         Z0nCZ1WpHoYkVStsPjkvp7h/qP09ebR8PpdcH89pLKxJEQP1o/mlfRFdRJqikM1UXxUh
+         WTO/Z+QijE4mV0AIAOxKvwB7veEKtimv0036q8Ei/L6G8B1kyld5GwY0oO6c/Om05Q6s
+         hG7g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Bw0ZeKZP;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id u1si442486itb.2.2019.03.21.02.57.27
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id t22si485159wmj.2.2019.03.04.23.38.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 02:57:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Mon, 04 Mar 2019 23:38:43 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Bw0ZeKZP;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id v21so3944887pfm.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 02:57:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=7DpcCKZ3BK0kLHSKSyU9sSKEL4p01tr/xWVmYmQz1VY=;
-        b=Bw0ZeKZP6Z6QAn7bTa94EmE8/Fm8cSRtADbO7TORKo9r+tkz8ZLFPORie/ryLB51Z/
-         JV+E+emmCOAB1WPCZ4/acYz+OobLbIPuSysZTB2+14YbLv1eeTl2NAPc23qBAmuTtvwL
-         geP6dlIK9JwM/tTQusVk7tRuaAMjngTQsD6+LkeB70yM1LwoP3IQiLX8lZY+0RNq0dpu
-         AIlWg1M7Pkfmr8XvDsdt/29jZugR8SqXnlcblGmZwyPpZCN7JaA7pcSSnePIif6/awnt
-         7aPCnb7swzsj3ca5Xvmb73gyAF2rZRoRocwtxYW5mh6K2vqmOC+n4TRygvtdVNKSu7nA
-         Tejw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7DpcCKZ3BK0kLHSKSyU9sSKEL4p01tr/xWVmYmQz1VY=;
-        b=mVXZQZBqeB/6ujhRgy5OuGNZZ0VxLnOYFSofqKgE87k7Wlg/zdRG7qtoxqEkNeyEcC
-         x293DblXW4wR2ZpbHwawa05+HnrALqI0W+sMoqYCTIjQDKf7eJA0fjakuj7zjffABZAf
-         QCJVfeoCnDZyTxCd934uQjDl/9Vq7mH0NRMAQL53SCO+t8R29/sdcQ3jO/jHT+p1Pmgc
-         YRJxzHa4La2Pplt8kUg6ZlYHXgYbFBBms3daW1C2h0Eg3MTtr4WDG3cyPfiyBJnzzxuZ
-         0zEMi7mbMuw8ZULMDjAta4wUSs0vBn/AtARhAGI+yi2z8gagdjCIB7SiBNmkPcS6EM2+
-         7NtA==
-X-Gm-Message-State: APjAAAX1Xk6PF85PzoQt8uyL75pMLytD2LyIp+0ygcQulRBOVIDpSMtU
-	cNGvSok2AKRUB9iAXjGqBOM=
-X-Received: by 2002:a62:293:: with SMTP id 141mr2394785pfc.245.1553162246126;
-        Thu, 21 Mar 2019 02:57:26 -0700 (PDT)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([49.34.80.198])
-        by smtp.gmail.com with ESMTPSA id m7sm3399881pgg.62.2019.03.21.02.57.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 02:57:24 -0700 (PDT)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH] staging: netlogic: Remove unnecessary error print
-Date: Thu, 21 Mar 2019 15:27:17 +0530
-Message-Id: <20190321095717.24155-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,443,1544482800"; 
+   d="scan'208";a="371925855"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Mar 2019 08:38:42 +0100
+Date: Tue, 5 Mar 2019 08:38:42 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Daniela Mormocea <daniela.mormocea@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: fbtft: Fix line over 80
+ characters
+In-Reply-To: <20190304222308.GA9982@pthm>
+Message-ID: <alpine.DEB.2.21.1903050838320.2551@hadrien>
+References: <20190304222308.GA9982@pthm>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Kmalloc normally produces a backtrace when there is not enough memory.
-So it is unnecessary to print an error message that provides only this
-information. Hence, remove pr_error() from memory allocation check.
-Issue found using Coccinelle.
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
----
- drivers/staging/netlogic/xlr_net.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 8554fcf4321b..afba1248e100 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -389,10 +389,8 @@ static void *xlr_config_spill(struct xlr_net_priv *priv, int reg_start_0,
- 	base = priv->base_addr;
- 	spill_size = size;
- 	spill = kmalloc(spill_size + SMP_CACHE_BYTES, GFP_ATOMIC);
--	if (!spill) {
--		pr_err("Unable to allocate memory for spill area!\n");
-+	if (!spill)
- 		return ZERO_SIZE_PTR;
--	}
- 
- 	spill = PTR_ALIGN(spill, SMP_CACHE_BYTES);
- 	phys_addr = virt_to_phys(spill);
--- 
-2.17.1
+On Tue, 5 Mar 2019, Daniela Mormocea wrote:
 
+> Fix line with over 80 characters to get rid of the warning
+> given by checkpatch
+>
+> Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+> Changes in v2:
+> -Correct a mistake I made in the previous patch regarding
+> a multiline string
+>
+>  drivers/staging/fbtft/flexfb.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/fbtft/flexfb.c b/drivers/staging/fbtft/flexfb.c
+> index c5fa591..b91b459 100644
+> --- a/drivers/staging/fbtft/flexfb.c
+> +++ b/drivers/staging/fbtft/flexfb.c
+> @@ -718,7 +718,9 @@ static int flexfb_probe_common(struct spi_device *sdev,
+>  			par->fbtftops.write_vmem = fbtft_write_vmem16_bus16;
+>  			break;
+>  		default:
+> -			dev_err(dev, "argument 'buswidth': %d is not supported with parallel.\n", buswidth);
+> +			dev_err(dev,
+> +				"argument 'buswidth': %d is not supported with parallel.\n",
+> +				buswidth);
+>  			return -EINVAL;
+>  		}
+>  	}
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190304222308.GA9982%40pthm.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
