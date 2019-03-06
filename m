@@ -1,46 +1,46 @@
 X-GM-THRID: 6664942000953884672
-X-Received: by 2002:adf:f10c:: with SMTP id r12mr131147wro.26.1551859177514;
-        Tue, 05 Mar 2019 23:59:37 -0800 (PST)
+X-Received: by 2002:adf:ee01:: with SMTP id y1mr142604wrn.10.1551859149923;
+        Tue, 05 Mar 2019 23:59:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:8085:: with SMTP id b127ls94369wmd.0.canary-gmail; Tue,
- 05 Mar 2019 23:59:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz0qu+0bdUqBcL9UolU9NkFQHgfu1e2zz7eRJ4TGZZ6OYd4nIYjeyi5M3c9+N7x2zaZz6Zl
-X-Received: by 2002:a1c:4108:: with SMTP id o8mr538817wma.23.1551859176784;
-        Tue, 05 Mar 2019 23:59:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551859176; cv=none;
+Received: by 2002:a1c:b641:: with SMTP id g62ls93917wmf.11.canary-gmail; Tue,
+ 05 Mar 2019 23:59:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzG1jDei/FbGC/M1vG+FJn3E9jc8uzKUnmd2onGsHCPrPMTfhqljgCT54UtDHgHH0scmfQ6
+X-Received: by 2002:a7b:c0c8:: with SMTP id s8mr558191wmh.6.1551859149226;
+        Tue, 05 Mar 2019 23:59:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551859149; cv=none;
         d=google.com; s=arc-20160816;
-        b=YVHcfzhmIZTb8XmR7/0jfSqJ5zsOpfjP6ueLr1PXV/bNTuUKezUzvtKKy/K7CAlZW+
-         5ktAfDYyeLr25ACtw8Wmnsv1n3c2Tytq8+OXndIHcxmEB5N2IIPDo3UdygSCCBfkufyK
-         ESMmSYf8wu02/3X/o0uT3D7y+y7Tm/bbD887+uZDu0HV8jyFZf/5dv+MxDaDNQ+rfAiw
-         i0IK1NhRpiQldHv/NjYXzi1+gGHSUA353SBXHw29jTNMqF8kgv1Ce2kM6sDhgpmUQXjq
-         f+yA7bOyKwrftApg9qDjhl2y+2Zf93cjztrn3z7n2o9cWbQ57Q4jtLE6Do0a0khelKxD
-         2uZQ==
+        b=vlLx2UmxP09YcO9ZLeEfiYuKBKQG+QBXEOcI9pFfaNvQ70bebZsci2eImiEFwsxecb
+         vWrmGvm9lKdNe3EFssPqjbxOk0bDb2M6Ht7Eb2EZ1IrS5jrZ6gfSbeA/FcBUartjGYrq
+         Im7LegkuxlEFNuK9BdR5nvflLYoMQQE7909u6lmABDsRyGsOBxu/qMxb1r5Sv5yrOjDa
+         1B08jg8iciAfB6hwIUt789NP3dOpIKsPXb/zNoTYyve982+NFcEiHBVAGo7JK+d4xgrX
+         31HGZGFd7MZ5mSTmQW9hb56xtjO3fWi4M63cii65j+J3oIQR0Rr+5r69cFvkvhiQFVNf
+         eH7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date;
-        bh=GWHWSHXcka/Z4dSqt/usUUlUSgv3VNuA4UB6Z8jJ2W0=;
-        b=TLPrFZJEfj6FG7zqv7ZDVYF/SiTinSsvIntbOQPI9C1RWeQ+HRD5Sdi5lq5jtAh4bz
-         sNHAv57a3px59csm4Fl1UDf7gaUFsu5NaArIFzm3n03nQRd/NlHx7YCVvNfRYmFhu7+A
-         ZB0KkBaSrADPCAriaqHNWVVWr/sCjDXMYANwyvgOFxMKtluKv9mgbVAstXP2klD13T0K
-         fK9qQC4fTbyBoj7R28dL7XlWm7EDUKM0NXfVY5zAYpbt6oROMOsh0BmnJSwPoGpD4LzW
-         eS0Puoled5bL9yf9KYJXIdEt5iZrAzhE+4w3aHqkkzTJyjEoB9hkKCeTDSPa7sDjUbca
-         mjKQ==
+        bh=mLfaSrS/0Bmxy3frBLNTzBoNYiV88s14I79vbn+8qmA=;
+        b=rgJqWWs93GmK+lyOQc3ObRlrJCmQ/paRh5zhq6TJENSKQRbdYbEux504zlQbKFHWjM
+         j4YdLfb4uFLac1UKw4QpZgGYGiZPHuc2DiUjmADqqWK04mBLc+QyFjPhOn0+WiDYYN4V
+         AiWjda3p1trQEpuKsW2cZre5U19zFttL8VyFLrSgcUeZgBeWuBLs3lf6fj0EB9C7cQW8
+         0SEM9OIpQTKhJa8AbCQZ9y4juxTy7vhjQkLeXcog4T45l4qL1mVEzJvkfHcyqWz5INJW
+         MofAgRrxDLaAt4aRBlH5KvTPP5o/N9rk7ewowVRlWo3XGZsnIJoIM/d8mh+U6JKTchTj
+         BCng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id m1si40217wrj.4.2019.03.05.23.59.36
+        by gmr-mx.google.com with ESMTPS id m1si40195wrj.4.2019.03.05.23.59.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 23:59:36 -0800 (PST)
+        Tue, 05 Mar 2019 23:59:09 -0800 (PST)
 Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.58,446,1544482800"; 
-   d="scan'208";a="298268204"
+   d="scan'208";a="298268162"
 Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 08:59:36 +0100
-Date: Wed, 6 Mar 2019 08:59:35 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 08:59:08 +0100
+Date: Wed, 6 Mar 2019 08:59:08 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
@@ -49,20 +49,25 @@ cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 Subject: Re: [Outreachy kernel] [PATCH v3 1/2] staging: fbtft: Remove unused
  #defines.
 In-Reply-To: <20190306052313.GA3924@bhagyashri-Lenovo-G570>
-Message-ID: <alpine.DEB.2.21.1903060859150.2706@hadrien>
+Message-ID: <alpine.DEB.2.21.1903060857510.2706@hadrien>
 References: <20190306052313.GA3924@bhagyashri-Lenovo-G570>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
-It would be good to have a cover letter (0/2) for this patch series as
-well.
 
-julia
 
 On Wed, 6 Mar 2019, Bhagyashri Dighole wrote:
 
 > Remove unused #defines detected by checkpatch.pl.
+
+Does checkpatch detect unused defines?  I thought it highlighted this code
+because of the came case issue.  Checkpatch uses regular expressions.  It
+seems that it can now look at a series of lines, but I don't think it can
+hunt around for things at arbitrary places in one or more files.
+
+julia
+
 >
 > Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
 > ---
