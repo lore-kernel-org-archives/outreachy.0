@@ -1,124 +1,105 @@
 X-GM-THRID: 6665257385329688576
-X-Received: by 2002:a62:9a12:: with SMTP id o18mr5508629pfe.114.1551989117660;
-        Thu, 07 Mar 2019 12:05:17 -0800 (PST)
+X-Received: by 2002:a2e:8ec9:: with SMTP id e9mr251219ljl.6.1551876167247;
+        Wed, 06 Mar 2019 04:42:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:5a07:: with SMTP id o7ls798461pgb.12.gmail; Thu, 07 Mar
- 2019 12:05:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwuI0RAL+dXF5W7WB0RfF1XFZ45YNTwQLiVy/UcC/Qjm+/iYJXaJxmRPSij1iRm4+l4E8i5
-X-Received: by 2002:a63:1a04:: with SMTP id a4mr5657076pga.126.1551989116693;
-        Thu, 07 Mar 2019 12:05:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551989116; cv=none;
+Received: by 2002:a2e:4788:: with SMTP id u130ls207900lja.14.gmail; Wed, 06
+ Mar 2019 04:42:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxWtZu/Fbu4L/hYZOKCRPnimomWa9KD9SNVU0oaG8jwa7spwATYxxxLTu2I8FuDTkVm6xLS
+X-Received: by 2002:a2e:5d8b:: with SMTP id v11mr251095lje.4.1551876166295;
+        Wed, 06 Mar 2019 04:42:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551876166; cv=none;
         d=google.com; s=arc-20160816;
-        b=sO3VrEwVgc+CTi7jQuxY1uezNtwUqvLciUb6N2grJKWqdhW9F0Ku35tMxv24kvYebn
-         GyMeYejVAiwmd7Qi8gi8XKw8Xlb9twcAGDMOyO6Bku6WAF4gacCK1a8XQG8dNEO7iP7V
-         1buN4FopTF/EcsAspZzdCwENMmNm91z/yFfaRIuO9VmoT9eB/7F+Wa/qc7WBT0rNpbcX
-         DbpuM7obZ+hmu6bEm0E2KgvUWM48YaRWQliBvvhrNCAadYUm/FJxhpn6HnzoDyqVDbTP
-         pSm+NmLJxBt74AJh+tBEn3sLIPThWKweXTyv1THwAc7fYrVbCyJrg1G3a6jzt0vjF3JY
-         kJRA==
+        b=Q+J+pVVCN8/wDaNNgaK8yuaZQLWeylgEqUXyeD0qWHr+C1oqO8O6Af0Tx/3KtRa10D
+         CH6nbti/3jiSi5iVCkYG4u4q6Jr44RlS7gx8ZythgMsdtiz8LOAl9WXtfZM/TR6GZobb
+         lFuxziRdiDpIz4jw+5qfINIeQSvOIJdHh/pZgEV/LU60fP4cBZilewgMw4Tw7PEO9KeZ
+         GekMGfEokHYeFjYKBDsovjPHt8qwkDxdUhwOaSUsofnQN9aiujAzxkVV0Ns/Rh99AYqF
+         cnf3qnjWtL79xuGsPj34yFgeOO8Xfbh4N7XaEhqpVOhdpPQ5AYjqBEgP2gXnsqz6GYV1
+         mMmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=9OLWAmNoVxK+5ksEI2IkfUXQidT8ldSRfKFtE5qhQLY=;
-        b=X11hcBb9oAfVvNw3WKFF0OqBPLmjCYuguRME9c2Jku9CnyK6iaujr93ViqHH1uhW4V
-         x9RFNzt84l8fTlzS5NhGSAjLB8Ov7jMfABhcxa9oeN2yDfZG+QEl0QHfCt/K5tnP7ptd
-         aTuk4q0cLYgU+3uMcfjsR51/4a1tR7NqQfqRtlC9peCz4BXFmmAzeZ2ck8f8OdCSmnKn
-         HN5gfm7wQaC7X8Tn+tPPjQ+kkK26lgIUbG9JwcmGFILi5w+h/sol/U7eXmnvRKeb7kNG
-         pNmqFrqSkCKPeWAYUg9Idei8U03vVHzeClJdtzQ+7AO7/22a6Ll+VkEcfnF4uY7IFJTc
-         dqQg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=WyqHV19CD3zxuGTNorsBs9ZQNWze18oD+j3t3nkGpyg=;
+        b=0vPOrD9KfjDIyNMB+e8knpQsXRJxxvA8W9Izo/J3ndIDrhQ3XahHwKdUQODGSaItL2
+         vMV/FM01bTu9bh0VCpIyZcpPGevBTsvCzojIS+3bBYWHiEwlKHImRigXCnNHU0As39z6
+         tyAZ5id/Gf0VHbcXXy712OYlgoJOMHytsq9hRTticlueaUN3XcnP4F0MF3F/8X8yrmCd
+         ZK5ef8SGMbUPdEZD/ErxI0IMnY5zxaR56QNQmnGNE+l65bHAD9l87aLSE1T2qgFWs8Zf
+         vB2Jsu6AgRZdBGSp0HD8ekudzyd0eTApj3ivt7Vjrf0JO4WoL0Kh8BSfVP7ixKdn3f0X
+         aOxg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=d05UUvGL;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=bp5WxoUe;
-       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.25 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from wout2-smtp.messagingengine.com (wout2-smtp.messagingengine.com. [64.147.123.25])
-        by gmr-mx.google.com with ESMTPS id e124si169660pgc.3.2019.03.07.12.05.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fRpLEBl6;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id v27si72124lje.0.2019.03.06.04.42.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 12:05:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 64.147.123.25 as permitted sender) client-ip=64.147.123.25;
+        Wed, 06 Mar 2019 04:42:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=d05UUvGL;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=bp5WxoUe;
-       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.25 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.west.internal (Postfix) with ESMTP id 813552835;
-	Thu,  7 Mar 2019 15:05:14 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Thu, 07 Mar 2019 15:05:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm3; bh=9OLWAmNoVxK+5ksEI2IkfUXQidT
-	8ldSRfKFtE5qhQLY=; b=d05UUvGLooNMW5osXU7dUsWXKhxnPq9hOSQGrdAKmCP
-	MyVwbRrxp1Rg8JwRcoJRaFqipul4elTZ9EuCvOVRNKnpS1hUEz8vzr5YI/FWtiXi
-	810+w+u8K2y+oihxaVsyZ4jwt6TlIYEbqqw2xsZHBmYLGt9cvJiqVjexDde3CwDI
-	jatnt1Hxbs9DUOBkQtEUCnRejZpcwQApwFRzEWRr47Ew2vtRdLhyCX7IKvaU19V0
-	jMImlRqW2OdP5kqE3jd8OS2IZEUq/IUL+jmXBN/udEozQtumPpDhU+N2onHr/10+
-	BO/P2ApPoAoJ24UI20Pb8/XQNlEfgDK6rLR5qWDG53Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=9OLWAm
-	NoVxK+5ksEI2IkfUXQidT8ldSRfKFtE5qhQLY=; b=bp5WxoUeHgw+loAZiFKBws
-	9sL+uQH7QIaDSuDReguQoDlA0kb4VOVRMGlhYBwkP6jkhL6pv7WYnZ1EfJnVJKKk
-	w72vDZvIpOpMgZ9o/wC6SVk15R4QReTl6U2EF0wgbwHaxAz1Nh14P7ltAE7UKeLW
-	vsXv8wRwFujtLOzwCd+aiTKbXqobRyFiB8IHkWZoKClP5vHeDh0W3JDk8rAsPg7f
-	Mc0iS0CmqHsXgBRy1U1mL3AG50dkBrQxtlO9bDnulpOesULDX66y1xzx3fBTWj4K
-	7JnMlgZeJzEhd7VlwPL9SANNaXPv72YbfeE7Bwvx5h4Wn77RbFYLj2Pgy5ma4v5Q
-	==
-X-ME-Sender: <xms:eXmBXDPq-QC7xIjXORtBZ8aOuqV0XTV9jaGoUNs4FaaUnKLExCuIGA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrfeekgddufeehucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvffukfhfgggtuggjfgesthdtredttdervdenucfhrhhomhepifhrvghg
-    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecukfhppeekfedrkeeirdekledrud
-    dtjeenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhmnecu
-    vehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:eXmBXBxei1sx9N1ZIWBfzQIrOrexiGkCjDiWM-KC6j5CEBzC0Rq1ow>
-    <xmx:eXmBXLWZAY3xhoYraQHSW9BK3RfujNzRVBmOx-KkLPTP7PMDovmhQg>
-    <xmx:eXmBXLNrfZY-y62XjSWSSG6zkdW54nTnI07OlbxQjzozctylmW3oxw>
-    <xmx:enmBXEJ6WAIOEQSGtV0nZ1bzcKuI1wRQ-DpNtqFpAxURrSCfNwvTPg>
-Received: from localhost (5356596b.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 5356910344;
-	Thu,  7 Mar 2019 15:05:13 -0500 (EST)
-Date: Thu, 7 Mar 2019 21:05:11 +0100
-From: Greg KH <greg@kroah.com>
-To: Daniela Mormocea <daniela.mormocea@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Fix NULL comparison
- warning
-Message-ID: <20190307200511.GA7554@kroah.com>
-References: <1551876162-1333-1-git-send-email-daniela.mormocea@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1551876162-1333-1-git-send-email-daniela.mormocea@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fRpLEBl6;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x343.google.com with SMTP id o10so4350548wmc.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 04:42:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=WyqHV19CD3zxuGTNorsBs9ZQNWze18oD+j3t3nkGpyg=;
+        b=fRpLEBl6fUdxSf0tjnI0BxtuNBfkHFIWBvfItgWpdzD2ohW4MWMSrhXCuoP/GcdVwM
+         ObnxU5mBbE6Opiu7HHTNVO9FqcU2TNVcLfwYqz/XQXznnV5posatXQT4H8EneLAYj3Av
+         oHlSzrGu3lxCewoh03N92Z6IW+chHFDInxRbFybNhcTfefLruIyfj6dDrD8Etx68UkSH
+         nhnL36gLTJHrqC0SUqTYowoI2v+fZkdVVwQ+uBVxPsWFt/klXGLcmXS4qx1QNylJtXY6
+         Ctd37c0FT2MMBV36dgWly7xiDaLmUrt8JugZr1qjKdQacs2dLttcQ+gChsCV8XJ7Ag+s
+         xuKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=WyqHV19CD3zxuGTNorsBs9ZQNWze18oD+j3t3nkGpyg=;
+        b=PhYL/XcFzT7MV77HEPns+JeSlFjQeboUiugIwvYXQAFo4K94yHL0bYQt4TgFguWbeM
+         or9jN2X64AzNutTe0UOKdLmqoYOfW63BpuVZ3TIlIYsyhm4UfEYh0klEFiB2CfrJN4kl
+         MzVfhYXBnmrFVwMNnkAz4qqUBQGt5YQH/5a/EfALII2v0j4ilVptlJvlPFq+EstVXFA/
+         GMAX9qz/PD+6NZqNUGiWHKYXwVV3+bK1inF711alh27y35m2svoW3BXj4v4Yo+KgBLz3
+         13YJCISRJG5wrGfH8aSHXP11WDnOznzz6ARHjc4gycc7o3VmffmaovThmX13q0kK7Fui
+         DtkA==
+X-Gm-Message-State: APjAAAW1iHAG5WEHy9UsOaFF4X61IGLG3gfvpgOGBrpfMwfiqdm0aBaf
+	rDqU3+u+tINS+fJcj+nuDtAeCQtal30=
+X-Received: by 2002:a1c:1fca:: with SMTP id f193mr2176122wmf.65.1551876165515;
+        Wed, 06 Mar 2019 04:42:45 -0800 (PST)
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from pthm ([141.85.233.105])
+        by smtp.gmail.com with ESMTPSA id m189sm2290588wmf.7.2019.03.06.04.42.44
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 06 Mar 2019 04:42:45 -0800 (PST)
+From: Daniela Mormocea <daniela.mormocea@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
+Subject: [PATCH] staging: speakup: Fix NULL comparison warning
+Date: Wed,  6 Mar 2019 14:42:42 +0200
+Message-Id: <1551876162-1333-1-git-send-email-daniela.mormocea@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Wed, Mar 06, 2019 at 02:42:42PM +0200, Daniela Mormocea wrote:
-> Replace NULL comparison with '!' operator as indicated
-> by checkpatch
-> 
-> Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
-> ---
->  drivers/staging/speakup/spk_ttyio.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-> index 0057eb9..5a9eff0 100644
-> --- a/drivers/staging/speakup/spk_ttyio.c
-> +++ b/drivers/staging/speakup/spk_ttyio.c
-> @@ -47,7 +47,7 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
->  {
->  	struct spk_ldisc_data *ldisc_data;
->  
-> -	if (tty->ops->write == NULL)
-> +	if (!tty->ops->write)
->  		return -EOPNOTSUPP;
->  	speakup_tty = tty;
->  
+Replace NULL comparison with '!' operator as indicated
+by checkpatch
 
-Someone already sent this same fix to the same file just before you did,
-sorry.
+Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+---
+ drivers/staging/speakup/spk_ttyio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-greg k-h
+diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
+index 0057eb9..5a9eff0 100644
+--- a/drivers/staging/speakup/spk_ttyio.c
++++ b/drivers/staging/speakup/spk_ttyio.c
+@@ -47,7 +47,7 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
+ {
+ 	struct spk_ldisc_data *ldisc_data;
+ 
+-	if (tty->ops->write == NULL)
++	if (!tty->ops->write)
+ 		return -EOPNOTSUPP;
+ 	speakup_tty = tty;
+ 
+-- 
+2.7.4
+
 
