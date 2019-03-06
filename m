@@ -1,99 +1,66 @@
 X-GM-THRID: 6664067951305424896
-X-Received: by 2002:a62:121d:: with SMTP id a29mr2315272pfj.103.1551865604841;
-        Wed, 06 Mar 2019 01:46:44 -0800 (PST)
+X-Received: by 2002:a50:944c:: with SMTP id q12mr4021203eda.0.1551864826057;
+        Wed, 06 Mar 2019 01:33:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:282b:: with SMTP id e40ls861946plb.6.gmail; Wed, 06
- Mar 2019 01:46:43 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy4jhd2I/HjOvIIu6DHBrj8/aHhRz7WUxXxR4tZ2kJGkFk6Qc+o4MTmYu+rdGbxQJw5wijI
-X-Received: by 2002:a17:902:9305:: with SMTP id bc5mr1848088plb.2.1551865603335;
-        Wed, 06 Mar 2019 01:46:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551865603; cv=none;
+Received: by 2002:a17:906:af8d:: with SMTP id mj13ls356648ejb.4.gmail; Wed, 06
+ Mar 2019 01:33:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzwBop4FVtoQuDz47hplr49QbhWkUvBmosnUm1l7T4yH/vjafHMoE382+3H6AdYnA8j8U9W
+X-Received: by 2002:a17:906:c9d2:: with SMTP id hk18mr688072ejb.5.1551864825239;
+        Wed, 06 Mar 2019 01:33:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551864825; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sia8E5vA+VMplkwpvsX3npz/Njji/i0XjJVw2m3swaD0M310BB1Aj5jUGDbI8svHdH
-         Qjgg4H2ylTjIU3rHJx1vocWgKP9yeDmFnJbV6u9MQRdaU+hYhpK996PYVVlzfMZvsjD/
-         ChI2DFwUApAsxw0QbxrY2MvDl0IngLAzZs3BbRze8YjqH1mvtKb+r5m3wdj+3adZLz8k
-         rj/D53X3pZ7OLR/uLPJKv3ukKJ8yH7myn6XprjGJcebwLbbFb2dyDMhFppE+fTM2Ls6J
-         YQALai22mJXRX6AuvARSXNkMEwRTHKlhgto9h+YX4iGH09klFrNH4MsEsQGiAxTboJJe
-         S1pQ==
+        b=qVbBJ786dfjOSFVFKOUGtw6oGPh3d2AWscYmko/6+yScjzSKW3sDWl3BltGfqx+PjY
+         mNzXNycBsngnQkht57aljaMbI0Ys3C0yD0pyNFvgEZeJyf7L4Ce/F5XrLacQ9VMFT3ow
+         4RdfEcoc+2aLQxmC7RHuVOA2hPCAvFgsc922+3et8LawOnCEgmtTPZuEvnMxXKB7cfq9
+         OGrxccmnjmlm8X58BfioeSzrr0iM/CXaqJH8m2WgWEuHeVvNiD7UixtV9VEtB8nrAsoV
+         e2lDeRCELvUHai7aVcgy4ILPO/a6kTPg6QEZQMxQEKOZpUYka/hBUgSrApAQJ3D9qR9I
+         i+/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=hZ983vr4+LvQZG7kfrfZcA61wrKAsSts5HfRU43iRv0=;
-        b=G3as9BWU9pBvzkEthKD95RIlyJuLW2WRyYuw45wzM23xChpVfyw4IIhZUe4k1lxTgW
-         XDVuMD3kyi1lhUOabnSeiOT2PXQYHW6nF/yCoAKrn/X1z5N6nj+wl2p39UpTwkFoIVd1
-         mYvIFRFw5c2wOpw1XxfeMwpmhvLQSdvZXzBxpL+mCnNkkFLWZ4nH7WgCda2ZLaj4tmri
-         0wgIVxwuzRif+nYVdDY4HqgA6DjtW8cvmkTB2TBrJWwCoDkg/tsimjPgz8h/NyufI528
-         EBou3Vr67QyCekbj/gV9nIUvDqOXelzaFhnKz7hMTd7kA5CUGdSH32rbmBHgESTUKSA0
-         zoQA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=2h6Nnjyi4CxVfwbSmVRqHduXFnrulofUpwizV+uPgJY=;
+        b=AWm6aUjALUjScEvTNZl2RfqcpL/kb6ZmtSkNQne/Nm8LY9OAdPIDHJDtB9JUgeYJId
+         TL3KHfbQm25jPWOyDdjzT78Y/FSkix79fO5SHGvlzUfV47rUtILPwh+Xd7BypXB2LJbd
+         RR+l8S0Hn0Np4tDDW+L5S1+QCqCtfPc2T00DT9JmDhJbJkpi8qxZURHRE/viZj6+ddFa
+         LE74cHSp2U0Iq0GlKf+1L7AoEfZlS4xxcSQ4A7FZrf+bRwgsWGO0Led6cZalMqKwSUX2
+         k71zUwNhrPUFIJX+2ejdjcuPVNgfeA11AwOPJz9ZKmxfBzc1609Tje52kihMkJQbcz1x
+         9zdQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RDs4rmVW;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <idebleenasen@gmail.com>
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id h15si34253plr.5.2019.03.06.01.46.43
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id i16si45387ede.0.2019.03.06.01.33.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 01:46:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
+        Wed, 06 Mar 2019 01:33:45 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RDs4rmVW;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x343.google.com with SMTP id i5so10153314oto.9
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 01:46:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
-        bh=hZ983vr4+LvQZG7kfrfZcA61wrKAsSts5HfRU43iRv0=;
-        b=RDs4rmVWRFXwthPmeRHZBn0hhUj3u2QiXmuK4V4PbxrPRMv24U4j8aXeRCe1/rz8Tf
-         JiIZlm+bHXjlu9IY5hHsQZpJrrRZVBcskr6dTX+J6tE3jJ/NRBoGoVNGKWV7VRdaUobT
-         Nuw/LofTn96Y39DtzQ0lvvI9JBB0x71ILeA+ZMf7FZx3hYBjBmH/BqZOQOIFVMIhhBo6
-         rznh/0MnSGn52CBq1qShSscnAI8snGm3I/XwwZEbTSWjtziEkWzcqnPRPae0k4jR0++c
-         AAkPknes+6fHihkTj7atLXjHhGziLfNvVT9xmIX11IP44gJIGcL6NX6ce2iLbUmrCEOH
-         Uwfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to;
-        bh=hZ983vr4+LvQZG7kfrfZcA61wrKAsSts5HfRU43iRv0=;
-        b=IDI95lEDUGLzQy2TKys+vmchC5YVdYPh1dIzS+CB5IK1GXzjQpa6iJ8Auq8wL/30gH
-         xsA8YFlvoOPfkEtTFly0x2WtgjMafqvhlMeULdkhCD/6P0q6JK3RznB/MqijjVVi3B/l
-         Y8RWqtFOLMkl0wQcL8BueiOioiM/lK/n97LfZlFQUy5DVxVBkxmPGa795dRcLp+8e+J7
-         srXKZoVDh4Syb3lrHjva91/PKSCdvyc4JLfhXLW9SOfJHpwR1CYB6OdSU4OiRF4/be5V
-         uYKW7mVDltNOnsRrKtmqckDL5mP5G5UsqDc6cmcrM9wCnmK+t01fFQ2xj1hSHWAW/XNS
-         1j5w==
-X-Gm-Message-State: APjAAAUO0ot9bM6CgVo+BqIQJmAsl1X2EfBn1xcQh/mOOnhE4aSMdME/
-	c1rMnTRO/H0f0VjL3HPczIWOqEOeQ9zit5EqVaQMLPCb
-X-Received: by 2002:a9d:30d8:: with SMTP id r24mr3784239otg.194.1551865602852;
- Wed, 06 Mar 2019 01:46:42 -0800 (PST)
-MIME-Version: 1.0
-References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com>
- <20190305074018.GA6158@kroah.com> <CACw+u4FnMCpiBiYPqaz3R054wm2q3Rx9q2R7S15_2+EPhJmkNA@mail.gmail.com>
- <20190306091544.GE7927@kroah.com> <CACw+u4EWiZyqyYmuyK_5vMq+x5B-iB7-Z1JyeiT8_amOMyd3pQ@mail.gmail.com>
-In-Reply-To: <CACw+u4EWiZyqyYmuyK_5vMq+x5B-iB7-Z1JyeiT8_amOMyd3pQ@mail.gmail.com>
-From: Debleena Sen <idebleenasen@gmail.com>
-Date: Wed, 6 Mar 2019 15:16:31 +0530
-Message-ID: <CACw+u4GWyfOUDbRzxmKVM+fmK7q2rowyNyvEH-o6L3hrEiFvog@mail.gmail.com>
-Subject: Fwd: [PATCH v4] Staging: pi433: Fix line over 80 characters issue
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary="000000000000ff4c31058369dd6e"
-
---000000000000ff4c31058369dd6e
-Content-Type: text/plain; charset="UTF-8"
-
----------- Forwarded message ---------
-From: Debleena Sen <idebleenasen@gmail.com>
-Date: Wed, Mar 6, 2019 at 3:10 PM
-Subject: Re: [PATCH v4] Staging: pi433: Fix line over 80 characters issue
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,447,1544482800"; 
+   d="scan'208";a="372144614"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 10:33:44 +0100
+Date: Wed, 6 Mar 2019 10:33:37 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Greg KH <gregkh@linuxfoundation.org>
+cc: Debleena Sen <idebleenasen@gmail.com>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH v4] Staging: pi433: Fix line over
+ 80 characters issue
+In-Reply-To: <20190306091544.GE7927@kroah.com>
+Message-ID: <alpine.DEB.2.20.1903061033090.7709@hadrien>
+References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com> <20190305074018.GA6158@kroah.com> <CACw+u4FnMCpiBiYPqaz3R054wm2q3Rx9q2R7S15_2+EPhJmkNA@mail.gmail.com> <20190306091544.GE7927@kroah.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
 
-On Wed, Mar 6, 2019 at 2:45 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+
+On Wed, 6 Mar 2019, Greg KH wrote:
 
 > On Tue, Mar 05, 2019 at 09:54:44PM +0530, Debleena Sen wrote:
-> > On Tue, Mar 5, 2019 at 1:10 PM Greg KH <gregkh@linuxfoundation.org>
-> wrote:
+> > On Tue, Mar 5, 2019 at 1:10 PM Greg KH <gregkh@linuxfoundation.org> wrote:
 > >
 > > > On Sun, Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:
 > > > > Break the line and match the indentation to remove the
@@ -127,108 +94,22 @@ On Wed, Mar 6, 2019 at 2:45 PM Greg KH <gregkh@linuxfoundation.org> wrote:
 >
 > I have no idea what you are trying to do here, sorry.  Why are you
 > running 'git reset'?
+
+If you get confused with git, just undo the whole thing and start over.
+
+julia
+
+
 >
 > confused,
 >
 > greg k-h
 >
-
-In the tutorial it was written to edit a commit we need to use git reset
---mixed <file ID>
-
-So I thought to use that.
-
-It was my first patch probably. I already told you in another mail that
-there were like 16 warnings of the same type and same styling issue in
-pi433/rf69.c
-
-So in this patch I had fixed only one warning. Yesterday I sent another
-patch in which I've fixed the other 15 warnings.
-
-In the tutorial, it was written to edit a commit we need to use git reset
---mixed <file ID>
-
-So I thought to use that  to add the version change log.
-
-But when I  tried it, this error popped.
-
-I'm sorry. I think I've messed up.
-
---000000000000ff4c31058369dd6e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail=
-_attr">---------- Forwarded message ---------<br>From: <strong class=3D"gma=
-il_sendername" dir=3D"auto">Debleena Sen</strong> <span dir=3D"ltr">&lt;<a =
-href=3D"mailto:idebleenasen@gmail.com">idebleenasen@gmail.com</a>&gt;</span=
-><br>Date: Wed, Mar 6, 2019 at 3:10 PM<br>Subject: Re: [PATCH v4] Staging: =
-pi433: Fix line over 80 characters issue<br>To: Greg KH &lt;<a href=3D"mail=
-to:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt;<br></div>=
-<br><br><div dir=3D"ltr"><div dir=3D"ltr">On Wed, Mar 6, 2019 at 2:45 PM Gr=
-eg KH &lt;<a href=3D"mailto:gregkh@linuxfoundation.org" target=3D"_blank">g=
-regkh@linuxfoundation.org</a>&gt; wrote:<br></div><div class=3D"gmail_quote=
-"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
-r-left:1px solid rgb(204,204,204);padding-left:1ex">On Tue, Mar 05, 2019 at=
- 09:54:44PM +0530, Debleena Sen wrote:<br>
-&gt; On Tue, Mar 5, 2019 at 1:10 PM Greg KH &lt;<a href=3D"mailto:gregkh@li=
-nuxfoundation.org" target=3D"_blank">gregkh@linuxfoundation.org</a>&gt; wro=
-te:<br>
-&gt; <br>
-&gt; &gt; On Sun, Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:<br>
-&gt; &gt; &gt; Break the line and match the indentation to remove the<br>
-&gt; &gt; &gt; <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=
-=3D"_blank">checkpatch.pl</a> warning:<br>
-&gt; &gt; &gt; WARNING: line over 80 characters<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Signed-off-by: Debleena Sen &lt;<a href=3D"mailto:idebleenas=
-en@gmail.com" target=3D"_blank">idebleenasen@gmail.com</a>&gt;<br>
-&gt; &gt; &gt; ---<br>
-&gt; &gt; &gt;=C2=A0 drivers/staging/pi433/rf69.c | 3 ++-<br>
-&gt; &gt; &gt;=C2=A0 1 file changed, 2 insertions(+), 1 deletion(-)<br>
-&gt; &gt;<br>
-&gt; &gt; What changed from the previous versions?=C2=A0 That information a=
-lways goes<br>
-&gt; &gt; below the --- line please.<br>
-&gt; &gt;<br>
-&gt; &gt; Please fix up and resend.<br>
-&gt; &gt;<br>
-&gt; &gt; thanks,<br>
-&gt; &gt;<br>
-&gt; &gt; greg k-h<br>
-&gt; &gt;<br>
-&gt; <br>
-&gt; I&#39;m not able to find the commit.<br>
-&gt; <br>
-&gt; I tried using &quot;git reset --mixed e19b9ce&quot; but it shows an er=
-ror:<br>
-&gt; <br>
-&gt; error: object e19b9ce794a8534f0ad19bfa1c60260fd74b9bb9 is a blob, not =
-a<br>
-&gt; commit<br>
-&gt; fatal: could not parse object &#39;e19b9ce&#39;<br>
-&gt; <br>
-&gt; How can I recover it so that I can add the changes?<br>
-<br>
-I have no idea what you are trying to do here, sorry.=C2=A0 Why are you<br>
-running &#39;git reset&#39;?<br>
-<br>
-confused,<br>
-<br>
-greg k-h<br></blockquote><div><br></div><div>In the tutorial it was written=
- to edit a commit we need to use git reset --mixed &lt;file ID&gt;</div><di=
-v><br></div><div>So I thought to use that.</div><div><br></div><div>It was =
-my first patch probably. I already told you in another mail that there were=
- like 16 warnings of the same type and same styling issue in pi433/rf69.c</=
-div><div><br></div><div>So in this patch I had fixed only one warning. Yest=
-erday I sent another patch in which I&#39;ve fixed the other 15 warnings.=
-=C2=A0</div><div><br></div><div>In the tutorial, it was written to edit a c=
-ommit we need to use git reset --mixed &lt;file ID&gt;</div><div><br></div>=
-<div>So I thought to use that=C2=A0 to add the version change log.</div><di=
-v><br></div><div>But when I=C2=A0 tried it, this error popped.</div><div><b=
-r></div><div>I&#39;m sorry. I think I&#39;ve messed up.</div><br class=3D"m=
-_6474735271085534072gmail-Apple-interchange-newline"></div></div>
-</div></div>
-
---000000000000ff4c31058369dd6e--
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190306091544.GE7927%40kroah.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
