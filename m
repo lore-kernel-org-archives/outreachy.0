@@ -1,120 +1,118 @@
-X-GM-THRID: 6664942000953884672
-X-Received: by 2002:a1f:d5:: with SMTP id 204mr1032595vka.9.1551802735871;
-        Tue, 05 Mar 2019 08:18:55 -0800 (PST)
+X-GM-THRID: 6664067951305424896
+X-Received: by 2002:a2e:8941:: with SMTP id b1mr198631ljk.24.1551865950052;
+        Wed, 06 Mar 2019 01:52:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:76cd:: with SMTP id w13ls4458630uaq.2.gmail; Tue, 05 Mar
- 2019 08:18:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyM3wVVlLyNwoHycd6ge02cAHExpduovjpPf7NQ7o0M2+KgOkS8CHdtohGbp2lQv/ksJ+0n
-X-Received: by 2002:ab0:6455:: with SMTP id j21mr2036599uap.11.1551802733879;
-        Tue, 05 Mar 2019 08:18:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551802733; cv=none;
+Received: by 2002:a2e:92cf:: with SMTP id k15ls144007ljh.6.gmail; Wed, 06 Mar
+ 2019 01:52:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzeakyHw5oB9Yol6PumJ2bL/e9SMTjjl/ifCpiLits0SFm0L7Hwgehkn531iAiovW6d9j1P
+X-Received: by 2002:a2e:9613:: with SMTP id v19mr204598ljh.16.1551865949013;
+        Wed, 06 Mar 2019 01:52:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551865949; cv=none;
         d=google.com; s=arc-20160816;
-        b=n4nZPQIiVzV0WvwI638yoxFeitsC3i1uMXk5C/RoWPTFp+UNkXs+nfu1R+WWKkfVkS
-         EWt1KFYKt+dfwxHuYkj9aKnBXz56B7/I0CAljjPwJ9KSI+BTHK6kQgxki5FcmoIUl4/u
-         mfN/iO9dqKuhws8OEOb4NazW6Wktv5EEBw7jMQj3KMpuOTN7sGttx/IIGL2xlEcq1Tzl
-         LNMzv++ZfoXdNBZwO4A4Ztry1vn9j8bBlXiEqsdPfPb0dExtpIDt9zyk7fDGmgcVsO1C
-         Ug/IweRLpa4i+5wVe3qpppviNee22iU06fOnIGeapTmQ/eItURVI4aLgt3JTbVR1lWp7
-         WZqA==
+        b=aFbBnyX+0jgdLmnJd86u9CzAg1BXSYnAvWsSw0MTltRYlmTrJYvCd93NODZEFj4Is4
+         UnjrYDtRvn39irZnGe8B/4yGcdlAzVsAHCRtxfi7XoVcFdkbBBJ7RIf0detM11bMaJkt
+         lJR4fGMK5J7O5+DKLzxXQpsacNCrNSlfAGu6lQ05U4CY2lKEyCz+YRDmMDn60A7F9aDc
+         ydPGvcDCVcsNW/Q+pmOCXSMxA0sTo7+uIG8N4DNRCK1Hmyow32lpASXblmf2CrdCUc2v
+         zvTUam7vL6ZsqIU8oilZMW+mGpAsQc+SDDcnVgzsBmpgbUvtsu4kZ8NBJpJJWokveY1F
+         6PXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=1qjtqzLT7TNDblXpRLmEwpLtFfUFMhyVuDP2RVgxbQs=;
-        b=IHXqLCFqi0cUFAfe4AUWUlaAzuHo+KrQjqEQ8NO+5laxP7C4jV/DiQ2DFHV+MUhekf
-         L93oQYp+DjdpTcF1/CZs3MysuaYoEiCmuY0xhCoPVs1WeuBX61FIm/jySbNqbdr9yxAd
-         guFRwIcwWYdpJWMIAfeFiLYsHilYCk6FkuMSdbk/V/WVdbrx0wZTZu2p33qHprg9mX5u
-         rb/9OC/J/K03w8pn8dYhy4X4XNaG8o6h5rpTEihiEaHwETpf5D8u93VbD4DI44OFVx/u
-         qmZlZz3Eh/zR58WNaZIbL3frhGlszaiS1xYWiKkTqcPme/PG4O8v2rE1RmDqf2XFkzp+
-         2hTA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=OlNu+KkaRINp8Xw2YSW06q/44gXoLcrfASUct2VZQAY=;
+        b=D7Fefm9BC37Twsm/Vlxa3aCPMxCONOJXB76YgQjVnTbIpByOsgDzOBnJJMlijWfE6d
+         u15oSubQ6mQFzmF8lTHPipovt+R21eKafRpqHy4637Kwra7+C6cwZG7uw0XN0ejUkkUl
+         Pp0D3tXy22XrbjbeVAq/FcpMPE0w8FvOguicZl/NPxAg3pVcniLl0RmgpJiR8ZA/qP/A
+         ZT3o+5Z1/B0fISXG/tAyD/fxGdlyWsFG867W8G4qBxHa0Yu939prcMpTqZIy7fn2KxQJ
+         SNpORtY9lDqYajeuablHKSah6RiNjyvjOlZisX+KYX+ByYJEvpoy5fhAoaVdttfELIMO
+         B/0g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQXBh4Zc;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::532 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pg1-x532.google.com (mail-pg1-x532.google.com. [2607:f8b0:4864:20::532])
-        by gmr-mx.google.com with ESMTPS id m195si605423vkd.4.2019.03.05.08.18.53
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id m65si13750lfm.1.2019.03.06.01.52.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 08:18:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::532 as permitted sender) client-ip=2607:f8b0:4864:20::532;
+        Wed, 06 Mar 2019 01:52:28 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQXBh4Zc;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::532 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x532.google.com with SMTP id r124so5956311pgr.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 08:18:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=1qjtqzLT7TNDblXpRLmEwpLtFfUFMhyVuDP2RVgxbQs=;
-        b=YQXBh4ZcsV7NPkpLN8o+KIxNsgvu05+xGlt5806tTxiMppeQCH8DrqoMyWWcjMyAdu
-         HIAPYNRX0Baa+eZxfb8pZoXraNHk3EgTIvdhBbdi2GBPQysxrY00wNvuz82mHSOjtCPj
-         2b0CwcIMdlUTaHbFE2KsOwGa1/IvEIse4IB+jyYZbumxMSOlkUq5nX816vd/l3TwPu5t
-         cM6Uwxu89q8Bcvdr+o2tiZGlxEDnzSy4Nl7dQL0c8GZ20fcCLmIm6bkDcEq0DdwlyET/
-         tmf7v2HkKw2K630pw2lvmdGSswrtI+Za0svb4MIPxB2bP8KfRV83L9GCKmaHcb8cwKBM
-         HjJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=1qjtqzLT7TNDblXpRLmEwpLtFfUFMhyVuDP2RVgxbQs=;
-        b=iRiQvG1D/azVRWEsfLfLL6pVbfRejIcfLB7nVujcgUHI8PxPMfrZ9jNCOa52kwWU7r
-         rZKTEJjnUAosJ+G1S8tXeOa2xuxD1SfJ7QA6MMTTEs8qTRK6m3w3d6LKoz3AtC9g9bly
-         1sdhl3wxMIjZ2lSwRsqYKtW6bojdKb/JpJ1ajS4jYMoHuI4KkA8A9nATrkFvnVT5cHL/
-         vUibxnRXsdLvb8UmOYmXRvoqaxOB6OnLpmOp49dbsCBFxdPFT3EUxhdA4AAM1VSioi/M
-         secjzGhdUSuexYOHLgWz0238DRzQ462RlGLpNGPPI7DFXrwMaeBPAb/JbtXaXqiYfTi5
-         QAxA==
-X-Gm-Message-State: APjAAAXm1+1V1PiOXsZJx6t9HOGKUFmftsyryZpaNxkuXWHzrGpKmCEP
-	zBqRS3Fvk+oeGx1NZHdi4zEfkM25et0FAQ==
-X-Received: by 2002:a65:508b:: with SMTP id r11mr2074321pgp.242.1551802732864;
-        Tue, 05 Mar 2019 08:18:52 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e88:a284:c1b4:4aa8:71c5:d127])
-        by smtp.gmail.com with ESMTPSA id 4sm19792666pft.96.2019.03.05.08.18.50
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 08:18:52 -0800 (PST)
-Date: Tue, 5 Mar 2019 21:48:45 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 1/2] staging: fbtft: Remove unused #defines.
-Message-ID: <20190305161845.GA32030@bhagyashri-Lenovo-G570>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,447,1544482800"; 
+   d="scan'208";a="372149071"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 10:52:28 +0100
+Date: Wed, 6 Mar 2019 10:52:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Debleena Sen <idebleenasen@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Fwd: [PATCH] Staging: pi433: Fix line over
+ 80 characters issue
+In-Reply-To: <CACw+u4FaS0PDoxh2urUrqgBfRJWD7qY7xchgVEaKLZ06PD6a+A@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1903061051570.3557@hadrien>
+References: <1551805986-49458-1-git-send-email-idebleenasen@gmail.com> <20190306091521.GD7927@kroah.com> <CACw+u4GRhRY5kgjQgd-sYOLp4nfHU-tp_oKfK74i+QR7cnWQNg@mail.gmail.com> <CACw+u4FaS0PDoxh2urUrqgBfRJWD7qY7xchgVEaKLZ06PD6a+A@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; BOUNDARY="8323329-1140504101-1551865941=:3557"
 
-Remove unused #defines detected by checkpatch.pl.
+--8323329-1140504101-1551865941=:3557
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
----
-Changes in v2:
-  - Remove unused macro.
 
- drivers/staging/fbtft/fb_watterott.c | 6 ------
- 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 0a5206d..502d67f 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -90,15 +90,9 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 	return 0;
- }
- 
--#define RGB565toRGB323(c) ((((c) & 0xE000) >> 8) |\
--			   (((c) & 000600) >> 6) |\
--			   (((c) & 0x001C) >> 2))
- #define RGB565toRGB332(c) ((((c) & 0xE000) >> 8) |\
- 			   (((c) & 000700) >> 6) |\
- 			   (((c) & 0x0018) >> 3))
--#define RGB565toRGB233(c) ((((c) & 0xC000) >> 8) |\
--			   (((c) & 000700) >> 5) |\
--			   (((c) & 0x001C) >> 2))
- 
- static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
- {
--- 
-2.7.4
+On Wed, 6 Mar 2019, Debleena Sen wrote:
 
+>
+>
+> ---------- Forwarded message ---------
+> From: Debleena Sen <idebleenasen@gmail.com>
+> Date: Wed, Mar 6, 2019 at 2:54 PM
+> Subject: Re: [PATCH] Staging: pi433: Fix line over 80 characters issue
+> To: Greg KH <gregkh@linuxfoundation.org>
+>
+>
+> On Wed, Mar 6, 2019 at 2:45 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>       On Tue, Mar 05, 2019 at 09:13:06AM -0800, Debleena Sen wrote:
+>       > Break the lines after '&' and match the alignment with '(' to
+>       remove the
+>       > checkpatch.pl warning. Remove whitespace after '&' if any.
+>       >
+>       > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+>
+>       This has the same subject line as your previous patch, yet does
+>       different things :(
+>
+>       Please resend them all, as a patch series, with unique subject
+>       lines.
+>
+>       thanks,
+>
+>       greg k-h
+>
+> �
+> Actually in pi433/rf69.c there were like 16 warnings of the same type. In my
+> previous patch I had fixed only one warning. In this patch, I fixed all of
+> them. They have the same styling issue and I did the same thing on all the
+> lines. So I thought to put the same subject because essentially all of them
+> are same.
+
+Every patch in the Linux kernel needs a different subject.
+
+julia
+
+>
+> Debleena�
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/CACw%2Bu4FaS0PDoxh2urUrq
+> gBfRJWD7qY7xchgVEaKLZ06PD6a%2BA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1140504101-1551865941=:3557--
 
