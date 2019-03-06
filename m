@@ -1,128 +1,123 @@
 X-GM-THRID: 6664942000953884672
-X-Received: by 2002:ac5:c316:: with SMTP id j22mr3650277vkk.18.1551870161203;
-        Wed, 06 Mar 2019 03:02:41 -0800 (PST)
+X-Received: by 2002:a37:a10f:: with SMTP id k15mr4032636qke.29.1551867457483;
+        Wed, 06 Mar 2019 02:17:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:7201:: with SMTP id u1ls375634uao.3.gmail; Wed, 06 Mar
- 2019 03:02:40 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzVkTwiM/fiBhyloCN3Uk9f/HgmpEb8dDE54H3bpSG3h5pyE8dtn63i5lN8MsROhwSMD3Ju
-X-Received: by 2002:ab0:20d2:: with SMTP id z18mr4629580ual.24.1551870160367;
-        Wed, 06 Mar 2019 03:02:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551870160; cv=none;
+Received: by 2002:ac8:21c5:: with SMTP id 5ls489762qtz.1.gmail; Wed, 06 Mar
+ 2019 02:17:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqytdZvkmDxTVAfz8+e4pUWxOED93tj17gPfmoN2q2N+XYrTbPAmlmjcEiwKAjZqH8xlLR1E
+X-Received: by 2002:ac8:28c9:: with SMTP id j9mr3729084qtj.21.1551867456936;
+        Wed, 06 Mar 2019 02:17:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551867456; cv=none;
         d=google.com; s=arc-20160816;
-        b=YUkW1Op8QLNbI5muK1OitDpw16dJiivZeQNSPBX/2ql0sL3PdCxskJfVEfY1oGN669
-         Y16dRWSbhiZWnznYS/alXq/qAnPaUR8IW5W1CplmHomVyzeBWZIXnQDaAwfGupSjOAqQ
-         WnYQOuXkzoPBI9695BAaUEXsHK30GstiFiVQT1Kw7cG1QgbFnBfCQPsDXEKISJADxLNm
-         Z6O27RmKvNsgZZ9NygZPK6FvHnKardqhDkRXqLuyMzq8MN8o5cEar4v6jU5nMOi3mdzu
-         AeSUPtqPf99ZmFl2DXJispzjL6IHYiLtYbH4xHF2ILeKN6a9xxZ2AkNV8UFXS537Jxmi
-         8xLQ==
+        b=blxqrRL/Ec9uUkdJUH9K6uv0LXQLD2oc/khxvt9PPRMRVfk7tKkUiLRU2tJAKrS45E
+         9ROsPIWMyMDs8/bR+YkTW3vaXHq0iZyrgYToNFNdIteM9iF8sraCbXrKPWGqVfRH66Kz
+         BKPpdPDvYVjV34Oiy99h8K7lSWdoiGJmuh+TllixbaWoKHmq8Xx2B7U7DHe96spNlU+H
+         fgEPW/cAwGLp7nHHP8b8o9TOj1D/eeSknmoa8+oLrp5zQamwB60iRwg/nglwONrvFXBw
+         yDP9dFiCbUWXHPBeaDQXJisTgonsONtUNeXek9tJr6/utnP4Hizwl26vYyIgyhXlL05N
+         fqnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=ZvwiA8T0JZy4seHhBYr8cYQ9vCquI89+gQMvi437YyY=;
-        b=iBxiU6gYYAUfsQt2wtB3typC41XzyQMPyfPMasJlq6xDfViJ1gQ1zwPSe0QRSyreKL
-         /SpoCnUPPhDW6+NVIZA0VhqAGCN0JWCPnuGLTpLcuetxeNxzP+kqkr9+8Xoq6zjm6bp9
-         JiNWrM4ytvFIojcn+qQYkuvY5jN3qpgXvWpvXlNBBZFTuocxU7ORxeWo91PhURBQXd9G
-         0Joap0Sd4ruKNraQeCH9mkOlRuWzOdLKPao0fNaMkXHOyO/ECB2a1vFaXIxze5MpA3tI
-         KWIjp9O+nTdJXTzL2A03wNyOX1n8q2ZbDP6g6fz+XPr4QFxQAKema0Q4+Q3IR0pvQ2BZ
-         tlIA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=4+44FH9sN2I0nODqzxSSgyIrOa1/Ts3rTAM8YBGHJkw=;
+        b=T+K6KzchTEKaVCGzBfAoE7q3usAoSiZBazj1Gt19waVO4ABohq6Vae3ELe0/X2QVMh
+         thb5Nws7+42h+5X5fVtKf2az1DahCGn0EZ8aQ7G68FWyC3CtKCH5FYD5LgaB2lNEnQ/r
+         Aif9KmikjagVhSVViWqYTI8NQVYKLBAxu1LnjWmgZXHKGteACixdwHwlfjok+MWsn00Q
+         mcRMQL0ehY75vaE/xdSO4E09v3kuFCkJvkPC3M8LeFmdQV3nQrHGjuvEcW0M2A84yPDN
+         K7Xcq7F43rzUsjQJZQNChFSKofy382Fyjx7YCY92OGWupngadF6D00DYpesaojMhRJEL
+         xndw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="AcH5wO/A";
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tHoF6er3;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::82a as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id s73si61163vkd.1.2019.03.06.03.02.40
+Received: from mail-qt1-x82a.google.com (mail-qt1-x82a.google.com. [2607:f8b0:4864:20::82a])
+        by gmr-mx.google.com with ESMTPS id p1si78046qkg.3.2019.03.06.02.17.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 03:02:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Wed, 06 Mar 2019 02:17:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::82a as permitted sender) client-ip=2607:f8b0:4864:20::82a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="AcH5wO/A";
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tHoF6er3;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::82a as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id d25so8316441pfn.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 03:02:40 -0800 (PST)
+Received: by mail-qt1-x82a.google.com with SMTP id y4so12172644qtc.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 02:17:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ZvwiA8T0JZy4seHhBYr8cYQ9vCquI89+gQMvi437YyY=;
-        b=AcH5wO/Adg017/vqvJmOdAiR5ELuklfL1FvbNa97SRf7xmLRo149lCo2XBjImxdY5N
-         a5vyoeSJqSyiOd4DmS8I62IXggTleG7tDgAUzARcGOAbwFL+N5QYcgnBOi19AyaO2hWO
-         kW6FH5EQZ7upcg0luVrr4Xbdb3xivHCMxhHRQ8T92HTxZdj/5/Gt+o+xSLlWGtlY/rns
-         i3YDMuwYZMM07o/7kGC2zyffq0xVHBah79hcSc3cLuGmWLSnEPNnA+6Uq7Q+lfpckP8W
-         sreDix9T/wNfPTgAIYcqkfRudIy5b7WiGHJs0WJ6CXMbPj2DSk90NYIsNLr3MIGD2dUG
-         KggA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=4+44FH9sN2I0nODqzxSSgyIrOa1/Ts3rTAM8YBGHJkw=;
+        b=tHoF6er34YTD3WYYGT4/0GIiSrNZUXE4llWgnvmpByfOYNa+x8d6NSSuLQQsyGSoox
+         qrzrQIrak0wwdL/UgG0QfO7CF9j8d0UsyzjYjyZLoNFYZTDL29fcaHrz1N1FQULW4Ay9
+         bjTK6LryOU0vqfpY0kwReepCDRiXqIKrdxOU7SExdxba+9WC3uXjPabQkFKj6XJjuVrv
+         AX4xyooxEP4twm1XD21O+6AyQaJnYgLI7SxjtJ5O+XwaRrDUko44l6HSWF2yTCNsKAkk
+         sN3GnOCBr/OKppp2vlj6sX/mkrgWY5rkAA0qRxH0EQIqGCgPpTdJEmUjIjKPOndkDAfF
+         HExw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ZvwiA8T0JZy4seHhBYr8cYQ9vCquI89+gQMvi437YyY=;
-        b=CzOTDV7pv0gMCIAPWHM7npRvRHUDLQfzACz1K2t965UdI+G/LaCGQ3rMaKvRAjbqxC
-         IzftzHOSvkmohf1KeSln3C7Er+Nu1EOSpSuzDaH3bmowAibaQxud6Nhay4M2fijbs73e
-         xz131c8+RU/n4Py9Z4H3p7/81EQIlPc6zUChJA+HyM5o6HM7uK1TiljxPlPDMO96la/0
-         eehshhJCf3KoX67NSoshBjzXNF/Z8wh/A8g7wMFLsHuF1LEEZE0owe7AQxDF/cDllBD/
-         kblH8bBU+FhuI/y3B92OTn86WFhJCZKkOh504fOjCA+0+u/7IfU3ubRzRkNtabwUtb4D
-         lb4g==
-X-Gm-Message-State: APjAAAVG2KB/+ySwzrU123jgMl5tOEOxVvMnnCGGlp3XgZUUFex2gR9Y
-	r7z1AqaAuMnnC9Nlldk8vdxttJGGGnsToQ==
-X-Received: by 2002:a65:64d9:: with SMTP id t25mr5806368pgv.244.1551870159086;
-        Wed, 06 Mar 2019 03:02:39 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e93:b9ba:2d23:4503:1edf:a0e9])
-        by smtp.gmail.com with ESMTPSA id q62sm4382582pfi.183.2019.03.06.03.02.37
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 06 Mar 2019 03:02:38 -0800 (PST)
-Date: Wed, 6 Mar 2019 16:32:32 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [v4 1/2] staging: fbtft: Remove unused #defines.
-Message-ID: <20190306110232.GA11468@bhagyashri-Lenovo-G570>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=4+44FH9sN2I0nODqzxSSgyIrOa1/Ts3rTAM8YBGHJkw=;
+        b=O28LKKtc+LSuMICPtzG0GDcX39N1PlAnjYswNLV7erAsSGjUzb8WizMcDqUV1tUkE5
+         boj1maRqAL1B+Q8K+ANU0zA9nJmaqtJiWXRP6QTpNoebU7iAYrU5gcPVPEW80QB1HFVs
+         fv+PA+5+qppGELNGoSEbDcjzMF75zwM/em1HuGmSKuguMZutZj9dJVy/Zw//pSyGynIY
+         rNmPJ4VmrZSxICBBceUgjoZiO+HkTZJATXype5j/xk5uwFDFCjt3VlHm6TF9QQ65CSxj
+         qxYLux8g8DFo/c+bNmOgV0IvS6n4QuNG7WVzPBXhezAJAhLIx+CJ/kLm2jNPLrnUfxW6
+         TI4g==
+X-Gm-Message-State: APjAAAWzlpTAZ/2K/EvQ+DuCwMEykyroEBQwtGzVhVGJ1hJy9zyEfnxf
+	DBiqm/XM03E610phQP49fm/FwYFBe9cwxGjlzcY=
+X-Received: by 2002:a0c:d24f:: with SMTP id o15mr5510757qvh.145.1551867456557;
+ Wed, 06 Mar 2019 02:17:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <20190306052313.GA3924@bhagyashri-Lenovo-G570> <alpine.DEB.2.21.1903060859150.2706@hadrien>
+ <CAOMPgjgrT3q67efW_nnbGU0qTi1DMEj=Siyy2FRSZOCG+dQAoA@mail.gmail.com> <alpine.DEB.2.20.1903061039180.3557@hadrien>
+In-Reply-To: <alpine.DEB.2.20.1903061039180.3557@hadrien>
+From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Date: Wed, 6 Mar 2019 15:46:59 +0530
+Message-ID: <CAOMPgjgQh1y_hvi8opKJni=Vi8bA+0thGPb06Jfs3iW41Vd5eA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 1/2] staging: fbtft: Remove unused #defines.
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-Remove unused #defines, which is detected while resolving `CHECK:
-Avoid CamelCase` issue.
+On Wed, Mar 6, 2019 at 3:14 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>
+> On Wed, 6 Mar 2019, Bhagyashri Dighole wrote:
+>
+> > On Wed, Mar 6, 2019 at 1:29 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
+> > >
+> > > It would be good to have a cover letter (0/2) for this patch series as
+> > > well.
+> > >
+> >
+> > I used -n flag for generating cover letter because there is two patch series.
+>
+> But it seems that there is no cover letter, or at least I did not receive
+> one.
+>
+> The documentation for git format-patch says:
+>
+> When multiple patches are output, the subject prefix will instead be
+> "[PATCH n/m] ". To force 1/1 to be added for a single patch, use -n. To
+> omit patch numbers from the subject, use -N.
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
----
-Changes in v4:
-  -- Modify log message
+I will modify it accordingly.
+>
+> So that doesn't seem like the right way to get a cover letter.  (Indeed, I
+> have noticed some patches with 1/1, which also seems unnecessary).  I
+> think you want the option --cover-letter.  This is discussed in the
+> "Versioning patchsets" section of the tutorial.
+>
 
-Changes in v3:
-  -- Change the subject line according to log messages.
-  -- Remove extra spaces.
-
-Changes in v2:
-  - Remove unused macro.
-
- drivers/staging/fbtft/fb_watterott.c | 6 ------
- 1 file changed, 6 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 0a5206d..502d67f 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -90,15 +90,9 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 	return 0;
- }
- 
--#define RGB565toRGB323(c) ((((c) & 0xE000) >> 8) |\
--			   (((c) & 000600) >> 6) |\
--			   (((c) & 0x001C) >> 2))
- #define RGB565toRGB332(c) ((((c) & 0xE000) >> 8) |\
- 			   (((c) & 000700) >> 6) |\
- 			   (((c) & 0x0018) >> 3))
--#define RGB565toRGB233(c) ((((c) & 0xC000) >> 8) |\
--			   (((c) & 000700) >> 5) |\
--			   (((c) & 0x001C) >> 2))
- 
- static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
- {
--- 
-2.7.4
-
+> julia
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.1903061039180.3557%40hadrien.
+> For more options, visit https://groups.google.com/d/optout.
 
