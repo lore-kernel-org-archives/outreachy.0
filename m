@@ -1,180 +1,112 @@
 X-GM-THRID: 6664414939270086656
-X-Received: by 2002:ac8:3523:: with SMTP id y32mr4907980qtb.59.1551896244847;
-        Wed, 06 Mar 2019 10:17:24 -0800 (PST)
+X-Received: by 2002:a65:51c8:: with SMTP id i8mr3269847pgq.101.1551895573190;
+        Wed, 06 Mar 2019 10:06:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:893b:: with SMTP id 56ls1386647qvp.5.gmail; Wed, 06 Mar
- 2019 10:17:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqylv6LIcFQ5dmfs9fWFtDbVZ/OOdjG/gpdNaMBJtKuOaaPtDKX80ZcHl/2YdH1MvO9o8ZOm
-X-Received: by 2002:a0c:b996:: with SMTP id v22mr5531987qvf.2.1551896244321;
-        Wed, 06 Mar 2019 10:17:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551896244; cv=none;
+Received: by 2002:a17:902:322:: with SMTP id 31ls1463831pld.1.gmail; Wed, 06
+ Mar 2019 10:06:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwD0Sxc678cFfOYyj/u7SR1+kTNQ2Dj0zvutrGO/3gZeMx7ZqtuDJJSezb040MZ3JSkpQC7
+X-Received: by 2002:a17:902:1347:: with SMTP id r7mr2590631ple.133.1551895572416;
+        Wed, 06 Mar 2019 10:06:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551895572; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z0x4/0oFyAmSa1RIZtiAE0JK1q+//nUCNpUO0hM3DAplv4tp6/vMbeX+9BSqxiYcf+
-         9rVYKG5JjFYEwPIH0kDcJDWRwktRAgAxnQIBlr9U+HnkI48d4lfTRlsyv2U99LQ72+i/
-         agHHes6b3qlbjflCH+M3/lC4O5xMmeA5L1GGoD/ycRcGdwJFUbbwwZzVm8vFeMPEtC9j
-         abJ3GHEccMBV9xlReWphEbJpG9IExRZ1qk1b3Pb8x2t6bx5ZfopnKqzK+zUbyJ/HNa5F
-         nwOvmvMN0LR+Iqc7EuVblyAHEwnEUT/ivOmENymoJMjg26Xi7g9SDtCWSPP+pepeZpFK
-         iLyQ==
+        b=MWJdqcqkWvhlWQRAvx3h0skZF4tox9jyF0mj6RyVdTs1R6uDs3NCDXuknmHR2r4ZPk
+         HIqImTIl5jlCQrG3Dpf2417TnFBn2M2wyb5K2tWUZEyEmJexnERD0ey9jf8IsAsc+M59
+         Gl66s8/QeymEn9I+Wlv3bGylWpeAsXVSE5TGAyRpwW00zFbRGpBUKcmppotCFbE+V7iJ
+         eQzLR74pSQ65Ct6ZrWKmah5HAmCli4OGYcqCqD8/3gUdemiX3pj6fehQq+aNhWEWWPnC
+         L5WK5wXRLd5eKU8DmyMf+oVHQ0ZttvqtDZzKAzjO9tBaDfvgBagGHbdxSk54rcZJWamv
+         zcgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=iR8dF8YXgVcpCdqGHrcPvGzAOrjcChJSgeC/Z5tv7X0=;
-        b=aThZHalb1xgRJUS0Ul5WWOkFnJ8DbUwz2YMGuhVUDUjSxK1PGylWmoOEBlXb6s+0MY
-         OhMw0TaZ5LkuUIci95ntRDKr6DOk04fDOQ4NVItbKxn1uqoME2TjM+Lkbc+9Zz+gPtSi
-         wbYWnvJ7iY8v67ZUozGmeq1G+m8pcHb2VCj3umqbS2VQyOp25GkHvwAhsbhBE4rNPytb
-         CfAuucmBqIZ47pFj51/JY7YSCdfzYLymEj2RZPNPL6LcZsHhRuWxUyDmPfEbVQOzdeCM
-         3haOs6M8MIl10VlTOTRb/SjKod5h/xzg95bDtLBbM59I/8x6NIf4OYLgtM2NkNSxV4Ks
-         bbXw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=YqTlV/wClYWKKTmMUaRxZJ61EFDxJZiYe5q9iKrug2I=;
+        b=HXSZXIK7TBrVYTHb62+yk1rWOGtrmhpO+7411RgJw83dxy8kps68sFXTt8Y9LYYBC8
+         ufunfDbDPzOhjvOqTJ6UXYBXQbwqKaJlh0upsj6POoMGw5Izool4RI5tc8YMFL907EaD
+         m2RHayhvGRlMExkiA8t6Yp6Fx/qwXm9wX+9FocR7h3TYj3hw/ALFkSx6PogafDLs2Rp6
+         d0IhVjUuG06F51/U8J758bQk8OZKR/XSuuy8s9S7Fqpnwt03aebwG+CpEAzS1VRXviD5
+         EsdOZY3KZsuPGKSyDG9Zc02yKS0eVjG40GIihe7Z0w7BO6OQduOO0Se0Lp/uj5n/CLR7
+         TGpg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CU2ER7ba;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gy7N0Gno;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id i11si167901qkk.4.2019.03.06.10.17.24
+Received: from mail-qt1-x843.google.com (mail-qt1-x843.google.com. [2607:f8b0:4864:20::843])
+        by gmr-mx.google.com with ESMTPS id h15si94162plr.5.2019.03.06.10.06.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 10:17:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Wed, 06 Mar 2019 10:06:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) client-ip=2607:f8b0:4864:20::843;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CU2ER7ba;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gy7N0Gno;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id n22so9252327pfa.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 10:17:24 -0800 (PST)
+Received: by mail-qt1-x843.google.com with SMTP id v10so13588369qtp.8
+        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 10:06:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=iR8dF8YXgVcpCdqGHrcPvGzAOrjcChJSgeC/Z5tv7X0=;
-        b=CU2ER7baGVdKqy8TKcSjuxc8Zd7tZdVy2kK73R8pZ6QIx6PYkVVXP8pwpNWB0aRL6j
-         4FBcdmI8TrKTAppMSswNX/gE5Fe8eP+RNtNKol7G5zjdeqKoSl+LETM6C/7XdHEhcCCV
-         TE+gwl2nh7ggAqa8qS+xJiXhEHhx4qjLMozIIfJNv2929KwzQQZb/ijBJTog9NmidtEN
-         LORpK7WPBM28L+3pwKO2IVb5rlqGFqBjow6kkG43Ya48EmHk2NTI7D+guu4uJFVjVSPU
-         TyjIt8vgJ/0RHpkVwbyPaQf4VXMQEPQthiyF4uI9YZFC2p5IyY2dz2QNJ573i04YoAyo
-         xXFQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=YqTlV/wClYWKKTmMUaRxZJ61EFDxJZiYe5q9iKrug2I=;
+        b=gy7N0GnonRYvzpYw4pUfAGrH/7eeOO/XEkSWxxBDE8Ee0CvypYFKyANVslOiWZ+LPz
+         PwoazhiJqy/Vk4yhjl7yG2ogliEjtGA//+t6xt/qC3oI40X5MAVoPz6XpxeSpC90onwg
+         StJL6WKRSff4UXFjbbrWAJpnmID231aTR9/osmN15BN7AqZpNqntxKJefHCf9Wj6bs22
+         i2FZfxL5mt0w+8GYsoGhqhUtKlVAC6ynQqki/QcxDF57zV150y8GgcwxYvFMIj++d/6m
+         5OYQvO0sFZOCB7TXfAqT00KmUhmnHkIzb1OrCGOLnMPt98c7RajDPCH2H9urQzrTklCZ
+         2qLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=iR8dF8YXgVcpCdqGHrcPvGzAOrjcChJSgeC/Z5tv7X0=;
-        b=Em7o4JXKHyO9fxRf+9FldgNufopphsr7Evmc8Ks1lG9CnGVAbufOfTdmm8SuLQLbTT
-         VSJspe7HUvk4ZncrS4nkZsrHZ7KRqTVny4axXoF8yNVsTGhyNwMQGCVNMWnzmvaLWyuN
-         8GcYLqAojfn2xBjBUzjbtU8qPbxAows6A4Mdl5jWxi1E4MZF+My7J8CLl+NPcFujurkP
-         avPPEBat7AMqFIJkN5ZH8f6Zx6rVxLLD+g0ACcSO1cY4gbblEvUwSJ30p963Jj+xmnHR
-         mx98OcUGdhnighdBSGdHUMKx314V1VwbLgUdK1/N0dzGse0yBtis+iER1pjpt9m0hN9e
-         Yu+g==
-X-Gm-Message-State: APjAAAWQdshnINtTT7o7q4AqvirIShb4Hn5718+i1I7EHwuRHBlW+Ifa
-	dESZEYXJj4EJKeC0A5RRUzI=
-X-Received: by 2002:a62:e11a:: with SMTP id q26mr8410026pfh.187.1551896243123;
-        Wed, 06 Mar 2019 10:17:23 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e9d:fc:2d23:4503:1edf:a0e9])
-        by smtp.gmail.com with ESMTPSA id t185sm4781857pfd.165.2019.03.06.10.17.21
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 06 Mar 2019 10:17:22 -0800 (PST)
-Date: Wed, 6 Mar 2019 23:47:17 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>,
-	Bhagyashri <digholebhagyashri@gmail.com>
-Subject: [PATCH v4] staging: fbtft: line over 80 characters.
-Message-ID: <20190306181716.GA15455@bhagyashri-Lenovo-G570>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=YqTlV/wClYWKKTmMUaRxZJ61EFDxJZiYe5q9iKrug2I=;
+        b=GBgdBP6pit+++KGONzvpy4T23ZcbieSHGiBPGH40yWlCdlHdYUmvWWtO6tIspmcQ3g
+         KsUpXjJD7Ug2j7fM4BL4j/uttXOlfcyr9O0wYzlf/6FJj8xYdSDkfKo9ZHx6t8on5YEZ
+         Y/yqOTpYKJ7Y6Sixd6eTy4n1Y46oVEDRs0BMUU+eB/SMgbv2bEkY0UrYtzRMCx8iF8nU
+         NPADNldcvGRAFlJSZeaSjNNEJKHzYBXnOBRmf+rrw2ASQLc6tCjRdkkf+cy6/VY6nJ5R
+         HHxxUM7DyE7blAIZkt2Oz6HySE2aQJlXGp2wpkgAUs30KaexdIssRw30wTgleKPpIPBX
+         NG1Q==
+X-Gm-Message-State: APjAAAU+iOJUVl1/i9idkZi5VJOD9yCeTQ3C03XlsDbmlnfeMGxNx5pl
+	2tN66tV7PcCtHJPqooQyaabUQfp51U1asjJOTW8W2Nmx
+X-Received: by 2002:a0c:933d:: with SMTP id d58mr7299969qvd.92.1551895571819;
+ Wed, 06 Mar 2019 10:06:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <20190306130624.GA12872@bhagyashri-Lenovo-G570> <20190306175758.GA19537@kroah.com>
+In-Reply-To: <20190306175758.GA19537@kroah.com>
+From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Date: Wed, 6 Mar 2019 23:35:35 +0530
+Message-ID: <CAOMPgjh2bNPgo44Wf-ZzM6hY9OjXgE-tTZVUZo3FrtV22fd2+A@mail.gmail.com>
+Subject: Re: [RESEND PATCH] staging: fbtft: line over 80 characters.
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
 
-Fix coding style issues, which solves checkpatch.pl warning:
-"WARNING: line over 80 characters".
+On Wed, Mar 6, 2019 at 11:28 PM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Wed, Mar 06, 2019 at 06:36:24PM +0530, Bhagyashri Dighole wrote:
+> > Fix coding style issues, which solves checkpatch.pl warning:
+> > "WARNING: line over 80 characters".
+> >
+> > Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+> > ---
+> >  drivers/staging/fbtft/fb_ssd1306.c |  3 ++-
+> >  drivers/staging/fbtft/fb_ssd1331.c |  3 ++-
+> >  drivers/staging/fbtft/fbtft.h      | 14 ++++++++++----
+> >  drivers/staging/fbtft/flexfb.c     |  3 ++-
+> >  4 files changed, 16 insertions(+), 7 deletions(-)
+>
+> Why was this resent?
+>
+> Is this v2?  If so, you always need to say what changed from the
+> previous version.
+>
+I got a mail, patch is not added in staging tree, Resend it. I thought
+i need to send it with RESEND PATCH prefix.
+Its a misunderstanding :(
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
----
-Changes in v4:
-  - Resend patch.
-
-Changes in v3:
-  - Make the code in original form.
-  - Use tab to line up the code.
-
-Changes in v2:
-  - Improve code order.
-  - Make the code more readable.
-
- drivers/staging/fbtft/fb_ssd1306.c |  3 ++-
- drivers/staging/fbtft/fb_ssd1331.c |  3 ++-
- drivers/staging/fbtft/fbtft.h      | 14 ++++++++++----
- drivers/staging/fbtft/flexfb.c     |  3 ++-
- 4 files changed, 16 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_ssd1306.c b/drivers/staging/fbtft/fb_ssd1306.c
-index d7c5e2e..e4c5a1c 100644
---- a/drivers/staging/fbtft/fb_ssd1306.c
-+++ b/drivers/staging/fbtft/fb_ssd1306.c
-@@ -184,7 +184,8 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 		for (y = 0; y < yres / 8; y++) {
- 			*buf = 0x00;
- 			for (i = 0; i < 8; i++)
--				*buf |= (vmem16[(y * 8 + i) * xres + x] ? 1 : 0) << i;
-+				*buf |= (vmem16[(y * 8 + i) * xres + x] ?
-+						1 : 0) << i;
- 			buf++;
- 		}
- 	}
-diff --git a/drivers/staging/fbtft/fb_ssd1331.c b/drivers/staging/fbtft/fb_ssd1331.c
-index 9f54fe2..4cfe9f8 100644
---- a/drivers/staging/fbtft/fb_ssd1331.c
-+++ b/drivers/staging/fbtft/fb_ssd1331.c
-@@ -74,7 +74,8 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
- 		for (i = 0; i < len; i++)
- 			buf[i] = (u8)va_arg(args, unsigned int);
- 		va_end(args);
--		fbtft_par_dbg_hex(DEBUG_WRITE_REGISTER, par, par->info->device, u8, buf, len, "%s: ", __func__);
-+		fbtft_par_dbg_hex(DEBUG_WRITE_REGISTER, par, par->info->device,
-+				  u8, buf, len, "%s: ", __func__);
- 	}
- 
- 	va_start(args, len);
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 7fdd3b0..597db9d 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -347,10 +347,16 @@ module_exit(fbtft_driver_module_exit);
- 
- /* shorthand debug levels */
- #define DEBUG_LEVEL_1	DEBUG_REQUEST_GPIOS
--#define DEBUG_LEVEL_2	(DEBUG_LEVEL_1 | DEBUG_DRIVER_INIT_FUNCTIONS | DEBUG_TIME_FIRST_UPDATE)
--#define DEBUG_LEVEL_3	(DEBUG_LEVEL_2 | DEBUG_RESET | DEBUG_INIT_DISPLAY | DEBUG_BLANK | DEBUG_REQUEST_GPIOS | DEBUG_FREE_GPIOS | DEBUG_VERIFY_GPIOS | DEBUG_BACKLIGHT | DEBUG_SYSFS)
--#define DEBUG_LEVEL_4	(DEBUG_LEVEL_2 | DEBUG_FB_READ | DEBUG_FB_WRITE | DEBUG_FB_FILLRECT | DEBUG_FB_COPYAREA | DEBUG_FB_IMAGEBLIT | DEBUG_FB_BLANK)
--#define DEBUG_LEVEL_5	(DEBUG_LEVEL_3 | DEBUG_UPDATE_DISPLAY)
-+#define DEBUG_LEVEL_2	(DEBUG_LEVEL_1 | DEBUG_DRIVER_INIT_FUNCTIONS |		\
-+			 DEBUG_TIME_FIRST_UPDATE)				\
-+#define DEBUG_LEVEL_3	(DEBUG_LEVEL_2 | DEBUG_RESET |				\
-+			 DEBUG_INIT_DISPLAY | DEBUG_BLANK |			\
-+			 DEBUG_REQUEST_GPIOS | DEBUG_FREE_GPIOS |		\
-+			 DEBUG_VERIFY_GPIOS | DEBUG_BACKLIGHT | DEBUG_SYSFS)	\
-+#define DEBUG_LEVEL_4	(DEBUG_LEVEL_2 | DEBUG_FB_READ | DEBUG_FB_WRITE |	\
-+			 DEBUG_FB_FILLRECT | DEBUG_FB_COPYAREA |		\
-+			 DEBUG_FB_IMAGEBLIT | DEBUG_FB_BLANK)			\
-+#define DEBUG_LEVEL_5	(DEBUG_LEVEL_3 | DEBUG_UPDATE_DISPLAY)			\
- #define DEBUG_LEVEL_6	(DEBUG_LEVEL_4 | DEBUG_LEVEL_5)
- #define DEBUG_LEVEL_7	0xFFFFFFFF
- 
-diff --git a/drivers/staging/fbtft/flexfb.c b/drivers/staging/fbtft/flexfb.c
-index b91b459..3747321 100644
---- a/drivers/staging/fbtft/flexfb.c
-+++ b/drivers/staging/fbtft/flexfb.c
-@@ -671,7 +671,8 @@ static int flexfb_probe_common(struct spi_device *sdev,
- 			break;
- 		case 9:
- 			if (regwidth == 16) {
--				dev_err(dev, "argument 'regwidth': %d is not supported with buswidth=%d and SPI.\n", regwidth, buswidth);
-+				dev_err(dev, "argument 'regwidth': %d is not supported with buswidth=%d and SPI.\n",
-+					regwidth, buswidth);
- 				return -EINVAL;
- 			}
- 			par->fbtftops.write_register = fbtft_write_reg8_bus9;
--- 
-2.7.4
-
+> Remember, maintainers have no short term memory :)
+Yes :)
+>
+> thanks,
+>
+> greg k-h
 
