@@ -1,126 +1,98 @@
 X-GM-THRID: 6665329083117731840
-X-Received: by 2002:a37:6549:: with SMTP id z70mr5209535qkb.14.1551893809341;
-        Wed, 06 Mar 2019 09:36:49 -0800 (PST)
+X-Received: by 2002:ac2:4292:: with SMTP id m18mr533028lfh.3.1551893093640;
+        Wed, 06 Mar 2019 09:24:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:8b55:: with SMTP id d21ls1338162qvc.2.gmail; Wed, 06 Mar
- 2019 09:36:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzir+Y7bZwDYBX769enLkhREf4BPgp9ecCyihk6kStAG8x4vEHv87/y9Oddp1WZNUliAP49
-X-Received: by 2002:a0c:af6c:: with SMTP id j41mr5410482qvc.29.1551893808709;
-        Wed, 06 Mar 2019 09:36:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551893808; cv=none;
+Received: by 2002:a2e:5b42:: with SMTP id p63ls336600ljb.0.gmail; Wed, 06 Mar
+ 2019 09:24:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzLWw9XRMl5fJp1S4tqhAsLXENB0jO7P7FuqPy0EGqD8FHsOzO0mYHc+ODa2uvUgLO0OKo2
+X-Received: by 2002:a2e:290:: with SMTP id y16mr374592lje.20.1551893092843;
+        Wed, 06 Mar 2019 09:24:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551893092; cv=none;
         d=google.com; s=arc-20160816;
-        b=Df1+6O7dnQwxWS7vxMzWrmad+ZNJTN8IWaWD5gE1dL5BuGAXSVravL9qq8ZAkyPuS/
-         rT+xy3MzMvRL8BtF2KwN9mbaKRQ+KPjdAzUNMyT/HTRED9rRyowUWdqjzGT3Lr2awfxw
-         i0nGUwDonBd6HIgEgjLk66RvmZXc+PTi88Ctoxcm+WWMlqvnEnEOkpv8JeVdS6t20sVZ
-         ye1qQ9uD/vjNfivk1T40xZQd6MWAdiBVda33XRHgUubQI8vi+aQOqtPClQ960HYRh3n0
-         az9gTmv9QRb9Za9Xb5F42sX7NOxXMzCAw4+d9EKBCt6pT//quZVG4DdopFG8T+PF/r73
-         XIVA==
+        b=M4eI02NWZimBLBz/6FUD1GWUYNdG6e232RIL7sl2Yb9M2oribT/2S2QF0NgTNVZxqw
+         m05OQGA0Vw9WaDgEBujvP9BPGLLcQQTqDDIR5QjG7OFqNkXs/tSiU+Wu6wbM5eyBVOUa
+         /Rrb5pXW4/EFNg9wDQiEseTvSpTsC367ksKapF+Q2wauFgs5qoGqu2DMoUkiJycGf2Aw
+         8TODFP97dLzNwz9tjvPlrMrtBtvplP//XmrwM+/0kI+0v3OlzEetjq1m9eh/dh8ejAJj
+         do1ABWqXg6xGgVBwAp6xa74nkOblq7OQOaoxTv5+Cal6jvpGZyqCo8Hlmjjog8LItsps
+         +CWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ZxIY4ejTjKrc/UxEXHGlLHdn7bMpzkuORytbe61caNo=;
-        b=im64llBdrX7BipH6PRViXiSkIxcsnEQ4swbXDGZfnS8fWjJ85CtsP7b0MeOAxxqgDp
-         wVvjotb8iJYp8XXx1q3rnx/CwG3fsQRHe1HHVQ7dgtGzQprFFu21LtmFJAm6YpukPNm8
-         xDD4Q/NHFmALm1x1G0rHY5aPAlktPGce5PpmGW3P+hezTbHmyfP3jQ63IMe0w/aB7pIQ
-         UvD5d0UJxAUeyQGoF1tXFo47ywsIWgACOKN4rIh13p6IWcXA2WUgoxZAv3yEz0NJGQA7
-         sQHRRghwFTJ4mkEHJXVFWFaso0nbim270pLgfOEqeYr1m4fkJ7sNrnJ97DzRkfUYKWP/
-         7xBg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=PIc54wB5YLgFWk2wuOPQGbR4khoVskfDXKhz1RxcE38=;
+        b=VPQaRngBTaDfsvzSOXX5LXEyGtwMxe8KpmOhaG16T5iKlj7BRwDeBn2hIu8s4Y4pRA
+         nDTDPY0JKDuWPw5JgwmPsgjJteteyZRO0uQgAqNih4WbzxJMteLsZ5GO8OmepddhUm5t
+         43tqAiMyduGm0jTBRmMDR//pj5snk35GKkoL+3obKiTUqnX6TA0LW0z4PzG7Bh8a6maC
+         Y186JE1IM7Gu8N1cBosnmEbW+1EKGxsWv1eHkybpFeZ6KZku1wN4JFYlRIkTiV03zixq
+         Jku5bGxCu6aLrvGEkJjUsbWMYCD5Y7Zmvc3Plbo5a/+VhPPYthySV7jLInBt064nmADg
+         VKAQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m24xak86;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com. [2607:f8b0:4864:20::844])
-        by gmr-mx.google.com with ESMTPS id m1si149129qtc.2.2019.03.06.09.36.48
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id n21si100418lfl.2.2019.03.06.09.24.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 09:36:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) client-ip=2607:f8b0:4864:20::844;
+        Wed, 06 Mar 2019 09:24:52 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m24xak86;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x844.google.com with SMTP id j36so13749839qta.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 09:36:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ZxIY4ejTjKrc/UxEXHGlLHdn7bMpzkuORytbe61caNo=;
-        b=m24xak86by4P+jqVgGRbFYkTr42g5Yr45LMiVuuc7bWva6fIK5YCBdad6sgm2oqdns
-         oZ0Cy0Q9junlO6T9diHbdoBCVLUVcK7feY3OonEn/DP0g42cuFO0KurVaJW4cSyKTNwv
-         RP/khNvi1Y9OqvrzM7y+k9TvmGXc7T99Z1yArT/Y07jd2nmivKPeMwV5tKshQ5bbisI8
-         7WTXwlvnsGiBeNSxfXCX42kqa3sV1fliNi90CIC8pYQCGJHOoYBAe/W4DO+LxtsBCp2r
-         0aX4IRL7t24DMjDGkTVFcWwelVhx6CMXUk+42WyA8zboVa/WIPSJeYQk388WX8o2YdOU
-         /9Iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ZxIY4ejTjKrc/UxEXHGlLHdn7bMpzkuORytbe61caNo=;
-        b=gy4IFZif1F2ym7QitRUGdHsN4R03WpgHQVMRrOrWbt9xIXKnH34OG7fML0kdzrJq//
-         mM7hVspd4DFNLVJOZ8fMcbAFZ5fbENnUcb5SOucDmBbEVYgHCH+AFqd4LyxxmUSoq8F3
-         MHSR0bfBfNizXzPbObYexM7h2IWpAvafzonZbbR8Lf9KjF0uZTVJ5X5tTZt9JySlWTVl
-         RQfcYDURWI/wWMEy3LfSb/kBPAvBuxN9U+FFOhgGfD3aLO+L/mxH5YtZISH1Szkn3w6T
-         eHQQF2lTOHd5qsCzL1AVptriQugN3CIDWbBRsDlEmToLBPVvDUj2D8JDeTgZmqLwW//9
-         XZcg==
-X-Gm-Message-State: APjAAAVULMbjNa57SR3ogPv2UHWgx/mI141n8hqWY4vhVTk/5sSLJxkF
-	A+rnQCnl81XLJ2ePANczC3EloQd6eeVCRRkj9Vo=
-X-Received: by 2002:ac8:2273:: with SMTP id p48mr6589142qtp.7.1551893808337;
- Wed, 06 Mar 2019 09:36:48 -0800 (PST)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,448,1544482800"; 
+   d="scan'208";a="372231200"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 18:24:52 +0100
+Date: Wed, 6 Mar 2019 18:24:44 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Outreachy <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: netlogic: Modify coding
+ style alignments.
+In-Reply-To: <20190306172049.GA14665@bhagyashri-Lenovo-G570>
+Message-ID: <alpine.DEB.2.20.1903061824140.7484@hadrien>
+References: <20190306172049.GA14665@bhagyashri-Lenovo-G570>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-References: <20190306172049.GA14665@bhagyashri-Lenovo-G570> <alpine.DEB.2.20.1903061824140.7484@hadrien>
-In-Reply-To: <alpine.DEB.2.20.1903061824140.7484@hadrien>
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-Date: Wed, 6 Mar 2019 23:06:10 +0530
-Message-ID: <CAOMPgjhhuAM9f=G0Wef90EFUT-ht88=C8jOSLyASJJxOZfUPoA@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: netlogic: Modify coding style alignments.
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Outreachy <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Mar 6, 2019 at 10:54 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
->
->
->
-> On Wed, 6 Mar 2019, Bhagyashri Dighole wrote:
->
-> > Fix coding style issues, detected by checkpatch.pl "CHECK:
-> > Alignment should match open parenthesis"
-> >
-> > Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-> > ---
-> >  drivers/staging/netlogic/xlr_net.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-> > index 8554fcf..dc487d7 100644
-> > --- a/drivers/staging/netlogic/xlr_net.c
-> > +++ b/drivers/staging/netlogic/xlr_net.c
-> > @@ -358,7 +358,7 @@ static void xlr_stats(struct net_device *ndev, struct rtnl_link_stats64 *stats)
-> >                           stats->rx_missed_errors);
-> >
-> >       stats->tx_aborted_errors = xlr_nae_rdreg(priv->base_addr,
-> > -                     TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
-> > +                                              TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
->
-> The code was better before, becuse it didn't go over 80 characters.
 
-Yes. Sure.
-> julia
+
+On Wed, 6 Mar 2019, Bhagyashri Dighole wrote:
+
+> Fix coding style issues, detected by checkpatch.pl "CHECK:
+> Alignment should match open parenthesis"
 >
-> >       stats->tx_carrier_errors = xlr_nae_rdreg(priv->base_addr,
-> >                                                TX_DROP_FRAME_COUNTER);
-> >       stats->tx_fifo_errors = xlr_nae_rdreg(priv->base_addr,
-> > --
-> > 2.7.4
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190306172049.GA14665%40bhagyashri-Lenovo-G570.
-> > For more options, visit https://groups.google.com/d/optout.
-> >
+> Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+> ---
+>  drivers/staging/netlogic/xlr_net.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+> index 8554fcf..dc487d7 100644
+> --- a/drivers/staging/netlogic/xlr_net.c
+> +++ b/drivers/staging/netlogic/xlr_net.c
+> @@ -358,7 +358,7 @@ static void xlr_stats(struct net_device *ndev, struct rtnl_link_stats64 *stats)
+>  			    stats->rx_missed_errors);
+>
+>  	stats->tx_aborted_errors = xlr_nae_rdreg(priv->base_addr,
+> -			TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
+> +						 TX_EXCESSIVE_COLLISION_PACKET_COUNTER);
+
+The code was better before, becuse it didn't go over 80 characters.
+
+julia
+
+>  	stats->tx_carrier_errors = xlr_nae_rdreg(priv->base_addr,
+>  						 TX_DROP_FRAME_COUNTER);
+>  	stats->tx_fifo_errors = xlr_nae_rdreg(priv->base_addr,
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190306172049.GA14665%40bhagyashri-Lenovo-G570.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
