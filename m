@@ -1,93 +1,103 @@
 X-GM-THRID: 6665132923205713920
-X-Received: by 2002:a37:9346:: with SMTP id v67mr3813706qkd.37.1551863280411;
-        Wed, 06 Mar 2019 01:08:00 -0800 (PST)
+X-Received: by 2002:a17:906:4312:: with SMTP id j18mr596172ejm.12.1551856140849;
+        Tue, 05 Mar 2019 23:09:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:ba29:: with SMTP id w41ls692677qvf.6.gmail; Wed, 06 Mar
- 2019 01:07:59 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxvY1Yep/HEOCym+9L6jISatWXuJsfQgrvZmcIEq8YFcmnBnoFV3y6x4q9pFPQWjSwRokV
-X-Received: by 2002:a0c:99e1:: with SMTP id y33mr4148046qve.32.1551863279868;
-        Wed, 06 Mar 2019 01:07:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551863279; cv=none;
+Received: by 2002:a17:906:3e46:: with SMTP id t6ls268723eji.8.gmail; Tue, 05
+ Mar 2019 23:09:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxe/dmLhKYV1IDMJDOk7MGmOaF2xXGvL240tNtR5kTQDdL/ndddYqli94LU60z4trhAzOF7
+X-Received: by 2002:a17:906:350e:: with SMTP id r14mr595182eja.10.1551856140182;
+        Tue, 05 Mar 2019 23:09:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551856140; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ef6qK/CLd8dpXibFR1/PN6e2EM6DUhRTaFnlTbzxFYOsgqFMIcYLN01HbGJGpFpuBx
-         0A2jRHMEbB1YoFUpCcO5b/LY0TBnvX/JkFyZuS3t0w1w+r0NXHXyl/+MjKd3kcYO1IjP
-         nB+HSgGea8ZZw6mZhugbHnKGoISuE6pyXkHnm/dMvythJ5w0ArBaa3opLQzTr9PXrJyq
-         8Ccn/yXZk6eTynEZe4B3c7DiaIR9FlyM4hMsnt6HtiNZ2mUM2PqnZXFU9g0RLg+VEWEa
-         DkedlsRQDNsQkdSd4GZpLyemHFkOHo6JCe0jDXqiEvr9JjJ4q8V+koTKao9/WkgcxUqv
-         4gWg==
+        b=xXRnJjMerSTU5V6EOzkZYH+LH3qub9HV25Hkl/NGzjP/ACEZDekSRV1UOZgVwhdjKN
+         JLetQzbjkOVFo539rK4tl3p0UYSRh7SF6LTLymipEz+BOGOWL0tdook1VQefnJZFVj4o
+         c7d99cHovwvpZ+Civ4yLjATK34quPr0aXjeMGjR2c+jCl0RHPFlzDeRlJNcHIG28lfhb
+         xYZtIuEf0Cp0b8tRh9lUkX53uK0gpohms/zopR2QEZFuA/XLsDkv7GJWYPqXRVXoPsq2
+         egEBTQHM8TiFgUeGyXQAqdqkbdjcQEg5O9qvU1WZrqGRftx/hfGLRMjwuKaVSzGWiTZY
+         5sEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Emzpbh4R/EOj4AVwjmqBsVAs6l2gO5MWOhOh1nGPy20=;
-        b=w1oMk+NI2kROvoyRNBBeg+VdAjZeCZUb50yKnZsigEoS1DbazSEb+B5wv0uAV2+pza
-         lW6Ma5ZnGwuecOR0ONYo7hB+l7R22AA7a4+qVQ+3hrPvPWVbZXY6fzTFg+WkavWtg5g0
-         fdHYY2tF9PiIRC716wgGR0xPoDpYioFJPc71ZInbjsRB8YFO8nf4/cKmda+ySiluZ9y5
-         HQY8SxiFKfySrCLsbm4sWkJysVOfiVXkU/xnzWsI0sagM4sgYU1tqHtw8RgEpI10kW65
-         y6foqwo4rzWU3Dre3vEUq6HjdQNlFzQq5syGEhh8ydsXFiwoHxYUuco7dizel2MYFsPV
-         N1dg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Yo8hjTYYwPZO3vK16py/QW+IjN01yKVVvY47T8gGrd4=;
+        b=g5+3N0sHUxGV2ovQk/4nbDkMnLWn5BjYNkkfgXRxIKroOi/FZrmUthL/L3DaZkIq8w
+         5joqQMynk1KFpY4ZsGv1qQZjV+GPJ/Q9mEMqfG+cWcsp0IMatXVkRcVkn1hwZO4AAokG
+         8aGezuDRZzN4Wi6BBBCyUBERrygxbgIgsEq3teELMTM6lICstf+mfgfNkm5004K3B8YY
+         WWL3A49UZzxgAhDn9I/cqklBcOEa7bm/SUQfN151pst54XFUItbh/hqEOTCYIGYIKi/l
+         Wip6mhzAaEhFdduHZuc/uvViW5qGa9XphVfUTJylJJ33j596vLD/j3FraiAEnip/eXPU
+         GmTA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=G+1EIB0h;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id p1si69868qkg.3.2019.03.06.01.07.59
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i16si33005ede.0.2019.03.05.23.09.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 01:07:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 05 Mar 2019 23:09:00 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=G+1EIB0h;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 487C020661;
-	Wed,  6 Mar 2019 09:07:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1551863278;
-	bh=9iY47cb61MDGeHWOzYXRKgIxdQSB881L6/WgYxC/7kQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=G+1EIB0hksSi+MR5qcwXDdV1e2TRsML/0gORThyxbGL5zN1OvaoK/KLJAx7BeSJ7i
-	 KHTN3ZLhLi8KujpjjADLn4eXWYysR0LGT0qnVmb06l6wf8dov3aIWDz1vrigcIB2/Q
-	 nGe08TAyAumyW443vQHrtXM05gl1G2spwtRZEQY8=
-Date: Wed, 6 Mar 2019 10:07:56 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Wentao Cai <etsai042@gmail.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/4] Staging: most: dim2: Fix
- malformed SPDX-License-Identifier
-Message-ID: <20190306090756.GA7492@kroah.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,446,1544482800"; 
+   d="scan'208";a="298262114"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 08:08:59 +0100
+Date: Wed, 6 Mar 2019 08:08:59 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Wentao Cai <etsai042@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/4] Staging: most: dim2: Fix malformed
+ SPDX-License-Identifier
+In-Reply-To: <20190306043941.6141-1-etsai042@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903060807170.2706@hadrien>
 References: <20190306043941.6141-1-etsai042@gmail.com>
- <alpine.DEB.2.21.1903060807170.2706@hadrien>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1903060807170.2706@hadrien>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Mar 06, 2019 at 08:08:59AM +0100, Julia Lawall wrote:
-> 
-> 
-> On Tue, 5 Mar 2019, Wentao Cai wrote:
-> 
-> > This patch fixes the checkpatch.pl warning:
-> > WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
-> 
-> Hello,
-> 
-> When you make a series, you should also make a cover letter that gives an
-> overview of what is done in the series.  You can find information about
-> how to do this in the tutorial.
-> 
-> Also, previously Greg has asked that patches that add SPDX identifiers be
-> accompanised by subsequent patches that remove existing boilerplate
-> license text, if there is any.  So you may want to check on this.
 
-These files do not have any license boilerplate, I just used the wrong
-comment character when I did the initial conversion to SPDX a year ago
-:(
 
-thanks,
+On Tue, 5 Mar 2019, Wentao Cai wrote:
 
-greg k-h
+> This patch fixes the checkpatch.pl warning:
+> WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
+
+Hello,
+
+When you make a series, you should also make a cover letter that gives an
+overview of what is done in the series.  You can find information about
+how to do this in the tutorial.
+
+Also, previously Greg has asked that patches that add SPDX identifiers be
+accompanised by subsequent patches that remove existing boilerplate
+license text, if there is any.  So you may want to check on this.
+
+julia
+
+
+>
+> Signed-off-by: Wentao Cai <etsai042@gmail.com>
+> ---
+>  drivers/staging/most/dim2/errors.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/most/dim2/errors.h b/drivers/staging/most/dim2/errors.h
+> index 3487510fbd2f..cbbdaaf5c52d 100644
+> --- a/drivers/staging/most/dim2/errors.h
+> +++ b/drivers/staging/most/dim2/errors.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0+ */
+>  /*
+>   * errors.h - Definitions of errors for DIM2 HAL API
+>   * (MediaLB, Device Interface Macro IP, OS62420)
+> --
+> 2.11.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190306043941.6141-1-etsai042%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
