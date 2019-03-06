@@ -1,156 +1,79 @@
-X-GM-THRID: 6659803062561931264
-X-Received: by 2002:a25:24c1:: with SMTP id k184mr5673900ybk.30.1550606233117;
-        Tue, 19 Feb 2019 11:57:13 -0800 (PST)
+X-GM-THRID: 6664861839759769600
+X-Received: by 2002:a67:7b10:: with SMTP id w16mr4207104vsc.6.1551863662648;
+        Wed, 06 Mar 2019 01:14:22 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:6b0a:: with SMTP id g10ls4569651ybc.13.gmail; Tue, 19
- Feb 2019 11:57:12 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYJoIvmdiQJE4cxpOKqsChOqK6C9NkVdIW1KH0gQe6AE12qeicsf61Q5UPE7B7R31IpVRqE
-X-Received: by 2002:a25:3294:: with SMTP id y142mr13913561yby.31.1550606232281;
-        Tue, 19 Feb 2019 11:57:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550606232; cv=none;
+Received: by 2002:a67:7f0e:: with SMTP id a14ls361868vsd.6.gmail; Wed, 06 Mar
+ 2019 01:14:21 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyHekr1nOOJbHTBY4H00b9Hgc68Q8wgYIfaLOzwPKTY/mqaoB69cJgr9dSDNS+3qDXJsBhW
+X-Received: by 2002:a67:ca8e:: with SMTP id a14mr4394325vsl.44.1551863661786;
+        Wed, 06 Mar 2019 01:14:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551863661; cv=none;
         d=google.com; s=arc-20160816;
-        b=DilmniH2m9Lpaj+XLjNXCGE0UqgcEhbUbMLs8tNN7ZT7eTIrxPRH0RAEK0UPfHrPUk
-         AYhQlQhU5Z69vsidvTTQod6Zh5ta/8M58ZILZE2OjkbvJz73Z8Yyvti47sWerkHMh49W
-         6IT1uw1kLIwOclzC4y6MaR66jHHIM+0Tgz0d2cWicNZSSglFdu0fo+TFN0H+u9xvPt4X
-         gnT++/7toHhpr+X7ovc0aT5ww7MNPkR7E619tMOS8Z1RPhlYbF1A+Bm/j1x9snbyJ1Gz
-         b5IvxiLXdAoHcLyq2r9sU9RkBdBdAHRtyHD48QnVEGMT9jtxMPBTyOWymMuXIwkYWZ4+
-         xH+A==
+        b=HuyQp4dI85NQOppxEo1f2Jeg4nJXxWsy/5wWc1lJ3l6E5Jjgojv1tHpZGua/JD7EmM
+         dIDwYY2iMGNzvsW2Uaj2pQBrO5wqDLwImICwBIhWsu7rS/DKNcl14M6SF1CZYDdyZxJx
+         4HGBbAreJ3QOuugUSxwxYXt2IUzSxNf+DWTXVVse5qBxKM/mzGAsON0lKiTUG/+vrI6A
+         e9YYGhvTARqBqg9NLvkeYehL7Kk/reIZw7snxESvGo0o029WlwKnoymnyCa6N6U7D/U+
+         7XMeZ4uUYD4XTvjAekATDhVJxw9ImvjUpHoFcQ1yQLslBDJ2It0JVW7SR7Q369Q0sD/c
+         hjbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=cqcjBep3iiNBvug5OcvVydLk5gGSwcgdfrm96pgGnQ0=;
-        b=K6U2E4MGvlxeyudWxOX1RK5lUMrCnlIHMDRykQ9588Dg4HRGjAZZtMORcGWsE76aNJ
-         7km3QGHnqSfToczuv1Bsi6GM/tmiBKlTwgNFsaE4lHZSX6y0KmC8PYGYbSQrOsy5xX1L
-         1hUzNCiNAPilmO32QBXOP2HxQybMRTH14z75YPDSBAT1dBKslWl0nL0Dxz+I82pZI9xI
-         LRvMK8sp+Rj0qF/0JfEWeWrtkeVnwhJS6na1gNjike/MFdZM/912GeAjIxKtADaOCy2L
-         reZiD0YQ1GbaH8aj8HQqpYt7avwvSiZK3PeYiD92I3n5qq2YtGvxTJUpbN/Hlqf1TAL/
-         yolg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=B235v408ielrQgbZjU9nYYXyezV7BUU8+9IC5ecnltY=;
+        b=Ewo7S9426vIS8rr7kEP8uEFU+/dtdJ2jnLLUQ5bcPTQjBzb0sHBhMryt7Ct78ZWDFp
+         w/07n5zYFv9+cKreN37GTpxDprwCsHUzjQd3P35Pii+lcyEw7/lIJEJg09ThlR4lW2u4
+         tfFJiR32VWZbIbW6vl4KfXH/AWo/B1wAkixBWA3DNqQtrXNwuZZPzvIx+WpPQl5y1At9
+         bjEUCXs2XXVaIx6GINcEcmwWTuKd589Honbs2BaT1IAW8Itz/V/dGKlJqpTrrH1rdCWB
+         cecYJwPFZjVEpxhSpJ61pvpPzjef+5Ct2birhAz1iGf6D2UMQZ6BmXR4QTE/r8UZKV1U
+         pN0w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KuFFKzsK;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id h5si711844ybh.4.2019.02.19.11.57.12
+       dkim=pass header.i=@kernel.org header.s=default header.b=Ed5ySZf9;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id s73si49822vkd.1.2019.03.06.01.14.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Feb 2019 11:57:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Wed, 06 Mar 2019 01:14:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KuFFKzsK;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id y4so10610095pgc.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Feb 2019 11:57:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=cqcjBep3iiNBvug5OcvVydLk5gGSwcgdfrm96pgGnQ0=;
-        b=KuFFKzsKaqGoa3zllYVe+Ccgx1W5OxPL5rb55rJYDPPpesJFaRJytPF0dEyOFfyUec
-         9rVR6+ZGRPC5Fw7nuYnlcf0ldUKsoCr2Igy6NrXkoWkuFOVoxM4zj5qpa6RHqo5Kv+MI
-         4acs+yrlUtqV9lJShFG9DTiFnLqDzmDZoKvkQNVarwBJGgnhNo65YbkdWMHw9cpKcLZt
-         8q5bAmB+lAG4U2RF7m5meOEOZSviVdNB+D5bVW9AyKI4wpY7Cuh6Y/2WN1YekJzcIlRH
-         BlRJDPj0YUhjE1nuMly8QIcdYZn3D89f+47riEPF4Ntuf0H6O+nYgiCluECla99qdVov
-         MFBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=cqcjBep3iiNBvug5OcvVydLk5gGSwcgdfrm96pgGnQ0=;
-        b=TbU3RThy9BYbM87DKz5tcaEw+UC1LiOEKuVmR5w6MzeX0eYekr+arLdMqkyv+peTr9
-         MQf2BVlllRTts906ql/NM0G7XeXcRXYiCy+NPhdZYVAhyf2AAxLIxYL/asWRof7FNc2h
-         nhw8gZizdJucGi1NuwqVyz6QaP0a/3xEh8+6Nm4G+j6My3m1wFi9CeLbj0adeldp4gzu
-         opoopJd36VJqfYYWPEvjCSqrMap1sI8tdFRFQQ7+I/RiZYm1rIb2dIumsQtPl7yG1a49
-         NIXDoNKWqYVLLfmSiz9dbAYqb8M71lxX/iWLBP77Se+lgBHaT1i8+p9g1fsuyjJlHKMQ
-         iNLg==
-X-Gm-Message-State: AHQUAubs8hS9p59j6ujsrwoQnfmYduQNx0yCPenTqklK4oMrgp6auc3j
-	a17/Nm4nZvxgzhTViS1cFWWvWoGx4aU=
-X-Received: by 2002:a63:f07:: with SMTP id e7mr16072668pgl.173.1550606231454;
-        Tue, 19 Feb 2019 11:57:11 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanusree-MacBookAir ([183.83.84.116])
-        by smtp.gmail.com with ESMTPSA id f62sm27021790pgc.67.2019.02.19.11.57.10
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Feb 2019 11:57:10 -0800 (PST)
-Date: Wed, 20 Feb 2019 01:27:08 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [Outreachy Kernel][PATCH 1/2] Staging: rts5208: Fix Avoid Camel Case
- - style
-Message-ID: <20190219195708.GA16266@bhanusree-MacBookAir>
+       dkim=pass header.i=@kernel.org header.s=default header.b=Ed5ySZf9;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 2119E20840;
+	Wed,  6 Mar 2019 09:14:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551863660;
+	bh=uUoAUqgnqrKHilKq4CbDvbehVrIg7smbj/n3S4KO3ZI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ed5ySZf9WqnMwysf5gl2p9Z3wWSEQjmwOf2OO5VwAW/R3hFXYWa1Tl/EEQTyepFKg
+	 Ko28DQh+QmrR8+cNbpJbddcZLrSiZYPWx0dUTUIH7wCviSehmTRAC3p2euG37s6c9d
+	 NbXf5lKUNgzQ90MZGP/5BYqsR1xljHA9t+LMrFIQ=
+Date: Wed, 6 Mar 2019 10:14:17 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Daniela Mormocea <daniela.mormocea@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3 4/4] Fix unnecessary space after
+ cast
+Message-ID: <20190306091417.GC7927@kroah.com>
+References: <1551790140-19291-1-git-send-email-daniela.mormocea@gmail.com>
+ <1551798306-20836-1-git-send-email-daniela.mormocea@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <1551798306-20836-1-git-send-email-daniela.mormocea@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Fixes Avoid Camel Case for various Macros
+On Tue, Mar 05, 2019 at 05:05:06PM +0200, Daniela Mormocea wrote:
+> Delete space after cast
+> 
+> Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+> ---
+> Changes in v3:
+> -correct mistake from previous patch, regarding 
+> a blank line
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/rts5208/xd.c | 8 ++++----
- drivers/staging/rts5208/xd.h | 6 +++---
- 2 files changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
-index c5ee04ecd1c9..1187c75d764a 100644
---- a/drivers/staging/rts5208/xd.c
-+++ b/drivers/staging/rts5208/xd.c
-@@ -630,13 +630,13 @@ static int reset_xd(struct rtsx_chip *chip)
- 			xd_card->zone_cnt = 32;
- 			xd_card->capacity = 1024000;
- 			break;
--		case xD_1G_X8_512:
-+		case XD_1G_X8_512:
- 			XD_PAGE_512(xd_card);
- 			xd_card->addr_cycle = 4;
- 			xd_card->zone_cnt = 64;
- 			xd_card->capacity = 2048000;
- 			break;
--		case xD_2G_X8_512:
-+		case XD_2G_X8_512:
- 			XD_PAGE_512(xd_card);
- 			xd_card->addr_cycle = 4;
- 			xd_card->zone_cnt = 128;
-@@ -669,10 +669,10 @@ static int reset_xd(struct rtsx_chip *chip)
- 		return STATUS_FAIL;
- 	}
- 
--	retval = xd_read_id(chip, READ_xD_ID, id_buf, 4);
-+	retval = xd_read_id(chip, READ_XD_ID, id_buf, 4);
- 	if (retval != STATUS_SUCCESS)
- 		return STATUS_FAIL;
--	dev_dbg(rtsx_dev(chip), "READ_xD_ID: 0x%x 0x%x 0x%x 0x%x\n",
-+	dev_dbg(rtsx_dev(chip), "READ_XD_ID: 0x%x 0x%x 0x%x 0x%x\n",
- 		id_buf[0], id_buf[1], id_buf[2], id_buf[3]);
- 	if (id_buf[2] != XD_ID_CODE)
- 		return STATUS_FAIL;
-diff --git a/drivers/staging/rts5208/xd.h b/drivers/staging/rts5208/xd.h
-index 57b94129b26f..98c00f268e56 100644
---- a/drivers/staging/rts5208/xd.h
-+++ b/drivers/staging/rts5208/xd.h
-@@ -36,7 +36,7 @@
- #define	BLK_ERASE_1			0x60
- #define	BLK_ERASE_2			0xD0
- #define READ_STS			0x70
--#define READ_xD_ID			0x9A
-+#define READ_XD_ID			0x9A
- #define	COPY_BACK_512			0x8A
- #define	COPY_BACK_2K			0x85
- #define	READ1_1_2			0x30
-@@ -72,8 +72,8 @@
- #define	XD_128M_X16_2048		0xC1
- #define	XD_4M_X8_512_1			0xE3
- #define	XD_4M_X8_512_2			0xE5
--#define	xD_1G_X8_512			0xD3
--#define	xD_2G_X8_512			0xD5
-+#define	XD_1G_X8_512			0xD3
-+#define	XD_2G_X8_512			0xD5
- 
- #define	XD_ID_CODE			0xB5
- 
--- 
-2.17.1
+Your subject line forgot to mention the driver being modified here :(
 
 
