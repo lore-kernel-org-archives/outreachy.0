@@ -1,115 +1,107 @@
 X-GM-THRID: 6664067951305424896
-X-Received: by 2002:a50:944c:: with SMTP id q12mr4021203eda.0.1551864826057;
-        Wed, 06 Mar 2019 01:33:46 -0800 (PST)
+X-Received: by 2002:a1f:1e4a:: with SMTP id e71mr3423951vke.2.1551863751054;
+        Wed, 06 Mar 2019 01:15:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:af8d:: with SMTP id mj13ls356648ejb.4.gmail; Wed, 06
- Mar 2019 01:33:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzwBop4FVtoQuDz47hplr49QbhWkUvBmosnUm1l7T4yH/vjafHMoE382+3H6AdYnA8j8U9W
-X-Received: by 2002:a17:906:c9d2:: with SMTP id hk18mr688072ejb.5.1551864825239;
-        Wed, 06 Mar 2019 01:33:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551864825; cv=none;
+Received: by 2002:a67:7f0e:: with SMTP id a14ls362880vsd.6.gmail; Wed, 06 Mar
+ 2019 01:15:49 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzwHfN6SWDNekmniAfafv+Es+kPtWYlgWGlxNhhqZ3MACqS4+o7OoRzvNm5KAOdWFEDiv1c
+X-Received: by 2002:a67:fa8e:: with SMTP id f14mr4277164vsq.28.1551863749215;
+        Wed, 06 Mar 2019 01:15:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551863749; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVbBJ786dfjOSFVFKOUGtw6oGPh3d2AWscYmko/6+yScjzSKW3sDWl3BltGfqx+PjY
-         mNzXNycBsngnQkht57aljaMbI0Ys3C0yD0pyNFvgEZeJyf7L4Ce/F5XrLacQ9VMFT3ow
-         4RdfEcoc+2aLQxmC7RHuVOA2hPCAvFgsc922+3et8LawOnCEgmtTPZuEvnMxXKB7cfq9
-         OGrxccmnjmlm8X58BfioeSzrr0iM/CXaqJH8m2WgWEuHeVvNiD7UixtV9VEtB8nrAsoV
-         e2lDeRCELvUHai7aVcgy4ILPO/a6kTPg6QEZQMxQEKOZpUYka/hBUgSrApAQJ3D9qR9I
-         i+/A==
+        b=OjXN6h3BX50KXfrV1tpfnhLocJaf0kSGsdG4HS1TkOeLFq9FOxidGTs0Vmxho0DX2U
+         1tq5zIci50RLox0IaIdNRwSvKuObkxQYE4Huxv6xK2ZZqx1A2mgsuNDnWqd41p/9Yd7e
+         v+aOZbATjl5W5Rj3pdfNbzBUOLvGC3AOVOhM4SDSWVJxJ2HgUGHXGCDoVUh9nbfSqbMw
+         wiw28oyL8E+rzBAvR2Poo4ti8fYKG3qj19sUusa7k35kxypKYNv8yI3W3Fg7AEQRZo+z
+         Yg94h7yjIs3xKH5fsRacz5mNeWAeGDDy/Hu8mK11N4QNZQVoi1BbfFZxvFe70VJrS71w
+         N7tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=2h6Nnjyi4CxVfwbSmVRqHduXFnrulofUpwizV+uPgJY=;
-        b=AWm6aUjALUjScEvTNZl2RfqcpL/kb6ZmtSkNQne/Nm8LY9OAdPIDHJDtB9JUgeYJId
-         TL3KHfbQm25jPWOyDdjzT78Y/FSkix79fO5SHGvlzUfV47rUtILPwh+Xd7BypXB2LJbd
-         RR+l8S0Hn0Np4tDDW+L5S1+QCqCtfPc2T00DT9JmDhJbJkpi8qxZURHRE/viZj6+ddFa
-         LE74cHSp2U0Iq0GlKf+1L7AoEfZlS4xxcSQ4A7FZrf+bRwgsWGO0Led6cZalMqKwSUX2
-         k71zUwNhrPUFIJX+2ejdjcuPVNgfeA11AwOPJz9ZKmxfBzc1609Tje52kihMkJQbcz1x
-         9zdQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Fw3cF5xTV38zzMDf0ysg7RY/Qt3JDsUIGuPP32o+B8I=;
+        b=QzLPoI/kxiEfmY63iY/9eJS+7Pz+PbNXWmz5bMre7cOQL+TbYpjvB80AbPcPbHkbKk
+         zducIGOMTbQ6/EKH7jHc6/v14naerBV3W7U8Evf1rMkDfHxdhoqIWnEWposJcCf/SRRR
+         3NEGIJh962q3OhGXd2fHfd9mlFK022AUZk+pdV/iVedOQr7RStYp9JZmaNRla2hh7UQp
+         prHYoivGqfEjxxYLWJYroPXFzdKVmwP9Cu8IrW2d1QKPLZI6Q/R+NJM8UQlmDHLN9ONW
+         LiDpTihX+o/XOYjTwtoFOv3+4wGQCFtWGyJ9QqOk0ZAtn3SHFc9Fm8KFusho+cPa1lpK
+         Dgvg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id i16si45387ede.0.2019.03.06.01.33.45
+       dkim=pass header.i=@kernel.org header.s=default header.b=GCXIASdC;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c15si49514vsp.2.2019.03.06.01.15.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 01:33:45 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 06 Mar 2019 01:15:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,447,1544482800"; 
-   d="scan'208";a="372144614"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2019 10:33:44 +0100
-Date: Wed, 6 Mar 2019 10:33:37 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Greg KH <gregkh@linuxfoundation.org>
-cc: Debleena Sen <idebleenasen@gmail.com>, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH v4] Staging: pi433: Fix line over
- 80 characters issue
-In-Reply-To: <20190306091544.GE7927@kroah.com>
-Message-ID: <alpine.DEB.2.20.1903061033090.7709@hadrien>
-References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com> <20190305074018.GA6158@kroah.com> <CACw+u4FnMCpiBiYPqaz3R054wm2q3Rx9q2R7S15_2+EPhJmkNA@mail.gmail.com> <20190306091544.GE7927@kroah.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@kernel.org header.s=default header.b=GCXIASdC;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B3C5A20840;
+	Wed,  6 Mar 2019 09:15:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551863748;
+	bh=oojCRBGmPBPl9ThBLjr3MnJkCBJx+W6Y1DWW8WhQvkY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GCXIASdC2NU4TVPpK2K6vRgc1tR9rimmKMh+dq82T3O1AbQCCAuvdLH6DRozx8IYf
+	 gjquk8iuEWkJG6ZtJhZu3eechkgraGlicBUD3GNLVVzwkt4TgKd8jXOqTTQTXUIfjh
+	 Hkn+MOYbSx2jKuxBfqwIIFKcH9KV8Vj/EU4k57iw=
+Date: Wed, 6 Mar 2019 10:15:44 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Debleena Sen <idebleenasen@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH v4] Staging: pi433: Fix line over 80 characters issue
+Message-ID: <20190306091544.GE7927@kroah.com>
+References: <1551607296-33723-1-git-send-email-idebleenasen@gmail.com>
+ <20190305074018.GA6158@kroah.com>
+ <CACw+u4FnMCpiBiYPqaz3R054wm2q3Rx9q2R7S15_2+EPhJmkNA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CACw+u4FnMCpiBiYPqaz3R054wm2q3Rx9q2R7S15_2+EPhJmkNA@mail.gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-
-
-On Wed, 6 Mar 2019, Greg KH wrote:
-
-> On Tue, Mar 05, 2019 at 09:54:44PM +0530, Debleena Sen wrote:
-> > On Tue, Mar 5, 2019 at 1:10 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-> >
-> > > On Sun, Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:
-> > > > Break the line and match the indentation to remove the
-> > > > checkpatch.pl warning:
-> > > > WARNING: line over 80 characters
-> > > >
-> > > > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
-> > > > ---
-> > > >  drivers/staging/pi433/rf69.c | 3 ++-
-> > > >  1 file changed, 2 insertions(+), 1 deletion(-)
+On Tue, Mar 05, 2019 at 09:54:44PM +0530, Debleena Sen wrote:
+> On Tue, Mar 5, 2019 at 1:10 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+> 
+> > On Sun, Mar 03, 2019 at 02:01:36AM -0800, Debleena Sen wrote:
+> > > Break the line and match the indentation to remove the
+> > > checkpatch.pl warning:
+> > > WARNING: line over 80 characters
 > > >
-> > > What changed from the previous versions?  That information always goes
-> > > below the --- line please.
-> > >
-> > > Please fix up and resend.
-> > >
-> > > thanks,
-> > >
-> > > greg k-h
-> > >
+> > > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+> > > ---
+> > >  drivers/staging/pi433/rf69.c | 3 ++-
+> > >  1 file changed, 2 insertions(+), 1 deletion(-)
 > >
-> > I'm not able to find the commit.
+> > What changed from the previous versions?  That information always goes
+> > below the --- line please.
 > >
-> > I tried using "git reset --mixed e19b9ce" but it shows an error:
+> > Please fix up and resend.
 > >
-> > error: object e19b9ce794a8534f0ad19bfa1c60260fd74b9bb9 is a blob, not a
-> > commit
-> > fatal: could not parse object 'e19b9ce'
+> > thanks,
 > >
-> > How can I recover it so that I can add the changes?
->
-> I have no idea what you are trying to do here, sorry.  Why are you
-> running 'git reset'?
+> > greg k-h
+> >
+> 
+> I'm not able to find the commit.
+> 
+> I tried using "git reset --mixed e19b9ce" but it shows an error:
+> 
+> error: object e19b9ce794a8534f0ad19bfa1c60260fd74b9bb9 is a blob, not a
+> commit
+> fatal: could not parse object 'e19b9ce'
+> 
+> How can I recover it so that I can add the changes?
 
-If you get confused with git, just undo the whole thing and start over.
+I have no idea what you are trying to do here, sorry.  Why are you
+running 'git reset'?
 
-julia
+confused,
 
-
->
-> confused,
->
-> greg k-h
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190306091544.GE7927%40kroah.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+greg k-h
 
