@@ -1,184 +1,173 @@
-X-GM-THRID: 6468972080640557056
-X-Received: by 10.36.69.198 with SMTP id c67mr1020812itd.16.1506174933227;
-        Sat, 23 Sep 2017 06:55:33 -0700 (PDT)
+X-GM-THRID: 6665612621009387520
+X-Received: by 2002:a19:dc05:: with SMTP id t5mr778741lfg.0.1551958957962;
+        Thu, 07 Mar 2019 03:42:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.56.134 with SMTP id f128ls3706833oia.1.gmail; Sat, 23 Sep
- 2017 06:55:32 -0700 (PDT)
-X-Received: by 10.202.168.88 with SMTP id r85mr998916oie.14.1506174932376;
-        Sat, 23 Sep 2017 06:55:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506174932; cv=none;
+Received: by 2002:ac2:508f:: with SMTP id f15ls514966lfm.7.gmail; Thu, 07 Mar
+ 2019 03:42:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzPQTdzC7zq2JozgIuDPMSrzs3+DDMFnz0DQlDRfUC7aM3S57wRDNTxsrNuEGuTrSZtdPVm
+X-Received: by 2002:a19:c502:: with SMTP id w2mr776880lfe.15.1551958956955;
+        Thu, 07 Mar 2019 03:42:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551958956; cv=none;
         d=google.com; s=arc-20160816;
-        b=MJwl/XeTuoP1UVopU/C8aqgMYqelPAIgUvUc9YOY4WitimLW0FfZyH3rntjDhgxNX5
-         4mHUh4aD2aKi/oJb0iQX7E88ExPypkAHXEyEmgLUzMPIssMNk2hurHFXSQH3Bz1bHBp0
-         RS78gCwUn3PFa64NQ2IcTGOlM4vmLYjXwu2cwWj7AH3mvAUJ+wv6pWXTbykutNwEvNvC
-         /1bU9vpSgpqXvo7/92prIzWuS0t86QWGLs9b0/s673n7rIDKoFU0iKMAzQFn7DgT4Xav
-         1Vw3vWETrNRmpHaFfe1Oqn7Y11an9KRdsx1c/7G+cYDDZj7egL5vqoYeQDYgkVglBsA/
-         F56Q==
+        b=O2gzNtq/E4VCbxCC5me+NGZQC68l7RMP4WWytaolPhCIuM3lv1hGiKubMEjuyY1vvh
+         a4icJ9LGw/2XJUIBW+EIkotDMFw8NqEPU5+CICRBfZQWeoDjn4rKnd9Otn14LfY28Fm0
+         ZoJkavf86rbBQED3st2Z3a7tMYJBsQrL8qtK3AyyvEDQRmTbI6wo9pPmK7AVVfugfQ6K
+         VJvMOiuuzjOdGfx9NEmKE1xihuEP6a3ZtpaFp+gOXL3ANdHmOJ405HS08zBjfUfbAxSb
+         xr8hl1CxPHV7hOSI9TroLDaG3WMiIWdCAFpfQCcAbAZokIV2xQlnGtrJKx38y+3eDJNy
+         +DPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=sDMNPKKandVqX5hyD5CFm3ZWn08F53AfBDs6seZdIw0=;
-        b=kwKVI4HZ+Na59ZPq7rKMLYUGZ/dtFR4/m3m3XQFyo/S3v98inChLKz55PaFN2pzsdr
-         O4e42o0Afydj2Yh2sC0oke0m3/4lkIls7xtaEODp/8Do+/vHsTBTNoJShB4hqft/KQkw
-         J50sKUMKxUHuAG3PDgK2HUqy+O9IC6GeeWu+E1IZu+P+7PmSq2jZpGcJ0rEexUZdCiSI
-         EHRldtp71kIwqck8XhmRmFdK3LKN0qPQBz3Mbr47DNm++zfW6coOizbpg9IwQVSzngxY
-         m6HH+cDN4mXZEjjNh5M7tBELDb53V93mXtZRBsABVkCsG4gymi1W99Tu92fZaFN1Ku8t
-         DdCA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=ZJST5SnwriZ1EBxbEx5U4FWuPYxyZDTwV7ajXFIQ9dM=;
+        b=1HKtSVfAVnzLT6VRtXavH3ilxxuBlhb59txiMb3g98NW/CfXuhK+xAW69SkSRd7XT1
+         cd7eknRbg7ctyOjCsiE1ly5fWeGldjGXYIR07wvXwWpEgcGQiYOMGwI9AXG5zUQ0nz4n
+         tI9UHnOMqC2T9apMgJuS7rUuJi8Vhzxrv7nDg7LHsyHvzpvzYqO511h32vSawGSpvrvx
+         7MwHNSENx5JrICiZ+NNLJv4cP/k2wMbLOLuejJ4RRtObQ67CtBCI62vHr1Ajz3V6VtuG
+         r4oUS3OdhTiE5aib1oBMVzl4JkFmW/cr3lkScgS6613FKvzwE6RAZBmHooQnsho9nhTc
+         OcPg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tpNXMrfQ;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id s81si152872pfg.19.2017.09.23.06.55.32
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXuLxdV7;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id f20si154452lfc.5.2019.03.07.03.42.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 06:55:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Thu, 07 Mar 2019 03:42:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tpNXMrfQ;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id m30so2280690pgn.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Sep 2017 06:55:32 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXuLxdV7;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x442.google.com with SMTP id n2so17041300wrw.8
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 03:42:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=sDMNPKKandVqX5hyD5CFm3ZWn08F53AfBDs6seZdIw0=;
-        b=tpNXMrfQrKBvhY6aXcJZwfwkJgEVlq5iMKWSBcww/tU+lN8q5EG1yqvo2DNplnpZ7S
-         5ECJ3InwszhZe6P9HPmQdxWosSKPsEw5o42THWdjfOabB85GQoDrtcaBJW79tAlT9gLl
-         wYHwh/XmivU6uWqPpQBiX11g8Mc9EN52p60bJvBj2Oa7IyASWNPX9bb55jnDwcKVnVZk
-         pe98tiGP3p/S4ymHMwqTdheQr5WWceHCOBv2rkGHLG4nf4zqWljquRUFHbqS6dpz7c60
-         BYj6I3PXxjvzJxk0YeZd9kEafhmYXhYIPUVPYKNtcaP7vFJA2OZbK3Np1KCGYWn6wfU9
-         Gczw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=ZJST5SnwriZ1EBxbEx5U4FWuPYxyZDTwV7ajXFIQ9dM=;
+        b=JXuLxdV7d8WYtB6Cs57XilERrT7SFnqORKO1jIOvJ8UEDxVyDkPap9GYuggal+on5G
+         gHsTm/9UARy4CMuceATM5v6ft8Jp9ddI3h4kmOswF6uxIdj35nUhfs10lJX4vIDZNLzd
+         5toWkhhtPbjVLptKPPmG92HotbYOfgd3Mk1awrYezrJtEHyHKVqEYpmeQJMqqNkP7TRp
+         PZgFsh9TDfgjD9YoXrs9U2xc+pgqaW+gapukwC/BfSkBQf6Q+b1cL9WrMz8Xrhbnsm3Q
+         EE0g5F0rS4IZa/AY5YigCapacvPgWJPmaUiQHW+1Onx0zWw9eeb5JjYFqCg5xVu5bqUo
+         /MGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=sDMNPKKandVqX5hyD5CFm3ZWn08F53AfBDs6seZdIw0=;
-        b=lwSTTNeiJfQr4tPcc+E1mZ2zLhu15eaHR+BfK/l4nMuJA1FpDNYKZXVa0cC+rQ1ddl
-         5UbRnV5/nIv/XxvgMg/18QzBOptUW5z6LEkM9ZkoALkzyQeN5t0VulJbJ74GDOCW0RsS
-         LwyK0PYZpid7DHRqV4LmQ/MRSEMmo5enq3F7N1bUQLYxlhm/51J5Mz7lzYJKH/3LyP9r
-         HGQLlcky2X4ZUq2PQ7b+6SH8iVrzJyGlMPIl98Xo2Cxym9SVW+2reiUhuulgiwUAuiVU
-         0rCSsTnCk+wkjY9t/7SIFuyOh+VsQZ8vPY+FGIzYJCGef11WaxbB+DQck7vDoHBRTIBP
-         YGgw==
-X-Gm-Message-State: AHPjjUhz7A2Q7xKpVkvqgjaL46Ng6HArFyvR8Cs5NXOlks/RoXgK7mMn
-	ncvEO6PSMYWXKUY1L/ewmTs=
-X-Google-Smtp-Source: AOwi7QCsTMKReDzcIiPdlnSJb40pd6RdJyOQnKDwQ4sHmktraojNKUsDShbVCO82QJHihMyxXI/t4A==
-X-Received: by 10.99.55.92 with SMTP id g28mr2251311pgn.59.1506174931984;
-        Sat, 23 Sep 2017 06:55:31 -0700 (PDT)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([49.248.235.76])
-        by smtp.gmail.com with ESMTPSA id h82sm6801260pfd.148.2017.09.23.06.55.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 06:55:31 -0700 (PDT)
-Date: Sat, 23 Sep 2017 19:25:26 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Julia Lawall <Julia.Lawall@lip6.fr>,
-	Gilles Muller <Gilles.Muller@lip6.fr>,
-	Nicolas Palix <nicolas.palix@imag.fr>,
-	Michal Marek <mmarek@suse.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] coccinelle: boolconv: improve script to handle more cases
-Message-ID: <20170923135526.GA30354@aishwarya>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=ZJST5SnwriZ1EBxbEx5U4FWuPYxyZDTwV7ajXFIQ9dM=;
+        b=PpWlYQk6dirHqwnLJpcnHcDuoeZ+uqPLujxzNyKy9m61DrDLFYxBPWX6UQxeiRCoH4
+         gVA1RqGw8rlYXCPjI+jrHON0SO2A7qGbQ9CRhq67LPeEwjd1es37wH6hxJlDoN1lQRSE
+         4XOyOv3VCarFz18VMmn2M5ElNhmRA9+R5dB53zA+xi0RKwfkjgigfi9rrHrqqInehixa
+         OWWDR5SZ/m0oYxn+sbhpQ0h0kZz025AsL/hduUb4I0RQIYTX7XbSM7XQ+1dCUkWgHOHB
+         KZalD/KKQ3tGOtTBj7Sa7qDX2la2uxbTjwTNem3bw1ez4zDE2P3RA9VwMPYKF7n/xob+
+         Q95Q==
+X-Gm-Message-State: APjAAAXM0Cr2lnkC3vAcMC6M1cgvMB4qTSZgV2auy44Cd2i3xenjDEhG
+	mk1UH58YxNF8IUjWGdJSjGo=
+X-Received: by 2002:adf:ffcd:: with SMTP id x13mr6376659wrs.20.1551958956318;
+        Thu, 07 Mar 2019 03:42:36 -0800 (PST)
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from pthm ([141.85.233.103])
+        by smtp.gmail.com with ESMTPSA id z15sm7974344wrh.18.2019.03.07.03.42.35
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 07 Mar 2019 03:42:35 -0800 (PST)
+From: Daniela Mormocea <daniela.mormocea@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
+Subject: [PATCH 3/3] staging: media: davinci_vpfe: Fix alignment issues
+Date: Thu,  7 Mar 2019 13:42:33 +0200
+Message-Id: <1551958953-9920-1-git-send-email-daniela.mormocea@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1551958871-9732-1-git-send-email-daniela.mormocea@gmail.com>
+References: <1551958871-9732-1-git-send-email-daniela.mormocea@gmail.com>
 
-Given expressions A, B and a binary operator op, the current script checks for
-cases where
-	A op B ? true : false can be replaced by A op B
+Fix all the alignment issues in the file to
+get rid of checkpatch warnings
 
-This can be extended to handle the other case where
-	A op B ? false : true can be replaced by !(A op B)
-
-Moreover we can use the binary operator type to catch all desirable comparisons
-in one go instead of writing them down.
-
-Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
+Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
 ---
+ drivers/staging/media/davinci_vpfe/dm365_ipipeif.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-Okay I'm not sure if A op B ? false : true conversion to !(A op B) is even
-desirable because it might hinder code readability in certain cases.
-Just putting it out here because while I was running coccicheck in staging
-drivers a few cases like the above turned up.
----
- scripts/coccinelle/misc/boolconv.cocci | 43 ++++++++--------------------------
- 1 file changed, 10 insertions(+), 33 deletions(-)
-
-diff --git a/scripts/coccinelle/misc/boolconv.cocci b/scripts/coccinelle/misc/boolconv.cocci
-index 33c464d..9b32b5f 100644
---- a/scripts/coccinelle/misc/boolconv.cocci
-+++ b/scripts/coccinelle/misc/boolconv.cocci
-@@ -16,27 +16,19 @@ virtual report
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+index 5a44c0c..4380e0a 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
+@@ -104,7 +104,7 @@ ipipeif_get_cfg_src1(struct vpfe_ipipeif_device *ipipeif)
  
- @depends on patch@
- expression A, B;
-+binary operator op = {==,!=,>,<,>=,<=,&&,||};
- symbol true, false;
- @@
+ 	informat = &ipipeif->formats[IPIPEIF_PAD_SINK];
+ 	if (ipipeif->input == IPIPEIF_INPUT_MEMORY &&
+-	   (informat->code == MEDIA_BUS_FMT_Y8_1X8 ||
++	    (informat->code == MEDIA_BUS_FMT_Y8_1X8 ||
+ 	    informat->code == MEDIA_BUS_FMT_UV8_1X8))
+ 		return IPIPEIF_CCDC;
  
- (
--  A == B
--|
--  A != B
--|
--  A > B
--|
--  A < B
--|
--  A >= B
--|
--  A <= B
--|
--  A && B
-+  A op B
-+- ? true : false
- |
--  A || B
-++ !(
-+  A op B
-++ )
-+- ? false : true
- )
--- ? true : false
+@@ -360,7 +360,7 @@ static int ipipeif_hw_setup(struct v4l2_subdev *sd)
+ 		default:
+ 			/* Bayer */
+ 			ipipeif_write(params.if_5_1.clip, ipipeif_base_addr,
+-				IPIPEIF_OCLIP);
++				      IPIPEIF_OCLIP);
+ 		}
+ 		ipipeif_write(val, ipipeif_base_addr, IPIPEIF_CFG2);
+ 		break;
+@@ -389,7 +389,7 @@ ipipeif_set_config(struct v4l2_subdev *sd, struct ipipeif_params *config)
+ 	ipipeif->config.rsz = config->rsz;
+ 	ipipeif->config.decimation = config->decimation;
+ 	if (ipipeif->config.decimation &&
+-	   (ipipeif->config.rsz < IPIPEIF_RSZ_MIN ||
++	    (ipipeif->config.rsz < IPIPEIF_RSZ_MIN ||
+ 	    ipipeif->config.rsz > IPIPEIF_RSZ_MAX)) {
+ 		dev_err(dev, "rsz range is %d to %d\n",
+ 			IPIPEIF_RSZ_MIN, IPIPEIF_RSZ_MAX);
+@@ -580,7 +580,7 @@ static int ipipeif_enum_mbus_code(struct v4l2_subdev *sd,
+  */
+ static int
+ ipipeif_get_format(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg,
+-		struct v4l2_subdev_format *fmt)
++		   struct v4l2_subdev_format *fmt)
+ {
+ 	struct vpfe_ipipeif_device *ipipeif = v4l2_get_subdevdata(sd);
  
- //----------------------------------------------------------
- //  For context mode
-@@ -44,28 +36,13 @@ symbol true, false;
+@@ -679,8 +679,8 @@ ipipeif_enum_frame_size(struct v4l2_subdev *sd,
+  */
+ static struct v4l2_mbus_framefmt *
+ __ipipeif_get_format(struct vpfe_ipipeif_device *ipipeif,
+-		       struct v4l2_subdev_pad_config *cfg, unsigned int pad,
+-		       enum v4l2_subdev_format_whence which)
++		     struct v4l2_subdev_pad_config *cfg, unsigned int pad,
++		     enum v4l2_subdev_format_whence which)
+ {
+ 	if (which == V4L2_SUBDEV_FORMAT_TRY)
+ 		return v4l2_subdev_get_try_format(&ipipeif->subdev, cfg, pad);
+@@ -697,7 +697,7 @@ __ipipeif_get_format(struct vpfe_ipipeif_device *ipipeif,
+  */
+ static int
+ ipipeif_set_format(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg,
+-		struct v4l2_subdev_format *fmt)
++		   struct v4l2_subdev_format *fmt)
+ {
+ 	struct vpfe_ipipeif_device *ipipeif = v4l2_get_subdevdata(sd);
+ 	struct v4l2_mbus_framefmt *format;
+@@ -879,7 +879,7 @@ static const struct vpfe_video_operations video_in_ops = {
  
- @r depends on !patch@
- expression A, B;
-+binary operator op = {==,!=,>,<,>=,<=,&&,||};
- symbol true, false;
- position p;
- @@
+ static int
+ ipipeif_link_setup(struct media_entity *entity, const struct media_pad *local,
+-		const struct media_pad *remote, u32 flags)
++		   const struct media_pad *remote, u32 flags)
+ {
+ 	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(entity);
+ 	struct vpfe_ipipeif_device *ipipeif = v4l2_get_subdevdata(sd);
+@@ -975,7 +975,7 @@ vpfe_ipipeif_register_entities(struct vpfe_ipipeif_device *ipipeif,
  
--(
--  A == B
--|
--  A != B
--|
--  A > B
--|
--  A < B
--|
--  A >= B
--|
--  A <= B
--|
--  A && B
--|
--  A || B
--)
--* ? true : false@p
-+  A op B
-+* ? \(true\|false\) : \(false@p\|true@p\)
+ 	flags = 0;
+ 	ret = media_create_pad_link(&ipipeif->video_in.video_dev.entity, 0,
+-					&ipipeif->subdev.entity, 0, flags);
++				    &ipipeif->subdev.entity, 0, flags);
+ 	if (ret < 0)
+ 		goto fail;
  
- //----------------------------------------------------------
- //  For org mode
 -- 
 2.7.4
 
