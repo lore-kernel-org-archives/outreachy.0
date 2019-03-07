@@ -1,173 +1,109 @@
 X-GM-THRID: 6665612621009387520
-X-Received: by 2002:a19:dc05:: with SMTP id t5mr778741lfg.0.1551958957962;
-        Thu, 07 Mar 2019 03:42:37 -0800 (PST)
+X-Received: by 2002:a7b:c3d8:: with SMTP id t24mr959970wmj.6.1551958933604;
+        Thu, 07 Mar 2019 03:42:13 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:508f:: with SMTP id f15ls514966lfm.7.gmail; Thu, 07 Mar
- 2019 03:42:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzPQTdzC7zq2JozgIuDPMSrzs3+DDMFnz0DQlDRfUC7aM3S57wRDNTxsrNuEGuTrSZtdPVm
-X-Received: by 2002:a19:c502:: with SMTP id w2mr776880lfe.15.1551958956955;
-        Thu, 07 Mar 2019 03:42:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551958956; cv=none;
+Received: by 2002:a1c:b755:: with SMTP id h82ls116047wmf.9.canary-gmail; Thu,
+ 07 Mar 2019 03:42:12 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy4AlTYCWsTbj//kjWOAYg5GW5goc/tNf2o0rmtLafSmByxBXMSK3xA4wFSC2FeCM8PY4lw
+X-Received: by 2002:a1c:1a4a:: with SMTP id a71mr939576wma.21.1551958932760;
+        Thu, 07 Mar 2019 03:42:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551958932; cv=none;
         d=google.com; s=arc-20160816;
-        b=O2gzNtq/E4VCbxCC5me+NGZQC68l7RMP4WWytaolPhCIuM3lv1hGiKubMEjuyY1vvh
-         a4icJ9LGw/2XJUIBW+EIkotDMFw8NqEPU5+CICRBfZQWeoDjn4rKnd9Otn14LfY28Fm0
-         ZoJkavf86rbBQED3st2Z3a7tMYJBsQrL8qtK3AyyvEDQRmTbI6wo9pPmK7AVVfugfQ6K
-         VJvMOiuuzjOdGfx9NEmKE1xihuEP6a3ZtpaFp+gOXL3ANdHmOJ405HS08zBjfUfbAxSb
-         xr8hl1CxPHV7hOSI9TroLDaG3WMiIWdCAFpfQCcAbAZokIV2xQlnGtrJKx38y+3eDJNy
-         +DPA==
+        b=xhnBlIVd50FzSxwWf7dZq2CEHCP3izEOrpsX5zcioBIGU9rklb8DoASe+Es6caNMfl
+         dKp0t9095DA3eSrwiKfppg6ogviBN2NgE8cJa2CaLTQTgxKCD8+rsychbXuN8mlWI48/
+         coAWkfJuC1me/igCclg8Vi+oF7DpPaFtXTRHXxDPTGe17K775pwpjhACyuLTCivv3wwx
+         ir1VpgxWql/rtGjonOFxR6iyUUGKGQeTc5PFkpp9qDbGGvaI5UyR4git9fknb5zLq/1q
+         sVAiSoiJk0K8534gdfM1TC/w4UNOPAsudTCXK78eIAIjGbUKoXlZ4IKrzySrkUhMclzQ
+         Yb2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=ZJST5SnwriZ1EBxbEx5U4FWuPYxyZDTwV7ajXFIQ9dM=;
-        b=1HKtSVfAVnzLT6VRtXavH3ilxxuBlhb59txiMb3g98NW/CfXuhK+xAW69SkSRd7XT1
-         cd7eknRbg7ctyOjCsiE1ly5fWeGldjGXYIR07wvXwWpEgcGQiYOMGwI9AXG5zUQ0nz4n
-         tI9UHnOMqC2T9apMgJuS7rUuJi8Vhzxrv7nDg7LHsyHvzpvzYqO511h32vSawGSpvrvx
-         7MwHNSENx5JrICiZ+NNLJv4cP/k2wMbLOLuejJ4RRtObQ67CtBCI62vHr1Ajz3V6VtuG
-         r4oUS3OdhTiE5aib1oBMVzl4JkFmW/cr3lkScgS6613FKvzwE6RAZBmHooQnsho9nhTc
-         OcPg==
+        bh=my+A26nBWRYE6t9pMjtYvZU3rvk6Eb+r47CEh3kWPcM=;
+        b=Ya80E+ESwl5amvH6Vv/xeIcrrCxBZ2WNxl/C4umwx0npG3dRX3EEHSMVTn+RP/Ed/a
+         kdn42UKE/5WBmQD3qQvPzZ4J2Lx//R3XCq8hjxon441FumItXRPpBnBEDx4F0+yVlFsK
+         LIyLj9WHLFUGZrGFgVTP3hbgkEuu/H5cSUcf+ohmK39AU2wdD8EWwI//ihukLJW1rOx9
+         WL396/EdIObHiZg8yPYJRng/yjgML0g1ZaZJLOG9x1WkHIKuR4FL3v7iGCqZ5sa+HP6S
+         c6W+8TDrQ5tgjPypnX2Uibe5xxOSURUB/xMCf/eKfg2KAuuJqX7zWXejBQ2Fs7XmM84K
+         xRrw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXuLxdV7;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aq9tj803;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id f20si154452lfc.5.2019.03.07.03.42.36
+Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com. [2a00:1450:4864:20::432])
+        by gmr-mx.google.com with ESMTPS id f2si213205wrq.5.2019.03.07.03.42.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 03:42:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+        Thu, 07 Mar 2019 03:42:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) client-ip=2a00:1450:4864:20::432;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXuLxdV7;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aq9tj803;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id n2so17041300wrw.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 03:42:36 -0800 (PST)
+Received: by mail-wr1-x432.google.com with SMTP id w17so17029198wrn.12
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 03:42:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=ZJST5SnwriZ1EBxbEx5U4FWuPYxyZDTwV7ajXFIQ9dM=;
-        b=JXuLxdV7d8WYtB6Cs57XilERrT7SFnqORKO1jIOvJ8UEDxVyDkPap9GYuggal+on5G
-         gHsTm/9UARy4CMuceATM5v6ft8Jp9ddI3h4kmOswF6uxIdj35nUhfs10lJX4vIDZNLzd
-         5toWkhhtPbjVLptKPPmG92HotbYOfgd3Mk1awrYezrJtEHyHKVqEYpmeQJMqqNkP7TRp
-         PZgFsh9TDfgjD9YoXrs9U2xc+pgqaW+gapukwC/BfSkBQf6Q+b1cL9WrMz8Xrhbnsm3Q
-         EE0g5F0rS4IZa/AY5YigCapacvPgWJPmaUiQHW+1Onx0zWw9eeb5JjYFqCg5xVu5bqUo
-         /MGQ==
+        bh=my+A26nBWRYE6t9pMjtYvZU3rvk6Eb+r47CEh3kWPcM=;
+        b=aq9tj803b/uGTd2xH+FLfc3a3LzU9gqxDg159ekBUKKb+oQF3d96fYyLR1PkKjOZG3
+         8oY5AmbSzI9YR87tYUB5pXyc2QSkPHRVjk4KI6PYjKIHRhl8Gwv18eHBKLHiG+YeS+qw
+         SLlraRGpO7tS5WmsEVyYqjmpTxtfkOfopkMWgfstuQExexmlVrqCmVjQiMiN+PZC8Cvu
+         AsXEtz9Cwh1TskIZlI5Pm6zUfHDV0ygwB49Va6jDQ7LcmuMeObiC0hkfVhOxg+nvGLZe
+         oghnYomhB18nqgzsaO8/evLpv5HA0ZV+fMgYxqs0voLu7Ft4zB+7kmgJqin7ioJ7Jws1
+         RUHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=ZJST5SnwriZ1EBxbEx5U4FWuPYxyZDTwV7ajXFIQ9dM=;
-        b=PpWlYQk6dirHqwnLJpcnHcDuoeZ+uqPLujxzNyKy9m61DrDLFYxBPWX6UQxeiRCoH4
-         gVA1RqGw8rlYXCPjI+jrHON0SO2A7qGbQ9CRhq67LPeEwjd1es37wH6hxJlDoN1lQRSE
-         4XOyOv3VCarFz18VMmn2M5ElNhmRA9+R5dB53zA+xi0RKwfkjgigfi9rrHrqqInehixa
-         OWWDR5SZ/m0oYxn+sbhpQ0h0kZz025AsL/hduUb4I0RQIYTX7XbSM7XQ+1dCUkWgHOHB
-         KZalD/KKQ3tGOtTBj7Sa7qDX2la2uxbTjwTNem3bw1ez4zDE2P3RA9VwMPYKF7n/xob+
-         Q95Q==
-X-Gm-Message-State: APjAAAXM0Cr2lnkC3vAcMC6M1cgvMB4qTSZgV2auy44Cd2i3xenjDEhG
-	mk1UH58YxNF8IUjWGdJSjGo=
-X-Received: by 2002:adf:ffcd:: with SMTP id x13mr6376659wrs.20.1551958956318;
-        Thu, 07 Mar 2019 03:42:36 -0800 (PST)
+        bh=my+A26nBWRYE6t9pMjtYvZU3rvk6Eb+r47CEh3kWPcM=;
+        b=Eqp+IWR95f6rcoY8i0yNBnrKgQT1uUUVJeC7QOuhN4xnlLLMITEN6pGb6MWV1n2F9H
+         pac63i+FZw9kY59OvG3zepp4OVAF4L29E0/Sg1l51xHXgQLb7Zdn4Ku8bj24Ix/Inpbo
+         u93eux9B5Mfs3ETcLqWAKxyxlWZm8rMrdrRUEb4OJ9fpMXQH7MwGR7un0DmyxttdFJc4
+         stAYP8zXDef07xyhceEmANGfT3y7MZtbHkDkrP/DkL6MuuK9aAYx0OnKgnfOw12oL0yy
+         SbkAhJXj/FQcMRrSakOkuFLj1jnc2ZqcauL2oM6cj/Dhv+03b1+40e1xXjB0pL+zRads
+         MQJg==
+X-Gm-Message-State: APjAAAVkyGEuvh46nBgSK+TQCvg36NlLGWlAouL4K5hjKvHGngVv/Wq9
+	WWWHaru9e7YxTZEsKLDN1vXTLQo09aE=
+X-Received: by 2002:adf:f011:: with SMTP id j17mr6729716wro.166.1551958932473;
+        Thu, 07 Mar 2019 03:42:12 -0800 (PST)
 Return-Path: <daniela.mormocea@gmail.com>
 Received: from pthm ([141.85.233.103])
-        by smtp.gmail.com with ESMTPSA id z15sm7974344wrh.18.2019.03.07.03.42.35
+        by smtp.gmail.com with ESMTPSA id e193sm8784040wmg.18.2019.03.07.03.42.11
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 03:42:35 -0800 (PST)
+        Thu, 07 Mar 2019 03:42:11 -0800 (PST)
 From: Daniela Mormocea <daniela.mormocea@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
-Subject: [PATCH 3/3] staging: media: davinci_vpfe: Fix alignment issues
-Date: Thu,  7 Mar 2019 13:42:33 +0200
-Message-Id: <1551958953-9920-1-git-send-email-daniela.mormocea@gmail.com>
+Subject: [PATCH 2/3] staging: media: davinci_vpfe: Fix multiple line dereference
+Date: Thu,  7 Mar 2019 13:42:09 +0200
+Message-Id: <1551958929-9860-1-git-send-email-daniela.mormocea@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1551958871-9732-1-git-send-email-daniela.mormocea@gmail.com>
 References: <1551958871-9732-1-git-send-email-daniela.mormocea@gmail.com>
 
-Fix all the alignment issues in the file to
-get rid of checkpatch warnings
+Fix multiple line dereference to improve readability
+and avoid checkpatch warning
 
 Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
 ---
- drivers/staging/media/davinci_vpfe/dm365_ipipeif.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/media/davinci_vpfe/dm365_ipipeif.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
-index 5a44c0c..4380e0a 100644
+index 277d9af..5a44c0c 100644
 --- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
 +++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.c
-@@ -104,7 +104,7 @@ ipipeif_get_cfg_src1(struct vpfe_ipipeif_device *ipipeif)
- 
- 	informat = &ipipeif->formats[IPIPEIF_PAD_SINK];
- 	if (ipipeif->input == IPIPEIF_INPUT_MEMORY &&
--	   (informat->code == MEDIA_BUS_FMT_Y8_1X8 ||
-+	    (informat->code == MEDIA_BUS_FMT_Y8_1X8 ||
- 	    informat->code == MEDIA_BUS_FMT_UV8_1X8))
- 		return IPIPEIF_CCDC;
- 
-@@ -360,7 +360,7 @@ static int ipipeif_hw_setup(struct v4l2_subdev *sd)
- 		default:
- 			/* Bayer */
- 			ipipeif_write(params.if_5_1.clip, ipipeif_base_addr,
--				IPIPEIF_OCLIP);
-+				      IPIPEIF_OCLIP);
- 		}
- 		ipipeif_write(val, ipipeif_base_addr, IPIPEIF_CFG2);
- 		break;
-@@ -389,7 +389,7 @@ ipipeif_set_config(struct v4l2_subdev *sd, struct ipipeif_params *config)
- 	ipipeif->config.rsz = config->rsz;
- 	ipipeif->config.decimation = config->decimation;
- 	if (ipipeif->config.decimation &&
--	   (ipipeif->config.rsz < IPIPEIF_RSZ_MIN ||
-+	    (ipipeif->config.rsz < IPIPEIF_RSZ_MIN ||
- 	    ipipeif->config.rsz > IPIPEIF_RSZ_MAX)) {
- 		dev_err(dev, "rsz range is %d to %d\n",
- 			IPIPEIF_RSZ_MIN, IPIPEIF_RSZ_MAX);
-@@ -580,7 +580,7 @@ static int ipipeif_enum_mbus_code(struct v4l2_subdev *sd,
-  */
- static int
- ipipeif_get_format(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg,
--		struct v4l2_subdev_format *fmt)
-+		   struct v4l2_subdev_format *fmt)
- {
- 	struct vpfe_ipipeif_device *ipipeif = v4l2_get_subdevdata(sd);
- 
-@@ -679,8 +679,8 @@ ipipeif_enum_frame_size(struct v4l2_subdev *sd,
-  */
- static struct v4l2_mbus_framefmt *
- __ipipeif_get_format(struct vpfe_ipipeif_device *ipipeif,
--		       struct v4l2_subdev_pad_config *cfg, unsigned int pad,
--		       enum v4l2_subdev_format_whence which)
-+		     struct v4l2_subdev_pad_config *cfg, unsigned int pad,
-+		     enum v4l2_subdev_format_whence which)
- {
- 	if (which == V4L2_SUBDEV_FORMAT_TRY)
- 		return v4l2_subdev_get_try_format(&ipipeif->subdev, cfg, pad);
-@@ -697,7 +697,7 @@ __ipipeif_get_format(struct vpfe_ipipeif_device *ipipeif,
-  */
- static int
- ipipeif_set_format(struct v4l2_subdev *sd, struct v4l2_subdev_pad_config *cfg,
--		struct v4l2_subdev_format *fmt)
-+		   struct v4l2_subdev_format *fmt)
- {
- 	struct vpfe_ipipeif_device *ipipeif = v4l2_get_subdevdata(sd);
- 	struct v4l2_mbus_framefmt *format;
-@@ -879,7 +879,7 @@ static const struct vpfe_video_operations video_in_ops = {
- 
- static int
- ipipeif_link_setup(struct media_entity *entity, const struct media_pad *local,
--		const struct media_pad *remote, u32 flags)
-+		   const struct media_pad *remote, u32 flags)
- {
- 	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(entity);
- 	struct vpfe_ipipeif_device *ipipeif = v4l2_get_subdevdata(sd);
-@@ -975,7 +975,7 @@ vpfe_ipipeif_register_entities(struct vpfe_ipipeif_device *ipipeif,
- 
- 	flags = 0;
- 	ret = media_create_pad_link(&ipipeif->video_in.video_dev.entity, 0,
--					&ipipeif->subdev.entity, 0, flags);
-+				    &ipipeif->subdev.entity, 0, flags);
- 	if (ret < 0)
- 		goto fail;
- 
+@@ -920,8 +920,7 @@ ipipeif_link_setup(struct media_entity *entity, const struct media_pad *local,
+ 		if (remote->entity == &vpfe->vpfe_ipipe.subdev.entity)
+ 			/* connencted to ipipe */
+ 			ipipeif->output = IPIPEIF_OUTPUT_IPIPE;
+-		else if (remote->entity == &vpfe->vpfe_resizer.
+-			crop_resizer.subdev.entity)
++		else if (remote->entity == &vpfe->vpfe_resizer.crop_resizer.subdev.entity)
+ 			/* connected to resizer */
+ 			ipipeif->output = IPIPEIF_OUTPUT_RESIZER;
+ 		else
 -- 
 2.7.4
 
