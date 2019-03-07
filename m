@@ -1,109 +1,79 @@
 X-GM-THRID: 6665628449675149312
-X-Received: by 2002:a1c:9c93:: with SMTP id f141mr1127936wme.10.1551987275843;
-        Thu, 07 Mar 2019 11:34:35 -0800 (PST)
+X-Received: by 2002:ac8:2d34:: with SMTP id n49mr8455839qta.15.1551986922306;
+        Thu, 07 Mar 2019 11:28:42 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:2356:: with SMTP id j83ls59805wmj.4.gmail; Thu, 07 Mar
- 2019 11:34:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwJnEDXKhcUXzpKrZTpDLurkdUvbblNi/u0qVAM2XxKj2vGLBqoZ+B8lhMaU2LRPFi0l4m6
-X-Received: by 2002:a1c:80c3:: with SMTP id b186mr1213848wmd.0.1551987274942;
-        Thu, 07 Mar 2019 11:34:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551987274; cv=none;
+Received: by 2002:ac8:2c1b:: with SMTP id d27ls2988127qta.10.gmail; Thu, 07
+ Mar 2019 11:28:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwnNdMzhEG2v53GUkOn3Fg1PjEYAdWZZB2cln1N/g6AbEluAXqF8MK2LqkqLxtXTsIHJywG
+X-Received: by 2002:ac8:30c4:: with SMTP id w4mr8440666qta.30.1551986921798;
+        Thu, 07 Mar 2019 11:28:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551986921; cv=none;
         d=google.com; s=arc-20160816;
-        b=PJAycuWiZ25hcwlJ32/NieJju5VV92qJar+bXOxCpGvphg7yTRLcLCOrUyMu4y36gI
-         oqXYcqRn4T6gu/1nh5MO2/cKBBI4RgJqEfqnnovydVyaBYpmh+w5LGpem3dw4n9y7L6G
-         MDH+N7YUjD+fitsbPJKeMkUu3SVQTektsSsNvJiH+WczzJ/XIu1ov1VMJADB07mPkzeR
-         60i1c5NvP1Kp4AoCEjwT/FldB4Nv/CM9jVs4JUBlT0o7XSaaufEx/grbSu5JUN6b8Ata
-         34LdBZOaSbEAZXCHjMaOz/vxLq6GUtStE5tpMfp/oA2Cx5S+WOqcgIXdAL0/uPf0rKx1
-         i3BA==
+        b=d+zYKX0c/qnyr1sLzj1eLNVeK2L7iI5YJj0wiE5okoaR4y8qzLb1H1n/4bHRrWDY64
+         h/PYYeOtK7UlXaVT2UozK7VLXKJapR318ZCmom0TscB5Tw4f/efdYOZCuYa6p5UAzTTi
+         d/84aPqlzsWVXW+FRecAQLrZQtfUiASay0BubLQ64WvWIVlvFu5x1/o0X+Y3RhPMYE0t
+         OAzXoSHV+G8X9sUaTowWtQ7v9YVVsvGlOKKaQBZxOocqmryZJ/EGsgsVntQosPaj2q3b
+         j83O9MusP+GykXGpJzh5EgHHkhpJYhEmw/mwzUu068DvoH48yriyN+HzibOCMHXjUgW4
+         XOqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=Ms7nh5KVV+hmhddJo+n66kUfYqcZJKoADK2Tei+u9FE=;
-        b=uPDo6uVXWZ5Gzp/EnFf6jy/z5a1muGer+bP+3eedqNVeLos7dfHL20VaipTww80qzI
-         VO27WsDM8/8HGkmAblhtTzY0Fv6jPIfovYgnplnDSydUjR/6m1XeMDZeDCYozOe3b8Xl
-         I3YFaTiDke1wZa8O5C8HGzd+uSaETip17usA2GFwnsFUW7Ez8SWOQSY7bGXmhwPpIW/f
-         +DLZIkgVvj3dm7Q+AJ7Xqbr06vPaPWFgbprSYVV9IsyyCDte4wjObl7/8+zvfLBCx2Jb
-         KbNRQxSRKr5glNcCuuqPdiu+s4V9RE5wFKiCHdEXfneUxrv2XikIB1ESBSyNg/qPHZ6u
-         2r2w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=K2Eu1+hk8PrbowontNwvaiCiCtW9Wxi2WZdNnbD/QGo=;
+        b=Eusx2EQGH4tp9qW4sQR4G/+gQG7T5frhchHWM2+DPmPqMYbziewZIbNE/X4N4Mwdah
+         kaC5Zqr4MPRiJ9xca8wvgnijMiKoVcQKr42XGhANcQb1HTEnz3HjYqdmPmgQS9AiTFhj
+         jEB+Zwcla0WNmsSJ6yp5CgEAnZjUnXO8xmx6L0H6R4awInNmGmWCN0Kl38M3aYP89wVp
+         mTuqKarAk+8ErH1bzdVdowrzm99vXouOI8kaU2vZ8ptdSQ2ZSb9xsLvCxRKkoF1rLemQ
+         vZ/xvVbbUdHhrqEmTbRu9lEU8fIAlwTnTdCM5BiVR/eadxOrIdnFyXFxHWyltEgYsS+X
+         5qZg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id r15si274113wmc.4.2019.03.07.11.34.34
+       dkim=pass header.i=@kernel.org header.s=default header.b=Jd3Iwh6Y;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id y202si306171qka.2.2019.03.07.11.28.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 11:34:34 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 07 Mar 2019 11:28:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,451,1544482800"; 
-   d="scan'208";a="372407077"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2019 20:34:34 +0100
-Date: Thu, 7 Mar 2019 20:34:34 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Madhumthia Prabakaran <madhumithabiw@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Remove an unused
- function
-In-Reply-To: <20190307155446.GA21316@madhuleo>
-Message-ID: <alpine.DEB.2.21.1903072034020.2558@hadrien>
-References: <20190307124236.20430-1-madhumithabiw@gmail.com> <alpine.DEB.2.20.1903071420470.5181@hadrien> <20190307155446.GA21316@madhuleo>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@kernel.org header.s=default header.b=Jd3Iwh6Y;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 34E3620840;
+	Thu,  7 Mar 2019 19:28:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551986920;
+	bh=eRatwbhd989G9L/0mWw+S9QYGlMr9K6/+bKza7CRsq0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Jd3Iwh6YO16sVcZDuhS8ZWR3+90he2R9f9H64ZdugI73vV71ujSn/5umKpREfwQ9r
+	 0MNso9rMjhn3+YwOfUnY4+qFtIAY+zzhNeHVPDf2bwPki3nE5ot16YBf7zrEArwKSg
+	 INV12xOa1DwX8poCK4AKO2cpL3U7rfZXXGwnpavk=
+Date: Thu, 7 Mar 2019 20:28:38 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Cc: forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Staging: vt6655: Remove an unused function
+Message-ID: <20190307192838.GA8259@kroah.com>
+References: <20190307124236.20430-1-madhumithabiw@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190307124236.20430-1-madhumithabiw@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
+On Thu, Mar 07, 2019 at 06:42:36AM -0600, Madhumitha Prabakaran wrote:
+> Remove an unused function to improve codebase.
 
+This should probably say something like:
+	Remove an unused function prototype as there is no such function
+	in the kernel tree.
 
-On Thu, 7 Mar 2019, Madhumthia Prabakaran wrote:
+That's a better description of what this patch is doing, don't you
+agree?
 
-> On Thu, Mar 07, 2019 at 02:21:40PM +0100, Julia Lawall wrote:
-> >
-> >
-> > On Thu, 7 Mar 2019, Madhumitha Prabakaran wrote:
-> >
-> > > Remove an unused function to improve codebase.
-> > >
-> > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> > > ---
-> > >  drivers/staging/vt6655/mac.h | 2 --
-> > >  1 file changed, 2 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-> > > index 99de843b4551..59538ac09fc5 100644
-> > > --- a/drivers/staging/vt6655/mac.h
-> > > +++ b/drivers/staging/vt6655/mac.h
-> > > @@ -887,8 +887,6 @@ void MACvSetShortRetryLimit(struct vnt_private *priv,
-> > >  			    unsigned char byRetryLimit);
-> > >
-> > >  void MACvSetLongRetryLimit(struct vnt_private *priv, unsigned char byRetryLimit);
-> > > -void MACvGetLongRetryLimit(struct vnt_private *priv,
-> > > -			   unsigned char *pbyRetryLimit);
-> >
-> > This is the prototype of a function.  Is there a definition somewhere?  If
-> > so, it would be good to remove the definition at the same time.
-> >
-> > julia
-> >
-> > >
-> > >  void MACvSetLoopbackMode(struct vnt_private *priv, unsigned char byLoopbackMode);
-> > >
-> > > --
-> > > 2.17.1
-> > >
-> > > --
-> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190307124236.20430-1-madhumithabiw%40gmail.com.
-> > > For more options, visit https://groups.google.com/d/optout.
-> > >
->
-> Also, I found the other function, for which I have to remove function prototype and function definition. So, am i need to submit it as patch series or can i commit in one single patch?
+thanks,
 
-Same file -> series
-Different files -> separate patches are fine.
-
-julia
+greg k-h
 
