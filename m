@@ -1,133 +1,89 @@
 X-GM-THRID: 6665747871131762688
-X-Received: by 2002:a63:83c8:: with SMTP id h191mr5752417pge.63.1551991774625;
-        Thu, 07 Mar 2019 12:49:34 -0800 (PST)
+X-Received: by 2002:a19:c502:: with SMTP id w2mr938310lfe.15.1551990516405;
+        Thu, 07 Mar 2019 12:28:36 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:8216:: with SMTP id x22ls3542725pln.3.gmail; Thu, 07
- Mar 2019 12:49:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy9cMpfHya0uNcyAbJTcsGB6vXjy7eguIRTpAJ4kfz6TDWLKbKczGg098Ff5hRwImmYHGm8
-X-Received: by 2002:a17:902:6bcc:: with SMTP id m12mr4583418plt.37.1551991773977;
-        Thu, 07 Mar 2019 12:49:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551991773; cv=none;
+Received: by 2002:ac2:51b4:: with SMTP id f20ls670334lfk.3.gmail; Thu, 07 Mar
+ 2019 12:28:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqya+s8fftY1qyEFxn0E05s/73zu8SgJAEZkeKTBrTBq9LeAmBE8lHpsqXzXPWvBesegu+/8
+X-Received: by 2002:a19:cd89:: with SMTP id d131mr938660lfg.14.1551990515515;
+        Thu, 07 Mar 2019 12:28:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551990515; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rxt/OsV2akWpUNZZhCxZOe+xFZ/hXXvGww1kZ5dflCD6srWi/U/sOx2WVOpcZGkzHm
-         PYhRL0mfbMAWd/jzAbfZpI49UtD4IhCowsjui14RUVovH8Hb7zpwmOyZI41DgsI4b5+z
-         RF4dvSm54nd78dl/ViFuSG/SMv0Ud8Rla88WerBLWrlf0vKcN1W5wNhFrUNGqEB7MCUF
-         FYNe9/GnjcJpBRQ9nNh7EslnQgVckS2B80BE1InNqiA2vdqNVP7OpS02OlV5gBJfHGrm
-         u8k16biflMNA0kpCTKOzlHTpblIod6p6VxbiCLn1m2q4HKOx6Wcu+k6UKjZ2IQ+9woCy
-         cI6w==
+        b=HLoOh0WeXGQdxMZ+H0pdmlffwHTauw0GC8VoEu270MXCiGJnRrS6h1xRY1Pb8IbOn1
+         7TadGq+VeNuLF+MxeF5HP6ubpbaI8bZUBQnWmHS7TsHHMRfiDPK0SoMjkMDuthlORPkJ
+         srytrpXtI5xysbgXLychMetjFniDqzXGrHRMLTvxpvJTy6MMUyr7BP/GCfOg1ZSKS70z
+         Yd+Py6CMa33p0ETLsv5QkbCGX2skZ2HEvrDIJWSZUbwsmVwtct71yppAfu30hqfslk6b
+         4LAdUeGn0j9nr5x1WjHPivF+PWSCROF9WL/RjmFzW/vJJpCxx96ERsa5X3f/1uoHyt3u
+         5ECw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TEKDFT1THVJriESQrb9Nh0F6l/ZRYMOjDNe+xVP10/U=;
-        b=r9j6+cmFDFxOkcEV+N4TXVZ4K63PtIqwduQ3MFko6FSrWlR9wfoyX4TeNTiVzn0C8z
-         Ha0C7rX6LbqvZ6zsJFymADFkoGmbD5p5mIfndmQthp6CKW19iD7BcBvydBxXW6Hwd2N1
-         WImKZL1Wa4bjx2nZy+NB9Kz3x3SfXpfrv8zgNK5pQyPzBOR8DkZUHni4kNFOzenXC0ph
-         W2NfhWpXT3O24JtiE2zZbn5imKgm+4NaosQQOlrOY7HOwwWBNSnYVAqH9TeGAeGoVSP0
-         iaADzOff6A88RXvWKAqtWrqKatXsES4TlpHjMRqhHmVEvcfzNfrY8+c168CZJt1ZUoJD
-         8lsw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=N6JmtcZeoD97sOVGqkxz0ydRNSTIxMocWfGQShp65kg=;
+        b=IMOxPbfF2LUb1RD0PAafPL90dMgKnQPwGdij90XohB68EsfBcVNxpEXvV5eKYgjNXh
+         rNkaQ3VzfruTcbAIpLP8fVUkQe8ftWZABqxS60qXGl1VGf1DkNAtg5x0JTaY434VPGKZ
+         5KoDxlSnFT0BSdBq8m4JU5NBiW8Yi8ywSGjhIcqLGaM6K1EJRoZg1iTMTnRdh9D2Q6ZQ
+         8JISqVidGxfJPicG4eHmLkOR1CVmk1cbx5hB0X9mdc79H+7MhKMGm87rycuEQex+xrxI
+         hnAPQyzMS2Jq9V6LzYxBBuWQfBJjNrOCJSUxuij6GcLb2VxHzGBAXs3coMfMB5/mbmyg
+         LxTA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ENpxR3Sp;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x243.google.com (mail-oi1-x243.google.com. [2607:f8b0:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id u20si510699pfj.3.2019.03.07.12.49.33
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id f20si210227lfc.5.2019.03.07.12.28.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 12:49:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) client-ip=2607:f8b0:4864:20::243;
+        Thu, 07 Mar 2019 12:28:35 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ENpxR3Sp;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x243.google.com with SMTP id i8so14063091oib.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 12:49:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=TEKDFT1THVJriESQrb9Nh0F6l/ZRYMOjDNe+xVP10/U=;
-        b=ENpxR3SpnuZC9/pyjJ99noIfn23f7E1EAizXxIlrdgdAbYji8d841EuDWhUNcHrOaG
-         lh3UMND8YEWG454PQupln/DG7TkmSvmfN87ENL5r8MYoyJNbhMmpYCGUf0CCP82YlM8Y
-         +rzsuhHDXYKWSBVdLXTQClUxyAiiboovyZSYQC19XMItFKbgjSJSXINP+vkvYpWVd5wa
-         f1WOMbYGMYz+C6odxx5D0xIRgPihAb2oc0xmpKavNv/cAZZrNuWDpU4jB/GzzfXcIoaA
-         FHuchNPbf6ekzThggB6+Ubz9IfCD1biMoo5C6P9Z+axjhWFn4l5g1hFMA4VxFbhNojvj
-         F0zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TEKDFT1THVJriESQrb9Nh0F6l/ZRYMOjDNe+xVP10/U=;
-        b=T7afnztIgPHnLfT4EjrSBprit/IHzjHdN59T1d1rBhYrxyy4B8yQ6WdUri13WXij0R
-         Bi7gOggRfNkHrPKn67X4lOCM7sSx/oeG3ceRuyhvjlkH30yJnoGxYx55zWJ0h+tbVW1P
-         o/bvbsu1IuX048nwCyx5rRuH3lZojuFdMGHXhsHIobgHB1hq9oZ8chd31SW/wYbwfRGd
-         1FFah1OsilgMPw0zMHkwDHG3tjjxDBXfBPcQXTyF7EkaglBIqHO8nb8vOIYx344EAvA4
-         47fXaBHZ/yqZtTuQtr+xkoA5pRicJNM7EqFGfg/dwWeO72sxH1ZLqc4+81yZOzj+ZSVZ
-         PdZQ==
-X-Gm-Message-State: APjAAAVq5wjIToYCs3+es3xPMoGK6Cje+9L7DqHkLgNixHjdTIAtE2QG
-	GHhaf6Ar/KoKtr2nj/wSylA=
-X-Received: by 2002:aca:d746:: with SMTP id o67mr6399109oig.100.1551991773549;
-        Thu, 07 Mar 2019 12:49:33 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id j131sm2209536oia.37.2019.03.07.12.49.32
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2019 12:49:32 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v3] Staging: vt6655: Remove unused function prototype and definition
-Date: Thu,  7 Mar 2019 14:49:30 -0600
-Message-Id: <20190307204930.8418-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,453,1544482800"; 
+   d="scan'208";a="372410021"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2019 21:28:34 +0100
+Date: Thu, 7 Mar 2019 21:28:34 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/2] Staging: vt6655: Remove unused
+ function prototype and definition
+In-Reply-To: <cover.1551990063.git.madhumithabiw@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903072128070.2558@hadrien>
+References: <cover.1551990063.git.madhumithabiw@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove an unused function, as it is never called in kernel tree.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 
----
-Changes in v3-
-- Changed subject line
-- Removed change log above signed-off-by
+On Thu, 7 Mar 2019, Madhumitha Prabakaran wrote:
 
-Changes in v2-
-- Changed patch series to a patch
----
- drivers/staging/vt6655/mac.c | 7 -------
- drivers/staging/vt6655/mac.h | 2 --
- 2 files changed, 9 deletions(-)
+> This patchset remove an unused function prototype and function
+> definition in vt6655 driver.
+>
+> Madhumitha Prabakaran (2):
+>   Staging: vt6655: Remove an unused function prototype
+>   Staging: vt6655: Remove function definition
 
-diff --git a/drivers/staging/vt6655/mac.c b/drivers/staging/vt6655/mac.c
-index 40a8f1ce837c..2f773fdf8d64 100644
---- a/drivers/staging/vt6655/mac.c
-+++ b/drivers/staging/vt6655/mac.c
-@@ -57,13 +57,6 @@
-  * Return Value: true if all test bits On; otherwise false
-  *
-  */
--bool MACbIsRegBitsOn(struct vnt_private *priv, unsigned char byRegOfs,
--		     unsigned char byTestBits)
--{
--	void __iomem *io_base = priv->PortOffset;
--
--	return (ioread8(io_base + byRegOfs) & byTestBits) == byTestBits;
--}
- 
- /*
-  * Description:
-diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-index 59538ac09fc5..c7888c4e96f2 100644
---- a/drivers/staging/vt6655/mac.h
-+++ b/drivers/staging/vt6655/mac.h
-@@ -876,8 +876,6 @@ do {								\
- #define MACvSetRFLE_LatchBase(iobase)                                 \
- 	MACvWordRegBitsOn(iobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_RFLEOPT)
- 
--bool MACbIsRegBitsOn(struct vnt_private *priv, unsigned char byRegOfs,
--		     unsigned char byTestBits);
- bool MACbIsRegBitsOff(struct vnt_private *priv, unsigned char byRegOfs,
- 		      unsigned char byTestBits);
- 
--- 
-2.17.1
+Actually, the prototype and the function definition go together.  It would
+be better to remove them both in one patch.
 
+julia
+
+>
+>  drivers/staging/vt6655/mac.c | 7 -------
+>  drivers/staging/vt6655/mac.h | 2 --
+>  2 files changed, 9 deletions(-)
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1551990063.git.madhumithabiw%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
