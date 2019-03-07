@@ -1,89 +1,121 @@
-X-GM-THRID: 6340117790372921344
-X-Received: by 10.31.136.15 with SMTP id k15mr654225vkd.39.1476173705941;
-        Tue, 11 Oct 2016 01:15:05 -0700 (PDT)
+X-GM-THRID: 6665593199816343552
+X-Received: by 2002:a2e:5c88:: with SMTP id q130mr591482ljb.2.1551954355966;
+        Thu, 07 Mar 2019 02:25:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.43.147 with SMTP id u19ls1042408ota.0.gmail; Tue, 11 Oct
- 2016 01:15:05 -0700 (PDT)
-X-Received: by 10.200.50.52 with SMTP id x49mr683499qta.45.1476173705489;
-        Tue, 11 Oct 2016 01:15:05 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
-        by gmr-mx.google.com with ESMTPS id p70si315822vkd.0.2016.10.11.01.15.05
+Received: by 2002:a2e:800a:: with SMTP id j10ls630830ljg.8.gmail; Thu, 07 Mar
+ 2019 02:25:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzT8G0dW846P0V5uzQsACq1r8hvrlg27nIn2VkP0yzDgMQrBGF+kEeT2E4qzXxhR8993C8i
+X-Received: by 2002:a2e:9194:: with SMTP id f20mr611812ljg.21.1551954354747;
+        Thu, 07 Mar 2019 02:25:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551954354; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oRdvZwPGm+X67RhCaDkNtLJJlf6fzshzpoRmA6CZzS6lkmAPaXsGGuHA8XZIQ0GrGJ
+         j7koEY5bkas25qUHZrEG19Ld0vA/Tj4rx18n29XbzK7d7nS8rJPC20uVCgX2xsWwkKvh
+         tQ+tKsW19L2JI6gkOl+EWWQZUD0pFi1MO6+qcRY9EBY7gKeE2zz+742IU6OjaZyIuufB
+         soAs4V3fZEhI/00bSrZTeifFI6PMfFQvVL8KdhbK2EhUvfPjXTb71+k7v6z27s0JQ4DQ
+         s3SkBVHXXC6X+qSiTC/6yUBdY4UwDA0rpY0/ChB0kYl9O1mwOr13MYgLgAvdJASch+A/
+         xldA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9fV7cP0nLxOK3935hQ5igF/D1bU2wXofmSGEPnjg2hM=;
+        b=uMyBI/rWCxYN0p2uH3ONPqspgamRzgRunvZBbXndqVRGbCYWDkgjzjACr73nNiIqfm
+         KRLJYO/e5LxIArcqbdtIMdflImi7NS8JoL4pd8E6BL6sdZn1Vvv0qcve8/4SSM/p441S
+         suBXUv6v+0YsOnqf8DFe3lTCW6Ady2TW3eV+Qi2hU1istIeq1AZiFktu3SCD5pCk+BPJ
+         9Bhld5Zmwzd+Odo6UMlwikwypsBNuEYDrGioKmigPOuHNetskfwZ3r0Lnx0VQi6GzGps
+         hjm8+mDd+nad5BtwjQOzhwkgcGwbDwZyt5nJKHDXanM+5Oew6WqDOXkzKoLfgYWGkGgc
+         4OLw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J2EFi+Jx;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id v27si178256lje.0.2019.03.07.02.25.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 11 Oct 2016 01:15:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
+        Thu, 07 Mar 2019 02:25:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x243.google.com with SMTP id b75so2290045lfg.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 11 Oct 2016 01:15:05 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J2EFi+Jx;
+       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x341.google.com with SMTP id q187so8774116wme.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 02:25:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=dXvKr3MYo40YCjs7tOKKBGgaXsxIXuD3Tc4HTbJceSY=;
-        b=hAo4fENKfxxVMUTe1CWrmG8NT0EZogDCjWrOraXxPfmAyovB8Gk1EgLOUiPnGPvNDP
-         O0ml3H/+0z05r2S5JXF9eZ1blI2wBABiuryEZ4pH/av7kqkemMEWOG5VamBQzr8O7mtT
-         xz30BDe3N6DOcUYpNFiOYTGa+7thWwVjunVz88IXmncl+8ocLFGXCK9TOnhTgShTDTiv
-         FDeBBgAp6TilQsRWLrMg8Ge8EiPVXalb9Xigz/dTgWnjQMCpnErLd2ovrGd7MneXwfXe
-         FOQ5WcH2o9NxRuGYCRt6vDlBivL/Af1r5f/fMDkCsBqqUWkl3ciTNQkdu2+nPteZVha3
-         Jvuw==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=9fV7cP0nLxOK3935hQ5igF/D1bU2wXofmSGEPnjg2hM=;
+        b=J2EFi+JxMM9t6hAtpSQgyrcumyBOjSCNH9rxYpQ8d8WsFulU7SO521h4BOewl3DHJe
+         AryKc8X7H1/exn57CYUSjdTmHdXZae6ZaO5yXPsubcuWWn28S3obKaJGpw09svUn9Vqh
+         jnmFNG8xZrC0XBrE5OQUqOHI6AraXDa7JFxq55AYdZSeucmnSe9CvQ9sZPbSz6hVkE3+
+         M4A4VzFdPkapU3HmmLT3Vrgvx4/8RRWJo99MTHb4veNBhxwZGaP1SKrGn7Esy7zfM30y
+         RNh5w8GFSDBwMEwbcV2KhU4+CRx4RbLmF3wVgXGRbiK5Nhn9kV/cfjKEwf+Zw/0sPsaz
+         upSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=dXvKr3MYo40YCjs7tOKKBGgaXsxIXuD3Tc4HTbJceSY=;
-        b=LyRLp3ZR4xLNboec3ZqDPNJBPwB7g5ERnDHbtNr8jK8dpZsmbkMfJfYd53jAVpNcIP
-         E4jeHRvp6m7N1me14cvpoFW8NPf9O+C3A68FNKaqN7e+YoIR7LTLzMxPPvV6uuS3XLH9
-         g2Std25JRykZPJoBuqbhp4VYmbG7SV0Z/DvsyhrVyL7nfeWBROijGghpaFvk04YJMay4
-         GKxH1TZUnl9JqTPrRLmEGsWvlFgQKHb2XadIH+4XWWQrxpoy/z5VXJ2CQc9z6xyuttYJ
-         MZdAlf1gKa2UJfvWHAS9AKqj8yUFm27sPhEol2naIEUP35bwlnbfZWgWp18TRzS9Ldyr
-         yWog==
-X-Gm-Message-State: AA6/9RlZfvGTrfgija9xVfv0DksQtodBtyNFsc+DN0IoQXzqX4w6zgxwWwKd9PiCVxWDxQ==
-X-Received: by 10.194.172.41 with SMTP id az9mr3175467wjc.105.1476173705063;
-        Tue, 11 Oct 2016 01:15:05 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.81.89.162])
-        by smtp.gmail.com with ESMTPSA id va3sm4334075wjb.18.2016.10.11.01.15.04
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=9fV7cP0nLxOK3935hQ5igF/D1bU2wXofmSGEPnjg2hM=;
+        b=qNIMvrv3FoSy4aNN53dMHn4XYBP7ZsZ9nAgIDdd7sCQ1IYGjwB7NKULws4otCHxu2O
+         cRMoMQnZdOWsYHdnzoJfzwypKcVYbQpht/7CnZqt3JyrNZhCcKigSdJ2JX2L3zJZEjg6
+         ANMp5aMeBHhrSMm0FJWe42Le4nZrqsWjjhyiheb7GPJmArzZ7rE0/ecTg5rhNfW6qNQH
+         H1Fi/8m7HsJ+OLqezOlm+4FsDk3lkfcOsMtm0kco2qrLPi3SgBDgx4Aq8DXmrviXUSRk
+         V52nggTbjWJQAoyAJh+PAwUpujtrWhnY2QiBXzBMpRCWj7wP3pcFDoHj6mLa3OXXuiQi
+         Cg3Q==
+X-Gm-Message-State: APjAAAVMfaEdUtVm7GrMrjD2Bv1Fhx0Moby0h82SD6NvkTzSDmAyPpgX
+	60Ku7MUa7/HbZJ9RJneoqyqy7YghE4c=
+X-Received: by 2002:a1c:d147:: with SMTP id i68mr5408241wmg.41.1551954354087;
+        Thu, 07 Mar 2019 02:25:54 -0800 (PST)
+Return-Path: <daniela.mormocea@gmail.com>
+Received: from pthm ([141.85.233.104])
+        by smtp.gmail.com with ESMTPSA id u13sm9705833wmf.3.2019.03.07.02.25.53
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 01:15:04 -0700 (PDT)
-Date: Tue, 11 Oct 2016 11:15:03 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: media: lirc: Use unsigned int instead unsigned
-Message-ID: <20161011081503.GA12264@domino-MS-16Y1>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        Thu, 07 Mar 2019 02:25:53 -0800 (PST)
+From: Daniela Mormocea <daniela.mormocea@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
+Subject: [PATCH] staging: speakup: Add spaces around operators
+Date: Thu,  7 Mar 2019 12:25:48 +0200
+Message-Id: <1551954348-7410-1-git-send-email-daniela.mormocea@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-This patch fixes a WARNING: Prefer 'unsigned int' to bare use of
-'unsigned', found by checkpatch.pl. By fixing this the types of the
-parameters become more explicit.
+Add spaces around math operators to get rid of checkpatch warning
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
 ---
- drivers/staging/media/lirc/lirc_zilog.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/speakup/speakup_keypc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/lirc/lirc_zilog.c b/drivers/staging/media/lirc/lirc_zilog.c
-index 3551aed..34aac3e 100644
---- a/drivers/staging/media/lirc/lirc_zilog.c
-+++ b/drivers/staging/media/lirc/lirc_zilog.c
-@@ -1157,8 +1157,8 @@ static ssize_t write(struct file *filep, const char __user *buf, size_t n,
- 
- 		/* Send the code */
- 		if (ret == 0) {
--			ret = send_code(tx, (unsigned)command >> 16,
--					    (unsigned)command & 0xFFFF);
-+			ret = send_code(tx, (unsigned int)command >> 16,
-+					    (unsigned int)command & 0xFFFF);
- 			if (ret == -EPROTO) {
- 				mutex_unlock(&ir->ir_lock);
- 				mutex_unlock(&tx->client_lock);
+diff --git a/drivers/staging/speakup/speakup_keypc.c b/drivers/staging/speakup/speakup_keypc.c
+index b788272..414827e 100644
+--- a/drivers/staging/speakup/speakup_keypc.c
++++ b/drivers/staging/speakup/speakup_keypc.c
+@@ -233,7 +233,7 @@ static void do_catch_up(struct spk_synth *synth)
+ 			delay_time_val = delay_time->u.n.value;
+ 			spin_unlock_irqrestore(&speakup_info.spinlock, flags);
+ 			schedule_timeout(msecs_to_jiffies(delay_time_val));
+-			jiff_max = jiffies+jiffy_delta_val;
++			jiff_max = jiffies + jiffy_delta_val;
+ 		}
+ 	}
+ 	timeout = 1000;
+@@ -261,7 +261,7 @@ static int synth_probe(struct spk_synth *synth)
+ 		synth_port = port_forced;
+ 		pr_info("probe forced to %x by kernel command line\n",
+ 			synth_port);
+-		if (synth_request_region(synth_port-1, SYNTH_IO_EXTENT)) {
++		if (synth_request_region(synth_port - 1, SYNTH_IO_EXTENT)) {
+ 			pr_warn("sorry, port already reserved\n");
+ 			return -EBUSY;
+ 		}
+@@ -289,7 +289,7 @@ static int synth_probe(struct spk_synth *synth)
+ 		return -ENODEV;
+ 	}
+ 	pr_info("%s: %03x-%03x, driver version %s,\n", synth->long_name,
+-		synth_port, synth_port+SYNTH_IO_EXTENT-1,
++		synth_port, synth_port + SYNTH_IO_EXTENT - 1,
+ 		synth->version);
+ 	synth->alive = 1;
+ 	return 0;
 -- 
 2.7.4
 
