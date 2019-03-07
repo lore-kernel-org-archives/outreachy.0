@@ -1,96 +1,96 @@
 X-GM-THRID: 6665413421410811904
-X-Received: by 2002:a1c:6c15:: with SMTP id h21mr1130324wmc.10.1551989335165;
-        Thu, 07 Mar 2019 12:08:55 -0800 (PST)
+X-Received: by 2002:a9d:6e97:: with SMTP id a23mr7862293otr.54.1551989031873;
+        Thu, 07 Mar 2019 12:03:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:6c01:: with SMTP id h1ls75042wmc.13.gmail; Thu, 07 Mar
- 2019 12:08:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyh/fJaCS8TBoqVEgbRID5yrlp3GELGSiVzIuQId4E0tc+0/jpxvdG+vCU2omGNBNY+BGmy
-X-Received: by 2002:a1c:80c3:: with SMTP id b186mr1221369wmd.0.1551989334195;
-        Thu, 07 Mar 2019 12:08:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551989334; cv=none;
+Received: by 2002:aca:b446:: with SMTP id d67ls1420032oif.3.gmail; Thu, 07 Mar
+ 2019 12:03:50 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYVLbSsvW56u4dCSDqzQiDg+ZteMi/Y+50NrSUM6DSP4IMk0vZhsTBOD+NU5F8kdltcvJ+f
+X-Received: by 2002:aca:aa94:: with SMTP id t142mr21736118oie.17.1551989030731;
+        Thu, 07 Mar 2019 12:03:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551989030; cv=none;
         d=google.com; s=arc-20160816;
-        b=s4VwQPU+aJqCWdDt8ubu39srO6QkDHpPOatmxTOgBS6KcMN01POIePHGKPUtylIexS
-         slh+WkQZIG2hodh+V1Z8gOF31UDEXxsP6xVVZ+6bmHamQBAMrHDIXP0daasX3qs4aViz
-         9iB5Il6Zsne76e/YRcH6k6G1kD/XHVVqj7S+ouG3DWgLuysInbn0aQ8hGPN4BOaZFKvu
-         kvgn/f2KzwAJCtzGf1rRi4ah+HxXYgDVcg6D1ne+vv31VZ3/clhHHp3LCPDf3nHyBhYq
-         YzPBYl2HnoE5tdyzBawJCSljTjGa7ktIqCHz6mXDQZgC5+Ry57nTtvdzGu5nG0uyDEJK
-         hVjQ==
+        b=NBm3ieMXscF3dESadW2HuY+8L5KDIk/masIsfASy15qAX2frzMTcGC+L0OQfTe1rBW
+         vguN+B5ukZtEAeHXuhiVX3FfS38W0kw0c/cvkBf323DxiCEZYJEfdC9ZkSpBioS+KOc6
+         NJVCimzzetqBz+q5zo/nkefDYd5CBvnxcuBndLN7wag6YRs1yBB0JZl0m7qmWQkLp1U0
+         AOEYCs+PsQlL0CePecyaQbP58dzQRunT0bDEOQ54MycOxXC3Eo63l4qecxuh+EQlcKRa
+         sxwhd1Yyh9Z6j8JlPfqRLuCkawYsyZXB/58ktIFtv+JMEwEmwt+XX9eptR/YAkAj7Zkt
+         3fMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=lq7QiZhZmKr5OKjItfPCHQy5RZ1qzKUu25FqUjSqIvs=;
-        b=yT5Y70DjDhiOoucYC8jo4fFY13I6N2qeKPnkWQ05rkEO1xU6j0Raq5Dss3hUdevbcf
-         gq1xtVCSUkVMvdy6yHzdSuqJ2dEdArzelSlK5cwYP7ugdds6Y7X/LuCvlzMxTC9rXq9L
-         cG5F2o7sjP2ZiokiWKqZUrw8l2yf+o7QtwrDJUG6kqOnME0/hq7v8p+UPLhPNIG8P1o4
-         fx7hhp1keQewK3b9nMKLqzq8NczP1J+05nZyelTDeL1IWUMOtfFKMEWcOUolqOHHJIzV
-         GJzxgLSXIp1RjAhdb0a/bTh+EeKgP2hoRZSvtbVwKrfr9lMCTNAaRs4kP6gy7MNfRUEi
-         1c/g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Igklhl3S+fWipA0M3eRNHlsS1xj3/It73x9UNqWdo2I=;
+        b=rqv0Lsl19eyvTRCYrztvViLARE53wixhrV3NR7aNO2R4PC7LulzU2bvxtmFaLCw0q6
+         QOZ3VDWHamSB9OlHb8pRLuhvE0C3Ko/OHanfioZQj362zHaHYn3JB2uo+12sgHnmxL+j
+         zRpa6K/deNjyQxH5DrcE8YFoxU9kw5ivOtqg0z+gSUi9XqzVJOibO7SydcckNEDtLA9w
+         qf3ncK3LEzsY+CPDN862J6xsisvNZpM1vZn258uqMMNyhSas8ZDJzJfpU/Pu9RLoGSlX
+         Y/3Zig0Wl+QNHKWI5DHRaDsatWOnRw5KsMJu3lDZOW8s8zzxfSsayuzXot1YRle/qDqi
+         HPQw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id c24si274664wml.0.2019.03.07.12.08.54
+       dkim=pass header.i=@kernel.org header.s=default header.b="teEPKk+/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id v129si308745oib.0.2019.03.07.12.03.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 12:08:54 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 07 Mar 2019 12:03:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,453,1544482800"; 
-   d="scan'208";a="372408988"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2019 21:08:53 +0100
-Date: Thu, 7 Mar 2019 21:08:53 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Greg KH <gregkh@linuxfoundation.org>
-cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: fwserial: Convert macro
- into an inline function
-In-Reply-To: <20190307200347.GB27056@kroah.com>
-Message-ID: <alpine.DEB.2.21.1903072107520.2558@hadrien>
-References: <20190306224809.12524-1-madhumithabiw@gmail.com> <20190307200347.GB27056@kroah.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@kernel.org header.s=default header.b="teEPKk+/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5EF97205C9;
+	Thu,  7 Mar 2019 20:03:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1551989029;
+	bh=+R2s5EE/ap6MQSiHEMmjnRwuvR8T/S0waHJcmZtmwsw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=teEPKk+/gOlEhyU01/H1cvdifJQaaaldpo0rGA7arIG8KwCMkPjFjaiXtLoJ5trcW
+	 BY3IGhulHCspvoZCxuzMoJTOBi5+DtZns9/A1qUk1DGtqJDHIh2Lb+/oji9WTmB09s
+	 d0/AY01np91pMkkbrlOJA/EiYHAOPgwNUxZaKczc=
+Date: Thu, 7 Mar 2019 21:03:47 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Staging: fwserial: Convert macro into an inline function
+Message-ID: <20190307200347.GB27056@kroah.com>
+References: <20190306224809.12524-1-madhumithabiw@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190306224809.12524-1-madhumithabiw@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
+On Wed, Mar 06, 2019 at 04:48:09PM -0600, Madhumitha Prabakaran wrote:
+> Convert macro into an inline function to make codebase better
+> 
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> ---
+>  drivers/staging/fwserial/fwserial.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+> index a1b90ea7fcb8..aec0f19597a9 100644
+> --- a/drivers/staging/fwserial/fwserial.c
+> +++ b/drivers/staging/fwserial/fwserial.c
+> @@ -19,7 +19,10 @@
+>  
+>  #include "fwserial.h"
+>  
+> -#define be32_to_u64(hi, lo)  ((u64)be32_to_cpu(hi) << 32 | be32_to_cpu(lo))
+> +inline u64 be32_to_u64(__be32 hi, __be32 lo)
+> +{
+> +	return ((u64)be32_to_cpu(hi) << 32 | be32_to_cpu(lo));
+> +}
 
+For some reason I thought the kernel had a function that already did
+this, but it doesn't, which is really odd.  Anyway, that's something
+that could be done in the future, as this is done all over the place in
+different drivers.
 
-On Thu, 7 Mar 2019, Greg KH wrote:
+thanks,
 
-> On Wed, Mar 06, 2019 at 04:48:09PM -0600, Madhumitha Prabakaran wrote:
-> > Convert macro into an inline function to make codebase better
-> >
-> > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> > ---
-> >  drivers/staging/fwserial/fwserial.c | 5 ++++-
-> >  1 file changed, 4 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
-> > index a1b90ea7fcb8..aec0f19597a9 100644
-> > --- a/drivers/staging/fwserial/fwserial.c
-> > +++ b/drivers/staging/fwserial/fwserial.c
-> > @@ -19,7 +19,10 @@
-> >
-> >  #include "fwserial.h"
-> >
-> > -#define be32_to_u64(hi, lo)  ((u64)be32_to_cpu(hi) << 32 | be32_to_cpu(lo))
-> > +inline u64 be32_to_u64(__be32 hi, __be32 lo)
-> > +{
-> > +	return ((u64)be32_to_cpu(hi) << 32 | be32_to_cpu(lo));
-> > +}
->
-> For some reason I thought the kernel had a function that already did
-> this, but it doesn't, which is really odd.  Anyway, that's something
-> that could be done in the future, as this is done all over the place in
-> different drivers.
-
-Actually, as far as I can see, only two occurrences, in
-drivers/target/sbp/sbp_target.c and
-drivers/net/ethernet/mellanox/mlxfw/mlxfw_mfa2.c
-
-Perhaps there are some other variants that are more popular.
-
-julia
+greg k-h
 
