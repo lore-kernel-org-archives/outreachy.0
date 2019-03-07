@@ -1,185 +1,116 @@
-X-GM-THRID: 6205668721559601152
-X-Received: by 10.129.33.86 with SMTP id h83mr5177541ywh.29.1444869842694;
-        Wed, 14 Oct 2015 17:44:02 -0700 (PDT)
+X-GM-THRID: 6665413421410811904
+X-Received: by 2002:a17:906:16c6:: with SMTP id t6mr1785935ejd.6.1551990467304;
+        Thu, 07 Mar 2019 12:27:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.80.208 with SMTP id c74ls560048qgd.66.gmail; Wed, 14 Oct
- 2015 17:44:01 -0700 (PDT)
-X-Received: by 10.13.230.214 with SMTP id p205mr5579192ywe.57.1444869841886;
-        Wed, 14 Oct 2015 17:44:01 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from mail-pa0-x230.google.com (mail-pa0-x230.google.com. [2607:f8b0:400e:c03::230])
-        by gmr-mx.google.com with ESMTPS id ce6si608984pad.0.2015.10.14.17.44.01
+Received: by 2002:a17:906:f182:: with SMTP id gs2ls1432261ejb.5.gmail; Thu, 07
+ Mar 2019 12:27:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz394CYwVjzrQ3PiWi6cJphroGmtxqCI1BQOSgTh0KI8PSXqfe/qBtTgJ9Oz8Cqt22vVvs1
+X-Received: by 2002:a17:906:d541:: with SMTP id gk1mr1789364ejb.0.1551990466565;
+        Thu, 07 Mar 2019 12:27:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551990466; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oLiVZD94HxBGVmDOnrrIs5kMnUZ9SJuInPL2/4QAPvPO99tDnlJaAL5/79zt8NPj/V
+         Tp6r/CeHGzNrNmpLCNhtUxs71XAgaAjRy2mxsiaOUq6v/JLOQ5WJS3hwLcPBcBS4o94o
+         wJvSHY+HuM67eKnRTGNWrzK+TzEmah892nAMjegx6VxT5GJKlXjkmxXAUChoXc09Fcei
+         KWehGUh2Uy+pJo5kWveOwWT2bz2FE0OoW3zCpSrtz+hFzo0XrDbm3JZQgMFmUlyDSBlF
+         j6qa3mdkSnOsShRgzm/LQirsg0UneDDkkGmJp2DcXZ31WvWSbiyi2jSz1UWZjyx/wItz
+         uXMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Ilf67fydtO53nFysYH2jjGL22fVu0IzrB+jN8LEukDM=;
+        b=GnwGKMvX71KnmtQgi83o3zcghK86TJk570yzg+LIwNugTRn5Z/wdFRIDJWjiDr0t71
+         Md3v2c4wxqkMSnJ8138E9YjZNu7+icOQHZx9hvia386mjWyNqQ9rb28tpsaokFnTWQC5
+         Ilxs3riSIPqikIkD/KEHp8TJJPqWC39zgjb/DSUPwRg9+MqOdHGK1TQxX4Trhy2veyia
+         E+cSUf0m2tmZYmz875VFS6W/Kx4z0lNDCUPrW9Ov/g97aftYFn7XVk4T6YfH4EyU0qMi
+         RS9q4nYg5toIlY9WtZvihp9ukW2mHJ9XE/O8D3e6hfDUeahb3wX8AN4chhU4omHVOQ7k
+         OuBg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a7si315801edb.1.2019.03.07.12.27.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Oct 2015 17:44:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) client-ip=2607:f8b0:400e:c03::230;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Mar 2019 12:27:46 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of deepa.kernel@gmail.com designates 2607:f8b0:400e:c03::230 as permitted sender) smtp.mailfrom=deepa.kernel@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x230.google.com with SMTP id ws5so5231413pab.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2015 17:44:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=a8uLhnLvBw7m0B8t3MLGEH1VavYrbkNh19YfQbUZrK4=;
-        b=CYzqF9M8VYnS5MDnvmfCkJcKmg3/N2A4s/a0GM+Dbl9+29EF0+WT7vYPI1jyCn9FTB
-         dnaO/Hzp+5VZg+r0GP5H1MEDGiVd7Wn93ShvqAYkNItmYD+uF3bpT0tXG53GrJhBnyLF
-         kz3WNL0fe0KGwqXcJlWt+yGeVHdrviJaDADN/6LOYQ/JX1sXSbixNAhtHfC9E8xJ36jZ
-         5SoFUQy48TDhGnejp1qQzawWyfi+m6Zx5BRHGSR6+0wJKH0EBxNJYnr6ZahHXRg4h168
-         y9uayriOy6hUGRAZXBgO+vSaZ2NPX5MVeCjxL0Swv0PSm/iSywPaqeazahCdBXt4kzk2
-         /riw==
-X-Received: by 10.68.142.42 with SMTP id rt10mr6844193pbb.14.1444869841662;
-        Wed, 14 Oct 2015 17:44:01 -0700 (PDT)
-Return-Path: <deepa.kernel@gmail.com>
-Received: from deepa-ubuntu.hsd1.ca.comcast.net (c-73-162-232-39.hsd1.ca.comcast.net. [73.162.232.39])
-        by smtp.gmail.com with ESMTPSA id hq8sm11866009pad.35.2015.10.14.17.44.00
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Oct 2015 17:44:01 -0700 (PDT)
-From: Deepa Dinamani <deepa.kernel@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Y2038@lists.linaro.org
-Subject: [PATCH] staging: ft1000: replace timeval with ktime_t
-Date: Wed, 14 Oct 2015 17:43:00 -0700
-Message-Id: <1444869780-26658-1-git-send-email-deepa.kernel@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,453,1544482800"; 
+   d="scan'208";a="372409968"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2019 21:27:20 +0100
+Date: Thu, 7 Mar 2019 21:27:20 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: fwserial: Convert macro
+ into an inline function
+In-Reply-To: <20190307202026.GA5287@kroah.com>
+Message-ID: <alpine.DEB.2.21.1903072126560.2558@hadrien>
+References: <20190306224809.12524-1-madhumithabiw@gmail.com> <20190307200347.GB27056@kroah.com> <alpine.DEB.2.21.1903072107520.2558@hadrien> <20190307202026.GA5287@kroah.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Replace use of struct timeval with ktime_t to calculate connection
-duration. This avoids y2038 issues. Use ktime_get monotonic clock
-instead of gettimeofday realtime clock to guard against negative
-durations. Fix pr_debug to use matching %ul instead of converting
-value to int, so that debug does not provide misleading information.
-Fix connection time conversion to use interface type unsigned long
-instead of assuming it maps to u32.
 
-Signed-off-by: Deepa Dinamani <deepa.kernel@gmail.com>
----
- drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c | 8 +++-----
- drivers/staging/ft1000/ft1000-usb/ft1000_debug.c | 8 ++++----
- drivers/staging/ft1000/ft1000-usb/ft1000_hw.c    | 8 +++-----
- drivers/staging/ft1000/ft1000.h                  | 2 +-
- 4 files changed, 11 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
-index eecfa37..540b896 100644
---- a/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
-+++ b/drivers/staging/ft1000/ft1000-pcmcia/ft1000_hw.c
-@@ -906,7 +906,6 @@ static void ft1000_proc_drvmsg(struct net_device *dev)
- 	struct prov_record *ptr;
- 	struct pseudo_hdr *ppseudo_hdr;
- 	u16 *pmsg;
--	struct timeval tv;
- 	union {
- 		u8 byte[2];
- 		u16 wrd;
-@@ -983,8 +982,7 @@ static void ft1000_proc_drvmsg(struct net_device *dev)
- 						netif_carrier_on(dev);
- 						netif_wake_queue(dev);
- 						info->mediastate = 1;
--						do_gettimeofday(&tv);
--						info->ConTm = tv.tv_sec;
-+						info->ConTm = ktime_get();
- 					}
- 				} else {
- 					pr_debug("Media is down\n");
-@@ -992,7 +990,7 @@ static void ft1000_proc_drvmsg(struct net_device *dev)
- 						info->mediastate = 0;
- 						netif_carrier_off(dev);
- 						netif_stop_queue(dev);
--						info->ConTm = 0;
-+						info->ConTm = ktime_set(0, 0);
- 					}
- 				}
- 			} else {
-@@ -1001,7 +999,7 @@ static void ft1000_proc_drvmsg(struct net_device *dev)
- 					info->mediastate = 0;
- 					netif_carrier_off(dev);
- 					netif_stop_queue(dev);
--					info->ConTm = 0;
-+					info->ConTm = ktime_set(0, 0);
- 				}
- 			}
- 			break;
-diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-index f241a3a..d535c13 100644
---- a/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-+++ b/drivers/staging/ft1000/ft1000-usb/ft1000_debug.c
-@@ -413,7 +413,7 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
- 	int i;
- 	u16 tempword;
- 	unsigned long flags;
--	struct timeval tv;
-+	ktime_t con_tm;
- 	struct IOCTL_GET_VER get_ver_data;
- 	struct IOCTL_GET_DSP_STAT get_stat_data;
- 	u8 ConnectionMsg[] = {
-@@ -520,9 +520,9 @@ static long ft1000_ioctl(struct file *file, unsigned int command,
- 		get_stat_data.nRxPkts = info->stats.rx_packets;
- 		get_stat_data.nTxBytes = info->stats.tx_bytes;
- 		get_stat_data.nRxBytes = info->stats.rx_bytes;
--		do_gettimeofday(&tv);
--		get_stat_data.ConTm = (u32)(tv.tv_sec - info->ConTm);
--		pr_debug("Connection Time = %d\n", (int)get_stat_data.ConTm);
-+		con_tm = ktime_sub(ktime_get(), info->ConTm);
-+		get_stat_data.ConTm = (unsigned long)ktime_divns(con_tm, NSEC_PER_SEC);
-+		pr_debug("Connection Time = %lu\n", get_stat_data.ConTm);
- 		if (copy_to_user(argp, &get_stat_data, sizeof(get_stat_data))) {
- 			pr_debug("copy fault occurred\n");
- 			result = -EFAULT;
-diff --git a/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c b/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c
-index 9ea32ce..633f525 100644
---- a/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c
-+++ b/drivers/staging/ft1000/ft1000-usb/ft1000_hw.c
-@@ -619,7 +619,6 @@ static int ft1000_open(struct net_device *dev)
- {
- 	struct ft1000_info *pInfo = netdev_priv(dev);
- 	struct ft1000_usb *pFt1000Dev = pInfo->priv;
--	struct timeval tv;
- 
- 	pr_debug("ft1000_open is called for card %d\n", pFt1000Dev->CardNumber);
- 
-@@ -627,8 +626,7 @@ static int ft1000_open(struct net_device *dev)
- 	pInfo->stats.tx_bytes = 0;
- 	pInfo->stats.rx_packets = 0;
- 	pInfo->stats.tx_packets = 0;
--	do_gettimeofday(&tv);
--	pInfo->ConTm = tv.tv_sec;
-+	pInfo->ConTm = ktime_get();
- 	pInfo->ProgConStat = 0;
- 
- 	netif_start_queue(dev);
-@@ -1163,14 +1161,14 @@ static int ft1000_proc_drvmsg(struct ft1000_usb *dev, u16 size)
- 				if (info->mediastate == 1) {
- 					info->mediastate = 0;
- 					if (dev->NetDevRegDone)
--						info->ConTm = 0;
-+						info->ConTm = ktime_set(0, 0);
- 				}
- 			}
- 		} else {
- 			pr_debug("Media is down\n");
- 			if (info->mediastate == 1) {
- 				info->mediastate = 0;
--				info->ConTm = 0;
-+				info->ConTm = ktime_set(0, 0);
- 			}
- 		}
- 		break;
-diff --git a/drivers/staging/ft1000/ft1000.h b/drivers/staging/ft1000/ft1000.h
-index 8a2e4ca..77b3f6e 100644
---- a/drivers/staging/ft1000/ft1000.h
-+++ b/drivers/staging/ft1000/ft1000.h
-@@ -347,7 +347,7 @@ struct ft1000_info {
- 	u8 HwSerNum[HWSERNUMSZ];	/* Hardware Serial Number */
- 	u8 Sku[SKUSZ];			/* SKU */
- 	u8 eui64[EUISZ];		/* EUI64 */
--	time_t ConTm;			/* Connection Time */
-+	ktime_t ConTm;			/* Connection Time */
- 	u8 ProductMode[MODESZ];
- 	u8 RfCalVer[CALVERSZ];
- 	u8 RfCalDate[CALDATESZ];
--- 
-1.9.1
+On Thu, 7 Mar 2019, Greg KH wrote:
 
+> On Thu, Mar 07, 2019 at 09:08:53PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Thu, 7 Mar 2019, Greg KH wrote:
+> >
+> > > On Wed, Mar 06, 2019 at 04:48:09PM -0600, Madhumitha Prabakaran wrote:
+> > > > Convert macro into an inline function to make codebase better
+> > > >
+> > > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > > > ---
+> > > >  drivers/staging/fwserial/fwserial.c | 5 ++++-
+> > > >  1 file changed, 4 insertions(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/staging/fwserial/fwserial.c b/drivers/staging/fwserial/fwserial.c
+> > > > index a1b90ea7fcb8..aec0f19597a9 100644
+> > > > --- a/drivers/staging/fwserial/fwserial.c
+> > > > +++ b/drivers/staging/fwserial/fwserial.c
+> > > > @@ -19,7 +19,10 @@
+> > > >
+> > > >  #include "fwserial.h"
+> > > >
+> > > > -#define be32_to_u64(hi, lo)  ((u64)be32_to_cpu(hi) << 32 | be32_to_cpu(lo))
+> > > > +inline u64 be32_to_u64(__be32 hi, __be32 lo)
+> > > > +{
+> > > > +	return ((u64)be32_to_cpu(hi) << 32 | be32_to_cpu(lo));
+> > > > +}
+> > >
+> > > For some reason I thought the kernel had a function that already did
+> > > this, but it doesn't, which is really odd.  Anyway, that's something
+> > > that could be done in the future, as this is done all over the place in
+> > > different drivers.
+> >
+> > Actually, as far as I can see, only two occurrences, in
+> > drivers/target/sbp/sbp_target.c and
+> > drivers/net/ethernet/mellanox/mlxfw/mlxfw_mfa2.c
+> >
+> > Perhaps there are some other variants that are more popular.
+>
+> The file include/linux/io-64-nonatomic-hi-lo.h open-codes this 4
+> different times, as does include/linux/ml5/device.h and then there is
+
+Ah, I only looked at .c files :)
+
+julia
+
+> HILO_GEN() which tries to do the right thing for this type of macro, but
+> it's specific to a single driver.
+>
+> Odds are it is also open-coded in many other drivers as well :(
+>
+> thanks,
+>
+> greg k-h
+>
 
