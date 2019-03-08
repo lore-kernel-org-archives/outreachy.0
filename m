@@ -1,117 +1,103 @@
-X-GM-THRID: 6758181371904
-X-Received: by 10.112.35.135 with SMTP id h7mr1745844lbj.23.1425583760467;
-        Thu, 05 Mar 2015 11:29:20 -0800 (PST)
+X-GM-THRID: 6665853350981926912
+X-Received: by 2002:ab0:6455:: with SMTP id j21mr10625217uap.11.1552014926062;
+        Thu, 07 Mar 2019 19:15:26 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.22.65 with SMTP id b1ls379130laf.99.gmail; Thu, 05 Mar
- 2015 11:29:20 -0800 (PST)
-X-Received: by 10.112.162.135 with SMTP id ya7mr1757813lbb.14.1425583760044;
-        Thu, 05 Mar 2015 11:29:20 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-we0-x234.google.com (mail-we0-x234.google.com. [2a00:1450:400c:c03::234])
-        by gmr-mx.google.com with ESMTPS id cl5si635491wib.3.2015.03.05.11.29.20
+Received: by 2002:a9f:2c98:: with SMTP id w24ls1494376uaj.1.gmail; Thu, 07 Mar
+ 2019 19:15:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzjTxDTF0XDP/X4SGRHXO/EPiimwO8sPHnmfKl9VanKsDEvTGmasIrczbRZvD6fQlaHBHvX
+X-Received: by 2002:ab0:641a:: with SMTP id x26mr10636653uao.12.1552014925537;
+        Thu, 07 Mar 2019 19:15:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552014925; cv=none;
+        d=google.com; s=arc-20160816;
+        b=YS5qeNiMMC66ARbIP63G0YpkX1BbXcc+IvC5jmX5mxtMbumIOoXbgBBQMtJzbujRj5
+         P1pqDwN3zJOBMC/YckvCH4NetgixclWwuGvkZWfZSN8SFahdoVvsvQ360SZlV354Ktru
+         pC/ku2Mg2xiPzIm0S/lzT6QJGggRrfQNZarYcIOJYzSCjmdXfh4BKbNc9HpUxEV4Hg+D
+         PdeNS8E8guU0ER/Vsz8N1e09XaFg7qz6E2FDAc/wc3TIutA8Cm8wwonrkEXzxVZfuEFj
+         fnwom1saPfo0cFFnA3nCTrSJSQzteFsKHJlzb4GNMbJVADIQqt0Kh1qjY4D3gr3t3gxO
+         fXMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hMm6p7VncMot7eugQa7/XfWTyQ6uSXn/5377g+2+ZdU=;
+        b=znhE3CjNruq9gFWnW/cqr5kgi0v7pzCvT29sKoCKyIJnCKlxQsB3qEjsxpZZIeRHyY
+         2wU0698z+7NhpPTryUamXdyoJv37HJrRxWTYPr5vyMeRvY91BUHGT5CQfplM1EgilVKR
+         L3YqB71e8dYSjmiD0vTLTuWxEBDdwfKkIZCkupaHxVUsbVgHeJ8tfZsMEx7O/bg6fzob
+         iE2+hby/c7HH5eXTfQ2d/ItxPGb8i00xrJjdWGscV0l0eLb8Nd3kQQnPj0QhmMepsjbO
+         DftGC1nx4cobdbM1Nfeu1K8Pd48zcQ0QBp9KOD/6N/Q36bjrdSKHqIgx+930kSqER0XB
+         dtiQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T2+4Gvvk;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <etsai042@gmail.com>
+Received: from mail-pg1-x535.google.com (mail-pg1-x535.google.com. [2607:f8b0:4864:20::535])
+        by gmr-mx.google.com with ESMTPS id n62si439092vkg.2.2019.03.07.19.15.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 11:29:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) client-ip=2a00:1450:400c:c03::234;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Mar 2019 19:15:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) client-ip=2607:f8b0:4864:20::535;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2a00:1450:400c:c03::234 as permitted sender) smtp.mail=hamohammed.sa@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x234.google.com with SMTP id x3so8436328wes.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Mar 2015 11:29:20 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T2+4Gvvk;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::535 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x535.google.com with SMTP id a22so314682pgg.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 19:15:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=xvIUijdnxfY2rTtC9rG5TWTX8hm3+w7CWDvOqx3+dxY=;
-        b=h6MVWKWvecGi9nUHhHQuixEExjJPp9rxao6I3xGslxKXkwPdS6QkPv2Jw6EIUdvcpq
-         SCWPrru3gA+K5fxvpLbBFZj6rbVlXo6y4XAn02Y8NV2v6TMQL0es72O27DNcpHBbSB0s
-         4UbYBm3RwDZsNuwRNLDvkCDk+P89Z37bZNDOZgZHxe/9XSKbc73wZEbS/aBWziettEPL
-         KOtKIkbwsCVyuasa86CFMsGXnYQHERPfYlxlsNupyA2beEnLaDZ/SFd2ToN/WINGF54b
-         c6wRyX4Si9CIrJ0r8x5dnPulr4/S2v1eu+mffFJHuIK1lFI9Bxx0hDOKXjKV9/53DfI2
-         1/Xw==
-X-Received: by 10.194.200.68 with SMTP id jq4mr22181794wjc.58.1425583759920;
-        Thu, 05 Mar 2015 11:29:19 -0800 (PST)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneensa-VirtualBox ([79.170.54.175])
-        by mx.google.com with ESMTPSA id n6sm11817179wjy.8.2015.03.05.11.29.18
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Mar 2015 11:29:19 -0800 (PST)
-Received: by haneensa-VirtualBox (Postfix, from userid 1000)
-	id C7ABA62672; Thu,  5 Mar 2015 22:29:28 +0300 (AST)
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Haneen Mohammed <hamohammed.sa@gmail.com>
-Subject: [PATCH 0/7] Staging: clean de_err() loging 
-Date: Thu,  5 Mar 2015 22:29:28 +0300
-Message-Id: <1425583768-27996-1-git-send-email-hamohammed.sa@gmail.com>
-X-Mailer: git-send-email 1.9.1
+        bh=hMm6p7VncMot7eugQa7/XfWTyQ6uSXn/5377g+2+ZdU=;
+        b=T2+4Gvvk/wRqWg2UYlDGhgnlU8u42A3g2nh5CXVNhE2G6hqxpY3vpEPIjyh2mxrx8v
+         GHx0j+ihJIORLctbpONuG5a85nNGylNocSP05kn2On9coEpC9EKAuduAYUReH4spyFLB
+         UwzP/R0X4T0hhDOROtH8l6d1treqLU5JDdfkKMO4ty/Aw+XoPoDI0jCVR0FhlBg46Hfg
+         SuZXxro1jvNs89ZGLZmq2/hN1bjuxshFwKz6JpqGBF1KwRRAq5QG1omn5q5kNzONKHmN
+         plcm3uIEmseZgSmgAuX2wCNP1kxC09PCRrDM+0iaL+SCtQqRh5V0IN9ZwZBW+O/u+OOZ
+         rxzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=hMm6p7VncMot7eugQa7/XfWTyQ6uSXn/5377g+2+ZdU=;
+        b=OqIN9BYa7gzaf6oMv1bff9ygiXwybty9fyAQIiGx/ED4BBObpql8ngVBpu3Vg+thBQ
+         827/O1xkUEs54zLXXIo+kScSAKSkHarTCzwNspXlSljZEM5aTGDYmBWYwCXtPxOg6bhN
+         Cs8qQ98MTuhDj1SgaypLp4zfq+aydS8pEEH2W8FBTfyE9Lrv2Uy0huctjjwfcnKVr8tj
+         sGnN5skwEfIhaP+ZpND27Rr5TE2uWq9S6kGYSx1Z+oNmQoIHcbpWbmN2sbwm/l5D2LKA
+         iaFEQ4TKGEIumz91ahy+TJr23+yNTbooQrRVoHBlzPjde6RMBquTIQXgL6o9+m1TYtBa
+         PoXw==
+X-Gm-Message-State: APjAAAUQhkfwNzrydCcSGowyTECPw6L5vpeTuyafmCR8ZGBxe0VkRtLo
+	57HqHo/bYOL9fb6euO7/BVE=
+X-Received: by 2002:a63:8942:: with SMTP id v63mr14131655pgd.406.1552014925216;
+        Thu, 07 Mar 2019 19:15:25 -0800 (PST)
+Return-Path: <etsai042@gmail.com>
+Received: from debian ([2001:da8:d800:199:7e1:7347:f861:5837])
+        by smtp.gmail.com with ESMTPSA id l79sm15188462pfb.102.2019.03.07.19.15.24
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 07 Mar 2019 19:15:24 -0800 (PST)
+From: Wentao Cai <etsai042@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Wentao Cai <etsai042@gmail.com>
+Subject: [PATCH v3 2/4] Staging: most: dim2: Fix SPDX-License-Identifier in hal.h
+Date: Thu,  7 Mar 2019 19:15:21 -0800
+Message-Id: <20190308031521.8120-1-etsai042@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-This patchset removes  __func__ from dev_err. dev_err includes information about: 
-(devcice, driver, specific instance of device, etc) in the log printout.
-This was done using Coccinelle, with the following semantic patch:
+Fix the checkpatch.pl warning in drivers/staging/most/dim2/hal.h:
+WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
 
-@a@
-expression E;
-expression  msg;
-@@
+Signed-off-by: Wentao Cai <etsai042@gmail.com>
+---
+ drivers/staging/most/dim2/hal.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-dev_err(E, msg, __func__);
-
-@script:python b@git rebae -i
-e << a.msg;
-y;
-@@
-
-
-if(e.find("%s: ") == True):
-	m = e.replace("%s: ", "", 1);
-	coccinelle.y = m;
-elif(e.find("%s ") == True):
-	m = e.replace("%s ", "", 1);
-	coccinelle.y = m;
-elif(e.find("%s:") == True):
-	m = e.replace("%s:", "", 1);
-	coccinelle.y = m;
-else:
-	m = e.replace("%s", "",1);
-	coccinelle.y = m;
-
-	
-@c@
-expression a.E, a.msg;
-identifier  b.y;
-@@
-
-
-- dev_err(E, msg, __func__);
-+ dev_err(E, y);
-
-Haneen Mohammed (7):
-  Staging: media: Clean dev_err() logging
-  Staging: fbtft: Clean dev_err() logging
-  Staging: iio: Clean dev_err() logging
-  Staging: octeon-usb: Clean dev_err() logging
-  Staging: slicoss: Clean dev_err() logging
-  Staging: gdm72xx: Clean dev_err() logging
-  Staging: ste_rmi4: Clean dev_err() logging
-
- drivers/staging/fbtft/fb_ra8875.c             |  3 +--
- drivers/staging/fbtft/fb_ssd1351.c            |  3 +--
- drivers/staging/fbtft/fb_watterott.c          |  3 +--
- drivers/staging/fbtft/fbtft-bus.c             |  4 +--
- drivers/staging/fbtft/fbtft-core.c            | 14 ++++------
- drivers/staging/fbtft/fbtft-io.c              | 11 +++-----
- drivers/staging/gdm72xx/gdm_usb.c             |  4 +--
- drivers/staging/iio/light/tsl2x7x_core.c      | 38 +++++++++------------------
- drivers/staging/media/lirc/lirc_imon.c        | 32 +++++++++-------------
- drivers/staging/media/lirc/lirc_sasem.c       | 25 +++++++-----------
- drivers/staging/media/lirc/lirc_zilog.c       |  3 +--
- drivers/staging/octeon-usb/octeon-hcd.c       |  2 +-
- drivers/staging/slicoss/slicoss.c             | 14 +++++-----
- drivers/staging/ste_rmi4/synaptics_i2c_rmi4.c | 37 +++++++++-----------------
- 14 files changed, 71 insertions(+), 122 deletions(-)
-
+diff --git a/drivers/staging/most/dim2/hal.h b/drivers/staging/most/dim2/hal.h
+index e04a5350f134..fca6c22de8a6 100644
+--- a/drivers/staging/most/dim2/hal.h
++++ b/drivers/staging/most/dim2/hal.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * hal.h - DIM2 HAL interface
+  * (MediaLB, Device Interface Macro IP, OS62420)
 -- 
-1.9.1
+2.11.0
 
 
