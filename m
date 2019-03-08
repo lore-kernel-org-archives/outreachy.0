@@ -1,237 +1,103 @@
-X-GM-THRID: 6744769542622281728
-X-Received: by 2002:a37:b707:: with SMTP id h7mr19307681qkf.69.1570389033247;
-        Sun, 06 Oct 2019 12:10:33 -0700 (PDT)
+X-GM-THRID: 6665854027940495360
+X-Received: by 2002:a62:3201:: with SMTP id y1mr6075778pfy.88.1552015083465;
+        Thu, 07 Mar 2019 19:18:03 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:3341:: with SMTP id u59ls3241321qtd.12.gmail; Sun, 06
- Oct 2019 12:10:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyJqCDabGrEV9XBIGdfuDKOgxM1wAvM7oWoeXVt7peYWZrbWZWBYK7Rc9MyuyOlUEL5xDGA
-X-Received: by 2002:ac8:444e:: with SMTP id m14mr26505431qtn.19.1570389032183;
-        Sun, 06 Oct 2019 12:10:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570389032; cv=none;
+Received: by 2002:a17:902:8a85:: with SMTP id p5ls4043809plo.4.gmail; Thu, 07
+ Mar 2019 19:18:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXAzElBRnVkhYYbnLb4v40tQbwpqo4fhTCGfKKOSxFWdpj6Om7zJlVvWYRbtAssVSwxGi0
+X-Received: by 2002:a17:902:a711:: with SMTP id w17mr4907698plq.112.1552015082778;
+        Thu, 07 Mar 2019 19:18:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552015082; cv=none;
         d=google.com; s=arc-20160816;
-        b=mTfGHUYr4o+ekVSJtJpbJ92vekGndk+ig4J17+IsSMtaplZ+RZmXbc+cQGdWLJdLGV
-         /DsfNvCuUSHRqhp0Nz5+HhRkDiQWY6zzA27Yun5+K1CYzGoi2c0ZeozmPIOd5WsY8i3i
-         28v1VmwzxDsx65YmV62Jd7aDQaDyu/qoQyZ1D5Ysnbwt23IRiS0OZBRXZ+b2M7O0bMKN
-         BC0Gb6NzJUKZa6wVmA9tN9bmamWvXFsIFk7UOIuhsa4O6YTFpa7s7MP3xNqedSrimJTA
-         Wrqga1CF+m9mYcPLhM91CojSR3YRAtHq5i1d61mzkxfMdIX5VK9Z9n7EtcfC3N9dtY0P
-         rKdw==
+        b=OGIXFd3jLp6cwrrpHjoelolnBiBAcC6h2PwR7XuymGTzt6gqHokgksWeGaEiZPlrL5
+         Gx+XeFc/4UHc5c9SHnDftJY6dhfj++ANXgsFJeLbfbLkSlq8wc/TyoUyzf6pLKPVwSSQ
+         bxGehkgMYJxXA3QO5TeilZd2XZWH5HuHUHkFZhuzjVMTf7O7U5UK4gjKzml2F3WEVfMa
+         X+wJdRWeWDWSQ3U34HM5/F3K7+hg6UnFyo2nKMTxnDeamWlM5a8RKQoXO8Ob99vr4O4N
+         FtQpr5B2n77KRJ7Ga14ygB9PLaSeOSRuq1Yu4/6xdSHxYsj3/kLZwnLF5ovohmyDoFPJ
+         xmqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=tCwKqi1o+pVk0eCqSLaVvuDUC0Ngrzkx/4GvgrlbAtI=;
-        b=np64dinq49IDWniKEhBGVnXXnfmTuREdm4kgAAKIUnuKMw+mzQj6CED7NjpwqrQXwd
-         6S/empMdYAmv1Nh2vyQtmM5qyCNdfS+nPXfbbZyQ++fg9o+CRyWItRRIUtur6+6CDhwX
-         GSHS2hHf1rXu5wccyVYOv4tdGminQa5osmK0Z6FD2JlI9xw9BlZPHmIhJVqBPPN/0nI+
-         bqxWckuDPH4y85erYNDURdmcu+265a/gOFTXTroku8m409rN1F/PywhAGx9BDGRiSXtd
-         OONxK7tQwWkEX205/vNaYXHJt5ukE29R8MZbAvxkmsNDzokpKKP1e9CEu472PRkdXz9C
-         ejRQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vjGYzHAOn2CXs0K+NY4pBKy1ZHS37KkYhPqxrCf4FZA=;
+        b=WSPpC79kCL60+LnsCBroklvyKW8Bu2NMvDUJYEJz6ObwcJ1S9Mr34LEGN4OJpNiAqe
+         VCxG4Qpa4sr6GrDUwCyq2n6KwPsp19W/p2uVpBo2sVTHY6Jfj57VcqP0VCdb1g0awe2L
+         FO/wJI6YHKiYHdtYxaxmGftj9KCxb/R0yvZYQByrYop3leLlDYCl+pROXCRFiDgt9q+J
+         Q7r+8dX4dDRnhOfHZj4aLlffo6eRJ6JuEsDKW5kkMFhpHRRPb0Ndug7k9nm2A4nP2WBz
+         Bdlpkwrdp91srRotpP1OK4fpZFtPIs5pYZ+LeVH7ks77PQEXjBJBbXYG3lMkTJuCICyV
+         W3SQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mS7P9O3Y;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UpZGE3kr;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id h4si391354qkm.2.2019.10.06.12.10.32
+Return-Path: <etsai042@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id t11si304910plz.4.2019.03.07.19.18.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Oct 2019 12:10:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Mar 2019 19:18:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mS7P9O3Y;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UpZGE3kr;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id u40so16155686qth.11
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 12:10:32 -0700 (PDT)
+Received: by mail-pf1-x444.google.com with SMTP id n22so13050932pfa.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 19:18:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tCwKqi1o+pVk0eCqSLaVvuDUC0Ngrzkx/4GvgrlbAtI=;
-        b=mS7P9O3YIav8KEuZm3+CXz4iU8nGdp24dICzN6qTpCAj4FyyDIKphC91akWM3JaX3B
-         NlHUo+PhefyQp5gX1NvaEIbsb77IcnHVcrt5lrCN8LLmWTkwyUmuepDsxxyghv/q8PE2
-         ijoeLEBozBqnRaz+blVh4hzLwGgrNd6JeQAaCFF2edWP3/Esr06CZYIcFS8s4a7ajZeW
-         2GOZ8vRTaeI8yQo0j0n+d6vCTbkzWv3MRQoDynqv5Hiu1AVON2pdtuwEs8dlH0zwtoqo
-         cVeiSRmFWCq6nHnrPYHb5WfSy2xLWNCiJYD96V7SC48PGSGhYHZ8dz8/PdXLtZzUuXK2
-         yIig==
+        h=from:to:cc:subject:date:message-id;
+        bh=vjGYzHAOn2CXs0K+NY4pBKy1ZHS37KkYhPqxrCf4FZA=;
+        b=UpZGE3kr9O+jK7bsTACcb0TSi4pfq4bdaHOJIJ1LoNJWbgDLxFEFIHzQeRoYDX33Pi
+         wfoFDs/eRICF2dfhoIv+7i0Yq5cyoWA/EXIHtJgcA0W1RLKDRKcBFJAifWeKId5vXRzL
+         aIt/Ntj4OqtG5sIJO4I+GHKHzRZECIFiBHuxDtrgXTI7yPUI7/ovSoLS4qH1EO1NC7q9
+         JnlfZ1TsC+RCF/6CY+RJ0Szbid38Ahs3EnZkJLRiw2NFLWeGiwtV3LKz7qHmm5IHabar
+         +GZCXhwV9OcwZyKJmSb5lJs6Bi6VRN8rO2smLlulEE7WmishrQKwRw4zhDU9cjzXAyPY
+         fgzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tCwKqi1o+pVk0eCqSLaVvuDUC0Ngrzkx/4GvgrlbAtI=;
-        b=Vl66tkziOtavBxf1LKoOPjBLs7pHQ3PwdMh/vQQs2nV1j5OONv9yzYR01fXu0C7MrH
-         OoAmRDRFAXXwPKJk5X6Uxy0Lpw9cXKdjJFIZcYF2/Xymf9+USuuSFQEBZm4rqjxKBuXY
-         vqUTWaaENDpuwV5dofWZuVzbLW8/Z86JUFJ3V+bYwrBzjuafv7Xk3jlCdkn54lDis0Os
-         9XbTWaqUY69GbWj7gYAGFMLVeHu+PxQ7qc9YmCbQDBUFHmT8+SgvC+o5krBV9DJ6z5F+
-         p9ku10cSchayFmAbpxyrquVhj5rwl/uA/mTEjPIU1jIPjfJ5IdrqQvXYa9BhCOxgk6Tb
-         Sb1A==
-X-Gm-Message-State: APjAAAUC0wsEIKuON2PDxrzpm/aIwzbOtXtu3DBTVpBAQpscSRbEK+gV
-	ZnyuZKVWR6mR3rgpqTEuZ/gZRSajzuHgMQ==
-X-Received: by 2002:ac8:6e8b:: with SMTP id c11mr26342411qtv.77.1570389031557;
-        Sun, 06 Oct 2019 12:10:31 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from GBdebian.terracota.local ([177.103.155.130])
-        by smtp.gmail.com with ESMTPSA id u132sm6577518qka.50.2019.10.06.12.10.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Oct 2019 12:10:30 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] staging: vt6656: align arguments with open parenthesis
-Date: Sun,  6 Oct 2019 16:10:20 -0300
-Message-Id: <20191006191020.7435-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=vjGYzHAOn2CXs0K+NY4pBKy1ZHS37KkYhPqxrCf4FZA=;
+        b=eDmHTR2X1KAEKHu3fT4b40azJ4s5g5l0Bpw0gOuThgaKXHikaDSgk4xCz24aq02Hyj
+         L3bMf8LEYBaCy2OomtNhw8gWXv0HoocV1uqVxd5AcLvWYUydBHYdqc0o/WLLrUaOFqrW
+         ZvWbfJey9cQEYDxvblXIOzBH3iOQnVc5DIEBVkK7Y2SbGnoXVh6RcmyCGkugBv5Pvuee
+         cMXd03bLXf13Z/xQQJ0Ef6LQgVz/iElg1INXpS5WSR45GnOfWAYpfARj/V2DtlpHgyu6
+         ARi9kNPcxWjXdQw7QNKfIXGclCkLCOmVVIA0L+X+y3T267tWm50J7r6aByNCl8mcf0f7
+         Stnw==
+X-Gm-Message-State: APjAAAV5s4ZkIy8KbOmFIepkyWJE+HT0nT/t9NB0XFbVy4tB5CC4GlGz
+	YvcLkfDHdo6DHF2TMh13OpM=
+X-Received: by 2002:a62:1851:: with SMTP id 78mr16509865pfy.206.1552015082490;
+        Thu, 07 Mar 2019 19:18:02 -0800 (PST)
+Return-Path: <etsai042@gmail.com>
+Received: from debian ([2001:da8:d800:199:7e1:7347:f861:5837])
+        by smtp.gmail.com with ESMTPSA id k12sm8271286pfk.109.2019.03.07.19.18.01
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 07 Mar 2019 19:18:02 -0800 (PST)
+From: Wentao Cai <etsai042@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Wentao Cai <etsai042@gmail.com>
+Subject: [PATCH v3 3/4] Staging: most: dim2: Fix SPDX-License-Identifier in sysfs.h
+Date: Thu,  7 Mar 2019 19:17:58 -0800
+Message-Id: <20190308031758.8865-1-etsai042@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-Cleans up CHECKs of "Alignment should match open parenthesis"
+Fix the checkpatch.pl warning in drivers/staging/most/dim2/sysfs.h:
+WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Signed-off-by: Wentao Cai <etsai042@gmail.com>
 ---
- drivers/staging/vt6656/rxtx.c | 63 +++++++++++++++++++++++------------
- 1 file changed, 41 insertions(+), 22 deletions(-)
+ drivers/staging/most/dim2/sysfs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
-index 9def0748ffee..c7522841c8cf 100644
---- a/drivers/staging/vt6656/rxtx.c
-+++ b/drivers/staging/vt6656/rxtx.c
-@@ -285,14 +285,15 @@ static u16 vnt_rxtx_datahead_g(struct vnt_usb_send_context *tx_context,
- 		buf->duration_b = dur;
- 	} else {
- 		buf->duration_a = vnt_get_duration_le(priv,
--						tx_context->pkt_type, need_ack);
-+						      tx_context->pkt_type,
-+						      need_ack);
- 		buf->duration_b = vnt_get_duration_le(priv,
--							PK_TYPE_11B, need_ack);
-+						      PK_TYPE_11B, need_ack);
- 	}
- 
- 	buf->time_stamp_off_a = vnt_time_stamp_off(priv, rate);
- 	buf->time_stamp_off_b = vnt_time_stamp_off(priv,
--					priv->top_cck_basic_rate);
-+						   priv->top_cck_basic_rate);
- 
- 	tx_context->tx_hdr_size = vnt_mac_hdr_pos(tx_context, &buf->hdr);
- 
-@@ -325,7 +326,7 @@ static u16 vnt_rxtx_datahead_g_fb(struct vnt_usb_send_context *tx_context,
- 
- 	buf->time_stamp_off_a = vnt_time_stamp_off(priv, rate);
- 	buf->time_stamp_off_b = vnt_time_stamp_off(priv,
--						priv->top_cck_basic_rate);
-+						   priv->top_cck_basic_rate);
- 
- 	tx_context->tx_hdr_size = vnt_mac_hdr_pos(tx_context, &buf->hdr);
- 
-@@ -595,17 +596,24 @@ static u16 vnt_rxtx_rts(struct vnt_usb_send_context *tx_context,
- 	u8 need_ack = tx_context->need_ack;
- 
- 	buf->rts_rrv_time_aa = vnt_get_rtscts_rsvtime_le(priv, 2,
--			tx_context->pkt_type, frame_len, current_rate);
-+							 tx_context->pkt_type,
-+							 frame_len,
-+							 current_rate);
- 	buf->rts_rrv_time_ba = vnt_get_rtscts_rsvtime_le(priv, 1,
--			tx_context->pkt_type, frame_len, current_rate);
-+							 tx_context->pkt_type,
-+							 frame_len,
-+							 current_rate);
- 	buf->rts_rrv_time_bb = vnt_get_rtscts_rsvtime_le(priv, 0,
--			tx_context->pkt_type, frame_len, current_rate);
-+							 tx_context->pkt_type,
-+							 frame_len,
-+							 current_rate);
- 
- 	buf->rrv_time_a = vnt_rxtx_rsvtime_le16(priv, tx_context->pkt_type,
- 						frame_len, current_rate,
- 						need_ack);
- 	buf->rrv_time_b = vnt_rxtx_rsvtime_le16(priv, PK_TYPE_11B, frame_len,
--					priv->top_cck_basic_rate, need_ack);
-+						priv->top_cck_basic_rate,
-+						need_ack);
- 
- 	if (need_mic)
- 		head = &tx_head->tx_rts.tx.mic.head;
-@@ -627,12 +635,16 @@ static u16 vnt_rxtx_cts(struct vnt_usb_send_context *tx_context,
- 	u8 need_ack = tx_context->need_ack;
- 
- 	buf->rrv_time_a = vnt_rxtx_rsvtime_le16(priv, tx_context->pkt_type,
--					frame_len, current_rate, need_ack);
--	buf->rrv_time_b = vnt_rxtx_rsvtime_le16(priv, PK_TYPE_11B,
--				frame_len, priv->top_cck_basic_rate, need_ack);
-+						frame_len, current_rate,
-+						need_ack);
-+	buf->rrv_time_b = vnt_rxtx_rsvtime_le16(priv, PK_TYPE_11B, frame_len,
-+						priv->top_cck_basic_rate,
-+						need_ack);
- 
- 	buf->cts_rrv_time_ba = vnt_get_rtscts_rsvtime_le(priv, 3,
--			tx_context->pkt_type, frame_len, current_rate);
-+							 tx_context->pkt_type,
-+							 frame_len,
-+							 current_rate);
- 
- 	if (need_mic)
- 		head = &tx_head->tx_cts.tx.mic.head;
-@@ -655,18 +667,25 @@ static u16 vnt_rxtx_ab(struct vnt_usb_send_context *tx_context,
- 	u8 need_ack = tx_context->need_ack;
- 
- 	buf->rrv_time = vnt_rxtx_rsvtime_le16(priv, tx_context->pkt_type,
--			frame_len, current_rate, need_ack);
-+					      frame_len, current_rate,
-+					      need_ack);
- 
- 	if (need_mic)
- 		head = &tx_head->tx_ab.tx.mic.head;
- 
- 	if (need_rts) {
- 		if (tx_context->pkt_type == PK_TYPE_11B)
--			buf->rts_rrv_time = vnt_get_rtscts_rsvtime_le(priv, 0,
--				tx_context->pkt_type, frame_len, current_rate);
-+			buf->rts_rrv_time =
-+				vnt_get_rtscts_rsvtime_le(priv, 0,
-+							  tx_context->pkt_type,
-+							  frame_len,
-+							  current_rate);
- 		else /* PK_TYPE_11A */
--			buf->rts_rrv_time = vnt_get_rtscts_rsvtime_le(priv, 2,
--				tx_context->pkt_type, frame_len, current_rate);
-+			buf->rts_rrv_time =
-+				vnt_get_rtscts_rsvtime_le(priv, 2,
-+							  tx_context->pkt_type,
-+							  frame_len,
-+							  current_rate);
- 
- 		if (tx_context->fb_option &&
- 		    tx_context->pkt_type == PK_TYPE_11A)
-@@ -767,10 +786,10 @@ static void vnt_fill_txkey(struct vnt_usb_send_context *tx_context,
- 		ether_addr_copy(mic_hdr->addr2, hdr->addr2);
- 		ether_addr_copy(mic_hdr->addr3, hdr->addr3);
- 
--		mic_hdr->frame_control = cpu_to_le16(
--			le16_to_cpu(hdr->frame_control) & 0xc78f);
--		mic_hdr->seq_ctrl = cpu_to_le16(
--				le16_to_cpu(hdr->seq_ctrl) & 0xf);
-+		mic_hdr->frame_control =
-+			cpu_to_le16(le16_to_cpu(hdr->frame_control) & 0xc78f);
-+		mic_hdr->seq_ctrl =
-+			cpu_to_le16(le16_to_cpu(hdr->seq_ctrl) & 0xf);
- 
- 		if (ieee80211_has_a4(hdr->frame_control))
- 			ether_addr_copy(mic_hdr->addr4, hdr->addr4);
-@@ -1036,7 +1055,7 @@ static int vnt_beacon_xmit(struct vnt_private *priv, struct sk_buff *skb)
- 
- 		/* Get Duration and TimeStampOff */
- 		short_head->duration = vnt_get_duration_le(priv,
--						PK_TYPE_11B, false);
-+							   PK_TYPE_11B, false);
- 		short_head->time_stamp_off =
- 			vnt_time_stamp_off(priv, current_rate);
- 	}
+diff --git a/drivers/staging/most/dim2/sysfs.h b/drivers/staging/most/dim2/sysfs.h
+index 33756a3bffe2..24277a17cff3 100644
+--- a/drivers/staging/most/dim2/sysfs.h
++++ b/drivers/staging/most/dim2/sysfs.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * sysfs.h - MediaLB sysfs information
+  *
 -- 
-2.20.1
+2.11.0
 
 
