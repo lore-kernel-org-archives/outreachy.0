@@ -1,149 +1,300 @@
 X-GM-THRID: 6665751809762525184
-X-Received: by 2002:a24:78c:: with SMTP id f134mr15861054itf.30.1552157642250;
-        Sat, 09 Mar 2019 10:54:02 -0800 (PST)
+X-Received: by 2002:a67:e9d6:: with SMTP id q22mr10852811vso.19.1552028979854;
+        Thu, 07 Mar 2019 23:09:39 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:5a55:: with SMTP id v82ls3771463ita.0.canary-gmail; Sat,
- 09 Mar 2019 10:54:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxtl5kY1KRI4H5V+66imphRrNKjL82z/VtkfiPQnOPk+YI+iLV7RU9L1e45C+BQuQHPFtar
-X-Received: by 2002:a24:7647:: with SMTP id z68mr16410909itb.27.1552157641369;
-        Sat, 09 Mar 2019 10:54:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552157641; cv=none;
+Received: by 2002:a67:e895:: with SMTP id x21ls1940591vsn.1.gmail; Thu, 07 Mar
+ 2019 23:09:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy9rj2z7rmPCS68I92C2TwIS5jjnuj3gai/R1MSzvujtoSWuvDMbq8DF9fAw18VFA6RYQjW
+X-Received: by 2002:a67:7617:: with SMTP id r23mr11117842vsc.2.1552028979305;
+        Thu, 07 Mar 2019 23:09:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552028979; cv=none;
         d=google.com; s=arc-20160816;
-        b=mlhnYU8RMWrfYALjTjq6oDwSRBvhEp1a/J03noDN6LvWnBLd/6C6W26vLFJj4AvsH2
-         /Fff3eGb56Wp3SpzIUqMw+0z3MXQubiJb690MSh5fZTj3otHI593APBe7ZbDHSLM5abP
-         9biMdYIi/0N9KOtLTgIyPAXX2OP81b7nft8dmtzHzlmwUJkeo4POfKb2uSkonNDutz3D
-         6OExOs9A8zeFCwqQnDMVu9z3X0zXWi8S2vgKD/3S9v2vF28gEsdpGv+Ci6IsPgtV1BRT
-         KDKaLhdxG2734iSK3YNpsGhQrJ7lGa+AxxPyT/7a8iEr9V0ljEE42q0tGRXmjRL2uYH3
-         cjJg==
+        b=GvwdoaVmmDPhuypOAMp9Aso80L+ltdHHCABH0WERFftHiPD81eQS5YipA9z282h5mp
+         +5V1mB92QzUjIc9Kiozm7OpzyD37wkuaEAYt6UHoO/w78Ky1HIrd9JoZq3U8436BR3Q8
+         8U3KE3HZvt/tWn51iKKl/oB1aKNB4NjJAscejnTH220Y3sN5NazLv4ZXiM8yCrXPHjaF
+         v1qImyICBKFvv74H2fNon5cmBag0QI+uZEqhBYkkoh+hKex4+sa1EobLYE+bGfZvR4J/
+         frCCGbNnN2+hqiOfrKnktwAlOfyQjCi8KL7wr7NM3xENxuyjKDX+4e6hv2gkXhWphmvi
+         K1NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=2Dlg07YsJrSqvw2An+A6q8j193Na+YPouW2Lgcuax0o=;
-        b=jKQPVB1pHQ9MW4cYqbnQsdkr+yh3kviP2VcazJLZ2mBCXJ2oSEixpafJ4AoRXv4bQp
-         DikM+LaFwo4pxw34fyng75GKxgUpbSkc6Niloo0JOaaBX7IRJQq6l7J8tJqVl55Um60q
-         W2M8ESUQfkIyWtWUzFi1zRi4W53/+WRInFi3P8V/QpH1hRAcwEe0YlInTd1UjcPMdHXp
-         wibI5V9xAWob1mQEAyOw/ml5k4g0J68WHXMnwXyU8qas/M/1+v0trE8nRSud1VR06A6r
-         /VGjpqNU49kotEqf+bSBw9yvevy++Wo8XZqCN1Rbi9pRrqkgbz5Mz6POs/QtiRPhmU3m
-         8WYQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=JpLXMxNxg5tyWJzgJ8wST8vnMeGXUtRwDIMR6Ah58pI=;
+        b=pqnUADICXnkyzkFGz0q4rg/3qEkYf0Kv9czYLD8iN934pLhedI62w2x3hCmIcL2f/G
+         KdHo844fsedOnQvKGApgmoQF2EH7vNt1zu1v89jTAJLmOJHXScTKRm6LLCWcsR1S1djc
+         fzjnxJ55ZuH310cNa31zfgV1A1GLH/L35y/Tkxc4M5nCqLdQnuj41QQqTvKR73lrPrH6
+         fBRG21cb8h3vQR7bnHdS6CGWOr3fm6sCLogMdKpApRuYVuDyc2ITlxa4vHYdQaXwfPHE
+         MSJHS6zxmogDO0rREhFNkCEr7evFrdwPGGhBltlt71b+4SWClPbDgWJXdHa1Oip8q/rC
+         321w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I7GtXyCN;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZS5r5C5b;
+       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::233 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <idebleenasen@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id n6si8586iod.1.2019.03.09.10.54.01
+Received: from mail-oi1-x233.google.com (mail-oi1-x233.google.com. [2607:f8b0:4864:20::233])
+        by gmr-mx.google.com with ESMTPS id k19si388203vsm.0.2019.03.07.23.09.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 10:54:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Thu, 07 Mar 2019 23:09:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::233 as permitted sender) client-ip=2607:f8b0:4864:20::233;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I7GtXyCN;
-       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZS5r5C5b;
+       spf=pass (google.com: domain of idebleenasen@gmail.com designates 2607:f8b0:4864:20::233 as permitted sender) smtp.mailfrom=idebleenasen@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id g6so572146pfh.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 10:54:01 -0800 (PST)
+Received: by mail-oi1-x233.google.com with SMTP id g16so15132684oib.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 23:09:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=2Dlg07YsJrSqvw2An+A6q8j193Na+YPouW2Lgcuax0o=;
-        b=I7GtXyCNYEIGZl2xIWN0kpkhU+ScRTDPaiENpdeNWH9ZNVNXyTgsBJIMrL4XhQVCok
-         bkldtsd+F7a75ReWHfZK38vNacDukWdBIS63sdXiNxX/9rW0EddH0q/spIt0skHNUNpC
-         wysHEOPvlgEjQ4X/7BIf2DcsaMBlzSa4bSFnX5Jsh9v5hnUxq72YPXyE7txMP8T50AfA
-         zVX2n8ORTpjKRybulfzDdAHdVWN/98EsDE1cVMVXaKy3BLbaWF4USPwW08HYDdEqodhf
-         ZBXPkeH93jK7ZZI0iDpx20Wsn3ebm6IUVhzGBkDlaM4+Votte5wvVjRdM/robWd3LEPR
-         KZjQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=JpLXMxNxg5tyWJzgJ8wST8vnMeGXUtRwDIMR6Ah58pI=;
+        b=ZS5r5C5bTnkObyvTWDxLrQttVqg5X53VPiYVqKjm7HVcGJtIqRgwyKtfsbwR/dSv7s
+         Wfh3OrSQujlQsuWxvQ9WtWFgGqMalBCc13uq7ZbQvMkmvkvuA8nF83H9xCoRFcuxsvPN
+         HjivoUK/a5vbbnE18o32xA1MOy3BEuv6+zXn4pGvY78xAOJ804S8C8wrVrcyFONO0EaP
+         L/6v6d+i7pqUG7MaTeKMdeakMN5VJ/ItcVWBOlfHNQig3SMY7+q3dFoRLNKw3l+JtWVL
+         mknsXtn4L7D59OEjmc76YhcwBFv8/o/yIcnZrm4ySXXXxPtdoR/MldgpUwgFBlTmF3nX
+         YUiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=2Dlg07YsJrSqvw2An+A6q8j193Na+YPouW2Lgcuax0o=;
-        b=lm1SyIn3j/7a7KxGsqwawpyg4ZVeEGbWTSG34dibt69ZKKrXdbsHLxi+jqVkcTibFf
-         PUmUZkPZXw7YFwqoWzUVBTevhgRFaiXi67I6OsexcCR75O2DrEI+ApvaBthpMJF8VtD1
-         E1QTjfGZkhVyra0wpNtZLKQu9dM1Uhj6+3We2SCXOqhRrZrKTYho5sLEKLYRLqNXs3MH
-         gr0ReL1G2KxbNOp0nRUn+nSkQHrxoQ2nt2sXWkBgw8pwnL3Wh25e5xWnq+2DqhHvBu6z
-         o2RGdTx1Rz+Hv1ohFSOalgJC29XBpW/xcwaLMZI6EszTekb0GHV12fREB9fRIciNraKI
-         Uo2Q==
-X-Gm-Message-State: APjAAAW0JWEAA8fPP7bPnVW4rznSXz+QJKMFFOfh37Ws79gs7XtHG7wK
-	K5OGFNwHD0vb5GsQMmc5O4s=
-X-Received: by 2002:a63:1766:: with SMTP id 38mr22738670pgx.204.1552157641106;
-        Sat, 09 Mar 2019 10:54:01 -0800 (PST)
-Return-Path: <idebleenasen@gmail.com>
-Received: from ubuntu.localdomain ([114.29.227.68])
-        by smtp.googlemail.com with ESMTPSA id w17sm2023856pfn.63.2019.03.09.10.53.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 09 Mar 2019 10:54:00 -0800 (PST)
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=JpLXMxNxg5tyWJzgJ8wST8vnMeGXUtRwDIMR6Ah58pI=;
+        b=QPTWiJO0m9IhWayTs+PF5wZ/q4wxJohtbn4IM6hkDqWP1DX0q0VBigiJ+u/VCkFsOw
+         Sqdhj5tSaPc34zt1oGeKu29oBGZbVUY64oYx3ebsFuWSGjZZIhyRk4lV9xlOTv5QTL28
+         lkprRdoMrDE6cmzlg1tYwlY5sC6ETBerh0PQKmQ89M2X1oXkGXFrYaIuxyXerzEsca8l
+         YhUJOpT5H7ajc/4hi7Sm+vKX0UcavJANL2G18IPt1qcBUHBHIu/9crPqic+17eyawpbL
+         XWG7TASLXOffSGKlb8OX2Zc3WajgWsgsCl4fxFou2Oh1P32qezCxOEU0VmVzORtB+yxx
+         u1vA==
+X-Gm-Message-State: APjAAAXxBCh4COvA9cnrCq5Xe/hNJZBB/0GlEIlKZVnixy4oySfe8sNO
+	Sh30rfmEedbp7QAAs8D6GLc6zY+0Mu63iY61QyM=
+X-Received: by 2002:aca:b589:: with SMTP id e131mr7622285oif.91.1552028978938;
+ Thu, 07 Mar 2019 23:09:38 -0800 (PST)
+MIME-Version: 1.0
+References: <1551991259-109878-1-git-send-email-idebleenasen@gmail.com> <alpine.DEB.2.21.1903072153150.2558@hadrien>
+In-Reply-To: <alpine.DEB.2.21.1903072153150.2558@hadrien>
 From: Debleena Sen <idebleenasen@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Debleena Sen <idebleenasen@gmail.com>
-Subject: [PATCH v2] Staging: vboxvideo: Do not return -ENOSYS
-Date: Sat,  9 Mar 2019 10:53:37 -0800
-Message-Id: <1552157617-4629-1-git-send-email-idebleenasen@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Date: Fri, 8 Mar 2019 12:39:27 +0530
+Message-ID: <CACw+u4H1=2YEH7eVo_JPkykHMbm6bC7fKFFhcT3mXdObPA+eHw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vboxvideo: Do not return -ENOSYS
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="000000000000f886a705838fe7e6"
 
-New instances of ENOSYS are errors. ENOSYS should be used for nonexistent
-syscalls only. Use ENODEV instead as there should not be any other
-driver for a virtual device that might share buffers with vboxvideo.
+--000000000000f886a705838fe7e6
+Content-Type: text/plain; charset="UTF-8"
 
-In vbox_prime.c, replace all occurrences of -ENOSYS with -ENODEV to fix
-checkpatch.pl warning:
+On Fri, 8 Mar 2019, 05:50 Julia Lawall, <julia.lawall@lip6.fr> wrote:
 
-WARNING: ENOSYS means 'invalid syscall nr' and nothing else
+>
+>
+> On Thu, 7 Mar 2019, Debleena Sen wrote:
+>
+> > New instances of ENOSYS are errors. Refer
+> /usr/include/asm-generic/errno.h
+> > to find correct error code to use in place of ENOSYS.
+>
+> The second sentence is strange.  It would be better to just put the
+> following message, and then add something at the end explaining how you
+> chose -ENODEV.
+>
+> julia
+>
+> > In vbox_prime.c, replace all occurrences of -ENOSYS with -ENODEV to fix
+> > checkpatch.pl warning:
+> > WARNING: ENOSYS means 'invalid syscall nr' and nothing else
+> >
+> > Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+> > ---
+> >  drivers/staging/vboxvideo/vbox_prime.c | 10 +++++-----
+> >  1 file changed, 5 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/staging/vboxvideo/vbox_prime.c
+> b/drivers/staging/vboxvideo/vbox_prime.c
+> > index d61985b..702b1aa 100644
+> > --- a/drivers/staging/vboxvideo/vbox_prime.c
+> > +++ b/drivers/staging/vboxvideo/vbox_prime.c
+> > @@ -16,7 +16,7 @@
+> >  int vbox_gem_prime_pin(struct drm_gem_object *obj)
+> >  {
+> >       WARN_ONCE(1, "not implemented");
+> > -     return -ENOSYS;
+> > +     return -ENODEV;
+> >  }
+> >
+> >  void vbox_gem_prime_unpin(struct drm_gem_object *obj)
+> > @@ -27,7 +27,7 @@ void vbox_gem_prime_unpin(struct drm_gem_object *obj)
+> >  struct sg_table *vbox_gem_prime_get_sg_table(struct drm_gem_object *obj)
+> >  {
+> >       WARN_ONCE(1, "not implemented");
+> > -     return ERR_PTR(-ENOSYS);
+> > +     return ERR_PTR(-ENODEV);
+> >  }
+> >
+> >  struct drm_gem_object *vbox_gem_prime_import_sg_table(
+> > @@ -35,13 +35,13 @@ struct drm_gem_object
+> *vbox_gem_prime_import_sg_table(
+> >       struct sg_table *table)
+> >  {
+> >       WARN_ONCE(1, "not implemented");
+> > -     return ERR_PTR(-ENOSYS);
+> > +     return ERR_PTR(-ENODEV);
+> >  }
+> >
+> >  void *vbox_gem_prime_vmap(struct drm_gem_object *obj)
+> >  {
+> >       WARN_ONCE(1, "not implemented");
+> > -     return ERR_PTR(-ENOSYS);
+> > +     return ERR_PTR(-ENODEV);
+> >  }
+> >
+> >  void vbox_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
+> > @@ -52,5 +52,5 @@ void vbox_gem_prime_vunmap(struct drm_gem_object *obj,
+> void *vaddr)
+> >  int vbox_gem_prime_mmap(struct drm_gem_object *obj, struct
+> vm_area_struct *area)
+> >  {
+> >       WARN_ONCE(1, "not implemented");
+> > -     return -ENOSYS;
+> > +     return -ENODEV;
+> >  }
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/1551991259-109878-1-git-send-email-idebleenasen%40gmail.com
+> .
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+OK. I'll do that.
 
-Signed-off-by: Debleena Sen <idebleenasen@gmail.com>
+>
 
----
+--000000000000f886a705838fe7e6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Changes in v2:
-	- Make the commit message more clearer.
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Fri, 8 Mar 2019, 05:50 Julia Lawall, &lt;<a href=3D=
+"mailto:julia.lawall@lip6.fr">julia.lawall@lip6.fr</a>&gt; wrote:<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex"><br>
+<br>
+On Thu, 7 Mar 2019, Debleena Sen wrote:<br>
+<br>
+&gt; New instances of ENOSYS are errors. Refer /usr/include/asm-generic/err=
+no.h<br>
+&gt; to find correct error code to use in place of ENOSYS.<br>
+<br>
+The second sentence is strange.=C2=A0 It would be better to just put the<br=
+>
+following message, and then add something at the end explaining how you<br>
+chose -ENODEV.<br>
+<br>
+julia<br>
+<br>
+&gt; In vbox_prime.c, replace all occurrences of -ENOSYS with -ENODEV to fi=
+x<br>
+&gt; <a href=3D"http://checkpatch.pl" rel=3D"noreferrer noreferrer" target=
+=3D"_blank">checkpatch.pl</a> warning:<br>
+&gt; WARNING: ENOSYS means &#39;invalid syscall nr&#39; and nothing else<br=
+>
+&gt;<br>
+&gt; Signed-off-by: Debleena Sen &lt;<a href=3D"mailto:idebleenasen@gmail.c=
+om" target=3D"_blank" rel=3D"noreferrer">idebleenasen@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/vboxvideo/vbox_prime.c | 10 +++++-----<br>
+&gt;=C2=A0 1 file changed, 5 insertions(+), 5 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/vboxvideo/vbox_prime.c b/drivers/staging/=
+vboxvideo/vbox_prime.c<br>
+&gt; index d61985b..702b1aa 100644<br>
+&gt; --- a/drivers/staging/vboxvideo/vbox_prime.c<br>
+&gt; +++ b/drivers/staging/vboxvideo/vbox_prime.c<br>
+&gt; @@ -16,7 +16,7 @@<br>
+&gt;=C2=A0 int vbox_gem_prime_pin(struct drm_gem_object *obj)<br>
+&gt;=C2=A0 {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0WARN_ONCE(1, &quot;not implemented&quot;);<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0return -ENOSYS;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return -ENODEV;<br>
+&gt;=C2=A0 }<br>
+&gt;<br>
+&gt;=C2=A0 void vbox_gem_prime_unpin(struct drm_gem_object *obj)<br>
+&gt; @@ -27,7 +27,7 @@ void vbox_gem_prime_unpin(struct drm_gem_object *obj=
+)<br>
+&gt;=C2=A0 struct sg_table *vbox_gem_prime_get_sg_table(struct drm_gem_obje=
+ct *obj)<br>
+&gt;=C2=A0 {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0WARN_ONCE(1, &quot;not implemented&quot;);<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0return ERR_PTR(-ENOSYS);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return ERR_PTR(-ENODEV);<br>
+&gt;=C2=A0 }<br>
+&gt;<br>
+&gt;=C2=A0 struct drm_gem_object *vbox_gem_prime_import_sg_table(<br>
+&gt; @@ -35,13 +35,13 @@ struct drm_gem_object *vbox_gem_prime_import_sg_ta=
+ble(<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct sg_table *table)<br>
+&gt;=C2=A0 {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0WARN_ONCE(1, &quot;not implemented&quot;);<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0return ERR_PTR(-ENOSYS);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return ERR_PTR(-ENODEV);<br>
+&gt;=C2=A0 }<br>
+&gt;<br>
+&gt;=C2=A0 void *vbox_gem_prime_vmap(struct drm_gem_object *obj)<br>
+&gt;=C2=A0 {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0WARN_ONCE(1, &quot;not implemented&quot;);<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0return ERR_PTR(-ENOSYS);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return ERR_PTR(-ENODEV);<br>
+&gt;=C2=A0 }<br>
+&gt;<br>
+&gt;=C2=A0 void vbox_gem_prime_vunmap(struct drm_gem_object *obj, void *vad=
+dr)<br>
+&gt; @@ -52,5 +52,5 @@ void vbox_gem_prime_vunmap(struct drm_gem_object *ob=
+j, void *vaddr)<br>
+&gt;=C2=A0 int vbox_gem_prime_mmap(struct drm_gem_object *obj, struct vm_ar=
+ea_struct *area)<br>
+&gt;=C2=A0 {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0WARN_ONCE(1, &quot;not implemented&quot;);<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0return -ENOSYS;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0return -ENODEV;<br>
+&gt;=C2=A0 }<br>
+&gt; --<br>
+&gt; 2.7.4<br>
+&gt;<br>
+&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@goog=
+legroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@g=
+ooglegroups.com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/1551991259-109878-1-git-send-email-ideblee=
+nasen%40gmail.com" rel=3D"noreferrer noreferrer" target=3D"_blank">https://=
+groups.google.com/d/msgid/outreachy-kernel/1551991259-109878-1-git-send-ema=
+il-idebleenasen%40gmail.com</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/=
+d/optout</a>.<br>
+&gt;<br></blockquote></div></div><div dir=3D"auto">OK. I&#39;ll do that.=C2=
+=A0</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"=
+gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-=
+left:1ex">
+</blockquote></div></div></div>
 
- drivers/staging/vboxvideo/vbox_prime.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/vboxvideo/vbox_prime.c b/drivers/staging/vboxvideo/vbox_prime.c
-index d61985b..702b1aa 100644
---- a/drivers/staging/vboxvideo/vbox_prime.c
-+++ b/drivers/staging/vboxvideo/vbox_prime.c
-@@ -16,7 +16,7 @@
- int vbox_gem_prime_pin(struct drm_gem_object *obj)
- {
- 	WARN_ONCE(1, "not implemented");
--	return -ENOSYS;
-+	return -ENODEV;
- }
- 
- void vbox_gem_prime_unpin(struct drm_gem_object *obj)
-@@ -27,7 +27,7 @@ void vbox_gem_prime_unpin(struct drm_gem_object *obj)
- struct sg_table *vbox_gem_prime_get_sg_table(struct drm_gem_object *obj)
- {
- 	WARN_ONCE(1, "not implemented");
--	return ERR_PTR(-ENOSYS);
-+	return ERR_PTR(-ENODEV);
- }
- 
- struct drm_gem_object *vbox_gem_prime_import_sg_table(
-@@ -35,13 +35,13 @@ struct drm_gem_object *vbox_gem_prime_import_sg_table(
- 	struct sg_table *table)
- {
- 	WARN_ONCE(1, "not implemented");
--	return ERR_PTR(-ENOSYS);
-+	return ERR_PTR(-ENODEV);
- }
- 
- void *vbox_gem_prime_vmap(struct drm_gem_object *obj)
- {
- 	WARN_ONCE(1, "not implemented");
--	return ERR_PTR(-ENOSYS);
-+	return ERR_PTR(-ENODEV);
- }
- 
- void vbox_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
-@@ -52,5 +52,5 @@ void vbox_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
- int vbox_gem_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *area)
- {
- 	WARN_ONCE(1, "not implemented");
--	return -ENOSYS;
-+	return -ENODEV;
- }
--- 
-2.7.4
-
+--000000000000f886a705838fe7e6--
 
