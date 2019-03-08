@@ -1,81 +1,79 @@
 X-GM-THRID: 6665843056733847552
-X-Received: by 2002:adf:822f:: with SMTP id 44mr928493wrb.2.1552030142747;
-        Thu, 07 Mar 2019 23:29:02 -0800 (PST)
+X-Received: by 2002:a17:902:2a87:: with SMTP id j7mr4011391plb.3.1552028805989;
+        Thu, 07 Mar 2019 23:06:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:cd99:: with SMTP id y25ls103885wmj.2.gmail; Thu, 07 Mar
- 2019 23:29:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxLEh+jGHCIuo9EGDXBAftaBLJ5trMrOvYE5J1G91AunKrmTou3xRdauBRBIRJBCb20JLSL
-X-Received: by 2002:a05:600c:21c8:: with SMTP id x8mr1316813wmj.14.1552030142014;
-        Thu, 07 Mar 2019 23:29:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552030142; cv=none;
+Received: by 2002:a62:5788:: with SMTP id i8ls3814538pfj.0.gmail; Thu, 07 Mar
+ 2019 23:06:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyJMs+klVRFWzMLbQhM1L7UubpZuRc+76gPRBSXs6iL1ArhNqgTLk+A9cLE4M8Nv51v7kWi
+X-Received: by 2002:a63:5d1c:: with SMTP id r28mr6538564pgb.93.1552028805251;
+        Thu, 07 Mar 2019 23:06:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552028805; cv=none;
         d=google.com; s=arc-20160816;
-        b=zO4isVBtpENa63K5C6NR6hkeTQJ4RUnyHZc7YOHXuioJFP/jsPEn0SiKOSuEwWNH4b
-         jHab7gfSjGOUsZyOgrpNHP5i6C9sM5o7jDzbUDB0t31kvzlfch62zyVC2NqwH2tcACRJ
-         d7ZlsL0H8Ouo3zziLQUqiMR/sKI0EqeiYjfCbE41WBFm2yAkLXEq68QKnbSNY7muIzYc
-         AMk7ahjpCAi/dt2twTr5Yt4K1SHoeD5sLntQkNsgHaNSrHDbJJJTZ/EwBftBUDLxiUoc
-         T5VjN/qZcYALfk6ozPcUVX2ne8Cx6JkNTFDpl+8j2Kc6P99JpOxHkfqIxNnmhkLNO173
-         R6Uw==
+        b=VJvbrOCgjqt7iawGS8dt/p8L7TC3YH8dXliO0u/Xn80gjivL2EVkleLwJ0lIR84EkL
+         doy64YjCM2vpkQW45nvVJ0BInXKR7hVedxW0DfLEeHaBPTNn1DNNKEbc7FgYrZ523N5d
+         fWPdhzGc57iQepGQXsqXRzn/i1M3deNAwevKmQRKj5vAVhqd6recFai63q7Ko63npcOV
+         0+X9WHk6D+Z/34JFno77K/RnG27YK3bO082ff7ICdfO7ZgIQ7BD1jVGB3gP/B9G1K16Y
+         gmnV2M++xUODzLdN7WGkWrp0Z6zGYoO3QeIlZyzhXQb2v6yJXMxmhEMcXBZODrJnM3R3
+         huVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=fR2J6eHYQFp0sSF5Po3pox8XDQr6+cgsFueKG6w39yE=;
-        b=zVFdFIoWWZhBSHo9dtYLoRT5cBfngHOnKghkUMwXoYWiowMix+3NGF1y14pJFUv3so
-         dDKIpDIA2LammQrEHlpsxmBirC6scjuu2uGOLjd5dMlj4pwZLoGgAzOatZuqkfDTMXlp
-         x5mCP2VTK0Z8rP+mzrNfTgjx1x8TtgveoN0EZu2w5BLmDS83RurrsGraZnk5bENdOsj4
-         I6Ia3SaK7Pbfd4a4nhOfiFozRXuIf07GkY74mYMrexzQ/EDIJMMBSTujkLW89PxX4n/a
-         zs5tlckC5/n/PTtetc3ozMUs7EQjz2Jdz1s+gOmGYXUukcUqEkvnQF8zC5CXnu3byNZv
-         axIg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=91tUP+p+E7cZ7CovYQHuwup1DBcxyUHrkimGG+09bqg=;
+        b=lPvxmwKCc4OnW6fW+NElLKXKKJrAwRFNWGWlwqisuNb5N2rM2XsdMR/Khxy0cikLFM
+         EK52CtSPIzMqF61TcKdn0aIE4i9w9s6WSZIWgiVaqWoMJuARDr7EiMEXsLE5KTxiWyk3
+         1R8JtsUAQYgHBVPMExGekTRji9hchwZ8ry6av5EH9DEoPLAczkSlquhFoOkf4Lo1pxOO
+         oL64mt9+EhsStMjK99zG3QRE1T6M7/iDI6t4+ajQ87Ds3ZHjkwNvaQL/mwcx6XBNX+pq
+         vsTD6j8DMvGOjjVnsDyavEV+zbDeR0ie2gqf6FXbr8ITBR7rrQjCwh0GBGK7IVBkLDPN
+         foLA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id c24si329401wml.0.2019.03.07.23.29.01
+       dkim=pass header.i=@kernel.org header.s=default header.b=ZNbsgfCa;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id z184si378897pgd.0.2019.03.07.23.06.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 23:29:02 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Thu, 07 Mar 2019 23:06:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,455,1544482800"; 
-   d="scan'208";a="372450298"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Mar 2019 08:29:01 +0100
-Date: Fri, 8 Mar 2019 08:29:01 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: etsai042@gmail.com
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH v3 1/4] Staging: most: dim2: Fix
- SPDX-License-Identifier in errors.h
-In-Reply-To: <8d797e93-e9be-4122-b9a7-5baa4d41ccf2@googlegroups.com>
-Message-ID: <alpine.DEB.2.21.1903080828230.5073@hadrien>
-References: <20190308031013.7952-1-etsai042@gmail.com> <20190308031013.7952-2-etsai042@gmail.com> <8d797e93-e9be-4122-b9a7-5baa4d41ccf2@googlegroups.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@kernel.org header.s=default header.b=ZNbsgfCa;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 847CB20811;
+	Fri,  8 Mar 2019 07:06:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552028805;
+	bh=pLT2xaZd3XisZhCpz1iak4rFg2CXbG8A3PAj48Ap4uA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZNbsgfCarORZMuLcE5vPkJTHtWbgxQtUJT3A02xEme6hHac76LQnysjYe9gpq2lVy
+	 ncElpAEJgCU0nc7/aUVuBT3EC7hR9m+Px3MxknknzlPs/w0Jgr5PT4LolO+u2hGkW+
+	 Lp2cCMVemvONaM1Ja70P50siHH7xkHdfcRSYchQk=
+Date: Fri, 8 Mar 2019 08:06:42 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Wentao Cai <etsai042@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3 1/4] Staging: most: dim2: Fix SPDX-License-Identifier
+ in errors.h
+Message-ID: <20190308070642.GF17194@kroah.com>
+References: <20190308031013.7952-1-etsai042@gmail.com>
+ <20190308031013.7952-2-etsai042@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190308031013.7952-2-etsai042@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
+On Thu, Mar 07, 2019 at 07:10:10PM -0800, Wentao Cai wrote:
+> Fix the checkpatch.pl warning in drivers/staging/most/dim2/errors.h:
+> WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
 
+You are not "fixing" the identifier so much as using the "correct"
+comment characters.  The identifier text itself is correct and nothing
+needs to be "fixed" in it.
 
-On Thu, 7 Mar 2019, etsai042@gmail.com wrote:
+thanks,
 
-> Sorry to mess up patch version, I'll revise it.
-
-It's nice to quote what you are responding to, so the reader has some
-context beyond the subject line.  Just to remember for next time.
-
-julia
-
-> Wentao
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/8d797e93-e9be-4122-b9a7-
-> 5baa4d41ccf2%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
+greg k-h
 
