@@ -1,117 +1,78 @@
-X-GM-THRID: 6524019409148706816
-X-Received: by 10.129.212.73 with SMTP id g9mr9021910ywl.240.1518991638303;
-        Sun, 18 Feb 2018 14:07:18 -0800 (PST)
+X-GM-THRID: 6662260493008240640
+X-Received: by 2002:a25:9204:: with SMTP id b4mr11210305ybo.21.1552127437696;
+        Sat, 09 Mar 2019 02:30:37 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.70.196 with SMTP id t187ls324034ywa.6.gmail; Sun, 18 Feb
- 2018 14:07:17 -0800 (PST)
-X-Google-Smtp-Source: AH8x224mKDmnfjCRhYJMO+w86WNhbzayZATvDYMyasAzRiwjaGUJKgekffuVicwrNkJgeMuxNx6e
-X-Received: by 10.13.232.145 with SMTP id r139mr95830ywe.14.1518991637097;
-        Sun, 18 Feb 2018 14:07:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518991637; cv=none;
+Received: by 2002:a25:cd0a:: with SMTP id d10ls774460ybf.8.gmail; Sat, 09 Mar
+ 2019 02:30:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzuhyQ6/mBHB5IqVmJv4x3x+BJC242jhYqJ6O/tryn/O8+Nhv6J04H5Cfj8z0hr/qKIAu9g
+X-Received: by 2002:a25:dfc6:: with SMTP id w189mr10386879ybg.63.1552127436800;
+        Sat, 09 Mar 2019 02:30:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552127436; cv=none;
         d=google.com; s=arc-20160816;
-        b=EsQOCwgwMzaNhzVhot7qPtSTO0GWFvu8wcrn5fq8oyDJlqK2Sf4aBCLrZvjxp6e1YU
-         H/dldLCLdKm6qftAOlYOPMo3R3b4NI8z+135+Y/l7se85IandgjwoZSQIz5mMOIEp/DV
-         rQB0foNAZ+1ngoTAnOPkPMMG2BMvsN9rNtLSW2NSt2PFeuVx1vfVDUmKIDpMTHid5/k7
-         671ip86hD7FQHRidZj5HgIJJxwayctdW3LHNuIGamaNa4rJynwNL+q0ck/jkezJ4jx8Q
-         /yPpZ5W/0dcnNBuaqZLFHh35vQQ4FpQw1d42w8TbH5CEvHuYN7P343E0aEi3f7DQ8ZmF
-         DGgg==
+        b=zg5urCzC6Gkh1ot8z73ve4RJjLYfmr52CSoti52sCNmnJduDxzH5TlHOy/OAxPMT//
+         R5rxVN1Bmx4Vt3Vqn88qh5iTjIqUIEJYj4GhdviDC+UxUxgnNIgCIkS3GkKpyiPMvTwy
+         lF5yNjKSyb9o8cB/XF9Xw49XDxrqh73yuZxLdT4mmhjqRXhoXluDTGGLQBrCMc3ueE1F
+         b34k31HSOw2mvepXxiCw+S4jgFDKN0jWbS2szX9OuI820J7ZIoc3jB83RuPVW7YEXdS6
+         vQ8YdAmAUi2PFbUJGhK8o/DdwELD9fcLT/H32GycrNECD4o8mFEBE5tMON7QP+n2kRz/
+         dyrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=D+4yRpqYBl5zk25zW8s+mcoUcHZJg+6yZMGbE+c2KhY=;
-        b=iX/mWddCkX+5o3zEyoUo3bR30+6jX8jzHVCLgvjt4l7gUgEPpGF2gtuM1VbJNyAiKc
-         A0x4gP0nrgDo3zHYoetW8t2JnkHU91yi6glqKmMpVlEmrWsnT0M9MsKUH+fovwuJYghU
-         iUUg4Duv1QdpuawWbqPO31rR+6WjTLO3911rsMwZd24qG73bbcB5I8Tc25/xBCQr1rSQ
-         aDbV1jOTTPCA8juMBbhaAZLQPtGBWYhBSB+MJWddBDp4TWYqV+uh7rVKXqtc8fCn7RjT
-         YyWSqzvgue6tFiZbtp7d0En5W8CnJUzfMSrPdwhCC/nNtacHUpSMLzzgN+CmVS87PDaU
-         Bqdg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=90j1+LXfcUDxTskSydmNsa9pU4H4gZBxCb0BSsmYdEQ=;
+        b=oTAMHCNGR8fYMq3FDBeBIV0z4uI5I1bpODtf443BVDzK1ZQ0GY5YzNEZTug6YTx5KF
+         Vo1x1r6K5RIGTOB8VIby3aJ80rlPzdJzBlqAFmJByegXc5/qaq0dYFMOIppgXy/yruG3
+         LP1Uax/TK2IUef+cIYch3Fhasp60l/IkHkDODAE5/ilouzAQS6N76/4CavV1VExhIByB
+         Sml6Nl9IRen5fDXpTZrdl5t7VbXk65cdHUHNwGLud+LCSVUKWcIbAzTQCjLRCOFVe1IR
+         t67GiPDNtbhSlk76NFUC83wM4TW/jQxFNr9DXbJPA2wHqLsfXriIMlZBWUsT5L+4VpW/
+         u8uQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DqaEHtjS;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id t4si680025ybl.3.2018.02.18.14.07.17
+       dkim=pass header.i=@kernel.org header.s=default header.b=YbVUOXi2;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id l39si4349ywh.5.2019.03.09.02.30.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Feb 2018 14:07:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Sat, 09 Mar 2019 02:30:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DqaEHtjS;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id w17so5170202pgv.6
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Feb 2018 14:07:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=D+4yRpqYBl5zk25zW8s+mcoUcHZJg+6yZMGbE+c2KhY=;
-        b=DqaEHtjStzKoDdPCSCbk8niKenxp753mapkWqwwdS/yMfY4uAKYyR/ANU7jh7KvJPb
-         WqTrZRG2On1gKVg3vMlpduafLeRtR6kO2NslZYkO2JFOOP0BL7n5vKohV1KSkL6DIjat
-         YoZ1Km0YLyuMKfM1lzppUPt2Ckl6fzdBw2N6KHloeEQodgIYKZA8TAUpYTUOz94UP8GQ
-         QwoASRbov0uWNwelKYQ0nN3tKtMuqN1OPuoZzGVLZ0BH0eXxsg04t/AcEgKD9OW6llFP
-         lGw/yDF0IYZjBi3d3iJcBTNaF7diR8TYJXPNSX/NsXtUaFwoNL08c7pFX6nTaDdYHheS
-         xU5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=D+4yRpqYBl5zk25zW8s+mcoUcHZJg+6yZMGbE+c2KhY=;
-        b=JWWfDwcbIjkkjkgWL1PH3yY6JzyqAt2QGVB98LmetiL5QwxsEH0rxgetjIMOY1Kbw/
-         ghQv2j5kqEzY/0DdbVUiVQOnC0W3UyMZINfTuuho7UpWKeaFnqDawh0F+QNRdl/bBJ1M
-         VbpR/mzl4kQD3f7o4E0kZdMxMxb6Ubjik//QdbZyfBEMc/xmct+ue34hhaK+mbsrU7KB
-         Q+xDBBnDtoMuZunoIx7+EF0o5CEYpEmPJfegRKWvA+sy4KZwAwOFIvz0okioXkjlZtyA
-         RhMC1U3eHcXAviTIgsL7M8S2hZydzz5HBDleuLzWlK2C6Dtqc6J32wd/wo34zo2g0VPS
-         Lx9g==
-X-Gm-Message-State: APf1xPD0qtelu08wqk8YQc0rwwen6CzCsM6J0n8KFhtTwRLvqnSSLFLp
-	Vbo0aqFLH4db8TiTwLdfQwo=
-X-Received: by 10.98.209.8 with SMTP id z8mr12651629pfg.240.1518991636354;
-        Sun, 18 Feb 2018 14:07:16 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id l84sm59036177pfb.153.2018.02.18.14.07.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 18 Feb 2018 14:07:15 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: aditya.shankar@microchip.com,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH v2] staging: wilc1000: remove unnecessary braces
-Date: Sun, 18 Feb 2018 14:07:00 -0800
-Message-Id: <1518991620-3340-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=YbVUOXi2;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 27FC9207E0;
+	Sat,  9 Mar 2019 10:30:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552127434;
+	bh=90j1+LXfcUDxTskSydmNsa9pU4H4gZBxCb0BSsmYdEQ=;
+	h=Date:From:To:Subject:From;
+	b=YbVUOXi2NoY7SbH9XgSSJ+sXeB3IvvdDQZbxbMcsRmDXgNiT9nv4x4IAx8xyTaKiJ
+	 HY621Zba8pMc9hzvqMM6hi+rk6O6iEC9bnAoj1ySZdU/sk3syR7L5JhpharGgyrl1a
+	 YT0B+Ztwro9lQDm5V9mv14CPObAPMiMJspB9LMFA=
+Date: Sat, 9 Mar 2019 11:30:32 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: outreachy-kernel@googlegroups.com
+Subject: Outreachy patches caught up on.
+Message-ID: <20190309103032.GA18234@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Remove braces around a single statement block to conform to the Linux
-kernel coding style.
+Hi all,
 
-Problem found using checkpatch.
+I'm now caught up on all submitted outreachy patches that I can apply.
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
-Changes in v2:
-  - Make the subject line more clearer.
-  - Remove file name from subject line.
-  - Make the commit message more clearer.
+If you have not gotten an email from my patch system saying that your
+patch was applied, consider it lost, and please rebase and resend it.
 
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Note, I am traveling for a week starting tomorrow for two different
+conferences and it is the middle of the merge window upstream, so my
+response time to patches here might be delayed a bit (or not, depending
+on how interesting the conferences are...)
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index 621810d..df04bf80 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -287,9 +287,8 @@ static void remove_network_from_shadow(struct timer_list *unused)
- 		}
- 	}
- 
--	if (last_scanned_cnt != 0) {
-+	if (last_scanned_cnt != 0)
- 		mod_timer(&hAgingTimer, jiffies + msecs_to_jiffies(AGING_TIME));
--	}
- }
- 
- static void clear_duringIP(struct timer_list *unused)
--- 
-2.7.4
+thanks,
 
+greg k-h
 
