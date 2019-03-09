@@ -1,84 +1,84 @@
 X-GM-THRID: 6666505037570637824
-X-Received: by 2002:a62:174b:: with SMTP id 72mr10508717pfx.56.1552222842212;
-        Sun, 10 Mar 2019 06:00:42 -0700 (PDT)
+X-Received: by 2002:a9f:35c4:: with SMTP id u4mr16406456uad.23.1552166658574;
+        Sat, 09 Mar 2019 13:24:18 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e393:: with SMTP id ch19ls7228412plb.2.gmail; Sun,
- 10 Mar 2019 06:00:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwVgORgJuuip3SwZEs2gg0o0ell+TKtTf0wRSggSH0x3qHIpZY4VQSFmS3o3mL7aklLi1Qn
-X-Received: by 2002:a17:902:243:: with SMTP id 61mr4879513plc.70.1552222841339;
-        Sun, 10 Mar 2019 06:00:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552222841; cv=none;
+Received: by 2002:a1f:ab84:: with SMTP id u126ls2161778vke.0.gmail; Sat, 09
+ Mar 2019 13:24:17 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxlzXjXTpaLaEL/TBWG6F135/tSBWDk0E7eaLqRvHSxYByvCDQQUf0Fsay4ALR+N9dbJJgc
+X-Received: by 2002:a1f:a94c:: with SMTP id s73mr15927526vke.16.1552166657459;
+        Sat, 09 Mar 2019 13:24:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552166657; cv=none;
         d=google.com; s=arc-20160816;
-        b=KQ3Mob51Au77ODE6YkjHGxtSp2pwIiXc8L9XfoZu6cv8NBJFHQSlaW3+VQCmQY8/aQ
-         22rGqz8fF28ZOoGFAe5fsViugpLARK90+FB7kUAmwhbRy9NEdm3sdPYFiI1Rzggc37kv
-         9+mCC2Gq3k/qXJMJATqorQdLFfgFrXOEil8e3jGodNylq/pZZFHkDmkGo8rIF4ZY6FJq
-         36RqKknmeAAAFSB5AkqJPB7SpUqR5LVisneoIPB7IKlqWz/5KK4yQ7JMRsC7O6xWVwWV
-         uHHvKVwF91uhoZ5tVpfv478JlaSh1RVqDCwrE5Ni4FC8HiecWGq93mzbdsptoqvGJSEb
-         wXbA==
+        b=JTojaRwFgBsIpIIgRg1LlfnKgQsw+BDTWfs3Ia9ZQ8ehHWEFk1epo2md8YGeqQzoC6
+         XIrOZZsLfbwj2Q37Zu+wkijxrMRwLJqNG1OQUNWH/WZrgWhyOLugR/qaOcpaUPFbU0AX
+         J28/WYm/WBKDziU0179jkkY4eBh7GGP8ZkxUCehVEiepKqmT0M+JQVTwuBrEQ7R/sjDH
+         ubq4T6Fj7EUIf4fqBYunZKzxcNqgvNh8k60nCE5VC4QPQ1LPEQkrt6iNKlC9L9GtDC1t
+         O6yTk8r+t2HIQIcfF45DxQhp6vZ4XQ0FRmrfHQJhrxL8Nadywufm1gH9A/k7BDyctXhI
+         3mpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=LiznnBLQpdGfecYx824x6v4yFQwMLEvOZ9DPWCLLNzw=;
-        b=MAM1cSCf73I1SraG4lUIFECFQtApgf8fL+bLrF9cFa001r1r9iu1x1ItvvQZ2fVZvg
-         PjnWyrcY5hL9BNg79pvj+MT+NwKgVi4WQAnVbmsPiePseanAaNpSXeCwKyYPGhmkII+/
-         WoUkEe4zeY5qU7knszXGYLVDsdlVji6g2cxNDsWcqagYn320r8O3G7DMpXP+JgoDEWjB
-         f2CXnYt+AeNPcyJrYUFbEND/tKKZ8l0WF4dUBGOBQroAjcnq24ijUYdIxMt8lDU67UBN
-         5p2eIkcuxIZT0Fit5sPkzcFBkEbv8Mdh05+HHREoAxeviYzt13LRRKym8S1A/QVURY5I
-         8x+Q==
+        bh=EafivKCX2hQfKcEJXkK25XEKUwteWnq8elqSHwVOMMw=;
+        b=vE9ETtGpDKQMmGImPAuSDMpzDVv/MnGyisMMzueC77Eipi+Q+5QvfgMd4twlt4DpF5
+         EYjkIPIwTxhnXoIEN1OEJP5AWM332cqrD8aQQAb3B8CFGnirfqVsC2caRw+yziAs+6yk
+         N+JQMDQMn2k9Do3UVFbCM1F0Nz1n1Bl81sc7dZY8d3VJJlzI/JIAe6D/IKI+toLUExSb
+         rh78qHLWDZojYADHcs3Z2O7n6pdw0mLH+pTF0lAHAz08Za83+4m8hotVvi1v5R+SwDW2
+         e1ByClRpexbVjbevIH2pXgrtluIejOxV5pnoYNx+nu4coqntpQCxCO97cSBl2kYPgAz8
+         4qoA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kRUSgOcr;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J5wFOZum;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
-        by gmr-mx.google.com with ESMTPS id c12si143611pfc.2.2019.03.10.06.00.41
+Received: from mail-pf1-x42e.google.com (mail-pf1-x42e.google.com. [2607:f8b0:4864:20::42e])
+        by gmr-mx.google.com with ESMTPS id q85si35458vke.5.2019.03.09.13.24.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 06:00:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
+        Sat, 09 Mar 2019 13:24:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) client-ip=2607:f8b0:4864:20::42e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kRUSgOcr;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J5wFOZum;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x435.google.com with SMTP id h1so1659579pfo.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 06:00:41 -0700 (PDT)
+Received: by mail-pf1-x42e.google.com with SMTP id n22so759631pfa.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 13:24:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=LiznnBLQpdGfecYx824x6v4yFQwMLEvOZ9DPWCLLNzw=;
-        b=kRUSgOcru7AZqoJJHGfapI3cRFYLUEhIY+b50FhRc3T07EhFnAeHym0S5R4p9GerBg
-         A8uM8D5GQKzT8nwD2ZTRs5ViAnWTtIE+Z6RDOKzKtppjMR7cudBXk74VUxI45SI2pv8v
-         Pms9KVUNrAmPVbpeBwWxDfUbNn2hAtQfJsDKkTxy+Vc9w/BwMUWb9Ml7kDWD3q5u3rFp
-         wKmG1mcEzJEZnA9KSGIgwj865qSiQQ8DduO9b3MMDUoWsSo2djJTr0GlGNlJpt0GiIWB
-         1nPOq5bEaKGls8aQbtD1rMLv/cQms19SPzX2+eZuuE50R5Jbtz3KKaMYJSs4n0Ou5lkD
-         Pefw==
+        bh=EafivKCX2hQfKcEJXkK25XEKUwteWnq8elqSHwVOMMw=;
+        b=J5wFOZum4xROQGGIH5vT8O7NZmEu32FK1+cMX+ZIUD6WrAIA+uHMl+IboLn3cCFtr3
+         EF9PCWpbBYU+yrS2oJ4c62WexmLd8MSvi+VlcUNUx5kceiHbSqoueNKzTuLl6MjYNvCT
+         eFVOXUtoNUmQjdhFswztIFyxnETsNBYqH/eJhxioJ2K2iCNpPbjJ1XP5a0+890ZREa1M
+         w2FkHSMsiv19ikisUwoO/Lg51GjPWmkiB7e8qtAJ3TNBgM1XeFsyuJNPSjFKwDW4ZwUa
+         TuOr4AR/gZvM3TT9VFSwpgryJpdviDhuMkyNAO5WeId6VbdYywFLzGwIciPInBj/JHFE
+         461Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=LiznnBLQpdGfecYx824x6v4yFQwMLEvOZ9DPWCLLNzw=;
-        b=gf9Hzt9Rx3H2bUzFA8gx3sqWxWaEAwcDLNLvujVJw4IYVQJCV+urXx2lupuzQoHLW7
-         0/r42vGHqL15E9ucLg34RvrGjdFV4izsiYr+Mem05ekn8W/tbZ6U9DqKkPsyox23IGho
-         LtPTXccIg6xcBw6uy1CWWlyMgqQRFBf5b3cIIL/jgOLNFXQbvRu9D6izjyHLCwUTRTg7
-         QdtChFozf5b3pExZbsyfOpB8WNMxnGEV3fSzhDOyYVc+VYS/2AxTMdny2ptnmQqKreN3
-         WsxreLs0ZS5D5dXDf6Cbq/2I0IpGRAeZGyGkzkoVOor4ADSH5z0AoZ9VAEJklvN9e4tw
-         ys0g==
-X-Gm-Message-State: APjAAAVDr7owjqNsldOdbeCPar7wFRGP36VKUCp+jXSQb8RrLXOg7JFL
-	2wYLh1CR3s8WZKpx2VgfeaBtMtGdR98=
-X-Received: by 2002:a62:489d:: with SMTP id q29mr27968517pfi.119.1552222839441;
-        Sun, 10 Mar 2019 06:00:39 -0700 (PDT)
+        bh=EafivKCX2hQfKcEJXkK25XEKUwteWnq8elqSHwVOMMw=;
+        b=FO5rz3JHAYbdMJ0AchTYVuzXAsnV3I9ONcL0o9EPNzbU4RGOmFAvjPmnu9k8Se1pWb
+         sYKUNCaMPKyH9sJzDBSBlggB0s0MaaAabavaaM0Hra+uimWmreobNeWAzZTfivCyT4If
+         0ZYzh+Kki08YpiaAnSSYEaB+/SlGPCMQX1sICVltFa/xru+h5jMXC5k+BNPW1PQZq8Ma
+         V4/PBSnjHZeVQV64drT/Xt8RZO27T+6W1LS8Bgvp75va02lsrIQDb6kdtiyYs9y1Wv1A
+         3wqJadk2uvc8KY25H6BWRtvAbT0VvWcKFAcjxWliOfmvMK3CYldlv5x7k08U5I2ZRBvo
+         AmhA==
+X-Gm-Message-State: APjAAAUdG4HjWEqlWPacYM/qDo8rkY8dn+wcqvXvYaWT2OoUE48kadZB
+	xqzhv5AnY2Ten6Hlua7PmTcYGREBA2M=
+X-Received: by 2002:a63:4542:: with SMTP id u2mr22847009pgk.291.1552166654500;
+        Sat, 09 Mar 2019 13:24:14 -0800 (PST)
 Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e8d:68c7:f828:5bfa:d9dc:e4ec])
-        by smtp.gmail.com with ESMTPSA id j24sm4282243pgl.58.2019.03.10.06.00.37
+Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e8c:9ce5:f828:5bfa:d9dc:e4ec])
+        by smtp.gmail.com with ESMTPSA id g188sm2450498pfc.24.2019.03.09.13.24.12
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 10 Mar 2019 06:00:38 -0700 (PDT)
-Date: Sun, 10 Mar 2019 18:30:34 +0530
+        Sat, 09 Mar 2019 13:24:13 -0800 (PST)
+Date: Sun, 10 Mar 2019 02:54:08 +0530
 From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 2/2] staging: rtl8712: Modify coding style alignments.
-Message-ID: <20190310130034.GA25993@bhagyashri-Lenovo-G570>
+Subject: [PATCH 2/2] staging: rtl8712: Modify coding style alignments.
+Message-ID: <20190309212408.GA22063@bhagyashri-Lenovo-G570>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -89,9 +89,6 @@ Alignment should match open parenthesis"
 
 Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
 ---
-Changes in v2:
-  - Put kmalloc on the next line.
-
  drivers/staging/rtl8712/rtl8712_efuse.c       |   7 +-
  drivers/staging/rtl8712/rtl8712_efuse.h       |   2 +-
  drivers/staging/rtl8712/rtl8712_led.c         |   6 +-
@@ -111,7 +108,7 @@ Changes in v2:
  drivers/staging/rtl8712/rtl871x_pwrctrl.h     |   2 +-
  drivers/staging/rtl8712/rtl871x_recv.c        |  24 ++--
  drivers/staging/rtl8712/rtl871x_recv.h        |   4 +-
- drivers/staging/rtl8712/rtl871x_security.c    |  21 +--
+ drivers/staging/rtl8712/rtl871x_security.c    |  18 +--
  drivers/staging/rtl8712/rtl871x_sta_mgt.c     |   2 +-
  drivers/staging/rtl8712/rtl871x_xmit.c        |  60 ++++-----
  drivers/staging/rtl8712/rtl871x_xmit.h        |   4 +-
@@ -121,7 +118,7 @@ Changes in v2:
  drivers/staging/rtl8712/usb_ops.h             |   6 +-
  drivers/staging/rtl8712/usb_ops_linux.c       |  10 +-
  drivers/staging/rtl8712/xmit_osdep.h          |   8 +-
- 29 files changed, 320 insertions(+), 310 deletions(-)
+ 29 files changed, 316 insertions(+), 311 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_efuse.c b/drivers/staging/rtl8712/rtl8712_efuse.c
 index 39eb743..0b8731d 100644
@@ -198,7 +195,7 @@ index a899a93..d79ec09 100644
  			pLed->bLedBlinkInProgress = true;
  			pLed->CurrLedState = LED_TXRX_BLINK;
 diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 9e09431..a79243a 100644
+index 9aa950e..a3a0433 100644
 --- a/drivers/staging/rtl8712/rtl8712_recv.c
 +++ b/drivers/staging/rtl8712/rtl8712_recv.c
 @@ -62,13 +62,13 @@ int r8712_init_recv_priv(struct recv_priv *precvpriv, struct _adapter *padapter)
@@ -479,7 +476,7 @@ index 9be8fb7..5dc8d37 100644
  
  #endif
 diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-index 05a78ac..5531b9e 100644
+index eaae9c0..8de0a91 100644
 --- a/drivers/staging/rtl8712/rtl871x_cmd.c
 +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
 @@ -279,7 +279,7 @@ u8 r8712_set_chplan_cmd(struct _adapter *padapter, int chplan)
@@ -644,7 +641,7 @@ index 262984c..9cd644e 100644
  struct _cmd_callback {
  	u32	cmd_code;
 diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/rtl8712/rtl871x_io.c
-index 17dafef..c069de3 100644
+index e34302a..82753be0 100644
 --- a/drivers/staging/rtl8712/rtl871x_io.c
 +++ b/drivers/staging/rtl8712/rtl871x_io.c
 @@ -113,7 +113,7 @@ uint r8712_alloc_io_queue(struct _adapter *adapter)
@@ -657,7 +654,7 @@ index 17dafef..c069de3 100644
  			- ((addr_t)(pio_queue->pallocated_free_ioreqs_buf)
  			& 3);
 diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index ad9b2f7..9f275e3 100644
+index e55db92..06f198e 100644
 --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
 +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
 @@ -62,7 +62,7 @@ void r8712_indicate_wx_assoc_event(struct _adapter *padapter)
@@ -1273,7 +1270,7 @@ index 2622d5e..2a2e5d9 100644
  	psecuritypriv->PrivacyKeyIndex = keyid;
  	if (r8712_set_key(padapter, psecuritypriv, keyid) == _FAIL)
 diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index c666e03..d441bc9 100644
+index d48f3d1..9a08e85 100644
 --- a/drivers/staging/rtl8712/rtl871x_mlme.c
 +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
 @@ -59,7 +59,7 @@ static sint _init_mlme_priv(struct _adapter *padapter)
@@ -1437,7 +1434,7 @@ index c666e03..d441bc9 100644
  		pwlan->fixed = false;
 @@ -782,7 +782,7 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
  
- 			if (ptarget_wlan == NULL) {
+ 			if (!ptarget_wlan) {
  				if (check_fwstate(pmlmepriv,
 -					_FW_UNDER_LINKING))
 +						  _FW_UNDER_LINKING))
@@ -1724,7 +1721,7 @@ index 1d5364f..cf4038a 100644
  
  void r8712_SetDataRate(struct _adapter *pAdapter)
 diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-index 588346d..9f381a2 100644
+index bbef96f9f..90f5bb9 100644
 --- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
 +++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
 @@ -159,7 +159,7 @@ static int mp_start_test(struct _adapter *padapter)
@@ -1810,7 +1807,7 @@ index 11b5034..ba87bdc 100644
  
  #endif  /* __RTL871X_PWRCTRL_H_ */
 diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
-index 28f7369..1511832 100644
+index aa4e406..57e71cb 100644
 --- a/drivers/staging/rtl8712/rtl871x_recv.c
 +++ b/drivers/staging/rtl8712/rtl871x_recv.c
 @@ -74,7 +74,7 @@ sint _r8712_init_recv_priv(struct recv_priv *precvpriv,
@@ -1897,7 +1894,7 @@ index 28f7369..1511832 100644
  		 * replace EtherType
  		 */
 diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
-index f87b2ff..808dc22 100644
+index 1a56cd4..0e18ecb 100644
 --- a/drivers/staging/rtl8712/rtl871x_recv.h
 +++ b/drivers/staging/rtl8712/rtl871x_recv.h
 @@ -129,9 +129,9 @@ struct sta_recv_priv {
@@ -1913,7 +1910,7 @@ index f87b2ff..808dc22 100644
  int recv_func(struct _adapter *padapter, void *pcontext);
  
 diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
-index f826450..368038f 100644
+index a771272..fb59c92 100644
 --- a/drivers/staging/rtl8712/rtl871x_security.c
 +++ b/drivers/staging/rtl8712/rtl871x_security.c
 @@ -90,7 +90,7 @@ static u32 arcfour_byte(struct arc4context *parc4ctx)
@@ -1925,21 +1922,16 @@ index f826450..368038f 100644
  {
  	u32 i;
  
-@@ -583,8 +583,13 @@ u32 r8712_tkip_encrypt(struct _adapter *padapter, u8 *pxmitframe)
+@@ -583,7 +583,7 @@ u32 r8712_tkip_encrypt(struct _adapter *padapter, u8 *pxmitframe)
  			stainfo = pattrib->psta;
  		else
  			stainfo = r8712_get_stainfo(&padapter->stapriv,
-+<<<<<<< HEAD
- 				  &pattrib->ra[0]);
- 		if (stainfo != NULL) {
-+=======
+-				  &pattrib->ra[0]);
 +						    &pattrib->ra[0]);
-+		if (stainfo) {
-+>>>>>>> 172fbd1... staging: rtl8712: Modify coding style alignments.
+ 		if (stainfo) {
  			prwskey = &stainfo->x_UncstKey.skey[0];
  			for (curfragnum = 0; curfragnum < pattrib->nr_frags;
- 			     curfragnum++) {
-@@ -620,7 +625,7 @@ u32 r8712_tkip_encrypt(struct _adapter *padapter, u8 *pxmitframe)
+@@ -620,7 +620,7 @@ u32 r8712_tkip_encrypt(struct _adapter *padapter, u8 *pxmitframe)
  							payload, length));
  					arcfour_init(&mycontext, rc4key, 16);
  					arcfour_encrypt(&mycontext, payload,
@@ -1948,7 +1940,7 @@ index f826450..368038f 100644
  					arcfour_encrypt(&mycontext,
  							payload + length, crc,
  							4);
-@@ -678,7 +683,7 @@ u32 r8712_tkip_decrypt(struct _adapter *padapter, u8 *precvframe)
+@@ -678,7 +678,7 @@ u32 r8712_tkip_decrypt(struct _adapter *padapter, u8 *precvframe)
  			pnl = (u16)(txpn.val);
  			pnh = (u32)(txpn.val >> 16);
  			phase1((u16 *)&ttkey[0], prwskey, &prxattrib->ta[0],
@@ -1957,7 +1949,7 @@ index f826450..368038f 100644
  			phase2(&rc4key[0], prwskey, (unsigned short *)
  			       &ttkey[0], pnl);
  			/* 4 decrypt payload include icv */
-@@ -951,7 +956,7 @@ static void construct_mic_header1(u8 *mic_header1, sint header_length, u8 *mpdu)
+@@ -951,7 +951,7 @@ static void construct_mic_header1(u8 *mic_header1, sint header_length, u8 *mpdu)
  /* header fields.                               */
  /************************************************/
  static void construct_mic_header2(u8 *mic_header2, u8 *mpdu, sint a4_exists,
@@ -1966,7 +1958,7 @@ index f826450..368038f 100644
  {
  	sint i;
  
-@@ -1020,7 +1025,7 @@ static void bitwise_xor(u8 *ina, u8 *inb, u8 *out)
+@@ -1020,7 +1020,7 @@ static void bitwise_xor(u8 *ina, u8 *inb, u8 *out)
  }
  
  static sint aes_cipher(u8 *key, uint	hdrlen,
@@ -1975,7 +1967,7 @@ index f826450..368038f 100644
  {
  	uint qc_exists, a4_exists, i, j, payload_remainder;
  	uint num_blocks, payload_index;
-@@ -1054,7 +1059,7 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
+@@ -1054,7 +1054,7 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
  		a4_exists = 1;
  
  	if ((frtype == WIFI_DATA_CFACK) ||
@@ -1984,7 +1976,7 @@ index f826450..368038f 100644
  	     (frtype == WIFI_DATA_CFACKPOLL)) {
  		qc_exists = 1;
  		if (hdrlen !=  WLAN_HDR_A3_QOS_LEN)
-@@ -1163,7 +1168,7 @@ u32 r8712_aes_encrypt(struct _adapter *padapter, u8 *pxmitframe)
+@@ -1163,7 +1163,7 @@ u32 r8712_aes_encrypt(struct _adapter *padapter, u8 *pxmitframe)
  			stainfo = pattrib->psta;
  		else
  			stainfo = r8712_get_stainfo(&padapter->stapriv,
@@ -1993,7 +1985,7 @@ index f826450..368038f 100644
  		if (stainfo != NULL) {
  			prwskey = &stainfo->x_UncstKey.skey[0];
  			for (curfragnum = 0; curfragnum < pattrib->nr_frags;
-@@ -1194,7 +1199,7 @@ u32 r8712_aes_encrypt(struct _adapter *padapter, u8 *pxmitframe)
+@@ -1194,7 +1194,7 @@ u32 r8712_aes_encrypt(struct _adapter *padapter, u8 *pxmitframe)
  }
  
  static sint aes_decipher(u8 *key, uint	hdrlen,
@@ -2003,7 +1995,7 @@ index f826450..368038f 100644
  	static u8 message[MAX_MSG_SIZE];
  	uint qc_exists, a4_exists, i, j, payload_remainder;
 diff --git a/drivers/staging/rtl8712/rtl871x_sta_mgt.c b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
-index 7c30b9e..80dbc35 100644
+index f1439a7..96fd7b0 100644
 --- a/drivers/staging/rtl8712/rtl871x_sta_mgt.c
 +++ b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
 @@ -122,7 +122,7 @@ struct sta_info *r8712_alloc_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
@@ -2016,7 +2008,7 @@ index 7c30b9e..80dbc35 100644
  		for (i = 0; i < 16; i++) {
  			preorder_ctrl = &psta->recvreorder_ctrl[i];
 diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
-index f6fe8ea..fbe0eee 100644
+index 4060c55..8e53525 100644
 --- a/drivers/staging/rtl8712/rtl871x_xmit.c
 +++ b/drivers/staging/rtl8712/rtl871x_xmit.c
 @@ -39,7 +39,7 @@ static void _init_txservq(struct tx_servq *ptxservq)
@@ -2198,7 +2190,7 @@ index f6fe8ea..fbe0eee 100644
 -		      struct xmit_frame *pxmitframe)
 +			     struct xmit_frame *pxmitframe)
  {
- 	if (pxmitframe == NULL)
+ 	if (!pxmitframe)
  		return;
 @@ -913,7 +913,7 @@ sint r8712_xmit_classifier(struct _adapter *padapter,
  		} else {
@@ -2210,7 +2202,7 @@ index f6fe8ea..fbe0eee 100644
  				psta = r8712_get_stainfo(pstapriv, pattrib->ra);
  		}
 @@ -921,7 +921,7 @@ sint r8712_xmit_classifier(struct _adapter *padapter,
- 	if (psta == NULL)
+ 	if (!psta)
  		return _FAIL;
  	ptxservq = get_sta_pending(padapter, &pstapending,
 -		   psta, pattrib->priority);
@@ -2272,7 +2264,7 @@ index 02e73c2..fc5afdf 100644
  		precvbuf++;
  		precvpriv->free_recv_buf_queue_cnt--;
 diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-index 7478bbd..1b8a7b0 100644
+index 91382c2..8c1feea 100644
 --- a/drivers/staging/rtl8712/usb_intf.c
 +++ b/drivers/staging/rtl8712/usb_intf.c
 @@ -441,7 +441,7 @@ static int r871xu_drv_init(struct usb_interface *pusb_intf,
