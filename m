@@ -1,305 +1,139 @@
-X-GM-THRID: 6391540020415561728
-X-Received: by 10.223.178.212 with SMTP id g78mr335115wrd.15.1488146376539;
-        Sun, 26 Feb 2017 13:59:36 -0800 (PST)
+X-GM-THRID: 6666325868481085440
+X-Received: by 2002:a50:97a6:: with SMTP id e35mr6186953edb.4.1552138450783;
+        Sat, 09 Mar 2019 05:34:10 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.1.93 with SMTP id 90ls366907ljb.13.gmail; Sun, 26 Feb 2017
- 13:59:36 -0800 (PST)
-X-Received: by 10.25.18.219 with SMTP id 88mr1567509lfs.29.1488146376059;
-        Sun, 26 Feb 2017 13:59:36 -0800 (PST)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id v70si688249wmf.0.2017.02.26.13.59.36
+Received: by 2002:a17:906:6a98:: with SMTP id p24ls2416652ejr.7.gmail; Sat, 09
+ Mar 2019 05:34:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyAYDiA5QLfZ1QwSdf+qfqUD+H+kxJ3nl//Asw3jy6FM7JoZVlQc1ZtjsnHWcmg9IA370Vk
+X-Received: by 2002:a17:906:938b:: with SMTP id l11mr2736809ejx.8.1552138450078;
+        Sat, 09 Mar 2019 05:34:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552138450; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xs2HhviklrWD8lja/MR0Mu0X5Yc0o3hdugIDBGgN+0Ysa1Os25pbZJFCWGxiL/7qXA
+         hazbJoY1AZAe96pxLfbhSzRVKRarX4qBdP9ztXT2lArO80WjdIaiPs/zHOaDKHQSDWTj
+         ZyPzNAzEBIMMxYlNzs2WtpecTI1YRJhy5YktRjDkCQfpCc/LJh6nxC6of27K+zZ/0fz/
+         7ZV5Q/1tUQ2+y9ovcEiNMckRbqeF/nyZ6AfeD7sjxEzHxV4/0bCRi/oyRT4Vcc2b4VSk
+         1DgE3w3pR3Etn80qjSA92da1gFiHKdPAookG5eFhtx5KgLniWZEhV/zBloJ6dnw+r0y1
+         /qUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=/YU8AmVgkWOlwSCibHDNpErPrWJzmdsLxb5hf8byhUk=;
+        b=lfTN50gRWiTKUZ0O8Hb7/oXzWYmj6p9AdgYPLWKWtKnH1qV9Ck4lGY/5jfWVUnn8Pt
+         cSZcfe3V84DBTJ1Km2S6t1B9oJ+TiLk/pL2jSWFKA6YsQkLsgHW1vN8ShIdEnf1vahWs
+         um0Qd18Q4C/2sMGiZirg6+bZ278wo3rjQzaPEYXwP+YYRdBVGjZbFhnu4Kkkc21Ufmw4
+         vgeIDsKlWgfKUkkF/tZxbjFtpAyhOxxCoPTjFTc3iiGSC0gPAZH0bn7wJvg/IzTJ2oWb
+         5d3cdzldgFSJePkQUXgv9TU9k0wejIwCFZkb2ryjcf3SHjfFnLthKrIiyGTlBGWnn83F
+         zQhQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id h5si533365ejq.0.2019.03.09.05.34.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 13:59:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Sat, 09 Mar 2019 05:34:10 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of narcisaanamaria12@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=narcisaanamaria12@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id v77so10823207wmv.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 13:59:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=E9wRooDU7XHuDK6wqXe5FDxX+3JRd6nu6sOVyIcirfY=;
-        b=I169WU+oL7/vDARUY1ZUYeXgOKpzCwmAGNAEk3rY1Q9U686tR0zY5igTZpWRZeBdTi
-         obO4Cnpv0X/oQ0kDkcpNY112hZP1dVBJGm/MoueBJliiACqpkSJzbcrNz5MtBEt9GRDr
-         PC2mPwMjn+bhS3WSWZGYyPbFKwe53XNTi41eVUEwam/qa2H38tLnkro3RvdtaDX3cK18
-         /tDicYID//JoqwY+mtl8jUyMNRO/+7K5oGyENiPGDptNtM7Mpq4gmBJY3X1ioSiSzoGr
-         BJhCBZxM7jFIq30AaMooPIvUyHK0i9AER0D3G+gT3bVKHTjW7jfOfaxucQuBj/1QcJUo
-         8RDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=E9wRooDU7XHuDK6wqXe5FDxX+3JRd6nu6sOVyIcirfY=;
-        b=HvEiIWH+Q43hREz3GzOENKHmmpG9Y2+coRUiSdnFaBQNtV/e4ag7jwhNV5Tc7M6ugE
-         qhElQfKIOz4Gk7lpxXYcOcBMd4CFtNpiiMEgloU59D5Xxx9yXZYI7QxFOhoBwrj+iO8E
-         zw716dbb5p1pwzrglcOfYGCgt5KHXsdiQulWIlZxaXiZ2ZpiS5Dtdf7G3sfQTW3e/Eft
-         ej/phRMyppehjW1158p/EqSwqteIGmuwQna2/Hw3rEbDt/rCO5rnuAmnC1LcRTWna+xK
-         3MMEz9AyfcnMnyjVIesuvUEVoUG6UF9vNZjs2qK7N/QRscNPkmzYXDluQQLXlQxAKF2S
-         j5Pw==
-X-Gm-Message-State: AMke39nesPG7NcEJCEJTt653Jp6PqNcNzYtkFYEhk9W5NH3Jgi+2sAgOaEZCn148hlOPoQ==
-X-Received: by 10.28.96.194 with SMTP id u185mr10420522wmb.82.1488146375732;
-        Sun, 26 Feb 2017 13:59:35 -0800 (PST)
-Return-Path: <narcisaanamaria12@gmail.com>
-Received: from localhost.localdomain ([109.166.128.3])
-        by smtp.gmail.com with ESMTPSA id n13sm19605161wrn.40.2017.02.26.13.59.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Feb 2017 13:59:35 -0800 (PST)
-From: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-To: lars@metafoo.de,
-	Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	knaack.h@gmx.de,
-	pmeerw@pmeerw.net,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	linux-iio@vger.kernel.org,
-	Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
-Subject: [PATCH] staging: iio: ad9834: Moved contents of header file to source file
-Date: Sun, 26 Feb 2017 23:59:21 +0200
-Message-Id: <1488146361-14383-1-git-send-email-narcisaanamaria12@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,459,1544482800"; 
+   d="scan'208";a="372631079"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Mar 2019 14:34:09 +0100
+Date: Sat, 9 Mar 2019 14:34:09 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Himadri Pandya <himadri18.07@gmail.com>
+cc: adham.abozaeid@microchip.com, ajay.kathat@microchip.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: wilc1000: remove unnecessary
+ variable result
+In-Reply-To: <20190309101610.39595-1-himadri18.07@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903091433360.2452@hadrien>
+References: <20190309094840.38154-1-himadri18.07@gmail.com> <20190309101610.39595-1-himadri18.07@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-The contents of the header file are used only by this single source file
 
-Signed-off-by: Narcisa Ana Maria Vasile <narcisaanamaria12@gmail.com>
----
- drivers/staging/iio/frequency/ad9834.c | 100 ++++++++++++++++++++++++++++-
- drivers/staging/iio/frequency/ad9834.h | 111 ---------------------------------
- 2 files changed, 99 insertions(+), 112 deletions(-)
- delete mode 100644 drivers/staging/iio/frequency/ad9834.h
 
-diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
-index 19216af..931feb2 100644
---- a/drivers/staging/iio/frequency/ad9834.c
-+++ b/drivers/staging/iio/frequency/ad9834.c
-@@ -23,7 +23,105 @@
- #include <linux/iio/sysfs.h>
- #include "dds.h"
- 
--#include "ad9834.h"
-+/* Registers */
-+
-+#define AD9834_REG_CMD		0
-+#define AD9834_REG_FREQ0	BIT(14)
-+#define AD9834_REG_FREQ1	BIT(15)
-+#define AD9834_REG_PHASE0	(BIT(15) | BIT(14))
-+#define AD9834_REG_PHASE1	(BIT(15) | BIT(14) | BIT(13))
-+
-+/* Command Control Bits */
-+
-+#define AD9834_B28		BIT(13)
-+#define AD9834_HLB		BIT(12)
-+#define AD9834_FSEL		BIT(11)
-+#define AD9834_PSEL		BIT(10)
-+#define AD9834_PIN_SW		BIT(9)
-+#define AD9834_RESET		BIT(8)
-+#define AD9834_SLEEP1		BIT(7)
-+#define AD9834_SLEEP12		BIT(6)
-+#define AD9834_OPBITEN		BIT(5)
-+#define AD9834_SIGN_PIB		BIT(4)
-+#define AD9834_DIV2		BIT(3)
-+#define AD9834_MODE		BIT(1)
-+
-+#define AD9834_FREQ_BITS	28
-+#define AD9834_PHASE_BITS	12
-+
-+#define RES_MASK(bits)	(BIT(bits) - 1)
-+
-+/**
-+ * struct ad9834_state - driver instance specific data
-+ * @spi:		spi_device
-+ * @reg:		supply regulator
-+ * @mclk:		external master clock
-+ * @control:		cached control word
-+ * @xfer:		default spi transfer
-+ * @msg:		default spi message
-+ * @freq_xfer:		tuning word spi transfer
-+ * @freq_msg:		tuning word spi message
-+ * @data:		spi transmit buffer
-+ * @freq_data:		tuning word spi transmit buffer
-+ */
-+
-+struct ad9834_state {
-+	struct spi_device		*spi;
-+	struct regulator		*reg;
-+	unsigned int			mclk;
-+	unsigned short			control;
-+	unsigned short			devid;
-+	struct spi_transfer		xfer;
-+	struct spi_message		msg;
-+	struct spi_transfer		freq_xfer[2];
-+	struct spi_message		freq_msg;
-+
-+	/*
-+	 * DMA (thus cache coherency maintenance) requires the
-+	 * transfer buffers to live in their own cache lines.
-+	 */
-+	__be16				data ____cacheline_aligned;
-+	__be16				freq_data[2];
-+};
-+
-+/*
-+ * TODO: struct ad7887_platform_data needs to go into include/linux/iio
-+ */
-+
-+/**
-+ * struct ad9834_platform_data - platform specific information
-+ * @mclk:		master clock in Hz
-+ * @freq0:		power up freq0 tuning word in Hz
-+ * @freq1:		power up freq1 tuning word in Hz
-+ * @phase0:		power up phase0 value [0..4095] correlates with 0..2PI
-+ * @phase1:		power up phase1 value [0..4095] correlates with 0..2PI
-+ * @en_div2:		digital output/2 is passed to the SIGN BIT OUT pin
-+ * @en_signbit_msb_out:	the MSB (or MSB/2) of the DAC data is connected to the
-+ *			SIGN BIT OUT pin. en_div2 controls whether it is the MSB
-+ *			or MSB/2 that is output. if en_signbit_msb_out=false,
-+ *			the on-board comparator is connected to SIGN BIT OUT
-+ */
-+
-+struct ad9834_platform_data {
-+	unsigned int		mclk;
-+	unsigned int		freq0;
-+	unsigned int		freq1;
-+	unsigned short		phase0;
-+	unsigned short		phase1;
-+	bool			en_div2;
-+	bool			en_signbit_msb_out;
-+};
-+
-+/**
-+ * ad9834_supported_device_ids:
-+ */
-+
-+enum ad9834_supported_device_ids {
-+	ID_AD9833,
-+	ID_AD9834,
-+	ID_AD9837,
-+	ID_AD9838,
-+};
- 
- static unsigned int ad9834_calc_freqreg(unsigned long mclk, unsigned long fout)
- {
-diff --git a/drivers/staging/iio/frequency/ad9834.h b/drivers/staging/iio/frequency/ad9834.h
-deleted file mode 100644
-index 40fdd5d..0000000
---- a/drivers/staging/iio/frequency/ad9834.h
-+++ /dev/null
-@@ -1,111 +0,0 @@
--/*
-- * AD9833/AD9834/AD9837/AD9838 SPI DDS driver
-- *
-- * Copyright 2010-2011 Analog Devices Inc.
-- *
-- * Licensed under the GPL-2.
-- */
--#ifndef IIO_DDS_AD9834_H_
--#define IIO_DDS_AD9834_H_
--
--/* Registers */
--
--#define AD9834_REG_CMD		0
--#define AD9834_REG_FREQ0	BIT(14)
--#define AD9834_REG_FREQ1	BIT(15)
--#define AD9834_REG_PHASE0	(BIT(15) | BIT(14))
--#define AD9834_REG_PHASE1	(BIT(15) | BIT(14) | BIT(13))
--
--/* Command Control Bits */
--
--#define AD9834_B28		BIT(13)
--#define AD9834_HLB		BIT(12)
--#define AD9834_FSEL		BIT(11)
--#define AD9834_PSEL		BIT(10)
--#define AD9834_PIN_SW		BIT(9)
--#define AD9834_RESET		BIT(8)
--#define AD9834_SLEEP1		BIT(7)
--#define AD9834_SLEEP12		BIT(6)
--#define AD9834_OPBITEN		BIT(5)
--#define AD9834_SIGN_PIB		BIT(4)
--#define AD9834_DIV2		BIT(3)
--#define AD9834_MODE		BIT(1)
--
--#define AD9834_FREQ_BITS	28
--#define AD9834_PHASE_BITS	12
--
--#define RES_MASK(bits)	(BIT(bits) - 1)
--
--/**
-- * struct ad9834_state - driver instance specific data
-- * @spi:		spi_device
-- * @reg:		supply regulator
-- * @mclk:		external master clock
-- * @control:		cached control word
-- * @xfer:		default spi transfer
-- * @msg:		default spi message
-- * @freq_xfer:		tuning word spi transfer
-- * @freq_msg:		tuning word spi message
-- * @data:		spi transmit buffer
-- * @freq_data:		tuning word spi transmit buffer
-- */
--
--struct ad9834_state {
--	struct spi_device		*spi;
--	struct regulator		*reg;
--	unsigned int			mclk;
--	unsigned short			control;
--	unsigned short			devid;
--	struct spi_transfer		xfer;
--	struct spi_message		msg;
--	struct spi_transfer		freq_xfer[2];
--	struct spi_message		freq_msg;
--
--	/*
--	 * DMA (thus cache coherency maintenance) requires the
--	 * transfer buffers to live in their own cache lines.
--	 */
--	__be16				data ____cacheline_aligned;
--	__be16				freq_data[2];
--};
--
--/*
-- * TODO: struct ad7887_platform_data needs to go into include/linux/iio
-- */
--
--/**
-- * struct ad9834_platform_data - platform specific information
-- * @mclk:		master clock in Hz
-- * @freq0:		power up freq0 tuning word in Hz
-- * @freq1:		power up freq1 tuning word in Hz
-- * @phase0:		power up phase0 value [0..4095] correlates with 0..2PI
-- * @phase1:		power up phase1 value [0..4095] correlates with 0..2PI
-- * @en_div2:		digital output/2 is passed to the SIGN BIT OUT pin
-- * @en_signbit_msb_out:	the MSB (or MSB/2) of the DAC data is connected to the
-- *			SIGN BIT OUT pin. en_div2 controls whether it is the MSB
-- *			or MSB/2 that is output. if en_signbit_msb_out=false,
-- *			the on-board comparator is connected to SIGN BIT OUT
-- */
--
--struct ad9834_platform_data {
--	unsigned int		mclk;
--	unsigned int		freq0;
--	unsigned int		freq1;
--	unsigned short		phase0;
--	unsigned short		phase1;
--	bool			en_div2;
--	bool			en_signbit_msb_out;
--};
--
--/**
-- * ad9834_supported_device_ids:
-- */
--
--enum ad9834_supported_device_ids {
--	ID_AD9833,
--	ID_AD9834,
--	ID_AD9837,
--	ID_AD9838,
--};
--
--#endif /* IIO_DDS_AD9834_H_ */
--- 
-1.9.1
+On Sat, 9 Mar 2019, Himadri Pandya wrote:
 
+> Remove unnecessary local variable "result" and its assignments from
+> function wilc_set_pmkid_info. Suggested by Coccinelle.
+>
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+> Changes in V2:
+> 	- Arrange the function arguments to the right of "(" in function
+> call in the return statement
+>
+> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+> index 4dd9a20f6a0b..fa0e1bd9f836 100644
+> --- a/drivers/staging/wilc1000/host_interface.c
+> +++ b/drivers/staging/wilc1000/host_interface.c
+> @@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
+>  int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
+>  {
+>  	struct wid wid;
+> -	int result;
+>
+>  	wid.id = WID_PMKID_INFO;
+>  	wid.type = WID_STR;
+>  	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
+>  	wid.val = (u8 *)pmkid;
+>
+> -	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> -				      wilc_get_vif_idx(vif));
+> +	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> +				    wilc_get_vif_idx(vif));
+>
+> -	return result;
+
+The argument alignment looks fine.  But you have left an empty blank line
+at the end of the function.
+
+julia
+
+>  }
+>
+>  int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+> ---
+>  drivers/staging/wilc1000/host_interface.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+> index 4dd9a20f6a0b..fa0e1bd9f836 100644
+> --- a/drivers/staging/wilc1000/host_interface.c
+> +++ b/drivers/staging/wilc1000/host_interface.c
+> @@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
+>  int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
+>  {
+>  	struct wid wid;
+> -	int result;
+>
+>  	wid.id = WID_PMKID_INFO;
+>  	wid.type = WID_STR;
+>  	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
+>  	wid.val = (u8 *)pmkid;
+>
+> -	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> -				      wilc_get_vif_idx(vif));
+> +	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> +				    wilc_get_vif_idx(vif));
+>
+> -	return result;
+>  }
+>
+>  int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190309101610.39595-1-himadri18.07%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
