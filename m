@@ -1,102 +1,109 @@
 X-GM-THRID: 6666518955761336320
-X-Received: by 2002:a25:911:: with SMTP id 17mr7917403ybj.67.1552345015819;
-        Mon, 11 Mar 2019 15:56:55 -0700 (PDT)
+X-Received: by 2002:a50:ba2b:: with SMTP id g40mr6306710edc.1.1552169899604;
+        Sat, 09 Mar 2019 14:18:19 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:b245:: with SMTP id q66ls7668019ywh.10.gmail; Mon, 11
- Mar 2019 15:56:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1iDy7BfCCe93+Qpo5V7D45Y4aEfR+eBrcgIsB/yTVIGtfpENJ2FcnmUI4wbj74jBzChm5
-X-Received: by 2002:a81:8546:: with SMTP id v67mr15654608ywf.1.1552345015025;
-        Mon, 11 Mar 2019 15:56:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552345015; cv=none;
+Received: by 2002:a17:906:355a:: with SMTP id s26ls2088075eja.0.gmail; Sat, 09
+ Mar 2019 14:18:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqypTLZHFoy6kDUE7vm+KrB9cPOLL/MlmvyLL+EcMqUpYzj6pqEb4yypJtraSWtk5SPrFn+F
+X-Received: by 2002:a17:906:9701:: with SMTP id k1mr2864980ejx.13.1552169898751;
+        Sat, 09 Mar 2019 14:18:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552169898; cv=none;
         d=google.com; s=arc-20160816;
-        b=iErFwkvB0usu8BsqFLeo9GNAjf3YFQ0X7Keqx8oKrKwpPr60wqajmzF+Yms6fM12OU
-         noIMBQbPfJXqvsFiGtnKfJSbdNGuZwpLEmCauM9SlrM9foW3ipbQqBOWjcGVNe4uIQuZ
-         j83J3GsrLAwiW4go9qRbhz/y+4Agd2MuEcMcYE+iHdCt0GxO7IFvapgmfoA4hZ+F9Ric
-         g7UEtqWQo0DYP+YVTz9VNeY38MujVdeu2O3IFtvrHj2gX5ou5f+dLLHD/CZyGCrlaO8N
-         5pt3ypL16LvPXesIE5QTsX1r5NC0NYEausxN6cUVncCbZsDcz05oN8dYJIQQnEKa8Y4U
-         n2pw==
+        b=ACsTJi7d/zzLyACy2QxejGIPiFOn42B7XC4mm9ZaFPYDx1Ld1yLkn0hCB6RjsbYEPL
+         GBqX8jaD7cJZ9MOLuCFc8f+fMBQBJAHLZ0W3Rl6oJr3umI0DOki+RnsvJvp69JdCNQES
+         OgJM1WiZyhr1JNroa1P0TGJWgXpjvwtDIRCBcE5mexiSy7naqIttF+go9yanswlDc0K3
+         +6t1/Iy9PgP+VdR6rwvRpd+s6adRhKMbx4TdG7Q1CAYsCukzjgSqaa9mFC5BWEJMeV+q
+         4Hp2MkA/kudxntYFkoKp3YQKVRr2BhETzsMoT+8+a3VkmwFj/p2i6/3DPRsqVwk5SHeI
+         AWBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=VMeyD+zQULsZKBUSn9Ng0Wml+YRtNS6xBW7RqHEpGtE=;
-        b=oT5T7uk2QBXX7jHjmRgKb5WJIbfmc0KPV0rEkmo96yDZT+1l+43F7YvcsRpm421wx1
-         KJk4F6SscXur9zXDvyxe104MrdAHjZZLgsnsCCECm3nSlqMY5DXn6z1D66HxNfkES4FA
-         EPpV4+URpMs3C5KI+adB934mFV5eVDxbmhXLx0rL/qCrkhhWpIsS0EhcREGWuwbDVugJ
-         SHAb6wCpldx6yR5nlxnB+o03KtmDxGjKN7zaQ57UpAJzE5nM32n3Nvgvo2P4a8EU9XkI
-         APaBdLl21Ewyp8NlmnP8yEtUwzfDVXVJWKX2QcN6/R92g0tZhfoslZ/gHyz6M9b4ZmoE
-         eXag==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=8ApxoGMvhJB3ZwzwfUWFWIiNHT+PYkJPlxSRt9lW8f4=;
+        b=0wVBPD/F4C6FPRkU4PO6lD9copAF5knLoEFoXJo/eqOXd7Kyz3TIn8gZSmgtEbd/sq
+         lGQrZV2pMZy458GiE9O//Bb67iDSNyPFkUeREKdlnbhDrgAMK8CRkGBzd4rCHsa8Rr5/
+         W5yjD5A85ge0/47RyHwMI0+JByJ3KGwv47sg4+RKk+FAptCV9D2IRhRzXAuumzQUxIYO
+         +09+Rhvq5+x02IQzkfz/56CeTswZHa4YeiQakKd60cm4WDSLdrZ+jvBmq2YMm6DbuEEZ
+         BQYM0mZ7FEgrzyJmIQiVaQ0RC3Gqqakt4qNnBuQ7brFjvoXllNHJhk95Br3BeChptSIq
+         cSyw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=l9WSnVTz;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id e23si307854ybb.1.2019.03.11.15.56.54
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WvC4z6e4;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id i16si622199ede.0.2019.03.09.14.18.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 15:56:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sat, 09 Mar 2019 14:18:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=l9WSnVTz;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [104.133.8.98])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id E514A2087C;
-	Mon, 11 Mar 2019 22:56:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552345014;
-	bh=ft2TeJN893FFwDTI+rT350NEvQfQo1SphldkpFcb1TQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l9WSnVTzXja1tfybzVwe3IaWit4UoUHtUqMvlwDHc1qx2xEWzZhoGT8jMDFk0PD2n
-	 oAIJekrhYTOHQTcnhbAgUf1fao/uNf1D4/XWTi6xf6dpu0SgkerwjCmYOS3KxEJBzs
-	 V7ib0aqRUOZXeeg99c31PbbQ6maZPWawQvYT3BuE=
-Date: Mon, 11 Mar 2019 15:56:53 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jules Irenge <jbi.octave@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WvC4z6e4;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x443.google.com with SMTP id w6so1136947wrs.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 14:18:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=8ApxoGMvhJB3ZwzwfUWFWIiNHT+PYkJPlxSRt9lW8f4=;
+        b=WvC4z6e4GR/6a5w8nWereERTB0ICT0xpzJqaeu1NChbgC1oTR/NEh0W/6XPyHQIfcU
+         UJKi+6HEkejTnYgufMJd8mfip7XM2dlNX/fDuLTKZozywLqV5CpeAvvC0g6A2mdds65e
+         ubdUNMVnkPgtfNxvTJGePH9UdlWbDQo7lQF4yjHU/qWv3HduG4H7lces1dh5v7PoL7mw
+         HCrP/TjxRaR+jUXipZ/Ysjt5UUeCsmrO62K9dHc+zcJYFWOViPRf78HJ/Qy8v41/WptL
+         LyCCdmk7s5Cd+vVoCbVUy9dCPnSsCNRpV1VfPC4CG1CDU0x2Nqdroy16LenoI3fnDhO2
+         8Ccw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=8ApxoGMvhJB3ZwzwfUWFWIiNHT+PYkJPlxSRt9lW8f4=;
+        b=SvN5WpaNpAOZsh4zqEeuyHpYtaVaWQMZ3R/XR0898HD+2NuSjQ5x4WLuQilxuZVZKD
+         712Yv8ZZmCZzIcuAHJe7KqUKtMJYv5UEqSLH3zYWDK80bdnt955rrqDRME3p7CtRzomx
+         r59GySpjSF74ZBKuxRASCpPS2yojpHXhBLZGUhLXE1Zb3uCRYNErGbhC2N6KCYZUILJ6
+         KgmllnYGnHPOOw8zNOH4zzzjrM1EddgcLQ0KdJg9McVnEnUG+ShZU5zEQNsoNmtgsW11
+         vMs+LtXWRiyLc12oW8KKRAxXEa75KMkNhbCEoIZ1V0DVXDhRKWXQIQjWEy5pcDqs7WDs
+         UTbg==
+X-Gm-Message-State: APjAAAV8985UCtFwWhvlN+HiwXAfZn6T5I5hCY13giACJ+ZCDw/61Yga
+	v5H0cNVP0Dd6PqvJJQEMGA==
+X-Received: by 2002:a5d:40c5:: with SMTP id b5mr15781781wrq.107.1552169898088;
+        Sat, 09 Mar 2019 14:18:18 -0800 (PST)
+Return-Path: <jbi.octave@gmail.com>
+Received: from localhost.localdomain (host86-151-41-196.range86-151.btcentralplus.com. [86.151.41.196])
+        by smtp.gmail.com with ESMTPSA id j1sm6792662wme.4.2019.03.09.14.18.17
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 09 Mar 2019 14:18:17 -0800 (PST)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Fix spinlock_t definition without comment warning
-Message-ID: <20190311225653.GA1008@kroah.com>
-References: <20190309221810.25936-1-jbi.octave@gmail.com>
+Subject: [PATCH] Fix spinlock_t definition without comment warning
+Date: Sat,  9 Mar 2019 22:18:10 +0000
+Message-Id: <20190309221810.25936-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190309221810.25936-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Content-Transfer-Encoding: 8bit
 
-On Sat, Mar 09, 2019 at 10:18:10PM +0000, Jules Irenge wrote:
-> Fix checkpatch issue: "CHECK: spinlock_t definition without comment".
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/gdm724x/gdm_mux.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/gdm724x/gdm_mux.h b/drivers/staging/gdm724x/gdm_mux.h
-> index 51c22e3d8aeb..f1169d7e10c1 100644
-> --- a/drivers/staging/gdm724x/gdm_mux.h
-> +++ b/drivers/staging/gdm724x/gdm_mux.h
-> @@ -60,7 +60,7 @@ struct rx_cxt {
->  	struct list_head to_host_list;
->  	struct list_head rx_submit_list;
->  	struct list_head rx_free_list;
-> -	spinlock_t to_host_lock;
-> +	spinlock_t to_host_lock; /* spinlock for to_host command handling */
+Fix checkpatch issue: "CHECK: spinlock_t definition without comment".
 
-Are you sure about this?  Please document why this is true somehow in
-the changelog text so we feel good about it :)
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/gdm724x/gdm_mux.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also, the subject: needs to be fixed up to show the subsystem (staging),
-and the driver name.  See the other patches on the mailing list for the
-proper format.
+diff --git a/drivers/staging/gdm724x/gdm_mux.h b/drivers/staging/gdm724x/gdm_mux.h
+index 51c22e3d8aeb..f1169d7e10c1 100644
+--- a/drivers/staging/gdm724x/gdm_mux.h
++++ b/drivers/staging/gdm724x/gdm_mux.h
+@@ -60,7 +60,7 @@ struct rx_cxt {
+ 	struct list_head to_host_list;
+ 	struct list_head rx_submit_list;
+ 	struct list_head rx_free_list;
+-	spinlock_t to_host_lock;
++	spinlock_t to_host_lock; /* spinlock for to_host command handling */
+ 	spinlock_t submit_list_lock;
+ 	spinlock_t free_list_lock;
+ };
+-- 
+2.20.1
 
-thanks,
-
-greg k-h
-
->  	spinlock_t submit_list_lock;
->  	spinlock_t free_list_lock;
->  };
-> -- 
-> 2.20.1
-> 
 
