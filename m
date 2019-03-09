@@ -1,112 +1,120 @@
 X-GM-THRID: 6666446662964084736
-X-Received: by 2002:a17:906:1d16:: with SMTP id n22mr2808627ejh.14.1552153441691;
-        Sat, 09 Mar 2019 09:44:01 -0800 (PST)
+X-Received: by 2002:a1f:a70a:: with SMTP id q10mr2065800vke.17.1552153067307;
+        Sat, 09 Mar 2019 09:37:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:9868:: with SMTP id h37ls3151355edb.3.gmail; Sat, 09 Mar
- 2019 09:44:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzXVnCVolaC3Phkacxmwt+LA/W4AJM0Xas4qGG443uKVnf0JnezMfHZiTrCgGW56kchyR4T
-X-Received: by 2002:a50:97a6:: with SMTP id e35mr6260264edb.4.1552153440977;
-        Sat, 09 Mar 2019 09:44:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552153440; cv=none;
+Received: by 2002:a67:7e57:: with SMTP id z84ls2802677vsc.2.gmail; Sat, 09 Mar
+ 2019 09:37:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxTtWk6fHPlwBQaYCEz4SEb7ty9yddKV21bfbBsrAmD04kziVInXbTnJYW5tHxlIpjKo6Yp
+X-Received: by 2002:a67:e10c:: with SMTP id d12mr16051526vsl.22.1552153066718;
+        Sat, 09 Mar 2019 09:37:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552153066; cv=none;
         d=google.com; s=arc-20160816;
-        b=heXyGcqxKF3KZR6WB6RsViV9CvVvIQtJegpmy9+sAyxbay3+Zw8ZzsOrQEUY9scfNT
-         1gcmsz+5Dc66P5ia/swPBbAvKPLp/y6jx3KdU9W1xW7/4UxL23YBKN1U4Msq28mZYDSR
-         YfOOoIq2RIqAD4CDuWG0wsOUCQ8i6VayZa/GjDB1WicQzB1SFa9lu9mpg5OkFLyJFKGx
-         u8Ei2RfAmCvVQbUOiibGyzOzqTKSub8mRdEGwN0ScxXs0MZvamlzaRUgiaEZz/XT7HXk
-         lHfzlCCZ3TCmrDjB8Az8zk3YqNv5vnk15PB0qYEOFjaaqktxvirOzZDN/RnthCu10EvL
-         ADlw==
+        b=F+lyILxqMJ/3KLyW+BMoZ/Rr8H/stMxUiMQ5hYuDtn4tmTFJKUZk5YNJqzs9BVhs55
+         ikOhrYE4Uhe8jrQhxqDZ8xWa2PKhX7+jnRkzTdBhaS1pxM8PNM78UxWD6JrdDOXrj1SA
+         VJQlNQobmufRMLqDRQbIfd4ikBOflwo52cC1tSRwXGZTnlQLScqj4DFu9sLzFOGpvfqn
+         2VjUpdeCcHnL70atLCaS6vRVkI4wjCaIcVZ7ILBhaIryug6UoLXWlrw+gO/taO89Zcgj
+         6LCqMg5LWl9inbrTrrgAUGwsLDY5X05xNTXQXk+DyUPdz+NjY7kTgZPH1vIKhPjH9pxZ
+         Eq4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=eCPc9EOYkLD+0zuQWYVgKlKb+KmbK8G88hjm3IzKCWY=;
-        b=gzDx5l3Q9sr6xRXP1cifkUM2fEDdWDiZxwvbvNpZAwFB7FfJaWtdDaaY06D2SuEUyG
-         6JKMC6TcGANlXHKVPJmXjpZx1U7PP3s/U523u9lP2t3rcAsS1CnOW8p8Yleg2dbzfa8a
-         0fTAe83YWFxm624UqiXAk2UJ+YgKqrfmUhu9ijfyONC61Kn181/Nrsd1GNAFBQKPL5M3
-         kz/BggYIizI90mTBrlqU7zPxTdJJYmdP8HKNzmjUmoF4F2zkKwuQhFBklO8BcwmE74NQ
-         zJWOnGl4Bk3JauDkLvi0q/rcqii8K5YLEIYqVYgeJLbMfeDOyf1S2z1PISML7hX8Knq0
-         naLw==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=mOlCD+m7TwuoBmKQ1bLhska6mhj8UOKBvlMBdiyOKsU=;
+        b=bJyM6XJMxzP4EFuaRbljdAB5eb75o6ry4CZbUsDYOtT+b3NPjBXX9Q8HgPUvJ/5m/8
+         0MjaG5Lf5gzpunp0RnTQjqqahZFXSno0c/VTyftV4EBEP71i/MfRMOEeSUDyezhW93mh
+         vcD3K9W3f4qc8F9B/82iQutEqOH4GO5oEKKYFcjwdx4opZeD+8AIDP2Qa0sOCOXUzfF5
+         kOVf+w3oS3By6nxFx1lxb6x4P4DDo9VJUJx1nbSuiuDftsJQNymuQitbEZIErQPY8+tI
+         kCdJFcPEvACOQIhv4Yfi0KMj738b8VnNKf+LwxP6H5wLi5ZGdI2+NPUdspMMSfZiqX29
+         /dnw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id q1si448220edd.5.2019.03.09.09.44.00
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZIRs9VPr;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himadri18.07@gmail.com>
+Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com. [2607:f8b0:4864:20::429])
+        by gmr-mx.google.com with ESMTPS id k19si46398vsm.0.2019.03.09.09.37.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 09:44:00 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 09 Mar 2019 09:37:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) client-ip=2607:f8b0:4864:20::429;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,460,1544482800"; 
-   d="scan'208";a="372642793"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Mar 2019 18:44:00 +0100
-Date: Sat, 9 Mar 2019 18:44:00 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Himadri Pandya <himadri18.07@gmail.com>
-cc: mchehab@kernel.org, gregkh@linuxfoundation.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: media: zoran: remove
- unnecessary parentheses
-In-Reply-To: <20190309173734.51405-1-himadri18.07@gmail.com>
-Message-ID: <alpine.DEB.2.21.1903091843120.13389@hadrien>
-References: <20190309160705.51339-1-himadri18.07@gmail.com> <20190309173734.51405-1-himadri18.07@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZIRs9VPr;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x429.google.com with SMTP id n125so501069pfn.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 09:37:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=mOlCD+m7TwuoBmKQ1bLhska6mhj8UOKBvlMBdiyOKsU=;
+        b=ZIRs9VPrXV11u6L4Nw9XhhNKL5ejGXJvb2gYPzxuJg7jCrkU84c8wCF+CA30ILM9vs
+         Q5O+1GQ8kCghgXFY6bbkmsikxDzCAUs0ZS9mJDNZ6WbPXs6t+Gi6n/IHO2bW56OBI8eU
+         czu8k1bM2mNoq+sCSeLl8a62+imvUC/rZgVYJfC6eOeiL4sLCWNTuqPbZqnbEy1yWpEM
+         gg/p0reDuWODAqXJ06aOBRCt41Rgk0YFwl86barzRY9hyR1ze2s8DntJO2xgb9zd+gKd
+         UsYMx8DxzsOnaxIRus8GVrvw0kIjDEUMO7fXp1a+tUwuqnV04jBGarxRg7cS87aH0qms
+         B9vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=mOlCD+m7TwuoBmKQ1bLhska6mhj8UOKBvlMBdiyOKsU=;
+        b=UFbcleOPBnG75OfNDiO1fACN8We6daONH6j70ox3KRwovXsIMuVb7qL5GBTk384W4I
+         9Dn/mavgATDLQBx3ieSjkXUZ01Ck7+f9vFLcP182VHBtl4ulH6NxX6lSyGzxVQhqwtfJ
+         fkXsDNd0AkH7AQ8AZFJrAYXOS9EfmS76HZJnkTvwEWWm7GoQgG7AeUkRvdt38w+NJ0S+
+         VkYiyXk3bd0lH7EI9VDXaawJ+KLWj2+drYM6ioD/TKKQdgYgYRpMY4zIcMkU+cHttDzq
+         VYA00denNn7PXvQBSgsyUxOKxkc1GIqMOCSjWTJf070UUKo7wLJu5WKlnUmGd5Z3Mqp3
+         H+eQ==
+X-Gm-Message-State: APjAAAUmxg7FOhHVTDMItSg2f7+b4sVvdWRz0nrX+lxrGgxZsZx//Jqy
+	Uvh8LTYkwTEqWFpqBs9IXRY=
+X-Received: by 2002:a63:4550:: with SMTP id u16mr4317912pgk.73.1552153066136;
+        Sat, 09 Mar 2019 09:37:46 -0800 (PST)
+Return-Path: <himadri18.07@gmail.com>
+Received: from localhost.localdomain ([157.32.145.116])
+        by smtp.gmail.com with ESMTPSA id v1sm1798002pff.9.2019.03.09.09.37.41
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 09 Mar 2019 09:37:45 -0800 (PST)
+From: Himadri Pandya <himadri18.07@gmail.com>
+To: mchehab@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Himadri Pandya <himadri18.07@gmail.com>
+Subject: [PATCH] staging: media: zoran: remove unnecessary parentheses
+Date: Sat,  9 Mar 2019 23:07:34 +0530
+Message-Id: <20190309173734.51405-1-himadri18.07@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190309160705.51339-1-himadri18.07@gmail.com>
+References: <20190309160705.51339-1-himadri18.07@gmail.com>
 
+Remove unnecessary parentheses from right hand side of
+assignments.Suggested by Coccinelle.
 
+Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+---
+ drivers/staging/media/zoran/zoran_device.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Sat, 9 Mar 2019, Himadri Pandya wrote:
+diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+index 40adceebca7e..c27e1472b7a8 100644
+--- a/drivers/staging/media/zoran/zoran_device.c
++++ b/drivers/staging/media/zoran/zoran_device.c
+@@ -496,7 +496,7 @@ zr36057_overlay (struct zoran *zr,
+ 				KERN_ERR
+ 				"%s: zr36057_overlay() - video_stride not aligned\n",
+ 				ZR_DEVNAME(zr));
+-		reg = (reg << ZR36057_VSSFGR_DispStride);
++		reg = reg << ZR36057_VSSFGR_DispStride;
+ 		reg |= ZR36057_VSSFGR_VidOvf;	/* clear overflow status */
+ 		btwrite(reg, ZR36057_VSSFGR);
+ 
+@@ -1421,7 +1421,7 @@ zoran_irq (int             irq,
+ 					reg = 0;
+ 					if (zr->v4l_settings.height > BUZ_MAX_HEIGHT / 2)
+ 						reg += zr->v4l_settings.bytesperline;
+-					reg = (reg << ZR36057_VSSFGR_DispStride);
++					reg = reg << ZR36057_VSSFGR_DispStride;
+ 					reg |= ZR36057_VSSFGR_VidOvf;
+ 					reg |= ZR36057_VSSFGR_SnapShot;
+ 					reg |= ZR36057_VSSFGR_FrameGrab;
+-- 
+2.17.1
 
-> Remove unnecessary parentheses from right hand side of
-> assignments.Suggested by Coccinelle.
-
-Put a space after the period.
-
-It seems that this driver is on the way out of the kernel, so it may not
-be worth working on it further.
-
-git log --oneline drivers/staging/media/zoran/zoran_device.c
-
-julia
-
->
-> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
-> ---
->  drivers/staging/media/zoran/zoran_device.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-> index 40adceebca7e..c27e1472b7a8 100644
-> --- a/drivers/staging/media/zoran/zoran_device.c
-> +++ b/drivers/staging/media/zoran/zoran_device.c
-> @@ -496,7 +496,7 @@ zr36057_overlay (struct zoran *zr,
->  				KERN_ERR
->  				"%s: zr36057_overlay() - video_stride not aligned\n",
->  				ZR_DEVNAME(zr));
-> -		reg = (reg << ZR36057_VSSFGR_DispStride);
-> +		reg = reg << ZR36057_VSSFGR_DispStride;
->  		reg |= ZR36057_VSSFGR_VidOvf;	/* clear overflow status */
->  		btwrite(reg, ZR36057_VSSFGR);
->
-> @@ -1421,7 +1421,7 @@ zoran_irq (int             irq,
->  					reg = 0;
->  					if (zr->v4l_settings.height > BUZ_MAX_HEIGHT / 2)
->  						reg += zr->v4l_settings.bytesperline;
-> -					reg = (reg << ZR36057_VSSFGR_DispStride);
-> +					reg = reg << ZR36057_VSSFGR_DispStride;
->  					reg |= ZR36057_VSSFGR_VidOvf;
->  					reg |= ZR36057_VSSFGR_SnapShot;
->  					reg |= ZR36057_VSSFGR_FrameGrab;
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190309173734.51405-1-himadri18.07%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
