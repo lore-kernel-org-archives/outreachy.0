@@ -1,253 +1,152 @@
 X-GM-THRID: 6666325868481085440
-X-Received: by 2002:a17:902:ea06:: with SMTP id cu6mr7217942plb.96.1552127019032;
-        Sat, 09 Mar 2019 02:23:39 -0800 (PST)
+X-Received: by 2002:a02:31d:: with SMTP id y29mr13331792jad.18.1552126629255;
+        Sat, 09 Mar 2019 02:17:09 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a65:6257:: with SMTP id q23ls1969060pgv.6.gmail; Sat, 09 Mar
- 2019 02:23:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxRZVitJIWiHsUyC0rgzq4FhLY3DJOuOj9BKbIYvsuVibYVkhLzb1lOtE3ojfr1QeNjHGKF
-X-Received: by 2002:a63:f115:: with SMTP id f21mr8846914pgi.64.1552127017934;
-        Sat, 09 Mar 2019 02:23:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552127017; cv=none;
+Received: by 2002:a02:9784:: with SMTP id s4ls4124974jaj.2.gmail; Sat, 09 Mar
+ 2019 02:17:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxWbM+cjLxfD9BaMZq27VUjKJFfJ7f7/+F7HtCgIG7+Ww6vzkZ5mDfYF5AcoUi/8EGVZJcK
+X-Received: by 2002:a02:6018:: with SMTP id i24mr13332203jac.6.1552126628409;
+        Sat, 09 Mar 2019 02:17:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552126628; cv=none;
         d=google.com; s=arc-20160816;
-        b=JG8wRNJ8nd1pE+zFgzpEoA2TSJkabAjXTV3nk6nLIaIKM25NDCzgI+5b5hC4x6/TmN
-         ZsIhbJNsUNToODBHMfzzI5BVYCD2JjmMvh3w2ynxHh65uJrG/oCRrkDHGTm3jI1miF5D
-         v35/558wg2e0ECsNVVdssdQqwPqUBtPhPl8M1GTuXA+4x3dKIi+Xt/9WTMl3UpN8MaUY
-         Ugu7ROBxVDJB8J7DS9HeOL7YbDvMDsB27kF5Q55PZ5JFSKCwQiKWDbtpTjTBifT5ON+i
-         bcM8wfhAJhW4+dOunToNAajIQiI9QYNbMty5j52s7NPX1lQ0e4md4lRv0BMkXFYA+42P
-         SJmg==
+        b=ApkdW361rxpPHhn5UH/w/x2QbNPfLPjwM3rDtmH3O4EAY/qcC5vDBdyHw4omzmpn/d
+         x1IXaW7KR0qXHZ4iaMUFSyt2PJ9Y8jw4J8r+uuNHtVBHwN5Ij5YC1G2yjI3PRmsAij7L
+         QkJsHNGpF7WPnAJsbC/V7Al+9gAzlLcHE6qtJz7lWCq0dV5ppzBxvyh5c++dSESMcIJ0
+         u87clvRETH4vqv5MHiowGq/VX0YEjkQqoE6hlNcTvt+L2TX3QDhVWsLt9j5PAaAGkY5P
+         VoP7j9vLFcnpXu52sxAtdnEeAVXSLqnDJ49JyIMSFo6SP6CJZ4q6lBJgu8zAx+d/IbiZ
+         PMsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=I+mttTViwWQxtkm4P7cKDBEeNfmyYxxwWUnpnjLZbes=;
-        b=aWwmgL72/2bXRSBQpFgd1TXqKwFfYGBDlHMDBQ7r9WxcaoOpsva7lrAHyXrd0tT4or
-         N93SLnad1fjtdpAnYc5WnukyvtvAkou3khatSOQjEfFLhBgHt+VhbRvm7fRpGpZsvWwr
-         Ef2+yucluMc7qg68mpqLt6d+BnzMLUBi8m6z8wnP4ka2xAe+Zt5W4AqoAHQSwqt717+j
-         aZjZZsKzjefQuHBAgBSlwYZBas3A2UezRU8YCsJESSnxh2XwHu0hw9KLT2DVmtQY9DE9
-         Oel5QN8XHLUzIO0M2nvNOGaj+7h7YdV5O8rSubQV/p78OeqTlFNvtAMSqTy72EfeIGyY
-         0Mrg==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=8nx3bqGjLz/9jb0HSBT0qzJSK6rHxum2CSrfSVu9zt0=;
+        b=VtPlYDM8XbH5BrgeJ7Rq8zCLAGiey8D9tH7ahcyeTvVUa8y38a23wsOay52rjkSgnW
+         3kxhksBOYe14AOp0rJXqiH7DmovVkXEtc6FtbROa0zi74Jx3g0xsYwfafbNzgIH28qGb
+         U4725jGYgTjdY31g3OR0xL64uv3AU2/fBgtLCTXgSPG87MEw7QfL68k6RaByyGdvIkCl
+         ohOMadFConLJZp8aEmkUa+x+6Zr9AnJjZAkZduFwhp5yyKX8XGXswJbp9rvBXsSj7/mF
+         PAJ2mSR2fcGwhjPBb9hgnBi94uKm5yw6Jcr3/bHMkavbievOJzR3ddtjhYmwmLnaLsLU
+         dHZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nZ4DTKcF;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KryVDb+9;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-oi1-x243.google.com (mail-oi1-x243.google.com. [2607:f8b0:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id e71si4663pfc.1.2019.03.09.02.23.37
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id x22si659448ita.0.2019.03.09.02.17.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 02:23:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) client-ip=2607:f8b0:4864:20::243;
+        Sat, 09 Mar 2019 02:17:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nZ4DTKcF;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KryVDb+9;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x243.google.com with SMTP id t206so108766oib.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 02:23:37 -0800 (PST)
+Received: by mail-pf1-x442.google.com with SMTP id i19so16036174pfd.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 02:17:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=I+mttTViwWQxtkm4P7cKDBEeNfmyYxxwWUnpnjLZbes=;
-        b=nZ4DTKcFkJQbnTu2kjfslUFn5081auKe0WSGtTMmX3dJZJP2bWtXMAs3Y/L2cw8Sf4
-         D7sNxn4j2nM3vHTFP3okKjyOu7x5mcD3x2lDrNdlC3zMcsYcglymKVn5EZUUl5p6E4x5
-         W111lanX0uKj4BbvA/FCT0LTMiNBqOuY6UdA3KdhHvRR8GlqTQN325vMsjXOv/OffQD9
-         g1AC5NOxavA7A/OrDGl1vJwKw+x2RLtYwrKGjpNwijJyMiAUBh4UagOQeDPu7lCbQM7k
-         YFZrbannbzCpXsEn7/nYDQ3q0pmw0XpTINSL4x3S566DLChVOop18p0qztrYwJJKvRSg
-         UqGA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=8nx3bqGjLz/9jb0HSBT0qzJSK6rHxum2CSrfSVu9zt0=;
+        b=KryVDb+9lWslPkCrzs/0DX1M8vGRI63bgUIPwOKueS0wgH5cKl3X6qVSLA5FyDy7k+
+         o90k5i+pUG5t6O5PnQ7H/EOuFMdOm0qqF20dgfADnDIpdHmoZCoz9ov5od4FbKZgaD0M
+         gxomFhMaqO152KCY5MhWI0zE8T/EwQ6mQlEteIymS2c5YPQxE/n8tpzd3Oj6qjAOuSi1
+         PwxqLQ1Gc8ZN6jLLWjGgHNm+Al3hWpPgPunaAaJb7F+GpEsXlCirC8iNxFDYGxCX9B75
+         4iHsYqZoR5RRrm1Hc2uijIHyj8HPReD9Qz7kgI9sDOi4De1QN+NYczpO3yf8uAD9dlp6
+         owKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=I+mttTViwWQxtkm4P7cKDBEeNfmyYxxwWUnpnjLZbes=;
-        b=qdo5RKFLFzLDfKVjuMv9itRsWxAbWBZ1G9BAfa9wPjntLIBVNAtE78sraGLJlmK/4W
-         aWuTnqKee8HxA6792gDR/H99FtfafMkbmfQ89QVgN4iwV3g6iZwssZ6zABJzNEVf/492
-         BYmO1DDABbZSRrPRmj8d6d/0hnGeGq2RUNE5bPPkJbbcIb2D/FLAtV7V25SJHLNfmrar
-         D/uwGlzVC16HstIC4Ojgc7WEm5DVVpL/kfaqH0OA2n9C/kbCEFPPk6fqxG7LWUuWCgHV
-         IqzJ4l3ix+5KhP+s5dNDq/48VvMLeF2ddRF1yP4ucUSoj9LGiU7WQ+Iwx1TZaKOntJ9x
-         xR0w==
-X-Gm-Message-State: APjAAAWYYV8noWqR6CAw9sJnQHu5VkZWW0FASite7j56yLBbJagDPdtt
-	3e2srEwQXoq1qU7qTP+V7yBnaWrDXkbJli9E4JXUdVHI
-X-Received: by 2002:aca:cdd3:: with SMTP id d202mr10899322oig.82.1552127017324;
- Sat, 09 Mar 2019 02:23:37 -0800 (PST)
-MIME-Version: 1.0
-References: <20190309094840.38154-1-himadri18.07@gmail.com> <alpine.DEB.2.21.1903091051570.2558@hadrien>
-In-Reply-To: <alpine.DEB.2.21.1903091051570.2558@hadrien>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=8nx3bqGjLz/9jb0HSBT0qzJSK6rHxum2CSrfSVu9zt0=;
+        b=r19a7MdiEXH9CPxREwraoQ4oljn422O68LBaTy5sk2DAtftfiIdYS32sCzqdyMLG7c
+         UOWhMMjweeT5hW7hOGL1PNQx3Zzc9vZkc5RqpzQJx47gdCRJ1fcl/K3z14X0jG81Basq
+         k6WIVKAtWASfyomMES9n2DB1/N1xaAvDN2R+u+b5eGaXyQsG2OmSIK8OUXf1daO72Ezy
+         zKai5FMuj7w+iJ9nrn9ATsCd/exTzUaH5UzOi8TPaujTak3NhhXRZZiJxlVjviGBXzKn
+         7ASpap67tukFPxDgpGvUTwG2cdDt3qxqNNzlbwFUSkMT7/okWtgU4etV2bDVSrHKrnRp
+         OWjg==
+X-Gm-Message-State: APjAAAV6JaJiG0gluSEhKiT+BJXynD3ieGqG0yD9IP5tMjGsI17aHf5r
+	+lFGc4+PcIR9QBuP/KB3sas=
+X-Received: by 2002:a65:6483:: with SMTP id e3mr20783000pgv.273.1552126627529;
+        Sat, 09 Mar 2019 02:17:07 -0800 (PST)
+Return-Path: <himadri18.07@gmail.com>
+Received: from localhost.localdomain ([157.32.145.236])
+        by smtp.gmail.com with ESMTPSA id 1sm2143649pfy.68.2019.03.09.02.17.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 09 Mar 2019 02:17:06 -0800 (PST)
 From: Himadri Pandya <himadri18.07@gmail.com>
-Date: Sat, 9 Mar 2019 15:53:25 +0530
-Message-ID: <CAPnhUpbJcMN6pwe-RYZphLDRDbjS=woPVWzGH8L26h12c9v2Dw@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: wilc1000: remove unnecessary
- variable result
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: adham.abozaeid@microchip.com, ajay.kathat@microchip.com, 
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="0000000000008394d90583a6bb02"
+To: adham.abozaeid@microchip.com,
+	ajay.kathat@microchip.com,
+	gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Himadri Pandya <himadri18.07@gmail.com>
+Subject: [PATCH v2] staging: wilc1000: remove unnecessary variable result
+Date: Sat,  9 Mar 2019 15:46:10 +0530
+Message-Id: <20190309101610.39595-1-himadri18.07@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190309094840.38154-1-himadri18.07@gmail.com>
+References: <20190309094840.38154-1-himadri18.07@gmail.com>
 
---0000000000008394d90583a6bb02
-Content-Type: text/plain; charset="UTF-8"
+Remove unnecessary local variable "result" and its assignments from
+function wilc_set_pmkid_info. Suggested by Coccinelle.
 
-On Sat, 9 Mar, 2019, 3:23 PM Julia Lawall, <julia.lawall@lip6.fr> wrote:
+Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+---
+Changes in V2:
+	- Arrange the function arguments to the right of "(" in function
+call in the return statement
 
->
->
-> On Sat, 9 Mar 2019, Himadri Pandya wrote:
->
-> > Remove unnecessary local variable "result" and its assignments from
-> > function wilc_set_pmkid_info. Suggested by Coccinelle.
-> >
-> > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
-> > ---
-> >  drivers/staging/wilc1000/host_interface.c | 4 +---
-> >  1 file changed, 1 insertion(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/staging/wilc1000/host_interface.c
-> b/drivers/staging/wilc1000/host_interface.c
-> > index 4dd9a20f6a0b..962c5e6edd5e 100644
-> > --- a/drivers/staging/wilc1000/host_interface.c
-> > +++ b/drivers/staging/wilc1000/host_interface.c
-> > @@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const
-> u8 *rx_gtk, u8 gtk_key_len,
-> >  int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr
-> *pmkid)
-> >  {
-> >       struct wid wid;
-> > -     int result;
-> >
-> >       wid.id = WID_PMKID_INFO;
-> >       wid.type = WID_STR;
-> >       wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
-> >       wid.val = (u8 *)pmkid;
-> >
-> > -     result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
-> > +     return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
-> >                                     wilc_get_vif_idx(vif));
->
-> It looks like this now violates the rule that function arguments should
-> appear just to the right of a (.  Maybe checkpatch didn't check this
-> because the line with the relevant argument is not affected by the change.
->
-> julia
->
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 4dd9a20f6a0b..fa0e1bd9f836 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
+ int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
+ {
+ 	struct wid wid;
+-	int result;
 
-In version 2, I aligned the parameters with opening parentheses, but still
-they appear on the left side in the patch. I double checked, parameters are
-properly aligned in the code.
+ 	wid.id = WID_PMKID_INFO;
+ 	wid.type = WID_STR;
+ 	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
+ 	wid.val = (u8 *)pmkid;
 
-- Himadri
+-	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+-				      wilc_get_vif_idx(vif));
++	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
++				    wilc_get_vif_idx(vif));
 
+-	return result;
+ }
 
-> >
-> > -     return result;
-> >  }
-> >
-> >  int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
-> > --
-> > 2.17.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google
-> Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send
-> an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit
-> https://groups.google.com/d/msgid/outreachy-kernel/20190309094840.38154-1-himadri18.07%40gmail.com
-> .
-> > For more options, visit https://groups.google.com/d/optout.
-> >
->
+ int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+---
+ drivers/staging/wilc1000/host_interface.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
---0000000000008394d90583a6bb02
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+index 4dd9a20f6a0b..fa0e1bd9f836 100644
+--- a/drivers/staging/wilc1000/host_interface.c
++++ b/drivers/staging/wilc1000/host_interface.c
+@@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
+ int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
+ {
+ 	struct wid wid;
+-	int result;
+ 
+ 	wid.id = WID_PMKID_INFO;
+ 	wid.type = WID_STR;
+ 	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
+ 	wid.val = (u8 *)pmkid;
+ 
+-	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+-				      wilc_get_vif_idx(vif));
++	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
++				    wilc_get_vif_idx(vif));
+ 
+-	return result;
+ }
+ 
+ int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+-- 
+2.17.1
 
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Sat, 9 Mar, 2019, 3:23 PM Julia Lawall, &lt;<a href=
-=3D"mailto:julia.lawall@lip6.fr">julia.lawall@lip6.fr</a>&gt; wrote:<br></d=
-iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
-:1px #ccc solid;padding-left:1ex"><br>
-<br>
-On Sat, 9 Mar 2019, Himadri Pandya wrote:<br>
-<br>
-&gt; Remove unnecessary local variable &quot;result&quot; and its assignmen=
-ts from<br>
-&gt; function wilc_set_pmkid_info. Suggested by Coccinelle.<br>
-&gt;<br>
-&gt; Signed-off-by: Himadri Pandya &lt;<a href=3D"mailto:himadri18.07@gmail=
-.com" target=3D"_blank" rel=3D"noreferrer">himadri18.07@gmail.com</a>&gt;<b=
-r>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/wilc1000/host_interface.c | 4 +---<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 3 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/stagi=
-ng/wilc1000/host_interface.c<br>
-&gt; index 4dd9a20f6a0b..962c5e6edd5e 100644<br>
-&gt; --- a/drivers/staging/wilc1000/host_interface.c<br>
-&gt; +++ b/drivers/staging/wilc1000/host_interface.c<br>
-&gt; @@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, cons=
-t u8 *rx_gtk, u8 gtk_key_len,<br>
-&gt;=C2=A0 int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_=
-attr *pmkid)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct wid wid;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0int result;<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"http://wid.id" rel=3D"noreferrer =
-noreferrer" target=3D"_blank">wid.id</a> =3D WID_PMKID_INFO;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0wid.type =3D WID_STR;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0wid.size =3D (pmkid-&gt;numpmkid * sizeof(st=
-ruct wilc_pmkid)) + 1;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0wid.val =3D (u8 *)pmkid;<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0result =3D wilc_send_config_pkt(vif, WILC_SET_CFG=
-, &amp;wid, 1,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0return wilc_send_config_pkt(vif, WILC_SET_CFG, &a=
-mp;wid, 1,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0wilc_get_vif_=
-idx(vif));<br>
-<br>
-It looks like this now violates the rule that function arguments should<br>
-appear just to the right of a (.=C2=A0 Maybe checkpatch didn&#39;t check th=
-is<br>
-because the line with the relevant argument is not affected by the change.<=
-br>
-<br>
-julia<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"a=
-uto">In version 2, I aligned the parameters with opening parentheses, but s=
-till they appear on the left side in the patch. I double checked, parameter=
-s are properly aligned in the code.=C2=A0</div><div dir=3D"auto"><br></div>=
-<div dir=3D"auto">- Himadri</div><div dir=3D"auto"><br></div><div dir=3D"au=
-to"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0return result;<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt;=C2=A0 int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)<br>
-&gt; --<br>
-&gt; 2.17.1<br>
-&gt;<br>
-&gt; --<br>
-&gt; You received this message because you are subscribed to the Google Gro=
-ups &quot;outreachy-kernel&quot; group.<br>
-&gt; To unsubscribe from this group and stop receiving emails from it, send=
- an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
-com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@goog=
-legroups.com</a>.<br>
-&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
-l@googlegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@g=
-ooglegroups.com</a>.<br>
-&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
-gle.com/d/msgid/outreachy-kernel/20190309094840.38154-1-himadri18.07%40gmai=
-l.com" rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.googl=
-e.com/d/msgid/outreachy-kernel/20190309094840.38154-1-himadri18.07%40gmail.=
-com</a>.<br>
-&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
- rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/=
-d/optout</a>.<br>
-&gt;<br>
-</blockquote></div></div></div>
-
---0000000000008394d90583a6bb02--
 
