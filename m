@@ -1,127 +1,142 @@
 X-GM-THRID: 6666325868481085440
-X-Received: by 2002:a67:f4d2:: with SMTP id s18mr15217189vsn.41.1552127730671;
-        Sat, 09 Mar 2019 02:35:30 -0800 (PST)
+X-Received: by 2002:a37:8c07:: with SMTP id o7mr3358206qkd.6.1552127380851;
+        Sat, 09 Mar 2019 02:29:40 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:2743:: with SMTP id a61ls2574983uaa.0.gmail; Sat, 09 Mar
- 2019 02:35:29 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzfu66qjNMtzpWOgsvxYBXGaW5iJ/qL+D0b7D+uNZzGUJx9eTAJqF5P4rZC253Skmfnxnpv
-X-Received: by 2002:ab0:7103:: with SMTP id x3mr14805947uan.14.1552127729928;
-        Sat, 09 Mar 2019 02:35:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552127729; cv=none;
+Received: by 2002:a37:3094:: with SMTP id w142ls1920765qkw.9.gmail; Sat, 09
+ Mar 2019 02:29:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyqZgbLD0HVQcFQX16f40rjcmk21wS+NVro5cHxRQn5fpduJnEM8+Bd0MXLKPVf/oNNNCRD
+X-Received: by 2002:ae9:f507:: with SMTP id o7mr12243091qkg.46.1552127380245;
+        Sat, 09 Mar 2019 02:29:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552127380; cv=none;
         d=google.com; s=arc-20160816;
-        b=cGQtAPAu8irK8yKAtIZPlJvSJiuY+Jhr7OHizcnDN4qaNtdJ/wNpxIBdCXAdA2nhwK
-         z11P/ohQAhoN+r3E3q31Li7WK6sAjrgVj5BuSX1kwVWwK/gqU2MOgnflfdyEtigllD2f
-         N1fLGhI79UE00xrMIPeneJi3NHEAsuMyDDDNUYygD1O1BBRbcDoHaDyi//AM+Lh/pZ3r
-         jxsNVpqS/94yPt6Gpf20QtHOABHkVsoRl7QBJlOogiLokjP8k/ODEZy0fOvnMQGDfoSO
-         1jEWKPSNEClN5k3aHpwlX757HbNG5Zxg4YrUOPsoWJHEOpPBdfJzlqxr6vjbELo+R1wE
-         03sw==
+        b=gffkQD82J+WoBInOVwF2MiiLvCw0WyuuerZIwO/foExVPVXaNcj8BXlRm3KEJv5Zq2
+         xm8Q+LCAbxfe5l02+pDMHEoSvVFhwkZIue9oRllPebxaYhy6W+rmvfcXLfi1QSWmH+hi
+         sD+jWzZcHe8TevNsNtuyN5fPaNvEuom0Kod9FqBQXv3Gbg38GQMXMhWOVR07Vl3j28pW
+         hdAUOgKBD4Ha2UX6CfrSeLCyiTBsLmuRwj6g47bAAz5ZmIaNyiZs0FbHj3UNsL3WTCFg
+         Z9un6CZhWyv8V25XiIXdCT1fECjl/8EacE5ir8d2xL4tPGjN2R1UugqZs6vFi990VFwD
+         UJWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=n2n/LCZX8mX6sgF8Y6Wcc3gfOcw4t8dw11CVkOq3X0A=;
-        b=VwcsHFkecMayjrGXvuchJHamyy/1y5TqJLIQaNAkSPoxf1qG+emIPQa9+kYwdCZ11c
-         Z/9kD0F7aHV5LVfXFGXNnpBZGiwXbIKV6DOT5DT4rbx0WInyukyqBBaxWCeOQO5kBkUt
-         BA39c+cN3cpO9nThvUGO7hcNTMAMPzc9MFYZ58oPuLFhf8xrC1vgJEfVASOYnR55yGDZ
-         q7IldpwAy0HENMQ7l2GvRu2kKV0wPgq+Yj2Tcgrhcc/wqkdxM+XD+ZwhB9BGfuWL/pMN
-         K+W3ZjKiaVmfOzHfWwvFehjYQDFp0ItUB/8vAJKM0hO+yw6pXknQaV3pdy4w2w/vKctr
-         mCPA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=/hiS6X2lUMoc1bJAJYOrPfTEboQA29eFUtQgI3Rzzos=;
+        b=j79wk3hkrjJ6fdi+HvHmyxk7EG0InWNm5tcvI/8gQkOI+pGJSyptOKEOQApS5KPUBZ
+         FWwq002ARlhkFoaE4TyhaCvoMcLO/Rp5Ltw8ZeyolC/zGHGJUGXK4jkfmp84vIQx79FI
+         pCiew6L8vLTmLkwCKb1HGjD5WJI/tHXkwrWdvAzt2UwnRDLElRsFfaLYc6i/hmngE+tp
+         zPwlXRm/lponeTVV1qAETryg+wTM18+403HQSvK/rtV13bDKt5cfhKxqFNY13Py+ZvBM
+         VQ5FVDclW/n5Jdl7fCJuL7L3RAkX6IYgZuCI7vUzmpRW8Em5oJ8QVtHRJ4JSz+7xHgp1
+         eG8Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f8gOp7Sp;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id k19si9642vsm.0.2019.03.09.02.35.29
+       dkim=pass header.i=@kernel.org header.s=default header.b="sXyRbf/5";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id m1si5503qtc.2.2019.03.09.02.29.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 02:35:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Sat, 09 Mar 2019 02:29:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f8gOp7Sp;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id j3so163678pgm.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 02:35:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=n2n/LCZX8mX6sgF8Y6Wcc3gfOcw4t8dw11CVkOq3X0A=;
-        b=f8gOp7Spnxp/CLRT6iD0EnH3QOvBFEl7Hh36Rmq19/wtdHOESkG1E3HUGmWyTJBFgA
-         WTm4CfMJg/ijR2MTui2K3IksO14k4WvG38Rq8+GE5BxqHCQRoa0RgzWrfVl6M6/eUE9G
-         p5fVYZtUQaKgjLZXxYIHnZ5sTQERtzyk6WFhyO/MsDIA7ChTZN733QI+aAB+tKa/9aaf
-         qbjkev9KLFSiZaOMOOWXTe0Qyimk4nLwWGnDvv9Ky+EqFF9VCoiSlrxq/AgYaCEX9Iuy
-         6aPOSyc/DKh9wRpCfVFEGSxJshqFS9T82SJPN0yXQoNsKGMkEH5HckWL/8+2WXqJbTSz
-         DyyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=n2n/LCZX8mX6sgF8Y6Wcc3gfOcw4t8dw11CVkOq3X0A=;
-        b=WaitSnPP9voEFBqoZnGZuM+ktpCEpoSDa/6pRiAQc5XgVJkVrm6dEqGCEh/39F1hGA
-         imaM4Qe/wizCflE8bvVQeMTRGmr9kXd8J0CUkLtL3/ZCxwFNthEyBtVKTwlWS//j4qp1
-         0XldWB3fMGNgsTRNbrLUMW7Ga7g3rw/J7j4CAG7uab8p6EeJVQ7lHXYsoUB9MaFjwgdS
-         pQScfY3wSH8CC3TI2+N9LWDnq9wGlEkiGPLkhFgBUYyh9GlRKKMk83Mf8DbXPKWfQ4CQ
-         KJl5k5cZUCs4Ez9lEJ3urdMyD8/1TrL2nPAm4Kw80wWHFxcQ+1sJYAlPRVmy9xMkh/pH
-         qt6A==
-X-Gm-Message-State: APjAAAXktLqdEazncy8PhesnWZHsOnbkLvrYNMCyGC6UDbxz/Kj2iF+A
-	j7s/vyRpbSJE/6FbaxQqK8A=
-X-Received: by 2002:a17:902:4a0c:: with SMTP id w12mr22940148pld.174.1552127728922;
-        Sat, 09 Mar 2019 02:35:28 -0800 (PST)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([157.32.145.236])
-        by smtp.gmail.com with ESMTPSA id h126sm1673791pfc.135.2019.03.09.02.35.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 02:35:28 -0800 (PST)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: adham.abozaeid@microchip.com,
-	ajay.kathat@microchip.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH v2] staging: wilc1000: remove unnecessary variable result
-Date: Sat,  9 Mar 2019 16:05:16 +0530
-Message-Id: <20190309103516.39919-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190309094840.38154-1-himadri18.07@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b="sXyRbf/5";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 957A0207E0;
+	Sat,  9 Mar 2019 10:29:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552127379;
+	bh=ZF3xA3GN/J8dXm2/ypHYCJvziLpBQ9SKNB6/HbQAJ+I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sXyRbf/5uOlCwp8Z9F4wqu/dDVCKxa1sP2tCtXe0seKF1g6sdoo2Rs36AEJdVK0r+
+	 P7qDEppHYT3GTOBPli7YPzDFt8XkpHFdsOPpBuz0JsUngMxBSoiIsUeZygRKER181w
+	 8IylGmW1mfIKNbxxFpBW2ipqi0sAAjOD6q9DwZkI=
+Date: Sat, 9 Mar 2019 11:29:36 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Himadri Pandya <himadri18.07@gmail.com>
+Cc: adham.abozaeid@microchip.com, ajay.kathat@microchip.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: wilc1000: remove unnecessary variable result
+Message-ID: <20190309102936.GA18149@kroah.com>
 References: <20190309094840.38154-1-himadri18.07@gmail.com>
+ <20190309101610.39595-1-himadri18.07@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190309101610.39595-1-himadri18.07@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Remove unnecessary local variable "result" and its assignments from
-function wilc_set_pmkid_info. Suggested by Coccinelle.
+On Sat, Mar 09, 2019 at 03:46:10PM +0530, Himadri Pandya wrote:
+> Remove unnecessary local variable "result" and its assignments from
+> function wilc_set_pmkid_info. Suggested by Coccinelle.
+> 
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+> Changes in V2:
+> 	- Arrange the function arguments to the right of "(" in function
+> call in the return statement
+> 
+> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+> index 4dd9a20f6a0b..fa0e1bd9f836 100644
+> --- a/drivers/staging/wilc1000/host_interface.c
+> +++ b/drivers/staging/wilc1000/host_interface.c
+> @@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
+>  int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
+>  {
+>  	struct wid wid;
+> -	int result;
+> 
+>  	wid.id = WID_PMKID_INFO;
+>  	wid.type = WID_STR;
+>  	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
+>  	wid.val = (u8 *)pmkid;
+> 
+> -	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> -				      wilc_get_vif_idx(vif));
+> +	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> +				    wilc_get_vif_idx(vif));
+> 
+> -	return result;
+>  }
+> 
+>  int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+> ---
+>  drivers/staging/wilc1000/host_interface.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
+> index 4dd9a20f6a0b..fa0e1bd9f836 100644
+> --- a/drivers/staging/wilc1000/host_interface.c
+> +++ b/drivers/staging/wilc1000/host_interface.c
+> @@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
+>  int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
+>  {
+>  	struct wid wid;
+> -	int result;
+>  
+>  	wid.id = WID_PMKID_INFO;
+>  	wid.type = WID_STR;
+>  	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
+>  	wid.val = (u8 *)pmkid;
+>  
+> -	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> -				      wilc_get_vif_idx(vif));
+> +	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
+> +				    wilc_get_vif_idx(vif));
+>  
+> -	return result;
+>  }
+>  
+>  int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
+> -- 
+> 2.17.1
+> 
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
----
-Changes in V2:
-	- Arrange the function arguments to the right of "(" in function
-call in the return statement
+The same patch is included in this email twice :(
 
- drivers/staging/wilc1000/host_interface.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+That's not going to go well when I try to apply it, please fix up and
+resend.
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 4dd9a20f6a0b..fa0e1bd9f836 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -1358,17 +1358,15 @@ int wilc_add_rx_gtk(struct wilc_vif *vif, const u8 *rx_gtk, u8 gtk_key_len,
- int wilc_set_pmkid_info(struct wilc_vif *vif, struct wilc_pmkid_attr *pmkid)
- {
- 	struct wid wid;
--	int result;
- 
- 	wid.id = WID_PMKID_INFO;
- 	wid.type = WID_STR;
- 	wid.size = (pmkid->numpmkid * sizeof(struct wilc_pmkid)) + 1;
- 	wid.val = (u8 *)pmkid;
- 
--	result = wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
--				      wilc_get_vif_idx(vif));
-+	return wilc_send_config_pkt(vif, WILC_SET_CFG, &wid, 1,
-+				    wilc_get_vif_idx(vif));
- 
--	return result;
- }
- 
- int wilc_get_mac_address(struct wilc_vif *vif, u8 *mac_addr)
--- 
-2.17.1
+thanks,
 
+greg k-h
 
