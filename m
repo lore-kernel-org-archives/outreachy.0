@@ -1,131 +1,112 @@
-X-GM-THRID: 6608442873786400768
-X-Received: by 2002:a7b:c159:: with SMTP id z25-v6mr691044wmi.13.1538648007315;
-        Thu, 04 Oct 2018 03:13:27 -0700 (PDT)
+X-GM-THRID: 6666321608871772160
+X-Received: by 2002:a1f:7d06:: with SMTP id y6mr14108318vkc.19.1552123950285;
+        Sat, 09 Mar 2019 01:32:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:7d06:: with SMTP id y6-v6ls813346wmc.27.gmail; Thu, 04
- Oct 2018 03:13:26 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV625fAxlkORGqWUOJ5FxN1ogvRVZ+PCwoiU/fvp58dO3GDPOltpqdNbiWx84t40SbiBfcIhs
-X-Received: by 2002:a1c:5715:: with SMTP id l21-v6mr693937wmb.17.1538648006545;
-        Thu, 04 Oct 2018 03:13:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1538648006; cv=pass;
+Received: by 2002:a1f:5c94:: with SMTP id q142ls2009636vkb.1.gmail; Sat, 09
+ Mar 2019 01:32:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxQjAfwp6L/oKbUzZYpvZ6SEDHJRCARodEc/TxvW7NaawLTRF2XPlyWJ/C2zxRc3Z9z5SCJ
+X-Received: by 2002:a1f:9750:: with SMTP id z77mr14124329vkd.5.1552123949669;
+        Sat, 09 Mar 2019 01:32:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552123949; cv=none;
         d=google.com; s=arc-20160816;
-        b=VvERQzU6fPKcSPRKFJ/1BpozMkoq+BpJx1UJlGkqcBt3c90lycUtTCYo1wsn95eCbx
-         8jjPjRFR7N9lD7QTUURRSOeHIHprn+4d07ZNUJ2scr1RnN4MRWFLhFXMnnFNJd/bf6vg
-         EASmX8W4lgvEmGxxAYVtrI09T1e8bm3Nd3z49e6qjHyRodPmzdfo7JzaGm+mJ2MbrX7g
-         r6eMWZpGUjwFbd39Vs/iT2vIWukaW/drjfMN8N5a2CAlge71+lp+nlp8klcIm5+PwlsD
-         lVt9iLVhZFpzlB7LlQsl4wHYQc/f/zZZeA86cArR7qjDx/OJpzXOJ1tlyUKc1No3rTpN
-         NwhA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=edgNiPjhWGo6ExBDnh61hGgR1CGo7yzwXCCOqpHeD3Y=;
-        b=pZxyRHvQWEXvzggPvtFCBZ3t9EoBIy7as7NQCOQQSqj+ZgEh77RRwAH7/tF+sPkCmY
-         rvPYLnuSkp54AIq9Tk3cTbUGrhq0eScR6phjh1MCuazzKjHNlwoIbmaNQuz4YhVjD7kH
-         bt895ZxF+hRf/tGU8fstgZX2XPf/dJuYiG5iinVacqZEiuQgQ49ur9jLzBrNt8kriv1x
-         bu+ZfRP++zZmR2P238xxw+kDTG3b4YAw8LK+c+nxkQtxrfX22Gh3ynxpsKlASgxUgbYj
-         pD3axnoXK/Kzjrs0NoUbt9Se0KVP98s+98f20O+4oBZ+x9Hxks5NlBrAtZwATtjZZqig
-         EOsw==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=JNhz52ET;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o52.zoho.eu (sender-of-o52.zoho.eu. [31.186.226.248])
-        by gmr-mx.google.com with ESMTPS id g20-v6si120704edm.0.2018.10.04.03.13.26
+        b=K82o0FrkfkbgnK4yP58SMH7wv9Zxf5PAK1lT2hWBDrcNtmy0Qp1gtBq8yx6dVZdrQt
+         aeiZ5vwZwzItAPCNhnSKroZBuCPVVNyoTsfj/sEOXNhOi23iX77cETFbAq4X+1b3sK4D
+         jJqiNh6KpLi7r7sHMaa9Pg6d46CtcwIiJE3W9CCJcHjj6wRBi4h4pbY+fyeeg8S7+iic
+         vwm4jtPtLLRo928b8ezknLilhGlAIYRIN+zu18ehxcVjtcNCFHRjeyZ/maVvqxQND4Ej
+         WZiaITDeI5EebY95Vk2RDuVkeyX4nqQ31NtKjWMFkc/IIJKfCrOVuJi2NOMDvV4l2CVZ
+         qA9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=+aRoIpwQyqpQGur9AAzlp0nIbgU7NNjtW0tdvsZ9kS0=;
+        b=aMUSEugrIkUayE/ycSxSlWJU9OAKA8DisU6gs4s3w83V+/W8426UjQbqWO2wgjevDI
+         Ddzm5+P+Pe3vQS6MErad4lwWuoe5Ls9LI+lCo48MVv/OdNH9iMHR8g70uM8tpzaOlbx9
+         TcWcSDNMxQfZA4Zmj5KtQL1xSLPVLfaYqW8/bllkt612AO7gR/j5FzDOYcvjejvxzGMe
+         4xEdhiwGGLNX/JjSmE1kVBy6lvM+90SRWavvf+0KZcHnoshy2Vg8+zjKR6I+DUUztIRX
+         AGIVnp2+HJKL/bEVy6JpKE99xGzbS4YL9ZeO1UTJVijHBzxDsbONLBg3TlX8S9Esznps
+         vDjA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ccJ9vLu0;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himadri18.07@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id q85si821vke.5.2019.03.09.01.32.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Oct 2018 03:13:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) client-ip=31.186.226.248;
+        Sat, 09 Mar 2019 01:32:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=JNhz52ET;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 31.186.226.248 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1538648004; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=aulGi4XxrR8nYEhSJTiatpIt/ngtLkiuovhSRv8/VfZEPO0xbTlFhlQtH4UdQTXB1eQ/JAPY8jJAN0eSAkN9khF4ILLJ4m9EnzfJbielD7ie+k9Fxa7pHal1bPkANdkgw1FNzOv9efnxcObhlxQsYW+APWJOOa46y266vLt27ws=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1538648004; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=edgNiPjhWGo6ExBDnh61hGgR1CGo7yzwXCCOqpHeD3Y=; 
-	b=ZM2MaM/40WcBFh40HDceR2mdtfDlIL+CozrqaoM0+pyG9bpqyxME8u5jzW0TTxZKM3HDCQ32hr4t4rxZmsY1svgkIw4VmANbc4KFV2eBeY0Arafe3xLH1enhuUOFXTwfVqnLV1eaHu98UeZlt8hFcOMBpz1ekANsqN6GbiTBCk4=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1538648004;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=1991; bh=edgNiPjhWGo6ExBDnh61hGgR1CGo7yzwXCCOqpHeD3Y=;
-	b=JNhz52ET9IvykALNkpGnzQauLxWYRyPhrr4ABJ1cAYkc3LC23e1pJi2hxi6bKXBV
-	mYvKKBGDTyVf5I2NK5IoUzfe699jhIg2OyvfRj4rDAW3z3BgCGrlovFIY7Yokslbqpv
-	BuDknSR2195xwADtFJ7fi1YDx1BFhpI4I6DnDIdE=
-Received: from kvasir.local (88.151.153.114 [88.151.153.114]) by mx.zoho.eu
-	with SMTPS id 1538648003592333.523980724284; Thu, 4 Oct 2018 12:13:23 +0200 (CEST)
-Date: Thu, 4 Oct 2018 11:13:21 +0100
-From: Ioannis Valasakis <code@wizofe.uk>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: axis-fifo: Remove parentheses in axis-fifo.c
-Message-ID: <20181004101321.GA11491@kvasir.local>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ccJ9vLu0;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id h1so15976018pfo.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 01:32:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=+aRoIpwQyqpQGur9AAzlp0nIbgU7NNjtW0tdvsZ9kS0=;
+        b=ccJ9vLu0cNiHCw8GaWKqVojilJIqHQC10F8ZkTKv8YAz5uB4hexZjKUyEjEPMGAGId
+         90pGfvKd1jkmR2H0/uSBe3zaf/26bnx7Z7S5nYXNsU+9Zz3Wrv344go1BW3WwHercx5M
+         sz8vP3u4p0Tom6R53glQhxJyRRjcI6O1agWBwJm5Vwoc4c3Boies/xZCHTubmcRfhl7x
+         RPT09xzvNJtnnDhmxrfjtWAXBCKJ13UrgjJ8gKt0hpfzV3CP6wMhoodwjPJJUUezf03w
+         WniEpNOBzeQjrOomlas3dEYxb3/3z6aiSrStAUlg+1kofOUeLZCZgCfGrXhFxtnMbf6R
+         mqUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=+aRoIpwQyqpQGur9AAzlp0nIbgU7NNjtW0tdvsZ9kS0=;
+        b=iqzoI98llVewmsV9WLrTXQvYVvJqTyWOkljINYOMQ7Hx3MOc/5bMCV2bSXCqNxgKqm
+         qt/fz8TMUsFnCwsEqABwtX4xn5jpartOA6SUW7Z5CMXvMn+vmoZXZJJNZ5hUrAzT1oWh
+         iUjPg5iaLm+ShfYFb5DNX4iK998q2PFPPz4eGiuPcbHZD7FY1CCBtvw6YylChvS6Wl+H
+         FGQ4Z8K/PX238heMvPNvnvQTefkCj+SIfuL2SjuQi0WtSRnKUGdGPZUJWmvEWNawZdDs
+         XKTUMmIZVz2Nr9G4T5hFv9tQoiSRa89WdCZgtlT+etmsKRKeT6R8cSM2UWcjydHEGeT+
+         b11w==
+X-Gm-Message-State: APjAAAWehBHXE/9OIFvrk+BgfhYqbnHXbCTvoGt0fqrMoP6QbJep44B4
+	SHiYo15HU2RE3VVgChSrwpQ=
+X-Received: by 2002:a63:6b47:: with SMTP id g68mr20422936pgc.220.1552123948137;
+        Sat, 09 Mar 2019 01:32:28 -0800 (PST)
+Return-Path: <himadri18.07@gmail.com>
+Received: from localhost.localdomain ([157.32.145.236])
+        by smtp.gmail.com with ESMTPSA id h184sm506071pfc.78.2019.03.09.01.32.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 09 Mar 2019 01:32:26 -0800 (PST)
+From: Himadri Pandya <himadri18.07@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Himadri Pandya <himadri18.07@gmail.com>
+Subject: [PATCH] staging: octeon-usb: remove unnecessary variable frame_number
+Date: Sat,  9 Mar 2019 15:01:58 +0530
+Message-Id: <20190309093158.35582-1-himadri18.07@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-staging: axis-fifo: remove parentheses in axis-fifo.c
+Remove unnecessary local variable "frame_number" and its assignments from function
+cvmx_usb_get_frame_numbe. Suggested by Coccinelle.
 
-Remove parentheses from the end of line and conform to
-the coding style guidelines. Reported by checkpatch.
-
-Add an extra space to the function arguments to fix
-indentation.
-
-Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
 ---
- drivers/staging/axis-fifo/axis-fifo.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/staging/octeon-usb/octeon-hcd.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
-index 63c8efd1b8db..76907ac26300 100644
---- a/drivers/staging/axis-fifo/axis-fifo.c
-+++ b/drivers/staging/axis-fifo/axis-fifo.c
-@@ -364,11 +364,11 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
- 		 * if nothing is currently available
- 		 */
- 		spin_lock_irq(&fifo->read_queue_lock);
--		ret = wait_event_interruptible_lock_irq_timeout(
--			fifo->read_queue,
--			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
--			fifo->read_queue_lock,
--			(read_timeout >= 0) ? msecs_to_jiffies(read_timeout) :
-+		ret = wait_event_interruptible_lock_irq_timeout
-+			(fifo->read_queue,
-+			 ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
-+			 fifo->read_queue_lock,
-+			 (read_timeout >= 0) ? msecs_to_jiffies(read_timeout) :
- 				MAX_SCHEDULE_TIMEOUT);
- 		spin_unlock_irq(&fifo->read_queue_lock);
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+index 14982b6472a0..aeec16314e0d 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.c
++++ b/drivers/staging/octeon-usb/octeon-hcd.c
+@@ -2385,13 +2385,11 @@ static int cvmx_usb_close_pipe(struct octeon_hcd *usb,
+  */
+ static int cvmx_usb_get_frame_number(struct octeon_hcd *usb)
+ {
+-	int frame_number;
+ 	union cvmx_usbcx_hfnum usbc_hfnum;
  
-@@ -482,12 +482,12 @@ static ssize_t axis_fifo_write(struct file *f, const char __user *buf,
- 		 * currently enough room in the fifo
- 		 */
- 		spin_lock_irq(&fifo->write_queue_lock);
--		ret = wait_event_interruptible_lock_irq_timeout(
--			fifo->write_queue,
--			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
-+		ret = wait_event_interruptible_lock_irq_timeout
-+			(fifo->write_queue,
-+			 ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
- 				>= words_to_write,
--			fifo->write_queue_lock,
--			(write_timeout >= 0) ? msecs_to_jiffies(write_timeout) :
-+			 fifo->write_queue_lock,
-+			 (write_timeout >= 0) ? msecs_to_jiffies(write_timeout) :
- 				MAX_SCHEDULE_TIMEOUT);
- 		spin_unlock_irq(&fifo->write_queue_lock);
+ 	usbc_hfnum.u32 = cvmx_usb_read_csr32(usb, CVMX_USBCX_HFNUM(usb->index));
+-	frame_number = usbc_hfnum.s.frnum;
  
+-	return frame_number;
++	return usbc_hfnum.s.frnum;
+ }
+ 
+ static void cvmx_usb_transfer_control(struct octeon_hcd *usb,
 -- 
-2.19.0
-
+2.17.1
 
 
