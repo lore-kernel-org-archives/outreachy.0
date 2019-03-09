@@ -1,115 +1,153 @@
-X-GM-THRID: 6749942525265444864
-X-Received: by 2002:a17:90a:aa81:: with SMTP id l1mr33296pjq.73.1571593462543;
-        Sun, 20 Oct 2019 10:44:22 -0700 (PDT)
+X-GM-THRID: 6666346191524986880
+X-Received: by 2002:aca:39d6:: with SMTP id g205mr27363004oia.42.1552144637941;
+        Sat, 09 Mar 2019 07:17:17 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:30e:: with SMTP id 14ls2995417pgd.10.gmail; Sun, 20 Oct
- 2019 10:44:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwIzOey44W9avEvPWIeyYERg+z3YJ6vuEtHTzz1T+J6z1buYDSM4rglhcrcIYZLyvUxeoTV
-X-Received: by 2002:a63:1d60:: with SMTP id d32mr21688907pgm.37.1571593461479;
-        Sun, 20 Oct 2019 10:44:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571593461; cv=none;
+Received: by 2002:aca:3189:: with SMTP id x131ls3131541oix.2.gmail; Sat, 09
+ Mar 2019 07:17:17 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZC/jTsJqLttfepEsTECC9ygk/BB1R1OakVpKca8kNu2IMG4N194eamfPSqZ7yViYgpg/VQ
+X-Received: by 2002:aca:de02:: with SMTP id v2mr26962018oig.0.1552144637387;
+        Sat, 09 Mar 2019 07:17:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552144637; cv=none;
         d=google.com; s=arc-20160816;
-        b=yLA8ubIYtnUZe51D8sfCr9JAQp/9JU954imWbZ9pzAO7lCnpEGs/nnbaTYE2AjaH5M
-         0bFHH9CbyCAzU4E+2lo9nxJfA8NUnZsSy6zMgpDohPz/bEa2zmm1iD0NmZFTXcnUmpiB
-         tQWgOEGRXr3O8XCT9OsjplcZKnbAUz0ILGqa3bIRYt4KNRqOwHSGKm9s/TLNu1goTDZ4
-         olEM7ZcNwMijxfNXzNrjkzudwG8hGVNe7UjqDIAWGjQRQrUGygOygZHRqJJJUnDU7643
-         SikXGJbyUg+jGU0ukDrDmFyoVRDcxDeRudjcYQf9IIDLblvKsP6FT5yR6L+io9l3qH9z
-         qzLQ==
+        b=zY9hbzU2bPz2Y3+PxYiGOjI22JUBpjFB8v0W8uYAtJAfqVCoEr+VqCGMUI4l0BgMTK
+         tiWl3gpKLulEK4Z4/pje0eSgVMdVI7sbW3mUQC3Z9UsH5d7SnfJhLEzwiigrNVL8p1MD
+         NH5Ku3hoa9y8SiQW2uWEiRaeMnif8YLEigG/BmBgv/fV6jyGnTvCmqMmj6JxrnxVxFBh
+         NeocWsKqUYYyi+nXtb0Lss2tqybvhOxruDZXQ0rie5kDrjKBcWBZK6rGB+r1O+PRaTQ/
+         TizUG9A671mh8xV8Y/o7lKKs6JiwjKMHdETKXhEdgkS/JvYNeVNBSK0/luGJCl6Q9Rgp
+         Mt0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=P3foq8Kf6NeJESAiU3rbRnP5rJw7QEL+wsM4BlVEH08=;
-        b=yDtzeDJZBL6ukLeveqSC83fXyVvYesRpib/6mbQFk4l2y6ueavNCU6s2RvSYEhAMSP
-         Jxh41H9PGLf87n2LWKKKwe/r90t2RVhu8v6OO9DDGpF/I5Fgu/J2mxgfeW77UnyvQmRc
-         JZLO2vBIUX5HbNU01typPFfD2ETb7tiy4F4u0uBviQ1JCARNzFu0Ll43UFjRms6Jh2yp
-         Z2vKB3NksbVzTM9IzU1mTulDAX7DPi2H2vdiwTc3SpFqtHmLffxSYg4Mrc8j91IRSG02
-         o/vW3ySwezDLvr/kMV8kWR6oSSNSCf9kJAUWRmlf8/cHQrStbCJWIriIr9KcFwh2+YFc
-         UYcw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=/lIu089xMoXevANYCmXdVpz4Gn5t4ZI0HwWnaHYIjks=;
+        b=faXpqYqi03/FDIIrMahbiIfZa4kCkAPelBkkpo+bOhUhBQ+P7ew27UrouwS13IjijV
+         AXzAUtCdVD6uNCAtqZI3yPvP4srP4DKFxFWhG4DPaLQIZMBzcB0nl/Z5M8Ml7wMp6cM0
+         99RmaeXG0/x33ajpoELVv4h17cVq3GV0IO5GAcc+R1xRytlcAIJVFDCiH5IWUsNwW5cz
+         A05aaWKeqfiZkIEv37vm2z7PSxz1MjWSHxkTTIHQrxOVGBVar16Xvgq/TZfCx2GkJaFp
+         5i5v3p8nbie9v58+oeDDoof2AebnMavFZb8ivYxL9xYFgKGP8yoEHpH8Y0AGuHL8IhEd
+         RvKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bKHSCMLy;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EGxNdWbp;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id e6si477713pjp.2.2019.10.20.10.44.21
+Return-Path: <himadri18.07@gmail.com>
+Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id q206si41661oic.2.2019.03.09.07.17.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 20 Oct 2019 10:44:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 09 Mar 2019 07:17:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bKHSCMLy;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EGxNdWbp;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id d17so2519080qto.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 20 Oct 2019 10:44:21 -0700 (PDT)
+Received: by mail-ot1-x343.google.com with SMTP id b3so375634otp.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 07:17:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=P3foq8Kf6NeJESAiU3rbRnP5rJw7QEL+wsM4BlVEH08=;
-        b=bKHSCMLy6x3BIk8C1AuKGrzebAEQcA8FqNRgacSnLwBI6ulpIm7+pk+O0js4mqBOIt
-         /bsHDFplsyU2UyWZ7id0t8Yz0qDGAZKpU54Pm1GwWC3Xyspx6ZfkY0ctvO/c7+icAaOS
-         /bGtwoGBYO5E5Iiig+ydQUf7ea/HVFAgqMdIuDDhIUEHTF9ylOFOhDrLiRTKs7GWoIj5
-         zjxz0bM2bIdUWCQ+HoeuJWW2oQF4T1bwH4VV4a4twLyTFKSZ/Vq88uF6AHFGJ6V5vSIh
-         d3Ct8luRTpeSnUrICTal3rBdBqyoVKI63n/GbBZ5aX2BgarSn5xGDIyPsNL6a0fnunCF
-         zuuw==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=/lIu089xMoXevANYCmXdVpz4Gn5t4ZI0HwWnaHYIjks=;
+        b=EGxNdWbpkV3mvd58tBI8/PV0fDiwY8KdHuAwxg1gugIrgGuF44LUFulS38/Y2cLiAm
+         7WAQH9t4L/I5leaIh9zOzNHWvAcgWqf3T17PbesupKONNdOKIQYQWzj64WxcqH6Kbbzb
+         rcFsMgAQuiFUFvHWhUK0McfhUzmswCT13UH7GTj6D6UBqRzqaDSjwh6p4cCdS7eWfeb3
+         /SPo3uWFXMPD5LCC9yTlMi6cvuZ3iEmjOnAdlHHyOJcTYi/83pOUWZNKTZ/Qn5rpn3fm
+         8jKA8TzDMVG2ipCuNrC3MHLoRK28gfhCLhTWirpEfASdDEvxZwDtGSi41oTnuo6FfTGY
+         a7MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=P3foq8Kf6NeJESAiU3rbRnP5rJw7QEL+wsM4BlVEH08=;
-        b=ASFH5RbPfQkdyLvLe0hWwpLBjxGTXNSrP1G/kmZHjoVw46xAXcUmKqdcUXbo+vpSwT
-         9X2Mss6Kyc7Ppo7YrsY2Vak3Cp75uw9+nnksrXWmMdDKyrpzd9IFheSSWLXsJ46qD4kC
-         cQrmvf6k45HUOmR6PID0yWZNKEvOe3Rt2iwBo+RntDsAPovvAkQP8Tog1OFex9lmhmQ3
-         Ri3rcSit5OCxYgjNZ+Bb4IXINDSDAN1OL5XGTqIsnFgj2l1c6XftkAu49CBYcx4afQcZ
-         Bmsmasbcs7y3JBW8+y2wbaLZD4NLW3HMmwIHVkt2rkQoHThMAVRlgUPmetHl2XuwqAjR
-         bIGw==
-X-Gm-Message-State: APjAAAXFEA+bRd+LaxlrnjMcWwwdoLjp3UjH5lGLdvyhjjOSbKAAh2vN
-	6/rNcIgPcVtSzZvD/bRBbqLmYd3lOl2sRA==
-X-Received: by 2002:ac8:3934:: with SMTP id s49mr19880707qtb.321.1571593460366;
-        Sun, 20 Oct 2019 10:44:20 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id g6sm5095468qtv.51.2019.10.20.10.44.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Oct 2019 10:44:19 -0700 (PDT)
-Date: Sun, 20 Oct 2019 15:44:15 -0200
-From: CristianeNaves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Rob Springer <rspringer@google.com>,
-	Todd Poynor <toddpoynor@google.com>,
-	Ben Chan <benchan@chromium.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: gasket: Fix line ending with a '('
-Message-ID: <20191020174415.GA3873@cristiane-Inspiron-5420>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=/lIu089xMoXevANYCmXdVpz4Gn5t4ZI0HwWnaHYIjks=;
+        b=RdZy5cJRPRiU46pamnIkZEShbnP3wnR3QNhYy8iAEEYoE8FVuLYmH8GAQerIdXJIIq
+         rwj1SdpzGZYoJSwgGJ9FMz29x5wwSq+T/39BDD0ZeFCP5Ss9K2nGCTvkvQi9mCmu8jUg
+         Z34ssxaB3A0u6EdJPEXxPTMF8hf1FDMOjk1J1DSQRIjlQtIr9ov7CDT0OKUDyb4zVLnq
+         VkIRz3aTk8/kTeWHfpaBSvv1I6zMx8pgCGBHsHwboq5V4xnkQexlIK8ALKXASmb747hr
+         P0UZh9MWcPEmelh88GrHLLKy0FTWVJA8iMbW6HR3HrtojR2JbpNpqVoK6yG3nUMmC2Tq
+         m0Qg==
+X-Gm-Message-State: APjAAAWTMiWXR7B0xmvZDTK9jrnuL3W3MDl974ZjaXf3WF773YGAidzh
+	Lm+QTTNh6MkFFcz31CxvH/nAKyLcPIT7hCna+Ds=
+X-Received: by 2002:a9d:7dd5:: with SMTP id k21mr14445377otn.309.1552144636910;
+ Sat, 09 Mar 2019 07:17:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <20190309110743.41443-1-himadri18.07@gmail.com> <20190309134031.GB4144@kroah.com>
+In-Reply-To: <20190309134031.GB4144@kroah.com>
+From: Himadri Pandya <himadri18.07@gmail.com>
+Date: Sat, 9 Mar 2019 20:47:04 +0530
+Message-ID: <CAPnhUpaBBL5MDW549sgr2BPeyPqK2gLJ3G7m3_=dkTjD8ipScg@mail.gmail.com>
+Subject: Re: [PATCH 0/2] remove unnecessary local variables
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: adham.abozaeid@microchip.com, ajay.kathat@microchip.com, 
+	outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000b9234e0583aad5cc"
 
-Fix line ending with a '('
+--000000000000b9234e0583aad5cc
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: 'Cristiane Naves <cristianenavescardoso09@gmail.com>'
----
- drivers/staging/gasket/gasket_ioctl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Sat, 9 Mar, 2019, 7:10 PM Greg KH, <gregkh@linuxfoundation.org> wrote:
 
-diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
-index 240f9bb..d1b3e9a 100644
---- a/drivers/staging/gasket/gasket_ioctl.c
-+++ b/drivers/staging/gasket/gasket_ioctl.c
-@@ -34,8 +34,8 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
- 
- 	trace_gasket_ioctl_eventfd_data(die.interrupt, die.event_fd);
- 
--	return gasket_interrupt_set_eventfd(
--		gasket_dev->interrupt_data, die.interrupt, die.event_fd);
-+	return gasket_interrupt_set_eventfd(gasket_dev->interrupt_data,
-+					    die.interrupt, die.event_fd);
- }
- 
- /* Read the size of the page table. */
--- 
-2.7.4
+> On Sat, Mar 09, 2019 at 04:37:41PM +0530, Himadri Pandya wrote:
+> > This patchset removes unnecessary local variables from functions
+> > wilc_set_tx_power and wilc_get_tx_power.
+> >
+> > Himadri Pandya (2):
+> >   staging: wilc1000: remove unnecessary variable ret
+> >   staging: wilc1000: remove unnecessary local variable
+> >
+> >  drivers/staging/wilc1000/host_interface.c | 10 +++-------
+> >  1 file changed, 3 insertions(+), 7 deletions(-)
+>
+> The Subject: line of this email should also have the subsystem (staging)
+> and driver (wilc1000), like your patches do.  No need to change it this
+> time, but please do so next time.
 
+
+> thanks,
+>
+> greg k-h
+>
+
+Noted. Thank you.
+
+- Himadri
+
+>
+
+--000000000000b9234e0583aad5cc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Sat, 9 Mar, 2019, 7:10 PM Greg KH, &lt;<a href=3D"m=
+ailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
+er-left:1px #ccc solid;padding-left:1ex">On Sat, Mar 09, 2019 at 04:37:41PM=
+ +0530, Himadri Pandya wrote:<br>
+&gt; This patchset removes unnecessary local variables from functions<br>
+&gt; wilc_set_tx_power and wilc_get_tx_power.<br>
+&gt; <br>
+&gt; Himadri Pandya (2):<br>
+&gt;=C2=A0 =C2=A0staging: wilc1000: remove unnecessary variable ret<br>
+&gt;=C2=A0 =C2=A0staging: wilc1000: remove unnecessary local variable<br>
+&gt; <br>
+&gt;=C2=A0 drivers/staging/wilc1000/host_interface.c | 10 +++-------<br>
+&gt;=C2=A0 1 file changed, 3 insertions(+), 7 deletions(-)<br>
+<br>
+The Subject: line of this email should also have the subsystem (staging)<br=
+>
+and driver (wilc1000), like your patches do.=C2=A0 No need to change it thi=
+s<br>
+time, but please do so next time.</blockquote></div></div><div dir=3D"auto"=
+><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+thanks,<br>
+<br>
+greg k-h<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Noted. Thank you.</div><div dir=3D"auto"><br></div><div dir=3D"au=
+to">- Himadri</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc soli=
+d;padding-left:1ex">
+</blockquote></div></div></div>
+
+--000000000000b9234e0583aad5cc--
 
