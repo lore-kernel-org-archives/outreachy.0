@@ -1,176 +1,96 @@
 X-GM-THRID: 6666794148561944576
-X-Received: by 2002:a62:ed10:: with SMTP id u16mr10445860pfh.32.1552233973923;
-        Sun, 10 Mar 2019 09:06:13 -0700 (PDT)
+X-Received: by 2002:a67:ed05:: with SMTP id l5mr18429590vsp.23.1552233972721;
+        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a65:5081:: with SMTP id r1ls5154672pgp.9.gmail; Sun, 10 Mar
- 2019 09:06:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxfvNuEgV012x5k7BCKbbAPXex8OFize5jSR0wFbS8HtTI3T0KwRsFJPHcgHexN4BfYIMN
-X-Received: by 2002:a63:4922:: with SMTP id w34mr10653192pga.22.1552233973087;
-        Sun, 10 Mar 2019 09:06:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552233973; cv=none;
+Received: by 2002:a1f:94c2:: with SMTP id w185ls132238vkd.1.gmail; Sun, 10 Mar
+ 2019 09:06:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz6z9piZW6OvylPhS8i5wRg0S9xr+DRNZt2zoq1YekeXgxJW+n7tOzJaoF36iBqAbn2cU4Z
+X-Received: by 2002:a1f:aa03:: with SMTP id t3mr17981571vke.21.1552233972091;
+        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552233972; cv=none;
         d=google.com; s=arc-20160816;
-        b=MX1uqxe6q25Aj4/jkzdyb5bcv4oZ8D1sIPeHIn6wzV3RxEvHrKdrAE95Zf7FsO3jc7
-         WTEvJwpdED8SjZkPOQf7xNGlnM1TwKb55cIfShMqO/K7IlK1tZsUXxSIi3SEfhcmQShf
-         NpnWVqBWZmwL1aPlNifbE+y02L+5c+57wdUKRxYvbdE/HCio6rfjqQ1qS2muOnebDvY4
-         MBWaW9t/+CZ06orLzFc7v8dxQFcs2FP/zaTgFspSmNSt7RZaR4/IK/Ow8P5eT7E3VmIl
-         aWdiw5uerchm91+jp6Gv8KAZcJyytwc5xGcL5lWuhNsZXr+6x2eh/ptdERVTbOJ9PtI9
-         a0tw==
+        b=Xr1dQWo06XueW9dF7S+tVIJYZyao9oAx46kKNnnhTElA2J7ulKTiAb1O9ZQufwx4P2
+         C7egqD/Dzj/6foGWqpJe+fO8lPhnGtGICEZstP2IEfbtIsQSKVCr1iLtnmvjQ7plNTBE
+         EVmtbVfVNWZTaUy7cDHMuxJfgbU0i0oIpxvWiPkqukVXAftSYhRnD1X3YLoF9OLzgsT4
+         ULAdpmWVDeK4snTdSSjdwysFlCUolMr7E502Q1ekoVearKMlkO8NaPGqrG9mTSb8nBbU
+         OHbQFWknYfXMjWxa7p17+GSrvCRZXsc9HhIsEk0iZvkLW9SOdR8ipOWxIfq3FwYBFFej
+         1aIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=xbkIRF/Fns/lr68f2bndVP+/ipylI+pZP2PeDI8tIKc=;
-        b=XEVLf64//MkWviuIXTQKkM45YTxavTbkpUbfVpMsfQidFzsP2AgnwQSztjuhlPFg0e
-         OFXDx/57DTUrY3Fa1Gk5CluUXKUBz5v8G3imoyOZ2BaNIG9nMGpS/o3PSbDUm94wP1++
-         bztdhGrEil7oIBtkU5KCBs0jrJ/6XXOTx5mHjSOIfgVFhDpT7svkqwIRiORZcC6eiLsV
-         xsb2OQqETLz07hrI1mUdLowofNDzE+KcIgcor7J0pKWEcWCJdDjeaaG28HiVsYjrANKn
-         5tqgQZEjbaXzLHwQkKd46uH9Dcr5k6IqFzVAKSf39jtEXignKFsgK7idASrxDBxtku+5
-         fj0A==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=GcVOIvrV50lDsoD0pLfM8nQReP3lIaU7j7myhkQaFZg=;
+        b=fpEVUEDGsFJf5p+goEQugNFFiZCQ8b4aqZrZf5phj2vl5NHeAyzmQ92zpUtNE0FjAA
+         lskVIr9ZaUQ9KhuKEPIU0YQcTp3m52D/siKguLiOqHRD0hZy33o26XbdqejnIzisqbrt
+         qpWLgrJexu1DqI3sOBkno0cM7DCZEfADyzAI9gNKdpPQ35Xi3r/E8UB8Rry+0Km3wpTS
+         CANjA0Y7t33bZvaPeltFqNipx9vNFAEXrmLhsoCFNhTAOZgaIecRNRvqlIpCF2cv+369
+         kLYf1JAKCu5ohYNRU6h41oNSV9K6sJM9FtBBbQQMjKMzulEw0iVNlOBWZxHE/wOu5eM6
+         5tig==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nqs4Ko+u;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uEftzgwC;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x434.google.com (mail-pf1-x434.google.com. [2607:f8b0:4864:20::434])
-        by gmr-mx.google.com with ESMTPS id p15si167737plr.4.2019.03.10.09.06.13
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id b19si125777vkf.3.2019.03.10.09.06.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 09:06:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) client-ip=2607:f8b0:4864:20::434;
+        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nqs4Ko+u;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::434 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uEftzgwC;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x434.google.com with SMTP id q17so1839486pfh.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 09:06:13 -0700 (PDT)
+Received: by mail-pg1-x543.google.com with SMTP id r124so2095080pgr.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=xbkIRF/Fns/lr68f2bndVP+/ipylI+pZP2PeDI8tIKc=;
-        b=nqs4Ko+uYEAPFSZO8gd+h7LcQBXF8QFD00A49NCPLukq+HPE5mgntIhPQBtavNR3hs
-         1a8qFj8GG6fIL63mO3Q8Fo0/Gs+wmJyZ4oyjo5LehBIyVSca/1b1Lnch4cnxpYVELucO
-         UzydEAoOXQtmQexgiQgBupXEcZ0DB6G9OS7/IK0REXjieetkx9GA0+hNbg0eMQWqsIWg
-         we5Eb8052ZoaZsK53dABlIukLs9APynqS2ckYdqlMwDgtBHy1VrUZ6wGi2Fkwk/sa5ST
-         /Iit5Wm1IpUaQ90G5YDjte5SVuMIz/NqAJKt6R0CZV0FZ0Oi7kCXtsA9hIH/Xn9hzYPC
-         x7AA==
+        h=from:to:cc:subject:date:message-id;
+        bh=GcVOIvrV50lDsoD0pLfM8nQReP3lIaU7j7myhkQaFZg=;
+        b=uEftzgwCWc2p4PxMlstSEyFFtHENYbJ2wjYLrMBBxXy5gLSSRo4UZj4v5wj+32LTjF
+         BVQEMH3a6rpkgDZsSGVDqr/Uu/znE6mCas01qM8IfqV4t1CG9ieDpCvJ8qImv+z87ZRp
+         QzRNx+qcxlxAdBBxjRkNYPD5hyh5RQuQSDVw6exBEw8iLYVqGLFq43GQ/i6InUxvdEga
+         AG8+gHrk7unbIWgKynUW+DIrfaARGkLY8PvCoTQ1vVAOUnHRr7Rg+Dk64evNWNiSuNYN
+         yaqwzmfFHDeXwoUW5GXL6/rTjpuyCNAMkNh7gLvM+AHTdPircezmQu5vlYrRMDCgb9J0
+         YnDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=xbkIRF/Fns/lr68f2bndVP+/ipylI+pZP2PeDI8tIKc=;
-        b=hk4TgA/oeKODr5qE6E5nc40lrs214qldF4pIOpjRiDgXV0iOIdlwVTRNDdLQEwBKXA
-         ksr6Jar6RhbjDH5f3JYgqYh7KPuBaYhb+eyJB7tIVVLUI/TBrsk4ogFfDnJnU+uDJeTO
-         84wsOlj63fp2xASkvJ6XsQNSkXPfOhRnhbFL27Wzx/ILlSTUW9VtjrvfaSp/rdhkDoDM
-         W0hN0SITrgXZ0rQhkCW0pEa4Q7zaJp+DDxnzmoUpanWubFfPeT3iQmVG5S3FKIg+uYgM
-         dClub4NvkwUQJhiHMBG/rUDFb8zBKnkAIP2xwQ+GtwHmncpNttg3kn7n6wgwbGppbvjn
-         jRcA==
-X-Gm-Message-State: APjAAAUVnpAuOBBGTiMMfcwvvHau3dD5007CgwCtppBOwkeLgwh8/mQT
-	7CFe1mF3ZMfST4He2rtauBxeKWUKN1A=
-X-Received: by 2002:a63:1044:: with SMTP id 4mr26208417pgq.324.1552233972588;
-        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=GcVOIvrV50lDsoD0pLfM8nQReP3lIaU7j7myhkQaFZg=;
+        b=ef0AjqNBdb4vUZD9K6+jd/BCmUht/cITu3iMUeIPFOf8lY6NDwIltkOWRXeELOauEL
+         uMGq/vyX+E6X7HgWfjXjKif6uBTySCtkD6WYm6nFX39FLv4hJG+n0Rf0uFybgottYXwS
+         30C0Zp2NL8ikZbpfTktWgF+AoaYsCH1wGB6ng5v4wN4A8U/J9uQHh3B4MEgzzsfIxTVK
+         sDd9lruvDu5Sdn/Qu5Um82wJCyB2ab9nC8wKc+3o3zGZCtO9cPmhafkI9dZcjr0zMXSY
+         bGnLYFz7iOAp6qtAtu81hq0zoYvRHWjYEnN80wbVoY+VHmTn+xb10Mra+Oid6I8NRDLH
+         DkeQ==
+X-Gm-Message-State: APjAAAWsU7l6eZyK59f0pb/S36n3enLEr7BMrZUG2Qc7J7bSs7oUqdoB
+	3QPvXzmNkSueElM3N3fBEu+h38BB4sY=
+X-Received: by 2002:a17:902:2ec1:: with SMTP id r59mr29214478plb.334.1552233970935;
+        Sun, 10 Mar 2019 09:06:10 -0700 (PDT)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id x23sm10000292pfe.0.2019.03.10.09.06.11
+        by smtp.googlemail.com with ESMTPSA id x23sm10000292pfe.0.2019.03.10.09.06.09
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 09:06:12 -0700 (PDT)
+        Sun, 10 Mar 2019 09:06:10 -0700 (PDT)
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 1/2] Staging: rtl8192u: Avoid typedefs for structure types
-Date: Sun, 10 Mar 2019 21:35:53 +0530
-Message-Id: <20190310160554.4479-2-bhanusreemahesh@gmail.com>
+Subject: [PATCH 0/2] Staging: rtl8192u: Remove typedef struct types
+Date: Sun, 10 Mar 2019 21:35:52 +0530
+Message-Id: <20190310160554.4479-1-bhanusreemahesh@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190310160554.4479-1-bhanusreemahesh@gmail.com>
-References: <20190310160554.4479-1-bhanusreemahesh@gmail.com>
 
-Remove typedef for structure type variables to maintain Kernel coding style.
-Remove all occurances of typedef for various structures in ieeee802111
-module.
+This patch series removes typedefs for various structures to maintain
+Linux KernelCoding style.
+Using typedefs for structures is discouraged.
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- .../staging/rtl8192u/ieee80211/ieee80211.h    | 20 +++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+Bhanusree Pola (2):
+  Staging: rtl8192u: Avoid typedefs for structure types
+  Staging: rtl8192: Remove occurances of typedef struct datatypes
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index 8aa536d79900..b1036d522640 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -1462,23 +1462,23 @@ struct tx_pending {
- 	struct ieee80211_txb *txb;
- };
- 
--typedef struct _bandwidth_autoswitch {
-+struct _bandwidth_autoswitch {
- 	long threshold_20Mhzto40Mhz;
- 	long	threshold_40Mhzto20Mhz;
- 	bool bforced_tx20Mhz;
- 	bool bautoswitch_enable;
--} bandwidth_autoswitch, *pbandwidth_autoswitch;
-+};
- 
- 
- //added by amy for order
- 
- #define REORDER_WIN_SIZE	128
- #define REORDER_ENTRY_NUM	128
--typedef struct _RX_REORDER_ENTRY {
-+struct _RX_REORDER_ENTRY {
- 	struct list_head	List;
- 	u16			SeqNum;
- 	struct ieee80211_rxb *prxb;
--} RX_REORDER_ENTRY, *PRX_REORDER_ENTRY;
-+};
- //added by amy for order
- typedef enum _Fsync_State {
- 	Default_Fsync,
-@@ -1506,9 +1506,9 @@ typedef enum _RT_JOIN_ACTION {
- 	RT_NO_ACTION  = 4,
- } RT_JOIN_ACTION;
- 
--typedef struct _IbssParms {
-+struct _IbssParms {
- 	u16   atimWin;
--} IbssParms, *PIbssParms;
-+};
- #define MAX_NUM_RATES	264 // Max num of support rates element: 8,  Max num of ext. support rate: 255. 061122, by rcnjko.
- 
- // RF state.
-@@ -1518,7 +1518,7 @@ typedef	enum _RT_RF_POWER_STATE {
- 	eRfOff
- } RT_RF_POWER_STATE;
- 
--typedef struct _RT_POWER_SAVE_CONTROL {
-+struct _RT_POWER_SAVE_CONTROL {
- 
- 	//
- 	// Inactive Power Save(IPS) : Disable RF when disconnected
-@@ -1562,7 +1562,7 @@ typedef struct _RT_POWER_SAVE_CONTROL {
- 	//
- 	bool				bLeisurePs;
- 
--} RT_POWER_SAVE_CONTROL, *PRT_POWER_SAVE_CONTROL;
-+};
- 
- typedef u32 RT_RF_CHANGE_SOURCE;
- #define RF_CHANGE_BY_SW		BIT(31)
-@@ -1586,7 +1586,7 @@ typedef enum {
- } country_code_type_t;
- 
- #define RT_MAX_LD_SLOT_NUM	10
--typedef struct _RT_LINK_DETECT_T {
-+struct _RT_LINK_DETECT_T {
- 
- 	u32				NumRecvBcnInPeriod;
- 	u32				NumRecvDataInPeriod;
-@@ -1599,7 +1599,7 @@ typedef struct _RT_LINK_DETECT_T {
- 	u32				NumTxOkInPeriod;
- 	u32				NumRxOkInPeriod;
- 	bool				bBusyTraffic;
--} RT_LINK_DETECT_T, *PRT_LINK_DETECT_T;
-+};
- 
- 
- struct ieee80211_device {
+ .../staging/rtl8192u/ieee80211/ieee80211.h    | 30 +++++++++----------
+ .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 12 ++++----
+ .../rtl8192u/ieee80211/rtl819x_TSProc.c       | 10 +++----
+ 3 files changed, 26 insertions(+), 26 deletions(-)
+
 -- 
 2.17.1
 
