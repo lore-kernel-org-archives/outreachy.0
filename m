@@ -1,113 +1,233 @@
-X-GM-THRID: 6744681878871080960
-X-Received: by 2002:a62:cd08:: with SMTP id o8mr4687739pfg.115.1570368623746;
-        Sun, 06 Oct 2019 06:30:23 -0700 (PDT)
+X-GM-THRID: 6666827183901638656
+X-Received: by 2002:ac8:1aea:: with SMTP id h39mr16115350qtk.7.1552243504150;
+        Sun, 10 Mar 2019 11:45:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:5996:: with SMTP id p22ls3552734pli.3.gmail; Sun, 06
- Oct 2019 06:30:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7oEyeSQTkKp7RJyajo0IQIOfHmF+RM5ZeRPKseWNz4zheg6RRDSNzvWovDal2QvMXQQMf
-X-Received: by 2002:a17:902:9a49:: with SMTP id x9mr25332441plv.324.1570368622553;
-        Sun, 06 Oct 2019 06:30:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570368622; cv=none;
+Received: by 2002:a0c:aa9d:: with SMTP id f29ls3256653qvb.4.gmail; Sun, 10 Mar
+ 2019 11:45:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx30u43aQ9IuO3MpP3m1y5AZ0eYlbGHyz4vtC9F3g1BJHtZesRQCAprk7CZ2IJ+uebS3/Yn
+X-Received: by 2002:a0c:eac2:: with SMTP id y2mr2959043qvp.26.1552243503520;
+        Sun, 10 Mar 2019 11:45:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552243503; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uc4rt935eTFx3ugIM3ztEPaEqsrlybvmQ1oVomjsSJri+Pxpr536hszjcnj4XCBXAd
-         SBfflFt57zbh/En0WJC0r6x/cL2UjHAWtAuPzooMU6/8q/ldI4L1r++M+ZOxL31QhqTP
-         xG8ukgNiNI1VCAYDmlMEGCCsxWW9Bhckxz7FO6PnvQ/ECEqexUbF8V1/z+dLRsxux//C
-         LsdH+lSZzDWDOOOJY6yRsjw+nqtKbmNgHC/e/+kDA/UvQ/+odJnS/gzQoQhv+CQ8m4gU
-         rMNFlxXd/oBYfHSVSsA5v1xuDu+qgNviuz9n67ehMJzCu0fA/HhZ8Bvn7wg4SAWzSgPy
-         eq9A==
+        b=lNhaXSP2mKAcQbI7ZDkddUUGuYHMQNgeh7sgcxlba6y5CmmauB3S0muvhIX7Wf15yY
+         fH9cnozT213hNeV2zojI4atB/CdwuBazvYPPT1TJxmb0kPayQ95ppE7wKLfEKSOGCiDC
+         4GVsgE+MJZ1i4hQKPt4SeCUJlorQ3P+tCrpRwTLIQJZ406EL3vu40jdskoJNlKvz0zOi
+         STHBF1WwJVE1T4pIFDRuW96WSHCqtALtwcjytnuMWFJ/Kqv4STKbwfrfpYkUOJcBaO+y
+         hK5J+OmXoqA5iNxAj5IZqhNmTLtepp5N12m/fkx04DqKB4ptrxgJup6ETaqty7oPOxI0
+         FFvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=UQlBhBXb39xKfAx0T2lSgHeTA8u4KHRbjF3BgdOJ/Xs=;
-        b=II4kdi4ZuspcP0mE4RpU8XZAn9L0jrOrHA1Q7w6IzaOL1IlbzjmUq7x61s6P91ToiE
-         /sy2H6QbyBCwLVcoaypRCLcnO3oSG8SwebhsKlz3wS+KIvUh4DaQ0hAVFBAMBpKkNIBx
-         9jYVyfTdeOP4eVwtXgU/LO4tns3GsuduHvahVsdvA8RvW6k9kk9dmO6pbWCind6iLc14
-         q4qXVyGpuGEyJI8ZC+W2aU2aKjCEo6cMBWq7MPwwTMqC/Q3ByQIFxSegPTCoZ+vuuQCl
-         E+t/A9N/s1lVWVrcHcnuOBZcvdajqSr9ZrbgT9oHfTg6SSWyiVRMd0Zg6YXO5/HliJRd
-         ku9g==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=lTNas4Ov65quNG5vPO/hrpav38f+6+zLLciBwdUW9Yk=;
+        b=FKdB37gA8xSLMV8RLawCPdvS6BO7RtJkHmBTP8s/de+NDsMbyasdalRmBe3U5hokN4
+         lMap6pn+zVBX+eU1SQEzxtc29dPnJURKKpSQm7JV0r0ANKHMQM6AcrUk+IMmbNiN0Lq9
+         VlZXlk1dtrf1JMkqhPQhN+o72PG2EJNrUM5ew7eH4MdA/Mo+lVsy2Pqs17wnXMFhOOUo
+         Riew6j/jQaKkcXMFOBeXgAxNv1VhH5HwnPf3sm5cHh9su2tLS4J2+S0zIoXm3g7ogyiD
+         VcgK3IPszxLWF7A88adLtsSq1lvQVhGmcuNJwROb1psAQeDX6eRX2dXeDuswxQpTwsMo
+         /P0g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uyha1Zi1;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MrGxsFNp;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vs1-xe43.google.com (mail-vs1-xe43.google.com. [2607:f8b0:4864:20::e43])
-        by gmr-mx.google.com with ESMTPS id l1si839013pjr.2.2019.10.06.06.30.22
+Return-Path: <digholebhagyashri@gmail.com>
+Received: from mail-qk1-x72f.google.com (mail-qk1-x72f.google.com. [2607:f8b0:4864:20::72f])
+        by gmr-mx.google.com with ESMTPS id i11si207274qkk.4.2019.03.10.11.45.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Oct 2019 06:30:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) client-ip=2607:f8b0:4864:20::e43;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 10 Mar 2019 11:45:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) client-ip=2607:f8b0:4864:20::72f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uyha1Zi1;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MrGxsFNp;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe43.google.com with SMTP id p13so7196779vso.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 06:30:22 -0700 (PDT)
+Received: by mail-qk1-x72f.google.com with SMTP id n6so1488249qkf.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 11:45:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=UQlBhBXb39xKfAx0T2lSgHeTA8u4KHRbjF3BgdOJ/Xs=;
-        b=uyha1Zi1axXgOHRhUrCQA0kTa/t37efG6uNUIn8dO7vG3eLhZp5GmJlg1zFCsjXCCM
-         MPOOs9rY8JK1C8mLgYJTwjcLyQO+l3xpOO71g5mS2gYX3fsT5h0uQ6vctbTp2HETYDxt
-         hvIKki7pTb1TB8Rz8Nwd880LuxX2t1R6DkJQeEd97a4CHq3yD85JNm6DyY7/M9Maw0dB
-         1y1JHpznM0AXzcTI3fF9FtyE8HWFQAbAdwzJN6pNnMnUmI/BVUYQowux1P4LqAmkrtzW
-         6a1gmMT+yVYiIOnTxeHNlJFce0xGtJGbaQ/bKo3Mr3xm9bi/JrFSGg4VwzaiQEdqeN1F
-         7kiw==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=lTNas4Ov65quNG5vPO/hrpav38f+6+zLLciBwdUW9Yk=;
+        b=MrGxsFNpl+xdv66Hi6H264q31HhLn7NwdUf3dA04wwjcuCApZhtdXKC+me+XvMi62y
+         PGl4mR650Htkt3bO8aqV7pUKuISAPpceMXYIZluDfYLUIvEs0YZjPx/Q9tK2OsXtnDWx
+         Ey/u6nldecaXnPcOHvBkYdRJLKAab/l8kizqtSKBKVFrsIO1cRZrIcpEOnILRbY5Wd31
+         V8ChbL2/nLtguDHD57gNHO5GZlc8ePwCNIxHFEUtDCQQ65tV6b2aDbszePTFvoinPwaJ
+         K84jz3Ux3k/ap+u156q+/mobStr3NfBLec9ZS8g+6lG/ZneOqaGcZvNa/EqNrVwGrcE6
+         Kj0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=UQlBhBXb39xKfAx0T2lSgHeTA8u4KHRbjF3BgdOJ/Xs=;
-        b=LQ6dBlrVJEtFh8JNZvivEBNhm4RM4SSrlekAefeJqdEfCtdyKWd2yj92CnZgcGQJmt
-         2uxVzOvahVWmmZUn/FFCK7WfCbp+Z75sen9kYxbEjWqwWWmxQ4YppBTDNBSL7iYaYPJs
-         vibQ4GDLLadKHodlvYEkIKmRQ1NbFLZMX7L0R9bR3Ir06LFxLM1nuZq4FPEYfiYtIUW0
-         +FzTazpYc6I2RMed4Z0/xZu7qIOygxcOaB9ZbH7QVXuHsnxheddSU7+BT9DG47Ayezsl
-         bpxfMpgK9InsTGaPHo90hF4o6vCVHSfz+hjiKLETZe/MErwmn6kXNJBWqOCOkVUgNFuv
-         pTTg==
-X-Gm-Message-State: APjAAAUtByN+DYYVyzDGCooSJ45z6Gr/L+GTeyKJsjauLbV5QZKlmJx0
-	uOiMHuBpZb16jLE5aMyIel6deZsyjdAJpw==
-X-Received: by 2002:a67:6545:: with SMTP id z66mr12584077vsb.2.1570368621724;
-        Sun, 06 Oct 2019 06:30:21 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com (dynamic-200-119-56-53.dynamic.etb.net.co. [200.119.56.53])
-        by smtp.gmail.com with ESMTPSA id 1sm3201695vss.33.2019.10.06.06.30.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Oct 2019 06:30:21 -0700 (PDT)
-Date: Sun, 6 Oct 2019 08:30:19 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Remove unnecessary braces
-Message-ID: <20191006133016.GA22297@gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=lTNas4Ov65quNG5vPO/hrpav38f+6+zLLciBwdUW9Yk=;
+        b=E3NUSJyn0CXLCB8SNB7i7NkjpizIBViTzdARqDhsYYhHkiQzu0Klylhr5m0MtlnMpb
+         jCKFRKSI5EBhSUERYfVTuJ75zOAjWxd6KFQqyXx8VSKRhMFIx/oKhgId8eI7POmtl6+z
+         JTzNCVAm15LNjL6kDI897D0r4lmn7IgwVeTZ6mtOku1SCyxl0TpEX6K9bqJ6giJmWjZR
+         ZCv9/H2oMFFZGATBRakDKwFCmc57g1aS0C9cG/1iN03U84M2K//sI5QeKzQX+65wamXp
+         nsSN8drzZ7CRnRe16olUPMiqFQM994G5kfwar6U0Dk4E6Nhp34tUonZtm2GiCLqwL1FW
+         3hew==
+X-Gm-Message-State: APjAAAVGM8ytanOQYC7IKqDDQbRclPAryTENQtPjpyNIaLmRTMPyZkVU
+	MlYObU7n3jAIb//t3wqwpNDl3vPatcQwgMKQ46A=
+X-Received: by 2002:a37:77c5:: with SMTP id s188mr11160695qkc.21.1552243503154;
+ Sun, 10 Mar 2019 11:45:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20190310181412.GA29653@bhagyashri-Lenovo-G570> <alpine.DEB.2.21.1903101920430.3131@hadrien>
+In-Reply-To: <alpine.DEB.2.21.1903101920430.3131@hadrien>
+From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Date: Mon, 11 Mar 2019 00:14:49 +0530
+Message-ID: <CAOMPgjjYcWySqSdH-U4LC6GRDYtNJAUcCKHv=a3dTUTF97ZmFQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Multiple blank lines.
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="0000000000009c4acc0583c1dacf"
 
-Remove unnecessary braces for single statement block.
-Issue found by checkpatch.
+--0000000000009c4acc0583c1dacf
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Sun, Mar 10, 2019, 11:55 PM Julia Lawall <julia.lawall@lip6.fr wrote:
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index b5dcb78fb4f4..29acbb1ee869 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -3022,9 +3022,8 @@ int rtw_sctx_wait(struct submit_ctx *sctx, const char *msg)
- 		status = sctx->status;
- 	}
- 
--	if (status == RTW_SCTX_DONE_SUCCESS) {
-+	if (status == RTW_SCTX_DONE_SUCCESS)
- 		ret = _SUCCESS;
--	}
- 
- 	return ret;
- }
--- 
-2.20.1
+> > diff --git a/drivers/staging/rtl8712/rtl8712_spec.h
+> b/drivers/staging/rtl8712/rtl8712_spec.h
+> > index c0bab4c..e9415ae 100644
+> > --- a/drivers/staging/rtl8712/rtl8712_spec.h
+> > +++ b/drivers/staging/rtl8712/rtl8712_spec.h
+> > @@ -30,39 +30,6 @@
+> >
+> >  #define RTL8712_IOBASE_FF    0x10300000 /*IOBASE_FIFO
+> 0x1031000~0x103AFFFF*/
+> >
+> > -
+> > -/*IOREG Offset for 8712*/
+> > -#define RTL8712_SYSCFG_              RTL8712_IOBASE_IOREG
+> > -#define RTL8712_CMDCTRL_     (RTL8712_IOBASE_IOREG + 0x40)
+> > -#define RTL8712_MACIDSETTING_        (RTL8712_IOBASE_IOREG + 0x50)
+> > -#define RTL8712_TIMECTRL_    (RTL8712_IOBASE_IOREG + 0x80)
+> > -#define RTL8712_FIFOCTRL_    (RTL8712_IOBASE_IOREG + 0xA0)
+> > -#define RTL8712_RATECTRL_    (RTL8712_IOBASE_IOREG + 0x160)
+> > -#define RTL8712_EDCASETTING_ (RTL8712_IOBASE_IOREG + 0x1D0)
+> > -#define RTL8712_WMAC_                (RTL8712_IOBASE_IOREG + 0x200)
+> > -#define RTL8712_SECURITY_    (RTL8712_IOBASE_IOREG + 0x240)
+> > -#define RTL8712_POWERSAVE_   (RTL8712_IOBASE_IOREG + 0x260)
+> > -#define RTL8712_GP_          (RTL8712_IOBASE_IOREG + 0x2E0)
+> > -#define RTL8712_INTERRUPT_   (RTL8712_IOBASE_IOREG + 0x300)
+> > -#define RTL8712_DEBUGCTRL_   (RTL8712_IOBASE_IOREG + 0x310)
+> > -#define RTL8712_OFFLOAD_     (RTL8712_IOBASE_IOREG + 0x2D0)
+> > -
+> > -
+> > -/*FIFO for 8712*/
+> > -#define RTL8712_DMA_BCNQ     (RTL8712_IOBASE_FF + 0x10000)
+> > -#define RTL8712_DMA_MGTQ     (RTL8712_IOBASE_FF + 0x20000)
+> > -#define RTL8712_DMA_BMCQ     (RTL8712_IOBASE_FF + 0x30000)
+> > -#define RTL8712_DMA_VOQ              (RTL8712_IOBASE_FF + 0x40000)
+> > -#define RTL8712_DMA_VIQ              (RTL8712_IOBASE_FF + 0x50000)
+> > -#define RTL8712_DMA_BEQ              (RTL8712_IOBASE_FF + 0x60000)
+> > -#define RTL8712_DMA_BKQ              (RTL8712_IOBASE_FF + 0x70000)
+> > -#define RTL8712_DMA_RX0FF    (RTL8712_IOBASE_FF + 0x80000)
+> > -#define RTL8712_DMA_H2CCMD   (RTL8712_IOBASE_FF + 0x90000)
+> > -#define RTL8712_DMA_C2HCMD   (RTL8712_IOBASE_FF + 0xA0000)
+> > -
+> > -
+> > -/*------------------------------*/
+> > -
+>
+> This does more than remove blank lines.
+>
+> Anyway, I think you have a number of accepted patches now.  Please focus
+> on things that involve changing code rather than adjusting whitespace.
+>
 
+Yes, Sure. :)
+
+>
+> julia
+>
+
+--0000000000009c4acc0583c1dacf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
+On Sun, Mar 10, 2019, 11:55 PM Julia Lawall &lt;<a href=3D"mailto:julia.law=
+all@lip6.fr">julia.lawall@lip6.fr</a> wrote:<br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-=
+left:1ex">&gt; diff --git a/drivers/staging/rtl8712/rtl8712_spec.h b/driver=
+s/staging/rtl8712/rtl8712_spec.h<br>
+&gt; index c0bab4c..e9415ae 100644<br>
+&gt; --- a/drivers/staging/rtl8712/rtl8712_spec.h<br>
+&gt; +++ b/drivers/staging/rtl8712/rtl8712_spec.h<br>
+&gt; @@ -30,39 +30,6 @@<br>
+&gt;<br>
+&gt;=C2=A0 #define RTL8712_IOBASE_FF=C2=A0 =C2=A0 0x10300000 /*IOBASE_FIFO =
+0x1031000~0x103AFFFF*/<br>
+&gt;<br>
+&gt; -<br>
+&gt; -/*IOREG Offset for 8712*/<br>
+&gt; -#define RTL8712_SYSCFG_=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 RTL8712_IOBASE_IOREG<br>
+&gt; -#define RTL8712_CMDCTRL_=C2=A0 =C2=A0 =C2=A0(RTL8712_IOBASE_IOREG + 0=
+x40)<br>
+&gt; -#define RTL8712_MACIDSETTING_=C2=A0 =C2=A0 =C2=A0 =C2=A0 (RTL8712_IOB=
+ASE_IOREG + 0x50)<br>
+&gt; -#define RTL8712_TIMECTRL_=C2=A0 =C2=A0 (RTL8712_IOBASE_IOREG + 0x80)<=
+br>
+&gt; -#define RTL8712_FIFOCTRL_=C2=A0 =C2=A0 (RTL8712_IOBASE_IOREG + 0xA0)<=
+br>
+&gt; -#define RTL8712_RATECTRL_=C2=A0 =C2=A0 (RTL8712_IOBASE_IOREG + 0x160)=
+<br>
+&gt; -#define RTL8712_EDCASETTING_ (RTL8712_IOBASE_IOREG + 0x1D0)<br>
+&gt; -#define RTL8712_WMAC_=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 (RTL8712_IOBASE_IOREG + 0x200)<br>
+&gt; -#define RTL8712_SECURITY_=C2=A0 =C2=A0 (RTL8712_IOBASE_IOREG + 0x240)=
+<br>
+&gt; -#define RTL8712_POWERSAVE_=C2=A0 =C2=A0(RTL8712_IOBASE_IOREG + 0x260)=
+<br>
+&gt; -#define RTL8712_GP_=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (RTL8712_IOBASE=
+_IOREG + 0x2E0)<br>
+&gt; -#define RTL8712_INTERRUPT_=C2=A0 =C2=A0(RTL8712_IOBASE_IOREG + 0x300)=
+<br>
+&gt; -#define RTL8712_DEBUGCTRL_=C2=A0 =C2=A0(RTL8712_IOBASE_IOREG + 0x310)=
+<br>
+&gt; -#define RTL8712_OFFLOAD_=C2=A0 =C2=A0 =C2=A0(RTL8712_IOBASE_IOREG + 0=
+x2D0)<br>
+&gt; -<br>
+&gt; -<br>
+&gt; -/*FIFO for 8712*/<br>
+&gt; -#define RTL8712_DMA_BCNQ=C2=A0 =C2=A0 =C2=A0(RTL8712_IOBASE_FF + 0x10=
+000)<br>
+&gt; -#define RTL8712_DMA_MGTQ=C2=A0 =C2=A0 =C2=A0(RTL8712_IOBASE_FF + 0x20=
+000)<br>
+&gt; -#define RTL8712_DMA_BMCQ=C2=A0 =C2=A0 =C2=A0(RTL8712_IOBASE_FF + 0x30=
+000)<br>
+&gt; -#define RTL8712_DMA_VOQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (RTL8712_IOBASE_FF + 0x40000)<br>
+&gt; -#define RTL8712_DMA_VIQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (RTL8712_IOBASE_FF + 0x50000)<br>
+&gt; -#define RTL8712_DMA_BEQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (RTL8712_IOBASE_FF + 0x60000)<br>
+&gt; -#define RTL8712_DMA_BKQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 (RTL8712_IOBASE_FF + 0x70000)<br>
+&gt; -#define RTL8712_DMA_RX0FF=C2=A0 =C2=A0 (RTL8712_IOBASE_FF + 0x80000)<=
+br>
+&gt; -#define RTL8712_DMA_H2CCMD=C2=A0 =C2=A0(RTL8712_IOBASE_FF + 0x90000)<=
+br>
+&gt; -#define RTL8712_DMA_C2HCMD=C2=A0 =C2=A0(RTL8712_IOBASE_FF + 0xA0000)<=
+br>
+&gt; -<br>
+&gt; -<br>
+&gt; -/*------------------------------*/<br>
+&gt; -<br>
+<br>
+This does more than remove blank lines.<br>
+<br>
+Anyway, I think you have a number of accepted patches now.=C2=A0 Please foc=
+us<br>
+on things that involve changing code rather than adjusting whitespace.<br><=
+/blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">Yes, =
+Sure. :)</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pad=
+ding-left:1ex">
+<br>
+julia<br>
+</blockquote></div></div></div>
+
+--0000000000009c4acc0583c1dacf--
 
