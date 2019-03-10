@@ -1,91 +1,93 @@
 X-GM-THRID: 6666820090157072384
-X-Received: by 2002:a25:fd6:: with SMTP id 205mr844673ybp.32.1552240014892;
+X-Received: by 2002:a81:b184:: with SMTP id p126mr12782258ywh.14.1552240014032;
         Sun, 10 Mar 2019 10:46:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:589:: with SMTP id 131ls173467ybf.7.gmail; Sun, 10 Mar
- 2019 10:46:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxabvz0GZDmjCYRuhQcbNU2Vy6ntXFQP4tuIlMXI1pHNl/Avk7o7xp7FRWEB/urJHCevOtM
-X-Received: by 2002:a25:1c2:: with SMTP id 185mr13733577ybb.87.1552240014398;
-        Sun, 10 Mar 2019 10:46:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552240014; cv=none;
+Received: by 2002:a25:cdc7:: with SMTP id d190ls149032ybf.8.gmail; Sun, 10 Mar
+ 2019 10:46:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxnAkJD9EomfzdnhynLR05iOQdB6GA0EayBnvgIMrWUyLUHk71EbbKwrAn2ueJyxgW9B542
+X-Received: by 2002:a25:4c4:: with SMTP id 187mr12976660ybe.81.1552240013207;
+        Sun, 10 Mar 2019 10:46:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552240013; cv=none;
         d=google.com; s=arc-20160816;
-        b=MUYrgobzfUyGeXQwosystI7NqnRIzQG6gnBTnDXvZMid0BU9nIGIYZrpy+43l4Ubr6
-         NLi3iBH5M07KczT8XIDbasTwgMZmpFtJDRcXyIletlijnFkEKBivDFD1ptbT5AEBqUGN
-         E7yCTwCzQX38Z/zV0MWoEFU12VrFnktjZneYbv9wZqin3VnUYxfVS3U17OfCOczhJPy2
-         gPRYiiGtfpV+ozMBJRrIhxHguFuOJiqdFJSwnufxD+RTFFTQlhKobKYqXp4wyWLWgfVn
-         fyUZ/V89rumQf/JsCA9r4IR/bqZ16PD/r9UB/BGPV0Cy+lHkKGTuHZQ0inzpkuOwvawk
-         YVJg==
+        b=U1XKcUXF1Kr0FBpZFm7+O6NSUiXgY/5s+lCDzU6B6lqfWcSXKcF7uos7viiqIUeGBt
+         Pp/pa0dxbQ4wYTmc8CWiZLf9J8DTJdX9U95UrlUSdvcGswquQuNJBkNolNa/P1dBzUb2
+         vk7CUWYLWwyLa6ukzRJL8+UcOI1y0e60ku25TXlwcffw9WVm6EpXCCKfLrt7t2zyn62g
+         IuaJqNlmZccu7Z0MI1GVX7pP7JXxKpanZ7kd8Fa0IDmYZRexK1xbX1i++eUoUJYT8Vyw
+         Lgc9hfJloYtB3tKaH1cueSVVmZbIrJRmINhB2e4fDMVruTGL9JsoXqliSl0TGMXlhtC2
+         49xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=TcYVedUcGpZt9Vkr7kzQHCz8bPhmCT1zEAAwXk9JYZY=;
-        b=J7rBXbH9w0et9dfFZArdS/DBfAp6Mtd9zRGHbQtFKQg0b6Q3K5YpVKI9tBjEWuJtSW
-         eOuS91gjzMoZ7MYmYarHo6sqgz9mH0bgjhDAU5StNAIMjcMc5zhQLKlhulVPUtBr8jeQ
-         hwh0Dm7RBHNbKu9ORfyKi6NKuOU9mlSr/hkoSekP0RAt3j+CJ6GBwTM+iQGjmp5Z/Tzn
-         6mEN9rAHCN1oE2NXmU0EVhDfHcXxDKeP4f5gxswOm1orveHpBNrlj8xeDoI2C2IZmRBz
-         oI4W33nffdzkSpOP8gn/H1sy2EG7N+r03NEn5cfUY9kqXb8JP1g0u84oI8pGDvqSUBvY
-         8/KA==
+        bh=2NgR1q25rpA3+vuTYvIEM05sPHzvCyYFb6Nx7Yin7Zw=;
+        b=rAjI7xeLAoAuvaMMZZ99ljhExWK4sihcfwHPhSwmqkYHeZ/oAE9nrsQl+o4K3qoI8j
+         mRmEnaBIiS5lsqoiAVk1C2/fVrtvP61l0f08gCWEsBVFR4g38klMXGFP0xV+z6yQCg3x
+         EOX8B/zJgk156Rnhd8giun7PdfFFvDG2wFmWHk2NEgRfwnQLolhTsedj9Q9KK11LCiz2
+         Arj9iI8k+lXsaaFPfZZpEO7Skj4N6nu1dxxNSIr/9J21YEUS2PgaEWVl49aItg9Mak/8
+         LZGA6R3o6wmSXMjxkCw9BswXebOZiEAHQf4WfzZrjP1GExL2jRZSJZU6FRwh+5Wtb35h
+         2FCw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cZOC05z2;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WjBULhSs;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id s11si125001ywg.3.2019.03.10.10.46.54
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id k62si149625ybb.4.2019.03.10.10.46.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 10:46:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Sun, 10 Mar 2019 10:46:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cZOC05z2;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WjBULhSs;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id b2so2187677pgl.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 10:46:54 -0700 (PDT)
+Received: by mail-pf1-x442.google.com with SMTP id a3so1941421pff.11
+        for <outreachy-kernel@googlegroups.com>; Sun, 10 Mar 2019 10:46:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=TcYVedUcGpZt9Vkr7kzQHCz8bPhmCT1zEAAwXk9JYZY=;
-        b=cZOC05z261edQwCXo2/gPf8ASNkEY+mPFEHXCze+WoQZWRh0V2GBz/KDR+Vmzo5TpK
-         6+ssFALMqO+7GbNDLz5IbBqm/H7PLa96jkd5auoQiRb05cI76Yseq5LFjZJGkw/SgD+W
-         9F2408vPObZvhuGdyb7HWPn6uPxFdYqqSC8vJu+K/yrrVs/Ljq7a4aia98dg+UvjvoSb
-         13rZO4ZqdUiMrYtABJr1eflrmXERG8Xcv3yQwpbQB7zpJ8j3rG3EtHn3jdgboU5++4qG
-         xZSsWQsgi4mn7ZryyOQ6uIW5ea/hLT7/2MT0A2F+Bgq8/gebZHyFnHmbp9McFXQi4qKy
-         H91w==
+        bh=2NgR1q25rpA3+vuTYvIEM05sPHzvCyYFb6Nx7Yin7Zw=;
+        b=WjBULhSsOrIxeGMHX97zPyAxVnPfAtCLX8WrkBmn67C+l9oi87f+v4wCY0YyPbJ45U
+         Usnp35HspDsEgcIzdo4GSiUTnTANkno7jmLFed6ZWLJ5axZ1GpOamvRZHcQ6p8ecYlLy
+         hmGqzZlsVP1V0hZYFTwhfs3bJgAlp9RX1Bj8DhjfZvhhV+VP6nkYQtcIkI0hIECFWdRt
+         CgydjXjHQOQwjcIE2mvy0gbh3Y8e0Xq8v41x4ZRerfjqqZhcanAY14mygk3BgnCDMXKO
+         DCJyTOwMpFC08aEW2sq9fzYlPy9dys5eMXxstbK0FLS1FXZHM3MukTkxb6Ai7XnI6CFM
+         8Rbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=TcYVedUcGpZt9Vkr7kzQHCz8bPhmCT1zEAAwXk9JYZY=;
-        b=gRRHfFktXFxMpwYrIzm5UyASl5gwevTid9QzgvblVgGvUkB5EUWu9rlWCej2+UxQ4i
-         M0BOoApds6lDrM8wThK3/uQKWIa/UjmqqtAnHqLE+6dvybN6IX9iwtsKyBmFptRUOuEE
-         w2jyjWSE8U6VoyXnruvYAU6XefUeV7z8/u2XTNiHJwWxD7/RUU+6eDkfZ7Lg1AanG3JE
-         ifRtBpDKKXbMH9y4g1rVUnezwQVP9hoXXFP49hZLuJbtxrUWNd8WVGWQ8+xcvVgaPrdB
-         cwqykwpXbpatORzR2WeS6HlS/Fht0VNTjlGiY1eGEXvQ56+//hMJ+I9m6hrrK9YlKd66
-         irWg==
-X-Gm-Message-State: APjAAAUvAOkBk4E/aqzjqCW+V5nlRAL/VAGaLv0p7nm7tRuS2C2DSPct
-	0sTLGAfLrf7AslrWswXwv+wyuEr7zdM=
-X-Received: by 2002:a62:5385:: with SMTP id h127mr28686797pfb.10.1552240013862;
-        Sun, 10 Mar 2019 10:46:53 -0700 (PDT)
+        bh=2NgR1q25rpA3+vuTYvIEM05sPHzvCyYFb6Nx7Yin7Zw=;
+        b=mMSgexlRfyG8xzvW9zk0PBobJDKF3tqbuQQyOz4Uh2cuIFSRFPvCtLN9vbm71Nu4Ml
+         eVungJ4xUhE8p4BhEL7jzyvmYB/YzwFt6C2XYdOxayH8xFR254GLnInRabfLZIPyCqxT
+         C7omqiBgixSj/39POKCOafFOsA2AiWkJaLvDAa3/BtVfrf6FIYqvxcw3L0nYkbUm1QbY
+         0Z15yG54ncm+BUQAbLSnqs2htpYmw8f3xJwjPv1o5Kso7Q8QEadOy0uGW+KBr8fgO5Q7
+         9vF9HKc/ikaFPmEc2HivVcIAGQdIUCTcDLtXQqeaKI/4i4m4+QEOP/ifU4T25S/iu661
+         Jcww==
+X-Gm-Message-State: APjAAAWHRo7gXtwNfVVIMVjRMoKKRxFa9QiAU3t9WikQu+cBy4uVE0ft
+	cT+/HVOtKsvKBUMK+ewBRQOdwQV178c=
+X-Received: by 2002:a62:1b03:: with SMTP id b3mr29439710pfb.218.1552240012241;
+        Sun, 10 Mar 2019 10:46:52 -0700 (PDT)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id h184sm7340275pfc.78.2019.03.10.10.46.52
+        by smtp.googlemail.com with ESMTPSA id h184sm7340275pfc.78.2019.03.10.10.46.50
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Mar 2019 10:46:53 -0700 (PDT)
+        Sun, 10 Mar 2019 10:46:51 -0700 (PDT)
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v2 2/5] Staging: rtl8192u: Remove typedef for struct _IbssParms
-Date: Sun, 10 Mar 2019 23:16:32 +0530
-Message-Id: <20190310174635.16923-3-bhanusreemahesh@gmail.com>
+Subject: [PATCH v2 1/5] Staging: rtl8192u: Remove typedef for struct _bandwidth_autoswitch
+Date: Sun, 10 Mar 2019 23:16:31 +0530
+Message-Id: <20190310174635.16923-2-bhanusreemahesh@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190310174635.16923-1-bhanusreemahesh@gmail.com>
 References: <20190310174635.16923-1-bhanusreemahesh@gmail.com>
 
 -Avoid typedefs for structure types to maintain kernel coding style.
--Remove typedefs IbssParms and *PIbssParms of struct _IbssParms.
--Change Structure name _IbssParms to ibss_parms to maintain Linux kernel Coding Style.
--Replace occurences of IbssParms to struct ibss_parms.
+-Remove typedefs bandwidth_autoswitch and *pbandwidth_autoswitch of
+struct _bandwidth_autoswitch.
+-Change Structure name _bandwidth_autoswitch to bandwidth_autoswitch to
+maintain Linux kernel Coding Style.
+-Replace occurences of bandwidth_autoswitch to struct bandwidth_autoswitch.
 
 Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 ---
@@ -93,30 +95,33 @@ Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index ce79b8321961..735e86cc6adc 100644
+index 8aa536d79900..ce79b8321961 100644
 --- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
 +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -1506,9 +1506,9 @@ typedef enum _RT_JOIN_ACTION {
- 	RT_NO_ACTION  = 4,
- } RT_JOIN_ACTION;
+@@ -1462,12 +1462,12 @@ struct tx_pending {
+ 	struct ieee80211_txb *txb;
+ };
  
--typedef struct _IbssParms {
-+struct ibss_parms {
- 	u16   atimWin;
--} IbssParms, *PIbssParms;
+-typedef struct _bandwidth_autoswitch {
++struct bandwidth_autoswitch {
+ 	long threshold_20Mhzto40Mhz;
+ 	long	threshold_40Mhzto20Mhz;
+ 	bool bforced_tx20Mhz;
+ 	bool bautoswitch_enable;
+-} bandwidth_autoswitch, *pbandwidth_autoswitch;
 +};
- #define MAX_NUM_RATES	264 // Max num of support rates element: 8,  Max num of ext. support rate: 255. 061122, by rcnjko.
  
- // RF state.
-@@ -1554,7 +1554,7 @@ typedef struct _RT_POWER_SAVE_CONTROL {
- 	struct octet_string			tmpSuppRateSet;
- 	u8					tmpSuppRateBuf[MAX_NUM_RATES];
- 	bool				bTmpSuppRate;
--	IbssParms				tmpIbpm;
-+	struct ibss_parms				tmpIbpm;
- 	bool				bTmpIbpm;
  
- 	//
+ //added by amy for order
+@@ -1871,7 +1871,7 @@ struct ieee80211_device {
+ 	Fsync_State			fsync_state;
+ 	bool		bis_any_nonbepkts;
+ 	//20Mhz 40Mhz AutoSwitch Threshold
+-	bandwidth_autoswitch bandwidth_auto_switch;
++	struct bandwidth_autoswitch bandwidth_auto_switch;
+ 	//for txpower tracking
+ 	bool FwRWRF;
+ 
 -- 
 2.17.1
 
