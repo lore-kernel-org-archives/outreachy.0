@@ -1,123 +1,113 @@
-X-GM-THRID: 6674202395831959552
-X-Received: by 2002:ab0:4103:: with SMTP id j3mr5457815uad.0.1553958839131;
-        Sat, 30 Mar 2019 08:13:59 -0700 (PDT)
+X-GM-THRID: 6666437691631992832
+X-Received: by 2002:a25:c544:: with SMTP id v65mr16448952ybe.5.1552345095787;
+        Mon, 11 Mar 2019 15:58:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:7a89:: with SMTP id v131ls120018vsc.3.gmail; Sat, 30 Mar
- 2019 08:13:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxIO3GAk+gj2mc5Qe9OFDdxug6mXLauHhiYQ1L6RQtN6xTqcfvyXKKMdhsWa4z2XXUQjm9J
-X-Received: by 2002:a67:8013:: with SMTP id b19mr4434395vsd.28.1553958838546;
-        Sat, 30 Mar 2019 08:13:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553958838; cv=none;
+Received: by 2002:a81:2f02:: with SMTP id v2ls3247933ywv.5.gmail; Mon, 11 Mar
+ 2019 15:58:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxt9TgO6ljos5rfyYHE4MwoK665FrH6Hs52kF/coaVYd3AkWnzay/DFDH8x6UysxWldv+nG
+X-Received: by 2002:a81:8546:: with SMTP id v67mr15656577ywf.1.1552345094987;
+        Mon, 11 Mar 2019 15:58:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552345094; cv=none;
         d=google.com; s=arc-20160816;
-        b=iZIM9mQ0+S17MiSZyGHBDBc06NwYwazfGCuTioIFIS46Q76fXvlMUX2xFz4Q245Nnc
-         9PrJTF/sdP/+0969tROTF3go9FbCL+UAh41ga1tjS3rARyto+lw1DoqBiNvbTIKzv90y
-         LnKcO1Vv3VlmSTDpX94yHjyiZvvmuF51rV8YhfWdj21RiwIKtMqMm4OYyYnfsEDuHJyb
-         rg+OCAQwdQrt1cNuDp5nkNZ3R0+RbqaL4n4Mc/xUF2m70M82Vsqnu0hSmvameAUKQGc0
-         seb/+ObHqAn51SMHNIM9nPXn9Hj3wzPGBkdgmkMIMhEKIVDEznHZKW8cktzRneZldUXK
-         Z0dA==
+        b=IGNiz6eTRjSlagpA2YqFlLI39LNtQg6gfICAay4e8VPfTGamcb4xn18g/T/4tQXQ3t
+         qgK09Lc1lA0ISNF1RcYrZlI2aofG+gvK9HakmaSn5NYgmR4BQGKJHhPQgOlsnBIKBTvs
+         xJR9Sjp7awVTx7B3Q+ZxcAhu79LoKBD5ZPLBChTKtXc+zh49fYW/V8PgzfSyjh1/oTZ4
+         HszGc2k/pficBXepUltBYT5h7FvdXSmI14vUgdEzZFV6w8pSpFvS8xgL4MAd45Be41oC
+         5E1w0OdM2b7mmKW7+pR3ECdSsu7Hcfad7qWt580y2jflR7RPRX3KTsWhRT5Whuq9JDeR
+         Je8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=SQ5vOoIXm89Nr1kFMX4rV1VLx62xjOKqc9bA2vwFvlM=;
-        b=Bg0PfSHXkc7vcgZ9eYJZbFiTX0fftrZZ5cqngzcNcveqnZ7Z3DS+UGtb5gJHvDA0hd
-         zhavrEC+Omho04hYntkjP4r/ZEdLQXPXtQKb0kynaRTI/zLisRaKx+zO/BxuNXqVPaW5
-         omAs2qf38sDuZ2YMwLj0x9e752qtNwIW9LEDXhPJs1x7Ooc7u6KQWk3lu028sptQq6AI
-         fCqDtCRediCWr+rG5v7IFVbHToZd1A3yuYO8Cz3dEiGJXf58vwpm3hKrXxJWcIfQRFp4
-         tD+BMArH+MC8ngAvqmR/sBhu1txyq5Ie/LuFxR3UB62uUd/UVy0d3qLcZ0aA/vcMbypp
-         sakg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=N3fjIJ/E/GY1L02neVCeIxutBw0dY/aIVWJFFk0yiDI=;
+        b=hHf65SmZNYQ6QHmZHgBKlaIJ5qxmpebdhWLbwwfxzGvqq4r/I1w9a2UwCGeYnzIAHo
+         s41J+ldcfwReF2xVW5dVTYp5YVq5G/qL3H0VU7CpkcQwxpXw/8dyUQCQDvwAC59Y6v6B
+         cmS+zsROWPo0vsVNduRzIv8h0PfIoppHDZaBh07nohEBCaX7XhDMM4foUKzQDKQua4EN
+         D6EneEEErNsYwwZ3xxNa/cbIbksS8AM4ccQ5pIn9mcjc2mpt2/YXnBjQo03sf5PsKeDJ
+         Ac23VHKGRIo7Jb8JVuKrhugDnus70ndVWDgcHMAkjlxqKZ7Yjb3tJvQTuOT+ysXdcHWr
+         QLYw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=XqtA2SdE;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic303-21.consmr.mail.sg3.yahoo.com (sonic303-21.consmr.mail.sg3.yahoo.com. [106.10.242.38])
-        by gmr-mx.google.com with ESMTPS id y8si374387vsc.0.2019.03.30.08.13.57
+       dkim=pass header.i=@kernel.org header.s=default header.b=q7RHTUie;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id x187si283424ybc.5.2019.03.11.15.58.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 08:13:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) client-ip=106.10.242.38;
+        Mon, 11 Mar 2019 15:58:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=XqtA2SdE;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553958835; bh=SQ5vOoIXm89Nr1kFMX4rV1VLx62xjOKqc9bA2vwFvlM=; h=From:To:Cc:Subject:Date:From:Subject; b=XqtA2SdE+QevC44PB1hizI6Y0YXjH9Hu64qntGOoD/bBHZ9pMcPIkcrqDGqXYHjsuYen1FckceMOdChqNEf5zngY+X8ISMLkfmRWcOQNbWcxCPwHMH36vKqP8weLDkW0uz137+kRfh9FC6o+lZWPJK3P6wMF2ngqGfucCP/gsiNsDrAHTlNBmpyMMTB0IUPyHEoeNxB1FCknY/w70lZwCtTH58Yhhw1qP38N5Qgnw7DnMKCQaztV/RYNkGuOe9NYQIK9yXkCqmh8RKRDfkOC5iGTr2xuYX1/GrugLfbCVKJOBYoYwivKtCgrrtyOwJA4+GCix+lSkvr/YpY0+0PFRA==
-X-YMail-OSG: hM6V23UVM1kb1PzYCuyvArnQkBRv_LRP5Vo0NMu9_kapMOpqejV5UFSXMLk7Z5L
- ocxLMm4UkWi1aBm1Enwk85RkY_ze4S6WohC0L9b2hMO2d1cmApmO8PrCluKW2dnDqweWJ3GU9Uo4
- YIFEqWkRA5..l2CWAWxZOaVW.HSnGT25EY71OqQwsoBYXRtmzf_1K1VSmwHoa_OxyvQGoukuM7Vh
- oS325X7STNsH1keDUKCfCqmrD2Mvh0QGsRuP3dSWGwdgwrPdlXXPgVV6xBRIdj1rOs_qla7g5fEN
- B1hKM_4R56ywzGjY_PDBYp7ZuVKCF8kP3BoDR.SJsAAFM_y4qI8Pa5SMy3K6TzlAyIbmP18AK3bi
- FoYznOWaGLFfXeZ_mO0NzBmTTiFUmklXu_F_PtBf5z9WVi.acx3AFsyMPVCbsz1OVyJvXSgeRoLh
- 2wrmsrbvKiYANXQQ_n2.N3iACntz_JCCl_6W5YGMXtTcRjC75TEs9r2iVnuYHE6HtPrkd9.Z97D5
- ibtZrG3RexScCqUwUYgwr1XgKb8owfoyF9ns8iO8vQmdiXuKfOQJuNZdOXQfbAhsFgnz.L7TDEmn
- F0BLU1L5MH2GJ39nOpNwd04lRhtN_GODKa9OwRu_N2pG4idA0GR4u3mD0en7C2BqDjv8qaDHKhs2
- jU4nHGYfo5mENFgkuMmxaTW0eQNnwG21Xtc.bUdaBfFeZX6yiBAjVbCnCaEWLxlzNRFUZKpaQm8C
- J6PBSeF4duWHQ8p6X78ozsA3mk_ah7diCcXAQnlkeizKzNpTeLRL6Evo2WCJLAfuBT402e24Z3CN
- EYNAUstdtc1h6iQzBTojC3D0dD2UO2WAvblfNEulzos0SZG6lJHHUIoyKJaIHGcisBltOFWDlofD
- AzCfGYhzQrt87X6WZMVhgDIwUM_KydyF6gZNhgQ558NCgvbZb_IudVWsJYAAw1tRebHWLkR2YDdT
- oSITi32O9Y4Vq8vEy76wYOiNlD4nQmFrmN.AZZSgyWUr_TCztK_rkG7PdGoZmC8ONmLl5Rcv9roJ
- sXM3ly6Wy4bbLLHqVcLdp7BNndPWvdndyWA.lLlcTz8_IEfrCKxp74ZYNPHnpOGbf5.PtpNmkLrR
- urXJHyjqtJze8T8eAILSeoivw0Gs8SgEv0w--
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic303.consmr.mail.sg3.yahoo.com with HTTP; Sat, 30 Mar 2019 15:13:55 +0000
-Received: from 210.212.93.46 (EHLO localhost.localdomain) ([210.212.93.46])
-          by smtp417.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 3425379a9fa9c168bee2d6f631e53e25;
-          Sat, 30 Mar 2019 15:13:54 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH v2] staging: rtlwifi: phydm: Remove parentheses
-Date: Sat, 30 Mar 2019 20:43:41 +0530
-Message-Id: <20190330151341.3891-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=q7RHTUie;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [104.133.8.98])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E97742087F;
+	Mon, 11 Mar 2019 22:58:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552345094;
+	bh=7BABYaf/9QtRWtVR2TwFo3/mLGnI4G9SMrJ48n/Y2rY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=q7RHTUie1iza80x+yWbzf0Nrfo4TMoLJVR4usGQjoPO5VRIxpK2+ZqnC9O1pkkAKr
+	 gTMGTn9PNppv3Gc3ftK1lL8vqGQaDa5rX2XT4Dd7PAHRANlgZg3uC1SjwBHbs9lEu2
+	 oJ8+pzU61q44YPuPR06pK1/lXPrdc739LGXd8wFk=
+Date: Mon, 11 Mar 2019 15:58:13 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Aarushi Mehta <mehta.aaru20@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: board: replace macro with function
+Message-ID: <20190311225813.GB1008@kroah.com>
+References: <0ce45d3e104e179cbf124d6c41aee442d6ed03cb.camel@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <0ce45d3e104e179cbf124d6c41aee442d6ed03cb.camel@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Remove unnecessary parentheses on the right hand side and simplify expression. 
-Issue first detected using Coccinelle.
+On Sat, Mar 09, 2019 at 10:32:50PM +0530, Aarushi Mehta wrote:
+> >From b0da5fe54699fd2b4b627344fa5a118d6d985853 Mon Sep 17 00:00:00 2001
+> From: Aarushi Mehta <mehta.aaru20@gmail.com>
+> Date: Sat, 9 Mar 2019 22:16:42 +0530
+> Subject: [PATCH 51/51] staging: board: replace macro with function
+> 
+> Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
+> ---
+>  drivers/staging/board/board.h | 21 ++++++++++-----------
+>  1 file changed, 10 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/staging/board/board.h b/drivers/staging/board/board.h
+> index 5609daf4d869..a2119ae1bac1 100644
+> --- a/drivers/staging/board/board.h
+> +++ b/drivers/staging/board/board.h
+> @@ -31,16 +31,15 @@ int board_staging_register_clock(const struct board_staging_clk *bsc);
+>  int board_staging_register_device(const struct board_staging_dev *dev);
+>  void board_staging_register_devices(const struct board_staging_dev *devs,
+>  				    unsigned int ndevs);
+> -
+> -#define board_staging(str, fn)			\
+> -static int __init runtime_board_check(void)	\
+> -{						\
+> -	if (of_machine_is_compatible(str))	\
+> -		fn();				\
+> -						\
+> -	return 0;				\
+> -}						\
+> -						\
+> -device_initcall(runtime_board_check)
+> +static void board_staging(str, fn)
+> +{
+> +	static inline int __init runtime_board_check(void)
+> +	{
+> +		if (of_machine_is_compatible(str))
+> +			fn();
+> +		return 0;
+> +	}
+> +	device_initcall(runtime_board_check)
+> +}
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
----
-Changes in v2:
-- Change `status = status & <expression>` to `status &= <expression>`,
-  to make the code more readable.
+This will not build properly with some compilers, and really isn't
+correct code at all :(
 
- drivers/staging/rtlwifi/phydm/phydm_debug.c | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_debug.c b/drivers/staging/rtlwifi/phydm/phydm_debug.c
-index 91f2c054d83b..13b34dc33011 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_debug.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_debug.c
-@@ -51,20 +51,18 @@ static inline void phydm_check_dmval_txagc(struct phy_dm_struct *dm, u32 used,
- 				      (power_index << 16) | (power_index << 8) |
- 				      (power_index);
- 			for (i = 0; i < ODM_RATEVHTSS2MCS9; i += 4)
--				status = (status &
--					  phydm_api_set_txagc(
--						  dm, power_index,
--						  (enum odm_rf_radio_path)
-+				status &= phydm_api_set_txagc(
-+						   dm, power_index,
-+						   (enum odm_rf_radio_path)
- 							  dm_value[1],
--						  i, false));
-+						   i, false);
- 		} else if (dm->support_ic_type & ODM_RTL8197F) {
- 			for (i = 0; i <= ODM_RATEMCS15; i++)
--				status = (status &
--					  phydm_api_set_txagc(
--						  dm, power_index,
--						  (enum odm_rf_radio_path)
-+				status &= phydm_api_set_txagc(
-+						   dm, power_index,
-+						   (enum odm_rf_radio_path)
- 							  dm_value[1],
--						  i, false));
-+						   i, false);
- 		}
- 
- 		if (status)
--- 
-2.19.1
-
+greg k-h
 
