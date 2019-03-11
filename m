@@ -1,119 +1,116 @@
-X-GM-THRID: 6807140134242222080
-X-Received: by 2002:aed:2a87:: with SMTP id t7mr18145102qtd.206.1584910818474;
-        Sun, 22 Mar 2020 14:00:18 -0700 (PDT)
+X-GM-THRID: 6667125588994555904
+X-Received: by 2002:a65:4688:: with SMTP id h8mr7178651pgr.101.1552311142854;
+        Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:2a79:: with SMTP id k54ls5434228qtf.0.gmail; Sun, 22 Mar
- 2020 14:00:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvB43+hEvu0R2zM/LHzCTtQEQHRcl1fs0Mn8nCqobPAGhHnrKyVjINAKWyYhx7eOaeXBj8Y
-X-Received: by 2002:ac8:6d01:: with SMTP id o1mr18840737qtt.246.1584910817307;
-        Sun, 22 Mar 2020 14:00:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584910817; cv=none;
+Received: by 2002:a17:902:322:: with SMTP id 31ls8877359pld.1.gmail; Mon, 11
+ Mar 2019 06:32:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyOreVhvhO61hbNMtNOZO4oPD9s/d7L/gKiiT6B3D6qcIc/3KUb99UuBXpT7YKUA0cPelBY
+X-Received: by 2002:a17:902:396a:: with SMTP id e39mr10303746plg.61.1552311142055;
+        Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552311142; cv=none;
         d=google.com; s=arc-20160816;
-        b=v53o2PQBRo0V9RiZWlC9YUJIee+xR9sCgS8Hg5TJrPXU3mNMREThl32opXq8eJ3Eo8
-         Es3IGl4/IZkM3UmSPKPzBKBQ2uuRaR/uTWfJRD5IE2ba/PMRBq2dqb6KvsCdEFF94O7z
-         iVbMiJEC53mIGZzduZIoQDWncDrYnfSpRP1vgn3WIus7DzoebyA5fIul+WM7NUAiN3QO
-         JMjl09DPNfU37PHMeJjVcDTUkQOHMfSY/UOp2nLqM0bfZ/9pxNkBuo4R4iBuVzWIqNy2
-         PVNIf1M4e8wPU3tT/wydkWN2wAai1p0uuQjHDE1jPDsRk3lO3aSc3WzpGfP4D/j3MljS
-         bcGw==
+        b=CNwoO9ABPBEonmUtycC5+rQFkkvMQslzlOrcCKOMKU3hBTVYnCzTqgm9v2YftzGStg
+         2g05TLpeIW6qQ9lqVL4+Aa/mX45SdwGQ858EMv4jsCGSkiF6HM8dCukyADFSkrrpOYio
+         3wvFIFMXQ9GHSj5u6Et0SmzDFyLM1tVLRUBDrY5Ud535GMvCUKDC1oxUKs+cythlybPo
+         gTvqfOLngrnzJnABu10NWFy+Q6UYSkSFimDatoUjb/F9toxSf/bgfcaS4w6wPJ8s3rkR
+         s4gSG8kaChdmSc2RiISDsq4HIeykSc8K48ePF1ogtu/ho+THix3AJvAGQvLMfvfFbzDc
+         JJzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=7oZbZh+R9bx1YanvyF+tsIk0x8EX5Cr3QAyeO68Cw0U=;
-        b=JZ8uQB44oGhiGou0q+O3yR1NAuPcmfSiWlFVhIV/8ZOAclUxndS1+OQa+3wgGzmaer
-         vYBAUw8zWZ4eobMNvUOnNv+ujZUhCvd0eXNrHHguro53FrA5kTgQAosi+W8nf1V4AaRK
-         wCpP59t2bpFKc+3uO38mVxPAZ3NN6z7Q+aO7OZW61eR17oGxYTcL6quKURifY/MEinbL
-         V49m8UySXIc/9k5SXM+RD+zsmyzxeMLjvFCkgGI/Gpklw4+d8KXKfbsrtm7dmfu7RLxe
-         G//zYWaThITXr6YWJ1vxuh6av695+B6iMpNGO1eqFwN1SwcUuCBSw4oDuoTm/4o7YBmV
-         zS3g==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=p1+Vw/OA5YtijffWYGGHJ5Yd0eMc6VrHFQviEV4rjmM=;
+        b=AkE07IDTYdCyzlP87Qam/trAExvsXxT6b5Fay1FA1QG5jT2axYtNoc7VBpDhei83SF
+         XgfpnQRzTC7BnkDHP07fpsbAIZHbO/724E2vIy0vi7U4Up9XTjLjdEyc92Lgo47WAslH
+         sa+XNSwVq33QowqMCCSxEr9CRY7F4sBQ4gzIcIqJaO8tzviZlmSXHP9JfrLhDnjr+pKU
+         6d2GA9WRGVT15h52uyY6EU1pQ+6mV6JKKMOGgWGZIzh6Mw/lvhSuZ6/ZnyXW8dURMv8c
+         Ex2+ltvLtwx5+ZVx1AUXUgunwe0TNu10O4ybyMnDjy2gGiwq1Zyx5KDkSswaEOcqTnPy
+         xqyA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=orRjSFTN;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fr5t4wl0;
+       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id t24si885515qtt.1.2020.03.22.14.00.17
+Return-Path: <brandonbonaby94@gmail.com>
+Received: from mail-io1-xd2e.google.com (mail-io1-xd2e.google.com. [2607:f8b0:4864:20::d2e])
+        by gmr-mx.google.com with ESMTPS id z184si300129pgd.0.2019.03.11.06.32.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 14:00:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) client-ip=2607:f8b0:4864:20::d2e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=orRjSFTN;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fr5t4wl0;
+       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id nu11so5086586pjb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 14:00:17 -0700 (PDT)
+Received: by mail-io1-xd2e.google.com with SMTP id x7so4007222ioh.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 06:32:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=7oZbZh+R9bx1YanvyF+tsIk0x8EX5Cr3QAyeO68Cw0U=;
-        b=orRjSFTN2rg6SPyAwxRJLNDXC7XXs0p40EFpl/3xtZ0CaykF0nokRnB8pVs9eEmiqG
-         aP6xL2EbmElUmPpl2l/fMW5JDaV0WYzl7MG+vgwtX/08tOQxXMPycoAOYHYH+8eiTlGd
-         wT8h0So6ibgL1MaN8Ld1WFylODXTluRgiix5B0xX5m3wdpo/4N1oadTvzZhJxH/TU7gy
-         qIGO771aa/PH7uQIbfVcRU/Cceacin4yyACEfwpylbPYi47OGbroY68LvaQh9oh9x6cg
-         JmhskaPZfpmw68AamDG+loCSBtyN7b7SQ6dy3mVvepij+sULe+bKfeYNW/sbpj2VXXep
-         vkjA==
+        h=from:to:cc:subject:date:message-id;
+        bh=p1+Vw/OA5YtijffWYGGHJ5Yd0eMc6VrHFQviEV4rjmM=;
+        b=Fr5t4wl0rdpPAo2DIv0XBYYfvoATnahnW1WwdCLwMFNPpQB+2wQw+Y+xV/620YiY3o
+         dCIaZteODP1xPLfJ/R0KUoLF798r7NuuwVYz4zupWCP+FsisuzwMdzE7kgMn3PATCQZh
+         IGEu8bemlN4eqS7Ew1b+l0er6kh1swUd0B+ChYzValegyoYmYaKDzw7H8BW1yAQe/FY4
+         XotscuxubjL/9QfeZ/BKzminJrqmNTXlzt3vl6QctoI7QW7gSiiX9+TQZlqxyT7UJXEu
+         8GB8iR6dLjXtKnbKoAKRqPdJI6Yribx60JVIWZLGlLehOxqflmi1uQRATXO1SdVCfyrC
+         ZCcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=7oZbZh+R9bx1YanvyF+tsIk0x8EX5Cr3QAyeO68Cw0U=;
-        b=qOXsoXeslID8uGXjQF8Mzp6dYZuVdYSAF80T+cMVbwi5YKWadwTEaQ4CE5RxWreXTT
-         ka65l1eEZ7fgiJSj/JQWi6AXgvQWHvQz5jrf1NEUoDUPIKfZq7ZjNlg5dyx/3Gh+3txF
-         ul3zGBP9UjfBADVYHfB/xXaRY7UBk/vXYc41tl2gLRkhgZY86gAcE0mWf7UqkSZucqWR
-         xPM1A9UR8xfCLWSx2z+820NDqvDpXOCBInBkshEXTVIanq8o6bUDtdtNf71uu++rCiHz
-         AVhFayodXzWyeR/1naXqhGGGId54oJ93pBu/XlICl7Wqj7QEFY9WkoE+WP0ruzSDZLeF
-         DTrg==
-X-Gm-Message-State: ANhLgQ3NgrCHcVxAtDXLPu6zdrD/24bUeRfJ+8SKYm/Q1ihJcYAMZV/P
-	8BSKOVojOYQPwz4RA/sV57wJVFln
-X-Received: by 2002:a17:90a:228c:: with SMTP id s12mr21628977pjc.68.1584910815637;
-        Sun, 22 Mar 2020 14:00:15 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.240.207.191])
-        by smtp.gmail.com with ESMTPSA id a19sm11552936pfk.110.2020.03.22.14.00.12
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=p1+Vw/OA5YtijffWYGGHJ5Yd0eMc6VrHFQviEV4rjmM=;
+        b=CjJlDO3mDY8z4Gn6wd/yjrgV86gpBZuUm2hn7SKClpZgYwBXTwqZEdPe+N6Sl5E24M
+         oa1ktvyX2Rt+gjzWD+6dRJTFpKFO1eWWoRuBxoPupcOMGdek/mJV0S423zkmpkfPrPaR
+         Vaz8LKWkWqVCxuhpTTyi4jXfdKDoHW1TKDbH4hq9DMjeQC+OnbFNOxPpXxwTNAG9eby+
+         mdOkzZXYLFS/6vUp1ZmimI7iPig+10xU289T6nkOZGS8WUwuViuEb6AY/bO1fRj0Ug8z
+         HS7CQpF22JmUI2I8/d0XG2439e9fBD1wEQPMR4KCFV392axOo7SHPnCbcaL80rn6DbMt
+         im9w==
+X-Gm-Message-State: APjAAAXoB6LB6Orb7gbNmsliy0DGXGXSFba1+DzdXBDo2dsUCmyKzUeC
+	BTsPUxdFSIDBG3LFAlRnWm8jRmgDNwDb
+X-Received: by 2002:a5d:9709:: with SMTP id h9mr15604236iol.184.1552311141535;
+        Mon, 11 Mar 2019 06:32:21 -0700 (PDT)
+Return-Path: <brandonbonaby94@gmail.com>
+Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:d93d:e73d:b219:4764])
+        by smtp.gmail.com with ESMTPSA id a16sm8210201itc.27.2019.03.11.06.32.20
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 14:00:15 -0700 (PDT)
-Date: Mon, 23 Mar 2020 02:30:10 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] media: staging/intel-ipu3: Remove extra blank lines
-Message-ID: <20200322210005.GA27747@deeUbuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+        Mon, 11 Mar 2019 06:32:20 -0700 (PDT)
+From: Branden Bonaby <brandonbonaby94@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org
+Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [Outreachy Kernel] [Patch] staging: vt6655: line over 80 characters
+Date: Mon, 11 Mar 2019 09:31:57 -0400
+Message-Id: <20190311133157.431-1-brandonbonaby94@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Remove extra blank lines from the code blocks.
+Move function arguments that go over the 80 characters a line limit to a new line.
+"WARNING: line over 80 characters".
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
 ---
- drivers/staging/media/ipu3/ipu3-v4l2.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/vt6655/card.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c b/drivers/staging/media/ipu3/ipu3-v4l2.c
-index 097c10d9da2a..e8f33539a217 100644
---- a/drivers/staging/media/ipu3/ipu3-v4l2.c
-+++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
-@@ -152,7 +152,6 @@ static int imgu_subdev_set_fmt(struct v4l2_subdev *sd,
- 	struct imgu_v4l2_subdev *imgu_sd = container_of(sd,
- 							struct imgu_v4l2_subdev,
- 							subdev);
--
- 	struct v4l2_mbus_framefmt *mf;
- 	u32 pad = fmt->pad;
- 	unsigned int pipe = imgu_sd->pipe;
-@@ -485,7 +484,6 @@ static int imgu_vb2_start_streaming(struct vb2_queue *vq, unsigned int count)
- 	if (r < 0)
- 		goto fail_return_bufs;
+diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
+index d71022aa3f86..f422fb3c78bd 100644
+--- a/drivers/staging/vt6655/card.h
++++ b/drivers/staging/vt6655/card.h
+@@ -44,7 +44,8 @@ struct vnt_private;
+ void CARDvSetRSPINF(struct vnt_private *priv, u8 bb_type);
+ void CARDvUpdateBasicTopRate(struct vnt_private *priv);
+ bool CARDbIsOFDMinBasicRate(struct vnt_private *priv);
+-void CARDvSetLoopbackMode(struct vnt_private *priv, unsigned short wLoopbackMode);
++void CARDvSetLoopbackMode(struct vnt_private *priv,
++			   unsigned short wLoopbackMode);
+ bool CARDbSoftwareReset(struct vnt_private *priv);
+ void CARDvSetFirstNextTBTT(struct vnt_private *priv,
+ 			   unsigned short wBeaconInterval);
+@@ -61,6 +62,7 @@ bool CARDbRadioPowerOn(struct vnt_private *priv);
+ bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type);
+ bool CARDbUpdateTSF(struct vnt_private *priv, unsigned char byRxRate,
+ 		    u64 qwBSSTimestamp);
+-bool CARDbSetBeaconPeriod(struct vnt_private *priv, unsigned short wBeaconInterval);
++bool CARDbSetBeaconPeriod(struct vnt_private *priv,
++			   unsigned short wBeaconInterval);
  
--
- 	if (!imgu_all_nodes_streaming(imgu, node))
- 		return 0;
- 
+ #endif /* __CARD_H__ */
 -- 
 2.17.1
 
