@@ -1,121 +1,83 @@
 X-GM-THRID: 6666547009386708992
-X-Received: by 2002:a24:becd:: with SMTP id i196mr403857itf.25.1552347051462;
-        Mon, 11 Mar 2019 16:30:51 -0700 (PDT)
+X-Received: by 2002:a1f:9e0f:: with SMTP id h15mr22284459vke.20.1552344683515;
+        Mon, 11 Mar 2019 15:51:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:911:: with SMTP id 17ls309726itm.5.gmail; Mon, 11 Mar
- 2019 16:30:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzQjG549pphZnWQpxTK0tbEdacGoA8QW6cC5HbtPSEpsx4Rd+RVOYDYn1LY3B2gHwPR36If
-X-Received: by 2002:a24:9c85:: with SMTP id b127mr446813ite.36.1552347050622;
-        Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552347050; cv=none;
+Received: by 2002:a1f:9f55:: with SMTP id i82ls751780vke.3.gmail; Mon, 11 Mar
+ 2019 15:51:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlVob0TY1mde7ckMEp7VL4S+wxiCOpfB//uznRavh/fNZgqW/X7L/aX0+h/lDvEAi7Nw0J
+X-Received: by 2002:a1f:85c6:: with SMTP id h189mr2471394vkd.9.1552344682654;
+        Mon, 11 Mar 2019 15:51:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552344682; cv=none;
         d=google.com; s=arc-20160816;
-        b=P8dyp497af4aofa0FqNfFAveh4C6HK1WUdTnluKtasoRVt75IyMOc6gMYjA0hv9ZRX
-         uH9UUuoMD0y7tWddD8SN90bxNhAvMYdCOzGajQwqYcW7WvXXj5RKWIXg/mPdiYmba+zR
-         9xXxzWcQcaZlERTOUG/9geRhlMpU6yw2MtSM7Kjn+Iu2s5WPmeT0EMG/zqmQitcCDcXS
-         sq+xRSwdv5bcjOIIYKbnry554PkAt9k99WinDisxNAVIzzTEaAGE37K7oiY7GaKWQwJi
-         eQ6UpILNYAvQKT5nbe8lFih04MoppfpIZpFelwB25JVJTMImqlMV4KjE7vas1GTCdI6j
-         s1eA==
+        b=hD3yKc82YdLg0bBNkVUctuHPTnfTGHsX4UCw/Oxz28CL8+l+fEfmIt15KaV52f5ycO
+         QfeW/TwIVRmaFXtiDVhYKtAJvKMe3CqSSJtPftGyYdHzzAkHCj9BwojYAVz4i8JXXWwN
+         s9fHX9Bd5ZVV+DJNJXVw7RUokTPjjp/bpkAv3r9mGcamixuBfeCoRHDaBwixHz2aieZa
+         FDoH4oCcUlH8A285rCsvTOS7D2wYIy7GuiHWNMbX6Znlr3eiebFp9kVtjVwYpPuZZSDH
+         kjVbiu8yuJ3tJThALSLxT/RN6Qj+53N6kG2YZdrkIvLd5IbVF1QHR5eoBGrH3TMvHMsw
+         tpnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=6tSB+Kdo3tpFYSnfQS4+cAqWGtzQQ6poky8rhnWayls=;
-        b=c6ipNY8i7d/fTnOIxjg2H3ehGbbBQpCeK0z8D2yB93HVXvXkC6i/E5/owvdgrZ7DWx
-         afRpDBpRGDv04qAllE8uhcnHRev71wPGcxqVT/3ZVN9tK1/QLsoBVkLHxVYHKBrnGvtm
-         lojtP4pUyQ2uOE4td0xZ1woSyw/cY2p+kDrzNFRx96QW1kK6HLqh8OEQ9E+a718F/I+L
-         8DyakI5HrameSyrxvAwcQ6SFUEiYq8SMmdZn1+svhAikBC9LI4Z0kbDIo7EphrDBvDBq
-         Fgl9P45+8j9IDa170WTXc3JmW76f/V/5h34XEcErgtpmWUgdFZqxdptAu45Ys/dBpIvL
-         gNCA==
+        bh=xpF9D5ejZZkCytcWh/ZNYbKPkLefVgrjSq2MvTjf2eE=;
+        b=MEOG6quZl3QZB6wvZ/irOx1ktcgE7RZdbrLpaLdL9kUSznIfV+ck1qCKgYupnlpQD5
+         ATT/yKHlGyPtMS/t23oPStVQ5FAig5Xzh3A8wXo51/jFecqKMsy3w3cOE4Sj8RZQIA87
+         oigAfhsNi06dY7p8wJOMMKF6DLr7fviKEGcY315awiku5GM7Rsiv/u1d7Y1NlIXjWzoT
+         R0xHfUL694rNKLFdmJ1K3Q0Ydi+GE7c/4+G52T26ZUdQGtB+I/e1OJJIlvs89rOeDSD3
+         p/yCaIIa67a4Qb3zYEGFEHWAGObb3Edw+/QKFsnD3PoMDzInCd2J0ZM2uQL8fwsLeNVn
+         IyBA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hwv+qALb;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-it1-x131.google.com (mail-it1-x131.google.com. [2607:f8b0:4864:20::131])
-        by gmr-mx.google.com with ESMTPS id l23si295280ioc.2.2019.03.11.16.30.50
+       dkim=pass header.i=@kernel.org header.s=default header.b="U6HGV8C/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id e17si313428vke.0.2019.03.11.15.51.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) client-ip=2607:f8b0:4864:20::131;
+        Mon, 11 Mar 2019 15:51:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hwv+qALb;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x131.google.com with SMTP id g17so1474142ita.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=6tSB+Kdo3tpFYSnfQS4+cAqWGtzQQ6poky8rhnWayls=;
-        b=Hwv+qALbFBn5qR9ohY8y24n+TYhgH8Xe+ejdkauMEv4/EsA4z/g7dDZTlUBEdPHUju
-         /NoNgtz6V4ahJONAN1flFGuyNafVZFg18Pko+uoP0yXYXHZV7WmbhKtYq2f9Qo0LFt/0
-         YuM6hG/gp/uoWUmsbAdpINId0ujAit0aTKNFi1dgI/1w1FxGk8ovmGUN3VQiOy09HcOQ
-         OWdedhDkFBQYxNzday1+MF/VlwwuUPyBg/3rNyM2zlQMAM/dEjMhHna6L3iXkAy9v7P/
-         0IV20lQvwAcXXRmPl+f3wckp4XabJouOABwpuhknoA2afKcetxvGlJ4HsPNNyXcLS67A
-         Ij6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=6tSB+Kdo3tpFYSnfQS4+cAqWGtzQQ6poky8rhnWayls=;
-        b=D6UaHn1HzZpadmfKus3CKvh0/7zUrEKLDmBQSboWJXa87aRwRCZQNJcHbpM8QvpqSg
-         2uEGLN0KlpjQjhdpmj1NnXoOOGa9lseHo4gGVEbb9RtltrDzKEBG5KaGEDLyK0tZMyqW
-         dJ8XxKKoXN7qty/PnwGzldqy0zXXFI8vxdBYDIfO5p0jdZad9/IXwZ7YgmTE+Bk9Z2Ao
-         XsL6fU65+hvtLkFT7rlg9LbBLlhFTK0jKEEoZljFOasq1ddige5AM0hF6M/d/vnpHviw
-         03fxdc/55zkc9wXlPvcSmKoLm5rA95ceoU8cHKMXn1mSH4XJ9tdIdziyi9+RcaA7rtxY
-         TNug==
-X-Gm-Message-State: APjAAAUQKulNtELtYlrTeMjjmmvCTsOydoGA28rfG0h772ZGhXAj5/K8
-	0O7k2MOvBSszg2VNn35Jn98ZmqBTwtXN
-X-Received: by 2002:a24:62c2:: with SMTP id d185mr466447itc.45.1552347050328;
-        Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:b983:8640:fa8b:1024])
-        by smtp.gmail.com with ESMTPSA id g2sm3130905iom.7.2019.03.11.16.30.49
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Mar 2019 16:30:49 -0700 (PDT)
-Date: Mon, 11 Mar 2019 19:30:48 -0400
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@kernel.org header.s=default header.b="U6HGV8C/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [104.133.8.98])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E9EFA2087C;
+	Mon, 11 Mar 2019 22:51:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552344681;
+	bh=moWBC3j+KTPaC1SUwNQ/Q7ON7BQI6TK5df0gaLx+IM0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=U6HGV8C/I5nvFjPKA/hYd+hyei7lxmdmXaUUOhGvuqnNeSgwZxdKrO4wVNp9s+DXQ
+	 sHBk+Do5eXaF1+Hjmq/3txGCuZ0rJv2KwyN8kbj/pb25Bk09Lyi3QPi9LpiZrjPBMv
+	 TPld9lnlHbOIoR1DI30SdcQDaLniWc5wbqWhwCDk=
+Date: Mon, 11 Mar 2019 15:51:20 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Branden Bonaby <brandonbonaby94@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH] staging: octeon: Lines should not end with a '('
-Message-ID: <20190311233048.GA7187@branx011-Vostro-430>
+Message-ID: <20190311225120.GA569@kroah.com>
 References: <20190310211430.27369-1-brandonbonaby94@gmail.com>
- <20190311225120.GA569@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190311225120.GA569@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20190310211430.27369-1-brandonbonaby94@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-On Mon, Mar 11, 2019 at 03:51:20PM -0700, Greg KH wrote:
-> On Sun, Mar 10, 2019 at 05:14:30PM -0400, Branden Bonaby wrote:
-> > Start function arguments immediately after opening bracket.
-> > CHECK: Lines should not end with a '('.
-> > 
-> > Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
-> > ---
-> >  drivers/staging/octeon/ethernet-tx.c | 16 +++++++++-------
-> >  1 file changed, 9 insertions(+), 7 deletions(-)
+On Sun, Mar 10, 2019 at 05:14:30PM -0400, Branden Bonaby wrote:
+> Start function arguments immediately after opening bracket.
+> CHECK: Lines should not end with a '('.
 > 
-> Is this a v2 patch?  You sent 2 patches with the same subject and
-> changelog, but the patches do different things, which is very confusing.
-> 
-> Please fix this up and resend both as a properly versioned patch.
-> 
-> thanks,
-> 
-> greg k-h
+> Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
+> ---
+>  drivers/staging/octeon/ethernet-tx.c | 16 +++++++++-------
+>  1 file changed, 9 insertions(+), 7 deletions(-)
 
-Hey Greg
+Is this a v2 patch?  You sent 2 patches with the same subject and
+changelog, but the patches do different things, which is very confusing.
 
-So what happened was I sent both patches as individual patches
-and since they had the same subject they now showed up under 
-eachother in the google groups. What I realize now is it probably 
-doesnt make any since to split a patch into 2 when they both do the
-same thing in the same files. What I will do is send a new patch with 
-PATCH v2 as the subject and include the changes I did in the other
-2 patches as 1 patch.
+Please fix this up and resend both as a properly versioned patch.
 
-Branden Bonaby
+thanks,
 
+greg k-h
 
