@@ -1,227 +1,128 @@
 X-GM-THRID: 6666820090157072384
-X-Received: by 2002:a02:9f09:: with SMTP id z9mr6636135jal.2.1552302993405;
-        Mon, 11 Mar 2019 04:16:33 -0700 (PDT)
+X-Received: by 2002:a25:e648:: with SMTP id d69mr14188895ybh.95.1552302991624;
+        Mon, 11 Mar 2019 04:16:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:7a07:: with SMTP id h7ls1960047iom.5.gmail; Mon, 11 Mar
- 2019 04:16:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyZqJLhaVf7SBUdlJrKLq6Kpl4TQHLwVTbX2NZUqGeuJB7D4eqEtOgdUZ5vs+x4FLNkChHr
-X-Received: by 2002:a5d:9a0d:: with SMTP id s13mr33112iol.26.1552302992687;
-        Mon, 11 Mar 2019 04:16:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552302992; cv=none;
+Received: by 2002:a81:2f02:: with SMTP id v2ls2375467ywv.5.gmail; Mon, 11 Mar
+ 2019 04:16:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxQtJG1xdsCNOE+LukbTP/xVlU8dfGBLy81JwHDe1o/fWQnq/tD0wDsy3kxL98tWdWB2q0b
+X-Received: by 2002:a81:9896:: with SMTP id p144mr8115324ywg.0.1552302990775;
+        Mon, 11 Mar 2019 04:16:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552302990; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y/x60+ldDAuE6sxEj7Hj47WCrsnGBpifIzfRRiZ/0iSOAQr6CrulQVbYjDhGhi3QHH
-         mcgrGInjb+XqquoUccpc9ccCeEf0LmHVIGk0mruHkWLsEFeRM3SEwyAgPWBeYM11Y0vt
-         oql0RlX91+heS1sKsNbyFeVgOiPWjq8YY843GxvvOE3NEKfD7i+P8pQqQT5t726uQDXI
-         GOhWGrUbB3B9Ky+YQpsysqt4OoDioxFT4TJa3jJBPE72dxJZcesNLCBtl0l1eN6Y1mU4
-         xP1AME/OLdMjaPPpRvzKGM1itHcN2ZdHF4ER81L5emK5aQmVjensSmBks4Vl5fGKHV9d
-         qthg==
+        b=sfRzDZ2zrGO1w/8bbY5nH+doPmo/tXjtM8gRMKoGo9HM6gx2hntL36ZWwFnvWyBQ57
+         fxcvh34Idwqa+T1vG7DQM/oGKMpTkjzvPQgvbXiTVtHswVY7P0xJ7FqcIyKmrS7WaxFF
+         /xweGMAwaW2lCG6vchOUZNlMKyTEcnVfefimNMPSXJ2adP2tJ7Xw7eb7QdocmQQnzapw
+         pVYnQPxvOPfB0ahqpL0YAKWygh0VsPYQekGJhAV+XJmSyTb8cqZy4PDL77DGtQor1w7B
+         /+QeiZiXi14OyFW/wQl5U/G7Xcxm1UPLb36ztp20I8Bhl3TfXRxmKDlyaHafoTxyiSNg
+         iIsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=1dD8LPjT2UF4U6Qe9eJlr7BOOsIh7tolfr2skUxVubs=;
-        b=ZP1+K5eOY/TSe44CvwmEovy2jftRE2nhQoBdxN+k3Xdh/mChNF5QV3LZc2KDAMr+X2
-         gxAIq9Bcbrfg5RQDl4TAkV7MHN6aQTk4kPnYOwyrJMdLZG9ktG1otYiBFolacgUsBXXm
-         ZPCi/SkRCiDYLNBt08LHBay12mAXg4ZoJ2qkQqtOB8Sss6xwcjsEomfkkf17wgkNcbeG
-         RZk7ARpgLlgb9o1br35N5iU+OFZ560sNYbkLJ43/hWm+bnw+/NeIuS6TqTkPS/oFxQdy
-         9TM+EN824caC9trxJAwzre8CwLqdgBQNBBqw5fFOrh066aNyQAVA6xlqJn/tpUuue80B
-         mahw==
+        bh=hkw+uWT/PnaDPYTj0ZPNpr40VQubIAJHIHVollLftYQ=;
+        b=zx3RzwhZEoukhY25v9UN91hFCHJMdBOt2A/gcGdNSUX73I7arw6yBQvH4Xiwelncfa
+         ZfdM1x5nVmHD+wNKTdsFgXnkNomrCyF4LVZMUSU6RjscSKd7g/kqAjKhCCcfYyCLRRrl
+         phirT02jzQz6vB686jvL7BrpwXBQLtcUzNgzB/V67VM/W2luzCJP2yWu28/93jS4jF9e
+         fP5hQ+sEJ+OIWXSqSY8y3owuxik5IsAcmbCQpTX0iVGMyDjHS5OSKIGoDnTZDJqBPOMO
+         wC/s6wPsfenuAjjObE8rKlKKQldy1P9IuiQiBNZIPFQsriVuW690LZoL9PF4GecNtq8A
+         DUrw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MiSFr+m6;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="B/LkC8cO";
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id e74si986448ite.1.2019.03.11.04.16.32
+Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com. [2607:f8b0:4864:20::52e])
+        by gmr-mx.google.com with ESMTPS id l39si300495ywh.5.2019.03.11.04.16.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 04:16:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Mon, 11 Mar 2019 04:16:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) client-ip=2607:f8b0:4864:20::52e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MiSFr+m6;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="B/LkC8cO";
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id q206so3784631pgq.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 04:16:32 -0700 (PDT)
+Received: by mail-pg1-x52e.google.com with SMTP id h8so3774959pgp.6
+        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 04:16:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=1dD8LPjT2UF4U6Qe9eJlr7BOOsIh7tolfr2skUxVubs=;
-        b=MiSFr+m6HaMOgXjrP7JTiRVCSIVOJ7/YTCAhODJ7Tgx7mrvidSoFWrNK4KM61Li7KL
-         /TewHvyT++V2DTmQd1fSizDZhF/zjekuo5DVqQQN4AIMkwSQKosmv8ePjQatlABMhxvd
-         UZ6gxjUg+x7uUICTGeLYtV3BxsAW0sD+FujOqrOxBIdUKGDJMV71T7EoNGbPVqS02Fz0
-         EHyHKVv3YJRQMIcXhzvsQu+P133Q+p17riMsBc/HyktAGWwGdqkOsb2YUSN4KZSAEcwm
-         izHWx9//QRS7nB7kiJkWP2N6yYFxhNDlEZYEhlZ+546vUYE01Yfb0BtTzI6lHPROaaZk
-         dnOg==
+        bh=hkw+uWT/PnaDPYTj0ZPNpr40VQubIAJHIHVollLftYQ=;
+        b=B/LkC8cONH7XDXTJCRSBxUJt0/z9mL61VIT9zHt1BTWdCnNNsvZjPBiwLvmcBEVr9n
+         RbjBLi6OThz8qFVZ/LNfAZW66czD0fgbmpnWEp8zA86A1Nq04fA79ODqduqCAwtHECEj
+         biQbSHaVN7eURuJEnovi155j6m3JUQfZlDpXaOfN2RvbJ68f51R1McLmKFrBxCuwJ/Er
+         IBGf9aM7AveNu1ANzMCYXPydC4Hx1Y80Ow2C1XwbbxgIrpMVb7jR6W+32RvfASZ75AJF
+         oCAIIX72hwAZQ52RG3lB3vksPmugAPZSr8g4ITO980ELbPq8ap9pOhYO4es6vSxIVMn8
+         IelA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=1dD8LPjT2UF4U6Qe9eJlr7BOOsIh7tolfr2skUxVubs=;
-        b=IpSzL0f/R7evadW6j/Zkaf7v8G1Xxv4qz8MdBAUL2lxTQOkgyVFgMXYYWcI8+n4p8v
-         ySbY8bDt8gRHn1O/GT5Ya8lIIThEa1tbTyXvt6j/xzt1UGoPzNgempM9mssBD88iA93g
-         uz7sR+DCFGJQaqCSa3h0NTcOMlPJZNAXqquUB3vFubzSHFsw+TtK1XOnL16J941NqlJQ
-         6PsGzqEptR076UDBnJuUCpiDekvKzcc1EwA/JBf2mbPGsbIqsqOCP+/VHusWsmI2m24e
-         qfHYCCEYFk5kHrO2ddQbQX3/3LcD8tGdKO1tcFgjDS4mSBedy302XeJhFUuxIt0OQ1Pt
-         Cl6A==
-X-Gm-Message-State: APjAAAXVc7iv7u5hl1GsT4pEJY3uTL78MTQaNuQxSrcJzKKul6m/iosB
-	tGR4wEHq028xtZ2+gHXqrZw4wvcePiw=
-X-Received: by 2002:a65:48c1:: with SMTP id o1mr7544222pgs.94.1552302991721;
-        Mon, 11 Mar 2019 04:16:31 -0700 (PDT)
+        bh=hkw+uWT/PnaDPYTj0ZPNpr40VQubIAJHIHVollLftYQ=;
+        b=NMefR6ajkvpWdaKUYpwQt0/9XzGDMifHr6AH/ZPlmWEWynFmWRuE7cbm/6SdbWlGzN
+         da6C6c46hPHuHTk6ymnRSRMFV8M73QXoscBWNyiUABZUzPYBZjb+R+GnlQppdTK7qFpb
+         sR4dIRwUX4PSShNL/TQ3RtzXxUxB3tEysMnMXxHjXpEDvI6eAZpQfzAHzhmHC+eIYh4H
+         e2j3zC6IRhPzBNudwcxhge+ROiE7jgCqdnk2KaZV0X41KyHllLhLpszl2tKpdYNQstyc
+         8/fd3ztYymXmfw3zXWSl5xN44+ZSM9ZmeSMClwnObthSoi01ENmYCU/+IMAJ5yfuOCp/
+         kKKg==
+X-Gm-Message-State: APjAAAXBkDg1ysobp0FH0dC3lduYV5OXhkRLaio2kw3LFaZDEgH1vCuo
+	t7FXA5Lc++UDJvt9dXQPuFCDVNunn1E=
+X-Received: by 2002:a63:ce4a:: with SMTP id r10mr11695724pgi.336.1552302990221;
+        Mon, 11 Mar 2019 04:16:30 -0700 (PDT)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id p11sm23586700pfi.10.2019.03.11.04.16.30
+        by smtp.googlemail.com with ESMTPSA id p11sm23586700pfi.10.2019.03.11.04.16.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 04:16:31 -0700 (PDT)
+        Mon, 11 Mar 2019 04:16:29 -0700 (PDT)
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v3 5/7] Staging: rtl8192u: Remove typedef for struct _RX_REORDER_ENTRY
-Date: Mon, 11 Mar 2019 16:46:05 +0530
-Message-Id: <20190311111607.28766-6-bhanusreemahesh@gmail.com>
+Subject: [PATCH v3 4/7] Staging: rtl8192u: Remove typedef for struct _RT_LINK_DETECT_T
+Date: Mon, 11 Mar 2019 16:46:04 +0530
+Message-Id: <20190311111607.28766-5-bhanusreemahesh@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190311111607.28766-1-bhanusreemahesh@gmail.com>
 References: <20190311111607.28766-1-bhanusreemahesh@gmail.com>
 
 -Avoid typedefs for structure types to maintain kernel coding style.
--Remove typedefs RX_REORDER_ENTRY  and *PRX_REORDER_ENTRY  of struct _RX_REORDER_ENTRY .
--Change Structure name _RX_REORDER_ENTRY  to rx_reorder_entry to maintain Linux kernel Coding Style.
--Replace occurences of RX_REORDER_ENTRY  to struct rx_reorder_entry.
--Replace occurences of PRX_REORDER_ENTRY  to struct rx_reorder_entry *.
+-Remove typedefs RT_LINK_DETECT_T and *PRT_LINK_DETECT_T of struct _RT_LINK_DETECT_T.
+-Change Structure name _RT_LINK_DETECT_T to rt_link_detect to maintain Linux kernel Coding Style.
+-Replace occurence of RT_LINK_DETECT_T to struct rt_link_detect.
 
 Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 ---
- drivers/staging/rtl8192u/ieee80211/ieee80211.h      |  6 +++---
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c   | 12 ++++++------
- drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c | 10 +++++-----
- 3 files changed, 14 insertions(+), 14 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index fc24df42ca8d..ad5a3ae14804 100644
+index c8c0e4282fea..fc24df42ca8d 100644
 --- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
 +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -1474,11 +1474,11 @@ struct bandwidth_autoswitch {
+@@ -1586,7 +1586,7 @@ typedef enum {
+ } country_code_type_t;
  
- #define REORDER_WIN_SIZE	128
- #define REORDER_ENTRY_NUM	128
--typedef struct _RX_REORDER_ENTRY {
-+struct rx_reorder_entry {
- 	struct list_head	List;
- 	u16			SeqNum;
- 	struct ieee80211_rxb *prxb;
--} RX_REORDER_ENTRY, *PRX_REORDER_ENTRY;
+ #define RT_MAX_LD_SLOT_NUM	10
+-typedef struct _RT_LINK_DETECT_T {
++struct rt_link_detect {
+ 
+ 	u32				NumRecvBcnInPeriod;
+ 	u32				NumRecvDataInPeriod;
+@@ -1599,7 +1599,7 @@ typedef struct _RT_LINK_DETECT_T {
+ 	u32				NumTxOkInPeriod;
+ 	u32				NumRxOkInPeriod;
+ 	bool				bBusyTraffic;
+-} RT_LINK_DETECT_T, *PRT_LINK_DETECT_T;
 +};
- //added by amy for order
- typedef enum _Fsync_State {
- 	Default_Fsync,
-@@ -1654,7 +1654,7 @@ struct ieee80211_device {
- 	struct list_head		Rx_TS_Unused_List;
- 	struct rx_ts_record		RxTsRecord[TOTAL_TS_NUM];
- //#ifdef TO_DO_LIST
--	RX_REORDER_ENTRY	RxReorderEntry[128];
-+	struct rx_reorder_entry	RxReorderEntry[128];
- 	struct list_head		RxReorder_Unused_List;
- //#endif
- 	// Qos related. Added by Annie, 2005-11-01.
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-index 5147f7c01e31..c2483da9394e 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
-@@ -508,16 +508,16 @@ static int is_duplicate_packet(struct ieee80211_device *ieee,
- 	return 1;
- }
  
--static bool AddReorderEntry(struct rx_ts_record *pTS, PRX_REORDER_ENTRY pReorderEntry)
-+static bool AddReorderEntry(struct rx_ts_record *pTS, struct rx_reorder_entry *pReorderEntry)
- {
- 	struct list_head *pList = &pTS->rx_pending_pkt_list;
- 	while(pList->next != &pTS->rx_pending_pkt_list)
- 	{
--		if( SN_LESS(pReorderEntry->SeqNum, ((PRX_REORDER_ENTRY)list_entry(pList->next,RX_REORDER_ENTRY,List))->SeqNum) )
-+		if( SN_LESS(pReorderEntry->SeqNum, ((struct rx_reorder_entry *)list_entry(pList->next, struct rx_reorder_entry, List))->SeqNum) )
- 		{
- 			pList = pList->next;
- 		}
--		else if( SN_EQUAL(pReorderEntry->SeqNum, ((PRX_REORDER_ENTRY)list_entry(pList->next,RX_REORDER_ENTRY,List))->SeqNum) )
-+		else if( SN_EQUAL(pReorderEntry->SeqNum, ((struct rx_reorder_entry *)list_entry(pList->next, struct rx_reorder_entry, List))->SeqNum) )
- 		{
- 			return false;
- 		}
-@@ -589,7 +589,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 				    struct rx_ts_record *pTS, u16 SeqNum)
- {
- 	PRT_HIGH_THROUGHPUT	pHTInfo = ieee->pHTInfo;
--	PRX_REORDER_ENTRY	pReorderEntry = NULL;
-+	struct rx_reorder_entry *pReorderEntry = NULL;
- 	struct ieee80211_rxb **prxbIndicateArray;
- 	u8			WinSize = pHTInfo->RxReorderWinSize;
- 	u16			WinEnd = (pTS->rx_indicate_seq + WinSize - 1) % 4096;
-@@ -663,7 +663,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 		/* Current packet is going to be inserted into pending list.*/
- 		//IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): We RX no ordered packed, insert to ordered list\n",__func__);
- 		if(!list_empty(&ieee->RxReorder_Unused_List)) {
--			pReorderEntry = (PRX_REORDER_ENTRY)list_entry(ieee->RxReorder_Unused_List.next,RX_REORDER_ENTRY,List);
-+			pReorderEntry = (struct rx_reorder_entry *)list_entry(ieee->RxReorder_Unused_List.next, struct rx_reorder_entry, List);
- 			list_del_init(&pReorderEntry->List);
  
- 			/* Make a reorder entry and insert into a the packet list.*/
-@@ -709,7 +709,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
- 	/* Check if there is any packet need indicate.*/
- 	while(!list_empty(&pTS->rx_pending_pkt_list)) {
- 		IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): start RREORDER indicate\n",__func__);
--		pReorderEntry = (PRX_REORDER_ENTRY)list_entry(pTS->rx_pending_pkt_list.prev,RX_REORDER_ENTRY,List);
-+		pReorderEntry = (struct rx_reorder_entry *)list_entry(pTS->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
- 		if (SN_LESS(pReorderEntry->SeqNum, pTS->rx_indicate_seq) ||
- 		    SN_EQUAL(pReorderEntry->SeqNum, pTS->rx_indicate_seq))
- 		{
-diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-index c76715ffa08b..aefa37b285b3 100644
---- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
-@@ -28,7 +28,7 @@ static void RxPktPendingTimeout(struct timer_list *t)
- 	struct rx_ts_record     *pRxTs = from_timer(pRxTs, t, rx_pkt_pending_timer);
- 	struct ieee80211_device *ieee = container_of(pRxTs, struct ieee80211_device, RxTsRecord[pRxTs->num]);
+ struct ieee80211_device {
+@@ -1876,7 +1876,7 @@ struct ieee80211_device {
+ 	bool FwRWRF;
  
--	PRX_REORDER_ENTRY	pReorderEntry = NULL;
-+	struct rx_reorder_entry	*pReorderEntry = NULL;
- 
- 	//u32 flags = 0;
- 	unsigned long flags = 0;
-@@ -40,7 +40,7 @@ static void RxPktPendingTimeout(struct timer_list *t)
- 	if(pRxTs->rx_timeout_indicate_seq != 0xffff) {
- 		// Indicate the pending packets sequentially according to SeqNum until meet the gap.
- 		while(!list_empty(&pRxTs->rx_pending_pkt_list)) {
--			pReorderEntry = (PRX_REORDER_ENTRY)list_entry(pRxTs->rx_pending_pkt_list.prev, RX_REORDER_ENTRY, List);
-+			pReorderEntry = (struct rx_reorder_entry *)list_entry(pRxTs->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
- 			if(index == 0)
- 				pRxTs->rx_indicate_seq = pReorderEntry->SeqNum;
- 
-@@ -133,7 +133,7 @@ void TSInitialize(struct ieee80211_device *ieee)
- {
- 	struct tx_ts_record     *pTxTS  = ieee->TxTsRecord;
- 	struct rx_ts_record     *pRxTS  = ieee->RxTsRecord;
--	PRX_REORDER_ENTRY	pRxReorderEntry = ieee->RxReorderEntry;
-+	struct rx_reorder_entry	*pRxReorderEntry = ieee->RxReorderEntry;
- 	u8				count = 0;
- 	IEEE80211_DEBUG(IEEE80211_DL_TS, "==========>%s()\n", __func__);
- 	// Initialize Tx TS related info.
-@@ -418,7 +418,7 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, struct ts_common_info *
- 
- 	if(TxRxSelect == RX_DIR) {
- //#ifdef TO_DO_LIST
--		PRX_REORDER_ENTRY	pRxReorderEntry;
-+		struct rx_reorder_entry	*pRxReorderEntry;
- 		struct rx_ts_record     *pRxTS = (struct rx_ts_record *)pTs;
- 		if(timer_pending(&pRxTS->rx_pkt_pending_timer))
- 			del_timer_sync(&pRxTS->rx_pkt_pending_timer);
-@@ -426,7 +426,7 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, struct ts_common_info *
- 		while(!list_empty(&pRxTS->rx_pending_pkt_list)) {
- 			spin_lock_irqsave(&(ieee->reorder_spinlock), flags);
- 			//pRxReorderEntry = list_entry(&pRxTS->rx_pending_pkt_list.prev,RX_REORDER_ENTRY,List);
--			pRxReorderEntry = (PRX_REORDER_ENTRY)list_entry(pRxTS->rx_pending_pkt_list.prev, RX_REORDER_ENTRY, List);
-+			pRxReorderEntry = (struct rx_reorder_entry *)list_entry(pRxTS->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
- 			list_del_init(&pRxReorderEntry->List);
- 			{
- 				int i = 0;
+ 	//added by amy for AP roaming
+-	RT_LINK_DETECT_T       	LinkDetectInfo;
++	struct rt_link_detect LinkDetectInfo;
+ 	//added by amy for ps
+ 	struct rt_power_save_control PowerSaveControl;
+ //}
 -- 
 2.17.1
 
