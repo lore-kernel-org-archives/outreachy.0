@@ -1,229 +1,206 @@
 X-GM-THRID: 6666918096348905472
-X-Received: by 2002:a50:ba2b:: with SMTP id g40mr97082edc.1.1552342541125;
-        Mon, 11 Mar 2019 15:15:41 -0700 (PDT)
+X-Received: by 2002:a17:902:f089:: with SMTP id go9mr9754867plb.111.1552273659560;
+        Sun, 10 Mar 2019 20:07:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:f5a3:: with SMTP id u32ls1957916edm.2.gmail; Mon, 11 Mar
- 2019 15:15:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxrPGknADDO73fL9+9rDG1UMkr694++XP8dV2aCMQksmCrChprvShrB79yxQQ+2ZbyyEPZN
-X-Received: by 2002:a50:b361:: with SMTP id r30mr99877edd.8.1552342540050;
-        Mon, 11 Mar 2019 15:15:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552342540; cv=none;
+Received: by 2002:a63:246:: with SMTP id 67ls5490329pgc.11.gmail; Sun, 10 Mar
+ 2019 20:07:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzPWaJtXRFtdKdbihSijw7CDk+goVjarKwd7s4ofy/MQP+KFa96ozbJqNcw8YSJnDJo2k5A
+X-Received: by 2002:a65:6104:: with SMTP id z4mr5913179pgu.8.1552273658718;
+        Sun, 10 Mar 2019 20:07:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552273658; cv=none;
         d=google.com; s=arc-20160816;
-        b=dHhWnFmC5A1ILa+hxaop6lEgcYQv2TNTMNWAXGWbgeOXNjw8F8q/M25RcK0hl1kq3m
-         a+v4rSslMCjFbzEDz30NlLv4AATvEFQUfCTn5Eg6yvizX3JdJg79/t1tg0Vmj++hFzMd
-         0UbIZamYOfdmB5E94qSoqrPFZMznNex8adJ5RCAqgFKi6pOXLcRuW65sQaj4G2JlqHp/
-         oSm6R7d4qAo0pV7kDpMma+6vdbtIF/hdZcDCd1vhZgpIST/Xg9obh2pBth62X19dqPCm
-         e9Mmi5UvQnAVcsT7VfihhVANO7htNCkNkB+glNL8TLoWSYyPkpiNiAQWhBnbS0dDV55Z
-         nQRQ==
+        b=h7SXIWQfzi54Tt0n8EEe/S+dtyCeJ13ryf3x5wonVWzXWeuQjL8djZNvA1n6K0F/QJ
+         pW9ou505RC4SD4cFuZ6LLxln7XFPOa2oM4IVxXSGRhkjigKv72pr4ecd9A/UrTLpgtjy
+         YRgzNXUclBXYdfHN2uOy/p4GUGfMf1sT2TFAbfKIV8kbSQ+2p8HAcpca2uYhH61Wbgh3
+         soZOAsHuXFwxoT47heFnMYp3r8hbpT6g3sez/Wf8YCLEf8bdnPhQNHyKl7vNxLg3DD3P
+         F5SiPRpmZavaThWErtOZZ8RWKnkbBXq3RZt964QvIS2LHQ8oW/AaCO8qg23U3uEb2+07
+         oYJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=LregSY+ujeGucaYBdpJ+TTzaD6FIsQ66E4ut/gYTmUo=;
-        b=slkAR0aq6BAsI/jB91Nav+Y+YeHOhs1Z+gn+uvsAN8zoQ//s6nCKtFIAlysJOjPxM+
-         ZPhnlACiEQnNI1jmCrLNvNWjZ97JIudc3MuShfMOyLReO2YJF1dIybKAtEsszOKPHd8g
-         cjMlz7EzknokX7Y50UV3PaE7e6yJJ3vDx/ioQwJkKgORX66zVjFT+xE9yDfud6agYbaX
-         Ndk/nqlT2vJEXybF9FwqoSlIRRvHM2oYLW05P6WJ10iRkvvSjQHTYW8bhG3fKJziMtSR
-         zo9Q8y4WUNsOv3OgyCQjadEzyJS1lDUNoHE6Xgea0oqXhQFEdtXy5Rmzm4+2is/rMBcf
-         a7lA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=RmASwtenpfzP19pN/Xbj2nUU1EUJkFKY36QDM/Ve43E=;
+        b=UTrx+2VOrGH0IgwqD82GoDKA5PM6Z4oTYK5nN2+jMUzndyD8XE0EunO27g9euegfL9
+         ACYTlS1EC7eUUE1py3i1G/FnUCpBu4miw7a+GVRfaQMNROWaRvpVn42GATKf7Um7hdpR
+         r82MaKkeYYfFIqg628pi2K0xi8KfDNz8RoSyz8VxAk8BLT9HBmucvBF5/UbsvdjSXVel
+         GaaQGatNFwWsc2JEwajzZFj8rH8h2hPRbBNgkOTMNoLn/MDXHvxUb6tGj3xCt8kvCYQv
+         /UyIai3au090BWbM6atZyHESTiBc1Wv292YoqVBuA8qxAYorJdaw7a1MG+pVXpxFNbwL
+         ulOQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JhU0cUsC;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com. [2a00:1450:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id a7si895250edb.1.2019.03.11.15.15.40
+       dkim=pass header.i=@kernel.org header.s=default header.b=JGsGS5Ds;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id e71si190348pfc.1.2019.03.10.20.07.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 15:15:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) client-ip=2a00:1450:4864:20::544;
+        Sun, 10 Mar 2019 20:07:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JhU0cUsC;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x544.google.com with SMTP id h58so626790edb.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 15:15:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
-        bh=LregSY+ujeGucaYBdpJ+TTzaD6FIsQ66E4ut/gYTmUo=;
-        b=JhU0cUsCCbDhhG1HCF8ROI0lkFtt8hX2Gtqh6ra1lR2khSFS0AOMcdwzQYnYcUZhrI
-         eHgoUvTliDeWR7I5ZN5aI0v7vXpFcDVTkrI48/RHkZZO0hS/rhEVoxlmaFOGXcfr/rlJ
-         6+Wrr79YT83B2g6656dY1V3KF13Xj9JmW90CTkekZBgGTrTdda21r2azS2Mayhbs4r2e
-         g5GpRrF/7wPKkaA8pqoL8pTS81zLlSbGdcZOzKPbkVN7fYO/o/+QQLqlUxSRH9p0b8cD
-         rZQPfwd/0X753dTDWmhH4tRSkclbucJIo38KGqK9uSECIZdVAmK9f8d2RY0ZOxQ4wV9a
-         XW+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to;
-        bh=LregSY+ujeGucaYBdpJ+TTzaD6FIsQ66E4ut/gYTmUo=;
-        b=N4ctE2c0eocWRr46pto1lkZ6lbYa5WeSXGuikCJqaOa7hyDU19VtyDPFKylXaeYQnm
-         XMk3OZjuVo331L2fJ9m7seh6buiXapczzwdgRxRnnDnZUYwgjc27NPVuhxIxiAWMf7UJ
-         6okOnfdZNkC2h5KJwlG8T4LQRgucTU8csACXdiLGKQRhkUevy/2YtMI0wKa65r2GNIfm
-         LQTSj6cOk98OIsDJekg3V4d1inFGSgs/laf7IFCUZtlN650cfPEew3Dtdhow41X8KOfa
-         EcwaUFd3wxag9gFfX6RSKmWZ+s9NpDk1yOsh40iUAruC5FTfPqM921idE82c8soRB2PG
-         4i3w==
-X-Gm-Message-State: APjAAAWkwnIyAKMf23U5Gdq7302Nl/32o1LS9VvYVgoCn8QYL2Roc6L4
-	iA7ANn3IqkBy0ClBETaCZUn0g1MMZaDuC2wSXHaJJHV72w==
-X-Received: by 2002:a50:c352:: with SMTP id q18mr708351edb.175.1552342539538;
- Mon, 11 Mar 2019 15:15:39 -0700 (PDT)
+       dkim=pass header.i=@kernel.org header.s=default header.b=JGsGS5Ds;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [12.27.65.221])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 617AB206DF;
+	Mon, 11 Mar 2019 03:07:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552273658;
+	bh=U4jhAYG4H9SiQXBOZ8uBTxYEBeZsMi18aBMvzS48sR4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JGsGS5DsFnrCTIED9Z4ArhvOE+YQJjvTjlYVYoz/pSwWQ2+QIuJh5MjddC/tndBTl
+	 L5LFc+hDyEBDXhJIB4QfHuqxMOVxpsE9jyoVUHh6YQctfKakuncKBxiushNfkWGf7L
+	 nnGAg8/hbVWofzfHpGMf1dev+TLtBDpyLQm9UVNQ=
+Date: Mon, 11 Mar 2019 04:07:37 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v1 3/3] staging: rtl8192e: fix line over 80 characters
+ warning
+Message-ID: <20190311030737.GB17063@kroah.com>
+References: <20190311000702.12740-1-jbi.octave@gmail.com>
+ <20190311000702.12740-4-jbi.octave@gmail.com>
 MIME-Version: 1.0
-References: <20190311000702.12740-1-jbi.octave@gmail.com> <20190311000702.12740-2-jbi.octave@gmail.com>
- <20190311030449.GA17063@kroah.com>
-In-Reply-To: <20190311030449.GA17063@kroah.com>
-From: Jules Octave <jbi.octave@gmail.com>
-Date: Mon, 11 Mar 2019 22:15:03 +0000
-Message-ID: <CAOuULM61DXcVaTHhXvwnmS0FdREQjsFLnKxC4abGG2OcD092wQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] staging: rtl8192e: add SPDX GPL-2.0+ license identifier
-To: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000a3949f0583d8e9e5"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190311000702.12740-4-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
---000000000000a3949f0583d8e9e5
-Content-Type: text/plain; charset="UTF-8"
+On Mon, Mar 11, 2019 at 12:07:02AM +0000, Jules Irenge wrote:
+> Replace dot11d_info with dt1d_inf to fix checkpatch.pl warning
+>  Issue found by checkpatch.pl:
+>  "WARNING: line over 80 characters"
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/dot11d.c | 48 +++++++++++++++----------------
+>  1 file changed, 24 insertions(+), 24 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192e/dot11d.c b/drivers/staging/rtl8192e/dot11d.c
+> index 721892cef3a7..17738859b197 100644
+> --- a/drivers/staging/rtl8192e/dot11d.c
+> +++ b/drivers/staging/rtl8192e/dot11d.c
+> @@ -37,14 +37,14 @@ static struct channel_list channel_array[] = {
+>  
+>  void dot11d_init(struct rtllib_device *ieee)
+>  {
+> -	struct rt_dot11d_info *dot11d_info = GET_DOT11D_INFO(ieee);
+> +	struct rt_dot11d_info *dt1d_inf = GET_DOT11D_INFO(ieee);
 
->Why did you pick this specific license?  It does not seem to match the
->license text in this file at all.
+No, the original variable name is fine, don't shorten things for no good
+reason.
 
->Be _VERY_ careful when doing stuff like this.  If you get the license
->wrong, lawyers can get mad at you :(
+>  
+> -	dot11d_info->enabled = false;
+> +	dt1d_inf->enabled = false;
+>  
+> -	dot11d_info->state = DOT11D_STATE_NONE;
+> -	dot11d_info->country_len = 0;
+> -	memset(dot11d_info->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
+> -	memset(dot11d_info->max_tx_power_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
+> +	dt1d_inf->state = DOT11D_STATE_NONE;
+> +	dt1d_inf->country_len = 0;
+> +	memset(dt1d_inf->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
+> +	memset(dt1d_inf->max_tx_power_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
+>  	RESET_CIE_WATCHDOG(ieee);
+>  }
+>  EXPORT_SYMBOL(dot11d_init);
 
->Also, the file name "dot11d.c" should be in the subject line, as you are
->not adding the identifer to the whole driver, only one file.
+None of those lines were over 80 characters, so why did you change
+anything here?
 
->Please fix this up and resend the whole series.
+> @@ -93,29 +93,29 @@ EXPORT_SYMBOL(dot11d_channel_map);
+>  
+>  void dot11d_reset(struct rtllib_device *ieee)
+>  {
+> -	struct rt_dot11d_info *dot11d_info = GET_DOT11D_INFO(ieee);
+> +	struct rt_dot11d_info *dt1d_inf = GET_DOT11D_INFO(ieee);
+>  	u32 i;
+>  
+> -	memset(dot11d_info->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
+> -	memset(dot11d_info->max_tx_power_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
+> +	memset(dt1d_inf->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
+> +	memset(dt1d_inf->max_tx_power_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
+>  	for (i = 1; i <= 11; i++)
+> -		(dot11d_info->channel_map)[i] = 1;
+> +		(dt1d_inf->channel_map)[i] = 1;
+>  	for (i = 12; i <= 14; i++)
+> -		(dot11d_info->channel_map)[i] = 2;
+> -	dot11d_info->state = DOT11D_STATE_NONE;
+> -	dot11d_info->country_len = 0;
+> +		(dt1d_inf->channel_map)[i] = 2;
+> +	dt1d_inf->state = DOT11D_STATE_NONE;
+> +	dt1d_inf->country_len = 0;
+>  	RESET_CIE_WATCHDOG(ieee);
+>  }
 
->thanks,
+Same with this function, what is wrong with it as-is?
 
-I read online that the default license is GPL-2.0+  as it is not indicated
-in the file. I think I was wrong. I would have asked the maintainer first.
-Okay, I will just reset it and try to think how to deal with it . I have in
-mind a GPL 1.0+ as it covers from 1 and above, I don t know if it can be
-fine. I have to ask the maintainer. I am sorry.
+>  
+>  void dot11d_update_country(struct rtllib_device *dev, u8 *address,
+>  			   u16 country_len, u8 *country)
+>  {
+> -	struct rt_dot11d_info *dot11d_info = GET_DOT11D_INFO(dev);
+> +	struct rt_dot11d_info *dt1d_inf = GET_DOT11D_INFO(dev);
+>  	u8 i, j, number_of_triples, max_channel_number;
+>  	struct chnl_txpow_triple *triple;
+>  
+> -	memset(dot11d_info->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
+> -	memset(dot11d_info->max_tx_power_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
+> +	memset(dt1d_inf->channel_map, 0, MAX_CHANNEL_NUMBER + 1);
+> +	memset(dt1d_inf->max_tx_power_list, 0xFF, MAX_CHANNEL_NUMBER + 1);
+>  	max_channel_number = 0;
+>  	number_of_triples = (country_len - 3) / 3;
+>  	triple = (struct chnl_txpow_triple *)(country + 3);
 
-*Kind regards*
+Same here.
 
+> @@ -135,8 +135,8 @@ void dot11d_update_country(struct rtllib_device *dev, u8 *address,
+>  		}
+>  
+>  		for (j = 0; j < triple->num_channels; j++) {
+> -			dot11d_info->channel_map[triple->first_channel + j] = 1;
+> -			dot11d_info->max_tx_power_list[triple->first_channel + j] =
+> +			dt1d_inf->channel_map[triple->first_channel + j] = 1;
+> +			dt1d_inf->max_tx_power_list[triple->first_channel + j] =
+>  						 triple->max_tx_power;
+>  			max_channel_number = triple->first_channel + j;
+>  		}
 
-*Jules*
-*..*
-BCS West Yorkshire Secretary
-Positive action combined with positive thinking results in success - Shiv
-Khera
+Ok, that one line is "too long", but really, it is fine as-is, no need
+to change it.
 
+> @@ -146,18 +146,18 @@ void dot11d_update_country(struct rtllib_device *dev, u8 *address,
+>  
+>  	UPDATE_CIE_SRC(dev, address);
+>  
+> -	dot11d_info->country_len = country_len;
+> -	memcpy(dot11d_info->country_buffer, country, country_len);
+> -	dot11d_info->state = DOT11D_STATE_LEARNED;
+> +	dt1d_inf->country_len = country_len;
+> +	memcpy(dt1d_inf->country_buffer, country, country_len);
+> +	dt1d_inf->state = DOT11D_STATE_LEARNED;
+>  }
+>  
+>  void dot11d_scan_complete(struct rtllib_device *dev)
+>  {
+> -	struct rt_dot11d_info *dot11d_info = GET_DOT11D_INFO(dev);
+> +	struct rt_dot11d_info *dt1d_inf = GET_DOT11D_INFO(dev);
+>  
+> -	switch (dot11d_info->state) {
+> +	switch (dt1d_inf->state) {
+>  	case DOT11D_STATE_LEARNED:
+> -		dot11d_info->state = DOT11D_STATE_DONE;
+> +		dt1d_inf->state = DOT11D_STATE_DONE;
+>  		break;
+>  	case DOT11D_STATE_DONE:
+>  		dot11d_reset(dev);
 
-On Mon, 11 Mar 2019 at 03:04, Greg KH <gregkh@linuxfoundation.org> wrote:
+Why change these lines?
 
-> On Mon, Mar 11, 2019 at 12:07:00AM +0000, Jules Irenge wrote:
-> > Add the SPDX GPL-2.0+ license identifier to fix checkpatch.pl warning
-> > Issue found by checkpatch.pl warning:
-> > "WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
-> >
-> > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> > ---
-> >  drivers/staging/rtl8192e/dot11d.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/drivers/staging/rtl8192e/dot11d.c
-> b/drivers/staging/rtl8192e/dot11d.c
-> > index 68f53013cb95..74adb45efe73 100644
-> > --- a/drivers/staging/rtl8192e/dot11d.c
-> > +++ b/drivers/staging/rtl8192e/dot11d.c
-> > @@ -1,3 +1,4 @@
-> > +// SPDX-License-Identifier: GPL-2.0+
->
-> Why did you pick this specific license?  It does not seem to match the
-> license text in this file at all.
->
-> Be _VERY_ careful when doing stuff like this.  If you get the license
-> wrong, lawyers can get mad at you :(
->
-> Also, the file name "dot11d.c" should be in the subject line, as you are
-> not adding the identifer to the whole driver, only one file.
->
-> Please fix this up and resend the whole series.
->
-> thanks,
->
-> greg k-h
->
+As was said before, checkpatch is a hint, not a hard rule.  You always
+need to think when making changes.
 
---000000000000a3949f0583d8e9e5
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+thanks,
 
-<div dir=3D"ltr">&gt;Why did you pick this specific license?=C2=A0 It does =
-not seem to match the<br>&gt;license text in this file at all.<br><br>&gt;B=
-e _VERY_ careful when doing stuff like this.=C2=A0 If you get the license<b=
-r>&gt;wrong, lawyers can get mad at you :(<br><br>&gt;Also, the file name &=
-quot;dot11d.c&quot; should be in the subject line, as you are<br>&gt;not ad=
-ding the identifer to the whole driver, only one file.<br><br>&gt;Please fi=
-x this up and resend the whole series.<br><br>&gt;thanks,<div><br></div><di=
-v>I read online that the default license is GPL-2.0+=C2=A0 as it is not ind=
-icated in the file. I think I was wrong. I would have asked the maintainer =
-first.</div><div>Okay, I will just reset it and try to think how to deal wi=
-th it . I have in mind a GPL 1.0+ as it covers from 1 and above, I don t kn=
-ow if it can be fine. I have to ask the maintainer. I am sorry.<br><div><di=
-v dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signature">=
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div di=
-r=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"lt=
-r"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div=
- dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div><div><=
-b><font color=3D"#0078d7" size=3D"2"><br></font></b></div><div><b><font col=
-or=3D"#0078d7" size=3D"2">Kind regards</font></b></div><div><br></div><div>=
-<b><font color=3D"#0078d7" size=3D"2"><br></font></b></div><div><b><font co=
-lor=3D"#0078d7" size=3D"2">Jules</font></b></div></div><div><div><font colo=
-r=3D"#0078d7" size=3D"1"><b>..</b></font></div><div><font color=3D"#000000"=
- size=3D"1">BCS West Yorkshire Secretary</font></div><div><span style=3D"co=
-lor:rgb(51,51,51);font-family:&quot;helvetica neue&quot;,Helvetica,Arial,sa=
-ns-serif"><font size=3D"1">Positive action combined with positive thinking =
-results in success - Shiv Khera</font></span></div></div><div><b></b></div>=
-</div></div></div></div></div></div></div></div></div></div></div></div></d=
-iv></div></div></div></div></div></div><br></div></div><br><div class=3D"gm=
-ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, 11 Mar 2019 at 03:=
-04, Greg KH &lt;<a href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxf=
-oundation.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">On Mon, Mar 11, 2019 at 12:07:00AM +0000, Jules Irenge wrote:<=
-br>
-&gt; Add the SPDX GPL-2.0+ license identifier to fix <a href=3D"http://chec=
-kpatch.pl" rel=3D"noreferrer" target=3D"_blank">checkpatch.pl</a> warning<b=
-r>
-&gt; Issue found by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" tar=
-get=3D"_blank">checkpatch.pl</a> warning:<br>
-&gt; &quot;WARNING: Missing or malformed SPDX-License-Identifier tag in lin=
-e 1&quot;<br>
-&gt; <br>
-&gt; Signed-off-by: Jules Irenge &lt;<a href=3D"mailto:jbi.octave@gmail.com=
-" target=3D"_blank">jbi.octave@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/rtl8192e/dot11d.c | 1 +<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+)<br>
-&gt; <br>
-&gt; diff --git a/drivers/staging/rtl8192e/dot11d.c b/drivers/staging/rtl81=
-92e/dot11d.c<br>
-&gt; index 68f53013cb95..74adb45efe73 100644<br>
-&gt; --- a/drivers/staging/rtl8192e/dot11d.c<br>
-&gt; +++ b/drivers/staging/rtl8192e/dot11d.c<br>
-&gt; @@ -1,3 +1,4 @@<br>
-&gt; +// SPDX-License-Identifier: GPL-2.0+<br>
-<br>
-Why did you pick this specific license?=C2=A0 It does not seem to match the=
-<br>
-license text in this file at all.<br>
-<br>
-Be _VERY_ careful when doing stuff like this.=C2=A0 If you get the license<=
-br>
-wrong, lawyers can get mad at you :(<br>
-<br>
-Also, the file name &quot;dot11d.c&quot; should be in the subject line, as =
-you are<br>
-not adding the identifer to the whole driver, only one file.<br>
-<br>
-Please fix this up and resend the whole series.<br>
-<br>
-thanks,<br>
-<br>
-greg k-h<br>
-</blockquote></div>
-
---000000000000a3949f0583d8e9e5--
+greg k-h
 
