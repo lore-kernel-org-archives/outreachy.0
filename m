@@ -1,83 +1,121 @@
-X-GM-THRID: 6620100063939002368
-X-Received: by 2002:a17:906:1603:: with SMTP id m3-v6mr446601ejd.16.1541362158714;
-        Sun, 04 Nov 2018 12:09:18 -0800 (PST)
+X-GM-THRID: 6666547009386708992
+X-Received: by 2002:a24:becd:: with SMTP id i196mr403857itf.25.1552347051462;
+        Mon, 11 Mar 2019 16:30:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:2a93:: with SMTP id l19-v6ls752683eje.8.gmail; Sun,
- 04 Nov 2018 12:09:17 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fSQWtnm1iEufoZscghzKTZptSHZvrR96q3jC2KKdfZ3wrZo2/VVmqT5piCdEYdRF3bciKh
-X-Received: by 2002:a17:906:29c1:: with SMTP id y1-v6mr320214eje.12.1541362157795;
-        Sun, 04 Nov 2018 12:09:17 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1541362157; cv=pass;
+Received: by 2002:a24:911:: with SMTP id 17ls309726itm.5.gmail; Mon, 11 Mar
+ 2019 16:30:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQjG549pphZnWQpxTK0tbEdacGoA8QW6cC5HbtPSEpsx4Rd+RVOYDYn1LY3B2gHwPR36If
+X-Received: by 2002:a24:9c85:: with SMTP id b127mr446813ite.36.1552347050622;
+        Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552347050; cv=none;
         d=google.com; s=arc-20160816;
-        b=g6nCNWF3nk54e5XXwbR5kTXqD18xDJalRM0l+1UsMIdWiRXUMfdwe46/nmi+vJrXu0
-         3sHrvw/GaeRISPGgb1FIJ5uGIRQVVOGoHNspqL9TOyuKOXrlJxMm8QfXlDLd/SCRqnc9
-         23b8LvlHfodPHmYTj8KI6W2q8hoqMz6zWgFrmJbwx1wFhZd/XzAGIbUkS4jVhubbK9DH
-         kUeM0zI+rkLbWjVNqYVApY4vPaclfvS5YWjSoLmWclZ3lH6NDAnDJ2N0DHhCgC8hktkr
-         wrj0n+9jE9vzKDY/+HMZJWfM662QlUGH5r7CSHWMsPBWPLebQCxdZi6s3JKca2dMXEkB
-         N95Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=WCGb4bSplYMw4cGqX2x2qW3Gqg4tLljcwC6yn/a7k+8=;
-        b=NTxRX4/A7R/mpX1s9ebCdUiVOhMwpECBicbY1OhqWK2I58gmRNRyjUTETkTk7/nySg
-         AfN2szFvrg22o3rs3vLAJckMiCGAp2IrQGKd0FVV/ew5GZlo02upxy8x9JgW0+Kdp5UO
-         P2edYvqYNEfI2DR7XULedpkBNx/levkm7RdGZpxcuUa/UiGc+pC7xmYUuslCuMPgt0ci
-         XNo0z7lApdjWqL5YjKvp3cndVH3YX6rT4kMuFX7No7VvyhvbYGz9VXyZaDuzVBUROQ6z
-         wx2GHjNi51VKnuUYOAB8b3ThpTq2ryCBBvnpPN37WupNUf4rQ2caHSUdjh/JRGNqPvYw
-         zmVQ==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=aDJ5CdtQ;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id a35-v6si185528edd.1.2018.11.04.12.09.17
+        b=P8dyp497af4aofa0FqNfFAveh4C6HK1WUdTnluKtasoRVt75IyMOc6gMYjA0hv9ZRX
+         uH9UUuoMD0y7tWddD8SN90bxNhAvMYdCOzGajQwqYcW7WvXXj5RKWIXg/mPdiYmba+zR
+         9xXxzWcQcaZlERTOUG/9geRhlMpU6yw2MtSM7Kjn+Iu2s5WPmeT0EMG/zqmQitcCDcXS
+         sq+xRSwdv5bcjOIIYKbnry554PkAt9k99WinDisxNAVIzzTEaAGE37K7oiY7GaKWQwJi
+         eQ6UpILNYAvQKT5nbe8lFih04MoppfpIZpFelwB25JVJTMImqlMV4KjE7vas1GTCdI6j
+         s1eA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=6tSB+Kdo3tpFYSnfQS4+cAqWGtzQQ6poky8rhnWayls=;
+        b=c6ipNY8i7d/fTnOIxjg2H3ehGbbBQpCeK0z8D2yB93HVXvXkC6i/E5/owvdgrZ7DWx
+         afRpDBpRGDv04qAllE8uhcnHRev71wPGcxqVT/3ZVN9tK1/QLsoBVkLHxVYHKBrnGvtm
+         lojtP4pUyQ2uOE4td0xZ1woSyw/cY2p+kDrzNFRx96QW1kK6HLqh8OEQ9E+a718F/I+L
+         8DyakI5HrameSyrxvAwcQ6SFUEiYq8SMmdZn1+svhAikBC9LI4Z0kbDIo7EphrDBvDBq
+         Fgl9P45+8j9IDa170WTXc3JmW76f/V/5h34XEcErgtpmWUgdFZqxdptAu45Ys/dBpIvL
+         gNCA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hwv+qALb;
+       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <brandonbonaby94@gmail.com>
+Received: from mail-it1-x131.google.com (mail-it1-x131.google.com. [2607:f8b0:4864:20::131])
+        by gmr-mx.google.com with ESMTPS id l23si295280ioc.2.2019.03.11.16.30.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Nov 2018 12:09:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) client-ip=2607:f8b0:4864:20::131;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=aDJ5CdtQ;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541362156; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=iZPNybcPCYGKcnEAYOrfIDXTwB4HlIKxhyfMuwtC6BRdrVB1nGKXaPzCR7hA2vStxyZgKfCAY8c9uTWLbqta6itKg+d5IIWci+L+ClqWRfu3fkGIcL8WKN7i/k0dLMo1HFrJwkUFjVFWwGinB8Gh6zdtbLUZ2cCqm/lSMTu9YrI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541362156; h=Content-Type:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=WCGb4bSplYMw4cGqX2x2qW3Gqg4tLljcwC6yn/a7k+8=; 
-	b=ZGTvOc+Rh16utuGapXzBXWR1czbMmdxjimIqQHFqjHb0LnoHDWcwpxt3ccIoihGrYLW69gBtqrICIVZgJBHGgOqJqdB27xJrPlOfzeEBdF/fYDlAIOTZZvtL1hmZA7pxBTK/MC7vA28ducWEwI1k1DeYxvZHvBaokPzEiQwNdq4=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541362156;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type; l=218;
-	bh=WCGb4bSplYMw4cGqX2x2qW3Gqg4tLljcwC6yn/a7k+8=;
-	b=aDJ5CdtQsnWkfMdwJq5Cvon9CtKuIC77Jo2tbGlqeBd2IBS7p0RhqU5JvQkR5C3k
-	FWt41InJy59C2mFgXJ7hF+IQInlwLQIYZ8l6WYMTS4HDD7dtmfChX5Tskt82OlCQENu
-	xM3rBDBz3sogzhhLVKiMhhCaiu0CkTbscrrZWheU=
-Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 1541362154804664.408911411227; Sun, 4 Nov 2018 21:09:14 +0100 (CET)
-Date: Sun, 4 Nov 2018 20:09:08 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
-To: outreachy-kernel@googlegroups.com
-Subject: Coccinelle fails
-Message-ID: <20181104200908.GA26807@kvasir.local>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hwv+qALb;
+       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-it1-x131.google.com with SMTP id g17so1474142ita.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=6tSB+Kdo3tpFYSnfQS4+cAqWGtzQQ6poky8rhnWayls=;
+        b=Hwv+qALbFBn5qR9ohY8y24n+TYhgH8Xe+ejdkauMEv4/EsA4z/g7dDZTlUBEdPHUju
+         /NoNgtz6V4ahJONAN1flFGuyNafVZFg18Pko+uoP0yXYXHZV7WmbhKtYq2f9Qo0LFt/0
+         YuM6hG/gp/uoWUmsbAdpINId0ujAit0aTKNFi1dgI/1w1FxGk8ovmGUN3VQiOy09HcOQ
+         OWdedhDkFBQYxNzday1+MF/VlwwuUPyBg/3rNyM2zlQMAM/dEjMhHna6L3iXkAy9v7P/
+         0IV20lQvwAcXXRmPl+f3wckp4XabJouOABwpuhknoA2afKcetxvGlJ4HsPNNyXcLS67A
+         Ij6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=6tSB+Kdo3tpFYSnfQS4+cAqWGtzQQ6poky8rhnWayls=;
+        b=D6UaHn1HzZpadmfKus3CKvh0/7zUrEKLDmBQSboWJXa87aRwRCZQNJcHbpM8QvpqSg
+         2uEGLN0KlpjQjhdpmj1NnXoOOGa9lseHo4gGVEbb9RtltrDzKEBG5KaGEDLyK0tZMyqW
+         dJ8XxKKoXN7qty/PnwGzldqy0zXXFI8vxdBYDIfO5p0jdZad9/IXwZ7YgmTE+Bk9Z2Ao
+         XsL6fU65+hvtLkFT7rlg9LbBLlhFTK0jKEEoZljFOasq1ddige5AM0hF6M/d/vnpHviw
+         03fxdc/55zkc9wXlPvcSmKoLm5rA95ceoU8cHKMXn1mSH4XJ9tdIdziyi9+RcaA7rtxY
+         TNug==
+X-Gm-Message-State: APjAAAUQKulNtELtYlrTeMjjmmvCTsOydoGA28rfG0h772ZGhXAj5/K8
+	0O7k2MOvBSszg2VNn35Jn98ZmqBTwtXN
+X-Received: by 2002:a24:62c2:: with SMTP id d185mr466447itc.45.1552347050328;
+        Mon, 11 Mar 2019 16:30:50 -0700 (PDT)
+Return-Path: <brandonbonaby94@gmail.com>
+Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:b983:8640:fa8b:1024])
+        by smtp.gmail.com with ESMTPSA id g2sm3130905iom.7.2019.03.11.16.30.49
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 Mar 2019 16:30:49 -0700 (PDT)
+Date: Mon, 11 Mar 2019 19:30:48 -0400
+From: Branden Bonaby <brandonbonaby94@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: octeon: Lines should not end with a '('
+Message-ID: <20190311233048.GA7187@branx011-Vostro-430>
+References: <20190310211430.27369-1-brandonbonaby94@gmail.com>
+ <20190311225120.GA569@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+In-Reply-To: <20190311225120.GA569@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Any idea why if I try to run coccinelle in report mode it fails? E.g.:
-make coccicheck MODE=report M=drivers/staging/speakup/
+On Mon, Mar 11, 2019 at 03:51:20PM -0700, Greg KH wrote:
+> On Sun, Mar 10, 2019 at 05:14:30PM -0400, Branden Bonaby wrote:
+> > Start function arguments immediately after opening bracket.
+> > CHECK: Lines should not end with a '('.
+> > 
+> > Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
+> > ---
+> >  drivers/staging/octeon/ethernet-tx.c | 16 +++++++++-------
+> >  1 file changed, 9 insertions(+), 7 deletions(-)
+> 
+> Is this a v2 patch?  You sent 2 patches with the same subject and
+> changelog, but the patches do different things, which is very confusing.
+> 
+> Please fix this up and resend both as a properly versioned patch.
+> 
+> thanks,
+> 
+> greg k-h
 
-coccicheck failed
-make: *** [Makefile:1650: coccicheck] Error 2
+Hey Greg
 
-Thank you
-ioannis
+So what happened was I sent both patches as individual patches
+and since they had the same subject they now showed up under 
+eachother in the google groups. What I realize now is it probably 
+doesnt make any since to split a patch into 2 when they both do the
+same thing in the same files. What I will do is send a new patch with 
+PATCH v2 as the subject and include the changes I did in the other
+2 patches as 1 patch.
+
+Branden Bonaby
 
 
