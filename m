@@ -1,114 +1,174 @@
 X-GM-THRID: 6666820090157072384
-X-Received: by 2002:ae9:f507:: with SMTP id o7mr17781686qkg.46.1552318918622;
-        Mon, 11 Mar 2019 08:41:58 -0700 (PDT)
+X-Received: by 2002:adf:fb0c:: with SMTP id c12mr1585928wrr.28.1552314617856;
+        Mon, 11 Mar 2019 07:30:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:3fed:: with SMTP id w42ls4682996qth.2.gmail; Mon, 11 Mar
- 2019 08:41:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzWDxc+r35lVLSUhI1EelkaqorFZsK/eB5W5bzTboPlFQ+pbpqxyDdwgJH83iUIZMKL3O/H
-X-Received: by 2002:ac8:111:: with SMTP id e17mr10971531qtg.43.1552318918023;
-        Mon, 11 Mar 2019 08:41:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552318918; cv=none;
+Received: by 2002:adf:fac8:: with SMTP id a8ls1856055wrs.17.gmail; Mon, 11 Mar
+ 2019 07:30:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyvCY6mNx2+rT84pveGX2zuMdROS5Gy0+qW6TsJbVwNA9msGX8mHPNCwIMAZ4+EjWZXmfFi
+X-Received: by 2002:a05:6000:10c1:: with SMTP id b1mr1712748wrx.30.1552314616835;
+        Mon, 11 Mar 2019 07:30:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552314616; cv=none;
         d=google.com; s=arc-20160816;
-        b=y0SnPAH4yfCWSVXNr3D0b+6VYAAWcjXoQxMG662Iwmll6yEqbnyR9dCfA6e6elag4c
-         ljMTQAd3wIVy6/PzwG6ZLGmPA07P/MzC6iz/HFW3h53hHbYZTii3899ya6v+9Sq9HIRp
-         OIene0hWOHrhClxRh17LVPfBl9agrbHD307pRtSWnQKHvPSXC1EDudS5G5subUAQzJTA
-         qvqoj9FeQu/MP3BPejCbvVzl7HmuvPmbuUFPl0EOUDtg/QbYbCzNheFiOWw+ZRL+LXZh
-         aW0OyUndy8r8f5idYrzLWS4rwWxN4AEx6hFVmPvOz7hBmtNWw9ckbCLeZU5Uaq6oMg7e
-         askg==
+        b=MzU8+z8Usaaa4MqOxLotMO7UqX3uTLS9RcIcgfEkL+K8Vw3c2IoQtiLC0OOPkPur82
+         oBS8xwFDP0PT0ojrxpszg8EcbVlHhR3WgK+ymKMZFZIMhL/9JC/7EBq5ypAwPGcHKzJV
+         +CjSCisQyDMEDm4aHBCDsa1yIhHj5/pRy5T1qo43siitw8WC0WvVEoAYZPjNEIesI7xF
+         L8K6BFKOPCgnGAt1yExHQ4kODeL66Ydhk/3vSEdvmoOsceN+algdzsTcTQiP3Mx/VcDi
+         ha32ffdH7+0ywsk2ji9CdkxdjzZFuCfHG8fqtU3AJPOxT9KGGp/naCN0HAuwk7YfvlHo
+         uVBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=XPCnDZ31VdvKFg4bLNaVelxR8Xno4GmsfSlwaLn4srk=;
-        b=wDV6OziCDvsN7C2MMEk/uwmv2o9204nqiZJxwW+xNTHK7J5Q+tVCMVvNvV9yGwgcjx
-         AR2XiArs0QbYjtRf+yood2J9jSjvgviMCw9A/JRtpQfE9vgtvcCMtxSYeD5TIFMz6mlz
-         erMNA+1/cLu8po1T4Ri5CxRbjI5WIdda84oZNv5PKOxKRX1TzmvMRx0F9mcF8UkdrrpM
-         CesQA+V4isIFM3mjOmQejptblwY06t2MT75p7EKQZUkFmVbykNuqG4XK+fQ5oKuda6KQ
-         kuU8fkVOS4G5KnJ66NPaI7m1tvFw9YOnbfBT3oMbt6jAhwze1T3DRQPWuq5RldjVEyaj
-         Q0bQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=OccbGlrJr7LEyZNwsfnca7r9RP9BgYCNSvk8v5RUaCU=;
+        b=drUo/WtIj4yeaQynfD/fhnluAeTzuAfMcw8dVgEgKrvde/ROAJ+FksAVY4zmJIngyC
+         ZHC5HvfscyrsXIEtuW2J35dakkwnio029Y3oi9V3UmZtWbwN9Jj9fNAylGQrur8cTrsE
+         c6C10MtI0Kw5E3IRZwZwdonjCbaCTmk4WjVn1HU4uRrfcuYUfUwARnQZjRNE8DDt1eWv
+         nd1lykB727O5hzDZEXGi4+EoI92nLiR0IoW6ZFZhVAEQ9k34dqu2apVg1psj2APw3V/w
+         Kos3y6dtwIDLQ7IUkQJ9wGVQ1bbZKOgBmlHEHmu5B3IJ4HCOICcEtjHXeb5A6YWZ5+Tc
+         Vvwg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rkcSIQZA;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com. [2607:f8b0:4864:20::42a])
-        by gmr-mx.google.com with ESMTPS id i11si350934qkk.4.2019.03.11.08.41.58
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id b8si287804wru.1.2019.03.11.07.30.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 08:41:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) client-ip=2607:f8b0:4864:20::42a;
+        Mon, 11 Mar 2019 07:30:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rkcSIQZA;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42a.google.com with SMTP id u9so3980005pfn.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Mar 2019 08:41:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=XPCnDZ31VdvKFg4bLNaVelxR8Xno4GmsfSlwaLn4srk=;
-        b=rkcSIQZAVqnVRzpSoZgNfGOwtNxPiTpQQo/68+yYsYYumJsneRZCN4tHekZ1k/SWjE
-         U4ZgYY9+cOMGBmFd0B4BiXWJ5nu8Spl/AR7fsyjE2Tf5TVbW6xkzr+J1Ojb/U5SNDOLh
-         AxecvrYGbKuYvhICGQUGnA5CpIJyccCmyBegU0DwBwXS+hkr5Ztsdi7nezTbUy4eDTsr
-         BZUdGMJkKya4lWWwDJgjPXsg2kFgGhYwatxVVwr/RS2OapbbLj5rxPWx3x1GcMglKcj7
-         hANMsk1fOqu6mz97m/Fq4ROlSsi8mt1ouLJwRoWSBA6zFA1nE2BsYHM8OtPb2m15Hwe5
-         c0YQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=XPCnDZ31VdvKFg4bLNaVelxR8Xno4GmsfSlwaLn4srk=;
-        b=B/qH6ZLgeV4F4PSJGJbIOylDxelFoHqaVbcTP21TkzTO+WBhiP3G0ZQBxBVBK+i7uX
-         9viK/bPsK9KVZf/bIzDgJvzHL57DahxnzpaYVx/eKwJQsS/fti9paQ1zuhW/ZCDjr1tX
-         W5quX4qDH6zsooE/M2d8urqJgxE+ESp6dwkgosCeQTMuJnHecj2T3JmuyhFx0gKOfnx2
-         mycO8/I8uSRxMNkFTX5fKE8Fq0mxoUMzufzTaal8aeqMs5fN8h7+l2Lni5sNFQFZJrSK
-         KXeYfKh0rCF5KbVv6XYOneYuTAbti+7LyxNStndwk9pi/55cNePdeS3AKIryH1LPfAZZ
-         9deg==
-X-Gm-Message-State: APjAAAXLafUbrV4hyBk6DKn1PdVG7XL1AFONJp3ShdsmdekmfpRRomla
-	uP6j7LqTqZsMBkHygjCG9pvZ5R0amPQ=
-X-Received: by 2002:a63:8d42:: with SMTP id z63mr30834452pgd.414.1552318917387;
-        Mon, 11 Mar 2019 08:41:57 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id u184sm8798080pgd.13.2019.03.11.08.41.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Mar 2019 08:41:56 -0700 (PDT)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v4 0/7] Staging: rtl8192u: Avoid typedefs for structure
-Date: Mon, 11 Mar 2019 21:11:34 +0530
-Message-Id: <20190311154141.31401-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,468,1544482800"; 
+   d="scan'208";a="372853267"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2019 15:30:15 +0100
+Date: Mon, 11 Mar 2019 15:30:14 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Mahesh <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH v3 6/7] Staging: rtl8192u: Remove
+ casts on the return values of list_entry
+In-Reply-To: <CAB0Mk-MNGvseOFPgyXH13jaqZ3cDZ5jwqE-_devsLvqy12govA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1903111529440.2390@hadrien>
+References: <20190311111607.28766-1-bhanusreemahesh@gmail.com> <20190311111607.28766-7-bhanusreemahesh@gmail.com> <alpine.DEB.2.20.1903111358590.3491@hadrien> <CAB0Mk-MNGvseOFPgyXH13jaqZ3cDZ5jwqE-_devsLvqy12govA@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch series removes typedefs for various structure types.
 
-v2:
- -Modify the driver such that kernel should compile at all times.
- -typedef is removed and then updated the uses in the same patch.
- -Struct names chosen according to Linux Kernel Coding Style.
- -Series with one patch per structure is done.
-v3:
- [PATCH 2/7]: fields are lined up.
- [PATCH 3/7]: fields are lined up.
- [PATCH 4/7]: Commit log changed.
- [PATCH 6/7]: line_entry return values removed.
- [PATCH 7/7]: Use of if-else adjusted according to Linux Kernel Coding
-              Style.
-v4:
- [PATCH 6/7]: Remove parentheses around list_entry 
-Bhanusree Pola (7):
-  Staging: rtl8192u: Remove typedef for struct _bandwidth_autoswitch
-  Staging: rtl8192u: Remove typedef for struct _IbssParms
-  Staging: rtl8192u: Remove typedef for struct _RT_POWER_SAVE_CONTROL
-  Staging: rtl8192u: Remove typedef for struct _RT_LINK_DETECT_T
-  Staging: rtl8192u: Remove typedef for struct _RX_REORDER_ENTRY
-  Staging: rtl8192u: Remove casts on the return values of list_entry
-  Staging: rtl8192u: Adjust 'if' to follow Kernel coding Style
 
- .../staging/rtl8192u/ieee80211/ieee80211.h    | 30 +++++++++----------
- .../staging/rtl8192u/ieee80211/ieee80211_rx.c | 18 ++++-------
- .../rtl8192u/ieee80211/rtl819x_TSProc.c       | 10 +++----
- 3 files changed, 26 insertions(+), 32 deletions(-)
+On Mon, 11 Mar 2019, Bhanusree Mahesh wrote:
 
--- 
-2.17.1
+> On Mon, 11 Mar 2019 at 18:30, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> >
+> >
+> >
+> > On Mon, 11 Mar 2019, Bhanusree Pola wrote:
+> >
+> > > Remove casts return values of on all occurances of list_entry.
+> > > Casts on the return values of list_entry are useless.
+> > > list_entry is a macro and already casts its return value to the type
+> > > mentioned in its second argument.
+> > >
+> > > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> > > ---
+> > >  drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c   | 8 ++++----
+> > >  drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c | 4 ++--
+> > >  2 files changed, 6 insertions(+), 6 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> > > index c2483da9394e..f4c1befe6e8c 100644
+> > > --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> > > +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+> > > @@ -513,11 +513,11 @@ static bool AddReorderEntry(struct rx_ts_record *pTS, struct rx_reorder_entry *p
+> > >       struct list_head *pList = &pTS->rx_pending_pkt_list;
+> > >       while(pList->next != &pTS->rx_pending_pkt_list)
+> > >       {
+> > > -             if( SN_LESS(pReorderEntry->SeqNum, ((struct rx_reorder_entry *)list_entry(pList->next, struct rx_reorder_entry, List))->SeqNum) )
+> > > +             if( SN_LESS(pReorderEntry->SeqNum, (list_entry(pList->next, struct rx_reorder_entry, List))->SeqNum) )
+> > >               {
+> > >                       pList = pList->next;
+> > >               }
+> > > -             else if( SN_EQUAL(pReorderEntry->SeqNum, ((struct rx_reorder_entry *)list_entry(pList->next, struct rx_reorder_entry, List))->SeqNum) )
+> > > +             else if( SN_EQUAL(pReorderEntry->SeqNum, (list_entry(pList->next, struct rx_reorder_entry, List))->SeqNum) )
+> >
+> > You need to remove the parentheses around the list_entry call as well.
+> same patch ?
 
+Yes, the same patch would be fine.  It's part of the removal of the cast.
+
+julia
+
+
+> >
+> > julia
+> >
+> > >               {
+> > >                       return false;
+> > >               }
+> > > @@ -663,7 +663,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+> > >               /* Current packet is going to be inserted into pending list.*/
+> > >               //IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): We RX no ordered packed, insert to ordered list\n",__func__);
+> > >               if(!list_empty(&ieee->RxReorder_Unused_List)) {
+> > > -                     pReorderEntry = (struct rx_reorder_entry *)list_entry(ieee->RxReorder_Unused_List.next, struct rx_reorder_entry, List);
+> > > +                     pReorderEntry = list_entry(ieee->RxReorder_Unused_List.next, struct rx_reorder_entry, List);
+> > >                       list_del_init(&pReorderEntry->List);
+> > >
+> > >                       /* Make a reorder entry and insert into a the packet list.*/
+> > > @@ -709,7 +709,7 @@ static void RxReorderIndicatePacket(struct ieee80211_device *ieee,
+> > >       /* Check if there is any packet need indicate.*/
+> > >       while(!list_empty(&pTS->rx_pending_pkt_list)) {
+> > >               IEEE80211_DEBUG(IEEE80211_DL_REORDER,"%s(): start RREORDER indicate\n",__func__);
+> > > -             pReorderEntry = (struct rx_reorder_entry *)list_entry(pTS->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
+> > > +             pReorderEntry = list_entry(pTS->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
+> > >               if (SN_LESS(pReorderEntry->SeqNum, pTS->rx_indicate_seq) ||
+> > >                   SN_EQUAL(pReorderEntry->SeqNum, pTS->rx_indicate_seq))
+> > >               {
+> > > diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+> > > index aefa37b285b3..0368e5e3e95d 100644
+> > > --- a/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+> > > +++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_TSProc.c
+> > > @@ -40,7 +40,7 @@ static void RxPktPendingTimeout(struct timer_list *t)
+> > >       if(pRxTs->rx_timeout_indicate_seq != 0xffff) {
+> > >               // Indicate the pending packets sequentially according to SeqNum until meet the gap.
+> > >               while(!list_empty(&pRxTs->rx_pending_pkt_list)) {
+> > > -                     pReorderEntry = (struct rx_reorder_entry *)list_entry(pRxTs->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
+> > > +                     pReorderEntry = list_entry(pRxTs->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
+> > >                       if(index == 0)
+> > >                               pRxTs->rx_indicate_seq = pReorderEntry->SeqNum;
+> > >
+> > > @@ -426,7 +426,7 @@ static void RemoveTsEntry(struct ieee80211_device *ieee, struct ts_common_info *
+> > >               while(!list_empty(&pRxTS->rx_pending_pkt_list)) {
+> > >                       spin_lock_irqsave(&(ieee->reorder_spinlock), flags);
+> > >                       //pRxReorderEntry = list_entry(&pRxTS->rx_pending_pkt_list.prev,RX_REORDER_ENTRY,List);
+> > > -                     pRxReorderEntry = (struct rx_reorder_entry *)list_entry(pRxTS->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
+> > > +                     pRxReorderEntry = list_entry(pRxTS->rx_pending_pkt_list.prev, struct rx_reorder_entry, List);
+> > >                       list_del_init(&pRxReorderEntry->List);
+> > >                       {
+> > >                               int i = 0;
+> > > --
+> > > 2.17.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190311111607.28766-7-bhanusreemahesh%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.1903111358590.3491%40hadrien.
+> > For more options, visit https://groups.google.com/d/optout.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAB0Mk-MNGvseOFPgyXH13jaqZ3cDZ5jwqE-_devsLvqy12govA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
