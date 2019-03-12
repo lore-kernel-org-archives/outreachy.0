@@ -1,81 +1,116 @@
 X-GM-THRID: 6667588004037525504
-X-Received: by 2002:a02:3941:: with SMTP id w1mr3260139jae.7.1552419699488;
-        Tue, 12 Mar 2019 12:41:39 -0700 (PDT)
+X-Received: by 2002:a19:cd89:: with SMTP id d131mr2370068lfg.14.1552418993824;
+        Tue, 12 Mar 2019 12:29:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:194d:: with SMTP id b74ls1259523itb.3.canary-gmail; Tue,
- 12 Mar 2019 12:41:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwl0CSiwJKo6crqjvZD+UMczEk8csn95ADyZgh69Kwxbp/D+Gxfza1e/qp2hIDqOMORN4vH
-X-Received: by 2002:a24:7a0d:: with SMTP id a13mr1619745itc.20.1552419698490;
-        Tue, 12 Mar 2019 12:41:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552419698; cv=none;
+Received: by 2002:ac2:558f:: with SMTP id v15ls1965014lfg.5.gmail; Tue, 12 Mar
+ 2019 12:29:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwwhfuAJ71flqsETVPaQCvefT/ltI64clGsIAidYgJmD0+6bDe+eksgmkghScWevs0vHuTr
+X-Received: by 2002:ac2:4207:: with SMTP id y7mr2368530lfh.7.1552418992960;
+        Tue, 12 Mar 2019 12:29:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552418992; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZQ3RtHQCprX6oDr7k4TjiA+wDhjtMebo9j7FRwKKID20aXNhEUYR+8qVYXFjD4JbQh
-         MBaan+0uP4YA8nI49Pp36eHc0rBwvKqyAFrnmYPjBsfTqe2Zbce+BeuPBkz8dXgIokO8
-         S/lncoDeqwz1adFCTFqnckVtAWTlL4KxEVk/BZaA2Lsu3OUvRwnZDWEr3DyWhm6VTi8p
-         W3Cg2ixrVQfCyVS2yhwTG5HEKgAI4YFRXgoUAqXbrm0R0lKN0h0X7IGiGQat7gVF4pi8
-         ZTcZLXC5Fclm5KjJdYkZG7RvFO3XjvW0ynt8EeM94MD758a0hKTkHnhP833nX/WTVQ3/
-         TESA==
+        b=ioSo49QgPoTbozza22QK0pS9w09HUuhzHQmTHvjMPx+0yJgCD49C+4AcgGzVx41Fou
+         rbjDl503rRRKT2/AG0oh8MmBKF3b5A4ayoyILOHxMbU694EOLgvqMAzpvXKUO5IM6tjY
+         pj1nSUqlxt3hfe138l8JLOR6HGHItXov3yu44CreFKWK1PKeO2BwiADKe/cv02ixkvGF
+         sN0TmFkqPTyuZLpUeHd6vL+GbpIDAmlKpxOTOL8ardqXUhn05CvY/Cx906IRErkh2fpK
+         rLW4V2Fd1J4qPIOalzyG/KMUQwyqlvv9/2iZfjZrK3CoRtCz7TeXtQ0L3eVCDhfnXkOb
+         59nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=vNFGODbtAFUhTos9MWY6NjUmKLDqBLAPSj7I9EyyAXI=;
-        b=WjZTNCYGF4kMceQKrl8xybDEX0h4iBfoC+s6+noIODpsyGEmpj9Vd2yM0TvW0jRZf1
-         9MJx62jJZWvVdeW26iPmoA8tK8mWm70sGWkFv6FbnCt92ydNs+D5HbTKgJXRQ2KLMufw
-         RD9LGog8F1zWW0T+20DKIjJAKMF/LM1sS1e3RKhRAjycagz2/2LnopNP67hJgWMfmUVi
-         wBxfY32M2mrXHusYKTkG4RCwMj3fFeGch54zPT5StIl+tTIqzIcNBE5V3KSBlV+qBEHO
-         jr9yQDuXqnANgmAsTln3jMpigSR8D+mBEIfeFzk/BHPi3YT7d6vbIDXlBQmV2k29emEd
-         UGsA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=DfCvnfuJNHAL2SHWmg83vCRQReUqOibjnICELdWhdCY=;
+        b=exFrA3BsU2kGCrAwOhQcRIwX4C+pb0fPKalM0/4crtp0kPmwma9Y0tbwGOiU+QGyvH
+         PTViJedlGLeuPcGPnjiLdUhSBuSebsS7otz72sLAQpjuREibw8ZYAR4VoebzIzsS4Wv6
+         XN3i+wiiu6JSJEp5RVpha2ZOtgEUrCDBwE6nE07J/fgTC9sC3nXQttvxV0PAaT1O2LEc
+         H0lbI8gHddTdNHJNSgrxPSBV4oh4GZpetzWqGnENj4CSsTozD7qfImmXgQFF1imGOUlu
+         jJQrNLxbvFKJM2I3tdKLbFKtVSNwISuWCVh1rLUZdebCH4TMdWdm3Y3wS/fmJvHrCFWK
+         Hhlw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=eNSvKaEd;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id y204si135587itb.0.2019.03.12.12.41.38
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y13si376982lfg.4.2019.03.12.12.29.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 12:41:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 12 Mar 2019 12:29:52 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=eNSvKaEd;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [104.133.8.98])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 92E12214AE;
-	Tue, 12 Mar 2019 19:41:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552419697;
-	bh=vNFGODbtAFUhTos9MWY6NjUmKLDqBLAPSj7I9EyyAXI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eNSvKaEdsRAVsdkfozlDXIdgS+t+S00Sg+YoVGxn+CURDs+vzDGQ4KGgL8waWyeFJ
-	 NQtAY839jXz7C6OMa0ZOTQDxAtuqBzw63uBY8hIDefETgwvJiUDElbYgADjPucOP61
-	 qCxu1ygOVFPQSDMSAn8l6kf64gDOTfTgdo8g5XUE=
-Date: Tue, 12 Mar 2019 12:41:37 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,471,1544482800"; 
+   d="scan'208";a="373123662"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2019 20:29:44 +0100
+Date: Tue, 12 Mar 2019 20:29:44 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Sanjana Reddy <sanjana99reddy99@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>,
-	sanjana99reddy99@gmail.con
-Subject: Re: [PATCH] Staging: rtl8188eu: rtw_recv.c: fixed a space
- indentation issue
-Message-ID: <20190312194137.GA29260@kroah.com>
-References: <CAO-bXGAEHi=_uf7jD+1_+iNhx594rRAak_OBfTVpGenhVUJ2Xg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    sanjana99reddy99@gmail.con
+Subject: Re: [PATCH] Staging: rtl8188eu: rtw_recv.c: fixed a space indentation
+ issue
 In-Reply-To: <CAO-bXGAEHi=_uf7jD+1_+iNhx594rRAak_OBfTVpGenhVUJ2Xg@mail.gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Message-ID: <alpine.DEB.2.21.1903122027520.2722@hadrien>
+References: <CAO-bXGAEHi=_uf7jD+1_+iNhx594rRAak_OBfTVpGenhVUJ2Xg@mail.gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-1438605690-1552418985=:2722"
 
-On Wed, Mar 13, 2019 at 12:56:34AM +0530, Sanjana Reddy wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-1438605690-1552418985=:2722
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Wed, 13 Mar 2019, Sanjana Reddy wrote:
+
+>
 > Fixed a space in 2 lines which removed warnings.
+
+What was the fix.  It is pretty obvious that this is correct, but still it
+would be good to get in the habit of saying what you actually did.  Are
+these converting spaces to tabs?
+
+The log message should be in the imperative, so for your message it would
+start with Fix rather than Fixed.
+
+It would also be good to say how you got the warnings.  Checkpatch I
+guess?
+
+julia
+
+
 > Signed-off-by: Sanjana <sanjana99reddy99@gmail.com>
-
-Please put a blank line between the changelog text and your
-signed-off-by: line, otherwise the tools will choke :(
-
-I think checkpatch.pl will catch this, did you run it against your
-patch?
-
-thanks,
-
-greg k-h
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c
+> b/drivers/staging/rtl8188eu/core/rtw_recv.c
+> index 1d83affc08ce..cc6f1a23da01 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+> @@ -24,11 +24,11 @@ static u8 SNAP_ETH_TYPE_APPLETALK_AARP[2] = {0x80,
+> 0xf3};
+>
+>  /* Bridge-Tunnel header (for EtherTypes ETH_P_AARP and ETH_P_IPX) */
+>  static u8 rtw_bridge_tunnel_header[] = {
+> -       0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
+> +        0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
+>  };
+>
+>  static u8 rtw_rfc1042_header[] = {
+> -       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
+> +       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
+>  };
+>
+>  static void rtw_signal_stat_timer_hdl(struct timer_list *t);
+> -- 
+> 2.17.1
+>
+>
+>
+--8323329-1438605690-1552418985=:2722--
 
