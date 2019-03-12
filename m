@@ -1,670 +1,676 @@
 X-GM-THRID: 6666450306579038208
-X-Received: by 2002:a2e:c41:: with SMTP id o1mr2221030ljd.19.1552406479629;
-        Tue, 12 Mar 2019 09:01:19 -0700 (PDT)
+X-Received: by 2002:a67:8e05:: with SMTP id q5mr25090195vsd.20.1552406305650;
+        Tue, 12 Mar 2019 08:58:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:800a:: with SMTP id j10ls2537624ljg.8.gmail; Tue, 12 Mar
- 2019 09:01:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvmMNEwmzSMPO17xLM5NR9umsQkkqvvKsZEz8TrXPV3idJZ98yTZe3y28p9rjjjfes8IeY
-X-Received: by 2002:a2e:8941:: with SMTP id b1mr2174520ljk.24.1552406478692;
-        Tue, 12 Mar 2019 09:01:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552406478; cv=none;
+Received: by 2002:a67:7489:: with SMTP id p131ls4534500vsc.5.gmail; Tue, 12
+ Mar 2019 08:58:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzYNKZ652REmG3VrMzW1HYd+XU6uiVc698MpmFyih1z90gKJ8DzE691y/HSBd+IFqTbW8+V
+X-Received: by 2002:a67:e28a:: with SMTP id g10mr24800967vsf.43.1552406304790;
+        Tue, 12 Mar 2019 08:58:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552406304; cv=none;
         d=google.com; s=arc-20160816;
-        b=RtKRrXXAxhA5MNvBc4GjKGIELPJIBPiGFC/fAm/rTR6czyQtEqvXYhdCcesnlSNuVU
-         jSjO2sxA1h77pCRycc74cFqnPQjLtvUv2VYYO+nCO5HKZ7v8cwqZg2rQwuqTHfSS8Ngz
-         eSZ3VXnezaIdL6XEw9CPxyDKGlwWKBwK9E3mYTEXViW8+tn65jzs5f4uZtWVdzKkkw7C
-         oJNpowQvvHvxTiDQt5y5kPcF8qqSD0BcQYeKQtKVcs13+Z5PW4uwg0bsNxPMmGdUOa0m
-         i5nH9+B8qsJTDm3A/xSW6EbAOD+pxtPPnaZmjAGWk1ZLvp8QQE/v5JR/6hfmEiQ05rBy
-         CP7A==
+        b=wdT0/NzzK9FqBMl2oi5/pwFj756iaAcj82eivt8U6dX/becztqZvLLWoUucJTROTXs
+         TzQI7qNUZqBhOdYL6FVsH3tGbBpunfTbTS819bDXibvxmzIFMKcH8nLIoljNnxJ+VqE0
+         wnEgtltucsKxgqQNKCr3VHuU0WP06455bX/ptDzVPCe9ZGpy3428sB5JVNlFP0SUNaFH
+         eUbOA3UbZl7gRn9stf0zhRSBoYMK3PyG10XzX+IB89dz+ox0ZPWNreGZAjdx892pYoQL
+         7PggFlcXHfAZictq0LEtc3uHxMN/uybIEAzbWnt43Tr6YKK3gTGPChpiVoUvGwRZHAdC
+         wgLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=8t5e1lc5C1W46hQyoN+km9prga4v7yj2+MoWkk3fTbo=;
-        b=MqIa76SBGiE6aSc+KGIkAlIERY6+oYOP8JJv/WXwlKK8V/zyRCY0u3UFYbO2akLknS
-         q55cGZiqW5bIAk97ZqWeUusbfNMfWUjQx6D3megw7SRZ71d0WmtDhLFxOzaKfvcaDRGe
-         i9HJk35pH8Rs/CLPb0Zqt5b7Dl1huLdAwiO9sNBLhpQQZzH/9EHCZptYo4awIOA34d6+
-         ovHhn4ZIVTj8e5g0CCZw4gxCOHSXvx9UnrUHoJB4ti250vsLliFeJfDRg2olKucZRaji
-         JrBt2KPl9xJbaRsdNtzIrqqhBA5biaCry9BCeJ5KtBC5H7kCQXH6a52tXjed/MzkrpCu
-         H41g==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ofbuE/gN1GU0k+HDgICSzcuQAE9UNPJXYUGHOgFXRpg=;
+        b=bIET1bZcXUXUp4JkK8M0AUuHOe7OeiBcfqAKk10/feXdBpfuw4un2qgDUeZsfcwdYb
+         q2FqlX8gwc6LbfyWY30J5qL1ZD17Q+R6U2iPi+CcuX1sAZEBfzIxpSJYb2/ItMQhOXCr
+         glC15gXhpbe8HmL/1SqJNRhsqTbkl2uOefjIa8zLN4x8ci8BXakbGpa39o/bhIhNK057
+         PTXQK5XeQmuMVD+h2VukkjZex/awQGo7kj1TqnjjYvxR9NrpBg8F1VFiF3gCwKk6JoVX
+         LT+ASYL/pbzFznYjHvdXNep/quMX+VNcH6Cs7S5qoOc8WtR/nz0svoZ55fAjLDXo5ncO
+         pnZw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f20si314212lfc.5.2019.03.12.09.01.18
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eYaA3leF;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <digholebhagyashri@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id m11si534590vkh.1.2019.03.12.08.58.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 09:01:18 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 12 Mar 2019 08:58:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,471,1544482800"; 
-   d="scan'208";a="373096015"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2019 17:01:17 +0100
-Date: Tue, 12 Mar 2019 17:01:15 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Outreachy <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: Comparison to
- NULL.
-In-Reply-To: <1552406296-9512-1-git-send-email-digholebhagyashri@gmail.com>
-Message-ID: <alpine.DEB.2.20.1903121700240.4097@hadrien>
-References: <1552406296-9512-1-git-send-email-digholebhagyashri@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eYaA3leF;
+       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id j5so2149990pfa.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Mar 2019 08:58:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=ofbuE/gN1GU0k+HDgICSzcuQAE9UNPJXYUGHOgFXRpg=;
+        b=eYaA3leFdZ76Oc5qNl2J6tDHIchG/c/v5zg87zCV3Vy/MlDe9tZ/cff2wvQfeqOEvK
+         O9RZKTXhlHUmLUUVgpX8DwuvNEawSmzxv+J1TBJUVXiTP95B/e/wLgEOL0GcExolaSRI
+         P4dA/5URyR8XrNbi7SOxKnvs/ULT8krS18Tr7dmEj+YMlo6WLmWQGZoVN4KptVU822pN
+         OHmTJ/CN7+kWBR+0su+AneCKAUfL8bdp1MPlzUxOD7XbGzNv5BJMLk9N/gv45tSqbCqK
+         VpWDOrK8+cbxLVsmNBjapV4EP+8WfMJ/KPx7tKPP1LGg8S4sprTfZYoeiyhDV0JOe8Pw
+         ziQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ofbuE/gN1GU0k+HDgICSzcuQAE9UNPJXYUGHOgFXRpg=;
+        b=L7IeJdkCYvkvGV4abaF6Vmp6MgEHB1f67pZnObkEruBLrAyB+ZQAqWMj+sk195fOeR
+         NJK9o5crmxLv8NKjcLf/hpLSLdXvlDBgbwtvgik003CjEmoqPlTvVoSzp5kTCMXsGumy
+         LMMzIYkoKRMpY4Jo+5um/PAdl41lqUlKUSK/Q4xNbxpguWSzGF7ZDVsj5A7czGQcihJL
+         d3me4zXAkt+0g23wu5fUyXhNTpzU9Js7cGFTnQV8S7FG6ZiZezQMEggpwNCzyQcKdzqk
+         jo5WHYEIGOCNnxHxAF+Ob1FWFnm9Gu6OZ5346OXwpj1cU+GJN1Mg9CwXriLB+NY0fGtW
+         0FjA==
+X-Gm-Message-State: APjAAAWJyamCS4S090d9Jtw4+PXocs8D9qdl5xv8oejohijNahQiiKkE
+	0XWtTcFmcG3TedMwqOaK6BY=
+X-Received: by 2002:a17:902:9001:: with SMTP id a1mr40188857plp.96.1552406303990;
+        Tue, 12 Mar 2019 08:58:23 -0700 (PDT)
+Return-Path: <digholebhagyashri@gmail.com>
+Received: from localhost.localdomain ([2409:4042:2e97:c77d:b003:fc56:e6eb:d569])
+        by smtp.googlemail.com with ESMTPSA id f125sm17623263pfc.91.2019.03.12.08.58.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 12 Mar 2019 08:58:23 -0700 (PDT)
+From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Outreachy <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2] staging: rtl8712: Comparison to NULL.
+Date: Tue, 12 Mar 2019 21:28:16 +0530
+Message-Id: <1552406296-9512-1-git-send-email-digholebhagyashri@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Replace NULL comparison with '!' operator which is indicated
+by checkpatch.pl.
 
+Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+---
+Changes in v2:
+  -- Make the changes according to valid c.
 
-On Tue, 12 Mar 2019, Bhagyashri Dighole wrote:
+ drivers/staging/rtl8712/rtl8712_recv.c        | 10 +++++-----
+ drivers/staging/rtl8712/rtl871x_cmd.c         |  4 ++--
+ drivers/staging/rtl8712/rtl871x_io.c          |  2 +-
+ drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 16 ++++++++--------
+ drivers/staging/rtl8712/rtl871x_mlme.c        | 16 ++++++++--------
+ drivers/staging/rtl8712/rtl871x_mp_ioctl.c    |  2 +-
+ drivers/staging/rtl8712/rtl871x_recv.c        | 20 ++++++++++----------
+ drivers/staging/rtl8712/rtl871x_recv.h        | 10 +++++-----
+ drivers/staging/rtl8712/rtl871x_security.c    |  8 ++++----
+ drivers/staging/rtl8712/rtl871x_sta_mgt.c     |  4 ++--
+ drivers/staging/rtl8712/rtl871x_xmit.c        | 24 ++++++++++++------------
+ drivers/staging/rtl8712/usb_intf.c            |  2 +-
+ 12 files changed, 59 insertions(+), 59 deletions(-)
 
-> Replace NULL comparison with '!' operator which is indicated
-> by checkpatch.pl.
->
-> Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-> ---
-> Changes in v2:
->   -- Make the changes according to valid c.
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 9e09431..9aa950e 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -135,7 +135,7 @@ int r8712_free_recvframe(union recv_frame *precvframe,
+ 	spin_lock_irqsave(&pfree_recv_queue->lock, irqL);
+ 	list_del_init(&(precvframe->u.hdr.list));
+ 	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
+-	if (padapter != NULL) {
++	if (padapter) {
+ 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
+ 			precvpriv->free_recvframe_cnt++;
+ 	}
+@@ -273,7 +273,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
+ 		/* 0~(n-1) fragment frame
+ 		 * enqueue to defraf_g
+ 		 */
+-		if (pdefrag_q != NULL) {
++		if (pdefrag_q) {
+ 			if (fragnum == 0) {
+ 				/*the first fragment*/
+ 				if (!list_empty(&pdefrag_q->queue)) {
+@@ -299,7 +299,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
+ 		/* the last fragment frame
+ 		 * enqueue the last fragment
+ 		 */
+-		if (pdefrag_q != NULL) {
++		if (pdefrag_q) {
+ 			phead = &pdefrag_q->queue;
+ 			list_add_tail(&pfhdr->list, phead);
+ 			/*call recvframe_defrag to defrag*/
+@@ -313,7 +313,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
+ 			prtnframe = NULL;
+ 		}
+ 	}
+-	if ((prtnframe != NULL) && (prtnframe->u.hdr.attrib.privacy)) {
++	if (prtnframe && prtnframe->u.hdr.attrib.privacy) {
+ 		/* after defrag we must check tkip mic code */
+ 		if (r8712_recvframe_chkmic(padapter, prtnframe) == _FAIL) {
+ 			r8712_free_recvframe(prtnframe, pfree_recv_queue);
+@@ -889,7 +889,7 @@ static void process_link_qual(struct _adapter *padapter,
+ 	struct rx_pkt_attrib *pattrib;
+ 	struct smooth_rssi_data *sqd = &padapter->recvpriv.signal_qual_data;
+ 
+-	if (prframe == NULL || padapter == NULL)
++	if (!prframe || !padapter)
+ 		return;
+ 	pattrib = &prframe->u.hdr.attrib;
+ 	if (pattrib->signal_qual != 0) {
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
+index 05a78ac..eaae9c0 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.c
++++ b/drivers/staging/rtl8712/rtl871x_cmd.c
+@@ -194,7 +194,7 @@ void r8712_free_cmd_obj(struct cmd_obj *pcmd)
+ 	if ((pcmd->cmdcode != _JoinBss_CMD_) &&
+ 	    (pcmd->cmdcode != _CreateBss_CMD_))
+ 		kfree(pcmd->parmbuf);
+-	if (pcmd->rsp != NULL) {
++	if (pcmd->rsp) {
+ 		if (pcmd->rspsz != 0)
+ 			kfree(pcmd->rsp);
+ 	}
+@@ -229,7 +229,7 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
+ 	psurveyPara->passive_mode = cpu_to_le32(pmlmepriv->passive_mode);
+ 	psurveyPara->ss_ssidlen = 0;
+ 	memset(psurveyPara->ss_ssid, 0, IW_ESSID_MAX_SIZE + 1);
+-	if ((pssid != NULL) && (pssid->SsidLength)) {
++	if (pssid && pssid->SsidLength) {
+ 		memcpy(psurveyPara->ss_ssid, pssid->Ssid, pssid->SsidLength);
+ 		psurveyPara->ss_ssidlen = cpu_to_le32(pssid->SsidLength);
+ 	}
+diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/rtl8712/rtl871x_io.c
+index 17dafef..e34302a 100644
+--- a/drivers/staging/rtl8712/rtl871x_io.c
++++ b/drivers/staging/rtl8712/rtl871x_io.c
+@@ -50,7 +50,7 @@ static uint _init_intf_hdl(struct _adapter *padapter,
+ 	init_intf_priv = &r8712_usb_init_intf_priv;
+ 	pintf_priv = pintf_hdl->pintfpriv = kmalloc(sizeof(struct intf_priv),
+ 						    GFP_ATOMIC);
+-	if (pintf_priv == NULL)
++	if (!pintf_priv)
+ 		goto _init_intf_hdl_fail;
+ 	pintf_hdl->adapter = (u8 *)padapter;
+ 	set_intf_option(&pintf_hdl->intf_option);
+diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+index ad9b2f7..e55db92 100644
+--- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
++++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+@@ -467,11 +467,11 @@ static int r871x_set_wpa_ie(struct _adapter *padapter, char *pie,
+ 	int group_cipher = 0, pairwise_cipher = 0;
+ 	int ret = 0;
+ 
+-	if ((ielen > MAX_WPA_IE_LEN) || (pie == NULL))
++	if (ielen > MAX_WPA_IE_LEN || !pie)
+ 		return -EINVAL;
+ 	if (ielen) {
+ 		buf = kmemdup(pie, ielen, GFP_ATOMIC);
+-		if (buf == NULL)
++		if (!buf)
+ 			return -ENOMEM;
+ 		if (ielen < RSN_HEADER_LEN) {
+ 			ret  = -EINVAL;
+@@ -763,7 +763,7 @@ static int r871x_wx_set_pmkid(struct net_device *dev,
+  *	If cmd is IW_PMKSA_REMOVE, it means the wpa_supplicant wants to
+  *	remove a PMKID/BSSID from driver.
+  */
+-	if (pPMK == NULL)
++	if (!pPMK)
+ 		return -EINVAL;
+ 	memcpy(strIssueBssid, pPMK->bssid.sa_data, ETH_ALEN);
+ 	switch (pPMK->cmd) {
+@@ -1085,7 +1085,7 @@ static int r871x_wx_set_mlme(struct net_device *dev,
+ 	struct _adapter *padapter = netdev_priv(dev);
+ 	struct iw_mlme *mlme = (struct iw_mlme *) extra;
+ 
+-	if (mlme == NULL)
++	if (!mlme)
+ 		return -1;
+ 	switch (mlme->cmd) {
+ 	case IW_MLME_DEAUTH:
+@@ -1938,7 +1938,7 @@ static int r871x_get_ap_info(struct net_device *dev,
+ 	u8 bssid[ETH_ALEN];
+ 	char data[33];
+ 
+-	if (padapter->driver_stopped || (pdata == NULL))
++	if (padapter->driver_stopped || !pdata)
+ 		return -EINVAL;
+ 	while (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY |
+ 			     _FW_UNDER_LINKING)) {
+@@ -2002,7 +2002,7 @@ static int r871x_set_pid(struct net_device *dev,
+ 	struct _adapter *padapter = netdev_priv(dev);
+ 	struct iw_point *pdata = &wrqu->data;
+ 
+-	if ((padapter->driver_stopped) || (pdata == NULL))
++	if (padapter->driver_stopped || !pdata)
+ 		return -EINVAL;
+ 	if (copy_from_user(&padapter->pid, pdata->pointer, sizeof(int)))
+ 		return -EINVAL;
+@@ -2018,7 +2018,7 @@ static int r871x_set_chplan(struct net_device *dev,
+ 	struct iw_point *pdata = &wrqu->data;
+ 	int ch_plan = -1;
+ 
+-	if ((padapter->driver_stopped) || (pdata == NULL)) {
++	if (padapter->driver_stopped || !pdata) {
+ 		ret = -EINVAL;
+ 		goto exit;
+ 	}
+@@ -2038,7 +2038,7 @@ static int r871x_wps_start(struct net_device *dev,
+ 	struct iw_point *pdata = &wrqu->data;
+ 	u32   u32wps_start = 0;
+ 
+-	if ((padapter->driver_stopped) || (pdata == NULL))
++	if (padapter->driver_stopped || !pdata)
+ 		return -EINVAL;
+ 	if (copy_from_user((void *)&u32wps_start, pdata->pointer, 4))
+ 		return -EFAULT;
+diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+index c666e03..d48f3d1 100644
+--- a/drivers/staging/rtl8712/rtl871x_mlme.c
++++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+@@ -95,7 +95,7 @@ static void _free_network(struct mlme_priv *pmlmepriv,
+ 	unsigned long irqL;
+ 	struct  __queue *free_queue = &(pmlmepriv->free_bss_pool);
+ 
+-	if (pnetwork == NULL)
++	if (!pnetwork)
+ 		return;
+ 	if (pnetwork->fixed)
+ 		return;
+@@ -115,7 +115,7 @@ static void free_network_nolock(struct mlme_priv *pmlmepriv,
+ {
+ 	struct  __queue *free_queue = &pmlmepriv->free_bss_pool;
+ 
+-	if (pnetwork == NULL)
++	if (!pnetwork)
+ 		return;
+ 	if (pnetwork->fixed)
+ 		return;
+@@ -780,7 +780,7 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 					ptarget_wlan->fixed = true;
+ 			}
+ 
+-			if (ptarget_wlan == NULL) {
++			if (!ptarget_wlan) {
+ 				if (check_fwstate(pmlmepriv,
+ 					_FW_UNDER_LINKING))
+ 					pmlmepriv->fw_state ^=
+@@ -794,7 +794,7 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 					ptarget_sta =
+ 						 r8712_get_stainfo(pstapriv,
+ 						 pnetwork->network.MacAddress);
+-					if (ptarget_sta == NULL)
++					if (!ptarget_sta)
+ 						ptarget_sta =
+ 						 r8712_alloc_stainfo(pstapriv,
+ 						 pnetwork->network.MacAddress);
+@@ -905,7 +905,7 @@ void r8712_stassoc_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 	if (!r8712_access_ctrl(&adapter->acl_list, pstassoc->macaddr))
+ 		return;
+ 	psta = r8712_get_stainfo(&adapter->stapriv, pstassoc->macaddr);
+-	if (psta != NULL) {
++	if (psta) {
+ 		/*the sta have been in sta_info_queue => do nothing
+ 		 *(between drv has received this event before and
+ 		 * fw have not yet to set key to CAM_ENTRY)
+@@ -914,7 +914,7 @@ void r8712_stassoc_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 	}
+ 
+ 	psta = r8712_alloc_stainfo(&adapter->stapriv, pstassoc->macaddr);
+-	if (psta == NULL)
++	if (!psta)
+ 		return;
+ 	/* to do : init sta_info variable */
+ 	psta->qos_option = 0;
+@@ -1112,7 +1112,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
+ 	while (1) {
+ 		if (end_of_queue_search(phead, pmlmepriv->pscanned)) {
+ 			if ((pmlmepriv->assoc_by_rssi) &&
+-			    (pnetwork_max_rssi != NULL)) {
++			    (pnetwork_max_rssi)) {
+ 				pnetwork = pnetwork_max_rssi;
+ 				goto ask_for_joinbss;
+ 			}
+@@ -1120,7 +1120,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
+ 		}
+ 		pnetwork = container_of(pmlmepriv->pscanned,
+ 					struct wlan_network, list);
+-		if (pnetwork == NULL)
++		if (!pnetwork)
+ 			return _FAIL;
+ 		pmlmepriv->pscanned = pmlmepriv->pscanned->next;
+ 		if (pmlmepriv->assoc_by_bssid) {
+diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
+index 588346d..bbef96f9f 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
++++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
+@@ -186,7 +186,7 @@ static int mp_start_test(struct _adapter *padapter)
+ 	if (psta)
+ 		r8712_free_stainfo(padapter, psta);
+ 	psta = r8712_alloc_stainfo(&padapter->stapriv, bssid.MacAddress);
+-	if (psta == NULL) {
++	if (!psta) {
+ 		res = _FAIL;
+ 		goto end_of_mp_start_test;
+ 	}
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
+index 28f7369..aa4e406 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.c
++++ b/drivers/staging/rtl8712/rtl871x_recv.c
+@@ -63,7 +63,7 @@ sint _r8712_init_recv_priv(struct recv_priv *precvpriv,
+ 	precvpriv->pallocated_frame_buf = kzalloc(NR_RECVFRAME *
+ 				sizeof(union recv_frame) + RXFRAME_ALIGN_SZ,
+ 				GFP_ATOMIC);
+-	if (precvpriv->pallocated_frame_buf == NULL)
++	if (!precvpriv->pallocated_frame_buf)
+ 		return _FAIL;
+ 	kmemleak_not_leak(precvpriv->pallocated_frame_buf);
+ 	precvpriv->precv_frame_buf = precvpriv->pallocated_frame_buf +
+@@ -102,7 +102,7 @@ union recv_frame *r8712_alloc_recvframe(struct __queue *pfree_recv_queue)
+ 	if (precvframe) {
+ 		list_del_init(&precvframe->u.hdr.list);
+ 		padapter = precvframe->u.hdr.adapter;
+-		if (padapter != NULL) {
++		if (padapter) {
+ 			precvpriv = &padapter->recvpriv;
+ 			if (pfree_recv_queue == &precvpriv->free_recv_queue)
+ 				precvpriv->free_recvframe_cnt--;
+@@ -150,7 +150,7 @@ sint r8712_recvframe_chkmic(struct _adapter *adapter,
+ 	stainfo = r8712_get_stainfo(&adapter->stapriv, &prxattrib->ta[0]);
+ 	if (prxattrib->encrypt == _TKIP_) {
+ 		/* calculate mic code */
+-		if (stainfo != NULL) {
++		if (stainfo) {
+ 			if (IS_MCAST(prxattrib->ra)) {
+ 				iv = precvframe->u.hdr.rx_data +
+ 				     prxattrib->hdrlen;
+@@ -248,7 +248,7 @@ union recv_frame *r8712_portctrl(struct _adapter *adapter,
+ 		memcpy(&ether_type, ptr, 2);
+ 		be16_to_cpus(&ether_type);
+ 
+-		if ((psta != NULL) && (psta->ieee8021x_blocked)) {
++		if (psta && psta->ieee8021x_blocked) {
+ 			/* blocked
+ 			 * only accept EAPOL frame
+ 			 */
+@@ -355,7 +355,7 @@ static sint sta2sta_data_frame(struct _adapter *adapter,
+ 		*psta = r8712_get_bcmc_stainfo(adapter);
+ 	else
+ 		*psta = r8712_get_stainfo(pstapriv, sta_addr); /* get ap_info */
+-	if (*psta == NULL) {
++	if (!*psta) {
+ 		if (check_fwstate(pmlmepriv, WIFI_MP_STATE))
+ 			adapter->mppriv.rx_pktloss++;
+ 		return _FAIL;
+@@ -405,7 +405,7 @@ static sint ap2sta_data_frame(struct _adapter *adapter,
+ 			*psta = r8712_get_bcmc_stainfo(adapter);
+ 		else
+ 			*psta = r8712_get_stainfo(pstapriv, pattrib->bssid);
+-		if (*psta == NULL)
++		if (!*psta)
+ 			return _FAIL;
+ 	} else if (check_fwstate(pmlmepriv, WIFI_MP_STATE) &&
+ 		   check_fwstate(pmlmepriv, _FW_LINKED)) {
+@@ -416,7 +416,7 @@ static sint ap2sta_data_frame(struct _adapter *adapter,
+ 		memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
+ 		memcpy(pattrib->bssid,  mybssid, ETH_ALEN);
+ 		*psta = r8712_get_stainfo(pstapriv, pattrib->bssid);
+-		if (*psta == NULL)
++		if (!*psta)
+ 			return _FAIL;
+ 	} else {
+ 		return _FAIL;
+@@ -441,7 +441,7 @@ static sint sta2ap_data_frame(struct _adapter *adapter,
+ 		if (memcmp(pattrib->bssid, mybssid, ETH_ALEN))
+ 			return _FAIL;
+ 		*psta = r8712_get_stainfo(pstapriv, pattrib->src);
+-		if (*psta == NULL)
++		if (!*psta)
+ 			return _FAIL;
+ 	}
+ 	return _SUCCESS;
+@@ -475,7 +475,7 @@ static sint validate_recv_data_frame(struct _adapter *adapter,
+ 	pda = get_da(ptr);
+ 	psa = get_sa(ptr);
+ 	pbssid = get_hdr_bssid(ptr);
+-	if (pbssid == NULL)
++	if (!pbssid)
+ 		return _FAIL;
+ 	memcpy(pattrib->dst, pda, ETH_ALEN);
+ 	memcpy(pattrib->src, psa, ETH_ALEN);
+@@ -505,7 +505,7 @@ static sint validate_recv_data_frame(struct _adapter *adapter,
+ 	}
+ 	if (res == _FAIL)
+ 		return _FAIL;
+-	if (psta == NULL)
++	if (!psta)
+ 		return _FAIL;
+ 	precv_frame->u.hdr.psta = psta;
+ 	pattrib->amsdu = 0;
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
+index f87b2ff..1a56cd4 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.h
++++ b/drivers/staging/rtl8712/rtl871x_recv.h
+@@ -138,7 +138,7 @@ int recv_func(struct _adapter *padapter, void *pcontext);
+ static inline u8 *get_rxmem(union recv_frame *precvframe)
+ {
+ 	/* always return rx_head... */
+-	if (precvframe == NULL)
++	if (!precvframe)
+ 		return NULL;
+ 	return precvframe->u.hdr.rx_head;
+ }
+@@ -146,7 +146,7 @@ static inline u8 *get_rxmem(union recv_frame *precvframe)
+ static inline u8 *get_recvframe_data(union recv_frame *precvframe)
+ {
+ 	/* always return rx_data */
+-	if (precvframe == NULL)
++	if (!precvframe)
+ 		return NULL;
+ 	return precvframe->u.hdr.rx_data;
+ }
+@@ -156,7 +156,7 @@ static inline u8 *recvframe_pull(union recv_frame *precvframe, sint sz)
+ 	/* used for extract sz bytes from rx_data, update rx_data and return
+ 	 * the updated rx_data to the caller
+ 	 */
+-	if (precvframe == NULL)
++	if (!precvframe)
+ 		return NULL;
+ 	precvframe->u.hdr.rx_data += sz;
+ 	if (precvframe->u.hdr.rx_data > precvframe->u.hdr.rx_tail) {
+@@ -173,7 +173,7 @@ static inline u8 *recvframe_put(union recv_frame *precvframe, sint sz)
+ 	 * return the updated rx_tail to the caller
+ 	 * after putting, rx_tail must be still larger than rx_end.
+ 	 */
+-	if (precvframe == NULL)
++	if (!precvframe)
+ 		return NULL;
+ 	precvframe->u.hdr.rx_tail += sz;
+ 	if (precvframe->u.hdr.rx_tail > precvframe->u.hdr.rx_end) {
+@@ -191,7 +191,7 @@ static inline u8 *recvframe_pull_tail(union recv_frame *precvframe, sint sz)
+ 	 * updated rx_end to the caller
+ 	 * after pulling, rx_end must be still larger than rx_data.
+ 	 */
+-	if (precvframe == NULL)
++	if (!precvframe)
+ 		return NULL;
+ 	precvframe->u.hdr.rx_tail -= sz;
+ 	if (precvframe->u.hdr.rx_tail < precvframe->u.hdr.rx_data) {
+diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
+index f826450..148e24e 100644
+--- a/drivers/staging/rtl8712/rtl871x_security.c
++++ b/drivers/staging/rtl8712/rtl871x_security.c
+@@ -160,7 +160,7 @@ void r8712_wep_encrypt(struct _adapter *padapter, u8 *pxmitframe)
+ 	struct	security_priv *psecuritypriv = &padapter->securitypriv;
+ 	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 
+-	if (((struct xmit_frame *)pxmitframe)->buf_addr == NULL)
++	if (((struct xmit_frame *)pxmitframe)->buf_addr==NULL)
+ 		return;
+ 	pframe = ((struct xmit_frame *)pxmitframe)->buf_addr + TXDESC_OFFSET;
+ 	/*start to encrypt each fragment*/
+@@ -584,7 +584,7 @@ u32 r8712_tkip_encrypt(struct _adapter *padapter, u8 *pxmitframe)
+ 		else
+ 			stainfo = r8712_get_stainfo(&padapter->stapriv,
+ 				  &pattrib->ra[0]);
+-		if (stainfo != NULL) {
++		if (stainfo) {
+ 			prwskey = &stainfo->x_UncstKey.skey[0];
+ 			for (curfragnum = 0; curfragnum < pattrib->nr_frags;
+ 			     curfragnum++) {
+@@ -658,7 +658,7 @@ u32 r8712_tkip_decrypt(struct _adapter *padapter, u8 *precvframe)
+ 	if (prxattrib->encrypt == _TKIP_) {
+ 		stainfo = r8712_get_stainfo(&padapter->stapriv,
+ 					    &prxattrib->ta[0]);
+-		if (stainfo != NULL) {
++		if (stainfo) {
+ 			iv = pframe + prxattrib->hdrlen;
+ 			payload = pframe + prxattrib->iv_len +
+ 				  prxattrib->hdrlen;
+@@ -1367,7 +1367,7 @@ u32 r8712_aes_decrypt(struct _adapter *padapter, u8 *precvframe)
+ 	if (prxattrib->encrypt == _AES_) {
+ 		stainfo = r8712_get_stainfo(&padapter->stapriv,
+ 					    &prxattrib->ta[0]);
+-		if (stainfo != NULL) {
++		if (stainfo) {
+ 			if (IS_MCAST(prxattrib->ra)) {
+ 				iv = pframe + prxattrib->hdrlen;
+ 				idx = iv[3];
+diff --git a/drivers/staging/rtl8712/rtl871x_sta_mgt.c b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+index 7c30b9e..f1439a7 100644
+--- a/drivers/staging/rtl8712/rtl871x_sta_mgt.c
++++ b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
+@@ -150,7 +150,7 @@ void r8712_free_stainfo(struct _adapter *padapter, struct sta_info *psta)
+ 	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 	struct	sta_priv *pstapriv = &padapter->stapriv;
+ 
+-	if (psta == NULL)
++	if (!psta)
+ 		return;
+ 	pfree_sta_queue = &pstapriv->free_sta_queue;
+ 	pstaxmitpriv = &psta->sta_xmitpriv;
+@@ -223,7 +223,7 @@ struct sta_info *r8712_get_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
+ 	struct sta_info *psta = NULL;
+ 	u32	index;
+ 
+-	if (hwaddr == NULL)
++	if (!hwaddr)
+ 		return NULL;
+ 	index = wifi_mac_hash(hwaddr);
+ 	spin_lock_irqsave(&pstapriv->sta_hash_lock, irqL);
+diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
+index 7c88574..94c2a48 100644
+--- a/drivers/staging/rtl8712/rtl871x_xmit.c
++++ b/drivers/staging/rtl8712/rtl871x_xmit.c
+@@ -156,7 +156,7 @@ void _free_xmit_priv(struct xmit_priv *pxmitpriv)
+ 					pxmitpriv->pxmit_frame_buf;
+ 	struct xmit_buf *pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
+ 
+-	if (pxmitpriv->pxmit_frame_buf == NULL)
++	if (!pxmitpriv->pxmit_frame_buf)
+ 		return;
+ 	for (i = 0; i < NR_XMITFRAME; i++) {
+ 		r8712_xmit_complete(padapter, pxmitframe);
+@@ -269,7 +269,7 @@ sint r8712_update_attrib(struct _adapter *padapter, _pkt *pkt,
+ 			pattrib->mac_id = 5;
+ 		} else {
+ 			psta = r8712_get_stainfo(pstapriv, pattrib->ra);
+-			if (psta == NULL)  /* drop the pkt */
++			if (!psta)  /* drop the pkt */
+ 				return _FAIL;
+ 			if (check_fwstate(pmlmepriv, WIFI_STATION_STATE))
+ 				pattrib->mac_id = 5;
+@@ -362,7 +362,7 @@ static sint xmitframe_addmic(struct _adapter *padapter,
+ 					    &pattrib->ra[0]);
+ 	if (pattrib->encrypt == _TKIP_) {
+ 		/*encode mic code*/
+-		if (stainfo != NULL) {
++		if (stainfo) {
+ 			u8 null_key[16] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
+ 					   0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
+ 					   0x0, 0x0};
+@@ -596,10 +596,10 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
+ 	u8 *pbuf_start;
+ 	sint bmcst = IS_MCAST(pattrib->ra);
+ 
+-	if (pattrib->psta == NULL)
++	if (!pattrib->psta)
+ 		return _FAIL;
+ 	psta = pattrib->psta;
+-	if (pxmitframe->buf_addr == NULL)
++	if (!pxmitframe->buf_addr)
+ 		return _FAIL;
+ 	pbuf_start = pxmitframe->buf_addr;
+ 	ptxdesc = pbuf_start;
+@@ -627,7 +627,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
+ 		mpdu_len -= pattrib->hdrlen;
+ 		/* adding icv, if necessary...*/
+ 		if (pattrib->iv_len) {
+-			if (psta != NULL) {
++			if (psta) {
+ 				switch (pattrib->encrypt) {
+ 				case _WEP40_:
+ 				case _WEP104_:
+@@ -718,7 +718,7 @@ void r8712_update_protection(struct _adapter *padapter, u8 *ie, uint ie_len)
+ 	case AUTO_VCS:
+ 	default:
+ 		perp = r8712_get_ie(ie, _ERPINFO_IE_, &erp_len, ie_len);
+-		if (perp == NULL) {
++		if (!perp) {
+ 			pxmitpriv->vcs = NONE_VCS;
+ 		} else {
+ 			protection = (*(perp + 2)) & BIT(1);
+@@ -757,7 +757,7 @@ int r8712_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
+ 	unsigned long irqL;
+ 	struct  __queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
+ 
+-	if (pxmitbuf == NULL)
++	if (!pxmitbuf)
+ 		return _FAIL;
+ 	spin_lock_irqsave(&pfree_xmitbuf_queue->lock, irqL);
+ 	list_del_init(&pxmitbuf->list);
+@@ -811,7 +811,7 @@ void r8712_free_xmitframe(struct xmit_priv *pxmitpriv,
+ 	struct  __queue *pfree_xmit_queue = &pxmitpriv->free_xmit_queue;
+ 	struct _adapter *padapter = pxmitpriv->adapter;
+ 
+-	if (pxmitframe == NULL)
++	if (!pxmitframe)
+ 		return;
+ 	spin_lock_irqsave(&pfree_xmit_queue->lock, irqL);
+ 	list_del_init(&pxmitframe->list);
+@@ -827,7 +827,7 @@ void r8712_free_xmitframe(struct xmit_priv *pxmitpriv,
+ void r8712_free_xmitframe_ex(struct xmit_priv *pxmitpriv,
+ 		      struct xmit_frame *pxmitframe)
+ {
+-	if (pxmitframe == NULL)
++	if (!pxmitframe)
+ 		return;
+ 	if (pxmitframe->frame_tag == DATA_FRAMETAG)
+ 		r8712_free_xmitframe(pxmitpriv, pxmitframe);
+@@ -918,7 +918,7 @@ sint r8712_xmit_classifier(struct _adapter *padapter,
+ 				psta = r8712_get_stainfo(pstapriv, pattrib->ra);
+ 		}
+ 	}
+-	if (psta == NULL)
++	if (!psta)
+ 		return _FAIL;
+ 	ptxservq = get_sta_pending(padapter, &pstapending,
+ 		   psta, pattrib->priority);
+@@ -1030,7 +1030,7 @@ int r8712_pre_xmit(struct _adapter *padapter, struct xmit_frame *pxmitframe)
+ 		return ret;
+ 	}
+ 	pxmitbuf = r8712_alloc_xmitbuf(pxmitpriv);
+-	if (pxmitbuf == NULL) { /*enqueue packet*/
++	if (!pxmitbuf) { /*enqueue packet*/
+ 		ret = false;
+ 		r8712_xmit_enqueue(padapter, pxmitframe);
+ 		spin_unlock_irqrestore(&pxmitpriv->lock, irqL);
+diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
+index 7478bbd..91382c2 100644
+--- a/drivers/staging/rtl8712/usb_intf.c
++++ b/drivers/staging/rtl8712/usb_intf.c
+@@ -577,7 +577,7 @@ static int r871xu_drv_init(struct usb_interface *pusb_intf,
+ error:
+ 	usb_put_dev(udev);
+ 	usb_set_intfdata(pusb_intf, NULL);
+-	if (padapter && padapter->dvobj_deinit != NULL)
++	if (padapter && padapter->dvobj_deinit)
+ 		padapter->dvobj_deinit(padapter);
+ 	if (pnetdev)
+ 		free_netdev(pnetdev);
+-- 
+2.7.4
 
-This is a bit vague, or it is what one would hope for for any patch.
-Perhaps something like "Drop some invalid changes" would be appropriate?
-
-julia
-
->
->  drivers/staging/rtl8712/rtl8712_recv.c        | 10 +++++-----
->  drivers/staging/rtl8712/rtl871x_cmd.c         |  4 ++--
->  drivers/staging/rtl8712/rtl871x_io.c          |  2 +-
->  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 16 ++++++++--------
->  drivers/staging/rtl8712/rtl871x_mlme.c        | 16 ++++++++--------
->  drivers/staging/rtl8712/rtl871x_mp_ioctl.c    |  2 +-
->  drivers/staging/rtl8712/rtl871x_recv.c        | 20 ++++++++++----------
->  drivers/staging/rtl8712/rtl871x_recv.h        | 10 +++++-----
->  drivers/staging/rtl8712/rtl871x_security.c    |  8 ++++----
->  drivers/staging/rtl8712/rtl871x_sta_mgt.c     |  4 ++--
->  drivers/staging/rtl8712/rtl871x_xmit.c        | 24 ++++++++++++------------
->  drivers/staging/rtl8712/usb_intf.c            |  2 +-
->  12 files changed, 59 insertions(+), 59 deletions(-)
->
-> diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-> index 9e09431..9aa950e 100644
-> --- a/drivers/staging/rtl8712/rtl8712_recv.c
-> +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-> @@ -135,7 +135,7 @@ int r8712_free_recvframe(union recv_frame *precvframe,
->  	spin_lock_irqsave(&pfree_recv_queue->lock, irqL);
->  	list_del_init(&(precvframe->u.hdr.list));
->  	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
-> -	if (padapter != NULL) {
-> +	if (padapter) {
->  		if (pfree_recv_queue == &precvpriv->free_recv_queue)
->  			precvpriv->free_recvframe_cnt++;
->  	}
-> @@ -273,7 +273,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
->  		/* 0~(n-1) fragment frame
->  		 * enqueue to defraf_g
->  		 */
-> -		if (pdefrag_q != NULL) {
-> +		if (pdefrag_q) {
->  			if (fragnum == 0) {
->  				/*the first fragment*/
->  				if (!list_empty(&pdefrag_q->queue)) {
-> @@ -299,7 +299,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
->  		/* the last fragment frame
->  		 * enqueue the last fragment
->  		 */
-> -		if (pdefrag_q != NULL) {
-> +		if (pdefrag_q) {
->  			phead = &pdefrag_q->queue;
->  			list_add_tail(&pfhdr->list, phead);
->  			/*call recvframe_defrag to defrag*/
-> @@ -313,7 +313,7 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
->  			prtnframe = NULL;
->  		}
->  	}
-> -	if ((prtnframe != NULL) && (prtnframe->u.hdr.attrib.privacy)) {
-> +	if (prtnframe && prtnframe->u.hdr.attrib.privacy) {
->  		/* after defrag we must check tkip mic code */
->  		if (r8712_recvframe_chkmic(padapter, prtnframe) == _FAIL) {
->  			r8712_free_recvframe(prtnframe, pfree_recv_queue);
-> @@ -889,7 +889,7 @@ static void process_link_qual(struct _adapter *padapter,
->  	struct rx_pkt_attrib *pattrib;
->  	struct smooth_rssi_data *sqd = &padapter->recvpriv.signal_qual_data;
->
-> -	if (prframe == NULL || padapter == NULL)
-> +	if (!prframe || !padapter)
->  		return;
->  	pattrib = &prframe->u.hdr.attrib;
->  	if (pattrib->signal_qual != 0) {
-> diff --git a/drivers/staging/rtl8712/rtl871x_cmd.c b/drivers/staging/rtl8712/rtl871x_cmd.c
-> index 05a78ac..eaae9c0 100644
-> --- a/drivers/staging/rtl8712/rtl871x_cmd.c
-> +++ b/drivers/staging/rtl8712/rtl871x_cmd.c
-> @@ -194,7 +194,7 @@ void r8712_free_cmd_obj(struct cmd_obj *pcmd)
->  	if ((pcmd->cmdcode != _JoinBss_CMD_) &&
->  	    (pcmd->cmdcode != _CreateBss_CMD_))
->  		kfree(pcmd->parmbuf);
-> -	if (pcmd->rsp != NULL) {
-> +	if (pcmd->rsp) {
->  		if (pcmd->rspsz != 0)
->  			kfree(pcmd->rsp);
->  	}
-> @@ -229,7 +229,7 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
->  	psurveyPara->passive_mode = cpu_to_le32(pmlmepriv->passive_mode);
->  	psurveyPara->ss_ssidlen = 0;
->  	memset(psurveyPara->ss_ssid, 0, IW_ESSID_MAX_SIZE + 1);
-> -	if ((pssid != NULL) && (pssid->SsidLength)) {
-> +	if (pssid && pssid->SsidLength) {
->  		memcpy(psurveyPara->ss_ssid, pssid->Ssid, pssid->SsidLength);
->  		psurveyPara->ss_ssidlen = cpu_to_le32(pssid->SsidLength);
->  	}
-> diff --git a/drivers/staging/rtl8712/rtl871x_io.c b/drivers/staging/rtl8712/rtl871x_io.c
-> index 17dafef..e34302a 100644
-> --- a/drivers/staging/rtl8712/rtl871x_io.c
-> +++ b/drivers/staging/rtl8712/rtl871x_io.c
-> @@ -50,7 +50,7 @@ static uint _init_intf_hdl(struct _adapter *padapter,
->  	init_intf_priv = &r8712_usb_init_intf_priv;
->  	pintf_priv = pintf_hdl->pintfpriv = kmalloc(sizeof(struct intf_priv),
->  						    GFP_ATOMIC);
-> -	if (pintf_priv == NULL)
-> +	if (!pintf_priv)
->  		goto _init_intf_hdl_fail;
->  	pintf_hdl->adapter = (u8 *)padapter;
->  	set_intf_option(&pintf_hdl->intf_option);
-> diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> index ad9b2f7..e55db92 100644
-> --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-> @@ -467,11 +467,11 @@ static int r871x_set_wpa_ie(struct _adapter *padapter, char *pie,
->  	int group_cipher = 0, pairwise_cipher = 0;
->  	int ret = 0;
->
-> -	if ((ielen > MAX_WPA_IE_LEN) || (pie == NULL))
-> +	if (ielen > MAX_WPA_IE_LEN || !pie)
->  		return -EINVAL;
->  	if (ielen) {
->  		buf = kmemdup(pie, ielen, GFP_ATOMIC);
-> -		if (buf == NULL)
-> +		if (!buf)
->  			return -ENOMEM;
->  		if (ielen < RSN_HEADER_LEN) {
->  			ret  = -EINVAL;
-> @@ -763,7 +763,7 @@ static int r871x_wx_set_pmkid(struct net_device *dev,
->   *	If cmd is IW_PMKSA_REMOVE, it means the wpa_supplicant wants to
->   *	remove a PMKID/BSSID from driver.
->   */
-> -	if (pPMK == NULL)
-> +	if (!pPMK)
->  		return -EINVAL;
->  	memcpy(strIssueBssid, pPMK->bssid.sa_data, ETH_ALEN);
->  	switch (pPMK->cmd) {
-> @@ -1085,7 +1085,7 @@ static int r871x_wx_set_mlme(struct net_device *dev,
->  	struct _adapter *padapter = netdev_priv(dev);
->  	struct iw_mlme *mlme = (struct iw_mlme *) extra;
->
-> -	if (mlme == NULL)
-> +	if (!mlme)
->  		return -1;
->  	switch (mlme->cmd) {
->  	case IW_MLME_DEAUTH:
-> @@ -1938,7 +1938,7 @@ static int r871x_get_ap_info(struct net_device *dev,
->  	u8 bssid[ETH_ALEN];
->  	char data[33];
->
-> -	if (padapter->driver_stopped || (pdata == NULL))
-> +	if (padapter->driver_stopped || !pdata)
->  		return -EINVAL;
->  	while (check_fwstate(pmlmepriv, _FW_UNDER_SURVEY |
->  			     _FW_UNDER_LINKING)) {
-> @@ -2002,7 +2002,7 @@ static int r871x_set_pid(struct net_device *dev,
->  	struct _adapter *padapter = netdev_priv(dev);
->  	struct iw_point *pdata = &wrqu->data;
->
-> -	if ((padapter->driver_stopped) || (pdata == NULL))
-> +	if (padapter->driver_stopped || !pdata)
->  		return -EINVAL;
->  	if (copy_from_user(&padapter->pid, pdata->pointer, sizeof(int)))
->  		return -EINVAL;
-> @@ -2018,7 +2018,7 @@ static int r871x_set_chplan(struct net_device *dev,
->  	struct iw_point *pdata = &wrqu->data;
->  	int ch_plan = -1;
->
-> -	if ((padapter->driver_stopped) || (pdata == NULL)) {
-> +	if (padapter->driver_stopped || !pdata) {
->  		ret = -EINVAL;
->  		goto exit;
->  	}
-> @@ -2038,7 +2038,7 @@ static int r871x_wps_start(struct net_device *dev,
->  	struct iw_point *pdata = &wrqu->data;
->  	u32   u32wps_start = 0;
->
-> -	if ((padapter->driver_stopped) || (pdata == NULL))
-> +	if (padapter->driver_stopped || !pdata)
->  		return -EINVAL;
->  	if (copy_from_user((void *)&u32wps_start, pdata->pointer, 4))
->  		return -EFAULT;
-> diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-> index c666e03..d48f3d1 100644
-> --- a/drivers/staging/rtl8712/rtl871x_mlme.c
-> +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-> @@ -95,7 +95,7 @@ static void _free_network(struct mlme_priv *pmlmepriv,
->  	unsigned long irqL;
->  	struct  __queue *free_queue = &(pmlmepriv->free_bss_pool);
->
-> -	if (pnetwork == NULL)
-> +	if (!pnetwork)
->  		return;
->  	if (pnetwork->fixed)
->  		return;
-> @@ -115,7 +115,7 @@ static void free_network_nolock(struct mlme_priv *pmlmepriv,
->  {
->  	struct  __queue *free_queue = &pmlmepriv->free_bss_pool;
->
-> -	if (pnetwork == NULL)
-> +	if (!pnetwork)
->  		return;
->  	if (pnetwork->fixed)
->  		return;
-> @@ -780,7 +780,7 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
->  					ptarget_wlan->fixed = true;
->  			}
->
-> -			if (ptarget_wlan == NULL) {
-> +			if (!ptarget_wlan) {
->  				if (check_fwstate(pmlmepriv,
->  					_FW_UNDER_LINKING))
->  					pmlmepriv->fw_state ^=
-> @@ -794,7 +794,7 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
->  					ptarget_sta =
->  						 r8712_get_stainfo(pstapriv,
->  						 pnetwork->network.MacAddress);
-> -					if (ptarget_sta == NULL)
-> +					if (!ptarget_sta)
->  						ptarget_sta =
->  						 r8712_alloc_stainfo(pstapriv,
->  						 pnetwork->network.MacAddress);
-> @@ -905,7 +905,7 @@ void r8712_stassoc_event_callback(struct _adapter *adapter, u8 *pbuf)
->  	if (!r8712_access_ctrl(&adapter->acl_list, pstassoc->macaddr))
->  		return;
->  	psta = r8712_get_stainfo(&adapter->stapriv, pstassoc->macaddr);
-> -	if (psta != NULL) {
-> +	if (psta) {
->  		/*the sta have been in sta_info_queue => do nothing
->  		 *(between drv has received this event before and
->  		 * fw have not yet to set key to CAM_ENTRY)
-> @@ -914,7 +914,7 @@ void r8712_stassoc_event_callback(struct _adapter *adapter, u8 *pbuf)
->  	}
->
->  	psta = r8712_alloc_stainfo(&adapter->stapriv, pstassoc->macaddr);
-> -	if (psta == NULL)
-> +	if (!psta)
->  		return;
->  	/* to do : init sta_info variable */
->  	psta->qos_option = 0;
-> @@ -1112,7 +1112,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
->  	while (1) {
->  		if (end_of_queue_search(phead, pmlmepriv->pscanned)) {
->  			if ((pmlmepriv->assoc_by_rssi) &&
-> -			    (pnetwork_max_rssi != NULL)) {
-> +			    (pnetwork_max_rssi)) {
->  				pnetwork = pnetwork_max_rssi;
->  				goto ask_for_joinbss;
->  			}
-> @@ -1120,7 +1120,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
->  		}
->  		pnetwork = container_of(pmlmepriv->pscanned,
->  					struct wlan_network, list);
-> -		if (pnetwork == NULL)
-> +		if (!pnetwork)
->  			return _FAIL;
->  		pmlmepriv->pscanned = pmlmepriv->pscanned->next;
->  		if (pmlmepriv->assoc_by_bssid) {
-> diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-> index 588346d..bbef96f9f 100644
-> --- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-> +++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
-> @@ -186,7 +186,7 @@ static int mp_start_test(struct _adapter *padapter)
->  	if (psta)
->  		r8712_free_stainfo(padapter, psta);
->  	psta = r8712_alloc_stainfo(&padapter->stapriv, bssid.MacAddress);
-> -	if (psta == NULL) {
-> +	if (!psta) {
->  		res = _FAIL;
->  		goto end_of_mp_start_test;
->  	}
-> diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
-> index 28f7369..aa4e406 100644
-> --- a/drivers/staging/rtl8712/rtl871x_recv.c
-> +++ b/drivers/staging/rtl8712/rtl871x_recv.c
-> @@ -63,7 +63,7 @@ sint _r8712_init_recv_priv(struct recv_priv *precvpriv,
->  	precvpriv->pallocated_frame_buf = kzalloc(NR_RECVFRAME *
->  				sizeof(union recv_frame) + RXFRAME_ALIGN_SZ,
->  				GFP_ATOMIC);
-> -	if (precvpriv->pallocated_frame_buf == NULL)
-> +	if (!precvpriv->pallocated_frame_buf)
->  		return _FAIL;
->  	kmemleak_not_leak(precvpriv->pallocated_frame_buf);
->  	precvpriv->precv_frame_buf = precvpriv->pallocated_frame_buf +
-> @@ -102,7 +102,7 @@ union recv_frame *r8712_alloc_recvframe(struct __queue *pfree_recv_queue)
->  	if (precvframe) {
->  		list_del_init(&precvframe->u.hdr.list);
->  		padapter = precvframe->u.hdr.adapter;
-> -		if (padapter != NULL) {
-> +		if (padapter) {
->  			precvpriv = &padapter->recvpriv;
->  			if (pfree_recv_queue == &precvpriv->free_recv_queue)
->  				precvpriv->free_recvframe_cnt--;
-> @@ -150,7 +150,7 @@ sint r8712_recvframe_chkmic(struct _adapter *adapter,
->  	stainfo = r8712_get_stainfo(&adapter->stapriv, &prxattrib->ta[0]);
->  	if (prxattrib->encrypt == _TKIP_) {
->  		/* calculate mic code */
-> -		if (stainfo != NULL) {
-> +		if (stainfo) {
->  			if (IS_MCAST(prxattrib->ra)) {
->  				iv = precvframe->u.hdr.rx_data +
->  				     prxattrib->hdrlen;
-> @@ -248,7 +248,7 @@ union recv_frame *r8712_portctrl(struct _adapter *adapter,
->  		memcpy(&ether_type, ptr, 2);
->  		be16_to_cpus(&ether_type);
->
-> -		if ((psta != NULL) && (psta->ieee8021x_blocked)) {
-> +		if (psta && psta->ieee8021x_blocked) {
->  			/* blocked
->  			 * only accept EAPOL frame
->  			 */
-> @@ -355,7 +355,7 @@ static sint sta2sta_data_frame(struct _adapter *adapter,
->  		*psta = r8712_get_bcmc_stainfo(adapter);
->  	else
->  		*psta = r8712_get_stainfo(pstapriv, sta_addr); /* get ap_info */
-> -	if (*psta == NULL) {
-> +	if (!*psta) {
->  		if (check_fwstate(pmlmepriv, WIFI_MP_STATE))
->  			adapter->mppriv.rx_pktloss++;
->  		return _FAIL;
-> @@ -405,7 +405,7 @@ static sint ap2sta_data_frame(struct _adapter *adapter,
->  			*psta = r8712_get_bcmc_stainfo(adapter);
->  		else
->  			*psta = r8712_get_stainfo(pstapriv, pattrib->bssid);
-> -		if (*psta == NULL)
-> +		if (!*psta)
->  			return _FAIL;
->  	} else if (check_fwstate(pmlmepriv, WIFI_MP_STATE) &&
->  		   check_fwstate(pmlmepriv, _FW_LINKED)) {
-> @@ -416,7 +416,7 @@ static sint ap2sta_data_frame(struct _adapter *adapter,
->  		memcpy(pattrib->ta, pattrib->src, ETH_ALEN);
->  		memcpy(pattrib->bssid,  mybssid, ETH_ALEN);
->  		*psta = r8712_get_stainfo(pstapriv, pattrib->bssid);
-> -		if (*psta == NULL)
-> +		if (!*psta)
->  			return _FAIL;
->  	} else {
->  		return _FAIL;
-> @@ -441,7 +441,7 @@ static sint sta2ap_data_frame(struct _adapter *adapter,
->  		if (memcmp(pattrib->bssid, mybssid, ETH_ALEN))
->  			return _FAIL;
->  		*psta = r8712_get_stainfo(pstapriv, pattrib->src);
-> -		if (*psta == NULL)
-> +		if (!*psta)
->  			return _FAIL;
->  	}
->  	return _SUCCESS;
-> @@ -475,7 +475,7 @@ static sint validate_recv_data_frame(struct _adapter *adapter,
->  	pda = get_da(ptr);
->  	psa = get_sa(ptr);
->  	pbssid = get_hdr_bssid(ptr);
-> -	if (pbssid == NULL)
-> +	if (!pbssid)
->  		return _FAIL;
->  	memcpy(pattrib->dst, pda, ETH_ALEN);
->  	memcpy(pattrib->src, psa, ETH_ALEN);
-> @@ -505,7 +505,7 @@ static sint validate_recv_data_frame(struct _adapter *adapter,
->  	}
->  	if (res == _FAIL)
->  		return _FAIL;
-> -	if (psta == NULL)
-> +	if (!psta)
->  		return _FAIL;
->  	precv_frame->u.hdr.psta = psta;
->  	pattrib->amsdu = 0;
-> diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
-> index f87b2ff..1a56cd4 100644
-> --- a/drivers/staging/rtl8712/rtl871x_recv.h
-> +++ b/drivers/staging/rtl8712/rtl871x_recv.h
-> @@ -138,7 +138,7 @@ int recv_func(struct _adapter *padapter, void *pcontext);
->  static inline u8 *get_rxmem(union recv_frame *precvframe)
->  {
->  	/* always return rx_head... */
-> -	if (precvframe == NULL)
-> +	if (!precvframe)
->  		return NULL;
->  	return precvframe->u.hdr.rx_head;
->  }
-> @@ -146,7 +146,7 @@ static inline u8 *get_rxmem(union recv_frame *precvframe)
->  static inline u8 *get_recvframe_data(union recv_frame *precvframe)
->  {
->  	/* always return rx_data */
-> -	if (precvframe == NULL)
-> +	if (!precvframe)
->  		return NULL;
->  	return precvframe->u.hdr.rx_data;
->  }
-> @@ -156,7 +156,7 @@ static inline u8 *recvframe_pull(union recv_frame *precvframe, sint sz)
->  	/* used for extract sz bytes from rx_data, update rx_data and return
->  	 * the updated rx_data to the caller
->  	 */
-> -	if (precvframe == NULL)
-> +	if (!precvframe)
->  		return NULL;
->  	precvframe->u.hdr.rx_data += sz;
->  	if (precvframe->u.hdr.rx_data > precvframe->u.hdr.rx_tail) {
-> @@ -173,7 +173,7 @@ static inline u8 *recvframe_put(union recv_frame *precvframe, sint sz)
->  	 * return the updated rx_tail to the caller
->  	 * after putting, rx_tail must be still larger than rx_end.
->  	 */
-> -	if (precvframe == NULL)
-> +	if (!precvframe)
->  		return NULL;
->  	precvframe->u.hdr.rx_tail += sz;
->  	if (precvframe->u.hdr.rx_tail > precvframe->u.hdr.rx_end) {
-> @@ -191,7 +191,7 @@ static inline u8 *recvframe_pull_tail(union recv_frame *precvframe, sint sz)
->  	 * updated rx_end to the caller
->  	 * after pulling, rx_end must be still larger than rx_data.
->  	 */
-> -	if (precvframe == NULL)
-> +	if (!precvframe)
->  		return NULL;
->  	precvframe->u.hdr.rx_tail -= sz;
->  	if (precvframe->u.hdr.rx_tail < precvframe->u.hdr.rx_data) {
-> diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
-> index f826450..148e24e 100644
-> --- a/drivers/staging/rtl8712/rtl871x_security.c
-> +++ b/drivers/staging/rtl8712/rtl871x_security.c
-> @@ -160,7 +160,7 @@ void r8712_wep_encrypt(struct _adapter *padapter, u8 *pxmitframe)
->  	struct	security_priv *psecuritypriv = &padapter->securitypriv;
->  	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
->
-> -	if (((struct xmit_frame *)pxmitframe)->buf_addr == NULL)
-> +	if (((struct xmit_frame *)pxmitframe)->buf_addr==NULL)
->  		return;
->  	pframe = ((struct xmit_frame *)pxmitframe)->buf_addr + TXDESC_OFFSET;
->  	/*start to encrypt each fragment*/
-> @@ -584,7 +584,7 @@ u32 r8712_tkip_encrypt(struct _adapter *padapter, u8 *pxmitframe)
->  		else
->  			stainfo = r8712_get_stainfo(&padapter->stapriv,
->  				  &pattrib->ra[0]);
-> -		if (stainfo != NULL) {
-> +		if (stainfo) {
->  			prwskey = &stainfo->x_UncstKey.skey[0];
->  			for (curfragnum = 0; curfragnum < pattrib->nr_frags;
->  			     curfragnum++) {
-> @@ -658,7 +658,7 @@ u32 r8712_tkip_decrypt(struct _adapter *padapter, u8 *precvframe)
->  	if (prxattrib->encrypt == _TKIP_) {
->  		stainfo = r8712_get_stainfo(&padapter->stapriv,
->  					    &prxattrib->ta[0]);
-> -		if (stainfo != NULL) {
-> +		if (stainfo) {
->  			iv = pframe + prxattrib->hdrlen;
->  			payload = pframe + prxattrib->iv_len +
->  				  prxattrib->hdrlen;
-> @@ -1367,7 +1367,7 @@ u32 r8712_aes_decrypt(struct _adapter *padapter, u8 *precvframe)
->  	if (prxattrib->encrypt == _AES_) {
->  		stainfo = r8712_get_stainfo(&padapter->stapriv,
->  					    &prxattrib->ta[0]);
-> -		if (stainfo != NULL) {
-> +		if (stainfo) {
->  			if (IS_MCAST(prxattrib->ra)) {
->  				iv = pframe + prxattrib->hdrlen;
->  				idx = iv[3];
-> diff --git a/drivers/staging/rtl8712/rtl871x_sta_mgt.c b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
-> index 7c30b9e..f1439a7 100644
-> --- a/drivers/staging/rtl8712/rtl871x_sta_mgt.c
-> +++ b/drivers/staging/rtl8712/rtl871x_sta_mgt.c
-> @@ -150,7 +150,7 @@ void r8712_free_stainfo(struct _adapter *padapter, struct sta_info *psta)
->  	struct	xmit_priv *pxmitpriv = &padapter->xmitpriv;
->  	struct	sta_priv *pstapriv = &padapter->stapriv;
->
-> -	if (psta == NULL)
-> +	if (!psta)
->  		return;
->  	pfree_sta_queue = &pstapriv->free_sta_queue;
->  	pstaxmitpriv = &psta->sta_xmitpriv;
-> @@ -223,7 +223,7 @@ struct sta_info *r8712_get_stainfo(struct sta_priv *pstapriv, u8 *hwaddr)
->  	struct sta_info *psta = NULL;
->  	u32	index;
->
-> -	if (hwaddr == NULL)
-> +	if (!hwaddr)
->  		return NULL;
->  	index = wifi_mac_hash(hwaddr);
->  	spin_lock_irqsave(&pstapriv->sta_hash_lock, irqL);
-> diff --git a/drivers/staging/rtl8712/rtl871x_xmit.c b/drivers/staging/rtl8712/rtl871x_xmit.c
-> index 7c88574..94c2a48 100644
-> --- a/drivers/staging/rtl8712/rtl871x_xmit.c
-> +++ b/drivers/staging/rtl8712/rtl871x_xmit.c
-> @@ -156,7 +156,7 @@ void _free_xmit_priv(struct xmit_priv *pxmitpriv)
->  					pxmitpriv->pxmit_frame_buf;
->  	struct xmit_buf *pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
->
-> -	if (pxmitpriv->pxmit_frame_buf == NULL)
-> +	if (!pxmitpriv->pxmit_frame_buf)
->  		return;
->  	for (i = 0; i < NR_XMITFRAME; i++) {
->  		r8712_xmit_complete(padapter, pxmitframe);
-> @@ -269,7 +269,7 @@ sint r8712_update_attrib(struct _adapter *padapter, _pkt *pkt,
->  			pattrib->mac_id = 5;
->  		} else {
->  			psta = r8712_get_stainfo(pstapriv, pattrib->ra);
-> -			if (psta == NULL)  /* drop the pkt */
-> +			if (!psta)  /* drop the pkt */
->  				return _FAIL;
->  			if (check_fwstate(pmlmepriv, WIFI_STATION_STATE))
->  				pattrib->mac_id = 5;
-> @@ -362,7 +362,7 @@ static sint xmitframe_addmic(struct _adapter *padapter,
->  					    &pattrib->ra[0]);
->  	if (pattrib->encrypt == _TKIP_) {
->  		/*encode mic code*/
-> -		if (stainfo != NULL) {
-> +		if (stainfo) {
->  			u8 null_key[16] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
->  					   0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
->  					   0x0, 0x0};
-> @@ -596,10 +596,10 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
->  	u8 *pbuf_start;
->  	sint bmcst = IS_MCAST(pattrib->ra);
->
-> -	if (pattrib->psta == NULL)
-> +	if (!pattrib->psta)
->  		return _FAIL;
->  	psta = pattrib->psta;
-> -	if (pxmitframe->buf_addr == NULL)
-> +	if (!pxmitframe->buf_addr)
->  		return _FAIL;
->  	pbuf_start = pxmitframe->buf_addr;
->  	ptxdesc = pbuf_start;
-> @@ -627,7 +627,7 @@ sint r8712_xmitframe_coalesce(struct _adapter *padapter, _pkt *pkt,
->  		mpdu_len -= pattrib->hdrlen;
->  		/* adding icv, if necessary...*/
->  		if (pattrib->iv_len) {
-> -			if (psta != NULL) {
-> +			if (psta) {
->  				switch (pattrib->encrypt) {
->  				case _WEP40_:
->  				case _WEP104_:
-> @@ -718,7 +718,7 @@ void r8712_update_protection(struct _adapter *padapter, u8 *ie, uint ie_len)
->  	case AUTO_VCS:
->  	default:
->  		perp = r8712_get_ie(ie, _ERPINFO_IE_, &erp_len, ie_len);
-> -		if (perp == NULL) {
-> +		if (!perp) {
->  			pxmitpriv->vcs = NONE_VCS;
->  		} else {
->  			protection = (*(perp + 2)) & BIT(1);
-> @@ -757,7 +757,7 @@ int r8712_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
->  	unsigned long irqL;
->  	struct  __queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
->
-> -	if (pxmitbuf == NULL)
-> +	if (!pxmitbuf)
->  		return _FAIL;
->  	spin_lock_irqsave(&pfree_xmitbuf_queue->lock, irqL);
->  	list_del_init(&pxmitbuf->list);
-> @@ -811,7 +811,7 @@ void r8712_free_xmitframe(struct xmit_priv *pxmitpriv,
->  	struct  __queue *pfree_xmit_queue = &pxmitpriv->free_xmit_queue;
->  	struct _adapter *padapter = pxmitpriv->adapter;
->
-> -	if (pxmitframe == NULL)
-> +	if (!pxmitframe)
->  		return;
->  	spin_lock_irqsave(&pfree_xmit_queue->lock, irqL);
->  	list_del_init(&pxmitframe->list);
-> @@ -827,7 +827,7 @@ void r8712_free_xmitframe(struct xmit_priv *pxmitpriv,
->  void r8712_free_xmitframe_ex(struct xmit_priv *pxmitpriv,
->  		      struct xmit_frame *pxmitframe)
->  {
-> -	if (pxmitframe == NULL)
-> +	if (!pxmitframe)
->  		return;
->  	if (pxmitframe->frame_tag == DATA_FRAMETAG)
->  		r8712_free_xmitframe(pxmitpriv, pxmitframe);
-> @@ -918,7 +918,7 @@ sint r8712_xmit_classifier(struct _adapter *padapter,
->  				psta = r8712_get_stainfo(pstapriv, pattrib->ra);
->  		}
->  	}
-> -	if (psta == NULL)
-> +	if (!psta)
->  		return _FAIL;
->  	ptxservq = get_sta_pending(padapter, &pstapending,
->  		   psta, pattrib->priority);
-> @@ -1030,7 +1030,7 @@ int r8712_pre_xmit(struct _adapter *padapter, struct xmit_frame *pxmitframe)
->  		return ret;
->  	}
->  	pxmitbuf = r8712_alloc_xmitbuf(pxmitpriv);
-> -	if (pxmitbuf == NULL) { /*enqueue packet*/
-> +	if (!pxmitbuf) { /*enqueue packet*/
->  		ret = false;
->  		r8712_xmit_enqueue(padapter, pxmitframe);
->  		spin_unlock_irqrestore(&pxmitpriv->lock, irqL);
-> diff --git a/drivers/staging/rtl8712/usb_intf.c b/drivers/staging/rtl8712/usb_intf.c
-> index 7478bbd..91382c2 100644
-> --- a/drivers/staging/rtl8712/usb_intf.c
-> +++ b/drivers/staging/rtl8712/usb_intf.c
-> @@ -577,7 +577,7 @@ static int r871xu_drv_init(struct usb_interface *pusb_intf,
->  error:
->  	usb_put_dev(udev);
->  	usb_set_intfdata(pusb_intf, NULL);
-> -	if (padapter && padapter->dvobj_deinit != NULL)
-> +	if (padapter && padapter->dvobj_deinit)
->  		padapter->dvobj_deinit(padapter);
->  	if (pnetdev)
->  		free_netdev(pnetdev);
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1552406296-9512-1-git-send-email-digholebhagyashri%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
