@@ -1,241 +1,143 @@
-X-GM-THRID: 6477576827810349056
-X-Received: by 10.202.72.84 with SMTP id v81mr4847533oia.19.1508178382986;
-        Mon, 16 Oct 2017 11:26:22 -0700 (PDT)
+X-GM-THRID: 6667323453570285568
+X-Received: by 2002:a05:6402:1659:: with SMTP id s25mr269069edx.2.1552372249326;
+        Mon, 11 Mar 2019 23:30:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.53.196 with SMTP id c187ls3748001oia.13.gmail; Mon, 16 Oct
- 2017 11:26:22 -0700 (PDT)
-X-Received: by 10.157.86.206 with SMTP id b14mr5650965otj.36.1508178382124;
-        Mon, 16 Oct 2017 11:26:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508178382; cv=none;
+Received: by 2002:a17:906:2a9b:: with SMTP id l27ls3789169eje.10.gmail; Mon,
+ 11 Mar 2019 23:30:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyGiy4atVw/jvTvl8TlCm4ARcfYgsFyksIPaD61d4tJ8yTRE3oylGFsuKY9fImnQrtdplm6
+X-Received: by 2002:a17:906:1850:: with SMTP id w16mr4091252eje.7.1552372248268;
+        Mon, 11 Mar 2019 23:30:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552372248; cv=none;
         d=google.com; s=arc-20160816;
-        b=XTI0aArdfaAN/62uk5MGllyQ8LIo7Jsjgdf+FtbZE1VkK4QUmyF9vX2zWj3flCKMW9
-         OM3CeR3BwSfr5ell1cBbZOXYe443DD04d+GAfKL/ja7SnAINpmKf2jKWxc1JXTb7D0xa
-         MNkkn75i2KkHwB7g6x7ZM/qa/fj/U++1Sk30XhqwvN657AHC1Lc6XgNg0ECB6hbcOLqY
-         BR4RiYXw/dePPWjFUpJjNqWIfAXgZpND8DmJ9bWigJUJhH6+qx6pm+7MgDnoZGZ33v98
-         aT9C7j3dI7qTy8igA6eYv7/BClxF0BJK7Nd01vHvH7ZQGlCL4TRo5pFmThGUT4tlfZ9Z
-         Qd1g==
+        b=rg0jYy8ytkQM76Ty65Vatg4IB3rcGmR+yMLU3m+YB/sZdjWqTgl1kHSjnG2Zg9yD3M
+         8rcFvz98TbG2YN/UbFsgS45A942Ln9b/aaTTLBZCOg87JAPh0dRF897IRmamQJY+GrY5
+         OrFHt2OEc0IAimh0IKGCVxdlgfvevlHa0KFPb37P6A/NNQpYzDiaFKvxXl132ys8EbTQ
+         Lq6xSDaZr4xoA7v0GwiN6Ca48op8ovgFNsTlRQc0IazS/A54o3+9i99aajuPmPfgz2D7
+         C09O54/QJrD6AEsJVR753E/Q6RK4ref5zR5APT39SpiasbRyKEtje3n4Cc9dAggLWCnU
+         QjTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=DKtMCHA35RYBM8gEDEjJwMQWL2OrUsv1m+JELMkQkXQ=;
-        b=0kgqSnj7/lzPLzBmtNy4UrBx9faVWe521NHHNuKb6GEdXijKo73159180KIxzFX34M
-         gvyCTfcimqS+UtWaG1SKbvxNGJy51iSgcU6CO3Iq1x0BjShtOl4foR2ICUAqXya8nD66
-         Rpl1u5Vkly1owEwjV4Qcf3V8fI35HZmOlDDy7UJbic0Xo0TvtMV4jVfZwHeItqfuVKvP
-         6ueeeMJjVgnOiymkxpaXFctmKZX6gGlNvWQiY9E3U58zd5DpqmQ/scuOYgLVMmUai5QN
-         NPLtTLsRMWXNcDRlAtQNwosYXJ+xeQ6XBDwVFsX5tRxQyqCbGfH2GAJrnaueQqH2TyIK
-         w3cQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=a1pnp3nB4v13c6wvH3apQYHEFAPYS2I5YYP/0bo6hJg=;
+        b=vCWaJWfQPN/JNlJEw0aN9OMFqU4Sm/uZfcN+DVMMCXi6JuSQCxZy0GNdtEucuCITZE
+         sx1GFieLnEys3+pjXhtRFaicNr7hWFuk5UBtRSBFOJp8XUed0h788pv+Wdx+EXUI9BfD
+         F607mr1WdmciPegWqIbYLAz7fN1mPGYpEym3uhI7oLlb/xJV6A2MjxD7vowP6kMXwvdR
+         ooIjy1nFL6EtK+9Hu1ihg02e10VISH7M9BpidatiDY9upTSvwz5jNMvbENkfexnnte0Y
+         QjKNx/TOqkebCKugIkQvxTiiGXDi3W51aV8aox9IGcvZPZXEvRJ9esfTycEC6huvdb+o
+         a6qQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=eJSk3xJE;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::229 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua0-x229.google.com (mail-ua0-x229.google.com. [2607:f8b0:400c:c08::229])
-        by gmr-mx.google.com with ESMTPS id i1si547587ote.0.2017.10.16.11.26.21
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h5si939020ejq.0.2019.03.11.23.30.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 11:26:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::229 as permitted sender) client-ip=2607:f8b0:400c:c08::229;
+        Mon, 11 Mar 2019 23:30:48 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=eJSk3xJE;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::229 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua0-x229.google.com with SMTP id b11so10340288uae.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 11:26:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=DKtMCHA35RYBM8gEDEjJwMQWL2OrUsv1m+JELMkQkXQ=;
-        b=eJSk3xJErNhLR2aZvvH+xYdCLmlbrpPpyQ0SbBrRCxaN8GJ4a+I9STW7VNumonIVQX
-         k6XXwfVp6Uc8hM32lqCU/wD/zpt4hzuzU3k3OL8ebXDclftNC4Um6YMSPtyZHz8yHmzN
-         01fFMCCGrm3PlhEYxoBR0w6xTQdNdyIsYacEWDc17bmDf7ezTl3VKUiawWFmbrpQjhr2
-         VQMnt7CFSNX8Km5q8CZZWmiMDfEWMc3j/EBrswPw4RHjhjlTWJciSXsmiX14Bzc+GA2E
-         Z5IzJBT2qK7eLlwi7UeblDh9jEbkX6teQytq/lwedv338TrrPJzRca+2/DAskEXigCKF
-         ejqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=DKtMCHA35RYBM8gEDEjJwMQWL2OrUsv1m+JELMkQkXQ=;
-        b=SrtN+K48NEndBJ+FX9eKl1suDFsKgLNDOfzCUStXP9dyjLW8BeXZ4XKDta0Ee7AW7r
-         /VPpzL1jWEJytsPbDwZ/H33aoqigIQ3HZ2K5jz2J74MKJCEiCIkJ0RHwWhNq5tpqyiT6
-         Bg1kA4wJtaoEwMhwXu8A8nC5m7CIOjp5rS3ifJhzd6A8pgNGGAEHQti8rmeaxD4bnjbs
-         HGikLOpkDZx5RWA9YZHTwdn0MCUjAmbszhLoweVOnuZZiHxrL3N2YEgR35pFfCqNm6sV
-         jXPltVa/vFxV3gjmkBm8oR0J/nvIcuFF9t7Cqwsvlakf9fh4VlitBFmuoWfK2zGIulvH
-         +21A==
-X-Gm-Message-State: AMCzsaUVrlNe0pyES0BZfA4ASPTeuzssbH4y1fTT0sPDpIto9zy5xEwa
-	kc9TLZWj/Gjdi4OI0Y7MFF+cpqj7
-X-Google-Smtp-Source: AOwi7QBZdloH5cvclPc8LSnrr8C77xJ83EFQZRL89I4Kew7i9JDmw5azJHvuwwdy5eszahbG/Rllow==
-X-Received: by 10.159.35.107 with SMTP id 98mr7345307uae.190.1508178381457;
-        Mon, 16 Oct 2017 11:26:21 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from ubuntu-server-1604 ([152.207.29.87])
-        by smtp.gmail.com with ESMTPSA id o20sm803534vke.15.2017.10.16.11.26.20
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 16 Oct 2017 11:26:20 -0700 (PDT)
-Date: Mon, 16 Oct 2017 14:26:14 -0400
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: pablo@netfilter.org, Julia.Lawall@lip6.fr
-Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
-	devel@driverdev.osuosl.org
-Subject: [PATCH] staging: wlan-ng: Remove unnecessary parentheses
-Message-ID: <20171016182614.GA3341@ubuntu-server-1604>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,470,1544482800"; 
+   d="scan'208";a="298904146"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2019 07:30:47 +0100
+Date: Tue, 12 Mar 2019 07:30:47 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Branden Bonaby <brandonbonaby94@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: octeon: Lines should not
+ end with a '('
+In-Reply-To: <20190312024806.13728-1-brandonbonaby94@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903120729470.2728@hadrien>
+References: <20190312021955.12939-1-brandonbonaby94@gmail.com> <20190312024806.13728-1-brandonbonaby94@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-checkpatch message: 'CHECK: Unnecessary parentheses around'.
 
-Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
----
-FYI:
-	* I read 'Ignore checkpatch.pl if it complains about parens around boolean expressions or ternary conditionals in return values, like this: return ((depth > 1) ? (depth - 1) : depth);'. All the fixes in this patch are not in 'return values', so I hope there are OK ;)
 
-drivers/staging/wlan-ng/cfg80211.c     | 10 +++++-----
- drivers/staging/wlan-ng/hfa384x_usb.c  | 18 +++++++++---------
- drivers/staging/wlan-ng/p80211conv.c   |  6 +++---
- drivers/staging/wlan-ng/p80211netdev.c |  4 ++--
- 4 files changed, 19 insertions(+), 19 deletions(-)
+On Mon, 11 Mar 2019, Branden Bonaby wrote:
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 178f6f5..03279aa 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -265,7 +265,7 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
- 
- 	memset(sinfo, 0, sizeof(*sinfo));
- 
--	if (!wlandev || (wlandev->msdstate != WLAN_MSD_RUNNING))
-+	if (!wlandev || wlandev->msdstate != WLAN_MSD_RUNNING)
- 		return -EOPNOTSUPP;
- 
- 	/* build request message */
-@@ -367,8 +367,8 @@ static int prism2_scan(struct wiphy *wiphy,
- 		msg2.bssindex.data = i;
- 
- 		result = p80211req_dorequest(wlandev, (u8 *)&msg2);
--		if ((result != 0) ||
--		    (msg2.resultcode.data != P80211ENUM_resultcode_success)) {
-+		if (result != 0 ||
-+		    msg2.resultcode.data != P80211ENUM_resultcode_success) {
- 			break;
- 		}
- 
-@@ -475,8 +475,8 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
- 	}
- 
- 	/* Set the authorization */
--	if ((sme->auth_type == NL80211_AUTHTYPE_OPEN_SYSTEM) ||
--	    ((sme->auth_type == NL80211_AUTHTYPE_AUTOMATIC) && !is_wep))
-+	if (sme->auth_type == NL80211_AUTHTYPE_OPEN_SYSTEM ||
-+	    sme->auth_type == NL80211_AUTHTYPE_AUTOMATIC && !is_wep)
- 		msg_join.authtype.data = P80211ENUM_authalg_opensystem;
- 	else if ((sme->auth_type == NL80211_AUTHTYPE_SHARED_KEY) ||
- 		 ((sme->auth_type == NL80211_AUTHTYPE_AUTOMATIC) && is_wep))
-diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index d1e8218..b5fdfd8 100644
---- a/drivers/staging/wlan-ng/hfa384x_usb.c
-+++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -1781,9 +1781,9 @@ int hfa384x_drvr_enable(struct hfa384x *hw, u16 macport)
- {
- 	int result = 0;
- 
--	if ((!hw->isap && macport != 0) ||
--	    (hw->isap && !(macport <= HFA384x_PORTID_MAX)) ||
--	    (hw->port_enabled[macport])) {
-+	if (!hw->isap && macport != 0 ||
-+	    hw->isap && !(macport <= HFA384x_PORTID_MAX) ||
-+	    hw->port_enabled[macport]) {
- 		result = -EINVAL;
- 	} else {
- 		result = hfa384x_cmd_enable(hw, macport);
-@@ -2465,7 +2465,7 @@ int hfa384x_drvr_start(struct hfa384x *hw)
- 		netdev_err(hw->wlandev->netdev, "Cannot get bulk in endpoint status.\n");
- 		goto done;
- 	}
--	if ((status == 1) && usb_clear_halt(hw->usb, hw->endp_in))
-+	if (status == 1 && usb_clear_halt(hw->usb, hw->endp_in))
- 		netdev_err(hw->wlandev->netdev, "Failed to reset bulk in endpoint.\n");
- 
- 	result =
-@@ -2474,7 +2474,7 @@ int hfa384x_drvr_start(struct hfa384x *hw)
- 		netdev_err(hw->wlandev->netdev, "Cannot get bulk out endpoint status.\n");
- 		goto done;
- 	}
--	if ((status == 1) && usb_clear_halt(hw->usb, hw->endp_out))
-+	if (status == 1 && usb_clear_halt(hw->usb, hw->endp_out))
- 		netdev_err(hw->wlandev->netdev, "Failed to reset bulk out endpoint.\n");
- 
- 	/* Synchronous unlink, in case we're trying to restart the driver */
-@@ -3054,7 +3054,7 @@ static void hfa384x_usbin_callback(struct urb *urb)
- 		goto exit;
- 
- 	skb = hw->rx_urb_skb;
--	if (!skb || (skb->data != urb->transfer_buffer)) {
-+	if (!skb || skb->data != urb->transfer_buffer) {
- 		WARN_ON(1);
- 		return;
- 	}
-@@ -3501,8 +3501,8 @@ static void hfa384x_int_rxmonitor(struct wlandevice *wlandev,
- 		return;
- 
- 	/* only prepend the prism header if in the right mode */
--	if ((wlandev->netdev->type == ARPHRD_IEEE80211_PRISM) &&
--	    (hw->sniffhdr != 0)) {
-+	if (wlandev->netdev->type == ARPHRD_IEEE80211_PRISM &&
-+	    hw->sniffhdr != 0) {
- 		struct p80211_caphdr *caphdr;
- 		/* The NEW header format! */
- 		datap = skb_put(skb, sizeof(struct p80211_caphdr));
-@@ -3772,7 +3772,7 @@ static void hfa384x_ctlxout_callback(struct urb *urb)
- 
- 	spin_unlock_irqrestore(&hw->ctlxq.lock, flags);
- 
--	if (!timer_ok && (hw->resp_timer_done == 0)) {
-+	if (!timer_ok && hw->resp_timer_done == 0) {
- 		spin_lock_irqsave(&hw->ctlxq.lock, flags);
- 		goto delresp;
- 	}
-diff --git a/drivers/staging/wlan-ng/p80211conv.c b/drivers/staging/wlan-ng/p80211conv.c
-index c1b6d42..bc63eb2 100644
---- a/drivers/staging/wlan-ng/p80211conv.c
-+++ b/drivers/staging/wlan-ng/p80211conv.c
-@@ -356,10 +356,10 @@ int skb_p80211_to_ether(struct wlandevice *wlandev, u32 ethconv,
- 		sizeof(struct wlan_llc));
- 
- 	/* Test for the various encodings */
--	if ((payload_length >= sizeof(struct wlan_ethhdr)) &&
-+	if (payload_length >= sizeof(struct wlan_ethhdr) &&
- 	    (e_llc->dsap != 0xaa || e_llc->ssap != 0xaa) &&
--	    ((!ether_addr_equal_unaligned(daddr, e_hdr->daddr)) ||
--	     (!ether_addr_equal_unaligned(saddr, e_hdr->saddr)))) {
-+	    (!ether_addr_equal_unaligned(daddr, e_hdr->daddr) ||
-+	     !ether_addr_equal_unaligned(saddr, e_hdr->saddr))) {
- 		pr_debug("802.3 ENCAP len: %d\n", payload_length);
- 		/* 802.3 Encapsulated */
- 		/* Test for an overlength frame */
-diff --git a/drivers/staging/wlan-ng/p80211netdev.c b/drivers/staging/wlan-ng/p80211netdev.c
-index 0f50365..ad11a3f 100644
---- a/drivers/staging/wlan-ng/p80211netdev.c
-+++ b/drivers/staging/wlan-ng/p80211netdev.c
-@@ -427,7 +427,7 @@ static int p80211knetdev_hard_start_xmit(struct sk_buff *skb,
- 
- failed:
- 	/* Free up the WEP buffer if it's not the same as the skb */
--	if ((p80211_wep.data) && (p80211_wep.data != skb->data))
-+	if (p80211_wep.data && p80211_wep.data != skb->data)
- 		kzfree(p80211_wep.data);
- 
- 	/* we always free the skb here, never in a lower level. */
-@@ -491,7 +491,7 @@ static int p80211netdev_ethtool(struct wlandevice *wlandev,
- 		edata.cmd = ethcmd;
- 
- 		if (wlandev->linkstatus &&
--		    (wlandev->macmode != WLAN_MACMODE_NONE)) {
-+		    wlandev->macmode != WLAN_MACMODE_NONE) {
- 			edata.data = 1;
- 		} else {
- 			edata.data = 0;
--- 
-2.7.4
+> Start function arguments immediately after opening bracket.
+> CHECK: Lines should not end with a '('.
+>
+> Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
+> ---
+> Changes in v2:
+> 	combined both patches that change the same thing into 1 patch
+> Changes in v3:
+> 	changed subject line to match correct subsystem and driver
 
+It's probably not worth changing in this case, but normally the v3 should
+be on top.  For someone who is reading through your series of patches,
+they are most interested in what changed since the previous one they read.
+
+julia
+
+>
+>  drivers/staging/octeon/ethernet-tx.c | 20 +++++++++++---------
+>  1 file changed, 11 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
+> index 317c9720467c..20f513fbaa85 100644
+> --- a/drivers/staging/octeon/ethernet-tx.c
+> +++ b/drivers/staging/octeon/ethernet-tx.c
+> @@ -214,8 +214,10 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+>  				 * Get the number of skbuffs in use
+>  				 * by the hardware
+>  				 */
+> -				skb_to_free = cvmx_fau_fetch_and_add32(
+> -					priv->fau + qos * 4, MAX_SKB_TO_FREE);
+> +				skb_to_free =
+> +				     cvmx_fau_fetch_and_add32(priv->fau +
+> +							      qos * 4,
+> +							      MAX_SKB_TO_FREE);
+>  			}
+>  			skb_to_free = cvm_oct_adjust_skb_to_free(skb_to_free,
+>  								 priv->fau +
+> @@ -280,9 +282,9 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+>  		for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
+>  			struct skb_frag_struct *fs = skb_shinfo(skb)->frags + i;
+>
+> -			hw_buffer.s.addr = XKPHYS_TO_PHYS(
+> -				(u64)(page_address(fs->page.p) +
+> -				fs->page_offset));
+> +			hw_buffer.s.addr =
+> +				XKPHYS_TO_PHYS((u64)(page_address(fs->page.p) +
+> +					       fs->page_offset));
+>  			hw_buffer.s.size = fs->size;
+>  			CVM_OCT_SKB_CB(skb)[i + 1] = hw_buffer.u64;
+>  		}
+> @@ -413,8 +415,8 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+>  		queue_type = QUEUE_HW;
+>  	}
+>  	if (USE_ASYNC_IOBDMA)
+> -		cvmx_fau_async_fetch_and_add32(
+> -				CVMX_SCR_SCRATCH, FAU_TOTAL_TX_TO_CLEAN, 1);
+> +		cvmx_fau_async_fetch_and_add32(CVMX_SCR_SCRATCH,
+> +					       FAU_TOTAL_TX_TO_CLEAN, 1);
+>
+>  	spin_lock_irqsave(&priv->tx_free_list[qos].lock, flags);
+>
+> @@ -491,8 +493,8 @@ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+>  		cvmx_scratch_write64(CVMX_SCR_SCRATCH, old_scratch);
+>  		cvmx_scratch_write64(CVMX_SCR_SCRATCH + 8, old_scratch2);
+>  	} else {
+> -		total_to_clean = cvmx_fau_fetch_and_add32(
+> -						FAU_TOTAL_TX_TO_CLEAN, 1);
+> +		total_to_clean =
+> +			cvmx_fau_fetch_and_add32(FAU_TOTAL_TX_TO_CLEAN, 1);
+>  	}
+>
+>  	if (total_to_clean & 0x3ff) {
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190312024806.13728-1-brandonbonaby94%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
