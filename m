@@ -1,77 +1,169 @@
-X-GM-THRID: 6201803660128681984
-X-Received: by 10.182.52.132 with SMTP id t4mr22003099obo.16.1443969938958;
-        Sun, 04 Oct 2015 07:45:38 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.134.80 with SMTP id i77ls1291211iod.17.gmail; Sun, 04 Oct
- 2015 07:45:38 -0700 (PDT)
-X-Received: by 10.107.166.136 with SMTP id p130mr21640087ioe.33.1443969938674;
-        Sun, 04 Oct 2015 07:45:38 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id wl2si3039856pab.1.2015.10.04.07.45.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Oct 2015 07:45:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pacfv12 with SMTP id fv12so153929908pac.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Oct 2015 07:45:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=VE3/2CU9G8vSjFt4ChVSBBhsaoErVn92i3lU+tedUt4=;
-        b=bCAY/TmJHiJnim5MrayW+MHDNHhN0FATkztLx49+C4owGlJmp6alTYCJYhV6Pw+m2K
-         GRc94Bh8bgrVnZoX4XE4a+OOaY4tbpXwbETa1p9h/lAO+x8L297kMsMZxdtKz3gB/mk0
-         UKLQbpTmvfGA5YQkcZUlSa7uvEslNCzDoYy3Zi7rnSvjK4uR/7ejfPssI+ODG4gXDz6v
-         TdVPlLa+wvlOk+VuAj6mV2tmOWKZ2iVXNypRQ3tNR5+BUwiLLKfVoI4Jq1hP8yvnbOF7
-         dpbegxC8+8oOzDr6rgPqvH2EjVriYfjG+xL599FPA1int2UjoHOw717Qllot1zfqLSRd
-         1U8A==
-X-Received: by 10.66.138.11 with SMTP id qm11mr33497366pab.126.1443969938504;
-        Sun, 04 Oct 2015 07:45:38 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.217.58])
-        by smtp.gmail.com with ESMTPSA id yq2sm22410072pbb.39.2015.10.04.07.45.37
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Sun, 04 Oct 2015 07:45:38 -0700 (PDT)
-Date: Sun, 4 Oct 2015 20:15:34 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 3/4] staging: sm750fb: Add space around '?'
-Message-ID: <20151004144534.GA9743@amitoj-Inspiron-3542>
+X-GM-THRID: 6666290525545431040
+Date: Tue, 12 Mar 2019 02:17:14 -0700 (PDT)
+From: etsai042@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <f78f67de-a830-4a12-a138-b58ad2954cb0@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1903120946590.2728@hadrien>
+References: <20190309073125.5610-1-etsai042@gmail.com> <20190309101232.GB25106@kroah.com> <43cdfcbb-f6de-4a92-aa99-14bf6e7b228c@googlegroups.com>
+ <alpine.DEB.2.21.1903120946590.2728@hadrien>
+Subject: Re: [Outreachy kernel] Re: [PATCH v4 0/4] Correct malformed
+ SPDX-License-Identifier
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2522_833676109.1552382234648"
+X-Google-Token: EJryneQFGxBaACEUbuQ0
+X-Google-IP: 128.199.125.193
 
-Add space around operator '?'. Problem found using
-checkpatch.pl
-CHECK: spaces preferred around that '?' (ctx:VxV)
+------=_Part_2522_833676109.1552382234648
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2523_735880567.1552382234648"
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+------=_Part_2523_735880567.1552382234648
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 057a4c3..2aacb01 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -410,7 +410,7 @@ unsigned int calcPllValue(unsigned int request_orig, pll_value_t *pll)
- 			M = quo * X;
- 			M += fl_quo * X / 10000;
- 			/* round step */
--			M += (fl_quo * X % 10000) > 5000?1:0;
-+			M += (fl_quo * X % 10000) > 5000 ? 1:0;
- 			if (M < 256 && M > 0) {
- 				unsigned int diff;
+
+
+On Tuesday, March 12, 2019 at 1:47:32 AM UTC-7, Julia Lawall wrote:
+>
+>
+>
+> On Tue, 12 Mar 2019, etsa...@gmail.com <javascript:> wrote: 
+>
+> > Thanks greg! I'll be more careful with this next time! 
+>
+> Don't top post.  You should put your reply under the text you are replying 
+> to, as I have done here. 
+>
+> julia 
+>
+>
+Sorry to top post again :( I definitely won't do this.
+
+Wentao
  
--- 
-1.9.1
 
+> > Wentao  
+> > 
+> > On Saturday, March 9, 2019 at 2:12:36 AM UTC-8, gregkh wrote: 
+> >       >That's 4 patches, which is great, but you sent out 5 patches in 
+> >       this 
+> >       >series :( 
+> >       > 
+> >       >Odds are you had a file that ended in .patch in the directory 
+> >       when you 
+> >       >sent this out.  It happens to everyone :) 
+> >       > 
+> >       >I'll just drop it and focus on the numbered patches. 
+> >       > 
+> >       >thanks, 
+> >       > 
+> >       >greg k-h 
+> > 
+>
+ 
+
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups 
+> > "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an 
+> > email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/43cdfcbb-f6de-4a92-aa99- 
+> > 14bf6e7b228c%40googlegroups.com. 
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+> >
+
+
+------=_Part_2523_735880567.1552382234648
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tuesday, March 12, 2019 at 1:47:32 AM UTC-7, Ju=
+lia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margi=
+n-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Tue, 12 Mar 2019, <a href=3D"javascript:" target=3D"_blank" gdf-obfu=
+scated-mailto=3D"pqXh7xYCCgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D=
+&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:=
+&#39;;return true;">etsa...@gmail.com</a> wrote:
+<br>
+<br>&gt; Thanks greg! I&#39;ll be more careful with this next time!
+<br>
+<br>Don&#39;t top post. =C2=A0You should put your reply under the text you =
+are replying
+<br>to, as I have done here.
+<br>
+<br>julia
+<br>
+<br></blockquote><div><br></div><div>Sorry to top post again :( I definitel=
+y won&#39;t do this.</div><div><br></div><div>Wentao</div><div>=C2=A0</div>=
+<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;bor=
+der-left: 1px #ccc solid;padding-left: 1ex;">&gt; Wentao=C2=A0
+<br>&gt;
+<br>&gt; On Saturday, March 9, 2019 at 2:12:36 AM UTC-8, gregkh wrote:
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;That&#39;s 4 patches, which is great, but=
+ you sent out 5 patches in
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 this
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;series :(
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;Odds are you had a file that ended in .pa=
+tch in the directory
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 when you
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;sent this out. =C2=A0It happens to everyo=
+ne :)
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;I&#39;ll just drop it and focus on the nu=
+mbered patches.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;thanks,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;greg k-h
+<br>&gt;
+<br></blockquote><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
+1ex;">&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups
+<br>&gt; &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an
+<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
+mailto=3D"pqXh7xYCCgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
+vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
+eturn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"pqXh7xYCCgAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
+groups.google.com/d/msgid/outreachy-kernel/43cdfcbb-f6de-4a92-aa99-" target=
+=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
+google.com/d/msgid/outreachy-kernel/43cdfcbb-f6de-4a92-aa99-&#39;;return tr=
+ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
+-kernel/43cdfcbb-f6de-4a92-aa99-&#39;;return true;">groups.google.<wbr>com/=
+d/msgid/outreachy-kernel/<wbr>43cdfcbb-f6de-4a92-aa99-</a>
+<br>&gt; 14bf6e7b228c%<a href=3D"http://40googlegroups.com" target=3D"_blan=
+k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
+rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
+FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
+=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
+a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
+n true;">40googlegroups.<wbr>com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br>&gt;</blockquote></div>
+------=_Part_2523_735880567.1552382234648--
+
+------=_Part_2522_833676109.1552382234648--
 
