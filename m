@@ -1,117 +1,126 @@
 X-GM-THRID: 6667626897637113856
-X-Received: by 2002:a05:6830:208c:: with SMTP id y12mr3809438otq.5.1552428202590;
-        Tue, 12 Mar 2019 15:03:22 -0700 (PDT)
+X-Received: by 2002:a02:224c:: with SMTP id o73mr9077797jao.14.1552427862834;
+        Tue, 12 Mar 2019 14:57:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:590f:: with SMTP id t15ls7009914oth.10.gmail; Tue, 12
- Mar 2019 15:03:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwjhE1huxiKSqY4UerrHpNZUbzMYqrG6mo5Ks7waLBKZxdvwioU+UDJVbpITI4Izojn1rkW
-X-Received: by 2002:a9d:7d17:: with SMTP id v23mr865427otn.44.1552428201676;
-        Tue, 12 Mar 2019 15:03:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552428201; cv=none;
+Received: by 2002:a6b:dd1a:: with SMTP id f26ls3547004ioc.1.gmail; Tue, 12 Mar
+ 2019 14:57:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx3bU7H3/mBVkvZgu/LiWHruuQHMgXOdGX0VfC7ASEWRXKA8txfTqI9eS3lCGDklEeDVOJk
+X-Received: by 2002:a6b:6e0a:: with SMTP id d10mr8631953ioh.24.1552427860861;
+        Tue, 12 Mar 2019 14:57:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552427860; cv=none;
         d=google.com; s=arc-20160816;
-        b=027arePDZGuFZdHtJbPkbK7n9CVFGq0s5fhPS3UhARhglhNM4t9YpwZGYNaLOjXupS
-         KB4ME4/SvduSLWOe60KTUrPotMFnJP2gNuy47DG79Zo4fbSl38+PG++2ytDmt44qo0bp
-         yVdBTH1L27FmFRTkw+SZJd06jTgQ08cH/ZuEZFSqOeXx0dVxxGu2Op/JtLl0UEpEjsMa
-         8FKV4QLNAQvV/qmc2DgItStgSP1Knd7KZTPB0RwWLOedQWxDhjfVud8IwMlhkri9ZJrx
-         qDH+si52uvXsiAIsHKi6lI2JtrCFJTJ/ob57hWJB9Ft1LUy9s9bapkYcfd51aIeKy3Bt
-         C5Kg==
+        b=WmmeMJA5rF9BSGHLmKNYDnhrlVOARekt5+SCx7s0UtiJ34xNKjx+Ieg5v7bhagFnV6
+         PEmcyQFNZK6xB0VjOkqHS7ur+nePWnH+7JsD9dLhd1dYY7tRpbA+93fIUjAJ8q5eTq5h
+         pAWTNjxT6nLjmt0V6g1sBUfW4ZHC5WeLVH+WXI3o+puzVnXYSNytf9FTdteoDrKD6t++
+         fR3c01c1RXbnFP8+S8Z9zWmsixC47wmZ7x14Kh5hdxYRLacWsdn1jbsmnna/txZvAUXY
+         gDsMAYH76CeDS1u4629ujXx/PndCuF81qzObJQiPPMDX/D3VT7n2wTyeYGF3aQM4MzWi
+         1DCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=gyNjLgOCgdEB6VyAz+0FipmGqG/sZ33ZQLKR2Ha4Kjo=;
-        b=yTBXfTD00cQuaegXHn2GCKWC2RpuZtEXymZYHPfIBut1UzaJ3RClFrTG08vaupKP0F
-         I+V7Hi+eM1t3HO6NJYErBSEIhRrm49/hKftL5IbfK+LdTgFeVCHg8aqa9t8eSGg8s1bJ
-         qv7j3fhJfzMfWq/t3ifvEY1OUzymeyzWK+sp7DTv+9Dc1NMMkwAWW4gDS2PwswaI+Ni9
-         qVn0pQChfX9nNoFbUmKWLpDRrngg792f/VUuXk47XQNbMi3Qt/BOk78E+0guCYDygdkP
-         g72Yo/iiUkm2RJomT2cr2a/91FGHXngVm9HkcLGdsGPc+GO603VcwS9kxp/jGHvuYGg9
-         3N3g==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Wid8ItDBnF+oTJGr8M9ypS85FyaDdP6ZbjzLyKOxMC8=;
+        b=dwGQ4UwLd1V+6LbbuW8Hnq5aoIEBDpFT1/GDk0fxiStHuKsRcBLvkw/Sb9ubdu3NXs
+         nVAraNUiCEtmGZkNxCU2BOCQw2/vAOt+KGeILDxRbRvKrZPhqx4s9uvK3LvbNCHjIuyG
+         CochOv2Y16XPcGC3Vz4D8TWoJjIrAE9e6sDs4V1NWsOqItnVz5GV07maopoZdjIM0QV9
+         7ycjphfqxZyziU7QOx1woH5bbRLIp0J1e6Y5zNF+a1vg0UoT1gI7Hk06jtvN08+spH3g
+         uWDpUn0gGNh72Sg69aDgd6+GtslfN7gNFhZ39BY06xdLLWLq+fX8blGKYbdalfLnQkbL
+         Z0ug==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=LQzlTb75;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id f96si331401otb.2.2019.03.12.15.03.21
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CDToxi0i;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id 65si188166itx.1.2019.03.12.14.57.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 15:03:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 12 Mar 2019 14:57:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=LQzlTb75;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [104.133.8.98])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id C3AEF214AE;
-	Tue, 12 Mar 2019 22:03:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552428200;
-	bh=eznMWY5G0gUI6G3pGz/rfRwH00oNYtSg1tnCwHZaB3I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LQzlTb75YbVFjmyPNAAiA5b5nHL6+Yhu7tuJM1KW3DhdsjcpPlFu+c1GRAhfJHOPv
-	 pij3Isvu9RhHhkcRbIueiOrspO6867eGeVdNNr6GhDINnNh+joWbIimyTxPPjjB1n7
-	 e4STEfcI84mAh4110Avr7eD4pOnNIR2fs9A5DTLk=
-Date: Tue, 12 Mar 2019 15:03:20 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CDToxi0i;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x341.google.com with SMTP id t7so3946242otk.8
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Mar 2019 14:57:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Wid8ItDBnF+oTJGr8M9ypS85FyaDdP6ZbjzLyKOxMC8=;
+        b=CDToxi0iyOBjorWclnCYXv8brbElK9nsDmYvQsepj5c+S05eY0cxmFZA+Auj6ElmP3
+         Ycq6nFvkWGS6wKeD6N3iZU522gV21Q+9lbHznMbp9KLWviAdRAXXgTRm40dr95yS4Zvf
+         PwvqAsFjvPyjwyugp83MZR3ngAM7VGMqr4H2kvpeKvig7AjzCQACrlNmWCCMGdir3W1i
+         bHRGpegHrgZ9h3+EADLDKJ6o8hFAM3rs7UkDo7is8fLmy59ZExOfCitGj3+ksObCTfI6
+         QdiZlcKiTAj/H/U0EHmQuqcqd+c7gPy6A5czynQ2cNQGqty1r5ePza6gF7R9A1JWcPsm
+         yu9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Wid8ItDBnF+oTJGr8M9ypS85FyaDdP6ZbjzLyKOxMC8=;
+        b=Kcp4PX13rmc32NDYEQK1NjAwMNzs0WX4FVnl6HDmDCMUzqj8QeliCQ27oiUiIzuYKZ
+         4qiTiVtNVtJOQ+9xN6uktH1Yepdd5IWgLe7fvj95HMJUU+5iHQ6G/8Th9sfLfIk+evYM
+         us2ABIRuZ1eN2n/M16oKDMXHiXDDS6YDGIbDwJEhnW7jblNNrj9BAjIhe1A/tx/2XUq7
+         GYsZxRfuX6sQQJi2zYcjtoVE+ly3CYZgHHBE7JGLtgExukWMIQRjEiI7vgbkWtT2WfKw
+         uvCFfFkHuXyHXaur43n+NmTYIqxTTRbNbc/O1MIk1Uafe0CEWlrWDtVEQdChwA/KiCpD
+         92VQ==
+X-Gm-Message-State: APjAAAVOb7XtubHIah/NwqebeYs7JEQtsMnBxj1M01cDwBo7SRQ5DYgV
+	hwk3bQQEv+VOD/+3f67Oy6HQbrhZyL/Puw==
+X-Received: by 2002:a9d:7f98:: with SMTP id t24mr27159042otp.132.1552427860315;
+        Tue, 12 Mar 2019 14:57:40 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:432c:e4:1d2b:f2ed:b6ff])
+        by smtp.gmail.com with ESMTPSA id y124sm4057345oie.57.2019.03.12.14.57.39
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Mar 2019 14:57:39 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: sm750fb: Remove unnecessary local variables
-Message-ID: <20190312220320.GA17305@kroah.com>
-References: <20190312215737.29200-1-madhumithabiw@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190312215737.29200-1-madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: sm750fb: Remove unnecessary local variables
+Date: Tue, 12 Mar 2019 16:57:37 -0500
+Message-Id: <20190312215737.29200-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Tue, Mar 12, 2019 at 04:57:37PM -0500, Madhumitha Prabakaran wrote:
-> Remove unnecessary local variables in function get_mxclk_freq.
-> Issue found by Coccinelle using ret.cocci.
-> 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_chip.c | 17 +++++++----------
->  1 file changed, 7 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-> index 90f5480304f4..d0462f21fe36 100644
-> --- a/drivers/staging/sm750fb/ddk750_chip.c
-> +++ b/drivers/staging/sm750fb/ddk750_chip.c
-> @@ -33,19 +33,16 @@ void sm750_set_chip_type(unsigned short dev_id, u8 rev_id)
->  
->  static unsigned int get_mxclk_freq(void)
->  {
-> -	unsigned int pll_reg;
-> -	unsigned int M, N, OD, POD;
-> -
->  	if (sm750_get_chip_type() == SM750LE)
->  		return MHz(130);
->  
-> -	pll_reg = peek32(MXCLK_PLL_CTRL);
-> -	M = (pll_reg & PLL_CTRL_M_MASK) >> PLL_CTRL_M_SHIFT;
-> -	N = (pll_reg & PLL_CTRL_N_MASK) >> PLL_CTRL_N_SHIFT;
-> -	OD = (pll_reg & PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT;
-> -	POD = (pll_reg & PLL_CTRL_POD_MASK) >> PLL_CTRL_POD_SHIFT;
-> -
-> -	return DEFAULT_INPUT_CLOCK * M / N / (1 << OD) / (1 << POD);
-> +	return DEFAULT_INPUT_CLOCK * (peek32(MXCLK_PLL_CTRL) &
-> +	       PLL_CTRL_M_MASK) >> PLL_CTRL_M_SHIFT /
-> +	       (peek32(MXCLK_PLL_CTRL) & PLL_CTRL_N_MASK) >>
-> +	       PLL_CTRL_N_SHIFT / (1 << (peek32(MXCLK_PLL_CTRL) &
-> +	       PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT) / (1 <<
-> +	       (peek32(MXCLK_PLL_CTRL) & PLL_CTRL_POD_MASK) >>
-> +	       PLL_CTRL_POD_SHIFT);
+Remove unnecessary local variables in function get_mxclk_freq.
+Issue found by Coccinelle using ret.cocci.
 
-Oh wow, that's almost impossible to now read.
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/sm750fb/ddk750_chip.c | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
 
-Sometimes you want intermediate variables for the programmer, not for
-the compiler.  The end result is the same, but please tell me that you
-could figure out what that one single return line actually does :(
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 90f5480304f4..d0462f21fe36 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -33,19 +33,16 @@ void sm750_set_chip_type(unsigned short dev_id, u8 rev_id)
+ 
+ static unsigned int get_mxclk_freq(void)
+ {
+-	unsigned int pll_reg;
+-	unsigned int M, N, OD, POD;
+-
+ 	if (sm750_get_chip_type() == SM750LE)
+ 		return MHz(130);
+ 
+-	pll_reg = peek32(MXCLK_PLL_CTRL);
+-	M = (pll_reg & PLL_CTRL_M_MASK) >> PLL_CTRL_M_SHIFT;
+-	N = (pll_reg & PLL_CTRL_N_MASK) >> PLL_CTRL_N_SHIFT;
+-	OD = (pll_reg & PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT;
+-	POD = (pll_reg & PLL_CTRL_POD_MASK) >> PLL_CTRL_POD_SHIFT;
+-
+-	return DEFAULT_INPUT_CLOCK * M / N / (1 << OD) / (1 << POD);
++	return DEFAULT_INPUT_CLOCK * (peek32(MXCLK_PLL_CTRL) &
++	       PLL_CTRL_M_MASK) >> PLL_CTRL_M_SHIFT /
++	       (peek32(MXCLK_PLL_CTRL) & PLL_CTRL_N_MASK) >>
++	       PLL_CTRL_N_SHIFT / (1 << (peek32(MXCLK_PLL_CTRL) &
++	       PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT) / (1 <<
++	       (peek32(MXCLK_PLL_CTRL) & PLL_CTRL_POD_MASK) >>
++	       PLL_CTRL_POD_SHIFT);
+ }
+ 
+ /*
+-- 
+2.17.1
 
-Remember, we write C code for people to understand first, and the CPU to
-understand second as we have to maintain it for the future.
-
-thanks,
-
-greg k-h
 
