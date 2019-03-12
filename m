@@ -1,107 +1,113 @@
 X-GM-THRID: 6667559870599790592
-X-Received: by 2002:a5d:624e:: with SMTP id m14mr595083wrv.3.1552412354804;
-        Tue, 12 Mar 2019 10:39:14 -0700 (PDT)
+X-Received: by 2002:a62:4747:: with SMTP id u68mr14881869pfa.45.1552412256261;
+        Tue, 12 Mar 2019 10:37:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:644d:: with SMTP id d13ls1124973wrw.7.gmail; Tue, 12 Mar
- 2019 10:39:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzrEIRYyj8wDL0qFMuqy58dren6zmmbpQFQcwa/feI6ahLOrragb8babLTsvmjUVRYIHchs
-X-Received: by 2002:a5d:638b:: with SMTP id p11mr2006619wru.6.1552412354074;
-        Tue, 12 Mar 2019 10:39:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552412354; cv=none;
+Received: by 2002:a17:902:e393:: with SMTP id ch19ls11034932plb.2.gmail; Tue,
+ 12 Mar 2019 10:37:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwVyjYzCdLlz9yhrsSJ28no8L46iFraViekv9cnvCIvyxoVs/GrVY+ISiU4E2rv640DJXPJ
+X-Received: by 2002:a17:902:1024:: with SMTP id b33mr12497685pla.73.1552412255494;
+        Tue, 12 Mar 2019 10:37:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552412255; cv=none;
         d=google.com; s=arc-20160816;
-        b=SJvAkgfHnQnJmhGSfW9brmXKpBsOrNEeoYU5Zji7Ga0A3grbQAjDByV1fwxGI68ZtQ
-         aYLWQrtUJ0b8YymeCXqqNV5nWn5IHoAFbqwU2h4AjIZ7Bum7YNafbx/Hktwl/IND8Dr7
-         DTS2GXSfrlhjJXTjEqlVTiGhF4dLvyCv1xgYLl7SN+xMsZzvqdHhiQVyx/sTiGGZQTiX
-         T0Ltk35iPetaZaAufkiWU1S+MtxJvptWoSk0WEK+MLAnMEGLjwxENGID+5oIu6czjdMf
-         hEdi8wBO2VxuSrmEBD0ac5G5y/EaUrBbr7qWatspD4vf6QmjWINHbt04chQSQ9JDsIS2
-         uxCQ==
+        b=qy3QDXI5uxDWfL9v3rhKnSzpeI3O9vheSiDujodD1IUM+wR1cFUqPha6sRcevOPX+b
+         r+az7IcYDyTFJCkkUtx76sXP+ygp4qhv7NOmuwnb+KczZEI6/zXvnw6oKR0H2c2qt+1A
+         z59GR6S5gXDj7pfgh9il5TActkX3bL1kB5ifyX2/fJSnW9NXI8AYs8GZNT8cTxvihvqv
+         LvK8kSb74rBMUD63oPQsq50I9Jfy9V2cMZDLaPREz2PxZntyAis61Wx0+34jfTYFcJkc
+         P9t9NrLTvG9tFQa6HDzOZGgE+6HF20ypjHar3nE1g0U+UhfvQO1kDr/xTJvqynP1L79v
+         7sWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:organization:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date;
-        bh=r7o79InPUmwM7HiQfa8vAsXtZN0KXGwvJXS4bf7f+2U=;
-        b=0J8mC6j5jfFg8PCIudUmkpjMNyc6RL/aIJjcQqktFx38Dq2BjBS7smLB4BiGuSwj55
-         iHP8pxP6CDYdpD4SSN3BN9lFgSEhAupsT0ztgIao5vgDz3/czvbB0Fdnvjin+Gw7j3BP
-         powHM6ggEdt0jVK8RSqk3AmKgAFeeYEVxJDNbgJ+aa6gyTuL35LZX40WPLm5JEkDgs4V
-         BA/wKNvKfmxxfZrbpHuCYvd+txKDrBU7rmtB/9YHZmdvk80ySo1jMAJIIlAgfCGiHfdX
-         8YM3iCew3j6+RUpDpca3MVGTYV1u7POBdovwTzBFtOc8cyyn6jnKDM5MFaALEWJo5vrC
-         5PRQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=LXGY4E+i8t9SgIu38KpXy7kziOkXn4KfUCd26ouNIuM=;
+        b=dsyyVZ1fPMKI4ZGIMJxtwU9w6IfVdjqE5qAJBw6lN5/WaOF0q7zPQtN+LNdJf3jR+Q
+         H+aY6U7Apwaxc4SnlRpkks9i/yVqY+NSSfZ0IvoCL+Sjte5wCyNWFDN5asQ0/miOlc3T
+         AM/9Tn+/m+aUhsACcjY0lniTS3/3NrDTKlKHv0YwzOXiTv3jC5bsP1czyGiSpENMUSrP
+         N4wXx0G/IMNnefh0QXhWflCCqCJMnCNdRMyxRXWwOemX14oZ6ITNy5FBNQtbE1VyQe4e
+         XJoqij0jNZUSIQKLx/tyQiyYGCLBcku6jNWYSBuFig1lBQZqvvbDqVJVd/bSm/SWps/Q
+         8eWQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Return-Path: <samuel.thibault@ens-lyon.org>
-Received: from hera.aquilenet.fr (hera.aquilenet.fr. [185.233.100.1])
-        by gmr-mx.google.com with ESMTPS id y84si136825wmd.0.2019.03.12.10.39.13
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jHAWNNic;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x230.google.com (mail-oi1-x230.google.com. [2607:f8b0:4864:20::230])
+        by gmr-mx.google.com with ESMTPS id j8si451074plk.3.2019.03.12.10.37.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 10:39:13 -0700 (PDT)
-Received-SPF: neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=185.233.100.1;
+        Tue, 12 Mar 2019 10:37:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) client-ip=2607:f8b0:4864:20::230;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 185.233.100.1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id 72703D27B;
-	Tue, 12 Mar 2019 18:39:13 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5VigfVpEyc_P; Tue, 12 Mar 2019 18:39:12 +0100 (CET)
-Received: from function (dhcp-13-99.lip.ens-lyon.fr [140.77.13.99])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 80918D27A;
-	Tue, 12 Mar 2019 18:39:12 +0100 (CET)
-Received: from samy by function with local (Exim 4.92)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1h3lMt-0006pN-Pw; Tue, 12 Mar 2019 18:39:11 +0100
-Date: Tue, 12 Mar 2019 18:39:11 +0100
-From: Samuel Thibault <samuel.thibault@ens-lyon.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: speakup: Remove an unnecessary initialization
- in function
-Message-ID: <20190312173911.dttfxifz42x2weaw@function>
-References: <20190312173730.23281-1-madhumithabiw@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190312173730.23281-1-madhumithabiw@gmail.com>
-Organization: I am not organized
-User-Agent: NeoMutt/20170113 (1.7.2)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jHAWNNic;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::230 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-oi1-x230.google.com with SMTP id w66so2805568oia.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Mar 2019 10:37:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=LXGY4E+i8t9SgIu38KpXy7kziOkXn4KfUCd26ouNIuM=;
+        b=jHAWNNic1NftTQTF3NKehBPOxZLcEOmqnmMrH3YnPB9ioqixilBnapdqcoAZZIuHVW
+         cLwKKalKOXEednlsv3MVboXuVT1YoM2QtRy4TZq97z9WRjmQpN7wAbDyUdHJ5o656QIt
+         fZDVWqK1SKPhI7ZGUjmWBFxQT1rtGQhHEpnSBO9LKypR0ed7fQM7mCn09cbPvuAJ5Fka
+         isybdxuvF9+9uzc1u8uUSMP1+3UjarXpz6ZqFZfcKVM3GQCmnhwETBdoolsdjSTu2mDm
+         r78hPYOKpiqCxOqtefiqkLzDQvQaDIPgtIAN2R0vQY1X3J89BEy2EXm83jguIbnHCSLy
+         6Gfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=LXGY4E+i8t9SgIu38KpXy7kziOkXn4KfUCd26ouNIuM=;
+        b=kIZKGmRj0sLw0Y4bZhcdSQb/PFR+5NzW+yU1rL8Mr9lgIBsVE05xn2mPFZjzVkngyS
+         6cx3VoSPyH7Gxrl/XLeNtrSeFAUHWF969/CSOc1g/ka56yJ39o0T6XAKYsywUyIEOtVn
+         5ouxVV4qfbAh7ajO+QFq/PwB9/45KNKLFj21y+4UjeNCDT4IZkSKUdA3aiwrbzouGjW3
+         1coTyG+NfXBnfqN5sntNFdoXscfZ5KrnmKhMz73AwMI4V2SkmDl8RZvAjiU+T9o8URMh
+         cyXobBVhxgsS/3Pv+nCuKDn+hgqUUr2ldPEfw3elLIcayhgs9isVz62pPV2KH3FoAR1L
+         D/mQ==
+X-Gm-Message-State: APjAAAVXSnuvFamTjVn9097Cb9fQj52pb/mdo+pC7Wbyr5iWs+PJ/cIz
+	5bDO55OIh/nt0rxFZoP9KUg=
+X-Received: by 2002:aca:c482:: with SMTP id u124mr2327725oif.95.1552412254859;
+        Tue, 12 Mar 2019 10:37:34 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:432c:9838:e357:690:7f06])
+        by smtp.gmail.com with ESMTPSA id z3sm1191266otp.31.2019.03.12.10.37.33
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Mar 2019 10:37:34 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: w.d.hubbs@gmail.com,
+	chris@the-brannons.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: speakup: Remove an unnecessary initialization in function
+Date: Tue, 12 Mar 2019 12:37:30 -0500
+Message-Id: <20190312173730.23281-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Madhumitha Prabakaran, le mar. 12 mars 2019 12:37:30 -0500, a ecrit:
-> Remove an unnecessary initialization of local variable dt_stat in function.
-> Issue suggested by Coccinelle using ret.cocci.
+Remove an unnecessary initialization of local variable dt_stat in function.
+Issue suggested by Coccinelle using ret.cocci.
 
-dt_stat is a global variable, so this is not the same, with your change
-it wouldn't get written to.
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/speakup/speakup_decpc.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
->  drivers/staging/speakup/speakup_decpc.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
-> index 459ee0c0bd57..3ad49bb93829 100644
-> --- a/drivers/staging/speakup/speakup_decpc.c
-> +++ b/drivers/staging/speakup/speakup_decpc.c
-> @@ -233,9 +233,8 @@ static struct spk_synth synth_dec_pc = {
->  
->  static int dt_getstatus(void)
->  {
-> -	dt_stat = inb_p(speakup_info.port_tts) |
-> -		 (inb_p(speakup_info.port_tts + 1) << 8);
-> -	return dt_stat;
-> +	return inb_p(speakup_info.port_tts) |
-> +	       (inb_p(speakup_info.port_tts + 1) << 8);
->  }
->  
->  static void dt_sendcmd(u_int cmd)
-> -- 
-> 2.17.1
-> 
-
+diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
+index 459ee0c0bd57..3ad49bb93829 100644
+--- a/drivers/staging/speakup/speakup_decpc.c
++++ b/drivers/staging/speakup/speakup_decpc.c
+@@ -233,9 +233,8 @@ static struct spk_synth synth_dec_pc = {
+ 
+ static int dt_getstatus(void)
+ {
+-	dt_stat = inb_p(speakup_info.port_tts) |
+-		 (inb_p(speakup_info.port_tts + 1) << 8);
+-	return dt_stat;
++	return inb_p(speakup_info.port_tts) |
++	       (inb_p(speakup_info.port_tts + 1) << 8);
+ }
+ 
+ static void dt_sendcmd(u_int cmd)
 -- 
-Samuel
-    if (argc > 1 && strcmp(argv[1], "-advice") == 0) {
-	printf("Don't Panic!\n");
-	exit(42);
-    }
-	-- Arnold Robbins in the LJ of February '95, describing RCS
+2.17.1
+
 
