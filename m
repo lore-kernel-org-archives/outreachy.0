@@ -1,116 +1,106 @@
 X-GM-THRID: 6667838029140328448
-X-Received: by 2002:a17:906:938e:: with SMTP id l14mr684461ejx.8.1552477020756;
+X-Received: by 2002:a2e:81ce:: with SMTP id s14mr171110ljg.3.1552477020541;
         Wed, 13 Mar 2019 04:37:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:18b2:: with SMTP id c18ls351685ejf.1.gmail; Wed, 13
- Mar 2019 04:36:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx49uGCVcrM7ZFl3exGR+EWaNcGuUfWQCM6Z9Q/Wjs4GgkPxlg+J9MD25nL+W3fSsUtQHky
-X-Received: by 2002:a17:906:9701:: with SMTP id k1mr4994847ejx.13.1552477019822;
+Received: by 2002:a2e:85c6:: with SMTP id h6ls178646ljj.0.gmail; Wed, 13 Mar
+ 2019 04:36:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw4CnTKOtz73jEzxHy6EuHKQHyKChrySyhhzwws14WpyIGuxW7xflqM8b7vnnIybAOs7F4o
+X-Received: by 2002:a2e:253:: with SMTP id 80mr2438158ljc.27.1552477019338;
         Wed, 13 Mar 2019 04:36:59 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1552477019; cv=none;
         d=google.com; s=arc-20160816;
-        b=uMEQrgHU9D6DxiE99OPYEI8A07FhWX2yRtDKvbe2aYb8I/s/Lkw5ydP3lmlM+z5bgg
-         lgHlCHix4WhC9U8/wFXHuDt1DeE1cVgy1v5VN+4PC4tN5BgYmnfAccxTPHTRBysPch5X
-         N0bfiBZDMiSzY/lfL13h5lvPcqdAafsYFRIcrU1Wxp70KeSQCQ0cgDalmMBTRClOsxix
-         /cQw8uiGfVJt92v8HUAwYYmudmxlTJEJB9JDeLT4NVZsHrBNgyJAmPfM8hPy+hwVSoSd
-         3i3kfCHt/rechmK5AXkrIiw8cV6gTLVg4HZD4zoHCm3AJinsT7pMhn5YcnQ2/2dYL2mO
-         kltg==
+        b=vlfIYjXsCXlOxoAy3voJxL/y+1/+StoCb9aKR3E4N6KetyDz9IY4jCICJYSRMAojdB
+         rgJ0oICYTmxWwu5Wki4/3JQ3OwdoHSlKB50RU3BPR4aswcM7vMxVqqqmuReM8Hub3AyF
+         88wdxVMaw+YsI9nxItNg/XyoR2dqnZrkGx76vrUVt+j5mRf8l9uQ0x1Oi4eDW/sIa2AZ
+         cHAshF7KcAKMpn8kaRFl5ujUfUkP59OVBPNelF9QeaNLU9caSQ6qMVZhxqDPTD6OUyDR
+         TARseKySZXXD/DC+D8SDWlD5Zw1j4+PXMdzmVHPjxwS13Y2NMiXLvg7zrmMcWkkw4yUG
+         g+ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=2oPbsSMPz3e4b+2pqkRjfBOweQA061o+eeBUi1SDzb4=;
-        b=KzmOR+epvzN3894HPrekP8mNj6QMSUyCRVsH4KoSPe1Shy83raKKHNGqOPOctIprrU
-         cV8c0WHmD0UKdlP36JzAzgQCzxhjo6TlClleRPXgNMEJDveO1JrlN9oG/4bw3THgr0gh
-         lDzCnoku08Fu5h6GQDbhbrtL6gGpO0w2cYgsS9Npv2CqZlAmQkT3ZrGKqyVlGehBPp2E
-         Ag/rSiSNZgdt/yL6INNgEPrabzwCuOao6hR+U5dZoMY83bE1j2XPuwzFvE3ioCA18SJ6
-         UNpZ0skIcN/y/rv2yj3eNTu5Q5Ux4Xaz5/9psLE1ZcFGtMLvRTK4ursvBttz6asH3CjW
-         FLDw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=GBA6VvfF+Du0ehvzgVMRdAkktTaOAX3Y0CkEAW+/cY0=;
+        b=B3sAJ7Zehhjf4Zqi/RgHbvj0ODJzkkDQ/7Yn3McCK0NjmIxIEN/AKM8VCao6Ibka3q
+         VkSVyT9yLIArsVd2G8sFppQ6wx0BJ/ekWg401nFyWVDpKS7sZ/+20uJE/T+ZXODfo7zB
+         wveHHDC8b2eWeqiMozhHBdGmvRduE5lmiE64iurvqPEdok3D7wT46wusX835Fv12cM7O
+         PB/TjsO+k9yX+gb42Sb8tSHXOdyfocciLArrVSmKZGq3RuR5AqiK8cK2YsRdtVUnGgW/
+         16Ea6jxLgY4kCeCbIDg0f74XVW1ne7LwnFtODIX6yMLgvOthT+vhcP4TmvHEoZmRcJMG
+         XN1Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QZWEkXyG;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QoBf72Ke;
        spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
 Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com. [2a00:1450:4864:20::432])
-        by gmr-mx.google.com with ESMTPS id a7si71139edb.1.2019.03.13.04.36.59
+        by gmr-mx.google.com with ESMTPS id s66si245261lje.3.2019.03.13.04.36.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Wed, 13 Mar 2019 04:36:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) client-ip=2a00:1450:4864:20::432;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QZWEkXyG;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QoBf72Ke;
        spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x432.google.com with SMTP id h99so1576713wrh.12
+Received: by mail-wr1-x432.google.com with SMTP id 33so1578340wrb.13
         for <outreachy-kernel@googlegroups.com>; Wed, 13 Mar 2019 04:36:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=2oPbsSMPz3e4b+2pqkRjfBOweQA061o+eeBUi1SDzb4=;
-        b=QZWEkXyGundktK1b7p4EQzExTd5vKGojO11MJ+ewrKGXO/6h0Z59WdLU7A9WWZD6j5
-         BD/HzJfNWm4qyC33r2drFfaokt14SU12XqDfjPvzi69XHhK+OTpViUUIEkWM1mnDh2s9
-         4Z450A6e2wxFVflYbSBmyGhIu3dhKOsrrjvDZRNNvKBD21dyuLf7qRoDjfGfRdzv+2b2
-         qeq8yepRGkWepLcQ/ytdX//JxNrP8O1hKsUOxD1XW/zdXcOYeHMKshC7sXqEl1mNYQ+A
-         2Q8PGEs8ayBKsQV3GrQXH1Qg0TG/1+rdJ05pHgxu2kWSyxbMSVdU+Jw51ZeTnFvVyqk+
-         q2wg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=GBA6VvfF+Du0ehvzgVMRdAkktTaOAX3Y0CkEAW+/cY0=;
+        b=QoBf72KeUSTa5wq80q3HEUl5mBc6QiL9gTSDOmXvR/qoUgKD4T0UqdGapzEtV8UkuZ
+         2VjuaWquZdDn6ScoypyWRbSyErZB1ZF/KqAMmJTS+EnIW7jea4eCX782PylN2461nkVp
+         AP+UhfmUCkcLOP3IoqVHmyGBj3/xciBrTqAus1icm6W+VngSJy4HNhuzmQ9za3OPQoUi
+         kHVyqhxShd/ZEqcJxne3SazdeO6bGzv0KtqoF2X5jg/S2TrvW2HIQQJsw6E3vAwL7q3A
+         ZOau4wUlub92M9OB9MdJW+d0cymH7Zv9Jti9vpGq9BBGclAHI2RBBlk42N5C+xZCvgC2
+         5WXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=2oPbsSMPz3e4b+2pqkRjfBOweQA061o+eeBUi1SDzb4=;
-        b=mtIRhavnjxWgtPbNSxJ0sO0mFTsdLQ0Ge3PcWYWPnFQ/bOeIxwd4u5tMQa1TZ8ZiHy
-         4BrCAUtWyWQcaVLBcdyL/u+TbCqJEZ+qzUugXGD17KHEVfmaLE31Lj2Ixwnsl42fL/M5
-         SiwU+WIh8uEas4E1UemvLND1sKnwnvTl8MHmDO5VESo0P0y4+Zek+wpZQy99YhCdUmB1
-         7Y2s9/+fUNMRS5IvKRkgGk1+rlT3DuhwsetpV9ZTqGOAEHOLngTBYrU5tfbrpB4L7FUI
-         Wl0tPurraITyqwAL0bdaxTtUkhDfTe6s4b9njMQBdPpZ/aL1BX4Dr6wVpfBGHZjzUcAD
-         5gJQ==
-X-Gm-Message-State: APjAAAVVvj6NCn6KOBsa4euVNs2elb7uBGWsFT4xhWPxUfrR1VNvhccb
-	Nz54M9psyrBeMLLHJjZ6tIIVMXM=
-X-Received: by 2002:adf:d845:: with SMTP id k5mr27776645wrl.145.1552477019454;
-        Wed, 13 Mar 2019 04:36:59 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=GBA6VvfF+Du0ehvzgVMRdAkktTaOAX3Y0CkEAW+/cY0=;
+        b=Y4yrKDT3ztpmSZ4uVRMmjiyP4qi4Sg/2BYbjwkVaGKQkck2quVN3goEDl+nBgTBCil
+         sYLSPSwHOLvTMErVOnhobltp0dE6TjKQOHoZThr53LWd6zS28OZ7n/4iDs15UcAL0X0q
+         LTDDjKa+FOWMXiCyt7gRwj3+0lymaa0hFxH63ZWEzoLpLgBV1nudjmYSYbgaTvR8ZQu1
+         u2FgtMuJyH+VNly49abHBqUBZUOy8gUcVHxtV1UN4LruJc4W2kPEr0BTFrBgNCBV10o3
+         TZjTNIF2y6GJBk4SFEa+ifcmhhTft8tmeBwGoLQc3tUnBwk6TbEGXJC9D0ACrk1nabW0
+         gq7Q==
+X-Gm-Message-State: APjAAAW93lcdKfShYlklg2eH1KtB9U9WbHZU/8sAMLxWuPG22hNouIoJ
+	5v2RB5Xz7nTu0bBPmHPxMCaumBI=
+X-Received: by 2002:a05:6000:92:: with SMTP id m18mr26837913wrx.258.1552477018810;
+        Wed, 13 Mar 2019 04:36:58 -0700 (PDT)
 Return-Path: <jbi.octave@gmail.com>
 Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
         by smtp.gmail.com with ESMTPSA id n1sm11010375wrw.24.2019.03.13.04.36.58
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Mar 2019 04:36:59 -0700 (PDT)
+        Wed, 13 Mar 2019 04:36:58 -0700 (PDT)
 From: Jules Irenge <jbi.octave@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rtl8192e: remove boilerplate license text
-Date: Wed, 13 Mar 2019 11:33:53 +0000
-Message-Id: <20190313113353.13024-2-jbi.octave@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8192e: add SPDX GPL-2.0 license identifier
+Date: Wed, 13 Mar 2019 11:33:52 +0000
+Message-Id: <20190313113353.13024-1-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190313113353.13024-1-jbi.octave@gmail.com>
-References: <20190313113353.13024-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-remove boilerplate license text."
+Add the SPDX GPL-2.0 license identifier to fix checkpatch.pl warning
+Issue found by checkpatch.pl warning:
+"WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
 
 Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/rtl8192e/dot11d.c | 8 --------
- 1 file changed, 8 deletions(-)
+ drivers/staging/rtl8192e/dot11d.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/staging/rtl8192e/dot11d.c b/drivers/staging/rtl8192e/dot11d.c
-index 6d57abedaa34..82c11caeee7a 100644
+index 68f53013cb95..6d57abedaa34 100644
 --- a/drivers/staging/rtl8192e/dot11d.c
 +++ b/drivers/staging/rtl8192e/dot11d.c
-@@ -2,14 +2,6 @@
+@@ -1,3 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0
  /******************************************************************************
   * Copyright(c) 2008 - 2010 Realtek Corporation. All rights reserved.
   *
-- * This program is distributed in the hope that it will be useful, but WITHOUT
-- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-- * more details.
-- *
-- * The full GNU General Public License is included in this distribution in the
-- * file called LICENSE.
-- *
-  * Contact Information:
-  * wlanfae <wlanfae@realtek.com>
-  ******************************************************************************/
 -- 
 2.20.1
 
