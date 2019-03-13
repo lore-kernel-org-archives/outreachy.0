@@ -1,112 +1,69 @@
-X-GM-THRID: 6394826935620337664
-X-Received: by 10.157.40.138 with SMTP id s10mr745441ota.97.1488911671215;
-        Tue, 07 Mar 2017 10:34:31 -0800 (PST)
+X-GM-THRID: 6666132758820028416
+X-Received: by 2002:a17:906:6dce:: with SMTP id j14mr4853612ejt.4.1552463435763;
+        Wed, 13 Mar 2019 00:50:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.34.49 with SMTP id o46ls1098283ota.35.gmail; Tue, 07 Mar
- 2017 10:34:30 -0800 (PST)
-X-Received: by 10.157.12.214 with SMTP id o22mr801290otd.150.1488911670810;
-        Tue, 07 Mar 2017 10:34:30 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id y90si153681pfa.6.2017.03.07.10.34.30
+Received: by 2002:a17:906:9257:: with SMTP id c23ls211619ejx.2.gmail; Wed, 13
+ Mar 2019 00:50:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwXO0gHTKTXkZTYLUl0/CsPBBoyEkzW+dZKZZPTeBHDzo0VzwpFX+P3qKbNyt4w0dslHa9v
+X-Received: by 2002:a17:906:1c46:: with SMTP id l6mr4858044ejg.9.1552463435002;
+        Wed, 13 Mar 2019 00:50:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552463435; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Rlhb6+hyiszzNrdClhDZns37v6KmMGiPUwbM/u59ZsbwvThReQ0ivHgP4JjxEjBqGz
+         oEvTHrJiLi3f9YlHc5WQi5ZfVPY/UzMHgxmAJ4fwkQ7UOaQ4mln7IqkeApRWUNs0Z78X
+         0JEGBxNRKaHpNImq9A6x552XqEjKyoB6yVlGBtj9auM7VCjCG3fw+AH+H0PMufyqbCg0
+         XOtVdw5J8Do/yfxHHa6LVSRlfZ/xhuJ59vqwh2dD5wWc3hpZLzrjkJklL7H4lMWCnHeX
+         UWpy9k2dLyWEGtuJ1Ti98GcBQdaPHtAaO4AiKbEBrGLhlwA+m1izXbzqJ6AGfr4SwOm5
+         WHAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:message-id:subject:to:from:date;
+        bh=pZE6j3XYCsRFCJwmAIjrtaEN7Wt2icBe2M2pdz2G1Q0=;
+        b=UsDq7/fk1VkozU8tyH1FnaAJVWOBHceCTBfesSGBvagFt+1VjbLqOyHPFSjSODUW8+
+         mKNTWadg7794RSsa+19jH3gfc6CvglIF3jNrb0CQq30IfAqr6ePVgQlbQ8AH+BLFXXL/
+         jdoM0dj0wRlrsXSn+s0jmt6p9/yogXXsVs5t40NvZ6vrX8XTfeQv6ov/bDoFs1yuz4Rb
+         0a+MyC6TKa0aS9uRnsxQm7LNcQhVOZJxOkZwbLcFMd57h3zNxxAfugjeetNlQQqwmg+V
+         h7vJRJXksQ4WIl4UNyZN7DSqkx1WBygrVwwH553BkjaH2V6qQHOKUBOUEzzIPmBK7UIy
+         SiGA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a7si45454edb.1.2019.03.13.00.50.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 10:34:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Wed, 13 Mar 2019 00:50:34 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 25so851924pgy.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 10:34:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Q+Zfl1+H5cBBNLYhdyXTRu2787cKq51V31jC9W9Dd9M=;
-        b=reByIfoEDoITqJ8VA82hr+Pdebxhp5kN18W44CgDMbwUMxg9uOj4gex/8jkSHFa2HV
-         mye9bNjXSPlzl2B501A/OAR64c5h7b07koDggNsWIz8y6h6vQxcuAqg/0fejNMJJ5RQz
-         4TyGvAHV6KhbFA3kQHElhhGnxLaytjn6vwTNRcasIJoK3PoLI7LU3ny1PjDJdVBztKba
-         Cc7oXeybfeDnQ0xcIsJCMhqerdFUavYIKd35ALyR7xkUVI5nG+JDrz9Br1dzHVv4Ck22
-         y2LE680gTf6P4dOTwWPeZCHMtSOcAZ3g8fFKMKeiutKxnnmd5McgzHn4NWJ1YWWkBsyV
-         JodA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Q+Zfl1+H5cBBNLYhdyXTRu2787cKq51V31jC9W9Dd9M=;
-        b=KPtYH5nA9Iw8Hs1GeFeFI8vWzT5uKyE+aP6am6FmFHZOppLwTaKKAFMitAVpa/4qSH
-         PLlg5UK4OqLzlO3doSL/NufOqA+1CUaJTFfQn4xCp5s8UU5N9Yaj1XZTphRDIVl1iq9W
-         P+xk+PVaZjPF5DTUqCHhsPHQZLScvEjaerK8kVteTyc+MxPX4AgGzQvhIgmrMup6Al8c
-         oCWmtRYmY+X8FMp2uaAqlgxCXS4FKWslsAV3mIrFNv1G/CqL84ioovxLmDBl4EwV2ml9
-         eqtqhBr/M9/BU3gKRUK43uqCjTSMoeFcnTbFCV2Ewd6tuniTPrf1gxgi7xx3LDB1qCRM
-         vxTQ==
-X-Gm-Message-State: AMke39nDt8ruNhG8ejpWUHbnVY0I9DdNevqrD7Cm6OvMO4CirFPaej2p35EluJsh3w0QMQ==
-X-Received: by 10.99.178.86 with SMTP id t22mr2037427pgo.136.1488911670422;
-        Tue, 07 Mar 2017 10:34:30 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id c22sm1205606pgn.43.2017.03.07.10.34.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 10:34:30 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,474,1544482800"; 
+   d="scan'208";a="299066023"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Mar 2019 08:50:34 +0100
+Date: Wed, 13 Mar 2019 08:50:34 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: outreachy-kernel@googlegroups.com
-Cc: oleg.drokin@intel.com,
-	andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: lustre: Remove max_u64 function
-Date: Wed,  8 Mar 2017 00:02:05 +0530
-Message-Id: <1488911525-9782-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Subject: Coccinelle project
+Message-ID: <alpine.DEB.2.21.1903130846580.3309@hadrien>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Removed the max_u64 function to find the maximum value of
-two unsigned 64 bit numbers to use the linux macro max
-instead.
+Hello,
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/lustre/lustre/ldlm/interval_tree.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+Several people have contacted me because they have tried running the
+semantic patches that are in the Linux kernel and are surprised or
+confused by the fact that they don't get any results.  Actually, these
+semantic patches are run on every commit to the Linux kernel by the 0-day
+build testing service and others, so it is not so likely that any issues
+will be found.  Please work through the examples on my kernelnewbies page
+instead:
 
-diff --git a/drivers/staging/lustre/lustre/ldlm/interval_tree.c b/drivers/staging/lustre/lustre/ldlm/interval_tree.c
-index e134ecd..e106902 100644
---- a/drivers/staging/lustre/lustre/ldlm/interval_tree.c
-+++ b/drivers/staging/lustre/lustre/ldlm/interval_tree.c
-@@ -101,11 +101,6 @@ static inline int node_equal(struct interval_node *n1, struct interval_node *n2)
- 	return extent_equal(&n1->in_extent, &n2->in_extent);
- }
- 
--static inline __u64 max_u64(__u64 x, __u64 y)
--{
--	return x > y ? x : y;
--}
--
- static struct interval_node *interval_first(struct interval_node *node)
- {
- 	if (!node)
-@@ -134,8 +129,8 @@ static void __rotate_change_maxhigh(struct interval_node *node,
- 	rotate->in_max_high = node->in_max_high;
- 	left_max = node->in_left ? node->in_left->in_max_high : 0;
- 	right_max = node->in_right ? node->in_right->in_max_high : 0;
--	node->in_max_high  = max_u64(interval_high(node),
--				     max_u64(left_max, right_max));
-+	node->in_max_high  = max(interval_high(node),
-+				 max(left_max, right_max));
- }
- 
- /* The left rotation "pivots" around the link from node to node->right, and
-@@ -394,8 +389,8 @@ static void update_maxhigh(struct interval_node *node,
- 	while (node) {
- 		left_max = node->in_left ? node->in_left->in_max_high : 0;
- 		right_max = node->in_right ? node->in_right->in_max_high : 0;
--		node->in_max_high = max_u64(interval_high(node),
--					    max_u64(left_max, right_max));
-+		node->in_max_high = max(interval_high(node),
-+					max(left_max, right_max));
- 
- 		if (node->in_max_high >= old_maxhigh)
- 			break;
--- 
-2.7.4
+https://kernelnewbies.org/JuliaLawall
 
+I have checked all of these examples and they should give results.  There
+are a few where I do note that there are very few results, but even in
+those cases I don't think that the issues have been addressed.
+
+julia
 
