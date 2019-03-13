@@ -1,165 +1,127 @@
-X-GM-THRID: 6334551742146936832
-X-Received: by 10.46.1.77 with SMTP id 74mr913571ljb.21.1474877759138;
-        Mon, 26 Sep 2016 01:15:59 -0700 (PDT)
+X-GM-THRID: 6663345238466101248
+X-Received: by 2002:a24:a14f:: with SMTP id n15mr1979195iti.1.1552486701333;
+        Wed, 13 Mar 2019 07:18:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.210.79 with SMTP id j76ls1310626wmg.25.gmail; Mon, 26 Sep
- 2016 01:15:58 -0700 (PDT)
-X-Received: by 10.28.4.200 with SMTP id 191mr744969wme.21.1474877758501;
-        Mon, 26 Sep 2016 01:15:58 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id p199si648592wmd.1.2016.09.26.01.15.58
+Received: by 2002:a24:66c5:: with SMTP id k188ls343867itc.3.gmail; Wed, 13 Mar
+ 2019 07:18:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyySo5rAYdGUjZcIadUkGgIUYFN7zcjVmuhedpQO2L/AYHDhfEiPSJe442w0xMGvkn/sE+E
+X-Received: by 2002:a05:660c:484:: with SMTP id a4mr1902629itk.15.1552486700166;
+        Wed, 13 Mar 2019 07:18:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552486700; cv=none;
+        d=google.com; s=arc-20160816;
+        b=I4JTGLcYpnyCAhEr4OX8egmY9oSPo7Fi6Vro0qWYKwZnFpsoVke7XdG9LqvCH94Ygd
+         Nokf5LHNCOqzcUUN/VVW0qHEQg298FKVfdVG2RroUbznKejPkR5MtMfIc9J3KJOxX7Uf
+         5PII895w0Kce3I7Yrx15E+MJ7nVOWtpCfgROJyCij2byoldCrRmywQtwiAF9lE0l9pNT
+         M4pGm2J/KBf06s5AS/p360NjdmzX+eh69AzjsBCWbLiDOxzbm0dLzcpVhOgS3gDQSq1B
+         tGitmI+rGnZx5G0yGevTGmHTbYFJTD43QDfOhvOLAq9R7724/1vjmZC/inXyNF17n9V1
+         zHJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=FymH3hmoun7ySjKEP56xS0EqrBfSocSenRwiy1WBA5M=;
+        b=rG5/f5ckzsglkbv7GTUMt9gFREbX7C8rnDyiXDJX/dVgtCQA9gTTTK8JBIrej9PqnU
+         sPdVs6Zw0xS6ubwpXSlrwf9aYQMfS09B8DMCMNgWbo3G1iIFBbyVjzFkDpkkZoTDTPGl
+         v2zPTUFtc5NLaWksLlOjLPFVTsGBi96wTPBCMJAEie2dCRDGw0wRdKSZYMZGnGzll3KY
+         PRApOJyPSMZFZBbyxGENigYoLCrF0sO4ji6pJa8K2lGkTGa5gxVtoCeWaQPjo+adZsiw
+         CxIXiB5n8Oy7bp/gfL/6QU7Jr5FG0isR71X+PULJBx15FDJDOedteI30jzAmNmgb+v7X
+         BCPw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b="AUoScv/g";
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=sApOJQXY;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com. [66.111.4.26])
+        by gmr-mx.google.com with ESMTPS id k26si418120ioh.5.2019.03.13.07.18.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 01:15:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Wed, 13 Mar 2019 07:18:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) client-ip=66.111.4.26;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id w84so12826982wmg.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Sep 2016 01:15:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=u0pHC5NyLu3jXyeqP0rOPZ/9dWGD8Po6KObd39RHuD8=;
-        b=JdT3kMZ4KnlhSBy5ISfQoWCVjVbc64bZkOz0XHJLujWyZ5gwxzkiAx83TS8pPQu5BU
-         1Aq+5GTMCu9aGlCpWkvaFyirE/Y6dmVjbkxdw4iKwGV62y83u4ru+fDJRC62wVrM9QvG
-         rjljyxByjrOp0TtCMZHru2mVxCuPAwvzO1RFYOWrm1jhtC/3lBU3iHc71JIApFuIxQ5I
-         CMAAF1xdbDpkf3K4hRCbscKTinnsd4NlI9aJYiQxCFA0wwy/pPnQOqO45elCqIgIC7Tn
-         def2FRj9w73pmOvQ0amL+YmEFwNorCDRTE5VDPQANIoSIGkmnzDiq0C9LNr8vxosajTj
-         ahXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=u0pHC5NyLu3jXyeqP0rOPZ/9dWGD8Po6KObd39RHuD8=;
-        b=gTN4/brZ9xWEOGMJv7nlkPBUaX3aVhsKIWYEMtf0WYFZNlGeK7uGZF0rly7ofqBgU0
-         AKP6CIpqvF6KUikYjm4pKAPPeAcRSbc97kbw5DJ+eWB+yNhb7p/73t7esqRnbGX5hX8P
-         pPuF52r9yHCItiboPhZMKAqHVc2+MgGOmBrMoC/jmOQMeht3HP/WN/5wsHwmNFKV+mIC
-         5PzDmu1b9h1Ffi+fs1wkwhN5nJWhFpLrSV2+CDL4kBQOnBJRUBWKKcIEGjmnOB6guB5U
-         4OljRy9QL6UGHR9/Zb25gMom/rWbHPm5U/rpd3kuXRYh3wkKRsd09FTUw0sY3xxs1MJU
-         ziyg==
-X-Gm-Message-State: AE9vXwMpvfXDhKQ82wkzRm2FA3I86dgOQzR5yHsC1nAQJ7nSq8WiNzbZ97rVey+Q7TNVPQ==
-X-Received: by 10.194.233.102 with SMTP id tv6mr16907774wjc.35.1474877758306;
-        Mon, 26 Sep 2016 01:15:58 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id g17sm9909595wme.3.2016.09.26.01.15.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 26 Sep 2016 01:15:57 -0700 (PDT)
-Date: Mon, 26 Sep 2016 11:15:56 +0300
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v3] staging: ks7010: ks_wlan_net: Use netdev_ instead of
- printk
-Message-ID: <20160926081556.GA6085@fireworks>
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b="AUoScv/g";
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=sApOJQXY;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 3077C245A5;
+	Wed, 13 Mar 2019 10:18:19 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute6.internal (MEProxy); Wed, 13 Mar 2019 10:18:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=fm3; bh=FymH3hmoun7ySjKEP56xS0EqrBf
+	SocSenRwiy1WBA5M=; b=AUoScv/gUWgkEI/fHRAQBftGJ8ELeAKq91uivpDqXxy
+	FlXT+0tJ1jvlAMC3LUNK9HJjLIGTipR4B42mMA17037gSqYwkw0cEDdsrl1ooz+f
+	WcLgDyJKaPLsvHh6xl2I3Tpn+VZk8N8yu3NKWBl64zPFCaXv+8+JLk/v9sAIVWK1
+	+oeXb30OLxFN+kFigGOOz/4C0KccPGlVY0DF8dhwHmWecwZiLls6yumSM7yZEgEM
+	IZ7Y1a4xxv3vTJV4OY/CCLjiFJi2ZiTt+nuA9JVl52PYB2gEav4Hj3wohxb4RBfj
+	zjLS3Hw7lovnbmmqczLWtxvJ+Gh95JIshnQ33dImavQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=FymH3h
+	moun7ySjKEP56xS0EqrBfSocSenRwiy1WBA5M=; b=sApOJQXYdrTUdeB8PDlJFx
+	jVSk8cnGSf/e8e1eOfy3/h4oAC+4rUaFcuiojDiQ4iUdpGXb+KBln2CSk5JCIz79
+	HuQL271RLr4KTPAcaOSYxiWu7ZWxh1MJR4wlIKFCJWbGpueZWkDt1GMzlJuWrHMa
+	AkXD7fomYbn2vum+lKNLkZ8vfvhr8nYOQlaQVm8w/QjsbVpXTry2oN/aQcLiK0Xz
+	+rAIqVLg2M2eVZFVArIxn6oc3DY/9Ubd+RyayP+4Cd6vyvKqHVBJTICRtQkfgFWN
+	UTdiU7aoVe4zDUo4ONKjYp+Ld7oanS1aDeuTyvz7a4+iN5XtNkPOjTagJmCYoQqw
+	==
+X-ME-Sender: <xms:KhGJXK47grTzxZ7vOTt2gWDUy61yCnlbZfv4zEgncPClHmDjKOxq1w>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrhedtgdeivdcutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecunecujfgurhepfffhvffukfhfgggtuggjfgesthdtre
+    dttdervdenucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheq
+    necuffhomhgrihhnpehkohdrhihouhenucfkphepuddvrddvjedrieehrddvvddunecurf
+    grrhgrmhepmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomhenucevlhhushht
+    vghrufhiiigvpedt
+X-ME-Proxy: <xmx:KhGJXOL1amFw12UElNKJqHpW_aRK7h1ycOVNKXFIvy-KgU3Dfxfkgw>
+    <xmx:KhGJXIZpEDm-cIZYv8HDgGEVwAvBwFKlcfj8ur-MEArTHGXvphQ9Sg>
+    <xmx:KhGJXOxwkqTJzJcnJsKNL_5FT1z26hNNJgV-xcjO2-GiMdWTyYAGuQ>
+    <xmx:KxGJXN0McuXX8unyB33wNHNA2g9VuVIWP03llFTx4DsB2JD1N7aSSQ>
+Received: from localhost (unknown [12.27.65.221])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 599AC10312;
+	Wed, 13 Mar 2019 10:18:18 -0400 (EDT)
+Date: Wed, 13 Mar 2019 07:18:17 -0700
+From: Greg KH <greg@kroah.com>
+To: Wentao Cai <etsai042@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCHv2] Staging: fpgaboot: Delete
+ newline at the end of Kconfig
+Message-ID: <20190313141817.GB5328@kroah.com>
+References: <20190301090225.9475-1-etsai042@gmail.com>
+ <20190301090849.GA29599@kroah.com>
+ <6289455c-2178-4baf-b1ae-899b7c19fa2a@googlegroups.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <6289455c-2178-4baf-b1ae-899b7c19fa2a@googlegroups.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-The checkpatch.pl script found the following warning:
+On Wed, Mar 13, 2019 at 01:34:55AM -0700, Wentao Cai wrote:
+> 
+> 
+> On Friday, March 1, 2019 at 1:08:53 AM UTC-8, gregkh wrote:
+> >
+> > > On Fri, Mar 01, 2019 at 05:02:25PM +0800, Wentao Cai wrote: 
+> > > > Delete the newline at the end of a Kconfig file, to silence the 
+> > > > checkpatch warning: 
+> > > > WARNING: please write a paragraph that describes the config symbol 
+> > > > fully. 
+> > > 
+> > > That is not the way to fix this warning :) 
+> > > 
+> > > You need to actually write a paragraph, not delete an empty line. 
+> > > 
+> >
+> Hi, greg, I wonder if it is ok to solve this problem by adding this?
+> 
+> Say Y if you want to include this driver in the kernel.
+> To compile this driver as a module, choose M here.  The module will be 
+> called gs_fpgaboot.ko.
 
-WARNING: printk() should include KERN_ facility level
+You need to say what the driver does, otherwise the user has no idea if
+they need it or not.
 
-After adding the KERN_ facility level to printk(), the script showed
-another warning:
+thanks,
 
-WARNING: Prefer [subsystem eg: netdev]_info([subsystem]dev, ... then
-dev_info(dev, ... then pr_info(...  to printk(KERN_INFO ...
-
-The warning is similar for KERN_ERR and KERN_DEBUG. In conclusion,
-use netdev_info(), netdev_err() or netdev_dbg() when there is
-a netdev device.
-
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
----
-Changes in v3:
-        - remove the use of pr_info function
-	- change the title to correspond to the 
-	patch modifications
-
- drivers/staging/ks7010/ks_wlan_net.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-index d13a06b..5854c13 100644
---- a/drivers/staging/ks7010/ks_wlan_net.c
-+++ b/drivers/staging/ks7010/ks_wlan_net.c
-@@ -233,9 +233,9 @@ static int ks_wlan_set_freq(struct net_device *dev,
- 		/* We should do a better check than that,
- 		 * based on the card capability !!! */
- 		if ((channel < 1) || (channel > 14)) {
--			printk(KERN_DEBUG
--			       "%s: New channel value of %d is invalid!\n",
--			       dev->name, fwrq->m);
-+			netdev_dbg(dev,
-+				   "%s: New channel value of %d is invalid!\n",
-+				   dev->name, fwrq->m);
- 			rc = -EINVAL;
- 		} else {
- 			/* Yes ! We can set it !!! */
-@@ -2671,17 +2671,17 @@ static int ks_wlan_set_sleep_mode(struct net_device *dev,
- 
- 	if (*uwrq == SLP_SLEEP) {
- 		priv->sleep_mode = *uwrq;
--		printk("SET_SLEEP_MODE %d\n", priv->sleep_mode);
-+		netdev_info(dev, "SET_SLEEP_MODE %d\n", priv->sleep_mode);
- 
- 		hostif_sme_enqueue(priv, SME_STOP_REQUEST);
- 		hostif_sme_enqueue(priv, SME_SLEEP_REQUEST);
- 
- 	} else if (*uwrq == SLP_ACTIVE) {
- 		priv->sleep_mode = *uwrq;
--		printk("SET_SLEEP_MODE %d\n", priv->sleep_mode);
-+		netdev_info(dev, "SET_SLEEP_MODE %d\n", priv->sleep_mode);
- 		hostif_sme_enqueue(priv, SME_SLEEP_REQUEST);
- 	} else {
--		printk("SET_SLEEP_MODE %d errror\n", *uwrq);
-+		netdev_err(dev, "SET_SLEEP_MODE %d errror\n", *uwrq);
- 		return -EINVAL;
- 	}
- 
-@@ -2783,7 +2783,7 @@ static int ks_wlan_get_wps_enable(struct net_device *dev,
- 	}
- 	/* for SLEEP MODE */
- 	*uwrq = priv->wps.wps_enabled;
--	printk("return=%d\n", *uwrq);
-+	netdev_info(dev, "return=%d\n", *uwrq);
- 
- 	return 0;
- }
-@@ -3330,7 +3330,7 @@ int ks_wlan_set_mac_address(struct net_device *dev, void *addr)
- 
- 	priv->mac_address_valid = 0;
- 	hostif_sme_enqueue(priv, SME_MACADDRESS_SET_REQUEST);
--	printk(KERN_INFO
-+	netdev_info(dev,
- 	       "ks_wlan: MAC ADDRESS = %02x:%02x:%02x:%02x:%02x:%02x\n",
- 	       priv->eth_addr[0], priv->eth_addr[1], priv->eth_addr[2],
- 	       priv->eth_addr[3], priv->eth_addr[4], priv->eth_addr[5]);
-@@ -3362,7 +3362,7 @@ int ks_wlan_start_xmit(struct sk_buff *skb, struct net_device *dev)
- 	DPRINTK(3, "in_interrupt()=%ld\n", in_interrupt());
- 
- 	if (!skb) {
--		printk(KERN_ERR "ks_wlan:  skb == NULL!!!\n");
-+		netdev_err(dev, "ks_wlan:  skb == NULL!!!\n");
- 		return 0;
- 	}
- 	if (priv->dev_state < DEVICE_STATE_READY) {
-@@ -3428,7 +3428,7 @@ int ks_wlan_open(struct net_device *dev)
- 	priv->cur_rx = 0;
- 
- 	if (!priv->mac_address_valid) {
--		printk(KERN_ERR "ks_wlan : %s Not READY !!\n", dev->name);
-+		netdev_err(dev, "ks_wlan : %s Not READY !!\n", dev->name);
- 		return -EBUSY;
- 	} else
- 		netif_start_queue(dev);
--- 
-2.7.4
-
+greg k-h
 
