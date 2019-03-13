@@ -1,117 +1,115 @@
-X-GM-THRID: 6745947085082722304
-X-Received: by 2002:a62:ac02:: with SMTP id v2mr6270051pfe.97.1570663201743;
-        Wed, 09 Oct 2019 16:20:01 -0700 (PDT)
+X-GM-THRID: 6667785986417623040
+X-Received: by 2002:a24:1a17:: with SMTP id 23mr985073iti.9.1552464902153;
+        Wed, 13 Mar 2019 01:15:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:8bca:: with SMTP id r10ls366185plo.13.gmail; Wed, 09
- Oct 2019 16:20:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyyzmSivh1CiIsOhUTcclxh27167iJl/VSxbjxyx55AdXVYgI1nbyM4gi+3IsyO8jh7Rehq
-X-Received: by 2002:a17:90a:9416:: with SMTP id r22mr7187248pjo.20.1570663200681;
-        Wed, 09 Oct 2019 16:20:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570663200; cv=none;
+Received: by 2002:a24:90d:: with SMTP id 13ls49759itm.2.canary-gmail; Wed, 13
+ Mar 2019 01:15:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwBGxSWIs1IWPwHNB40fY3J359+BHNkadvvnu+hZpZFz/E69H5uZg3l4/raMZlt8e6ughZt
+X-Received: by 2002:a24:5c5:: with SMTP id 188mr1003497itl.3.1552464901346;
+        Wed, 13 Mar 2019 01:15:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552464901; cv=none;
         d=google.com; s=arc-20160816;
-        b=gVipql3ZirwsGeIlbBxkyppZjSg9ig+XS212vzjFtUqzGh5n6fp86K9E7G9Ezonc6C
-         NjltG48jyZTLNZRwU8NY0P7KyEvbCzWlxE2Yf4+VlzUKewijjOFcpSOuBjmgwFcjjZLQ
-         5Xqaibmo4X/Y+MGob8jtgNtVJM/UjGj2/BAfOwZehzeul8sLL6EzHkG41bcesmy6oLvJ
-         FlNtQGWrRRZNZFq5gKW1qmMkHbaLgqh4N7K29SQpDntKugQ40K3cbONo1mudsBXToggL
-         WN/pifWbcVi3FE+t6DhAWBCkLmbHx55VwNK6IDAUbZKLSK98EhzWHntE6+thwIJ0ziqE
-         4O4A==
+        b=G23zyyryuv2EySqIElXtnyWhks+RSrDq3fQdXdlXDWflFLaiGVkphoYKmu5AnchR6I
+         EcMcI8MH23iQVjFI6hnwMEd4XQEnCp0RiCm4Lf/L1nLW5zlVGO70kStb0+UKFgQnMSqU
+         XzY0UPmoYm3urxFw/s05cOx+J0/VCNPFIVqLEK1kv35lBzm6yAI1D2ojvgCCW03WzGM+
+         3tzD3C6cjxoqS6OwIrGT1y1hMSl4U5Y62y1XcNiAcbk2cqPRb/fH88FMMe7hFb4pj0R+
+         y1ShrCXbfnXCvc4dyfZvTPpOwLtvVYPBs86V4TMdPyarJgxKsC/0dj6SD1iXGuz/zcSa
+         2u2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:mail-followup-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=aIg/tvRNjXcYSyM6pfllmcAozn90gFN35Jb3DHk2+Sg=;
-        b=z01hX8nbQxiND/oY1FiimqlwdmwvMYYdDfxbw+LCXthiipa3SkxvvwGxQ3+nzHCgKL
-         5AdxyBux7io49izAcVZbZjwe5PsX1pQRTL20Lwn8XI2BPiQuYb4Rij/lIxTgoKMguebZ
-         GTGizeWRGtrGX8GKv7SCH8Z4kM+ek3aMizZ9F/8juPzhwftkjqKry4BIUKGPKVHwiz+F
-         YasiQhvp3utnzlAO8O4cGlmVAATWMyM/bLpO+c7hgcIKfhYusv9mpHzcwi0WUER7x3q8
-         VYjVUtBTx34l0aGkhagIi1nkEOh6/4y60Rra1xtuBWRs4LSdQffdY7eCM/LJgDiOUFqH
-         ZSWA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Oo8sKs5oIjbsNJZXEib9im3YJjvr153hOv+pPbftAjI=;
+        b=acXtq+BPrym2s+LvuI5GOUxyzJvQR+iuuoi42xqNfgQ4L+MWWrC731Dhp1aFUoaLB7
+         PwXoGojgOfC5s1+aQV5tvKcTbe/WNK+dra4CjCVOKJUaHORZx98wdko+bP5bRjbNoprP
+         sxURHFaTIw+6UXEDsVexkCIVJVKvZ64Tr5fD23a3Ye69wH3ednn81KY50tEZwVsOS3Ze
+         IYX89NGJApHVOU8cwXDgYK9mzK4/fPIe5DzQ9xszNsc0z8UjN0cK/8GjArg/gZcjUFRf
+         3dGcea/zu7K2pVQ+VYe5CQVSPiDuRrc6zAHhtJxxxbUGNRYm855g7AxY9N/K0hDIp1Qb
+         grcw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AC2oWHKJ;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hEqgJpl7;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=etsai042@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-io1-xd43.google.com (mail-io1-xd43.google.com. [2607:f8b0:4864:20::d43])
-        by gmr-mx.google.com with ESMTPS id x13si104356pll.1.2019.10.09.16.20.00
+Return-Path: <etsai042@gmail.com>
+Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id f13si556250iok.3.2019.03.13.01.15.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Oct 2019 16:20:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) client-ip=2607:f8b0:4864:20::d43;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Mar 2019 01:15:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AC2oWHKJ;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hEqgJpl7;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=etsai042@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-io1-xd43.google.com with SMTP id n26so9320119ioj.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 16:20:00 -0700 (PDT)
+Received: by mail-pg1-x52a.google.com with SMTP id h8so967121pgp.6
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Mar 2019 01:15:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition:user-agent;
-        bh=aIg/tvRNjXcYSyM6pfllmcAozn90gFN35Jb3DHk2+Sg=;
-        b=AC2oWHKJDhzvCGsTJLoDqVHK8zfrtoInqnK5+6R+beNirfpeIy32MJePG1Uhe7pmIC
-         /yP4IO7WsR6Ve+vv0Cm1leZcqBw4KmkN/FQDu8ix8OgAwg3XxZvc44xjoZkBZ5fXGWrQ
-         t073VsUf+GAvFOOxAOoh5w4KuUTRZ5stAIudcrVX2ffeKYDgTS26U5shIAwzwGLVjGmf
-         3TGW/cSbNSt6pE7g9SBdu1dT1fRYTm6KUn6RcEvfHrbT8hYTRkhKmKhzLJZ5oyYIG54t
-         s+FyYtMdtQCKVBvcb0ZukT28aoJVZNIYXTY1Jatt5jgbO8unuzS+gRdv9Is1qfJ+tj7X
-         tU7w==
+        h=from:to:cc:subject:date:message-id;
+        bh=Oo8sKs5oIjbsNJZXEib9im3YJjvr153hOv+pPbftAjI=;
+        b=hEqgJpl78NFXZIWjOctrHlRNJElmsSeDtBa7Le6qpBuHkuiyYcxugG1rWM+qERvXsj
+         u9TKHZMJqlcWQzPfvzEiZaHlIhhJp6C6b3nVQ9k416ONyE+cipNI62M3qtRTDxH6wmW0
+         E/PGP5Uwdq1bUDwbRtE3EVjUeRUvSaO0ULKR+PToZWxwmzKSyClnhLXHXuQU1vOwN8d0
+         BdoGVRjfCJ+zhCDcVaZNHIhie2zafQRY4DeM9m5uovJY5OAxEHDl+v/VyU/1SOwz6jZU
+         agaQOgN6q+fNVs8y2lVfYjxU0ABGpoaknXv00+CWVSadSlgyNGvc69b31755NipLDrRI
+         buMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition:user-agent;
-        bh=aIg/tvRNjXcYSyM6pfllmcAozn90gFN35Jb3DHk2+Sg=;
-        b=gqQ+pde2erX1DPVB5qE+HZXFXPQwRcWvRZFUsWcoYsTpEMoGjzbfKUr9y1webRwGEd
-         XbkGkj+og4jNASwnJ10A/ZUxSzF1EbebnGkx8CRKKnmVFqEVLgdRrtS6n1iSocOMjY6F
-         +Henn4hTqJ1PwIyXNHUmhvG4TBfd2T/VaftAriWWLbaKiFLilqHtc2dYGdnXsKmd5QE0
-         fFLkHF7bwEXSdWdffcpvz3bQoq7N3i2GdslOX/IJJOIpTnzzrS8zgAn25pmBqSmG7p6m
-         +/iEUtnqIejo9GawHf+RCT7MMFASD0zEHxUyDD/QezmXXYU2HttYD4aNgZ4NbrhVvrRI
-         v4hw==
-X-Gm-Message-State: APjAAAWQj+nUdYNWrKyTX2hUACDQORFAvpUxbjvez7OOGt8Z5xZPxPxg
-	ISE8IchFttRXKlVP5vh0vqHCK4C72lI=
-X-Received: by 2002:a02:6a28:: with SMTP id l40mr6324525jac.39.1570663200416;
-        Wed, 09 Oct 2019 16:20:00 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com ([185.229.59.77])
-        by smtp.gmail.com with ESMTPSA id t17sm2299992ioc.18.2019.10.09.16.19.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2019 16:20:00 -0700 (PDT)
-Date: Wed, 9 Oct 2019 18:19:56 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Fix incorrect type in declaration
-Message-ID: <20191009231953.GA8774@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Oo8sKs5oIjbsNJZXEib9im3YJjvr153hOv+pPbftAjI=;
+        b=qRIf+m8ms61efvPOdn45eBBWOYRAqa6wUgObn/DkcVRfrj/YdKmsWOrvaekXA3RADF
+         aClfm0LSW45Fncayuzzj56HnWWICzqALr2reVkON5UqwEMM+KsAMUMcqSdNGqKx4I++O
+         aeRiaGPbvWUzrdg1N0lMyKW01vSjtIJh4xxljDEAcLQfnPecCzY2qSdE9G3mREr+jGSe
+         yJeIBMAjtSOAytLI6dG9CptmoWjBIIv5e5As1d7XElMOqKRAmUGcDh2ZgcbNrSyJi5SH
+         kjsDfpnwcUuYwGRT+pTCntnd3kNXw8cHBVTRp+EzHNRHWYht4g/5+2xbv6fHhSiQZYKx
+         9khw==
+X-Gm-Message-State: APjAAAVCOuODHyoaF6dexcWkYhdUFll7YnSPLcE5tXVzNdzZMtQ3/bgd
+	htl9EFZv/0LrOzmhrm4NqHc=
+X-Received: by 2002:a63:7843:: with SMTP id t64mr39078234pgc.178.1552464900870;
+        Wed, 13 Mar 2019 01:15:00 -0700 (PDT)
+Return-Path: <etsai042@gmail.com>
+Received: from localhost (199.138.240.35.bc.googleusercontent.com. [35.240.138.199])
+        by smtp.gmail.com with ESMTPSA id q62sm17684491pga.32.2019.03.13.01.14.59
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 13 Mar 2019 01:15:00 -0700 (PDT)
+From: Wentao Cai <etsai042@gmail.com>
+To: Rob Springer <rspringer@google.com>,
+	Todd Poynor <toddpoynor@google.com>,
+	Ben Chan <benchan@chromium.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com,
+	Wentao Cai <etsai042@gmail.com>
+Subject: [PATCH] Staging: gasket: Replace macro __ATTR with __ATTR_NULL
+Date: Wed, 13 Mar 2019 01:14:53 -0700
+Message-Id: <20190313081453.2097-1-etsai042@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-Fix incorrect type in declaration to solve the warnings 'incorrect
-type in argument 2' in the rtw_get_wpa_ie and rtw_get_wpa_ie function
-calls, as both expect the same variable in argument 2 with the
-type int *.
-Issue found by Sparse.
+Replace macro __ATTR with __ATTR_NULL since the former one is
+unnecessary for gasket_sysfs_attr array terminator. Also silence the
+checkpatch.pl warning:
+WARNING:Symbolic permissions 'S_IRUGO' are not preferred. Consider using
+octal
+permissions '0444'.
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+Signed-off-by: Wentao Cai <etsai042@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/gasket/gasket_sysfs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 8e58763c8a8d..db6528a01229 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -2430,7 +2430,8 @@ static int rtw_get_ap_info(struct net_device *dev,
-                                union iwreq_data *wrqu, char *extra)
- {
- 	int ret = 0;
--	u32 cnt = 0, wpa_ielen;
-+	int wpa_ielen;
-+	u32 cnt = 0;
- 	struct list_head	*plist, *phead;
- 	unsigned char *pbuf;
- 	u8 bssid[ETH_ALEN];
+diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/gasket/gasket_sysfs.h
+index 151e8edd28ea..1d0eed66a7f4 100644
+--- a/drivers/staging/gasket/gasket_sysfs.h
++++ b/drivers/staging/gasket/gasket_sysfs.h
+@@ -40,8 +40,8 @@
+  */
+ #define GASKET_END_OF_ATTR_ARRAY                                               \
+ 	{                                                                      \
+-		.attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),   \
+-		.data.attr_type = 0,                                           \
++		.attr = __ATTR_NULL,				\
++		.data.attr_type = 0,				\
+ 	}
+ 
+ /*
 -- 
-2.20.1
+2.11.0
 
 
