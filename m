@@ -1,96 +1,117 @@
-X-GM-THRID: 6402619199272779776
-X-Received: by 10.28.154.207 with SMTP id c198mr710533wme.5.1490725949849;
-        Tue, 28 Mar 2017 11:32:29 -0700 (PDT)
+X-GM-THRID: 6667902165871230976
+X-Received: by 2002:a24:c546:: with SMTP id f67mr2224601itg.28.1552491953048;
+        Wed, 13 Mar 2019 08:45:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.74.84 with SMTP id x81ls1382033lfa.29.gmail; Tue, 28 Mar
- 2017 11:32:29 -0700 (PDT)
-X-Received: by 10.46.88.70 with SMTP id x6mr692426ljd.22.1490725949159;
-        Tue, 28 Mar 2017 11:32:29 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id p144si308390wme.2.2017.03.28.11.32.29
+Received: by 2002:a6b:6008:: with SMTP id r8ls926886iog.6.gmail; Wed, 13 Mar
+ 2019 08:45:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxwQ+M3vaZKKmwrldmwYkAyHIwukjzast6bSKFGzpoV08WMOdziKpXz/bBE49vz9YhCiy+/
+X-Received: by 2002:a5d:8141:: with SMTP id f1mr6034316ioo.9.1552491951979;
+        Wed, 13 Mar 2019 08:45:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552491951; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bNm/69O/UEeJH5up+vjASgsiSAQE40grNjCw8LC9ATmovwYkZPpWeYfbUK0I3/E3J3
+         sR85IfUqhcAht2z63WfZRNyGv+pmf+rHgQ2JQI7X2H6W5wG9niqtuec4fCXLccX7fhdK
+         UyVQ9AeKN51P4MD/UWlfi/byDBp5Vsyqgjf2ScnsI4jYbUk/eHBEDP8eE4VD5i4vM70z
+         zo9CtIj7h+8Vf9LA+al+xFQY1K7mg6Td1qYrhEkbmRuSybydwswqSdIhIWnVEERI3/go
+         ZKm1GyFJhc6nyBEnu81LpqmxqlOju6zdQZf8LicXAgpYOQP2lcIZqHjSRxt3V0qXDcVl
+         vurA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=eFdSnl39pbWVxfigNTmTG18G72aUV6S5u0kC3s2M+Fs=;
+        b=djhCnYXo805xqOP8OYjuiR5Mmkbxwu3ENjdUIZL9I9q32+C62e2mZWkgxhsNh7LRZc
+         HEJiOT11RZbMrn8YB4HnAAdJQm10USy7jATh32Re+EjS39WgkesPc+s50EZTNURw1AjP
+         5H0WNIbCxyJaSPYSGa1DcqA7s0PdkrzJM1h0BmfXJ443akJ/V3afTydFY6jMQbeXhAHQ
+         z0JqS2mBbTOgk0M2T4fjjDeRQMojjqpwZfCokfm6QEiqRuS6cUP9wKjBAW7xfA6afcQc
+         5tNhxCJTMNNaQgBaYxQ8aHUXGOtEXMOv+lG1i5smFiQybaM6doHoLjCIrz/u8xOPBusE
+         WRTQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="PZixmXm/";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id 207si94783ita.0.2019.03.13.08.45.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 11:32:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Wed, 13 Mar 2019 08:45:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id z133so1183963wmb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 11:32:29 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="PZixmXm/";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id s22so1665101pfh.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 13 Mar 2019 08:45:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=7rdWZYE+W0DSm5no7x0guYkIMo59tpazAJy2HBjgAL0=;
-        b=URlBjSj14t8LSRyylQ2wyUrhgkfsNgSaFs/0CZ7ppDJ31r5wCa5dk4nSyhSBCxSuOd
-         JhU0cPSvqEWMyLWBzGAoMyrvTCQRqFJZDIA6we+jXRzVh5El1VAVYtnsDWH9JyYHkhG1
-         1wiZwwSGB30p9osQ1qs5RlChncEniYL9be8NPOG/L0whhA/qaMXaKBMgZT37aMK/b9FO
-         6TqBufM3mhrxNcBhFgvYbmVvmC3hgtrpV7Xkjr4vmXRNCaOHce0SgmuzWganCJzPTA1p
-         7DPYddiRifDPRr5+VvWqyJFMiBwOk1YRyDb92hr4g3NnWSaX7/+UkaWpehY/c7oOHo6+
-         MGRA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=eFdSnl39pbWVxfigNTmTG18G72aUV6S5u0kC3s2M+Fs=;
+        b=PZixmXm/QA2OSJIb60E1fAcjiLXY16Cbe6O5FMJvCX8g31Vp4ST5m57qOhCM1f4PXY
+         /BCDt1if10Uj+WrZxzlLZWZlmfjuZnjPRSv0ewtxBArQQ4JNci4ugCIswq+oQ+aZPLB0
+         Yd6Rh5zBqKzjslxqzMbGiI8FEEH5+RmcKZCGWya/hbV7CdBrVSWlRSHwVrdBJkz0H56B
+         apGOJFVu0oXjokxqlyhZjNZGVprjOkqqMZE5eguoi3/r4UxWmRlEyKPi/MZ2S+3qc+qR
+         qmqdFXS5OHX+/qQfx2uh7/BgWFjUWvM7Xk05Cek/pejwoKuXEe+aDv1NDmda+R7/J0wD
+         CjxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7rdWZYE+W0DSm5no7x0guYkIMo59tpazAJy2HBjgAL0=;
-        b=jlG8Bo3Ws445PFLlu5S2Y2YYDa5EzNndRiBwIFiEzPA9i4xrmuFOSPtecXW90Z07Q1
-         R65UNbcsTl1EYCKpx1mDL+q6nsnOJsNrZs6RrNWUUroTBw5Z3yL2DcuTH2G/3GrwcIXn
-         ATTX4NDe+Mkwx5xpgYe/E2cpzSVa806rGgX2SER8oRUS2C9+JDE4tH+ue9+taT1L6WB2
-         MZpx1yjVJIU+SHS+qbpxrkz0wVMwbk+b5qKqAAIL+c1hO9aEbc1SuOQYPv9JIG7xT3xT
-         u4A8sdhtSZNpO/XmormG/Ouvy8lrmRxujx6ePZG5q6q4AOfaqQHICRcufhvSmGdNH3GF
-         gXow==
-X-Gm-Message-State: AFeK/H0+WnkjIktb3j6qSnLpM4z292zVXtN/wABH912Ky/OaZaeVosBSCDi956Z2mboGWg==
-X-Received: by 10.28.11.69 with SMTP id 66mr16625056wml.38.1490725948936;
-        Tue, 28 Mar 2017 11:32:28 -0700 (PDT)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8160:a9a:a95b:ae25:abef:f637])
-        by smtp.gmail.com with ESMTPSA id 43sm5900154wry.45.2017.03.28.11.32.27
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 11:32:27 -0700 (PDT)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: mingo@redhat.com,
-	peterz@infradead.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	corbet@lwn.net
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] sched: core.c: Fix outdated comments
-Date: Tue, 28 Mar 2017 21:32:26 +0300
-Message-Id: <20170328183226.2793-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=eFdSnl39pbWVxfigNTmTG18G72aUV6S5u0kC3s2M+Fs=;
+        b=sj0RLG3Gvo4SyPpZ5ixDYDfC9I7e1pfXQ+y9xgSLWIg/EckMQGwQyrX5eDFWaPzgoM
+         WS9O6sb6FtX7iTGd2FR0VPbP4+QqQY5P4UhW/OeKfuc3RmZ9mZ4xlsdkV/HXg5JZwHF2
+         Nrc1iX0wALpBqbNwJJWiKaEZ/cAyLkohnnDc2TJ6HYETBaNFrAqkZmyzER+gjlj/u7N8
+         /1dGCQk8onTFjMQUWWPhiaYSHRzvwPy/QqMVC7KzIF8JVwQ7GI6hFR7LqwBEdl/7i+RX
+         fxZY79kRx1O3BhUgUcyUJbdFqYc81LSUuuX22Ucvr4hl0d7s0vOFI9CUl/y5HHBDshOn
+         HpZA==
+X-Gm-Message-State: APjAAAWbr+lIjdFKLsUcv0y4V0UvEFbQLiMTCMhOBJD76EdDEVfLLGdN
+	9IOxAhb0EvOAhi1SH7COyZQ=
+X-Received: by 2002:a65:52c3:: with SMTP id z3mr41066921pgp.395.1552491951480;
+        Wed, 13 Mar 2019 08:45:51 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570 ([123.201.165.8])
+        by smtp.gmail.com with ESMTPSA id g15sm5045520pfg.157.2019.03.13.08.45.49
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 13 Mar 2019 08:45:50 -0700 (PDT)
+Date: Wed, 13 Mar 2019 21:15:47 +0530
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, julia.lawall@lip6.fr
+Subject: [PATCH] Staging: rtl8188eu: rtw_recv.c: fix a tab indent  issue
+Message-ID: <20190313154547.GA10791@sanjana-Inspiron-5570>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-In d8ac897137a2 (sched/core: Add wrappers for lockdep_(un)pin_lock()), 
-the prototype for try_to_wake_up local() was changed, but the kerneldoc 
-comment was not updated, resulting in these warnings in the documentation 
-build:
+Fix a tab indent issue which removed warnings after compilation using
+chackpatch.pl.
+[WARNING]:No extra space at the beginning of a line.
 
-.kernel/sched/core.c:2085: warning: Excess function parameter 'cookie'  description in 'try_to_wake_up_local'
-
-.kernel/sched/core.c:2085: warning: No description found for parameter 'rf'
-
-Update the comment to match the new 'rf' parameter.
-
-Fixes: d8ac897137a230ec351269f6378017f2decca512
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- kernel/sched/core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 9563838..0d03755 100644
---- a/kernel/sched/core.c
-+++ b/kernel/sched/core.c
-@@ -2074,7 +2074,7 @@ try_to_wake_up(struct task_struct *p, unsigned int state, int wake_flags)
- /**
-  * try_to_wake_up_local - try to wake up a local task with rq lock held
-  * @p: the thread to be awakened
-- * @cookie: context's cookie for pinning
-+ * @rf: runqueue flags
-  *
-  * Put @p on the run-queue if it's not already there. The caller must
-  * ensure that this_rq() is locked, @p is bound to this_rq() and not
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index 1d83affc08ce..cc6f1a23da01 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -24,11 +24,11 @@ static u8 SNAP_ETH_TYPE_APPLETALK_AARP[2] = {0x80, 0xf3};
+ 
+ /* Bridge-Tunnel header (for EtherTypes ETH_P_AARP and ETH_P_IPX) */
+ static u8 rtw_bridge_tunnel_header[] = {
+-       0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
++	 0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
+ };
+ 
+ static u8 rtw_rfc1042_header[] = {
+-       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
++	0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
+ };
+ 
+ static void rtw_signal_stat_timer_hdl(struct timer_list *t);
 -- 
-2.9.3
+2.17.1
 
 
