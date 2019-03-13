@@ -1,118 +1,131 @@
-X-GM-THRID: 6948788378746748928
-X-Received: by 2002:a05:6830:118f:: with SMTP id u15mr7617872otq.43.1617890870119;
-        Thu, 08 Apr 2021 07:07:50 -0700 (PDT)
+X-GM-THRID: 6667898638714273792
+X-Received: by 2002:a17:906:350e:: with SMTP id r14mr426894eja.10.1552506594650;
+        Wed, 13 Mar 2019 12:49:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:d54d:: with SMTP id m74ls1222882oig.11.gmail; Thu, 08
- Apr 2021 07:07:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw/KSXjeDpMnA3C9mimWor7MOCzriBz+0Y/yji6z2oLWHKwT8aGoadXsX1/7UUDi0oSDFv
-X-Received: by 2002:aca:4888:: with SMTP id v130mr6381812oia.3.1617890869417;
-        Thu, 08 Apr 2021 07:07:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617890869; cv=none;
+Received: by 2002:a17:906:1909:: with SMTP id a9ls643422eje.3.gmail; Wed, 13
+ Mar 2019 12:49:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy3rpH9Yz4ImsP7vuiVodemZiA8YuKexsBLTRWMLaRTDi2aRumbqnvZ6l5EOk206dHHLnwI
+X-Received: by 2002:a17:906:7f0a:: with SMTP id d10mr5297605ejr.15.1552506593874;
+        Wed, 13 Mar 2019 12:49:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552506593; cv=none;
         d=google.com; s=arc-20160816;
-        b=MoM68cObhaGtx4UVyXvqXd9AzcluoVsEMSOhhYs07iGtMGOXVZt5SKi6hNRGi923jR
-         Ej+5MJynRi8G8a730UPpPEQKj2pYbCJAwQ/2owxPqrUiKrzQBszE+NlJ8PoB581JbL5X
-         aGYkSXenU2aM19OzehCK5bmVQnMawbXpdqhyN1R0uOnFKjHDaDfJp1DfUIa26mrS63Yj
-         gQDQHQeuw7FEFXuqzP7PZnCrISB6/MqPYv+RJ7vZfiDkZKHBIHC3y8UyDR6MThGaROu5
-         p6XNQ5hgxFVYFKtKNJzRAlqqgsrYzrfvUJmTOWWdrBbxfTHCzexykQwWKQuhD73XWjK7
-         hAVg==
+        b=NPD+00MzP+afAW/p8HQo2RWS5wcbuhMn2uXFE2/PqQwRAB+Tq2z9CmXNZVJy2lGzqb
+         +VLC4eGrQxKVzwni2MleF/kpVYZJ6B2rUuOOb5gsZ9QwDbvchR+tzfAoUqo46uUSFpLm
+         23BRtWcaMraKeiOW85nnMHVAftJt12DuRah+Ctl7RqtDf2S1zp/avfj9adanBrQ79R/F
+         GmDFeEY0DzspoCtsFHHRNX94eBSMoysQcZiAnfQrQ/TyLe+YbjNFSn6+lH4NN3H9c4en
+         afeoNxMYejP4PgP1aPzG9OOooov3I+wZIui8Sj4eZV2AeRQORT9IHkuV+h35OIPQMOxC
+         LZNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=6fSIQirtWShuMIqpJMly6hnk0nfAVM8QytarwMk1/LU=;
-        b=Ax/AwqYay/AbPOEEyXFA5mJm0HalOygWrt8NLfZeB6U3lZyELHlNfn2Vqmw+Osjzi2
-         zmWTdU36P2W6GsRDJxUxFneCawy3JGWQi/tiB/AK5+xZ1BWPUF3m/E1aVrAvoHtbBvxM
-         BCPO4ykc8CVDIMAZinqRFVzQ47mxec2CiyoR0IQ8uArLO1IguYQeCQBtLBz8T7VXSSKU
-         iROyFCm51q2Yu9WIDjqzg4e4ugT3dAHsW/mcPnjqRi6i7sjQgealIf0ldSMKwVIR5b2T
-         wWA3D9eLl9k3GKP1RJ+Vg0TLG5O3NhVOGpm1pHifeDKuqtPnH4DIrI44InHZlWu4wYnV
-         CbDw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=wAdbLGBGphfv8JZGZ2YptTNKdrEwWQNyqkbh/FFcVjI=;
+        b=NZvjxm7FOGkYPIAPpvsCwcJ9U9PW9jOu0Mlj5RCFLvrytK0eW+0M4MBXFEjchVCvZL
+         t4b2IlkVrs0/VH97dJ5dLMCdmhku0IczD79UpO1jBdiY9aCEU/mDVKqZpyYpAQrwRsoN
+         OT/FggKzDn2laTXnGrw6439NzLzxBtUDZsQNN03+tugiN3fZabSQg9OU8nnFb6hyt7PA
+         UnVlIsUt+F+kvgtCKhgxXeLXjOue3Ax95k7W9rC5vBOdaLgo1w7MYNeO/GKf7jL/OmCo
+         4NPOh8AWkLhPzh6oGYmrmQeFSP9F5w7sC2aQj4Z3cwbTjj37BNIGhxZtdXynVJQX3JrO
+         m6fQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oHXWP2bG;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f32 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qv1-xf32.google.com (mail-qv1-xf32.google.com. [2607:f8b0:4864:20::f32])
-        by gmr-mx.google.com with ESMTPS id b17si90111ooq.2.2021.04.08.07.07.49
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id r37si91302edd.2.2019.03.13.12.49.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Apr 2021 07:07:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f32 as permitted sender) client-ip=2607:f8b0:4864:20::f32;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Mar 2019 12:49:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oHXWP2bG;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f32 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qv1-xf32.google.com with SMTP id o11so903585qvh.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Apr 2021 07:07:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=6fSIQirtWShuMIqpJMly6hnk0nfAVM8QytarwMk1/LU=;
-        b=oHXWP2bGqx/WEx+RNKLuU6bEMQt589jw9z42sIvZwxkecxAYroGAJMwMfzU7F7U+J2
-         OuvQR0a5x0SfkcZBOqQoE03rwQK6v/OAFe7ckWiPCodFbKCPxEw9f6wpepmrCq8ehd/A
-         4rPN0M7qmkKQ2ZNjSclrlXWkNmXdhRPfdBe3wW4KGdiJGKugG4WWnbmO3Y2QmFEp4thI
-         1eHLH8vpeflGx3C3iNw4NBBgwL7yillA29nUnKxktcfXx799Kl5ExVkeEiMblWtucd2B
-         h8s7hJPzrmXutsRWj6SkNjafvQujSuKt61zZUE3fhx5R5YWAfC3c+DmilXoO78D0Slrl
-         Vk9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=6fSIQirtWShuMIqpJMly6hnk0nfAVM8QytarwMk1/LU=;
-        b=s3WuK8FMaagGUoOOJXMKerH9SHcx9yPTW4mFvZi5iCg1f4s9Ovfgay23vkHkXTiLAE
-         3ODy/XHpSj35klUrydFvhHmFBoi0XaSYhiKkfTW+kw/Kv6zYOZq6iz/M8qANMOpc7QqZ
-         KuXKHrSACjmPfZPHiZF0O9r9cweLNP66HRKddldVdMAeCakNMQdehBO2UZj3a6rycQZd
-         L/41T7/qmLBHZovIOwjl5kpopLxHvyNvIke7fGs+D6Il/KLZZhYVzbuER90+ECs4Ye1H
-         HDFwsXhbJwFvk+oRUivHUwz4mesOresL8asesF9GQQxFiBJINsTOzT//j/K4VT8MeKpX
-         iYdQ==
-X-Gm-Message-State: AOAM5338T1SgklrJSr5mg/jtXUxRyXGc/Jf+bnXi0dwIiWawaA/28EW3
-	TmP7YOBiJ6dj3jS6mDt9HWkpx91ZwhJLL6cU
-X-Received: by 2002:a0c:bd25:: with SMTP id m37mr5407569qvg.17.1617890868905;
-        Thu, 08 Apr 2021 07:07:48 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([2001:1284:f013:b099:175e:8b29:c386:d20e])
-        by smtp.gmail.com with ESMTPSA id b9sm17761584qtx.38.2021.04.08.07.07.48
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Thu, 08 Apr 2021 07:07:48 -0700 (PDT)
-Date: Thu, 8 Apr 2021 11:07:46 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Ezequiel Garcia <ezequiel@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2 v2] staging: media: hantro: Align line break to the open
- parenthesis in file hantro_mpeg2.c
-Message-ID: <8209d15ab3a8391b74939cb942daffc556d72942.1617890467.git.alinesantanacordeiro@gmail.com>
-References: <cover.1617890467.git.alinesantanacordeiro@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,475,1544482800"; 
+   d="scan'208";a="373293807"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Mar 2019 20:49:53 +0100
+Date: Wed, 13 Mar 2019 20:49:53 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Madhumthia Prabakaran <madhumithabiw@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: sm750fb: Remove an unnecessary
+ local variable in a function
+In-Reply-To: <20190313153958.GA5065@madhuleo>
+Message-ID: <alpine.DEB.2.21.1903132049340.2515@hadrien>
+References: <20190313153205.4974-1-madhumithabiw@gmail.com> <alpine.DEB.2.20.1903131634500.27312@hadrien> <20190313153958.GA5065@madhuleo>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1617890467.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Aligns line break with the remaining function arguments
-to the open parenthesis. Issue found by checkpatch.
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/hantro/hantro_mpeg2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_mpeg2.c b/drivers/staging/media/hantro/hantro_mpeg2.c
-index 1d334e6..53a99a9 100644
---- a/drivers/staging/media/hantro/hantro_mpeg2.c
-+++ b/drivers/staging/media/hantro/hantro_mpeg2.c
-@@ -19,7 +19,7 @@ static const u8 zigzag[64] = {
- };
- 
- void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
--	const struct v4l2_ctrl_mpeg2_quantization *ctrl)
-+				  const struct v4l2_ctrl_mpeg2_quantization *ctrl)
- {
- 	int i, n;
- 
--- 
-2.7.4
+On Wed, 13 Mar 2019, Madhumthia Prabakaran wrote:
 
+> On Wed, Mar 13, 2019 at 04:35:39PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Wed, 13 Mar 2019, Madhumitha Prabakaran wrote:
+> >
+> > > Remove an unnecessary local variable in  sm750_format_pll_reg function
+> > > and replace its initialization directly in return type.
+> > > Issue suggested by Coccinelle using ret.cocci.
+> > >
+> > > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > > ---
+> > >  drivers/staging/sm750fb/ddk750_chip.c | 5 +----
+> > >  1 file changed, 1 insertion(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> > > index 90f5480304f4..93abfa8b0090 100644
+> > > --- a/drivers/staging/sm750fb/ddk750_chip.c
+> > > +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> > > @@ -391,7 +391,6 @@ unsigned int sm750_format_pll_reg(struct pll_value *pPLL)
+> > >  	unsigned int OD = pPLL->OD;
+> > >  	unsigned int M = pPLL->M;
+> > >  	unsigned int N = pPLL->N;
+> > > -	unsigned int reg = 0;
+> > >
+> > >  	/*
+> > >  	 * Note that all PLL's have the same format. Here, we just use
+> > > @@ -399,13 +398,11 @@ unsigned int sm750_format_pll_reg(struct pll_value *pPLL)
+> > >  	 * register. On returning a 32 bit number, the value can be
+> > >  	 * applied to any PLL in the calling function.
+> > >  	 */
+> > > -	reg = PLL_CTRL_POWER |
+> > > +	return PLL_CTRL_POWER |
+> > >  #ifndef VALIDATION_CHIP
+> > >  		((POD << PLL_CTRL_POD_SHIFT) & PLL_CTRL_POD_MASK) |
+> > >  #endif
+> > >  		((OD << PLL_CTRL_OD_SHIFT) & PLL_CTRL_OD_MASK) |
+> > >  		((N << PLL_CTRL_N_SHIFT) & PLL_CTRL_N_MASK) |
+> > >  		((M << PLL_CTRL_M_SHIFT) & PLL_CTRL_M_MASK);
+> > > -
+> > > -	return reg;
+> >
+> > This is going better in the right direction.  But maybe it is less
+> > readable than before, with that very large expression and the ifndef...
+> >
+> > julia
+> >
+> > >  }
+> > > --
+> > > 2.17.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190313153205.4974-1-madhumithabiw%40gmail.com.
+> > > For more options, visit https://groups.google.com/d/optout.
+> > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.1903131634500.27312%40hadrien.
+> > For more options, visit https://groups.google.com/d/optout.
+>
+> Do you want me to drop this? As the previous code is more readable than this one.
+
+I don't know.  Greg decides...
+
+julia
 
