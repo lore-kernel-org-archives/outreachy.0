@@ -1,241 +1,121 @@
-X-GM-THRID: 6332005806257471488
-X-Received: by 10.194.79.231 with SMTP id m7mr3029231wjx.4.1474284987586;
-        Mon, 19 Sep 2016 04:36:27 -0700 (PDT)
+X-GM-THRID: 6668237128275591168
+X-Received: by 2002:a62:8894:: with SMTP id l142mr758867pfd.48.1552569942821;
+        Thu, 14 Mar 2019 06:25:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.9.13 with SMTP id 13ls111089ljj.0.gmail; Mon, 19 Sep 2016
- 04:36:27 -0700 (PDT)
-X-Received: by 10.25.99.71 with SMTP id x68mr642124lfb.28.1474284986995;
-        Mon, 19 Sep 2016 04:36:26 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id e21si1671275wmc.2.2016.09.19.04.36.26
+Received: by 2002:a17:902:a514:: with SMTP id s20ls3079216plq.0.gmail; Thu, 14
+ Mar 2019 06:25:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwDpWSmJ9FlBxxoM1266OMV293ZuoeZqnJbc2e1svgTPIzfISArfLxHDLCEnJErdlIUXqg/
+X-Received: by 2002:a17:902:234b:: with SMTP id n11mr13849285plg.22.1552569942189;
+        Thu, 14 Mar 2019 06:25:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552569942; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QWkoec/mX1IfjyEsIVYGtTixIGwpyE1DJM7poJR2dNdewID+XoR5t1uin+fcNr7wpS
+         s2cLfATRL+DcJ54KbY9YH/Jsm0CxJlzB+FLGnPlYAE6nfaRH1xrl1AdsQ2ZGLWtYblO9
+         IqNcTT/78zR39+qTjiQGbQBsp5GsIJ4ejrx5qQrBPtQCU58fzMDIa+v3nSkPZ5KWnrqh
+         RtYcDjWCRMYqFLso+gcKU496+j6X2ixUgEAyc17L/JaIcs88uNxqe9GuWEZbrj1W5i6B
+         zhRimIEsKrM8pAvH+TSJsu7YKpzH6yVo2rA1gQUpTrp+tRVoVIsuxar0FmpVADbJvHIx
+         j+Tw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=bSwPUAfQk2B49nOqvh7LdxybXa+cGe42GnYqetHEZEs=;
+        b=rj+EjMOAyKtUrUlGVmielsXQ9p6SyhQKrKboHHW4DJ14H+lT6JAkBZmLkfHUeEwRuV
+         FEn+LoWG2IuXIM0q1fQ+PnGEsRARH/Mfz1WdArBhRA67UUMtFMEa0fX3d42XhSh4RW0y
+         Rwaqhv3WElKa9IUQt7g4IDyqzKFdynrIqKM4yWUaJTRhQXdQNunJKEpCq9gNsqG9yRXo
+         F5iqFSDoPPy9ORKfoAJCauLHTEjphEHyQSa5bDCrgaMc0YE2ApXNL7jWIBUHHQVNGqhf
+         31CZLhjO3EimVzTceD5tlNHhnQyBbB+O6CIxs/Bn1O3Yeka4aHNg4oYM6ExXLJqAKPco
+         +1GA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="H3eIl/T5";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id p15si865745plr.4.2019.03.14.06.25.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 04:36:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Thu, 14 Mar 2019 06:25:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id b184so14468937wma.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 04:36:26 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="H3eIl/T5";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x542.google.com with SMTP id u9so3971480pgo.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 14 Mar 2019 06:25:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=yZRi90AtUlyHwHKp1/sgWjHhtzykJ4Seax1rGcjSAOY=;
-        b=hJU9SCmTVTx8Z/6GDkqfer6C6BS2HCQxSvSZ5PV5bZKegRlZh2WIM7CC8pzUA0TC5+
-         A8TJa6LAekutu9OJi+QrCGlaxPHqHUAs8KjrQcK21aTNzfzKr9U9frARkJIEwVXmNUQ4
-         mJFjtGq8fi6je47/DtlW2cHmDyqcZdAWR6r+uRSTezekv+pEZJwipm8zk8fTDxgAujRR
-         HWLhaLnG1H4dRuDnC3qQxUv7WT88pD/M1uA1CNgheVGC3aHembk/7gsXMuU/Nr3BrpoL
-         znDMW+C0x2a8a6L8JazVG8NTlPf54/auZ4Ot6zFmpbXobd05qvtnTnirQVqX9xayW+B7
-         Jymw==
+        bh=bSwPUAfQk2B49nOqvh7LdxybXa+cGe42GnYqetHEZEs=;
+        b=H3eIl/T5hQQNadKB1Dic0/sz10GIpyCK5KKhzCT3vf0RmpJgpC8hBJFG3zLZ/HpDL3
+         YDeX2g5yIHzUZq4jhSd5e5tfeOCHvb6VKLb2zapFADYl/m06w1QGt5RNwhdBe8yYYNjG
+         YbG2verwtx3hEaZQ7uWPBjGhhMAtO/M6Q2KkIr+z0olRf3Lnqqm+QzNocrjU760jdes5
+         GsIYhkBVXf0rxojWSdvtkzHlLRRym8Oc8dJrh00yzotlgRVLO3mVWDvkNcMwx8ytBtkQ
+         ranrlDPMG1UK43pXXZpwNvYGaGayobH1KtJP0JuDF8So0gRNaXs1F9ejiVpSMrltvs8U
+         2nRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=yZRi90AtUlyHwHKp1/sgWjHhtzykJ4Seax1rGcjSAOY=;
-        b=l7aBArOTP0Mf9Vn/niEmkC9jbd/WIMKPfesqHjQt9n1VELXnQ/K6vXEzzT4KVgaMT1
-         gKxm2s07h80ZlXr2eSa/up2N4RdAb0iiGEMSBOwmjJgLiL90QBtaBezKhj1xT+7dqjsb
-         Hd8im2r9O+85sMixAoJC2THwjKgDBUvuibqWa16aGSAh3dcVT1JD41bzh5kHVFzIbY5y
-         LmFx0GyJyj+Y3+MGpS4i9h5Y/2DOmmaRF5oWu/bDYRqFmNLJ4gxS5PbymD1lYgRvW7ue
-         346Rhw9q3NhA1ZA9Dt6QpnUdVErFRad5qObfJNH6XIUqg+FeGH3ixM7eU6C4U+Wf/eEN
-         exnA==
-X-Gm-Message-State: AE9vXwPRE0Sn9+ovbcKMNVKcAqV4HkjPOiCj5t4DLVf6jQ1APBFe0gVUaUeYIsfx+snrkw==
-X-Received: by 10.28.211.10 with SMTP id k10mr9435997wmg.16.1474284986539;
-        Mon, 19 Sep 2016 04:36:26 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from fireworks ([84.117.92.113])
-        by smtp.gmail.com with ESMTPSA id bk7sm22692719wjc.36.2016.09.19.04.36.25
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 04:36:25 -0700 (PDT)
-Date: Mon, 19 Sep 2016 14:36:24 +0300
-From: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: meter: ade7754: Match alignment with open
- parenthesis
-Message-ID: <20160919113624.GA10298@fireworks>
+        bh=bSwPUAfQk2B49nOqvh7LdxybXa+cGe42GnYqetHEZEs=;
+        b=ORemOEr4cmAn3YSuLXS1iRnUs8UV+8xxUgD++95f/j+zXj4XlfNAceRAl69yslJ3pr
+         5jftFckLLtL6L+K0Dt7pRO2IbLHlpAtQa5W4eKuma5zbKOrpCvxPa8CLagsSq7Jk58lV
+         A0RpXjPdI90FL3qOrdSJWgxP7CVp5J1+74GcnI50JwFkllZ5s2vqn4tH+k2iMmsNQSaJ
+         JT/0s11HpcBWts0X2/qqnnrxLSK+mIsLZWYhxGyDEBOTEpbThwgWKpdZGKJbxOo+pVz5
+         jBvMqACRE1CLwEs2dARjeB8OM0PyrtIIuufERfkTH+9FdZuYCjjsMkZ/yWnrF28SEKgJ
+         ZDZw==
+X-Gm-Message-State: APjAAAWLIW6tuRR8fiOywCa2K7Ej3Y7Qr1KRrd+aWv1WI/WQ8lV0Of8/
+	GeIz6h6dnCfF9ropkwTVhsADDfpj5BM=
+X-Received: by 2002:a17:902:59c1:: with SMTP id d1mr50455039plj.324.1552569941366;
+        Thu, 14 Mar 2019 06:25:41 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570 ([123.201.105.15])
+        by smtp.gmail.com with ESMTPSA id f4sm18399771pgq.94.2019.03.14.06.25.40
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Mar 2019 06:25:40 -0700 (PDT)
+Date: Thu, 14 Mar 2019 18:55:37 +0530
+From: Sanjana <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/5] Staging: rtl8188eu: rtw_recv.c: fix a space issue
+Message-ID: <20190314132537.GA4409@sanjana-Inspiron-5570>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-This patch fixes the following checkpatch.pl check:
-CHECK: Alignment should match open parenthesis
+This patch fixes the checkpatch.pl CHECK in rtw_recv.c file:
 
-Signed-off-by: Georgiana Rodica Chelu <georgiana.chelu93@gmail.com>
+CHECK: spaces preferred around '%' (ctx:VxV)
+
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- drivers/staging/iio/meter/ade7754.c | 59 +++++++++++++++++--------------------
- 1 file changed, 27 insertions(+), 32 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/iio/meter/ade7754.c b/drivers/staging/iio/meter/ade7754.c
-index c46bef64..4e93987 100644
---- a/drivers/staging/iio/meter/ade7754.c
-+++ b/drivers/staging/iio/meter/ade7754.c
-@@ -24,8 +24,8 @@
- #include "ade7754.h"
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index 443a62d6ee24..39a03f253338 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -1763,7 +1763,7 @@ static int recv_indicatepkt_reorder(struct adapter *padapter,
+ 			preorder_ctrl->indicate_seq = pattrib->seq_num;
+ 			rtw_recv_indicatepkt(padapter, prframe);
  
- static int ade7754_spi_write_reg_8(struct device *dev,
--		u8 reg_address,
--		u8 val)
-+				   u8 reg_address,
-+				   u8 val)
- {
- 	int ret;
- 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-@@ -42,8 +42,8 @@ static int ade7754_spi_write_reg_8(struct device *dev,
- }
+-			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1)%4096;
++			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096;
+ 			return _SUCCESS;
+ 		}
+ 	} else if (pattrib->amsdu == 1) { /* temp filter -> means didn't support A-MSDUs in a A-MPDU */
+@@ -1771,7 +1771,7 @@ static int recv_indicatepkt_reorder(struct adapter *padapter,
+ 			preorder_ctrl->indicate_seq = pattrib->seq_num;
+ 			retval = amsdu_to_msdu(padapter, prframe);
  
- static int ade7754_spi_write_reg_16(struct device *dev,
--		u8 reg_address,
--		u16 value)
-+				    u8 reg_address,
-+				    u16 value)
- {
- 	int ret;
- 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
-@@ -60,8 +60,8 @@ static int ade7754_spi_write_reg_16(struct device *dev,
- }
- 
- static int ade7754_spi_read_reg_8(struct device *dev,
--		u8 reg_address,
--		u8 *val)
-+				  u8 reg_address,
-+				  u8 *val)
- {
- 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
- 	struct ade7754_state *st = iio_priv(indio_dev);
-@@ -70,7 +70,7 @@ static int ade7754_spi_read_reg_8(struct device *dev,
- 	ret = spi_w8r8(st->us, ADE7754_READ_REG(reg_address));
- 	if (ret < 0) {
- 		dev_err(&st->us->dev, "problem when reading 8 bit register 0x%02X",
--				reg_address);
-+			reg_address);
- 		return ret;
+-			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1)%4096;
++			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096;
+ 			return retval;
+ 		}
  	}
- 	*val = ret;
-@@ -79,8 +79,8 @@ static int ade7754_spi_read_reg_8(struct device *dev,
- }
- 
- static int ade7754_spi_read_reg_16(struct device *dev,
--		u8 reg_address,
--		u16 *val)
-+				   u8 reg_address,
-+				   u16 *val)
- {
- 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
- 	struct ade7754_state *st = iio_priv(indio_dev);
-@@ -99,8 +99,8 @@ static int ade7754_spi_read_reg_16(struct device *dev,
- }
- 
- static int ade7754_spi_read_reg_24(struct device *dev,
--		u8 reg_address,
--		u32 *val)
-+				   u8 reg_address,
-+				   u32 *val)
- {
- 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
- 	struct ade7754_state *st = iio_priv(indio_dev);
-@@ -123,7 +123,7 @@ static int ade7754_spi_read_reg_24(struct device *dev,
- 	ret = spi_sync_transfer(st->us, xfers, ARRAY_SIZE(xfers));
- 	if (ret) {
- 		dev_err(&st->us->dev, "problem when reading 24 bit register 0x%02X",
--				reg_address);
-+			reg_address);
- 		goto error_ret;
- 	}
- 	*val = (st->rx[1] << 16) | (st->rx[2] << 8) | st->rx[3];
-@@ -134,8 +134,8 @@ error_ret:
- }
- 
- static ssize_t ade7754_read_8bit(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
-+				 struct device_attribute *attr,
-+				 char *buf)
- {
- 	int ret;
- 	u8 val = 0;
-@@ -149,8 +149,8 @@ static ssize_t ade7754_read_8bit(struct device *dev,
- }
- 
- static ssize_t ade7754_read_16bit(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
-+				  struct device_attribute *attr,
-+				  char *buf)
- {
- 	int ret;
- 	u16 val = 0;
-@@ -164,8 +164,8 @@ static ssize_t ade7754_read_16bit(struct device *dev,
- }
- 
- static ssize_t ade7754_read_24bit(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
-+				  struct device_attribute *attr,
-+				  char *buf)
- {
- 	int ret;
- 	u32 val = 0;
-@@ -179,9 +179,8 @@ static ssize_t ade7754_read_24bit(struct device *dev,
- }
- 
- static ssize_t ade7754_write_8bit(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
-+				  struct device_attribute *attr,
-+				  const char *buf, size_t len)
- {
- 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
- 	int ret;
-@@ -197,9 +196,8 @@ error_ret:
- }
- 
- static ssize_t ade7754_write_16bit(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
-+				   struct device_attribute *attr,
-+				   const char *buf, size_t len)
- {
- 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
- 	int ret;
-@@ -403,16 +401,14 @@ err_ret:
- }
- 
- static ssize_t ade7754_read_frequency(struct device *dev,
--		struct device_attribute *attr,
--		char *buf)
-+				      struct device_attribute *attr,
-+				      char *buf)
- {
- 	int ret;
- 	u8 t;
- 	int sps;
- 
--	ret = ade7754_spi_read_reg_8(dev,
--			ADE7754_WAVMODE,
--			&t);
-+	ret = ade7754_spi_read_reg_8(dev, ADE7754_WAVMODE, &t);
- 	if (ret)
- 		return ret;
- 
-@@ -423,9 +419,8 @@ static ssize_t ade7754_read_frequency(struct device *dev,
- }
- 
- static ssize_t ade7754_write_frequency(struct device *dev,
--		struct device_attribute *attr,
--		const char *buf,
--		size_t len)
-+				       struct device_attribute *attr,
-+				       const char *buf, size_t len)
- {
- 	struct iio_dev *indio_dev = dev_to_iio_dev(dev);
- 	struct ade7754_state *st = iio_priv(indio_dev);
 -- 
-2.7.4
+2.17.1
 
 
