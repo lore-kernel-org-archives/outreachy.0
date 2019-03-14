@@ -1,101 +1,97 @@
-X-GM-THRID: 6401417655470784512
-X-Received: by 10.99.185.21 with SMTP id z21mr4297794pge.40.1490446193295;
-        Sat, 25 Mar 2017 05:49:53 -0700 (PDT)
+X-GM-THRID: 6668219746815574016
+X-Received: by 2002:a2e:2c1a:: with SMTP id s26mr2932976ljs.12.1552567870113;
+        Thu, 14 Mar 2019 05:51:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.56.232 with SMTP id k37ls10076722ote.15.gmail; Sat, 25 Mar
- 2017 05:49:52 -0700 (PDT)
-X-Received: by 10.200.44.172 with SMTP id 41mr4072358qtw.30.1490446192797;
-        Sat, 25 Mar 2017 05:49:52 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id 190si1136262pfv.3.2017.03.25.05.49.52
+Received: by 2002:a19:7408:: with SMTP id v8ls545074lfe.9.gmail; Thu, 14 Mar
+ 2019 05:51:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtCAp0s0BLPSQYq8aV96A2OhItJIrzUlOOdwZpTV65bnrC8QRCkGNK36zInkAP5a1Ist7e
+X-Received: by 2002:a19:c502:: with SMTP id w2mr2956901lfe.15.1552567869148;
+        Thu, 14 Mar 2019 05:51:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552567869; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Kj/2BBgUv69+Un6FTwXuuyaHpeb4oxDNNJ/j9FCrdXEbo6b94HglYrqtdAWnr3ZvoV
+         PZ5Pf5bBaqvPFkO+mKHGcS6cPLqHumozysgPfMuE1v19IIsrQwdFFuG2NqTmzriilFIa
+         4jImcTFmcrjFqlZcMjJWLwI4aGQVywn4waqu1kR2VBKZc+/D5zHHl7SEOWN5Fo4d66C9
+         5QeJPJ/aWovkcBLZH1UorI08P99bu3f8CcFBjst8yb9ghLwVVyQqO/KBupduFtRGTK9x
+         d/PXo6Lvf4sFHY7WI6TSPAP8TakAL6ot78cWt9FmqHE/20lszBuZO10P+LWvW1X2Lybz
+         Nnbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=+q1FedkBLcnGzos7b06eX28urXBI1zJkaadn0Ca9iwk=;
+        b=L4HeCGV+YSj73t72B695EJf2c+zKa7AnLr/ytQNvtMYnFSr+erk39zNcNdaALyM8/7
+         iAXFOXnhiu1XxCKLbpTWKHOvkrxQI6rDGmow//lw4JS2gV49/pkssNbhTx9wL8seAJrR
+         SzV+oJmyjZusizuNiMZixkqrBWR+Ux1gzN6g2tUVEmS2Z+7CscFQsJvXewgDVFKysTKD
+         wadNhF9Aj1j0v9WhQ59wmIu0L63K+q4pPY8IDqeVRBqYNWQPtnpGqCjLi3qTADQds9HA
+         JJq01fcifujXM7elFD8ImAcb6veGUP2v9BSgWkAPm39Yoe9njGfljk74mwRgltgPpyDQ
+         8sng==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y1si669595lfe.1.2019.03.14.05.51.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Mar 2017 05:49:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Thu, 14 Mar 2019 05:51:09 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id g2so2809232pge.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Mar 2017 05:49:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=r3uSf5EibxFq4NwkjtUnm4qYNnPjGp4NaXosndty8nI=;
-        b=fIMFrET8EVvqQuWONXOV13JBnyqvEuC6yqK2Uc/C/eeNsFsEd+PXu+exxd9tVeVXHS
-         H3NNXB35lCSwuS9dadjN8KsInFXf5yw4pAIs++vxj/ADkcuDSaCMzI3eaXiYEb+8lCY4
-         BeOQuG4YzNtb5MoqHY2fhc11IUNsyQAAKqmGBd2IAfm0WEo9/EVonghoNeJgLGLM5QkV
-         0D9CzRk4ipRHfOPGzm9+ig/S6lawzWthT0CUvcl+WLyvW0a9Vy9t0yBNPX6ZUselPk8b
-         zhKKDKsLm8UfO+bjxy4o2ZCkcl12J2ZiO+gYRZQYVit5K1lLhs5Gt5dshe7llfeN39wG
-         GwfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=r3uSf5EibxFq4NwkjtUnm4qYNnPjGp4NaXosndty8nI=;
-        b=caZ7aIAAv1emZmXVeQutrPCwHiks53gvGSuPvHBqftb5nkOKe9hSQDrPhBkOz0GRio
-         lQW4e9AHvrRmTIPWCVdjzcFWsL5+te20vj6bi/o14AcdinZalsrG1XDTR6qKwFOgmXLt
-         k8yBMUwZKpa9023sUUKdEKQhTAY4epfWbdx6l9lHvTpOEOPz9wvYrMt9oAGfOupWtdQX
-         aUHkV6FY/UfZxDWMY86M0RqzCqCymNfyfhNmt1gpn+MHIWg33oH3mga5fLkHTEIgLDys
-         RblZXsfeQShNqjmp7gnHbMyJ20u8Xs0U/lg9lGGU3B2cPM3xJy3Wv6xJPqAGHLaXNEWD
-         iXsA==
-X-Gm-Message-State: AFeK/H2T8a7Lhqxxvj3MYDUFkKMoiq+o1IFa4BmxhLSdDaEvCAuSPwVDsgoaObyxrzh6AA==
-X-Received: by 10.98.34.86 with SMTP id i83mr15333068pfi.89.1490446192557;
-        Sat, 25 Mar 2017 05:49:52 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 65sm10535123pfg.109.2017.03.25.05.49.50
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Mar 2017 05:49:51 -0700 (PDT)
-Date: Sat, 25 Mar 2017 18:19:47 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: pablo@netfilter.org
-Cc: Jozsef Kadlecsik <kadlec@blackhole.kfki.hu>,
-	"David S. Miller" <davem@davemloft.net>,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] net: netfilter: Remove multiple assignment.
-Message-ID: <20170325124946.GA9109@arushi-HP-Pavilion-Notebook>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,478,1544482800"; 
+   d="scan'208";a="373400065"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2019 13:51:08 +0100
+Date: Thu, 14 Mar 2019 13:51:05 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Outreachy <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtlwifi: Replace 0 with
+ false.
+In-Reply-To: <1552565883-10229-1-git-send-email-digholebhagyashri@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903141350520.19170@hadrien>
+References: <1552565883-10229-1-git-send-email-digholebhagyashri@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch removes multiple assignments.
-Done using coccinelle.
-@@
-identifier i1,i2;
-constant c;
-@@
-- i1=i2=c;
-+ i1=c;
-+ i2=c;
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
-contribution to outreachy netfilter project.
 
- net/netfilter/nf_conntrack_proto_sctp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On Thu, 14 Mar 2019, Bhagyashri Dighole wrote:
 
-diff --git a/net/netfilter/nf_conntrack_proto_sctp.c b/net/netfilter/nf_conntrack_proto_sctp.c
-index 33279aab583d..723386bcc2cb 100644
---- a/net/netfilter/nf_conntrack_proto_sctp.c
-+++ b/net/netfilter/nf_conntrack_proto_sctp.c
-@@ -346,7 +346,8 @@ static int sctp_packet(struct nf_conn *ct,
- 		goto out;
- 	}
- 
--	old_state = new_state = SCTP_CONNTRACK_NONE;
-+	old_state = SCTP_CONNTRACK_NONE;
-+	new_state = old_state;
- 	spin_lock_bh(&ct->lock);
- 	for_each_sctp_chunk (skb, sch, _sch, offset, dataoff, count) {
- 		/* Special cases of Verification tag check (Sec 8.5.1) */
--- 
-2.11.0
+> Replace 0 with false, Bool intializations should use true or false.
+> Detected by Coccinelle semantic patch boolinit.cocci.
+>
+> Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
 
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+
+> ---
+>  drivers/staging/rtlwifi/btcoexist/halbtcoutsrc.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtlwifi/btcoexist/halbtcoutsrc.c b/drivers/staging/rtlwifi/btcoexist/halbtcoutsrc.c
+> index b519d18..9198189 100644
+> --- a/drivers/staging/rtlwifi/btcoexist/halbtcoutsrc.c
+> +++ b/drivers/staging/rtlwifi/btcoexist/halbtcoutsrc.c
+> @@ -830,7 +830,7 @@ static void halbtc_display_wifi_status(struct btc_coexist *btcoexist,
+>  	dc_mode = true;	/*TODO*/
+>  	under_ips = rtlpriv->psc.inactive_pwrstate == ERFOFF ? 1 : 0;
+>  	under_lps = rtlpriv->psc.dot11_psmode == EACTIVE ? 0 : 1;
+> -	low_power = 0; /*TODO*/
+> +	low_power = false; /*TODO*/
+>  	seq_printf(m, "\n %-35s = %s%s%s%s",
+>  		   "Power Status",
+>  		   (dc_mode ? "DC mode" : "AC mode"),
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1552565883-10229-1-git-send-email-digholebhagyashri%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
