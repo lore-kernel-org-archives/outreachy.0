@@ -1,101 +1,69 @@
-X-GM-THRID: 6665731801196003328
-X-Received: by 2002:a1c:2545:: with SMTP id l66mr1182754wml.14.1551986625120;
-        Thu, 07 Mar 2019 11:23:45 -0800 (PST)
+X-GM-THRID: 6668128848911007744
+X-Received: by 2002:a2e:2c1a:: with SMTP id s26mr2800545ljs.12.1552544731857;
+        Wed, 13 Mar 2019 23:25:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:400e:: with SMTP id n14ls1475148wrp.16.gmail; Thu, 07
- Mar 2019 11:23:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxV3kUmdR9FLOpFWC3wkhl3RWsXuR835vMgEq8xqORUs07IkPA4XTtNY5AGDgC5YC2votwu
-X-Received: by 2002:adf:fb91:: with SMTP id a17mr797415wrr.1.1551986624305;
-        Thu, 07 Mar 2019 11:23:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551986624; cv=none;
+Received: by 2002:a2e:63c4:: with SMTP id s65ls571468lje.12.gmail; Wed, 13 Mar
+ 2019 23:25:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyfEmYaDP8UWfMMHPBwHi1wHe1SudHFzfRNNjP+A3j/rSUNY1xlUzg8wH5FVx+8l9kK2dl5
+X-Received: by 2002:a2e:8941:: with SMTP id b1mr2723857ljk.24.1552544730992;
+        Wed, 13 Mar 2019 23:25:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552544730; cv=none;
         d=google.com; s=arc-20160816;
-        b=inUTXwuWj9e11AwnMct/6SRmMRPTxzD0L0lw1EKCnbWeF9EUJC2oE3OiPt262ouwMT
-         emx08QHfq77Xh3aBn0BqXurQZ/rRIhkJcxPrengNMtVFho0XIPXCdFTFpceWzXTdJve5
-         MZkU7DbWr01DiaEw+wTlGUdubEyk/FN33PPxFkf0nNLbPdMcwGTEv+NfVy6EzXDqsrd1
-         YfvkpHTYTp4gqF0+4RTVEKMvoAk7YUYsfYB5Mz8qd6Pu7zQf0N/Zxkq5VA2u4hqiHc11
-         psi0FH+55jGJn8iPf6Tx/sseQmOZij4vhkRL+BgcanhrjDtzSkunu2/5zCylSIdSLVSM
-         ZpNA==
+        b=O8hL+UDrWB2qcx5dxkqhc5PwVl+gcFdmMd397UIfKMEtRtyXP1/gP2+skt/lElO37j
+         09jsDkBsU2YlOv/YSm0hdrJJFN7v8o98hRIXoYssoROajao6dE8sfMto8NaWlwch4qsV
+         MiCzagpizqYfLKCtrzwNQhR+yrR+vcL9z02rOpyk5YSnHPW5lRgi8bqrueYWDZNF7dzv
+         DlstLipJUFE4i0o7No2vCd/LdB3xN6JToTiYUdrG0+AkwfqOIQ803BeAOLyef41f60Gq
+         mstaSRq4VEtxGay1VS8XNX/CWPp28z+CUfKNtMxu+8uvkfmqaR2BG5mRixbNTOeEBMc+
+         cNEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CLn0dCqanzWxXfjkKpfpWlF+TO7E3ktSdWyZME41jlc=;
-        b=y4a4q6efH4GjRaMDAByLyhNQVV98fLwoSLWkwTFVG4RB/M7KbqJm5PWLqjSCkKKiN3
-         tgVl8yWwEmSB6dTmPYjBlAZQYBRSAVwkZ4Xkjvu2HxAF8FklL31WTaZu03UrGdVfC/ix
-         Ie6xMb/8+PmJ5LGawuyfttiBHP9WuXwe3Gei2hvDmWB84yLJs3TIYWSX2EowucfQuFv0
-         wSBjqUcMu2sS1FBOJoInU9AN3McRsGoRLD3+oOFcLzbYt6rxz6QyJvuHTKjVWURNQ5hO
-         PK4oYEUw8GFn4gh/iOAYbE3gO6QzH5v0evedsKEzY39fCgJn/C10ckDfHlXnyQKaDchz
-         X8Mg==
+        h=mime-version:user-agent:message-id:subject:to:from:date;
+        bh=6N824d0AJ2ZI0bS3jhpLVRRNIyq3SsP8cdgv247k7fc=;
+        b=kiwXMPEvINJe+yq/kL4/+1UmIdr9nemmZaQ2CkV2P8T8EtLqJIQ9iqNCy/7sMf3p8Z
+         VWpIDgKHuKiADn4ph3a7KNy3yd9TggYoq3A6TGn6pt73MTXFnq1A3WzCLz2hEiezaOEs
+         DzAWtzazppLYFpLXr26ts/HPkk4qaRYeh5XNqkIHTSa0JC2JR1RXCHk19VAQBfS1zs1p
+         pJQ9+EhjxEtQnY6hIZFm4MXo3w4ezffVz0SAjKd0FqxXKkob2NILAAS16jfgIcU39ks6
+         qg0sAg2DbRg/nULMXjkvnQ3m2xQ3U54HaAwpIxLCeB22Rujr1ZfFspMT09YdAUkZXg3H
+         +edA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TOEvdqfD;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id q192si317706wme.3.2019.03.07.11.23.44
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id k13si677718lja.5.2019.03.13.23.25.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 11:23:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        Wed, 13 Mar 2019 23:25:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TOEvdqfD;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id g12so18797758wrm.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 11:23:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=CLn0dCqanzWxXfjkKpfpWlF+TO7E3ktSdWyZME41jlc=;
-        b=TOEvdqfDySLE6uE18bMD84qz4D8/6WGUuq0vtqspCmLam67NQwZ1CH+pCTXyZnAcoC
-         kXIvpWyQ3KC785YHraOW+5CAVQ+JH3iMhnSnrg0HjkMhqvXZKSq4otDY5GBb900bSdAu
-         rJDUCHQhdAQ9hQVGhPy3m7yElFJIOfr+nm+nano/aokkJEPqK2vWBV4kk736/9dOfeRc
-         L47s+q3PhMWoYlEnyhGSaIEc7uUkGfLNdfQz7oavRc+ffw9hKMyDTKCTOwfQ5m9JWZI+
-         qCRYuo7W13qSQddpxVcQ+7sZ1ndOEzAq5tAALGbTqOpz6gcz7oQixwCpwAfuP/5oLMiQ
-         FQuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=CLn0dCqanzWxXfjkKpfpWlF+TO7E3ktSdWyZME41jlc=;
-        b=EJPtdmkQMJ5ox8NBPI/M5i6EFvqtcn5DmQiV6049wF8i4U/UxAZfeRiQi7OtpvD3IE
-         XL9OOMIlKH4QgR03g+IiuNlRU43futyAqcrfmAXEPBBzTh5MCJhaIduzsnJ0ru0dh/V6
-         GC9vFsfmsaD6XfOLdtf2/59gu20nahDyOLQOBjJHH+49oZPn0K+/nCiVeVOtyvBoQQQ7
-         f6Y0iFJMo/IBt+Xwn6223Da/obdzFtiha864p4xO2zDrRsHntPt3dcbTtJXN25ms24Ef
-         E0soBYL7N6jN0h3msY7p5iMXuINwoE6qBrMaXPXPWgb+iz3x/VPAQBjL/TwzwC0ZLl5a
-         nqsw==
-X-Gm-Message-State: APjAAAXauhD8g9B27ESpHfOaJ4DKg4NC+qHzbQf/2j1qSWyw6ZTFMaDd
-	iAG3qjLS/fATTG8zXFqo6o7epBcaO4o=
-X-Received: by 2002:a5d:6785:: with SMTP id v5mr8610863wru.59.1551986623741;
-        Thu, 07 Mar 2019 11:23:43 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([2a02:2f0a:b600:4700:9c19:34c6:5e3b:e162])
-        by smtp.gmail.com with ESMTPSA id e193sm10446319wmg.18.2019.03.07.11.23.42
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 11:23:43 -0800 (PST)
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,477,1544482800"; 
+   d="scan'208";a="373323263"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2019 07:25:30 +0100
+Date: Thu, 14 Mar 2019 07:25:29 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: outreachy-kernel@googlegroups.com
-Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
-Subject: [PATCH] staging: vt6655: Fix malformed SPDX-License-Identifier tag
-Date: Thu,  7 Mar 2019 21:23:40 +0200
-Message-Id: <1551986620-18182-1-git-send-email-daniela.mormocea@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Subject: return value Coccinelle exercise
+Message-ID: <alpine.DEB.2.21.1903140720070.2814@hadrien>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Replace "//" comment with "/**/" comment
+Hello,
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
----
- drivers/staging/vt6655/device.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+In many cases it turns out that the return value Coccinelle semantic patch
+reports on things that in practice people would rather have left as they
+are.  One option is to choose carefully what you decide to send to the
+mailing list.  Ask yourself is the code better before or after, or does
+the change raise some other opportunity for improvement.  Another option
+is to make the pattern in the semantic patch more restrictive, so that it
+returns only results that are more likely to be of interest.
 
-diff --git a/drivers/staging/vt6655/device.h b/drivers/staging/vt6655/device.h
-index 2f9e921..29f354c 100644
---- a/drivers/staging/vt6655/device.h
-+++ b/drivers/staging/vt6655/device.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0+
-+/* SPDX-License-Identifier: GPL-2.0+ */
- /*
-  * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
-  * All rights reserved.
--- 
-2.7.4
+For example instead of the pattern ret = e you could match ret = e(...),
+thus ensuring that the pattern only matches when the ret variable is
+assigned the result of a function call.  This may cause you to miss some
+change opportuities, but will give fewer results, so may make it easier to
+find the promising ones.
 
+julia
 
