@@ -1,94 +1,124 @@
 X-GM-THRID: 6668655286716203008
-X-Received: by 2002:a24:5a04:: with SMTP id v4mr7122645ita.37.1552820284648;
-        Sun, 17 Mar 2019 03:58:04 -0700 (PDT)
+X-Received: by 2002:a1c:9c93:: with SMTP id f141mr269127wme.10.1552667302835;
+        Fri, 15 Mar 2019 09:28:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3b69:: with SMTP id i41ls4605798jaf.3.gmail; Sun, 17 Mar
- 2019 03:58:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy2oUiAygG0OAUu6Nf2Wtm7VIWoZ8yEnTyXtsM0nKFFFHq8RYn4gTyLOg7h+eQpbNQ+M8kL
-X-Received: by 2002:a02:5ec9:: with SMTP id h192mr5168531jab.2.1552820283946;
-        Sun, 17 Mar 2019 03:58:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552820283; cv=none;
+Received: by 2002:adf:fac8:: with SMTP id a8ls1919146wrs.17.gmail; Fri, 15 Mar
+ 2019 09:28:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqySi4TRwiv0Il9bHNvUSd8SnvQs8OC/9yIZtgbumV5BJklIW0gCbZkLJBjbuCt5LrTdPMOz
+X-Received: by 2002:adf:8121:: with SMTP id 30mr264006wrm.22.1552667301621;
+        Fri, 15 Mar 2019 09:28:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552667301; cv=none;
         d=google.com; s=arc-20160816;
-        b=i9J4V0yfLSxP1Ko4mkVAx0MlpHExjxwIWTzgY+KSdjSf8J7N7pjB2uyImJBSNJ8I29
-         uBTHjAldmwt8O9AnY1VzIm+096ydak3plpjwQIBAexR0+RWxb58ohBotLAjFjD1dZb/R
-         JmcfI6bn/9KCIaA8yhRppc1k9beBVPKoHuRMOe/7DqAGJbZ/M7DbI+MapUNW/ScqzvSF
-         MehCkSV9I7+NOXVdJF37RbgJ1UMN9+4FWSpFfdtGJjZUPt4G9anSM8+0XfWsgp8akLM/
-         udoGw86Q3HykbpXMXqbAqoCRnGlhYY2JkU7lCwzY2IBJ3qde1JfDANkuzb7yEpHWsjzX
-         gFEg==
+        b=T+YtWB22a1LWV47kz0WvQ4Q5QI/pcku4cWfXpRjRoJKJQeSYoJjr/KRJk+izNizoKt
+         8XTxM0FilmGuKTUd1FJ7xWFSfcdrwwKmZujuO3zfsoQSzocXj0YPfgjXR9m1Pw74qDhb
+         3QTPidKMLggkSdlShyU3MseELFzMCh3uWr5LL0tVUk0ppDDIOdub8wUijr2+6R+FnmLM
+         HV1Orerm1iqdckBQsM542OL88t8BAt6k6d970AaGWHa2gLVa5AOzfDz88NjEsYV6a+J7
+         W1/bQa+qhKTF9tJE6zLFTIqvI68+WJOGWMppjtVcymegFn9cFVLAWiak/lKWl2126CW4
+         4Oyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=PntqPUpwl5fJ9NaeRJsCXm209C9BuPfHdDq6iwBd20o=;
-        b=Hs1cW4eH+N0E8EGvvHbK4TgUTUICaJloTjYgcecHBZ2RqSwKQre2Vm+2VeutS4fVGD
-         ANOIlOqLn6LhjaxdrN4mj1ZQjw/HH7+fA+1Auj4kK0uF/QQFblNeZmtn34PVuKBdLLee
-         ZnhZ5ExO0B81wtTmh7EudibiIMRvFImtrZb/EuDII+ixPGtCZlHDoH+zwGkDUgPYU9PZ
-         Wz2zX2jjOYbcnugYim0n/GsftaD6t3DNiCEf6DmSdjGDEOJcm2DXCaa2CDPoNfH/gctn
-         2TRbT5a1qHhdfQsp047FLSQOfETOF481OcnHTOk8RFRxm2Ph69WYgQIrazsj0JhHx6R7
-         X+aQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=jVB0RyDovBXZHsXhN9uiStdU1EzxeGturH/r7ms1u1A=;
+        b=iq/kUKXW5OmZSQFQ/N1ktcK900TKVb6ZPIz6pnpZXZMnKAeFhdPiLPEmI8tvyXwuVy
+         jsHY2kmGNDd3X3TqitYIGwQqiRAQ1FOYoAKGyGoJbklu23u3uI6/a867QjS0VCU0dQ6G
+         KeupsABgKykY+4rDqpkPJjOdhPQeWnjyzpRbxLkPughiPfAJ4Qjp4lHi0KQeoSmnR2mf
+         3/J8v7kGA2iO/wOxDDmpn3NjIqWsLm/wl2mdaz8DXLjNYQNvs7hWWh6X4ExtIsdd3i6W
+         PIHgb0k/x5I/+L5sTm0xnYmKYf7KISUAUzbfFkakhORnN+8+VyJcuUcKF65VIm8DD0qI
+         Sdgw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Xk8ZtAmY;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id f13si365939iok.3.2019.03.17.03.58.03
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E1uuqrRc;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id y192si82030wmd.1.2019.03.15.09.28.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 03:58:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Fri, 15 Mar 2019 09:28:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Xk8ZtAmY;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id B956221019;
-	Sun, 17 Mar 2019 10:58:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552820283;
-	bh=+nIPrd8QW/p8JtWP8G/55XAYO5OIyNcHtKwKICm+cbY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Xk8ZtAmYFFm44Z1RXYmv4BuDg//4vtgrZjUCymxpqN6fQhtz6yIUyVaBLBVjkN7Rs
-	 ooclS9hgsCJwxNdThOTkCTRtaR6Bse8u2xcixqtYGF4YMfrFNma76cOeSZ5+jRxdlR
-	 b3Y/BvaGzHpyXGuUSTwnIDiyfoW4+HdbKnSvTVxc=
-Date: Sun, 17 Mar 2019 11:58:00 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jules Irenge <jbi.octave@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E1uuqrRc;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x444.google.com with SMTP id t5so10231958wri.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 15 Mar 2019 09:28:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=jVB0RyDovBXZHsXhN9uiStdU1EzxeGturH/r7ms1u1A=;
+        b=E1uuqrRc1SosQBUQgMiha5/slYaWYETNPNciQholvlIJJpAm8yVwDL0/9vE792wMUG
+         y3xWz0v3wOVEc4qhV4Q7sWLGqEPgYEShDlhim1Y7YfNON3a9R+brIiHekFpRXBqpiXM/
+         ZzmWTAru+tmdGfiW1J7lWqjIs/RcLjk21ACrOX0w7ABbMNTcx74YT0ZIkp+4E6m3GsR4
+         4nOLLK6q+SrBH/nF7X4zfRxw9Apbpz3y+lbmTKACZJtANYkQEb6aFTxCGYl7Fch4b2o4
+         2U4bqj0OHOCRF135S2+1EGqE6IKGdPYCE6mfsXJsUgYgNUqQ3LwMgZ8J6xb7h/dP/iNj
+         mtQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=jVB0RyDovBXZHsXhN9uiStdU1EzxeGturH/r7ms1u1A=;
+        b=p7Rjkl0QxU14oKGvk9BdW148754z9S29QFo/fnVIb6ACfDdJgCW7QIfLCrksSh2mh5
+         M53Ru1/B7RjC263Yzma3EhxyeJHEAof5bh080f1KAxfQJwAaA2zW40aaYeN90bV0a/m4
+         ieBzoZUgU7jAShFzfuVwmEGnrheN53nizbljLc5J0Ne+8y7KpXcyKd12r+Q42KNm4fR+
+         gW7rax3Y2MkSVKmyj9Lax02jCVIgQP0xMgruLn1iTY1xnOIls5Fn6u5CuZr5P44bLKVj
+         UIAypecoT3G7cBW/kaOqhKVK0KBtMcW+E+tBHltjJUFGECDansFL4bDD/6vNkHnDbquT
+         Y92A==
+X-Gm-Message-State: APjAAAVrLze1LI2cQmAbjPYB0pbWP/RVs9auIGoOVWW+us7GoXU5dbjt
+	k1hdZMdewGPYzdIMC0zN7SEmKwc=
+X-Received: by 2002:adf:f0c5:: with SMTP id x5mr3218386wro.133.1552667301128;
+        Fri, 15 Mar 2019 09:28:21 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
+        by smtp.gmail.com with ESMTPSA id s127sm1469428wmf.39.2019.03.15.09.28.20
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 Mar 2019 09:28:20 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: rtlwifi: remove unnecessary statement
-Message-ID: <20190317105800.GA27187@kroah.com>
-References: <20190315162808.10646-1-jbi.octave@gmail.com>
+Subject: [PATCH] staging: rtlwifi: remove unnecessary statement
+Date: Fri, 15 Mar 2019 16:28:08 +0000
+Message-Id: <20190315162808.10646-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190315162808.10646-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Content-Transfer-Encoding: 8bit
 
-On Fri, Mar 15, 2019 at 04:28:08PM +0000, Jules Irenge wrote:
-> Remove unnecessary assignment statement
->  and variable before return from function.
-> Issue suggested by Coccinelle using ret.cocci.
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/rtlwifi/phydm/phydm_rainfo.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
-> index ed740a93c8b6..c9837fbde54d 100644
-> --- a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
-> +++ b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
-> @@ -926,8 +926,7 @@ void odm_refresh_basic_rate_mask(void *dm_void) {}
->  
->  u8 phydm_rate_order_compute(void *dm_void, u8 rate_idx)
->  {
-> -	u8 rate_order = 0;
-> -
-> +	
+Remove unnecessary assignment statement
+ and variable before return from function.
+Issue suggested by Coccinelle using ret.cocci.
 
-No need to keep a blank line here, and you have trailing whitespace,
-which checkpatch.pl should have told you about :(
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/rtlwifi/phydm/phydm_rainfo.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
+index ed740a93c8b6..c9837fbde54d 100644
+--- a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
++++ b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
+@@ -926,8 +926,7 @@ void odm_refresh_basic_rate_mask(void *dm_void) {}
+ 
+ u8 phydm_rate_order_compute(void *dm_void, u8 rate_idx)
+ {
+-	u8 rate_order = 0;
+-
++	
+ 	if (rate_idx >= ODM_RATEVHTSS4MCS0) {
+ 		rate_idx -= ODM_RATEVHTSS4MCS0;
+ 		/**/
+@@ -950,9 +949,8 @@ u8 phydm_rate_order_compute(void *dm_void, u8 rate_idx)
+ 		rate_idx -= ODM_RATEMCS8;
+ 		/**/
+ 	}
+-	rate_order = rate_idx;
+-
+-	return rate_order;
++	
++	return rate_idx;
+ }
+ 
+ static void phydm_ra_common_info_update(void *dm_void)
+-- 
+2.20.1
 
-greg k-h
 
