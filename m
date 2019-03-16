@@ -1,114 +1,138 @@
-X-GM-THRID: 6804823419031388160
-X-Received: by 2002:a2e:984d:: with SMTP id e13mr15873240ljj.275.1584371416067;
-        Mon, 16 Mar 2020 08:10:16 -0700 (PDT)
+X-GM-THRID: 6668772071902806016
+X-Received: by 2002:ac8:1812:: with SMTP id q18mr6524869qtj.29.1552869488534;
+        Sun, 17 Mar 2019 17:38:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:211:: with SMTP id y17ls3431737ljn.10.gmail; Mon,
- 16 Mar 2020 08:10:14 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vswEgwFexSvBB7rUb1RIvFMVXbbWmKzNtUEtOC69yMsToefYK+FxgL9xwgKZ/RxibXCYJ1r
-X-Received: by 2002:a2e:9982:: with SMTP id w2mr4345442lji.11.1584371414780;
-        Mon, 16 Mar 2020 08:10:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584371414; cv=none;
+Received: by 2002:a0c:8b55:: with SMTP id d21ls6007495qvc.2.gmail; Sun, 17 Mar
+ 2019 17:38:08 -0700 (PDT)
+X-Received: by 2002:a0c:f553:: with SMTP id p19mr7909650qvm.27.1552869488045;
+        Sun, 17 Mar 2019 17:38:08 -0700 (PDT)
+Received: by 2002:a37:4d12:0:0:0:0:0 with SMTP id a18msqkb;
+        Sat, 16 Mar 2019 15:50:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzyv/M7O1SlE63zjQhdQ/fKBP54LKa17p9vS+vOHbAPskShYuvW/4JOcnPn8pFJ9gSNlaJ6
+X-Received: by 2002:a50:928a:: with SMTP id k10mr399269eda.10.1552776656733;
+        Sat, 16 Mar 2019 15:50:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552776656; cv=none;
         d=google.com; s=arc-20160816;
-        b=axD2ZFKOxsKdDq5UKmzSUEdORqKfjhf0opeF9zVNlaobZkwhNAP4iWWzsjvSlrJ3od
-         yNyT+/q/zuG6vJcn79P/HWUZyqAOIPGsPZbQgb+5IJlFa9gDP1cETzhVHfRGDv2fOgsp
-         1yzUNp0HV7TOsK9GgJMKjKcACcJzGcW0oEvnbRRaayI9SEtPY8TzX2AYpazNMz1TYBiZ
-         Gk96vloFmJV4cAWfO/fxVt79JaVL5zqwvxdgBIOm3abixmFiw+mseJPkyy8bXxe1oJR7
-         7qlfCM8M17H1BKlqEOsdNfm+57byxokUYQHKkwxS8mQF+AElzZy3gH/Z2ODrT3ru/ZX7
-         jDhw==
+        b=bNlX7FudRbB1eo9cwC4wb3tjVYr+WTwyGZ9mrDN1oDxrkOej1hNWfzBWDxekTnpq+9
+         kQYzj8EP5/UoTCuiIh50VN3MbvGnMig0zpCQDLR8CkImGm6ZwWgeLgcdM4mvsWEgMcHq
+         hgQtzj9G0iJyKmC1fKmoub04mWfzjkcIPX1yhnpJWou8GEpMaEY4+j1KZOmdihJr+PXL
+         KM9Vm2Yvo6od0tiFUK6ELBUl3cX+ARqAPT9hMgBspN4R9eY4VASYrTs7PM2rTzlwlYtu
+         DQOuPVS/lAGl6M88K2iVYcMoBVaHNaWrUR7m9OoX7fclrjHy1jGDj8AJE9ZFJLM/ODLE
+         dc6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=2Fx3frZ0Q8WUx1NnFpeDXhjX6FabST3ZD5y7N3fZDOE=;
-        b=YF03bcb++C65dxR9s5kjS8RLxlbR5t01rCUvyT1JNVGRguypLwkuqpy1I6hDE/y81m
-         NDgGcVIKaxBDmy2TmAOh1rf29BLVgfNokYcA6UM3Eed/ZazA2SLvuL3eaC9tnNLbBm13
-         K7zthNNm3DktAVrwoVIQe0tGd40X44q2JSMLmHwKkt6U8Ppfi0k8pjs/9xjb1/vfW1D9
-         Qsp/xquTIaRFzDzXeIrzubK6Bg5g3go7aJuv1IE2TBcyjGJ2/WOtt88ypjn3RbkvhQE5
-         s6OPf8RlixdzXi0F50wJgsgPsOPv3Yu3vTEGBxIxJA7QPs31iBBGpKgoqRdXm0he6FKL
-         6epw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=CkM9SNc0/++H7Gq0x8MD9AggoU7zlZSspXgVYn+ykgw=;
+        b=MrYlsna8zS93VtTjFQ1QJ4jjx7SQyFZEBwDKwW7FUxKNOVNK/xQ/ssRcmnXIdgkQk3
+         eXLYee9NHNGoQBCl/CCIqVh9zlEUvIL12keRE27IkiToBZ4dzsb/41L8APEpFbj7MNZd
+         oo+k/IdobKfxmvrW3EtTKMKjr5fWdBjjrEK1WF7Aq+ZvYSUPlEbUTL0REYmtIVVFize/
+         GKMLbnDrY1lWNWMcfVOkfsbKckoQ5TMn2JRnG8x2P4u6UztiJCRc2rw0pXHxI6jpAtcR
+         U4yomMvXGMiStC3uRz0v5XiWpAmPJecmx+IhafH+WVx2VG+I1HUZ3JodG8NvSGftyRE1
+         lZgQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GIE2FZye;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lj1-x242.google.com (mail-lj1-x242.google.com. [2a00:1450:4864:20::242])
-        by gmr-mx.google.com with ESMTPS id o4si9543ljp.4.2020.03.16.08.10.14
+       dkim=pass header.i=@tomli.me header.s=1490979754 header.b=bqJqabPM;
+       spf=pass (google.com: domain of tomli@tomli.me designates 2a00:1a28:1157:199::5a76 as permitted sender) smtp.mailfrom=tomli@tomli.me;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tomli.me
+Return-Path: <tomli@tomli.me>
+Received: from tomli.me (tomli.me. [2a00:1a28:1157:199::5a76])
+        by gmr-mx.google.com with ESMTPS id i16si270636ede.0.2019.03.16.15.50.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Mar 2020 08:10:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) client-ip=2a00:1450:4864:20::242;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 16 Mar 2019 15:50:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of tomli@tomli.me designates 2a00:1a28:1157:199::5a76 as permitted sender) client-ip=2a00:1a28:1157:199::5a76;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GIE2FZye;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x242.google.com with SMTP id w1so19084961ljh.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2020 08:10:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=2Fx3frZ0Q8WUx1NnFpeDXhjX6FabST3ZD5y7N3fZDOE=;
-        b=GIE2FZyeHd8kmflExhgHd/Zy/l3nG/2U0K8O/X0MKEST++7U8JfQDvbxY+gLH3Ycsi
-         IjCwZuhl//0O6mgaUBzSqgqqJ7XaigDqCBXccaNdvHJVSKwsgPJ4Tn69oW4XgqrkS/57
-         x1ET1c3h/i4Y8vrMb1UCEuYknVilfzgiKAv5Fmpxzof8RnLPjwYj6B6wKRDSSiephId8
-         YAvxL7HfKecZF3Sg0sPxTUNDMTnP5AWIix76l+oJ34jvj11E70bNEi+u2ybfdIlOaH4w
-         8T/FUwByAPxASmEEE/OWM08y3L10eXFEEILKfHXaBW9W2mrmzWhs+4evJe39YYIRzOa/
-         eErw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=2Fx3frZ0Q8WUx1NnFpeDXhjX6FabST3ZD5y7N3fZDOE=;
-        b=U4bZDHavKQjm9FKPqAGdKEiZkq1hNxxVXn7YRhRE4YD64xSxFrp6y7eMt1FtUmDzY7
-         uhVk8s1gvID1m585EuZYDP7ukeeiPaOh5btbvZWC02WJBUwxU3KvVxp3OMLp+gU5EU7q
-         nMUYYoW2XXMLI+mK2WMozast6CA55hq75+/Bxwm81FlNVnbakMTG+pNRhNPXZHcyDikD
-         7TY8ZZ+bAfO/Mpu8nxSkH2fE7BF7BuIXvAVqkdBupzOyPnRdPy+beLl10AHMGaSn3vmn
-         Regubwb6RYNq/QHKcZDuqubFfkyCDIBpkplTmuBnYTaavXevdU7tQEAog8xbc5WKICvn
-         cqTw==
-X-Gm-Message-State: ANhLgQ267kT8SmCGdocwotEJgqDCVAMxlKHXckpBEef02y/X2Y01W9SK
-	1DI+K1F5tnuhLcq365jWkHJlPOxYMGE=
-X-Received: by 2002:a2e:9091:: with SMTP id l17mr5970928ljg.154.1584371414518;
-        Mon, 16 Mar 2020 08:10:14 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.64.169])
-        by smtp.gmail.com with ESMTPSA id t3sm51306ljg.57.2020.03.16.08.10.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 16 Mar 2020 08:10:13 -0700 (PDT)
-Date: Mon, 16 Mar 2020 18:10:09 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: wilc1000: rearrange line exceeding 80 characters
-Message-ID: <20200316151009.GA7604@siyah2>
+       dkim=pass header.i=@tomli.me header.s=1490979754 header.b=bqJqabPM;
+       spf=pass (google.com: domain of tomli@tomli.me designates 2a00:1a28:1157:199::5a76 as permitted sender) smtp.mailfrom=tomli@tomli.me;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tomli.me
+Received: from tomli.me (localhost [127.0.0.1])
+	by tomli.me (OpenSMTPD) with ESMTP id 837914cf;
+	Sat, 16 Mar 2019 22:50:56 +0000 (UTC)
+X-HELO: localhost.localdomain
+Authentication-Results: tomli.me; auth=pass (login) smtp.auth=tomli
+Received: from Unknown (HELO localhost.localdomain) (2402:f000:1:1501:200:5efe:6fc7:8b2c)
+ by tomli.me (qpsmtpd/0.95) with ESMTPSA (DHE-RSA-CHACHA20-POLY1305 encrypted); Sat, 16 Mar 2019 22:50:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed; d=tomli.me; h=date:from:to:cc:subject:message-id:references:mime-version:content-type:in-reply-to; s=1490979754; bh=6NV48YIYlicxs90Ie/YWhNGzN2ItyVIxZVBVQmo6Sdk=; b=bqJqabPMAeetGZ8iqStaVzkBBWu6fDbY5430m4hkx1REBQK8RiNZGK+yK2DURvEXPf+qW9KTDlWYn4uAxnp/ZjaCC+ASdYbh8xIoJwLUI/lrptybQYwOoZHwApX0KGjsAMAO2sSFLkbve3He3s2l2PdDLzOqdpjMzUO0wHZxAjbMaOu8MJao28iR1legLlPmeS4oL55rykM+0nT3nfGd5CkDgkzayUXlnbXC7oqqxNDTSsmtPgYr8EAJ9daSQKUUZ04idg4/SOEizHmf2KarS4iauDmFR7ldBvyrOQotRFBB1IT+A71tlEZGzm6OmdqI4CwGthzQnmVDMX6BT0WsnQ==
+Date: Sun, 17 Mar 2019 06:50:49 +0800
+From: Tom Li <tomli@tomli.me>
+To: Jules Irenge <jbi.octave@gmail.com>, linux-fbdev@vger.kernel.org
+Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: sm759fb: fix camelcase check issue
+Message-ID: <20190316225048.GA27446@localhost.localdomain>
+References: <20190316000109.22244-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190316000109.22244-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 
-Moved to the bottom line after && operator for it exceeds 80 character
+On Sat, Mar 16, 2019 at 12:01:09AM +0000, Jules Irenge wrote:
+> Subject: staging: sm759fb: fix camelcase check issue
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
----
- drivers/staging/wilc1000/netdev.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Thanks for submitting the patch. I'm not a maintainer, but there's a
+typo in the mail subject.
 
-diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
-index a61c1a7..f94a17b 100644
---- a/drivers/staging/wilc1000/netdev.c
-+++ b/drivers/staging/wilc1000/netdev.c
-@@ -794,8 +794,10 @@ void wilc_wfi_mgmt_rx(struct wilc *wilc, u8 *buff, u32 size)
- 		u16 type = le16_to_cpup((__le16 *)buff);
- 
- 		if (vif->priv.p2p_listen_state &&
--		    ((type == vif->frame_reg[0].type && vif->frame_reg[0].reg) ||
--		     (type == vif->frame_reg[1].type && vif->frame_reg[1].reg)))
-+		    ((type == vif->frame_reg[0].type &&
-+		      vif->frame_reg[0].reg) ||
-+		     (type == vif->frame_reg[1].type &&
-+		      vif->frame_reg[1].reg)))
- 			wilc_wfi_p2p_rx(vif, buff, size);
- 
- 		if (vif->monitor_flag)
--- 
-2.7.4
+This driver is called "sm750fb", not "sm759fb". A misspelled name would
+make it difficult for other developers to grep the git log. I suggest you
+to correct this typo and resend the patch.
 
+If you are using git, to accomplish this, you could run
+
+    $ git rebase -i [ID OF YOUR COMMIT]~1   # "~1" means one commit before
+
+You would see something like,
+
+    pick xxxxxx: staging: sm759fb: fix camelcase check issue
+
+Change "pick" to "reword", save and exit the editor, and you would be able
+to edit your commit message. After fixing it, run
+
+    $ git send-email -v2  #  and so on
+
+To send a new version of the patch, don't forget to include the original
+receivers.
+
+If you are not using git, simply fix the mail subject, the new subject should
+be:
+
+    [PATCH v2] staging: sm759fb: fix camelcase check issue.
+
+and send it to the original receivers.
+
+The above is a typically convention used by kernel developers when submitting
+a patch. I hope it helps.
+
+Cheers,
+Tom Li
+
+> Lower case of parameters to fix camelcase warning
+>  Issue reported by checkpatch.pl tool
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_chip.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+> index 4c1f00f551da..6bdf643707c2 100644
+> --- a/drivers/staging/sm750fb/ddk750_chip.c
+> +++ b/drivers/staging/sm750fb/ddk750_chip.c
+> @@ -15,14 +15,14 @@ enum logical_chip_type sm750_get_chip_type(void)
+>  	return chip;
+>  }
+>  
+> -void sm750_set_chip_type(unsigned short devId, u8 revId)
+> +void sm750_set_chip_type(unsigned short dev_id, u8 rev_id)
+>  {
+> -	if (devId == 0x718) {
+> +	if (dev_id == 0x718) {
+>  		chip = SM718;
+> -	} else if (devId == 0x750) {
+> +	} else if (dev_id == 0x750) {
+>  		chip = SM750;
+>  		/* SM750 and SM750LE are different in their revision ID only. */
+> -		if (revId == SM750LE_REVISION_ID) {
+> +		if (rev_id == SM750LE_REVISION_ID) {
+>  			chip = SM750LE;
+>  			pr_info("found sm750le\n");
+>  		}
 
