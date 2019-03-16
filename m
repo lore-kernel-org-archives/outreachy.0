@@ -1,84 +1,84 @@
 X-GM-THRID: 6668944264527872000
-X-Received: by 2002:a25:949:: with SMTP id u9mr3991742ybm.8.1552734592666;
-        Sat, 16 Mar 2019 04:09:52 -0700 (PDT)
+X-Received: by 2002:a24:680f:: with SMTP id v15mr4455969itb.31.1552734589991;
+        Sat, 16 Mar 2019 04:09:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:4f56:: with SMTP id d83ls2354703ybb.4.gmail; Sat, 16 Mar
- 2019 04:09:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwPMbf9VSUklPLgFcZmyRU3GmH0Nkh53QyHFG5FJ2Oq1M0hhcRu5KVBe4Gs6TUiI0PQrpkG
-X-Received: by 2002:a25:37ca:: with SMTP id e193mr2246826yba.75.1552734591678;
-        Sat, 16 Mar 2019 04:09:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552734591; cv=none;
+Received: by 2002:a24:7644:: with SMTP id z65ls2212731itb.4.gmail; Sat, 16 Mar
+ 2019 04:09:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwb/wMfDmF8UO185ZfdP69Vna9s8F8J8nfG6wwHQ36fFnPnvf7/RNMiHk40t8vLFqGHJbro
+X-Received: by 2002:a24:5c5:: with SMTP id 188mr4763034itl.3.1552734589158;
+        Sat, 16 Mar 2019 04:09:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552734589; cv=none;
         d=google.com; s=arc-20160816;
-        b=ST3toqv9pOQhIT5pyPqG8Pc7q97xcW4HUPLaitmWmClh5/NxmSXfKJHDP1QDrEFx95
-         y+5NywAZIkdjxwfCleOufRvOTjmGA5Uh0xB9WDkAhcprt5AMyo6J85AtDwRpftV4ihMN
-         ozjXGtKV/X2XTXnCXg8c4f3uKfKHuM2kNbZEVbD0zSveqv55qxiQp6+yvAObPcEHfCHr
-         L3NKdbK/FuVQM5vX+sKNzsPHHqfbp28rAUpSiS8kK3iv/QJRAkFufWj94X7EyTm/LLHl
-         CKY4q+vFFa9gX+w1FwKGkkVK8IzzAvyiHvYG8esZXYgezST9Ql6dw6iVAIlVSuEtWTyq
-         0zOw==
+        b=bk8aNKWGWOC1vL/tXQL0V+Q7zL6ZntpthuqUXIW+dl3aGZTeEedHEI8/y5Iae5W40h
+         rYJShOpD92NmSji+qwUnD8gc/ENpM6RQFzm7aw9aiJx/Qb/30ecHZ3VAV04BlmbVuvr+
+         2VnpoCsR1NpkK0+1/v2uDGWUrhL0Bklr54VlwWyrHikhZIQZNJ+IUbI0Dhy2JNaXf04D
+         LgNsMny1Bv2c7eqeZ6npu+wdursdLCUvvxtyWSzWhMMRPwODHACmRKm7fOwiYyZIH4Im
+         LZq86tR4DYhHKlh+QUTHYeD3gfM9XGJD9y7TbSmS9BKk0ffJHOqIDQ3pPbqiNGg/FFni
+         8QWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=D6EsBVrhFpFiwKSMMMTyoM3fVm0Lfz2uZCO8jN+dIlk=;
-        b=zdjZO0d+WYTsj3UGpVlt97KrWauSJzDMEVvd+h26ehW57RA7Bw2mVx6+cQJ0Tmw6d7
-         hkeQNMYDn5yB0o/8xtW8r+WsH2lWRRp5G4NDBOSwU0Qm9Ylqi6tprT32Hvd8tURqnzw8
-         xJWFsRfV+clmjao7SkWvDvSmkj5K4YOLvx061JX4mu2X/6Sf6tM4jUda2BabzY846Ys9
-         tod2JtZRJCP1JdG7yhFcSVsb4zCS5q0ELY5cWb/o8jbrrMqATwZG3o38WtsyVpT0Gcp1
-         EBDTYYGZ5/z7m7c36zBh1uJOV1bPM23TvoEkhzxXQfvUqzVf96HoLat8rSFd4J9mifIX
-         L1KQ==
+        bh=Sx4Te/vVbzclje5Z6QaB8oPXdrKDAOB5YpAPHfjaPdM=;
+        b=kqSa8PE9q5E2sWgKdBP7K3n8GV74FxGa4xzDV5zR9dtoLYIYTCU+aA31cW5Ok7UEnU
+         ZMErI5+CYXjGz5f4ClbjojOQeuYCViESJsozXaESVp8UHgfq2RzUFEf8ASzZFLgSH7XZ
+         h5/RMPJEWlKO6Vfp9MQM+S+zkFBj7jBrduXtpKGsow6Z9wvtUt0+ogU88P72dhwBBvF8
+         rg+yR5hUpA5q2edjYIjcMU8IG8AHUCYsjYRZqVezPnP9jKdE8eyN/uTPnUxgTKAA/eri
+         AvcX6Aev8iVtPkMhZpgdNZUHLuISuZPjuUt5aAQ25FYqU9XU+HKwrsebyQ4jbPfqd8yT
+         izOQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U6oQDM3V;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::52b as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CEHIpIXj;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x52b.google.com (mail-pg1-x52b.google.com. [2607:f8b0:4864:20::52b])
-        by gmr-mx.google.com with ESMTPS id t128si210026ywa.4.2019.03.16.04.09.51
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id n6si213326iod.1.2019.03.16.04.09.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 04:09:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::52b as permitted sender) client-ip=2607:f8b0:4864:20::52b;
+        Sat, 16 Mar 2019 04:09:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U6oQDM3V;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::52b as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CEHIpIXj;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52b.google.com with SMTP id r124so8216619pgr.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 04:09:51 -0700 (PDT)
+Received: by mail-pf1-x443.google.com with SMTP id a3so8088315pff.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 04:09:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=D6EsBVrhFpFiwKSMMMTyoM3fVm0Lfz2uZCO8jN+dIlk=;
-        b=U6oQDM3Vz1aQo3pcIT2VVvn+Ka2VRjIX6VqRQvDwP1K2DO0I/NqiW3WLp1g1Ol2KD9
-         6+WsVvDRf6AV11PuonGLqMaJY0v+Q908ybeRnQgu3PvreskbZeCECpyEeCH0l9n2OttS
-         cPJLs0zfrjdBE/vcsx2Jo9nMdbumlVXipS20ECsfxCaWsdzJF8A/4i8GVOEIlFBbvKqF
-         fISCEAG7WNmHaCR/gP/24lJMtJURfu2SHxtzA50vZwzGahJs20TbGEeQmSKg5ht6/Y5L
-         H0OQOB5yFpfREAW/YBrQXUUIdLpjsQWh6SvTbXTl1uB48/MjpnruE7cB7Q2ayU2GXS/T
-         Rl0w==
+        bh=Sx4Te/vVbzclje5Z6QaB8oPXdrKDAOB5YpAPHfjaPdM=;
+        b=CEHIpIXj00v//f50Wpkap36zMc5FSfS0jmkEO4s0+My5LOEzihyJCsvY+fAKpVUyR1
+         yOmxxSGHY4Cih5XrFxj+XbaTk9dJLy4zZLp/wMWhSyan2RF732Aqcsx3BANOypiRLZ8a
+         j5Mg29GAfdU5UaiT1lg7DA5m4xKMbjrFwjDrIoDk51Sblv6QlihfDwYt+yA0c8CetNIF
+         DVD53gAml+yqt0wCzJurQmO/q/IY/2h7l58ENIqk29Ldshjoy465cCk75oHfPMZHqTZn
+         vhC/ZG1zb6iOfTcMJtf4oXnR7TpjUGHf80ZwbLesYzY4bQ2Y8/RkKMg37isSvU/c52JL
+         ZiGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=D6EsBVrhFpFiwKSMMMTyoM3fVm0Lfz2uZCO8jN+dIlk=;
-        b=Cqe+pBb8gzVtLQNH8F8tC8zLXkIgCBJxvJwWCtT5zf18CJJpJPg7CUGxJS1o2P0EEI
-         vXdgsFXUFpucp+oMq0IyiiyTm4jp3lXBstbfETjqi+WvnX7uKmyQDS3kj2XOp3/EQHj3
-         nhfcWfxlvKTUndY/OvoxcaU14QDIDuIzWtpZHPDL5eW3f1BiflPNbV6E0JdPzc7kMr1W
-         WiMv6pSA642D27z53/R2329tVFLTRX2DTfXBZJQ3yPBXVb/zdGt8RfKpZhnDjy9kFp2C
-         qUU0OnfESz7a0OITWT3f5eUvi0nPhhERHInn7aH3T2QCAZo6S1gUDqWS2zx+LhS8vJ2e
-         YFXQ==
-X-Gm-Message-State: APjAAAVM7+OMu4HbuosEg7klea3UIXvA4PHItIOq2kKnuv4QqND2jKH6
-	EI5Iemp1jvdwihiuDa9wvJ8=
-X-Received: by 2002:aa7:8b12:: with SMTP id f18mr9150296pfd.240.1552734591172;
-        Sat, 16 Mar 2019 04:09:51 -0700 (PDT)
+        bh=Sx4Te/vVbzclje5Z6QaB8oPXdrKDAOB5YpAPHfjaPdM=;
+        b=EdyidtSLXI/wBo/BwGAvT45hAT7+ZMecP4imMYOu7+i0ZeFtUejWJowJIExOsyZhSQ
+         fD/Lbo7gTgKCpMVecCLQrOzZSvYJNzo+Qck+xjg0aWXSRlrQhzf2NPLjPH+wSwENu2/n
+         7lxhFQaX3q3BzGUcepb5Qb1kiWeHgaMRJ+soc6CxsZL4NII36hPuZwTF1pPec40wS0/+
+         wRjDEtAGq3tAonKFKrCzzrmKjAqLC2kVLhyAP3ytR1Ckr98gLnasvGFX1Lh6s1UD/VW3
+         34BL7ESNfQV2GwYtHk6e3M0twbu0+fkwnUpEre0jejSysu0h2D+P9TVkPWXbmy3tp0ZR
+         FaNQ==
+X-Gm-Message-State: APjAAAVPEcF/1RlxbjzueigKt7/2ERAeb2eh8pCe8DhgaLGCqPVBm/ko
+	E/ex7eU4QHNhLZ/kleQ5Mvw=
+X-Received: by 2002:a17:902:850c:: with SMTP id bj12mr8980587plb.69.1552734588769;
+        Sat, 16 Mar 2019 04:09:48 -0700 (PDT)
 Return-Path: <himadri18.07@gmail.com>
 Received: from Hyper-V.DAIICT.AC.IN (mx2.daiict.ac.in. [14.139.122.121])
-        by smtp.gmail.com with ESMTPSA id d11sm12097156pfh.29.2019.03.16.04.09.49
+        by smtp.gmail.com with ESMTPSA id d11sm12097156pfh.29.2019.03.16.04.09.46
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 04:09:50 -0700 (PDT)
+        Sat, 16 Mar 2019 04:09:48 -0700 (PDT)
 From: Himadri Pandya <himadri18.07@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH 3/3] staging: rtl8723bs: hal: Remove comparision to NULL
-Date: Sat, 16 Mar 2019 15:57:59 +0530
-Message-Id: <20190316102759.20272-4-himadri18.07@gmail.com>
+Subject: [PATCH 2/3] staging: rtl8723bs: hal: Remove comparision to NULL
+Date: Sat, 16 Mar 2019 15:57:58 +0530
+Message-Id: <20190316102759.20272-3-himadri18.07@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190316102759.20272-1-himadri18.07@gmail.com>
 References: <20190316102759.20272-1-himadri18.07@gmail.com>
@@ -87,90 +87,94 @@ Remove comparision to NULL. Suggested by Coccinelle.
 
 Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_btcoex.c | 8 ++++----
- drivers/staging/rtl8723bs/hal/hal_com.c    | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/rtl8723bs/hal/hal_com_phycfg.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index 2b43f6d3c762..8eb28f97ebcc 100644
---- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -75,7 +75,7 @@ static BTCDBGINFO GLBtcDbgInfo;
+diff --git a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+index 12c1cd590056..e15182af2663 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
++++ b/drivers/staging/rtl8723bs/hal/hal_com_phycfg.c
+@@ -2236,7 +2236,7 @@ int phy_ConfigMACWithParaFile(struct adapter *Adapter, char *pFileName)
  
- static void DBG_BT_INFO_INIT(PBTCDBGINFO pinfo, u8 *pbuf, u32 size)
- {
--	if (NULL == pinfo)
-+	if (!pinfo)
- 		return;
+ 	memset(pHalData->para_file_buf, 0, MAX_PARA_FILE_BUF_LEN);
  
- 	memset(pinfo, 0, sizeof(BTCDBGINFO));
-@@ -95,7 +95,7 @@ void DBG_BT_INFO(u8 *dbgmsg)
+-	if ((pHalData->mac_reg_len == 0) && (pHalData->mac_reg == NULL)) {
++	if ((pHalData->mac_reg_len == 0) && !pHalData->mac_reg) {
+ 		rtw_merge_string(file_path_bs, PATH_MAX, rtw_phy_file_path, pFileName);
  
- 	pinfo = &GLBtcDbgInfo;
+ 		if (rtw_is_file_readable(file_path_bs) == true) {
+@@ -2311,7 +2311,7 @@ int phy_ConfigBBWithParaFile(
  
--	if (NULL == pinfo->info)
-+	if (!pinfo->info)
- 		return;
+ 	memset(pHalData->para_file_buf, 0, MAX_PARA_FILE_BUF_LEN);
  
- 	msglen = strlen(dbgmsg);
-@@ -1571,7 +1571,7 @@ void hal_btcoex_SetDBG(struct adapter *padapter, u32 *pDbgModule)
- 	u32 i;
+-	if ((pBufLen != NULL) && (*pBufLen == 0) && (pBuf == NULL)) {
++	if (pBufLen && (*pBufLen == 0) && !pBuf) {
+ 		rtw_merge_string(file_path_bs, PATH_MAX, rtw_phy_file_path, pFileName);
  
- 
--	if (NULL == pDbgModule)
-+	if (!pDbgModule)
- 		return;
- 
- 	for (i = 0; i < BTC_MSG_MAX; i++)
-@@ -1585,7 +1585,7 @@ u32 hal_btcoex_GetDBG(struct adapter *padapter, u8 *pStrBuf, u32 bufSize)
- 	u32 leftSize;
- 
- 
--	if ((NULL == pStrBuf) || (0 == bufSize))
-+	if (!pStrBuf || (0 == bufSize))
- 		return 0;
- 
- 	pstr = pStrBuf;
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com.c b/drivers/staging/rtl8723bs/hal/hal_com.c
-index 7f8ec55b08f1..b97b53c34449 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com.c
-@@ -18,7 +18,7 @@ u8 rtw_hal_data_init(struct adapter *padapter)
- 	if (is_primary_adapter(padapter)) {	/* if (padapter->isprimary) */
- 		padapter->hal_data_sz = sizeof(struct hal_com_data);
- 		padapter->HalData = vzalloc(padapter->hal_data_sz);
--		if (padapter->HalData == NULL) {
-+		if (!padapter->HalData) {
- 			DBG_8192C("cannot alloc memory for HAL DATA\n");
- 			return _FAIL;
+ 		if (rtw_is_file_readable(file_path_bs) == true) {
+@@ -2336,7 +2336,7 @@ int phy_ConfigBBWithParaFile(
+ 			}
  		}
-@@ -909,7 +909,7 @@ s32 c2h_evt_read_88xx(struct adapter *adapter, u8 *buf)
- 	int i;
- 	u8 trigger;
+ 	} else {
+-		if ((pBufLen != NULL) && (*pBufLen == 0) && (pBuf == NULL)) {
++		if (pBufLen && (*pBufLen == 0) && !pBuf) {
+ 			memcpy(pHalData->para_file_buf, pBuf, *pBufLen);
+ 			rtStatus = _SUCCESS;
+ 		} else
+@@ -2680,7 +2680,7 @@ int phy_ConfigBBWithPgParaFile(struct adapter *Adapter, char *pFileName)
  
--	if (buf == NULL)
-+	if (!buf)
- 		goto exit;
+ 	memset(pHalData->para_file_buf, 0, MAX_PARA_FILE_BUF_LEN);
  
- 	trigger = rtw_read8(adapter, REG_C2HEVT_CLEAR);
-@@ -982,7 +982,7 @@ void rtw_hal_update_sta_rate_mask(struct adapter *padapter, struct sta_info *pst
- 	u8 i, rf_type, limit;
- 	u32 tx_ra_bitmap;
+-	if ((pHalData->bb_phy_reg_pg_len == 0) && (pHalData->bb_phy_reg_pg == NULL)) {
++	if ((pHalData->bb_phy_reg_pg_len == 0) && !pHalData->bb_phy_reg_pg) {
+ 		rtw_merge_string(file_path_bs, PATH_MAX, rtw_phy_file_path, pFileName);
  
--	if (psta == NULL)
-+	if (!psta)
- 		return;
+ 		if (rtw_is_file_readable(file_path_bs) == true) {
+@@ -2696,7 +2696,7 @@ int phy_ConfigBBWithPgParaFile(struct adapter *Adapter, char *pFileName)
+ 			}
+ 		}
+ 	} else {
+-		if ((pHalData->bb_phy_reg_pg_len != 0) && (pHalData->bb_phy_reg_pg != NULL)) {
++		if ((pHalData->bb_phy_reg_pg_len != 0) && pHalData->bb_phy_reg_pg) {
+ 			memcpy(pHalData->para_file_buf, pHalData->bb_phy_reg_pg, pHalData->bb_phy_reg_pg_len);
+ 			rtStatus = _SUCCESS;
+ 		} else
+@@ -2743,7 +2743,7 @@ int PHY_ConfigRFWithParaFile(
  
- 	tx_ra_bitmap = 0;
-@@ -1407,7 +1407,7 @@ bool GetHexValueFromString(char *szStr, u32 *pu4bVal, u32 *pu4bMove)
- 	char *szScan = szStr;
+ 	memset(pHalData->para_file_buf, 0, MAX_PARA_FILE_BUF_LEN);
  
- 	/*  Check input parameter. */
--	if (szStr == NULL || pu4bVal == NULL || pu4bMove == NULL) {
-+	if (!szStr || !pu4bVal || !pu4bMove) {
- 		DBG_871X("GetHexValueFromString(): Invalid input arguments! szStr: %p, pu4bVal: %p, pu4bMove: %p\n",
- 			 szStr, pu4bVal, pu4bMove);
- 		return false;
+-	if ((pBufLen != NULL) && (*pBufLen == 0) && (pBuf == NULL)) {
++	if (pBufLen && (*pBufLen == 0) && !pBuf) {
+ 		rtw_merge_string(file_path_bs, PATH_MAX, rtw_phy_file_path, pFileName);
+ 
+ 		if (rtw_is_file_readable(file_path_bs) == true) {
+@@ -2768,7 +2768,7 @@ int PHY_ConfigRFWithParaFile(
+ 			}
+ 		}
+ 	} else {
+-		if ((pBufLen != NULL) && (*pBufLen == 0) && (pBuf == NULL)) {
++		if (pBufLen && (*pBufLen == 0) && !pBuf) {
+ 			memcpy(pHalData->para_file_buf, pBuf, *pBufLen);
+ 			rtStatus = _SUCCESS;
+ 		} else
+@@ -2925,7 +2925,7 @@ int PHY_ConfigRFWithTxPwrTrackParaFile(struct adapter *Adapter, char *pFileName)
+ 
+ 	memset(pHalData->para_file_buf, 0, MAX_PARA_FILE_BUF_LEN);
+ 
+-	if ((pHalData->rf_tx_pwr_track_len == 0) && (pHalData->rf_tx_pwr_track == NULL)) {
++	if ((pHalData->rf_tx_pwr_track_len == 0) && !pHalData->rf_tx_pwr_track) {
+ 		rtw_merge_string(file_path_bs, PATH_MAX, rtw_phy_file_path, pFileName);
+ 
+ 		if (rtw_is_file_readable(file_path_bs) == true) {
+@@ -3238,7 +3238,7 @@ int PHY_ConfigRFWithPowerLimitTableParaFile(
+ 
+ 	memset(pHalData->para_file_buf, 0, MAX_PARA_FILE_BUF_LEN);
+ 
+-	if ((pHalData->rf_tx_pwr_lmt_len == 0) && (pHalData->rf_tx_pwr_lmt == NULL)) {
++	if ((pHalData->rf_tx_pwr_lmt_len == 0) && !pHalData->rf_tx_pwr_lmt) {
+ 		rtw_merge_string(file_path_bs, PATH_MAX, rtw_phy_file_path, pFileName);
+ 
+ 		if (rtw_is_file_readable(file_path_bs) == true) {
 -- 
 2.17.1
 
