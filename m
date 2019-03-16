@@ -1,162 +1,96 @@
 X-GM-THRID: 6668974051336126464
-X-Received: by 2002:a02:7342:: with SMTP id a2mr5094221jae.16.1552741521988;
-        Sat, 16 Mar 2019 06:05:21 -0700 (PDT)
+X-Received: by 2002:a25:2f44:: with SMTP id v65mr3803733ybv.2.1552741520562;
+        Sat, 16 Mar 2019 06:05:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:6f44:: with SMTP id x65ls2222050itb.1.gmail; Sat, 16 Mar
- 2019 06:05:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzVHOOTi20eTF1VRoUXvQDbcuBLksIXGW0layviKE+TM05ZwOA7YVYy1S2mQfjf2pPchhoo
-X-Received: by 2002:a24:5c5:: with SMTP id 188mr5026558itl.3.1552741521068;
-        Sat, 16 Mar 2019 06:05:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552741521; cv=none;
+Received: by 2002:a81:3d0e:: with SMTP id k14ls2689669ywa.4.gmail; Sat, 16 Mar
+ 2019 06:05:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNIkxYvMu6MijTcQcG7iyno03BLrtwU0nSYsogW5Ik98iIIgAErg7XUTnIUHZ8zCPM4Vlr
+X-Received: by 2002:a81:3296:: with SMTP id y144mr4125891ywy.22.1552741519639;
+        Sat, 16 Mar 2019 06:05:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552741519; cv=none;
         d=google.com; s=arc-20160816;
-        b=LusthYRnOQg/zCRC7MnAllPTConQx4bcJIXz7U9QUpj39O8LzX0xSZ7p8fLtyitDJD
-         tkHy51UCFaHCacimR3hd97mzahbc8lSJ0xuNzg86no1cF67gn68iTiHwTi+B1eWaLg5M
-         GeKrWdQyiVgaofgm/EZd72BStqdN5dRsIYPbR1Li7UcDx9pRfdLTSMQ/53Eja5dhdF1/
-         7DtWFZIIEojnwUDmFrWWqooDSVJaNPzWvB85X/CPmwaewUGiGFOsYQOxqAVptXYEj/nK
-         KXAuVm7VN1H2jieCsy5GmFtPsbkmaWuPQt4hv5WYZpJjnRtCWEHAxYygNXSTymADD06a
-         PN4Q==
+        b=w2+Mydzoal3SaaqM0/6eb5klK4uY/r1nGyRUhAxWbAr7KiaO97lYQ0Fp26EoInJ8hk
+         XOafn/zyO/Iae9SbTXnBHZ1ENrXjWBkdnMfnIh0jdyP47okQRx8jGIkBY1fwxZgGdr70
+         l3yzWIV3SAyjYIn1ZrtZsz/xbG4KX+oMpUDIkTl/YpVWXFKCp5YR73In953idokO5m4s
+         HCdxAJ9cULkqGnhlU6GK7l8RfJlr2mDN8HBKZ4Ii7ra32/6dbKmWsn1xgQXCJcvKe+3k
+         IQWUB/US2OkF67AS6Hq43DaUvddgHa0r+BKah9Ea7YrfzO10zstVEy0DcBwqIQlowMo2
+         tm4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=phShLwTPQcUFwiTbxjkjh9q09QQFdn/nnHIwXRIGXKs=;
-        b=aS8MWmuitHNtLHcoD81aky4iwcFS95l9Rrvk9VSfXcyge6O5h5vUi2nOkbeHrzCBev
-         dEv6+bJ6lFJdwTdp0js0nxXq8yLvz3ilrP6olmIV5QQ2cV6jsxDcPP+B2twfZUngvjeh
-         6uphUvuG3UNwRHjdpnzEAbrTIAHxOgsUIdyVZxFWWfinzdUQ4Fv9QxTT2DPN05sgpCCU
-         tl+LaYsGZxGFuyFiiFCIkrmgLbU0YYXNecAnlTew/7TcKGEUN6N9rSdgZJTo/f6ye9ye
-         0fODG9mh0IydROzgW98OJ3XI9fBZDM3+m3li5UrT0glqGWsj7XWuLLocGC1hKF9nUyF5
-         peWg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=rzTEVrwMrwu7YS8njORz48haG1z1yuYEUOfRhU8I7hA=;
+        b=bz7Ra/1pXw2xj1N5a7EYfe2PGYbM5GYIwbT5KziWfM4hq//kZFFk1mtZI0NfVVDybf
+         RsVTKi0UUgCY7ACb+f6dfydORI7NEM++FAicOR5H7J8AcAWFE0dpCZTOJRxSoq3XZsnO
+         7f+pnlWOs3AWf4RiX5oJerx8FtAXAX/7kQr7yopmx1j82upP4fCLG57eqwKjG8QTuWrg
+         roBxO37tcsbGim/9JK/nO4uNjX3FbuIgPWyvMGCncWUM2s8U8CQ+Er3LlOHGMH1+8LoC
+         pVzwewLcszhaPAte5iq7e63CwRqZeEWVDhEqwqr2GYzueeEEdC15JHK8lVEDeGC5e7/u
+         oBzQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qoGMgIHZ;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=szCWa4yN;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 209.85.210.52 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x231.google.com (mail-oi1-x231.google.com. [2607:f8b0:4864:20::231])
-        by gmr-mx.google.com with ESMTPS id f13si263121iok.3.2019.03.16.06.05.21
+Received: from mail-ot1-f52.google.com (mail-ot1-f52.google.com. [209.85.210.52])
+        by gmr-mx.google.com with ESMTPS id i204si182387yba.5.2019.03.16.06.05.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 06:05:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) client-ip=2607:f8b0:4864:20::231;
+        Sat, 16 Mar 2019 06:05:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 209.85.210.52 as permitted sender) client-ip=209.85.210.52;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qoGMgIHZ;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::231 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=szCWa4yN;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 209.85.210.52 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x231.google.com with SMTP id w139so775020oie.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 06:05:21 -0700 (PDT)
+Received: by mail-ot1-f52.google.com with SMTP id g1so10724388otj.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 06:05:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=phShLwTPQcUFwiTbxjkjh9q09QQFdn/nnHIwXRIGXKs=;
-        b=qoGMgIHZGy13dhlAdWMc9aOGSkCOjL5ns2rt50OzlqBOzwVRcQxv/UxfEDtEg6ETUf
-         BZCN6XgTxb0TPHyBqGXPGiwQVHDiSHS7J2rv/V+irqUl9U+stq13kznYB+9Nq6yLv2fe
-         i9xlEBYWOlwfGub+izC+MJqvRZkNvzZxM1DVw5ky13UQCX0E8yzTq/3ZaEgP2gBbYy1E
-         vK7YnBNA6X4TpP0JEJTyamTjjKVpZYVQqnxOzUTSgS4Y7OFMcgTuIdqSxd3zD+qK3NAF
-         l7LU0Xw26Z/K3rpO7qbhpbVwS+Nnv3LNyVC15KGc3vzXDz+CuSgjBHC0Ko9YwH1OU1Y1
-         yTzA==
+        h=from:to:cc:subject:date:message-id;
+        bh=rzTEVrwMrwu7YS8njORz48haG1z1yuYEUOfRhU8I7hA=;
+        b=szCWa4yNv8lGAAS9M2VGOp5bDLgi76hmNOLEMwLpnkHrUfoC56t8AtOOd8/TGDgYwN
+         3FK4/iomWQmwQkYwDAzosar5ITHLHoN/MzLQ0dXaZo7zT+5Qts0x5Uxvy+10QZBw+Ld8
+         7vviZPve6ERh7zCOt58LtwjelWK3j7jRH7wcZdzai2Rix6vuHwOk8r4nsrn7ppbpSLav
+         MZJPuABACZtxF0f4yIiP2pD5r0uS+V/pg4Wj4+lq96kDei0v2N53XN9fP71KBGQhzVre
+         sWhhl7flLhC7tPuyu0JQRCGmIrdDRxHHroxV4oN8zbaXE3RoOd0qycsI8FEKmsvnS0Iz
+         F8KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=phShLwTPQcUFwiTbxjkjh9q09QQFdn/nnHIwXRIGXKs=;
-        b=V77fYSdCSvb32+TcucZPWnMUdaQThh0eH/uq09PPJD8pcT2x/geqgguyqgJaMQXW31
-         rZeHVOaP4daXgGJfad0PuHZEUUHhiRv4lya1zzUFxvSpqZ2XAuoD9FTDxBo9PT7JAH1g
-         Hf9xvF9lj75PrAudzwybBqYOONBZKImAcQrzdvdYjh7zCcdwRGBO2kjgW5V8xG3Onwun
-         HKxsrFDoc2fcVUcf7+Z3zOHeQQnywS+AGHnJjzzfRazX2ojsOYNa72YlLGVoo1Bsq2Rj
-         TOLLUwcscV2xui3XU4TuiAHMf32wUNcRTZr13PyIMP/Z+1aa17KQr3JlI3d0LbMGlfFg
-         91JQ==
-X-Gm-Message-State: APjAAAX1DFike4EDG8TKPw27eB/EQ3ZAT657P2xlqlrIBOj4pCBIuI9Z
-	ov1jXZxd8722lno7B/X5TPzPblYCXcQ=
-X-Received: by 2002:aca:3bc5:: with SMTP id i188mr4578345oia.59.1552741520798;
-        Sat, 16 Mar 2019 06:05:20 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=rzTEVrwMrwu7YS8njORz48haG1z1yuYEUOfRhU8I7hA=;
+        b=m44ZQLz/iGssV3SR8/bb6p8uemNTWlfHK+JrDANbQbi7JAlJUygOKVx5WgIzmmld+m
+         K67xwF90g6+6zq4+kbuJz8Cn1u57xghSjlNZxEheg3qFJex1AhjQC3Mxyk78YcSBpzgO
+         fLrL0075QMxorX1OprvqcszaFchtkGiT3s0DNMKYgLM7mOH0aJx+KJA7/ShV/X3dtgY2
+         cQcqficNYFFD2dnvLQEKe83OPXyLL8Oek3VKSsz59hGTzkiEt7snXX9g8fUYZAzGUaTG
+         2mmFpG4hiSwBCn1GNhiOFT4M/uAuhvJCleGbUSVlMEDW0kVal085pb2oqhqJbGJ3Gkzv
+         2cgA==
+X-Gm-Message-State: APjAAAXbqY5YHsa5GsMSqZ0uL1AtWYKDdq4NH1jkTOIM4QOKV77Dk+hG
+	G73pFWhU7luiiriMI+Tpdgs=
+X-Received: by 2002:a9d:67cb:: with SMTP id c11mr5591201otn.103.1552741514618;
+        Sat, 16 Mar 2019 06:05:14 -0700 (PDT)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo ([2605:6000:1023:432c:603f:14f8:e32e:7b1b])
-        by smtp.gmail.com with ESMTPSA id n2sm1707929otq.33.2019.03.16.06.05.19
+        by smtp.gmail.com with ESMTPSA id 3sm1809424ots.75.2019.03.16.06.05.13
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Mar 2019 06:05:20 -0700 (PDT)
+        Sat, 16 Mar 2019 06:05:13 -0700 (PDT)
 From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH 2/2] Staging: rtl8723bs: Remove functions and replace return types
-Date: Sat, 16 Mar 2019 08:05:11 -0500
-Message-Id: <9e058ab3c889d2d59b0e7c7e0296e8640a513d23.1552740889.git.madhumithabiw@gmail.com>
+Subject: [PATCH 0/2] Issue suggested by Coccinelle using ret.cocci
+Date: Sat, 16 Mar 2019 08:05:09 -0500
+Message-Id: <cover.1552740889.git.madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1552740889.git.madhumithabiw@gmail.com>
-References: <cover.1552740889.git.madhumithabiw@gmail.com>
-In-Reply-To: <cover.1552740889.git.madhumithabiw@gmail.com>
-References: <cover.1552740889.git.madhumithabiw@gmail.com>
 
-- Remove functions rtw_init_cmd_priv and rtw_init_evt_priv, as its only
-purpose is to call the other functions _rtw_init_cmd_priv and
-_rtw_init_evt_priv, respectively.
-- Rename functions from _rtw_init_cmd_priv and _rtw_init_evt_priv, to
-rtw_init_cmd_priv and rtw_init_evt_priv.
-- Replace return types from sint to int
-- Replace local variable 'res' data type from sint to int in both the
-functions.
+This patchset does following - 
+1) Refactor function and check return values
+2) Remove function and replace return types
 
-Issue suggested by Coccinelle using ret.cocci.
+Madhumitha Prabakaran (2):
+  Staging: rtl87223bs: Refactor function and check return value
+  Staging: rtl8723bs: Remove functions and replace return types
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+ drivers/staging/rtl8723bs/core/rtw_cmd.c      | 24 ++++---------------
+ .../staging/rtl8723bs/os_dep/osdep_service.c  | 10 +++++++-
+ 2 files changed, 13 insertions(+), 21 deletions(-)
 
-Change in v2-
-- Changed the commit log
-- Modified the return types from sint to int.
----
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 24 ++++--------------------
- 1 file changed, 4 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 91520ca3bbad..ab450f717f34 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -162,9 +162,9 @@ Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
- No irqsave is necessary.
- */
- 
--sint	_rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
-+int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- {
--	sint res = _SUCCESS;
-+	int res = _SUCCESS;
- 
- 	init_completion(&pcmdpriv->cmd_queue_comp);
- 	init_completion(&pcmdpriv->terminate_cmdthread_comp);
-@@ -201,9 +201,9 @@ sint	_rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- }
- 
- static void c2h_wk_callback(_workitem *work);
--sint _rtw_init_evt_priv(struct evt_priv *pevtpriv)
-+int rtw_init_evt_priv(struct evt_priv *pevtpriv)
- {
--	sint res = _SUCCESS;
-+	int res = _SUCCESS;
- 
- 	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
- 	atomic_set(&pevtpriv->event_seq, 0);
-@@ -295,22 +295,6 @@ struct	cmd_obj	*_rtw_dequeue_cmd(struct __queue *queue)
- 	return obj;
- }
- 
--u32 rtw_init_cmd_priv(struct cmd_priv *pcmdpriv)
--{
--	u32 res;
--
--	res = _rtw_init_cmd_priv(pcmdpriv);
--	return res;
--}
--
--u32 rtw_init_evt_priv(struct	evt_priv *pevtpriv)
--{
--	int	res;
--
--	res = _rtw_init_evt_priv(pevtpriv);
--	return res;
--}
--
- void rtw_free_evt_priv(struct	evt_priv *pevtpriv)
- {
- 	RT_TRACE(_module_rtl871x_cmd_c_, _drv_info_, ("rtw_free_evt_priv\n"));
 -- 
 2.17.1
 
