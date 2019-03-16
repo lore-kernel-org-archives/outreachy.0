@@ -1,110 +1,132 @@
 X-GM-THRID: 6669079539693387776
-X-Received: by 2002:a25:3241:: with SMTP id y62mr6261525yby.61.1552817622615;
-        Sun, 17 Mar 2019 03:13:42 -0700 (PDT)
+X-Received: by 2002:a05:6830:8b:: with SMTP id a11mr5663005oto.33.1552766081378;
+        Sat, 16 Mar 2019 12:54:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:27d6:: with SMTP id n205ls520827ywn.10.gmail; Sun, 17
- Mar 2019 03:13:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwe+Iss9rMvJr+hvAfjz5418B/O+rR6SVxvdaQUkl+YSbg4PbUBxDsVb/ddsstV5206glnD
-X-Received: by 2002:a81:9896:: with SMTP id p144mr6245633ywg.0.1552817621546;
-        Sun, 17 Mar 2019 03:13:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552817621; cv=none;
+Received: by 2002:a9d:764b:: with SMTP id o11ls1420443otl.4.gmail; Sat, 16 Mar
+ 2019 12:54:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1Tz4t9JUca82b6ijkYizD970r3APzsv11kR5nNdbn4IvX/509gbII8SwkJCzuPrTuXwaq
+X-Received: by 2002:a9d:7654:: with SMTP id o20mr5313005otl.70.1552766080600;
+        Sat, 16 Mar 2019 12:54:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552766080; cv=none;
         d=google.com; s=arc-20160816;
-        b=fWyPq8rnPgzR/dbqe5NZRo+0ulAXOaSpT0DKuuJMBD7da1h6gUANEM/uEWtlUp0P39
-         knNU9wSp2rR0N2373zgfi1hXlTNMJw0Ny+aLnyPxmEKiiiL+DawvTORDVOj4l6ELi4JG
-         IkeEP5UgUP98Uha4VFd09Fm7GCmgjCigrJINggddVQ2cyCV9r4UH67RetBC/BzmIYm3d
-         HdzlhOCckAjHAdx5JyuOFbE6aH8DxTTle0P4OQGfittkA4zGaCaLjTtZlcykIJ6E52jR
-         8jU69RIu+cMfln+MGgrr6wlk0OQD2vgQxdQoEo9KiODq8nQaj+iSdnK5P62O8+6/HrSz
-         E15A==
+        b=CyGC+4JrWHMnrbI0RiTrHLqeMAURFlFuOhI2zheD6H5KwDzVno3k4oEXMcWQAmBbfm
+         BnaMfpbDaoRBkKZKgUD9EY0CDtN6nF9XX+NiSEyvZdLyJolP7dWkbfNGojN6sylkrhUJ
+         bKn0CQBqs4YRewxan0dmSFosoOZim/nwrP57J3uykZprTXlrlAZIXTcdR0jM6gODtcrT
+         XdeAlcc8cJCEvuVeRzWCQ3Io1sMTZ9Bz+JQfCt9ZJVSpX5HL3XZ8UXuJ7+3j1ZH8kgyY
+         8JFyabRiyD+pFN7F3AX4Ayb/Qwe+od4U2OPPgMGt+eC84kJPsg6wGQeK37hnhxB5fG75
+         DwJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=bRS71dRDuysiQmfrHr0BcNixYLsA2NqonorjsnUztz8=;
-        b=qi3qQhRZ3VtpFys+PZ4uMYkf6Rk+pzvNdChYK/DK3wilzA/qIyue4oagNKxX8UDgbj
-         VWvr0ZgImS6IIeMtHpRVuUEUaYxeRI00mWT1fpn9/XsjBrGGCE9k9W2iAKjM5EqTMuUY
-         Jif81AWlr+o+T2R5pUIBvxRy6K6QrbUiYrY4onttg/NwX89XuRT85wrJzvyon6Dqgu/2
-         sB42eFr4vRVNPJ7HLBG3ByxlrNxjFH056nVHk09q1B4JeBrS0toOdMcKDJr5dMxBoXsh
-         HGTTL+fRL2Zt5ZDehcYr1asPRT53CxxiuxD7NdQg2SFjcOpvgOl2Z0e1nQAx3u6RLLvZ
-         e66Q==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=bnuGqOwTmew5QigThuWtTZRmPhbX64v5vbBISMu+ngg=;
+        b=hqMt79rh+QCdDX1DE+yFG78Brpe/Fh6dVCXAE4Xhuc/XIScygyonAoUa/oQCQSnBaH
+         iFhFDE4MG9vtDTy/H6IzSYabnn8xk4spsS7+Rb/AtizRbsyApDKs3ZDeHmyQ2+XfDwpW
+         W6XGx7mUDRCtYF0wLGB1bunfmtNAC3YuMDpQWOr958WPT5IqcJE+jxsbHVW9y+7FM1mJ
+         sira/crEDehxnhG2OgrlE1wxKrB0rB2LCqbbDTWBwvw46h2eC7SkoSANoR5/lXnw5kXY
+         2//oVblyLDagz52Jypdqz24ii29C+DYhLf9bJhJ+U4ZvJWlyofK+gtRhfcTPocDOKlgy
+         dW5A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=jvsfLTU4;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k62si398935ybb.4.2019.03.17.03.13.41
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ks5JpYyk;
+       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <anushkacharu9@gmail.com>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id p8si203393oig.5.2019.03.16.12.54.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 03:13:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sat, 16 Mar 2019 12:54:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=jvsfLTU4;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 0144521019;
-	Sun, 17 Mar 2019 10:13:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552817620;
-	bh=yltHKvL7Voeu3OMU5O4GYdaXh2tiwg29G2FRd1QXfIk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jvsfLTU4pj/ERJ99W+3jP639Xkt46TylU8tCzSjDZ/UKCQKN44o+9iBaBf6EYQ/Oi
-	 LOMojup1EKJnCO6X9FJxQZWj0AM45Tx0pQqx8bgaXvA58h/ODv3WSocooB2/cDwew7
-	 i+TFVReIDifgOtDiZNuQXnCqdeK5bit4Rdft4BPI=
-Date: Sun, 17 Mar 2019 11:13:37 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: anushkacharu9@gmail.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: gasket: Create a new
- variable to improve readability
-Message-ID: <20190317101337.GD26906@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ks5JpYyk;
+       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x542.google.com with SMTP id i7so5483859pgq.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 12:54:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=bnuGqOwTmew5QigThuWtTZRmPhbX64v5vbBISMu+ngg=;
+        b=ks5JpYykduYTdkFZsQhstQ8SqwsB1i4P6rSwVI64yeF63zs1JtEnLrddxQ85MtAbXH
+         I5timzMCAgNHfLZuiWpRm+E5N+hwhnninB00Ig1WHIV5GWCRjZxqXgzJx9i6zEFXpuaR
+         IRqJ1PiQEcYXoNNlrWuWHuKApFCLp9ySgM7mbp4bUf7d3IxauptuUyxopIMPBmPawaqT
+         6qs42wSJ4biVkSe4vzlNQlyS/gLrgKF+ZOJDRK6TDlhO01+6IlT3gERDNBajK5IIk1pi
+         TwNAx6IeFHtleypNifaT+lcoETqWydxLDeNZTky/YhBK/YVkJgP9kTjnvrzzmiaY1CHk
+         YqbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=bnuGqOwTmew5QigThuWtTZRmPhbX64v5vbBISMu+ngg=;
+        b=X99ovY/hQTmWncfRsAicKeAM6r6Jj9gFS3md23wRAgpomY80dn1G8FEZd7Q3UlNPGY
+         KbNiign/HSQsHTyBaytIfWUUu1IcsVP7dlslNBNlprA/IggDLR09nzWyPsdHyOj0lwic
+         Vcyb7+vxH5crhQIzKoZGoluf1yAcPv+FZ5KGoiFg7MrWODKVjdjrKdXcIsV1e6hjuIJO
+         NSF2/qmv7CziUxvBOQwEUurVisipyonhM6zkyjH+jDfEdbQdSdBt/LgRAnKkuwLrViLN
+         aRUxziZNc+7GftG8psazOkcBP1l0hChMsN1tvmJP52zYq7hE9BrGc1sbY3sd0fllc3Oo
+         xsFw==
+X-Gm-Message-State: APjAAAUjued7iHlos1Fs7u2nn5ucqe6saQdqNWQednqjCTjke7F5pilt
+	03KKB4zvVoNzmP3/02CK0pM=
+X-Received: by 2002:a17:902:b708:: with SMTP id d8mr11006011pls.322.1552766079879;
+        Sat, 16 Mar 2019 12:54:39 -0700 (PDT)
+Return-Path: <anushkacharu9@gmail.com>
+Received: from localhost.localdomain ([42.110.217.69])
+        by smtp.gmail.com with ESMTPSA id w26sm2340525pfn.27.2019.03.16.12.54.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 16 Mar 2019 12:54:39 -0700 (PDT)
+From: anushkacharu9@gmail.com
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Anushka Shukla <anushkacharu9@gmail.com>
+Subject: [PATCH] Staging: gasket: Create a new variable to improve readability 
+Date: Sun, 17 Mar 2019 01:24:27 +0530
+Message-Id: <20190316195427.2673-1-anushkacharu9@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <anushkacharu9@gmail.com>
 References: <anushkacharu9@gmail.com>
- <20190316195427.2673-1-anushkacharu9@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190316195427.2673-1-anushkacharu9@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
 
-On Sun, Mar 17, 2019 at 01:24:27AM +0530, anushkacharu9@gmail.com wrote:
-> From: Anushka Shukla <anushkacharu9@gmail.com>
-> 
-> - Define a new variable temp_table.
-> - Modify it to maintain Linux Kernel Coding style.
+From: Anushka Shukla <anushkacharu9@gmail.com>
 
-What is "it" here?
+- Define a new variable temp_table.
+- Modify it to maintain Linux Kernel Coding style.
 
-> 
-> Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
-> ---
->  drivers/staging/gasket/apex_driver.c | 13 +++++++------
->  1 file changed, 7 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> index 7c2ffa467557..d0fffb51c9c4 100644
-> --- a/drivers/staging/gasket/apex_driver.c
-> +++ b/drivers/staging/gasket/apex_driver.c
-> @@ -526,21 +526,22 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
->  	}
->  
->  	type = (enum sysfs_attribute_type)gasket_attr->data.attr_type;
-> +	struct gasket_page_table *temp_table = gasket_dev->page_table[0]
+Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
+---
+ drivers/staging/gasket/apex_driver.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-Did you build this code?  The compiler should have complained a lot
-about this :(
+diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+index 7c2ffa467557..d0fffb51c9c4 100644
+--- a/drivers/staging/gasket/apex_driver.c
++++ b/drivers/staging/gasket/apex_driver.c
+@@ -526,21 +526,22 @@ static ssize_t sysfs_show(struct device *device, struct device_attribute *attr,
+ 	}
+ 
+ 	type = (enum sysfs_attribute_type)gasket_attr->data.attr_type;
++	struct gasket_page_table *temp_table = gasket_dev->page_table[0]
+ 	switch (type) {
+ 	case ATTR_KERNEL_HIB_PAGE_TABLE_SIZE:
+ 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_entries
+-				       (gasket_dev->page_table[0]));
++				gasket_page_table_num_entries(temp_table);
++				       
+ 		break;
+ 	case ATTR_KERNEL_HIB_SIMPLE_PAGE_TABLE_SIZE:
+ 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_entries
+-				       (gasket_dev->page_table[0]));
++				gasket_page_table_num_entries(temp_table);
++				       
+ 		break;
+ 	case ATTR_KERNEL_HIB_NUM_ACTIVE_PAGES:
+ 		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
+-				gasket_page_table_num_active_pages
+-				       (gasket_dev->page_table[0]));
++				gasket_page_table_num_active_pages(temp_table);
++				       
+ 		break;
+ 	default:
+ 		dev_dbg(gasket_dev->dev, "Unknown attribute: %s\n",
+-- 
+2.17.1
 
->  	switch (type) {
->  	case ATTR_KERNEL_HIB_PAGE_TABLE_SIZE:
->  		ret = scnprintf(buf, PAGE_SIZE, "%u\n",
-> -				gasket_page_table_num_entries
-> -				       (gasket_dev->page_table[0]));
-> +				gasket_page_table_num_entries(temp_table);
-> +				       
-
-Always run your patches through checkpatch.pl before sending them out,
-so that a maintainer does not have to tell you to run them through
-checkpatch.pl :)
-
-thanks,
-
-greg k-h
 
