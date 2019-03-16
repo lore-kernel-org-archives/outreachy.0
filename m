@@ -1,143 +1,115 @@
 X-GM-THRID: 6668981360875536384
-X-Received: by 2002:a02:5693:: with SMTP id u19mr5553493jad.5.1552753563071;
-        Sat, 16 Mar 2019 09:26:03 -0700 (PDT)
+X-Received: by 2002:a02:f52:: with SMTP id h79mr5405197jad.3.1552749778694;
+        Sat, 16 Mar 2019 08:22:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:7d48:: with SMTP id d8ls394995ioq.6.gmail; Sat, 16 Mar
- 2019 09:26:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwamLi56Bb86NeqrIhb0dCK3/RRF8nllmX/NkxdEDU/ReIUQdzqdVp3rdnl+Ms48vnOeAcx
-X-Received: by 2002:a5d:9b95:: with SMTP id r21mr6161209iom.38.1552753562114;
-        Sat, 16 Mar 2019 09:26:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552753562; cv=none;
+Received: by 2002:a24:194d:: with SMTP id b74ls2260654itb.3.canary-gmail; Sat,
+ 16 Mar 2019 08:22:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxXPMo6aSLko30VycTxTHMTQegT3D349SuWtSWEB1Gr26f6PFlLfcK2F4Dk9iiN90WiVf21
+X-Received: by 2002:a24:3a4a:: with SMTP id m71mr5484322itm.12.1552749777965;
+        Sat, 16 Mar 2019 08:22:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552749777; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZZSA+CPlLMPy3mTL8iqtvB877PudW8iSjbIpAiA2++koB3yRk+pU0teptPHiJYHVA3
-         ql+ltY/jyUJR13QmQjJjFAsvSeIsweeAVH9Qa34OjrzTh6R/xgKTaTo1V9YpqQN+UZCm
-         +UVFmMJmug3kVbEv+7t8YE/3fgFa5Tx9a5geYqACZubrgfk3U/l9vCDyg0BpvIYwUvu4
-         YVkZqb/na0qG08Y6XZ/tcSuYKyZRRzlvj//yC8b53OKs4dsoEDrSGiqKjhStJv+8g6re
-         ZiMqFM/0vYaxGQ4AQyq3Rzr/z9MarX/IBWwWwEuPSmXbZUeKn/y7ZyWk673JQaSeCbPD
-         b/QQ==
+        b=qSotkqUWvCylWa/OmVPkufaVkkfI2zh/32jmlTaapIRDmUbCYJSN94ZURwXc5/Svvv
+         kuSWXCPdVJDilXMOEtU1gIoIF4WaUHiux+TfzUuz3njX6aWqAQ8Q2xfhe4cCMWqpmafm
+         izjko47aiP3bkrZrT0yFmGTiqukKpp36yrInBc9jRHY0/uo3gwbEQYz7a3TCICxjTEsq
+         SZelOSJXuX1SoffoXA0+lSCMx2fdp6oeHUToDhvPoqyQPnPFBswwZ53+x0SZXCJwMQF9
+         2SL5M/X5ootHUeMOYP+7ivA30vm07iz1OBStFItK+aOqx57oekn+NJfn+5AnnaekELuN
+         zHPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=2DUN2KuGDrpo9az5RAbNiHh+lFHnM8QoZrlo+Gcmnps=;
-        b=jWUZQJuoX7utYzG8jzOx8EQ1xtXKRJVd6sUot522csdx/KwxUBYv5h7OwT8j1xR1U/
-         RTAAAIPyfqG6aYzBbuN2A3Ogl5xiobUNK6nVmtjp/nEeHD+UKWpb6SM7rbg3woAwm2gB
-         hDoD3xsrPdurbm0N+L1UDvnV8oDZO++d1ZSfznIbsdQqBnqWHzi7x8euJpbB0W9aplUC
-         WhcGkk4cmFqKJv1zp4mkDZUNpJZlLUwxIAzOuz9J77hNf7zkuyLNO57OjzW6YatA2BLV
-         vNezwSNpi4ZksTPVyavhCDx4RcdkiVa3+8jUy9WjTyGZRc2wIW3cv1JQ2SBPsT6zxIA5
-         +ydQ==
+        bh=aoaHb9GBNe6On7rpHdg725K7Z8eZnOpiXADMhq3YTJA=;
+        b=eMxg621rqDCuwzji0HdVj5AA+4NtfuzShaOJpwYNkD5xO32Zif31B2vStjowxwFUo1
+         q5ZAo/DLOmYB0mLbYbHT5blseBcSy7rpqxLIz3paWHG5sPwgaS9Pvff7rKjEhQJHreZI
+         OIP60WwpVqcfVWUiagY7eRzN0XSFvUfDsNCaxSvmf3Vsbnk3Za2zFZrlZKPTfilD9RSY
+         MvytcVo4Otqj/TLpI+LxrnpEpqCsB8KJ05uyDzxCjZ9VjtB2jCPREUtqQ/6VtdNdaIL/
+         pSp0bUAbaf/WTAd2+fARB7Ljmhf6UmcL3n+XgGKDFwCdpsa7bRZuk7ka5qcsqMxXfM4I
+         zKNQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bNKu4jdn;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Yq4lJ0YE;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id k26si205599ioh.5.2019.03.16.09.26.02
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id 71si288263ita.0.2019.03.16.08.22.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 09:26:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Sat, 16 Mar 2019 08:22:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bNKu4jdn;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Yq4lJ0YE;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id 125so8486341pgc.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 09:26:02 -0700 (PDT)
+Received: by mail-pf1-x442.google.com with SMTP id n125so8351385pfn.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 08:22:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=2DUN2KuGDrpo9az5RAbNiHh+lFHnM8QoZrlo+Gcmnps=;
-        b=bNKu4jdnHuT9AZ9F7wuhUBjdyipo2fAZNxpZ4eI4+MwXDlSwqpabyYMPv1jxhpx2dE
-         K5ctjjCGumVZutTyocu6XF4EYuLJ6Or0+6XCxIX8ydvmJLk/hU+GQKDsdySJPAvCDo6i
-         Jg+8B+gYKoNFA68cV4qYgFAIi9VYlBK4PizlLCgkuWf+jIbTKSIrmthQBrDvok8IJuKh
-         sFKSVhfHtQNSVv4Q/zRQAyKNkb6REZ7r1ZMUetcd5yqgt0FR5mPlM6JeKBEF5cJxBfEr
-         u/81P6duitKYovty9isDtrlt/IhN3JeOoN14V/Ay7XK9VUW85Wr2bbz1+PyXsmFrGPj6
-         6aqA==
+        bh=aoaHb9GBNe6On7rpHdg725K7Z8eZnOpiXADMhq3YTJA=;
+        b=Yq4lJ0YEWwmwrh0Mg39zUHxXZOuM928cBEGhWx2ALM7DqRNKOBDBDXuuB2bwr+6lXp
+         HFdbaxRmB3+zCpJwJ8rhMWGvrkX+hY06rX3DRzv7x6HKEFbdGiApLZzRzQOCmcIwa7pJ
+         kncIGJ0PDULoG/umRgFKPPtp4GWdpxhZEvxpPO8gqKV3BtdAfwIp8lqzZdSnL+nmONPN
+         J88QbRiP96QXPMOzA1SBkmgsQvDEMqMj5CVb0iltwKc4FpMw6TptmHMVcqDfWpuQgx0q
+         YXeDdM7UomUH5rkpqsJoFGpzBZjSNBnxg0b3301zOjRe9QCFt1MqncvECWAu4DtAD8fa
+         x9zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=2DUN2KuGDrpo9az5RAbNiHh+lFHnM8QoZrlo+Gcmnps=;
-        b=Wn2wpB1ZXbrCHms/DmG8h8L0+R59K8z99vHx6RvfeO1e7PhTS/h7GGsSuxW4y5rvZO
-         x0GV3Ub0w8tArqQer6qsf10rNpqYIaksoFXSB/npXrne8fBKBsejFI5D7f1wHI435s9M
-         sVvbSkrHnyU/8n0RpVHRS5Xfv/DGOXTnReqcLCQJfVtDctzAhLbKWmc1XnPtUj8ChLSR
-         fJf+b0XxGJ1E9wJiWBXotDOj58lkTX1GN1Gyf3XHtAKBc9wHk6Ykk5EWllTcdVxCgmSN
-         y/2T5bq3/wx+bEfXE1FQuE6EC3SaOOMqNkrWjtaI0uKc2MOU6si4bVxIfI4KlGoCT7w6
-         uaYw==
-X-Gm-Message-State: APjAAAW7dqPLvH4RTqqVDTyf9gm/gxshzteKQymrZFuskiJXN7aTkm/3
-	17+0JDsB3H3WKvk++pkrIWUh/ZiPjQI=
-X-Received: by 2002:a65:4389:: with SMTP id m9mr8942584pgp.8.1552753561446;
-        Sat, 16 Mar 2019 09:26:01 -0700 (PDT)
+        bh=aoaHb9GBNe6On7rpHdg725K7Z8eZnOpiXADMhq3YTJA=;
+        b=LB55sFQv/ns3QbfNvFj4Gs2PzEwgGReCWLg6gdpc7f+AHrTMXTvEao5zluw6s12Jv8
+         tdzn/DfWYP5573ZDPzGXg8g7Y4iOC8MExPng+RMRAs9GH++dE1x5oqSfCJIVY124Bw6f
+         gm7G0VLGR5mDbeG/8IlNmJ6LeIh2shYO0Wb/hgISlxk8faezpaFndXWKFrTTfo+9sS8X
+         m76djL28UrReIeb06Uufnb0S/Bufduwco+z4YIq7llNMyyiBuPaGGcel4BTE7H+QII7D
+         fauIvH4OZ+txWx8lMAvpQTK44o3qM1f/IMrzuUUSBs18ZHCaUneqFEElnSE6N5TsKNot
+         5Grg==
+X-Gm-Message-State: APjAAAWikhmPFTml5NIZC9wat5LtXNTfMZ4UmJddl9UKNLNuTSGu0fe1
+	M4JMLYMl+9KYfClH9RF+FdwjNuYD0Y4=
+X-Received: by 2002:a17:902:6b47:: with SMTP id g7mr10517854plt.100.1552749777076;
+        Sat, 16 Mar 2019 08:22:57 -0700 (PDT)
 Return-Path: <sanjana99reddy99@gmail.com>
 Received: from sanjana-Inspiron-5570.domain.name ([219.91.254.23])
-        by smtp.googlemail.com with ESMTPSA id b15sm8059294pgd.44.2019.03.16.09.25.58
+        by smtp.googlemail.com with ESMTPSA id j24sm11337654pgl.58.2019.03.16.08.22.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 09:26:00 -0700 (PDT)
+        Sat, 16 Mar 2019 08:22:56 -0700 (PDT)
 From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 2/3] Staging: rtl8188eu: rtw_recv.c: fix a paranthesis -> parenthesis issue.
-Date: Sat, 16 Mar 2019 21:55:49 +0530
-Message-Id: <20190316162549.19083-1-sanjana99reddy99@gmail.com>
+Subject: [PATCH v2 1/3] Staging: rtl8188eu: rtw_recv.c: fix a tab indent issue
+Date: Sat, 16 Mar 2019 20:52:45 +0530
+Message-Id: <20190316152245.18268-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190316133306.8747-1-sanjana99reddy99@gmail.com>
 References: <20190316133306.8747-1-sanjana99reddy99@gmail.com>
 
-Fix a paranthesis -> parenthesis issue which removed check after compiled using
-checkpatch.pl
+Fix a tab indent issue which removed warnings after compilation using
+checkpatch.pl.
 
-CHECK: Remove unnecessary paranthesis -> paranthesis.
+[WARNING]:No extra space at the beginning of a line.
 
 Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_recv.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 0d04057e6cf6..fc72e797f8e5 100644
+index 1d83affc08ce..0d04057e6cf6 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -64,9 +64,9 @@ int _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
- 	precvframe = PTR_ALIGN(precvpriv->pallocated_frame_buf, RXFRAME_ALIGN_SZ);
+@@ -24,11 +24,11 @@ static u8 SNAP_ETH_TYPE_APPLETALK_AARP[2] = {0x80, 0xf3};
  
- 	for (i = 0; i < NR_RECVFRAME; i++) {
--		INIT_LIST_HEAD(&(precvframe->list));
-+		INIT_LIST_HEAD(&precvframe->list);
+ /* Bridge-Tunnel header (for EtherTypes ETH_P_AARP and ETH_P_IPX) */
+ static u8 rtw_bridge_tunnel_header[] = {
+-       0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
++	0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
+ };
  
--		list_add_tail(&(precvframe->list),
-+		list_add_tail(&precvframe->list,
- 				     &(precvpriv->free_recv_queue.queue));
+ static u8 rtw_rfc1042_header[] = {
+-       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
++	0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
+ };
  
- 		precvframe->pkt = NULL;
-@@ -1336,7 +1336,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
- 	plist = phead->next;
- 	pfhdr = list_entry(plist, struct recv_frame, list);
- 	prframe = pfhdr;
--	list_del_init(&(prframe->list));
-+	list_del_init(&prframe->list);
- 
- 	if (curfragnum != pfhdr->attrib.frag_num) {
- 		/* the first fragment number must be 0 */
-@@ -1663,9 +1663,9 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
- 			break;
- 	}
- 
--	list_del_init(&(prframe->list));
-+	list_del_init(&prframe->list);
- 
--	list_add_tail(&(prframe->list), plist);
-+	list_add_tail(&prframe->list), plist;
- 	return true;
- }
- 
-@@ -1704,7 +1704,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
- 				 ("%s: indicate=%d seq=%d amsdu=%d\n",
- 				  __func__, preorder_ctrl->indicate_seq, pattrib->seq_num, pattrib->amsdu));
- 			plist = plist->next;
--			list_del_init(&(prframe->list));
-+			list_del_init(&prframe->list);
- 
- 			if (SN_EQUAL(preorder_ctrl->indicate_seq, pattrib->seq_num))
- 				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) & 0xFFF;
+ static void rtw_signal_stat_timer_hdl(struct timer_list *t);
 -- 
 2.17.1
 
