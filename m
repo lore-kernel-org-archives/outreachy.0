@@ -1,170 +1,108 @@
 X-GM-THRID: 6668976439860133888
-X-Received: by 2002:a63:5117:: with SMTP id f23mr380228pgb.3.1552742079503;
-        Sat, 16 Mar 2019 06:14:39 -0700 (PDT)
+X-Received: by 2002:a6b:7708:: with SMTP id n8mr5527253iom.36.1552742077764;
+        Sat, 16 Mar 2019 06:14:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:80c6:: with SMTP id a6ls3224711pfn.5.gmail; Sat, 16 Mar
- 2019 06:14:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxbvp6y837mrXxmiwFhuIoHN9pp4zarbqsBR/s0ElodfoqDmezeCt3EJGVOyG3Od6QfUnX5
-X-Received: by 2002:a65:64c4:: with SMTP id t4mr2761282pgv.85.1552742078705;
-        Sat, 16 Mar 2019 06:14:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552742078; cv=none;
+Received: by 2002:a24:194d:: with SMTP id b74ls2211510itb.3.canary-gmail; Sat,
+ 16 Mar 2019 06:14:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw/TbJcfCJ4BgidjquykRhGtZHguzGs4NAamctUqoSrJv4U8NFn35crhWRxt0oeNrnP32eY
+X-Received: by 2002:a24:612:: with SMTP id 18mr4925747itv.7.1552742076811;
+        Sat, 16 Mar 2019 06:14:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552742076; cv=none;
         d=google.com; s=arc-20160816;
-        b=DHZ1650zcvXAAvrb0uP2G94iS9dk2LVplZPbz4yTFVIe/7XVwlOxjWpepnDyH4Rzm5
-         iqcxwQKC404Xj1sPRqBNb1MxT9Pg+djWED6Ek0qf+pwaU4jr0BuDEykjQq/uV7lDy4Lw
-         kx2YWZ85PGYniN1VZjGs/YtMJhuAL20bfNT2pAGkuyc6ZTXFYpPzkcdZ8IaqmPmDmlWT
-         DqFNCBtS/0J5RDOIx/G9a6ZFMr/GWbncAWc54wvssqAxl+bBj092Iqu4Y7gztnHmLT0X
-         QUX7uPUOlfKamHYgDkX6uubGbDyX7dCP5gwSVJ+Ssn5juFKJ/k7nZ86jteSJFZZ/y0Sx
-         tfTg==
+        b=nV9OrnjFaNqNs5f4XTeXAV99MuoGv6Qrd064N4VKI+hrrcKpaE8Fm/18V8ra2v71oq
+         BdQDT3jcKN6cNHouFL3OTz9V/ZXiCT4pxD28YF6xwAlMr3E6pVR5mAF4oweNdVNWagr1
+         Fs0wXRJlgu0fwl8WCl0N9744smLqLb3p3bL5vYbv1KF6LuEp9nFxNjXuzn81obfKChDP
+         WUYsOxoc2zifc9nmr87Is4GEVgnnckkKUEkT1evBuUAA6+Efn8t0WLdV0EGrV2Fm2fRK
+         nzNV029G3bo3j2ioWrjLXQGkiy76Cc9bbVBTqtLJ9l4cEe6pYpVlpLoUyZAhRkvugFw2
+         VJ+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=b97H/eEPafAD7fhj3gFL+/mWuf+VSw8TRwMovGokh0o=;
-        b=a0VUHQ3izEQ5TGHNgV/eQevc00RPb1ipDFNBiuhtuy+GvcLDS9+uCRel/VjOaGRUGg
-         Que9Ou4bCXBv+L6X+a2RHKMt5hn2FCQ2rShusc1aggK2CCkqiY7bUkFY/HRSf+Plzr77
-         2gvVvflQwPtuJhxxlF4w3cEyGnJB9p/6QA9w14TN4Tg28zCaBuBDCLIwrVaB+2xdBtRJ
-         QMuNI1lBuQJFbD/aZ9NUIiXyduz3Vqf2sOGCypHeAzG+bZ7+nFMGAkQLTlskxt0hfFnO
-         Sr/sTuM4iZQyLhWMLi84y1CztynZYoAd0nRDVdJkF30F23O9/mPbuzC3khjKYyMUvpck
-         tDpQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7oDbagAusA+zygXuhmFBPTSWMatW7VtjZYmNXqGH584=;
+        b=ILvFK1jWYRm2fNopx1ZXjA811mYJ4ePcRk5XCGvggDu65s9cZW3+SLKN8WWx/X/R41
+         A3038e6BU74QM+F2K6hp0a4YbyXx2ti+WOtcsAqS0XAzHzH1wBCa79m+XnP07E2fGzAC
+         jlg3kI1f4plguugzb6t2vPVG/uGxvr+nSUOhUbpQiKARQ+O1SKSO9It8QhuqFKVPBIbf
+         iMj47tXouwZz46cEkqFBxLRi8L4CsRcedb7Rj/NKrtUAeNweYCcZMcpsd3Lhj2sSMfJ5
+         SgoFb2uD1DoxWyN6AQZdNkX8mdvS6EZr/Dq/kMqVZ0rdGhaFWxpLiBXrCkLPrQueVYRZ
+         lsmg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zxp4+S2k;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J08uiQ5q;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id k70si251036pfc.0.2019.03.16.06.14.38
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id p187si48988itb.1.2019.03.16.06.14.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 06:14:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Sat, 16 Mar 2019 06:14:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zxp4+S2k;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J08uiQ5q;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id i7so5119652pgq.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 06:14:38 -0700 (PDT)
+Received: by mail-pf1-x443.google.com with SMTP id r15so5469698pfn.9
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 06:14:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=b97H/eEPafAD7fhj3gFL+/mWuf+VSw8TRwMovGokh0o=;
-        b=Zxp4+S2k6SwcOReTCsBja+kMysQJehmHoc9gkdMn+U2Vu448fbpTNsgYHPX4ca1LYZ
-         /7mqkpwtDRkHFzIOfeA4Eum4LpHcPOJo5W7ZVrMbhWpP1zth6dYbkYFexHCdBmSX5/5T
-         1430nG1tvswopLe3NwKQjxqRhi1XRc2hY1daUJtdxpZUOafUepx3ZdJ2xHkbfXxxdp+l
-         MWgfbC3//EaG8EV5kOFs0bCbP4297XFkhdCjVN/rHhMiGJ6hcKuFfYdF2/SjGbshxr+5
-         n6/YaLT9Z85SW2hkwc/Z6d/jH8aXSlJCZxGUfriTSom3pXqXCwVpKoMeFq8RsMtv0wGo
-         7cQg==
+        h=from:to:cc:subject:date:message-id;
+        bh=7oDbagAusA+zygXuhmFBPTSWMatW7VtjZYmNXqGH584=;
+        b=J08uiQ5q0NHnH4MdmS4iRq6PZaR1ww6SaOGVZX9pemw2nYP/tgg2FgLo63RkQC3qKV
+         oCAIESekOxPz2/GQ0ChGrfe5bcF/5BRupB+uqc4m+AVAT64+U6eb54cnIygxGdx+JbZb
+         SYz/6lpqv3dE6YTjuTFJgpm034pbjcEbE1nG7UnqrRAPtUwicDx/fFco88OGOQzYhgmN
+         EHlzOzOH3/4PjF42RLYv/yh4cpcFsdJA0M+oukyaaKJRK/sAAj8JtKx7WJQukWb7qnVH
+         ffQwWaq7hHom08cMt1XDQPG/l1ycx0gA1IX8hdj+oiBfo5dnoz6sVLqmzC22AxQFnrjQ
+         5kPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=b97H/eEPafAD7fhj3gFL+/mWuf+VSw8TRwMovGokh0o=;
-        b=j2vM19Ozc2GuhlMqxuYyNawX879sf3sQpv3BtZ4j4ACoWcdZW/pn4yYxFtAVcHfOuT
-         UIuC57MXQv1eTutuM9TZk2JpyrlAdBzFhNfDVeBvblcLzFs6Czc+EUeLS3cp+MKnM+YO
-         6FZ16/phkM/pHGOEKHnL/LQnOFKo+WQTQnkUo2g1wlRt6P/ZcHuHPHktRvvxZssWTVW1
-         gFduDH/Cn6iARojgqb1lQVIvQ8settJgoYCPdNXhcDi9dNvrfebefgQzLPHgVa8Z9MqM
-         8mtFPw7SPvNABPdTToVoFyhzI3QkWHkB1pJx4ERNJ6sZVYbwDKMnggvourolBy8NslpC
-         +l3Q==
-X-Gm-Message-State: APjAAAVrcoqlZWHSH7uRV0GIyYzNCpxvZT1VF9WgRnPXNNKXo0XS6FcV
-	HMjmSuszEALv2SOYeIdLi8I=
-X-Received: by 2002:a63:1749:: with SMTP id 9mr317355pgx.420.1552742078381;
-        Sat, 16 Mar 2019 06:14:38 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7oDbagAusA+zygXuhmFBPTSWMatW7VtjZYmNXqGH584=;
+        b=ttYBpmeiTkHWhaZBkbY4YcinAYr3oerXcRScIuxW3JsT/kcKoTP1hPZX+664pP+kRt
+         TMFPmlc1RsVOWt/OHFvFPvgTCqKogI482YPPzf6Uy5Zx5g16TfVEJ/V5eTA8G1HuN+Ii
+         4hm+JnnGPInID+HHxLDaGECJf6/yDtLAb3YQnNde0jAxumAKBkGmVUutRxlA0qHh3/Cv
+         66PSu0KmTmgiDh1hJPNEJjhk1wyomu8uAoQj9eH9qWp5IkPSCMTIblEQULhg8K7VQAcv
+         o4iFYvnGYDGEtwByS5drPz7SpVFlaOL4ly6HI6woDf1JkNb+glTd49jNlXTP+VjPjdxF
+         y6bw==
+X-Gm-Message-State: APjAAAVTm+NCsm53iyhuKkQGrlr2sPYePNaZqGujZyiNcww5baUNNC/7
+	viu0MQIPKYrdeXr++pHjOV5Dt/4b
+X-Received: by 2002:a63:5b44:: with SMTP id l4mr8495665pgm.238.1552742076045;
+        Sat, 16 Mar 2019 06:14:36 -0700 (PDT)
 Return-Path: <himadri18.07@gmail.com>
 Received: from Hyper-V.DAIICT.AC.IN (mx2.daiict.ac.in. [14.139.122.121])
-        by smtp.gmail.com with ESMTPSA id k3sm17852578pfc.59.2019.03.16.06.14.36
+        by smtp.gmail.com with ESMTPSA id k3sm17852578pfc.59.2019.03.16.06.14.33
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 06:14:37 -0700 (PDT)
+        Sat, 16 Mar 2019 06:14:35 -0700 (PDT)
 From: Himadri Pandya <himadri18.07@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH v2 1/4] staging: rtl8723bs: hal: Remove comparisions to NULL
-Date: Sat, 16 Mar 2019 18:02:48 +0530
-Message-Id: <20190316123251.24875-2-himadri18.07@gmail.com>
+Subject: [PATCH v2 0/4] staging: rtl8723bs: hal: Remove and modify NULL comparisons 
+Date: Sat, 16 Mar 2019 18:02:47 +0530
+Message-Id: <20190316123251.24875-1-himadri18.07@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190316123251.24875-1-himadri18.07@gmail.com>
-References: <20190316123251.24875-1-himadri18.07@gmail.com>
 
-Remove comparision to NULL. Suggested by Coccinelle.
+- This patchset removes comparision to NULL in various files of
+drivers/staging/rtl8723bs/hal/ .
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
----
-Changes in V2:
-	- Change subject line
----
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c   | 8 ++++----
- drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c | 6 +++---
- 2 files changed, 7 insertions(+), 7 deletions(-)
+- The changes are broken into separate patches to keep the length of
+each patch below/near 100 lines for convinient reviewing.
 
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-index 9f4a10aaa774..dc2db3b8ffd6 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
-@@ -1480,7 +1480,7 @@ static void rtl8723b_set_FwRsvdPagePkt(
- 	MaxRsvdPageBufSize = RsvdPageNum*PageSize;
- 
- 	pcmdframe = rtw_alloc_cmdxmitframe(pxmitpriv);
--	if (pcmdframe == NULL) {
-+	if (!pcmdframe) {
- 		DBG_871X("%s: alloc ReservedPagePacket fail!\n", __func__);
- 		return;
- 	}
-@@ -2069,7 +2069,7 @@ void rtl8723b_Add_RateATid(
- 	u32 mask = bitmap&0x0FFFFFFF;
- 
- 	psta = pmlmeinfo->FW_sta_info[mac_id].psta;
--	if (psta == NULL)
-+	if (!psta)
- 		return;
- 
- 	bw = psta->bw_mode;
-@@ -2107,7 +2107,7 @@ static void ConstructBtNullFunctionData(
- 	pmlmeext = &padapter->mlmeextpriv;
- 	pmlmeinfo = &pmlmeext->mlmext_info;
- 
--	if (NULL == StaAddr) {
-+	if (!StaAddr) {
- 		memcpy(bssid, myid(&padapter->eeprompriv), ETH_ALEN);
- 		StaAddr = bssid;
- 	}
-@@ -2176,7 +2176,7 @@ static void SetFwRsvdPagePkt_BTCoex(struct adapter *padapter)
- 	MaxRsvdPageBufSize = RsvdPageNum*PageSize;
- 
- 	pcmdframe = rtw_alloc_cmdxmitframe(pxmitpriv);
--	if (pcmdframe == NULL) {
-+	if (!pcmdframe) {
- 		DBG_8192C("%s: alloc ReservedPagePacket fail!\n", __func__);
- 		return;
- 	}
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-index 69c4db5b5b0c..c4fb9fe2ae73 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-@@ -63,7 +63,7 @@ static s32 rtl8723_dequeue_writeport(struct adapter *padapter)
- 	else
- 		pxmitbuf = dequeue_pending_xmitbuf(pxmitpriv);
- 
--	if (pxmitbuf == NULL)
-+	if (!pxmitbuf)
- 		return true;
- 
- 	deviceId = ffaddr2deviceId(pdvobjpriv, pxmitbuf->ff_hwaddr);
-@@ -284,7 +284,7 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
- 				/*  check xmit_buf size enough or not */
- 				txlen = txdesc_size + rtw_wlan_pkt_size(pxmitframe);
- 				if (
--					(NULL == pxmitbuf) ||
-+					(!pxmitbuf) ||
- 					((_RND(pxmitbuf->len, 8) + txlen) > max_xmit_len) ||
- 					(k >= (rtw_hal_sdio_max_txoqt_free_space(padapter)-1))
- 				) {
-@@ -307,7 +307,7 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
- 					}
- 
- 					pxmitbuf = rtw_alloc_xmitbuf(pxmitpriv);
--					if (pxmitbuf == NULL) {
-+					if (!pxmitbuf) {
- #ifdef DBG_XMIT_BUF
- 						DBG_871X_LEVEL(_drv_err_, "%s: xmit_buf is not enough!\n", __func__);
- #endif
+v2:
+- Change subject lines of patches
+- Include a new patch to modify comparision with a constant
+
+Himadri Pandya (4):
+  staging: rtl8723bs: hal: Remove comparisions to NULL
+  staging: rtl8723bs: hal: Remove NULL comparisions
+  staging: rtl8723bs: hal: Replace variable==NULL comparisions with
+    !variable
+  staging: rtl8723bs: hal: Modify comparision to keep constant at right
+
+ drivers/staging/rtl8723bs/hal/hal_btcoex.c     |  8 ++++----
+ drivers/staging/rtl8723bs/hal/hal_com.c        |  8 ++++----
+ drivers/staging/rtl8723bs/hal/hal_com_phycfg.c | 18 +++++++++---------
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c   |  8 ++++----
+ drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c |  6 +++---
+ 5 files changed, 24 insertions(+), 24 deletions(-)
+
 -- 
 2.17.1
 
