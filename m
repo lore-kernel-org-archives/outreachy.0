@@ -1,80 +1,69 @@
 X-GM-THRID: 6668919663112486912
-X-Received: by 2002:a17:902:b947:: with SMTP id h7mr4080973pls.41.1552819730060;
-        Sun, 17 Mar 2019 03:48:50 -0700 (PDT)
+X-Received: by 2002:a1c:f214:: with SMTP id s20mr483103wmc.20.1552738416757;
+        Sat, 16 Mar 2019 05:13:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:a514:: with SMTP id s20ls7178864plq.0.gmail; Sun, 17
- Mar 2019 03:48:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyaoYJoA1zlqEj+VXcvq3DHCAo1VK5jguVDL/KnYXEKaDoamCW0JV8JR1Yq13y3d3HGBARd
-X-Received: by 2002:a17:902:1347:: with SMTP id r7mr4101404ple.133.1552819729335;
-        Sun, 17 Mar 2019 03:48:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552819729; cv=none;
+Received: by 2002:a1c:e142:: with SMTP id y63ls1436476wmg.7.canary-gmail; Sat,
+ 16 Mar 2019 05:13:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFGUjbOm2l7C6fA33883F23prFLzVKBQydTUim5DyJ4cIvLVI5QmBKNWgq/bNx25i2pnLV
+X-Received: by 2002:a7b:c18d:: with SMTP id y13mr523917wmi.2.1552738415879;
+        Sat, 16 Mar 2019 05:13:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552738415; cv=none;
         d=google.com; s=arc-20160816;
-        b=POCYIWU2RAiccCSW2gjhIJ8tFAAOzd/REevBARh7dHfNrswSbYYF1ZLGv8dMh8e9ve
-         +k2m7vh4BZkIZ5nWKi/Hmjz0TENwzNlh6YBSKOGHij7cLKPNznkw1zyrGqsFNBnorlW0
-         PvYn5ZsGsHHMF3uLsWa3VmtpM61g540szk7dsq/FblwuqUWEbJVlIBFgNFf2GgXcXWxL
-         zcakiEfFz9WNa8p6auVdinBDMzYOZnbxMVVpT04OIT7Hm0FkWn0lRZXsMg4+MGCMduUW
-         IQfJMob2pu5y+OmlcJE8Nv6HOfcjtXMaySrdKyeoGXHM+kCe7Qhy9Wy1b2ucS+I/kV8u
-         g5aw==
+        b=D1k+XoHtGtLqC2FxxylzF+YlD1oz5GjXtLT5osjrROR/mfdcaFrdOnuO3M40z4bW/h
+         /9smlJY5DfOk6Fe5EklAThEs/Gnir+4f/H3VkRatqX49P5domc+hedYiUZbaHyp8YlR7
+         Vi9TbskUva42k8h8FVBVr6Rzb5L88KH8m0B2yK9SzqijtwGzzCZAv9q5gXONuIM4V9R3
+         +1agwh63eHnhbWl9wFGarHadL665qTdZcMIqNypWEZd8WGEtMKVIHZojqI/K2rbilwyT
+         KrraAH0Pxf5bGHGrUC6Pb9QXuH0IP3+s/bvZ8TaORwyr2brQMRbS8yR414So54YeqzdB
+         vtww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=8VzoWa4yfnnfZTiXAl6B5ikTEEOY+4j4hf5LfOrhgk8=;
-        b=DDr4ORBXz/Znpsy4GFXQ8wCWli9Ddmmeq0MpEjf3xBlkLHco3ninIR7sG4wPZSHL7S
-         JefXRssoET5ZJEcFx9QZjmFttZrLWWWtDLqnCsCio0QsQNdcYzk462JM51E47+vNMscK
-         nQ9dnYC3kdvM/h/eeFjM0bTaQBz8exqfL0tQ/Wt/VoiCiIH6xSFk9muYOJtoqmg7izmZ
-         NyYrWUATl+/x21QjgVoNv+7MXrQYxS4cajES7pb8u/+fnki9tW791WJ72oRwdGMOWDV3
-         KqChuVTrjZlxBmsHYx3Ooq4RAC/clTDXO0nENFTvWIBP+WIujHQqb/C+RYIFzdrBOWQ4
-         xiTg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=ArqPWIz+aRknzZ3A3k+9oS0IfelqyXI/2cqeCvbdVm4=;
+        b=CYMSNpDt4Oock0Rn5uhnL9ozWYvZawHYLj136UqNc6r5NMEZb4ICxDsRmiGxcrc2sj
+         djABQffxY93bbpI6yQ4ayB+LZ3tGgjDehr1r1kfthDSLyZ7oweM5mkhya3t/SAxq0YJU
+         1N0JzxCiLa76G8IJazQbjQUDozJEhIHiG5aciq2xkNFx7dl3xdsdh1bNYWPHK011ONuu
+         iFT7ecbCQx1IUDISeaZD+H4UJg+yFFdHJBjHprvJd8UToIxvIXuGufO6Q3swLtcqGUty
+         VXnfpz1YtpC9Cwia+VLi8oiIL3Dpus4BgHfBNgVwxtgIdFX71SvVa/wDncZitzYXi0yS
+         91qw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="JSl98G/K";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id b77si314695pfj.5.2019.03.17.03.48.49
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 2si243352wma.3.2019.03.16.05.13.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 03:48:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sat, 16 Mar 2019 05:13:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="JSl98G/K";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 8DC662085A;
-	Sun, 17 Mar 2019 10:48:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552819729;
-	bh=d+6xFB+4e/iEmFjzOEK0mdfsMLuazY3vDMhbmufISVI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JSl98G/KkSF2cd3DnD82z5ai+Y6GSFu+K9Oi49wpVHJIc8hj4ztPbx/WK/BlofHRB
-	 mZtFE2GFyPNvNxsmxMnC0fNE5U6+GaA5F7Mii7nFqekZL8UJNAis6m4NT4w8svWTiy
-	 U0pLqXAedD8dsQ8XfqXp/4KRAUhN1nMU+908XRpU=
-Date: Sun, 17 Mar 2019 11:48:46 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,485,1544482800"; 
+   d="scan'208";a="373991383"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Mar 2019 13:13:35 +0100
+Date: Sat, 16 Mar 2019 13:13:35 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services:
- bcm2835-camera: avoid multiple assignments
-Message-ID: <20190317104846.GE16257@kroah.com>
-References: <1552728839-7072-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: bcm2835-camera:
+ avoid multiple assignments
 In-Reply-To: <1552728839-7072-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Message-ID: <alpine.DEB.2.21.1903161310540.2487@hadrien>
+References: <1552728839-7072-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sat, Mar 16, 2019 at 03:03:59PM +0530, Payal Kshirsagar wrote:
+
+
+On Sat, 16 Mar 2019, Payal Kshirsagar wrote:
+
 > To avoid style issues, avoid multiple assignments.
 > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-
-You need a blank line before the signed-off-by line for this to work
-properly.
-
 > ---
 >  .../staging/vc04_services/bcm2835-camera/bcm2835-camera.c    | 12 ++++++++----
 >  1 file changed, 8 insertions(+), 4 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
 > index d22b928..5e5b610 100644
 > --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
@@ -85,12 +74,34 @@ properly.
 >  		    f->fmt.pix.height <= max_video_height)
 > -			camera_port = port =
 > -			    &dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_VIDEO];
-> +			camera_port = 
+> +			camera_port =
+> +			&dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_VIDEO];
+> +			port =
+> +			&dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_VIDEO];
+>  		else
+> -			camera_port = port =
+> -			    &dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_CAPTURE];
+> +			camera_port =
+> +			&dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_CAPTURE];
+> +			port =
+> +			&dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_CAPTURE];
 
-Did you run your patch through checkpatch.pl after making it?  It should
-have complained about this line.
+I don't think this code compiles. Also, duplicating the huge expression
+doesn't seem like an advantage.
 
-thanks,
+julia
 
-greg k-h
+>  		break;
+>  	case MMAL_COMPONENT_IMAGE_ENCODE:
+>  		encode_component = dev->component[MMAL_COMPONENT_IMAGE_ENCODE];
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1552728839-7072-1-git-send-email-payal.s.kshirsagar.98%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
