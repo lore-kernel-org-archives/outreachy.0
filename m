@@ -1,148 +1,158 @@
 X-GM-THRID: 6668974051336126464
-X-Received: by 2002:aca:f4ca:: with SMTP id s193mr8478558oih.21.1552891375011;
-        Sun, 17 Mar 2019 23:42:55 -0700 (PDT)
+X-Received: by 2002:a25:3881:: with SMTP id f123mr8032153yba.19.1552866140237;
+        Sun, 17 Mar 2019 16:42:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6830:114f:: with SMTP id x15ls2455605otq.3.gmail; Sun,
- 17 Mar 2019 23:42:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxAiytH0XW7vlvvPxpI5S+VLkkGcMWnnYKM40eFs2WmfDSBERUNOGw07DRY67IzJ9kH4zos
-X-Received: by 2002:a9d:64cb:: with SMTP id n11mr9491282otl.48.1552891374337;
-        Sun, 17 Mar 2019 23:42:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552891374; cv=none;
+Received: by 2002:a25:589:: with SMTP id 131ls3282861ybf.7.gmail; Sun, 17 Mar
+ 2019 16:42:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzj62e4+SRNR1YuYeDUi4Vu7Vu3moICOEQDe8MkALfNP2MTqIBEhUNnmQi8ElSg83bEVD4f
+X-Received: by 2002:a25:dfc6:: with SMTP id w189mr7580117ybg.63.1552866139283;
+        Sun, 17 Mar 2019 16:42:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552866139; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Xh2iSE85DvCNBo2miv3h1WPIZNLvRILGC1ZBGIfpE77xEBxwTePkbqtkZ5TDjgzJA
-         k1dOmay9w5hGJzJbuMIyHSnVoVY3vWZH7lhoaUgpJY/JoTiyE8D4OnEA6PqRdlvuTywU
-         zQIrXWqLToT6IQT/0/RBzdTJRS533gEgGBjQWNm0ikEMf56B4UV24J2SG5/+SEMJS2t1
-         8pWW2OAfna/QMa9YC4/xmk9vL6B7/ryFDcE59A/SNB4v1Ma0F7+qHwKJ9LbT80Y9RjMM
-         EWViD2GJm56/2S1sCFYXt99Em//29ZFbiNEJ2d6it2IeBR4nD1+lI3pJikRJw7ijlBfb
-         uRoA==
+        b=L4fELUcVT8Qd5aK3SgQtbmhvmV1gDj8rABPjvXvg8DiFJZtBFZZKGPDqYZU7cUqz+y
+         7eDDm3PSQI+QH2NfsA4gQVA5ZEBko8nsSAsYFl2lokXdRO3z2yhU71XQ9eKGS46pmZtf
+         RV3jpoxilGk8+ekJ9pFKaSDWPC/YNYD/8I7gR9N0ULSaECYJti1OQM7pxS3/PuYMwVBN
+         xITERxDB3G4HycqdxhZTMshmUKh0/OP2CjcTBkJiVkMGAMFN0qgn95CXgktA854n5ruD
+         JDg2uIpln6t1uw8Vd76vtOeDxpGo+bocoC3zBZXmMSdvQ1gc4XG9XWNY/tIci8VWPzgG
+         g1cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=cQP80GGC4KdP/oeQi6IZFVeQuIVihwQbALDrxLIS5b0=;
-        b=y2oE6qjVwK045WQf36tY3YcN7CPrYDcyNuJVdGkNJhV0Qg1BFhfSOxLFYNzGeK1R0/
-         Mg7VGuY/FlsFT/ClVdHRBTSYyYbyVb8a1Z+nZs3FYKtEUkgJPcTYVpEnVJqYfdEDOw89
-         4zN/v4umNyMAjh2PRtsi76E5DPaKhA4kSJh0XM8ek3oEwD3ob73XfB4aAn7YqdLDmbk1
-         ++KxHtgXB4Omy0Za9h+H9K9Nl1CI4B1sGDGRwDh+jzRiEf0dsc8R+NeVae+dZLY4wq4T
-         tJFBpWH6CBlw9ElPvNgu7YJjM6jmEQBX80yhgsoiJkZ8KbD1B6KfmuOT3qqODTcraNNU
-         RCsw==
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=IG4sMF4rI26ovSg8UDKKvjP56BnZJo1B0ylTVfs5SpU=;
+        b=pa3cZp3q+QLsnB2XsmhomILX2R+K7Nm5rdiu179IuY8EAG6T3USHMgXaJQ0sVB3x99
+         7MPgszqc+5/IHdotXKkvVzQB/PnKi41CARLwLjCjn0zIMXAU88dYLjm9WQX/Cbi2/tzr
+         mVYY446Nx/eaEurwFE42ZN18uLcLjfHXd6ZaDP8rlpXumdhv8rrxC5SmGz8CtepgG3BA
+         jpKMan5hH2hjUiLtcOQmasjWsn1WYWHR+wz6Q5ttxzyYO//uoH3IsR6Z91xFDAnxyH1M
+         9WmBkZxImnxzTcsbykNIZWdArkaLaWI8OZCZkRM41phlQjKEWSszdPQb+BMhL+KlRQvW
+         yXbw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YiIyCCpE;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id a188si528122oih.4.2019.03.17.23.42.54
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="M/rbbe4d";
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id r128si546374ywd.0.2019.03.17.16.42.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 23:42:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 17 Mar 2019 16:42:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YiIyCCpE;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id EC4292082F;
-	Mon, 18 Mar 2019 06:42:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552891373;
-	bh=dkcaGxL9wkrHJfsIvZHZXZ1jSVGQ3ZOeTmiBPQXmQQ0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YiIyCCpEZ9hcYpk27YwEFTfPvt6Wffm+pGbiVKCI8VkpS4F0CmnQ5QAsO7i/8mCBU
-	 9xVIR1iO22KWJr0aEX954P2tF9iEh0cFXIGWdWKrfb37UteJQ5x+AjZ0bYvckf/UW8
-	 Vy0Ww+W/jiYucle0h5rQ19fUKpIHv8WkP97xgc44=
-Date: Mon, 18 Mar 2019 07:42:50 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2 3/5] Staging: rtl8723bs:  Change values to standard
- error codes in functions
-Message-ID: <20190318064250.GB28557@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="M/rbbe4d";
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-oi1-x241.google.com with SMTP id b4so11580205oif.6
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 16:42:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=IG4sMF4rI26ovSg8UDKKvjP56BnZJo1B0ylTVfs5SpU=;
+        b=M/rbbe4dPh0+OeSQRHvGXcs3jGfWFRUDJTiFj6TSTwjqkYXKOaU27pimf7oI8Toxno
+         PjyTk1VpkpwNrrO+gDEE3SE5ls52yXT5FHADMRnPRPr/hMnIfyts3o6yDKlHQA9R9wjx
+         BBhNCzJorBB70nxRea0TlFDmJ6WoDIlZCbZjMZgTAFMuiPsvwtI6WV9o+wjccrCVd7Vn
+         ofyHoVecOnMopwOtPC/z9q57+ltgPeuWfECfzo75IbrO6BeqLssnXRdHjhGsnXYJBqQZ
+         XIUZ0EXVfILRMVzm5jkM3iOzQs1gXy3LxIiKWFKPiHTaKm/TwHjCYsMSkXBAn+4ljIzi
+         e2Xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=IG4sMF4rI26ovSg8UDKKvjP56BnZJo1B0ylTVfs5SpU=;
+        b=IcauxlT5j5iXbgST6hPIIY4XyMoVLOoYsi1vGTO4QRh3TQSVtFI1Tes3KYVt2tPQxu
+         f5kP27fK0dSA27B3jUTTNmwQnZaXJeb6qzT3/JtRGzmHGn062yWzYAXKWqCFe6MH7y7L
+         g+xGi2uJ6Yw5HNPa5q+VW68b5upZMP+lDkmp5GAWoVxljRficw8o4rcj/Xzki3L5/q8s
+         iklJU5cXNFPt/wcgSEpeFSp418RBuKg8YwFB7RXw2QwMlTFl9SXaqROXWa+Og7WVVBXE
+         Buy+l0vgz+SDDZqIRcI1KEy62Dgj8Xdcnb9LhJqHJUnmndAnf5PZxrxLV+7HI9bQxw6I
+         6w1g==
+X-Gm-Message-State: APjAAAU/z6dgVmULqw32nczyA+iyTTSK99FWjd98k19kuC8FvRWbK3ha
+	k26o9PQpeeEPa38NbZBvZw0=
+X-Received: by 2002:aca:6189:: with SMTP id v131mr8505796oib.176.1552866138811;
+        Sun, 17 Mar 2019 16:42:18 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:606d:f05d:7617:ecf9:c9f1])
+        by smtp.gmail.com with ESMTPSA id 88sm1248804otj.3.2019.03.17.16.42.17
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 Mar 2019 16:42:18 -0700 (PDT)
+Date: Sun, 17 Mar 2019 18:42:16 -0500
+From: Madhumthia Prabakaran <madhumithabiw@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 5/5] Staging: rtl8723bs: Add
+ missing NULL check for kmalloc
+Message-ID: <20190317234215.GC4222@madhuleo>
 References: <cover.1552858206.git.madhumithabiw@gmail.com>
- <3079e4485a34348cdaed25939551424267ee32f6.1552858206.git.madhumithabiw@gmail.com>
+ <4010080c4d3e2bd0ed50a747eff3d00c66eea169.1552858206.git.madhumithabiw@gmail.com>
+ <alpine.DEB.2.21.1903172254090.2434@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <3079e4485a34348cdaed25939551424267ee32f6.1552858206.git.madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <alpine.DEB.2.21.1903172254090.2434@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sun, Mar 17, 2019 at 04:33:56PM -0500, Madhumitha Prabakaran wrote:
-> Change values to stand error codes in functions rtw_init_cmd_priv and
-> rtw_init_evt_priv, as _SUCCESS should be 0 and _FAIL should be -ENOMEM
-> (as in this case, these are memory allocating functions). Also, change
-> the values in corresponding call sites of the functions.
+On Sun, Mar 17, 2019 at 10:55:05PM +0100, Julia Lawall wrote:
 > 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_cmd.c    | 8 ++++----
->  drivers/staging/rtl8723bs/os_dep/os_intfs.c | 4 ++--
->  2 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> index ab450f717f34..f8a4f910bfea 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> @@ -164,7 +164,7 @@ No irqsave is necessary.
->  
->  int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
->  {
-> -	int res = _SUCCESS;
-> +	int res = 0;
->  
->  	init_completion(&pcmdpriv->cmd_queue_comp);
->  	init_completion(&pcmdpriv->terminate_cmdthread_comp);
-> @@ -178,7 +178,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
->  	pcmdpriv->cmd_allocated_buf = rtw_zmalloc(MAX_CMDSZ + CMDBUFF_ALIGN_SZ);
->  
->  	if (pcmdpriv->cmd_allocated_buf == NULL) {
-> -		res = _FAIL;
-> +		res = -ENOMEM;
->  		goto exit;
->  	}
->  
-> @@ -187,7 +187,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
->  	pcmdpriv->rsp_allocated_buf = rtw_zmalloc(MAX_RSPSZ + 4);
->  
->  	if (pcmdpriv->rsp_allocated_buf == NULL) {
-> -		res = _FAIL;
-> +		res = -ENOMEM;
->  		goto exit;
->  	}
->  
-> @@ -203,7 +203,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
->  static void c2h_wk_callback(_workitem *work);
->  int rtw_init_evt_priv(struct evt_priv *pevtpriv)
->  {
-> -	int res = _SUCCESS;
-> +	int res = 0;
->  
->  	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
->  	atomic_set(&pevtpriv->event_seq, 0);
-> diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-> index 143e3f9b31aa..6b3def0397f0 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-> @@ -757,7 +757,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter)
->  
->  	rtw_init_hal_com_default_value(padapter);
->  
-> -	if ((rtw_init_cmd_priv(&padapter->cmdpriv)) == _FAIL) {
-> +	if ((rtw_init_cmd_priv(&padapter->cmdpriv)) == -ENOMEM) {
+> On Sun, 17 Mar 2019, Madhumitha Prabakaran wrote:
+> 
+> > Include missing NULL check for kmalloc in function rtw_init_evt_priv.
+> > Also, remove unnecessary local variable 'res' in the function and
+> > replace the value directly in the return of the function.
+> 
+> These changes seem quite unrelated.  Dropping res was possible before any
+> of the other changes because its value was never updated, and if you make
+> your change, the value of res is not updated either.
 
-No need to check for a specific error value, just _any_ error value.
+Yeah! But it is in same function, also res is not used anywhere in the
+function. So I removed it and changed the return type as return 0.
 
->  		RT_TRACE(_module_os_intfs_c_, _drv_err_, ("\n Can't init cmd_priv\n"));
->  		ret8 = _FAIL;
->  		goto exit;
-> @@ -765,7 +765,7 @@ u8 rtw_init_drv_sw(struct adapter *padapter)
->  
->  	padapter->cmdpriv.padapter = padapter;
->  
-> -	if ((rtw_init_evt_priv(&padapter->evtpriv)) == _FAIL) {
-> +	if ((rtw_init_evt_priv(&padapter->evtpriv)) == -ENOMEM) {
-
-Same here.
-
-thanks,
-
-greg k-h
+> 
+> julia
+> 
+> >
+> > Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/core/rtw_cmd.c | 7 ++++---
+> >  1 file changed, 4 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> > index 3550de9f12c3..c76f27a6b3ab 100644
+> > --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> > +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> > @@ -203,8 +203,6 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
+> >  static void c2h_wk_callback(_workitem *work);
+> >  int rtw_init_evt_priv(struct evt_priv *pevtpriv)
+> >  {
+> > -	int res = 0;
+> > -
+> >  	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
+> >  	atomic_set(&pevtpriv->event_seq, 0);
+> >  	pevtpriv->evt_done_cnt = 0;
+> > @@ -213,7 +211,10 @@ int rtw_init_evt_priv(struct evt_priv *pevtpriv)
+> >  	pevtpriv->c2h_wk_alive = false;
+> >  	pevtpriv->c2h_queue = rtw_cbuf_alloc(C2H_QUEUE_MAX_LEN+1);
+> >
+> > -	return res;
+> > +	if (!pevtpriv->c2h_queue)
+> > +		return -ENOMEM;
+> > +
+> > +	return 0;
+> >  }
+> >
+> >  void _rtw_free_evt_priv(struct	evt_priv *pevtpriv)
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/4010080c4d3e2bd0ed50a747eff3d00c66eea169.1552858206.git.madhumithabiw%40gmail.com.
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903172254090.2434%40hadrien.
+> For more options, visit https://groups.google.com/d/optout.
 
