@@ -1,141 +1,125 @@
 X-GM-THRID: 6668974051336126464
-X-Received: by 2002:a24:612:: with SMTP id 18mr6419281itv.7.1552782757994;
-        Sat, 16 Mar 2019 17:32:37 -0700 (PDT)
+X-Received: by 2002:a05:660c:68d:: with SMTP id n13mr6142575itk.24.1552782755438;
+        Sat, 16 Mar 2019 17:32:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:4203:: with SMTP id i3ls2456874itb.1.canary-gmail; Sat,
- 16 Mar 2019 17:32:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxxCa5lMLNKcgTmw6kXIFCac0XkLJA3TYCqiPHTf3MOmQeis4ALLqTfJ42MV9GneuclYVd3
-X-Received: by 2002:a05:660c:744:: with SMTP id a4mr5993080itl.19.1552782757510;
-        Sat, 16 Mar 2019 17:32:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552782757; cv=none;
+Received: by 2002:a24:7644:: with SMTP id z65ls2539376itb.4.gmail; Sat, 16 Mar
+ 2019 17:32:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy5lDuDyDHo9i3mkBS4mcDwFuX3CWoO3LOdpmYFbX3+mp8m+s6Nb4tn8FOmWwP/08LQp3aV
+X-Received: by 2002:a24:df45:: with SMTP id r66mr6090148itg.21.1552782754965;
+        Sat, 16 Mar 2019 17:32:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552782754; cv=none;
         d=google.com; s=arc-20160816;
-        b=wmUJ0b7MqYOx6WuiMs048YwzRyqioLO4FXLbNme/z8qm78TzFcwUBBUOLow6V9E5EN
-         e5QFadgi0ROQMoxu/c41WpWBJwvxy4Pg6UZrSz8LYB1Wfgf+8n07hycFwFFbDPo8ckr5
-         lyYGQqfk6zrfgyB6Mq4WjygFr9GilfUcu4u2/tY21d6Oduklob/bPb6NOjcBRDug9j6o
-         eQ7Gh7nMABmbM56otV9Bzr+AqQHOCPqVQH3VNN1VM7zR2Mu/OHtplxTcK1hHUnBdZT4l
-         AscSk0V9Fr+6A7EkFnN/2YzyKNEo9Q0XkCzIOoKKUHaXx70pgwVqFmvmm0qgW37k5BUh
-         BQJQ==
+        b=dCZ5PDxXAZgLZg3zdBZ+aDtb8YZ6FCddtHxz1EhvT+FiAfJkhHi97XD4HDActQzEl2
+         nE3IWla2T2JOyXrNxbvxweuEbqHczuQQ73iTINsye9kTi1/iV4+9ZWRqLyzxGA1YC1UN
+         VvvMRyi7Z/1hquMt17i2iKf4CDMp4TNEVFGMOvI1RnmJvJPedaQZId0J05UQF/tpGtLC
+         /+e0A7gypCMCpEJ68Kmkrz15bN6ohqqDakUsXSgiUxb5AGt0lR79FGEw61MQEissXmjn
+         umzx9597jkYOwgj1hc5DSypE+wzzNS9TZiyFvTUqdeQe3pAHKxbHSjq6UkqpPnFmqmFD
+         nLQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=Rxw7X5h8MVv+qqymaIxa+XHUjbZKZxDQ7RM8QJU1JMA=;
-        b=nGXcgUwTX8iTUMOjC9weEcJIU5SySAOUQ8jQTa78rKI5xniEV5K3PK9M2IxqDkVSsZ
-         ILK6O7ELYtRIHGZllkEf9f/Olnt17ymS0TmTMpKbdqItlJtEkxPtPCRj6o3faYnaql+f
-         m+27eCOeeSgTHeiuk17dSlTQOsc6lijgy+hjGT/EmJVINKkB9kb+rUewA4gOQCLy7obL
-         HHn6i65wucBgecnqINi/jHTC3e92mN0o+Hsn2Jk7q/4yfrgWwfBGyoSRSbNEM3jJZfbH
-         6vD61Q7qb9SbwfZ1QPA6C2T5DN8Xq3v2mkzQ6EdZh3wsEh1OP23C5AXagl9hr4qRUQ/z
-         J24w==
+        bh=CF90U03BRXMryxhGOxfY/8yO5tq/hvlHjA6ORHxq0gY=;
+        b=iOcwtbBGXRdf8zxqqJ8PKO+OPatx5/t0gj4IuCQUTiC+RTcefeIulGuJg91mfV6Tns
+         vwNMxH/cR48Alscl2GbU4vMPCEngxjBQ8lIWEsXv0f72xxml5rmpAZDdnI1+a/gUOtbp
+         Z+5r67MOIIPl5ngDTdVVEeRl+qfPcHTnhdDue4aZ+EJtGyavlopq/DKeGncLdNqiaynn
+         BmA+Afqh3VopOiNd6ze3iJNlA9WnMHkGAcxQMmXfMv7F05AgUZubWvK3BOcvmIjhFfDf
+         Laq/xeTXC3Jh1TNO0HCOtA1ON6DgqjXcJmwgRYYPQTqaLUzpoPNNGSDusKVKkyRCi4iO
+         ujiw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pj5uR5yA;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M2fliVvn;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x344.google.com (mail-ot1-x344.google.com. [2607:f8b0:4864:20::344])
-        by gmr-mx.google.com with ESMTPS id f13si319009iok.3.2019.03.16.17.32.37
+Received: from mail-oi1-x242.google.com (mail-oi1-x242.google.com. [2607:f8b0:4864:20::242])
+        by gmr-mx.google.com with ESMTPS id n185si706763itn.3.2019.03.16.17.32.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 17:32:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) client-ip=2607:f8b0:4864:20::344;
+        Sat, 16 Mar 2019 17:32:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) client-ip=2607:f8b0:4864:20::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pj5uR5yA;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M2fliVvn;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::242 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x344.google.com with SMTP id f10so4094830otb.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 17:32:37 -0700 (PDT)
+Received: by mail-oi1-x242.google.com with SMTP id e22so3174325oiy.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 17:32:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=Rxw7X5h8MVv+qqymaIxa+XHUjbZKZxDQ7RM8QJU1JMA=;
-        b=pj5uR5yAK4WwS7FOooSSCuFDfIQ8TN0mRarh9KY4j579zxEL9Bbe4Mdn/x36vyFgrc
-         h5kmkp/fv7xbMp+6wLtOuukxQu/wt+uXFECZSLITTFESeYVLSaGrlDNgY01Nmc6Jwnuv
-         z7wus6+Cvf/Fp4a1DmvlXinXP11gAKooC47QfLkWAErPL14hINx4n/SddzNRlIYix5S2
-         JoV8OGNSS38aLlc9gwjBIHhIl5tH6gM2DM6gJob3znhz/xoUbBWqxdHX9wYFp6htmEnV
-         ErvM8Rxou5hadMKzhr5+qoe76YTn6PIbQbnNS64RXukiOrKqXdMd9o6pUVgNI5X0wOcU
-         6D2A==
+        bh=CF90U03BRXMryxhGOxfY/8yO5tq/hvlHjA6ORHxq0gY=;
+        b=M2fliVvn40M8qdQCjcVxRawzoYpFhBmWSDDx0CwsUjvxLnNtmfVUmw6XdeJeqwLo7P
+         8RVcoLhaWqFJlwvi4lB2C9UeZPxO7hKXBKEe/HggPyc5Wk0u3vGhFz4YX4hqk7BR7gNh
+         cSVUoN50sIF2D8AHAW4LYoheNh6xqMxIJSz2x4K9rD9GRrfFRGQWkGYmpNCpZ4LPeUwB
+         HJJA3MsPM/mQcK9h44clWJqhIIuAL35I9kBM7vBjGvQxCINroGYzOL6sgzZGww+dBak9
+         vS3AnYn4MOCbJaS4dSQi9++1nvtsulAFkw3W5Hd9Cr3XmOK1LrbxfekWRHkhtDHBk2Xo
+         Xf8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=Rxw7X5h8MVv+qqymaIxa+XHUjbZKZxDQ7RM8QJU1JMA=;
-        b=Nu3TPRoGc4ATgewS+GGnGQfCzSneo2UE68jdZzmpYvELO6wwzXxEezkjHuwP2VxTYl
-         tmGinuuPuEEtxjcNnuWmZ0J3uA+N/+6IDHRvLKFEwUSJYD9P6Zim1gvuXTHTZ58zVi16
-         7kCD7pW5s0lFCTIZ10Uddry1iP58b7mJtwnSDfNGZzWPylcT/KAw+QARvIZB1D5mdlfB
-         GYLL8+Gna8ndGVXj9EUc48ekOVF3CuDsQezpxTOpEhDl+50u4oyTUbyAtHEYk2/Reb7J
-         Usu4NOlAKC42vs3+jJqBsYD02dXeYm4v/3r20XrHHtjZKBiAuT12wUrh/9haLA/pCOgj
-         nLdQ==
-X-Gm-Message-State: APjAAAVeEawLJwpOUrXMLL/XgS7MU577ROPa/rj9QjGGrQO4GZ8S8pTr
-	dPynDgcWllTJiGKfTk0Vg+k=
-X-Received: by 2002:a9d:6453:: with SMTP id m19mr6565542otl.271.1552782757096;
-        Sat, 16 Mar 2019 17:32:37 -0700 (PDT)
+        bh=CF90U03BRXMryxhGOxfY/8yO5tq/hvlHjA6ORHxq0gY=;
+        b=QeUDxLQFU7XuWEvSBg82m3HQs8o+uPzXMp7R6P4rXGZgzK+9xkf5Sz/jULtxfxyY4v
+         XXuIIBsy3dx+xaglrpdxuVzItPhm3IKGXha9fx0/4nVnzq4SLrlGhgIozG/wuQXA+UU/
+         NiH2y2/LYcXG6HaVhzJS6nk+pxXieNw4D4fWhZ1VPI11SDQ1TThdw2k84M8TCWYpFFMk
+         mp8EOzjxZpM9TYwMMsh3Oi5kg2iTg6ZEbZwg7ODUQMPIe+eupb6XW7T24wIhxEzOSRyX
+         NrhC/MvH/xPukotGutwFpPznCSgIC9eQbWU/2XBKNtP+nrX/SuhZUESqYD/RbYV9gwJ2
+         qiFg==
+X-Gm-Message-State: APjAAAWVUTAFiQtYkZoMQjApIYZas/49gMsDZJz8QuImVA9BBb3HjTNR
+	/HQa49/MCUm8o2FuVjt21/kXyBR2
+X-Received: by 2002:aca:cc58:: with SMTP id c85mr5562508oig.22.1552782754509;
+        Sat, 16 Mar 2019 17:32:34 -0700 (PDT)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo ([2605:6000:1023:606d:d12b:f32e:ef21:5bfb])
-        by smtp.gmail.com with ESMTPSA id 97sm2411133otc.25.2019.03.16.17.32.36
+        by smtp.gmail.com with ESMTPSA id i16sm2298390oto.77.2019.03.16.17.32.33
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Mar 2019 17:32:36 -0700 (PDT)
+        Sat, 16 Mar 2019 17:32:33 -0700 (PDT)
 From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH 3/7] Staging: rtl8723bs: Change values of error codes in functions
-Date: Sat, 16 Mar 2019 19:32:20 -0500
-Message-Id: <df295896fcdcd016cc097c3812812582658c7319.1552782299.git.madhumithabiw@gmail.com>
+Subject: [PATCH 2/7] Staging: rtl8723bs: Convert type of local variables and return types
+Date: Sat, 16 Mar 2019 19:32:19 -0500
+Message-Id: <6fe78b33f085802256075bd94f5e02474cefacd5.1552782299.git.madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1552782299.git.madhumithabiw@gmail.com>
 References: <cover.1552782299.git.madhumithabiw@gmail.com>
 In-Reply-To: <cover.1552782299.git.madhumithabiw@gmail.com>
 References: <cover.1552782299.git.madhumithabiw@gmail.com>
 
-Change values of error codes _SUCCESS and _FAIL in function
-rtw_init_cmd_priv and rtw_init_evt_priv, as the code need to be
-compatible with kernel, _SUCCESS should be 0 and _FAIL should be -ENOMEM
-(as in this case, these are memory allocating functions).
+Convert types from sint to int for local variable 'res' and return types
+of function 'rtw_init_cmd_pri' and 'rtw_init_evt_priv', as function's
+return types are defined for error codes _SUCCESS and _FAIL.
 
 Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index ab450f717f34..2890e12f6fb1 100644
+index 793bc505fa9c..ab450f717f34 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
 @@ -162,9 +162,9 @@ Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
  No irqsave is necessary.
  */
  
--int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
-+int rtw_init_cmd_priv(struct cmd_priv *pcmdpriv)
+-sint rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
++int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
  {
--	int res = _SUCCESS;
-+	int res = 0;
+-	sint res = _SUCCESS;
++	int res = _SUCCESS;
  
  	init_completion(&pcmdpriv->cmd_queue_comp);
  	init_completion(&pcmdpriv->terminate_cmdthread_comp);
-@@ -178,7 +178,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- 	pcmdpriv->cmd_allocated_buf = rtw_zmalloc(MAX_CMDSZ + CMDBUFF_ALIGN_SZ);
+@@ -201,9 +201,9 @@ sint rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
+ }
  
- 	if (pcmdpriv->cmd_allocated_buf == NULL) {
--		res = _FAIL;
-+		res = -ENOMEM;
- 		goto exit;
- 	}
- 
-@@ -187,7 +187,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- 	pcmdpriv->rsp_allocated_buf = rtw_zmalloc(MAX_RSPSZ + 4);
- 
- 	if (pcmdpriv->rsp_allocated_buf == NULL) {
--		res = _FAIL;
-+		res = -ENOMEM;
- 		goto exit;
- 	}
- 
-@@ -203,7 +203,7 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
  static void c2h_wk_callback(_workitem *work);
- int rtw_init_evt_priv(struct evt_priv *pevtpriv)
+-sint rtw_init_evt_priv(struct evt_priv *pevtpriv)
++int rtw_init_evt_priv(struct evt_priv *pevtpriv)
  {
--	int res = _SUCCESS;
-+	int res = 0;
+-	sint res = _SUCCESS;
++	int res = _SUCCESS;
  
  	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
  	atomic_set(&pevtpriv->event_seq, 0);
