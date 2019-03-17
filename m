@@ -1,359 +1,145 @@
 X-GM-THRID: 6668981360875536384
-X-Received: by 2002:a1f:9d49:: with SMTP id g70mr7892809vke.10.1552820585224;
-        Sun, 17 Mar 2019 04:03:05 -0700 (PDT)
+X-Received: by 2002:a17:902:6b0b:: with SMTP id o11mr4120626plk.85.1552820328939;
+        Sun, 17 Mar 2019 03:58:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:7c4a:: with SMTP id x71ls1947592vsc.1.gmail; Sun, 17 Mar
- 2019 04:03:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6Bve+YTBC+q6hB9wf7yMA84Pu5c38+mghnAU5vZHUznLcz3IZBAkg6XeGclnFySQ34E4P
-X-Received: by 2002:a67:7ac7:: with SMTP id v190mr7974803vsc.17.1552820582888;
-        Sun, 17 Mar 2019 04:03:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552820582; cv=none;
+Received: by 2002:a63:6c81:: with SMTP id h123ls5295788pgc.5.gmail; Sun, 17
+ Mar 2019 03:58:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOjZjAB7Z60r07Yhimc2YnHIVItW5FQ3Lp5Wd8gyuld//O3uEKUY5FM6gFWaI+6cwr2DjA
+X-Received: by 2002:aa7:80ca:: with SMTP id a10mr4632047pfn.50.1552820328348;
+        Sun, 17 Mar 2019 03:58:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552820328; cv=none;
         d=google.com; s=arc-20160816;
-        b=jbQogA1CkeGK3t1pISwe8CsqZcWm0uIO1ZJqI0TUbbXagxK4xbhKn2nohpb+PQnfTR
-         22BWZVI6DH6vqTUFZQJccUzld0Y9HZ2rzE8nJaSyUnNH8vm7JdYzjBbtStk6pBvJS5V9
-         JraSnEarSEKVmsXchmxJfjWrOxYytm7Y4ZAoLU7fwp9tnBkDzovymg4F3emIEJYwAD1/
-         POVX8Um+4Wbcylg4cDpfVGA1UlDPfuPtm5XhTgHn9t2r6iis6UjE0mS/Cbh7AaailEaz
-         AqYXQfTDjGh4JKKkbLGwfDdA+rPubZH71oqrJI56JHYy9hqUr0AQfILV0YVoAKgJ9eD4
-         QtBA==
+        b=bLSLf+iyyLHdC3Jqo0PpgIvgBpaVNO1uQbWVHouYpV+TEqggjCzkrfwM6t+P4nU8Oe
+         Yg1udo2q6zdluDJbqq4a4DPaQYZR7BHn/aZRJW/vUOHUjcFtcxSeFvYfP+XpjaV33iGM
+         5gRHybGmq5B05lAEfGLKad3N+vHmEK1c5SYtTYvPzSCrm2l76Tq3E+/TVa2fqUdBmyZ9
+         49ZmRHWo3gC2G/KOcMFQAI4jCBM3C6W0QptV85w40rFY/L+vz6CJ3fZTi1BRvJVryw+6
+         62zabyPHw28iMpEk3amLEyqoUdpvs9ouww5C5yLJxIFMTFJgD4ldhiMH4a3AVCWigzrt
+         Xnfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=EJyhrhwE4UxDX+I/T7Z/Yox6uu4plL9PViuLjc+K2Pc=;
-        b=a/zddBe0dT09Oeqg4lPNCU7mxEH3WCYaKNTyR3JsqwkVkhyNHoX9KuARaAXD0xrokZ
-         xXPQK6q7dJ+GIMA2LRJjN7QI9e0amBdx9HHTqbZ5FwatJthpfj76XMoD5ymaz/vLHrMw
-         6glxB7Sy2BtcLV3MWERvHrjRN07qC35AIUWZctbhTX61wBqir+BrZ8Zhz/SBX+t+HS6Q
-         XP53RGw8hDJGroGSsIwQkWZCO6y9jZrX+xQ+VZ5jg41spP6KhlT8Kq/sH3E+6bW9u0yW
-         Bbx2jSp8JFVHoFXp1eas+iu49gl5zFzqmVXgI9HgPGhMoGHcsF6mXgffqiRroTYRbAMt
-         mX+Q==
+        bh=ULqYxiXbFNAXd3C35mbqkgkqdlvmve3t4UAQqldzLp4=;
+        b=yp1z5D8LsPcORo65oErgy/Y/b/7mLdnD/bFmu8c0fB7Foopqn3Ih7ubt5VSICFQCgZ
+         GfHbL/rkBHWbTrVtJbot8KnjwsJnvX5u92sF4YOsCTKJZtbWhSJqfKOtwd0qYSEkEWDk
+         9kNmvI+RfnkQDr1VvzG/ELqa1JMldu4ZVZH9khpZwUc0Np4XbyCfwN4dGfa3KyyYXRiJ
+         KWXLg0yECkxN9SsL2Uh5iuq5iaylwipzLT4LRHdj75YiD+UPHaFcSurzE2bcKJSz0R6O
+         skslc3iUbaXSxKmBHKiWu0uxtHSEaGZHxS0q0AeNOpbLXGWGG63ZVF5odIfpR4rG7WCZ
+         pZNw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hlLywR4K;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Mmfx/pgb";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id k19si479255vsm.0.2019.03.17.04.03.02
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id r133si422480pgr.4.2019.03.17.03.58.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 04:03:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Sun, 17 Mar 2019 03:58:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hlLywR4K;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Mmfx/pgb";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id j5so9341035pfa.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 04:03:02 -0700 (PDT)
+Received: by mail-pf1-x443.google.com with SMTP id d25so9304771pfn.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 03:58:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=EJyhrhwE4UxDX+I/T7Z/Yox6uu4plL9PViuLjc+K2Pc=;
-        b=hlLywR4KYkW8n7Z3uPUOw2ncRCeekgaDS4YxybbIWLqnK5iPhf2WcQTxh19ZGqXeYH
-         18bZadya5KZ35gnPvrsNJUmpPpJtMhOubhQn4cB1pY6FusZq3TGmWddlaWkpttI5PXt6
-         nSmuZ013QbyOU94qT5nFXz632OOaYJ7jNZHJoO03ywkkJU2fcakTzC1qfCkF6AAdHDUC
-         6DCZ5U1vRGUnNmpXLFSN24ARvYhv0Eq9uckO458UnHdo2gW5V2Hns1LJ4EBw/xhu520w
-         BZTH/XjCIUw6aPZC980tSYrCEqC0BVOXHU0JmU2wB8zULQ0gQlbJXm65zyAzflMXH71j
-         JOPQ==
+        bh=ULqYxiXbFNAXd3C35mbqkgkqdlvmve3t4UAQqldzLp4=;
+        b=Mmfx/pgbfQX0ZWJJauzYlvFtHAiS0GCrFSdWqG5p+sxKrgFyrNCjCCdy5trUKZr819
+         M82RAb2AfkplnqYPHmrr8TU2z/KIeJA/16otII4k6z5dCeD5/xqhnORP8qb9HpIo9mWD
+         EaZxcLzcq0xCXBSKTBryvXhP8VU8VvMg4WCd02R/llCKJeZoIYG2/5ZLszGd+c9jkhU1
+         hwLmWKlCdZCcmnVu+Ct474v4eCQdxwcb9O2jS/Ny5X4l0HoyvvklnuVHYM0KoX0iRY0F
+         pO4Ks+lpFmlBrUXm+tIsP8OZsoHlvpLeXl5k/tqUcS3JNknSHte4lQxnGc/7GKp/lPRx
+         k42Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=EJyhrhwE4UxDX+I/T7Z/Yox6uu4plL9PViuLjc+K2Pc=;
-        b=SWZoitHyceBGV15vIydVqdqMhIAVfmfFpZW4CNph+CNQE1ZAeGsU4ET0xtYqY8wmXT
-         1wp0wECG+TLJqMzL4PATyG2TYcDT12lfOqXpu3IMUjrtYEHBoXEY3FcQroV/LW4SS3bh
-         CxAOPDxswOQt2OiJmR0mC6oPNcsk+QK/Miqto9RXvALFcwBHxdjfwb+wf2lesGIyz3Hc
-         WMOyeghwJEAR9clgg0cd4UOEHDFNAhe6ldwOC3dy1C3isTzh3MQ7I1SZWG68fBSKkRfR
-         LIqFOggSlk9lZ7Y6M40WZEOihMSV8Gz4yEmv8HosTIMDPC2eqepkm3iVho2iSmbGfpKJ
-         qfcQ==
-X-Gm-Message-State: APjAAAV3cVbACIQhK7srm3+CX2IuI0z0Dk+7t252juZRPM5UJdZTgBP2
-	h5FGh0nvrGeq37dzsQ1KptQ=
-X-Received: by 2002:aa7:9099:: with SMTP id i25mr13766766pfa.102.1552820581898;
-        Sun, 17 Mar 2019 04:03:01 -0700 (PDT)
+        bh=ULqYxiXbFNAXd3C35mbqkgkqdlvmve3t4UAQqldzLp4=;
+        b=RyE5Ga3Ug0/DDE/vKu7fAApJua+x+HI9iDnv9DpepnBTI0x/6ts5RRBNkyiPbj12Gl
+         yfnPDJa/k6CwwjJ3OPkWpyIGfEj6FXfm1z1l+ZwwnwlukxvYtIVAbDTZ8sXEbFzNAcjB
+         CUPUiKUqw4uAWUT8ojnOv0vO0gKoZ7z7JhQ+SbdfkK0XdR8/K7g1DK3+Kml9YTHRThKS
+         RU/7Uz7/laLo5RSxR45Ivmdx3cmNXQnvHzAGb+f2LPsKrbSfapUmxjXoCbva9xrZQVuH
+         dSukVVBsZjP0Z1nwpTz653eAZpg3RDsN9H8DuuDPTyz4QnHSsyX4gTIdMwPhJbd1cKi4
+         lvWg==
+X-Gm-Message-State: APjAAAXxXbvvxWVR0GnyJaKk10PCF6gWVhSGXt/17K6Kg6zvmeV8RbLE
+	d981F5QopFJ394jagzgd7CEol+WASu4=
+X-Received: by 2002:a17:902:968a:: with SMTP id n10mr14224325plp.283.1552820328163;
+        Sun, 17 Mar 2019 03:58:48 -0700 (PDT)
 Return-Path: <sanjana99reddy99@gmail.com>
 Received: from sanjana-Inspiron-5570.domain.name ([123.201.105.100])
-        by smtp.googlemail.com with ESMTPSA id g67sm16319484pfg.13.2019.03.17.04.02.59
+        by smtp.googlemail.com with ESMTPSA id g3sm8999835pgg.41.2019.03.17.03.58.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 04:03:00 -0700 (PDT)
+        Sun, 17 Mar 2019 03:58:47 -0700 (PDT)
 From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 3/3] Staging: rtl8188eu: rtw_recv.c: fix a space issue
-Date: Sun, 17 Mar 2019 16:32:51 +0530
-Message-Id: <20190317110251.3193-1-sanjana99reddy99@gmail.com>
+Subject: [PATCH v4 2/4] Staging: rtl8188eu: rtw_recv.c: fix a paranthesis issue around pframe -> list in rtw_recv.c
+Date: Sun, 17 Mar 2019 16:28:38 +0530
+Message-Id: <20190317105838.3112-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190316133306.8747-1-sanjana99reddy99@gmail.com>
 References: <20190316133306.8747-1-sanjana99reddy99@gmail.com>
 
-fix a space issue around the below operators mentioned in CHECK. Issue found by checkpatch.pl semantic patch results for
-rtw_recv.c..
+fix a parathesis issue around '->' .Issue found by checkpatch.pl semantic patch results for
+rtw_recv.c
 
-CHECK: spaces preferred around '%' (ctx:VxV)
-CHECK: spaces preferred around '-' (ctx:VxV)
-CHECK: spaces preferred around '&' (ctx:VxV)
-CHECK: spaces preferred around '+' (ctx:VxV)
-CHECK: spaces preferred around '<<' (ctx:VxV)
+CHECK: Remove unnecessary paranthesis around pframe -> list
 
 Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
 Changes in v4:
-Correc the version of patch sequence number.
- drivers/staging/rtl8188eu/core/rtw_recv.c | 97 +++++++++++++----------
- 1 file changed, 54 insertions(+), 43 deletions(-)
+Correct the version the patch sequence number
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index fc72e797f8e5..d7620b89813f 100644
+index 0d04057e6cf6..fc72e797f8e5 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -252,21 +252,22 @@ static int recvframe_chkmic(struct adapter *adapter,
- 			}
+@@ -64,9 +64,9 @@ int _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
+ 	precvframe = PTR_ALIGN(precvpriv->pallocated_frame_buf, RXFRAME_ALIGN_SZ);
  
- 			/* icv_len included the mic code */
--			datalen = precvframe->pkt->len-prxattrib->hdrlen -
--				  prxattrib->iv_len-prxattrib->icv_len-8;
-+			datalen = precvframe->pkt->len - prxattrib->hdrlen -
-+				  prxattrib->iv_len - prxattrib->icv_len - 8;
- 			pframe = precvframe->pkt->data;
--			payload = pframe+prxattrib->hdrlen+prxattrib->iv_len;
-+			payload = pframe + prxattrib->hdrlen +
-+				prxattrib->iv_len;
+ 	for (i = 0; i < NR_RECVFRAME; i++) {
+-		INIT_LIST_HEAD(&(precvframe->list));
++		INIT_LIST_HEAD(&precvframe->list);
  
- 			RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("\n prxattrib->iv_len=%d prxattrib->icv_len=%d\n", prxattrib->iv_len, prxattrib->icv_len));
- 			rtw_seccalctkipmic(mickey, pframe, payload, datalen, &miccode[0],
- 					   (unsigned char)prxattrib->priority); /* care the length of the data */
+-		list_add_tail(&(precvframe->list),
++		list_add_tail(&precvframe->list,
+ 				     &(precvpriv->free_recv_queue.queue));
  
--			pframemic = payload+datalen;
-+			pframemic = payload + datalen;
+ 		precvframe->pkt = NULL;
+@@ -1336,7 +1336,7 @@ static struct recv_frame *recvframe_defrag(struct adapter *adapter,
+ 	plist = phead->next;
+ 	pfhdr = list_entry(plist, struct recv_frame, list);
+ 	prframe = pfhdr;
+-	list_del_init(&(prframe->list));
++	list_del_init(&prframe->list);
  
- 			bmic_err = false;
- 
- 			for (i = 0; i < 8; i++) {
--				if (miccode[i] != *(pframemic+i)) {
-+				if (miccode[i] != *(pframemic + i)) {
- 					RT_TRACE(_module_rtl871x_recv_c_, _drv_err_,
- 						 ("%s: miccode[%d](%02x)!=*(pframemic+%d)(%02x) ",
- 						  __func__, i, miccode[i], i, *(pframemic + i)));
-@@ -277,14 +278,24 @@ static int recvframe_chkmic(struct adapter *adapter,
- 			if (bmic_err) {
- 				RT_TRACE(_module_rtl871x_recv_c_, _drv_err_,
- 					 ("\n *(pframemic-8)-*(pframemic-1)=0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x\n",
--					 *(pframemic-8), *(pframemic-7), *(pframemic-6),
--					 *(pframemic-5), *(pframemic-4), *(pframemic-3),
--					 *(pframemic-2), *(pframemic-1)));
-+					 *(pframemic - 8),
-+					 *(pframemic - 7),
-+					 *(pframemic - 6),
-+					 *(pframemic - 5),
-+					 *(pframemic - 4),
-+					 *(pframemic - 3),
-+					 *(pframemic - 2),
-+					 *(pframemic - 1)));
- 				RT_TRACE(_module_rtl871x_recv_c_, _drv_err_,
- 					 ("\n *(pframemic-16)-*(pframemic-9)=0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x\n",
--					 *(pframemic-16), *(pframemic-15), *(pframemic-14),
--					 *(pframemic-13), *(pframemic-12), *(pframemic-11),
--					 *(pframemic-10), *(pframemic-9)));
-+					 *(pframemic - 16),
-+					 *(pframemic - 15),
-+					 *(pframemic - 14),
-+					 *(pframemic - 13),
-+					 *(pframemic - 12),
-+					 *(pframemic - 11),
-+					 *(pframemic - 10),
-+					 *(pframemic - 9)));
- 				{
- 					uint i;
- 
-@@ -295,14 +306,14 @@ static int recvframe_chkmic(struct adapter *adapter,
- 						RT_TRACE(_module_rtl871x_recv_c_,
- 							 _drv_err_,
- 							 ("0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x:0x%02x",
--							 *(precvframe->pkt->data+i),
--							 *(precvframe->pkt->data+i+1),
--							 *(precvframe->pkt->data+i+2),
--							 *(precvframe->pkt->data+i+3),
--							 *(precvframe->pkt->data+i+4),
--							 *(precvframe->pkt->data+i+5),
--							 *(precvframe->pkt->data+i+6),
--							 *(precvframe->pkt->data+i+7)));
-+							 *(precvframe->pkt->data + i),
-+							 *(precvframe->pkt->data + i + 1),
-+							 *(precvframe->pkt->data + i + 2),
-+							 *(precvframe->pkt->data + i + 3),
-+							 *(precvframe->pkt->data + i + 4),
-+							 *(precvframe->pkt->data + i + 5),
-+							 *(precvframe->pkt->data + i + 6),
-+							 *(precvframe->pkt->data + i + 7)));
- 					}
- 					RT_TRACE(_module_rtl871x_recv_c_,
- 						 _drv_err_,
-@@ -365,9 +376,9 @@ static struct recv_frame *decryptor(struct adapter *padapter,
- 	RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("prxstat->decrypted=%x prxattrib->encrypt=0x%03x\n", prxattrib->bdecrypted, prxattrib->encrypt));
- 
- 	if (prxattrib->encrypt > 0) {
--		u8 *iv = precv_frame->pkt->data+prxattrib->hdrlen;
-+		u8 *iv = precv_frame->pkt->data + prxattrib->hdrlen;
- 
--		prxattrib->key_index = (((iv[3])>>6)&0x3);
-+		prxattrib->key_index = (((iv[3]) >> 6) & 0x3);
- 
- 		if (prxattrib->key_index > WEP_KEYS) {
- 			DBG_88E("prxattrib->key_index(%d)>WEP_KEYS\n", prxattrib->key_index);
-@@ -496,7 +507,7 @@ static int recv_decache(struct recv_frame *precv_frame, u8 bretry,
- {
- 	int tid = precv_frame->attrib.priority;
- 
--	u16 seq_ctrl = ((precv_frame->attrib.seq_num&0xffff) << 4) |
-+	u16 seq_ctrl = ((precv_frame->attrib.seq_num & 0xffff) << 4) |
- 		(precv_frame->attrib.frag_num & 0xf);
- 
- 	if (tid > 15) {
-@@ -561,29 +572,29 @@ static void process_wmmps_data(struct adapter *padapter,
- 	if (!psta->qos_option)
- 		return;
- 
--	if (!(psta->qos_info&0xf))
-+	if (!(psta->qos_info & 0xf))
- 		return;
- 
--	if (psta->state&WIFI_SLEEP_STATE) {
-+	if (psta->state & WIFI_SLEEP_STATE) {
- 		u8 wmmps_ac = 0;
- 
- 		switch (pattrib->priority) {
- 		case 1:
- 		case 2:
--			wmmps_ac = psta->uapsd_bk&BIT(1);
-+			wmmps_ac = psta->uapsd_bk & BIT(1);
+ 	if (curfragnum != pfhdr->attrib.frag_num) {
+ 		/* the first fragment number must be 0 */
+@@ -1663,9 +1663,9 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
  			break;
- 		case 4:
- 		case 5:
--			wmmps_ac = psta->uapsd_vi&BIT(1);
-+			wmmps_ac = psta->uapsd_vi & BIT(1);
- 			break;
- 		case 6:
- 		case 7:
--			wmmps_ac = psta->uapsd_vo&BIT(1);
-+			wmmps_ac = psta->uapsd_vo & BIT(1);
- 			break;
- 		case 0:
- 		case 3:
- 		default:
--			wmmps_ac = psta->uapsd_be&BIT(1);
-+			wmmps_ac = psta->uapsd_be & BIT(1);
- 			break;
- 		}
- 
-@@ -897,20 +908,20 @@ static int validate_recv_ctrl_frame(struct adapter *padapter,
- 		switch (pattrib->priority) {
- 		case 1:
- 		case 2:
--			wmmps_ac = psta->uapsd_bk&BIT(0);
-+			wmmps_ac = psta->uapsd_bk & BIT(0);
- 			break;
- 		case 4:
- 		case 5:
--			wmmps_ac = psta->uapsd_vi&BIT(0);
-+			wmmps_ac = psta->uapsd_vi & BIT(0);
- 			break;
- 		case 6:
- 		case 7:
--			wmmps_ac = psta->uapsd_vo&BIT(0);
-+			wmmps_ac = psta->uapsd_vo & BIT(0);
- 			break;
- 		case 0:
- 		case 3:
- 		default:
--			wmmps_ac = psta->uapsd_be&BIT(0);
-+			wmmps_ac = psta->uapsd_be & BIT(0);
- 			break;
- 		}
- 
-@@ -923,7 +934,7 @@ static int validate_recv_ctrl_frame(struct adapter *padapter,
- 			psta->state ^= WIFI_STA_ALIVE_CHK_STATE;
- 		}
- 
--		if ((psta->state&WIFI_SLEEP_STATE) && (pstapriv->sta_dz_bitmap&BIT(psta->aid))) {
-+		if ((psta->state & WIFI_SLEEP_STATE) && (pstapriv->sta_dz_bitmap & BIT(psta->aid))) {
- 			struct list_head *xmitframe_plist, *xmitframe_phead;
- 			struct xmit_frame *pxmitframe = NULL;
- 
-@@ -961,7 +972,7 @@ static int validate_recv_ctrl_frame(struct adapter *padapter,
- 					update_beacon(padapter, _TIM_IE_, NULL, false);
- 				}
- 			} else {
--				if (pstapriv->tim_bitmap&BIT(psta->aid)) {
-+				if (pstapriv->tim_bitmap & BIT(psta->aid)) {
- 					if (psta->sleepq_len == 0) {
- 						DBG_88E("no buffered packets to xmit\n");
- 
-@@ -1160,7 +1171,7 @@ static int validate_recv_frame(struct adapter *adapter,
- 	u8 bDumpRxPkt;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->attrib;
- 	u8 *ptr = precv_frame->pkt->data;
--	u8  ver = (unsigned char)(*ptr)&0x3;
-+	u8  ver = (unsigned char)(*ptr) & 0x3;
- 	struct mlme_ext_priv *pmlmeext = &adapter->mlmeextpriv;
- 
- 	if (pmlmeext->sitesurvey_res.state == SCAN_PROCESS) {
-@@ -1279,8 +1290,8 @@ static int wlanhdr_to_ethhdr(struct recv_frame *precvframe)
- 	if (pattrib->encrypt)
- 		skb_trim(precvframe->pkt, precvframe->pkt->len - pattrib->icv_len);
- 
--	psnap = (struct ieee80211_snap_hdr *)(ptr+pattrib->hdrlen + pattrib->iv_len);
--	psnap_type = ptr+pattrib->hdrlen + pattrib->iv_len+SNAP_SIZE;
-+	psnap = (struct ieee80211_snap_hdr *)(ptr + pattrib->hdrlen + pattrib->iv_len);
-+	psnap_type = ptr + pattrib->hdrlen + pattrib->iv_len + SNAP_SIZE;
- 	/* convert hdr + possible LLC headers into Ethernet header */
- 	if ((!memcmp(psnap, rtw_rfc1042_header, SNAP_SIZE) &&
- 	     memcmp(psnap_type, SNAP_ETH_TYPE_IPX, 2) &&
-@@ -1299,7 +1310,7 @@ static int wlanhdr_to_ethhdr(struct recv_frame *precvframe)
- 	RT_TRACE(_module_rtl871x_recv_c_, _drv_info_,
- 		 ("\n===pattrib->hdrlen: %x,  pattrib->iv_len:%x===\n\n", pattrib->hdrlen,  pattrib->iv_len));
- 
--	memcpy(&be_tmp, ptr+rmv_len, 2);
-+	memcpy(&be_tmp, ptr + rmv_len, 2);
- 	eth_type = ntohs(be_tmp); /* pattrib->ether_type */
- 	pattrib->eth_type = eth_type;
- 
-@@ -1308,11 +1319,11 @@ static int wlanhdr_to_ethhdr(struct recv_frame *precvframe)
- 		return _FAIL;
- 
- 	memcpy(ptr, pattrib->dst, ETH_ALEN);
--	memcpy(ptr+ETH_ALEN, pattrib->src, ETH_ALEN);
-+	memcpy(ptr + ETH_ALEN, pattrib->src, ETH_ALEN);
- 
- 	if (!bsnaphdr) {
- 		be_tmp = htons(len);
--		memcpy(ptr+12, &be_tmp, 2);
-+		memcpy(ptr + 12, &be_tmp, 2);
  	}
  
- 	return _SUCCESS;
-@@ -1560,7 +1571,7 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
- 		pdata += nSubframe_Length;
- 		a_len -= nSubframe_Length;
- 		if (a_len != 0) {
--			padding_len = 4 - ((nSubframe_Length + ETH_HLEN) & (4-1));
-+			padding_len = 4 - ((nSubframe_Length + ETH_HLEN) & (4 - 1));
- 			if (padding_len == 4)
- 				padding_len = 0;
+-	list_del_init(&(prframe->list));
++	list_del_init(&prframe->list);
  
-@@ -1763,7 +1774,7 @@ static int recv_indicatepkt_reorder(struct adapter *padapter,
- 			preorder_ctrl->indicate_seq = pattrib->seq_num;
- 			rtw_recv_indicatepkt(padapter, prframe);
+-	list_add_tail(&(prframe->list), plist);
++	list_add_tail(&prframe->list), plist;
+ 	return true;
+ }
  
--			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1)%4096;
-+			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096;
- 			return _SUCCESS;
- 		}
- 	} else if (pattrib->amsdu == 1) { /* temp filter -> means didn't support A-MSDUs in a A-MPDU */
-@@ -1771,7 +1782,7 @@ static int recv_indicatepkt_reorder(struct adapter *padapter,
- 			preorder_ctrl->indicate_seq = pattrib->seq_num;
- 			retval = amsdu_to_msdu(padapter, prframe);
+@@ -1704,7 +1704,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
+ 				 ("%s: indicate=%d seq=%d amsdu=%d\n",
+ 				  __func__, preorder_ctrl->indicate_seq, pattrib->seq_num, pattrib->amsdu));
+ 			plist = plist->next;
+-			list_del_init(&(prframe->list));
++			list_del_init(&prframe->list);
  
--			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1)%4096;
-+			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096;
- 			return retval;
- 		}
- 	}
+ 			if (SN_EQUAL(preorder_ctrl->indicate_seq, pattrib->seq_num))
+ 				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) & 0xFFF;
 -- 
 2.17.1
 
