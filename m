@@ -1,118 +1,255 @@
 X-GM-THRID: 6669413684549255168
-X-Received: by 2002:a25:3b10:: with SMTP id i16mr6478475yba.70.1552846420874;
-        Sun, 17 Mar 2019 11:13:40 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:27d6:: with SMTP id n205ls759429ywn.10.gmail; Sun, 17
- Mar 2019 11:13:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx5slogD+kjcUZ8MPcATE2YKrClLCSKxoINezBQQ4dKDWcXq0MXcA7Y0JF9iB6GF5PlRbFw
-X-Received: by 2002:a81:6209:: with SMTP id w9mr6692676ywb.4.1552846420170;
-        Sun, 17 Mar 2019 11:13:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552846420; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KwLj7PJn02wN1s02qugFZ/gybZuOG/zok0r6feLR1TIUjijk9Cxv8zpahbzEDfbRtR
-         iQb6dTdHYpmTomVi7rT2JNwgb1/zAOOjujpwDdOfG1avrRenTvhvRSALOkzF2M2661mB
-         e25rPqzd9CyBJxlJPA/4bq5TCQS42ZqRprZjDeLYFokTqRFo87CvNgu1LaxnnoqXfu88
-         U9/sHreDN7A+MNQXx/AJMQkOyfqGgQY7jlThcSf1TNiGO1mLcAkANrO7X4K6vw9+d8hB
-         rcOJo20hQhTuxUpkNTULVd78OKl/MCmWKBcXgnuRTDjSqIM92nju8DxY50EJik1A2WZ1
-         Q4VQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yICTLmZPlEv0eKXlflVs7SEpQZA98zA1dhl+HNUIREY=;
-        b=Epvtf7M3U10+V1Fbg7fFH1fU07+3Y16+v/x8y87cnh9IvUBtUyIg2PLDgfmDF7GrMr
-         RJN4I6TCEjzynhR+KH3Uqap/OoOS+r/A7bgKl+JD8pGb48exha1Z0K4mj0QjyjIvQ1Q9
-         oORrhs5isXLwE2LGwkVl1leYJuOjZpsy7xk4+a5tx9ypB1np6vGLyt6CAYqEtnuHvuxL
-         El0d0nGbqNUFAzpgart2Om2l5wYSvJsC+gr28QR5xgvYjQB2CvxuX59vGnuTukFVXEJc
-         4TBw/UEzBENnY8awXG5C6Nt6EQ55B/VzPluSMHKrbYHlf2awebap5JG4KeYEJWMDOwsw
-         sk0g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WpuVDIwn;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id e23si392967ybb.1.2019.03.17.11.13.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 11:13:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WpuVDIwn;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id c8so3026465pfd.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 11:13:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=yICTLmZPlEv0eKXlflVs7SEpQZA98zA1dhl+HNUIREY=;
-        b=WpuVDIwnagbCl0A+w0in8ak8pEk33LSbkMQTFH9Q817FXKP2Bgsdy+K57k5L1XKqeW
-         W3e5Q/I0Huq07bivvuezz7CaUv+teBp6CcL012fKF9cVVB8UL9NTgm6L20dKjKoGN/5K
-         mZGQwHD1atR7IU7Vrm2QHnp0WRm9WIRaYUhkTxYP/kPHITePdK4RfQdFQjal8Kaev57k
-         dZ1fdPi00gKtIhZWRz1JbUWoJby/UoKRjz3e3NoenO2PSA9VDikhvjWFefYJvM28ohZB
-         0QeZhOC03pqeMr/p+vOxIYxU4NIsNm714xebtSwEF+bF0CY7b59mDabrH0PDAOYkPIUY
-         xgbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yICTLmZPlEv0eKXlflVs7SEpQZA98zA1dhl+HNUIREY=;
-        b=VNch8ULLA1bg4yH+Xk7RQKBAkOmUOUm2SGd90ffYXFkJ3LwbaU9XacZpi9vSY/ArYn
-         Zc4GWdqPn2I7eo0SHKeoF/1tfW+rwycQ8zikXiuxwem/VdHKHLU/oZ15caEXUNJMG1VJ
-         7BIDADP/uYSadT/sofAS8JJdOa9sy2Nf1ZcjdR9/oyP24b+dv86A8sQy0tuUiURqM6hk
-         Izwnpq4OoaDPw7ZwFZ2ioXNcYQwdlC50C+ymHJoqEBOsON/HKUyx+EqyaeZbNsTcTaaV
-         HALnalmzz54R3ul5UVdtEbpVwC15FSJWK2CPVtKH7bwv/RnDFXd0bj4h/2sguwa64++3
-         ZK5w==
-X-Gm-Message-State: APjAAAUzYO6yV6/DgRLDlgv+FMsKDlr6bcZIt1BKVH0PVoDHjPoHAw4l
-	7Isf32W6pA8rqqNxa5udvGUiU9uqqcw=
-X-Received: by 2002:a63:450f:: with SMTP id s15mr3435299pga.157.1552846419433;
-        Sun, 17 Mar 2019 11:13:39 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.8])
-        by smtp.googlemail.com with ESMTPSA id k75sm26441490pfj.46.2019.03.17.11.13.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 11:13:38 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: gasket: gasket_interuppt.c: Fix string split issue.
-Date: Sun, 17 Mar 2019 23:43:28 +0530
-Message-Id: <20190317181328.4707-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Date: Sun, 17 Mar 2019 11:05:30 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <b763765e-352e-485c-99e4-13c0ae631e6e@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1903171842400.2434@hadrien>
+References: <20190317173107.3814-1-sanjana99reddy99@gmail.com>
+ <alpine.DEB.2.21.1903171842400.2434@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: gasket: gasket_interuppt.c:
+ Fix string split issue.
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1314_1969941118.1552845930429"
+X-Google-Token: EOqYuuQFKaeJxIdLx_w0
+X-Google-IP: 219.91.183.8
 
-Remove string " across the line.
-Issue found by checkpatch.pl semantic patch results for rtw_ap.c
+------=_Part_1314_1969941118.1552845930429
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1315_847490439.1552845930429"
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
-Changes in v2: 
-Fix the string in a single line within quotes.
- drivers/staging/gasket/gasket_interrupt.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+------=_Part_1315_847490439.1552845930429
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/gasket/gasket_interrupt.c b/drivers/staging/gasket/gasket_interrupt.c
-index ff61b782df30..2d6195f7300e 100644
---- a/drivers/staging/gasket/gasket_interrupt.c
-+++ b/drivers/staging/gasket/gasket_interrupt.c
-@@ -97,8 +97,7 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
- 		 * modify-write and shift based on the packing index.
- 		 */
- 		dev_dbg(gasket_dev->dev,
--			"Setting up interrupt index %d with index 0x%llx and "
--			"packing %d\n",
-+			"Setting up interrupt index %d with index 0x%llx and packing %d\n",
- 			interrupt_data->interrupts[i].index,
- 			interrupt_data->interrupts[i].reg,
- 			interrupt_data->interrupts[i].packing);
-@@ -120,8 +119,7 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
- 				break;
- 			default:
- 				dev_dbg(gasket_dev->dev,
--					"Found interrupt description with "
--					"unknown enum %d\n",
-+					"Found interrupt description with unknown enum %d\n",
- 					interrupt_data->interrupts[i].packing);
- 				return;
- 			}
--- 
-2.17.1
 
+
+On Sunday, March 17, 2019 at 11:13:47 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Sun, 17 Mar 2019, Sanjana Sanikommu wrote: 
+>
+> > Remove string " across the line. 
+> > Issue found by checkpatch.pl semantic patch results for rtw_ap.c 
+>
+> You should put the whole string on a single line, even if it goes over 80 
+> characters.  Then if someone sees the string in debugging output, they can 
+> use grep to find where the issue occurred, without worrying about line 
+> breaks. 
+>
+Sure I would be putting whole string in single lline.
+Thank you
+Sanjana. 
+
+>
+> julia 
+>
+> > 
+> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
+> > --- 
+> >  drivers/staging/gasket/gasket_interrupt.c | 8 ++++---- 
+> >  1 file changed, 4 insertions(+), 4 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/gasket/gasket_interrupt.c 
+> b/drivers/staging/gasket/gasket_interrupt.c 
+> > index ff61b782df30..da517c2990ea 100644 
+> > --- a/drivers/staging/gasket/gasket_interrupt.c 
+> > +++ b/drivers/staging/gasket/gasket_interrupt.c 
+> > @@ -97,8 +97,8 @@ static void gasket_interrupt_setup(struct gasket_dev 
+> *gasket_dev) 
+> >                   * modify-write and shift based on the packing index. 
+> >                   */ 
+> >                  dev_dbg(gasket_dev->dev, 
+> > -                        "Setting up interrupt index %d with index 
+> 0x%llx and " 
+> > -                        "packing %d\n", 
+> > +                        "Setting up interrupt index %d with index 
+> 0x%llx and 
+> > +                        packing %d\n", 
+> >                          interrupt_data->interrupts[i].index, 
+> >                          interrupt_data->interrupts[i].reg, 
+> >                          interrupt_data->interrupts[i].packing); 
+> > @@ -120,8 +120,8 @@ static void gasket_interrupt_setup(struct gasket_dev 
+> *gasket_dev) 
+> >                                  break; 
+> >                          default: 
+> >                                  dev_dbg(gasket_dev->dev, 
+> > -                                        "Found interrupt description 
+> with " 
+> > -                                        "unknown enum %d\n", 
+> > +                                        "Found interrupt description 
+> with 
+> > +                                        unknown enum %d\n", 
+> > 
+>                                          interrupt_data->interrupts[i].packing); 
+>
+> >                                  return; 
+> >                          } 
+> > -- 
+> > 2.17.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20190317173107.3814-1-sanjana99reddy99%40gmail.com. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_1315_847490439.1552845930429
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Sunday, March 17, 2019 at 11:13:47 PM UTC+5:30,=
+ Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
+rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sun, 17 Mar 2019, Sanjana Sanikommu wrote:
+<br>
+<br>&gt; Remove string &quot; across the line.
+<br>&gt; Issue found by <a href=3D"http://checkpatch.pl" target=3D"_blank" =
+rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?=
+q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoR=
+gUgHq29dhmk72L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&#39;ht=
+tp://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\=
+x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">checkp=
+atch.pl</a> semantic patch results for rtw_ap.c
+<br>
+<br>You should put the whole string on a single line, even if it goes over =
+80
+<br>characters. =C2=A0Then if someone sees the string in debugging output, =
+they can
+<br>use grep to find where the issue occurred, without worrying about line
+<br>breaks.
+<br></blockquote><div>Sure I would be putting whole string in single lline.=
+</div><div>Thank you</div><div>Sanjana.=C2=A0</div><blockquote class=3D"gma=
+il_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid=
+;padding-left: 1ex;"><br>julia
+<br>
+<br>&gt;
+<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"qyFV28XyCwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/gasket/<wbr>gasket_interrupt.c | 8 ++++----
+<br>&gt; =C2=A01 file changed, 4 insertions(+), 4 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/gasket/<wbr>gasket_interrupt.c b/driv=
+ers/staging/gasket/<wbr>gasket_interrupt.c
+<br>&gt; index ff61b782df30..da517c2990ea 100644
+<br>&gt; --- a/drivers/staging/gasket/<wbr>gasket_interrupt.c
+<br>&gt; +++ b/drivers/staging/gasket/<wbr>gasket_interrupt.c
+<br>&gt; @@ -97,8 +97,8 @@ static void gasket_interrupt_setup(struct gasket=
+_dev *gasket_dev)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * modify-write and shift based on the =
+packing index.
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0dev_dbg(<wbr>gasket_dev-&gt;dev,
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0&quot;<wbr>Setting up interrupt index %d with index 0x%llx and &quot;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0&quot;<wbr>packing %d\n&quot;,
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0&quot;<wbr>Setting up interrupt index %d with index 0x%llx and
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>packing %d\n&quot;,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>interrupt_data-&gt;interrupts[i].<wbr>index,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>interrupt_data-&gt;interrupts[i].<wbr>reg,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>interrupt_data-&gt;interrupts[i].<wbr>packing);
+<br>&gt; @@ -120,8 +120,8 @@ static void gasket_interrupt_setup(struct gask=
+et_dev *gasket_dev)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0break;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>default:
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0dev_dbg(gaske=
+t_dev-&gt;dev,
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&quot;Found interrupt description with &qu=
+ot;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&quot;unknown enum %d\n&quot;,
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&quot;Found interrupt description with
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unknown enum %d\n&quot;,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0interrupt_data-&gt;<wbr>interrupts[i].p=
+acking);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0}
+<br>&gt; --
+<br>&gt; 2.17.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"qyFV28XyCwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"qyFV28XyCwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20190317173107.3814-1-sanjana99reddy99=
+%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190317173107.3=
+814-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190317173107.3=
+814-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.google=
+.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190317173107.3814-1-<wbr>sanjana9=
+9reddy99%40gmail.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_1315_847490439.1552845930429--
+
+------=_Part_1314_1969941118.1552845930429--
 
