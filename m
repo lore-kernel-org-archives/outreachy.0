@@ -1,105 +1,162 @@
-X-GM-THRID: 6527317257974972416
-X-Received: by 10.31.50.133 with SMTP id y127mr5779740vky.93.1519759478907;
-        Tue, 27 Feb 2018 11:24:38 -0800 (PST)
+X-GM-THRID: 6668981360875536384
+X-Received: by 2002:aca:ba02:: with SMTP id k2mr7994833oif.38.1552837184855;
+        Sun, 17 Mar 2019 08:39:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.96.8 with SMTP id u8ls872738vkb.0.gmail; Tue, 27 Feb 2018
- 11:24:37 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsPZ40CtuqO5lMhZRn8fMTPQ4NkxDXa14cbU/+Q2uumv8NWZFWHpietpncUkqXbZcvKQvWS
-X-Received: by 10.31.200.134 with SMTP id y128mr7616833vkf.65.1519759477688;
-        Tue, 27 Feb 2018 11:24:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519759477; cv=none;
+Received: by 2002:aca:be04:: with SMTP id o4ls2194579oif.1.gmail; Sun, 17 Mar
+ 2019 08:39:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx9Zn1Oyvu/Sr7jnEr6ib8rlaOR2YeF9HH6YbzqFcsP9mjbvCVKDT6n3JYXYePXWRAS+yES
+X-Received: by 2002:aca:d6c3:: with SMTP id n186mr8324633oig.26.1552837183886;
+        Sun, 17 Mar 2019 08:39:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552837183; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dz01UER0prFvfu5sZqUxvvyXOYsFmaVgxElreGfs8mCpZErsaUntKvl0R5xpRi1dlC
-         3IFd1uMqENb1V3/EdyBUDhejCJNBXeRftQGr6m2Wr/qsqnXFvCJkKH/k6KmTo1wt3AlN
-         2HwtIvGn/IVZP4qIbIsR6j1eJG1Di18si2DuhW/EhJWgd+17bZumXBufbbOLEfQnJl8h
-         v63/uEKlO8aQY41QhSKx7MQ1koCexJuTynlwdqx5iWQQq5rz/yHnoJ6OO7913VzAf8fM
-         oI8bvW9jeRZ+VGcKnsGA12ZX0ysTOsH7UcCXDTR+7bB7WQjNP/GHs3SrhpbkDOEgfOrO
-         UaaA==
+        b=RvQaTrxl3uogeIWzLs+0G4UwnksY8BAtggSLG/Uowzv22Qw7sUhMJUiVtPiNmbfCje
+         t6NfucPw5vRyBOhfBXAbP0vabGvxfmHXQ4cLcaPHOeAmWEIBV+oh+xKtH0lDVZcrpMfc
+         GDcsntj2ROH/VAxZFFJzfOJofAgfuOErFNf7dJjpjVF0FPazc6vXW1JTgbQ/W7ynamLH
+         dKQ1hTGxysdyp5vsslvKX7YO67nDPT8glE9d1rOEIeRpbjAce5WshRf8IsMigHIajoUs
+         n8c+PWufAIJoggszpLF/6/OQ52t6rljCAaHrBRNxGhaA1vCc9uq2Mx71a3H7L69W9+fx
+         dVKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=WO942w1JkpTuQ96OkfYvdp1rkUPWqf/n4bZsVEnr5ao=;
-        b=Z06uT2t4TM7Jakv4zs1YlMp3oEfgdms7e+paW0wb+BnqvqivY4U1PBnAExjz5PCr4r
-         C/kxQYQsjdq/J26lfDcf6hv3lMNCJM6yYHjcbY/RBOK04l+lvvaN0rodap0q8g36pwnr
-         2hMfzvq/IeNQcJNyhIqH2HGsAUM5J9sfRBOLtql/jJjEJ/57SdAKsm2mco4Z2z4A3QcA
-         XK5pEj9swEbAHssgJf/DtDTXtWkG5+Qz4shfNh5tlUYYIbtebNy6UYH5rhNeRoEgdMOs
-         YPmZI3mQe4oIGRDUbhAQUEKThBDo68hhT8JcUOBxsXAONAAsjsuFnXAfYk3PV+PrHDvz
-         zw5g==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=yDjy44Ad4qc7CGHh4AM3pE5eZy5EAPqX8x3DnD5BtFA=;
+        b=Qb3yXgi0bIkcdoyyj3xGRQUxf1BfNTYanjCtRR3jTFmQOvcPafdaxhKmheKQ/3xenk
+         DC4pXPck5y7yCiH2IC+IMuNdQDA7REnxjFEtWudfzXJMbf9us4/IPluo/AJJvfCa5zw8
+         WWvc1084Jkf9ZTqLGQiGG4TtHFmNdfYewo7JH82/f5aJLcQeGM2f5lz2mLZY28MZKwAf
+         UIc3bE/Miw1Aw3L1J73TuyVGzv9lb6FnhOdTgT464WaeqF0hVJcC11kQquCnJfOHPXTH
+         tVm3vO/caM/lBU+c5D7A3jEw7Pq4AmT72kVFr/4iPnos1tVhAKzP+tijfZH4GwExXHyg
+         rUOA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=bRRvfbR6;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::22c as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pg0-x22c.google.com (mail-pg0-x22c.google.com. [2607:f8b0:400e:c05::22c])
-        by gmr-mx.google.com with ESMTPS id j185si891019vkh.3.2018.02.27.11.24.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pp1AW2PI;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
+        by gmr-mx.google.com with ESMTPS id x4si317577otg.2.2019.03.17.08.39.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Feb 2018 11:24:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::22c as permitted sender) client-ip=2607:f8b0:400e:c05::22c;
+        Sun, 17 Mar 2019 08:39:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=bRRvfbR6;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::22c as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pg0-x22c.google.com with SMTP id y8so7891157pgr.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Feb 2018 11:24:36 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pp1AW2PI;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42d.google.com with SMTP id r15so6790793pfn.9
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 08:39:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=WO942w1JkpTuQ96OkfYvdp1rkUPWqf/n4bZsVEnr5ao=;
-        b=bRRvfbR6VQpqY1HwFgdcYs0J26Xzu6K8OMRsxTPT7WhHgoglK4MnutivM+ocdPmG+G
-         5u8yIXMmpWUHmMkBmC70ihC7BXyKVRwaBkNV2rUXuG0PC51HESGhBKJW6oVkTOxKTaAc
-         6fYPXOLZxD+tjX0phs0bEX38Td4RSgaI5z99c=
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=yDjy44Ad4qc7CGHh4AM3pE5eZy5EAPqX8x3DnD5BtFA=;
+        b=Pp1AW2PIqecyopJSGlpMAlDbEIc1wYxskSHULr2bhayyu/5//dLamj8e//pLICfRVh
+         q23T5g7eODVA/wlPA4ogD88FqrMo+Z5KmvzZVxhBBeVQAe/JrLQuWbmhLkdoV3icn1bq
+         21eN++b2wnubIvQCG456qfrNt6CYE++8BoqCzD2z/L+B+9BGA3+UcuC2Q0hO9zEJvzof
+         VAigk7EN7cSMBlnBoMOY/YObhqeZIY7C0TSVYsaCrxUsVVj/OviWy91MLLJysljMedAI
+         VBPirc8jjxpb5TT3EGlMmQUImxSgCGr0KCe2L09EmoxvCW7F4zUa1DEnobe2A6H3E1fE
+         CWKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WO942w1JkpTuQ96OkfYvdp1rkUPWqf/n4bZsVEnr5ao=;
-        b=rar30/A40O5lFRacnkxGeru9OmBlvwRFXBFKEwxxnpEaZmj3IDJtuhhqytZMMrANyf
-         GcVMw718GPG0njTxF7n1jNfQhtL8wZ3hAMfm5TWBW63/N0j18O6HGw5fjZC0HFLvy8bo
-         OwPnRciNhJlxljqBBZr5Lgq63w82TrrPtGqVYE7IOUuTyDPbktigXlkuwlV3R+hw69VK
-         FXeanUfPZAYw/P4Fu1OgrEXCQkKuYSB1pBHeLYWmAtfaKyvgaJbLNPXzU8wYangTYDov
-         q2TLHTMrjtei95fcL5FkKt0rpk+K24dQsCea9Q24b8NQsM4d5iVv1d2apcbxplfP/4oL
-         21bQ==
-X-Gm-Message-State: APf1xPC0V29WQMdikP5aopWz++PvIPzs1clcveNZ4x50oSRtSMeRjbqE
-	Xf9gydLXMC3Em3guoj4pe428ow==
-X-Received: by 10.101.97.67 with SMTP id o3mr12464087pgv.251.1519759476356;
-        Tue, 27 Feb 2018 11:24:36 -0800 (PST)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([210.212.93.46])
-        by smtp.gmail.com with ESMTPSA id 83sm24703942pfj.151.2018.02.27.11.24.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 11:24:35 -0800 (PST)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: eric@anholt.net,
-	stefan.wahren@i2se.com,
-	gregkh@linuxfoundation.org,
-	f.fainelli@gmail.com,
-	rjui@broadcom.com,
-	sbranden@broadcom.com,
-	bcm-kernel-feedback-list@broadcom.com,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging:vc04_services:bcm2835-camera:mmal-vchiq.c Blank line added
-Date: Wed, 28 Feb 2018 00:54:10 +0530
-Message-Id: <1519759450-25582-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 1.9.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=yDjy44Ad4qc7CGHh4AM3pE5eZy5EAPqX8x3DnD5BtFA=;
+        b=C6DVQP1dDYXmRHmlUjMbNOhvyK2pwzQoKw1irfs10ZNr7Y/7Cb9mICosvF9b3joHd+
+         UMF54G9rDsTg/NLq6OdfqKQiek8gXhV7lHtmIa4/RkyIvhO+nOnUwfRBePUvlhG4kAUY
+         dWP4ELjCS2+549nPCeMx9JRzc7ka9diEeUn8lVh3r0uJHy7xhSqEaiKjEaC1ryKv/Mag
+         Aht6d8rcCTZKza9LBM6lWFi937ixeqK3ASC3Qbpgh6UChAHJGeHgjrsFf2OCewqW79VV
+         yEu9urjgZirIVwehvKt0CT1cP9kpxWBc9fNNMhe04pSWR7eysFu7xa/KCTzdscpWliCm
+         doTg==
+X-Gm-Message-State: APjAAAXwUh6NJ9Fjk3ayDDJRpLPTOeQNHGi+T+n59Oir3xD3lfxW1QG6
+	2zUfDJfHCiqDeqOjVvLUBqgg8gPK
+X-Received: by 2002:aa7:8811:: with SMTP id c17mr14475656pfo.197.1552837183274;
+        Sun, 17 Mar 2019 08:39:43 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from localhost.localdomain ([2405:204:6398:14e1:24bf:4cf8:99c9:eab4])
+        by smtp.googlemail.com with ESMTPSA id r82sm12965384pfa.161.2019.03.17.08.39.39
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 08:39:42 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v5 3/3] Staging: rtl8188eu: core: rtw_recv.c: fix a space issue
+Date: Sun, 17 Mar 2019 21:09:29 +0530
+Message-Id: <20190317153929.16897-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190317152736.16374-1-sanjana99reddy99@gmail.com>
+References: <20190317152736.16374-1-sanjana99reddy99@gmail.com>
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Fix a space issue around the below operators mentioned in CHECK.
+Issue found by checkpatch.pl semantic patch results for
+rtw_recv.c..
+
+CHECK: spaces preferred around '%' (ctx:VxV)
+CHECK: spaces preferred around '&' (ctx:VxV)
+CHECK: spaces preferred around '+' (ctx:VxV)
+CHECK: spaces preferred around '<<' (ctx:VxV)
+
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
-Blank line added after declaration. Issue found with checkpatch.
- drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v5:
+No changes from [PATCH v4 3/3]
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-index a91ef6e..e3460b7 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-@@ -1977,6 +1977,7 @@ int vchiq_mmal_init(struct vchiq_mmal_instance **out_instance)
- 	int status;
- 	struct vchiq_mmal_instance *instance;
- 	static VCHI_CONNECTION_T *vchi_connection;
-+
- 	static VCHI_INSTANCE_T vchi_instance;
- 	SERVICE_CREATION_T params = {
- 		.version		= VCHI_VERSION_EX(VC_MMAL_VER, VC_MMAL_MIN_VER),
+Changes in v4:
+Fix the patch version number in [PATCH v3 3/3]
+
+Changes in v3: 
+fix a overflow of 80 characters from the [PATCH v2 3/3] 
+fix a space issue around '>>' from the [PATCH v2 3/3] 
+fix a space issue around  '-' from the [PATCH v2 3/3] 
+
+Changes in v2: 
+Remove "From" line from the [PATCH 3/3] 
+Change subject line in [PATCH 3/3] 
+Change log message in [PATCH 3/3] 
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index 35684514c79f..90eb1a025051 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -365,9 +365,9 @@ static struct recv_frame *decryptor(struct adapter *padapter,
+ 	RT_TRACE(_module_rtl871x_recv_c_, _drv_info_, ("prxstat->decrypted=%x prxattrib->encrypt=0x%03x\n", prxattrib->bdecrypted, prxattrib->encrypt));
+ 
+ 	if (prxattrib->encrypt > 0) {
+-		u8 *iv = precv_frame->pkt->data+prxattrib->hdrlen;
++		u8 *iv = precv_frame->pkt->data + prxattrib->hdrlen;
+ 
+-		prxattrib->key_index = (((iv[3])>>6)&0x3);
++		prxattrib->key_index = (((iv[3]) >> 6) & 0x3);
+ 
+ 		if (prxattrib->key_index > WEP_KEYS) {
+ 			DBG_88E("prxattrib->key_index(%d)>WEP_KEYS\n", prxattrib->key_index);
+@@ -1160,7 +1160,7 @@ static int validate_recv_frame(struct adapter *adapter,
+ 	u8 bDumpRxPkt;
+ 	struct rx_pkt_attrib *pattrib = &precv_frame->attrib;
+ 	u8 *ptr = precv_frame->pkt->data;
+-	u8  ver = (unsigned char)(*ptr)&0x3;
++	u8  ver = (unsigned char)(*ptr) & 0x3;
+ 	struct mlme_ext_priv *pmlmeext = &adapter->mlmeextpriv;
+ 
+ 	if (pmlmeext->sitesurvey_res.state == SCAN_PROCESS) {
+@@ -1763,7 +1763,8 @@ static int recv_indicatepkt_reorder(struct adapter *padapter,
+ 			preorder_ctrl->indicate_seq = pattrib->seq_num;
+ 			rtw_recv_indicatepkt(padapter, prframe);
+ 
+-			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1)%4096;
++			preorder_ctrl->indicate_seq =
++				(preorder_ctrl->indicate_seq + 1) % 4096;
+ 			return _SUCCESS;
+ 		}
+ 	} else if (pattrib->amsdu == 1) { /* temp filter -> means didn't support A-MSDUs in a A-MPDU */
+@@ -1771,7 +1772,8 @@ static int recv_indicatepkt_reorder(struct adapter *padapter,
+ 			preorder_ctrl->indicate_seq = pattrib->seq_num;
+ 			retval = amsdu_to_msdu(padapter, prframe);
+ 
+-			preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1)%4096;
++			preorder_ctrl->indicate_seq =
++				(preorder_ctrl->indicate_seq + 1) % 4096;
+ 			return retval;
+ 		}
+ 	}
 -- 
-1.9.1
+2.17.1
 
 
