@@ -1,133 +1,149 @@
 X-GM-THRID: 6668560476445605888
-X-Received: by 2002:a62:be1a:: with SMTP id l26mr4493136pff.9.1552841694116;
-        Sun, 17 Mar 2019 09:54:54 -0700 (PDT)
+X-Received: by 2002:a02:6018:: with SMTP id i24mr8182164jac.6.1552840590573;
+        Sun, 17 Mar 2019 09:36:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:8216:: with SMTP id x22ls7427104pln.3.gmail; Sun, 17
- Mar 2019 09:54:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqziygGl3LYnDWt286dHXFQZ7WR6WzDgGPigpBzIXYz6JxHR6iaF9/qDXBdkMHHXV/7AZNaJ
-X-Received: by 2002:a17:902:ab8e:: with SMTP id f14mr4501609plr.82.1552841693340;
-        Sun, 17 Mar 2019 09:54:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552841693; cv=none;
+Received: by 2002:a02:3b69:: with SMTP id i41ls4734078jaf.3.gmail; Sun, 17 Mar
+ 2019 09:36:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxOkGbfvpAdm371fTdTEhPKT8p9VVArOKWrPmCChj6U67DfLTtsoU/mc4NZWaru0rcoID75
+X-Received: by 2002:a02:3f1d:: with SMTP id d29mr8196892jaa.4.1552840589731;
+        Sun, 17 Mar 2019 09:36:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552840589; cv=none;
         d=google.com; s=arc-20160816;
-        b=qgnB2Gk/h178hNUEtLNbwHSFMF8ziaxOGxskS5Eg83GedLIVM+qznTNWcYVxXpm9La
-         Pq51x9cEUDuemHSr0Dtip4dlQ5JfK0VRVdTXX1a2GRD7oWZ6P3JJM4dzj1LuOdi1VzCw
-         DLeTixCDJR8zzsj5HllBdS791ZwfhhxP6sPiiod/kLY7uQbpuHXJTTTyohfuAR4vSSqc
-         jbW5l/R+U2z21LQ09pWCxKLZBV5Yq3H0IL5jcmtz+wNwPRmyfPOn+QBUnukhx639kjzR
-         ESymNzF5F+77L+2YCRdLaUfOOaM2xkV1oMnFlOS3ciVnFW7iDxJyXviw/ibeAAvSGZFu
-         A56w==
+        b=fxwEkVBV/ammtfxQyFJScJhuGtgz0ixxO4fqi25yAYOXOXru+YtRAz/4LpIfdTB98B
+         lnFZM597rtLGbLAKJ4EHp8JllTP2G1esnAWDAh1aDJ/dnMoWSWidkgYuPiJQSA1QfLaW
+         /j8o4kZ7jK6mRFBS3/lVfVA5O91MjnX+KsgrLG7vLvDLbs2rJgaJf2S/ySKRR9clFiLK
+         cyXpgMz7DJUOGYckW+hJ6ypvO67RivlRjFmO4V7z1pJ3oVwYSYqbysSpXLoesMmwhujJ
+         9IKC8hmMkWFTSlwoR4TXG/LYIePYZ3Sm050324XqaGRq+VpvdSBCR3SfHeFoB4R0Sjz4
+         FE2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=XQtHhiqVx/OLsRdXSGE7O3IrAV5IuwLHiTFDnABSnVc=;
-        b=rbo/p2KYC6yHUS2612T8ZSKQxUBJ/GlOBTRUZTjyoiW2IcG+XoShaDrjsFW+WI60qT
-         GzTVS32Le0vPGAR+hqMTyoHUoaQmjG4lrn6YTXqGbiUUhoYE0nFH6ofe3mJrK2a4tLdZ
-         Enc50FWNZ3gSBfkHyMAZ0QFKPBk/TzZMOH82VoHi+kHTnue4A7H86pkCtDgB7ADstf7+
-         oQqOgE7/Vx0SGqjTypv85wElEVggpBQXxLM28gk05aka3pVoMAX6ha4R6x1ZCmsB4BZn
-         ITmTqNygHLpInqeoujg4QkWCuSAI5tRm/V+4Kqone58ox660q4oPZ4jTdM3FyAPsvrcV
-         YbfA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=bnA4kTc14XHVMs6uS7lNFRH3ufcxHCQffREoUKymMak=;
+        b=RGPeK9Vb4snksnpSybe2veRWPZSpY5RTzOlxR7iILAYOAzU4wI5+hCNRnnITrCZt+s
+         vOd23A9bKVhIbkO3wIqxNEvpm8V/4DP3OCHq1o0xJOmJYQ0TziYmz5zb8L8wYu4jOf/R
+         +sTKylbOkpky3ySYW3QcWMesXaFt0aAh13xWUE0gcIEFC1RqrT1bj5nbYoRzjN4TfbqN
+         ecPnpBdJPp6Gutpt9ZKVQ1d7AZH6DYRQ2F3Hja9yadHcSHStD/UmlyH3jXEsCSutLEEy
+         v7I+dL+SChnS4Zd3hh3sujNeg2DB+74Jamroq9nbt3/SUfGEJDiKbNfA+5zSpX+KyZgO
+         Kh0A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=H5C15Imm;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id t24si288694plo.2.2019.03.17.09.54.53
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b="O/P9aS4V";
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic303-21.consmr.mail.sg3.yahoo.com (sonic303-21.consmr.mail.sg3.yahoo.com. [106.10.242.38])
+        by gmr-mx.google.com with ESMTPS id j196si378948itb.0.2019.03.17.09.36.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 09:54:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 17 Mar 2019 09:36:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) client-ip=106.10.242.38;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=H5C15Imm;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 8CC0A20872;
-	Sun, 17 Mar 2019 16:54:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552841693;
-	bh=LWd7IDxDXWMZjClPue1H8AjHjD3YPM8GjkNt47TeQuM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H5C15ImmmSF7wb0BLw6LIyWGJSqgD72ms/i5IdJRnSKNOhY94yrzUkBcXfy+4CeNa
-	 f5kgBYdZGef5UQDPHOB3iXAJwg9hsRA2ZzxnMXK6hfnqJNw6yMg1ozgmsX+iJEwlAI
-	 gNeAmVfITsSWYYTqcdLclSjdERxz8uqc4UZqYhA4=
-Date: Sun, 17 Mar 2019 17:54:50 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: NIshka Dasgupta <nishka.dasgupta@yahoo.com>
-Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b="O/P9aS4V";
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1552840586; bh=bnA4kTc14XHVMs6uS7lNFRH3ufcxHCQffREoUKymMak=; h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject; b=O/P9aS4V9s9nxZ+/nSsgLu70Au6kxcHtPUNZsLOYiq5l4PrVDdVut0kqy9g0qrBrTz02qmMFx0wl00cYusq2YrK3Jr1CovAKFBPDR6CkCNUwm8U+oocNS3qAnVkBoH6UKxTsAzpgOGpbCl8z1i9pIhCU+laVaF/WHjA7+FJYGPpZFjxt2dcWsVoRogxU1iXY7Ys0djzzurqwPYmqwjZGr5YMbBSHuIW1d1YBH/2H37sJR1Swp20Iz3cvMyF2N/MbS6z68ail/5SZvDvm4dgs/i+SoXBtdwFpshaTcpnJshEdKf25F7c1lJc46Cs++c9keinJKIQThsKjqKKTS9sRUw==
+X-YMail-OSG: JPiuvLcVM1kmQq9YBJ4CuL5SSV9OOzUVeQxu5w_Kj2lInkrGwdUWkWV85unTorf
+ g21aJNH0lwJWWTZDlyEqDZmxlYlhTBb3LbzgNFn05mtI.uw1F88ckoH9cfxMTqvFFbgEHIbPQ0LO
+ baaleMJ4TjHeoiA4BjO8pdmScAc9XDDrzW67obNycuFxcTuJnLq8epKLCt_ncPJG7_T1LIW1iATo
+ OTRX3RJwzMbbFdRlY678Cd32mMhmSBY5sMvQizNLnVsAQ31cWY0d0aoBDS_xJAjN7h4v6neqD50.
+ _v1EEXJHJz716UTgB9Jsnbs2p8FfqSDlfiCmgP7Yn5tHSS1NRUFnaeeAqZlmM7Gy5WF1gcO5Q3bw
+ YXDceLak5InN1EyKroKsoo0BIJAPNJI2GEaEcbaplZI3YC71yZyfSABoCi6GxzM9zxZPiaFytVYP
+ DILBG3nnO25MCgpUeji49lb.cFAd1y56j0Gvh_oy7cMB_KqDWAymqtthnPNc8xa61I6fNbL3dCaa
+ bPmhsSmvKjj_fUJ_JSP.CAcyOqqy8vPNPZMWYTffYlWEbJVpH8FOC4LBZTw3usFEWAuVRLhXip5o
+ CB8Vi7xIwg1FK7EJ4nTkMJydeL0U5mwr16obzr2ROP_nVV11rgQlVwJ719MQpC9QSgDpu0InkOTQ
+ oF8TtmWa34rdgZdhpCFxyd_bCmkf967n9cMcRzITLPbTNu7mTayd6oYy1FG0O.l9Dgdurz6PchTH
+ 4Y3uFoMZ8bwZTqb_iI7TGxKHZ7U5Q9DAtL.h0gOmEpuntSVpVhdlwN0qWzcoJyiaCpnt_3NhFaej
+ oPzK3Xonyru2MiASNR_GgVE7ZovYInjEEr19_YqBUn8LBxAKsJC8tDHys9T7JDuxbMQn.OZu18UV
+ .0KAq0gRyWc8e844PSl7.muHuoFB0EvQZ5SBUa6xwxSkgEKFNHOG0XBnzInBFqyrjp8DivaYZNsU
+ ylA9NdhVcEZnG6KtemScjd7c4RzfjX7mI0XrfEIz_lNs6ph4BZbxTipfScTdTiH.gdwfYDoq1v.q
+ Cb7waXA2heMFCgtiwNjyVm8H3tGYoNC5WJ8rBi33tYnP2QwjmG0ci7Jrq_4jfrtRQZmyR1P4seZD
+ jukzRGVzpzJ3o7HYE3TjECwGgTLI-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic303.consmr.mail.sg3.yahoo.com with HTTP; Sun, 17 Mar 2019 16:36:26 +0000
+Received: from 210.212.93.46 (EHLO [10.0.2.15]) ([210.212.93.46])
+          by smtp402.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID cfcabc169cf5d1c3e57e2dd2ebee2005;
+          Sun, 17 Mar 2019 16:36:24 +0000 (UTC)
 Subject: Re: [PATCH] staging: sm750fb: Remove unnecessary function
-Message-ID: <20190317165450.GA19824@kroah.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+ outreachy-kernel@googlegroups.com
 References: <20190315102007.26612-1-nishka.dasgupta@yahoo.com>
  <20190317104323.GA16257@kroah.com>
- <c6bcf143-56b8-958a-fe5f-1ffad198e04a@yahoo.com>
+From: NIshka Dasgupta <nishka.dasgupta@yahoo.com>
+Message-ID: <c6bcf143-56b8-958a-fe5f-1ffad198e04a@yahoo.com>
+Date: Sun, 17 Mar 2019 22:06:18 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c6bcf143-56b8-958a-fe5f-1ffad198e04a@yahoo.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20190317104323.GA16257@kroah.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 
-On Sun, Mar 17, 2019 at 10:06:18PM +0530, NIshka Dasgupta wrote:
+
+
+On 17/03/19 4:13 PM, Greg KH wrote:
+> On Fri, Mar 15, 2019 at 03:50:07PM +0530, Nishka Dasgupta wrote:
+>> Remove function sii164ResetChip() as comment above it said "below
+>> function is not necessary".
+>>
+>> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+>> ---
+>>   drivers/staging/sm750fb/ddk750_sii164.c | 13 -------------
+>>   drivers/staging/sm750fb/ddk750_sii164.h |  1 -
+>>   2 files changed, 14 deletions(-)
+>>
+>> diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
+>> index c8e856c13912..8884ef927893 100644
+>> --- a/drivers/staging/sm750fb/ddk750_sii164.c
+>> +++ b/drivers/staging/sm750fb/ddk750_sii164.c
+>> @@ -237,21 +237,8 @@ long sii164InitChip(unsigned char edge_select,
+>>   	return -1;
+>>   }
+>>   
+>> -/* below sii164 function is not necessary */
+>> -
+>>   #ifdef SII164_FULL_FUNCTIONS
+>>   
+>> -/*
+>> - *  sii164ResetChip
+>> - *      This function resets the DVI Controller Chip.
+>> - */
+>> -void sii164ResetChip(void)
+>> -{
+>> -	/* Power down */
+>> -	sii164SetPower(0);
+>> -	sii164SetPower(1);
+>> -}
+>> -
+>>   /*
+>>    * sii164GetChipString
+>>    *      This function returns a char string name of the current DVI Controller chip.
+>> diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
+>> index 862e7bf27353..1f7b5f9c1885 100644
+>> --- a/drivers/staging/sm750fb/ddk750_sii164.h
+>> +++ b/drivers/staging/sm750fb/ddk750_sii164.h
+>> @@ -28,7 +28,6 @@ unsigned short sii164GetVendorID(void);
+>>   unsigned short sii164GetDeviceID(void);
+>>   
+>>   #ifdef SII164_FULL_FUNCTIONS
+>> -void sii164ResetChip(void);
+>>   char *sii164GetChipString(void);
+>>   void sii164SetPower(unsigned char powerUp);
+>>   void sii164EnableHotPlugDetection(unsigned char enableHotPlug);
 > 
+> Did you test build this?  This function is still used if
+> SII164_FULL_FUNCTIONS is defined.
+
+Yes, I did test build this, and there were no problems. However, I have 
+not been able to properly grep search for it since my laptop crashed a 
+few days ago and I have only just been able to set everything back up. 
+Where can I find SII164_FULL_FUNCTIONS?
+
+Thanking you,
+Nishka
 > 
-> On 17/03/19 4:13 PM, Greg KH wrote:
-> > On Fri, Mar 15, 2019 at 03:50:07PM +0530, Nishka Dasgupta wrote:
-> > > Remove function sii164ResetChip() as comment above it said "below
-> > > function is not necessary".
-> > > 
-> > > Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-> > > ---
-> > >   drivers/staging/sm750fb/ddk750_sii164.c | 13 -------------
-> > >   drivers/staging/sm750fb/ddk750_sii164.h |  1 -
-> > >   2 files changed, 14 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-> > > index c8e856c13912..8884ef927893 100644
-> > > --- a/drivers/staging/sm750fb/ddk750_sii164.c
-> > > +++ b/drivers/staging/sm750fb/ddk750_sii164.c
-> > > @@ -237,21 +237,8 @@ long sii164InitChip(unsigned char edge_select,
-> > >   	return -1;
-> > >   }
-> > > -/* below sii164 function is not necessary */
-> > > -
-> > >   #ifdef SII164_FULL_FUNCTIONS
-> > > -/*
-> > > - *  sii164ResetChip
-> > > - *      This function resets the DVI Controller Chip.
-> > > - */
-> > > -void sii164ResetChip(void)
-> > > -{
-> > > -	/* Power down */
-> > > -	sii164SetPower(0);
-> > > -	sii164SetPower(1);
-> > > -}
-> > > -
-> > >   /*
-> > >    * sii164GetChipString
-> > >    *      This function returns a char string name of the current DVI Controller chip.
-> > > diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
-> > > index 862e7bf27353..1f7b5f9c1885 100644
-> > > --- a/drivers/staging/sm750fb/ddk750_sii164.h
-> > > +++ b/drivers/staging/sm750fb/ddk750_sii164.h
-> > > @@ -28,7 +28,6 @@ unsigned short sii164GetVendorID(void);
-> > >   unsigned short sii164GetDeviceID(void);
-> > >   #ifdef SII164_FULL_FUNCTIONS
-> > > -void sii164ResetChip(void);
-> > >   char *sii164GetChipString(void);
-> > >   void sii164SetPower(unsigned char powerUp);
-> > >   void sii164EnableHotPlugDetection(unsigned char enableHotPlug);
-> > 
-> > Did you test build this?  This function is still used if
-> > SII164_FULL_FUNCTIONS is defined.
+> thanks,
 > 
-> Yes, I did test build this, and there were no problems. However, I have not
-> been able to properly grep search for it since my laptop crashed a few days
-> ago and I have only just been able to set everything back up. Where can I
-> find SII164_FULL_FUNCTIONS?
-
-'git grep SII164_FULL_FUNCTIONS' in the kernel source tree and you will
-find it.
-
-thanks,
-
-greg k-h
+> greg k-h
+> 
 
