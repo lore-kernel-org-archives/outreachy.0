@@ -1,104 +1,96 @@
-X-GM-THRID: 6662426031270395904
-X-Received: by 2002:a0d:e288:: with SMTP id l130mr10019611ywe.18.1551216941283;
-        Tue, 26 Feb 2019 13:35:41 -0800 (PST)
+X-GM-THRID: 6668919663112486912
+X-Received: by 2002:a17:902:b947:: with SMTP id h7mr4080973pls.41.1552819730060;
+        Sun, 17 Mar 2019 03:48:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:4688:: with SMTP id t130ls6213510yba.5.gmail; Tue, 26
- Feb 2019 13:35:40 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ib7PwClRUYb5ex8+Zfpi9IcfPsRhjqhcn9/GqiZkQxMDHWUyvXs9Re8SJ4zWyFd1fAr1xmn
-X-Received: by 2002:a25:2b01:: with SMTP id r1mr8740114ybr.23.1551216940558;
-        Tue, 26 Feb 2019 13:35:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551216940; cv=none;
+Received: by 2002:a17:902:a514:: with SMTP id s20ls7178864plq.0.gmail; Sun, 17
+ Mar 2019 03:48:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyaoYJoA1zlqEj+VXcvq3DHCAo1VK5jguVDL/KnYXEKaDoamCW0JV8JR1Yq13y3d3HGBARd
+X-Received: by 2002:a17:902:1347:: with SMTP id r7mr4101404ple.133.1552819729335;
+        Sun, 17 Mar 2019 03:48:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552819729; cv=none;
         d=google.com; s=arc-20160816;
-        b=w9yxIsfXWBfOdKdU8V5iwkGcXMLRqn2r3jZ6HqS0lqnqAql2UjmiOoZV50HZn53JPu
-         cWyK0l+AZI5z21y2nXzs7GGxehhy/jhf/UVKG9CtKVNkMk0nZXHyLLbIqEX3fxsu8WFR
-         kyuGiGbGMuutQIFFA6FG5WQJSSuVC+W0ZtTXIJ1LMMttD0cFX3HKk/PUEuCU9ggsBCKO
-         u3lqZ8SEuF3dBaI7b+rvz16ugdYjcy8O2RWF25pjcY9x1GI4LyBWNG3O1376QYIVDVwB
-         XuEoE2Ixd0Trwy2ueFsUR+S83PTTfE72ULy/X2DfH7wIviNGY48c2NXAcGnL97Y43l+P
-         KQTg==
+        b=POCYIWU2RAiccCSW2gjhIJ8tFAAOzd/REevBARh7dHfNrswSbYYF1ZLGv8dMh8e9ve
+         +k2m7vh4BZkIZ5nWKi/Hmjz0TENwzNlh6YBSKOGHij7cLKPNznkw1zyrGqsFNBnorlW0
+         PvYn5ZsGsHHMF3uLsWa3VmtpM61g540szk7dsq/FblwuqUWEbJVlIBFgNFf2GgXcXWxL
+         zcakiEfFz9WNa8p6auVdinBDMzYOZnbxMVVpT04OIT7Hm0FkWn0lRZXsMg4+MGCMduUW
+         IQfJMob2pu5y+OmlcJE8Nv6HOfcjtXMaySrdKyeoGXHM+kCe7Qhy9Wy1b2ucS+I/kV8u
+         g5aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lzvnLk/AO6ltaC6u/2fY5j5QJyeHvKpr80k+Edl8uhA=;
-        b=QDKKuehFIP7og8vHVW/A6Pagoqrq8zZ+M9dSoxwL+QS50s4s3YGmyw62wCiNMcC5et
-         EAWDnyF0NPevfm0ScWoi04QCbE3xN+1Vm2S0A4HMepAJy9zpXYNqzjMk5exZ3Mk2WAQd
-         VfDAMOctv+RjqkoUryiVg8B3RbRED+qhFO06duMxx88GMKkzMOZCzcB38i378Sf65yTd
-         Hotoo7KF/T0ci8liok9MsMUATa3eSYEHeClKAIfR5ifpHctWa9CDYa7tlTmvVpExihxh
-         Jwid1J9KAbgdHoadT8a4VxI33HfJshX/V0uPiqmIc7fHZtE/6wvmYxxRiGcMXax8NYvt
-         /DZA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=8VzoWa4yfnnfZTiXAl6B5ikTEEOY+4j4hf5LfOrhgk8=;
+        b=DDr4ORBXz/Znpsy4GFXQ8wCWli9Ddmmeq0MpEjf3xBlkLHco3ninIR7sG4wPZSHL7S
+         JefXRssoET5ZJEcFx9QZjmFttZrLWWWtDLqnCsCio0QsQNdcYzk462JM51E47+vNMscK
+         nQ9dnYC3kdvM/h/eeFjM0bTaQBz8exqfL0tQ/Wt/VoiCiIH6xSFk9muYOJtoqmg7izmZ
+         NyYrWUATl+/x21QjgVoNv+7MXrQYxS4cajES7pb8u/+fnki9tW791WJ72oRwdGMOWDV3
+         KqChuVTrjZlxBmsHYx3Ooq4RAC/clTDXO0nENFTvWIBP+WIujHQqb/C+RYIFzdrBOWQ4
+         xiTg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="UGDu0z/6";
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
-        by gmr-mx.google.com with ESMTPS id t14si439625ybg.3.2019.02.26.13.35.40
+       dkim=pass header.i=@kernel.org header.s=default header.b="JSl98G/K";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id b77si314695pfj.5.2019.03.17.03.48.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Feb 2019 13:35:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
+        Sun, 17 Mar 2019 03:48:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="UGDu0z/6";
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x241.google.com with SMTP id s16so11652402oih.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 26 Feb 2019 13:35:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=lzvnLk/AO6ltaC6u/2fY5j5QJyeHvKpr80k+Edl8uhA=;
-        b=UGDu0z/6ZonvbONIjRkEmTSpapWRVy2wswvtWGFijexNWoU/7MPDs0RzN/MiqZdbnW
-         EBmK0snIxS4xhOrQhvsG/HPc6DlggmI21A7D20ooxTeov71fHN2nCAAv02poY1H0SjSd
-         YN0kDrutIq93KuvmZoJuyTGo+aDrg2uwM+WZm76PoQ6s2W0ye4O4anYiP+QcRTD+FUeb
-         yKWusyDxgSBz0poH8VAx5zNbCqOh44z3SWEby8OaQ28wKOhZAdiD7lfaIQqCTiO8h5ME
-         LFGSRjhYXEFVPk0EWiir3Z+JWWEOU6No6OlNtCdMk2SvR5WhUPar9xglgrm/px4+YF26
-         efyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=lzvnLk/AO6ltaC6u/2fY5j5QJyeHvKpr80k+Edl8uhA=;
-        b=lhjDg8E0zuhlVoJ5f8ziJ7gq84V40hKJqovvhR6kXk1STf5hSKEibRe3m9amEXiurR
-         vWpOsbQ+8EML5ahCaRHcMHln6OcJv4e/pihD4O+0ewUuo7iHkjgujJUYRq4+zPUp3WYk
-         QGWB/X20PvmSK/Lh33jcsDZG9AWTgJd5tY+n9RoXhSoXX1JvqPlG3cS9H9BJQPer/VaS
-         LHN1RlDatv8W02kQi4gChRAf02kqf09JZ8srOYvk+mpdWcqaekANaJSJavR8devRKJHE
-         5h5LBS8WcmHok5m3XN+NS8UK7QMGxgfisk/aJI9U5eVsYd91IvumjGcSwZjIdiVkUc9M
-         3swA==
-X-Gm-Message-State: AHQUAubfpye36CmaQyFXMoV1n0CcwDGXH45BZbMCjQa38CyMVB0ppGXL
-	aHHBrYhRa3DukK5Gx0qfKnU=
-X-Received: by 2002:aca:db43:: with SMTP id s64mr3583073oig.165.1551216940039;
-        Tue, 26 Feb 2019 13:35:40 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id g80sm5602257otg.38.2019.02.26.13.35.38
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Feb 2019 13:35:39 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: vt6655: Modified comment style of SPDX license identifier
-Date: Tue, 26 Feb 2019 15:35:35 -0600
-Message-Id: <20190226213535.4766-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b="JSl98G/K";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 8DC662085A;
+	Sun, 17 Mar 2019 10:48:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552819729;
+	bh=d+6xFB+4e/iEmFjzOEK0mdfsMLuazY3vDMhbmufISVI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JSl98G/KkSF2cd3DnD82z5ai+Y6GSFu+K9Oi49wpVHJIc8hj4ztPbx/WK/BlofHRB
+	 mZtFE2GFyPNvNxsmxMnC0fNE5U6+GaA5F7Mii7nFqekZL8UJNAis6m4NT4w8svWTiy
+	 U0pLqXAedD8dsQ8XfqXp/4KRAUhN1nMU+908XRpU=
+Date: Sun, 17 Mar 2019 11:48:46 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services:
+ bcm2835-camera: avoid multiple assignments
+Message-ID: <20190317104846.GE16257@kroah.com>
+References: <1552728839-7072-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1552728839-7072-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Fix the comment style of SPDX license identifier based on header file
-type.
+On Sat, Mar 16, 2019 at 03:03:59PM +0530, Payal Kshirsagar wrote:
+> To avoid style issues, avoid multiple assignments.
+> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/vt6655/baseband.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+You need a blank line before the signed-off-by line for this to work
+properly.
 
-diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
-index 30d9e9d20a39..0cc2e07829c5 100644
---- a/drivers/staging/vt6655/baseband.h
-+++ b/drivers/staging/vt6655/baseband.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0+
-+/* SPDX-License-Identifier: GPL-2.0+ */
- /*
-  * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
-  * All rights reserved.
--- 
-2.17.1
+> ---
+>  .../staging/vc04_services/bcm2835-camera/bcm2835-camera.c    | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> index d22b928..5e5b610 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> @@ -1011,11 +1011,15 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  		/* Make a further decision on port based on resolution */
+>  		if (f->fmt.pix.width <= max_video_width &&
+>  		    f->fmt.pix.height <= max_video_height)
+> -			camera_port = port =
+> -			    &dev->component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_VIDEO];
+> +			camera_port = 
 
+Did you run your patch through checkpatch.pl after making it?  It should
+have complained about this line.
+
+thanks,
+
+greg k-h
 
