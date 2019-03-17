@@ -1,95 +1,94 @@
-X-GM-THRID: 6881201522174066688
-X-Received: by 2002:ae9:eb42:: with SMTP id b63mr7399007qkg.106.1602154579618;
-        Thu, 08 Oct 2020 03:56:19 -0700 (PDT)
+X-GM-THRID: 6668655286716203008
+X-Received: by 2002:a24:5a04:: with SMTP id v4mr7122645ita.37.1552820284648;
+        Sun, 17 Mar 2019 03:58:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:620a:f97:: with SMTP id b23ls2646799qkn.11.gmail; Thu,
- 08 Oct 2020 03:56:18 -0700 (PDT)
-X-Received: by 2002:a37:4855:: with SMTP id v82mr6998339qka.445.1602154578479;
-        Thu, 08 Oct 2020 03:56:18 -0700 (PDT)
-Received: by 2002:a37:b46:0:b029:142:7499:cf3a with SMTP id 67-20020a370b460000b02901427499cf3amsqkl;
-        Thu, 8 Oct 2020 03:48:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyxktvAAVfpaN5NmJ7MbKPdPasYZqWpDUVmyCOpwld86kzXZ68bY/cxIArgVen6jLrHhek5TyXOxg==
-X-Received: by 2002:a25:b792:: with SMTP id n18mr10122515ybh.286.1602154080001;
-        Thu, 08 Oct 2020 03:48:00 -0700 (PDT)
-X-Google-Thread-Subscription: Yes
-X-Google-Web-Client: true
-Date: Thu, 8 Oct 2020 03:47:59 -0700 (PDT)
-From: Sumera Priyadarsini <sylphrenadin@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <229618f9-397a-4985-b099-02d54aebacban@googlegroups.com>
-Subject: Outreachy Application Process
+Received: by 2002:a02:3b69:: with SMTP id i41ls4605798jaf.3.gmail; Sun, 17 Mar
+ 2019 03:58:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy2oUiAygG0OAUu6Nf2Wtm7VIWoZ8yEnTyXtsM0nKFFFHq8RYn4gTyLOg7h+eQpbNQ+M8kL
+X-Received: by 2002:a02:5ec9:: with SMTP id h192mr5168531jab.2.1552820283946;
+        Sun, 17 Mar 2019 03:58:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552820283; cv=none;
+        d=google.com; s=arc-20160816;
+        b=i9J4V0yfLSxP1Ko4mkVAx0MlpHExjxwIWTzgY+KSdjSf8J7N7pjB2uyImJBSNJ8I29
+         uBTHjAldmwt8O9AnY1VzIm+096ydak3plpjwQIBAexR0+RWxb58ohBotLAjFjD1dZb/R
+         JmcfI6bn/9KCIaA8yhRppc1k9beBVPKoHuRMOe/7DqAGJbZ/M7DbI+MapUNW/ScqzvSF
+         MehCkSV9I7+NOXVdJF37RbgJ1UMN9+4FWSpFfdtGJjZUPt4G9anSM8+0XfWsgp8akLM/
+         udoGw86Q3HykbpXMXqbAqoCRnGlhYY2JkU7lCwzY2IBJ3qde1JfDANkuzb7yEpHWsjzX
+         gFEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=PntqPUpwl5fJ9NaeRJsCXm209C9BuPfHdDq6iwBd20o=;
+        b=Hs1cW4eH+N0E8EGvvHbK4TgUTUICaJloTjYgcecHBZ2RqSwKQre2Vm+2VeutS4fVGD
+         ANOIlOqLn6LhjaxdrN4mj1ZQjw/HH7+fA+1Auj4kK0uF/QQFblNeZmtn34PVuKBdLLee
+         ZnhZ5ExO0B81wtTmh7EudibiIMRvFImtrZb/EuDII+ixPGtCZlHDoH+zwGkDUgPYU9PZ
+         Wz2zX2jjOYbcnugYim0n/GsftaD6t3DNiCEf6DmSdjGDEOJcm2DXCaa2CDPoNfH/gctn
+         2TRbT5a1qHhdfQsp047FLSQOfETOF481OcnHTOk8RFRxm2Ph69WYgQIrazsj0JhHx6R7
+         X+aQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=Xk8ZtAmY;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id f13si365939iok.3.2019.03.17.03.58.03
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 03:58:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=Xk8ZtAmY;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B956221019;
+	Sun, 17 Mar 2019 10:58:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552820283;
+	bh=+nIPrd8QW/p8JtWP8G/55XAYO5OIyNcHtKwKICm+cbY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Xk8ZtAmYFFm44Z1RXYmv4BuDg//4vtgrZjUCymxpqN6fQhtz6yIUyVaBLBVjkN7Rs
+	 ooclS9hgsCJwxNdThOTkCTRtaR6Bse8u2xcixqtYGF4YMfrFNma76cOeSZ5+jRxdlR
+	 b3Y/BvaGzHpyXGuUSTwnIDiyfoW4+HdbKnSvTVxc=
+Date: Sun, 17 Mar 2019 11:58:00 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: rtlwifi: remove unnecessary statement
+Message-ID: <20190317105800.GA27187@kroah.com>
+References: <20190315162808.10646-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_582_115178894.1602154079615"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190315162808.10646-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-------=_Part_582_115178894.1602154079615
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_583_1129101968.1602154079615"
+On Fri, Mar 15, 2019 at 04:28:08PM +0000, Jules Irenge wrote:
+> Remove unnecessary assignment statement
+>  and variable before return from function.
+> Issue suggested by Coccinelle using ret.cocci.
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/rtlwifi/phydm/phydm_rainfo.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
+> index ed740a93c8b6..c9837fbde54d 100644
+> --- a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
+> +++ b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
+> @@ -926,8 +926,7 @@ void odm_refresh_basic_rate_mask(void *dm_void) {}
+>  
+>  u8 phydm_rate_order_compute(void *dm_void, u8 rate_idx)
+>  {
+> -	u8 rate_order = 0;
+> -
+> +	
 
-------=_Part_583_1129101968.1602154079615
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+No need to keep a blank line here, and you have trailing whitespace,
+which checkpatch.pl should have told you about :(
 
+thanks,
 
-Hi,
-
-Greetings of the day!
-
-I am Sumera Priyadarsini, and have recently completed my undergrad. I would 
-like to apply to a Linux Kernel Project under Outreachy.  I have a few 
-doubts though, before I get started.
-
-It is mentioned that all interns need to submit ten Staging driver cleanup 
-patches and record them before moving on to project specific tasks. Over 
-the last year, I have contributed a few patches(outside an Outreachy 
-application), both to the Staging driver and  more recently as part of my 
-Community Bridge Internship- Make Refurbish Coccicheck.
-
-My patches can be found at the following links:
-
-1. 
-https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing&qt=author&q=sumera
-2.  https://systeme.lip6.fr/pipermail/cocci/2020-August/author.html
-3. https://systeme.lip6.fr/pipermail/cocci/2020-September/author.html
-4. https://systeme.lip6.fr/pipermail/cocci/2020-October/author.html
-
-Please let me know if I can move ahead with project specific tasks or 
-should I first make more cleanup contributions to the Staging driver.
-
-I am also  a tad confused about the Internship Tasks section in the 
-Outreachy projects. Are these tasks that are to be accomplished as part of 
-the internship after one is selected, or are these the project specific 
-tasks required to be done during the application period?
-
-Warm regards,
-Sumera 
-
-------=_Part_583_1129101968.1602154079615
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<br><div>Hi,</div><div><br></div><div>Greetings of the day!<br></div><br><d=
-iv>I am Sumera Priyadarsini, and have recently completed my undergrad. I wo=
-uld like to apply to a Linux Kernel Project under Outreachy.&nbsp; I have a=
- few doubts though, before I get started.<br><br>It is mentioned that all i=
-nterns need to submit ten Staging driver cleanup patches and record them be=
-fore moving on to project specific tasks. Over the last year, I have contri=
-buted a few patches(outside an Outreachy application), both to the Staging =
-driver and&nbsp; more recently as part of my Community Bridge Internship- M=
-ake Refurbish Coccicheck.<br><br>My patches can be found at the following l=
-inks:<br></div><div><br></div><div>1. https://git.kernel.org/pub/scm/linux/=
-kernel/git/gregkh/staging.git/log/?h=3Dstaging-testing&amp;qt=3Dauthor&amp;=
-q=3Dsumera</div><div>2.&nbsp; https://systeme.lip6.fr/pipermail/cocci/2020-=
-August/author.html</div><div>3. https://systeme.lip6.fr/pipermail/cocci/202=
-0-September/author.html</div><div>4. https://systeme.lip6.fr/pipermail/cocc=
-i/2020-October/author.html</div><div><br></div><div>Please let me know if I=
- can move ahead with project specific tasks or should I first make more cle=
-anup contributions to the Staging driver.<br><br>I am also&nbsp; a tad conf=
-used about the Internship Tasks section in the Outreachy projects. Are thes=
-e tasks that are to be accomplished as part of the internship after one is =
-selected, or are these the project specific tasks required to be done durin=
-g the application period?<br><br>Warm regards,<br>Sumera <br></div>
-------=_Part_583_1129101968.1602154079615--
-
-------=_Part_582_115178894.1602154079615--
+greg k-h
 
