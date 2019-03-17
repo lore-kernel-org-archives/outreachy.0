@@ -1,106 +1,87 @@
-X-GM-THRID: 6669620815232761856
-X-Received: by 2002:a0c:b91c:: with SMTP id u28mr8376649qvf.45.1552892107566;
-        Sun, 17 Mar 2019 23:55:07 -0700 (PDT)
+X-GM-THRID: 6669265984427130880
+X-Received: by 2002:a17:902:5c5:: with SMTP id f63mr3984647plf.108.1552819465035;
+        Sun, 17 Mar 2019 03:44:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:aa9d:: with SMTP id f29ls6296796qvb.4.gmail; Sun, 17 Mar
- 2019 23:55:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzcPy7xJw6jNMetrk2Lo1AdcMLXk44sSYZ0cfSLB1bcbJY3rsNLlA6mAYXOcedABQyAnEbc
-X-Received: by 2002:a0c:c685:: with SMTP id d5mr8879668qvj.17.1552892106929;
-        Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552892106; cv=none;
+Received: by 2002:a65:5081:: with SMTP id r1ls5281890pgp.9.gmail; Sun, 17 Mar
+ 2019 03:44:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqygs5PaXs0RtG7LFxQbSQkDR6GB2n1GdeunGnvNsLClgzI21ykFhL9PckhP7TJgC4mPZdZ5
+X-Received: by 2002:a63:5955:: with SMTP id j21mr4741146pgm.128.1552819464322;
+        Sun, 17 Mar 2019 03:44:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552819464; cv=none;
         d=google.com; s=arc-20160816;
-        b=PmyZXqjPdhHiW0Bm9Moi+2MIAcdw/0V6JlKYbofnyD/svGYFUJMHUb062krI4ld9ru
-         H6ipGIANZYAfCirRomSEgncqdGLovw2AZ8ibcPnjwfkUlYjuzAIa8Bms205FyoIyh/Aj
-         AQ2JLBp8FfhgohWUm7ni7+WkH7SoEc1WTmZWUAgzHYCQY/ScYWGkL5ZOZYIVBe2WPiBZ
-         vBJ+3pADzHCv06aMEji7OVfv1RbC84Lfn0B+HoLTUApoIpi/b8npf0Tyghu4YS6DBrGh
-         0xOa/Pvp2DeCRujjP1nUcpCOwp3OFaKxFeC6hFv5KNG1xpHbtqK13FsZG0SxDXNibetC
-         x7sA==
+        b=PDmcJCsE9FwrqRat0RqPJJIcBxSL10XqrSYkgt+Ua3yi3TYbKOtqIpEYy6GRukk4C+
+         Ks2ZDMsNCGvhstz5PwNLJ17B761unjPiuXXlkOtqZxBJ7oVNbfDtZubR3EacRCRsS+OA
+         c/YiJrHqDf+fWRliw+TKJrQUniIusrCVjVaNlTbjuZI8PKnaa6e9WTyKnWVnUOIMpG8X
+         ZmQRuhdqllLyxK4Vry99/7HN6RCE2qpq/M0Ypv9S9ovE19npcW1QFVuyk6DrDy4Z8wTp
+         yJuYwxt21s/GpIXWiM4ZJfAcnbA8luK8sH6wVZF0zB7TDalyIBrAtSbecbu81svjjgE+
+         9gHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QEKzwJMC4V5vgfbh2EJZTJwyyYoUkNjXfXNitqpLmGE=;
-        b=ctSa3cgwV6CQOC7KCNGj4iSS7GX2YHJeBsj/fJMLXGdpf64Cl3YuFY1dn8fnJLWgBQ
-         IoSYwCo5qq41OdOqzPhNEfcSZxqJgoIBRUM2bWUIYd6EqU+PQkvcZU9L5r2YcIXqhpCB
-         4ubre0cvrYHw8/+8Cp29yITTGBh8IpNOqi0/yZ3mv6C4htFITWTOjI8VSLXqlmLkQYhn
-         ecO7ygewtH+WesLP40P3cbi7/L9a866DTCVFr2ZZTmMxjXHTm2YZhfFx9yEsYjMss8Pj
-         /FRcYs8/0P+HlZK+pM2h+bEqAN+44U6Xfm1D0XsXiw06BGm6dfRoGFYQ2BS2Tsyr8sJR
-         6w2g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=FUK277jH79ZfJfwXHeEQfGihy+Flh44lall6Ji2E7Do=;
+        b=JzVja0syJLDUsmWmNMuVgNNpgoUkq0BEI/YthvD/3yMruQhinTJ+AYpM1BgZBa9Q49
+         3BzgEUx55WTAz8YBQWZ2onw77+rhkdEefpoz7OFPNBX87dh5YuTEbHXGwj+pY9VIJEVd
+         yYhozPVRQlZLVucB39EOFUGXfJ797Q7na+ruUl0mwTCpKd4K3r8MyqmXNdU6HLk9U7Ul
+         YhTNRUGjVPDK5yjmn8gCfaSEa0v0+wyf8aEIvdPvnE9dRzYHZiOSIqrT6cd2jxLgMo1L
+         WbmL/DU3DOZJ8HeCVi9eUpbkU6HcBIERw9UuzOYt8twz6edGgnD1UolCkM0UadiCNWdw
+         AjDw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jPuSWL+W;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x52d.google.com (mail-pg1-x52d.google.com. [2607:f8b0:4864:20::52d])
-        by gmr-mx.google.com with ESMTPS id m1si508290qtc.2.2019.03.17.23.55.06
+       dkim=pass header.i=@kernel.org header.s=default header.b="rY/2BdHJ";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id d62si292245pgc.5.2019.03.17.03.44.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) client-ip=2607:f8b0:4864:20::52d;
+        Sun, 17 Mar 2019 03:44:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jPuSWL+W;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52d.google.com with SMTP id a22so10701144pgg.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=QEKzwJMC4V5vgfbh2EJZTJwyyYoUkNjXfXNitqpLmGE=;
-        b=jPuSWL+WPGLCVZ0LCqQ3DUy6+U3bLZvptnVj/y2fCHrb8ucnfNbVq0wXCQVLJ/Hwz1
-         pxZhU3MS4qdT9b6zc78q9arl2vbEe1EgGRve+sCwEC59IICjlxsJKinn+57i9QKHrZXl
-         TTXp665zVxo5dFrm9IRiyMCWf/Gpo2yM1SCFZlu4to8WWC9TdMkPS33UdOSEZ/AQKYqE
-         acLWt7nu93vkyLPXHf1KgAXCiusQ4VfDOwwyXdCr1oWmeRoCYvyLWRre3uawezgwYXMp
-         haxZfRtN1BJxq/f3qBTblnoNQhSSAP7HmDE0A/Ug9Lx/h+ofD6e9PGGLcZ8PHga8WeN/
-         MXYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=QEKzwJMC4V5vgfbh2EJZTJwyyYoUkNjXfXNitqpLmGE=;
-        b=CipAXsxauNZacdCQ0ZwW3Y0U6XMZ9xYA56Jl4tn19u4zQEQV+mY7eEaohGaNEFOOJA
-         BY58vhedNKVxscr2Qlchlu5g9T3kvNsOzw57cKXDbgOmNsktT7Zlv8yp4UarjvDjJo9o
-         VkrYwyO6zQLbn2wNH7oN0Dheo+GMJtk9Ywj6yhBk+BFixLSMdHin1Lb+IPjXCxEoMatq
-         Cglifb0mv8p8J/8G8DuSc7NXmp3zt9xipzaeiwdjDwRFK6ERmQvU0/G8KfL9pTDK/Ics
-         OB5F4b4QNNLY/StGZ08NTES5ZmtQM6MKdoTsVSLBSuZkd4hmOE5fQDMMWUa3DYTyLr0I
-         15Vw==
-X-Gm-Message-State: APjAAAVQ/lZ+JWOy8g9z67ADbq5zszM0Wxfy/W6PAqF8NxDE+HwMDVOL
-	aerOU+qPSSWV9YK0DWZuuuq5CSKo
-X-Received: by 2002:a17:902:403:: with SMTP id 3mr18447432ple.48.1552892106299;
-        Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.100.132])
-        by smtp.gmail.com with ESMTPSA id n65sm3288812pfb.160.2019.03.17.23.55.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 17 Mar 2019 23:55:05 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: greybus: give comment
-Date: Mon, 18 Mar 2019 12:24:48 +0530
-Message-Id: <1552892088-20069-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b="rY/2BdHJ";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 8A1AA2085A;
+	Sun, 17 Mar 2019 10:44:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552819464;
+	bh=vatU34bgkFRk528lJsVnkIzmo9gBWA3LU2QlaKSNmwI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rY/2BdHJ5HyyOqzdcHqRE6FWJwrkVQE3tjhuWG9O6kcJHVXKqolDTwJ6P46ev7fWN
+	 pOvEzQpcd+dJxZ0q4J+IvcyGESEZyf/IhUXm966aSZw/MkzGyCLS5hQxWs0kozIGJz
+	 L4JkycdRL5C2H8AgwGXqe7tXAPPqtM7LgdvobvzQ=
+Date: Sun, 17 Mar 2019 11:44:20 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Cc: Outreachy <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtlwifi: Remove unnecessary
+ statement.
+Message-ID: <20190317104420.GB16257@kroah.com>
+References: <1552809479-10739-1-git-send-email-digholebhagyashri@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1552809479-10739-1-git-send-email-digholebhagyashri@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Comment given to struct mutex lock; in file named as
-drivers/staging/greybus/audio_codec.h at line no. 75
-This object is being used in audio_codec.c,audio_topology.c files.
+On Sun, Mar 17, 2019 at 01:27:59PM +0530, Bhagyashri Dighole wrote:
+> Remove unnecessary conditional statement.
+> Detected by Coccinelle semantic patch cond_no_effect.cocci.
+> 
+> Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+> ---
+>  drivers/staging/comedi/drivers/das1800.c            |  8 --------
+>  drivers/staging/rtl8723bs/core/rtw_cmd.c            |  4 ----
+>  drivers/staging/rtl8723bs/core/rtw_mlme.c           |  6 ------
+>  drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c     | 12 ------------
+>  drivers/staging/rtl8723bs/hal/hal_btcoex.c          |  2 --
+>  drivers/staging/rtl8723bs/hal/odm_DIG.c             |  3 ---
+>  drivers/staging/rtl8723bs/hal/sdio_halinit.c        |  5 -----
+>  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c      |  2 --
+>  drivers/staging/rtlwifi/btcoexist/halbtc8822b1ant.c |  3 ---
+>  drivers/staging/rtlwifi/btcoexist/halbtc8822b2ant.c |  6 ------
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/greybus/audio_codec.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
-index 9ba09ea..31e857f 100644
---- a/drivers/staging/greybus/audio_codec.h
-+++ b/drivers/staging/greybus/audio_codec.h
-@@ -72,7 +72,7 @@ struct gbaudio_codec_info {
- 	struct list_head module_list;
- 	/* to maintain runtime stream params for each DAI */
- 	struct list_head dai_list;
--	struct mutex lock;
-+	struct mutex lock; /* protect critical section for audio gb */
- };
- 
- struct gbaudio_widget {
--- 
-2.7.4
+You changed a lot more than just the rtlwifi driver here in this single
+patch :(
 
 
