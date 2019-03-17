@@ -1,123 +1,225 @@
-X-GM-THRID: 6670962205822812160
-X-Received: by 2002:a37:4f95:: with SMTP id d143mr4668504qkb.253.1553204424288;
-        Thu, 21 Mar 2019 14:40:24 -0700 (PDT)
+X-GM-THRID: 6669430672000548864
+X-Received: by 2002:aa7:83cd:: with SMTP id j13mr3838925pfn.133.1552847836236;
+        Sun, 17 Mar 2019 11:37:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:24ef:: with SMTP id t44ls3218746qtt.4.gmail; Thu, 21 Mar
- 2019 14:40:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwnE1aSNSk5A+sY2Kr7aETYc17i9ry1RAgUy8jTwzXVHcAAcOipIpVG8PqOzcCj0XLLRsM9
-X-Received: by 2002:ac8:308a:: with SMTP id v10mr5176332qta.185.1553204423689;
-        Thu, 21 Mar 2019 14:40:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553204423; cv=none;
+Received: by 2002:a65:430a:: with SMTP id j10ls5540498pgq.0.gmail; Sun, 17 Mar
+ 2019 11:37:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqypUv0WFkl2cIwne6zaef8KiKfhxleSRkeayOm1hWgpA9pOmb3foTVi3j1GHpbYTk3drW24
+X-Received: by 2002:a63:d04a:: with SMTP id s10mr5410445pgi.141.1552847835407;
+        Sun, 17 Mar 2019 11:37:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552847835; cv=none;
         d=google.com; s=arc-20160816;
-        b=mrKM6JAY9NH82IoIyUkXb4dQ2UtLqY+Mc4GnyhE+WanfwvYM6bAoTIRpKaZEGA/TmA
-         bjm+Z+7fwLHnCYx5nlC9GeY44s2QeWgTGCXXFYuPupSL/PsqWZbaq0ejLwa+tInf4ouW
-         gV4TO0s7izPKWdZy+D1IT99Wl9Z+zuxvLBGmQ8BJhIfiBKmfRWUiK9Jtx9dxbKgxa+hp
-         8qgaCs4qWqK5T4lKMwl4BY3YUljPs9xk5z+VbcsV+fhaYFjVVmxEOik5oF0SEiwdB+rg
-         MiVgdqJNUU2tJBk6dwWv3QRbhCVg9hr2cinv++ZwOVz0+ibu8k96otzKx9Wr3CJYRPs8
-         WJGQ==
+        b=LiSPFNcpqkqaGv+/tVxvlocIw/biEahkYWvNVurEG2dew5U5S/2mpHXIuIf9LGEpAX
+         +UkThOTJa35TvdNeuwEc+N9MlIpeOqxXRDKBufyHOKIvRRAIrBYTBfuDt6T83+TZKi9E
+         63uC66t66Bk7zxouI53Bs7Bn+/IrXxgqKWd0XlCnwqCSxdA1wEyBDUhztSMbWyqfCC75
+         rCuREmt7a4DSIklHAtR2EDxDwHdhZ+IK97gvrB061NPrjyST6iIz6LUz9olBjNP22iaI
+         1+4nT80H1DIz3YHUBPrXzlx3Rt+GjfPSh6pp8FsEzFtAX8nLs6pGYUXwQXj/0hTThlLD
+         6Ytw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/p99o4I8o9gJHtJ1lvo9sXZ9fVmLMyZG770TKcug/rY=;
-        b=NQc/hncSNxQPxESRtcVIFUuSpbaptKandYMXVH5L3j07MsCVqXcAdNYWgHSepGqWik
-         JArPvDQkjwwF1u72sqFLp+LuugVQVY+KbCZ5VbwOc3niY8iOdadywH5GaRJvrvGgSQVr
-         3cYnwRFSXKDRgeDPxJxuMSYPfCjWNa9FNYmlrM2qLvBdiXN4G/lDjZBDSUHNCNSZqI+t
-         eQPj2Hh39NBVrSiZHpRV9rF3aFZIXyRrukU2tB6AWXXWMHFFG7JYiYNQpeW0X81cip6S
-         Xd6sBqdWcWIOLwGu5QwpEYU+2GCVb6gJl/z0zCZHzDwXM1Xr4itroUaDh63YC9J7nI1T
-         gQNA==
+        bh=mjIG3pTIBD6h3ratgw5I0v5TmM+IReN/YrWBQEgoNj4=;
+        b=n99UEzCsPwa9jrexHTFTcSNQJIWdMbXmNcx5633oJn+unG+fzf/GZHE2JR6s/qTGy5
+         gQvwviZIptIHyexWS/zY7t5M7dg58ZId2y5zS68hF+KGJ7GiAxqETWMdWAN47tJTnSg5
+         bxnKLj/QVCwoO0gb1bfB5fytwR3S4Sah/7j5rFbFato8pMY0x6tXAkHtS47qmazny7A5
+         IkRmuuGmP25YV76aYpP7MOIfwLuyn47ADTiZRcXeR5CyQ7QNtStGW9XFnRTqeT1mDKAu
+         S1gOA73gQS3FROup+d/2jiJYrBBX9nPA0uMJP3d5Od38My3HcKFpGoy9L/kCYuRkLppz
+         gVmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=usACwYAL;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fxGgLLB7;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com. [2607:f8b0:4864:20::42b])
-        by gmr-mx.google.com with ESMTPS id t17si588539qtq.0.2019.03.21.14.40.23
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id d62si325219pgc.5.2019.03.17.11.37.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 14:40:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) client-ip=2607:f8b0:4864:20::42b;
+        Sun, 17 Mar 2019 11:37:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=usACwYAL;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fxGgLLB7;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42b.google.com with SMTP id 10so2469pfo.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 14:40:23 -0700 (PDT)
+Received: by mail-pf1-x442.google.com with SMTP id v64so9709702pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 11:37:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=/p99o4I8o9gJHtJ1lvo9sXZ9fVmLMyZG770TKcug/rY=;
-        b=usACwYALlzeH2tcTHUxX7D7isE5s9TKAabdYEWiJT54EeUant1PeUCNT8n/oBRwLnc
-         c2RGrEUqy4xeQZClMcR7RKrfRcD6W3N2kbC5m5teld2QnGZybLt/UKHqvqqlLkXWJSNh
-         W44zdfaLQXfmjgbtsZWu68dKu8+luXWxGw3wTvEN6SbLmLCPJuSsaIERVT+XUU4uIJAe
-         PrG1DX6M14+FCisKdDWbD3OhC3Mc1ZewqUuyF/MhqXSQkqb8yemLn5EOX7aFhrPIYT6X
-         f73ttgD9Y37aZM37FCAbuvjy+vC8erOXYhZUyVwkPAb2hFBNieNnP76r43oQXk0c/o70
-         XI5w==
+        bh=mjIG3pTIBD6h3ratgw5I0v5TmM+IReN/YrWBQEgoNj4=;
+        b=fxGgLLB7U3JKxI3UCaiCb5SHUkAODz6NVnliDDro3U313pcrXMMNzNBVRf3GCVXvOl
+         qjQaK75/PX9FPgwLei3uz3fb38TeXy5QirrrNsweRm7AYwuK9lcHCY/p1NAU1aqEQn4A
+         MYILLWIlv2r4EXxeiUPxwEmMdIUAx6mrN34g97OiLJRe+0qc7Bftax5R4P1In0S9v5Mr
+         qHoZebVr8AZtUUzcb/ZCEP1yo4ZIgvQj9NK2DNLFcpRyWPfJukw9Xb6sb9+1YQ45setU
+         y5DEpwjzC219wNtoCqb8ZqUOT1XsMMoCmxedPEhrL9MD1VTYJJYtffe5ucPuUKrXK2ce
+         8ePg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/p99o4I8o9gJHtJ1lvo9sXZ9fVmLMyZG770TKcug/rY=;
-        b=L+gi70uhmD8fxAZpd/+szrnmyhkYD9rUwB6vmvm3yI6P5joy0srlQft09Nq9JUra/2
-         TBeV4Brh1iUks+i/goSvVNwl8N63rmEXJKzkFQirrqX0675dqOi+g5Rwrl17KwekXaDB
-         NIoHFxEsNkIvv/UtR2oQTWSrqCg2YSyzLoZfmhrMUbYeBlcJuMSY1LSlrs1k1oP+P/G+
-         u9qbscD0yorB9ytixgiDzzEEIgdVSjYpynxK2YcspRsjlONpXN0LF3nyBrX3kHOWkC88
-         LFSYP+XfYY7RJZUqlRwWTlNPQR3eiZl3Sb/l8HkBLTmvvwLjOewsSZo0oFTMEohGlKDr
-         iiBQ==
-X-Gm-Message-State: APjAAAVwc2YwCoh/Va7rjO5HJmbqITe/gkZX/cN0Bf0iatCiHjkFl5GZ
-	mIwy4SdkhlfC19TtohSkjZtPHKxGPDs=
-X-Received: by 2002:a17:902:6b81:: with SMTP id p1mr5918277plk.106.1553204423214;
-        Thu, 21 Mar 2019 14:40:23 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.5])
-        by smtp.gmail.com with ESMTPSA id k17sm3239302pfi.2.2019.03.21.14.40.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 14:40:22 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
+        bh=mjIG3pTIBD6h3ratgw5I0v5TmM+IReN/YrWBQEgoNj4=;
+        b=DvcYa+VezEKviK89StLTrbMxMXGB15ILmXbteCQ6Huke0cU0ZwpxNHx69IHFCl5xA1
+         1ZPRt1IAZg3rkzfRh1nVzDntAUrnHqQcvTr+4KnZApEYi8EZQfAMMZGu3lJoRy3tmFVX
+         bMCUZcMnEAtipve9DCprM83IsZswcDDttoBz9rT6IuUIfuBPnEeYBUAxIzzJOj8GjAhu
+         zfN9c1OdiGcvCNPjAQ5znlPv1K/DyH5jyzL6BLkNwQdzidNKTRKdPYw3Di8BO/xUrVab
+         q1ceupuU6EkIqlwCdhtMv5p+LADeiIPYuF95GGfbppWMeaoO3Yv89nIuWUbGzLTe2oHF
+         0qwg==
+X-Gm-Message-State: APjAAAU3GZseKgBDYrvdRtQoPtsGbgLWjzLsDu7h28jjdlGVvO3R4Q7k
+	Tvd0Wk3ZNsffCmFk/n9BRFfOG7cH
+X-Received: by 2002:a17:902:45a5:: with SMTP id n34mr15986282pld.127.1552847834794;
+        Sun, 17 Mar 2019 11:37:14 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.84.34])
+        by smtp.gmail.com with ESMTPSA id b15sm13744338pfj.167.2019.03.17.11.37.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 17 Mar 2019 11:37:14 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH 2/3] staging: vt6655: Add spaces around operator
-Date: Fri, 22 Mar 2019 03:10:05 +0530
-Message-Id: <20190321214005.15907-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: greybus: remove extern prototypes
+Date: Mon, 18 Mar 2019 00:06:55 +0530
+Message-Id: <1552847815-14090-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Add spaces around '-' operator to get rid of checkpatch warning.
+Functions are implicitly declared with "extern". The compiler doesn't
+need it.  extern removed from drivers/staging/greybus/audio_codec.h
+file.
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/vt6655/rf.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/greybus/audio_codec.h | 122 +++++++++++++++++-----------------
+ 1 file changed, 61 insertions(+), 61 deletions(-)
 
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 8d1caa4b19e8..6b8a69df509d 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -702,9 +702,9 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
- 		for (ii = 0; ii < CB_AL2230_INIT_SEQ; ii++)
- 			MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230InitTable[ii]);
+diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
+index d36f8cd..9ba09ea 100644
+--- a/drivers/staging/greybus/audio_codec.h
++++ b/drivers/staging/greybus/audio_codec.h
+@@ -173,66 +173,66 @@ int gbaudio_register_module(struct gbaudio_module_info *module);
+ void gbaudio_unregister_module(struct gbaudio_module_info *module);
  
--		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230ChannelTable0[uChannel-1]);
-+		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230ChannelTable0[uChannel - 1]);
- 		ii++;
--		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230ChannelTable1[uChannel-1]);
-+		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230ChannelTable1[uChannel - 1]);
- 		break;
+ /* protocol related */
+-extern int gb_audio_gb_get_topology(struct gb_connection *connection,
+-				    struct gb_audio_topology **topology);
+-extern int gb_audio_gb_get_control(struct gb_connection *connection,
+-				   u8 control_id, u8 index,
+-				   struct gb_audio_ctl_elem_value *value);
+-extern int gb_audio_gb_set_control(struct gb_connection *connection,
+-				   u8 control_id, u8 index,
+-				   struct gb_audio_ctl_elem_value *value);
+-extern int gb_audio_gb_enable_widget(struct gb_connection *connection,
+-				     u8 widget_id);
+-extern int gb_audio_gb_disable_widget(struct gb_connection *connection,
+-				      u8 widget_id);
+-extern int gb_audio_gb_get_pcm(struct gb_connection *connection,
+-			       u16 data_cport, u32 *format,
+-			       u32 *rate, u8 *channels,
+-			       u8 *sig_bits);
+-extern int gb_audio_gb_set_pcm(struct gb_connection *connection,
+-			       u16 data_cport, u32 format,
+-			       u32 rate, u8 channels,
+-			       u8 sig_bits);
+-extern int gb_audio_gb_set_tx_data_size(struct gb_connection *connection,
+-					u16 data_cport, u16 size);
+-extern int gb_audio_gb_activate_tx(struct gb_connection *connection,
+-				   u16 data_cport);
+-extern int gb_audio_gb_deactivate_tx(struct gb_connection *connection,
+-				     u16 data_cport);
+-extern int gb_audio_gb_set_rx_data_size(struct gb_connection *connection,
+-					u16 data_cport, u16 size);
+-extern int gb_audio_gb_activate_rx(struct gb_connection *connection,
+-				   u16 data_cport);
+-extern int gb_audio_gb_deactivate_rx(struct gb_connection *connection,
+-				     u16 data_cport);
+-extern int gb_audio_apbridgea_set_config(struct gb_connection *connection,
+-					 __u16 i2s_port, __u32 format,
+-					 __u32 rate, __u32 mclk_freq);
+-extern int gb_audio_apbridgea_register_cport(struct gb_connection *connection,
+-					     __u16 i2s_port, __u16 cportid,
+-					     __u8 direction);
+-extern int gb_audio_apbridgea_unregister_cport(struct gb_connection *connection,
+-					       __u16 i2s_port, __u16 cportid,
+-					       __u8 direction);
+-extern int gb_audio_apbridgea_set_tx_data_size(struct gb_connection *connection,
+-					       __u16 i2s_port, __u16 size);
+-extern int gb_audio_apbridgea_prepare_tx(struct gb_connection *connection,
+-					 __u16 i2s_port);
+-extern int gb_audio_apbridgea_start_tx(struct gb_connection *connection,
+-				       __u16 i2s_port, __u64 timestamp);
+-extern int gb_audio_apbridgea_stop_tx(struct gb_connection *connection,
+-				      __u16 i2s_port);
+-extern int gb_audio_apbridgea_shutdown_tx(struct gb_connection *connection,
+-					  __u16 i2s_port);
+-extern int gb_audio_apbridgea_set_rx_data_size(struct gb_connection *connection,
+-					       __u16 i2s_port, __u16 size);
+-extern int gb_audio_apbridgea_prepare_rx(struct gb_connection *connection,
+-					 __u16 i2s_port);
+-extern int gb_audio_apbridgea_start_rx(struct gb_connection *connection,
+-				       __u16 i2s_port);
+-extern int gb_audio_apbridgea_stop_rx(struct gb_connection *connection,
+-				      __u16 i2s_port);
+-extern int gb_audio_apbridgea_shutdown_rx(struct gb_connection *connection,
+-					  __u16 i2s_port);
++int gb_audio_gb_get_topology(struct gb_connection *connection,
++			     struct gb_audio_topology **topology);
++int gb_audio_gb_get_control(struct gb_connection *connection,
++			    u8 control_id, u8 index,
++			    struct gb_audio_ctl_elem_value *value);
++int gb_audio_gb_set_control(struct gb_connection *connection,
++			    u8 control_id, u8 index,
++			    struct gb_audio_ctl_elem_value *value);
++int gb_audio_gb_enable_widget(struct gb_connection *connection,
++			      u8 widget_id);
++int gb_audio_gb_disable_widget(struct gb_connection *connection,
++			       u8 widget_id);
++int gb_audio_gb_get_pcm(struct gb_connection *connection,
++			u16 data_cport, u32 *format,
++			u32 *rate, u8 *channels,
++			u8 *sig_bits);
++int gb_audio_gb_set_pcm(struct gb_connection *connection,
++			u16 data_cport, u32 format,
++			u32 rate, u8 channels,
++			u8 sig_bits);
++int gb_audio_gb_set_tx_data_size(struct gb_connection *connection,
++				 u16 data_cport, u16 size);
++int gb_audio_gb_activate_tx(struct gb_connection *connection,
++			    u16 data_cport);
++int gb_audio_gb_deactivate_tx(struct gb_connection *connection,
++			      u16 data_cport);
++int gb_audio_gb_set_rx_data_size(struct gb_connection *connection,
++				 u16 data_cport, u16 size);
++int gb_audio_gb_activate_rx(struct gb_connection *connection,
++			    u16 data_cport);
++int gb_audio_gb_deactivate_rx(struct gb_connection *connection,
++			      u16 data_cport);
++int gb_audio_apbridgea_set_config(struct gb_connection *connection,
++				  __u16 i2s_port, __u32 format,
++				  __u32 rate, __u32 mclk_freq);
++int gb_audio_apbridgea_register_cport(struct gb_connection *connection,
++				      __u16 i2s_port, __u16 cportid,
++				      __u8 direction);
++int gb_audio_apbridgea_unregister_cport(struct gb_connection *connection,
++					__u16 i2s_port, __u16 cportid,
++					__u8 direction);
++int gb_audio_apbridgea_set_tx_data_size(struct gb_connection *connection,
++					__u16 i2s_port, __u16 size);
++int gb_audio_apbridgea_prepare_tx(struct gb_connection *connection,
++				  __u16 i2s_port);
++int gb_audio_apbridgea_start_tx(struct gb_connection *connection,
++				__u16 i2s_port, __u64 timestamp);
++int gb_audio_apbridgea_stop_tx(struct gb_connection *connection,
++			       __u16 i2s_port);
++int gb_audio_apbridgea_shutdown_tx(struct gb_connection *connection,
++				   __u16 i2s_port);
++int gb_audio_apbridgea_set_rx_data_size(struct gb_connection *connection,
++					__u16 i2s_port, __u16 size);
++int gb_audio_apbridgea_prepare_rx(struct gb_connection *connection,
++				  __u16 i2s_port);
++int gb_audio_apbridgea_start_rx(struct gb_connection *connection,
++				__u16 i2s_port);
++int gb_audio_apbridgea_stop_rx(struct gb_connection *connection,
++			       __u16 i2s_port);
++int gb_audio_apbridgea_shutdown_rx(struct gb_connection *connection,
++				   __u16 i2s_port);
  
- 		/* Need to check, PLLON need to be low for channel setting */
-@@ -723,11 +723,11 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
- 				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230InitTableAMode[ii]);
- 		}
- 
--		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable0[uChannel-1]);
-+		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable0[uChannel - 1]);
- 		ii++;
--		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable1[uChannel-1]);
-+		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable1[uChannel - 1]);
- 		ii++;
--		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable2[uChannel-1]);
-+		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable2[uChannel - 1]);
- 		break;
- 
- 	case RF_NOTHING:
+ #endif /* __LINUX_GBAUDIO_CODEC_H */
 -- 
-2.17.1
+2.7.4
 
 
