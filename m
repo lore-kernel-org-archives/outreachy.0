@@ -1,146 +1,111 @@
 X-GM-THRID: 6668974051336126464
-X-Received: by 2002:a5d:954c:: with SMTP id a12mr2548913ios.31.1552782752930;
-        Sat, 16 Mar 2019 17:32:32 -0700 (PDT)
+X-Received: by 2002:a81:3653:: with SMTP id d80mr5469579ywa.20.1552782749753;
+        Sat, 16 Mar 2019 17:32:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:7644:: with SMTP id z65ls2539348itb.4.gmail; Sat, 16 Mar
- 2019 17:32:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy8pxf4LBhLoVFvGAy3q6UN49Ho+yF2YI7lQgb4cDvI0er1MVSeqSgE14AWcshUi0r1ppmb
-X-Received: by 2002:a24:220a:: with SMTP id o10mr6516689ito.22.1552782752093;
-        Sat, 16 Mar 2019 17:32:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552782752; cv=none;
+Received: by 2002:a25:1384:: with SMTP id 126ls2674200ybt.1.gmail; Sat, 16 Mar
+ 2019 17:32:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyglLkdNC+yHPV/y9pm+3Y6Yz5qHy8tiWbsdCvxh4iYgnDGMo+QjnLImOuEz2TrLIqmkqwm
+X-Received: by 2002:a25:4250:: with SMTP id p77mr5452311yba.22.1552782748910;
+        Sat, 16 Mar 2019 17:32:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552782748; cv=none;
         d=google.com; s=arc-20160816;
-        b=tVqNzVlqb0Cv9e4r1yNxGbWKADk3Ba3qXiyjkHIewG8Wjs8/ip/CtCEv+r5SiCoIG+
-         GT9qRg9TdKJdM0ShsVLLYnsJdZtzMsOjP802RkUOaW4NV9bQMyWg3oCtyoF0VvbsGYec
-         g62PFWvZDwpzZ96yiTZmp4TBf8ehpqrniOC62VpEeCdgO1FfAhybaZQm4VcNaoEEZz41
-         SrnW7eppGdLumM3qXArmxkcvh5gISO+oi4DS/Z9uN9BVf4phiqzs8Y/tknktRhvIKdTJ
-         QNA07envKCe6xe3+rZcja+Nv6Rm75oqILkPqf5Sn/fLhhqW3ZpaJO8Nw+t/BUJ6aRBf2
-         M5TQ==
+        b=rJI1j6ItTDmhdUubtl6hNw1TtA4fJpuun7Y0b7Jbf3UkQf8ei640TwOr/bquIUuiZC
+         +Zt+noO4sCHnWQV3rdLDRh/k4OSfMLMsihDKo+d54lqH/rrJfeWPbFeIOueYbia0U9uN
+         +unArGm5fJUWyRyrqWmTd0nlchPBLRdAzUNVx8u6KqR5LnFbgUA11TDVsMroVb6RXBJ9
+         6FWhmw7NEIDmvQ4f9bdtML1sysZ3rz5q8cVzACjY7duy1apeJRHIMkUn1o1Uo7r2womW
+         SbhnIj7g8ogAd+8qBW909TZSbQgIIcC3r98PkZGOa5es8XJ/lTrbttBN/L2kAo7CEmiU
+         JsVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=xt2jlusFidDw1viZs4rsh5NORX2lhYfHkpipMjRuZKA=;
-        b=lg/Z/vltMMafWCHr0kQCXwiTdF9XTT/ByFruY7rY/+r06hQDYQHW5X8uXdf5wlzcAN
-         nAbb3gZBJq2l00TWexSxopgRVjZlMsLnGh0uBios9uZEteMDxP5FPa/Ya+sH279pOyNm
-         EFHB4Q4wdFAqBiisnzvUPJxpyoIdUIXAy4skJZvtr9cAjBXL0DMMTPLuVf5QtCS1oWyE
-         qrNR5sRVDjZ0dZoL1DJsezYy5H7rGxU39gOHoX181lwDBuFr5zHCM7VWliLA2PZQdy25
-         /pwzDE5aW6tMHVOO9aNH85lKA4HNr0TWF8p5srlGC1d1J7Di46DcrT6eJY8RVysyPo4N
-         tcAw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=uObJJXOUlU5FzUJmMpkCmr8Z8efdNm35xJCcfGqDxk8=;
+        b=sa8/MPBUmXJr+vDP54KcrQqfTzIi8W7nqkQC+sviGohImOY4k/HhTTuPh1dGWqcfOL
+         QfiMFlqzuaPYhLraxJnSgcG79jbL5kOidLnTJY8/yITM5cyUgC4NurarPOBc5fQ4ViSx
+         amMOcHdQw3G4deP3XDo4QvAyJfy058Q4iPXYJI5SVAXoToEbIr44qG0jTNYihTLR5Cha
+         +nBkvb8eWKmwcrb0mdl1Y3cj9FbYjhY09HjORDUzzXTs1Y08GLZv2H1DWN+KARSwnUtA
+         AdYGb2okAgsM/oAz7iM7TM9cF5WCa0vp3/w9CPzfAyeb/Mw2f+eR6DhnJLP2TwbO7B6K
+         FUpQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AnI5QwLZ;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="c4/2lmSr";
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id 186si436166itz.2.2019.03.16.17.32.32
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id k62si337183ybb.4.2019.03.16.17.32.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 17:32:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
+        Sat, 16 Mar 2019 17:32:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AnI5QwLZ;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="c4/2lmSr";
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x341.google.com with SMTP id c16so137010otn.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 17:32:32 -0700 (PDT)
+Received: by mail-oi1-x241.google.com with SMTP id a15so10306929oid.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 17:32:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=xt2jlusFidDw1viZs4rsh5NORX2lhYfHkpipMjRuZKA=;
-        b=AnI5QwLZj+2UWBQ6XAnbBKDb0ZcmdeYIpA+q6b14Uxd2Kuemy5FNbHk8YZwxrnnFhQ
-         fq2Z399oSNa/Lndb0tLmN7IaMtFxUsogKx8FvtNyGUwW1UVm0HZRYe36SBwe5u1O5Rvg
-         3vvWm6jr1Eiv+EfvyNvhUSCYiDhYZp5E4hPpXnu1KDG2M9K6yPMOfOW1RazuK5cXaVMf
-         UwqAeZQ/BQ6YrP8dKJOlV5t+0FqFnxuSJHhyGR2DNiTADYTjInd7tzVdzt3jNSUcLWuM
-         eCJJBW9hPnLuWnwVe7NA508TwrCpnMu9Zk3CrQo/0YAlCDuZqQ2hFj5YnA1UolmwUkQu
-         XgUw==
+        h=from:to:cc:subject:date:message-id;
+        bh=uObJJXOUlU5FzUJmMpkCmr8Z8efdNm35xJCcfGqDxk8=;
+        b=c4/2lmSrBpIzU96eQxfkTItY8iI1I/A7niDc76enmTN6alnUp+X4is9DarC1iTMdLA
+         QdguU6hUS6Lc1JRKiHIAw8xX6CRDv80+flRrr61m3Xon5MvTxqp7od2lRGJ9kc2fYUvA
+         GC5w3wfsPyKNNBDdUVFE83WBLKXgqdVG/bjETQXruyXizzMFus4MyRx6mmXC+oSBdfL+
+         3d6WRVRvP1cNzsdi+1tOrSg+A3TCosquv98s9eM/vrK9xLZpZN/VmgYS4wszmG30DH1K
+         JaOG2LOiZV/GyRtprPnzEAPFI19QD2oFSjUy17gyNYtfJ841K3MXQIAVOuo//fLGuz4L
+         CARw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=xt2jlusFidDw1viZs4rsh5NORX2lhYfHkpipMjRuZKA=;
-        b=cBsvSzBmuAL2BG9RVOiUcxkEUkLQJTpfVjXlHHeVFjxKN2Q05LkO2fdt97bQeMSO+z
-         4+y4x5PjRYIHUWdsnZTTw0umuFYJzvyti/YuVbA8fSA/PnzT5hWcEQj00P7reHI7Hter
-         rUAYN4D/xL5Fw+yB6QjkTHJWyLhkBzwsd2LRPFPn0AYxx9XAmIGEci8SIr1XlFo165ZX
-         KNM/3du4InLNUhQq3Va3GcAOv/pTqnajt3nLVi7dHKP97oYg2B2TZXRkTJd0AfjvSIkC
-         XtK7PNMbfTPMExpqobPJyz/gFm0NdvOs5Xfp2eQWTF3Dj5NYov04dcGShfDsI+lIaL6g
-         G6GQ==
-X-Gm-Message-State: APjAAAXPTZZLi5r0+dHEHX2gAWKzzGMDainfTS4HH855sOfiFTQ6EGqh
-	GvX7S0jDfkBcoovjuZ9FbS+VMHeX
-X-Received: by 2002:a9d:a67:: with SMTP id 94mr6219726otg.63.1552782751755;
-        Sat, 16 Mar 2019 17:32:31 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=uObJJXOUlU5FzUJmMpkCmr8Z8efdNm35xJCcfGqDxk8=;
+        b=nTNv5/QknHVFn/9nrQ7vIdAVc7k5sVwHp3rAgAKYKiCY14W3d1k1u0Rq0DL5zWfREe
+         CXqCEtRpM9BcevKH0tj5bhELNaR2Qb+4CswKVxbYcQGHB1BioypUY+cRUYX1ODfIr8ig
+         0XYV34I70E8IQelA7mqoEzWJ5TYfSUVsG9OYeTCWPxPiXMj4Y5ayunnOJICRNxB2LCmJ
+         wgB0b/F1sDRNXhvLkwViud/t/JMuoE75r7ovE+FG+ey/sFsn3wwQgXAZlT3w2PPZYZ7q
+         KggqCF5uzqpNkcRpUSEg1hpsHxd0Raz+Beaybt8VFMbI2XY4xeCSayS9ClteKI9rgPDu
+         8/dA==
+X-Gm-Message-State: APjAAAUj8V18ONniVbkTvuuMe6MHfVOTSIpb+hkQjs6u1W49AaDIslHc
+	7DSPHRzwkyzxL/TvsF2xtRw=
+X-Received: by 2002:a54:4e89:: with SMTP id c9mr2341615oiy.168.1552782748296;
+        Sat, 16 Mar 2019 17:32:28 -0700 (PDT)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo ([2605:6000:1023:606d:d12b:f32e:ef21:5bfb])
-        by smtp.gmail.com with ESMTPSA id a6sm4168579otd.23.2019.03.16.17.32.30
+        by smtp.gmail.com with ESMTPSA id n12sm2359482otl.22.2019.03.16.17.32.27
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Mar 2019 17:32:31 -0700 (PDT)
+        Sat, 16 Mar 2019 17:32:27 -0700 (PDT)
 From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH 1/7] Staging: rtl8723bs: Drop wrappers and change function names
-Date: Sat, 16 Mar 2019 19:32:18 -0500
-Message-Id: <2b464c5d0bc1e9308855a23db02c721e5cf6d3e8.1552782299.git.madhumithabiw@gmail.com>
+Subject: [PATCH 0/7] Issue suggested by Coccinelle using ret.cocci
+Date: Sat, 16 Mar 2019 19:32:17 -0500
+Message-Id: <cover.1552782299.git.madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1552782299.git.madhumithabiw@gmail.com>
-References: <cover.1552782299.git.madhumithabiw@gmail.com>
-In-Reply-To: <cover.1552782299.git.madhumithabiw@gmail.com>
-References: <cover.1552782299.git.madhumithabiw@gmail.com>
 
-- Drop wrappers rtw_init_cmd_priv and rtw_init_evt_priv,
-as their only purpose is to call other functions
-_rtw_init_cmd_priv and _rtw_init_evt_priv, respectively.
-- Change function names
+This patchset does tasks as below: 
+1) Drop wrappers and change function names
+2) Convert type of local variables and return type
+3) Change values of error codes in functions
+4) Remove unnecessary function declarations
+5) Replace error codes with values
+6) Remove extern and change return type
+7) Add missing NULL check for kmalloc
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 20 ++------------------
- 1 file changed, 2 insertions(+), 18 deletions(-)
+All these patches are relevant to an issue suggested by Coccinelle using
+ret.cocci.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 91520ca3bbad..793bc505fa9c 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -162,7 +162,7 @@ Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
- No irqsave is necessary.
- */
- 
--sint	_rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
-+sint rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- {
- 	sint res = _SUCCESS;
- 
-@@ -201,7 +201,7 @@ sint	_rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
- }
- 
- static void c2h_wk_callback(_workitem *work);
--sint _rtw_init_evt_priv(struct evt_priv *pevtpriv)
-+sint rtw_init_evt_priv(struct evt_priv *pevtpriv)
- {
- 	sint res = _SUCCESS;
- 
-@@ -295,22 +295,6 @@ struct	cmd_obj	*_rtw_dequeue_cmd(struct __queue *queue)
- 	return obj;
- }
- 
--u32 rtw_init_cmd_priv(struct cmd_priv *pcmdpriv)
--{
--	u32 res;
--
--	res = _rtw_init_cmd_priv(pcmdpriv);
--	return res;
--}
--
--u32 rtw_init_evt_priv(struct	evt_priv *pevtpriv)
--{
--	int	res;
--
--	res = _rtw_init_evt_priv(pevtpriv);
--	return res;
--}
--
- void rtw_free_evt_priv(struct	evt_priv *pevtpriv)
- {
- 	RT_TRACE(_module_rtl871x_cmd_c_, _drv_info_, ("rtw_free_evt_priv\n"));
+Madhumitha Prabakaran (7):
+  Staging: rtl8723bs: Drop wrappers and change function names
+  Staging: rtl8723bs: Convert type of local variables and return types
+  Staging: rtl8723bs: Change values of error codes in functions
+  Staging: rtl8723bs: Remove unnecessary function declarations
+  Staging: rtl8723bs: Replace error codes with values
+  Staging: rtl8723bs: Remove extern and change return type
+  Staging: rtl8723bs: Add missing NULL check for kmalloc
+
+ drivers/staging/rtl8723bs/core/rtw_cmd.c      | 30 +++++--------------
+ drivers/staging/rtl8723bs/include/cmd_osdep.h |  3 --
+ drivers/staging/rtl8723bs/include/rtw_cmd.h   |  4 +--
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c   |  4 +--
+ 4 files changed, 12 insertions(+), 29 deletions(-)
+
 -- 
 2.17.1
 
