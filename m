@@ -1,74 +1,85 @@
-X-GM-THRID: 1771791450112
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,5864b10778fbf19e,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.144.130 with SMTP id sm2mr294106lbb.9.1424523032576;
-        Sat, 21 Feb 2015 04:50:32 -0800 (PST)
+X-GM-THRID: 6669398485379317760
+X-Received: by 2002:a63:f316:: with SMTP id l22mr5160508pgh.13.1552840342498;
+        Sun, 17 Mar 2019 09:32:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.19.165 with SMTP id g5ls315651lae.68.gmail; Sat, 21 Feb
- 2015 04:50:32 -0800 (PST)
-X-Received: by 10.112.159.227 with SMTP id xf3mr288467lbb.11.1424523032115;
-        Sat, 21 Feb 2015 04:50:32 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x22f.google.com (mail-wg0-x22f.google.com. [2a00:1450:400c:c00::22f])
-        by gmr-mx.google.com with ESMTPS id ev8si289142wib.3.2015.02.21.04.50.32
+Received: by 2002:aa7:8d4b:: with SMTP id s11ls2577144pfe.8.gmail; Sun, 17 Mar
+ 2019 09:32:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxKN53wmoYFHOnbxstHNzbt0HGYHTJaSg8O6ylQU6pQ+iQsKPzJew+rm6b6qOmRHpeSnFv+
+X-Received: by 2002:aa7:804a:: with SMTP id y10mr5232104pfm.146.1552840341679;
+        Sun, 17 Mar 2019 09:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552840341; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Osi05x8MDbO26/k0au4RUbUBj/Zhv5hzWS33g/jrIrnyNatc0UBEWjllF3gwUOB3x4
+         +EESR/hYT4zFwOMopm6Dho2aC+L/PD+9naCji+P/QGy9Ep5GcLe4M9wgZfzmonz4Gjts
+         VxTSoM9KR0Pkx9MQpqriV5o2a7lrtkgR4XVc0d34HdrNU9aSsg6Cfj2NLbqYcV9a6Uiv
+         FNTJ3SqIeKHNlJ4uZrOhAr7IIs3pre4Aj8FhSAisnvIuZ2RTHUFJSKt0hyR7SfgagQBg
+         5JaO3XXBFuK9nHWsdQxxwlwHGxGjvsya28A3CEH+YKIwI1yK1WoAI/b1la2DoePkofsZ
+         K1vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=s+mwAOc7ZlXJn/MWTqaJkYgODE2w3tq2SjgBmThIcMw=;
+        b=vdQMEK9HanS4/QTj73wfBuwL9JNWmm6BaCIkmEDCEM/X5mUe3YMn0t6a54YswuVnbn
+         WBjc74Z9fgCsJD6yz6hefNwiaHs04wQS2TIR/WJJIveFRw8D3sx7wUeu4EkIM6Pwkqqq
+         GlKAouab9IduDYZCWL77XsIOyNXO9dAip1ID36Kb0dbOImiNYqH0j6lpf/nK2IVjx51P
+         m6NHCOxPyjgQvu9wqbRS+w5BkQ3DwSnUQxny+n+HdollyGDWBf3foisb8vrM0j+JutPD
+         ujJ1NB15cYxl1dh/Zyn8I493h9wvgZTYLMn6lCASA1hH9YsQW4RuguxWGVxS+KFizoBN
+         zgCQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="e/pP+Sui";
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::332 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <bhanusreemahesh@gmail.com>
+Received: from mail-ot1-x332.google.com (mail-ot1-x332.google.com. [2607:f8b0:4864:20::332])
+        by gmr-mx.google.com with ESMTPS id c12si417531pfc.2.2019.03.17.09.32.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 04:50:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) client-ip=2a00:1450:400c:c00::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 09:32:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::332 as permitted sender) client-ip=2607:f8b0:4864:20::332;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::22f as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x22f.google.com with SMTP id x12so17699334wgg.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 04:50:32 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="e/pP+Sui";
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::332 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x332.google.com with SMTP id u15so2298775otq.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 09:32:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=cExzpx+okOY+vqIbjAppgmvqi0Y8yJHfVc2RcTJMggY=;
-        b=P2xsbkzWSiwtrwKri758PG0P+fixSO30zMHXJ+U4B3pN9eOy8sokycJUoKzKRjiaZ6
-         74bMAW1o2tcG+FUJo/8cy/+GFCgkXeH9x+4hXCccpFTXa2axMdEnkCvJHeBXAK7ZJKva
-         sgnvQgB0S3FdacHxpkzTvo6qadktfBwXSSQ3OKVWIAZbhAl2lGy7n/gQ1mUaOg6R1Jzx
-         ROnXYwnA1jwYPjbCA/4g9CLm4PljzCnsY02BoFgHpbiGVF0Xk5aIyUe83O39zOk5XdbO
-         dTd0Qb6H1VwcLMFyQYmunaa1Tn6mXcbH8C1lumRnKnWG3HdyjxUylSfPZU/glSiHXt99
-         vgPg==
-X-Received: by 10.194.89.163 with SMTP id bp3mr4197707wjb.145.1424523032027;
-        Sat, 21 Feb 2015 04:50:32 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([78.187.192.150])
-        by mx.google.com with ESMTPSA id lx10sm14773247wjb.17.2015.02.21.04.50.31
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 04:50:31 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: rts5208: Add blank line
-Date: Sat, 21 Feb 2015 14:50:35 +0200
-Message-Id: <1424523035-8717-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=s+mwAOc7ZlXJn/MWTqaJkYgODE2w3tq2SjgBmThIcMw=;
+        b=e/pP+SuiSxZrYBP3it/wBRinAQ7HZea2gmg+ldiYI+2yg5DzDK80jagYQUQmC2p/H7
+         I959y18R2uAdMOH8oiixddYM3K2BEBlJCHafFm62SBllmyfyckARLckjqB4IDqsMtyio
+         wqD+vPurkTwgD63RGQ4xCmhOR31heXNwGIcBgNPNLZK4Unt2fPZF90NTPFKFtI7wSrkU
+         59Hq03uZ9JC2cTurX56eyeHmZqD2E/amfQdSzEYEAcDIK5S4G52uARVKgHTdN/9ovP3y
+         v4yl3F3+kb6szqv00Xo1VEsTs/Gl/Oy20URjgoAoBlzsZvvT5kaK8ReGqCO8oUr3/eZ5
+         jJFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=s+mwAOc7ZlXJn/MWTqaJkYgODE2w3tq2SjgBmThIcMw=;
+        b=sKGWUEZ+z9lg1UJ6qh+ZbOsnfuH4RMBXbos2J3AdBo9piw2Z3hTTC3lULdNpFO/1/6
+         KsbbskJC3J9WzcP9EIHlH8BG4ObohKwFdeVAPTC2YN7I8me4muOv//Yq3DcrMMkRJ1wZ
+         ShExS5PzPUOBUPW1GAGi6ZRsYoB4BbiDAOvqhyPgARNivpWmDCZZUYuY05RPEKhBmx+i
+         eR+XpxVLr2412S/4HbcprOIwu/JP94XVjQu3jhnUO7HQDFanW+0kr9JDiw17nvlAWt3O
+         PZIrAK14WWBIdwl82lOffSA0KDWHMuCeAZCxHT+4BcPKanBJBlO/cEJFmGVdGqPqibel
+         cI4A==
+X-Gm-Message-State: APjAAAVkZhIEyPpIr60ZdIPYKA6iRan7b6XlTIK65KWLBAuzfaZg2rNe
+	AJTzKbxF+XYWIY9cLhB4OBH4wMDyCTWMf+XOhmNKWlp4IOc=
+X-Received: by 2002:a9d:6e8e:: with SMTP id a14mr3798615otr.46.1552840340918;
+ Sun, 17 Mar 2019 09:32:20 -0700 (PDT)
+MIME-Version: 1.0
+From: Bhanusree Mahesh <bhanusreemahesh@gmail.com>
+Date: Sun, 17 Mar 2019 22:02:10 +0530
+Message-ID: <CAB0Mk-NUh5Ye6rnPygQeS8f+EG_RNbPPAzHzBpDmVh2i-TcQnQ@mail.gmail.com>
+Subject: Additional information regarding community specific questions
+To: outreachy-kernel@googlegroups.com, 
+	Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Content-Type: text/plain; charset="UTF-8"
 
-This patch fixes the checkpatch.pl warning:
-WARNING: "Missing a blank line after declarations"
+Hi Vaishali,
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/rts5208/general.c | 1 +
- 1 file changed, 1 insertion(+)
+I'm applying for outreachy projects. In the application i find
+"Community-specific Questions:" . Please let me know what needs to be
+filled here.
 
-diff --git a/drivers/staging/rts5208/general.c b/drivers/staging/rts5208/general.c
-index eada934..79d2458 100644
---- a/drivers/staging/rts5208/general.c
-+++ b/drivers/staging/rts5208/general.c
-@@ -25,6 +25,7 @@
- int bit1cnt_long(u32 data)
- {
- 	int i, cnt = 0;
-+
- 	for (i = 0; i < 32; i++) {
- 		if (data & 0x01)
- 			cnt++;
--- 
-1.8.3.2
-
+Thanks & Regards,
+Bhanusree Pola.
 
