@@ -1,119 +1,93 @@
 X-GM-THRID: 6669194328626167808
-X-Received: by 2002:a17:906:16c6:: with SMTP id t6mr1843480ejd.6.1552915278793;
-        Mon, 18 Mar 2019 06:21:18 -0700 (PDT)
+X-Received: by 2002:a0c:e591:: with SMTP id t17mr6523565qvm.3.1552817739169;
+        Sun, 17 Mar 2019 03:15:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:9107:: with SMTP id e7ls792437eda.9.gmail; Mon, 18 Mar
- 2019 06:21:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzSD/ozfVnrdFAb8kWN8pxgCHFb9yWhu4/WeK7rP/FhwMN5SLT0lBxxSL8irNnHuAw3osjJ
-X-Received: by 2002:a50:8692:: with SMTP id r18mr1275200eda.9.1552915277917;
-        Mon, 18 Mar 2019 06:21:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552915277; cv=none;
+Received: by 2002:aed:39c3:: with SMTP id m61ls6270013qte.0.gmail; Sun, 17 Mar
+ 2019 03:15:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwzrJMRL6bN4nXr6PwNARiUznV7zxkqmivR3klhsGfvaKIrbjGUHrxo88KNXJZSVZ9UpcRy
+X-Received: by 2002:ac8:1cb:: with SMTP id b11mr7418613qtg.30.1552817738600;
+        Sun, 17 Mar 2019 03:15:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552817738; cv=none;
         d=google.com; s=arc-20160816;
-        b=snSGl/lwMvPB/teEUESpajJ/Fb4k1LFzPT/vX9Os+wgkNw4k2OGke6FJQzHJOUAjVK
-         mCuTNklUX0z2Xm7aRdwvIKYwHtHQDQ0Ux/XE3viWp0+7jHB/H0MO0vfs+ufuxjEr2jmI
-         BNRyJg4Bfs8Gbq5pBEJPBIbNC5/ssQxhYcdIjCe2vP2NMSUTMCyWQYYa0K9tvAasxjdZ
-         ZcrRxut+MRfdBpjFmv+DNmrMPOR0mYNsoSqs2+Bcfv7Ca6bMW6EjE9j3wERuq0/8qhwz
-         ncQYqSqZ8csVJqKYJfOIovY/mzdUrZR6cC9721BoMpwmDzzcvuCY9+RTEdU+VcLN9VMm
-         ZIyA==
+        b=MKPJMnzldba17baiQs/19NhIqWKS+n9oZCQAKhoHoJRZ0a2AAaSy9M+kcc4QmtoNzs
+         goK1yl3W6uvMqHiptElvDWZ+rjeod5T/yjFMIYaqTxn60+O8kTooJYIC2v/P6vemHudN
+         jsbuTaKCE6y2u6iFXv/L3/cEegoGxFwPxlZ+SvpGNyI26i2ynBKZ5BR1kunNWpU7qdLN
+         PSempjiyYWfInkiS2sFeZ6BoPjXnma+SreQKxxn92vXbmo/N/54yorwG39SOrHBSIB5Q
+         YVSwMouitfF6RwS8t7YCNI/4jgaZ5l1ajqL+tEwIZijb6i6ADb9qyQfCfd+75876WdTe
+         bGvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=9dvxCYXxXyVji1QvqWxUqVGtWc2KPci3ohWTLhkvRqY=;
-        b=jRNH1oTXaS9648Dw1WtsV2f4wsV2E4Xir44T9znzY2kizkJa+s1IyeEulkk6IBXJ4z
-         UhCVT0SdCZpDOg6ZZ7YvWamjseFoB7jUhbONj9TRzQp+jKKUcmHSUFwMu3wGZ+GvLzF0
-         4GRw4K6rPdld7C1wH3aBmCs8+JdtdMIvw83whZwL7W2JsQJFJuKex7YYjdkfdo4TSHI4
-         UCTeZt35lQTlRnuVEI6norh7ymh+DoLWbx7NTZ47eSIXXdJlIbPp7I+XEG7A5eklsUhb
-         SkUwN566Szbqi34xnoLzzoiejRdWNMcNGNyw/wQ3kmsNfWgGqbHwoLLp71NriL6s+uio
-         awzw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=rryrbbcStZEaV7wWg5lvofEFL6aD2t33qRkpHUBeYck=;
+        b=UBZyqYVZwldR+QC2uaXe2stFrxLuwUcmiuqavalSWlT0lWq60NwJ1cJZygt4gym34Y
+         V0g4bGudenFjKHZQEvWerA3wCA8WO1Mv5R2ZtC9YSdHdgyx+3h8/1iNzt6iFUV2ftxo1
+         sYbNSYsKYghx8zz98NyIthWKIo8hg2mbJTKwn4/81Jze5Lawz/K+60kYDGXu/O3nunCs
+         FUIzd6CmuxNN6vU1nJ9oXJEjFqS95hUeHvfWjHDwR76NRrKyO6BCblaOhGn1T2V8HNqF
+         DHGQumz7DSsTkzsOUFulToZ4vNRZTCX1ZcR2v+07+B5Nsfbpgv8vqDjZR3OCxTp510qX
+         Ze3Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WW56d6xv;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::335 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com. [2a00:1450:4864:20::335])
-        by gmr-mx.google.com with ESMTPS id i16si438132ede.0.2019.03.18.06.21.17
+       dkim=pass header.i=@kernel.org header.s=default header.b=I6jW5csL;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id m1si396314qtc.2.2019.03.17.03.15.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 06:21:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::335 as permitted sender) client-ip=2a00:1450:4864:20::335;
+        Sun, 17 Mar 2019 03:15:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WW56d6xv;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::335 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x335.google.com with SMTP id f3so13114987wmj.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 06:21:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=9dvxCYXxXyVji1QvqWxUqVGtWc2KPci3ohWTLhkvRqY=;
-        b=WW56d6xvB9yF9dmjC09PozZ2EwiCvQvUewieQOtTs1tWjo8xgBVqEWZ/Xg4/XzGAH8
-         NoEBMAVCT7oF/KbdeBhguwvmy9geXCaxB92R638ww1JQdPW2iIBG4tZ5a8cuWta40wAd
-         DmhOA2ayKASPR+j+BZLZgDxKNNDOcvsSFjl1/EOIZupxqLmik0Zt/AqoEZhOHw98mQs1
-         XNgd5vBlErWa8E09XB3RM/xu7mCOyWX5gWgMVsb7ZFoHmuO9ACITwGmnnO2RIbOF+hdM
-         uViMXIgCDAA3GiUu25D+PcM3v8onAP8aZnhq2lUqhXvJRbfXvAWHodFc34OcuzzvLUcM
-         2BHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=9dvxCYXxXyVji1QvqWxUqVGtWc2KPci3ohWTLhkvRqY=;
-        b=TUSQ5rqghhi9VesPs6Ie/ZE9vgDGDI+WDYnq4NsNHNUIHt3atY+9hGpiyTRkl3HGva
-         V1C+fL9fxipecQgPBbR/+/3xBz+jBXcicz+DnkqP4vB54SqS5y8rx08klQyB9Vko4QLw
-         lOOPzafrynswtBlXZOlHy0Vg18zkw+BubtGcDDT6+7HkqYgWem0+V+3NvlLjbZ3hZ/PO
-         Es0a2o3mvEKAdbWtU9ACns4ROWiRO2FU9dMNT9Wwjp9SqPehQXXiF5wjoI5u8EiD9pcM
-         41n/nW022ZeYDQvZV0Nss06lbPIpUQHHRyBdo+t3swJb5907pRbhHa0sNVPJLPA3SDyO
-         YxDw==
-X-Gm-Message-State: APjAAAUR2G5uxOGxhaINiM+6o0S2Kdx+UQFIAR7mYGEjCYEa9YdUJmxb
-	GosSlVEz6iEQmwyIGyR7Jw==
-X-Received: by 2002:a7b:cb8e:: with SMTP id m14mr10355035wmi.64.1552915277596;
-        Mon, 18 Mar 2019 06:21:17 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
-        by smtp.gmail.com with ESMTPSA id p12sm6253072wrx.50.2019.03.18.06.21.16
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Mar 2019 06:21:17 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b=I6jW5csL;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 0DE9521019;
+	Sun, 17 Mar 2019 10:15:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552817737;
+	bh=/ZcFEWQdFryrW2KrNj4+2OY7l/8NG2R6OBCjfhL912Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=I6jW5csLX1IGcPkvwEwc3r56R5TWxt8FzDslWKZ2kj3kVlZ/IiI7SBSYN7C/apLnl
+	 +44L7V+cmD5rdtK0Yic5uj0AIL2qbMrvCOpAkrwQ7FbaR1uIx7Q+S8cxwbhYWdWHiT
+	 McQWRmsV+cK05CsGdR4ulvWj3npF+fpBOlGo18uY=
+Date: Sun, 17 Mar 2019 11:15:34 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: speakup: fix printk KERN_LEVEL facility level warning
-Date: Mon, 18 Mar 2019 13:21:10 +0000
-Message-Id: <20190318132110.5081-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+Subject: Re: [PATCH] staging: speakup: fix printk KERN_LEVEL facility level
+ warning
+Message-ID: <20190317101534.GB20773@kroah.com>
+References: <20190317031236.9361-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190317031236.9361-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Replace printk with pr_info to solve checkpatch.pl warning:
- " WARNING: printk() should include  KERN_<LEVEL> facility level"
+On Sun, Mar 17, 2019 at 03:12:36AM +0000, Jules Irenge wrote:
+> Replace printk with pr_debug to solve checkpatch.pl warning:
+>  " WARNING: printk() should include  KERN_<LEVEL> facility level"
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/speakup/kobjects.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+> index 11c704b27c3c..2eb5af3debb3 100644
+> --- a/drivers/staging/speakup/kobjects.c
+> +++ b/drivers/staging/speakup/kobjects.c
+> @@ -99,7 +99,7 @@ static void report_char_chartab_status(int reset, int received, int used,
+>  			snprintf(buf + (len - 1), sizeof(buf) - (len - 1),
+>  				 " with %d reject%s\n",
+>  				 rejected, rejected > 1 ? "s" : "");
+> -		printk(buf);
+> +		pr_debug(buf);
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/speakup/kobjects.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This is not correct, look at the other messages in this function for
+why this is the case.
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index f653c16eb4e5..41ae24ab5d08 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -99,7 +99,7 @@ static void report_char_chartab_status(int reset, int received, int used,
- 			snprintf(buf + (len - 1), sizeof(buf) - (len - 1),
- 				 " with %d reject%s\n",
- 				 rejected, rejected > 1 ? "s" : "");
--		printk(buf);
-+		pr_info("%s", buf);
- 	}
- }
- 
-@@ -744,7 +744,7 @@ static void report_msg_status(int reset, int received, int used,
- 			snprintf(buf + (len - 1), sizeof(buf) - (len - 1),
- 				 " with %d reject%s\n",
- 				 rejected, rejected > 1 ? "s" : "");
--		printk(buf);
-+		pr_info("%s", buf);
- 	}
- }
- 
--- 
-2.20.1
+thanks,
 
+greg k-h
 
