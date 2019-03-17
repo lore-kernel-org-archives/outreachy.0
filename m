@@ -1,131 +1,110 @@
 X-GM-THRID: 6669000631583244288
-X-Received: by 2002:ae9:ed8c:: with SMTP id c134mr6057900qkg.23.1552792429354;
-        Sat, 16 Mar 2019 20:13:49 -0700 (PDT)
+X-Received: by 2002:a24:2c48:: with SMTP id i69mr6851482iti.12.1552792427957;
+        Sat, 16 Mar 2019 20:13:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:ba29:: with SMTP id w41ls5207505qvf.6.gmail; Sat, 16 Mar
- 2019 20:13:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx11rJwDvs0cR9ObXlZgCoWepGFkTtmJFTjJcoX0BugVWIugZLorH94nI4sAmBCY05fQJrI
-X-Received: by 2002:a0c:b048:: with SMTP id l8mr6171652qvc.52.1552792428750;
-        Sat, 16 Mar 2019 20:13:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552792428; cv=none;
+Received: by 2002:a24:5a55:: with SMTP id v82ls2588771ita.0.canary-gmail; Sat,
+ 16 Mar 2019 20:13:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHSBykSgDHFoOeRM3H288+1OLEwqFT20CG/448LzmeFxdrfNTpkTJVVB+1xI2AwOdq4UGn
+X-Received: by 2002:a05:660c:68d:: with SMTP id n13mr6331929itk.24.1552792427098;
+        Sat, 16 Mar 2019 20:13:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552792427; cv=none;
         d=google.com; s=arc-20160816;
-        b=eye2gyLoqehLEIUWRP1cXEumVlmmdBiqb9gsdFj5ZpmEaDhwrVoMRgJh42Cz4ZxJt1
-         Td9S2gyiMTNsPNj3xA2FuCpBwziwK51iE0ddL6WPEMYJfq7txPo3UWVCbji9zbeXM5/3
-         xUMP3Q517IgOqBGAM3aT9xWBEVxCXbOLs88pkOf4kFz9XdNIwku8rCaSzrJe1uDv/YbR
-         Omj32ExYJm8RB41uxHDqnlMcLfSGskM3/l85CkHjb4BArw6wusobG7n4o9oG7rAZMO22
-         khFB+9GqkKrnkN8HujVkI5FhtIIYVucYr2XoZl/YN3RXwb0yG5z8T8yVF8I4mwtEHC6J
-         eTPw==
+        b=MMjsqtJqL6cgrp/LrtHjwyxgKwZblM++OokpqCAtLoNJTfJsALb8cgOqt1fUN8r3xS
+         +tCwcDfE0MKW5Hc9+kqazizBAMmaBbqIcbK7O5lOCcgtUaji60RYsns39fnYTw4hbMYm
+         CPsKHNb6pbhkA3S14T5r6rbqRJngZGrdRVZjwnsYYl/F85/qeag2zMuL8Ku9SX+IWuNS
+         5vSAxatLJx8m3EBNAv4k2RRQxMOJCGjUuk05Jt4wa9/+p1wleEgCEwYB00v3CxzAAgUc
+         yXtQ8QtHmavUR8RX25Mn1ENM+GD3oGekl4nJx7GNZTKbJ1lHspFkCaM3XEtKN4GzQpa7
+         /TMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=oxQC/FFaLal3qZ5vhthj6PBHYJULi8Dq6ViWO2rTU8c=;
-        b=ozcW1Egf4yeRLM0Pe5woDPeAvNuV7eFQrYO7bDJxCY6To0n2q7opDiQlq22Nj5XGma
-         Xem2d4wOiUKhgYdXQBnpADYO/Eyy3YeRcrynMWulY5Ot9/SmKrvlsSOQ5kq8hN0TJUb9
-         WjKx4OmQS5a0Lkkevr2ROYQiYkH+m+/4kzUOaxAAS3BGHlvsuskdO2TBhp4uUY4aRfr6
-         hQa/EaQUdGkAIn4oveEvoEUOR3FXgtOIsgwiGz2nqnJHLiofaILIurmmUhf+CAqCNh3x
-         mRpfsgunQ8gllJwu9ubawyi+NiuvQR9jQY5UbLCuo0sbv79G8c7VWG77gNJ/jtq0t8KR
-         yMzQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Tc/Ecy8bWmkOc3ZRbuzUz3X0rfafD3RXMHCzL6BqhHo=;
+        b=DNRZEPKBYmr/OFWEf/c3VTfy1zaVgXmCzYJp6PDUu95sm54ndI72aUpFvX7dy4QjSU
+         QONviadMGp4rdFxKvLV5RBVTpEH/WG4264bKGvQUOXsJtPiTJCWG4kFNZOTBPXYExhgF
+         sKjsinbahHKIo1jx1lnz16LMyFWw6qTocxd0DRcb+ylGH21YULa3HH2olWMiKACKPJLr
+         ifWnU6oMqnRuIYlvRMoH3xwQ1Bm+mHFZ4lQpKvOFLJlbFaGtPga1S3PgmfMeWBzxMCf0
+         vpF3fuXJ/1C0mWS33FWq0R8JriocDXqpqHkeeAERGhvg2Wp+eeEo+9TO7TsPZbjBhZtt
+         N+tQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Olt1SXOA;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E40w50QO;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id y202si246660qka.2.2019.03.16.20.13.48
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id 65si671320itx.1.2019.03.16.20.13.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 20:13:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sat, 16 Mar 2019 20:13:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Olt1SXOA;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E40w50QO;
+       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id y124so8943590pfy.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 20:13:48 -0700 (PDT)
+Received: by mail-pg1-x543.google.com with SMTP id e17so9055525pgd.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 20:13:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=oxQC/FFaLal3qZ5vhthj6PBHYJULi8Dq6ViWO2rTU8c=;
-        b=Olt1SXOABKqHIM59OU2Z0GTRcSHIbG0x+xggcRm/HLOVgPbwGF1BxAUefE4DqZZxkU
-         Ohq8nRUxqKl/YvxNSRG0Vhs3Sk4aT138GywilNh+6R5XKLgey93UTOffS3yzAL0Anugs
-         SqOMS03CjCLa+hNKofz8dqHE5AlnNPMp3RRXgow6e4ui1VNCyPcPjkFJHVjvtS2olY5M
-         rderhCKv55yRCTP7dLJTv2ZxH8kbRv+VvdJ0T7L60dWGvngpUmGlyMyXXJy09zbAgnK5
-         auQHwBq5yBuXyxmISa4IQB0i3FQHHRK+2R8DAyC5STEnuAunYi+PHBPZd3OCcH1VHSVg
-         HMvA==
+        h=from:to:cc:subject:date:message-id;
+        bh=Tc/Ecy8bWmkOc3ZRbuzUz3X0rfafD3RXMHCzL6BqhHo=;
+        b=E40w50QOW69KnHw5er9MGzznH9fvA0iPNaTtr99sRNntfG3iINS/9fs9dJRzmMyhZd
+         DHWuraTgBa1ze4T4MwFz0XONUbbzmfiUcYz4C3XIhlsGnLnEXZ5suCcGf2t2lMZ9gSc3
+         7YoK37sGkdiJeWUI5G6w7lIKdK73vC6ht/gywxlogNMNP050RQ8XRg5QqXeHFttSmbcr
+         33BeHceCrrrMr7p359t95suGE40WYsDw9K51T9xBjYPtQbRhWxDVWgOjW3MPQ5qcHuyN
+         /FXcyY4Z+Zyp9pPUF8B01w4BNmyLJ6HXdgUrqZCrWef6ex41idKnmWVcR8OEUsJDbq1E
+         W21A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=oxQC/FFaLal3qZ5vhthj6PBHYJULi8Dq6ViWO2rTU8c=;
-        b=Jt08wz0xM1aVPpDyCXswXqUdYWMkZQsHMzevX3qLKlc867OHM5R1iMLV0N6mL/yYuO
-         fIaIxa/7AXfjC8WHSdJ+ykj6to3n+Bd2mWNu/PlxEa6R+uspj4MFsh7CT95plWiRvvk5
-         pDOIuWqJ71ZMSRcm240/m+yxm6P+Bk/kBHeuoYDzbVyIMuQIrW76dbchdkKAia86Xg69
-         Q8Pv4FeIZRoqKVfkaGsYsEq6Y1HoA6jOfKki3xYuBriZ0UU1vf+tQrk6ZgdmQe/2DZXq
-         E0pwgbYMEDmfHlHThhsKCE3hsUgMjsocsUaqFyJpWj8oelYn3T0lBet801a5TExb6SOt
-         387g==
-X-Gm-Message-State: APjAAAUCXk4ireqMDa3KN+OTKl9YzeUcxCp9nhv2md6+Mv045/tG/D96
-	JIhxHLWvMiS2dFamwWzq4bb1HufisU8=
-X-Received: by 2002:a17:902:32b:: with SMTP id 40mr12319820pld.122.1552792428064;
-        Sat, 16 Mar 2019 20:13:48 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Tc/Ecy8bWmkOc3ZRbuzUz3X0rfafD3RXMHCzL6BqhHo=;
+        b=gMmUs+y7iS1zJdRPmlsVMNdHC2qLvqJKHGI/ph0TU9E7pi245gDV+IYCXbHizVs3rL
+         k5ijkY2pZjgz+E7V8+HVAlgmxQJ2VC4Q3Jpbv7+VPsoLAELtPu7/yhbQUSORQPfxGVna
+         Pf/SIZq/nDZrvBBQyDqKszlaVJufnd9ANss5d03qSTyrek0Ov9D765AM+1GMExJHu8eb
+         qpd3ckJLECShzfN6cELHdoEoU1NBOHrIYSPkKCZoL9gIbSNym4DX3IXfWZXY5tVuxW71
+         m1diz6NNVYcSsBD5FvT5stfHSqFYewyNSPQAR3Xi4JlRkkVZJ93aoybX7E3EFHf/1k/S
+         HibQ==
+X-Gm-Message-State: APjAAAV5U10FBXdHqE/cEDsKqAZ2/2kVP5JXUwYV6y3/Z6hsx7bOvVjw
+	T1haUNWorB1UM9OYDqeYEkT3yAAtNWM=
+X-Received: by 2002:a17:902:822:: with SMTP id 31mr12733622plk.290.1552792426263;
+        Sat, 16 Mar 2019 20:13:46 -0700 (PDT)
 Return-Path: <bhanusreemahesh@gmail.com>
 Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id f87sm8721878pff.38.2019.03.16.20.13.46
+        by smtp.googlemail.com with ESMTPSA id f87sm8721878pff.38.2019.03.16.20.13.44
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 20:13:47 -0700 (PDT)
+        Sat, 16 Mar 2019 20:13:45 -0700 (PDT)
 From: Bhanusree Pola <bhanusreemahesh@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v4 1/2] Staging: mt7621-mmc: Fix ret.cooci warnings
-Date: Sun, 17 Mar 2019 08:43:30 +0530
-Message-Id: <20190317031331.11965-2-bhanusreemahesh@gmail.com>
+Subject: [PATCH v4 0/2] Staging: mt7621-mmc: Remove ret.cocci warnings
+Date: Sun, 17 Mar 2019 08:43:29 +0530
+Message-Id: <20190317031331.11965-1-bhanusreemahesh@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190317031331.11965-1-bhanusreemahesh@gmail.com>
-References: <20190317031331.11965-1-bhanusreemahesh@gmail.com>
 
-Return the value directly instead of storing it in local variable err.
-Remove the unused local variable err.
-The semantic patch that fixes the first part of the problem is as follows
+This patch series does the following:
+[PATCH 1/2]:clears the ret.cocci warnings and removes unused locl
+variables.
+[PATCH 2/2]:Modifies the data type of the function for all possible
+values.
 
-// <smpl>
-@@
-local idexpression ret;
-expression e;
-@@
+v2:
+ -dropped patch series and did all the changes in same patch as the
+first patch introduced the problem.
+-Commit log modified.
 
--ret =
-+return
-     e;
--return ret;
-// </smpl>
+v3:
+ PATCH[1/2] Commit log modified.
+ PATCH[2/2] included to modify the data type of the function for all possible
+values by maintaing the alignment of parenthesis.
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/mt7621-mmc/sd.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+v4:
+ PATCH[2/2] commit log modified.
 
-diff --git a/drivers/staging/mt7621-mmc/sd.c b/drivers/staging/mt7621-mmc/sd.c
-index 4b26ec896a96..8857cdb9dafd 100644
---- a/drivers/staging/mt7621-mmc/sd.c
-+++ b/drivers/staging/mt7621-mmc/sd.c
-@@ -752,7 +752,6 @@ static int msdc_app_cmd(struct mmc_host *mmc, struct msdc_host *host)
- {
- 	struct mmc_command cmd;
- 	struct mmc_request mrq;
--	u32 err;
- 
- 	memset(&cmd, 0, sizeof(struct mmc_command));
- 	cmd.opcode = MMC_APP_CMD;
-@@ -763,8 +762,7 @@ static int msdc_app_cmd(struct mmc_host *mmc, struct msdc_host *host)
- 	mrq.cmd = &cmd; cmd.mrq = &mrq;
- 	cmd.data = NULL;
- 
--	err = msdc_do_command(host, &cmd, 0, CMD_TIMEOUT);
--	return err;
-+	return msdc_do_command(host, &cmd, 0, CMD_TIMEOUT);
- }
- 
- static int msdc_tune_cmdrsp(struct msdc_host *host, struct mmc_command *cmd)
+Bhanusree Pola (2):
+  Staging: mt7621-mmc: Fix ret.cooci warnings
+  Staging: mt7621-mmc: Modify the return type for all possible values
+
+ drivers/staging/mt7621-mmc/sd.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+
 -- 
 2.17.1
 
