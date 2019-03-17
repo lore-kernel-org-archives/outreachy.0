@@ -1,115 +1,151 @@
-X-GM-THRID: 6674054447222489088
-X-Received: by 2002:a9d:5f01:: with SMTP id f1mr3356147oti.36.1553924392424;
-        Fri, 29 Mar 2019 22:39:52 -0700 (PDT)
+X-GM-THRID: 6663332445434150912
+X-Received: by 2002:ac8:7003:: with SMTP id x3mr7333272qtm.56.1552817535531;
+        Sun, 17 Mar 2019 03:12:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:748b:: with SMTP id t11ls1220999otk.7.gmail; Fri, 29 Mar
- 2019 22:39:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwus9yITeQNRMIH+3qTaq9IrfH+unz/IarxqsgbfBXnfGY/OUBipS9DjKQnLiX+mqB2NWE6
-X-Received: by 2002:a9d:7302:: with SMTP id e2mr4023571otk.54.1553924391458;
-        Fri, 29 Mar 2019 22:39:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553924391; cv=none;
+Received: by 2002:a0c:acb6:: with SMTP id m51ls5505729qvc.1.gmail; Sun, 17 Mar
+ 2019 03:12:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxXoMYkUc0F45Qt/AsAX35Xtxn9f5IDG9cba3lp/kLGRxzBmmdDgeiZtt9XRiikhs0KcC5U
+X-Received: by 2002:a0c:92d3:: with SMTP id c19mr2725295qvc.38.1552817534960;
+        Sun, 17 Mar 2019 03:12:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552817534; cv=none;
         d=google.com; s=arc-20160816;
-        b=V+X51nDPyUe+6QW8OcAvRdPIoUXU4AvKdWttflgaVmfJKFhVehysD2DZmURs32QXbB
-         dOFE2LVBJ0MjmYClRyGgLdepYwu9xf0Z7jcL6iCXvzozegrz3XtmfCXoKgnajsnDb7HU
-         WcALNMAvaAgAXDv9oZkqxh7C5YJ7n7Z+KNGdZvvg/eK5MMK34tGURAHV+XJ97cgkSAAy
-         4H+p1dlGnP89g0V/gKoUyt8qfLchtY1+mQ0fG0Yxb69ZcdYyyBnv31pFF460hJmQOPBV
-         rrGaXmTY2zsNQ+aoBbDkABt4eHskP0Qh6MjMP339FBd4VtZtTGvhIaCce8VizkYlH6yW
-         YmQg==
+        b=zPsRGpUvSRfcwgSY37fE4XAqH9EfUeJ2B0EiUpsneFSDGwoHqCKLH20PO2dThlFmOR
+         4lvGMOBGEE8hIAZM27Z5bN8cZ1bwud2JR72svvgXGSi/ECgZLZM6Wi1nblLeFrvSiPa2
+         zw2XBfYXY/nO+xBVyij1Qn4fo7cIXScgVwpg8/99xiIj+u7BxAD6lOcbV2/j5rTpbrdc
+         Rd+bU7bZ1VED+iRdKOBp3rM6t6CmQHUpXpZmxCr7vQHzPMkcfAgw8zOvNF6cCCwsK9gE
+         7jRZN02+X0udZ5KfYQtOXmgC9F82nTwClDyuoyPCLXWrk7QtEQ+Z4PuJw/Rpd0GLTCIx
+         5qlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WNV1f5VihzEG/fD1LdS2P/jlDzMKpwv3tWuQ2mMg5/0=;
-        b=VaVTet//GHrpc4Xmsb44ffBtJSe0PDSf3RrnkAlsco7ZGnxowxpBy7b7b4eOFoiPNO
-         XrehM91SxpXhV8iJ4sBsReoG0EaT+IMnwdA5kUWRkJsYcGPWc20NMChPFmh+qqUHiR3c
-         K8pLNtyPRVfZl3xuwj/QLD30ojWPYNdqeclZA8rKJeupACPGN9uXzVcov/WJHaKdIf8o
-         whYu1XYeVOztfp7tqnzLb8WrBC7kgj8RL3XkvzSi3J2w/kxfCyTFZ5CXfzpYudEQzlAd
-         NJ6+3+QYn4qIRNBAJX4P+NvOzKguyqRoetiLCAwh9drm+a1rOKH1DUmyTOttTqcmK0F8
-         EuEQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=wYHrcrbDHqomatWjElM0Z0J2Z+tIZEBoZoSVfWrNkm8=;
+        b=JUAkEO+q72yw8FDT8d/EI8fGrSfu5kCxILJY/YQT0WTZnwsh5H63MaiSe1ejqNgWDU
+         /CNJpOpgUM9N/3DYdyh0nLN4RDMv/51df+fGwm5Vi4h5qfprmUiZlosytRyCYdZiywOk
+         PEIHEdj+9cVSUEl/LcWH7eMY/+rIU3VLZv+vnocq9vL/XLg/x5dCl23xnINpHO+hhGOz
+         RmOVLxBWqZMuv9dh1JDSEm89MakCpb6fk18Tdd8P5/sMZP2y+pPnD/xuqJP1rFaO9ShP
+         +z6XzuMtBl8l1I5RQKkOfrJhSzTYe8ok21FAw5PUvOJCkf+lRG1Hso/3vMTb9QfRct5g
+         o7lA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzfkEz17;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id c13si213797oto.3.2019.03.29.22.39.51
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b=eA7h7ysS;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=peMnp9RX;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com. [66.111.4.26])
+        by gmr-mx.google.com with ESMTPS id 27si476709qtp.1.2019.03.17.03.12.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 22:39:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        Sun, 17 Mar 2019 03:12:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) client-ip=66.111.4.26;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzfkEz17;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id cv12so1976447plb.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 22:39:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=WNV1f5VihzEG/fD1LdS2P/jlDzMKpwv3tWuQ2mMg5/0=;
-        b=PzfkEz17MhofD6NYUzk/XQtUla0yXd2v4fWmqTKOTT+NRFRw1U1E7sW1X3aJ7kZWQ2
-         g077dVTr2Z5qA7OsZcm1oJ/+FZUfW2Ut+uEwTKxA7qtylZjQQUfFQGSOdVqM6C5HMQ5F
-         a4aC9rl8NC6yhQ6bWTHpd6njwAuro5rvDGUohGlYE8Jp6qkJnfLLoOYylFQ8cjzXnAZ4
-         H0sm4Zf8DARxON3v4TGkQUNOlSrgvopv+3V8O77miE06mlnr6n125CsY8z4HSZttI+Bk
-         xn6opk+OtmWbo+vY55AfDjitnnDvtXcDtiAkSaZRp6eHBHllfb8U/ikzu/825vcyp1oQ
-         XNgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WNV1f5VihzEG/fD1LdS2P/jlDzMKpwv3tWuQ2mMg5/0=;
-        b=fD0Udy3pxvyhC/GBl81EkJ9CY3YsAuX0HSZ59mWWWMIV+9bSSnlkEZoyAp0MUeAuLU
-         lxJIhJJDnA1c6UbEbHkUQMcgryxxPC9Hr6+8yUoKEjpOd5C89kHvo663ctzDHNWNcqnj
-         XBjwO+VOIa9cdZKUJUQOa701PZU1d6/6jk2gxifW3ibFHPn+Rz6uLo41ykMC4OAQayCB
-         IVbK/xvFKMegR2MteeW9fIbVKTT+eEMhEeHp62wvgcNwOVQvNAb5q/+hGhTsaZJmniZ9
-         QfDRsIVcZDiWD1/ESSYobr+IOGi/5lcK0LOaf1dNQitQvVgq7TC6cVZ0o/ItkYR2Vup1
-         Oh8A==
-X-Gm-Message-State: APjAAAURDqOWShhJHmJa9daju93CCBVy39VcFjI4xTa8eqALUEmDH4jx
-	UkbiO+fmJGhhGKfPailqowcUXg9i
-X-Received: by 2002:a17:902:266:: with SMTP id 93mr53627076plc.161.1553924390495;
-        Fri, 29 Mar 2019 22:39:50 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.4.242])
-        by smtp.gmail.com with ESMTPSA id n75sm6853582pfb.39.2019.03.29.22.39.48
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 29 Mar 2019 22:39:49 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: rtlwifi: Remove unnecessary parentheses
-Date: Sat, 30 Mar 2019 11:09:36 +0530
-Message-Id: <1553924376-12422-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b=eA7h7ysS;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=peMnp9RX;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 8E1F121909;
+	Sun, 17 Mar 2019 06:12:14 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute6.internal (MEProxy); Sun, 17 Mar 2019 06:12:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=fm3; bh=wYHrcrbDHqomatWjElM0Z0J2Z+t
+	IZEBoZoSVfWrNkm8=; b=eA7h7ysSl3JTUtdMLko8tG77aCRchPCyeqTYvhzAEou
+	N0Nh5wKEpIH0TDUX4Zt4icMUEZf5ATDJV0v+ytYhB+8bKNV1eANOSKf4pOLmvPIY
+	DAioO/YhXnfHWbt4F/ud/cpFBW8QVTWX4EbxhYd1zsJJGtTA5YdS48G1LStjL4l2
+	DbCfupSclz6Hh5Fh0A4vAbh2/4NOBCBRiTqpBguKuzx/BSv9GNPD3I8FvP7KCM3u
+	m6lRES8Zr96gFiEmZ0kPHlGosFQU1qBtEMCJsihBjFCF9nXVciqt5LVU+l6CAzzb
+	pl8hoP5q7cHxETXc8G1zD9pVwzurVDnrpcte/8S+fmw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=wYHrcr
+	bDHqomatWjElM0Z0J2Z+tIZEBoZoSVfWrNkm8=; b=peMnp9RX9RWR3NpTWludZE
+	fmpZfj6b5qFVhmZxXqM2HGveW/x+UnQoj29T+SoDxwZojRnZplgOJPYnXmWSZELf
+	EmTy2g9ZvgRTVdNuzLr/WE3y1vjPD/sBNHVZbqZEX5PhZz7I40zleOU1YTAh/ytS
+	+od398BGJ+hBEX3efiZGhm6O2AOHVnQMKYOGGrNjo0neZWnZ/9UdY4uSj5+bZHsB
+	RvKfJzByXh590A324UeR+Whd9pHv/sEiknIbyAgQ+jleRl5Zyx/gTT0EKqweIXGt
+	hxKoq8Nkc1sIxTa6cOf/i0iqzKjCsA9BMTqfvkEjIj6R+2g7PYMZa2MyMdnwbWkA
+	==
+X-ME-Sender: <xms:fh2OXDis0MP2pURuAHCK8gW8z8-G39LXyqqCwgT-un8I04-aQi9KTQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrheelgddufecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecunecujfgurhepfffhvffukfhfgggtuggjfgesthdtre
+    dttdervdenucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheq
+    necukfhppeekfedrkeeirdekledruddtjeenucfrrghrrghmpehmrghilhhfrhhomhepgh
+    hrvghgsehkrhhorghhrdgtohhmnecuvehluhhsthgvrhfuihiivgeptd
+X-ME-Proxy: <xmx:fh2OXPO-_v2mWI--_G67O6yBDiGZcXQjRtaz_RXH-l6DLkG6g8LL4Q>
+    <xmx:fh2OXFwKO4TDWGRvRXD3CggF-PsAatKtPFE6_94tJcpqPLEHL4RWRA>
+    <xmx:fh2OXJpKk3XMZhc8EpDkvaP5wViwr7beryTGwRuYIWr107bNdgKUbQ>
+    <xmx:fh2OXO7by2ocDEdWCl_ggumku_yfcWYSX-p3Gx-VwUO1dQ5ByVsFFA>
+Received: from localhost (5356596b.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	by mail.messagingengine.com (Postfix) with ESMTPA id DB56CE435E;
+	Sun, 17 Mar 2019 06:12:13 -0400 (EDT)
+Date: Sun, 17 Mar 2019 11:12:12 +0100
+From: Greg KH <greg@kroah.com>
+To: Wentao Cai <etsai042@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: gasket: Replace symbolic
+ permissions with octal permissions
+Message-ID: <20190317101212.GC26906@kroah.com>
+References: <20190301081238.6440-1-etsai042@gmail.com>
+ <20190301081903.GA7969@kroah.com>
+ <389b7861-7a78-429f-a150-7b2987f0f123@googlegroups.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <389b7861-7a78-429f-a150-7b2987f0f123@googlegroups.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Challenge suggested by coccinelle.
-Remove unnecessary parentheses around the right hand side of an
-assignment.
+On Wed, Mar 13, 2019 at 01:50:33AM -0700, Wentao Cai wrote:
+> 
+> 
+> On Friday, March 1, 2019 at 12:19:07 AM UTC-8, gregkh wrote:
+> >
+> >
+> > This is fun, it keeps coming up and no one looks in the archives to see 
+> > why I keep rejecting it :) 
+> >
+> > This should be __ATTR_NULL(), but really, the whole macro can be deleted. 
+> >
+> > >                  .data.attr_type = 0,                                   
+> >         \ 
+> > >          } 
+> > >   
+> > > @@ -75,7 +75,7 @@ struct gasket_sysfs_attribute { 
+> > >   
+> > >  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)             
+> >         \ 
+> > >          {                                                               
+> >        \ 
+> > > -                .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),   
+> >        \ 
+> > > +                .attr = __ATTR(_name, 0444, _show_function, NULL),     
+> >         \ 
+> >
+> > __ATTR_RO() please. 
+> >
+> > Hi. I just submit a patch to fix the first __ATTR_NULL, but I have some 
+> question about the latter one.
+> I understand it is better to use read only attribute here, but by changing 
+> __ATTR to __ATTR_RO, since the new macro does not need the _show_function  
+> parameter:
+> 
+> > (linux/sysfs.h, line 115)
+> > #define __ATTR_RO(_name) { \
+> > .attr = { .name = __stringify(_name), .mode = 0444 }, \
+> > .show = _name##_show, \
+> > }
+> 
+> it seems to me that the second parameter in this macro should be deleted, 
+> which means all other file which calls this macro should be revise. 
+> I think it's a big code change, and don't know whether it's suitable to do 
+> this. Could you give me some advice?
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/rtlwifi/phydm/phydm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Yes, it is a big code change, and if you are not comfortable with it, I
+would not recommend it at this point in time.
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm.c b/drivers/staging/rtlwifi/phydm/phydm.c
-index 52b85b3..473eeb6 100644
---- a/drivers/staging/rtlwifi/phydm/phydm.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm.c
-@@ -1542,7 +1542,7 @@ static void phydm_set_csi_mask_reg(void *dm_void, u32 tone_idx_tmp,
- 
- 	if (tone_direction == FREQ_POSITIVE) {
- 		if (tone_idx_tmp >= (tone_num - 1))
--			tone_idx_tmp = (tone_num - 1);
-+			tone_idx_tmp = tone_num - 1;
- 
- 		byte_offset = (u8)(tone_idx_tmp >> 3);
- 		bit_offset = (u8)(tone_idx_tmp & 0x7);
-@@ -1767,7 +1767,7 @@ static u8 phydm_calculate_intf_distance(void *dm_void, u32 bw, u32 fc,
- 		int_distance = (fc >= f_interference) ? (fc - f_interference) :
- 							(f_interference - fc);
- 		tone_idx_tmp =
--			(int_distance << 5); /* =10*(int_distance /0.3125) */
-+			int_distance << 5; /* =10*(int_distance /0.3125) */
- 		ODM_RT_TRACE(
- 			dm, ODM_COMP_API,
- 			"int_distance = ((%d MHz)) Mhz, tone_idx_tmp = ((%d.%d))\n",
--- 
-2.7.4
+This is also why no one has done it yet :)
 
+thanks,
+
+greg k-h
 
