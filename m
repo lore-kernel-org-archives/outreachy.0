@@ -1,80 +1,73 @@
 X-GM-THRID: 6669330275448651776
-X-Received: by 2002:a0c:fa88:: with SMTP id o8mr4596001qvn.53.1552824935662;
-        Sun, 17 Mar 2019 05:15:35 -0700 (PDT)
+X-Received: by 2002:a2e:91c4:: with SMTP id u4mr640825ljg.29.1552824734341;
+        Sun, 17 Mar 2019 05:12:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:6984:: with SMTP id o4ls6325785qtq.9.gmail; Sun, 17 Mar
- 2019 05:15:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz+Uqf53kzfU2vjDz370xwOiXhmaKQtNIkU3EdrgaIvEQU+qaDGjNsz43/EjzvvYbvlIJhS
-X-Received: by 2002:ac8:750a:: with SMTP id u10mr5457392qtq.15.1552824935007;
-        Sun, 17 Mar 2019 05:15:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552824935; cv=none;
+Received: by 2002:a2e:2c7:: with SMTP id y68ls1699156lje.10.gmail; Sun, 17 Mar
+ 2019 05:12:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwrrI2T3P9lIuBMyYTaqVDaJlO5PrjY2EAh5B5QOiB3+XLjMAjLKEb+8k4Z7R+5MNIa4obR
+X-Received: by 2002:a2e:8616:: with SMTP id a22mr647444lji.26.1552824733547;
+        Sun, 17 Mar 2019 05:12:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552824733; cv=none;
         d=google.com; s=arc-20160816;
-        b=pPWtV8n5yk2N5WOANPy3S+DVWYsS9SwqpJGGNMeFr9/IU5Mx6yXv4Gcxroj/EatW0b
-         JjkThfxLPKYHw3hoeuCgaQ6R9jwcRpitDEiDxCLD5Tktam3vsjPOSGlI4AxhlTZaWM/m
-         smSk4xOchclDuB1ei30/AhaRh6Yo9cvhpoZUTKRjJVkfm3YETLf+PuvigHZ7/SIB+lpl
-         CWtYGvcH53KTn+hUII5/oWdfaoFfz8G1c6AUD26QcRN/0AtbSwLPRYGmbaWYVb+9nBLL
-         8K19IVg2RK2xzvbNBvjyo8OPPxH8Sj9QTl+hzRDzRnz+kjMsv3+Enr27ecy/d/fR2n0h
-         /u+w==
+        b=ZNnU6L/OL2CWQC9diTwTZymXBIRHghandLOy696c7SYVBPCpbQ7maSEt2KoJjNsPzl
+         Nx+ZhCdAllCyc5iHenem/Zyp3iStSW7zprRBoHEKHl8KThRsUA68X1nFhvbcAzLYB38B
+         X8fwwKBrJiLajsqZW9z+OUd94BLPeFauDodFgtvkDAWimbtM5euSEHl6msCyKoK9XZYL
+         zi661luOAar6dwpLVeeAsDz3dfrNMNA2U3lP5a8jO0F702ceTY7OpXJeDsdmVrm//TnZ
+         oL28ZjDO7ioOLOG/s3ZXhlGfGWXvFqBgwJO4ooiyKGL/wKPCZZqyFtizmSMRukZB+S57
+         fejA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=3gNt+EwgY4ssXu0eP4eDPcfdtgifyUlqJ9BZK2QKy5E=;
-        b=BYvPjvRe6o8GFvkTBiNhfvqyH5G6R9GhN4iKUL/LchvVRbPETzyEF1pvt0ym5Dm2ji
-         KPDsdCpwuspyMtwZEk4/Cf3mCL7+XPQ7OLYrEnc8C8dqDCVJ9iCIBQJvOtGSt3rVCMjU
-         4YUNBG5vodZhbHpD6oulcentC8esl7VYVm5tYt8xj2KOdP9M4elzgfR8YsyuWwC4AUgS
-         AuBrCM0TGBTlGUswYcqBWTZhDyDMAxpE0rC+ObqfVSQTB1BK2NhOyE++6MXMoSd+vOLz
-         0QivpFU7ItkzXJ0nyMUfNXgyEp5wpFkmQ1DVEaUymwFlqCQ8mIvYh5d0u6qQm1/LZkUH
-         qmFg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Z9elPY+C0HyQTwJnJVch2IbfVtgvee9NoECcicfdX2w=;
+        b=LpxsNtKqtyJ8TrP/t5T3+EkaZQgAa3YO8aJfdP5ydzBdp7CAwohH/J/kVaFS4UEKwn
+         3wHUsOr/UjNZ/7qNl4S1Fa6xyJD1kTYV6cVqIDNixa4QpcWXepTCVE4Kt08DNB2nvSqN
+         DRv4+3xFDhcEzx2JtmySEJkZ+t8YVG+xU+bo0KeJL5ODHXIHpk0eIPjnr4c6Rk7Db0Bd
+         wyquvhKrM5vnP07X56Kwbpx5+ypXg4Vgr08nttJmTmyODyxV7t5guHhADqdRDjaWgEnf
+         nKoKZg1RZavuqzM1g9E7pLVmwRjNmFJE2jE0B94HLNxsD8t0VlCTRswLSas6Kf4QC4gJ
+         XEmg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=gqMJEP7Q;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id g20si446474qto.0.2019.03.17.05.15.34
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id k13si288678lja.5.2019.03.17.05.12.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 05:15:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 17 Mar 2019 05:12:13 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=gqMJEP7Q;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id BFDC72148D;
-	Sun, 17 Mar 2019 12:15:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552824934;
-	bh=Xv61Z2nvAEAmlIBNLkePM6aZ2fPh1CZSGAgdPdjKLfI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gqMJEP7QIIwrxiw9WSdOMwWgHC090ZxBnYn7un6p7qezdJA6Jf0znFRChUPlxch5v
-	 omoeJDSov+oRzonhFvycN0C8BEfWyvHr1aBWzjlO4MyN/FR8XesdrPlcGRcFtwhot6
-	 NnAsZ+6u1uwL4+EmE9Cf0k5c7dZ1cxy8uIdWZvM4=
-Date: Sun, 17 Mar 2019 13:15:31 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,489,1544482800"; 
+   d="scan'208";a="374340666"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Mar 2019 13:12:12 +0100
+Date: Sun, 17 Mar 2019 13:12:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: rtl8188eu: core: rtw_ap.c: Fix multiple blank
- lines
-Message-ID: <20190317121531.GA7704@kroah.com>
-References: <20190317120729.4811-1-sanjana99reddy99@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: core: rtw_ap.c:
+ Fix multiple blank lines
 In-Reply-To: <20190317120729.4811-1-sanjana99reddy99@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Message-ID: <alpine.DEB.2.21.1903171310340.2588@hadrien>
+References: <20190317120729.4811-1-sanjana99reddy99@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Mar 17, 2019 at 05:37:29PM +0530, Sanjana Sanikommu wrote:
+
+
+On Sun, 17 Mar 2019, Sanjana Sanikommu wrote:
+
 > Remove multiple blank lines.
 > Issue found by checkpatch.pl semantic patch results for rtw_ap.c
-> 
+>
 > CHECK: Please dont use multiple blank lines.
-> 
+>
 > Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 > ---
 >  drivers/staging/rtl8188eu/core/rtw_ap.c | 3 ---
 >  1 file changed, 3 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
 > index fc500da2d71f..fa3ba5643629 100644
 > --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
@@ -85,16 +78,26 @@ On Sun, Mar 17, 2019 at 05:37:29PM +0530, Sanjana Sanikommu wrote:
 >  		sta_band |= WIRELESS_11B;
 > -
 > -
+
+The warning is only complaining about multiple contiguous blank lines.  So
+only one of the above lines should be removed and the one below is fine as
+is.
+
+julia
+
 >  	psta->wireless_mode = sta_band;
 > -
 >  	raid = networktype_to_raid(sta_band);
-
-That last blank line you removed was not a "multiple blank line", why
-remove it?
-
-And why remove both blank lines, only one should be dropped, right?
-
-thanks,
-
-greg k-h
+>  	init_rate = get_highest_rate_idx(tx_ra_bitmap & 0x0fffffff) & 0x3f;
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190317120729.4811-1-sanjana99reddy99%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
