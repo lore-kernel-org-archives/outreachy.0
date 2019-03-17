@@ -1,104 +1,126 @@
-X-GM-THRID: 6665254645143699456
-X-Received: by 2002:a2e:8852:: with SMTP id z18mr260459ljj.18.1551875529299;
-        Wed, 06 Mar 2019 04:32:09 -0800 (PST)
+X-GM-THRID: 6669200248940789760
+X-Received: by 2002:adf:f152:: with SMTP id y18mr88568wro.21.1552826031137;
+        Sun, 17 Mar 2019 05:33:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:121d:: with SMTP id t29ls206368lje.4.gmail; Wed, 06 Mar
- 2019 04:32:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxMKJKZSaRYIY5Tg91VKjyWFu/u0JEX1YYn/S64wR2L9zfrylqyYZ8F69FKBVR9lkFUXczH
-X-Received: by 2002:a2e:944f:: with SMTP id o15mr251914ljh.28.1551875528356;
-        Wed, 06 Mar 2019 04:32:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551875528; cv=none;
+Received: by 2002:a1c:4083:: with SMTP id n125ls1670189wma.4.canary-gmail;
+ Sun, 17 Mar 2019 05:33:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHdBKDN0Se7fZLqjmmpfhPAanlSTlloeA2EjvBZxoc8CZBjXr/j6/yhyLRsM3FK25FKcwt
+X-Received: by 2002:a1c:9c47:: with SMTP id f68mr747494wme.11.1552826030244;
+        Sun, 17 Mar 2019 05:33:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552826030; cv=none;
         d=google.com; s=arc-20160816;
-        b=iidra+TbAS58RxIF2+vAjf9KSY4zurdl3GPKPbuwAvwBng1W4UbqTLciaG6z9PwspD
-         SoLrOgm5BdmsB1yHHjj1Z4ztl+JK8S8P4pSTvDnHEKptI9B/4NPt+VAcR+yr34ULra+W
-         CrndyqcZx7L+QioCfQRyVeIHgVfvT1jEQcLi+8vs0u4H7m5c+/fAwdvC+rzZm85MUy5X
-         qX40VEGEBK6RNUeif/X5IZpW7axF3c93vPufuxetr5MhICbpXyK/n152n3kVtzUd6YZP
-         /Oc/mku1ZVynxisIEYtUEWWVd5/WiGWgM+JPekdq34/H+KyyZel9h8rnwnJHOtZMlFhy
-         dP3Q==
+        b=q4cyZEhD28g/NqHznN2QVPrHIms40DyBsykZ11NPqUaLB9qPMhVG/rAY4hueVwTQDS
+         0WnvexkFv14eG9L+sPG44OXaJVQsjrkTNw9ea2G9VDmYRV9FQZ1uWn0Jv0UmrE9D+tnn
+         jNej7RSgxBWIDDCwmhqXTNBtPJoU/5v+AsgWSpxqTwo6xJ6baoNHZmgXB4sUuYJCzT+w
+         pehZ8bv0FlVKDFekbCPofb0FDYljIDtE4ovzkIrLiNWXy19Bg2PGyzspi+t0KVx6c5De
+         E3xt7zLEIYCA5uWdpgvyWpK3p6ce5pgXOttkZfGIhJwz/1mKHKbAXZzrTpJUm8TIh07w
+         6NPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Y9xyUqUGrDSracrBvwu9/Hh0jfq1YVLmi6zmnvfRBMk=;
-        b=Lo7Ayq5kdyS2Avs7/e0UDNpSALnJij7gXUoJ4oNzQ+qDCddaFHKncourd5QdhpFmJH
-         BWis5EYa1cXOb0vtC0jN7ZDqgEFiHtJhmtwfblTP+eydDR622pZ1u4RzjWIZbvtWfvb0
-         PJQxJ0TFip5KpxvlTJgYy8yuHBDqScDGoO2tnYou8jCEEOB3SMi/dlv7IImBTqR10Q8T
-         gjcaqAxKW/aORXLUTr+b/mwNdGsAj54IDb4hybLgPlxDwctdvA9hE3EtbVROTg6E/vY2
-         E7ykgoLYGKtYuwLYdKBJTvT9p24QGI4ButJj2wRuVrGJPJK1ok+Rdec2SgTX2aAZEHv9
-         7pjw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=s8d7NYedenNLa3dOEXbcsmmWAluQegNyPPxUihiRRAw=;
+        b=rmHSlJe/CfUqwBzFQ6/DSYR6sFCIwmk7Ouqcbo+fkW6m6p4SuGsor4qs4SiRkK4Zl4
+         m6AR3Tv1xndcBTvhZty9NmDyRifg1TE2bB4+5r9443tawWvtKSydkDYTvqaUTZr5LN/f
+         P/Qbs1MTpAwuNFEmq6FJwFwhvSZ6ussR9rwm54hTei7hMlzPXD4vr82WBxyntfho3Zr4
+         11v/47JTdrgqpJYCDpWE5EEUtCper0nGfj5qcHiMxCL0DpKpYY6LE1aQlLvqIWoG/yyz
+         ufSkB3CTfKdFIlepXfmc8kZejuc8ztS/CBFwvdXJHtQWH2NG7XqoOCrvLoin6YqFPZ8D
+         pAZQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JR6X63Dh;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J4SiCt4g;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com. [2a00:1450:4864:20::32e])
-        by gmr-mx.google.com with ESMTPS id f20si41687lfc.5.2019.03.06.04.32.08
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com. [2a00:1450:4864:20::344])
+        by gmr-mx.google.com with ESMTPS id 2si317806wma.3.2019.03.17.05.33.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 04:32:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) client-ip=2a00:1450:4864:20::32e;
+        Sun, 17 Mar 2019 05:33:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) client-ip=2a00:1450:4864:20::344;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JR6X63Dh;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=J4SiCt4g;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x32e.google.com with SMTP id c13so4334875wmb.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 04:32:08 -0800 (PST)
+Received: by mail-wm1-x344.google.com with SMTP id n19so10411224wmi.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 05:33:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Y9xyUqUGrDSracrBvwu9/Hh0jfq1YVLmi6zmnvfRBMk=;
-        b=JR6X63Dh8kDR/vjbgrlfxwxmTDMlRJ0BFJsTzzmtZFFamBwcJ9fDawwOu5bVoOFGq1
-         vAgreHdQFIdKUjfRzrV0VT3NgRDu/OghGm8kiDJE9XyWbQHecw1FSbAFLmF4pH6ii/fh
-         hfECOBQGCqsL5/ZiG02vCEiUNjpy3IhTP+PMKlUSrKULbiYCrVYOMFaR1pHCAf/vfIC6
-         ufa7YiwEo1XTSQZNsqzfxjJ0Z8n3eR+O7G4rUVLoUF2cyA4Mzhezd0f5uonZeNRRKry0
-         l9o3UHdN5S3jtv/VCPS6aFlmNQakgCitzZnIodmresPBEpFxzPKhASJFjVeYC8qhlJV7
-         Xtag==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=s8d7NYedenNLa3dOEXbcsmmWAluQegNyPPxUihiRRAw=;
+        b=J4SiCt4getNmqKVpwA6y9XQNFoaaFdkm4cIINiT8EFef6SaL1WLrZgTpcbl76Se5Oc
+         ZJVz8qA4q17utO8FoQUKNRgd4n0QUK1IPr2ixqvbRd0kRGs15pmzJne5GfBVnmZ2EFlu
+         gyvCjXLYOOr87qrgN06P37MVqTyE2F1DgI+gNpWol9JxsOf0JhzO3l6ywa6CrLrbCQj0
+         EZm2OLlTShV8IkFCHXf0gRJHM/fSZCGPhylVSag0Ua5R1QkDb5xmZ2PTzsMxPU4NZVap
+         Yaa3t2fS6bCPm+W53z0hKIgxTK3kaN4dAByGq90UtOhWnVvSToZ85i4AwKbwW7K+QKEM
+         8Smw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Y9xyUqUGrDSracrBvwu9/Hh0jfq1YVLmi6zmnvfRBMk=;
-        b=O8MjUJPxevFwN7czCyXap0s9X+FAltD1A8n62dnekEowO0vNAgzUloLqD1VpCT2P6G
-         LSVKVPk1vbwsHf2/4QQYyDRBiZq9yVBJs7m+ZuPJ/jRIlyBW9hEjAV1n5xGVwan+pTyS
-         mfqVTH6HuBnzI5iqy6o2/vi1XWO4SMCFPp6AT6OUTmzuciSyP+Ki8KSLzTptxmTB+Gzd
-         nyPToFdf+T4A32ozjPTG8uUabOoF/m0icfUtlM8fLdo2K5yg1Cl2w56zXfO8xY1Q4Le5
-         y4QdO5RonuPsqD6C0yhyJ4ucZX29mnEcBEyHsZWzJIuz9+UnvM99N1wl1ytGNwBEDtN3
-         hfOw==
-X-Gm-Message-State: APjAAAVcNgTwVchvupsoi1iCInWpMrK99gfr+xVXV65E5LINmJvyXy3T
-	ePNc2LTI5S4WcbfxwCy0ESfX6mVbMNE=
-X-Received: by 2002:a1c:234d:: with SMTP id j74mr2121356wmj.130.1551875527980;
-        Wed, 06 Mar 2019 04:32:07 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([141.85.233.103])
-        by smtp.gmail.com with ESMTPSA id w4sm2265175wmg.8.2019.03.06.04.32.07
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 06 Mar 2019 04:32:07 -0800 (PST)
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
-Subject: [PATCH] staging: speakup: Spaces around operator
-Date: Wed,  6 Mar 2019 14:32:05 +0200
-Message-Id: <1551875525-501-1-git-send-email-daniela.mormocea@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=s8d7NYedenNLa3dOEXbcsmmWAluQegNyPPxUihiRRAw=;
+        b=ja6vUs8ox8Hz85U3sqQGpmBhRL0jSI1Ua9NAV0U+esyIGEYRKgl3NSkFNBvnPhWtdW
+         xaknf9gJ1+1ebKiiElgAfSH9LT3XQ8BBnTL5GTUVgViwucqrWipk9QFoQLmLObc7Yujt
+         6gCOF25Xvc8EoAqAbR6+ojFsOrRRDF3XPeMcE9EIxXvdyfDCHMNqT9RxhMeGTPP71fy7
+         t+aOohiaYCDXMi47rYgI1rrZV4amw5ztdOthxcDmC9Dn1dmO3GGXUjoclL7Qrd9ncjCp
+         IZjba9Vl5UmLDrvqF4OOafrExGHnxyqcoPkbka5dMqICBk0j2zn9rLpJ8LoFuh71n9ja
+         bs+w==
+X-Gm-Message-State: APjAAAWRA2DWv5fpI/8xcxx1wyPVWzG8NbyVyX/5rLjJ4nIhM1nrL0CK
+	ST+i0UXLcjwtVplnFxWyq1djNh8=
+X-Received: by 2002:a1c:4d:: with SMTP id 74mr7668787wma.1.1552826029764;
+        Sun, 17 Mar 2019 05:33:49 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
+        by smtp.gmail.com with ESMTPSA id d7sm4539755wmf.31.2019.03.17.05.33.48
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 Mar 2019 05:33:49 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: speakup: fix line over 80 characters.
+Date: Sun, 17 Mar 2019 12:31:10 +0000
+Message-Id: <20190317123110.21150-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Add spaces around bitwise AND operator
+Fix coding style issues which solves checkpatch.pl warning:
+    "WARNING: line over 80 characters".
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/speakup/speakup_decpc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This version line wrap the comments without losing the full meaning
+ drivers/staging/speakup/kobjects.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
-index 459ee0c..798c42d 100644
---- a/drivers/staging/speakup/speakup_decpc.c
-+++ b/drivers/staging/speakup/speakup_decpc.c
-@@ -263,7 +263,7 @@ static int dt_wait_dma(void)
- 	if (!dt_waitbit(STAT_dma_ready))
- 		return 0;
- 	while (--timeout > 0) {
--		if ((dt_getstatus()&STAT_dma_state) == state)
-+		if ((dt_getstatus() & STAT_dma_state) == state)
- 			return 1;
- 		udelay(50);
- 	}
+diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
+index 11c704b27c3c..f653c16eb4e5 100644
+--- a/drivers/staging/speakup/kobjects.c
++++ b/drivers/staging/speakup/kobjects.c
+@@ -154,7 +154,10 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
+ 			continue;
+ 		}
+ 
+-		/* Do not replace with kstrtoul: here we need temp to be updated */
++		/*
++		 * Do not replace with kstrtoul:
++		 * here we need temp to be updated
++		 */
+ 		index = simple_strtoul(cp, &temp, 10);
+ 		if (index > 255) {
+ 			rejected++;
+@@ -788,7 +791,10 @@ static ssize_t message_store_helper(const char *buf, size_t count,
+ 			continue;
+ 		}
+ 
+-		/* Do not replace with kstrtoul: here we need temp to be updated */
++		/*
++		 * Do not replace with kstrtoul:
++		 * here we need temp to be updated
++		 */
+ 		index = simple_strtoul(cp, &temp, 10);
+ 
+ 		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
 -- 
-2.7.4
+2.20.1
 
 
