@@ -1,121 +1,112 @@
-X-GM-THRID: 6528350771037077504
-X-Received: by 10.99.125.78 with SMTP id m14mr1047328pgn.26.1520000112352;
-        Fri, 02 Mar 2018 06:15:12 -0800 (PST)
+X-GM-THRID: 6669330275448651776
+X-Received: by 2002:ac8:2ce8:: with SMTP id 37mr7372455qtx.59.1552825769252;
+        Sun, 17 Mar 2019 05:29:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:aa98:: with SMTP id d24-v6ls3966421plr.3.gmail; Fri,
- 02 Mar 2018 06:15:11 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsC52aWGjv50FHhuoR8fVBVNssbTXnVbqYM09GErsmXSfWg36UCQLjPGs2CCSgPvwbeGK+Y
-X-Received: by 2002:a17:902:221:: with SMTP id 30-v6mr1079711plc.35.1520000111324;
-        Fri, 02 Mar 2018 06:15:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520000111; cv=none;
+Received: by 2002:aed:3fed:: with SMTP id w42ls6395473qth.2.gmail; Sun, 17 Mar
+ 2019 05:29:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxCLm4dHX/YkTU5RoY2+i+SlFk26TFw3eXNiXXvcbe82vo4HHKdpnPtEiQu639NyX7D85he
+X-Received: by 2002:ac8:73d8:: with SMTP id v24mr4306784qtp.5.1552825768728;
+        Sun, 17 Mar 2019 05:29:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552825768; cv=none;
         d=google.com; s=arc-20160816;
-        b=joAtcop7s+UpZsqMvNdNeI7QFrtcsG4ivftaJF/vBTjL5Z/Q2ak+quVh89coYbHWMY
-         GkEbYEVPoeV4/twklpIxRfgbEKyc13Pnd61VVuyqVeEEALyKfNVyX9Pb62D5wbv51hMu
-         hphwgA31wtHNqmIg7HtOs5bk//IpQ96NxIw+DwLvMpayvYgF+oNBwzJpWxXFrwki8zcN
-         JrUbfGEti6UYHPCaLxT73d+b5HlcbSGBqqaO/bf9/UN/nVDmP2Q0Vx/DN3Let3r1hDNZ
-         5hSCdXnV9bg3gpqKoJp1mMjIUrmkMDnhbc3F4fwRVML0fYq3sf+wqmRbXZc1qT8qZTEH
-         8few==
+        b=mLrE5X1LSUZA3VZF+JvGs28hDLdTojIjv300Vt7Q1YGmPqGzdaU+vCpBChOqIGxbvg
+         wQghL7xdWYiyTq5XjbeB6roQuz6sbSmPHjK/ZrDYBsPg1UEnbkPNtBpQ7+odSC+NVpUY
+         KOALUzC7LDW1KWmMXN2Uhhak6x71IizmPlSSfG4yHkk1pHZJltTX+9aq7X43Z6Ut5QU/
+         B1A4gPLHJ9K4y2PYnHNswZW43w3TiOIQqs0au6N2BEmH8SkqyCjm+hhIgJS/l9PNGuYT
+         XA1SprKPANCqZGkE+lzizpPr1c4Z9DCkp1GqE6asg7JPBqBBlBV7BFxiEkJXs8Lov7X1
+         6UoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Mwl0VuAVI9SMZjm/eybBoE07WQgoEZpNFSgCj+ODsFk=;
-        b=c66yFFupruUm9GHE3U2e60NU4iLJXo4jy1Oc3cMIdMD/sRa8MY7l1Q41D6ZZEMos8i
-         SOW6z/Zg7LT6Z5TfqWJQMbR097HZJXrD3/DYxBUEQPZ9mF5/1+Bf9LJenURbOFlDJ+Sp
-         YFU1oojBhlcO6AafHNl4m9lpRt0AbwsvGFwpfAO4b35bu754KJA9FVdzoW9EcVXha++y
-         yV/OLUh/r+xmdK4JdRLdboNFtOShH29vmZnW9EuH7gT8nwO2R36Pe4m8HFyFBUorD8Rw
-         CBu4H2hQSF/X/9Pih/Kh0YQrFG5qF1uBQn3IKSYvzvyhm2pJB03FNWNJrtHU0IAwqX1U
-         kKmA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=hACM+SxN+jbmeUh6SIfC1RnxsPODZ9NvXUELawKR+b0=;
+        b=1I4+O/dK5fTel18Comcxi3arNJdQ+GNsK9SN/6Usm/NEUCaISUzQm2oUTz7ov4F30Q
+         7qdz20lHIpNy661narNeKyyl4PXmsCo1M3+eFIZ/2TXw5FmtepzRshVar44hOa/LTXOD
+         4qF9GxdlJ/WK5v/TYXu0kN8qhOVtVD7gRZMqzVdAEHQuh6h+tW3mZ04KtxtAoOyfV5Ep
+         hGgJ/z2lSXy/77Pz1+fXt8RmOyNA7m8A3sBOMcjnQXHJcDYY/z10030TNdUQcxAIxocS
+         rLCb263+BoFIsvxWlH9viz+9O2mzd/6Gc6ufAzpYs2NL7r6J/4bSF4ZyFc69jYZCcRgG
+         +cSA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MhcwA9S6;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KFcohtUJ;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id e6si338855pff.1.2018.03.02.06.15.11
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x533.google.com (mail-pg1-x533.google.com. [2607:f8b0:4864:20::533])
+        by gmr-mx.google.com with ESMTPS id u65si322685qkc.5.2019.03.17.05.29.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Mar 2018 06:15:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Sun, 17 Mar 2019 05:29:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) client-ip=2607:f8b0:4864:20::533;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MhcwA9S6;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KFcohtUJ;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id u5so4050708pfh.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 02 Mar 2018 06:15:11 -0800 (PST)
+Received: by mail-pg1-x533.google.com with SMTP id l11so9471922pgq.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 05:29:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Mwl0VuAVI9SMZjm/eybBoE07WQgoEZpNFSgCj+ODsFk=;
-        b=MhcwA9S68VdaW6qXHc+x5L8keGTIUyRLxoBxY/+ePWydGpFY8PdRZ9hXjnlXrN7V2B
-         Y2YO1X4dZsVqyA9/ntnCdM+TsYcaoPYJVqPmhVZMGor/UJODPMpygKE+VUv/301iVtfv
-         8YXX7XtXlu3m308OTDgi+szsmQwtPcIrD232JWmc1GGpbJz6IvVQPmKoa0u7vnS5k5KM
-         tI9X2EXERpovac9swG5Otw67N1CGbPGT7knj7GV+ygqhM9jATT/WlhROMPQgmpwtkF9t
-         7xm+M09b9PU7ilhhqWyAdkSy+bk5DAG6MqeCcfn0eMImDT9pqLK37Mq9GrSuiHJ5yqWc
-         1ang==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=hACM+SxN+jbmeUh6SIfC1RnxsPODZ9NvXUELawKR+b0=;
+        b=KFcohtUJTl1Vdp62utzwUf+dkJIR054BUr2XP+/jw5ovoFu6v0155K8pjhSHRtLh+f
+         LIf+Px05+G9AwlogVJ4GpUX5GREpNhIQEG0Cj+g7f/CJBe66sNvTewAK+M5GyCAQ1ZsB
+         1JXzGx8uo3MGBjt5RZ3s9FXYZNBBcMs5923afkdNm0Dp7HBSEVuhovRttB/nnjSrRwbO
+         jUCtIOESHeFjcCan4pnl4Z+EmGZM42y3ueUhW0jtP3mwAXkH+D+8zOZwf73djeAYdCRi
+         7R+qiYbxuOf/EMTm5kdT3hm0GqEgi5Qs1GkyN+OrJ4TKbaNZtlzYllGrlqUu7VNTf7tM
+         9Y6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Mwl0VuAVI9SMZjm/eybBoE07WQgoEZpNFSgCj+ODsFk=;
-        b=Y5AJIhYsRHR1NakhLHsXdggFodMYSH14T+6xMITJJSOZnZa/zQR5X9LpKznZCFIThs
-         1mHvQUCL6JahyEygOvjicWHx9oBHGKZLSpQ9kbziX0NWN3igSc5fTW2b+4Fm9sYL5nxm
-         Q0qjhpT6SGBJjAV1on9FNTSLuoZDSyRj7sq8yMzV4n5mdwy/cceKiK+b07ptmQej0b27
-         EPoCotVCsTqZRcIsGs5ZyousmxteLDaxpLbii86jcVK8KYV7BSSmzh6kA2J4vfStVEH3
-         o9go+3SS4EuQlvlve+s3D3lvuq7/oT7nZw8S5m5Gpb/Hi1EpmZn5+1rQ4xDl6TLc8QyV
-         oYZA==
-X-Gm-Message-State: APf1xPA5+DjRKnONpnHsTNG5DcZmnCpJweh+1IM/o9x7q9NAe6PmVlTk
-	JGuLPGTeBya2eM2w9gLrs8H0tQ==
-X-Received: by 10.101.100.200 with SMTP id t8mr4780457pgv.120.1520000111012;
-        Fri, 02 Mar 2018 06:15:11 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-21-83.resnet.ucsb.edu. [169.231.21.83])
-        by smtp.gmail.com with ESMTPSA id n79sm13562960pfa.55.2018.03.02.06.15.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 02 Mar 2018 06:15:10 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=hACM+SxN+jbmeUh6SIfC1RnxsPODZ9NvXUELawKR+b0=;
+        b=SuaS98orr98owVXatc4XFNiN57P7pRULa/bkw7x4jR7TpF3oYTmvk3jSNBKXEwc8lX
+         sNpqDbbf9aIpeSODo4wg947juwyrx57jYGCII3lzhhYuRPvu+uJXY94jeruxkCiiQScw
+         UoP/2FgPOwpeGg5PituHz16hsdbQOas1czjE0OKQVffzw9qXSBktJAMTv3Tpdj01hYC6
+         UZyLVqM6MHEqRyy9IQ+WZkWaamVVcpFYJ6XnveZTC6Q1sDv9FeFsf16uinqxGrz8OHec
+         q+i1OKyMB7HFBsoqwvT8GcSbucPj4Susm2mi4E1AN3n0BXlzOKaevuTfyYISirh2RVpu
+         +viA==
+X-Gm-Message-State: APjAAAXHhtH+YriaoU7QLePi1YeBvfBx6bS2njz9agUKEL6D4GM/B96a
+	bLvInGFMgpy8pXBFmb1LFAVWCohy
+X-Received: by 2002:a17:902:54f:: with SMTP id 73mr14557864plf.210.1552825768462;
+        Sun, 17 Mar 2019 05:29:28 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from localhost.localdomain ([2405:204:6398:14e1:aca5:5100:dbc9:51a6])
+        by smtp.googlemail.com with ESMTPSA id j12sm2199323pfa.33.2019.03.17.05.29.25
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 05:29:27 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: rtlwifi: remove unneeded semicolon
-Date: Fri,  2 Mar 2018 06:14:39 -0800
-Message-Id: <1520000079-20306-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] Staging: rtl8188eu: core: rtw_ap.c: Fix multiple blank lines
+Date: Sun, 17 Mar 2019 17:59:15 +0530
+Message-Id: <20190317122915.6302-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190317120729.4811-1-sanjana99reddy99@gmail.com>
+References: <20190317120729.4811-1-sanjana99reddy99@gmail.com>
 
-Remove unneeded semicolon after 'while' and 'switch' statements. Issue
-found using semicolon.cocci Coccinelle script.
+Remove multiple blank lines.
+Issue found by checkpatch.pl semantic patch results for rtw_ap.c
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
+CHECK: Please dont use multiple blank lines.
+
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- drivers/staging/rtlwifi/phydm/rtl8822b/phydm_iqk_8822b.c | 2 +-
- drivers/staging/rtlwifi/rtl8822be/phy.c                  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Changes in v2:
+Remove only one blank line.
+ drivers/staging/rtl8188eu/core/rtw_ap.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/rtlwifi/phydm/rtl8822b/phydm_iqk_8822b.c b/drivers/staging/rtlwifi/phydm/rtl8822b/phydm_iqk_8822b.c
-index d320311..e2c72af 100644
---- a/drivers/staging/rtlwifi/phydm/rtl8822b/phydm_iqk_8822b.c
-+++ b/drivers/staging/rtlwifi/phydm/rtl8822b/phydm_iqk_8822b.c
-@@ -1311,7 +1311,7 @@ static void _phy_iq_calibrate_8822b(struct phy_dm_struct *dm, bool reset)
- 		iqk_info->kcount = 0;
- 		ODM_RT_TRACE(dm, ODM_COMP_CALIBRATION, "[IQK]delay 50ms!!!\n");
- 		ODM_delay_ms(50);
--	};
-+	}
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+index fc500da2d71f..c360856a86ec 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ap.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+@@ -368,7 +368,6 @@ void add_RATid(struct adapter *padapter, struct sta_info *psta, u8 rssi_level)
+ 	else
+ 		sta_band |= WIRELESS_11B;
  
- 	_iqk_backup_iqk_8822b(dm, 1);
- 	_iqk_fill_iqk_report_8822b(dm, 0);
-diff --git a/drivers/staging/rtlwifi/rtl8822be/phy.c b/drivers/staging/rtlwifi/rtl8822be/phy.c
-index ef37ae9..6697aee 100644
---- a/drivers/staging/rtlwifi/rtl8822be/phy.c
-+++ b/drivers/staging/rtlwifi/rtl8822be/phy.c
-@@ -1251,7 +1251,7 @@ static void _rtl8822be_get_rate_values_of_tx_power_by_rate(
- 		RT_TRACE(rtlpriv, COMP_INIT, DBG_DMESG,
- 			 "Invalid reg_addr 0x%x in %s()\n", reg_addr, __func__);
- 		break;
--	};
-+	}
- }
+-
+ 	psta->wireless_mode = sta_band;
  
- void rtl8822be_store_tx_power_by_rate(struct ieee80211_hw *hw, u32 band,
+ 	raid = networktype_to_raid(sta_band);
 -- 
-2.7.4
+2.17.1
 
 
