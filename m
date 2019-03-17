@@ -1,78 +1,76 @@
 X-GM-THRID: 6669194328626167808
-X-Received: by 2002:a0c:e591:: with SMTP id t17mr6523565qvm.3.1552817739169;
-        Sun, 17 Mar 2019 03:15:39 -0700 (PDT)
+X-Received: by 2002:a50:cb0d:: with SMTP id g13mr1326804edi.12.1552807025422;
+        Sun, 17 Mar 2019 00:17:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:39c3:: with SMTP id m61ls6270013qte.0.gmail; Sun, 17 Mar
- 2019 03:15:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzrJMRL6bN4nXr6PwNARiUznV7zxkqmivR3klhsGfvaKIrbjGUHrxo88KNXJZSVZ9UpcRy
-X-Received: by 2002:ac8:1cb:: with SMTP id b11mr7418613qtg.30.1552817738600;
-        Sun, 17 Mar 2019 03:15:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552817738; cv=none;
+Received: by 2002:a50:8ebb:: with SMTP id w56ls592019edw.2.gmail; Sun, 17 Mar
+ 2019 00:17:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwp8Dz/KQze9j8nxkaSaNwnNxyCpKg16Q9j4w8MsfZCqnxagcbTqKLuC1qoJSea6cecx9p4
+X-Received: by 2002:aa7:cd0f:: with SMTP id b15mr1319199edw.4.1552807024756;
+        Sun, 17 Mar 2019 00:17:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552807024; cv=none;
         d=google.com; s=arc-20160816;
-        b=MKPJMnzldba17baiQs/19NhIqWKS+n9oZCQAKhoHoJRZ0a2AAaSy9M+kcc4QmtoNzs
-         goK1yl3W6uvMqHiptElvDWZ+rjeod5T/yjFMIYaqTxn60+O8kTooJYIC2v/P6vemHudN
-         jsbuTaKCE6y2u6iFXv/L3/cEegoGxFwPxlZ+SvpGNyI26i2ynBKZ5BR1kunNWpU7qdLN
-         PSempjiyYWfInkiS2sFeZ6BoPjXnma+SreQKxxn92vXbmo/N/54yorwG39SOrHBSIB5Q
-         YVSwMouitfF6RwS8t7YCNI/4jgaZ5l1ajqL+tEwIZijb6i6ADb9qyQfCfd+75876WdTe
-         bGvg==
+        b=XYeN/6jdCtTfl5ZBjy5gZjcN0lHz6RlWQi1icP5/pcr5GdQUfSvtvDnELV8PoIP1Z0
+         XxNrafroNI3383nwxpMEJQAyyCO/F2pn0yMyjOQkLAeGzOSs94WVktURAmwYamXZqINZ
+         CiqwPBRIz2hKNtuvnC4EAFkKmZ1SgQYUWoG5ZdDWEFPBIC8sMdU7cs8i3m+XDVDXtWLd
+         cigwaoOcqa2R88pPoofd6+hGNnI/Q16P/kI1yZBzaFEU+PLzQAOl9++lYw6/+RGtKUze
+         +4EhUYYIrIxVEnVuF0rQAVnWW9gYedegpU9Ojkn5p7cZaX80wKT6oB2Bsyk5IBtoUknv
+         GNBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=rryrbbcStZEaV7wWg5lvofEFL6aD2t33qRkpHUBeYck=;
-        b=UBZyqYVZwldR+QC2uaXe2stFrxLuwUcmiuqavalSWlT0lWq60NwJ1cJZygt4gym34Y
-         V0g4bGudenFjKHZQEvWerA3wCA8WO1Mv5R2ZtC9YSdHdgyx+3h8/1iNzt6iFUV2ftxo1
-         sYbNSYsKYghx8zz98NyIthWKIo8hg2mbJTKwn4/81Jze5Lawz/K+60kYDGXu/O3nunCs
-         FUIzd6CmuxNN6vU1nJ9oXJEjFqS95hUeHvfWjHDwR76NRrKyO6BCblaOhGn1T2V8HNqF
-         DHGQumz7DSsTkzsOUFulToZ4vNRZTCX1ZcR2v+07+B5Nsfbpgv8vqDjZR3OCxTp510qX
-         Ze3Q==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=CXcx3cU18SF1hB9M4vIYBLdsY+BWN24apPkhsOnG1EQ=;
+        b=YEW82yu/D0WRT8ZpJny7LR9cDRIa83IGINpyb0yEcjZoQuN09c35e9hyrbUHL6Urcd
+         qtYkNM4F0BP4w+iKJs9LTUAGPSQbRNLhFRnMNf04qRKZRWWOJ1zZ/qX3GA26VPETmM+i
+         g+VPYMph0IavYS7qe8bWEiNsOrl6UzgWdsTYaUElS/Ek82LBwu2GNAikPnWHhiGuoLe+
+         BOEGuGtPJ3y/HRAk8gyhHP7ADOscgbvgY74XfkxqDsf0NQsSdBWp/HHeQtynzwMmGZEm
+         VpJPuVoylHqgRRZXC//IPimPmR30uFVjQdLtzCPSTpxc8+WBAsA33IZFrfN9kOB8U9xl
+         TCUQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=I6jW5csL;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id m1si396314qtc.2.2019.03.17.03.15.38
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r37si229034edd.2.2019.03.17.00.17.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 03:15:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 17 Mar 2019 00:17:04 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=I6jW5csL;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 0DE9521019;
-	Sun, 17 Mar 2019 10:15:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552817737;
-	bh=/ZcFEWQdFryrW2KrNj4+2OY7l/8NG2R6OBCjfhL912Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=I6jW5csLX1IGcPkvwEwc3r56R5TWxt8FzDslWKZ2kj3kVlZ/IiI7SBSYN7C/apLnl
-	 +44L7V+cmD5rdtK0Yic5uj0AIL2qbMrvCOpAkrwQ7FbaR1uIx7Q+S8cxwbhYWdWHiT
-	 McQWRmsV+cK05CsGdR4ulvWj3npF+fpBOlGo18uY=
-Date: Sun, 17 Mar 2019 11:15:34 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.58,488,1544482800"; 
+   d="scan'208";a="299669242"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Mar 2019 08:17:04 +0100
+Date: Sun, 17 Mar 2019 08:17:03 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Jules Irenge <jbi.octave@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: speakup: fix printk KERN_LEVEL facility level
- warning
-Message-ID: <20190317101534.GB20773@kroah.com>
-References: <20190317031236.9361-1-jbi.octave@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: fix printk KERN_LEVEL
+ facility level warning
 In-Reply-To: <20190317031236.9361-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Message-ID: <alpine.DEB.2.21.1903170816500.2588@hadrien>
+References: <20190317031236.9361-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Mar 17, 2019 at 03:12:36AM +0000, Jules Irenge wrote:
+
+
+On Sun, 17 Mar 2019, Jules Irenge wrote:
+
 > Replace printk with pr_debug to solve checkpatch.pl warning:
 >  " WARNING: printk() should include  KERN_<LEVEL> facility level"
-> 
+
+Why did you choose pr_debug?
+
+julia
+
+>
 > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 > ---
 >  drivers/staging/speakup/kobjects.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>
 > diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
 > index 11c704b27c3c..2eb5af3debb3 100644
 > --- a/drivers/staging/speakup/kobjects.c
@@ -83,11 +81,17 @@ On Sun, Mar 17, 2019 at 03:12:36AM +0000, Jules Irenge wrote:
 >  				 rejected, rejected > 1 ? "s" : "");
 > -		printk(buf);
 > +		pr_debug(buf);
-
-This is not correct, look at the other messages in this function for
-why this is the case.
-
-thanks,
-
-greg k-h
+>  	}
+>  }
+>
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190317031236.9361-1-jbi.octave%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
