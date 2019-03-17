@@ -1,99 +1,125 @@
-X-GM-THRID: 6666290525545431040
-X-Received: by 2002:a9d:5f81:: with SMTP id g1mr11752199oti.8.1552116713684;
-        Fri, 08 Mar 2019 23:31:53 -0800 (PST)
+X-GM-THRID: 6669361827248340992
+X-Received: by 2002:a6b:7614:: with SMTP id g20mr4318507iom.14.1552836763782;
+        Sun, 17 Mar 2019 08:32:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:ee6:: with SMTP id 93ls3673562otj.5.gmail; Fri, 08 Mar
- 2019 23:31:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxBeKem42eQy/uIHy+R3Ayxw904M7NxsOQV8W8ahr+L2nnA5VCQig5Q/tdEFT2srAWKLEaw
-X-Received: by 2002:a9d:6d14:: with SMTP id o20mr12585857otp.23.1552116712933;
-        Fri, 08 Mar 2019 23:31:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552116712; cv=none;
+Received: by 2002:a24:7dd3:: with SMTP id b202ls2752339itc.0.gmail; Sun, 17
+ Mar 2019 08:32:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwxT6N/pemPuzyl4vq5d1HdWRsG3UzEiINCBXLeY0VutOxq/NadSRuwBQ6Mi44MdAYL/wOX
+X-Received: by 2002:a24:29c5:: with SMTP id p188mr7799134itp.4.1552836762902;
+        Sun, 17 Mar 2019 08:32:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552836762; cv=none;
         d=google.com; s=arc-20160816;
-        b=ujBVNLW3vbQPoIV5Qct6f7EnE+C+hkSG5ACUAWMpVypEdYYXzJ74qvQB7qg49e5KKx
-         PGiDf7vjUsQS4+zw7Daqg105TK5weRgIvGNuF/JS8wDUYuKjUVxBobcOIvjmitLxMAj2
-         Bno7ugj8QKASS8TRE7IWdGAhDVH8hBs9zHG+AZpLFPLYzF4r7q9YUxGdjvmxJ5PjQ8pu
-         SK9HKdmma1ujvXVD/VMxbheBTqG+7VO58tp4YOSJiS7RewP1eUiKIIkF0KApstbb+9QO
-         yOi0xrF1IM9PBemZ2IVm/eeB0eyr2MrECM2e8IxWipjWM0MffXHRdwiKdFfiMHspNaIa
-         Zq6A==
+        b=OuetNM7a2AT5MYNsTYK5e2Ly9wYzAFxd9X6+qpsVpMUvpbafGqGbG8eFz4tzGy3tPU
+         ZTHL++hIO3MeqFPalGI9GywKM8XGUWrSSwLd6xkbs+ApeSXJxWlRXAMvS4K+wPaFwLW+
+         0phCRMIkA1VjhMtv13DjywCD/1C+vVxdP2vn6mYRLBYJVxSV6ORP2FF33uoMxKsBlot2
+         J2H3QR456QxzRjCZnjmpIiEN6fW+C6Hw8ITexFP8WW/mR8GFLzFUjIJ2WfnM2OjHXiu1
+         vfsJ89+G0Ls6jTQOGyCPzxS1g4Hem4LBjShuB15iD/oGjD+W1JlAOo3JaOmrc21rQWEJ
+         oXhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=nCcrvjKV2p1P/BVFTWGCvfqF8VvsohIJr9kqCyO9Ask=;
-        b=s+0swOAaEKmqsNOBlz+bCCme/PtsG8QtlS1aS6nR8HaFqESCgnG58oH5DC0pPZpkyw
-         2pHF5s1lVchlqgrDWMUc9Y28qpbqNNQJNzNSb+/cWPSf7OzHoHz2Ml9/+LxN9n+AQUtO
-         2fXYjMLLxpQTSlkfhgTKJdQbROgH2jZzs3shHVGqEUuiUeXr0WxlB+7ll/ykUqPBnN5R
-         qeD55fWEdDh5UuPRxFs8Oh+Q89J29wihCSsCMn+fFFCMjbkGrBRMh4Td4BlvK9iewKdt
-         XCGPt31xeqCI7GrSWvA7bkVFBVHTV6xCi14mNhIBxp64d6SAmxHElWx0nzyqHR4OUgjU
-         6IMw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=v9r0CcM354IYJhQbe02Jci6XC09AA+iHHrcJs4HW5Os=;
+        b=ZYw69XULpTbqafNp+x+WlL85h3hTU2IhmYMhSQ/0cTf9hMnI3H+iZY6zcGDYeawnd4
+         Uv+tETtdBLPs9uaZKp4Hc+p/WOvBwCEEKrmTEWjoXo7h8PcZgYcY1mljKKrqsFtRayGP
+         CPbKadDlMjJkSTePOeclceNGLSifeMhL55cuKDAzOjUCLS5sXUQI9rsR5exFc6UDhRqw
+         o7gP7e24Ai8TgvzM+n9/1iENVLXWo901psSEFmcG7RcK9d08rJNjspu8heVxq3H60Jdz
+         ++770QlLsxIRFPeaNwVnUNPsbCJzY6WOLG88/iFPWhrURzNaRHhXS9UddhaicnxbrHRZ
+         g8Cw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TND5JbXq;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id q206si528937oic.2.2019.03.08.23.31.52
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b="P/zzzwrf";
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=OSBlufbK;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com. [66.111.4.26])
+        by gmr-mx.google.com with ESMTPS id e74si466775ite.1.2019.03.17.08.32.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Mar 2019 23:31:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Sun, 17 Mar 2019 08:32:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) client-ip=66.111.4.26;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TND5JbXq;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id r124so15954808pgr.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 08 Mar 2019 23:31:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=nCcrvjKV2p1P/BVFTWGCvfqF8VvsohIJr9kqCyO9Ask=;
-        b=TND5JbXqOW6/zUEj5lx3pYl9v7BQFEPHjvDZTqzelcyM12y2xMcJgH5GdgEJEDtTc5
-         LRXwvRxUBPsLEgyUZ+kmPBW4kdhMtdciEem8+OCawBvGlDftWZX6/5kA1pD6c+2O7yRz
-         YvgPVIFwmTk0oIaMOWotljqb73wLh7p2NDHv4uipurj0rClvvQgRRiWA8Y8Wr+FQfdDa
-         oKx4CUMOOJq6+4yglJT5+WRYpxhX8DecFNHsF504ixlEGG7j6dkwcv9pqLA5HY0V+k8x
-         DVPdK8pUg7Z6qX0zNrSENab0c/RagnEIBzzPl3k2RcWjRf4Qt7Haa93gcSDLtpsRqAkb
-         5qBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=nCcrvjKV2p1P/BVFTWGCvfqF8VvsohIJr9kqCyO9Ask=;
-        b=lF/7013Hd4snWzAMcE5WX6dstF+Cw9B8khy+vFoflxOSSi3pgtf2FtxmBPqqz9Gw75
-         l/5fcEAMDicDWfmMkuxMfEzXDvVI/ifH4OeLP5iMQjlv9bawVodrDg/RmpT/EckyerQN
-         sbY5AgArOMFRJCvU56JikVMNl71RDOZ2RAAKGoGkp1n6m3opBySsDXvsQedLwpqTFp8d
-         u5YRH6uy5l8rDirZ03GXfJBvmQS7jRtWfSvvpBcoKr3JThNwXpctxem7Grljrzndwyzk
-         fTDXCf2TNfXZ2ufnTxnD0DtYuB55LXKBrBAUnVQj2elzzdoFI296qafe196bZFH/ZGcx
-         xtUA==
-X-Gm-Message-State: APjAAAW8uehkOG6mY001n4XCr67QEF+EDRMa2D0xGx3Gxpgp/XTH1f2n
-	S2N/F/33EVkktvSZJBL0gy0=
-X-Received: by 2002:a63:694a:: with SMTP id e71mr3356991pgc.129.1552116712268;
-        Fri, 08 Mar 2019 23:31:52 -0800 (PST)
-Return-Path: <etsai042@gmail.com>
-Received: from localhost (199.138.240.35.bc.googleusercontent.com. [35.240.138.199])
-        by smtp.gmail.com with ESMTPSA id f2sm11626587pgn.43.2019.03.08.23.31.50
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Mar 2019 23:31:51 -0800 (PST)
-From: Wentao Cai <etsai042@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Wentao Cai <etsai042@gmail.com>
-Subject: [PATCH v4 0/4] Correct malformed SPDX-License-Identifier
-Date: Fri,  8 Mar 2019 23:31:20 -0800
-Message-Id: <20190309073125.5610-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b="P/zzzwrf";
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=OSBlufbK;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 05CC8213CA;
+	Sun, 17 Mar 2019 11:32:42 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute6.internal (MEProxy); Sun, 17 Mar 2019 11:32:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=fm3; bh=v9r0CcM354IYJhQbe02Jci6XC09
+	AA+iHHrcJs4HW5Os=; b=P/zzzwrf1xVvp2DcXZBcYljuPFH6a9YSuvw9JkXBorz
+	svss7fIT0IiHRERAIW8NY12tNzKoWPS1ljMZeG78SyGdvf24B9PUnAxnhqjRyygb
+	dgeyS0FZxlLrOO9pMjzpgQ97g3Bk+9vlt0sV5F1+f2NWk72BPh1VxnKPhdWdoPTA
+	rtV68RLvbx6XEnFJfYvAzFawlMDB6HMIuQ5L6KqgoBx/ywkXFYjqzlJgDr7XxWiw
+	ffi+Pis4a9IKQHm/rjMP5Qlzg0HJlgo8S2tDP3E5o+z9vsmt7HSbY9BKD32d8VbY
+	x71k/UdI8o8sFIDhYGEDqp08zcdxNpI00JSyAhv6I1w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=v9r0Cc
+	M354IYJhQbe02Jci6XC09AA+iHHrcJs4HW5Os=; b=OSBlufbK2iCQ5FdI6m6ShQ
+	M3LE7D3YeS6cIWt9mO3ib15jvGIh7Rt6KqcN+24CrXEfjpa7acB5xjxhzyITlWsx
+	qgnzI/20po4nYLxyogU/ocEnYJBekTsysl7VXUPFF9+/J4FnCnsVR9gVHqJ9mRO0
+	hojub/DPswaIHkJP4Pl3qSbkMiHhs637wfgWH7Nd2s2kCy8M+BkI/Kzjwf92Tk/d
+	+W56bCdArT8awCbpZxelmLwmA9vGZMhDAU8x2aITJCv/UwEaFwqUiMuoLSMiqWG3
+	9OkgkpBvV/beSj/JGzhCiybdWU8x99GQ60xOrT+YYtKT26jhnPooFRJ50iNI64uA
+	==
+X-ME-Sender: <xms:mWiOXJ_qut7ChwPchdUoVOzXyS6WIghcR9et3dP-ORmJggfC4pXlYQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrheelgdektdcutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpeffhffvuffkfhggtggujggfsehttdertddtredvnecuhfhrohhmpefirhgvghcu
+    mffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucfkphepkeefrdekiedrkeelrddutd
+    ejnecurfgrrhgrmhepmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomhenucev
+    lhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:mWiOXKp9gYQXMmDZ2NfdoNWK9mb5Bc3-vylUtHq5_9wSUbfnxzyH0A>
+    <xmx:mWiOXCpbqnsGJfMMIA7GrUXFwzoZ4mX_TuwY2cqICAhd3BcengxDRw>
+    <xmx:mWiOXF0bZ1RED0I1K7MYZY0wS9Gj0mEHYukkSxTvXEi6-7VnyLoPBQ>
+    <xmx:mWiOXKMTtp_HBm92vZHkFZBEtCFBj-AqAsEk3yAT8OkGcZJzOgf0Tw>
+Received: from localhost (5356596b.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 5203FE4362;
+	Sun, 17 Mar 2019 11:32:41 -0400 (EDT)
+Date: Sun, 17 Mar 2019 16:32:39 +0100
+From: Greg KH <greg@kroah.com>
+To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] [Outreachy kernel]staging: greybus: line over 80
+ characters
+Message-ID: <20190317153239.GE25814@kroah.com>
+References: <1552831790-11088-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1552831790-11088-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Correct SPDX-License comment characters in drivers/staging/most/dim2/ 
+On Sun, Mar 17, 2019 at 07:39:50PM +0530, Payal Kshirsagar wrote:
+> Fix line over 80 characters
+> 
+> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> ---
+>  drivers/staging/greybus/arche-platform.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> index 70debee..307ff51 100644
+> --- a/drivers/staging/greybus/arche-platform.c
+> +++ b/drivers/staging/greybus/arche-platform.c
+> @@ -47,8 +47,10 @@ struct arche_platform_drvdata {
+>  	struct gpio_desc *svc_reset;
+>  	bool is_reset_act_hi;
+>  	struct gpio_desc *svc_sysboot;
+> -	struct gpio_desc *wake_detect;	/* bi-dir,maps to WAKE_MOD & WAKE_FRAME signals */
+> -
+> +	struct gpio_desc *wake_detect; /*
+> +					* bi-dir,maps to WAKE_MOD & WAKE_FRAME
+> +					* signals
+> +					*/
 
-Wentao Cai (4):
-  Staging: most: dim2: errors.h: Correct SPDX-License-Identifier
-  Staging: most: dim2: hal.h: Correct SPDX-License-Identifier
-  Staging: most: dim2: sysfs.h: Correct SPDX-License-Identifier
-  Staging: most: dim2: reg.h: Correct SPDX-License-Identifier
+The original is fine, don't worry about the warning.
 
- drivers/staging/most/dim2/errors.h | 2 +-
- drivers/staging/most/dim2/hal.h    | 2 +-
- drivers/staging/most/dim2/reg.h    | 2 +-
- drivers/staging/most/dim2/sysfs.h  | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+thanks,
 
--- 
-2.11.0
-
+greg k-h
 
