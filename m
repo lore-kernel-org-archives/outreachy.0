@@ -1,126 +1,122 @@
 X-GM-THRID: 6668981360875536384
-X-Received: by 2002:a81:994d:: with SMTP id q74mr986484ywg.18.1552836597502;
-        Sun, 17 Mar 2019 08:29:57 -0700 (PDT)
+X-Received: by 2002:a67:7d43:: with SMTP id y64mr8432131vsc.30.1552836474058;
+        Sun, 17 Mar 2019 08:27:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:19c6:: with SMTP id 189ls766977ybz.3.gmail; Sun, 17 Mar
- 2019 08:29:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyv5Is0cNuc5rYOp8w8eSZaF0MuhIhoQ/cHO4ffU1I2ZZc+nBn8p1iI+g8zkaEW5IsBr/r2
-X-Received: by 2002:a25:7485:: with SMTP id p127mr3285979ybc.17.1552836596630;
-        Sun, 17 Mar 2019 08:29:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552836596; cv=none;
+Received: by 2002:a1f:2aca:: with SMTP id q193ls2257362vkq.2.gmail; Sun, 17
+ Mar 2019 08:27:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzjVFfCorb/wSFEOZf8Vl6PTD37+O/aFGpFuXZ/OnUq+KnvQhaCCN/B/neluKn21WQVrQYT
+X-Received: by 2002:a1f:cc02:: with SMTP id c2mr8495239vkg.21.1552836473330;
+        Sun, 17 Mar 2019 08:27:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552836473; cv=none;
         d=google.com; s=arc-20160816;
-        b=0pd28kaM6fShdVZAqfSqfiT/0tmGR6d87EcGJJdEHvTnoWDWcXiqRE+IJ811rD/IBD
-         M1D1G1QxzbGv4xeM6/ffEi8zoaByBhCRbsqsW+NH22sxDsTFdR5BGUv4K/i/ATKPfAo1
-         2pwVoSD4DUSoM6qwcuPOWAvQUx4CakOUHtrhQZo4HiP7LqDS6DQ2pCOcEMTNCZmzsQId
-         Vd4W7MsYrcZMytuZ92fzpyDMnDKEPbiy3CIr8A68M5hR6lAL0a/x+iofC/yXAe6e0LvC
-         x+3B5x3Ra7wFELhTGwTw12CLm9M/U6OTxvyl58Bccy6ezfK28nSVKypGKBNJN4Cuk73u
-         vp5g==
+        b=W5+rW7YPK8K8TJFFeCenSa95o15n/25np5BExbsoF4Lai21m4m//MkDrK5S+6fV2it
+         qPoaZSxC6imLv2knJYO2o0/oI5hlRsbM5er6RLm2UP3n+x6ZIuGYx7NdNUiyowHm728Z
+         /coumfXZ/JLpEinB5yicqCPI5MWN/AKBbWicweKBMmXI4CZs+jsH59MCJG53HKJZ5gtf
+         ogaIpQH99YVkgvCvynynFnCOIVqaICEL48zkwWsijwqqB+r/odUqFIVpPMuig7nACmrx
+         inRHfbNV3uRo+yhKtXY/OtbpPAZbVOnRzGtr3EWHYhq9Gry4Q9XVhY2pTxHq1KwKg9GA
+         PE/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=7DYMahxIQGfMbFKuKnJQVMAcdGvYlU2bgAJUX2q/0yc=;
-        b=Ed2LtDfu8/1aEyq1KeVPC7xaq24fTVuG64wzyO6MqxsS5OWcFdBjoA4qkIv5iujVcw
-         AbmIA6XTa4ccSpw+OHvLfuXKTDBj7iRaG8xiKxCS89rOPfKXW3WxDgBxSPj9LwdeW7qb
-         MVlQZ3OW0ZnxvlNhQYXULwvGG4b576v23JinO9xKzhtQUEZQoxtgcdWq3Hx1LMupOfpo
-         GsjhgghYSN9q+pfL+qS4NuAOBYnS+M9yI/abCI/5fvIpZZA7iEY/+sqwwzolbghloarG
-         3/dKbot+s2ZotAnmVSCrM/an49jymzWkznRkctBtBnDNhjbaJki7kPpcGMIxO01sMF8I
-         oqZg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=k6L8GHe6f4BcqS+Vh1I/NRMCWOGCVOc179PpvGFJNd8=;
+        b=h2cbnYNDJfd7MY3cMGpQo/BcKr4QUNFyJjs6ogmaIFwsntyIHQN4AkiSQc+DZAlKR5
+         HTBqXXHgeIXHf+gMTq5hcQyg0/noOOuN+Or/R6P3PzwGwGrC18DhKrxMyKbHtj1ARHUr
+         CvOwdq8aUX5iEkrlke4l2ez/g6myon2uMNTl86Kk5HepJBpWiZ1CsIlCftTjwqETExNK
+         RQaJNZ+VyMJtGEpDAORyWWcLfchk0H0OMqgGfM9c83mUMKHRwKI/qSiGSUyW0gdWrkNV
+         6GaNM0y1q83kBFJ3mXgpBriX7iqEdYNbJjp/6PrkOkdX6TxUvjTN1pQhh1tpdYxuPdFr
+         pzjw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Wuf9KoYJ;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AWK6aGPR;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id 62si488500ybf.2.2019.03.17.08.29.56
+Received: from mail-pf1-x436.google.com (mail-pf1-x436.google.com. [2607:f8b0:4864:20::436])
+        by gmr-mx.google.com with ESMTPS id x82si264148vkd.1.2019.03.17.08.27.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 08:29:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sun, 17 Mar 2019 08:27:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) client-ip=2607:f8b0:4864:20::436;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Wuf9KoYJ;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AWK6aGPR;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id c207so546079pfc.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 08:29:56 -0700 (PDT)
+Received: by mail-pf1-x436.google.com with SMTP id v64so9547358pfb.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 08:27:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=7DYMahxIQGfMbFKuKnJQVMAcdGvYlU2bgAJUX2q/0yc=;
-        b=Wuf9KoYJQvlWrvEjL0DWrQaLs71O1KJZVwXQFh7RlZBQQM/51BSdFW9RA+hv6xrca8
-         Jr9XuZZPJ8F0wPMwx9kUmlvK8EHdKUtunEu2TKsmpKFXL8ZT5sRvhIMfwUobQt0B6nvn
-         QEc4jkYgjWw4N6g/0BiYD3Qm7b5l05TuipNP1g4GEDEu37wY9d0TlDoZxT0ye8IQG/cp
-         7KNyHK6c/Bk3V4ONTlGlVLziwZC0nxze4AVy/N9hqHQbbEUAFzaGEItpgkySHapFKKbC
-         iEdtDiGVWYHktASwLoGkts3Cjhkz3vTNrEb6R2jnkOmsb1+xEbpnQDx/ifDi7RJkc3rh
-         Z0wQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=k6L8GHe6f4BcqS+Vh1I/NRMCWOGCVOc179PpvGFJNd8=;
+        b=AWK6aGPRAFn1hG8Mn/JKccLol9kLKeX70X5pBo8fIRbrf5jkW/nfNlxviZ864HLIED
+         KDhneVNWyIa6CmYwvnjMvwEXD9ubrbr/MpEMbpNxzkIr3p3EMaoPGGpiu62n0U8Aaa0m
+         MdCH+0ApSyp6i+hjfDZjlRVrIYmw5NIJrjzsZ1ju6FY0tQmTObtkjrMT0c19OsA5R4mz
+         +SaEj7vLS2Vx7NaeOZtHarzcbTTQcZGRFQXuH+PczyC9bSYbXhXihEjR2p8cY3i0CfED
+         97A3WTMRz2nsdTMAO2zN5D5DtjNC8L6Tan3ccwgtZ1wFMqQteiJ2DOm9X+VPkSVfhAs5
+         U+jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=7DYMahxIQGfMbFKuKnJQVMAcdGvYlU2bgAJUX2q/0yc=;
-        b=e8lIZZjKvwlQPk7EAoFbUf/fU9zsNb+8XAwWo+ITLnfaWUadWGQGRj/f0JT2E9Pamp
-         7ceQ+a8EVYcWpN0hGwi8pks2MLJzob4waFNO3n0CLlvnHVjq35PAXAN09aXxwwLuSsWx
-         D5YivtNZ5pk/rMUEthe7T7PTWBgf/zZMbSyBQX9ESks/JzVexsUi+zoboiOkb9zLSTAr
-         63uvRaC6gj+x27h1MCeL2PsePeY8+ZVvKzrN7jUlNuLFXWEmFy443PYwb2N99VDErlwe
-         e0J1K3nEHWjAwluu1Bq5QkN7IhErTpjmUTc3Hnz1Cx6Xs/3cpXZG3ebzPYBhCJwQ2/VX
-         grvQ==
-X-Gm-Message-State: APjAAAVVsGpER/z8liB/wb9htu9D3K+4XZ69Q+ro//QKHHcgraYVtjEx
-	MPbvRHEQ6wcwIw2e7CRNpBwCihL1
-X-Received: by 2002:aa7:85cc:: with SMTP id z12mr529528pfn.142.1552836595847;
-        Sun, 17 Mar 2019 08:29:55 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=k6L8GHe6f4BcqS+Vh1I/NRMCWOGCVOc179PpvGFJNd8=;
+        b=FOXBBSaFxwdbPw9TLoi7Lay84nAnk3y45wmdBKP6fEeGzS15wm8TXm7eYZo1UQlSxM
+         u8DB11jBPYpOHXn5dkTLY4LfsX6XTIUO9+uGFCUlrkCb2osXrlEcUetezGx2MVzGn7h0
+         McJXgU6Lfwfp41/HAxRWGZHmluo1hVlDPEzFCzzq2err2ny57wOwB10uqp3kHi0w7i1A
+         T2I8eLh59tSR3CVMwf/uCWo1D4V69rlW34L72QjYPDN1SCduOEUnHmexM+wP5ae5972Z
+         h5vsMDrIGaJtyu/DPvbdoKP/7QIGz1yvLLgLXRSadKwoAQEsJwVbEF8+51PMJgOQQKbE
+         wp3A==
+X-Gm-Message-State: APjAAAWRMboxkVNVSW7Zj16mWjGMHOsKYHsrphmQEWJX93lvy/hQqFRx
+	kLZnQlqh+Dnczl6LtbbPC1I=
+X-Received: by 2002:a63:7341:: with SMTP id d1mr13580471pgn.405.1552836472495;
+        Sun, 17 Mar 2019 08:27:52 -0700 (PDT)
 Return-Path: <sanjana99reddy99@gmail.com>
 Received: from localhost.localdomain ([2405:204:6398:14e1:24bf:4cf8:99c9:eab4])
-        by smtp.googlemail.com with ESMTPSA id i25sm8110615pfd.52.2019.03.17.08.29.52
+        by smtp.googlemail.com with ESMTPSA id h75sm16294695pfd.150.2019.03.17.08.27.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 08:29:55 -0700 (PDT)
+        Sun, 17 Mar 2019 08:27:51 -0700 (PDT)
 From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v5 1/3] Staging: rtl8188eu: core: rtw_recv.c: Fix a tab indent issue
-Date: Sun, 17 Mar 2019 20:59:38 +0530
-Message-Id: <20190317152938.16429-1-sanjana99reddy99@gmail.com>
+Subject: [PATCH v5 0/3] Staging: rtl8188eu: rtw_recv.c: fix various warnings and checks in rtw_recv.c.
+Date: Sun, 17 Mar 2019 20:57:36 +0530
+Message-Id: <20190317152736.16374-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190317152736.16374-1-sanjana99reddy99@gmail.com>
-References: <20190317152736.16374-1-sanjana99reddy99@gmail.com>
 
-Fix a tab indent issue which removed warnings after compilation using
-checkpatch.pl.
+This series fix the following checks. 
+fix a paranthesis issue around -> 
+fix a space issue 
 
-[WARNING]:No extra space at the beginning of a line.
-
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
 Changes in v5:
 Fix the patch sequence number in [PATCH v4 1/3]
+Fix the patch sequence number in [PATCH v4 2/3]
 
 Changes in v4:
 Fix the patch version number in [PATCH v3 1/3]
+Fix the patch version number in [PATCH v3 2/3]
+Fix the patch version number in [PATCH v3 3/3]
 
 Changes in v3: 
 Change the log message from the [PATCH v2 1/3] 
+Change the subject line from the [PATCH v2 2/3] 
+Change the log message from the [PATCH v2 2/3] 
+fix a overflow of 80 characters from the [PATCH v2 3/3] 
+fix a space issue around '>>' from the [PATCH v2 3/3] 
+fix a space issue around  '-' from the [PATCH v2 3/3] 
 
 Changes in v2: 
 Remove "From" line from the [PATCH 1/3] 
- drivers/staging/rtl8188eu/core/rtw_recv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Remove "From" line from the [PATCH 2/3] 
+Remove "From" line from the [PATCH 3/3] 
+Change subject line in [PATCH 2/3] 
+Change subject line in [PATCH 3/3] 
+Change log message in [PATCH 2/3] 
+Change log message in [PATCH 3/3] 
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 1d83affc08ce..0d04057e6cf6 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -24,11 +24,11 @@ static u8 SNAP_ETH_TYPE_APPLETALK_AARP[2] = {0x80, 0xf3};
- 
- /* Bridge-Tunnel header (for EtherTypes ETH_P_AARP and ETH_P_IPX) */
- static u8 rtw_bridge_tunnel_header[] = {
--       0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
-+	0xaa, 0xaa, 0x03, 0x00, 0x00, 0xf8
- };
- 
- static u8 rtw_rfc1042_header[] = {
--       0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
-+	0xaa, 0xaa, 0x03, 0x00, 0x00, 0x00
- };
- 
- static void rtw_signal_stat_timer_hdl(struct timer_list *t);
+Sanjana Sanikommu (3):
+  Staging: rtl8188eu: core: rtw_recv.c: Fix a tab indent issue
+  Staging: rtl8188eu: core: rtw_recv.c: fix a paranthesis issue around
+    pframe -> list in rtw_recv.c
+  Staging: rtl8188eu: core: rtw_recv.c: fix a space issue
+
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 24 ++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
 -- 
 2.17.1
 
