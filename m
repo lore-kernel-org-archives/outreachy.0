@@ -1,90 +1,108 @@
-X-GM-THRID: 1940237844480
-X-Received: by 10.112.126.194 with SMTP id na2mr12661lbb.18.1424533416885;
-        Sat, 21 Feb 2015 07:43:36 -0800 (PST)
+X-GM-THRID: 6669309760471302144
+X-Received: by 2002:a5e:8b44:: with SMTP id z4mr8233499iom.1.1552819684702;
+        Sun, 17 Mar 2019 03:48:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.153.7.134 with SMTP id dc6ls332719lad.87.gmail; Sat, 21 Feb
- 2015 07:43:36 -0800 (PST)
-X-Received: by 10.112.35.135 with SMTP id h7mr332247lbj.23.1424533416604;
-        Sat, 21 Feb 2015 07:43:36 -0800 (PST)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id ev8si317986wib.3.2015.02.21.07.43.36
+Received: by 2002:a24:6f44:: with SMTP id x65ls2673567itb.1.gmail; Sun, 17 Mar
+ 2019 03:48:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxLqhzj6P4HniegMTsTT/yM02iF+P/zcPds87Yf2dVNQgbKTpmRu1Vb7rh1iNgzYwiQi5RT
+X-Received: by 2002:a24:1c4a:: with SMTP id c71mr6980632itc.11.1552819683839;
+        Sun, 17 Mar 2019 03:48:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552819683; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hrjVBaoyIvzgknfh3CFLnymOHYV62SzKPseaa9bR6Iwo0+uXrmt1zk/3SWx057zAWG
+         JwUz4ipap/MBN+3dz51kM+Q4voOwLyBHd4LnIvFLhr5d6m/Q9PXo8ELKsZNHhFvC1gRR
+         Kbq9QwokcS7fgFNq4Dl3f4zgmzVLPV/5EIB2hBOtxSbQVNLFPYu9m8bUlEaw/lFx8us6
+         MOwvWFMDvaaxslRTRweRGdcIbaX5f8tTpKiXdY0QbhTZyQMq/zjlax9r+1RpZJ/Gpuke
+         Nkj3q6XCcJx2g/nZkjzfaYPl8u/v8iMCGaWGlZN2WydaJXSJ2e7htwe0im9fcxQc3O2m
+         YCHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OGDRYDdf2emg1VRMSHaJP/+tiPpw2i/y82QmuKKETWs=;
+        b=cL5LIA+pow4QnJc665F1KPSwnIL82RE8U4owicUwDVNHYT0mcuiic+jTq7owHXm+OS
+         T1RNoFONyYS0ULlG1zDHg5Mugeu+t2W5Skec6GdOcbcb+kEzHi2Y5pdogRyILhh2Zm6u
+         M7WMJDyPV72Hjks1FMef9YIcztx+fXk3i3LKsrGNgVnTzmWjsL0BhB6bhsULqdLbxcS3
+         lyV4SQXipqrfk6Mp+9PS35/V87egfRlXSyDGEzG4i0KA6G7ABwRajvUlxTbSYZd1VDE9
+         oeZvv3OwJHHGWxtKdLZrRYfry8R+zKZkVukP/t3wtgplJ5lfcYQVenWdgdswd0m9vNmZ
+         Ryfg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a88uwFIT;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id l23si372468ioc.2.2019.03.17.03.48.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Sat, 21 Feb 2015 07:43:36 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 03:48:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mail=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.09,620,1418079600"; 
-   d="scan'208";a="100857649"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-SHA; 21 Feb 2015 16:43:36 +0100
-Date: Sat, 21 Feb 2015 16:43:30 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: =?ISO-8859-15?Q?Hatice_ERT=DCRK?= <haticeerturk27@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 25/25] Staging: rtl8188eu: core:
- Deleted unnecessary parentheses
-In-Reply-To: <1424529990-17074-1-git-send-email-haticeerturk27@gmail.com>
-Message-ID: <alpine.DEB.2.10.1502211642130.2480@hadrien>
-References: <1424529990-17074-1-git-send-email-haticeerturk27@gmail.com>
-User-Agent: Alpine 2.10 (DEB 1266 2009-07-14)
-MIME-Version: 1.0
-Content-Type: MULTIPART/MIXED; BOUNDARY="8323329-581666818-1424533410=:2480"
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a88uwFIT;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x443.google.com with SMTP id i20so9310934pfo.6
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 03:48:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=OGDRYDdf2emg1VRMSHaJP/+tiPpw2i/y82QmuKKETWs=;
+        b=a88uwFITuHXIIpWn09BScgw1rDor/1xEcOJ7vwkat4aqECQdNaAjwlKQphJXs3c6YQ
+         XoNxCdEnYOxmabXL8yrODZtsZVGgA8UH09Z3yrqXbCJDUFC012VaMqpY+wb/yY3T5Y00
+         KQVbMkGMTu3eLNws4ScyY3L7fAv0mgd1nlGSxDP25ms6kmyAjsqv8TLRgmGQztCbksMC
+         OcFMxOxGqDaiFnTND3GbbWGQyZN17pqNWHvc9l1b4XwGp+V5880I7EzjrD1mAHOAjQ3D
+         jdINCAUpD/Pw1OFYw6ECPXUXvVKc9QkSJEzxwHJtMb2hVfQAacIouc8jwoTtIBbh+RoR
+         0hYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=OGDRYDdf2emg1VRMSHaJP/+tiPpw2i/y82QmuKKETWs=;
+        b=a5Hip/DFli5LJsBl/RS+mFLT7zJQCdSGwkEdOFtRhCj/ZYdzXDnVmO0Wfh3833z8f0
+         ag0S2EDBQpmLZW/vKK35+DqrYHdmAw1/pdrO2lrCaKdjfQlb/0nTsqSNdAO5DZvolmjO
+         1mWUWbTE6Kg5Nil58UFeX/tNSnVotNESiJJxtc2CnO6xUGLD0lhWrtD/o/pwBb/VOysZ
+         AsGX1CAU+vtsZWqUDPUz2TRW3CjoEV5iz/QOaoYH0oKzqLKB3gB3vRi90d5KGGTg/91Q
+         xYOoe0DzNNZCel00Pa6qyACYDeU91aq6qnV3/hCT0gqEdCpG1v08xKWHZJGM0eiMocSO
+         suDw==
+X-Gm-Message-State: APjAAAU5+JWcNgjZgBfPj71z/tbs6XVAr+PJ9yHfN75QezPx/rU2Z61X
+	qkctMJgB3H3mEnw8iz/5DSgVOitIlpE=
+X-Received: by 2002:aa7:8005:: with SMTP id j5mr13541234pfi.211.1552819683562;
+        Sun, 17 Mar 2019 03:48:03 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.105.100])
+        by smtp.googlemail.com with ESMTPSA id o5sm28361620pgc.16.2019.03.17.03.48.01
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 03:48:02 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: vt6655: rxtx.c: Remove unnecessary space after a cast
+Date: Sun, 17 Mar 2019 16:17:51 +0530
+Message-Id: <20190317104751.2864-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Issue found by checkpatch.pl semantic patch results for
+rxtx.c. Remove unnecessary space after the cast.
 
---8323329-581666818-1424533410=:2480
-Content-Type: TEXT/PLAIN; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+CHECK:
+No necessary space is required after a cast.
 
-On Sat, 21 Feb 2015, Hatice ERTÜRK wrote:
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+ drivers/staging/vt6655/rxtx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Deleted unnecessary parentheses.Because unnecessary use of parentheses should be avoided.
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index a7c1e46a953e..c8c29bfd78ff 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -1149,7 +1149,7 @@ s_cbFillTxBufHead(struct vnt_private *pDevice, unsigned char byPktType,
+ 			/* Auto Fall Back */
+ 			if (bRTS) { /* RTS_need */
+ 				pvRrvTime = (void *)(pbyTxBufferAddr + wTxBufSize);
+-				pMICHDR = (struct vnt_mic_hdr *) (pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab));
++				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab));
+ 				pvRTS = (void *)(pbyTxBufferAddr + wTxBufSize + sizeof(struct vnt_rrv_time_ab) + cbMICHDR);
+ 				pvCTS = NULL;
+ 				pvTxDataHd = (void *)(pbyTxBufferAddr + wTxBufSize +
+-- 
+2.17.1
 
-You comment should also respect the 80 character limit.
-
-Also, favor the imperative.  See http://kernelnewbies.org/PatchPhilosophy:
-
-In patch descriptions and in the subject, it is common and preferable to
-use present-tense, imperative language. Write as if you are telling git
-what to do with your patch.
-
-And remember to put a space after punctuation.
-
-julia
-
-> This warning found with checkpatch.pl
->
-> Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/core/rtw_pwrctrl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-> index cfc404f..62ed07b 100644
-> --- a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-> +++ b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-> @@ -307,7 +307,7 @@ void rtw_set_rpwm(struct adapter *padapter, u8 pslv)
->  			pslv = PS_STATE_S3;
->  	}
->
-> -	if ((pwrpriv->rpwm == pslv)) {
-> +	if (pwrpriv->rpwm == pslv) {
->  		RT_TRACE(_module_rtl871x_pwrctrl_c_, _drv_err_,
->  			 ("%s: Already set rpwm[0x%02X], new=0x%02X!\n", __func__, pwrpriv->rpwm, pslv));
->  		return;
-> --
-> 1.9.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1424529990-17074-1-git-send-email-haticeerturk27%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
---8323329-581666818-1424533410=:2480--
 
