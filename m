@@ -1,127 +1,111 @@
 X-GM-THRID: 6669342571581407232
-X-Received: by 2002:a62:ea12:: with SMTP id t18mr4767843pfh.109.1552828669003;
-        Sun, 17 Mar 2019 06:17:49 -0700 (PDT)
+X-Received: by 2002:a1f:f8c1:: with SMTP id w184mr8105294vkh.13.1552827323463;
+        Sun, 17 Mar 2019 05:55:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:68c7:: with SMTP id d190ls5393066pgc.3.gmail; Sun, 17
- Mar 2019 06:17:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwCS9Mv9Rp9Qxw3zL9yI5ryNbf6+F17rF/t5TgGSg+/q6RX2vkhDyk5laj8Z/JaWFArFzzH
-X-Received: by 2002:a63:5862:: with SMTP id i34mr4799774pgm.18.1552828668195;
-        Sun, 17 Mar 2019 06:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552828668; cv=none;
+Received: by 2002:a1f:9752:: with SMTP id z79ls137406vkd.3.gmail; Sun, 17 Mar
+ 2019 05:55:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqywJKb37sH72dRh4oVeTNRZ2nZ9cOUcGZVeHgDRRVpxj5gYA+zsHD/BzVxv3SsgsifIijYw
+X-Received: by 2002:a1f:2e11:: with SMTP id u17mr8115029vku.22.1552827322665;
+        Sun, 17 Mar 2019 05:55:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552827322; cv=none;
         d=google.com; s=arc-20160816;
-        b=xG4cznjbyM7cvlCwEKK35361gq+7onzldTyfenZPfdwj5cjYbRb3Aq/6IquX4LAZcE
-         zqaaNl7jd7dzbIrfIEtuzv/XefHvn2kCInG0Pb/Lk17BLsgPrzqUhNgaGNkrePSRO2vP
-         Z6wTe18C1hOuMJmmHHgGis2jZNLSSp4cwa3xn7bGVUq1caBEtxfCvn/b4Fa+dZp2BHN4
-         bwD1Th1J+Bpj85viI9Q6eU+/A1h5leDU5RwTQiQeIg+V7qrxWxTTC955M3Gg7Bns5APL
-         kOOxPZuiFHK5YXu2bvDKqJmF/wnxHu1NK2xFp36UJK8XJUVQQNBL208aseX15gGrv9s5
-         1Xmg==
+        b=pehM/aCGE3i8xcwBEQI8U5jm/Siz6b0NXQ9AJZ5eg2y5WBXu2YWwB/IDyUIURgBof9
+         1+FJ06WuRYAZHA5rXaD/uL9RqE6Y8mb4ezco0XVpSaaj5wCCatRfwwvCjKnz1SjaYzK+
+         dQxMlUuedO/RPjOS63zDH4YIA05dpO2M3UbLQnZDr9guoCE6dN9NlP9mdlveByB+U+k5
+         u0eUB0pY9EFNUFDwiJ6WprXVlx9VIIk60/8ZCDfSdxQv/QCSLT8lYjb9d+LOMS+Q1mNl
+         sLjq1ugQEtP9wMcaimHmLM0juHgPnljpe0Xefbz/wwWR/ptPoAuv7BUEqqhQmyYNuwcL
+         UdXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature:dkim-signature;
-        bh=gCs9u9GVvEy8yAaajaGdRlcARhKioP/lHmCIh6Bp3sY=;
-        b=Hxh4lALFWDEgfSFXMdYU8dpp54lCfA84YtPyqtC+z1xJejTzqXYcDb3DRG8ZHiK+qh
-         CHTlTuQALZa9aQznAaQnivO/GcBf6a55CQVkimkjVJ7ILdvgo89Cgi7MwOeBJdIgz04G
-         CbtzLbq7NLXVCCbbXZh0F6qteqL/s6AUjjRoF/LClQhyvHOIruYJlaql8VMcmpbTvp8Y
-         I9+w7ZHyToZiQmhD9WKoEKhQ3lp2U/GwC77tAkQcidvxh2HMuJ6smkWs14oGydN9Z3Gd
-         pHlNYL72iLJLdlCpW2YC8o7i546huLIzkMRluLp8V36o4kdQJunKBbPf3k5htVq/CqZ/
-         qt1Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Grdaz1TpFA3Sp7xnPLYnJ6husBDK+NZpFTAA5V97e9M=;
+        b=G8CgRyCpKWCh0PksNTQ0p5tZaxBW7ktAp38pc1Dzv0X1eRUGuxIyZabifSYOE7D/KQ
+         G88kQ+DvTuWTspkF6lPA/NvsbE/wHCzLpm1H4WPBjDcSZWjr37XDyko05OAPZAxJEDL7
+         z1+YTK3e36WHapIUxdyVwUoaWsSOU7B05GBH6bjJ6OXvNGiJMmQhWom9kV9AYYk8Im0W
+         Y9Q9d7LBRN8YDwnRFkGe/f4L5nxyeRsPS5pnVnnmmcjMWNhAgr2Kw8MtRbVtQXjIO0iA
+         wG0Lz/2pttio4yECZgZ0PDVUNx7/+3sVhF8fkx3OGTCAkeMhadZhfelNDhNca5euQw9B
+         ixaQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=Ilm9OB3h;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b="iZTgv/bD";
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com. [66.111.4.26])
-        by gmr-mx.google.com with ESMTPS id i126si329835pfc.4.2019.03.17.06.17.47
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FU+ieH7d;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com. [2607:f8b0:4864:20::52e])
+        by gmr-mx.google.com with ESMTPS id k19si491565vsm.0.2019.03.17.05.55.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 06:17:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) client-ip=66.111.4.26;
+        Sun, 17 Mar 2019 05:55:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) client-ip=2607:f8b0:4864:20::52e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=Ilm9OB3h;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b="iZTgv/bD";
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.26 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 08303213F5;
-	Sun, 17 Mar 2019 09:17:47 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute6.internal (MEProxy); Sun, 17 Mar 2019 09:17:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-transfer-encoding:in-reply-to; s=fm3; bh=g
-	Cs9u9GVvEy8yAaajaGdRlcARhKioP/lHmCIh6Bp3sY=; b=Ilm9OB3h/NLxIHVjh
-	OYxV7fLOazcvbxgh/MqEpd6vAHemBcv5e0aLz+nUCtA4aU4W/Ab8aYwQjJelELrs
-	2pSl+rNSuqA6P+JdzCDFndO977MCLeJBR6ohcxNlZ7EqhUIJE5FS8wr/TRwHKdts
-	q8yxLWGcFplWCxJau1VvLh2xW9qVZstO4z3NxbzLqMqcmJZvf7U43tCEu4X50bMB
-	rRohfjmfEYurE0/l95BhnWgJgIrn/PhchubbJg6cIk+v1x7KAgLCDcG6hA+rzmRd
-	K9FY+fStwC0Xpbji5I4k1Q+ZsnLdPfEE3X7xA3kNn5hDQkgkBjjj0a+4Z7mpcYlX
-	HxNZA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm2; bh=gCs9u9GVvEy8yAaajaGdRlcARhKioP/lHmCIh6Bp3
-	sY=; b=iZTgv/bD4w3x4/iHr6VgQhbvu3gOrwEJSm0daDOJVpwqZyVNPo4TrIU3u
-	bm4dWNxV5+81HixjkXCu3/Bm3777DwzCU+WMpUW3evLUJyu0dG4t4fe/0Ild1BrU
-	rk8CfDiyTt5m9iQfJvd/GQa1WR7/T4xNiq3VP1Cl02qZsZcpUf9Oscu7tnGY/CEM
-	umCUNRy5GvcosfZtGE/4FrQRNhn50kofvEFXbAXxcFzmLEo0Ivz/b8KDsNGE5Ft2
-	Fy/l7ObezZx8a2/Ym66SV6M1/9ysg8QikX/9OvTH4JVNbou4KgSZLe4/VDKjtNp8
-	2J55RXvKA0lDLq9QlBgfyuRFRM90w==
-X-ME-Sender: <xms:-kiOXN15UfmTO8LiHvnzwjdJoFXT3ZE6l7TbVcbn7exWVvRmIv9tkQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrheelgdehvdcutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpeffhffvuffkfhggtggugfgjfgesthekredttderjeenucfhrhhomhepifhrvghg
-    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecukfhppeekfedrkeeirdekledrud
-    dtjeenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhmnecu
-    vehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:-kiOXOJ70_F8wB_qI7pPNj6xcr6Gp-oNuYZBPHOYiZ3u2rCSz38i-g>
-    <xmx:-kiOXC0XWzZPE2J2m9mFrifjmmBm2ywm-LIVoS-TCIHXbbj6yLwoiQ>
-    <xmx:-kiOXCkvBdkGmI06f6-VPEUPcc4eXIKC0SPsJD7QvG0axmMo5-y0CQ>
-    <xmx:-kiOXAjg1GULe6SJ9-O3vcyqDP1a2gr30ENqxOaGbKX_fey_PPwg1w>
-Received: from localhost (5356596b.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 51AA0E427B;
-	Sun, 17 Mar 2019 09:17:46 -0400 (EDT)
-Date: Sun, 17 Mar 2019 14:17:45 +0100
-From: Greg KH <greg@kroah.com>
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel]staging: greybus: dt compatible string
- "usbffff,2" documented
-Message-ID: <20190317131745.GA15608@kroah.com>
-References: <1552827308-3539-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FU+ieH7d;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x52e.google.com with SMTP id h34so9484509pgh.11
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 05:55:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Grdaz1TpFA3Sp7xnPLYnJ6husBDK+NZpFTAA5V97e9M=;
+        b=FU+ieH7dBINKvFAzrfukj1Zw/RE/pYBTQtS7y+KrOvsoZ8APxNiLBrinsIk+ZIE11b
+         kOp7sjxrCoVawL9TiBg3TpX/I020E+jjzIHG9Ji60iCHbXFmAEPfiTeKCUqxnHdnm1R4
+         FXoJ4027Ohzm27SEdGI/4eQfmphARfMasZncXX76I2Ch8R9Ahi36/3ycnNWBnP8eFdsX
+         BD4Mq12XxuqiMN/3BMke2FP7/td4N0y3uEYZ+Lh30OuObw916X1eBSGFgs+A8Tg4y79i
+         z7dOBC6o/pJKUbrU1k90MGRdXWLzGGRi3/IByBmTlimRJabMxTtQg0CCEmWB78NZ8NXi
+         476g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Grdaz1TpFA3Sp7xnPLYnJ6husBDK+NZpFTAA5V97e9M=;
+        b=mdCoyypv5bzwbqGffAqFjYXWnyB3/FBM74f/DUCjVGt7p9xNEztn+LskzKHRJUMlyt
+         9mdi3xsT408O5/DA3GC6qg/ff7uy/Ytn7Hw7zBTfpYeIaTEHkH3jV27qsVrXce9Tj7ec
+         SEuWSPheNPGKccIJIkAtbIowFJ4qmrCcwUEKMziU/zTVsJlQvlgwKn/UBGNijZjs1Bs3
+         DxHVfNiYPG9o+NOCgg5eizB1OFge6ckpOAW2NT62BTvPWWfTO8B+vJNnUQfaa9OxUqGG
+         APPaeJp+QNLjC3maG+Eq5BrW+m7QoYDESeiTuDcm+/TxD+WZoGLoWUwO+GrGgDLPYuvo
+         A1GQ==
+X-Gm-Message-State: APjAAAWh4EXPphatl1c1UfXpPCUIccuwQTPzBO210tLCvJ8NLqn9Vxit
+	aAAeD89oQDI/ztsphA4iTDhrwFLP
+X-Received: by 2002:aa7:885a:: with SMTP id k26mr13977977pfo.70.1552827321984;
+        Sun, 17 Mar 2019 05:55:21 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.112.167])
+        by smtp.gmail.com with ESMTPSA id e8sm9949728pfn.103.2019.03.17.05.55.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 17 Mar 2019 05:55:21 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH] [Outreachy kernel]staging: greybus: dt compatible string "usbffff,2" documented
+Date: Sun, 17 Mar 2019 18:25:08 +0530
+Message-Id: <1552827308-3539-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1552827308-3539-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
 
-On Sun, Mar 17, 2019 at 06:25:08PM +0530, Payal Kshirsagar wrote:
-> Any compatible string used must be previously documented. For the same
-> compatible string ‘usbffff,2’ documented in
-> ./Documentation/devicetree/bindings/vendor-prefixes.txt file.
-> 
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> ---
->  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
-> index de6f2cf..62f0b03 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.txt
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
-> @@ -422,6 +422,7 @@ udoo	Udoo
->  uniwest	United Western Technologies Corp (UniWest)
->  upisemi	uPI Semiconductor Corp.
->  urt	United Radiant Technology Corporation
-> +usbffff,2
+Any compatible string used must be previously documented. For the same
+compatible string ‘usbffff,2’ documented in
+./Documentation/devicetree/bindings/vendor-prefixes.txt file.
 
-Is this really a vendor prefix?
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-Where is this string from?  What does it have to do with greybus?
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
+index de6f2cf..62f0b03 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.txt
++++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
+@@ -422,6 +422,7 @@ udoo	Udoo
+ uniwest	United Western Technologies Corp (UniWest)
+ upisemi	uPI Semiconductor Corp.
+ urt	United Radiant Technology Corporation
++usbffff,2
+ usi	Universal Scientific Industrial Co., Ltd.
+ v3	V3 Semiconductor
+ vamrs	Vamrs Ltd.
+-- 
+2.7.4
 
-confused,
-
-greg k-h
 
