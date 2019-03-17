@@ -1,123 +1,92 @@
 X-GM-THRID: 6668974051336126464
-X-Received: by 2002:a02:224c:: with SMTP id o73mr8766394jao.14.1552858443725;
-        Sun, 17 Mar 2019 14:34:03 -0700 (PDT)
+X-Received: by 2002:a25:5d04:: with SMTP id r4mr6146396ybb.89.1552820384817;
+        Sun, 17 Mar 2019 03:59:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:9ad6:: with SMTP id x22ls3846465ion.4.gmail; Sun, 17 Mar
- 2019 14:34:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzYxHDGJjEjW7Vxgsg3AENcNO2CIAUFn0vfnD8STSDGk910VFFWiclXR0Q3rcZPfk1dCl93
-X-Received: by 2002:a5e:8c1a:: with SMTP id n26mr9991434ioj.16.1552858442859;
-        Sun, 17 Mar 2019 14:34:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552858442; cv=none;
+Received: by 2002:a25:41d4:: with SMTP id o203ls2951902yba.0.gmail; Sun, 17
+ Mar 2019 03:59:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxBWf6ieWOH1pBNcpBnX3AZOGzavlrDhKllwe0VLSwXD82pJ2HhiGGNRtB4577l/IqaSV2w
+X-Received: by 2002:a25:910e:: with SMTP id v14mr6533206ybl.74.1552820384376;
+        Sun, 17 Mar 2019 03:59:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552820384; cv=none;
         d=google.com; s=arc-20160816;
-        b=cnHhWn0LqUwwWY+kdTI3sR73UHGC8hzzippWL5LXdpfANXWEKYYneupIksERuXwyXd
-         bbUbgFbekpvhuP1trunFV/42pU+J++VGvnI99G6QM6lkhmsZeXWOyAbz8DVjQ9cpRBUm
-         FF92StvJT7my5bDExysGLNkJkQrwWvHRzXbzbS0+1Rw093NoC/X67c2XzovR3ukwHrKH
-         /JT/4Qasp8vQTs8OmI0bywTvUnLwX9F7ju8xg+ZgaOcNAcfDUBcWSIfJ3+SVEYy+84sB
-         Iv/fHOUcLONBSA/HS+plPSzIbV5Grz+MaahVHTpQuOFJNbjU45tKnNqIi2+x+9jizXdT
-         TvkQ==
+        b=gSmqZT0JXI9h+U9XKKn5sVFU8BTejTTdQo9vAyp/jKVlm5rYjV9a4EpwLoXIJfpv6/
+         o/InPOTfwiKINowi/Y0XizFlP4J0GluNn3EVHwvkeE4uVNJmqD9uqAt+P8w40nGjjk8W
+         Nd2svd4pd9UOBFpDjwgFyE41qI3DnV6krIOtzdyF9I/qS8ELiia700C84Z4TXrGOceiJ
+         K12KT9l7jLxtbT7GkNVGGp7k5SVxp2s5eqK/3G/Jb6Ym38gT/yeE7/EXnPpGyvzQ1C8b
+         EzydUi6h7Pi+Pdb2Wsx63vY8GF39U6Up6iA6Kfx6XcWNtVBkwWNh+VIO87qogHEgr/uE
+         FgSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KxrX5TMwhHhLkgEPo31r4WNSaZiCUFeK8w8pH/gB9Lc=;
-        b=gQ+tIyi2c4F9GjuSZWxN3IjVSjNtHo6C9g90HDonDrrqcYVixZRhs8fRD7t0B6ZmDY
-         rPY8KEeqqlb+tAUzuYJynJg+2O1PmGbFzKrGIqLKe0PcNQ4jplRcgehjvgj0WOK9YZF/
-         yIkP8K2LZ3pVKZhzTT8g1zVH9U8mGvxgMs7vQatmCelD4mvSJDVm95QHGIoJBy7GDII8
-         HBd3lWLxj25qf/VF13x5qGP17EiXsg7+7dW9tiI36cmVfBdeX+t4O2rVP43AsF2bfQ/B
-         oNhvAS3FZCvbzKpLRk9/In+ubFPF8zSeC98KGgYpdwKDxGIW/LBT6Aro4de6gIoZoe3Z
-         VgZg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=yEV1w6+sD5ZdksvtDBVwlGz79bdNJXOKonBVaoOIK+U=;
+        b=dBQw06lxsSf1+5hDUz2Kxh1dph5CRleR0sUNNUFoYUkQUlBIVNFCFbL4OUa+35qxtk
+         k7QSm2jqj8zQ0T+AYWHWOQq7IHtwAuV8kxRy0VYbpQ3TVdfhyqb0th4FJIJ6aH6wnN8e
+         KinViomMi9SIq1OTny1uVyoWJLpx3qg+p6RKcngnDujsHnymUvD2+gdVH1C2QxBgCgUj
+         r3Ue7f88bdscKJYZAryI1kAUXNVcRJXs8Fj+I7evJWe4aAwvqUe3hJVDlLAS+CY5Mi+V
+         yhA1lB0AXLzbikkOy/QNkcF0I1NQFlZMW2Hkl+jL/uFSxXB5SMMljRUCQLAB6UA9oC75
+         HFpg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mwo4oiz4;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x344.google.com (mail-ot1-x344.google.com. [2607:f8b0:4864:20::344])
-        by gmr-mx.google.com with ESMTPS id 71si430461ita.0.2019.03.17.14.34.02
+       dkim=pass header.i=@kernel.org header.s=default header.b=e7gY1WNa;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 62si450474ybf.2.2019.03.17.03.59.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 14:34:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) client-ip=2607:f8b0:4864:20::344;
+        Sun, 17 Mar 2019 03:59:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mwo4oiz4;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x344.google.com with SMTP id e80so7649818ote.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 14:34:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=KxrX5TMwhHhLkgEPo31r4WNSaZiCUFeK8w8pH/gB9Lc=;
-        b=mwo4oiz4p/B3MUKNodedGfjG+iqwn5wZVaISlQrtcj2A4vvS5J1NJaGNyKr8rRkPJk
-         owhzBDh65I+bUw5Km8hUzWKC07rBO44gYTEqECXlOvm6fTIl3cQcJMvy9xFRkpPaLyUV
-         Ez4GI6DzxSCU6jOzgKmMq+MPJb21UXCNbBIyeNE911oczS+EFsoTDMqlMPcnF3/LhX6V
-         hjwH1+8JDaot2VWAaNsUEdAJGnXUxDjYN7UnZXA/oRo2OYDMc9Mlp28C1fjmKjR4DBfe
-         rzbU1SwC/gPQHDdJJM9yk1ZPGdJs6sUZQZyYjobrOPOQZa/bX++yuqNjNYSnCA8PDIhb
-         SGjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KxrX5TMwhHhLkgEPo31r4WNSaZiCUFeK8w8pH/gB9Lc=;
-        b=bdmxtO7g+BaWe+XGa2Fffzx8Mz7oLbRkbIi7PoQtUPNjeYxV1L33AXgMhk5/in6ceK
-         bbZ8K5ru5soSdpHHI8d8qD/06/7M814EgpbUBZkJaVVfMNIs0sigwgHWTi18x/+hN3yz
-         Vg6zJWMXVSrr9fIgrQ6KFm+TGcQ7VHCXU/NOKJASe6wL00wcZ4A0u3QNpUOfQhP8VfG7
-         SUPMljgq6jlfX3O9WU6d6dXwhSv0MziZ+OpRTDrfevqLaiCXN7LjTpOvPqev6OYFzcSD
-         pslgCoGyNH8Ow5Sj5JvlR+RuEQpg7NniTF1NTgp0ikdVDONTo8bxRJ9fkUcU04BmJJ+w
-         RBrw==
-X-Gm-Message-State: APjAAAUdGJIWwmgwL8/1E0/gdjoTZSQeqhUoj0ZdGWwiDMQ09FvdU6KX
-	Mi2vpushq8nQ3cjSP4AaTpUwaMAC16U=
-X-Received: by 2002:a9d:19a4:: with SMTP id k33mr8341456otk.269.1552858442518;
-        Sun, 17 Mar 2019 14:34:02 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:d12b:f32e:ef21:5bfb])
-        by smtp.gmail.com with ESMTPSA id g3sm3514898otb.66.2019.03.17.14.34.01
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Mar 2019 14:34:01 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v2 0/5] Issue suggested by Coccinelle using ret.cocci
-Date: Sun, 17 Mar 2019 16:33:53 -0500
-Message-Id: <cover.1552858206.git.madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=e7gY1WNa;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id EA34421019;
+	Sun, 17 Mar 2019 10:59:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552820383;
+	bh=5ZlsWuFikIwh6PTduKmvGadUfZZg+hxKd/n1zoarQt8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=e7gY1WNaldmeNTYtck/RQOBrHNYpNYx86415OlmmjpPUNN/9jPwUChIfuRi9e8VvY
+	 +t+2fAV8vs088FuquLkQwtQQTBc+BFq9JHKrLfavEpJ8emlOoWn/e3AMO4aTiDwsDj
+	 rJ2xwvfyKrUNEwjdTnTnfdE4NHiF36C0kMXR3NQ8=
+Date: Sun, 17 Mar 2019 11:59:39 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 1/7] Staging: rtl8723bs: Drop wrappers and change
+ function names
+Message-ID: <20190317105939.GA709@kroah.com>
+References: <cover.1552782299.git.madhumithabiw@gmail.com>
+ <2b464c5d0bc1e9308855a23db02c721e5cf6d3e8.1552782299.git.madhumithabiw@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2b464c5d0bc1e9308855a23db02c721e5cf6d3e8.1552782299.git.madhumithabiw@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-This patchset does tasks as below:
-1) Drop wrapper functions and change function names
-2) Change type of variables and return type
-3) Change values to standard error codes in functions
-4) Replace NULL comparison with !
-5) Add missing NULL check for kmalloc
+On Sat, Mar 16, 2019 at 07:32:18PM -0500, Madhumitha Prabakaran wrote:
+> - Drop wrappers rtw_init_cmd_priv and rtw_init_evt_priv,
+> as their only purpose is to call other functions
+> _rtw_init_cmd_priv and _rtw_init_evt_priv, respectively.
+> - Change function names
+> 
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_cmd.c | 20 ++------------------
+>  1 file changed, 2 insertions(+), 18 deletions(-)
 
-All these patches are relevant to an issue suggested by Coccinelle using
-ret.cocci.
+I wanted to just apply this one patch, to make your patch series smaller
+overall when you rebase for the next ones, but when this patch is
+applied, the build breaks :(
 
-Madhumitha Prabakaran (5):
-  Staging: rtl8723bs: Remove wrapper functions and change function names
-  Staging: rtl8723bs: Change type of variables and return type
-  Staging: rtl8723bs:  Change values to standard error codes in
-    functions
-  Staging: rtl8723bs: Replace NULL comparison with !
-  Staging: rtl8723bs: Add missing NULL check for kmalloc
+You can never break the build at any point in a patch series.  Every
+patch that goes into the kernel has to be stand-alone and not cause any
+problems.
 
----
-Changes in v2 -
+So when you fix up your patch series, please do so with this in mind.
 
-1) Modified commit log here
-2) Dropped patch 4,5,6
-3) Included patch 4 for replace NULL comparison with !
-4) Merged patch 4 in patch 1, which is to remove unwanted function
-declarations.
-5) Merged patch 5 with patch 3, which is to replace error codes in
-functions.
-6) Merged patch 6 with patch 1, which is to remove extern and change
-return type
-7) Removed unnecessary local variable res in function rtw_init_evt_priv
+thanks,
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c      | 37 ++++++-------------
- drivers/staging/rtl8723bs/include/cmd_osdep.h |  4 +-
- drivers/staging/rtl8723bs/include/rtw_cmd.h   |  2 -
- drivers/staging/rtl8723bs/os_dep/os_intfs.c   |  4 +-
- 4 files changed, 15 insertions(+), 32 deletions(-)
-
--- 
-2.17.1
-
+greg k-h
 
