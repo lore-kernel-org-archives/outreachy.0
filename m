@@ -1,114 +1,96 @@
 X-GM-THRID: 6669413684549255168
-X-Received: by 2002:a1c:f514:: with SMTP id t20mr785830wmh.25.1552847057079;
-        Sun, 17 Mar 2019 11:24:17 -0700 (PDT)
+X-Received: by 2002:a25:1607:: with SMTP id 7mr428545ybw.51.1552846709792;
+        Sun, 17 Mar 2019 11:18:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:f106:: with SMTP id p6ls1753458wmh.6.gmail; Sun, 17 Mar
- 2019 11:24:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxwQaszAKW3Qau6Dc7dwm+i3vggABBM6Yizo7SlbJP+YubHi5QOqHEfPfR1sP+7CsG0LkG+
-X-Received: by 2002:a1c:9e0c:: with SMTP id h12mr552510wme.3.1552847056091;
-        Sun, 17 Mar 2019 11:24:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552847056; cv=none;
+Received: by 2002:a81:7008:: with SMTP id l8ls3448268ywc.3.gmail; Sun, 17 Mar
+ 2019 11:18:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSnRv8QT2bGjaOStl6T43x/9jvcatb9cPKshLGJINeeRVz37M0Ixeo+y3KtrEVphO9OEoA
+X-Received: by 2002:a81:3cd7:: with SMTP id j206mr7193521ywa.11.1552846709197;
+        Sun, 17 Mar 2019 11:18:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552846709; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ln15PyxHBmDbyrpV8FYDwlswZhWbB0kqK6ymIlZZpFQRmM0+brjtyhvq9RS37XvVBB
-         eWU5mVh29BQgl27dQSt4MajFC7WQks7+1PJIIBk4MQWMTa9oI7d2cY0lFEwAO/IEIS1v
-         GQdX67UM8d1hEcJ8t3cwH/vzmv1O1hui9i6+id/LbARy6D3Xre1X4C3opt7CCbNl0t7X
-         r9Zk540etyYeJ4pR/rnKobbTcHBiKlnD45NBq2dbEnOlal3x0+ad6Zy6jJY0hgWXNpVH
-         iga5tt5fDY6nRU05jx6kKuPsF3nsNGjMlS2BNxKJg7VIz0MtiFYK8SGv7qnpZ5EGe3J6
-         ua/g==
+        b=OqsWNgpBuMA1ygPpnzWP5I0Dzax/7VGt/jS+/qT/o7cAxvcxswPMgXTvUdWQERqJ50
+         e/aNgB/q2fO5p4Z3HktTnQCXXC7vsr20sAOIYkMvksvN9wEfFkO2h3fxODKzdnIKMIRk
+         ScXnxqm8ijjlFywpQ+cVU+meM4pDzRsJAq2iKG+HpcDnaaMaObqtmTVet0XCmN/KvSXB
+         D1aMOnbmtJxsIdssw9D6VYQp9MyPHLZvw20RNVKdjJOfHwMOIzUrn+JMSTBl+S3HKFVT
+         6Hm+gbBeSGWytxkrtUkb7yOWsPw2vRM8WElS6mH6xq+cpJ3xPQvlkFoKfBvTYDZSjkgy
+         /4uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=3gXSRg2eEL8eTqzieFdd1MW7fYwwJYUUDW+AFBStDxk=;
-        b=0yErEFv3KgAsefQIWleOUxRE++X+gTUqi2cwlzjXko3/jyb0/C1jwM+rdUzrFkoomc
-         DVKitdm2lCJq1N0WjJeKhBI4jtvzMOHWsaUsLkcEN7sbo0IiLwkoXfcem16WE2yLNavK
-         V81AcCVs01PqoK/R8ktZndO97i/LuFEEshVa9CdBvAGQKn23rYNCVY/xgqFy3qyR9vPm
-         WeqJCxH+8DQIjFnckWtXp4t9Vf2it2q1LQ+Mfvqt/3ac+KqbIv1r34suCVmMM/o7V6FY
-         UsdRy1mM+H1r1nQgb6mybk96nKUs9wW67WGjGCF/PDoiprgvBqxJPrmPu/VMBH8jlLbH
-         zWig==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=0jr7z5+dC+G8cEosSo8EvL8VnCewkDF0hK+aMzFqW4s=;
+        b=ksEW2OXK5GpYkylcbZSARcTTMPZ6ebzrfzl+iFoQ0F0KTTfYqcHRLRnH3QG7ApKpfz
+         3dCfUgl2ijlbQMm7PZEIvE7vrjdZ7rdQrMDGZTZKSn7/knrk5MCg+RaH7Tmh+n3eCBHL
+         ys1gXmBV5G6GYCeY+nnq8Hm390hF9ht3p7J9oWHAkSybhKGV47BXQV9DkwzwFhdBJknp
+         Op4A3KUa3eufYsuOnM8YF9ZG4jMbwFhyTreNZXieuab52FfxYCNP8ami/DADuigWi7fH
+         jgbv/s5R/e/6Q3QOYG7XxrU/enplCycysf/Kwg8WUQAWnlGZzp4A0yByFlBhTCy5OLqr
+         Pbww==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id r18si250429wmc.2.2019.03.17.11.24.16
+       dkim=pass header.i=@kernel.org header.s=default header.b=XbLA5eyX;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id r128si507585ywd.0.2019.03.17.11.18.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Mar 2019 11:24:16 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 17 Mar 2019 11:18:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,490,1544482800"; 
-   d="scan'208";a="374406750"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Mar 2019 19:24:15 +0100
-Date: Sun, 17 Mar 2019 19:24:15 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@kernel.org header.s=default header.b=XbLA5eyX;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 9EBAF20872;
+	Sun, 17 Mar 2019 18:18:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552846708;
+	bh=UpqUT+9qbbq2b85nQ6yCtfPfILHQRte8vZCTUxCQqGM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XbLA5eyXot9YxsFTHNbJfYLJrz/83uTzZ+Vp0x63JM9/xaFv/v6AwzNsmJA01O/Q8
+	 7SWdF06rqsQC9TvXMSyPF0jWTZc7Lpd1JfvWr5vcjig/OEMn5gkn3kYqVJkpypa/Bt
+	 srJGqQUIrhOYuTlSJaOnto5o89XFhIXA15ymfI/4=
+Date: Sun, 17 Mar 2019 19:18:25 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: gasket: gasket_interuppt.c:
- Fix string split issue.
-In-Reply-To: <20190317181328.4707-1-sanjana99reddy99@gmail.com>
-Message-ID: <alpine.DEB.2.21.1903171922590.2434@hadrien>
-References: <20190317181328.4707-1-sanjana99reddy99@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Staging: gasket: gasket_interuppt.c: Fix string split
+ issue.
+Message-ID: <20190317181825.GA3482@kroah.com>
+References: <20190317173107.3814-1-sanjana99reddy99@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190317173107.3814-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-
-
-On Sun, 17 Mar 2019, Sanjana Sanikommu wrote:
-
+On Sun, Mar 17, 2019 at 11:01:07PM +0530, Sanjana Sanikommu wrote:
 > Remove string " across the line.
 > Issue found by checkpatch.pl semantic patch results for rtw_ap.c
->
+> 
 > Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 > ---
-> Changes in v2:
-
-It is confusing to send the same patch twice.  If you need to fix
-something, even forgetting to give the message about what changed since
-the previous version, it would be better to increase the version number.
-Then one can see immediately what is the most recent version, and ignore
-the others.
-
-julia
-
-> Fix the string in a single line within quotes.
->  drivers/staging/gasket/gasket_interrupt.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
+>  drivers/staging/gasket/gasket_interrupt.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
 > diff --git a/drivers/staging/gasket/gasket_interrupt.c b/drivers/staging/gasket/gasket_interrupt.c
-> index ff61b782df30..2d6195f7300e 100644
+> index ff61b782df30..da517c2990ea 100644
 > --- a/drivers/staging/gasket/gasket_interrupt.c
 > +++ b/drivers/staging/gasket/gasket_interrupt.c
-> @@ -97,8 +97,7 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
+> @@ -97,8 +97,8 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
 >  		 * modify-write and shift based on the packing index.
 >  		 */
 >  		dev_dbg(gasket_dev->dev,
 > -			"Setting up interrupt index %d with index 0x%llx and "
 > -			"packing %d\n",
-> +			"Setting up interrupt index %d with index 0x%llx and packing %d\n",
->  			interrupt_data->interrupts[i].index,
->  			interrupt_data->interrupts[i].reg,
->  			interrupt_data->interrupts[i].packing);
-> @@ -120,8 +119,7 @@ static void gasket_interrupt_setup(struct gasket_dev *gasket_dev)
->  				break;
->  			default:
->  				dev_dbg(gasket_dev->dev,
-> -					"Found interrupt description with "
-> -					"unknown enum %d\n",
-> +					"Found interrupt description with unknown enum %d\n",
->  					interrupt_data->interrupts[i].packing);
->  				return;
->  			}
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190317181328.4707-1-sanjana99reddy99%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+> +			"Setting up interrupt index %d with index 0x%llx and
+> +			packing %d\n",
+
+That did not do what you think it did :(
+
+Are you familiar with how C treats strings?
+
+thanks,
+
+greg k-h
 
