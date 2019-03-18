@@ -1,224 +1,175 @@
-X-GM-THRID: 6808187713389330432
-X-Received: by 2002:ac5:c911:: with SMTP id t17mr2945246vkl.81.1585154727185;
-        Wed, 25 Mar 2020 09:45:27 -0700 (PDT)
+X-GM-THRID: 6668560476445605888
+X-Received: by 2002:aca:4911:: with SMTP id w17mr10255117oia.5.1552892578198;
+        Mon, 18 Mar 2019 00:02:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:c01d:: with SMTP id v29ls316545vsi.6.gmail; Wed, 25 Mar
- 2020 09:45:24 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vshPnYWZ8DVQ2BWJo6lJDrqhlQLvvEyLLvSFxs7ezFkS+c/5qYHdtBR439nftZoUy+UHT91
-X-Received: by 2002:a67:d491:: with SMTP id g17mr3433802vsj.114.1585154724437;
-        Wed, 25 Mar 2020 09:45:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585154724; cv=none;
+Received: by 2002:a05:6830:164a:: with SMTP id h10ls2352623otr.7.gmail; Mon,
+ 18 Mar 2019 00:02:57 -0700 (PDT)
+X-Received: by 2002:a9d:590f:: with SMTP id t15mr9138913oth.7.1552892577812;
+        Mon, 18 Mar 2019 00:02:57 -0700 (PDT)
+Received: by 2002:aca:c3d2:0:0:0:0:0 with SMTP id t201msoif;
+        Sun, 17 Mar 2019 23:37:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwXwxujEK98amSRHMWs6szx7syuOVtPderT8/b8CE4yP9tsuVYb19ksqCyZMSQd07ygnyI2
+X-Received: by 2002:a24:6f15:: with SMTP id x21mr9656404itb.2.1552891050314;
+        Sun, 17 Mar 2019 23:37:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552891050; cv=none;
         d=google.com; s=arc-20160816;
-        b=aP/mNexZhbXQyvVvkv57CPdWu0Hnx7V+asPWCO4Lc2Ql8YgdNhU00bgljSRDRT0efh
-         76tFXSrmsD3sReghwdSVS5a7GxCzfKp1axeg+PyQ29TDkbpXPpYPzY65532gordml59A
-         XAjFNGgqsND9urs/0ZV+A6gWoAnTEMvGWi25x7r4BO7jT0O1P2gEhDdyFiXPH9+qjByV
-         a7ermns8OBtfMwNCACXRTzBExg2RQeaTWARmKshKjTGPJtR08o1KAsoSj3WvJfhhf4Zb
-         45yBStUbbDSUfmfgJ7fUVg8qVY2DR6PArVkJdNRN0Y2E3BwuclYnrsiaasBWa4v0gaSy
-         MYvg==
+        b=nUdBMmoSJUsYqCOs0uHrVpuSUgDbps5fr4W9xY3epdGN1bvc01So8eBDrnxZir5PuN
+         pCsOYR1a5FMFntbhkWBfW1vK+RKt4kEiW1XPfAkSlKHh5vxe1SdELBnVe/4mDa7fMkcx
+         hpc7v67DZ4gBUEFWl6LvvDtzEfKnL4Sk8Sd85k35MXY2kwlIf/vrvof/HEMw96ZRUGLi
+         Rz3pVEu7bTtGpoDoa8RqP3tLM7YbAeNgu6IHQPMnwRlUrjxPZDGZRZPf3UUu/JIdEPPn
+         PW/4YG02uJtjpM/cD0W7ZOvBbl5EJACJSR10lmHQzVqrF36FQCkUUBev6Ty3+NFgyQpv
+         OgSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=8TyWZF/hKjoYHK9kozfXNfOetaQstcsdqGIUqpxVSWo=;
-        b=0FTBE3+Xdb96q1iBbJRvexQ86xzdeQSe3pmQY312NPXUmtXrkvgxv4rCGhlPKjYkap
-         176CgHdy6UdpUaPr4ix6Z0Fex0HdWeZrGCMZAj54Cz/ijuhZQIU0EbnYZooF+wbp3OJw
-         xtmy130QeLZs9ygcezVLQ3q/DDsAH324YerpCAq4CDPY/c8IMX22kH5Ql1iwqPTdSwc7
-         s1rQKJ4S23ptGBY51KqbhGFTvMckGftoSG5zt6iGt3ZS0ZaU6rPnIc3l2FWHtaz4ewTs
-         go+w8t1O/lsbgvRoEob3BGXXOImsOfvdmA9vqwdy+7xYaStRbUeV9pqGleaEZh5aEiSh
-         /qwQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=2Q8u6jajuD+rEHnPrTOX24TfswEbI4dFMaylZlMb/Rc=;
+        b=HEjpIDbbaP0PCuDk5ie5KJ6l7S3RUkQQnmY+ps90AZ/abTGmjiDa5XZf1KdJ03poxc
+         C8yNuY74gsXyjfWGYY7A587ebo6WFT+H1TJbJlRdh3x70XyISyCZgksvBsOH8QwLa5gv
+         3XGqcFeH7a4wuQmM3kiQc9lUt5XYVNmbpKEBxENfJEZ2Xe2QRmMCCnkFWrAr2Zen77GW
+         +zIXbs+fHohKM6m9vgKn3s9WBb/lxYHgbWoKZjJjOQy4GPEKI4utjLBiPpOlIg8Ji0P/
+         851j3Uf7gYtvdAwgcscQU7pEf7tok86hKcgFSQbP0A1JWS8iGhyWTQR+hqamPctneC6c
+         D04w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dz9M17el;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id v5si737576vsl.0.2020.03.25.09.45.24
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=uYJe188W;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.139 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic310-19.consmr.mail.sg3.yahoo.com (sonic310-19.consmr.mail.sg3.yahoo.com. [106.10.244.139])
+        by gmr-mx.google.com with ESMTPS id t17si276278itb.2.2019.03.17.23.37.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Mar 2020 09:45:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 23:37:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.139 as permitted sender) client-ip=106.10.244.139;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dz9M17el;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id d25so1305292pfn.6
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 09:45:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=8TyWZF/hKjoYHK9kozfXNfOetaQstcsdqGIUqpxVSWo=;
-        b=dz9M17elo03t5YW8wGA9UpAawb+jWBG2PQMy0JsQVilQVNYxCRRmMmW6vE1gCdSSDS
-         Jza2UJ9N6RYhJjNNHE8oy9FOE1QT8ZznAsPw4Bh6oAQNyww3L3nP0RrFfvJRJ4Ad+QNL
-         cSz90mc4v23Ji7ewYC5gBiL9ZcDGPn7o2AaSXI139hrp9bqtjAuZqumDqh9Qe2TwOHTc
-         hw5+PZRHvgWPogxNtkMLafRsqp+fChVnwRYWHNDS+xKqPfKXniWdD2U7d5Y+Sd8z3RH/
-         Ykeo1OwGxEaK1ZGEsIqBuc+eOUefbjRuxgO6EvbvMmo2jtgrYa6drp76OUpo9l7yPjKd
-         yJYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=8TyWZF/hKjoYHK9kozfXNfOetaQstcsdqGIUqpxVSWo=;
-        b=D3Ti1v33THwizanzZExOQKz4tofZRZswoKMgwj3D+wD0rW5pYo35NmaDcUseih0nSP
-         ELMwcn9z4a5xkexv6Lrr81f/CMOb0Nrema4fbogMtlTBm0ogEaLiaRjvBVZjOmNqapr3
-         ZOcyyCgDmWPaklpsHGM2sSKGXRF1das4+b4GSoRgffOzPVblBTAZdOndQ1obYIhn4+Qa
-         iGYCHMPll33zNpL2SsS1ceRqrXUWH+rtw2ZnL58WGvlThmnB9n+cmUuM+wRptWpEwzOZ
-         QIIc+7WqMG2NCZbcwJWScXWqMdScLNabSD/OZ7SdOw5PtBkG3WFSStWd0z1EbjRpNL5I
-         aVng==
-X-Gm-Message-State: ANhLgQ3SiepiGn4Hx+KGKWLyM0eHCcY44ZPW4mbl+Tc+LNlz0NxzL5tN
-	d/JvqRv9+WJwHgJvY1cmsM40KpSORCI=
-X-Received: by 2002:a63:4502:: with SMTP id s2mr3946982pga.391.1585154723293;
-        Wed, 25 Mar 2020 09:45:23 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from simran-Inspiron-5558 ([2409:4052:78f:bb47:8124:5e4b:ea06:7595])
-        by smtp.gmail.com with ESMTPSA id o15sm4815290pjp.41.2020.03.25.09.45.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2020 09:45:22 -0700 (PDT)
-Date: Wed, 25 Mar 2020 22:14:52 +0530
-From: Simran Singhal <singhalsimran0@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Add line after variable declarations
-Message-ID: <20200325164451.GA17569@simran-Inspiron-5558>
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=uYJe188W;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.139 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1552891047; bh=2Q8u6jajuD+rEHnPrTOX24TfswEbI4dFMaylZlMb/Rc=; h=Subject:To:Cc:References:From:Date:In-Reply-To:From:Subject; b=uYJe188WwKnZUNjpAnLgkEVgwLcgdbw+aaVfZzE+oOCIpEEQitP1eM4J/mQjEmACYoSXvas9ZFgJgXazyOiOw2E2hIrX9Wyhdop/MftPJkfcb3nZmRfQ0/eRDSOgv6wYU4K1Vn0dyLbMGkGUwnpBzHKpUwInSs6fz+OxBQPZxqk7EoQMR++ASJ3g9JG119A+daAn92kSxiFUM23LLX2H9KpBiMNZc+yCePQEyXm9Hx+NKipflZQ60yDwRS/xYE3xjzAoYL9mzGIWsSGSttm/g9/BQ/et8+VJVTXZA3WlkPSZzfocGVKzRsoShoTorr+0c5BA4viHMIvxu4Kb4V2Ymg==
+X-YMail-OSG: kv1xrBMVM1mPLqwH5bZGtrrxX_88VkshPDQ.9fX1YoB3NMsEK2_dT9T6Rf0qUV2
+ mJ73q1VeXAJH0QRSFeOsHvf647wlos8JYYp6EN4WC2YeH.0cZ2E6leLqK_irWPhTdnZ2o8Zjy4P_
+ rT1iBO1HhzKxj_kQX_qeG31Spn1D3KrpjFV.O7vm_.hBDLq5wM5H90.LVIWuTbc4zZD8hNpW_31E
+ j8x71ekU1jHF5Vba.spkqRBcSr9qHIFUk1J4dEtcOyAshL4EEJQ7j01wuB9ku4V8okCfb9InPayV
+ V2qsxz9POq90o71nu_ec4hF7sxdBZFhc0D.N7mbZ76OcpTimWLH3Yew5BzE9esZb8IzAOmPFgkES
+ A5l9TdONplAJCCNpFw53S6.6TDHmkJpwzHAH3fiLbyBfFsrICHu4JJUaMTtqayPjeREW.sMZ5mie
+ 4Ox_0_sSgozsKaHaVP4PwLyHIzmkgTFy_z50145PHxdi2EyZzgqCe_q.9h3FzRAs0tbILns8tNG0
+ 9Pn_dPs5pZQmzcaDParz8LZlK2HnA_11117hD74CFJYKIhL.igWBshTRa6cbq8kSPpVH3DFFhJ4I
+ acMVjCV_zXyRF9.WXKTzF3klEOhN.2pvd4jeSwTVGa.rAOXkQn44jJK8lpFV8pfQm8tssd5Q.ze2
+ JQPMuqbi746c.izdPmVbtR6Xcuzz.uwGzvd_t.iI8YEYq.82g8DYLcqaJoou2xweCWfwI58qP8OC
+ Ci2Y3eyaaH4AliXSAw_ucAmGWVK3Hv._PUPNjBQ4aJ3WjuoAiGN6RpJjKtJtoFqwHKOIvlIf_v5t
+ .F2_zK_1J3dzzi.sddVNDBIS5RLjV9Lg1zVCZJn5TnYZF7Y_nJ3udvY5jWfUsDw8D56Jjp71.DxZ
+ s2eK3xGox4etKPflvs.Jp.I9Vi7XvOZ.M8gg.lu_ci.5HYBoQvg5tY4FRdbpID7PbDe1aU2W6tAG
+ 8zZBwrvqcFW3TKO5LJeJUC0hll6pK.qjF_DxZr8373Y8CdMSaybz1yv5gtXUFCH2z5TDgZws8H0T
+ YvMyhJHcpM39tZNqzdEUv6esRibkV6q1D1MLTh1A7nmVA7swqFxK_SUNt3JrdRdk9Th33fgMvBsF
+ NYZCh5Lx.0Q1lfylXspYnn7.EeM0Ljhy_06tOHrJprWe.0kGdqg1NV53Q
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic310.consmr.mail.sg3.yahoo.com with HTTP; Mon, 18 Mar 2019 06:37:27 +0000
+Received: from 125.22.40.140 (EHLO [10.0.2.15]) ([125.22.40.140])
+          by smtp426.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID b4ee90efaf89f992496eb684e49d8744;
+          Mon, 18 Mar 2019 06:37:23 +0000 (UTC)
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: sm750fb: Remove
+ unnecessary function
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, sudipm.mukherjee@gmail.com,
+ teddy.wang@siliconmotion.com, outreachy-kernel@googlegroups.com
+References: <20190315102007.26612-1-nishka.dasgupta@yahoo.com>
+ <20190317104323.GA16257@kroah.com>
+ <c6bcf143-56b8-958a-fe5f-1ffad198e04a@yahoo.com>
+ <alpine.DEB.2.21.1903171754540.2434@hadrien>
+From: NIshka Dasgupta <nishka.dasgupta@yahoo.com>
+Message-ID: <2d3e19c4-8513-92f2-4521-8bb0d3d6310f@yahoo.com>
+Date: Mon, 18 Mar 2019 12:07:19 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <alpine.DEB.2.21.1903171754540.2434@hadrien>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 
-Add whiteline after variable declarations to remove the checkpatch.pl
-warning:
-WARNING: Missing a blank line after declarations
 
-Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index c642825ca8ef..8f9da1d49343 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -219,6 +219,7 @@ static RT_CHANNEL_PLAN_MAP RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE = {0x03, 0x02};
- int rtw_ch_set_search_ch(RT_CHANNEL_INFO *ch_set, const u32 ch)
- {
- 	int i;
-+
- 	for (i = 0; ch_set[i].ChannelNum != 0; i++) {
- 		if (ch == ch_set[i].ChannelNum)
- 			break;
-@@ -2184,6 +2185,7 @@ unsigned int OnAction_sa_query(struct adapter *padapter, union recv_frame *precv
- 	}
- 	if (0) {
- 		int pp;
-+
- 		printk("pattrib->pktlen = %d =>", pattrib->pkt_len);
- 		for (pp = 0; pp < pattrib->pkt_len; pp++)
- 			printk(" %02x ", pframe[pp]);
-@@ -2486,6 +2488,7 @@ void issue_beacon(struct adapter *padapter, int timeout_ms)
- 		/* DBG_871X("ie len =%d\n", cur_network->IELength); */
- 		{
- 			int len_diff;
-+
- 			memcpy(pframe, cur_network->IEs, cur_network->IELength);
- 			len_diff = update_hidden_ssid(
- 				pframe+_BEACON_IE_OFFSET_
-@@ -2500,6 +2503,7 @@ void issue_beacon(struct adapter *padapter, int timeout_ms)
- 			u8 *wps_ie;
- 			uint wps_ielen;
- 			u8 sr = 0;
-+
- 			wps_ie = rtw_get_wps_ie(pmgntframe->buf_addr+TXDESC_OFFSET+sizeof(struct ieee80211_hdr_3addr)+_BEACON_IE_OFFSET_,
- 				pattrib->pktlen-sizeof(struct ieee80211_hdr_3addr)-_BEACON_IE_OFFSET_, NULL, &wps_ielen);
- 			if (wps_ie && wps_ielen > 0) {
-@@ -2700,6 +2704,7 @@ void issue_probersp(struct adapter *padapter, unsigned char *da, u8 is_valid_p2p
- 			if (ssid_ie &&  cur_network->Ssid.SsidLength) {
- 				uint remainder_ielen;
- 				u8 *remainder_ie;
-+
- 				remainder_ie = ssid_ie+2;
- 				remainder_ielen = (pframe-remainder_ie);
- 
-@@ -4280,6 +4285,7 @@ void site_survey(struct adapter *padapter)
- 
- 	{
- 		struct rtw_ieee80211_channel *ch;
-+
- 		if (pmlmeext->sitesurvey_res.channel_idx < pmlmeext->sitesurvey_res.ch_num) {
- 			ch = &pmlmeext->sitesurvey_res.ch[pmlmeext->sitesurvey_res.channel_idx];
- 			survey_channel = ch->hw_value;
-@@ -4323,6 +4329,7 @@ void site_survey(struct adapter *padapter)
- 		if (ScanType == SCAN_ACTIVE) { /* obey the channel plan setting... */
- 			{
- 				int i;
-+
- 				for (i = 0; i < RTW_SSID_SCAN_AMOUNT; i++) {
- 					if (pmlmeext->sitesurvey_res.ssid[i].SsidLength) {
- 						/* IOT issue, When wifi_spec is not set, send one probe req without WPS IE. */
-@@ -4351,6 +4358,7 @@ void site_survey(struct adapter *padapter)
- #if defined(CONFIG_SIGNAL_DISPLAY_DBM) && defined(CONFIG_BACKGROUND_NOISE_MONITOR)
- 		{
- 			struct noise_info info;
-+
- 			info.bPauseDIG = false;
- 			info.IGIValue = 0;
- 			info.max_time = channel_scan_time_ms/2;/* ms */
-@@ -4518,6 +4526,7 @@ u8 collect_bss_info(struct adapter *padapter, union recv_frame *precv_frame, str
- 		p = rtw_get_ie(bssid->IEs + ie_offset, _HT_ADD_INFO_IE_, &len, bssid->IELength - ie_offset);
- 		if (p) {
- 			struct HT_info_element *HT_info = (struct HT_info_element *)(p + 2);
-+
- 			bssid->Configuration.DSConfig = HT_info->primary_channel;
- 		} else { /*  use current channel */
- 			bssid->Configuration.DSConfig = rtw_get_oper_ch(padapter);
-@@ -4551,6 +4560,7 @@ u8 collect_bss_info(struct adapter *padapter, union recv_frame *precv_frame, str
- 		p = rtw_get_ie(bssid->IEs + ie_offset, _HT_CAPABILITY_IE_, &len, bssid->IELength - ie_offset);
- 		if (p && len > 0) {
- 			struct HT_caps_element	*pHT_caps;
-+
- 			pHT_caps = (struct HT_caps_element	*)(p + 2);
- 
- 			if (le16_to_cpu(pHT_caps->u.HT_cap_element.HT_caps_info) & BIT(14))
-@@ -4584,6 +4594,7 @@ void start_create_ibss(struct adapter *padapter)
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
- 	struct wlan_bssid_ex		*pnetwork = (struct wlan_bssid_ex *)(&(pmlmeinfo->network));
-+
- 	pmlmeext->cur_channel = (u8)pnetwork->Configuration.DSConfig;
- 	pmlmeinfo->bcn_interval = get_beacon_interval(pnetwork);
- 
-@@ -5388,6 +5399,7 @@ static void rtw_mlmeext_disconnect(struct adapter *padapter)
- 	/* wakeup macid after disconnect. */
- 	{
- 		struct sta_info *psta;
-+
- 		psta = rtw_get_stainfo(&padapter->stapriv, get_my_bssid(pnetwork));
- 		if (psta)
- 			rtw_hal_macid_wakeup(padapter, psta->mac_id);
-@@ -5425,6 +5437,7 @@ void mlmeext_joinbss_event_callback(struct adapter *padapter, int join_res)
- 	struct sta_priv 	*pstapriv = &padapter->stapriv;
- 	u8 join_type;
- 	struct sta_info *psta;
-+
- 	if (join_res < 0) {
- 		join_type = 1;
- 		rtw_hal_set_hwreg(padapter, HW_VAR_MLME_JOIN, (u8 *)(&join_type));
-@@ -6047,6 +6060,7 @@ u8 createbss_hdl(struct adapter *padapter, u8 *pbuf)
- 
- 	if (pmlmeinfo->state == WIFI_FW_AP_STATE) {
- 		struct wlan_bssid_ex *network = &padapter->mlmepriv.cur_network.network;
-+
- 		start_bss_network(padapter, (u8 *)network);
- 		return H2C_SUCCESS;
- 	}
-@@ -6810,6 +6824,7 @@ u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf)
- 
- 	if ((padapter->rtw_wdev != NULL) && (padapter->rtw_wdev->wiphy)) {
- 		struct regulatory_request request;
-+
- 		request.initiator = NL80211_REGDOM_SET_BY_DRIVER;
- 		rtw_reg_notifier(padapter->rtw_wdev->wiphy, &request);
- 	}
--- 
-2.17.1
+On 17/03/19 10:25 PM, Julia Lawall wrote:
+> 
+> 
+> On Sun, 17 Mar 2019, 'NIshka Dasgupta' via outreachy-kernel wrote:
+> 
+>>
+>>
+>> On 17/03/19 4:13 PM, Greg KH wrote:
+>>> On Fri, Mar 15, 2019 at 03:50:07PM +0530, Nishka Dasgupta wrote:
+>>>> Remove function sii164ResetChip() as comment above it said "below
+>>>> function is not necessary".
+>>>>
+>>>> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+>>>> ---
+>>>>    drivers/staging/sm750fb/ddk750_sii164.c | 13 -------------
+>>>>    drivers/staging/sm750fb/ddk750_sii164.h |  1 -
+>>>>    2 files changed, 14 deletions(-)
+>>>>
+>>>> diff --git a/drivers/staging/sm750fb/ddk750_sii164.c
+>>>> b/drivers/staging/sm750fb/ddk750_sii164.c
+>>>> index c8e856c13912..8884ef927893 100644
+>>>> --- a/drivers/staging/sm750fb/ddk750_sii164.c
+>>>> +++ b/drivers/staging/sm750fb/ddk750_sii164.c
+>>>> @@ -237,21 +237,8 @@ long sii164InitChip(unsigned char edge_select,
+>>>>    	return -1;
+>>>>    }
+>>>>    -/* below sii164 function is not necessary */
+>>>> -
+>>>>    #ifdef SII164_FULL_FUNCTIONS
+>>>>    -/*
+>>>> - *  sii164ResetChip
+>>>> - *      This function resets the DVI Controller Chip.
+>>>> - */
+>>>> -void sii164ResetChip(void)
+>>>> -{
+>>>> -	/* Power down */
+>>>> -	sii164SetPower(0);
+>>>> -	sii164SetPower(1);
+>>>> -}
+>>>> -
+>>>>    /*
+>>>>     * sii164GetChipString
+>>>>     *      This function returns a char string name of the current DVI
+>>>> Controller chip.
+>>>> diff --git a/drivers/staging/sm750fb/ddk750_sii164.h
+>>>> b/drivers/staging/sm750fb/ddk750_sii164.h
+>>>> index 862e7bf27353..1f7b5f9c1885 100644
+>>>> --- a/drivers/staging/sm750fb/ddk750_sii164.h
+>>>> +++ b/drivers/staging/sm750fb/ddk750_sii164.h
+>>>> @@ -28,7 +28,6 @@ unsigned short sii164GetVendorID(void);
+>>>>    unsigned short sii164GetDeviceID(void);
+>>>>      #ifdef SII164_FULL_FUNCTIONS
+>>>> -void sii164ResetChip(void);
+>>>>    char *sii164GetChipString(void);
+>>>>    void sii164SetPower(unsigned char powerUp);
+>>>>    void sii164EnableHotPlugDetection(unsigned char enableHotPlug);
+>>>
+>>> Did you test build this?  This function is still used if
+>>> SII164_FULL_FUNCTIONS is defined.
+>>
+>> Yes, I did test build this, and there were no problems. However, I have not
+>> been able to properly grep search for it since my laptop crashed a few days
+>> ago and I have only just been able to set everything back up. Where can I find
+>> SII164_FULL_FUNCTIONS?
+> 
+> Just do git grep SII164_FULL_FUNCTIONS at the root of your kernel tree.
+> It may be in a Kconfig file.
+> 
 
+I did that, thank you. All the occurrences of SII164_FULL_FUNCTIONS 
+follow ifdefs in C and header files in sm750fb (ddk750_dvi.c, 
+ddk750_sii164.c, ddk750_sii164.c again, and ddk750_sii164.h). There 
+don't appear to be any occurrences of SII164_FULL_FUNCTIONS anywhere 
+else in the entire staging tree.
+Does this mean I can delete every ifdef referring to 
+SII164_FULL_FUNCTIONS since SII164_FULL_FUNCTIONS does not appear to be 
+actually defined anywhere? Or should all those (including the function 
+deleted by this current patch) stay?
+
+Thanking you,
+Nishka
+
+> julia
+> 
 
