@@ -1,165 +1,223 @@
 X-GM-THRID: 6669728292045586432
-X-Received: by 2002:a25:4c85:: with SMTP id z127mr9427458yba.69.1552932032119;
-        Mon, 18 Mar 2019 11:00:32 -0700 (PDT)
+X-Received: by 2002:a1c:701a:: with SMTP id l26mr8050wmc.16.1552931644687;
+        Mon, 18 Mar 2019 10:54:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:2f90:: with SMTP id v138ls4195980ybv.10.gmail; Mon, 18
- Mar 2019 11:00:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxtluh9Fw0fIWbbM/JUnDC3KdXVX8oU3kcliMVnRZW+cebqTm5T6Chj7R26nptSW9Z6okxP
-X-Received: by 2002:a25:6dd7:: with SMTP id i206mr5516407ybc.97.1552932030883;
-        Mon, 18 Mar 2019 11:00:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552932030; cv=none;
+Received: by 2002:a5d:400e:: with SMTP id n14ls3433405wrp.16.gmail; Mon, 18
+ Mar 2019 10:54:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw60sak4VW/grh5zWpNBIEqXHZ8iSGxT0d4dmVMAZ488pN8MQfFl8A4hC6BDPoG95YUrzuN
+X-Received: by 2002:adf:fb0c:: with SMTP id c12mr828951wrr.28.1552931643426;
+        Mon, 18 Mar 2019 10:54:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552931643; cv=none;
         d=google.com; s=arc-20160816;
-        b=I9xMV9g7CfaL+a/YPkmDpuYzrjIjmt7swHy60yOvQtneeFTAoFbqArf3YN/MM5uY7f
-         Ia+XfiLjUEy7mIztvKvYLDrcdYyeeHtjN1OaNxePTrU3VS5DClQIsHbk7TyLDQpMx3z1
-         EF0G1p8gzenn2M8daL2KxBfHhuB7RSfrmq6DziHoRj3q2XHHXYIliei+CjYIBX8BjR7I
-         0fLYn9wos7KPO9/CBsYANawqN1yOk+ek0om6GE944hGOn/69J1GEAGC8Et/nyzGx1kqZ
-         uXZGw/AZX3zTgbQcg+ul5JtgGfrOlXBIUiUMhXU7DImsnhGftf2HGaDTq31Rm1CXHbcC
-         o0eA==
+        b=YH7OPVA4EG/R9wj8YoBljz4mxiWTYnRlCj60S0tywKwdAfV8St3JUb4pY480nubL+0
+         M6e4ddypo3c1MEWRiRV0CyLE9q9dGEMBtNDthBmlGRTMlQCnprRwssYTXzS3qwcui9H6
+         Kx/ycB56kqObV6s0iF8KiXPJC2niuSBxnjdA7mSIXQOTHlXh/6trBtKhnaCHpn3/sMO5
+         NRXiI5dBCALY9Orw0WA/3eWf5cplghd9DBsKg7yQtA0qPzf/UG2s7XMK8IwURaJoFQnb
+         JPg7xQbqIBLf6NhLrlgG4rew3ZIM4tFsNLkMAl1Z/CkCTTIKoarJMWCmtIEZ/0WTF0sy
+         F9Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=WMuLl2Adur9nAOfKwPUS9qMk757D/HtMv57ZlJf4qsg=;
-        b=jbfwD5juYvDy+kz2n395NKKPtHufe3MRrRgPjgIdkAifl0cvecBKwfh8pSA8hMb9zB
-         ApFDc6LYp0FEd5zUoikr9YcofMKZzdnBTwzYmQ51nPkE8ydKtInCkP076FbOaoZZgbBY
-         O8ajr7rYCfcapclGJoPL+YX87Nv5/S8AppTuO1eULenF9f5uUT0186PPI/A2TPnwwk96
-         LSbOsE7JxG7giPQAtHpz8q3cjHlQUEuWN1jTQUMjmOKitHU1jxt4qWmQ6cBaYfb5PHdV
-         MXUJ6FUkxTmjVIOvTTNMw13xxBkEaABPaf8oPG7Sw/WiytbXs7EezjYgZ2qQGZBLcO3c
-         4JyQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=n8ydJurABWO47ZC+uhy7rdv1VTgV78h+DWq+VElaFng=;
+        b=VPe9QeQpoqN8C2PJMN7oq1wobsCOR9+2jMRDOtUmAUPMAjgjayLPbeHykeyUYIWH6f
+         XQUFUNDs3v9TG+hGWFD1VnHbyo4laRU6El5U2t21gVcIhvOt/ViR/+jhO1Ipr+TnkDCk
+         cWsAIl0miBbf3S7xeDih26m2nABN9SVud4FVJS5NAsT3q8PE/8eRUK4OHnZ6wu+vgfAU
+         WvTaDxyFAgIsuSNAq3PHONUttnaVzGpmX0U18uqKKwx5RIl55qGWi3YEjSD3h64yFNJ1
+         10x8cNbF1YyEa+T7Q2zatwEaVoOMdXE7/PK9nWNcE8t5sDbIw9gFZhwXfxPpZzHCctRi
+         I49Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=TJuaTbB+;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=kvl39pUT;
-       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from wout1-smtp.messagingengine.com (wout1-smtp.messagingengine.com. [64.147.123.24])
-        by gmr-mx.google.com with ESMTPS id k62si658948ybb.4.2019.03.18.11.00.30
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fCEU+xvE;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-lf1-x143.google.com (mail-lf1-x143.google.com. [2a00:1450:4864:20::143])
+        by gmr-mx.google.com with ESMTPS id m1si478159wrj.4.2019.03.18.10.54.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 11:00:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) client-ip=64.147.123.24;
+        Mon, 18 Mar 2019 10:54:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) client-ip=2a00:1450:4864:20::143;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=TJuaTbB+;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=kvl39pUT;
-       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.west.internal (Postfix) with ESMTP id 85ECD45B5;
-	Mon, 18 Mar 2019 14:00:29 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Mon, 18 Mar 2019 14:00:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm3; bh=WMuLl2Adur9nAOfKwPUS9qMk757
-	D/HtMv57ZlJf4qsg=; b=TJuaTbB++FqOmITq1EvwTDL4oEkEXUTdG8djytWKomb
-	oQeOsR29TU8pQMkrnBp2n0WsAmiEUN6DeaU7ITofKOkgxgevAyMbWu/U9kqWkWFF
-	ygPGIH9Bj18gcSPenEnl7QUkJwjwh02lwRrrL1HT44iUCrzEt0ipuOjFXc8RdoIK
-	gU3aefmhhNxlTpbXXY3TNJPjWt74gqOCHsYlehKnI/dT802+1e4mvg80RFNHSo1m
-	+bSskN9vDR/raS8pRdxiS9e+BPZ4YsQGk4Kl8Jj4m0pFJPRGvuoc8Q86PM3zThJn
-	fkwh2YyDoyHSdGVjAT70GXXKp9+gWHcfyB9TPg15Idw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=WMuLl2
-	Adur9nAOfKwPUS9qMk757D/HtMv57ZlJf4qsg=; b=kvl39pUT2AnquNDqNv/qCl
-	oOGAwi9LhQo1+qPABZHjZAGfDEw2y1nWEqGVK1DDW7m8+gZrXmRJz+PbbSmJkcX1
-	gWkCKYx+5ZEgYUUq4Y2xbnZMe7rlg++ncMCamuE5u2Icj9K8UBTMvFSaGew/EXwF
-	V+qCo0/znHZNpIzPvE0JKmjJVwbUjU9ttw2U7UpjVFfvMEk9BD6Ne/NKz0vp5mgy
-	ggjZWQVsyr1zZ6Xu73FAFe2gpIXAB2Z/78xH89JI23vl2XG5uFTMJ8tOMldCU8Sy
-	vNFPknXI8eu06WNKtaxHz/fsyRMhk9k924AGf4JH20CpXRJxU/eeozc6pA8vly4w
-	==
-X-ME-Sender: <xms:vNyPXLEJ7Ne-99MOmes0ddW9MA4YDaFWSng_kcS5xL2EPCKPzD-bmA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddriedugddutdekucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvffukfhfgggtuggjfgesthdtredttdervdenucfhrhhomhepifhrvghg
-    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuffhomhgrihhnpehkvghrnhgvlh
-    drohhrghenucfkphepkeefrdekiedrkeelrddutdejnecurfgrrhgrmhepmhgrihhlfhhr
-    ohhmpehgrhgvgheskhhrohgrhhdrtghomhenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:vNyPXOPlpm1DvIT_0FMxDwnGBeiuMZdJLdkHPuBHikrTGEljPliipQ>
-    <xmx:vNyPXPnzpQUmlkXh0aWqhnH1IiedUL_s7k5FAnkGiis0hEEdwXU2BQ>
-    <xmx:vNyPXKNcu5Gq9nR8u6oJRKrPs5R89zaj4rjUkmrQ_EVQkbPMANKddg>
-    <xmx:vdyPXLXxQ2IbtstBpY6_6Aa2YNq78jPpfha6G0pHKMaJpczXatK0_A>
-Received: from localhost (5356596b.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 5E45710324;
-	Mon, 18 Mar 2019 14:00:28 -0400 (EDT)
-Date: Mon, 18 Mar 2019 19:00:27 +0100
-From: Greg KH <greg@kroah.com>
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel] staging: gasket: replace symbolic
- permissions
-Message-ID: <20190318180027.GA7136@kroah.com>
-References: <1552917114-7936-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
- <20190318175135.GA23850@kroah.com>
- <CANTOzWG+ybnDB-7_mEDNJ8RZjToo+_FYsu4xNyr+TmExMb5DTA@mail.gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fCEU+xvE;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x143.google.com with SMTP id y18so12424145lfe.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 10:54:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=n8ydJurABWO47ZC+uhy7rdv1VTgV78h+DWq+VElaFng=;
+        b=fCEU+xvE4ibV67aZ/eOV4ydFEq6xRwxRKFPNCWoVpD9ZRMj6DYr1DfRe56JIsJ9iqq
+         t35T8bEPyKBRT5DOefv2PVRWC2jydxZRPrkH7vLCvTBeQJ4zQD+npvHpoxupgMD3fHIg
+         jxC+W+J65RLPQRMszw+QSiKkYrlQOGCEEosHx4cAWtCEOiDDBIbumhSxWuwgUO13UH5b
+         sKJHs8I7mqIbxAbLLWORxx8gjb3CmsQ4vBINyOvToFV25J3K/Ey+35xBROMsrbFskpU/
+         SiYOS+0SlWiNq8656w/Lek1hR82qb60Aw3X1hs/Hn1gqpD5II+7EwFtE2ao24YlHBBsi
+         VdlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=n8ydJurABWO47ZC+uhy7rdv1VTgV78h+DWq+VElaFng=;
+        b=Wmt2GSKIwxQKCytDk/rFsGEfc3VcoQGQv8J78Y4o7Tqk3ndNZEYQdtu59jlhEQb5vH
+         xzlyvEc2Ar11VjrBmFZso3PzDgnf0PzXz+ViYWEvviv01+Uxb/GUKA4deVArG4g1jv6X
+         +W8g19PaIxh+rfORk3tupt6OG1nw3zo+0RwuXJuzn2rNXDPKdjDPXaRQwPpTFSVTTVZE
+         /itL+k2UL5TsF331+jniFk8vjeT7McCp5L9fMgO8q9QGICAb/l7kHqChGRzFzLlnlYv/
+         oSc+6aJ0yvDLNWKBQjYBktVMoUIvapuUuW5ULx7EpKF71kcpB+1Zoj+boWaturFftMt0
+         L+Zw==
+X-Gm-Message-State: APjAAAULQt6UaxFewohmiPaVlL4qm9nWRXfvbMU8pPXPf/UadKaZoMDg
+	+YHIp7I3AhdsSfPVlGRRcutsi8RgMzv7e4nrB8B4DQ==
+X-Received: by 2002:ac2:4561:: with SMTP id k1mr9564751lfm.95.1552931642947;
+ Mon, 18 Mar 2019 10:54:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CANTOzWG+ybnDB-7_mEDNJ8RZjToo+_FYsu4xNyr+TmExMb5DTA@mail.gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+References: <1552917114-7936-1-git-send-email-payal.s.kshirsagar.98@gmail.com> <20190318175135.GA23850@kroah.com>
+In-Reply-To: <20190318175135.GA23850@kroah.com>
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Date: Mon, 18 Mar 2019 23:23:50 +0530
+Message-ID: <CANTOzWG+ybnDB-7_mEDNJ8RZjToo+_FYsu4xNyr+TmExMb5DTA@mail.gmail.com>
+Subject: Re: [PATCH] [Outreachy kernel] staging: gasket: replace symbolic permissions
+To: Greg KH <greg@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000f03b01058462126c"
 
-On Mon, Mar 18, 2019 at 11:23:50PM +0530, Payal Kshirsagar wrote:
-> On Mon, 18 Mar 2019 at 23:21, Greg KH <greg@kroah.com> wrote:
-> 
-> > On Mon, Mar 18, 2019 at 07:21:54PM +0530, Payal Kshirsagar wrote:
-> > > Symbolic permissions 'S_IRUGO' are replaced by octal permissions '0444'
-> > > in file
-> > > drivers/staging/gasket/gasket_sysfs.h at line no 43 and 78.
-> > >
-> > > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> > > ---
-> > >  drivers/staging/gasket/gasket_sysfs.h | 4 ++--
-> > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/gasket/gasket_sysfs.h
-> > b/drivers/staging/gasket/gasket_sysfs.h
-> > > index 151e8ed..60590ea 100644
-> > > --- a/drivers/staging/gasket/gasket_sysfs.h
-> > > +++ b/drivers/staging/gasket/gasket_sysfs.h
-> > > @@ -40,7 +40,7 @@
-> > >   */
-> > >  #define GASKET_END_OF_ATTR_ARRAY
-> >        \
-> > >       {
-> >     \
-> > > -             .attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL,
-> > NULL),   \
-> > > +             .attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),
-> >  \
-> > >               .data.attr_type = 0,
-> >      \
-> > >       }
-> > >
-> > > @@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {
-> > >
-> > >  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)
-> >        \
-> > >       {
-> >     \
-> > > -             .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),
-> >     \
-> > > +             .attr = __ATTR(_name, 0444, _show_function, NULL),
-> >   \
-> > >               .data.attr_type = _attr_type
-> >      \
-> > >       }
-> > >
-> >
-> > This patch does not apply at all, as others have made changes in this
-> > portion of the kernel.  Be sure you are working against the latest
-> > staging tree, it is staging.git on git.kernel.org and use the
-> > staging-testing branch.
-> >
-> > thanks,
-> >
-> > greg k-h
-> >
-> 
-> How do I update my staging tree ?
+--000000000000f03b01058462126c
+Content-Type: text/plain; charset="UTF-8"
 
-There are lots of tutorials for how to update your local branches based
-on an "upstream" tree/branch.  I suggest following them, and if you have
-any specific questions, please let us know.
+On Mon, 18 Mar 2019 at 23:21, Greg KH <greg@kroah.com> wrote:
 
-thanks,
+> On Mon, Mar 18, 2019 at 07:21:54PM +0530, Payal Kshirsagar wrote:
+> > Symbolic permissions 'S_IRUGO' are replaced by octal permissions '0444'
+> > in file
+> > drivers/staging/gasket/gasket_sysfs.h at line no 43 and 78.
+> >
+> > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> > ---
+> >  drivers/staging/gasket/gasket_sysfs.h | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/gasket/gasket_sysfs.h
+> b/drivers/staging/gasket/gasket_sysfs.h
+> > index 151e8ed..60590ea 100644
+> > --- a/drivers/staging/gasket/gasket_sysfs.h
+> > +++ b/drivers/staging/gasket/gasket_sysfs.h
+> > @@ -40,7 +40,7 @@
+> >   */
+> >  #define GASKET_END_OF_ATTR_ARRAY
+>        \
+> >       {
+>     \
+> > -             .attr = __ATTR(GASKET_ARRAY_END_TOKEN, S_IRUGO, NULL,
+> NULL),   \
+> > +             .attr = __ATTR(GASKET_ARRAY_END_TOKEN, 0444, NULL, NULL),
+>  \
+> >               .data.attr_type = 0,
+>      \
+> >       }
+> >
+> > @@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {
+> >
+> >  #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)
+>        \
+> >       {
+>     \
+> > -             .attr = __ATTR(_name, S_IRUGO, _show_function, NULL),
+>     \
+> > +             .attr = __ATTR(_name, 0444, _show_function, NULL),
+>   \
+> >               .data.attr_type = _attr_type
+>      \
+> >       }
+> >
+>
+> This patch does not apply at all, as others have made changes in this
+> portion of the kernel.  Be sure you are working against the latest
+> staging tree, it is staging.git on git.kernel.org and use the
+> staging-testing branch.
+>
+> thanks,
+>
+> greg k-h
+>
 
-greg k-h
+How do I update my staging tree ?
+
+Thanks in advance!
+payal
+
+--000000000000f03b01058462126c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, 18 Mar 2019 at 23:21, Greg KH=
+ &lt;<a href=3D"mailto:greg@kroah.com">greg@kroah.com</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex">On Mon, Mar 18, 2019 a=
+t 07:21:54PM +0530, Payal Kshirsagar wrote:<br>
+&gt; Symbolic permissions &#39;S_IRUGO&#39; are replaced by octal permissio=
+ns &#39;0444&#39;<br>
+&gt; in file<br>
+&gt; drivers/staging/gasket/gasket_sysfs.h at line no 43 and 78.<br>
+&gt; <br>
+&gt; Signed-off-by: Payal Kshirsagar &lt;<a href=3D"mailto:payal.s.kshirsag=
+ar.98@gmail.com" target=3D"_blank">payal.s.kshirsagar.98@gmail.com</a>&gt;<=
+br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/gasket/gasket_sysfs.h | 4 ++--<br>
+&gt;=C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/staging/gasket/gasket_sysfs.h b/drivers/staging/g=
+asket/gasket_sysfs.h<br>
+&gt; index 151e8ed..60590ea 100644<br>
+&gt; --- a/drivers/staging/gasket/gasket_sysfs.h<br>
+&gt; +++ b/drivers/staging/gasket/gasket_sysfs.h<br>
+&gt; @@ -40,7 +40,7 @@<br>
+&gt;=C2=A0 =C2=A0*/<br>
+&gt;=C2=A0 #define GASKET_END_OF_ATTR_ARRAY=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.attr =3D __ATTR(GASK=
+ET_ARRAY_END_TOKEN, S_IRUGO, NULL, NULL),=C2=A0 =C2=A0\<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.attr =3D __ATTR(GASK=
+ET_ARRAY_END_TOKEN, 0444, NULL, NULL),=C2=A0 =C2=A0\<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.data.attr_type =
+=3D 0,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0\<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 <br>
+&gt; @@ -75,7 +75,7 @@ struct gasket_sysfs_attribute {<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 #define GASKET_SYSFS_RO(_name, _show_function, _attr_type)=C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0{=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.attr =3D __ATTR(_nam=
+e, S_IRUGO, _show_function, NULL),=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.attr =3D __ATTR(_nam=
+e, 0444, _show_function, NULL),=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.data.attr_type =
+=3D _attr_type=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt;=C2=A0 <br>
+<br>
+This patch does not apply at all, as others have made changes in this<br>
+portion of the kernel.=C2=A0 Be sure you are working against the latest<br>
+staging tree, it is staging.git on <a href=3D"http://git.kernel.org" rel=3D=
+"noreferrer" target=3D"_blank">git.kernel.org</a> and use the<br>
+staging-testing branch.<br>
+<br>
+thanks,<br>
+<br>
+greg k-h<br></blockquote><div>=C2=A0</div><div>How do I update my staging t=
+ree ?</div><div><br></div><div>Thanks in advance!</div><div>payal<br></div>=
+</div></div>
+
+--000000000000f03b01058462126c--
 
