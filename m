@@ -1,195 +1,103 @@
 X-GM-THRID: 6669793876600946688
-X-Received: by 2002:a19:3809:: with SMTP id f9mr1032479lfa.1.1552956810715;
-        Mon, 18 Mar 2019 17:53:30 -0700 (PDT)
+X-Received: by 2002:aca:5115:: with SMTP id f21mr7013639oib.50.1552934744316;
+        Mon, 18 Mar 2019 11:45:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:3612:: with SMTP id d18ls709792lja.8.gmail; Mon, 18 Mar
- 2019 17:53:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQpXHqzop3zqnIKFnZhDT9/QwgeHo5s6n4fwePwqFsKSdaavJr1mHU7Szz+oyh+SOfq1ps
-X-Received: by 2002:a2e:91c4:: with SMTP id u4mr1117518ljg.29.1552956809544;
-        Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552956809; cv=none;
+Received: by 2002:aca:be04:: with SMTP id o4ls53513oif.1.gmail; Mon, 18 Mar
+ 2019 11:45:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyhvdB0RYuNE3FPArEVBiojuI5+PLN995kQeF8Z1l0FLWB2wJaAriUd+Yd78CMKhDzRtsQR
+X-Received: by 2002:aca:c6c8:: with SMTP id w191mr1740191oif.24.1552934743379;
+        Mon, 18 Mar 2019 11:45:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552934743; cv=none;
         d=google.com; s=arc-20160816;
-        b=eqmlL+lEQ1BtsxAkqv4zWUVL/D7AUhM9wDNTwaUbZfzhh6OMAd4a5l8LAMNwwOivom
-         G0g/VgRxxZEy7cHMnpPNRcmPSrpRSD0niyMMkGMILCfQk4RuuPnwMCgJQ29cVyjC+12k
-         UcY9W6EuRIfafZeIKFGAQXMhN6M+tBCh65niqqo/VmUFy718lFeaZBNcSOI5ZbMNcgJ9
-         /zcN8hcrbYShdNd2a04Ddcn3DNxG4+p6YFzlph3HKvxR/rFIjt0R7+pIEIGgP3FwtNC2
-         WAmn3HROniF74QFVu1IqsSpPXt/5bqbdwAc3Rt4IP33GikL1uDayVauzxTEXSgFjMRBS
-         ADww==
+        b=RdviE5xsDuvpWS2hioCY0iQutDrTzk9wnD/Optkrno7ONvXV1+zfTx7+6QJKk9lFma
+         qv8ftJeJkXnunJ0nCtRQG98runaYwWxUh0szcOLlX+1Tl326PHONUg4RqpRUuTma8gfm
+         XskBs6/+R+dD36tg2fR9+g7LTyFUnYD8qLjPiTtIVAoT8mbCw1n0yE6PyK3K2xhdiAAl
+         WUn3mmEoejMgh3AemzCggpPbqA+Iajsy7VtFDTQcqrNqDsfU8/diouMhqiBXLavFhIei
+         XsSbVVoY/Qzq5XqQ85ezDsPCI0QCMk/WeSCbCMv/+v1xxfF4RrijhSm7NJbmYCi6m1TE
+         GHiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ukeB9SSECtM2WyC9S/7Vx6z9wTJoUbn9o4KCuxSE2BY=;
-        b=sGxCsYkya65YZtCR41rrakg36RnBHWyZEUjz4MOP4Jt7iaMYYxrxsBJwK8my6/HnYq
-         l8hnRk29wYUWrvoMeVmJFtqvUzwb4Ul6in1OV3qQ6tHKEL695DiCufpjP8lTyylVa9Uh
-         L6mBMcMZpoUOM7d2yAWxEbyOUMbqTONXnXGH0d9KdeTSXNqXfCgowP3vsrWqhD2pzyRj
-         hTRqehhfVLoZjUGA7WrxjWX94Rum2hQtk5rc5IIXQIVjl+QbjEu2jyDdIM3g5IPwFDeb
-         XOwDRv4tFmrWfNyWE8NZ3gdI8ScFz2DbPshKgWRI4G6I9dHctgRyxMWJAtGfF2Xd6Gvj
-         4HkA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=jYu7EMGcQtEaknQVfJ+8S0Jj5XT4d8p+i+aHpxAHQAM=;
+        b=dxZdwDGiOJKCYNnIWiu0tX4qW2zHdIkGA7KT3tTx8U0BJrxdjNn0Y6dRKaZb+l76ja
+         w46qMzX+dTN1IMaKLkWfH7p+k141PErFq0SwlqsOFmzZ919HhRLlQjf6RXKZdJfd/l1S
+         uOeJnZiBU2h03iLOyzhSficljBuvin/dU3Qzthg9PYXjGOcL1Kt+OeTLy9Za5E2kqliY
+         VBXuw+2unHNgPGvIDeHGY/olF4luO/l+H4cJt/AD6hrdNkznKY74tjGLSFkcmMeVRMbp
+         n3IBX/X5cxFlozVmYCqji32DIijRCpo4VvUMfpZCat9i6aGaGtNXbDtaaIgZW0ar/8oZ
+         /Baw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nBhYcvAv;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
-        by gmr-mx.google.com with ESMTPS id h14si669871lja.2.2019.03.18.17.53.29
+       dkim=pass header.i=@kernel.org header.s=default header.b=czwja9JO;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id u185si426145oib.2.2019.03.18.11.45.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
+        Mon, 18 Mar 2019 11:45:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nBhYcvAv;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x241.google.com with SMTP id f23so1882758ljc.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ukeB9SSECtM2WyC9S/7Vx6z9wTJoUbn9o4KCuxSE2BY=;
-        b=nBhYcvAvT/0+NqrZr82pj5QEIHqthHhPHOiFIHfhgQ2K6tRGAA8yfKJ0VUxwsnK+Fv
-         RrPOXHVUspltYqi5xt4W1rKFmApZTssU2ojoxyzYrk1KpDmEuktez8hJ3sOpMSGsvH3m
-         8/tpiZJ/ZZ6fHKdROlwd7ya1srJiBVg+cgZxFlcZI6xqJkZRjTo+UsnL/KvN4dqx1C1l
-         7lxlfRBSs9QIe2fxMhlJGgkO2wVr5nlSI3EMI97R1YHv85wfYi3Mwj4ZtmQP1hxCO702
-         yaamUAboQZeIug3NXxdt3ZvGFuiI0Pxq2Y1xo6RFFIPYPAWvIkxQycpmRyICYqCZRNQY
-         MEGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ukeB9SSECtM2WyC9S/7Vx6z9wTJoUbn9o4KCuxSE2BY=;
-        b=PdTUgK7RGikaRinhO0HbnAwykQt0p2HF67b4f+27g/uxn23+CCaIc1OYBWKl/t53pb
-         EnmSgWDdFRJZXs4IQoOzdYGcg613jsL5omVUimpWRC2IIBqUjyYlMHDs4g4LyTDH2hvM
-         At/oxbDvaeozbDXx+LaFobID/6PNARVeQiUgXOrEWzAqs9QMkY7qKZaDWIr5Vd63DECA
-         PRzm79HociB3oxz28umln2FAERJBr343SktO33Zm1O4+b1Nz86yeniFRJTWBcOzwgObA
-         f2BV2Nhy9zQqrgtmFWqiOtEYOO+LaldBQp2fDoSVf6JLIS9nVErTHdHItf2D+0VP4QAZ
-         jq0Q==
-X-Gm-Message-State: APjAAAX22i+1dIlGRAEyhumMcOJHXXpE8mUKSApMreiQtDUXiEDvdd6T
-	8KY60WxprpwjRHtrdomm3lmsZMXbfKtA9U/PtZRfjg==
-X-Received: by 2002:a2e:86ca:: with SMTP id n10mr3329113ljj.135.1552956809398;
- Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <1552932384-11028-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
- <20190318184539.GA11680@kroah.com>
-In-Reply-To: <20190318184539.GA11680@kroah.com>
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Date: Tue, 19 Mar 2019 06:23:17 +0530
-Message-ID: <CANTOzWEfLXN9E=X_TzHd4PRnCY2eSSzYn0y_sU14tzfpFP-dVw@mail.gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=czwja9JO;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 000122077B;
+	Mon, 18 Mar 2019 18:45:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552934742;
+	bh=Mw49IXXoNK/xYeBY5lbqTPyx/51v4n3YccSD66o2Hik=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=czwja9JOLloIOS7Ed9dHnLqZ4k+WcvDwedoZDFCjQhDfaU3LqwK2fA2V45uW3ot8L
+	 lbwQ5Er38JAVmA3sgfUgid8MFenONbKUQl+qssl1TMJucZcCpv85PMmR3lt4eJKWVZ
+	 rQVJsIZKUtbky7gFldFtWAJZnMEIaGD82K4K+38Y=
+Date: Mon, 18 Mar 2019 19:45:39 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH] [Outreachy kernel] staging: speakup: prefer usleep_range
  over udelay
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000f9ceb8058467ee4b"
+Message-ID: <20190318184539.GA11680@kroah.com>
+References: <1552932384-11028-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1552932384-11028-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
---000000000000f9ceb8058467ee4b
-Content-Type: text/plain; charset="UTF-8"
+On Mon, Mar 18, 2019 at 11:36:24PM +0530, Payal Kshirsagar wrote:
+> Since usleep_range is built on top of hrtimers, the
+> wakeup will be very precise (ish), thus a simple
+> usleep function would likely introduce a large number
+> of undesired interrupts.
+> Thus udelay replaced with usleep_range.
+> 
+> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> ---
+>  drivers/staging/speakup/speakup_decpc.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
+> index 798c42d..10ca19b 100644
+> --- a/drivers/staging/speakup/speakup_decpc.c
+> +++ b/drivers/staging/speakup/speakup_decpc.c
+> @@ -251,7 +251,7 @@ static int dt_waitbit(int bit)
+>  	while (--timeout > 0) {
+>  		if ((dt_getstatus() & bit) == bit)
+>  			return 1;
+> -		udelay(50);
+> +		usleep_range(50, 50 + 10);
 
-On Tue, Mar 19, 2019, 12:15 AM Greg KH <gregkh@linuxfoundation.org> wrote:
+I've said this in the past, only do this type of change if you can
+actually test it, and know it will be ok.  For some stuff like this, it
+_might_ be ok, but you just expanded the timeout range potentially a lot
+longer than before, and do we know that is ok?
 
-> On Mon, Mar 18, 2019 at 11:36:24PM +0530, Payal Kshirsagar wrote:
-> > Since usleep_range is built on top of hrtimers, the
-> > wakeup will be very precise (ish), thus a simple
-> > usleep function would likely introduce a large number
-> > of undesired interrupts.
-> > Thus udelay replaced with usleep_range.
-> >
-> > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> > ---
-> >  drivers/staging/speakup/speakup_decpc.c | 14 +++++++-------
-> >  1 file changed, 7 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/drivers/staging/speakup/speakup_decpc.c
-> b/drivers/staging/speakup/speakup_decpc.c
-> > index 798c42d..10ca19b 100644
-> > --- a/drivers/staging/speakup/speakup_decpc.c
-> > +++ b/drivers/staging/speakup/speakup_decpc.c
-> > @@ -251,7 +251,7 @@ static int dt_waitbit(int bit)
-> >       while (--timeout > 0) {
-> >               if ((dt_getstatus() & bit) == bit)
-> >                       return 1;
-> > -             udelay(50);
-> > +             usleep_range(50, 50 + 10);
->
-> I've said this in the past, only do this type of change if you can
-> actually test it, and know it will be ok.  For some stuff like this, it
-> _might_ be ok, but you just expanded the timeout range potentially a lot
-> longer than before, and do we know that is ok?
->
-> I sure do not :)
->
-> So just leave these things alone unless you know the hardware will keep
-> working properly.
->
-> thanks,
->
-> greg k-h
->
+I sure do not :)
 
+So just leave these things alone unless you know the hardware will keep
+working properly.
 
-Okay I'll drop this patch .
-Regards,
-Payal
+thanks,
 
->
-
---000000000000f9ceb8058467ee4b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
-On Tue, Mar 19, 2019, 12:15 AM Greg KH &lt;<a href=3D"mailto:gregkh@linuxfo=
-undation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<br></div><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
-id;padding-left:1ex">On Mon, Mar 18, 2019 at 11:36:24PM +0530, Payal Kshirs=
-agar wrote:<br>
-&gt; Since usleep_range is built on top of hrtimers, the<br>
-&gt; wakeup will be very precise (ish), thus a simple<br>
-&gt; usleep function would likely introduce a large number<br>
-&gt; of undesired interrupts.<br>
-&gt; Thus udelay replaced with usleep_range.<br>
-&gt; <br>
-&gt; Signed-off-by: Payal Kshirsagar &lt;<a href=3D"mailto:payal.s.kshirsag=
-ar.98@gmail.com" target=3D"_blank" rel=3D"noreferrer">payal.s.kshirsagar.98=
-@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/speakup/speakup_decpc.c | 14 +++++++-------<br>
-&gt;=C2=A0 1 file changed, 7 insertions(+), 7 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging=
-/speakup/speakup_decpc.c<br>
-&gt; index 798c42d..10ca19b 100644<br>
-&gt; --- a/drivers/staging/speakup/speakup_decpc.c<br>
-&gt; +++ b/drivers/staging/speakup/speakup_decpc.c<br>
-&gt; @@ -251,7 +251,7 @@ static int dt_waitbit(int bit)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0while (--timeout &gt; 0) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if ((dt_getstatu=
-s() &amp; bit) =3D=3D bit)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0return 1;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0udelay(50);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0usleep_range(50, 50 +=
- 10);<br>
-<br>
-I&#39;ve said this in the past, only do this type of change if you can<br>
-actually test it, and know it will be ok.=C2=A0 For some stuff like this, i=
-t<br>
-_might_ be ok, but you just expanded the timeout range potentially a lot<br=
->
-longer than before, and do we know that is ok?<br>
-<br>
-I sure do not :)<br>
-<br>
-So just leave these things alone unless you know the hardware will keep<br>
-working properly.<br>
-<br>
-thanks,<br>
-<br>
-greg k-h<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">Okay I&#39;ll drop this patch .</div>=
-<div dir=3D"auto">Regards,</div><div dir=3D"auto">Payal</div><div dir=3D"au=
-to"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-</blockquote></div></div></div>
-
---000000000000f9ceb8058467ee4b--
+greg k-h
 
