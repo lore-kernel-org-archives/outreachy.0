@@ -1,181 +1,111 @@
 X-GM-THRID: 6669720602377453568
-Date: Mon, 18 Mar 2019 07:22:47 -0700 (PDT)
-From: sanjana99reddy99@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <6b36d840-0c3f-43f5-a5d2-839de55694aa@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.20.1903181431040.3832@hadrien>
+X-Received: by 2002:a17:906:3744:: with SMTP id e4mr1838271ejc.3.1552915881057;
+        Mon, 18 Mar 2019 06:31:21 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a50:e08f:: with SMTP id f15ls4439614edl.0.gmail; Mon, 18 Mar
+ 2019 06:31:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwdQ/uFR+XzQ6nguNgRo4Qc+KeVVJ+tNlpEdYecHNfA5wlEZ0gJvP/r6L7TYW8bPLjhixQL
+X-Received: by 2002:a50:ba2b:: with SMTP id g40mr2056792edc.1.1552915880415;
+        Mon, 18 Mar 2019 06:31:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552915880; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OwuL7MmrabR5s0Jw8qrJi0p/ne662w2OxaQOS+r0eiiN6TIncjN+39YoaD+hsabhez
+         Fmnvguyvh97dcDUwS7NvZqiBlY+x3A5hLI2ai5/ptKQpI9NPJwX140xBrQ1SLwfymtQu
+         dUQdaqCyLEd933kQ7SXRfQx3g5dnzRT35OQ1sW1CxalbQAa9D4WIatSLOuhMGanu6AXt
+         UMD/rCnzX/wLAnwUuI/RKJ+znll6M4RsmStlECIEPAL5OOLl9IcQ1VPtqzUEEi4FTdDR
+         HHLorESzqZ7q6acb3nu8NEND6Zf8ifDCf290zpxE05S2rdIDX0cY2d4ot9fUADd4pTq6
+         BPpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-data;
+        bh=hWMADQ6O6SZk+Ygpx7YwjzYYld9TTrFWYyDPea6UO+E=;
+        b=FUFHMosyLNVBz5UeFGaSroLZ5qPvtk3mrr+4r6nZsyCEdH56EHDS2Dl8ceJAJXuL1J
+         4jSPAhLKM9CMSuApP+hIXLrGcxW9TiBtq3spQFwmEUjuSqg7yMBsZ3ecXFqGSGy5YRWa
+         BrPViix5+vJMK6E5Cl/uQbwzFwa2hM933cHhhtg2qdt3cEPAwozCuJbIEJCSnaoffEiD
+         ncBOdQm7y90NpF8+HIeadIF1lm0HWiqOzt5A1zWuNgEo+8GFa9eSzgqMofixEqL3MMLv
+         CjwPQgwx3gI2gKViNGEwky87+zf1OX5kCFaqc6iyWeDBrh7qqg0VLPqfkk+395EbPywS
+         tAwQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r37si366923edd.2.2019.03.18.06.31.20
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Mar 2019 06:31:20 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+IronPort-Data: A9a23:BhpK364Q1ATehkoKxiwIRQxR2vbMJbvA6Rkv297NfqZqxAYutvk7Bk
+ F3nBTOzgcMaEr5Q07VYUBOdMFRuMmTFqX6LBjz0UcC+IMDBLOKE8RtxqV6EJQRNyFtXY1zWM
+ QJuYQFqG/iP7evm3Sfh3S7fSumc/ZwfKzNetoY1vcYgiXHmklgb/TOzmtTroiCSp6Lvr458T
+ /D7cKowD6eX9oMD1c17lzG1KfmJJHYucZjj7xFS2DNunvtSkasGq307qsIRNnKwru1HSuS+w
+ j9EwGwEOo/i9RmPKisO9kzDAWGu3U3A3jsvIuoBZQY2kMIwNKGCMi3hc7Mm2glmj6OyksSrq
+ rtQcsLeiZdvrLUfOA1D54g5QrOIx86MKjI7wJPSAgkZhqk0l0OTXrx9hXQ+hb7qjB7UQzEOB
+ rIAHRZB9e2XOEFNTN8roToeK+qCxdPTbdOm8/XiZddOrro6bBQb3vqUWJ5ZexQ8BXjTTozak
+ OH4QwL1uSxSef1biPZqx1AJNpZnATn9v8Bi8z/ntcV3VJN8btM8iF4yd5n2JmP/A5dGzh3D4
+ SXusB4qnGclzEH0JDFKbqDR7LcWSCHRMyf9TpeiS+pXSeXkFkdEOsTL5PmsMna5//PQUvkBo
+ MJlK0Zn78WZ4hJkVF3oxRqByrIuLkFFFHOJq6U1qPV49TaEzFmVeRkxzVjab5+ORPzmVeyUE
+ MqoyBcHUR+bIi237XhJTAB2Mwn16yJheW/a/iPZ3DcO0dczvKrT6PwtoMF/frdGrRWYnoPG1
+ vixA==
+X-IronPort-AV: E=Sophos;i="5.58,494,1544482800"; 
+   d="scan'208";a="299819643"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Mar 2019 14:31:19 +0100
+Date: Mon, 18 Mar 2019 14:31:19 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: core: rtw_mlme.c:
+ Replace NULL comparision.
+In-Reply-To: <20190318132203.13505-1-sanjana99reddy99@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903181431040.3832@hadrien>
 References: <20190318132203.13505-1-sanjana99reddy99@gmail.com>
- <alpine.DEB.2.20.1903181431040.3832@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: core:
- rtw_mlme.c: Replace NULL comparision.
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_1606_1657002384.1552918967179"
-X-Google-Token: ELfTvuQFIX2DpVPdtjM0
-X-Google-IP: 203.109.108.32
-
-------=_Part_1606_1657002384.1552918967179
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_1607_1609483121.1552918967179"
-
-------=_Part_1607_1609483121.1552918967179
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Monday, March 18, 2019 at 7:01:21 PM UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Mon, 18 Mar 2019, Sanjana Sanikommu wrote: 
->
-> > Replace NULL comparison with '!' in the file rtw_mlme.c 
-> > Issue found by checkpatch.pl semantic patch results for rtw_mlme.c 
->
-> You don't need to add the parentheses. 
->
-I would remove them in next version.
-Thank you.
-Sanjana 
+On Mon, 18 Mar 2019, Sanjana Sanikommu wrote:
+
+> Replace NULL comparison with '!' in the file rtw_mlme.c
+> Issue found by checkpatch.pl semantic patch results for rtw_mlme.c
+
+You don't need to add the parentheses.
+
+julia
 
 >
-> julia 
+> CHECK:Comparision to NULL could be written "!candidate"
 >
-> > 
-> > CHECK:Comparision to NULL could be written "!candidate" 
-> > 
-> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
-> > --- 
-> >  drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +- 
-> >  1 file changed, 1 insertion(+), 1 deletion(-) 
-> > 
-> > diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c 
-> b/drivers/staging/rtl8188eu/core/rtw_mlme.c 
-> > index cbee02a86d22..ecac6b428154 100644 
-> > --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c 
-> > +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c 
-> > @@ -1438,7 +1438,7 @@ static int rtw_check_join_candidate(struct 
-> mlme_priv *pmlmepriv 
-> >                          goto exit; 
-> >          } 
-> > 
-> > -        if (*candidate == NULL || (*candidate)->network.Rssi < 
-> competitor->network.Rssi) { 
-> > +        if (!(*candidate) || (*candidate)->network.Rssi < 
-> competitor->network.Rssi) { 
-> >                  *candidate = competitor; 
-> >                  updated = true; 
-> >          } 
-> > -- 
-> > 2.17.1 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an email to outreachy-kern...@googlegroups.com <javascript:>. 
-> > To post to this group, send email to outreach...@googlegroups.com 
-> <javascript:>. 
-> > To view this discussion on the web visit 
-> https://groups.google.com/d/msgid/outreachy-kernel/20190318132203.13505-1-sanjana99reddy99%40gmail.com. 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_mlme.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> > For more options, visit https://groups.google.com/d/optout. 
-> > 
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> index cbee02a86d22..ecac6b428154 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> @@ -1438,7 +1438,7 @@ static int rtw_check_join_candidate(struct mlme_priv *pmlmepriv
+>  			goto exit;
+>  	}
 >
-
-------=_Part_1607_1609483121.1552918967179
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Monday, March 18, 2019 at 7:01:21 PM UTC+5:30, =
-Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;mar=
-gin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Mon, 18 Mar 2019, Sanjana Sanikommu wrote:
-<br>
-<br>&gt; Replace NULL comparison with &#39;!&#39; in the file rtw_mlme.c
-<br>&gt; Issue found by <a href=3D"http://checkpatch.pl" target=3D"_blank" =
-rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?=
-q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoR=
-gUgHq29dhmk72L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&#39;ht=
-tp://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\=
-x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">checkp=
-atch.pl</a> semantic patch results for rtw_mlme.c
-<br>
-<br>You don&#39;t need to add the parentheses.
-<br></blockquote><div>I would remove them in next version.</div><div>Thank =
-you.</div><div>Sanjana=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
-1ex;">
-<br>julia
-<br>
-<br>&gt;
-<br>&gt; CHECK:Comparision to NULL could be written &quot;!candidate&quot;
-<br>&gt;
-<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"w62E5JMzDAAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
-<br>&gt; ---
-<br>&gt; =C2=A0drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c | 2 +-
-<br>&gt; =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>&gt;
-<br>&gt; diff --git a/drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c b/driv=
-ers/staging/rtl8188eu/<wbr>core/rtw_mlme.c
-<br>&gt; index cbee02a86d22..ecac6b428154 100644
-<br>&gt; --- a/drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c
-<br>&gt; +++ b/drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c
-<br>&gt; @@ -1438,7 +1438,7 @@ static int rtw_check_join_candidate(<wbr>str=
-uct mlme_priv *pmlmepriv
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0goto exit;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt;
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (*candidate =
-=3D=3D NULL || (*candidate)-&gt;network.Rssi &lt; competitor-&gt;network.Rs=
-si) {
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!(*candidate)=
- || (*candidate)-&gt;network.Rssi &lt; competitor-&gt;network.Rssi) {
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0*candidate =3D competitor;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0updated =3D true;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt; --
-<br>&gt; 2.17.1
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
-ailto=3D"w62E5JMzDAAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
-ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
-turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"w62E5JMzDAAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
-.google.com/d/msgid/outreachy-kernel/20190318132203.13505-1-sanjana99reddy9=
-9%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
-=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190318132203.1=
-3505-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
-=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190318132203.1=
-3505-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.googl=
-e.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190318132203.13505-1-<wbr>sanjan=
-a99reddy99%40gmail.com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br></blockquote></div>
-------=_Part_1607_1609483121.1552918967179--
-
-------=_Part_1606_1657002384.1552918967179--
+> -	if (*candidate == NULL || (*candidate)->network.Rssi < competitor->network.Rssi) {
+> +	if (!(*candidate) || (*candidate)->network.Rssi < competitor->network.Rssi) {
+>  		*candidate = competitor;
+>  		updated = true;
+>  	}
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190318132203.13505-1-sanjana99reddy99%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
