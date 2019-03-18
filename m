@@ -1,458 +1,90 @@
-X-GM-THRID: 6402531164952723456
-X-Received: by 10.129.152.151 with SMTP id p145mr9931729ywg.119.1490705452866;
-        Tue, 28 Mar 2017 05:50:52 -0700 (PDT)
+X-GM-THRID: 6669700273225596928
+X-Received: by 2002:a81:6184:: with SMTP id v126mr9704041ywb.17.1552931533814;
+        Mon, 18 Mar 2019 10:52:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.124.71 with SMTP id a68ls2457069itd.22.gmail; Tue, 28 Mar
- 2017 05:50:51 -0700 (PDT)
-X-Received: by 10.99.66.193 with SMTP id p184mr9224014pga.141.1490705451845;
-        Tue, 28 Mar 2017 05:50:51 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id 2si602401pfz.1.2017.03.28.05.50.51
+Received: by 2002:a25:4f56:: with SMTP id d83ls4206104ybb.4.gmail; Mon, 18 Mar
+ 2019 10:52:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzrxqGgjxNGiQ2ZTyN/3LkF2Yqva1bh1j6JK1dBigDVbD0hJMLKAcIwFmWIGHetxADOSGbq
+X-Received: by 2002:a25:d904:: with SMTP id q4mr8728408ybg.57.1552931531212;
+        Mon, 18 Mar 2019 10:52:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552931531; cv=none;
+        d=google.com; s=arc-20160816;
+        b=E74u+C4EmVejIIHbhJnBOXolB9mpuUE+tE5WkGcUZaUSilvebga22Lt2/GJsBIizTy
+         +VawlWNTUFzZS12WRFjHnL9vlQOWWeLU4P7Vv1rhUvNg0gPkmAt2lIVk+Envno8OeZmj
+         wtTR6uA39hVRFeYlStDchWwNUW4/Uhe3MSwNuZtVokGzh/whUzLSKeAcBDIEcsPHhqst
+         as8Y2EMKx5UDjpcxJ3wC9abcWkot20+dzDpN4+mFITRZn5nPTDbQ2etA5dxGytjKw1OA
+         RYcF7VYL+rSYDRxi30pu0U/FN9wu18IwaFqVHzDIzpaur2KoepSe1V2s6RWEVAq/ajYi
+         GTgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=MpYM2tNjWWVzztxwetZGOQAqlB6vYfLVT0xGkQJ98nQ=;
+        b=zwCxf2oPenUQV2iwjuPnfl3fyT8UuQC4M6wurBjFQILB1Nid5MYr1DaR0xjwWNRcHw
+         cuzHqZJ/2ITLjHqSBDydVYhef4otlQNbLvejaS+MBm25tkGOvAPmZ2voowSTCSDZGVuK
+         LxgSkR4wl6gZc85q5Mi1J5J7/Yq5zhBFHlqp+xUEz4um/yAnPdgaC59LGwNaamGNMnS5
+         Pr1mE/Wm0gk80TTYbREKJynsP4TwRwlxYBooeBrkuOLfE1hTDvexNs2KFF3jCSuIi7CR
+         e3I4glU4C0yZ6Hsmuvo+qja2io8WjecL0a1uShSt7OAvE/IUoPzGgMyhh0sUp5tk0raM
+         h1zA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=GwjaxGnv;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id s11si475146ywg.3.2019.03.18.10.52.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Mar 2017 05:50:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Mon, 18 Mar 2019 10:52:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id 81so21128088pgh.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 28 Mar 2017 05:50:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=I+bNiFBjevpgr0I07scaKwhXrUUdUP6S48svds7oIV8=;
-        b=ipT2n5xzz6ZDuTLMBi8C80LlpLi7nXQc8gJYGyTlsJA8EaDLhMsA82tnpzLYH+EXXu
-         wZ79/sfKlRq+hbHpytry9qLMcWi2byslVpzza2Fw9nQOiMsBMcJw9JpHfrUm7ILxlbiR
-         rmkTahxzPLbhMwHigmvmhVDDvhuXbhyyW9AiNsvn19wGzNi+izeZjiUUXQ/jrLpp4kZq
-         ZwQ/dpsUNptUkgBxb5Wmgl13SFOTGqVMbLCQFfMWcYmohyKXmPGsPQC22LVYaq13Xeqw
-         +tW4bhiCudo+wM763DiqT0wZjyqr0tiMASVp9dDD9iuGEsP5KQy61a81lsm39AxpJvgX
-         Iu9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=I+bNiFBjevpgr0I07scaKwhXrUUdUP6S48svds7oIV8=;
-        b=TqbusqF8o5Frt7oNpaayopuOQhF4b7alDbFNExmM/+z/GtuihEz83BN3Bi/DdPES8t
-         bX+UNHzm2SrfsnXPodSpqmChu2rK60qSJwwONwH9PQYJW8nuz5GjK99QXSYkmALwftwX
-         mXUFTiR/mMXKpZ6LxJ0/a2FV/hpOfRcKvKhm4UMH7KX02Pik3QrNc0kUC7/439J41P7S
-         YBOoa9qb5h8oP4s/FxtWaWMZdBjUj5lz1P3qQsmsUpCx5WrfJ3NRiB+/VQUsU8iboVcQ
-         riLRHLHz6ruVP18l2ZR/HNK3ZpwbZiGYIMtveO+qjEajIb8KSIdiEHxEfXNGG51yJSi1
-         WKzA==
-X-Gm-Message-State: AFeK/H05C6OfkS65r5yeIn/VMQ9K1Xua7TGwKRcfI3jGK0Y0ZIwt3j22nj2kMVKXt0rvug==
-X-Received: by 10.98.159.149 with SMTP id v21mr32008113pfk.57.1490705451532;
-        Tue, 28 Mar 2017 05:50:51 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from singhal-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id q4sm7399583pgc.63.2017.03.28.05.50.50
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 Mar 2017 05:50:51 -0700 (PDT)
-Date: Tue, 28 Mar 2017 18:20:48 +0530
-From: simran singhal <singhalsimran0@gmail.com>
-To: pablo@netfilter.org
-Cc: kadlec@blackhole.kfki.hu, davem@davemloft.net,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	Stephen Hemminger <stephen@networkplumber.org>,
-	Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
-	James Morris <jmorris@namei.org>,
-	Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
-	Patrick McHardy <kaber@trash.net>,
-	bridge@lists.linux-foundation.org
-Subject: [PATCH] net: Remove unnecessary cast on void pointer
-Message-ID: <20170328125048.GA25091@singhal-Inspiron-5558>
+       dkim=pass header.i=@kernel.org header.s=default header.b=GwjaxGnv;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id AAEDC2064A;
+	Mon, 18 Mar 2019 17:52:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552931530;
+	bh=4ePdk7ZNCHktTefDbxMwdLJvoiTzfK/cXR5JpySCk/4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GwjaxGnvi8nPLR9XtAMuRIJCDWdjSucJZZJ5mQgDmkACzP/CIydI5IYLoH48S8VIa
+	 hGYct1DpzbC+X1A3pUqOOCAY8z4kMC/BWBgbq3yczx8QrE46i2Cz2UWmnDfSD6rDmH
+	 XpxGUeat0mvPW8C+STIli22PXYVEObluSFzmiHoA=
+Date: Mon, 18 Mar 2019 18:52:07 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] [Outreachy kernel] staging: mt7621-mmc: remove blank line
+Message-ID: <20190318175207.GA23903@kroah.com>
+References: <1552910582-2749-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <1552910582-2749-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-The following Coccinelle script was used to detect this:
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T*)x)->f
-|
+On Mon, Mar 18, 2019 at 05:33:02PM +0530, Payal Kshirsagar wrote:
+> To avoid style issues, remove multiple blank lines.
+> 
+> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> ---
+>  drivers/staging/mt7621-mmc/dbg.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/mt7621-mmc/dbg.c b/drivers/staging/mt7621-mmc/dbg.c
+> index c7c091f..6b59ac8 100644
+> --- a/drivers/staging/mt7621-mmc/dbg.c
+> +++ b/drivers/staging/mt7621-mmc/dbg.c
+> @@ -50,7 +50,6 @@
+>  #include "mt6575_sd.h"
+>  #include <linux/seq_file.h>
+>  
+> -
+>  /* for debug zone */
+>  unsigned int sd_debug_zone[4] = {
+>  	0,
 
-- (T*)
-  e
-)
+Someone else already did this before you, sorry :(
 
-Signed-off-by: simran singhal <singhalsimran0@gmail.com>
----
- net/bridge/netfilter/ebtables.c         |  2 +-
- net/ipv4/netfilter/arp_tables.c         | 20 ++++++++------------
- net/ipv4/netfilter/ip_tables.c          | 20 ++++++++------------
- net/ipv6/netfilter/ip6_tables.c         | 20 ++++++++------------
- net/netfilter/ipset/ip_set_bitmap_gen.h |  4 ++--
- net/netfilter/ipset/ip_set_core.c       |  2 +-
- net/netfilter/nf_conntrack_proto.c      |  2 +-
- net/netfilter/nft_set_hash.c            |  2 +-
- net/netfilter/xt_hashlimit.c            | 10 +++++-----
- 9 files changed, 35 insertions(+), 47 deletions(-)
-
-diff --git a/net/bridge/netfilter/ebtables.c b/net/bridge/netfilter/ebtables.c
-index 79b6991..bdc629e 100644
---- a/net/bridge/netfilter/ebtables.c
-+++ b/net/bridge/netfilter/ebtables.c
-@@ -1713,7 +1713,7 @@ static int compat_copy_entry_to_user(struct ebt_entry *e, void __user **dstptr,
- 	if (*size < sizeof(*ce))
- 		return -EINVAL;
- 
--	ce = (struct ebt_entry __user *)*dstptr;
-+	ce = *dstptr;
- 	if (copy_to_user(ce, e, sizeof(*ce)))
- 		return -EFAULT;
- 
-diff --git a/net/ipv4/netfilter/arp_tables.c b/net/ipv4/netfilter/arp_tables.c
-index 6241a81..f046c12 100644
---- a/net/ipv4/netfilter/arp_tables.c
-+++ b/net/ipv4/netfilter/arp_tables.c
-@@ -310,7 +310,7 @@ static int mark_source_chains(const struct xt_table_info *newinfo,
- 	for (hook = 0; hook < NF_ARP_NUMHOOKS; hook++) {
- 		unsigned int pos = newinfo->hook_entry[hook];
- 		struct arpt_entry *e
--			= (struct arpt_entry *)(entry0 + pos);
-+			= (entry0 + pos);
- 
- 		if (!(valid_hooks & (1 << hook)))
- 			continue;
-@@ -354,14 +354,12 @@ static int mark_source_chains(const struct xt_table_info *newinfo,
- 					if (pos == oldpos)
- 						goto next;
- 
--					e = (struct arpt_entry *)
--						(entry0 + pos);
-+					e = (entry0 + pos);
- 				} while (oldpos == pos + e->next_offset);
- 
- 				/* Move along one */
- 				size = e->next_offset;
--				e = (struct arpt_entry *)
--					(entry0 + pos + size);
-+				e = (entry0 + pos + size);
- 				if (pos + size >= newinfo->size)
- 					return 0;
- 				e->counters.pcnt = pos;
-@@ -376,16 +374,14 @@ static int mark_source_chains(const struct xt_table_info *newinfo,
- 					if (!xt_find_jump_offset(offsets, newpos,
- 								 newinfo->number))
- 						return 0;
--					e = (struct arpt_entry *)
--						(entry0 + newpos);
-+					e = (entry0 + newpos);
- 				} else {
- 					/* ... this is a fallthru */
- 					newpos = pos + e->next_offset;
- 					if (newpos >= newinfo->size)
- 						return 0;
- 				}
--				e = (struct arpt_entry *)
--					(entry0 + newpos);
-+				e = (entry0 + newpos);
- 				e->counters.pcnt = pos;
- 				pos = newpos;
- 			}
-@@ -683,7 +679,7 @@ static int copy_entries_to_user(unsigned int total_size,
- 	for (off = 0, num = 0; off < total_size; off += e->next_offset, num++){
- 		const struct xt_entry_target *t;
- 
--		e = (struct arpt_entry *)(loc_cpu_entry + off);
-+		e = (loc_cpu_entry + off);
- 		if (copy_to_user(userptr + off, e, sizeof(*e))) {
- 			ret = -EFAULT;
- 			goto free_counters;
-@@ -1130,7 +1126,7 @@ compat_copy_entry_from_user(struct compat_arpt_entry *e, void **dstptr,
- 	int h;
- 
- 	origsize = *size;
--	de = (struct arpt_entry *)*dstptr;
-+	de = *dstptr;
- 	memcpy(de, e, sizeof(struct arpt_entry));
- 	memcpy(&de->counters, &e->counters, sizeof(e->counters));
- 
-@@ -1324,7 +1320,7 @@ static int compat_copy_entry_to_user(struct arpt_entry *e, void __user **dstptr,
- 	int ret;
- 
- 	origsize = *size;
--	ce = (struct compat_arpt_entry __user *)*dstptr;
-+	ce = *dstptr;
- 	if (copy_to_user(ce, e, sizeof(struct arpt_entry)) != 0 ||
- 	    copy_to_user(&ce->counters, &counters[i],
- 	    sizeof(counters[i])) != 0)
-diff --git a/net/ipv4/netfilter/ip_tables.c b/net/ipv4/netfilter/ip_tables.c
-index 384b857..af57eea 100644
---- a/net/ipv4/netfilter/ip_tables.c
-+++ b/net/ipv4/netfilter/ip_tables.c
-@@ -382,7 +382,7 @@ mark_source_chains(const struct xt_table_info *newinfo,
- 	   to 0 as we leave), and comefrom to save source hook bitmask */
- 	for (hook = 0; hook < NF_INET_NUMHOOKS; hook++) {
- 		unsigned int pos = newinfo->hook_entry[hook];
--		struct ipt_entry *e = (struct ipt_entry *)(entry0 + pos);
-+		struct ipt_entry *e = (entry0 + pos);
- 
- 		if (!(valid_hooks & (1 << hook)))
- 			continue;
-@@ -424,14 +424,12 @@ mark_source_chains(const struct xt_table_info *newinfo,
- 					if (pos == oldpos)
- 						goto next;
- 
--					e = (struct ipt_entry *)
--						(entry0 + pos);
-+					e = (entry0 + pos);
- 				} while (oldpos == pos + e->next_offset);
- 
- 				/* Move along one */
- 				size = e->next_offset;
--				e = (struct ipt_entry *)
--					(entry0 + pos + size);
-+				e = (entry0 + pos + size);
- 				if (pos + size >= newinfo->size)
- 					return 0;
- 				e->counters.pcnt = pos;
-@@ -446,16 +444,14 @@ mark_source_chains(const struct xt_table_info *newinfo,
- 					if (!xt_find_jump_offset(offsets, newpos,
- 								 newinfo->number))
- 						return 0;
--					e = (struct ipt_entry *)
--						(entry0 + newpos);
-+					e = (entry0 + newpos);
- 				} else {
- 					/* ... this is a fallthru */
- 					newpos = pos + e->next_offset;
- 					if (newpos >= newinfo->size)
- 						return 0;
- 				}
--				e = (struct ipt_entry *)
--					(entry0 + newpos);
-+				e = (entry0 + newpos);
- 				e->counters.pcnt = pos;
- 				pos = newpos;
- 			}
-@@ -834,7 +830,7 @@ copy_entries_to_user(unsigned int total_size,
- 		const struct xt_entry_match *m;
- 		const struct xt_entry_target *t;
- 
--		e = (struct ipt_entry *)(loc_cpu_entry + off);
-+		e = (loc_cpu_entry + off);
- 		if (copy_to_user(userptr + off, e, sizeof(*e))) {
- 			ret = -EFAULT;
- 			goto free_counters;
-@@ -1229,7 +1225,7 @@ compat_copy_entry_to_user(struct ipt_entry *e, void __user **dstptr,
- 	int ret = 0;
- 
- 	origsize = *size;
--	ce = (struct compat_ipt_entry __user *)*dstptr;
-+	ce = *dstptr;
- 	if (copy_to_user(ce, e, sizeof(struct ipt_entry)) != 0 ||
- 	    copy_to_user(&ce->counters, &counters[i],
- 	    sizeof(counters[i])) != 0)
-@@ -1366,7 +1362,7 @@ compat_copy_entry_from_user(struct compat_ipt_entry *e, void **dstptr,
- 	struct xt_entry_match *ematch;
- 
- 	origsize = *size;
--	de = (struct ipt_entry *)*dstptr;
-+	de = *dstptr;
- 	memcpy(de, e, sizeof(struct ipt_entry));
- 	memcpy(&de->counters, &e->counters, sizeof(e->counters));
- 
-diff --git a/net/ipv6/netfilter/ip6_tables.c b/net/ipv6/netfilter/ip6_tables.c
-index 1e15c54..ef730e9 100644
---- a/net/ipv6/netfilter/ip6_tables.c
-+++ b/net/ipv6/netfilter/ip6_tables.c
-@@ -411,7 +411,7 @@ mark_source_chains(const struct xt_table_info *newinfo,
- 	   to 0 as we leave), and comefrom to save source hook bitmask */
- 	for (hook = 0; hook < NF_INET_NUMHOOKS; hook++) {
- 		unsigned int pos = newinfo->hook_entry[hook];
--		struct ip6t_entry *e = (struct ip6t_entry *)(entry0 + pos);
-+		struct ip6t_entry *e = (entry0 + pos);
- 
- 		if (!(valid_hooks & (1 << hook)))
- 			continue;
-@@ -453,14 +453,12 @@ mark_source_chains(const struct xt_table_info *newinfo,
- 					if (pos == oldpos)
- 						goto next;
- 
--					e = (struct ip6t_entry *)
--						(entry0 + pos);
-+					e = (entry0 + pos);
- 				} while (oldpos == pos + e->next_offset);
- 
- 				/* Move along one */
- 				size = e->next_offset;
--				e = (struct ip6t_entry *)
--					(entry0 + pos + size);
-+				e = (entry0 + pos + size);
- 				if (pos + size >= newinfo->size)
- 					return 0;
- 				e->counters.pcnt = pos;
-@@ -475,16 +473,14 @@ mark_source_chains(const struct xt_table_info *newinfo,
- 					if (!xt_find_jump_offset(offsets, newpos,
- 								 newinfo->number))
- 						return 0;
--					e = (struct ip6t_entry *)
--						(entry0 + newpos);
-+					e = (entry0 + newpos);
- 				} else {
- 					/* ... this is a fallthru */
- 					newpos = pos + e->next_offset;
- 					if (newpos >= newinfo->size)
- 						return 0;
- 				}
--				e = (struct ip6t_entry *)
--					(entry0 + newpos);
-+				e = (entry0 + newpos);
- 				e->counters.pcnt = pos;
- 				pos = newpos;
- 			}
-@@ -863,7 +859,7 @@ copy_entries_to_user(unsigned int total_size,
- 		const struct xt_entry_match *m;
- 		const struct xt_entry_target *t;
- 
--		e = (struct ip6t_entry *)(loc_cpu_entry + off);
-+		e = (loc_cpu_entry + off);
- 		if (copy_to_user(userptr + off, e, sizeof(*e))) {
- 			ret = -EFAULT;
- 			goto free_counters;
-@@ -1258,7 +1254,7 @@ compat_copy_entry_to_user(struct ip6t_entry *e, void __user **dstptr,
- 	int ret = 0;
- 
- 	origsize = *size;
--	ce = (struct compat_ip6t_entry __user *)*dstptr;
-+	ce = *dstptr;
- 	if (copy_to_user(ce, e, sizeof(struct ip6t_entry)) != 0 ||
- 	    copy_to_user(&ce->counters, &counters[i],
- 	    sizeof(counters[i])) != 0)
-@@ -1394,7 +1390,7 @@ compat_copy_entry_from_user(struct compat_ip6t_entry *e, void **dstptr,
- 	struct xt_entry_match *ematch;
- 
- 	origsize = *size;
--	de = (struct ip6t_entry *)*dstptr;
-+	de = *dstptr;
- 	memcpy(de, e, sizeof(struct ip6t_entry));
- 	memcpy(&de->counters, &e->counters, sizeof(e->counters));
- 
-diff --git a/net/netfilter/ipset/ip_set_bitmap_gen.h b/net/netfilter/ipset/ip_set_bitmap_gen.h
-index 6f09a99..d302d98 100644
---- a/net/netfilter/ipset/ip_set_bitmap_gen.h
-+++ b/net/netfilter/ipset/ip_set_bitmap_gen.h
-@@ -232,7 +232,7 @@ mtype_list(const struct ip_set *set,
- 		if (!test_bit(id, map->members) ||
- 		    (SET_WITH_TIMEOUT(set) &&
- #ifdef IP_SET_BITMAP_STORED_TIMEOUT
--		     mtype_is_filled((const struct mtype_elem *)x) &&
-+		     mtype_is_filled(x) &&
- #endif
- 		     ip_set_timeout_expired(ext_timeout(x, set))))
- 			continue;
-@@ -249,7 +249,7 @@ mtype_list(const struct ip_set *set,
- 		if (mtype_do_list(skb, map, id, set->dsize))
- 			goto nla_put_failure;
- 		if (ip_set_put_extensions(skb, set, x,
--		    mtype_is_filled((const struct mtype_elem *)x)))
-+		    mtype_is_filled(x)))
- 			goto nla_put_failure;
- 		ipset_nest_end(skb, nested);
- 	}
-diff --git a/net/netfilter/ipset/ip_set_core.c b/net/netfilter/ipset/ip_set_core.c
-index c296f9b..10a3694 100644
---- a/net/netfilter/ipset/ip_set_core.c
-+++ b/net/netfilter/ipset/ip_set_core.c
-@@ -1915,7 +1915,7 @@ ip_set_sockfn_get(struct sock *sk, int optval, void __user *user, int *len)
- 		ret = -EFAULT;
- 		goto done;
- 	}
--	op = (unsigned int *)data;
-+	op = data;
- 
- 	if (*op < IP_SET_OP_VERSION) {
- 		/* Check the version at the beginning of operations */
-diff --git a/net/netfilter/nf_conntrack_proto.c b/net/netfilter/nf_conntrack_proto.c
-index 48d8354..ec665c8 100644
---- a/net/netfilter/nf_conntrack_proto.c
-+++ b/net/netfilter/nf_conntrack_proto.c
-@@ -202,7 +202,7 @@ static int kill_l3proto(struct nf_conn *i, void *data)
- static int kill_l4proto(struct nf_conn *i, void *data)
- {
- 	struct nf_conntrack_l4proto *l4proto;
--	l4proto = (struct nf_conntrack_l4proto *)data;
-+	l4proto = data;
- 	return nf_ct_protonum(i) == l4proto->l4proto &&
- 	       nf_ct_l3num(i) == l4proto->l3proto;
- }
-diff --git a/net/netfilter/nft_set_hash.c b/net/netfilter/nft_set_hash.c
-index 5f65272..8ec086b 100644
---- a/net/netfilter/nft_set_hash.c
-+++ b/net/netfilter/nft_set_hash.c
-@@ -352,7 +352,7 @@ static int nft_hash_init(const struct nft_set *set,
- 
- static void nft_hash_elem_destroy(void *ptr, void *arg)
- {
--	nft_set_elem_destroy((const struct nft_set *)arg, ptr, true);
-+	nft_set_elem_destroy(arg, ptr, true);
- }
- 
- static void nft_hash_destroy(const struct nft_set *set)
-diff --git a/net/netfilter/xt_hashlimit.c b/net/netfilter/xt_hashlimit.c
-index 2a6dfe8..762e187 100644
---- a/net/netfilter/xt_hashlimit.c
-+++ b/net/netfilter/xt_hashlimit.c
-@@ -119,7 +119,7 @@ static int
- cfg_copy(struct hashlimit_cfg2 *to, void *from, int revision)
- {
- 	if (revision == 1) {
--		struct hashlimit_cfg1 *cfg = (struct hashlimit_cfg1 *)from;
-+		struct hashlimit_cfg1 *cfg = from;
- 
- 		to->mode = cfg->mode;
- 		to->avg = cfg->avg;
-@@ -895,7 +895,7 @@ static void *dl_seq_start(struct seq_file *s, loff_t *pos)
- static void *dl_seq_next(struct seq_file *s, void *v, loff_t *pos)
- {
- 	struct xt_hashlimit_htable *htable = s->private;
--	unsigned int *bucket = (unsigned int *)v;
-+	unsigned int *bucket = v;
- 
- 	*pos = ++(*bucket);
- 	if (*pos >= htable->cfg.size) {
-@@ -909,7 +909,7 @@ static void dl_seq_stop(struct seq_file *s, void *v)
- 	__releases(htable->lock)
- {
- 	struct xt_hashlimit_htable *htable = s->private;
--	unsigned int *bucket = (unsigned int *)v;
-+	unsigned int *bucket = v;
- 
- 	if (!IS_ERR(bucket))
- 		kfree(bucket);
-@@ -980,7 +980,7 @@ static int dl_seq_real_show(struct dsthash_ent *ent, u_int8_t family,
- static int dl_seq_show_v1(struct seq_file *s, void *v)
- {
- 	struct xt_hashlimit_htable *htable = s->private;
--	unsigned int *bucket = (unsigned int *)v;
-+	unsigned int *bucket = v;
- 	struct dsthash_ent *ent;
- 
- 	if (!hlist_empty(&htable->hash[*bucket])) {
-@@ -994,7 +994,7 @@ static int dl_seq_show_v1(struct seq_file *s, void *v)
- static int dl_seq_show(struct seq_file *s, void *v)
- {
- 	struct xt_hashlimit_htable *htable = s->private;
--	unsigned int *bucket = (unsigned int *)v;
-+	unsigned int *bucket = v;
- 	struct dsthash_ent *ent;
- 
- 	if (!hlist_empty(&htable->hash[*bucket])) {
--- 
-2.7.4
-
+greg k-h
 
