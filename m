@@ -1,100 +1,106 @@
 X-GM-THRID: 6669620815232761856
-X-Received: by 2002:ac2:4292:: with SMTP id m18mr729757lfh.3.1552893365475;
-        Mon, 18 Mar 2019 00:16:05 -0700 (PDT)
+X-Received: by 2002:a0c:b91c:: with SMTP id u28mr8376649qvf.45.1552892107566;
+        Sun, 17 Mar 2019 23:55:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:3612:: with SMTP id d18ls325791lja.8.gmail; Mon, 18 Mar
- 2019 00:16:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyZa+V7G32KVUAbtWU8T+AqPyLjrZ11DQGC70BCGRK3PFA1X2azloewHstFcFQzJEInE0UZ
-X-Received: by 2002:a2e:290:: with SMTP id y16mr834356lje.20.1552893364651;
-        Mon, 18 Mar 2019 00:16:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552893364; cv=none;
+Received: by 2002:a0c:aa9d:: with SMTP id f29ls6296796qvb.4.gmail; Sun, 17 Mar
+ 2019 23:55:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzcPy7xJw6jNMetrk2Lo1AdcMLXk44sSYZ0cfSLB1bcbJY3rsNLlA6mAYXOcedABQyAnEbc
+X-Received: by 2002:a0c:c685:: with SMTP id d5mr8879668qvj.17.1552892106929;
+        Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552892106; cv=none;
         d=google.com; s=arc-20160816;
-        b=C5W3bsyqMWmuPe5m2jdLv7DFh9A1Bu5hTND9acOrj5EbX6CdcWKt+av8nbsbIik+hR
-         5ltvptjhPhq8fMybMDvZrVa/TFf4et2rA+PRdG32m/BKojw0e8ILgVoA7Av/FrGWS7Vr
-         AvJmY/EZl1Bb/A70PJ48gXOrgN5B7X/6C5MlaPmxyWwlkGTsNk2JgTMX/CFPeUT+U6S6
-         myt5mhxPqaQLINb/fLbIV6PBC0g4cqfHf9cJfn4JMyZGs0oD8ryLMyqabWXwZ1LOqc4K
-         zfIPH7TPWXiFZ9XWSIu1Ti1QSc7PvlF4K8/lJe0BDovNG1P8HtEveMWeEMioHkRQ2+tC
-         g2qA==
+        b=PmyZXqjPdhHiW0Bm9Moi+2MIAcdw/0V6JlKYbofnyD/svGYFUJMHUb062krI4ld9ru
+         H6ipGIANZYAfCirRomSEgncqdGLovw2AZ8ibcPnjwfkUlYjuzAIa8Bms205FyoIyh/Aj
+         AQ2JLBp8FfhgohWUm7ni7+WkH7SoEc1WTmZWUAgzHYCQY/ScYWGkL5ZOZYIVBe2WPiBZ
+         vBJ+3pADzHCv06aMEji7OVfv1RbC84Lfn0B+HoLTUApoIpi/b8npf0Tyghu4YS6DBrGh
+         0xOa/Pvp2DeCRujjP1nUcpCOwp3OFaKxFeC6hFv5KNG1xpHbtqK13FsZG0SxDXNibetC
+         x7sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=Z6GN6FZJEoJrGvh3805irFQIZQoA57xJ/2rfJa92yqM=;
-        b=QhKoQx/I1gvtQrz92MeHV98O1+bVEBGqlwCTAj8SYD2cfvYXI4moi+A0cr9l42q3vc
-         LFu4vjp1Y3ii4u8VsCKsOhRxaXWb5YBagYQwjG1UQEVjHNc6BWJG/uZbdDTUlnyGilt1
-         u5VwA/dpcbNY4tXt8pU1QUASLT3pACoDkUf4t70ReGo5giQhusf0GrD91aRsah+Q7oTa
-         RXepFPFYuJkXqA3L0afJn+v2bOy/D/GnY5574resBwrwKLjz5iWS7Zkhr81xyuvOuRp3
-         20630UVRMuWZGMgdGuYHTi3vfkVr8dKZbGiviAoIHi8eKb0vbYtSSgOVX12Z8FrLO1wh
-         p8pw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=QEKzwJMC4V5vgfbh2EJZTJwyyYoUkNjXfXNitqpLmGE=;
+        b=ctSa3cgwV6CQOC7KCNGj4iSS7GX2YHJeBsj/fJMLXGdpf64Cl3YuFY1dn8fnJLWgBQ
+         IoSYwCo5qq41OdOqzPhNEfcSZxqJgoIBRUM2bWUIYd6EqU+PQkvcZU9L5r2YcIXqhpCB
+         4ubre0cvrYHw8/+8Cp29yITTGBh8IpNOqi0/yZ3mv6C4htFITWTOjI8VSLXqlmLkQYhn
+         ecO7ygewtH+WesLP40P3cbi7/L9a866DTCVFr2ZZTmMxjXHTm2YZhfFx9yEsYjMss8Pj
+         /FRcYs8/0P+HlZK+pM2h+bEqAN+44U6Xfm1D0XsXiw06BGm6dfRoGFYQ2BS2Tsyr8sJR
+         6w2g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h14si524479lja.2.2019.03.18.00.16.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jPuSWL+W;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pg1-x52d.google.com (mail-pg1-x52d.google.com. [2607:f8b0:4864:20::52d])
+        by gmr-mx.google.com with ESMTPS id m1si508290qtc.2.2019.03.17.23.55.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 00:16:04 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) client-ip=2607:f8b0:4864:20::52d;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,493,1544482800"; 
-   d="scan'208";a="374442262"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Mar 2019 08:16:03 +0100
-Date: Mon, 18 Mar 2019 08:16:02 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel] staging: greybus: give comment
-In-Reply-To: <1552892088-20069-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-Message-ID: <alpine.DEB.2.21.1903180814280.2824@hadrien>
-References: <1552892088-20069-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jPuSWL+W;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x52d.google.com with SMTP id a22so10701144pgg.13
+        for <outreachy-kernel@googlegroups.com>; Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=QEKzwJMC4V5vgfbh2EJZTJwyyYoUkNjXfXNitqpLmGE=;
+        b=jPuSWL+WPGLCVZ0LCqQ3DUy6+U3bLZvptnVj/y2fCHrb8ucnfNbVq0wXCQVLJ/Hwz1
+         pxZhU3MS4qdT9b6zc78q9arl2vbEe1EgGRve+sCwEC59IICjlxsJKinn+57i9QKHrZXl
+         TTXp665zVxo5dFrm9IRiyMCWf/Gpo2yM1SCFZlu4to8WWC9TdMkPS33UdOSEZ/AQKYqE
+         acLWt7nu93vkyLPXHf1KgAXCiusQ4VfDOwwyXdCr1oWmeRoCYvyLWRre3uawezgwYXMp
+         haxZfRtN1BJxq/f3qBTblnoNQhSSAP7HmDE0A/Ug9Lx/h+ofD6e9PGGLcZ8PHga8WeN/
+         MXYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=QEKzwJMC4V5vgfbh2EJZTJwyyYoUkNjXfXNitqpLmGE=;
+        b=CipAXsxauNZacdCQ0ZwW3Y0U6XMZ9xYA56Jl4tn19u4zQEQV+mY7eEaohGaNEFOOJA
+         BY58vhedNKVxscr2Qlchlu5g9T3kvNsOzw57cKXDbgOmNsktT7Zlv8yp4UarjvDjJo9o
+         VkrYwyO6zQLbn2wNH7oN0Dheo+GMJtk9Ywj6yhBk+BFixLSMdHin1Lb+IPjXCxEoMatq
+         Cglifb0mv8p8J/8G8DuSc7NXmp3zt9xipzaeiwdjDwRFK6ERmQvU0/G8KfL9pTDK/Ics
+         OB5F4b4QNNLY/StGZ08NTES5ZmtQM6MKdoTsVSLBSuZkd4hmOE5fQDMMWUa3DYTyLr0I
+         15Vw==
+X-Gm-Message-State: APjAAAVQ/lZ+JWOy8g9z67ADbq5zszM0Wxfy/W6PAqF8NxDE+HwMDVOL
+	aerOU+qPSSWV9YK0DWZuuuq5CSKo
+X-Received: by 2002:a17:902:403:: with SMTP id 3mr18447432ple.48.1552892106299;
+        Sun, 17 Mar 2019 23:55:06 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.100.132])
+        by smtp.gmail.com with ESMTPSA id n65sm3288812pfb.160.2019.03.17.23.55.03
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 17 Mar 2019 23:55:05 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: greybus: give comment
+Date: Mon, 18 Mar 2019 12:24:48 +0530
+Message-Id: <1552892088-20069-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
+Comment given to struct mutex lock; in file named as
+drivers/staging/greybus/audio_codec.h at line no. 75
+This object is being used in audio_codec.c,audio_topology.c files.
 
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+ drivers/staging/greybus/audio_codec.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Mon, 18 Mar 2019, Payal Kshirsagar wrote:
+diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
+index 9ba09ea..31e857f 100644
+--- a/drivers/staging/greybus/audio_codec.h
++++ b/drivers/staging/greybus/audio_codec.h
+@@ -72,7 +72,7 @@ struct gbaudio_codec_info {
+ 	struct list_head module_list;
+ 	/* to maintain runtime stream params for each DAI */
+ 	struct list_head dai_list;
+-	struct mutex lock;
++	struct mutex lock; /* protect critical section for audio gb */
+ };
+ 
+ struct gbaudio_widget {
+-- 
+2.7.4
 
-> Comment given to struct mutex lock; in file named as
-> drivers/staging/greybus/audio_codec.h at line no. 75
-> This object is being used in audio_codec.c,audio_topology.c files.
->
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> ---
->  drivers/staging/greybus/audio_codec.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
-> index 9ba09ea..31e857f 100644
-> --- a/drivers/staging/greybus/audio_codec.h
-> +++ b/drivers/staging/greybus/audio_codec.h
-> @@ -72,7 +72,7 @@ struct gbaudio_codec_info {
->  	struct list_head module_list;
->  	/* to maintain runtime stream params for each DAI */
->  	struct list_head dai_list;
-> -	struct mutex lock;
-> +	struct mutex lock; /* protect critical section for audio gb */
-
-I don't think the information provided by the comment is helpful.  All
-locks protect critical sections.  It's likely that this lock protects
-fields in the same structure, but which ones?  Do all accesses to the
-structure need the lock or only certain ones.
-
-julia
-
->  };
->
->  struct gbaudio_widget {
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1552892088-20069-1-git-send-email-payal.s.kshirsagar.98%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
