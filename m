@@ -1,124 +1,82 @@
-X-GM-THRID: 6477098943281889280
-X-Received: by 10.36.131.65 with SMTP id d62mr5422502ite.39.1508067115797;
-        Sun, 15 Oct 2017 04:31:55 -0700 (PDT)
+X-GM-THRID: 6669790779822571520
+X-Received: by 2002:a81:3653:: with SMTP id d80mr10041846ywa.20.1552939597229;
+        Mon, 18 Mar 2019 13:06:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.40.203 with SMTP id o194ls2192888ioo.7.gmail; Sun, 15 Oct
- 2017 04:31:54 -0700 (PDT)
-X-Received: by 10.36.5.5 with SMTP id 5mr5704123itl.30.1508067114954;
-        Sun, 15 Oct 2017 04:31:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508067114; cv=none;
+Received: by 2002:a25:3414:: with SMTP id b20ls4321267yba.2.gmail; Mon, 18 Mar
+ 2019 13:06:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNpBVGM6MqovYtXzL6cLvMTenNCu8RKwzKns40ybuG9m+gvOzSaGenGa6y6MfTOQEJCSoW
+X-Received: by 2002:a25:2351:: with SMTP id j78mr9758102ybj.36.1552939596438;
+        Mon, 18 Mar 2019 13:06:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552939596; cv=none;
         d=google.com; s=arc-20160816;
-        b=AyI/FSvzfXk+hRTqak6xKILl3HH0EGcooNqXn1mj5ZVVD2oBhTWxK+8OCzyo56E0k4
-         mq6tkzX2EeT6tu8HwUZED+wfhMC8Iq9HFJ3DH3YFYbamPS4fTT9o81cmTlSQglZ8Txd/
-         2YBniwJCQaYv69j45xVZn+j1AaN16XtoaODy9SxsMn74F/IkUVe5DjWTL5jOYhMJsJJw
-         bgVGrpJhe8wbcrE7ZtdcOUrSBCD22eMTyeebjIknGexOakYEfEdVnHDsEQdfaw5fHqLU
-         luOIqMwsYR00335vZOqQQdKn7FByXhux3Pc8FFJJNUViviBxmdVVz1KY0cClF4skpnjV
-         enYQ==
+        b=uta/UbMNCCX+5sgN8ZtlPxCuImkWI7CIiHG+2IWw+GBDsHy8tozAOawlib6LdQdwL6
+         s6TZU6LynjBb2SmaMnrdOOZhmrhd0pOIkN7/hvYQmftkudfNLaRd9fYWczSPB+s+Etpn
+         1y4tqq4hrtsJ02tDFnFP82dQHiG5srLaBNOcylF6UECSDSbEsG3AlWW59AoP9dPYheGM
+         9O7ROELyw9MTH6xPjUfjjk5kLIKJsbWM+FAPKQlKPnAX9Xhic4m3XM9aBcL56gUgYR+c
+         YcIR114sMXBPkW0OtnFh9Ijom16zi5fqG/wOWkigp59Z9VEFaiJB6LCFIC+pmIZ6Lp+y
+         uwcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=i5b40AsftIFF5xKxQWohHdB09VmpEFsZYAl7fPbwRcM=;
-        b=m1aP8hYFI3gGrUfQtKkO/eSBlSfBwoFijrthTJmpM+kR6cC1et0AlRMzI36mMH+B1X
-         NBcsk6k5uoHudcoqPRQ9U1o6TUM9LQ9CXksFlvB9AWfV8oawZBPTNFhGXItpkEwP0q5/
-         1UgnqJerjlRyq27xb+WlgRKRELmc6Q6MziKdhykVJLrCTkFqBjONRSli4vv6u6v9ILWg
-         B9O8sNi9hLcAjzVzX84hlPjCahES9ZYdNmAD/SjrpzUxhHS8mB7xBjnTVgelpsZsOPgm
-         fQDegJ2nfWwOrbJHk2wWo1LzgeqyrIZM9lvQVqbsQFge5ektrLGc185vq9blMXYNDJDD
-         eqjA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=LEhqjmcTQwXE5byxFlAALusTcAof7T8V9xuj+MWJJMI=;
+        b=PyczGc0LNlwNaV6p6cJQtPKAz69g8r33iu3XRknbg/X87UA235B4etN5cDHcjlFRmH
+         aiege5EtUbQtTo/IzXSASQhtJ0Rb2zNn6gLDTVdUke1CLygWj2tlL7SB6RVHrloVIc3O
+         5JRTutqTDQMFRt50XA8++yEgO1NS5UztdAcEuHDg8w+TH+No/Rpret2ERY0Qf/Ew72YG
+         KpeBuLXgP87uZYr/hQJ48YZBkPiChOvvISFYRYk2Zuz8PbSMv66pvDSP7mVbwQGQcSOe
+         wWj4LMcAYPXskrSWXtSBVA5ieS2S0L9E51dtWBvawGeX8cnLlBvyUMfr6OZ1Nh3a8BeK
+         nWwA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dJOX3zzp;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::230 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x230.google.com (mail-pg0-x230.google.com. [2607:f8b0:400e:c05::230])
-        by gmr-mx.google.com with ESMTPS id a205si431321itg.1.2017.10.15.04.31.54
+       dkim=pass header.i=@kernel.org header.s=default header.b=MHA+gKVc;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id r128si738257ywd.0.2019.03.18.13.06.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Oct 2017 04:31:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::230 as permitted sender) client-ip=2607:f8b0:400e:c05::230;
+        Mon, 18 Mar 2019 13:06:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dJOX3zzp;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::230 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x230.google.com with SMTP id g6so3202749pgn.6
-        for <outreachy-kernel@googlegroups.com>; Sun, 15 Oct 2017 04:31:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=i5b40AsftIFF5xKxQWohHdB09VmpEFsZYAl7fPbwRcM=;
-        b=dJOX3zzp1bZqjsymAGP/WI16Z1fOg7CDLRewiro6aYX2x5VYIiJiK4DmeA44AZ7mCW
-         gjbsxb9NikmDStocVlNZHUUmi5sGbbjZzOByrBBCKlYHb9ZUWIoTehUpSlEIW3qFZlQm
-         2doyAC9RNC997mTLmcZhS90FxhvrZJucR1Xy0IFwCcX3IHvMlRtqxX2qUZoNz0kX1GIm
-         mwCoKClz4uTaBuEL4/OD5vB3F/vSoScxROAM3rX+ZRrNL8ZH40sLDZumd/wWPRA87MJu
-         I+IgL24nifXjZBwgvUNvcw55iDXdHByazDetpl3zATHvPoxdfgNJ0UspOJvKrjwY/mMI
-         aguA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=i5b40AsftIFF5xKxQWohHdB09VmpEFsZYAl7fPbwRcM=;
-        b=gVXqwG/KHXl18ECE795AbhY93fEcp2s7QVHCJcCSEt5qS4r3GFGHkE4YlM5Z/yIirn
-         nRWAef5Cg7B7C03GotoOHyAg2uGJSyQ32FESrDVJPKXaFHSQ8JhTvIPKJTFPJgNvsgyF
-         O6gDQIkvu1cuSJWwscVt4Vj5H7bv2jPPXaXxn9NPv1Tz9Agpm0tMLxYe05fnmDgRVtvR
-         J4EIHyBaFCL+bVKjAq4YMPS6PAFzS6k6NsXEnvRSVm5hnBYK4jJj73uWSrNbXquFD3ZN
-         +QOOXixUvXmc9PUbR5UHzWwzccTEbm3aik/jAaSyOqm2pDWmaJBoyTsZD2jYsshoRNw9
-         KZWQ==
-X-Gm-Message-State: AMCzsaXKsgVCrJ5ea0zjYw4hP/KSpECK9ZJjjZ3Qhkc4uLWmzv0ABx41
-	t6mEC+sLDbeLTZwYuHTZWne98vta
-X-Google-Smtp-Source: AOwi7QCKM7n/CFi0b9CtUBTrgP3wPEGJHwYfHSx7IWZbisIkqsUkTC6r/MPKT59zGObZV8/7OFtKKg==
-X-Received: by 10.84.194.3 with SMTP id g3mr6249159pld.246.1508067114546;
-        Sun, 15 Oct 2017 04:31:54 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
-        by smtp.gmail.com with ESMTPSA id f3sm10250733pfd.82.2017.10.15.04.31.53
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 15 Oct 2017 04:31:53 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	pablo@netfilter.org
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] iptables: iptables-compat translation for TCPMSS
-Date: Sun, 15 Oct 2017 17:01:47 +0530
-Message-Id: <1508067107-13649-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=MHA+gKVc;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E84F220989;
+	Mon, 18 Mar 2019 20:06:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1552939595;
+	bh=o4zMprhZXmgG3+Tyrd1MPo4L+JwvrxiMrgkEZRxdy90=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MHA+gKVcBj4pFCJOOKSMiSqaNzsuRikXfr+3+O9n72i7rkbJ67508wZbQyvEDzHxZ
+	 HqPjvr1jt1rjFBJxOKwlnq7rTYtyvgM64jGtwmtxrYRHV/WXevSVabbldgB/jaAeaz
+	 dsVNhbHoC6mhtvGwyl23dPuVqoldObN0mRAPXjoo=
+Date: Mon, 18 Mar 2019 21:06:33 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3] Staging: gasket: sysfs: Fix string split issue.
+Message-ID: <20190318200633.GA21029@kroah.com>
+References: <20190318175426.6507-1-sanjana99reddy99@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190318175426.6507-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Since path mtu support was added, we can now add
-iptables-compat translation for TCPMSS extension.
+On Mon, Mar 18, 2019 at 11:24:26PM +0530, Sanjana Sanikommu wrote:
+> Concatenate a multi-line string constant into a single
+> line.Issue found by checkpatch.pl.
+> 
+> WARNING:quoted string split across line.
+> 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+> Changes in v3:
+> Correct the subject line.
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
- extensions/libxt_TCPMSS.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+This patch is already in my tree.
 
-diff --git a/extensions/libxt_TCPMSS.c b/extensions/libxt_TCPMSS.c
-index 4b71e44..7f65298 100644
---- a/extensions/libxt_TCPMSS.c
-+++ b/extensions/libxt_TCPMSS.c
-@@ -91,6 +91,17 @@ static void TCPMSS_save(const void *ip, const struct xt_entry_target *target)
- 		printf(" --set-mss %u", mssinfo->mss);
- }
- 
-+static int TCPMSS_xlate(struct xt_xlate *xl,
-+						 const struct xt_xlate_tg_params *params)
-+{
-+	const struct xt_tcpmss_info *mssinfo =
-+		(const struct xt_tcpmss_info *)params->target->data;
-+	if(mssinfo->mss == XT_TCPMSS_CLAMP_PMTU)
-+		xt_xlate_add(xl, "tcp option maxseg size set rt mtu");
-+
-+	return 1;
-+}
-+
- static struct xtables_target tcpmss_tg_reg[] = {
- 	{
- 		.family        = NFPROTO_IPV4,
-@@ -104,6 +115,7 @@ static struct xtables_target tcpmss_tg_reg[] = {
- 		.x6_parse      = TCPMSS_parse,
- 		.x6_fcheck     = TCPMSS_check,
- 		.x6_options    = TCPMSS4_opts,
-+		.xlate		   = TCPMSS_xlate,
- 	},
- 	{
- 		.family        = NFPROTO_IPV6,
--- 
-2.7.4
+thanks,
 
+greg k-h
 
