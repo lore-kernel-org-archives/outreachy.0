@@ -1,629 +1,240 @@
-X-GM-THRID: 6468616389791842304
-X-Received: by 10.99.54.136 with SMTP id d130mr5705575pga.19.1506092117299;
-        Fri, 22 Sep 2017 07:55:17 -0700 (PDT)
+X-GM-THRID: 6669000631583244288
+X-Received: by 2002:a2e:7205:: with SMTP id n5mr236628ljc.3.1552904033456;
+        Mon, 18 Mar 2019 03:13:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.62.37 with SMTP id l37ls93400ywa.36.gmail; Fri, 22 Sep
- 2017 07:55:16 -0700 (PDT)
-X-Received: by 10.129.50.18 with SMTP id y18mr7065070ywy.229.1506092116353;
-        Fri, 22 Sep 2017 07:55:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506092116; cv=none;
+Received: by 2002:a2e:9e18:: with SMTP id e24ls1977150ljk.9.gmail; Mon, 18 Mar
+ 2019 03:13:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqya/CKiPCx/WnXArAHSP+2pTOe22vRnDH08N32kZqXLBAAe7qHT1BybvUhYtsCSV7fC2gd9
+X-Received: by 2002:a2e:7306:: with SMTP id o6mr884967ljc.2.1552904032434;
+        Mon, 18 Mar 2019 03:13:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552904032; cv=none;
         d=google.com; s=arc-20160816;
-        b=E6F7ejbBu3U4mzZN7rmgUU5WblbEWvgFw6wZRvMWjRNbEO5rQrP6DY7k3wSoE/iJt1
-         rhPB3Bb2SDPTi4I1/Ag2BEuLZSHrOygZ2gN0T/OXh4GWw+ypxwpOurCFjEXXv6+t5bR0
-         BJjCULcYYCv9Rd0l12Rzv1yoa6ttAKB/cqFiUOSpE5PtxxAT/MtNQXOBNEeTcfCAaNxW
-         ln1p17e5aUvBnuSUxa61VYaf2TrgieUXwWDJ+ApzAwadA++7hfNb+HNg8nPNNB/n82wV
-         P9mWXRlrTTutoM2+b7Cr02T/Iozc71OeUbca0gQgbPnbAO8qC0XQs43jDnew7n6+vLvA
-         tcHg==
+        b=dxt6ji+1SwjEld9eIAk1UbYIT3oQ48f738XiAvZYHQWeewpgEWzTSJfhZMKi3VNgIA
+         VGbq1uTD9CGhED0AB+joHLnhp3rp6QA++t7p+OUfRNMDOVLjX6Jq1LKLGKIUcuJeeeGJ
+         KbF5zvhWUJz1/pkTTDmvq4xSIW1VZDd1bdh297CBT7TgI6qAfXIzrobR26kl+kOffrFP
+         DJRquzXwjbKu3D0vX7uLHECASCp5IuJLCDW6dbylnHT+8Lpln5YFtuZmsMJWOwtOopbs
+         15gofqSakB5Qjm0bEIeSctE9cl0mpSdeLai7q05Z6sUt5qjDvO3VabUF/ONAE/eHwDGE
+         tAXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=ws3O9pyfz1HH8BluOaxUG/k/f1fILNxQQVfC+ITvz2U=;
-        b=fluqJrhLav41LC1wJB9Kyyu21Sd8tn2OjlDS5qqB4TbbFJ/J/6UCUB04QX0tX23tzo
-         mqvesZFuv2JAYXhQZ+IEqh+y7QEFb1swwZdA9CXMpw7+IwbylKEIw07xKQ3rYkIMxMcA
-         IcoMBN0JqmdFrKfzVzNN+/J8oNd3lMggTcgpVmjLqjgqCNrFG6y3JX0dkVmdoZhGXwBn
-         zYJOV6sM1Q/49Zi/8Qm1cKI6+CEE+IITNoc0GihfkiTGgSQzEeln6/B7i/VL2m6K2e2t
-         UCeRGM/JenzP3ESU6G/vXgG0s9QcA576BZgSJqxkvhcrcP9AezwVZSES4lAWSpT5p2LL
-         8rWg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
+         :subject:dkim-signature;
+        bh=Wk2WCcha7wAiyXTP4x0ET16zhPIYmHNTWBpoyXO8pNs=;
+        b=Ssiof2UBVa33AwNGvMQ2+HTmQyX3J2J+EEGoCAKX60C9F5i2MVN63oAh/lK+gbllMg
+         RLQsTxFAYDkj/2WTOMdPi9s/hQP441bmpuU3AmGEbtRuJ9zOetvXSPbDXxSC58bkXPIV
+         Uz958ngxYf3unm3fb7M10/pFpOc1/St+tol2jvGpyCl350o/cKXIdmY0LegklQoHJA2n
+         caxyhwRIbsCedoqPSas0s05dPLuFChNLylUFdfGVkEBWErMloI42aMf5qOa6ZGEay3Z9
+         ucEUycn3pEk1Ysmt6gK5/MnRpkszCuynqP9wk8I1kQncmrPIVTanLa/D7IhHnKJYd5Kz
+         4tMw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VhytMved;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id r78si3958pfb.3.2017.09.22.07.55.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ntOfQgfB;
+       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::535 as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <matthias.bgg@gmail.com>
+Received: from mail-ed1-x535.google.com (mail-ed1-x535.google.com. [2a00:1450:4864:20::535])
+        by gmr-mx.google.com with ESMTPS id h14si547726lja.2.2019.03.18.03.13.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Sep 2017 07:55:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Mon, 18 Mar 2019 03:13:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::535 as permitted sender) client-ip=2a00:1450:4864:20::535;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VhytMved;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id e69so551879pfg.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Sep 2017 07:55:16 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ntOfQgfB;
+       spf=pass (google.com: domain of matthias.bgg@gmail.com designates 2a00:1450:4864:20::535 as permitted sender) smtp.mailfrom=matthias.bgg@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ed1-x535.google.com with SMTP id m35so12969873ede.10
+        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 03:13:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ws3O9pyfz1HH8BluOaxUG/k/f1fILNxQQVfC+ITvz2U=;
-        b=VhytMvedYe5QQFcKpkg6pshZ5hK6b1mrvfd8yNHQl1rpZOiZQJ5U1v8Y0gxYaKoEYI
-         yEUtMbujtX1r/0/jEFMy4J74zw2BG7k9Xe3BA0LsTuNJ8LFnjuP9n4HJ5PhI3Um347wi
-         3VnK7VcnhaoDiuGy9RWc9xQXtHwzx/ZftHSRdF1SOZ22kU+At5oLU0KsLPNZmQRU7tDN
-         Iq38u06VkWbS5IYczV8HYdDcKuOM1azwGcIEOIMUO0nFsIEXBkQE3bQSRMN03Jxd83lM
-         Xfnj7zdv6YVQN1gsTFiMOe5jLYgikJB5cnWox0XzWdAQDvUTxCGBDcWffHbSm/16bfpf
-         IN+A==
+        h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=Wk2WCcha7wAiyXTP4x0ET16zhPIYmHNTWBpoyXO8pNs=;
+        b=ntOfQgfBfV2oeSgs9hVErT58Z/N//WmcQxDmkqMDysyYGM8A3s+Mer054eTzCEiKDx
+         zMbdA7Eq6y8yfoZn5UzICXzlXe0ehWY878mNB9/w/8zamIB9178VdsHe94ZifAUFYDgW
+         VNIz3OHAGG5uYe0fV/Edcagv2cR4Vc+srr67jRwwg+OabWWfLwYFgoy+BLFfnez/ATlX
+         5iv3hpamrg7C7hgteuVBpp59gJUEm8VdRZ/4NsLO+4J51vRLPtk28fPi0x/knTIzvPyb
+         PCBMFt8MaRxwO2rPLJkoPmKNwSh3uii89DxRiNimy3QD49mY4/0vYJaZGr7XaJ1e66M5
+         /GyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ws3O9pyfz1HH8BluOaxUG/k/f1fILNxQQVfC+ITvz2U=;
-        b=KulWUDilu8IPIk2z952jrgCs3WkNd5/HTjAcJAkGNeVk9NjaB41uLDVUmiay4KE/oO
-         Vw2m+PC+d9GpDE7EhNxtuIWJBHBWSsbG7KCdx3n/+H1QhHRCG0nDQSfjV5KeNfojEEq8
-         FhBpVafL+uBRl7IsWZT5QBpJ5H3bO4/WutKeEaiLafefGJBkjQ6M550Jrm8KAXQn0vbp
-         vbLqag1KZtlp9WTr5YI4h/T151qbLWQMl4HXQ6wELs/JUhX/UQNF348eQ9OkD4DJRw/O
-         J8p6drsKjT9N1LlCY0CTSEW1me3HX5V4rrtvWuhT4+8Ab4+tFDgpN+GpSTUTnUfKdJSe
-         ceXw==
-X-Gm-Message-State: AHPjjUisgcFUiEj++ti9aIzCWE+DbhroNQ5WFFll+nARbwqypNNFR/Ar
-	CCXcJ3HVm9hSDaQhGRSbSvXSmA==
-X-Google-Smtp-Source: AOwi7QDQuCWeYsKfEx25wMLL5xUh6dZN8ztMzvLRHQoXB1nNTzS08UNSiS3DgaXXpkeameWonMEzxA==
-X-Received: by 10.84.129.193 with SMTP id b59mr9131353plb.76.1506092115493;
-        Fri, 22 Sep 2017 07:55:15 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.171.83.22])
-        by smtp.gmail.com with ESMTPSA id d190sm39400pgc.11.2017.09.22.07.55.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Sep 2017 07:55:14 -0700 (PDT)
-Date: Fri, 22 Sep 2017 20:25:08 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org
-Subject: [PATCH] drm/amdgpu: Replace ref/unref with get/put
-Message-ID: <20170922145502.GA15692@meghana-HP-Pavilion-Notebook>
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=Wk2WCcha7wAiyXTP4x0ET16zhPIYmHNTWBpoyXO8pNs=;
+        b=QkQAlRgQ1DLF83IWpwE1ZD/nz1jVUYs3UVbmmp7+UcYm4kJAX9fyu5Iov91h63LvsP
+         fatBVIEhd4nOYkI34LQnHt24xjAeb83pbu/g2ndBbtu/3I7FFhrwxpOScKh2fyrYCJbB
+         QYP272ZOW/RENHygCTlIxpA/FxvWueiAdMaddW1nAPM9Y7DO8r11sQJf0JhnePRKPz5x
+         L2KA/uueSqEpwr27StJm6ax4t0M1Uf7YalaIwX7TN9ClAKSv0sxPhq0iUMxSMMTG6vdZ
+         oCa/491ikH9HuyYJmyd5eLWyDtT+dasg23ovpwX9fL8j+Wwl6Qy1Fpv+mFdEDn8rGM5q
+         JviA==
+X-Gm-Message-State: APjAAAXzWSJKMvxQwQ+hcHVWhi7iW3zXwLyml7n2wgqJQo4HJJ6vuSJh
+	MVL0EJQOFxDZ77VHdMk3iJ2Dr5Av
+X-Received: by 2002:a17:906:3952:: with SMTP id g18mr10378519eje.247.1552904032170;
+        Mon, 18 Mar 2019 03:13:52 -0700 (PDT)
+Return-Path: <matthias.bgg@gmail.com>
+Received: from ziggy.stardust ([37.223.147.22])
+        by smtp.gmail.com with ESMTPSA id t17sm1100110ejb.24.2019.03.18.03.13.51
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Mar 2019 03:13:51 -0700 (PDT)
+Subject: Re: [PATCH v6 1/2] Staging: mt7621-mmc: Fix ret.cooci warnings
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>,
+ outreachy-kernel@googlegroups.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+References: <20190317110134.5368-1-bhanusreemahesh@gmail.com>
+ <20190317110134.5368-2-bhanusreemahesh@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+ jrHWeQEI2ucSKsNa8FllDmG/fQ==
+Message-ID: <f2bfe554-9439-7e66-8849-82f4f4fa3a0c@gmail.com>
+Date: Mon, 18 Mar 2019 11:13:47 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190317110134.5368-2-bhanusreemahesh@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 
-Replace functions with reference/unreference suffix with
-get/put suffix. Get/put is shorter and more consistent with
-the kernel function suffixes.
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
----
- drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd.c    |  4 ++--
- drivers/gpu/drm/amd/amdgpu/amdgpu_benchmark.c |  4 ++--
- drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c   | 12 ++++++------
- drivers/gpu/drm/amd/amdgpu/amdgpu_cgs.c       |  2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c        |  6 +++---
- drivers/gpu/drm/amd/amdgpu/amdgpu_display.c   |  6 +++---
- drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c      |  2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c       |  2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_object.c    | 26 +++++++++++++++++++-------
- drivers/gpu/drm/amd/amdgpu/amdgpu_object.h    |  2 ++
- drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c        |  2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_test.c      |  6 +++---
- drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c       |  2 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c     |  4 ++--
- drivers/gpu/drm/amd/amdgpu/amdgpu_uvd.c       | 10 +++++-----
- drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c       | 10 +++++-----
- drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c        | 12 ++++++------
- 17 files changed, 63 insertions(+), 49 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd.c
-index 5432af3..4d04194 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_amdkfd.c
-@@ -223,7 +223,7 @@ int alloc_gtt_mem(struct kgd_dev *kgd, size_t size,
- allocate_mem_pin_bo_failed:
- 	amdgpu_bo_unreserve((*mem)->bo);
- allocate_mem_reserve_bo_failed:
--	amdgpu_bo_unref(&(*mem)->bo);
-+	amdgpu_bo_put(&(*mem)->bo);
- 
- 	return r;
- }
-@@ -238,7 +238,7 @@ void free_gtt_mem(struct kgd_dev *kgd, void *mem_obj)
- 	amdgpu_bo_kunmap(mem->bo);
- 	amdgpu_bo_unpin(mem->bo);
- 	amdgpu_bo_unreserve(mem->bo);
--	amdgpu_bo_unref(&(mem->bo));
-+	amdgpu_bo_put(&(mem->bo));
- 	kfree(mem);
- }
- 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_benchmark.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_benchmark.c
-index 63ec1e1..a218d340 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_benchmark.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_benchmark.c
-@@ -128,7 +128,7 @@ static void amdgpu_benchmark_move(struct amdgpu_device *adev, unsigned size,
- 			amdgpu_bo_unpin(sobj);
- 			amdgpu_bo_unreserve(sobj);
- 		}
--		amdgpu_bo_unref(&sobj);
-+		amdgpu_bo_put(&sobj);
- 	}
- 	if (dobj) {
- 		r = amdgpu_bo_reserve(dobj, true);
-@@ -136,7 +136,7 @@ static void amdgpu_benchmark_move(struct amdgpu_device *adev, unsigned size,
- 			amdgpu_bo_unpin(dobj);
- 			amdgpu_bo_unreserve(dobj);
- 		}
--		amdgpu_bo_unref(&dobj);
-+		amdgpu_bo_put(&dobj);
- 	}
- }
- 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c
-index 59089e0..6a6c8c2 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_bo_list.c
-@@ -48,7 +48,7 @@ static void amdgpu_bo_list_release_rcu(struct kref *ref)
- 						   refcount);
- 
- 	for (i = 0; i < list->num_entries; ++i)
--		amdgpu_bo_unref(&list->array[i].robj);
-+		amdgpu_bo_put(&list->array[i].robj);
- 
- 	mutex_destroy(&list->lock);
- 	kvfree(list->array);
-@@ -135,13 +135,13 @@ static int amdgpu_bo_list_set(struct amdgpu_device *adev,
- 			goto error_free;
- 		}
- 
--		bo = amdgpu_bo_ref(gem_to_amdgpu_bo(gobj));
-+		bo = amdgpu_bo_get(gem_to_amdgpu_bo(gobj));
- 		drm_gem_object_put_unlocked(gobj);
- 
- 		usermm = amdgpu_ttm_tt_get_usermm(bo->tbo.ttm);
- 		if (usermm) {
- 			if (usermm != current->mm) {
--				amdgpu_bo_unref(&bo);
-+				amdgpu_bo_put(&bo);
- 				r = -EPERM;
- 				goto error_free;
- 			}
-@@ -168,7 +168,7 @@ static int amdgpu_bo_list_set(struct amdgpu_device *adev,
- 	}
- 
- 	for (i = 0; i < list->num_entries; ++i)
--		amdgpu_bo_unref(&list->array[i].robj);
-+		amdgpu_bo_put(&list->array[i].robj);
- 
- 	kvfree(list->array);
- 
-@@ -184,7 +184,7 @@ static int amdgpu_bo_list_set(struct amdgpu_device *adev,
- 
- error_free:
- 	while (i--)
--		amdgpu_bo_unref(&array[i].robj);
-+		amdgpu_bo_put(&array[i].robj);
- 	kvfree(array);
- 	return r;
- }
-@@ -254,7 +254,7 @@ void amdgpu_bo_list_free(struct amdgpu_bo_list *list)
- 	unsigned i;
- 
- 	for (i = 0; i < list->num_entries; ++i)
--		amdgpu_bo_unref(&list->array[i].robj);
-+		amdgpu_bo_put(&list->array[i].robj);
- 
- 	mutex_destroy(&list->lock);
- 	kvfree(list->array);
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_cgs.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_cgs.c
-index fd435a9..f8c4450 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_cgs.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_cgs.c
-@@ -145,7 +145,7 @@ static int amdgpu_cgs_free_gpu_mem(struct cgs_device *cgs_device, cgs_handle_t h
- 			amdgpu_bo_unpin(obj);
- 			amdgpu_bo_unreserve(obj);
- 		}
--		amdgpu_bo_unref(&obj);
-+		amdgpu_bo_put(&obj);
- 
- 	}
- 	return 0;
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c
-index 60d8bed..1f08748 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c
-@@ -42,7 +42,7 @@ static int amdgpu_cs_user_fence_chunk(struct amdgpu_cs_parser *p,
- 	if (gobj == NULL)
- 		return -EINVAL;
- 
--	p->uf_entry.robj = amdgpu_bo_ref(gem_to_amdgpu_bo(gobj));
-+	p->uf_entry.robj = amdgpu_bo_get(gem_to_amdgpu_bo(gobj));
- 	p->uf_entry.priority = 0;
- 	p->uf_entry.tv.bo = &p->uf_entry.robj->tbo;
- 	p->uf_entry.tv.shared = true;
-@@ -57,7 +57,7 @@ static int amdgpu_cs_user_fence_chunk(struct amdgpu_cs_parser *p,
- 	drm_gem_object_put_unlocked(gobj);
- 
- 	if (amdgpu_ttm_tt_get_usermm(p->uf_entry.robj->tbo.ttm)) {
--		amdgpu_bo_unref(&p->uf_entry.robj);
-+		amdgpu_bo_put(&p->uf_entry.robj);
- 		return -EINVAL;
- 	}
- 
-@@ -752,7 +752,7 @@ static void amdgpu_cs_parser_fini(struct amdgpu_cs_parser *parser, int error,
- 	kfree(parser->chunks);
- 	if (parser->job)
- 		amdgpu_job_free(parser->job);
--	amdgpu_bo_unref(&parser->uf_entry.robj);
-+	amdgpu_bo_put(&parser->uf_entry.robj);
- }
- 
- static int amdgpu_bo_vm_update_pte(struct amdgpu_cs_parser *p)
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
-index 6ad2432..0d6cf9a 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_display.c
-@@ -133,7 +133,7 @@ static void amdgpu_unpin_work_func(struct work_struct *__work)
- 	} else
- 		DRM_ERROR("failed to reserve buffer after flip\n");
- 
--	amdgpu_bo_unref(&work->old_abo);
-+	amdgpu_bo_put(&work->old_abo);
- 	kfree(work->shared);
- 	kfree(work);
- }
-@@ -175,7 +175,7 @@ int amdgpu_crtc_page_flip_target(struct drm_crtc *crtc,
- 
- 	/* take a reference to the old object */
- 	work->old_abo = gem_to_amdgpu_bo(obj);
--	amdgpu_bo_ref(work->old_abo);
-+	amdgpu_bo_get(work->old_abo);
- 
- 	new_amdgpu_fb = to_amdgpu_framebuffer(fb);
- 	obj = new_amdgpu_fb->obj;
-@@ -243,7 +243,7 @@ int amdgpu_crtc_page_flip_target(struct drm_crtc *crtc,
- 	amdgpu_bo_unreserve(new_abo);
- 
- cleanup:
--	amdgpu_bo_unref(&work->old_abo);
-+	amdgpu_bo_put(&work->old_abo);
- 	dma_fence_put(work->excl);
- 	for (i = 0; i < work->shared_count; ++i)
- 		dma_fence_put(work->shared[i]);
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c
-index f437008..129da03 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gart.c
-@@ -210,7 +210,7 @@ void amdgpu_gart_table_vram_free(struct amdgpu_device *adev)
- 	if (adev->gart.robj == NULL) {
- 		return;
- 	}
--	amdgpu_bo_unref(&adev->gart.robj);
-+	amdgpu_bo_put(&adev->gart.robj);
- }
- 
- /*
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
-index 7171968..6ddd5b1 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
-@@ -39,7 +39,7 @@ void amdgpu_gem_object_free(struct drm_gem_object *gobj)
- 		if (robj->gem_base.import_attach)
- 			drm_prime_gem_destroy(&robj->gem_base, robj->tbo.sg);
- 		amdgpu_mn_unregister(robj);
--		amdgpu_bo_unref(&robj);
-+		amdgpu_bo_put(&robj);
- 	}
- }
- 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
-index 9e495da..7e86e6f 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
-@@ -47,7 +47,7 @@ static void amdgpu_ttm_bo_destroy(struct ttm_buffer_object *tbo)
- 	amdgpu_bo_kunmap(bo);
- 
- 	drm_gem_object_release(&bo->gem_base);
--	amdgpu_bo_unref(&bo->parent);
-+	amdgpu_bo_put(&bo->parent);
- 	if (!list_empty(&bo->shadow_list)) {
- 		mutex_lock(&adev->shadow_list_lock);
- 		list_del_init(&bo->shadow_list);
-@@ -236,7 +236,7 @@ int amdgpu_bo_create_reserved(struct amdgpu_device *adev,
- 
- error_free:
- 	if (free)
--		amdgpu_bo_unref(bo_ptr);
-+		amdgpu_bo_put(bo_ptr);
- 
- 	return r;
- }
-@@ -294,7 +294,7 @@ void amdgpu_bo_free_kernel(struct amdgpu_bo **bo, u64 *gpu_addr,
- 		amdgpu_bo_unpin(*bo);
- 		amdgpu_bo_unreserve(*bo);
- 	}
--	amdgpu_bo_unref(bo);
-+	amdgpu_bo_put(bo);
- 
- 	if (gpu_addr)
- 		*gpu_addr = 0;
-@@ -464,7 +464,7 @@ static int amdgpu_bo_create_shadow(struct amdgpu_device *adev,
- 					0,
- 					&bo->shadow);
- 	if (!r) {
--		bo->shadow->parent = amdgpu_bo_ref(bo);
-+		bo->shadow->parent = amdgpu_bo_get(bo);
- 		mutex_lock(&adev->shadow_list_lock);
- 		list_add_tail(&bo->shadow_list, &adev->shadow_list);
- 		mutex_unlock(&adev->shadow_list_lock);
-@@ -510,7 +510,7 @@ int amdgpu_bo_create(struct amdgpu_device *adev,
- 			reservation_object_unlock((*bo_ptr)->tbo.resv);
- 
- 		if (r)
--			amdgpu_bo_unref(bo_ptr);
-+			amdgpu_bo_put(bo_ptr);
- 	}
- 
- 	return r;
-@@ -644,7 +644,7 @@ void amdgpu_bo_kunmap(struct amdgpu_bo *bo)
- 		ttm_bo_kunmap(&bo->kmap);
- }
- 
--struct amdgpu_bo *amdgpu_bo_ref(struct amdgpu_bo *bo)
-+struct amdgpu_bo *amdgpu_bo_get(struct amdgpu_bo *bo)
- {
- 	if (bo == NULL)
- 		return NULL;
-@@ -653,7 +653,7 @@ struct amdgpu_bo *amdgpu_bo_ref(struct amdgpu_bo *bo)
- 	return bo;
- }
- 
--void amdgpu_bo_unref(struct amdgpu_bo **bo)
-+void amdgpu_bo_put(struct amdgpu_bo **bo)
- {
- 	struct ttm_buffer_object *tbo;
- 
-@@ -666,6 +666,18 @@ void amdgpu_bo_unref(struct amdgpu_bo **bo)
- 		*bo = NULL;
- }
- 
-+/* Compatibility wrapper for amdgpu_bo_get(). */
-+struct amdgpu_bo *amdgpu_bo_ref(struct amdgpu_bo *bo)
-+{
-+	return amdgpu_bo_get(bo);
-+}
-+
-+/* Compatibility wrapper for amdgpu_bo_put(). */
-+void amdgpu_bo_unref(struct amdgpu_bo **bo)
-+{
-+	amdgpu_bo_put(bo);
-+}
-+
- int amdgpu_bo_pin_restricted(struct amdgpu_bo *bo, u32 domain,
- 			     u64 min_offset, u64 max_offset,
- 			     u64 *gpu_addr)
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.h b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.h
-index a288fa6..ef18d63 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.h
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.h
-@@ -211,7 +211,9 @@ int amdgpu_bo_kmap(struct amdgpu_bo *bo, void **ptr);
- void *amdgpu_bo_kptr(struct amdgpu_bo *bo);
- void amdgpu_bo_kunmap(struct amdgpu_bo *bo);
- struct amdgpu_bo *amdgpu_bo_ref(struct amdgpu_bo *bo);
-+struct amdgpu_bo *amdgpu_bo_get(struct amdgpu_bo *bo);
- void amdgpu_bo_unref(struct amdgpu_bo **bo);
-+void amdgpu_bo_put(struct amdgpu_bo **bo);
- int amdgpu_bo_pin(struct amdgpu_bo *bo, u32 domain, u64 *gpu_addr);
- int amdgpu_bo_pin_restricted(struct amdgpu_bo *bo, u32 domain,
- 			     u64 min_offset, u64 max_offset,
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-index 3144400..986decd 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_sa.c
-@@ -88,7 +88,7 @@ void amdgpu_sa_bo_manager_fini(struct amdgpu_device *adev,
- 	list_for_each_entry_safe(sa_bo, tmp, &sa_manager->olist, olist) {
- 		amdgpu_sa_bo_remove_locked(sa_bo);
- 	}
--	amdgpu_bo_unref(&sa_manager->bo);
-+	amdgpu_bo_put(&sa_manager->bo);
- 	sa_manager->size = 0;
- }
- 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_test.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_test.c
-index ed8c373..445aaed 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_test.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_test.c
-@@ -208,12 +208,12 @@ static void amdgpu_do_test_moves(struct amdgpu_device *adev)
- out_lclean_unres:
- 		amdgpu_bo_unreserve(gtt_obj[i]);
- out_lclean_unref:
--		amdgpu_bo_unref(&gtt_obj[i]);
-+		amdgpu_bo_put(&gtt_obj[i]);
- out_lclean:
- 		for (--i; i >= 0; --i) {
- 			amdgpu_bo_unpin(gtt_obj[i]);
- 			amdgpu_bo_unreserve(gtt_obj[i]);
--			amdgpu_bo_unref(&gtt_obj[i]);
-+			amdgpu_bo_put(&gtt_obj[i]);
- 		}
- 		if (fence)
- 			dma_fence_put(fence);
-@@ -224,7 +224,7 @@ static void amdgpu_do_test_moves(struct amdgpu_device *adev)
- out_unres:
- 	amdgpu_bo_unreserve(vram_obj);
- out_unref:
--	amdgpu_bo_unref(&vram_obj);
-+	amdgpu_bo_put(&vram_obj);
- out_cleanup:
- 	kfree(gtt_obj);
- 	if (r) {
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-index 7ef6c28..e63b515 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c
-@@ -1368,7 +1368,7 @@ void amdgpu_ttm_fini(struct amdgpu_device *adev)
- 			amdgpu_bo_unpin(adev->stolen_vga_memory);
- 			amdgpu_bo_unreserve(adev->stolen_vga_memory);
- 		}
--		amdgpu_bo_unref(&adev->stolen_vga_memory);
-+		amdgpu_bo_put(&adev->stolen_vga_memory);
- 	}
- 	ttm_bo_clean_mm(&adev->mman.bdev, TTM_PL_VRAM);
- 	ttm_bo_clean_mm(&adev->mman.bdev, TTM_PL_TT);
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c
-index 36c7633..987be19 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ucode.c
-@@ -445,7 +445,7 @@ int amdgpu_ucode_init_bo(struct amdgpu_device *adev)
- failed_pin:
- 	amdgpu_bo_unreserve(*bo);
- failed_reserve:
--	amdgpu_bo_unref(bo);
-+	amdgpu_bo_put(bo);
- failed:
- 	if (err)
- 		adev->firmware.load_type = AMDGPU_FW_LOAD_DIRECT;
-@@ -468,7 +468,7 @@ int amdgpu_ucode_fini_bo(struct amdgpu_device *adev)
- 			ucode->kaddr = NULL;
- 		}
- 	}
--	amdgpu_bo_unref(&adev->firmware.fw_buf);
-+	amdgpu_bo_put(&adev->firmware.fw_buf);
- 	adev->firmware.fw_buf = NULL;
- 
- 	return 0;
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_uvd.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_uvd.c
-index e19928d..4512464 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_uvd.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_uvd.c
-@@ -1027,7 +1027,7 @@ static int amdgpu_uvd_send_msg(struct amdgpu_ring *ring, struct amdgpu_bo *bo,
- 
- 	if (fence)
- 		*fence = dma_fence_get(f);
--	amdgpu_bo_unref(&bo);
-+	amdgpu_bo_put(&bo);
- 	dma_fence_put(f);
- 
- 	return 0;
-@@ -1061,14 +1061,14 @@ int amdgpu_uvd_get_create_msg(struct amdgpu_ring *ring, uint32_t handle,
- 
- 	r = amdgpu_bo_reserve(bo, false);
- 	if (r) {
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
- 	r = amdgpu_bo_kmap(bo, (void **)&msg);
- 	if (r) {
- 		amdgpu_bo_unreserve(bo);
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
-@@ -1111,14 +1111,14 @@ int amdgpu_uvd_get_destroy_msg(struct amdgpu_ring *ring, uint32_t handle,
- 
- 	r = amdgpu_bo_reserve(bo, false);
- 	if (r) {
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
- 	r = amdgpu_bo_kmap(bo, (void **)&msg);
- 	if (r) {
- 		amdgpu_bo_unreserve(bo);
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c
-index 041e012..9d971dd 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c
-@@ -334,7 +334,7 @@ static int amdgpu_vcn_dec_send_msg(struct amdgpu_ring *ring, struct amdgpu_bo *b
- 
- 	if (fence)
- 		*fence = dma_fence_get(f);
--	amdgpu_bo_unref(&bo);
-+	amdgpu_bo_put(&bo);
- 	dma_fence_put(f);
- 
- 	return 0;
-@@ -365,14 +365,14 @@ static int amdgpu_vcn_dec_get_create_msg(struct amdgpu_ring *ring, uint32_t hand
- 
- 	r = amdgpu_bo_reserve(bo, false);
- 	if (r) {
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
- 	r = amdgpu_bo_kmap(bo, (void **)&msg);
- 	if (r) {
- 		amdgpu_bo_unreserve(bo);
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
-@@ -417,14 +417,14 @@ static int amdgpu_vcn_dec_get_destroy_msg(struct amdgpu_ring *ring, uint32_t han
- 
- 	r = amdgpu_bo_reserve(bo, false);
- 	if (r) {
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
- 	r = amdgpu_bo_kmap(bo, (void **)&msg);
- 	if (r) {
- 		amdgpu_bo_unreserve(bo);
--		amdgpu_bo_unref(&bo);
-+		amdgpu_bo_put(&bo);
- 		return r;
- 	}
- 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
-index bd20ff0..70d5c68 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
-@@ -311,7 +311,7 @@ static int amdgpu_vm_alloc_levels(struct amdgpu_device *adev,
- 			if (vm->use_cpu_for_update) {
- 				r = amdgpu_bo_kmap(pt, NULL);
- 				if (r) {
--					amdgpu_bo_unref(&pt);
-+					amdgpu_bo_put(&pt);
- 					return r;
- 				}
- 			}
-@@ -319,7 +319,7 @@ static int amdgpu_vm_alloc_levels(struct amdgpu_device *adev,
- 			/* Keep a reference to the root directory to avoid
- 			* freeing them up in the wrong order.
- 			*/
--			pt->parent = amdgpu_bo_ref(vm->root.bo);
-+			pt->parent = amdgpu_bo_get(vm->root.bo);
- 
- 			entry->bo = pt;
- 			entry->addr = 0;
-@@ -2540,8 +2540,8 @@ int amdgpu_vm_init(struct amdgpu_device *adev, struct amdgpu_vm *vm,
- 	return 0;
- 
- error_free_root:
--	amdgpu_bo_unref(&vm->root.bo->shadow);
--	amdgpu_bo_unref(&vm->root.bo);
-+	amdgpu_bo_put(&vm->root.bo->shadow);
-+	amdgpu_bo_put(&vm->root.bo);
- 	vm->root.bo = NULL;
- 
- error_free_sched_entity:
-@@ -2562,8 +2562,8 @@ static void amdgpu_vm_free_levels(struct amdgpu_vm_pt *level)
- 	unsigned i;
- 
- 	if (level->bo) {
--		amdgpu_bo_unref(&level->bo->shadow);
--		amdgpu_bo_unref(&level->bo);
-+		amdgpu_bo_put(&level->bo->shadow);
-+		amdgpu_bo_put(&level->bo);
- 	}
- 
- 	if (level->entries)
--- 
-2.7.4
+On 17/03/2019 12:01, Bhanusree Pola wrote:
+> Return the value directly instead of storing it in local variable err.
+> Remove the unused local variable err.
+> The semantic patch that fixes the first part of the problem is as follows
+> 
+> // <smpl>
+> @@
+> local idexpression ret;
+> expression e;
+> @@
+> 
+> -ret =
+> +return
+>      e;
+> -return ret;
+> // </smpl>
+> 
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
 
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>  drivers/staging/mt7621-mmc/sd.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/mt7621-mmc/sd.c b/drivers/staging/mt7621-mmc/sd.c
+> index 4b26ec896a96..8857cdb9dafd 100644
+> --- a/drivers/staging/mt7621-mmc/sd.c
+> +++ b/drivers/staging/mt7621-mmc/sd.c
+> @@ -752,7 +752,6 @@ static int msdc_app_cmd(struct mmc_host *mmc, struct msdc_host *host)
+>  {
+>  	struct mmc_command cmd;
+>  	struct mmc_request mrq;
+> -	u32 err;
+>  
+>  	memset(&cmd, 0, sizeof(struct mmc_command));
+>  	cmd.opcode = MMC_APP_CMD;
+> @@ -763,8 +762,7 @@ static int msdc_app_cmd(struct mmc_host *mmc, struct msdc_host *host)
+>  	mrq.cmd = &cmd; cmd.mrq = &mrq;
+>  	cmd.data = NULL;
+>  
+> -	err = msdc_do_command(host, &cmd, 0, CMD_TIMEOUT);
+> -	return err;
+> +	return msdc_do_command(host, &cmd, 0, CMD_TIMEOUT);
+>  }
+>  
+>  static int msdc_tune_cmdrsp(struct msdc_host *host, struct mmc_command *cmd)
+> 
 
