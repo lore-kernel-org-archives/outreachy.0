@@ -1,128 +1,143 @@
-X-GM-THRID: 6255520477727424512
-X-Received: by 10.107.6.163 with SMTP id f35mr5843148ioi.25.1456476859736;
-        Fri, 26 Feb 2016 00:54:19 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.98 with SMTP id k89ls999992qgk.69.gmail; Fri, 26 Feb
- 2016 00:54:18 -0800 (PST)
-X-Received: by 10.13.213.208 with SMTP id x199mr260248ywd.48.1456476858856;
-        Fri, 26 Feb 2016 00:54:18 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x243.google.com (mail-pa0-x243.google.com. [2607:f8b0:400e:c03::243])
-        by gmr-mx.google.com with ESMTPS id ui7si1817964pab.0.2016.02.26.00.54.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 00:54:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) client-ip=2607:f8b0:400e:c03::243;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::243 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x243.google.com with SMTP id y7so4191979paa.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Feb 2016 00:54:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=2+MdtlXwXpbt3i45EeZG3On7QDuDFcT/CFzuQn9iGQE=;
-        b=d1DcomtJw+Aerdft8BSLzJD7bns9p1TLnFOIlL6rJsQxduebnaNXMfYsT5SWJSvzD2
-         29V6/+S2lW3MT3gRm64lduFBwf92T7jT0MHTk1NCZxIE8mn2Sb3uVlhzJ10uWAbwIjw8
-         yQmjPk29+LCi9Q7jXbudZ9iOJ7sPioCtczujKf70bT8PA7avIBnC/oOiBOn0W8HEDWKY
-         YIgeewIXj4i7SadoKdby0e2hMH9R4hMkWL9gKZ1nxDIycR0kZ8nAvWKghtv0Gs9zYA4/
-         LYRQ8SZvYcrDlfOz7PaLhAp+ExCcP4MPgTkjsvBhd8F/duH+gtFHwsAbk/DItjtxMfn0
-         3P1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=2+MdtlXwXpbt3i45EeZG3On7QDuDFcT/CFzuQn9iGQE=;
-        b=JxmmFpig5Cp4j8Oq52++GVcmB314s/fH3Ss5zlRC17t9rv9bAgIYKy3VnrKomW+3VX
-         d0ZbYlSz9vyqG3cY1Wxw/g0jZjyVR5BZC0fUAImao1WtgJygaaG0DsKVlkWa1y5f8hJG
-         GktJA6VJmZo9xDjOFsUA9iiBlqE4JqEs+1E7rZgXTU+p9AbmFbNdJ/Cxi7/27EXsJV2G
-         pwFZ0XKFMttEyp1TlwBZUDjmT5GuYBXJdvW24dgS7LuCakdzzL46Aqn7UjD0R96ES71F
-         1HixVR+Km+hYKDxKDn5ABYjBMBX+pvDST95KmcfiiSG9Ppx3EWXxjuFsEOYYVJy6KuEW
-         oKgA==
-X-Gm-Message-State: AD7BkJJIcL4mdgbJ4Kx46dNLDkvzPIVv3FG9xbCy4xjKFpj6NqC7uPVaB8IaDUex36ImAw==
-X-Received: by 10.66.252.73 with SMTP id zq9mr524559pac.16.1456476858612;
-        Fri, 26 Feb 2016 00:54:18 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.179.114])
-        by smtp.gmail.com with ESMTPSA id 195sm17594432pfa.5.2016.02.26.00.54.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 00:54:18 -0800 (PST)
-Date: Fri, 26 Feb 2016 14:24:14 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/8] staging: lustre: Replace kmem_cache_alloc with
- kmem_cache_zalloc
-Message-ID: <cover.1456475758.git.amitoj1606@gmail.com>
+X-GM-THRID: 6669714716866117632
+Date: Mon, 18 Mar 2019 07:18:22 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <ae7735c2-447b-4f77-bf07-c62722772c8e@googlegroups.com>
+In-Reply-To: <20190318135521.GA7342@kroah.com>
+References: <20190318125918.13149-1-sanjana99reddy99@gmail.com>
+ <20190318135521.GA7342@kroah.com>
+Subject: Re: [PATCH] Staging: rtl8188eu: core: rtw_mlme.c: Fix unbalanced
+ braces around else.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1591_1997322923.1552918702595"
+X-Google-Token: EK7RvuQF8CSOfxmFYgk0
+X-Google-IP: 203.109.108.32
 
-This patchset replaces kmem_cache_alloc with kmem_cache_zalloc.
+------=_Part_1591_1997322923.1552918702595
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1592_1837841024.1552918702595"
 
-The Coccinelle semantic patch used to make this change is as
-follows:
-// <smpl>
-@@
-expression e,f;
-@@
-- kmem_cache_alloc(e, f |__GFP_ZERO)
-+ kmem_cache_zalloc(e, f)
-// </smpl>
+------=_Part_1592_1837841024.1552918702595
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Amitoj Kaur Chawla (8):
-  staging: lustre: lclient: Replace kmem_cache_alloc with
-    kmem_cache_zalloc
-  staging: lustre: obdclass: Replace kmem_cache_alloc with
-    kmem_cache_zalloc
-  staging: lustre: lov: Replace kmem_cache_alloc with kmem_cache_zalloc
-  staging: lustre: obdecho: Replace kmem_cache_alloc with
-    kmem_cache_zalloc
-  staging: lustre: ptlrpc: Replace kmem_cache_alloc with
-    kmem_cache_zalloc
-  staging: lustre: osc: Replace kmem_cache_alloc with kmem_cache_zalloc
-  staging: lustre: ldlm: Replace kmem_cache_alloc with kmem_cache_zalloc
-  staging: lustre: llite: Replace kmem_cache_alloc with
-    kmem_cache_zalloc
 
- drivers/staging/lustre/lustre/lclient/lcommon_cl.c  | 10 +++++-----
- drivers/staging/lustre/lustre/ldlm/ldlm_extent.c    |  2 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_lock.c      |  2 +-
- drivers/staging/lustre/lustre/ldlm/ldlm_resource.c  |  2 +-
- drivers/staging/lustre/lustre/llite/file.c          |  4 ++--
- drivers/staging/lustre/lustre/llite/llite_close.c   |  2 +-
- drivers/staging/lustre/lustre/llite/llite_lib.c     |  3 +--
- drivers/staging/lustre/lustre/llite/namei.c         |  2 +-
- drivers/staging/lustre/lustre/llite/remote_perm.c   |  4 ++--
- drivers/staging/lustre/lustre/llite/super25.c       |  2 +-
- drivers/staging/lustre/lustre/llite/vvp_dev.c       |  4 ++--
- drivers/staging/lustre/lustre/llite/xattr_cache.c   |  2 +-
- drivers/staging/lustre/lustre/lov/lov_dev.c         |  6 +++---
- drivers/staging/lustre/lustre/lov/lov_ea.c          |  2 +-
- drivers/staging/lustre/lustre/lov/lov_lock.c        |  6 +++---
- drivers/staging/lustre/lustre/lov/lov_object.c      |  2 +-
- drivers/staging/lustre/lustre/lov/lov_request.c     | 11 ++++-------
- drivers/staging/lustre/lustre/lov/lovsub_dev.c      |  2 +-
- drivers/staging/lustre/lustre/lov/lovsub_lock.c     |  2 +-
- drivers/staging/lustre/lustre/lov/lovsub_object.c   |  2 +-
- drivers/staging/lustre/lustre/obdclass/cl_lock.c    |  2 +-
- drivers/staging/lustre/lustre/obdclass/cl_object.c  |  2 +-
- drivers/staging/lustre/lustre/obdclass/genops.c     |  2 +-
- drivers/staging/lustre/lustre/obdecho/echo_client.c |  8 ++++----
- drivers/staging/lustre/lustre/osc/osc_cache.c       |  2 +-
- drivers/staging/lustre/lustre/osc/osc_dev.c         |  4 ++--
- drivers/staging/lustre/lustre/osc/osc_io.c          |  2 +-
- drivers/staging/lustre/lustre/osc/osc_lock.c        |  2 +-
- drivers/staging/lustre/lustre/osc/osc_object.c      |  2 +-
- drivers/staging/lustre/lustre/osc/osc_quota.c       |  2 +-
- drivers/staging/lustre/lustre/osc/osc_request.c     |  4 ++--
- drivers/staging/lustre/lustre/ptlrpc/client.c       |  2 +-
- 32 files changed, 51 insertions(+), 55 deletions(-)
 
--- 
-1.9.1
+On Monday, March 18, 2019 at 7:25:25 PM UTC+5:30, gregkh wrote:
+>
+> On Mon, Mar 18, 2019 at 06:29:18PM +0530, Sanjana Sanikommu wrote: 
+> > Fix unbalanced braces after else statement. 
+> > Issue found by checkpatch.pl semantic patch results for rtw_mlme.c 
+> > 
+> > CHECK: Unbalanced braces around else statement. 
+> > 
+> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
+> > --- 
+> >  drivers/staging/rtl8188eu/core/rtw_mlme.c | 4 ++-- 
+> >  1 file changed, 2 insertions(+), 2 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c 
+> b/drivers/staging/rtl8188eu/core/rtw_mlme.c 
+> > index ca0cf8a86671..cbee02a86d22 100644 
+> > --- a/drivers/staging/rtl8188eu/core/rtw_mlme.c 
+> > +++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c 
+> > @@ -1111,9 +1111,9 @@ static u8 search_max_mac_id(struct adapter 
+> *padapter) 
+> >                                  break; 
+> >                  } 
+> >                  mac_id = aid + 1; 
+> > -        } else 
+> > +        } else { 
+> >  #endif 
+> > -        {/* adhoc  id =  31~2 */ 
+> > +/* adhoc  id =  31~2 */ 
+>
+> Never put anything in the first column within a function, unless it is a 
+> jump label.  This isn't ok, but most importantly, I think you broke the 
+> build.  The { is in that location for a reason, due to the #endif above 
+> it, and can not be changed. 
+>
+> Please always think about the checkpatch changes you are making and do 
+> not just blindly do them. 
+>
 
+Thanks for letting me know. I would drop them :)
+
+Sanjana
+
+>
+> thanks, 
+>
+> greg k-h 
+>
+
+------=_Part_1592_1837841024.1552918702595
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Monday, March 18, 2019 at 7:25:25 PM UTC+5:30, =
+gregkh wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-le=
+ft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Mon, Mar 18, 2=
+019 at 06:29:18PM +0530, Sanjana Sanikommu wrote:
+<br>&gt; Fix unbalanced braces after else statement.
+<br>&gt; Issue found by <a href=3D"http://checkpatch.pl" target=3D"_blank" =
+rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?=
+q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNGoR=
+gUgHq29dhmk72L974NI3_mFug&#39;;return true;" onclick=3D"this.href=3D&#39;ht=
+tp://www.google.com/url?q\x3dhttp%3A%2F%2Fcheckpatch.pl\x26sa\x3dD\x26sntz\=
+x3d1\x26usg\x3dAFQjCNGoRgUgHq29dhmk72L974NI3_mFug&#39;;return true;">checkp=
+atch.pl</a> semantic patch results for rtw_mlme.c
+<br>&gt;=20
+<br>&gt; CHECK: Unbalanced braces around else statement.
+<br>&gt;=20
+<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"nniVVOQ0DAAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c | 4 ++--
+<br>&gt; =C2=A01 file changed, 2 insertions(+), 2 deletions(-)
+<br>&gt;=20
+<br>&gt; diff --git a/drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c b/driv=
+ers/staging/rtl8188eu/<wbr>core/rtw_mlme.c
+<br>&gt; index ca0cf8a86671..cbee02a86d22 100644
+<br>&gt; --- a/drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c
+<br>&gt; +++ b/drivers/staging/rtl8188eu/<wbr>core/rtw_mlme.c
+<br>&gt; @@ -1111,9 +1111,9 @@ static u8 search_max_mac_id(struct adapter *=
+padapter)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0break;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0mac_id =3D aid + 1;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else {
+<br>&gt; =C2=A0#endif
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{/* adhoc =C2=A0i=
+d =3D =C2=A031~2 */
+<br>&gt; +/* adhoc =C2=A0id =3D =C2=A031~2 */
+<br>
+<br>Never put anything in the first column within a function, unless it is =
+a
+<br>jump label. =C2=A0This isn&#39;t ok, but most importantly, I think you =
+broke the
+<br>build. =C2=A0The { is in that location for a reason, due to the #endif =
+above
+<br>it, and can not be changed.
+<br>
+<br>Please always think about the checkpatch changes you are making and do
+<br>not just blindly do them.
+<br></blockquote><div><br></div><div>Thanks for letting me know. I would dr=
+op them :)</div><div><br></div><div>Sanjana</div><blockquote class=3D"gmail=
+_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;p=
+adding-left: 1ex;"><br>thanks,
+<br>
+<br>greg k-h
+<br></blockquote></div>
+------=_Part_1592_1837841024.1552918702595--
+
+------=_Part_1591_1997322923.1552918702595--
 
