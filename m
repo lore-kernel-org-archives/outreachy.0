@@ -1,115 +1,195 @@
-X-GM-THRID: 6618908371010453504
-X-Received: by 2002:adf:b651:: with SMTP id i17-v6mr823250wre.10.1541084696819;
-        Thu, 01 Nov 2018 08:04:56 -0700 (PDT)
+X-GM-THRID: 6669793876600946688
+X-Received: by 2002:a19:3809:: with SMTP id f9mr1032479lfa.1.1552956810715;
+        Mon, 18 Mar 2019 17:53:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:9cc9:: with SMTP id f192-v6ls177906wme.25.gmail; Thu, 01
- Nov 2018 08:04:56 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cmNcQbu/aDN7hu196fJyGI/yfhib4wGiuxdrsUsAKdIfLlHJpqkQgSy8xUn7QZU4pCdjWe
-X-Received: by 2002:a1c:c90d:: with SMTP id f13-v6mr827578wmb.5.1541084695982;
-        Thu, 01 Nov 2018 08:04:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541084695; cv=none;
+Received: by 2002:a2e:3612:: with SMTP id d18ls709792lja.8.gmail; Mon, 18 Mar
+ 2019 17:53:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQpXHqzop3zqnIKFnZhDT9/QwgeHo5s6n4fwePwqFsKSdaavJr1mHU7Szz+oyh+SOfq1ps
+X-Received: by 2002:a2e:91c4:: with SMTP id u4mr1117518ljg.29.1552956809544;
+        Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552956809; cv=none;
         d=google.com; s=arc-20160816;
-        b=rjf7Soi0kAJIcl1bC5I5A9nocd8riEbPH0nQ2EVZBCcchjja7puL6ge+F91LbEulk9
-         4xe7ONUxIWRiH68BFmtLmgUNzGEdXz3gR8TUyV8ARcTB15pnAx7IAgiC1v7lH/Xbv0RO
-         Lcr2NETOkezbZ+URIkth2X9nTBvZjXLEkL3kYk7ZQXDdQU3qwa6pwoNFk1YHeeaqe9EO
-         kfmpGsyUqqYRupKsNe2qaCaeroPw8/7EFGBUdd8HsVUDq7axqWvilZr3572s1SlowMGq
-         4MiflaPI+unbjk+ly9J5HXARACApAanCl68jNLdvcgQ6wlsIRFgcXjc33K2pehvJjcVb
-         V9xA==
+        b=eqmlL+lEQ1BtsxAkqv4zWUVL/D7AUhM9wDNTwaUbZfzhh6OMAd4a5l8LAMNwwOivom
+         G0g/VgRxxZEy7cHMnpPNRcmPSrpRSD0niyMMkGMILCfQk4RuuPnwMCgJQ29cVyjC+12k
+         UcY9W6EuRIfafZeIKFGAQXMhN6M+tBCh65niqqo/VmUFy718lFeaZBNcSOI5ZbMNcgJ9
+         /zcN8hcrbYShdNd2a04Ddcn3DNxG4+p6YFzlph3HKvxR/rFIjt0R7+pIEIGgP3FwtNC2
+         WAmn3HROniF74QFVu1IqsSpPXt/5bqbdwAc3Rt4IP33GikL1uDayVauzxTEXSgFjMRBS
+         ADww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0u69fGTLp7XgIkqB9VlAhORimbIQorLkSWJmpJqCJlA=;
-        b=TLgx6uTNfiSxjh6btSosWHv/aGAZzyBFyQqnqloXtiFREa4+OoOH2r/ID8FC4zMVmM
-         5Sx6KSfQKkEzh4hfC33jFMY6Vs9/RUuDFf+ZE0dxqzOqolkWpeJQ+X+92o0f/BwtVOWi
-         G4/b97AobgzlZjvO4Iyp/XyomfV9NC5To7/i6QdoKJii9KKnrGlYtA3Pefvopmy6Z9Ra
-         O+h3dQFs0QfpCfAW8UgpPCOP7GE+Ow0j+haAe2SXmce1974XdtOY7RDPF8XMg0yCVh6I
-         7QjBC+1rBaP4fLA/dOGOWxcTe3vkJmEzjFlMwYTh35unEATsjZuodW1rqoix3tQZYT9J
-         D3kQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ukeB9SSECtM2WyC9S/7Vx6z9wTJoUbn9o4KCuxSE2BY=;
+        b=sGxCsYkya65YZtCR41rrakg36RnBHWyZEUjz4MOP4Jt7iaMYYxrxsBJwK8my6/HnYq
+         l8hnRk29wYUWrvoMeVmJFtqvUzwb4Ul6in1OV3qQ6tHKEL695DiCufpjP8lTyylVa9Uh
+         L6mBMcMZpoUOM7d2yAWxEbyOUMbqTONXnXGH0d9KdeTSXNqXfCgowP3vsrWqhD2pzyRj
+         hTRqehhfVLoZjUGA7WrxjWX94Rum2hQtk5rc5IIXQIVjl+QbjEu2jyDdIM3g5IPwFDeb
+         XOwDRv4tFmrWfNyWE8NZ3gdI8ScFz2DbPshKgWRI4G6I9dHctgRyxMWJAtGfF2Xd6Gvj
+         4HkA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pox+tPnl;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::332 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nBhYcvAv;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com. [2a00:1450:4864:20::332])
-        by gmr-mx.google.com with ESMTPS id v6-v6si975029wrn.0.2018.11.01.08.04.55
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id h14si669871lja.2.2019.03.18.17.53.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Nov 2018 08:04:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::332 as permitted sender) client-ip=2a00:1450:4864:20::332;
+        Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pox+tPnl;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:4864:20::332 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nBhYcvAv;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x332.google.com with SMTP id l2-v6so1599308wmh.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Nov 2018 08:04:55 -0700 (PDT)
+Received: by mail-lj1-x241.google.com with SMTP id f23so1882758ljc.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=0u69fGTLp7XgIkqB9VlAhORimbIQorLkSWJmpJqCJlA=;
-        b=Pox+tPnlQxx3EImBj0hUPuy6i1K9pSolKGrhKUNG1l8e4DbCajt3ZDiaqB83lLBm7o
-         +t7Cs0XkF0y3tF4JgQNCI4sL7Nh9pRnzcJJ+pA+4j2z4x81Sdl1AFjbxK4e29q2gFbep
-         wjR8zVIq0tpdSEL48NvFCJtbbomFzaknJuGHb2zPr/t4uezDY1Bb/hVZm8X2GqSt/cWa
-         LLXODHGCRUHwpZPoTDytBk02Gayloa1vREMYj6suSwJMpVw+0nB8ajku2qjl+rdVaQTV
-         kgQuKK4u3U135G+YOtD3lTHjO5qh5AJI/ICAoMrO766xMezWPxBloMhllJIMUEj9Ulu5
-         xMJw==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ukeB9SSECtM2WyC9S/7Vx6z9wTJoUbn9o4KCuxSE2BY=;
+        b=nBhYcvAvT/0+NqrZr82pj5QEIHqthHhPHOiFIHfhgQ2K6tRGAA8yfKJ0VUxwsnK+Fv
+         RrPOXHVUspltYqi5xt4W1rKFmApZTssU2ojoxyzYrk1KpDmEuktez8hJ3sOpMSGsvH3m
+         8/tpiZJ/ZZ6fHKdROlwd7ya1srJiBVg+cgZxFlcZI6xqJkZRjTo+UsnL/KvN4dqx1C1l
+         7lxlfRBSs9QIe2fxMhlJGgkO2wVr5nlSI3EMI97R1YHv85wfYi3Mwj4ZtmQP1hxCO702
+         yaamUAboQZeIug3NXxdt3ZvGFuiI0Pxq2Y1xo6RFFIPYPAWvIkxQycpmRyICYqCZRNQY
+         MEGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=0u69fGTLp7XgIkqB9VlAhORimbIQorLkSWJmpJqCJlA=;
-        b=SL3yLtqfH2o9x0+dGpN894UOja3PydKkos5Ix1yGFF1Mu2lcpHkjZLTw5jwXKHg6NL
-         PeCt6VDElC1nKTvgncGrQgEs92oYESi6rmf/nHm1oL5aX0dRPc+lVNqzER/x+tDF+Y4L
-         6smGAAo9pVH0rEeWXKo/L4gZeWEAPtObR38UYsdkkXeEs9ozOU5qfNx8WNPPDd3+9SFB
-         n6X689e5k/2IueJsvS6luf/WHzNaDEaF0chrVfp3pj01vvVpj/omW9V3BAZHkTuVrwCE
-         aPwWqrMapzmsOgFTtNgunmbvE5x3bEon9QWNfLchEvYHJXakNIYe0pWr60XL+2L8An0z
-         tBgw==
-X-Gm-Message-State: AGRZ1gLg2Dkq2T2aQvKozsk0hwLodbbX4IjGU4o1wUjye6Gfqzl1JxmQ
-	h4esd+btrgBGAcrPqH+y4pA=
-X-Received: by 2002:a1c:845:: with SMTP id 66-v6mr6251496wmi.61.1541084695531;
-        Thu, 01 Nov 2018 08:04:55 -0700 (PDT)
-Return-Path: <dafna3@gmail.com>
-Received: from localhost.localdomain (62-90-76-18.barak.net.il. [62.90.76.18])
-        by smtp.gmail.com with ESMTPSA id m141-v6sm4534611wmd.14.2018.11.01.08.04.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 01 Nov 2018 08:04:54 -0700 (PDT)
-From: kamomil <dafna3@gmail.com>
-To: helen.koike@collabora.com,
-	hverkuil@xs4all.nl,
-	mchehab@kernel.org
-Cc: kamomil <dafna3@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH vicodec v2 0/3] Add support to more pixel formats in vicodec
-Date: Thu,  1 Nov 2018 17:04:35 +0200
-Message-Id: <cover.1541081267.git.dafna3@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ukeB9SSECtM2WyC9S/7Vx6z9wTJoUbn9o4KCuxSE2BY=;
+        b=PdTUgK7RGikaRinhO0HbnAwykQt0p2HF67b4f+27g/uxn23+CCaIc1OYBWKl/t53pb
+         EnmSgWDdFRJZXs4IQoOzdYGcg613jsL5omVUimpWRC2IIBqUjyYlMHDs4g4LyTDH2hvM
+         At/oxbDvaeozbDXx+LaFobID/6PNARVeQiUgXOrEWzAqs9QMkY7qKZaDWIr5Vd63DECA
+         PRzm79HociB3oxz28umln2FAERJBr343SktO33Zm1O4+b1Nz86yeniFRJTWBcOzwgObA
+         f2BV2Nhy9zQqrgtmFWqiOtEYOO+LaldBQp2fDoSVf6JLIS9nVErTHdHItf2D+0VP4QAZ
+         jq0Q==
+X-Gm-Message-State: APjAAAX22i+1dIlGRAEyhumMcOJHXXpE8mUKSApMreiQtDUXiEDvdd6T
+	8KY60WxprpwjRHtrdomm3lmsZMXbfKtA9U/PtZRfjg==
+X-Received: by 2002:a2e:86ca:: with SMTP id n10mr3329113ljj.135.1552956809398;
+ Mon, 18 Mar 2019 17:53:29 -0700 (PDT)
+MIME-Version: 1.0
+References: <1552932384-11028-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+ <20190318184539.GA11680@kroah.com>
+In-Reply-To: <20190318184539.GA11680@kroah.com>
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Date: Tue, 19 Mar 2019 06:23:17 +0530
+Message-ID: <CANTOzWEfLXN9E=X_TzHd4PRnCY2eSSzYn0y_sU14tzfpFP-dVw@mail.gmail.com>
+Subject: Re: [PATCH] [Outreachy kernel] staging: speakup: prefer usleep_range
+ over udelay
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000f9ceb8058467ee4b"
 
-The new supported formats are
-V4L2_PIX_FMT_GREY, V4L2_PIX_FMT_ARGB32, V4L2_PIX_FMT_ABGR32.
+--000000000000f9ceb8058467ee4b
+Content-Type: text/plain; charset="UTF-8"
 
-The returned encoded format is chaned to support various numbers
-of planes instead of assuming 3 planes.
+On Tue, Mar 19, 2019, 12:15 AM Greg KH <gregkh@linuxfoundation.org> wrote:
 
-The first patch adds new fields to structs.
-The second patch adds support for V4L2_PIX_FMT_GREY.
-The third patch adds support for V4L2_PIX_FMT_ARGB32, V4L2_PIX_FMT_ABGR32.
+> On Mon, Mar 18, 2019 at 11:36:24PM +0530, Payal Kshirsagar wrote:
+> > Since usleep_range is built on top of hrtimers, the
+> > wakeup will be very precise (ish), thus a simple
+> > usleep function would likely introduce a large number
+> > of undesired interrupts.
+> > Thus udelay replaced with usleep_range.
+> >
+> > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> > ---
+> >  drivers/staging/speakup/speakup_decpc.c | 14 +++++++-------
+> >  1 file changed, 7 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/staging/speakup/speakup_decpc.c
+> b/drivers/staging/speakup/speakup_decpc.c
+> > index 798c42d..10ca19b 100644
+> > --- a/drivers/staging/speakup/speakup_decpc.c
+> > +++ b/drivers/staging/speakup/speakup_decpc.c
+> > @@ -251,7 +251,7 @@ static int dt_waitbit(int bit)
+> >       while (--timeout > 0) {
+> >               if ((dt_getstatus() & bit) == bit)
+> >                       return 1;
+> > -             udelay(50);
+> > +             usleep_range(50, 50 + 10);
+>
+> I've said this in the past, only do this type of change if you can
+> actually test it, and know it will be ok.  For some stuff like this, it
+> _might_ be ok, but you just expanded the timeout range potentially a lot
+> longer than before, and do we know that is ok?
+>
+> I sure do not :)
+>
+> So just leave these things alone unless you know the hardware will keep
+> working properly.
+>
+> thanks,
+>
+> greg k-h
+>
 
-Changes from v1:
-- support both version 1,2
-- when needed, replace the test 'number of comonents > 1' to 'number of components >= 3''
-- use `luma_alpha_step` field for both luma and alpha planes
-- some cleanups
 
-Dafna Hirschfeld (3):
-  media: vicodec: prepare support for various number of planes
-  media: vicodec: Add support of greyscale format
-  media: vicodec: Add support for 4 planes formats
+Okay I'll drop this patch .
+Regards,
+Payal
 
- drivers/media/platform/vicodec/codec-fwht.c      |  73 +++++++++-----
- drivers/media/platform/vicodec/codec-fwht.h      |  15 ++-
- drivers/media/platform/vicodec/codec-v4l2-fwht.c | 123 +++++++++++++++++------
- drivers/media/platform/vicodec/codec-v4l2-fwht.h |   3 +-
- drivers/media/platform/vicodec/vicodec-core.c    |  35 +++++--
- 5 files changed, 182 insertions(+), 67 deletions(-)
+>
 
--- 
-2.7.4
+--000000000000f9ceb8058467ee4b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
+On Tue, Mar 19, 2019, 12:15 AM Greg KH &lt;<a href=3D"mailto:gregkh@linuxfo=
+undation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
+id;padding-left:1ex">On Mon, Mar 18, 2019 at 11:36:24PM +0530, Payal Kshirs=
+agar wrote:<br>
+&gt; Since usleep_range is built on top of hrtimers, the<br>
+&gt; wakeup will be very precise (ish), thus a simple<br>
+&gt; usleep function would likely introduce a large number<br>
+&gt; of undesired interrupts.<br>
+&gt; Thus udelay replaced with usleep_range.<br>
+&gt; <br>
+&gt; Signed-off-by: Payal Kshirsagar &lt;<a href=3D"mailto:payal.s.kshirsag=
+ar.98@gmail.com" target=3D"_blank" rel=3D"noreferrer">payal.s.kshirsagar.98=
+@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/speakup/speakup_decpc.c | 14 +++++++-------<br>
+&gt;=C2=A0 1 file changed, 7 insertions(+), 7 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging=
+/speakup/speakup_decpc.c<br>
+&gt; index 798c42d..10ca19b 100644<br>
+&gt; --- a/drivers/staging/speakup/speakup_decpc.c<br>
+&gt; +++ b/drivers/staging/speakup/speakup_decpc.c<br>
+&gt; @@ -251,7 +251,7 @@ static int dt_waitbit(int bit)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0while (--timeout &gt; 0) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if ((dt_getstatu=
+s() &amp; bit) =3D=3D bit)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0return 1;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0udelay(50);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0usleep_range(50, 50 +=
+ 10);<br>
+<br>
+I&#39;ve said this in the past, only do this type of change if you can<br>
+actually test it, and know it will be ok.=C2=A0 For some stuff like this, i=
+t<br>
+_might_ be ok, but you just expanded the timeout range potentially a lot<br=
+>
+longer than before, and do we know that is ok?<br>
+<br>
+I sure do not :)<br>
+<br>
+So just leave these things alone unless you know the hardware will keep<br>
+working properly.<br>
+<br>
+thanks,<br>
+<br>
+greg k-h<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">Okay I&#39;ll drop this patch .</div>=
+<div dir=3D"auto">Regards,</div><div dir=3D"auto">Payal</div><div dir=3D"au=
+to"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+</blockquote></div></div></div>
+
+--000000000000f9ceb8058467ee4b--
 
