@@ -1,81 +1,73 @@
 X-GM-THRID: 6670188410102087680
-X-Received: by 2002:a50:a499:: with SMTP id w25mr3016381edb.3.1553033121025;
-        Tue, 19 Mar 2019 15:05:21 -0700 (PDT)
+X-Received: by 2002:a50:e609:: with SMTP id y9mr604554edm.4.1553025712658;
+        Tue, 19 Mar 2019 13:01:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:355a:: with SMTP id s26ls60520eja.0.gmail; Tue, 19
- Mar 2019 15:05:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzwm172uhi5R03OLTk2prwn2PVBmT3QbXddCBs4SJGkNqtL9HwFEiUWYmzreSZZ+q6AyM+M
-X-Received: by 2002:a17:906:d541:: with SMTP id gk1mr2711021ejb.0.1553033120167;
-        Tue, 19 Mar 2019 15:05:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553033120; cv=none;
+Received: by 2002:a50:b491:: with SMTP id w17ls3867823edd.7.gmail; Tue, 19 Mar
+ 2019 13:01:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyNAdY9IHvOb0VRVBDeFubKLljfv7BhqVugA+e++WnHRt9PZvjMkHCEyTyscTCDRtk3fqv/
+X-Received: by 2002:a50:b361:: with SMTP id r30mr2978703edd.8.1553025711852;
+        Tue, 19 Mar 2019 13:01:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553025711; cv=none;
         d=google.com; s=arc-20160816;
-        b=um9BV+rtkDbmcI25tkqJM1/fLQ3u6AqPTMcgPI1WkAMj4oZJlr+OOpR4/nirqNZO+y
-         BfkGcMQkzDQJPg6d46UvtTKV5PvR4l2+coYsqteTw5jDy5R12fVyV4V4lWwyVGySlKEl
-         +V50mNgeF0XnvfUN38kSmkBL4KtHU+LzGYucAGQeSO2rbfJTYEV+XGh/KrTCv47PvGIv
-         GfRzX6oSUmv4Lc/ysf8Xrv7NoWscdsuQnTZlWEf4xPT7lOzSybQ4efgCBW1qulYMOf4L
-         FVek/Rcf/puKZrHdYLyUQBKQDSMx7zYqh7oS1+cQ+ElLI0A3AC6C9ts3oNMCArmDTGsG
-         9/Rg==
+        b=wn4eYqPRH0j/H/2LfqfbHfLzJuhKnKePYpJDpb6DDe+iSUH2NLwIlCoXepbEt0z4ch
+         GMb8NVevlF/54vKB/ZS8lNwxTJ/MGoYb0FyKxYP/u1GtS4H/y/ZMmBzCrnAviNuisyJr
+         t/41PMmkJy1t/SnhxPCNcjAYQYPPDXYtGNYgBxnZ/Y+P0gpYh5DQQZBNRyq+N5fYSAr2
+         l6+S2z4uJz9tASQDKHCDn6qm2EBPMJExXoOGyfuSDpnZclmSSWMcKRx+K+qWljBCsroB
+         QTL8xOuu0hhWY9yyJ2jPHWmAukj53rZU0tRIpxkK0ReyOoe/jAp50DY9fPidgygUT9YM
+         7VAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:organization:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date;
-        bh=rbxkCURZ7pWbFUyG1Emv/ScecdcJdw14MrBLK3JGj0Y=;
-        b=PxK/xiWUsN4b/Rj0SaOrEgKCryYUwbNtrGlypOP/rymSUuxprW2sR+vAXmbMhv1q7Q
-         qcZ8ZT9bLoSS84hfOfP049Q5xnHHJrUyDAvgAqnq3S+6OPRGvSnVZGTK+TRqtrMVIJIL
-         xWMgzk5YLujtlByVCR1Kgt4vGkZTgaswIpPBFq0rsM+ZKSsH/y4E/wfdZDtQ791B6TDs
-         ksofzp5hQTVXsVNJDc/JVoFhc/bNltkQzptGJv0x/1PLm+tsPlcG8x1bTqPQRCpKahZe
-         cyXAiLuBUBOoxWGWveyCLkd40KOtM2XFB97O/UXjLuXTtlOV4fcGia1Z8BQkJQ0/2ErO
-         cJLw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=2ro0Ya8Nxi9jHSSy/Wtt7YwyI2Ype3Y72HZrbIaaXw4=;
+        b=VFLBS5BJ48vgmMUx8n75zZR/G7d1YrlBnWS2DN01HaISYsSXFd91Mn8BhBZZ9KjyxD
+         xDcBZ4q1NCj75fhAkN6CxCIrQ9AaBbfVOmaVNfczKpDz1LPD+Cjf/kTizegZUaBGKgfg
+         CdroKERmTvKWTbqLPEM9sQTjrz2dkW7/HIz+8Iy/w5TX3aJmFZ1dDJQ5mb+ar8Oznbet
+         71ZUphMIzxke9Dat4i4ySFB7U4G65CKPKI82RPilODnn3g3Yrxy3xqriP5dVyshyN7XR
+         Q4qVfU6T+8ChBi1ol52pmE7rRJF70/VOuhRghqIbVWFbBh9F4k/s15DhrnqdfdA6WHcw
+         Xr2Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Return-Path: <samuel.thibault@ens-lyon.org>
-Received: from hera.aquilenet.fr (hera.aquilenet.fr. [2a0c:e300::1])
-        by gmr-mx.google.com with ESMTPS id p25si12530eju.1.2019.03.19.15.05.20
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r37si675edd.2.2019.03.19.13.01.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 15:05:20 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=2a0c:e300::1;
+        Tue, 19 Mar 2019 13:01:51 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
-Received: from localhost (localhost [127.0.0.1])
-	by hera.aquilenet.fr (Postfix) with ESMTP id E5FC5F4B9;
-	Tue, 19 Mar 2019 23:05:18 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
-Received: from hera.aquilenet.fr ([127.0.0.1])
-	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d5jiwC-CFfCc; Tue, 19 Mar 2019 23:05:18 +0100 (CET)
-Received: from function (105.251.129.77.rev.sfr.net [77.129.251.105])
-	by hera.aquilenet.fr (Postfix) with ESMTPSA id 3F6D8712;
-	Tue, 19 Mar 2019 23:05:18 +0100 (CET)
-Received: from samy by function with local (Exim 4.92)
-	(envelope-from <samuel.thibault@ens-lyon.org>)
-	id 1h6MrF-0001Ln-1t; Tue, 19 Mar 2019 23:05:17 +0100
-Date: Tue, 19 Mar 2019 23:05:17 +0100
-From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,245,1549926000"; 
+   d="scan'208";a="300008858"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2019 21:01:51 +0100
+Date: Tue, 19 Mar 2019 21:01:50 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: speakup: Remove return variable
-Message-ID: <20190319220517.zgmdsz6z6objtd6c@function>
-References: <20190319193722.9561-1-nishka.dasgupta@yahoo.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca, 
+    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Remove return
+ variable
 In-Reply-To: <20190319193722.9561-1-nishka.dasgupta@yahoo.com>
-Organization: I am not organized
-User-Agent: NeoMutt/20170113 (1.7.2)
+Message-ID: <alpine.DEB.2.21.1903192101210.2460@hadrien>
+References: <20190319193722.9561-1-nishka.dasgupta@yahoo.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Nishka Dasgupta, le mer. 20 mars 2019 01:07:22 +0530, a ecrit:
+
+
+On Wed, 20 Mar 2019, 'Nishka Dasgupta' via outreachy-kernel wrote:
+
 > Remove return variable and return the required value directly. Issue
 > suggested by Coccinelle using ret.cocci.
-
-Well, I have to say that for style I prefer the way it was: we apply
-several functions to the input variable, before returning it.
-
+>
 > Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 > ---
 >  drivers/staging/speakup/i18n.c | 3 +--
 >  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
 > index ee240d36f947..a748eb8052d1 100644
 > --- a/drivers/staging/speakup/i18n.c
@@ -87,15 +79,23 @@ several functions to the input variable, before returning it.
 > -	input = skip_conversion(input);
 > -	return input;
 > +	return skip_conversion(input);
->  }
->  
->  /*
-> -- 
-> 2.19.1
-> 
 
--- 
-Samuel
-<s> je la connaissais pas celle la : "make: Entering an unknown directory"
- -+- #ens-mim -+-
+The maintainer has already said that he prefers the parallelism of an
+assignment on input in each case.
+
+julia
+
+>  }
+>
+>  /*
+> --
+> 2.19.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190319193722.9561-1-nishka.dasgupta%40yahoo.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
