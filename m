@@ -1,101 +1,104 @@
 X-GM-THRID: 6670188410102087680
-X-Received: by 2002:a50:e609:: with SMTP id y9mr604554edm.4.1553025712658;
-        Tue, 19 Mar 2019 13:01:52 -0700 (PDT)
+X-Received: by 2002:ac8:1911:: with SMTP id t17mr8805193qtj.22.1553024260501;
+        Tue, 19 Mar 2019 12:37:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:b491:: with SMTP id w17ls3867823edd.7.gmail; Tue, 19 Mar
- 2019 13:01:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyNAdY9IHvOb0VRVBDeFubKLljfv7BhqVugA+e++WnHRt9PZvjMkHCEyTyscTCDRtk3fqv/
-X-Received: by 2002:a50:b361:: with SMTP id r30mr2978703edd.8.1553025711852;
-        Tue, 19 Mar 2019 13:01:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553025711; cv=none;
+Received: by 2002:aed:3b2a:: with SMTP id p39ls3487568qte.6.gmail; Tue, 19 Mar
+ 2019 12:37:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxx+aFamkuWIgda7ZJeUKrUOSXDdkK5ge4ubCIlqp2cHQU1BAUFAcSmKtuzqIXGQ0XRM45A
+X-Received: by 2002:ac8:2f74:: with SMTP id k49mr12910365qta.45.1553024259983;
+        Tue, 19 Mar 2019 12:37:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553024259; cv=none;
         d=google.com; s=arc-20160816;
-        b=wn4eYqPRH0j/H/2LfqfbHfLzJuhKnKePYpJDpb6DDe+iSUH2NLwIlCoXepbEt0z4ch
-         GMb8NVevlF/54vKB/ZS8lNwxTJ/MGoYb0FyKxYP/u1GtS4H/y/ZMmBzCrnAviNuisyJr
-         t/41PMmkJy1t/SnhxPCNcjAYQYPPDXYtGNYgBxnZ/Y+P0gpYh5DQQZBNRyq+N5fYSAr2
-         l6+S2z4uJz9tASQDKHCDn6qm2EBPMJExXoOGyfuSDpnZclmSSWMcKRx+K+qWljBCsroB
-         QTL8xOuu0hhWY9yyJ2jPHWmAukj53rZU0tRIpxkK0ReyOoe/jAp50DY9fPidgygUT9YM
-         7VAg==
+        b=eXAl1V9CTWlAGTkl3oDiVdN6cImEs6ohKBlqYZqF8etKl8bZ4UldPRiYJvhR8IY2db
+         mVXBApDVUDYt6f08w5b9hh/LzJgtsnUJlqsqNBNnztXULUyTmSlV+dwaCdkrmJcH7AWI
+         q2S3A5pun0AvS6jyOJhGPBV0Cc6wEZXSGNXDTe6uf1ybCI5vh6uKz5UqXDuMVxu+03Wc
+         q5/eJlk6xvF5Y/+s+WVp5tUxOUNT9J+9d/MKiCiMgaWe85VP9TNj3qyr+wQOaBvnFRZ7
+         huFSQ1o7eva/e4J25eqlbYL3lBpeqCRwEygWsmFPaMriAf+bRhVJe39setVTbwYzEBD0
+         yjfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=2ro0Ya8Nxi9jHSSy/Wtt7YwyI2Ype3Y72HZrbIaaXw4=;
-        b=VFLBS5BJ48vgmMUx8n75zZR/G7d1YrlBnWS2DN01HaISYsSXFd91Mn8BhBZZ9KjyxD
-         xDcBZ4q1NCj75fhAkN6CxCIrQ9AaBbfVOmaVNfczKpDz1LPD+Cjf/kTizegZUaBGKgfg
-         CdroKERmTvKWTbqLPEM9sQTjrz2dkW7/HIz+8Iy/w5TX3aJmFZ1dDJQ5mb+ar8Oznbet
-         71ZUphMIzxke9Dat4i4ySFB7U4G65CKPKI82RPilODnn3g3Yrxy3xqriP5dVyshyN7XR
-         Q4qVfU6T+8ChBi1ol52pmE7rRJF70/VOuhRghqIbVWFbBh9F4k/s15DhrnqdfdA6WHcw
-         Xr2Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=+85j+fV+mFICLRpZfLfto9TDI2L/viYi7liu3wQvFtw=;
+        b=PgYxsayG6wgA6NrPp8XxRTNXzj5i3ix8kk/HGfZniy7wJv7V1uYfcVFBi5TGjcp/2Q
+         PX/sEa9EjVI1wsggoEHkmHpxZPP585/PLTw5Sgahsn82zgP3BD58fKDhSG9rCmg26aYl
+         2UYWO1+Agn5QBLc7r4/8C8Xa1mjqNYNkXAuFcKmIn8NlcDEgaTWumD0CRcW3TSKR5jEf
+         AJ4vnwaXnQAZRjMQemBE2/NoWQQwDtJ7lRR9RqCB0bp15YOWMwvi8Yx4M3Ntuo4MifYC
+         LiY/QFuabkbzgvjWSamVBYlAaHlRvG+VsHPEBiZdjaNhSEsmlEL+WZl5lFdpu8n/Qz17
+         IgYQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id r37si675edd.2.2019.03.19.13.01.51
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=XkDQL5Ll;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic305-20.consmr.mail.sg3.yahoo.com (sonic305-20.consmr.mail.sg3.yahoo.com. [106.10.241.83])
+        by gmr-mx.google.com with ESMTPS id 27si108831qtt.1.2019.03.19.12.37.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 13:01:51 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 19 Mar 2019 12:37:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.83 as permitted sender) client-ip=106.10.241.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.60,245,1549926000"; 
-   d="scan'208";a="300008858"
-Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2019 21:01:51 +0100
-Date: Tue, 19 Mar 2019 21:01:50 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-cc: w.d.hubbs@gmail.com, chris@the-brannons.com, kirk@reisers.ca, 
-    samuel.thibault@ens-lyon.org, gregkh@linuxfoundation.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: speakup: Remove return
- variable
-In-Reply-To: <20190319193722.9561-1-nishka.dasgupta@yahoo.com>
-Message-ID: <alpine.DEB.2.21.1903192101210.2460@hadrien>
-References: <20190319193722.9561-1-nishka.dasgupta@yahoo.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=XkDQL5Ll;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553024257; bh=+85j+fV+mFICLRpZfLfto9TDI2L/viYi7liu3wQvFtw=; h=From:To:Cc:Subject:Date:From:Subject; b=XkDQL5LlBoxDB2wOtbqcjM7wduGyQHoOetG0g25W2cPOHR50oebX5ok5koSacC5k7DGGJol5flnmqIPLMeuNFuVvSdPQMCVoXlFkzOZe/sOyIcvRsWFOgIB83/6mIGF9Ca2BEEHpfAr1i8Y7MRV62mXNRagp/X+/+aLOZ3G9BcX6BRgDjTiZZMMxkQIAHzlW0K+wi38AH5Oqc1eX9wTyQiiOD5u37pgwTLA8fgGYv+f1s/OBz5Wz11fch2kdjiRClDWkE6iC8QqWtb/nmn89f89vs1Sn8Ina4Ju3miJg95DFDtpIsauU2jM1+HMfI2rkRgTq/tj6Q/lsHR9car+FgA==
+X-YMail-OSG: CaH0d70VM1mvDc_ype8zKHqlUq5CQkopBc5WUfDaQHZ2J6UvuGz41SaZUooCIWj
+ lW9tvXX9wIPnOBNkZ3LYLtAjiDa.3g19VRVrLf1ro95vpvQDvIbUgNauTX.uA0hzvfTsz54DZ0P.
+ PF75phIgcUjy96RolkMXyX7d.ClVXvLMTkbI0sIxP0QLseXW7Q2Vr3bAtMbey6hNbQAy40eFKgbg
+ PT__5CR_P1qcmTt0aJ_HwhHTA4bUz9lfSHfC3DIUSYrFVBBYAYsQU6QGt6fyqYTrbPNpHc_JQIih
+ 5yiQwkQePQMQceIGBbiUthzuJ8P3v0FWQEDP5AorZyw3HHoIdTDAFd2J_U3_7Z5vyeG8.hZEX0G_
+ xPiMIBlvd0CLk4z6CCQokSApr_jQ.cfhZu.FejsgdTgFZv9GT5p3NOkBwQfC4_3ffCk.8Z6p7lqD
+ LSWfFlEygMCfuJJV.9EBmC1tSM2WTUW0HHPn1iBSYWQdvvPVgqPgO7K.HigNdxmtdhyitLmmLNxC
+ Dhyd3CFuLAwvG1mCuZ8fZteipIfgZazBpAAnsMMiDaJrYvuRBLcpFFoo3.f.4Gw7x1B7h7SOe.t0
+ 7YzhBpcoj19g2xx3gPZlPEavqm5MMn6B7MjdccA1.2Yti2FJh.NR9QeEfHxjKRP2ILVmi_EE3zNV
+ 9tEcS4rC9HJZS_0FL00SKS4O0Fhmkf8fp9D_.nuv2I8SFkTQpYimlPhS1YMK1OKCdsdZonXc13Rx
+ h.ski.k1rlINpL6i1S1m1VW64sS1hkonm7WktxrsPqLhgIVORG9m3vTkF2rHccpJzqXJhzoIfXYc
+ Ptk3Oes.dbYBiEXd2sYns1DsnWEoiP1smbXcGJxo9qmjHiZAi6HjG7mg83IkdadSHCTX45eYNyTG
+ 2ObT7H_hUYLfDZM5Z0lceg9MQhj2bp_k06LW2V.cL9T8LrEpesxBhl91NI5i33BmIYROJF4NfslH
+ LjQ_6PZZyPV2lPquE2drUvtqO4CdUXkgg2SNBKPYm_a_JnOJbt89GTMrXktqgunY70PTnt.Nl5xg
+ DxG3fAdYQxw2ZOFXcNpUn8r9GffESw62ZKW.6MnUxo7yP19UcCyyJMC9wBb47Wzrz3D.XBx8PuGT
+ KgdwBSzORAetSa.x8RfKjGJYV1SktDn_avsI-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic305.consmr.mail.sg3.yahoo.com with HTTP; Tue, 19 Mar 2019 19:37:37 +0000
+Received: from 125.22.40.140 (EHLO localhost.localdomain) ([125.22.40.140])
+          by smtp406.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 62ee6c0262fc76a6a938a9f66e2b4aef;
+          Tue, 19 Mar 2019 19:37:34 +0000 (UTC)
+From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+To: w.d.hubbs@gmail.com,
+	chris@the-brannons.com,
+	kirk@reisers.ca,
+	samuel.thibault@ens-lyon.org,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Subject: [PATCH] staging: speakup: Remove return variable
+Date: Wed, 20 Mar 2019 01:07:22 +0530
+Message-Id: <20190319193722.9561-1-nishka.dasgupta@yahoo.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+Remove return variable and return the required value directly. Issue
+suggested by Coccinelle using ret.cocci.
 
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+---
+ drivers/staging/speakup/i18n.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-On Wed, 20 Mar 2019, 'Nishka Dasgupta' via outreachy-kernel wrote:
+diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
+index ee240d36f947..a748eb8052d1 100644
+--- a/drivers/staging/speakup/i18n.c
++++ b/drivers/staging/speakup/i18n.c
+@@ -470,8 +470,7 @@ static char *find_specifier_end(char *input)
+ 	input++;		/* Advance over %. */
+ 	input = skip_flags(input);
+ 	input = skip_width(input);
+-	input = skip_conversion(input);
+-	return input;
++	return skip_conversion(input);
+ }
+ 
+ /*
+-- 
+2.19.1
 
-> Remove return variable and return the required value directly. Issue
-> suggested by Coccinelle using ret.cocci.
->
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-> ---
->  drivers/staging/speakup/i18n.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-> index ee240d36f947..a748eb8052d1 100644
-> --- a/drivers/staging/speakup/i18n.c
-> +++ b/drivers/staging/speakup/i18n.c
-> @@ -470,8 +470,7 @@ static char *find_specifier_end(char *input)
->  	input++;		/* Advance over %. */
->  	input = skip_flags(input);
->  	input = skip_width(input);
-> -	input = skip_conversion(input);
-> -	return input;
-> +	return skip_conversion(input);
-
-The maintainer has already said that he prefers the parallelism of an
-assignment on input in each case.
-
-julia
-
->  }
->
->  /*
-> --
-> 2.19.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190319193722.9561-1-nishka.dasgupta%40yahoo.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
