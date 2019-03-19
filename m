@@ -1,131 +1,79 @@
 X-GM-THRID: 6670105232964321280
-X-Received: by 2002:a05:620a:134a:: with SMTP id c10mr11898155qkl.8.1553005035135;
-        Tue, 19 Mar 2019 07:17:15 -0700 (PDT)
+X-Received: by 2002:a17:902:234b:: with SMTP id n11mr7023865plg.22.1553005021262;
+        Tue, 19 Mar 2019 07:17:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:9e6d:: with SMTP id z45ls8329572qve.5.gmail; Tue, 19 Mar
- 2019 07:17:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzz+RwYRaDK/25bpuQajh3bGU1s41eFY6wZ23Ouoawf3hwMQQdBmvWPeRcwiAws2S+U9RPR
-X-Received: by 2002:a0c:9596:: with SMTP id s22mr8589289qvs.16.1553005034302;
-        Tue, 19 Mar 2019 07:17:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553005034; cv=none;
+Received: by 2002:a65:5081:: with SMTP id r1ls7898709pgp.9.gmail; Tue, 19 Mar
+ 2019 07:17:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx+Pn43jgBMRVHJMpxyeO7ZaiOdmxPIQ8rEr+f7bGtanCyBIMip/0xIRlHoSiY6QuVr6bSN
+X-Received: by 2002:a62:e512:: with SMTP id n18mr435918pff.68.1553005020389;
+        Tue, 19 Mar 2019 07:17:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553005020; cv=none;
         d=google.com; s=arc-20160816;
-        b=m0h3OmrsMXHNyWJn02tppedvk7J2CnULry9BuJ786gymHa5RAiiF5e+4RijsknetQe
-         ISIR0Zfps3oWHcNadw8K2Mu44FYjTllQppajgo3tReX+Hr9bn7KOKBCgxJOi7jNYMjVr
-         3nd6NiMY9HEmXgK+9vm6e6EBElTOtXnZ0dluLSjGOsOt8bXHrUK9IxgIcaCKQzvz71iI
-         QATO8C5lorlJOCo15VG7U4aJy6vOcRTiM3bavFHX2HKoOLB7a5ZldaeHOpPurbx/RHbL
-         855ZKbG6YOLc+TazalGrRH7k5BbYpT/SmBryPUmLUj+SOtYqs1zXYNXm1nKCDeqD8rls
-         Wyzg==
+        b=LuCZM1cWUrzraoPsAY42u0+m+4tXO8KMTK4eLh99V1scj750A0w+tvXaJtFkXSAZjX
+         qGHAC0yiUxaIA/r17VGKymvJamvkwvxoEqc5nVroRy8UctOfe7d/4Za3vzpHqx7ruraU
+         mII3HwAW3Tf5BYax619TGx0DwLdtAQDa9KHJy53tdsXsInWk2HCfliJkVRSQHXT37CTn
+         lWNjYLEAvi79l6WPG/KJVnwNEOncTD1QOd9WkbKCHxls6vJI34VO5HGRx0T8HdQtRyvT
+         Rt0xugFYlSSZJ65hPims5AHpB14ns7adNGkcj9K+xGvMdYdWWyyyeHXPGowi0XDl5LtX
+         ISMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=CTwSp0Mp2oS8OFftB3iAIsF/EKNPdAJn1Uza+QZYNzE=;
-        b=VjCjEMZ2oPrWY/wkqmbvEfg3SRDmAFSEoRyv68+mLzr75sSov91VNPt2Oe4F4BVguc
-         6k6vqntYKj0HU/kuYypaerTUI4HaWjVIxwU2tYty8QI3jhoTuZGfHdOHTMaHblXH1nBz
-         IxFhTJrlbWyKKRZptDrtNqW0kZFa5FAQyRzfOZCIqg1lNZuAbcmi6SV/yzfAGOi9g5Dh
-         v0liVR5Al71q972KsNRXdJQiTiu0tbQz2MiqlAeaYS2+SQAgvkPlLJ7Im/gGkqogLqPm
-         j+HiujUHBe2by/dRK7Ui1ndUfjJAukBGsHAE4lLqYsHaUuLtrF4dv2vXP9X7F8Bog0YE
-         GCVg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=BpHTUwKhU0Qlb1nq088QSvb/vs2uEMqA+BfX+Qv6DtA=;
+        b=R3t3Ad87XtNO4M8iMAT7KMEob6PCF/B+Ct6GGaMfZ0HW8gdqbnhhfBDm2LcB1rwsY+
+         UTmqUjhO1vk1GzspWtKgBni1bBjNtMB5uGZtg0kxd2gLE/c7jLEHud6c2xryQCw4Y/u6
+         WMCwUyILi3u+XcfkQWeb93UW0UF2VPVWPLnEHnhAkIcf4mMzj1e/dA2vVZiH0/jb7Kun
+         vuPrvKyYGBB2g/5TIpdcFD89KxpJ9I3bVAUdbKZf/kBEYACVcLjuZon2rY4AExFos6F1
+         tPjX3GID04rsXMTbCcDImf8mN2RDb+EZjxZAdZsa/zOWdv8SVd9BFRaH6n8VUC0Kgvm9
+         5+rA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gtmTRrkn;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id v2si556435qka.0.2019.03.19.07.17.14
+       dkim=pass header.i=@kernel.org header.s=default header.b=Br3mzuaM;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id b77si641745pfj.5.2019.03.19.07.17.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 07:17:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Tue, 19 Mar 2019 07:17:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gtmTRrkn;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id p10so6982885pff.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 07:17:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=CTwSp0Mp2oS8OFftB3iAIsF/EKNPdAJn1Uza+QZYNzE=;
-        b=gtmTRrknN5VHPDOQrPTyz5Bkbbbq6bljB63TQxtLOsOLZm+wbo4vnDwyG0wLkLPZ3j
-         /9x8CJkZuU0COhvtBKSBKYvLpEckvFXVhkANd5SBpv/mpn3nUceC+VIw+G3G72l5LvXA
-         qiswyUgzS/pd5nKCK4XLYGY3pj+CKzD7vGeDgr4Q1/S8vD+sd7Cv563EN9bAul2sUPe2
-         D0D0YnCXuRbZBCkxQcS2QrGy8qUPuVgGGVCdz895DVVSe0vIqt2pUrf+HH7DCN/OnlEG
-         2iXf7a5P4McMg2Mmd7+x09YtWh7Ch8uC3MygJiqlWm+nTn9iF5eybvQqQHm4EOzsIKjU
-         j8FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=CTwSp0Mp2oS8OFftB3iAIsF/EKNPdAJn1Uza+QZYNzE=;
-        b=uW3azoMuFkG9UOLsJ5LS3SlRtG8LrQmr7C2MujLl3KliVvfB5fCN4oViQJgKiCJmoP
-         XjFLVCW0hqKYQzGvFRYiKiJNns2pXsVNB8xwyK/bEn9X6v7Nca4U7mQDWQJ40xCSajaM
-         cbf9F3436on+mb/MEmnETUHmRPIxJ4wB3br5EwH2yxet795m480J1RC974s3vMpTHoC0
-         UYryfZDhsmKMFeTRiOuLGDQTGY7tfRmPRiM8ZoHhDAcSd2pHBurnebkEvMR9g2Q2al6Z
-         GYxeXP+cnWuM3kAEiqJM4zYlcDr7EkUX/DVxMcFdowPiZ4+9dlZbwQAYQMTeChBlgv9v
-         YQSA==
-X-Gm-Message-State: APjAAAW8/8EEflOcK586Dg2GoHqTubbYrWz5xjDqB1iSRqlkV3EVV0Pp
-	Hxs9Mf5a8gSzigO/ZzxpZt55e1PB
-X-Received: by 2002:a62:448d:: with SMTP id m13mr863950pfi.182.1553005033146;
-        Tue, 19 Mar 2019 07:17:13 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from localhost.localdomain ([2405:204:6398:14e1:75f4:f821:faec:9887])
-        by smtp.googlemail.com with ESMTPSA id m20sm41592036pfj.142.2019.03.19.07.17.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 07:17:12 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b=Br3mzuaM;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 9854A2133D;
+	Tue, 19 Mar 2019 14:16:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553005020;
+	bh=yZAVrXLxMXMsDAyY+KRAG9Q2YQvTXm76TKa8g6JJHvI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Br3mzuaMsBF3rfUtZDqIpkbM5nxSBuzdKOyDQJxSXKHEiAPnOdsWNjzyd12IkxFYN
+	 5Vg/71n53/zuW4KGDyIv95w4Jlu7qS/PCia3W7aqyX7hx5urto6Pezoksx4qx+eS31
+	 Sjy4/Xis08geFJFagx/6Qeae4H+Xep69SpmjZqP8=
+Date: Tue, 19 Mar 2019 15:16:57 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/3] staging: rtl8192u: r8192U_dm: Remove unnecessary blank lines.
-Date: Tue, 19 Mar 2019 19:47:00 +0530
-Message-Id: <20190319141700.8540-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190319141439.8458-1-sanjana99reddy99@gmail.com>
+Subject: Re: [PATCH 0/3] Fix various warnings and checks.
+Message-ID: <20190319141657.GA12867@kroah.com>
 References: <20190319141439.8458-1-sanjana99reddy99@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190319141439.8458-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Remove unnecessary blank lines.
-Issue found by checkpatch.pl
+On Tue, Mar 19, 2019 at 07:44:39PM +0530, Sanjana Sanikommu wrote:
+> This series fix the following checks and warnings.
+> 1. Remove unnecessary blank lines.
+> 2. Fix alignment issue.
+> 3. Add spaces around operators.
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/rtl8192u/r8190_rtl8256.c | 1 +
- drivers/staging/rtl8192u/r8192U_dm.c     | 3 ---
- 2 files changed, 1 insertion(+), 3 deletions(-)
+The 0/X email needs to have the subsystem (staging), and the driver name
+in it, just like your patches do.  Otherwise they often get dropped by a
+maintainers email client.
 
-diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
-index a8c8e8c0660d..0c42eac07e2c 100644
---- a/drivers/staging/rtl8192u/r8190_rtl8256.c
-+++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
-@@ -230,6 +230,7 @@ void phy_set_rf8256_cck_tx_power(struct net_device *dev, u8 powerlevel)
- {
- 	u32	TxAGC = 0;
- 	struct r8192_priv *priv = ieee80211_priv(dev);
-+
- 	TxAGC = powerlevel;
- 
- 	if (priv->bDynamicTxLowPower) {
-diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-index 6c9f9d82477d..4fe4c99a0880 100644
---- a/drivers/staging/rtl8192u/r8192U_dm.c
-+++ b/drivers/staging/rtl8192u/r8192U_dm.c
-@@ -45,17 +45,14 @@ static struct dynamic_rx_path_sel DM_RxPathSelTable;
- 
- /*------------------------Define global variable-----------------------------*/
- 
--
- /*------------------------Define local variable------------------------------*/
- /*------------------------Define local variable------------------------------*/
- 
--
- /*--------------------Define export function prototype-----------------------*/
- extern	void dm_check_fsync(struct net_device *dev);
- 
- /*--------------------Define export function prototype-----------------------*/
- 
--
- /*---------------------Define local function prototype-----------------------*/
- /* DM --> Rate Adaptive */
- static	void	dm_check_rate_adaptive(struct net_device *dev);
--- 
-2.17.1
+thanks,
 
+greg k-h
 
