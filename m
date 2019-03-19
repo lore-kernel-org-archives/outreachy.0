@@ -1,104 +1,131 @@
-X-GM-THRID: 6802879895263248384
-X-Received: by 2002:a62:f24d:: with SMTP id y13mr2071993pfl.27.1583918904520;
-        Wed, 11 Mar 2020 02:28:24 -0700 (PDT)
+X-GM-THRID: 6670079368034779136
+X-Received: by 2002:a1f:1e4a:: with SMTP id e71mr14012625vke.2.1552998872304;
+        Tue, 19 Mar 2019 05:34:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:b114:: with SMTP id z20ls813979pjq.0.canary-gmail;
- Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtr0Hry7W1EMU3M+WOrJVBamQUqjXWJS47kd08/IjQIsOuDDRm77H6U4bOeZkrm6WL4sEMW
-X-Received: by 2002:a17:90a:a417:: with SMTP id y23mr1472667pjp.184.1583918903164;
-        Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583918903; cv=none;
+Received: by 2002:a67:c782:: with SMTP id t2ls2432923vsk.2.gmail; Tue, 19 Mar
+ 2019 05:34:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzCjK6w2v7qmGDmQVLoPk0n4Z27gHDgPfmaM4GUWaW8GUkUkZ0KTZkGG+xfTAtAJ4GAQBT5
+X-Received: by 2002:a67:ee92:: with SMTP id n18mr14100745vsp.32.1552998871555;
+        Tue, 19 Mar 2019 05:34:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552998871; cv=none;
         d=google.com; s=arc-20160816;
-        b=eZUxGCtVFEKFC0tPbnP8ODKtcZK8S83qpcqq0It1MCCE8Qsx/pCe7dDKgGk2tgdatK
-         GCwJsKqAxuGHHgTO9TGKiPn59p2u3J2yVVk0rnguzGU6fND13m23VnCA45dnAmWYT4SV
-         f6fINbEh/7rR1bAGHsR7c7y1+s4/PtDqRKP2hDmxo6rrRZ9u4hxREHoKgry2y74OPNCr
-         MdtGbmyAHjxJnHQXX9Hims5qP4JqbKN7jjjCT6nUrpXvtLS7lduhI+vYpNN3AXo6aFMH
-         +Lz87bN7/u9qphiOkKfQoL2HpEBrx4sErdAYkhZeNpRxVvTuMKJyjLhXXoQlAF9bPSBw
-         5CnQ==
+        b=EGa8WG1xUnGaGErgjDac1WYyYHUmqs+/Pp+YXkGVTfnYwcroxBBqJhBJo0WaXsvrZy
+         6UcC0KAJp1UeIy0ZuHaN4AZpSBfSmjQzmCcr+ZeCRFbcD+zxGjfL1D9VIlXYdIdpUgFU
+         GGHrVurlq+sGtIGK9NXHgf561tfYpEzO/VHkp8U/Lw8ZGPaDeeQ+CmX3wy4ktgY+LvjW
+         mQR73dBhFvLbvk3+9LyY5sMCXwDVMd5dbe9iNX0NsxxnCHPLk4eOiT/yD6e2oqnUQzBo
+         3hUFXcD0w3b+/7tjOs2v4EJKFXQtzRkTf/z0w+asXLHCp3vkZ4sfU/I92eOliPscC3G5
+         9jSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fWZRaDRaF+mSfOiGcYxGW1dQzdc1bZy42GzifEy5enc=;
-        b=ficvo9Re0KmXIyRr8L19eTw82ZUC387bM72eduOAaN9Nvldg4WAG/LQ3Xnzw3ccB0s
-         RsLQtG06pWkvFUl5t8yCtc7Bd3imVsGq+1Q/eefum1s7W5AU8Tb3kIEmLQ9Y6d0dmMZr
-         K8VXss0C2+hBqjetgj5hR3iofcR/OLWqOB0Ov7g7RADCLI4Ca20mlRO3NB7W2pFOSrRV
-         FlmOEoSyHEimBVC4/Ev8XByQ/ky97AXlSE5gRKuq5sHUDhjOU2DsdC/eIVFjqD/coSZ8
-         5UcKc2HF0Z/dj3ju660gLX1XMoGR+yWlnrv6jZuM1FUxEngDgVQwcdFimX3mRrw/wQJs
-         KiUQ==
+        bh=gGbS3PIsPQwq2rTmKaZlnmFbSGiCVbVTGuHx770Wg7A=;
+        b=0lRSwFj7gsfP/VNEW5dlbhyALBZmfIklu3VV21M/RqUAvesoEJLtSUAazKGCwPTgaN
+         aJb5fDko7bz0BhiF3z3OE7Q2abSoy0aLIhyymkmRN5X9pmaRj7UPASjE0sAqfo/8dm4g
+         as0ZFPy6MZzX13EGmCIHE0ESind3UqTrPO5T9eK3tZJRWvv5/FFbTw/sK03WZ5TBTBrT
+         28tV8Ybse4ewcQLMaQ6RNkISV23hNlETqLLlQUUkCbl9jeP1Q68swPNA+qRhO/x8fa1h
+         RN/TgdcCgBSbInxg+F51AKAwHqLfxRwRRI9ZpqVul1mHaaCOXLZo/XY1VlIh0yOi14nI
+         qNsA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KJpFRJSV;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WoBiy9h0;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id e2si105499pjp.1.2020.03.11.02.28.23
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id 12si476806vkg.3.2019.03.19.05.34.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Mar 2019 05:34:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KJpFRJSV;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WoBiy9h0;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x644.google.com with SMTP id g12so819034plo.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
+Received: by mail-pg1-x542.google.com with SMTP id g8so3099286pgf.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 05:34:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=fWZRaDRaF+mSfOiGcYxGW1dQzdc1bZy42GzifEy5enc=;
-        b=KJpFRJSVyo/hiNcZKiMRXqW+c5a4fIwGRKD4b8tAG6q7igXWtVV/Qf61KSHT92jB1m
-         W60+0+rorGZYMRhl+WB9WJMWS5XCEHLeu+8dGAG0ScqkSbuWQvjVBO7UIU2nNhkKqloa
-         s2mpj/Q8BcE+eEa620GwGXPbfxfT2YaFBhmCLqHnQVJKgNREzZklbDHDhEabdV0qZh5X
-         VYU13m91fb6dfkjFYB9KxcZQI6m+pcMUlPiNMK2c1Tp4HOvCQ89D1z3wyuR55xFyG9Qq
-         6mTT1SjW9Vb2V+tnBzgvKo33WbGg1BC/yjL+3STzWyHhwSYjqddk4i8KD55DvGlf7ycz
-         KAgQ==
+        bh=gGbS3PIsPQwq2rTmKaZlnmFbSGiCVbVTGuHx770Wg7A=;
+        b=WoBiy9h0mYLto1y+N7mczitni/ClHnGZysSjCxsxOm3UXeJgIB9akIAms0pRnYOH82
+         ArkR8ZuvroKDPeG3BGV0UbakNt9SZBHtJEP6vfsXUC0YP7/31Jws6FaP3sdNgLpLMQ5F
+         hEpxzgaoh590kFYkiuHLWDmeK1NKAjT3t4lXaKkzeORFdlyK+7AtEs5BKCkozfdRY1ec
+         WRfFqhsvH9VrsgaNnOgWkYadsTMoED+K/x27sy/PJzpaV8DVi13fxT5mIO+7uA05OkCX
+         ldrh6lk0dUQIbuRRnY/RkNS1uhqMWbZIZS/bpIgrQxlyM+uNCE3HrlB/g3S3rk66BxbV
+         SEjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=fWZRaDRaF+mSfOiGcYxGW1dQzdc1bZy42GzifEy5enc=;
-        b=hxoSG1aV+9E4jhpNMueIPbRe2TF/5cDa2q+I/afPjYXBBndc7Oh2YkRzhO0W30KwOd
-         +rcJMbBV2VOuDAyNsk+NBywooL6zlMy8y7EszeNqSuPJUTmHdQ0OTOmLnD2/BDDJlfVb
-         G68P0zY6/06cZ9MxdDuZfrxxWucOCcXBoka+sCTASasD8DwXJCIPyMM/iFlFr04yns7N
-         ctmhAmvK+sJZ3R2awnN/FJXP9WjXzJhgUDGB4T9XbfCbZ5s20eAqvbriip9D40C91x3o
-         1WmTR3PnWEYQ5uaIbWQm+q7dKCBUZjcWizxmZDcLhUTYJWh/5MwBSIgm4UxLtWfpdjxO
-         0HGg==
-X-Gm-Message-State: ANhLgQ3ZaWYClM3rb2Vd8J7PkZWqpUyjffF6Rxi4O0nE3lIVGY3+Wb/O
-	KvfsRqPPZ9uMtyRWKedKblU=
-X-Received: by 2002:a17:90a:c396:: with SMTP id h22mr2491308pjt.128.1583918902719;
-        Wed, 11 Mar 2020 02:28:22 -0700 (PDT)
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from payal-desktop ([49.35.84.144])
-        by smtp.gmail.com with ESMTPSA id u126sm50443116pfu.182.2020.03.11.02.28.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 02:28:22 -0700 (PDT)
-From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-To: manishc@marvell.com,
-	GR-Linux-NIC-Dev@marvell.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Subject: [PATCH 0/4] [Outreachy kernel] staging: qlge: remove unneeded variables
-Date: Wed, 11 Mar 2020 14:58:11 +0530
-Message-Id: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
+        bh=gGbS3PIsPQwq2rTmKaZlnmFbSGiCVbVTGuHx770Wg7A=;
+        b=VXU+u0rTS0VtDdshnPgN79Hmy6EvhuFTyZognLksR9H7qGVJu0+kdicjaThAh0PP3H
+         XFJ83WLwcv0BOo6T8b+nUA3GRwI1JiQYNwYQgw6/QFbE1V36/y5B8vBy4u3Aify7sFCT
+         SX7fOsosukWo8zCd5Lem7t7HyygJabLIgPKSx+S8RDL58pbeWfzvPsPZIDjQf/hDndGy
+         srlJ/PegT2XYURkSg1ZRsJ/rEpchYe1j9hm93ykXJSCA32v4VkfQP6UVzbFvNerDkuex
+         QHSo4ZZpMnXBYEF/TAsoL4coRCexlGrMDeXpi6kgvDCoaYqPFjshDzYCQh0MGsh36P0Z
+         Zf8Q==
+X-Gm-Message-State: APjAAAUcRLdviRuCGuBNGc6BF7psvQlHAFIzT8f54yJutM1k8k2VRhEb
+	uASFOHYStL16mYm5inm7akaegurhE3E=
+X-Received: by 2002:a17:902:2bab:: with SMTP id l40mr1824088plb.273.1552998870151;
+        Tue, 19 Mar 2019 05:34:30 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.64])
+        by smtp.googlemail.com with ESMTPSA id b85sm29237428pfj.56.2019.03.19.05.34.27
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Mar 2019 05:34:29 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: rtl8192u: r8180_93cx6.c: Fix space around '<<'.
+Date: Tue, 19 Mar 2019 18:04:18 +0530
+Message-Id: <20190319123418.6724-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
-Remove unneeded temporary local variables from the files of drivers/staging/qlge directory.
+Fix the check as per Linux kernel style for use of spaces.
+Issue found by checkpatch.pl
 
-Payal Kshirsagar (4):
-  [Outreachy kernel] staging: qlge: qlge_main.c: remove an unneeded
-    variable
-  [Outreachy kernel] staging: qlge: qlge_mpi.c: remove an unneeded
-    variable
-  [Outreachy kernel] staging: qlge: qlge_dbg.c: remove an unneeded
-    variable
-  [Outreachy kernel] staging: qlge: qlge_ethtool.c: remove an unneeded
-    variable
+CHECK:spaces preffered around that '<<'
 
- drivers/staging/qlge/qlge_dbg.c     | 5 +----
- drivers/staging/qlge/qlge_ethtool.c | 5 +----
- drivers/staging/qlge/qlge_main.c    | 5 +----
- drivers/staging/qlge/qlge_mpi.c     | 4 +---
- 4 files changed, 4 insertions(+), 15 deletions(-)
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+ drivers/staging/rtl8192u/r8180_93cx6.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
+diff --git a/drivers/staging/rtl8192u/r8180_93cx6.c b/drivers/staging/rtl8192u/r8180_93cx6.c
+index c414efc0662e..163daed789b4 100644
+--- a/drivers/staging/rtl8192u/r8180_93cx6.c
++++ b/drivers/staging/rtl8192u/r8180_93cx6.c
+@@ -125,21 +125,21 @@ int eprom_read(struct net_device *dev, u32 addr)
+ 
+ 	if (priv->epromtype == EPROM_93c56) {
+ 		addr_str[7] = addr & 1;
+-		addr_str[6] = addr & (1<<1);
+-		addr_str[5] = addr & (1<<2);
+-		addr_str[4] = addr & (1<<3);
+-		addr_str[3] = addr & (1<<4);
+-		addr_str[2] = addr & (1<<5);
+-		addr_str[1] = addr & (1<<6);
+-		addr_str[0] = addr & (1<<7);
++		addr_str[6] = addr & (1 << 1);
++		addr_str[5] = addr & (1 << 2);
++		addr_str[4] = addr & (1 << 3);
++		addr_str[3] = addr & (1 << 4);
++		addr_str[2] = addr & (1 << 5);
++		addr_str[1] = addr & (1 << 6);
++		addr_str[0] = addr & (1 << 7);
+ 		addr_len = 8;
+ 	} else {
+ 		addr_str[5] = addr & 1;
+-		addr_str[4] = addr & (1<<1);
+-		addr_str[3] = addr & (1<<2);
+-		addr_str[2] = addr & (1<<3);
+-		addr_str[1] = addr & (1<<4);
+-		addr_str[0] = addr & (1<<5);
++		addr_str[4] = addr & (1 << 1);
++		addr_str[3] = addr & (1 << 2);
++		addr_str[2] = addr & (1 << 3);
++		addr_str[1] = addr & (1 << 4);
++		addr_str[0] = addr & (1 << 5);
+ 		addr_len = 6;
+ 	}
+ 	eprom_cs(dev, 1);
 -- 
 2.17.1
 
