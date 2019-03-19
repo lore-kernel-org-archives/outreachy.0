@@ -1,127 +1,100 @@
-X-GM-THRID: 6663742329894993920
-X-Received: by 2002:a63:2a86:: with SMTP id q128mr3565850pgq.50.1551523415782;
-        Sat, 02 Mar 2019 02:43:35 -0800 (PST)
+X-GM-THRID: 6670186659922837504
+X-Received: by 2002:a7b:c18d:: with SMTP id y13mr491485wmi.2.1553025553567;
+        Tue, 19 Mar 2019 12:59:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:5751:: with SMTP id h17ls4365454pgm.4.gmail; Sat, 02 Mar
- 2019 02:43:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz17BntFjOgY9QE+QcGVXqIIXJt120oZ2nld5iy6JF0k4Hh2BDZqsjF934IicH+Y4dtgYNO
-X-Received: by 2002:a62:7553:: with SMTP id q80mr3710358pfc.17.1551523415039;
-        Sat, 02 Mar 2019 02:43:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551523415; cv=none;
+Received: by 2002:a1c:e142:: with SMTP id y63ls12993wmg.7.canary-gmail; Tue,
+ 19 Mar 2019 12:59:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxG+rMdiOdA6lFoYlpuM5Oi/DG3Vl02XmaAa+EbQ/fDwviHVV1isPNQO4hMEnCvFm4v2Hkn
+X-Received: by 2002:a1c:f214:: with SMTP id s20mr452968wmc.20.1553025552845;
+        Tue, 19 Mar 2019 12:59:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553025552; cv=none;
         d=google.com; s=arc-20160816;
-        b=SmdmYkOncHgoNs4ZcJdp/4VfyngtYa9EV6DmhGiqkQws0zGg2PblL2fNrD8J/nPZFF
-         ZqIORDuupqvUO4PeTmR9DLieBHDqgRzLc7OMzjNd2eP/hNv2PdljN3NuUUUiYPf7O62Z
-         0FFZoKVom0zQnNIDr1Cc98hktPx1vph/pEXMdJXTx7x/glRt/wOCCOmjFB8P7NVHf0Fk
-         VVP+sBgFHsQrSAx4zHAmD5BUOIaNr+TDC1liSumG7sJf4jBAfBelKHMmLflf4JtPOCya
-         JocndFGNvZafCi7+AuafCIfqjbGsMez3Lv2NfqBIovBksnTI6rYM1R6F9QM1D9J2VAXc
-         5w2g==
+        b=pNOX8g/nPA1UC2sNRepHRyhZJMoROv3wTY3yjpqWcBhOhzPpf+XpKNEkSABQ0xSqSI
+         pmMSdpwQqT1XO7B0F4nv6z65jCT+CmqkqyIz53qtykMOx3OrY0NzF5eCqcGSL0C3yB4y
+         idbD7Yi/K1KlNuPnnXgrlR55dqBFTLvD3zQKAbQvMJvtWhyHQQyuc4r9u087v6ImEbp8
+         giqrteOSVLG6iDPAz+qDTI5CzgR5KLW9EdA5k0jld5oiLqeNmHcGsiVDgWMFkvrjBr21
+         ePukPilZ1naNuBhK6ivEQhSBZl6S8DlGur/m/g7LicnL0R/kdQkAJu0AEiZ0QmWod7Z0
+         UazA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=nJmrPk4x4JVpxmkEDEJgeAencUHbM6oV8klLXs1WGsg=;
-        b=Y7tyFz+AVUBtiPaEOFeHFn5fwEdPkUm5WRIkmI+5ftm6vsi9mQdhciL7NDIHT8C/lT
-         as/LgKg41vDcH3svwhczxOhFW4GxClhg/ChV16I2Z7/FREZm/CYuswCF/k/EU64KKtmI
-         TFnvLzgd+o3LajFTtkzx5f9A2sOyauCn3dHmpKpSjGHpwFmwuWfMgWPfpnxBNMVZ957G
-         QXQrdUllNyYXQcJijF7kEsGfWomFIOwt7bebu0GKAyHlvcF45XLaTPRQezkN/Lh2JK7a
-         2Xj9xmhxC/Gk1fqaSuUb+xpBcEnh4392jZ5k7n+Zo8XNP+st6ORgCmOunHLYmqeDOMn7
-         ioUQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :to:from:date;
+        bh=0iaXsFc7Zb//f65+HgdUT4CKlQYsWIbpeXF6NFynjOk=;
+        b=UswhHrGtzW9UQ7XX5LM8TskW613DxMzZUdSFikS/Uttvwgs0QvJ6tM3AYFnP0S2bcH
+         FKM+j8uyP/0MaPap9jngTDPciSykGmWkKKeoZS7icpc2bg5ISSBMEJzB5Y8jsZC8vx7w
+         RFk4Fd0KLWt05ShuUGQ2fx9nrf0wVXl/bD4G5eANKPlWoCYzU3DKzr1eWaDJ5SJgylrq
+         kcQ/mDmCkln53IB3KxgajHvjdZ44EsmYskfXe/H2iClM1Al3b3aK5ne1BOVjYmotnJi1
+         sv6I9xcD7m2cIhvbNqTBFg9ESTNFEm0rLG8M7otx73Gqj/LunujJ/eQ4qNzbjfdjAz2A
+         MjKA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="giV/um0L";
-       spf=pass (google.com: domain of debsdo101@gmail.com designates 2607:f8b0:4864:20::133 as permitted sender) smtp.mailfrom=debsdo101@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsdo101@gmail.com>
-Received: from mail-it1-x133.google.com (mail-it1-x133.google.com. [2607:f8b0:4864:20::133])
-        by gmr-mx.google.com with ESMTPS id c12si16702pfc.2.2019.03.02.02.43.35
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y142si89793wmd.0.2019.03.19.12.59.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 02 Mar 2019 02:43:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of debsdo101@gmail.com designates 2607:f8b0:4864:20::133 as permitted sender) client-ip=2607:f8b0:4864:20::133;
+        Tue, 19 Mar 2019 12:59:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="giV/um0L";
-       spf=pass (google.com: domain of debsdo101@gmail.com designates 2607:f8b0:4864:20::133 as permitted sender) smtp.mailfrom=debsdo101@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x133.google.com with SMTP id l66so783868itg.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 02 Mar 2019 02:43:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=nJmrPk4x4JVpxmkEDEJgeAencUHbM6oV8klLXs1WGsg=;
-        b=giV/um0LWtFbUhEQ1+6nIggJIv3CctQUR35E0ADFHnyl729G4TzGddw6Tah7MwvA/X
-         ec4FUDNwAGiHrbuasw4CaHy28yCJlBSiMBGz9JjQmmePZ3JmFYVVnE+9MGZ9aqS8WAoG
-         aNa7lLzz85ClOvejBnpKXsU8mOaTRXohPa/sTcHecVW8vvyc9vskN/6xaCS/hjB0cloJ
-         wG2/czRGclwqVYDt4VjwigiyStEl1qnC59a7bJOMPFqF/DZIIgY1x9RZ0nvl0BSqKIaM
-         UXtzpto1Kp4Eew5O/HR/jjRD+QzvcVNKugFwkSqL0DWlQbL2Uhp4g6b4oxR4yXILUJlK
-         uOVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=nJmrPk4x4JVpxmkEDEJgeAencUHbM6oV8klLXs1WGsg=;
-        b=NBJQu3uNup9o1iQWOu56oJuUjpJQ81Pz6yb5IGCHKuC7SAxufdlKMouSv5XiSZKnMX
-         TMRbIre/Tr1ofxC7B1Hrwz/xFaMtAWAARlRf4IOfsCvgFASxz1xlWrT/rLfd7/Mkxaez
-         Oejeh0VY0YZbzXQ7sFVIRl6nosSN7zl/QSOxqvwMszHxvGnedUPh6DagFB4mOi2IHuGl
-         wkTKWferH5ECupOs2J6/W9ztKCGrFCTodhm7TmJsIuWKoq5a9UyesdtP+2JZ0wvIfWg7
-         Z2mN1sioI8QnXdjkBGxzDAhLRTBF2MN+zb2iyWtAl05xCnTLHjhrUPAj6BYaPOgi+VNa
-         xfHQ==
-X-Gm-Message-State: AHQUAua7yodxlXwtQklksybHEvJ5aexP04qN2mvfvdu3LrucP3P2d7CD
-	qVVY/BC7q4YMuKKbbHbPviUTq4awpc8AL+/hJqXAR0n9
-X-Received: by 2002:a24:45a3:: with SMTP id c35mr5555344itd.37.1551523414142;
- Sat, 02 Mar 2019 02:43:34 -0800 (PST)
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,245,1549926000"; 
+   d="scan'208";a="300008608"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2019 20:59:09 +0100
+Date: Tue, 19 Mar 2019 20:59:09 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: 'Nishka Dasgupta' via outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: fsl-dpaa2: ethsw: Remove
+ return variable
+In-Reply-To: <20190319192231.8422-1-nishka.dasgupta@yahoo.com>
+Message-ID: <alpine.DEB.2.21.1903192057190.2460@hadrien>
+References: <20190319192231.8422-1-nishka.dasgupta@yahoo.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-From: Debleena Sen <debsdo101@gmail.com>
-Date: Sat, 2 Mar 2019 16:12:56 +0530
-Message-ID: <CAKg+crjkvYaQzTJqDFJJPBEyjWpJKdvsh5c+imvy1jFqPKU8tA@mail.gmail.com>
-Subject: QUESTIONS REGARDING FIRST PATCH SUBMISSION
-To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000f5f72805831a319e"
+Content-Type: text/plain; charset=US-ASCII
 
---000000000000f5f72805831a319e
-Content-Type: text/plain; charset="UTF-8"
+Hello,
 
-Hi,
+I think this patch was sent to too many people.  You should include the
+following arguments when you run checkpatch, to just get the maintainers:
 
-I am an Outreachy applicant looking forward to work on the Linux Kernel
-Project.I had a few questions about the patches to be submitted on staging
-drivers.
+--nokeywords --nogit --nogit-fallback --norolestats --nol
 
-In the page Checkpatch_Tips <https://kernelnewbies.org/CheckpatchTips> it
-has been suggested to ignore warnings about lines longer than 80 characters
-and not to fix them and submit patches for them. I was working on wlan-ng
-driver and most of the warnings were of the above nature(WARNING: line over
-80 characters). So should I not work on those warnings? I saw other
-Outreachy applicants submitting patches for that warning.
+julia
 
-I have another question. What should I do with the CHECKs(for e.g. CHECK:
-Alignment should match open parenthesis)? Are those valid issues to which I
-can submit patches or should I ignore 'CHECK' and only work on 'WARNINGS'?
+On Wed, 20 Mar 2019, 'Nishka Dasgupta' via outreachy-kernel wrote:
 
-I'm sorry to ask such trivial questions but I'm new to Kernel development.
-
-Thank you.
-
-Regards,
-Debleena Sen
-
---000000000000f5f72805831a319e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div><br></div><div>I am an Outreachy applicant looking=
- forward to work on the Linux Kernel Project.I had a few questions about th=
-e patches to be submitted on staging drivers.</div><div><br></div><div>In t=
-he page=C2=A0<a href=3D"https://kernelnewbies.org/CheckpatchTips" target=3D=
-"_blank">Checkpatch_Tips</a>=C2=A0it has been suggested to ignore warnings =
-about lines longer than 80 characters and not to fix them and submit patche=
-s for them. I was working on wlan-ng driver and most of the warnings were o=
-f the above nature(WARNING: line over 80 characters). So should I not work =
-on those warnings? I saw other Outreachy applicants submitting patches for =
-that warning.</div><div><br></div><div>I have another question. What should=
- I do with the CHECKs(for e.g. CHECK: Alignment should match open parenthes=
-is)? Are those valid issues to which I can submit patches or should I ignor=
-e &#39;CHECK&#39; and only work on &#39;WARNINGS&#39;?</div><div><br></div>=
-<div>I&#39;m sorry to ask such trivial questions but I&#39;m new to Kernel =
-development.=C2=A0</div><div><br></div><div>Thank you.</div><div><br></div>=
-<div>Regards,</div><div><div dir=3D"ltr" class=3D"gmail_signature" data-sma=
-rtmail=3D"gmail_signature"><div dir=3D"ltr"><div>Debleena Sen</div></div></=
-div></div></div>
-
---000000000000f5f72805831a319e--
+> Remove return variable and return return value directly. Issue found by
+> Coccinelle using ret.cocci.
+>
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+> ---
+>  drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+> index ad577beeb052..e3c3e427309a 100644
+> --- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+> +++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+> @@ -1350,9 +1350,7 @@ static int ethsw_port_init(struct ethsw_port_priv *port_priv, u16 port)
+>  		return err;
+>  	}
+>
+> -	err = ethsw_port_fdb_add_mc(port_priv, def_mcast);
+> -
+> -	return err;
+> +	return ethsw_port_fdb_add_mc(port_priv, def_mcast);
+>  }
+>
+>  static void ethsw_unregister_notifier(struct device *dev)
+> --
+> 2.19.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190319192231.8422-1-nishka.dasgupta%40yahoo.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
