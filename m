@@ -1,118 +1,114 @@
-X-GM-THRID: 6950658650787545088
-X-Received: by 2002:ac2:5936:: with SMTP id v22mr14420436lfi.648.1618326327498;
-        Tue, 13 Apr 2021 08:05:27 -0700 (PDT)
+X-GM-THRID: 6670149254252593152
+X-Received: by 2002:a9d:7a89:: with SMTP id l9mr1833152otn.2.1553015144482;
+        Tue, 19 Mar 2019 10:05:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:3b95:: with SMTP id g21ls4973788lfv.1.gmail; Tue,
- 13 Apr 2021 08:05:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPT9MDPNIJwoXK6mnjVOq00Wk5Xlhuiupx1ZBfrK+vTwjAfAgQpk7F2Yt6oLGzVy+fpaEP
-X-Received: by 2002:a05:6512:48d:: with SMTP id v13mr18058431lfq.485.1618326322570;
-        Tue, 13 Apr 2021 08:05:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618326322; cv=none;
+Received: by 2002:aca:4255:: with SMTP id p82ls1044172oia.4.gmail; Tue, 19 Mar
+ 2019 10:05:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz+O7WEqOVTwJjbcFYCJYZmdkhukxhs/5+7uqgUoLGV4HdurskKkTnTqxIENp55yXV0Ws8x
+X-Received: by 2002:aca:3409:: with SMTP id b9mr1114406oia.29.1553015143263;
+        Tue, 19 Mar 2019 10:05:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553015143; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rn2Uzc1uRd98+GvWDKVXWVPCGeYc+SrqTIuxl68oGMy43sI2M4fsSbDjNgldp1kGqj
-         Z3gL1lWGGNDUgGXgwjveyPlyZq4xZwPlE+DaZzN0Cl1me6YfAYaiygE/mKnuEJmyx0Ol
-         Cd5neiXHvgeiY9iXeXXUmj3T/HbaafwSaPqcSYCKBLxKqE2F6mVTdoh3aLdhkVptQPmn
-         JCHkPjoaIuQZX73ysv+M9JCJv22e9oe/QlYnpAl0c8q6duXs3bNuVglUIH4J2xHZF8ef
-         vXIT2NokgRBZf/cGXWcDzHejTEagAuoZwx3HpNKbMOMf6KRi71+t4ZfwdF9M1ppuluPG
-         q4xQ==
+        b=K3h8Pt0o0XTMCc++v5F45UVbc3mMXi/k/tEZHd7U8paHH15SS3u+o1aYRIcj/1EAO5
+         MSLzfn0hqbyfAxFI8GulvSxLOMSTdAByGFe7b9d+Es3y3oNf1qeOTorp/gik50LUlAh+
+         Pe7fOMbV84yCYUq0CefwqbOEvmPxlou6nBvzD9jE7xIyWyjO2w3DiOqhniu+vErp5ZJT
+         lueUfO5/RQ9lCrEtKslhf3CAgH4o4XqYiTEikev1emCunZ5XRQ4bTmWO2P1lSm85QJ1M
+         IH7bG4EpDS59v/e32bZRAbtZMegBmJJ4O9RGXPk3A0iDI03TsNhzNgdW601PnWU4FvgC
+         ZArQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=0xoku/gJZVifospo6o1WZ6Sg1aj10S84grdNkCx2C9U=;
-        b=twV0AAXCqnTofce5utyKsLEvXMobE07Wvvn3iwLiYtOyF96TDTmDIRuy2iJSQeE8ce
-         CUAHpZW2cWa4ZWGoiS7piCrxRWx6CYKkceX5vHXy5wahxfTB50OYXliBb3CgWEY+cbtU
-         L6xH/4/kBwR7g+1RBHql/qNAMGVzMK5RhoLzR0husG66+SYxNcx8oKMIvuuWeLJgvddM
-         yRxR+NZEPFTER3bEel2i0DJZqvHDUF+FwRiFuPh8DqjWSng45N6FYDesDesTyWTCfRZ6
-         fiEA6/RoPnUfXn2unCXHv9kvhVv80S4ZzZ0uD++/W7PM8jn5XYYSq46PuQrEEMz6bOdb
-         ixew==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ayrqOdTdwZ2YVVb8FOwhYQI5b3k2+C6lYR6mu9VIs2o=;
+        b=eVTzP/pZniwOtUfYmhwTIJIvB3kNm2DKq+79iGoqrWHBVNHMw6kFczjAw3B679eKnb
+         Z40LERj73upmTZpO72ldW9INU+UhexshrAxlc8sJdBcZKE7SDRnCFUTaw6SEKN7X73cs
+         bajuFamPmUo8fwlgJg68VzUaaqQ6hRrtCDv/aeGnrMeLYZeFXj8VbeEZtCPVyUsgbc3N
+         sGIjSVYt1MxoW/CrCi+lIMgkFv9/8MjSwM6dEMpGQELCVol3ZqqDL+Ln0uw0vPlJ83+B
+         nzd8wHOo8MwfhjEILaYoXq1jcwlIraciZ70kG6kB6F6vgxB2LJ8FQKkLSuPYPw068/k3
+         /XSg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OqO69w81;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jczB5oqG;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com. [2a00:1450:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id c17si801054ljn.7.2021.04.13.08.05.22
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id x31si643260otb.1.2019.03.19.10.05.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Apr 2021 08:05:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) client-ip=2a00:1450:4864:20::62c;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Mar 2019 10:05:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OqO69w81;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jczB5oqG;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62c.google.com with SMTP id x12so5680019ejc.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 08:05:22 -0700 (PDT)
+Received: by mail-pf1-x441.google.com with SMTP id j5so14156861pfa.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 10:05:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=0xoku/gJZVifospo6o1WZ6Sg1aj10S84grdNkCx2C9U=;
-        b=OqO69w81Xg78+Yg0PKNTUy5lhRRTv55K3xIP+2wpLNf6aoNyj65s9aDl+EfNz5FAZj
-         lokQ+1koIWlndO5ZgnqKwEuO0sPxthTNiMd0tDwsrRcY29v8PpL59hn9iwqkCYW4eRp4
-         GMwpTNqls1vwDO3tjCQ3C25pZQ7lPrwiM+cLl1Y91YX/qLN2sT4HXjzV+WnroSNDHaS/
-         FymL1SocfkRLXCWHe7hctEoy890ucotx/E2pan7eEMplNJr+DJL30cVAROuWfTJZqLNg
-         a2XwW4eUNcz/F120dcCdkqiBDhHktew8M7ilJyH7W2Nr5pj7hAv/2DMDfkFtnBEswujV
-         k8Pg==
+        h=from:to:cc:subject:date:message-id;
+        bh=ayrqOdTdwZ2YVVb8FOwhYQI5b3k2+C6lYR6mu9VIs2o=;
+        b=jczB5oqGci+OnutP71L6QI5p7oFy8EkgyV9MTl23LuGPdP+0BwHVxKZS57nbPj7pbW
+         vioDBg/DUHjVKW+t8SbYmlPJOMh7BmlsJAzBZfZULM8AlVer+cdJscl8YTthPwJpSHZO
+         BLsA6ZniR9WYOlYB4zsVIBXIKzWfUbSKY8u6IHJIaTBtSx9yUMgyMVBPM9LwSJE7HB+I
+         4LiJvuxsHytkTQLIx2Zi2TKRzup5PS1PbmdO6TXZf3SUlIKUqfIO5nbsrGMfbp94ysVy
+         7b25M2+uQ09FA3rRRxKshwla8wNZ6vIIrHUbYTJuWtCFjr8TxRUm0IDFa+s+zW8G+YvH
+         mL0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=0xoku/gJZVifospo6o1WZ6Sg1aj10S84grdNkCx2C9U=;
-        b=a4TmjqFWVAu4ZpeFYqj8aN8eJiuCRWNkEbCBTQkk37l26AsGRnGZ6K9+j/cYRsrnCL
-         HlefUxjTFV/7ptteYV3FeDHxvvOz1hf5gHRf0YYr/BU7qniLiSkdOWtkzGRu3wbB2ghz
-         IsSjkna/sQ+s+i3luVfzaoZWiFXL0KvqPSZq5AJCMn+BOdliKBN/7EdeG5GHFUoZBRCw
-         N6qn4vl+5ppOw/XQziQbGFHUz2Txz8aXjvTNgp+VI2myjm3mQrOLsc5Mbh133g4ERl8T
-         yo9h9JkwI2LSGLlq39xvOua2yCzEwB+aiRL07UwoXc1Fch13CQmLRrK9WEPHL5YekBuF
-         xpCA==
-X-Gm-Message-State: AOAM533pWnsm++Tvdw7Xe3X9NSak8/ydf4S7bxI4vbCmR4VkZcSDcf78
-	4VlDlLyOsyFC4AaUZT3OPvq5gUeACy8MLws0
-X-Received: by 2002:a17:907:33cb:: with SMTP id zk11mr16188048ejb.231.1618326322074;
-        Tue, 13 Apr 2021 08:05:22 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id t1sm9681085edy.6.2021.04.13.08.05.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Apr 2021 08:05:21 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: rtl8723bs: core: Remove unused but set variable
-Date: Tue, 13 Apr 2021 17:05:17 +0200
-Message-Id: <20210413150517.12533-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=ayrqOdTdwZ2YVVb8FOwhYQI5b3k2+C6lYR6mu9VIs2o=;
+        b=IRNW/2407/PmzgHB1wAJRGgnYwd2fwmuivNpG9xsUKN1tDqKE11ihp29516zjjo9Aw
+         7y1NtnCBPHs8veyo3yc9Xvr+9VKsQc7zeNr0trbsTTRloGxG0GuqUa3cOPNnMS2QCpY0
+         pGuIHJblEVljjnPwq5RrQZ7RH5QnadoGdsSQt3ysF3APQaqwl9lN/JHs/c6hH8B42qkA
+         GrY7Kg2FbBip+IclM5G/PmuyMo0X+yu4Z/lFRTe6gFrjS2Tz+FRB1Fi6wP4Sva0GmfJm
+         QxRRK4+RctqTYs/BJkmTx+dXN0FBJcKTSwVjuNVZ/+8U2w2OnSYREUJE7ZcvkaLvGOqF
+         gzvw==
+X-Gm-Message-State: APjAAAVWGkuDnjdn4AIgEItsbQgXE6e07PJooSDFVp8sQ2OTgXDZXPwq
+	sZJyp/DY6wLsMrO0XCy8WU9+Pi++9no=
+X-Received: by 2002:a63:e801:: with SMTP id s1mr23960063pgh.378.1553015142519;
+        Tue, 19 Mar 2019 10:05:42 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.64])
+        by smtp.googlemail.com with ESMTPSA id 140sm8477332pfb.55.2019.03.19.10.05.39
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Mar 2019 10:05:41 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8192u: ieee80211: ieee80211_rx.c: Fix NULL comparisions.
+Date: Tue, 19 Mar 2019 22:35:26 +0530
+Message-Id: <20190319170526.4337-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Removed "ledBlink_param" because it was set to the value of "pbuf" but was
-never reused. This set was made by direct assignment (no helper had been
-called), therefore it had no side effect to the location pointed by "pbuf".
+Replace NULL comparisons in the file.
+Issue found by checkpatch.pl
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index f19a15a3924b..440e22922106 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -6191,12 +6191,10 @@ u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf)
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+index 5147f7c01e31..1cbaf8a4ee1b 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c
+@@ -151,7 +151,7 @@ ieee80211_frag_cache_get(struct ieee80211_device *ieee,
+ 		 * should have already been received */
+ 		entry = ieee80211_frag_cache_find(ieee, seq, frag, tid,hdr->addr2,
+ 						  hdr->addr1);
+-		if (entry != NULL) {
++		if (entry) {
+ 			entry->last_frag = frag;
+ 			skb = entry->skb;
+ 		}
+@@ -190,7 +190,7 @@ static int ieee80211_frag_cache_invalidate(struct ieee80211_device *ieee,
+ 	entry = ieee80211_frag_cache_find(ieee, seq, -1, tid, hdr->addr2,
+ 					  hdr->addr1);
  
- u8 led_blink_hdl(struct adapter *padapter, unsigned char *pbuf)
- {
--	struct LedBlink_param *ledBlink_param;
- 
- 	if (!pbuf)
- 		return H2C_PARAMETERS_ERROR;
- 
--	ledBlink_param = (struct LedBlink_param *)pbuf;
- 	return	H2C_SUCCESS;
- }
- 
+-	if (entry == NULL) {
++	if (!entry) {
+ 		IEEE80211_DEBUG_FRAG(
+ 			"could not invalidate fragment cache "
+ 			"entry (seq=%u)\n", seq);
 -- 
-2.31.1
+2.17.1
 
 
