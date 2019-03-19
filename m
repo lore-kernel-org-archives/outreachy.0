@@ -1,297 +1,98 @@
 X-GM-THRID: 6670105232964321280
-X-Received: by 2002:a2e:864f:: with SMTP id i15mr1437267ljj.13.1553006926908;
-        Tue, 19 Mar 2019 07:48:46 -0700 (PDT)
+X-Received: by 2002:a17:902:9a81:: with SMTP id w1mr7161492plp.37.1553006387518;
+        Tue, 19 Mar 2019 07:39:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:2c7:: with SMTP id y68ls2570845lje.10.gmail; Tue, 19 Mar
- 2019 07:48:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7EdrA0ZP+atJEXqT+bp4EcX+TvHLmIgAT9Bg7tabKd8L8EAr7iu6kufW+mb3ePul6KgcS
-X-Received: by 2002:a2e:391d:: with SMTP id g29mr1420010lja.17.1553006926022;
-        Tue, 19 Mar 2019 07:48:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553006926; cv=none;
+Received: by 2002:a17:902:227:: with SMTP id 36ls9373448plc.8.gmail; Tue, 19
+ Mar 2019 07:39:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwuw4rL5lmCpApmdtsy4ivdi2oHpNjiF1yODGKAw/HUd6UzIKMMVy5YpjjhlICR1EFzC9gg
+X-Received: by 2002:a17:902:8e86:: with SMTP id bg6mr7346341plb.94.1553006386646;
+        Tue, 19 Mar 2019 07:39:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553006386; cv=none;
         d=google.com; s=arc-20160816;
-        b=uy4nbBsDLaqKbfqK51z2bjocmQlU23O9VRJerEJDBKc55nKP7JC9SpdifUttIjsE4J
-         HwXFkRcogM6DAhm9K1e1wm8swwA5ymUx/EirOY1l8gy7QXVqUHcczQj6Q/TWWmfL/bAX
-         sFnd4MUteRQDVpA9Qao4ceaFu0pliRh6u2L/8r6fxhD75Rx4WK8y0ifb+AM5x1mnwxXy
-         8FpDgaU1FBEK3MXdCr9nvE1xmX6bCGdU6cj0DrCgZpxCXGhivNSxxfiriWL+ZNGJn9Je
-         q3f33LVFOAFVDmjKOI0/Z9vjraQt1t6zsns8+aQse90V6Rz5apkHxfRC6Mz/QpNW1PeK
-         8NWg==
+        b=LhEbcREdwSS4I6TD/xErPfp1N0d/bDe4+4o7w1W/0sH2p8ZpsFs/LiWSHU+ZtaS50q
+         P6qcp84vzj5F+W0Du9/pU7PhvzDWxf6aPpp9tk6kV05g43Hdr1QCf+S4491aiD47dOON
+         N2oe+4RJolI4LypOen1pRcJE26pHE51HG+YbjICXB0MEOcLR8QHRz/AsYkD5+lzv1dCC
+         ZDcVpljtWAuDbZ+JUUnjXduDbs4+tabCkQf7w25Kj4hez5hcXNzwzlqYB7o6vOHMNTyP
+         sdJfZ8DX6TFlhWmM5SkOO61i0aV5WKx646sUtbcLNUsV8qdY+0O9u2ybDkxR8g3D8s9+
+         6mKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=D7ZCOou7SEh6ZeF0X3uxaGEK76nIh5v3aj8Zt6qjbKc=;
-        b=TyNIMi5Nxpl0Dbn5AcjiRYpvi/8MXaAFJVxZRVD5vbUX29T7O1RJGdaHlNYrFsopCh
-         Oxm6SwlZ7aJJuijEGFBMMxfjtqWnWenKZj5HyIKi/2lNt81LrXJxw/za10AegaCSBjs7
-         64OesXcKUcQeZ0izWBFh35hzJlpzEM4sBelnV8Z9jLjKQ9WkmhMDczjdx4dDpy5sQYhd
-         ZNUEtkSl/+ZmKiOJAsBWoG5vddrlfv/TdqIadIl9UXid322hIm3j8mfI2k84ArWuux/7
-         w0f7RpGXSsUtSpEsMOg4KzOQuBK/l1+5JNg+/HnxB5HnchSykbxYkh7UwvkcVF8cpE0J
-         HE5w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=8rBikWe4FqcDJAGHM2UR8beqsMcPYpyHJkuFWzEVgzQ=;
+        b=GoD+180ApEsYSxF8Rf2wag7YvGnGUkwUP/g2WrYq7oVBYqR/wgan157K6xif+fCv5K
+         wBHSOi5paIyPjEAGq0aUQc7iUprC18CtsKhRYV9PHguTxE86NyooFNGizYoILTiW6XxX
+         BACVhMR2GwJXhZ0qafuxQbSIgLUOJSr6JxHeGyNHRlAOQ2Ek3Nx3Tps07nuNTRDK1Vqk
+         8oyE6QyGwVXwtUy8lcIuxYuIYOCqahwScdfWPRzCgmfl77X814j4tWz3gLzn37OenoV8
+         1+DXRZk0vIp6xY0Y8swp4LyWB5Jx4SJK9UXDguz+uyQbke01Eo09N5aMQd7PYSnNZWfh
+         Mlkw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id h14si766585lja.2.2019.03.19.07.48.45
+       dkim=pass header.i=@kernel.org header.s=default header.b=vcQ1SbuX;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id k70si686183pfc.0.2019.03.19.07.39.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 07:48:46 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Tue, 19 Mar 2019 07:39:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.58,498,1544482800"; 
-   d="scan'208";a="299971797"
-Received: from unknown (HELO hadrien.local) ([163.173.90.67])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2019 15:48:45 +0100
-Date: Tue, 19 Mar 2019 15:48:43 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: sanjana99reddy99@gmail.com
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH 2/3] staging: rtl8192u: r8192U_dm:
- Fix alignment issue.
-In-Reply-To: <6e31cf7e-174d-4d81-b119-cb6498244ea3@googlegroups.com>
-Message-ID: <alpine.DEB.2.20.1903191548160.8263@hadrien>
-References: <20190319141439.8458-1-sanjana99reddy99@gmail.com> <20190319141806.8592-1-sanjana99reddy99@gmail.com> <alpine.DEB.2.20.1903191530000.8263@hadrien> <alpine.DEB.2.20.1903191532270.8263@hadrien>
- <6e31cf7e-174d-4d81-b119-cb6498244ea3@googlegroups.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+       dkim=pass header.i=@kernel.org header.s=default header.b=vcQ1SbuX;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (5356596B.cm-6-7b.dynamic.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id D4DF82133D;
+	Tue, 19 Mar 2019 14:39:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553006386;
+	bh=qKak+vYm2L0IP8R9vZxWORb1ZtyOyftFUIuw5+aGLJA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=vcQ1SbuXK/aDb5RRBxSeIA3iVgKfbKQabp/pcBkge0MkN/wlwLw0R+iGzrdGxHG/E
+	 pr4MCinxdzfaJG1ZbTOGPqlx02Z1o3qV06SgF26Uge7YXWmsCxCBdjoUtbb84ozMdm
+	 fE785WgfTkrHqr9tQ17U1uX8en4TM69LJ3iVVY5E=
+Date: Tue, 19 Mar 2019 15:39:43 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2 1/3] staging: rtl8192u: r8192U_dm: Remove unnecessary
+ blank lines.
+Message-ID: <20190319143943.GA25838@kroah.com>
+References: <20190319141439.8458-1-sanjana99reddy99@gmail.com>
+ <20190319143003.9118-1-sanjana99reddy99@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="----=_Part_2175_1700542104.1553006186555"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190319143003.9118-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Tue, Mar 19, 2019 at 08:00:03PM +0530, Sanjana Sanikommu wrote:
+> Remove unnecessary blank lines.
+> Issue found by checkpatch.pl
+> 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+> Changes in v2:
+> No changes
+>  drivers/staging/rtl8192u/r8190_rtl8256.c | 1 +
+>  drivers/staging/rtl8192u/r8192U_dm.c     | 3 ---
+>  2 files changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/r8190_rtl8256.c b/drivers/staging/rtl8192u/r8190_rtl8256.c
+> index a8c8e8c0660d..0c42eac07e2c 100644
+> --- a/drivers/staging/rtl8192u/r8190_rtl8256.c
+> +++ b/drivers/staging/rtl8192u/r8190_rtl8256.c
+> @@ -230,6 +230,7 @@ void phy_set_rf8256_cck_tx_power(struct net_device *dev, u8 powerlevel)
+>  {
+>  	u32	TxAGC = 0;
+>  	struct r8192_priv *priv = ieee80211_priv(dev);
+> +
+>  	TxAGC = powerlevel;
 
-------=_Part_2175_1700542104.1553006186555
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 8BIT
+That change is _NOT_ removing a blank line :(
 
+Please be more careful.
 
+thanks,
 
-On Tue, 19 Mar 2019, sanjana99reddy99@gmail.com wrote:
-
->
->
-> On Tuesday, March 19, 2019 at 8:03:04 PM UTC+5:30, Julia Lawall wrote:
->
->
->       On Tue, 19 Mar 2019, Julia Lawall wrote:
->
->       >
->       >
->       > On Tue, 19 Mar 2019, Sanjana Sanikommu wrote:
->       >
->       > > Ajdust alignment to match open paranthesis.
->       > > Issue found by checkpatch.pl
->       > >
->       > > CHECK: Alignment should match open paranthesis.
->       > >
->       > > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com>
->       > > ---
->       > > �drivers/staging/rtl8192u/r8192U_dm.c | 20
->       ++++++++++----------
->       > > �1 file changed, 10 insertions(+), 10 deletions(-)
->       > >
->       > > diff --git a/drivers/staging/rtl8192u/r8192U_dm.c
->       b/drivers/staging/rtl8192u/r8192U_dm.c
->       > > index 4fe4c99a0880..8279fa721c74 100644
->       > > --- a/drivers/staging/rtl8192u/r8192U_dm.c
->       > > +++ b/drivers/staging/rtl8192u/r8192U_dm.c
->       > > @@ -1451,7 +1451,7 @@ static void
->       dm_CCKTxPowerAdjust_ThermalMeter(struct net_device *dev, bool
->       �bInCH
->       > >
->       > > �����������������rtl8192_setBBreg(dev, rCCK0_TxFilter1,
->       bMaskHWord, TempVal);
->       > > �����������������RT_TRACE(COMP_POWER_TRACKING, "CCK chnl 14,
->       reg 0x%x = 0x%x\n",
->       > > -������������������������rCCK0_TxFilter1, TempVal);
->       > > +������������������������ rCCK0_TxFilter1, TempVal);
->       > > �����������������/* Write 0xa24 ~ 0xa27 */
->       > > �����������������TempVal
->       =��������CCKSwingTable_Ch14[priv->CCK_index][2] +
->       >
->       > Since you will be sending this series again, maybe you could
->       add another
->       > patch in the series to remove these big spaces between the =
->       and the array
->       > reference. �I wonder if it is tab that should be a space, but
->       I'm not sure
->       > because the next line seems to be aligned according to this
->       big distance.
->
->       Oh well, it seems that you sent the new seris again already :)
->
->
-> I missed your review. Should I correct and send them again? I would like to
-> know.
-
-It would be nice to do at some point, but perhaps get the current series
-of patches accepted first.
-
-julia
-
->
-> Thank you Sanjana�
->
->       julia
->
->       >
->       > julia
->       >
->       > >�����������������������������������������(CCKSwingTable_Ch14[priv->CCK_inde
->       x][3]<<8) +
->       > > @@ -1459,14 +1459,14 @@ static void
->       dm_CCKTxPowerAdjust_ThermalMeter(struct net_device *dev, bool
->       �bInCH
->       > >�����������������������������������������(CCKSwingTable_Ch14[priv->CCK_inde
->       x][5]<<24);
->       > > �����������������rtl8192_setBBreg(dev, rCCK0_TxFilter2,
->       bMaskDWord, TempVal);
->       > > �����������������RT_TRACE(COMP_POWER_TRACKING, "CCK chnl 14,
->       reg 0x%x = 0x%x\n",
->       > > -������������������������rCCK0_TxFilter2, TempVal);
->       > > +������������������������ rCCK0_TxFilter2, TempVal);
->       > > �����������������/* Write 0xa28 �0xa29 */
->       > > �����������������TempVal
->       =��������CCKSwingTable_Ch14[priv->CCK_index][6] +
->       > >�����������������������������������������(CCKSwingTable_Ch14[priv->CCK_inde
->       x][7]<<8);
->       > >
->       > > �����������������rtl8192_setBBreg(dev, rCCK0_DebugPort,
->       bMaskLWord, TempVal);
->       > > �����������������RT_TRACE(COMP_POWER_TRACKING, "CCK chnl 14,
->       reg 0x%x = 0x%x\n",
->       > > -������������������������rCCK0_DebugPort, TempVal);
->       > > +������������������������ rCCK0_DebugPort, TempVal);
->       > > ���������}
->       > > �}
->       > >
->       > > @@ -1517,7 +1517,7 @@ void
->       dm_restore_dynamic_mechanism_state(struct net_device *dev)
->       > > �����������������return;
->       > > ���������/* TODO: Only 11n mode is implemented currently, */
->       > > ���������if (!(priv->ieee80211->mode == WIRELESS_MODE_N_24G
->       ||
->       > > -����������������priv->ieee80211->mode ==
->       WIRELESS_MODE_N_5G))
->       > > +�������� � � �priv->ieee80211->mode == WIRELESS_MODE_N_5G))
->       > > �����������������return;
->       > >
->       > > ���������{
->       > > @@ -1748,7 +1748,7 @@ static void
->       dm_ctrl_initgain_byrssi_by_fwfalse_alarm(
->       > >
->       > > ���������/* For smooth, we can not change DIG state. */
->       > > ���������if ((priv->undecorated_smoothed_pwdb >
->       dm_digtable.rssi_low_thresh) &&
->       > > -����������������(priv->undecorated_smoothed_pwdb <
->       dm_digtable.rssi_high_thresh))
->       > > +�������� � �(priv->undecorated_smoothed_pwdb <
->       dm_digtable.rssi_high_thresh))
->       > > �����������������return;
->       > >
->       > > ���������/*DbgPrint("Dig by Fw False Alarm\n");*/
->       > > @@ -1811,7 +1811,7 @@ static void
->       dm_ctrl_initgain_byrssi_by_fwfalse_alarm(
->       > > �����������������u8 reset_flag = 0;
->       > >
->       > > �����������������if (dm_digtable.dig_state == DM_STA_DIG_ON
->       &&
->       > > -������������������������(priv->reset_count == reset_cnt)) {
->       > > +���������������� � �(priv->reset_count == reset_cnt)) {
->       > >
->       �������������������������dm_ctrl_initgain_byrssi_highpwr(dev);
->       > > �������������������������return;
->       > > �����������������}
->       > > @@ -1909,7 +1909,7 @@ static void
->       dm_ctrl_initgain_byrssi_highpwr(
->       > > ��������� */
->       > > ���������if (priv->undecorated_smoothed_pwdb >=
->       dm_digtable.rssi_high_power_highthresh) {
->       > > �����������������if (dm_digtable.dig_highpwr_state ==
->       DM_STA_DIG_ON &&
->       > > -������������������������(priv->reset_count ==
->       reset_cnt_highpwr))
->       > > +���������������� � �(priv->reset_count ==
->       reset_cnt_highpwr))
->       > > �������������������������return;
->       > > �����������������dm_digtable.dig_highpwr_state =
->       DM_STA_DIG_ON;
->       > >
->       > > @@ -1925,7 +1925,7 @@ static void
->       dm_ctrl_initgain_byrssi_highpwr(
->       > > �������������������������write_nic_byte(dev,
->       rOFDM0_RxDetector1, 0x43);
->       > > ���������} else {
->       > > �����������������if (dm_digtable.dig_highpwr_state ==
->       DM_STA_DIG_OFF &&
->       > > -������������������������(priv->reset_count ==
->       reset_cnt_highpwr))
->       > > +���������������� � �(priv->reset_count ==
->       reset_cnt_highpwr))
->       > > �������������������������return;
->       > > �����������������dm_digtable.dig_highpwr_state =
->       DM_STA_DIG_OFF;
->       > >
->       > > @@ -2126,7 +2126,7 @@ static��������void dm_cs_ratio(
->       > >
->       > > ���������{
->       > > �����������������if ((dm_digtable.precs_ratio_state !=
->       dm_digtable.curcs_ratio_state) ||
->       > > -������������������������!initialized || force_write) {
->       > > +���������������� � �!initialized || force_write) {
->       > > �������������������������/*DbgPrint("Write CS_ratio state =
->       %d\n", DM_DigTable.CurCS_ratioState);*/
->       > > �������������������������if (dm_digtable.curcs_ratio_state
->       == DIG_CS_RATIO_LOWER) {
->       > > ���������������������������������/* �Lower CS ratio for CCK.
->       */
->       > > @@ -2643,7 +2643,7 @@ void dm_fsync_timer_callback(struct
->       timer_list *t)
->       > > ���������bool����������������bDoubleTimeInterval = false;
->       > >
->       > > ���������if (priv->ieee80211->state == IEEE80211_LINKED &&
->       > > -����������������priv->ieee80211->bfsync_enable &&
->       > > +�������� � �priv->ieee80211->bfsync_enable &&
->       > > �����������������(priv->ieee80211->pHTInfo->IOTAction &
->       HT_IOT_ACT_CDD_FSYNC)) {
->       > > �����������������/* Count rate 54, MCS [7], [12, 13, 14, 15]
->       */
->       > > �����������������u32 rate_bitmap;
->       > > --
->       > > 2.17.1
->       > >
->       > > --
->       > > You received this message because you are subscribed to the
->       Google Groups "outreachy-kernel" group.
->       > > To unsubscribe from this group and stop receiving emails
->       from it, send an email to outreachy-kern...@googlegroups.com.
->       > > To post to this group, send email to
->       outreach...@googlegroups.com.
->       > > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20190319141806.8592-1-sa
->       njana99reddy99%40gmail.com.
->       > > For more options, visit https://groups.google.com/d/optout.
->       > >
->       >
->       > --
->       > You received this message because you are subscribed to the
->       Google Groups "outreachy-kernel" group.
->       > To unsubscribe from this group and stop receiving emails from
->       it, send an email to outreachy-kern...@googlegroups.com.
->       > To post to this group, send email to
->       outreach...@googlegroups.com.
->       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.20.19031915
->       30000.8263%40hadrien.
->       > For more options, visit https://groups.google.com/d/optout.
->       >
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/6e31cf7e-174d-4d81-b119-
-> cb6498244ea3%40googlegroups.com.
-> For more options, visit https://groups.google.com/d/optout.
->
->
-------=_Part_2175_1700542104.1553006186555--
+greg k-h
 
