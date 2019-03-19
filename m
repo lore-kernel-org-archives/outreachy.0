@@ -1,36 +1,165 @@
 X-GM-THRID: 6670189254816038912
-Date: Tue, 19 Mar 2019 13:09:46 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <f6de4cf4-e193-4a36-bc5f-9b2b12a2064b@googlegroups.com>
+X-Received: by 2002:a50:b361:: with SMTP id r30mr2978007edd.8.1553025660340;
+        Tue, 19 Mar 2019 13:01:00 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a17:906:3643:: with SMTP id r3ls15496ejb.4.gmail; Tue, 19
+ Mar 2019 13:00:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw13xxmfNOuXSWIe+ha4/sCNDYFNAT+dEcd00eZteOJ2HC8Z5eUsWUUxSIBRR0Q77n7yci7
+X-Received: by 2002:a17:906:4f0a:: with SMTP id t10mr2189518eju.5.1553025659442;
+        Tue, 19 Mar 2019 13:00:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553025659; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sZJLI7BkMDPR0PR8wwpAuuNYdkwq6h6tTKrNItxY+1ncq8VT34uVhryUxUIRDRnNAo
+         h/EoKlHRiRZdzM2jQJctvH/mlAV63Bm4uz5OzK9Vim74GcZOTfSjN//j2ADcvjEz04WY
+         FdiZCCk1g/bKLe/5X6vvyj3//0MuXWXpc9rvDXAwPJ12wnty48ZKXhzXnyuTogL/QvvD
+         Ixeb4k524Xuw74BFDwjKgrVgBXpu9aysfaT3j9o+5XlFG9ShfQ1FnvQ0d9rgGy3+so7D
+         AL1mB0itUBvhvx3QBC5pzghdUrosF7TPZwB7wA72Y/xgwwZGvIiHYqzfR2DrvKKXlSgj
+         oXvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=SFbj13iRemLrjT3wBClCoZiKMZkoSpXwskVWc4aGWls=;
+        b=V4LXXhLL8FwUHpveyZRfj+WerocrGU6JvmjeK1Y0/CG2hqUbfN42NSQwldvTxb+9cT
+         G30/sHiXF5N+q7y49E5l+H2J87W7uSxwjL2C3i8+iDCh+txV0JlepN84cUndWXWlLzBr
+         Mtp3pONmhWJURIYOHRstHaPJNNCC+ovTyzZJzz6/z8EQbeUELPOCBSiZXnlCiYVfc3fC
+         jczdHiRzv9NDLSI5z0qa6jeROvyGLx5Z+BhUUnY2BDro+J0n9CeAbge0znmuSFBuP2kn
+         AR1dZhh5Xd8osFhpFs2qf3xLO4u2criHEXXmnAANl/3Q+b7wWBYZKoDIVWfqjwurxXlq
+         1iJg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r37si585edd.2.2019.03.19.13.00.59
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Mar 2019 13:00:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,245,1549926000"; 
+   d="scan'208";a="300008760"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2019 21:00:58 +0100
+Date: Tue, 19 Mar 2019 21:00:58 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Vatsala Narang <vatsalanarang@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging:sm750fb:Eliminate camel
+ case
 In-Reply-To: <20190319194037.18769-1-vatsalanarang@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903192100090.2460@hadrien>
 References: <20190319194037.18769-1-vatsalanarang@gmail.com>
-Subject: Re: [PATCH v2] staging:sm750fb:Eliminate camel case
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_878_1637130494.1553026186314"
-X-Google-Token: EIqZxeQFO1lPQCKbYq00
-X-Google-IP: 103.87.57.36
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_878_1637130494.1553026186314
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_879_1383885594.1553026186314"
+Your subject line is not correct.  If you do git log --oneline on some of
+your files, you will see that it should be "staging: sm750fb: ", ie with
+spaces after each colon.
 
-------=_Part_879_1383885594.1553026186314
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+julia
 
-okay, I will submit it after correction.
-thanks 
-vatsala
+On Wed, 20 Mar 2019, Vatsala Narang wrote:
 
-
-------=_Part_879_1383885594.1553026186314
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-<div dir="ltr"><div>okay, I will submit it after correction.</div><div>thanks <br></div><div>vatsala</div><div><br></div></div>
-------=_Part_879_1383885594.1553026186314--
-
-------=_Part_878_1637130494.1553026186314--
+> Edit CamelCase function names
+> Issue found by checkpatch.pl
+>
+> Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+> ---
+> Changes in v2:
+>  -correction in subject line and log message.
+>
+>  drivers/staging/sm750fb/ddk750_display.c | 10 +++++-----
+>  drivers/staging/sm750fb/ddk750_display.h |  2 +-
+>  drivers/staging/sm750fb/ddk750_power.h   |  2 +-
+>  drivers/staging/sm750fb/sm750_hw.c       |  2 +-
+>  4 files changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
+> index f38051eedb6c..887ea8aef43f 100644
+> --- a/drivers/staging/sm750fb/ddk750_display.c
+> +++ b/drivers/staging/sm750fb/ddk750_display.c
+> @@ -85,7 +85,7 @@ static void primary_wait_vertical_sync(int delay)
+>  	}
+>  }
+>
+> -static void swPanelPowerSequence(int disp, int delay)
+> +static void sw_panel_power_sequence(int disp, int delay)
+>  {
+>  	unsigned int reg;
+>
+> @@ -111,7 +111,7 @@ static void swPanelPowerSequence(int disp, int delay)
+>  	primary_wait_vertical_sync(delay);
+>  }
+>
+> -void ddk750_setLogicalDispOut(enum disp_output output)
+> +void ddk750_set_logical_disp_out(enum disp_output output)
+>  {
+>  	unsigned int reg;
+>
+> @@ -147,12 +147,12 @@ void ddk750_setLogicalDispOut(enum disp_output output)
+>
+>  	if (output & PNL_SEQ_USAGE) {
+>  		/* set  panel sequence */
+> -		swPanelPowerSequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
+> -				     4);
+> +		sw_panel_power_sequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
+> +		4);
+>  	}
+>
+>  	if (output & DAC_USAGE)
+> -		setDAC((output & DAC_MASK) >> DAC_OFFSET);
+> +		set_DAC((output & DAC_MASK) >> DAC_OFFSET);
+>
+>  	if (output & DPMS_USAGE)
+>  		ddk750_set_dpms((output & DPMS_MASK) >> DPMS_OFFSET);
+> diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
+> index 7fd101d98199..7f713906dc16 100644
+> --- a/drivers/staging/sm750fb/ddk750_display.h
+> +++ b/drivers/staging/sm750fb/ddk750_display.h
+> @@ -102,6 +102,6 @@ enum disp_output {
+>  	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
+>  };
+>
+> -void ddk750_setLogicalDispOut(enum disp_output output);
+> +void ddk750_set_logical_disp_out(enum disp_output output);
+>
+>  #endif
+> diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
+> index e48c74ecbbd1..7002567a47d2 100644
+> --- a/drivers/staging/sm750fb/ddk750_power.h
+> +++ b/drivers/staging/sm750fb/ddk750_power.h
+> @@ -9,7 +9,7 @@ enum dpms {
+>  	crtDPMS_OFF = 0x3,
+>  };
+>
+> -#define setDAC(off) {							\
+> +#define set_DAC(off) {							\
+>  	poke32(MISC_CTRL,						\
+>  	       (peek32(MISC_CTRL) & ~MISC_CTRL_DAC_POWER_OFF) | (off)); \
+>  }
+> diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+> index edeae9d06883..ea1d3d4efbc2 100644
+> --- a/drivers/staging/sm750fb/sm750_hw.c
+> +++ b/drivers/staging/sm750fb/sm750_hw.c
+> @@ -207,7 +207,7 @@ int hw_sm750_output_setMode(struct lynxfb_output *output,
+>  			if (output->paths & sm750_crt)
+>  				disp_set |= do_CRT_SEC;
+>  		}
+> -		ddk750_setLogicalDispOut(disp_set);
+> +		ddk750_set_logical_disp_out(disp_set);
+>  	} else {
+>  		/* just open DISPLAY_CONTROL_750LE register bit 3:0 */
+>  		u32 reg;
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190319194037.18769-1-vatsalanarang%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
