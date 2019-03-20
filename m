@@ -1,105 +1,113 @@
-X-GM-THRID: 6260886203874148352
-X-Received: by 10.98.76.83 with SMTP id z80mr5598087pfa.4.1457726164367;
-        Fri, 11 Mar 2016 11:56:04 -0800 (PST)
+X-GM-THRID: 6670461780604485632
+X-Received: by 2002:a67:fa8e:: with SMTP id f14mr16374089vsq.28.1553087909727;
+        Wed, 20 Mar 2019 06:18:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.108.99 with SMTP id i90ls2678466qgf.46.gmail; Fri, 11 Mar
- 2016 11:56:03 -0800 (PST)
-X-Received: by 10.129.157.71 with SMTP id u68mr8258560ywg.47.1457726163871;
-        Fri, 11 Mar 2016 11:56:03 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id sf5si1608490pac.1.2016.03.11.11.56.03
+Received: by 2002:a1f:ab84:: with SMTP id u126ls360686vke.0.gmail; Wed, 20 Mar
+ 2019 06:18:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwjpxMW2BPqqFVJEW8kUhtQkPat0w20lO/oi+Act2Eo5svzT8gu4qGVEkS+gMWtCWvP9JmX
+X-Received: by 2002:a1f:cc02:: with SMTP id c2mr16274143vkg.21.1553087909082;
+        Wed, 20 Mar 2019 06:18:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553087909; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vWzeOMfR0lFIRwCyb8ySV1k4fNY11W7f9FhBSSDfGtOz5XGsErvNzK41c+BZpp2Ha4
+         p4AA72P4PxjUi/SMrA/9iuHC39vlXbdDA6tzPtac9500kZ75X6vfG+Hkn6xv9EP7ni6B
+         y9ZIU+9CZII9GUmAtqMThovFKGhbNlRGtjjJPGasCoKXuJKGrcfxAb5pQnCdXBX7Lj5X
+         WsBcTy2haBfchBI9Flf7vYAbYznzvjXi14dULu8hoFijXw8vZMkrVsUvqSXZoUjywlnw
+         LfvNyylyh3mkNocKBWPHX0ZBGfWVs/Tgp580vmz6Et++qcQuvoNCFz0NtmNqko9WGYqR
+         Javg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gTsnzcnN9hIUYZwCSdvk6yFuAotcpZvDc3COtjoPanQ=;
+        b=yarsEJdfKS/z/NB86mu4vhVANiUNsO036iDuNiLvDBI/Crc64hNk05GFcUxLaUFel5
+         H5rPj0wAmr54BnAtdoxfqEONQi9fhaimW8UsyGEt4ymUljVUwm4z1/SEejMUWnHXL52C
+         tk7TXWg/UVInWludJR5Q1NH6gz5y9Gzqd4lt03M/Dd0SxptPpuDPUWlkPoSYZvOQTV04
+         G3tP9C4lQ43YJpVFGaB/Agnty2QiqdjQKTrV9sX/NTYKkKjPyCGjOzmtAlbVw5r/f6RJ
+         KIx61JTx5Udv4xBEVYrKAX2AXZZ3Mmv6mzvxnEXtNw+pwNdk6ji92pgqP1bZBcgSxapT
+         qAsg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IcRrnV7Y;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52f as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x52f.google.com (mail-pg1-x52f.google.com. [2607:f8b0:4864:20::52f])
+        by gmr-mx.google.com with ESMTPS id x82si118920vkd.1.2019.03.20.06.18.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Mar 2016 11:56:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        Wed, 20 Mar 2019 06:18:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52f as permitted sender) client-ip=2607:f8b0:4864:20::52f;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id q6so9260800pav.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 11:56:03 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IcRrnV7Y;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52f as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x52f.google.com with SMTP id l11so1777736pgq.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 06:18:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=tqbcTy3Po4gYPAU/a95G1OAhLGGVuh+15sJCwm27QDw=;
-        b=OGY/icdq6Z9RRI/Unz296Zd8aQgyBu6x9D+Vz2lH1KyffHBhHqO2u9SlXkGgTiXzhF
-         +5YKXNsRYn5oka5695+VTJg2r/2jjBlODpuucqKoMGjRTYOeD3IWi7lkcrbDSS7G+WJ/
-         SnZvY7dPLHfNoXBpLWSFw4h2Jp9zPlhv5hA0BLYbMkisvTlBSicP1YJpq9sZfvTcxKgL
-         TG2bhHOumftPGx9jyyYCSbv2HF7M8DSJLo5hGktMiGT+Kvfql+gsA+xIyCxCMiY1RbJB
-         AklBDPkUfwHH1nyoqWDEh2HjejCp3axvdgePrz4Osf4c4ZYVVnD59kausrYxeKazwNZ7
-         Gh5A==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=gTsnzcnN9hIUYZwCSdvk6yFuAotcpZvDc3COtjoPanQ=;
+        b=IcRrnV7YvDqO8IOcsiAI2Orf7arekf2FcuNALi2wDTIfd9SgHwx05yWDwnMxC1N9RD
+         5jHK0nNYUGFw7GFjCzdId4kDuCCQPge1bC7KM9nKjID3zWs0OyyCT4LzC5IryRmS+tGS
+         NIAHT4J2yZSS0M8lidAyqIELMIlhe/R0XMJ1Ke1K2qfYrK+k9qcp9ywZTgAUAFkeggQt
+         JNoBJ7sv8RHQLDmdAUYeQ5KJUN9QXGZrJp552XvnvsLhP25skB1bRdQ8HRkbl3qFnLs4
+         jT/sEcSCTHj+97fsJxN0rHBy5D1+9llOQ9zOhiFCMHirQe9gKbaXAsHAz1mOO/j5gzHn
+         7M9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=tqbcTy3Po4gYPAU/a95G1OAhLGGVuh+15sJCwm27QDw=;
-        b=RkY51Srud68ibZh9Vfs3rwnmmv84GPHXbVb4s5LkyAwvjxd90zTCMiJ7Fg6XSmhEi2
-         Qij7T3r/7p0bpnWt+iGJpOEzwkYQ51E9XgjWMSonurshbXWT9eBVHT8En0iw2xYz6VEw
-         YvOnPQvJ+Vh8DKTLydCRjFbiuz1Axqm+cXsBuxJTZ7++twnayTiJ2aSzzaglvPdKipMN
-         R+cwjD3qFEs28Xttni2KnEfroPzurfDBKpW91xKxbTNhUKG3b1zTi9l6/LSfz2dZVhwv
-         LjCvLAttZVNMCbI/VafF4uL3Shb6k68uxxUnmF1LUXDfFihBi0lns/UAY9xbTtxJwtb7
-         iSbw==
-X-Gm-Message-State: AD7BkJJoeZmzpMrGhQRMSYpTMn70IkH/AQAqpew36UfzBatEDbCEuBj8dZIzYnK7nuKpOw==
-X-Received: by 10.66.90.226 with SMTP id bz2mr18705283pab.31.1457726163434;
-        Fri, 11 Mar 2016 11:56:03 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id to9sm14822059pab.27.2016.03.11.11.56.02
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 11:56:02 -0800 (PST)
-Date: Sat, 12 Mar 2016 01:25:45 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 00/13] Use list_for_each_entry_safe
-Message-ID: <20160311195544.GA2878@Karyakshetra>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=gTsnzcnN9hIUYZwCSdvk6yFuAotcpZvDc3COtjoPanQ=;
+        b=WiOo1RrSKbnjgyGG+2MhmuhhE9pcpzDxZnPRCs31if+SF5IJgArt/ivmgyZNgAihCO
+         gBHI5fbWGBfdGh1wChaGxP6VqCoWsvp7ap6vp3OX2gY8KJGbhC81rTal22xeS8z8iU4a
+         GtjR8T0pEhUPDTq1P3Ms1zML/qUhGBzoA0q+wDvT/BfZo6IlaraMWAnRr0ZxvF1S8Lp/
+         cPyQWYKuyX9esCQm+lTdw/7g7BB0ckIwUuhjSogOcS4FWR3cjKzjh3QfeltPR6Q4oGnP
+         kPvZnAG9pd/F65KigsnEHh6FgsVuRNMHxf5GZScfVZqy5F4jjTn0f/ChBWCO7uDZlDfT
+         KZ0g==
+X-Gm-Message-State: APjAAAV7Pk5++tZaF/HoxA+YTph80jl4lF7X8Q4oi9MMrVuY/Hw2B4HH
+	sssI0MMr9xy4m1dVvW36gyZxDZ0V+ww=
+X-Received: by 2002:a63:f146:: with SMTP id o6mr7645723pgk.360.1553087908706;
+        Wed, 20 Mar 2019 06:18:28 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.24])
+        by smtp.googlemail.com with ESMTPSA id d11sm5716065pfh.29.2019.03.20.06.18.25
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Mar 2019 06:18:27 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8192u: r8192U_dm: Remove unnecessary comments.
+Date: Wed, 20 Mar 2019 18:48:18 +0530
+Message-Id: <20190320131818.8854-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-This patch-set replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
+Remove comments which are not necessary.
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_dm.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-This makes the iteration simpler and more readable.
-
-Bhaktipriya Shridhar (13):
-  staging: lustre: obdclass: Use list_for_each_entry_safe
-  staging: lustre: lnet: lib-move: Use list_for_each_entry_safe
-  staging: lustre: lnet: conrpc: Use list_for_each_entry_safe
-  staging: lustre: lnet: router:  Use list_for_each_entry_safe
-  staging: lustre: lnet: config: Use list_for_each_entry_safe
-  staging: lustre: lnet: peer: Use list_for_each_entry_safe
-  staging: lustre: lnet: api-ni: Use list_for_each_entry_safe
-  staging: lustre: osc: Use list_for_each_entry_safe
-  staging: lustre: osc_cache: Use list_for_each_entry_safe
-  staging: lustre: libcfs: Use list_for_each_entry_safe
-  staging: lustre: lnet: socklnd_proto: Use list_for_each_entry_safe
-  staging: lustre: lnet: socklnd: Use list_for_each_entry_safe
-  staging: lustre: lnet: o2iblnd: Use list_for_each_entry_safe
-
- drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd_cb.c    |  4 ++--
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd.c       |  9 ++++-----
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd_proto.c |  4 ++--
- drivers/staging/lustre/lnet/libcfs/workitem.c             |  5 ++---
- drivers/staging/lustre/lnet/lnet/api-ni.c                 | 10 ++++------
- drivers/staging/lustre/lnet/lnet/config.c                 |  5 ++---
- drivers/staging/lustre/lnet/lnet/lib-move.c               |  9 ++++-----
- drivers/staging/lustre/lnet/lnet/peer.c                   |  4 ++--
- drivers/staging/lustre/lnet/lnet/router.c                 |  4 ++--
- drivers/staging/lustre/lnet/selftest/conrpc.c             |  5 ++---
- drivers/staging/lustre/lustre/obdclass/lustre_peer.c      |  5 ++---
- drivers/staging/lustre/lustre/osc/osc_cache.c             |  9 ++++-----
- drivers/staging/lustre/lustre/osc/osc_page.c              |  5 ++---
- 13 files changed, 34 insertions(+), 44 deletions(-)
-
---
-2.1.4
+diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
+index 546bf5428848..2ba01041406b 100644
+--- a/drivers/staging/rtl8192u/r8192U_dm.c
++++ b/drivers/staging/rtl8192u/r8192U_dm.c
+@@ -43,17 +43,8 @@ u8		dm_shadow[16][256] = { {0} };
+ /* For Dynamic Rx Path Selection by Signal Strength */
+ static struct dynamic_rx_path_sel DM_RxPathSelTable;
+ 
+-/*------------------------Define global variable-----------------------------*/
+-
+-/*------------------------Define local variable------------------------------*/
+-/*------------------------Define local variable------------------------------*/
+-
+-/*--------------------Define export function prototype-----------------------*/
+ extern	void dm_check_fsync(struct net_device *dev);
+ 
+-/*--------------------Define export function prototype-----------------------*/
+-
+-/*---------------------Define local function prototype-----------------------*/
+ /* DM --> Rate Adaptive */
+ static	void	dm_check_rate_adaptive(struct net_device *dev);
+ 
+-- 
+2.17.1
 
 
