@@ -1,81 +1,81 @@
 X-GM-THRID: 6670497613364592640
-X-Received: by 2002:a24:3dc7:: with SMTP id n190mr7634992itn.62.1553410766773;
-        Sat, 23 Mar 2019 23:59:26 -0700 (PDT)
+X-Received: by 2002:a5d:8c8f:: with SMTP id g15mr7264643ion.36.1553096252584;
+        Wed, 20 Mar 2019 08:37:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3b2e:: with SMTP id c46ls4633399jaa.2.gmail; Sat, 23 Mar
- 2019 23:59:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyWeDwHftqdNTvEj4+rUnSvb2wnU6u5gbneHwvi151tObf0eCDHgvIjbtYTBXKtmcExTt0A
-X-Received: by 2002:a02:6610:: with SMTP id k16mr13403829jac.40.1553410766001;
-        Sat, 23 Mar 2019 23:59:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553410765; cv=none;
+Received: by 2002:a24:186:: with SMTP id 128ls812232itk.4.canary-gmail; Wed,
+ 20 Mar 2019 08:37:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqweqc/CnAKrzx5R7T6jT55d/W94OGBbbSGGMLl4n8QniFT2ev8+NZWPlU/JzksSkUCqOkU3
+X-Received: by 2002:a24:1a04:: with SMTP id 4mr3255799iti.27.1553096251446;
+        Wed, 20 Mar 2019 08:37:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553096251; cv=none;
         d=google.com; s=arc-20160816;
-        b=pDw+WFXKLaF60pRja4L9/S5Pj5vtUEBB1d0qUn7n7S3+GQcA/fVbqXK5ipK1iJuDRB
-         JdGPItTR2SbmFnwisoH/b5M39QSsz3aZGvoMYUfFDPJPcpScasZZ2IBF5zXRfdQBc+n3
-         k1HgwiruDFsnOdxLVwtiJUvUor2nyC9+Qk296F9eslHsOnjYMJdQQNNOs9zRw5IS6RCu
-         QofkY89mH359ruHHgrWOVACRcCosSk4Wy5zmysyOAjpCk0NC5kF8dB+qX0iPDbhtVu0X
-         ZxSOyZQzvJKOkHGyVAXyGiQ8HoK2ER1rD2g111aarWutrhvddZDF0k58aIenMM2XPOUK
-         8nbw==
+        b=0rQ6/It9lu6xuNh4EzEi/YqdtNXxrymDLWonmB77BlDuN2NQuqy42cvMv7GyjEg0Rk
+         xEZD/JvL250Crk5ZKmM/1m+R4eI7XhNGy6bh5BwLs4Th8elrXPFzVyLvX6rfziJ/zgV+
+         1sRWpBxuvoWEaRlW9tsPQDn7dITyTZJFcMq2JmiqXYlUl3FrreiFX/nh91xT/83wep1w
+         VB/pNNBhSneGFDKak0pvKkazPP1La8eKIl7K+pzYZxp2M/AyWkps+JUPQ2WAuHauqjdy
+         4GvQccZywsNLXwWiGf5edB8OY4f03b3gcQUxrcZBy0VmZ+SdoxR0dRo5dk+fJBxRyTAr
+         Z8Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pbzX+T4vsXsRUOdej2jN/0fZ05RncuDrp2XVWaF3C2E=;
-        b=SjQaGm/7nciBCWVmWj3ZZH5P1o42iwMeYA2QBV3Ua+I9JlUfBFct26FbTCqhUbQ6+W
-         dNxswS/CdtyW+stStmldI58lHpdTCQtR3iMd5ldSS4An2zUByM4LKZCHwrhV+THIUnaF
-         9UsP0BwmUBpYkZRHgJs+v/onGs/jZ6xJqskxQc/JWB2zS4lz62p6g4PngiSRiaMFKxb+
-         YNr+axXzx3Gm0Xoj9LzoOgW6Ubu+XIltHM4yVNdL1lBvxI+4Dn+USFVMP0GcgBwb0FAM
-         uoQ/uWqgRJaV1SEhduWa5gwzcB+GWc/nhNTk8ivLynr/pSyZooMswsAMIzeLwc2zO83R
-         w2kA==
+        bh=0UKlyJIAXVUmHUDZIGBPTTDQxa74yL2B0pdEI3euL3E=;
+        b=vScNogxfgvoNW/Bd6ZAC4h1FdccPtAKQ7Z5b5WotTbqWxYqIDhjtHGxCFKCLyf+yXN
+         alo1eJMrsbC5cPriFOs1McpitTRHgs93+Gck5MpGyHXYQrUVVAJa06FaGGzmlTBS9/Er
+         jQzGQQMqnYctaMbKGX6cqzir5+G0ofYE0B1LDhjgB1+lOJBKEWwMwt8xQFgWiAfT0nUA
+         JfyR8YeNFAp2dsrEZDu2/97XlqOu98BrezaUXexDRywB6NpB9JE0fevlWA+AAdT8zTry
+         YFiKwfHyfhg0oLaRzPegi379ZwnlKD+D4rBvU7hkg5FUq/wTcqfB0kgST2Etc7J+U1Sz
+         xe4A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hWqaqdvH;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WpDmdASg;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id 65si1085996itx.1.2019.03.23.23.59.25
+Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com. [2607:f8b0:4864:20::42a])
+        by gmr-mx.google.com with ESMTPS id e74si248889ite.1.2019.03.20.08.37.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 23:59:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Wed, 20 Mar 2019 08:37:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) client-ip=2607:f8b0:4864:20::42a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hWqaqdvH;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WpDmdASg;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id c8so4221711pfd.10
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 23:59:25 -0700 (PDT)
+Received: by mail-pf1-x42a.google.com with SMTP id 8so2204555pfr.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 08:37:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=pbzX+T4vsXsRUOdej2jN/0fZ05RncuDrp2XVWaF3C2E=;
-        b=hWqaqdvHIFoH+vFGo5vrA1X9NBuIp4/hXFkuPm5LA9V9IkiHbjfincq0magumpWoWQ
-         qzxiRIwxNUmF2ASQuSjGPV6Sg8cVCvEM3QO4N3oJpNFPAGKBcay547ysU0tyGiShw3xe
-         8hXBuI6IUjVQlntElZVYh4vez0Cpgvqrh5jQfQCDyg70RSvgJp780XP7hyqNjj/Eh+jf
-         ZgLV0Jd51E3Y6JAqjkyYUn/FHM8DqdIULhC75WssWJP/8Jmo8rOkP2jO51UB2sPQooaC
-         9a4L3FXEx2ZC6EOHMzR2YCyK7C0ptB4MI4/+qpJd8xPsHfVmiaGAwZk2yGixRkwP0G4m
-         lo8g==
+        bh=0UKlyJIAXVUmHUDZIGBPTTDQxa74yL2B0pdEI3euL3E=;
+        b=WpDmdASgwMcIMX81Z0OyDd9HwiIF7Cmf3ZlhGWEbZ7gUXm6/OKXo8ZYKpRJdvVPbgd
+         iZMkDZQoKdkScdzpucXQj6WIaKUtDt8VG33KmHA/AR5Vbl3HUhY68lHJVoJF6j7bmit1
+         1MpPnpSqWDrNTgCfEI0S8AQEExOq84of3cZF7L92Ml4Nx4nq2qscI/p6/yVLnF/1vovx
+         9dHbNZvAMGgvZlZ6Te4qShQent/2ja1jgoRm/5KFwC44BM4zc4r8rVja9NH/W/+CMoOP
+         lSIyTCiIY0EGNgAZ358AKlL3d6D8MitkBdcCuh2z2MZVTOaq1B0BZZ+ehX3m0aFGSVMP
+         N9kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=pbzX+T4vsXsRUOdej2jN/0fZ05RncuDrp2XVWaF3C2E=;
-        b=aa3xbTOyPAhiLbggeu/aaTMgOYJE8k2Lv3MRgfdyXosQuIeCmnXl0G27485zahGmSb
-         Z5W7q4GYB0viESImezhvGqzirB4C/kJcCP/UsYa3NX+QBsQt4n2zLm2FVjXcgMBT6lgm
-         IBJWHxkCtfs3BeUvrCxY3614Gg65GxX4DA44vOsRI1Kc62lkvrG5iLbq82EPYlq6zVOZ
-         Nu3QftXjeRofEsuYAXoNRqQBxxExd40X8aCwsKp8VFIm77XeNXaF4O0Bx3lOdkH2w1CC
-         OicnxY+C8l0/SuaJOWi3zrsth5Jl+y2sUuUcaO6me7Ba8QU9DXSYj67ybKUim9Jfy6rX
-         GD0w==
-X-Gm-Message-State: APjAAAWIOskC5OUpOdSKcrOFVD4GTVrr3j+X7WLB6GjwV22QY1P2UAf/
-	I8NhgsMKlHwEqsfApX6vpMDg8Qau9jM=
-X-Received: by 2002:a63:3185:: with SMTP id x127mr17131040pgx.299.1553410765386;
-        Sat, 23 Mar 2019 23:59:25 -0700 (PDT)
+        bh=0UKlyJIAXVUmHUDZIGBPTTDQxa74yL2B0pdEI3euL3E=;
+        b=toOm7FA5COf7HBBcWxjHoD6oj2UQ9cneIb3mGOJum+ZAvFFDsFp/hZjonAk0bYYp5L
+         4dJRpovd4xNg7LTFSCmsJSu/Ap1DvbmjZL0OLC6xQQFpQMMTcxaTFQtTIdlPIB+XymXB
+         t45p78Rx534OKNSMFatNpXE2SfgoSM/5HngoQBwcStUSJIQQ5tySPmyfioNXzveMYRil
+         tV7q0JWM0U5G0Z9of+OUj513jSjHMlO4ZvrgNjeHT6rRu7yYKIDiE4ADWVlFBbjRhbVX
+         HUMjzWTDZMXefAejTHELHRr9FcsN0ST02uP79mlSTV7zkpe7Cx27rpDg4dDKukAy+Uxl
+         WetQ==
+X-Gm-Message-State: APjAAAUFp5n0h702vU6zeOwvwajfWqB8qVUmU3tDMptaMgFeG9TnBlkw
+	QqeKXE8U4ZbNNC80p6vfvE0=
+X-Received: by 2002:a17:902:2947:: with SMTP id g65mr8681260plb.258.1553096251125;
+        Wed, 20 Mar 2019 08:37:31 -0700 (PDT)
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([123.201.77.18])
-        by smtp.googlemail.com with ESMTPSA id t10sm22080418pgo.27.2019.03.23.23.59.23
+Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.24])
+        by smtp.googlemail.com with ESMTPSA id o14sm2831157pgn.65.2019.03.20.08.37.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 23:59:24 -0700 (PDT)
+        Wed, 20 Mar 2019 08:37:30 -0700 (PDT)
 From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
 Subject: [PATCH] staging: rtl8188eu: core: rtw_recv.c: Modify return type suggested by Coccinelle.
-Date: Sun, 24 Mar 2019 12:28:55 +0530
-Message-Id: <20190324065855.7685-1-sanjana99reddy99@gmail.com>
+Date: Wed, 20 Mar 2019 21:07:18 +0530
+Message-Id: <20190320153718.13516-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
 The last two lines in the function could
@@ -83,8 +83,6 @@ be compressed into one. Avoid usage of local variable.
 
 Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
-Changes in v2:
-Test build the patch
  drivers/staging/rtl8188eu/core/rtw_recv.c | 6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
