@@ -1,164 +1,105 @@
-X-GM-THRID: 6950201228210995200
-X-Received: by 2002:a17:903:189:b029:e5:d7c3:a264 with SMTP id z9-20020a1709030189b02900e5d7c3a264mr25629361plg.6.1618219825215;
-        Mon, 12 Apr 2021 02:30:25 -0700 (PDT)
+X-GM-THRID: 6670328284538994688
+X-Received: by 2002:a17:902:f83:: with SMTP id 3mr7484935plz.92.1553065750732;
+        Wed, 20 Mar 2019 00:09:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90b:4d81:: with SMTP id oj1ls8858940pjb.2.canary-gmail;
- Mon, 12 Apr 2021 02:30:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmVbveqZAKKB7yZlGUqTkq8WwjNMfIgSRVw5ajwUB7y+O7+d80ZxKTMAsxfu+KmCUBfkrS
-X-Received: by 2002:a17:90a:650c:: with SMTP id i12mr28930399pjj.204.1618219824220;
-        Mon, 12 Apr 2021 02:30:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618219824; cv=none;
+Received: by 2002:a63:68c7:: with SMTP id d190ls640956pgc.3.gmail; Wed, 20 Mar
+ 2019 00:09:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzyNAxpdVM0omkL0eJl7pmdCdwFllP9PBkS+JXG5fVU6rMUY+iZCnjEvPQkYCQQVrpURLXu
+X-Received: by 2002:a63:27c7:: with SMTP id n190mr1209060pgn.44.1553065750108;
+        Wed, 20 Mar 2019 00:09:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553065750; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDBd+48wAbMjWgzdoeo+Ep/ywwTgx/GVMLcz8FZUPpER/TIlQfWtE6X6EKSHFlMhhV
-         6bLqQYbvw+vvUpC+p9DrnmqWQyjwA0tYN5dEf/aYDjyGV5rdH5jU7pHpQsVl2ryPnp6B
-         deAUYmFvs1pzgWwRj6/4HNySfUF5PWMYvteo6b0OHdIn4sX0X1mqJ7iaZDnOYn31asvc
-         1V5gOO4tnWOvVGSjo76qRGXyRpCXafi8+iykH9j5IicLVrpfNBXnJhad7j51WP/xUd9T
-         mxHUnjjqVdnhgNBilWBpJXFXVgWpbBYYm9SQbBrJj6XBsiMml6m7iVVy+dzeNFNPegU+
-         Kr6g==
+        b=NgJC8WnrmmbWoGGErxuIjtIRKxtbg/7qD53A9ODd49x19aqIGKoDkBQPC9hOd0ZYjO
+         AhRT75YNMbIHthMZuVPWpslTX8jxl6c2DOj+TyFs712ctcACNZuEB9fx1ZHipveVsPe6
+         TUpojsdpiLA/zoNP5fNMd5YobowwAzRotb9PeKaosDGcG+psLurhtPYNhavl4FvQYtBl
+         w5883Otmy/KlRpEj9cYpahAJRA3S6kx1Ysf6dAuy+u9YQrho6UXPl8Gt2hXufz3KdJ6r
+         0/SexRVuz648H1dHjTgJ6ILa0qzFo0gs47DrcxdY+lYKJ5AglXQ78ufHtRsTNJQKrUvf
+         kIHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=vyyVMhLZ7feBe6qZUuGKY3//3kGK5fNGkkKSQXjobIc=;
-        b=YC0Hms2jbVDPIonB0M429BIXP5EfEyRnBMZBqiBMxxAt2UU+8eZ7bEG5XvQCWjkZH1
-         hYKnlIO/1oXZPpITOlclEkPMhc/RtTN0Us9Ec4ZsHfwWSv3rxjZdmpZV3uHKrViubsao
-         psjJn/+i9VnmdhvDW9MikXK+cwYqPiLWGU4F/GgRwpdHso8Ielzlk5TYc/mijXD/9hhB
-         stzQdaJUYo1i6a36rKdiKKzOOpBj+wLDhFjzlCX5jaJWHWShTpwbpi2L/fNLiFjkMRcI
-         5hzqwQA7d32L4aRdw4wq1jNXAWFQ9j3iILjMJfsiLiMGQk9WD83pUfTutUBss1Cphjcj
-         2IGg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=wVk2Se66mwnW/HEHpDHK65RF5e31/WpYqAY3NnRJkwQ=;
+        b=y9FodEbgBNCkEj+ya33udJfyqtwSvhC4Xu7TXT4KEQ71c5bqU01ffxdMXlOd1Gzc1o
+         C4RVmP6F9e6TGzi9NpY5gkZxWq5gn+W7JsJiC3OcylFZN7cy4r0pEZyBle3tCxXL0CRl
+         TYHJds+KpxFoVNrNEDodNlq2osWRY5AgCPM7h2E9Zs/L7ryFpda5MjxZyU0ef3+p/tSi
+         PwQpkyjMDhhKJGDumW5wp264MUK1Kg1POKbp4mNd6d3ogNna5hHASZbHrUUxTkdxthHW
+         9S9e5uJ0vdoo8Tq56N+FTPU4EMmE0stLnEncKnr08WhfrDr8AG5DPLQfhCfHnQBmtjS+
+         D39g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=2gscKo63;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id u12si985192pgf.0.2021.04.12.02.30.24
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hXG5Kwvq;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <etsai042@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id t63si3672pfb.5.2019.03.20.00.09.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Apr 2021 02:30:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Mar 2019 00:09:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=2gscKo63;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5138161209;
-	Mon, 12 Apr 2021 09:30:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1618219823;
-	bh=WaL4dBUXjfT8rASmI+q10qscE5UnuzaJkLoxDaL8/wc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=2gscKo63FYh/GFa1acBa/D+w92KL8kgaWb2QhFEBTlrXIOm5vulDcVbkBawwQ7Jk1
-	 12zqUGcfb9O1gGGhAcWo8p4k36S4jumhF6BJVIJJ+NwAArGwYoxlGp97GchzvSIU+j
-	 1Z6nCyFNEEGyMn5cHBk8Vu1hCDfobzHH6K/ANHBY=
-Date: Mon, 12 Apr 2021 11:30:21 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: tawahpeggy <tawahpeggy98@gmail.com>
-Cc: Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Staging: Remove line to fix checkpatch error
-Message-ID: <YHQTLYM38lZ5yJgg@kroah.com>
-References: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hXG5Kwvq;
+       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id r15so1227431pfn.9
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 00:09:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=wVk2Se66mwnW/HEHpDHK65RF5e31/WpYqAY3NnRJkwQ=;
+        b=hXG5KwvqmxrfErrxi/GtCjB469uKR4aeVBl5ZH7oG4mNzJjrE8u/HdINoXHnmV5QBA
+         rnWjGpf6a6UafANF1RC+j7c0q1a1vOHlve2D0DGuWSbkUVxQsnbcwPnLuviIqENH6HOF
+         A7FXez+LjdKZB7u4uAn+zfp1yKMhNe7y8bebEUW2PN1i5nWlEHOqLJGIXGs5C5TCe8JO
+         Udg1JriXFkRB0CEyMIQCRw4bf4l5Ebloymb1yazAltv7UADpk6CbosCQdR/uoLwCaoNK
+         +z2Z711SQkUwWO6EVf7WuvOqze8LsE9GQ4l/MHr50b7yNSRKTf9Z5Ru2ox1JnKTOielF
+         OPUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=wVk2Se66mwnW/HEHpDHK65RF5e31/WpYqAY3NnRJkwQ=;
+        b=aiR5VEqEJC/nlsMzA5iWS99MWEbSiv6BN0wUoTNZ4r06fMi7c8+sHaEQMOdpW2tavX
+         xuKXulGd4IysFaDPkH/VZQzpVxFHuLXuH6h5zouG/ojTEFEPzwz2zHXLQgKobzts5YB3
+         tf778T67dTfgXuQ0O3Za3atjeSYhdW0Pb8waI6TNjqcF8wxA/OwwuaegvYGhVDB3b3u0
+         O9BWmPXoMzKER0zznrYPR2F6U/aos8b2U/pazUSR/kF35QbPlEXJk5L/0D76rex8jRxO
+         FEiipWeyxCwiVHabu5ESLh2npjvRRr5NfRLDXGZyA3/+vLtJdg7rg3AjXvL739ps5Fez
+         qzGw==
+X-Gm-Message-State: APjAAAUb9fILxD/z3E+2ehdi9HJ7/BXAUOs+SK67d3yPt9hYNFLAcH8+
+	ucvmIlIE8+1o22Taoq80Fyo=
+X-Received: by 2002:a62:1882:: with SMTP id 124mr6165572pfy.101.1553065749789;
+        Wed, 20 Mar 2019 00:09:09 -0700 (PDT)
+Return-Path: <etsai042@gmail.com>
+Received: from localhost (199.138.240.35.bc.googleusercontent.com. [35.240.138.199])
+        by smtp.gmail.com with ESMTPSA id x19sm1342019pfm.108.2019.03.20.00.09.08
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 20 Mar 2019 00:09:09 -0700 (PDT)
+From: Wentao Cai <etsai042@gmail.com>
+To: David Kershner <david.kershner@unisys.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com,
+	Wentao Cai <etsai042@gmail.com>
+Subject: [PATCH v2] Staging: unisys: Correct malformed SPDX-License-Identifier
+Date: Wed, 20 Mar 2019 00:09:01 -0700
+Message-Id: <20190320070901.2372-1-etsai042@gmail.com>
+X-Mailer: git-send-email 2.11.0
 
-On Sun, Apr 11, 2021 at 04:49:38PM -0400, tawahpeggy wrote:
-> remove one empty line.CHECK: Please don't use multiple blank lines
-> 
-> Signed-off-by: tawahpeggy <tawahpeggy98@gmail.com>
-> 
-> ---
->  drivers/staging/comedi/comedi_pcmcia.mod.c | 1 -
->  1 file changed, 0 insertion(+), 1 deletion(-)
->  create mode 100644 drivers/staging/comedi/comedi_pcmcia.mod.c
-> 
-> diff --git a/drivers/staging/comedi/comedi_pcmcia.mod.c b/drivers/staging/comedi/comedi_pcmcia.mod.c
-> index 0904b8765afs96..3984db1a39c8
-> --- /dev/null
-> +++ b/drivers/staging/comedi/comedi_pcmcia.mod.c
-> @@ -0,0 +1,31 @@
-> #include <linux/module.h>
-> #define INCLUDE_VERMAGIC
-> #include <linux/build-salt.h>
-> #include <linux/vermagic.h>
-> #include <linux/compiler.h>
-> 
-> BUILD_SALT;
-> 
-> MODULE_INFO(vermagic, VERMAGIC_STRING);
-> MODULE_INFO(name, KBUILD_MODNAME);
-> 
-> __visible struct module __this_module
-> __section(".gnu.linkonce.this_module") = {
-> 	.name = KBUILD_MODNAME,
-> 	.init = init_module,
-> #ifdef CONFIG_MODULE_UNLOAD
-> 	.exit = cleanup_module,
-> #endif
-> 	.arch = MODULE_ARCH_INIT,
-> };
-> 
-> #ifdef CONFIG_RETPOLINE
-> MODULE_INFO(retpoline, "Y");
-> #endif
-> 
-> MODULE_INFO(staging, "Y");
-> 
-> MODULE_INFO(depends, "pcmcia,comedi");
-> 
-> -  
-> MODULE_INFO(srcversion, "ED971F2E01020DFA2B04486");
-> -- 
-> 2.17.1
+Correct SPDX-License-Identifier comment characters to silence
+checkpatch.pl warning:
+WARNING: Missing or malformed SPDX-License-Identifier tag in line 1
 
-Hi,
+Signed-off-by: Wentao Cai <etsai042@gmail.com>
+---
+ drivers/staging/unisys/include/iochannel.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+diff --git a/drivers/staging/unisys/include/iochannel.h b/drivers/staging/unisys/include/iochannel.h
+index 45c785d80ce4..9ef812c0bc42 100644
+--- a/drivers/staging/unisys/include/iochannel.h
++++ b/drivers/staging/unisys/include/iochannel.h
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++/* SPDX-License-Identifier: GPL-2.0+ */
+ /*
+  * Copyright (C) 2010 - 2016 UNISYS CORPORATION
+  * All rights reserved.
+-- 
+2.11.0
 
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what is needed in order to
-  properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/SubmittingPatches for what a proper Subject: line should
-  look like.
-
-- It looks like you did not use your "real" name for the patch on either
-  the Signed-off-by: line, or the From: line (both of which have to
-  match).  Please read the kernel file, Documentation/SubmittingPatches
-  for how to do this correctly.
-
-- Your patch does not match the description at all.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 
