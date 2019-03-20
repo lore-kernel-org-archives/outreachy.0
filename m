@@ -1,121 +1,157 @@
-X-GM-THRID: 6668772071902806016
-X-Received: by 2002:a2e:8154:: with SMTP id t20mr378182ljg.7.1552694493993;
-        Fri, 15 Mar 2019 17:01:33 -0700 (PDT)
+X-GM-THRID: 6670157635256320000
+X-Received: by 2002:a05:600c:2110:: with SMTP id u16mr663653wml.11.1553067768473;
+        Wed, 20 Mar 2019 00:42:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:5303:: with SMTP id h3ls98708ljb.3.gmail; Fri, 15 Mar
- 2019 17:01:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxZNC6A3gfk7UrPAlGXMKsQgTd1o/NmnEB5T8HvJaa42EXjJVRz/+RL2PMafaJCViXK6VfB
-X-Received: by 2002:a2e:290:: with SMTP id y16mr405460lje.20.1552694493046;
-        Fri, 15 Mar 2019 17:01:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552694493; cv=none;
+Received: by 2002:a1c:2d06:: with SMTP id t6ls235380wmt.10.gmail; Wed, 20 Mar
+ 2019 00:42:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqywufGaGRxyzmqobx1CPRFcUBtH3ADsq/dN5kxElJiGASvMPMfi0jxpSoYrelbslAp89UOu
+X-Received: by 2002:a1c:e901:: with SMTP id q1mr116132wmc.12.1553067767215;
+        Wed, 20 Mar 2019 00:42:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553067767; cv=none;
         d=google.com; s=arc-20160816;
-        b=g9IscpYEiatlYJHBB/KvoZjGVphyZETJ5er6qRBj6xTmzp5pGH9ytIFkkZkGZufenn
-         TZlb3jBbECc1qsmq+r9DJJcAg12NzeaRSKwweH3n50Oe5VvD28PFDFcfYPOuvNgZN1YT
-         EHQoqjrlOceXy/554l2lqIJykvvb/WYqCRcAywl8DpDkIHUUkGltOcd5WGaBdSMheSMu
-         DMSmM7bq9WXfMGcqJVTSVVWn0rIMh5qR/YE3o3hAndJSAxOKsCpUF9Fpd2+VHDEZ/dYl
-         rQCMZmsANVapuezDv/A3qwPNHJOH+iIko+m/C7T3PpvM2gtVUwXHdgggDzbzjxB63fVA
-         WkpA==
+        b=zW2aM5NuB2JrgwBlUVRmkarU5LKe8JWzeBSykiiMSs8iGJ8RaqI9WxBOuP3I9hTyHO
+         MnPrZpCxg+P9UFD1ipFJjE7ubuIIs3TdbDvTe8TJItMS9287EnPSYrYAf8UcCNMXRUgL
+         S1aA3hcJmVjQROEEUtc6CFMXwbUcq5YJdbjcuj3ul7XUwBb5d+aUxD5O9rH6Zfrj82P6
+         CWX7y7596vqKN4cpL7QTXgrOOq7oUTNym/sCCkuPtFcN0GGUbIieyP/7mrGzEPjDqlJB
+         Cj5FYHf/3ZzfdenX2yFqDRFBUtODJaBnSswQAgbEp8Z58sb5OI68QFRhZcCNp0cQvMHb
+         ZGcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=KZAxlAvfVcya/dbg7JhGByPod5pst9eEOS0QNxunIHI=;
-        b=w6VIJfRJSvLBRe6mQ+Zt4Y8Ydv4Kjj99hxJEvc53vZSFQbrYuZmsfyqC8mfwAD7tkX
-         hVkg+BgRxwJO2pKNCdmUhiXAQXDQ+oaIrM5ZXt0qJFaVq+HhWdU8ez8bJFEtRsUEALFg
-         DBW4hpJL1Zyxnd3v+6gNnWhT+Pi0k+hgfeVhVsfZND5veF9vyEA2fsMUbgTHuy6WMrJs
-         hDY0baPfkjn4KyZLNtbF1hoAlTfrf394Ir+9+eXIUY1/Aqk8F5klY/CR3u6pIMMu4gTN
-         w3FzdV6KzK7/CPXVM5fCqik7oOuDGHlog8guKCvA/5igiyKClvBXk6NgLxlpjmHrY1Rh
-         WgRg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=3eQRqbkcMENKSSOGIOEhFQGAULN28oTe8BnGDjdoW7c=;
+        b=oSVhzSXDo3bwAHqHUd6avpsdMIe1eoWk5ai751+kbHxS/8KogLH7MnqB1ZFsHteiZt
+         SUKrrurEtrz59KmrfCnxdCKHNLSlWptwDAhTTfYu6kAWfOLX8UUUuF1uPX9PuBqe3H0j
+         KDj+2nE0XC6exQWLZGp2I1S2ZkVOradEfH4hCr9UkuFMOdBJ3Nw2lGWVpzhG1bJ1jztZ
+         eri4sPtJdnMw0OGaiUwFlnMWxgL7zpLOwJMh1Y11bFU2TXjj9nwhfGsSz6ucSTYmlvQm
+         vze7rJdW5YW5xD6PvV61CXoM1P0lMCN5fsC3T9/TfbJ0rb4ivYJtW7fvSlDn2AH6xwb0
+         cjiA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="nlO/zaEQ";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::330 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MILYx8Si;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com. [2a00:1450:4864:20::330])
-        by gmr-mx.google.com with ESMTPS id l8si135409lfh.3.2019.03.15.17.01.33
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-ed1-x542.google.com (mail-ed1-x542.google.com. [2a00:1450:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id z129si177216wmc.2.2019.03.20.00.42.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Mar 2019 17:01:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::330 as permitted sender) client-ip=2a00:1450:4864:20::330;
+        Wed, 20 Mar 2019 00:42:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::542 as permitted sender) client-ip=2a00:1450:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="nlO/zaEQ";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::330 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MILYx8Si;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x330.google.com with SMTP id n19so8070713wmi.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 15 Mar 2019 17:01:33 -0700 (PDT)
+Received: by mail-ed1-x542.google.com with SMTP id d6so1107290eds.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 00:42:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=KZAxlAvfVcya/dbg7JhGByPod5pst9eEOS0QNxunIHI=;
-        b=nlO/zaEQagJeZPUvxAIcKtRmlm7FuxUegzwWLIFXDtFYGZcdum8Ta5JAGZvxU+LBvY
-         dEzcktWiVUxwO2M7urWaZ8z74B1Z4qytTKKCZdTc6+8VICbXszLKoxYlCRpVzUL11eIH
-         vMVL+14ZyCNOEncMEFdHtu1t/Fkl85luQEHKohSFowhlgp13sIRd6TFpefkM2dWl2je5
-         R+BmnX1+Zpm8CDbhqVYPx842c6xlKUtCW9hZ4JWRL7zfWlNxNxV8oJBBiwRrZpzeRVf6
-         Jew4d9p0Ye0nJJf2DcBKeVefT1F347srEiVBjpwTjp9uWloK9bdrH4+Kao0lB2mJ9IoD
-         b4/g==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=3eQRqbkcMENKSSOGIOEhFQGAULN28oTe8BnGDjdoW7c=;
+        b=MILYx8SixqhdAur4JEMHCE1cX5lNQNQozJLFXm6H7nlnFTAe3Omn2bdVvl3u0X1dV5
+         k7kIozMJRzpQO22YLk1ftin8uAYQGtPDo8SAYQglqcuGpXMD1XHYHO0yThnVpX/Zw4I2
+         dIFFcqOw8ArK/pyR+r21VVpaSrpiEmwDy9UBeXN/vzo3nhWPOutGsbctgO/niB9THab3
+         AdTxFOmJ0qIKiibUop9Y3V+ikXU1wYH9B3H31O719s01Evl4XNYigW3E3UttgK/+2zi4
+         PtT2tMjVYjHWgqXeOkmHNsrvcWyXgR8/jHYM33w+/u+MrABF2x3TlgwJmuLZlgBjQzBX
+         nNZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=KZAxlAvfVcya/dbg7JhGByPod5pst9eEOS0QNxunIHI=;
-        b=jwnjcpSlRvHq0gOoeQFXdBKxj2v6tLq+zAc0oQ5UGLQ8HANwme9hHZq41/D6gotHR8
-         Kqj/dvtfzcir53GOExe3Paa34JcapngiN2CAOw9yzmx/x/PwhCeM8AzAKWnVwjGP59as
-         1tEJCLdA5bs9FFreyKLUlrXB13/FDaW35lveWo143Ufy90O5zsne2ow9V0jd98oYa0zR
-         hC59W7v+5e431FVPrqEaDPHtYysjebWehIpADEH70svGjeJroQR+bdWkQ8u17hW7dEqB
-         aFXnKkxgqPCN9vmoKx11/CMneBrTAG5Q6QiPgzCH96guKPmNVndauibe+Jaa7TeZcmNs
-         qTiQ==
-X-Gm-Message-State: APjAAAVrRIuvMC1zHQ4A82gGrh7Pgz68+eSXyVm/EkgYtIn6P8auy6qm
-	S59khKGmNSNSoJrMqV2IBA==
-X-Received: by 2002:a1c:f014:: with SMTP id a20mr3619045wmb.122.1552694492568;
-        Fri, 15 Mar 2019 17:01:32 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjatsu.lan (79-76-221-144.dynamic.dsl.as9105.com. [79.76.221.144])
-        by smtp.gmail.com with ESMTPSA id x22sm3830164wmc.19.2019.03.15.17.01.31
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Mar 2019 17:01:32 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: linux-fbdev@vger.kernel.org
-Cc: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm759fb: fix camelcase check issue
-Date: Sat, 16 Mar 2019 00:01:09 +0000
-Message-Id: <20190316000109.22244-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=3eQRqbkcMENKSSOGIOEhFQGAULN28oTe8BnGDjdoW7c=;
+        b=DzZ9u2EJ+7DwEvRGgCtpXfXTUhOBJLUXB6yiud9VA/dZbyNXePrv1REQWTiLXt4lj/
+         kDjsk/1M+gHyfgHNOZ2g4cvG9ARqfUnA7NvFNhAnMMRQMz4xTKeqFLkFL2xoXYoIxvCN
+         65p+QbmdWUOYwGjxBvIZiOqITeTsBykPmjPkhJe0J+mFfQlzoeNk0pf1Gsp4Fn6aBDwR
+         C8XXsr8vn3KGG8ULswmsa5Oj/R1CKfXBYk1y3CiekxrBXg1qcdvUODboNdYDKJ7lKV/J
+         GvV+JC5rx527PiOpOk/ZrE2OZxE5uCtQvf1utdgahU8iYIK4dljk4dNFiexo9bREoE8o
+         2V+g==
+X-Gm-Message-State: APjAAAVPgVae0LeKpNqzKgKyXXKTlBbkBBqhsmpRpCfv4kiF2m3rL9CY
+	oDyUxOVdN8rqjuWs+cfP3aYanLlgXiHw0XuoJ9/C/EkL
+X-Received: by 2002:a50:b1fa:: with SMTP id n55mr19367279edd.34.1553067766976;
+ Wed, 20 Mar 2019 00:42:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190319173759.4853-1-sanjana99reddy99@gmail.com> <20190320064815.GB11556@kroah.com>
+In-Reply-To: <20190320064815.GB11556@kroah.com>
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Date: Wed, 20 Mar 2019 13:12:34 +0530
+Message-ID: <CAO-bXGA0d+V0gtb2gpfy=F8-HQ1vsdNArqHgbPVhSjiYPzh9nw@mail.gmail.com>
+Subject: Re: [PATCH 17/17] staging: rtl8192u: ieee80211: ieee80211_tx.c:
+ Adjust space around else.
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="00000000000090162e058481c4a3"
 
-Lower case of parameters to fix camelcase warning
- Issue reported by checkpatch.pl tool
+--00000000000090162e058481c4a3
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+On Wed, 20 Mar 2019, 12:18 Greg KH, <gregkh@linuxfoundation.org> wrote:
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 4c1f00f551da..6bdf643707c2 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -15,14 +15,14 @@ enum logical_chip_type sm750_get_chip_type(void)
- 	return chip;
- }
- 
--void sm750_set_chip_type(unsigned short devId, u8 revId)
-+void sm750_set_chip_type(unsigned short dev_id, u8 rev_id)
- {
--	if (devId == 0x718) {
-+	if (dev_id == 0x718) {
- 		chip = SM718;
--	} else if (devId == 0x750) {
-+	} else if (dev_id == 0x750) {
- 		chip = SM750;
- 		/* SM750 and SM750LE are different in their revision ID only. */
--		if (revId == SM750LE_REVISION_ID) {
-+		if (rev_id == SM750LE_REVISION_ID) {
- 			chip = SM750LE;
- 			pr_info("found sm750le\n");
- 		}
--- 
-2.20.1
+> On Tue, Mar 19, 2019 at 11:07:59PM +0530, Sanjana Sanikommu wrote:
+> > Fix the spacce around else.
+> > Issue found by checkpatch.pl
+> >
+> > ERROR: spaces required before that open brace '{'
+> > ERROR: spaces required before that close brace '}'
+> >
+> > Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> > ---
+> >  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> Where are the 16 other patches in this series?
+>
+There is only one patch . 17 was a typo.
 
+>
+> Please fix up and resend properly.
+>
+I send them in v2., You already picked up the one thank you :) :)
+Sanjana
+
+>
+> thanks,
+>
+> greg k-h
+>
+
+--00000000000090162e058481c4a3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, 20 Mar 2019, 12:18 Greg KH, &lt;<a href=3D"mai=
+lto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex">On Tue, Mar 19, 2019 at 11:07:59PM +=
+0530, Sanjana Sanikommu wrote:<br>
+&gt; Fix the spacce around else.<br>
+&gt; Issue found by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer nore=
+ferrer" target=3D"_blank">checkpatch.pl</a><br>
+&gt; <br>
+&gt; ERROR: spaces required before that open brace &#39;{&#39;<br>
+&gt; ERROR: spaces required before that close brace &#39;}&#39;<br>
+&gt; <br>
+&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"mailto:sanjana99reddy9=
+9@gmail.com" target=3D"_blank" rel=3D"noreferrer">sanjana99reddy99@gmail.co=
+m</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+Where are the 16 other patches in this series?<br></blockquote></div></div>=
+<div dir=3D"auto">There is only one patch . 17 was a typo.</div><div dir=3D=
+"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+Please fix up and resend properly.<br></blockquote></div></div><div dir=3D"=
+auto">I send them in v2., You already picked up the one thank you :) :)</di=
+v><div dir=3D"auto">Sanjana</div><div dir=3D"auto"><div class=3D"gmail_quot=
+e"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
+:1px #ccc solid;padding-left:1ex">
+<br>
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div></div></div>
+
+--00000000000090162e058481c4a3--
 
