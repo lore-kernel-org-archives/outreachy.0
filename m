@@ -1,82 +1,82 @@
 X-GM-THRID: 6670256423573651456
-X-Received: by 2002:a25:4113:: with SMTP id o19mr110883yba.20.1553122927620;
-        Wed, 20 Mar 2019 16:02:07 -0700 (PDT)
+X-Received: by 2002:ac8:19f0:: with SMTP id s45mr196670qtk.15.1553122636052;
+        Wed, 20 Mar 2019 15:57:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:50cb:: with SMTP id e194ls1306259ybb.12.gmail; Wed, 20
- Mar 2019 16:02:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwfvTdcVKsoNV6E1dfVd0BEI2VCXEg+d6ZaqPLDzq4pDsNQD+36/9xWxv4xkzAaKSmcU2An
-X-Received: by 2002:a25:bb8c:: with SMTP id y12mr96803ybg.89.1553122926764;
-        Wed, 20 Mar 2019 16:02:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553122926; cv=none;
+Received: by 2002:ac8:6984:: with SMTP id o4ls1757660qtq.9.gmail; Wed, 20 Mar
+ 2019 15:57:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzp+/igeVUX4JGz44CASOD46iIcshFWQNilu28ZRL9IAgOWxI3awg78sNeUpfFf6bEf/Ukn
+X-Received: by 2002:ac8:2ce8:: with SMTP id 37mr188087qtx.59.1553122635413;
+        Wed, 20 Mar 2019 15:57:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553122635; cv=none;
         d=google.com; s=arc-20160816;
-        b=vGE7I+Cfy+AnVDy9l1ui8yhZsGBvw8We8DJhV16ZkcExiNjVKtbcvgN1yIL+ZpuJI2
-         TMs1xhlGW0e0lGs08y0fSloU4z91XdEi8kvLuEo3Y3e3oDEmoMx9OTslcXyG/hm24rKO
-         5MtmKRQcduM9cfo2RyZ12VeM/JCLgdowbuTdNaV6L1APai9W77+Geb6EyPb4Qx6RarcU
-         0Knp4Zt9VC0tI+KPlwgUHNYi+4aOZrn5EX4PF62pIT11+HWDkq5wn+u5pZ2xjJGXQHg5
-         gUri20BdVFuxhu5mG/7T+mVggi5+dOf9yXYfh8CjSga3i+SKcA4wS69PI/cL34aJWhmv
-         9Fvg==
+        b=qlb7bzjYzzb16gndYHqmPKIGdxkfz9TqljY/YtTfFpnhZwqQvRYmqb77vdOlbpXQqI
+         OXcfY+TdL+NaezQYpCYRKr4W/QzONuIOwp+Huyt1oR26tC8y42A/2F+q1a8GP+deJskR
+         FoAMSMEoRmBDOqest2lBMS2MFjNZCPLLIPNeWz2TcYvQLN5U2CrNlp7fpEOcyQzzTUTl
+         sQZmbzeDeWhbvqZAug4NoNgzDD3FXZ9Tp+xJd4RvG2lmV1hUKDppt/FHlCaffU5LOxxq
+         kAyP42BRa0WGAxUPJ+RctH+SU9fCrP+16q9C05lu4JSgAhJZw8z6I2113dq0wmDs7QA/
+         HyoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TrB6hQzM2SkMUDb/nCUpHH9vm/Qz6wMHXfH1DwDot+M=;
-        b=VljNZ6uv1jBfGnf6t6vP4I4xifAsFusRx7VLddI7it4I8QZn2H9IjHSYk2ylHdQhXV
-         XOTn6LLJwoO08EpGlTvq57QfjSVQaspRF2A7e9EWcb9ohWHomQBeNhY8SGQut6GKgwte
-         n3ANgkZikNfFKR7lxp6JH7sSlCk8HI9h1yrD8QU7r1i8Ht7WUoiwTqkktJE+76Q0TK4F
-         KdKjIGeDlXrBOC2oLmvcjKSpC9dTdSrK3/rNU21S6QJE/k5T47bz8YGCFD6A985QoKfo
-         tFys4mjyq6ex9FJS37YkRN4z86j690YyESrr6Rcpd0/Fr4hNbYYBHCG2mKWjJ9ZmJH3C
-         gm7A==
+        bh=mtSPnj0FiiNkGiBL1xng9rSdwY1d8LjhxUmW6MZDrL8=;
+        b=SUB5X+AZmipKvWKSrtQkGgjM6Vo8BTCZNFRI1wRVfBdGYls3oI7LB8FoyHH+BCjXvt
+         hiOnpQEEJ9P8OgwyheNo49PwDroVvxnosKNDmafGinWJ3oBdsLqfVj0PgDw+BUfHjWsN
+         xz6mxsgByV6cT4X6a1ZomDkGxj0L5hS73uaeot9F+9t9xcxb7npofTPwGeKwYoz+j6qW
+         mmO+NgR8xtOGlG0YfgfNpJY729m7Y7PQWwTEikeAB21NKB2Dl7hSypio+VTr3Qr5We5s
+         oD+3bU4nnLgrH2a/n7uwGiCVL0CZjWkjX9eZ8qJiqC3BErlZZGEIP8I19ZgL64k2F9LR
+         DARQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kmJpRKBc;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::235 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OFEQ4t2V;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x235.google.com (mail-oi1-x235.google.com. [2607:f8b0:4864:20::235])
-        by gmr-mx.google.com with ESMTPS id k15si236146ybk.0.2019.03.20.16.02.06
+Received: from mail-oi1-x243.google.com (mail-oi1-x243.google.com. [2607:f8b0:4864:20::243])
+        by gmr-mx.google.com with ESMTPS id h186si316381qkc.1.2019.03.20.15.57.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Mar 2019 16:02:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::235 as permitted sender) client-ip=2607:f8b0:4864:20::235;
+        Wed, 20 Mar 2019 15:57:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) client-ip=2607:f8b0:4864:20::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kmJpRKBc;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::235 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OFEQ4t2V;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x235.google.com with SMTP id e22so3253905oiy.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 16:02:06 -0700 (PDT)
+Received: by mail-oi1-x243.google.com with SMTP id 3so2587486oir.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 15:57:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=TrB6hQzM2SkMUDb/nCUpHH9vm/Qz6wMHXfH1DwDot+M=;
-        b=kmJpRKBcdOh80giQlqcZFEJhYJoCeDcbys5wnU7ga2wfYUYQ0oczERJtpjjp+nL0/9
-         hglounBy7PAoVipgQ5Hr4vIyLu8bzWW9FQg3aytmN+BFFWZFrB8ZZmXAMH24VUQjAH3m
-         SKlSwL8jqzNpXdiv8cJwwNkdtxPiOJr2b4+k0aDtc+/fp6sVncNbAUwLrqlDFZQKeEAT
-         8Vuu0Sg1VXgOY/7dZgTMhBqB45opnK4xjINM5qAJWwMyzt4s75mL1ECvl/VX58s3KQ/y
-         w+RuOZe0xTWn4AmPaEFtrYAVsoQfSnzW0VebaA4uw8vjOyPxmfbcl/cF9Tnu9pmm5bz+
-         lkEQ==
+        bh=mtSPnj0FiiNkGiBL1xng9rSdwY1d8LjhxUmW6MZDrL8=;
+        b=OFEQ4t2V1wCy90Y78s4rnT1VJej9U3w96f0DBZvxN4poCtUyrL0Cw9hrmc7nbW6MTa
+         F5OtnTcpzzgH/2hfqbxcWXjeiYGvu4mglkTbG63eG3y2VmEQ1fL82e+ytCsTeydN2w8e
+         I1iPMmjg3n0UwVXvJ5tbx5tZCbVEy6vTdLySr4RewjGoSBeb0RoSy429NTgzenfhaJhP
+         ZAnu5eSiD/z4kcesv2+zF1co1gsTevAqIRMbDvf9SEUmjbisYxYpfovkIVwFrmSzq1ma
+         NJTzPzamuLp/HK9FVLCf8f5iLpD7xRmdhu0LSvn2TXc3pGDt3yewkgkT97gPBkzwIDi4
+         xaaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TrB6hQzM2SkMUDb/nCUpHH9vm/Qz6wMHXfH1DwDot+M=;
-        b=oxNJUp/4ydg3fQ1xA9uXRZ07gyFJK+AmVvLj8+Zhei40I0wPWz1IjPXnUlYOSu/XIA
-         ubXn81hi6mKp18letAVzXrhRLfj6XhYUuwBnEFA+xjrkLZEe/wbOOCA1monOLpDuxhCr
-         1DTpv3iuWSbmrHilhpHdhCIiCcHQwNnDgDx7CD+CVQGFllgDjCBDBTbGl5DRPLGJTDuI
-         55xotBh2O0PKJw1rD9iu3QG0uHQElUALYzdIEG+aEY+ygTq8jCci8z6eBLwST4dH7vek
-         UWr/IK01NhQWVU4vVrmT0c2Maq5uOYs/Kib2dwzKBXe1b+YB8jtyxk1YyM0wqaO4PHb0
-         3Nxw==
-X-Gm-Message-State: APjAAAU0LV+J/0JJqSwcP0mEXUB1rAuGTZQGNWfy/+xjy1RdxBCLy7B+
-	IhycVRc546HpucawhUBL4rg=
-X-Received: by 2002:aca:b703:: with SMTP id h3mr326656oif.14.1553122926456;
-        Wed, 20 Mar 2019 16:02:06 -0700 (PDT)
+        bh=mtSPnj0FiiNkGiBL1xng9rSdwY1d8LjhxUmW6MZDrL8=;
+        b=sf5LwBl3rOv4CeX1f/OluqRBSxwhlRq/hYB3PcaPlPXVEbPHrXf3RA46zjwVo/ZFoe
+         7+RF1prNBtGG+KXi+F+DHoHbyFoVtJVMYI/M9oOenksTj9yfUI1gWN/Gvq6ciM3IjcJT
+         HI26xVAal13VUEQ6A/sy1gconlstSOI6uFR7lEr4C59CdvD27w7G6rGZgzxsV7GQD6QP
+         NoOKH13ngHpgwXP7senxRUqwvPyAeyfeUspMSBBzy7IDEVcDDc+6H4eI0tIPsXltAQxK
+         V+s4E9Wy4I2m41G+Qmdw0LWI2uUnC3qP0K5A4yuPitqHoI04vvnDsY2DJvkE8UdAnKP+
+         PEEw==
+X-Gm-Message-State: APjAAAWtmAl2uaFWs1e9Pq3vQjTS7y6lbBiliJPo4U9Jw2B0e6+zYd4o
+	uNTuyywxWi6nKqPm51xt+zs=
+X-Received: by 2002:aca:47d2:: with SMTP id u201mr318044oia.130.1553122634889;
+        Wed, 20 Mar 2019 15:57:14 -0700 (PDT)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo ([2605:6000:1023:606d:d9de:87bf:a05a:c332])
-        by smtp.gmail.com with ESMTPSA id p7sm1258378otl.64.2019.03.20.16.02.05
+        by smtp.gmail.com with ESMTPSA id k15sm1260773otp.17.2019.03.20.15.57.13
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Mar 2019 16:02:05 -0700 (PDT)
+        Wed, 20 Mar 2019 15:57:14 -0700 (PDT)
 From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v3] Staging: rtl8723bs: Change return type and type of local variable
-Date: Wed, 20 Mar 2019 18:02:02 -0500
-Message-Id: <20190320230202.4112-1-madhumithabiw@gmail.com>
+Subject: [PATCH v2] Staging: rtl8723bs: Change return type and type of local variable
+Date: Wed, 20 Mar 2019 17:57:11 -0500
+Message-Id: <20190320225711.3983-1-madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
 rtw_startbss_cmd can return the result of calling rtw_enqueue_cmd, which
@@ -87,16 +87,13 @@ As all of these functions return error codes, change all the return types
 to int, in preparation for converting these functions to use standard
 kernel error codes.
 
-Also, remove extern from the function declaration to maintain Linux kernel
-coding style.
+Also, remove extern from the function declaration to maintain
+Linux kernel coding style.
 
 Issue suggested by Coccinelle.
 
 Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 ---
-Changes in v3 -
-1) Missed change log in v2
-2) Changed commit log
  drivers/staging/rtl8723bs/core/rtw_cmd.c      | 8 ++++----
  drivers/staging/rtl8723bs/include/cmd_osdep.h | 2 +-
  drivers/staging/rtl8723bs/include/rtw_cmd.h   | 4 ++--
