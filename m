@@ -1,121 +1,211 @@
-X-GM-THRID: 6808532332710985728
-X-Received: by 2002:a5d:6992:: with SMTP id g18mr10062701wru.426.1585234965887;
-        Thu, 26 Mar 2020 08:02:45 -0700 (PDT)
+X-GM-THRID: 6670105232964321280
+X-Received: by 2002:a1c:f414:: with SMTP id z20mr387253wma.18.1553067916328;
+        Wed, 20 Mar 2019 00:45:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:9781:: with SMTP id s1ls2935604wrb.2.gmail; Thu, 26 Mar
- 2020 08:02:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs8lisJ4fd7FUe1SktwQftxUfY203ec+DTGc+ORB+xIWfFP4jgEOrPxajyuZOdLa6axJ61I
-X-Received: by 2002:adf:e684:: with SMTP id r4mr9891448wrm.6.1585234964150;
-        Thu, 26 Mar 2020 08:02:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585234964; cv=none;
+Received: by 2002:a7b:c0cc:: with SMTP id s12ls237081wmh.14.gmail; Wed, 20 Mar
+ 2019 00:45:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyrDNNE3qC53SCR7wLrtSYGjvfmhOAFMYr6spTp8ZC90N1sC7qzXnKuAG/kGbjtJ/g6inP5
+X-Received: by 2002:a1c:6c12:: with SMTP id h18mr652603wmc.18.1553067915549;
+        Wed, 20 Mar 2019 00:45:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553067915; cv=none;
         d=google.com; s=arc-20160816;
-        b=wXTm0EnM/GdcnhnbcDL4htJ/suEostm5MinkmITRw3KDjgYF/gQE7WP2vssxtey76t
-         SwzZCaLqpu55Zi/nCoQFi5kNZd5BBh1OQFv/iaBkCYvfHCj4lf3e5dMhFBDettz26L5W
-         tM+2P54E76pheaCEltwnxL4ywO+j6DIrBkHezZK//9gq+qbWB3lFYTI6C4akhdN4QXdy
-         6cMN1N3HJT2PB0AQs+F0FHxvC4mCVobnjV9d3T0KWI2kY2ZlGSulUJHUBR8Uv1smA7H4
-         2jdUBcvhBDz/TgCOEjw7uRisDfAnXUURYEJwu9iw3TzrNTDL7ZhAkKnO8SswSvB6td4j
-         6Hnw==
+        b=FdtIRF5lq0m8l1LdWz1WOcgJ5MlQzldfbUe546I0WJWAQ25hGqzuHZz3CSENbDombn
+         h+caL7ZUZsRSBaK2VCXCGLbYn2mQMekLcXCGnBb1aMEE9+LHTdL5rIs82ussJQ8KdqlG
+         2EkS+lhD1sw1ZjcrLJvCBNgCHverNyeZhIPQ6yYylKvCll7QyEzJd927aM898UtBcMuY
+         15xYZhtJRZ0TI9opH653mKgixQJyeqVu1HwjDcXx8fKdommz03mYwKCRQhnJ81winXEr
+         5I0eEFDOmVgnSlQN47cxKhzDwNLnkmH1DFHzFeIpiE/Om3cl7sU89opUo3EZO4eo19ny
+         4+tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=QFoGDl0ixaHrTO0T2+l3wU+SHrOfQyQEGNkPUPo62CU=;
-        b=rFQfPNXqYhfcI+np76386ivSOEBjOwJkXKbKxu3iV+tV9QYAtp2fbPu2TwXJjcAc61
-         JncWFTA0JkmYqfb2m9C/nJTmlpJsNicFWkeNIzWlpb2bIcbD3PF3DZV6RjLaVpXyD1zo
-         9ZbNXp4xT/9+CbOB8p3jO4MNLsJmZUms+EZmtZJ5+tAtjddwH5fuso19TVzhyV8hKdca
-         SxXxpOJ2ieKGl+UZ4awtRgzyeQjeKk2BGMGgWsRWucc1uxGxNsNCTIjx5qdf3ROeortZ
-         s03PqMfPd+9lWjqbXL7aNeS6RbNEXIaA7FDYIjsxssUXLB9IKI2tbbnzQ9++Q6cqA0c5
-         y0Gw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ZUadmyEKfF9E1QrqWWQZ75P3fQ6/HLexmaCnrhWFKag=;
+        b=paxQYBFd5X7HCZKrP9SjYuyW/f5JJP+w989UH+ppfk8yUHHe4KYFYFttnT90bByoOJ
+         uVqE41IlkNp22TS2HXNRd3ECoan9+wGrsHaH7fxDSnlG0vsqcEZ/2u5TvxTTicpOKnLx
+         Zwc0M1husbNPLro2Ase8pLzbyPNH0vaHkjNw0vhF/+gObcYTicuLYQfFbvepxJPHplcj
+         AZ3fuArWe/Xv1g4cSOQdkZsApxTkETvbTXWA6hVfne6sc2Cb3Lm1LXTvicg/6L+/oxCh
+         Jnj3tDxLihKKmzX4S8I6jnkcau5Ybv6zhrzPV9Li7rwcuWQSEVrtaMYBSc5RvawMU8wC
+         6NCQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Qbcf2qiK;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HPPyGI8F;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id q205si564831wme.4.2020.03.26.08.02.44
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-ed1-x541.google.com (mail-ed1-x541.google.com. [2a00:1450:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id a9si45686wrp.5.2019.03.20.00.45.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Mar 2020 08:02:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Mar 2019 00:45:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) client-ip=2a00:1450:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Qbcf2qiK;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HPPyGI8F;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id m17so8158288wrw.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2020 08:02:44 -0700 (PDT)
+Received: by mail-ed1-x541.google.com with SMTP id d6so1112671eds.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 00:45:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=QFoGDl0ixaHrTO0T2+l3wU+SHrOfQyQEGNkPUPo62CU=;
-        b=Qbcf2qiK26xh5adu9/FNsljsdMtIYBG2AF3P68YPv7bqnT+lr5NDlGD4soYf200xDB
-         wOBHeA4PSnMgbLH3kCmKltyW3rWsso/ySPobcvqfqMoST+iAMifZyAh+ZBeIRI/IOwei
-         VSBB+PqHdlR2kjb2NQ8hgOLgO/FG3902E/n3HE03Gzzj0sBIf6rYhFJPFE+x/6rJOpS/
-         58gCYd3v6Ph8VxyjulIYcvSx+PbwT+U16o6q7FSKJxbM3OCWsGMQnchHRmdBF7Hqc0A9
-         HxMqCEUqqLKi1lNmwhg7rxQt2qaXytuacbDIaquBNU4yS34nPUmjoMynKdkdDAAr+5HM
-         XAsw==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ZUadmyEKfF9E1QrqWWQZ75P3fQ6/HLexmaCnrhWFKag=;
+        b=HPPyGI8FJfJE3UX2tGJ0q8eySmumQmicgoSb707m18Vtg8Mor7+CHy0iUcjXmuYtX4
+         9lsdUAeovMJncEBTbqwd64nIhyPWRhni2tn1mnBznSxyfZmFf0jkwkX4LH9TNajtZr2v
+         kFovguv2IIFRNQYTWhozS+bkwjnXA1FNrQHPy2ufbTzfDt05cFWcIsrbyWjwbKRaI285
+         BpVvaoKazJjNxLhy5XzFMIwhiGl8VbhJK/Ky3cEuGLRQvZoFRn/KzX9snv5toAzWVN6O
+         I8tvKBHov6wrYzFuAsS9N1CqsHIU4U/8yZ66Ed7UTJJD1svVbw0qW2ZULzeJvnPa2qfh
+         VS5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=QFoGDl0ixaHrTO0T2+l3wU+SHrOfQyQEGNkPUPo62CU=;
-        b=krVYt4Fj8KxaNRehHUidJr9BmhI3zKueKPBj/PdEvK/00Jk2fvRARJFBl/VGtOrBwt
-         2HAR3zDKlQ+B1QUfKCKUuUPT2p0yw3q/pKh+tjrCF/71lWFsbJy7hVgMXwyEoWkCtyMr
-         teXHHowZk2nrhGt6QKal66rJzGwPoP0wGG0FWv6qCFHNZoKEMJSxuD5pk0PJhRmGF4/o
-         tZXvpufwjPsdKkdhuicUAI/GYT4XXRtERIOhjGCpUgqiUBajl4iiKWtilNoRuZhnQMIw
-         OEa4Y/Pw1ZnRf6dFoKOz8JcHhqAZyn/s6fY6C98y2Q6LxmaaRVpXmRem0w8BMpVN87AG
-         BosA==
-X-Gm-Message-State: ANhLgQ2NAoaKiyqjyoKTe8jrYGUwrXNqtw7VCwUsQ70bFuWBuTq20HDt
-	DgVIoSd74g8WuQiIoi5Bx8s2TLAh5/g=
-X-Received: by 2002:a5d:674f:: with SMTP id l15mr9696459wrw.196.1585234963295;
-        Thu, 26 Mar 2020 08:02:43 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from localhost.localdomain ([197.34.98.179])
-        by smtp.gmail.com with ESMTPSA id b202sm4043634wmd.15.2020.03.26.08.02.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Mar 2020 08:02:42 -0700 (PDT)
-From: Sam Muhammed <jane.pnx9@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Sam Muhammed <jane.pnx9@gmail.com>
-Subject: [PATCH 0/4] Staging: rtl8192u: ieee80211: Replace printk(KERN_<LEVEL> ...) with netdev_*() family.
-Date: Thu, 26 Mar 2020 11:02:34 -0400
-Message-Id: <cover.1585233434.git.jane.pnx9@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ZUadmyEKfF9E1QrqWWQZ75P3fQ6/HLexmaCnrhWFKag=;
+        b=rhftoXjdjxSIirneC8vD9pJAkuM08wqNCJao1dRwGfdGfWxidVuUxeKG/FgXxQ5rHL
+         bncVdtaLF9ulcUH0bNSrbyOpMDCAfLAdAl4MPZBtWwbPHsvXDkYMPvIx8lynx4QSQjK9
+         QoterBEBRyRsvi6aqKg/+srcvKjaacBo6ybEmhmure0mw1hYb/C5rEx24uCpLBSwgHlk
+         JMgfDxpAgRLy0qHCA8arYwCS3ckYTwiL+ioFlHDweRT/jcj0osDVEgZoEUcRvgJIb8G1
+         8kPSNby/EvIoRWrqwqoRPeqE6njca9PFG8BS8fBuTTvarJwoot5D6dBcJ3Qclx7xmm+i
+         mfQw==
+X-Gm-Message-State: APjAAAW8KKmL/FvEuXXadEDFKOZatjHenKbm9kXAU/JQGU2set8EsIpM
+	HZ/YF5YJgf8PJ2DmG6tqVS8h3XYmsXcMBNqjz4X48R8z
+X-Received: by 2002:a50:b482:: with SMTP id w2mr19508731edd.41.1553067915287;
+ Wed, 20 Mar 2019 00:45:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190319141439.8458-1-sanjana99reddy99@gmail.com>
+ <20190319152648.10497-1-sanjana99reddy99@gmail.com> <20190320064905.GC11556@kroah.com>
+In-Reply-To: <20190320064905.GC11556@kroah.com>
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Date: Wed, 20 Mar 2019 13:15:03 +0530
+Message-ID: <CAO-bXGDy_qAdWmu7UQqYD8i7wKuHEXR5nj1jVvAoXbbDXfoZiw@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] staging: rtl8192u: r8192U_dm: Remove unnecessary
+ blank lines.
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000672359058481cd34"
 
-Use the netdev_*() family across the driver, since it's specific
-for network devices and already been used in multiple cases.
-This series replaces the rest.
-Checkpatch.pl: WARNINGS:
+--000000000000672359058481cd34
+Content-Type: text/plain; charset="UTF-8"
 
-	Prefer [subsystem eg: netdev]_dbg([subsystem]dev, ... then
-	dev_dbg(dev, ... then pr_debug(...  to printk(KERN_DEBUG ...
+On Wed, 20 Mar 2019, 12:19 Greg KH, <gregkh@linuxfoundation.org> wrote:
 
-	Prefer [subsystem eg: netdev]_warn([subsystem]dev, ... then
-	dev_warn(dev, ... then pr_warn(...  to printk(KERN_WARNING ...
+> On Tue, Mar 19, 2019 at 08:56:48PM +0530, Sanjana Sanikommu wrote:
+> > Remove unnecessary blank lines.
+> > Issue found by checkpatch.pl
+> >
+> > Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> > ---
+> > Changes in v3:
+> > Remove multiple blank lines from correct file.
+> >
+> > Changes in v2:
+> > No changes
+> >  drivers/staging/rtl8192u/r8192U_dm.c | 3 ---
+> >  1 file changed, 3 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8192u/r8192U_dm.c
+> b/drivers/staging/rtl8192u/r8192U_dm.c
+> > index 50a9fe667062..546bf5428848 100644
+> > --- a/drivers/staging/rtl8192u/r8192U_dm.c
+> > +++ b/drivers/staging/rtl8192u/r8192U_dm.c
+> > @@ -45,17 +45,14 @@ static struct dynamic_rx_path_sel DM_RxPathSelTable;
+> >
+> >  /*------------------------Define global
+> variable-----------------------------*/
+> >
+> > -
+> >  /*------------------------Define local
+> variable------------------------------*/
+> >  /*------------------------Define local
+> variable------------------------------*/
+> >
+> > -
+> >  /*--------------------Define export function
+> prototype-----------------------*/
+> >  extern       void dm_check_fsync(struct net_device *dev);
+> >
+> >  /*--------------------Define export function
+> prototype-----------------------*/
+> >
+> > -
+>
+> This change is fine, but look at this file now.  All of these crazy
+> comments can be deleted, they are not doing anything...
+>
 
-	WARNING: Prefer [subsystem eg: netdev]_info([subsystem]dev, ...
-	then dev_info(dev, ... then pr_info(...  to printk(KERN_INFO ...
+I would delete them. Thanks for letting me know..
+Sanjana.
 
-	Prefer [subsystem eg: netdev]_alert([subsystem]dev, ... then
-	dev_alert(dev, ... then pr_alert(...  to printk(KERN_ALERT ...
+>
+> thanks,
+>
+> greg k-h
+>
 
-Sam Muhammed (4):
-  Staging: rtl8192u: ieee80211: Use netdev_dbg() for debug messages.
-  Staging: rtl8192u: ieee80211: Use netdev_warn() for network devices.
-  Staging: rtl8192u: ieee80211: Use netdev_info() with network devices.
-  Staging: rtl8192u: ieee80211: Use netdev_alert().
+--000000000000672359058481cd34
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
- .../rtl8192u/ieee80211/ieee80211_crypt_tkip.c | 19 ++++++------
- .../rtl8192u/ieee80211/ieee80211_module.c     |  3 +-
- .../rtl8192u/ieee80211/ieee80211_softmac.c    | 30 +++++++++++--------
- .../rtl8192u/ieee80211/ieee80211_softmac_wx.c |  4 +--
- .../staging/rtl8192u/ieee80211/ieee80211_tx.c | 26 +++++++---------
- .../staging/rtl8192u/ieee80211/ieee80211_wx.c |  7 ++---
- 6 files changed, 43 insertions(+), 46 deletions(-)
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, 20 Mar 2019, 12:19 Greg KH, &lt;<a href=3D"mai=
+lto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex">On Tue, Mar 19, 2019 at 08:56:48PM +=
+0530, Sanjana Sanikommu wrote:<br>
+&gt; Remove unnecessary blank lines.<br>
+&gt; Issue found by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer nore=
+ferrer" target=3D"_blank">checkpatch.pl</a><br>
+&gt; <br>
+&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"mailto:sanjana99reddy9=
+9@gmail.com" target=3D"_blank" rel=3D"noreferrer">sanjana99reddy99@gmail.co=
+m</a>&gt;<br>
+&gt; ---<br>
+&gt; Changes in v3:<br>
+&gt; Remove multiple blank lines from correct file.<br>
+&gt; <br>
+&gt; Changes in v2:<br>
+&gt; No changes<br>
+&gt;=C2=A0 drivers/staging/rtl8192u/r8192U_dm.c | 3 ---<br>
+&gt;=C2=A0 1 file changed, 3 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rt=
+l8192u/r8192U_dm.c<br>
+&gt; index 50a9fe667062..546bf5428848 100644<br>
+&gt; --- a/drivers/staging/rtl8192u/r8192U_dm.c<br>
+&gt; +++ b/drivers/staging/rtl8192u/r8192U_dm.c<br>
+&gt; @@ -45,17 +45,14 @@ static struct dynamic_rx_path_sel DM_RxPathSelTabl=
+e;<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 /*------------------------Define global variable----------------=
+-------------*/<br>
+&gt;=C2=A0 <br>
+&gt; -<br>
+&gt;=C2=A0 /*------------------------Define local variable-----------------=
+-------------*/<br>
+&gt;=C2=A0 /*------------------------Define local variable-----------------=
+-------------*/<br>
+&gt;=C2=A0 <br>
+&gt; -<br>
+&gt;=C2=A0 /*--------------------Define export function prototype----------=
+-------------*/<br>
+&gt;=C2=A0 extern=C2=A0 =C2=A0 =C2=A0 =C2=A0void dm_check_fsync(struct net_=
+device *dev);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 /*--------------------Define export function prototype----------=
+-------------*/<br>
+&gt;=C2=A0 <br>
+&gt; -<br>
+<br>
+This change is fine, but look at this file now.=C2=A0 All of these crazy<br=
+>
+comments can be deleted, they are not doing anything...<br></blockquote></d=
+iv></div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0</div><div dir=3D"auto">I wo=
+uld delete them. Thanks for letting me know..</div><div dir=3D"auto">Sanjan=
+a.</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"g=
+mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex">
+<br>
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div></div></div>
 
----
-2.20.1
-
+--000000000000672359058481cd34--
 
