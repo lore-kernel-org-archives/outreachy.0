@@ -1,95 +1,113 @@
-X-GM-THRID: 7448435884032
-X-Received: by 10.182.251.231 with SMTP id zn7mr34277933obc.24.1425995068432;
-        Tue, 10 Mar 2015 06:44:28 -0700 (PDT)
+X-GM-THRID: 6670872220839968768
+X-Received: by 2002:a9d:76c5:: with SMTP id p5mr3126223otl.283.1553183472676;
+        Thu, 21 Mar 2019 08:51:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.16.51 with SMTP id 48ls102279qga.15.gmail; Tue, 10 Mar
- 2015 06:44:28 -0700 (PDT)
-X-Received: by 10.236.70.100 with SMTP id o64mr36206622yhd.9.1425995068279;
-        Tue, 10 Mar 2015 06:44:28 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x22f.google.com (mail-pd0-x22f.google.com. [2607:f8b0:400e:c02::22f])
-        by gmr-mx.google.com with ESMTPS id m1si129886pdc.0.2015.03.10.06.44.28
+Received: by 2002:aca:b446:: with SMTP id d67ls160941oif.3.gmail; Thu, 21 Mar
+ 2019 08:51:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw/XhvCm38R0CPnUm26nk+jTBe/7QnoM3CVZ7ikpGTKT2TmmFXW96n2/z4Ai7Pw27WHfY7z
+X-Received: by 2002:aca:3d7:: with SMTP id 206mr2678275oid.74.1553183471932;
+        Thu, 21 Mar 2019 08:51:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553183471; cv=none;
+        d=google.com; s=arc-20160816;
+        b=W4SudWFgb/SfZ2LqrmRlc/n4vbhkHkz+V1bYAhZF+jSg9AdT93nAhIu5v2c0oObg9G
+         Ke1nZlNww0yOWHqd6EuRIGwS9tHX2W7duWRdPesQRLsbCLyme/NRY/y0oy2+3wUcxsyD
+         rctOes4982rIYy6Hic4mU6ue/mPyzcq5kK2s0erO7oTer5pC+UaxBQTMCFSIvYx46HK0
+         SrmEk8zkF2NJO4IfpZCgf0Gh/UlQc2nVem3pHIz164iTYkxyJQ10jAMb0e2L5Rh9orO9
+         X7zpeCX0hf774rr+uW9nYZFwjTxTO+MIslCNOq7hVDauHPi6E2oOT5NEJBZcI9w4jxD9
+         z5uw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=YGW6HbEkufrTQj713/RhWsc0OgjrxvkJHghtUmscUw8=;
+        b=yys0K2gS2eT4pDyfI4kOnwtpNIxPjhFP+CgtgqVpxHp4fR0Aw26qGFQ1IvzCkl3Vzi
+         SGnsnNOmSxFWw4fa4PBGCHRLbwc2GZtZU4LcWWJ8u88vDxDWwsi6b8Fbte7l3TBMee29
+         lJ4NQ2pMrRLRdupE0okkihkPm2RJ1Hg5xFgIeWMu3KBuapo0wDmNJAXcZZQ58Q4qkmgp
+         l8jkiuNvUuczXzeNLEhWxcO5GVEcmPDrtWoFjJ8mKNwlly1xoksIY+766meW/mciTPwD
+         D6vSsZQnnG3/ilMsQDbbviUh1dr5Q3a0IRCIxdR4S0bafWl9DZWS6hAsAS58RR4r4sNP
+         qglw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Bif+XPJu;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com. [2607:f8b0:4864:20::529])
+        by gmr-mx.google.com with ESMTPS id p8si288460oig.5.2019.03.21.08.51.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2015 06:44:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) client-ip=2607:f8b0:400e:c02::22f;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Mar 2019 08:51:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) client-ip=2607:f8b0:4864:20::529;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::22f as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x22f.google.com with SMTP id y10so1767750pdj.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2015 06:44:28 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Bif+XPJu;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::529 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x529.google.com with SMTP id u9so4465464pgo.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 08:51:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=uzfVzAuOu7sCNoOwn4yWLos58NsOc56jsr2fh2RsVuY=;
-        b=IGdT0gZmGDyv0M0AeaSuZvPzTbpl55TZbpHstTtCaIky807bdsyKX08cEM7x4Nez65
-         xw1DByRu5chla5if/rhFvRu6RtnlTs2tUeOdXnkAOu3YkG0pFS2aMgo0p2p4TPMFe1d9
-         tIMBWVBk3GQoelQ2V01nBY1Uj9lYa7AsNiz18wr5u2lbmjy9HUeSSGptJFB16xA1pnrs
-         LRBoCyyeWbdRIfCPA/RC37+Fzo9fBb6IWHA8oWiyfKNO0tuX1gO0a9hh5Br0z7i/KeCT
-         3zfL56xRvjNzoEjrcnxyTCUu83Q+EDejJwNsx26c3xvq3ItaZEwF09bL/rJ0WoHohwao
-         DHtg==
-X-Received: by 10.66.154.17 with SMTP id vk17mr65493949pab.5.1425995068005;
-        Tue, 10 Mar 2015 06:44:28 -0700 (PDT)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from akanksha ([14.139.82.6])
-        by mx.google.com with ESMTPSA id hz8sm1264352pac.5.2015.03.10.06.44.25
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Tue, 10 Mar 2015 06:44:26 -0700 (PDT)
-Date: Tue, 10 Mar 2015 19:12:42 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=YGW6HbEkufrTQj713/RhWsc0OgjrxvkJHghtUmscUw8=;
+        b=Bif+XPJu2OZ0KvbUMd1DrY5TH1P8MzTqNFTNZ8t5wSmdnWLXSIwqOdiebC4oPKKX12
+         OE9z20VlzHympW2x7FOJI2Ok6QcKoAU9MS06NzEGPhLsThp3oqshfZKVj5dADV3bRPWf
+         QIKHnNvryVSuNGNlC7OtuuuECO3fpfGvZEaOQRcUSQkRojclSGv6lhphtr9xxhJcOl09
+         sGX0azzzGrKfXd2ZX2ZLM7vXr55daWsEFRDu61209LNBcvC/U/rMzF151DbM7STEtrxA
+         QKLC4Oiql7jC6E5rBZzUejJ3qJR5DUPmtxMGWLME9sq0NJPok+yY8VBSPBxWmmxLdAan
+         J1RQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=YGW6HbEkufrTQj713/RhWsc0OgjrxvkJHghtUmscUw8=;
+        b=ALtQSegyu9J1obOudSE71FsBML3usqsDLIHU48pbMYD/oIfKXsJ4671KHhkd5YPzaN
+         DUhlGP630PlhSZztl8yzead4ZrxJ3sO9TTLKGwynjRNMmfg1Ix/Yqqu2Oskl0lYXCeK7
+         XONphQyIwao1RSIjyuZSrb6uDWknFVpsDXgd3c/Xkyhd6PA431EMyHkPMTG+L/tOyuUq
+         kkdtgZKJD22j6pQ9lbm8m/xHCZraK32IuhXqZ9Bxm3LZwNjLn96MyXp0dYxHKClSRrzN
+         2lKsZBrNOoL60aX+idsgn6E0jOqHfZZr+ubADVtyWYQNpOHNzy+ZjL95HhQw3g8NnEwP
+         IxFg==
+X-Gm-Message-State: APjAAAUi2XJEfqr4fVrQ5c+ph3r7OpUN4UL0IZbXlrtnw8Cx4GRkL7ot
+	w6MxjcafB35jNuehgjpwwQkNy0hH
+X-Received: by 2002:a17:902:87:: with SMTP id a7mr4189328pla.295.1553183471345;
+        Thu, 21 Mar 2019 08:51:11 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.235.30])
+        by smtp.gmail.com with ESMTPSA id e8sm6712880pfn.103.2019.03.21.08.51.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 21 Mar 2019 08:51:10 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: lustre: Remove unneeded variable and replace its
- uses
-Message-ID: <20150310134242.GA9593@akanksha>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH 2/3] [Outreachy kernel] staging: rtl8712: rtl8712_led.c: alignment should match open parenthesis
+Date: Thu, 21 Mar 2019 21:20:54 +0530
+Message-Id: <1553183454-8978-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-Variable dotdot is only used as a function parameter and
-can be replaced there directly to improve code compactness.
+Align code to the open parenthesis to fix the alignment issue.
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/llite_nfs.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8712/rtl8712_led.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_nfs.c b/drivers/staging/lustre/lustre/llite/llite_nfs.c
-index 6a67e71..b8ced3d 100644
---- a/drivers/staging/lustre/lustre/llite/llite_nfs.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_nfs.c
-@@ -287,7 +287,6 @@ static struct dentry *ll_get_parent(struct dentry *dchild)
- 	struct ll_sb_info     *sbi;
- 	struct dentry	 *result = NULL;
- 	struct mdt_body       *body;
--	static const char	   dotdot[] = "..";
- 	struct md_op_data     *op_data;
- 	int		   rc;
- 	int		      lmmsize;
-@@ -303,8 +302,8 @@ static struct dentry *ll_get_parent(struct dentry *dchild)
- 	if (rc != 0)
- 		return ERR_PTR(rc);
- 
--	op_data = ll_prep_md_op_data(NULL, dir, NULL, dotdot,
--				     strlen(dotdot), lmmsize,
-+	op_data = ll_prep_md_op_data(NULL, dir, NULL, "..",
-+				     2, lmmsize,
- 				     LUSTRE_OPC_ANY, NULL);
- 	if (IS_ERR(op_data))
- 		return (void *)op_data;
-@@ -321,7 +320,7 @@ static struct dentry *ll_get_parent(struct dentry *dchild)
- 	CDEBUG(D_INFO, "parent for "DFID" is "DFID"\n",
- 		PFID(ll_inode2fid(dir)), PFID(&body->fid1));
- 
--	result = ll_iget_for_nfs(dir->i_sb, &body->fid1, NULL);
-+	
- 
- 	ptlrpc_req_finished(req);
- 	return result;
+diff --git a/drivers/staging/rtl8712/rtl8712_led.c b/drivers/staging/rtl8712/rtl8712_led.c
+index a0c3cf8..344971d 100644
+--- a/drivers/staging/rtl8712/rtl8712_led.c
++++ b/drivers/staging/rtl8712/rtl8712_led.c
+@@ -883,7 +883,7 @@ static void SwLedControlMode1(struct _adapter *padapter,
+ 	case LED_CTL_NO_LINK:
+ 		if (!pLed->bLedNoLinkBlinkInProgress) {
+ 			if (pLed->CurrLedState == LED_SCAN_BLINK ||
+-			  IS_LED_WPS_BLINKING(pLed))
++			    IS_LED_WPS_BLINKING(pLed))
+ 				return;
+ 			if (pLed->bLedLinkBlinkInProgress) {
+ 				del_timer(&pLed->BlinkTimer);
+@@ -1124,7 +1124,7 @@ static void SwLedControlMode2(struct _adapter *padapter,
+ 		if (!pLed->bLedBlinkInProgress &&
+ 		    check_fwstate(pmlmepriv, _FW_LINKED)) {
+ 			if (pLed->CurrLedState == LED_SCAN_BLINK ||
+-			   IS_LED_WPS_BLINKING(pLed))
++			    IS_LED_WPS_BLINKING(pLed))
+ 				return;
+ 			pLed->bLedBlinkInProgress = true;
+ 			pLed->CurrLedState = LED_TXRX_BLINK;
 -- 
-1.9.1
+2.7.4
 
 
