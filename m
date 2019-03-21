@@ -1,69 +1,147 @@
-X-GM-THRID: 9130553114624
-X-Received: by 10.180.80.35 with SMTP id o3mr829207wix.0.1426791850618;
-        Thu, 19 Mar 2015 12:04:10 -0700 (PDT)
+X-GM-THRID: 6670781063292256256
+X-Received: by 2002:a50:cb0d:: with SMTP id g13mr298348edi.12.1553164981459;
+        Thu, 21 Mar 2019 03:43:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.100.132 with SMTP id ey4ls193573wib.26.gmail; Thu, 19 Mar
- 2015 12:04:10 -0700 (PDT)
-X-Received: by 10.194.236.196 with SMTP id uw4mr9256449wjc.5.1426791850012;
-        Thu, 19 Mar 2015 12:04:10 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from mail-we0-x22e.google.com (mail-we0-x22e.google.com. [2a00:1450:400c:c03::22e])
-        by gmr-mx.google.com with ESMTPS id i8si204047wif.1.2015.03.19.12.04.10
+Received: by 2002:a50:d5c6:: with SMTP id g6ls1294044edj.5.gmail; Thu, 21 Mar
+ 2019 03:43:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwrlX5Z9xI4OJKWux4vkt+MFIMXFKqW0u8A3skNnebfoqknHz0duDxskGMZeoOxvQ4mNDaQ
+X-Received: by 2002:a50:b3d6:: with SMTP id t22mr229822edd.2.1553164980470;
+        Thu, 21 Mar 2019 03:43:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553164980; cv=none;
+        d=google.com; s=arc-20160816;
+        b=degXSZoVJySIe3sCUDbewPBm1ttWeeRl0RIyPbfLRLKaaSM5OzXiyUHnuuMMsAnJn4
+         Q6FsN0789Dbr99D+D9Uk9iEZhS81Y7SWFJhcqJ+kEBFnC/jvAqRgFu8+cbRs6UbBSqvZ
+         pu/36n+zpcek7A09G3GRLF1sbxzqSbVjOttmngv526IHSgQbXPl0AtQQCJvBB/rnnevx
+         W9kR5Di6n9IRXPD4Mwn7HMKbw1nGkbLFByOlw/5p45b5/iXJrNIgJFpL/mrT28a1J+ft
+         1OOZvtV4HMLATl1PKfMLw3JhoIE+yxeWpEyazsQT4MfQpsRLndGodBw54FkSHU3WLyyk
+         WJMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=BlpueNVgWk6rPxqyXtVPA0WkWLmeTVSBKmylOa6YvlA=;
+        b=O7EWocwbqrTQKdVrdt/63N30z/lbtorwoz7UQMSEAeckfFEkQTIaypBMyCeX7oXdH5
+         EbBjnNu33BdcUT+moAQ6kjA7IDoUA+DRLCmPz3pKmbpi8zES7l8fnaBWTBybgX8a6H8G
+         LP8egHr/7m80qs2IyDtKr3UqxCHr9fuRRtNn3RJEIiCkFDXBunwKdowN7dAI8CL02EiR
+         i0WVfxb+4NOED66cOSk8ggFzSWqlQaMmNQTlCbAwjnw823tXUY01tYLVG9l6gJ6SgvgN
+         4fW4SO3TtL9RkGUQXA5R7U07DRzdQD30Co7q0Epd92yZxPNQpoLf3NKh0Nnb+JhNaNZM
+         xLAQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r10si180710eda.4.2019.03.21.03.43.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2015 12:04:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) client-ip=2a00:1450:400c:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Mar 2019 03:43:00 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of cristina.opriceana@gmail.com designates 2a00:1450:400c:c03::22e as permitted sender) smtp.mail=cristina.opriceana@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x22e.google.com with SMTP id k59so65072016wet.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2015 12:04:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=AOgs1RKAIpgGhxi8iY9ZvLvVBHlGwp6Ey8MTU5dvZCg=;
-        b=TM8hsJJiRzYIsEH3wYozamXxqBrNlPbl5AcUXGpJ2njiGkx/3bR3lHAcLmkVxBWE6b
-         65sy6SOMrJUdyAZiYNtWSX3lzUb4PDYbd1iCCvAhLKRwYHBdWQ6Hq4vJpH4ZlctW40ed
-         PxxqKX2eyPfHaujEbUb0LSRs9615t/n+NXVbhF7JgxqoOQgY1R+G66UepGJBlXRyzcyG
-         Fjeva0QjRhk7Tmg/h9vSpZmex7dzRmvzy+okGnJ2p4IayAfwu5+62/ruB/MZeeVoRn+D
-         KjyHI7rJ1YYjVxJgmp6Ky0/Rcc0woC8myX/xOq3y0Yd7QnFn0EBYg4N3J6TlUwkaSD8P
-         7rsA==
-X-Received: by 10.180.105.136 with SMTP id gm8mr19241891wib.13.1426791849956;
-        Thu, 19 Mar 2015 12:04:09 -0700 (PDT)
-Return-Path: <cristina.opriceana@gmail.com>
-Received: from Inspiron (p3.eregie.pub.ro. [141.85.0.103])
-        by mx.google.com with ESMTPSA id ga8sm3643632wib.11.2015.03.19.12.04.08
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 19 Mar 2015 12:04:09 -0700 (PDT)
-Date: Thu, 19 Mar 2015 21:03:25 +0200
-From: Cristina Opriceana <cristina.opriceana@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/5] Fix iio/magnetometer style warnings
-Message-ID: <cover.1426790662.git.cristina.opriceana@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,252,1549926000"; 
+   d="scan'208";a="300224998"
+Received: from wifi-eduroam-85-116.paris.inria.fr ([128.93.85.116])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Mar 2019 11:42:59 +0100
+Date: Thu, 21 Mar 2019 11:42:59 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Himadri Pandya <himadri18.07@gmail.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: netlogic: Remove unnecessary
+ error print
+In-Reply-To: <CAPnhUpaXwEBMFa_ukU9uauFuEaUojMju_kG+WHnJ9SQcAXrSpA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.20.1903211141480.5292@hadrien>
+References: <20190321095717.24155-1-himadri18.07@gmail.com> <alpine.DEB.2.20.1903211106390.5292@hadrien> <CAPnhUpaXwEBMFa_ukU9uauFuEaUojMju_kG+WHnJ9SQcAXrSpA@mail.gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; BOUNDARY="8323329-1555595886-1553164979=:5292"
 
-This patchset fixes some iio/magnetometer style warnings in order to
-keep the code clean.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Cristina Opriceana (5):
-  Staging: iio: Simplify NULL pointer condition
-  Staging: iio: Align function parameters to match first row
-  Staging: iio: Remove multiple blank lines
-  Staging: iio: Remove line over 80 characters
-  Staging: iio: Add kernel-doc for struct hmc5843
+--8323329-1555595886-1553164979=:5292
+Content-Type: text/plain; charset=ISO-8859-15
+Content-Transfer-Encoding: 8BIT
 
- drivers/staging/iio/magnetometer/hmc5843.h      | 13 ++++--
- drivers/staging/iio/magnetometer/hmc5843_core.c | 59 ++++++++++++++-----------
- drivers/staging/iio/magnetometer/hmc5843_i2c.c  |  8 ++--
- 3 files changed, 46 insertions(+), 34 deletions(-)
 
--- 
-1.9.1
 
+On Thu, 21 Mar 2019, Himadri Pandya wrote:
+
+>
+>
+> On Thu, Mar 21, 2019 at 3:38 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
+>
+>
+>       On Thu, 21 Mar 2019, Himadri Pandya wrote:
+>
+>       > Kmalloc normally produces a backtrace when there is not enough memory.
+>       > So it is unnecessary to print an error message that provides only this
+>       > information. Hence, remove pr_error() from memory allocation check.
+>       > Issue found using Coccinelle.
+>       >
+>       > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+>       > ---
+>       >� drivers/staging/netlogic/xlr_net.c | 4 +---
+>       >� 1 file changed, 1 insertion(+), 3 deletions(-)
+>       >
+>       > diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
+>       > index 8554fcf4321b..afba1248e100 100644
+>       > --- a/drivers/staging/netlogic/xlr_net.c
+>       > +++ b/drivers/staging/netlogic/xlr_net.c
+>       > @@ -389,10 +389,8 @@ static void *xlr_config_spill(struct xlr_net_priv *priv, int reg_start_0,
+>       >� � � �base = priv->base_addr;
+>       >� � � �spill_size = size;
+>       >� � � �spill = kmalloc(spill_size + SMP_CACHE_BYTES, GFP_ATOMIC);
+>       > -� � �if (!spill) {
+>       > -� � � � � � �pr_err("Unable to allocate memory for spill area!\n");
+>       > +� � �if (!spill)
+>       >� � � � � � � �return ZERO_SIZE_PTR;
+>
+>       This seems to be the only driver that uses ZERO_SIZE_PTR as the result for
+>       kmalloc.� It could be worth looking into what happens to this value
+>       afterwards.
+>
+>       julia
+>
+>
+> This is interesting. Later the pointer spill�is aligned with�SMP_CACHE_BYTES (which is defined using L1_CACHE_BYTES).��As per my understanding,�xlr_config_spill() returns ZERO_SIZE_PTR if kmalloc()�cannot allocate sufficient
+> memory(equivalent to spill_size) as the return value is being used to configure network accelerator's communication interface.
+
+The questin is who is checking the return value and whether it is checked
+in the right manner.  I looked quickly at the cal site, and it seemed that
+the result as stored in a structure field with no checking,  But perhaps
+some checking is done afterwards.
+
+julia
+
+>
+> Please correct me if I am mistaken.
+>
+> Thank you.
+>
+> - Himadri
+> �
+>
+>       > -� � �}
+>       >
+>       >� � � �spill = PTR_ALIGN(spill, SMP_CACHE_BYTES);
+>       >� � � �phys_addr = virt_to_phys(spill);
+>       > --
+>       > 2.17.1
+>       >
+>       > --
+>       > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>       > To post to this group, send email to outreachy-kernel@googlegroups.com.
+>       > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190321095717.24155-1-himadri18.07%40gmail.com.
+>       > For more options, visit https://groups.google.com/d/optout.
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAPnhUpaXwEBMFa_ukU9uauFuEaUojMju_kG%2BWHnJ9SQcAXrSpA%40mail.gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
+>
+--8323329-1555595886-1553164979=:5292--
 
