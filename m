@@ -1,86 +1,103 @@
-X-GM-THRID: 8071528054784
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,b064a26b34e980c2,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.50.30.134 with SMTP id s6mr51432019igh.2.1426261024900;
-        Fri, 13 Mar 2015 08:37:04 -0700 (PDT)
+X-GM-THRID: 6670855650542616576
+X-Received: by 2002:ac8:2e75:: with SMTP id s50mr3371076qta.375.1553179614244;
+        Thu, 21 Mar 2019 07:46:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.101.111 with SMTP id t102ls1787895qge.62.gmail; Fri, 13
- Mar 2015 08:37:04 -0700 (PDT)
-X-Received: by 10.236.63.42 with SMTP id z30mr48177498yhc.37.1426261024720;
-        Fri, 13 Mar 2015 08:37:04 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
-        by gmr-mx.google.com with ESMTPS id pc4si448404pac.0.2015.03.13.08.37.04
+Received: by 2002:a37:58c4:: with SMTP id m187ls2554963qkb.7.gmail; Thu, 21
+ Mar 2019 07:46:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyVrRe2+3SQWxZXvcVqo0Xyt+HPqzV0wESdojcLyiX3HyfsbfbyZSXFolq75oH2jv0xHzgf
+X-Received: by 2002:a05:620a:9:: with SMTP id j9mr2726830qki.45.1553179613608;
+        Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553179613; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ymbqe3yt3I4jgZ2ccMsEXKIOH9HXSevH8eVMra2uIaItChjNgF8lRxjkXDlnWDlpqO
+         DeV7A8IreTpa+ZL9xzHt+VI5rcfJdwbkgiwfTR4OMYD9hMLvx3eq6tuWO+tk5UJiTChz
+         dER7EMRWGD0hK7TWWmJoLwAiNfxrA6CB+NAZ1a5SDmaqYwNDF2ncg0OPz+K7gIc98+rK
+         GKN+NSVn7Ds3z3pcwjB1J1vmdzGpdCWXiTVUniT+r5SNVJ2V7oHDuwnzByF9+ok82ZeN
+         Q3Dp8KOUgqFwPEV7w7yFrNh9MtGtOVLKElNf9CU5XfNCm9UGxp8fsJrr4/rcMgR40U1O
+         rQIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=/hTUQrIi1jucBYFDVpMDNyl0WP2rCy4RLAd9fdCHwjc=;
+        b=nvGjaeb/blM58jl9ZI50v8sRjAVRFXxYshP1gPW4OVs1NddYXCsznyZygRMockHLWJ
+         6zS5HcM8yxkWJjg1rOeeUAjL2E6I7ORlO+CrPyMmHxjH7aaOqN2zNJVXy6OVaRPIgGg2
+         /RLg45J6U/Q4KA+wy7dNILyCm5i11sPQPNcjhztBrq0h0lmjyVkoDpQUvv5UJNsid3jw
+         ef6LgXa9nj++O28TntPPdPRrav/NTKl2yWwKsxdLudIxB3IMQYC6JeE7arNFjVl40hoJ
+         QLXs1LoR2tsPHvDjzvTMy/Lmu+vWqQ3mWO74A81lIUeajquen+RtUjy1LL9mcTLtQuV4
+         c9MA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Me7MLlZB;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
+        by gmr-mx.google.com with ESMTPS id t17si508976qtq.0.2019.03.21.07.46.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2015 08:37:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of darshanapadmadas@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=darshanapadmadas@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdjp10 with SMTP id p10so29696405pdj.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2015 08:37:04 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Me7MLlZB;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42d.google.com with SMTP id 9so4191710pfj.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:content-type
-         :content-transfer-encoding;
-        bh=cdqDFuzFVfzTLxKlPEcxlbtiPCs6isVhwtYnjn+D73o=;
-        b=CqmsQXn+1dh1AMKgVIW3XYeJcokJWpqVCLayUJ2rXFeBySIVR/30K7CUE3FHntO9d/
-         2wTRZYsCxqa+USjeaJLddgMOgaWPorEbJQxrgUYdEHQOcA9fdS76k4mDlJ8awFFGR6Nu
-         EoC2nr/U1IlLyl6I0fIV+QAsFUZ6TNjvQPUgcqrlpaVTKntpR0aPJmDUhHUJUqgr0pyU
-         RAyrw7S0PZHR9VJF5RQMMi/XXIMZSQNHlIBxjdn0GPql8sxVxPiImmXffB/ErlWW8tH4
-         zYLbKPEI7IXNiLE6ITG9SONnTIZzjjyfJUlOf12EChQwNgtXJ6YVu9wOYXEsVg3gHYBu
-         aLKA==
-X-Received: by 10.66.193.226 with SMTP id hr2mr64318286pac.47.1426261024328;
-        Fri, 13 Mar 2015 08:37:04 -0700 (PDT)
-Return-Path: <darshanapadmadas@gmail.com>
-Received: from localhost ([182.19.48.18])
-        by mx.google.com with ESMTPSA id tg14sm4126521pac.15.2015.03.13.08.37.02
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 13 Mar 2015 08:37:03 -0700 (PDT)
-From: Darshana Padmadas <darshanapadmadas@gmail.com>
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=/hTUQrIi1jucBYFDVpMDNyl0WP2rCy4RLAd9fdCHwjc=;
+        b=Me7MLlZBjDFI/Su0t3jtQV5hCwtBpq51fziFXh2IlPUBtrY8DmxyY6aXfRt8rYN2Si
+         TkYzSlNMQ8U6MDtzv5t2FSFqmxGCtvmIHSIZ7ltIS3IrneJ/6IcCmNgBJLQPZql77U4A
+         3OtSsxlfRPOW33/5P3xkDfMZ4rer9p/NAbd5H+oUUXS4EwpbJVcDhgcPJAJkg0L36S/H
+         TonFZ/dSuE/qB6ebZL4GD2tEnbD1e7fSukeGfMbm42PqcgSoO49VhQfAiff96BTGqtP0
+         gSMdo66T8i+iWG9OO4O6EH+Xl00H+5kcUQReWtJ/y7dfFAN5Js6gL/OVkMMJHX1vaM/g
+         1r5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=/hTUQrIi1jucBYFDVpMDNyl0WP2rCy4RLAd9fdCHwjc=;
+        b=Xear8EwNMXyhff/PpvTdxjQXj8IZE5ZObM0qFiADbthKRxt4Yz46P9Tzgh72lAyrca
+         aZieuYQ/wA5/h4jZ1v30tG39Rp/F3AtnTDndks+VhJcV/x2hqc2ogC3kCenXzltb0dT4
+         WS2PHAZe5g7oTqDtRdJ9ekOsOXYtv11nxGhYxm39w1aTQOr8UyaUfifuQ5DxcGJy9Iv4
+         HqGGms905cJuahwsPD9lRsJWmQ0CrYOaIs+upa2Gc1IWPgXFXEmczHSm+aGNc/pxBhy9
+         u7q++9t5LakdyKoHZvZsFiniul9qmYUY9u8cfQsbxD7cxWecjQ1lDMsNEf5TpL0fpCbS
+         D9Ww==
+X-Gm-Message-State: APjAAAVEW86ncIkw/lBil7PfvWiohhuuXDMULkUuybZv3LKPVw1J/RtF
+	IhlQ5+hP2GwwJbUZvX0hX0VwtJaS
+X-Received: by 2002:a17:902:10d:: with SMTP id 13mr4045884plb.230.1553179613008;
+        Thu, 21 Mar 2019 07:46:53 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.235.30])
+        by smtp.gmail.com with ESMTPSA id k83sm15820782pfj.178.2019.03.21.07.46.50
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 21 Mar 2019 07:46:51 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: jic23@kernel.org,
-	gregkh@linuxfoundation.org,
-	linux-iio@vger.kernel.org,
-	Darshana Padmadas <darshanapadmadas@gmail.com>
-Subject: [PATCH v2] iio: Add ABI documentation for in_magn offset value
-Date: Fri, 13 Mar 2015 21:06:58 +0530
-Message-Id: <1426261018-6025-1-git-send-email-darshanapadmadas@gmail.com>
-X-Mailer: git-send-email 1.9.1
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH 1/2] [Outreachy kernel] staging: rtl8712: rtl8712_efuse.h: remove blank line
+Date: Thu, 21 Mar 2019 20:16:38 +0530
+Message-Id: <1553179598-6366-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-This patch adds ABI documentation entries for in_magn_offset.
-There is one user, hid-sensor-magn-3d in drivers/iio/magnetometer.
+To avoid style issues, remove multiple blank lines.
 
-Signed-off-by: Darshana Padmadas <darshanapadmadas@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
-Changes in v2:
-    - Removed attribute in_magn_raw as no driver in drivers/iio/magnetometer
-      or staging/iio/magnetometer has info_mask_separate set to
-      IIO_CHAN_INFO_RAW without any modifiers.
-    - Changed subject and commit message accordingly.
+ drivers/staging/rtl8712/rtl8712_efuse.h | 1 -
+ 1 file changed, 1 deletion(-)
 
- Documentation/ABI/testing/sysfs-bus-iio | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/ABI/testing/sysfs-bus-iio b/Documentation/ABI/testing/sysfs-bus-iio
-index 9a70c31..4fd3976 100644
---- a/Documentation/ABI/testing/sysfs-bus-iio
-+++ b/Documentation/ABI/testing/sysfs-bus-iio
-@@ -253,6 +253,7 @@ What:		/sys/bus/iio/devices/iio:deviceX/in_temp_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressureY_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_pressure_offset
- What:		/sys/bus/iio/devices/iio:deviceX/in_humidityrelative_offset
-+What:		/sys/bus/iio/devices/iio:deviceX/in_magn_offset
- KernelVersion:	2.6.35
- Contact:	linux-iio@vger.kernel.org
- Description:
+diff --git a/drivers/staging/rtl8712/rtl8712_efuse.h b/drivers/staging/rtl8712/rtl8712_efuse.h
+index dbba51cd..41de101 100644
+--- a/drivers/staging/rtl8712/rtl8712_efuse.h
++++ b/drivers/staging/rtl8712/rtl8712_efuse.h
+@@ -4,7 +4,6 @@
+ 
+ #include "osdep_service.h"
+ 
+-
+ #define _REPEAT_THRESHOLD_	3
+ 
+ #define EFUSE_MAX_SIZE		512
 -- 
-1.9.1
+2.7.4
 
 
