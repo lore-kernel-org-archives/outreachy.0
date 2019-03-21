@@ -1,151 +1,169 @@
 X-GM-THRID: 6670803508303757312
-X-Received: by 2002:a17:902:9a02:: with SMTP id v2mr5184322plp.201.1553195402607;
-        Thu, 21 Mar 2019 12:10:02 -0700 (PDT)
+X-Received: by 2002:a67:8797:: with SMTP id j145mr1005080vsd.12.1553167474299;
+        Thu, 21 Mar 2019 04:24:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:164d:: with SMTP id 74ls2657591pfw.7.gmail; Thu, 21 Mar
- 2019 12:10:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxm9UqOgYrDhPrJ1p/v01U7spALAgGQv/AXwWZwpC0/bp6xHO2vULPBWJxeKCQc70R0eUIV
-X-Received: by 2002:a65:6283:: with SMTP id f3mr4859504pgv.125.1553195401940;
-        Thu, 21 Mar 2019 12:10:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553195401; cv=none;
+Received: by 2002:a1f:2aca:: with SMTP id q193ls845429vkq.2.gmail; Thu, 21 Mar
+ 2019 04:24:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyGKbDpNXqHzg8uftcey2+DN3K7MWknAWKnJBXvONVlF3xcyA0O2GBAmyDUgWp4CeX5cXwz
+X-Received: by 2002:a1f:2a48:: with SMTP id q69mr844181vkq.7.1553167473415;
+        Thu, 21 Mar 2019 04:24:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553167473; cv=none;
         d=google.com; s=arc-20160816;
-        b=fCmLZx+QpmJoVnFO82ZRIUCeGPA+1nyHPP/zm9oL7TNbpPL2rxazC4PBSVXTJaWQLT
-         Kt4xWLwbuFRtFUvhUJcVPHlU6XVCJxrMBEP2bmLxhv6wDJnIoTfnJ7CBdyZIIeEPwNVE
-         gKyGfD+nYdstKyhSGom3yTD5Q2YDi6tad2DD3JPwNs3gBYNyGHYJiVnFnNMoN6aEKCmr
-         jXkQU82nHuP0JjdD7PEWjkcIeW1kg7jeha29ZFz4zoplig1QYNpdCL3zORj3Edp7fATA
-         wOx4jiSGQJgBPw5qMuE7utXfKC4wec5Gujg73t2fp983FBoCagE6RB4oC0ex6yiti6Ya
-         Qxmw==
+        b=Pc1J/wUf3tu+OiIUY3lIObyamAaIjulmtHkL2ZeYWx8WZnPfGXWP1U2N0vUUFKcQvT
+         owTsTVneBidnZxJnIltS4OVaZgbWWLANe7FoQmvo8pRS5hNGL9re5cOLuzDMHB8GwJzA
+         4JS6pRk6bRA2ASBZZmReCAPTlzQJBHsrL0RXXHaerRfEcelWDi0QxIvyUm1UOGlhN/8w
+         mpvVmekA1MNmI/YtGy3E/+XC1qUh7qm/9v0ncLJttaeFRMhr6eCCG2XRhI71+2CWselG
+         OprgCZTovmeK6GF6n6uXujem2ekeOzRyQ/FEhh1YafpiY2sFBoJovETVlBZVeUOo3gqp
+         K8Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=d7+tH04lEkqJNJQFOMfDYZixq5zTMfLFK6yFNUtDbJs=;
-        b=1Lo8PV2Xn4B+J7FPzFIqqMyAUOej3YL2vt4p7uElrVB24iLKYA29ifus4AqDm6IILW
-         VBbzNbsJFpB+FqriTkY9N9nNw/v79/Fejz3Bj0vkTlulWTuQkMngND138MqPLiDXRjN+
-         ssLzmVVTAkk4Yfm0drC+lR+pQNI9J5XzBLCjuEoyreLvyK1cRcTZ7z6O0jms47bNSdHY
-         7r8TY9c3x+WCfrAsy6hT+luOrh+Bcp6kS2XyNzEzvrRqE83DXLql1YpNO12rHsPbTICu
-         ge2ki0Gf6Rw7XM3hKFOZD6v/6Y5nuHQuLFreBfixybEODf7EtZdv28JXojIng9gjCWGn
-         V7Qg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=dF2w8smfM+kpiwHvc/eUghXEhosdqwIYSOYvVOWMImA=;
+        b=hbfqDV6fpBY6kqS8hRIOVFb7oKlYaHLtpaTYPtZKmt9/6qqDQWODHgQ80fr69xa7Hh
+         +UKtKocR58uuaws5mXe6HrwvNArLQZq2UH6NLI80zin4jXiGJX63I/l0ZB1gy1p2U7ZW
+         A9MeZfz3nnFScLDI+HWJL1YkKyJ5hWFhrCWwcOnFBdD9m0by4P2PItHKgmnxbQuqWhJH
+         XsJVfNshoQOxc0EsSpPsWgy01deqqOqO5Ogtdp15uX9WgH5HhZwZP2/ryIjviglHlVnB
+         V96fq2MbI/FGRx5fpfD02K31wC7e2MN6FsW78ydSRlG2hHo4EFS+axcwEJq1dJ7ElKll
+         pqCA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="dY/XMlxj";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id c6si371125pgm.2.2019.03.21.12.10.01
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YyH8JjyO;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id x82si281658vkd.1.2019.03.21.04.24.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 12:10:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 21 Mar 2019 04:24:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="dY/XMlxj";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 2D66B218D4;
-	Thu, 21 Mar 2019 19:10:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553195401;
-	bh=WYkJGVbUH5+APacfVQi0GLVlhjLAZRY/Kerx4L3PoT0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dY/XMlxjkw5tRUE4sAq9sydKcLwf70NH27/vZcgMzTWpZHqdET1wph4wP9SQOKSOH
-	 lmzMDwAsWebdSpLeJE8Cjnq7BevkQvnJ7Nb2Po5ihl5/mptQHC3Vivq6/HmGFe8Anq
-	 BXbXQ+55REM70UYkdlwVoUcDFbmBL39LsgsDBaW8=
-Date: Thu, 21 Mar 2019 20:09:59 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 3/3] [Outreachy kernel] staging: sm750fb: avoid camelcase
- variable names
-Message-ID: <20190321190959.GA11615@kroah.com>
-References: <1553167457-12539-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YyH8JjyO;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id k11so3984371pgb.8
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 04:24:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=dF2w8smfM+kpiwHvc/eUghXEhosdqwIYSOYvVOWMImA=;
+        b=YyH8JjyOrgdWpC6H2N8bxOXhqrpibfMtSQ3CsRuc/dp1mVJRRrYtmM+CH1ouEJeBsi
+         XWjE7jqO5BQ5gbumdzKmIII1F1bPrqX3PBHeYX6dsDEcjHmTJ8evWGB9QX+3B+cIb9hu
+         dmTb3qSskXj55jMMRHtpCLzeZr7SKUW8ZGEvfhxzkY66g/2zVo4s6KKjARXz95vKrwaY
+         S7iygJmLYqqsGW1oRxgNdViR/rN7Xh4kqNoXPuUcOrjERk5WJQYt/MocY+BxcCYnlepY
+         DDxsTAI4YkWHB86nz5ulWz7X5rjxkO1errhTbkhEc0ubESRJRAdLgIi+zYyV2FpdNDUR
+         anUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=dF2w8smfM+kpiwHvc/eUghXEhosdqwIYSOYvVOWMImA=;
+        b=EwOSjoNEPSkxXwjiMg4bxxfXpeEIz907BfagqxQ0+Cy1vLH+ZXmCWoI3sXFYcXqgN4
+         n8EDwsHrYJPYPbuTBa70wOt4XwPcrOATKL8+UhRK1UVtmaXVEfaPfnk9XuFSSvgDe5bZ
+         glNJWT9/5iTXRhNHWHAe/7wDErCVNdXFcvCm/qLzZ0R8MknY10UjHAB9towxtM3Puv/y
+         K+Hgp4a8yVuVAa54cplHSwbQcAz0B0w9zGVXkMrZs5qLl0dJV4TBZUgKru7QoDfDivaw
+         gU4vnIAK6fb+vs+4EVQJeiYOqeIRyoDBKcRGIkPC2YKkUUaacd0K2cQeg3NQs2CT0KxQ
+         hCyQ==
+X-Gm-Message-State: APjAAAX34RH8fO2ZqUrki4i0OpKcW625GAEVFjxRmfU4HE+FDjafpKjZ
+	VaNvOhonzAqBWajd/sy6OOKdjaPr
+X-Received: by 2002:a17:902:1486:: with SMTP id k6mr2955418pla.3.1553167472231;
+        Thu, 21 Mar 2019 04:24:32 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.215.204])
+        by smtp.gmail.com with ESMTPSA id r82sm9385390pfa.161.2019.03.21.04.24.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 21 Mar 2019 04:24:31 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH 3/3] [Outreachy kernel] staging: sm750fb: avoid camelcase variable names
+Date: Thu, 21 Mar 2019 16:54:17 +0530
+Message-Id: <1553167457-12539-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1553167457-12539-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
 
-On Thu, Mar 21, 2019 at 04:54:17PM +0530, Payal Kshirsagar wrote:
-> Eliminate camelcase variable names to fix the style issue – ‘avoid
-> camelcase’.
-> 
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_mode.c | 32 ++++++++++++++++----------------
->  1 file changed, 16 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-> index ab21337..5dfa87d 100644
-> --- a/drivers/staging/sm750fb/ddk750_mode.c
-> +++ b/drivers/staging/sm750fb/ddk750_mode.c
-> @@ -14,7 +14,7 @@
->   * in bit 29:27 of Display Control register.
->   */
->  static unsigned long display_control_adjust_SM750LE(struct mode_parameter *p_mode_param,
-> -						    unsigned long dispControl)
-> +						    unsigned long disp_control)
->  {
->  	unsigned long x, y;
->  
-> @@ -35,42 +35,42 @@ static unsigned long display_control_adjust_SM750LE(struct mode_parameter *p_mod
->  	       ((x - 1) & CRT_AUTO_CENTERING_BR_RIGHT_MASK));
->  
->  	/*
-> -	 * Assume common fields in dispControl have been properly set before
-> +	 * Assume common fields in disp_control have been properly set before
->  	 * calling this function.
-> -	 * This function only sets the extra fields in dispControl.
-> +	 * This function only sets the extra fields in disp_control.
->  	 */
->  
->  	/* Clear bit 29:27 of display control register */
-> -	dispControl &= ~CRT_DISPLAY_CTRL_CLK_MASK;
-> +	disp_control &= ~CRT_DISPLAY_CTRL_CLK_MASK;
->  
->  	/* Set bit 29:27 of display control register for the right clock */
->  	/* Note that SM750LE only need to supported 7 resolutions. */
->  	if (x == 800 && y == 600)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL41;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL41;
->  	else if (x == 1024 && y == 768)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL65;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL65;
->  	else if (x == 1152 && y == 864)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL80;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL80;
->  	else if (x == 1280 && y == 768)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL80;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL80;
->  	else if (x == 1280 && y == 720)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL74;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL74;
->  	else if (x == 1280 && y == 960)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL108;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL108;
->  	else if (x == 1280 && y == 1024)
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL108;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL108;
->  	else /* default to VGA clock */
-> -		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL25;
-> +		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL25;
->  
->  	/* Set bit 25:24 of display controller */
-> -	dispControl |= (CRT_DISPLAY_CTRL_CRTSELECT | CRT_DISPLAY_CTRL_RGBBIT);
-> +	disp_control |= (CRT_DISPLAY_CTRL_CRTSELECT | CRT_DISPLAY_CTRL_RGBBIT);
->  
->  	/* Set bit 14 of display controller */
-> -	dispControl |= DISPLAY_CTRL_CLOCK_PHASE;
-> +	disp_control |= DISPLAY_CTRL_CLOCK_PHASE;
->  
-> -	poke32(CRT_DISPLAY_CTRL, dispControl);
-> +	poke32(CRT_DISPLAY_CTRL, disp_control);
->  
-> -	return dispControl;
-> +	return disp_control;
->  }
->  
->  /* only timing related registers will be  programed */
+Eliminate camelcase variable names to fix the style issue – ‘avoid
+camelcase’.
 
-This patch also does not apply :(
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+ drivers/staging/sm750fb/ddk750_mode.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+index ab21337..5dfa87d 100644
+--- a/drivers/staging/sm750fb/ddk750_mode.c
++++ b/drivers/staging/sm750fb/ddk750_mode.c
+@@ -14,7 +14,7 @@
+  * in bit 29:27 of Display Control register.
+  */
+ static unsigned long display_control_adjust_SM750LE(struct mode_parameter *p_mode_param,
+-						    unsigned long dispControl)
++						    unsigned long disp_control)
+ {
+ 	unsigned long x, y;
+ 
+@@ -35,42 +35,42 @@ static unsigned long display_control_adjust_SM750LE(struct mode_parameter *p_mod
+ 	       ((x - 1) & CRT_AUTO_CENTERING_BR_RIGHT_MASK));
+ 
+ 	/*
+-	 * Assume common fields in dispControl have been properly set before
++	 * Assume common fields in disp_control have been properly set before
+ 	 * calling this function.
+-	 * This function only sets the extra fields in dispControl.
++	 * This function only sets the extra fields in disp_control.
+ 	 */
+ 
+ 	/* Clear bit 29:27 of display control register */
+-	dispControl &= ~CRT_DISPLAY_CTRL_CLK_MASK;
++	disp_control &= ~CRT_DISPLAY_CTRL_CLK_MASK;
+ 
+ 	/* Set bit 29:27 of display control register for the right clock */
+ 	/* Note that SM750LE only need to supported 7 resolutions. */
+ 	if (x == 800 && y == 600)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL41;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL41;
+ 	else if (x == 1024 && y == 768)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL65;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL65;
+ 	else if (x == 1152 && y == 864)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL80;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL80;
+ 	else if (x == 1280 && y == 768)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL80;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL80;
+ 	else if (x == 1280 && y == 720)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL74;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL74;
+ 	else if (x == 1280 && y == 960)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL108;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL108;
+ 	else if (x == 1280 && y == 1024)
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL108;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL108;
+ 	else /* default to VGA clock */
+-		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL25;
++		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL25;
+ 
+ 	/* Set bit 25:24 of display controller */
+-	dispControl |= (CRT_DISPLAY_CTRL_CRTSELECT | CRT_DISPLAY_CTRL_RGBBIT);
++	disp_control |= (CRT_DISPLAY_CTRL_CRTSELECT | CRT_DISPLAY_CTRL_RGBBIT);
+ 
+ 	/* Set bit 14 of display controller */
+-	dispControl |= DISPLAY_CTRL_CLOCK_PHASE;
++	disp_control |= DISPLAY_CTRL_CLOCK_PHASE;
+ 
+-	poke32(CRT_DISPLAY_CTRL, dispControl);
++	poke32(CRT_DISPLAY_CTRL, disp_control);
+ 
+-	return dispControl;
++	return disp_control;
+ }
+ 
+ /* only timing related registers will be  programed */
+-- 
+2.7.4
+
 
