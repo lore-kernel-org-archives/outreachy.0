@@ -1,118 +1,123 @@
-X-GM-THRID: 6950999915860328448
-X-Received: by 2002:a63:485b:: with SMTP id x27mr38657973pgk.0.1618405784423;
-        Wed, 14 Apr 2021 06:09:44 -0700 (PDT)
+X-GM-THRID: 6670862390968451072
+X-Received: by 2002:a05:660c:908:: with SMTP id s8mr3223766itj.50.1553181184170;
+        Thu, 21 Mar 2019 08:13:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6a00:1393:: with SMTP id t19ls909449pfg.3.gmail; Wed, 14
- Apr 2021 06:09:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyR1eLK7DfblRNXjzCAOvgEQxZ3H5SVYWyFYzyq19pfGnfoc3TEJmMQh99l6NryYhGV8WJB
-X-Received: by 2002:a62:160c:0:b029:20a:7b41:f10f with SMTP id 12-20020a62160c0000b029020a7b41f10fmr34019114pfw.67.1618405783180;
-        Wed, 14 Apr 2021 06:09:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618405783; cv=none;
+Received: by 2002:a5d:80c6:: with SMTP id h6ls2470259ior.2.gmail; Thu, 21 Mar
+ 2019 08:13:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4EDd+jDQMWcEx9tvQuxvxm2snHA3BgWrJ6int85i4yPTUM+oI9FZt5i0KmZb/q14Q1JYA
+X-Received: by 2002:a6b:c804:: with SMTP id y4mr2461840iof.196.1553181183233;
+        Thu, 21 Mar 2019 08:13:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553181183; cv=none;
         d=google.com; s=arc-20160816;
-        b=uTvMLJDGNXf88wgHVwQnITOafPZQQCgJB6oaIIc7aDT6YPZ6P/qV8ssAKcRr8PoYqm
-         tdmh0DF9gYTXim2wjXrV3Jz1BinIX7Dlo8c3LqqaxnBOznfDxuDZlxFyIiQOfwS6o5bt
-         AB2QFgb+7f6DbufxK3S/yugqAbFoT9LkEJ3ZWmEQjmk17BTqJNKsoV/bjgcuaNIdL+dX
-         qcZ0Wef2bAj5JDfKbligTcHyB0I56WRXRJFzK95kezfm915uNuLwn+n+DsbmUIwlZl5b
-         3wkIkmaWhjSc3LwXTF6IJrynbXbUN5cLjlkki6XDlSejcWAU2u1L5hvWyN1nmsT6TbB2
-         YWbQ==
+        b=Ydzwzw9NM2vsMJbrQn6JolHyE3QnWQ6TpLICB8MA3TUN6qIBhADsPbxOTIml/jvejb
+         3RdFd9H54OP6TY2XxvaKzJwmzW1KFHfwcoRyI0nnD8xTeR2wo9hRm1CQIqQpisqfyjDE
+         boVXO4jJP66eLdLiwitG1ylA+vy7nm/LeBr6QMRtCkQ4V/n+XAXuzgItV95d5TXWgY6F
+         7IFUN9XkuDeAABeFKffMsD9zWU1SppNg9wt131s36Tw89FXXRYXYbmAb9DBCFBhOg/4y
+         VGhdDJc1fDYsKf2PRa3+89sFKyH2Im5UqE4v5XrfiMYlAwCZtxSFrVFBzd31wCN4QONS
+         GgvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=elncytFW+zb3qUFxfSlLsAeQiq/hOBit9WYqXcP+TbM=;
-        b=mCOcH78pWE/GomtWnmBer5WZNUs+d5BirfgWp+0tQi6VQ2dg3iM+ndhNht/hhAL4jJ
-         1+PBXp8XJ62XQbHU7abAU0df1a5GRhgK4MTpnhRtVArYYrnw4hIBojvDJCBOoRvSgwX+
-         PzeFOXbqU3VCmFfxquFtvD8KghowuYBwUVgCfAGDHLOzyY1/IZYf4akls7N6/meo/yeq
-         MBzIoLM/loIH60jWArcOcYuAYPeqwyXkHwwMU7kiymQbiZOotK3hbQDAaIy7pj4NeNzn
-         2OYeIcyIMs82BE4yTW5iY0Tz10VyW2Tsa9CAe7K7dwh2yWa6dSBbTfHZJDKX/eOW967m
-         uPPA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=JWdyDx5/F75QSULdSMxN9hvkJnmhjChb12XYKlGgd1Q=;
+        b=B3BDbf8K4+gHgMpDDDfgpHCnAW9axTDpGClhwcapTpvrU1AUmFYC4GtWm2juuXKKoP
+         sl7QMeG5nt6fICYjXo2IUPtPR60m2zkZkMft97IRMwnL1P0k7GlBB19K0tN/sB+VTeVn
+         Iln1uz94L2YGKqJ227f0rDcElmUb4CV6xM/iCdQjU9UsN+HrE7vSqoPdD3XBpUpfrshK
+         6AimK52Eg9yoitMFkYXbderneb2d2akvoTxYMJzXXzQEuWvB0u9Uchh5qD1dlNQZ8r9R
+         clVZmxkHbEBM6czM/2DIXrKdvekXmWxsq7D3fz76H/G3pTy+rQocOUWWZIn+hrVtL5Cr
+         wcaA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qQkv9kwM;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::835 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TpfcvP+z;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qt1-x835.google.com (mail-qt1-x835.google.com. [2607:f8b0:4864:20::835])
-        by gmr-mx.google.com with ESMTPS id g23si1819472pfu.3.2021.04.14.06.09.43
+Return-Path: <vatsalanarang@gmail.com>
+Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com. [2607:f8b0:4864:20::433])
+        by gmr-mx.google.com with ESMTPS id n6si227371iod.1.2019.03.21.08.13.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Apr 2021 06:09:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::835 as permitted sender) client-ip=2607:f8b0:4864:20::835;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Mar 2019 08:13:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) client-ip=2607:f8b0:4864:20::433;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qQkv9kwM;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::835 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TpfcvP+z;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x835.google.com with SMTP id 18so1935556qtz.6
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 06:09:43 -0700 (PDT)
+Received: by mail-pf1-x433.google.com with SMTP id 9so4240041pfj.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 08:13:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=elncytFW+zb3qUFxfSlLsAeQiq/hOBit9WYqXcP+TbM=;
-        b=qQkv9kwMDgVjNDgE8+1XHzGKiVU3D7+1BMbay98l8IO5vpr6gzVdPUqBxyUoufZwpR
-         64BnoOrEnoaJOZLB4/0K3A76+ytyVltzkGa5UPoz+DVmqCtVO4UnmEVeP0yXTTAeDvYk
-         oouF7MpHMsDTJOgsjmKne0JciOMZmKPsfTj9PSg3E4Awjj3UeMP0+nSmAcm8c0Y/Nbeg
-         kPL9C2NyFEmy1ZFHaaol+R8vZg1PRgdtdyedrWz4nvoZxGmirTsltCKRGQWQ9N9e35aa
-         waPCIyNOBn3zZ5vFwQzzxehxjmG1PQYpSml3ygnIh4AHDRHayPc/Cg2xdlauZUT7iJnH
-         x8tw==
+        h=from:to:cc:subject:date:message-id;
+        bh=JWdyDx5/F75QSULdSMxN9hvkJnmhjChb12XYKlGgd1Q=;
+        b=TpfcvP+zFN1tDU0so6C3x07Nly+QVfI1QYM3pi1Vci1qR7aAY8oszasusUCi4UOo/d
+         fhlg7NQbIC1SG8WQAJ0NVKKQnI0wXWYgWK7BL+Dxo+1hzVDr1PMoL00Zclvd1vls+SHS
+         Ms6pbxjyQGZuiLI4CGOja5h5P5tVzFcQQT6ZlRDplf28Hmuzahh4wfaiSlRGnIqQ1AvG
+         Y6eKwBgMW+ShdQGn6OkG/PW1IJsW0fvFAOcVrBXxxSGvtdnSXOL8Zmw8ASc2bnf7QFtG
+         kHjxMkfPCtnxl/sq+YqVLKysYaykaS5s4XfKH9itfvDzcP4UMatPmiNJgGq8RQpe4B1X
+         cPBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=elncytFW+zb3qUFxfSlLsAeQiq/hOBit9WYqXcP+TbM=;
-        b=TU5D27cto/xQPYoHYgz4E99c+VSb+8od+TePrScYQxv+Gf5VOEzI4fKoQSymJao/tZ
-         xO78isK0PK5f7nemaNVRLZqE4NCwbpXzsP0dkz5xqFx7bv/mAMvibJ7Os+gUFnByOf0D
-         3IU2CrwdJuIQFk5543P6hks77mKa0Ch7Rpk3EtQkgRHzmebZ4B42ByewezflOFAMQZuT
-         8d6YgHPKA4+ODOvA3GFbbnSHAKkxk3W3MueyafhJmqxUCxaiR0Ec6raFLhBrHBP7eqNS
-         InW6wR5QCHwINDE7UfXcVCInYlq6lNkQ6trcNG4bI/mZSArajNLtThgzzBU7OEvw7VEH
-         1rwQ==
-X-Gm-Message-State: AOAM531Ml8v6J/fjQZMsN3OXBLBxHELKEYw5sifg8zSbt4tKMYF1jqXO
-	28AeuN3Wp800VUMX1cDiLJjR6tX60kwdk32b
-X-Received: by 2002:ac8:5c0b:: with SMTP id i11mr18904800qti.368.1618405782136;
-        Wed, 14 Apr 2021 06:09:42 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([2001:1284:f016:a037:7038:c088:ae60:452d])
-        by smtp.gmail.com with ESMTPSA id b83sm6523257qkc.97.2021.04.14.06.09.41
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Wed, 14 Apr 2021 06:09:41 -0700 (PDT)
-Date: Wed, 14 Apr 2021 10:09:39 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: media: tegra-video: Align line break to match with
- the open parenthesis in file vi.c
-Message-ID: <20210414130939.GA15290@focaruja>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=JWdyDx5/F75QSULdSMxN9hvkJnmhjChb12XYKlGgd1Q=;
+        b=ZParqfCarmpvJkS3//FKpnQLNCNvzueyWm59YgKk98LwkSCsY2stJaw8D74/pxDznU
+         nijyJnwxvuWbQgCwyoei03Sw+JM94fvr7EFjn+gZ+3bMsNPc2k1KgKfdfsn0uDueMqLi
+         /n9QoS8TCaoz6Gp2NRJKR8NnX9i8rT74v11X+LP5Z+t3s5dPVUWpSQtaNZWsxUsxWf/T
+         Vs080+LnHzxHtw5T1IHMMXBU29QlPomCJfbtOZc4Vwd0FXWj1aVoIJVFRIj0sVA4wX5j
+         Tnv/YEJZ4mf27cEl+L+80+lybFKiB7CZFGH31MW1XI/lTwuavGC3gDrk0SEa68ZEo7bK
+         y5Vw==
+X-Gm-Message-State: APjAAAVGmzAI0d3IM63rrf4dJA2w6zR3c6WsC0GCSQGZscJ5xVeirH1N
+	/7RA1FE9ktYOV7sNGIPXOCBM5ycCtw4=
+X-Received: by 2002:a62:2008:: with SMTP id g8mr3723667pfg.121.1553181182729;
+        Thu, 21 Mar 2019 08:13:02 -0700 (PDT)
+Return-Path: <vatsalanarang@gmail.com>
+Received: from localhost.localdomain ([103.87.57.5])
+        by smtp.gmail.com with ESMTPSA id k10sm11557349pgj.11.2019.03.21.08.13.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Mar 2019 08:13:02 -0700 (PDT)
+From: Vatsala Narang <vatsalanarang@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Vatsala Narang <vatsalanarang@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8188eu: core: Remove unnecessary parentheses
+Date: Thu, 21 Mar 2019 20:42:45 +0530
+Message-Id: <20190321151245.10814-1-vatsalanarang@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Align line break to match with the open parenthesis.
-Issue detected by checkpatch.pl.
+Remove unnecessary parentheses after 'address-of' operator
+Issue found with checkpatch.pl
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
 ---
- drivers/staging/media/tegra-video/vi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/rtl8188eu/core/rtw_recv.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/media/tegra-video/vi.c b/drivers/staging/media/tegra-video/vi.c
-index 7a09061c..9878d1e 100644
---- a/drivers/staging/media/tegra-video/vi.c
-+++ b/drivers/staging/media/tegra-video/vi.c
-@@ -1813,7 +1813,8 @@ static int tegra_vi_graph_parse_one(struct tegra_vi_channel *chan,
- 		}
+diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+index 90eb1a025051..ddc1620156dd 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_recv.c
++++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+@@ -64,10 +64,10 @@ int _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *padapter)
+ 	precvframe = PTR_ALIGN(precvpriv->pallocated_frame_buf, RXFRAME_ALIGN_SZ);
  
- 		tvge = v4l2_async_notifier_add_fwnode_subdev(&chan->notifier,
--				remote, struct tegra_vi_graph_entity);
-+							     remote,
-+							     struct tegra_vi_graph_entity);
- 		if (IS_ERR(tvge)) {
- 			ret = PTR_ERR(tvge);
- 			dev_err(vi->dev,
+ 	for (i = 0; i < NR_RECVFRAME; i++) {
+-		INIT_LIST_HEAD(&(precvframe->list));
++		INIT_LIST_HEAD(&precvframe->list);
+ 
+-		list_add_tail(&(precvframe->list),
+-				     &(precvpriv->free_recv_queue.queue));
++		list_add_tail(&precvframe->list,
++				     &precvpriv->free_recv_queue.queue);
+ 
+ 		precvframe->pkt = NULL;
+ 
+@@ -134,9 +134,9 @@ int rtw_free_recvframe(struct recv_frame *precvframe,
+ 
+ 	spin_lock_bh(&pfree_recv_queue->lock);
+ 
+-	list_del_init(&(precvframe->list));
++	list_del_init(&precvframe->list);
+ 
+-	list_add_tail(&(precvframe->list), get_list_head(pfree_recv_queue));
++	list_add_tail(&precvframe->list, get_list_head(pfree_recv_queue));
+ 
+ 	spin_unlock_bh(&pfree_recv_queue->lock);
+ 
 -- 
-2.7.4
+2.17.1
 
 
