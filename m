@@ -1,113 +1,124 @@
-X-GM-THRID: 6470761478432489472
-X-Received: by 10.28.218.143 with SMTP id r137mr71178wmg.15.1506591559780;
-        Thu, 28 Sep 2017 02:39:19 -0700 (PDT)
+X-GM-THRID: 6670935352020041728
+X-Received: by 2002:a62:1882:: with SMTP id 124mr5125377pfy.101.1553198175904;
+        Thu, 21 Mar 2019 12:56:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.144.209 with SMTP id i75ls1021942wri.12.gmail; Thu, 28 Sep
- 2017 02:39:19 -0700 (PDT)
-X-Received: by 10.223.182.18 with SMTP id f18mr465519wre.9.1506591559003;
-        Thu, 28 Sep 2017 02:39:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506591558; cv=none;
+Received: by 2002:a63:6c81:: with SMTP id h123ls2454018pgc.5.gmail; Thu, 21
+ Mar 2019 12:56:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1ljmx8aoKCNPy14tUvFf7mLZLzk8mizRvvEMok4f9kU4ueiAlZIAZmhlmKzuRpWRazviq
+X-Received: by 2002:a62:448d:: with SMTP id m13mr5262246pfi.182.1553198175325;
+        Thu, 21 Mar 2019 12:56:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553198175; cv=none;
         d=google.com; s=arc-20160816;
-        b=j9c8xHGjaCOMFI3MT2k20HuAXPCCscq0Tfc8mZONC8CbyIE1T2rjhFr6IXILX38AxW
-         zTCZWdQSeo4u2bdzGD4scrUQ30+QCjl11KMmk3g4vd7fZqjp2EuDMmdBdjp8w4Kh9Wkp
-         X5azXhev9sws5vbBnpjacMQbA/0/Q6JEPLHJGlw/rCERk95zFa/oN8RHzRfAQoNoEle5
-         VjhbESwhwxUWIifndZS8GLkevhb7wrNUMz0UZOz+Sjz9+658g100CNdL3yzPbPrJdaV5
-         KL5OT8b6+vjlzoy8PsDEi+NxnSNX4e/kTlEaePIH3+K1Ssc2cHQX+PJk6bMpdrlwatai
-         ONkg==
+        b=OfSYVJ2nhC4qxcuI2x+/zQN/onprmJm3NXenIty/bFR6nQ2UP80E2dq6cYduewowY5
+         I4mpQqSbSofXlPEVi6Lr8EzjVYK33pRkWtpzB+3XzPcrvweyE2yvyGn4hevtbs2pEy8S
+         h+9DIQknwVxo3oQl68wsWY4ViU4HzJ+gDAWsFTM468DxVVUw+xh6m22HxXTDY6y3wH65
+         Mm1yEABmHoEFY/BTDKVlIv2xPvsPhrCAva2SvrcWjo+lN3UQFBhwyeNJzFJ4Zg8J0GCw
+         B5C7rbZGPZwJqklhZhfJjjgPN49CzCYxsMhLeZqXBCoA9f/mepqscHHUCbAGo6asoZtx
+         Aoxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=fGarHjycT8KWljVAK8T1xNulnH8rS87nfxxWeeKH0SY=;
-        b=k6oyX117Vm3x6nIdet8yxIs/kNjC0zqoBZaj1ikINlEeXSrcLfy/l7PzQKIEhZeaPp
-         pOR3ooJC7ZrHyLsDGYc33Kw9DPZMtTm1PZBHNV01mKP9zH/hLcARO7ellxcVgkZWY/Xj
-         qnxR/m1ZDrM9nqI6ShBKtO7at0lJZbUnBQrdL1/VYmMvyWQTA8Dw5c54XJgsVxFrJI//
-         GecWOBvq4jRrWZOncNckmEI4I+wZ+ksom0RIqEog5pEm5gNcyusOCE4HdBjtQInht4Fk
-         Lm/r/Cx6Tw2BFxPvaQhehchRMBn24SK9TnjH2rGBvJs2G5Fs69//LXsreL7eLFZfITAh
-         +oeQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=aRnif9jJ8/jwoqpz9ytJghYXerO93eT+ehwwIRrPtbg=;
+        b=deU9FiZgDumwGXSwQ5N3kxDi0z9CeiwFhGN2JDMvzREmJf2Ktd024YlHmNQIM5OGS+
+         p/uo1WKTRxYxx39/sg+oFKLjSPalPaO51bAp5gwTiIBNvpyfHAgk7RDx1yfAVVu5OYBc
+         P/xfiZOCa3Jlv0cpZYUuYin3VzHjIGpRiZpG6X01YBrEZ/+oB/qvhgxZGF53RZh8CbJw
+         ikWwtZvokWbru6IuZ9OVf1/IqtXIQgMXPV2igJslfvaIcMpFER4Zql83xTvDVQw/af7i
+         YoPBmTYRr1jWL7aFmzadVIjROjHHOaXTufsyZYMUX6Ge7dGtt5oTPOb0gTGHpqgZmO5G
+         KZsQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l4IbjiRu;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
-        by gmr-mx.google.com with ESMTPS id q145si159873wme.4.2017.09.28.02.39.18
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=JPu12qyd;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.39 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic303-22.consmr.mail.sg3.yahoo.com (sonic303-22.consmr.mail.sg3.yahoo.com. [106.10.242.39])
+        by gmr-mx.google.com with ESMTPS id c12si366659pfc.2.2019.03.21.12.56.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 02:39:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
+        Thu, 21 Mar 2019 12:56:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.39 as permitted sender) client-ip=106.10.242.39;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l4IbjiRu;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x234.google.com with SMTP id q132so995841wmd.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 02:39:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=fGarHjycT8KWljVAK8T1xNulnH8rS87nfxxWeeKH0SY=;
-        b=l4IbjiRuTx3TQwI52ApUroer5XFv9m7xxhbku4kCrPFt9d/ahTQUUAZ0tTIDUlHYAV
-         r5X+zPNRfUZ/0j6dnzRRu81SFYD7RD88zwtdzvkXv8+bo8VZ+jiDbyyOOVhgNHL4Kbk9
-         wC9ko9fNFlrlPmkL4gXUQ8ZXTwmtoYWnPsY2NbU6Szml8IWei7iNwftfLQvctjYjMYOj
-         F9q1kHBqehV3CjoCBOlIMOF2O7nQO3hd9xRRjf6N5l/KEvwQtvtIIP1So63OApo0CRBA
-         2ltVpOQDmS8Z6OkjeZrRl6c8bwpfXUyLGl0zJU4LvFoDAG77CAVL5vvodprZuXsS+WwS
-         /r7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=fGarHjycT8KWljVAK8T1xNulnH8rS87nfxxWeeKH0SY=;
-        b=MUWaA1C8hfRxHfFXlaW79G40nKc5W17VQK/YIh7WLGd6XhQ2feuYeKBLyh/CsqSR/K
-         7LHTGrgHNhtzQystPdVxvTIQXRoYsmn14C0QnPr0MYUc/Zv675bPD+EMCfs/fzc81idp
-         AWBN2Jdx5aXXhWNCsyGHCrEgI+J9ZJ//jhpRIaveRDk3H3AH+wQs+dV89q/rIK0twIGx
-         kadOSrOP8dOe0ofYM5O9KQNEtn2Ug6uhzNW7/JdrM1dypUq/LAsVg1OnGg3QpHTRxMht
-         01TaEXGgvPGgLaPVqB1ZOO7S3UQEBu6bgP4vR+MwK0Wf+iTsgkCEUGTdjnQh5WA2HRFg
-         5S8w==
-X-Gm-Message-State: AMCzsaXNJSqL+C4DLKQwd3mcndqLN3cofNmiTtbc/6Q7Oua4Crxelefa
-	2FYuzcRGQjKOpEvYJs+WpSCT5A==
-X-Google-Smtp-Source: AOwi7QAB/QVB0d9yq1s/EzR4KsfncIWxTcMMJ7caMSzIYuSvpMUUR+f+uaXTdKYVYSBBYNRPwM/BhA==
-X-Received: by 10.28.63.206 with SMTP id m197mr533985wma.106.1506591558711;
-        Thu, 28 Sep 2017 02:39:18 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
-        by smtp.gmail.com with ESMTPSA id e8sm763577wmc.46.2017.09.28.02.39.17
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 02:39:18 -0700 (PDT)
-Date: Thu, 28 Sep 2017 02:39:17 -0700
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Stefan Wahren <stefan.wahren@i2se.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vc04_services: Remove duplicate extern variable
-Message-ID: <20170928093917.GA5023@ubuntu>
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=JPu12qyd;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.39 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553198173; bh=aRnif9jJ8/jwoqpz9ytJghYXerO93eT+ehwwIRrPtbg=; h=From:To:Cc:Subject:Date:In-Reply-To:References:From:Subject; b=JPu12qydGpDvT1eiJmg2uycH2chdYf1XoS3vOzm1sT1w+hw7go3kfriJiCjTv+nZG3f5byYCqNtNUI9G2G+pNQ6reNkqBUQxnLnBB/GoNWOJPkbfdgVZ16u0pH2OQBcyaSvBSjciXFxzc2ml08oPXPhNihrmNp1OEWGgdlJQ3s6ov9q/06Imy1lCyP5zGmI6sIBRi3UEB14f1flWy2FXz2RGOfzzoP45aAIuCqTL8zSRlGtlrL6EnsRY8VKUOrU4paKHpg/mM+HGnmBY+uC+lK/HsbWvsQI4/aohz2bfvvB4qPJ2DOSBhqWSBM0H5g5/FzqsEn6ZqO3qNG3nhkJwKA==
+X-YMail-OSG: OjNzABwVM1nI8k1YrUQV0LWS1cmHjOKRSXiHoaD31Vv_R2qnA.Ej2xKedboIsLp
+ cWsbNoVJKUzrrLqpMoLUh1sb23E0frnLmz4xZxEl8Znv9Onsn9yqpGVjxkHdIo5qqHTpZK2Wo3xv
+ 5jSaSZk.XOWaADccrWH_ZQ6FhzlMued3Irx6_KQ2_CLJe.FhRWULZ5MePo9aQtXW2.PLLSSYYasg
+ YBgyMHrhU6ZbNOI9ZHpbhsrLBn3moGAiU_myoWrzUweqp3JLI.cGesg7EF6D.ZBrJImVaj9Lwyjl
+ IMnrnlKvtZ9bMiOQ2y.iacjimBkoW2e_4KOBQG.cmb5Y0Z7awrXp4lraFjKN_n.9YK7wlET3pkNt
+ b.zJ_z5wudPGrr5ezXiad_DRnfs_Zc35pyYT2ri1XyfUZlGJrt4zTXP7vZ7F8yJ9r6Uu0zsAY8uu
+ qZIaN.rMwUHNfnP_E6pdRQTw.Mgot2bBeUG0rc.fl25Sn6rJhzMC.jePzK3T7W8WxTuT0.BU8Ayu
+ udWQ3JmuXHw45qKjv.ot2BQrnJuXk3vTUBj9HxoApMd9r7O.GIUR1EL_724Dej5aPTc8hrV8gMv.
+ t_Gl6qMKBwU1wU9MFooXFrbhD.reNaA6mALyQlNKasay4kM1PnLa9a2euMAY1N5kjbaHS6ChKRwt
+ 7RRRA8T1ouXEfIKBVW8yxtmzn9ZT.LcYdDWaBXK_twWJdO1wiV1t.S9xN9sBblXXvvMtwigz5y7C
+ E_G_1PYfe25MDKuGXiVLZ507tH3MhfzGqlJDQtczLQ1RSlKODf3D5lGsSErm4gmcrEa0jE1vLhQ5
+ xNZa1ZgM1SAxgnZqWZEfJB.xSRaHurFVXQBtMFUfnXXXob19qOOn8M.4qREYoDDyZvmgPrxuo6Lc
+ IsoWUDb5UH7cMqLymc.0FeK5MFzumxXdTGnnle.69npps4GHAPQlsPMe2iXCz2o3f3e3y2wvahzW
+ MXd_Ef5B4sLaT0h1ZlFms5.vDLYmMhaCj.ESRJ5I0AcpHIaN0pgdc_W6GGLVjXHqfZztNCYJlxD8
+ zihedYQNEkdwm7OuDIRuqwSM6KhTgQRE.K6KiZklZq.zqY7d_oDW7gV3h2VUdmVMzeXgczER7gO8
+ dSUgP.D.mTvE91gk7LO1bnpwc39y6gQk6dNr.vVTPJV0RY1ApP_E-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic303.consmr.mail.sg3.yahoo.com with HTTP; Thu, 21 Mar 2019 19:56:13 +0000
+Received: from 125.22.40.140 (EHLO localhost.localdomain) ([125.22.40.140])
+          by smtp425.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 04ac275525472a2e4b5c80b6b2590191;
+          Thu, 21 Mar 2019 19:56:13 +0000 (UTC)
+From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com,
+	ajay.kathat@microchip.com,
+	adham.abozaeid@microchip.com
+Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Subject: [PATCH v4 2/2] staging: wilc1000: Remove return variables from wilc_spi.c
+Date: Fri, 22 Mar 2019 01:25:56 +0530
+Message-Id: <20190321195556.4802-3-nishka.dasgupta@yahoo.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190321195556.4802-1-nishka.dasgupta@yahoo.com>
+References: <20190321195556.4802-1-nishka.dasgupta@yahoo.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 8bit
 
-This patch removes the extern vchiq_arm_log_level variable from
-vchiq_2835_arm.c.The variable is also declared in vchiq_arm.h header.
+Remove return variables from wilc_spi.c. Issue found with Coccinelle
+using ret.cocci.
 
-Issue found by checpatch.pl
-
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 ---
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c | 1 -
- 1 file changed, 1 deletion(-)
+Changes in v4:
+- Remove braces around single-statement if-block.
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-index 0159ca4..12b0e0d 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_2835_arm.c
-@@ -84,7 +84,6 @@ static char *g_free_fragments;
- static struct semaphore g_free_fragments_sema;
- static struct device *g_dev;
+ drivers/staging/wilc1000/wilc_spi.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+index 4a1be9e60d74..d8910bf9cb75 100644
+--- a/drivers/staging/wilc1000/wilc_spi.c
++++ b/drivers/staging/wilc1000/wilc_spi.c
+@@ -933,11 +933,9 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+ 	u32 irq_flags;
+ 	int k = IRG_FLAGS_OFFSET + 5;
  
--extern int vchiq_arm_log_level;
+-	if (spi_priv->has_thrpt_enh) {
+-		ret = spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
+-					int_status);
+-		return ret;
+-	}
++	if (spi_priv->has_thrpt_enh)
++		return spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
++					 int_status);
+ 	ret = wilc_spi_read_reg(wilc, WILC_VMM_TO_HOST_SIZE, &byte_cnt);
+ 	if (!ret) {
+ 		dev_err(&spi->dev,
+@@ -982,9 +980,8 @@ static int wilc_spi_clear_int_ext(struct wilc *wilc, u32 val)
+ 	u32 tbl_ctl;
  
- static DEFINE_SEMAPHORE(g_free_fragments_mutex);
+ 	if (spi_priv->has_thrpt_enh) {
+-		ret = spi_internal_write(wilc, 0xe844 - WILC_SPI_REG_BASE,
+-					 val);
+-		return ret;
++		return spi_internal_write(wilc, 0xe844 - WILC_SPI_REG_BASE,
++					  val);
+ 	}
  
+ 	flags = val & (BIT(MAX_NUM_INT) - 1);
 -- 
-2.7.4
+2.19.1
 
 
