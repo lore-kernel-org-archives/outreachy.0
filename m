@@ -1,110 +1,117 @@
-X-GM-THRID: 6613551654020055040
-X-Received: by 2002:a0c:bd14:: with SMTP id m20mr24170793qvg.14.1539837488462;
-        Wed, 17 Oct 2018 21:38:08 -0700 (PDT)
+X-GM-THRID: 6670930948020764672
+X-Received: by 2002:a19:c101:: with SMTP id r1mr3099047lff.81.1553197226686;
+        Thu, 21 Mar 2019 12:40:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:bfef:: with SMTP id u44ls11355900qvj.2.gmail; Wed, 17
- Oct 2018 21:38:07 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60nax+woTj9MIqSjA/lj+4mhQ5Wm3vLTOTLJ6ac7vLt6PsRWvtbpwAzgmDr4aw/DJ1KeSPs
-X-Received: by 2002:a0c:d8f1:: with SMTP id w46mr24211495qvj.33.1539837487668;
-        Wed, 17 Oct 2018 21:38:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539837487; cv=none;
+Received: by 2002:a2e:8013:: with SMTP id j19ls833853ljg.0.gmail; Thu, 21 Mar
+ 2019 12:40:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy/QbRvhXhq3E1SF7t7LioP70e6VRCGFmeqwI8afXvIs92MGBJws5fqGFGvw7KXtmgSr7HZ
+X-Received: by 2002:a2e:b1c7:: with SMTP id e7mr2884171lja.107.1553197225803;
+        Thu, 21 Mar 2019 12:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553197225; cv=none;
         d=google.com; s=arc-20160816;
-        b=cl1CNvPXfvjFrCTDRN5yIwVmR6E/lsN48phLFtvZMOLMyEMG4vBsr3YRj25pvkvZ8D
-         s7J08Jelqon8P+NOzs9xZslgkM8HBvrVamLJ9H0hliHQdssmBWIwaHEh28dYKwZkVIxr
-         xdyHsw5js8449egKq5X35HTbuuqOM7bmJwQktDJu98xugfS0G7BkA8Lr5jaPAxXHXqYD
-         ajvWOcUU13CQtAexoXAxqAJlYasUQeIZ9E6SwMVOmc1K11Z0UmFVLhpzurb4LL4VmF8/
-         zgfCJc33nEyImC4GtlbCdJWxDkx6Sg3mdI+zWPkR066CvzQrf5st9hZBBK4D59aLEEQZ
-         Z0qw==
+        b=kZ5x8p3A385sezSE/c4Dz0ZnEE1rJtRIqIovQVczbilVr6mGr07cimgDUbyc2fGQKs
+         1EYEr+wFzhu9++EAr5nJEgopFM32itwThOK+dIvTMnDdagNKGIVl/VER7WW8qB9AkDVG
+         XKUE8TOWa3ZbvGnyC6A4tp/6aPyoq7tbA7EY4JR6Nyy3CFJMGKCH0co1euq0byXEfxWC
+         VkxHNMtZWCLNADOhop/iVkb+DZiEUiAiS0O4CqS04mNbKevv66ONAo8S98VwPg8z62Pn
+         qY3DGcxzC3F/QaIui3mUpRQ33qjo1IAmg2S6wd1c/0KwFEL6khtevfjohHrDfad9iu43
+         nHJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=3U4VLi0acrOVXDxN0CzPP57lL433b8SfbJwkcuvCOmM=;
-        b=rMhd45eelz3rwOvFeeBygflQPbLh+NJyY72G71GXZn/VRSzM3+nZcFtSvgN5Uf7Oat
-         aQj7Mp3UQia173DQNNJXLYRh1jnjgiRJ3HW4zmuAY1k7kQqw7tMAd2ktsZDj59aVfuDJ
-         UcAKbsLU3pgX7x/VlS+W0sosqziUUs9U4myBHnNIBZm0ZRdQOvSLpaloxQpMFpu2NT19
-         Jt3LpnJ96iZa4OINpQA4dK/Po2sXKwudxi1zbytrri/0ruycKXs45l0oDo2CobLuKI9J
-         ZQftzk6rFIiRvu4vWI/7fiag4b1qBe9gltSrsKlMkwl3JhHlcxUBlBmCBqsfvNiusVm5
-         AJkw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=RqQQr9iRlSOHeaR83N2BrvdYa1iQ9tx93OQK8exNz1o=;
+        b=HSRH7uY6ISL7rXTI76o0tGoEq0CsUMbzNQ8xdvoW4zSyI9Gox3N0npk10m8VOFOdi6
+         Idilz3mM28rv4grbXavEZkepP/K85EWxSAblyeOgp5KII6g0XWbOvV36oFIvfqe8PmNG
+         TI0gtx5Pu1jRKx3xOJrHZKPLiXRXN9JuUNf7dV14B8KZfVx3q6e0zXDmOwg5UoaOpwbX
+         KLE2Qcs0I9YWIlWpfIBHTHulSonOh5TUhEZV3gEe7243/b1RRufFP9sohU2y9MFwgVPa
+         sLY2+mMCap/9OCg8Shf2wbh+Z+Cf+377zGZEWlOmzjrhlK1g1H8MLxj15qFoUhqf5hux
+         BKWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OYyjOlWk;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id 202-v6si730875qkd.4.2018.10.17.21.38.07
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id u21si216866lja.1.2019.03.21.12.40.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Oct 2018 21:38:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Thu, 21 Mar 2019 12:40:25 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OYyjOlWk;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id r9-v6so14258519pff.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Oct 2018 21:38:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=3U4VLi0acrOVXDxN0CzPP57lL433b8SfbJwkcuvCOmM=;
-        b=OYyjOlWkXD35ZEEadxegy6g7wOepFlz3Sym/JesUPnbl5acOprCrFbecwx3hxZNW8o
-         Mb0/FairwK5qd7Ijs+p3KipP5mHpotq+2H7bVKUaFoeQwfWZ2LQARHAorIZbwZAe1vXu
-         A09dDj0UPa+3ihz5NLDMfcwf1MA9h0WWivnCZoVJe33lcPqWLLVGY1zGgZDHpTGyK1Zc
-         qKtQTZag9v32199QdhdiPMLQ39BYMrb0yULgYEi32brFNX0Hp162BtfrXavhbSK3unUY
-         SUVnB/dEcK8sNTCl3YVjjRPgO4q/O17GORvHFfKRY1VEZ6onQeB6yegEECeX+98LyzrI
-         5B+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=3U4VLi0acrOVXDxN0CzPP57lL433b8SfbJwkcuvCOmM=;
-        b=ROD3F8qHp0fde2gGXNHBwdOtRGLO0gmdIoyAhowGnyl8VMa4LYu+yh9vr3H5mtAX4y
-         2EHW8iq397CEtiPb5rIYs31cZRz4KCDggYcQ60pV1VOUEz8cOlnEuH0PiSZNrFaf3dZx
-         yo7Snb5snvJsnx3M9W8glvstAdhcd8XsWwn2HoOvkEThVi7Ag/xTEhRFS8qvJIeemGrF
-         Xf98KBXsv85Gx+8uqc9/w4UzmDY9hgglNlc8WiA9OqmDIBl+zc7jcYEmKQMjgj6AyIL8
-         1JYpVNxbLN40HzijTBa7yB9Y8agz9S1qvYCHMU4GdRH9dc+10yFqN+t0T5csqS+7GBw6
-         hy5A==
-X-Gm-Message-State: ABuFfohe0WEhf5iWB6xuzGd8QRwvio9vIJRurhAOlkYbvDQPBGiUxpdS
-	4PVytxQvfG8/lSWFVn3o5+3zG1aQHrM=
-X-Received: by 2002:a62:9c4a:: with SMTP id f71-v6mr29687177pfe.135.1539837487237;
-        Wed, 17 Oct 2018 21:38:07 -0700 (PDT)
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id 126-v6sm4668517pff.105.2018.10.17.21.38.06
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Oct 2018 21:38:06 -0700 (PDT)
-Date: Wed, 17 Oct 2018 21:38:04 -0700
-From: Maya Nakamura <m.maya.nakamura@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: Replace long int with long
-Message-ID: <20181018043801.GA4248@k-vBox>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,253,1549926000"; 
+   d="scan'208";a="375163486"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Mar 2019 20:40:24 +0100
+Date: Thu, 21 Mar 2019 20:40:24 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    ajay.kathat@microchip.com, adham.abozaeid@microchip.com
+Subject: Re: [Outreachy kernel] [PATCH v3 2/2] staging: wilc1000: Remove
+ return variables in wilc_spi.c
+In-Reply-To: <20190321193842.4327-3-nishka.dasgupta@yahoo.com>
+Message-ID: <alpine.DEB.2.21.1903212039530.2491@hadrien>
+References: <20190321193842.4327-1-nishka.dasgupta@yahoo.com> <20190321193842.4327-3-nishka.dasgupta@yahoo.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-Replace long int with long as int is unnecessary. Issue found by
-checkpatch.pl.
 
-Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
----
- drivers/staging/wlan-ng/p80211conv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wlan-ng/p80211conv.c b/drivers/staging/wlan-ng/p80211conv.c
-index 91debcf20646..0ff5fda81b05 100644
---- a/drivers/staging/wlan-ng/p80211conv.c
-+++ b/drivers/staging/wlan-ng/p80211conv.c
-@@ -430,7 +430,7 @@ int skb_p80211_to_ether(struct wlandevice *wlandev, u32 ethconv,
- 			/* A bogus length ethfrm has been sent. */
- 			/* Is someone trying an oflow attack? */
- 			netdev_err(netdev, "DIXII frame too large (%ld > %d)\n",
--				   (long int)(payload_length -
-+				   (long)(payload_length -
- 				   sizeof(struct wlan_llc) -
- 				   sizeof(struct wlan_snap)), netdev->mtu);
- 			return 1;
--- 
-2.17.1
+On Fri, 22 Mar 2019, 'Nishka Dasgupta' via outreachy-kernel wrote:
 
+> Remove local return variable in wilc_spi.c. Issue found with Coccinelle
+> using ret.cocci.
+>
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+> ---
+> Changes in v3:
+> - Remove trailing whitespace
+>
+>  drivers/staging/wilc1000/wilc_spi.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
+> index 4a1be9e60d74..47c777c5d1a7 100644
+> --- a/drivers/staging/wilc1000/wilc_spi.c
+> +++ b/drivers/staging/wilc1000/wilc_spi.c
+> @@ -934,9 +934,8 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
+>  	int k = IRG_FLAGS_OFFSET + 5;
+>
+>  	if (spi_priv->has_thrpt_enh) {
+> -		ret = spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
+> -					int_status);
+> -		return ret;
+> +		return spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
+> +					 int_status);
+
+You end up with a single statement in the if branch.  So the {}s should be
+dropped as well.
+
+julia
+
+>  	}
+>  	ret = wilc_spi_read_reg(wilc, WILC_VMM_TO_HOST_SIZE, &byte_cnt);
+>  	if (!ret) {
+> @@ -982,9 +981,8 @@ static int wilc_spi_clear_int_ext(struct wilc *wilc, u32 val)
+>  	u32 tbl_ctl;
+>
+>  	if (spi_priv->has_thrpt_enh) {
+> -		ret = spi_internal_write(wilc, 0xe844 - WILC_SPI_REG_BASE,
+> -					 val);
+> -		return ret;
+> +		return spi_internal_write(wilc, 0xe844 - WILC_SPI_REG_BASE,
+> +					  val);
+>  	}
+>
+>  	flags = val & (BIT(MAX_NUM_INT) - 1);
+> --
+> 2.19.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190321193842.4327-3-nishka.dasgupta%40yahoo.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
