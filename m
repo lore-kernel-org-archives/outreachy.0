@@ -1,76 +1,131 @@
 X-GM-THRID: 6670815133562830848
-X-Received: by 2002:aca:e350:: with SMTP id a77mr684049oih.82.1553195563067;
-        Thu, 21 Mar 2019 12:12:43 -0700 (PDT)
+X-Received: by 2002:a37:4e87:: with SMTP id c129mr3868826qkb.250.1553192167739;
+        Thu, 21 Mar 2019 11:16:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:3189:: with SMTP id x131ls340435oix.2.gmail; Thu, 21 Mar
- 2019 12:12:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw8MjxTqYUTe22tVfEB/XQZTXTl+BSjnFLWL/tw/wX60FIHL7kfDh1S7BwQH+CzCCbUODf+
-X-Received: by 2002:a05:6808:101:: with SMTP id b1mr687546oie.18.1553195562213;
-        Thu, 21 Mar 2019 12:12:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553195562; cv=none;
+Received: by 2002:a0c:b5dc:: with SMTP id o28ls2799830qvf.0.gmail; Thu, 21 Mar
+ 2019 11:16:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx+pmvF81I9UuhD57igXjxhZlaKZZTVwkG2LrVxWpn3d0YtIhrHsCKpYPfqHgF2duAZpnnm
+X-Received: by 2002:a0c:e014:: with SMTP id j20mr4366523qvk.172.1553192167207;
+        Thu, 21 Mar 2019 11:16:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553192167; cv=none;
         d=google.com; s=arc-20160816;
-        b=dZu3oQ0jMJQ3HB6ZoLcO+oQzvMaomzi+8ARQmwZdEPuO/1x0oV84ouUjogmEvprka7
-         yaMXQHk5jo/v02fizllzOLPOY2Z6Gj233R5B2VXu43HPd9BpIDl3moso1++P85HqzstM
-         eVdehTj1PA0y+ZUjEVIw63vfAdWR86apIJUnquSt/lJepfOatucSMweAsb/dBGgt85lT
-         y1pnVRSB0Q7aGbhBoddcQIeBdnEzEOLF2+M8e2+rfqx8P/kq049lgaGlLh5myKXENHnt
-         I38iOmn9hG1m+kmw4RbyCmOXeSUuuZyskoh+mUk4x7MchTBeCinMRLBZQbQA/mpPx4KI
-         o4bg==
+        b=P3ehlz4TwQgcc10xwGSI6nVNi/t42EHnT+SjhoVB6KF/zrjItNH3BEqe4m9DnUM456
+         XTzwXjugXwqE4i88wryw23b049PSQA762lMfdxpEDbfAWpUJpu2cQr9jOG5Og1jj+LKs
+         QixUQsFf6tmWJWDDCCjSGL3UpONwWp2737mUtTXLJYgVpgw/s94S/UuTDsV5pgDK9/sK
+         MEK40WThMdKjIOFCvaKTJ/n4e5x5PE7OTYe5K6VNa5Kzov/Tz8/nioBfqAb71hkDaHhR
+         Nql35IoMEnUW9fZgWKO8YqK3Zbw/PpfFXiBQ8rzndB/5wlJUibFiCkqGzdNeNBtZ5tpz
+         YQkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=EDFodmI4PjoiN2Q+/KosayhTJjGfLaseZlJnMrHi/bs=;
-        b=jGgRt8bEtaFcEg0i3W3QHNHlGjZGn8fXqkcAL3JH8m5BLmgYvIm7o4xbUdYiPKmL3i
-         IpM9SWr9Ew0ZCrrYzMcj27f6dLwePhvq51z46n39d5soI7ShdbwYmmVC1VFE829AWU1h
-         M9SLXSbuJ0fsMSzYz69A8jLMaFiO9qnMudQBYVVWqlcs6f5DeyyEGxfwz/xtqmh2QMJl
-         K8oSAKKrIS5DkGc+LVp6X/d0hrrq/2DXPWMo02fCOTMvQ2uChORtWHrQy1OTJ99HgSTM
-         gRZad5CgE1tXrkawPlNMLGrzkCJ1k2qaa3wIL8YWCJHnkfz60qwKZDi+TpSEX24o3/Ia
-         N1TQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=jNFsnAHsL9LJ/aFydLUZHGe31tRf/Uf3CmZk8KSFw8M=;
+        b=kpz5QU5DUCa7GJAyU5OiqFsVL3Nc3+nN1PpZXyFdFei965jrW18u7syhtR6LS7E9bp
+         G8T9UXWqzoBK3oJgoxWoK+uGhfhANStiT6cvQExMGrzZN3SU2Jd/NlB8Vu3R/uBBcoV/
+         WpJWEEiJEp50wMipkQnJl7HLVU/jlf0kOeCDBFbcltMg6xA8NO94PgexxQwkuN0CbgBO
+         XsGDIvQlOW5NhmxmmjITdWnobn72LIuVaXU6qFQV3wFua/6n+in2DeYC/klbmd1u0TgT
+         sMHv0pzH90bgIQpMz0B1kxcdwRaxNmA6SO3p8SjLpp+vIa6kNUQnOW/lVg6GhOvvy0BD
+         74WQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=bgKrmRmB;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id z22si144088otp.5.2019.03.21.12.12.42
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vFrK93nm;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himadri18.07@gmail.com>
+Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com. [2607:f8b0:4864:20::42b])
+        by gmr-mx.google.com with ESMTPS id o59si355855qte.3.2019.03.21.11.16.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 12:12:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 21 Mar 2019 11:16:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) client-ip=2607:f8b0:4864:20::42b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=bgKrmRmB;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id EC19620643;
-	Thu, 21 Mar 2019 19:12:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553195561;
-	bh=KkHTBm3Nz7+2rg4LmGEjPENReZyzGJy4ftdP6bqH0S8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bgKrmRmB/xAM09dPyX5VM6/0DcSgQqBidqaYkZWfDtsoiIWEQEI8HbMJiBKnF4YeL
-	 8b8YQy16ovLD64MHvQfOQOdA0pr52D3nVi7ld/JngCsXS41x+mEYu23PDAcdj3ClLY
-	 EmgNk5vP70d4HVdET4qcSYfmN2rfQ+KoTgAQE1rA=
-Date: Thu, 21 Mar 2019 20:12:39 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Himadri Pandya <himadri18.07@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2 0/5] staging: rtl8723bs: include: remove typedef of
-Message-ID: <20190321191239.GA6092@kroah.com>
-References: <20190321181405.6219-1-himadri18.07@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vFrK93nm;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42b.google.com with SMTP id c207so4818199pfc.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 11:16:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=jNFsnAHsL9LJ/aFydLUZHGe31tRf/Uf3CmZk8KSFw8M=;
+        b=vFrK93nmcK4Ipl/SnszSv47Ir5gTDQUf/mXR/yje03L/c//LEBmTaPE3NQKSz+6qHa
+         ZGDYuW/CKBg0VZY+Es82yc9BcJ4mlzcVlt6HIkfiQLoxB+efOgfNLLiav61pVIYMgJHt
+         Z1KJgJX/ekWmx1MTHACEVq7ttax+gSVCCnajGkXaHIqmoWuh6ZzZ26ZGMdZv9S9E4xCw
+         hvqh7xLAAXIDt3TBmOlAZi4EjBL9l3+KjKT6CNbsP6TSkXm5Y1eVsxJ6Ue0BZMAoYxz/
+         y0Z5oO/MuXFQemKy4LAYABZmkM8y88rZipBEVuCxpgewDebPYFY4K6IhpC2mNLpkSh0O
+         fHtA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=jNFsnAHsL9LJ/aFydLUZHGe31tRf/Uf3CmZk8KSFw8M=;
+        b=ksR56ARQmpO6NYmswUyrUk79PPn1+5HcQXtZBexiJ20p+sR/uXIfmVVhbRXqhINC7x
+         AoB1Gtp4/wLHlhOlswO8yVPNX3E32Q8x1kI8TbrJB8wUJLfZ/JK805XdPxFHEdSjgjaY
+         ZmPaz8QdBJODwMCs4nyls8nEi4PEgVL1Z+/2NwTwaBKHJFACgLbx3I8VfZkShYzPE5dr
+         d1B2ydStzTEZrd0GOKe/0aO9N7ozZZ2m3wautW6FzdODPZocAzNKrapgasVmSkGCKA+B
+         vxXdA+8b4qxdrpXOEW8Upe9OLSdpbFWJe8sYpzNVRPPChzKh0Ps2QJg5W5OSKun6iWsX
+         NCxw==
+X-Gm-Message-State: APjAAAUhD31+21gHjJQc6rWy+HIZAly18kSC03BN4dt32pypN8ql3zT5
+	hSO1hgar6dUcKoJDrkvAuHg=
+X-Received: by 2002:a65:6219:: with SMTP id d25mr4542806pgv.155.1553192166815;
+        Thu, 21 Mar 2019 11:16:06 -0700 (PDT)
+Return-Path: <himadri18.07@gmail.com>
+Received: from localhost.localdomain ([49.34.112.101])
+        by smtp.gmail.com with ESMTPSA id v6sm7296251pgi.90.2019.03.21.11.16.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Mar 2019 11:16:06 -0700 (PDT)
+From: Himadri Pandya <himadri18.07@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com,
+	Himadri Pandya <himadri18.07@gmail.com>
+Subject: [PATCH v2 5/5] staging: rtl8723bs: include: remove typedef for struct pno_scan_info
+Date: Thu, 21 Mar 2019 23:44:05 +0530
+Message-Id: <20190321181405.6219-6-himadri18.07@gmail.com>
+X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190321181405.6219-1-himadri18.07@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+References: <20190321181405.6219-1-himadri18.07@gmail.com>
 
-On Thu, Mar 21, 2019 at 11:44:00PM +0530, Himadri Pandya wrote:
-> This patchset removes typedef from various structures defined in
-> /staging/rtl8723bs/include/rtw_pwrctl.h as
-> the linux kernel coding style guidelines discourage the use of typedef
-> for struct types.
-> 
-> V2:
-> - Remove extra whitespaces
+Remove typedef for struct pno_scan_info as The Linux kernel coding style
+guidelines discourage the use of typedefs for struct types.
 
-Nice work, all now applied.
+Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+---
+Changes in V2:
+	- Remove extra whitespaces befor *pscan_info
+---
+ drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+index 3ea04bff0cbd..2bc922ce5ae1 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+@@ -187,7 +187,7 @@ struct pno_scan_channel_info
+ 	u8 active;				/* set 1 means active scan, or pasivite scan. */
+ };
+ 
+-typedef struct pno_scan_info
++struct pno_scan_info
+ {
+ 	u8 enableRFE;			/* Enable RFE */
+ 	u8 period_scan_time;		/* exclusive with fast_scan_period and slow_scan_period */
+@@ -199,7 +199,7 @@ typedef struct pno_scan_info
+ 	u8 channel_num;			/* number of channel */
+ 	u64	rfe_type;			/* rfe_type && 0x00000000000000ff */
+ 	struct pno_scan_channel_info ssid_channel_info[MAX_SCAN_LIST_COUNT];
+-}pno_scan_info_t;
++};
+ #endif /* CONFIG_PNO_SUPPORT */
+ 
+ struct pwrctrl_priv
+@@ -280,7 +280,7 @@ struct pwrctrl_priv
+ 	u8 pno_in_resume;
+ 	u8 pno_inited;
+ 	struct pno_nlo_info *pnlo_info;
+-	pno_scan_info_t	*pscan_info;
++	struct pno_scan_info *pscan_info;
+ 	struct pno_ssid_list *pno_ssid_list;
+ #endif
+ 	u32 	wowlan_pattern_context[8][5];
+-- 
+2.17.1
+
 
