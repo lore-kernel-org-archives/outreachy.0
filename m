@@ -1,214 +1,116 @@
-X-GM-THRID: 6616604280773148672
-X-Received: by 2002:a1c:9902:: with SMTP id b2-v6mr702069wme.4.1540548233291;
-        Fri, 26 Oct 2018 03:03:53 -0700 (PDT)
+X-GM-THRID: 6670790947725377536
+X-Received: by 2002:a02:6614:: with SMTP id k20mr956219jac.24.1553164550830;
+        Thu, 21 Mar 2019 03:35:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:5081:: with SMTP id a1-v6ls115402wrt.13.gmail; Fri, 26
- Oct 2018 03:03:52 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f5vT/BdtOwZ5J4Y5nJY75znE9ITdyEfXLZ7odmfYUBDqAJGkJkkfwIIbBA6GdEKQdtysOS
-X-Received: by 2002:adf:db03:: with SMTP id s3-v6mr659932wri.9.1540548232286;
-        Fri, 26 Oct 2018 03:03:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540548232; cv=none;
+Received: by 2002:a5d:80c6:: with SMTP id h6ls2169949ior.2.gmail; Thu, 21 Mar
+ 2019 03:35:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw26ZPe/PI+WXzszSkpLYVlQHVkmXcLbnWUY+FrrdhYR9oXSa7C5d0gOBCQLDipyYhsxyU3
+X-Received: by 2002:a5d:9506:: with SMTP id d6mr1171923iom.22.1553164549967;
+        Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553164549; cv=none;
         d=google.com; s=arc-20160816;
-        b=HAhtNrHh321MpWyJy9rjPuOwgEHkRYANYJbW6HkzrmgMVveyAuaYvbRmVyRG/faIce
-         9TBFk1G5kHgCHGeolZB/hlm/AfC6sQOrwX/ZGdS0nK1SAJU4eyW2alLwaFFw/aMG3WaK
-         L58YlWXvivKpl4FrAcR5NgqNjhnedGD/DTgUfmfwKkzuwFeu+WXS1/BVroEdGriCtZW5
-         JCS7f5n3wCiBlrd6Bc9ZwQEiMGDK9Ols4iCIPypZ1+oZJblkHnJLMK744dZ3oEQ3YO3S
-         1mdFNBnEhCQyAK2xitiyQo1dp8YvkzF8w6Mkrjhh3q/dOev7j88K3NpG4/bcY26JT9lU
-         6kwA==
+        b=DlrNRgw1Ai5XGDLUbIrRJ+MhKfomSTiSb/FwY8uI7/wYR94Z7y+T8kB985zhKCx7N7
+         qXOWcPL0Yao3z1sFL7XV0toZZlzOqnp89po2uteDHHNV16ER77DuBlxJ1f6d6Z5uDYBt
+         hg1tyKIrQ7VPXaitSsrh3yVzNEkfy1ZcY9LI10X0GlC1kQzQu8Z4NzmUqMeEkgdhRIe7
+         gjlgvfP+N1GbM9fS34bXqYm0NJKJi2kmRVLHf1gyPYAgQ/AzQkOCli77zLoKIbonPnq6
+         TzJ/kpKwSO3xF6i3kntkvhUAj0VmC8KZQ13Emy1bWvFHX0xIY4KioQUJcjOPtOgPbzt1
+         NIrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=m4i46Slwi0Xdj59+vKd2eVo0ftZ0M4AGYgm7jCJg3Ig=;
-        b=xkDmJre/afS5mOC/OEsuoFA0KLAplUNKHx5AzW7Q/2hX5EUlv8cjcOye13h+VDgVa2
-         F5v4Gh8DrO2tfBP9BgBO0E/BKKEC35HG691+ljKLehsZYtFFhZpZK2bQFXhtzZNHmJd2
-         Eu3tjD9g6zzR5I7PBZTAfvMpVgRuKHhYv6XwUShlfgs8aZyNvopuCIlyN4Vg2+tgQ0e9
-         LpnhIj1oIo0Fsys0b/d1xDkOy86uJ8w4gMhPyv3UfSgEb4CODDeynd+BiVgKCJhOTEwD
-         esMHwOv4pzH+LDu2FKibhb6j5JLVmTq5YBWv/y0+ALCM1INr7OWwifaiCwfT++ChL2yl
-         S5sA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=xg6Fa73rFau5DRgU73/rlvxeA5WnfyJ42cdeh6S/JDk=;
+        b=DPrIjydi2zqdVEOd7WchNZMYQbkaKOZN/Tp2pGXE7rPHPdAj4rXUTbVISlYU851mRP
+         2qpeptToFNLULk6059xFNkWEgeHpCCoRwFRPyWwF8ys65WJr9gdSlHr7/CXgcWkrpKJP
+         LvesY3jJzie27l1XNfXAgTJctzfkKl9xRzs/Rbk4+ymWMA3eIRPIrC0AcWSLJrquv231
+         MZQsC2j9+pOft2Y79b5abQMNLly1OXjlsqimigrELTW2wjv0dMe+DPBQVAdaKc1kOAMZ
+         ydF0nYTSgnN3ekM1VxD+WIOsb/ZHfFM/rXQiVAGGYypLbhw7w5cCjzK8w+m1n/C/mAew
+         jrmg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E6+Nf3uq;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OB36hzXz;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id 191-v6si190511wmv.0.2018.10.26.03.03.52
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id n194si677115itb.2.2019.03.21.03.35.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 03:03:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E6+Nf3uq;
-       spf=pass (google.com: domain of kim.jamie.bradley@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=kim.jamie.bradley@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OB36hzXz;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id x12-v6so708426wrw.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 26 Oct 2018 03:03:52 -0700 (PDT)
+Received: by mail-pg1-x544.google.com with SMTP id v12so3941292pgq.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=m4i46Slwi0Xdj59+vKd2eVo0ftZ0M4AGYgm7jCJg3Ig=;
-        b=E6+Nf3uqp8MdpsGhuS5feWuSovjs5TqqA65zuxcfAkQGUCmzlXWwHz1Q4M0JwalSLS
-         pLeQkXg99hIc7g/76b5AYbsWW6Vw86lr7yhLV3bdzonCh6EPbao/mb27+dW6Cu7PmI3k
-         nzg3BY7gjzdoNokvcgqRyp+NkIZgNa9a3KjS2yPV4X0DQLGXWNNJXmQaEse0tHkudRck
-         ay/aIwgl1ktam4Th+4F/OjX93d0zTvyVl1DCbaYFN/HljuqHZiYteevt/uPx/L9jIVIr
-         vnvmQjscj+NnbQdifN3MwdvmrIQgdgrCAlraICN+lfaCKt5Db+ulSoUPYZ5RuRgbzHLO
-         pA2A==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xg6Fa73rFau5DRgU73/rlvxeA5WnfyJ42cdeh6S/JDk=;
+        b=OB36hzXzAKv97dyBTiFcp52Oc3Mw1lA2AqeARi+hAgJF0Wp2ZUAFfJ9MaE6iOlilTX
+         y6TTQqv33ah7w1Cxz53Yge9ioECuOm9Uhi8tOpLUGix5hGJecmAwCKSDHmOn+jGbUk+7
+         9Sz2x4WuR3PBGbmPaf5CzRPDRaQRP2T1xuo2YXyWn4pd/w8CBiFsVm3t61ODFICdmVce
+         kKL1vi/Y7ADrugE3N1tldYOoROH2QbxAgjBLLyFvXBHwJVgvYaqV4uNPWFVqkCWUzmI/
+         iFh7jWb9dBV32pd2O4BmOUikHB2+fqpH+3W76/VQDFdtaQZ6PJxMHIiul5gA3N5bTygP
+         5idg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=m4i46Slwi0Xdj59+vKd2eVo0ftZ0M4AGYgm7jCJg3Ig=;
-        b=seqXCCw7nZZVWD1BRf1WmeL/vfdBjA/F35z8xA+Ut7f2ObqNCZXqZ8Uy78l16z+31I
-         aAJtwLhp1kBJJk6Yc2gq/O8pYgL+dDA3YrEM7uZHqCHDRp4HSwTSbKrY3ATdiGHakQ+n
-         Wn14Rm48Td6zQobmcECyJYAbWbKGg98KABW+tkMZRj/WAO3AIa6ZyRGJhQrIilfwmbeL
-         fvTSbgG1il9b6WUyp/cc78DXnarAYg8mU05lKHUpQ289vqz8TxQQOm9OZS1oKpUXSNYr
-         HVvHDaUKjJZqssGvqQwj51diIDCgXd1WPXn07VUXXxFo54a/yYUcKLmiXXfkteZh/NtD
-         i85A==
-X-Gm-Message-State: AGRZ1gLp2crTCjfzN/Cw02rzF9qqC3iBM6VDf1WXMZ1C2QAYJeQx2Jn5
-	3RRSsIC4v9LEYhUjP6FwG7Vegrrua3o=
-X-Received: by 2002:adf:8281:: with SMTP id 1-v6mr5284706wrc.252.1540548231263;
-        Fri, 26 Oct 2018 03:03:51 -0700 (PDT)
-Return-Path: <kim.jamie.bradley@gmail.com>
-Received: from xubuntu-vm (host86-167-247-131.range86-167.btcentralplus.com. [86.167.247.131])
-        by smtp.gmail.com with ESMTPSA id 82-v6sm5080246wms.17.2018.10.26.03.03.50
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Oct 2018 03:03:50 -0700 (PDT)
-Date: Thu, 25 Oct 2018 18:29:52 +0100
-From: Kim Bradley <kim.jamie.bradley@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xg6Fa73rFau5DRgU73/rlvxeA5WnfyJ42cdeh6S/JDk=;
+        b=CE/OqKEOf0zAG/oM1tXBxzwfshbsQKyjvfPs1iTf7fUyRsBCa7OaLrJr7YVF8L5MYR
+         KNV+PpjvDkpah2T4ARvvVCxzYBEJsu98NgjR4mc8NxOPvqT9wYYVJ77HI8F6Fs1pAyu7
+         sHIRjJXJKuv0WSjcEYm41aBP3jlexWWWT4DAIwHJ8R7CMn6lQDx823Yn4dF6woLRBoRk
+         yz5zOCoZebOfD1HdGMXXOCu9Zu0B8vLL8hf15jU1W9q2ABGMEtEKS1lXO+oJNhjgJV+8
+         zVavEWOQPp/aRUQYPXumJvsZo2mFrxsUrmJagVhFEMyuJI6Fi2xXQK/q2KVg9M375Qyq
+         Uxmg==
+X-Gm-Message-State: APjAAAX+h0wE8UXEfrPGAWITgJO9x9PNrOiNzwK/8cETYmXGWxKEwlKP
+	UICsEbe2HryqXVAll6pRlxuHJjJd
+X-Received: by 2002:a17:902:2c01:: with SMTP id m1mr2822564plb.186.1553164549392;
+        Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.215.204])
+        by smtp.gmail.com with ESMTPSA id m7sm3780022pgg.62.2019.03.21.03.35.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 21 Mar 2019 03:35:48 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: rts5208: Shortened lines > 80 chars and aligned
- function args
-Message-ID: <20181025172943.GA7157@xubuntu-vm>
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: vt6655: lines should not end with a parenthesis
+Date: Thu, 21 Mar 2019 16:05:36 +0530
+Message-Id: <1553164536-11317-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Reducing lines to < 80 characters and align function arguments
-wherever possible. Most of these issues appear due to the long
-function name 'wait_for_completion_interruptible_timeout' for
-which a TODO is noted.
+Adjust code to fix the style issue – lines should not end with a
+parenthesis.
 
-Signed-off-by: Kim Bradley <kim.jamie.bradley@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/rts5208/TODO             |  5 ++++-
- drivers/staging/rts5208/rtsx_transport.c | 28 +++++++++++++-----------
- 2 files changed, 19 insertions(+), 14 deletions(-)
+ drivers/staging/vt6655/rf.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rts5208/TODO b/drivers/staging/rts5208/TODO
-index 57bcf5834c0c..67f0c8372d96 100644
---- a/drivers/staging/rts5208/TODO
-+++ b/drivers/staging/rts5208/TODO
-@@ -1,7 +1,10 @@
- TODO:
- - use kernel coding style
- - checkpatch.pl fixes
-+  --> Consider renaming 'wait_for_completion_interruptible_timeout'
-+      function in rtsx_transport as it causes many lines to
-+      overflow past 80 characters and/or alignment issues
- - We will use the stack in drivers/mmc to implement
-   rts5208/5288 in the future
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index 600c920..60686aa4 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -834,11 +834,8 @@ bool RFbSetPower(struct vnt_private *priv, unsigned int rate, u16 uCH)
+  *
+  */
  
--Micky Ching <micky_ching@realsil.com.cn>
-\ No newline at end of file
-+Micky Ching <micky_ching@realsil.com.cn>
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 8277d7895608..de9d9eec963f 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -257,8 +257,8 @@ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
- 	spin_unlock_irq(&rtsx->reg_lock);
- 
- 	/* Wait for TRANS_OK_INT */
--	timeleft = wait_for_completion_interruptible_timeout(
--		&trans_done, msecs_to_jiffies(timeout));
-+	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
-+						msecs_to_jiffies(timeout));
- 	if (timeleft <= 0) {
- 		dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
- 			chip->int_reg);
-@@ -284,8 +284,8 @@ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
- 	return err;
- }
- 
--static inline void rtsx_add_sg_tbl(
--	struct rtsx_chip *chip, u32 addr, u32 len, u8 option)
-+static inline void rtsx_add_sg_tbl(struct rtsx_chip *chip, u32 addr,
-+				   u32 len, u8 option)
+-bool RFbRawSetPower(
+-	struct vnt_private *priv,
+-	unsigned char byPwr,
+-	unsigned int rate
+-)
++bool RFbRawSetPower(struct vnt_private *priv, unsigned char byPwr,
++		    unsigned int rate)
  {
- 	__le64 *sgb = (__le64 *)(chip->host_sg_tbl_ptr);
- 	u64 val = 0;
-@@ -394,7 +394,8 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
- 			*index = *index + 1;
- 		}
- 		if ((i == (sg_cnt - 1)) || !resid)
--			option = RTSX_SG_VALID | RTSX_SG_END | RTSX_SG_TRANS_DATA;
-+			option = RTSX_SG_VALID | RTSX_SG_END |
-+				 RTSX_SG_TRANS_DATA;
- 		else
- 			option = RTSX_SG_VALID | RTSX_SG_TRANS_DATA;
- 
-@@ -420,8 +421,8 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
- 
- 	spin_unlock_irq(&rtsx->reg_lock);
- 
--	timeleft = wait_for_completion_interruptible_timeout(
--		&trans_done, msecs_to_jiffies(timeout));
-+	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
-+						     msecs_to_jiffies(timeout));
- 	if (timeleft <= 0) {
- 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 			__func__, __LINE__);
-@@ -445,7 +446,7 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
- 		init_completion(&trans_done);
- 		spin_unlock_irq(&rtsx->reg_lock);
- 		timeleft = wait_for_completion_interruptible_timeout(
--			&trans_done, msecs_to_jiffies(timeout));
-+					&trans_done, msecs_to_jiffies(timeout));
- 		if (timeleft <= 0) {
- 			dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 				__func__, __LINE__);
-@@ -542,7 +543,8 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
- 				(unsigned int)addr, len);
- 
- 			if (j == (sg_cnt - 1))
--				option = RTSX_SG_VALID | RTSX_SG_END | RTSX_SG_TRANS_DATA;
-+				option = RTSX_SG_VALID | RTSX_SG_END |
-+					 RTSX_SG_TRANS_DATA;
- 			else
- 				option = RTSX_SG_VALID | RTSX_SG_TRANS_DATA;
- 
-@@ -566,7 +568,7 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
- 		spin_unlock_irq(&rtsx->reg_lock);
- 
- 		timeleft = wait_for_completion_interruptible_timeout(
--			&trans_done, msecs_to_jiffies(timeout));
-+					&trans_done, msecs_to_jiffies(timeout));
- 		if (timeleft <= 0) {
- 			dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 				__func__, __LINE__);
-@@ -593,7 +595,7 @@ static int rtsx_transfer_sglist_adma(struct rtsx_chip *chip, u8 card,
- 		init_completion(&trans_done);
- 		spin_unlock_irq(&rtsx->reg_lock);
- 		timeleft = wait_for_completion_interruptible_timeout(
--			&trans_done, msecs_to_jiffies(timeout));
-+					&trans_done, msecs_to_jiffies(timeout));
- 		if (timeleft <= 0) {
- 			dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 				__func__, __LINE__);
-@@ -679,8 +681,8 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
- 	spin_unlock_irq(&rtsx->reg_lock);
- 
- 	/* Wait for TRANS_OK_INT */
--	timeleft = wait_for_completion_interruptible_timeout(
--		&trans_done, msecs_to_jiffies(timeout));
-+	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
-+						     msecs_to_jiffies(timeout));
- 	if (timeleft <= 0) {
- 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 			__func__, __LINE__);
+ 	bool ret = true;
+ 	unsigned long dwMax7230Pwr = 0;
 -- 
-2.19.1
+2.7.4
 
 
