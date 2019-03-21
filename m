@@ -1,119 +1,104 @@
 X-GM-THRID: 6670775927443554304
-X-Received: by 2002:aed:3b14:: with SMTP id p20mr5926839qte.240.1553217776998;
-        Thu, 21 Mar 2019 18:22:56 -0700 (PDT)
+X-Received: by 2002:a1f:b483:: with SMTP id d125mr3264131vkf.51.1553195587982;
+        Thu, 21 Mar 2019 12:13:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:110f:: with SMTP id c15ls3181697qtj.3.gmail; Thu, 21 Mar
- 2019 18:22:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzm9J/xE9bdBu4k+kcIk5GmobUJu8zVda+Fbi66IazLviLtUWzWvnAPmUFhWAXXwoKiN4mS
-X-Received: by 2002:aed:3f51:: with SMTP id q17mr5805700qtf.346.1553217776329;
-        Thu, 21 Mar 2019 18:22:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553217776; cv=none;
+Received: by 2002:a1f:9590:: with SMTP id x138ls1047762vkd.1.gmail; Thu, 21
+ Mar 2019 12:13:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwIK5w7nHzZJcjOn6xWRS7hIx4zkGEpIi5/oFFOj3WfNR8h1cwQu1F2mV2AVcx1rGF6Bg2o
+X-Received: by 2002:a1f:be81:: with SMTP id o123mr3369940vkf.83.1553195587312;
+        Thu, 21 Mar 2019 12:13:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553195587; cv=none;
         d=google.com; s=arc-20160816;
-        b=bSh3/CJ0pa2NMOndZXzce0YweGp/oZDH7/kbdhjkH+v56eOGo6ltV/ZoBNsMCWl+gF
-         sE0G0ijdhIgKS5g6Udv4QpvuvMDhl2F2i4hS/i9FK+N3YEMrvoeXAcKt8WVSUofu4TIW
-         E60MeiTYDGvoC7/O946zSN5V69RfeLaD9fxsAfWMKmEvG2EPyaMw9ibbygs4vm6De5Fs
-         PJPFXcibBJNuvF/5AP4IA+MHHnYtge/qsYb/jCcR+4jAVoln2IVL4eY/VdheQ/UsdBA7
-         SvTH9jAaXuLOFpaj8XUv8mxU2IvQykUGYwfaXi4zOihrHXnLv2WwVWPK+kio+04VH8m3
-         MWOQ==
+        b=TaN/1hjOfIxKVEqUpNvYStEB8A/ZrXzcPYNkVsovU/zfpxadUOGEmb+PDF6wIhfVsF
+         1hVjQudl45IjXdqM8w7wj0DfrobV+kgSznlFWZE2EXqQjRKyqMjxyP41dKZ1RQLuYa1b
+         P/2lnqP4hjICVHaqTsmbomEIcP2ggg/ix0vZMvx5IuU6SCmuJvoSgSJ5qv487YSpAhCQ
+         ZAHXX3K3f9JPaIK/MjhrACU4jejTOHRiBmkEhQibn8RtAqzJbQu7fGxKVflfQMJTyfI5
+         dKxFxQF/IhpeCd8DySX9rN6+d4ZiURurcuaZ7yFMISm2J5z6wmWEZ0ptA4ehToRkdXDj
+         GJKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=QHXbuYT2R8QtuuiSv1g+tfYPLaExOLhkp/8iQvdGEe0=;
-        b=CJedZZDwwYkp2rwPGzcGuWMKXVmpgxbojV0+BisQS7rMCBujXwPZe5wxH8HeM1Yd/V
-         ilmQdyXqX74dctY77qjYszZszblAwhWZZcZYlZUsvpsj68mLeNYH/y32aSI57/Emyclc
-         S03SVKrBtgp20d1WDbrVVPrDJ54YNg0Nuz7sApM/S+p5+EjmgQEMQmG52jNr+eEFeiEG
-         ExY0sUMwX9wuthdqYGiTNf23Up3PCTtM/Af9dFfY43y7sVBJZ8SlY8d/eDGNo9PP51iq
-         a1rrTYYc59cLDR8nvy6cwpDdw1SBJGNCtjm0A4iU+OlDbnidfA/hCU2U8rYl2+hzX9cf
-         +XTA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=OvRsS1WwqpJRJ2GZ5iGo8WPDDSOBctnUQtLN8RTzIZ4=;
+        b=ZOlq3jkWLebVNywWPoEkFMDl5DeBIN3EuoAVK81ooW6JwqMWLy72ax9lg7JEUtt9LT
+         tbb8RRHJGoqmLc8hSGZ3Zb9eH80wG6H8+rjJ/GThiOe7gxnE7MYIO12Dz+fxdAvOW2Hd
+         0v1uuPF5K3RVOU4h7sjGlEnTkcsTP6WGEyURmd1zepqyA6ltc7GgqcUTKE+kp5hmtQtI
+         cfDxVvJ4t3xWdQEAIWl3Jfc2Jv3Tz/ApGVbIbIcoYU3Lhi+wc3fJq/His0BdM9hjpWBE
+         LR3p1dCB2zLJBeCZU+Wx1YsBOIQ8LPQGjjxWivFCiVkOhqlhh1V8tcU7pEw+PqsI9bNI
+         UjJQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gaoxiang25@huawei.com designates 45.249.212.35 as permitted sender) smtp.mailfrom=gaoxiang25@huawei.com
-Return-Path: <gaoxiang25@huawei.com>
-Received: from huawei.com (szxga07-in.huawei.com. [45.249.212.35])
-        by gmr-mx.google.com with ESMTPS id o59si400991qte.3.2019.03.21.18.22.56
+       dkim=pass header.i=@kernel.org header.s=default header.b=tWPFV7sE;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id n137si84942vke.2.2019.03.21.12.13.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 18:22:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gaoxiang25@huawei.com designates 45.249.212.35 as permitted sender) client-ip=45.249.212.35;
+        Thu, 21 Mar 2019 12:13:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of gaoxiang25@huawei.com designates 45.249.212.35 as permitted sender) smtp.mailfrom=gaoxiang25@huawei.com
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
-	by Forcepoint Email with ESMTP id A394FECEF5ECA0AC6A9A;
-	Fri, 22 Mar 2019 09:22:52 +0800 (CST)
-Received: from [10.151.23.176] (10.151.23.176) by smtp.huawei.com
- (10.3.19.214) with Microsoft SMTP Server (TLS) id 14.3.408.0; Fri, 22 Mar
- 2019 09:22:42 +0800
+       dkim=pass header.i=@kernel.org header.s=default header.b=tWPFV7sE;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 934CE20643;
+	Thu, 21 Mar 2019 19:13:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553195586;
+	bh=CsjH9Jes8d8gmiC5OqAviHTfn0MsejR1v4tuM/4Yy00=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tWPFV7sE5s6aMtR4a5TVIlSnjpJBc6TdUQW1fJuZaJRs2tEG9EveAJM1C0s5nF24A
+	 N8kXQGpMELm7hEOgWS1cYXiKOiGcLRcLnIX1QxZtswfBd3Ga+J7Ao4S9tH8n0v2Q9x
+	 1ZIr7tdv8OqQLBLZuCPQIoMFGD4HpwJanOpdE/MA=
+Date: Thu, 21 Mar 2019 20:13:03 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Gao Xiang <gaoxiang25@huawei.com>,
+	Chao Yu <yuchao0@huawei.com>
 Subject: Re: [PATCH v2] Staging: erofs: Use !x in place of NULL comparision
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Bhanusree Pola
-	<bhanusreemahesh@gmail.com>
-CC: <outreachy-kernel@googlegroups.com>, Chao Yu <yuchao0@huawei.com>, "Miao
- Xie" <miaoxie@huawei.com>
+Message-ID: <20190321191303.GA6252@kroah.com>
 References: <20190321152007.5726-1-bhanusreemahesh@gmail.com>
- <20190321191303.GA6252@kroah.com>
-From: Gao Xiang <gaoxiang25@huawei.com>
-Message-ID: <a7101189-b212-a815-d6be-6479d4bc2e4b@huawei.com>
-Date: Fri, 22 Mar 2019 09:22:40 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <20190321191303.GA6252@kroah.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.151.23.176]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190321152007.5726-1-bhanusreemahesh@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-
-
-On 2019/3/22 3:13, Greg Kroah-Hartman wrote:
-> On Thu, Mar 21, 2019 at 08:50:07PM +0530, Bhanusree Pola wrote:
->> Test for NULL as !x instead of NULL comparisions.
->> Issue found using coccinelle
->> Semantic patch used to solve the problem is as follows
->>
->> // <smpl>
->> @@
->> expression x;
->> statement S;
->> @@
->>
->> x = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|
->> usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\)(...));
->>
->> -if(x==NULL)
->> +if(!x)
->> S
->>
->> @@
->> expression e;
->> @@
->>
->> -e == NULL
->> +!e
->> // </smpl>
->>
->> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
->> ---
->>
->> v2:
->>  -modified commit log.
->>  -All NULL comparisions in erofs are modified.
+On Thu, Mar 21, 2019 at 08:50:07PM +0530, Bhanusree Pola wrote:
+> Test for NULL as !x instead of NULL comparisions.
+> Issue found using coccinelle
+> Semantic patch used to solve the problem is as follows
 > 
-> This patch does not apply to my staging-testing branch.  Please rebase
-> it and resend, thanks.
-
-opps, it seems that there is another new patch called
-
-From e2ff9f15e8ac8861929573e4fa80bfe92e1b1805 Mon Sep 17 00:00:00 2001
-From: Vatsala Narang <vatsalanarang@gmail.com>
-Date: Thu, 21 Mar 2019 05:36:13 +0530
-Subject: staging: erofs: Replace NULL comparisons
-
-which has been merged recently, I will rebase the patch and clean up all
-NULL comparisions.
-
-Thanks,
-Gao Xiang
-
+> // <smpl>
+> @@
+> expression x;
+> statement S;
+> @@
 > 
-> greg k-h
+> x = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|
+> usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\)(...));
 > 
+> -if(x==NULL)
+> +if(!x)
+> S
+> 
+> @@
+> expression e;
+> @@
+> 
+> -e == NULL
+> +!e
+> // </smpl>
+> 
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+> 
+> v2:
+>  -modified commit log.
+>  -All NULL comparisions in erofs are modified.
+
+This patch does not apply to my staging-testing branch.  Please rebase
+it and resend, thanks.
+
+greg k-h
 
