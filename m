@@ -1,77 +1,107 @@
 X-GM-THRID: 6670726051308503040
-X-Received: by 2002:ac8:1911:: with SMTP id t17mr4560762qtj.247.1553194980989;
-        Thu, 21 Mar 2019 12:03:00 -0700 (PDT)
+X-Received: by 2002:a24:3d8f:: with SMTP id n137mr266092itn.96.1553194951819;
+        Thu, 21 Mar 2019 12:02:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:24ef:: with SMTP id t44ls3023281qtt.4.gmail; Thu, 21 Mar
- 2019 12:03:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvVB2J3/SeGr60flIiag+LM4FdROB4shMsi5Dv3fc4jRN8G4NsS4pZjGcvAA0duI52RDK0
-X-Received: by 2002:ac8:3653:: with SMTP id n19mr4331698qtb.95.1553194980404;
-        Thu, 21 Mar 2019 12:03:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553194980; cv=none;
+Received: by 2002:a24:ac54:: with SMTP id m20ls1715212iti.1.canary-gmail; Thu,
+ 21 Mar 2019 12:02:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyiO0yLIRs8swyQdv2rrwOzBDRWHj6Drood/kyDUmE7p/onddgBqUXnImU8Dy0GmUWzgBsr
+X-Received: by 2002:a24:99c1:: with SMTP id a184mr252259ite.21.1553194950583;
+        Thu, 21 Mar 2019 12:02:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553194950; cv=none;
         d=google.com; s=arc-20160816;
-        b=RzNvwGCcUkcS4Wwiho2pU0QzKGHn4RKaBqLklXa+t7WxdB3DSPNrrbZjmU9xHn2cAy
-         qumRROsVRbtzSDLKMeknifUjIZlDE/NfPfI10BJAolhph16Boi+2T7ZBaFuMVDmRfXiL
-         QInTGWTkPabaqraR1T1WQiixKOpm+bCWXBvTvj8PctE1zjYtOSlhQCf+9jeXcB/+KNhY
-         nJqQcwtvXsgTcq9t4IfqHGYUKSHNcGm9HiW5qLeS6iQ/woxRrOcCOyFQGqAIFq6zlrKa
-         LGODMZ+sG905WKc9sq2xnV+5cibyXEXI/MyfJX+x4JeL3casKEc6jiMQEoc8QETgun6d
-         nnng==
+        b=Svr4smoHhmg2XCR3xwxTrvNtskASBLrZnMr+wVFsulFOHKA/2xkgtG+GWRbsGsoSL2
+         O43s7kO3tf28RU2BRVhnKKXpzOI0JIxNn2C9WY0CzofFc2SOLRx5j5KcQ5WeiIxrXZj+
+         KbUUXgI2JFBMNynsKmxxw0AgzKZmxxlCDnNt8f6m9EvRD1iIiQpyeX/QR8+hHjO2W/24
+         OTS582ca5A8tpU2XVT3aDCjfJrlMlFPmLgl8kwSDwrU+ZWq33KbHGQIFxjjyCQ4AuC5/
+         RUfxZnKTdYwrTySS2Ut9xlmZLHy0K2fUNS6NNO1PznKZfOfSrrVx2SMKofRDG9IlKtQ6
+         g+mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=k8tZvk9Jy1ffuhfvw7/UJN73lpO1gk1CeCrTa+CUAfE=;
-        b=VJVCzoGNQ5JbWcZ7znsTyQGQH3eqHWhgvuT+nCvwmomg6VHFZg25b5l2arXGFC+zrD
-         JWCIajcWqjHasmLHRhEUuSDyIE/nfpUXJdNUYN8S7qMypwIMQyha/U021ajXR8aOSmlt
-         DBR8Vpjf/Tk3PlalUGR5jbgBKezUi2JsCWMZiczRXRkRoGpjMeQLohS2Y1AxQfQaxHd/
-         fHwVYKtnt+ZWRV8/0CWsSfjhOkxsfSNkI3IclPd6fZl1p7kPw0fJEym5PLYRTzQiSEE9
-         yeJtfcygo7l0VQrm2JKugpDoAFf6+Z/DJho2BpD0yWmdU+oFdHJw3xMDbBzwLEWh/mtc
-         Z6Gg==
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=URZ2bZX0q9j1W1P8DUVwyrC/WXPA3bwizD4/BTg40Ug=;
+        b=ACabq5X6g+xO8TwQjN5v8hwowVIt2xJCgL223+r6P8Fc7NUtU661NaRADkUnEi0NWY
+         vAqxkqy6rbLfIWM5+2W7U0zgAfXLOOIUNE6cJKwBIigVxUbJ2iwWsLizAnrZJrJSLQCp
+         cNXxxUIRdLBkUasDMTbfyWFUF8d5rxnjerv+JrCF0oNwuorUAhrz0jb77Vpa1TN27WmM
+         JsMJNJfYYtygr68ZodZaj90hIkqm5QFkBCdvsTrIVIzeh4RbOYfCkMb77VldzDAH17C5
+         +zNUyWH4p/kJ3PIJsUZ/Iqlz71EpuRXxuJhNFWFWMJrYnadinnfEwABYl81uHTFNdZsC
+         MoZw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=OK5EMs7W;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id p1si404641qkg.3.2019.03.21.12.03.00
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b="Pr57/zev";
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b="AI/NgpmW";
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.29 as permitted sender) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com. [66.111.4.29])
+        by gmr-mx.google.com with ESMTPS id u1si533531itb.2.2019.03.21.12.02.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 12:03:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 21 Mar 2019 12:02:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.29 as permitted sender) client-ip=66.111.4.29;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=OK5EMs7W;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b="Pr57/zev";
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b="AI/NgpmW";
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.29 as permitted sender) smtp.mailfrom=greg@kroah.com
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id B97BD21F93;
+	Thu, 21 Mar 2019 15:02:29 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute6.internal (MEProxy); Thu, 21 Mar 2019 15:02:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=fm3; bh=URZ2bZX0q9j1W1P8DUVwyrC/WXP
+	A3bwizD4/BTg40Ug=; b=Pr57/zevB6F35M8ZvedLELEyidArUPAUtcvCDSHKWpt
+	kh8l6GXqOx7wTT0ffLVixV0UL729YC0Q6YYCnYo+JoZpnQR+p/7KZzJd1wRS7C3g
+	5siW5Ihx8ijzdwcfmGlcBrCczfMKVJjRaT0zQ6Vg1ZcSea928MZn1igiD1BtYq0j
+	TwcgXZMhU1f/mrkGrWCh57ITm4/A8PqWI2EkfjxMwgMzDabcFUFjQcpKB9rQO6cw
+	IiVsGZvJyT+4FMFt0mgsiFzVhPgEVuUu7ny2KWeKz1GYOTkanIkwbJtS7rwxCpn4
+	zVnQUdmXJnv7O45huTsc+25iX1Ps8QnmDRClByIJcBg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=URZ2bZ
+	X0q9j1W1P8DUVwyrC/WXPA3bwizD4/BTg40Ug=; b=AI/NgpmWDhla0xOv+jlqXQ
+	0YLaWmFcn/nBPRGqhOMx/CJjARnaaNZnvTI0n+anJai+FU0Zb+u26/sosdMbRAi5
+	oG0k/qT2MpZnj0F2iHeVcRJiFzOtdLlqokMhlF80I0QSInY3qvbLnudv8EkjNf5B
+	uecW5l35UhSP6pRRN8pUQplzTkd7+18bEVff4Od3draOQl/qqO+8LMHkb+UgkIac
+	N53m9qD58SkoQBIHemQLfa81X/iGTnzkqgdX5OFEWRrz/3ls0Hg6JaYmmds2X4KS
+	9K3ZSM0ZHB0MNVIfsQUhKqZG1dxUmDFxI+bLOdLZ9uqN9KrEmtLITlmCv8Veqf7A
+	==
+X-ME-Sender: <xms:xd-TXATGheyEZ9uk3zDBZAfDQdsZvI-yjuf5ZthnOVvS2OpUbARvww>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrieelgddutdehucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvffukfhfgggtuggjfgesthdtredttdervdenucfhrhhomhepifhrvghg
+    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecukfhppeekfedrkeeirdekledrud
+    dtjeenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhmnecu
+    vehluhhsthgvrhfuihiivgeptd
+X-ME-Proxy: <xmx:xd-TXCXJwfUFY5owpMkHdnf-uIdGZE7C9aYYaliQUMnZdAhUVOWlHA>
+    <xmx:xd-TXJvTPLkHi2-L3Y7rG802em4AMUoBWnFUr2l29lQ8rdbCor4v_A>
+    <xmx:xd-TXAuLW9nUPMyFEAK_FYNr1P4pwYxAlp3igiFfxCwa_eG-Cs6SCA>
+    <xmx:xd-TXEpkCq9maPZbyVFGnY-HGWtqzbQ3G_efwoQjzr7ionHlalioTw>
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id D975C21873;
-	Thu, 21 Mar 2019 19:02:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553194979;
-	bh=ZjD/VUC6IDwatax39HQvIeDgeDgirc1CacaOE7MKagA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OK5EMs7WdtmcjQ01abPdnEGbsb3FyEnGCUrV35aqhsYIaK74LkLDnFQ4XCKH0LVvw
-	 AHsVtmtJJ5Hft94/G/hqDgOHTHLioic3wNAkKFPipHZRbqssDAxOgyE1j+5RrBnm3k
-	 rIXhTJZS8RZvBugpJvkSqafhQrwlHo6pWAfTH4GU=
-Date: Thu, 21 Mar 2019 20:02:57 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+	by mail.messagingengine.com (Postfix) with ESMTPA id 0D7E7E49DD;
+	Thu, 21 Mar 2019 15:02:27 -0400 (EDT)
+Date: Thu, 21 Mar 2019 20:02:26 +0100
+From: Greg KH <greg@kroah.com>
 To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 1/3] [Outreachy kernel] staging: vt6655: spaces around
+Subject: Re: [PATCH v4] [Outreachy kernel] staging: vt6655: spaces around
  operators
-Message-ID: <20190321190257.GB12522@kroah.com>
-References: <1553163225-10581-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+Message-ID: <20190321190226.GA12522@kroah.com>
+References: <1553160315-3839-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1553163225-10581-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+In-Reply-To: <1553160315-3839-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 
-On Thu, Mar 21, 2019 at 03:43:45PM +0530, Payal Kshirsagar wrote:
-> Add spaces around operators.
-> 
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+On Thu, Mar 21, 2019 at 02:55:15PM +0530, Payal Kshirsagar wrote:
+> Add spaces around operators
 
-1/3?  Where are the other 2 patches of this series?
+That says _what_ you did (which is obvious looking at the patch), but it
+does not say _why_ you did this, which is what needs to be in a
+changelog text.
 
-Please fix up and resend them all.
+Please fix up and resend.
 
 thanks,
 
