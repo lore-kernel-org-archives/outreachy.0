@@ -1,104 +1,121 @@
 X-GM-THRID: 6670940020392591360
-X-Received: by 2002:ab0:5a30:: with SMTP id l45mr5615842uad.58.1553264179372;
-        Fri, 22 Mar 2019 07:16:19 -0700 (PDT)
+X-Received: by 2002:a2e:2419:: with SMTP id k25mr3122147ljk.38.1553201172374;
+        Thu, 21 Mar 2019 13:46:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:ab84:: with SMTP id u126ls1440658vke.0.gmail; Fri, 22
- Mar 2019 07:16:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwvqDYVNWG9quO3erfWHCa7cRKohE93TSGh0tFw0fyRPGNVbdQLX3CJySmnGvC5WIRNmGlc
-X-Received: by 2002:a1f:be81:: with SMTP id o123mr6135608vkf.83.1553264178867;
-        Fri, 22 Mar 2019 07:16:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553264178; cv=none;
+Received: by 2002:ac2:5199:: with SMTP id u25ls696473lfi.4.gmail; Thu, 21 Mar
+ 2019 13:46:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxzdvW4zyKiiZ6vTSzjLK7gkWNOBb/xJNteHuDPYQ5zziII5acu7eiPnGG/09CsxU2NGBP8
+X-Received: by 2002:a19:a40b:: with SMTP id q11mr3130163lfc.33.1553201171418;
+        Thu, 21 Mar 2019 13:46:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553201171; cv=none;
         d=google.com; s=arc-20160816;
-        b=zs04g5Zh0TFYhGwYtrP0uMAVAnTIWzI3LTpXZba7IthyS8mpBGYmxd6din3g35ngOr
-         b0fUChwrtzpJVKpz0NeAnRIhDA5wNkFexDyZKroxKWsSwgayi9PwR8esgpeoefiQPEMM
-         aBRtkr6YQzAd5OTWL4wnCnxqtds3l5AmLDCF3dv4gIdIYsn7RmV2NA6iwpsCjbt+ildA
-         avYP+wazWug23SENB1nf2Si+OV6gFeVUS4iSVXK9h2pomfl64FxFzwvtxhPsv4MAZLKI
-         CyPgAKen3+oF1iQDEX8H/khBMI0IUpZpmSWtms2yS+R1erIJXVCXioPZqE67Vjb2z6Wh
-         dtHQ==
+        b=bYJJaWAnGuGRqvkh94oyPa/SZKO5M/gj6dGLlq5PumnNqtAv8Nf6CpwVk2VW/Povj8
+         j8N95rf7ZWgnnm/Qmdnyr+3St77Iljz0XesssJyuNUK2Xvga/w6g5T0gotBG3rtAR7tv
+         qVLXgO0gFh6SZSTE5Z5QmxSKP6XloOjyMSJbs4LPdPIPc/Oj+qLe8S/j/OkPWyUpocLf
+         IqiIKPArTjsrF0yKsv1g35Fg4laaw93n+bONJvrTxSa1cn24Cz0vzzda2/sFORvViCEi
+         CoLwXl/c8QRGex1wtdhqzxN00VW+Dn+8JhypoKEEojibD6aiAPoqS6W5O+3XdO+ID7sQ
+         wIVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=updV7XqS30HTYPdxNkwUJIhmS51TIY8HMRhjxPLk/go=;
-        b=UwtuHRo/18DzFe70rKYvg7hARzGJTeGvJDnlVUCj6uoGT4na7s3lxpRefailysqk+i
-         +5sktzgrYFgJPtTe3Gw0XFXFnCWX6wWghUkHdURoo5ftOL8FVsufyLmNnVzGnGIxS1NH
-         svPM1swQarrT+gbaqxKP5Utwrsm+/b9k1twaamxyR+pL9KBvU/B1rTEVyzsvNVsuXOdb
-         Xkb9VeelYOvqsqXhbB+FJdr+5Fsk9dA+CJ5DFTlBFv64FxVQSfEfXsbGKAHFLPFd6E6g
-         wajcSfGFbL26mjbP4pZW7QOVch+C26vN+Dzexck6SbzYpwsOA9WKLVYarsAb+NIrp6SG
-         0owg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=idZ16eiKxCSAF18yn7yVIFJp8qZ+fa6goPWRFCY7N5k=;
+        b=0FRbZjkQ5zX1GX8+n3UPU7mWRPtc45xWqR8eJQS/v+N+e6uR1QgI3tqgqXhWt5GVFJ
+         Kknsiq1bTzcVfSYsN9nVxoLzcw2jIX0O1tJgoJeDv/5coYWIKKQOS4rGaM127smbelXo
+         cfD8atVqua31kfqef6OLceGNQ8MwqSTm08VSL1n9ynbyIVtZ65SqDqrJ6/DqRY+Yeq93
+         XVN692K9W+glYUMPQRQl7iuJZhxXKYf0JHQVoCf5ZqtEMxcHnyUNNDjMHh6OLq8B/KHm
+         BjZzRVfdjZrEZTwIEpELE3e17bmOZJRIKX6hd1Y85tgaR8+7Nh5bRy3HIp4PYjlEa0d5
+         +ftw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=n8ogjpuW;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k68si227834vkg.5.2019.03.22.07.16.18
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 19si204124lje.4.2019.03.21.13.46.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 07:16:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 21 Mar 2019 13:46:11 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=n8ogjpuW;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 5E4CD218E2;
-	Fri, 22 Mar 2019 14:16:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553264177;
-	bh=eY+8bwrhz3JldXm7cB7Xnxpr918sCsi8841YkxpQnHY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n8ogjpuWtBEbZ+m6AfNT+dSjrr0Abi1mRFhK+CBpbheEAsuk0rj/VhqXCdoVpUOph
-	 giPtdRj3rdvTtmZZ7BFPDg7F6e8K/BVbYpUQIrpPhZMTlPmfjE7n1KusbdOODoKhlY
-	 uWwPtsfQGXqXMtA/r6IyyvzjjUdYGXezzzA9tH3E=
-Date: Fri, 22 Mar 2019 15:16:15 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,254,1549926000"; 
+   d="scan'208";a="375169553"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Mar 2019 21:46:10 +0100
+Date: Thu, 21 Mar 2019 21:46:10 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 4/4] staging: rtl8723bs: core: Remove return variables in
- rtw_io.c
-Message-ID: <20190322141615.GC25959@kroah.com>
-References: <20190321201359.5948-1-nishka.dasgupta@yahoo.com>
- <20190321201359.5948-7-nishka.dasgupta@yahoo.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/4] staging: rtl8723bs: core: Remove
+ return variables in rtw_mlme.c
+In-Reply-To: <20190321201359.5948-6-nishka.dasgupta@yahoo.com>
+Message-ID: <alpine.DEB.2.21.1903212139260.4720@hadrien>
+References: <20190321201359.5948-1-nishka.dasgupta@yahoo.com> <20190321201359.5948-6-nishka.dasgupta@yahoo.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190321201359.5948-7-nishka.dasgupta@yahoo.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Mar 22, 2019 at 01:43:59AM +0530, Nishka Dasgupta wrote:
-> Remove unnecessary return variables in rtw_io.c. Issue found with
-> Coccinelle using ret.cocci.
-> 
+
+
+On Fri, 22 Mar 2019, 'Nishka Dasgupta' via outreachy-kernel wrote:
+
+> Remove unnecessary local return variables in rtw_mlme.c. Issue found
+> with Coccinelle using ret.cocci.
+>
 > Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 > ---
->  drivers/staging/rtl8723bs/core/rtw_io.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_io.c b/drivers/staging/rtl8723bs/core/rtw_io.c
-> index d341069097e2..60347349efd1 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_io.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_io.c
-> @@ -37,7 +37,6 @@ jackson@realtek.com.tw
->  
->  u8 _rtw_read8(struct adapter *adapter, u32 addr)
+>  drivers/staging/rtl8723bs/core/rtw_mlme.c | 10 ++--------
+>  1 file changed, 2 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> index 79adc6f1e53a..68c2b2f198d8 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> @@ -353,10 +353,7 @@ u8 *rtw_get_beacon_interval_from_ie(u8 *ie)
+>
+>  int	rtw_init_mlme_priv(struct adapter *padapter)/* struct	mlme_priv *pmlmepriv) */
 >  {
-> -	u8 r_val;
->  	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
->  	struct io_priv *pio_priv = &adapter->iopriv;
->  	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
-> @@ -45,8 +44,7 @@ u8 _rtw_read8(struct adapter *adapter, u32 addr)
->  
->  	_read8 = pintfhdl->io_ops._read8;
->  
-> -	r_val = _read8(pintfhdl, addr);
-> -	return r_val;
-> +	return  _read8(pintfhdl, addr);
+> -	int	res;
+> -
+> -	res = _rtw_init_mlme_priv(padapter);/*  (pmlmepriv); */
+> -	return res;
+> +	return _rtw_init_mlme_priv(padapter);/*  (pmlmepriv); */
+>  }
+>
+>  void rtw_free_mlme_priv(struct mlme_priv *pmlmepriv)
+> @@ -378,10 +375,7 @@ static struct	wlan_network *rtw_dequeue_network(struct __queue *queue)
+>  struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv);
+>  struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv)/* _queue	*free_queue) */
+>  {
+> -	struct	wlan_network	*pnetwork;
+> -
+> -	pnetwork = _rtw_alloc_network(pmlmepriv);
+> -	return pnetwork;
+> +	return _rtw_alloc_network(pmlmepriv);
 
-One too many spaces there :(
+This looks like another instance of what Madhumitha has worked on
+recently.  These functions do nothing but call another function that has
+the same argument and almost the same name.  You can get rid of these
+functions and drop the _ in front of the name of the called function.
+There are some sint's floating around that can be changed to int.  and you
+can drop the p's at the beginning of all of the pointer-typed variable
+names.
 
-Please fix up and resend.
+Another question is whether the variable pbuf is really needed in the
+function _rtw_init_mlme_priv.
 
-thanks,
+julia
 
-greg k-h
+>  }
+>
+>  void rtw_free_network_nolock(struct adapter *padapter, struct wlan_network *pnetwork);
+> --
+> 2.19.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190321201359.5948-6-nishka.dasgupta%40yahoo.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
