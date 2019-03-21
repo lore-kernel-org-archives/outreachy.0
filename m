@@ -1,167 +1,131 @@
-X-GM-THRID: 6664818857456173056
-X-Received: by 2002:a25:b941:: with SMTP id s1mr599377ybm.99.1551774064330;
-        Tue, 05 Mar 2019 00:21:04 -0800 (PST)
+X-GM-THRID: 6670734463616417792
+X-Received: by 2002:a2e:91c4:: with SMTP id u4mr83873ljg.29.1553153420939;
+        Thu, 21 Mar 2019 00:30:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:50cb:: with SMTP id e194ls1880235ybb.12.gmail; Tue, 05
- Mar 2019 00:21:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwfVatpuzgXos1knhiFHxzHhUJgaID7o45lD02bg71gf4hNq7sXA3C7FjjCeCXr+3vQMNzw
-X-Received: by 2002:a25:4c85:: with SMTP id z127mr612980yba.69.1551774063551;
-        Tue, 05 Mar 2019 00:21:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551774063; cv=none;
+Received: by 2002:a2e:b04e:: with SMTP id d14ls462033ljl.7.gmail; Thu, 21 Mar
+ 2019 00:30:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqweXotos0MQK+Ph9Vb6orqmtCxJLPV6IIo4PJwFosyG+WnZKdCSa/W2VFK6hpwxc36FyOhk
+X-Received: by 2002:a2e:7205:: with SMTP id n5mr83613ljc.3.1553153419928;
+        Thu, 21 Mar 2019 00:30:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553153419; cv=none;
         d=google.com; s=arc-20160816;
-        b=VKC/szGNEsV5tsPIEsC5Ak3EChZpTN7KcU4MXRmkNRXc3qoAiHYgWcaUFama9FU9dV
-         3nQcrFUBMI6p2xAEX5mAFHEg4kjGmEdHk1ysusL+4CWP6HxII3biMlQimsI03tZINusi
-         1HKuOzUoJpqkdNwbWP/iNWgv+oL66rXIZbau7NjMkKF65dlnPFAGg8WwcleOLQfzjK4C
-         SFEerLQe3iL++uwR4EbjRZ5QRJyhJMCMM5LsVA171g2CRFG6wsuHAsQc8GSh0mGD4GFj
-         xhMKIyVaW6RqApGlFoUbh5UJZK/igls5eKiOvkP7mCF1/77A/gfCv3EHVLeCKl28ogXX
-         RijQ==
+        b=YQwEFE9LizkcRVpibKfMxZZr0qrCTZFCiy0vsZZWVrpRmL1Ha7e6T5/i9ANxuaEmeb
+         VlmBjdEUjXVb+2gH6+0131vsNpZ/hhyLoP+rZclaslWVbfsRnlsrMLu6m/uhqeR2CgRp
+         iTrrbuxpu+kUF+VGEWU9QbgTg00Q1mAngTvFd4MhjcAA4jLFSbyvDe/asUdkh2e8M9g1
+         eNmb28pstCgh7UIptxTz9Zb0jNSTh8O2YLlOeYTe+D9SOdYOLZH1TOr4ocB8sEwkYnYl
+         Ta0zIJb7V0J9nXp4hTL3XLshDkjSPI5bEEWFEGjg9xraCSLS+TbECYUGreg/l48dFiSU
+         BjgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TtOIVaGP8FO0eXiWpE78tUpYOiJVlTB+85wxwdPByck=;
-        b=gxFjfFQ2MKKVeTgIcQu0XsefPzMdIhh5my3s8gRpy15hAJV1M2jbqFgTIDDQi8yqSI
-         1MdDDSA/rEJHPN5K1mwvygVTdS2jWUMMQW6/iImqHk5OED+rR24lCXZoghod3MbxHG43
-         gjOPQSVybokNkDimhTYe/2dkvnbHPUCC1biFdyRo/8sMzDPPs9L65YJ1xVXod+SJUNEW
-         9/4kculWlVCXH6gpLrckaQiGLkml9sIcedfQiPFU67oj1IK8L2WudJKG0Dmu1sekG72s
-         gQiHkFGwDdVmtb1Cown13xootq8RCDVIf8QbyOCjK/XyLy1LQYfIm6Yg3xRkm3l3vWFl
-         558w==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Wy0Kb4uIVNM1QwluP90ESKdLpFlZZS921+Lz2sLjmVU=;
+        b=rp0N6olPeueFFu4V2BjvkO29IMXRUU8mMBG9falHzyfqXgWcW5MyEW/qn16Q6QuQOf
+         ill9OA8u41miK8rTr8p1YDRhQESSvUkc65jMatgscEWrXSyCXaqZQJz6JpTTQ3adHDgY
+         aUivL+EOtIIp0nIRKoXy/tTP7WbNkUtg8lvuB9eFbqyEC/roa5+i8o+q4J+8Smfq/atj
+         3i38qgkEUjEQJ127DXH1vhZcZLkVbRcLAK7m0p/ZkCAyosY2jkiPHqSTQRGOBu/s3Bq+
+         +CNY3W4jm3A4kgLX20hItJtpJmKPQUlBqNEsx+IY8leS3OyvpK0/fZ0mQc69emKkllC4
+         n89w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RNJfzyOk;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ojDoqLgo;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::22b as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id j16si422111ywa.2.2019.03.05.00.21.03
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-lj1-x22b.google.com (mail-lj1-x22b.google.com. [2a00:1450:4864:20::22b])
+        by gmr-mx.google.com with ESMTPS id y1si277043lfe.1.2019.03.21.00.30.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 00:21:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Thu, 21 Mar 2019 00:30:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::22b as permitted sender) client-ip=2a00:1450:4864:20::22b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RNJfzyOk;
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=etsai042@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ojDoqLgo;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::22b as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id u9so5143075pfn.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 00:21:03 -0800 (PST)
+Received: by mail-lj1-x22b.google.com with SMTP id z26so4394810lja.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 00:30:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=TtOIVaGP8FO0eXiWpE78tUpYOiJVlTB+85wxwdPByck=;
-        b=RNJfzyOke2jlwwIaW2+L3dYpgnegnZN+SwDYifcqjOX/S5P+BggZHrbkglpjJy8o8k
-         DqqNf2zgfKgHlVtMconuFl2YlxlB4n2SoEwOI0DW4GwRtuLrmwhY4w12ap6lP4zdFIrh
-         q21IivEdUtSZYengUOiMNpwfIolUtkJyj0dCqKFjj5jgakXOwJJs8h0Mmk1F9nwJduvl
-         oAYqx4ST2adlYPSvPKK3Lp3bFbxKDzse6xne1ccxzgfkk+v+uqx6eZO6T1gX5DanDAcx
-         lP1m3c1FENi0y6JJsyxSBIMg8jMhirkgKPcoCypRy8FGy2enjeTxFZ4am9krd2kNrMgA
-         Aw9g==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Wy0Kb4uIVNM1QwluP90ESKdLpFlZZS921+Lz2sLjmVU=;
+        b=ojDoqLgofObFiGjJ/PbPtLUL0xIvJGBDl0mg29RvFcjgYk40QjqTe1SyhAEsCXsxY2
+         TTRWUOxq0CkJDQFn6eUbnuGGg7MdE7EICnBPm+oR0XDEmvl2E1qWeIIMLW+Z+ISVpulg
+         A6I1kGEJwptjmXOcKoRhhIq76C4d35zMZUzDue3waqydx1Y+YSRPOiJR9xhG/2y4NylS
+         uewfi+shiaPkjKYlrAz3ziuKUdSWy6IcstO6fbhVmKStWSskX4+XUyoZXchrXI29zQVh
+         eoWgPWM+P+9dkdeuEE8OB/kSwy18PlwFyfC3YiWHssD/GE89i7BSKBiMkz0EkwurxZxl
+         +cvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TtOIVaGP8FO0eXiWpE78tUpYOiJVlTB+85wxwdPByck=;
-        b=TT0kbahbLkP98DisWDuAk9YSlcr3WvhDdgzB0tgGrb4O+heE5RpYbjWnzIzz4BSU86
-         JzSDmw0/QTaxoO49xueuyJl8hpl7t4RTIIKEF+JQk58kdq9+ars+hZ61OnBC3FRbgQOZ
-         BPlLLJidnO95h8keypkS7iw7+xu4ZG0RIzBH0MKc8wP0f+wBBMkk/7h6/r9vhepheAky
-         MZCBNBy7bmnPAcxu6L7UeVqR0U5YpLT9Tv4ZzB4+JnMqr4eH6iIvI7qJAS0kCdHudcFI
-         0UT1ampnuvJEn5ymIuv/AU1CQ2O8IDbDcyH8rnBvsx7kseL6fWBIK8tVkNAI9HfqgJXE
-         pnEg==
-X-Gm-Message-State: APjAAAUUrMP8Kmb7W1uKyK9J7DmGKVa2iXY3ATo4Die9u/XbkxmTLfEB
-	SIFQD75dEcfFiRHprvO17P3MPGjhW1BHWg==
-X-Received: by 2002:a62:d281:: with SMTP id c123mr678343pfg.210.1551774062761;
-        Tue, 05 Mar 2019 00:21:02 -0800 (PST)
-Return-Path: <etsai042@gmail.com>
-Received: from debian ([112.122.31.4])
-        by smtp.gmail.com with ESMTPSA id n23sm9930251pgv.86.2019.03.05.00.21.01
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 00:21:02 -0800 (PST)
-From: Wentao Cai <etsai042@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Wentao Cai <etsai042@gmail.com>
-Subject: [PATCH] Staging: octeon: Delete constant zero preprocessor lines
-Date: Tue,  5 Mar 2019 00:19:55 -0800
-Message-Id: <20190305081955.5262-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Wy0Kb4uIVNM1QwluP90ESKdLpFlZZS921+Lz2sLjmVU=;
+        b=gPbr+tClGFINGnm0/dlNEy1R/0vpdzb996QJ23OK2548fVN5xmjjF7zjjWfdmFhlN9
+         KGmZAkjf/lstZ1Zaps4Xxv0C4r/Hofwz2l+TPKTrJWDQhP7L8yu46oaJdI1V/xsI6iws
+         nA0j8U2fvZzZZTpJdrTZ46vyg7NULk0hk3JIGw3wGK13g2aY+lYF9ATgw6LDaysdpd1u
+         dmUN+hTNHStNKtnZA2SB/e7T0MeI/gsU/pOMJ7uzIQg825XcYTAhchdOmbHray6xuQoP
+         dRCQnLJ0DN/ltVMsn7XxUIeSNFrxA1Wpa2Gp01BQ2dX/Qu4kSoVtaBRfEECntPV7BYRb
+         PnMw==
+X-Gm-Message-State: APjAAAVBwj55e3nwgeDgKVNSwbS9NVPURRdn/+Ra0oWXWGPepk1pj6Ve
+	ICZ7YajLmKP+hnifnVR366dR9IBOKbjV1hXkbXDTTw==
+X-Received: by 2002:a2e:2f04:: with SMTP id v4mr1162511ljv.129.1553153419770;
+ Thu, 21 Mar 2019 00:30:19 -0700 (PDT)
+MIME-Version: 1.0
+References: <1553151378-8172-1-git-send-email-payal.s.kshirsagar.98@gmail.com> <20190321071713.GB28171@kroah.com>
+In-Reply-To: <20190321071713.GB28171@kroah.com>
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Date: Thu, 21 Mar 2019 13:00:06 +0530
+Message-ID: <CANTOzWHFfZD+W0M_uOyHQFCOrH2KEXc4tnmf=XsUoQ_ugXkHMA@mail.gmail.com>
+Subject: Re: [PATCH] [Outreachy kernel] staging: vt6655: fix various style issues
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000de008c058495b54e"
 
-This patch fixes the checkpatch.pl warning:
-WARNING: Consider removing the code enclosed by this #if 0 and its #endif
+--000000000000de008c058495b54e
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Wentao Cai <etsai042@gmail.com>
----
- drivers/staging/octeon/ethernet-tx.c | 41 ------------------------------------
- 1 file changed, 41 deletions(-)
+On Thu, 21 Mar 2019 at 12:49, Greg KH <gregkh@linuxfoundation.org> wrote:
 
-diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
-index 317c9720467c..eea8c5235910 100644
---- a/drivers/staging/octeon/ethernet-tx.c
-+++ b/drivers/staging/octeon/ethernet-tx.c
-@@ -587,43 +587,14 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev)
- 
- 	if (skb->protocol == htons(ETH_P_IP)) {
- 		work->word2.s.ip_offset = 14;
--#if 0
--		work->word2.s.vlan_valid = 0;	/* FIXME */
--		work->word2.s.vlan_cfi = 0;	/* FIXME */
--		work->word2.s.vlan_id = 0;	/* FIXME */
--		work->word2.s.dec_ipcomp = 0;	/* FIXME */
--#endif
- 		work->word2.s.tcp_or_udp =
- 		    (ip_hdr(skb)->protocol == IPPROTO_TCP) ||
- 		    (ip_hdr(skb)->protocol == IPPROTO_UDP);
--#if 0
--		/* FIXME */
--		work->word2.s.dec_ipsec = 0;
--		/* We only support IPv4 right now */
--		work->word2.s.is_v6 = 0;
--		/* Hardware would set to zero */
--		work->word2.s.software = 0;
--		/* No error, packet is internal */
--		work->word2.s.L4_error = 0;
--#endif
- 		work->word2.s.is_frag = !((ip_hdr(skb)->frag_off == 0) ||
- 					  (ip_hdr(skb)->frag_off ==
- 					      1 << 14));
--#if 0
--		/* Assume Linux is sending a good packet */
--		work->word2.s.IP_exc = 0;
--#endif
- 		work->word2.s.is_bcast = (skb->pkt_type == PACKET_BROADCAST);
- 		work->word2.s.is_mcast = (skb->pkt_type == PACKET_MULTICAST);
--#if 0
--		/* This is an IP packet */
--		work->word2.s.not_IP = 0;
--		/* No error, packet is internal */
--		work->word2.s.rcv_error = 0;
--		/* No error, packet is internal */
--		work->word2.s.err_code = 0;
--#endif
--
- 		/*
- 		 * When copying the data, include 4 bytes of the
- 		 * ethernet header to align the same way hardware
-@@ -632,12 +603,6 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev)
- 		memcpy(work->packet_data, skb->data + 10,
- 		       sizeof(work->packet_data));
- 	} else {
--#if 0
--		work->word2.snoip.vlan_valid = 0;	/* FIXME */
--		work->word2.snoip.vlan_cfi = 0;	/* FIXME */
--		work->word2.snoip.vlan_id = 0;	/* FIXME */
--		work->word2.snoip.software = 0;	/* Hardware would set to zero */
--#endif
- 		work->word2.snoip.is_rarp = skb->protocol == htons(ETH_P_RARP);
- 		work->word2.snoip.is_arp = skb->protocol == htons(ETH_P_ARP);
- 		work->word2.snoip.is_bcast =
-@@ -645,12 +610,6 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev)
- 		work->word2.snoip.is_mcast =
- 		    (skb->pkt_type == PACKET_MULTICAST);
- 		work->word2.snoip.not_IP = 1;	/* IP was done up above */
--#if 0
--		/* No error, packet is internal */
--		work->word2.snoip.rcv_error = 0;
--		/* No error, packet is internal */
--		work->word2.snoip.err_code = 0;
--#endif
- 		memcpy(work->packet_data, skb->data, sizeof(work->packet_data));
- 	}
- 
--- 
-2.11.0
+> On Thu, Mar 21, 2019 at 12:26:18PM +0530, Payal Kshirsagar wrote:
+> > Fix spaces around operator issue,
+> > fix line over 80 characters issue
+> > and fix lines should not end with parenthesis issue.
+>
+> Only do one type of thing per patch.  This needs to be a patch series,
+> not just one single patch.
+>
+> Okay, doing the same.
+Thank you for letting me know,
+payal
 
+> thanks,
+>
+> greg k-h
+>
+
+--000000000000de008c058495b54e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, 21 Mar 2019 at 12:49, Greg KH=
+ &lt;<a href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.o=
+rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
+n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
+">On Thu, Mar 21, 2019 at 12:26:18PM +0530, Payal Kshirsagar wrote:<br>
+&gt; Fix spaces around operator issue,<br>
+&gt; fix line over 80 characters issue<br>
+&gt; and fix lines should not end with parenthesis issue.<br>
+<br>
+Only do one type of thing per patch.=C2=A0 This needs to be a patch series,=
+<br>
+not just one single patch.<br>
+<br></blockquote><div>Okay, doing the same.</div><div>Thank you for letting=
+ me know,</div><div>payal<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div></div>
+
+--000000000000de008c058495b54e--
 
