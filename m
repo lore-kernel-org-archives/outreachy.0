@@ -1,124 +1,117 @@
 X-GM-THRID: 6670815133562830848
-X-Received: by 2002:aca:e044:: with SMTP id x65mr460633oig.75.1553192160959;
-        Thu, 21 Mar 2019 11:16:00 -0700 (PDT)
+X-Received: by 2002:a25:ba4c:: with SMTP id z12mr4429279ybj.504.1553192156760;
+        Thu, 21 Mar 2019 11:15:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:b446:: with SMTP id d67ls291537oif.3.gmail; Thu, 21 Mar
- 2019 11:16:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQLDcDeK/Wv1533D5seUNRoZ/8dRSfrcM/RXxEcGDP8xDAZ58zJ3wJVHXnMMsm2ez6fF7c
-X-Received: by 2002:aca:3a87:: with SMTP id h129mr504679oia.86.1553192160015;
-        Thu, 21 Mar 2019 11:16:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553192160; cv=none;
+Received: by 2002:a25:1384:: with SMTP id 126ls2113752ybt.1.gmail; Thu, 21 Mar
+ 2019 11:15:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxPrJYBPWawZSUQdWlLwUJNeQGEUyrMnYuJuhXXybQ23nC3dX7COImVlk1B69mCeWaJIKP4
+X-Received: by 2002:a25:4e0b:: with SMTP id c11mr4344939ybb.480.1553192155932;
+        Thu, 21 Mar 2019 11:15:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553192155; cv=none;
         d=google.com; s=arc-20160816;
-        b=ey9R0OfumTAOCmz9u4xRSDPAUA0JSG+6DYehtODLSij5WSKP101zWBC4zm81hgVKlF
-         QzvNebelV2zYgoKE0QIcUyXJ6CuZPu6NbNEByCbvtQ8bLsJA+qhu/xBJpbl70OqnG/+F
-         ucIKpa4m3+B4dekkowf/zEAIZKfLWwqzLh+rvzz5DaWS2VMASxf+9023/DjgAPrbS2Wa
-         NzD6/TpIk+JziFibj10M0YJJGyq7yQSucu19zZ2D/Ete2PXzz180/Udnu3Z/YgaG2PE6
-         l+T+PwgkB7YHcMhGWsv8HwIZwEP7STsXHRJNUKobbgTy7cp9bHPSPcaOqEPeBoOP091P
-         hZhw==
+        b=ftBZvddufxX9Hr4qcefwhL8Eut2SrGI5IgXejqQgDs1jUsGefLBj5X1bME33uCtTDN
+         4C56wmQWkho0S34VKBo1e1W8zrjUU5BYOlJuersu86zohA9Uw9gUk1NsUm0iapCvEyqU
+         MAFeQ8nDxuJRAiECZZPuHCP1PzSXiA6Z/tDtlsr53dNvpXcVcYsKPr9aY+v3LflVXy2q
+         pdoSlv4FoZMbsYPlAHQiwWlQzSdoKlnraPBgZbGbM+DoF6MllcEG7cNcgLPnOgRUkeZd
+         ZEHqiwyaXpVa0xzAYmxFy1k6E1kH8CH4MR9pEDqtXvFBt13wuNuKYWdAPlgcgfBElglg
+         BwcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=W+A0k6WW8DmY80jwbWwlBOtDU9RCjRV/HR4/mWjPu2I=;
-        b=dzmMVMMxpFfvJgPKWvph2H4yYRr7XbQfiqws6bKq4s7aphuiPPE2WbA3MAsJvDjZvG
-         lUVXFp1f87aFi+ZT37Jqau7nDNGzq04liqSNANsLTNHDuMu9X4gMrMV2902RPoP8+S8O
-         2H9BSLJ2OPkB4de0TO/RTohqq2PjUaxoNux4/FMN4f4cM1PzO7yhFyMAdciQVA3WKFHI
-         AkI5YNPYHAvr67RnPQG5N7zIZDfc5NHUID2HCESFJinJUa8SPiUoQ+ITrldMTY2I5Qk0
-         bU3mk9EmnWe9Vn14MNmE0GGacPR1uJ0BIE0wfOeRkwjZdq/eQSqw4ZXmEv8UrzNgf7al
-         tsFg==
+        bh=Kz6oylHHYP4nfY0eXJsMayZqVQCsuFMgczF9YnXjcI8=;
+        b=h5NUeNYLnMM3vv5WrBZLpnYw/c0KjYYHSqNTdlpA/ow3mJ38IYN/TJIdZ4EyEWknnS
+         fFO+kCJVJABMAdZ/BSOAw4zSp8/eWyPY++JW8MtdJ+br0XdrOlb9iE3vOC/0LttIBgL4
+         Rw5FaSCPFF9ZCJDwD/8pkdXAJ3AzzUbDqnbaIRBQV56PWYgADc9uApmNkVfqvm7MD6t+
+         6JnH7Mvc2tdx/Q1klNRrezX29HlcXLYBGz6dM8Yx/PMm5wYsZ7er9464YjctKs5EpOee
+         cataap3NsjDrf/A5J+8xCykLyZ9Hm2pr6vO2JHzBxwn5GY+VnWZfQp8a9AyzCbWx0r1J
+         PE2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="DR+G6i/9";
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hQ3KdptC;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::431 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id v129si309153oib.0.2019.03.21.11.16.00
+Received: from mail-pf1-x431.google.com (mail-pf1-x431.google.com. [2607:f8b0:4864:20::431])
+        by gmr-mx.google.com with ESMTPS id l126si394196ywg.5.2019.03.21.11.15.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 11:16:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Thu, 21 Mar 2019 11:15:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::431 as permitted sender) client-ip=2607:f8b0:4864:20::431;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="DR+G6i/9";
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hQ3KdptC;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::431 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id v1so4742857pgi.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 11:15:59 -0700 (PDT)
+Received: by mail-pf1-x431.google.com with SMTP id v21so4793553pfm.12
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 11:15:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=W+A0k6WW8DmY80jwbWwlBOtDU9RCjRV/HR4/mWjPu2I=;
-        b=DR+G6i/9jNC4te2QzDA7uJeKmZMW9/aDjhQ8GGeL2sDmyU1R/AMvq9pO06QMPbXdaa
-         Klwu0fvgO6AQo389KoEtGsaQH10nTan957QjCLRXbhXKDo7KQWDRBcgyAI9GnuTXacg4
-         /xvz7R70FFRWUyAnUgOFyvsSV9PTNG5UK3ZB/F6kmVoz6sJLcLR1QMU16df1SPOu0Vci
-         PrFWsGTKzVD9Ns6h5LpzwSgWZg7NvgHshET8c9twNyPdJ2U09biZgVI/0ajCKs7CqGl6
-         UT9wG7grqGOpxlD4X9wHJdbD+9RYeDo+9zIV/HwTP3EUcCdfIK+3ppHP3Aw0gK5AELOl
-         5WaQ==
+        bh=Kz6oylHHYP4nfY0eXJsMayZqVQCsuFMgczF9YnXjcI8=;
+        b=hQ3KdptCGV53IrfESvrgO86RylHuCLeh+eirC8GCrtkkbZ3lLZZ5rId64AuplMdUlF
+         zHoKamIq9pGyAZs+x2mOAeKjAp3kLCvH3+f7N+XjH6y1a8BmFrZ+mMK1OLRJYjhaENE6
+         ynWhvBHCHyM5/DiRtjP+kCOweaXX4mwIqFwPhaEnBh/z/KB8ug5YivUxf7wnfxs5nPY2
+         3rdTxcZc/0SM2LcLPdIb3eTq52kI8GZsm/N33mNYBDFr3VaQyS0Yx5d6KM+c50VbNOI4
+         UWiMepcXUdHeyE1dR1XFwxarN/Jv3BzafJSQRsg13dt+vGfcCaOsYw5PYK5HozCHU7Wy
+         0/oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=W+A0k6WW8DmY80jwbWwlBOtDU9RCjRV/HR4/mWjPu2I=;
-        b=YuQTUKkYrGxJ7HnBj2en5ledL3vM2WPJqMYCe8TEY0uEHVN28SPylmReJ8pjHkPOeW
-         jyqP5pXcnUgnZhDBu6Z+F4cH4mgBF09lQqEAj7RU9ZuvxL0mSiBdU73pEY4drX+23DjF
-         c/qK4xKjRNC06p95OpHuU4aR7JwcQkCYUZcqKUjvJJH45KXr2IuFkCfeQTkfE60FECBa
-         hk+U51EBWpjCrE8RPEcSvrGEdKYh+ChQ5nBoWG5bRBzsLXszG3Ee4/+KPcrMjNPCJgOI
-         j4nyySmZjKZvNgRDeOiTBQo6Dmp9znLF3yaRisDOTOX7Mho+OWf3VLr05MYCfVuN89O8
-         BOlg==
-X-Gm-Message-State: APjAAAWJdMhuC74MPf7MPNvOeUY9CHXcTADoaJPYfnBgdJJIEudhbgXp
-	NK86fmNyEQpSP3y1YxNmpqw=
-X-Received: by 2002:a17:902:9b86:: with SMTP id y6mr4818948plp.71.1553192159301;
-        Thu, 21 Mar 2019 11:15:59 -0700 (PDT)
+        bh=Kz6oylHHYP4nfY0eXJsMayZqVQCsuFMgczF9YnXjcI8=;
+        b=ANDZcvy80035DORv/IjUkzIO9SUrbAumWdzQUVQWtxL/WZnaSFhZEziiopNLlnTM2y
+         YiP944tosVna+PAZtHSE/Ngjbv2pefQFVBjDGOgFCql5X/jXReS9O/kkOtKIw1YXfTx/
+         uSABEtoC/SzorgsA1YQYldCQoZia0oMz5zKu2imWRl4Fx8d1rOdb/fDuvcLbePvyrFN7
+         5lFZEEemWEQ5QJ8ezQtnKU/pK2FdGSyKutHmrbbSLJZVg6hKnyhkpj5D//js+eN2Qu/w
+         UaXKKfPOW20z0ez5KTeDlqT3AJvW+tPGZbMUKEOogp08mkPO8FzqBDA9rFRl0J3df7rh
+         g/Kg==
+X-Gm-Message-State: APjAAAUrYmiXnevOQWXInZJb8yx/b8DqSaXfwtVIMJ6RQALtghjooEnD
+	EDAjUraFaoTop2n4P+kqO50=
+X-Received: by 2002:aa7:8c1a:: with SMTP id c26mr4701078pfd.31.1553192155580;
+        Thu, 21 Mar 2019 11:15:55 -0700 (PDT)
 Return-Path: <himadri18.07@gmail.com>
 Received: from localhost.localdomain ([49.34.112.101])
-        by smtp.gmail.com with ESMTPSA id v6sm7296251pgi.90.2019.03.21.11.15.56
+        by smtp.gmail.com with ESMTPSA id v6sm7296251pgi.90.2019.03.21.11.14.40
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 11:15:58 -0700 (PDT)
+        Thu, 21 Mar 2019 11:15:54 -0700 (PDT)
 From: Himadri Pandya <himadri18.07@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH v2 3/5] staging: rtl8723bs: include: remove typedef for struct pno_ssid_list
-Date: Thu, 21 Mar 2019 23:44:03 +0530
-Message-Id: <20190321181405.6219-4-himadri18.07@gmail.com>
+Subject: [PATCH v2 2/5] staging: rtl8723bs: include: remove typedef for struct pno_ssid
+Date: Thu, 21 Mar 2019 23:44:02 +0530
+Message-Id: <20190321181405.6219-3-himadri18.07@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190321181405.6219-1-himadri18.07@gmail.com>
 References: <20190321181405.6219-1-himadri18.07@gmail.com>
 
-Remove typedef from struct pno_ssid_list as The Linux kernel coding
-style guidelines discourage the use of typedefs for struct types.
+Remove typedef for struct pno_ssid as The Linux kernel coding style
+guidelines discourage the use of typedefs for struct types.
 
 Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
----
-Changes in V2:
-	- Remove extra whitespaces before *pno_ssid_list
 ---
  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-index ba79a98fdc67..8912182e229f 100644
+index df85267363b8..ba79a98fdc67 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-@@ -175,9 +175,9 @@ struct pno_ssid {
- 	u8 SSID[32];
+@@ -170,13 +170,13 @@ struct pno_nlo_info
+ 	u8 ssid_channel_info[MAX_PNO_LIST_COUNT];	/* channel information */
  };
  
--typedef struct pno_ssid_list {
-+struct pno_ssid_list {
- 	struct pno_ssid	node[MAX_PNO_LIST_COUNT];
--}pno_ssid_list_t;
+-typedef struct pno_ssid {
++struct pno_ssid {
+ 	u32 	SSID_len;
+ 	u8 SSID[32];
+-} pno_ssid_t;
 +};
  
+ typedef struct pno_ssid_list {
+-	pno_ssid_t	node[MAX_PNO_LIST_COUNT];
++	struct pno_ssid	node[MAX_PNO_LIST_COUNT];
+ }pno_ssid_list_t;
+ 
  typedef struct pno_scan_channel_info
- {
-@@ -281,7 +281,7 @@ struct pwrctrl_priv
- 	u8 pno_inited;
- 	struct pno_nlo_info *pnlo_info;
- 	pno_scan_info_t	*pscan_info;
--	pno_ssid_list_t	*pno_ssid_list;
-+	struct pno_ssid_list *pno_ssid_list;
- #endif
- 	u32 	wowlan_pattern_context[8][5];
- 	u64		wowlan_fw_iv;
 -- 
 2.17.1
 
