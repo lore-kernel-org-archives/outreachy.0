@@ -1,115 +1,105 @@
 X-GM-THRID: 6670745270189293568
-X-Received: by 2002:a37:49ca:: with SMTP id w193mr11541002qka.261.1553340500322;
-        Sat, 23 Mar 2019 04:28:20 -0700 (PDT)
+X-Received: by 2002:a9d:7602:: with SMTP id k2mr3768189otl.357.1553194699179;
+        Thu, 21 Mar 2019 11:58:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:8b55:: with SMTP id d21ls619691qvc.2.gmail; Sat, 23 Mar
- 2019 04:28:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqywYmQeXJ5rzL7jt1b2Lx25AxbOjquZoCVIuf4m5AIad0qpyu4XZwwzpigDkJCp5LTYNaIw
-X-Received: by 2002:a0c:d0af:: with SMTP id z44mr12028348qvg.144.1553340499763;
-        Sat, 23 Mar 2019 04:28:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553340499; cv=none;
+Received: by 2002:a9d:764b:: with SMTP id o11ls675520otl.4.gmail; Thu, 21 Mar
+ 2019 11:58:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyOOG0rmLPMZuwuLLEmcmkTHZ6JsfdPFhsJ63sbvyQ7STEg148fcLHIHal3v02UXKMfyfLr
+X-Received: by 2002:a9d:7602:: with SMTP id k2mr3768136otl.357.1553194698088;
+        Thu, 21 Mar 2019 11:58:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553194698; cv=none;
         d=google.com; s=arc-20160816;
-        b=KGbrlOTO3qZxQt8ksuGnVyVw5FJwyos73EsFmWIHWibAw6URI9I5q3eJ135lDP4Gdd
-         zAAuhJgWBamnJaRqipuB28IKWMUREI8y/5LkHpy72ARqB75qQ7LAHRC/UzrG9r6876GM
-         gy/W0xGgOCIZOKPi1oUYsKoQPxEWgSPpDHmj/1ZicnYb+sKiPRaGzqJMegnB8uYnmgiu
-         7Xqu4anraqGr+hWHbCujSWkwOF3Gz8KeP3SXcoJRbqqUhbQnaVcopwmj5KLfF8mfNAnX
-         PQ1PqlkMPi3GfZ8w6C63bnqbuW8Lt3H0xAhu42nmTNly+oZFVZvnhZPmuLkMyfDLPQDg
-         9pSg==
+        b=l65RMDAHDZoIDIwHvyn8YMh6xD8kf3uc7yaUxENSXms+3+YjX2oT6HfE1ou20qakgm
+         tMNa72z5W31JMTNdVRbDM0wzw6mtMsk1Yvo6gJ8VCz4w4sNb3+o6u7WpSZmiClyvsp0b
+         5xanjzrqpnNcmCFJuC1ORJzHgmm73BCjmmSF2Q1newwuXXGHaslbxxLndK38dulYjyl1
+         FTn29KkRijizYeCIi8YS9ZnVNuyhFsn8NU4diM3xVajC0OR1mfAU7Il4y2y8Z5uu3hT3
+         XZnurMwxRrMduAxbEsTuDWUdOxLoxHZzj37mALYPey9r7DSG5HuqwMbO346wAvfYLmTY
+         JQiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Pj9G7GP4u34VMBJk6hu+Gci9A8NgeTfc0Oizcp8XpZQ=;
-        b=FNetFwMms8J1jlVogx+Z2Hku8xLU65jolWLYzdos7BUWbHNIYn50shtkWplRvGTh1D
-         DkuZZvURwTOmk+jY22kYo0TyF+LQo/EJSQG8s64M2xHL0p+UjT+hv9PLSJ1TosPi4FpG
-         9RMcY2P+N4cmjegVIPnSMzAXq2Zzc0EKnJo8aGeso0nsoka1iV790ln3Z5NjDotLy2ge
-         l8YvBjdOzyfFDXJzePXmzYktNijhjpOO6vRFUqxRJujCVQT61SSKlNc+3bZftn8K5iWa
-         FfK8esEdjClYzNf1BzYwL8ZdjcJA+vvJX6bObRhguh8MGjHrqMiIHlwgEZ+BzZwoJILZ
-         sbnw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=fXVZF5E0Y0d2ItwLrIBtGdiAJEwlif52/JNq1ZSMmx8=;
+        b=jSAnuzI17+BimEsqqudoY/E40XW5zsbptLEZR0qLXVTBQyca3hyk8mL28QdCfM75BG
+         ZTgSlO6eGK18+Vf6soh5lbG53lDPiZgDrDfJIkEpSuCLgfm34krrl8WEa4rsS8JPmLss
+         hiXqIIdtLmZllJGOhVuJo0/zTVl9EQchTTYEzT4iSBOrsbFWQo1Uw9YJdvhyDuhk9G8Y
+         y7IXjJDmA9hoAPvpJujb8tkG0gkq/fMzjujEifnDtDAL7K6TPe2NPgGwiPq7EeY+Zvm+
+         r/XFqTWfS88L7GlORoLwn4JvB6P7LxP9NKCbCPnqbQHsC9r6o+8V3q3i/99kG/fuKRMk
+         Jbag==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iis+DuoY;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id j18si649241qth.2.2019.03.23.04.28.19
+       dkim=pass header.i=@kernel.org header.s=default header.b=2SelcKmm;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id l23si373996otn.4.2019.03.21.11.58.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 04:28:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Thu, 21 Mar 2019 11:58:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iis+DuoY;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id y3so3242506pgk.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 04:28:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Pj9G7GP4u34VMBJk6hu+Gci9A8NgeTfc0Oizcp8XpZQ=;
-        b=iis+DuoYiLSJG3wJTV7qb9mrKHFyCTvGKlbkC55c4mmzoAtM8zw38glQ2RRP/elctG
-         Of1jKb0G1bG2B7jIdlHNBodfTyBsIPx2obbk+tUsnf1xQMgFQX0NE2pu5A2atmsboeoe
-         lxEQJl17WgYihnINjrYtG+2OqVJj4eBXzDgus+UsDySC3VvPKii7gQ6TDuHxygi4bFvO
-         NllxO27uzpT5qNw3vbYWBdMMnqDFXnRDIVIXLwU29LmqsZqolfujEFAgBFsT5vn08fQg
-         OOlDlNcWzf1+coIwWXZ63LtWVFRArV5NtGWBxaTWvoG13wfaMs0ZiFOpuujUkeoZbu1H
-         a7fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Pj9G7GP4u34VMBJk6hu+Gci9A8NgeTfc0Oizcp8XpZQ=;
-        b=gZZEVHICU12twnGGP2n4lNEKkkYyChD3Wv31ksdQNd1NziXuE/+3n8sROsrH43Puow
-         dT4PuUYHA1ljqX0qC205pJ6lPa49nbXB8cAFyOir530SNzMZS/ZkONH5CR52YWJw6egR
-         cZSzV4ENggEf/QjwrBrxooDVo4ynLbdva9MdRjnSILNiFPHwqMK95ketEa32Q9gsSCH9
-         1du2IhO0cVLG0SpARvUVy6OVpsQWNYSMMbszmKXXjjtoxht3LP4DsmN5N72VHQnrRN7R
-         jRcSI8bXntrXn9NHEyo7rvutcnSBS1dYQYPaUcO6UBr06+q9nDWr68W3ySeks4CIrjBE
-         /BeQ==
-X-Gm-Message-State: APjAAAW92T/UpAqYhi47GrYXjuOwzfL59pLzAKeEjeRwdXBlzX6xTEqE
-	2o6AgO6hsMrXpCNv7kHyU2Y=
-X-Received: by 2002:a65:6548:: with SMTP id a8mr13538046pgw.103.1553340498982;
-        Sat, 23 Mar 2019 04:28:18 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.254.101])
-        by smtp.googlemail.com with ESMTPSA id b138sm15658248pfb.48.2019.03.23.04.28.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 04:28:18 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b=2SelcKmm;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B7ED321873;
+	Thu, 21 Mar 2019 18:58:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553194697;
+	bh=6pQ4bPvx8cMZmZddLNdJZkYioiJ3LoSvub88vdPp4UQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=2SelcKmmp3alnUV9S/P4Fw4pSWnyMPr8OTrxHwPiHkM2+1k/nywWOtEeR9Al0bxF8
+	 JHtuNVZI5yiv2v/z0VqYPSd3elyOOAmCnj6BKDgFiuBSVb9T4y4EdRPTtzKx6+cDDU
+	 vf88B0i0YY+BqIyr9lcaaLq7w4mNG/wIByBZxxSg=
+Date: Thu, 21 Mar 2019 19:58:14 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: greybus: svc_watchdog: Modify char* array declaration.
-Date: Sat, 23 Mar 2019 16:58:07 +0530
-Message-Id: <20190323112807.9804-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Subject: Re: [PATCH] staging: greybus: svc_watchdog: Modify char* array
+ declaration.
+Message-ID: <20190321185814.GA17375@kroah.com>
+References: <20190321073819.8333-1-sanjana99reddy99@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190321073819.8333-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Modify "static char* array" to "static char* const array".
-Issue found using checkpatch.pl
+On Thu, Mar 21, 2019 at 01:08:19PM +0530, Sanjana Sanikommu wrote:
+> Modify "static char* array" to "static char* const array".
+> Issue found using checkpatch.pl
+> 
+> WARNING:char* array declaration might be better as static constant
+> 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+>  drivers/staging/greybus/svc_watchdog.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/svc_watchdog.c b/drivers/staging/greybus/svc_watchdog.c
+> index 7868ad8211c5..b6aaabcec320 100644
+> --- a/drivers/staging/greybus/svc_watchdog.c
+> +++ b/drivers/staging/greybus/svc_watchdog.c
+> @@ -44,12 +44,12 @@ static int svc_watchdog_pm_notifier(struct notifier_block *notifier,
+>  static void greybus_reset(struct work_struct *work)
+>  {
+>  	static char const start_path[] = "/system/bin/start";
+> -	static char *envp[] = {
+> +	static char const *envp[] = {
+>  		"HOME=/",
+>  		"PATH=/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin",
+>  		NULL,
+>  	};
+> -	static char *argv[] = {
+> +	static char const *argv[] = {
+>  		(char *)start_path,
+>  		"unipro_reset",
+>  		NULL,
+> -- 
+> 2.17.1
+> 
 
-WARNING:char* array declaration might be better as static constant
+Always test-build your patches before sending them out.  You did not do
+that here, why not?  This blows up the build in horrible ways :(
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
-Changes in v2:
-Test build the patch
- drivers/staging/greybus/svc_watchdog.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/greybus/svc_watchdog.c b/drivers/staging/greybus/svc_watchdog.c
-index 7868ad8211c5..b6aaabcec320 100644
---- a/drivers/staging/greybus/svc_watchdog.c
-+++ b/drivers/staging/greybus/svc_watchdog.c
-@@ -44,12 +44,12 @@ static int svc_watchdog_pm_notifier(struct notifier_block *notifier,
- static void greybus_reset(struct work_struct *work)
- {
- 	static char const start_path[] = "/system/bin/start";
--	static char *envp[] = {
-+	static char const *envp[] = {
- 		"HOME=/",
- 		"PATH=/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin",
- 		NULL,
- 	};
--	static char *argv[] = {
-+	static char const *argv[] = {
- 		(char *)start_path,
- 		"unipro_reset",
- 		NULL,
--- 
-2.17.1
-
+greg k-h
 
