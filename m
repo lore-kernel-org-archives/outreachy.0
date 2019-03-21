@@ -1,140 +1,103 @@
-X-GM-THRID: 6463765428617347072
-X-Received: by 10.129.83.198 with SMTP id h189mr3883148ywb.120.1504962665921;
-        Sat, 09 Sep 2017 06:11:05 -0700 (PDT)
+X-GM-THRID: 6670870479881895936
+X-Received: by 2002:a62:a509:: with SMTP id v9mr4112900pfm.64.1553183067829;
+        Thu, 21 Mar 2019 08:44:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.92.200 with SMTP id q191ls3058059itb.4.gmail; Sat, 09 Sep
- 2017 06:11:05 -0700 (PDT)
-X-Received: by 10.31.33.86 with SMTP id h83mr2230987vkh.112.1504962665077;
-        Sat, 09 Sep 2017 06:11:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504962665; cv=none;
+Received: by 2002:a17:902:8216:: with SMTP id x22ls3188176pln.3.gmail; Thu, 21
+ Mar 2019 08:44:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNKdS2SNaxgkrX+khUaQncv6+tC7qETrB3Y2dHKoSBBAiBq8Gq+TP8IbflvdS+w6UN/8ZG
+X-Received: by 2002:a17:902:28ea:: with SMTP id f97mr4282351plb.203.1553183066991;
+        Thu, 21 Mar 2019 08:44:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553183066; cv=none;
         d=google.com; s=arc-20160816;
-        b=r5p4qPDgdLqGODAMkGt4EPG0K5DEl0HNf0fdiNfqXLANqtTswBcic9rBJw7gAMareo
-         3krK2IlX7SR8eI2Ru7ekfQpObtPTeGb7TdrbYZ58d+apEZFvwV8JID+TRolP92RKBGOD
-         4Tu7Sik9LA7lZymiZj+/TIpQWnXmsWx8V+Kxk7DwCarREQXn33YKC3WfI/XBqcOYbfNU
-         /M1XrwVn/e5cw0Oszz31L5zdIDeOgTUrq7wszQgPTd45p5E6i4T8UBSM6xQY4Nt/pPye
-         MwQQS1PCacoLQdlX/dkwQzFiZh6JZppW8a0Qj2VwBXIq24MHh4EKeZZnGIRWaC5bBAaD
-         Ld4Q==
+        b=VgqsiJivkJckkqNFbCT9D9Mvnq3fnfS4ZQ8+o6aHQR1TLaCkCzlFD0qtgHHXOM14SU
+         4YkzXUR3gQNR9H9uxeqvp9mv4DFXcfQqSWFM5WEQrotGKPFLZh16wQlydIIPhiqc5jfm
+         TFGpIE33dKP8jxLvSMYEKhjUM6lTH/4lzSTAETVZWwelW+chHeHt4Wg7XFFCSNgkfaHV
+         HZGf/H9TvsQouCXD4AKyhzbbECBHBgmkZKiK3BJwMUk942kmXHLY8BfJ0IfWYTidKe1D
+         AECx5gYkmmYjIZU4ZRY/2lok3XXy1wPYeLR2P8JhyePdCVi/4rQz85PtYZO69gNJ76Hx
+         7Axw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=KIhu64cP46IAs9ICbCC3STA2ZD0lzRl4BZitEM0Kfv8=;
-        b=Tw7G95+QWo16IvryFHJ7KxWkPS2zgNp713bwZO/u4zItPqxUQ41GbAN+7vOYxLsVCC
-         P1PWY2TvcdyAsNpkodLjOLQGgpeNwNbE1OpbolomAAzY6m4Vlx2/pBfR6QgzGa1yxWQr
-         wWy0E0C9krP8YlnkQuRasyM7m9LEXuqelGXZgP7Evpyi+IdZSxhdYe9Kn4hatQbEJusG
-         RUzmaaVZFBTtmYcQ3Wg/IkRpKLRGxQBbpHHi03GvMYO9r2ZsXtlH2yc1wxxjDiUICaYT
-         K2ww3Ps+1qWdsMUo4PemyHVoJmfXXp6pjm7aqWIJqzmZpdL9EHoyW2eWwjO1f49v1jzq
-         35/w==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=AXzsLUr51WYPntE1/8rZHZIeGUpT6j0D60oQ6asnSrA=;
+        b=jFUr+yOtbcx3cpyWCYPO5lQ44ISSsGTZLqDX9U08q1OAyxZ9NOQ0aRdzXspO/VPA50
+         KuZrE9WI+dmYUck3Zovxsw8FoaR6qcGh4R06mFoQkrqoiG+x5UZkbRIV4sZjh1yDW606
+         grjUMIbmSp1M2+kcw9pHjzvD84Zm868btLSvwYHRmym/3+S12rKheu1zHIQP2wcQ+JhZ
+         ZYXa55B2x+tlQPMExcjfgkLykdmeLxvAuoyezcnz3a5y8h3waHbiLJAgqhoX9gccEL4e
+         QmEDHss7sZDyzuK0W3ORK9o2uNy2A+Z7T382jiyRwjQOmWlaizpNtZjP9wU3acMduklM
+         eUAA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tjVTjPI6;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 8si390485pfa.0.2017.09.09.06.11.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lL6i15v1;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x42e.google.com (mail-pf1-x42e.google.com. [2607:f8b0:4864:20::42e])
+        by gmr-mx.google.com with ESMTPS id a6si383882pfn.3.2019.03.21.08.44.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 06:11:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Thu, 21 Mar 2019 08:44:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) client-ip=2607:f8b0:4864:20::42e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tjVTjPI6;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id e69so984750pfg.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 06:11:04 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lL6i15v1;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::42e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42e.google.com with SMTP id p10so4560145pff.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 08:44:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=KIhu64cP46IAs9ICbCC3STA2ZD0lzRl4BZitEM0Kfv8=;
-        b=tjVTjPI6KZEOX/+f9EmOky7gUGHe0zqgMAlZndcYBvUMficjID7gZ31hZYjyHDf8fd
-         7TtemjHYHSgh3jfjnwKHr70hmGr2/gKki7FVUask77YKJb/K8TDDM4OK1SZxxvJyFkqF
-         Uqwcg6o4L6avTpxTYOul1tdvlNXYcf48cjXctlFj1qQXzANYuQKzyVet90/9WLXbSiWn
-         C3lw2vDtMmMpCnmPEy1nGF9hiaaK26Nwr9oPmRP6dBj9NbYPNcIrUarKsrPCWkfZ5Ggs
-         dX0UQdae9jtC4MVz3OmxsozyzeEuzrJO63MzhiOQabCh51oDUZzcJtNw2s1Bje/MYFtO
-         9j6A==
+        bh=AXzsLUr51WYPntE1/8rZHZIeGUpT6j0D60oQ6asnSrA=;
+        b=lL6i15v15mXwhsLsqKRf2pyGYL/NFD6TzUGXo6cx/1IouO4pGtfgyFm8RgRCpx4FxI
+         xCDL3Uh5GnkkDV1Yiu7sPzpmMdSGk+o7ueKOK4/KlEOQ1i0ZlP5UN2HhGfV13fkMD5JS
+         ZOXo42RsK6HeGfmwkatNAIrtIkl2UOHubepYzX9XxizgebNV5uYhedgOvPVudlAmC4ol
+         8MSzloSaBvRjM4BgyKDvE91WcR7zNCamlZ8Qh9nuahg4md8STPyk23/8ICTEb39qwo2M
+         XUdUmH0lweou8op9IfNkhyC/yguEJHeS2D4fYeVFhMvVEfreT3IDIesIQdjKZQKy3c10
+         6FRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KIhu64cP46IAs9ICbCC3STA2ZD0lzRl4BZitEM0Kfv8=;
-        b=OLbjBPOJ+9oNidAa5pfsZxrwmR99zggxHXiy3/dtd/sWUJSZM381JLsBRqdbeuXXDn
-         zWdtn3TILg5IZ6B0sxuOIa2HhZMMQNr4pUUNjASG0FavBP+0F3+orzatPASwNgHTPrjZ
-         w7PrxbgwEuUgx9wcm90XK8y+PtiMXH3xQCyV2QXTVby99b+g11+93IQQJRiMEFD6Fi1D
-         G9gNQrzbH0iBrNcjR05/Yuj8IEGIKy+zv73udj2DZp9AXcuDQIk184hqim6sUBrQmfoD
-         LnsbAy4eCVV/dzHDuazV6lFEel4iRq4tVV9ZXkE7zYB0Dy/XKHCbqk94OjMpI+U5RCEB
-         nuOQ==
-X-Gm-Message-State: AHPjjUgmDKpfqUBnX18YsIyq/7r8bqIvCZ/CTxRMqp07xwF3z+n9mZ9L
-	9fucos3KqnltawoPTdD5QA==
-X-Google-Smtp-Source: ADKCNb6wzg4yNkGbwNQK34PlQetFPM89eutNnmBPf3H3HIcDx6PapXF68a8H30fnLwhkIGnVkuWaiA==
-X-Received: by 10.98.158.139 with SMTP id f11mr6296100pfk.46.1504962664746;
-        Sat, 09 Sep 2017 06:11:04 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([182.77.47.123])
-        by smtp.gmail.com with ESMTPSA id h70sm8473337pfc.115.2017.09.09.06.11.03
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 06:11:04 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] fixed coding style issue -  multiple assignments in a single line
-Date: Sat,  9 Sep 2017 18:40:47 +0530
-Message-Id: <1504962647-7425-1-git-send-email-aastha.gupta4104@gmail.com>
+        bh=AXzsLUr51WYPntE1/8rZHZIeGUpT6j0D60oQ6asnSrA=;
+        b=dKeV1+/H2XUEGDPdKp3VX1dYHAwf6fRxrQE3gM4rLC/mcnvIOR4xF/fEl/nBPnjtsn
+         x+2Zi1hHj1jPYnUo+JO+b5nSlBdE2fHSnNny/mfai4YZBRNmy9Cu955mt7I3F9gVIcAx
+         ipiwKDA0F9fedNxoIB74P0CKLl5IizzQUtOmlTmYLXSqKKnfqQnD4XKwRucJHIC2qbf4
+         AeLAm0gYAajxzuE4XEGq6+Aau1mw9VO9zDVpyscRfu/iQuqXFDiniq3jabnGrkUP9gin
+         ErmL+jvJ4jPvQEUXWPla+P3lFD/Fr06HDQdu9/JgQqmaq3Cz/BhsttQ19N/MYdG6YPqT
+         UtKw==
+X-Gm-Message-State: APjAAAWsSFMUr2fqTSxEr5ygcMMZEmzFdWUCCKzv+uGPDaFKPW+4aAe8
+	odV/EDHPOTgsgpm++KBDuJ3H3Q2H
+X-Received: by 2002:a63:5913:: with SMTP id n19mr3980987pgb.422.1553183066244;
+        Thu, 21 Mar 2019 08:44:26 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.235.30])
+        by smtp.gmail.com with ESMTPSA id s79sm11357745pfa.61.2019.03.21.08.44.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 21 Mar 2019 08:44:25 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH 1/3] [Outreachy kernel] staging: rtl8712: rtl8712_led.c: remove unnecessary parentheses
+Date: Thu, 21 Mar 2019 21:14:10 +0530
+Message-Id: <1553183050-8801-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
- drivers/staging/speakup/main.c | 21 ++++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
+Fix unnecessary parentheses issue.
 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index 938a0aed..9e83fa1 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -270,9 +270,12 @@ static unsigned char get_attributes(struct vc_data *vc, u16 *pos)
- 
- static void speakup_date(struct vc_data *vc)
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+ drivers/staging/rtl8712/rtl8712_led.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8712/rtl8712_led.c b/drivers/staging/rtl8712/rtl8712_led.c
+index a899a93..a0c3cf8 100644
+--- a/drivers/staging/rtl8712/rtl8712_led.c
++++ b/drivers/staging/rtl8712/rtl8712_led.c
+@@ -419,7 +419,7 @@ static void SwLedBlink1(struct LED_871x *pLed)
+ static void SwLedBlink2(struct LED_871x *pLed)
  {
--	spk_x = spk_cx = vc->vc_x;
--	spk_y = spk_cy = vc->vc_y;
--	spk_pos = spk_cp = vc->vc_pos;
-+	spk_x = vc->vc_x;
-+	spk_cx = spk_x;
-+	spk_y = vc->vc_y;
-+	spk_cy = spk_y;
-+	spk_pos = vc->vc_pos;
-+	spk_cp = spk_pos;
- 	spk_old_attr = spk_attr;
- 	spk_attr = get_attributes(vc, (u_short *)spk_pos);
- }
-@@ -1669,9 +1672,12 @@ static int speak_highlight(struct vc_data *vc)
- 		spk_do_flush();
- 		spkup_write(speakup_console[vc_num]->ht.highbuf[hc],
- 			    speakup_console[vc_num]->ht.highsize[hc]);
--		spk_pos = spk_cp = speakup_console[vc_num]->ht.rpos[hc];
--		spk_x = spk_cx = speakup_console[vc_num]->ht.rx[hc];
--		spk_y = spk_cy = speakup_console[vc_num]->ht.ry[hc];
-+		spk_pos = speakup_console[vc_num]->ht.rpos[hc];
-+		spk_cp = spk_pos;
-+		spk_x = speakup_console[vc_num]->ht.rx[hc];
-+		spk_cx = spk_x;
-+		spk_y = speakup_console[vc_num]->ht.ry[hc];
-+		spk_cy = spk_y;
- 		return 1;
- 	}
- 	return 0;
-@@ -2109,7 +2115,8 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
- 			spk_keydown = 0;
- 			goto out;
- 		}
--		value = spk_lastkey = pad_chars[value];
-+		spk_lastkey = pad_chars[value];
-+		value = spk_lastkey;
- 		spk_keydown++;
- 		spk_parked &= 0xfe;
- 		goto no_map;
+ 	struct _adapter *padapter = pLed->padapter;
+-	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
++	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ 	u8 bStopBlinking = false;
+ 
+ 	/* Change LED according to BlinkingLedState specified. */
 -- 
 2.7.4
 
