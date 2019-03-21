@@ -1,143 +1,164 @@
-X-GM-THRID: 6258660898055913472
-X-Received: by 10.194.216.3 with SMTP id om3mr1846395wjc.7.1457208045575;
-        Sat, 05 Mar 2016 12:00:45 -0800 (PST)
+X-GM-THRID: 6670698779080916992
+X-Received: by 2002:a62:42c2:: with SMTP id h63mr109498pfd.90.1553168420574;
+        Thu, 21 Mar 2019 04:40:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.205.202 with SMTP id d193ls233615lfg.2.gmail; Sat, 05 Mar
- 2016 12:00:45 -0800 (PST)
-X-Received: by 10.25.142.130 with SMTP id q124mr1844103lfd.9.1457208045060;
-        Sat, 05 Mar 2016 12:00:45 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
-        by gmr-mx.google.com with ESMTPS id v68si134631wmd.1.2016.03.05.12.00.45
+Received: by 2002:a62:1281:: with SMTP id 1ls2239185pfs.4.gmail; Thu, 21 Mar
+ 2019 04:40:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxedpIZeX2LBxL9eDBtMzRfSUGgJwSIfYrqTV+z7MZ9YiHTdPZ/UtRGGiAvAQSQ1It4rffC
+X-Received: by 2002:a62:2542:: with SMTP id l63mr132847pfl.20.1553168419912;
+        Thu, 21 Mar 2019 04:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553168419; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FlNrHvAJWeEB2Qe0fNjK7cETI4F5fcb9mO7E6dLFoEHyITJ3jnOxust6Y5zKNUJL7M
+         u7pmbncDG6RoVA7KeZzee9O6AaaUXvbHhYQDKpdEFayiBxCLNMdzWe6whCcV/RDFEBSC
+         9YKUfnR37s7L8p+2a8j8cV7ElO420O2ZsgpwWcaw6u9kcvwrX5/SY+aWvhnuff0VlX7j
+         7F8v0EuCRjUm0DJ0X2EqG8txuNStiEioJcTzVEfxuqvPQ7KymBAcXPa8m/pm5iWKErXt
+         Gfvs8be8EUBZH78cwh20B2ER5BmbiSpW3c2djFTYiajz87K16exhKwuIeUEePxQ2I6mn
+         Q+2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=rHWsTqkcyZ2cL/GEGwVumK/yPCut04SXUVfCmU47QrQ=;
+        b=ASkk9tYq+sEwoYTmkqi0UrGqdI5uw60ipL8nl9RnL3pQEnmRbowHU38d0WF7IN67Ty
+         XZtd0jgT1KaqYK29bOWNe/qba8WClyYb8HAYdxf4YsenNHSzVc0ZNA4QOmI5+p4AFdKm
+         QJMoK84jfqMv4rC8Pry4KSIcVFs9xDYbxeNDbqxF51tlVk/Fyoxqw9l8TDLz6hyIYUjh
+         gqzmYlWDC2z69JPdjnyfyMVgRHf10+OLR3PNfSsLMTQbE2TSKS2NPSUbRLDnFctFMSh8
+         RAzHRhCzeI/3UrWa9RG4KOFeQOzyrqjUfdcIQ5nYVa+xnWCSBRbSrH4F0LT46aluxLSk
+         nmZQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XR2YAQIv;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id k70si252500pfc.0.2019.03.21.04.40.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 05 Mar 2016 12:00:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
+        Thu, 21 Mar 2019 04:40:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of nevola@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=nevola@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x235.google.com with SMTP id n186so34235027wmn.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 12:00:45 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XR2YAQIv;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id 8so4129019pfr.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 04:40:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/ih+Xc+2f6QfpFYWt7g1LB68jLBg10PAHu+TNXoNmEs=;
-        b=FHzIMI8ak6IzBCpVGNK/NDORvX7v2QU1WHNjn1HuaQJywPfLYWRHo6ESf/HK8XvDLs
-         51xBzQI6vCZlXckc4BMl1E4sLKiCPE5WBhXy8Upvnol+pYXy+5ps2ZPYypoNLZiuD34G
-         lFPomq3EBg6pC/a8KgJCcW0E0RaoQizGBNby3lQThJQHTnZ0SQvSf8HqPWwNjG2yo/kY
-         3KsUCuzbWxPvGVmHXKpkZGNIohN7CndTEOmkI3H8ZAa+sbmDRpjR7Pr9GLwOgA/8w64V
-         /0i81yiuIFznBMxrK4mcN9jDx4vRNkNTlvEun+4AtiPv6SmMZPXMaX24bwUADhsPHtGq
-         m2zw==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=rHWsTqkcyZ2cL/GEGwVumK/yPCut04SXUVfCmU47QrQ=;
+        b=XR2YAQIvPXYb1fFU2+0Vd0wdd4bb2cl3LtfM/zebNe9cDM9PBKungc57YWgi/BnpuI
+         0MZ4rOPDx7GfMVIs8ZnZU/UCVVyMzeb5/9v1g2Zjdx4K4fA/dBn2NwTCLLyLaXoUB2IY
+         tmENG5T3EZdHcR7738M2Bik5KJC6BvBU2LwfX8OlRORQ3JF5lxrQymSmBBnxHo1qFKfv
+         I+KQF4xHcFZwOTHoZd6UZJItx/gOztB16neUweGOZ3AQEmmdLwF8PnS7MwO9N3sYD5up
+         qTeC1y3AEh3JLnNvDwqlfCb3tLAd+JPLKPsGupfUPQMjml53rUHYGFc4dSeLI1eDel+p
+         K42w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/ih+Xc+2f6QfpFYWt7g1LB68jLBg10PAHu+TNXoNmEs=;
-        b=JOangeIs5mqcFESv147w+JUVSy6yzjJYqlk8cCFQPOh6TmSx630dSwpJUoF6vXxjbl
-         rzzIss1ptY+yjUCLVdqTarVvoLXKJZEhWGnQFVUlNm8Bog+9iM8pCfJixH74iOZTR0PT
-         VfpX72XoNJNCt/VOtcUucS1IlBvAk3T1iH5DQhyXTQqE6aElTweg/OqzVL1H10eBAmu/
-         n/h8SVEC3KLfKnfPuNlj72rOyCjzIMmMId5E+JwgRjMxntisu6Fr5oxA4I2lQSVzpbmz
-         /6tQi1pJRH/Q2ULTh/U0/dlFxT4iAWdO7R4QGwtZNvsjQBY4yfqBFodfNd4Wj6wT/WKa
-         WrNA==
-X-Gm-Message-State: AD7BkJIb4uVa3LnCDplrKJsAtmEscmbaMNq2pT5A2HG/JWqA4/7b1rF6qZ2JN4YBfFIFIQ==
-X-Received: by 10.28.211.1 with SMTP id k1mr5330265wmg.93.1457208044870;
-        Sat, 05 Mar 2016 12:00:44 -0800 (PST)
-Return-Path: <nevola@gmail.com>
-Received: from sonyv (151.Red-79-150-198.dynamicIP.rima-tde.net. [79.150.198.151])
-        by smtp.gmail.com with ESMTPSA id j10sm9552817wjb.46.2016.03.05.12.00.43
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 05 Mar 2016 12:00:43 -0800 (PST)
-Date: Sat, 5 Mar 2016 21:00:41 +0100
-From: Laura Garcia Liebana <nevola@gmail.com>
-To: netfilter-devel@vger.kernel.org
-Cc: shivanib134@gmail.com, pablo@netfilter.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] extensions: libipt_icmp: Add translation to nft
-Message-ID: <20160305200039.GA14269@sonyv>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=rHWsTqkcyZ2cL/GEGwVumK/yPCut04SXUVfCmU47QrQ=;
+        b=XYiRZIsJfS7hnUHCK40ygqbdl2mLI6sGnxopFNrOnZK3n8HnplY2Ya+cK/3GdfRl+q
+         PFwoBnUNPTqEOe2sgXjpVU6GXLBI64Dh+X//z6LLiu4DBzGU67GDIFfK8X71GTeQ5S7b
+         On7AUFYPykkGt188GkZq8q4zS68/P0c3UDdLY9z9sdXMMyoneEQ0c/i+k7DMivGxUkBY
+         NWP3KlEgawrPfxZ+20roC00Mn5N1e0jzV4VpLlXqKQ9+FDPS7yIsq2c34K4YaJ5id0bn
+         UmvSj3QeEX+EiyIK9PzmtX6oLkxDPUMn6z9wc4bRsFl+newmZVn//1Gbw0VzXpI9QlWq
+         Gv/w==
+X-Gm-Message-State: APjAAAWfOFsX+AKHfgzG2RBziGnFv205156cG3m1d56FI63JqReb7H21
+	EUMIEug96WISEDrA011CdZCKAPuT
+X-Received: by 2002:a62:7042:: with SMTP id l63mr2800484pfc.1.1553168419375;
+        Thu, 21 Mar 2019 04:40:19 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.215.204])
+        by smtp.gmail.com with ESMTPSA id n65sm14563926pfb.160.2019.03.21.04.40.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 21 Mar 2019 04:40:18 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH v2] [Outreachy kernel] staging: emxx_udc: lines should not end with parenthesis
+Date: Thu, 21 Mar 2019 17:10:04 +0530
+Message-Id: <1553168404-13526-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Add translation for icmp to nftables.
+Adjust code to meet the style of “lines should not end with
+parenthesis”.
 
-Examples:
-
-$ sudo iptables-translate -t filter -A INPUT -m icmp --icmp-type any -j LOG
-nft add rule ip filter INPUT icmp type any counter log level warn
-
-$ sudo iptables-translate -t filter -A INPUT -m icmp --icmp-type 3/1 -j LOG
-nft add rule ip filter INPUT icmp type host-unreachable counter log level warn
-
-$ sudo iptables-translate -t filter -A INPUT -m icmp ! --icmp-type 3 -j LOG
-nft add rule ip filter INPUT icmp type != destination-unreachable counter log level warn
-
-Signed-off-by: Laura Garcia Liebana <nevola@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- extensions/libipt_icmp.c | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
 
-diff --git a/extensions/libipt_icmp.c b/extensions/libipt_icmp.c
-index 666e7da..795172f 100644
---- a/extensions/libipt_icmp.c
-+++ b/extensions/libipt_icmp.c
-@@ -218,7 +218,7 @@ static void print_icmptype(uint8_t type,
- }
+Change from v1 to v2 - Removal of specification of file name.
+
+ drivers/staging/emxx_udc/emxx_udc.c | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+index b960a21..743a519 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.c
++++ b/drivers/staging/emxx_udc/emxx_udc.c
+@@ -459,22 +459,22 @@ static void _nbu2ss_dma_map_single(struct nbu2ss_udc *udc,
+ 		if (req->unaligned) {
+ 			req->req.dma = ep->phys_buf;
+ 		} else {
+-			req->req.dma = dma_map_single(
+-				udc->gadget.dev.parent,
+-				req->req.buf,
+-				req->req.length,
+-				(direct == USB_DIR_IN)
+-				? DMA_TO_DEVICE : DMA_FROM_DEVICE);
++			req->req.dma = dma_map_single(udc->gadget.dev.parent,
++						      req->req.buf,
++						      req->req.length,
++						      (direct == USB_DIR_IN)
++						      ? DMA_TO_DEVICE
++						      : DMA_FROM_DEVICE);
+ 		}
+ 		req->mapped = 1;
+ 	} else {
+ 		if (!req->unaligned)
+-			dma_sync_single_for_device(
+-				udc->gadget.dev.parent,
+-				req->req.dma,
+-				req->req.length,
+-				(direct == USB_DIR_IN)
+-				? DMA_TO_DEVICE : DMA_FROM_DEVICE);
++			dma_sync_single_for_device(udc->gadget.dev.parent,
++						   req->req.dma,
++						   req->req.length,
++						   (direct == USB_DIR_IN)
++						   ? DMA_TO_DEVICE
++						   : DMA_FROM_DEVICE);
  
- static void icmp_print(const void *ip, const struct xt_entry_match *match,
--                       int numeric)
-+		       int numeric)
- {
- 	const struct ipt_icmp *icmp = (struct ipt_icmp *)match->data;
- 
-@@ -249,6 +249,36 @@ static void icmp_save(const void *ip, const struct xt_entry_match *match)
+ 		req->mapped = 0;
  	}
- }
+@@ -1414,8 +1414,8 @@ static inline int _nbu2ss_req_feature(struct nbu2ss_udc *udc, bool bset)
+ 			if (selector == USB_ENDPOINT_HALT) {
+ 				ep_adrs = wIndex & 0xFF;
+ 				if (!bset) {
+-					_nbu2ss_endpoint_toggle_reset(
+-						udc, ep_adrs);
++					_nbu2ss_endpoint_toggle_reset(udc,
++								      ep_adrs);
+ 				}
  
-+static void type_xlate_print(struct xt_xlate *xl, unsigned int icmptype,
-+			     unsigned int code_min, unsigned int code_max)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; ARRAY_SIZE(icmp_codes); i++)
-+		if (icmp_codes[i].type == icmptype &&
-+		    icmp_codes[i].code_min == code_min &&
-+		    icmp_codes[i].code_max == code_max)
-+			break;
-+
-+	xt_xlate_add(xl, icmp_codes[i].name);
-+}
-+
-+static int icmp_xlate(const struct xt_entry_match *match, struct xt_xlate *xl,
-+		       int numeric)
-+{
-+	const struct ipt_icmp *info = (struct ipt_icmp *)match->data;
-+
-+	xt_xlate_add(xl, "icmp type%s ",
-+		     (info->invflags & IPT_ICMP_INV) ? " !=" : "");
-+
-+	type_xlate_print(xl, info->type, info->code[0], info->code[1]);
-+
-+	xt_xlate_add(xl, " ");
-+
-+	return 1;
-+}
-+
-+
- static struct xtables_match icmp_mt_reg = {
- 	.name		= "icmp",
- 	.version	= XTABLES_VERSION,
-@@ -261,6 +291,7 @@ static struct xtables_match icmp_mt_reg = {
- 	.save		= icmp_save,
- 	.x6_parse	= icmp_parse,
- 	.x6_options	= icmp_opts,
-+	.xlate		= icmp_xlate,
- };
+ 				_nbu2ss_set_endpoint_stall(udc, ep_adrs, bset);
+@@ -2594,9 +2594,9 @@ static int nbu2ss_ep_queue(struct usb_ep *_ep,
  
- void _init(void)
+ 	if (req->unaligned) {
+ 		if (!ep->virt_buf)
+-			ep->virt_buf = dma_alloc_coherent(
+-				NULL, PAGE_SIZE,
+-				&ep->phys_buf, GFP_ATOMIC | GFP_DMA);
++			ep->virt_buf = dma_alloc_coherent(NULL, PAGE_SIZE,
++							  &ep->phys_buf,
++							  GFP_ATOMIC | GFP_DMA);
+ 		if (ep->epnum > 0)  {
+ 			if (ep->direct == USB_DIR_IN)
+ 				memcpy(ep->virt_buf, req->req.buf,
 -- 
-2.7.0
+2.7.4
 
 
