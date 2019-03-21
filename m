@@ -1,111 +1,103 @@
 X-GM-THRID: 6670726051308503040
-X-Received: by 2002:a6b:ea14:: with SMTP id m20mr230635ioc.33.1553160331086;
-        Thu, 21 Mar 2019 02:25:31 -0700 (PDT)
+X-Received: by 2002:ac2:4856:: with SMTP id 22mr144850lfy.12.1553159379749;
+        Thu, 21 Mar 2019 02:09:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:3cc8:: with SMTP id m191ls598389ita.1.gmail; Thu, 21 Mar
- 2019 02:25:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxrbK4SwPAFBivytoAmszwAw1UnCNhd/FzhXLJPL5oy1okHQMj/DIITEEFD2vnZ/1YTIW8s
-X-Received: by 2002:a24:a14:: with SMTP id 20mr953584itw.23.1553160330287;
-        Thu, 21 Mar 2019 02:25:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553160330; cv=none;
+Received: by 2002:a2e:998e:: with SMTP id w14ls608373lji.14.gmail; Thu, 21 Mar
+ 2019 02:09:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz7O/J7XdVwsKJgxlGuzibHzXvF0IQh+nS+aXqu174cPjoe3jtNW2lkG3pKxGzpkJIue77u
+X-Received: by 2002:a2e:909a:: with SMTP id l26mr114220ljg.1.1553159378797;
+        Thu, 21 Mar 2019 02:09:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553159378; cv=none;
         d=google.com; s=arc-20160816;
-        b=qcw4/9RtKd/nkkCg7xS62aS4EyTYLGSSRheoipXJQM/9G45hGjqdVDdwiOrBokS2pM
-         21BKU/rBM83f8HxNC7bFAvNdd/Zap9yXspIlNC7uN7TVpKDPF1ws3qvDSHhakRn8PuY6
-         bNf2h+8dnxcp2H+UiBpkOBKnthMG3zqooFAbx4YbpoqVn2xfmyKV+PzJyU9ewrQwF+qQ
-         9jbL+jxrFA2hJGjd4CFAGK7fbK4NpzgIQRCuUvlMkM9nRmPnJUVBxlDlVy3eac/+EJS4
-         vM0bud328I7qTnoxXh/TDQkrgBOcBqILwuX5igV8e4wFQxroVJ+wuf4yEvCTUzeLhoZq
-         9VpA==
+        b=zlz7rPndR4emC7rvkcDIDZIKwKMBoIInPh38X8cX+4RJYXqF+KP3q4QZOvbmO65Jte
+         lC64XK1MgB8sSXRBHPSO34DSrZ8JEn2R8LEOH8obi7zOmgHxzcONBPY7e/87Ra1BxJm/
+         7rPKhOTW2ywOgYgED2MGokI6qzs56j3+a3rDm7FYnQLHCeoowi3x87Y/CBFKdoscdRPv
+         u4bkusWA2lEbGm6z9SLzFJCl85W37VxYDafpjDkC1zfLl5PAbqwtsZCLCagRwJ4x+DhD
+         4IW705aA1fxOm3l9e91y9Nfjl/5G5n8Dr8h4Ev6hwHgUR+xwJqVErscf+mOVC/ztJ/X1
+         QKCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=j8s+d+RE+M7Yxjqz0eNJiT0LvZ90NF8kj1VAh3GBTM0=;
-        b=HqERTqnCYvdAGKovDb0wpiFxv2YzKBTg5PeRnkkNwbiFsp3Zm8cXafXKbgZ3PFW0Tb
-         FVMraAlZv0rBfvcqw9afZ2yU8mzniD4jr9YMWRU6fNaVzizrb/VZYNzNrXzGHl9Mpb8f
-         fmzzfOIquK+9Wqni7/0i5xQeaEBspX6mbkkaAsuKIL5B9ZQj96U76OwWlaE71fgtOWYx
-         2XBkcFd6STWMky7JRwT9uCBivvoEzj6rcOWgCbOwHZ386KfQPdfEIRNmAHWzrjY9ja3j
-         768LKirxNfQBFlrNZoiR/J66jnaWHWnDU0uoXs3TAZq2Wni4mfZIeh6nDg5WJjjuE8kq
-         PEZw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Hm6SnBYWaY8dSpKMZeFaWH+aR9OPFatcice1NRe4gbA=;
+        b=RUd7pTTgw1rAHLmhmdHhGF1jdZIA5C1midP0Ehe/vuT1Ej1V8Nh5GaGQjC90x/CPgr
+         zu5TxoeGwBP7r0AYuu6lCmTSlMPRDVMCJ+KobqoHtEez5qmVa2r3McSO/A1QxvmcBtJj
+         x9pA1fCpLJWT7gIzlQv66JM6A9QX2eNunt1oi/7tL25QAQa23GSatV1xYBpQmDnpk2dD
+         wNbEk+o+n06uKoLS814/XjDd7q0dxONLXOfrQfZn7TXkYfa37bZ1ou8nm6SoXz28AFvy
+         VKc9GU4AD6hHKXBREI15aW00wuthTQObnThDc2lJsJx25PUMBnNcGyaFR700HuciCSfS
+         qaxA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nsiO5XOh;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com. [2607:f8b0:4864:20::52c])
-        by gmr-mx.google.com with ESMTPS id g127si552745ita.3.2019.03.21.02.25.30
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m17si44350lfl.0.2019.03.21.02.09.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 02:25:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) client-ip=2607:f8b0:4864:20::52c;
+        Thu, 21 Mar 2019 02:09:38 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nsiO5XOh;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52c.google.com with SMTP id p6so3805148pgh.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 02:25:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=j8s+d+RE+M7Yxjqz0eNJiT0LvZ90NF8kj1VAh3GBTM0=;
-        b=nsiO5XOhVbMQ3mQsXrisFznLqUzVLtiAKrIvU0FKGwaI/Uy8mVkMK5JugaJJFSnkFi
-         WMW/uyAjxfG/9NmJwaxVCEnDKquo9c7uWLfXWe3stb9QWsicr9Ds0HH/N4Hkw1GkEzPG
-         o6SiEgF2gUEoTvG5pQ0nz2DI+dj4HrNsKB/lxN3VxxPY6LMtxoAl/9i2c2H1eeVSRIKb
-         dBwnx5EXxWPSlBY8BDdG+eTy142WuTORWXDSj/uOKP50MxmgAz7hqAZEHzPNFizX0dhP
-         S/00OvXsFcp1uBIes1FFc2v/2AtAoWEA+Zc80yM1yN4lx4vZqtUwyF17F1jAiYl+cfbJ
-         ta6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=j8s+d+RE+M7Yxjqz0eNJiT0LvZ90NF8kj1VAh3GBTM0=;
-        b=lC/UxuBDHNcVyWK/CmLhrROz8W92G95HziHZaDV9Sm6OfVB6vrT6WcGWM7snHEb+qT
-         +cdrrlAvWRrb2o2YZapXGK5RBamJ/fwvKgBPIcjCwdWmMVwa9Z6AdzKqAZnlO1TqdPqr
-         8iLhMbmCEI6+KmaQNs5cuAwG4yvfjq/vpNPEdnIkZHWYBLXBV6ZT2NmDX0k3sgaPDD3N
-         qkF/uriBEuoMnN+Cm1m0K3k8BU5nkXPQZHjAOPuRyqQlmbIDE8meAMzt8iMfpg3voSC8
-         o5Bx01hmEWx1kls9VxAIidcjtT1x3sexRyYXOJYufd4qFp+Lw15lgV7UrNideHjan+YR
-         H9yA==
-X-Gm-Message-State: APjAAAWIolQvivm9htCium5IG5pSFVSQEhO4b7RLcaskYfU9/edtFTPO
-	qJY9Hcxqowu/ph7R15zq57I88N36
-X-Received: by 2002:a17:902:e60e:: with SMTP id cm14mr2520796plb.192.1553160329709;
-        Thu, 21 Mar 2019 02:25:29 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.215.204])
-        by smtp.gmail.com with ESMTPSA id 71sm7822705pgc.23.2019.03.21.02.25.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 02:25:28 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH v4] [Outreachy kernel] staging: vt6655: spaces around operators
-Date: Thu, 21 Mar 2019 14:55:15 +0530
-Message-Id: <1553160315-3839-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,252,1549926000"; 
+   d="scan'208";a="300208263"
+Received: from wifi-eduroam-85-116.paris.inria.fr ([128.93.85.116])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Mar 2019 10:09:37 +0100
+Date: Thu, 21 Mar 2019 10:09:37 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3] [Outreachy kernel] staging: vt6655: spaces around
+ operators
+In-Reply-To: <1553159257-3568-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903211008360.5292@hadrien>
+References: <1553159257-3568-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Add spaces around operators
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 
----
+On Thu, 21 Mar 2019, Payal Kshirsagar wrote:
 
-In v1, prefer spaces around operator,
-In v2, 'prefer' changed to 'add',
-In v3, changes are mentioned
-and in v4 changes written below '---'.
+> Add spaces around operators
+>
+> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+>
+> In v1, prefer spaces around operator.
+> In v2, 'prefer' changed to 'add'
+> and in v3, changes are mentioned.
 
- drivers/staging/vt6655/device_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This v2, etc stuff goes below the --.  That way it will get dropped hen
+the patch is committed.  The previous versions aren't present in git, so
+the history about them isn't interesting any more.
 
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index b370985..866d794 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -592,7 +592,7 @@ static int device_init_rd1_ring(struct vnt_private *priv)
- 			goto err_free_rd;
- 		}
- 
--		desc->next = &priv->aRD1Ring[(i+1) % priv->opts.rx_descs1];
-+		desc->next = &priv->aRD1Ring[(i + 1) % priv->opts.rx_descs1];
- 		desc->next_desc = cpu_to_le32(curr + sizeof(struct vnt_rx_desc));
- 	}
- 
--- 
-2.7.4
+julia
 
+> ---
+>  drivers/staging/vt6655/device_main.c |  2 +-
+>  drivers/staging/vt6655/rf.c          | 26 ++++++++++++--------------
+>  2 files changed, 13 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+> index b370985..866d794 100644
+> --- a/drivers/staging/vt6655/device_main.c
+> +++ b/drivers/staging/vt6655/device_main.c
+> @@ -592,7 +592,7 @@ static int device_init_rd1_ring(struct vnt_private *priv)
+>  			goto err_free_rd;
+>  		}
+>
+> -		desc->next = &priv->aRD1Ring[(i+1) % priv->opts.rx_descs1];
+> +		desc->next = &priv->aRD1Ring[(i + 1) % priv->opts.rx_descs1];
+>  		desc->next_desc = cpu_to_le32(curr + sizeof(struct vnt_rx_desc));
+>  	}
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1553159257-3568-1-git-send-email-payal.s.kshirsagar.98%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
