@@ -1,120 +1,123 @@
-X-GM-THRID: 6472277834533437440
-X-Received: by 10.101.66.5 with SMTP id c5mr1278584pgq.133.1506944614509;
-        Mon, 02 Oct 2017 04:43:34 -0700 (PDT)
+X-GM-THRID: 6671194147463888896
+X-Received: by 2002:a17:906:4c82:: with SMTP id q2mr5625929eju.215.1553261099274;
+        Fri, 22 Mar 2019 06:24:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.117.77 with SMTP id f13ls2911819pgn.17.gmail; Mon, 02 Oct
- 2017 04:43:33 -0700 (PDT)
-X-Received: by 10.101.88.140 with SMTP id d12mr1311196pgu.22.1506944613452;
-        Mon, 02 Oct 2017 04:43:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506944613; cv=none;
+Received: by 2002:a17:906:3d62:: with SMTP id r2ls1656230ejf.2.gmail; Fri, 22
+ Mar 2019 06:24:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzrxc28+dKbu1iYzxJkxINWMEk7/pj09t29QVajDpzwbfdglqwrVyyXA6spGN4i6J4VbrXU
+X-Received: by 2002:a17:906:e5a:: with SMTP id q26mr2318949eji.50.1553261098306;
+        Fri, 22 Mar 2019 06:24:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553261098; cv=none;
         d=google.com; s=arc-20160816;
-        b=eY1FbcFotwjBmnOzpyoJYc3zEm5Q8v8xkwH2ogzXEjS5R+fUFxfIGLrPCiBbQRTJBK
-         xSePT9rMLfnIOL/AydDfwn4ytSe4xr0x23sGwLHmCV3Org3F/6W/hnWMN/gfgUd0d7UW
-         2W14GCgSOxb1y/GrxmEun4oNt9sHAGD7iOFh3UbCjbDCnbd8WhuY6Scpx2mWD4a3xpX5
-         ni/A06Rgj3sLaPfyStMM+PJYMKBSxiuvJxtudgvcBTwYltiE/2z/wBIAanIyrLs/Bny+
-         wymPqx6h9uEq7lF0Kxu/51k6e8QRb9xE8lVcTPFQE5qRFBDsChU31Eemo4mi4/UXc6eA
-         Rq9w==
+        b=ipWLvszcgKO5yvyVD3RDGhfUp5oeJ7jnyH7lN1HO2ak8gim7r+LZkgcH8SSy6dR321
+         4iiLf6wkSWyWNIPXNtkUMpfosr4JMjwtAOfRrJmGGjfshvhGXZSll2B/knfoYQ+KNI0H
+         KtbrlAQyf/+HXsH7dpxedhIY6tUExBqYuWO8pyfFDuKpH9Higq5Mtu8x1a0qszxr7hCS
+         zId3FblNVwkh2t1Pzb6IZyggc50cN6l4EZ5xwmFQ73CuPZ25WvrDyRE9k2O3b7hSNkdA
+         ejDLJ+m9vDorXUYg+WDbcTpY69e3qoosvr2GNMo+9mbIR+KG3Jj03qgth8ZZU1sox6n+
+         inmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=feznBgRTt554aR/vOn8qNl37g5i1mM7mm3gHtEN2TkI=;
-        b=dIjafGazU66/ZniE7VU6vKfW/6V9dH2ra/JjEUxasdVhkgBbEYasMUGSJPO30oCaqT
-         B5TJtbpccNUYc4cOd9f0Oe9d6BO1IOTuezP1REe1AteWyOSziirrMDVtQutdWySySQXX
-         gKQNaesX0YQ10FhidRNIuqbR8dCib9/Z6Yjs7t5/5xsklcVSe2+p0HTJ+j9BPriKnD2G
-         BxqqaMYa+s9hUejm82NfBOIoueHUQROzHb7Dbk4EuvX1JcageeHbKzYeTgjAhUXU6jgt
-         MRsEZbu0DTSr5rFVlDGUgzRQUgCMx57B4a7vgt2JfHPUHvQnd94tIG3UqcwvSEGuDubH
-         opWA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=8mFZjb7pV+cKvsTrNC9EaR4c9mbsMxbDp7sZ7RSajXA=;
+        b=ex4AREUgWndQM1fETRLs9fzZdRduoomYYjUFHIapq4xneQ2vOiS69O+DXuXHMeEGlo
+         SibUfcM4AT7xgq8nW+2dX2ZuVMpC2Z0Lad41UcaXW7GdSNQa0M3VT3vNkilVGygscL6o
+         Qx/7I3UA4WXrWUrl96Dme+rZPA2IZjvjj4p98qDb3ch7Kw9iZmj5HI/L1cTo1mkHM1M5
+         5n7ceCQDjPtfpbv4m/rR1YnI5retcC1z6MyGmDy3d/4ATPNNYRKBPz3KLlkiGnkIPygN
+         qNTVfFZsf5ffssJCwTVVSMyxk1U72030S1b46XMLw7VzseV3niRPxHBi34A7wb1uTFcJ
+         kQRA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dNQ0gt8o;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id f189si1020255pfa.1.2017.10.02.04.43.33
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id p25si439385eju.1.2019.03.22.06.24.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 04:43:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Fri, 22 Mar 2019 06:24:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dNQ0gt8o;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id m28so5351144pfi.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Oct 2017 04:43:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=feznBgRTt554aR/vOn8qNl37g5i1mM7mm3gHtEN2TkI=;
-        b=dNQ0gt8ow3WrBs6F+IpHgQqcyIl7oBYGPl2eylukES4vbYLbGP0muSgo5oumGbjOSI
-         8Ta17yWT3/Le24Y2qOb8wChgKw/IQVCnJtgtAK+iVU5WPEppBVbdF8GRC0lvDqCEGngO
-         FWkdJnKXiznlG1wA4YOjfhHdxuIgKhBtpNaK7KmEWArTOXGNUaxanqKq/x6VvHSpMD1O
-         LwSWYCLvfeEcrf5g0z+Iqs8EEAAByk1Qh659lic9eJxQqwZF/z18CJTvqVxbPN7PuR3J
-         KEmckoaBzQAfMyu2xCo+r4WgFU56TGLoMjOvqLd+f6O3cfXJ74gknnXxnGq5foEk2uyx
-         TC3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=feznBgRTt554aR/vOn8qNl37g5i1mM7mm3gHtEN2TkI=;
-        b=l7nbxksqQGpLYV3NrigtMUyV2nEwlymWTi9FZxA6LoZMCKTM0WNnLeHK4wkdfcFXET
-         /TGJ6KhqrVDE+L9Bq9Ywgth7mme6vTcK4HT+QuyRh7tO3PwyDEpH2teJpTIBGIVD4jRQ
-         20MYVNRz12D/7dxg6VpNSMJStMpqhZ8tRIKddXZKvUoWedVSTWv3YVZTK0tASOnWs7C5
-         LqMzNbbhSsaFx5pEiASOf2T4C05aPoUDGX8LZgNR13uJQf470t23whi0s/A+/y9SnKsf
-         qlGIl0mB0xBwqWb61Afj80w5iINdNTBodS/P2UsuPlvZV2CrbUFk+ssDWsNdF+cZoAEg
-         8S6g==
-X-Gm-Message-State: AHPjjUgaFS98XdRkZYRzZT+nKVp1vJ4F+A9Vvfn8pWdekIQE8zLXMU7s
-	KQ+PiqRZtyPTdW8UxUZ/6q3do60d
-X-Google-Smtp-Source: AOwi7QAQuGNflue5ciqRHGud9WC4Vwfvn6hlCzoNeXSQK0HqL5bPNQcq4AgRrfmhjx1lMpBR9hf8BQ==
-X-Received: by 10.101.74.207 with SMTP id c15mr12208747pgu.259.1506944612950;
-        Mon, 02 Oct 2017 04:43:32 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([202.53.87.190])
-        by smtp.gmail.com with ESMTPSA id h9sm16393275pfi.60.2017.10.02.04.43.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2017 04:43:32 -0700 (PDT)
-Date: Mon, 2 Oct 2017 17:13:22 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rts5208: use usleep_range instead of udelay
-Message-ID: <20171002114322.GA8908@manoharreddy>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,256,1549926000"; 
+   d="scan'208";a="375302414"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2019 14:24:57 +0100
+Date: Fri, 22 Mar 2019 14:24:57 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: gdm724x: Remove unnecessary
+ print statements
+In-Reply-To: <20190322124010.7192-1-bhanusreemahesh@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903221424040.27473@hadrien>
+References: <20190322124010.7192-1-bhanusreemahesh@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Since a its a slow device, allow a small range of 100
 
-Signed-off-by: Keerthi Reddy <Keerthigd4990@gmail.com>
----
- drivers/staging/rts5208/rtsx_card.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_card.c b/drivers/staging/rts5208/rtsx_card.c
-index a6b7bff..418e29d 100644
---- a/drivers/staging/rts5208/rtsx_card.c
-+++ b/drivers/staging/rts5208/rtsx_card.c
-@@ -825,7 +825,7 @@ int switch_normal_clock(struct rtsx_chip *chip, int clk)
- 	}
- 
- 	if (sd_vpclk_phase_reset) {
--		udelay(200);
-+		usleep_range(200, 300);
- 		retval = rtsx_write_register(chip, SD_VPCLK0_CTL,
- 					     PHASE_NOT_RESET, PHASE_NOT_RESET);
- 		if (retval) {
-@@ -838,7 +838,7 @@ int switch_normal_clock(struct rtsx_chip *chip, int clk)
- 			rtsx_trace(chip);
- 			return retval;
- 		}
--		udelay(200);
-+		usleep_range(200, 300);
- 	}
- 	retval = rtsx_write_register(chip, CLK_CTL, 0xFF, 0);
- 	if (retval) {
--- 
-2.7.4
+On Fri, 22 Mar 2019, Bhanusree Pola wrote:
 
+> Remove print statements that provide information about error messages
+> when memory allocation is failed.
+> Issue found using coccinelle
+> The following semantic patch is used to solve this:
+>
+> <smpl>
+> @@
+> expression x;
+> constant char[] C;
+> identifier f;
+> @@
+>
+> x = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|
+> usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\)(...));
+>
+> if(x==NULL)
+> {
+> ...
+> (
+> -f(C,...);
+> |
+> -f(...,C);
+
+You can also try just f(...,C,...).  If you use that, the others are not
+needed, because ... can match nothing.
+
+> )
+> ...
+> }
+> </smpl>
+>
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+> ---
+>  drivers/staging/gdm724x/gdm_lte.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
+> index 3c2aab7a921e..db11498f6fc7 100644
+> --- a/drivers/staging/gdm724x/gdm_lte.c
+> +++ b/drivers/staging/gdm724x/gdm_lte.c
+> @@ -871,7 +871,6 @@ int register_lte_device(struct phy_dev *phy_dev,
+>  		net = alloc_netdev(sizeof(struct nic), pdn_dev_name,
+>  				   NET_NAME_UNKNOWN, ether_setup);
+>  		if (!net) {
+> -			pr_err("alloc_netdev failed\n");
+>  			ret = -ENOMEM;
+>  			goto err;
+>  		}
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190322124010.7192-1-bhanusreemahesh%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
