@@ -1,163 +1,148 @@
 X-GM-THRID: 6671224625234444288
-X-Received: by 2002:a9d:77da:: with SMTP id w26mr6915830otl.17.1553265528194;
-        Fri, 22 Mar 2019 07:38:48 -0700 (PDT)
+X-Received: by 2002:a9d:582:: with SMTP id 2mr7139390otd.50.1553265526793;
+        Fri, 22 Mar 2019 07:38:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4541:: with SMTP id s62ls1085248oia.7.gmail; Fri, 22 Mar
- 2019 07:38:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqystPBXVDBpwvHNORJqcnsnul2R3ymAAtIdA2AOV9bGsPrE3bGjhMncZ+1LPOvd+NN6WcTa
-X-Received: by 2002:aca:a94c:: with SMTP id s73mr2126045oie.156.1553265527328;
-        Fri, 22 Mar 2019 07:38:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553265527; cv=none;
+Received: by 2002:aca:ac8c:: with SMTP id v134ls1096817oie.6.gmail; Fri, 22
+ Mar 2019 07:38:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw1FdY6sItusF+m8rZ/en7TQmePHxg430P/M6G6ZfGyMLdI7J+RhGFHSd7cvqLSENH22kIY
+X-Received: by 2002:aca:47d2:: with SMTP id u201mr2099794oia.130.1553265525876;
+        Fri, 22 Mar 2019 07:38:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553265525; cv=none;
         d=google.com; s=arc-20160816;
-        b=iUZe6iHMaNai911T8MY3q0nX8HeFbaoXph8Y4UVBOqk79wqDssD849qUcVIsDtBP9Q
-         oKfpJwRhKNlPKao+YqaeRCelwusByI7rcj/XcAqr2BF5b/o4RZsGsruRAo0eE6PRSSiq
-         EOYv1qe6ePKbnMse7nDrBA4tWXWvk5wIau+YM0t4nmh8J4mRHBGnSSW+ogT+Xnm5NkuZ
-         O2g7hIAvekCix3pOdnxqj81wbfLZ6OQvJtq+ZJWK++goMAuqhyNNgNp7eYtMXMyvM1bi
-         sFykTgyzLeumpzcbTVAJfeaW4hGSuyI+9vIFhxvTevMwUOQPwfBMfeIzcw6JmQ6P8rGi
-         psIA==
+        b=h0v2mOhDFQQoksQ7nnS2hxoOCAHKHrrfa/sk1wpRsgSAZseiMPwtfQTRU6HdnCSgkM
+         4VJo0++z6fGrBOe1Fz+7qqbnQClQO45aA/Rsj+SQe0mcgC/9UFJYz2KBE4vHy2LNEJG/
+         /whmINq1PXhONC4bdcDIzUMdG1/29Ns1fbi8kCJDwuRjoTfK3BcMuWn+wnz5ApC4V9Lh
+         nOJCK5hZOQrQ2596TKNJx0kN2nSOtB1wSx7pDD5muIPiVX3GrvizNCEAK+yV/7wLeIiO
+         jK7X88RMpOeTjMv6b26auCWUMM5UGjQoeq6+ln9ssiNTcO52KQiGRPjvRSKBzaMyMJNQ
+         ajLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=T9PDXGqzHbyo65LHjDUmN9mVAYyucbuwsVtsQizCNZw=;
-        b=ipQkTMND8vmt3KcODDK4QqDoVJ2dDZfIjXcq0VpKAvSrgGdqFKe0wRQeLCEj55JNrO
-         s6GP15SklStorcEBZnuiDbLdrkuC1cnIAkHz5sn7BZeOia94C9U3V70ELezLkfz3XTCx
-         fIyKrybKx+ZeWyDgnMyZ9CSS8W7M9fpDKNphjbFrUZ4+ofi6tagbHq/MZrQwAqqT3fv4
-         y+y4v/uh+2ECgbXkUznMViVWRR0U4gikuTXSAOweDk0gW8Dp1dqaGBXVftOFttkC7z8/
-         udwyULTSy1m7+gQdxro6bU22DsPW7HGxKHj+qN6fam0tK/k7VzbdpRnR+WCCO5qbx9hB
-         QWBg==
+        bh=HU1bitFjdNQqmTMJZ6tHS+6AbpYoqOCq54MEbKEP/T4=;
+        b=ePoEWw/XVh5gswaJVSpdk0LxOOvO9AnFmWrz2EPEo4ScTuHaOkV6cVdOzdkdQxX9pA
+         Iji7V+Qldd1wott1YKwNc3tD/FAQ2Fmd86Yeo9eyd/dvqJ5TPfdW2BG7/JsB6L2454zR
+         qAlg+PH0it7i+6k6oOS2ahLhOQvMW6tJ0MFE88JfrRFET54pYlz6bf/Nr2EwrjO96+Z2
+         4HcPprqbUXx4IFYA6o/B3d3qaJuFkpudVCNmPwy1b4eWGgOBRVgOjYVG5PNiXiDNQr6X
+         f58fPXs4tEY86ShtJr5hce0pgyB6+CKleoq2DGBs/78rV4dRFbRXsYTtjC8H7E9aCpDr
+         /Tng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b="Md/8A6zR";
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.209 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=QdwWo419;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
 Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic312-19.consmr.mail.sg3.yahoo.com (sonic312-19.consmr.mail.sg3.yahoo.com. [106.10.244.209])
-        by gmr-mx.google.com with ESMTPS id p8si465190oig.5.2019.03.22.07.38.46
+Received: from sonic303-21.consmr.mail.sg3.yahoo.com (sonic303-21.consmr.mail.sg3.yahoo.com. [106.10.242.38])
+        by gmr-mx.google.com with ESMTPS id p8si465181oig.5.2019.03.22.07.38.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 07:38:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.209 as permitted sender) client-ip=106.10.244.209;
+        Fri, 22 Mar 2019 07:38:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) client-ip=106.10.242.38;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b="Md/8A6zR";
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.209 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=QdwWo419;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553265524; bh=T9PDXGqzHbyo65LHjDUmN9mVAYyucbuwsVtsQizCNZw=; h=From:To:Cc:Subject:Date:In-Reply-To:References:From:Subject; b=Md/8A6zR9tVGLXLOAla/Ia55ae2/GSL3fe+PjwLDRVhRuJeF3xzvGb2jDpFvvdWnTudh+SWVPTfHuYlduri56jTX/VjSvfG7kxp4dmmPE4Jk2HlS9cqGTmHySl58ickmKLHAEbTSiKFvGOI/gl5m/vxbfLHOSY6Sb3Jei5dOPQEN6xuKeNyUmiCGHj4qpsXdxNMXPpHXF1ne+r6EOVrechpSud2Sx6C/CyqSqkjHtaiuC4SmYb2xM73oS4MQLfRUJd+kBSCtGxCFmHIfAei9/gyImH6xgxfCWynajp5aQMec+gGV4Ymb6lBhdhAIbKr/Vaxemrqs+/OlIR4AQPhnPw==
-X-YMail-OSG: 16i1oHgVM1k1jno9Iv.jmBeO4kk8bZg4mfcQAYlml0F.MhWpyY2vkpxvTzTc6Wr
- jErD535E_yjfKh_qkxBjP7Ecn_noau540owfdRI9hZGzV4yu_.CsOQIuzw3zwmgHWm96q4o1Pr20
- YifZav6.UHn_0O9u9KZdHjc7djLKd748NE2Lp_IQkr6RdvLKQSC2jaYNLbJx_NiAOUpVLHX4aCub
- V1jchiX2UWZuxgcLTD0MTrlA6yH0MQ6yFjx0hW2o5B_YStokxOLSiOtN_5FgW2ifyKgmBxZNjMJN
- rmuvOBahdxzADa810PZJ1ETjfPWrBE08yXPUPz9MVN.wlyvZ_pb9ek6QAUwgimpkY2xN5clTAuSp
- b62e5BwVFwzabocSCkE30CIVL9FgGsmtsRXGzujbCAxy6E9IZMF_F3A51dhp2NkFOyZpX4EMFVXh
- ja5TxFwjGqUSeFLc6gFmMWkaW5h0FhCIrcT24k0HABY0LXbTip2EuMWXLamh5aODSadfFu.GSWHi
- To2ljDuZighcafYqtCUvEjkZxvsqXu95Z0fXHrdNmBIYg8eso1Fca34QJAUIz7TRO0DNJYk0LJzG
- gBQ.YcCPjA7C6uASCL2xr2Z6235pwjpRekuUjaaK0wBE7PkzX9hn7QZZGP6Y4A4t.wy0POEY6iTG
- x9J2Wt.HgqFiETcKWw36jJmGRTQ_SxjmVI_ZjnSc7a2ER6AiZviVxJUknHQlLATuy0D.mKtM2EnB
- hC6OXdXnbO9zTXN7p5.DKbIiandcAzpgOZ6MYmU6QdmKJdlW6CYKvRcfJ_FQhBoRn0w6_IJUgnQI
- NDfAe.AAXdVo5DsMJ5yTex7nmgBoefvumV2kmWDAbt.oK9gvd3nQZVUQ52qSxkm2KFTiyS2hWdll
- hR_EpnsYRhY5ItD0DZHsBfl.l6Dwr4oLSRwfOSb6rn8XHR1UzfipYlsbB3UkLOUgnr7mZ5YvoIA4
- tPWsjTOJOKGTEoZewGMt08EYGzsINmvG5uXnLVPqx8RbiQRs8uHyGDwCeiynOJR7xHaugBlGr.vq
- 3Q4e6s6ljfdlTVxfTqWVztd0VY6fhv0to5dvSxHT_j5nwq1s9KF7DYm8CsETUQAvNG.dQzWLeXRy
- amBisfoSOustrumTv4jAV6fE6IYyNHVd7B_hePQ--
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic312.consmr.mail.sg3.yahoo.com with HTTP; Fri, 22 Mar 2019 14:38:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553265523; bh=HU1bitFjdNQqmTMJZ6tHS+6AbpYoqOCq54MEbKEP/T4=; h=From:To:Cc:Subject:Date:In-Reply-To:References:From:Subject; b=QdwWo419X9Ry+ykWUWRoQbVVNZuVIA4Xo8ottrjxN4HpNgQ0p7hAtl7Hco3lx4dJnhZeE1XNYq6KzxtQ95z4BxvFSSxHNvbnrn3ag8ukuH673Kliv1YDjzZxYNuJb6ao4L1Yd5uFkS4O34YabKzU7oQpNR7k6XeT71Go8aV4hpArIrbVpJym/riA6X+Q9odzItVk3VkqmsyBYKTRgQlvgoqnXZ+nGb/atu4SLi3F/Td6K3EaiJ9mdR1gnfEt59qTDFSbiL/OmwAfiUOAYy4/MJLf+u1zNgGg2kZaYeADS9ws/b3WbmRUBAythzrI3wzTcn3TpBoxqsFFi9QkaxWuYg==
+X-YMail-OSG: BJk3VEMVM1nI5PI4x84MyDDxMXT88AQVMIMEoFNndehji5br5rcS9d8v4X7b9M5
+ 55p9TrvPh4PRy77gry6GECLXO7Zy6aFYNZcVco6jkriFclr2jhL4k6Ql7yPHd0N2o4FcPeYBej8s
+ h1Z5ug6_GaVglILjPcm5vhJrel9T0xfPalNmUKmRVookp8tY1kj8KVSs5MLXFPPJh_XHII9uU.Tn
+ miWuu6RwEds.i4oHz20tTmo3yzqqyFingqGxg93hC2PJMAgwAQMLH0q8Q6OZQNx4kTqwTUB_qQd_
+ BZ9fkXUU5JcG8JLEZVoOi3FtWqQRawT..AvlZzcsTCy_7FRuozSWVdd3eYZ5NOUUiLxoVnnOaMPm
+ eRaDVk0GshHv1KA2g8pc06bJG45o5TErRSCbYALEAxlRjY.JHA_AQqZVyAtJB2KiNK24XEa35NAl
+ etEsCR2mk4jMdTKSdih8sHeVQsL605l7kCH_iOmqtPDqKCXt.6aRyKm29rlGTaCcFBubYfIlvNNt
+ T5.zsTjmD2q.14MGO7NsJB2cYvIsYuUK4NuAYht9d7Bg1mgAmpLyIHClXgAjNrQjEMuIjVC0drM3
+ RkE7CALrMjEKT0YHIGlKIuAGwADA0J94Tkkf4OA2_06cFNRlO1vzBqGuejqDophtRUcUO1STD3bG
+ 8Mh_PqeAW6MYvC1tU9GXDRhgmjY3_BZ.5Ye4jK7RtiDfNW9R5p9mA5q.app2_oKEE.9908PdIsef
+ ZudGbVjX915NI69ms2FPS4x6roh_HErfMdBBV_MdtTVnIAGVLZ_1Te_KMJsAiKiOqsMHQnszZimr
+ ITVVpqGaC4bvv.aVYW6PBoh5Skbdmdh_x2WC7auZ9UrcnGbwCqtuUhQZTj0NzMeWorKoRChW4r6r
+ ownoY8XhvQVOy.0yIAHWUJP4iqeFHhAHSI9NpDAJ_XKfHFSL77G3QKhAtQjHFOXbTrgrJzTC6fCB
+ xuPmaCl6uZiCaan9Fpcu7X5KyXD9L1CPtpbFd0lhG1UbWh6vu67U3mWKJ.iL9itN1SbTgVAyPmbF
+ gvdPpZjqHat8AzcjnM1LA.gpfPWwvhW_QJa_xWQyU9uVOuBhllv5FqsydYGGpz8uqmfxN2.t3iv3
+ m0rou9grOJEyLqEUABk9wFkHQ0b4yHiyc
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic303.consmr.mail.sg3.yahoo.com with HTTP; Fri, 22 Mar 2019 14:38:43 +0000
 Received: from 125.22.40.140 (EHLO localhost.localdomain) ([125.22.40.140])
           by smtp412.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID d1d8be53419bbc2dc6b4659a7081bd03;
-          Fri, 22 Mar 2019 14:38:43 +0000 (UTC)
+          Fri, 22 Mar 2019 14:38:39 +0000 (UTC)
 From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH v2 4/5] staging: rtl8723bs: Remove function rtw_alloc_network()
-Date: Fri, 22 Mar 2019 20:08:26 +0530
-Message-Id: <20190322143827.24480-5-nishka.dasgupta@yahoo.com>
+Subject: [PATCH v2 1/5] staging; rtl8723bs: Remove unnecessary function rtw_init_mlme_priv()
+Date: Fri, 22 Mar 2019 20:08:23 +0530
+Message-Id: <20190322143827.24480-2-nishka.dasgupta@yahoo.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190322143827.24480-1-nishka.dasgupta@yahoo.com>
 References: <20190322143827.24480-1-nishka.dasgupta@yahoo.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Remove function rtw_alloc_network() as all it does is call
-_rtw_alloc_network().
-Rename _rtw_alloc_network() to rtw_alloc_network().
-Change references to _rtw_alloc_network() to refer to
-rtw_alloc_network().
-Issue first noticed while using Coccinelle and ret.cocci.
+Remove function rtw_init_mlme_priv() as all it does is call
+_rtw_init_mlme_priv().
+Change the name of _rtw_init_mlme_priv() to rtw_init_mlme_priv() and its
+return type to int.
+Remove references to _rtw_init_mlme_priv() from the corresponding header
+file.
+Suggestion to delete return variable from rtw_init_mlme_priv() put forward
+by Coccinelle using ret.cocci.
 
 Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 ---
 Changes in v2:
-- Delete rtw_alloc_network() entirely, now that it was only a return
-  statement.
-- Make changes listed above. 
+- Remove rtw_init_mlme_priv entirely, now that it has been whittled down
+  to a single return statement.
+- Make the other changes listed above.
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c     |  2 +-
- drivers/staging/rtl8723bs/core/rtw_mlme.c    | 14 +++-----------
- drivers/staging/rtl8723bs/include/rtw_mlme.h |  2 +-
- 3 files changed, 5 insertions(+), 13 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_mlme.c    | 13 ++-----------
+ drivers/staging/rtl8723bs/include/rtw_mlme.h |  2 --
+ 2 files changed, 2 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 04c6927dab8b..ecaa769f12e6 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -2100,7 +2100,7 @@ void rtw_createbss_cmd_callback(struct adapter *padapter, struct cmd_obj *pcmd)
- 
- 		rtw_indicate_connect(padapter);
- 	} else {
--		pwlan = _rtw_alloc_network(pmlmepriv);
-+		pwlan = rtw_alloc_network(pmlmepriv);
- 		spin_lock_bh(&(pmlmepriv->scanned_queue.lock));
- 		if (pwlan == NULL) {
- 			pwlan = rtw_get_oldest_wlan_network(&pmlmepriv->scanned_queue);
 diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 8b3a095f0c4c..552df9e3cd14 100644
+index 79adc6f1e53a..8f1defdd47f0 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -143,7 +143,7 @@ struct	wlan_network *_rtw_dequeue_network(struct __queue *queue)
- }
- */
+@@ -13,13 +13,13 @@
  
--struct	wlan_network *_rtw_alloc_network(struct	mlme_priv *pmlmepriv)/* _queue *free_queue) */
-+struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv)
+ extern u8 rtw_do_join(struct adapter *padapter);
+ 
+-sint	_rtw_init_mlme_priv(struct adapter *padapter)
++int	rtw_init_mlme_priv(struct adapter *padapter)
  {
- 	struct	wlan_network	*pnetwork;
- 	struct __queue *free_queue = &pmlmepriv->free_bss_pool;
-@@ -161,7 +161,8 @@ struct	wlan_network *_rtw_alloc_network(struct	mlme_priv *pmlmepriv)/* _queue *f
+ 	sint	i;
+ 	u8 *pbuf;
+ 	struct wlan_network	*pnetwork;
+ 	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
+-	sint	res = _SUCCESS;
++	int	res = _SUCCESS;
  
- 	list_del_init(&pnetwork->list);
+ 	pmlmepriv->nic_hdl = (u8 *)padapter;
  
--	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("_rtw_alloc_network: ptr =%p\n", plist));
-+	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
-+		 ("rtw_alloc_network: ptr =%p\n", plist));
- 	pnetwork->network_type = 0;
- 	pnetwork->fixed = false;
- 	pnetwork->last_scanned = jiffies;
-@@ -366,15 +367,6 @@ static struct	wlan_network *rtw_dequeue_network(struct __queue *queue)
+@@ -350,15 +350,6 @@ u8 *rtw_get_beacon_interval_from_ie(u8 *ie)
+ 	return (ie + 8);
  }
- */
  
--struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv);
--struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv)/* _queue	*free_queue) */
--{
--	struct	wlan_network	*pnetwork;
 -
--	pnetwork = _rtw_alloc_network(pmlmepriv);
--	return pnetwork;
+-int	rtw_init_mlme_priv(struct adapter *padapter)/* struct	mlme_priv *pmlmepriv) */
+-{
+-	int	res;
+-
+-	res = _rtw_init_mlme_priv(padapter);/*  (pmlmepriv); */
+-	return res;
 -}
 -
- void rtw_free_network_nolock(struct adapter *padapter, struct wlan_network *pnetwork);
- void rtw_free_network_nolock(struct adapter *padapter, struct wlan_network *pnetwork)
+ void rtw_free_mlme_priv(struct mlme_priv *pmlmepriv)
  {
+ 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_err_, ("rtw_free_mlme_priv\n"));
 diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-index 82f378c6789e..2693b554f414 100644
+index ed59f16c26c4..82f378c6789e 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-@@ -598,7 +598,7 @@ extern void _rtw_free_mlme_priv(struct mlme_priv *pmlmepriv);
+@@ -592,8 +592,6 @@ void rtw_clear_scan_deny(struct adapter *adapter);
+ void rtw_set_scan_deny_timer_hdl(struct adapter *adapter);
+ void rtw_set_scan_deny(struct adapter *adapter, u32 ms);
  
- /* extern struct wlan_network* _rtw_dequeue_network(struct __queue *queue); */
+-extern int _rtw_init_mlme_priv(struct adapter *padapter);
+-
+ void rtw_free_mlme_priv_ie_data(struct mlme_priv *pmlmepriv);
  
--extern struct wlan_network* _rtw_alloc_network(struct mlme_priv *pmlmepriv);
-+extern struct wlan_network *rtw_alloc_network(struct mlme_priv *pmlmepriv);
- 
- 
- extern void _rtw_free_network(struct mlme_priv *pmlmepriv, struct wlan_network *pnetwork, u8 isfreeall);
+ extern void _rtw_free_mlme_priv(struct mlme_priv *pmlmepriv);
 -- 
 2.19.1
 
