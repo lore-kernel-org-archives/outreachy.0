@@ -1,145 +1,104 @@
-X-GM-THRID: 6661131246812266496
-X-Received: by 2002:aca:bb45:: with SMTP id l66mr4928736oif.35.1550915475560;
-        Sat, 23 Feb 2019 01:51:15 -0800 (PST)
+X-GM-THRID: 6670940020392591360
+X-Received: by 2002:ab0:5a30:: with SMTP id l45mr5615842uad.58.1553264179372;
+        Fri, 22 Mar 2019 07:16:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:305:: with SMTP id 5ls4207155oid.6.gmail; Sat, 23 Feb
- 2019 01:51:14 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibf639Dk5AIv7gVZzAVsqWEMpfCpYW5iUPbeH8ny1kxpTVUgEaz1+510LHVU4p4t30kmugb
-X-Received: by 2002:aca:4812:: with SMTP id v18mr4709303oia.30.1550915474722;
-        Sat, 23 Feb 2019 01:51:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550915474; cv=none;
+Received: by 2002:a1f:ab84:: with SMTP id u126ls1440658vke.0.gmail; Fri, 22
+ Mar 2019 07:16:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwvqDYVNWG9quO3erfWHCa7cRKohE93TSGh0tFw0fyRPGNVbdQLX3CJySmnGvC5WIRNmGlc
+X-Received: by 2002:a1f:be81:: with SMTP id o123mr6135608vkf.83.1553264178867;
+        Fri, 22 Mar 2019 07:16:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553264178; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQx4/kPT6z9OT/Cjdf42iJRCQpu1KTESMvT3sVakWZ1nVaj+oyH50HrsyoPg8T7Fl3
-         jp0ZJcc/hlhOH4EFlNR3ICwe53jTJN3dzGXTQv3AWs7hW3zsj2qdeYoyJ8AV03C9VqiT
-         tEu4yQBBbE+QogfGvbdOkr5777KBzUA25zRiIsMfWcYXAKpIEjFfNAGtqhAIVWKgwWk/
-         AMPqHZjY2E/4rucw+DMlrbId/shLO5i7b1vrLmI3eZRmQ2bWcQDTGX32DJcUC90R9i6i
-         HkvKqx+aGRtSmrhAjdH0zyvK+zYVUgO+0EJvTlNHyMmB4wf1xPn6VN2LjU5RDoPFABKc
-         yvRQ==
+        b=zs04g5Zh0TFYhGwYtrP0uMAVAnTIWzI3LTpXZba7IthyS8mpBGYmxd6din3g35ngOr
+         b0fUChwrtzpJVKpz0NeAnRIhDA5wNkFexDyZKroxKWsSwgayi9PwR8esgpeoefiQPEMM
+         aBRtkr6YQzAd5OTWL4wnCnxqtds3l5AmLDCF3dv4gIdIYsn7RmV2NA6iwpsCjbt+ildA
+         avYP+wazWug23SENB1nf2Si+OV6gFeVUS4iSVXK9h2pomfl64FxFzwvtxhPsv4MAZLKI
+         CyPgAKen3+oF1iQDEX8H/khBMI0IUpZpmSWtms2yS+R1erIJXVCXioPZqE67Vjb2z6Wh
+         dtHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=CnQcM6iucA5xqQmKcng1wSl59L8uSF+91lbQDYa4fyw=;
-        b=hvc78vBa//AMbVhVHtV0Z+ocC26e/WLiRVvr5m6WBe2e2HryMQPyYRwQ9kAdKMKEAP
-         VIlaF8Dpe6QBM7M+h8+xjD4Ae1PKgEa1h6es5HYYFf6dMoXg6VaHiyuwkUK/9F5ddKjh
-         GLTLs2YUjZuh/whgi96HfeZdTkLjppLrdUlFuk+sp/D3iWJkxS4zdwtqSrW12dwX+WO7
-         tE86uZNXtefNytHb1BHp0thx2GtY8bF0+vEcj+0rvRqIf3Ykls7dZp8jCUylAdSTnR4z
-         5Gm4IqMtH/VJurEsx2HTheBsf/Ys7CkMGKVKHTdo39NLQujt/TWB/BH4oSllFRMzi8s5
-         M4rg==
+        bh=updV7XqS30HTYPdxNkwUJIhmS51TIY8HMRhjxPLk/go=;
+        b=UwtuHRo/18DzFe70rKYvg7hARzGJTeGvJDnlVUCj6uoGT4na7s3lxpRefailysqk+i
+         +5sktzgrYFgJPtTe3Gw0XFXFnCWX6wWghUkHdURoo5ftOL8FVsufyLmNnVzGnGIxS1NH
+         svPM1swQarrT+gbaqxKP5Utwrsm+/b9k1twaamxyR+pL9KBvU/B1rTEVyzsvNVsuXOdb
+         Xkb9VeelYOvqsqXhbB+FJdr+5Fsk9dA+CJ5DFTlBFv64FxVQSfEfXsbGKAHFLPFd6E6g
+         wajcSfGFbL26mjbP4pZW7QOVch+C26vN+Dzexck6SbzYpwsOA9WKLVYarsAb+NIrp6SG
+         0owg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Tfs7R/xH";
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id 135si197111oia.1.2019.02.23.01.51.14
+       dkim=pass header.i=@kernel.org header.s=default header.b=n8ogjpuW;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id k68si227834vkg.5.2019.03.22.07.16.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Feb 2019 01:51:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        Fri, 22 Mar 2019 07:16:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Tfs7R/xH";
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id r14so2203884pls.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Feb 2019 01:51:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=CnQcM6iucA5xqQmKcng1wSl59L8uSF+91lbQDYa4fyw=;
-        b=Tfs7R/xHJEavCyuQBa9z8taSKs8wIpcJT5v4+3sI7rgPwGgVyyMrLbXZYzS5RC1rTS
-         6gCTKd1TYPBUPQCsG5qif79IrdnN0jse3JrfHHfCmmRw15pDPiWcJK8eKydoG7WsBCqh
-         IRllQIkYki0OLugWTjL3qzoKv0txQvPuwy+JUrwBJNMJMrS1xAMekDD4QbXcYMbdUPp0
-         TuwhSCTzWT21BP6c3l4/8A/x1NUcLGo9Ibj5CZEshtQktEpC5bzdsKRpZPhlgioMOkB2
-         XZ3dSM/Q15L/LtBCSv7PGaXOAOAIUV5+09kA4qywzNEHVUxgR4AiTj/zIrqnmTTFPShX
-         5erQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=CnQcM6iucA5xqQmKcng1wSl59L8uSF+91lbQDYa4fyw=;
-        b=cVu1PZAfkmxN+SvgJzf6Si1RdoSesphrs0gNrWnOXcNRAK3uax7hZvTMdlZlH/kV/s
-         zfmVle5npiwuZZYMaZADAjaMCwqTVZ2o3H52WlS9ntp4wGN3hp/zew4+FCeNKao2CMYb
-         O700dS2Z5IKZdTOdc2bb1keK4nRl6EIdnFaoHJoVUxVikDny0HpyU9k30+adJVH3kwBC
-         Kj5ejpKQxEQIusA4dnnXYUFX71OZyTfOxkC08jpnY1TTiKEIAn9FjsGVyAC9R8bzxtel
-         aIoE6s1/AKbS4RpGo//UYvoDVPU0rSjtqQY3as1j9r1qW3+qjfwuwJBfgAHunusYcHRD
-         uWJg==
-X-Gm-Message-State: AHQUAua3f5FEtVo25g1H6KNG6KiqmYdSq0DInBGnmLO5CL23+ifXbROa
-	eB7/RkEIz2JSP4OjKtSbd/v2ksV22Ds=
-X-Received: by 2002:a17:902:a40d:: with SMTP id p13mr8414563plq.144.1550915473791;
-        Sat, 23 Feb 2019 01:51:13 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([49.35.247.83])
-        by smtp.gmail.com with ESMTPSA id 62sm4774937pgc.61.2019.02.23.01.51.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 23 Feb 2019 01:51:13 -0800 (PST)
-Date: Sat, 23 Feb 2019 15:21:08 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 1/2] staging: netlogic: Add SPDX-License-Identifier tag at
- the top
-Message-ID: <b1dceeedf83ff02d352c0323796b5050f7b2ec9a.1550915042.git.digholebhagyashri@gmail.com>
-References: <cover.1550915042.git.digholebhagyashri@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=n8ogjpuW;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5E4CD218E2;
+	Fri, 22 Mar 2019 14:16:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553264177;
+	bh=eY+8bwrhz3JldXm7cB7Xnxpr918sCsi8841YkxpQnHY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=n8ogjpuWtBEbZ+m6AfNT+dSjrr0Abi1mRFhK+CBpbheEAsuk0rj/VhqXCdoVpUOph
+	 giPtdRj3rdvTtmZZ7BFPDg7F6e8K/BVbYpUQIrpPhZMTlPmfjE7n1KusbdOODoKhlY
+	 uWwPtsfQGXqXMtA/r6IyyvzjjUdYGXezzzA9tH3E=
+Date: Fri, 22 Mar 2019 15:16:15 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 4/4] staging: rtl8723bs: core: Remove return variables in
+ rtw_io.c
+Message-ID: <20190322141615.GC25959@kroah.com>
+References: <20190321201359.5948-1-nishka.dasgupta@yahoo.com>
+ <20190321201359.5948-7-nishka.dasgupta@yahoo.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1550915042.git.digholebhagyashri@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190321201359.5948-7-nishka.dasgupta@yahoo.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Adds the SPDX GPL-2.0 or BSD-2-clause license identifier,
-which solves the checkpatch.pl warnings: "WARNING: Missing
-or malformed SPDX-License-Identifier tag in line 1".
+On Fri, Mar 22, 2019 at 01:43:59AM +0530, Nishka Dasgupta wrote:
+> Remove unnecessary return variables in rtw_io.c. Issue found with
+> Coccinelle using ret.cocci.
+> 
+> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_io.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_io.c b/drivers/staging/rtl8723bs/core/rtw_io.c
+> index d341069097e2..60347349efd1 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_io.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_io.c
+> @@ -37,7 +37,6 @@ jackson@realtek.com.tw
+>  
+>  u8 _rtw_read8(struct adapter *adapter, u32 addr)
+>  {
+> -	u8 r_val;
+>  	/* struct	io_queue	*pio_queue = (struct io_queue *)adapter->pio_queue; */
+>  	struct io_priv *pio_priv = &adapter->iopriv;
+>  	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
+> @@ -45,8 +44,7 @@ u8 _rtw_read8(struct adapter *adapter, u32 addr)
+>  
+>  	_read8 = pintfhdl->io_ops._read8;
+>  
+> -	r_val = _read8(pintfhdl, addr);
+> -	return r_val;
+> +	return  _read8(pintfhdl, addr);
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
----
- drivers/staging/netlogic/platform_net.c | 1 +
- drivers/staging/netlogic/platform_net.h | 3 ++-
- drivers/staging/netlogic/xlr_net.c      | 1 +
- drivers/staging/netlogic/xlr_net.h      | 3 ++-
- 4 files changed, 6 insertions(+), 2 deletions(-)
+One too many spaces there :(
 
-diff --git a/drivers/staging/netlogic/platform_net.c b/drivers/staging/netlogic/platform_net.c
-index abf4c71..2637fb1 100644
---- a/drivers/staging/netlogic/platform_net.c
-+++ b/drivers/staging/netlogic/platform_net.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
- /*
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
-diff --git a/drivers/staging/netlogic/platform_net.h b/drivers/staging/netlogic/platform_net.h
-index e1b27f6..f7e7c8a 100644
---- a/drivers/staging/netlogic/platform_net.h
-+++ b/drivers/staging/netlogic/platform_net.h
-@@ -1,4 +1,5 @@
--/*
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+ *
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
-  *
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 4e6611e..a4d6a73 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
- /*
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
-diff --git a/drivers/staging/netlogic/xlr_net.h b/drivers/staging/netlogic/xlr_net.h
-index f76e16c..0a830ef 100644
---- a/drivers/staging/netlogic/xlr_net.h
-+++ b/drivers/staging/netlogic/xlr_net.h
-@@ -1,4 +1,5 @@
--/*
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+ *
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
-  *
--- 
-2.7.4
+Please fix up and resend.
 
+thanks,
+
+greg k-h
 
