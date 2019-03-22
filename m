@@ -1,96 +1,75 @@
 X-GM-THRID: 6671240645547393024
-X-Received: by 2002:a37:aa8c:: with SMTP id t134mr19165279qke.93.1553530073606;
-        Mon, 25 Mar 2019 09:07:53 -0700 (PDT)
+X-Received: by 2002:a17:906:a2c6:: with SMTP id by6mr6148835ejb.134.1553270788803;
+        Fri, 22 Mar 2019 09:06:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:25cc:: with SMTP id y12ls3204947qtc.10.gmail; Mon, 25
- Mar 2019 09:07:53 -0700 (PDT)
-X-Received: by 2002:ac8:54c:: with SMTP id c12mr20184293qth.327.1553530073130;
-        Mon, 25 Mar 2019 09:07:53 -0700 (PDT)
-Received: by 2002:a37:4909:0:0:0:0:0 with SMTP id w9msqka;
-        Fri, 22 Mar 2019 09:21:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwtVr0eh5FCG7EJr/L5dGRl7Y9apf3jjOdaUC+HzO4y34E8BPs6omDQ8PFxBrXMhxKt2U/8
-X-Received: by 2002:a7b:c3c9:: with SMTP id t9mr3372101wmj.131.1553271708140;
-        Fri, 22 Mar 2019 09:21:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553271708; cv=none;
+Received: by 2002:a50:fc07:: with SMTP id i7ls219172edr.6.gmail; Fri, 22 Mar
+ 2019 09:06:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxPG0RTUQtkwh0srGej5jIMf5hafnHV8xL2jp6zLI/hQ9Q3Pzd2bgTnuEPEcTA1OED9MK8E
+X-Received: by 2002:a50:9473:: with SMTP id q48mr7058118eda.290.1553270787965;
+        Fri, 22 Mar 2019 09:06:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553270787; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gc8BsEUl3p9DjdWL/SzqiP4IaSToAB0GSKYdTyOIXBwNWcqMiLgbo1Htqa2ZR7yfkF
-         Uxjf43AyW0h8DyTXsCPdBmbbeCglks4qb+2RgIMtYhk7NPpTwZgD0nd4KIq0+XwAyy06
-         Wo80rJ5j7usr6XRXM+oosWHWPU5L3TRqME84Wr/WuBAKddOsCUdQs/Kt/GX1ueB1XFwr
-         SlEiKLHTowPTQYPT6Y3JaPmbtEADemGTsoOFIJSjfduIpExeyy5HhBP+gslP+Prd0agn
-         ACZ+4xGT8IogOStZruoV93PMHYfeF4yHMh6KO9gufbtls3ri1sHh6uwd2fv/5X6IrXYG
-         jMJA==
+        b=b4JCtWLTYxHpZX95fEJ6eEaX7/qGSp4QAjH0Z1zv43eGd0JvWJaXnLXXFrnRNw10VM
+         NuZdYT1cpndKHvvklsOBHP5r8tZwLgzz7Hvk9Bq+Uyqpgyrt3SK6Ec+J0KFFULLwt/Wf
+         S8wbuCA/buPmeD2NMlTFTzy6kUYsAKlcOORZeqKDkyKt/iWzaoPWFL7KmFQGk4RJtEPd
+         gCLUg+mMaU+RASRj15UQYHjUsbtrIzB3QkSu6pn2X4g3IIxM7tPDB4tWlUWNrZCdTFSg
+         YG+sfZBu2EkaH7g4A3JFRA6Eicotbqrw8qdhUs014+HsWL6uNWBFOpuu4P5XJEKb/M2I
+         LAGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=eyqR4SGhM/Ydx7XkiQU5GTi0wI/5Kxbe6DJkPISp7AM=;
-        b=T2DjJlaaTANLOzIjsQKGMiw+qrLd6fnaFWQN/0KPXKMzgADKCoJ9Z1EeynF0AsoYSx
-         oaC8EZXeEZwFkUvqeEe8hWPUQUIe7bwDWrjHxxx2wq6nKaKRhe5uvBxK0vYZrRgMVM/J
-         CX3yL82fqPrNuYh21OlXQBlx1qmxP60zXFcD29NHTgw46qpiEoHYJ1lHGkwIuxpyY+Rw
-         3AKBOm4HiCN6XLmwgTjoj+jE6uvJawRQIp3K4MG5MIx6N12X6Y7gegcbhzp7Z5NrKit/
-         PjW4Jn7eTZicmxK2qPHIA4yr6hXhLuhB1zboUJ9/IHheI4YSBILYoi8LHDIU7JPzkxWZ
-         MVaw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=J2cq2dxD4+Rgk55zu7b6Son+aeOKX/KPTCFOWsVNaRM=;
+        b=qULmJCWvzMfp+OUlnPaeVwjL9V9vcMdNcwkOXtwJ/oXZbT7Iqpdju13oolFm+sdGwY
+         kSoM5J2of729m5zsKM+R9V8Rw3TbP729gmstBQSRN3BetKyzbaOwM80TWvXoPDaQhP2i
+         Pctn4IRwoJMHCY1ko/w8Khsbc+a0Swy5aeR9o8TLwXvRhYfnBiIofHDqy0LDrlTEYq9l
+         gF72MWCr4t3jP5+wfLgJxZctlzVBFpL+DMr+7K/G0SZHK7TZZxdJ8wmYz82AZeN5/GKZ
+         7kACtllh9CWAd0/jwMQ/fyypt3BShtdxO5bO0WTsZD1U6Hml+Ez0H1W7T8e48dC//HtL
+         xc7Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KiH+6D4S;
-       spf=pass (google.com: domain of festevam@gmail.com designates 2a00:1450:4864:20::134 as permitted sender) smtp.mailfrom=festevam@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <festevam@gmail.com>
-Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com. [2a00:1450:4864:20::134])
-        by gmr-mx.google.com with ESMTPS id a9si422829wrp.5.2019.03.22.09.21.48
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id r10si448043eda.4.2019.03.22.09.06.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 09:21:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of festevam@gmail.com designates 2a00:1450:4864:20::134 as permitted sender) client-ip=2a00:1450:4864:20::134;
+        Fri, 22 Mar 2019 09:06:27 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KiH+6D4S;
-       spf=pass (google.com: domain of festevam@gmail.com designates 2a00:1450:4864:20::134 as permitted sender) smtp.mailfrom=festevam@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x134.google.com with SMTP id g7so1785737lfh.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Mar 2019 09:21:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=eyqR4SGhM/Ydx7XkiQU5GTi0wI/5Kxbe6DJkPISp7AM=;
-        b=KiH+6D4SCpOCRzX+dgg8OrYrWFIzxdAEbGc1e9ftZHeKSdWiPkjFZooQVfNKerUDTe
-         kTpkaDIo/88i9vyDaDvSxZJ4pSyCrH13PWvRSPO6EIA9jz08l8KAegmRix0lKz8wkGHN
-         KIIeoUvDYPPZfS+PIhluYW5hS7vubueUehE0AawUReYoEEZEROPk+w7uraHEZ5+n+XMz
-         Bj87MlWGy9ACo4rYDJ010E93CIRWIyCd0jXKnErSzCMcDBTsC7Dh5rMCjL8pp/rFUypD
-         NapHvh/sgEdXeIr3b6l0cF+GuSP33Qlg2elNtMjRDNAkoYAnVi/kH+UB8arZTcBMAJrw
-         1WAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=eyqR4SGhM/Ydx7XkiQU5GTi0wI/5Kxbe6DJkPISp7AM=;
-        b=QMvvXtPZWArkE7hcCHr9Dcoswe7cliK6Yi80rDIXIcZmhlP6YH0tz7qKyObNRhKjhy
-         8R4Yi2kYmWWPMkVYG7mdX8m9AgspYR/sg4japyNORtlduCDUK6AQLQTs5aFAU+KrrDfx
-         V5mG/WnVCZ8JuqddDSjSIugJL7tFHUhtOR7obrFhxxjcqS+q1n3VL13IHDYPvOuuk4nX
-         oXerZxyAX6VGUgEESnATYxGzZkiL41oUWQbLOV9sJrhKbEia3NnDIwe+8oYvrFN7s1c6
-         F7CRjxk0gjciPn5gS3ZbwMC0qJrsxjfwgFOwmEgJVUpjuARzYqlPFIfWpGhwFhDUrFjy
-         tUqw==
-X-Gm-Message-State: APjAAAWcK97YQCpM9FXVNsbTks8NVae7s9Sq/sfemtyZVqaCg8IrHipQ
-	wHT6NUYC4hXOH6TWdU93EHCeTFescWvrM+vvKtE=
-X-Received: by 2002:ac2:5381:: with SMTP id g1mr5571006lfh.130.1553271707830;
- Fri, 22 Mar 2019 09:21:47 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190322154035.9014-1-bhanusreemahesh@gmail.com>
-In-Reply-To: <20190322154035.9014-1-bhanusreemahesh@gmail.com>
-From: Fabio Estevam <festevam@gmail.com>
-Date: Fri, 22 Mar 2019 13:21:45 -0300
-Message-ID: <CAOMZO5DOQE-LF33yQAzNqoNCWetXOXAh6m7E4+R_VQ8Lb5c+Rg@mail.gmail.com>
-Subject: Re: [PATCH v2] Staging: media: imx: imx6-mipi-csi2.c Remove
- unnecessary error messages
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,256,1549926000"; 
+   d="scan'208";a="300422414"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2019 17:06:26 +0100
+Date: Fri, 22 Mar 2019 17:06:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Bhanusree Pola <bhanusreemahesh@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, 
-	Steve Longerbeam <slongerbeam@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
+cc: outreachy-kernel@googlegroups.com, 
+    Steve Longerbeam <slongerbeam@gmail.com>, 
+    Philipp Zabel <p.zabel@pengutronix.de>, 
+    Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+    Pengutronix Kernel Team <kernel@pengutronix.de>, 
+    NXP Linux Team <linux-imx@nxp.com>, =Fabio Estevam <festevam@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: media: imx: imx6-mipi-csi2.c
+ Remove unnecessary error messages
+In-Reply-To: <20190322154035.9014-1-bhanusreemahesh@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903221705070.14339@hadrien>
+References: <20190322154035.9014-1-bhanusreemahesh@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Mar 22, 2019 at 12:40 PM Bhanusree Pola
-<bhanusreemahesh@gmail.com> wrote:
->
+It's not normal to put the file name in the subject line.  There aren't
+many examples on this file, but maybe:
+
+media: imx: mipi csi-2:
+
+julia
+
+On Fri, 22 Mar 2019, Bhanusree Pola wrote:
+
 > The function devm_ioremap already prints error message  when there
 > is no enough memory.
 > Remove print statements that give error messages
@@ -120,6 +99,38 @@ On Fri, Mar 22, 2019 at 12:40 PM Bhanusree Pola
 > </smpl>
 >
 > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-
-Reviewed-by: Fabio Estevam <festevam@gmail.com>
+> ---
+> v2:
+>  -subject line modified
+>  -commit log modified
+>
+>  drivers/staging/media/imx/imx6-mipi-csi2.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
+> index 6a1cee55a49b..2c5e3dd58cea 100644
+> --- a/drivers/staging/media/imx/imx6-mipi-csi2.c
+> +++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
+> @@ -628,10 +628,8 @@ static int csi2_probe(struct platform_device *pdev)
+>  	}
+>
+>  	csi2->base = devm_ioremap(&pdev->dev, res->start, PAGE_SIZE);
+> -	if (!csi2->base) {
+> -		v4l2_err(&csi2->sd, "failed to map CSI-2 registers\n");
+> +	if (!csi2->base)
+>  		return -ENOMEM;
+> -	}
+>
+>  	mutex_init(&csi2->lock);
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190322154035.9014-1-bhanusreemahesh%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
