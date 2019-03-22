@@ -1,66 +1,128 @@
-X-GM-THRID: 6524543773882449920
-X-Received: by 10.28.247.5 with SMTP id v5mr2439935wmh.12.1519113726898;
-        Tue, 20 Feb 2018 00:02:06 -0800 (PST)
+X-GM-THRID: 6671219486697193472
+X-Received: by 2002:a37:7602:: with SMTP id r2mr19978622qkc.97.1553530073994;
+        Mon, 25 Mar 2019 09:07:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.187.140 with SMTP id q12ls2807406wrg.9.gmail; Tue, 20 Feb
- 2018 00:02:05 -0800 (PST)
-X-Google-Smtp-Source: AH8x2277bo6mMy4XEy+1TWWHJKl7jXPaaJH3e6qXqmrsUIbs5RSHY4QoIIogj/U1uSTBUDQmvED/
-X-Received: by 10.223.142.69 with SMTP id n63mr981594wrb.28.1519113725658;
-        Tue, 20 Feb 2018 00:02:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519113725; cv=none;
+Received: by 2002:a37:b742:: with SMTP id h63ls3040853qkf.2.gmail; Mon, 25 Mar
+ 2019 09:07:53 -0700 (PDT)
+X-Received: by 2002:a37:5246:: with SMTP id g67mr19011462qkb.118.1553530073125;
+        Mon, 25 Mar 2019 09:07:53 -0700 (PDT)
+Received: by 2002:a37:e82:0:0:0:0:0 with SMTP id 124msqko;
+        Fri, 22 Mar 2019 08:04:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXlJVTcXnoEbaiXNOEyz5udatxIzZf/FV3vSzUk6KhP/5sFQQugtpA9AYMbOvbWe9AD0tK
+X-Received: by 2002:a17:906:4e58:: with SMTP id g24mr5899626ejw.190.1553267088383;
+        Fri, 22 Mar 2019 08:04:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553267088; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZTQY6/1GJdPcipzs/cC05v63UUMiZEPOWUkTl9DGyu4OIdYhGCBeh3/XDjItuHbNe
-         Jogb1WhvZ2rLk6lvRhFaB2OMJv8ZkDNkNcs/L+L14Pqq44ZPNptEg1V47VuDNKFKPbGP
-         rc/C12kch+c+8u0sOsb2bC5KVvcjea0WAE22seC/+vJ+wfSsHUwhGFrh4q1qvi6d0C/9
-         E+MC/+dXKAY6vQbpaKD1suhH0RZoxwJwKZ+eVB9SJe7ex1ZH3u/Z/CisNYwuBkud0xAx
-         HernUqPK3SK3N4rkjhl0qb/OJdCdIM61NRxdlWVcWFZ+vf5kiMw42jUZadBA5EMIOMpo
-         2vDw==
+        b=XslW5rDan3GPJ+68eFzHBq3MpfniFWsGJEyXszdyXTgCB5Wv04fOhexcppYvHKy3rj
+         0XeCYwdKvL5DoebvDrpU1e2gEsUg7pOqA7VqzVRj+EJRtQkV5Pfp6Tg9cun+VphU4uzW
+         k50VkAb7W0tO6Blj5uUyycUwEk1j3c5/sRRNImp1tKsnjYpzDpUtyHAazS8BAVR/COhB
+         Iiftv0VaUsdoXjl9slmXl8R6Q7z+FqYd0VVM19eSW8QnmPmdXuuJIkRxp3wVBjB3q6Lk
+         4uV8a1/fDBUYVW7UuQ4nsNOM1muuJ8AAKseMCzFmjyx95+W7YVtHHmS+UFw2SI0dzWe0
+         whxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date
-         :arc-authentication-results;
-        bh=iVRaSdNmVAqU78qYxZrHrJjf5kwfi91Y/gOlc3Zbh+0=;
-        b=XT7b0PYs1Lh8RE8GxFDW1lvm3iXb5YcSOYnWcT61I8Q5YmAhUFGgTuIMGcsyEi1gzY
-         ePFg8uBvYuKRbuCP0a56yWq1MX3SwqI9HzrR5/SjPULp9Nh1wKo1ZdZ3ayqFRMnUH5GM
-         pJ4Bm6aC2hD4qIPtD8nSYOEy9WYaqBIYb24ZAu9yZeZRljTL+xRdA3PWqC8rvzSfJtF/
-         rZhgRBXAnyiIY7n8cTb6GHuDd31FnF+yKyYMUMqFhiREf0Xz4L9DnnFssCYWIjCC3Yum
-         TkJVaW+3l6eEeEtqSxQnrO/g2q6De4vwQXOOLPr9RSB5dkxn79XD6PwIFVwF0sEurkVn
-         n1fw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id;
+        bh=NVC/LiiuZN58u8CyGW7bgE5D94X7dY+B481f46cCCEs=;
+        b=ZwB53VVlpu2GkIPkMjhLevm39ElLvQqpzO24KJaKPAS5nmdBFc/5GzC8EKLCgHPIv7
+         PERf+G20033Iq/q8ogtIqM96MaSOATb4v51yClC503U22zbNzf97JOTNfVnUV2VoNaBI
+         FrQLH5Grl9rQiYohNrrel/5uHPArLQhCt+OCuhRx/+xHssrT+WDnMZg84us7hEANkBsc
+         RV6N63O1wIJaPM4E3ZyaZyecNFKsrYu2MjiCnivYkRXvgd1TrzugHEbiPll8b7iqym3s
+         mAz58Rx7vDEGczSyO9VI8oPUKtH6bapfJT93iQpcyAWucD09/M35j0aylFvc1AnYzhlt
+         VFSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id i44si231548wri.1.2018.02.20.00.02.05
+       spf=pass (google.com: domain of p.zabel@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) smtp.mailfrom=p.zabel@pengutronix.de
+Return-Path: <p.zabel@pengutronix.de>
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de. [2001:67c:670:201:290:27ff:fe1d:cc33])
+        by gmr-mx.google.com with ESMTPS id jt16si109955ejb.0.2019.03.22.08.04.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Feb 2018 00:02:05 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 22 Mar 2019 08:04:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of p.zabel@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) client-ip=2001:67c:670:201:290:27ff:fe1d:cc33;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.46,538,1511823600"; 
-   d="scan'208";a="314409763"
-Received: from abo-3-110-68.mrs.modulonet.fr (HELO [192.168.0.15]) ([85.68.110.3])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 20 Feb 2018 09:02:05 +0100
-Date: Tue, 20 Feb 2018 09:02:05 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: Linux kernel application process
-Message-ID: <alpine.DEB.2.20.1802200900100.2868@hadrien>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       spf=pass (google.com: domain of p.zabel@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) smtp.mailfrom=p.zabel@pengutronix.de
+Received: from lupine.hi.pengutronix.de ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+	by metis.ext.pengutronix.de with esmtp (Exim 4.89)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1h7Lix-0008BH-PZ; Fri, 22 Mar 2019 16:04:47 +0100
+Message-ID: <1553267086.8366.3.camel@pengutronix.de>
+Subject: Re: [PATCH] Staging: media: Remove unnecessary print statements
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>, 
+	outreachy-kernel@googlegroups.com
+Cc: Steve Longerbeam <slongerbeam@gmail.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team
+ <linux-imx@nxp.com>, =Fabio Estevam <festevam@gmail.com>
+Date: Fri, 22 Mar 2019 16:04:46 +0100
+In-Reply-To: <20190322141829.8440-1-bhanusreemahesh@gmail.com>
+References: <20190322141829.8440-1-bhanusreemahesh@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.22.6-1+deb9u1 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: outreachy-kernel@googlegroups.com
 
-Hello,
+On Fri, 2019-03-22 at 19:48 +0530, Bhanusree Pola wrote:
+> Remove print statements that provide information about error messages
+> when memory allocation is failed.
 
-For those who are lurking and wondering where to start to make an
-application, please start with the tutorial, as indicated in the How do I
-make a contribution? section of the Linux kernel community page:
+It would be nice to mention that these functions already
+print error messages themselves, but the patch is fine.
 
-https://www.outreachy.org/2018-may-august/communities/linux-kernel/
+> Issue found using coccinelle
+> The following semantic patch is used to solve this:
+> 
+> <smpl>
+> @@
+> expression x;
+> constant char[] C;
+> identifier f;
+> @@
+> 
+> x = (\(kmalloc\|devm_kzalloc\|kmalloc_array\|devm_ioremap\|
+> usb_alloc_urb\|alloc_netdev\|dev_alloc_skb\)(...));
+> 
+> if(x==NULL)
+> {
+> ...
+> (
+> -f(C,...);
+> > 
+> 
+> -f(...,C);
+> )
+> ...
+> }
+> </smpl>
+> 
+> Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+> ---
+>  drivers/staging/media/imx/imx6-mipi-csi2.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
+> index 6a1cee55a49b..2c5e3dd58cea 100644
+> --- a/drivers/staging/media/imx/imx6-mipi-csi2.c
+> +++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
+> @@ -628,10 +628,8 @@ static int csi2_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	csi2->base = devm_ioremap(&pdev->dev, res->start, PAGE_SIZE);
+> -	if (!csi2->base) {
+> -		v4l2_err(&csi2->sd, "failed to map CSI-2 registers\n");
+> +	if (!csi2->base)
+>  		return -ENOMEM;
+> -	}
+>  
+>  	mutex_init(&csi2->lock);
+>  
 
-There is no need to contact any mentor until you have completed the
-tutorial, ie have 10 cleanup patches and 2 patch series accepted.
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-thanks,
-julia
+regards
+Philipp
 
