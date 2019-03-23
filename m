@@ -1,87 +1,87 @@
 X-GM-THRID: 6671492660700643328
-X-Received: by 2002:a02:3b1c:: with SMTP id c28mr10550393jaa.5.1553327944470;
-        Sat, 23 Mar 2019 00:59:04 -0700 (PDT)
+X-Received: by 2002:a24:d703:: with SMTP id y3mr4781485itg.162.1553327940662;
+        Sat, 23 Mar 2019 00:59:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:bdc1:: with SMTP id n184ls4776067iof.0.gmail; Sat, 23
- Mar 2019 00:59:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqykMob7GwDqYtNm1yIwXtxuqyndq5BVl2a2ZKF0Yij/CBu4c/2XviAgeM6q6lrG9p57oDEY
-X-Received: by 2002:a6b:e402:: with SMTP id u2mr9938910iog.45.1553327943950;
-        Sat, 23 Mar 2019 00:59:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553327943; cv=none;
+Received: by 2002:a24:5a0a:: with SMTP id v10ls3389067ita.2.gmail; Sat, 23 Mar
+ 2019 00:58:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqza/viTRTYtzyvf/ZPT5/6+hstkW0Xnb/gSJUVOr4hahl/hfMva2K+0GMJ0Y5cVfdaIDnXB
+X-Received: by 2002:a05:660c:78a:: with SMTP id h10mr1387623itk.157.1553327939844;
+        Sat, 23 Mar 2019 00:58:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553327939; cv=none;
         d=google.com; s=arc-20160816;
-        b=iQhuSN09//ylDPAXAGPcigIXAyRG0eLQ7WkLqDCM15290GzlokBUm0dwZCvsIqQpBk
-         AYG2ZR69c487azbQO/50UhDaaJF7eXnMdG6nNPYsx4Si+CW5VI3N5NxmdIOddAXbe5uP
-         6HjgEC4dFe05uL7KXzRdM24R44SXOPLk9Z7ufLebgt4MG5gOQ206WmcXbdBRfnYW/34C
-         NR3ORlxjHiJDCcaOvhYThPPrCpu3826D/Qk3MCclqosk4hpDxcYII4FYlcETVlRZ+iwV
-         ndTrgsKpPRwU5cuTPMMqj9DOq4cYYVnuyjDSM/h8rUQIEFrp8XsGviizV7uKgoEskekE
-         xf8g==
+        b=ctaItxNSFH6Y9Ri2T6fU5zm+EwOVosRTzprZO6qfb7LD9e78uQoaS0iurBguVBW1cV
+         77j1tuN0Sj49EvOVdyCnBgaPaGACOfGpzGjRS5u3TSjJnaqUh9XSNcEsPKAoEhoN9gby
+         ao3lOUO+Z/TI0n6VVkl5nRvfBkRQ1A4/+Ek1VHl0OL+YE8qBRosHtknYoEJQ5ZwnpUkI
+         K28DCZhXyUe+lSf6AC+oBEsQ80QvZ6+CJxie5TjsMrEGXkEtlZNgDFQcLrZLR6QOlxVF
+         XTpfFH/evh9vP3L7Nq0q8iF13j17PUlGxjjk93fcApZkEuWJlv4ud8UQnDZptxCkIRWy
+         C8sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=+dH8mmraEDdNQt93LB7ey7xhw9jfombBLGedtbAKej8=;
-        b=ckju3t/PQ7HbbF18DvUFxaOQsKfj7OF+8TlUi55YUcAgdBj2nCnYq5WeMhIRHt1hS9
-         K3gUH9yJG11R38i2GplfBN3Jh6xQV4NJDudAKxXD82xvYOiowdEZdMr0S1DcIxNcoa0u
-         Z7Ddh80stb/kONHVSUKbHKhTeeWTYSvxs6S2z4T1aAQsBDUPVWTXOO8G5YBaJD+Ryuid
-         ShVWLViFpifeNaDWP5HnXgkeV2O8qyL3iYq9gqycExWlYPJ1VE46xBWy1UOG6YP8c03C
-         fwgI3wl0zupJI9nhrgX9uDfQAcMvsqYsOT0ewGN5/Dk1ZIci/VaXG2WigiP2fuzJ4ZVC
-         PyYQ==
+        bh=kIVrmzQJOkI9SYt4qyK5CXofHGdNJXzdFMvKy+cDHas=;
+        b=b6xpDwE4/MIU5S89mHkk27NTzdkNoMP8sS8bYhFxftFQ+UEDDAHgUUz+bJfeDu3TF1
+         8jNqFuRbfNVTkHl0Z+Kz0X/kEzz9K+VlwxRHo9Je6uRqS5wTi1PKPG/sFaqM3oTcTzpD
+         0//sAW+SEyIWKhoI6PoZ94iJfBD1NlXo+xIAkCgVhrP/ZUBKNjyA/1x8cQjPOw2i2cqF
+         CmpEELj/72biaMF1MyO9wgfzBqelZzpynB7bUkTd77J6jBaEQ8wYB+Lo8yqUfvxens18
+         B1yUPGxz8CRsVDAwU+z428qzY4lmtnnKKjmCNP+X4d/wEfT51bIYiWtbkfZr5qrda9jQ
+         4djg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tswNz1X7;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HkvIhrJz;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id g127si925972ita.3.2019.03.23.00.59.03
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id e74si820337ite.1.2019.03.23.00.58.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 00:59:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Sat, 23 Mar 2019 00:58:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tswNz1X7;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HkvIhrJz;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id 9so3021722pfj.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 00:59:03 -0700 (PDT)
+Received: by mail-pg1-x544.google.com with SMTP id j26so1033351pgl.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 00:58:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=+dH8mmraEDdNQt93LB7ey7xhw9jfombBLGedtbAKej8=;
-        b=tswNz1X7mnqlFn81uBeJ4lPh2aIG4NBS0r1xN3xc/R42r7WIDeStWQpwlz/DO+BK4i
-         sTbJBKUkDrc8kTI0Of4QKaVG0nUzBCs6EfhAYp9ssnT4xnsy9Z6CE/QN1EeO5j5+hVlp
-         yxo70K+MI0CxHIIIYliz3ZQPtVbCS3CV5q4Y2wpOXyioUnJ6gtSN/5noqnq6gxJVXXlv
-         vS/EXGILkJN80EhQm9ybqa1cx1lzupVB6QtLGZdlSz2x9zLrPzVlYXkEUKNuPAN+Wr6t
-         WbMgT867YX/2Ekuucjd2ZPREfoHF5RFUD/J9FB3RMSzG9MN1QT8RMHFPjZImMtD2oSLl
-         R8fQ==
+        bh=kIVrmzQJOkI9SYt4qyK5CXofHGdNJXzdFMvKy+cDHas=;
+        b=HkvIhrJztfSSld1DyflEtQFKUUMup0S7b+0NimX77WiE/DBVEb90f3y2DEmV7bKhSp
+         jF5IsW1goq6ChMOz+AzVWEWS0xl+tTcsheN3TQXaYfG3KP1BQNcH/GBN2n+WSAI3jqsp
+         5TnnXtk9Wfnl4H7wGXeYBl30OSKD7vtd3/HSb3Svi4yxfh7jgGUP+EB25eXjJjc9EpkS
+         QoBMAuWh6/iyQt4MeoTkhmBBaQ/8gxS1J/UG0TFYLezNx/dYPxE/ZVW22J1F0pex/xJm
+         JTRAKYwahFdnmtWjdhT7q9k3q7XEo5UvmsYmYANt0hfQ7TwtVBbLe2j8depNaZZbUfH6
+         6saA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references:mime-version
          :content-transfer-encoding;
-        bh=+dH8mmraEDdNQt93LB7ey7xhw9jfombBLGedtbAKej8=;
-        b=rqft2uVoDJRSQImubOOamsZUsIZ5FdMUh3Yv9PKjsTPUUsYfmUAE3wWGLBoaypQLD/
-         nw+FZkJ8L+VAER3GyEUKYzgSog5nzLDFrEVvXfQp5Ft0gyFsYDKq52bY+H3J0KzjEYIe
-         UCOcqq/0Md/Jb6rpQBJvSWGz5c/y6o8WdX5XAoMynD7JbZI3o34fD5FfeLaVF7WfPlf7
-         2esnhYesEFsljT4cOxkv/Iw6zlgMssj7s3hiINX0ixPczshDguZD2niyNzfhhHMaXI6d
-         xhGQPX7wKZWmGbY9eVnpfX/R7rDQxMcErVHTX8a1+wmRtXMj5F/NqV0Cr9sFdeerrD6U
-         u7TA==
-X-Gm-Message-State: APjAAAXtBjPA+Y3tIEJTF+QLlQKSDdfLTwvF8utPnXUwCO82G1dXsS6N
-	iKNhJn5yxQbJK1fJFCn6k4bi8059
-X-Received: by 2002:a65:4244:: with SMTP id d4mr12995679pgq.419.1553327943057;
-        Sat, 23 Mar 2019 00:59:03 -0700 (PDT)
+        bh=kIVrmzQJOkI9SYt4qyK5CXofHGdNJXzdFMvKy+cDHas=;
+        b=kRdHfUf5vQzefxMLCgtWRBgSffq4txBAMJNywNoEhHC7LeITzZ4ppOlA9DXsxDps6b
+         yFKDCaQVVA/ECJiZR0XT0jNJewUyUHf4E3wvY+fDumTG9G7hW9KbhjA6JR8LPaGRO2Xp
+         1dORrqdnb+iYfpp5PnRVRcfIkWc3TmXQKtUMmkFwfsRN+Xv4fuyGYIO7eictiVYKG6R3
+         97O1Cz+ZjIJLFq2qcyMndlFH0ShJbtt1OQhoAVbagE+dlWj12CvThu/Lbu4CBLKNhJzH
+         UAD8cqp5LjBqaw/gzfW3j7sOh1s4VkOEt9so3d22Z+UF9mIgV9Uxx1dPtFq9LaCdJ8Jo
+         Z9RA==
+X-Gm-Message-State: APjAAAWFaTev3Q33LG9IaRoB6JJZbt4FyR/PY/blBrqxWDxweKo5zWEl
+	ughKzoPv00Y8GY299eS6GDYrSlpf
+X-Received: by 2002:a63:4750:: with SMTP id w16mr13221902pgk.256.1553327938961;
+        Sat, 23 Mar 2019 00:58:58 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([157.33.173.66])
-        by smtp.gmail.com with ESMTPSA id n24sm22379150pfi.123.2019.03.23.00.59.00
+        by smtp.gmail.com with ESMTPSA id n24sm22379150pfi.123.2019.03.23.00.58.56
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 23 Mar 2019 00:59:02 -0700 (PDT)
+        Sat, 23 Mar 2019 00:58:58 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
 	pkbehappyallthetime@gmail.com
-Subject: [PATCH 4/5] staging: rtl8712: avoid camelcase variable name 'bContinual'
-Date: Sat, 23 Mar 2019 13:28:30 +0530
-Message-Id: <2105c2ad643dc4a451287fea94daf3836597fa8d.1553327467.git.payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH 3/5] staging: rtl8712: avoid camelcase variable name 'bRead'
+Date: Sat, 23 Mar 2019 13:28:29 +0530
+Message-Id: <f5724c03e098fd9143f6971a1bda5a34a58eb1e5.1553327467.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <6b2beffe41d8256284179eda6eadd8b9cf0a24fb.1553327467.git.payal.s.kshirsagar.98@gmail.com>
 References: <6b2beffe41d8256284179eda6eadd8b9cf0a24fb.1553327467.git.payal.s.kshirsagar.98@gmail.com>
@@ -96,28 +96,69 @@ camelcase’
 
 Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_efuse.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/rtl8712_efuse.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_efuse.c b/drivers/staging/rtl8712/rtl8712_efuse.c
-index dd007280..34341bf 100644
+index 1a6cd42..dd007280 100644
 --- a/drivers/staging/rtl8712/rtl8712_efuse.c
 +++ b/drivers/staging/rtl8712/rtl8712_efuse.c
-@@ -208,12 +208,12 @@ static void pgpacket_copy_data(const u8 word_en, const u8 *sourdata,
+@@ -107,7 +107,7 @@ static u8 efuse_one_byte_write(struct _adapter *padapter, u16 addr, u8 data)
+ 	return result;
+ }
  
- u16 r8712_efuse_get_current_size(struct _adapter *padapter)
+-static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
++static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 read, u16 addr,
+ 			    u8 *data)
  {
--	int bContinual = true;
-+	int continual = true;
- 	u16 efuse_addr = 0;
- 	u8 hworden = 0;
- 	u8 efuse_data, word_cnts = 0;
+ 	u8 tmpidx = 0, tmpv8 = 0, result;
+@@ -117,7 +117,7 @@ static u8 efuse_one_byte_rw(struct _adapter *padapter, u8 bRead, u16 addr,
+ 	tmpv8 = ((u8)((addr >> 8) & 0x03)) |
+ 		 (r8712_read8(padapter, EFUSE_CTRL + 2) & 0xFC);
+ 	r8712_write8(padapter, EFUSE_CTRL + 2, tmpv8);
+-	if (bRead) {
++	if (read) {
+ 		r8712_write8(padapter, EFUSE_CTRL + 3,  0x72); /* read cmd */
+ 		while (!(0x80 & r8712_read8(padapter, EFUSE_CTRL + 3)) &&
+ 		       (tmpidx < 100))
+@@ -421,7 +421,7 @@ u8 r8712_efuse_pg_packet_write(struct _adapter *padapter, const u8 offset,
+ 	return result;
+ }
  
--	while (bContinual && efuse_one_byte_read(padapter, efuse_addr,
-+	while (continual && efuse_one_byte_read(padapter, efuse_addr,
- 	       &efuse_data) && (efuse_addr < efuse_available_max_size)) {
- 		if (efuse_data != 0xFF) {
- 			hworden =  efuse_data & 0x0F;
+-u8 r8712_efuse_access(struct _adapter *padapter, u8 bRead, u16 start_addr,
++u8 r8712_efuse_access(struct _adapter *padapter, u8 read, u16 start_addr,
+ 		      u16 cnts, u8 *data)
+ {
+ 	int i;
+@@ -429,10 +429,10 @@ u8 r8712_efuse_access(struct _adapter *padapter, u8 bRead, u16 start_addr,
+ 
+ 	if (start_addr > EFUSE_MAX_SIZE)
+ 		return false;
+-	if (!bRead && ((start_addr + cnts) >
++	if (!read && ((start_addr + cnts) >
+ 	   efuse_available_max_size))
+ 		return false;
+-	if (!bRead && !r8712_efuse_reg_init(padapter))
++	if (!read && !r8712_efuse_reg_init(padapter))
+ 		return false;
+ 	/* -----------------e-fuse one byte read / write ---------------------*/
+ 	for (i = 0; i < cnts; i++) {
+@@ -440,12 +440,12 @@ u8 r8712_efuse_access(struct _adapter *padapter, u8 bRead, u16 start_addr,
+ 			res = false;
+ 			break;
+ 		}
+-		res = efuse_one_byte_rw(padapter, bRead, start_addr + i,
++		res = efuse_one_byte_rw(padapter, read, start_addr + i,
+ 					data + i);
+-		if (!bRead && !res)
++		if (!read && !res)
+ 			break;
+ 	}
+-	if (!bRead)
++	if (!read)
+ 		r8712_efuse_reg_uninit(padapter);
+ 	return res;
+ }
 -- 
 2.7.4
 
