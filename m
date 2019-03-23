@@ -1,162 +1,114 @@
-X-GM-THRID: 5650171035648
-X-Received: by 10.112.147.35 with SMTP id th3mr3079963lbb.15.1425249593331;
-        Sun, 01 Mar 2015 14:39:53 -0800 (PST)
+X-GM-THRID: 6671730149569855488
+X-Received: by 2002:a81:1b52:: with SMTP id b79mr14940241ywb.285.1553383225809;
+        Sat, 23 Mar 2019 16:20:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.103.166 with SMTP id fx6ls448571wib.20.canary; Sun, 01 Mar
- 2015 14:39:53 -0800 (PST)
-X-Received: by 10.194.63.208 with SMTP id i16mr724832wjs.2.1425249593075;
-        Sun, 01 Mar 2015 14:39:53 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from mail-we0-x230.google.com (mail-we0-x230.google.com. [2a00:1450:400c:c03::230])
-        by gmr-mx.google.com with ESMTPS id by11si582840wib.1.2015.03.01.14.39.53
+Received: by 2002:a0d:e6ce:: with SMTP id p197ls4914310ywe.0.gmail; Sat, 23
+ Mar 2019 16:20:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyPvMTsg3/3PgO+pqfKBg2o3xpgY9UK3KnMMx+eP+6C+O3MPf4HLPDceD5TVX/YfnvgJH86
+X-Received: by 2002:a81:4f01:: with SMTP id d1mr14629515ywb.326.1553383224617;
+        Sat, 23 Mar 2019 16:20:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553383224; cv=none;
+        d=google.com; s=arc-20160816;
+        b=R+gzs83+dGklVU8wMOEzQvYQOwt1vFaxknwAhxiC3XaYpwrm0iV+ieUbLlSSlDDH6Y
+         rpGGm9nHrzIDa2pvpokjchYUpUIw8M56dgB9UqXtNmLXxZvaxuO2VTa3S+evSc6URQT8
+         kNUhUkRpFfBzcyDnnwkmm73o4d10z3MVv607y5xc77UYgkOpsY81Tlwwif9COS7iJ5In
+         JKUv+Ah+sYZ8XkOMm7IgFNWP96m/MeWZytGrgXnFph2kQvP+QnNX0PQVsMoKttIAn+mO
+         JwIkrqcug3GbdSR6/Wu6GT+aPqCdfD4aOONjkphVqKPNkLxBsF/rELVRQW80Tm+vaJpg
+         vu3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=TPkTk46HXEWCMzJ1uHBmV3+i6Pvu4Rc3YMySHtdtg/U=;
+        b=Q/WBu5+NeS6Nphpiis1ax6wZjPGjbB5/lNv9ulGlV/TGteBMCNeGsQpzHdleTiSBaN
+         ctqWoMC0WW5mSWKqw7t3UyBXyEMUcMOSViPY5hHcQI3BFNmuWmM8+f1cl3yUv/FqtA2Y
+         o7n8byFuXo4f76RLsMHcqwG1KhmuyCLjTpo5BZ1Ol1ATqWptpacM2lslLfkAG0+IecYt
+         hb9XZKsZcigBSheqYZUGulWOfPl0NrXmz2dLTL+1ubfrcE+tz5niJoPBWUDmd7D9EB6d
+         gOEaMcP/FRX/KFlM3yDNQj/uAOkdv6iVIq5YBg+vGS5dPKnrtZnQThtJLStaoC5QFNOJ
+         5P3Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SMDug1fT;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <vatsalanarang@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id k62si878749ybb.4.2019.03.23.16.20.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Mar 2015 14:39:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) client-ip=2a00:1450:400c:c03::230;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 23 Mar 2019 16:20:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of ksenija.stanojevic@gmail.com designates 2a00:1450:400c:c03::230 as permitted sender) smtp.mail=ksenija.stanojevic@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wesq59 with SMTP id q59so30077816wes.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Mar 2015 14:39:53 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SMDug1fT;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id e24so3017439pfi.12
+        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 16:20:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=/d0PU1a8uz9TT+pEBjwRQ923ge8iFIuj3ZsU3Ece8uw=;
-        b=ZmEZHJXYV+JaOJkfRrZ1ZFrCD8o7a+130p2+wVfIiF83M/5CnPtclOGvCQU3Abdb62
-         lLCJMbFAr9V7X80qGZ0TIgYNTuUFoJ0SD4mVVNZOZwDRL+GVGMUZkrIbnkAYcjU1CCW9
-         9fpqfLV0PQlv3a6neMuuBskaNuKxO7gflxWksmKS9Reba/9WQf9+2yRi3zbhRCCrEJmv
-         ijBio1eb3bqx/n/6+blWi+UunL/faN5geqCZt+mQ7AMEAlwAoc55COPaFspW6nCe8kdZ
-         65dnOwY2fhqmjkTFore4h7P7I7/QAIsd8tH5deZ7agaBGw7DnfM6XTAW5Y7beBi1bO4k
-         oh+A==
-X-Received: by 10.180.75.102 with SMTP id b6mr17179728wiw.60.1425249592981;
-        Sun, 01 Mar 2015 14:39:52 -0800 (PST)
-Return-Path: <ksenija.stanojevic@gmail.com>
-Received: from localhost.localdomain (77-46-215-254.static.isp.telekom.rs. [77.46.215.254])
-        by mx.google.com with ESMTPSA id 17sm14799837wjt.45.2015.03.01.14.39.51
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Mar 2015 14:39:52 -0800 (PST)
-From: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+        bh=TPkTk46HXEWCMzJ1uHBmV3+i6Pvu4Rc3YMySHtdtg/U=;
+        b=SMDug1fTNHTuSze6iOPlx8bRBr/0ySoi+owx9QFfjcOXl5f/uOj8EUkGEOGTr4ZB9L
+         s2mlElOJy9NMwkm6hf5a6YzfIuBEDZae4mZHD1zfoV330ZR9J5MyDMPGwyEXuIGZyv1h
+         rvdVIciSInkC5VrPhYxjyq1NoCyayzQOMswHgo6VZMTeCLdwLADyXxTGpVPQFDOS1tXo
+         CPDBfWrbdAobm80RXo1E3v+Dq/GVlO5rCZv9B7NfQWVl4saCd/ch8y/xsh0QdBCmT5k+
+         3hU4m+Pi2225Y6+K09z76ARmtYUzSRS0iqIZwlrfgCWCmSVZ9bOJUiW2ur9T5CqqjUPP
+         aYhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=TPkTk46HXEWCMzJ1uHBmV3+i6Pvu4Rc3YMySHtdtg/U=;
+        b=c/Hrl8A0iNB67eSoZ5Bdh9vOyKcaYmGZHeXSmxrFMd3mYfcmQJDfcL2AbR3gsKSGPG
+         mIiBgh+yPCkYs9g8x5014hoEtVFU3/7G2MQ4+8geglnYKCXdZPXhHooEgdPsj8XJwxeX
+         7BI2toGZBsit4yaF8/cxpvjrNJqrOfIi/xBrVyf8edvkkpZ3h2NVg6XEcdIEcx4LND0a
+         Wf5FrtaqzzB/gcRfIuQVke5lXw+jncQq12EuzR7otZrrmP67mtqRxR/Aw+5WrH9VLzaA
+         tc+2CcDza8LPj2ccW3gIoxxHJkV19DfaJu7qaihzkwTxUPyG7lHpF2Y1WzcbjxhGbC1i
+         kkqQ==
+X-Gm-Message-State: APjAAAVR36fy0qDzFPOxHw+MbNSM9Yhs9328sU8TmYlno62+797S0YSV
+	hz2ey9uE0MyR8SV27PLoenR3Z2r8weg=
+X-Received: by 2002:a62:ed08:: with SMTP id u8mr16613057pfh.200.1553383223659;
+        Sat, 23 Mar 2019 16:20:23 -0700 (PDT)
+Return-Path: <vatsalanarang@gmail.com>
+Received: from localhost.localdomain ([103.87.57.188])
+        by smtp.gmail.com with ESMTPSA id o5sm27475102pgc.16.2019.03.23.16.20.21
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 23 Mar 2019 16:20:23 -0700 (PDT)
+From: Vatsala Narang <vatsalanarang@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
-Subject: [PATCH] Media: v4l-utils: Make small change in function that prints the help text.
-Date: Sun,  1 Mar 2015 23:39:39 +0100
-Message-Id: <1425249579-31105-1-git-send-email-ksenija.stanojevic@gmail.com>
-X-Mailer: git-send-email 1.9.1
+Cc: gregkh@linuxfoundation.org,
+	Vatsala Narang <vatsalanarang@gmail.com>
+Subject: [PATCH] staging: media: zoran: Use unsigned int instead of unsigned
+Date: Sun, 24 Mar 2019 04:50:07 +0530
+Message-Id: <20190323232007.10799-1-vatsalanarang@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-The change was made in file options.c by making small change, adding
-printf("end of help") function.
+Replace 'unsigned' with 'unsigned int' to get rid of checkpatch warning
 
-Output before the modification:
-media-ctl [options]
--d, --device dev	Media device name (default: /dev/media0)
--e, --entity name	Print the device name associated with the given entity
--V, --set-v4l2 v4l2	Comma-separated list of formats to setup
-    --get-v4l2 pad	Print the active format on a given pad
-    --set-dv pad	Configure DV timings on a given pad
--h, --help		Show verbose help and exit
--i, --interactive	Modify links interactively
--l, --links links	Comma-separated list of link descriptors to setup
--p, --print-topology	Print the device topology
-    --print-dot		Print the device topology as a dot graph
--r, --reset		Reset all links to inactive
--v, --verbose		Be verbose
-
-Links and formats are defined as
-	links           = link { ',' link } ;
-	link            = pad '->' pad '[' flags ']' ;
-	pad             = entity ':' pad-number ;
-	entity          = entity-number | ( '"' entity-name '"' ) ;
-
-	v4l2            = pad '[' v4l2-properties ']' ;
-	v4l2-properties = v4l2-property { ',' v4l2-property } ;
-	v4l2-property   = v4l2-mbusfmt | v4l2-crop | v4l2-interval
-	                | v4l2-compose | v4l2-interval ;
-	v4l2-mbusfmt    = 'fmt:' fcc '/' size ;
-	v4l2-crop       = 'crop:' rectangle ;
-	v4l2-compose    = 'compose:' rectangle ;
-	v4l2-interval   = '@' numerator '/' denominator ;
-
-	rectangle       = '(' left ',' top, ')' '/' size ;
-	size            = width 'x' height ;
-
-where the fields are
-	entity-number   Entity numeric identifier
-	entity-name     Entity name (string) 
-	pad-number      Pad numeric identifier
-	flags           Link flags (0: inactive, 1: active)
-	fcc             Format FourCC
-	width           Image width in pixels
-	height          Image height in pixels
-	numerator       Frame interval numerator
-	denominator     Frame interval denominator
-
-Output after the modification:
-media-ctl [options]
--d, --device dev	Media device name (default: /dev/media0)
--e, --entity name	Print the device name associated with the given entity
--V, --set-v4l2 v4l2	Comma-separated list of formats to setup
-    --get-v4l2 pad	Print the active format on a given pad
-    --set-dv pad	Configure DV timings on a given pad
--h, --help		Show verbose help and exit
--i, --interactive	Modify links interactively
--l, --links links	Comma-separated list of link descriptors to setup
--p, --print-topology	Print the device topology
-    --print-dot		Print the device topology as a dot graph
--r, --reset		Reset all links to inactive
--v, --verbose		Be verbose
-
-Links and formats are defined as
-	links           = link { ',' link } ;
-	link            = pad '->' pad '[' flags ']' ;
-	pad             = entity ':' pad-number ;
-	entity          = entity-number | ( '"' entity-name '"' ) ;
-
-	v4l2            = pad '[' v4l2-properties ']' ;
-	v4l2-properties = v4l2-property { ',' v4l2-property } ;
-	v4l2-property   = v4l2-mbusfmt | v4l2-crop | v4l2-interval
-	                | v4l2-compose | v4l2-interval ;
-	v4l2-mbusfmt    = 'fmt:' fcc '/' size ;
-	v4l2-crop       = 'crop:' rectangle ;
-	v4l2-compose    = 'compose:' rectangle ;
-	v4l2-interval   = '@' numerator '/' denominator ;
-
-	rectangle       = '(' left ',' top, ')' '/' size ;
-	size            = width 'x' height ;
-
-where the fields are
-	entity-number   Entity numeric identifier
-	entity-name     Entity name (string) 
-	pad-number      Pad numeric identifier
-	flags           Link flags (0: inactive, 1: active)
-	fcc             Format FourCC
-	width           Image width in pixels
-	height          Image height in pixels
-	numerator       Frame interval numerator
-	denominator     Frame interval denominator
-	end of help
-
-The difference of the two output is the last line of the second output:
-end of help.
-
-Signed-off-by: Ksenija Stanojevic <ksenija.stanojevic@gmail.com>
+Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
 ---
- utils/media-ctl/options.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/media/zoran/zoran_device.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/utils/media-ctl/options.c b/utils/media-ctl/options.c
-index ffaffcd..aa6e122 100644
---- a/utils/media-ctl/options.c
-+++ b/utils/media-ctl/options.c
-@@ -76,6 +76,7 @@ static void usage(const char *argv0)
- 	printf("\theight          Image height in pixels\n");
- 	printf("\tnumerator       Frame interval numerator\n");
- 	printf("\tdenominator     Frame interval denominator\n");
-+	printf("\tend of help\n");
- }
+diff --git a/drivers/staging/media/zoran/zoran_device.h b/drivers/staging/media/zoran/zoran_device.h
+index a507aaad4ebb..20bf75dfbb76 100644
+--- a/drivers/staging/media/zoran/zoran_device.h
++++ b/drivers/staging/media/zoran/zoran_device.h
+@@ -34,12 +34,12 @@ extern void GPIO(struct zoran *zr,
+ /* codec (or actually: guest bus) access */
+ extern int post_office_wait(struct zoran *zr);
+ extern int post_office_write(struct zoran *zr,
+-			     unsigned guest,
+-			     unsigned reg,
+-			     unsigned value);
++			     unsigned int guest,
++			     unsigned int reg,
++			     unsigned int value);
+ extern int post_office_read(struct zoran *zr,
+-			    unsigned guest,
+-			    unsigned reg);
++			    unsigned int guest,
++			    unsigned int reg);
  
- #define OPT_PRINT_DOT		256
+ extern void detect_guest_activity(struct zoran *zr);
+ 
 -- 
-1.9.1
+2.17.1
 
 
