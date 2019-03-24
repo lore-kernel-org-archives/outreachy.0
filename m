@@ -1,77 +1,237 @@
-X-GM-THRID: 6206285490616795136
-X-Received: by 10.31.162.16 with SMTP id l16mr13488239vke.5.1445013445086;
-        Fri, 16 Oct 2015 09:37:25 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.160.72 with SMTP id j69ls815370ioe.99.gmail; Fri, 16 Oct
- 2015 09:37:24 -0700 (PDT)
-X-Received: by 10.67.14.6 with SMTP id fc6mr13852983pad.14.1445013444604;
-        Fri, 16 Oct 2015 09:37:24 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id zg1si2149797pbb.2.2015.10.16.09.37.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2015 09:37:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id fv9so27235682pac.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2015 09:37:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=K0yv468X7cjnWH5w8bKpbcjz1grbPxFMp1QuFP1BgPk=;
-        b=MU1pGzQGkPEddYrqgmxmfUnXyVaNEaNw6xIQioV37x/W1jvWVV5bTzwP7hKs3YJfOY
-         F2yy4KlbUzoQWbeLv09606jUI+4Wv959uj/Ox3V0CbpDZg+9ynofm9/pno6kLnNy4aWz
-         x7IrssHdnYat9zatD5KyFdthNqKsm/qcqhOH3NinPKnKiCxV5MiCN54UuTiX/7uH2f6+
-         BowWtgsSBC/i0htpdM3nCS3x1SFJRJNI2uoniNTbkqG4ccf5JSMPkpCSls/2hiLLUnEf
-         bAbii0Zm4PJShtzxZak5nmGJFh9KiRGrAUkvxhqcoliQdVjkK3lEEjoGE5/7LShoMc5W
-         TsSw==
-X-Received: by 10.66.66.196 with SMTP id h4mr16491376pat.77.1445013444423;
-        Fri, 16 Oct 2015 09:37:24 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.217.12])
-        by smtp.gmail.com with ESMTPSA id cn4sm22086627pbc.94.2015.10.16.09.37.23
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 16 Oct 2015 09:37:23 -0700 (PDT)
-Date: Fri, 16 Oct 2015 22:07:18 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/5] staging: Prefer using BIT Macro
-Message-ID: <cover.1445013271.git.amitoj1606@gmail.com>
+X-GM-THRID: 6670497613364592640
+Date: Sun, 24 Mar 2019 00:18:19 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <535b66f8-2483-4e21-a70f-f7311e7ca622@googlegroups.com>
+In-Reply-To: <4a288836-4582-46b9-b70f-ccf117b15243@googlegroups.com>
+References: <20190324065855.7685-1-sanjana99reddy99@gmail.com>
+ <alpine.DEB.2.21.1903240807200.2526@hadrien>
+ <4a288836-4582-46b9-b70f-ccf117b15243@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core:
+ rtw_recv.c: Modify return type suggested by Coccinelle.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1195_1975683445.1553411899546"
+X-Google-Token: ELve3OQFPTvirApdDps0
+X-Google-IP: 123.201.77.18
 
-This patchset replaces bit shifting on 1 with the BIT(x) Macro
+------=_Part_1195_1975683445.1553411899546
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1196_186634680.1553411899547"
 
-The semantic patch used to find this is:
-@@ int g; @@
+------=_Part_1196_186634680.1553411899547
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
--(1 << g)
-+BIT(g)
 
-Amitoj Kaur Chawla (5):
-  staging: rdma: hfi1: Prefer using BIT Macro
-  staging: rdma: amso1100: Prefer using BIT Macro
-  staging: panel: Prefer using BIT Macro
-  staging: vt6656: Prefer using BIT Macro
-  staging: vt6655: Prefer using BIT Macro
 
- drivers/staging/panel/panel.c               | 6 +++---
- drivers/staging/rdma/amso1100/c2_provider.c | 6 +++---
- drivers/staging/rdma/hfi1/file_ops.c        | 2 +-
- drivers/staging/vt6655/card.c               | 2 +-
- drivers/staging/vt6656/card.c               | 2 +-
- 5 files changed, 9 insertions(+), 9 deletions(-)
+On Sunday, March 24, 2019 at 12:43:33 PM UTC+5:30, sanjana9...@gmail.com 
+wrote:
+>
+>
+>
+> On Sunday, March 24, 2019 at 12:37:55 PM UTC+5:30, Julia Lawall wrote:
+>>
+>>
+>>
+>> On Sun, 24 Mar 2019, Sanjana Sanikommu wrote: 
+>>
+>> > The last two lines in the function could 
+>> > be compressed into one. Avoid usage of local variable. 
+>>
+>> The commit message is misleading because at least in the first case, what 
+>> is changed is not the last two lines of a function. 
+>>
+>
+>   Sure, I would change commit message.
+>
 
--- 
-1.9.1
+      This patch is already in the tree. Please ignore this patch.
+Thank you   
 
+> Sanjana 
+>
+>>
+>> julia 
+>>
+>> > 
+>> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com> 
+>> > --- 
+>> > Changes in v2: 
+>> > Test build the patch 
+>> >  drivers/staging/rtl8188eu/core/rtw_recv.c | 6 ++---- 
+>> >  1 file changed, 2 insertions(+), 4 deletions(-) 
+>> > 
+>> > diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c 
+>> b/drivers/staging/rtl8188eu/core/rtw_recv.c 
+>> > index 90eb1a025051..606a9f51508a 100644 
+>> > --- a/drivers/staging/rtl8188eu/core/rtw_recv.c 
+>> > +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c 
+>> > @@ -1859,8 +1859,7 @@ static int process_recv_indicatepkts(struct 
+>> adapter *padapter, 
+>> >                          /*  including perform A-MPDU Rx Ordering 
+>> Buffer Control */ 
+>> >                          if ((!padapter->bDriverStopped) && 
+>> >                              (!padapter->bSurpriseRemoved)) { 
+>> > -                                retval = _FAIL; 
+>> > -                                return retval; 
+>> > +                                return _FAIL; 
+>> >                          } 
+>> >                  } 
+>> >          } else { /* B/G mode */ 
+>> > @@ -1879,8 +1878,7 @@ static int process_recv_indicatepkts(struct 
+>> adapter *padapter, 
+>> >                          RT_TRACE(_module_rtl871x_recv_c_, 
+>> _drv_notice_, ("@@@@ %s- recv_func free_indicatepkt\n", __func__)); 
+>> > 
+>> >                          RT_TRACE(_module_rtl871x_recv_c_, 
+>> _drv_notice_, ("recv_func:bDriverStopped(%d) OR bSurpriseRemoved(%d)", 
+>> padapter->bDriverStopped, padapter->bSurpriseRemoved)); 
+>> > -                        retval = _FAIL; 
+>> > -                        return retval; 
+>> > +                        return _FAIL; 
+>> >                  } 
+>> >          } 
+>> > 
+>> > -- 
+>> > 2.17.1 
+>> > 
+>> > -- 
+>> > You received this message because you are subscribed to the Google 
+>> Groups "outreachy-kernel" group. 
+>> > To unsubscribe from this group and stop receiving emails from it, send 
+>> an email to outreachy-kern...@googlegroups.com. 
+>> > To post to this group, send email to outreach...@googlegroups.com. 
+>> > To view this discussion on the web visit 
+>> https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7685-1-sanjana99reddy99%40gmail.com. 
+>>
+>> > For more options, visit https://groups.google.com/d/optout. 
+>> > 
+>>
+>
+------=_Part_1196_186634680.1553411899547
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Sunday, March 24, 2019 at 12:43:33 PM UTC+5:30,=
+ sanjana9...@gmail.com wrote:<blockquote class=3D"gmail_quote" style=3D"mar=
+gin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><=
+div dir=3D"ltr"><br><br>On Sunday, March 24, 2019 at 12:37:55 PM UTC+5:30, =
+Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin:0;marg=
+in-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+<br>On Sun, 24 Mar 2019, Sanjana Sanikommu wrote:
+<br>
+<br>&gt; The last two lines in the function could
+<br>&gt; be compressed into one. Avoid usage of local variable.
+<br>
+<br>The commit message is misleading because at least in the first case, wh=
+at
+<br>is changed is not the last two lines of a function.
+<br></blockquote><div><br></div><div>=C2=A0 Sure, I would change commit mes=
+sage.</div></div></blockquote><div><br></div><div>=C2=A0 =C2=A0 =C2=A0 This=
+ patch is already in the tree. Please ignore this patch.</div><div>Thank yo=
+u=C2=A0 =C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
+rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=
+=3D"ltr"><div>Sanjana=C2=A0</div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>julia
+<br>
+<br>&gt;
+<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a rel=3D"nofollow">sanjana9.=
+..@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; Changes in v2:
+<br>&gt; Test build the patch
+<br>&gt; =C2=A0drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c | 6 ++----
+<br>&gt; =C2=A01 file changed, 2 insertions(+), 4 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c b/driv=
+ers/staging/rtl8188eu/<wbr>core/rtw_recv.c
+<br>&gt; index 90eb1a025051..606a9f51508a 100644
+<br>&gt; --- a/drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c
+<br>&gt; +++ b/drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c
+<br>&gt; @@ -1859,8 +1859,7 @@ static int process_recv_indicatepkts(<wbr>st=
+ruct adapter *padapter,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0/* =C2=A0including perform A-MPDU Rx Ordering Buffer Control */
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0if ((!padapter-&gt;bDriverStopped) &amp;&amp;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0(!padapter-&gt;bSurpriseRemoved)<wbr>) {
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0retval =3D _FAIL=
+;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return retval;
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return _FAIL;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0}
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else { /* =
+B/G mode */
+<br>&gt; @@ -1879,8 +1878,7 @@ static int process_recv_indicatepkts(<wbr>st=
+ruct adapter *padapter,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0RT_<wbr>TRACE(_module_rtl871x_recv_c_, _drv_notice_, (&quot;@@@@ %=
+s- recv_func free_indicatepkt\n&quot;, __func__));
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0RT_<wbr>TRACE(_module_rtl871x_recv_c_, _drv_notice_, (&quot;recv_f=
+unc:bDriverStopped(%d) OR bSurpriseRemoved(%d)&quot;, padapter-&gt;bDriverS=
+topped, padapter-&gt;bSurpriseRemoved));
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>retval =3D _FAIL;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>return retval;
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>return _FAIL;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt;
+<br>&gt; --
+<br>&gt; 2.17.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a rel=3D"nofollow">outreachy-kern...@<wbr>googlegroups.co=
+m</a>.
+<br>&gt; To post to this group, send email to <a rel=3D"nofollow">outreach.=
+..@googlegroups.com</a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20190324065855.7685-1-sanjana99reddy99=
+%40gmail.com" rel=3D"nofollow" target=3D"_blank" onmousedown=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7=
+685-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7=
+685-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.google=
+.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190324065855.7685-1-<wbr>sanjana9=
+9reddy99%40gmail.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" rel=3D"nofollow" target=3D"_blank" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div></blockquote></div>
+------=_Part_1196_186634680.1553411899547--
+
+------=_Part_1195_1975683445.1553411899546--
 
