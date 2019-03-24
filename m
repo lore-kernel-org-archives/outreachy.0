@@ -1,86 +1,103 @@
-X-GM-THRID: 6257139324842672128
-X-Received: by 10.66.122.101 with SMTP id lr5mr18255341pab.3.1456853776382;
-        Tue, 01 Mar 2016 09:36:16 -0800 (PST)
+X-GM-THRID: 6671889180677636096
+X-Received: by 2002:a19:a908:: with SMTP id s8mr9487203lfe.160.1553420403255;
+        Sun, 24 Mar 2019 02:40:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.138.194 with SMTP id c63ls1738957ioj.109.gmail; Tue, 01
- Mar 2016 09:36:16 -0800 (PST)
-X-Received: by 10.66.147.106 with SMTP id tj10mr18032812pab.30.1456853776108;
-        Tue, 01 Mar 2016 09:36:16 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by gmr-mx.google.com with ESMTPS id ff2si4911638pad.2.2016.03.01.09.36.16
+Received: by 2002:a19:3802:: with SMTP id f2ls1277997lfa.0.gmail; Sun, 24 Mar
+ 2019 02:40:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNv29W7o4UmolIv6++1fQbKtR/XmxRvI2Yg7ELdBSpn3+GJlBcHBXUklfA/Pa1TFHQFXWM
+X-Received: by 2002:a19:7d84:: with SMTP id y126mr9305250lfc.124.1553420402427;
+        Sun, 24 Mar 2019 02:40:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553420402; cv=none;
+        d=google.com; s=arc-20160816;
+        b=DTlK8DpFiFSW/dUZvmm2whe8g+U7Zaqncdgz+32T6Gi22JLqMsApPOnvPqoA2AaqNJ
+         6aqX9UAOTjrHXY9QeioMSfotaWz8McF6zvND7uSo0GvX8oUN0UnKbQw1eKc9ERsjNgwt
+         tN9cO1SF/F9GaO+jSSzrJMUsOSwgdTuYV0CIEJJYH9QLvRo4gGEb1AtgJVizLdxhcnUJ
+         e1NVT4pc+OE+tYTssoNxFWo1XPZCQyVdi5NnefbgGbip5KsV8PJ9YIOt1fsYPKwxqvnW
+         AwuHO486Uw/+rtU83P0G0ftmiNfvPEjS5kZwb8ghdVdUbTTuCRbDIL50z7kaU1q15v6V
+         3xUw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=2TZJSyEdWPPSyLo0pq96hqDM0/dGCW80lGhdfHUXG2M=;
+        b=aDXPGY2nq87pKTelpLjEdbnLEkNAu+1L+3GRByf9QRiUS7lw1FZO4gcRC2vaEV4KAy
+         calILYdrnPTXJolnRgvkSn7pa4Y/+RQfGUdRnurf47zukn8UY/If6SgFD812CTKMCjY5
+         Kk65yo5rzZievWruJocCh+3RI+rJ2sPWfsrMUAfkhFU3oiEVlc5DOVT2NqaPlyF1sSBj
+         rjO+gm+AUgww4/kYi8fyviD6/AJMXm8UB7BBRydsLq0cDLlmJVj6rWpyOAO6NsbvjrpJ
+         9jMNhvJX+4wyCk/aldsm6m+xMjGy+8MbEMJLJBX1kOiR1XwFtI/8GejksSiAW+2XWs0L
+         vgtA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y1si790494lfe.1.2019.03.24.02.40.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Mar 2016 09:36:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
+        Sun, 24 Mar 2019 02:40:02 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22a.google.com with SMTP id fl4so115809733pad.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 01 Mar 2016 09:36:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=t0z2JpSKu4u+FRKPAstCC8kbmKyCFIv4yIkTZDdpQdQ=;
-        b=RIw50g6HQJcD9WtH3R8bUwhwNA/9HzlNl23UEiBCUmydnu7P5LCbSJRBcrC4fF03C6
-         +ncejCjgYB+PB3ZMkOlKXY8F2ubOmnCdZ3hVsjs7RT9zhqn5It38TXVYUxHprt8b5l2o
-         5ySLB9EqcdXVZtCXpDYlPQuGNU3NV7ZGqxOOSq5EZWcT2dqXnfN7+NIwu1kVSlOv3ra9
-         EEuzPukXkn41jcYqLb9RNMdhbrRmhEXIIPTMVIMNGILsI44vbbEODKVyqNoFu20LhL79
-         eU+KSX4mHH4cpqexwO/u2Q1fMaNfuRIZl9FpOU8fMmAhRvEoupY6ZKdM0aVBWWzi9A66
-         V7uA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=t0z2JpSKu4u+FRKPAstCC8kbmKyCFIv4yIkTZDdpQdQ=;
-        b=JIRh8jIiC0k52tCigve8HKoNndvqEC4ceyhXAUeSvaq5lm0ZRVNXhUF5cO6n9S7Uut
-         LfPeyrAcfNcEuIwg0YHRlYFVXAeUuH79tEx/rywdQe6FQdeqTP79UQZIbD8UsK5lhveQ
-         7gxR6xK3GNgkTRwUds0g/SApWPhfQ9MZKrKGG+dfs219xjt1UF8unqBzqITk7Bm/gMfA
-         PLsh7lcRmuDz0hVrD8FwO2crDvccOLYyUomjDUmtUIwedJD/9Oiy8Kv+r77GG8nDSDWj
-         E8qU7F8yba2woa9EeK9MjMpQzciU7jm5U6gIcvpEMq7cTkNmoge7eALLkDx3zjVUoPIr
-         6B6g==
-X-Gm-Message-State: AD7BkJKxHLc1yfHSV3cFvCtIaypb9E+GDtPtLlXmQYjlZ8jC5TKrkepR7ID6+VUrYBhydQ==
-X-Received: by 10.66.147.164 with SMTP id tl4mr30982563pab.40.1456853775981;
-        Tue, 01 Mar 2016 09:36:15 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w20sm11908365pfi.31.2016.03.01.09.36.14
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 09:36:15 -0800 (PST)
-Date: Tue, 1 Mar 2016 23:03:30 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723au: hal: Remove Unused macro
-Message-ID: <20160301173330.GA21348@Karyakshetra>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,256,1549926000"; 
+   d="scan'208";a="300519766"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2019 10:40:01 +0100
+Date: Sun, 24 Mar 2019 10:40:00 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Anushka Shukla <anushkacharu9@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6656: card.h: fix the
+ comment style
+In-Reply-To: <20190324093706.16308-1-anushkacharu9@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903241038290.2526@hadrien>
+References: <anushkacharu9@gmail.com> <20190324093706.16308-1-anushkacharu9@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: text/plain; charset=US-ASCII
 
-PlatformIndicateBTACLData is an unused macro. Hence, removed.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-index 1688f66..e6aec7f 100644
---- a/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-+++ b/drivers/staging/rtl8723au/hal/rtl8723a_bt-coexist.c
-@@ -77,8 +77,6 @@ if ((BTCoexDbgLevel == _bt_dbg_on_)) {\
+On Sun, 24 Mar 2019, anushkacharu9@gmail.com wrote:
 
- #define PlatformZeroMemory(ptr, sz)	memset(ptr, 0, sz)
+> From: Anushka Shukla <anushkacharu9@gmail.com>
+>
+> -Fix the comment style
+> -Replace '//' by '*/' to follow linux kernel coding style
 
--#define PlatformIndicateBTACLData(...)	(RT_STATUS_SUCCESS)
--
- #define GET_UNDECORATED_AVERAGE_RSSI(padapter)	\
- 			(GET_HAL_DATA(padapter)->dmpriv.EntryMinUndecoratedSmoothedPWDB)
- #define RT_RF_CHANGE_SOURCE u32
---
-2.1.4
+I don't understand the log message.  You have two -s, but you do only one
+thing.
 
+Actually, the -s are not a good idea.  They use a character that has an
+undefined meaning as a replacement for words that express the connection
+between the pieces of information you are providing.  Since it is very
+important for a log message to be understandable, please don't use - and
+instead find words to express what you mean.
+
+julia
+
+>
+> Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
+> ---
+>  drivers/staging/vt6656/card.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vt6656/card.h b/drivers/staging/vt6656/card.h
+> index 0a91d9ba4688..75cd340c0cce 100644
+> --- a/drivers/staging/vt6656/card.h
+> +++ b/drivers/staging/vt6656/card.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0+
+> +/* SPDX-License-Identifier: GPL-2.0+ */
+>  /*
+>   * Copyright (c) 1996, 2003 VIA Networking Technologies, Inc.
+>   * All rights reserved.
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190324093706.16308-1-anushkacharu9%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
