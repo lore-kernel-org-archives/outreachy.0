@@ -1,237 +1,194 @@
-X-GM-THRID: 6402052598675800064
-X-Received: by 10.25.235.21 with SMTP id j21mr539753lfh.10.1490594027900;
-        Sun, 26 Mar 2017 22:53:47 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.148.208 with SMTP id w199ls1173427wmd.4.canary-gmail; Sun,
- 26 Mar 2017 22:53:47 -0700 (PDT)
-X-Received: by 10.28.6.193 with SMTP id 184mr343924wmg.12.1490594027359;
-        Sun, 26 Mar 2017 22:53:47 -0700 (PDT)
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id x188si581102wmx.0.2017.03.26.22.53.47
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Mar 2017 22:53:47 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
-Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.36,229,1486422000"; 
-   d="scan'208";a="266300144"
-Received: from 198.67.28.109.rev.sfr.net (HELO hadrien) ([109.28.67.198])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Mar 2017 07:53:46 +0200
-Date: Mon, 27 Mar 2017 07:53:46 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+X-GM-THRID: 6670800416333103104
+Date: Sun, 24 Mar 2019 00:15:06 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: documentation
-Message-ID: <alpine.DEB.2.20.1703270752360.2488@hadrien>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
+Message-Id: <82c255e4-201d-4034-a06f-1a3a3a8826fd@googlegroups.com>
+In-Reply-To: <20190322160530.GA9031@kroah.com>
+References: <20190321111222.11964-1-sanjana99reddy99@gmail.com>
+ <20190321190102.GA30770@kroah.com>
+ <dcd4eaa9-83e8-448e-ac97-00555572ac62@googlegroups.com>
+ <20190322160530.GA9031@kroah.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core:
+ rtw_wlan_util.c: Modify return type suggested by Coccinelle.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1250_903230257.1553411706885"
+X-Google-Token: EPrc3OQFfvFYmwl261k0
+X-Google-IP: 123.201.77.18
 
-Commenting on Varsha's comments made me think of of the semantics patch
-below that I wrote at some time back to check kerneldoc comments.  Feel
-free to see if it comes up with anything interesting.
+------=_Part_1250_903230257.1553411706885
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1251_1142512084.1553411706886"
 
-julia
+------=_Part_1251_1142512084.1553411706886
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-@initialize:ocaml@
-@@
 
-let tbl = ref []
-let fnstart = ref []
-let success = Hashtbl.create 101
-let thefile = ref ""
-let parsed = ref []
-let nea = ref []
 
-let parse file =
-  thefile := List.nth (Str.split (Str.regexp "linux-next/") file) 1;
-  let i = open_in file in
-  let startline = ref 0 in
-  let fn = ref "" in
-  let ids = ref [] in
-  let rec inside n =
-    let l = input_line i in
-    let n = n + 1 in
-    match Str.split_delim (Str.regexp_string "*/") l with
-      before::after::_ ->
-	(if not (!fn = "")
-	then tbl := (!startline,n,!fn,List.rev !ids)::!tbl);
-	startline := 0;
-	fn := "";
-	ids := [];
-	outside n
-    | _ ->
-	(match Str.split (Str.regexp "[ \t]+") l with
-	  "*"::name::rest ->
-	    let len = String.length name in
-	    (if !fn = "" && len > 2 && String.sub name (len-2) 2 = "()"
-	    then fn := String.sub name 0 (len-2)
-	    else if !fn = "" && (not (rest = [])) && List.hd rest = "-"
-	    then
-	      if String.get name (len-1) = ':'
-	      then fn := String.sub name 0 (len-1)
-	      else fn := name
-	    else if not(!fn = "") && len > 2 &&
-	      String.get name 0 = '@' && String.get name (len-1) = ':'
-	    then ids := (String.sub name 1 (len-2)) :: !ids);
-	| _ -> ());
-	inside n
-  and outside n =
-    let l = input_line i in
-    let n = n + 1 in
-    if String.length l > 2 && String.sub l 0 3 = "/**"
-    then
-      begin
-	startline := n;
-	inside n
-      end
-    else outside n in
-  try outside 0 with End_of_file -> ()
+On Friday, March 22, 2019 at 9:35:36 PM UTC+5:30, Greg Kroah-Hartman wrote:
+>
+> On Fri, Mar 22, 2019 at 08:27:09AM -0700, sanjana9...@gmail.com 
+> <javascript:> wrote: 
+> > 
+> > 
+> > On Friday, March 22, 2019 at 12:31:06 AM UTC+5:30, gregkh wrote: 
+> > > 
+> > > On Thu, Mar 21, 2019 at 04:42:22PM +0530, Sanjana Sanikommu wrote: 
+> > > > The last two lines in the function could 
+> > > > be compressed into one. Avoid usage of local variable. 
+> > > > Challenge suggested by Coccinelle using ret.cocci. 
+> > > > The below is the script for ret.cocci: 
+> > > > @@ 
+> > > > local idexpression res; 
+> > > > expression e; 
+> > > > @@ 
+> > > > 
+> > > > -res = 
+> > > > +return 
+> > > >      e; 
+> > > > -return res; 
+> > > > 
+> > > > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com 
+> <javascript:>> 
+> > > > --- 
+> > > >  drivers/staging/rtl8188eu/core/rtw_wlan_util.c | 4 +--- 
+> > > >  1 file changed, 1 insertion(+), 3 deletions(-) 
+> > > > 
+> > > > diff --git a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c 
+> > > b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c 
+> > > > index 4480deef95a1..70776f8e19a6 100644 
+> > > > --- a/drivers/staging/rtl8188eu/core/rtw_wlan_util.c 
+> > > > +++ b/drivers/staging/rtl8188eu/core/rtw_wlan_util.c 
+> > > > @@ -1182,10 +1182,8 @@ unsigned int update_MSC_rate(struct 
+> > > ieee80211_ht_cap *pHT_caps) 
+> > > >  { 
+> > > >          unsigned int mask = 0; 
+> > > >   
+> > > > -        mask = (pHT_caps->mcs.rx_mask[0] << 12) | 
+> > > > +        return (pHT_caps->mcs.rx_mask[0] << 12) | 
+> > > >                 (pHT_caps->mcs.rx_mask[1] << 20); 
+> > > > - 
+> > > > -        return mask; 
+> > > >  } 
+> > > 
+> > > Did you build this patch? 
+> > > 
+> > > Just looking at it I can see the compiler warning that it will emit... 
+> > > 
+> > > Please always test-build your patches, otherwise it just makes people 
+> > > grumpy :) 
+> > > 
+> > 
+> > I apologise for what happened regarding this patch. I submitted this 
+> patch 
+> > after 
+> > 0 errors, 0 warnings, 0 checks i.e after post commit hooks. 
+> > I would like to know where I went wrong. I will correct them :) 
+>
+> Did you build the code after making the change?  That's the most 
+> important part :) 
+>
+>    I would resend the patch.
+   sanjana
 
-let hashadd tbl k v =
-  let cell =
-    try Hashtbl.find tbl k
-    with Not_found ->
-      let cell = ref [] in
-      Hashtbl.add tbl k cell;
-      cell in
-  cell := v :: !cell
+thanks, 
+>
+> greg k-h 
+>
 
-@script:ocaml@
-@@
+------=_Part_1251_1142512084.1553411706886
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-tbl := [];
-fnstart := [];
-Hashtbl.clear success;
-parsed := [];
-nea := [];
-parse (List.hd (Coccilib.files()))
+<div dir=3D"ltr"><br><br>On Friday, March 22, 2019 at 9:35:36 PM UTC+5:30, =
+Greg Kroah-Hartman wrote:<blockquote class=3D"gmail_quote" style=3D"margin:=
+ 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Fr=
+i, Mar 22, 2019 at 08:27:09AM -0700, <a href=3D"javascript:" target=3D"_bla=
+nk" gdf-obfuscated-mailto=3D"C4FtA_lxBAAJ" rel=3D"nofollow" onmousedown=3D"=
+this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39=
+;javascript:&#39;;return true;">sanjana9...@gmail.com</a> wrote:
+<br>&gt;=20
+<br>&gt;=20
+<br>&gt; On Friday, March 22, 2019 at 12:31:06 AM UTC+5:30, gregkh wrote:
+<br>&gt; &gt;
+<br>&gt; &gt; On Thu, Mar 21, 2019 at 04:42:22PM +0530, Sanjana Sanikommu w=
+rote:=20
+<br>&gt; &gt; &gt; The last two lines in the function could=20
+<br>&gt; &gt; &gt; be compressed into one. Avoid usage of local variable.=
+=20
+<br>&gt; &gt; &gt; Challenge suggested by Coccinelle using ret.cocci.=20
+<br>&gt; &gt; &gt; The below is the script for ret.cocci:=20
+<br>&gt; &gt; &gt; @@=20
+<br>&gt; &gt; &gt; local idexpression res;=20
+<br>&gt; &gt; &gt; expression e;=20
+<br>&gt; &gt; &gt; @@=20
+<br>&gt; &gt; &gt;=20
+<br>&gt; &gt; &gt; -res =3D=20
+<br>&gt; &gt; &gt; +return=20
+<br>&gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0e;=20
+<br>&gt; &gt; &gt; -return res;=20
+<br>&gt; &gt; &gt;=20
+<br>&gt; &gt; &gt; Signed-off-by: Sanjana Sanikommu &lt;<a>sanjana9...@gmai=
+l.com</a> &lt;javascript:&gt;&gt;=20
+<br>&gt; &gt; &gt; ---=20
+<br>&gt; &gt; &gt; =C2=A0drivers/staging/rtl8188eu/<wbr>core/rtw_wlan_util.=
+c | 4 +---=20
+<br>&gt; &gt; &gt; =C2=A01 file changed, 1 insertion(+), 3 deletions(-)=20
+<br>&gt; &gt; &gt;=20
+<br>&gt; &gt; &gt; diff --git a/drivers/staging/rtl8188eu/<wbr>core/rtw_wla=
+n_util.c=20
+<br>&gt; &gt; b/drivers/staging/rtl8188eu/<wbr>core/rtw_wlan_util.c=20
+<br>&gt; &gt; &gt; index 4480deef95a1..70776f8e19a6 100644=20
+<br>&gt; &gt; &gt; --- a/drivers/staging/rtl8188eu/<wbr>core/rtw_wlan_util.=
+c=20
+<br>&gt; &gt; &gt; +++ b/drivers/staging/rtl8188eu/<wbr>core/rtw_wlan_util.=
+c=20
+<br>&gt; &gt; &gt; @@ -1182,10 +1182,8 @@ unsigned int update_MSC_rate(stru=
+ct=20
+<br>&gt; &gt; ieee80211_ht_cap *pHT_caps)=20
+<br>&gt; &gt; &gt; =C2=A0{=20
+<br>&gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned int mask =3D =
+0;=20
+<br>&gt; &gt; &gt; =C2=A0=20
+<br>&gt; &gt; &gt; - =C2=A0 =C2=A0 =C2=A0 =C2=A0mask =3D (pHT_caps-&gt;mcs.=
+rx_mask[0] &lt;&lt; 12) |=20
+<br>&gt; &gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0return (pHT_caps-&gt;mcs.rx=
+_mask[0] &lt;&lt; 12) |=20
+<br>&gt; &gt; &gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+(pHT_caps-&gt;mcs.rx_mask[1] &lt;&lt; 20);=20
+<br>&gt; &gt; &gt; -=20
+<br>&gt; &gt; &gt; - =C2=A0 =C2=A0 =C2=A0 =C2=A0return mask;=20
+<br>&gt; &gt; &gt; =C2=A0}=20
+<br>&gt; &gt;
+<br>&gt; &gt; Did you build this patch?=20
+<br>&gt; &gt;
+<br>&gt; &gt; Just looking at it I can see the compiler warning that it wil=
+l emit...=20
+<br>&gt; &gt;
+<br>&gt; &gt; Please always test-build your patches, otherwise it just make=
+s people=20
+<br>&gt; &gt; grumpy :)=20
+<br>&gt; &gt;
+<br>&gt;=20
+<br>&gt; I apologise for what happened regarding this patch. I submitted th=
+is patch=20
+<br>&gt; after
+<br>&gt; 0 errors, 0 warnings, 0 checks i.e after post commit hooks.
+<br>&gt; I would like to know where I went wrong. I will correct them :)
+<br>
+<br>Did you build the code after making the change? =C2=A0That&#39;s the mo=
+st
+<br>important part :)
+<br>
+<br></blockquote><div>=C2=A0 =C2=A0I would resend the patch.</div><div>=C2=
+=A0 =C2=A0sanjana</div><div><br></div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left=
+: 1ex;">thanks,
+<br>
+<br>greg k-h
+<br></blockquote></div>
+------=_Part_1251_1142512084.1553411706886--
 
-@r@
-identifier f;
-position p;
-@@
-
-f@p(...) { ... }
-
-@script:ocaml@
-p << r.p;
-f << r.f;
-@@
-
-parsed := f :: !parsed;
-fnstart := (List.hd p).line :: !fnstart
-
-@param@
-identifier f;
-type T;
-identifier i;
-parameter list[n] ps;
-parameter list[n1] ps1;
-position p;
-@@
-
-f@p(ps,T i,ps1) { ... }
-
-@script:ocaml@
-@@
-
-tbl := List.rev (List.sort compare !tbl)
-
-@script:ocaml@
-p << param.p;
-f << param.f;
-@@
-
-let myline = (List.hd p).line in
-let prevline =
-  List.fold_left
-    (fun prev x ->
-      if x < myline
-      then max x prev
-      else prev)
-    0 !fnstart in
-let _ =
-  List.exists
-    (function (st,fn,nm,ids) ->
-      if prevline < st && myline > st && prevline < fn && myline > fn
-      then
-	begin
-	  (if not (String.lowercase f = String.lowercase nm)
-	  then
-	    Printf.printf "%s:%d %s doesn't match preceding comment: %s\n"
-	      !thefile myline f nm);
-	  true
-	end
-      else false)
-    !tbl in
-()
-
-@script:ocaml@
-p << param.p;
-n << param.n;
-n1 << param.n1;
-i << param.i;
-f << param.f;
-@@
-
-let myline = (List.hd p).line in
-let prevline =
-  List.fold_left
-    (fun prev x ->
-      if x < myline
-      then max x prev
-      else prev)
-    0 !fnstart in
-let _ =
-  List.exists
-    (function (st,fn,nm,ids) ->
-      if prevline < st && myline > st && prevline < fn && myline > fn
-      then
-	begin
-	  (if List.mem i ids then hashadd success (st,fn,nm) i);
-	  (if ids = [] (* arg list seems not obligatory *)
-	  then ()
-	  else if not (List.mem i ids)
-	  then
-	    Printf.printf "%s:%d %s doesn't appear in ids: %s\n"
-	      !thefile myline i (String.concat " " ids)
-	  else if List.length ids <= n || List.length ids <= n1
-	  then
-	    (if not (List.mem f !nea)
-	    then
-	      begin
-		nea := f :: !nea;
-		Printf.printf "%s:%d %s not enough args\n" !thefile myline f;
-	      end)
-	  else
-	    let foundid = List.nth ids n in
-	    let efoundid = List.nth (List.rev ids) n1 in
-	    if not(foundid = i || efoundid = i)
-	    then
-	      Printf.printf "%s:%d %s wrong arg in position %d: %s\n"
-		!thefile myline i n foundid);
-	  true
-	end
-      else false)
-    !tbl in
-()
-
-@script:ocaml@
-@@
-List.iter
-  (function (st,fn,nm,ids) ->
-    if List.mem nm !parsed
-    then
-      let entry =
-	try !(Hashtbl.find success (st,fn,nm))
-	with Not_found -> [] in
-      List.iter
-	(fun id ->
-	  if not (List.mem id entry) && not (id = "...")
-	  then Printf.printf "%s:%d %s not used\n" !thefile st id)
-	ids)
-  !tbl
+------=_Part_1250_903230257.1553411706885--
 
