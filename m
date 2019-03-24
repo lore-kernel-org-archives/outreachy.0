@@ -1,228 +1,111 @@
 X-GM-THRID: 6670497613364592640
-Date: Sun, 24 Mar 2019 00:13:33 -0700 (PDT)
-From: sanjana99reddy99@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <4a288836-4582-46b9-b70f-ccf117b15243@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.1903240807200.2526@hadrien>
+X-Received: by 2002:a2e:3311:: with SMTP id d17mr9494253ljc.165.1553411275183;
+        Sun, 24 Mar 2019 00:07:55 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a2e:98f:: with SMTP id 137ls315217ljj.9.gmail; Sun, 24 Mar
+ 2019 00:07:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwu5KAauTpjqAIT+jlMIPiDACs51XjdYd7xgPoddHxmF8r63xxtBnHXYSlSIlG2t2XI8B/E
+X-Received: by 2002:a2e:8582:: with SMTP id b2mr9478273lji.24.1553411274392;
+        Sun, 24 Mar 2019 00:07:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553411274; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LQlgvA4XhCkRtAiSK3wVHzDlZgQBHCH44EYtPZ32ak2V9AddJMYS8QNTdzP242FFyb
+         5okB2EmpwxD9yg3BQxg6mEE1rcn8+7nkakNAg85BckhLJcihhj4C5rnPbLqYUklzkQLf
+         Oji177Bs2/xjkzoPycH3Sif5xEiyPT0QPG7XoqEbm13K6GdZlMxIvVjOPdvd70zzyfn2
+         oBEL0TgAxY0n0yA6AJZeXXaKDzcmIIkc0aSDJQ8L7qtkCg3Xg1/+xuLZnoyzh+pGT4zd
+         D9h9S6iCLT+JwLraYn4okoi0DnsxdigfETlhZ9nLWj8He/2C87mn6yYWjlK/MUzbK+GO
+         N+WQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=SUKUirmDnc5CsQ6ii40ftPnpIvhNDhktpOwrchJYNDE=;
+        b=nqFOmtC3Zb1NXEP7VI3RF+VExxLMJf1gPb4IH86eh5vgngctC3y7Ght+rV07qQWWAK
+         W5uXbc4aitba7XDAJBt1D0Uyyc1MlU9pXAlyi/JWrNzGTfQRAsco2AVeGDOXbgD+A0dJ
+         rGJdHW2vZaMPzFCkjeFAo8hQhlXv2OsKm2c1YtqoELyl7ZqPOroD0bmRy0IFnFxQ1qOt
+         /OlbQD2BC04dLnA4i/eBRHnHXFyYSs3OWwQTx4dkkuigyOwMfmd7vcjsD7ptlgXJf6a9
+         1ynTN5Mdjc+YySj+Y74SvGpbO25Q80ujR9pbx3EpttQRx7PGZ+5EMawGZj8XU5MzXEyY
+         tgRg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y1si774622lfe.1.2019.03.24.00.07.54
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 24 Mar 2019 00:07:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,256,1549926000"; 
+   d="scan'208";a="300511344"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2019 08:07:53 +0100
+Date: Sun, 24 Mar 2019 08:07:53 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core: rtw_recv.c:
+ Modify return type suggested by Coccinelle.
+In-Reply-To: <20190324065855.7685-1-sanjana99reddy99@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903240807200.2526@hadrien>
 References: <20190324065855.7685-1-sanjana99reddy99@gmail.com>
- <alpine.DEB.2.21.1903240807200.2526@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core:
- rtw_recv.c: Modify return type suggested by Coccinelle.
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_1272_2004740904.1553411613637"
-X-Google-Token: EJ3c3OQF-zGfzCeFQnY0
-X-Google-IP: 123.201.77.18
-
-------=_Part_1272_2004740904.1553411613637
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_1273_388935560.1553411613637"
-
-------=_Part_1273_388935560.1553411613637
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Sunday, March 24, 2019 at 12:37:55 PM UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Sun, 24 Mar 2019, Sanjana Sanikommu wrote: 
->
-> > The last two lines in the function could 
-> > be compressed into one. Avoid usage of local variable. 
->
-> The commit message is misleading because at least in the first case, what 
-> is changed is not the last two lines of a function. 
->
+On Sun, 24 Mar 2019, Sanjana Sanikommu wrote:
 
-  Sure, I would change commit message.
-Sanjana 
+> The last two lines in the function could
+> be compressed into one. Avoid usage of local variable.
+
+The commit message is misleading because at least in the first case, what
+is changed is not the last two lines of a function.
+
+julia
 
 >
-> julia 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+> Changes in v2:
+> Test build the patch
+>  drivers/staging/rtl8188eu/core/rtw_recv.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 >
-> > 
-> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
-> > --- 
-> > Changes in v2: 
-> > Test build the patch 
-> >  drivers/staging/rtl8188eu/core/rtw_recv.c | 6 ++---- 
-> >  1 file changed, 2 insertions(+), 4 deletions(-) 
-> > 
-> > diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c 
-> b/drivers/staging/rtl8188eu/core/rtw_recv.c 
-> > index 90eb1a025051..606a9f51508a 100644 
-> > --- a/drivers/staging/rtl8188eu/core/rtw_recv.c 
-> > +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c 
-> > @@ -1859,8 +1859,7 @@ static int process_recv_indicatepkts(struct 
-> adapter *padapter, 
-> >                          /*  including perform A-MPDU Rx Ordering Buffer 
-> Control */ 
-> >                          if ((!padapter->bDriverStopped) && 
-> >                              (!padapter->bSurpriseRemoved)) { 
-> > -                                retval = _FAIL; 
-> > -                                return retval; 
-> > +                                return _FAIL; 
-> >                          } 
-> >                  } 
-> >          } else { /* B/G mode */ 
-> > @@ -1879,8 +1878,7 @@ static int process_recv_indicatepkts(struct 
-> adapter *padapter, 
-> >                          RT_TRACE(_module_rtl871x_recv_c_, _drv_notice_, 
-> ("@@@@ %s- recv_func free_indicatepkt\n", __func__)); 
-> > 
-> >                          RT_TRACE(_module_rtl871x_recv_c_, _drv_notice_, 
-> ("recv_func:bDriverStopped(%d) OR bSurpriseRemoved(%d)", 
-> padapter->bDriverStopped, padapter->bSurpriseRemoved)); 
-> > -                        retval = _FAIL; 
-> > -                        return retval; 
-> > +                        return _FAIL; 
-> >                  } 
-> >          } 
-> > 
-> > -- 
-> > 2.17.1 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an email to outreachy-kern...@googlegroups.com <javascript:>. 
-> > To post to this group, send email to outreach...@googlegroups.com 
-> <javascript:>. 
-> > To view this discussion on the web visit 
-> https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7685-1-sanjana99reddy99%40gmail.com. 
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
+> index 90eb1a025051..606a9f51508a 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_recv.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
+> @@ -1859,8 +1859,7 @@ static int process_recv_indicatepkts(struct adapter *padapter,
+>  			/*  including perform A-MPDU Rx Ordering Buffer Control */
+>  			if ((!padapter->bDriverStopped) &&
+>  			    (!padapter->bSurpriseRemoved)) {
+> -				retval = _FAIL;
+> -				return retval;
+> +				return _FAIL;
+>  			}
+>  		}
+>  	} else { /* B/G mode */
+> @@ -1879,8 +1878,7 @@ static int process_recv_indicatepkts(struct adapter *padapter,
+>  			RT_TRACE(_module_rtl871x_recv_c_, _drv_notice_, ("@@@@ %s- recv_func free_indicatepkt\n", __func__));
 >
-> > For more options, visit https://groups.google.com/d/optout. 
-> > 
+>  			RT_TRACE(_module_rtl871x_recv_c_, _drv_notice_, ("recv_func:bDriverStopped(%d) OR bSurpriseRemoved(%d)", padapter->bDriverStopped, padapter->bSurpriseRemoved));
+> -			retval = _FAIL;
+> -			return retval;
+> +			return _FAIL;
+>  		}
+>  	}
 >
-
-------=_Part_1273_388935560.1553411613637
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sunday, March 24, 2019 at 12:37:55 PM UTC+5:30,=
- Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
-rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Sun, 24 Mar 2019, Sanjana Sanikommu wrote:
-<br>
-<br>&gt; The last two lines in the function could
-<br>&gt; be compressed into one. Avoid usage of local variable.
-<br>
-<br>The commit message is misleading because at least in the first case, wh=
-at
-<br>is changed is not the last two lines of a function.
-<br></blockquote><div><br></div><div>=C2=A0 Sure, I would change commit mes=
-sage.</div><div>Sanjana=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
-1ex;">
-<br>julia
-<br>
-<br>&gt;
-<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"m3zQBH6DBAAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
-<br>&gt; ---
-<br>&gt; Changes in v2:
-<br>&gt; Test build the patch
-<br>&gt; =C2=A0drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c | 6 ++----
-<br>&gt; =C2=A01 file changed, 2 insertions(+), 4 deletions(-)
-<br>&gt;
-<br>&gt; diff --git a/drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c b/driv=
-ers/staging/rtl8188eu/<wbr>core/rtw_recv.c
-<br>&gt; index 90eb1a025051..606a9f51508a 100644
-<br>&gt; --- a/drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c
-<br>&gt; +++ b/drivers/staging/rtl8188eu/<wbr>core/rtw_recv.c
-<br>&gt; @@ -1859,8 +1859,7 @@ static int process_recv_indicatepkts(<wbr>st=
-ruct adapter *padapter,
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0/* =C2=A0including perform A-MPDU Rx Ordering Buffer Control */
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0if ((!padapter-&gt;bDriverStopped) &amp;&amp;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 =C2=A0 =C2=A0(!padapter-&gt;bSurpriseRemoved)<wbr>) {
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0retval =3D _FAIL=
-;
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return retval;
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0return _FAIL;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0}
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else { /* =
-B/G mode */
-<br>&gt; @@ -1879,8 +1878,7 @@ static int process_recv_indicatepkts(<wbr>st=
-ruct adapter *padapter,
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0RT_<wbr>TRACE(_module_rtl871x_recv_c_, _drv_notice_, (&quot;@@@@ %=
-s- recv_func free_indicatepkt\n&quot;, __func__));
-<br>&gt;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0RT_<wbr>TRACE(_module_rtl871x_recv_c_, _drv_notice_, (&quot;recv_f=
-unc:bDriverStopped(%d) OR bSurpriseRemoved(%d)&quot;, padapter-&gt;bDriverS=
-topped, padapter-&gt;bSurpriseRemoved));
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0<wbr>retval =3D _FAIL;
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0<wbr>return retval;
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0<wbr>return _FAIL;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt;
-<br>&gt; --
-<br>&gt; 2.17.1
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
-ailto=3D"m3zQBH6DBAAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
-ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
-turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"m3zQBH6DBAAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
-.google.com/d/msgid/outreachy-kernel/20190324065855.7685-1-sanjana99reddy99=
-%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
-=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7=
-685-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
-=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7=
-685-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.google=
-.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190324065855.7685-1-<wbr>sanjana9=
-9reddy99%40gmail.com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br></blockquote></div>
-------=_Part_1273_388935560.1553411613637--
-
-------=_Part_1272_2004740904.1553411613637--
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190324065855.7685-1-sanjana99reddy99%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
