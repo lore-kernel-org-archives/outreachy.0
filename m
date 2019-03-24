@@ -1,130 +1,111 @@
 X-GM-THRID: 6671816179609239552
-X-Received: by 2002:a24:242:: with SMTP id 63mr4089022itu.39.1553406077849;
-        Sat, 23 Mar 2019 22:41:17 -0700 (PDT)
+X-Received: by 2002:ac8:3736:: with SMTP id o51mr15642505qtb.223.1553403280423;
+        Sat, 23 Mar 2019 21:54:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:5a0a:: with SMTP id v10ls3804988ita.2.gmail; Sat, 23 Mar
- 2019 22:41:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyWiubZrTaWS3wvYRvqNqy9EywOWKF+u0ZbOMFdiV3wkG47IA+UPuP1uePoHKLZlzj8iR6v
-X-Received: by 2002:a24:3dc7:: with SMTP id n190mr7496535itn.62.1553406076943;
-        Sat, 23 Mar 2019 22:41:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553406076; cv=none;
+Received: by 2002:a37:b742:: with SMTP id h63ls1333188qkf.2.gmail; Sat, 23 Mar
+ 2019 21:54:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXp7tidM+atWetou2xMUQNiEwv9nPyXNkc3aBzc/0zacMY0iPAAB/z3KT2e1neTAbQDKl/
+X-Received: by 2002:a37:4c85:: with SMTP id z127mr14606554qka.180.1553403279829;
+        Sat, 23 Mar 2019 21:54:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553403279; cv=none;
         d=google.com; s=arc-20160816;
-        b=b15FIp1uCsOf9gCsfF1tRlT6L1GBg7FxcPhVwMRAmfqlmAu24FKDcJzTwerVIhAsxF
-         XBQZt9Py8xp9hACJtz/cYj0dnT8iJGaqcPkVtVZQ/ZqPQChNkhX7yHZTnMLJxrcLbHAm
-         jh9GF8U7aA8k5F8sQj0jSgPjLjXgWRHNTBa/Y3eas9OQdCJLtbDbABDfY19mfB8siOoN
-         jjJNZodcCchZN0hlwNAwTsaFDkIBhWY3X8Av0jw9yK3hS65X9g4YD4HLS6yficNRVtBw
-         BEDTXZaOFHvdLwFvwOmVbu0P1bzc13clSwzk+7DqPUzC1Q/+Q/CF8wUA7Jb2+IKEhGBi
-         0QVg==
+        b=v/6S7hD0/PUntrc5mKPuVMstUkNgacbFBr5zZ8tVha7aKhWyGm5z1GPJ7RIPfDQZdm
+         krDC7gGo4LieLhCFpQzVgSys/7Rihi20vis6Z+h4jkc+nhom0YGC2qE2x+X0vvGPgmzV
+         nHE7NFSTvct/Jf7wb9xL2xM0OPy/jui0Ou0eNEMnaJv0N0XqsDPYp03e5t5rBdCYv07B
+         a3LQhBc+hlnhPWY5OLG/VSmHT9xYREbP18n/pQy2OgCJRC5vczBYoCRsreAlWx1voIFc
+         QtO8JACDFed3ai+Qdc5XMqwN3WXHTiEMHAmc7Y7smIeAgOXEKLB7XxkWhVCBpDZc6W8T
+         v2Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=uiYWS1xJ6lBthKmOmyWJWxK9uDaBPGSLhE4YPT3neXU=;
-        b=AvWGsDSoxMNKBNLTQlkxjyzvUKX5fQQrAEyeBOLFVtZBd5NuRrQlGAYNiaEjZzA4wi
-         8pKrVuAo9OH9TEE3rvU36NKgorcjaa80tq2rZ333qpDWa/pclLDrkoiCj3a/e/0XEs4S
-         bJGYUyun/TToAiIJ7vbI40JpmN0u7chKnZW5DvnJqS4j1+JDeWWyYmkq2OrMkGGZRuVn
-         uUjApCbBgY6FpSJ9or2zW7DAiUCFhoX20VmRRGmT8f2hKH1jPuNCTRnvPVLUWXk6Wy3S
-         jp0XDFC76R2RUjaixPqn4FWxv5ZRrSzGKPVtcqifqlWg19GI8DWD4QPFIaBGOK1ZyuqI
-         JssA==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=cJFzs6mh+4kcRYn22g4cNe04JSVPd0oylqNP88jRaLs=;
+        b=MP0mTs6bboTlV0WFbpsVdSbuj8DkpeEostLYMrrJCGgZL8mxOo63GXFZUh1V8Ass/6
+         KaSO1A0o6VH2ajKcwc4L7j8Zvp0hBj/TuQ6qzoDaGDhh1+AR88Rj5Liu3PFtxE8ODA0+
+         pNeQKiAhLTVjUrbuoKo88Qax0lnfqDT4xvDHqZq9j3cdBxivDEEhFigZbrNRxCOqqHIR
+         2tZz2Bs4O9ojhjvluXYPBuE321xnlh71AsPQZzum+d19QkOm9UnxJyXtGPoOGofy1Z2n
+         /Nheb7aBDtoVeHxawyesb6tlVeK/t4XrMJrFndXtsP8uKR4AzzU7I3QlwojwRWJPU0Ej
+         EUOA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DRPrJ+O0;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cbxYpdRm;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id u1si972063itb.2.2019.03.23.22.41.16
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id h186si1027730qkc.1.2019.03.23.21.54.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 22:41:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Sat, 23 Mar 2019 21:54:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DRPrJ+O0;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cbxYpdRm;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id p10so4182575pff.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 22:41:16 -0700 (PDT)
+Received: by mail-pg1-x542.google.com with SMTP id j26so2171363pgl.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 21:54:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=uiYWS1xJ6lBthKmOmyWJWxK9uDaBPGSLhE4YPT3neXU=;
-        b=DRPrJ+O0yrwQIThTG0YAmBA+R3BxpHpMJxo71X11Xx/mVkE5EfCRroh/5Z2/2/p9mO
-         aKKjLn7XUszYRxmJwNGlcJtwBsM0A5PwAobu6oVYB4dHr9+RkF1hkNVwWz18qTJ2zoBd
-         dfnswXNMcv/Yb0XaW/2Bivx2zOWhz851DQiPtqwciOJOFX39WX6dMAPRaM/UD7ryPlmW
-         zBt4UK17anrp0YP5rM5I6TtZvQvHqZ6Q1T9U0faW5SLn3PplQRjskCl5BsY46SN5LB9R
-         CgYjURU31Aem607UBhtEChK6eh03MzPfFk6cxGPOPovIyCk87+Oz/7lqnLmZEFRb5PzK
-         p1Dw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=cJFzs6mh+4kcRYn22g4cNe04JSVPd0oylqNP88jRaLs=;
+        b=cbxYpdRmHXAYJXzlvM/tqNHA9AHhkLjhNHkf45SwL0TNWLJA0bN6qSyBGOVYpSl8qt
+         F+4a3XcHRStguk4E2bMSflrB826ADxHitosUzBYWnru8wGlEdTi2vdbzCmKv7ex7X/kt
+         A7zQbK+AvhSfKqwkFjr/Pv8/JnG9ap68sGQgzCylWiNXLxORPFs3zAlM+0udFOoLDBEw
+         qOYEo+HB4IC/tu5VhmoVAbxRu9aZg+Wce06KJchnbmjLH3kEX8U70YaW3XSkFXu7TphU
+         HIMf0TBOirrhpv3yMp8riX3TStVYdDzObTmGCrzOxT2FK58NfXk4++1ghL1FAw/d/5AY
+         KvAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=uiYWS1xJ6lBthKmOmyWJWxK9uDaBPGSLhE4YPT3neXU=;
-        b=lTbvVvEGa3gnkZtSdwLUTRPUNMMn4Ul5tfApEdm8zIjj1zcQh+uSVcu+lnBPGJMo7E
-         KQeSoyjC+c6ZpOFV6JXqUSFqjQtR/bL55jVPmngl1Fm6NTGLewlaYThiV90E/UpKqM1g
-         pmLMRDQhOqPx+ipxC1W+2Wyq9HY9jCmPjNa5hqi4fgLu2Q1Yk8ygMaCw1YULdNIn1FG8
-         qT36s3jWHiytyLudWE3yhylBsVgDAoNgkYYk5XW5488rIx6MapdQot4cjhpccCN5HQYD
-         x8esaO4JzgYgpBTGEBJPVAM3zHo4Qn4cyvggIwbKhMra8CJZQ1Bp3X+pU8u+btL1VYo0
-         J+yQ==
-X-Gm-Message-State: APjAAAW8WLRjXhOhRWvP7X/RFKLdhzOeyTAJg1IlNQQ5l/0QKwM9t4E/
-	4AR7y5480KPvs0nXBPJyM1AqO2pV
-X-Received: by 2002:a17:902:112c:: with SMTP id d41mr18632262pla.177.1553406076046;
-        Sat, 23 Mar 2019 22:41:16 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=cJFzs6mh+4kcRYn22g4cNe04JSVPd0oylqNP88jRaLs=;
+        b=Rg4X1iKe7KQ1A/YftIAbMFOwOwwtn4hw42Rmn8a2mUhR6qdFBh64wplSlOkwxVF5Ii
+         Rkc0d0cCWKRkT2YuNlXhNRsdmuzU5hf48aMjjlzkBkzBkU/fIOn1xR3ZLGncvP9/ru/R
+         +DfYES7tOWlhmHZZkiLKMmAan4sWiXq/cH9R+vaqXBAGax4IStdyFBdyFyay48O9345u
+         e1Bi9/pZtoBm/aBwvwCj0jLJg2MPbjy/H98i15io34NW2RH3Ta8SafxSBbXQtVF4sp9+
+         gY0hoxm0QDYh0xdsOjBlB+qFJxf/GAvgL4lVtztuOM8YtEQyeu+IraIzeCOG0EKArvpf
+         80KA==
+X-Gm-Message-State: APjAAAXGHnN61auDIyArUUXGZ5Kkx1MeSJs6j4CdosEC9PE6M99WDrKH
+	lWFLOwJXtvhlFO5ZgNppCtPSMYm/
+X-Received: by 2002:aa7:8459:: with SMTP id r25mr17998129pfn.65.1553403279112;
+        Sat, 23 Mar 2019 21:54:39 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([157.33.202.114])
-        by smtp.gmail.com with ESMTPSA id e23sm14934032pfi.7.2019.03.23.22.41.12
+        by smtp.gmail.com with ESMTPSA id b15sm34275913pfj.167.2019.03.23.21.54.36
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 23 Mar 2019 22:41:15 -0700 (PDT)
+        Sat, 23 Mar 2019 21:54:38 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH 2/6 v2] staging: rtl8712: avoid camelcase variable name 'backupPMKIDList'
-Date: Sun, 24 Mar 2019 11:11:01 +0530
-Message-Id: <1553406061-8336-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+To: 
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 6/6] staging: rtl8712: recv_linux.c: align to open parenthesis
+Date: Sun, 24 Mar 2019 10:23:53 +0530
+Message-Id: <24f4eff1239087df54be538637ceb77694c8a3d1.1553403095.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <e0cba4211ae056d80a743a81f01e4cef07663c27.1553403095.git.payal.s.kshirsagar.98@gmail.com>
+References: <e0cba4211ae056d80a743a81f01e4cef07663c27.1553403095.git.payal.s.kshirsagar.98@gmail.com>
+In-Reply-To: <cover.1553403095.git.payal.s.kshirsagar.98@gmail.com>
+References: <cover.1553403095.git.payal.s.kshirsagar.98@gmail.com>
 
-Eliminate camelcase variable names to fix the style issue – ‘avoid
-camelcase’.
+Rearrange code to fix alignment issue.
 
 Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
-Changes in v2:
-	-backup_PMKID_List replaced with backup_PMKID_list
- drivers/staging/rtl8712/mlme_linux.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8712/recv_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/mlme_linux.c b/drivers/staging/rtl8712/mlme_linux.c
-index fbd04f5..12b8eaf 100644
---- a/drivers/staging/rtl8712/mlme_linux.c
-+++ b/drivers/staging/rtl8712/mlme_linux.c
-@@ -84,7 +84,7 @@ void r8712_os_indicate_connect(struct _adapter *adapter)
- 	netif_carrier_on(adapter->pnetdev);
- }
+diff --git a/drivers/staging/rtl8712/recv_linux.c b/drivers/staging/rtl8712/recv_linux.c
+index 4e20cba..97c980a 100644
+--- a/drivers/staging/rtl8712/recv_linux.c
++++ b/drivers/staging/rtl8712/recv_linux.c
+@@ -61,7 +61,7 @@ int r8712_os_recvbuf_resource_alloc(struct _adapter *padapter,
  
--static struct RT_PMKID_LIST   backup_PMKID_List[NUM_PMKID_CACHE];
-+static struct RT_PMKID_LIST   backup_PMKID_list[NUM_PMKID_CACHE];
- void r8712_os_indicate_disconnect(struct _adapter *adapter)
+ /*free os related resource in struct recv_buf*/
+ int r8712_os_recvbuf_resource_free(struct _adapter *padapter,
+-			     struct recv_buf *precvbuf)
++				   struct recv_buf *precvbuf)
  {
- 	u8 backupPMKIDIndex = 0;
-@@ -99,7 +99,7 @@ void r8712_os_indicate_disconnect(struct _adapter *adapter)
- 		 * disconnect with AP for 60 seconds.
- 		 */
- 
--		memcpy(&backup_PMKID_List[0],
-+		memcpy(&backup_PMKID_list[0],
- 		       &adapter->securitypriv.PMKIDList[0],
- 		       sizeof(struct RT_PMKID_LIST) * NUM_PMKID_CACHE);
- 		backupPMKIDIndex = adapter->securitypriv.PMKIDIndex;
-@@ -113,7 +113,7 @@ void r8712_os_indicate_disconnect(struct _adapter *adapter)
- 		 * for the following connection.
- 		 */
- 		memcpy(&adapter->securitypriv.PMKIDList[0],
--		       &backup_PMKID_List[0],
-+		       &backup_PMKID_list[0],
- 		       sizeof(struct RT_PMKID_LIST) * NUM_PMKID_CACHE);
- 		adapter->securitypriv.PMKIDIndex = backupPMKIDIndex;
- 		adapter->securitypriv.btkip_countermeasure =
+ 	if (precvbuf->pskb)
+ 		dev_kfree_skb_any(precvbuf->pskb);
 -- 
 2.7.4
 
