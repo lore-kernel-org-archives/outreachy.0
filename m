@@ -1,111 +1,95 @@
-X-GM-THRID: 6886434353715347456
-X-Received: by 2002:a05:651c:22f:: with SMTP id z15mr1083492ljn.324.1603372943787;
-        Thu, 22 Oct 2020 06:22:23 -0700 (PDT)
+X-GM-THRID: 6671539899637694464
+X-Received: by 2002:a02:1b54:: with SMTP id l81mr13377139jad.87.1553417882144;
+        Sun, 24 Mar 2019 01:58:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:b5b7:: with SMTP id f23ls333983ljn.2.gmail; Thu, 22 Oct
- 2020 06:22:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9y7KhKjVAAnKC6KkBz4aAgL8Zr1PW9wGuY126KYHO2N/3Fj05YcdFnyLbMXu7qfoZMA00
-X-Received: by 2002:a05:651c:c2:: with SMTP id 2mr1028975ljr.460.1603372941723;
-        Thu, 22 Oct 2020 06:22:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603372941; cv=none;
+Received: by 2002:a6b:ea0d:: with SMTP id m13ls5427870ioc.3.gmail; Sun, 24 Mar
+ 2019 01:58:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUbWTNOH8PC+X87aGDmViSUMfzG4BTgWYaFz1n5MlWDmZO9xfWGjiFIHnS+EXv7CsESOgb
+X-Received: by 2002:a6b:5810:: with SMTP id m16mr4371959iob.274.1553417881420;
+        Sun, 24 Mar 2019 01:58:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553417881; cv=none;
         d=google.com; s=arc-20160816;
-        b=GJvQYvrmnxI1Rx2IiabNt/VY8p2iAYjW3ncqeCd20Gn+2u7VzlsjAuosJLXb9i60Kn
-         g93HekPLW5ruxfeNCwIpTYD9Ef8Kd2Bz3toWGaz2biSx+EnBeTyJtMJzlvIw4/vWXfn+
-         C9gFMSJQnFLDWT2z8+HdkJRUjC9V1oanh9AGeudqW7TXw3IWDFQpKaInHTr5j6Uv6W4e
-         8lMQ6Kb299JL1726x6AUFIcY5h49uehhioZMyj2KdAPgjldRxRUrJgzj153wf1mZtyVB
-         PjVph4SB5PCcfVJqp05mFJ1T4URC+d1uSo96gE9yjJlL5pHi2vWp4GvP6RwjQzxGmsa9
-         U/qw==
+        b=P+/SiOpO4Ylvle3iX+ZU368YiIY+lljCAQuB24oOxLOAexaOeqG7P2LjF34hEFEqZr
+         ReXmz9H8JKzXH/Z1Ku3uuqKI9Eu7X5vVKOAY8A0+a4GOUCw/Nn04D1AoKbkK/BYVcRQj
+         G6/UphpeIy/Bsi4PQcKytWBVAB2D7GCnlTD8hO30lxZMDTurJuePR6Go4h5G73OnmHNg
+         xofOdQTBWdHsmaPHDTfX2SAxdvNhgQLOrXSiQD4ApOfXnxNPOzjAzeqFPUcwrXBxR+D0
+         IbFswU5TZyJ0B8DZDot9fPwWxMNFXr8o6NALW6/gjd2jcupeWCIJiormc0cNNBOhR0y0
+         293g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/457KlRttwTbzW2IPZucxg6Xez470vGxov79DYd6XzE=;
-        b=wmip7zZX5oRqBH0kd7w6dQK3AlqFmZU1yJtBOrsirLDANjb4nL4NnKJOFxWd2egyb8
-         bZqbORr/amNASWu32dVt6o34pPabTV619rxwiMU3Es4vOixYRMY98wqtT975IJ5CAl0B
-         p6rlbvgkKI53LvCIN/PD/Cqdx69C2CMe2Pq1UtWEZD+DBlKAF2SeJHpJBS2cl+yCwmht
-         rqYXeRNaZ3a06ToXS4TRYpF4SWNRDIiDy2i4p9C1aNn3zzGHbo9yJgTNQJX0YEz3Kp/6
-         6cEqd1unX27Fkv07ARCd5CJvsN9oTDHJT38eG76KL0TVDCnXKt9vqdgDqnaEfi5BtkjW
-         XWnQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=SYCKL23GCoFMUMACutoykwMsEXcwzBFzl6yO33qOnT8=;
+        b=Gpr5yKLG7/aw0F1/DuV+uGwEelofzn46tYj1n7lBLoP2XlTLj9IbKi+frksw4jjED3
+         0yKpo2sUxGENDrkR3ruWx4t3hpU1ugCRDow2i7ZMSHi5nznQgW3atMZJmEFERk4cPwUi
+         M8ibBwxF+Y000XlHLAIqPRqU+M3hgXT0rlPcgOF8xjEtA2LY3Cb8xQ4377jRkaKxp0s0
+         dNPSpkjOW4Vf7zUwwBVQId1ukWOkaqWoZdT7Bqq+EoGiFIx/wJ0xfz4gerhZrjCkHBu3
+         NfG1/9hRhu8X4y67JbTJ36IMErryqVhLomq53yQ9wY/r7jQnzAE4qNaf6Ostbz9zL1hD
+         KSKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DIYpmXMq;
-       spf=pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::642 as permitted sender) smtp.mailfrom=izabela.bakollari@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <izabela.bakollari@gmail.com>
-Received: from mail-ej1-x642.google.com (mail-ej1-x642.google.com. [2a00:1450:4864:20::642])
-        by gmr-mx.google.com with ESMTPS id a16si61038lfr.5.2020.10.22.06.22.21
+       dkim=pass header.i=@kernel.org header.s=default header.b=z7FyBx2R;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id f13si701069iok.3.2019.03.24.01.58.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 06:22:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::642 as permitted sender) client-ip=2a00:1450:4864:20::642;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 24 Mar 2019 01:58:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DIYpmXMq;
-       spf=pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::642 as permitted sender) smtp.mailfrom=izabela.bakollari@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x642.google.com with SMTP id h24so2257897ejg.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 06:22:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=/457KlRttwTbzW2IPZucxg6Xez470vGxov79DYd6XzE=;
-        b=DIYpmXMqF2xG6qhoXcFf/CXetkWZcoj4lqmNFIAU3y7IxDegLJsSR9LOgdUoOKNvdb
-         dNIMvAjwEVKc3WOUY/6HQ5tmbGSkhyQYwaWwFcCuebtPfNKAjt3wGkgC451xlcPYcW33
-         jNW8QdWzZE60r6fFIa+LR7kmOte3AtGpOPcINRaHktSigQaWCq1jFflisDVp5CMmaOg4
-         clPmoyalzrgw2Bciu/nv6QF3tGgvJvy4hAYhpQn3oi0pQW34rFD5TKcnwoNYfqmj8Yhx
-         jj3LGrkwsQUc3bYviYoBEvBn+MRSKEdAxaU0KTAnQY3suNH2sV7SiBTnbs8OspjKump6
-         aYyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=/457KlRttwTbzW2IPZucxg6Xez470vGxov79DYd6XzE=;
-        b=Q/vwbW20w8RztQXQumPQKPhEupeZVlh1DwsqOZ2JD4YXvYvNGGGabpFtVBjAAOdoJp
-         R0y4KCvOImRwUFJMTvrzzsewMXEUuwS+xn0k0RtF5eRjWUs+EzcIIeIP4HVWBFh2xhPY
-         v4zhr/rixfCYwi3eV6Unooqu7dtOAtPx8u3Zd/jJA2oP7uQNuAmYrz/Z3stU0/tZL+8h
-         XgRQneW2sBOLqB++wbM+wLFF6uFsLTtPZ8dR4ujrTvvA7hifbDOjpwLrIShwF8Me6Cgv
-         dpQVm2kdnG5yU+Kb95UHwqC7CZyxUaIeMmJaTRks8cY6oS+IH8YyuiVOo0jvevWpUBIL
-         W+0w==
-X-Gm-Message-State: AOAM530KcbXJr2R/sGIXqZh1gtIjggYOUsLffgZD5H6XxP2d9vgtgxyp
-	0n+nfzDogsydItwUjshgzXA=
-X-Received: by 2002:a17:906:3406:: with SMTP id c6mr2074952ejb.65.1603372941235;
-        Thu, 22 Oct 2020 06:22:21 -0700 (PDT)
-Return-Path: <izabela.bakollari@gmail.com>
-Received: from localhost.localdomain ([185.200.214.168])
-        by smtp.gmail.com with ESMTPSA id ok21sm909368ejb.96.2020.10.22.06.22.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 06:22:20 -0700 (PDT)
-From: izabela.bakollari@gmail.com
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Izabela Bakollari <izabela.bakollari@gmail.com>
-Subject: [PATCH] staging/wlan-ng: Fix line alignment
-Date: Thu, 22 Oct 2020 15:22:18 +0200
-Message-Id: <20201022132218.235744-1-izabela.bakollari@gmail.com>
-X-Mailer: git-send-email 2.18.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=z7FyBx2R;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [89.248.140.16])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4D8D12171F;
+	Sun, 24 Mar 2019 08:58:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553417880;
+	bh=7OPR0rxq3f0+jh0SDapeL3/cgNDRUsHfDEByfG/diGg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=z7FyBx2RpdIIWfJRXYjIBm2BImdMYUnWCaigCfPCJtdMUGv1VS1niUGKLINAkQmrP
+	 ES9drNum3oZzXikWZ/Mgu5PxLyv8ApGnllb9GWWvWpJCiA6VCeGmPJioRB/9xiBV6E
+	 I33H5bGO3oz4VcHbWzsEEJCStXGGpPXZjUlTPZVY=
+Date: Sun, 24 Mar 2019 09:57:53 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: anushkacharu9@gmail.com
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: greybus: arche-platform.c: fix line over 80
+ characters
+Message-ID: <20190324085753.GC21361@kroah.com>
+References: <anushkacharu9@gmail.com>
+ <20190323110155.6386-1-anushkacharu9@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190323110155.6386-1-anushkacharu9@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-From: Izabela Bakollari <izabela.bakollari@gmail.com>
+On Sat, Mar 23, 2019 at 04:31:55PM +0530, anushkacharu9@gmail.com wrote:
+> From: Anushka Shukla <anushkacharu9@gmail.com>
+> 
+> Fix line over 80 characters according to Linux kernel coding style
+> 
+> Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
+> ---
+>  drivers/staging/greybus/arche-platform.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> index 1e8fd48bedf9..970a11ccf578 100644
+> --- a/drivers/staging/greybus/arche-platform.c
+> +++ b/drivers/staging/greybus/arche-platform.c
+> @@ -180,8 +180,9 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+>  				 */
+>  				if (arche_pdata->wake_detect_state !=
+>  						WD_STATE_COLDBOOT_START) {
+> -					arche_platform_set_wake_detect_state(arche_pdata,
+> -									     WD_STATE_COLDBOOT_TRIG);
+> +					arche_platform_set_wake_detect_state(
+> +						arche_pdata,
+> +						WD_STATE_COLDBOOT_TRIG);
 
-Fix code alignment. Issue reported by checkpatch.pl
+The original is fine here, thanks.
 
-Signed-off-by: Izabela Bakollari <izabela.bakollari@gmail.com>
----
- drivers/staging/wlan-ng/prism2mgmt.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/wlan-ng/prism2mgmt.c b/drivers/staging/wlan-ng/prism2mgmt.c
-index a908ff301707..1bd36dc2b7ff 100644
---- a/drivers/staging/wlan-ng/prism2mgmt.c
-+++ b/drivers/staging/wlan-ng/prism2mgmt.c
-@@ -1198,8 +1198,8 @@ int prism2mgmt_wlansniff(struct wlandevice *wlandev, void *msgp)
- 			if (wlandev->netdev->type == ARPHRD_ETHER) {
- 				/* Save macport 0 state */
- 				result = hfa384x_drvr_getconfig16(hw,
--						  HFA384x_RID_CNFPORTTYPE,
--						  &hw->presniff_port_type);
-+								  HFA384x_RID_CNFPORTTYPE,
-+								  &hw->presniff_port_type);
- 				if (result) {
- 					netdev_dbg
- 					(wlandev->netdev,
--- 
-2.18.4
-
+greg k-h
 
