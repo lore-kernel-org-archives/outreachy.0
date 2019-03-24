@@ -1,140 +1,121 @@
-X-GM-THRID: 6528797740675104768
-X-Received: by 10.107.213.11 with SMTP id m11mr6778083iog.121.1520104180954;
-        Sat, 03 Mar 2018 11:09:40 -0800 (PST)
+X-GM-THRID: 6670934867500335104
+X-Received: by 2002:a2e:988f:: with SMTP id b15mr9565138ljj.25.1553410416391;
+        Sat, 23 Mar 2019 23:53:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.120.150 with SMTP id p144ls968620itc.9.gmail; Sat, 03 Mar
- 2018 11:09:40 -0800 (PST)
-X-Google-Smtp-Source: AG47ELth3mPusb5mFC9hDuW6/BdhKLyhUJcLOc4aTM5P+dxr9dru8+QqHXNxu3MAGZBcgtvGx4wM
-X-Received: by 10.36.6.199 with SMTP id 190mr1210949itv.28.1520104180069;
-        Sat, 03 Mar 2018 11:09:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520104180; cv=none;
+Received: by 2002:ac2:5926:: with SMTP id v6ls1254918lfi.14.gmail; Sat, 23 Mar
+ 2019 23:53:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzSoWgeUC8Y7XXssHTL1eTLM922Xu622XDGUuR3M96qZuVOKXZ4Au69phwoI6vYaxlKO8t3
+X-Received: by 2002:a19:ec14:: with SMTP id b20mr9298786lfa.55.1553410415523;
+        Sat, 23 Mar 2019 23:53:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553410415; cv=none;
         d=google.com; s=arc-20160816;
-        b=AYUT5GIIARV1DAgywupVmyp1xmDc+hxZacETZEPNv0dp05sj3RQS+VZMC6WIuSWsts
-         aWu9KIZQ3MOsvLjfU9s2nI1ONQZ5ZGAs8+Ie+jtbi3rgI8ZwvNLIRufZV0+myoBG9du6
-         JyQ0xWR6Uf8tOd3pvW90NS2CYoWvApf745/oU3t/m24vyd6wxIbLuAtj2owx40mEZbbR
-         o34JUKvYIGJLUO5OkEoitFtEOBqg9nJ7S7MA1jgbOgVLPMTDbmv1ei73UIU2/tyTnkHj
-         84Ov72tSe3hv10kaOISx98wKBgvIo30PHwuxPa6mxedjo31gSG44ix94mzj0QgEHMdn+
-         YjIw==
+        b=gzgme5zcFgSx3mDo+vXgdEbYxspNUu4i0GGfUVwNB5Pum5HOxE/rerTH64E1nDl6e+
+         m6LhhjrYqdKyk55N1TWYWIpFgQEzu2oiIDFTILXPt0ruglf/M7keYSczl+YnDEQHaWcz
+         +HNJXiAhUckeQZc9CUr8+0itwfu9/XbgkgaukWwAmtphl4PwS/FkayOBJMK1jHaw3Vx8
+         ZqFGDFUE3iV27TwhbVtyfVNB61xMlT63Btrtj8gcXapUIXdDW4H9xtjfWgdW6L/UwtTa
+         lZqXfpd9Uus9fI56bRn6pFrv/q3FAH5KjAY1AamXW/KkCPJaRcz9BuibU9V3/mHXbqO+
+         5tpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=KqX0CRvQ+2lrUvS/nMVrULclm15qXffNN1dR2NrXn7M=;
-        b=txIKy+nwAwREivq4QJB6F8RIK7a0asl7X7vIVrEkqHghbnFQoNqKxrzvRPHWl8jWKk
-         qt/hZQlHKX0Q92lV67KWySp4oCXAV3DdyLfikrpCA8hU8w5QvPo1CnnFONlf58s+EOWS
-         V51f8i29vi48ViwHA3kkWu44r7EZyM5qmZoFVeN90v6173YK4m9ROLJ50K6GsfR9+oey
-         AdZgXTex4euk12+6Xk+Z10UMwAidaeR1NF/GzXNBNOKx2Fsj9ZqvEetnk0j5YwEfoLHu
-         sEfCGjPAescIEdm735QWRaHxnpiu0GknMpzsTG4jKW7dHDy6BJTAfbJVHm37vO7MYgtk
-         61iQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=E0EvKL53+3nCn0xQTnO/JQBZ9rp5qADnO4LtDDegKpc=;
+        b=LM9K0i/Kb4HFtbQhhHVSfJxSoUsAaC+QRM6N/UoeiKvSEeG6SF6UebqMhHIAjkcBW+
+         +5ldxEa+2y83SZ6uVe7tuScgVEwHevRvb++7xs/vOl0mykr1iLieaUvEz5kEBZTWBA1k
+         Og/rUrmhe9iAfsnZ8KZWbsn3d7sH53uoWXND2QgtHuqV9g/a+F0E9N0DRaPaIAZsNY1Q
+         Nz4ibrYxk+Tcfa0HNumLI0Uh04BI/7dN6Z69r9B6DY3t07JUBBCon+IzSBko5hQYH0L3
+         irZMYsiG74S4yfNnBdSfLMw/Uot4qq3Mvs2r/9xg01xf/rGFC49j8KIEKZC0OjkTF6rw
+         Fnvw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sdRqIPXF;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id f20si240814itd.4.2018.03.03.11.09.40
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m17si392013lfl.0.2019.03.23.23.53.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Mar 2018 11:09:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Sat, 23 Mar 2019 23:53:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sdRqIPXF;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id i133so5155034pgc.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Mar 2018 11:09:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=KqX0CRvQ+2lrUvS/nMVrULclm15qXffNN1dR2NrXn7M=;
-        b=sdRqIPXFtAZu4jtlUDxExkZewkMhj4vBcbAV4Nb6wNTjYXBIhrXjonC/ZpYhbeHAZU
-         icXxiLzDCszEbNWkOU8AlghETFCrPvhKSozAkLJjSCUtsTPdmjvFJoUetbU90beLQyaH
-         cPXBpz+edJZx02RK3X30tZ85Fb1a37TzP2sS/vZBtbsgBXh2va1akdp35giZvnrcdSuO
-         kGfJegWIAnF6WUxbD3XEGPBt+/rO2J1GozbHGSFtqSInA2ttlDwa6nnnsJKwkP01Y/+u
-         7j+ZFIaXkk1loDuRHgNJdIdbI/DKcLlyMU7r6FXAlupPEc8qWSf7FCo5PdI5Hl3nvhz+
-         4gPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=KqX0CRvQ+2lrUvS/nMVrULclm15qXffNN1dR2NrXn7M=;
-        b=jDTJaz6cevbTNkGbFw5wPk1XERgHf8LYCz1Qi18c/ZCuqHVllNxT+7QVhiEt7iCkLd
-         WGsj34kg4dVoIkMA31niIqLZCi3xcVTKSqo+ruTYaYY4C+WAu9h7fDd138WQFEQDQILH
-         NG4nUF7wsjc76zFc8m4BYPdEYRIe4KEMIGJJjIURYAKOm065voQbgN3j6lhMH8g/kL7X
-         8pedg38875PJ0nzPSHfouAdZYnLNrqdyO2XmBdnzdMil/DxZ5ql/X3nGK5y2rqb4wtx0
-         xlLXUU4bXee7s/6j28yhiDg3nnz9MvQjXFL5dDKhQz4RCse7l9MMV3vwR/P6QpaGmzNT
-         oQqg==
-X-Gm-Message-State: APf1xPAN5leAgrMdo3q+ydKyhQzucq38FpOVYB5PrSCoQKsZ6cavVQ0W
-	YbQpFhLlqRvbiGGywmsw4ATL9Q==
-X-Received: by 10.98.11.145 with SMTP id 17mr9960381pfl.150.1520104178899;
-        Sat, 03 Mar 2018 11:09:38 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id i11sm13648893pgq.34.2018.03.03.11.09.36
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Mar 2018 11:09:37 -0800 (PST)
-Date: Sun, 4 Mar 2018 00:39:13 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtlwifi: Remove nonessential semicolon
-Message-ID: <20180303190913.GA4555@seema-Inspiron-15-3567>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,256,1549926000"; 
+   d="scan'208";a="300510721"
+Received: from abo-58-107-68.mrs.modulonet.fr (HELO hadrien) ([85.68.107.58])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2019 07:53:28 +0100
+Date: Sun, 24 Mar 2019 07:53:28 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH resend] staging: pi433: break line
+ after comparison operator to fix checkpatch warning
+In-Reply-To: <20190323002555.5280-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903240750180.2526@hadrien>
+References: <20190323002555.5280-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Remove non-essential semicolon after 'else' and 'switch' statements. Issue
-found using semicolon.cocci Coccinelle script.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/rtlwifi/base.c               | 6 +++---
- drivers/staging/rtlwifi/phydm/phydm_rainfo.c | 1 -
- 2 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtlwifi/base.c b/drivers/staging/rtlwifi/base.c
-index c947def..eea0003 100644
---- a/drivers/staging/rtlwifi/base.c
-+++ b/drivers/staging/rtlwifi/base.c
-@@ -710,20 +710,20 @@ u8 rtl_mrate_idx_to_arfr_id(
- 			ret = RATEID_IDX_BGN_40M_1SS;
- 		else
- 			ret = RATEID_IDX_BGN_40M_2SS;
--		; break;
-+		break;
- 	case RATR_INX_WIRELESS_N:
- 	case RATR_INX_WIRELESS_NG:
- 		if (rtlphy->rf_type == RF_1T1R)
- 			ret = RATEID_IDX_GN_N1SS;
- 		else
- 			ret = RATEID_IDX_GN_N2SS;
--		; break;
-+		break;
- 	case RATR_INX_WIRELESS_NB:
- 		if (rtlphy->rf_type == RF_1T1R)
- 			ret = RATEID_IDX_BGN_20M_1SS_BN;
- 		else
- 			ret = RATEID_IDX_BGN_20M_2SS_BN;
--		; break;
-+		break;
- 	case RATR_INX_WIRELESS_GB:
- 		ret = RATEID_IDX_BG;
- 		break;
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
-index 8c08c76..e10a91a 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_rainfo.c
-@@ -142,7 +142,6 @@ void odm_c2h_ra_para_report_handler(void *dm_void, u8 *cmd_buf, u8 cmd_len)
- 				     "SGI_support =", cmd_buf[7]);
- 			ODM_RT_TRACE(dm, ODM_FW_DEBUG_TRACE, "%5s  %d\n",
- 				     "Rate_ID =", cmd_buf[8]);
--			;
- 		}
- 		ODM_RT_TRACE(dm, ODM_FW_DEBUG_TRACE,
- 			     "-------------------------------\n");
--- 
-2.7.4
+On Sat, 23 Mar 2019, Jules Irenge wrote:
 
+>  Break line after comparison operator to solve checkpatch.pl warning:
+> "WARNING: line over 80 characters".
+
+Don't add a newline in the middle of an expression.
+
+It is only the semicolon that goes over.  I don't think it harms
+readability very much.
+
+julia
+
+>
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/pi433/pi433_if.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
+> index b2314636dc89..f537722395c6 100644
+> --- a/drivers/staging/pi433/pi433_if.c
+> +++ b/drivers/staging/pi433/pi433_if.c
+> @@ -479,7 +479,8 @@ pi433_receive(void *data)
+>  	/* length byte enabled? */
+>  	if (dev->rx_cfg.enable_length_byte == OPTION_ON) {
+>  		retval = wait_event_interruptible(dev->fifo_wait_queue,
+> -						  dev->free_in_fifo < FIFO_SIZE);
+> +						  dev->free_in_fifo <
+> +						  FIFO_SIZE);
+>  		if (retval) /* wait was interrupted */
+>  			goto abort;
+>
+> @@ -500,7 +501,8 @@ pi433_receive(void *data)
+>  		bytes_total--;
+>
+>  		retval = wait_event_interruptible(dev->fifo_wait_queue,
+> -						  dev->free_in_fifo < FIFO_SIZE);
+> +						  dev->free_in_fifo <
+> +						  FIFO_SIZE);
+>  		if (retval) /* wait was interrupted */
+>  			goto abort;
+>
+> @@ -513,7 +515,8 @@ pi433_receive(void *data)
+>  	while (dev->rx_position < bytes_total) {
+>  		if (!rf69_get_flag(dev->spi, payload_ready)) {
+>  			retval = wait_event_interruptible(dev->fifo_wait_queue,
+> -							  dev->free_in_fifo < FIFO_SIZE);
+> +							  dev->free_in_fifo <
+> +							  FIFO_SIZE);
+>  			if (retval) /* wait was interrupted */
+>  				goto abort;
+>  		}
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190323002555.5280-1-jbi.octave%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
