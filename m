@@ -1,105 +1,187 @@
-X-GM-THRID: 6611156296380973056
-X-Received: by 2002:a02:57c4:: with SMTP id b65-v6mr2215254jad.15.1539279775123;
-        Thu, 11 Oct 2018 10:42:55 -0700 (PDT)
+X-GM-THRID: 6672360992338345984
+X-Received: by 2002:a1c:cc0a:: with SMTP id h10mr12015239wmb.22.1553530494598;
+        Mon, 25 Mar 2019 09:14:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:76d4:: with SMTP id z203-v6ls3894789jab.5.gmail; Thu, 11
- Oct 2018 10:42:54 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62YPr7993yFBX8Qvi2amwQ2bvySVW1AdYdtaFpEUb+uPTqGb/LsdZ6aDsGp03S44WYd2CdB
-X-Received: by 2002:a02:6f57:: with SMTP id b23-v6mr2243931jae.4.1539279774211;
-        Thu, 11 Oct 2018 10:42:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539279774; cv=none;
+Received: by 2002:a1c:ef1a:: with SMTP id n26ls2131542wmh.6.gmail; Mon, 25 Mar
+ 2019 09:14:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyRCHkelcTOx3diqFf34xrphP2dNIbeDlxq92b8TbGPed40f99Ew/XPulG9U8z7rbewqJdb
+X-Received: by 2002:a1c:7ec2:: with SMTP id z185mr6608744wmc.69.1553530493825;
+        Mon, 25 Mar 2019 09:14:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553530493; cv=none;
         d=google.com; s=arc-20160816;
-        b=hjYZJPLOItBATqxlMI5rwIKc/k9egdlolCDwhkHgbCIaYxQQAWFfXGLfl0VCfBWIW6
-         jOUboCco4bbSxLfgPYJGj9IZjs46/HPLRKbFhAc0IN111aS2VRLVe4nOKM9Hle/jMa4/
-         G23W8TitWWFV62J9ArOZ9j7AcEahAYAkvZ24rjsVXvkMXZKc8nosRj4/6tWyMawUyshh
-         /eqSxjoLf0uHXcbe+S8plooYgyasIA+jzGsLyUB983ZrhtHQs/V4a0e6VB4dY7O0saY6
-         DfNZ+dW2M/TMWYNMbzzOw2kguEoaCI032YM2TsTzuMFd/9DP8gYl+AFsAv3Cb5X7BpAo
-         HKXA==
+        b=k36FBYl8oy1nr3erHU4+4MlN5Q9LVM/gWLw6E60FNiQ6RGED/PU+6d82DeFoYOg/j9
+         4I44gCYJ8rahS1y/MAi4NS2l8+bOlyEpbywQ33H2VHNzNLyo9/jA4q2CWA/Teih3pLF0
+         MRdgyyKiCMrsl2RFVG07MVK5ops0Vo8QcLVVdNwuuHpYJJCdum8flEDNAep7HfMBqNds
+         m7omGVd3VJxsNWOcS79O4VqCvwViKQvnq19RpSHeGJYteSfDGnHw4rsTtdviEncl4wVh
+         30UbYZjBx1y+5Xu4VTApmx/PgiTu+O1t+bhfgydF+ihcRuY+ZHofF+egzERUKCWQOWc4
+         RrDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=6GwRBnz171ECdbur047FLC6QCV+dNldF/WNaJqxNvGU=;
-        b=MOImxWyzT5G6ckoE2YpkxvVX3A+bpFHRJI3qqnmaPY/NtUxXavTFtC/44nvAesDjgc
-         T/TfCYWDMeUqaDbhMBYm6pxIUYIMtupoeGzbuBt8vDSHM78rhqhTKVayTBRN6tqexPpi
-         2wgBxJVEBUY2VX/MS+sKsuEfT/5sitU0wR78uyj/zQ7USazLw+LmQvZ/ecvk0RgWf9MM
-         D4ZADfMjO76kJsItjnlRlKp1N0obyxzdlm2mYgDZvOOf7GyHfzTp/8pF4oVZuSYHnGQ6
-         rMWSLBJbK8Ucbn6q5mXaI9KWjeelFiQts/5T8fItnrBbuZg+PBRsRKzWzbsg3bdN+/cz
-         sWNg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=QnkRHwulSIPM1yYiGnIPbWTllrSfS7ExV5JOhlSc5oY=;
+        b=0xFV++mK6G/EyDdoZamUSGEW0XUmdUjMRXF5YCLc3+wnF+paOqF96yMj0HFCCXHnG2
+         EndNefih1LHv0H/EXJyI3l55+MY/804OHbi8U9fAbtz11J3s2O8EGIRCKY0YnjTqQnCP
+         ii7/IKsFDGPocn206FVEuCPrazJPFMiX/Tu3ba6PACYrOUf+qbNsY9HZaot/XiMrJlk6
+         2kMSkQ30YRr+WeDqxusqVnoAsZR8QQtwDSeI8yaDdsMv+7EG/PhZQgMHdcjnugo1mUgy
+         emyLlyWQm7p/+QFEGHpzSWGUHRlQnWt9NpLgsKpZMWeMqcWm8XDRqVRiRmqiFsLVUsxk
+         C+dQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dspvcMku;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id b133-v6si1073071itc.3.2018.10.11.10.42.54
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id s8si343415wme.0.2019.03.25.09.14.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Oct 2018 10:42:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Mon, 25 Mar 2019 09:14:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dspvcMku;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id p25-v6so4564091pli.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 11 Oct 2018 10:42:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=6GwRBnz171ECdbur047FLC6QCV+dNldF/WNaJqxNvGU=;
-        b=dspvcMkuvpsT6LZDd18pciiaDq6mFO8DYHWjtqEPvQx7CRyUl9DaqkYt9hqQnRPn1D
-         liFcRldjXxOAszGauZ1zqoHJqhsoZb/6LE9ELbCfCnfceMWxxKzldZ8OrjMfK1BnnfEC
-         g2hkO07hOid7KbK6CeM1EZnWpRgIA4JlR1JZ9VWR/tWFRjr3gDNsdhHiHIF2f4W9oaL6
-         T3rrlANSgWrbnS9Qbk7Neus7oBduRWfIenN1uMLWa6AqDy+EIKa9EgpqWtZiAMq3JQaZ
-         +4kM9NEVEboZ4r7ID0+BOKP6RZsGfU64jC+HGTHTaFAOgacSft9H1ClHeKO4uBzYQvYL
-         4EPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=6GwRBnz171ECdbur047FLC6QCV+dNldF/WNaJqxNvGU=;
-        b=WEZ6Daf4tB9/vmQR6j8ohrzrzZSMiwm//visNnSxfUuBeDGMN997cSApPEqiWK4Cww
-         3VK27DNeVmDa1naT6gz77ZSo3o5fWGNJJhen0U1UEVRbyP6e7L9y9KykDjGFlVTWYNXL
-         pAzxxYTbzWARkg9JRtQGfYkgdk73uN2sGwnKlZ1VmBPxp3X7CSN1uEUl9l0Mg6Pkdcdn
-         mdvHllKozm7o0DQaDJqaWWeRzcYkRLdNxdN70I734Auy04EmHFHBE1kJ4OOrx2Gc8/qo
-         2L//R4jDrOUTPNxX7fxsu7YAejT1er4w5k+iO9VKpOX1jkuY5rEUgRMDr+gVmJ2d6Rh8
-         TfNA==
-X-Gm-Message-State: ABuFfojQa7a/YWt5O+OWHrT7Cai1rqcnRRcphGAz5kWL/zZ94eJIxuJe
-	WNhYve23+OF1iFx6DY0sUWU=
-X-Received: by 2002:a17:902:1026:: with SMTP id b35-v6mr2469634pla.283.1539279773504;
-        Thu, 11 Oct 2018 10:42:53 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([117.199.59.255])
-        by smtp.gmail.com with ESMTPSA id l16-v6sm46319784pfj.179.2018.10.11.10.42.52
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 11 Oct 2018 10:42:52 -0700 (PDT)
-Date: Thu, 11 Oct 2018 23:12:46 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, Larry.Finger@lwfinger.net,
-	hadess@hadess.net, hdegoede@redhat.com
-Subject: [PATCH 0/3] staging: rtl8723bs: os_dep: Fix coding style issues
-Message-ID: <cover.1539278377.git.mamtashukla555@gmail.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,269,1549926000"; 
+   d="scan'208";a="300666640"
+Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Mar 2019 17:14:53 +0100
+Date: Mon, 25 Mar 2019 17:14:51 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Sammy Abed <abdlwahdsa@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: include: Fix
+ indentation and spacing issues
+In-Reply-To: <20190325031503.4616-1-abdlwahdsa@gmail.com>
+Message-ID: <alpine.DEB.2.20.1903251712340.3543@hadrien>
+References: <20190325031503.4616-1-abdlwahdsa@gmail.com>
+User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch series fixes checkpatch issues such as:
--Remove true and false comparison
--Remove space after cast
--Shift * to be adjacent to pointer name to conform kernel coding style.
+There aren't many patches on this file so far, but the one there is only
+has staging: rtl8723bs: in the subject line.
 
+On Sun, 24 Mar 2019, Sammy Abed wrote:
 
-Mamta Shukla (3):
-  staging: rtl8723bs: os_dep: Remove true and false comparison
-  staging: rtl8723bs: os_dep: Remove space after cast
-  staging: rtl8723bs: os_dep: Shift * to be  adjacent to pointer name
+> Replaced spaces with tabs at the beginning of lines.
+> Added spaces around a (+) operator.
+>
+> Signed-off-by: Sammy Abed <abdlwahdsa@gmail.com>
+> ---
+>  .../staging/rtl8723bs/include/wlan_bssdef.h   | 56 +++++++++----------
+>  1 file changed, 28 insertions(+), 28 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/include/wlan_bssdef.h b/drivers/staging/rtl8723bs/include/wlan_bssdef.h
+> index bdb14a84e5a5..88890b1c3c4c 100644
+> --- a/drivers/staging/rtl8723bs/include/wlan_bssdef.h
+> +++ b/drivers/staging/rtl8723bs/include/wlan_bssdef.h
+> @@ -129,15 +129,15 @@ struct ndis_801_11_ai_resfi {
+>
+>  typedef struct _NDIS_802_11_ASSOCIATION_INFORMATION
 
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 30 +++++++++++++-------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+When this patch is accepted, you could get rid of these typedefs.
 
--- 
-1.9.1
+julia
 
+>  {
+> -    u32                   Length;
+> -    u16                  AvailableRequestFixedIEs;
+> -    struct ndis_802_11_ai_reqfi    RequestFixedIEs;
+> -    u32                   RequestIELength;
+> -    u32                   OffsetRequestIEs;
+> -    u16                  AvailableResponseFixedIEs;
+> -    struct ndis_801_11_ai_resfi    ResponseFixedIEs;
+> -    u32                   ResponseIELength;
+> -    u32                   OffsetResponseIEs;
+> +	u32                   Length;
+> +	u16                  AvailableRequestFixedIEs;
+> +	struct ndis_802_11_ai_reqfi    RequestFixedIEs;
+> +	u32                   RequestIELength;
+> +	u32                   OffsetRequestIEs;
+> +	u16                  AvailableResponseFixedIEs;
+> +	struct ndis_801_11_ai_resfi    ResponseFixedIEs;
+> +	u32                   ResponseIELength;
+> +	u32                   OffsetResponseIEs;
+>  } NDIS_802_11_ASSOCIATION_INFORMATION, *PNDIS_802_11_ASSOCIATION_INFORMATION;
+>
+>  enum NDIS_802_11_RELOAD_DEFAULTS {
+> @@ -148,19 +148,19 @@ enum NDIS_802_11_RELOAD_DEFAULTS {
+>  /*  Key mapping keys require a BSSID */
+>  typedef struct _NDIS_802_11_KEY
+>  {
+> -    u32           Length;             /*  Length of this structure */
+> -    u32           KeyIndex;
+> -    u32           KeyLength;          /*  length of key in bytes */
+> -    NDIS_802_11_MAC_ADDRESS BSSID;
+> -    unsigned long long KeyRSC;
+> -    u8           KeyMaterial[32];     /*  variable length depending on above field */
+> +	u32           Length;             /*  Length of this structure */
+> +	u32           KeyIndex;
+> +	u32           KeyLength;          /*  length of key in bytes */
+> +	NDIS_802_11_MAC_ADDRESS BSSID;
+> +	unsigned long long KeyRSC;
+> +	u8           KeyMaterial[32];     /*  variable length depending on above field */
+>  } NDIS_802_11_KEY, *PNDIS_802_11_KEY;
+>
+>  typedef struct _NDIS_802_11_REMOVE_KEY
+>  {
+> -    u32                   Length;        /*  Length of this structure */
+> -    u32                   KeyIndex;
+> -    NDIS_802_11_MAC_ADDRESS BSSID;
+> +	u32                   Length;        /*  Length of this structure */
+> +	u32                   KeyIndex;
+> +	NDIS_802_11_MAC_ADDRESS BSSID;
+>  } NDIS_802_11_REMOVE_KEY, *PNDIS_802_11_REMOVE_KEY;
+>
+>  struct ndis_802_11_wep {
+> @@ -181,7 +181,7 @@ struct ndis_802_11_wep {
+>  #define MIC_CHECK_TIME	60000000
+>
+>  #ifndef Ndis802_11APMode
+> -#define Ndis802_11APMode (Ndis802_11InfrastructureMax+1)
+> +#define Ndis802_11APMode (Ndis802_11InfrastructureMax + 1)
+>  #endif
+>
+>  struct wlan_phy_info {
+> @@ -240,15 +240,15 @@ struct	wlan_network {
+>  };
+>
+>  enum VRTL_CARRIER_SENSE {
+> -    DISABLE_VCS,
+> -    ENABLE_VCS,
+> -    AUTO_VCS
+> +	DISABLE_VCS,
+> +	ENABLE_VCS,
+> +	AUTO_VCS
+>  };
+>
+>  enum VCS_TYPE {
+> -    NONE_VCS,
+> -    RTS_CTS,
+> -    CTS_TO_SELF
+> +	NONE_VCS,
+> +	RTS_CTS,
+> +	CTS_TO_SELF
+>  };
+>
+>  #define PWR_CAM 0
+> @@ -259,9 +259,9 @@ enum VCS_TYPE {
+>
+>  enum UAPSD_MAX_SP {
+>  	NO_LIMIT,
+> -       TWO_MSDU,
+> -       FOUR_MSDU,
+> -       SIX_MSDU
+> +	TWO_MSDU,
+> +	FOUR_MSDU,
+> +	SIX_MSDU
+>  };
+>
+>  #define NUM_PRE_AUTH_KEY 16
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190325031503.4616-1-abdlwahdsa%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
