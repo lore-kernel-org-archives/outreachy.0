@@ -1,161 +1,119 @@
-X-GM-THRID: 6474166398714118144
-X-Received: by 10.99.64.71 with SMTP id n68mr486848pga.137.1507384329028;
-        Sat, 07 Oct 2017 06:52:09 -0700 (PDT)
+X-GM-THRID: 6672231072339591168
+X-Received: by 2002:aa7:8012:: with SMTP id j18mr23522798pfi.42.1553499855365;
+        Mon, 25 Mar 2019 00:44:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.82.135 with SMTP id y7ls297274pgp.4.gmail; Sat, 07 Oct
- 2017 06:52:07 -0700 (PDT)
-X-Received: by 10.101.69.67 with SMTP id x3mr494144pgr.132.1507384327982;
-        Sat, 07 Oct 2017 06:52:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507384327; cv=none;
+Received: by 2002:a63:ff24:: with SMTP id k36ls888297pgi.2.gmail; Mon, 25 Mar
+ 2019 00:44:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwxRcbHPH6af55doSa7q0zha+tLzbyljPH15cuxzBLij0N56FeA/Df1K18J1I5epgMBzTah
+X-Received: by 2002:a65:5249:: with SMTP id q9mr959418pgp.104.1553499854540;
+        Mon, 25 Mar 2019 00:44:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553499854; cv=none;
         d=google.com; s=arc-20160816;
-        b=kqBcWbQiw3XiaRl0k5EGlZ0BDnvvWV8MDtxT0zxTWXw/bZpE3uRByp5N+2GzjTUQ9g
-         S2+pyTr9UnDgeg4Qz8xYKx1q8KrOLsv+rrsZ5Q3h0RkTaqgOgBVgc1QIEFVDelG0hfWC
-         MB/aeaSRwPCJ3ifmN47MUeuIOMh1dFKbloNdNOvk39C78Z6IL+U4EvhqxSG0eIPcldxF
-         xc0o/kXM0WaG0PgTXRR/c35b1qrQdtO3kxQpHA0tkgHqmQB2ch/SRF5fzCMTwVOsRUL7
-         Jfzj29YivJU9ARbufQx2L/b5XdrIrgoI5tyqIWOobSjWunrb6WBqsIurGwvD1DsFVtBh
-         ZqIw==
+        b=zLW55emqK/nUqCxlS0UVLR0quG57S5rbMXHRku3DVBOwYPAyI/t+HdjFbdkAdsbVNG
+         40EFn3vhOqY1GRSeo9O58UPQQ/p0J0NZK6myLIKRVuX130+hEhYBD16C9Hr+FJuYW8h5
+         fkKdavGLbj9nS0EN2IL+z9l2X4OGJrrOu+Ur/nqS1NvoVyPHE8PvX/vEgt+xokS0EhoY
+         unXT8SbLkO8Ufwn75MVaVaDjQZFkie1tu8GYJmFxNmpMcYr4WDmjIPk9VVlEL+B5/aHt
+         L0gq7kWaVfBNKvypep27Y57P+D8mOUS1+PPacDQuv1a47jwpFUu7+37AKnsn5ObjAkef
+         ys2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=LWfznl+E7UHk1Tm2a3ZnCyf/c7UsK7xYbPig73lsJ88=;
-        b=aTFVw9vK3szRQYOszQNC6pHkKaIjmzH4tLrVVhHDzM/K5Dl0IPCAx6zU6KuxbWKsQP
-         Odkf/gMdfovuiCyiPWHCWcWMA3j4wtnzCiklNMFaGYjZsPaQxtKlmWcr6ZAnx8JgQZzV
-         LbM0fK8NfJwK5Z+L5VlyA7OYpuW3Jn4DjxIN6RAIGH3gGQqms6MCmA+LNaMES4f5sWsG
-         uB0bDm8OTx6GPy/Ms3HP2ET/Rxsq64E5a92TyXjZCoB4AbyQ9hgzvRTDtAGfEFa/A0bo
-         Iio56OBJVnFP5KQiYW1Pu967ZQXz0HHvyt4+XD1c6PQhrDKYptbZssQf1goId0peVnBI
-         +Vgg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=J1OMAV6dAkNEceeCRM3diKSIcnkkZR/weRNHRx7Xi5I=;
+        b=eUanZjVjq0obz3wzRlG3ZoCWkXHebwGTGn8ddAihpUV+UI4NifcX7bxrM3ZMvIIqln
+         Dyo5b+ziCV/b5nkHZYRs0vdtan+vx+C1dFEVBymtwDuREbuyVg90VcH3z624nit5bKRk
+         Vn6TzkH5k1Dhf9dCbTN7eTKQUy687utYpJhNa3WTpHtxEzaoJT3Rg+OXyLn7wOWsDN+Q
+         wT8Iz7RAWO2QuEdx3ZBDH/HTYA+oXEGpfWx/AqpU4QiprjXckCste76HuJL6uIOweDU8
+         EbIK4kg6Xk5iR+CcMVYmheIhKC0ou2/EPttbDmG+6aTvCmIlqNxuwUX9orKCpnoh3R6u
+         C69A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kWluOt6K;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id l80si34931pfk.26.2017.10.07.06.52.07
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bzMstlZr;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id j8si725766plk.3.2019.03.25.00.44.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 07 Oct 2017 06:52:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        Mon, 25 Mar 2019 00:44:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kWluOt6K;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id o1so19863492pga.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 07 Oct 2017 06:52:07 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bzMstlZr;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x444.google.com with SMTP id p10so5796202pff.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Mar 2019 00:44:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=LWfznl+E7UHk1Tm2a3ZnCyf/c7UsK7xYbPig73lsJ88=;
-        b=kWluOt6Kb6Men1EFtEmxMdy3kfylXRSBBPdPKD7Rwcn2idEATzSzOPHGN+fTJQmo5u
-         U6z/BIvE1U/WP9IXr3iL6nPrWwSipoWe0MfXbLSQvASzUhgAjeWIBozJukurd8Ecfuoy
-         gUfe8snhNpOMch2ocKvOOSrKJxoqvfWzTBVby2nkIZk4AZ1kEmy8TaTqaWUPdx4WOHv7
-         0sC9jcKbzCm/sQgAz9DQgiMnuQlGWc9nveWdMojlmnPC0FvGdR8gUMfC0AiZcgSthrhA
-         KqkuuGkgHZL4Sj3YBhUxzTe1lVahoDMDnsdsBzfmFnwKXHI1W097TqogIFzgAdAqKYqb
-         4Tpg==
+        bh=J1OMAV6dAkNEceeCRM3diKSIcnkkZR/weRNHRx7Xi5I=;
+        b=bzMstlZrg3AJPPPs8rYCUO03RHVXuGqBKUcIb3x5KdMOsadahRZWFn15mMckjYRgKT
+         ZM9JLCeJqMhCx+o+r+JQ4vtSeIVdwIZBc2ylbYUNfWee+nqwobbGCoadDA/mHKRtbMX6
+         F/udaG5gVNOXsqduirewV8TLY1Qky814nHWfDesNEwU4S8nzq5dCnPWdlk8OwCx2EYc+
+         /CF3+oPe8meXEQFk+UQ3yx2fs5AUbpAMXgt/tbhOTrUNcNMNBZsgmgrsCsIv8EKtVr5g
+         y7lvZKLJHPti8UK3lCAJ6ZqP1J70MYGCDdE90rvrB3Zdg0GpxnsSSORQTtRY1Q9dGwiM
+         gEXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=LWfznl+E7UHk1Tm2a3ZnCyf/c7UsK7xYbPig73lsJ88=;
-        b=gYnoTfVKoIhIUy1idFVcQanwfQleDaZ6hhCOIneQAfU5Qd/zvdvkWuLoEZ/1rWwOYT
-         +OSR7zy3daG2zIVFHl8jHS3cxqfw+WxMHsKMAkWWghAeUqd3h7YpXzEhx8ee8rSAdlPE
-         BS23f3wSlAAE2MO3YAjQnY71NeYFskrhB3TJEBurVFtTt8+6sL0+wjI1rBNxbWLX1Iup
-         WmoQl+qEZJha+6VEbsi11m33YSGwgblwRg0oJ36kKG4H7Q+lx6SlTEeBvnWFjHt0RZnA
-         0+7xn9UGl8HqfZ8JCmaDZS5bGhVm35wdMuCFeJdxjRbgZlVlOrMBp9ux7qK6ax++3Mzr
-         jwxg==
-X-Gm-Message-State: AMCzsaW0dNDF+qpB1Cl9IFGNrL72ZhIuODGpS5q8NAnyxdlaUdABqgII
-	hI0yPzznampVs9gi50pxJXM=
-X-Google-Smtp-Source: AOwi7QB0yH+jsgpMCrXvCrdwg1IWqkOm41wlLS02jmfnu5NJCNKjQwac9kRamg07UcmTxusttdfGNw==
-X-Received: by 10.101.78.8 with SMTP id r8mr4790293pgt.306.1507384327668;
-        Sat, 07 Oct 2017 06:52:07 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.168.109.202])
-        by smtp.gmail.com with ESMTPSA id 75sm7507774pfx.145.2017.10.07.06.52.05
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 07 Oct 2017 06:52:06 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
+        bh=J1OMAV6dAkNEceeCRM3diKSIcnkkZR/weRNHRx7Xi5I=;
+        b=HoS8Q1vROfOEI9G4Pqg93AzFNASkk8fH1R93rckyphGql1yuQloga8rufdPWQD4++V
+         cGUmF6zPBZR5thodHR4b9DvJfkzMAGmU0PcsjCr+51Bf5zWySExer5o6q090fg+2Ekzt
+         leXME6hgc/ursl3u2jLxPVsxBQg8iXVNsmP1Ad8SZN/GRy2Q6xhyDks2sPgZnJCg0DcV
+         P3G34PKDOqfxcti3xYMSxsGeRWKEXGnSu3cOkpo5byNuyqkwJgBiClUd0FRVxYPMS7aX
+         cr+ZbvwEo9fSkHqHmmTsmQ0Zwm8Xit0ea37ALNcxrZb5y4BHZT40/+sXFImSo9fPclkj
+         xh7Q==
+X-Gm-Message-State: APjAAAVaEAEAualMUUSKvBjYxS3Q77jDi+R4uHPalh3/i9YFMblevbkE
+	fk3Zxg9JLBOv1JtGr8vreOw=
+X-Received: by 2002:a17:902:1003:: with SMTP id b3mr24040206pla.306.1553499854198;
+        Mon, 25 Mar 2019 00:44:14 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.105.41])
+        by smtp.googlemail.com with ESMTPSA id p34sm23269114pgb.18.2019.03.25.00.44.12
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Mar 2019 00:44:13 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] Staging: media: atomisp: pci: Eliminate use of typedefs for struct
-Date: Sat,  7 Oct 2017 19:22:02 +0530
-Message-Id: <1507384322-16584-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] staging: sm750fb: Prefer using the BIT macro
+Date: Mon, 25 Mar 2019 13:14:01 +0530
+Message-Id: <20190325074401.7844-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-The use of typedefs for struct is discouraged, and hence can be
-eliminated. Done using the following semantic patch by coccinelle.
+Challenge suggested by coccinelle.
 
-@r1@
-type T;
+Replace bit shifting on 1 with the BIT(x) macro.
+Coccinelle script:
+
+@@
+constant c;
 @@
 
-typedef struct {...} T;
+-(1 << c)
++BIT(c)
 
-@script: python p@
-T << r1.T;
-T1;
-@@
-
-if T[-2:] == "_t" or T[-2:] == "_T":
-        coccinelle.T1 = T[:-2]
-else:
-        coccinelle.T1 = T
-
-print T, T1
-@r2@
-type r1.T;
-identifier p.T1;
-@@
-
-- typedef
-struct
-+ T1
-{
-...
-}
-- T
-;
-
-@r3@
-type r1.T;
-identifier p.T1;
-@@
-
-- T
-+ struct T1
-
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- .../media/atomisp/pci/atomisp2/css2400/runtime/spctrl/src/spctrl.c  | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v3:
+Change the subject line.
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/spctrl/src/spctrl.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/spctrl/src/spctrl.c
-index d9178e8..6d9bceb 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/spctrl/src/spctrl.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/spctrl/src/spctrl.c
-@@ -37,7 +37,7 @@ more details.
- #include "ia_css_spctrl.h"
- #include "ia_css_debug.h"
+Changes in v2: 
+Modify script to remove parentheses around BIT. 
+ drivers/staging/sm750fb/ddk750_chip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 4c1f00f551da..eea4c08b8a26 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -45,7 +45,7 @@ static unsigned int get_mxclk_freq(void)
+ 	OD = (pll_reg & PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT;
+ 	POD = (pll_reg & PLL_CTRL_POD_MASK) >> PLL_CTRL_POD_SHIFT;
  
--typedef struct {
-+struct spctrl_context_info {
- 	struct ia_css_sp_init_dmem_cfg dmem_config;
- 	uint32_t        spctrl_config_dmem_addr; /** location of dmem_cfg  in SP dmem */
- 	uint32_t        spctrl_state_dmem_addr;
-@@ -45,9 +45,9 @@ typedef struct {
- 	hrt_vaddress    code_addr;          /* sp firmware location in host mem-DDR*/
- 	uint32_t        code_size;
- 	char           *program_name;       /* used in case of PLATFORM_SIM */
--} spctrl_context_info;
-+};
+-	return DEFAULT_INPUT_CLOCK * M / N / (1 << OD) / (1 << POD);
++	return DEFAULT_INPUT_CLOCK * M / N / BIT(OD) / BIT(POD);
+ }
  
--static spctrl_context_info spctrl_cofig_info[N_SP_ID];
-+static struct spctrl_context_info spctrl_cofig_info[N_SP_ID];
- static bool spctrl_loaded[N_SP_ID] = {0};
- 
- /* Load firmware */
+ /*
 -- 
-2.7.4
+2.17.1
 
 
