@@ -1,90 +1,121 @@
 X-GM-THRID: 6672387662802845696
-X-Received: by 2002:a63:4612:: with SMTP id t18mr25192643pga.56.1553544756111;
-        Mon, 25 Mar 2019 13:12:36 -0700 (PDT)
+X-Received: by 2002:a17:906:5a59:: with SMTP id l25mr14830738ejs.122.1553536756636;
+        Mon, 25 Mar 2019 10:59:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:6948:: with SMTP id k8ls9110392plt.7.gmail; Mon, 25
- Mar 2019 13:12:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwW7yowU50cv26wIUlU05+Ivzr/NmONac14P40VLSq4iS6CncwDnh2uaSVF/uDNZbmos853
-X-Received: by 2002:a17:902:2bab:: with SMTP id l40mr27121865plb.273.1553544755322;
-        Mon, 25 Mar 2019 13:12:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553544755; cv=none;
+Received: by 2002:a50:9950:: with SMTP id l16ls2163725edb.3.gmail; Mon, 25 Mar
+ 2019 10:59:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZIvihibRiQNYjWKDTePHdbNr/HN8zijDe4yjy68VKge4i20s3nljdHEx7fo0sBUQSKtD9
+X-Received: by 2002:a50:8818:: with SMTP id b24mr17378306edb.86.1553536755882;
+        Mon, 25 Mar 2019 10:59:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553536755; cv=none;
         d=google.com; s=arc-20160816;
-        b=r93OPHNQ9fvy5hfBWIpB6HO947iTmZaD/EeECnP8FmumPlGD0j1HKyvhrt95NKWjVP
-         h9V0FOf9sIbvU49IP5S98joGpz2gq5skj3C8Vni+4/1rjU6yODm+rLWrQtGKd2lCn4/s
-         W9GoTLiZ+5uvjBB6fIl4TVE1LiHuaZXcqket+ljxnJm+XDX7l6IgX12ZtwURRNjGFTrP
-         muobU3xSR5f1EcTGDcXMQ1yCHOL35CmExottMDZDactKD0GJnBKbopghw05rBcCrgN9A
-         bwJ3tfQ4OyJCPE324SYvoe0FHb4niE3JC/xufIR5jjZZz4xVpDT7qTPtf4U+xcZ0T5Jl
-         3L8A==
+        b=BUKglz2hwI5awcODKK++K6mNS9/zD9fUW7v7FGQCT+81QwDfJE7Ln6KPXDQ1ajh+4m
+         hkbfvLoFDUgoIpCTEPjJcrzb9uwdDuVy9AbdToiGuhaVt+/I5XQ4kvipRoipg115Sw1T
+         +wyCQGr725FxedcVV/rFshNKC/VEw7p+OKl9ER626nP10oidAlvxjnDRVlmFIfbU7K4R
+         7o5zrZTzc8lFF6XDtIDznfq16fqIGhwK1ez15rj8PRbkEVENx9EnzvNh32UibF2DY8RX
+         J5pSowBkgq8TetZG5kRjS1a2hf3Z9RJT3Bjri2qra8Ny/1QIa12v9NPRApvcaOz+L+Jt
+         PW4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=88WsHDwhPQbpJACm7tWoVSisnnv5WazsRqJIV5K8wjM=;
-        b=mnk+TpQnXLatIXl4tk0dWeJrOOlNOLw2N3CH7YKPGmX/itoo/3k5ZPdmTjAhNjG+ZC
-         Yezqomt/Q++UeQvlLHvgkIskdNc3WZXFv84WezyE1Wvro8AXdnMRvYAuQOLG4o1Gv+3B
-         5Am916UHU392CZ+jpQFdE0WtvfhBw16du6NbilKQ0mjQ1j6NfutlqV7jopfzw2LlUiz5
-         VwPzO3g6et/bbtNSbbg4AyNGKanQO2Fp3t+mGU8FNJqrPKPQhHSioaTVf4QYo2ZG3GUd
-         RFTJ9bm4EcxiydV2TNbEa+OLsK9a2WNpB/knHwVZZMLS46hYvSvKRNXYn6uGX7jEkVfG
-         ZwPA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=TdbWgR6gpWnke8SnOU25bhxOVlqUlsphrvx7TsvVdDM=;
+        b=XgNJ3ztmAbhzg0Eas+hSS4yZfLlSkNeeLjRhrSFPExHBmQuQz3s52XOQqvsJeYg3kI
+         /0Ha4Ikdus1Y6GpPrebJ7RbhjH/nJ2EutOejTPHzcZgTOz+lflJJWqZSt/RV4iFLkJ3o
+         EZ/amk0RNeL2CBxnM2Xtq3gFS2fAHb8TLNi7Cp3rBjv4dMg7ZCghz1tQv0cyWJLMCg9v
+         5f+naNFM2ad/KVm2se3p3JsMNE4ZD6x6bADL5cgdo/xKnqgVJ7ppn3qlywau71E2wnLG
+         OYW9Eu4d9P4LN04j/jXdjtGXI8Bn/2wKZPO/NrnsxUQ43kFjQXgB3mqqmw8Iask/5HF9
+         bh4w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=TtIwJlWD;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id r133si1069941pgr.4.2019.03.25.13.12.35
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UCJ1nOcd;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id a5si951273edn.3.2019.03.25.10.59.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Mar 2019 13:12:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 25 Mar 2019 10:59:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=TtIwJlWD;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [218.237.54.8])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id A83E32087E;
-	Mon, 25 Mar 2019 20:12:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553544755;
-	bh=LztKvxmQtOPcYRmtlM4yPlCj36E+UPqjoAUiRR1Bi5E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TtIwJlWD1/ZNROnx+sXECWVldAj80zlLFLgq6DmtbzsXjG2IjCDFrzgfO9HgdhN7u
-	 5c1CMpmA1emTwNEh3r0N+tLUk45VHF8QdhQFWEUcP3UGCVy6KdhaWGqQpYBFV/oNcK
-	 qdltaPHML1jxT/fN8c3Mj/0iubdeSh1JyceVU7gM=
-Date: Tue, 26 Mar 2019 04:27:30 +0900
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jules Irenge <jbi.octave@gmail.com>
-Cc: sudipm.mukherjee@gmail.com, outreachy-kernel@googlegroups.com,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UCJ1nOcd;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x341.google.com with SMTP id o25so9921456wmf.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Mar 2019 10:59:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=TdbWgR6gpWnke8SnOU25bhxOVlqUlsphrvx7TsvVdDM=;
+        b=UCJ1nOcdzu9B9f0JD9rFToMQEGI5E9wW2cdMw1eR1NmKonIrjimSsuxBllhVa/6kQ8
+         ydMSM+7YRRzOlAYh/A4qdGi7Vh9b8SmPsmNRr6IyqxshMLb9UWYY4yFdFMtpT+dJ06zb
+         nRySCaoFPc7/F+bgYeeG/JaSDVkO0B+J1KUORUzZScu0NA5NNvg6zrVKKFImLGSr4vCv
+         cPm36HvwMxIb0/O59wukWTKAtbDiEXqXlKAIv3aUqqVEyt3gA2bplAP1dRAr8TXlqQKT
+         5o4zlwM64tmKm/Ts5hyqxCzea/tV5wLoEVgm5HYDKlEyXhfnjFR5z71ctAA8L3fn1dNl
+         /bHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=TdbWgR6gpWnke8SnOU25bhxOVlqUlsphrvx7TsvVdDM=;
+        b=DwaWt6nh3RVtkQLAeU3eUxVmegAPoWlf524tUMTmRxuEJDFyTf+CayYxvny1RyMTDz
+         ByTreiLT87nTzTVCJV8awkxfrD/lml949r9V/hKgtNwU7qCxa4OMxvPVahoHobzFnT8M
+         yDpi3Levt1xosrftGWQTIvQaFcxQuk0Z4sPSpZA55ZdKLKVEdiAXJXZqfeslMMabLnLv
+         8RhtVRZ2iYAxEHCmOxTA6pqrevOjF47RHWX9qs6NbeoNshSW3vxXtvULros4p6XecEsw
+         8EPgpFSuXA4zTBvLoSysjVxzT/Ml+sUBDYSeR3bUyD9mFUVAHtir5brpVf6oxr2dRy2B
+         Nj2Q==
+X-Gm-Message-State: APjAAAWQ1bPMr0+uoZwuDK0YJ+V0SPoK8Hnr+vFd4P9DghpZKBi9tgwF
+	z/Uj+QBZahRyuusw2AXA4Qg+k+g=
+X-Received: by 2002:a1c:be03:: with SMTP id o3mr6099580wmf.123.1553536755463;
+        Mon, 25 Mar 2019 10:59:15 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
+        by smtp.gmail.com with ESMTPSA id x5sm17901783wrt.72.2019.03.25.10.59.14
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 25 Mar 2019 10:59:14 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: sudipm.mukherjee@gmail.com,
+	outreachy-kernel@googlegroups.com,
 	jules.octave@outlook.com
-Subject: Re: [PATCH resend] staging: sm750fb: lower case to fix camelcase
- checkpatch warning
-Message-ID: <20190325192730.GD14506@kroah.com>
-References: <20190325175907.17740-1-jbi.octave@gmail.com>
+Subject: [PATCH resend] staging: sm750fb: lower case to fix camelcase checkpatch warning
+Date: Mon, 25 Mar 2019 17:59:07 +0000
+Message-Id: <20190325175907.17740-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190325175907.17740-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Content-Transfer-Encoding: 8bit
 
-On Mon, Mar 25, 2019 at 05:59:07PM +0000, Jules Irenge wrote:
-> Lower case to fix CamelCase checkpatch.pl warning
-> "CHECK: Avoid CamelCase: <ulActualMxClk>".
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-> index 6bdf643707c2..3fe4479401e5 100644
-> --- a/drivers/staging/sm750fb/ddk750_chip.c
-> +++ b/drivers/staging/sm750fb/ddk750_chip.c
-> @@ -56,7 +56,7 @@ static unsigned int get_mxclk_freq(void)
->  static void set_chip_clock(unsigned int frequency)
->  {
->  	struct pll_value pll;
-> -	unsigned int ulActualMxClk;
-> +	unsigned int ul_actual_mx_clk;
+Lower case to fix CamelCase checkpatch.pl warning
+"CHECK: Avoid CamelCase: <ulActualMxClk>".
 
-There is no need for the "ul" right?
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/sm750fb/ddk750_chip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
+index 6bdf643707c2..3fe4479401e5 100644
+--- a/drivers/staging/sm750fb/ddk750_chip.c
++++ b/drivers/staging/sm750fb/ddk750_chip.c
+@@ -56,7 +56,7 @@ static unsigned int get_mxclk_freq(void)
+ static void set_chip_clock(unsigned int frequency)
+ {
+ 	struct pll_value pll;
+-	unsigned int ulActualMxClk;
++	unsigned int ul_actual_mx_clk;
+ 
+ 	/* Cheok_0509: For SM750LE, the chip clock is fixed. Nothing to set. */
+ 	if (sm750_get_chip_type() == SM750LE)
+@@ -76,7 +76,7 @@ static void set_chip_clock(unsigned int frequency)
+ 		 * Return value of sm750_calc_pll_value gives the actual
+ 		 * possible clock.
+ 		 */
+-		ulActualMxClk = sm750_calc_pll_value(frequency, &pll);
++		ul_actual_mx_clk = sm750_calc_pll_value(frequency, &pll);
+ 
+ 		/* Master Clock Control: MXCLK_PLL */
+ 		poke32(MXCLK_PLL_CTRL, sm750_format_pll_reg(&pll));
+-- 
+2.20.1
 
 
