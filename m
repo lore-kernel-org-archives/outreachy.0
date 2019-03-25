@@ -1,82 +1,95 @@
-X-GM-THRID: 2210165424128
-X-Received: by 10.152.26.74 with SMTP id j10mr448010lag.10.1424553622351;
-        Sat, 21 Feb 2015 13:20:22 -0800 (PST)
+X-GM-THRID: 6672382238734155776
+X-Received: by 2002:a81:56d7:: with SMTP id k206mr3735122ywb.305.1553544754281;
+        Mon, 25 Mar 2019 13:12:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.80.197 with SMTP id t5ls206227wix.18.canary; Sat, 21 Feb
- 2015 13:20:22 -0800 (PST)
-X-Received: by 10.180.80.35 with SMTP id o3mr462660wix.0.1424553622071;
-        Sat, 21 Feb 2015 13:20:22 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wg0-x241.google.com (mail-wg0-x241.google.com. [2a00:1450:400c:c00::241])
-        by gmr-mx.google.com with ESMTPS id o3si365068wib.2.2015.02.21.13.20.22
+Received: by 2002:a25:19c6:: with SMTP id 189ls5202000ybz.3.gmail; Mon, 25 Mar
+ 2019 13:12:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbQxnHjbtYI7bgc6iAD75j4oHjDuhizr3ne/eOYRS9cn50a/sHaN5HGcmxwaGITsEv6JDI
+X-Received: by 2002:a25:e08d:: with SMTP id x135mr23114429ybg.123.1553544753359;
+        Mon, 25 Mar 2019 13:12:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553544753; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sCz8/vJQjBAcMXC5ABqjo8ygoPv7sGbBTrJvjQn1zrirk6GMmLrpDXOXbyvcKbjVgm
+         //Ag+Qnx4F6c3EgNKu9GN1VpyQ+IWdhIntIFe0JBRiLuLtAIOApmyodo+c9OOMjWJ6nf
+         JEx8WmHVrowyUbSsLvrzyIqWjKTOKqSudOb436Tqyb1iGk3Mkg3FCSmkukN2DJmywh+s
+         EGEBf0ASNjNW4F9/ECrSkaN/jGHAF1WQ+o6BPzhuTrXv1oXDSFYEUzkBPueRKP+aNNdg
+         btHoG17U67IapEDEAX9E0rFMYyVkDiYtyeXfOW2ZCSvgtmcUbRma9GEhHr+TGo+cmkFp
+         YbWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=u+3l+kbkBrUmqOdmIHAdzGdmrBjT+ooJgjDBfw4yhmk=;
+        b=x7nFol2n98H17P5lPq6EhTlorRUuKKfyLmBla8SAdWE5OMt7fsmWE5TXy5ei763Y1/
+         9VBpOgaGEU4MB/j5rNrudd3/eTmiTpLYdVWY/71xCL3e/RFuPVsI1wjwxIxJdL3MnoW1
+         Pe9EZeqgkmMOphs+HsqPiTIZwHjrxmebJdQqNUob+W9toqrCxqSHOH7RjvqCCkeD0cLo
+         TrQyCVoNskLXkarqVPyHLTOLjWmK3XZkXBJrbMr0Js0bknOzQry23LXn7aFWRLlTjdMI
+         dN8HCEwXMHsAOmXtZPz4NHTFdNAMSovMtSsL/cFKNujj4gXVvhENHP/WpiQPlynQX1ru
+         opow==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=dqUem0Ai;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id e23si1295522ybb.1.2019.03.25.13.12.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 21 Feb 2015 13:20:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::241 as permitted sender) client-ip=2a00:1450:400c:c00::241;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Mar 2019 13:12:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c00::241 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wg0-x241.google.com with SMTP id k14so6033450wgh.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Feb 2015 13:20:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=7l8OsHWwmq64JeU+BUh5yAatMz7LhdoE5CSUfHCdt/0=;
-        b=JXfP8bVncu8elqjP0cCtnWaK4nmuWP1nZTViTG69kkv2zImgbkty/52KFWjCck7jTw
-         rQLVLgVRy6IWNeWsAYFbZuh8QCI9m82jgq9jtEHMIIxJztzv0MKNM1IaIY5M1gPsr1vM
-         ymgL/FnHv6fnKoDL3xwDcLKK19OLUVqXMYXr5gzWwNUIhX0AyPenMPsqA9qbqyn0q4xD
-         mRreWuACWwXccdeaQHGLbIQeGfJLhgdLT/0MMKy6eCDG6155X+PlA59E4z0gl2HQ4JHk
-         rq2ezKELkNqFDIJhS9XTSwuhP9Wib/XTy0lbcwEUuEWX7hy4RMZsRWbnBXj9W+FQCbWH
-         9LiA==
-X-Received: by 10.180.24.65 with SMTP id s1mr7046954wif.30.1424553621903;
-        Sat, 21 Feb 2015 13:20:21 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id u18sm48186488wjq.42.2015.02.21.13.20.20
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 21 Feb 2015 13:20:21 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: core: Add space
-Date: Sat, 21 Feb 2015 23:20:13 +0200
-Message-Id: <1424553613-23333-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=dqUem0Ai;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [218.237.54.8])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 3AD662087C;
+	Mon, 25 Mar 2019 20:12:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553544752;
+	bh=47wPkY1izvyHwqRhbPC38JDU8rbMdi2kbQaM0vv1HkY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dqUem0AioMZM+/4cFux2JRnCisasnmSOJrGllsieQGPNuK5NzCeI2xDWoLrGs7Vto
+	 Lg2tvdgWp2zPJqr8tMoA/OBC5x8SoMqAI1ggUToS4al/zl2H7jOIgGM7rXEIS15vJ/
+	 50cEISRUPvRCPbMm79TPOO3Bf62jQmFdAOyiWmmk=
+Date: Tue, 26 Mar 2019 04:26:58 +0900
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: mchehab@kernel.org, outreachy-kernel@googlegroups.com,
+	jules.octave@outlook.com
+Subject: Re: [PATCH] staging: tegra-vde: Add comment for the lock declaration
+Message-ID: <20190325192658.GC14506@kroah.com>
+References: <20190325173033.16011-1-jbi.octave@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190325173033.16011-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-ERROR: "(foo*)" should be "(foo *)".That's why add space together.
-That Error found with checkpatch.pl
+On Mon, Mar 25, 2019 at 05:30:33PM +0000, Jules Irenge wrote:
+> Add comment for the lock declaration to fix checkpatch warning
+> Issue found by checkpatch.pl warning:
+> "CHECK: struct mutex definition without comment".
+> ---
+>  drivers/staging/media/tegra-vde/tegra-vde.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/tegra-vde/tegra-vde.c b/drivers/staging/media/tegra-vde/tegra-vde.c
+> index a5020dbf6eef..78ad78e03d12 100644
+> --- a/drivers/staging/media/tegra-vde/tegra-vde.c
+> +++ b/drivers/staging/media/tegra-vde/tegra-vde.c
+> @@ -59,7 +59,7 @@ struct tegra_vde {
+>  	void __iomem *ppb;
+>  	void __iomem *vdma;
+>  	void __iomem *frameid;
+> -	struct mutex lock;
+> +	struct mutex lock; /* generic mutex lock for tegra-vde driver */
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/staging/rtl8723au/core/rtw_ap.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Also, we know this is a lock, but what we don't know is _what_ it does :)
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_ap.c b/drivers/staging/rtl8723au/core/rtw_ap.c
-index e394d12..59d08f4 100644
---- a/drivers/staging/rtl8723au/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723au/core/rtw_ap.c
-@@ -456,8 +456,8 @@ static void update_bmc_sta(struct rtw_adapter *padapter)
- 		       sizeof(struct stainfo_stats));
- 
- 		/* prepare for add_RATid23a */
--		supportRateNum = rtw_get_rateset_len23a((u8*)&pcur_network->SupportedRates);
--		network_type = rtw_check_network_type23a((u8*)&pcur_network->SupportedRates, supportRateNum, 1);
-+		supportRateNum = rtw_get_rateset_len23a((u8 *)&pcur_network->SupportedRates);
-+		network_type = rtw_check_network_type23a((u8 *)&pcur_network->SupportedRates, supportRateNum, 1);
- 
- 		memcpy(psta->bssrateset, &pcur_network->SupportedRates, supportRateNum);
- 		psta->bssratelen = supportRateNum;
-@@ -1204,7 +1204,7 @@ static void update_bcn_p2p_ie(struct rtw_adapter *padapter)
- {
- }
- 
--static void update_bcn_vendor_spec_ie(struct rtw_adapter *padapter, u8*oui)
-+static void update_bcn_vendor_spec_ie(struct rtw_adapter *padapter, u8 *oui)
- {
- 	DBG_8723A("%s\n", __func__);
- 
--- 
-1.9.1
+You need a much better explaination than this, sorry.  I don't recommend
+this being a good "first patch" unless you really know this specific
+driver's codebase.
 
+thanks,
+
+greg k-h
 
