@@ -1,122 +1,113 @@
 X-GM-THRID: 6672752996979310592
-X-Received: by 2002:a05:600c:218e:: with SMTP id e14mr153988wme.5.1553622617000;
-        Tue, 26 Mar 2019 10:50:17 -0700 (PDT)
+X-Received: by 2002:a9d:61d9:: with SMTP id h25mr691439otk.27.1553621380829;
+        Tue, 26 Mar 2019 10:29:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:c243:: with SMTP id b3ls171386wmj.9.canary-gmail; Tue,
- 26 Mar 2019 10:50:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzs2mk5MRUyuI8I+GxHlukS0TgTmGasDjPl75YB49kJ46u1JS+iUhzUOcOQIieh4X0Smhx5
-X-Received: by 2002:a1c:9c52:: with SMTP id f79mr154668wme.22.1553622616207;
-        Tue, 26 Mar 2019 10:50:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553622616; cv=none;
+Received: by 2002:a9d:764b:: with SMTP id o11ls4567023otl.4.gmail; Tue, 26 Mar
+ 2019 10:29:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxQTIR2BmSjzJNnlroGUVE2F8f36M5F1Kq2adyxx9zYDp467gGVsYFlIdER5xO422nq2FeY
+X-Received: by 2002:a05:6830:146:: with SMTP id j6mr771504otp.23.1553621380057;
+        Tue, 26 Mar 2019 10:29:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553621380; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vhhwd8ZLWdb6/ZnMNWSY0+LAGVhOHclAs5VuOjg53UZCj9FzAH9raO58Q205VNuIus
-         C18BVc9r2tGXRdvHv+JjBnXb8nYTCJ8+wk4QNTfQLgE8VAq2kSpLjZSe2At/Z22VVtTb
-         mofpGgX5wAyHgH4ZI6vQQTwiCqg7Occ/tIhf7mSDOWcI7sZVh+D5MRPgeIeX1kzJ6oXW
-         6NrQ/OS/nN+5N9mFRyrze1WgK3FEMzoPvc5IPpxzz2qgNGtowEbsm1DlA29x8Xl/M4DQ
-         7RhxCk8YUuFHFFmun5EYteF1pSAeo+qZBapXN63yJLiiDfTZLPwPeBbNKK/ndQDKhXqe
-         Xx7w==
+        b=oFMeQ5OfvjeE1LZl8QDEQc76PaF/aODZwCQom3bKOxgwnqHj1PtFtNSlkQwzdsk8Ts
+         CfIxuNW+3ZrJ/+0w0lEQR+LJ35odUYxDdbeiqxnny53ERnIwVDQYVYUHj/8i2Q0ihxux
+         2VOc+T03wviN6rf5zlml31vKr2iziMFOxq5MhpwwKSwS8SuAMpU/kNzaVA//x52pnkTa
+         HG/FOU7o9JyT9+8zjpj5JKvwnhYxqaBTmy/uX/BS9fTRC+n+7e8eSxprtO/OqiDSRVeH
+         n6452eDaq5DRQnvvLrw2b6xIogdvzrni2oMddGmntUeZWdKiwPUCDEJyK9u9ahI/R4QK
+         h7uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=zPiZ2lTZ2D1xUl33lP8htrIPR4xytnmOfkcosZ9bee4=;
-        b=UH8Dl27W0fDN5CZ0Z8HmcqrFlRxp5bnd+bZIA9xOTOhkpYofRXQSiKCOgkF5Lvl7DB
-         TkeRviwdB6ulLmbDCeGgt7yz213Of8xkmXX7LFEo80kfVdqcn4bNv/qdF7CEF3BRB6yy
-         vjceMZf9KE5lo1rfx4yhdTZ3jogTE6CPFd9jIznIPAAKP//MthzvWV6OMIHq6G+PTFez
-         VP3BOpgR5FLHlmBYcSWTDaBTKNaOTjF01Wl9/JcmTTC7u5t4B3D7lQKUHI9YsouTud9w
-         o9qLlIdI3s671QUL02T4IC0tEu47PPtZCggyHpo8K8UuNRzMOXqYv9QcgQnqwIyvgprr
-         9GDA==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=KrNr9WgZgPzMBbJl1FHUqn8DMD5xEJXh+o7zn7EVYVM=;
+        b=CYAy4t2BXlrMQdG7hckTjnX26VrENtvLQTwjFQs84StO62uLQh02b9fscFGbxRY80n
+         BFjpGCcRo35GiMnRm/CC+SDDA6FQ7TEhWgvJwUC0zZzIAgpapJEg1j7dh4JLAdYSsnxu
+         afxTFGmj3ngpRI7M5+f9bDjguJjRt5E3AkPknRrmLJgW3wCtOGr+9XW5RCgw0wmGhwPf
+         IAwHGu1Ax1v70keTmxZoIEYFRFe37tYB53DQxi464kPblb2qrrMLts6F6FaMxLWDO0j8
+         /Bh68jqGu30H4A6YyAyz85zqWUOXkvoPYLDDNg6TUdfkc9OUDou1dWuuZtnXIXxvv3vC
+         Ygvg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f14si743125wme.2.2019.03.26.10.50.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bCy4laYv;
+       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d36 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <brandonbonaby94@gmail.com>
+Received: from mail-io1-xd36.google.com (mail-io1-xd36.google.com. [2607:f8b0:4864:20::d36])
+        by gmr-mx.google.com with ESMTPS id x31si1083381otb.1.2019.03.26.10.29.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Mar 2019 10:50:16 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Tue, 26 Mar 2019 10:29:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d36 as permitted sender) client-ip=2607:f8b0:4864:20::d36;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.60,273,1549926000"; 
-   d="scan'208";a="375876252"
-Received: from vaio-julia.rsr.lip6.fr ([132.227.76.33])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Mar 2019 18:50:15 +0100
-Date: Tue, 26 Mar 2019 18:50:13 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Branden Bonaby <brandonbonaby94@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 2/3] staging: rtl8712: rename variable
- to avoid camelcase
-In-Reply-To: <2de19725be83555d1f3983bf4ff7d9925ebd4f1c.1553619382.git.brandonbonaby94@gmail.com>
-Message-ID: <alpine.DEB.2.20.1903261849140.6419@hadrien>
-References: <cover.1553619382.git.brandonbonaby94@gmail.com> <2de19725be83555d1f3983bf4ff7d9925ebd4f1c.1553619382.git.brandonbonaby94@gmail.com>
-User-Agent: Alpine 2.20 (DEB 67 2015-01-07)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bCy4laYv;
+       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d36 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-io1-xd36.google.com with SMTP id c4so11524792ioh.9
+        for <outreachy-kernel@googlegroups.com>; Tue, 26 Mar 2019 10:29:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=KrNr9WgZgPzMBbJl1FHUqn8DMD5xEJXh+o7zn7EVYVM=;
+        b=bCy4laYvMc2KS0eStaTTm2bq5Wqd1Zof9Wgg67l1X8rLA7+oShxBqWpLRxeI5fO735
+         wAm8xw6Ljq8WIXEAmA+BkiAGuc9q4te5nrw5FCiaAEAJ/fxVR3c+UBztTMzOO9y/MbuB
+         QkSNZSDq1/yFiFf7jWLA4SuO6yd8A9hDB/P3w6e65Wh2NwS8amoPIjlaxBTTguQCtSpk
+         +5TCHjhxD75poposjgRM45zEyORl0Ya8bz6IL1dgzBHAVEMDWArSPYgC8TGRco1hKjHK
+         E1rC73TyYFFNY6RJxgUEnPxLpSueTdv8KWHJJKHcF7j9cT/3/molo6wqb4LRlGEDxXIc
+         kf2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=KrNr9WgZgPzMBbJl1FHUqn8DMD5xEJXh+o7zn7EVYVM=;
+        b=UOd0QrbT9R4AHbyAk+VqqcznvwB3d+un33CK6bQX8vnzKWPtBdGWb/KQvbG+BIDwow
+         oEnwgveGtrr4LaV7MoPLG7Tp17a0dasd1nIiHzbEfh9Rfedyh9Eec1fMDZB4qFZhfjgW
+         gldYI5/PZppK5z5+bkMTKBvFXmXoQAKEKVsIgDz7Sqi9yUrQB05dTL8nkNozxHesmKE+
+         unVkBXaR6gCmrKO9/zTYoeGAYOCU4TWtqmA09wSl5bLQOX9XzCXHe1CzFYASHJ+WQjpZ
+         uuNruoTPrN3Y2LS8BX73Zmk/7Q3eAxcX3uYWNTK449znO0GOc3u2Li2q5Ui/8EDpCo4I
+         gLEw==
+X-Gm-Message-State: APjAAAV+1hS+1HF1ONTwJh28rDEGFeGqJr25TV0dfUnmE8wxkLMbikw4
+	GP6Tj6toBaoULNv7worYb9ktee6KYIPw
+X-Received: by 2002:a5e:c004:: with SMTP id u4mr6621604iol.13.1553621379750;
+        Tue, 26 Mar 2019 10:29:39 -0700 (PDT)
+Return-Path: <brandonbonaby94@gmail.com>
+Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:413e:2bc:a081:9d66])
+        by smtp.gmail.com with ESMTPSA id 15sm7263263ita.34.2019.03.26.10.29.39
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Mar 2019 10:29:39 -0700 (PDT)
+From: Branden Bonaby <brandonbonaby94@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/3] staging: rtl8712: Remove comparison to true
+Date: Tue, 26 Mar 2019 13:29:30 -0400
+Message-Id: <5dc2490453ad07dd2815d71caabe52957108ebc3.1553619382.git.brandonbonaby94@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1553619382.git.brandonbonaby94@gmail.com>
+References: <cover.1553619382.git.brandonbonaby94@gmail.com>
+In-Reply-To: <cover.1553619382.git.brandonbonaby94@gmail.com>
+References: <cover.1553619382.git.brandonbonaby94@gmail.com>
 
+Remove the comparison to true in the if statement.
+CHECK: Using comparison to true is error prone.
 
+Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
+---
+ drivers/staging/rtl8712/rtl8712_xmit.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Tue, 26 Mar 2019, Branden Bonaby wrote:
+diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
+index f0933769cd36..bce899884ce2 100644
+--- a/drivers/staging/rtl8712/rtl8712_xmit.c
++++ b/drivers/staging/rtl8712/rtl8712_xmit.c
+@@ -532,7 +532,7 @@ static void update_txdesc(struct xmit_frame *pxmitframe, uint *pmem, int sz)
+ 		    (pattrib->dhcp_pkt != 1)) {
+ 			/*Not EAP & ARP type data packet*/
+ 			if (phtpriv->ht_option == 1) { /*B/G/N Mode*/
+-				if (phtpriv->ampdu_enable != true)
++				if (!phtpriv->ampdu_enable)
+ 					ptxdesc->txdw2 |= cpu_to_le32(BK);
+ 			}
+ 		} else {
+-- 
+2.17.1
 
-> Rename variable blnSetTxDescOffset to bln_set_tx_desc_offset
-> to align with linux kernel coding style in rtl8712_xmit.c.
-> The Warning was produced by checkpatch.pl.
-
-It looks like it is a boolean.  You could add another patch to the series
-to change the type and to change the 1s and 0s to the corresponding
-boolean values.
-
-julia
-
->
-> Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl8712_xmit.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-> index d8ff4ba0cfa0..f0933769cd36 100644
-> --- a/drivers/staging/rtl8712/rtl8712_xmit.c
-> +++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-> @@ -418,7 +418,7 @@ static void update_txdesc(struct xmit_frame *pxmitframe, uint *pmem, int sz)
->  #ifdef CONFIG_R8712_TX_AGGR
->  	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
->  #endif
-> -	u8 blnSetTxDescOffset;
-> +	u8 bln_set_tx_desc_offset;
->  	sint bmcst = IS_MCAST(pattrib->ra);
->  	struct ht_priv *phtpriv = &pmlmepriv->htpriv;
->  	struct tx_desc txdesc_mp;
-> @@ -429,16 +429,16 @@ static void update_txdesc(struct xmit_frame *pxmitframe, uint *pmem, int sz)
->  	ptxdesc->txdw0 |= cpu_to_le32(sz & 0x0000ffff);
->  	if (pdvobj->ishighspeed) {
->  		if (((sz + TXDESC_SIZE) % 512) == 0)
-> -			blnSetTxDescOffset = 1;
-> +			bln_set_tx_desc_offset = 1;
->  		else
-> -			blnSetTxDescOffset = 0;
-> +			bln_set_tx_desc_offset = 0;
->  	} else {
->  		if (((sz + TXDESC_SIZE) % 64) == 0)
-> -			blnSetTxDescOffset = 1;
-> +			bln_set_tx_desc_offset = 1;
->  		else
-> -			blnSetTxDescOffset = 0;
-> +			bln_set_tx_desc_offset = 0;
->  	}
-> -	if (blnSetTxDescOffset) {
-> +	if (bln_set_tx_desc_offset) {
->  		/* 32 bytes for TX Desc + 8 bytes pending */
->  		ptxdesc->txdw0 |= cpu_to_le32(((TXDESC_SIZE + OFFSET_SZ + 8) <<
->  			      OFFSET_SHT) & 0x00ff0000);
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/2de19725be83555d1f3983bf4ff7d9925ebd4f1c.1553619382.git.brandonbonaby94%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
