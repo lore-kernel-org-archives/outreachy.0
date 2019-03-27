@@ -1,96 +1,114 @@
-X-GM-THRID: 6256396302413725696
-X-Received: by 10.13.236.84 with SMTP id v81mr9689048ywe.2.1456680778980;
-        Sun, 28 Feb 2016 09:32:58 -0800 (PST)
+X-GM-THRID: 6672747924702625792
+X-Received: by 2002:a25:2f44:: with SMTP id v65mr1182549ybv.2.1553711149730;
+        Wed, 27 Mar 2019 11:25:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.16.164 with SMTP id 33ls2513262qgb.61.gmail; Sun, 28 Feb
- 2016 09:32:58 -0800 (PST)
-X-Received: by 10.129.116.214 with SMTP id p205mr10108711ywc.55.1456680778583;
-        Sun, 28 Feb 2016 09:32:58 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x22c.google.com (mail-pf0-x22c.google.com. [2607:f8b0:400e:c00::22c])
-        by gmr-mx.google.com with ESMTPS id y20si1052812pfa.2.2016.02.28.09.32.58
+Received: by 2002:a25:83cd:: with SMTP id v13ls1866068ybm.4.gmail; Wed, 27 Mar
+ 2019 11:25:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwx0FI0JLKYwnwf6j8L9kOnVmRrPA7JRoYDwO+G77fyK5C1anM1UD+Lgx3sZgaSR/lV0sIP
+X-Received: by 2002:a25:e07:: with SMTP id 7mr1608100ybo.54.1553711148945;
+        Wed, 27 Mar 2019 11:25:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553711148; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PQWJbcpmfnStoWuV/B0PAfJoHzlug3MNr8D6LQMPSiaWkQgSX38PS5NKzPURxfF72w
+         guGgeC9I8EClUksYc98jpYCEPcoVADTtLsNvJXxBqQl2vkUltx0EzR5xE10KrfmR5u0f
+         cQKOkTRt0OP5fzycaVBO7Juk7+mEWF6jtDGQ857QvGmH3hqbXlZNN4flg9lsgmFkdbqd
+         jQx5zC6VdnQz8DxpfXsyRHFb6KSg7DUaYBSawv223dN4nM2x2slDvqAfsikEBqWSTylx
+         ekVuEZIBvj71Pnfj57yYSLPUqvyzUoar+fSQ2iweJJlXN6FrlzXabi7nyyTQqq2Y5r0F
+         u3pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=bxpFkGlc0NKxXDfGzJXMQPGgqYi5Kt1QudGyrwzeuYU=;
+        b=TXGZPeFILaUXnPggyQm7YeGOndcU58iYkWjTpX7P4bhluhcEOAXr7kvHCk0Q5Ng4bG
+         RqVF6AboSuiPqMGR06/gMemPaMtQd/psyski9PnqpUavgW2xG39TKs8pcCe0JCVX5fmq
+         3fV9u7DyRtX5nmNbBsQ6E7q23h8mzk6o/idHX6q0WEVgL9JTHbe23sitiCry5rFpkkSI
+         gtS2Zj2tyE+QBVUqM+MTAXoxSx734uEgStKbTZ8nG8thvzqIcca0KnifmZA+UXLhKC7Z
+         Gorx1UlDVdVb3RyN+vfbKGckdwVtsenH7RtjjXKLNLpCniDMcr4TJAWD6hBck+7CMQzn
+         LZEA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=uCUhz9oN;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 126si283659ybo.3.2019.03.27.11.25.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 09:32:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) client-ip=2607:f8b0:400e:c00::22c;
+        Wed, 27 Mar 2019 11:25:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::22c as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22c.google.com with SMTP id t66so12485340pfb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 09:32:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=b8Vkh5r3cDfMPUWme1GTmy3Gfa/hAc9AxI9LdGMgkWI=;
-        b=EyiwUMAxv24FAPtaOuYoTxLJeN2wCp6H0TbNNzw/Ar3hhf2E63OPtCKFk/jMca7aCQ
-         NERMXz/bIsgGG/CkKkXGol1jKIx9u09biFtrOVi1U8cjZSh98wgws8RCeuyrDzQvCM4y
-         02WjcRiI9mtwTjoA/Rp3u8H/FezMk9SZm1tuGOxDWrfdFGT6aYIptuTa5T7450N7gLHg
-         qi1/GxkyLxjLfF9QHNLyvXvcjM92Eed7AP6siPlY20suHq75Vt1jlIlfP0qeoLhtcvV9
-         LgbgDtOa7C6dh0odU2icfB4Tr7OhLUWeykYMoavj6TrRT2atVDLG0h4zT0PF3GqML1L5
-         VZRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=b8Vkh5r3cDfMPUWme1GTmy3Gfa/hAc9AxI9LdGMgkWI=;
-        b=N+SgT30CZk2NuY4Muca4EbszmWcob2BabExqpBCdoRcEs8jh0G0qKG8C0KlzY4WNx5
-         /iMAo3hOSY8npdKJd1tIIgq1OessqdCxhURNlEYA+9L5R4Hq1PIn4E1A6SLKgNVP5uzC
-         8IXfGQgWmfFvGYv/OGEQpTCSLN0uIfutf0IZ2EpMnWEZYCwKrqoBPv7+eGqS8uWyFpoG
-         dPZ5Nxq81iTji6CUfk89aoMG5H6TvPVrS+YkaGCpfvP4HvNS//9BNxc3rW9uAIToiYKp
-         u7pzxooc2kxEmxWpCivVziWeembD22ANdQWp+NQGFIjDv0+0lhp6/54Ctp1PHZEpg/Fl
-         veAQ==
-X-Gm-Message-State: AD7BkJKTtJaCWNTxihCIfolieiOHtO9Uei1MDgD0Yiv7sWziqTQKK7ngsL3xueGXuwCxXQ==
-X-Received: by 10.98.33.28 with SMTP id h28mr13266303pfh.54.1456680778396;
-        Sun, 28 Feb 2016 09:32:58 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.134.212])
-        by smtp.gmail.com with ESMTPSA id b2sm32423720pfd.24.2016.02.28.09.32.54
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 09:32:58 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Sun, 28 Feb 2016 23:02:48 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: gdm724x: Remove print statement on failure
-Date: Sun, 28 Feb 2016 23:02:47 +0530
-Message-Id: <1456680767-435-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=uCUhz9oN;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [88.128.80.233])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 6C9882063F;
+	Wed, 27 Mar 2019 18:25:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553711148;
+	bh=JNMOb2IzLwpclwnidN5X2X9pNMOHvVxK3nYF+cUNcEw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uCUhz9oN2ggmUljrYoksR5Aqa117VAJX94db5DghxRRtAzAnbc/5Z8eF5XOenBHTT
+	 +QfwkNCPPVG3a+hIKW3A8b365FV174pJQvgL+sHtbtE+nM4+cNHB93kij8Zy8KoB7m
+	 Hb6RRj/8menseFeGVckJOHyvkCAVE/3T+zhyhQyE=
+Date: Wed, 27 Mar 2019 23:34:14 +0900
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Sanjana Sanikommu <sanjana99reddy99@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192u: Remove typedef for
+ struct.
+Message-ID: <20190327143414.GA9414@kroah.com>
+References: <20190326170942.19974-1-sanjana99reddy99@gmail.com>
+ <alpine.DEB.2.20.1903261828030.6419@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.20.1903261828030.6419@hadrien>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-The  memory allocation functions generates a call stack containing
-all the context information on failure, so print statements can be
-removed on failure of these functions.
-Done using coccinelle:
+On Tue, Mar 26, 2019 at 06:30:58PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Tue, 26 Mar 2019, Sanjana Sanikommu wrote:
+> 
+> > Challenge suggested by coccinelle.
+> >
+> > Linux kernel coding style guidelines suggest not using typedefs for
+> > structure.
+> > The following Coccinelle semantic patch detects the cases for struct
+> > type:
+> >
+> > @tn@
+> > identifier i;
+> > type td;
+> > @@
+> >
+> > -typedef
+> >  struct i { ... }
+> > -td
+> >  ;
+> >
+> > @@
+> > type tn.td;
+> > identifier tn.i;
+> > @@
+> >
+> > -td
+> > + struct i
+> 
+> It is suspicious that you have a change to a typedef, but no changes to
+> uses.  I see that you have a rule for taking case of the uses, which is a
+> good idea, but Coccinelle may not be looking at the .c file that uses the
+> type and the .h file at the same time.  Did you check that ieee_param
+> doesn't currently appear anywhere without struct in front of it?
+> Compiling the driver is a good test, but it is good to ceck with grep as
+> well, in case there are some uses that are not getting compipled in your
+> configuration.
 
-@@
-expression e;
-@@
+It looks like the patch is correct, nothing else uses the typedef, so
+I've queued it up now.
 
-e=\(kmalloc\|kmalloc\|kmalloc_array\|alloc_netdev\|kzalloc\|
-   devm_kzalloc\|devm_ioremap\)(...);
-...
-if(!e){
-- \(DBG_8723A\|printk\|pr_err\|CERROR\|DBG_88E\)(...);
-...when any
-}
+thanks,
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/gdm724x/gdm_lte.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
-index 98570c6..44163e4 100644
---- a/drivers/staging/gdm724x/gdm_lte.c
-+++ b/drivers/staging/gdm724x/gdm_lte.c
-@@ -890,7 +890,6 @@ int register_lte_device(struct phy_dev *phy_dev,
- 		net = alloc_netdev(sizeof(struct nic), pdn_dev_name,
- 				   NET_NAME_UNKNOWN, ether_setup);
- 		if (!net) {
--			pr_err("alloc_netdev failed\n");
- 			ret = -ENOMEM;
- 			goto err;
- 		}
--- 
-1.9.1
-
+greg k-h
 
