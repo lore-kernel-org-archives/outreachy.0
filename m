@@ -1,180 +1,436 @@
 X-GM-THRID: 6672748306065522688
-X-Received: by 2002:a17:902:e38e:: with SMTP id ch14mr476212plb.146.1553699999758;
-        Wed, 27 Mar 2019 08:19:59 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e393:: with SMTP id ch19ls7807231plb.2.gmail; Wed,
- 27 Mar 2019 08:19:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy9dmM3F5b58MQs7NmPux4V1JwQaBspu6CPWFXQF4Hg+Qzo/p1al1T7XHnH/tdH1WyQwo33
-X-Received: by 2002:a17:902:6b49:: with SMTP id g9mr401860plt.132.1553699998915;
-        Wed, 27 Mar 2019 08:19:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553699998; cv=none;
-        d=google.com; s=arc-20160816;
-        b=fU9QpFC3mefnARXO7Nm8HF2HJnKwsZsS/68M/Umq9JWXsu9lQZOydDObHkXPiEbREm
-         shwWUIr+35VrmqPBa9gPRSJp5dgkRRscVDgZuWj7aw3y8i4YB3ENXxwBKpNuGVsNzEqi
-         HGYLtsKTOVCnKv4c8PL/sFsWrdMu07F5reAaoQOfa7gHNHNivoJNNzisx66zvFp0fju9
-         n7QjR4dZ3XnztUF5bkYhUSoAkNCGSZMg1eGJT73LJT6P4AiSfQmphMJmerFzhqkadoji
-         rH4zsMSXHz6Po2eTUApgO8AfBIvIznFPjMPUHpSxQu/zxEGUP2ck+PIyATqY5gYUdtBF
-         vcAA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YQ1sE7BZf3CzC/ZVRSEo9QgVKtYvN0BFiwWHhteh9sI=;
-        b=Iz1FNT44FsCc9nZBcZyk58ibWnT0uDlKOTCDLrjhU77MTKcL11d6bk5J23Tn/IjeZq
-         0K46f7q5mYrLtSdrwSsRVX/E0B/DTVMEJV6vCdgGVbU9sLJZMMySBx/UKLw7aXteBh0c
-         bkWMKQ78z44SJiX2AayYlWbbnE5MVktpwl/kD4yRmaum4TmaVNKqIJL1p+rZd3O8r4Xn
-         Cix5C7+xETmVXrKnMFIY9xA3od6RTIS416mJsKFP/NoGasOG4HPq18keKsL+MI3P0fiM
-         sK9FuYHTTBY7qwZ4ULi/Jd1HrbluCaaD+FzpPCkw5Jh6G60oPP7lca1/1JlpTXq27+8r
-         6JyQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hsC+cDGo;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id r133si1372275pgr.4.2019.03.27.08.19.58
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Mar 2019 08:19:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hsC+cDGo;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x644.google.com with SMTP id bg8so3465426plb.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Mar 2019 08:19:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YQ1sE7BZf3CzC/ZVRSEo9QgVKtYvN0BFiwWHhteh9sI=;
-        b=hsC+cDGoJRWJJ7SMqGbZAfFPJkxLHGJIOy3uHIAhZAruqIaz4B8oWu9CV3Odo1N9W4
-         kRlvMes+1OyH4LvQBY7ybEgGBY+DgKCJQk/yYKLxWOImdVQYSpnGxNr4py85k2VLUHiO
-         I/SMfmj4DINj/dArY3xHv3lopzbgs90ao17im3g3VDC8t45wZ/Q4DzG6i++3zi+W7hM2
-         c5hEsIIhYS8dVXAdpKnJ7y8OAIrbUBqzEq1tt3OEziZHF+cPLWbSnPMHvGcW4oAr+ehr
-         1mGb0NeBclZYE6OH+5wRrJ3Drp1TmEUaJifYO9c+Nqw8Z9V/g9NZpGAASVDuaZLMKGf+
-         EBVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YQ1sE7BZf3CzC/ZVRSEo9QgVKtYvN0BFiwWHhteh9sI=;
-        b=rSdx957u8/fZtTTx9Psrrv6GqV9Vbn/tsbluh3oYLaOdqoqVJm/+QjLj7RlVg8m/Ru
-         4SBrcxOijjVNyRd+MCOC8U+gw03fpTr1+XpSh76M0SaYBnQqdfuXtDc9FjucEX82oEFW
-         W/Ne1Qy3UQy0sp8/uubAf9nEXn/7IhS4X/Z5tcMJzdHl7w8Y0/X8kROXvIvSRly3BEZR
-         q4TrfQYTh9oCyi3YmntbdVIYVOU6TUmUsGa6ZVMsKMqnudus7zHtiuF7e8dCaWO3yS+c
-         /bFDAvcdN4AZ6h2rhJA400dAWJPqMCS3FbqJ9ezeZfBKLyHsEHxtXTQsnLAY/ajO4/Oe
-         2IeQ==
-X-Gm-Message-State: APjAAAVPqhyp1W3ObXDBPV4d8E91br6FqXI0zVoXrt6qbau9YMShNiG3
-	F18hQgQA7EKMKfPse0qaFVw=
-X-Received: by 2002:a17:902:8609:: with SMTP id f9mr37916513plo.85.1553699998634;
-        Wed, 27 Mar 2019 08:19:58 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.254.10])
-        by smtp.googlemail.com with ESMTPSA id a6sm15937418pfn.181.2019.03.27.08.19.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Mar 2019 08:19:57 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: rtl8192e: Remove unncessary paranthesis.
-Date: Wed, 27 Mar 2019 20:49:47 +0530
-Message-Id: <20190327151947.7909-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Date: Wed, 27 Mar 2019 06:02:37 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <627f171b-b359-4d5c-b2f7-f5aa1dd1f04f@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.20.1903261852120.6419@hadrien>
+References: <20190326171111.20036-1-sanjana99reddy99@gmail.com>
+ <alpine.DEB.2.20.1903261852120.6419@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8192e: Remove unncessary
+ paranthesis.
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2941_1226192485.1553691757278"
+X-Google-Token: EO3o7eQFMDQOM5Up38M0
+X-Google-IP: 123.201.165.12
 
-Challenge suggested by coccinelle.
-Remove unnecessary parathesis around the right hand of
-assignment using the below script.
+------=_Part_2941_1226192485.1553691757278
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2942_640170612.1553691757279"
 
-@@
-local idexpression id;
-expression e;
-@@
+------=_Part_2942_640170612.1553691757279
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-id =
--(
-e
--)
 
-@@ expression e, e1, e2,e3,e4; @@
-e =
--(((e1) & (e2)) |
--(e3 << e4))
-+(e1 & e2) |
-+(e3 << e4)
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
-Changes in v2:
-Modify semantic patch to remove unnecessary paranthesis
-around  (OriginalValue) and (~dwBitMask).
- .../staging/rtl8192e/rtl8192e/r8192E_phy.c    | 19 ++++++++-----------
- 1 file changed, 8 insertions(+), 11 deletions(-)
+On Tuesday, March 26, 2019 at 11:24:17 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Tue, 26 Mar 2019, Sanjana Sanikommu wrote: 
+>
+> > Challenge suggested by coccinelle. 
+> > Remove unnecessary parathesis around the right hand of 
+> > assignment using the below script. 
+> > 
+> > @@ 
+> > binary operator op = {==,!=,&&,||,>=,<=,&,|}; 
+>
+> It's not relevant to your actual patch, but for == it could be a better 
+> idea to leave things as they are.  x = y == z; is a bit easy to misread. 
+>
+ 
+  Yes, I agree I would remove == from binary operators. 
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c b/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c
-index 73497d559b77..5603570f6dda 100644
---- a/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c
-@@ -81,8 +81,7 @@ void rtl92e_set_bb_reg(struct net_device *dev, u32 dwRegAddr, u32 dwBitMask,
- 	if (dwBitMask != bMaskDWord) {
- 		OriginalValue = rtl92e_readl(dev, dwRegAddr);
- 		BitShift = _rtl92e_calculate_bit_shift(dwBitMask);
--		NewValue = (((OriginalValue) & (~dwBitMask)) |
--			    (dwData << BitShift));
-+		NewValue = (OriginalValue & ~dwBitMask) | (dwData << BitShift);
- 		rtl92e_writel(dev, dwRegAddr, NewValue);
- 	} else
- 		rtl92e_writel(dev, dwRegAddr, dwData);
-@@ -188,7 +187,7 @@ static void _rtl92e_phy_rf_write(struct net_device *dev,
- 		NewOffset = Offset;
- 	}
+>
+> > expression l, r, t; 
+> > @@ 
+> > 
+> > ( 
+> > l = (r op t) 
+> > | 
+> > l = 
+> > -( 
+> > r 
+> > -) 
+> > ) 
+> > 
+> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
+> > --- 
+> >  .../staging/rtl8192e/rtl8192e/r8192E_phy.c    | 20 +++++++++---------- 
+> >  1 file changed, 10 insertions(+), 10 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c 
+> b/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c 
+> > index 73497d559b77..3de07a79b3e0 100644 
+> > --- a/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c 
+> > +++ b/drivers/staging/rtl8192e/rtl8192e/r8192E_phy.c 
+> > @@ -81,8 +81,8 @@ void rtl92e_set_bb_reg(struct net_device *dev, u32 
+> dwRegAddr, u32 dwBitMask, 
+> >          if (dwBitMask != bMaskDWord) { 
+> >                  OriginalValue = rtl92e_readl(dev, dwRegAddr); 
+> >                  BitShift = _rtl92e_calculate_bit_shift(dwBitMask); 
+> > -                NewValue = (((OriginalValue) & (~dwBitMask)) | 
+> > -                            (dwData << BitShift)); 
+> > +                NewValue = ((OriginalValue) & (~dwBitMask)) | 
+> > +                            (dwData << BitShift); 
+>
+> The parentheses on (OriginalValue) and (~dwBitMask) are not needed and 
+> make the code harder to read (more clutter).  Could you update your 
+> semantic patch to also take this case into account? 
+>
  
--	DataAndAddr = (Data<<16) | (NewOffset&0x3f);
-+	DataAndAddr = (NewOffset & 0x3f) | (Data << 16);
- 
- 	rtl92e_set_bb_reg(dev, pPhyReg->rf3wireOffset, bMaskDWord, DataAndAddr);
- 
-@@ -223,8 +222,7 @@ void rtl92e_set_rf_reg(struct net_device *dev, enum rf90_radio_path eRFPath,
- 			Original_Value = _rtl92e_phy_rf_fw_read(dev, eRFPath,
- 								RegAddr);
- 			BitShift =  _rtl92e_calculate_bit_shift(BitMask);
--			New_Value = (((Original_Value) & (~BitMask)) |
--				    (Data << BitShift));
-+			New_Value = (Original_Value & ~BitMask) | (Data << BitShift);
- 
- 			_rtl92e_phy_rf_fw_write(dev, eRFPath, RegAddr,
- 						New_Value);
-@@ -237,8 +235,7 @@ void rtl92e_set_rf_reg(struct net_device *dev, enum rf90_radio_path eRFPath,
- 			Original_Value = _rtl92e_phy_rf_read(dev, eRFPath,
- 							     RegAddr);
- 			BitShift =  _rtl92e_calculate_bit_shift(BitMask);
--			New_Value = (((Original_Value) & (~BitMask)) |
--				     (Data << BitShift));
-+			New_Value = (Original_Value & ~BitMask) | (Data << BitShift);
- 
- 			_rtl92e_phy_rf_write(dev, eRFPath, RegAddr, New_Value);
- 		} else
-@@ -571,9 +568,9 @@ static bool _rtl92e_bb_config_para_file(struct net_device *dev)
- 
- 	if (priv->IC_Cut  > VERSION_8190_BD) {
- 		if (priv->rf_type == RF_2T4R)
--			dwRegValue = (priv->AntennaTxPwDiff[2]<<8 |
-+			dwRegValue = priv->AntennaTxPwDiff[2]<<8 |
- 				      priv->AntennaTxPwDiff[1]<<4 |
--				      priv->AntennaTxPwDiff[0]);
-+				      priv->AntennaTxPwDiff[0];
- 		else
- 			dwRegValue = 0x0;
- 		rtl92e_set_bb_reg(dev, rFPGA0_TxGainStage,
-@@ -655,9 +652,9 @@ void rtl92e_set_tx_power(struct net_device *dev, u8 channel)
- 			priv->AntennaTxPwDiff[1] = (u8)(ant_pwr_diff);
- 			priv->AntennaTxPwDiff[0] = 0;
- 
--			u4RegValue = (priv->AntennaTxPwDiff[2]<<8 |
-+			u4RegValue = priv->AntennaTxPwDiff[2]<<8 |
- 				      priv->AntennaTxPwDiff[1]<<4 |
--				      priv->AntennaTxPwDiff[0]);
-+				      priv->AntennaTxPwDiff[0];
- 
- 			rtl92e_set_bb_reg(dev, rFPGA0_TxGainStage,
- 					  (bXBTxAGC|bXCTxAGC|bXDTxAGC),
--- 
-2.17.1
 
+> Yes, I will update my semantic patch by considering parenthesis :)
+
+    Sanjana
+ 
+
+>  
+> julia 
+>
+> >                  rtl92e_writel(dev, dwRegAddr, NewValue); 
+> >          } else 
+> >                  rtl92e_writel(dev, dwRegAddr, dwData); 
+> > @@ -223,8 +223,8 @@ void rtl92e_set_rf_reg(struct net_device *dev, enum 
+> rf90_radio_path eRFPath, 
+> >                          Original_Value = _rtl92e_phy_rf_fw_read(dev, 
+> eRFPath, 
+> > 
+>                                                                  RegAddr); 
+> >                          BitShift = 
+>  _rtl92e_calculate_bit_shift(BitMask); 
+> > -                        New_Value = (((Original_Value) & (~BitMask)) | 
+> > -                                    (Data << BitShift)); 
+> > +                        New_Value = ((Original_Value) & (~BitMask)) | 
+> > +                                    (Data << BitShift); 
+> > 
+> >                          _rtl92e_phy_rf_fw_write(dev, eRFPath, RegAddr, 
+> >                                                  New_Value); 
+> > @@ -237,8 +237,8 @@ void rtl92e_set_rf_reg(struct net_device *dev, enum 
+> rf90_radio_path eRFPath, 
+> >                          Original_Value = _rtl92e_phy_rf_read(dev, 
+> eRFPath, 
+> >                                                               RegAddr); 
+> >                          BitShift = 
+>  _rtl92e_calculate_bit_shift(BitMask); 
+> > -                        New_Value = (((Original_Value) & (~BitMask)) | 
+> > -                                     (Data << BitShift)); 
+> > +                        New_Value = ((Original_Value) & (~BitMask)) | 
+> > +                                     (Data << BitShift); 
+> > 
+> >                          _rtl92e_phy_rf_write(dev, eRFPath, RegAddr, 
+> New_Value); 
+> >                  } else 
+> > @@ -571,9 +571,9 @@ static bool _rtl92e_bb_config_para_file(struct 
+> net_device *dev) 
+> > 
+> >          if (priv->IC_Cut  > VERSION_8190_BD) { 
+> >                  if (priv->rf_type == RF_2T4R) 
+> > -                        dwRegValue = (priv->AntennaTxPwDiff[2]<<8 | 
+> > +                        dwRegValue = priv->AntennaTxPwDiff[2]<<8 | 
+> >                                        priv->AntennaTxPwDiff[1]<<4 | 
+> > -                                      priv->AntennaTxPwDiff[0]); 
+> > +                                      priv->AntennaTxPwDiff[0]; 
+> >                  else 
+> >                          dwRegValue = 0x0; 
+> >                  rtl92e_set_bb_reg(dev, rFPGA0_TxGainStage, 
+> > @@ -655,9 +655,9 @@ void rtl92e_set_tx_power(struct net_device *dev, u8 
+> channel) 
+> >                          priv->AntennaTxPwDiff[1] = (u8)(ant_pwr_diff); 
+> >                          priv->AntennaTxPwDiff[0] = 0; 
+> > 
+> > -                        u4RegValue = (priv->AntennaTxPwDiff[2]<<8 | 
+> > +                        u4RegValue = priv->AntennaTxPwDiff[2]<<8 | 
+> >                                        priv->AntennaTxPwDiff[1]<<4 | 
+> > -                                      priv->AntennaTxPwDiff[0]); 
+> > +                                      priv->AntennaTxPwDiff[0]; 
+> > 
+> >                          rtl92e_set_bb_reg(dev, rFPGA0_TxGainStage, 
+> >                                            (bXBTxAGC|bXCTxAGC|bXDTxAGC), 
+> > -- 
+> > 2.17.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20190326171111.20036-1-sanjana99reddy99%40gmail.com. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_2942_640170612.1553691757279
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Tuesday, March 26, 2019 at 11:24:17 PM UTC+5:30=
+, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Tue, 26 Mar 2019, Sanjana Sanikommu wrote:
+<br>
+<br>&gt; Challenge suggested by coccinelle.
+<br>&gt; Remove unnecessary parathesis around the right hand of
+<br>&gt; assignment using the below script.
+<br>&gt;
+<br>&gt; @@
+<br>&gt; binary operator op =3D {=3D=3D,!=3D,&amp;&amp;,||,&gt;=3D,&lt;=3D,=
+&amp;,|};
+<br>
+<br>It&#39;s not relevant to your actual patch, but for =3D=3D it could be =
+a better
+<br>idea to leave things as they are. =C2=A0x =3D y =3D=3D z; is a bit easy=
+ to misread.
+<br></blockquote><div>=C2=A0</div><div>=C2=A0 Yes, I agree I would remove =
+=3D=3D from binary operators.=C2=A0</div><blockquote class=3D"gmail_quote" =
+style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-l=
+eft: 1ex;">
+<br>&gt; expression l, r, t;
+<br>&gt; @@
+<br>&gt;
+<br>&gt; (
+<br>&gt; l =3D (r op t)
+<br>&gt; |
+<br>&gt; l =3D
+<br>&gt; -(
+<br>&gt; r
+<br>&gt; -)
+<br>&gt; )
+<br>&gt;
+<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"4NmFx-xDBQAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0.../staging/rtl8192e/<wbr>rtl8192e/r8192E_phy.c =C2=A0 =C2=
+=A0| 20 +++++++++----------
+<br>&gt; =C2=A01 file changed, 10 insertions(+), 10 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/rtl8192e/<wbr>rtl8192e/r8192E_phy.c b=
+/drivers/staging/rtl8192e/<wbr>rtl8192e/r8192E_phy.c
+<br>&gt; index 73497d559b77..3de07a79b3e0 100644
+<br>&gt; --- a/drivers/staging/rtl8192e/<wbr>rtl8192e/r8192E_phy.c
+<br>&gt; +++ b/drivers/staging/rtl8192e/<wbr>rtl8192e/r8192E_phy.c
+<br>&gt; @@ -81,8 +81,8 @@ void rtl92e_set_bb_reg(struct net_device *dev, u=
+32 dwRegAddr, u32 dwBitMask,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (dwBitMas=
+k !=3D bMaskDWord) {
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0OriginalValue =3D rtl92e_readl(dev, dwR=
+egAddr);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BitShift =3D _rtl92e_calculate_bit_shif=
+t(<wbr>dwBitMask);
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0NewValue =3D (((OriginalValue) &amp; (~dwB=
+itMask)) |
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 =C2=A0 =C2=A0(dwData &lt;&lt; BitShift));
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0NewValue =3D ((OriginalValue) &amp; (~dwBi=
+tMask)) |
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 =C2=A0 =C2=A0(dwData &lt;&lt; BitShift);
+<br>
+<br>The parentheses on (OriginalValue) and (~dwBitMask) are not needed and
+<br>make the code harder to read (more clutter). =C2=A0Could you update you=
+r
+<br>semantic patch to also take this case into account?
+<br></blockquote><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
+1ex;">Yes, I will update my semantic patch by considering parenthesis :)</b=
+lockquote><div>=C2=A0 =C2=A0 Sanjana</div><div>=C2=A0</div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #c=
+cc solid;padding-left: 1ex;">=C2=A0<br>julia
+<br>
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0rtl92e_<wbr>writel(dev, dwRegAddr, NewV=
+alue);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0rtl92e_<wbr>writel(dev, dwRegAddr, dwDa=
+ta);
+<br>&gt; @@ -223,8 +223,8 @@ void rtl92e_set_rf_reg(struct net_device *dev,=
+ enum rf90_radio_path eRFPath,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>Original_Value =3D _rtl92e_phy_rf_fw_read(dev, eRFPath,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0RegAddr);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>BitShift =3D =C2=A0_rtl92e_calculate_bit_shift(<wbr>BitMask);
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0New_<wbr>Value =3D (((Original_Value) &amp; (~BitMask)) |
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0(D=
+ata &lt;&lt; BitShift));
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0New_<wbr>Value =3D ((Original_Value) &amp; (~BitMask)) |
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0(D=
+ata &lt;&lt; BitShift);
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0_<wbr>rtl92e_phy_rf_fw_write(dev, eRFPath, RegAddr,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0New_Value);
+<br>&gt; @@ -237,8 +237,8 @@ void rtl92e_set_rf_reg(struct net_device *dev,=
+ enum rf90_radio_path eRFPath,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>Original_Value =3D _rtl92e_phy_rf_read(dev, eRFPath,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 Reg=
+Addr);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>BitShift =3D =C2=A0_rtl92e_calculate_bit_shift(<wbr>BitMask);
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0New_<wbr>Value =3D (((Original_Value) &amp; (~BitMask)) |
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 (=
+Data &lt;&lt; BitShift));
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0New_<wbr>Value =3D ((Original_Value) &amp; (~BitMask)) |
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 (=
+Data &lt;&lt; BitShift);
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0_<wbr>rtl92e_phy_rf_write(dev, eRFPath, RegAddr, New_Value);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else
+<br>&gt; @@ -571,9 +571,9 @@ static bool _rtl92e_bb_config_para_file(<wbr>s=
+truct net_device *dev)
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (priv-&gt=
+;IC_Cut =C2=A0&gt; VERSION_8190_BD) {
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (priv-&gt;rf_type =3D=3D RF_2T4R)
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>dwRegValue =3D (priv-&gt;AntennaTxPwDiff[2]&lt;&lt;8 |
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>dwRegValue =3D priv-&gt;AntennaTxPwDiff[2]&lt;&lt;8 |
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0priv-&gt;AntennaTxPwDiff[1]&lt;&lt;4 |
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0priv-&gt;AntennaTxPwDiff[0]);
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0priv-&gt;AntennaTxPwDiff[0];
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0else
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>dwRegValue =3D 0x0;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0rtl92e_set_<wbr>bb_reg(dev, rFPGA0_TxGa=
+inStage,
+<br>&gt; @@ -655,9 +655,9 @@ void rtl92e_set_tx_power(struct net_device *de=
+v, u8 channel)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0priv-<wbr>&gt;AntennaTxPwDiff[1] =3D (u8)(ant_pwr_diff);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0priv-<wbr>&gt;AntennaTxPwDiff[0] =3D 0;
+<br>&gt;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>u4RegValue =3D (priv-&gt;AntennaTxPwDiff[2]&lt;&lt;8 |
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0<wbr>u4RegValue =3D priv-&gt;AntennaTxPwDiff[2]&lt;&lt;8 |
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0priv-&gt;AntennaTxPwDiff[1]&lt;&lt;4 |
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0priv-&gt;AntennaTxPwDiff[0]);
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0priv-&gt;AntennaTxPwDiff[0];
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>rtl92e_set_bb_reg(dev, rFPGA0_TxGainStage,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0(bXBTxAGC|bXCTxAGC|bXDTxAGC),
+<br>&gt; --
+<br>&gt; 2.17.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"4NmFx-xDBQAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreachy-kern...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"4NmFx-xDBQAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20190326171111.20036-1-sanjana99reddy9=
+9%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190326171111.2=
+0036-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190326171111.2=
+0036-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.googl=
+e.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190326171111.20036-1-<wbr>sanjan=
+a99reddy99%40gmail.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_2942_640170612.1553691757279--
+
+------=_Part_2941_1226192485.1553691757278--
 
