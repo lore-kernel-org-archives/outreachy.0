@@ -1,133 +1,144 @@
 X-GM-THRID: 6673109681211179008
-X-Received: by 2002:a62:204c:: with SMTP id g73mr216801pfg.95.1553709413182;
-        Wed, 27 Mar 2019 10:56:53 -0700 (PDT)
+X-Received: by 2002:a17:902:b615:: with SMTP id b21mr501914pls.34.1553704422480;
+        Wed, 27 Mar 2019 09:33:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:461d:: with SMTP id t29ls10480948pfa.1.gmail; Wed, 27
- Mar 2019 10:56:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJDujjYHxKfs2b+bqQ3sJpw7/nD8KBjDRlr6p6PDtpVZqX7UiHjoWE5r80whU+6wLoHoxE
-X-Received: by 2002:a62:b415:: with SMTP id h21mr162852pfn.91.1553709412427;
-        Wed, 27 Mar 2019 10:56:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553709412; cv=none;
+Received: by 2002:a17:902:9f86:: with SMTP id g6ls7909487plq.3.gmail; Wed, 27
+ Mar 2019 09:33:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyxShJPXingmQHr7jaXgMUL+EFElkCnH6lmMTvDU4Ck4vCzeJgyA7URdfA9pUz5zGI4tUaV
+X-Received: by 2002:a17:902:8f8e:: with SMTP id z14mr295570plo.99.1553704421712;
+        Wed, 27 Mar 2019 09:33:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553704421; cv=none;
         d=google.com; s=arc-20160816;
-        b=l0elTaG5ocy2WvdaEAaHfyiyjvLcK4kP3mHP8IdTkpWrjqVYUf9Z5tBFRG8d5KX8jx
-         fcpLhGgYZfacpp2uh385ulRtlBgXRzx+Fe8ChhZAzp+tI7AD4pGvVMhLyFMxlpoy1Yof
-         JfURSrPwFDdSTJqqyMDnnwPXSdEQHBhOGPW6riKBRk5y070lCqdlkFmat/LIgRLPKhBM
-         StametN07/TvnvlpE28uPQHXoyPUh/6yG0CPgBPhESVdra4uUBurTyZesfTV7n+bJ/Be
-         9nKPYDKdp/mPJUtfqFRf4E3kKIvGfxvTOtxZAkUOtGPZ2d69tRA0/TjHM6JvIeyOTG8m
-         U0Mw==
+        b=nR+1zcf/gChznM6ypi+BbpuPp8eDZbkLmHRS+JB7xwMK06q04tkqoWFz73Uhh+P+eh
+         BT/AMlWfRzXDqZP46yk5OJYW0JKrOGqZWZHkrCYoycUKgHl0VwpbdehuTKRIi4o1dywt
+         I2k8oLNXPw1xN66V5ZEckaB8oTFCfsYhwpveRx0GMZTjRv05npFWtqMnD4Ap2NCWB+JH
+         1FTNjjpeeecYPX8FJX9DZRiqOH7NADfh0iS+TVxzyGP2vnMdMbpehqlvuaPJ29Wmk1OW
+         a3TWBtZn+3OhUu0P0DiqcK/fqmzexO9i3G5J6TT1ON/flfm82T0o9PLj4d7H+93apO7Q
+         U17Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gxVznCKRx1pbN+R1JGygjKK0/VGQ1Rtg1e7Ff54uaik=;
-        b=nDbVyxHpjwMYZ/BipZ0WUDzPPOUqyuEdXonVb3AwNQ/RppGxsHUB17kp0dFH3qg+XJ
-         gljpWhidW6o7t6R/iBkqBe56RB6mAn9ASjXyGzO4TaAfTB/fEZaR4C3lrsgdzSmafjqK
-         mJQHqZN2OyBcmfuaQqxkVEdECA90wrbTtmK3DQoPDs7DqXjE3Fr2IRYEHffEIEi8lCg4
-         D4x4q3CAg0gaOLqtkYjqcyXhLzmoO1aS/pdPC8xDWIuiWcFHYgV/7zktGglCf9q05RDj
-         RKlSVB4yEVnwlKlHX3fpV8OtrYRxBV3vW7RgVLysEvCQInJuSA2RsUqfe1ycljCxDIjt
-         LiBA==
+        bh=WWiAPEHplYmRDS0uuBpqONUKNL28AmvrAFic7FqHjKk=;
+        b=kx1f8ex4Kux0MRfkWIBP+4yo8xaUqD/kc1Xq+O7qHdkTEDHmJAQ2KTey7XSFqFqP4u
+         b5vVVrHM9rRIj3zNFcDmK/Nd8UH92RRabOjFOEv0jiYZmEK3eYoVnIP1jyhmqAsbPE4N
+         /31M7TX0uqhGQiNTZxVDFUY1A4VuQxqZ3c+g58TK94/wPBCcF0PyH1TXT0ieAFRL25VL
+         2UxZeguw6EHAeFOZneK+qAY5Wt5ZiVUby5Zc2M/5CcXRlpgihwifxcUEFCV1k+hqWQsq
+         yCG6/S7f2PlzuHJYckOiwVLNTaZNmYOvXfLAbd4eRAUz3Z/Jt67xI2b7Diy9Z1D/g381
+         B6vw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d2IB847w;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::332 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RkbOAJR2;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x332.google.com (mail-ot1-x332.google.com. [2607:f8b0:4864:20::332])
-        by gmr-mx.google.com with ESMTPS id r133si1397683pgr.4.2019.03.27.10.56.52
+Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id d19si134945pfm.5.2019.03.27.09.33.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Mar 2019 10:56:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::332 as permitted sender) client-ip=2607:f8b0:4864:20::332;
+        Wed, 27 Mar 2019 09:33:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d2IB847w;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::332 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RkbOAJR2;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x332.google.com with SMTP id e80so15753824ote.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Mar 2019 10:56:52 -0700 (PDT)
+Received: by mail-ot1-x341.google.com with SMTP id 64so15456370otb.8
+        for <outreachy-kernel@googlegroups.com>; Wed, 27 Mar 2019 09:33:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=gxVznCKRx1pbN+R1JGygjKK0/VGQ1Rtg1e7Ff54uaik=;
-        b=d2IB847wBFBpxireUW6XlsTQplOPIVKlKnm6iQ9xeKC0IvJPtMhAxIHsAokvS38ntr
-         hUawp/GAAVosr0O1bwPSLlkatWePMobpLvM6uUeXqxW9EeXoD3SKo5w8C/SusqHv0eRL
-         As9mZWczMd0G4K+2ka0VRMEUbYxc6eeZo6bEHXQ91vCFjQF3jacr/BW6cbHZfiGhSzJw
-         f/K3q6+eEq/uWEJf5vaXcSDhu18iVYwjc53kCJHd8X8Hpa5tyTiSEOoW0rv/lxVUEX7M
-         E5oAFw/leZ6Uw6HQ7kaXQNfr1TAjlOMb7WyExlv1PisnqYJWLt/IPwgkcYDWNJV+xdaN
-         Envg==
+        bh=WWiAPEHplYmRDS0uuBpqONUKNL28AmvrAFic7FqHjKk=;
+        b=RkbOAJR2dyQzYyDw3N2RDM3ccNIFt34thwHBsEw8mLNKeAYnK8xAkcY1j7FRUCjXjh
+         y6OupfnmZK8TXaza69YmgFh7OGnGu4Vm9B3uMinieELfzUk+pXm2YKzysvI3s2XCy679
+         inA5+E3YLwAwRZWb5ABQcp8C3smW8kNp9UlsNYy0x5s5/QQ4nFZ4slO+ls0B5cdQAXV9
+         5nFo65kLEJaDGvXKBTf4isxHWcCsTTG1RV9k7/jwO2+TIU3u8cbDv1GYrdb9yseWxFrA
+         8tugkxcT3KmHCPWFbd6fCs1Yx0HYveoH9g0pTRbqvGa5Oy7eyOmjXFSUH90aXTCosivB
+         rqBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=gxVznCKRx1pbN+R1JGygjKK0/VGQ1Rtg1e7Ff54uaik=;
-        b=eeJuioRzuK+4lpg7LAZnnHQ/v4f00WXgL9Rkr0TAUOaEXp5rFr+5Vts/MqZ4lqOGHD
-         uTFx6SqG1x2to8BvT3wuShLyUZjiB8s54OTd+8W2FY4ylmsY5gtfbeNr4zCdXeqD75Kw
-         G3ICflNNW24v1xoB9iOBYoExll5Nj8cHvNB0cdGgQFCV5F1vRmiHKWKunPe32x6NS8u3
-         djrRV3AEWFX/I/V6Nqb90HixWoWt59eSySOFqfhEXEzt/LIk1r0CLYpePTGWlhQ+CjGx
-         DYuB72HhTitA4OH4DrDR86U6ph2P3kianDyjfVG3SlDwuEyboAHiMifv2KiGHPC81bWm
-         LuHw==
-X-Gm-Message-State: APjAAAVn24rYhmRCe5R3ALtX2H9+d4INKGUA16D+D249bjhIMySQVB+z
-	IbozjIym0fXafrQrUSoRoys=
-X-Received: by 2002:a05:6830:128c:: with SMTP id z12mr14674263otp.101.1553709411911;
-        Wed, 27 Mar 2019 10:56:51 -0700 (PDT)
+        bh=WWiAPEHplYmRDS0uuBpqONUKNL28AmvrAFic7FqHjKk=;
+        b=WJTm74G8cMwOQMdwRXxAyVaCRjQ0P80vgwEEVRtDB/sN/cTE1G0BeT4OyFND1yM67g
+         h1NengZslZNgOHIOUBu1MCLyBZqyRnshaE+d6Q7jd+RhMeGI2Fa+czfDOlO+/wKTq2Ig
+         q2mFjwn2yIsEPTgh7bKzfW2gOTO09GLGpcN1xuNsDa0toyodW+Ii2QoOZlimwJzQvRBK
+         ItSL56IQcVdNGAOc/mTGfXh4sLPdphhyRUgDZt3nuBD3B44H3hn6zRHrMACXJ/hhNfOe
+         2dffQb8s8htfV5ubbAp5WsOe15Zh8Uu1FoneKIc2+E+Z28BsF418/ogCaGgVkE3r+wUU
+         poWw==
+X-Gm-Message-State: APjAAAVSb7EpjGBtSEnO3Uu08Gvvb2jFhA0QT9oOznaFbFcZpEvVgVrR
+	wm8i+nyg3jeJeCtAaBkTQ2c=
+X-Received: by 2002:a9d:7697:: with SMTP id j23mr26106942otl.344.1553704420901;
+        Wed, 27 Mar 2019 09:33:40 -0700 (PDT)
 Return-Path: <madhumithabiw@gmail.com>
 Received: from madhuleo ([2605:6000:1023:606d:b885:380e:c834:19c3])
-        by smtp.gmail.com with ESMTPSA id i17sm8776390otc.67.2019.03.27.10.56.50
+        by smtp.gmail.com with ESMTPSA id p132sm3915163oig.37.2019.03.27.09.33.39
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Mar 2019 10:56:51 -0700 (PDT)
+        Wed, 27 Mar 2019 09:33:40 -0700 (PDT)
 From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 To: mchehab@kernel.org,
 	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 Subject: [PATCH] Staging: media: davinci_vpfe: Convert macro into an inline function
-Date: Wed, 27 Mar 2019 12:56:48 -0500
-Message-Id: <20190327175648.29538-1-madhumithabiw@gmail.com>
+Date: Wed, 27 Mar 2019 11:33:37 -0500
+Message-Id: <20190327163337.12083-1-madhumithabiw@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
-COnvert macro into an inline function in order to maintain Linux kernel
-coding style based on which the inline function is preferable over the
-macro.
+Convert macro into an inline function to maintain Linux kernel coding
+style based on which inline function is preferable to macro resembling
+function.
 
 Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 ---
- drivers/staging/media/davinci_vpfe/dm365_ipipe.h   | 5 ++++-
- drivers/staging/media/davinci_vpfe/dm365_resizer.c | 4 ++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ .../media/davinci_vpfe/dm365_ipipe_hw.c       | 24 ++++++++++---------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
-index 174334b53f96..32dce3c95304 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.h
-@@ -27,7 +27,10 @@
- #include "davinci_vpfe_user.h"
- #include "vpfe_video.h"
+diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+index 565a3dc5bed1..110473c30577 100644
+--- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
++++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
+@@ -825,8 +825,10 @@ ipipe_set_lum_adj_regs(void __iomem *base_addr, struct ipipe_lum_adj *lum_adj)
+ 	regw_ip(base_addr, val, YUV_ADJ);
+ }
  
--#define CEIL(a, b)	(((a) + (b-1)) / (b))
-+inline unsigned int ceil(unsigned int a, unsigned int b)
+-#define IPIPE_S12Q8(decimal, integer) \
+-	(((decimal & 0xff) | ((integer & 0xf) << 8)))
++inline u32 ipipe_s12q8(unsigned short decimal, short integer)
 +{
-+	return ((a + (b - 1)) / b);
++	return (decimal & 0xff) | ((integer & 0xf) << 8);
 +}
  
- enum ipipe_noise_filter {
- 	IPIPE_D2F_1ST = 0,
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_resizer.c b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
-index 9d726298b406..395c66520932 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_resizer.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_resizer.c
-@@ -386,7 +386,7 @@ resizer_calculate_down_scale_f_div_param(struct device *dev,
- 	}
- 	o = 10 + (two_power << 2);
- 	if (((input_width << 7) / rsz) % 2)
--		o += (((CEIL(rsz, 1024)) << 1) << n);
-+		o += ((ceil(rsz, 1024) << 1) << n);
- 	h2 = output_width - h1;
- 	/* phi */
- 	val = (h1 * rsz) - (((upper_h1 - (o - 10)) / two_power) << 8);
-@@ -630,7 +630,7 @@ resizer_calculate_normal_f_div_param(struct device *dev, int input_width,
- 		val /= rsz << 1;
- 		val <<= 1;
- 		val += 2;
--		o += ((CEIL(rsz, 1024)) << 1);
-+		o += (ceil(rsz, 1024) << 1);
- 		h1 = val;
- 	}
- 	h2 = output_width - h1;
+ void ipipe_set_rgb2ycbcr_regs(void __iomem *base_addr,
+ 			      struct vpfe_ipipe_rgb2yuv *yuv)
+@@ -835,23 +837,23 @@ void ipipe_set_rgb2ycbcr_regs(void __iomem *base_addr,
+ 
+ 	/* S10Q8 */
+ 	ipipe_clock_enable(base_addr);
+-	val = IPIPE_S12Q8(yuv->coef_ry.decimal, yuv->coef_ry.integer);
++	val = ipipe_s12q8(yuv->coef_ry.decimal, yuv->coef_ry.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_RY);
+-	val = IPIPE_S12Q8(yuv->coef_gy.decimal, yuv->coef_gy.integer);
++	val = ipipe_s12q8(yuv->coef_gy.decimal, yuv->coef_gy.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_GY);
+-	val = IPIPE_S12Q8(yuv->coef_by.decimal, yuv->coef_by.integer);
++	val = ipipe_s12q8(yuv->coef_by.decimal, yuv->coef_by.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_BY);
+-	val = IPIPE_S12Q8(yuv->coef_rcb.decimal, yuv->coef_rcb.integer);
++	val = ipipe_s12q8(yuv->coef_rcb.decimal, yuv->coef_rcb.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_RCB);
+-	val = IPIPE_S12Q8(yuv->coef_gcb.decimal, yuv->coef_gcb.integer);
++	val = ipipe_s12q8(yuv->coef_gcb.decimal, yuv->coef_gcb.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_GCB);
+-	val = IPIPE_S12Q8(yuv->coef_bcb.decimal, yuv->coef_bcb.integer);
++	val = ipipe_s12q8(yuv->coef_bcb.decimal, yuv->coef_bcb.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_BCB);
+-	val = IPIPE_S12Q8(yuv->coef_rcr.decimal, yuv->coef_rcr.integer);
++	val = ipipe_s12q8(yuv->coef_rcr.decimal, yuv->coef_rcr.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_RCR);
+-	val = IPIPE_S12Q8(yuv->coef_gcr.decimal, yuv->coef_gcr.integer);
++	val = ipipe_s12q8(yuv->coef_gcr.decimal, yuv->coef_gcr.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_GCR);
+-	val = IPIPE_S12Q8(yuv->coef_bcr.decimal, yuv->coef_bcr.integer);
++	val = ipipe_s12q8(yuv->coef_bcr.decimal, yuv->coef_bcr.integer);
+ 	regw_ip(base_addr, val, YUV_MUL_BCR);
+ 	regw_ip(base_addr, yuv->out_ofst_y & RGB2YCBCR_OFST_MASK, YUV_OFT_Y);
+ 	regw_ip(base_addr, yuv->out_ofst_cb & RGB2YCBCR_OFST_MASK, YUV_OFT_CB);
 -- 
 2.17.1
 
