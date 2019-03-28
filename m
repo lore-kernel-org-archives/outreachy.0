@@ -1,98 +1,116 @@
 X-GM-THRID: 6673477267526516736
-X-Received: by 2002:a1f:403:: with SMTP id 3mr4308869vke.25.1553876121139;
-        Fri, 29 Mar 2019 09:15:21 -0700 (PDT)
+X-Received: by 2002:a17:902:bb95:: with SMTP id m21mr534495pls.64.1553790007375;
+        Thu, 28 Mar 2019 09:20:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:8d06:: with SMTP id p6ls614531vsd.3.gmail; Fri, 29 Mar
- 2019 09:15:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyuYRKI+2SUn9KGGjyhAhvOoDfyCGeNijctc0qIcTFGDhZ5lbZgONokTrnF9/xqvepv5aef
-X-Received: by 2002:a67:748d:: with SMTP id p135mr4341215vsc.38.1553876120570;
-        Fri, 29 Mar 2019 09:15:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553876120; cv=none;
+Received: by 2002:a63:13:: with SMTP id 19ls585671pga.11.gmail; Thu, 28 Mar
+ 2019 09:20:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy9Og/1byumCINF1CHppIRuMDTqRdaFneEVjzdT6zjYDJuj5Oirl3rVT0Ha2Mq31FZcCyL+
+X-Received: by 2002:aa7:9507:: with SMTP id b7mr409355pfp.113.1553790006420;
+        Thu, 28 Mar 2019 09:20:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553790006; cv=none;
         d=google.com; s=arc-20160816;
-        b=X9PPbwPnSE/IMuiqPwexsTWERdRgV8sLbrHa28eouHG4Stw4pL7P3fSkRx5Rb22PMk
-         eLDrqnHC3LutOsM7mFiYs2M37yDSGcyOaYufhGEZajmX67SeKzwxNiXs3bOxf/AxJPAi
-         PQokhj/oJeARVB64ff44Xu46EOOMjlCpj+ZpFeHbb2na7D8ykZlCXKcG1Vi9sSmLReV0
-         AlSPeOD32Enzx1YveAd7kDWowQTwJpo9b1r5MWIJC2Kn4q5lU0Zp9hPYVaaPazZhr49W
-         F1o3HsD0QD9Dbzat+83c6ArJ8vRFs3wlM9z+6Res1CjStw4MDt9bktBn3DqFL3jFzNZb
-         imeA==
+        b=VyOcGJc/rmuCOgUHsHV7p3X2LP+YN6KRfrRTFj74a5X84ayNkTFp4BeNwnK0ZZ923J
+         3QgJYE8+8sJMee8jbcSIUAbw5AS4MSfWMUTtXksjDpeaeQcBquZO45LcqYCX1uwFjy4x
+         52FnsIVw7h8f5rhWl57J/qTc5uoy+Y6QbZX7WWYCvn4kpJTmkhVAC06XS8HQXSPa5QLk
+         Eg36mS0kRvjR8777xQU6O7knXXge1ZXPGkzmUqfJmHBXM3X34RoJYo6H55Acwb0YK5Ep
+         cBdH3N8dQ53ZVHBgw7oA6PY6kOjzhNyaTISMIMrRVaHO7XHomupBZufIYmmRXUhHMY5g
+         XGAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=UyGo245cSDmDUXGGr52GKS+WVU9hwnOBhdz/yWg3JOQ=;
-        b=eOzjSuom2cJhndIvd8OyBOU0jniYvXRfdduoMp2VUlzZviiNrSPMhvaRwsyMSLjraF
-         5g3EX5ozjsYngNtBJXgaMFR+9BYIMb4rW9xt3OSPJ4Ua1VnDp4VKtosChbHlv8qS21y9
-         CoHzer8WyxQ+gbZH8Ozp+6AwmHFRAGVdEgjXWN3Q1p5OdBIs03KRtcz2d9MV9SuCqC+V
-         oFW6P2ab+aQSLTX86Mdn4f830i2q77xraY/RodviypXF9PTKFaahHQXYZB1689GLisVK
-         izNbnUNaYFljI/SROY76ziamTOa6NiIusyOhcUu9NhfRHUSy3Chzef/j4jLseZ8LRqnb
-         j/xQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=FiGjewxupXbgiHLJ5lFELv8cYUxi7JPCNJvYOU1LZf4=;
+        b=QGOlJZw4UAGjwsVmjfI9PBIPvdzsF6Hzy3ZNSzyurVvE2cm0o0g+YZPhhCyGds5USP
+         /QHJBciti636ix5xY1OPJo2Q6a7AuJnqS+iJyApX6pt6xVaAba1bSdoESS+e0OJqvok+
+         +UYC/+IsexH8wy9/BsI45nTz1N1kxfNbbnY2Do+OFCPDR3DgIxkgQelpGrGQfz9/avRu
+         ExQnkh73NOVb2XWN06ewp06aNGFeyat0Jp+zwt9a8DVakCh5rFy1OSvTWaQa8kzJUL3G
+         68KUIChv1HVp1qPTSNUJzkhRqUzuk9Htdc+S2HRkFnMM1ofElAfXMUcbJUmYYa6bF7BD
+         vzWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="FvE/d57L";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id h13si172206vkf.4.2019.03.29.09.15.20
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N8BoBdZg;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x32b.google.com (mail-ot1-x32b.google.com. [2607:f8b0:4864:20::32b])
+        by gmr-mx.google.com with ESMTPS id 141si70970pgb.1.2019.03.28.09.20.06
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 09:15:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 28 Mar 2019 09:20:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) client-ip=2607:f8b0:4864:20::32b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="FvE/d57L";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id E594D218A3;
-	Fri, 29 Mar 2019 16:15:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553876119;
-	bh=XL4VZqR7efxWtwyHMwvLm4PgTA3qPV0794VQY26OpW8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FvE/d57LZIlChjKnKMLl3ljX5pLs7bgBlNxRDc60GAUmqOBmZHy08Rcrv19gjMSlP
-	 h2dWOXkqltCVybjJ433dEpRzhpi14ZiCRcPXJNQct1TAtMYeWt+OwnTHWo0ZoRc6Iy
-	 NbYXIywWzMKtu7VE0RhNIVgc1W5Xo2zFt48O2KVg=
-Date: Fri, 29 Mar 2019 17:15:17 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: rtl8192u: ieee80211: Remove custom macro
- IEEE80211_DEBUG
-Message-ID: <20190329161517.GA3008@kroah.com>
-References: <20190328162002.14740-1-madhumithabiw@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190328162002.14740-1-madhumithabiw@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N8BoBdZg;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x32b.google.com with SMTP id 103so18867877otd.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 09:20:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=FiGjewxupXbgiHLJ5lFELv8cYUxi7JPCNJvYOU1LZf4=;
+        b=N8BoBdZgG1k3uuazIIoPMzyWBfrQCE5JTCdqip5/4fnsWiztF7AzKOJuRTDAzbta8W
+         i37oycI/ifKQAM8DL9mpATwzjSb4E1dFQlxCqHG/K7jNBorLQ8iMc0kfXz804vhhuNtb
+         +O+9aXjZgbm9lyVKgTFg8z2LeJIyLiaQWSLpX2n707Y8/vAHiXldyPDnOZN31CTGPSxy
+         WT/2q/f+Z5MYSpcEQIgZ1Ar+BuIk1rQBprYJ4g8HtPAtYqadEL8w6faSp6rBdonDnRL+
+         llvn/65zcI8uGw2iSO/PdeRDfnk2up4ot1ll99x8Hgr7hA5enZZSXpMAJYx7Acsp1T5B
+         bdLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=FiGjewxupXbgiHLJ5lFELv8cYUxi7JPCNJvYOU1LZf4=;
+        b=o8xyj6cWJimTwVUqQYH7KCHExin7YPlQvvqaNdsfW/y6gVxYRoxbRMW3yESbIOB8ms
+         dZS8/O7f+iFULWv92T9u8wp+wN1E+eCQVO52LFgqQjvJ6Agq2wT5DcxI6b9qLguDOjcx
+         pqFMZi5Qzn9PdOQ3AEyylp1EPIBwyUVacHqkVVxq0zMRzMr7jKCgCHlje6GOSXNunLR9
+         6Hc8gf4GvTsOb71pAZJsbwwkiwkyQOOogwnYKA7w6AZDUK/srl6Hi7fxpWijIFcphPyu
+         2Gb1bKhBh3qlq6cnABzLMcAIT6VlhvNznzv2jyHl4nbdk3vmw+GPzrV9DvzH/fFgTNbR
+         vKWw==
+X-Gm-Message-State: APjAAAWBrwMeI4R4ueoOc1lqKRh/dVRrUGIhygqegDr+MV/Zn3cptmuQ
+	vQMCznwz3aLxXovsHP7AjUU=
+X-Received: by 2002:a9d:7cd2:: with SMTP id r18mr1523003otn.87.1553790005946;
+        Thu, 28 Mar 2019 09:20:05 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:606d:5d24:be3f:3c51:19db])
+        by smtp.gmail.com with ESMTPSA id w11sm8150372otq.9.2019.03.28.09.20.05
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Mar 2019 09:20:05 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: rtl8192u: ieee80211: Remove custom macro IEEE80211_DEBUG
+Date: Thu, 28 Mar 2019 11:20:02 -0500
+Message-Id: <20190328162002.14740-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Thu, Mar 28, 2019 at 11:20:02AM -0500, Madhumitha Prabakaran wrote:
-> Remove the custom macro IEEE80211_DEBUG for printing message in
-> dev_alloc_skb in order to maintain Linux kernel coding style based on
-> which kernel does not print failure warning.
-> 
-> Issue suggested by Coccinelle.
-> 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-> ---
->  drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-> index 109445407cec..085309aace94 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
-> @@ -119,7 +119,6 @@ static struct sk_buff *ieee80211_ADDBA(struct ieee80211_device *ieee, u8 *Dst, s
->  	}
->  	skb = dev_alloc_skb(len + sizeof(struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
->  	if (!skb) {
-> -		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
->  		return NULL;
->  	}
+Remove the custom macro IEEE80211_DEBUG for printing message in
+dev_alloc_skb in order to maintain Linux kernel coding style based on
+which kernel does not print failure warning.
 
-When you do this, the extra { } should also be removed.
+Issue suggested by Coccinelle.
 
-Same for the rest of the patch.
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
+index 109445407cec..085309aace94 100644
+--- a/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192u/ieee80211/rtl819x_BAProc.c
+@@ -119,7 +119,6 @@ static struct sk_buff *ieee80211_ADDBA(struct ieee80211_device *ieee, u8 *Dst, s
+ 	}
+ 	skb = dev_alloc_skb(len + sizeof(struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
+ 	if (!skb) {
+-		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
+ 		return NULL;
+ 	}
+ 
+@@ -206,7 +205,6 @@ static struct sk_buff *ieee80211_DELBA(
+ 
+ 	skb = dev_alloc_skb(len + sizeof(struct rtl_80211_hdr_3addr)); //need to add something others? FIXME
+ 	if (!skb) {
+-		IEEE80211_DEBUG(IEEE80211_DL_ERR, "can't alloc skb for ADDBA_REQ\n");
+ 		return NULL;
+ 	}
+ //	memset(skb->data, 0, len+sizeof( struct rtl_80211_hdr_3addr));
+-- 
+2.17.1
 
-greg k-h
 
