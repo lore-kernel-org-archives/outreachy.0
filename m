@@ -1,203 +1,167 @@
 X-GM-THRID: 6673407094899605504
-X-Received: by 2002:a0c:b5dd:: with SMTP id o29mr519060qvf.1.1554055111480;
-        Sun, 31 Mar 2019 10:58:31 -0700 (PDT)
+X-Received: by 2002:a1c:f214:: with SMTP id s20mr19834wmc.20.1553782852259;
+        Thu, 28 Mar 2019 07:20:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:110f:: with SMTP id c15ls3630760qtj.3.gmail; Sun, 31 Mar
- 2019 10:58:30 -0700 (PDT)
-X-Received: by 2002:ac8:3723:: with SMTP id o32mr6314023qtb.23.1554055110888;
-        Sun, 31 Mar 2019 10:58:30 -0700 (PDT)
-Received: by 2002:a37:4909:0:0:0:0:0 with SMTP id w9msqka;
-        Thu, 28 Mar 2019 08:40:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx2WcjjgvR0l5Txwa3oHAoQ7DHyV8RLsy1PNFuyRKKVRTXeYTc7UDyeQ1SxdbYDNxfUTGl4
-X-Received: by 2002:a0c:8ab1:: with SMTP id 46mr2733392qvv.59.1553787649435;
-        Thu, 28 Mar 2019 08:40:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553787649; cv=none;
+Received: by 2002:a5d:540a:: with SMTP id g10ls63515wrv.14.gmail; Thu, 28 Mar
+ 2019 07:20:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzSjnj8vnZOaSWR0o5UBEcvVPNHs/75r91BHX8Ee9AejUIdDGFz/fN1ESrS8e7cfPkNnt2S
+X-Received: by 2002:a5d:444e:: with SMTP id x14mr790073wrr.32.1553782851567;
+        Thu, 28 Mar 2019 07:20:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553782851; cv=none;
         d=google.com; s=arc-20160816;
-        b=cfMy+XmLHD4Nigdw8fNl7Ok/vxMK+Cryk6vdGnnu52ap3z7FITGKoIw+Uo4hb+apOX
-         BJsJTgygFt5T3b1FA7uGyFhhFU7+ajpdTTiUesjNSewEmUhR/rpw7TfQB0DUpRRejrQs
-         9idY0bWhe60D1UDgqnJbB2+lVZ5ilN7gcDdSspzBhMUO366hk13rM0s1+JPnlJoZapYG
-         qsERBPxqKy0azcNqxXwL5ubtN4VJdZz6SfLutufNCAyd1qVCzetJVW1Ar1Jnawo3XgbR
-         wt8VXzbXAMaWBQ7NeafbQlsN1FLl70uy2+mfde517a4h9Ic/sT47KJcL86vPB/DR5val
-         zybQ==
+        b=Y46lO8krb5HumkHHcCBWUnjpONoxTo9IdQSA22p5efur7Xce0IpGhZ46tx/BR/SsZC
+         2xTK0HjkPplmNieDdTic858pfy8kNjVZpaso/2pXgy76sgasJhWNL2SoR1ul1g89XeqT
+         knqaQQ8fW2r6EoUo4rZEk1oX7isgeIoS97qJ7/+SOdx/q/rpA48xOQAAiaIytM55UwKD
+         34ofyP2ulZAaOU4t4Y0NjigwPG2lMvaPZsl3WH6+JfwVl5+S5FDYAe6oEf0VgF+sPKfW
+         wyXsyxxMsfQb8cDRlNiO/kFC1JgPl1Tk/vPJytGiCCOq15GlB8w3hu0VKuV3pjG96lbj
+         6xIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature;
-        bh=FMFea2/p4bchDvoiaBtd4uWUhIHkONbPzpj7OElTY/k=;
-        b=auZa2lc+K3WD75y1jxnQkOFEfmPT++6wcdUgIMLpVnYMB0+8eZgt4acmlpvUMGgoIT
-         B76NahGwPwKPm0z4UrYb6R2k3/W0MT1IkO7MvdfLc5+d9rrFDU0/aREX9dgL9hHaQ3kC
-         jyURSM3EVQLRjqsEWfaTcLZBn18rQwPJwPC3P/eD7gan2S77QyHxdOMh5iBl0Xis9KYe
-         C9p89vlvcX+XD3158eRbYmoqnOOkR8drxAzxdxs04WRN0ebSS9RjwWqPSzi5LAgpJCz4
-         kLoHOERogK+JKHqMugkaPvJjOSr87r7wwXPTqBZpa1NhmBuNHpLkBIZBR6audaYYIk6D
-         MKNA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=jMhotLB6kllzKm1Siaxx/mKokiCIM2v8BjjQ0cQgwvs=;
+        b=mqHxu+XP+/AsWhRsZ5gcw4fctuBixO0xE1qLObo+xd8AV1qE7W43kSgkhNf6ZQXS9D
+         /Byxz7Cl3FGuDQigE1lC83156UtMvX0QG1YthG1RYfd5AgLCZKfoZutwnZ7dVxKo4jEi
+         GMkBPUQoRAAeH1ZtxR8kdjhW/N/7seLq00lX4jozpuTeHdVxMwdxABalvrIF52CCyIHg
+         zb855xDWwQ/WjzeQqNYQ/grEe8Op4TAdQeDldnwmwXRYDwb9juSvtqMUAXuMZPkxBZqI
+         TSTWxZ8Jq7fKuINZqZxR8zDQ/mQAFOvGGzpXvcRFAtvmQX3sWbMyYyGStsIWaR7nmXR6
+         PIZQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ibmkvmum;
-       spf=pass (google.com: domain of larry.finger@gmail.com designates 2607:f8b0:4864:20::330 as permitted sender) smtp.mailfrom=larry.finger@gmail.com
-Return-Path: <larry.finger@gmail.com>
-Received: from mail-ot1-x330.google.com (mail-ot1-x330.google.com. [2607:f8b0:4864:20::330])
-        by gmr-mx.google.com with ESMTPS id a5si171279qkb.2.2019.03.28.08.40.49
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a9si1267234wrp.5.2019.03.28.07.20.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Mar 2019 08:40:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of larry.finger@gmail.com designates 2607:f8b0:4864:20::330 as permitted sender) client-ip=2607:f8b0:4864:20::330;
+        Thu, 28 Mar 2019 07:20:51 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ibmkvmum;
-       spf=pass (google.com: domain of larry.finger@gmail.com designates 2607:f8b0:4864:20::330 as permitted sender) smtp.mailfrom=larry.finger@gmail.com
-Received: by mail-ot1-x330.google.com with SMTP id u15so18711059otq.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 08:40:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=FMFea2/p4bchDvoiaBtd4uWUhIHkONbPzpj7OElTY/k=;
-        b=ibmkvmumLSJKuV+W1zC+12aDZXw50/fXxjgErhNYHzHEsOsbweChG7hJfCqqDbCzVE
-         W2omrqqV/bYIE8dZDBp7guOw5rUnUrn9EehiBr+UiMzuPs5IvIkC4LT+/MsKF/vKzbmB
-         +pLjhx+tNYJ/p6Yk6bogNxBWJY4nTK4CDIIc+sglb3KeqcNG2LwbNjQRVSXZlDFQ7WA4
-         ItSw30yuA0FLxsY9z4U2tt9/dtVEyTBYs+ct2wnq4n71OMCmBhBaZm0qypxO1vljku77
-         mNEzYrjePBzeJ6SxIXdCtYFmCkI5nsJW0B9omHSb/Ngz4QA68uEoPss3LdcSj3VZhf6A
-         VaCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=FMFea2/p4bchDvoiaBtd4uWUhIHkONbPzpj7OElTY/k=;
-        b=p+AGRirBOihq3MMdJfYTYEmwMJx5uRGH6Q81KushSj9Dr+TsKN5cff9fRggYpXcx+f
-         1MLCUvuu2Y/dkON9xNSlH7vb6ak2uDx6WWyagg13K2gKsZt8Uiy7bySAMb5Tcirh2ofL
-         WpokjBuAkwOnQjd3xP/kHoR5QJuqAWpGO4nyun8mWc/Er7XtRXfvMcd/P9kIC5GFHr8L
-         6WYPq+E+X/L51MRuXmVi9Xp8R4FuwZa0UH+ojsTy9aQHnS1bXA671AdQ1f6r+Oyy6zoH
-         Gy/jWsFQpg8ooI0A5L45OLsytq2rjd6TtUnHA7pKGgz5uixoi183gZC0tmU1GdMBrU6h
-         SfAg==
-X-Gm-Message-State: APjAAAVxLwIFzQa26KUyVJCpYyVOsTh5ZWQpPtEiTQ1HRjlaR9JqkhVA
-	ns8TPdhU+1Lvl4eQNoc9NyQ=
-X-Received: by 2002:a05:6830:1c5:: with SMTP id r5mr20143183ota.360.1553787649129;
-        Thu, 28 Mar 2019 08:40:49 -0700 (PDT)
-Return-Path: <larry.finger@gmail.com>
-Received: from [192.168.1.112] (cpe-24-31-245-230.kc.res.rr.com. [24.31.245.230])
-        by smtp.gmail.com with ESMTPSA id r184sm9792670oif.31.2019.03.28.08.40.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Mar 2019 08:40:48 -0700 (PDT)
-Sender: Larry Finger <larry.finger@gmail.com>
-Subject: Re: [PATCH] Staging: rtl8188eu: use list_entry to access current list
- element instead of container_of
-To: Bhanusree Pola <bhanusreemahesh@gmail.com>,
- outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <20190328114741.4367-1-bhanusreemahesh@gmail.com>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-Message-ID: <1bcd8e5a-8041-aab7-db9b-2e9dba2c541e@lwfinger.net>
-Date: Thu, 28 Mar 2019 10:40:46 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.5.2
-MIME-Version: 1.0
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,280,1549926000"; 
+   d="scan'208";a="376181551"
+Received: from unknown (HELO hadrien) ([195.167.213.123])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Mar 2019 15:20:51 +0100
+Date: Thu, 28 Mar 2019 15:20:50 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Bhanusree Pola <bhanusreemahesh@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Larry Finger <Larry.Finger@lwfinger.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: use list_entry
+ to access current list element instead of container_of
 In-Reply-To: <20190328114741.4367-1-bhanusreemahesh@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Message-ID: <alpine.DEB.2.21.1903281520360.2438@hadrien>
+References: <20190328114741.4367-1-bhanusreemahesh@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On 3/28/19 6:47 AM, Bhanusree Pola wrote:
+
+
+On Thu, 28 Mar 2019, Bhanusree Pola wrote:
+
 > For struct list_head* type variables use list_entry to access the current list
 > elements rather than using container_of.
 > Issue found using coccinelle.
-> 
+>
 > The following semantic patch is used to implement this:
-> 
+>
 > <smpl>
 > @rule_list@
 > struct list_head* l;
 > @@
-> 
+>
 > -container_of
 > +list_entry
->    (l,...)
+>   (l,...)
 > </smpl>
-> 
+
+
+Can these be implemented with list_for_each?
+
+julia
+
+>
 > Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
-
-Have you actually tested this patch on real hardware? If not, then you must find 
-a partner before submitting it. It is one thing to do minor semantic changes 
-following the suggestion of some tool for code semantics, but quite another when 
-you are significantly modifying list handling.
-
-Your patch may in fact be correct, but until it has actually been tested and the 
-commit log reflects such testing, then this patch is not acceptable. After all, 
-your reputation would hardly be advanced by submitting a patch that broke a driver!
-
-NACK.
-
-Larry
-
 > ---
->   drivers/staging/rtl8188eu/core/rtw_ap.c | 14 +++++++-------
->   1 file changed, 7 insertions(+), 7 deletions(-)
-> 
+>  drivers/staging/rtl8188eu/core/rtw_ap.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
 > diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
 > index c360856a86ec..0554792e191f 100644
 > --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
 > +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
 > @@ -179,7 +179,7 @@ void expire_timeout_chk(struct adapter *padapter)
->   
->   	/* check auth_queue */
->   	while (phead != plist) {
+>
+>  	/* check auth_queue */
+>  	while (phead != plist) {
 > -		psta = container_of(plist, struct sta_info, auth_list);
 > +		psta = list_entry(plist, struct sta_info, auth_list);
->   		plist = plist->next;
->   
->   		if (psta->expire_to > 0) {
+>  		plist = plist->next;
+>
+>  		if (psta->expire_to > 0) {
 > @@ -212,7 +212,7 @@ void expire_timeout_chk(struct adapter *padapter)
->   
->   	/* check asoc_queue */
->   	while (phead != plist) {
+>
+>  	/* check asoc_queue */
+>  	while (phead != plist) {
 > -		psta = container_of(plist, struct sta_info, asoc_list);
 > +		psta = list_entry(plist, struct sta_info, asoc_list);
->   		plist = plist->next;
->   
->   		if (chk_sta_is_alive(psta) || !psta->expire_to) {
+>  		plist = plist->next;
+>
+>  		if (chk_sta_is_alive(psta) || !psta->expire_to) {
 > @@ -1021,7 +1021,7 @@ int rtw_acl_add_sta(struct adapter *padapter, u8 *addr)
->   	plist = phead->next;
->   
->   	while (phead != plist) {
+>  	plist = phead->next;
+>
+>  	while (phead != plist) {
 > -		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
 > +		paclnode = list_entry(plist, struct rtw_wlan_acl_node, list);
->   		plist = plist->next;
->   
->   		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
+>  		plist = plist->next;
+>
+>  		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
 > @@ -1081,7 +1081,7 @@ int rtw_acl_remove_sta(struct adapter *padapter, u8 *addr)
->   	plist = phead->next;
->   
->   	while (phead != plist) {
+>  	plist = phead->next;
+>
+>  	while (phead != plist) {
 > -		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
 > +		paclnode = list_entry(plist, struct rtw_wlan_acl_node, list);
->   		plist = plist->next;
->   
->   		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
+>  		plist = plist->next;
+>
+>  		if (!memcmp(paclnode->addr, addr, ETH_ALEN)) {
 > @@ -1328,7 +1328,7 @@ void associated_clients_update(struct adapter *padapter, u8 updated)
->   
->   		/* check asoc_queue */
->   		while (phead != plist) {
+>
+>  		/* check asoc_queue */
+>  		while (phead != plist) {
 > -			psta = container_of(plist, struct sta_info, asoc_list);
 > +			psta = list_entry(plist, struct sta_info, asoc_list);
->   
->   			plist = plist->next;
->   
+>
+>  			plist = plist->next;
+>
 > @@ -1599,7 +1599,7 @@ int rtw_sta_flush(struct adapter *padapter)
->   
->   	/* free sta asoc_queue */
->   	while (phead != plist) {
+>
+>  	/* free sta asoc_queue */
+>  	while (phead != plist) {
 > -		psta = container_of(plist, struct sta_info, asoc_list);
 > +		psta = list_entry(plist, struct sta_info, asoc_list);
->   
->   		plist = plist->next;
->   
+>
+>  		plist = plist->next;
+>
 > @@ -1726,7 +1726,7 @@ void stop_ap_mode(struct adapter *padapter)
->   	phead = get_list_head(pacl_node_q);
->   	plist = phead->next;
->   	while (phead != plist) {
+>  	phead = get_list_head(pacl_node_q);
+>  	plist = phead->next;
+>  	while (phead != plist) {
 > -		paclnode = container_of(plist, struct rtw_wlan_acl_node, list);
 > +		paclnode = list_entry(plist, struct rtw_wlan_acl_node, list);
->   		plist = plist->next;
->   
->   		if (paclnode->valid) {
-> 
-
+>  		plist = plist->next;
+>
+>  		if (paclnode->valid) {
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190328114741.4367-1-bhanusreemahesh%40gmail.com.
+> For more options, visit https://groups.google.com/d/optout.
+>
 
