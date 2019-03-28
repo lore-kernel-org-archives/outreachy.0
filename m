@@ -1,181 +1,189 @@
 X-GM-THRID: 6671711882278076416
-X-Received: by 2002:a62:1783:: with SMTP id 125mr628301pfx.131.1553876030418;
-        Fri, 29 Mar 2019 09:13:50 -0700 (PDT)
+X-Received: by 2002:aca:39d6:: with SMTP id g205mr2942265oia.42.1553798741542;
+        Thu, 28 Mar 2019 11:45:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:ff24:: with SMTP id k36ls1165751pgi.2.gmail; Fri, 29 Mar
- 2019 09:13:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZ/WpVw+UGDLRztwwfVl2GzXQ9c4Oiz+sMHUqomyGKj9RNYTfxuGGs64wG7AC0vcWANvOm
-X-Received: by 2002:a63:6786:: with SMTP id b128mr551129pgc.122.1553876029610;
-        Fri, 29 Mar 2019 09:13:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553876029; cv=none;
+Received: by 2002:a9d:4f1a:: with SMTP id d26ls4915261otl.10.gmail; Thu, 28
+ Mar 2019 11:45:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQD2zH8WNUgfDShQl3Svd/rZgFxzeOd4bFQg00ri3XlnzYJxqMKhoZpSqBJSFpqg23gPOr
+X-Received: by 2002:a9d:4d0f:: with SMTP id n15mr2781330otf.0.1553798740793;
+        Thu, 28 Mar 2019 11:45:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553798740; cv=none;
         d=google.com; s=arc-20160816;
-        b=MDbsDJSOYVmzAvRBv8UcKn2gwsQwspCAZqKgXDJf9PdPHWXLgKoP4GPXmDpzp6jiNJ
-         ZZFJv78Zb8osq0QoJhcdLZIw7x6NycPwyNIXLv1+Gp56RRJT98lz1vXM8Me5axW7B6r9
-         l0vBeQKSeWRmwY3/MC71mkSrIoJysiOyZX2neQZFIbCWLbJUZs0rNNniLTie5ZR2yJ03
-         XrPjChWfDCt/j9ySOQDoBihj1u3RJ3Aq/nBh+gpCpZ/Ykzc3b8VpwjYKq/L6k5nKiwqa
-         QdvDYzI3L6gZ579BWQqqJI09DMQ7CTyEY2cd66UNanHhJ4Ued+CK9uW9E7kYYXTTJ+GX
-         jdUg==
+        b=j49BZy3zj85KznLqqCnqzVaGdoyeor66N8eNKKkbNA70x4km3JAUQAOvChxF5KAm1r
+         SPPGVgT8HlgJPIibnuqnEdR3XFbOshHAIx+7NUHL7/L+Yz6QYrO8Qy2qvm2FfLN0RTna
+         O0zCaeXNJTAqru67bMQek+bqKY3jq4o75UQLVhl92AQYaGWo1bSrKtpXwHioHf8QHa5x
+         KMo2iYCpEcF0auXzxKPy9oRiUfBkpRDvKIrw+svEAT2zia59FLwP9QoW/mQ7f0lyXw/3
+         2RBtKgo1E4Z3ywrI+te87Hi7DX3HTLzX9rHgBBDz0/yghUeNIFW7Pu363zC3g224G02L
+         f9dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=NyiP1micdJRePjA0wotE5qqSb2DW3EOcg5iG+0Ud65w=;
-        b=QdeHOhpAvEyRbM43lkvcRUCRs7YJP9bU9fCfT0CxeCyy7kXDabovFsSmrH7vpbKFGM
-         lM7oQiptsEPEqljnXLE/poGzyP4/+qj7Mz+RHzY8N/1Xe2qCkdl0q2rq7vptg322TSqD
-         Yej9nhxx047JbzJZ0x+4IEpey7noufbjSeJLRfkm4iU3eOf2pwQAtTRvM4q3JuBQOJnG
-         LyEqPCBZH3AqsCIf2sxzjDS7BjPgOzSGAoUoRz2HafysOiNuJ70Oq23sYg+BYUg4QiJx
-         iSz0VlTftMG1p1d0RBBi5PdwXyTHS5VPocCbjJpxAGTNAVfpXsi+bRAKYDnyP8qqrZen
-         4+gg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=D3xCequFSwVjsPFGQ6TRhGqddSjvIHb7gQ7cz9o7dw8=;
+        b=dyf2KMRExY5uNNhD7n59UxYo4yYD5rYeo3YT9IrJPNs/J4KibWQXE9bWQI4wzX2xqI
+         u2f+per4o5UiKly6Chz8+ur8ucTkn7bal9jVFPcl9S77nwkn3iENOoBxdJ3u5I3UGm0l
+         bgVF8e3g7TMysfyXZWOr66YkNgPMd2kRLt+akk2To+A9v4aVDmYFui7G4KlWpo6T7iMp
+         1Z+B5nhmZ6XyzoaezCinLz/Cxl+4CBpVODNp4ZEw3lFH7uXmTnqYYcY9mE6zzFylRrtt
+         LMPtfBHr5yPQPneH7ymH0MZpDHmIFeYDOsIzaoePJaceS/h6nljC57gsb04IkEBTTvaw
+         IY2Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=UKVaMvd7;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k70si104228pfc.0.2019.03.29.09.13.49
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sCCpo5mt;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <vatsalanarang@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id c13si1227104oto.3.2019.03.28.11.45.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 09:13:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Thu, 28 Mar 2019 11:45:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=UKVaMvd7;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id D9B38218A3;
-	Fri, 29 Mar 2019 16:13:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553876029;
-	bh=tb4TZ20AgZaYx03hBL83dD81firsdJmZhbIS/LlEr7E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UKVaMvd7q05E90a/f+Ac1/l6K8wAURZIyqg2hDBNBGj0NOTA8gWLvUZiUIK51pc0J
-	 deG+s+MKFyYJwIoKz2qifEiU9fpTTs4MilHbU3ybp6gjppqdATGQKGfb4sm4Ur3UE2
-	 ljfKE5wwoIVb0n6O5Q8EG3TYzmYLY8m7v0BeDw4E=
-Date: Fri, 29 Mar 2019 17:13:46 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Vatsala Narang <vatsalanarang@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: rtl8723bs: include: Fix identation issue
-Message-ID: <20190329161346.GB540@kroah.com>
-References: <20190328184523.4480-1-vatsalanarang@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190328184523.4480-1-vatsalanarang@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sCCpo5mt;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x641.google.com with SMTP id bg8so5353329plb.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 11:45:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=D3xCequFSwVjsPFGQ6TRhGqddSjvIHb7gQ7cz9o7dw8=;
+        b=sCCpo5mtirJzCta5PxiAhd1DBbZI3l36qCCDGw1DNVkcRJ4XKBugZUrWoqKo3fzGqX
+         qbL/NwPXHVkzwSaNmzvvy2lpqXhUBt1icUKkobdxL+1xoaMHm3DrJp5xgMLN8L1bqjsg
+         c3r3zSdzzCMJEzJEfrrjv3pzMn7JPnWVCvMHWSBaxMoHMWxNqiET6gyQ7t3b46bzgljk
+         LuoO7kOgoFvhdC+iDwzo1lb+INSWlY1esZDCw/NbAcIIJho1/dBGFsrASPG4Z2dOGD61
+         ekroqpc3y0NXb6yz1XRDXAlqU74S5DPIxPr55Sx/TaEGVLn8yQHwI4J9bvUyv+g34sFV
+         lYeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=D3xCequFSwVjsPFGQ6TRhGqddSjvIHb7gQ7cz9o7dw8=;
+        b=Wpem9nCx/JctsWVN7snPrgSbaAC920a1dgu+4UJsxGQh8bnK5RMaxkzYXsUEii25LT
+         RsRq7tt+ZWh8+mSg73u2exzeGPGsvWAgDFbBlzcLwo0pEsMeLnVg0tRWJTpR5Ki9blBO
+         pLn28vu/UDCvLk1A4D3K76IIkopLDI27sceVppQmI0KKhNfZDkGHVgFYVy/RcqLh23OC
+         8I4QkkRF8HiiOUNNxCMyuQYlJUIfum2rLverSc7+F4QQEuvKY25PnCjx9zLW6fNHaBTR
+         FQ4osDZso31ZffaGBxKEpxm8ZYt1Bq8yi8GJbrJJNHLnCUDRJ6PsGI20bO8jile/dnMK
+         ddiQ==
+X-Gm-Message-State: APjAAAXslaLpdpWsXEydfBGPmZQUdWgp65HnPnpxZpWlBPToy8spCCbM
+	VkrDEZ1o3jelaFU/p4+dHoHwR35kLao=
+X-Received: by 2002:a17:902:8690:: with SMTP id g16mr44243876plo.284.1553798739851;
+        Thu, 28 Mar 2019 11:45:39 -0700 (PDT)
+Return-Path: <vatsalanarang@gmail.com>
+Received: from localhost.localdomain ([103.87.57.82])
+        by smtp.gmail.com with ESMTPSA id z77sm54279807pfi.155.2019.03.28.11.45.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Mar 2019 11:45:39 -0700 (PDT)
+From: Vatsala Narang <vatsalanarang@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Vatsala Narang <vatsalanarang@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: include: Fix identation issue
+Date: Fri, 29 Mar 2019 00:15:23 +0530
+Message-Id: <20190328184523.4480-1-vatsalanarang@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Fri, Mar 29, 2019 at 12:15:23AM +0530, Vatsala Narang wrote:
-> Corrected the identation of switch case to get rid of checkpatch error
-> 
-> Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/include/wifi.h | 72 ++++++++++++------------
->  1 file changed, 36 insertions(+), 36 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
-> index 559bf2606fb7..ee1994ecbf18 100644
-> --- a/drivers/staging/rtl8723bs/include/wifi.h
-> +++ b/drivers/staging/rtl8723bs/include/wifi.h
-> @@ -374,18 +374,18 @@ __inline static unsigned char * get_da(unsigned char *pframe)
->  	unsigned int	to_fr_ds	= (GetToDs(pframe) << 1) | GetFrDs(pframe);
->  
->  	switch (to_fr_ds) {
-> -		case 0x00:	/*  ToDs = 0, FromDs = 0 */
-> -			da = GetAddr1Ptr(pframe);
-> -			break;
-> -		case 0x01:	/*  ToDs = 0, FromDs = 1 */
-> -			da = GetAddr1Ptr(pframe);
-> -			break;
-> -		case 0x02:	/*  ToDs = 1, FromDs = 0 */
-> -			da = GetAddr3Ptr(pframe);
-> -			break;
-> -		default:	/*  ToDs = 1, FromDs = 1 */
-> -			da = GetAddr3Ptr(pframe);
-> -			break;
-> +	case 0x00:	/*  ToDs = 0, FromDs = 0 */
-> +		da = GetAddr1Ptr(pframe);
-> +		break;
-> +	case 0x01:	/*  ToDs = 0, FromDs = 1 */
-> +		da = GetAddr1Ptr(pframe);
-> +		break;
-> +	case 0x02:	/*  ToDs = 1, FromDs = 0 */
-> +		da = GetAddr3Ptr(pframe);
-> +		break;
-> +	default:	/*  ToDs = 1, FromDs = 1 */
-> +		da = GetAddr3Ptr(pframe);
-> +		break;
->  	}
->  
->  	return da;
-> @@ -398,18 +398,18 @@ __inline static unsigned char * get_sa(unsigned char *pframe)
->  	unsigned int	to_fr_ds	= (GetToDs(pframe) << 1) | GetFrDs(pframe);
->  
->  	switch (to_fr_ds) {
-> -		case 0x00:	/*  ToDs = 0, FromDs = 0 */
-> -			sa = GetAddr2Ptr(pframe);
-> -			break;
-> -		case 0x01:	/*  ToDs = 0, FromDs = 1 */
-> -			sa = GetAddr3Ptr(pframe);
-> -			break;
-> -		case 0x02:	/*  ToDs = 1, FromDs = 0 */
-> -			sa = GetAddr2Ptr(pframe);
-> -			break;
-> -		default:	/*  ToDs = 1, FromDs = 1 */
-> -			sa = GetAddr4Ptr(pframe);
-> -			break;
-> +	case 0x00:	/*  ToDs = 0, FromDs = 0 */
-> +		sa = GetAddr2Ptr(pframe);
-> +		break;
-> +	case 0x01:	/*  ToDs = 0, FromDs = 1 */
-> +		sa = GetAddr3Ptr(pframe);
-> +		break;
-> +	case 0x02:	/*  ToDs = 1, FromDs = 0 */
-> +		sa = GetAddr2Ptr(pframe);
-> +		break;
-> +	default:	/*  ToDs = 1, FromDs = 1 */
-> +		sa = GetAddr4Ptr(pframe);
-> +		break;
->  	}
->  
->  	return sa;
-> @@ -421,18 +421,18 @@ __inline static unsigned char * get_hdr_bssid(unsigned char *pframe)
->  	unsigned int	to_fr_ds	= (GetToDs(pframe) << 1) | GetFrDs(pframe);
->  
->  	switch (to_fr_ds) {
-> -		case 0x00:	/*  ToDs = 0, FromDs = 0 */
-> -			sa = GetAddr3Ptr(pframe);
-> -			break;
-> -		case 0x01:	/*  ToDs = 0, FromDs = 1 */
-> -			sa = GetAddr2Ptr(pframe);
-> -			break;
-> -		case 0x02:	/*  ToDs = 1, FromDs = 0 */
-> -			sa = GetAddr1Ptr(pframe);
-> -			break;
-> -		case 0x03:	/*  ToDs = 1, FromDs = 1 */
-> -			sa = GetAddr1Ptr(pframe);
-> -			break;
-> +	case 0x00:	/*  ToDs = 0, FromDs = 0 */
-> +		sa = GetAddr3Ptr(pframe);
-> +		break;
-> +	case 0x01:	/*  ToDs = 0, FromDs = 1 */
-> +		sa = GetAddr2Ptr(pframe);
-> +		break;
-> +	case 0x02:	/*  ToDs = 1, FromDs = 0 */
-> +		sa = GetAddr1Ptr(pframe);
-> +		break;
-> +	case 0x03:	/*  ToDs = 1, FromDs = 1 */
-> +		sa = GetAddr1Ptr(pframe);
-> +		break;
->  	}
->  
->  	return sa;
-> -- 
-> 2.17.1
-> 
+Corrected the identation of switch case to get rid of checkpatch error
 
-Patch does not apply to my staging-next branch.  Please rebase and
-resend.
+Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+---
+ drivers/staging/rtl8723bs/include/wifi.h | 72 ++++++++++++------------
+ 1 file changed, 36 insertions(+), 36 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
+index 559bf2606fb7..ee1994ecbf18 100644
+--- a/drivers/staging/rtl8723bs/include/wifi.h
++++ b/drivers/staging/rtl8723bs/include/wifi.h
+@@ -374,18 +374,18 @@ __inline static unsigned char * get_da(unsigned char *pframe)
+ 	unsigned int	to_fr_ds	= (GetToDs(pframe) << 1) | GetFrDs(pframe);
+ 
+ 	switch (to_fr_ds) {
+-		case 0x00:	/*  ToDs = 0, FromDs = 0 */
+-			da = GetAddr1Ptr(pframe);
+-			break;
+-		case 0x01:	/*  ToDs = 0, FromDs = 1 */
+-			da = GetAddr1Ptr(pframe);
+-			break;
+-		case 0x02:	/*  ToDs = 1, FromDs = 0 */
+-			da = GetAddr3Ptr(pframe);
+-			break;
+-		default:	/*  ToDs = 1, FromDs = 1 */
+-			da = GetAddr3Ptr(pframe);
+-			break;
++	case 0x00:	/*  ToDs = 0, FromDs = 0 */
++		da = GetAddr1Ptr(pframe);
++		break;
++	case 0x01:	/*  ToDs = 0, FromDs = 1 */
++		da = GetAddr1Ptr(pframe);
++		break;
++	case 0x02:	/*  ToDs = 1, FromDs = 0 */
++		da = GetAddr3Ptr(pframe);
++		break;
++	default:	/*  ToDs = 1, FromDs = 1 */
++		da = GetAddr3Ptr(pframe);
++		break;
+ 	}
+ 
+ 	return da;
+@@ -398,18 +398,18 @@ __inline static unsigned char * get_sa(unsigned char *pframe)
+ 	unsigned int	to_fr_ds	= (GetToDs(pframe) << 1) | GetFrDs(pframe);
+ 
+ 	switch (to_fr_ds) {
+-		case 0x00:	/*  ToDs = 0, FromDs = 0 */
+-			sa = GetAddr2Ptr(pframe);
+-			break;
+-		case 0x01:	/*  ToDs = 0, FromDs = 1 */
+-			sa = GetAddr3Ptr(pframe);
+-			break;
+-		case 0x02:	/*  ToDs = 1, FromDs = 0 */
+-			sa = GetAddr2Ptr(pframe);
+-			break;
+-		default:	/*  ToDs = 1, FromDs = 1 */
+-			sa = GetAddr4Ptr(pframe);
+-			break;
++	case 0x00:	/*  ToDs = 0, FromDs = 0 */
++		sa = GetAddr2Ptr(pframe);
++		break;
++	case 0x01:	/*  ToDs = 0, FromDs = 1 */
++		sa = GetAddr3Ptr(pframe);
++		break;
++	case 0x02:	/*  ToDs = 1, FromDs = 0 */
++		sa = GetAddr2Ptr(pframe);
++		break;
++	default:	/*  ToDs = 1, FromDs = 1 */
++		sa = GetAddr4Ptr(pframe);
++		break;
+ 	}
+ 
+ 	return sa;
+@@ -421,18 +421,18 @@ __inline static unsigned char * get_hdr_bssid(unsigned char *pframe)
+ 	unsigned int	to_fr_ds	= (GetToDs(pframe) << 1) | GetFrDs(pframe);
+ 
+ 	switch (to_fr_ds) {
+-		case 0x00:	/*  ToDs = 0, FromDs = 0 */
+-			sa = GetAddr3Ptr(pframe);
+-			break;
+-		case 0x01:	/*  ToDs = 0, FromDs = 1 */
+-			sa = GetAddr2Ptr(pframe);
+-			break;
+-		case 0x02:	/*  ToDs = 1, FromDs = 0 */
+-			sa = GetAddr1Ptr(pframe);
+-			break;
+-		case 0x03:	/*  ToDs = 1, FromDs = 1 */
+-			sa = GetAddr1Ptr(pframe);
+-			break;
++	case 0x00:	/*  ToDs = 0, FromDs = 0 */
++		sa = GetAddr3Ptr(pframe);
++		break;
++	case 0x01:	/*  ToDs = 0, FromDs = 1 */
++		sa = GetAddr2Ptr(pframe);
++		break;
++	case 0x02:	/*  ToDs = 1, FromDs = 0 */
++		sa = GetAddr1Ptr(pframe);
++		break;
++	case 0x03:	/*  ToDs = 1, FromDs = 1 */
++		sa = GetAddr1Ptr(pframe);
++		break;
+ 	}
+ 
+ 	return sa;
+-- 
+2.17.1
 
-greg k-h
 
