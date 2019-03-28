@@ -1,174 +1,122 @@
-X-GM-THRID: 6670189254816038912
-X-Received: by 2002:a6b:3115:: with SMTP id j21mr15060323ioa.33.1553024457633;
-        Tue, 19 Mar 2019 12:40:57 -0700 (PDT)
+X-GM-THRID: 6673450085590761472
+X-Received: by 2002:ab0:3f3:: with SMTP id 106mr2849516uau.21.1553783678238;
+        Thu, 28 Mar 2019 07:34:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:90d:: with SMTP id 13ls25080itm.2.canary-gmail; Tue, 19
- Mar 2019 12:40:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwge3fP63to5/0kW5gAgmAy1DmUKgOG3q+3YT6GK6oFdjiNougXDVLJhepXK5LGMnTt9gEP
-X-Received: by 2002:a05:660c:2c6:: with SMTP id j6mr1392495itd.9.1553024456727;
-        Tue, 19 Mar 2019 12:40:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553024456; cv=none;
+Received: by 2002:a67:8d06:: with SMTP id p6ls5978572vsd.3.gmail; Thu, 28 Mar
+ 2019 07:34:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyG3Rla8p/voh56//Wjh6qmor7f9qYPeJp0L16QeIxjnSxZnzGJwYSOe3YZtmT3RsupQrtX
+X-Received: by 2002:a67:848f:: with SMTP id g137mr2844422vsd.43.1553783677557;
+        Thu, 28 Mar 2019 07:34:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553783677; cv=none;
         d=google.com; s=arc-20160816;
-        b=M/KRrNefSbErCQpMcY0KJ6tc1VdIVqi5foZJXL4nexdcnUc2zBiRwaoC7axFW+UTi8
-         T+U35LLygFGtVldxDAuonahVduOei9sEX+eL12PKsWK+jOmzcZLkd+QOFIpQ3htO1v7W
-         U+cAcfDJfamihBaxZepdQAXDDWk1NwQGjmvHXnq5t1LiWGaJydktLj9f74LhYqULQm1g
-         ZjmpeMeNGTuWZFlElESJWW2Bk48/8r1esm6OLF5G9HiSY19XMQk5yg2jEqKcoKjl+bGP
-         NCgUN/jm9ycAVc65YkncsHO0hwtsq08zNVgaxXLExL+TKJoVQbHCMQEY+7jDkjOKknPt
-         xy4Q==
+        b=XFwjaWpedfhP9HyOSvBfOOZ88pW9Iy318gGQOU1AyBsLVmNIxrdHknBg4p5K3qP/q/
+         oK7cfwLi8UZCW6KwYtUW0iEO7KAaJ9A49byE3a90zz89ilVc/EE7u0XffGYjxwTa2fxa
+         uCtdbB4cnBoaOmyYYtG+Uc+QUUI80itbirRUCn3OOCOBxY6I6wiKHswGuAfztNw3CmU1
+         gxbPUSby94T0Qwk4IpzEwVBNWwKrWVUGa0I0J5q6AUfMuQ+GD2pX9OwqjLbR3XWtM1di
+         9He74vk4HMRqW2Kcg7td0EFS7N+bnqzqISEC87l0lqrkP7sC+16lKvk0U0DxGUhAJhb8
+         UvwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uJh+B8blP7ZP4N3Ke1I39msMfbk3ybvOyT7ItBS0S8A=;
-        b=c7r5pDe5SvZchNeGk8LkV/FTNz5dEc0JsSiVEReZBbthEBoTShHLG6ZC5LucPOPCqv
-         U/5y1jRCZqxmAEz1vWAN0OFFPqrHSQVDunjEv7Gms91n+y4sRI9xlPJ3NNp0OaNNNHW5
-         o87JXXp9h2d2hwUoHxkmGzvmdQd+77L85yHW98T47MvFufqBM252nQlq/VX4qrHSngPO
-         7UdustNAjnjG+42FYReA8Z3uRlSm3LT116s3jJ6vLq+AbgJJNS3QtAGV/bbsSgx++89i
-         +DSZBBI82ZwTFFTwVxonglGrLJ0//YAjKgaPXeWnaDVCcxyQMmYp9yCoG0pg8+Ox0Mag
-         fHDQ==
+        bh=/waVk/srC5b1kkx6W+mUpyxHlWggkkZY8frN0SaMIc4=;
+        b=xGR8xcQoy1mYwW56iqep0E9XiTqFwEI5Ihcqt1m/z7nNpfwvLZ/muL8O/jfIWoZT0p
+         8iyJxudjo3QuzdY0jKztPHvjALIeGCQNHKWV36hSONUos0i4dJX8Y/BrzGr1vh2GtydQ
+         1VxiKFQcLQJ3eSxjKrmEg0k9cH2wa1fBnI90LxLcGUYlSwaEztUW9ib5dYRo3S40sNx1
+         cCIE/c7iHQBtf1GLIDLCNobmXVorb7F2vvWD/Mir/wgpkLVezKcFwpITm88F/EZFd+rz
+         MpSvfMfqdftSJsMWLRgp4JQabY3EV5xBiX/lLYvmfVfa48bxJpwRZMCz8DZ4WX9vYFe/
+         owWQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GrGkHSzk;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=A1KMr9LG;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id j6si155055itb.0.2019.03.19.12.40.56
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com. [2607:f8b0:4864:20::42b])
+        by gmr-mx.google.com with ESMTPS id g14si776611uah.1.2019.03.28.07.34.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 12:40:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Thu, 28 Mar 2019 07:34:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) client-ip=2607:f8b0:4864:20::42b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GrGkHSzk;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=A1KMr9LG;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id i19so118020pfd.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 12:40:56 -0700 (PDT)
+Received: by mail-pf1-x42b.google.com with SMTP id i19so2800897pfd.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 07:34:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=uJh+B8blP7ZP4N3Ke1I39msMfbk3ybvOyT7ItBS0S8A=;
-        b=GrGkHSzkvhUO9jyMIU8h5z4JqMteZQ4R2Zu2dtNkookbQYyJw2fTKrWNNastKUhddn
-         zsUuEb3UEVLl3vqXLxZe0GwS34IXResbrDBf+PBmM0BpQvJBsw/QdS3S7zqctsjI/1KO
-         0EfzRezcrTY5LmgHW5Rmz+ywuhybEY99OKbrkElBXyLtKHTwx+0BuaoqOOhGZHqIKuFX
-         /c9hwQrf+kXkOzDqrrljIeAJwybPaN2C35ASjOMhoEV7l96HSfRy2a2r6hYSdrBMpCC6
-         FXA7noms5LET8bhpy10+1hnMywIZSTclRXXLJf4LUPbTOOrZogeJ9mN7oO4zYx7s7xdR
-         1eXg==
+        bh=/waVk/srC5b1kkx6W+mUpyxHlWggkkZY8frN0SaMIc4=;
+        b=A1KMr9LGlsyPOyGifi9P9kDVKsxxSG+A6ulWVB03nPVDkUSvGSYa8lxw0zbVT7URr5
+         oemCe+/lU+OIjm48BDJEJMQRsgscGe3ejTuJDlry/OPM3dc0Rm5MT//9brf939rTFUsy
+         fKHTiiALTRv1+0VU7pYtgeMVVO8KA7JjbKndVYA/JuL+VYqKnZx99XVsNsfI4n719aAG
+         EqjBwKIon+uZUGUFRv3avNn4JgcMZLzNNJ4uCTWwWdrU3LiMP5YC+BpudsHQIDiczO+G
+         muViyroQR0L9esoXdWNaZaFvA/IwPECHWsbyqAy6fnjIEhZW9P8AE+tSybGAcbP8MoEV
+         D68g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=uJh+B8blP7ZP4N3Ke1I39msMfbk3ybvOyT7ItBS0S8A=;
-        b=qGHVMy8CIJe3y+MJXsXAC7VrHP/tk7V+QKVcPv1zL13SFxstHYjIBzXmP7UT3qTX4y
-         jXSXaCLQexMAoC7uQoHPX8W0M6c7h6weUGaNAIk5KyQrEn7GTalq129AI+wbmEOU9yD3
-         WQoUoKYGiIX1IwiXSS4kZQCoHeFlBEFOTgmtqpEm149xpf48ZUJVNqVzz7gsS54D9klZ
-         tV+t3DvxnauHynEQp27pNkUT5F0lPcNpv9JSQcI4RMgr5aEve1dJcCJVqqKidWo4VKES
-         1PuXzABvJeC/lH/2tSj6nOFrbjqaWHJ20UsFtVz6N0h6yxJdk3l0F7VCE3Kr2ajbgAbu
-         LWAA==
-X-Gm-Message-State: APjAAAV/P+p0Lq3xw8DXPveUxWX9oKhRB3tpf6Z3UZPLWWzCehEFQJLV
-	aOleWA+A7HZEpDrZ6EdUyKLfK7fHYrA=
-X-Received: by 2002:a63:88c3:: with SMTP id l186mr3613071pgd.148.1553024455923;
-        Tue, 19 Mar 2019 12:40:55 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.36])
-        by smtp.gmail.com with ESMTPSA id a7sm19866396pff.54.2019.03.19.12.40.54
+        bh=/waVk/srC5b1kkx6W+mUpyxHlWggkkZY8frN0SaMIc4=;
+        b=o7Nm2ClDdeQ6YNW0ssiZ4iQgb8UjK/9AKk6OFJgDmEgTeuUg0NLDhjc07L5J0NYe3g
+         L+9W+94oRKU7oxYGSAOzajsLvtja4eChM6rIE0zdV8HSRpQDsEVYHVyWB3bqO8QVU1ya
+         Q+SBbDi3UXKn7m5wEnp5UqTYUDdRmQizYx7vKGVt5MCP532PG5JyQL7AGcjvT39JRL5O
+         ZD+BXShqVYgpe0CHkGBRlAGPPXAUJq5ppJO4HHV6iv+SSWZ6zEah9QFEjHH8qWwnXb72
+         9L6Zi+II89XAfHIZwpsP7fOq32PAfEHBvK5qc3nIa5cncR0fKfiQh3d4VQfz6cxjxjUd
+         FiPQ==
+X-Gm-Message-State: APjAAAUXsfjy/V8ubPWXT3gZ/qN2b75ZJvJp3PrjqJ7cFwttr1NOKuEE
+	YS/yRyEf1Q20i2s+ut+DkR0=
+X-Received: by 2002:a63:1a42:: with SMTP id a2mr7944906pgm.358.1553783677209;
+        Thu, 28 Mar 2019 07:34:37 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.77.58])
+        by smtp.googlemail.com with ESMTPSA id i24sm19984262pfo.85.2019.03.28.07.34.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 12:40:55 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH v2] staging:sm750fb:Eliminate camel case
-Date: Wed, 20 Mar 2019 01:10:37 +0530
-Message-Id: <20190319194037.18769-1-vatsalanarang@gmail.com>
+        Thu, 28 Mar 2019 07:34:36 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: gasket: apex: Prefer using the BIT macro
+Date: Thu, 28 Mar 2019 20:04:24 +0530
+Message-Id: <20190328143424.5865-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
-Edit CamelCase function names
-Issue found by checkpatch.pl
+Challenge suggested by coccinelle.
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Replace bit shifting on 1 with the BIT(x) macro.
+Coccinelle script:
+
+@@
+constant c;
+@@
+
+-(1 << c)
++BIT(c)
+
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
-Changes in v2:
- -correction in subject line and log message.
+ drivers/staging/gasket/apex_driver.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/staging/sm750fb/ddk750_display.c | 10 +++++-----
- drivers/staging/sm750fb/ddk750_display.h |  2 +-
- drivers/staging/sm750fb/ddk750_power.h   |  2 +-
- drivers/staging/sm750fb/sm750_hw.c       |  2 +-
- 4 files changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
-index f38051eedb6c..887ea8aef43f 100644
---- a/drivers/staging/sm750fb/ddk750_display.c
-+++ b/drivers/staging/sm750fb/ddk750_display.c
-@@ -85,7 +85,7 @@ static void primary_wait_vertical_sync(int delay)
- 	}
- }
+diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+index 0578bf1ba1e9..a79613db71ef 100644
+--- a/drivers/staging/gasket/apex_driver.c
++++ b/drivers/staging/gasket/apex_driver.c
+@@ -294,7 +294,7 @@ static int apex_enter_reset(struct gasket_dev *gasket_dev)
  
--static void swPanelPowerSequence(int disp, int delay)
-+static void sw_panel_power_sequence(int disp, int delay)
- {
- 	unsigned int reg;
+ 	/*    - Wait for RAM shutdown. */
+ 	if (gasket_wait_with_reschedule(gasket_dev, APEX_BAR_INDEX,
+-					APEX_BAR2_REG_SCU_3, 1 << 6, 1 << 6,
++					APEX_BAR2_REG_SCU_3, BIT(6), BIT(6),
+ 					APEX_RESET_DELAY, APEX_RESET_RETRY)) {
+ 		dev_err(gasket_dev->dev,
+ 			"RAM did not shut down within timeout (%d ms)\n",
+@@ -340,7 +340,7 @@ static int apex_quit_reset(struct gasket_dev *gasket_dev)
  
-@@ -111,7 +111,7 @@ static void swPanelPowerSequence(int disp, int delay)
- 	primary_wait_vertical_sync(delay);
- }
- 
--void ddk750_setLogicalDispOut(enum disp_output output)
-+void ddk750_set_logical_disp_out(enum disp_output output)
- {
- 	unsigned int reg;
- 
-@@ -147,12 +147,12 @@ void ddk750_setLogicalDispOut(enum disp_output output)
- 
- 	if (output & PNL_SEQ_USAGE) {
- 		/* set  panel sequence */
--		swPanelPowerSequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
--				     4);
-+		sw_panel_power_sequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
-+		4);
- 	}
- 
- 	if (output & DAC_USAGE)
--		setDAC((output & DAC_MASK) >> DAC_OFFSET);
-+		set_DAC((output & DAC_MASK) >> DAC_OFFSET);
- 
- 	if (output & DPMS_USAGE)
- 		ddk750_set_dpms((output & DPMS_MASK) >> DPMS_OFFSET);
-diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
-index 7fd101d98199..7f713906dc16 100644
---- a/drivers/staging/sm750fb/ddk750_display.h
-+++ b/drivers/staging/sm750fb/ddk750_display.h
-@@ -102,6 +102,6 @@ enum disp_output {
- 	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
- };
- 
--void ddk750_setLogicalDispOut(enum disp_output output);
-+void ddk750_set_logical_disp_out(enum disp_output output);
- 
- #endif
-diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
-index e48c74ecbbd1..7002567a47d2 100644
---- a/drivers/staging/sm750fb/ddk750_power.h
-+++ b/drivers/staging/sm750fb/ddk750_power.h
-@@ -9,7 +9,7 @@ enum dpms {
- 	crtDPMS_OFF = 0x3,
- };
- 
--#define setDAC(off) {							\
-+#define set_DAC(off) {							\
- 	poke32(MISC_CTRL,						\
- 	       (peek32(MISC_CTRL) & ~MISC_CTRL_DAC_POWER_OFF) | (off)); \
- }
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index edeae9d06883..ea1d3d4efbc2 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -207,7 +207,7 @@ int hw_sm750_output_setMode(struct lynxfb_output *output,
- 			if (output->paths & sm750_crt)
- 				disp_set |= do_CRT_SEC;
- 		}
--		ddk750_setLogicalDispOut(disp_set);
-+		ddk750_set_logical_disp_out(disp_set);
- 	} else {
- 		/* just open DISPLAY_CONTROL_750LE register bit 3:0 */
- 		u32 reg;
+ 	/*    - Wait for RAM enable. */
+ 	if (gasket_wait_with_reschedule(gasket_dev, APEX_BAR_INDEX,
+-					APEX_BAR2_REG_SCU_3, 1 << 6, 0,
++					APEX_BAR2_REG_SCU_3, BIT(6), 0,
+ 					APEX_RESET_DELAY, APEX_RESET_RETRY)) {
+ 		dev_err(gasket_dev->dev,
+ 			"RAM did not enable within timeout (%d ms)\n",
 -- 
 2.17.1
 
