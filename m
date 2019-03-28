@@ -1,207 +1,133 @@
-X-GM-THRID: 6397051506437128192
-X-Received: by 10.99.130.73 with SMTP id w70mr16992189pgd.64.1489429619653;
-        Mon, 13 Mar 2017 11:26:59 -0700 (PDT)
+X-GM-THRID: 6673470444054511616
+X-Received: by 2002:a67:db15:: with SMTP id z21mr2056800vsj.41.1553788418972;
+        Thu, 28 Mar 2019 08:53:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.9.185 with SMTP id q54ls814344otd.11.gmail; Mon, 13 Mar
- 2017 11:26:59 -0700 (PDT)
-X-Received: by 10.157.45.198 with SMTP id g64mr15817169otb.136.1489429619275;
-        Mon, 13 Mar 2017 11:26:59 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id a3si3253287pfb.2.2017.03.13.11.26.59
+Received: by 2002:a67:8d06:: with SMTP id p6ls6031415vsd.3.gmail; Thu, 28 Mar
+ 2019 08:53:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzzUxIPd8bgkqZFfkV0eQrFkBdsLhVXf+BZqmqGhpSaLkQ07F0rjui9t0tfKpEFe77gWRoY
+X-Received: by 2002:a67:7855:: with SMTP id t82mr2989047vsc.18.1553788418447;
+        Thu, 28 Mar 2019 08:53:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553788418; cv=none;
+        d=google.com; s=arc-20160816;
+        b=goUBjzS7Bzi8EAFwJqyqx1B7qprq4cOMwijqV6v0oesEpX6EWB5E8almTs+YQAm1oV
+         zE21SH1GUQboEqKuR9/szhZ//gxjXE7MhP5nWs37Pg+6tgdmnFMpfAdK/MucjL/2jkAU
+         oA2OUtUjWCvP0f4nlAnXdnz/2GLeAcI3orp/tqr1CXee/jll72S5uYBOgGboFySjY2Av
+         Jk3UrqLsZKoUqe6IV+rIeCTSZFJ/SFhlhNJd+dB9YK3wfigL38c/sWTJ1Y4OLAcFVZ4H
+         BeI+air3RkbTuo0b6ZoIBeK+N8CV8dmHFmtaNX4ibK9V3BG22XyIzypU9iNNIeIPO/fU
+         YqPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Jb39k20SMo31VLZxJp1U4Lz2Rbzo9nVt+PzuYBJPikc=;
+        b=GukT1dqmki/qSwVUH7Lg46FzklZq8ZDtBG627YK8NWKxfWlm1yvyO+43ar2J8SczAv
+         3ZiLLYS6onqHRLfEG8hbqkeUw064h7g5cx+l+AZiBRDvwDJrUt0J6wPr1DB8R0qmUmJp
+         yV0XyqyWBJsMa871sW7RPyZZkx6SQXLkKSI9ZyvV7aKNXb00BZstZJlBVMrj5GyAzkHH
+         5CvNMXwsWnSUpaCsFqpPdpelyUIolhXhHZTIuadc9nJ/7wdXH+DK7E+sMfMyyW0O4DKn
+         CfUtGObtLmgZgWey6hFXDoECLyRZzyojHimjdoF8iTKYhCM1qaA0QDEiIhlkAZRVf6Vl
+         Z8Og==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gcu2N7j5;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22a as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x22a.google.com (mail-oi1-x22a.google.com. [2607:f8b0:4864:20::22a])
+        by gmr-mx.google.com with ESMTPS id k68si1311070vkg.5.2019.03.28.08.53.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2017 11:26:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Thu, 28 Mar 2019 08:53:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22a as permitted sender) client-ip=2607:f8b0:4864:20::22a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id g2so14423998pge.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 13 Mar 2017 11:26:59 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gcu2N7j5;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::22a as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-oi1-x22a.google.com with SMTP id v7so16154873oie.8
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 08:53:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+jShk7lcZDW/NfjfRq6hm8EapEn8CnHjlizwgI2tuwc=;
-        b=lRmw0nx7clrFx1oDG1aGdQx3cDi0BT6OyTHMdcHf71PL3/xRxO1J/2FMxeImyCIN5I
-         +AJGtRIAgJAjhherwM3aLSn44+zc7trt/5ezjxeVLkNNmElY+kujmo9it6wxk/8X46uc
-         viBQOrK/Y/rEauQE2KR+CpSsgvcjs7MVll6aVCzqZ/wthMzSq5l8QlRUljXN+k9n6Lan
-         5qCRyWuN82EslxJ4W4qeydSutfPblmrgjFFxyCamBSY500rXhmtYL1+vN0YGRoKaAXsW
-         O8CJ94cFJ5djYEOXwmmMnV4aUk/noW/aHpjtrmKQu5gSHd/kg6ntH2R3HJrlaVSsyhQF
-         BOCg==
+        h=from:to:cc:subject:date:message-id;
+        bh=Jb39k20SMo31VLZxJp1U4Lz2Rbzo9nVt+PzuYBJPikc=;
+        b=Gcu2N7j5C5dpPSj5svuACvfQmNPJKlxuGSJM29F5Xt3Ae9/SyTSbgokbIEj7r4w7Qx
+         0S1Xx2eASZhLcfLFHnXdQdqiMWFPwq59NZ/DEMBfShd9PN2x+4Clb+o9yziR3svh0pXu
+         NwHIdOY8dNXVzaoSh/tCdtDK1oUVrYS625btxeeQ/SycD0+076+XDst0hCP4PYTigyV6
+         O6KPZ7Kp5iO1UMkZ6h9uY5nD9puTbLDL4TGl7mk963HC29DLzVN/QCkQ08DLeXjA6Cec
+         banuN+ekfT/2gWE3moz9z7JKxiNwNSZ3IMMOQ4tGSjYmkc760+WgBSy8eNbp18hXUvCC
+         pRlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+jShk7lcZDW/NfjfRq6hm8EapEn8CnHjlizwgI2tuwc=;
-        b=l/r5ef1e7QCcVH7TPkUS/OnH7/GbwkzWFJwxMhLlo15zw3LL9iCqdYFguB9OxojKKI
-         4/OliAmdKnJkB3eJlSGI0q4t6AXq5NwIcqyAt4mKP/8PKU9261aUwAV55Bg40SOMkImy
-         pk2BqdfvJVmkC+pxt2wqmsFRUj2XUf3ab7Zz3iufRepoSIWjFxzZ54ESbfT653d2wbTR
-         pdusyTwfCxjpo1xX63IWYpQg0yBdlC6Z/9TnBsjn6PzM/Mix9sl/46ghJaUV8hKxSk5j
-         qorgqZCGt0uTOKh/Q43PuE0v55ShjpaKn67BUE03G7Dd9+G+YAjAN6/6oaaDE7NBbtaK
-         9SPQ==
-X-Gm-Message-State: AMke39liHcsCsogtfXZxGu5Fy6qufIQindF5mm9y+Gcf439mmZ/UeLRvC9ZDIES3AOFruA==
-X-Received: by 10.84.210.167 with SMTP id a36mr50149586pli.40.1489429618540;
-        Mon, 13 Mar 2017 11:26:58 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id w20sm5442307pgc.18.2017.03.13.11.26.55
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 13 Mar 2017 11:26:57 -0700 (PDT)
-Date: Mon, 13 Mar 2017 23:56:53 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: sudipm.mukherjee@gmail.com
-Cc: Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: sm750fb: Improved code readability
-Message-ID: <20170313182652.GA19882@arushi-HP-Pavilion-Notebook>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Jb39k20SMo31VLZxJp1U4Lz2Rbzo9nVt+PzuYBJPikc=;
+        b=i3neiPCGNji/C1kqOKStL4bs50EBTVflB23vvzHjq5RaAhBxpYEw7wwRHfZIVMddg+
+         4RDslWSmTkoP+MfCxiuK5ZceeF7rtH03E8qtzvCpD7Pdd5PVjAeQOdtkve0cHf7RL9D8
+         rs/n56YPruBUopo2iEge/2BMeSyMf/iOn1usT8a679za3vUDZIimq9IYzfknsg7UtVvB
+         8YETg58Jfh8wkBtka70Th7kv1lUSYLFdJ6TnI/yD8yh7iIfkyr8PP7L1pkOYspjquLSk
+         lSH0voUKTT8KXvzN6ZolvkM8PlfnTCkHfG6lcetlM01bV0pYEQyjDgNZUM7f6qpehJGc
+         m58w==
+X-Gm-Message-State: APjAAAXPnt0kWF2DbOGNJYMqFszaj0i5qdMuqjWNmKFU+puMIZCUTuT5
+	RZj9W04wcQ7uQs9tg70Q1nA=
+X-Received: by 2002:aca:3209:: with SMTP id y9mr458083oiy.145.1553788417869;
+        Thu, 28 Mar 2019 08:53:37 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:606d:5d24:be3f:3c51:19db])
+        by smtp.gmail.com with ESMTPSA id m21sm6532135otj.48.2019.03.28.08.53.36
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Mar 2019 08:53:36 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH] Staging: rtl8192u: Use BIT macro
+Date: Thu, 28 Mar 2019 10:53:33 -0500
+Message-Id: <20190328155333.10666-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-New variables are added to make the code more readable.
+Use BIT macro, as kernel provides the macro for improving uniform
+and more readable way to define these constants.
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Issue suggested by Coccinelle.
+
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 ---
- changes in v2
- - removed the error.
+ drivers/staging/rtl8192u/r8180_93cx6.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
- drivers/staging/sm750fb/ddk750_mode.c | 103 ++++++++++++++++------------------
- 1 file changed, 49 insertions(+), 54 deletions(-)
-
-diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-index 25da678179f7..6dd52b450367 100644
---- a/drivers/staging/sm750fb/ddk750_mode.c
-+++ b/drivers/staging/sm750fb/ddk750_mode.c
-@@ -77,37 +77,34 @@ static int programModeRegisters(struct _mode_parameter_t *pModeParam, struct pll
- 	int ret = 0;
- 	int cnt = 0;
- 	unsigned int tmp, reg;
-+	unsigned int cht = CRT_HORIZONTAL_TOTAL;
-+	unsigned int cvt = CRT_VERTICAL_TOTAL;
-+	unsigned int chs = CRT_HORIZONTAL_SYNC;
-+	unsigned int cvs = CRT_VERTICAL_SYNC;
-+	unsigned int chssm = CRT_HORIZONTAL_SYNC_START_MASK;
-+	unsigned int cvssm = CRT_VERTICAL_SYNC_START_MASK;
-+	unsigned int chtdem = CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK;
-+	unsigned int cvtdem = CRT_VERTICAL_TOTAL_DISPLAY_END_MASK;
-+	unsigned int chttm = CRT_HORIZONTAL_TOTAL_TOTAL_MASK;
-+	unsigned int cvttm = CRT_VERTICAL_TOTAL_TOTAL_MASK;
-+	unsigned int chswm = CRT_HORIZONTAL_SYNC_WIDTH_MASK;
-+	unsigned int cvshm = CRT_VERTICAL_SYNC_HEIGHT_MASK;
-+	unsigned int phde = pModeParam->horizontal_display_end - 1;
-+	unsigned int pvde = pModeParam->vertical_display_end - 1;
-+	unsigned int phss = pModeParam->horizontal_sync_start - 1;
-+	unsigned int pvss = pModeParam->vertical_sync_start - 1;
+diff --git a/drivers/staging/rtl8192u/r8180_93cx6.c b/drivers/staging/rtl8192u/r8180_93cx6.c
+index 163daed789b4..f98bb11a66af 100644
+--- a/drivers/staging/rtl8192u/r8180_93cx6.c
++++ b/drivers/staging/rtl8192u/r8180_93cx6.c
+@@ -125,21 +125,21 @@ int eprom_read(struct net_device *dev, u32 addr)
  
- 	if (pll->clockType == SECONDARY_PLL) {
- 		/* programe secondary pixel clock */
- 		poke32(CRT_PLL_CTRL, sm750_format_pll_reg(pll));
--		poke32(CRT_HORIZONTAL_TOTAL,
--		       (((pModeParam->horizontal_total - 1) <<
--			 CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
--			CRT_HORIZONTAL_TOTAL_TOTAL_MASK) |
--		       ((pModeParam->horizontal_display_end - 1) &
--			CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK));
--
--		poke32(CRT_HORIZONTAL_SYNC,
--		       ((pModeParam->horizontal_sync_width <<
--			 CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) &
--			CRT_HORIZONTAL_SYNC_WIDTH_MASK) |
--		       ((pModeParam->horizontal_sync_start - 1) &
--			CRT_HORIZONTAL_SYNC_START_MASK));
--
--		poke32(CRT_VERTICAL_TOTAL,
--		       (((pModeParam->vertical_total - 1) <<
--			 CRT_VERTICAL_TOTAL_TOTAL_SHIFT) &
--			CRT_VERTICAL_TOTAL_TOTAL_MASK) |
--		       ((pModeParam->vertical_display_end - 1) &
--			CRT_VERTICAL_TOTAL_DISPLAY_END_MASK));
--
--		poke32(CRT_VERTICAL_SYNC,
--		       ((pModeParam->vertical_sync_height <<
--			 CRT_VERTICAL_SYNC_HEIGHT_SHIFT) &
--			CRT_VERTICAL_SYNC_HEIGHT_MASK) |
--		       ((pModeParam->vertical_sync_start - 1) &
--			CRT_VERTICAL_SYNC_START_MASK));
-+
-+		poke32(cht, (((pModeParam->horizontal_total - 1) << CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) & chttm) | (phde & chtdem));
-+
-+		poke32(chs, ((pModeParam->horizontal_sync_width << CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) & chswm) | (phss & chssm));
-+
-+		poke32(cvt, (((pModeParam->vertical_total - 1) << CRT_VERTICAL_TOTAL_TOTAL_SHIFT) & cvttm) | (pvde & cvtdem));
-+
-+		poke32(cvs, ((pModeParam->vertical_sync_height << CRT_VERTICAL_SYNC_HEIGHT_SHIFT) & cvshm) | (pvss & cvssm));
- 
- 		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
- 		if (pModeParam->vertical_sync_polarity)
-@@ -128,36 +125,34 @@ static int programModeRegisters(struct _mode_parameter_t *pModeParam, struct pll
- 
- 	} else if (pll->clockType == PRIMARY_PLL) {
- 		unsigned int reserved;
-+		unsigned int pht = PANEL_HORIZONTAL_TOTAL;
-+		unsigned int pvt = PANEL_VERTICAL_TOTAL;
-+		unsigned int phs = PANEL_HORIZONTAL_SYNC;
-+		unsigned int pvs = PANEL_VERTICAL_SYNC;
-+		unsigned int phssm = PANEL_HORIZONTAL_SYNC_START_MASK;
-+		unsigned int pvssm = PANEL_VERTICAL_SYNC_START_MASK;
-+		unsigned int phtdem = PANEL_HORIZONTAL_TOTAL_DISPLAY_END_MASK;
-+		unsigned int pvtdem = PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK;
-+		unsigned int phttm = PANEL_HORIZONTAL_TOTAL_TOTAL_MASK;
-+		unsigned int pvttm = PANEL_VERTICAL_TOTAL_TOTAL_MASK;
-+		unsigned int phswm = PANEL_HORIZONTAL_SYNC_WIDTH_MASK;
-+		unsigned int pvshm = PANEL_VERTICAL_SYNC_HEIGHT_MASK;
-+		unsigned int phde = pModeParam->horizontal_display_end - 1;
-+		unsigned int pvde = pModeParam->vertical_display_end - 1;
-+		unsigned int phss = pModeParam->horizontal_sync_start - 1;
-+		unsigned int pvss = pModeParam->vertical_sync_start - 1;
- 
- 		poke32(PANEL_PLL_CTRL, sm750_format_pll_reg(pll));
- 
--		reg = ((pModeParam->horizontal_total - 1) <<
--			PANEL_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
--			PANEL_HORIZONTAL_TOTAL_TOTAL_MASK;
--		reg |= ((pModeParam->horizontal_display_end - 1) &
--			PANEL_HORIZONTAL_TOTAL_DISPLAY_END_MASK);
--		poke32(PANEL_HORIZONTAL_TOTAL, reg);
--
--		poke32(PANEL_HORIZONTAL_SYNC,
--		       ((pModeParam->horizontal_sync_width <<
--			 PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) &
--			PANEL_HORIZONTAL_SYNC_WIDTH_MASK) |
--		       ((pModeParam->horizontal_sync_start - 1) &
--			PANEL_HORIZONTAL_SYNC_START_MASK));
--
--		poke32(PANEL_VERTICAL_TOTAL,
--		       (((pModeParam->vertical_total - 1) <<
--			 PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) &
--			PANEL_VERTICAL_TOTAL_TOTAL_MASK) |
--		       ((pModeParam->vertical_display_end - 1) &
--			PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK));
--
--		poke32(PANEL_VERTICAL_SYNC,
--		       ((pModeParam->vertical_sync_height <<
--			 PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) &
--			PANEL_VERTICAL_SYNC_HEIGHT_MASK) |
--		       ((pModeParam->vertical_sync_start - 1) &
--			PANEL_VERTICAL_SYNC_START_MASK));
-+		reg = ((pModeParam->horizontal_total - 1) << PANEL_HORIZONTAL_TOTAL_TOTAL_SHIFT) & phttm;
-+		reg |= (phde & phtdem);
-+		poke32(pht, reg);
-+
-+		poke32(phs, ((pModeParam->horizontal_sync_width << PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) & phswm) | (phss & phssm));
-+
-+		poke32(pvt, (((pModeParam->vertical_total - 1) << PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) & pvttm) | (pvde & pvtdem));
-+
-+		poke32(pvs, ((pModeParam->vertical_sync_height << PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) & pvshm) | (pvss & pvssm));
- 
- 		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
- 		if (pModeParam->vertical_sync_polarity)
+ 	if (priv->epromtype == EPROM_93c56) {
+ 		addr_str[7] = addr & 1;
+-		addr_str[6] = addr & (1 << 1);
+-		addr_str[5] = addr & (1 << 2);
+-		addr_str[4] = addr & (1 << 3);
+-		addr_str[3] = addr & (1 << 4);
+-		addr_str[2] = addr & (1 << 5);
+-		addr_str[1] = addr & (1 << 6);
+-		addr_str[0] = addr & (1 << 7);
++		addr_str[6] = addr & BIT(1);
++		addr_str[5] = addr & BIT(2);
++		addr_str[4] = addr & BIT(3);
++		addr_str[3] = addr & BIT(4);
++		addr_str[2] = addr & BIT(5);
++		addr_str[1] = addr & BIT(6);
++		addr_str[0] = addr & BIT(7);
+ 		addr_len = 8;
+ 	} else {
+ 		addr_str[5] = addr & 1;
+-		addr_str[4] = addr & (1 << 1);
+-		addr_str[3] = addr & (1 << 2);
+-		addr_str[2] = addr & (1 << 3);
+-		addr_str[1] = addr & (1 << 4);
+-		addr_str[0] = addr & (1 << 5);
++		addr_str[4] = addr & BIT(1);
++		addr_str[3] = addr & BIT(2);
++		addr_str[2] = addr & BIT(3);
++		addr_str[1] = addr & BIT(4);
++		addr_str[0] = addr & BIT(5);
+ 		addr_len = 6;
+ 	}
+ 	eprom_cs(dev, 1);
 -- 
-2.11.0
+2.17.1
 
 
