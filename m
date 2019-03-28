@@ -1,81 +1,155 @@
-X-GM-THRID: 6253814097035395072
-X-Received: by 10.50.50.208 with SMTP id e16mr7933541igo.12.1456079561234;
-        Sun, 21 Feb 2016 10:32:41 -0800 (PST)
+X-GM-THRID: 6673458738250121216
+X-Received: by 2002:a25:2f44:: with SMTP id v65mr2013713ybv.2.1553790937589;
+        Thu, 28 Mar 2019 09:35:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.230.104 with SMTP id sx8ls347004obc.4.gmail; Sun, 21 Feb
- 2016 10:32:40 -0800 (PST)
-X-Received: by 10.182.20.195 with SMTP id p3mr18084536obe.47.1456079560765;
-        Sun, 21 Feb 2016 10:32:40 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id ff2si2951935pad.2.2016.02.21.10.32.40
+Received: by 2002:a25:b8c7:: with SMTP id g7ls1893679ybm.0.gmail; Thu, 28 Mar
+ 2019 09:35:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyjf0hKKuqv7EbdIdwL/JV/CG2nVj4BWYKAuBMl8zMgz+ZliYtXORd7j0wl1/gZ2/mjyvpO
+X-Received: by 2002:a5b:4c9:: with SMTP id u9mr2577822ybp.93.1553790936842;
+        Thu, 28 Mar 2019 09:35:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553790936; cv=none;
+        d=google.com; s=arc-20160816;
+        b=t2r/jmp/ya04+0Xqb61ni8hPS0u2V9vZV15LNJkzrr2c2rgd9z6Fx7RZr+Etfvavsn
+         B/eIs1HDe/KRl9nYHGsenEfd8hRlq5dfRE2cJcWp5tvQd8tDjT5jh/BAdJy1xM5AYrVP
+         +DVvJuC928x3JcEuY0a41gVkxcZhnBVmShadP5d69J2kzTHss/h8NSwejsnZdyZo75LU
+         uWiWx9BW/clL/vijp+IXHXCdDy+edn1We4vnyMyguVLnM9Flo1FVxcyr4zf/i/zSdKPf
+         BoIrX61E0d3x2J6+IvmFkFpBiZpDJooBk3WZUvqss+53xFZb2nY6VvfncEyeMdtzvBiT
+         iTMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=465PxIouiHJf11fhPJEXj6DlpCK915RINCaENh4yJR8=;
+        b=DzRPPe1YZrg2sRDqDgUBZl0yCeAHuSaO29C5ZRCOJItwNBhGL/fdNC+As6D3tlFbmI
+         YfiPJZ18qv0LWxSvMzUt6GJ7XRNbTR2pKahko/l13tDL6U/HBS2nKBALc+BfizI1Z2b0
+         JOE/SnH0C8Dvnh1ZGZBkjB7BBBVGrFsvjFaQIFDb22NX4Pq8EnlrHeLSinTWTeJl28wi
+         q4fCsIq0r1b5w394NsK3hjmx2g/uEpjUIM5/m7kP0OGucLiIC0rwrpq/idhPzVahIVQm
+         zjq/VFaJJrIVetpMPlajCPMqbMg6ykQyRAh/rVab8XE+IR7KfHi88six7/L3XjNoTUcR
+         IJhg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jt5Iencz;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id s11si1478648ywg.3.2019.03.28.09.35.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Feb 2016 10:32:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        Thu, 28 Mar 2019 09:35:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id ho8so80408530pac.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Feb 2016 10:32:40 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jt5Iencz;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id u9so11851231pgo.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 09:35:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=974BAIiC8yP3kvgdokMbypa48/S+mo9pQwvj0ZaBhLE=;
-        b=pHi0NBp6LbuYGdNkooJiPGqutWbI9gn7ZNQqI0Y/BooPxuePFZOvJK/c0W4odYtlYD
-         elcHIAVh92WaWjygf+uB2pBxUTe9Mrtqd1MpodZ6CVwO3Rkz93AcOf9i6BkJ6FINZeqj
-         v0obVWQlKPNBOyRhgjz1cBeF9FNvdr99lY0E3vgV4CVJvnDhfZkAIly4t3vB387uC6W5
-         nbMl99e4rDqeIe7b2tl8AzvX8JN7OwAokQg9QIxjBiZ0uUA3H4Bv9/2tnhHO0wD+J9z2
-         +sD2pshvN+WBJ6+R5Ojg5cio8G/V/zOEVWeVHZoK/cwUBePojOB2mEe84zp80eYm2ak3
-         dciQ==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=465PxIouiHJf11fhPJEXj6DlpCK915RINCaENh4yJR8=;
+        b=jt5IenczJrgMyjfLfxM8nN693fEQAK71QoKUvHY+jlURCKV7JJTvbNnt9rWW310SyZ
+         NBFSW35n4Bm7Un+auf/rz8eSp1C+C4Le3ZDW4jOJGVG2AGn+Q5YCw3QrstqKOdp0rMTq
+         J63rpj+YjeMaMKbpAI2qPQ3reb/9a85YDZ6PwJVSh9KRrR5NsdWENkatP+IB+6khtJp2
+         96TR1fEcGT+W58apl9Ejj59A6qqWqH/0LzIIF0rQ4SEmihMSNdGUc7IYwq6wFRnBEzTr
+         7Suo9Zzs4C8q+CMmE60aM6dJLHDjlRm6hM7k2nUMUcuZDPYLXE8sYAcixNzmFAihJ5fh
+         EPUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=974BAIiC8yP3kvgdokMbypa48/S+mo9pQwvj0ZaBhLE=;
-        b=kJuqnO5+DSCys9uz7F7Dp+ftKST27gCUlmaLsq/JtjF8EevFRsVWsnPs35uPmxkYCP
-         nB0QMkhW1jVbSDFXm7dSnoMDF8ZRvP+LIwdFM/4OhZGi3JJz53w2GXlxXmQqw0Udc4vb
-         CEL05WooYEVqbeDwtM+xyRMrJHu6odWe7q9bnUKJXBgS+QJOtWBOe2ZcMGjXAXkUumAL
-         O7T+PQO4fCXkCccW6eoRyRGana1GYsSIoWgMSMr30csPLiFapQ83daI2VGxWD+xQ9ij2
-         6QTE6oFh/qZfoGalCLdLuQV6g/e8SuxKBpLMQq9e5/3U7/QywEP+J64utktaFUrpJzZP
-         hbag==
-X-Gm-Message-State: AG10YOTSKed78B4Ph5+18l2xh3oUmnLCTByk/6X+HA8Y7kfV1wxGfGIf7lVp/IseQiRJCA==
-X-Received: by 10.66.62.161 with SMTP id z1mr33144093par.108.1456079560638;
-        Sun, 21 Feb 2016 10:32:40 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id xv2sm31535587pab.10.2016.02.21.10.32.39
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 10:32:40 -0800 (PST)
-Date: Mon, 22 Feb 2016 00:03:13 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/4] Use macro DIV_ROUND_UP
-Message-ID: <20160221183313.GA3351@Karyakshetra>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=465PxIouiHJf11fhPJEXj6DlpCK915RINCaENh4yJR8=;
+        b=UfHs4nHTbilrSp99fg0Btk6zR7j0IDruuvhCaWjykHRLEhEu17ShpFruez7wFdgiG2
+         xyzQgOl8Qx9T+WK/fJMQoxTFwD81D92Tnh4Wpw4zm8u3njKJKgsAobXH1tqy+rXwrsMe
+         K5Ui+UFwShSV3HX7O38muOfXQjXTofPJXvSjD0ByE/MfSowM8Z+EZx184n2sBkXyybS4
+         BvjiFslcQG0gQPfL/H7yv5olQuLfNybokx51YbkPggPuNIbO/lOegaqTeeLfp/3GknXN
+         mu2OJjIN7ORFbjct+/sFmYqHQpacFRVyVvof8btPqFmmLiS2PsLJ/ojCo0PFj3WQ94xZ
+         jQww==
+X-Gm-Message-State: APjAAAUpp7v7BDv0Z+T9GSM5ahl5QrAfhEXrVBFFdNCVa1cGdIdEZGCL
+	/k8vwtqLjobGdbiVY/tyEJjQd+uuyxE=
+X-Received: by 2002:a63:68c9:: with SMTP id d192mr42189532pgc.264.1553790935885;
+        Thu, 28 Mar 2019 09:35:35 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.77.58])
+        by smtp.googlemail.com with ESMTPSA id i1sm27419578pgc.63.2019.03.28.09.35.33
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Mar 2019 09:35:34 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: rtlwifi: Remove return variable.
+Date: Thu, 28 Mar 2019 22:05:22 +0530
+Message-Id: <20190328163522.15103-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190328150759.10539-1-sanjana99reddy99@gmail.com>
+References: <20190328150759.10539-1-sanjana99reddy99@gmail.com>
 
-This patchset replaces occurences of (((n) + (d) - 1) /(d))
-with the kernel.h macro DIV_ROUND_UP.
+Remove return variable and return "return" value directly. Issue found by
+Coccinelle using ret.cocci.
 
-Bhaktipriya Shridhar (4):
-  staging: rtl8723au: hal: Use macro DIV_ROUND_UP
-  staging: rtl8192e: Prefer using macro DIV_ROUND_UP
-  staging: most: hdm-usb: Use macro DIV_ROUND_UP
-  staging: most: hdm-dim2: Use macro DIV_ROUND_UP
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+Changes in v2:
+Merge 2 patches to one i.e remove unnecessary
+variable is merged to [PATCH 1/2].
+Remove patch series.
+ drivers/staging/rtlwifi/rtl8822be/phy.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
 
- drivers/staging/most/hdm-dim2/dim2_hal.c     | 4 ++--
- drivers/staging/most/hdm-usb/hdm_usb.c       | 2 +-
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 4 ++--
- drivers/staging/rtl8723au/hal/usb_halinit.c  | 3 +--
- 4 files changed, 6 insertions(+), 7 deletions(-)
-
---
-2.1.4
+diff --git a/drivers/staging/rtlwifi/rtl8822be/phy.c b/drivers/staging/rtlwifi/rtl8822be/phy.c
+index 048904d783fc..ececfed7b35a 100644
+--- a/drivers/staging/rtlwifi/rtl8822be/phy.c
++++ b/drivers/staging/rtlwifi/rtl8822be/phy.c
+@@ -219,10 +219,8 @@ bool rtl8822be_halmac_cb_init_bb_rf_register(struct rtl_priv *rtlpriv)
+ 	txpath = RF_MASK_A | RF_MASK_B;
+ 	rxpath = RF_MASK_A | RF_MASK_B;
+ 	tx2path = false;
+-	ret = rtlpriv->phydm.ops->phydm_trx_mode(rtlpriv, txpath, rxpath,
++	return rtlpriv->phydm.ops->phydm_trx_mode(rtlpriv, txpath, rxpath,
+ 						 tx2path);
+-
+-	return ret;
+ }
+ 
+ static void _rtl8822be_phy_init_tx_power_by_rate(struct ieee80211_hw *hw)
+@@ -1580,11 +1578,9 @@ _rtl8822be_phy_get_txpower_by_rate(struct ieee80211_hw *hw, u8 band, u8 path,
+ 	else
+ 		tx_num = RF_1TX;
+ 
+-	tx_pwr_diff = (char)(rtlphy->tx_power_by_rate_offset[band][path][tx_num]
++	return (char)(rtlphy->tx_power_by_rate_offset[band][path][tx_num]
+ 							    [rate] &
+ 			     0xff);
+-
+-	return tx_pwr_diff;
+ }
+ 
+ u8 rtl8822be_get_txpower_index(struct ieee80211_hw *hw, u8 path, u8 rate,
+@@ -1844,7 +1840,6 @@ static long _rtl8822be_phy_txpwr_idx_to_dbm(struct ieee80211_hw *hw,
+ 					    u8 txpwridx)
+ {
+ 	long offset;
+-	long pwrout_dbm;
+ 
+ 	switch (wirelessmode) {
+ 	case WIRELESS_MODE_B:
+@@ -1858,8 +1853,7 @@ static long _rtl8822be_phy_txpwr_idx_to_dbm(struct ieee80211_hw *hw,
+ 		offset = -8;
+ 		break;
+ 	}
+-	pwrout_dbm = txpwridx / 2 + offset;
+-	return pwrout_dbm;
++	return txpwridx / 2 + offset;
+ }
+ 
+ void rtl8822be_phy_scan_operation_backup(struct ieee80211_hw *hw, u8 operation)
+@@ -2218,6 +2212,5 @@ bool rtl8822be_phy_set_rf_power_state(struct ieee80211_hw *hw,
+ 
+ 	if (rfpwr_state == ppsc->rfpwr_state)
+ 		return bresult;
+-	bresult = _rtl8822be_phy_set_rf_power_state(hw, rfpwr_state);
+-	return bresult;
++	return _rtl8822be_phy_set_rf_power_state(hw, rfpwr_state);
+ }
+-- 
+2.17.1
 
 
