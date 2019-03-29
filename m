@@ -1,127 +1,146 @@
 X-GM-THRID: 6673827435643928576
-X-Received: by 2002:a24:2584:: with SMTP id g126mr1971798itg.23.1553876374619;
-        Fri, 29 Mar 2019 09:19:34 -0700 (PDT)
+X-Received: by 2002:a24:64e:: with SMTP id 75mr555276itv.6.1553871537787;
+        Fri, 29 Mar 2019 07:58:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:33ca:: with SMTP id k193ls830781itk.3.canary-gmail; Fri,
- 29 Mar 2019 09:19:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwDfCf3fEOg3rnptDuiMsD5eNLUW3yi8JmU/Rb/Hf70Rg/cWCP1YYrrSUFrEJvauVqRn3a9
-X-Received: by 2002:a24:c1:: with SMTP id 184mr1875903ita.21.1553876373116;
-        Fri, 29 Mar 2019 09:19:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553876373; cv=none;
+Received: by 2002:a24:33ca:: with SMTP id k193ls748422itk.3.canary-gmail; Fri,
+ 29 Mar 2019 07:58:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwY6Btc2Y9nMdT5B8AyngUMagoJTvDHPR1UHVtX1+afxS5sD5iYstDNuomx19WiTr49hFXJ
+X-Received: by 2002:a24:7bd3:: with SMTP id q202mr1621510itc.32.1553871536448;
+        Fri, 29 Mar 2019 07:58:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553871536; cv=none;
         d=google.com; s=arc-20160816;
-        b=KKUMFdu9ROU71Bcch04SR0mhdzeroN4w39+UkRg1TtpZKmFpblIey6njLfpe5Szhqc
-         qjW8gD1cYxxzpV9yx5KmsNFpKw9NVORv+v3E1M/5MNAgrkfW9uHy42WQKujWYNxLZDJ9
-         yGdYEScu6V+NZvUqCy1FWDE+D2Fwfr/1Mv+VgMDTkyJWVSIMF0B5fVV2ZygYwCuhJUoy
-         t/ZhFSLCNC/v+hXNy/w/4hKkrdbYzu7HkTppWufwyA9iF/ZyoPiUvbyVoqzkoSQ4VsXt
-         FrzFBNAjP91kSFRMjeHmQ8B9yuOoc9bCIHEMmeD357nqNZz2aUYg6bqXcCe3VyBtiuA9
-         iSNQ==
+        b=kEIRJR+o3oWp6yj5D7CcNXbEXJpR/ysKVeRaPuLyJFdgJ0TjdO24QWToJdQZKY1fUq
+         QZh1jHG3r6ph3wufZmcphY4Ov99+qDEowm1rLaEQnpgEVaB60fvgtuKOzsIPumGfDPQd
+         hdwf0beiLg00OuilcIDSNY4kZeg+DXjLUlAqf7ivPU7dofyoHrWfoha0lS2Vzh3M8r0D
+         oAQIFsDqWHKNA+DocemFT598StAjEOZeAOoWH87MZZ4TdwdMldPWdipIiYcbeaOf4M4K
+         UkA+PKUdt9vd0Kv+bFB53Q8VYLwlON80UhtalaY4e0zVJ70qcZxocBdB3hychXZaAF7p
+         pTFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=44znIOzNpxfwFHqh5Yrg0ryccleXz/1al+rkrilkB7o=;
-        b=rXCcXhopKuzjwkleTXfHzhS/y8LwEag7msGhXDQONj1P6fOM0S/rosMQ0mW/nll4/E
-         bVF9UNRzyBqr00mHgBIf+FfiWKOQDYuhG6Gg0CGv6MsXZN/78rbQmWBhO6ED+iaEOAYv
-         oVmOReWp88bUtEZh7UkdKOcvcR+Hgca/19wZCaCpqc+LbyHu/ERy0gN3UTwgU1MgBmyW
-         XS/sYe+7MQS9bOyjIy9yWWRc8XbIUDh9fo6iH8sAfrM3+mvYeO8/Htq+UcKim91CiV4+
-         2MYM1oiOp/tY7bRYjwZvjYCHMUzJCBbSfjDPyO/kB009GCOo7d9Mkj4dhBmzX8/8QB3f
-         NvJQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Dk+AZEpxnf3s/oad2fdODcaB50C2jJY0QL7qj6G1DLo=;
+        b=OL04rn4Zq9T4lmAMlM9+ZVLNitLMfq6TLz9SZe6xF/bb2ERabjcFC4dfZ31/OGiGZO
+         /m30Q1InCVjfIEWuVEwSSc80rF0fw9vXTWJVqVah+C7s8yetuJ5jwK2yCKZi29QC1WL8
+         5J44QwyBeXP+xOwGXhTVMxLReNpmoYSr12/i/1pAZMsFqnUj78RFZ3BdBkByMJ9vONG8
+         GMMYQykHhjTft9R43eJ05HcOmM8IZ6Tb6lk/jpbT5vQHORI2LQaZiKmQExcGoKW/69ic
+         CSArdz/nhI+5o7MGAWuoujW+Gqo1e451dCOFPaYEEqOs7qGHk9aG3gjBYoQWFwD+rSEv
+         PgUg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=RamAzcje;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=1S3eF9eQ;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.25 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
-        by gmr-mx.google.com with ESMTPS id r17si735357itb.4.2019.03.29.09.19.32
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Aj0PJdFa;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com. [2607:f8b0:4864:20::631])
+        by gmr-mx.google.com with ESMTPS id w136si83531itb.2.2019.03.29.07.58.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 09:19:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
+        Fri, 29 Mar 2019 07:58:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) client-ip=2607:f8b0:4864:20::631;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=RamAzcje;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=1S3eF9eQ;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.25 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 4A2DC21B62;
-	Fri, 29 Mar 2019 12:19:32 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Fri, 29 Mar 2019 12:19:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm3; bh=44znIOzNpxfwFHqh5Yrg0ryccle
-	Xz/1al+rkrilkB7o=; b=RamAzcjeLY+R/5e1ZdU5fC7+fjrxeG858g5rkqOnSXY
-	UbuzalnmF5qiEHSmRzUGHf96EQ2hdWVEpFZ2cLsKEtpx2tkoRunw+F/kiKy+sDKB
-	yWUqZDRxKcrvxqHGj/or3jvs/OsgIO9nLr6fL1UKrL8nHQCoO9LpqN32lP4N0WNn
-	vOmhsrHd4ZcPQmFAzkygx3cOAJ/NQMXTMqCYqkd9frCC2apD7doCEzWm0jba6KXQ
-	vSnAKPPv3vu7c+O7iTefe1Xp0k/h8wCzZ7oGs5byvxu2Hylw7gK3iPHCn6wJf53B
-	RBNOGUz+hIA6gxhi1TwK+0lf5TyqqCr3fp8Y+cSo/+g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=44znIO
-	zNpxfwFHqh5Yrg0ryccleXz/1al+rkrilkB7o=; b=1S3eF9eQtKFj0Ky76z2+Dn
-	vQXEhz5DfbxT9b+Y7G3kILWFeuxAGv6NUOiHqP8jbP/tis+THhiswbfwwnEZY+03
-	q58SLttXLefJDp9Ez1T1DjyItvMDiZzZ0M2+1/I2JMvkIPbXCMTz+/Wkc8VBtRt8
-	Rr8/skw8SDxsLi+KZ9RWZ03CwCOOt0G1oKyLfrn+c9SNGP0JtqczWYuztiqrnu+7
-	g2Qp/YCI3+QjKGTkjXC5Lq6WSNnZ7jEtVIPwQni6CfuLpF0lMOcA6MlW/4nq9TJ0
-	UO0LXWYCMy7Kr2rEHCMfxUOiw/ZW3G/+EV6VOkYeZEhBBLi0l73AbrJCnV2YvaRQ
-	==
-X-ME-Sender: <xms:lEWeXGC7m7TXAgp5ROEjx2I5p4zbzMllzWwGSdRWvACctWBlC7oCYg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrkeejgdeitdcutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpeffhffvuffkfhggtggujggfsehttdertddtredvnecuhfhrohhmpefirhgvghcu
-    mffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucffohhmrghinhepphhhhidrtgdqqd
-    dqrgenucfkphepkeefrdekiedrkeelrddutdejnecurfgrrhgrmhepmhgrihhlfhhrohhm
-    pehgrhgvgheskhhrohgrhhdrtghomhenucevlhhushhtvghrufhiiigvpedu
-X-ME-Proxy: <xmx:lEWeXGAnxhe80RSdP3YY7P8tNBnBvFfWUxSV58Kd1w7qDVBWPPytnQ>
-    <xmx:lEWeXB6bWRU_1CeB7KKscLo5SFc-X1Gi4IN-edbYNXOWMmgXt3bFWA>
-    <xmx:lEWeXC2_4jfhDXeNF8TRouekbf8-8CmdDEAZYmn3THz7rnfcSzE3Nw>
-    <xmx:lEWeXDNPjGekJP5eNg8mPMuooXlACJTT8oWLpRXV-9bQHTUyFeSN3Q>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id AD6421030F;
-	Fri, 29 Mar 2019 12:19:31 -0400 (EDT)
-Date: Fri, 29 Mar 2019 17:19:30 +0100
-From: Greg KH <greg@kroah.com>
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtlwifi: rtl8822be: compress
- two lines into one
-Message-ID: <20190329161930.GB26815@kroah.com>
-References: <1553871519-8008-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1553871519-8008-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Aj0PJdFa;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x631.google.com with SMTP id b65so1161441plb.6
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 07:58:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Dk+AZEpxnf3s/oad2fdODcaB50C2jJY0QL7qj6G1DLo=;
+        b=Aj0PJdFalQJRdELeczI8nbKgu7RLAMRZyXzZUnlR/PqrFJqB6NwY9LtPbjMTJ5M6bq
+         NZwoXhwzqM47Tsl9nUSkHmUOPMPqevFz50BFHhI2l3woAGt//SYYsZifUXpbJzIvqBZX
+         lk2T62ySx2PlMlgOHSmCcgoTolHUe3fQdra6d16dwmfaE36+VGufLRl2dudUv2ejmUSL
+         a2/FxomP3T+ddryGX3vMlSB1YJhTCGlgtBA/ob+614IhkHuPOm5zc6A00oig+CODjH9T
+         e0ns5oZz7CqSPsddCUWInrcjb8KG+WdxFuoXT3eAOMmhF53Z6cYLSJJSghxbdavKf/g+
+         YGlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Dk+AZEpxnf3s/oad2fdODcaB50C2jJY0QL7qj6G1DLo=;
+        b=ASouaenyEh03GrVtXa0xul/aOdk0vfsSCXCmVZKco8yOL0AAzbylcM46hgMbdZxUgl
+         1WgYADUIaXJeEtA+OBPJBJLkzFel7l4JWQXG6GcGFxC9b/l6eiUpoxNy9DydOUhlA/bo
+         dI4ujRaxYGQBKNfv2F0P4Pwg8E2mdpfo1r5yCrq8JUo0ojlugwHMiQgP2ogIv6ZpJ9Cy
+         yp57QcCnMxyMgkWw6j+3vWUduSdj2S0xQMWXnTODpZh1GxsNf+tWdUdjeAwcufIsMFL7
+         vL1hvKHb4l3cZyKmFd6jiJ61/4Zv2sE75pFEBciI5edqqSjghwc8I052XM5SfYYBMf5z
+         PPuQ==
+X-Gm-Message-State: APjAAAU1vce2++UV3JHuYC+oxYu6bQkBX7Q7V7YF518B9Ghs1rU3SSB0
+	2lFAVnkFUoSRuIvNnldKYmRBMNCU
+X-Received: by 2002:a17:902:e182:: with SMTP id cd2mr14767814plb.240.1553871535709;
+        Fri, 29 Mar 2019 07:58:55 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([157.33.161.1])
+        by smtp.gmail.com with ESMTPSA id 17sm2686404pgz.52.2019.03.29.07.58.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 29 Mar 2019 07:58:54 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH] staging: rtlwifi: rtl8822be: compress two lines into one
+Date: Fri, 29 Mar 2019 20:28:39 +0530
+Message-Id: <1553871519-8008-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-On Fri, Mar 29, 2019 at 08:28:39PM +0530, Payal Kshirsagar wrote:
-> Challenge suggested by coccinelle.
-> 
-> Returning something from a function need not to be stored in a variable, 
-> can be return directly.
-> 
-> This patch compress two lines into one using following semantic patch:
-> 
-> @@
-> local idexpression ret;
-> expression e;
-> @@
-> 
-> -ret = e;
-> +return e;
-> -return ret;
-> 
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> ---
-> diff -u -p a/phy.c b/phy.c
-> --- a/phy.c
-> +++ b/phy.c
+Challenge suggested by coccinelle.
 
-Um, have you tried applying this?  Your patches have to be able to be
-applied at the "root" of the kernel source tree, not buried in some
-random subdirectory :)
+Returning something from a function need not to be stored in a variable, 
+can be return directly.
 
-thanks,
+This patch compress two lines into one using following semantic patch:
 
-greg k-h
+@@
+local idexpression ret;
+expression e;
+@@
+
+-ret = e;
++return e;
+-return ret;
+
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+diff -u -p a/phy.c b/phy.c
+--- a/phy.c
++++ b/phy.c
+@@ -219,10 +219,8 @@ bool rtl8822be_halmac_cb_init_bb_rf_regi
+ 	txpath = RF_MASK_A | RF_MASK_B;
+ 	rxpath = RF_MASK_A | RF_MASK_B;
+ 	tx2path = false;
+-	ret = rtlpriv->phydm.ops->phydm_trx_mode(rtlpriv, txpath, rxpath,
+-						 tx2path);
+-
+-	return ret;
++	return rtlpriv->phydm.ops->phydm_trx_mode(rtlpriv, txpath, rxpath,
++						  tx2path);
+ }
+ 
+ static void _rtl8822be_phy_init_tx_power_by_rate(struct ieee80211_hw *hw)
+@@ -1580,11 +1578,7 @@ _rtl8822be_phy_get_txpower_by_rate(struc
+ 	else
+ 		tx_num = RF_1TX;
+ 
+-	tx_pwr_diff = (char)(rtlphy->tx_power_by_rate_offset[band][path][tx_num]
+-							    [rate] &
+-			     0xff);
+-
+-	return tx_pwr_diff;
++	return (char)(rtlphy->tx_power_by_rate_offset[band][path][tx_num][rate] & 0xff);
+ }
+ 
+ u8 rtl8822be_get_txpower_index(struct ieee80211_hw *hw, u8 path, u8 rate,
+@@ -1858,8 +1852,7 @@ static long _rtl8822be_phy_txpwr_idx_to_
+ 		offset = -8;
+ 		break;
+ 	}
+-	pwrout_dbm = txpwridx / 2 + offset;
+-	return pwrout_dbm;
++	return txpwridx / 2 + offset;
+ }
+ 
+ void rtl8822be_phy_scan_operation_backup(struct ieee80211_hw *hw, u8 operation)
+@@ -2218,6 +2211,5 @@ bool rtl8822be_phy_set_rf_power_state(st
+ 
+ 	if (rfpwr_state == ppsc->rfpwr_state)
+ 		return bresult;
+-	bresult = _rtl8822be_phy_set_rf_power_state(hw, rfpwr_state);
+-	return bresult;
++	return _rtl8822be_phy_set_rf_power_state(hw, rfpwr_state);
+ }
 
