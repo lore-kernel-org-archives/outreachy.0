@@ -1,94 +1,87 @@
 X-GM-THRID: 6673502133906571264
-Date: Sat, 30 Mar 2019 08:57:19 -0700 (PDT)
-From: sanjana99reddy99@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <e3dddcd4-07a4-4809-9e07-e38dbee03234@googlegroups.com>
-In-Reply-To: <20190329160945.GC6197@kroah.com>
-References: <20190329060238.15688-1-sanjana99reddy99@gmail.com>
- <20190329160945.GC6197@kroah.com>
+X-Received: by 2002:a05:6830:146:: with SMTP id j6mr3733215otp.23.1553875790454;
+        Fri, 29 Mar 2019 09:09:50 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:aca:2dc1:: with SMTP id t184ls194394oit.2.gmail; Fri, 29 Mar
+ 2019 09:09:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyiscimGPlT1kFF3iAVYBsTkYVk8l9IKiD0QcPZxm3X4VK3OECP5sLWEkEsCQwsBEVzkCTE
+X-Received: by 2002:aca:c44c:: with SMTP id u73mr3850190oif.17.1553875789506;
+        Fri, 29 Mar 2019 09:09:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553875789; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SUqXV69Jx0bSBiyxKII/iSqqf2V8HureqyiGmoji62hHMzCFDjD3qUkWLIBCBubpWb
+         CMZTvUDYfrEBbIUuLAj+hBsmIluVGU0ZohRrzG4MtLq2fyZ8tiFrs9uR4qJSqvVpmlYj
+         a6wCgKl5vJI3BCGwYWQ3UrXV/lOjTnvjaAg7TqF9b5Y3+5jgK3h3org8m7B8CTCfOSmy
+         j+T62wELeaAmH8ivt+zt3rJh1twRLVz+FkLxgeY1opC0NqyIgeDDeGKcGPqbiQtqJrUs
+         Twsp8L4kPdjsbAk4+6B/Do2JIuiT6JHxzXNVdvVpriEmC+C4cHRsrhzetmkReIu7iyDI
+         Zx1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Gyx7JH5T1ZSMfNiOrFrhIid8QSKdswYuhZAhW8/A7Es=;
+        b=wT1rK0pTpWrUlEB1KIot6A5Z48ea6+F9vEqQBhRmlgihaoy53UT7Vt58Zzvy6fb4JT
+         TWzCaSLe0dyJHCIyNxyAJvdBJqzNm7c8zv02eiQYMrbHxbqK5Xd7bM+KmJL6w3j9nOb0
+         A03waDOlSbPx3aKwzbIR49TtyAPIgs961mHsqaWtWfQQyrW6EASyzOg37COqXouloEBq
+         zB7bWG48EFDJBFPdSalth4ATh3drQ1JDLlxPpomeqU8B07Th/SRqmy+RyLaSgTt5BK3i
+         DGO3ZcOXYuHLyDq54Xln8wBjQpe8T5Ffd02TkkWXKcNAlvcZZz1YkKDJmYu6/pfB2Kd5
+         0vRQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=c7VXuUmZ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id t14si232732oth.0.2019.03.29.09.09.49
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 29 Mar 2019 09:09:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=c7VXuUmZ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 378B12070B;
+	Fri, 29 Mar 2019 16:09:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553875788;
+	bh=cVQH7s2srr672/mr6cYBUqlQ9WqNw9Wgo1sncLfjxFQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=c7VXuUmZ+3W/bAFeqVAYbnKF/tBbGNZdiblciNWdEoftMpOMg/i9gZR6ECY/kPt7m
+	 Dv+grHqcm2x/6dCGGlQ491LLRaHW/LJyFj2LUKJQFJCGu5yKK5MZ4Rx9to2s5gqy3S
+	 d1fy72LVuLyTj5DXjALx9J1r2aB032n3tqXHzqes=
+Date: Fri, 29 Mar 2019 17:09:45 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH v2] staging: wilc1000: host_interface.c: Modify return
  statement.
+Message-ID: <20190329160945.GC6197@kroah.com>
+References: <20190329060238.15688-1-sanjana99reddy99@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_115_980679171.1553961439776"
-X-Google-Token: EN-j_uQFoBaM6XuNwgs0
-X-Google-IP: 123.201.165.90
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190329060238.15688-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-------=_Part_115_980679171.1553961439776
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_116_2114382719.1553961439777"
+On Fri, Mar 29, 2019 at 11:32:38AM +0530, Sanjana Sanikommu wrote:
+> Challenge suggested by coccinelle.
+> Remove return variable and directly return the value
+> Issue found using ret.cocci
+> 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+> Changes in v2:
+> Adjust spaces for last argument in return statement.
+>  drivers/staging/wilc1000/host_interface.c | 31 +++++++----------------
+>  1 file changed, 9 insertions(+), 22 deletions(-)
 
-------=_Part_116_2114382719.1553961439777
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+You sent 3 different patches with the same subject line, so I have no
+idea what is going on here.  Please make this a patch series of all
+remaining patches for this driver, so I have a chance to be able to
+review it properly.
 
+thanks,
 
-
-On Friday, March 29, 2019 at 9:39:50 PM UTC+5:30, gregkh wrote:
->
-> On Fri, Mar 29, 2019 at 11:32:38AM +0530, Sanjana Sanikommu wrote: 
-> > Challenge suggested by coccinelle. 
-> > Remove return variable and directly return the value 
-> > Issue found using ret.cocci 
-> > 
-> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
-> > --- 
-> > Changes in v2: 
-> > Adjust spaces for last argument in return statement. 
-> >  drivers/staging/wilc1000/host_interface.c | 31 +++++++---------------- 
-> >  1 file changed, 9 insertions(+), 22 deletions(-) 
->
-> You sent 3 different patches with the same subject line, so I have no 
-> idea what is going on here.  Please make this a patch series of all 
-> remaining patches for this driver, so I have a chance to be able to 
-> review it properly. 
->
-
-    Sure I would make a patch series and send them in v3 
-
->
-> thanks, 
->
-> greg k-h 
->
-
-------=_Part_116_2114382719.1553961439777
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Friday, March 29, 2019 at 9:39:50 PM UTC+5:30, =
-gregkh wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-le=
-ft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Fri, Mar 29, 2=
-019 at 11:32:38AM +0530, Sanjana Sanikommu wrote:
-<br>&gt; Challenge suggested by coccinelle.
-<br>&gt; Remove return variable and directly return the value
-<br>&gt; Issue found using ret.cocci
-<br>&gt;=20
-<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"glBetOYpBgAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
-<br>&gt; ---
-<br>&gt; Changes in v2:
-<br>&gt; Adjust spaces for last argument in return statement.
-<br>&gt; =C2=A0drivers/staging/wilc1000/<wbr>host_interface.c | 31 +++++++-=
----------------
-<br>&gt; =C2=A01 file changed, 9 insertions(+), 22 deletions(-)
-<br>
-<br>You sent 3 different patches with the same subject line, so I have no
-<br>idea what is going on here. =C2=A0Please make this a patch series of al=
-l
-<br>remaining patches for this driver, so I have a chance to be able to
-<br>review it properly.
-<br></blockquote><div><br></div><div>=C2=A0 =C2=A0 Sure I would make a patc=
-h series and send them in v3=C2=A0</div><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-le=
-ft: 1ex;">
-<br>thanks,
-<br>
-<br>greg k-h
-<br></blockquote></div>
-------=_Part_116_2114382719.1553961439777--
-
-------=_Part_115_980679171.1553961439776--
+greg k-h
 
