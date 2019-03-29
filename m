@@ -1,85 +1,86 @@
-X-GM-THRID: 6261584556721176576
-X-Received: by 10.140.157.69 with SMTP id d66mr15299344qhd.13.1457888762629;
-        Sun, 13 Mar 2016 10:06:02 -0700 (PDT)
+X-GM-THRID: 6673663457200439296
+X-Received: by 2002:a9d:7302:: with SMTP id e2mr3465794otk.54.1553875860681;
+        Fri, 29 Mar 2019 09:11:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.15.210 with SMTP id 79ls1745577iop.77.gmail; Sun, 13 Mar
- 2016 10:06:02 -0700 (PDT)
-X-Received: by 10.66.224.68 with SMTP id ra4mr13431060pac.45.1457888762262;
-        Sun, 13 Mar 2016 10:06:02 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qg0-x242.google.com (mail-qg0-x242.google.com. [2607:f8b0:400d:c04::242])
-        by gmr-mx.google.com with ESMTPS id y131si1153213ywc.0.2016.03.13.10.06.02
+Received: by 2002:a05:6830:1096:: with SMTP id y22ls774523oto.9.gmail; Fri, 29
+ Mar 2019 09:11:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzaametTz+rim2cZhIwqfHTWhUn+puTaBCpXWKUspyR4ihXBihao7cf+BK1SK4AJtY35+ye
+X-Received: by 2002:a9d:6208:: with SMTP id g8mr2947824otj.15.1553875860090;
+        Fri, 29 Mar 2019 09:11:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553875860; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Rs0JEtmmFmVjVgrXiPIAKt6HwalvHskHQ66w7PAxGzz+vWsAB665lBsyofY0/QIbsK
+         bXzwmXy5ZTwoGViDOZiRJR+/PNtCixCQHArZYEt09A2ExnqKfM/2CDJTw8wNh7/XSm0e
+         rabQM6k3crj17tLgJyQpPGfyoxB3H6ZxR7bU33P0Xr/rRyC3maZpUhEJeLS1enQM/wps
+         v326Nc4AP3ZsEWSTl22RwVbO3Bxam6mDaZjz7wjs2UyorSwqMEPJhUTshjiuy6hgQzda
+         kllCkcP2dlPZUzR2ZuWQ0gMQ+4hXTS9CkFbjkI+donxPTaU1KMofQ37QcYGaSd0feMlQ
+         IxBA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ncuFsMuy6mzX/eL1J6edRbga+CQ2mm39T1Vgdk6sAks=;
+        b=C4dnk/c/G/pkW6Pbi+nrgQB5d0XPTDBPIXuo5lIsuAecXm3BIr5YRgSIwYqEpFwM5T
+         cqyvj+oE20f5NRLOf0kbN28LoH2k3Y7KgLycHIcOcMk1ahMXp2G/AmreynbuLjQPLeZ9
+         ug7+AZreVCXeOqR43PsCBXlLYVDO9T1ISX4IAeopd8nZVOfUHRptFUERapFxI0TKSVuY
+         fmee6icHyrAc2QRmJKNurOX9TLXEclqA4pANHVQElw4krJJxiAgi7v1rvPJQlqg0URU9
+         yy235cau72u9ndTeTQfqO16XGCa1YuJV98aPLn43FQ+lkZQ1iPTToB7iMQDkbjgmpSrY
+         I7pw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=HPB16g4R;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id z22si176805otp.5.2019.03.29.09.11.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 13 Mar 2016 10:06:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::242 as permitted sender) client-ip=2607:f8b0:400d:c04::242;
+        Fri, 29 Mar 2019 09:11:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c04::242 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qg0-x242.google.com with SMTP id 14so10732131qgg.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Mar 2016 10:06:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ojbDwheU46YL5vyuAucrTsYeulA7B9b04XczXgISJzo=;
-        b=o7lmroI2yjDz35NZZgrIFO65sEOOViCITr4ti8IHR9KCc7T1fAisz5R6q3nJ/R92Z2
-         b3cuYgr60zV49D4HY1Y5Zi8JB6y13hjvTvS5nVpEQtFXHGYTxN3q3vkEG2l3HuK/1AVK
-         kL6HpkLqs9aUMwbTarZiQZXPM574PP7hjNiL4071QzzYUy81UNn9ZqufvXq17gogTOT/
-         Lnssx0matTZZI6AgX4YwHUORlz+dQu8OrRtCRhCYp6WoZTOoiP+ZnkvUT0cprCN6p3al
-         ds3LXTK/1TNf+JocbPmDwVvQkI12aizJ6EMTcn7Syp+/PcCYEVWTe7IN2xLjNlqXypki
-         UZwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ojbDwheU46YL5vyuAucrTsYeulA7B9b04XczXgISJzo=;
-        b=huDP10Oi89Vlp3chjp10RuLUT2L0wg7mnRuXp65OrTVkMg4on8Sq91ohwFAn/y2R2K
-         4N9DdLnXjPNp6YLOXu8Ryq9TthJjKkl7NaIpFj1IN6yRepdBsgMhmnsnAn+3MEwkkDfg
-         pxsRuyO0VVe6+m+cGlCk0J3e69DBkrpyU8DZqm4QOaemnpEFYzMVYN+l01A1HhvQYTgI
-         SwsgXd6dkEXad6UHr9Hf2v5/QAo7n62GAZHFX5FfbHIUhHU7LHnCE5AUFJWQWwtZRhIc
-         b7bpHLfY8TJuqcM8LD4ashnXNIFBrt2t+3CEsNov2EgghKj+ulgwDqLqd9v+gkt+b2cg
-         lFBw==
-X-Gm-Message-State: AD7BkJL5oIa4v8jMTABnwMj7VWKhnZtR9Y4hEUXIukO/s3a9JmfEbtuvEbzaoRjF4P6/6A==
-X-Received: by 10.140.95.117 with SMTP id h108mr24895074qge.65.1457888761924;
-        Sun, 13 Mar 2016 10:06:01 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([2804:14d:ac80:19e9:b6b6:76ff:fe71:ca4b])
-        by smtp.gmail.com with ESMTPSA id j68sm8442376qge.41.2016.03.13.10.06.00
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 10:06:01 -0700 (PDT)
-Date: Sun, 13 Mar 2016 14:05:57 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/8] staging: dgnc: fixes multiple coding style issues
-Message-ID: <cover.1457888423.git.juliana.orod@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=HPB16g4R;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id A65442070B;
+	Fri, 29 Mar 2019 16:10:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1553875859;
+	bh=BvVzGz8aPvAeCtaVbqnJ7I5mwDRey9an6FqZtjJ292A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HPB16g4RTUWZX55whjlE+wdov8sofNsZDEjLuGfkccu4kgP9tvJ/Ibc8DyjZGTcwx
+	 Plqh48blnYT8fQAawiL4KxKKRnuVVT77Wsra6yAUXPzOabTCV1CubifPElc7jExt6R
+	 T8VMg3iQhMu4zPrXGLclte/4r6XtZ/R6Lk/6WNkg=
+Date: Fri, 29 Mar 2019 17:10:56 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: wilc1000: Avoid unnecessary braces around if.
+Message-ID: <20190329161056.GA21679@kroah.com>
+References: <20190329042226.3503-1-sanjana99reddy99@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190329042226.3503-1-sanjana99reddy99@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-This patch aims to fix multiple checkpatch.pl issues and
-warnings in dgnc driver, mostly on dgnc_driver.h and
-dgnc_tty.c files.
+On Fri, Mar 29, 2019 at 09:52:26AM +0530, Sanjana Sanikommu wrote:
+> Remove unnecessary brace around if statement.
+> Issue found using checkpatch.pl
+> 
+> WARNING: braces {} are not necessary for single statement blocks
+> 
+> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> ---
+> Changes in v2:
+> Change the word in subject line from "else" to "if" statement.
+> Change the word in log message from "else" to "if" statement.
 
+Patch does not apply to my tree :(
 
-Juliana Rodrigues (8):
-  staging: dgnc: renamed SerialDriver to avoid camelcase
-  staging: dgnc: renamed SerialName to avoid camelcase
-  staging: dgnc: fixed multiple line over 80 characters warning
-  staging: dgnc: renames PrintName variable to avoid camelcase
-  staging: dgnc: renames PrintDriver variable to avoid camelcase
-  staging: dgnc: renames dgnc_Serial_Major variable to avoid camelcase
-  staging: dgnc: renames dgnc variable to avoid camelcase
-  staging: dgnc: renames TtyRefCnt variable to avoid camelcase
+Please rebase and resend.
 
- drivers/staging/dgnc/dgnc_driver.h |  14 ++--
- drivers/staging/dgnc/dgnc_tty.c    | 151 +++++++++++++++++++------------------
- 2 files changed, 86 insertions(+), 79 deletions(-)
+thanks,
 
--- 
-2.7.2
+greg k-h
 
 
