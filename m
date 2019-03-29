@@ -1,99 +1,205 @@
-X-GM-THRID: 6671224625234444288
-X-Received: by 2002:ab0:7087:: with SMTP id m7mr5494303ual.131.1553265523175;
-        Fri, 22 Mar 2019 07:38:43 -0700 (PDT)
+X-GM-THRID: 6673827435643928576
+X-Received: by 2002:a1c:2044:: with SMTP id g65mr460961wmg.8.1553879715068;
+        Fri, 29 Mar 2019 10:15:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:49f3:: with SMTP id f48ls699960uad.4.gmail; Fri, 22 Mar
- 2019 07:38:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyBMNLTll43mHgrC5YgHwxLnIgNHAOu5RY6IImciu3Kk+V3R0b+3mHZ6eDU1Deu43Vno4z9
-X-Received: by 2002:ab0:6817:: with SMTP id z23mr5772614uar.85.1553265522637;
-        Fri, 22 Mar 2019 07:38:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553265522; cv=none;
+Received: by 2002:a1c:55c5:: with SMTP id j188ls442391wmb.13.canary-gmail;
+ Fri, 29 Mar 2019 10:15:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqznYmqkN1Q5x8Ls2BAUNufjIzBG/rmYENCARdjQLb/pPK1oTapOVpi70AdBUc12iuu6Q53Q
+X-Received: by 2002:a7b:ce1a:: with SMTP id m26mr472024wmc.16.1553879713763;
+        Fri, 29 Mar 2019 10:15:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553879713; cv=none;
         d=google.com; s=arc-20160816;
-        b=VZ8NwhZYUGXbq1hzNZicBKXrqG8joRMIHurDMowZNuZJvuU8iXT42wfVvIdn3qsuEJ
-         ErYXk9PAODAhsHEkfo5PmcUU/OTqkacFouwRwXDsoAxSXgTqS4wNIrNbg+iH6gzO4qAH
-         dWxPrf9r314kQRTp1FmShP3g0idruNZWLQyi5bT+06OM45/IBjClK+NFDWIpNDjmHD74
-         cguBF5VdITA+Nb4q1wujAphhTkeAxBCoYApGPAXk8pDFxTAGD3J1I3+4xwXc2bVTVLSj
-         AaY3OVMUyyojcnHCd9uL1Pb5UwDWsH8e3qDb+t3sxzGyyb3McD/iNEFWGcETXUSkSpWD
-         axSg==
+        b=sDKbxB8cpgHjs6rFOoOimBWc/ibo4aYLdJ0etlKq4iaNDEugx70+XcLsnlO7ov6MSo
+         rtahdzgap/R0T/PxFVOz9kZHDMFWigHi6q72S0jbmLIbba2MRilFiXvkDouFEg0MYT7k
+         CxhP8tjgodX+m9+GL+qWjuGt5Dv9dSFDOdMZQeMNgDZ6SvewXv3WPseyb0ozHJlyzf5Q
+         UpH65OfofJCbCoCRlGbOgz9PV5a+rO2wqWylUs2ccC9DFccnDTRMQi546YiOyFyi+7dN
+         uQJNFYVU65qdRiWeX9m72kdCecnZ/fPZQvz9WVElyr1h2WYfxsF+C5F+OjM1n3H85QlK
+         qSoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=u60h2kT6VTHftqhOIigUO7m+sFragj7zXLbfDKgb+Zc=;
-        b=sq/mgvyszjRwe/Us3p9qldME7OfVa6T5DVbA1rnWLGL0FY8uKBUOIdfd4uay3LZMVI
-         DHkJBIMGUbEcVQCOHjua8gzItKOLfhgP7o2vOCTcXc4CiOuktF0kj4l0V1BQdt7MEAhG
-         bI3GjQytwv5LvJHePQhKzK3N/yrmNvBibyqa666Cah4iUQ6fZvUFGLJMYmXWy97sMdIW
-         gMT/yKu918aKep2dWAFGDu833iImS9dIFjIGRKrSp3MoKVu/8XbH+i2P3AuohlMZB2V5
-         qYg0P33NYhGZ/wk8TIfO8w/IrwatlEmKD5hAmbyPHrwF32ZSyQ5TZs4rSiPDFW4qxgAn
-         w3kg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=S+Up0YDQEknM0IG/W3xSuFzKX3oe/mg922qAFBJOVIg=;
+        b=oTVqQXKaSle7pzIjhM9Ef70fRGDXWT1lyPIbQ62PDIdifv8lTISdHH1/4v/j4+sGPa
+         D/JmS9YOThhGmU3wjOCr7SR0q0V7CWwB8ExFlI+Nhjv+gAajMxwrtuGWJ5EUUih6wXm9
+         x12o9HRMb8b/ExS9Anl082KlRIGVyvDgqgoOFD7npuhUWiMavZScZWhTSkvxV0ax7MYx
+         ta1I4pNvFze8LjxkyoSMMt1pogypQeK10myoKTXg4KRO8HmsYVORzO0YBw/NAewLLnyi
+         vxJ+lre5+4EWR24hszPLnF/QncbyErcDg5ZZ9H+dMfHDDppdhBNQPJjVD0Vh4BweoI8N
+         Ihrg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=N8gl3ixv;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.209 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic312-19.consmr.mail.sg3.yahoo.com (sonic312-19.consmr.mail.sg3.yahoo.com. [106.10.244.209])
-        by gmr-mx.google.com with ESMTPS id h13si493796vkf.4.2019.03.22.07.38.41
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e28+lS8O;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::12e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-lf1-x12e.google.com (mail-lf1-x12e.google.com. [2a00:1450:4864:20::12e])
+        by gmr-mx.google.com with ESMTPS id n5si183912wrj.0.2019.03.29.10.15.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 07:38:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.209 as permitted sender) client-ip=106.10.244.209;
+        Fri, 29 Mar 2019 10:15:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::12e as permitted sender) client-ip=2a00:1450:4864:20::12e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=N8gl3ixv;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.209 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553265519; bh=u60h2kT6VTHftqhOIigUO7m+sFragj7zXLbfDKgb+Zc=; h=From:To:Cc:Subject:Date:From:Subject; b=N8gl3ixv7kXPRiAu6rHHxu7Pzt68y1dFn3dlDcNenDIdsBZggI0CcNvBQ9egjXXSpaXNI6dxxuHXU8+62NIDUcfNpr2Gse1IrVw/xfmUcOaDQhOnb0dOZFvxogmaoxdiiNsag/xuBc78vFh5oUrYqptID5jPwBdMybv9KKl1Jb789c8SgMAWhLkFA8R4vbc3tvEgUF6lOauajDe2eyjCKFiIZoeAUoEkiTm8L3q9MiPWNrxy/uXQAsO610l1DI4n+MvOsAhsnStUoiQIybTG/z0yc0KdKZ2E/pZ8/HCg6o65xihymMl5KXat48KB6+CiumEm7DPvi9BCU69NF1o3mQ==
-X-YMail-OSG: P0vE0LIVM1kbWZV3SGTzvo6h6bgnPBkMGezfd5dCL7bstYwC7A4X4ReoRJGK4I1
- Ac6Cfktht729z95LhljnR6KjwITz.d04.kbkzIP359U9nDD1omupcClTGXkBiBJJI3cn3AbaCpFf
- 3e5aznyqN6K5Pk7IU.qvWXMXxjShCQ0KBwSW8O7qTevXQMK5g8J5NzdJa3enoxAxbbwUWFu_esSJ
- D7BZ_Fk3Rkkyw1J5D1rtD6maKVpzKdmvBkqFKIvQLaU62EEephiNSZbn0Qm2HIe1unLr8HiaNPvi
- xWzXUJpZCKexaYHY0pUDDZHy3dVsJJYPhn1uSSVHbMo_3HmibRpkg62DtbyVeEfVWIbrS39qii_t
- dTJP8NAYlhtPIx1N2qtY4qxS2k1dKxA9v3gmUUCe5OcYo7NsUWYTi38hmck_MXfweRxy5SfYPZgN
- gp0hDS2SIEhMwlRbGictLhQILQ33ahH37qriDFr0UyOhiyheV8vcskIf6R1mcpXLkE8Ng0JYlUS0
- 8pa2HzA1LS3gTMgnpniV6npMfh_r3bGIhJL8p6NBKVb9Z6mljzSi5qzn.D7qDmukRKMwnjgpEvaB
- NOSZ4qwQnc_pUcJCWaz79887ngLRBh8fMOalETBUsWnXDNa3VFxf80fQIp5hbUk26D4.rtwH0b1r
- X6xk3w0ERYWD8MXB0cxwpGff.t0zRv.WttguYj9xjICywKBMdlFwHSQqeo3zMjaeQik6M7xs2NW3
- klVLmgcZNwZzz4o1MNuIYMhpiFRb2PEj6ihMt1nYl_q_IkfnWFcNPFbffr439z4JKhAbeKMdcwKH
- Dao9Ka4AtyO0nyBQpzIz5TBZ2J5PmHAy.CqL1eITpdc7uAVaM4PUbHakeCfENl4bI5PYN.ueOzTh
- iO1xAyM6JhYUcAMeL.Mn2l4Mtm6ZMaaRUoP86bnKza4a3sZ_thu4Mv8l7ifMGsfNGB9WNhTvnZbK
- 9Ge4IDZ.ThjBNOsgf3.LX338YuMZsbX0tSAfhX29Z3OUf2MvZC.mFW9kOA.ByBjcTKIA2uUKyhJa
- feATFhBTh4GM0q8AQALfAOeReb6wKdMso3OB2bjfc92MQ8Kn7z2gXq7qyybu7lUqB0V51Oy33j5H
- 6
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic312.consmr.mail.sg3.yahoo.com with HTTP; Fri, 22 Mar 2019 14:38:39 +0000
-Received: from 125.22.40.140 (EHLO localhost.localdomain) ([125.22.40.140])
-          by smtp412.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID d1d8be53419bbc2dc6b4659a7081bd03;
-          Fri, 22 Mar 2019 14:38:37 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH v2 0/5] Remove unnecessary functions and return
-Date: Fri, 22 Mar 2019 20:08:22 +0530
-Message-Id: <20190322143827.24480-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e28+lS8O;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::12e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x12e.google.com with SMTP id r25so1932406lfn.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 10:15:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=S+Up0YDQEknM0IG/W3xSuFzKX3oe/mg922qAFBJOVIg=;
+        b=e28+lS8OMygHFoCk6FzjDci9UzJXGZZfYPqO9vREJdsz1NWZKsqJBDf4cei0LYse6B
+         3rE/kFOxoWqpF7nVJThpC9Js/Swx9B/ljOF3fYJvEq8S/fopsUN4TwRU+fZX9a3Otps+
+         nLJcoJysdsBx9LJU31gGfBLbVPGRcpcpxCMCYN24qew12dkHrcQ7EbI+cNWAeTK5TH2N
+         vxwUlnlSZ20PB0KT4YO6DD+Nd8cePrF5n+yYhAFfGbkt1068Adp1aMwESSV5Vs8tYc3m
+         qxCCZLGWt2qdFhSiV36qpIGGh54OCpeYnFqnPKCT9RWPpMVslEP1Y0PGeNpgNZXg/0Rh
+         RcUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=S+Up0YDQEknM0IG/W3xSuFzKX3oe/mg922qAFBJOVIg=;
+        b=s/65AHdF4uRkwbaSkXU0rkVreJcrLjOT//kLfww6LjtSYM8NDIpIluRsZlmQvbW/FM
+         Kk4AXyf6O1c1T37DXTFSIcfLNSP9DT/R3i5065/UEKvIyd3gK69fEsDGNo0GNVGLrxFB
+         kMzb91G8iBwg8KDN+7GcbkkndWnIGka+RalCeTvKQMwNFh73vaIr63GTgIzCIwQu6VC1
+         M844HTvV7HPdz/ew4PC/Mk0PiLhP0DBsoop/vHGo9gkpcSTQL8IoLi/St5TfLIiirBG9
+         /t8oJ0N3JkE1WQQfBpHir8DugL11wnF7v20JTTV8qgC36YOOjWnrMr3yVkKFMvKJcS+W
+         OFeA==
+X-Gm-Message-State: APjAAAUMl6xJ1K6VvUxwrSLMQURehy8G+wgEQad+B8p1afBiu1JSexFY
+	pJUDMmK+AxHcVN1kn6vnVNh5UqwaFz7uO02BgKwoSA==
+X-Received: by 2002:a19:9e0d:: with SMTP id h13mr25143501lfe.51.1553879713575;
+ Fri, 29 Mar 2019 10:15:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <1553871519-8008-1-git-send-email-payal.s.kshirsagar.98@gmail.com> <20190329161930.GB26815@kroah.com>
+In-Reply-To: <20190329161930.GB26815@kroah.com>
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Date: Fri, 29 Mar 2019 22:45:01 +0530
+Message-ID: <CANTOzWHSz93Veai+hd1gqmUQpcD6LEqSVWZTN9P-_ksq=1hDcg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtlwifi: rtl8822be: compress
+ two lines into one
+To: Greg KH <greg@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="00000000000059f65005853ed0a6"
 
-Remove unnecessary functions and return variables in the driver
-rtl8723bs. Issues found while using ret.cocci and Coccinelle.
+--00000000000059f65005853ed0a6
+Content-Type: text/plain; charset="UTF-8"
 
-Nishka Dasgupta (5):
-  staging; rtl8723bs: Remove unnecessary function rtw_init_mlme_priv()
-  staging: rtl8723bs: core: Change datatype from sint to int
-  staging: rtl8723bs: core: Remove parentheses
-  staging: rtl8723bs: Remove function rtw_alloc_network()
-  staging: rtl8723bs: core: Remove return variable in rtw_io.c
+On Fri, Mar 29, 2019, 9:49 PM Greg KH <greg@kroah.com> wrote:
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c     |  2 +-
- drivers/staging/rtl8723bs/core/rtw_io.c      |  3 +-
- drivers/staging/rtl8723bs/core/rtw_mlme.c    | 39 ++++++--------------
- drivers/staging/rtl8723bs/include/rtw_mlme.h |  4 +-
- 4 files changed, 14 insertions(+), 34 deletions(-)
+> On Fri, Mar 29, 2019 at 08:28:39PM +0530, Payal Kshirsagar wrote:
+> > Challenge suggested by coccinelle.
+> >
+> > Returning something from a function need not to be stored in a variable,
+> > can be return directly.
+> >
+> > This patch compress two lines into one using following semantic patch:
+> >
+> > @@
+> > local idexpression ret;
+> > expression e;
+> > @@
+> >
+> > -ret = e;
+> > +return e;
+> > -return ret;
+> >
+> > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> > ---
+> > diff -u -p a/phy.c b/phy.c
+> > --- a/phy.c
+> > +++ b/phy.c
+>
+> Um, have you tried applying this?  Your patches have to be able to be
+> applied at the "root" of the kernel source tree, not buried in some
+> random subdirectory :)
+>
 
--- 
-Changes in v2:
-- Drop Patches 1 and 2 from series as they have already been accepted.
-- Remove functions that now consist of only one return statement.
-- Remove trailing whitespace.
-- Change function datatypes and names.
-2.19.1
+Okay I will apply it on a root directory and will send it again.
+Thanks,
+Payal
 
+thanks,
+>
+> greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20190329161930.GB26815%40kroah.com
+> .
+> For more options, visit https://groups.google.com/d/optout.
+>
+
+--00000000000059f65005853ed0a6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
+On Fri, Mar 29, 2019, 9:49 PM Greg KH &lt;<a href=3D"mailto:greg@kroah.com"=
+>greg@kroah.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On F=
+ri, Mar 29, 2019 at 08:28:39PM +0530, Payal Kshirsagar wrote:<br>
+&gt; Challenge suggested by coccinelle.<br>
+&gt; <br>
+&gt; Returning something from a function need not to be stored in a variabl=
+e, <br>
+&gt; can be return directly.<br>
+&gt; <br>
+&gt; This patch compress two lines into one using following semantic patch:=
+<br>
+&gt; <br>
+&gt; @@<br>
+&gt; local idexpression ret;<br>
+&gt; expression e;<br>
+&gt; @@<br>
+&gt; <br>
+&gt; -ret =3D e;<br>
+&gt; +return e;<br>
+&gt; -return ret;<br>
+&gt; <br>
+&gt; Signed-off-by: Payal Kshirsagar &lt;<a href=3D"mailto:payal.s.kshirsag=
+ar.98@gmail.com" target=3D"_blank" rel=3D"noreferrer">payal.s.kshirsagar.98=
+@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt; diff -u -p a/phy.c b/phy.c<br>
+&gt; --- a/phy.c<br>
+&gt; +++ b/phy.c<br>
+<br>
+Um, have you tried applying this?=C2=A0 Your patches have to be able to be<=
+br>
+applied at the &quot;root&quot; of the kernel source tree, not buried in so=
+me<br>
+random subdirectory :)<br></blockquote></div></div><div dir=3D"auto"><br></=
+div><div dir=3D"auto">Okay I will apply it on a root directory and will sen=
+d it again.</div><div dir=3D"auto">Thanks,</div><div dir=3D"auto">Payal</di=
+v><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote">=
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
+thanks,<br>
+<br>
+greg k-h<br>
+<br>
+-- <br>
+You received this message because you are subscribed to the Google Groups &=
+quot;outreachy-kernel&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.com" =
+target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@googlegro=
+ups.com</a>.<br>
+To post to this group, send email to <a href=3D"mailto:outreachy-kernel@goo=
+glegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@google=
+groups.com</a>.<br>
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/outreachy-kernel/20190329161930.GB26815%40kroah.com" rel=3D"nore=
+ferrer noreferrer" target=3D"_blank">https://groups.google.com/d/msgid/outr=
+eachy-kernel/20190329161930.GB26815%40kroah.com</a>.<br>
+For more options, visit <a href=3D"https://groups.google.com/d/optout" rel=
+=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/d/op=
+tout</a>.<br>
+</blockquote></div></div></div>
+
+--00000000000059f65005853ed0a6--
 
