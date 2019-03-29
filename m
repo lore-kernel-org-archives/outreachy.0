@@ -1,100 +1,118 @@
-X-GM-THRID: 6472949369841647616
-X-Received: by 10.98.76.206 with SMTP id e75mr1388578pfj.10.1507100968919;
-        Wed, 04 Oct 2017 00:09:28 -0700 (PDT)
+X-GM-THRID: 6673948499699040256
+X-Received: by 2002:a25:1607:: with SMTP id 7mr3067653ybw.51.1553899724197;
+        Fri, 29 Mar 2019 15:48:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.99.152.88 with SMTP id l24ls4202482pgo.18.gmail; Wed, 04 Oct
- 2017 00:09:27 -0700 (PDT)
-X-Received: by 10.101.81.135 with SMTP id h7mr1852796pgq.36.1507100967769;
-        Wed, 04 Oct 2017 00:09:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507100967; cv=none;
+Received: by 2002:a25:2f90:: with SMTP id v138ls1118057ybv.10.gmail; Fri, 29
+ Mar 2019 15:48:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxlTqk/wLjaPlIdcrJQyEnAZD9yEF2+ovH5X0+8gGPNnN5R0GC4cjfhBasooArmNghywvNT
+X-Received: by 2002:a25:90b:: with SMTP id 11mr4036805ybj.55.1553899723326;
+        Fri, 29 Mar 2019 15:48:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553899723; cv=none;
         d=google.com; s=arc-20160816;
-        b=h5sti2QuS7hnb1BE1mXkZE7XBY4VhZHpdAcd7f/j4gCdizB7I+yrHbYZy8XslXSzz9
-         i5eY3D+0Cva/gRh/HWAXSR6l5BFj6Kp6Th4bt3nDTRDJgmE+8R2CF2IGgK0ICR2TaR4f
-         kapcKvVvwJpWF8g55Gs43Ir5DpjmTFXQKW8mLUZHefY3GnGuNN+2KxyNnxTzOi1igZp5
-         24l85MQeSdPe1fU2+2Ym6QnI2EG9G47HAGEfiZPdiC2Qb88afDoC1Xs45Vj+9qEP3lxh
-         Mc5yKav6gT2AKw2WyFhhtJmP+uFtoDsdc++0YD0/uD9jovumg3BU4JjLanTaC4w2kVF5
-         VYIw==
+        b=lOdDGtj7ly7+KYpPIJKlQDggVVUU2xr1Jx5nDC2b458TY3bC2HwhTP6zzKw8QH4HZ0
+         IlKWAGVabJG95IDejrS+MRCB736nQ8eih0AqRTv+tTBGT8uh90wybKQkHTJ2aIBa1+F8
+         VoRgM8Y+nfqx9jjum/2PB29Rro9OJ//swWLv78kl3xePDgGPf48ySdQ7VTM22CGXNBAO
+         WrHdQFMKA6kcnR2f5finBRDoSUDu2MccXFuCULh89I5xbLKoSQ0Kxazl5G7JYLC5BXCV
+         mOzYgEg/xAz9pycaEotQkTXHgeogGLR8n4oMmGn5I7Kh56vLdr9VgqmIhDQJA7b/9IhQ
+         XhzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:date:cc:to:from:subject
-         :message-id:dkim-signature:arc-authentication-results;
-        bh=QvLTQAUBduXJCkqiFkDNLynMFrMqDi1+10qjQD97tyQ=;
-        b=CAAZ/7ImLRc3OBrEtUhAMNdUuA33+LEYULF0E1hRb6MUAKMsi7KWBVO+J15EtvklOj
-         yuSf8ym98ehFVwRo1anCBdZ+PQ0Wpm+jvje7ozFOJywguMt5VntJlmh1sPINOSn0rCDX
-         WAg3mGxV+JFbt5gk6rcg9MHiVsofq7rt5C4oJsqR2KlNGtgUPeQ0YpfovXZuPmkEmTc5
-         QnYBSeONPQKgZQD9X7lZmGMJ1ZtNWez68ZNqVrCzGTjXwp8/UcJQHeGoDROdqo+ebHpM
-         IpIoPwxI1bzwJoH0rQOPseiIRrrkkQ4o/0O7jcf2CQdkmAgBuKpX+Ztcj5FXsWUYkJR0
-         iuLA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Mc2amG+m4jIVKGC3ycUhjih3SWTpn5j5mV05u6zbufU=;
+        b=exhxeuwQ9ju0e981klziYoKP0FTAXGpmf8mk+tqqtficigTVFOyDEtRNA6X2LJRe5m
+         wMhuWLpGzwCnba7SB0Y320DqKfWjuxhiQLPauDU6q2wBU3mobtfyIDQ6hF3MiANITEY9
+         yWSw9ciQMJ6UiKPuVC7StWBbq8JLBaB+h+wkS4E6wxjhGJszx2Al2ESzfus9XuR1BL/f
+         zHsdLyk+IJwcIGWdzKVJVrTTZPMQK+7hoEtg98v09Xmoo2PQ3remhARA1iJCNd6FdEez
+         veNIrzOSvrZjNd/0+dIaoJz3wFY++WO+RkkWi2U6gvDlp1mmyGALxZzpSEvQHlgqQyMf
+         GNhQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UENPLRQx;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id e80si1098431pfb.8.2017.10.04.00.09.27
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YkgOawAB;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <vatsalanarang@gmail.com>
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com. [2607:f8b0:4864:20::62c])
+        by gmr-mx.google.com with ESMTPS id s11si208510ywg.3.2019.03.29.15.48.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Oct 2017 00:09:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Fri, 29 Mar 2019 15:48:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) client-ip=2607:f8b0:4864:20::62c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UENPLRQx;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id y192so12447421pgd.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 04 Oct 2017 00:09:27 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YkgOawAB;
+       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x62c.google.com with SMTP id bg8so1685413plb.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 15:48:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:mime-version
-         :content-transfer-encoding;
-        bh=QvLTQAUBduXJCkqiFkDNLynMFrMqDi1+10qjQD97tyQ=;
-        b=UENPLRQx7k88Z3jwSvlaQib1leyBnQZPI67SelLRAvaZ3+jlEgxY3UKDNyn90hl7Ig
-         J0Fzqt1MxWeE0LEKrp7E7cw9Y0pd3smBq8s+oGw/kB26X3XsR04imdC2VHlRONMFNnBj
-         XOkX0l68RmT2dsNh8Ig1QzY2DBtj1fW39erFtgoXSU+ZLUwRD7EMBZShn2u2NLeEVZYQ
-         n/egDmnQHv8Z75gp2ELq9rMpLas/Y0FW0IN7f9TInLpYK8B7CRuOG6gbYaK5K+zIZ/6E
-         0LZjQerBo1oKVfONhcRqorznZh2TvZp94Zce+POiHZ5ockfnZB5ohtrXrK7P8fe+ni9j
-         hCqQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=Mc2amG+m4jIVKGC3ycUhjih3SWTpn5j5mV05u6zbufU=;
+        b=YkgOawAB/EWpV2JghuQtVfYXfKN6rKw2h6f03/y0fc6v0RqZbto/ThwoZVgEZCJm7s
+         zxxDT2R4/9V2WsJiKD2ggrbsXVJoQcB24jsuDKoAwi9wMRyOe0vMu58eO54NOIN42ACd
+         +jLoIW9jJZLm8wElkbQonSKmQ8cNnsqwz64p0L3RYyIctn1NMfjugunW4JuHhiDIDWqU
+         sE6oTrX4TIllgdekoNlYSCkDRCn4OSYBKNu+ecN3pj5q7LHAMczI/1kc2/k0T0fKZD9Z
+         s4IFn7GJgalw3J6BQ67YkJcytxNvfzUCseSwoaulzQpNVrGfmvH5VyYQrXynUhk1xW1U
+         DXUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:mime-version
-         :content-transfer-encoding;
-        bh=QvLTQAUBduXJCkqiFkDNLynMFrMqDi1+10qjQD97tyQ=;
-        b=N7bUtCtmO5waQCo4WBLQfcs4YX91vMTXdKH1YENswdepbA03RmppA7VTP8lG+RVeUc
-         VNKs0f8j8vKkGAHVegFecV6/6ukLqJ4ZtBjPZuPeT1v5Ug2aKZVr+7vIyuQai04h5CUW
-         bpAfYDWs0B+xKSoUQAO5+lRfvlsST1G9qZbHJIZrrlClpsRkplBYUVkqN0YS9v/DAaGP
-         HPRLzgmSw3vYUh89zJuAJvFdPO6pb4DRTQnxAc0gPa3uwPSi16MjpyHmjjnqekD/+vRH
-         rH/FRjsm1FsMxzUIHczaauHpw5muNPAUgXTvv5AZ+b3Gcyqk7yu7uhN1GjF5A+uqHyqp
-         avcg==
-X-Gm-Message-State: AHPjjUg/Y1jRjF799I6CCcsnpCPvdOHzIU02fDpL4QsQc90iQ/l2LEiL
-	md8Fwg0mRvjbq6RRqmfiJgQwlhIv
-X-Google-Smtp-Source: AOwi7QBt9ojEhLy5xdPYiD5B4PQ95ZeYuS0m0c2emfT3Jk0NEpaS4YIthtJkidL5s5GD7hUbF4ethQ==
-X-Received: by 10.101.78.209 with SMTP id w17mr14885326pgq.402.1507100967586;
-        Wed, 04 Oct 2017 00:09:27 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from [192.168.100.7] ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id f24sm11073414pfk.183.2017.10.04.00.09.25
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Mc2amG+m4jIVKGC3ycUhjih3SWTpn5j5mV05u6zbufU=;
+        b=tVoIpq+BwYuouXMOxP5KYposmN8aG+CBgSMlXJtpUNaV9GNihreeDhqMx/MUU5daU0
+         UQJWKky8EGLf7PwxpRLIlLnZojEnDJqA3YAaCaFJYoH+OkcKt0PnGr59xXmQPjsRFsYU
+         j71K+fJwqkxC8ggoV6WTr3VryMsbUv1Qs6KysKqbeBJ+mZ5Tu1W1tvq5j3QHpDS+6W0i
+         3N0YcFh2J2izakkcgdabT0CrtvhHMBTC84Vb9uyWxhjB6l+hvwsyjAYllKepRsD78m+M
+         ylL0HNYwsORv7fP7XDomXXH8dkOuu39WVUkx0j/5ZpJJHMFJrA5koQEogFf1AL8J86Wm
+         M13w==
+X-Gm-Message-State: APjAAAUBODOkV4f9mXunWLNzr4l29Et8v7os2IuqKlf+rlP4S6FN899/
+	8hdNVlvVWbEwOC9SZf/oOqSbvSa4fMc=
+X-Received: by 2002:a17:902:6b8a:: with SMTP id p10mr51846028plk.109.1553899722841;
+        Fri, 29 Mar 2019 15:48:42 -0700 (PDT)
+Return-Path: <vatsalanarang@gmail.com>
+Received: from localhost.localdomain ([103.87.57.82])
+        by smtp.gmail.com with ESMTPSA id e2sm5034175pfa.64.2019.03.29.15.48.40
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Oct 2017 00:09:27 -0700 (PDT)
-Message-ID: <1507100846.10633.17.camel@harryPotter>
-Subject: nftables: Add support for reserved header and addrs for routing
- header type 0
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: netfilter-devel@vger.kernel.org
-Cc: outreachy-kernel@googlegroups.com, harshasharmaiitr@gmail.com
-Date: Wed, 04 Oct 2017 12:37:26 +0530
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+        Fri, 29 Mar 2019 15:48:42 -0700 (PDT)
+From: Vatsala Narang <vatsalanarang@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Vatsala Narang <vatsalanarang@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: core: Fix a comparison warning.
+Date: Sat, 30 Mar 2019 04:18:25 +0530
+Message-Id: <20190329224826.24954-1-vatsalanarang@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Hello,
-I'm working on task for adding support for reserved header and addrs for
-routing header type 0 in nftables. The code already uses macros like
-[RT0HDR_RESERVED], [RT0HDR_ADDR_1] in extensions/exthdr.c but they are
-not declared in parser_bison.c like other macros [RTHDR_TYPE] and
-[RTHDR_NEXTHDR].
-Can anyone please guide me on how to declare macros in parser_bison.c?
-Thanks for your time.
+Move the constant to the right side of comparison to get rid of
+checkpatch warning.
 
-Regards,
-Harsha Sharma
+Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_debug.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_debug.c b/drivers/staging/rtl8723bs/core/rtw_debug.c
+index a3c8a712bdc2..0de1e12a676e 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_debug.c
++++ b/drivers/staging/rtl8723bs/core/rtw_debug.c
+@@ -1395,16 +1395,16 @@ ssize_t proc_set_btcoex_dbg(struct file *file, const char __user *buffer, size_t
+ 	}
+ 
+ 	num = sscanf(tmp, "%x %x", module, module+1);
+-	if (1 == num) {
+-		if (0 == module[0])
++	if (num == 1) {
++		if (module[0] == 0)
+ 			memset(module, 0, sizeof(module));
+ 		else
+ 			memset(module, 0xFF, sizeof(module));
+-	} else if (2 != num) {
++	} else if (num != 2) {
+ 		DBG_871X(FUNC_ADPT_FMT ": input(\"%s\") format incorrect!\n",
+ 			FUNC_ADPT_ARG(padapter), tmp);
+ 
+-		if (0 == num)
++		if (num == 0)
+ 			return -EFAULT;
+ 	}
+ 
+-- 
+2.17.1
 
 
