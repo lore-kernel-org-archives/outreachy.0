@@ -1,111 +1,277 @@
-X-GM-THRID: 6615419425157808128
-X-Received: by 2002:a24:4d51:: with SMTP id l78-v6mr14190169itb.16.1540272362319;
-        Mon, 22 Oct 2018 22:26:02 -0700 (PDT)
+X-GM-THRID: 6673486345256566784
+X-Received: by 2002:ac2:4aca:: with SMTP id m10mr828287lfp.8.1553824689566;
+        Thu, 28 Mar 2019 18:58:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:660c:b10:: with SMTP id f16ls573781itk.9.canary-gmail;
- Mon, 22 Oct 2018 22:26:01 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60rgskLyi0ySD77NU8DTzdJFZTVU6VhO0Ep9fCuq/n5liti2V6Iyx2kDM1aTtqmvj7IMnVR
-X-Received: by 2002:a24:5695:: with SMTP id o143-v6mr14015521itb.19.1540272361502;
-        Mon, 22 Oct 2018 22:26:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540272361; cv=none;
+Received: by 2002:a2e:998e:: with SMTP id w14ls75652lji.14.gmail; Thu, 28 Mar
+ 2019 18:58:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxw3lSVvLcfziDVmcklRbQrgTUfB03/uxTx1fqv+Pvg20m6RRXKbBtaV5NQScXfLsIN5Ckj
+X-Received: by 2002:a2e:460a:: with SMTP id t10mr35975lja.28.1553824688762;
+        Thu, 28 Mar 2019 18:58:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553824688; cv=none;
         d=google.com; s=arc-20160816;
-        b=HjHUGFa9eO3LVkOA8mswEn/+5wPsmAsdg6USPO3VOM2kwxknn1eIPfHb8VYGRJV2Lq
-         KD2HnM45zsLAHgvmXOjHHOXMJrdyyiztnpS++wRZS376vBD+S16J4MxC/qRDc1Fa9Ngs
-         sCxAn1TVGvWxZFw0kR1ma55es5Y+E1fz1jpBO8yq7wqCiVp4wsv/JdZaLP+x31mNfC2E
-         Kp/qR3S0vfBXy+eyHQdMl1Kg1Ell/Veb+eFyVFoTrD8if6Rc4/83TPXdMBAvKNFyjoDY
-         nsvDhdETUF78rnXXjNRZEpRTONEA+xxijLuOjmuz4LBbkEk0Om3j2+1JgunCDqHmUXSo
-         1IQA==
+        b=EP/x8JlOTNsf2rwY8nskaoc4ls0yDFKZa/S89JBihAV/KFxcL0y61uzHOrWnVhRE0d
+         fR+6DzMiIG988Rg8kBXXdmdP2YLwt26Ezn8VNrQLC+59FbMn42El29hIW7zG72sr2thA
+         SdOarHoaC98yVSpEe5piHr5sZB7DUoeUG6U8PkAm0MWyalLLXo0mpybV9xz8Z6ISYAvR
+         dAi1tB86RPs7suEIzQCJ9iekt9UnUh2BMwp7RNeg1ZmT7fsTGO1EBR0iLjs7B76rbYPn
+         PU5K6tYtEbj2CX1bsbE940uTcG+5ABySIRJfR3JR+Z1ErYnvpI2eRB/Qg5e99Q87XumG
+         8caA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=5SLXFo+flH/k+E0k8U5kcPa+9QVUJuSBK6v6YtVdsvA=;
-        b=CjlqrvwgVlxljrtEXyWEWu+81/vEZQiXk71h/8sJe13+6Aub6AQgSeGiy165LT9kN+
-         WQo+eM7ZlbN2meO6sEG4s8f27yek4qMsZ6WWN1BANlsUxFsSaKMpZJ26jft0jdzcVBCb
-         XTcfSy97qL1k6hAyB9/CmlrEDrftZReX2/LA/A0NxkL+tunIMsD3PEXrDi6O2/ef/PAC
-         KRrks4Iy6MVc75Z0kvj5TKD7uLlJUDb/sAwWGjQwTpa0awWp3LwfNCU+efnqJEy1pTg7
-         dtz2SaC9kYsCsAmBpBaW307ynEPBjFEj7djugVjmJ4DTEtWRvAxtNzUiSF8gORPmj9Gn
-         1AWg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=DkPRPitMGP7B3VmvxbkM5yLz64P9MXF8/AoTPM9NeSY=;
+        b=jIQlxKb0nwmBRlq3ZAK9Y2MU7ledIxozamwgaD7KlU9/X3zvvbIz8IN2t2q2KSJudo
+         0Jmf18zt4Sdgg0+vzBxjzo/5L/+4DPv0bzp5Jj4r9fAuWBF8/AqB8I1vJhtNuB7WeZgl
+         xrf1iyWhocHs2rsJFAOTbUIzAR1cLTNo61zP2CQMlUKRk9N3l1IaRzHIe0hXkd8GQoDt
+         MuJpZz7uCny026CWYrwLYb1z8cFlXDxlIzTVXLUGFPpWYCIHfVVuuOTbSEs4mJNQXUUD
+         6DUM82yflJYHO+s5NW0yWkoCKXX77b/jTotoOrw5/TSA4g+uKOzx2KJsiqE1MtRdfXY8
+         YTnQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TiuZ9nUV;
-       spf=pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::144 as permitted sender) smtp.mailfrom=turnerzdp@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f3ZkGUn1;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <turnerzdp@gmail.com>
-Received: from mail-it1-x144.google.com (mail-it1-x144.google.com. [2607:f8b0:4864:20::144])
-        by gmr-mx.google.com with ESMTPS id n8-v6si3869iop.4.2018.10.22.22.26.01
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com. [2a00:1450:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id h7si23218ljj.5.2019.03.28.18.58.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Oct 2018 22:26:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::144 as permitted sender) client-ip=2607:f8b0:4864:20::144;
+        Thu, 28 Mar 2019 18:58:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) client-ip=2a00:1450:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TiuZ9nUV;
-       spf=pass (google.com: domain of turnerzdp@gmail.com designates 2607:f8b0:4864:20::144 as permitted sender) smtp.mailfrom=turnerzdp@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f3ZkGUn1;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x144.google.com with SMTP id c23-v6so438915itd.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 22 Oct 2018 22:26:01 -0700 (PDT)
+Received: by mail-ed1-x544.google.com with SMTP id a25so669604edc.8
+        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 18:58:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=5SLXFo+flH/k+E0k8U5kcPa+9QVUJuSBK6v6YtVdsvA=;
-        b=TiuZ9nUV7P860mTnds3oZs+cOKak2eTfyR4/dhxPJImpNwplFZZE57KySJJvtOwQq8
-         UeU27/SXyJwHJon4eRYGDRwiT5+JFgncBLVAiElEsLvD5ULcTS1c/1T9KNKhJo8te7OC
-         Mw/jOCQ4BZ5ZWNbRGf/vEWpJEeeefP7JvpwAQUqGUFsSOq9KZaEjVQ3ApXKyvjv+bqxX
-         5VOJlf/nuaMeNVkFptOYjkpr4ZqV18wlvxvNqkMJVPrYrUwSiMQ5uD8ToNH01Gyuu5Sw
-         v82rVvdE7Q/BgcBTXyWaIXoHpXLJVmqMKPb5d6dMWax7ExRqeZrxLcBu3Vn1jI66MKMO
-         /sXA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=DkPRPitMGP7B3VmvxbkM5yLz64P9MXF8/AoTPM9NeSY=;
+        b=f3ZkGUn1i2st6buKxtjd6riKwo5w/TPYLL/0PGzDKwfI7v/KQVzBCeQojYn6RhAy4X
+         Hfjh754qgaxufLfoQXMVngJFpmj2OR06ZFUJkrXtCq76IWlkvNSbNAMBVKENfwu2lv8/
+         BewDoDPsxKILdVoqSDtNrLWRffeYfM8IV59SRryORvx9baVNL0b4C7CFRDD3pdzvHj8S
+         gwZ/BWyJnWZIZrjfwX2mRiNhGQK/oS8iQ8J2ELouPvK69Ya2DQg1Mx7Zgl8HFbyuOiQZ
+         sAkkvmCzPH9OI/kjI8rMrbJCetzGxUCPWLJjiBchUpGLQMabdQROLZp21yqeduRXiI51
+         0IVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=5SLXFo+flH/k+E0k8U5kcPa+9QVUJuSBK6v6YtVdsvA=;
-        b=MKhr6J+9EuxjgM9k5s5utSqDOvp+qp92AAIpTmgXw2iTXXDiLdFvDMLrZBVQ9tFwWv
-         ii8eDgCPR/4Wjvy2D3buJMpFfUy6RGXbvUsPfOrCBV//vWt2AUcPa0DMQB0M+3EmzOao
-         QQ025OZ23EVPvB7+5sT0sjZA4AE4rjniz/WC8FWn7Oo6BOZMPP4lySlFL1rVoe5aJw26
-         OdQ5ZKvHY3nxC4ABRtWoz8k8dGKsvr4z/8k3dyV0MNjQTANGhHsKfg6SaCr0s31Vomlt
-         k17RmUnTISrISFi2K4ZL/ezKgOeW9Yz3ykrD9l2bcMeGLRDnGuB3zXEwh+S/vJg1f4r/
-         UZaA==
-X-Gm-Message-State: ABuFfogCXnmJag8uPCiOxImAPUBJf1A/p4npAwWShz6WYNCxLpLAafnp
-	5QLW/yD+eAY5d39X5Lz1v1SfMicOVfQ=
-X-Received: by 2002:a02:711a:: with SMTP id n26-v6mr35616698jac.91.1540272361108;
-        Mon, 22 Oct 2018 22:26:01 -0700 (PDT)
-Return-Path: <turnerzdp@gmail.com>
-Received: from venus ([2601:285:300:e6d0:b8aa:85e3:42c7:79a7])
-        by smtp.gmail.com with ESMTPSA id f15-v6sm244930ita.16.2018.10.22.22.26.00
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Oct 2018 22:26:00 -0700 (PDT)
-Date: Mon, 22 Oct 2018 23:25:59 -0600
-From: Zach Turner <turnerzdp@gmail.com>
-To: gregkh@linuxfoundation.org, hwentland@gmail.com,
-	manasi.d.navare@intel.com, daniel.vetter@ffwl.ch,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Add SPDX-License-Identifier - Style
-Message-ID: <20181023052559.GA12944@venus>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=DkPRPitMGP7B3VmvxbkM5yLz64P9MXF8/AoTPM9NeSY=;
+        b=hNqcw8XxpnqoOiLE1T7OqJfRI/rKAcP4Scyoo6XV4QlGWVPwL8tu7OkWlKw8arkDuT
+         qPouFMZ8ln6GEk2Kh0l2KsvYALLc217dvN3D5N7K5JOMf+XzudF+UYP5m1seZzdDJH7M
+         Rppi2hd0L6v9UtNUaNkOyZ0U59mx34hDf9ua0aKqDSx3zUI2lb9pqCFuj5TIJofYAO8D
+         2JSlZTy3QZSP3bhk08NOyiWFU92d3mwsxRBIN7BOfmYi9CECBDxYWXlHInMUyAxvVtVy
+         DTkYimtIg/uhxHfug6TCzta66dmaxPVCBrrnNUgF/xZaoZntCl8aP36s/3U65ja7ygwo
+         QBxA==
+X-Gm-Message-State: APjAAAX7PcauQCHXldP68cLyfJDuWCV+qzZ79wDe7vqOY6HR+AbaKWbw
+	+5KbGYkDFAxyQQ+qS2iwpa4SfFVQUiWm50co/TvfhA==
+X-Received: by 2002:a17:906:4d8b:: with SMTP id s11mr26043005eju.31.1553824688210;
+ Thu, 28 Mar 2019 18:58:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20190328165508.17702-1-sanjana99reddy99@gmail.com> <alpine.DEB.2.21.1903281950280.2760@hadrien>
+In-Reply-To: <alpine.DEB.2.21.1903281950280.2760@hadrien>
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Date: Fri, 29 Mar 2019 07:27:56 +0530
+Message-ID: <CAO-bXGDaZ-FqXU3yfjboUEov6pTELdddGmRipi1fc9c7gp_+GQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: erofs: unzip_vle.c: Remove
+ unnecessary parenthesis.
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="00000000000095889e0585320096"
 
-Add SPDX-License-Identifier tag to the start of the file. This is
-a coding style change which should not impact runtime code execution.
+--00000000000095889e0585320096
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Zach Turner <turnerzdp@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Fri, 29 Mar 2019, 00:21 Julia Lawall, <julia.lawall@lip6.fr> wrote:
 
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-index bc45cf098b04..8cfc2a1a5c48 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-@@ -1,5 +1,5 @@
--/*
-- * Host AP crypt: host-based CCMP encryption implementation for Host AP driver
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/* Host AP crypt: host-based CCMP encryption implementation for Host AP driver
-  *
-  * Copyright (c) 2003-2004, Jouni Malinen <jkmaline@cc.hut.fi>
-  *
--- 
-2.17.1
+>
+>
+> On Thu, 28 Mar 2019, Sanjana Sanikommu wrote:
+>
+> > Challenge suggested by coccinelle.
+> > Reomove unnecessary parenthesis around the right hand
+> > of the assignment using the below script.
+> >
+> > @@
+> > local idexpression id;
+> > expression e;
+> > @@
+> >
+> > id =
+> > -(
+> > e
+> > -)
+> >
+> > Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+> > ---
+> >  drivers/staging/erofs/unzip_vle.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/erofs/unzip_vle.c
+> b/drivers/staging/erofs/unzip_vle.c
+> > index 8715bc50e09c..03b9c0f256fe 100644
+> > --- a/drivers/staging/erofs/unzip_vle.c
+> > +++ b/drivers/staging/erofs/unzip_vle.c
+> > @@ -870,7 +870,7 @@ static inline void z_erofs_vle_read_endio(struct bio
+> *bio)
+> >                * If mc has not gotten, it equals NULL,
+> >                * however, page->mapping never be NULL if working
+> properly.
+> >                */
+> > -             cachemngd = (page->mapping == mc);
+> > +             cachemngd = page->mapping == mc;
+>
+> There is a feeling that it is better to keep the parentheses when the
+> right side of the assignment involved ==, so that it doesn't look like a
+> double assignment.
+>
 
+   Sure, I would let the parenthesis same as before.
+
+  Sanjana
+
+>
+> julia
+>
+> >  #endif
+> >
+> >               if (unlikely(err))
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To post to this group, send email to outreachy-kernel@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20190328165508.17702-1-sanjana99reddy99%40gmail.com
+> .
+> > For more options, visit https://groups.google.com/d/optout.
+> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903281950280.2760%40hadrien
+> .
+> For more options, visit https://groups.google.com/d/optout.
+>
+
+--00000000000095889e0585320096
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Fri, 29 Mar 2019, 00:21 Julia Lawall, &lt;<a href=
+=3D"mailto:julia.lawall@lip6.fr">julia.lawall@lip6.fr</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
+:1px #ccc solid;padding-left:1ex"><br>
+<br>
+On Thu, 28 Mar 2019, Sanjana Sanikommu wrote:<br>
+<br>
+&gt; Challenge suggested by coccinelle.<br>
+&gt; Reomove unnecessary parenthesis around the right hand<br>
+&gt; of the assignment using the below script.<br>
+&gt;<br>
+&gt; @@<br>
+&gt; local idexpression id;<br>
+&gt; expression e;<br>
+&gt; @@<br>
+&gt;<br>
+&gt; id =3D<br>
+&gt; -(<br>
+&gt; e<br>
+&gt; -)<br>
+&gt;<br>
+&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"mailto:sanjana99reddy9=
+9@gmail.com" target=3D"_blank" rel=3D"noreferrer">sanjana99reddy99@gmail.co=
+m</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/erofs/unzip_vle.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/erofs/unzip_vle.c b/drivers/staging/erofs=
+/unzip_vle.c<br>
+&gt; index 8715bc50e09c..03b9c0f256fe 100644<br>
+&gt; --- a/drivers/staging/erofs/unzip_vle.c<br>
+&gt; +++ b/drivers/staging/erofs/unzip_vle.c<br>
+&gt; @@ -870,7 +870,7 @@ static inline void z_erofs_vle_read_endio(struct b=
+io *bio)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * If mc has not=
+ gotten, it equals NULL,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * however, page=
+-&gt;mapping never be NULL if working properly.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cachemngd =3D (page-&=
+gt;mapping =3D=3D mc);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cachemngd =3D page-&g=
+t;mapping =3D=3D mc;<br>
+<br>
+There is a feeling that it is better to keep the parentheses when the<br>
+right side of the assignment involved =3D=3D, so that it doesn&#39;t look l=
+ike a<br>
+double assignment.<br></blockquote></div></div><div dir=3D"auto">=C2=A0 =C2=
+=A0</div><div dir=3D"auto">=C2=A0 =C2=A0Sure, I would let the parenthesis s=
+ame as before.</div><div dir=3D"auto"><br></div><div dir=3D"auto">=C2=A0 Sa=
+njana</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=
+=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
+ing-left:1ex">
+<br>
+julia<br>
+<br>
+&gt;=C2=A0 #endif<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (unlikely(err=
+))<br>
+&gt; --<br>
+&gt; 2.17.1<br>
+&gt;<br>
+&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@goog=
+legroups.com</a>.<br>
+&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
+l@googlegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@g=
+ooglegroups.com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20190328165508.17702-1-sanjana99reddy99%40=
+gmail.com" rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.g=
+oogle.com/d/msgid/outreachy-kernel/20190328165508.17702-1-sanjana99reddy99%=
+40gmail.com</a>.<br>
+&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
+ rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/=
+d/optout</a>.<br>
+&gt;<br>
+<br>
+-- <br>
+You received this message because you are subscribed to the Google Groups &=
+quot;outreachy-kernel&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.com" =
+target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@googlegro=
+ups.com</a>.<br>
+To post to this group, send email to <a href=3D"mailto:outreachy-kernel@goo=
+glegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@google=
+groups.com</a>.<br>
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903281950280.2760%40hadrien" r=
+el=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/d/=
+msgid/outreachy-kernel/alpine.DEB.2.21.1903281950280.2760%40hadrien</a>.<br=
+>
+For more options, visit <a href=3D"https://groups.google.com/d/optout" rel=
+=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/d/op=
+tout</a>.<br>
+</blockquote></div></div></div>
+
+--00000000000095889e0585320096--
 
