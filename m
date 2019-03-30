@@ -1,113 +1,266 @@
 X-GM-THRID: 6674230099683835904
-X-Received: by 2002:a24:2404:: with SMTP id f4mr3795959ita.15.1553967298099;
-        Sat, 30 Mar 2019 10:34:58 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:d06:: with SMTP id 6ls1647819itx.5.gmail; Sat, 30 Mar
- 2019 10:34:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyZck4h6dG4rE1Xmlx9uqUf7GSsvgzRKmXPS/+sTjIMMw0AoNz7MUP48/2WWAY5/aEMgDT5
-X-Received: by 2002:a24:1c0c:: with SMTP id c12mr3844068itc.19.1553967297311;
-        Sat, 30 Mar 2019 10:34:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553967297; cv=none;
-        d=google.com; s=arc-20160816;
-        b=LU/dcXXBNWbp3zivBmPZTjDBKb4eJ5LiYC2G5luaw0YvszMj3MvnAOuyzxV1VgY2vf
-         dbjfdw/G6IrluTvIc4oDCrUmS2K0FPHX9vgUcmKck0/yf8TqYBdyRWh4xYBuIITwJ/g+
-         oknWazi4PYpZ0uhfFJc6zUSV78VtxjaY5wjuSfxwMjwuiiM95Pa6W9Azb2KvdxfHgqMk
-         6MnKiGKj1jThVdJnbcaOgaIpGuXeR3wzfTlM66dB22mvny/Vh7Q8LrELPybx8C7d+ZeY
-         lmrrGbexChkXlKHBy6nS3R6s6RmX+PWYy1DUB4Cys718lWrRoySCgwbJV5ry3mMbBOaT
-         NC+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=3XRrFcCcXmky5Oo4G//Fpa06+3fTSnOK9AGs93I33GM=;
-        b=G8rYYJVBokAGh70eCgFalyRZ8RZ5Iacr2v9HjQtRl9K0Lb7QW8mxUAPNT4pCj6PHqd
-         d7Dmc7IenFtQMqIazRSzerVvWDimCSXHDFzKVOC3p1cRjEDDMXyIZWqrZu9da2MlSWix
-         r3B5pBh++CvJDugOd9/BGk86fePefTWBzvxFmf6Hl7CShb+tEUEJePsIVnOuJqqJWZx4
-         5xI5FkrDmPafrjqRGHVzWjLB5Po0TPWh8RYLZ+fQpFenu83JZlJCgQ9FXQEuXyLJ769c
-         LWjK2ifqW+mXTMaa0UJqi1Fj8arizXmRmZDOMuDueJLbg7hdBAJWhIb3R+KXRYnEtOzY
-         msmA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KAi5Wy8B;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
-        by gmr-mx.google.com with ESMTPS id g127si886093ita.3.2019.03.30.10.34.57
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 10:34:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KAi5Wy8B;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52a.google.com with SMTP id u9so2687019pgo.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 10:34:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=3XRrFcCcXmky5Oo4G//Fpa06+3fTSnOK9AGs93I33GM=;
-        b=KAi5Wy8BtZjEBu9cL1Gtb9oavdh4bcvG/D9PB6zCQarH/LWICtXY6DnEyIdLl4SLpw
-         CtGBBDCyp38tZXdp0X1zfJYZhmDmpe+2ZjmsFT/ZdBAuQLaDL//AZoLFz8PttDyLsyAz
-         pfHN+n0OKbnElTPIWHE/5dEVW6UEC6pHOB0i1Irc8uvddLDzrNxHCPVKdeDdvu6HoExt
-         7M7Iq/PyFc0S38p0rGUmfdWaLL3CsSdJ+sb7oJpuZlRi50y3NXN0G5BIBIWrehijbR/E
-         k6AEpSMMk/MRdq45elfbMiDP1H09YfJ4O+TXKUORhBCg2crpXFOY4HhBt/dLVo+onTH8
-         puNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=3XRrFcCcXmky5Oo4G//Fpa06+3fTSnOK9AGs93I33GM=;
-        b=OzwONKqrrqPnsjOifMdp4LPpwU63+2jdZdEHqfQL8Jo5WEVSeVgXeSQbrcF1hy1uHI
-         mmZ+Iu7ZeryJb2+NGZFYEDshE2NZwPHpaTG/f0BwT4c/+uI76vnaYufOmyUptH5nVHNA
-         RxxWk4Xio1hRzXZcCBwWTPR+kRA+3orIjCOqbCsyINEHo0vJzaupjdrESW7xXDpa/zn8
-         YEnW7gfcdb+zpsjEFk+2HNhc5Kp0YgF3PbSrScgv5LXdH1KHjF0Oby/vsmXJ7ZCNob0a
-         l1asI498w2W+lfeSO3v5vYQ4MCtk/rzmvtC1qIAI2YhWawR9c6QF+m60K3gtcrxC0TUV
-         i5lw==
-X-Gm-Message-State: APjAAAUt7aTSjMERRS8eqpr5ceoFZwb5mCHE/hSKaFJ7pZo3ul+S1c9U
-	DBM8ehhrILE2sQiz4ItjXao=
-X-Received: by 2002:a62:5ec2:: with SMTP id s185mr16247033pfb.16.1553967296194;
-        Sat, 30 Mar 2019 10:34:56 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.90])
-        by smtp.googlemail.com with ESMTPSA id u4sm20802377pgn.12.2019.03.30.10.34.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 10:34:55 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 0/2] staging: wilc1000: Modify return statement
-Date: Sat, 30 Mar 2019 23:04:45 +0530
-Message-Id: <20190330173445.5268-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190330170116.4761-1-sanjana99reddy99@gmail.com>
-References: <20190330170116.4761-1-sanjana99reddy99@gmail.com>
+Date: Sat, 30 Mar 2019 10:31:12 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <c4447f8d-43c5-4149-9be6-57641d9eb778@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1903301829490.2608@hadrien>
+References: <20190330170116.4761-1-sanjana99reddy99@gmail.com> <alpine.DEB.2.21.1903301805410.2608@hadrien> <CAO-bXGDmAJVPyODMynGrPTuttnKkJbivpaVYQSUYAOmj8v4e+Q@mail.gmail.com>
+ <alpine.DEB.2.21.1903301829490.2608@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH 0/2] staging: wilc1000: Modify return
+ statement
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_408_1856345744.1553967073036"
+X-Google-Token: EODP_uQFq9TCsshaXdk0
+X-Google-IP: 123.201.165.90
 
-This patchset does the following things.
-1.Modify return statement in wilc_spi.c
-2.Modify return statement in host_interface.c
+------=_Part_408_1856345744.1553967073036
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_409_962781817.1553967073036"
 
-Changes in v4:
-Correct the version number for [PATCH 0/2] i.e 
-rename it as [PATCH V4 0/2]
-No changes from [PATCH v3 1/2]
-No changes from [PATCH v3 2/2]
+------=_Part_409_962781817.1553967073036
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Changes in v3:
-Make a patch series.
 
-Changes in v2: 
-Adjust spaces for last argument in return statement host_interface.c. 
-Adjust space for last argument in return statement in wilc_spi.c.
 
-Sanjana Sanikommu (2):
-  staging: wilc1000: wilc_spi.c: Modify return statement.
-  staging: wilc1000: host_interface.c: Modify return statement.
+On Saturday, March 30, 2019 at 11:00:10 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Sat, 30 Mar 2019, Sanjana Sanikommu wrote: 
+>
+> > 
+> > 
+> > On Sat, 30 Mar 2019, 22:35 Julia Lawall, <julia...@lip6.fr <javascript:>> 
+> wrote: 
+> >       The cover letter should also be v3. 
+> > 
+> > 
+> >      Shall I change the version number for only cover letter or send 
+> again 
+> > the whole series in v4?plz let me know. 
+>
+> Sendng the whole thing again as v4 would be more clear. 
+>
 
- drivers/staging/wilc1000/host_interface.c | 31 +++++++----------------
- drivers/staging/wilc1000/wilc_spi.c       | 10 +++-----
- 2 files changed, 13 insertions(+), 28 deletions(-)
+    Sure, I would send :)
+    Sanjana 
 
--- 
-2.17.1
+>
+> julia 
+>
+>
+> >    
+> > Sanjana. 
+> > 
+> >       julia 
+> > 
+> >       On Sat, 30 Mar 2019, Sanjana Sanikommu wrote: 
+> > 
+> >       > This patchset does the following things. 
+> >       > 1.Modify return statement in wilc_spi.c 
+> >       > 2.Modify return statement in host_interface.c 
+> >       > 
+> >       > Changes in v3: 
+> >       > Make a patch series. 
+> >       > 
+> >       > Changes in v2: 
+> >       > Adjust spaces for last argument in return statement 
+> >       host_interface.c. 
+> >       > Adjust space for last argument in return statement in 
+> >       wilc_spi.c. 
+> >       > 
+> >       > Sanjana Sanikommu (2): 
+> >       >   staging: wilc1000: wilc_spi.c: Modify return statement. 
+> >       >   staging: wilc1000: host_interface.c: Modify return 
+> >       statement. 
+> >       > 
+> >       >  drivers/staging/wilc1000/host_interface.c | 31 
+> >       +++++++---------------- 
+> >       >  drivers/staging/wilc1000/wilc_spi.c       | 10 +++----- 
+> >       >  2 files changed, 13 insertions(+), 28 deletions(-) 
+> >       > 
+> >       > -- 
+> >       > 2.17.1 
+> >       > 
+> >       > -- 
+> >       > You received this message because you are subscribed to the 
+> >       Google Groups "outreachy-kernel" group. 
+> >       > To unsubscribe from this group and stop receiving emails from 
+> >       it, send an email to 
+> >       outreach...@googlegroups.com <javascript:>. 
+> >       > To post to this group, send email to 
+> >       outreach...@googlegroups.com <javascript:>. 
+> >       > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/20190330170116.4761-1-sa 
+> >       njana99reddy99%40gmail.com. 
+> >       > For more options, visit https://groups.google.com/d/optout. 
+> >       > 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups 
+> > "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an 
+> > email to outreach...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/CAO-bXGDmAJVPyODMynGrPTu 
+> > ttnKkJbivpaVYQSUYAOmj8v4e%2BQ%40mail.gmail.com. 
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+> >
 
+
+------=_Part_409_962781817.1553967073036
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Saturday, March 30, 2019 at 11:00:10 PM UTC+5:3=
+0, Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;=
+margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sat, 30 Mar 2019, Sanjana Sanikommu wrote:
+<br>
+<br>&gt;
+<br>&gt;
+<br>&gt; On Sat, 30 Mar 2019, 22:35 Julia Lawall, &lt;<a href=3D"javascript=
+:" target=3D"_blank" gdf-obfuscated-mailto=3D"pruEid18BgAJ" rel=3D"nofollow=
+" onmousedown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D=
+"this.href=3D&#39;javascript:&#39;;return true;">julia...@lip6.fr</a>&gt; w=
+rote:
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 The cover letter should also be v3.
+<br>&gt;
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0Shall I change the version number for only cov=
+er letter or send again
+<br>&gt; the whole series in v4?plz let me know.
+<br>
+<br>Sendng the whole thing again as v4 would be more clear.
+<br></blockquote><div><br></div><div>=C2=A0 =C2=A0 Sure, I would send :)</d=
+iv><div>=C2=A0 =C2=A0 Sanjana=C2=A0</div><blockquote class=3D"gmail_quote" =
+style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-l=
+eft: 1ex;">
+<br>julia
+<br>
+<br>
+<br>&gt; =C2=A0=C2=A0
+<br>&gt; Sanjana.
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 julia
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 On Sat, 30 Mar 2019, Sanjana Sanikommu wrote:
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; This patchset does the following things.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; 1.Modify return statement in wilc_spi.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; 2.Modify return statement in host_interf=
+ace.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Changes in v3:
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Make a patch series.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Changes in v2:
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Adjust spaces for last argument in retur=
+n statement
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 host_interface.c.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Adjust space for last argument in return=
+ statement in
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 wilc_spi.c.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Sanjana Sanikommu (2):
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0staging: wilc1000: wilc_spi.=
+c: Modify return statement.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0staging: wilc1000: host_inte=
+rface.c: Modify return
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 statement.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 drivers/staging/wilc1000/host_<wbr=
+>interface.c | 31
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 +++++++----------------
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 drivers/staging/wilc1000/wilc_<wbr=
+>spi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 10 +++-----
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 2 files changed, 13 insertions(+),=
+ 28 deletions(-)
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; 2.17.1
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; You received this message because you ar=
+e subscribed to the
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 Google Groups &quot;outreachy-kernel&quot; gr=
+oup.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To unsubscribe from this group and stop =
+receiving emails from
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 it, send an email to
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 <a href=3D"javascript:" target=3D"_blank" gdf=
+-obfuscated-mailto=3D"pruEid18BgAJ" rel=3D"nofollow" onmousedown=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javasc=
+ript:&#39;;return true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To post to this group, send email to
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 <a href=3D"javascript:" target=3D"_blank" gdf=
+-obfuscated-mailto=3D"pruEid18BgAJ" rel=3D"nofollow" onmousedown=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javasc=
+ript:&#39;;return true;">outreach...@googlegroups.<wbr>com</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To view this discussion on the web visit=
+https://<a href=3D"http://groups.google.com/d/msgid/outreachy-kernel/201903=
+30170116.4761-1-sa" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.=
+href=3D&#39;http://groups.google.com/d/msgid/outreachy-kernel/2019033017011=
+6.4761-1-sa&#39;;return true;" onclick=3D"this.href=3D&#39;http://groups.go=
+ogle.com/d/msgid/outreachy-kernel/20190330170116.4761-1-sa&#39;;return true=
+;">groups.google.<wbr>com/d/msgid/outreachy-kernel/<wbr>20190330170116.4761=
+-1-sa</a>
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 njana99reddy99%<a href=3D"http://40gmail.com"=
+ target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://=
+www.google.com/url?q\x3dhttp%3A%2F%2F40gmail.com\x26sa\x3dD\x26sntz\x3d1\x2=
+6usg\x3dAFQjCNF6SYGO6IiAPhbk3gMhjWdyIU0BdA&#39;;return true;" onclick=3D"th=
+is.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40gmail.com\x26s=
+a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNF6SYGO6IiAPhbk3gMhjWdyIU0BdA&#39;;retur=
+n true;">40gmail.com</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; For more options, visit <a href=3D"https=
+://groups.google.com/d/optout" target=3D"_blank" rel=3D"nofollow" onmousedo=
+wn=3D"this.href=3D&#39;https://groups.google.com/d/optout&#39;;return true;=
+" onclick=3D"this.href=3D&#39;https://groups.google.com/d/optout&#39;;retur=
+n true;">https://groups.google.com/d/<wbr>optout</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups
+<br>&gt; &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an
+<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
+mailto=3D"pruEid18BgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
+vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
+eturn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"pruEid18BgAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
+groups.google.com/d/msgid/outreachy-kernel/CAO-bXGDmAJVPyODMynGrPTu" target=
+=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
+google.com/d/msgid/outreachy-kernel/CAO-bXGDmAJVPyODMynGrPTu&#39;;return tr=
+ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
+-kernel/CAO-bXGDmAJVPyODMynGrPTu&#39;;return true;">groups.google.<wbr>com/=
+d/msgid/outreachy-kernel/<wbr>CAO-bXGDmAJVPyODMynGrPTu</a>
+<br>&gt; ttnKkJbivpaVYQSUYAOmj8v4e%2BQ%<a href=3D"http://40mail.gmail.com" =
+target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://4=
+0mail.gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;http://40mai=
+l.gmail.com&#39;;return true;"><wbr>40mail.gmail.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br>&gt;</blockquote></div>
+------=_Part_409_962781817.1553967073036--
+
+------=_Part_408_1856345744.1553967073036--
 
