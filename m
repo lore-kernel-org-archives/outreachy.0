@@ -1,84 +1,84 @@
 X-GM-THRID: 6673442126229929984
-X-Received: by 2002:a02:4e46:: with SMTP id r67mr6441694jaa.8.1553965958092;
-        Sat, 30 Mar 2019 10:12:38 -0700 (PDT)
+X-Received: by 2002:a63:dc01:: with SMTP id s1mr727676pgg.10.1553965953522;
+        Sat, 30 Mar 2019 10:12:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:ea0d:: with SMTP id m13ls2021737ioc.3.gmail; Sat, 30 Mar
- 2019 10:12:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxPKi9ZC0j1cMIwqM6xWncspSLXqGf7rfrdXvvWyR1fMaEqGIlAvYxDMxwV6kGbFhiAR/6O
-X-Received: by 2002:a6b:251:: with SMTP id 78mr7452610ioc.39.1553965957437;
-        Sat, 30 Mar 2019 10:12:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553965957; cv=none;
+Received: by 2002:a17:902:b60e:: with SMTP id b14ls440110pls.2.gmail; Sat, 30
+ Mar 2019 10:12:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqye9SQzjdaidKq5MTS6hwMYeDLCCXNh2GH1qj5QIahWnJ4eVfTItIZEh/Y5ZcH7SOo6Mmys
+X-Received: by 2002:a17:902:20ec:: with SMTP id v41mr1389359plg.103.1553965952896;
+        Sat, 30 Mar 2019 10:12:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553965952; cv=none;
         d=google.com; s=arc-20160816;
-        b=rffwr87RdwQ6MF/2Wua25Z5FoAqTQhJJXwaVE+Xoaw0NK3K+pqcSS6CpLeUv/fAwaD
-         lwpmd/JM3YHJvJUMQIiSOKNj/oyRcgEnvzaImHCYwa2Y0hejgl64MBZQp7D4F0QKym42
-         IXDVq8QWQDmZGzy03QYmdV5+bGPPUGLSx3daUjrCK+0ROcisiyFzc5cB9BGQqejdun4Z
-         gXpkITGBoZ4j/sc5dC1GOt9joxX3hsRD2OBx8zTjGGxn9vV9tnvgygEY6kzmTgrXppgq
-         uZnGIK9eKkwbFIA0wxuHKs97v/4EgZbWF0xGpBoGIKk4YIt939QANhag/FpkiCJf2Swa
-         98fw==
+        b=kevc77F2wtQdnKmx0nt2TMJO052yorCkAb7o0vM3glPt3cLfQk6wZIL5/qwrZs/QrM
+         p1Nxhs2SkcZDjgk0/DJedPlSQNt4Id0Thq2CRQnlup7SuX/M/Glly4nSmMpcVmlVGOqZ
+         UVZLkMkUFGn3yBD9CiCkMyexeyBaamXp6KM0oMrGs7JEA/TgRaD0hbD6lK9cU2f9bu6V
+         2+LkEvV7QHe8KvfWxpE0XszFpo6/T1Mx49qUrSTayyYSyno6Pe0xlLgNZ2rL2wODEjjb
+         zNrPkwsH/Wt/e0fka4/XJAYWjpxdDFLWUy8X3DNiWfzJLayS+58dPRAXAJIZr3/GnYO1
+         syAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=1npeB7eWWNTBV+rW6hGkkjkgY8JByfEzY6vk9jJQyFU=;
-        b=xjDm4dMGzzDwyPT2x6DyosnAU2C13pD4U30a/kNi9zMye0Kgo6rbEykscS3LdMgP14
-         p2yHY7UOA2R69Mh3vVcoTvHB/COAaxpCBqGZw1j2c5FO/rbW4VyK7ueLSexaGkKPSPYm
-         knSatTmvCZ6ZIBRK+dA2BDBJtfy4aiyaSYrQ5AcFwgR1WcXI9ySPkAa0UHGpPRfCUCSN
-         gEm6JcPivg1ji+5serfBn0j4lVeBeSrYaZfXdPTBRU6lZFCwm+Y+/sPFrtTpzR+JBB0A
-         As8iLimZCqfWcReNUyGEOPHkYRZGtrMlqkc51lLdBB8MeSCqp8YQ8RIJxvdRdtKE/y7H
-         QOOg==
+        bh=L+Zadr6dbBq4znITJYaV1+zqKMjyXS/DMe5Hirfb+7g=;
+        b=vm2PZjCtXNgDrn4PatStt4kirWyHyHARVSkEtUNgqzBm+61c+THc+ATFo8XgeLs9p1
+         EgCXWCZuPN9ApI8G9iqviiZDvOeYf4zTK3yh7eujYy9ERD4x55eSGydDXjAP+iavuvJC
+         0/poOdNmKejgGoUHreZBKUOw0jPZcF+3zkicFb9QTWpOTJcJ8r7D8mRRBMBmCOlZz7IV
+         HBYhGiw+20shVkYhcxZlooF4izIjWY6kybuQkbI9J6pr8edj0tykPlYpeWVcq6+V3vMA
+         GNRvQR/NbmFV1/Zn7bPouS0pBx/sdaNKnQK+JR+Oo/Sf/bvaTbn08bn7SUuli9FO95CV
+         2+tw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fpry7JWM;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dL5OZScC;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id q130si278709itb.1.2019.03.30.10.12.37
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
+        by gmr-mx.google.com with ESMTPS id b38si354393plb.1.2019.03.30.10.12.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 10:12:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Sat, 30 Mar 2019 10:12:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fpry7JWM;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dL5OZScC;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id v12so2692446pgq.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 10:12:37 -0700 (PDT)
+Received: by mail-pl1-x642.google.com with SMTP id p19so2472474plo.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 10:12:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=1npeB7eWWNTBV+rW6hGkkjkgY8JByfEzY6vk9jJQyFU=;
-        b=Fpry7JWM9ugd4i9SLkIEF5WUgsPCKh2cycXZJiWOmmmVuflpKGJuqyZNQLmBGQnMkk
-         DN9jNxG2560La6pmLBQ93cJicCx28pk6ZyrQlTYbWeOVlJ6jmjUvfNoC2jAqKJY+Q1im
-         DfyghE0Z+MPOIImDwzvPKZmlUf14M/E8eN1u/dhfYwLeIM1FQnqNlE3Q0l7ObCSRiHFG
-         RjHNKNfpuotM7Y5SZAl0+OjHRzc4ZKdk+XyqCugMj4epVFUmFh2D7so22/adFcLeN9dF
-         4NEvYJYolFxloRCFkzskML/IKDRz4cDv6HJuTDygYIHWXcpDyksq7kCPKi1oI8reFgZG
-         M97A==
+        bh=L+Zadr6dbBq4znITJYaV1+zqKMjyXS/DMe5Hirfb+7g=;
+        b=dL5OZScC927DzBRxf25dZDsocr/GkWvZ3dWovoxZ4VrZeYJS2byWhxI3zzDAiG8c6h
+         hEhL5mLvPDQxW0CDZ3EQJO7E41AgmGNp410p1wXRiAkxTNkuOT8biSnw2KdhgXnjJ6Ge
+         hIET6bx22QEv85w2jFUbpjwGKsJHW0USqJKrm8S1fuT9yBE4vTwTNAjxHEpolADVd2w2
+         pj4q0pyMPG6uHN22RUDJzUby4uyYT2ixCQ3wq+Kf/RuUbL+51C8dnP1xl3jIZq/24B1V
+         +dhb1GunV8rW3oWDkK6cbGIJztRflJiXpjyzERh/Q3SFdrAe8J/J4D0dhMmf3+Ply07f
+         HD9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=1npeB7eWWNTBV+rW6hGkkjkgY8JByfEzY6vk9jJQyFU=;
-        b=kEdqO8sLCiyfV/h6tNnDc86QipZPMVCGBWAPl7kSRw9ZrV/1e5qCfbMbk1mMjdmrlf
-         F6Jv/i8zcLM4GNaVRD+tjIuO/JcjctYWM+YSoO6h8cNG8o/7TVT6scePEMFx2Pw+mwwF
-         wPPDJiQZH3ql0DZINtNWVpglnbwkq5t440vhulnYhZ1Sfa+P01qjDpdZTXwkF/u7iI/h
-         NgC9zvPQOHl7C72zXOV3MK//Qg6Nxi04DkIB3nbbFnG+EAnlJYV+dOmPumctPABBQ881
-         WJdL/itMLOdc9fZlbnCqAVPaTerBcHkVw6vfqoDq/sjg34SBFN//GDYlxuDVPeBIRv4c
-         rOMA==
-X-Gm-Message-State: APjAAAWVXDhPU90as8qXwVWtbdORJNCebkCyWoR9mRk0TBuMp1wxQwHT
-	FDmAKSUnSV4WPptEQlB0Ft3IwAId
-X-Received: by 2002:a63:ef09:: with SMTP id u9mr28983502pgh.126.1553965956391;
-        Sat, 30 Mar 2019 10:12:36 -0700 (PDT)
+        bh=L+Zadr6dbBq4znITJYaV1+zqKMjyXS/DMe5Hirfb+7g=;
+        b=jc4qyALGDPln72csrTvtrwOlrRqjxo31gzaWOTAIOG3KqzwzIm9xmQbYGVkXaXf1Iv
+         LSlFKlWgrqiyc23MwPRHw30SmPjOrqHYiAGJI1cfmPeh1/FX4q2h1xe+e6Be6CXY5Rsd
+         lov8jOBeK55zr64DYe38MBy4phCnm0lcJjXPFITtXnwmf4GvfNu9pRBVZPR8lNX+za/W
+         nyyYbwPRPsCGiv1I2RYmVeDKePx2ADPVdr8XtMPAawhJPv507nuudaPo7YM+VqOqk1GN
+         hVFzVvAYFNizR8GlO/UQz6QXiblTBNV4Xecd2+s58jffYJfVhArRSnVwSSM8n35NjF+9
+         RLbA==
+X-Gm-Message-State: APjAAAX1D6Fgc8hRW2zhuGGDdRFT3xFRROqVy+xR8eTpeJ7t+Q9Gr1LC
+	cfJXOc5h+h/bERnPoxhgMsgAnNpI
+X-Received: by 2002:a17:902:8a4:: with SMTP id 33mr54200840pll.7.1553965952389;
+        Sat, 30 Mar 2019 10:12:32 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([157.33.140.226])
-        by smtp.gmail.com with ESMTPSA id j4sm7539607pfn.132.2019.03.30.10.12.33
+        by smtp.gmail.com with ESMTPSA id j4sm7539607pfn.132.2019.03.30.10.12.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 30 Mar 2019 10:12:35 -0700 (PDT)
+        Sat, 30 Mar 2019 10:12:31 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH v3 5/9] staging: rtl8723bs: core: rtw_mlme.c: Remove unnecessary parentheses
-Date: Sat, 30 Mar 2019 22:41:52 +0530
-Message-Id: <c21ab121b0e9de5dfa2eac556950fb753cb04c04.1553964404.git.payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH v3 4/9] staging: rtl8723bs: hal: odm_HWConfig.c: Remove unnecessary parentheses
+Date: Sat, 30 Mar 2019 22:41:51 +0530
+Message-Id: <1763d980f8c5922d710e7c2da7a26c0c4a6091e3.1553964404.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1553964403.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1553964403.git.payal.s.kshirsagar.98@gmail.com>
@@ -86,49 +86,24 @@ In-Reply-To: <cover.1553964403.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1553964403.git.payal.s.kshirsagar.98@gmail.com>
 
 Challenge suggested by coccinelle.
-Remove unnecessary parentheses around expressions.
+Remove unnecessary parentheses around an expression, add spaces around
+operator and remove trailing space.
 
 Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 406e313..12661d7 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -332,7 +332,7 @@ void rtw_generate_random_ibss(u8 *pibss)
- 
- u8 *rtw_get_capability_from_ie(u8 *ie)
- {
--	return (ie + 8 + 2);
-+	return ie + 8 + 2;
- }
- 
- 
-@@ -347,7 +347,7 @@ u16 rtw_get_capability(struct wlan_bssid_ex *bss)
- 
- u8 *rtw_get_beacon_interval_from_ie(u8 *ie)
- {
--	return (ie + 8);
-+	return ie + 8;
- }
- 
- 
-@@ -451,14 +451,14 @@ int is_same_network(struct wlan_bssid_ex *src, struct wlan_bssid_ex *dst, u8 fea
- 	s_cap = le16_to_cpu(tmps);
- 	d_cap = le16_to_cpu(tmpd);
- 
--	return ((src->Ssid.SsidLength == dst->Ssid.SsidLength) &&
-+	return (src->Ssid.SsidLength == dst->Ssid.SsidLength) &&
- 		/* 	(src->Configuration.DSConfig == dst->Configuration.DSConfig) && */
- 			((!memcmp(src->MacAddress, dst->MacAddress, ETH_ALEN))) &&
- 			((!memcmp(src->Ssid.Ssid, dst->Ssid.Ssid, src->Ssid.SsidLength))) &&
- 			((s_cap & WLAN_CAPABILITY_IBSS) ==
- 			(d_cap & WLAN_CAPABILITY_IBSS)) &&
- 			((s_cap & WLAN_CAPABILITY_BSS) ==
--			(d_cap & WLAN_CAPABILITY_BSS)));
-+			(d_cap & WLAN_CAPABILITY_BSS));
+diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+index ee2c293..d802a1f 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
++++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
+@@ -19,7 +19,7 @@ static u8 odm_QueryRxPwrPercentage(s8 AntPower)
+ 	else if (AntPower >= 0)
+ 		return	100;
+ 	else
+-		return	(100+AntPower);
++		return 100 + AntPower;
  
  }
  
