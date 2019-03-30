@@ -1,133 +1,112 @@
 X-GM-THRID: 6674230099683835904
-X-Received: by 2002:a67:ed05:: with SMTP id l5mr5450820vsp.23.1553967375880;
-        Sat, 30 Mar 2019 10:36:15 -0700 (PDT)
+X-Received: by 2002:a24:2404:: with SMTP id f4mr3795959ita.15.1553967298099;
+        Sat, 30 Mar 2019 10:34:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:3c51:: with SMTP id j78ls906170vka.1.gmail; Sat, 30 Mar
- 2019 10:36:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzqq5xKc45ITDrt1Fru2h5hu1lcgF1DZngZ5jR+eVrMV+xknCH5q3fVmVLF3cjpwtCbp861
-X-Received: by 2002:a1f:2a48:: with SMTP id q69mr5589082vkq.7.1553967375339;
-        Sat, 30 Mar 2019 10:36:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553967375; cv=none;
+Received: by 2002:a24:d06:: with SMTP id 6ls1647819itx.5.gmail; Sat, 30 Mar
+ 2019 10:34:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyZck4h6dG4rE1Xmlx9uqUf7GSsvgzRKmXPS/+sTjIMMw0AoNz7MUP48/2WWAY5/aEMgDT5
+X-Received: by 2002:a24:1c0c:: with SMTP id c12mr3844068itc.19.1553967297311;
+        Sat, 30 Mar 2019 10:34:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553967297; cv=none;
         d=google.com; s=arc-20160816;
-        b=AkMokt5Y3ghHR1aT5txnA3E1kBJDpQO4yzFpZyHvqCQUygHN4PBtJsye9erbvd+gCh
-         uFS6XKm/DAAxiAd/7R9slP9QgTxtNq0wu+kRs6yOPCx9z5MhNms27CJPYb77gKlkGHah
-         3CVidHPLpKdAPX2mldJs9Nv1cJWR6cpfwmPzBhuEDdjJYWHCeuqqebcMHu+uy4hfC93Q
-         y0GG+DtZiidOR7bBtqjcEZhxZ/dCUzyWxA8pXj3LNnQIKnkI3Tmpsjf3VYVyK/gy1Yq6
-         lWfc70dWPsyJlCsApwCc0xafro6O3WbkFK581gMUv8nh7qkop3L2/J2gccqm5skESkU9
-         Trhw==
+        b=LU/dcXXBNWbp3zivBmPZTjDBKb4eJ5LiYC2G5luaw0YvszMj3MvnAOuyzxV1VgY2vf
+         dbjfdw/G6IrluTvIc4oDCrUmS2K0FPHX9vgUcmKck0/yf8TqYBdyRWh4xYBuIITwJ/g+
+         oknWazi4PYpZ0uhfFJc6zUSV78VtxjaY5wjuSfxwMjwuiiM95Pa6W9Azb2KvdxfHgqMk
+         6MnKiGKj1jThVdJnbcaOgaIpGuXeR3wzfTlM66dB22mvny/Vh7Q8LrELPybx8C7d+ZeY
+         lmrrGbexChkXlKHBy6nS3R6s6RmX+PWYy1DUB4Cys718lWrRoySCgwbJV5ry3mMbBOaT
+         NC+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=PEXpj2L+gpDNq1i4Z5sLZSfUj0y792AiYZDeGNwur7E=;
-        b=cpHB9bI3rkKFelUOWf9lW4bKYFUmgy/6Ea4i50QGtsLv14XTw8hEZPW1h6SEQ4IZ3R
-         eH7w6T8OepQRa62YFJZeL3USJbaE4felVZi+FsAnrMp86OiBCgpr7c3VGxgcQNc/PzUI
-         0BX8EAVKMYcCk+sZ/vM8So374O+dnv5cmFRAu3FejL1oT1ZPqXaqP3T9/q4KahEFxjjw
-         OlJyQdcE09QtqUJCVulXPdGGD4TfqW+2IwkeDFCmuDbdsMkGu2DS3pcgbU1oqym+hxbV
-         WhXLix6ZHarwktch/IgEv2tRx4HKXlNIsCX930ljgJl9du5X650fhx83CovGRR0QQiEt
-         i5sw==
+        bh=3XRrFcCcXmky5Oo4G//Fpa06+3fTSnOK9AGs93I33GM=;
+        b=G8rYYJVBokAGh70eCgFalyRZ8RZ5Iacr2v9HjQtRl9K0Lb7QW8mxUAPNT4pCj6PHqd
+         d7Dmc7IenFtQMqIazRSzerVvWDimCSXHDFzKVOC3p1cRjEDDMXyIZWqrZu9da2MlSWix
+         r3B5pBh++CvJDugOd9/BGk86fePefTWBzvxFmf6Hl7CShb+tEUEJePsIVnOuJqqJWZx4
+         5xI5FkrDmPafrjqRGHVzWjLB5Po0TPWh8RYLZ+fQpFenu83JZlJCgQ9FXQEuXyLJ769c
+         LWjK2ifqW+mXTMaa0UJqi1Fj8arizXmRmZDOMuDueJLbg7hdBAJWhIb3R+KXRYnEtOzY
+         msmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VmkEnluk;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::636 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KAi5Wy8B;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pl1-x636.google.com (mail-pl1-x636.google.com. [2607:f8b0:4864:20::636])
-        by gmr-mx.google.com with ESMTPS id g14si174172uah.1.2019.03.30.10.36.15
+Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id g127si886093ita.3.2019.03.30.10.34.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 10:36:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::636 as permitted sender) client-ip=2607:f8b0:4864:20::636;
+        Sat, 30 Mar 2019 10:34:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VmkEnluk;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::636 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KAi5Wy8B;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x636.google.com with SMTP id g12so2471885pll.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 10:36:15 -0700 (PDT)
+Received: by mail-pg1-x52a.google.com with SMTP id u9so2687019pgo.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 10:34:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=PEXpj2L+gpDNq1i4Z5sLZSfUj0y792AiYZDeGNwur7E=;
-        b=VmkEnlukzBFAm8wp4HsR8lkUPFGyOJ3LUaHGglKsWP1DeRhhXLzUmZ/uHXSZjOP5Up
-         6ocBSaHC/ldDVmxa5wTzoeQ3azwqw+OhRTGmnMRhRlpRjsZZWoIlHFnuGtOOR5Bl4kW/
-         V3vuUKLvNYtAaWdbPiLB/VS3e4gAHe4QwC+msDMkSLh14SqvbX0911Do01bLBaFEyw2a
-         ZgLDGIIxBrZ8IIgKk2pqHQr5jFATMvD+dBYthFUkSTXnvTYZPfVyjX+VfWKWTw9g0pYx
-         stmd7GsIYEK4EZYwBYto0WjjpLM0dC9LwGTKQ3T0CCv3RyPWUAt9ER8f02SphOKAzcoz
-         ajJA==
+        bh=3XRrFcCcXmky5Oo4G//Fpa06+3fTSnOK9AGs93I33GM=;
+        b=KAi5Wy8BtZjEBu9cL1Gtb9oavdh4bcvG/D9PB6zCQarH/LWICtXY6DnEyIdLl4SLpw
+         CtGBBDCyp38tZXdp0X1zfJYZhmDmpe+2ZjmsFT/ZdBAuQLaDL//AZoLFz8PttDyLsyAz
+         pfHN+n0OKbnElTPIWHE/5dEVW6UEC6pHOB0i1Irc8uvddLDzrNxHCPVKdeDdvu6HoExt
+         7M7Iq/PyFc0S38p0rGUmfdWaLL3CsSdJ+sb7oJpuZlRi50y3NXN0G5BIBIWrehijbR/E
+         k6AEpSMMk/MRdq45elfbMiDP1H09YfJ4O+TXKUORhBCg2crpXFOY4HhBt/dLVo+onTH8
+         puNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=PEXpj2L+gpDNq1i4Z5sLZSfUj0y792AiYZDeGNwur7E=;
-        b=SbSH6MHHWbhOnvU/QNz/bZGL3sdbf6WIFeBKWM2lRvugOTxIrlOEgmLYB/f35iy6a8
-         KU2RSYJ36RGJ9OhAMfjFwR2++Wy4RzLdDyFjXFj7EJgJCHYfWZFAExusva+a3tmQHp8X
-         o5lFsC37hLzPCYNX5GbMo+B5IhMDnuPitzeFb36zqlLiq6zWcy2sWOX5AyY/UQ0O04Ox
-         CUYevRHx1WAPIwGnOCsbYXlacJKmt00UwF+l5tcnUQGlHQllZU2o/uBZ/Vwk434oelkZ
-         RJGjRBsXmi3wAUxhm3tx+FYowWPaf5nFrLS2L8l/UM9GOavw/Oq0YcJsXVxWVQpuTh97
-         P53w==
-X-Gm-Message-State: APjAAAX4k7AonVe/3W+huSvQUeVdCJkWuKS4Z//FBcGovoLIDvwiBFkf
-	aNtSqAM27oz6kfbQUNWqPmnAtrx2R6c=
-X-Received: by 2002:a17:902:778a:: with SMTP id o10mr24248312pll.135.1553967375035;
-        Sat, 30 Mar 2019 10:36:15 -0700 (PDT)
+        bh=3XRrFcCcXmky5Oo4G//Fpa06+3fTSnOK9AGs93I33GM=;
+        b=OzwONKqrrqPnsjOifMdp4LPpwU63+2jdZdEHqfQL8Jo5WEVSeVgXeSQbrcF1hy1uHI
+         mmZ+Iu7ZeryJb2+NGZFYEDshE2NZwPHpaTG/f0BwT4c/+uI76vnaYufOmyUptH5nVHNA
+         RxxWk4Xio1hRzXZcCBwWTPR+kRA+3orIjCOqbCsyINEHo0vJzaupjdrESW7xXDpa/zn8
+         YEnW7gfcdb+zpsjEFk+2HNhc5Kp0YgF3PbSrScgv5LXdH1KHjF0Oby/vsmXJ7ZCNob0a
+         l1asI498w2W+lfeSO3v5vYQ4MCtk/rzmvtC1qIAI2YhWawR9c6QF+m60K3gtcrxC0TUV
+         i5lw==
+X-Gm-Message-State: APjAAAUt7aTSjMERRS8eqpr5ceoFZwb5mCHE/hSKaFJ7pZo3ul+S1c9U
+	DBM8ehhrILE2sQiz4ItjXao=
+X-Received: by 2002:a62:5ec2:: with SMTP id s185mr16247033pfb.16.1553967296194;
+        Sat, 30 Mar 2019 10:34:56 -0700 (PDT)
 Return-Path: <sanjana99reddy99@gmail.com>
 Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.90])
-        by smtp.googlemail.com with ESMTPSA id 66sm9381360pfr.44.2019.03.30.10.36.12
+        by smtp.googlemail.com with ESMTPSA id u4sm20802377pgn.12.2019.03.30.10.34.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 10:36:14 -0700 (PDT)
+        Sat, 30 Mar 2019 10:34:55 -0700 (PDT)
 From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4 1/2] staging: wilc1000: wilc_spi.c: Modify return statement.
-Date: Sat, 30 Mar 2019 23:06:05 +0530
-Message-Id: <20190330173605.5335-1-sanjana99reddy99@gmail.com>
+Subject: [PATCH v4 0/2] staging: wilc1000: Modify return statement
+Date: Sat, 30 Mar 2019 23:04:45 +0530
+Message-Id: <20190330173445.5268-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190330170116.4761-1-sanjana99reddy99@gmail.com>
 References: <20190330170116.4761-1-sanjana99reddy99@gmail.com>
 
-Challenge suggested by coccinelle.
-Remove return variable and directly return the value
-Issue found using ret.cocci
+This patchset does the following things.
+1.Modify return statement in wilc_spi.c
+2.Modify return statement in host_interface.c
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
 Changes in v4:
-No changes
+Correct the version number for [PATCH 0/2] i.e 
+rename it as [PATCH V4 0/2]
+No changes from [PATCH v3 1/2]
+No changes from [PATCH v3 2/2]
 
 Changes in v3:
 Make a patch series.
 
 Changes in v2: 
-Adjust space for last argument in return statement.
+Adjust spaces for last argument in return statement host_interface.c. 
+Adjust space for last argument in return statement in wilc_spi.c.
 
- drivers/staging/wilc1000/wilc_spi.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+Sanjana Sanikommu (2):
+  staging: wilc1000: wilc_spi.c: Modify return statement.
+  staging: wilc1000: host_interface.c: Modify return statement.
 
-diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
-index 4a1be9e60d74..47c777c5d1a7 100644
---- a/drivers/staging/wilc1000/wilc_spi.c
-+++ b/drivers/staging/wilc1000/wilc_spi.c
-@@ -934,9 +934,8 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
- 	int k = IRG_FLAGS_OFFSET + 5;
- 
- 	if (spi_priv->has_thrpt_enh) {
--		ret = spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
--					int_status);
--		return ret;
-+		return spi_internal_read(wilc, 0xe840 - WILC_SPI_REG_BASE,
-+					 int_status);
- 	}
- 	ret = wilc_spi_read_reg(wilc, WILC_VMM_TO_HOST_SIZE, &byte_cnt);
- 	if (!ret) {
-@@ -982,9 +981,8 @@ static int wilc_spi_clear_int_ext(struct wilc *wilc, u32 val)
- 	u32 tbl_ctl;
- 
- 	if (spi_priv->has_thrpt_enh) {
--		ret = spi_internal_write(wilc, 0xe844 - WILC_SPI_REG_BASE,
--					 val);
--		return ret;
-+		return spi_internal_write(wilc, 0xe844 - WILC_SPI_REG_BASE,
-+					  val);
- 	}
- 
- 	flags = val & (BIT(MAX_NUM_INT) - 1);
+ drivers/staging/wilc1000/host_interface.c | 31 +++++++----------------
+ drivers/staging/wilc1000/wilc_spi.c       | 10 +++-----
+ 2 files changed, 13 insertions(+), 28 deletions(-)
+
 -- 
 2.17.1
 
