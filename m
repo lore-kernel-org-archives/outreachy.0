@@ -1,129 +1,123 @@
 X-GM-THRID: 6673442126229929984
-X-Received: by 2002:a25:3bc6:: with SMTP id i189mr2922304yba.59.1553922789465;
-        Fri, 29 Mar 2019 22:13:09 -0700 (PDT)
+X-Received: by 2002:a24:2704:: with SMTP id g4mr2876793ita.36.1553922783475;
+        Fri, 29 Mar 2019 22:13:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:19c6:: with SMTP id 189ls1304876ybz.3.gmail; Fri, 29 Mar
- 2019 22:13:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqym4cgUu74EnZRNAPYxS3Lqrt0oFNF8iBj1S+tbaj+RfaAV+O8O3v7SKFwIe9QA0Pp5mLNR
-X-Received: by 2002:a25:72d4:: with SMTP id n203mr3315180ybc.43.1553922788562;
-        Fri, 29 Mar 2019 22:13:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553922788; cv=none;
+Received: by 2002:a02:cd39:: with SMTP id h25ls1532608jaq.1.gmail; Fri, 29 Mar
+ 2019 22:13:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwuIZPttlFO2HCyC4MdlLshZdDv2jyYzW2qL97s95+8YkKpPZqC8lw+jSczrQRvbHDyQBuq
+X-Received: by 2002:a02:5ec9:: with SMTP id h192mr6112899jab.2.1553922782614;
+        Fri, 29 Mar 2019 22:13:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553922782; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bz2NCGGkcTJDqGvXfeiYa8mDJ8VLuJk3ucfstM0W4nsQPTpVNnizlG8GGiKzPLrnDY
-         DJdnw89cIcGhh8DdywpK37ojqiTuELg4Z8MIOFf5TjCwjGiAhdzXKeBdMTpsY3V1I7ie
-         bXRYuG6lmlYmywo+qXb1oJjgr3iWFxMI597ZcvVZRPEX4L/EaI/qiZZ23ayxgS876tiP
-         nyukwJ2CtE4QnpTMDLclurf93ZszsP9/h9/MhAT4K0rUNz7HJFu4L6ZkvJrecPH8tbwo
-         Hjh98aaITeW4Xw7hk8Zf3RuwsqpYKHEA5kxFoRM4rE+ibvhsW8Y8meU6nuVZC8jwM0yl
-         y2RA==
+        b=b4NrlJTEa738ZOilTnMv/nFAvxjVRyHXmV1F433zURqpxx3T+hSQXb4HhmckKKNKjA
+         euDgI7H7jLDgeIbDJzDosQOl7hTn/GDGGdq6NNDSZ8Eo/iVN1lIHygYiZmHFWVCZ8N9Z
+         Y2Gj/GV3xMfkFMH02TprObXUvg4zWvVx2XA+bfRTsV5T0wCY5rSVOovaI6fOcAZiAqkr
+         hfL9jFQROk4tEhgxB7qTKFK0bFPIWQwQWjYE3AOuFd7zf4+oiQNab4/WMV6y3KWzRJZU
+         86S/mC8BqjQ2W5Ad7ipRlQNBlb8HiGYEmWB0OCgS0f4VBkWg2i16Bwdzx4qPDorA7w03
+         UOZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=yHaFKMdI3pjCDSW3H8Gp98e5rwKeV0dUSP4vzy/Gnt8=;
-        b=WtrhA74AKgaTmg5AgHGmGD4dr9ahXWBcVkBnkfzci7r/O9AF/uuNIR242/RhwSZvcQ
-         5EEqoTU+5jVEDTkJAdndebiHTu0FkBpDgnKB0Q7y784xw3BUEFCR61tmb5YllO+Mlkn0
-         BBrA0SCeKVRk25dRQScIpTqIyi2KRKF9vDG4ggeuY6ElAAShFI+ChyJjhvjrgE/xqdDS
-         YiPAEEyCMJO6VxhSRIaTaNO3I3vwzrfOzu4EIsKQl7NvMps+D7uJFPkziYh8RwAPL0uR
-         dOPEVLhCS7j8DUPRQ/YKONfcFcJ196i4W+JBUVZ8EnP/y0ZBZeKkHqFIxL1bQ9vRQI5c
-         fWFQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qoA8WrfWMwyst6Bb0EmDQlIHev2JBrNhiZLMlajF3jg=;
+        b=Ghx+S3BxaTrh0KhwkvJCHU7xRVpM+A0vy1jiaSBrABVQcuuDjRDa1wsNJeqV7OnkBq
+         D9qozn7gESvSWZUTyFBaU5y/LIu17/mBIeuho74KTQQku5ZTEBgQ3YojVj9S1TuUbNo2
+         4YXqqjn31FKKLkyMJw2lVu7nHTwDybSj+sqyxSGJGWTBzpa6nft2xSt8yIY0IvuprPRP
+         JBqKW0U43wj4izOW6/EGU90D3UM9I17tGXs6/Y9GHYMut8IwpxhBofd6LgD6KNJpebFm
+         lJjw1yhKedR0hZlKDpoZ6OOovXqVKb5qLCtRGYpaIOQ1hF42oI1EYJXPAdEv9n7wkgCO
+         XWSA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GETVO9XO;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sSNEM6ru;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id a184si175249ywa.5.2019.03.29.22.13.08
+Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
+        by gmr-mx.google.com with ESMTPS id u1si695820itj.2.2019.03.29.22.13.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 22:13:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Fri, 29 Mar 2019 22:13:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GETVO9XO;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sSNEM6ru;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id g8so2176501pgf.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 22:13:08 -0700 (PDT)
+Received: by mail-pf1-x435.google.com with SMTP id 188so1996158pfd.8
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 22:13:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=yHaFKMdI3pjCDSW3H8Gp98e5rwKeV0dUSP4vzy/Gnt8=;
-        b=GETVO9XOWmQQrzEgvCfMCJh+9VIUP9+lDA73xdX4GUqbatmE1VfGiK4SnL0DyA2OFY
-         Sfc3HeY5fAxHh9G0Gsgs2piVCHtgbEkDetjnGlsGdXLLaCpfTi+xk+w0i7Rn5+Dx5Bpf
-         jZDbunakWQMk+WClzAASD4sDQ+8hEbYkS/2CRKGmNxXFo4QIFVtV7DK/n0OkYDkLjLi7
-         V90eonJLwf6j4Qv0W2qbxG1LwA01rc9MUepzuubDJRPfAgYBUnPCy3wLZTCKvsvZqL35
-         ZBV6kC6/deckhndK3q3PsFBIksbI9iVyW630QQee/8Ccpgu7lJR6rCOUrtzGtlDQ98us
-         Y0mA==
+        h=from:to:cc:subject:date:message-id;
+        bh=qoA8WrfWMwyst6Bb0EmDQlIHev2JBrNhiZLMlajF3jg=;
+        b=sSNEM6ruStwVlllIzDx5r3RGv9V1keA1TbnvJ8VzmaqneZdToEbOvLdtDIGWg6DX5D
+         5YpXd8qamWqWnWldb8uhWhMxMrJBX5YYJUqoZJiT/lcyxEo0UeOhhRuXc2bnZ95gapyz
+         aXdVvIVLT2aVx5OTufAE9c8NzuVyB1T7H7XiU5jKUYin6l1M6kv619DbWTqr/PyBmu63
+         ph1GaP0D78mnupXMzaN8p4+Le6kpEwtUOciv5SuTTzA4I/9q6Ssw7XbcjzxAZ89MGlyD
+         ubCsqTLwQuo9czz4EDaF6ga8McBUv/etVNnsy8VZ4uNfq+XdTnbVRLsPOjY/LecSda+V
+         Lb1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=yHaFKMdI3pjCDSW3H8Gp98e5rwKeV0dUSP4vzy/Gnt8=;
-        b=HJehuuV0OIMKRHy3z2XpnQCsHLGkAQTLBon4xfn+xe7SZ53pys0p0cr3j6at2iuOaz
-         FJ2iOFeG4ci1xuwC9BG4tYA6tx7Az6YQ4rEs3w5chIe2fvU06LPFSzRjykpi7mBVHhuB
-         q4wVSrUcbAqEoXhAArNfR9iagPK4PcfFLqzWfWfD0+/GpXXVGFD8nZBp73Be0wBVu3LT
-         L1N9aC3YUWQYcrcBswgvBPL7DuOZzUxu0BLy753ZV+XkzEFMFXZRC3rfd2002RlnlZmM
-         ldI05xahAmHCRLgLuC3n4S6qLmW1oj+nLslT2CZeg72elQ0xHTQD0cZLls/YIDYn75KY
-         FOXg==
-X-Gm-Message-State: APjAAAX0F5LQMSP8//eSOhfq3oLy0ptZWxcV4bcBBLxXAeLhmLZirOov
-	AnbdAt+doUtsK1AdvUwR8pKcBuHj
-X-Received: by 2002:a63:7153:: with SMTP id b19mr43393455pgn.289.1553922787514;
-        Fri, 29 Mar 2019 22:13:07 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=qoA8WrfWMwyst6Bb0EmDQlIHev2JBrNhiZLMlajF3jg=;
+        b=UoFXEO1TBNRmNDdwsqseVBlGyNWZKynMXX5jbJMOlum4PYaI99B2pAntQ3YxKfFS3y
+         AXLuAFeYFp27g4nHgjrnn/7LwANAbvDKQyMMebQzxX9vg6eXKteBJrC8+YZ/E+rPjzhx
+         IzjJhow2b8+kPxb4EET9Ef+nrM96B+ZxtA1JJH3+jInfdjcBhBWWvSZRZiKne4xaEefN
+         KRsXkIicMQERBgp/HU2nOii1QFXq0fcpg2CDaEGnn6KJgxE1oyilRTUF6zhdu8MEP269
+         mwyfZjaDxTPtkdGV9eHOq4YDbjkhrZiBuWIMCot1oUO+dOeCU9lGxSepzKUdFsQxgZUU
+         4xTg==
+X-Gm-Message-State: APjAAAUsbF42CO5Mf65hFIq1o4wXAfJsFlXu50i0gMcFes+xFEYfPkKo
+	omxYroKAYpbTlsNP1dc+ngrjjfjo
+X-Received: by 2002:a62:f24e:: with SMTP id y14mr51115363pfl.209.1553922782057;
+        Fri, 29 Mar 2019 22:13:02 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([49.35.4.242])
-        by smtp.gmail.com with ESMTPSA id o2sm4864557pgq.29.2019.03.29.22.13.05
+        by smtp.gmail.com with ESMTPSA id o2sm4864557pgq.29.2019.03.29.22.12.59
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 29 Mar 2019 22:13:06 -0700 (PDT)
+        Fri, 29 Mar 2019 22:13:01 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH 1/8] staging: rtl8723bs: hal: sdio_ops.c: Remove unnecessary parentheses
-Date: Sat, 30 Mar 2019 10:42:40 +0530
-Message-Id: <3edb3e5edc4afff83a6106488888d7c2cc636870.1553921776.git.payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH 0/8]staging: rtl8723bs: Remove unnecessary parentheses
+Date: Sat, 30 Mar 2019 10:42:39 +0530
+Message-Id: <cover.1553921776.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1553921776.git.payal.s.kshirsagar.98@gmail.com>
-References: <cover.1553921776.git.payal.s.kshirsagar.98@gmail.com>
-In-Reply-To: <cover.1553921776.git.payal.s.kshirsagar.98@gmail.com>
-References: <cover.1553921776.git.payal.s.kshirsagar.98@gmail.com>
 
-Challenge suggested by coccinelle.
-Remove unnecessary parentheses around expressions.
+Challenge suggested by coccinelle
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/rtl8723bs/hal/sdio_ops.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+This patchset removes unnecessary parentheses while returning a value by
+evaluating an expression, using following semantic patch:
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index 3fee344..f5f7f36 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -560,7 +560,7 @@ static s32 _sdio_local_read(
- 	n = RND4(cnt);
- 	tmpbuf = rtw_malloc(n);
- 	if (!tmpbuf)
--		return (-1);
-+		return -1;
- 
- 	err = _sd_read(intfhdl, addr, n, tmpbuf);
- 	if (!err)
-@@ -601,7 +601,7 @@ s32 sdio_local_read(
- 	n = RND4(cnt);
- 	tmpbuf = rtw_malloc(n);
- 	if (!tmpbuf)
--		return (-1);
-+		return -1;
- 
- 	err = sd_read(intfhdl, addr, n, tmpbuf);
- 	if (!err)
-@@ -646,7 +646,7 @@ s32 sdio_local_write(
- 
- 	tmpbuf = rtw_malloc(cnt);
- 	if (!tmpbuf)
--		return (-1);
-+		return -1;
- 
- 	memcpy(tmpbuf, buf, cnt);
- 
+@@ 
+expression e;
+@@
+
+return
+- (
+e
+- )
+;
+
+Payal Kshirsagar (8):
+  staging: rtl8723bs: hal: sdio_ops.c: Remove unnecessary parentheses
+  staging: rtl8723bs: hal: rtl8723b_phycfg.c: Remove unnecessary
+    parentheses
+  staging: rtl8723bs: hal: hal_com.c: Remove unnecessary parentheses
+  staging: rtl8723bs: hal: odm_HWConfig.c: Remove unnecessary
+    parentheses
+  staging: rtl8723bs: core: rtw_mlme.c: Remove unnecessary parentheses
+  staging: rtl8723bs: core: rtw_wlan_util.c: Remove unnecessary
+    parentheses
+  staging: rtl8723bs: core: rtw_ieee80211.c: Remove unnecessary
+    parentheses
+  staging: rtl8723bs: os_dep: ioctl_linux.c: Remove unnecessary
+    parentheses
+
+ drivers/staging/rtl8723bs/core/rtw_ieee80211.c  | 6 +++---
+ drivers/staging/rtl8723bs/core/rtw_mlme.c       | 8 ++++----
+ drivers/staging/rtl8723bs/core/rtw_wlan_util.c  | 2 +-
+ drivers/staging/rtl8723bs/hal/hal_com.c         | 6 +++---
+ drivers/staging/rtl8723bs/hal/odm_HWConfig.c    | 2 +-
+ drivers/staging/rtl8723bs/hal/rtl8723b_phycfg.c | 2 +-
+ drivers/staging/rtl8723bs/hal/sdio_ops.c        | 6 +++---
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c  | 2 +-
+ 8 files changed, 17 insertions(+), 17 deletions(-)
+
 -- 
 2.7.4
 
