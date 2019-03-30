@@ -1,63 +1,63 @@
 X-GM-THRID: 6673915321016909824
-X-Received: by 2002:ab0:2396:: with SMTP id b22mr4021441uan.1.1553934426384;
-        Sat, 30 Mar 2019 01:27:06 -0700 (PDT)
+X-Received: by 2002:ac8:2f98:: with SMTP id l24mr4682484qta.8.1553934402178;
+        Sat, 30 Mar 2019 01:26:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:7c4a:: with SMTP id x71ls1004740vsc.0.gmail; Sat, 30 Mar
- 2019 01:27:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxu9P+2EgL/gBAGF7PztznnD+Ng9Q2mq4nUhCxDqqcKva9+eUZozKm9V0YOeJHbq0DkOd8G
-X-Received: by 2002:a67:f24f:: with SMTP id y15mr5177982vsm.25.1553934425969;
-        Sat, 30 Mar 2019 01:27:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553934425; cv=none;
+Received: by 2002:a37:58c4:: with SMTP id m187ls2032496qkb.7.gmail; Sat, 30
+ Mar 2019 01:26:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzpB2dDrI2XQD1/oKc7+RZtTP0A60wGBfK2p03mMjlhRMlUivIW3oNjp9hvs8gMv/7VpWM6
+X-Received: by 2002:a37:a993:: with SMTP id s141mr658981qke.1.1553934401628;
+        Sat, 30 Mar 2019 01:26:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553934401; cv=none;
         d=google.com; s=arc-20160816;
-        b=zeeL1K3BMgdJdBfPlzyYbUro69TEjko/F8+p9Kp8U0OsH8oKF7FmPpJ1iNmxgq5mcd
-         4iB4Ks/xfTkhaR/RGjA7naVw34jMgeyPPqHXftnz64wtsMCtjx34PbxYaicJgNBubyzO
-         3ZNacxqrq/Q9cbcAjZoIO6K3KEbcUSev2DtSvaq2Nm9lMLVDMIcsMucFH5VzDepbUNhZ
-         N+ACwn6WXk9M+/Qn3xjnmidmZVL9O4hAXmjVMudC5jvvV4WKouygYiHCAaKo/P8ZjuxP
-         seGUAnsE9N8JTE86I8n5XNHQKw0BxIgFWEwLXQCetVot/4H3HAPTkj2mFa/8/yufvZ/X
-         BBKA==
+        b=AwAuSzLdYwDUyFMMDrFT/PNMUl3kDf3y1CjDMAobIGNYZKOuU5bN6nRyG4QZ91QdzO
+         eBfkjlZgXVp4NROaYe+SpOkv0tOYnDQbMX81OKr2Fttkrk9fsbu7UWz+k32U9m27kg9g
+         AGQPHSxghGeH3UnHegK6ER2WAsaHUbRx1hEjvtRSd21WbOVWzVP7Vr5mamUetIs5b23m
+         bBCiJmiaxfk666/zKv8X5064j5xt5Doja7XBSZlEXjk8zWDiB9p9BkOqsRNcSnEkgXWh
+         2fCpANKngawfGkBjCRtj/ATeGTRTHHNDoywbfmkAxtOy5GxQepauoaHUbFDuVoTB3IGt
+         /3Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Cdq94drGAZw7Xk/3eL6jxK2nZIMNjNCpLdJwFdfvHMw=;
-        b=LMxC35HG/8kMw/T0t1ubVCjiSUnT7CFNDmk1Z/0Ol1RR9ZRkdGZMLSojMjmTX0S5h4
-         OVEbFY//ZkwGHhaOTeeLuiHoikS9YyKH0yi/vopnPFC/EaNZbuxavW0KcJmNlrR9iZYs
-         fCdPkJo4ey0ZPp54oeovYGOde6lgxlyH0gKALqdm1YTj9xFC9LWv6jZ8pzBrshmJ//Qi
-         J86Wots1oPWDihNy3QvIn19ColMtNuL9P8v1pcqqVqBsxJXEAPOXBGhFqzPPktenr1Eh
-         sOvmXN9/COAtI2AHCnIrEEOyJlzYNPxTvSzJISsjjavGD54ymeiWVftr1q1Ff6fzqV5X
-         FPig==
+        bh=Dy6UQoGr+ZPoHi9iadsD0hsDsArJctQ52UnLXpzr0pQ=;
+        b=1HSZnrsSCmmDCr/DFk42F9I8VCzudv47e4WA05OpWfhARkjpT1HPkhV21X1BJoqB/z
+         OFCa6ERgNu8bpENPM3+XaKOg6Lzn3hLa7n4mpZR9DzO/T6e0/tIfcnGcZTZqtn8uRclg
+         i+nMBfdbUazjeEIijzR86SZ5vJrcTOKORmzTBAe7Cs0w28+2Na7g/Ls21fViaJZXSr1z
+         aSIVXhiDjtKT3yLzZuc+JlRtU2vdKeNw8BV2UePtx5b+3FkvWCOrqPxEXdRXXhZVAGgW
+         juxwaADN+OcxN0Z1dUs4CLCiWZdJm1p2CtPFajbprOO/W/0OxPbBHj6kcPlVAvs6qGzB
+         e3sw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=utg3LpKP;
+       dkim=pass header.i=@kernel.org header.s=default header.b=m6Y6Dhy7;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k77si264479vke.3.2019.03.30.01.27.05
+        by gmr-mx.google.com with ESMTPS id o59si193057qte.3.2019.03.30.01.26.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 01:27:05 -0700 (PDT)
+        Sat, 30 Mar 2019 01:26:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=utg3LpKP;
+       dkim=pass header.i=@kernel.org header.s=default header.b=m6Y6Dhy7;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (unknown [62.119.166.9])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 321082173C;
-	Sat, 30 Mar 2019 08:27:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id AB3552173C;
+	Sat, 30 Mar 2019 08:26:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1553934424;
-	bh=v/S7vY6AaGU3fDqcl/I+L048MdPMqnvBna9vLjOiaI8=;
+	s=default; t=1553934400;
+	bh=R/32gTV9XUbldNhzlQ1g6p+NWvUJtOT0U3ormXLj8XU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=utg3LpKPXw+Q9HtktePwAMNNiV85xgFt0tKxBapEHl2SSsEWW3+7uE7U8huCKBRTc
-	 G/Z7rRo6/L2jYdSDbeO15EDb5hswHT4MsZy5meE6vrAf1jx9RafYI0PeEXNnHJhx6E
-	 8g4P0yUB0vlzboOTkv6yuRHzdVPDDZG9douvsAww=
-Date: Sat, 30 Mar 2019 09:27:01 +0100
+	b=m6Y6Dhy7xi7qbgzyLkd5SA9QsBHcwrsU096IAqAfsWMOoiX+SyhBpMlvy+buMHlwF
+	 Fs/5udZmEnbyDSeivumqAShMa9sbkxsLDD6bM8ZnQOkJkb8gDP1xvUy/V1NPUUqoMQ
+	 07d0HMzYdxqxTHAw7QlInXZH6TPY8JFVR3V3MyaA=
+Date: Sat, 30 Mar 2019 09:26:36 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Briana Oursler <briana.oursler@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, elder@kernel.org, johan@kernel.org,
 	hvaibhav.linux@gmail.com
 Subject: Re: [Outreachy kernel] Subject: [PATCH] staging: greybus: line over
  80 characters
-Message-ID: <20190330082701.GB24272@kroah.com>
+Message-ID: <20190330082636.GA24272@kroah.com>
 References: <1b8f45c76effdf0b4483c71afd02b2f773812788.camel@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -73,30 +73,10 @@ On Fri, Mar 29, 2019 at 01:39:56PM -0700, Briana Oursler wrote:
 > ---
 >  drivers/staging/greybus/arche-platform.c | 4 +++-
 >  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> index 6eb842040c22..b839a9eecc55 100644
-> --- a/drivers/staging/greybus/arche-platform.c
-> +++ b/drivers/staging/greybus/arche-platform.c
-> @@ -155,7 +155,9 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  {
->  	struct arche_platform_drvdata *arche_pdata = devid;
->  	unsigned long flags;
-> +	unsigned long cold_jiffies;
->  
-> +	cold_jiffies = msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS);
->  	spin_lock_irqsave(&arche_pdata->wake_lock, flags);
->  
->  	if (gpiod_get_value(arche_pdata->wake_detect)) {
-> @@ -169,7 +171,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  		if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
->  			if (time_before(jiffies,
->  					arche_pdata->wake_detect_start +
-> -					msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
-> +					cold_jiffies)) {
 
-In looking at this again, the original code is fine, no need for this
-change at all.
+Why is "Subject:" in the middle of your email subject line?
+
+Please fix up and resend properly.
 
 thanks,
 
