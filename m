@@ -1,111 +1,111 @@
 X-GM-THRID: 6674267883353145344
-X-Received: by 2002:a1f:3c0a:: with SMTP id j10mr4809467vka.17.1553974105142;
-        Sat, 30 Mar 2019 12:28:25 -0700 (PDT)
+X-Received: by 2002:a24:9485:: with SMTP id j127mr4115583ite.4.1553974102860;
+        Sat, 30 Mar 2019 12:28:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:2743:: with SMTP id a61ls942440uaa.0.gmail; Sat, 30 Mar
- 2019 12:28:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyLcMI7/R8RfmXYk/fYXcCCAWYG3GGBVpeCEbFpnXbH3r1Jj3zbxJwgsSe226WfTyDzJuKi
-X-Received: by 2002:ab0:1d18:: with SMTP id j24mr5689578uak.6.1553974104646;
-        Sat, 30 Mar 2019 12:28:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553974104; cv=none;
+Received: by 2002:a24:3553:: with SMTP id k80ls1687055ita.4.gmail; Sat, 30 Mar
+ 2019 12:28:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwKRJdI20UeaxjJVZN/Epf/MQqcs2HzA/iFNnuuZAgKZfIAwgQqJii3P7FRmRZaO9RUvqtG
+X-Received: by 2002:a24:9c85:: with SMTP id b127mr4370756ite.36.1553974102049;
+        Sat, 30 Mar 2019 12:28:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553974102; cv=none;
         d=google.com; s=arc-20160816;
-        b=0rX9Ukvoq3Y1ghry6o2DOKDhpBuSU+W4QJMgDXOik9oLwwyPq4r49zxtanCqqaGgfT
-         Zkhp2WoPGXAzwfCmTDTft2UTf5fq58vwNS8l4TnMrk9TBY1ElhBIAAYTE/u76B7zFDNo
-         11KMgXiz3muBl1Nw4Ffl3psuB/dE2bHFOIp45a9gR482LOV97qIgZe/KrZWqvyydkNDd
-         S6oAGXPYzVRbgBRvnFDwMpnYsFSj+0RTpzCPLDrerXnbQRJxBXzeng7RWD86uULxNd/M
-         zHROOph2511+nw1bG6JYTz479rxcGfNr9Ijbq46Hvt7UCUoeRz0WvpSyB87Na1pnYR+8
-         6ouw==
+        b=AYyEwtjegJdnVfarJSF6/i+dz3F6oyQ9MafChHWr0/TuI4JuOTwvix5wtw6Givhr+9
+         hZg7kqZ3iv7r6V/bH+YspYA6iaaE1VnUpSfLhN2z14PthQdgMugWXqC9KxEAh+4Wjddk
+         tKSY3A8FtODD74zige1WqyHQkJxMkyGejgouxz/tcaZMKiTRhSYnVjQ7Up4LoPq/F9UP
+         I2FBG5NHdTSLtFbjRRe9MnHOs8mPYqAF8v0+N+TIDvgmKGhQSv1bCcapJgGQFpGajeit
+         ZB2q4wAkCXUlQ85RHac3SEtNYEGOIipw54tqwyWNPcXQN7dLC2CfQqyJdo2Reqr27C/7
+         8gJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=qUT2xnWdzsxjwJ/AekHXnnpT/3kVFPaZ9ZzIFwiw4iE=;
-        b=GBgfLQgxwaeDAp05ziLdetFxJrcDq4Ijv3GXN5BdDpyJt2mqfbQ3QbKBHf2VpJ3nll
-         ahNC+IC9ok2+uEnEQW1Ho2+9VLsLe3sWJI3woemf/Y4IzNhUMk88EPwNIy8B3BNkm3Kb
-         okbGOgQglEtRP+qifJPWRnokHkwVsjOYhAm356w6Oq5aYJXhBK3PiZWkYIYqkDrGlH2i
-         gamRIKwH+B+Fg09GibUBq1e2ZOL+HAptSrXFLBDwjPQ/pKfyzbbk3gBDE8YRs7CgUBPI
-         mIy/yt780KHddUjZjpAfRIwQ70lqYTo1ZUhjJc69wkTfqC87H1gjwsdOFWXrC+rsPNSV
-         EeIw==
+        bh=V24dN0eSmwapahr2/oDUPmt0hdtQi/FdqabVFwdEs6I=;
+        b=wh8udHWiqFRKl8g4PP/elFFjbk8dzFalxRBuW3w2E1ZzMzzKWC5/bzUIj+VvYbaPmy
+         BXGvxGfF9bEfbj7lD1pG9KjutrWfDQs8dcmyOdOrkmkuCQqSJbrDete10oyx70nvaY2L
+         X3BI14qPHRC3ReClb0TwKEFzv/iy9ROjzMRq4FHqLUC5eiAUdDrcaFnKLqDtZ3n1XOYb
+         X17POlVgKmPcGj4TUkz3p5+kPaz9mDrKbMPI0h/4K5S1boMI1kCq6dZ5GDXeOoujk8Wv
+         cDQaM2WiWI3gYpuBFKB7Ym9QPWY5bMa2xyvvmGt6Kj/n/z1Sw/ZZ1dBkhnTMbjPJdlUJ
+         JSDg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W6zvr6AY;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OU3fl4BY;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x533.google.com (mail-pg1-x533.google.com. [2607:f8b0:4864:20::533])
-        by gmr-mx.google.com with ESMTPS id k77si337227vke.3.2019.03.30.12.28.24
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id k26si210676ioh.5.2019.03.30.12.28.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 12:28:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) client-ip=2607:f8b0:4864:20::533;
+        Sat, 30 Mar 2019 12:28:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W6zvr6AY;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OU3fl4BY;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x533.google.com with SMTP id g8so2774428pgf.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 12:28:24 -0700 (PDT)
+Received: by mail-pg1-x542.google.com with SMTP id u9so2759423pgo.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 12:28:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=qUT2xnWdzsxjwJ/AekHXnnpT/3kVFPaZ9ZzIFwiw4iE=;
-        b=W6zvr6AYv4k2jsrzadWKzwUNx7Ausj1h+rHvb2D1PMg5R/Vd5c+Ad37mygBfaQN2ve
-         R2yA9Ybs1an0ly7Pc+NyKPcD331jyR9HJcGE4K0GMViMbcmyktyZdf3qraKfJgpqN2Dx
-         p/fiR7/gtthJsnjAOJExiaKbuVD0+GTLpoIqIA4u2lHilg7ubY/2pY5Zb/QiZVmKdScA
-         R7WgDJVNoWbpXT8uOE36nuVvL14MFfN7ldZ2ZMGGhK7xVfj/LAzz4rB0RZwpl0vwKppF
-         PKb7+BOvrJR4G97d7YX/HibLnwV+LLZCxQR3Jn2EE/bS9iW6OVzSS8xrul4B16jhRmVG
-         POnQ==
+        bh=V24dN0eSmwapahr2/oDUPmt0hdtQi/FdqabVFwdEs6I=;
+        b=OU3fl4BYK6auLVAR2FUHr2QjeIXJzi1DNW8muTKI4TyeCyUs2POT43Iig7DcyZsmT5
+         ASnHk2FnmvaBKjAS/DkDEChp0gaQHYI2Mvk/MmNpU/riWNRREW5wDsXJa2Kb79NZsdyS
+         iaY1pIVMG7UfLJVIBr3mGbzLpGRLJ4/PFGfW5GO9sI35lRk7SyO8G33hsT/4ocySGkGI
+         BT9AvkQRXXTdkHgobaXsub3DGwcfBLReyeSBtHc7AWBY9FtYgFVOKqg27OGIlFGnSD7+
+         AWmdac7hFOQGGsE8Sb1iR8zODxl6ZWq75jm7RQl2g1cd7JcGIsdvvpjNZINDLrR+7VGw
+         HwAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=qUT2xnWdzsxjwJ/AekHXnnpT/3kVFPaZ9ZzIFwiw4iE=;
-        b=Vk4lr/fjOzYnzQMr409t5GYkA2I3P7TxQQ6HxK12jDxugdGSgKzjPOEzTN2N2wH0o9
-         lo8UvV9/HW1UciDuVSJbpwXAt/pkaFiWApGliC8DLxqBQY8vGc2U+YuYd20bkX8WNPPV
-         swoW09/VxkQhQUrcrrdZweSzhbARaknyBsSIhiqeujmIoX/tWDcUFqs1wdvrli5N7HGS
-         njWXMvvE0X+AMcqZPwiVEQ9o79mFtRHB2BKR3TUcaVhy9E4JUdED7Vqx9bvfNWxqwwrL
-         BOrm0zpmrpEew0R00c1NVTKAlLQSm9aIGx9xlizuGKPZbtnkPAOIdJC7Q2VL3ag0BKmC
-         PxdQ==
-X-Gm-Message-State: APjAAAUIsR5LfCCHZf2C0H3BvfLjvnJFKjsmnpjfAT5LoDXdpNwEFYIy
-	bIPYwZYyoV78JNVyTW1ILMU=
-X-Received: by 2002:a62:e518:: with SMTP id n24mr35439796pff.174.1553974104193;
-        Sat, 30 Mar 2019 12:28:24 -0700 (PDT)
+        bh=V24dN0eSmwapahr2/oDUPmt0hdtQi/FdqabVFwdEs6I=;
+        b=mbxDPOi14CaRwobAQ/lezVUXs59TtSNcFH6xBVLrQe5eAudS9QQOZuJwNMDjJRwezX
+         T1eyFWULyxBL0sWsE28q+iOe1eRa619u4GOYgcfFw5SYKE2DBCUQFQLsPrlWqebkvT7m
+         slcsPBGLKbq3PcZfCCjdonBtu168xBf9Hv5E8LybcvvfWqVN3AZWZ3GIdgMS7YaBCMIf
+         H73lC1GFecjXSfAmGM5Oyj/4yEGSnEjFT8tDIRYRFRDj8K+RoFYtYnW1rMYwhOTI8qoP
+         YBincqmeTF871GJTkvpslP6OpViLTbMdIdFlAfP0HOycw6x3Np8xvDzydfzr7i0qs8qB
+         XAxg==
+X-Gm-Message-State: APjAAAUCcgEngwUXNIlr4Loj5WpsqBq6APg2SAiMUYDxgQ/63+ANvHNe
+	X/wU9WmfJJYf4d5vSYDnJnw=
+X-Received: by 2002:a63:1247:: with SMTP id 7mr47996027pgs.352.1553974101369;
+        Sat, 30 Mar 2019 12:28:21 -0700 (PDT)
 Return-Path: <himadri18.07@gmail.com>
 Received: from localhost.localdomain (mx2.daiict.ac.in. [14.139.122.121])
-        by smtp.googlemail.com with ESMTPSA id m2sm7984189pgr.74.2019.03.30.12.28.21
+        by smtp.googlemail.com with ESMTPSA id m2sm7984189pgr.74.2019.03.30.12.28.18
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 12:28:23 -0700 (PDT)
+        Sat, 30 Mar 2019 12:28:20 -0700 (PDT)
 From: Himadri Pandya <himadri18.07@gmail.com>
 To: Larry.Finger@lwfinger.net,
 	florian.c.schilhabel@googlemail.com,
 	gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
 	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH v2 6/7] staging: rtl8712: remove unnecessary NULL check
-Date: Sun, 31 Mar 2019 00:57:41 +0530
-Message-Id: <20190330192742.65250-7-himadri18.07@gmail.com>
+Subject: [PATCH v2 5/7] staging: rtl8712: use list_entry in function update_scanned_network
+Date: Sun, 31 Mar 2019 00:57:40 +0530
+Message-Id: <20190330192742.65250-6-himadri18.07@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190330192742.65250-1-himadri18.07@gmail.com>
 References: <20190330192742.65250-1-himadri18.07@gmail.com>
 
-Remove unnecessary NULL check for wlan_network *pnetwork as
-container_of will not return NULL in this usage.
+Use list_entry instead of container_of for conversion to wlan_network
+in function update_scanned_network().
 
 Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
 ---
- drivers/staging/rtl8712/rtl871x_mlme.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/staging/rtl8712/rtl871x_mlme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 1a15c45aa83b..be44c6b2819b 100644
+index 05bfc2a60eb9..1a15c45aa83b 100644
 --- a/drivers/staging/rtl8712/rtl871x_mlme.c
 +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -1119,8 +1119,6 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
- 		}
- 		pnetwork = container_of(pmlmepriv->pscanned,
- 					struct wlan_network, list);
--		if (pnetwork == NULL)
--			return _FAIL;
- 		pmlmepriv->pscanned = pmlmepriv->pscanned->next;
- 		if (pmlmepriv->assoc_by_bssid) {
- 			dst_ssid = pnetwork->network.MacAddress;
+@@ -370,7 +370,7 @@ static void update_scanned_network(struct _adapter *adapter,
+ 		if (end_of_queue_search(phead, plist))
+ 			break;
+ 
+-		pnetwork = container_of(plist, struct wlan_network, list);
++		pnetwork = list_entry(plist, struct wlan_network, list);
+ 		if (is_same_network(&pnetwork->network, target))
+ 			break;
+ 		if ((oldest == ((struct wlan_network *)0)) ||
 -- 
 2.17.1
 
