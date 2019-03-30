@@ -1,150 +1,138 @@
-X-GM-THRID: 6950248211949813760
-X-Received: by 2002:a62:2585:0:b029:1fb:bd86:2008 with SMTP id l127-20020a6225850000b02901fbbd862008mr24002767pfl.77.1618230764546;
-        Mon, 12 Apr 2021 05:32:44 -0700 (PDT)
+X-GM-THRID: 6673915321016909824
+X-Received: by 2002:aca:ec46:: with SMTP id k67mr4278734oih.38.1553989866051;
+        Sat, 30 Mar 2019 16:51:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:1656:: with SMTP id 22ls7172570pgw.1.gmail; Mon, 12 Apr
- 2021 05:32:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxP9+KjyO9PCBDw96nKtCkSB3J78JuRnqt2a5wNuoC8E7QIxU1KUjsKOOPb+EMTi0ubQVjQ
-X-Received: by 2002:a63:b00b:: with SMTP id h11mr25986648pgf.204.1618230763414;
-        Mon, 12 Apr 2021 05:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618230763; cv=none;
+Received: by 2002:a05:6830:1096:: with SMTP id y22ls1611680oto.9.gmail; Sat,
+ 30 Mar 2019 16:51:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxkkZXZHM1VfV10kdHqfmoRimHyzayaUH+ZACTrhzvCsKoAvzSSmLSqX7EQpt//WiWNTeHv
+X-Received: by 2002:a9d:7a44:: with SMTP id z4mr3963162otm.41.1553989865274;
+        Sat, 30 Mar 2019 16:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553989865; cv=none;
         d=google.com; s=arc-20160816;
-        b=IcO0TZuR5Vkmm9C1zzywrLjXYlQPBxINZr9C6lclip8Gtfep2FE2NzrmGy6OwSbHdh
-         RuFKvkn/iIeY3Hu8NKfuhOTXsXUFfgRPnlqtaYlmtnk4N6aBCbmEeuCeZ/VaNBOHmtVS
-         97dQZtXAcivbJ1tyYGKqxFMz1aunpJP+w2cFRQ/OPdFPSM2gwcSJTeoCO/KXpr3fc/f6
-         x/eCSrZpSH7n/+wOVNOn5w8mt6Gp2ARAuCDipeNdIwvfRQrca/CxcRBfpSU8+T81afcm
-         0LCxrlRXs354mwZQVpahgWkU/LrKygYupJG65jn1prbi+IBvB7ip3lhunBrhja2J/nO9
-         fWyg==
+        b=kmC8NQacdi2r/wluQKGZ+mvqDldBxmMDpJdngIpttfY+FtFfNHwMA2nxVVxSUWhrIy
+         IvgmLTFIPXHxw+iGb54WHx0j8osQOsfA0dCv9aFKEWqtNc6SgWrRTSu1Op7Go++oiCgk
+         r8LSf/cV2UZ6VLVEuGIkBWyBof3F9RbmrqPUoJ7M5Kwys0YKgOGSdOV4CwReVeo33vSp
+         QUS+AxeTlvZprQJHRt1MgGNjw7YyorGcAbb8mp+4wo7Z3wvrQcpGIFtLI5KuBohbVl9D
+         pH2KXmvcArM88XsOjDYHIA/Wkdfs01NIoyUyRm1ioQLKUxNa6HhfuhfL3TmI1jOW51g/
+         H6yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=alZ/njDA6kDUiXsUqrZlj3PHW2OGA8s+7K/9VZo9fWw=;
-        b=IsacqPGanTG0dmwSe09EX245nqAVRnn/uELfNkHxFIpXjlIjSTYW5W2OfBOEMAxmnK
-         Bd97doPxv8WqvZWGGWjyPAH3e8WICiS39HPyibrU8Zo21UvlxpJhb0501gS53ZbxUvFy
-         iQuGagpVlt7H5pkAqF/nnHJJ7LYMZyr4vBHQrmxGlSlNP8UqPezzj0wzVsfBudT+6pdM
-         lykvaFpnuOhJtHhyr31wHdrGk7pCPBrHmWpv3O7fZFXhpYjx5jcBMjX9XG4j1rKK+8e/
-         1O7MxsofRFpMFMfxzGz9UNd66XOXDL7ge65RZfrRwtOLFvG4lY3pUf0YNAXcfvgrDfuu
-         3nsw==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=1PyQEIyRnxspe3bt+6hIkdoLQISPDVAnQBHYdLuQvG4=;
+        b=Gc5/62Al09t66lBDZvXCW51+LMAfYOO/Nh69KrlrMyYfxW62D4QN78H45h6xhQbhBL
+         hqqvVf/135YdFaTsaCZ8Q4tt/yZEHoQnfY1cE4z12vWaH6jw0qOu7xWZWmI/m7xjBDsO
+         OcNoeNdJStezLdsycyhe3xc/8UnP0MWHRm4P+E8s2Qqi4/76R0MuyKRawU1OtMqDAebO
+         bMVnEGMHesuxgQ4eq3Rwhxb9nZpX6jFMjiUcknelAiMpWOFPGp4/1htL6wuYWglI/FQA
+         pp1hTj7X1C1KMfUETEgYeZgx++VihSRU135Mdzzuyp7v7ftkh7RrlkrznTovW4AqA6E8
+         Uwtg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IrB5OOVt;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="UiFvF/3g";
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x732.google.com (mail-qk1-x732.google.com. [2607:f8b0:4864:20::732])
-        by gmr-mx.google.com with ESMTPS id z22si981242pfc.6.2021.04.12.05.32.43
+Return-Path: <briana.oursler@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id a134si290072oih.4.2019.03.30.16.51.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 05:32:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) client-ip=2607:f8b0:4864:20::732;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 30 Mar 2019 16:51:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IrB5OOVt;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="UiFvF/3g";
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x732.google.com with SMTP id c4so13028658qkg.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:32:43 -0700 (PDT)
+Received: by mail-pg1-x541.google.com with SMTP id q1so2908852pgv.13
+        for <outreachy-kernel@googlegroups.com>; Sat, 30 Mar 2019 16:51:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=alZ/njDA6kDUiXsUqrZlj3PHW2OGA8s+7K/9VZo9fWw=;
-        b=IrB5OOVtvD+sK7NlIiEoVjBIDu7KE6eRZbHqC99ISyF78e8bvtg7Wew06Cd70O12dw
-         7inwuWxyECY6katLBk3CE7xbmI9Z+Z5RoM3v+CLXB1Qh+KWQEUeZC1TzQm4opMCg9z2l
-         zDq37qo2QVPPZov/OYT83cej5jSStyjWXwyKBB1l0/0QBheLuveOdcTvgIZdN1BP7UE6
-         he09QLNRLTqYXbdUl4fsxCZVesJCHlDQBOCSUpQyzSmrLE0rtxHkVY8tRzk3n8bz2DJ/
-         zvmuLrWWiCTCfeGXWhwEKQ7yiJFcjuZnH7TZe27wtZVr4kMd8UjVHNIdrKW9noxS//Cz
-         EHzA==
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=1PyQEIyRnxspe3bt+6hIkdoLQISPDVAnQBHYdLuQvG4=;
+        b=UiFvF/3g2bcEiWQRx3jzEhGFVNZa5Q3tSK5L6TuyyXli9gT38BY0sp7tQG3X/uRnTL
+         zO51IhZ1L9DvQDXEIwsAUaJ+cNKdwklvAcoTwFP9TUoRQu0iIl85azVj5nW0l7GNgnpW
+         /SQWGURaqVrGKlM3jZ/sIcaqxgYJ9oMHbkZzI7aqTtH1jAOBiwTJDpOYGC4k0RrtJSMp
+         2MN930pkvG/ZqiWL1TgAjZ3DgFZLiim84aYrz2kvhUM2M2BRkSO9sH2UOyHopRtyrj1U
+         6KyP5GxmvD7ag75/pUaBo0UwQF3Yf3arbOj8rli/4fCu6tSWPQyz/eOL1NI3lQW9zHe3
+         LCzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=alZ/njDA6kDUiXsUqrZlj3PHW2OGA8s+7K/9VZo9fWw=;
-        b=tvWBtqRhDE7ND+vKefA0M/yXi+G5uHRkdQhIAi4fr9btN25OHSz9m5KNX1djOeRsS9
-         an7hKbkdr+WqsoAyaQQliVU6MbDQCR//9DL5qwDp9lzpAQMTSo5U//YHZCfVS16m5RZ/
-         Ye0e9zSG7rsUBmMcocRWsba1roNKOLZ5kDXmZ1ttyjRc939e5Ld8ZSKqQRK1UKeUaP6t
-         Pfp3bJdlwI2IVcbi0EZ7F7EBWqoopfXmV6FJOohJezFOo7VemWBoDA407zndMcgbHon4
-         6f+/GxuZ/styNn6vn6xbq9EVbtamC9Z/uZulSrw8lWeZukAvubv/kTeKGMHj4SILGDcb
-         Dosg==
-X-Gm-Message-State: AOAM530v3mLhoq53jn9VVVxP/iveK79gjuCUsoMHVFEy19XCCVIbnGAD
-	Ev1Cblx/0t5YXJS24hUru03HOCj26reKTLiF
-X-Received: by 2002:a37:9c85:: with SMTP id f127mr7659821qke.283.1618230762320;
-        Mon, 12 Apr 2021 05:32:42 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([2001:1284:f016:a037:476a:dfcd:f18f:9ad5])
-        by smtp.gmail.com with ESMTPSA id v11sm7495148qtx.79.2021.04.12.05.32.41
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Mon, 12 Apr 2021 05:32:42 -0700 (PDT)
-Date: Mon, 12 Apr 2021 09:32:39 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 2/4] Replace macro function by static
- inline function in file iss_ipipe.c
-Message-ID: <3d3facd1c3eef996d7e824917c19282bd1e1f041.1618230425.git.alinesantanacordeiro@gmail.com>
-References: <cover.1618230425.git.alinesantanacordeiro@gmail.com>
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=1PyQEIyRnxspe3bt+6hIkdoLQISPDVAnQBHYdLuQvG4=;
+        b=rcmmyn2MBiPxjdttTxriPtMwB+nzmhhTT0xKBnnsDp7z2hxbtNH1lAl75/TIHaNkWo
+         /JFru/bJYlkHQ0HyfiTHg8JwwrcaMzMMsork3FclKKspgY+4NbS4XaulgPny1DMRGJ3h
+         O8l4ukLibhsZDGsTe6oC+qmzaZQlJUPOlJOMIafX5MXEf1uQ1KARa/fxj4ondA+C3hUF
+         RtSBuy3V1PTgMMt9zNUcVoLQveTziMlrBQTRyqnJb2D607dQ3YnRFOkH8qWNyHd/ojg6
+         ZmBTNGW+/mPm7NYWtxkLD3q60/1+iGxcAfwebXquizDkoFViMqNMqkQLaTL9TV8Ci5/C
+         LWTQ==
+X-Gm-Message-State: APjAAAXPrhPDM3Okq035Di3HfM8vzaS4HuuDKWod4tzBk/G2SYQ/t4gG
+	Ke6P+3lObQur6ER8QSr8eEE=
+X-Received: by 2002:a63:3d4c:: with SMTP id k73mr36893129pga.154.1553989864564;
+        Sat, 30 Mar 2019 16:51:04 -0700 (PDT)
+Return-Path: <briana.oursler@gmail.com>
+Received: from blackhole (184-98-140-144.phnx.qwest.net. [184.98.140.144])
+        by smtp.gmail.com with ESMTPSA id m69sm8568784pfi.151.2019.03.30.16.51.03
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 30 Mar 2019 16:51:03 -0700 (PDT)
+Message-ID: <7469db74548ca8a071091f8966466fc528d2ffbd.camel@gmail.com>
+Subject: Re: [Outreachy kernel] Subject: [PATCH] staging: greybus: line over
+ 80 characters
+From: Briana Oursler <briana.oursler@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, elder@kernel.org, johan@kernel.org, 
+	hvaibhav.linux@gmail.com
+Date: Sat, 30 Mar 2019 16:51:50 -0700
+In-Reply-To: <20190330082701.GB24272@kroah.com>
+References: <1b8f45c76effdf0b4483c71afd02b2f773812788.camel@gmail.com>
+	 <20190330082701.GB24272@kroah.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.32.0 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1618230425.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 7bit
 
-Replace macro function by static inline function.
-Issue suggested by Julia.
+On Sat, 2019-03-30 at 09:27 +0100, Greg KH wrote:
+> On Fri, Mar 29, 2019 at 01:39:56PM -0700, Briana Oursler wrote:
+> > Replace function call within if-statement with variable to shorten line
+> > length. Issue found by checkpatch.
+> > 
+> > Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+> > ---
+> >  drivers/staging/greybus/arche-platform.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> > index 6eb842040c22..b839a9eecc55 100644
+> > --- a/drivers/staging/greybus/arche-platform.c
+> > +++ b/drivers/staging/greybus/arche-platform.c
+> > @@ -155,7 +155,9 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+> >  {
+> >  	struct arche_platform_drvdata *arche_pdata = devid;
+> >  	unsigned long flags;
+> > +	unsigned long cold_jiffies;
+> >  
+> > +	cold_jiffies = msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS);
+> >  	spin_lock_irqsave(&arche_pdata->wake_lock, flags);
+> >  
+> >  	if (gpiod_get_value(arche_pdata->wake_detect)) {
+> > @@ -169,7 +171,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+> >  		if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
+> >  			if (time_before(jiffies,
+> >  					arche_pdata->wake_detect_start +
+> > -					msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
+> > +					cold_jiffies)) {
+> 
+> In looking at this again, the original code is fine, no need for this
+> change at all.
+> 
+> thanks,
+> 
+> greg k-h
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/omap4iss/iss_ipipe.c | 28 +++++++++++++++-------------
- 1 file changed, 15 insertions(+), 13 deletions(-)
+Hi Greg, 
 
-diff --git a/drivers/staging/media/omap4iss/iss_ipipe.c b/drivers/staging/media/omap4iss/iss_ipipe.c
-index 26be078..09c941c 100644
---- a/drivers/staging/media/omap4iss/iss_ipipe.c
-+++ b/drivers/staging/media/omap4iss/iss_ipipe.c
-@@ -38,9 +38,11 @@ static const unsigned int ipipe_fmts[] = {
-  *
-  * Also prints other debug information stored in the IPIPE module.
-  */
--#define IPIPE_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###IPIPE " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_IPIPE, IPIPE_##name))
-+static inline ipipe_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###IPIPE " #name "=0x%08x\n",
-+		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_IPIPE, IPIPE_##name));
-+}
- 
- static void ipipe_print_status(struct iss_ipipe_device *ipipe)
- {
-@@ -48,16 +50,16 @@ static void ipipe_print_status(struct iss_ipipe_device *ipipe)
- 
- 	dev_dbg(iss->dev, "-------------IPIPE Register dump-------------\n");
- 
--	IPIPE_PRINT_REGISTER(iss, SRC_EN);
--	IPIPE_PRINT_REGISTER(iss, SRC_MODE);
--	IPIPE_PRINT_REGISTER(iss, SRC_FMT);
--	IPIPE_PRINT_REGISTER(iss, SRC_COL);
--	IPIPE_PRINT_REGISTER(iss, SRC_VPS);
--	IPIPE_PRINT_REGISTER(iss, SRC_VSZ);
--	IPIPE_PRINT_REGISTER(iss, SRC_HPS);
--	IPIPE_PRINT_REGISTER(iss, SRC_HSZ);
--	IPIPE_PRINT_REGISTER(iss, GCK_MMR);
--	IPIPE_PRINT_REGISTER(iss, YUV_PHS);
-+	ipipe_print_register(iss, SRC_EN);
-+	ipipe_print_register(iss, SRC_MODE);
-+	ipipe_print_register(iss, SRC_FMT);
-+	ipipe_print_register(iss, SRC_COL);
-+	ipipe_print_register(iss, SRC_VPS);
-+	ipipe_print_register(iss, SRC_VSZ);
-+	ipipe_print_register(iss, SRC_HPS);
-+	ipipe_print_register(iss, SRC_HSZ);
-+	ipipe_print_register(iss, GCK_MMR);
-+	ipipe_print_register(iss, YUV_PHS);
- 
- 	dev_dbg(iss->dev, "-----------------------------------------------\n");
- }
--- 
-2.7.4
+Thank you for reviewing my submission so quickly. I will fix the strange email formatting in future. I see what you mean about the fix, I'll be more aware of style and context. 
+
+Thanks,
+
+Briana
 
 
