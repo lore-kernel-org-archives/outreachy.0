@@ -1,108 +1,115 @@
-X-GM-THRID: 6660411535314124800
-X-Received: by 2002:a24:55c7:: with SMTP id e190mr8797620itb.30.1550747904977;
-        Thu, 21 Feb 2019 03:18:24 -0800 (PST)
+X-GM-THRID: 6674054447222489088
+X-Received: by 2002:a9d:5f01:: with SMTP id f1mr3356147oti.36.1553924392424;
+        Fri, 29 Mar 2019 22:39:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3b69:: with SMTP id i41ls749290jaf.3.gmail; Thu, 21 Feb
- 2019 03:18:24 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia1qx9eni199YxLVt379tpg50U2CwzuXHQT7aO2Pjo4xJtMO1HphSJv+7ny8uCSDweT7Cov
-X-Received: by 2002:a02:4357:: with SMTP id s84mr12790316jab.16.1550747904166;
-        Thu, 21 Feb 2019 03:18:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550747904; cv=none;
+Received: by 2002:a9d:748b:: with SMTP id t11ls1220999otk.7.gmail; Fri, 29 Mar
+ 2019 22:39:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwus9yITeQNRMIH+3qTaq9IrfH+unz/IarxqsgbfBXnfGY/OUBipS9DjKQnLiX+mqB2NWE6
+X-Received: by 2002:a9d:7302:: with SMTP id e2mr4023571otk.54.1553924391458;
+        Fri, 29 Mar 2019 22:39:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553924391; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZO5lQCD+AJR391nJB1WAX8YaVCF/OlgY4viYjFg8fWk7hRaAXYSv7PmcLbk1Yk5aG
-         4tmYGx+WvHpe6fRKoCdDRY4UXKumnsdQcW0uC+3xCsblgwNIW8rD+Zr9MTyc4ZPmQLo3
-         GoJQACGjr4nIfrvdO9bnjf05tTEsPAJjHDioG6eep9BRWjM0KzRffG9GTyyOxkHpgn26
-         wiFSrC2w28DQQ2APwP0t3/p/rWEkrAqckBiWFYpajiddTkTDf8OmRA7fjNl5RqUYPmoV
-         GykXWX3+c678BMlkU1legRWYB0jJcCa1fbyZhBI6wic6c6k6k0zpQY3TrKGR7Pz20j27
-         kdng==
+        b=V+X51nDPyUe+6QW8OcAvRdPIoUXU4AvKdWttflgaVmfJKFhVehysD2DZmURs32QXbB
+         dOFE2LVBJ0MjmYClRyGgLdepYwu9xf0Z7jcL6iCXvzozegrz3XtmfCXoKgnajsnDb7HU
+         WcALNMAvaAgAXDv9oZkqxh7C5YJ7n7Z+KNGdZvvg/eK5MMK34tGURAHV+XJ97cgkSAAy
+         4H+p1dlGnP89g0V/gKoUyt8qfLchtY1+mQ0fG0Yxb69ZcdYyyBnv31pFF460hJmQOPBV
+         rrGaXmTY2zsNQ+aoBbDkABt4eHskP0Qh6MjMP339FBd4VtZtTGvhIaCce8VizkYlH6yW
+         YmQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=FdX0t8Z000WOethONr2jep0Cgj2H4Gnhp4OtbdCHRXM=;
-        b=tbGJV7YB+yf6W3u61viDpcE+52d+PbA4IgkOv/f1fDTfuZf3H+7MyVnSIT0V/NHPjO
-         qSy1zybfgg7YT7EgGdyaGhXdW7Jsz4+HEGsHU0LlXJ6jKlp39Gy0YHk6yvrqWCSK75tE
-         dPT8d1mSFRX6LK+FGkYyktJYeyvGH7SCi3YC0mJTgDXVsIKviEeBA6rfnlIQyc2nq+Yo
-         k0WWoNueNMpNXhJevljdqDk7/67gm/jOJuAfWDbNYwdBrALJ8TpMkAJdCOu1naTv6teg
-         1suIyfRVQCIDbWIemcu46zUbijYe2voMujEtGEYt4apfTLpvDtulaCxYTM30GK8GzWD5
-         Mdkw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=WNV1f5VihzEG/fD1LdS2P/jlDzMKpwv3tWuQ2mMg5/0=;
+        b=VaVTet//GHrpc4Xmsb44ffBtJSe0PDSf3RrnkAlsco7ZGnxowxpBy7b7b4eOFoiPNO
+         XrehM91SxpXhV8iJ4sBsReoG0EaT+IMnwdA5kUWRkJsYcGPWc20NMChPFmh+qqUHiR3c
+         K8pLNtyPRVfZl3xuwj/QLD30ojWPYNdqeclZA8rKJeupACPGN9uXzVcov/WJHaKdIf8o
+         whYu1XYeVOztfp7tqnzLb8WrBC7kgj8RL3XkvzSi3J2w/kxfCyTFZ5CXfzpYudEQzlAd
+         NJ6+3+QYn4qIRNBAJX4P+NvOzKguyqRoetiLCAwh9drm+a1rOKH1DUmyTOttTqcmK0F8
+         EuEQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eb3UvMHf;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzfkEz17;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
-        by gmr-mx.google.com with ESMTPS id v63si1099273iof.0.2019.02.21.03.18.24
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id c13si213797oto.3.2019.03.29.22.39.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Feb 2019 03:18:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
+        Fri, 29 Mar 2019 22:39:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eb3UvMHf;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzfkEz17;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x435.google.com with SMTP id d25so5252052pfn.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Feb 2019 03:18:24 -0800 (PST)
+Received: by mail-pl1-x641.google.com with SMTP id cv12so1976447plb.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 22:39:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FdX0t8Z000WOethONr2jep0Cgj2H4Gnhp4OtbdCHRXM=;
-        b=eb3UvMHfhkQ8HSwwkbbCIY8QTVNT78b4Xk2MrHBdhlkdXTf+ClIHpSDVXnkBlBZG1P
-         NUm++BRcMNraffR2NiEBV+FdbIVxsn9L2Jfqt8agKK0KEp5k+2kw2SFLIwLZQopq6R4d
-         FKMmGzpIzzoCBU4o0/Eox5SzzBV8W2DeG09d57EG5rTn2/Ez0Vc/cfWADSHfPhE3DwkM
-         bQWRpNtRaUAcXsv9WpOQ3eF3SzuqGIBCc1Hyxzv+rY9iEqDeHpxEDx462awASR4snZCc
-         iE8FdX3qMMNiLH2P74mFrf/uzDOcHhYKF0Lman0iNEZHbYiQt//6duW4/mb72G2iKWzn
-         I9Uw==
+        h=from:to:cc:subject:date:message-id;
+        bh=WNV1f5VihzEG/fD1LdS2P/jlDzMKpwv3tWuQ2mMg5/0=;
+        b=PzfkEz17MhofD6NYUzk/XQtUla0yXd2v4fWmqTKOTT+NRFRw1U1E7sW1X3aJ7kZWQ2
+         g077dVTr2Z5qA7OsZcm1oJ/+FZUfW2Ut+uEwTKxA7qtylZjQQUfFQGSOdVqM6C5HMQ5F
+         a4aC9rl8NC6yhQ6bWTHpd6njwAuro5rvDGUohGlYE8Jp6qkJnfLLoOYylFQ8cjzXnAZ4
+         H0sm4Zf8DARxON3v4TGkQUNOlSrgvopv+3V8O77miE06mlnr6n125CsY8z4HSZttI+Bk
+         xn6opk+OtmWbo+vY55AfDjitnnDvtXcDtiAkSaZRp6eHBHllfb8U/ikzu/825vcyp1oQ
+         XNgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FdX0t8Z000WOethONr2jep0Cgj2H4Gnhp4OtbdCHRXM=;
-        b=hiQ+zEtqz95t+iX2FNomtbuFpQLnTxIYtWAx6ROiJuyUkrBiXxMwIiEfbGwY8QE5wb
-         aLCmJcJW+HT5U1rtcyU7uCko8Rzpd8+KJwNl1UnDfG0MYWj/mrSyRqISpL+HVzmOE7/g
-         uRQCnYzIa7xBX25z9zjrsfBdFG0UXjigjzfLQ/UgS+FaaxMGZZfnahasgjtdwgbTg5Pt
-         0ir39BShmqrYI6NELlEZSypjHROrB/EdrG9ONW/CAJd+l2vd0crhFHd2TrFFnvmvG9cd
-         EeeH+DitZF7yXZcha/imT2U87VgLzmda/2v8x5IK0EfqBWz+p6y3Sv+zZRW4geUlpB5w
-         g5fg==
-X-Gm-Message-State: AHQUAuaCZQguGDIMHkbefiKPw7n/sp1ptrM51AosLLvgj5rw62U1VJW2
-	dDaTNIi7Om8Vk6Qnfau5ylU=
-X-Received: by 2002:a63:c310:: with SMTP id c16mr14853971pgd.233.1550747903819;
-        Thu, 21 Feb 2019 03:18:23 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from bhanusree-MacBookAir ([183.83.84.116])
-        by smtp.gmail.com with ESMTPSA id h63sm19184335pfd.148.2019.02.21.03.18.22
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Feb 2019 03:18:23 -0800 (PST)
-Date: Thu, 21 Feb 2019 16:48:20 +0530
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=WNV1f5VihzEG/fD1LdS2P/jlDzMKpwv3tWuQ2mMg5/0=;
+        b=fD0Udy3pxvyhC/GBl81EkJ9CY3YsAuX0HSZ59mWWWMIV+9bSSnlkEZoyAp0MUeAuLU
+         lxJIhJJDnA1c6UbEbHkUQMcgryxxPC9Hr6+8yUoKEjpOd5C89kHvo663ctzDHNWNcqnj
+         XBjwO+VOIa9cdZKUJUQOa701PZU1d6/6jk2gxifW3ibFHPn+Rz6uLo41ykMC4OAQayCB
+         IVbK/xvFKMegR2MteeW9fIbVKTT+eEMhEeHp62wvgcNwOVQvNAb5q/+hGhTsaZJmniZ9
+         QfDRsIVcZDiWD1/ESSYobr+IOGi/5lcK0LOaf1dNQitQvVgq7TC6cVZ0o/ItkYR2Vup1
+         Oh8A==
+X-Gm-Message-State: APjAAAURDqOWShhJHmJa9daju93CCBVy39VcFjI4xTa8eqALUEmDH4jx
+	UkbiO+fmJGhhGKfPailqowcUXg9i
+X-Received: by 2002:a17:902:266:: with SMTP id 93mr53627076plc.161.1553924390495;
+        Fri, 29 Mar 2019 22:39:50 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.4.242])
+        by smtp.gmail.com with ESMTPSA id n75sm6853582pfb.39.2019.03.29.22.39.48
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 29 Mar 2019 22:39:49 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 2/4] Staging: netlogic: Add SPDX License Identifier
-Message-ID: <20190221111820.GA29081@bhanusree-MacBookAir>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: rtlwifi: Remove unnecessary parentheses
+Date: Sat, 30 Mar 2019 11:09:36 +0530
+Message-Id: <1553924376-12422-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-adds the SPDX GPL-2.0 license identifier which solves the checkpatch.pl warning
-Issue found with checkpatch.pl warning:
-"WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
+Challenge suggested by coccinelle.
+Remove unnecessary parentheses around the right hand side of an
+assignment.
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/netlogic/xlr_net.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/rtlwifi/phydm/phydm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 4e6611e4c59b..fb8146cf3c1f 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (c) 2003-2012 Broadcom Corporation
-  * All Rights Reserved
+diff --git a/drivers/staging/rtlwifi/phydm/phydm.c b/drivers/staging/rtlwifi/phydm/phydm.c
+index 52b85b3..473eeb6 100644
+--- a/drivers/staging/rtlwifi/phydm/phydm.c
++++ b/drivers/staging/rtlwifi/phydm/phydm.c
+@@ -1542,7 +1542,7 @@ static void phydm_set_csi_mask_reg(void *dm_void, u32 tone_idx_tmp,
+ 
+ 	if (tone_direction == FREQ_POSITIVE) {
+ 		if (tone_idx_tmp >= (tone_num - 1))
+-			tone_idx_tmp = (tone_num - 1);
++			tone_idx_tmp = tone_num - 1;
+ 
+ 		byte_offset = (u8)(tone_idx_tmp >> 3);
+ 		bit_offset = (u8)(tone_idx_tmp & 0x7);
+@@ -1767,7 +1767,7 @@ static u8 phydm_calculate_intf_distance(void *dm_void, u32 bw, u32 fc,
+ 		int_distance = (fc >= f_interference) ? (fc - f_interference) :
+ 							(f_interference - fc);
+ 		tone_idx_tmp =
+-			(int_distance << 5); /* =10*(int_distance /0.3125) */
++			int_distance << 5; /* =10*(int_distance /0.3125) */
+ 		ODM_RT_TRACE(
+ 			dm, ODM_COMP_API,
+ 			"int_distance = ((%d MHz)) Mhz, tone_idx_tmp = ((%d.%d))\n",
 -- 
-2.17.1
+2.7.4
 
 
