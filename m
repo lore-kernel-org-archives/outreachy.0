@@ -1,85 +1,81 @@
 X-GM-THRID: 6673959669244887040
-Date: Sat, 30 Mar 2019 05:59:28 -0700 (PDT)
+Date: Sat, 30 Mar 2019 05:43:45 -0700 (PDT)
 From: Vatsala Narang <vatsalanarang@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <b991d5c6-ac29-4a0f-98a3-8c1a7f47f1e5@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.1903300746450.2817@hadrien>
+Message-Id: <3c9309e0-4ea2-44d2-817f-4d9e57494036@googlegroups.com>
+In-Reply-To: <20190330082544.GA24052@kroah.com>
 References: <20190329233147.27039-1-vatsalanarang@gmail.com>
- <alpine.DEB.2.21.1903300746450.2817@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH v6 1/3] staging: vt6655: line over 80
- characters.
+ <20190330082544.GA24052@kroah.com>
+Subject: Re: [PATCH v6 1/3] staging: vt6655: line over 80 characters.
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_304_367588792.1553950768606"
-X-Google-Token: ELDQ_eQFgw-14zcCA8M0
+	boundary="----=_Part_280_953089767.1553949825758"
+X-Google-Token: EIHJ_eQFnHNs-stgwho0
 X-Google-IP: 103.87.57.245
 
-------=_Part_304_367588792.1553950768606
+------=_Part_280_953089767.1553949825758
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_305_195692227.1553950768606"
+	boundary="----=_Part_281_1349500159.1553949825758"
 
-------=_Part_305_195692227.1553950768606
+------=_Part_281_1349500159.1553949825758
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-> Changes in v6: 
 
+
+> Signed-off-by: Vatsala Narang <vatsal...@gmail.com <javascript:>> 
+> > --- 
+> > Changes in v6: 
 > >  -fixed patch 1 and resent it 
 > >  drivers/staging/vt6655/rf.c | 2 +- 
 > >  1 file changed, 1 insertion(+), 1 deletion(-) 
-> > 
-> > 
-> >          MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, 
-> > -                        (unsigned long)MAKEWORD(bySleepCount, 
-> byInitCount)); 
-> > +                               (unsigned long)MAKEWORD(bySleepCount, 
-> byInitCount)); 
 >
-> The two lines look the same, although there are probably spacing 
-> differences.  I think you have the wrong log message for this patch. 
+> Where are the other 3 patches in this series? 
 >
-> julia 
+> If you have to resend just one patch, just send one, but do not imply 
+> that it is a longer series.  Remember, maintainers have almost no 
+> context as they deal with hundreds of patches.  I have the short term 
+> memory of a squirrel :) 
 >
-> Apart from this when I rebased the earlier patch it was corrupted with 
-multiple lines that were not present in the file,so I also removed those 
-lines and i don't know why its not visible here .Anyways I will send this 
-again with correct log message.
+> greg k-h 
+>
+
+Thanks greg for correcting me.Things are getting clear day by day.I will be 
+more careful next time while sending patchsets.
 thanks 
 Vatsala
 
-------=_Part_305_195692227.1553950768606
+
+------=_Part_281_1349500159.1553949825758
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-&gt; Changes in v6:
-<br><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex=
-;border-left: 1px #ccc solid;padding-left: 1ex;">&gt; =C2=A0-fixed patch 1 =
-and resent it
+<div dir=3D"ltr"><br><br><blockquote class=3D"gmail_quote" style=3D"margin:=
+ 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&gt; =
+Signed-off-by: Vatsala Narang &lt;<a href=3D"javascript:" target=3D"_blank"=
+ gdf-obfuscated-mailto=3D"rIg5PylfBgAJ" rel=3D"nofollow" onmousedown=3D"thi=
+s.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;ja=
+vascript:&#39;;return true;">vatsal...@gmail.com</a>&gt;
+<br>&gt; ---=20
+<br>&gt; Changes in v6:=20
+<br>&gt; =C2=A0-fixed patch 1 and resent it
 <br>&gt; =C2=A0drivers/staging/vt6655/rf.c | 2 +-
 <br>&gt; =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
-<br>&gt;
-<br>&gt;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0MACvSetMISCF=
-ifo(priv, MISCFIFO_SYNINFO_IDX,
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0(<wbr>unsigned long)MAKEWORD(bySleepCount, byInitCount));
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0(unsigned long)MAKEWORD(bySleepCount, byInitC=
-ount));
 <br>
-<br>The two lines look the same, although there are probably spacing
-<br>differences. =C2=A0I think you have the wrong log message for this patc=
-h.
+<br>Where are the other 3 patches in this series?
 <br>
-<br>julia
-<br><br></blockquote><div>Apart from this when I rebased the earlier patch =
-it was corrupted with multiple lines that were not present in the file,so I=
- also removed those lines and i don&#39;t know why its not visible here .An=
-yways I will send this again with correct log message.</div><div>thanks <br=
-></div><div>Vatsala<br></div>
-------=_Part_305_195692227.1553950768606--
+<br>If you have to resend just one patch, just send one, but do not imply
+<br>that it is a longer series. =C2=A0Remember, maintainers have almost no
+<br>context as they deal with hundreds of patches. =C2=A0I have the short t=
+erm
+<br>memory of a squirrel :)
+<br>
+<br>greg k-h
+<br></blockquote><div><br></div><div>Thanks greg for correcting me.Things a=
+re getting clear day by day.I will be more careful next time while sending =
+patchsets.</div><div>thanks <br></div><div>Vatsala</div><div><br></div></di=
+v>
+------=_Part_281_1349500159.1553949825758--
 
-------=_Part_304_367588792.1553950768606--
+------=_Part_280_953089767.1553949825758--
 
