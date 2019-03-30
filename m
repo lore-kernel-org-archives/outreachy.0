@@ -1,122 +1,123 @@
 X-GM-THRID: 6674202395831959552
-X-Received: by 2002:adf:e3cb:: with SMTP id k11mr1498919wrm.7.1553959674764;
-        Sat, 30 Mar 2019 08:27:54 -0700 (PDT)
+X-Received: by 2002:ab0:4103:: with SMTP id j3mr5457815uad.0.1553958839131;
+        Sat, 30 Mar 2019 08:13:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:6c01:: with SMTP id h1ls718759wmc.13.gmail; Sat, 30 Mar
- 2019 08:27:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxCHG812e7vY19z9vPX8wWdyz8brDwMKDwOob4z/FRENClmk7DEZ82MKaIhmE5mQLTeHM57
-X-Received: by 2002:a7b:c4cf:: with SMTP id g15mr640289wmk.21.1553959673926;
-        Sat, 30 Mar 2019 08:27:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553959673; cv=none;
+Received: by 2002:a67:7a89:: with SMTP id v131ls120018vsc.3.gmail; Sat, 30 Mar
+ 2019 08:13:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxIO3GAk+gj2mc5Qe9OFDdxug6mXLauHhiYQ1L6RQtN6xTqcfvyXKKMdhsWa4z2XXUQjm9J
+X-Received: by 2002:a67:8013:: with SMTP id b19mr4434395vsd.28.1553958838546;
+        Sat, 30 Mar 2019 08:13:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553958838; cv=none;
         d=google.com; s=arc-20160816;
-        b=cschEZVmOoTIlBlhiHJnJfOorHXaHdEJ23DZp/BpNROF/la8Ot3r3NwfnYn925yjNT
-         kfN6te8n+/YgkDA5aBefe9MtjeSmwVgGuD5RKWK2evany9XVcKK8v7id0uE6BmZKPp2g
-         A9ULg+uSM2SezD08Kmm3j0h9GrMEPyeZJkUYks8W7RBOj/L67m/r9oOdDb/xbyStnk0i
-         55u8M2qKA179FOADPaJUiO8XjCim02PuttBu7VqEDO0IVJniQ8qUMx2fauzTnkHbS8xG
-         nla8aY8po4tcQGBAyO2C9+KfK7k5MW8NdpjC9AUYKT+8hhCBZ8P2HZmk+7kjlAe9udQf
-         gB+w==
+        b=iZIM9mQ0+S17MiSZyGHBDBc06NwYwazfGCuTioIFIS46Q76fXvlMUX2xFz4Q245Nnc
+         9PrJTF/sdP/+0969tROTF3go9FbCL+UAh41ga1tjS3rARyto+lw1DoqBiNvbTIKzv90y
+         LnKcO1Vv3VlmSTDpX94yHjyiZvvmuF51rV8YhfWdj21RiwIKtMqMm4OYyYnfsEDuHJyb
+         rg+OCAQwdQrt1cNuDp5nkNZ3R0+RbqaL4n4Mc/xUF2m70M82Vsqnu0hSmvameAUKQGc0
+         seb/+ObHqAn51SMHNIM9nPXn9Hj3wzPGBkdgmkMIMhEKIVDEznHZKW8cktzRneZldUXK
+         Z0dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=C4NV+igHdQY8569d8z2LVft6JANQ9RKUXg8+sMezOLw=;
-        b=q3ZwCKvCG/C6O2q1fbRl6pkQF1tz6WWgYLdpSXEb8Iz0n14LUWB4PJnVPl2YxMrQyT
-         gyOHlAKPtrVgu3C/AAINVzN1quXesBGIt3vjDgcI0PLTeGQ/5a5chXkbBtLSKIBgUJSf
-         ASdXgwcy/Edb1Oi0ZldwNJtHSWqhGoUbhK6ngNR8fmipVZdWTY3rQvV7+f1w0OizzmDu
-         7LWSg4aGaNQS7dvRie9Sm7EQWXKlTCFHJ/zCGkrS9/r4EztuRHjDOQ3qVzo3wAVI5cst
-         cuh8HK56FK64Ef22OWYwWH65MwshT8Cm72ssdTFwTWmAtyPJ9nUFb/gJohv1SckwepF9
-         hcPg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=SQ5vOoIXm89Nr1kFMX4rV1VLx62xjOKqc9bA2vwFvlM=;
+        b=Bg0PfSHXkc7vcgZ9eYJZbFiTX0fftrZZ5cqngzcNcveqnZ7Z3DS+UGtb5gJHvDA0hd
+         zhavrEC+Omho04hYntkjP4r/ZEdLQXPXtQKb0kynaRTI/zLisRaKx+zO/BxuNXqVPaW5
+         omAs2qf38sDuZ2YMwLj0x9e752qtNwIW9LEDXhPJs1x7Ooc7u6KQWk3lu028sptQq6AI
+         fCqDtCRediCWr+rG5v7IFVbHToZd1A3yuYO8Cz3dEiGJXf58vwpm3hKrXxJWcIfQRFp4
+         tD+BMArH+MC8ngAvqmR/sBhu1txyq5Ie/LuFxR3UB62uUd/UVy0d3qLcZ0aA/vcMbypp
+         sakg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a9si255656wrp.5.2019.03.30.08.27.53
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=XqtA2SdE;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic303-21.consmr.mail.sg3.yahoo.com (sonic303-21.consmr.mail.sg3.yahoo.com. [106.10.242.38])
+        by gmr-mx.google.com with ESMTPS id y8si374387vsc.0.2019.03.30.08.13.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 08:27:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sat, 30 Mar 2019 08:13:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) client-ip=106.10.242.38;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.60,289,1549926000"; 
-   d="scan'208";a="376468180"
-Received: from abo-75-106-68.mrs.modulonet.fr (HELO hadrien) ([85.68.106.75])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 30 Mar 2019 16:27:53 +0100
-Date: Sat, 30 Mar 2019 16:27:53 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtlwifi: phydm: Remove
- parentheses
-In-Reply-To: <20190330151341.3891-1-nishka.dasgupta@yahoo.com>
-Message-ID: <alpine.DEB.2.21.1903301627220.2608@hadrien>
-References: <20190330151341.3891-1-nishka.dasgupta@yahoo.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=XqtA2SdE;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.242.38 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553958835; bh=SQ5vOoIXm89Nr1kFMX4rV1VLx62xjOKqc9bA2vwFvlM=; h=From:To:Cc:Subject:Date:From:Subject; b=XqtA2SdE+QevC44PB1hizI6Y0YXjH9Hu64qntGOoD/bBHZ9pMcPIkcrqDGqXYHjsuYen1FckceMOdChqNEf5zngY+X8ISMLkfmRWcOQNbWcxCPwHMH36vKqP8weLDkW0uz137+kRfh9FC6o+lZWPJK3P6wMF2ngqGfucCP/gsiNsDrAHTlNBmpyMMTB0IUPyHEoeNxB1FCknY/w70lZwCtTH58Yhhw1qP38N5Qgnw7DnMKCQaztV/RYNkGuOe9NYQIK9yXkCqmh8RKRDfkOC5iGTr2xuYX1/GrugLfbCVKJOBYoYwivKtCgrrtyOwJA4+GCix+lSkvr/YpY0+0PFRA==
+X-YMail-OSG: hM6V23UVM1kb1PzYCuyvArnQkBRv_LRP5Vo0NMu9_kapMOpqejV5UFSXMLk7Z5L
+ ocxLMm4UkWi1aBm1Enwk85RkY_ze4S6WohC0L9b2hMO2d1cmApmO8PrCluKW2dnDqweWJ3GU9Uo4
+ YIFEqWkRA5..l2CWAWxZOaVW.HSnGT25EY71OqQwsoBYXRtmzf_1K1VSmwHoa_OxyvQGoukuM7Vh
+ oS325X7STNsH1keDUKCfCqmrD2Mvh0QGsRuP3dSWGwdgwrPdlXXPgVV6xBRIdj1rOs_qla7g5fEN
+ B1hKM_4R56ywzGjY_PDBYp7ZuVKCF8kP3BoDR.SJsAAFM_y4qI8Pa5SMy3K6TzlAyIbmP18AK3bi
+ FoYznOWaGLFfXeZ_mO0NzBmTTiFUmklXu_F_PtBf5z9WVi.acx3AFsyMPVCbsz1OVyJvXSgeRoLh
+ 2wrmsrbvKiYANXQQ_n2.N3iACntz_JCCl_6W5YGMXtTcRjC75TEs9r2iVnuYHE6HtPrkd9.Z97D5
+ ibtZrG3RexScCqUwUYgwr1XgKb8owfoyF9ns8iO8vQmdiXuKfOQJuNZdOXQfbAhsFgnz.L7TDEmn
+ F0BLU1L5MH2GJ39nOpNwd04lRhtN_GODKa9OwRu_N2pG4idA0GR4u3mD0en7C2BqDjv8qaDHKhs2
+ jU4nHGYfo5mENFgkuMmxaTW0eQNnwG21Xtc.bUdaBfFeZX6yiBAjVbCnCaEWLxlzNRFUZKpaQm8C
+ J6PBSeF4duWHQ8p6X78ozsA3mk_ah7diCcXAQnlkeizKzNpTeLRL6Evo2WCJLAfuBT402e24Z3CN
+ EYNAUstdtc1h6iQzBTojC3D0dD2UO2WAvblfNEulzos0SZG6lJHHUIoyKJaIHGcisBltOFWDlofD
+ AzCfGYhzQrt87X6WZMVhgDIwUM_KydyF6gZNhgQ558NCgvbZb_IudVWsJYAAw1tRebHWLkR2YDdT
+ oSITi32O9Y4Vq8vEy76wYOiNlD4nQmFrmN.AZZSgyWUr_TCztK_rkG7PdGoZmC8ONmLl5Rcv9roJ
+ sXM3ly6Wy4bbLLHqVcLdp7BNndPWvdndyWA.lLlcTz8_IEfrCKxp74ZYNPHnpOGbf5.PtpNmkLrR
+ urXJHyjqtJze8T8eAILSeoivw0Gs8SgEv0w--
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic303.consmr.mail.sg3.yahoo.com with HTTP; Sat, 30 Mar 2019 15:13:55 +0000
+Received: from 210.212.93.46 (EHLO localhost.localdomain) ([210.212.93.46])
+          by smtp417.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 3425379a9fa9c168bee2d6f631e53e25;
+          Sat, 30 Mar 2019 15:13:54 +0000 (UTC)
+From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Subject: [PATCH v2] staging: rtlwifi: phydm: Remove parentheses
+Date: Sat, 30 Mar 2019 20:43:41 +0530
+Message-Id: <20190330151341.3891-1-nishka.dasgupta@yahoo.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+Remove unnecessary parentheses on the right hand side and simplify expression. 
+Issue first detected using Coccinelle.
 
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+---
+Changes in v2:
+- Change `status = status & <expression>` to `status &= <expression>`,
+  to make the code more readable.
 
-On Sat, 30 Mar 2019, 'Nishka Dasgupta' via outreachy-kernel wrote:
+ drivers/staging/rtlwifi/phydm/phydm_debug.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
-> Remove unnecessary parentheses on the right hand side and simplify expression.
+diff --git a/drivers/staging/rtlwifi/phydm/phydm_debug.c b/drivers/staging/rtlwifi/phydm/phydm_debug.c
+index 91f2c054d83b..13b34dc33011 100644
+--- a/drivers/staging/rtlwifi/phydm/phydm_debug.c
++++ b/drivers/staging/rtlwifi/phydm/phydm_debug.c
+@@ -51,20 +51,18 @@ static inline void phydm_check_dmval_txagc(struct phy_dm_struct *dm, u32 used,
+ 				      (power_index << 16) | (power_index << 8) |
+ 				      (power_index);
+ 			for (i = 0; i < ODM_RATEVHTSS2MCS9; i += 4)
+-				status = (status &
+-					  phydm_api_set_txagc(
+-						  dm, power_index,
+-						  (enum odm_rf_radio_path)
++				status &= phydm_api_set_txagc(
++						   dm, power_index,
++						   (enum odm_rf_radio_path)
+ 							  dm_value[1],
+-						  i, false));
++						   i, false);
+ 		} else if (dm->support_ic_type & ODM_RTL8197F) {
+ 			for (i = 0; i <= ODM_RATEMCS15; i++)
+-				status = (status &
+-					  phydm_api_set_txagc(
+-						  dm, power_index,
+-						  (enum odm_rf_radio_path)
++				status &= phydm_api_set_txagc(
++						   dm, power_index,
++						   (enum odm_rf_radio_path)
+ 							  dm_value[1],
+-						  i, false));
++						   i, false);
+ 		}
+ 
+ 		if (status)
+-- 
+2.19.1
 
-The simplification should be explained in the commit log.
-The log message should be under 80 characters wide.
-
-julia
-
-> Issue first detected using Coccinelle.
->
-> Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-> ---
-> Changes in v2:
-> - Change `status = status & <expression>` to `status &= <expression>`,
->   to make the code more readable.
->
->  drivers/staging/rtlwifi/phydm/phydm_debug.c | 18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/staging/rtlwifi/phydm/phydm_debug.c b/drivers/staging/rtlwifi/phydm/phydm_debug.c
-> index 91f2c054d83b..13b34dc33011 100644
-> --- a/drivers/staging/rtlwifi/phydm/phydm_debug.c
-> +++ b/drivers/staging/rtlwifi/phydm/phydm_debug.c
-> @@ -51,20 +51,18 @@ static inline void phydm_check_dmval_txagc(struct phy_dm_struct *dm, u32 used,
->  				      (power_index << 16) | (power_index << 8) |
->  				      (power_index);
->  			for (i = 0; i < ODM_RATEVHTSS2MCS9; i += 4)
-> -				status = (status &
-> -					  phydm_api_set_txagc(
-> -						  dm, power_index,
-> -						  (enum odm_rf_radio_path)
-> +				status &= phydm_api_set_txagc(
-> +						   dm, power_index,
-> +						   (enum odm_rf_radio_path)
->  							  dm_value[1],
-> -						  i, false));
-> +						   i, false);
->  		} else if (dm->support_ic_type & ODM_RTL8197F) {
->  			for (i = 0; i <= ODM_RATEMCS15; i++)
-> -				status = (status &
-> -					  phydm_api_set_txagc(
-> -						  dm, power_index,
-> -						  (enum odm_rf_radio_path)
-> +				status &= phydm_api_set_txagc(
-> +						   dm, power_index,
-> +						   (enum odm_rf_radio_path)
->  							  dm_value[1],
-> -						  i, false));
-> +						   i, false);
->  		}
->
->  		if (status)
-> --
-> 2.19.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190330151341.3891-1-nishka.dasgupta%40yahoo.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
