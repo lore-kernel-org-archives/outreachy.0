@@ -1,173 +1,109 @@
 X-GM-THRID: 6674230099683835904
-Date: Sun, 31 Mar 2019 07:00:58 -0700 (PDT)
-From: sanjana99reddy99@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <fb34a52b-3920-4236-9721-c3d0f0c24a21@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.1903311321350.2578@hadrien>
-References: <20190330170116.4761-1-sanjana99reddy99@gmail.com> <20190330173836.5404-1-sanjana99reddy99@gmail.com> <20190330193727.GA2651@kroah.com> <9d78f23f-4105-4dd7-ab9e-05faa57f23fb@googlegroups.com>
- <alpine.DEB.2.21.1903311321350.2578@hadrien>
+X-Received: by 2002:a1c:9645:: with SMTP id y66mr782044wmd.3.1554031320838;
+        Sun, 31 Mar 2019 04:22:00 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a1c:b154:: with SMTP id a81ls815327wmf.14.gmail; Sun, 31 Mar
+ 2019 04:21:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUSasa0HqsNXvxvgNWpgr5ejX2fY52kDye3MnfUM3LFAxWzvaOOBSIWB0GprxXbeyUZMPs
+X-Received: by 2002:a1c:c507:: with SMTP id v7mr931557wmf.9.1554031319676;
+        Sun, 31 Mar 2019 04:21:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554031319; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NGZd8+gOSGfuVoGjm0gVbYwIU/o4x8blQfv+0WuuEEUH/PbS7cYGFH60UEXOdHAMPo
+         PgdTmKDmxJOiCupaOa8OcA9sbyWo8I1mLREVk0PLMs8P4qBR5lY2z8bs4OtehwICJwTo
+         trR9RUWEptTi4wYl8De+VuXoeTaDDHnuZ7NlfUlSDFBdbn+4Gc4XaBv/MICcQy2F8Quy
+         VwzppcYnNSZlT3cxoLogn5XxiHCXsDDcP30ROAfI7h1TqDoI0gNrAbLaGwCrd+ew792P
+         cOhuTzECV+ES133WU//BdyG1mFUIBy/mshPIyr/qHTgOl71tTZLTjHzQVH1k/4H7s9S3
+         W2dg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Pgs4j1yNnPE5eAtn7tqp9cBrBs1uIdD1ybial4GNsZc=;
+        b=Ob+jSl4HMW8K7gJG6TutfD+ITauxQuZhsGwLRBTMDW1z0XAGaAambS3bwjsI32a15i
+         ZwVJG++TbpIQzulaFX6aACYW7JpDz5w9gMI3pECXwg4zVAa5XotQD6GttOw6Qih1H359
+         KmrWcZTZeRbP73yVCzjeV/dpSFOVsB7tnjF4CFbK6jAQqfOzS+wqzQJd3V7nAACSX5hs
+         Fic077z2mn+VTTIOpXdeWIkTINEal2T1QOaD/WCm2uMMZ/BaNL/pEfg/UQoKiB1SU5nP
+         8RkoT8iPPdBWtuMBIukNckqe4AzVeYQtHkZrfp+cE2GYRT7YPKoPhDDYeKCJnzaS99Ml
+         MOcA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id s8si355034wme.0.2019.03.31.04.21.59
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 31 Mar 2019 04:21:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,292,1549926000"; 
+   d="scan'208";a="301290964"
+Received: from abo-75-106-68.mrs.modulonet.fr (HELO hadrien) ([85.68.106.75])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 31 Mar 2019 13:21:59 +0200
+Date: Sun, 31 Mar 2019 13:21:58 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: sanjana99reddy99@gmail.com
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH v4 2/2] staging: wilc1000:
  host_interface.c: Modify return statement.
+In-Reply-To: <9d78f23f-4105-4dd7-ab9e-05faa57f23fb@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.1903311321350.2578@hadrien>
+References: <20190330170116.4761-1-sanjana99reddy99@gmail.com> <20190330173836.5404-1-sanjana99reddy99@gmail.com> <20190330193727.GA2651@kroah.com> <9d78f23f-4105-4dd7-ab9e-05faa57f23fb@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_595_104314434.1554040859071"
-X-Google-Token: EJqQg-UFMg7d5yUqhOk0
-X-Google-IP: 219.91.254.74
+Content-Type: multipart/mixed; boundary="8323329-2106338650-1554031319=:2578"
 
-------=_Part_595_104314434.1554040859071
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_596_850369444.1554040859071"
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-------=_Part_596_850369444.1554040859071
+--8323329-2106338650-1554031319=:2578
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 
 
 
-On Sunday, March 31, 2019 at 4:52:00 PM UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Sun, 31 Mar 2019, sanjana9...@gmail.com <javascript:> wrote: 
->
-> > 
-> > 
-> > On Sunday, March 31, 2019 at 1:09:44 AM UTC+5:30, gregkh wrote: 
-> >       On Sat, Mar 30, 2019 at 11:08:36PM +0530, Sanjana Sanikommu 
-> >       wrote: 
-> >       > Challenge suggested by coccinelle. 
-> >       > Remove return variable and directly return the value 
-> >       > Issue found using ret.cocci 
-> >       > 
-> >       > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com> 
-> > 
-> >       Are you sure this isn't already in the tree?  It does not apply. 
-> > 
-> >   
-> >    Changes are made in drivers/staging/wilc1000/ 
-> >    I don't know where it went wrong. 
->
-> Perhaps you need to do git pull? 
->
-
-   I will try that.
-   Thank you.
-    Sanjana 
+On Sun, 31 Mar 2019, sanjana99reddy99@gmail.com wrote:
 
 >
-> julia 
+>
+> On Sunday, March 31, 2019 at 1:09:44 AM UTC+5:30, gregkh wrote:
+>       On Sat, Mar 30, 2019 at 11:08:36PM +0530, Sanjana Sanikommu
+>       wrote:
+>       > Challenge suggested by coccinelle.
+>       > Remove return variable and directly return the value
+>       > Issue found using ret.cocci
+>       >
+>       > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com>
+>
+>       Are you sure this isn't already in the tree?  It does not apply.
+>
+>  
+>    Changes are made in drivers/staging/wilc1000/
+>    I don't know where it went wrong.
+
+Perhaps you need to do git pull?
+
+julia
+
+
+>    Thank you
+>     Sanjana  
+>
+>       thanks,
+>
+>       greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To post to this group, send email to outreachy-kernel@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e-
+> 05faa57f23fb%40googlegroups.com.
+> For more options, visit https://groups.google.com/d/optout.
 >
 >
-> >    Thank you 
-> >     Sanjana   
-> > 
-> >       thanks, 
-> > 
-> >       greg k-h 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups 
-> > "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an 
-> > email to outreach...@googlegroups.com <javascript:>. 
-> > To post to this group, send email to outreach...@googlegroups.com 
-> <javascript:>. 
-> > To view this discussion on the web visithttps://
-> groups.google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e- 
-> > 05faa57f23fb%40googlegroups.com. 
-> > For more options, visit https://groups.google.com/d/optout. 
-> > 
-> >
-
-
-------=_Part_596_850369444.1554040859071
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sunday, March 31, 2019 at 4:52:00 PM UTC+5:30, =
-Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;mar=
-gin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Sun, 31 Mar 2019, <a href=3D"javascript:" target=3D"_blank" gdf-obfu=
-scated-mailto=3D"0yc86Fq3BgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D=
-&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:=
-&#39;;return true;">sanjana9...@gmail.com</a> wrote:
-<br>
-<br>&gt;
-<br>&gt;
-<br>&gt; On Sunday, March 31, 2019 at 1:09:44 AM UTC+5:30, gregkh wrote:
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 On Sat, Mar 30, 2019 at 11:08:36PM +0530, San=
-jana Sanikommu
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 wrote:
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Challenge suggested by coccinelle.
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Remove return variable and directly retu=
-rn the value
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Issue found using ret.cocci
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Sanjana Sanikommu &lt;<a>=
-sanjana9...@gmail.com</a>&gt;
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 Are you sure this isn&#39;t already in the tr=
-ee? =C2=A0It does not apply.
-<br>&gt;
-<br>&gt; =C2=A0
-<br>&gt; =C2=A0 =C2=A0Changes are made in drivers/staging/wilc1000/
-<br>&gt; =C2=A0 =C2=A0I don&#39;t know where it went wrong.
-<br>
-<br>Perhaps you need to do git pull?
-<br></blockquote><div><br></div><div>=C2=A0 =C2=A0I will try that.</div><di=
-v>=C2=A0 =C2=A0Thank you.</div><div>=C2=A0 =C2=A0 Sanjana=C2=A0</div><block=
-quote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-le=
-ft: 1px #ccc solid;padding-left: 1ex;">
-<br>julia
-<br>
-<br>
-<br>&gt; =C2=A0 =C2=A0Thank you
-<br>&gt; =C2=A0 =C2=A0 Sanjana=C2=A0=C2=A0
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 thanks,
-<br>&gt;
-<br>&gt; =C2=A0 =C2=A0 =C2=A0 greg k-h
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups
-<br>&gt; &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an
-<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
-mailto=3D"0yc86Fq3BgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
-vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
-eturn true;">outreach...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"0yc86Fq3BgAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
-groups.google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e-" target=
-=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
-google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e-&#39;;return tr=
-ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
--kernel/9d78f23f-4105-4dd7-ab9e-&#39;;return true;">groups.google.<wbr>com/=
-d/msgid/outreachy-kernel/<wbr>9d78f23f-4105-4dd7-ab9e-</a>
-<br>&gt; 05faa57f23fb%<a href=3D"http://40googlegroups.com" target=3D"_blan=
-k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
-rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
-FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
-=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
-a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
-n true;">40googlegroups.<wbr>com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br>&gt;</blockquote></div>
-------=_Part_596_850369444.1554040859071--
-
-------=_Part_595_104314434.1554040859071--
+--8323329-2106338650-1554031319=:2578--
 
