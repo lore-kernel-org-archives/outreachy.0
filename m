@@ -1,132 +1,110 @@
 X-GM-THRID: 6674542859228545024
-X-Received: by 2002:a17:902:6b:: with SMTP id 98mr1601953pla.119.1554043316396;
-        Sun, 31 Mar 2019 07:41:56 -0700 (PDT)
+X-Received: by 2002:a6b:e413:: with SMTP id u19mr8740189iog.34.1554043311562;
+        Sun, 31 Mar 2019 07:41:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:868e:: with SMTP id d14ls2935634pfo.2.gmail; Sun, 31 Mar
- 2019 07:41:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw9TbrytSG8HPgcaR5WjVgm5E5v9cGjcBwx5X38ib+yeQuBABu26weFHB+rSu3SKpUaM64/
-X-Received: by 2002:a62:1996:: with SMTP id 144mr98108pfz.83.1554043315715;
-        Sun, 31 Mar 2019 07:41:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554043315; cv=none;
+Received: by 2002:a24:90d:: with SMTP id 13ls2071196itm.2.canary-gmail; Sun,
+ 31 Mar 2019 07:41:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzqwyCgjIdUPZtzuB6gVTLXayZ47lwlvxIV58ZtmXieWgI6nfmGYJJiZeeSLr38trXqZHIQ
+X-Received: by 2002:a24:434f:: with SMTP id s76mr4856172itb.8.1554043310499;
+        Sun, 31 Mar 2019 07:41:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554043310; cv=none;
         d=google.com; s=arc-20160816;
-        b=BOTKhqefKmXrtPj7pYNqGVuxN15WDJKB3TV8R5wPvYqzj6OnazpD0w6myOVNKxUfdn
-         smtOQFyQCtbDDvcIkqCvC1CEHpg3HMktBD9L9PYaO8/BiweTZh8Nc+fX60v4AqeyFVok
-         /+R/8qbaRjqCAQMQkyUtHkje0LrUqB7u4RCGPO2NaAfhsiTvAPlGZyJ0B9kjPXpEhY80
-         r8+5X7VdqCDvQ7PTTsvpXwp/NoUTZUfiGR36EhNXxYHjvgisSbLjz5Ah54ee6HF0rKXA
-         8pFfcCPhWZpAnNOOIb4zRk4NUvhgFRSxy/oEIDsJPplGFgEzQT9x3ixlgEaG2KrZbc9d
-         r56A==
+        b=TC2NVR6X6tJmOw/AHCqYOlvEFiBx0QiTmvOmkIpNzHKy3S9E74w8SI5d9XgI2M6mO8
+         r29Yj99KprWiw7922KAQKQpHlNnBegho6Ssyd7Dr9pmMa04q+unhSepxPcxoadt0M3U/
+         WJflktS4uWo/Xesl4CbZQeZ3h0TYGdvt/Bwc3hbQBqvBCoeBWUNUdB48dy3iGd62q+v8
+         59IobmlFclzVHjM2vnnhYDeZ6ZCKRwgV6ek6uP101VbgjU6Rqm01YlLO9gSsU8cMPgsa
+         W1i8fZNbjjZqGr3bGo8Ust/cVbHLtjizPxn5XSFBGWOGo5p7F5Xe5Ra6jWgJEoyWL/+f
+         RI6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=+xy+L3+qvjJp+AIjaQXsZfhFUXuag7Wupruv4RpMMYc=;
-        b=VQP4jSdDaW9Gq6dSN9/8K4fGXAuE36JzpofVzsFNEEurghGHbRN5leee5DAYyvilY0
-         oA5m78qMpGZCkZlOt7z57GCfJ5YVxJKX/dAkTUFrQ/vUAG+cGYc0tsmk8AbESgoJLxkS
-         UrFb1bHu45h9Z0aFIsIZ5lslnuelwe0BONTna35UnI/CfXnZVbHL6879v2J0ggVoGdSI
-         o9VaLn7Y1UMm1vOAcYy2kjpHBs34RQ70NmAXpqJ+jsXxiDR7IcP0y0UI6cNYyvHtWAtK
-         FGPzQnl5+KNJdpWi2KMhX5hXS8KXJYRIrMxIR6c0SYbcWv5UsT14vCJmrFAwwn5nEKlX
-         ENXg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Am1QhnNt3XY6An9GYjqqbz0hrp76omIZ3TMaZc5BxLM=;
+        b=VuLK4F/PrQnUSv4SohIlrsF4ItoTrclawT5a6EwUj9GEvdaDIpkzCuGtN7iO2HJQXY
+         1a9ea3QTTcYRwO1CDF/kgZWHYBCWKnSFmnuhRBfDuX8sDaPne7Pj2Y70wcRygy/gXeyL
+         9gJcGeZAS6sLFEaNePl3LfeWS5bA/cJ2C5hCGvjc5i3UdHsq4FzYdLCRs4Aao3DSe2O3
+         gVKrGtWGMzXoAm9PFe/IPAfjkG0HNsZT1QGj3sDl7FVD7Tebsfb4PzKvw8gcX7zkk6/r
+         SOPTUABV0NmEGfTeWbVvQzXAzU9xn/u4S/WmWyKTHjOnxyl8B5t1hfwRwOGfBufgWuCx
+         n5+g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="A/DH2Oyk";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kDGp+N8w;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id j8si502684plk.3.2019.03.31.07.41.55
+Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com. [2607:f8b0:4864:20::52c])
+        by gmr-mx.google.com with ESMTPS id f13si341550iok.3.2019.03.31.07.41.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Mar 2019 07:41:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        Sun, 31 Mar 2019 07:41:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) client-ip=2607:f8b0:4864:20::52c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="A/DH2Oyk";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kDGp+N8w;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id ck15so1999943plb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 07:41:55 -0700 (PDT)
+Received: by mail-pg1-x52c.google.com with SMTP id q1so3418799pgv.13
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 07:41:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=+xy+L3+qvjJp+AIjaQXsZfhFUXuag7Wupruv4RpMMYc=;
-        b=A/DH2OykrP+ZccWe8w50o5+udIDFY39+x7u2IlvqR/R9Jfdp76A3lfVgCVAvacM8Cp
-         cuyFMsttIe3KY+tgiRfjksx299F4dPN5ProcfYQQfN51mCrfAKzdzl6lrg2M668fm7Yz
-         nOOkrbCrpfI5zv5cLQCcZtzHN/HOr0Mje+JWGjaeKv0pbSbsemUZ1XfIhGJJNiXlJ1NS
-         BzILyyn7fUBLAUU3/EXfWAaZ2t1KDZ2uSYlFNFwEgZom1N39O2qwsjGXx5iVgw+e8RfP
-         skWsAm9cfd7sxYf+7OzYvfa06VZyp/LF18bmh8geK3wSH+xrvo83ftRB+UpqtUSSU3A0
-         kdYg==
+        h=from:to:cc:subject:date:message-id;
+        bh=Am1QhnNt3XY6An9GYjqqbz0hrp76omIZ3TMaZc5BxLM=;
+        b=kDGp+N8wkPK2Pku/RuoklyhNlguQJAwvFgDfioNHlwzyo9ML5pdN1eIpBETASjcRIE
+         CuSRnWDet4DFO2oKXgzLe2BRx45GDl8jsV4Qogi4cws07P4FBCaKZXCGdYlvvM6rsIJq
+         xTC4RORu0FbCuBcTaOJDmFHC3YiHMhgVKaXvwGwuzTtafyDUmg/+XgvmOVcID7PT0G9c
+         8CPFJ+9HYPzo5xMggoU3pu/6OBxt03HH4skV5DP92+5jUGWmBnHKSSO29zO3Y4IADClu
+         qNIF0g93CGB9CkHBMf1UvDlTho59msmuAPtrgMzxUOr0MP6ak51I6SypqTsd29/mMxu0
+         2QxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=+xy+L3+qvjJp+AIjaQXsZfhFUXuag7Wupruv4RpMMYc=;
-        b=PjqcX/4AKlqJK+DkREtj5c1QMiRs7RoLx+cH8tktj6/zvCME/9JEv6BS4UH8RCaq9F
-         X+7NMynzIddyx6whBvgT4nOiUscCB6IGrBplX3L5iDyJUtKoJuD9N//Eh1aglfGpJd4r
-         BKxEr6wjDN3ar04mrjWhQB+G8exf/SEJIplEZRUTo+gEaFy6nxq1BvHGr5DLTot8yA5G
-         lIKev3mqQyOb3aJX41VF0Ju2ExjTFk+0RGgaCQ1eOTWIMdSMlPRkV0Gl1nnkDAqPtblF
-         ZQaDAjykpT0B52pgUA+zYSL0P58cInhpWyMQg8f5ipqNzK+vUXymWEox+XFiQXf0sFWE
-         kIHw==
-X-Gm-Message-State: APjAAAU5lxud5zm8EoY3v04Zk+K1WlyoLBx09YFLJU6uAyxU0gq74BAy
-	Tp9xP4HRBgTE5im+B67NyunhyGvo
-X-Received: by 2002:a17:902:2c01:: with SMTP id m1mr59463375plb.186.1554043315099;
-        Sun, 31 Mar 2019 07:41:55 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Am1QhnNt3XY6An9GYjqqbz0hrp76omIZ3TMaZc5BxLM=;
+        b=dVBazI9KMujAsgDh/Kq/TC8Sy2QrX4DTTNNwTz7Av0re75HK6E5UjQgLZtS4OZ2vhG
+         NU7L/wm5xDaNQeuEM13egtutpDnk0nvFBo8FapojBJypOnIbkQ4fJVVqDGJWelT83N7n
+         miDGmVA2KalTp0gMeqXScboc6L2vcShgygImnIKTZY3T0uCaiGBepxGNSCpc2xUgDVXl
+         RlHSK32Oh3GxbkOKzH6Sn7V3tYnbjTKGD6f4X0qxLK3khp+Bs2Oms3+aBn/QU6WLPODa
+         f/VKKz6SGAftcWyp0v2nFSn0F/YGJ8iGwLUIFGbEXSavui6ZFRhHgFXCgwlx7L5CVU+w
+         z44w==
+X-Gm-Message-State: APjAAAUvuZDV1KB2dZsWhLa2+Cg+zAmZyrURllOppNafEasZXrcK4BJd
+	yPIhj/LbI599w1vue89SbSPRisbr
+X-Received: by 2002:a65:51c8:: with SMTP id i8mr5896214pgq.175.1554043309628;
+        Sun, 31 Mar 2019 07:41:49 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([49.35.230.116])
-        by smtp.gmail.com with ESMTPSA id g67sm12397858pfg.94.2019.03.31.07.41.52
+        by smtp.gmail.com with ESMTPSA id g67sm12397858pfg.94.2019.03.31.07.41.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 31 Mar 2019 07:41:54 -0700 (PDT)
+        Sun, 31 Mar 2019 07:41:49 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH v2 1/7] staging: rtlwifi: Compress two lines into one line
-Date: Sun, 31 Mar 2019 20:11:28 +0530
-Message-Id: <b6405f65834d83d12478b14e310295c4c27da469.1554042596.git.payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH v2 0/7] staging: rtlwifi: Compress two lines
+Date: Sun, 31 Mar 2019 20:11:27 +0530
+Message-Id: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
-References: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
-In-Reply-To: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
-References: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
 
-Challenge suggested by coccinelle.
-Compresses two lines into one line and remove unnecessary variable.
+This patchset:
+        -Compresses two lines into one line that is to return a value sometimes it need not be stored in temporary return variable and removes unnecessary variables.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/rtlwifi/rtl8822be/phy.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+Changes in v2:
+	-Subject line for patch number 6 and 7 made different.
 
-diff --git a/drivers/staging/rtlwifi/rtl8822be/phy.c b/drivers/staging/rtlwifi/rtl8822be/phy.c
-index 048904d..4f69776 100644
---- a/drivers/staging/rtlwifi/rtl8822be/phy.c
-+++ b/drivers/staging/rtlwifi/rtl8822be/phy.c
-@@ -1566,13 +1566,12 @@ _rtl8822be_phy_get_txpower_by_rate(struct ieee80211_hw *hw, u8 band, u8 path,
- 	struct rtl_priv *rtlpriv = rtl_priv(hw);
- 	struct rtl_phy *rtlphy = &rtlpriv->phy;
- 	u8 tx_num;
--	char tx_pwr_diff = 0;
- 
- 	if (band != BAND_ON_2_4G && band != BAND_ON_5G)
--		return tx_pwr_diff;
-+		return 0;
- 
- 	if (path > RF90_PATH_B)
--		return tx_pwr_diff;
-+		return 0;
- 
- 	if ((rate >= DESC_RATEMCS8 && rate <= DESC_RATEMCS15) ||
- 	    (rate >= DESC_RATEVHT2SS_MCS0 && rate <= DESC_RATEVHT2SS_MCS9))
-@@ -1580,11 +1579,8 @@ _rtl8822be_phy_get_txpower_by_rate(struct ieee80211_hw *hw, u8 band, u8 path,
- 	else
- 		tx_num = RF_1TX;
- 
--	tx_pwr_diff = (char)(rtlphy->tx_power_by_rate_offset[band][path][tx_num]
--							    [rate] &
--			     0xff);
--
--	return tx_pwr_diff;
-+	return (char)(rtlphy->tx_power_by_rate_offset[band][path][tx_num]
-+						     [rate] & 0xff);
- }
- 
- u8 rtl8822be_get_txpower_index(struct ieee80211_hw *hw, u8 path, u8 rate,
+Payal Kshirsagar (7):
+  staging: rtlwifi: Compress two lines into one line
+  staging: rtlwifi: phydm: phydm.c: Compress two lines into one line
+  staging: rtlwifi: phydm: phydm_rainfo.c: Compress two lines into one
+    line
+  staging: rtlwifi: btcoexist: Compress two lines into one line
+  staging: rtlwifi: halmac: halmac_88xx: Compress two lines into one
+    line
+  staging: rtlwifi: halmac: Compress two lines into one line
+  staging: rtlwifi: halmac: halmac_api.c: Compress two lines into one
+    line
+
+ drivers/staging/rtlwifi/btcoexist/halbtcoutsrc.c         |  5 +----
+ .../rtlwifi/halmac/halmac_88xx/halmac_api_88xx_sdio.c    |  5 +----
+ .../rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c     |  5 +----
+ drivers/staging/rtlwifi/halmac/halmac_api.c              |  7 ++-----
+ drivers/staging/rtlwifi/phydm/phydm.c                    | 16 ++++------------
+ drivers/staging/rtlwifi/phydm/phydm_rainfo.c             |  5 +----
+ drivers/staging/rtlwifi/rtl8822be/phy.c                  | 12 ++++--------
+ 7 files changed, 14 insertions(+), 41 deletions(-)
+
 -- 
 2.7.4
 
