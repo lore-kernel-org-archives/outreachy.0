@@ -1,72 +1,173 @@
-X-GM-THRID: 6200611211635064832
-X-Received: by 10.182.215.226 with SMTP id ol2mr7478183obc.11.1443692299439;
-        Thu, 01 Oct 2015 02:38:19 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.155.19 with SMTP id d19ls601661ioe.19.gmail; Thu, 01 Oct
- 2015 02:38:18 -0700 (PDT)
-X-Received: by 10.50.78.227 with SMTP id e3mr1841116igx.12.1443692298922;
-        Thu, 01 Oct 2015 02:38:18 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id zg1si858647pbb.2.2015.10.01.02.38.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Oct 2015 02:38:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by pacfv12 with SMTP id fv12so71161592pac.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Oct 2015 02:38:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=ef5omEcEEo5Zqx1X/s7hQv2XpwPt+1wY+aNfNdKKaVE=;
-        b=ilGGgEsKnoDHX0yM9HgW+LWvuyxDx2ttcIIDJQm2OWaHpmOsOE11DJ+//8LnU0J/vi
-         y+t29+K3CJyvFNZlhwJrjtdiinTg0SwU/1z2So4bzJSdqnln7Ti/M3y246ABVfHGFAn8
-         mdMdkLxIHXiR0WcR52n1Q9Qo9oib3mhv+ZuA1ivpB3j6jUYdNM0kxq+AGdUTGdHBCaVV
-         OwwzG0RwKDvsiPSeXByiAwFb/nFFTAJJUe3NT9z8yEq1HSR3yviYUTnvxHQfYEA39vO2
-         u6R9GWTDxFA/r1UKeTV7d2pJr8yxXI0r3jfrBIlorlcOYTNhSKt+xtlLy/RGByUzbDqY
-         GpSA==
-X-Received: by 10.66.120.80 with SMTP id la16mr11036544pab.1.1443692298804;
-        Thu, 01 Oct 2015 02:38:18 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id b7sm5520201pbu.20.2015.10.01.02.38.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 01 Oct 2015 02:38:18 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/2] Declare functions and structures as static.
-Date: Thu,  1 Oct 2015 15:07:56 +0530
-Message-Id: <1443692278-9074-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150204.560CFF09.0178,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+X-GM-THRID: 6674230099683835904
+Date: Sun, 31 Mar 2019 07:00:58 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <fb34a52b-3920-4236-9721-c3d0f0c24a21@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1903311321350.2578@hadrien>
+References: <20190330170116.4761-1-sanjana99reddy99@gmail.com> <20190330173836.5404-1-sanjana99reddy99@gmail.com> <20190330193727.GA2651@kroah.com> <9d78f23f-4105-4dd7-ab9e-05faa57f23fb@googlegroups.com>
+ <alpine.DEB.2.21.1903311321350.2578@hadrien>
+Subject: Re: [Outreachy kernel] Re: [PATCH v4 2/2] staging: wilc1000:
+ host_interface.c: Modify return statement.
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_595_104314434.1554040859071"
+X-Google-Token: EJqQg-UFMg7d5yUqhOk0
+X-Google-IP: 219.91.254.74
 
-These patches declare the functions and structures which are not
-used anywhere else as static.
+------=_Part_595_104314434.1554040859071
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_596_850369444.1554040859071"
 
-Shraddha Barke (2):
-  Staging: lustre: ptlrpc: Make functions static
-  Staging: lustre: obdclass: Declare structure as static.
+------=_Part_596_850369444.1554040859071
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
- drivers/staging/lustre/lustre/obdclass/lu_object.c  | 2 +-
- drivers/staging/lustre/lustre/ptlrpc/pack_generic.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
 
--- 
-2.1.4
 
+On Sunday, March 31, 2019 at 4:52:00 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Sun, 31 Mar 2019, sanjana9...@gmail.com <javascript:> wrote: 
+>
+> > 
+> > 
+> > On Sunday, March 31, 2019 at 1:09:44 AM UTC+5:30, gregkh wrote: 
+> >       On Sat, Mar 30, 2019 at 11:08:36PM +0530, Sanjana Sanikommu 
+> >       wrote: 
+> >       > Challenge suggested by coccinelle. 
+> >       > Remove return variable and directly return the value 
+> >       > Issue found using ret.cocci 
+> >       > 
+> >       > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com> 
+> > 
+> >       Are you sure this isn't already in the tree?  It does not apply. 
+> > 
+> >   
+> >    Changes are made in drivers/staging/wilc1000/ 
+> >    I don't know where it went wrong. 
+>
+> Perhaps you need to do git pull? 
+>
+
+   I will try that.
+   Thank you.
+    Sanjana 
+
+>
+> julia 
+>
+>
+> >    Thank you 
+> >     Sanjana   
+> > 
+> >       thanks, 
+> > 
+> >       greg k-h 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups 
+> > "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an 
+> > email to outreach...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e- 
+> > 05faa57f23fb%40googlegroups.com. 
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+> >
+
+
+------=_Part_596_850369444.1554040859071
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Sunday, March 31, 2019 at 4:52:00 PM UTC+5:30, =
+Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;mar=
+gin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sun, 31 Mar 2019, <a href=3D"javascript:" target=3D"_blank" gdf-obfu=
+scated-mailto=3D"0yc86Fq3BgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D=
+&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:=
+&#39;;return true;">sanjana9...@gmail.com</a> wrote:
+<br>
+<br>&gt;
+<br>&gt;
+<br>&gt; On Sunday, March 31, 2019 at 1:09:44 AM UTC+5:30, gregkh wrote:
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 On Sat, Mar 30, 2019 at 11:08:36PM +0530, San=
+jana Sanikommu
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 wrote:
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Challenge suggested by coccinelle.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Remove return variable and directly retu=
+rn the value
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Issue found using ret.cocci
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Sanjana Sanikommu &lt;<a>=
+sanjana9...@gmail.com</a>&gt;
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 Are you sure this isn&#39;t already in the tr=
+ee? =C2=A0It does not apply.
+<br>&gt;
+<br>&gt; =C2=A0
+<br>&gt; =C2=A0 =C2=A0Changes are made in drivers/staging/wilc1000/
+<br>&gt; =C2=A0 =C2=A0I don&#39;t know where it went wrong.
+<br>
+<br>Perhaps you need to do git pull?
+<br></blockquote><div><br></div><div>=C2=A0 =C2=A0I will try that.</div><di=
+v>=C2=A0 =C2=A0Thank you.</div><div>=C2=A0 =C2=A0 Sanjana=C2=A0</div><block=
+quote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-le=
+ft: 1px #ccc solid;padding-left: 1ex;">
+<br>julia
+<br>
+<br>
+<br>&gt; =C2=A0 =C2=A0Thank you
+<br>&gt; =C2=A0 =C2=A0 Sanjana=C2=A0=C2=A0
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 thanks,
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 greg k-h
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups
+<br>&gt; &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an
+<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
+mailto=3D"0yc86Fq3BgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
+vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
+eturn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"0yc86Fq3BgAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
+groups.google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e-" target=
+=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
+google.com/d/msgid/outreachy-kernel/9d78f23f-4105-4dd7-ab9e-&#39;;return tr=
+ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
+-kernel/9d78f23f-4105-4dd7-ab9e-&#39;;return true;">groups.google.<wbr>com/=
+d/msgid/outreachy-kernel/<wbr>9d78f23f-4105-4dd7-ab9e-</a>
+<br>&gt; 05faa57f23fb%<a href=3D"http://40googlegroups.com" target=3D"_blan=
+k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
+rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
+FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
+=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
+a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
+n true;">40googlegroups.<wbr>com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br>&gt;</blockquote></div>
+------=_Part_596_850369444.1554040859071--
+
+------=_Part_595_104314434.1554040859071--
 
