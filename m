@@ -1,156 +1,110 @@
 X-GM-THRID: 6674450234072891392
-X-Received: by 2002:a05:6830:11c3:: with SMTP id v3mr5046610otq.31.1554016575855;
-        Sun, 31 Mar 2019 00:16:15 -0700 (PDT)
+X-Received: by 2002:a25:8444:: with SMTP id r4mr4564785ybm.31.1554016571608;
+        Sun, 31 Mar 2019 00:16:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:7399:: with SMTP id j25ls1752983otk.0.gmail; Sun, 31 Mar
- 2019 00:16:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwGp6KL0zvaUHRFofz7Pqm2VfJrMEi8s+BAyZqwsDQfHMzkJY45rKF94QyqsNHBQUe50QUl
-X-Received: by 2002:a9d:749a:: with SMTP id t26mr4509554otk.73.1554016575144;
-        Sun, 31 Mar 2019 00:16:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554016575; cv=none;
+Received: by 2002:a25:72c3:: with SMTP id n186ls1972950ybc.12.gmail; Sun, 31
+ Mar 2019 00:16:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxuvYaHQOebZbGS/FkII2udpI4gyRe9mjnyX8E4IuYK7e/P8uakpAG6hrHwb208qLmLZm0r
+X-Received: by 2002:a25:103:: with SMTP id 3mr4607076ybb.41.1554016571175;
+        Sun, 31 Mar 2019 00:16:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554016571; cv=none;
         d=google.com; s=arc-20160816;
-        b=DVndymBGNQfA/jmKVoAkL3Gm+uL8BfJmRpyMtVVxIeNFheru8I7D79nw37FVUTrnc1
-         vQaVovv08QwOb/QJrXN545tDgNJtECFmQARzDZVIiV+yGGzPrHn4+GrxsLKmbzenBbtN
-         j3yUp0AfjR7NWAoY1S72kfL5QfYeum9XrGtl7r+mKxjvtEyADaYVnOSqz0i4js86khzJ
-         hmsj4aa7LJPtuDOoMz7oDhT5nOkS0LyV6MYs0a3jkAufzayBfErvHCKyG8P+HBlKSAlT
-         33AFj9iX5GBXtFyIJE3xax8pV5Y4nkyTmZekYqqL4zQXF7QO7YqlkGvgtgfXg73xYsEc
-         FG8w==
+        b=ddaHIjbqOwjqKzkOe29WFDH4DOqXg79wRaPgmiw6vkKjoq7I2FLu79Zn47U/EHlln1
+         TFRWbFceJjRxO45FkAJWbEsw5ebYhCsvTDJEhkyOf/SBPtvB2fl/IFk7do4FChaJJEmz
+         5iYvOBsJFS3PZ500aUwLjcofl7rohMfy4qPIeAtHQRVi0Ancz2Gn/Uu0JFmVSF6YAV2G
+         6njAcQXrUbOAGIziFeG2c3jAMJSg/bFz9ajQJaa6AfEVLvn+8ydzkNnzE3+37WIYkCF8
+         X2klOxY4uhORo3ixZasVEbEpyVRDc0iu+AE8lY6doPPwoz8BSxKq0mfLCt30Z8v+XcbX
+         Sdlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=ITSFjRwzgm7bShMk1KiqXDkGi5kE6BYxRnkSUEg4wgY=;
-        b=rnvosaf8t4U2O4+3yvuFpihcniOmNOTp9ZuSewOBoYetzt9eX36DX8bLov6IML1v0q
-         cmsbGlx4LnFJCLep+KxFbEgp8lCckM5lrZAs5uCRmGlKD1U78SHkSD8IGG/f5Bvf0Z22
-         4GZIp3kqJx+S4zgzgL9DPzMlrj2zmHSfUWushGQvH86EW7ckjqbBO96PRfojviUR5And
-         EG8/AUKp0TugFXl2d/eG11FvGoUGq/y8ECzUYBx63AHlPV/Y2gPY6Gq0qHT3wFilsn+m
-         oa7Hz9cp0hpbJvc7oJ6OmC2bpp814RURzkdXiIlJVRmmVAnJq/o4K76C6fBI7Hc55cUO
-         iwtQ==
+        bh=64grnSKGQN51eI/COBTmrlN9ZEPl5IGOUa1xF4cAlLY=;
+        b=jiYzr2JyNOoP/RJaBFXiSvhr4oiNcNQkYI5bY6fjaZNVZmV1JzZYkfT/JvOIYDuTbZ
+         eGYD1UDgJvKiykG2+5lSuOE0muEESgLu82dbn56qIxQC5SG+YR3T+ybstnlwOTcHve7+
+         DwHi97pHluOEiw5RAbPquwybqZOUAXg58OOxFTpi6EhsFoSNHgm3QU2kJUBHPq70iBrv
+         Da/VOrwHREBuVH4QaEhnQMD57zeq4Eo+OxoNwCZCKzXPHsHc75oqTPM/iXAP4KoLDSkr
+         mdCwD/oRE0ful/9i9IP/3iyw60QZYEsFGEjNUw3QdDuH16vwX67nMkNloQfQbMLb16Du
+         laHQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iC6r6J1+;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::634 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bkwL9BE0;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::630 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com. [2607:f8b0:4864:20::634])
-        by gmr-mx.google.com with ESMTPS id d12si329053oib.0.2019.03.31.00.16.15
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com. [2607:f8b0:4864:20::630])
+        by gmr-mx.google.com with ESMTPS id l65si404864ywl.1.2019.03.31.00.16.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Mar 2019 00:16:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::634 as permitted sender) client-ip=2607:f8b0:4864:20::634;
+        Sun, 31 Mar 2019 00:16:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::630 as permitted sender) client-ip=2607:f8b0:4864:20::630;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iC6r6J1+;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::634 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bkwL9BE0;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::630 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x634.google.com with SMTP id g12so2943930pll.11
-        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 00:16:15 -0700 (PDT)
+Received: by mail-pl1-x630.google.com with SMTP id g37so2949849plb.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 00:16:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=ITSFjRwzgm7bShMk1KiqXDkGi5kE6BYxRnkSUEg4wgY=;
-        b=iC6r6J1+2F+HshDGdXnqaZV045DaUjlPHSu64hr7lyOsU6SC7o6546mVbgZ8Q0g2AH
-         1aZm2tEq6y4Pt+OofrP3h/mta3kFcvXIkNfx3gpEpeo+z9jFXDSVV40Xc5YB6qtn4i+m
-         GHt7OpkUe3qqln4fjS656ev8Spoctoz621Ves/POpqF85sq7hU7WWYv+aTHVkKQsgkBu
-         Mv33bUq6PiCaxOblbPthbRXxPDLPv2ArOY3UpLN6TnXNyvbwol7l4DKXbPJmapw2JauS
-         WAl8pD9jZnwbav7bmdVH3vhFespwjF1O/J/OwLWzV8OifYGs042z8FqPXlAnhAHCpoOc
-         Yvaw==
+        bh=64grnSKGQN51eI/COBTmrlN9ZEPl5IGOUa1xF4cAlLY=;
+        b=bkwL9BE0BfcbBfU8Gs4fBhK9dhF0vtNCQA/X3bnByCWdbvDsff+a7RxMjjyC1vKS3Z
+         Bf4XZisoJyLoKBFO+YjLNcSSByYfbnleuZjkvTarbsx5CBX2MyZz7OA3uZq3lqMXyKSN
+         hlUAz5NHj2qRsEPZp5Ee0OkGQnPjU7J5Nez1esbKgdbNgdORky4hXmk+JIUXqauPEPK0
+         /wa9EWCOMjyQ5G8YnLnYln7h8vvwl2qHPVf6bTQR2EVSzqqNgyxxpIkfNDlimL9UCIDo
+         yb3xQjczSiw3/flcEFdu8O2Civv0tKGkBYB72cuM5Y339m+lz/l9Ua/bV8DDETQ9CuBY
+         4VGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=ITSFjRwzgm7bShMk1KiqXDkGi5kE6BYxRnkSUEg4wgY=;
-        b=P7KHLIXC6BStJFNGlX0ANV7Fb4MFhIm0li5eV59SrrF/xtAHT4WBngC+GH31XGBjLs
-         YOn/7wHHqnJfyIhVklUOz800uoh7jK3Zm7opgTB81xoxHGXkLsnvoGj87y9u5gpZu67Z
-         xaX6KgsEfehxdaE7eEoZ4oONQf6Dni743PsuJcDMX6LQRXpqZN9RM8XyGtjjeP7Y5P7i
-         9tBy4LpG73erzoOmZgcb7vEfDSdM21K8T/SAGWEo6ls811WveuiLs829Nslm0UfmRGrn
-         ytJfk9ofeVAVd+4TQiPRum/6JJg822ncOphIihyQJPGiNz3wMT5SswAOYs4HfDHt/HEe
-         Y7Ew==
-X-Gm-Message-State: APjAAAX7N5TBhuZyUoquPgevUDMMwgAXKBzx/pbnl/wzMtI5zAkIBPBr
-	OGkqleOKyLL4KgA09agUCfQeueYc
-X-Received: by 2002:a17:902:7084:: with SMTP id z4mr57978972plk.305.1554016574514;
-        Sun, 31 Mar 2019 00:16:14 -0700 (PDT)
+        bh=64grnSKGQN51eI/COBTmrlN9ZEPl5IGOUa1xF4cAlLY=;
+        b=HzgWPt+3VeL4dCTLrj+1YS4LnY/EzepMY+bf7nTaVTVVQgZ2Y2ji/NjbcxQ0t6Mcgx
+         pk3g6sBiDkLYioEPkc1u8LrmY6hINk8DaPNC7QgXwBggm3AWN/nbK69W8ue+u13EbPei
+         VfOj9oiij6RabHxwt9hYsbcd5vtbMLFOMjoNOmWj+EZJtWrajW0bu7g6jZc9+Cnbr4K5
+         ry4L8WjK22yqN2hWmtFcZkXrTdV7U5Egq+tiqxYYf0L7gHUgWGinJFh4ZWDzdBnFIbFV
+         FxU45rqF56kesuyyQL0SmNqZmOzlI333QJgk5MrqkT8TXOTZUsycD0k7MJfrjmEVTR+A
+         spMA==
+X-Gm-Message-State: APjAAAUN1aLcscvgYDVGZFyRVxlaWGynEg2Etq+84jZ8Bmtj1ZX/9r73
+	iBJIrbv0Z1OiLXZEOI9c+5sM8vFg
+X-Received: by 2002:a17:902:8d83:: with SMTP id v3mr215083plo.283.1554016570616;
+        Sun, 31 Mar 2019 00:16:10 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([49.35.206.28])
-        by smtp.gmail.com with ESMTPSA id j19sm3373843pfh.41.2019.03.31.00.16.11
+        by smtp.gmail.com with ESMTPSA id j19sm3373843pfh.41.2019.03.31.00.16.08
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 31 Mar 2019 00:16:13 -0700 (PDT)
+        Sun, 31 Mar 2019 00:16:09 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH 8/9] staging: rtl8723bs: os_dep: ioctl_linux.c: Avoid CamelCase "pPMK"
-Date: Sun, 31 Mar 2019 12:45:19 +0530
-Message-Id: <2494c4c09f776e7c9b4c80bbeea8d8973a5b69e4.1554016131.git.payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH 7/9] staging: rtl8723bs: os_dep: ioctl_linux.c: space prohibited before semicolon
+Date: Sun, 31 Mar 2019 12:45:18 +0530
+Message-Id: <6e371a878c7d03c7535fc0ae6f69f52cd860b540.1554016131.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1554016131.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1554016131.git.payal.s.kshirsagar.98@gmail.com>
 In-Reply-To: <cover.1554016131.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1554016131.git.payal.s.kshirsagar.98@gmail.com>
 
-Change variable name "pPMK" to "PMK"
-to avoid camelcase style issue.
+Remove space before semicolon.
 
 Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index 9f085a3..fbde2eb 100644
+index 98a91ce..9f085a3 100644
 --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
 +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -946,7 +946,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 	u8 j, bl_inserted = false;
- 	int ret = false;
- 	struct security_priv *psecuritypriv = &padapter->securitypriv;
--	struct iw_pmksa *pPMK = (struct iw_pmksa *)extra;
-+	struct iw_pmksa *PMK = (struct iw_pmksa *)extra;
- 	u8 strZeroMacAddress[ETH_ALEN] = { 0x00 };
- 	u8 strIssueBssid[ETH_ALEN] = { 0x00 };
- 
-@@ -957,8 +957,8 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 	If cmd is IW_PMKSA_REMOVE, it means the wpa_supplicant wants to remove a PMKID/BSSID from driver.
- 	*/
- 
--	memcpy(strIssueBssid, pPMK->bssid.sa_data, ETH_ALEN);
--	if (pPMK->cmd == IW_PMKSA_ADD) {
-+	memcpy(strIssueBssid, PMK->bssid.sa_data, ETH_ALEN);
-+	if (PMK->cmd == IW_PMKSA_ADD) {
- 		DBG_871X("[rtw_wx_set_pmkid] IW_PMKSA_ADD!\n");
- 		if (!memcmp(strIssueBssid, strZeroMacAddress, ETH_ALEN))
- 			return ret;
-@@ -972,7 +972,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 			if (!memcmp(psecuritypriv->PMKIDList[j].Bssid, strIssueBssid, ETH_ALEN)) {
- 				/*  BSSID is matched, the same AP => rewrite with new PMKID. */
- 				DBG_871X("[rtw_wx_set_pmkid] BSSID exists in the PMKList.\n");
--				memcpy(psecuritypriv->PMKIDList[j].PMKID, pPMK->pmkid, IW_PMKID_LEN);
-+				memcpy(psecuritypriv->PMKIDList[j].PMKID, PMK->pmkid, IW_PMKID_LEN);
- 				psecuritypriv->PMKIDList[j].bUsed = true;
- 				psecuritypriv->PMKIDIndex = j+1;
- 				bl_inserted = true;
-@@ -985,13 +985,13 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 			DBG_871X("[rtw_wx_set_pmkid] Use the new entry index = %d for this PMKID.\n",
- 				  psecuritypriv->PMKIDIndex);
+@@ -987,7 +987,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
  			memcpy(psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].Bssid, strIssueBssid, ETH_ALEN);
--			memcpy(psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].PMKID, pPMK->pmkid, IW_PMKID_LEN);
-+			memcpy(psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].PMKID, PMK->pmkid, IW_PMKID_LEN);
+ 			memcpy(psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].PMKID, pPMK->pmkid, IW_PMKID_LEN);
  			psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].bUsed = true;
- 			psecuritypriv->PMKIDIndex++;
+-			psecuritypriv->PMKIDIndex++ ;
++			psecuritypriv->PMKIDIndex++;
  			if (psecuritypriv->PMKIDIndex == 16)
  				psecuritypriv->PMKIDIndex = 0;
  		}
--	} else if (pPMK->cmd == IW_PMKSA_REMOVE) {
-+	} else if (PMK->cmd == IW_PMKSA_REMOVE) {
- 		DBG_871X("[rtw_wx_set_pmkid] IW_PMKSA_REMOVE!\n");
- 		ret = true;
- 		for (j = 0 ; j<NUM_PMKID_CACHE; j++) {
-@@ -1002,7 +1002,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 				break;
- 			}
- 		}
--	} else if (pPMK->cmd == IW_PMKSA_FLUSH) {
-+	} else if (PMK->cmd == IW_PMKSA_FLUSH) {
- 		DBG_871X("[rtw_wx_set_pmkid] IW_PMKSA_FLUSH!\n");
- 		memset(&psecuritypriv->PMKIDList[0], 0x00, sizeof(RT_PMKID_LIST) * NUM_PMKID_CACHE);
- 		psecuritypriv->PMKIDIndex = 0;
 -- 
 2.7.4
 
