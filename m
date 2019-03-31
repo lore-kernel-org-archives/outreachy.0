@@ -1,97 +1,118 @@
 X-GM-THRID: 6674500883205586944
-X-Received: by 2002:a2e:2c07:: with SMTP id s7mr1387734ljs.17.1554028497758;
-        Sun, 31 Mar 2019 03:34:57 -0700 (PDT)
+X-Received: by 2002:a25:3b0c:: with SMTP id i12mr1180944yba.68.1554028482012;
+        Sun, 31 Mar 2019 03:34:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:2443:: with SMTP id k64ls557221lfk.1.gmail; Sun, 31 Mar
- 2019 03:34:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw1Ka7REjG0IvJppfmdkFSkvWDz3KpuYwoTOxL5Rh9VW/QDuANyw8AsALnjhF5sJzB1pakw
-X-Received: by 2002:ac2:5632:: with SMTP id b18mr1516500lff.5.1554028496966;
-        Sun, 31 Mar 2019 03:34:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554028496; cv=none;
+Received: by 2002:a25:cdc7:: with SMTP id d190ls2074789ybf.8.gmail; Sun, 31
+ Mar 2019 03:34:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwjoFHpZdgRhVQ5Q1z8hbWsTZe+oP93RSzGqlOnPW9u07LoI8LhmiH7aD777sp62p2GMh1s
+X-Received: by 2002:a25:9345:: with SMTP id g5mr3933071ybo.64.1554028481120;
+        Sun, 31 Mar 2019 03:34:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554028481; cv=none;
         d=google.com; s=arc-20160816;
-        b=sJer8z1In0wduzpatSr0Y3+mGYh/Vso7OPV+6lBK6wAtXFhwgwYz0WeEf0KMFZ7Pld
-         AI0qOe/hUjvXMKrQH1+cWT/x9d+enAsPyPA+2idm0uNKJ2ZtH2fh1BuL23WcfKatqE8/
-         GnRwPcWtmYNXAm3rVaVXeIiODcpSSIjOmh9cS3tGaAMLPbOtEVTHhHdlvN2Xl1bL+jHV
-         9ydJPWsBx1f4mLwkOWzgaJKnapY7BcjjxIlqs9Jyb4YMySclNeHWM+cYwBOwYm5fPCyt
-         C9xekkolKMTZ/kiNjhbSjBzqt7yaw13tshyG+wflLHkkuVVlmsliFnlx8IBemITdYhUv
-         B6Lw==
+        b=CApI+7kCjt1gAnPmOQnN5ybuRoT1mr67CtqJ8nJaRL0FXf14IV4AEBRlLsu0vEbzVA
+         CptLmiZtsZSw+IUpMKZjuP8QOjlyqCXGY6FRAQDKxRyy/LX+08Sev2ziIh+mCdRDmLN4
+         KOr1+dB4KWtUYjB5iarK+yxKGeY1e7lXLsw7Ij0Lat8yRStEXMdU50HQNCBfU2NBFppk
+         JtfSO50ijG3f0IH+mt3b/x1ZlKUvtGAoI+X1X7cbriKzefWLwKTzoypk6+so3LuL/GYG
+         byuMfWvZ0G0igQWWgU57kfKxWVCLzL9BluEGAlv2LrREu+RZ8v9g94DLY64zgmPTGRZQ
+         t+Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=YFJIRKJojHzKI2Wzo9fwWqculms+kXn5/VKBKcGh0Hk=;
-        b=iSybmWXenMu9mO7Sety8YWA8rpUQKLW8iBpv6VLPz216gJgGyxgA435R8HfyhyV5y9
-         Lll/SGtWh2MMtu38NYVy7XsUJVW64Xon/PMQQPJMX1UvUMOlQcFmi32plAcxO03LEGkZ
-         lHsVU15UTyk7tOAB+mKqsqm1M2qpld+C4sUKLLpz/bZbM27gJndUG3aTZMBqUm5SXwBl
-         qbKrGngX7jGNoS1APmTLDdSwLwiVqAgR3qNAMXfLJtXPiIrmZZyXmRzWDIZYbBnHN7yi
-         L9+4bvN+Ri9E3sqYywAMIpr4IsvKFz4YRzOOvzkE1ZawUdqbEujZS8iGuPWoGxoaNNiB
-         1p0w==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=GpSbS2NGHPrgWpCLLFks+DlsQU0gPsNKn4+9j2LxMRM=;
+        b=WSYmni495CShpCk32AhLzruTkbWEHzGNnu9ti/MlHnLStqWPFK67imFhyMHcCaOdQu
+         Syg77YPv4YpVQnBy9aS+IwlTRiLESBYQ3yISGE6Vzk+BGAyJPg44I8G+PVH6z6VTk+IT
+         zrD8vZemmLgZBF/JcDEe4HqM7KIwr+rG+7woPvwxVJVRGfvIuZHzOZWoIlxASXXqD1dX
+         Bn2kOouYQfhzOnORkS+pDI9p1ylQVv8mhTIlDb2Y1MVUPqJTcJu5vA9fvAKqzXIxzPI3
+         OjP++ymWTFNNur4wxUp8+84Z3jz8E3ky1FMlUZCXT6FVQ/8WRBJpyYs2QKjS7lIrpD9v
+         48UA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id y1si428374lfe.1.2019.03.31.03.34.56
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ON1s7Urj;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id 127si52501ybe.2.2019.03.31.03.34.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Mar 2019 03:34:56 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sun, 31 Mar 2019 03:34:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.60,292,1549926000"; 
-   d="scan'208";a="301289284"
-Received: from abo-75-106-68.mrs.modulonet.fr (HELO hadrien) ([85.68.106.75])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 31 Mar 2019 12:34:55 +0200
-Date: Sun, 31 Mar 2019 12:34:55 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/6] staging: comedi: Prefer using
- BIT macro in various files.
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ON1s7Urj;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x444.google.com with SMTP id i19so3120224pfd.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 03:34:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=GpSbS2NGHPrgWpCLLFks+DlsQU0gPsNKn4+9j2LxMRM=;
+        b=ON1s7UrjSJ+OpTHlxJiC0truQCFGDgErE3uGndMmuOkEwMWlYVCviNU3wboEHCteWt
+         SZgKnZDjlE8k0oP2prAQPPzO9H1oPfBEN7PmMuGD8EGiqoL1HiPJu1m0MJneKhgsZVS3
+         z20CNN3P2I7A52eRHFR/oWRTvO0z0KeuZbU4yZaGBrT0090Dg676dYlAuYFTayFARH4h
+         KqOMOUPAVIDXAeyCTaMhNH8wkV7Pe+z4E+U+XuYURwCNpeaksZaqOXfTIufblbNeLqqk
+         ViH3FQcbT2qcZaN7wzwT9YUEAXtchYKbwdY/W/H0e0cUU1BMlpEePa9C4D765KTYgQ1j
+         5SZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=GpSbS2NGHPrgWpCLLFks+DlsQU0gPsNKn4+9j2LxMRM=;
+        b=eFA3RCPMgDFkpUtmtzGmwf3BRdzn3exv0SwFz4gKtUoP04qREknguHsiMxDe6UrKGA
+         XjTdchu6P8oUnyMalVIZd+BfkbVW9cygqsBCDRNutzXlgABs9oQNSp1kOwsZq014iZVN
+         D3zMNdFH5CWPJvrSe0fUTRqf4vqH6MCZZ46SIsa4p96zN179uMPYOrUYSbhlX9fHFG+W
+         o1oG+LUYW8m9YgtYNfrNPouGjs67E9LnP3uKyoA7fct8zHT3aD4hdkRYlWsr1nH1WowF
+         hUSy2PepEW4pPavEOZ0lyZXP1BqDCgHgu96Jzw7GhUHsGOzMzUTTm4wx74cwY95+eris
+         d5NA==
+X-Gm-Message-State: APjAAAV8OzfeJcaNJ0bD1O6ppNm0bdYDjKHP7UAEp8L19PTofvrkaqyO
+	Np3VxkkkZ20xejzcd/Hq7UlzqVUYGyo=
+X-Received: by 2002:a62:4e86:: with SMTP id c128mr33583283pfb.39.1554028480422;
+        Sun, 31 Mar 2019 03:34:40 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.105.95])
+        by smtp.googlemail.com with ESMTPSA id p2sm26745102pfi.73.2019.03.31.03.34.38
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 31 Mar 2019 03:34:39 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 4/6] staging: comedi: Prefer using the BIT macro
+Date: Sun, 31 Mar 2019 16:04:31 +0530
+Message-Id: <20190331103431.21554-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190331103204.21358-1-sanjana99reddy99@gmail.com>
-Message-ID: <alpine.DEB.2.21.1903311234110.2578@hadrien>
 References: <20190331103204.21358-1-sanjana99reddy99@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
 
+Challenge suggested by coccinelle.
 
+Replace bit shifting on 1 with the BIT(x) macro.
+Coccinelle script:
 
-On Sun, 31 Mar 2019, Sanjana Sanikommu wrote:
+@@
+constant c;
+@@
 
-> This patchset does the following.
-> 1. Replace bit assignment with macro
->
-> Sanjana Sanikommu (6):
->   staging: comedi: das08: Prefer using the BIT macro
->   staging: comedi: Prefer using the BIT macro
->   staging: comedi: Prefer using the BIT macro
->   staging: comedi: Prefer using the BIT macro
->   staging: comedi: Prefer using the BIT macro
->   staging: comedi: Prefer using the BIT macro
+-(1 << c)
++BIT(c)
 
-Each patch needs to have a different subject line.
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+ drivers/staging/comedi/drivers/dyna_pci10xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Since the changes seem to be fairly small, maybe it can just be one patch.
+diff --git a/drivers/staging/comedi/drivers/dyna_pci10xx.c b/drivers/staging/comedi/drivers/dyna_pci10xx.c
+index e50536731d11..9bdd5bf2eb99 100644
+--- a/drivers/staging/comedi/drivers/dyna_pci10xx.c
++++ b/drivers/staging/comedi/drivers/dyna_pci10xx.c
+@@ -54,7 +54,7 @@ static int dyna_pci10xx_ai_eoc(struct comedi_device *dev,
+ 	unsigned int status;
+ 
+ 	status = inw_p(dev->iobase);
+-	if (status & (1 << 15))
++	if (status & BIT(15))
+ 		return 0;
+ 	return -EBUSY;
+ }
+-- 
+2.17.1
 
-julia
-
->
->  drivers/staging/comedi/drivers/amplc_pci230.c  | 2 +-
->  drivers/staging/comedi/drivers/das08.c         | 4 ++--
->  drivers/staging/comedi/drivers/dyna_pci10xx.c  | 2 +-
->  drivers/staging/comedi/drivers/ni_at_ao.c      | 2 +-
->  drivers/staging/comedi/drivers/ni_daq_700.c    | 2 +-
->  drivers/staging/comedi/drivers/ni_mio_common.c | 4 ++--
->  6 files changed, 8 insertions(+), 8 deletions(-)
->
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190331103204.21358-1-sanjana99reddy99%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
