@@ -1,276 +1,146 @@
 X-GM-THRID: 6674542859228545024
-X-Received: by 2002:a2e:5d90:: with SMTP id v16mr562889lje.2.1554039097488;
-        Sun, 31 Mar 2019 06:31:37 -0700 (PDT)
+X-Received: by 2002:a05:600c:c1:: with SMTP id u1mr964556wmm.2.1554039044134;
+        Sun, 31 Mar 2019 06:30:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5085:: with SMTP id f5ls568436lfm.13.gmail; Sun, 31 Mar
- 2019 06:31:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxT4MqTjlf8+9Udb/uBMlVCxWslvoQp846td3vNlEi8xw9Vueu5C6LSWZViFo9yJ/2FZ/SG
-X-Received: by 2002:a19:3809:: with SMTP id f9mr1530480lfa.1.1554039096667;
-        Sun, 31 Mar 2019 06:31:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554039096; cv=none;
+Received: by 2002:a1c:495:: with SMTP id 143ls949031wme.10.canary-gmail; Sun,
+ 31 Mar 2019 06:30:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw0HjnrMHnG6yPJvNkHh4RCpbIBxUsLl+RMz6NWnWRVFleb9E+VFUWof/Nrlcnl6OVIQ2GW
+X-Received: by 2002:a1c:2d4c:: with SMTP id t73mr830887wmt.21.1554039043357;
+        Sun, 31 Mar 2019 06:30:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554039043; cv=none;
         d=google.com; s=arc-20160816;
-        b=hOYxFnkwuH1uOhbX/wDbdtK36J/NfO+AIfsnWt+BdScy+D3fKgv+SmGZwVoMCJXoys
-         Az2cuEVFE8LGvktEcZM7V7yzPIT1EL6XZE8BYmm7MdjXJjlqVSgzxWnnB+ZPxvzFb7JX
-         32l0PxyHC6Za5YypXz3waqfCU3J8eER3fMvPHLlOu9QUIyrsqXQgIu9uB4Bl3EYRoR5I
-         QrYMY6R6cA6nFVm9AnBehnlef/UPJqcSNjbiPM9/9gQgetYXh51GpxY2JKnkNapxS7kd
-         THM68Dzmypo0MZinmkrNK+dGed692cKlrrapZg4KB2kCHUYKf+V8QNc/PYzSQbPgzrqC
-         AMuw==
+        b=TxR125V0wHq49XJs3TbGtLY9wepK7RQ8kIpLbnBlG2wmHEIKmbl+fh2oGBt6v2Qk5l
+         yZI7l7iMRIg2BUNhG8U8rxy6ZX7VTgKhrgB13iBYy+Srob2i5/kYgjI8ZvBamw7NchhH
+         yQSUvgCAz6zGRzELssNd5GYoL+AbadbSpJj0NmjNgadD0hN/TpQ9mmilrE5fQMxetZU+
+         Z1YRB7QaQzlh66YH1AGAorzWUDkflWAOucxhwlE9AhQ5nr5hpneKLe+U+ge3mPwWR1pZ
+         6l556LUKD57XPPeHDcXS8qk+h7u/fivGWp5DShtJ4jjG2P4Z6o4TwtCaQDlcCEhPCiPw
+         cKaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=6zbvAUjWibOg7HZ3n58JT+jgcGa0ZQtWmu2IoXBdwag=;
-        b=N6JcC6bKB4MCD5urY8HnKURGYeZOUKzsLu99s4O9Yvlby8Ziyc3l7XcWj8s+XL4hyS
-         z4kS3IgwkAHJXG+SvOSs2F6dG+I7VM68NaSxlMZsYkjsX5HZf//cliBu/78rt20EYnZq
-         DpqYAOskv7OuNJ83eb824KiQtlZ8p14avhrkJxkhzvB0KMm4U5sSsjKyY8y+XA9bjqau
-         ZX+452EQOa2Lsg4q35lr/1v+3jA8Mof5yDn8SPzb+BJw1dsm8cn47WUvE4QQTUSKBB3L
-         5NdqbeDwi/9vWfsNKEHdPBGLLcAzWTRAJjv4oZw3LHYjIRQmgUPHyNz7ANr51QzDV9dU
-         QRFQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=70/GyAeM7ZxhVPB7pDC0g85Ln9cSRueCqT79uhOT0Mc=;
+        b=WpwY2cOEZKLS7BRPRz2mfXu0GesO01UOWihSjCFzB7ndrCyL6ZmSl9f/bpUEQmD2ld
+         SHDasbTdyL3CXKDsDOmMUZFaJXzE1dLpCCgtIt3vhykvxjoqTBHkG/nWH0iVolaMOf0D
+         ETc20+RR9/lL4hn2ea57YU7rrZv69QWyvwqI2U0J8S/R4qhz87fPyk92IL+UYY40Rcab
+         OuwF63RFSvvjfa8F07153I1rJ6A8g3h4KhFTvrOVTgH7NhyuwwGYe9QovGJSAsokB7zx
+         vLPiESD/NluM3oDBzrUO3Ynl2fj4oCmCDCG9/WFVj7qsXGWASftunSH3Dr1FWBgm8BQQ
+         Ymmw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MQQ2BOfF;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::136 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-lf1-x136.google.com (mail-lf1-x136.google.com. [2a00:1450:4864:20::136])
-        by gmr-mx.google.com with ESMTPS id z15si319710lfe.5.2019.03.31.06.31.36
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a9si372708wrp.5.2019.03.31.06.30.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Mar 2019 06:31:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::136 as permitted sender) client-ip=2a00:1450:4864:20::136;
+        Sun, 31 Mar 2019 06:30:43 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MQQ2BOfF;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::136 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x136.google.com with SMTP id r25so4348354lfn.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 06:31:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=6zbvAUjWibOg7HZ3n58JT+jgcGa0ZQtWmu2IoXBdwag=;
-        b=MQQ2BOfFNpsIzBYcl2ryIZhJLbPUSqI5Yad5tkPLksKJWyXaBVXyu0VHapR9wR8Mwc
-         1CvdEI8vmPD+HpOxBO59j+964FuimbJRdXc/ZbUK878Tq/3ejEhFk3CCl9IkTb6ms2br
-         5o3fuU2gg1jbSBl2JebGcgurA9ZybJE6qXU+Po0BEklw9SMViFkHFR4YHjlH+3hPbIXK
-         UETANhR22XtK+OwYRI75dvDVJ2ZGkRNW0sqz7J2hi/sHTHsaV57wI0Z/VE+Zbfe62a/h
-         5IrVlESkbUFyqn8MmmjSRIqZzt4YfmBPsgVqqUs7Ka0b8dyBVK5SDVVUnVO9/H2PXeMP
-         UIgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=6zbvAUjWibOg7HZ3n58JT+jgcGa0ZQtWmu2IoXBdwag=;
-        b=nwF1A16/Mk8wbyxzWw3+Lz18I3Z9LPf2ZRYYDPd1Ll7N0ER+wtR/iMkrNOw4isl/UK
-         Y6yR7cNtZctHZIM9M4yUjTDUM6pUodvFqG6vGvBqi7nwAZXcMS1DO7x124nl0mLPlXv7
-         +Zxv6QRj7ayfW/jAZVsgo/vIN8m2cR+hx7kmG0T3KDc39QVMydPUK8qqghsXXNPtoo5s
-         lMMC+vjjhXpo9o65LotA1lQJ2xNlmjx+pnpelvvEJLhzz557+YQdIigfkXDpM26+88m4
-         IM3STFRT17E1Y60nvuLtYoDdL9cTwB0EMrgvT6dE9EO7Mql4bo7NYY63bTS/EQ6Y8+92
-         lssQ==
-X-Gm-Message-State: APjAAAUtnRItIOuY1Slbq0+HQoz1jYv8fG4FNzXijG+QDQDSOWRKgTam
-	uq/2q9xDXsFfrjldMlvzmD6NztUrXhOCasTPMKE=
-X-Received: by 2002:a19:a401:: with SMTP id q1mr5234253lfc.40.1554039096521;
- Sun, 31 Mar 2019 06:31:36 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.60,292,1549926000"; 
+   d="scan'208";a="301295391"
+Received: from abo-75-106-68.mrs.modulonet.fr (HELO hadrien) ([85.68.106.75])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 31 Mar 2019 15:30:42 +0200
+Date: Sun, 31 Mar 2019 15:30:42 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/7] staging: rtlwifi: phydm: phydm.c:
+ Compress two lines into one line
+In-Reply-To: <55923ff0f300b54cba51dbb2662efd80c4d882d4.1554037161.git.payal.s.kshirsagar.98@gmail.com>
+Message-ID: <alpine.DEB.2.21.1903311530210.2578@hadrien>
+References: <cover.1554037161.git.payal.s.kshirsagar.98@gmail.com> <55923ff0f300b54cba51dbb2662efd80c4d882d4.1554037161.git.payal.s.kshirsagar.98@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-References: <cover.1554037161.git.payal.s.kshirsagar.98@gmail.com>
- <a94f301af01c055a8524ae77206fadd9f6e524eb.1554037161.git.payal.s.kshirsagar.98@gmail.com>
- <alpine.DEB.2.21.1903311527480.2578@hadrien>
-In-Reply-To: <alpine.DEB.2.21.1903311527480.2578@hadrien>
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Date: Sun, 31 Mar 2019 19:01:24 +0530
-Message-ID: <CANTOzWE1am3xofByCG+dFNmwgyivZwGxtZjLHWXazT5NkLP=EQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 6/7] staging: rtlwifi: halmac: Compress
- two lines into one line
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="00000000000050b780058563ecd6"
+Content-Type: text/plain; charset=US-ASCII
 
---00000000000050b780058563ecd6
-Content-Type: text/plain; charset="UTF-8"
 
-On Sun, Mar 31, 2019, 6:58 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
 
-> 6 and 7 have the same subject line.
+On Sun, 31 Mar 2019, Payal Kshirsagar wrote:
+
+> Challenge suggested by coccinelle.
+> Compresses two lines into one line and remove unnecessary variables.
 >
+> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> ---
+>  drivers/staging/rtlwifi/phydm/phydm.c | 16 ++++------------
+>  1 file changed, 4 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/staging/rtlwifi/phydm/phydm.c b/drivers/staging/rtlwifi/phydm/phydm.c
+> index 473eeb6..09dbb96 100644
+> --- a/drivers/staging/rtlwifi/phydm/phydm.c
+> +++ b/drivers/staging/rtlwifi/phydm/phydm.c
+> @@ -49,7 +49,7 @@ static void odm_update_power_training_state(struct phy_dm_struct *dm);
+>  /*Y = 10*log(X)*/
+>  s32 odm_pwdb_conversion(s32 X, u32 total_bit, u32 decimal_bit)
+>  {
+> -	s32 Y, integer = 0, decimal = 0;
+> +	s32 integer = 0, decimal = 0;
+>  	u32 i;
+>
+>  	if (X == 0)
+> @@ -66,9 +66,7 @@ s32 odm_pwdb_conversion(s32 X, u32 total_bit, u32 decimal_bit)
+>  		}
+>  	}
+>
+> -	Y = 3 * (integer - decimal_bit) + decimal; /* 10*log(x)=3*log2(x), */
+> -
+> -	return Y;
+> +	return 3 * (integer - decimal_bit) + decimal; /* 10*log(x)=3*log2(x), */;
 
-What can I do now ?
-Should I send them again in v2 or just have to send 7th only?
-Thanking
-Payal
+Maybe this one would be better left as is, to keep the concepts of X and
+Y.
 
 julia
+
+>  }
 >
-> On Sun, 31 Mar 2019, Payal Kshirsagar wrote:
+>  s32 odm_sign_conversion(s32 value, u32 total_bit)
+> @@ -1240,7 +1238,6 @@ u32 odm_convert_to_db(u32 value)
+>  {
+>  	u8 i;
+>  	u8 j;
+> -	u32 dB;
 >
-> > Challenge suggested by coccinelle.
-> > Compresses two lines into one line and remove unnecessary variable.
-> >
-> > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> > ---
-> >  drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c | 5
-> +----
-> >  1 file changed, 1 insertion(+), 4 deletions(-)
-> >
-> > diff --git
-> a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c
-> b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c
-> > index 0bd6abd..0ae0d02 100644
-> > --- a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c
-> > +++ b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c
-> > @@ -192,7 +192,6 @@ halmac_cfg_rx_aggregation_88xx_usb(struct
-> halmac_adapter *halmac_adapter,
-> >  u8 halmac_reg_read_8_usb_88xx(struct halmac_adapter *halmac_adapter,
-> >                             u32 halmac_offset)
-> >  {
-> > -     u8 value8;
-> >       void *driver_adapter = NULL;
-> >       struct halmac_api *halmac_api;
-> >
-> > @@ -205,9 +204,7 @@ u8 halmac_reg_read_8_usb_88xx(struct halmac_adapter
-> *halmac_adapter,
-> >       driver_adapter = halmac_adapter->driver_adapter;
-> >       halmac_api = (struct halmac_api *)halmac_adapter->halmac_api;
-> >
-> > -     value8 = PLATFORM_REG_READ_8(driver_adapter, halmac_offset);
-> > -
-> > -     return value8;
-> > +     return PLATFORM_REG_READ_8(driver_adapter, halmac_offset);
-> >  }
-> >
-> >  /**
-> > --
-> > 2.7.4
-> >
-> > --
-> > You received this message because you are subscribed to the Google
-> Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send
-> an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit
-> https://groups.google.com/d/msgid/outreachy-kernel/a94f301af01c055a8524ae77206fadd9f6e524eb.1554037161.git.payal.s.kshirsagar.98%40gmail.com
-> .
-> > For more options, visit https://groups.google.com/d/optout.
-> >
+>  	value = value & 0xFFFF;
+>
+> @@ -1257,16 +1254,13 @@ u32 odm_convert_to_db(u32 value)
+>  			break;
+>  	}
+>
+> -	dB = (i << 3) + j + 1;
+> -
+> -	return dB;
+> +	return (i << 3) + j + 1;
+>  }
+>
+>  u32 odm_convert_to_linear(u32 value)
+>  {
+>  	u8 i;
+>  	u8 j;
+> -	u32 linear;
+>
+>  	/* 1dB~96dB */
+>
+> @@ -1275,9 +1269,7 @@ u32 odm_convert_to_linear(u32 value)
+>  	i = (u8)((value - 1) >> 3);
+>  	j = (u8)(value - 1) - (i << 3);
+>
+> -	linear = db_invert_table[i][j];
+> -
+> -	return linear;
+> +	return db_invert_table[i][j];
+>  }
+>
+>  /*
+> --
+> 2.7.4
 >
 > --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit
-> https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903311527480.2578%40hadrien
-> .
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/55923ff0f300b54cba51dbb2662efd80c4d882d4.1554037161.git.payal.s.kshirsagar.98%40gmail.com.
 > For more options, visit https://groups.google.com/d/optout.
 >
-
---00000000000050b780058563ecd6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
-On Sun, Mar 31, 2019, 6:58 PM Julia Lawall &lt;<a href=3D"mailto:julia.lawa=
-ll@lip6.fr">julia.lawall@lip6.fr</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">6 and 7 have the same subject line.<br></blockquote></div></d=
-iv><div dir=3D"auto"><br></div><div dir=3D"auto">What can I do now ?=C2=A0<=
-/div><div dir=3D"auto">Should I send them again in v2 or just have to send =
-7th only?</div><div dir=3D"auto">Thanking</div><div dir=3D"auto">Payal</div=
-><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><=
-blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px=
- #ccc solid;padding-left:1ex">
-julia<br>
-<br>
-On Sun, 31 Mar 2019, Payal Kshirsagar wrote:<br>
-<br>
-&gt; Challenge suggested by coccinelle.<br>
-&gt; Compresses two lines into one line and remove unnecessary variable.<br=
->
-&gt;<br>
-&gt; Signed-off-by: Payal Kshirsagar &lt;<a href=3D"mailto:payal.s.kshirsag=
-ar.98@gmail.com" target=3D"_blank" rel=3D"noreferrer">payal.s.kshirsagar.98=
-@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c=
- | 5 +----<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 4 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88x=
-x_usb.c b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c<=
-br>
-&gt; index 0bd6abd..0ae0d02 100644<br>
-&gt; --- a/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c=
-<br>
-&gt; +++ b/drivers/staging/rtlwifi/halmac/halmac_88xx/halmac_api_88xx_usb.c=
-<br>
-&gt; @@ -192,7 +192,6 @@ halmac_cfg_rx_aggregation_88xx_usb(struct halmac_a=
-dapter *halmac_adapter,<br>
-&gt;=C2=A0 u8 halmac_reg_read_8_usb_88xx(struct halmac_adapter *halmac_adap=
-ter,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0u32 halmac_offset)<br>
-&gt;=C2=A0 {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0u8 value8;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0void *driver_adapter =3D NULL;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct halmac_api *halmac_api;<br>
-&gt;<br>
-&gt; @@ -205,9 +204,7 @@ u8 halmac_reg_read_8_usb_88xx(struct halmac_adapte=
-r *halmac_adapter,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0driver_adapter =3D halmac_adapter-&gt;driver=
-_adapter;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0halmac_api =3D (struct halmac_api *)halmac_a=
-dapter-&gt;halmac_api;<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0value8 =3D PLATFORM_REG_READ_8(driver_adapter, ha=
-lmac_offset);<br>
-&gt; -<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0return value8;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0return PLATFORM_REG_READ_8(driver_adapter, halmac=
-_offset);<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt;=C2=A0 /**<br>
-&gt; --<br>
-&gt; 2.7.4<br>
-&gt;<br>
-&gt; --<br>
-&gt; You received this message because you are subscribed to the Google Gro=
-ups &quot;outreachy-kernel&quot; group.<br>
-&gt; To unsubscribe from this group and stop receiving emails from it, send=
- an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
-com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@goog=
-legroups.com</a>.<br>
-&gt; To post to this group, send email to <a href=3D"mailto:outreachy-kerne=
-l@googlegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@g=
-ooglegroups.com</a>.<br>
-&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
-gle.com/d/msgid/outreachy-kernel/a94f301af01c055a8524ae77206fadd9f6e524eb.1=
-554037161.git.payal.s.kshirsagar.98%40gmail.com" rel=3D"noreferrer noreferr=
-er" target=3D"_blank">https://groups.google.com/d/msgid/outreachy-kernel/a9=
-4f301af01c055a8524ae77206fadd9f6e524eb.1554037161.git.payal.s.kshirsagar.98=
-%40gmail.com</a>.<br>
-&gt; For more options, visit <a href=3D"https://groups.google.com/d/optout"=
- rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/=
-d/optout</a>.<br>
-&gt;<br>
-<br>
--- <br>
-You received this message because you are subscribed to the Google Groups &=
-quot;outreachy-kernel&quot; group.<br>
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.com" =
-target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@googlegro=
-ups.com</a>.<br>
-To post to this group, send email to <a href=3D"mailto:outreachy-kernel@goo=
-glegroups.com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel@google=
-groups.com</a>.<br>
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903311527480.2578%40hadrien" r=
-el=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/d/=
-msgid/outreachy-kernel/alpine.DEB.2.21.1903311527480.2578%40hadrien</a>.<br=
->
-For more options, visit <a href=3D"https://groups.google.com/d/optout" rel=
-=3D"noreferrer noreferrer" target=3D"_blank">https://groups.google.com/d/op=
-tout</a>.<br>
-</blockquote></div></div></div>
-
---00000000000050b780058563ecd6--
 
