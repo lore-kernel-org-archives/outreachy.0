@@ -1,251 +1,180 @@
 X-GM-THRID: 6674267883353145344
-X-Received: by 2002:aca:49ca:: with SMTP id w193mr2729033oia.46.1554106903578;
-        Mon, 01 Apr 2019 01:21:43 -0700 (PDT)
+X-Received: by 2002:ac8:38b7:: with SMTP id f52mr6154726qtc.7.1554057103191;
+        Sun, 31 Mar 2019 11:31:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:f2d5:: with SMTP id q204ls384110oih.4.gmail; Mon, 01 Apr
- 2019 01:21:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw23nlS08NLn5HldUfoPKBa8bmKLEiuwNK6a0Q13liJ9nc3CxPBNt8bpUBwx62EoETjsVyz
-X-Received: by 2002:aca:c5d0:: with SMTP id v199mr6264670oif.7.1554106902789;
-        Mon, 01 Apr 2019 01:21:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554106902; cv=none;
+Received: by 2002:a0c:ba02:: with SMTP id w2ls2030419qvf.6.gmail; Sun, 31 Mar
+ 2019 11:31:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxjlJZhw8vk/HtG3n5eeupX9DczTN+CspiBCCQdHJHUmPjAxVj6TKAIJetSByyR1d5LkpYR
+X-Received: by 2002:a0c:d0ef:: with SMTP id b44mr6058668qvh.61.1554057102567;
+        Sun, 31 Mar 2019 11:31:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554057102; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5UjZEFOgccb6GSUiEp7W2CfP7YYRoW4D9Y/eH/vrlME/dz/dI3sPWzczbn9VFXdVe
-         LCVhBnKknRfIHGI96+zyulIomFE7v09InAVFR2H9WQR4A/6XhNF/MFMfsY47xFSMybD4
-         MuJH7I7HpsZu/WpWPIUYNrtrMXXUhBfc0AeAJLBS3r4ukN3HtAcIlljRcncUxix/yfJY
-         j7Lsfe+zHBMDCjxc0s1uf1TQ7qDi5P6LxE4NK9kTvSrN84StEzBsPIMQXJecMFHK2y0c
-         Gew5A+iYVRfcFQFa72UjwjImt7be4ZCqWmbQew2yWUmfYEBwan/cbQclWjYTlymp2EqX
-         RgjQ==
+        b=vngj/6xu8ovHygczAZ7hsuSfpcTzdcv7Xdy2U9U21haLG3t8ju2pTjD+eoSggHHaq4
+         RUVMnYKApA3A3WVyWvzfcdUnauNdQBgTA9KCufJBcLlhksxm120HbGR3y8m6UJJ3yDol
+         C0aM9jhMlYl4Pi5eAZ9DkNDx3AIzsL2f3yTV2T3919vbBGFmDa8mlS294L2A+WyMORlA
+         N7Ph7jb3OY/V51RbUSc7mo65Mz5JDB9YZWLY0EcNfgBuwhUWp4Vu8Nfz4QxyS1Z9rQQS
+         ZR+LntuBAJe3E7hiEivOI7IMkTQBNeFDAJQc7zgElNHE22VYDp8gWh8koxQNRcAnyg5P
+         y1PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=okJv0/yRBBaMxxuYifvME5+qvAdUD7dksX21wfmSBQk=;
-        b=JNQMsZAdlTyuHBX3UlhGTVHDq+L/mfcc1h3AThNDx/BzvdaLOGeNAf3XwdDdzlAjWP
-         yDzajLiCREj8FXm1/LHQJb1gqZbG5EfLX3rpn2asxp+qN9f4871KSNvUkWDZpNExSjkO
-         PfkKGpf2Q0KviBe/GGr+TOoCdIAHDZn97986mV1Xd8LhnM1N01jf2SEmfUhSjFq94cTe
-         WlsG+ZgjcyyJLUq7nbrgmcACfZQ/L3eo1OtE/70/witXKNWHR7Q890+JsxiuB0/44fQk
-         om5UupjamM55TPDiZcOJDVK2Jbb1eArc59W57j4rg3CUKeb6psx+f3AMT4LaoPqtYwKK
-         zo9Q==
+        bh=2yh33NUg3gTjAZgdJpxsmr+4IdjziwmWyze/8oSOOn4=;
+        b=DDjXaO3+8wS+5rsvVavRsSahF+O4N0ji6ctbaXDR4GCEsgFJM/6bb11ET2AvidMpBl
+         vJOaaswbEttAPC8+Qaw6CpOoysUAFwCSzw9yqxoA17DGYGI1rrvFqFzcAJ7weHL8b6hQ
+         nSLxR47IGiMGiNG2sWFdl1HtRbvq8O+yM0MueGPRIeD5n6p47CIGU76H9laZBlc3sZ31
+         lZdeV1O4qoKLymN3rw5qrvOnn4MMer8ZAHXNK+1zQf6AYX/NC4rPntvCIQqCw1693rcs
+         MPRqxq6eZCG9G220VQwpkrmzQ7fU6Vj/7MV2iAFim1AGd9fqr5RJjZsCc0qwq94dGC46
+         EaAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AlOoawdN;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Ig/JBqco";
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <himadri18.07@gmail.com>
-Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com. [2607:f8b0:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id d12si458214oib.0.2019.04.01.01.21.42
+Received: from mail-ot1-x334.google.com (mail-ot1-x334.google.com. [2607:f8b0:4864:20::334])
+        by gmr-mx.google.com with ESMTPS id h186si492304qkc.1.2019.03.31.11.31.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 01:21:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) client-ip=2607:f8b0:4864:20::342;
+        Sun, 31 Mar 2019 11:31:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) client-ip=2607:f8b0:4864:20::334;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AlOoawdN;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Ig/JBqco";
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::334 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x342.google.com with SMTP id m10so7859984otp.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 01:21:42 -0700 (PDT)
+Received: by mail-ot1-x334.google.com with SMTP id e5so6491970otk.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 11:31:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=okJv0/yRBBaMxxuYifvME5+qvAdUD7dksX21wfmSBQk=;
-        b=AlOoawdNq5YhG2JNP3kVwDjfwcBVNKYBxX76m5GGkQKvLDNugEE7zZaBnhRKT6aCPN
-         fNC813DNk+ubg65p/1K1oNwSfSe7mzNBGtg7kp3yqZuAVKL8nG4JhGlHt2PeBNVsp+eJ
-         jCF8CPeMUzmNnTLgz4etrrzi8TZCxgu+evkvRzVK/J2PAiZJppdQLiGdJTqenUHgMELr
-         m8B3AHQ3S5Z4T2gJk3l5BkrUkzSSHhBb9zpZWF4rIzsDWHIFGbRU7Gt7K5MwLg2ubfRQ
-         eggKSf6XugZ3PaQQ0qYt8Li/ERV3XMbRro95Isw9wHs1sAC5ZXfyQyLkxrqsv3F+35B2
-         rtpg==
+        bh=2yh33NUg3gTjAZgdJpxsmr+4IdjziwmWyze/8oSOOn4=;
+        b=Ig/JBqcoYt4Ux6FX1G5mmWq+2qQZJmJMGOGwhBFL3BUmkWNxqeaVyFCr1PdxF/F7EQ
+         PzMI5asxQ4H3aJOYR/SDH7aE4IrcFDeAh7RhAlGtnkqsQ270yJarur01bM/EPGtQqfli
+         yncj/9R5doO3irBnalfNuPS9KmJaJzIc4CCk78QsRckrGtrXC4cTDlsbWEF4/KUbVLIw
+         ZnECwNGmugJl0McvN5Qmkxf+6C+0vQhTm6wOH3IJ4DQHkBkI/RJ+o1g1g0bpkoppB5NL
+         vgUq7fj1sg27I0DVOXUmhQElprE9h7ywMLxo8OsUygFTxlhAzTfCRmJ9jUkAAmCP3hTc
+         z6Zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=okJv0/yRBBaMxxuYifvME5+qvAdUD7dksX21wfmSBQk=;
-        b=gPfRxQLOnFDHSA+6227efYDu4DppymcgDCsQtgWT0WhokcRCVyMKEw+HhOu3BGjbtf
-         L1FpJzRLdaYl84XEHAGolCTLdZ/Ehmz/kto+c1/VhUaHZfgJZXiQoHRENootxwIK/I7o
-         s/fl8IqmXNQVxA1crbImHsJCaWceClTzrrRX6aRMYkqTCDH/DzdnkGQHKhXYUWX0clY3
-         sQxTFmw74Fr4Gyr0hmQVF89QXL1CGNKn9f1xMXVWgK/ZC+aAaQQcWY0R2hKgtGPDClK5
-         vczRZMvEJC8VrOUwTLutI73HRmkjiV0ix5qDTptm8SKs1d4pB5UqIdY0DvsnSrZrstVW
-         QRxA==
-X-Gm-Message-State: APjAAAVv9mEJ6jmNRWhlWGdWmc67UQDFtWsE9cSthWMffrEeQ0mkW9AY
-	BTlZrf+64/wbEADSBZFyyzaEIgEJDVXbuu0IZKZDyKkt
-X-Received: by 2002:a9d:3444:: with SMTP id v62mr47322006otb.165.1554106902280;
- Mon, 01 Apr 2019 01:21:42 -0700 (PDT)
+        bh=2yh33NUg3gTjAZgdJpxsmr+4IdjziwmWyze/8oSOOn4=;
+        b=S40OaXaHrPxm84ql8jPllYG1buYCdpc7ZtZN6AOCUY4ra11HNYMd4+rwYndI1HCuvX
+         R9FuW7osUanaxiAOdkbMphXimq17Y6oa4PpFtPVIciqf3x8R8FUMv5iY3WEYB267MvuG
+         AbYeC4rrxBBwUfdjV/E0Ycu9p6mMD6KqU+FrxT4DMDDEpPUhIHQ66Kx5Q57C3a0QROWM
+         D6X4RLIYafxbf/5Li09gj7ZdKBSHwkmDKlBQgderZmloX6ab3uzw+vmJFleO1LWXVrr2
+         eYEzxGuad+vA/6Kj30xG26aw+xwBAWIUOluO+/E+HwoTQpGhhgDDM6nHiY1TJD+owhB7
+         uLVA==
+X-Gm-Message-State: APjAAAX4EtIEwpi3uBkzPGpS5oklPEe/5Ntkre6V3/fNFrF2CCik8seP
+	7EneRni2Ov8jyEwjXrkm4C6fnSYMhaoieGaXa93OMQ==
+X-Received: by 2002:a9d:62d4:: with SMTP id z20mr43888166otk.299.1554057102135;
+ Sun, 31 Mar 2019 11:31:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190330192742.65250-1-himadri18.07@gmail.com>
- <20190331022155.68569-1-himadri18.07@gmail.com> <20190331022155.68569-7-himadri18.07@gmail.com>
- <alpine.DEB.2.21.1903311013430.2578@hadrien>
-In-Reply-To: <alpine.DEB.2.21.1903311013430.2578@hadrien>
+ <20190331022155.68569-1-himadri18.07@gmail.com> <20190331022155.68569-8-himadri18.07@gmail.com>
+ <96e52ac0-0e8a-dcc7-cb5d-2c00037cfc8d@lwfinger.net>
+In-Reply-To: <96e52ac0-0e8a-dcc7-cb5d-2c00037cfc8d@lwfinger.net>
 From: Himadri Pandya <himadri18.07@gmail.com>
-Date: Mon, 1 Apr 2019 13:51:29 +0530
-Message-ID: <CAPnhUpaFnAoWFQLO2VadZRv_qdeEbu9osncGZG0bkyk1Pib2bg@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v3 6/7] staging: rtl8712: remove
- unnecessary NULL check
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: Larry.Finger@lwfinger.net, 
-	Florian Schilhabel <florian.c.schilhabel@googlemail.com>, Greg KH <gregkh@linuxfoundation.org>, 
+Date: Mon, 1 Apr 2019 00:01:29 +0530
+Message-ID: <CAPnhUpa2=Lt7anFMzStWYRZfUrYCNzKBxMG8x-g2-u==Zt43gA@mail.gmail.com>
+Subject: Re: [PATCH v3 7/7] staging: rtl8712: use list_entry in function r8712_select_and_join_from_scan
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Cc: florian.c.schilhabel@googlemail.com, Greg KH <gregkh@linuxfoundation.org>, 
 	outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000da7f98058573b515"
+Content-Type: multipart/alternative; boundary="00000000000088987f0585681d92"
 
---000000000000da7f98058573b515
+--00000000000088987f0585681d92
 Content-Type: text/plain; charset="UTF-8"
 
-On Sun, Mar 31, 2019 at 1:45 PM Julia Lawall <julia.lawall@lip6.fr> wrote:
+On Sun, 31 Mar, 2019, 10:50 PM Larry Finger, <Larry.Finger@lwfinger.net>
+wrote:
 
+> On 3/30/19 9:21 PM, Himadri Pandya wrote:
+> > Use list_entry instead of container_of for conversion to
+> > wlan_network in function r8712_select_and_join_from_scan() because it
+> > is a better practice to use list_entry for such list manipulations in
+> > kerel.
+> >
+> > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> > ---
+> > Changes in V3:
+> >       - Improve log message
 >
+> I have tested these patches, and they do not break the driver.
 >
-> On Sun, 31 Mar 2019, Himadri Pandya wrote:
+> Tested-by: Larry Finger <Larry.Finger@lwfinger.net>
 >
-> > Remove unnecessary NULL check for wlan_network *pnetwork because
-> > container_of will not return NULL in this usage.
->
-> Actually, it is possible that it can, because of the obscure reason that
-> the list field is at the top of the structure.  You can see if it is
-> possible and useful to make the same check without the container_of call.
->
-> julia
+> If "container_of()" resolves to "list_entry()" in this case, why is it
+> "better
+> practice" to use the latter. It probably is more clear what is happening,
+> but
+> you need to give your reason.
 >
 
-Okay.
+Including more appropriate explanation in next revision.
 
-I think pmlmepriv->pscanned is used to get the address of mlme_priv 's
-member struct wlan_network cur_network using container_of(). I can directly
-check if struct wlan_netowrk's member struct list_head list is allocated
-memory or not. Because it is the first member and if the memory is
-allocated, the pointer to it won't be NULL. So instead of using
-container_of(), I think I should just check if pmlmepriv->cur_network->list
-is NULL or not.
 
-Please correct me if I am mistaken.
+> You also have a typo for kernel in every patch.
+>
+
+My bad. Fixing them in the next revision.
 
 Thank you.
 
 - Himadri
 
->
->
-> >
-> > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
-> > ---
-> >  drivers/staging/rtl8712/rtl871x_mlme.c | 2 --
-> >  1 file changed, 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c
-> b/drivers/staging/rtl8712/rtl871x_mlme.c
-> > index 1a15c45aa83b..be44c6b2819b 100644
-> > --- a/drivers/staging/rtl8712/rtl871x_mlme.c
-> > +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-> > @@ -1119,8 +1119,6 @@ int r8712_select_and_join_from_scan(struct
-> mlme_priv *pmlmepriv)
-> >               }
-> >               pnetwork = container_of(pmlmepriv->pscanned,
-> >                                       struct wlan_network, list);
-> > -             if (pnetwork == NULL)
-> > -                     return _FAIL;
-> >               pmlmepriv->pscanned = pmlmepriv->pscanned->next;
-> >               if (pmlmepriv->assoc_by_bssid) {
-> >                       dst_ssid = pnetwork->network.MacAddress;
-> > --
-> > 2.17.1
-> >
-> > --
-> > You received this message because you are subscribed to the Google
-> Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send
-> an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To post to this group, send email to outreachy-kernel@googlegroups.com.
-> > To view this discussion on the web visit
-> https://groups.google.com/d/msgid/outreachy-kernel/20190331022155.68569-7-himadri18.07%40gmail.com
-> .
-> > For more options, visit https://groups.google.com/d/optout.
-> >
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit
-> https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1903311013430.2578%40hadrien
-> .
-> For more options, visit https://groups.google.com/d/optout.
+
+> Larry
 >
 
---000000000000da7f98058573b515
+--00000000000088987f0585681d92
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Mar 31, 2019=
- at 1:45 PM Julia Lawall &lt;<a href=3D"mailto:julia.lawall@lip6.fr">julia.=
-lawall@lip6.fr</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
-ing-left:1ex"><br>
-<br>On Sun, 31 Mar 2019, Himadri Pandya wrote:<br>
-<br>&gt; Remove unnecessary NULL check for wlan_network *pnetwork because<b=
-r>&gt; container_of will not return NULL in this usage.<br>
-<br>Actually, it is possible that it can, because of the obscure reason tha=
-t<br>the list field is at the top of the structure.=C2=A0 You can see if it=
- is<br>possible and useful to make the same check without the container_of =
-call.<br>
-<br>julia<br></blockquote><div><br></div><div>Okay.=C2=A0</div><div><br></d=
-iv><div>I think pmlmepriv-&gt;pscanned is used to get the address of mlme_p=
-riv &#39;s member struct wlan_network cur_network using container_of(). I c=
-an directly check if struct wlan_netowrk&#39;s member struct list_head list=
- is allocated memory or not. Because=C2=A0it is the first member and if the=
- memory is allocated, the pointer to it won&#39;t be NULL. So instead of us=
-ing container_of(), I think I should just check if pmlmepriv-&gt;cur_networ=
-k-&gt;list is NULL or not.</div><div><br></div><div>Please correct me if I =
-am mistaken.</div><div><br></div><div>Thank you.</div><div><br></div><div>-=
- Himadri</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Sun, 31 Mar, 2019, 10:50 PM Larry Finger, &lt;<a hr=
+ef=3D"mailto:Larry.Finger@lwfinger.net">Larry.Finger@lwfinger.net</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
+;border-left:1px #ccc solid;padding-left:1ex">On 3/30/19 9:21 PM, Himadri P=
+andya wrote:<br>
+&gt; Use list_entry instead of container_of for conversion to<br>
+&gt; wlan_network in function r8712_select_and_join_from_scan() because it<=
+br>
+&gt; is a better practice to use list_entry for such list manipulations in<=
+br>
+&gt; kerel.<br>
+&gt; <br>
+&gt; Signed-off-by: Himadri Pandya &lt;<a href=3D"mailto:himadri18.07@gmail=
+.com" target=3D"_blank" rel=3D"noreferrer">himadri18.07@gmail.com</a>&gt;<b=
+r>
+&gt; ---<br>
+&gt; Changes in V3:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Improve log message<br>
 <br>
-<br>&gt;<br>&gt; Signed-off-by: Himadri Pandya &lt;<a href=3D"mailto:himadr=
-i18.07@gmail.com" target=3D"_blank">himadri18.07@gmail.com</a>&gt;<br>&gt; =
----<br>&gt;=C2=A0 drivers/staging/rtl8712/rtl871x_mlme.c | 2 --<br>&gt;=C2=
-=A0 1 file changed, 2 deletions(-)<br>&gt;<br>&gt; diff --git a/drivers/sta=
-ging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c<br>&gt=
-; index 1a15c45aa83b..be44c6b2819b 100644<br>&gt; --- a/drivers/staging/rtl=
-8712/rtl871x_mlme.c<br>&gt; +++ b/drivers/staging/rtl8712/rtl871x_mlme.c<br=
->&gt; @@ -1119,8 +1119,6 @@ int r8712_select_and_join_from_scan(struct mlme=
-_priv *pmlmepriv)<br>&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0}<br>&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pnetw=
-ork =3D container_of(pmlmepriv-&gt;pscanned,<br>&gt;=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0struct wlan_network, list);<br=
->&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (pnetwork =3D=3D =
-NULL)<br>&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0return _FAIL;<br>&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0pmlmepriv-&gt;pscanned =3D pmlmepriv-&gt;pscanned-&gt;n=
-ext;<br>&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (pmlm=
-epriv-&gt;assoc_by_bssid) {<br>&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dst_ssid =3D pnetwork-&gt;netw=
-ork.MacAddress;<br>&gt; --<br>&gt; 2.17.1<br>&gt;<br>&gt; --<br>&gt; You re=
-ceived this message because you are subscribed to the Google Groups &quot;o=
-utreachy-kernel&quot; group.<br>&gt; To unsubscribe from this group and sto=
-p receiving emails from it, send an email to <a href=3D"mailto:outreachy-ke=
-rnel%2Bunsubscribe@googlegroups.com" target=3D"_blank">outreachy-kernel+uns=
-ubscribe@googlegroups.com</a>.<br>&gt; To post to this group, send email to=
- <a href=3D"mailto:outreachy-kernel@googlegroups.com" target=3D"_blank">out=
-reachy-kernel@googlegroups.com</a>.<br>&gt; To view this discussion on the =
-web visit <a href=3D"https://groups.google.com/d/msgid/outreachy-kernel/201=
-90331022155.68569-7-himadri18.07%40gmail.com" rel=3D"noreferrer" target=3D"=
-_blank">https://groups.google.com/d/msgid/outreachy-kernel/20190331022155.6=
-8569-7-himadri18.07%40gmail.com</a>.<br>&gt; For more options, visit <a hre=
-f=3D"https://groups.google.com/d/optout" rel=3D"noreferrer" target=3D"_blan=
-k">https://groups.google.com/d/optout</a>.<br>&gt;<br>
-<br>-- <br>You received this message because you are subscribed to the Goog=
-le Groups &quot;outreachy-kernel&quot; group.<br>To unsubscribe from this g=
-roup and stop receiving emails from it, send an email to <a href=3D"mailto:=
-outreachy-kernel%2Bunsubscribe@googlegroups.com" target=3D"_blank">outreach=
-y-kernel+unsubscribe@googlegroups.com</a>.<br>To post to this group, send e=
-mail to <a href=3D"mailto:outreachy-kernel@googlegroups.com" target=3D"_bla=
-nk">outreachy-kernel@googlegroups.com</a>.<br>To view this discussion on th=
-e web visit <a href=3D"https://groups.google.com/d/msgid/outreachy-kernel/a=
-lpine.DEB.2.21.1903311013430.2578%40hadrien" rel=3D"noreferrer" target=3D"_=
-blank">https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1=
-903311013430.2578%40hadrien</a>.<br>For more options, visit <a href=3D"http=
-s://groups.google.com/d/optout" rel=3D"noreferrer" target=3D"_blank">https:=
-//groups.google.com/d/optout</a>.<br>
+I have tested these patches, and they do not break the driver.<br>
+<br>
+Tested-by: Larry Finger &lt;<a href=3D"mailto:Larry.Finger@lwfinger.net" ta=
+rget=3D"_blank" rel=3D"noreferrer">Larry.Finger@lwfinger.net</a>&gt;<br>
+<br>
+If &quot;container_of()&quot; resolves to &quot;list_entry()&quot; in this =
+case, why is it &quot;better <br>
+practice&quot; to use the latter. It probably is more clear what is happeni=
+ng, but <br>
+you need to give your reason.<br></blockquote></div></div><div dir=3D"auto"=
+><br></div><div dir=3D"auto">Including more appropriate explanation in next=
+ revision.</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D=
+"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
+border-left:1px #ccc solid;padding-left:1ex">
+<br>
+You also have a typo for kernel in every patch.<br></blockquote></div></div=
+><div dir=3D"auto"><br></div><div dir=3D"auto">My bad. Fixing them in the n=
+ext revision.=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">Than=
+k you.</div><div dir=3D"auto"><br></div><div dir=3D"auto">- Himadri</div><d=
+iv dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #c=
+cc solid;padding-left:1ex">
+<br>
+Larry<br>
 </blockquote></div></div></div>
 
---000000000000da7f98058573b515--
+--00000000000088987f0585681d92--
 
