@@ -1,146 +1,111 @@
 X-GM-THRID: 6674450234072891392
-X-Received: by 2002:a37:4e4b:: with SMTP id c72mr6878151qkb.57.1554140446536;
-        Mon, 01 Apr 2019 10:40:46 -0700 (PDT)
+X-Received: by 2002:a24:3a0d:: with SMTP id m13mr283358itm.34.1554029385867;
+        Sun, 31 Mar 2019 03:49:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:de09:: with SMTP id h9ls2850307qkj.5.gmail; Mon, 01 Apr
- 2019 10:40:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyMPmZpOqMzaA3VKvWz416P9WoqLEF8Arm7GYdgt9yPzlvHaDniYr62+LH5Wg13DrtZG7JZ
-X-Received: by 2002:a37:9f88:: with SMTP id i130mr6914808qke.3.1554140445982;
-        Mon, 01 Apr 2019 10:40:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554140445; cv=none;
+Received: by 2002:a24:da01:: with SMTP id z1ls1992965itg.0.canary-gmail; Sun,
+ 31 Mar 2019 03:49:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwFA/OVpc715eZB0oOSUtD6PjRyOaOPDfn/U1x1tfiobDjqb2PZKg2cAQqK2cUWqARu/mNH
+X-Received: by 2002:a24:9d4a:: with SMTP id f71mr4870345itd.33.1554029385339;
+        Sun, 31 Mar 2019 03:49:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554029385; cv=none;
         d=google.com; s=arc-20160816;
-        b=ACt03qICgPX6ZRlEPJUKrVBHPgcm383DKhGj5Oyi3ctLajbfvAG+unf97e2vEuz3FQ
-         mxCyggU/RKocvU1YvppnmLtmk4btuh4RqKOUpvR6wYr5TqkeYGksRR9iGnV3DL3rgM8v
-         QbT35FNMkV6qEW93euoH1EFzmZHAxMMWFFW6AN6608EV7LrVYdC877dYw0Jd5EJ1uut6
-         iwXl+o1ieL9FZyw3bQJnKc5oqszyFrnn9AcStYffW3Vqbx8pBP25O5dLJnzF2ipzImhi
-         rpLAqZ7EWAJiYReUQTIYq3fGAtKeZKwCKH/gBLH1CtA9uR3vWW/f31JX9hwAmbDhXjh9
-         CDSg==
+        b=R1YRBMWzGCOYg3hhXriA/7qkjRRbwYzUzi77XsRLNhGdmh80sSc3shcRFsJMR/jcLl
+         j/5Ub4SeTkbvncBLIUvXpkusOABe/tXdTcUKPsUtyUXtNCmtNe0TFJOQU1vm0Pbv/5MG
+         +kuSy8HOKciHzeIz3HVG7fZltMRfm3Y7rTQGLn33jf2gTdnx2TNjAWIGmJaKVv8pqOGS
+         0RBCzknwxsh4dRnU0+0Or6UVuDIC0pNiKEOVnuhfQNd7mu0CU9LmawycG/Q9PkkKKYW8
+         WzUVLYgfGFcDTmdpUY4cAdFMlwvRCl3QqyiDCSnatq+pEGq06BFai/3l/PUg8CGeLR3Y
+         8ZEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=9COV0pKQkHx6zsITkU9fSNqRu8rk/wMwv3T6TCF7Ie8=;
-        b=aY1WB8dOnkVG/59fc+DzKnODsSdCUpm5YeMl9uiFRpfLauRb+09RE19CopYWap1o2p
-         mDbs03r/CCZSHxqcvjp4nIUnPZP7X5GLSKACqECGOGHkzL+Y1KJW7gILQWaM2UVh1PAR
-         FkEbF5YtRq+/UKElzZH3pyMU6KhvIq4Z2pY6fHBOmTWjKCSgoR3sgVvAUDMmzff06IkK
-         xfH06HHAztabhEdkkr0V+92/H3uDXBVOKf9Ee5O3y2Qqx5cM7NP1p12sB0xOs4Dpz5ms
-         J54w3hdZ6EEg570R3KeQP+GMobyzVYZbOwLezG7xOIjZuG678ZtxxeoZR5ktvZm9QpOT
-         H2qw==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=vJTK1smGRcyoIULjzik+E0WLqRFSIgpbBS/+5vNc0hI=;
+        b=oswGBPjaCzv9wGUmP0fqL/i/97uK27SG2xsGa94jahTbCGR/MQWuHXGyplzfAzoEOJ
+         3LngAlSCIwCov4WFTuO3u8OgkfNg2Y9zEErCQkF2i4tl4g6bc/Ri2qkxTQ+Y9iBpzh+D
+         1H/0bO7sorXiuwpwvJq85sZXzxoQh2o+Xdz9Faseu96qGxXm9ejCOJMMKy3plMY3+T9B
+         DjjJdx9FyCbp54Z6PkKFoyEweXuTk0FgMIXQQl2Hjcrul6SnlaxbfWjbuy2Rl62zEHtp
+         34zRm+RuNF0iYCjBwjy3wVjTVPW3lXkNreBbI10rGDVYTK622p1xe214/mqPDZCE1aAI
+         r2YQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=SEDdVfUP;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=sm8OtzE0;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.25 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
-        by gmr-mx.google.com with ESMTPS id q58si511365qtf.5.2019.04.01.10.40.45
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="kVb/nLgi";
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id 17si43itx.0.2019.03.31.03.49.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 10:40:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
+        Sun, 31 Mar 2019 03:49:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b=SEDdVfUP;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=sm8OtzE0;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.25 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 8605B21DC1;
-	Mon,  1 Apr 2019 13:40:45 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Mon, 01 Apr 2019 13:40:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm3; bh=9COV0pKQkHx6zsITkU9fSNqRu8r
-	k/wMwv3T6TCF7Ie8=; b=SEDdVfUPRqTKQwhsIfJ/yh5rqgOWGCJAx53GyagdmbQ
-	KFTL4E9xH51CG+O+YdB8Vj/JaHG+EjkoQqAMFtpJmWbuzII2iJ1x6XCSOdI/TaLG
-	jCLd2gzT9bWoxp/i4Molo2CHAPFLsarbJiDgXs6UoGlRzhPVNSUrXo+CZbYMwhnt
-	M7kyJZLxSawJBRpUtFkf1tIHrvMzqP1hBvDTrODOQqPBDiMqJcNUjRCBya3R3pYo
-	r/WoPXVNm0fGxr8BgyZyb9oopmD55BMm4U034Kwf3xz9exZ/nU7TUNSQyDlXiO+D
-	T0Xe4TjOFDcYVFDFJ1S70f5WH4l9qVmF2chOMtXSgog==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=9COV0p
-	KQkHx6zsITkU9fSNqRu8rk/wMwv3T6TCF7Ie8=; b=sm8OtzE0X2kMa7c3pvNfEN
-	+VKVZhCkE7dUyh3HPhRyn6hrW8MqErmTPatRiuvZ6EzBStDJamBbWP2wgEWkSf2Y
-	m2e7OT1e5W17SBBTDk+OI9qW7Ng5j8YI3iNKnUB2NlVMwtQFCgtgzUqEb7EI1I7F
-	GHdP9FPuvV6Z+BoCu2vw43K9HajG+JT8eR2p1o4rza8gGcF4vb9ekwWOvQrwoRSw
-	A6uQh5Q9i32DsZRUhVmvsBE3j/LbnyVQ64nkPVgSY6KGa3cswurCgvtpgOyh3Qto
-	4oQCFSr0BukWDUcrddc9Go5bNJG35mAUf2J6MlXz4Hy4XpbrZ90OF9/KanQRN+mw
-	==
-X-ME-Sender: <xms:HU2iXPEHPpqU75xl0tK6P99Slj7ezgFSUvMfjUP8yihxT2gKD7l89Q>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrleeggdduudefucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvffukfhfgggtuggjfgesthdtredttdervdenucfhrhhomhepifhrvghg
-    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecukfhppeekfedrkeeirdekledrud
-    dtjeenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhmnecu
-    vehluhhsthgvrhfuihiivgepud
-X-ME-Proxy: <xmx:HU2iXAnd3Fg8TBHCk31dDwbsqV9giYxX-mZQpCbDvAX3xNDOVOLb3A>
-    <xmx:HU2iXMIfl5isMhjbxMeW7rMO6sfPZWt-FvmQJa2x5qNGsDjCs7dLRw>
-    <xmx:HU2iXBbbt1Brcz5DBzZTAR3u9jAz4Qw2ZtYVR8F1zJfh9yz28XZSFg>
-    <xmx:HU2iXOTSZx_KDF2MngZDR6QNyF_4Vq5tdk_Zou6vgWD1tUSuD-duGQ>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id D6EC01030F;
-	Mon,  1 Apr 2019 13:40:44 -0400 (EDT)
-Date: Mon, 1 Apr 2019 19:24:43 +0200
-From: Greg KH <greg@kroah.com>
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/9] staging: rtl8723bs: os_dep:
- ioctl_linux.c: Fix indentation issue.
-Message-ID: <20190401172443.GA16636@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="kVb/nLgi";
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id 188so3119807pfd.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 03:49:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=vJTK1smGRcyoIULjzik+E0WLqRFSIgpbBS/+5vNc0hI=;
+        b=kVb/nLgiiOPqDhagicKxSNmDDtOnKmyYSaLljK+feOR0dldY9nH0Awl55dX1xtESwY
+         M/NZJ/HRdO99w2qlLNskwLleUqpR2jieQZgyEWSbWmYO/KAWtaePv3QJGpvNOvUamk+y
+         msJdh195HOUixMdrj8Eq/wcLYgmxFEeJARVAsOgb6oxp3puMDkGImy+AGgOfw2d8OPpT
+         iRy+fTrz/+Bzlqc9xcPr2tV9DyMCTBymgrzrDIhJGIOVTdz48IV3BSLvN6WKxFqCRHZE
+         Eg+xY5/QMqA+06Gd+7v8IfVRO7k8KPyiYRQG3fanawSIDWdeIW6bQPFhgL3gKUZ4IMJ+
+         Jhpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=vJTK1smGRcyoIULjzik+E0WLqRFSIgpbBS/+5vNc0hI=;
+        b=jJje4vihgn+RpwqswGlaWukUoh43kR+rn4Tm0zsDsOWgj2W2/+3dg2SxvZWbCCwNHs
+         mmG/mJFIsko29GoYH7IeN0WqIool9y1QrpOu7zml+FJ4MeetvE1QYnrO1c1NaEDRfVHB
+         bDkrXvMIYvomHkow9BjoOCZ7i9n9Lpi/n5NEAvXgBJj/dnl1uuJHURLnjxv3/BXYo8Vr
+         2HZ7+zVT6XS0RNyqBBFz1H72elbw7JKeYHaDrpMRaaHx/+9GzPTK+3TnfdM5H+kld1WX
+         gpiWJBWIhJuj/Bn13HUuHPGPju05vms49Ouyno0WsfphY211fUgZM/8ocJ3ehfrF2JAp
+         5bNA==
+X-Gm-Message-State: APjAAAUjodRv+vpSRI54paRRhc4n99D6s3UOw2zK02lQH4lMk6kSyB1E
+	mMR4B2pDsG1elVLF/9rwvt+NNwB/
+X-Received: by 2002:a65:5acc:: with SMTP id d12mr55714154pgt.337.1554029384343;
+        Sun, 31 Mar 2019 03:49:44 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.230.116])
+        by smtp.gmail.com with ESMTPSA id g4sm10014361pfo.38.2019.03.31.03.49.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 31 Mar 2019 03:49:43 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH v2 9/9] staging: rtl8723bs: os_dep: ioctl_linux.c: Alignment should match open parenthesis
+Date: Sun, 31 Mar 2019 16:18:44 +0530
+Message-Id: <7fabdfbe57236414896702b22586597dfd41b0f0.1554028003.git.payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1554028003.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1554028003.git.payal.s.kshirsagar.98@gmail.com>
- <c1a8790575615dcf3af1fc5bb75092c3f93a3c68.1554028003.git.payal.s.kshirsagar.98@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c1a8790575615dcf3af1fc5bb75092c3f93a3c68.1554028003.git.payal.s.kshirsagar.98@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <cover.1554028003.git.payal.s.kshirsagar.98@gmail.com>
+References: <cover.1554028003.git.payal.s.kshirsagar.98@gmail.com>
 
-On Sun, Mar 31, 2019 at 04:18:36PM +0530, Payal Kshirsagar wrote:
-> To fix the indentation issue remove spaces and add tabs.
-> 
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 85 +++++++++++++-------------
->  1 file changed, 41 insertions(+), 44 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> index ec336a5..e6f24b8 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> @@ -939,30 +939,30 @@ static int rtw_wx_get_mode(struct net_device *dev, struct iw_request_info *a,
->  
->  
->  static int rtw_wx_set_pmkid(struct net_device *dev,
-> -	                     struct iw_request_info *a,
-> -			     union iwreq_data *wrqu, char *extra)
-> +			    struct iw_request_info *a,
-> +			    union iwreq_data *wrqu, char *extra)
->  {
->  	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
-> -	u8          j, blInserted = false;
-> -	int         intReturn = false;
-> +	u8 j, blInserted = false;
-> +	int intReturn = false;
->  	struct security_priv *psecuritypriv = &padapter->securitypriv;
-> -        struct iw_pmksa*  pPMK = (struct iw_pmksa*)extra;
-> -        u8     strZeroMacAddress[ ETH_ALEN ] = { 0x00 };
-> -        u8     strIssueBssid[ ETH_ALEN ] = { 0x00 };
-> +	struct iw_pmksa*  pPMK = (struct iw_pmksa*)extra;
-> +	u8 strZeroMacAddress[ ETH_ALEN ] = { 0x00 };
-> +	u8 strIssueBssid[ ETH_ALEN ] = { 0x00 };
->  
->  	/*
-> -        There are the BSSID information in the bssid.sa_data array.
-> -        If cmd is IW_PMKSA_FLUSH, it means the wpa_suppplicant wants to clear all the PMKID information.
-> -        If cmd is IW_PMKSA_ADD, it means the wpa_supplicant wants to add a PMKID/BSSID to driver.
-> -        If cmd is IW_PMKSA_REMOVE, it means the wpa_supplicant wants to remove a PMKID/BSSID from driver.
-> -        */
-> +	There are the BSSID information in the bssid.sa_data array.
-> +	If cmd is IW_PMKSA_FLUSH, it means the wpa_suppplicant wants to clear all the PMKID information.
-> +	If cmd is IW_PMKSA_ADD, it means the wpa_supplicant wants to add a PMKID/BSSID to driver.
-> +	If cmd is IW_PMKSA_REMOVE, it means the wpa_supplicant wants to remove a PMKID/BSSID from driver.
-> +	*/
+Align code to open parenthesis.
 
-That is not the correct indentation to make :(
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index 0fe11dd..c15e3a9 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -983,7 +983,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
+ 		if (!inserted) {
+ 			/*  Find a new entry */
+ 			DBG_871X("[rtw_wx_set_pmkid] Use the new entry index = %d for this PMKID.\n",
+-				  psecuritypriv->PMKIDIndex);
++				 psecuritypriv->PMKIDIndex);
+ 			memcpy(psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].Bssid, strIssueBssid, ETH_ALEN);
+ 			memcpy(psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].PMKID, pmk->pmkid, IW_PMKID_LEN);
+ 			psecuritypriv->PMKIDList[psecuritypriv->PMKIDIndex].bUsed = true;
+-- 
+2.7.4
 
 
