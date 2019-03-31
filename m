@@ -1,78 +1,124 @@
 X-GM-THRID: 6674542859228545024
-X-Received: by 2002:a6b:7614:: with SMTP id g20mr10231759iom.14.1554140423247;
-        Mon, 01 Apr 2019 10:40:23 -0700 (PDT)
+X-Received: by 2002:a9d:193:: with SMTP id e19mr4722266ote.12.1554043339326;
+        Sun, 31 Mar 2019 07:42:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:a890:: with SMTP id l16ls2115868jam.3.gmail; Mon, 01 Apr
- 2019 10:40:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw0s3gXZ/UBJG+5Wke+VQjWvTTNoI7JSqbyNFVzVfBTtWnQEjNAZZ07yc2ytyrnrdUmmj84
-X-Received: by 2002:a02:8243:: with SMTP id q3mr9221259jag.6.1554140422253;
-        Mon, 01 Apr 2019 10:40:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554140422; cv=none;
+Received: by 2002:aca:eb8c:: with SMTP id j134ls1369943oih.0.gmail; Sun, 31
+ Mar 2019 07:42:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzAZwts5usKSxFNBfrndW2w/D+H1C5TlJ/ZM6fbK8LckEoqkI7NxZjYRqoOO0aWfK3BMd9b
+X-Received: by 2002:aca:57d5:: with SMTP id l204mr5720508oib.14.1554043338739;
+        Sun, 31 Mar 2019 07:42:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554043338; cv=none;
         d=google.com; s=arc-20160816;
-        b=qQijR/AbwTdC1G9EQkiNbByPD8CUyQZDN+vs5hTF9VYQfxR0FOoaCPjJn6mYeR9/Qv
-         NnZADhpDHKII9QmhpYUNNUsJGWW4/GQaB4pndNLYh10Njgg12Mz3QXZ+hgpPJktxQmqP
-         TIISZJyroZxZBEtag7rAhrs5ZS4rJ/nNZQsDb7YKQq4H21IvExdsCGNKxKxprTcM7YCA
-         T7UN8ZXGY+HdzzQWTkUmCWwR7Yp9jg1xSe7YXj7x7mIt1tNBPyi6VIvHNvJ8+VSJ4cd9
-         b6La+1wTC4c1FGZEgmQ7CBhr9Nq5TG6psFa2MOsSvCaKDjl3Ma2+GZAEJ20Kyz5rTQ/Z
-         WczQ==
+        b=ac9Exh70Rie0CnDHljS/iRQPEVo5XkuOUlqFvKRhRBuVhqVXJ9OkJ9z/W53ciA1fAJ
+         wPXwFE1Rj2nLvXuVLW012JjdGyQU2/hv4Cm+EW5cfOUZaIcr8U/+c24DD3Z5IAsYr0vs
+         5+aafNJXVfuqYCWH6PB7DVqtX/E+275XS+ZVll/m5FHFA12e20WkGHoKRkyFd9C5z1M0
+         yjpM/n3av7IVhob+b0TNMWWYA/37itMjlmYRAY68RmIEXpIrXNHelpD0GvapYuzrY+Gw
+         ZpcJZNXQAuSiG9p2hs/kZzr9wY54hrvx6BafVcy7OmnJmPF/d3vwkIUWFdc6F0kR8OGG
+         LesQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=gqDGvSGpyfB0XEMr6toVBoLnosxrZkLjJRnSlkDyu5U=;
-        b=uRBKBJHKXCfgPfiFc2xg8SnykGDxw5hWBynI3lbpv5+SRu+3SCRwQXX7vlAjno+LLN
-         dXkx6/c5YuidqaJbHgGget14flLTWb7bJh1IPNEu9EzpKjTEG5Psv4eeklxAWL5vkf6Q
-         iG+iYL4Bxqtf7xkJC1NoLAxWjqarS3EBmSx6UmRWvnchCc0NKOUvbqck81YUSUKLxDdA
-         jNb4Ffh8vSZpNVGfctnNinG7bZoC+5dS/QUjJiEb1ipXZImvK1TeOY2IZ5WUr/eejNy4
-         3zpQUjN04DiAxWmhxoX75DR4pG+rMj70v1Vvf3UDhEYjOtdcBVjogw/Ra6x68mL214NE
-         w70w==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=cabqKOX6SSVtAbOHdU+g5pvEbOe6y9bswchhoEpnJXk=;
+        b=HIvCJcrGWl3SfNPAQogqjTd6bhGWop47CxPowyOXWdk+Mo/VgLJ2w4JR2Yejk6lUGN
+         K0TtHP/1N6rsNPjUJ4QC+pmGWXRULYe4pWMiRruoYNhIj2iLGsQIPLy9MRMRXI9xKRu6
+         91JPXWHwcC6oieugNZR8l2KpiW3BxWwAt6TI5g0dQSldXfZbZU3069etfx7Ur8dV9Rv/
+         3Nu9VwKyapacGPBUNj+Z++a4pgCWKtdKkiXV05WDMDX7K+8m2qFIqD1J5JTTFXsQ7zeS
+         xvBGZsiO9i3g+pFRzn6LvUfaiDewLt0TLuySssn5Ypmp6uFs9xJTlDXV/JdHini0QrE7
+         MF8A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="a/28NAZT";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id w136si552749itb.2.2019.04.01.10.40.22
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YRUZixv1;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id c13si348248oto.3.2019.03.31.07.42.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 10:40:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 31 Mar 2019 07:42:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="a/28NAZT";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 17F0220857;
-	Mon,  1 Apr 2019 17:40:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1554140421;
-	bh=f0aMcmGnmP/cWE1jEGh6wpHhJbtcC44ZxFXZwQW6YUM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=a/28NAZTTeoyuw1xMVUKK+bXj7wVVuoZHGH0gtKfrzitm3qEME57Ht7UtagaI/hSx
-	 VKpH8T/c5vGnVFHDD+YSTkF/2Sx7NWu4IS9xT+5KcOASE9cTNrtVoZZLbNbzhkeeQk
-	 wgJqXWDG0DfoUoPSGq1ukLuTQWc8/fEYHTanfbyQ=
-Date: Mon, 1 Apr 2019 19:22:10 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 1/7] staging: rtlwifi: Compress two
- lines into one line
-Message-ID: <20190401172210.GA2256@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YRUZixv1;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id r15so3247265pfn.9
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 07:42:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=cabqKOX6SSVtAbOHdU+g5pvEbOe6y9bswchhoEpnJXk=;
+        b=YRUZixv1zDXvU6ny5ht4PZsaPLl5Xsuq3SqLY10PKDUmcyo5Lo37366vhfvyduE5CQ
+         sfrtBRIegn/2walLlTYRl1siz2hrN8b3KLPPiwFUturRD9P8CgvRG5gAA2+9B/x2z0QR
+         +T/qneVz5bzNdJEaNGPG7d50ivdscAzrzSgeV/+zi0ITaoFsnacaBtV5dLdExq463BuH
+         Yi9Ukx0UZletS6vHaInv3kUlHgJyryZ9XeSemR5nSCJa/UcnTK4Pt7Tp7A9DuIsRJYHC
+         RcnVVDWRRk5I5t/xIYinE06+gYfu/hJnFRd3vDaizkxpsmy3KCITRhbT522uywZ/Z1J7
+         Powg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=cabqKOX6SSVtAbOHdU+g5pvEbOe6y9bswchhoEpnJXk=;
+        b=sRY0te62wxvi/3lqYapWtuZjv3dtNKcz9s11AGZ5eaarF7TryOOpkCGub2l6W4rhNL
+         0KkYYdW1cgLfsYGZA728JGv+p0tXGVm3RV1gujayK35xzPjI1ajRDcUG2ulmZ34tXb63
+         5iNpuEOA8zxiLyX+Z1f8+6em+0b27Jfg+iU6O9/HsqfzKCQD9Popq3UK+25ZWkuOF793
+         j1u4/bAZXhyjMgpmZb/23jOH66rCDMZ49Q8a6HbJFuUPW84Fpv5lg6WjkCTo8oL1fDU7
+         CMxk2WppkxeT8MbVgveSIL1o3VH3Ao9hRvSNSlmAEIs5j1KVD/dqEO6PcAktQdtY21tR
+         2nSw==
+X-Gm-Message-State: APjAAAUAU9nGaZ97eAKJww9P1p5TTiAvvrqJfSgw0Myl8FR+ALrRn5SH
+	HnPQcwQ4r1MFvMJWYZE+dBneIeU5
+X-Received: by 2002:aa7:9095:: with SMTP id i21mr35705377pfa.134.1554043337809;
+        Sun, 31 Mar 2019 07:42:17 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.230.116])
+        by smtp.gmail.com with ESMTPSA id g67sm12397858pfg.94.2019.03.31.07.42.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 31 Mar 2019 07:42:17 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH v2 7/7] staging: rtlwifi: halmac: halmac_api.c: Compress two lines into one line
+Date: Sun, 31 Mar 2019 20:11:34 +0530
+Message-Id: <9ef9ffab54ad8e599b3430eb21f4a62c07805c9b.1554042597.git.payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
- <b6405f65834d83d12478b14e310295c4c27da469.1554042596.git.payal.s.kshirsagar.98@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b6405f65834d83d12478b14e310295c4c27da469.1554042596.git.payal.s.kshirsagar.98@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
+References: <cover.1554042595.git.payal.s.kshirsagar.98@gmail.com>
 
-On Sun, Mar 31, 2019 at 08:11:28PM +0530, Payal Kshirsagar wrote:
-> Challenge suggested by coccinelle.
-> Compresses two lines into one line and remove unnecessary variable.
-> 
-> Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-> ---
->  drivers/staging/rtlwifi/rtl8822be/phy.c | 12 ++++--------
->  1 file changed, 4 insertions(+), 8 deletions(-)
+Challenge suggested by coccinelle.
+Compresses two lines into one line and remove unnecessary variable.
 
-This patch does not apply to my tree :(
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+---
+ drivers/staging/rtlwifi/halmac/halmac_api.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/rtlwifi/halmac/halmac_api.c b/drivers/staging/rtlwifi/halmac/halmac_api.c
+index e75eb42..be75731 100644
+--- a/drivers/staging/rtlwifi/halmac/halmac_api.c
++++ b/drivers/staging/rtlwifi/halmac/halmac_api.c
+@@ -133,7 +133,6 @@ platform_reg_read_8_sdio(void *driver_adapter,
+ 			 struct halmac_platform_api *halmac_platform_api,
+ 			 u32 offset)
+ {
+-	u8 value8;
+ 	u32 halmac_offset = offset;
+ 	enum halmac_ret_status status = HALMAC_RET_SUCCESS;
+ 
+@@ -146,10 +145,8 @@ platform_reg_read_8_sdio(void *driver_adapter,
+ 		return status;
+ 	}
+ 
+-	value8 = halmac_platform_api->SDIO_CMD52_READ(driver_adapter,
+-						      halmac_offset);
+-
+-	return value8;
++	return halmac_platform_api->SDIO_CMD52_READ(driver_adapter,
++						    halmac_offset);
+ }
+ 
+ static enum halmac_ret_status
+-- 
+2.7.4
+
 
