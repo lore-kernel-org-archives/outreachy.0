@@ -1,164 +1,118 @@
 X-GM-THRID: 6674500883205586944
-Date: Sun, 31 Mar 2019 03:38:54 -0700 (PDT)
-From: sanjana99reddy99@gmail.com
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <263b7625-d681-4962-b453-6870478d52a4@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.1903311234110.2578@hadrien>
+X-Received: by 2002:a24:3608:: with SMTP id l8mr4416056itl.35.1554028528841;
+        Sun, 31 Mar 2019 03:35:28 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a24:6c09:: with SMTP id w9ls120794itb.3.canary-gmail; Sun,
+ 31 Mar 2019 03:35:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxQlbSGA/DaVyWRjSeMkDiXaqKiE/Uz7PbzJQ28T+Ls2AuWeZkiXDPp9dx7ysW0Ge0Ap+1W
+X-Received: by 2002:a24:3793:: with SMTP id r141mr4984518itr.7.1554028528308;
+        Sun, 31 Mar 2019 03:35:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554028528; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WMVmO38SHLTQ7ly4nr4plNO3O+1alBbCpLDkELgcFn6nE0EOPNdtVeDCiwL++iD8es
+         vyXse6XAQcRE7VcQh5R6oEs/EiKjqCZQDdDOKDGEgcTd3zQOYRq1q4ct9jiVPzWeh2Ua
+         f1Tw4j+CgxFEfqE/TzJlFbQ8oP4ym0f1PpTOo0404wKuRquq9m4lTXfieRj+5pP7XSTL
+         LahxR9IJ6ERJ13A6dl3hmQ5UfK05CWNYz6Pu0viA/ErctF7kPJLzXV5FPKmncSfYwjRO
+         Mk7nBWhy180vXwj1+96jdNAlTLe/xa52XVxEOsibUhngWitCXmexeXArnfz2PQ3oJ6KL
+         nJ5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=DkW7SAeSvL7CjiuMWt7zmpN4VCGvMbsZFJGg5CnlzIY=;
+        b=qWZVoxVdCj9iWuhU1UU0Olj84ZmHA1BGTnXUttggFL8aBGvGR59UJpugUrvY4Gbc03
+         dWVc4ykUvBi/SK5JXni2XS+1F9LmajVAgYWAkVJG6+dHnF4fwjxRVIcEv0OpIJhwp3Pl
+         q7ioMwnZPDViRNqgBGVCTb09ZR0aZMTrpo23KzXa+jc1nUfHomug5mTuDmYDRG6T5OD/
+         SxpRVwsmGnRC5xHqVS3+XTR60lfzLmu7xaO9Oe4QFzPq4ImZ/ARhZv/wx6Aimt2DVOee
+         py211QTIaN+oLysGLqVsbqAoYlYbsPAY3c7biLdPzLdvtwr/oSakLSo+7SwS2JQQY8We
+         9X4w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Z3/ibFbY";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id q130si376065itb.1.2019.03.31.03.35.28
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 31 Mar 2019 03:35:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Z3/ibFbY";
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id j26so3294826pgl.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 03:35:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=DkW7SAeSvL7CjiuMWt7zmpN4VCGvMbsZFJGg5CnlzIY=;
+        b=Z3/ibFbY37a77R/0NIj8KK5JfTgvu2L1wkYQ/BIG0TXHmpcj+/LW29uwP19gtw5p2r
+         6SBlvuxUn8c56XM2TbBoi3eI+GU14e4y4KCExt34LDj1uDgViBtmHSPttkAq6PQF824E
+         Lek/cvu03A65nVpNMMr7vwR4LyweNZ5mA7YEMtuBU7J8AQX2o64nyFBKKCJYYeg+50wX
+         GKgzJbf4mbb3lCOFY/g8SyVD9FXyvtL+21h2sKojaDYv7FgHSN0NxYokP0MOD0NNYpvc
+         BUrTDnIXj59ZDXs4EALbXKE+wZu6S+Z3tBiRYHujzIzaXYEaHvfhMXgwUsCbt11z6XQg
+         w7zQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=DkW7SAeSvL7CjiuMWt7zmpN4VCGvMbsZFJGg5CnlzIY=;
+        b=V7vl3On7ZQSDdqtceUiHsD4IshQXzT7KK+N2d4uHh531mH81/MSYWyoCqK/bWa6CGF
+         diJtkFJBTT0lujWwWEneASsQ7yBGSl9TC54oiIRi//C6UGb/JFoqhVNC/RpeD+eQXgTz
+         CttMtSul0Eo+XT6ABmYiRVA9NHHPoFRFw7fu/6XRPcvgFoDaVjjuPRIAbOzEJJVBGuTh
+         R11bIGtwihMJquiNjfPR28llb0F1khRaNBOXSjpZLb/hLcK7ecWBFSP5yIVEVlJ9+SHU
+         bHOlqoUHB4TIq79dI6tTrjlt6w+gxnUdZpy8xZvy6GIZ7nuntAyjlkbEfV24wP8F1dCQ
+         rEog==
+X-Gm-Message-State: APjAAAXcJMHfsMGglYXA7/bLtX0IHGiY2DtDwpnRJNo+i5Yj+he4SnAU
+	2v9lzSa5W2tZ3s1Nbcb04nIqNunnUzE=
+X-Received: by 2002:a63:3d49:: with SMTP id k70mr38303182pga.447.1554028527740;
+        Sun, 31 Mar 2019 03:35:27 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from sanjana-Inspiron-5570.domain.name ([123.201.105.95])
+        by smtp.googlemail.com with ESMTPSA id s85sm3144766pfa.23.2019.03.31.03.35.25
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 31 Mar 2019 03:35:27 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 6/6] staging: comedi: Prefer using the BIT macro
+Date: Sun, 31 Mar 2019 16:05:17 +0530
+Message-Id: <20190331103517.21656-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190331103204.21358-1-sanjana99reddy99@gmail.com>
 References: <20190331103204.21358-1-sanjana99reddy99@gmail.com>
- <alpine.DEB.2.21.1903311234110.2578@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH 0/6] staging: comedi: Prefer using
- BIT macro in various files.
-MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_494_74057293.1554028734787"
-X-Google-Token: EL6xguUFc2ot2KP2juc0
-X-Google-IP: 123.201.105.95
 
-------=_Part_494_74057293.1554028734787
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_495_1589822322.1554028734787"
+Challenge suggested by coccinelle.
 
-------=_Part_495_1589822322.1554028734787
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Replace bit shifting on 1 with the BIT(x) macro.
+Coccinelle script:
 
+@@
+constant c;
+@@
 
+-(1 << c)
++BIT(c)
 
-On Sunday, March 31, 2019 at 4:04:57 PM UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Sun, 31 Mar 2019, Sanjana Sanikommu wrote: 
->
-> > This patchset does the following. 
-> > 1. Replace bit assignment with macro 
-> > 
-> > Sanjana Sanikommu (6): 
-> >   staging: comedi: das08: Prefer using the BIT macro 
-> >   staging: comedi: Prefer using the BIT macro 
-> >   staging: comedi: Prefer using the BIT macro 
-> >   staging: comedi: Prefer using the BIT macro 
-> >   staging: comedi: Prefer using the BIT macro 
-> >   staging: comedi: Prefer using the BIT macro 
->
-> Each patch needs to have a different subject line. 
->
-> Since the changes seem to be fairly small, maybe it can just be one patch. 
->
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+ drivers/staging/comedi/drivers/amplc_pci230.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-   Sure, I would remove series and make a single patch.
-   Thank you
-   Sanjana
-   
+diff --git a/drivers/staging/comedi/drivers/amplc_pci230.c b/drivers/staging/comedi/drivers/amplc_pci230.c
+index 08ffe26c5d43..65f60c2b702a 100644
+--- a/drivers/staging/comedi/drivers/amplc_pci230.c
++++ b/drivers/staging/comedi/drivers/amplc_pci230.c
+@@ -2464,7 +2464,7 @@ static int pci230_auto_attach(struct comedi_device *dev,
+ 	devpriv->adcg = 0;
+ 	devpriv->adccon = PCI230_ADC_TRIG_NONE | PCI230_ADC_IM_SE |
+ 			  PCI230_ADC_IR_BIP;
+-	outw(1 << 0, devpriv->daqio + PCI230_ADCEN);
++	outw(BIT(0), devpriv->daqio + PCI230_ADCEN);
+ 	outw(devpriv->adcg, devpriv->daqio + PCI230_ADCG);
+ 	outw(devpriv->adccon | PCI230_ADC_FIFO_RESET,
+ 	     devpriv->daqio + PCI230_ADCCON);
+-- 
+2.17.1
 
->
-> julia 
->
-> > 
-> >  drivers/staging/comedi/drivers/amplc_pci230.c  | 2 +- 
-> >  drivers/staging/comedi/drivers/das08.c         | 4 ++-- 
-> >  drivers/staging/comedi/drivers/dyna_pci10xx.c  | 2 +- 
-> >  drivers/staging/comedi/drivers/ni_at_ao.c      | 2 +- 
-> >  drivers/staging/comedi/drivers/ni_daq_700.c    | 2 +- 
-> >  drivers/staging/comedi/drivers/ni_mio_common.c | 4 ++-- 
-> >  6 files changed, 8 insertions(+), 8 deletions(-) 
-> > 
-> > -- 
-> > 2.17.1 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an email to outreach...@googlegroups.com <javascript:>. 
-> > To post to this group, send email to outreach...@googlegroups.com 
-> <javascript:>. 
-> > To view this discussion on the web visit 
-> https://groups.google.com/d/msgid/outreachy-kernel/20190331103204.21358-1-sanjana99reddy99%40gmail.com. 
->
-> > For more options, visit https://groups.google.com/d/optout. 
-> > 
->
-
-------=_Part_495_1589822322.1554028734787
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Sunday, March 31, 2019 at 4:04:57 PM UTC+5:30, =
-Julia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;mar=
-gin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Sun, 31 Mar 2019, Sanjana Sanikommu wrote:
-<br>
-<br>&gt; This patchset does the following.
-<br>&gt; 1. Replace bit assignment with macro
-<br>&gt;
-<br>&gt; Sanjana Sanikommu (6):
-<br>&gt; =C2=A0 staging: comedi: das08: Prefer using the BIT macro
-<br>&gt; =C2=A0 staging: comedi: Prefer using the BIT macro
-<br>&gt; =C2=A0 staging: comedi: Prefer using the BIT macro
-<br>&gt; =C2=A0 staging: comedi: Prefer using the BIT macro
-<br>&gt; =C2=A0 staging: comedi: Prefer using the BIT macro
-<br>&gt; =C2=A0 staging: comedi: Prefer using the BIT macro
-<br>
-<br>Each patch needs to have a different subject line.
-<br>
-<br>Since the changes seem to be fairly small, maybe it can just be one pat=
-ch.
-<br></blockquote><div><br></div><div>=C2=A0 =C2=A0Sure, I would remove seri=
-es and make a single patch.</div><div>=C2=A0 =C2=A0Thank you</div><div>=C2=
-=A0 =C2=A0Sanjana</div><div>=C2=A0 =C2=A0</div><blockquote class=3D"gmail_q=
-uote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;pad=
-ding-left: 1ex;">
-<br>julia
-<br>
-<br>&gt;
-<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/amplc_pci230.c =C2=A0| 2=
- +-
-<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/das08.c =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 | 4 ++--
-<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/dyna_pci10xx.c =C2=A0| 2=
- +-
-<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/ni_at_ao.c =C2=A0 =C2=A0=
- =C2=A0| 2 +-
-<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/ni_daq_700.c =C2=A0 =C2=
-=A0| 2 +-
-<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/ni_mio_common.c | 4 ++--
-<br>&gt; =C2=A06 files changed, 8 insertions(+), 8 deletions(-)
-<br>&gt;
-<br>&gt; --
-<br>&gt; 2.17.1
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
-ailto=3D"gCsYl8m0BgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
-ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
-turn true;">outreach...@<wbr>googlegroups.com</a>.
-<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
-t=3D"_blank" gdf-obfuscated-mailto=3D"gCsYl8m0BgAJ" rel=3D"nofollow" onmous=
-edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
-ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
-/a>.
-<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
-.google.com/d/msgid/outreachy-kernel/20190331103204.21358-1-sanjana99reddy9=
-9%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
-=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190331103204.2=
-1358-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
-=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190331103204.2=
-1358-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.googl=
-e.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190331103204.21358-1-<wbr>sanjan=
-a99reddy99%40gmail.com</a>.
-<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
-out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
-ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
-#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
-ogle.com/d/<wbr>optout</a>.
-<br>&gt;
-<br></blockquote></div>
-------=_Part_495_1589822322.1554028734787--
-
-------=_Part_494_74057293.1554028734787--
 
