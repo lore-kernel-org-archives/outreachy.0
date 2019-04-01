@@ -1,127 +1,199 @@
-X-GM-THRID: 6752887939643998208
-X-Received: by 2002:a05:6102:1010:: with SMTP id q16mr9127923vsp.183.1572279245938;
-        Mon, 28 Oct 2019 09:14:05 -0700 (PDT)
+X-GM-THRID: 6675056001777926144
+X-Received: by 2002:a5e:8b44:: with SMTP id z4mr7153378iom.1.1554157585638;
+        Mon, 01 Apr 2019 15:26:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:3e05:: with SMTP id o5ls881081uai.5.gmail; Mon, 28 Oct
- 2019 09:14:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx9++J7BoxoMr4GRb307tc7zpxnrXKMNK/P5BrSCBDEyb+BXZk1a76FvZbCyER1cX6Ojqd/
-X-Received: by 2002:a9f:2271:: with SMTP id 104mr9094415uad.127.1572279244492;
-        Mon, 28 Oct 2019 09:14:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572279244; cv=none;
+Received: by 2002:a6b:bdc1:: with SMTP id n184ls4149591iof.0.gmail; Mon, 01
+ Apr 2019 15:26:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyg4PhT0hIOc+DyzkbWAAd6/sFkH9moMpPZstnIgWwfzKn7t+kTOwqaKNZDkgL68QNGHRMC
+X-Received: by 2002:a6b:e30e:: with SMTP id u14mr4455119ioc.13.1554157584810;
+        Mon, 01 Apr 2019 15:26:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554157584; cv=none;
         d=google.com; s=arc-20160816;
-        b=ENscPNZAI0wvv+IZcQddoDar1JpbxzeAC16AGsOUwZz8EEWyCQJzq9/8c/J2dMt+D+
-         yFAEFJ+UE4SKjSOZ61iWtxavG6CBANMHck3+l6PCT2AmK6wumUCNwLk3KS+n+4zmOvxN
-         9vAxPccLfPSODtZKQqHitBIVgaAuCH6lyn181x2Kh09hi9hsM8+D3d/qJYWJHW3u6Ojp
-         mtJuBWn8LmBp7Lhj6Rq3Sis/hebTldj8AavkvIkA+lJwylSCTcKTjUImX7j6cNNMOCv9
-         MSuhNg+dyBQg8xMS7U1C1X6MbEOVCQXDEMR3klcLsEy1YXs+cttohDbB69Lv+QQ1hEKN
-         SEqw==
+        b=FlDCvAuiM5s/Nu5GRKrhZpZuXdV4/PzJ6BTLF5QNix67I6FMpiz60H3PIYizVDJvVk
+         d4HWD1cmekcn0f5lraQ1PaG8rJzxQwKna6kR8lfT8C2/+SQcSeVY1oMDXBbGgtSMfwlf
+         JWLR6gOgXpv4YFhr01B5pquqm0eLEaMps0gUlc+0fhkXRB+aqYCDR8/fuZw2b56q5uTc
+         cboJwDpu8rLGFRE8kN8ieEPi8A7wkhmeT6JMT/jhHMUbxY1OrwpcdeOnMz+6jG6eOIjA
+         iM1wklEmECR1WAbzOJl9w18vQj/2GkilgRgjnVo5LjPjJNOeWH2xNwmNNUki9Q7rqL0k
+         Fqzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=zmD+uEYI8lVlzBnTwHy2xQ16swbEXpWBKtAmYBYqmcQ=;
-        b=ntHMAepyoLb+U/QO9RDxS1MY0fCQHVKoiwUhb9PxpfbIiI+XszMgdu6t+cRV3mkoMC
-         J33ZrgaR8x34lZ9WSlb3hTouaWsHLaaQi635cK0fu/xhSl8Xo7R6NhUi8leNaJ26k6ot
-         uwYcNUQjCsJKUZY5C8jDTTA5QtXwk4A2TRHNw7fcbM/LWdx35ikL1kbZbHyG7ZUCKn1h
-         Vl9JeonEOd6zlGncf+K4FF+iEtQRcDWS81hi3+qzHYFBBst6FEVtadzSSTcnnf+fFeGg
-         U1v6Vhw9GhPHXriErOUtrBps8Bf2nW+5OBkIUVlRrGa3jhvVSV3BEJ5rk9o6y/NNX66b
-         VoOA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=5smd0EDiglc0EiWAaY9DYwmT3t4SlQjKt5LQbZhF/fE=;
+        b=JzpDyfM/sZ4LL/O/MWUkqI+EQyCk0iFcT2nkOmZt00KpHL1h5EwBRKm1ozPyTVBQAi
+         ZlJ7solM8U/hwenMZfKxm8pofnir8i/muDWt4cTYt/n/tjm9mmE31em0bDka4vAbRHzN
+         KYMTovpctcv6gp0mR1ZCD2/3ffGKh88rrw01kolG7qnxTSYjDrQ9z0F7n+C4ukHCY1Q0
+         Q14Et9evHfbsUpDIQ904n64udZnWkln5hUqXkMr6YBLBGfiSNKBLxj3euohUDs1O0K80
+         9K7G1dtIhitTt3pPnk2pmfUxS0zR7tacfmefHwkwvTc96tFS1DU25Lv5sbnl2myAnTbn
+         xyRA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=FtrKgIZq;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::943 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua1-x943.google.com (mail-ua1-x943.google.com. [2607:f8b0:4864:20::943])
-        by gmr-mx.google.com with ESMTPS id y14si744426uaa.0.2019.10.28.09.14.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=by+h5aG0;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id 3si679158itz.0.2019.04.01.15.26.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2019 09:14:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::943 as permitted sender) client-ip=2607:f8b0:4864:20::943;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 Apr 2019 15:26:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=FtrKgIZq;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::943 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua1-x943.google.com with SMTP id d19so689426uaq.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 28 Oct 2019 09:14:04 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=by+h5aG0;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-oi1-x241.google.com with SMTP id n187so8753168oih.6
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 15:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=zmD+uEYI8lVlzBnTwHy2xQ16swbEXpWBKtAmYBYqmcQ=;
-        b=FtrKgIZqJ4sDzr+STt28P6mnYtFkOaTC3LqZFI7ImYm4yj6Wfu7T1qLYdl0X/oNT9y
-         XgUGYyV9wuOjvRfbjPSaFPoPoPk28Rf4IBJZM2IqBycsFMoifMQO2YN1ftfl3r4S12pk
-         /G27zed8sPLsW18cTLwU6KuX+FeqrqegOunKGvP8oUNZoKajnrroGpv3tINyDxo2KMIj
-         x4Fs2TNh52jqmLFvCKTx6okNNVz1mfZHC1XH7Oprxmy3VHtl5NxLBBaGsiN9gP/FLIE2
-         fYVh5U89nceYNDuNqSVBZ8j23UluddbVpKMIBftZts7M1iyTw3Al39pjR6XSrgpbiQi2
-         Yjug==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=5smd0EDiglc0EiWAaY9DYwmT3t4SlQjKt5LQbZhF/fE=;
+        b=by+h5aG0ZnBw39W4IwU1Dpjzkhs7+RsFeII1NPCQN1whbXUx5QLohFb4U0nWuF4ESK
+         Bcfvo3bUmDXk9+aO0Ggn+awfccn+4RehoNBmr+dL6u4SkzA36CtEdf0d92kxFS2wgBBK
+         6J7ILKSykAXv/cQxIWhHje+mil8i7+Va4FX2RxQHa0JAKXYtldF3tlP+/ZDVoN0Mdaer
+         RzN4cqQBfZRVNQouhdY3u+lcOMEbNErA6N241fDl3GwbTR16QmoZhqVjtnClOjyvQIPm
+         wiebm5Sl+LHz8a0WEoSNfcGVpbnS+3e3K19jA8q/otnE1KOHeQxX9MF1lyljmKd9ZibF
+         IPSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=zmD+uEYI8lVlzBnTwHy2xQ16swbEXpWBKtAmYBYqmcQ=;
-        b=DVrzjr3AtHdrv/hanFxyGshUbRRBBtKf7PsxibatvOp7E9d+aSudA9fJdQqTrqGM8O
-         GXA2mhFLw1kRisT4L2ZKU+CrelIqaLJhIPAaet6H9DftMmt/Yubvo2BH+/+rH87NV8sX
-         IQJO2A2vVKMUeB1u3kpWMIOW0dp7y01nBQ/+lB0Tg+kwrto7RI7d0NhylcYKEZIWljMR
-         LmA1GYRBb8sqSC7OoR5nR1cHxxKoefPEoNuYVbJOnm1bUt6tP0LVnRPWl2Wa0NWYVBvF
-         uEMIDii+g5KpSr8BULMHzA1zcAEI6viVco9KyobIRpGG5P7P0n3mr8kx/eJc1cQWHQLB
-         TBwA==
-X-Gm-Message-State: APjAAAWXxuPq2yIy2glD9w54I2z4vEA+ZwMRCCVqQSByDZ9f0XfuDcqv
-	AukWRNOr9Spzb0zdaAVjzmj1ig==
-X-Received: by 2002:ab0:1608:: with SMTP id k8mr8916683uae.143.1572279243649;
-        Mon, 28 Oct 2019 09:14:03 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from linux-kernel-dev ([172.97.41.74])
-        by smtp.gmail.com with ESMTPSA id 134sm2441909vkz.56.2019.10.28.09.14.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2019 09:14:03 -0700 (PDT)
-Date: Mon, 28 Oct 2019 16:14:01 +0000
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
-	joel@joelfernandes.org
-Subject: [PATCH] staging: rts5208: Fix alignment and a line ending with a '('
-Message-ID: <20191028161401.sjhp6qivm6huxpxm@linux-kernel-dev>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=5smd0EDiglc0EiWAaY9DYwmT3t4SlQjKt5LQbZhF/fE=;
+        b=LjGYuzaazeXD1QvscT1AtMRcGQmwwlSheqJYJckclYUvb8YupvyKudd1YaRC21hMsm
+         f/oOGTkYGdr5CxOTPotE9SuwhE+hOj0OrE+uFIm7nX/nURzsS4H9c7+fQ6RWs0cQP2vr
+         PQWYON9w44dKmmLbVvkyZZW+jWxYwAb2CCNZooqJ+bP7Bw6VorJVSCGL1XBzrcI7BeKT
+         d1zMKyXtb7NX21oUeJIG2OwBXt/c5WdXfxBOhZlaCavKaBk4srOiwEVWIZ/f4SlI9Ykn
+         ysPz0RKlZRYL3iz43c2z+4ELOCAqcEmo3chHXRHbPcmxpHolyrfNVa9RZkiX5LGQWMKS
+         vVug==
+X-Gm-Message-State: APjAAAUzwRVI5xVN8aMS9bn7t4Yc/kGgVFFQcVxn9lGzNJofIUl15KZt
+	yspjxlNp7ms8kze1szO0jJQ=
+X-Received: by 2002:aca:b7c5:: with SMTP id h188mr14153812oif.130.1554157584344;
+        Mon, 01 Apr 2019 15:26:24 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:606d:35a4:8fe3:3a02:b8fd])
+        by smtp.gmail.com with ESMTPSA id q25sm1868433otl.60.2019.04.01.15.26.23
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Apr 2019 15:26:23 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH v4] Staging: rtl8723bs: core: Remove typecast in kfree
+Date: Mon,  1 Apr 2019 17:26:21 -0500
+Message-Id: <20190401222621.30051-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-checkpatch messaages:
-CHECK:OPEN_ENDED_LINE: Lines should not end with a '('
-CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
+Remove typecast in kfree, as per definition of kfree in
+include/linux/slab.h#L144, the parameter type of kfree is void*, and
+hence C compiler casts any pointer type to void*.
 
-Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+
 ---
- drivers/staging/rts5208/rtsx.c           | 3 ++-
- drivers/staging/rts5208/rtsx_transport.c | 4 ++--
- 2 files changed, 4 insertions(+), 3 deletions(-)
+Changes in v4-
+- Changed commit log and subject line
 
-diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
-index fa597953e9a0..cb95ad6fa4f9 100644
---- a/drivers/staging/rts5208/rtsx.c
-+++ b/drivers/staging/rts5208/rtsx.c
-@@ -873,7 +873,8 @@ static int rtsx_probe(struct pci_dev *pci,
- 		 (unsigned long)(dev->addr), (unsigned long)(dev->remap_addr));
+Changes in v3 -
+- Tested and compiled the patch
+
+Changes in v2:
+- Commit log modified
+---
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 22 +++++++++----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+index ebb45acb4446..6ac2b03805e4 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+@@ -816,7 +816,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
+ 					update_network(&(pmlmepriv->cur_network.network), pbss, padapter, true);
+ 					rtw_get_bcn_info(&(pmlmepriv->cur_network));
+ 				}
+-				kfree((u8 *)pbss);
++				kfree(pbss);
+ 			}
  
- 	dev->rtsx_resv_buf = dmam_alloc_coherent(&pci->dev, RTSX_RESV_BUF_LEN,
--			&dev->rtsx_resv_buf_addr, GFP_KERNEL);
-+						 &dev->rtsx_resv_buf_addr,
-+						 GFP_KERNEL);
- 	if (!dev->rtsx_resv_buf) {
- 		dev_err(&pci->dev, "alloc dma buffer fail\n");
- 		err = -ENXIO;
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 561851cc8780..5f1eefe80f1e 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -677,8 +677,8 @@ static int rtsx_transfer_buf(struct rtsx_chip *chip, u8 card, void *buf,
- 	spin_unlock_irq(&rtsx->reg_lock);
+ 			/* check the vendor of the assoc AP */
+@@ -5052,7 +5052,7 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
+ 	cmdsz = (sizeof(struct survey_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
  
- 	/* Wait for TRANS_OK_INT */
--	timeleft = wait_for_completion_interruptible_timeout(
--		&trans_done, msecs_to_jiffies(timeout));
-+	timeleft = wait_for_completion_interruptible_timeout(&trans_done,
-+			msecs_to_jiffies(timeout));
- 	if (timeleft <= 0) {
- 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 			__func__, __LINE__);
+@@ -5073,8 +5073,8 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
+ 	psurvey_evt = (struct survey_event *)(pevtcmd + sizeof(struct C2HEvent_Header));
+ 
+ 	if (collect_bss_info(padapter, precv_frame, (struct wlan_bssid_ex *)&psurvey_evt->bss) == _FAIL) {
+-		kfree((u8 *)pcmd_obj);
+-		kfree((u8 *)pevtcmd);
++		kfree(pcmd_obj);
++		kfree(pevtcmd);
+ 		return;
+ 	}
+ 
+@@ -5105,7 +5105,7 @@ void report_surveydone_event(struct adapter *padapter)
+ 	cmdsz = (sizeof(struct surveydone_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5152,7 +5152,7 @@ void report_join_res(struct adapter *padapter, int res)
+ 	cmdsz = (sizeof(struct joinbss_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5203,7 +5203,7 @@ void report_wmm_edca_update(struct adapter *padapter)
+ 	cmdsz = (sizeof(struct wmm_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5250,7 +5250,7 @@ void report_del_sta_event(struct adapter *padapter, unsigned char *MacAddr, unsi
+ 	cmdsz = (sizeof(struct stadel_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5305,7 +5305,7 @@ void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr, int
+ 	cmdsz = (sizeof(struct stassoc_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5836,7 +5836,7 @@ void survey_timer_hdl(struct timer_list *t)
+ 
+ 		psurveyPara = rtw_zmalloc(sizeof(struct sitesurvey_parm));
+ 		if (psurveyPara == NULL) {
+-			kfree((unsigned char *)ph2c);
++			kfree(ph2c);
+ 			goto exit_survey_timer_hdl;
+ 		}
+ 
+@@ -6603,7 +6603,7 @@ u8 set_tx_beacon_cmd(struct adapter *padapter)
+ 
+ 	ptxBeacon_parm = rtw_zmalloc(sizeof(struct Tx_Beacon_param));
+ 	if (ptxBeacon_parm == NULL) {
+-		kfree((unsigned char *)ph2c);
++		kfree(ph2c);
+ 		res = _FAIL;
+ 		goto exit;
+ 	}
 -- 
 2.17.1
 
