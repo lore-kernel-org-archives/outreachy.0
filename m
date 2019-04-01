@@ -1,126 +1,408 @@
-X-GM-THRID: 6528718721660223488
-X-Received: by 10.99.173.69 with SMTP id y5mr1746412pgo.89.1520085782072;
-        Sat, 03 Mar 2018 06:03:02 -0800 (PST)
+X-GM-THRID: 6674918167097114624
+X-Received: by 2002:a17:902:29ab:: with SMTP id h40mr1769207plb.133.1554125493295;
+        Mon, 01 Apr 2019 06:31:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.11.211 with SMTP id 80ls3647430pfl.2.gmail; Sat, 03 Mar
- 2018 06:03:01 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuRtmEhVjQ6IaP5Sl7fINiNBAQnd0QD+9flkDrCiY/3eyp0QT0p2Vyt5icjl5hi2czUx2Ul
-X-Received: by 10.101.91.199 with SMTP id o7mr1769629pgr.37.1520085781006;
-        Sat, 03 Mar 2018 06:03:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520085780; cv=none;
+Received: by 2002:a17:902:b495:: with SMTP id y21ls3059210plr.5.gmail; Mon, 01
+ Apr 2019 06:31:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw1gaoi0yatjzOoQmGZB5ji5Y8igNBGj912XidCIefbp0AHy6VT/ebt93cJSQ90ilQCgWBL
+X-Received: by 2002:a17:902:7885:: with SMTP id q5mr215675pll.134.1554125492529;
+        Mon, 01 Apr 2019 06:31:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554125492; cv=none;
         d=google.com; s=arc-20160816;
-        b=HUJmY73RWfCsBqcJR4TaQg062/H8ZaXTIw2NZo3Bl4Yre9ERha/JIxB0Orn13lsp9o
-         zwxgEUp9Slb+p+VKSuIyUT9icbD5hkP0pc5qJacetTS0Lv9fL/oxJ+9dfVNcRGkyXtyA
-         3nTKVlnhf91TF/EfBAXZzm4pbm+ribuoYR+FhrdoP5pIxMu68MHfBdXFk1obaUdMDEvB
-         v7rbtlc1iMECxL4YrczQFjeyfKgY3jiE9CLNfyQh5MvLiniFUc+6i5Cs7iFlSxlccksp
-         Lkz5laH8TZsnS4yyeGohCVaYLq/YUIy1RjwXrAQHrJOMtv5zKnBdpNTHXzNCabd+nuoe
-         vIpQ==
+        b=vjaNvt6WkqXlQIA/CBcde8DHeVNXY+XfUAVV+gxRNsMd8W6j1nMnlfW3zBoWR11MWB
+         dyXihUoN3jBk0X5t45rQ2jss6IEjmGaMXbhI0IhrkQ37k0klwMqTaj+RIvmaopfm7nIU
+         Yab3TeZ8iDxsWOElN2rqRTZLD+n6ndGjkNJEIvu155Fl66nG8jVicNGvhXncMwsni+ko
+         PzcH9HS1Zn14FiUgPWGxZKIY+wCnZ6DoS8uGGvqPAm7UJOgBJdbRv2LXO4xaiku2Hx5g
+         04wXLEuEFIoSnqUnRGKkv/1cKITi+i5T/KtHIriQ5bBn/Jd/sFOwUK0zGkY0dSzA0Q/K
+         98lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=IJh65k/VwyEPUk/YIa+GbIL5NJYiFGUgwl6s4o/vvSA=;
-        b=mSUpfrzUVLjHaX5cM1DNZlTQwv4wI3E52UcKm9Awy/pSz1XFszcaG6Z+lp9hBTRr8U
-         8miky67oC72Pv00S9KO7xtwM6BhBzPsL4Vp16LYVaACUCa6x4P2mCGSFpQ8Bxa0KY3Z+
-         YxIZjLL4YDMcgbyrZ/LV27cb3qfJenXEjgbLIYF8XHF7PUBnZtsanpd3wWxGMaQQT52v
-         yPT/NI11BJkXXc33ZGpxIIq+F+jDrlA2DJbD6h7CzohdLTfN/wIEb06ftj6JpXkZD0zw
-         cv9WkMpPP0eWPVJm9b5/KsmoH5QuFP3AViMs7QgYl66tNgqpWaebLHLValWxNfmQvq1N
-         IvPA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=BF3FWNAvTxbrESsKFodVrlTVZn88Y8LjursAFufoD4o=;
+        b=Rbtdnxw5hN0pyorMXM/YjYXSW0XcZS1vkFI+wHGAoct2w8ezh4FzSydLryxfFSOpyL
+         XLJHFohGFHGIDM8NAkB3II6YaaM+79BrG+g+n53ueJXXXOM6xBTYWmmQciaQ7IYdc3yW
+         ZplJY5bWqb3CQ1X3FMsTRjbMjNZZ2aj0h1pZOhn+YJAoo+i/m8fLnFZYyPE0p0YvVkDb
+         bdRB1SaQQAyHeO0+PUHLLQ2RjE+wYHuYClGvAc/q4DOdT7OqZ84CJGK8471Va0Hfshg2
+         pMuCFnpUO+rTVKf+kle3+t2O/apsl6horOauyneAPz8yuClXQ9uLe0gtNz7XjTRzvQ2x
+         X0Ng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ER9jmqXj;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tYCh9gHC;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::62d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pl0-x242.google.com (mail-pl0-x242.google.com. [2607:f8b0:400e:c01::242])
-        by gmr-mx.google.com with ESMTPS id q12si428696pgn.2.2018.03.03.06.03.00
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com. [2607:f8b0:4864:20::62d])
+        by gmr-mx.google.com with ESMTPS id i67si139821pfj.0.2019.04.01.06.31.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Mar 2018 06:03:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::242 as permitted sender) client-ip=2607:f8b0:400e:c01::242;
+        Mon, 01 Apr 2019 06:31:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::62d as permitted sender) client-ip=2607:f8b0:4864:20::62d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ER9jmqXj;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tYCh9gHC;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::62d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x242.google.com with SMTP id i6-v6so7285012plt.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Mar 2018 06:03:00 -0800 (PST)
+Received: by mail-pl1-x62d.google.com with SMTP id m10so4503985plt.10
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 06:31:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=IJh65k/VwyEPUk/YIa+GbIL5NJYiFGUgwl6s4o/vvSA=;
-        b=ER9jmqXjSSIZfrDP3e4muQ7m5WeRMZqQuV9q2u/cEvOznXACT0gk1/CwqIN3sSbiRj
-         i4Y+3HrmzSfNrWd4K/4hrVgusuv1K3nT4m/nWID1VGbfBPpydM4VJBNntLlW/B1PWcEp
-         whSSSQfMITepEQ+hy6RMhMcFF6VueyZYhcOU8VmGFBusZoM1+o9yDe/bicrihC5pLj34
-         eVVWlHSGsQizsmmoGK2LqeqdC7Qc5MxCaQYDAGDJewMJDCOAMEua9qsndBAG7wnvZ2oJ
-         Th0+oLUU7UxAJsS+gY3OgxFGl5YdonEaO+3Py9IKRdUCPfrfewdStOSwHM3KXDd2P31F
-         4ylA==
+        h=from:to:cc:subject:date:message-id;
+        bh=BF3FWNAvTxbrESsKFodVrlTVZn88Y8LjursAFufoD4o=;
+        b=tYCh9gHCc2Lch8cSj38M07175vNlmr+zD0c45G6LfRl5Et4H4AUtKlOOWW4jRZsMkR
+         /jgb8FuMoWOI7idebrtlSMgHFNJPR3hAW9GLhoOT9PT3mL/4uHZr1n+JQYShMnERdoM4
+         aBlJ4u7OtPGONSYBBDeJLzK6kULSDORrAWYr46iajZK4+z+KMsEuw+61/83vzZuC1IM1
+         6soxbDm1873oCsARMM655BBSZwOvPHfVdHLPm6UDVkg/yS7d2qfnAEwQYzVsbzqpa+SA
+         nLdbk1YwhpxrkfeANoZwkheaS8uZdyNStX5QYZohB1WHjbb/l2JJxqclxI7igCJemy9n
+         stMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=IJh65k/VwyEPUk/YIa+GbIL5NJYiFGUgwl6s4o/vvSA=;
-        b=K5u4iKBdqpKeptau96uRr3E4wPY35l0Lrc5FEOBMam3wSQj/FidhU0814DAGGX5ozr
-         avJeqJr/WEBl0NpGhL3JnNgUflppf1dxpu1ezEqA/0R3XnUx0+Md1J/+WX69Zjn7vSyT
-         3Sg5AYsp+lv9urjttZwm3qtZLj3DRVf5nhj7Hr/7gPu16VlzC162qTjRQv6PJldtgbn1
-         jsTQPVdvmlM4KbCfdC4y6v5bPc8InyujREsPYMhbBrVtgMpKh0Apmp/Rm5+cZ33e2F/i
-         zYrCWinKMn1Wc1dkUkodSp5OHzKKWA+6+NYPsLrTvQZTPjp1gIzC2TqM8582bglkcVXL
-         MEFw==
-X-Gm-Message-State: APf1xPD8cEvoeazxOamsC0GwmHneQXy6GuX4scMYo8Pxu/NfWixfybpb
-	b4tPhMtyw6n/mfhV/ilQK3BhXQ==
-X-Received: by 2002:a17:902:7404:: with SMTP id g4-v6mr8130199pll.235.1520085780096;
-        Sat, 03 Mar 2018 06:03:00 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g15sm4660863pgv.61.2018.03.03.06.02.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Mar 2018 06:02:58 -0800 (PST)
-Date: Sat, 3 Mar 2018 19:32:33 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: boris.brezillon@free-electrons.com
-Cc: Richard Weinberger <richard@nod.at>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Brian Norris <computersforpeace@gmail.com>,
-	Marek Vasut <marek.vasut@gmail.com>,
-	Cyrille Pitchen <cyrille.pitchen@wedev4u.fr>,
-	linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] mtd: nand: Added spaces around ('=' and '<')
-Message-ID: <20180303140233.GA9634@seema-Inspiron-15-3567>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=BF3FWNAvTxbrESsKFodVrlTVZn88Y8LjursAFufoD4o=;
+        b=YmAJVTqfsLS0p60O/dhhBfgZxAiD70Osj6VkY8kPrfk4+BqjkcfrNfXMwA80IClMTl
+         2toWVqdTJWOWBq38jS800mrmBdAmrkpadeffA5Aj2kiMURHg8YEZsyoqzG+lzTxKlvAk
+         gDAzbhzZ/mjEWU8zryO0eO65AFBSE57cpl7PDAvjsNS5Orn7cjx1GD2ab90aRLwIxeb+
+         al7o/xFgxopjZl6tBGZa1QvTkQwDbsTloqZbU5DyXS/ZHVcxFD0XzlZ2Zd9xRVjpWf5Q
+         U9AoF951V2B0TOatvMEFM7I9Ww6y1+JNqv7VLq98V/KEOq7yzQiOn4chyzHwn01dBqM9
+         9YCg==
+X-Gm-Message-State: APjAAAU2E0h2wx7OO2jYloL80aeLQ7VC+9t7m+s/dDL/WdHuQDWx7Zol
+	ZcGfT9ceGZSCDuOh4zva4ksdMIae
+X-Received: by 2002:a17:902:aa85:: with SMTP id d5mr39361664plr.251.1554125492177;
+        Mon, 01 Apr 2019 06:31:32 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from localhost.localdomain ([2405:204:6628:6470:9524:528f:f662:5d77])
+        by smtp.googlemail.com with ESMTPSA id q10sm10043091pgh.93.2019.04.01.06.31.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 Apr 2019 06:31:31 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: media: zoran: Modify return statement.
+Date: Mon,  1 Apr 2019 19:01:18 +0530
+Message-Id: <20190401133118.4490-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Add spaces around ('=' and '<'),  to conform to the Linux
-kernel coding style. Issue found using checkpatch.
+Challenge suggested by coccinelle.
+Remove return variable and directly return the value
+Issue found using ret.cocci
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- drivers/mtd/nand/ams-delta.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/zoran/zoran_driver.c | 95 +++++++---------------
+ 1 file changed, 30 insertions(+), 65 deletions(-)
 
-diff --git a/drivers/mtd/nand/ams-delta.c b/drivers/mtd/nand/ams-delta.c
-index d60ada4..9de6572 100644
---- a/drivers/mtd/nand/ams-delta.c
-+++ b/drivers/mtd/nand/ams-delta.c
-@@ -94,7 +94,7 @@ static void ams_delta_write_buf(struct mtd_info *mtd, const u_char *buf,
+diff --git a/drivers/staging/media/zoran/zoran_driver.c b/drivers/staging/media/zoran/zoran_driver.c
+index 04f88f9d6bb4..8ae106ae26a1 100644
+--- a/drivers/staging/media/zoran/zoran_driver.c
++++ b/drivers/staging/media/zoran/zoran_driver.c
+@@ -1739,7 +1739,6 @@ static int zoran_s_fmt_vid_overlay(struct file *file, void *__fh,
+ 					struct v4l2_format *fmt)
  {
- 	int i;
+ 	struct zoran_fh *fh = __fh;
+-	int res;
  
--	for (i=0; i<len; i++)
-+	for (i = 0; i < len; i++)
- 		ams_delta_write_byte(mtd, buf[i]);
+ 	dprintk(3, "x=%d, y=%d, w=%d, h=%d, cnt=%d, map=0x%p\n",
+ 			fmt->fmt.win.w.left, fmt->fmt.win.w.top,
+@@ -1747,11 +1746,10 @@ static int zoran_s_fmt_vid_overlay(struct file *file, void *__fh,
+ 			fmt->fmt.win.w.height,
+ 			fmt->fmt.win.clipcount,
+ 			fmt->fmt.win.bitmap);
+-	res = setup_window(fh, fmt->fmt.win.w.left, fmt->fmt.win.w.top,
++	return setup_window(fh, fmt->fmt.win.w.left, fmt->fmt.win.w.top,
+ 			   fmt->fmt.win.w.width, fmt->fmt.win.w.height,
+ 			   (struct v4l2_clip __user *)fmt->fmt.win.clips,
+ 			   fmt->fmt.win.clipcount, fmt->fmt.win.bitmap);
+-	return res;
  }
  
-@@ -102,7 +102,7 @@ static void ams_delta_read_buf(struct mtd_info *mtd, u_char *buf, int len)
- {
- 	int i;
+ static int zoran_s_fmt_vid_out(struct file *file, void *__fh,
+@@ -1773,8 +1771,7 @@ static int zoran_s_fmt_vid_out(struct file *file, void *__fh,
+ 	if (fh->buffers.allocated) {
+ 		dprintk(1, KERN_ERR "%s: VIDIOC_S_FMT - cannot change capture mode\n",
+ 			ZR_DEVNAME(zr));
+-		res = -EBUSY;
+-		return res;
++		return -EBUSY;
+ 	}
  
--	for (i=0; i<len; i++)
-+	for (i = 0; i < len; i++)
- 		buf[i] = ams_delta_read_byte(mtd);
+ 	settings = fh->jpg_settings;
+@@ -1859,8 +1856,7 @@ static int zoran_s_fmt_vid_cap(struct file *file, void *__fh,
+ 	    fh->buffers.active != ZORAN_FREE) {
+ 		dprintk(1, KERN_ERR "%s: VIDIOC_S_FMT - cannot change capture mode\n",
+ 				ZR_DEVNAME(zr));
+-		res = -EBUSY;
+-		return res;
++		return -EBUSY;
+ 	}
+ 	if (fmt->fmt.pix.height > BUZ_MAX_HEIGHT)
+ 		fmt->fmt.pix.height = BUZ_MAX_HEIGHT;
+@@ -1910,7 +1906,7 @@ static int zoran_s_fbuf(struct file *file, void *__fh,
+ {
+ 	struct zoran_fh *fh = __fh;
+ 	struct zoran *zr = fh->zr;
+-	int i, res = 0;
++	int i;
+ 	__le32 printformat = __cpu_to_le32(fb->fmt.pixelformat);
+ 
+ 	for (i = 0; i < NUM_FORMATS; i++)
+@@ -1923,20 +1919,15 @@ static int zoran_s_fbuf(struct file *file, void *__fh,
+ 		return -EINVAL;
+ 	}
+ 
+-	res = setup_fbuffer(fh, fb->base, &zoran_formats[i], fb->fmt.width,
++	return setup_fbuffer(fh, fb->base, &zoran_formats[i], fb->fmt.width,
+ 			    fb->fmt.height, fb->fmt.bytesperline);
+-
+-	return res;
  }
  
+ static int zoran_overlay(struct file *file, void *__fh, unsigned int on)
+ {
+ 	struct zoran_fh *fh = __fh;
+-	int res;
+-
+-	res = setup_overlay(fh, on);
+ 
+-	return res;
++	return setup_overlay(fh, on);
+ }
+ 
+ static int zoran_streamoff(struct file *file, void *__fh, enum v4l2_buf_type type);
+@@ -1963,8 +1954,7 @@ static int zoran_reqbufs(struct file *file, void *__fh, struct v4l2_requestbuffe
+ 				KERN_ERR
+ 				"%s: VIDIOC_REQBUFS - buffers already allocated\n",
+ 				ZR_DEVNAME(zr));
+-		res = -EBUSY;
+-		return res;
++		return -EBUSY;
+ 	}
+ 
+ 	if (fh->map_mode == ZORAN_MAP_MODE_RAW &&
+@@ -1980,8 +1970,7 @@ static int zoran_reqbufs(struct file *file, void *__fh, struct v4l2_requestbuffe
+ 		fh->buffers.num_buffers = req->count;
+ 
+ 		if (v4l_fbuffer_alloc(fh)) {
+-			res = -ENOMEM;
+-			return res;
++			return -ENOMEM;
+ 		}
+ 	} else if (fh->map_mode == ZORAN_MAP_MODE_JPG_REC ||
+ 		   fh->map_mode == ZORAN_MAP_MODE_JPG_PLAY) {
+@@ -1997,16 +1986,14 @@ static int zoran_reqbufs(struct file *file, void *__fh, struct v4l2_requestbuffe
+ 		fh->buffers.buffer_size = zoran_v4l2_calc_bufsize(&fh->jpg_settings);
+ 
+ 		if (jpg_fbuffer_alloc(fh)) {
+-			res = -ENOMEM;
+-			return res;
++			return -ENOMEM;
+ 		}
+ 	} else {
+ 		dprintk(1,
+ 				KERN_ERR
+ 				"%s: VIDIOC_REQBUFS - unknown type %d\n",
+ 				ZR_DEVNAME(zr), req->type);
+-		res = -EINVAL;
+-		return res;
++		return -EINVAL;
+ 	}
+ 	return res;
+ }
+@@ -2014,11 +2001,8 @@ static int zoran_reqbufs(struct file *file, void *__fh, struct v4l2_requestbuffe
+ static int zoran_querybuf(struct file *file, void *__fh, struct v4l2_buffer *buf)
+ {
+ 	struct zoran_fh *fh = __fh;
+-	int res;
+ 
+-	res = zoran_v4l2_buffer_status(fh, buf, buf->index);
+-
+-	return res;
++	return zoran_v4l2_buffer_status(fh, buf, buf->index);
+ }
+ 
+ static int zoran_qbuf(struct file *file, void *__fh, struct v4l2_buffer *buf)
+@@ -2033,8 +2017,7 @@ static int zoran_qbuf(struct file *file, void *__fh, struct v4l2_buffer *buf)
+ 			dprintk(1, KERN_ERR
+ 				"%s: VIDIOC_QBUF - invalid buf->type=%d for map_mode=%d\n",
+ 				ZR_DEVNAME(zr), buf->type, fh->map_mode);
+-			res = -EINVAL;
+-			return res;
++			return -EINVAL;
+ 		}
+ 
+ 		res = zoran_v4l_queue_frame(fh, buf->index);
+@@ -2058,8 +2041,7 @@ static int zoran_qbuf(struct file *file, void *__fh, struct v4l2_buffer *buf)
+ 			dprintk(1, KERN_ERR
+ 				"%s: VIDIOC_QBUF - invalid buf->type=%d for map_mode=%d\n",
+ 				ZR_DEVNAME(zr), buf->type, fh->map_mode);
+-			res = -EINVAL;
+-			return res;
++			return -EINVAL;
+ 		}
+ 
+ 		res = zoran_jpg_queue_frame(fh, buf->index, codec_mode);
+@@ -2093,15 +2075,13 @@ static int zoran_dqbuf(struct file *file, void *__fh, struct v4l2_buffer *buf)
+ 			dprintk(1, KERN_ERR
+ 				"%s: VIDIOC_QBUF - invalid buf->type=%d for map_mode=%d\n",
+ 				ZR_DEVNAME(zr), buf->type, fh->map_mode);
+-			res = -EINVAL;
+-			return res;
++			return -EINVAL;
+ 		}
+ 
+ 		num = zr->v4l_pend[zr->v4l_sync_tail & V4L_MASK_FRAME];
+ 		if (file->f_flags & O_NONBLOCK &&
+ 		    zr->v4l_buffers.buffer[num].state != BUZ_STATE_DONE) {
+-			res = -EAGAIN;
+-			return res;
++			return -EAGAIN;
+ 		}
+ 		res = v4l_sync(fh, num);
+ 		if (res)
+@@ -2124,16 +2104,14 @@ static int zoran_dqbuf(struct file *file, void *__fh, struct v4l2_buffer *buf)
+ 			dprintk(1, KERN_ERR
+ 				"%s: VIDIOC_QBUF - invalid buf->type=%d for map_mode=%d\n",
+ 				ZR_DEVNAME(zr), buf->type, fh->map_mode);
+-			res = -EINVAL;
+-			return res;
++			return -EINVAL;
+ 		}
+ 
+ 		num = zr->jpg_pend[zr->jpg_que_tail & BUZ_MASK_FRAME];
+ 
+ 		if (file->f_flags & O_NONBLOCK &&
+ 		    zr->jpg_buffers.buffer[num].state != BUZ_STATE_DONE) {
+-			res = -EAGAIN;
+-			return res;
++			return -EAGAIN;
+ 		}
+ 		bs.frame = 0; /* suppress compiler warning */
+ 		res = jpg_sync(fh, &bs);
+@@ -2163,8 +2141,7 @@ static int zoran_streamon(struct file *file, void *__fh, enum v4l2_buf_type type
+ 	case ZORAN_MAP_MODE_RAW:	/* raw capture */
+ 		if (zr->v4l_buffers.active != ZORAN_ACTIVE ||
+ 		    fh->buffers.active != ZORAN_ACTIVE) {
+-			res = -EBUSY;
+-			return res;
++			return -EBUSY;
+ 		}
+ 
+ 		zr->v4l_buffers.active = fh->buffers.active = ZORAN_LOCKED;
+@@ -2182,8 +2159,7 @@ static int zoran_streamon(struct file *file, void *__fh, enum v4l2_buf_type type
+ 		/* what is the codec mode right now? */
+ 		if (zr->jpg_buffers.active != ZORAN_ACTIVE ||
+ 		    fh->buffers.active != ZORAN_ACTIVE) {
+-			res = -EBUSY;
+-			return res;
++			return -EBUSY;
+ 		}
+ 
+ 		zr->jpg_buffers.active = fh->buffers.active = ZORAN_LOCKED;
+@@ -2216,8 +2192,7 @@ static int zoran_streamoff(struct file *file, void *__fh, enum v4l2_buf_type typ
+ 	case ZORAN_MAP_MODE_RAW:	/* raw capture */
+ 		if (fh->buffers.active == ZORAN_FREE &&
+ 		    zr->v4l_buffers.active != ZORAN_FREE) {
+-			res = -EPERM;	/* stay off other's settings! */
+-			return res;
++			return -EPERM;	/* stay off other's settings! */
+ 		}
+ 		if (zr->v4l_buffers.active == ZORAN_FREE)
+ 			return res;
+@@ -2247,8 +2222,7 @@ static int zoran_streamoff(struct file *file, void *__fh, enum v4l2_buf_type typ
+ 	case ZORAN_MAP_MODE_JPG_PLAY:
+ 		if (fh->buffers.active == ZORAN_FREE &&
+ 		    zr->jpg_buffers.active != ZORAN_FREE) {
+-			res = -EPERM;	/* stay off other's settings! */
+-			return res;
++			return -EPERM;	/* stay off other's settings! */
+ 		}
+ 		if (zr->jpg_buffers.active == ZORAN_FREE)
+ 			return res;
+@@ -2288,8 +2262,7 @@ static int zoran_s_std(struct file *file, void *__fh, v4l2_std_id std)
+ 	if (res)
+ 		return res;
+ 
+-	res = wait_grab_pending(zr);
+-	return res;
++	return wait_grab_pending(zr);
+ }
+ 
+ static int zoran_enum_input(struct file *file, void *__fh,
+@@ -2332,8 +2305,7 @@ static int zoran_s_input(struct file *file, void *__fh, unsigned int input)
+ 		return res;
+ 
+ 	/* Make sure the changes come into effect */
+-	res = wait_grab_pending(zr);
+-	return res;
++	return wait_grab_pending(zr);
+ }
+ 
+ static int zoran_enum_output(struct file *file, void *__fh,
+@@ -2488,8 +2460,7 @@ static int zoran_s_jpegcomp(struct file *file, void *__fh,
+ 		dprintk(1, KERN_WARNING
+ 			"%s: VIDIOC_S_JPEGCOMP called while in playback/capture mode\n",
+ 			ZR_DEVNAME(zr));
+-		res = -EBUSY;
+-		return res;
++		return -EBUSY;
+ 	}
+ 
+ 	res = zoran_check_jpg_settings(zr, &settings, 0);
+@@ -2683,8 +2654,7 @@ zoran_mmap (struct file           *file,
+ 			KERN_ERR
+ 			"%s: %s(%s) - buffers not yet allocated\n",
+ 			ZR_DEVNAME(zr), __func__, mode_name(fh->map_mode));
+-		res = -ENOMEM;
+-		return res;
++		return -ENOMEM;
+ 	}
+ 
+ 	first = offset / fh->buffers.buffer_size;
+@@ -2699,8 +2669,7 @@ zoran_mmap (struct file           *file,
+ 			ZR_DEVNAME(zr), __func__, mode_name(fh->map_mode), offset, size,
+ 			fh->buffers.buffer_size,
+ 			fh->buffers.num_buffers);
+-		res = -EINVAL;
+-		return res;
++		return -EINVAL;
+ 	}
+ 
+ 	/* Check if any buffers are already mapped */
+@@ -2710,16 +2679,14 @@ zoran_mmap (struct file           *file,
+ 				KERN_ERR
+ 				"%s: %s(%s) - buffer %d already mapped\n",
+ 				ZR_DEVNAME(zr), __func__, mode_name(fh->map_mode), i);
+-			res = -EBUSY;
+-			return res;
++			return -EBUSY;
+ 		}
+ 	}
+ 
+ 	/* map these buffers */
+ 	map = kmalloc(sizeof(struct zoran_mapping), GFP_KERNEL);
+ 	if (!map) {
+-		res = -ENOMEM;
+-		return res;
++		return -ENOMEM;
+ 	}
+ 	map->fh = fh;
+ 	atomic_set(&map->count, 1);
+@@ -2740,8 +2707,7 @@ zoran_mmap (struct file           *file,
+ 					KERN_ERR
+ 					"%s: %s(V4L) - remap_pfn_range failed\n",
+ 					ZR_DEVNAME(zr), __func__);
+-				res = -EAGAIN;
+-				return res;
++				return -EAGAIN;
+ 			}
+ 			size -= todo;
+ 			start += todo;
+@@ -2772,8 +2738,7 @@ zoran_mmap (struct file           *file,
+ 						KERN_ERR
+ 						"%s: %s(V4L) - remap_pfn_range failed\n",
+ 						ZR_DEVNAME(zr), __func__);
+-					res = -EAGAIN;
+-					return res;
++					return -EAGAIN;
+ 				}
+ 				size -= todo;
+ 				start += todo;
 -- 
-2.7.4
+2.17.1
 
 
