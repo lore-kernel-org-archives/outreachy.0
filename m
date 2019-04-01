@@ -1,168 +1,265 @@
-X-GM-THRID: 6534531198530617344
-X-Received: by 10.202.212.73 with SMTP id l70mr1568037oig.12.1521439104808;
-        Sun, 18 Mar 2018 22:58:24 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.202.23.24 with SMTP id j24ls1353670oii.10.gmail; Sun, 18 Mar
- 2018 22:58:23 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt8ZAkcvY64MR1cEYLWvSNW4iB/PiJQBdVrS9P80qgJ8/hGHpoDq5qK6/rcV9OZtl/1ijUO
-X-Received: by 10.202.219.67 with SMTP id s64mr4596851oig.63.1521439103863;
-        Sun, 18 Mar 2018 22:58:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521439103; cv=none;
-        d=google.com; s=arc-20160816;
-        b=VcQ1xAmTeHUPpLfq8dcgAa53E+ta4j/O+A1L0SSV4pgZCPQqdfCdrqSBnelwupOq7w
-         A7OvO+HwB+u9kkumxwZUMwr8k9tM1f5211lSmAOSswXK6tVWQoEfvs7uwweMMXDb/EXq
-         AjNxw540V1TCFYWNK0HDKl/wJJI5FMpa9LcWjIuE7U2RWsycZLD7pZzQ4xn/jcewSA4J
-         OP4R/DEafmBSnaS456tDhrYrD0ACPdUfXQXjmeJkc7hs+Aug2+tXvkUDPs6CkMQyGJG2
-         kbalM8AOYJcn661O9beSpnm/Aty99S7GdBikdI8NuaG6i4Fwl95+RNn2386kbHUwlUh7
-         q2kA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=wj5XaN5d+qvOGymwQjZUqfitv4e2e7+4amG+yF7my0I=;
-        b=Oc0xWrLViMYlWS5RXMr0rjbWhErDnyN4QPbonI0iG72ejWhEAtQ72PtOsJvOHxgudB
-         WSxVT76qjdFPL7EvyPZjQLJE923fbr48NpnnNy+8oMgLGdIrK2ygB5S+r5R1Mp6im2nk
-         5dgig0G4Q7psGO4MIUj9TUPlddGPkPcmwlDPRaucQFZ+5YBQ9JIj3v48iu3nkvWVmkTE
-         d2palpNCp/1JpJlighwfxm2u+BK+hIluUoGYE/q+Tb5ktDifv6GFLCUUWWu4nvM8poIT
-         XoSjvRiG/iuiGi4U/9d5F6c0NvbuUhQI6o7OwXEN0ZVp/y9LQ33yUihhJSsmWj1hBd69
-         GpNg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZGA8RqSC;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-qk0-x241.google.com (mail-qk0-x241.google.com. [2607:f8b0:400d:c09::241])
-        by gmr-mx.google.com with ESMTPS id w11si870245oib.0.2018.03.18.22.58.23
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Mar 2018 22:58:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) client-ip=2607:f8b0:400d:c09::241;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZGA8RqSC;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c09::241 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x241.google.com with SMTP id o64so1447826qkl.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Mar 2018 22:58:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=wj5XaN5d+qvOGymwQjZUqfitv4e2e7+4amG+yF7my0I=;
-        b=ZGA8RqSCVlqgw4IgjzoqdmQcjhCBl9i724MTbrSn259JxKnXqfqdTtWHHhXyb70nkL
-         Era2ta2zcO2uD5pVBsXgABjoUubEmY/UZ5OlWRy30fc0L6dmp998uouZIW/F+cB20Ztx
-         +HN9byIuufw2lxT7ylSIlYL6Obr30FQoS38sM5e0a/PbcXC7emQ9V4ARkNYpBtyF4xzj
-         J55BsdAzExz/rTQr2PBzfPbNLwjPLlVK/GuU/zH+f9lUjnnBZ9htkzo1FpD6dU3PJgqM
-         539jUmrCUFak+xP83yoEMIbVnrtXgXynef3gobpZ9lpXbrz1HgKaCQtq8XOmnQQh/jlI
-         vK2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=wj5XaN5d+qvOGymwQjZUqfitv4e2e7+4amG+yF7my0I=;
-        b=mIZ7a2OLWKuSu3a6fIA1Gfpeoq3QQtDInUw6doRcKoeFyTvrFEszm7+qfGP8d9mOue
-         vatlWhXe6ZfzbsXFvtejAVcEV9OL8g667HuzK5tC8o3rZaD7vFHtb+7jD9x9pQSarX22
-         90nmBysttuunN8XEPBFlgWavfkiY6otpSImYybrIOdB17SMfDD/U8pS8vrjOHC8tHCkW
-         6PVZ3Bz3FvCxJs0u8yJcFFzzUMCwi/A12vLTTIhXYdI+J200I3ugyLN2t9nSABI7kJsn
-         rm60H280DHDZSPJQT/G69f1GcD0uBQcsCaERBLnOSJY/oXRFwvtkPeNFw3YavbP4WarX
-         p+TQ==
-X-Gm-Message-State: AElRT7H/b6BxuF+SZbJRGHjBN6HvLIAZKz0eMYqkCGhdNY6T0ypT+ni+
-	NrKRqwbIJW0FztqD6I/+YvMT6A==
-X-Received: by 10.233.239.71 with SMTP id d68mr5749413qkg.100.1521439103501;
-        Sun, 18 Mar 2018 22:58:23 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-VirtualBox (c-73-89-130-249.hsd1.nh.comcast.net. [73.89.130.249])
-        by smtp.gmail.com with ESMTPSA id g9sm9880403qti.11.2018.03.18.22.58.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Mar 2018 22:58:22 -0700 (PDT)
-Date: Mon, 19 Mar 2018 01:58:20 -0400
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: hamohammed.sa@gmail.com
-Cc: Daniel Vetter <daniel.vetter@intel.com>,
-	Gustavo Padovan <gustavo@padovan.org>,
-	Sean Paul <seanpaul@chromium.org>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH DRM] drm: remove drm_mode_object_{un/reference} aliases
-Message-ID: <20180319055820.GA17502@haneen-VirtualBox>
+X-GM-THRID: 6674924693853569024
+Date: Mon, 1 Apr 2019 07:24:31 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <b4ebfc08-d6ef-44b3-b383-240b8ca3bab9@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1904011601450.5585@hadrien>
+References: <20190401135637.8459-1-sanjana99reddy99@gmail.com>
+ <alpine.DEB.2.21.1904011601450.5585@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] staging: media: imx: Replace
+ list_entry with list_for_each_entry_safe
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_862_1321987254.1554128671404"
+X-Google-Token: EJ--iOUFN_0O0hTXm-80
+X-Google-IP: 2405:204:6628:6470:9524:528f:f662:5d77
 
-This patch remove the compatibility aliases
-drm_mode_object_{reference/unreference} of drm_mode_object_{get/put}
-since all callers have been converted to the prefered _{get/put}.
+------=_Part_862_1321987254.1554128671404
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_863_352072897.1554128671405"
 
-Remove the helpers from the semantic patch drm-get-put-cocci.
+------=_Part_863_352072897.1554128671405
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
- include/drm/drm_mode_object.h            | 24 ------------------------
- scripts/coccinelle/api/drm-get-put.cocci | 10 ----------
- 2 files changed, 34 deletions(-)
 
-diff --git a/include/drm/drm_mode_object.h b/include/drm/drm_mode_object.h
-index 7ba3913..c34a3e8 100644
---- a/include/drm/drm_mode_object.h
-+++ b/include/drm/drm_mode_object.h
-@@ -120,30 +120,6 @@ struct drm_mode_object *drm_mode_object_find(struct drm_device *dev,
- void drm_mode_object_get(struct drm_mode_object *obj);
- void drm_mode_object_put(struct drm_mode_object *obj);
+
+On Monday, April 1, 2019 at 7:32:41 PM UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Mon, 1 Apr 2019, Sanjana Sanikommu wrote: 
+>
+> > Challenge suggested by coccinelle. 
+> > Replace use of the combination of list_empty() and list_entry() with 
+> > list_for_each_entry_safe() to simplify the code. 
+> > 
+> > Issue found using below Coccinelle script. 
+> > 
+> > @@ 
+> > expression E1; 
+> > identifier I1, I2; 
+> > type T; 
+> > iterator name list_for_each_entry_safe; 
+> > @@ 
+> > 
+> > T *I1; 
+> > + T *tmp; 
+> > ... 
+> > - while (list_empty(&E1) == 0) 
+> > + list_for_each_entry_safe (I1, tmp, &E1, I2) 
+> > { 
+> > ...when != T *I1; 
+> > - I1 = list_entry(E1.next, T, I2); 
+> > ... 
+> > } 
+>
+> I haven't studied this carefully, but there was an old coccinelle script 
+> in this direction that made the code quite incorrect.  You need to 
+> understand what you are doing here to be sure that it is correct. 
+>
+
+
+    Here I used list_for_each_entry_safe to iterate list of given type.
+    I made script by considering the below information.    
+  
+    
+https://www.kernel.org/doc/htmldocs/kernel-api/API-list-for-each-entry-safe.html
  
--/**
-- * drm_mode_object_reference - acquire a mode object reference
-- * @obj: DRM mode object
-- *
-- * This is a compatibility alias for drm_mode_object_get() and should not be
-- * used by new code.
-- */
--static inline void drm_mode_object_reference(struct drm_mode_object *obj)
--{
--	drm_mode_object_get(obj);
--}
--
--/**
-- * drm_mode_object_unreference - release a mode object reference
-- * @obj: DRM mode object
-- *
-- * This is a compatibility alias for drm_mode_object_put() and should not be
-- * used by new code.
-- */
--static inline void drm_mode_object_unreference(struct drm_mode_object *obj)
--{
--	drm_mode_object_put(obj);
--}
--
- int drm_object_property_set_value(struct drm_mode_object *obj,
- 				  struct drm_property *property,
- 				  uint64_t val);
-diff --git a/scripts/coccinelle/api/drm-get-put.cocci b/scripts/coccinelle/api/drm-get-put.cocci
-index 91fceb8..ceb71ea 100644
---- a/scripts/coccinelle/api/drm-get-put.cocci
-+++ b/scripts/coccinelle/api/drm-get-put.cocci
-@@ -16,12 +16,6 @@ expression object;
- @@
- 
- (
--- drm_mode_object_reference(object)
--+ drm_mode_object_get(object)
--|
--- drm_mode_object_unreference(object)
--+ drm_mode_object_put(object)
--|
- - drm_connector_reference(object)
- + drm_connector_get(object)
- |
-@@ -62,10 +56,6 @@ position p;
- @@
- 
- (
--drm_mode_object_unreference@p(object)
--|
--drm_mode_object_reference@p(object)
--|
- drm_connector_unreference@p(object)
- |
- drm_connector_reference@p(object)
--- 
-2.7.4
 
+     Please correct me if I am wrong :)
+     Thank you 
+     Sanjana.
+
+>
+> julia 
+>
+> > 
+> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
+> > --- 
+> >  drivers/staging/media/imx/imx-media-capture.c | 5 ++--- 
+> >  1 file changed, 2 insertions(+), 3 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/media/imx/imx-media-capture.c 
+> b/drivers/staging/media/imx/imx-media-capture.c 
+> > index 9703c85b19c4..facce18975d8 100644 
+> > --- a/drivers/staging/media/imx/imx-media-capture.c 
+> > +++ b/drivers/staging/media/imx/imx-media-capture.c 
+> > @@ -556,6 +556,7 @@ static void capture_stop_streaming(struct vb2_queue 
+> *vq) 
+> >  { 
+> >          struct capture_priv *priv = vb2_get_drv_priv(vq); 
+> >          struct imx_media_buffer *frame; 
+> > +        struct imx_media_buffer *tmp; 
+> >          unsigned long flags; 
+> >          int ret; 
+> > 
+> > @@ -570,9 +571,7 @@ static void capture_stop_streaming(struct vb2_queue 
+> *vq) 
+> > 
+> >          /* release all active buffers */ 
+> >          spin_lock_irqsave(&priv->q_lock, flags); 
+> > -        while (!list_empty(&priv->ready_q)) { 
+> > -                frame = list_entry(priv->ready_q.next, 
+> > -                                   struct imx_media_buffer, list); 
+> > +        list_for_each_entry_safe(frame, tmp, &priv->ready_q, list) { 
+> >                  list_del(&frame->list); 
+> >                  vb2_buffer_done(&frame->vbuf.vb2_buf, 
+> VB2_BUF_STATE_ERROR); 
+> >          } 
+> > -- 
+> > 2.17.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreach...@googlegroups.com <javascript:>. 
+> > To post to this group, send email to outreach...@googlegroups.com 
+> <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20190401135637.8459-1-sanjana99reddy99%40gmail.com. 
+>
+> > For more options, visit https://groups.google.com/d/optout. 
+> > 
+>
+
+------=_Part_863_352072897.1554128671405
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Monday, April 1, 2019 at 7:32:41 PM UTC+5:30, J=
+ulia Lawall wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;marg=
+in-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Mon, 1 Apr 2019, Sanjana Sanikommu wrote:
+<br>
+<br>&gt; Challenge suggested by coccinelle.
+<br>&gt; Replace use of the combination of list_empty() and list_entry() wi=
+th
+<br>&gt; list_for_each_entry_safe() to simplify the code.
+<br>&gt;
+<br>&gt; Issue found using below Coccinelle script.
+<br>&gt;
+<br>&gt; @@
+<br>&gt; expression E1;
+<br>&gt; identifier I1, I2;
+<br>&gt; type T;
+<br>&gt; iterator name list_for_each_entry_safe;
+<br>&gt; @@
+<br>&gt;
+<br>&gt; T *I1;
+<br>&gt; + T *tmp;
+<br>&gt; ...
+<br>&gt; - while (list_empty(&amp;E1) =3D=3D 0)
+<br>&gt; + list_for_each_entry_safe (I1, tmp, &amp;E1, I2)
+<br>&gt; {
+<br>&gt; ...when !=3D T *I1;
+<br>&gt; - I1 =3D list_entry(E1.next, T, I2);
+<br>&gt; ...
+<br>&gt; }
+<br>
+<br>I haven&#39;t studied this carefully, but there was an old coccinelle s=
+cript
+<br>in this direction that made the code quite incorrect. =C2=A0You need to
+<br>understand what you are doing here to be sure that it is correct.
+<br></blockquote><div><br></div><div><br></div><div>=C2=A0 =C2=A0 Here I us=
+ed list_for_each_entry_safe to iterate list of given type.</div><div>=C2=A0=
+ =C2=A0 I made script by considering the below information.=C2=A0 =C2=A0=C2=
+=A0</div><div>=C2=A0=C2=A0</div><div>=C2=A0 =C2=A0=C2=A0<a href=3D"https://=
+www.kernel.org/doc/htmldocs/kernel-api/API-list-for-each-entry-safe.html">h=
+ttps://www.kernel.org/doc/htmldocs/kernel-api/API-list-for-each-entry-safe.=
+html</a>=C2=A0</div><div><br></div><div>=C2=A0 =C2=A0 =C2=A0Please correct =
+me if I am wrong :)</div><div>=C2=A0 =C2=A0 =C2=A0Thank you=C2=A0</div><div=
+>=C2=A0 =C2=A0 =C2=A0Sanjana.</div><blockquote class=3D"gmail_quote" style=
+=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
+1ex;">
+<br>julia
+<br>
+<br>&gt;
+<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"SWSKO7QOBwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/media/imx/<wbr>imx-media-capture.c | 5 ++---
+<br>&gt; =C2=A01 file changed, 2 insertions(+), 3 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/media/imx/<wbr>imx-media-capture.c b/=
+drivers/staging/media/imx/<wbr>imx-media-capture.c
+<br>&gt; index 9703c85b19c4..facce18975d8 100644
+<br>&gt; --- a/drivers/staging/media/imx/<wbr>imx-media-capture.c
+<br>&gt; +++ b/drivers/staging/media/imx/<wbr>imx-media-capture.c
+<br>&gt; @@ -556,6 +556,7 @@ static void capture_stop_streaming(struct vb2_=
+queue *vq)
+<br>&gt; =C2=A0{
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct captu=
+re_priv *priv =3D vb2_get_drv_priv(vq);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct imx_m=
+edia_buffer *frame;
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct imx_media_=
+buffer *tmp;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned lon=
+g flags;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int ret;
+<br>&gt;
+<br>&gt; @@ -570,9 +571,7 @@ static void capture_stop_streaming(struct vb2_=
+queue *vq)
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* release a=
+ll active buffers */
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0spin_lock_ir=
+qsave(&amp;<wbr>priv-&gt;q_lock, flags);
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0while (!list_empt=
+y(&amp;priv-&gt;ready_q)) {
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0frame =3D list_entry(priv-&gt;ready_q.next=
+,
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 struct i=
+mx_media_buffer, list);
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0list_for_each_ent=
+ry_<wbr>safe(frame, tmp, &amp;priv-&gt;ready_q, list) {
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0list_del(&amp;<wbr>frame-&gt;list);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0vb2_buffer_<wbr>done(&amp;frame-&gt;vbu=
+f.vb2_buf, VB2_BUF_STATE_ERROR);
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt; --
+<br>&gt; 2.17.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"SWSKO7QOBwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To post to this group, send email to <a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"SWSKO7QOBwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">outreach...@googlegroups.<wbr>com<=
+/a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20190401135637.8459-1-sanjana99reddy99=
+%40gmail.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190401135637.8=
+459-1-sanjana99reddy99%40gmail.com&#39;;return true;" onclick=3D"this.href=
+=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/20190401135637.8=
+459-1-sanjana99reddy99%40gmail.com&#39;;return true;">https://groups.google=
+.com/d/<wbr>msgid/outreachy-kernel/<wbr>20190401135637.8459-1-<wbr>sanjana9=
+9reddy99%40gmail.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/d/opt=
+out" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;htt=
+ps://groups.google.com/d/optout&#39;;return true;" onclick=3D"this.href=3D&=
+#39;https://groups.google.com/d/optout&#39;;return true;">https://groups.go=
+ogle.com/d/<wbr>optout</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_863_352072897.1554128671405--
+
+------=_Part_862_1321987254.1554128671404--
 
