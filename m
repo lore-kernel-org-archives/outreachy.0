@@ -1,100 +1,108 @@
 X-GM-THRID: 6674917600635387904
-X-Received: by 2002:a05:660c:885:: with SMTP id o5mr6734761itk.27.1554140467783;
-        Mon, 01 Apr 2019 10:41:07 -0700 (PDT)
+X-Received: by 2002:a25:d393:: with SMTP id e141mr7637696ybf.3.1554125361128;
+        Mon, 01 Apr 2019 06:29:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:282:: with SMTP id 124ls1212885jau.0.gmail; Mon, 01 Apr
- 2019 10:41:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKSrPD+BL3rBgdM2sa+y6HmP5V90SSqMGHSLhJVxvW2jF+eGFlhpoPewzJcGaoBpddq8Km
-X-Received: by 2002:a05:6638:388:: with SMTP id y8mr10315061jap.12.1554140467264;
-        Mon, 01 Apr 2019 10:41:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554140467; cv=none;
+Received: by 2002:a25:38cb:: with SMTP id f194ls3047788yba.6.gmail; Mon, 01
+ Apr 2019 06:29:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSYZsH4AJLu59HZk98m7WuVSTvuYB5BGMZxbZzKIBjMAFeK2pBZfvuw9oP7XuMb+yMX2Nb
+X-Received: by 2002:a25:fd6:: with SMTP id 205mr6275882ybp.32.1554125360215;
+        Mon, 01 Apr 2019 06:29:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554125360; cv=none;
         d=google.com; s=arc-20160816;
-        b=sYtOwVuovKh0cE0/BHfoKRxH+NomrNQxDJFoP4VGvgijoQdNwCHHtzdei8I9/hTEF2
-         /h2Cx1CGLuZmUR6aOni7bIR31VT5gDjR4K2eBdLFqO9QGCp1NGt9rL4TjACLzciMk0wK
-         UWJhbbij2kMA0zqpNtbGPaR7UFPENcS3yucaLgLEXUoeK2CTBLGaIsDU1d37GGJhkJSC
-         QYGcPZB1EIQENpCEVJAJi7MwvEGXhXRZUDFa/S4qgdEPuXt1SbggbMnhhN22DtqHR+Dj
-         dmmyEOz75r/ce1xFoqaLhsCOupMgTmNjxC9cepRo5F40K8VBuSNi42IVhuZ/mIHPerZ1
-         akUg==
+        b=SlHocvxQVRY8iL4fz4VNNcxTPyw3ZJkdssg3dRca+gXCb6AqEkehSrzmahxr6NKW8l
+         DFbw2njNlWtVmbmrMU8EhI0cVRQuT9M0osVrJKD0foiT+Z04VQjZMUTZmkfCAsWzD0wP
+         7Cxemygf0zPfIHX7QQZypLa4o0B8OJe9LstkvG8ELm9QsTw4fSGOq2/bgD8volj8EcjG
+         YU8NGIbsYAB+faAOzyTw8erB4v4fd5RzgkGuDn7prKCKuYNRIRj0QY0/X+sm4o5Nj/x8
+         +6np9SqutcHXU+UL5ramb9WcAY6nJpJKFrvmpYxoNXunBjvure8e21B7SF5Zvef1hA6X
+         MdWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ds02L7ejAFqIa8ZK5FQJbzyD+t/E5FFt4XBq1wupd2k=;
-        b=zJ89rt/6mse1umRsVnnBntE/B1aD9GIT3+Wc5SzKKwTI/ZtWUoiSMUZ/GnXM/PaESU
-         NKKGi+UVTI2fTlSDM0X4OTe51XZGp0LCAQ4jM6B0eyNDHM1GJeX910mzKcPVrLjJKvsJ
-         UE6JQ00M5tS9fqWsztgnDQ3CnC5p7FyGKhjz4RqGkuiSxXlTsLdrmrzMiowpLF6H3xZS
-         tsAamxTfNumaFgP1oCP7ea2sY9/+X+6WLkMSgdIlsTIG2Umuj39jkaIMAElEqe/zYT2S
-         NorfWWqyWgRXCM9BsT4kaHh8Yac8FbrS/xRW1pYSNbT9aAREJEc9VesVXwrJHQddkdyO
-         2V8Q==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=QCaOhPEr3VhhMoNCUiKA9rjCPaU0w1rahDrz1EFxOBY=;
+        b=tYTrDCvPfnhqzsrRGCdjX3a2Fs837uqOquhMynSvhu4vrR6qXJOn0JmdQJ+Z/qqCHO
+         5QNV9Tnn4IL8nEyK5+JBfhcfWf1Kw5Cg6kMoC5+IqBWNJQXDnWBkZbw29WUevXN9AsSa
+         u/RnvrfUZvYqKsKK8P6J+GZnfnayzQybdIFrQbbGykEfz4dJwGDDnjoh2SaqNWuUT2Ug
+         8BQqDXt2T8ZvcO64296OsAKnqCsPGq4kQSyQmRXKI3C4o2sowS5Tc78LQolzO1lTrqua
+         zfMwAQRyhGohcsiTWAqKLcYkwRuf8hQgL4hTP4bsOayKmBzVRgOL107IYN+1GS/aZP+8
+         RwtA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=khm6BQTT;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id g127si1245848ita.3.2019.04.01.10.41.07
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nS6lmPbQ;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id l65si563108ywl.1.2019.04.01.06.29.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 10:41:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 01 Apr 2019 06:29:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=khm6BQTT;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 17D3820880;
-	Mon,  1 Apr 2019 17:41:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1554140466;
-	bh=/PQpRa/q1t8DnUoyZl55u9/QKseuL0hPdB1ZEwiJJtY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=khm6BQTTCAHnOvZ6D44JSizvOM0zZaewLHmg0Vv6klkxYGnY9WChywPKEi9CEMGFJ
-	 RvGtmXbNyoGFw2Bw9xSC8GzRZ1yPs8RUJtrdQXHoKauTlRuL2CJW8wyrS0Yk7rKl1D
-	 3HlFfJ3iV0tg3O7vgwTZzpvn7XJlk6jmT25vA1RE=
-Date: Mon, 1 Apr 2019 19:31:39 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nS6lmPbQ;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x541.google.com with SMTP id y3so4764976pgk.12
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 06:29:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=QCaOhPEr3VhhMoNCUiKA9rjCPaU0w1rahDrz1EFxOBY=;
+        b=nS6lmPbQOtNC45Ykci8TMGXDcu6VFnpJbqqnh1DJf3pweoGvLhhSWVV6aRcVLFw4MA
+         eYLYSCsWCOjiyaac0kMYePWw7zmtGopUw6ZRC5+XEcyc5lJxrn3iDhyTSFM3yplLEx7v
+         xFT9J3BPnSpE6hoWep2yZwyw8jFBwGCxt0A5gasKgIfH6EztPq6eCeHeTEUiGw07cE35
+         6+9jomT+FmC4okHzCkG2S5zI7fBiwA2nnxkzqGhixrLyLJCE+uSFk6YamVn5rCh5cncc
+         ZUGKnI2qrz8T0aD7EKAZJerx5LdRZNnUT2BzziMRwgintTx8VVHpiqI6TJYPzD7T8AgT
+         BI+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=QCaOhPEr3VhhMoNCUiKA9rjCPaU0w1rahDrz1EFxOBY=;
+        b=PsvDnX4W8W7qQaxFxefuBZ28s9yjCxTWP+pnwbo092tY7w5Qv8W3qnhSqm1hrz2BX7
+         B6LVN9B3c83/7C3ICsaDtJVVKuiFRwZZ8QyhEhx+SVleU5kvtJBOzBGDuySmOXZT0ssy
+         7xV3lcNymhdF9H8noxO/HVNPJej1bUUqV9U43mXyWhfRjqi7Bq459Pdj6lFwXOd84GPB
+         4caq5e7eFDwkKU32ErtST0+LarUShnW+IpRgc9hBk43Hj+MsWj/cH8drmvwTEgcjwciT
+         NrHvmHvEMgt2/zgE3BIZxHrvh6PxRZ0dJJ7BCfl8YCsf+4k/38mpU/HW5GSZRMnmmd27
+         0kkA==
+X-Gm-Message-State: APjAAAUxuyCaGU08Af2ge7t6eXf4RSrGCI9/J7HrfZU4Ixa5hKCQlfR9
+	vC+e9ekawEZ4+cA4oCmkREg=
+X-Received: by 2002:a62:1197:: with SMTP id 23mr62085208pfr.210.1554125359592;
+        Mon, 01 Apr 2019 06:29:19 -0700 (PDT)
+Return-Path: <sanjana99reddy99@gmail.com>
+Received: from localhost.localdomain ([2405:204:6628:6470:9524:528f:f662:5d77])
+        by smtp.googlemail.com with ESMTPSA id b72sm34692862pga.86.2019.04.01.06.29.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 Apr 2019 06:29:18 -0700 (PDT)
+From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: gasket: apex: Modify return type suggested by
- Coccinelle.
-Message-ID: <20190401173139.GA4212@kroah.com>
-References: <20190401132906.4406-1-sanjana99reddy99@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190401132906.4406-1-sanjana99reddy99@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Subject: [PATCH] staging: gasket: apex: Modify return type suggested by Coccinelle.
+Date: Mon,  1 Apr 2019 18:59:06 +0530
+Message-Id: <20190401132906.4406-1-sanjana99reddy99@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Mon, Apr 01, 2019 at 06:59:06PM +0530, Sanjana Sanikommu wrote:
-> The last two lines in the function could
-> be compressed into one. Avoid usage of local variable.
-> Issue found by Coccinelle using ret.cocci.
-> 
-> Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-> ---
->  drivers/staging/gasket/apex_driver.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> index a79613db71ef..2be45ee9d061 100644
-> --- a/drivers/staging/gasket/apex_driver.c
-> +++ b/drivers/staging/gasket/apex_driver.c
-> @@ -439,9 +439,7 @@ static int apex_reset(struct gasket_dev *gasket_dev)
->  		if (ret)
->  			return ret;
->  	}
-> -	ret = apex_quit_reset(gasket_dev);
-> -
-> -	return ret;
-> +	return apex_quit_reset(gasket_dev);
->  }
->  
->  /*
+The last two lines in the function could
+be compressed into one. Avoid usage of local variable.
+Issue found by Coccinelle using ret.cocci.
 
-This patch does not apply to my tree at all, I think someone else
-already did this before you did.  Please update your local tree and
-verify this.
+Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+---
+ drivers/staging/gasket/apex_driver.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+index a79613db71ef..2be45ee9d061 100644
+--- a/drivers/staging/gasket/apex_driver.c
++++ b/drivers/staging/gasket/apex_driver.c
+@@ -439,9 +439,7 @@ static int apex_reset(struct gasket_dev *gasket_dev)
+ 		if (ret)
+ 			return ret;
+ 	}
+-	ret = apex_quit_reset(gasket_dev);
+-
+-	return ret;
++	return apex_quit_reset(gasket_dev);
+ }
+ 
+ /*
+-- 
+2.17.1
 
-greg k-h
 
