@@ -1,113 +1,155 @@
-X-GM-THRID: 6670745270189293568
-X-Received: by 2002:a37:c051:: with SMTP id o78mr670606qki.53.1553153914844;
-        Thu, 21 Mar 2019 00:38:34 -0700 (PDT)
+X-GM-THRID: 6674711833599803392
+X-Received: by 2002:a25:d956:: with SMTP id q83mr1922333ybg.79.1554077452936;
+        Sun, 31 Mar 2019 17:10:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:9e6d:: with SMTP id z45ls2069547qve.5.gmail; Thu, 21 Mar
- 2019 00:38:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyNye4Ms6DqSUQpqkmI+9sxskya0YW0A7aXEeNvBLtzsEuCPxyl3lwlV5xIZaCMzAG+Ywda
-X-Received: by 2002:a0c:d15b:: with SMTP id c27mr722893qvh.33.1553153914293;
-        Thu, 21 Mar 2019 00:38:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553153914; cv=none;
+Received: by 2002:a81:3d0e:: with SMTP id k14ls2809175ywa.4.gmail; Sun, 31 Mar
+ 2019 17:10:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwdbeM4OPj/s2U8l6JOwFr73elUqEnOn3eYKEGRg8wbAV2z+O+lx8cqDmU1JwjBhF6HqIa0
+X-Received: by 2002:a81:a60c:: with SMTP id d12mr6022570ywh.3.1554077452017;
+        Sun, 31 Mar 2019 17:10:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554077452; cv=none;
         d=google.com; s=arc-20160816;
-        b=KOCeO5mFgT7wNY0cVwX86b0lrEfrEyjJE6Qwk8IVxGaHSmN06hPLa+SL/YlYiuCxrY
-         WKswxxN2M6e2s3bbR7luOcGtnphOTVVWVqtM4I2UYfNiPWiFGwsSnyOsKUuoxhFAJFa7
-         2fE9nviT/u5iIBzTD7WFiNtgKrPstJRqUTgAQMdHlKUWrR9ZOYfcj7U0JX0FcNdy0RMf
-         NZmBNqpQYIhsQqj1vWp4aB+Em5sVqNvykoN6FMUDBMyCXZAYsJ7ujdkLzUHrkNFCxp4v
-         9ryfWI3pBFyViyqq7jUCJ0wjzU5VU6AlaGZJoKWE77QgKWu//Cjd3Z26o708KTdNvT5J
-         NlBg==
+        b=AYH3Mv2vqS5O30F9sBv5QKSUL387DYEKgNMwPsKxepH83JjGt2mqCKFk4spghvHM2E
+         HEEtjCbtLjM6XJY2h+fLMCq9sw9WwKp7eKTCpHYKCXoQ/slysyeKBPNPFcMSDGSEQ/Lw
+         aHnMElfjqS/OZzqWX69k1PZ15+X17nGj7mUmA3nohhib6k9WauXa4xNOzOIUyd32o1LK
+         90fzy6pZH4g8ZMhN69mnShRpSuaeQXcbZsdli7E4FXjP5AE1EAZGTD4hLUtZ9udQBnZ2
+         XZDfT/oQbnCflUNKLVrz5joEwYB3NnKEnkr6YPiVRraSxYeNAMPxpg5ZoruyjR/GmmLc
+         nQEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mzVUBrnLH1/9MKVbuv1I7t08XQ7/KKbXM/W4n9w7iIs=;
-        b=DO1ITqwoV31xMghswbxVj22C/aXopVVzpnev8ZWb+tLy+jZ9/yqg/EUHveJJLpLO2D
-         JkbNn38FuZh3k2YAvFmlh5lK54N7Zsh+kPxWWOJ2dZkVJ1Pa5UqI7HgtZoVDkdwaq9gU
-         Htg1eEnCvRLv5KZ8J5HpgxddzXWNsLDKO+WuULIR5npaQhGllpfuzyj/MfQBgpxR5eVE
-         sdnCr7RnUdeYj3NvTlNgovSpy4OLH02V2RHLcQtAsGPiwT9n4HUC7+zYtuEsxi4fFN5c
-         5IjEONQ0fuf4wm68TXQ7EX7bZU+YwEHoTtW5hLb88tAXuS07G7OCkT3BExD4SR6oUNbv
-         fBPA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=DTUsJ7c0mWRLb0sL0N0GZNn+OZXt5qyQNa8XtZ7rx5M=;
+        b=Juct6t/kPFCMD/Nm9Z2yTy5fSHqRmit5srFZjbnqVNl9w5xtZovnwtNgD01Ci/51LD
+         hrFd9MKraTEup1Tq0AX6H1AwNHhKphvxwKw5Wq9C5wbwY6rjOT4gMbLvfOiEbPtQpeWR
+         1t9oqNl3xi/fi1nV5QiXARwtwUNEYA+1Wd9F/ImVxKvhbqSxfMwGGypjlhse9j4c3OMH
+         rmiSC62opsDiSCMtLLniT4d/manWoS8PH3JjetsGUwMBrCCWbvYE+lCaM2/8FSRTYr6f
+         F9cQu0HBShtrZ/4ROKDIMFw6GCSyrwyfavtGJNIBN3uMKD1uJ14bgCyrgAS4CRNTVxcW
+         Kd5Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dF7MOTFC;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Whxded1M;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id 27si358639qtt.1.2019.03.21.00.38.34
+Return-Path: <briana.oursler@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id 204si459200ywd.4.2019.03.31.17.10.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 00:38:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Sun, 31 Mar 2019 17:10:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dF7MOTFC;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Whxded1M;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id v21so3732476pfm.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 00:38:34 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id b65so3563259plb.6
+        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 17:10:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=mzVUBrnLH1/9MKVbuv1I7t08XQ7/KKbXM/W4n9w7iIs=;
-        b=dF7MOTFCuzVWKRi/DeYQxiX6UE/lv8ftTMCURuXx8JRU7MqhcKtsMvWaJ4WFA0W1t1
-         X83GyOxHJLA2PuRtlzsArvHPGDmMufNnHmZKNN9WU7vGEPWp8zShAnTX3IUdO9Or7gTx
-         Kos29OEz7IdeZOdxzE9Z07chST5c83DdW/W9zV+oEaE1JWM0TGVYR+yCMUrU8MajlkAs
-         zjgfVHsB6w2GNMJEy4xPC+iPN7TUgd0Vel7G+roqgx/X7QH1ZNHLm0dGkXHaXYbaKXrw
-         rdyIGkVs9oNuLIKqFzxtizSoYk97pjwlTtQ5TZ1eR2wj4ZE5Kc6dmFHRHX2I/ZTNV+uB
-         bORg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=DTUsJ7c0mWRLb0sL0N0GZNn+OZXt5qyQNa8XtZ7rx5M=;
+        b=Whxded1M9tAQXOhmAtBMAopfLO5pzfW5Xmz29pkAdM9dc2aP5iw28jQ0re+Lels8GS
+         +uBGN46aGAQMEPTNIw7XU7mfRtDKLVfdmWTP8z/PcV0ScNnDtSdfjcmgv+elHNGiVTjQ
+         X9XZdl/bi3M6rrJoVDTpdxJcnudo3I51o3jLi6M/RCnLfeb98LpZjHpL7DaNE9H+UZvm
+         a4hDpNb+6AxglftKbJ3ZNgDuP9dkflQznaPzNTSb6Dm/NnYcTs79s0+0Cg+y3VpQSWPZ
+         fBj/JMQ53Ra28D+bbwWEH+dh/TSf6MTmp/EQBR0ojOYxAV8mRlZ6iFKejJNcwhMx5eLW
+         Un2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=mzVUBrnLH1/9MKVbuv1I7t08XQ7/KKbXM/W4n9w7iIs=;
-        b=qXouM8zqhA4JY8Jws/PWxIrnKayGu476S+sgnzOQo7x2BDpidtn1ioBtphyN0/DiSC
-         YdslUFDLWJTms1Xxr2J+WSVLK3/NQB5FRs7RbguzNee+47NFhKUmkDFKQFCWAUKomCBt
-         JrnkoX4QEtVqADBeWo6eJmZfdN1VaM0Hwh1bfkE313+H9LllFJxrU4mbSqsV944mb9D+
-         Op5a9dKwiPkXUOW7d2R1jca0ggjqWj55j4f4crrtb8gPud0eKs81BfS1AcEs+kFABaD6
-         /TdCftMEPHsJfUR/g7+CgNSwWWrna+oAqE43Lf+Gj6peGCuGK9H2PiEMPbRv428i73UM
-         o4yg==
-X-Gm-Message-State: APjAAAW2VdCmETYGav3N7za8z5a2yZh7bzSX0oeGoNiSdo7xOja0VpLV
-	1/QKa54QRA6Z+Vr+gosJMluapeX1Xi8=
-X-Received: by 2002:a65:6201:: with SMTP id d1mr2101420pgv.382.1553153913262;
-        Thu, 21 Mar 2019 00:38:33 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([219.91.183.81])
-        by smtp.googlemail.com with ESMTPSA id l7sm12276752pfj.162.2019.03.21.00.38.30
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=DTUsJ7c0mWRLb0sL0N0GZNn+OZXt5qyQNa8XtZ7rx5M=;
+        b=n0kEQFmrvs79NFzUy10br12mko+V6JuOJ8//wjPy37QciKLMLx7WCPEWebBBpjw1Ms
+         A67hfyQH1QJiHqGR/CW69KxcJ0fouqfX8PvyBabBtATmGaTk8VhAwcGFugbQy2TVixAy
+         20rEpaIvc/+W08evf8AbnjMAusj+HZJXw63kUsygfKTVK0ioaMdJsHi3AwxbBEXbg0Tg
+         LZz9h8MUzj6dDLeDto45T3dp1bOmR+pCaDcdp8hMohvk8mCVxuWk4L2J72P/w5PB05uE
+         iQz75mwTQdh3QBwIkcNuJBnORz4Uy+YifqGfCpHo3PmqK7upUufzZm21BZk1FNED/WMS
+         xgSQ==
+X-Gm-Message-State: APjAAAXfUb/V/oTbM7+tWHbnrdeLqr5x8rm2WXngrnhXAt8puH9PfORj
+	V+NLqbvHxWkTzfj6vQFIaP5ESG1vEn2Uwg==
+X-Received: by 2002:a17:902:a706:: with SMTP id w6mr36753477plq.91.1554077451172;
+        Sun, 31 Mar 2019 17:10:51 -0700 (PDT)
+Return-Path: <briana.oursler@gmail.com>
+Received: from supernova.Home (184-98-140-144.phnx.qwest.net. [184.98.140.144])
+        by smtp.gmail.com with ESMTPSA id e23sm12174878pfd.11.2019.03.31.17.10.50
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 00:38:32 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: greybus: svc_watchdog: Modify char* array declaration.
-Date: Thu, 21 Mar 2019 13:08:19 +0530
-Message-Id: <20190321073819.8333-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Sun, 31 Mar 2019 17:10:50 -0700 (PDT)
+From: Briana Oursler <briana.oursler@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Briana Oursler <briana.oursler@gmail.com>
+Subject: [PATCH] Staging: vt6655: rxtx: Add spaces around '*'
+Date: Sun, 31 Mar 2019 17:10:47 -0700
+Message-Id: <20190401001047.23218-1-briana.oursler@gmail.com>
+X-Mailer: git-send-email 2.21.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Modify "static char* array" to "static char* const array".
-Issue found using checkpatch.pl
+Add spaces around *. Issue found with checkpatch.
 
-WARNING:char* array declaration might be better as static constant
-
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
 ---
- drivers/staging/greybus/svc_watchdog.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/vt6655/rxtx.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/greybus/svc_watchdog.c b/drivers/staging/greybus/svc_watchdog.c
-index 7868ad8211c5..b6aaabcec320 100644
---- a/drivers/staging/greybus/svc_watchdog.c
-+++ b/drivers/staging/greybus/svc_watchdog.c
-@@ -44,12 +44,12 @@ static int svc_watchdog_pm_notifier(struct notifier_block *notifier,
- static void greybus_reset(struct work_struct *work)
- {
- 	static char const start_path[] = "/system/bin/start";
--	static char *envp[] = {
-+	static char const *envp[] = {
- 		"HOME=/",
- 		"PATH=/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin",
- 		NULL,
- 	};
--	static char *argv[] = {
-+	static char const *argv[] = {
- 		(char *)start_path,
- 		"unipro_reset",
- 		NULL,
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index c8c29bfd78ff..a14908895b9e 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -397,17 +397,17 @@ s_uGetRTSCTSDuration(
+ 	switch (byDurType) {
+ 	case RTSDUR_BB:    /* RTSDuration_bb */
+ 		uCTSTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
+-		uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
++		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 		break;
+ 
+ 	case RTSDUR_BA:    /* RTSDuration_ba */
+ 		uCTSTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
+-		uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
++		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 		break;
+ 
+ 	case RTSDUR_AA:    /* RTSDuration_aa */
+ 		uCTSTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+-		uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
++		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 		break;
+ 
+ 	case CTSDUR_BA:    /* CTSDuration_ba */
+@@ -426,9 +426,9 @@ s_uGetRTSCTSDuration(
+ 	case RTSDUR_AA_F0: /* RTSDuration_aa_f0 */
+ 		uCTSTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+-			uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
++			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+-			uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
++			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
+ 
+ 		break;
+ 
+@@ -437,16 +437,16 @@ s_uGetRTSCTSDuration(
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+ 			uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+-			uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
++			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
+ 
+ 		break;
+ 
+ 	case RTSDUR_AA_F1: /* RTSDuration_aa_f1 */
+ 		uCTSTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+-			uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
++			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+-			uDurTime = uCTSTime + 2*pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
++			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
+ 
+ 		break;
+ 
 -- 
-2.17.1
+2.21.0
 
 
