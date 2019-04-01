@@ -1,193 +1,200 @@
 X-GM-THRID: 6674748196483235840
-X-Received: by 2002:a5d:690c:: with SMTP id t12mr392wru.28.1554147067512;
-        Mon, 01 Apr 2019 12:31:07 -0700 (PDT)
+X-Received: by 2002:a02:a490:: with SMTP id d16mr583350jam.5.1554143179092;
+        Mon, 01 Apr 2019 11:26:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:4081:: with SMTP id o1ls990581wrp.7.gmail; Mon, 01 Apr
- 2019 12:31:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyldv3Sua4Kn7JUxfhqUROHNYSAUtGEAKcYVV6sirg1a1IJxWPCjJWTHg4kBE+g38aqizNy
-X-Received: by 2002:a5d:4d49:: with SMTP id a9mr2163539wru.31.1554147066661;
-        Mon, 01 Apr 2019 12:31:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554147066; cv=none;
+Received: by 2002:a6b:dd1a:: with SMTP id f26ls3895700ioc.1.gmail; Mon, 01 Apr
+ 2019 11:26:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy7TAdR2ekTyiX3g6rkqo4ZWYZwBNN8Rotuk/kCCM69OD4D2nzByTUdcXIadM+UuGwNfUvi
+X-Received: by 2002:a6b:251:: with SMTP id 78mr10385575ioc.39.1554143178325;
+        Mon, 01 Apr 2019 11:26:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554143178; cv=none;
         d=google.com; s=arc-20160816;
-        b=RqwSVrxnHKvs6dvZsCjJlanp09vgQyOu/C/OC1ntysihTmwd85OSo+v8Ci1CaXPfKu
-         W+FsteETk2iPkZkejmo6N53SqYoHE/MEq5Ol/zlHXUeIs7azFZU8QiUvpNOzS3u8rBZv
-         uqK6OCwRryTJju8WNZbjANPM4SXiuaOuRonGTaFO2ysAGW63WIKFFOgL4dphlbH2rA6F
-         g1/P/54zG9YpafPqEs44rfFZKxNac4TKmITfTf4P3oNV8DuRf/579Q07uUVEdVsXirHt
-         HAMhCiJjhbtV9guG3EJvOl7pvexaWNii7VHouMTayJx7gu7VLsWc/cBtkCt18HcgyCYd
-         JyPw==
+        b=aASxMqh4FBSQ3sac8ZhDy5la9vfRHIVqcjWefjUXJ4nWPDIaQyWoKQyjjGibE1WCL+
+         D6mG5/UZIbG2VNMVboPATVX1gnVB5sYBjnXgwBocVxkCjpmrg3XjtbrE0fFdPpdI1QqC
+         IGH/Rmg3phzjFpwGYKiDnTKMEmElpY6qpOVy6mhffXpdUGOi3cO5ztvepT3aSepibc5/
+         zxvdjiRta5+3TYnoJdaxnmAPzOoU89tC9+hz/ZCAz3Vxl54mIuVg+h1cbXzhha//Ilun
+         OfJHAe1tyAC1Rt7Xrpt4SI4Mox5cnIBVgf6MJZX3w4wRdHnWvAH/fuqGJW02n0QZ9Zxf
+         oGuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=eVIe5HnxiIcYtvmwbqev1UbusrNlapU0zKzc22q6vMg=;
-        b=t2rTtmNFEOjSVGeDt1xtU+f+CWQ38DefeI4PTNViKstftP2VAfCVWh9QuUvGo3TRid
-         gX9Yx+o/ifpsfWE1iJgxv4rF45l7QgrXx1gYrT+EoBEIk6Z1oSRdy7U9uouP+AlRD1QM
-         xrG5BeOPS36rnPzrpIziXUlh7NZqfSkboDfUF8AwZgAETwJhYrMPbFpDUEe8SxPAfAc1
-         /i9ZLsXqTja7oZp1Q2QMxSCS1HuwcedpnuhdFQG1Kub9+q3yR9+CfaaKMnc8xqobBlgK
-         WkT+Cen8O/sGQgkeZnPUJFpaSao6JiFBeJZGrkp5pJs/mQnc/09OPc8Ra/m/Kc9vLRwT
-         VOrQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=vaJnq/be85ltrvhTG8G4NTxddNzkmPRqf4Fx2Zfs8y4=;
+        b=GvrEGdjxSqJ5FbXMbyAjqICkkeTLP/prU/cfAcH5+IvTzYCcCVKNoPgWCtj90FO8OR
+         wkGHCaxuICVqXCY+AMQgCrephlOaZpK8sji3Czo7GuEg8dYLQOZBxjAzvqfRGkMCJmWM
+         CrqdNJQscCyo5EdtzWTu0c7xwhdJGvqJb4Z/8D130nQOcwzRX9EFHZ0Mn60QX17kI7RB
+         bPY1P3jhLmOwpFydTjkDWdYsv7F7QkBIbZDaZQM6P2nG6s3cC/drxc/kIhrtXmHRelBa
+         Qw59tdeU/bDIAKjCmW2rVyAX+uJ5XSGj8AN6BHQ/0vuchvP2gF289FLPOEH/iek5+j+x
+         KANQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id p14si397321wmh.2.2019.04.01.12.31.06
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qZ6RBonD;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::333 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <madhumithabiw@gmail.com>
+Received: from mail-ot1-x333.google.com (mail-ot1-x333.google.com. [2607:f8b0:4864:20::333])
+        by gmr-mx.google.com with ESMTPS id k26si441896ioh.5.2019.04.01.11.26.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 12:31:06 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Mon, 01 Apr 2019 11:26:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::333 as permitted sender) client-ip=2607:f8b0:4864:20::333;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.60,297,1549926000"; 
-   d="scan'208";a="301440337"
-Received: from abo-75-106-68.mrs.modulonet.fr (HELO hadrien) ([85.68.106.75])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Apr 2019 21:31:06 +0200
-Date: Mon, 1 Apr 2019 21:31:05 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v3] Staging: rtl8723bs: core:
- rtw_mlme_ext.c: Remove typecast in kfree
-In-Reply-To: <20190401182614.14755-1-madhumithabiw@gmail.com>
-Message-ID: <alpine.DEB.2.21.1904012129550.2530@hadrien>
-References: <20190401182614.14755-1-madhumithabiw@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qZ6RBonD;
+       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::333 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x333.google.com with SMTP id k21so9637016otf.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 11:26:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=vaJnq/be85ltrvhTG8G4NTxddNzkmPRqf4Fx2Zfs8y4=;
+        b=qZ6RBonDeudyD9LlwH8dZKAO4oLL31Vvh+IEFaWVCCQsGL1EnfzaCLQvnhrzCvEYmT
+         t+pj3HIgkkY4Z1NDoByXEzlAgXAJVIE/cPQ7trDTIZ4iTBHea1JGQ1bwg1eNx0KTDkTR
+         h5Sloz10Y/ra9pLGwnrmXdy2jNDfIOGcQzJJhLQYhmqIsOxcUwMdHLMd6NZiOR7bnRkT
+         d92b96Z3CUxywT6YvStCBEe92lyLHuPyW8ykEX8zqMFXhpLhKeu81kpUGFpyEzOZbzAH
+         K/A3AFb8N6bAdULtdt5/AdWFnzDuwwTCjgMoL4687F2wd3bGD7b6Vr1vvE2yD/AzRyAF
+         Jfwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=vaJnq/be85ltrvhTG8G4NTxddNzkmPRqf4Fx2Zfs8y4=;
+        b=QEvAOtqd4twagLolCw42uXaTpov3ZbxRuWLdy9SF6IcD89TJiJH1w6MabYvcwrKIgh
+         4M4itkmdWglfwdsBgH3/znBniWMd1r6Rp1wvQRTkYV3JSOX7pfLXYMtOHZkYnfcGburi
+         mDtmqtmroTW0j6yxZH8Hsz9pgTM2r2UkrfmoaK1nKjXjQAB6kGS9XcR+10zEa3VWwMCC
+         wEQKG+4KDtvluZeC2gwApYOMdzLjnymfpG9utFwzsyysp0UjkAbW3y6Q/mYnCxd0ZPGL
+         nbWTJa7l1m3nByQbIeJzvYVCLOontb7ala0zdEt/CeCgtprbkWNzAteFPENAOSonD4U5
+         ruxQ==
+X-Gm-Message-State: APjAAAWfxmhxuxyrfsh/Bk+hGn1kuTwQ9KvFpK8d31KjIRm6lUfWsXKC
+	RCu+r6uQps85nYkF5+gC28U=
+X-Received: by 2002:a9d:d66:: with SMTP id 93mr45413470oti.25.1554143177963;
+        Mon, 01 Apr 2019 11:26:17 -0700 (PDT)
+Return-Path: <madhumithabiw@gmail.com>
+Received: from madhuleo ([2605:6000:1023:606d:35a4:8fe3:3a02:b8fd])
+        by smtp.gmail.com with ESMTPSA id j18sm4398948otq.68.2019.04.01.11.26.16
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Apr 2019 11:26:16 -0700 (PDT)
+From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Subject: [PATCH v3] Staging: rtl8723bs: core: rtw_mlme_ext.c: Remove typecast in kfree
+Date: Mon,  1 Apr 2019 13:26:14 -0500
+Message-Id: <20190401182614.14755-1-madhumithabiw@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-For the subject line, you should follow the same strategy as other patches
-on this file.
+Remove typecast in kfree, as per definition of kfree in
+include/linux/slab.h#L144, the parameter type of kfree is void*, and
+hence C compiler casts any pointer type to void*.
+that is allocated with kmalloc.
 
-On Mon, 1 Apr 2019, Madhumitha Prabakaran wrote:
+Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
 
-> Remove typecast in kfree, as per definition of kfree in
-> include/linux/slab.h#L144, the parameter type of kfree is void*, and
-> hence C compiler casts any pointer type to void*.
-> that is allocated with kmalloc.
+---
+Changes in v3 -
 
-Whether or not the argument was allocated with kmalloc is not relevant.
-The C compiler considers any pointer type compatible with void *.  It
-doesn't know where the value came from.
+- Tested and compiled the patch
 
-julia
+Changes in v2:
 
-> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
->
-> ---
-> Changes in v3 -
->
-> - Tested and compiled the patch
->
-> Changes in v2:
->
-> - Commit log modified
-> ---
->  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 22 +++++++++----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> index ebb45acb4446..6ac2b03805e4 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> @@ -816,7 +816,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
->  					update_network(&(pmlmepriv->cur_network.network), pbss, padapter, true);
->  					rtw_get_bcn_info(&(pmlmepriv->cur_network));
->  				}
-> -				kfree((u8 *)pbss);
-> +				kfree(pbss);
->  			}
->
->  			/* check the vendor of the assoc AP */
-> @@ -5052,7 +5052,7 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
->  	cmdsz = (sizeof(struct survey_event) + sizeof(struct C2HEvent_Header));
->  	pevtcmd = rtw_zmalloc(cmdsz);
->  	if (pevtcmd == NULL) {
-> -		kfree((u8 *)pcmd_obj);
-> +		kfree(pcmd_obj);
->  		return;
->  	}
->
-> @@ -5073,8 +5073,8 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
->  	psurvey_evt = (struct survey_event *)(pevtcmd + sizeof(struct C2HEvent_Header));
->
->  	if (collect_bss_info(padapter, precv_frame, (struct wlan_bssid_ex *)&psurvey_evt->bss) == _FAIL) {
-> -		kfree((u8 *)pcmd_obj);
-> -		kfree((u8 *)pevtcmd);
-> +		kfree(pcmd_obj);
-> +		kfree(pevtcmd);
->  		return;
->  	}
->
-> @@ -5105,7 +5105,7 @@ void report_surveydone_event(struct adapter *padapter)
->  	cmdsz = (sizeof(struct surveydone_event) + sizeof(struct C2HEvent_Header));
->  	pevtcmd = rtw_zmalloc(cmdsz);
->  	if (pevtcmd == NULL) {
-> -		kfree((u8 *)pcmd_obj);
-> +		kfree(pcmd_obj);
->  		return;
->  	}
->
-> @@ -5152,7 +5152,7 @@ void report_join_res(struct adapter *padapter, int res)
->  	cmdsz = (sizeof(struct joinbss_event) + sizeof(struct C2HEvent_Header));
->  	pevtcmd = rtw_zmalloc(cmdsz);
->  	if (pevtcmd == NULL) {
-> -		kfree((u8 *)pcmd_obj);
-> +		kfree(pcmd_obj);
->  		return;
->  	}
->
-> @@ -5203,7 +5203,7 @@ void report_wmm_edca_update(struct adapter *padapter)
->  	cmdsz = (sizeof(struct wmm_event) + sizeof(struct C2HEvent_Header));
->  	pevtcmd = rtw_zmalloc(cmdsz);
->  	if (pevtcmd == NULL) {
-> -		kfree((u8 *)pcmd_obj);
-> +		kfree(pcmd_obj);
->  		return;
->  	}
->
-> @@ -5250,7 +5250,7 @@ void report_del_sta_event(struct adapter *padapter, unsigned char *MacAddr, unsi
->  	cmdsz = (sizeof(struct stadel_event) + sizeof(struct C2HEvent_Header));
->  	pevtcmd = rtw_zmalloc(cmdsz);
->  	if (pevtcmd == NULL) {
-> -		kfree((u8 *)pcmd_obj);
-> +		kfree(pcmd_obj);
->  		return;
->  	}
->
-> @@ -5305,7 +5305,7 @@ void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr, int
->  	cmdsz = (sizeof(struct stassoc_event) + sizeof(struct C2HEvent_Header));
->  	pevtcmd = rtw_zmalloc(cmdsz);
->  	if (pevtcmd == NULL) {
-> -		kfree((u8 *)pcmd_obj);
-> +		kfree(pcmd_obj);
->  		return;
->  	}
->
-> @@ -5836,7 +5836,7 @@ void survey_timer_hdl(struct timer_list *t)
->
->  		psurveyPara = rtw_zmalloc(sizeof(struct sitesurvey_parm));
->  		if (psurveyPara == NULL) {
-> -			kfree((unsigned char *)ph2c);
-> +			kfree(ph2c);
->  			goto exit_survey_timer_hdl;
->  		}
->
-> @@ -6603,7 +6603,7 @@ u8 set_tx_beacon_cmd(struct adapter *padapter)
->
->  	ptxBeacon_parm = rtw_zmalloc(sizeof(struct Tx_Beacon_param));
->  	if (ptxBeacon_parm == NULL) {
-> -		kfree((unsigned char *)ph2c);
-> +		kfree(ph2c);
->  		res = _FAIL;
->  		goto exit;
->  	}
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190401182614.14755-1-madhumithabiw%40gmail.com.
-> For more options, visit https://groups.google.com/d/optout.
->
+- Commit log modified
+---
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 22 +++++++++----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+index ebb45acb4446..6ac2b03805e4 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+@@ -816,7 +816,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
+ 					update_network(&(pmlmepriv->cur_network.network), pbss, padapter, true);
+ 					rtw_get_bcn_info(&(pmlmepriv->cur_network));
+ 				}
+-				kfree((u8 *)pbss);
++				kfree(pbss);
+ 			}
+ 
+ 			/* check the vendor of the assoc AP */
+@@ -5052,7 +5052,7 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
+ 	cmdsz = (sizeof(struct survey_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5073,8 +5073,8 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
+ 	psurvey_evt = (struct survey_event *)(pevtcmd + sizeof(struct C2HEvent_Header));
+ 
+ 	if (collect_bss_info(padapter, precv_frame, (struct wlan_bssid_ex *)&psurvey_evt->bss) == _FAIL) {
+-		kfree((u8 *)pcmd_obj);
+-		kfree((u8 *)pevtcmd);
++		kfree(pcmd_obj);
++		kfree(pevtcmd);
+ 		return;
+ 	}
+ 
+@@ -5105,7 +5105,7 @@ void report_surveydone_event(struct adapter *padapter)
+ 	cmdsz = (sizeof(struct surveydone_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5152,7 +5152,7 @@ void report_join_res(struct adapter *padapter, int res)
+ 	cmdsz = (sizeof(struct joinbss_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5203,7 +5203,7 @@ void report_wmm_edca_update(struct adapter *padapter)
+ 	cmdsz = (sizeof(struct wmm_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5250,7 +5250,7 @@ void report_del_sta_event(struct adapter *padapter, unsigned char *MacAddr, unsi
+ 	cmdsz = (sizeof(struct stadel_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5305,7 +5305,7 @@ void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr, int
+ 	cmdsz = (sizeof(struct stassoc_event) + sizeof(struct C2HEvent_Header));
+ 	pevtcmd = rtw_zmalloc(cmdsz);
+ 	if (pevtcmd == NULL) {
+-		kfree((u8 *)pcmd_obj);
++		kfree(pcmd_obj);
+ 		return;
+ 	}
+ 
+@@ -5836,7 +5836,7 @@ void survey_timer_hdl(struct timer_list *t)
+ 
+ 		psurveyPara = rtw_zmalloc(sizeof(struct sitesurvey_parm));
+ 		if (psurveyPara == NULL) {
+-			kfree((unsigned char *)ph2c);
++			kfree(ph2c);
+ 			goto exit_survey_timer_hdl;
+ 		}
+ 
+@@ -6603,7 +6603,7 @@ u8 set_tx_beacon_cmd(struct adapter *padapter)
+ 
+ 	ptxBeacon_parm = rtw_zmalloc(sizeof(struct Tx_Beacon_param));
+ 	if (ptxBeacon_parm == NULL) {
+-		kfree((unsigned char *)ph2c);
++		kfree(ph2c);
+ 		res = _FAIL;
+ 		goto exit;
+ 	}
+-- 
+2.17.1
+
 
