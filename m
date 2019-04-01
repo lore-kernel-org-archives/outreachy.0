@@ -1,81 +1,81 @@
 X-GM-THRID: 6674934716958769152
-X-Received: by 2002:a24:7f52:: with SMTP id r79mr7421696itc.33.1554180561264;
-        Mon, 01 Apr 2019 21:49:21 -0700 (PDT)
+X-Received: by 2002:a1f:654:: with SMTP id 81mr7719531vkg.3.1554129346585;
+        Mon, 01 Apr 2019 07:35:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:7dcc:: with SMTP id b195ls140833itc.2.canary-gmail; Mon,
- 01 Apr 2019 21:49:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxLfsXoKol7f68UPQwaPKfmH098wPnn8QJvaUzenvJupLYAL/U9jQ95/TA1SaY/I4B/Tiev
-X-Received: by 2002:a24:5c12:: with SMTP id q18mr7673593itb.13.1554180560359;
-        Mon, 01 Apr 2019 21:49:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554180560; cv=none;
+Received: by 2002:a67:fb14:: with SMTP id d20ls2050352vsr.5.gmail; Mon, 01 Apr
+ 2019 07:35:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwrXIh23LEKb0Z7a6lz2k3jV+wwicsqy7cu0KU+HgvKTyWEWp43FtI8gp2VDgTh2WssLd6L
+X-Received: by 2002:a67:df08:: with SMTP id s8mr1826066vsk.40.1554129345777;
+        Mon, 01 Apr 2019 07:35:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554129345; cv=none;
         d=google.com; s=arc-20160816;
-        b=l5Ef31jcPDneAKbhDbVnpvLqZxnWY3yES2LlbZcNYTcwOsoYs5cTRMRS4Q2ghhqZ4i
-         qGPXHQozpSPyoPxQGdY9E3bZSVZ1LfXBqG2X+3SteWQN7iTNuDmZEE2U7139t7dkXrK4
-         Q3aWgLGeNeJnemBsI2RzNe8h85F4dZAx0c7rIP2uw3ZeEIsadL7/mU6A9okym1NPpJOO
-         2op0xetWNW6s4+QOc1cCg9In7JRTK+FmeAarU24SitXfqRY8wO7kU8HSotF4NOc4xXGk
-         yPO2UbpGnQAOJ9C7POdIAXTwb8PX5sjVKDaHdhCK4Dyrzmf+cajiBwFnOygogr6HDaHm
-         9Wdg==
+        b=nNFfGtGcBlMunlfLMSkfzWBx+ZstnkPDoJ+LsE0Ae/ItVIKFrDwwQp0wHukvEtGN4U
+         9mf0dE37cmDc6FQDxT5VDUxCfpyFwnCP0AsCmBE3rhbRBJ5fSxwk+7ctRNIgVHkEsaVf
+         hrq1+gVPN+gTXjh9yjxJYNkcoFQCHo+nUURLA9ULbTh9PbvqL8bhsSoHTyDfE241vK8j
+         EjFeScQYZndXwEDotytvuXB/ldfjJLHrA1uPzdMPSM1D2v9412HUmJ125L/XJjJ/pK3W
+         LdCnWLCoLVmHfw1cHx/wYrWSjXBtNfjlaViKC+w6vWV+GwOMqyH15J06dzXF2gYU2ZVq
+         ZbjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=//whgPYbJ7iERV13RNca/F+GhfCIhQxDLy3oqXqSkQg=;
-        b=VL5HUN4C5JJxJPdqFvT64ur8Bo0WSkOU6C6rAoAfvf4BzC3vEWHcL4uAqgg5lHyayu
-         Ub0cxIxJmmSFqqNsJvJZBq7oYUHlIbamBeysEBnvBj8KV1sWV2Q8wGWREAUiU8fpbG8x
-         P6gbleMYVxspK3h2+l9zZo2GTfHthBJExGu3Q1tGTX4kdPBpSVnBIbN1zFhyZGgvMqrA
-         uHzefziJcS5/PdO6mfnNVJly4pnnYr6bVyp9A0el6ysmGxF8GRfhUDM7Y6VqICv83fhp
-         8fy2STcsmTlmsquARMlGgHcPHhmzCD/ZemL5d03NgSqT5cbQFh9dQtDB9c0Is1CcUGVW
-         MdjA==
+        bh=oXy7YJnWtupd5YckY+cA/If0uwp45W/CpNru3q1CKsY=;
+        b=YhBpSXqI6T1kmxLUvDnBS9pctEGwmfiXUs8zc4BBS1fKQxuePpgZ3pNwo7GqAnLdUX
+         Q8/dXEnZMd400keGarKCUINapGOO6TvGKYZfxawXPDm1VMrSd5NLtE+ggKbzLrQFTgsK
+         UpyH0tFFIkyWbdamMvTI7jUsFx5SU+zjA2dCbeQKaSP26B1DJUOj2UlOs1WofVHfgMAD
+         iQh6BrCxA6bIYviuAVyUnK+ut0FJuQ0qRJJXNp4LPAS6Yh2/Q4gQcdQxJ66/1jqq89eV
+         lHlu6715fQFxBhgR01N4wf7qskhr/76hta+X0S6SYRu89HXZfdHbXjHbsp7IjOuwMtXJ
+         3ZwQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rOJ+JLA2;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mkK2zlQE;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id t201si711237itb.2.2019.04.01.21.49.20
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com. [2607:f8b0:4864:20::62c])
+        by gmr-mx.google.com with ESMTPS id o80si568246vke.1.2019.04.01.07.35.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 21:49:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Mon, 01 Apr 2019 07:35:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) client-ip=2607:f8b0:4864:20::62c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rOJ+JLA2;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mkK2zlQE;
+       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id g8so5902819pgf.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 21:49:20 -0700 (PDT)
+Received: by mail-pl1-x62c.google.com with SMTP id d1so2903084plj.8
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Apr 2019 07:35:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=//whgPYbJ7iERV13RNca/F+GhfCIhQxDLy3oqXqSkQg=;
-        b=rOJ+JLA27XBsFZcpED/5FlmCydq89yO2Lppu7U1C0dBBeRdmaRIyaDbpdJDlWqHbI2
-         zQ7UIw/sGj9esjsW4qyao2v6zM0Q7N6uM/If3cWoK1+P9WEXYhvN3ctEboQeYt26iNmv
-         5RkRaRek5fv+2se2sChr4d3OGjNBn8HGOGLuQCxRN98bN0NkRRbT9aQhGp8HVL8uKtIv
-         hWtpDTGxMd+0BTQTW805O2AYDagGdOmooYy/y40vXH130NWmBnUDGimH05NIbMrEo6V6
-         31TjI8VoRENRSSMpuZvygKpnG1i+eGtUyHCwIMlv3CFhzNvX8NxF7/MrR4v4+daO9ach
-         s6ZQ==
+        bh=oXy7YJnWtupd5YckY+cA/If0uwp45W/CpNru3q1CKsY=;
+        b=mkK2zlQEPDZFBsa76WQkzGtCPqL7kWEmuWSUvJMlNp0Mfi7zz2FxhXhAdguvl2H79b
+         e3P9J7Biw0h2isyQklL8l7E+K6HhbwqytTTfSZHeRylWCH9L48wv6rtSlAvoELqQKGaK
+         qs6Lofp7zjA1MBmqbbTYM1yF3T58W/sC8VG/xtCvQsZ1YScxmaWHFJ1G9krz0OxYcdV/
+         T7NDSefpayJo+EOOLXxS5Fe8W8vdhp9G6KB3xtTMyhMaHiru+4qkpnGu6u+ldcGHw/Nw
+         ysk3YyCogzXmRiSZ8aCVKxVf4hBQy46uqKa9YK1PvHNgnNxwzV7Q8UiOk3OmevRWco99
+         d+Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=//whgPYbJ7iERV13RNca/F+GhfCIhQxDLy3oqXqSkQg=;
-        b=rLuYxDuA95zSA8TXDJVdL3rbdIqLHn0qTotWZkgNgx8/2drIXc6cl2Eud2XNbR6TJN
-         kfhofh6Srt0EgftslGH2wnw3Eu3SzOB3oAJydOmQdgYCtf+dag8uI1JTyvCFWb1nyf/x
-         nC+aGYa8XTpNi1oxGeq1CqadVHFemUahC5Enzv4tBGe3Jqb5EhBAYTxkrmBp+1bteoLa
-         pWTZ1WI3UwObQwS4VziYt9qJLM0/awcsiHt3/N4SF4LnakvBdZBpYzSIVvh2CgcMmWBL
-         0CpRgfnjym7keOYS4j9Cz5EKe2/L/QIne9QGfk6ge2SY0DWCLX2KuG2yygxVHh3hmji8
-         4low==
-X-Gm-Message-State: APjAAAXHAZ0HbKD9qMonM1MRhyfp8JYsoM84wDP3f09o2aJ3CKYqRpP8
-	exOD4115IJJULVb/wQ/76q6dRed+zRk=
-X-Received: by 2002:a62:205c:: with SMTP id g89mr65004844pfg.34.1554180559629;
-        Mon, 01 Apr 2019 21:49:19 -0700 (PDT)
+        bh=oXy7YJnWtupd5YckY+cA/If0uwp45W/CpNru3q1CKsY=;
+        b=UGKOJkvny1oUWwYcsh1odBxx6Ti7wpJlrk1Ul6nJM7FHVM6NooElitIzS8uNRiBHyD
+         /oDE74BIVkewUy0HCWGyXfwQsgP4dQFpuHItyuQ180nN/BdAznSAKK5VpCr65UQUhZpI
+         q2wQNdNwX28pryxvqcGnN1PjfdXR9EesSR6Z+dKEFh5sPtLx6Rrh+mF9ibj4q/LyFL5z
+         dh3y1ABSoZWkK/zSIOPzjhe7P1CCOiaakJuJkpyy7Rm+yDyPiKYbBOXejhvAjlWeej81
+         JG5dtpUXeXxuE31xsKDYTSYy2OC71oHW9xxDy5fq+MmKWmhyK/MawPAcREtwdXd7cZ2Q
+         hI+Q==
+X-Gm-Message-State: APjAAAU3CsL53rwmO9i6b++zikkT9bkZv+I8FmHs3qBBH2MAa2wqxRf5
+	Ro7g+1YK0coPEILm5qcmM2k=
+X-Received: by 2002:a17:902:1122:: with SMTP id d31mr30353359pla.29.1554129345445;
+        Mon, 01 Apr 2019 07:35:45 -0700 (PDT)
 Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.14])
-        by smtp.googlemail.com with ESMTPSA id 17sm17454726pfw.65.2019.04.01.21.49.17
+Received: from localhost.localdomain ([2405:204:6628:6470:9524:528f:f662:5d77])
+        by smtp.googlemail.com with ESMTPSA id e13sm18079674pgb.37.2019.04.01.07.35.42
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 21:49:18 -0700 (PDT)
+        Mon, 01 Apr 2019 07:35:44 -0700 (PDT)
 From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
 Subject: [PATCH] staging: vc04_services: Remove unnecessary casts.
-Date: Tue,  2 Apr 2019 10:19:08 +0530
-Message-Id: <20190402044908.3159-1-sanjana99reddy99@gmail.com>
+Date: Mon,  1 Apr 2019 20:05:31 +0530
+Message-Id: <20190401143531.11493-1-sanjana99reddy99@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
 Explicit type casting of variable, with same type as
@@ -84,65 +84,74 @@ Issue found using coccinelle.
 
 Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
 ---
- .../vc04_services/interface/vchiq_arm/vchiq_arm.c    | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ .../vc04_services/interface/vchiq_arm/vchiq_core.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-index 804daf83be35..bd24ef9bc1cb 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-@@ -417,13 +417,13 @@ vchiq_bulk_transmit(VCHIQ_SERVICE_HANDLE_T handle, const void *data,
- 	switch (mode) {
- 	case VCHIQ_BULK_MODE_NOCALLBACK:
- 	case VCHIQ_BULK_MODE_CALLBACK:
--		status = vchiq_bulk_transfer(handle, (void *)data, size,
-+		status = vchiq_bulk_transfer(handle, data, size,
- 					     userdata, mode,
- 					     VCHIQ_BULK_TRANSMIT);
- 		break;
- 	case VCHIQ_BULK_MODE_BLOCKING:
- 		status = vchiq_blocking_bulk_transfer(handle,
--			(void *)data, size, VCHIQ_BULK_TRANSMIT);
-+			data, size, VCHIQ_BULK_TRANSMIT);
- 		break;
- 	default:
- 		return VCHIQ_ERROR;
-@@ -447,7 +447,7 @@ vchiq_bulk_receive(VCHIQ_SERVICE_HANDLE_T handle, void *data,
- 		break;
- 	case VCHIQ_BULK_MODE_BLOCKING:
- 		status = vchiq_blocking_bulk_transfer(handle,
--			(void *)data, size, VCHIQ_BULK_RECEIVE);
-+			data, size, VCHIQ_BULK_RECEIVE);
- 		break;
- 	default:
- 		return VCHIQ_ERROR;
-@@ -1381,7 +1381,7 @@ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
- 		else if (header->size <= args.bufsize) {
- 			/* Copy to user space if msgbuf is not NULL */
- 			if ((args.buf == NULL) ||
--				(copy_to_user((void __user *)args.buf,
-+				(copy_to_user(args.buf,
- 				header->data,
- 				header->size) == 0)) {
- 				ret = header->size;
-@@ -2113,7 +2113,7 @@ static int vchiq_release(struct inode *inode, struct file *file)
- void
- vchiq_dump(void *dump_context, const char *str, int len)
- {
--	struct dump_context *context = (struct dump_context *)dump_context;
-+	struct dump_context *context = dump_context;
- 
- 	if (context->actual < context->space) {
- 		int copy_bytes;
-@@ -2322,7 +2322,7 @@ vchiq_keepalive_vchiq_callback(VCHIQ_REASON_T reason,
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 53f5a1cb4636..c60db447ae8e 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -1877,7 +1877,7 @@ parse_rx_slots(struct vchiq_state *state)
  static int
- vchiq_keepalive_thread_func(void *v)
+ slot_handler_func(void *v)
  {
 -	struct vchiq_state *state = (struct vchiq_state *)v;
 +	struct vchiq_state *state = v;
- 	struct vchiq_arm_state *arm_state = vchiq_platform_get_arm_state(state);
+ 	struct vchiq_shared_state *local = state->local;
  
- 	VCHIQ_STATUS_T status;
+ 	DEBUG_INITIALISE(local)
+@@ -1961,7 +1961,7 @@ slot_handler_func(void *v)
+ static int
+ recycle_func(void *v)
+ {
+-	struct vchiq_state *state = (struct vchiq_state *)v;
++	struct vchiq_state *state = v;
+ 	struct vchiq_shared_state *local = state->local;
+ 	BITSET_T *found;
+ 	size_t length;
+@@ -1985,7 +1985,7 @@ recycle_func(void *v)
+ static int
+ sync_func(void *v)
+ {
+-	struct vchiq_state *state = (struct vchiq_state *)v;
++	struct vchiq_state *state = v;
+ 	struct vchiq_shared_state *local = state->local;
+ 	struct vchiq_header *header =
+ 		(struct vchiq_header *)SLOT_DATA_FROM_INDEX(state,
+@@ -2111,7 +2111,7 @@ vchiq_init_slots(void *mem_base, int mem_size)
+ 	int mem_align =
+ 		(int)((VCHIQ_SLOT_SIZE - (long)mem_base) & VCHIQ_SLOT_MASK);
+ 	struct vchiq_slot_zero *slot_zero =
+-		(struct vchiq_slot_zero *)((char *)mem_base + mem_align);
++		(struct vchiq_slot_zero *)(mem_base + mem_align);
+ 	int num_slots = (mem_size - mem_align)/VCHIQ_SLOT_SIZE;
+ 	int first_data_slot = VCHIQ_SLOT_ZERO_SLOTS;
+ 
+@@ -3039,13 +3039,13 @@ VCHIQ_STATUS_T vchiq_bulk_transfer(VCHIQ_SERVICE_HANDLE_T handle,
+ 	case VCHIQ_BULK_MODE_CALLBACK:
+ 		break;
+ 	case VCHIQ_BULK_MODE_BLOCKING:
+-		bulk_waiter = (struct bulk_waiter *)userdata;
++		bulk_waiter = userdata;
+ 		init_completion(&bulk_waiter->event);
+ 		bulk_waiter->actual = 0;
+ 		bulk_waiter->bulk = NULL;
+ 		break;
+ 	case VCHIQ_BULK_MODE_WAITING:
+-		bulk_waiter = (struct bulk_waiter *)userdata;
++		bulk_waiter = userdata;
+ 		bulk = bulk_waiter->bulk;
+ 		goto waiting;
+ 	default:
+@@ -3624,7 +3624,7 @@ VCHIQ_STATUS_T vchiq_send_remote_use_active(struct vchiq_state *state)
+ void vchiq_log_dump_mem(const char *label, u32 addr, const void *void_mem,
+ 	size_t num_bytes)
+ {
+-	const u8  *mem = (const u8 *)void_mem;
++	const u8  *mem = void_mem;
+ 	size_t          offset;
+ 	char            line_buf[100];
+ 	char           *s;
 -- 
 2.17.1
 
