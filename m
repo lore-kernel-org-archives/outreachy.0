@@ -1,98 +1,176 @@
 X-GM-THRID: 6675276130832875520
-X-Received: by 2002:a65:51c1:: with SMTP id i1mr551128pgq.144.1554212866160;
-        Tue, 02 Apr 2019 06:47:46 -0700 (PDT)
+X-Received: by 2002:adf:f152:: with SMTP id y18mr2410279wro.21.1554211598055;
+        Tue, 02 Apr 2019 06:26:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:ff54:: with SMTP id s20ls221550pgk.14.gmail; Tue, 02 Apr
- 2019 06:47:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy2Wiih6NO8SV8VG/idM6Fp9Sxf6KMyq7Knf55dxVDt4Uh+nOZP/+GcbK8jxzibbtnDWfPi
-X-Received: by 2002:a63:591e:: with SMTP id n30mr1062981pgb.55.1554212865224;
-        Tue, 02 Apr 2019 06:47:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554212865; cv=none;
+Received: by 2002:a1c:4e14:: with SMTP id g20ls19892wmh.1.gmail; Tue, 02 Apr
+ 2019 06:26:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy344Z6mZdeu1ThOm+E7Kij03qcVoemxdDYf4rbgYhcA+wo5hM/+pjscAiy0WXI+Vq+FpCg
+X-Received: by 2002:a1c:b782:: with SMTP id h124mr827462wmf.8.1554211597107;
+        Tue, 02 Apr 2019 06:26:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554211597; cv=none;
         d=google.com; s=arc-20160816;
-        b=EVgfG3NX8i5JoVtPcGrYyWeEC5xVhDYFwi560CD0UZfYJkseUeS6hMvR7tblzWgaLu
-         Hm/Gl3QsWH+/wT+S8d5BGi9ZNMdRAiCzqCi9WeThYKcs68MEUnBD7Bb6rPUvE00b1NL0
-         Ol3M/1jQNUjy+tJGhNRoZDNLFj/LH0y0uAlVeoe4kjtHn5CC78NWh/SdG9DJnpcLMIV2
-         LLeDz88iRpJZbgwYneTooc8Q5oXqiE6q5KIXnyQzEP92PZE2PEM6ARMyY2NK1J077J0+
-         mJv1gOVrInS6z1aD6+6UtXfc64zxjIoITvBVmtCa6KAcQiggCyhAQ1Q7FC7sWUHDlw02
-         myKQ==
+        b=rTCFq3g/0yexmG9aCDH3mAPErngr/eA/GTUXQ5chjn49rgFe8XkKcQ60y2x8Q2J+VE
+         vbe/CxpB2q3KBKcrmpftlM2oNorDuxlnACk47NFD+Pw+fp6bsIIggM22Ehsc5vqoVftI
+         jwl/N9uIkQnpwmM+suY7ES2u7h4QWi5iz9XWZoF1kdMS8ZMxRTfw/ea3dcMpV8as4xKR
+         wYxGVgJHt3fnERfP978KeuPh8YBEAqY6tEco/TbBLjLvi+4eCZZTVel58Umtr/oFws7c
+         vgn4jnP5NcjhU7gpkuT3as0z/LuD6x1FrkRMj0h1+7TQQpRKhwvyPRPefN44kCqn0XtW
+         ji7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cWcuWXlio33NXTEjM4Sgr9afnHrFpmzUHiADys06aC8=;
-        b=KT598cUBYa7K2OegvAhvtv8wYpbKgqG6h9DLph6hwc94sA7OnkIcuSKS3b8kRmwW4v
-         1I+oJPnbLAeiFjIXk+jtDUuWDXxMYDm5/PTawiuAIWE3KTSNwlxVmBD9ZDI4oGCHdbDV
-         VJPmMyBuLN0xYrX03/0R27852LsTaH+pRS7sR+B9RBXXTvr+UUHc3li61RsRnUD4+BMn
-         NkoO8XkMwuZ2ioUOqz9Z/xo1XV/OjGT2zNC9eYiAKH3PcdIvMlONRCq8prtJ6gGZ0PRm
-         szDAmW3rn6BT6vMQEDKya3MoNaY3dyb7ABsX43oginqLYCYSQNydsydos2OafSg+PLnX
-         bYgg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=3murrpxfQN/AZT3GA6tduCrTQDHO7ZnI3LnGf8Uqcqk=;
+        b=tkqTQh4GQO6N6VrUSt7L6prQx+oQrzj5f/+sU6vgwYXaXLJ8I7tpmEGlb65IV3jmCe
+         SOe5l3QASbeUPpqDyAkVoXUsmTGkD4sKYkQjWUv40ZsW5cWB1frx+yyjSXFj+0egf1Ox
+         TF41qliV5ethQ89Iv773p3gjUvcSyjNR9Rg1szGV1/y7XqsRkzNlj/QyMMo2O7C057ck
+         teGgEeNvVJy5m5hIPG6z4mDw/uWGnDK2EjH7qMa1DXHCfxZlpFjTfmG7FOXntKd0ZBtx
+         pJvgWnYgIDC8d86jSIF87OlaJPaRpSFhwYF6rnFzUnFZzJXedwUkRcJK4tS6wWTGNurJ
+         khGg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AuL681In;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FkGo7B4g;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::12e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id g13si777665pfm.1.2019.04.02.06.47.45
+Received: from mail-lf1-x12e.google.com (mail-lf1-x12e.google.com. [2a00:1450:4864:20::12e])
+        by gmr-mx.google.com with ESMTPS id v1si445561wrd.4.2019.04.02.06.26.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 06:47:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Tue, 02 Apr 2019 06:26:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::12e as permitted sender) client-ip=2a00:1450:4864:20::12e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AuL681In;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FkGo7B4g;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2a00:1450:4864:20::12e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id y13so6409770pfm.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 06:47:45 -0700 (PDT)
+Received: by mail-lf1-x12e.google.com with SMTP id u21so9010031lfu.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 06:26:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=cWcuWXlio33NXTEjM4Sgr9afnHrFpmzUHiADys06aC8=;
-        b=AuL681In+R8BUd+cAvP7JuZVxKJpEpw6s0Zz6Jf1jpX1qe9vmzadZKAn5jZGIdeo3n
-         6wbd1LNBCR6OkmZPcuSaEBX4ks97t91hFnJ6ky+fG1cf9X1NuumMd6ucbPERDbHSutil
-         rRkieNd5pA5psX28u6JoZydKZrdRJVx68jwbpfSE2UJMiv1OIyGc2RdTxHRlQvLnYIFI
-         8G+jnDW/Yhn2DCUCw25tbWxKr30Hx+zqnwYoDN5LVY5d//LlWsie61tHZgSYFZ4fzp1k
-         x862Nju00Z8dDPi6PWn5tov/OjL5MosXEbB4E2oSXdE0jxNdL948C7ZJkQkV+QXstVKu
-         rJ7g==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=3murrpxfQN/AZT3GA6tduCrTQDHO7ZnI3LnGf8Uqcqk=;
+        b=FkGo7B4gbN/qztZUNHW/3Fwsmh24iyugjSpKYfjyz6j7s2e2F3IpXGOY0lrZzNqkHc
+         HygVR9NfgqO1qJ+hjQNOiu9giKu3v/pznEO85LcumzMpjVFCPmauHrWs9MlNyEzKLCe3
+         p1qk0p5xb1k6+AOk620rE6QnCYBsR6u8XTjMVb40vEikpFvicHw51qifvp9HXwhWPHK/
+         nYxy5Z4P2rwX+jLI1Q6oGvFgbEJ+KaZNRqgBicmjSJWj5V5SvvCH4jMnRFmzKWqc8nN0
+         sDz6Ofi2/tz/BiaG+XaZUbN6QpTtiSv5d8bHnJsNOI+8T5rPGr016UxHUtJYgHBpVD2s
+         VppQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=cWcuWXlio33NXTEjM4Sgr9afnHrFpmzUHiADys06aC8=;
-        b=QumpAovvLKfEVzhlnnM/BavfX1hOJiZsG5cfqXF5CEQOfGP/qwBcazOZgsbVYbo76g
-         GO9PcD9QAS+cdlikb3wbckaNYez2hIuBM4ATTcAtk9SCNKD++eK+2M1Znexn/KY7hwOE
-         m4Cy0Vv87S554cACGxWEH0bwecZlXLWlR5x/YlklxdcMDeKS0S6aBvq55G1F+zvLvS1E
-         HTMA4X36wBVluLTO6d47fo7HOgdMpKwjkvbhp/Ep1TvtSAoJMFL8qdlP6DiKXRVUbG+z
-         WLNmtg5KqFmkdz2LwFzN1Pnw1gT/6ctBkI7dxH/6tokvjQW8tM/GUchrCji0kKpuHg0R
-         ChMw==
-X-Gm-Message-State: APjAAAXGaRLU6QVcLyqeXVZI0UGeEKqnWbN4B9G/EstI2kScHiyZ1uiK
-	XaXm+q4ZDVWaxR13tJ7M1LX4q5b6
-X-Received: by 2002:a62:524e:: with SMTP id g75mr48888924pfb.106.1554212864579;
-        Tue, 02 Apr 2019 06:47:44 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id 14sm29392779pft.137.2019.04.02.06.47.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 06:47:43 -0700 (PDT)
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=3murrpxfQN/AZT3GA6tduCrTQDHO7ZnI3LnGf8Uqcqk=;
+        b=iGKT0t9jxIx+0MDgG3BAlQV1Xl1yy9NQ6CKpaPci70dzcr9Fkg0eTwg+hL6T8o/s73
+         T6MqriS6frHuRqLu1wz0z2ox9QpGa/fpJrSEadJ6W+kfb4fVJX8n1JK4xliubzRtq0Fg
+         34EYp8LqFA0dhlQSKYG/ijaMFcZcohIHyUn38mI4LjiOm1rI08a4jKpl9xSEPLcdAjGn
+         Jbx5m4+Gf0ZyAmSoiiDRZSKrtFsCnqA5juAJ/wpcc0GKTPTE4l+g6OnYiYqxiSZZ6oF8
+         TqMwdw6YZuDcQT7pm8VCi0ARVVkAiNO0kLSe3dCbWGrQwYaLlQJLky51dVTrJKXrwMP0
+         JKmw==
+X-Gm-Message-State: APjAAAX6PhNSQpQRgtEQhfZCfjkKfgUN74dtSTFVcFI5dNwF/rsPFtk0
+	O8PzHcYMWkuDk/a/m4ED2tDqnVlFgNSIBFR7ljXiJQ==
+X-Received: by 2002:ac2:491a:: with SMTP id n26mr21142299lfi.122.1554211596917;
+ Tue, 02 Apr 2019 06:26:36 -0700 (PDT)
+MIME-Version: 1.0
+References: <cover.1554208601.git.payal.s.kshirsagar.98@gmail.com>
+ <629f050185c487686882839655603a6804e03ce9.1554208601.git.payal.s.kshirsagar.98@gmail.com>
+ <20190402130906.GB32338@kroah.com>
+In-Reply-To: <20190402130906.GB32338@kroah.com>
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH v2 0/2] staging: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 19:17:28 +0530
-Message-Id: <cover.1554212525.git.payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Date: Tue, 2 Apr 2019 18:56:24 +0530
+Message-ID: <CANTOzWG1tbRhNutksa0iiKsRgERDt7Mum34LjROGUeQK8FSd9Q@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: rtlwifi: base.c: Replace
+ bit shifting with BIT macro
+To: Greg KH <greg@kroah.com>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="00000000000023df8105858c1678"
 
-Challenge suggested by coccinelle.
-Prefer using BIT and replace bit shifting with the BIT(x) macro.
+--00000000000023df8105858c1678
+Content-Type: text/plain; charset="UTF-8"
 
-Changes in v2:
-	-Remove type cast.
+On Tue, 2 Apr 2019 at 18:39, Greg KH <greg@kroah.com> wrote:
 
-Payal Kshirsagar (2):
-  staging: rtl8723bs: core: Replace bit shifting with BIT macro
-  staging: rtlwifi: base.c: Replace bit shifting with BIT macro
+> On Tue, Apr 02, 2019 at 06:10:23PM +0530, Payal Kshirsagar wrote:
+> > Challenge suggested by coccinelle.
+> > Prefer using BIT and replace bit shifting with the BIT(x) macro.
+> >
+> > Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+> > ---
+> >  drivers/staging/rtlwifi/base.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/rtlwifi/base.c
+> b/drivers/staging/rtlwifi/base.c
+> > index 35df2cf..e9830b1 100644
+> > --- a/drivers/staging/rtlwifi/base.c
+> > +++ b/drivers/staging/rtlwifi/base.c
+> > @@ -2446,7 +2446,7 @@ struct sk_buff *rtl_make_del_ba(struct
+> ieee80211_hw *hw,
+> >                                                 IEEE80211_STYPE_ACTION);
+> >       action_frame->u.action.category = WLAN_CATEGORY_BACK;
+> >       action_frame->u.action.u.delba.action_code = WLAN_ACTION_DELBA;
+> > -     params = (u16)(1 << 11);        /* bit 11 initiator */
+> > +     params = (u16)BIT(11);  /* bit 11 initiator */
+>
+> Why are you still casting here?
+>
 
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
- drivers/staging/rtlwifi/base.c                | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Yes, there is a no need to cast.
+I will correct it and send v2 for this patchset.
+thanks,
+payal
 
--- 
-2.7.4
 
+> thanks,
+>
+> greg k-h
+>
+
+--00000000000023df8105858c1678
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, 2 Apr 2019 at 18:39, Greg KH =
+&lt;<a href=3D"mailto:greg@kroah.com">greg@kroah.com</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">On Tue, Apr 02, 2019 at=
+ 06:10:23PM +0530, Payal Kshirsagar wrote:<br>
+&gt; Challenge suggested by coccinelle.<br>
+&gt; Prefer using BIT and replace bit shifting with the BIT(x) macro.<br>
+&gt; <br>
+&gt; Signed-off-by: Payal Kshirsagar &lt;<a href=3D"mailto:payal.s.kshirsag=
+ar.98@gmail.com" target=3D"_blank">payal.s.kshirsagar.98@gmail.com</a>&gt;<=
+br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/rtlwifi/base.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/staging/rtlwifi/base.c b/drivers/staging/rtlwifi/=
+base.c<br>
+&gt; index 35df2cf..e9830b1 100644<br>
+&gt; --- a/drivers/staging/rtlwifi/base.c<br>
+&gt; +++ b/drivers/staging/rtlwifi/base.c<br>
+&gt; @@ -2446,7 +2446,7 @@ struct sk_buff *rtl_make_del_ba(struct ieee80211=
+_hw *hw,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0IEEE80211_STYPE_ACTION);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0action_frame-&gt;u.action.category =3D WLAN_=
+CATEGORY_BACK;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0action_frame-&gt;u.action.u.delba.action_cod=
+e =3D WLAN_ACTION_DELBA;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0params =3D (u16)(1 &lt;&lt; 11);=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 /* bit 11 initiator */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0params =3D (u16)BIT(11);=C2=A0 /* bit 11 initiato=
+r */<br>
+<br>
+Why are you still casting here?<br></blockquote><div><br></div><div>Yes, th=
+ere is a no need to cast.</div><div>I will correct it and send v2 for this =
+patchset.</div><div>thanks,</div><div>payal<br></div><div>=C2=A0</div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
+1px solid rgb(204,204,204);padding-left:1ex">
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div></div>
+
+--00000000000023df8105858c1678--
 
