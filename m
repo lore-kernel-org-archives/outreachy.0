@@ -1,153 +1,121 @@
-X-GM-THRID: 6477594412631195648
-X-Received: by 10.37.64.79 with SMTP id n76mr6260864yba.11.1508182476351;
-        Mon, 16 Oct 2017 12:34:36 -0700 (PDT)
+X-GM-THRID: 6675288558686699520
+X-Received: by 2002:aca:c6c8:: with SMTP id w191mr8335186oif.24.1554211745543;
+        Tue, 02 Apr 2019 06:29:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.13.203.70 with SMTP id n67ls976400ywd.40.gmail; Mon, 16 Oct
- 2017 12:34:35 -0700 (PDT)
-X-Received: by 10.37.132.65 with SMTP id r1mr6319810ybm.3.1508182475616;
-        Mon, 16 Oct 2017 12:34:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508182475; cv=none;
+Received: by 2002:a05:6830:138d:: with SMTP id d13ls158597otq.16.gmail; Tue,
+ 02 Apr 2019 06:29:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxGL5BkS+OuZASi72adzPAB0LtU0Zf/UYf8qVvev5mZb1tzgQiJlAD/qg+xUMeNKhMkpfbk
+X-Received: by 2002:a9d:1285:: with SMTP id g5mr7149374otg.13.1554211744985;
+        Tue, 02 Apr 2019 06:29:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554211744; cv=none;
         d=google.com; s=arc-20160816;
-        b=OQZU1TM9ftcMolzMTJHqMv9iBaboeVYFkvjlHvuIeaMyj9hEEkN3H/YvQhVP9hKFFs
-         A8IzzP/gQEbHuDU2oQSVV/67k2v2eaZE+bxyZBq+eg0BCT2oBRQ/q0o7j1VGB/7BOInu
-         0yoGg+h5mfdVeeFA1m62cVcIAHqPEdXWmICl91j7sIp/PBfdukOac6RjIA8MT65/+i0A
-         JAMWYhRGedHT7SktGGvVQO+6+b0S+LUeExRsBIxdyTBIJA3cLo/ffZRBQpy81L0NKU5u
-         oODX/sT/dxZdK/60Ag/fGojZiqtlzTgpVxK4oLIvMaWwMmRQLztHAQaJHgr6DNrNeeD3
-         KCtw==
+        b=sg9e1pnQjYtotnn6DOqhY42vRrExTCWRpaVNBeVNnGY6/Wd9rN2feaD4sy8LqmzWEJ
+         w0VaxxWy43mYrObcdey0y3lnZP8Spjm8B5NC3Bj+B/UPaQlnO1cXoU4OfH/CXkfgMWDB
+         hkUi66mYmKZLPgnUoI4vjNiAE+KY2coaKPlewlvhSOPTzaZMn2o/7Y9Qaa7hWTsnHxox
+         YnbxEZb4vMC3Q9q1s/o+ZmPO4G7C1Iop35h+ggYgA0U3nuFeDx8SlRVepGHBbCrPvGpK
+         ce11Zjy53rsjE6uKm8PKB1KHLU7gc+m0LmGJkyYH0+iMZUlwlOilZvtPvz1J0Imtl5so
+         UZDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=dcngCzlUUI0jt7hveGkft0oeB5VntP3X+LrOtGcglCk=;
-        b=wjjVwP8TpitMENZgnIWmQwOlerm4oW+1r/qCFBP6As7V0jlGk92ZySWMxQwwrd6a/2
-         wky1ODrZTsUsFPDw1RjCWYpaAvZVzF18rG7XdjoolVQ14SZ42o9elmwxtUEwMKYpFFRd
-         gW5/uwnwPn5Lyob01n//fiL8SLD7FNchnk3WaE8HndsaUXZtR9pdwmwz0ZGTUmSKNh/f
-         kcXWCjyWYemu9nMZWVH0qKCl4IjHOPg72dpuzIyYencJ0s3zgSFK8MSLBwqcbrcfmrJa
-         st3gY976t0HAyuCEROM5pp6essjTOZNuUn/FGetWB6CPyUs1x3yEje6O9eKt3EiQolIE
-         GbBA==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=+TLD522gy/e5iCk30KrGPlZygSLT6fQ1CEtze9XH2NM=;
+        b=EhYQ03/kWbayplUa/vv6LquJjaXJiec5bxls3fhIF33mYHcAJbGl5ArBku14/Hc/YU
+         dSjdCsYunAa4GR6fB7lBTVcsbCjsbOwmwRtTWLPI2AUdvBGtK0/1di3v579dVuBEiVd2
+         eQoeP9Xqz6Hq7KV72KAzw5efuAhbuE7gfHp1McceD/Mc4ZZaQBZqSmlWAXAHzn/gb98C
+         3tfs4bG+IUSMtVld1XxajP0nYnosS9UUkwr9dNzSfoGZSVq3jO9KiQ6zp41n5SGn04Wl
+         dmCnjmp4XTPISgxMP6NKBFUzcdhnmiFf+8jfEx+YNXX62BIiz7h6HDxX1TEIkyiSq2Bg
+         B/sg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S3BZ9y8F;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id z193si367016ywa.3.2017.10.16.12.34.35
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="P/fbLFq2";
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id c13si559739oto.3.2019.04.02.06.29.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 12:34:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Tue, 02 Apr 2019 06:29:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=S3BZ9y8F;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id n14so16520874pfh.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Oct 2017 12:34:35 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="P/fbLFq2";
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id t21so6401055pfe.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 06:29:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=dcngCzlUUI0jt7hveGkft0oeB5VntP3X+LrOtGcglCk=;
-        b=S3BZ9y8Fj0YaDiaQWV6GlqLVL0MAIjVniVCAWFvn+GnB0bmZIK5QGzx0Ldd6g3GGR1
-         F30u2ifDQSASmih5STTjEjMA7V3R099oT6yRodmHDZr773Tx28QKwZvHdrZB4wjbK6Eb
-         jr81HNGB8/XEd0w1NnguXtnIfUwuVArXTU0nwQf+0ADxzVKvH3SIAGM9pgw7ktVEnIVR
-         LZP5CUyqJoufPkFvcI4O4sq0xJPhP6eHVgolrYGSw5pwaWeOUWyz51cNj1SkMKO5dj+d
-         VFl+SIR20jGHpG5FGDeap3yg6gahFNbOpe4fW0vEuS9MpRg5CjS1OqCkqHKgLs+iIM+2
-         G06Q==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=+TLD522gy/e5iCk30KrGPlZygSLT6fQ1CEtze9XH2NM=;
+        b=P/fbLFq2j9degUtZg0jp0fiLejYGFTP3deqfeVl/JgTncle1HCzQ7LBlVqJ30oRGRr
+         eW2Gu6cBc9Z1xqNldgDH+sy+13QH4I8rJaAdE4JuZtiZ9+iKbjw6RFDYCgC+qlP+oe/7
+         oW01rTiwrDZuJdzSpgi5E8Qb6OLa5ENcKfAl6IvxqaJkRxFid73GUBhv8Z8XHP3CpITx
+         Y6ipPxYAw9oDm3c8PIPY4Zjupi+KeFaFTSUxqwSYK5fNdhOAP0XvJuUXIXXHdMSo+eKg
+         oJmYx+cehVC/8w3/9VjCSz/+qQJ3jmjBelc18BvIxgKUrfMIsviYH2MhJv1TF9J8yosN
+         smsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=dcngCzlUUI0jt7hveGkft0oeB5VntP3X+LrOtGcglCk=;
-        b=dRrsD6++FpdQvLidFD2PXBQv+at94CqU7Yqo+2c7xgwEOq2oPBr9MWfPtyHNEBMo6V
-         5p/TCMzGllBuIo0/F0md4u5s9TmHCEDpdiJSrHJZ5xcT/85/p2iybmqGcazfvHm2ntL8
-         5+IZp7vNKb05rnoBFZobBPo2ZcdtvRHr9NaINDQQgO0yZbJj0g8CIiu8M5w+/KhpxCah
-         2WWmPY6a+upP5YpzrVWobDSft2NUhU2TCUJjPS5oO7hD4ZSzojqc1jziaYQY1RswUilK
-         Q4So58sd2Fi9CXVeIEJJvviPZqw1dr4eqZVC5nV36bmlvxX4UBUTPeAVQeBuDnTFb4sj
-         hppQ==
-X-Gm-Message-State: AMCzsaXaqZc8cqxvAKOmJol1vZ9Rt5Fpu3RYU6y7te3MKP9+aCmFOIF9
-	5vkqmCMbEMXLFHov0+FSbpw=
-X-Google-Smtp-Source: AOwi7QCWZG3kfu9ixnyu8LFAWtRE4XRV8BJnSIxay9p/9VHDKA1SP5bm1lRPMIOkoIA/zDPjqowIAw==
-X-Received: by 10.99.114.81 with SMTP id c17mr9115585pgn.43.1508182474864;
-        Mon, 16 Oct 2017 12:34:34 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.122])
-        by smtp.gmail.com with ESMTPSA id h70sm17970759pfc.51.2017.10.16.12.34.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2017 12:34:34 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] tests: add regression tests for xtables-translate
-Date: Tue, 17 Oct 2017 01:02:18 +0530
-Message-Id: <20171016193218.8197-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=+TLD522gy/e5iCk30KrGPlZygSLT6fQ1CEtze9XH2NM=;
+        b=T0K1yOBNvfx9BvMvkpwr7tpPA10IabGnXBqrIoX198KYt+ZRthY9SZQZ+4v9RClbsx
+         e+/xDT1XluAml1GaPvqlI8B1QbzA9k7Ymul06keAQPCYwxXRF26oNJCvVBDbesvFRHGO
+         x+0Nib5nUbldZJ4VcG+aTziM/y6aqRP6roJS+KAXEISqa4ZsKEgbzHLZzcFOv4P0REVi
+         5uYZAAUfGRus6csQbmUZS07prk5UyPcKMDLnV483+wcLG8Hdeyw/+emaaySPb2hoDf+U
+         e/TUBFQ4qpzH11BsgKuXdTgX5Fr5AAJYFHhSmLCigXofX/0V0bewVby5hYVqQDGAGI8M
+         Cs2Q==
+X-Gm-Message-State: APjAAAVI1q2ZvzntN7DHsr0A7D7YgXc0Om12xBAYggPo0CFyAPWTM/PS
+	xI5FtkaFmtQ2XVaIJnlFtfje6vAM
+X-Received: by 2002:a65:6150:: with SMTP id o16mr36761159pgv.285.1554211743979;
+        Tue, 02 Apr 2019 06:29:03 -0700 (PDT)
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from localhost.localdomain ([49.35.213.122])
+        by smtp.gmail.com with ESMTPSA id v20sm18768706pfn.116.2019.04.02.06.29.01
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 02 Apr 2019 06:29:03 -0700 (PDT)
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH 3/3] staging: rtl8192u: ieee80211: ieee80211_crypt_tkip.c: Replace bit shifting with BIT macro
+Date: Tue,  2 Apr 2019 18:58:34 +0530
+Message-Id: <997a7a2304446c8c70cfdc47c2d9d5522c189272.1554211049.git.payal.s.kshirsagar.98@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <cover.1554211049.git.payal.s.kshirsagar.98@gmail.com>
+References: <cover.1554211049.git.payal.s.kshirsagar.98@gmail.com>
+In-Reply-To: <cover.1554211049.git.payal.s.kshirsagar.98@gmail.com>
+References: <cover.1554211049.git.payal.s.kshirsagar.98@gmail.com>
 
-This test suite is intended to detect regressions in the translation
-infrastructure. The script checks if ip[6]tables-translate produces the
-expected output, otherwise it prints the wrong translation and the
-expected one.
+Challenge suggested by coccinelle.
+Prefer using BIT and replace bit shifting with the BIT(x) macro.
 
-** Arguments
-
-  --all     # Show also passed tests
-  [test]    # Run only the specified test file
-
-** Test files structure
-
-Test files are located under extensions directory. Every file contains
-tests about specific extension translations. A test file name must end
-with ".txlate".
-
-Inside the files, every single test is defined by two consecutive lines:
-ip[6]tables-translate command and expected result. One blank line is left
-between tests by convention.
-
-e.g.
-
-  $ cat extensions/libxt_cpu.txlate
-  iptables-translate -A INPUT -p tcp --dport 80 -m cpu --cpu 0 -j ACCEPT
-  nft add rule ip filter INPUT tcp dport 80 cpu 0 counter accept
-
-  iptables-translate -A INPUT -p tcp --dport 80 -m cpu ! --cpu 1 -j ACCEPT
-  nft add rule ip filter INPUT tcp dport 80 cpu != 1 counter accept
-
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- extensions/libxt_TOS.txlate | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
- create mode 100644 extensions/libxt_TOS.txlate
+ drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/extensions/libxt_TOS.txlate b/extensions/libxt_TOS.txlate
-new file mode 100644
-index 00000000..6d55eb24
---- /dev/null
-+++ b/extensions/libxt_TOS.txlate
-@@ -0,0 +1,25 @@
-+ip6tables-translate -A INPUT -j TOS --set-tos 0x1f
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x07
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos 0xff
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x3f
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos Minimize-Delay
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x04
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos Minimize-Cost
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x00
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos Normal-Service
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x00
-+
-+ip6tables-translate -A INPUT -j TOS --and-tos 0x12
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x00
-+
-+ip6tables-translate -A INPUT -j TOS --or-tos 0x12
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x04
-+
-+ip6tables-translate -A INPUT -j TOS --xor-tos 0x12
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x04
-+
-+
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
+index 829fa4b..320c179 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
+@@ -331,7 +331,7 @@ static int ieee80211_tkip_encrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 		*pos++ = rc4key[2];
+ 	}
+ 
+-	*pos++ = (tkey->key_idx << 6) | (1 << 5) /* Ext IV included */;
++	*pos++ = (tkey->key_idx << 6) | BIT(5) /* Ext IV included */;
+ 	*pos++ = tkey->tx_iv32 & 0xff;
+ 	*pos++ = (tkey->tx_iv32 >> 8) & 0xff;
+ 	*pos++ = (tkey->tx_iv32 >> 16) & 0xff;
+@@ -390,7 +390,7 @@ static int ieee80211_tkip_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
+ 	hdr = (struct rtl_80211_hdr_4addr *) skb->data;
+ 	pos = skb->data + hdr_len;
+ 	keyidx = pos[3];
+-	if (!(keyidx & (1 << 5))) {
++	if (!(keyidx & BIT(5))) {
+ 		if (net_ratelimit()) {
+ 			printk(KERN_DEBUG "TKIP: received packet without ExtIV"
+ 			       " flag from %pM\n", hdr->addr2);
 -- 
-2.11.0
+2.7.4
 
 
