@@ -1,141 +1,92 @@
-X-GM-THRID: 6527693746145853440
-X-Received: by 10.129.216.11 with SMTP id d11mr9277028ywj.133.1519847136881;
-        Wed, 28 Feb 2018 11:45:36 -0800 (PST)
+X-GM-THRID: 6675069517668810752
+X-Received: by 2002:a05:660c:a45:: with SMTP id j5mr7189976itl.20.1554184664818;
+        Mon, 01 Apr 2019 22:57:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.48.208 with SMTP id w199ls311650yww.19.gmail; Wed, 28 Feb
- 2018 11:45:35 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuGsmxM8PEZOUe/NkQEcmU60njCZk98tgFDuCLzjyQ8ka6UwX4P7J5qIDW6rgCse5dH1rR+
-X-Received: by 10.129.145.86 with SMTP id i83mr9432422ywg.121.1519847135331;
-        Wed, 28 Feb 2018 11:45:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519847135; cv=none;
+Received: by 2002:a6b:7a07:: with SMTP id h7ls4466448iom.5.gmail; Mon, 01 Apr
+ 2019 22:57:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw3UTSZJtyr2nWXcxVAxpqM6e0NR42SyP+wkClSYGo287w5u5Zs3MuAujmUrUeCQugi0zBq
+X-Received: by 2002:a5e:cb0d:: with SMTP id p13mr5779895iom.17.1554184663965;
+        Mon, 01 Apr 2019 22:57:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554184663; cv=none;
         d=google.com; s=arc-20160816;
-        b=yJHZP9IboOMVgBF5yCwRF8GMFAUw345OMKJ3OJ8YTLv1+OqXWvVlIeHmXdIEIOnJbG
-         JaO+SYQ+JwGamJXfO0ZAvLDeGzT5iwz50yql52rqDB8gG5Fr23z5Gy7AOVPUxRt5gcIX
-         zT/ODWhHkp1LBjkcNYO9xlOCYuZEh/Z7VxmKWZhWwcjoReHvIHyBkrozDTmC1/x8zHQW
-         rhTFSk0b279+H39n2obLUURS9YtPWGoBhWxis+cTnYwFJ3s24Xxjz5+1RnI695fm8ZVT
-         pyZ6l42Pu2jwlfYiT+e4d/iSRZnOi5Nnsh/Sj71jcsfQ2AWh8TURF2Rt8QmGJ8/mnGFY
-         hIfQ==
+        b=lN4eDXCVekeBPrYqJu2qUj4LWk2Er7+NOVMd8sf5nUqp4X0dg8KvJV7w0Oh1j6UyZ1
+         cl/CROZUItFEcMbyveMDCxVy5CC6nCx8SIsYZcDnobCDGGcVdnkFPNGQJ84OM+BHvjcY
+         8IvyxkfQg2BMizS4Ja0i2zw1VSpIvTYE4PdsDwOohBgjW7oeoR9peKBkiGbSYZv0Il5H
+         ZQneCIfFlBpPHSwhxrWA3iccskarogWNz+k9+D6IjQUQOHmym+L6lzux3mV/4D78acjO
+         /DNj+ZJyvtxLc68ouXnKT+wh3Sh6snlm3GeD/SK16P7JhcfxFyZo6uZdlzvvMtfjQWrr
+         aD9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=wNf8YR8rfmxcQRsWC71do4kN/T9j6CVD+wvUqhR+Fh0=;
-        b=JL8mzKHqjmfeQ5LiaNmNk2XNef1tAWAuHxRfX0BepTPsc0w0RlPe+mu2wick12VPQm
-         I20WQSl93P819eB9fDpChPUg8l2anA2E0Vl19/z7pYlUcy39sE/PpY+qXANNgxHmL52R
-         O8/c+J2oE53hBT7b7Vq2MhOX3Y6cjIlj8OjRG5UrP/JpVy5g1i61VcpsiWAoySOKG1EV
-         iI9qMxT+85qdTsQskNP11LmLqiBiWLfJq/O59SQUfEUm0zm87uv3vuf4vcj2L7Y2Z1EW
-         ADeda5wtIVESjo3bNbSO+JxILTtSqjsfAo/xmNTVZOwKUBYhEHnGPoCwAvrw12RQ0ql/
-         Eljw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=fzNJEh3vLAv1EhflHRHYi7nk1BgOLGEoLYQ34uOUqCQ=;
+        b=vtzkjz5KOsQphYk7MRG8aB0nXTfyAQCdPC4UPgZMMBC3SjKM+hiQBwecZSsqAGKm3a
+         n8oGSmUz9vFCRad/oCnbCl9bC6JVixbLMR6KlG63vA4YcY0++56CLhCrAWNe91ZKcE4Q
+         RGfhc7pdvUe2ICgNQ8jDiRdsv1GsdVkQAV5xsWQpokVWRx2HfD7JyeC61DkDDZlP4Ci4
+         8ZX/cAXMh7QU3TP17jLPe28qwF0UeBwBKC8N4zaj9F3IzSFbPdEJE/mcJy16/J8m6NGh
+         M4BFmdmRCcHnWQlBcAR1/jR2rBWUNXqIveoDQwKkEx8rda9e8c87nJnoW+AiXQfbrvI/
+         Ef5w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o/hM0nop;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::229 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pl0-x229.google.com (mail-pl0-x229.google.com. [2607:f8b0:400e:c01::229])
-        by gmr-mx.google.com with ESMTPS id d36-v6si135958ybe.0.2018.02.28.11.45.35
+       dkim=pass header.i=@kernel.org header.s=default header.b=sLdRwGuv;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id n6si561401iod.1.2019.04.01.22.57.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Feb 2018 11:45:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::229 as permitted sender) client-ip=2607:f8b0:400e:c01::229;
+        Mon, 01 Apr 2019 22:57:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o/hM0nop;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::229 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x229.google.com with SMTP id bb3-v6so2147186plb.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 28 Feb 2018 11:45:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=wNf8YR8rfmxcQRsWC71do4kN/T9j6CVD+wvUqhR+Fh0=;
-        b=o/hM0nopqxPZMeWZffQuMYZPFhmXyBJt5vNQo8k+k7AGjmAfz4+t9ffgMiF5Zjsn3A
-         65KEzlE7V86SkGdHYjakokMc/knYsZU8yubV+PPBjfO4Iu2AdbTLDQtoQ5vErqti2h9L
-         q1hyWT3doFzei96rTAowVF0UcPAPpWTmYXM4ZgnqWj0PLpbWZWfmHUtemxIThmc7ipv/
-         7g2zkOpoVNQTGH4wFGwhubuMCBncrrGJKO8KEAhdQ5/CwSKBOS65/z53JQ//YU+dwDSW
-         1t8hc4exMO/Q/o5WkmCyz6FRxWSk8MPHzB/bPjIMbpemdX3wcifdHiC6Pj4oO+qjcNEz
-         bgqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=wNf8YR8rfmxcQRsWC71do4kN/T9j6CVD+wvUqhR+Fh0=;
-        b=fTdj8lkPhLyVExuLBXXm1SPLN2zBxi6t912K7ptgxoQToQ/ve4ekPJd9//VtL4MNa8
-         UQF0tERH+idDXhrHNox973cKiVJAIDylnVRfVunx7POB0uiMYG3AGU2U72R5RsTkywqR
-         qbnccXhn+BUGAPfilvzZDXS5xSzQ9sFTycoFhVmbuDE59nTyMUdNi+G61/lRngl20qRD
-         Yqm3u3zyLszM3jj9zvXsz0s5Nmfn9C7fEvHi4FcLSStc+9fxAFUQjnjVF3qsAlpVdeoO
-         7k6Cj4Eodb5IrI8KL0NA10bHJjuuAdz11VXRY86xQMqW9P4jY+WB/qVGW4dSa2SBGHMk
-         pbJw==
-X-Gm-Message-State: APf1xPCPa9U6sKji9pR+APxXlGVnb/s7tyu3PC/8JyWKM7D97Qr/n+gO
-	AyGdme/sOVPkkBW35yD3wgE=
-X-Received: by 2002:a17:902:6e8c:: with SMTP id v12-v6mr18997020plk.424.1519847134939;
-        Wed, 28 Feb 2018 11:45:34 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-249.resnet.ucsb.edu. [169.231.23.249])
-        by smtp.gmail.com with ESMTPSA id t87sm4973628pfi.37.2018.02.28.11.45.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 28 Feb 2018 11:45:34 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: oleg.drokin@intel.com,
-	andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: lustre: fix block comment style
-Date: Wed, 28 Feb 2018 11:45:05 -0800
-Message-Id: <1519847105-20076-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=sLdRwGuv;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B10082075E;
+	Tue,  2 Apr 2019 05:57:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1554184663;
+	bh=ggGuy6FlF5bOGWlsHRWLgoLzshOWTEz6m1ZaG0NsNqs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sLdRwGuvkGyXoXFivPU7oCSq8JqNElLF3bkBU9KllSKNnoldGrCbIRArF5FSMxKtU
+	 zyrNuwgF96mf4ZshZJhqYA4bvj6n+xqjbe6SLE1cUh8FtVrFA/Ky9y4K+JE8O+I3ix
+	 sD8EIBIZmbxG7N98TkWankSF2MXmWMG0LaS243AM=
+Date: Tue, 2 Apr 2019 07:57:37 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v1] staging: mt7621-pci: remove comparison to null to fix
+ checkpatch warning
+Message-ID: <20190402055737.GA26004@kroah.com>
+References: <20190401231843.24579-1-jbi.octave@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190401231843.24579-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Add trailing */ on a separate line for block comments to conform to
-the Linux kernel coding style. Issue found using checkpatch.
+On Tue, Apr 02, 2019 at 12:18:43AM +0100, Jules Irenge wrote:
+> remove comparison to null to fix warning
+> reported by checkpatch.pl tool
+> "CHECK: Comparison to NULL could be written "res""
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/mt7621-pci/pci-mt7621.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/mt7621-pci/pci-mt7621.c b/drivers/staging/mt7621-pci/pci-mt7621.c
+> index 379ae780c691..03d919a94552 100644
+> --- a/drivers/staging/mt7621-pci/pci-mt7621.c
+> +++ b/drivers/staging/mt7621-pci/pci-mt7621.c
+> @@ -275,7 +275,7 @@ static int mt7621_pci_parse_request_of_pci_ranges(struct mt7621_pcie *pcie)
+>  			break;
+>  		}
+>  
+> -		if (res != NULL)
+> +		if (res)
+>  			of_pci_range_to_resource(&range, node, res);
+>  	}
+>  
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/lustre/lustre/lov/lov_object.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/lustre/lustre/lov/lov_object.c b/drivers/staging/lustre/lustre/lov/lov_object.c
-index 86cd4f9..15826b1 100644
---- a/drivers/staging/lustre/lustre/lov/lov_object.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_object.c
-@@ -1173,7 +1173,8 @@ static int fiemap_for_stripe(const struct lu_env *env, struct cl_object *obj,
- 
- 	/* If this is a continuation FIEMAP call and we are on
- 	 * starting stripe then lun_start needs to be set to
--	 * end_offset */
-+	 * end_offset
-+	 */
- 	if (fs->fs_end_offset != 0 && stripeno == fs->fs_start_stripe)
- 		lun_start = fs->fs_end_offset;
- 
-@@ -1198,7 +1199,8 @@ static int fiemap_for_stripe(const struct lu_env *env, struct cl_object *obj,
- 	if (IS_ERR(subobj))
- 		return PTR_ERR(subobj);
- 	/* If the output buffer is very large and the objects have many
--	 * extents we may need to loop on a single OST repeatedly */
-+	 * extents we may need to loop on a single OST repeatedly
-+	 */
- 	do {
- 		if (fiemap->fm_extent_count > 0) {
- 			/* Don't get too many extents. */
-@@ -1248,7 +1250,8 @@ static int fiemap_for_stripe(const struct lu_env *env, struct cl_object *obj,
- 			ost_done = true;
- 			fs->fs_device_done = true;
- 			/* If last stripe has hold at the end,
--			 * we need to return */
-+			 * we need to return
-+			 */
- 			if (stripeno == fs->fs_last_stripe) {
- 				fiemap->fm_mapped_extents = 0;
- 				fs->fs_finish = true;
-@@ -1282,7 +1285,8 @@ static int fiemap_for_stripe(const struct lu_env *env, struct cl_object *obj,
- 		}
- 
- 		/* Clear the EXTENT_LAST flag which can be present on
--		 * the last extent */
-+		 * the last extent
-+		 */
- 		if (fm_ext[ext_count - 1].fe_flags & FIEMAP_EXTENT_LAST)
- 			fm_ext[ext_count - 1].fe_flags &= ~FIEMAP_EXTENT_LAST;
- 		if (lov_stripe_size(lsm, fm_ext[ext_count - 1].fe_logical +
--- 
-2.7.4
-
+This patch does not apply to my staging-testing branch at all :(
 
