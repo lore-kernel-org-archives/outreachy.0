@@ -1,75 +1,129 @@
-X-GM-THRID: 6656517734400
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,482a099a90e99456,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.159.227 with SMTP id xf3mr962043lbb.11.1425496611359;
-        Wed, 04 Mar 2015 11:16:51 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.234.165 with SMTP id uf5ls227685lac.60.gmail; Wed, 04 Mar
- 2015 11:16:50 -0800 (PST)
-X-Received: by 10.112.138.202 with SMTP id qs10mr918542lbb.24.1425496610921;
-        Wed, 04 Mar 2015 11:16:50 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from mail-wg0-x235.google.com (mail-wg0-x235.google.com. [2a00:1450:400c:c00::235])
-        by gmr-mx.google.com with ESMTPS id bg8si78754wib.3.2015.03.04.11.16.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Mar 2015 11:16:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) client-ip=2a00:1450:400c:c00::235;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of yeliztaneroglu@gmail.com designates 2a00:1450:400c:c00::235 as permitted sender) smtp.mail=yeliztaneroglu@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by wggx12 with SMTP id x12so48794268wgg.6
-        for <outreachy-kernel@googlegroups.com>; Wed, 04 Mar 2015 11:16:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=S3dfxhpoJ9al6MwMcMDmZN17aS6NhYBxCvOZsrgegDE=;
-        b=h7DG2cb0Xt4wxs3SJnbcGQDbCviWdflIiSQq3E1foHFpj6DrlX9veDask+g9wI26dz
-         MPOa9vYYXfLGHOPBei6MYXceN5yU79h6Cj2XlxZRtV1ESOrpz3UTAqaStmIQnKtNHdtP
-         v+hQ5WkUmMuC1oDUjgYtuumZfo00TM7m15acK1punPSz4xJJV7/xDvTAGW4LN3coaNDj
-         2PIdssX/nRdU8kqlnTqME4aV0evu7GqpY1xEN661Fw33xsGrNvpDdYrhFwgBejVRggiu
-         zvjoEFZcRNuKsSya2RfJvzeT+Y7EbbxWJAE0KYiUr1hkE/OX5QihR1+2nrh9i38XiWHh
-         6KJA==
-X-Received: by 10.194.48.74 with SMTP id j10mr11569239wjn.38.1425496610775;
-        Wed, 04 Mar 2015 11:16:50 -0800 (PST)
-Return-Path: <yeliztaneroglu@gmail.com>
-Received: from localhost.localdomain ([95.13.204.29])
-        by mx.google.com with ESMTPSA id t9sm26442884wia.15.2015.03.04.11.16.49
-        (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Wed, 04 Mar 2015 11:16:50 -0800 (PST)
-From: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
-Subject: [PATCH] Staging: vt6655: fix space prohibited before that ','
-Date: Wed,  4 Mar 2015 21:17:03 +0200
-Message-Id: <1425496623-10408-1-git-send-email-yeliztaneroglu@gmail.com>
-X-Mailer: git-send-email 1.8.3.2
+X-GM-THRID: 6674917600635387904
+Date: Mon, 1 Apr 2019 21:40:22 -0700 (PDT)
+From: sanjana99reddy99@gmail.com
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <9965a002-ae1d-49bf-843f-dc17b0b8eaf0@googlegroups.com>
+In-Reply-To: <20190401173139.GA4212@kroah.com>
+References: <20190401132906.4406-1-sanjana99reddy99@gmail.com>
+ <20190401173139.GA4212@kroah.com>
+Subject: Re: [PATCH] staging: gasket: apex: Modify return type suggested by
+ Coccinelle.
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_136_1143774910.1554180022170"
+X-Google-Token: ELbPi-UFqN6fpbrg8W80
+X-Google-IP: 123.201.165.14
 
-This patch fixes the following checkpatch.pl error:
-space prohibited before that ','
+------=_Part_136_1143774910.1554180022170
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_137_1693228938.1554180022170"
 
-Signed-off-by: Yeliz Taneroglu <yeliztaneroglu@gmail.com>
----
- drivers/staging/vt6655/rxtx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+------=_Part_137_1693228938.1554180022170
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 07ce3fd..d98ff2f 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -78,7 +78,7 @@ static const unsigned short wFB_Opt0[2][5] = {
- };
- static const unsigned short wFB_Opt1[2][5] = {
- 	{RATE_12M, RATE_18M, RATE_24M, RATE_24M, RATE_36M}, // fallback_rate0
--	{RATE_6M , RATE_6M,  RATE_12M, RATE_12M, RATE_18M}, // fallback_rate1
-+	{RATE_6M, RATE_6M,  RATE_12M, RATE_12M, RATE_18M}, // fallback_rate1
- };
- 
- #define RTSDUR_BB       0
--- 
-1.8.3.2
 
+
+On Monday, April 1, 2019 at 11:11:07 PM UTC+5:30, gregkh wrote:
+>
+> On Mon, Apr 01, 2019 at 06:59:06PM +0530, Sanjana Sanikommu wrote: 
+> > The last two lines in the function could 
+> > be compressed into one. Avoid usage of local variable. 
+> > Issue found by Coccinelle using ret.cocci. 
+> > 
+> > Signed-off-by: Sanjana Sanikommu <sanjana9...@gmail.com <javascript:>> 
+> > --- 
+> >  drivers/staging/gasket/apex_driver.c | 4 +--- 
+> >  1 file changed, 1 insertion(+), 3 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/gasket/apex_driver.c 
+> b/drivers/staging/gasket/apex_driver.c 
+> > index a79613db71ef..2be45ee9d061 100644 
+> > --- a/drivers/staging/gasket/apex_driver.c 
+> > +++ b/drivers/staging/gasket/apex_driver.c 
+> > @@ -439,9 +439,7 @@ static int apex_reset(struct gasket_dev *gasket_dev) 
+> >                  if (ret) 
+> >                          return ret; 
+> >          } 
+> > -        ret = apex_quit_reset(gasket_dev); 
+> > - 
+> > -        return ret; 
+> > +        return apex_quit_reset(gasket_dev); 
+> >  } 
+> >   
+> >  /* 
+>
+> This patch does not apply to my tree at all, I think someone else 
+> already did this before you did.  Please update your local tree and 
+> verify this. 
+>
+
+   Sure, I would drop this.
+   Thanks
+    Sanjana 
+
+>
+> thanks, 
+>
+> greg k-h 
+>
+
+------=_Part_137_1693228938.1554180022170
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Monday, April 1, 2019 at 11:11:07 PM UTC+5:30, =
+gregkh wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-le=
+ft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">On Mon, Apr 01, 2=
+019 at 06:59:06PM +0530, Sanjana Sanikommu wrote:
+<br>&gt; The last two lines in the function could
+<br>&gt; be compressed into one. Avoid usage of local variable.
+<br>&gt; Issue found by Coccinelle using ret.cocci.
+<br>&gt;=20
+<br>&gt; Signed-off-by: Sanjana Sanikommu &lt;<a href=3D"javascript:" targe=
+t=3D"_blank" gdf-obfuscated-mailto=3D"7sMxpp8aBwAJ" rel=3D"nofollow" onmous=
+edown=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hr=
+ef=3D&#39;javascript:&#39;;return true;">sanjana9...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/gasket/apex_<wbr>driver.c | 4 +---
+<br>&gt; =C2=A01 file changed, 1 insertion(+), 3 deletions(-)
+<br>&gt;=20
+<br>&gt; diff --git a/drivers/staging/gasket/apex_<wbr>driver.c b/drivers/s=
+taging/gasket/apex_<wbr>driver.c
+<br>&gt; index a79613db71ef..2be45ee9d061 100644
+<br>&gt; --- a/drivers/staging/gasket/apex_<wbr>driver.c
+<br>&gt; +++ b/drivers/staging/gasket/apex_<wbr>driver.c
+<br>&gt; @@ -439,9 +439,7 @@ static int apex_reset(struct gasket_dev *gaske=
+t_dev)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (ret)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>return ret;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D apex_quit=
+_reset(gasket_dev);
+<br>&gt; -
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return ret;
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return apex_quit_=
+reset(gasket_dev);
+<br>&gt; =C2=A0}
+<br>&gt; =C2=A0
+<br>&gt; =C2=A0/*
+<br>
+<br>This patch does not apply to my tree at all, I think someone else
+<br>already did this before you did. =C2=A0Please update your local tree an=
+d
+<br>verify this.
+<br></blockquote><div><br></div><div>=C2=A0 =C2=A0Sure, I would drop this.<=
+/div><div>=C2=A0 =C2=A0Thanks</div><div>=C2=A0 =C2=A0 Sanjana=C2=A0</div><b=
+lockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;borde=
+r-left: 1px #ccc solid;padding-left: 1ex;">
+<br>thanks,
+<br>
+<br>greg k-h
+<br></blockquote></div>
+------=_Part_137_1693228938.1554180022170--
+
+------=_Part_136_1143774910.1554180022170--
 
