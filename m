@@ -1,115 +1,102 @@
 X-GM-THRID: 6674267883353145344
-X-Received: by 2002:a1c:1ad6:: with SMTP id a205mr1384640wma.15.1554186930605;
-        Mon, 01 Apr 2019 23:35:30 -0700 (PDT)
+X-Received: by 2002:a67:cd89:: with SMTP id r9mr7859295vsl.27.1554184629632;
+        Mon, 01 Apr 2019 22:57:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:5582:: with SMTP id i2ls1501966wrv.1.gmail; Mon, 01 Apr
- 2019 23:35:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw+4azq5lZlKxJgJdbMIv+ieTQs/zBSGtXyHpLonLXy1de3BoaTLLXQ0/J4LovqmAzeuGWW
-X-Received: by 2002:adf:ef50:: with SMTP id c16mr2000184wrp.24.1554186929881;
-        Mon, 01 Apr 2019 23:35:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554186929; cv=none;
+Received: by 2002:a1f:2d4c:: with SMTP id t73ls1974466vkt.3.gmail; Mon, 01 Apr
+ 2019 22:57:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx3Rn7fq/jnef0MBRWcRfG1isXiTYa5AVZywnE0dMARtD9+nGgz1scxYiyOLR+j9ZjLeOZx
+X-Received: by 2002:a1f:ac56:: with SMTP id v83mr7822619vke.22.1554184629057;
+        Mon, 01 Apr 2019 22:57:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554184629; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jjv3u/wf4uWK7mlB7T3d4pBTPMJ43dkCFJMveak98wt5qk/dy4G+zASTkYMNnHLs3m
-         0VxP07Xfo3suA7cV+osEFkjK2BxmBTa68HII/9ur2aTT9g2srf3EWVwTYsKbxB4HNN1e
-         InRDZVq6Jd9BNZ8iMuCzG+us6r9jpBb8vyIQ3nwUd5MCA1Jv7eV+oXB1AiuPM2AV06Kl
-         /Yp1huXIUvB5XkqhNgf9vPDOZgZKJCBuxdnisgr7pDl+rYIKE8kmktZVsJhsJxHUxGe2
-         0yQv+r07RCaFsRYLEYM5ijLo1XBL4zKb2EeO0/fnI91paxzItwDNRnztPHdRe7B2rTr2
-         veHQ==
+        b=Rzlbcfle7y1CutFfuHrWW1l+YWDXm4peB8tBrWg5hvBIXyCwVRW2jDGNDsmxm7cIXn
+         DKMsXwvr0soGtOijliXov4w8UfjxFzHBUkeup8tl7y1oRUSURJ3WfI6+dfi6D78R8C2w
+         F4RB2nI4JCAmLT1GBHqSXoCBK1vuc3/6ty9+xR5ByU6xvjNOv101nMm0MSCm+tq4s9WS
+         bXG9zP16zBsA7Lx96+KzdZhkmr/vZiHQAzYWBb/bJFPZWsSsEtc57cEeWY0kYtRgEfXw
+         0U7GQb/g8IT4pZpPdJH4OilrdlFal1TRqUFyDbzXqrknn1MQCUnSqY9GtcRtkJVO7XeF
+         wHxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=ebOSlP/OtBynxEGUS/++TnNhtF6fOrA/edQPKLCsLP4=;
-        b=tJPTugDqg2s7chqrQUTfja28W9dKfbb0cpn03ZkuFmcPcAZbcIQStPtsseZYXDKp6Z
-         SEqiUbV0ZxqWAHcHJTxB8+/HB6eBJ6oUiGB8LK0Foj3u+VwChnHjV7z949UQKlNq98e0
-         5xLqPJ+YO+abaIMkO/K+lmzyOYeJtlQVwCmtSzAPYdT7aM2rnK9mwX187Mu6d4KM7CMr
-         Iw24h2D0PwGv6p9pdIMYtIO7rmyrbPjHLcYDwj9fZAEuuPk1h8CnJ7r/h+U1UDK90UXg
-         /nQGml609hOfHFSGPk9gnBOh4PfUSw0Wr9BP8eMKeimS8qJuSBGg+tnuUaEdqRPNohiW
-         QqcA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=BoS6wDxBnrIuil7QcGObc41AXhizpa6fNMVHdn7XUP4=;
+        b=Zy35b9g1LpND/cb7NjWjzUIcHglDlYdyWw84a6G96nIZMdzFk63yuDp0tC4CyRUzU3
+         EjbrOW0/CO5S1TYN7eFSz8Pb+mB01/BltJ/TTFBTCzpFo/Wtf6nuytVuEASdiHxkVtDv
+         awp5W+pHv5up5z1QcrPEiow9K9ZCnP9cLfsd0uiUEcD6gHCwdT4SULf91JFQKqfiaqe8
+         cKQdNpNALOjpQXlEmnZTwQ0RPMnrf9y5E5y4h4u3Yz1zafNrMJQ9bHM2Fuio+whRW00O
+         Jo1cjytsWiia1I0nJ5TIW4FAfjY/xHFVBpb+bIa4Z+WAgWwsHzcVbnn+O35TmgFhG8OP
+         acbg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id o3si649703wmf.0.2019.04.01.23.35.29
+       dkim=pass header.i=@kernel.org header.s=default header.b=E931lHnG;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id g14si402360uah.1.2019.04.01.22.57.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 23:35:29 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Mon, 01 Apr 2019 22:57:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.60,298,1549926000"; 
-   d="scan'208";a="376752718"
-Received: from abo-75-106-68.mrs.modulonet.fr (HELO hadrien) ([85.68.106.75])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Apr 2019 08:35:29 +0200
-Date: Tue, 2 Apr 2019 08:35:29 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Greg KH <gregkh@linuxfoundation.org>
-cc: Himadri Pandya <himadri18.07@gmail.com>, Larry.Finger@lwfinger.net, 
-    florian.c.schilhabel@googlemail.com, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Re: [PATCH v4 6/6] staging: rtl8712: use
- list_entry in function r8712_select_and_join_from_scan
-In-Reply-To: <20190402055701.GJ14075@kroah.com>
-Message-ID: <alpine.DEB.2.21.1904020831350.2664@hadrien>
-References: <20190401200955.98744-1-himadri18.07@gmail.com> <20190401200955.98744-7-himadri18.07@gmail.com> <20190402055701.GJ14075@kroah.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@kernel.org header.s=default header.b=E931lHnG;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 826432084C;
+	Tue,  2 Apr 2019 05:57:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1554184628;
+	bh=Q9nXs4eSuaaafsxMSp10GtAUnDn5Bb/k9MYMBZJzu+4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=E931lHnGk3SMqofyKkoa3ZUf+mqFeiEPe2PC7tOJkJGfvmjPSC1iyxX3qRqKVc8+4
+	 ENRR7q5o2N2T/TJqis33LeMXA5lC7VSAbNQ3je52+W7Jm6gfjABa1vM0qPa6Y4X5Vy
+	 3v4uXVNyEopUkIz2K+6mjv0D7XdljvoYEL6raxZA=
+Date: Tue, 2 Apr 2019 07:57:01 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Himadri Pandya <himadri18.07@gmail.com>
+Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v4 6/6] staging: rtl8712: use list_entry in function
+ r8712_select_and_join_from_scan
+Message-ID: <20190402055701.GJ14075@kroah.com>
+References: <20190401200955.98744-1-himadri18.07@gmail.com>
+ <20190401200955.98744-7-himadri18.07@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190401200955.98744-7-himadri18.07@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
+On Tue, Apr 02, 2019 at 01:39:55AM +0530, Himadri Pandya wrote:
+> struct wlan_network contains field list of type list_head. Hence,
+> getting the address of wlan_network using list_entry is equivalent
+> of using container_of to do the same. And to use list_entry for list
+> manipulations is a better choice.
+> 
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+> Changes in V4:
+> 	- Change log message
+> Changes in V3:
+> 	- Improve log message
+> ---
+>  drivers/staging/rtl8712/rtl871x_mlme.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+> index 1a15c45aa83b..164422b3ac07 100644
+> --- a/drivers/staging/rtl8712/rtl871x_mlme.c
+> +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+> @@ -1117,8 +1117,8 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
+>  			}
+>  			return _FAIL;
+>  		}
+> -		pnetwork = container_of(pmlmepriv->pscanned,
+> -					struct wlan_network, list);
+> +		pnetwork = list_entry(pmlmepriv->pscanned,
+> +				      struct wlan_network, list);
+>  		if (pnetwork == NULL)
+>  			return _FAIL;
 
+A list entry can not be null, so this check is very odd.
 
-On Tue, 2 Apr 2019, Greg KH wrote:
-
-> On Tue, Apr 02, 2019 at 01:39:55AM +0530, Himadri Pandya wrote:
-> > struct wlan_network contains field list of type list_head. Hence,
-> > getting the address of wlan_network using list_entry is equivalent
-> > of using container_of to do the same. And to use list_entry for list
-> > manipulations is a better choice.
-> >
-> > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
-> > ---
-> > Changes in V4:
-> > 	- Change log message
-> > Changes in V3:
-> > 	- Improve log message
-> > ---
-> >  drivers/staging/rtl8712/rtl871x_mlme.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-> > index 1a15c45aa83b..164422b3ac07 100644
-> > --- a/drivers/staging/rtl8712/rtl871x_mlme.c
-> > +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-> > @@ -1117,8 +1117,8 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
-> >  			}
-> >  			return _FAIL;
-> >  		}
-> > -		pnetwork = container_of(pmlmepriv->pscanned,
-> > -					struct wlan_network, list);
-> > +		pnetwork = list_entry(pmlmepriv->pscanned,
-> > +				      struct wlan_network, list);
-> >  		if (pnetwork == NULL)
-> >  			return _FAIL;
->
-> A list entry can not be null, so this check is very odd.
-
-I guess it could be, if the value is NULL, because the list field is at
-the top of the structure.  However, it looks like the list is build
-properly, with init_list_head and then list_add_tail, so the NULL test
-should not be needed.
-
-Himadri, there are several very simple loops on lists that could be nicely
-converted to list_for_each or list_for_each_entry.  Search for
-end_of_queue_search.
-
-julia
-
-
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To post to this group, send email to outreachy-kernel@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20190402055701.GJ14075%40kroah.com.
-> For more options, visit https://groups.google.com/d/optout.
->
 
