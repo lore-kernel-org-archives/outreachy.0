@@ -1,113 +1,102 @@
-X-GM-THRID: 6754482318874771456
-X-Received: by 2002:a63:cf42:: with SMTP id b2mr16383069pgj.113.1572650465550;
-        Fri, 01 Nov 2019 16:21:05 -0700 (PDT)
+X-GM-THRID: 6674971503318007808
+X-Received: by 2002:a67:ed05:: with SMTP id l5mr8469518vsp.23.1554184054389;
+        Mon, 01 Apr 2019 22:47:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:a40c:: with SMTP id p12ls1933884plq.3.gmail; Fri, 01
- Nov 2019 16:21:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzUSKo2HWz5ac7kXRe2VW7BJyerVeM6RoPCz3mNwOAygVOqQiEUKX4NRW18RU6uERn1SKDH
-X-Received: by 2002:a17:90a:25aa:: with SMTP id k39mr18554149pje.123.1572650464173;
-        Fri, 01 Nov 2019 16:21:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572650464; cv=none;
+Received: by 2002:a1f:3c51:: with SMTP id j78ls1972365vka.1.gmail; Mon, 01 Apr
+ 2019 22:47:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxrJh8J5eemX06YBDxCqCTYEcG9fOoyx2gc7bBx8qYSf7d5y9tRD+LROdFyCQ+yy4fgTso8
+X-Received: by 2002:a1f:6095:: with SMTP id u143mr7825025vkb.13.1554184053732;
+        Mon, 01 Apr 2019 22:47:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554184053; cv=none;
         d=google.com; s=arc-20160816;
-        b=AG/y1i15DUbtjC1IXvGkuEeB718bpfgYCdS3HHKAy1ZjDCSs2/4tSH3t+E+VEnv2GK
-         WB3IIHlFBPU9HJS7ZFFa/YNJySltUzVwhyC3mSh7KMrqUQ9ZyOG6oo9W8A9Yd2w4hqRO
-         eT8dhYKrUA/ylDA78ERLbRopX2tC8kPPbky6akuWIRMVdRg6QrhxqZZNfBS2boMpe0u5
-         g+6pSax8r7fAkyr5Liz1AKMpxtGK4MVAgcjBy+/rK2Ke9MPGYHIRsrr+znKIVdQF1kH2
-         72+q8U6BgBbIF9RZrVSVOSvj0U4dB9PmsxUTjETMNqMaCKdpRHhMOC4ZieF39ifP7kWJ
-         QZgQ==
+        b=FmJT+Z0OYXT3YDzHGh0OMcvJlgumj1o29ho5O1dcFDeENgcHjd7myU4XUEfQO1YWLk
+         kER70HjXG48mt/aWpJpW2FQdJKqIDuZuWUbqZ8XwCei9vCPD/8bmSoh7K3LfpzHF0KBa
+         +tao3qhjPVIlv98y9fj0L54wdRv4vZ0gn49uXwQ8CX3SF1HtB9Y+cjqEtsN4RG/hL+bp
+         aiGsTZyn7FfWaf8UHEa3blmWL3Z4fph+o91FbPyiUFIamR/busRdEwNNTYj0U+IAjmAh
+         07aDFonkmmrqzeSPAsKJZK9Go/COC9O7V77fqyk2Djs7bWlFlJ7mI4h7HZT15jTfhPHN
+         Mzmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=cbAaI1whR+pjCmAbfMImURMPtOIf5hg1TOZ58zW3xUc=;
-        b=Ep/5xRedda2LhQSZbWfI6DwiZLYQ+yPBb3KFvzphJehirQP0MwgOxM+0qyxHbcqXx7
-         kE4ne3nt4Zqt3O8v4BWfslmOUnuPwqfLsPFwCXdrPH2tzQspw4tTngKylouf2deKImhK
-         OP6bnJTkwv7L5g64STuH/M0GzXVUczXtt2EHoIYE5uf8qvHQPeGoQJWSe0MWf2CKHDnQ
-         AR23xRhEjyRdZlBIoT8A8Yg2ILr6g1xj+7qEmHfw2uQ+g3D08zIw5Pz04Aoa0KPo0fBn
-         uyYyVAW4g0SWkDckbhgr/bAvyjW1bgdiPPxRdCEv7c9XTzrehpiKrwZxv0Aer5gBrpkM
-         nvuA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=dBLTnin0axFBfwmmFgW9JyOY+cNUlOLiIU0aRP+u1Jg=;
+        b=ahcQRe6Q2ntAYQonx33MTHr6Vr83dy1pSs329cOAIJ3CRIaaBAJgAjIrOMKgCIyGbj
+         u9S9Rp1GWx1WJwneSFV7RRWPRUBNXpvCSRg4vFOO7vpA+SCmlwAAuGqdR0OyzouMGPy0
+         rflbKHiyz6A/fy7FVQ/h5BAzaRtdczwcizr2i9DSX19i0e/t3HXb5zfl+UQc7SFNw3/j
+         wOpnAB3mBo3lEssCMfxva91hySBhGD0pAJ3wyD8tz6o4MP5dn2+8/QZy3//zROpjV+D+
+         QoXGV8m9XxAHFpElcvZX5n+3tmO2i4C5fVWi0QxXeSomR8KprJZ+GcRKkMTVl3rRq6DQ
+         W/hQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=NYDhBOWz;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com. [2607:f8b0:4864:20::941])
-        by gmr-mx.google.com with ESMTPS id g15si89403plq.0.2019.11.01.16.21.04
+       dkim=pass header.i=@kernel.org header.s=default header.b="Vt05xwO/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id o80si663534vke.1.2019.04.01.22.47.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 16:21:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) client-ip=2607:f8b0:4864:20::941;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 Apr 2019 22:47:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=NYDhBOWz;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua1-x941.google.com with SMTP id v2so3397358uam.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 16:21:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=cbAaI1whR+pjCmAbfMImURMPtOIf5hg1TOZ58zW3xUc=;
-        b=NYDhBOWzneNGEq2wLBNglX64Rt6Uk4WSAkBcYzkRjNDW4tU5XSiZzXcaqezT/ADAwI
-         tW0ErfRW0nwQSBxdDapEzA8Uc5zAA7lat71ofVhwt35SEajOiryXkdzi9F+50tGg/qPP
-         qaUvy99MsukO4Oj4owACUb7KuVn9MyF32yMU8l5mgDQOwZYV20Xw8orp9snfTOsp2LO8
-         VjzWz5axizqyBNAN5FJCLPT9xPntzXJdCY3CrG/2LUBlUlODC791Gha8UfneOE9dzZWc
-         F8p0YhtWZ+mtBm0iYkW23IX6ZptP5Q/xon8DlzsowhIhE08r7LRSF+u0u3thJobBUpdQ
-         BDnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=cbAaI1whR+pjCmAbfMImURMPtOIf5hg1TOZ58zW3xUc=;
-        b=aATcKXQvp0qgI/HWvVR7gjAWlSGVtf4uTZEkkcVy056t5krbq/zvwVOqzkxHmdWipE
-         4VHZAni/4K6YP9/RpoZKO7/cZCQLygNmu1qivxeyXJ75ETPBYl/z+KJd1D8yTeZmuc+d
-         LPr40FcRHzvUpp/sO33cjJ5DGb6JJOL1rLFMRI+b/xua8v2s5Q8/Uk5NNwZC6ijDZq92
-         KiGrqDdijjxicbeeWk3O3yL+7p7rJXI+9moIZfwyVSFTywpH3J+cRlZ6FkN3YCUeVHZq
-         0rnDKcePq5yTIUSWVpap1/9GaxVH+vP2lBsiQTVSoKPtjkkprxjfKhYkql9++TUW+lMJ
-         eavg==
-X-Gm-Message-State: APjAAAWwGWy+/K1d65VVFuZX7psFlAPQTcNPIVYmOIFmKaUvVWg3ii9h
-	o5jG2ARme2DLUZIEZzr4zaMUmQ==
-X-Received: by 2002:ab0:20b5:: with SMTP id y21mr6880759ual.39.1572650462866;
-        Fri, 01 Nov 2019 16:21:02 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from linux-kernel-dev ([167.160.113.52])
-        by smtp.gmail.com with ESMTPSA id e62sm2479752vkg.47.2019.11.01.16.21.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 16:21:02 -0700 (PDT)
-Date: Fri, 1 Nov 2019 23:20:59 +0000
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
-	joel@joelfernandes.org, Forest Bond <forest@alittletooquiet.net>
-Subject: [PATCH v2 0/4] staging: vt6655: Code style cleanup
-Message-ID: <cover.1572649242.git.frank@generalsoftwareinc.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b="Vt05xwO/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 1B1E720830;
+	Tue,  2 Apr 2019 05:47:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1554184052;
+	bh=qNb4olVbJ5j+aQZ7xG03xbbVehHGUhNwNZOtcRKhGIo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Vt05xwO/rFa4Nm4Q9Dk38MnR5SKYb6BsEFZOzw/spvn0x3gdwUad2W0cF67y42Bt4
+	 je4+7mmkYenGH9TLW8FHwKXKXQNqjpELomSQiIbeTRqvv4uHg+S+rfpZgaKM5xAFuW
+	 4pUOfh2GT6VLeC7sDQqCXgltzuFBQNB/4Nr9LrYQ=
+Date: Tue, 2 Apr 2019 07:47:26 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Madhumthia Prabakaran <madhumithabiw@gmail.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8192u: Use list_entry in
+ ieee80211_wx_sync_scan_wq()
+Message-ID: <20190402054726.GA14075@kroah.com>
+References: <20190401165827.18731-1-madhumithabiw@gmail.com>
+ <alpine.DEB.2.21.1904012138510.2530@hadrien>
+ <20190401215305.GB11046@madhuleo>
+ <alpine.DEB.2.21.1904020742260.2664@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+In-Reply-To: <alpine.DEB.2.21.1904020742260.2664@hadrien>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Code style issues like wrong spacing, long lines, open ended parameter
-and alignment make the code harder to read. This patchset improves the
-code to comply with the preferred coding style for the linux kernel.
-Issues found by checkpatch.
+On Tue, Apr 02, 2019 at 07:43:44AM +0200, Julia Lawall wrote:
+> 
+> 
+> On Mon, 1 Apr 2019, Madhumthia Prabakaran wrote:
+> 
+> > On Mon, Apr 01, 2019 at 09:39:32PM +0200, Julia Lawall wrote:
+> > >
+> > >
+> > > On Mon, 1 Apr 2019, Madhumitha Prabakaran wrote:
+> > >
+> > > > Use list_entry() instead of container_of() in function,
+> > > > ieee80211_wx_sync_scan_wq(), as the function to return the
+> > > > parent structure containing any list_head is defined to use
+> > > > list_entry() as per the definition in include/linux/list.h#L348.
+> > >
+> > > list_entry is for lists.  The wx_sync_scan_wq field has type work_struct.
+> >
+> > Thats true. Though the wx_sync_scan_wq has type work_struct, the structure
+> > work_struct has a member of struct list_head in it.
+> 
+> The field name itself should have type list_head.  You can write your
+> Coccinelle script to check for this.  Since structure types are often
+> defined in header files, you may need to use the command line argument
+> --all-includes (try to include all mentioned header files).
 
-Changes in v2 by Julia Lawall suggestion:
-  - Improves log messages on all of the patches.
-  - Remove the checkpatch messages.
-  - Long line issues are in its own patch.
+Yes, do not use list_entry() for things that are not a list.  I'll go
+drop this patch from my tree now.
 
-Frank A. Cancio Bello (4):
-  staging: vt6655: Fix parameter alignment issues
-  staging: vt6655: Fix the spacing around operators
-  staging: vt6655: Fix open ended lines
-  staging: vt6655: Fix long lines
+thanks,
 
- drivers/staging/vt6655/card.h        |  2 +-
- drivers/staging/vt6655/device_main.c | 14 ++++++++------
- drivers/staging/vt6655/power.c       | 10 ++--------
- drivers/staging/vt6655/rf.c          |  5 +++--
- drivers/staging/vt6655/rf.h          | 19 +++++--------------
- drivers/staging/vt6655/rxtx.c        |  5 +++--
- 6 files changed, 22 insertions(+), 33 deletions(-)
-
--- 
-2.17.1
-
+greg k-h
 
