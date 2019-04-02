@@ -1,116 +1,94 @@
-X-GM-THRID: 6463802191249408000
-X-Received: by 10.129.107.70 with SMTP id g67mr1586475ywc.161.1504971224089;
-        Sat, 09 Sep 2017 08:33:44 -0700 (PDT)
+X-GM-THRID: 6675054082549350400
+X-Received: by 2002:a24:2fd0:: with SMTP id j199mr4904715itj.2.1554184260829;
+        Mon, 01 Apr 2019 22:51:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.56.137 with SMTP id f131ls1817296ioa.23.gmail; Sat, 09 Sep
- 2017 08:33:43 -0700 (PDT)
-X-Received: by 10.36.6.140 with SMTP id 134mr3576872itv.43.1504971223244;
-        Sat, 09 Sep 2017 08:33:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504971223; cv=none;
+Received: by 2002:a02:cd39:: with SMTP id h25ls4214312jaq.1.gmail; Mon, 01 Apr
+ 2019 22:50:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzLg8THPzeT5y55o/9h8PlVrIuzKhpyhclIyhBTJx2FfCR2OeNzYT7H2irfVqGHmlQk4FR4
+X-Received: by 2002:a02:bb04:: with SMTP id y4mr11070591jan.20.1554184259912;
+        Mon, 01 Apr 2019 22:50:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554184259; cv=none;
         d=google.com; s=arc-20160816;
-        b=jcuvEPVejYknNPjAzvK+XpYfbVFjuetw9YnBNrC1sytiVoAEKE90kd4EitL4AzydSP
-         OBDVoPtvFLuC4pBld1ZbBUgXLCynTZspRjzLDBlFu4Oc3zg0daAn6SDrstoWCCxYFyKk
-         ZQNoFkB3cI0ltGo80kron11dzBcbx+vWS5EotE/9NWzjtSLJfixl++ECxq6/JATWB0f9
-         r9S3h7PRM4sB5YFLPkPNPkixvXwYbJ0buVdk//Ko3s3IK4/oGzd527uTsfAY3iEcLyPQ
-         hKDx+gcNMx9peWje+epnTyjLr1dNK9S1H9AxNRH+sijIeUMvxHsIKYAG+95TUAILh0Tk
-         rcww==
+        b=wohLa4bK8IRjkZqp0+83/OyBJO62ujRl4DJzC4HoSRs95IYiGX7y/Y/k0dah2C1Uv8
+         R2+JfydR1WdvaYmcYt4q42+q3GsK2CY6VYV59o8NS3Z643mpA3LTiQ4RBftU3CCg/+XX
+         ybUpmeUwpRtJZX1Vto8gUQ0kh7gNQSMxDnhMNUoGyIbicRKZUPv1W3JKVsABh5KAHe7/
+         4RQcnZFf06Ne+ThuS5DU/HVipCSx7JDHJaj0+/AymeOIIj2ZJmKFdcf3kydey0Wajtdd
+         MJF6EFE3yQVnpGvQ9KEeXVxRcca9f73Z6ID0zaRXuIcVJrVvrvIRgmPuMhdsAU847wAz
+         yZdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=uhWuRmaYxfWXy21mzUTeHRPxmmps3IsFqiRdALG741Y=;
-        b=VP8zP2qCXEZNNbCUjUVAttKrY0gCg/J8KwhnsYcy8tUBFuOKupoT4We1y0CwXcDcrg
-         w0y4sStWVmZTsnv+cSn6cGPqAhDD4OqG6CHDt5b7vkuuVLJsyDBod9RTavLQhUETVKda
-         sD0/Xk7HnLQzcf56mtYiICivMd9/naBVK0PyD9HqnQXG6ie1m2PIqjijNNVAa657jKhC
-         93H/nVHPvg/biJ2jp5vJnMUrFSm2BPu2U1Hmlv55a7DDRkkd4a4K2LkhAFipEhoJI81m
-         boF1MmmN7t8jzTMrOYc39uEjybEzzZq4HsiaimenjUdJ5+zXeQIam0eWxSjRATH+0Yys
-         lsUQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ToLqm+gA6mDcp4GvFAdBZZj1KZWt7sowzVzz44/Bqzg=;
+        b=rgM7Z67TIksq5pFQsg+pytGoycdZlKVMnQCJaHXcFfThTNZzCzfTHPhPMyPVsT1Ugu
+         pAX45p7EGbjbswm02bxFh/PXT5/naWlVyXTXUAsO2rrABmpWCTEYxGh9HstdlpYHMkXH
+         mibFRhRNkD+2p4iPeyf85411vU21kn6c2Mwumz0RdX6McDIF6/P1Z34cKmHa7ZCSaHQN
+         vNdJdT8tF6JHIMjvKRNTSIgHkVn0HkGqidLyB+f7SqhBlvXirHOzKcZze3LeMbVBopQb
+         W2X4clI8v/z6zK2LagNQsCSoz63wgMqHPn9oiCLMyaki53DYxGv+ALH28ug5FfYtfvWG
+         uTaw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Lzl/xHkR;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id v25si486930pfg.11.2017.09.09.08.33.43
+       dkim=pass header.i=@kernel.org header.s=default header.b=aOeOOGTp;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 17si310648itx.0.2019.04.01.22.50.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Sep 2017 08:33:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Mon, 01 Apr 2019 22:50:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Lzl/xHkR;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id t3so2634918pgt.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Sep 2017 08:33:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=uhWuRmaYxfWXy21mzUTeHRPxmmps3IsFqiRdALG741Y=;
-        b=Lzl/xHkRXmWIF0m3R6mK9vZhPiCZpBV0IcTwV5jOCqFDYYe2SVp9juIsZiYllvJxrS
-         UEDsdjkmkc2OcVcDL54gITHo7WPeSlSZD1LSrS0GkHTJTNIdvgTAmAPcURyCw/LrXkEr
-         a0h6H6wXfxmp90HMsk7Y6q/zo/8ymovFemPaxwvQF+f9lAoY1N6K2KWClFHAHoZYtOnO
-         6cnAMuFai/y1F2uaEwUkrICzXaXT6xZflJpatwbjMgso2nvaGRPs2oNo4eErYo8LYH5t
-         Ijn9/hLlq1xvlz9HO9u3ZnxKVfPsUej4g9Tn1jR/GTA2lGRK/yIzGSfo2rqquq/wR275
-         y5uA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=uhWuRmaYxfWXy21mzUTeHRPxmmps3IsFqiRdALG741Y=;
-        b=GqbNnJdGJy2A9dX2xcZJEwJasch7Z0Mm5i5wWYSdot1vKPH990dFMIAfs0Wpcy4A+N
-         E6OtR8fzK0MTth8fytZmclYGvOPiADck/iMmQu/d9P34iPtXaBuyrlr0wTSdrAau296C
-         Klg4a7BD3CyP6dvPHW18SfhY3dd3lzi3NHVEpNYkemFjlSszs577iRyq9hkIXg1T/gkd
-         8hy44gbMCa8P4PjMSObY4sUYe7+HANMShzyhob5R4NUoKGHvq6mLGt2LNjTfrVCbf3MD
-         +njBECLNMrRd0DQmb6FzA4HrtX8DP9Uphk0zYjK9AaxDE+hMms1cwr+b6GfAvQ1x8q2t
-         1Y3A==
-X-Gm-Message-State: AHPjjUhWXjU19mphA9NFbwhzTfRtNDDNAk7CN/OAQ8p1L2w0ODt1zSMd
-	wXHpt60qMdi0kh/aw0a1lw==
-X-Google-Smtp-Source: ADKCNb7YXRfYjCmoNE2XIdK6P5Tnl/rgbunGAqJ8S02oiVWykJq8Ge7CvXyj7JpCiWlGkBRyafhGwQ==
-X-Received: by 10.99.125.12 with SMTP id y12mr6510507pgc.435.1504971223007;
-        Sat, 09 Sep 2017 08:33:43 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
-        by smtp.gmail.com with ESMTPSA id c193sm7752742pfc.139.2017.09.09.08.33.41
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 09 Sep 2017 08:33:42 -0700 (PDT)
-Date: Sat, 9 Sep 2017 21:03:38 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	w.d.hubbs@gmail.com, chris@the-brannons.com
-Subject: [PATCH V2] Staging: speakup: Replace symbolic permission
-Message-ID: <20170909153338.GA21938@meghana-HP-Pavilion-Notebook>
+       dkim=pass header.i=@kernel.org header.s=default header.b=aOeOOGTp;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id A1AB22084C;
+	Tue,  2 Apr 2019 05:50:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1554184259;
+	bh=3/ym5cGLOWrR+r96i1UTCuVALPrwzWdUd2bJHj45abI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aOeOOGTpsNk6XBe2Gd+VBhBHIK2sK7my43OaJiu/dwlPFRutA0YieI9a7aolcm/o1
+	 wMCM/CjkzoGBtEAf2GKXOHwjImcZoKobBN4gOhYtGXkH6v+QJtb2NqnV7uCUAF5wxX
+	 8iHlrX9gCOFYHvBCihcHOpSVjabOfpvrGn6nsOn8=
+Date: Tue, 2 Apr 2019 07:50:53 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] Staging: rtl8723bs: Remove typedef in struct
+ _Dynamic_Primary_CCA
+Message-ID: <20190402055053.GC14075@kroah.com>
+References: <20190401221854.29465-1-madhumithabiw@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20190401221854.29465-1-madhumithabiw@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 
-Replace S_IRUGO by 0444 in module parameter declaration. 0444 is more
-readable and matches the style used in other declarations nearby.
+On Mon, Apr 01, 2019 at 05:18:54PM -0500, Madhumitha Prabakaran wrote:
+> Remove typedef in struct _Dynamic_Primary_CCA, as a struct that has
+> elements that can reasonably be directly accessed should never be a
+> typedef.
+> 
+> Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/hal/odm.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
+> index 23ab160ac2c8..af68658233e3 100644
+> --- a/drivers/staging/rtl8723bs/hal/odm.h
+> +++ b/drivers/staging/rtl8723bs/hal/odm.h
+> @@ -82,7 +82,7 @@
+>  
+>  /* Remove DIG by yuchen */
+>  
+> -typedef struct _Dynamic_Primary_CCA {
+> +struct _Dynamic_Primary_CCA {
 
-Problem found using checkpatch.
+While this is a good thing, can you also name this to be a sane name at
+the same time?  No need to have to write two patches for this.
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
+thanks,
 
-Changes in v2:
-  - Make the commit message more clearer and the title more concise
----
- drivers/staging/speakup/speakup_acntsa.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/speakup/speakup_acntsa.c b/drivers/staging/speakup/speakup_acntsa.c
-index 0e10404..4331584 100644
---- a/drivers/staging/speakup/speakup_acntsa.c
-+++ b/drivers/staging/speakup/speakup_acntsa.c
-@@ -136,7 +136,7 @@ static int synth_probe(struct spk_synth *synth)
- }
- 
- module_param_named(ser, synth_acntsa.ser, int, 0444);
--module_param_named(dev, synth_acntsa.dev_name, charp, S_IRUGO);
-+module_param_named(dev, synth_acntsa.dev_name, charp, 0444);
- module_param_named(start, synth_acntsa.startup, short, 0444);
- 
- MODULE_PARM_DESC(ser, "Set the serial port for the synthesizer (0-based).");
--- 
-2.7.4
-
+greg k-h
 
