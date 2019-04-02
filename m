@@ -1,148 +1,111 @@
 X-GM-THRID: 6675008112137601024
-X-Received: by 2002:a25:3622:: with SMTP id d34mr685282yba.50.1554194497666;
-        Tue, 02 Apr 2019 01:41:37 -0700 (PDT)
+X-Received: by 2002:a1c:c507:: with SMTP id v7mr1553547wmf.9.1554188338767;
+        Mon, 01 Apr 2019 23:58:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:3582:: with SMTP id c124ls320154yba.11.gmail; Tue, 02
- Apr 2019 01:41:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxjd9yjG4OG3/w8XoHIyOzEE6Y3s1YV6XNdSzgHGRR4/YdWmMrLdmH31sZRWZHRrgn04F4k
-X-Received: by 2002:a5b:ccb:: with SMTP id e11mr1160115ybr.87.1554194496692;
-        Tue, 02 Apr 2019 01:41:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554194496; cv=none;
+Received: by 2002:a1c:4e14:: with SMTP id g20ls178288wmh.1.gmail; Mon, 01 Apr
+ 2019 23:58:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxFue7xInQl1W7lVyxVpOOH0+JOMjJ8ObQu0z6z+nznep3QBEphEQAaqew96tSlnTl+oL2z
+X-Received: by 2002:a1c:48c4:: with SMTP id v187mr1578938wma.2.1554188338007;
+        Mon, 01 Apr 2019 23:58:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554188338; cv=none;
         d=google.com; s=arc-20160816;
-        b=Am/Jfqxm94pPu0pHGWbeO+e9NjAKUq/5unPV+MtupOjRGYrP0uAMnuqLDh8hZMDJRC
-         /4z/H603wcNRLP0srI7FqH+tDGOiHWMmS8pRRNMR4o7NkIwlIywRWYL350To5mlVwjig
-         sh2TPMDBpm4NltA+BCTtE4GsxallTDtAegcSUQ8waXjq3Xbu29tm3y/h5u9bv0mxqcox
-         fsWDCBwxqXbYQpCA/btkylOqieyA7TvgJeCHYoekmUcXxX5TrAZYrmREtouo1t5u230H
-         zDNR3UaaSeDFwN7WDQ6yRh+5Wguti4sRmhINnI7nz6hFWbsHdJKgjahw161ps8Xa8+zw
-         kz7w==
+        b=M67MoFPpFtZ83p94gNx7p2wTZmsL5/WhIAlGHZYeL7fLTwkBpSrG1JlR45PnQWviwy
+         /KfMRT2ZEmnYOwBpVqE6B7twYL0mRNhHF9Hd45kJWKzV+Uaoq3+OaIJK/wjV4kdBVJJs
+         +9DIVN+40EqCaQB9Hn0mdC3o5z1onPj3ssOpRqFx4PKiiFu4EaVrSvKf+vF7Z/la8cwM
+         Dt7F+0u/NG1sTo6ejQ7wA4O30YX5IMEUHbwzUHq8Kvhmtqpftu13l+7zkMDE4o8sVZSO
+         RGdsWFWTEniU0YMrvQZsTmOhUn+vA15TlP6ftXjeH3LzQeNJpJp4/KrspfCz5EFCj+Yj
+         /oSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=IoJPRafLqcgIyfrex7rXfLBu63MDMgY7vI+ckBeJ8ac=;
-        b=WGzLOaNqGa2TkMjryG6dDE0mkZkVZ0wgG9U6mu6MBf2iwbUiaKtWvalHoTrJ55Smsx
-         d9MDAVZbA/prRQ8gHiW88KFyeSegtP+YGTaefQH4kSZ/PJ5EfuIOxxnstFzhMGM03akR
-         pBGq6nlmhq7BNjvW25bcYrrJdprG0LcbYV/POuI4444Pn0lNB6VqIyZcvU1s9wOJn6gy
-         NlYYcGX5InP51IO8m8uvK7NBLT2V6bxIgpokKKw+AKOhTiWaqbXoVyApP4W4uAL8EsIi
-         9turQfKiu84ZxBcCQc1lKHfvMhzFP7WiAE5+RboHUgNw35g5t9LSi6lsZ9ZqLcW4llyb
-         xMlg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=5ghunfrLyoSkVwwuA+BubdrWyk+wM7PBAPU7GumngTc=;
+        b=yRriRG3jWLMd6Rz1rIiO1+QJ3jNkhPs/ziCoTQSX9zr+pveehJzOBjavPU+HO+hB+s
+         F30zcAF1NNHosKUrgfukYrofxOBC89cI9/7dN7NkHbJdBoBzutBP68dCO4+ncZV9zk7A
+         XINXmXSzYRPxlcZ5Q30R9bfC/1nhn8c/f6m8i8QzGhQXaybeuDCZ+LmUTfc6kXE3cUwl
+         rxv4uKbiivNaFnpTmnLoy2T8D1D5PurSoinOki8xbcCXMXjTd4d9hZfv4SfthNNBJRKG
+         ui/8KVLKrHQWrKVOZjN1yeYErvVG7biTzDzUTRVxNbZl0LniLq13iHjQ/v6d4U7SPSal
+         DwyQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DM8NFAJQ;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::32e as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-ot1-x32e.google.com (mail-ot1-x32e.google.com. [2607:f8b0:4864:20::32e])
-        by gmr-mx.google.com with ESMTPS id s11si661454ywg.3.2019.04.02.01.41.36
+       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b="PF3mX/Fn";
+       spf=pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=laurent.pinchart@ideasonboard.com
+Return-Path: <laurent.pinchart@ideasonboard.com>
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com. [213.167.242.64])
+        by gmr-mx.google.com with ESMTPS id n65si499157wma.1.2019.04.01.23.58.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 01:41:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::32e as permitted sender) client-ip=2607:f8b0:4864:20::32e;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Apr 2019 23:58:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) client-ip=213.167.242.64;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DM8NFAJQ;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::32e as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x32e.google.com with SMTP id f10so3683408otb.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 01:41:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=IoJPRafLqcgIyfrex7rXfLBu63MDMgY7vI+ckBeJ8ac=;
-        b=DM8NFAJQn59TY+SGVnIKnD8Yx96jSs68hJkDLQjF12WFBGrrxQRcqejT6BHy6v79Om
-         5K9OqEl9mvBSesFtNQF+EaxGZIXAhfXhncXKRsUe1n831pBoQAWH7W0Mj5QBGGuIeAMi
-         nmtVgKwbvcjfuB5yIRk8qdK1dq3x5kwvVsf6rZdv0vadMttClKVvzsw+AI1YDfnla7PG
-         yz+arMXtf1Pd0RZDITGd8h+NEL3S5HWAloloxfuirKDU8/s0jGVu/Vc0SXptt4g0gtbZ
-         wRbrYwl+05WM03wZoNw2psyOFFcWFy7GHr7L8YHc++XTwfZHWXRCxAuMhfXx/wdqYgQC
-         AJRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=IoJPRafLqcgIyfrex7rXfLBu63MDMgY7vI+ckBeJ8ac=;
-        b=eMAoG9dkUX9eI2QvUgvpjob9ecyyCWhYIjTk8detxU8hjmIGmCgnXK7LmsLpFkxiJD
-         VAxL5nqKfrCUgaCp38k8ffFtmZj2SZoXT6NpsqNP5nJANeYSUxwjmI2EvAzSXxK1pcsc
-         9i1EnB5nskRuPaf13wXLWAsA92kp/kOT+2Qe2RtHfivgLInAyS3/aTdlX/RAPgYpQvLR
-         gkmCl0gQwTsQesQ69CTumCyWJMmyvjHwNEJPk2fpsqmd+tneGnGxjWyZjhvgx0cCs+5J
-         9mPlFSFA+pbj1mvwUCprL2asfbKLB8W63NQnXnSKU6Oh37InAeIrS5DxDY/Re3B7zYwa
-         BP6w==
-X-Gm-Message-State: APjAAAVX/I4PgW2dYYVxqjf/fsen49xOFNu97lHJRshgNrv/whbDGkqa
-	jaMqBremxpEC4ymi82b1qaDDnUKJ4UAhFDYlTIiEgw==
-X-Received: by 2002:a9d:68ce:: with SMTP id i14mr1578451oto.293.1554194496278;
- Tue, 02 Apr 2019 01:41:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190401192015.96166-1-himadri18.07@gmail.com> <20190402055317.GD14075@kroah.com>
-In-Reply-To: <20190402055317.GD14075@kroah.com>
-From: Himadri Pandya <himadri18.07@gmail.com>
-Date: Tue, 2 Apr 2019 14:11:23 +0530
-Message-ID: <CAPnhUpYFtTDuiSmPhRnry_nOdTEiAgf-kfHKm+aT02qf_TOUUA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] staging: media: omap4iss: redefine and use to_iss_buffer
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, mchehab@kernel.org, 
+       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b="PF3mX/Fn";
+       spf=pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=laurent.pinchart@ideasonboard.com
+Received: from pendragon.ideasonboard.com (dfj612yhrgyx302h3jwwy-3.rev.dnainternet.fi [IPv6:2001:14ba:21f5:5b00:ce28:277f:58d7:3ca4])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 47EA22F9;
+	Tue,  2 Apr 2019 08:58:57 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1554188337;
+	bh=UJpwDHdBlXAFx8dhwlVz+0pcQFBhIWi5bMZCw3BTqSY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PF3mX/Fn77mWD04zcC0pa0neaHfb9MGHwHunMAEhimCRYH+jECr2iahScgjLjpkTN
+	 jkNoVaT1vd+jyGyVh59VfF3ejUa002imGJRFu79ZJa6bVCdyJsSoNKmB6ZG7lxMNJ/
+	 kuz1bz4xcEPWUyVejMAxx9FJgiupqU4DNiwzx2ZY=
+Date: Tue, 2 Apr 2019 09:58:46 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Himadri Pandya <himadri18.07@gmail.com>
+Cc: mchehab@kernel.org, gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000dcd6f20585881ab2"
+Subject: Re: [PATCH 1/2] staging: media: omap4iss: redefine to_iss_buffer()
+Message-ID: <20190402065846.GA4805@pendragon.ideasonboard.com>
+References: <20190401192015.96166-1-himadri18.07@gmail.com>
+ <20190401192015.96166-2-himadri18.07@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20190401192015.96166-2-himadri18.07@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
---000000000000dcd6f20585881ab2
-Content-Type: text/plain; charset="UTF-8"
+Hi Himadri,
 
-On Tue, 2 Apr, 2019, 11:23 AM Greg KH, <gregkh@linuxfoundation.org> wrote:
+Thank you for the patch.
 
-> On Tue, Apr 02, 2019 at 12:50:13AM +0530, Himadri Pandya wrote:
-> > These patches
-> > - redefines an unused macro to_iss_buffer into an inline
-> > function
-> > - uses that inline function in suitable functions
-> >
-> > Himadri Pandya (2):
-> >   staging: media: omap4iss: redefine to_iss_buffer()
-> >   staging: media: omap4iss: use to_iss_buffer instead of container_of
->
-> Can you make this one patch?  It makes things a lot more obvious as to
-> why you are doing what you did in patch 1, when you see patch 2, so
-> these should just be together.
->
-> thanks,
->
-> greg k-h
->
+On Tue, Apr 02, 2019 at 12:50:14AM +0530, Himadri Pandya wrote:
+> Currently macro to_iss_buffer converts vb2_v4l2_buffer into iss_buffer.
+> But the application needs the conversion from vb2_buffer to iss_bufffer.
+> So they need to convert vb2_buffer into vb2_v4l2_buffer first and then
+> vb2_v4l2_buffer into iss_buffer. Redefining to_iss_buffer to convert
+> from vb2_buffer into iss_buffer directly helps the situation.
+> 
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+>  drivers/staging/media/omap4iss/iss_video.h | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/omap4iss/iss_video.h b/drivers/staging/media/omap4iss/iss_video.h
+> index f22489edb562..3722ac8ba2fa 100644
+> --- a/drivers/staging/media/omap4iss/iss_video.h
+> +++ b/drivers/staging/media/omap4iss/iss_video.h
+> @@ -118,7 +118,12 @@ struct iss_buffer {
+>  	dma_addr_t iss_addr;
+>  };
+>  
+> -#define to_iss_buffer(buf)	container_of(buf, struct iss_buffer, vb)
+> +static inline struct iss_buffer *to_iss_buffer(struct vb2_buffer *vb)
+> +{
+> +	struct vb2_v4l2_buffer *vbuf = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
+> +
+> +	return container_of(vbuf, struct iss_buffer, vb);
 
-Okay.
+In addition to Greg's comment about merging the two patches in one, you
+can also merge the above two lines with
 
-- Himadri
+	container_of(vb, iss_buffer, vb.vb2_buf)
 
->
+> +}
+>  
+>  enum iss_video_dmaqueue_flags {
+>  	/* Set if DMA queue becomes empty when ISS_PIPELINE_STREAM_CONTINUOUS */
 
---000000000000dcd6f20585881ab2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+-- 
+Regards,
 
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Tue, 2 Apr, 2019, 11:23 AM Greg KH, &lt;<a href=3D"=
-mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bor=
-der-left:1px #ccc solid;padding-left:1ex">On Tue, Apr 02, 2019 at 12:50:13A=
-M +0530, Himadri Pandya wrote:<br>
-&gt; These patches <br>
-&gt; - redefines an unused macro to_iss_buffer into an inline<br>
-&gt; function<br>
-&gt; - uses that inline function in suitable functions<br>
-&gt; <br>
-&gt; Himadri Pandya (2):<br>
-&gt;=C2=A0 =C2=A0staging: media: omap4iss: redefine to_iss_buffer()<br>
-&gt;=C2=A0 =C2=A0staging: media: omap4iss: use to_iss_buffer instead of con=
-tainer_of<br>
-<br>
-Can you make this one patch?=C2=A0 It makes things a lot more obvious as to=
-<br>
-why you are doing what you did in patch 1, when you see patch 2, so<br>
-these should just be together.<br>
-<br>
-thanks,<br>
-<br>
-greg k-h<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
-=3D"auto">Okay.</div><div dir=3D"auto"><br></div><div dir=3D"auto">- Himadr=
-i</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gm=
-ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
-ft:1ex">
-</blockquote></div></div></div>
-
---000000000000dcd6f20585881ab2--
+Laurent Pinchart
 
