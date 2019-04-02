@@ -1,212 +1,110 @@
-X-GM-THRID: 6948109803234263040
-X-Received: by 2002:a05:6512:1022:: with SMTP id r2mr21464242lfr.178.1617732877040;
-        Tue, 06 Apr 2021 11:14:37 -0700 (PDT)
+X-GM-THRID: 6675392771398828032
+X-Received: by 2002:a5d:9a0d:: with SMTP id s13mr61029iol.26.1554235995828;
+        Tue, 02 Apr 2019 13:13:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8503:: with SMTP id j3ls3761682lji.6.gmail; Tue, 06 Apr
- 2021 11:14:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBAvK+Ufik3TMyWT1YG5FLqiI1Pzo/LzMb3GDR+pmFwak3kuloaZIG4fpdMbMqftCuDKkl
-X-Received: by 2002:a2e:9250:: with SMTP id v16mr20353525ljg.162.1617732874256;
-        Tue, 06 Apr 2021 11:14:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617732874; cv=none;
+Received: by 2002:a24:d06:: with SMTP id 6ls1307764itx.5.gmail; Tue, 02 Apr
+ 2019 13:13:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzRf514EM9jLlD3Mg325DNBPdgRvo3bOgHqN03NkobaJ3KKJb3ttCe0h9VTsS5aP0WGxllk
+X-Received: by 2002:a24:97cf:: with SMTP id k198mr8752548ite.26.1554235994875;
+        Tue, 02 Apr 2019 13:13:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554235994; cv=none;
         d=google.com; s=arc-20160816;
-        b=GP8WdWPPGO3AUlhqJwelxW2ibUdtMX2XV3ULRP72JAKoUvx7xfeY9A6Hf7QEJapdFv
-         QtiwNCsyw2HHdNXE6p1vySItpkR+G8VVxWZCbxIM8Lu6QtS9dYJDv9L7/WHPZcoShYfa
-         A+qJ0uhlIeA1aOe0yj5x/Mv97h7+BCgTlMLDH+Erz0bsJqFtBmi5ZXy1JxnFp8PAboWq
-         u3yKpPivdLkMJZZKgqigY2JxkrWFMOVO1ahX4kAw3g/3+u2LxYx7RO1rKMKZn7cjCVKI
-         2GEqwvx3dz6YdW4QieYyXzLIU0fChMyt96BGPnukVy4hdrAmWqnRtRJpedjXM9R6kJMx
-         /l5A==
+        b=FeEDfALF7TEdEeqacxClkKDkIYtwHbqKptgKBKxKZjIE/FXhhQ68jFZVBCwZDAsNEC
+         CnmGYa0F+vyfi+5J3ybXtJ0XaXadby+iCRsj6M9dVPNzdat+jWTles9PwZggr6aejxSM
+         N8GK153U7OyE/TMhiYwO60vqCsIODd2p27UMFVTkXqAKjBeDJgPP+tYSl/miFouwgZbp
+         vBOuGTE1EtnNQQlI7hObT/U8bosqzf/Bk6dqDPbUsXf+qgntOYI+3+XZkdpilfTiqD/A
+         0BWk2Co3GdhiwVW1jW7M5npxoamls1mOAH2xN/LkO/Lg0HPYUexMm/fA1tj77rcE3OD+
+         rDWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=UBnStJVt45cTAjhC4EKrrJE26aOExYNYx9iIn/5oiDo=;
-        b=RiRYOllJNK32LZH4+IEPiSLvkMg1fJ4A3o40hg+0cXmpByIvoAaeylvuxElIEjmu3n
-         J8N9YXGQD9End/ouztWp/CGY0C0CjuibEM+alwDbNI3Z4vYe41JLFS8Uk9Dt21T0XImq
-         /zudos3kGgukLi8956Q8UFCPtEO1LT6BvKnzOWO+ZRtVnEXXy0gAx/Pe2ruemrxvjs4j
-         rTxYq6scELM9kPIkyT/YJOgPM6450eREKdk2TATDNoOP9x0xTagKtJ22o3kKGBhgaT68
-         9e99ot8YxT5Yhb/UvihPRrWksTqy3NtQdoEasyftASRHrFqizOu2KhIcjkxOjfol/Pki
-         Kqxw==
+        h=references:content-transfer-encoding:mime-version:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=GFTzbYLUlv+T3uVCT+C1do1yfJA1IK9PHNj9AhmjqTk=;
+        b=BmEf/CnetP+9VeYE/Yps/C6/FBQiixxfe/PuZuU1+svEi6no/xhziAXZk4JMAqExn9
+         RtqTfFBenVciJteOJ6/omwcLj0x/qPTmX8VeGTlaJb8ONh/GcQ3Lnn3FJar1EtoMUpkB
+         fddN0ElGZzIUPHT96bW1mJfZheMGOOn46uFX28o+NZGEYW3wCf3E1AaliVh2rpWaxz9C
+         48fTWgcqwLRPGaF8xJ5hYHxGZqMNcF9NfJFnwCXP9nCVKLlxZuhTruZSttnNavybwGf2
+         JhA60b0YdSS+MhHXdXnxV/ZvSGEgHIvrcYSvjkCBl8cM5XP5lf6HUctwXKgxkD8VeCtX
+         ZyHw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ScRAg4b5;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::530 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com. [2a00:1450:4864:20::530])
-        by gmr-mx.google.com with ESMTPS id b12si1287043lfb.3.2021.04.06.11.14.34
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=iyRgPGiw;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.144 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <nishka.dasgupta@yahoo.com>
+Received: from sonic314-20.consmr.mail.sg3.yahoo.com (sonic314-20.consmr.mail.sg3.yahoo.com. [106.10.240.144])
+        by gmr-mx.google.com with ESMTPS id f13si659102iok.3.2019.04.02.13.13.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Apr 2021 11:14:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::530 as permitted sender) client-ip=2a00:1450:4864:20::530;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 02 Apr 2019 13:13:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.144 as permitted sender) client-ip=106.10.240.144;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ScRAg4b5;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::530 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x530.google.com with SMTP id r22so5191624edq.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Apr 2021 11:14:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=UBnStJVt45cTAjhC4EKrrJE26aOExYNYx9iIn/5oiDo=;
-        b=ScRAg4b5Y86C+5rwhTCSRpuzx54P92D3Kas4YYGOru0zupPhT6QQihvTGGd9NJ9LGa
-         oX2hW4Aql3nw7fjsczkf1Kfw2NNXlZYqOUUbz4NkXo55h+4AHg7rpgc188v4iLdagYoK
-         z8OjYl00qmaTsmOa8XZrWu4Va0VN+4MTrTIzHsllNfWk2kKjR8f5siEicalOeEzVZHKe
-         ZGTFMqDto8W4vTCavnIrZg7TAip6MV8HU/WAudXebeKEK+X4yyZiYS0CT2t/B3nig4wq
-         tWQ0rMjixwJeZ149IYVFryqi4YWHfQFtBXMNzl6Jqn7dG/PNkU1haydYK6jlY2yNfXAo
-         B7CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=UBnStJVt45cTAjhC4EKrrJE26aOExYNYx9iIn/5oiDo=;
-        b=bygU8QoLhGCHnZcPj8MIkNaQOkZ7EUymwYvBh+2YsMyhMEdnQLaV4tASOaCOURUvx8
-         1wpapDl5fMTcfedfHz0qFgjiMJTmtMCFEK9NKuQXmiAPmIhUo8KWt4kNquITCO6YWHBR
-         PvYi92BQnRujetlHhBHkt7lXjlqOGlXbp1rndco3zRtX3aSp4kgAR+cskrBgtnKnkrqQ
-         mBptqKOHiBayhADkaFrSNriaBFDzmPoItBkBGEz5jt51hLmJHmT46R1iDbFQfSejysgc
-         eyM88dcnGTaNbBm/M+lCuRREnLaafexLF5p6Go8NHGJslqeMvFcrhLJxTEtSlyghVYG2
-         TSIw==
-X-Gm-Message-State: AOAM53355JyqT7/THZyBDVd+54sip3g5yj21ZXBnVoTApK2VGqXA04PJ
-	/99Gbi49odOdgp/KLbG2MJKKUECHAWEfgfmG
-X-Received: by 2002:a05:6402:229a:: with SMTP id cw26mr13270091edb.266.1617732874034;
-        Tue, 06 Apr 2021 11:14:34 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-79-42-91-147.retail.telecomitalia.it. [79.42.91.147])
-        by smtp.gmail.com with ESMTPSA id eo22sm11463976ejc.0.2021.04.06.11.14.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Apr 2021 11:14:33 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=iyRgPGiw;
+       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.144 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1554235992; bh=GFTzbYLUlv+T3uVCT+C1do1yfJA1IK9PHNj9AhmjqTk=; h=From:To:Cc:Subject:Date:References:From:Subject; b=iyRgPGiwNgrZ+GCivsoqtPK85WOj5QTxFvRl2rP5bnF81KMJgoHltqygEyPoAmcfmPDaA7dVAK/bLu5UsxM15CGaTu4/5gLMiBPW88vuIqWXoD99nYHxwAiRCHWds3k1vuXTXkDQayPSSb0HHggDXpqHeHiU2I6u/DiuRd2mRGZbllcBAWCR4t+nmTpG42NBufwjoG4e4AeNR+9h6KT8t5Pft6WnZo2Tk5qbyTlXK0OpVQYy1lbjD3AeTqXtvxUaG4WLiFSnwuMFxAjGRiVuWSzxtPM+y/DYBQl5FFBA6uhRlnjqmdl9eX2HqeP5PQG/IuDBbVNiDLUk1wX2RSrzGg==
+X-YMail-OSG: H.XIKSYVM1lKGY8WxVB.TuLbMULGdtcpdDU2760EVBDAY_E34tLaAOvkhmmwRZs
+ wzEkdx2_wl9iIxFv5CfK8HwV7nS3Z7r1YjgGzUkh4d8bXuFbn8xuGE3.mY6tZGtFl9ViSN0yM9wJ
+ uvV3uz2Jdq5uTAmOZPmPHCSnkuS1G42ajz58XENB3Vp7QmScrZ.yQHocQ5IATKAYJefYaAT6ZaEJ
+ SEzv6h5JHI6uuTUq87FRpA2C4s4M34vLQiDRvHEhw8D2TeAiMGPyk28hLymZar3RSgvX6pTpiFV6
+ cZWTQRInr4MappOp3tbakPL8hf2KVPWrPrz_EHa3fUtTNQ9.35punv5mh4vahrPG9RnwUI1Y0hcm
+ s5kdaeZ3dd00oPGlQYsQpInQgLTg7pvlx7dEBhvw1dSQ3BI.gYEFXjvp4Vyw7zc.2ZBJRkx0.k1a
+ 6JO6Bi314rWFVQYrxXjQMM0DFe5_yKRf3FkDjMmwJtipkdXp4UhGBSXZiHsZTECOKbAlXDetm0os
+ zmpzF.qEwthuDQF79pmNL9tUGi06ftig.9KfreT.vM_6ZqU.DgcJdovGOVm_rK.FwI5_dLBMcqv9
+ QEwtxzsGxjOVI8GMUhiATiBOIzAqmHQKzykJVnuPzBftR3dI2EFEAA1i5VuRsYLGGwLvnLfqZTQB
+ mRFps.yQlUH5ZMqoHF6nZXAF3VEGhZu171nt_LAISMcErRqqJ18kHHOT_3_z1WgeG8Sq96qbf9hG
+ .vn_DDRRum4pyr0MQU_1YzAMrK7CdAke9kpbJD..gjchBre7zXdMvhKF4j.BS.d5GXpfnUttz7Bw
+ Tw4BnPBCy6Cq3YRIrYN5KQCZ0Cy2U702Be5XyKhUQaptB3b3KkqBvBmYEE_.eELCdXJLL.LvQlp7
+ RGlNLGMsBTcOJLPTmbGUtxDA_qeC7gKsTKWRfr0E_AYhGOeXXK.7oIi2pZHYBMURBHxMeeztzZ5Z
+ arlqrBbRnPep51BXirxu2WXWXlJzLcVkUAKx.kewDxHtNx4UBq52GQ0LCkH5WjDTzHxcPMuNAu1o
+ Q3.aOXwLFMH1oilY1NIVIfvhUz0Niz_MQH4bFddcd0OL9aXqdtQxIFu0iYaLHqur6FkCwKJXD6Z4
+ WNX9LouOhQN6_BBqaIOc_lr9gTFIjg4B8Zl8aStfGzwI-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic314.consmr.mail.sg3.yahoo.com with HTTP; Tue, 2 Apr 2019 20:13:12 +0000
+Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
+          by smtp401.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID a4580f33ff5a18b1b6b3fbe517e41c55;
+          Tue, 02 Apr 2019 20:13:11 +0000 (UTC)
+From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: rtl8723bs: hal: Add spaces around operators in hal_btcoex.c
-Date: Tue,  6 Apr 2021 20:14:28 +0200
-Message-Id: <20210406181428.15097-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.30.2
+	mchehab@kernel.org,
+	outreachy-kernel@googlegroups.com
+Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Subject: [PATCH] staging: media: zoran: Remove print statement
+Date: Wed,  3 Apr 2019 01:43:02 +0530
+Message-Id: <20190402201302.3317-1-nishka.dasgupta@yahoo.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+References: <20190402201302.3317-1-nishka.dasgupta.ref@yahoo.com>
 
-Added spaces around operators. Issue detected by checkpatch.pl.
-Spaces around operators are preferred to improve readibility.
+Remove print statement following unsuccessful kmalloc. Issue found with
+the following Coccinelle script:
+@@
+identifier e1, print;
+char [] c;
+@@
+e1 = kmalloc(...);
+if(!e1){
+-print(...,c,...);
+... when any
+}
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
 ---
- drivers/staging/rtl8723bs/hal/hal_btcoex.c | 30 +++++++++++-----------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+ drivers/staging/media/zoran/zoran_card.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_btcoex.c b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-index d42cc24c7535..2cb5eedddde3 100644
---- a/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_btcoex.c
-@@ -721,7 +721,7 @@ static void halbtcoutsrc_BitMaskWrite1Byte(void *pBtcContext, u32 regAddr, u8 bi
- 		originalValue = rtw_read8(padapter, regAddr);
+diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
+index ea10523194e8..ea7102c56d6f 100644
+--- a/drivers/staging/media/zoran/zoran_card.c
++++ b/drivers/staging/media/zoran/zoran_card.c
+@@ -1131,8 +1131,6 @@ static struct videocodec_master *zoran_setup_videocodec(struct zoran *zr,
  
- 		for (i = 0; i <= 7; i++) {
--			if ((bitMask>>i)&0x1)
-+			if ((bitMask >> i) & 0x1)
- 				break;
- 		}
- 		bitShift = i;
-@@ -1482,8 +1482,8 @@ u32 hal_btcoex_GetRaMask(struct adapter *padapter)
- void hal_btcoex_RecordPwrMode(struct adapter *padapter, u8 *pCmdBuf, u8 cmdLen)
- {
- 	BTC_PRINT(BTC_MSG_ALGORITHM, ALGO_TRACE_FW_EXEC, ("[BTCoex], FW write pwrModeCmd = 0x%04x%08x\n",
--		pCmdBuf[0]<<8|pCmdBuf[1],
--		pCmdBuf[2]<<24|pCmdBuf[3]<<16|pCmdBuf[4]<<8|pCmdBuf[5]));
-+		pCmdBuf[0] << 8 | pCmdBuf[1],
-+		pCmdBuf[2] << 24 | pCmdBuf[3] << 16 | pCmdBuf[4] << 8 | pCmdBuf[5]));
+ 	m = kmalloc(sizeof(struct videocodec_master), GFP_KERNEL);
+ 	if (!m) {
+-		dprintk(1, KERN_ERR "%s: %s - no memory\n",
+-			ZR_DEVNAME(zr), __func__);
+ 		return m;
+ 	}
  
- 	memcpy(GLBtCoexist.pwrModeVal, pCmdBuf, cmdLen);
- }
-@@ -1552,13 +1552,13 @@ u32 hal_btcoex_GetDBG(struct adapter *padapter, u8 *pStrBuf, u32 bufSize)
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[0]=%d for INTF_INIT\n",
--		(GLBtcDbgType[BTC_MSG_INTERFACE]&INTF_INIT)?1:0);
-+		(GLBtcDbgType[BTC_MSG_INTERFACE] & INTF_INIT) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[2]=%d for INTF_NOTIFY\n\n",
--		(GLBtcDbgType[BTC_MSG_INTERFACE]&INTF_NOTIFY)?1:0);
-+		(GLBtcDbgType[BTC_MSG_INTERFACE] & INTF_NOTIFY) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
-@@ -1570,61 +1570,61 @@ u32 hal_btcoex_GetDBG(struct adapter *padapter, u8 *pStrBuf, u32 bufSize)
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[0]=%d for BT_RSSI_STATE\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_BT_RSSI_STATE)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_BT_RSSI_STATE) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[1]=%d for WIFI_RSSI_STATE\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_WIFI_RSSI_STATE)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_WIFI_RSSI_STATE) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[2]=%d for BT_MONITOR\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_BT_MONITOR)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_BT_MONITOR) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[3]=%d for TRACE\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[4]=%d for TRACE_FW\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE_FW)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE_FW) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[5]=%d for TRACE_FW_DETAIL\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE_FW_DETAIL)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE_FW_DETAIL) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[6]=%d for TRACE_FW_EXEC\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE_FW_EXEC)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE_FW_EXEC) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[7]=%d for TRACE_SW\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE_SW)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE_SW) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[8]=%d for TRACE_SW_DETAIL\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE_SW_DETAIL)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE_SW_DETAIL) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
- 	leftSize -= count;
- 	count = rtw_sprintf(pstr, leftSize, "\tbit[9]=%d for TRACE_SW_EXEC\n",
--		(GLBtcDbgType[BTC_MSG_ALGORITHM]&ALGO_TRACE_SW_EXEC)?1:0);
-+		(GLBtcDbgType[BTC_MSG_ALGORITHM] & ALGO_TRACE_SW_EXEC) ? 1 : 0);
- 	if ((count < 0) || (count >= leftSize))
- 		goto exit;
- 	pstr += count;
 -- 
-2.30.2
+2.19.1
 
 
