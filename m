@@ -1,84 +1,84 @@
 X-GM-THRID: 6675306415104458752
-X-Received: by 2002:a1f:29c6:: with SMTP id p189mr9259573vkp.16.1554215896663;
-        Tue, 02 Apr 2019 07:38:16 -0700 (PDT)
+X-Received: by 2002:ac8:1911:: with SMTP id t17mr8775911qtj.22.1554215891615;
+        Tue, 02 Apr 2019 07:38:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:254b:: with SMTP id l11ls2137935uan.1.gmail; Tue, 02 Apr
- 2019 07:38:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxTrsmx8lKCeYLa1VpWyfvk1nBF35DWmgs2CRTRBv3lNUv0fwCIHSlbb7PI+V+7mkG1UNQe
-X-Received: by 2002:ab0:7718:: with SMTP id z24mr381816uaq.20.1554215896044;
-        Tue, 02 Apr 2019 07:38:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554215896; cv=none;
+Received: by 2002:a37:444:: with SMTP id 65ls5743415qke.1.gmail; Tue, 02 Apr
+ 2019 07:38:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzSUhjCBfaMHPjvoretIJtlDa5vKQbq9hLArIr8ztLBo1ATaq8Xtn5zXoJOxpEtdb6FXEwa
+X-Received: by 2002:ae9:ebd4:: with SMTP id b203mr8299584qkg.17.1554215891007;
+        Tue, 02 Apr 2019 07:38:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554215890; cv=none;
         d=google.com; s=arc-20160816;
-        b=eOvX7SfKx1PD2emGGsQAB/RsmIcq/bQcOOi0ZIVGpaTXGyHpTIhWhcjkbcQTcS2d2Y
-         hljxxI8ki4Ovmt7P8kFwvPyN7WgHcW+tGgOjInqYz3CFb5v9qCUhwXcTLmZGJZvmsD48
-         iYKTurci5FcnqhW/eMo5fNeZdl8qWPpMPhfrpyt8jRT8jbgI5MNj4fR3Bpwsu3beAUZe
-         3hhDaa49zoc+CYr6X88MqNuqsSjqVIDmQSI2gE46LT9GakIBQaeyztFLhV1jMc4WcAP3
-         6txGsHYoXs1C55TEjtoxM9a++G3uOVhWtou7fVZoaCgLlBz3aQN4nqTXTP/+/64TJbLL
-         iZIA==
+        b=zP10DbTtxPsHvIoQ6m/oj/fAAhV4U0SguxcnxfOafug7dsvRw6yf5EkFVCF+o59i2U
+         sBLIsbn5mQuJO/X8jlFcc+Gmrd0v0WxOPgwTeigVU3I6u/vNBpqbV821/3DmzvC36URj
+         BrympC1GlP+6cSxAbSWxtyXe1F1GwD6EvYBfVSTyNKX0edWA5eF/64fV4JrPg3p15HVU
+         FHyg3wmjI/hzjSNiRH/sRLJ32LAOoYdLML41t6Ko8jzmvvaU+IW8md6dQeiNQvoCvfS/
+         y9r4s9CFIKmISAXUurIjRydg5Ogm0yo0am5v2oCr8RDW+IwN5ShaimoXgL+uhLP8m2FY
+         zX2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=/po0EISnhiE3SY7+NH7MWd0Pk7MoJ3yn2dqEvUAVeKk=;
-        b=R11KZ8KPk8cGyim/fjMBRhsXygbCfzjhbAMyHcB8FDK8xOjizoQ12gDljBHbs3Kk0M
-         YLCSb+Llds3waUkI6ygWcKctayRxRFhx8zmocjVyGnlDDpmmWtOAiZ/s0b8fzQWsBx08
-         XJTbGX/D0EsBfJhZd/0BNwBr7Ybs236lXF6wZouAg5H/oWb2cGg5o02Zb4Epf1KzUFwq
-         blIU1T4o46xwNR/jbvb6pA69e+pOa4aHQym6OtdKHoNrYIRA/36PE+X57flaZvtN8o6T
-         xiJOs9MQqpblOUwPm0G+xrIJyAEDf76FJkK3DS8N+2ZW5u0DtMbl7SJl6q+LB6oVhQsp
-         DqWA==
+        bh=lgluCoqsy+P/AFfja+JlzX9GDN+AdpcFziReBrsZXNc=;
+        b=fZoCIOYRsSvb2VH1lOdzYk3ZTH6zZqkyPjutZrKoLisTyRh0xvjXqPn3glQ9kLDGkQ
+         +iJiosuHeaqZY48/2w5dJa7V0KlE20epC0eTU4VF8lhOOlMBLuAEacKwzp/K8vMwjAKY
+         NjdB/7k3Z7NgGozjrugH20vimU/y1KBt+u3LjMZI4hSNnxWdDya8wtB6TP5PqtkN7mxP
+         bLZGa6LsHpadXhVXO5uvZHbD3fL6bh05T2+mivPLxx0p0b6aep4o2ALWR3yR+BPGlVV5
+         X6QRv96+7ow81lwzXPhadnHrhBpsVNO7JEFHmnj+TmBiWo/Tvvl5FJ6jU4y/wyWmuSDD
+         uSPw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SA9try7Z;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bg64P6Sz;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id o80si709610vke.1.2019.04.02.07.38.16
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id q58si663717qtf.5.2019.04.02.07.38.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 07:38:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Tue, 02 Apr 2019 07:38:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SA9try7Z;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bg64P6Sz;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id i19so6492660pfd.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 07:38:16 -0700 (PDT)
+Received: by mail-pl1-x644.google.com with SMTP id b65so6374509plb.6
+        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 07:38:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=/po0EISnhiE3SY7+NH7MWd0Pk7MoJ3yn2dqEvUAVeKk=;
-        b=SA9try7ZRBZvtjIUO5U1hqr4qUrTQFwWH9E81OmHSt4M4bB3nA9yrEFq75Z3qPryUB
-         7XC3RpaN8Eri1/S9G4Tp0/xMTqbdgpl2YEEQokujAA6oNEZKE72OQEA3IdAGfiIxLXSS
-         T80f2IRgKtYVgVBOmA1/o+JXuVnxIO42m5c4NOC8GeAcU2ZCrLnJlQzeJmapoSamjxEJ
-         J/MINNaeABeB8lcPpa/wauHIwDoUSf08GfKc9Tm/+klyqtgDsscmqPKiTr+2qyyK3Zff
-         fxkwnrjjlRzsnaOtj/1lMqo1gZKpL/gztNGTJZOG3ZeoozMS8tEVBzKU2QVtUKQw0id9
-         Ukrw==
+        bh=lgluCoqsy+P/AFfja+JlzX9GDN+AdpcFziReBrsZXNc=;
+        b=bg64P6SzICmKvJ7NGmXDkJYJ30gpn6mhfkqC6ntVzCkIhuBSl+6dqbEOjEZIsJ4740
+         HIFaku0mkWEfe0OXWeppL2PhEUu4Gjk2nC9M8krO5lhaYmTIOk/1be1EftmZsydMV8eR
+         fhsIvYMvNGFf/tb6s4+FeKOK7nd/3cOGBnwGj3jnSxHXUDKFm5bxPXpaUjjclBiUsmII
+         wbJJegjqzfcxmSMRWMO8d6ddgS1KJ8q4CMHylyvLC6qbkXBLxxHuufishddIDqQPpLq9
+         DoG5YAB8PJt3m60oF2+e4zNLLPSwgHBoLM/+haT1hFAfcRzzlkisNspc9HVhA6yCQNjb
+         RJSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=/po0EISnhiE3SY7+NH7MWd0Pk7MoJ3yn2dqEvUAVeKk=;
-        b=VnCPCQhXnxGKG4e0MOMiwdpkJXYBlZBwGzF3RlKI5rrwUIkfvyyoMZ69FGHeqMZWkk
-         I/OVwIWIZLLjQRu5eEXF6wI8gb01/DICa6igksS1BQcrurPH1Lpzi/hENR4iOm/BTV6v
-         W5vaOPywf//M6whqVbWpMx1uiVHro1fKS/WMfwiynVmHH8OROmXF1P7fXL/jS4JnEZPA
-         t6brvGbA1JGKaG2fx+T0ks/XvU7TPJUoeFg/L1HuqUuUnNcft5DIL+Dk/lz6I/X+b0Od
-         Hisets6NzkVHCb7bfcx3ARY7qX0nrl2kOldb0Nm0dzIcId7cpDTqC0eZKrjW/YZO8EG2
-         gpRA==
-X-Gm-Message-State: APjAAAUVqdDz2Q1JytD5d0XC4VpvDypoqN1uivGUg+jM1Tj2rKkFO2Ki
-	cE1Tufs0qi+SXFEZfzfohOH2S0LL
-X-Received: by 2002:a63:5ec2:: with SMTP id s185mr66805571pgb.27.1554215894848;
-        Tue, 02 Apr 2019 07:38:14 -0700 (PDT)
+        bh=lgluCoqsy+P/AFfja+JlzX9GDN+AdpcFziReBrsZXNc=;
+        b=dXHC7irpLLPIyf5aA0/9KWaxEAV7GNBigis5y+DFXKxAmoP22u8cpq1SKZeScv5rt5
+         0W9octn6g9HR+KXXqHbjbWMKyWl4ZX6q8GsXney0O0hiFXso5A10t1dsKE1Wb2UXFx4k
+         4ul6mMulXUjgCPl+BZpCGh5fuRpKZz9HCEXfayLGQGX/nOCLRDYnm6WtiVLcV9i2yW6Y
+         LjBJbHirhHNdrFzj16p0QtjXBWklgYlwvnR1+nCFFwa0qgLvfCi177/60JlhfQC3S+PJ
+         yoF6jVr6cptWR4uUr5iRLrIykMahf2Iq54fPljYiWaTFO7AUlv3QEW9Sw16xh15BrOsX
+         T1MA==
+X-Gm-Message-State: APjAAAUJG1dvggmSjVZxLrV3VPfELPtxnRm3/PEsv//W+TOb1ZPifKfJ
+	3IgYiO5I/ZnocH54imx5JtvvBl1Y
+X-Received: by 2002:a17:902:8606:: with SMTP id f6mr73061970plo.151.1554215890332;
+        Tue, 02 Apr 2019 07:38:10 -0700 (PDT)
 Return-Path: <payal.s.kshirsagar.98@gmail.com>
 Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id j22sm17603660pfn.129.2019.04.02.07.38.12
+        by smtp.gmail.com with ESMTPSA id j22sm17603660pfn.129.2019.04.02.07.38.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 07:38:14 -0700 (PDT)
+        Tue, 02 Apr 2019 07:38:09 -0700 (PDT)
 From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH 2/2] staging: fbtft: fb_ssd1351.c: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 20:07:44 +0530
-Message-Id: <09997b0d3c5667156082e07f46fb9281d03f8dab.1554215607.git.payal.s.kshirsagar.98@gmail.com>
+Subject: [Outreachy kernel] [PATCH 1/2] staging: fbtft: fb_agm1264k-fl.c: Replace bit shifting with BIT macro
+Date: Tue,  2 Apr 2019 20:07:43 +0530
+Message-Id: <13bc5246b47651b7470c9fe934bee909733f6792.1554215607.git.payal.s.kshirsagar.98@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1554215607.git.payal.s.kshirsagar.98@gmail.com>
 References: <cover.1554215607.git.payal.s.kshirsagar.98@gmail.com>
@@ -90,26 +90,22 @@ Prefer using BIT and replace bit shifting with the BIT(x) macro.
 
 Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
 ---
- drivers/staging/fbtft/fb_ssd1351.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/fbtft/fb_agm1264k-fl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/fbtft/fb_ssd1351.c b/drivers/staging/fbtft/fb_ssd1351.c
-index 9ac78ce..900b28d 100644
---- a/drivers/staging/fbtft/fb_ssd1351.c
-+++ b/drivers/staging/fbtft/fb_ssd1351.c
-@@ -81,10 +81,10 @@ static int set_var(struct fbtft_par *par)
+diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
+index 8f27bd8..5a513792 100644
+--- a/drivers/staging/fbtft/fb_agm1264k-fl.c
++++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
+@@ -383,7 +383,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
+ 			/* select right side (sc1)
+ 			 * set addr
+ 			 */
+-			write_reg(par, 0x01, 1 << 6);
++			write_reg(par, 0x01, BIT(6));
+ 			write_reg(par, 0x01, (0x17 << 3) | (u8)y);
  
- 	switch (par->info->var.rotate) {
- 	case 0:
--		write_reg(par, 0xA0, remap | 0x00 | 1 << 4);
-+		write_reg(par, 0xA0, remap | 0x00 | BIT(4));
- 		break;
- 	case 270:
--		write_reg(par, 0xA0, remap | 0x03 | 1 << 4);
-+		write_reg(par, 0xA0, remap | 0x03 | BIT(4));
- 		break;
- 	case 180:
- 		write_reg(par, 0xA0, remap | 0x02);
+ 			/* write bitmap */
 -- 
 2.7.4
 
