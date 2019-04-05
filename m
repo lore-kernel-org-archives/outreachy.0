@@ -1,109 +1,183 @@
 X-GM-THRID: 6674267883353145344
-X-Received: by 2002:a65:4507:: with SMTP id n7mr815870pgq.84.1555415317993;
-        Tue, 16 Apr 2019 04:48:37 -0700 (PDT)
+X-Received: by 2002:a5d:4211:: with SMTP id n17mr703038wrq.3.1554472391335;
+        Fri, 05 Apr 2019 06:53:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:8085:: with SMTP id v5ls5788220pff.5.gmail; Tue, 16 Apr
- 2019 04:48:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzQ+Zi5yZ6oMUb/td0C6HiuonBEEXByAm/d88QWkXGgm1GPbuocjx+kip6wyipdYYZ5giDn
-X-Received: by 2002:a65:6297:: with SMTP id f23mr1667153pgv.116.1555415317150;
-        Tue, 16 Apr 2019 04:48:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555415317; cv=none;
+Received: by 2002:a5d:4081:: with SMTP id o1ls2109410wrp.7.gmail; Fri, 05 Apr
+ 2019 06:53:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwj+BqB91itHR2nk5DUUNFPoLq9KN+amQgE8SCviR4C+DngIRdSiAk907TkzM/5d4ohlWsz
+X-Received: by 2002:a5d:4ac2:: with SMTP id y2mr205672wrs.22.1554472390228;
+        Fri, 05 Apr 2019 06:53:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554472390; cv=none;
         d=google.com; s=arc-20160816;
-        b=t4//dPWJ9N2ovcca3b2c9vEiWt2yPM+60SH7foekJctb12ANUga7kd/LS/YigzC6I0
-         JJCMqSvBPY/Z/Z2oRhuvPngHxAxoUeGhoZVZZmtU/L+63TGjs+lqAqWIF2zfgQT7/qge
-         Ex/yVODOQdN591zXep1sIboK/h5oQOjy68Mm3YA0SIMGHM0JefNcxTt+kGgWSw80PF3j
-         qzvUw9r45hPZDrivQ+bNHwxCZ23KMaIHfxWf17/4mEhOgI+gDF7cFbTEnj5HW6+WhYHz
-         1Nl2gGjWRowEFnQBWcHG8b7n6Ea/TE7E0nXCbsuq5aNgihSC9lsjCWN0y/9e/Je2cozT
-         D6CA==
+        b=SyZ7DDdCJ+i/QvIKg+sy+5DEbxc6yr4v1wMhFkufuT16V+MIby3p7Us/hCACuuCe5z
+         nInO1cgJhsqmqZelQe3Qprh9WvznBq4IBhFqhirziqmhcQf6cYZ9eBrlO7biJXti1xjT
+         Vsq8L3lOtNXrvGopElQdIi8i3CoDwVLdyaN1YBHfr56APnljPbgVvcrs/OYqiGuzqdB8
+         6a3OqwovxKvnScD2vvIkRMZTEAEvmykRdar6r8cQa4hfDB5SSVRneJ11GE+7l4bMuH+d
+         SDTkHuB6i5fxgg4FKBC6/EehWJY1DGqQvY2Zak5W5rrFe6tA2MipQEQgE0L1slnBQCjS
+         rwjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=NWQ5H4PaBO373cskyLqnFZBu+x29o3+jsP2l/+9Z0zY=;
-        b=MRlev7TslmO26txh4kZf4dUcIxBMxj2CwVrJsst395ozaK8Ch/Ola+i64HStjYEC32
-         UwIbeleuPyPzuArH/za8OKDcTr/tCKaAUDY83TwATmc7zHIgoTR0418sdbrgqmXLfpEk
-         39Vd6jPvwKSX4tFyc9dXe8MHIY62KsSX56CZxOUqecubtBNoebL0sgDlP8QhtK9oujuR
-         apJXM6DTq3OOAw0kzSo9TFuYpFo1AsefkcjXm8j4usX0N4HdW2WathU9fTR/HyTtHlTz
-         02rZECR3gM0HmlydN0EGpsrpLh0EBOxwzx3+dhSU/iJMQVkcwtt3t0D9+zYBrUMy7lQR
-         9TJg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=QnsG2KPdCVEHduVWadFbf3gmQZ8X8BRjWGI07t8ixlU=;
+        b=I6EHqAykztT/92i5crnw2Ce2bTQ+wkrFq4jCmTIadEXFK/RFffvsPJ0MTCkKaBAqr/
+         BcEoaiuSojYM6GwZF96c3IjmvVKhY/JuHDXJVY2SP6UbYq2ZOTaLypekd9ksVcqGutyW
+         22Dzgx86DK5aw3nLiNDtrhjt+TqaQcUaEYp6npLrg4KiDtyerCoKtEcgVu/Z0/JokQZi
+         YCzfOOsW+aoBpixgVhPD1SvSPHz3mijs8Vvj7z6bN50lYNHcWeXQqqbCo+k3lgvuD52w
+         vet+smKjzvtSth5s+HeKaLuKfYoXQFN4ShIzv9TIpVZIsYOuPdzh5t7saHaiKtpnVbWE
+         XoOQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=w73O+udn;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id 141si3176346pgb.1.2019.04.16.04.48.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Vi9+Hjmh;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <himadri18.07@gmail.com>
+Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com. [2a00:1450:4864:20::432])
+        by gmr-mx.google.com with ESMTPS id o3si381354wmf.0.2019.04.05.06.53.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Apr 2019 04:48:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Fri, 05 Apr 2019 06:53:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) client-ip=2a00:1450:4864:20::432;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=w73O+udn;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 52F1220821;
-	Tue, 16 Apr 2019 11:48:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1555415316;
-	bh=HKoki5FGbQ/U4PVKyyLgH1wBQbsn37tWNZuA1FIC09E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=w73O+udnKjehlCn5UlfBg0I9Fc4aTlpPM16WKveNngiQGRgzOUeIXpqCe4Gih0UQu
-	 I22cuMBqM+4UKO7gd7bgqeu/E4nFNUx7urKSkAVsaVj2llKPC0NOllGlhGhQUeRfRl
-	 2bMs2LZvInioYjKHSG7OG0ROrh1TX9sic5cFezXI=
-Date: Tue, 16 Apr 2019 13:28:23 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Himadri Pandya <himadri18.07@gmail.com>
-Cc: Larry Finger <Larry.Finger@lwfinger.net>,
-	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: rtl8712: remove unnecessary NULL check
-Message-ID: <20190416112823.GA29807@kroah.com>
-References: <20190403160816.38958-1-himadri18.07@gmail.com>
- <CAPnhUpbm2tPpWBrB2eLrET_GHcmE8=mHMRHH69uxn0sozk8WOg@mail.gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Vi9+Hjmh;
+       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x432.google.com with SMTP id w10so8146403wrm.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 05 Apr 2019 06:53:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=QnsG2KPdCVEHduVWadFbf3gmQZ8X8BRjWGI07t8ixlU=;
+        b=Vi9+Hjmh5Lh7WcRX6Ak+2/SXisN6IIeXKgSMFAj5pljOGkGKrFX3l40fpTw92bUiqg
+         JxyXf5aIVOIizNmjIopkT3XoL+t/7cln5IXWk0/WXBHmHP++Be4RDfUig0NYeermojvi
+         RaKR31tZs/Oc04/i0LnjqhX0g0oDsJV405FlnJ8imNnIRbyDMoH3XANs1u6XOyvHJHoO
+         E7TW9CicyNxArRL17DD+BlxDgGBWZbHNdcEYDfAX0AMxU8kWWQJC7u8ed1cIb1FRkJdA
+         RFQaPE8ewyJJLrajkXxu641BjUTAcVQN80y//MOxwH6xXuGkhjOJAHSJGsiauKLRTa6v
+         e9BA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=QnsG2KPdCVEHduVWadFbf3gmQZ8X8BRjWGI07t8ixlU=;
+        b=fZ4AclAIU4kViM8HUpv0jfwPG97Dj+E4DXQhgs6hs3SKTBE6EMAlSWBuvteR2iqoa0
+         e0Wgp5CF03Ov7rzdkHWyGCMtD+1RanOrxkbEhzk65uiD/zTcNg8Tv9QfNIS24dOVGLZU
+         WxYsaFGUFSHrBjMQhxIfZcnGU+b7aKjaw2BuBP+IQourA3M7hXY9dom9Bq1qioS1VwgU
+         L4JbicULEZAdfxl0Fvzzrju6Qz9ihbILE+RCgiXNXazcpLg7ar1JpGL6r1G5286he4fH
+         WB3OVfPMMR1nTLwiNzeFbJYGlZUFr6r6Bb+J+xGKHNBLiOs8xP3k+rgfOjY8+ZD/oKc+
+         1Q3A==
+X-Gm-Message-State: APjAAAVxExY9ZGY4vtXAEOuhRJ13eBhPHO6XE8BgsQEnApcI7MzVSDbS
+	zuZfu3qwsIvyANSOExhdQL6ma0NDymnfDSILKarI9Q==
+X-Received: by 2002:a05:6000:120c:: with SMTP id e12mr8198897wrx.187.1554472389868;
+ Fri, 05 Apr 2019 06:53:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAPnhUpbm2tPpWBrB2eLrET_GHcmE8=mHMRHH69uxn0sozk8WOg@mail.gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+References: <20190403160816.38958-1-himadri18.07@gmail.com>
+In-Reply-To: <20190403160816.38958-1-himadri18.07@gmail.com>
+From: Himadri Pandya <himadri18.07@gmail.com>
+Date: Fri, 5 Apr 2019 19:22:58 +0530
+Message-ID: <CAPnhUpbm2tPpWBrB2eLrET_GHcmE8=mHMRHH69uxn0sozk8WOg@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8712: remove unnecessary NULL check
+To: Larry Finger <Larry.Finger@lwfinger.net>, 
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>, gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="0000000000009c82eb0585c8cefa"
 
-On Fri, Apr 05, 2019 at 07:22:58PM +0530, Himadri Pandya wrote:
-> On Wed, 3 Apr, 2019, 9:38 PM Himadri Pandya, <himadri18.07@gmail.com> wrote:
-> 
-> > List wlan_network is built properly with init_list_head and
-> > list_add_tail which cancels out its probability of being NULL because of
-> > the precence of list_head at the top of this structure. Hence, the NULL
-> > test can be omitted.
-> >
-> > Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
-> > ---
-> >  drivers/staging/rtl8712/rtl871x_mlme.c | 2 --
-> >  1 file changed, 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c
-> > b/drivers/staging/rtl8712/rtl871x_mlme.c
-> > index e370841a79ca..7c7267d0fc9e 100644
-> > --- a/drivers/staging/rtl8712/rtl871x_mlme.c
-> > +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-> > @@ -1120,8 +1120,6 @@ int r8712_select_and_join_from_scan(struct mlme_priv
-> > *pmlmepriv)
-> >                 }
-> >                 pnetwork = container_of(pmlmepriv->pscanned,
-> >                                         struct wlan_network, list);
-> > -               if (!pnetwork)
-> > -                       return _FAIL;
-> >                 pmlmepriv->pscanned = pmlmepriv->pscanned->next;
-> >                 if (pmlmepriv->assoc_by_bssid) {
-> >                         dst_ssid = pnetwork->network.MacAddress;
-> > --
-> > 2.17.1
-> >
-> 
-> Please let me know if the patch needs any further improvements.
+--0000000000009c82eb0585c8cefa
+Content-Type: text/plain; charset="UTF-8"
 
-Please be patient, wait at least 2 weeks for people to get around to
-reviewing changes as trivial as code cleanup stuff is.
+On Wed, 3 Apr, 2019, 9:38 PM Himadri Pandya, <himadri18.07@gmail.com> wrote:
 
-thanks,
+> List wlan_network is built properly with init_list_head and
+> list_add_tail which cancels out its probability of being NULL because of
+> the precence of list_head at the top of this structure. Hence, the NULL
+> test can be omitted.
+>
+> Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
+> ---
+>  drivers/staging/rtl8712/rtl871x_mlme.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c
+> b/drivers/staging/rtl8712/rtl871x_mlme.c
+> index e370841a79ca..7c7267d0fc9e 100644
+> --- a/drivers/staging/rtl8712/rtl871x_mlme.c
+> +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+> @@ -1120,8 +1120,6 @@ int r8712_select_and_join_from_scan(struct mlme_priv
+> *pmlmepriv)
+>                 }
+>                 pnetwork = container_of(pmlmepriv->pscanned,
+>                                         struct wlan_network, list);
+> -               if (!pnetwork)
+> -                       return _FAIL;
+>                 pmlmepriv->pscanned = pmlmepriv->pscanned->next;
+>                 if (pmlmepriv->assoc_by_bssid) {
+>                         dst_ssid = pnetwork->network.MacAddress;
+> --
+> 2.17.1
+>
 
-greg k-h
+Please let me know if the patch needs any further improvements.
+
+Thank you.
+
+- Himadri
+
+
+>
+
+--0000000000009c82eb0585c8cefa
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, 3 Apr, 2019, 9:38 PM Himadri Pandya, &lt;<a hr=
+ef=3D"mailto:himadri18.07@gmail.com">himadri18.07@gmail.com</a>&gt; wrote:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;borde=
+r-left:1px #ccc solid;padding-left:1ex">List wlan_network is built properly=
+ with init_list_head and<br>
+list_add_tail which cancels out its probability of being NULL because of<br=
+>
+the precence of list_head at the top of this structure. Hence, the NULL<br>
+test can be omitted.<br>
+<br>
+Signed-off-by: Himadri Pandya &lt;<a href=3D"mailto:himadri18.07@gmail.com"=
+ target=3D"_blank" rel=3D"noreferrer">himadri18.07@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/staging/rtl8712/rtl871x_mlme.c | 2 --<br>
+=C2=A01 file changed, 2 deletions(-)<br>
+<br>
+diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl87=
+12/rtl871x_mlme.c<br>
+index e370841a79ca..7c7267d0fc9e 100644<br>
+--- a/drivers/staging/rtl8712/rtl871x_mlme.c<br>
++++ b/drivers/staging/rtl8712/rtl871x_mlme.c<br>
+@@ -1120,8 +1120,6 @@ int r8712_select_and_join_from_scan(struct mlme_priv =
+*pmlmepriv)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pnetwork =3D contai=
+ner_of(pmlmepriv-&gt;pscanned,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 struct w=
+lan_network, list);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (!pnetwork)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0return _FAIL;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pmlmepriv-&gt;pscan=
+ned =3D pmlmepriv-&gt;pscanned-&gt;next;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (pmlmepriv-&gt;a=
+ssoc_by_bssid) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 dst_ssid =3D pnetwork-&gt;network.MacAddress;<br>
+-- <br>
+2.17.1<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"=
+auto"><div dir=3D"auto" style=3D"font-family:sans-serif">Please let me know=
+ if the patch needs any further improvements.</div><div dir=3D"auto" style=
+=3D"font-family:sans-serif"><br></div><div dir=3D"auto" style=3D"font-famil=
+y:sans-serif">Thank you.</div><div dir=3D"auto" style=3D"font-family:sans-s=
+erif"><br></div><div dir=3D"auto" style=3D"font-family:sans-serif">- Himadr=
+i</div><div dir=3D"auto" style=3D"font-family:sans-serif"><br></div></div><=
+div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+</blockquote></div></div></div>
+
+--0000000000009c82eb0585c8cefa--
 
