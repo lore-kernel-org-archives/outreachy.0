@@ -1,131 +1,91 @@
-X-GM-THRID: 6670460287922995200
-X-Received: by 2002:ac8:2f98:: with SMTP id l24mr14639995qta.8.1553087562122;
-        Wed, 20 Mar 2019 06:12:42 -0700 (PDT)
+X-GM-THRID: 6744449794270298112
+X-Received: by 2002:a05:600c:2049:: with SMTP id p9mr16684642wmg.30.1570361051180;
+        Sun, 06 Oct 2019 04:24:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:4ad6:: with SMTP id x205ls922825qka.5.gmail; Wed, 20 Mar
- 2019 06:12:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzlo08+WBJhJ38gDWdwCQf3K5nc7puG2GQ7XJhcOysk9T+P2hSm0jSnO0kft3aQCsNFY8RY
-X-Received: by 2002:a37:b241:: with SMTP id b62mr14689156qkf.14.1553087561494;
-        Wed, 20 Mar 2019 06:12:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553087561; cv=none;
+Received: by 2002:adf:e90e:: with SMTP id f14ls4107377wrm.7.gmail; Sun, 06 Oct
+ 2019 04:24:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxom13irB1mVZrwpmQ+45+qT/4vdBFQkP9s6o1OZVZn74nD8MYCBT8Fx//3Np44kKlyG9Zb
+X-Received: by 2002:adf:fb11:: with SMTP id c17mr19572424wrr.0.1570361049855;
+        Sun, 06 Oct 2019 04:24:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570361049; cv=none;
         d=google.com; s=arc-20160816;
-        b=ERg3LjwZkd/XgTv0Prtr3z9YhYZA7b7PEJnBBGTIeGUU+LRMhG06U6lrUI1CjFY/3S
-         Cf1q13cu9JuIsASeUfQcoIWK1/lvojVxczwOKF9cOb2sXMc3flfMP0exe/GY+nlRrwVo
-         fvFxxaIvIHHT6iVG1UgQYSRsPeOa+drVj4L5dMTj0RHDUfVdXCMkbNC6DjxnDOycqSX3
-         6f+o9k0trXaYXSgVutW6FUlA0FKchEA0r74nVTdjjJQ1RbaN0DuB+T52iB9TlyXvWTow
-         9Y3MJvcYQhDydm/l6fBRkBW5sHXFOc/ZXjDgiccgnuy2g98mnnbVTZe4d5SYH0rxyLOu
-         ixbQ==
+        b=wdaIM6+UvAYaPdsnJj/bBUbuTrJ58sp8sNEsR9MJglwGocyeeeHr8UaTe5gZH8vOId
+         u0a4KxW2/SUZfV8g4hf22XThW4Yd6lWNTGohBAv3LxXtyxDxvdfQFXWF8efqKBhR4MPE
+         ML1RZenpaojLAoi1sjC7xOIG7UuGlGtBe7XoS3yU5qP7mcPBgfxvk+vAIPM4TD2XBR08
+         2YscDDZ8KgyTMmz7tTIhrQHY2JvAKdrl4NPGlv/uTCg155HeWUOQy36l1B3GSgtT/j5R
+         pXTv8tyx/RdHc3xKEYFkdPRwxFdNejyrls5z5vTjyHa01OqxJYL4n73FoNNb2J2p+53h
+         wOag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3L6Szrf+zegzGpCmXWO/YGR3RCkUNaAcKhnv1pP89u8=;
-        b=oNrkBea/YhlX6EgSsO2P11IbfsWnmxq3eijLCY/HNM6ma7YEZB2hsCKsLptzbPQWcU
-         xZccC4ZfreqbcLklHTBn+lI0oncC1r81szlU5JZGDGKH0ViMU3C8FRy6o0E+4OqIRG9p
-         gU6kAgZK60QxBnlaOluxMpVIYZ7eXTpY/j8IEGmP1lLiqjljT8BmfkBZekjGYCt6J8dN
-         GOWPvE4lOAWN0hRFHcZvhoG4lEoym0mlCzHnNzoJRIu1oKYb0fqjXzSMAFwRVaVusLEP
-         wzoau/Krv+nqM3+mMc7nHJ57+tjD3hOl/xzGevofw3yzRU0NLcYLHmMejI1OkSM6b8Ot
-         o9oQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=JzjXsiXZaCo5yxHgj2wseNPFBhT4I627FcCE4/oVkvM=;
+        b=ZBYuTLQWa8MWOlTsdG/pOFxhwk5k48ZPkW3YZ3AIamiyvlxb/NMpxys2Jl//qeTxi+
+         Vf4zj+lqM8TlWVQ1iCDTvANYFi6xKvEdhY1mgHO9zqLHHV9/SlgbFMvsIseXfnoKF6ZZ
+         ao2oEVvF92lSDRauWqM/JoLKGehKxrawiqP1/YSU5k+tjVgYMbbSIIOhTKiCrlkFQ7O9
+         cYeF0trm5EZa/9+V8dil9jBeBWM6gaXrUxc3xUtLEWnSCi/ZTEYRVpWf/mkoHBVVh3vm
+         hJxeaPDsXRXqfQFZKlxszfiet1mC8c/raePJPrMqnAaxbLtU0viAhFNg/DunoOrRt77N
+         3+AQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JKNrdo8g;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id y202si107078qka.2.2019.03.20.06.12.41
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id u15si739126wmc.1.2019.10.06.04.24.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Mar 2019 06:12:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Sun, 06 Oct 2019 04:24:09 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JKNrdo8g;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id b12so1809818pgk.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 06:12:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=3L6Szrf+zegzGpCmXWO/YGR3RCkUNaAcKhnv1pP89u8=;
-        b=JKNrdo8gxbIwYuSiXKrzQNvZtpEXi/nu8LW49GT7DJS4Spe1GcVgIshryV7PdNp15o
-         TLAIkdzrTBdGc3Ezd5cQ8/OIk0lke6XFqILyqNoJ1W7AhfPfeR3fNdlikcMl83mxyuHq
-         1oK7jYn4SZV7XH+01cGeRYp1IbhzsWqRUb1lWYlNdAWM56kJ/B+s5LPvkr8o296CQPKC
-         HZPHjnUS2S3vxRhUaQ8Qa5yImbTvnHnuJv6hltkhVfhd+wvE++oq3vDGxDcXLtqBxG5Y
-         G5RajXwZrwEqsADTQ0aoSNh8Z6fRFZHbwOpwJIvlA+JrxqR19UBg5KOa6RQNwpedFaU5
-         tJXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=3L6Szrf+zegzGpCmXWO/YGR3RCkUNaAcKhnv1pP89u8=;
-        b=TD0Opxc2/faLd1xT9id3QCXtO7plvlC7ZfkkspotlhmT5uaAdQAMJG7AmUIqdbK7o7
-         NwTgEuTfOswPvrYcQomIcNa0NApB8JvgBrVh7EhaTQoDkNp022aiiO4yax8cinBuNYLB
-         1vVQyuSxt7vsX1S6WP0vMCclEUI4BwDMv3Nzcj7SxEEew2r7YhZpjkFGI4s+QQbUy3nq
-         IgfIOYchf/S7WMZXl8y9W76qYvQPPKC/XB0WPVMwu5zK1huaew+6iZTmgRy9MPaOl75f
-         ivgaj2gP3coFZ8xceqk3Za06nMrRH44RjRfP7zGcpaf8lSHQIx07+Q/7QPViDWCX+oao
-         0cDA==
-X-Gm-Message-State: APjAAAVq7j1kUOUv1dhhUJzQ7MRW3Gcx50Txu3U5836TPUcU1H0CfuAc
-	Mczm60kh9m9NPczh5xUxkLrTfuTp
-X-Received: by 2002:a63:2045:: with SMTP id r5mr1152873pgm.394.1553087560129;
-        Wed, 20 Mar 2019 06:12:40 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.44.145])
-        by smtp.gmail.com with ESMTPSA id d5sm2297246pgv.20.2019.03.20.06.12.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 20 Mar 2019 06:12:39 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: greybus: alignment should match open parenthesis
-Date: Wed, 20 Mar 2019 18:42:21 +0530
-Message-Id: <1553087541-4396-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,263,1566856800"; 
+   d="scan'208";a="321762246"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Oct 2019 13:24:08 +0200
+Date: Sun, 6 Oct 2019 13:24:08 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Joe Perches <joe@perches.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, 
+    Gabriela Bittencourt <gabrielabittencourt00@gmail.com>, 
+    outreachy-kernel@googlegroups.com, johan@kernel.org, elder@kernel.org, 
+    greybus-dev@lists.linaro.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: greybus: add blank line
+ after declarations
+In-Reply-To: <2ed3bf96312dbd9abcd626868ce84e01a066b201.camel@perches.com>
+Message-ID: <alpine.DEB.2.21.1910061322070.2515@hadrien>
+References: <20191005210046.27224-1-gabrielabittencourt00@gmail.com>  <20191006095042.GA2918514@kroah.com> <2ed3bf96312dbd9abcd626868ce84e01a066b201.camel@perches.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Aligning to open parenthesis
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/greybus/audio_codec.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-index 08746c8..d62f91f 100644
---- a/drivers/staging/greybus/audio_codec.c
-+++ b/drivers/staging/greybus/audio_codec.c
-@@ -70,7 +70,7 @@ static int gbaudio_module_enable_tx(struct gbaudio_codec_info *codec,
- 		i2s_port = 0;	/* fixed for now */
- 		cportid = data->connection->hd_cport_id;
- 		ret = gb_audio_apbridgea_register_cport(data->connection,
--						i2s_port, cportid,
-+							i2s_port, cportid,
- 						AUDIO_APBRIDGEA_DIRECTION_TX);
- 		if (ret) {
- 			dev_err_ratelimited(module->dev,
-@@ -160,7 +160,7 @@ static int gbaudio_module_disable_tx(struct gbaudio_module_info *module, int id)
- 		i2s_port = 0;	/* fixed for now */
- 		cportid = data->connection->hd_cport_id;
- 		ret = gb_audio_apbridgea_unregister_cport(data->connection,
--						i2s_port, cportid,
-+							  i2s_port, cportid,
- 						AUDIO_APBRIDGEA_DIRECTION_TX);
- 		if (ret) {
- 			dev_err_ratelimited(module->dev,
-@@ -205,7 +205,7 @@ static int gbaudio_module_enable_rx(struct gbaudio_codec_info *codec,
- 		i2s_port = 0;	/* fixed for now */
- 		cportid = data->connection->hd_cport_id;
- 		ret = gb_audio_apbridgea_register_cport(data->connection,
--						i2s_port, cportid,
-+							i2s_port, cportid,
- 						AUDIO_APBRIDGEA_DIRECTION_RX);
- 		if (ret) {
- 			dev_err_ratelimited(module->dev,
-@@ -295,7 +295,7 @@ static int gbaudio_module_disable_rx(struct gbaudio_module_info *module, int id)
- 		i2s_port = 0;	/* fixed for now */
- 		cportid = data->connection->hd_cport_id;
- 		ret = gb_audio_apbridgea_unregister_cport(data->connection,
--						i2s_port, cportid,
-+							  i2s_port, cportid,
- 						AUDIO_APBRIDGEA_DIRECTION_RX);
- 		if (ret) {
- 			dev_err_ratelimited(module->dev,
--- 
-2.7.4
+On Sun, 6 Oct 2019, Joe Perches wrote:
 
+> On Sun, 2019-10-06 at 11:50 +0200, Greg KH wrote:
+> > On Sat, Oct 05, 2019 at 06:00:46PM -0300, Gabriela Bittencourt wrote:
+> > > Fix CHECK: add blank line after declarations
+> []
+> > > diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
+> []
+> > > @@ -24,6 +24,7 @@ struct gb_control {
+> > >  	char *vendor_string;
+> > >  	char *product_string;
+> > >  };
+> > > +
+> > >  #define to_gb_control(d) container_of(d, struct gb_control, dev)
+> >
+> > No, the original code is "better" here, it's a common pattern despite
+> > what checkpatch.pl tells you, sorry.
+>
+> Statistics please.
+>
+> I believe it's not a common pattern.
+
+I get 464 that have a blank line before the container_of #define and 185
+that have no blank line.
+
+Of the 464 that have a blank line, 135 contain clk in the file name.
+
+julia
 
