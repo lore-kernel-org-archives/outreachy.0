@@ -1,114 +1,192 @@
 X-GM-THRID: 6744681878871080960
-X-Received: by 2002:a25:cd09:: with SMTP id d9mr8919335ybf.519.1570403014381;
-        Sun, 06 Oct 2019 16:03:34 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:68cd:: with SMTP id d196ls2033223ybc.13.gmail; Sun, 06
- Oct 2019 16:03:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwlLjmQtqJ/dlJyX2Vw3hgjrkwzG9siJZwCOjKkP1xgDUpIZ1bUmn3q8y7ZjorEyEl4WrEM
-X-Received: by 2002:a25:9091:: with SMTP id t17mr9670652ybl.352.1570403013108;
-        Sun, 06 Oct 2019 16:03:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570403013; cv=none;
-        d=google.com; s=arc-20160816;
-        b=WUe69trcTw7GY+cHbOzuBLBCxgrpBarZbdVQD2fEwXhEOj8mCK4vsJTxXg9jXXSmMW
-         O/UmZx3gbfQlylpObhS0GUcEG0/bpTxdcyxvhJ6VmX1E/qDkNj3tTpF3EgG8o23aRyrr
-         +GMeDXEMWXl2Py722w7SFVffLow/ZdZfHfC7+28u9q488EXww2n3nrL4ljfuoII4lp/G
-         MXFMkR2j6Yo9xPk9BSv4viDM6OZ0DlEDAg31NXkfqXtBxu1zNZcB40NmzKrvk87d6Qmt
-         1wuJGZn+pp4fP4Puru7H5GqPnlF97TrxcP7uqxWel5JiFrEDJyL/sIbZRQikX+YJ7rOB
-         fueA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=oOmzQE1lbLqxTbMNLKSaAOF4Z4q7Td/JII4gAgs144E=;
-        b=MpfV0bVAcLnFcs1oMxOrtK3fHl9GuwbPgX8QwTMpZvLyuUuaSjHuu0rs2I4da16TlA
-         rzuKoVQUxqHerhFM8jTZMv90hPYcq3WaIJnN0QUtzuC5eBq0QOZ3M2SWPStniYynvGSg
-         S2Gi6vYWeTImrbe4XyGyY94S5W7hLrNGHt7LCipuZBuR+GaUaB9oQmBgoruQmJMK9+Gg
-         +Yz+AcayzvmnfETHOHWSQ2+lwcOKGCk4Yo6EU3BKPQ2RkdkE8wN/1hm1EELaYrIziE08
-         ZoEt83O/XEbwNwstVkmfCLPlIcNw6gufo+7ZYYPvzHNVzqZTpeGTGWokdHEFCQNDjCVo
-         Nxtw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="TrYXSHl/";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-ua1-x944.google.com (mail-ua1-x944.google.com. [2607:f8b0:4864:20::944])
-        by gmr-mx.google.com with ESMTPS id p140si792135ywg.4.2019.10.06.16.03.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 06 Oct 2019 16:03:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) client-ip=2607:f8b0:4864:20::944;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="TrYXSHl/";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ua1-x944.google.com with SMTP id q11so3508926uao.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 16:03:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=oOmzQE1lbLqxTbMNLKSaAOF4Z4q7Td/JII4gAgs144E=;
-        b=TrYXSHl/HRm7hlMw1T5wTm6gu4lxexFiY8g5nXV1w6OGxJSrqd8QDZUvTrqUK3cAcK
-         JNgn1gI84meggT2Lz6MUytjwJAcqBu4eTAR4k4JzrKQPbG3uTUvdwt4ggjVgtrxMSqkY
-         xoPN9H1qs2B+poggLbGgrabFiXIR0HGBmPSMwaOqDw7ctMfryEhGzuWzXfYhPRgsxJIG
-         WVbhURxCcPotEUJ0DN1naHW69hHIb3ZckqWwlj8m5bA02Pw9p41Miv0dPjazGc87sXIa
-         e6G08cYUglFqATzqnMEp+uilA+djKktt2ajw2D2xXHyIjI7JDDr81D+30JrOsqCog6/B
-         LepQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=oOmzQE1lbLqxTbMNLKSaAOF4Z4q7Td/JII4gAgs144E=;
-        b=j8udo9Qk3vW97nKC8r35OmFF3KKWi5XifyAOFaHiLK1VqcJ5LlqixqEbYy1YAr8T6q
-         GQxG5GgRm9ZfQ3IhswXDXaSGYSNpLtulb5g6JSNzQCE9Mih1yqrXAUmgEqTOgElb6+Gq
-         p2gtblx8U05phEhUVSPU3EFKyvJtm54nHZRcxGxOp8EshvvUoUl1E3dcMXvBsekbKfHC
-         fSVr5jhuDQtMlcAvZR2bUT9UcOmpYkcqRrXw6TOAAPtJF4DaLSO/696XkMIxvTxhxfD8
-         QdfXfW3aSyVEt/rPxcv7lWyzfy27R5EVM99a2VBS5c4JGA7F5/0dBvdgoJ2Qn1F5CFxs
-         P3KA==
-X-Gm-Message-State: APjAAAU4GIFiKcTTPAtahrKscVdS1Hcnfwt3F7qeuBVB5LQkJYCclMBM
-	7oQWkWkKwNRzTySFAHClHqPYdnMVRRE2AQ==
-X-Received: by 2002:ab0:6355:: with SMTP id f21mr13457072uap.40.1570403012751;
-        Sun, 06 Oct 2019 16:03:32 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com (dynamic-200-119-56-53.dynamic.etb.net.co. [200.119.56.53])
-        by smtp.gmail.com with ESMTPSA id v188sm3612920vka.34.2019.10.06.16.03.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Oct 2019 16:03:32 -0700 (PDT)
-Date: Sun, 6 Oct 2019 18:03:30 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Remove unnecessary braces
-Message-ID: <20191006230327.GA4168@gmail.com>
+Date: Sun, 6 Oct 2019 14:15:44 -0700 (PDT)
+From: Javier Arias <jarias.linux@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <42d53c83-8aea-43c3-8095-e46577a1fcb4@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1910061557170.2515@hadrien>
+References: <20191006133016.GA22297@gmail.com>
+ <alpine.DEB.2.21.1910061557170.2515@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove
+ unnecessary braces
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_860_1270208420.1570396544272"
+X-Google-Token: EICz6ewFFuR-G5rJLKc0
+X-Google-IP: 67.21.32.110
 
-Remove braces that are not necessary for any arm of this statement.
-Issue found by checkpatch.
+------=_Part_860_1270208420.1570396544272
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_861_439925684.1570396544272"
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+------=_Part_861_439925684.1570396544272
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 3956c43a6468..bda25e13e935 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -3063,9 +3063,8 @@ void rtw_ack_tx_done(struct xmit_priv *pxmitpriv, int status)
- {
- 	struct submit_ctx *pack_tx_ops = &pxmitpriv->ack_tx_ops;
+Sorry seems like I answered with a direct email instead of the mail list, 
+so here it goes again:
+
+Hello Julia,
+
+Thanks for your feedback. I'm checking the return values and it seems like 
+the Realtek driver files would use them internally throughout the code, and 
+not returned to the system. They are defined in the following header file:
+
+drivers/staging/rtl8723bs/include/osdep_service.h
+>
  
--	if (pxmitpriv->ack_tx) {
-+	if (pxmitpriv->ack_tx)
- 		rtw_sctx_done_err(&pack_tx_ops, status);
--	} else {
-+	else
- 		DBG_871X("%s ack_tx not set\n", __func__);
--	}
- }
--- 
-2.20.1
 
+>  11 #define _FAIL           0
+>  12 #define _SUCCESS        1
+>  13 #define RTW_RX_HANDLED 2
+>
+
+Should I do something with them?
+
+On Sunday, 6 October 2019 08:58:26 UTC-5, Julia Lawall wrote:
+>
+>
+>
+> On Sun, 6 Oct 2019, Javier F. Arias wrote: 
+>
+> > Remove unnecessary braces for single statement block. 
+> > Issue found by checkpatch. 
+> > 
+> > Signed-off-by: Javier F. Arias <jaria...@gmail.com <javascript:>> 
+>
+> Acked-by: Julia Lawall <julia...@lip6.fr <javascript:>> 
+>
+> The patch looks fine.  To go further with this code, you could see whether 
+> the function can return more standdard kernel return values: typically 0 
+> for succes and -ENOMEM etc for various kinds of failure. 
+>
+> julia 
+>
+> > --- 
+> >  drivers/staging/rtl8723bs/core/rtw_xmit.c | 3 +-- 
+> >  1 file changed, 1 insertion(+), 2 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c 
+> b/drivers/staging/rtl8723bs/core/rtw_xmit.c 
+> > index b5dcb78fb4f4..29acbb1ee869 100644 
+> > --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c 
+> > +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c 
+> > @@ -3022,9 +3022,8 @@ int rtw_sctx_wait(struct submit_ctx *sctx, const 
+> char *msg) 
+> >                  status = sctx->status; 
+> >          } 
+> > 
+> > -        if (status == RTW_SCTX_DONE_SUCCESS) { 
+> > +        if (status == RTW_SCTX_DONE_SUCCESS) 
+> >                  ret = _SUCCESS; 
+> > -        } 
+> > 
+> >          return ret; 
+> >  } 
+> > -- 
+> > 2.20.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreach...@googlegroups.com <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20191006133016.GA22297%40gmail.com. 
+>
+> > 
+>
+
+------=_Part_861_439925684.1570396544272
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Sorry seems like I answered with a direct email inste=
+ad of the mail list, so here it goes again:<br></div><div><br></div><div>He=
+llo Julia,</div><div><br></div><div>Thanks for your feedback. I&#39;m
+ checking the return values and it seems like the Realtek driver files=20
+would use them internally throughout the code, and not returned to the=20
+system. They are defined in the following header file:</div><div><br></div>=
+<blockquote class=3D"gmail_quote" style=3D"border-left: 1px solid rgb(204, =
+204, 204); padding-left: 1ex;"><div>drivers/staging/rtl8723bs/<wbr>include/=
+osdep_service.h</div></blockquote><div>=C2=A0</div><blockquote class=3D"gma=
+il_quote" style=3D"border-left: 1px solid rgb(204, 204, 204); padding-left:=
+ 1ex;"><div>=C2=A011 #define _FAIL =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 0<br>=
+=C2=A012 #define _SUCCESS =C2=A0 =C2=A0 =C2=A0 =C2=A01<br>=C2=A013 #define =
+RTW_RX_HANDLED 2</div></blockquote><div><br></div>Should I do something wit=
+h them?<br><br>On Sunday, 6 October 2019 08:58:26 UTC-5, Julia Lawall  wrot=
+e:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;b=
+order-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sun, 6 Oct 2019, Javier F. Arias wrote:
+<br>
+<br>&gt; Remove unnecessary braces for single statement block.
+<br>&gt; Issue found by checkpatch.
+<br>&gt;
+<br>&gt; Signed-off-by: Javier F. Arias &lt;<a href=3D"javascript:" target=
+=3D"_blank" gdf-obfuscated-mailto=3D"l7_LzE-WCQAJ" rel=3D"nofollow" onmouse=
+down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
+f=3D&#39;javascript:&#39;;return true;">jaria...@gmail.com</a>&gt;
+<br>
+<br>Acked-by: Julia Lawall &lt;<a href=3D"javascript:" target=3D"_blank" gd=
+f-obfuscated-mailto=3D"l7_LzE-WCQAJ" rel=3D"nofollow" onmousedown=3D"this.h=
+ref=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javas=
+cript:&#39;;return true;">julia...@lip6.fr</a>&gt;
+<br>
+<br>The patch looks fine. =C2=A0To go further with this code, you could see=
+ whether
+<br>the function can return more standdard kernel return values: typically =
+0
+<br>for succes and -ENOMEM etc for various kinds of failure.
+<br>
+<br>julia
+<br>
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/rtl8723bs/<wbr>core/rtw_xmit.c | 3 +--
+<br>&gt; =C2=A01 file changed, 1 insertion(+), 2 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/rtl8723bs/<wbr>core/rtw_xmit.c b/driv=
+ers/staging/rtl8723bs/<wbr>core/rtw_xmit.c
+<br>&gt; index b5dcb78fb4f4..29acbb1ee869 100644
+<br>&gt; --- a/drivers/staging/rtl8723bs/<wbr>core/rtw_xmit.c
+<br>&gt; +++ b/drivers/staging/rtl8723bs/<wbr>core/rtw_xmit.c
+<br>&gt; @@ -3022,9 +3022,8 @@ int rtw_sctx_wait(struct submit_ctx *sctx, c=
+onst char *msg)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0status =3D sctx-&gt;status;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (status =3D=3D=
+ RTW_SCTX_DONE_SUCCESS) {
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (status =3D=3D=
+ RTW_SCTX_DONE_SUCCESS)
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D _SUCCESS;
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return ret;
+<br>&gt; =C2=A0}
+<br>&gt; --
+<br>&gt; 2.20.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"l7_LzE-WCQAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20191006133016.GA22297%40gmail.com" ta=
+rget=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://gr=
+oups.google.com/d/msgid/outreachy-kernel/20191006133016.GA22297%40gmail.com=
+&#39;;return true;" onclick=3D"this.href=3D&#39;https://groups.google.com/d=
+/msgid/outreachy-kernel/20191006133016.GA22297%40gmail.com&#39;;return true=
+;">https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>20191006133=
+016.GA22297%<wbr>40gmail.com</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_861_439925684.1570396544272--
+
+------=_Part_860_1270208420.1570396544272--
 
