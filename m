@@ -1,73 +1,99 @@
 X-GM-THRID: 6744763915639455744
-X-Received: by 2002:a5d:4d4f:: with SMTP id a15mr20295104wru.267.1570397474942;
-        Sun, 06 Oct 2019 14:31:14 -0700 (PDT)
+X-Received: by 2002:a17:902:ab89:: with SMTP id f9mr25644933plr.295.1570388850731;
+        Sun, 06 Oct 2019 12:07:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:c8d9:: with SMTP id f25ls3058923wml.5.gmail; Sun, 06 Oct
- 2019 14:31:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxUqQD5xFint1wZoU98VC6H0P73gidr+QJ0Ci7e6RQ9sAE3v61jZ20nqfkR3w4jO0GHPH8u
-X-Received: by 2002:a7b:c088:: with SMTP id r8mr19257955wmh.44.1570397473007;
-        Sun, 06 Oct 2019 14:31:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570397473; cv=none;
+Received: by 2002:a17:90b:345:: with SMTP id fh5ls2385505pjb.0.gmail; Sun, 06
+ Oct 2019 12:07:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxPw+uDZ8CmuY2AiA7HIeefHRO1CzDUcI/96M9V6airnJEStFZaU3eQx7hLMYgyl3b6/knE
+X-Received: by 2002:a17:902:9a49:: with SMTP id x9mr26462761plv.324.1570388849621;
+        Sun, 06 Oct 2019 12:07:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570388849; cv=none;
         d=google.com; s=arc-20160816;
-        b=HoMeasSZ/Py1af8bGuYHsQHxWwEYCNvl5hePyoEPY1kiXvCUyqPmScgA1Qd6t01wTJ
-         9UC9rDNgT/fvv6o1SqOGGodAGj3SIUW4x/xL0P0p+gGQTd7qDH+60Pq4RT0bX/IuFLsQ
-         UrzCgujg4QSpemdXbKuDDnZ9zua26/e8LnpEmGyIby6uMynQgXNKoNJ5L2EaV+rqmrYk
-         yPUook+RGZQcCAua5pdl67b4KcV+Du9FMgm4LND/TBM5kVcRQK4Sqq1JzOmCHHwoIZdU
-         nr+CdvIPmyp3R/qlTWboHBxas9FEoCoQ2oJIeij0egj2e67YfjOn1OlsBXM0yn+D/jST
-         oIbA==
+        b=0BpzC3G8Op/YNt8ot1gO2cXnz8l7HsbcSPHTnD6lQlsB14tOoBIC0qkmrzXK/6cXtu
+         wi18lwAez9+pGEnwd7621scXH7+9H1XSFeKg/P5uGxvBdcDPTo9e1Ki4X+klyV+D8cnG
+         0U8DBBUY4C8lePWBggK3Y9G0F1+2Lj++ZaO6MV8ZPsLM9ETMtpe68uJ578a+uh105o0O
+         c4HOWlzoxpqIU+x5EyW1kEIKIHd8QqYwG0jzVbwddjHVm2X/QYbRgolFPfKALaXnt/kI
+         fYNZeGZGScCgjzMCM4RG+hRQZoV380dqhXAU6f5/3ulwsp/cMJZ2RTMsj59tsIkNnKvo
+         9MDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:user-agent:in-reply-to:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date;
-        bh=EnzfqZ46LZW1Ts47iHRZ5CKEdGeayelIgMqrc/ija7w=;
-        b=D71aW/6KXeUDCotwcTtn1GJq/HXee50qHGPlxrbWuq2LQa+ZPV09ha4GqcaYw33kLt
-         SMgmU3c+ie4XYc/rRhj2S7ZIoDjsW0ShK/Ytl3qdl6Yw/IajEPQKeQ/Rq2dvuY1xhY+x
-         BttitSDn9oj5PdITJpelVwb9bZYQie6Rl6jUUnMB9JGICBdYwmxP79j25IZrkcUyNSdv
-         RmRoE27blSDNTEP8Hpe/JxVa53aBEnvOyrjgC7iDfFfJWt+lql6/OnicJPoePfSGEA7p
-         B0pfrHSCkeMleidYZz5xjeEXFOI/UPMaZKbKHpp2gFtQTBjBF5RE3eyl5l0KTHxMoSpi
-         mnZg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=eI8xkmrOE5MpOLp3GPBAck33EoNOP8/2olKW7ChDc6U=;
+        b=Wp1E/7rJkPiBPb2n9TcDqhd45i1/CKkNYApvKn6Lya2MpsiqGBztBtVwSBXBQzJvZ+
+         rWhhpu1rDRLO2VXrJZohc5WtnT0hde6Sx8oEuW5Z0L5N1eCPxCd5p53ufo0w9ojA+Me4
+         iB7F4G0U/tKFx/vJE4RiTFzY9FM5F5uHA4O4AZhcWAI8eUqUqfoMge6QyVS1Tqp0oSld
+         7s1p/M6eYmQHcG1GRyp8aifEmgyYg6XYv8YeAUshgan09o9ZwjQmb/uiNf9hD+YkogSM
+         SxFV74cIy8xb4VTm7DIdHpp/yG+4RKtiSG9PBLoU/JGJX57k5kmbqst+vjyTmiYEOwEO
+         770A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) smtp.mailfrom=viro@ftp.linux.org.uk
-Return-Path: <viro@ftp.linux.org.uk>
-Received: from ZenIV.linux.org.uk (zeniv.linux.org.uk. [195.92.253.2])
-        by gmr-mx.google.com with ESMTPS id x8si1244303wmk.2.2019.10.06.14.31.12
+       dkim=pass header.i=@kernel.org header.s=default header.b="Ed/zLDbh";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id i1si573888pfr.2.2019.10.06.12.07.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Oct 2019 14:31:12 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) client-ip=195.92.253.2;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 06 Oct 2019 12:07:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) smtp.mailfrom=viro@ftp.linux.org.uk
-Received: from viro by ZenIV.linux.org.uk with local (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iHE7Q-0005Fd-Tt; Sun, 06 Oct 2019 21:31:09 +0000
-Date: Sun, 6 Oct 2019 22:31:08 +0100
-From: Al Viro <viro@zeniv.linux.org.uk>
+       dkim=pass header.i=@kernel.org header.s=default header.b="Ed/zLDbh";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id D7BD02080F;
+	Sun,  6 Oct 2019 19:07:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1570388849;
+	bh=1+a1P86vDBZFDcgIKM5nCAuEzuynge9LZ7okl9r776E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ed/zLDbhWVeyQY9RO4BBK/h/N8GZJEmTTwD0Y/+QDduhVITMdUtUHb8FISwMJVBPm
+	 dn7jFIX4hJ2s5jnourG5SrVVORfn41maPTfyGQNim695z0TRstmE/wTepZDvZfaCF5
+	 /ySNsv+pnLcJhEPFrJqPEQBiThOvR11qFg6YAlMw=
+Date: Sun, 6 Oct 2019 21:07:26 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Jules Irenge <jbi.octave@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
-	olsonse@umich.edu, hsweeten@visionengravers.com, abbotti@mev.co.uk
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, abbotti@mev.co.uk, olsonse@umich.edu
 Subject: Re: [PATCH] staging: comedi: Capitalize macro name to fix camelcase
  checkpatch warning
-Message-ID: <20191006213108.GJ26530@ZenIV.linux.org.uk>
+Message-ID: <20191006190726.GB237538@kroah.com>
 References: <20191006184903.12089-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20191006184903.12089-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Sender: Al Viro <viro@ftp.linux.org.uk>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
 On Sun, Oct 06, 2019 at 07:49:03PM +0100, Jules Irenge wrote:
+> Capitalize RANGE_mA to fix camelcase check warning.
+> Issue reported by checkpatch.pl
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/comedi/comedidev.h           | 2 +-
+>  drivers/staging/comedi/drivers/adv_pci1724.c | 4 ++--
+>  drivers/staging/comedi/drivers/dac02.c       | 2 +-
+>  drivers/staging/comedi/range.c               | 6 +++---
+>  4 files changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/comedi/comedidev.h b/drivers/staging/comedi/comedidev.h
+> index 54c091866777..2fc536db203c 100644
+> --- a/drivers/staging/comedi/comedidev.h
+> +++ b/drivers/staging/comedi/comedidev.h
+> @@ -603,7 +603,7 @@ int comedi_check_chanlist(struct comedi_subdevice *s,
+>  
+>  #define RANGE(a, b)		{(a) * 1e6, (b) * 1e6, 0}
+>  #define RANGE_ext(a, b)		{(a) * 1e6, (b) * 1e6, RF_EXTERNAL}
+> -#define RANGE_mA(a, b)		{(a) * 1e6, (b) * 1e6, UNIT_MA}
+> +#define RANGE_MA(a, b)		{(a) * 1e6, (b) * 1e6, UNIT_MA}
 
-[mA vs. MA]
+Did you send this patch twice?
 
-Table 5.  SI prefixes
-Factor	Name 	Symbol
-....
-10^6	mega	M
-....
-10^-3	milli	m
+Anyway, this is the units "mA", which needs to be "mA" for obvious
+reasons.  Sorry, checkpatch is wrong in thsi case.
 
-Confusing one for another (especially for electrical units) can be...
-spectacular.  FYI, 1mA is more or less what you get if you lick
-the terminals of a 9V battery; 1MA is about 30 times the current
-in typical lightning strike...
+thanks,
+
+greg k-h
 
