@@ -1,86 +1,116 @@
 X-GM-THRID: 6744795615076548608
-X-Received: by 2002:a67:ef5d:: with SMTP id k29mr13943650vsr.11.1570444158150;
-        Mon, 07 Oct 2019 03:29:18 -0700 (PDT)
+X-Received: by 2002:aa7:96b8:: with SMTP id g24mr30515051pfk.163.1570400424873;
+        Sun, 06 Oct 2019 15:20:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:8689:: with SMTP id i131ls613276vkd.13.gmail; Mon, 07
- Oct 2019 03:29:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyLbgGRIz7FVqJDBpp1/mG+4bEGDKfNIcjSUTI0Ca6OqhG8POOz3rPgn/ZzqRVeCVFldqpU
-X-Received: by 2002:a1f:5c0d:: with SMTP id q13mr14181308vkb.38.1570444157124;
-        Mon, 07 Oct 2019 03:29:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570444157; cv=none;
+Received: by 2002:a63:610a:: with SMTP id v10ls901227pgb.13.gmail; Sun, 06 Oct
+ 2019 15:20:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy9OvoqF+NH9VjEBFlimj/hh4nvbdp2+pLwBC5iFUMJQ1RzShCWE85She6ZWE/kX3Jic1kX
+X-Received: by 2002:a63:4558:: with SMTP id u24mr28211400pgk.262.1570400423742;
+        Sun, 06 Oct 2019 15:20:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570400423; cv=none;
         d=google.com; s=arc-20160816;
-        b=OsTD6hIbydBg6VvpR03eoMiPTVji5sa/Tmesgl2qN43CrdcxlkY7MbBiyGJQBvDljP
-         yUPPwMtghpetjuEtbEAQ1jXnVQDaa2eY6BkYqRq2fi/4WqJRagFfE4iGPC8S/iKD9BG3
-         cCYL5Jsw5WoEQxj0gV/Yxy6E1bPiZ8wqqpIOlx6nRyP56UjCTYoZBbs+1JYA3z3XdA7c
-         6q0jkOwUz5h1ui1TXPGHTWRUo54l52zVJrg77W9qtL1VFS1wL+gB/fwZSn7T38NG+0wf
-         0nLS6ydFsGYFcT2mGYsaCi1H8y1Wx2NgsmbiMlW/i/7ege8DyyEWfXxkB9Dh187XzXlZ
-         y2VA==
+        b=ZT++05FR3l/mx6VsQ5SWkfkZDdvR/dCZ9AF+redFqz8r2oGKfX2g+zHOGi01r6QHZc
+         sHU5Th7LEql+vjUij1xMLXFoOhN08RXhxXYDDwXnxgP6wakoJC9FBmutT+yC+R0H/doW
+         5kDO6uen98STwyZ6s3o8KiMCFsMpbNy/dx02Zm4xlV8dHCLa4xQ0C/WQHrAX6NzALuOZ
+         tgYuUqhayR/OfY6Lzy7Yl1LPP8WMqAduhV5zvSFbgcu5IfqfN3UhxTLJouN33IEmENr2
+         QCOx+EjY5DFrFlcOI4bzmqrXtOMl/c7r40CYYe5ejWt5FXukU+n7uTE749NzoS9FBGby
+         tQ6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=IRJrDku909YJo9eGxrSDKl66miicygfpBxcAk0znhkA=;
-        b=SEf5r34mw3L8XJYGUkUOm0Sy+Zcut6Y3AneSLSsXmayC8w9Gerze8CjOjEfctZEWmu
-         28YUt5Mb8HKUb0cC+pdU1Lh9NXzzHMnxVGy8YwqyOOSsuPcPYyRZSIQ4iCrwWn5nnPp3
-         TTVqy3yNC0RtHdIUUf+7Yx8cfUPAtgvsqPVgTHt38fIUUdpFSiI6zBrLHcOlT0zyHnw1
-         8FavMRGct8pBvXKwoOOMdYAfE3I7y7Z2j7raDE5zSxgb+LX/sFHRK87qtqXWkYaelLA9
-         CNnrYDqKa/SbJFWyiUXOp7JATlQ+xbPJXLBJ/qiZ1VmeYZFwIJJBFM3fiK3lFDUCMdB2
-         JMDg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=QzFy/qe/W6+KNTUy6cPF6kcqmu24zi4GEoWy9Ld7gCI=;
+        b=IKRvIUJHJVD5hW36uUwb80yqFPIHdspcHTfSl+2XCidWGtKdU3GCn32imrDmeICN8r
+         279ZE/yFn3qLyI1mD26XKniK7e3+V2VJBvzYxzgo3uuxa2lRNCGjB6nKeWrI+6vjdkQP
+         AVA7RpndxvctW2I0b7rs+/hFVTGl0MxD5xOkN5gUQ+8LeEPotavj+mlb3cuNw/3gF6Mg
+         zW3IcO9+JrIA9hCP2xbIqki4MVgnEhUN34waY7OJpiz3z5VRXBoU7muDh9RQo/RZ4xKz
+         wxbveS64SfrKWnrOQgt4Td/fqreoJr/cveRM/ioWvGSnfbdH5Gb+J1pF7m8P1M/0e782
+         omNA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=ezrfGqfx;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id u65si452574vsb.0.2019.10.07.03.29.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g+KWz7a8;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gabrielabittencourt00@gmail.com>
+Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com. [2607:f8b0:4864:20::844])
+        by gmr-mx.google.com with ESMTPS id x2si786325pfq.3.2019.10.06.15.20.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 07 Oct 2019 03:29:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 06 Oct 2019 15:20:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) client-ip=2607:f8b0:4864:20::844;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=ezrfGqfx;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 7ED0D2084D;
-	Mon,  7 Oct 2019 10:29:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1570444156;
-	bh=vYCw1L6EsClQX3kWOyy3rJzfrw9jqEvK3iRpnr+usV8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ezrfGqfxHWrZR6uCHtFebNS+0ysEFD5JXQBbZknoBa02FwHkRzFDbcCwcqHb8V3Ba
-	 v+22i716+OXDgN0W19mYxBLli07I9rf9QT5LVCveLbVAwwzGdHHF1sOwUYduBauq86
-	 /nKAYK8/JTF0MuaINFK4wme0DoUT5N4uBC5O09zU=
-Date: Mon, 7 Oct 2019 12:29:13 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g+KWz7a8;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x844.google.com with SMTP id 3so16623070qta.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 15:20:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=QzFy/qe/W6+KNTUy6cPF6kcqmu24zi4GEoWy9Ld7gCI=;
+        b=g+KWz7a8v+RDS/wWotdD0ZdmKAGZP/xA1B6YyHFsjbwCPk0laQRqc8e45bHuOMLVmy
+         qsvoAuhX7RhHg+jwP5emR2LQdXBmgW0xAk+Tt3QEJLNOmsCjD94jHem92cY5pJUrW3LO
+         wx48yLjHOp9SOXrqVstEnJeJ0lopVENiz/ZR3eWyO3NnulTzAMeLJG4ketEXUzI8mXF2
+         nJRzb/LXftVtMWSMzFgUepx2Nnw9TRRvavPH8nem3LpxfY4QqgxV3jcxvkMjHCx3oaMk
+         /AccPJW6gkvUW2WdQLjc3EnIq8UYT0g1FnClm0CGuNzw3DXbLr0uBSX2vRZ6/SSQQtPT
+         aGGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=QzFy/qe/W6+KNTUy6cPF6kcqmu24zi4GEoWy9Ld7gCI=;
+        b=TSzrRgotFoW+WU7Q3o9UEgoKqUW2IQ67t9jh6UziFKjPNV4lF3Fpr3bcFVSvBX+tLi
+         UseNt1+/GfHHmJQjZOcpx+UV/vg5TrZGpfHJ7PoLUVGzgdgmSiVmpkAKlH069ACwLvk9
+         2yCFh8W1fgo2BV0D2RumIqk6xXCjV5NGpdZY+lkCbb6MszQG4sV3No5E/EFMNs4Re9lr
+         ZzWhYvZjfDz7CYrfOU8SQLbByD6wF048jgl1njl3QHw8CLtql1vhzYIAkZlx9Tcrt3S3
+         yZjP+/eQD6xyXm0uXu3v6B+bMYTmZBy4BXpGLfocdxDEKPjAvl+BU+BBN0346rQzAD+3
+         bKBA==
+X-Gm-Message-State: APjAAAU8uT79GjbDpiBGb9m03bLDaP1h23jfygKcjsMBkVX/1CwypUxX
+	F9G593g/UYCm8Inroer3Qys9WEYMgjkdsw==
+X-Received: by 2002:ac8:2b82:: with SMTP id m2mr27648660qtm.35.1570400422628;
+        Sun, 06 Oct 2019 15:20:22 -0700 (PDT)
+Return-Path: <gabrielabittencourt00@gmail.com>
+Received: from GBdebian.terracota.local ([177.103.155.130])
+        by smtp.gmail.com with ESMTPSA id u123sm6585124qkh.120.2019.10.06.15.20.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Oct 2019 15:20:21 -0700 (PDT)
+From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Larry.Finger@lwfinger.net,
+	florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	lkcamp@lists.libreplanetbr.org,
 	trivial@kernel.org
-Subject: Re: [PATCH] staging: rtl8712: align arguments with open parenthesis
-Message-ID: <20191007102913.GA369086@kroah.com>
-References: <20191006222015.15937-1-gabrielabittencourt00@gmail.com>
+Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Subject: [PATCH] staging: rtl8712: align arguments with open parenthesis
+Date: Sun,  6 Oct 2019 19:20:15 -0300
+Message-Id: <20191006222015.15937-1-gabrielabittencourt00@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191006222015.15937-1-gabrielabittencourt00@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+Content-Transfer-Encoding: 8bit
 
-On Sun, Oct 06, 2019 at 07:20:15PM -0300, Gabriela Bittencourt wrote:
-> Cleans up checks of: "Alignment should match open parenthesis"
-> 
-> Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-> ---
->  drivers/staging/rtl8712/osdep_service.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Cleans up checks of: "Alignment should match open parenthesis"
 
-You sent 2 different patches that do different things, yet have the same
-exact subject line :(
+Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+---
+ drivers/staging/rtl8712/osdep_service.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Please fix this up and send a patch series, so I know what order in
-which to apply your patches.
+diff --git a/drivers/staging/rtl8712/osdep_service.h b/drivers/staging/rtl8712/osdep_service.h
+index e939c4a954b3..d33ddffb7ad9 100644
+--- a/drivers/staging/rtl8712/osdep_service.h
++++ b/drivers/staging/rtl8712/osdep_service.h
+@@ -46,7 +46,7 @@ struct	__queue	{
+ 	} while (0)
+ 
+ static inline u32 end_of_queue_search(struct list_head *head,
+-		struct list_head *plist)
++				      struct list_head *plist)
+ {
+ 	return (head == plist);
+ }
+-- 
+2.20.1
 
-thanks,
-
-greg k-h
 
