@@ -1,106 +1,120 @@
 X-GM-THRID: 6744825053591896064
-X-Received: by 2002:a2e:7a04:: with SMTP id v4mr470351ljc.237.1570427352065;
-        Sun, 06 Oct 2019 22:49:12 -0700 (PDT)
+X-Received: by 2002:a05:620a:65d:: with SMTP id a29mr21347803qka.285.1570401958221;
+        Sun, 06 Oct 2019 15:45:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8803:: with SMTP id x3ls1961240ljh.10.gmail; Sun, 06 Oct
- 2019 22:49:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzL5+15rD3HF5ezYI6h8QCTIHv2s8xm2HA1cbdXAel0fsWN36UYTb5TVfOzf2/9ZAqiCt42
-X-Received: by 2002:a2e:5714:: with SMTP id l20mr17306032ljb.122.1570427350718;
-        Sun, 06 Oct 2019 22:49:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570427350; cv=none;
+Received: by 2002:ac8:3f5d:: with SMTP id w29ls3333043qtk.0.gmail; Sun, 06 Oct
+ 2019 15:45:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqye2Z6ItLz5fu3JgKZVr9ULK+fQlPFCI91khJBPKrGrgm/LvfbcO9RJiJdI3ZVo9WzkB3mw
+X-Received: by 2002:ac8:f54:: with SMTP id l20mr28017720qtk.355.1570401957379;
+        Sun, 06 Oct 2019 15:45:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570401957; cv=none;
         d=google.com; s=arc-20160816;
-        b=IckG7zRWs0fSvuV+ex76WjHc/G+H4UdMptlIC7WBZKBBzwnV1n3V66LhjtQnd1SQBu
-         7oNT2V/McEF0GpghXjnO6jlIlgvUyVcXvU7jLHoh1sVKcOIb+6hrjA0UvP74cn+Tq5iU
-         hCFYE16mHiQWPy8w4k1otHnX/eOeViBYyRIt+qDidP5yy+aS2dVyq4ySXyWq8P++iyQi
-         i+rbXQeQa+F8Rg3lVPA8qAsP3SeUQhRl+8HueUIETkrMSoTO1bz976D5TRt009Cmr/7w
-         2FaAZ9WG9lbzK3mHL2VhJANmiVl0W9wRHxUadx/TTAB5gWI+mSBbHH1r+opiJBxpw52L
-         eTSQ==
+        b=IMmLHGhOk4nDZOlXF3hegjAC5rErJm+GIa2sfOXVWCmz1hrQArBFSxePqvzi1hc/BV
+         y6hQqGw//gGvcwmZhBWsUCuy4Onrtr3o5+0PD1hXmHKGxUikhdQqgZDFb0cAB7+K8pdH
+         tvuRaV87BE3YmMorbVvY2eb1tbdLQ/2YgFoYUdzX16mp0tW8U5GAiaGHq783wjnL93Q4
+         oRL2WBg3iuFK9uKQYv033MlUtV1fVdPWtJKlPK5e6kTT+8lOwIeh37YChdM/ub0rZZHz
+         Oy2N2hc3jAAaj7J8HVF50NNzAbbxd4i2RV1NND8UZN0aln6hg7I8SL3V4aBjAeqdeKnS
+         5WCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=CUJyROeG9WlKCHjw3N6yrLEbMUIY4KIl43ussFDZEgg=;
-        b=RHm+4bBLso03NZL73mLa9jJ39FQgCfI0ZRyEhYw5JSWXEJ/2ifNuwFSti1G/u02wJ8
-         l9t7gA0+rH+SgOkTlg2m2f9BBAMHpNBWGfPVeLkHFPy7SReNEJ9HmSW+cktrwaSXuHg8
-         riKa+E8DsSbqC4hPFfUW1KfdVsgpQ9KL8mMMbmtxcLkw9nBNiDpGct7NWberpfQpRGxN
-         HSN9K/X005U6DxSbAQAghAju8fHe/0soAh+8hS+4hVqA1A/seIux0VdobpdHTKIZXwQQ
-         wXQ+hSCNM7xRxlv7rS5hQincs6I1SUJ/l9xJrdA/tPtKgWyK5jP2wlsiQeGiqS3TVvUW
-         3gBg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=ZNp8j6VG3Nyq6tcpawEIEFVuzNbzhyqnZTlRzfnJ/XI=;
+        b=TMXx1vOzkK+Yc+zdkFZtG0tTFhMTJtDlJ1AUsIjgCGQvS8FWmZnhjWQLmKYdW+QCh8
+         eVDXVf7wtu3+80wC405r0EblrlKse9jaH65WdjBrOrv9pBB/6m7ePisfkI1OPgKnJzXd
+         YHkgh8Rz5wgZ0iTDioYS2Omm14DP7PSFXUbbEsWEuf8JfUyZ0mO/1ylvCWGetNtLi8jm
+         dAKXt7C5h4tLTgWokOEWKUsAEyGEkRkG9rFBFS9iwiEf2yk6ODkh6JfnZR/ijfKif4Fk
+         yBwAwbySyr3dCNpcHPLsomwL7S8XotFJHEGTE9PEdl4d0bwNV2Mtmqt3ehkx4VU76637
+         UCiA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a9si941483lfk.5.2019.10.06.22.49.10
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e+PFYFMc;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com. [2607:f8b0:4864:20::e44])
+        by gmr-mx.google.com with ESMTPS id c78si927796qkb.7.2019.10.06.15.45.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Oct 2019 22:49:10 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 06 Oct 2019 15:45:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) client-ip=2607:f8b0:4864:20::e44;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,265,1566856800"; 
-   d="scan'208";a="404970365"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2019 07:48:46 +0200
-Date: Mon, 7 Oct 2019 07:48:46 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: "Javier F. Arias" <jarias.linux@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove commented
- code
-In-Reply-To: <20191006224551.GA3551@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910070747480.2753@hadrien>
-References: <20191006224551.GA3551@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e+PFYFMc;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-vs1-xe44.google.com with SMTP id p13so7712370vso.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 15:45:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=ZNp8j6VG3Nyq6tcpawEIEFVuzNbzhyqnZTlRzfnJ/XI=;
+        b=e+PFYFMchVEjFr06MS7RZ/r8cEqM8zna5DiSg1O725ZwZnq9RWdQ1btMxKYUExDOqx
+         fB5zrQol2LJ3wxP+V/XPjKf7L6P0gn3w8oJoStXKy0wmxMdGQhTOivceyLK7Wa/rmvbr
+         f+MNPWWmfhshsTbAD4w6hyggiCb3rB23RG0yhkkXt5hO0xFwIKXerO4DdasQf+wyC0TV
+         W9VDTQ5kW0Pc1Yl9NHa6Z0fN98lXSNhoNGU2rTxtJcswecQEom9UHjHBu7HfKPWTnvNJ
+         TTf05Cr4XNDVoxT0OzR72ernLrQiqnvajHPubH2VKEtHaES2ZlX8Rleuyu69Xao7Ehg3
+         Aq4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=ZNp8j6VG3Nyq6tcpawEIEFVuzNbzhyqnZTlRzfnJ/XI=;
+        b=N8rjBGCJLBn/QwwLQ0UoyhiIhFjQMl5U+DDYsvHa58T9DEcRfhCyTOL0HXyCBN5llc
+         khWebSz3q2lTmg73HfCug1YRLsqQKe/18kLtl1eFV7qg8pfbRM813KQINRmYb5s5F5gA
+         qAqDS4GlCsMm/bMleEJ57Ud0Y8G24aKn/6jgeVCmCZ/yeYHlsm5Tl/DQ/gScs1KlYkaN
+         Mi26MlAJPQ5LcQWxGc2IIgFr7GNNN9NRoZyCCwB9q+CUEb0RuDReg1YE7iCbPRIy8qKj
+         nNFq5jKllOGuOHHTDDg6VBXCPtWoMrfDPjZXxF+HBuEfHg7Mfs7z00H/d0ZTSQBjsGUc
+         za7w==
+X-Gm-Message-State: APjAAAVpicfZFSkKTPb/1Z5W68YjpclQBxHot6HWjgHOZoyreH21u7Wr
+	IbyCPRuUeZq8/7RTq9WXM0LreoAiwJEzLQ==
+X-Received: by 2002:a67:e9d3:: with SMTP id q19mr13407511vso.40.1570401957075;
+        Sun, 06 Oct 2019 15:45:57 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com (dynamic-200-119-56-53.dynamic.etb.net.co. [200.119.56.53])
+        by smtp.gmail.com with ESMTPSA id a16sm2667910uao.18.2019.10.06.15.45.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Oct 2019 15:45:56 -0700 (PDT)
+Date: Sun, 6 Oct 2019 17:45:54 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8723bs: Remove commented code
+Message-ID: <20191006224551.GA3551@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
+Remove commented code for a cleaner file. Issue found by checkpatch.
 
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-On Sun, 6 Oct 2019, Javier F. Arias wrote:
+diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+index 29acbb1ee869..3956c43a6468 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
++++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+@@ -2689,18 +2689,7 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
+ 		}
+ 
+ 		pxmitframe->attrib.triggered = 1;
+-
+-/*
+-		spin_unlock_bh(&psta->sleep_q.lock);
+-		if (rtw_hal_xmit(padapter, pxmitframe) == true)
+-		{
+-			rtw_os_xmit_complete(padapter, pxmitframe);
+-		}
+-		spin_lock_bh(&psta->sleep_q.lock);
+-*/
+ 		rtw_hal_xmitframe_enqueue(padapter, pxmitframe);
+-
+-
+ 	}
+ 
+ 	if (psta->sleepq_len == 0) {
+-- 
+2.20.1
 
-> Remove commented code for a cleaner file. Issue found by checkpatch.
-
-This also removes some blank lines.  It would be better to do only
-onething at a time, and in any case to mention everything that is done in
-the commit log.
-
-julia
-
->
-> Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_xmit.c | 11 -----------
->  1 file changed, 11 deletions(-)
->
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-> index 29acbb1ee869..3956c43a6468 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-> @@ -2689,18 +2689,7 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
->  		}
->
->  		pxmitframe->attrib.triggered = 1;
-> -
-> -/*
-> -		spin_unlock_bh(&psta->sleep_q.lock);
-> -		if (rtw_hal_xmit(padapter, pxmitframe) == true)
-> -		{
-> -			rtw_os_xmit_complete(padapter, pxmitframe);
-> -		}
-> -		spin_lock_bh(&psta->sleep_q.lock);
-> -*/
->  		rtw_hal_xmitframe_enqueue(padapter, pxmitframe);
-> -
-> -
->  	}
->
->  	if (psta->sleepq_len == 0) {
-> --
-> 2.20.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191006224551.GA3551%40gmail.com.
->
 
