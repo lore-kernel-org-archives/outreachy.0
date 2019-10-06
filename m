@@ -1,92 +1,73 @@
-X-GM-THRID: 6341082895708323840
-X-Received: by 10.157.53.90 with SMTP id l26mr2220407ote.72.1476398412006;
-        Thu, 13 Oct 2016 15:40:12 -0700 (PDT)
+X-GM-THRID: 6744763915639455744
+X-Received: by 2002:a5d:4d4f:: with SMTP id a15mr20295104wru.267.1570397474942;
+        Sun, 06 Oct 2019 14:31:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.85.4 with SMTP id e4ls15429itb.8.gmail; Thu, 13 Oct 2016
- 15:40:11 -0700 (PDT)
-X-Received: by 10.36.86.19 with SMTP id o19mr2489471itb.11.1476398411464;
-        Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id p131si2725512vkf.1.2016.10.13.15.40.11
+Received: by 2002:a7b:c8d9:: with SMTP id f25ls3058923wml.5.gmail; Sun, 06 Oct
+ 2019 14:31:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxUqQD5xFint1wZoU98VC6H0P73gidr+QJ0Ci7e6RQ9sAE3v61jZ20nqfkR3w4jO0GHPH8u
+X-Received: by 2002:a7b:c088:: with SMTP id r8mr19257955wmh.44.1570397473007;
+        Sun, 06 Oct 2019 14:31:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570397473; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HoMeasSZ/Py1af8bGuYHsQHxWwEYCNvl5hePyoEPY1kiXvCUyqPmScgA1Qd6t01wTJ
+         9UC9rDNgT/fvv6o1SqOGGodAGj3SIUW4x/xL0P0p+gGQTd7qDH+60Pq4RT0bX/IuFLsQ
+         UrzCgujg4QSpemdXbKuDDnZ9zua26/e8LnpEmGyIby6uMynQgXNKoNJ5L2EaV+rqmrYk
+         yPUook+RGZQcCAua5pdl67b4KcV+Du9FMgm4LND/TBM5kVcRQK4Sqq1JzOmCHHwoIZdU
+         nr+CdvIPmyp3R/qlTWboHBxas9FEoCoQ2oJIeij0egj2e67YfjOn1OlsBXM0yn+D/jST
+         oIbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:user-agent:in-reply-to:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date;
+        bh=EnzfqZ46LZW1Ts47iHRZ5CKEdGeayelIgMqrc/ija7w=;
+        b=D71aW/6KXeUDCotwcTtn1GJq/HXee50qHGPlxrbWuq2LQa+ZPV09ha4GqcaYw33kLt
+         SMgmU3c+ie4XYc/rRhj2S7ZIoDjsW0ShK/Ytl3qdl6Yw/IajEPQKeQ/Rq2dvuY1xhY+x
+         BttitSDn9oj5PdITJpelVwb9bZYQie6Rl6jUUnMB9JGICBdYwmxP79j25IZrkcUyNSdv
+         RmRoE27blSDNTEP8Hpe/JxVa53aBEnvOyrjgC7iDfFfJWt+lql6/OnicJPoePfSGEA7p
+         B0pfrHSCkeMleidYZz5xjeEXFOI/UPMaZKbKHpp2gFtQTBjBF5RE3eyl5l0KTHxMoSpi
+         mnZg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) smtp.mailfrom=viro@ftp.linux.org.uk
+Return-Path: <viro@ftp.linux.org.uk>
+Received: from ZenIV.linux.org.uk (zeniv.linux.org.uk. [195.92.253.2])
+        by gmr-mx.google.com with ESMTPS id x8si1244303wmk.2.2019.10.06.14.31.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Oct 2019 14:31:12 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) client-ip=195.92.253.2;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x243.google.com with SMTP id 2so4259789vkb.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=eaAJNSmVhvgQosS/gBswfCQIYGBtEMTwWWPTh3d57nc=;
-        b=RwybfLhOK8UekRSH6AGSjNrWwH10Q+fOUPULiZho+j7SKx45lQ7BgxFpbm41VORUiA
-         OC4z3RHTTUxwJ/OO1e5hP3Q5lQfeJbstBBr+fHukNU/dUBbcdRfjGM4lkd/Z/lMRy7Nm
-         D4CJco338HEc/geKlPDMKbv7e3bYilHbPDwZzLFiWqHgQQspSlHzWc+BUWTTTZqv+QY0
-         1ozWNkxXZtB2I+64m7djQMKAkrii+ey4zFdCpe0lY5JPqDRUs3y6lmzNNsdOwWFtDue8
-         Ush+yR//f8HtTDW6wIgXFgoboRMh2ss9v2MozXQzfE+v+7DyV2p/XKa4mv4jhcxMhWzB
-         RGeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=eaAJNSmVhvgQosS/gBswfCQIYGBtEMTwWWPTh3d57nc=;
-        b=Dw11Te+EFAUQvaM/Bz9MFm54y+seo1zM1QqpG0pHz8EI04WsyyR9VMbd10W9JmbvGX
-         g00B+aLzubmJ/zPTc6gwMzc5h/VG7zLL9tTKWdwxVt4F6x22L2BLhMEhiutNGD5ABp84
-         xdahOLcEJ1t4mjoslvKFxi7CmIUzuSkvuT/orQRFJmHr6AwsKczDXIhNpt3Hedbnh1jh
-         w3jK8AIqLpodlrfndsuffO1q+96VrkSERzVuHQzygYxKikhbKtKkoS6ag79IUq4ezXjb
-         McW5X5ysjjW6jMbTAnsWrgMAIaePgc7X+0seGMdlKmo/GNCXLLS2fWgTSr8GQs76rdNx
-         UgJw==
-X-Gm-Message-State: AA6/9RmV8Hay5GrA8ShxsZ/HQLa8gEYShYxLYpZE4+jpplP1KXUAHM9yNmaIIjgMJ+SF6w==
-X-Received: by 10.31.9.210 with SMTP id 201mr6787706vkj.106.1476398411312;
-        Thu, 13 Oct 2016 15:40:11 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id n191sm6228791vkc.1.2016.10.13.15.40.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Oct 2016 15:40:10 -0700 (PDT)
-Date: Thu, 13 Oct 2016 19:40:04 -0300
-From: Elise Lennion <elise.lennion@gmail.com>
-To: vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
-	elder@kernel.org, gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 1/2] staging: greybus: audio_codec: Remove useless return
- statement.
-Message-ID: <20161013224003.GA13160@lennorien.com>
+       spf=pass (google.com: best guess record for domain of viro@ftp.linux.org.uk designates 195.92.253.2 as permitted sender) smtp.mailfrom=viro@ftp.linux.org.uk
+Received: from viro by ZenIV.linux.org.uk with local (Exim 4.92.2 #3 (Red Hat Linux))
+	id 1iHE7Q-0005Fd-Tt; Sun, 06 Oct 2019 21:31:09 +0000
+Date: Sun, 6 Oct 2019 22:31:08 +0100
+From: Al Viro <viro@zeniv.linux.org.uk>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
+	olsonse@umich.edu, hsweeten@visionengravers.com, abbotti@mev.co.uk
+Subject: Re: [PATCH] staging: comedi: Capitalize macro name to fix camelcase
+ checkpatch warning
+Message-ID: <20191006213108.GJ26530@ZenIV.linux.org.uk>
+References: <20191006184903.12089-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20191006184903.12089-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Sender: Al Viro <viro@ftp.linux.org.uk>
 
-Remove return statement that is immediately followed by the function
-closing bracket.
+On Sun, Oct 06, 2019 at 07:49:03PM +0100, Jules Irenge wrote:
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
+[mA vs. MA]
 
- v2: Add file name to the patch subject name.
-  Rewrite git log message.
+Table 5.  SI prefixes
+Factor	Name 	Symbol
+....
+10^6	mega	M
+....
+10^-3	milli	m
 
- drivers/staging/greybus/audio_codec.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-index 1bdf849..f8862c6 100644
---- a/drivers/staging/greybus/audio_codec.c
-+++ b/drivers/staging/greybus/audio_codec.c
-@@ -405,7 +405,6 @@ static void gbcodec_shutdown(struct snd_pcm_substream *substream,
- 	params->state = GBAUDIO_CODEC_SHUTDOWN;
- 	mutex_unlock(&codec->lock);
- 	pm_relax(dai->dev);
--	return;
- }
- 
- static int gbcodec_hw_params(struct snd_pcm_substream *substream,
--- 
-2.7.4
-
+Confusing one for another (especially for electrical units) can be...
+spectacular.  FYI, 1mA is more or less what you get if you lick
+the terminals of a 9V battery; 1MA is about 30 times the current
+in typical lightning strike...
 
