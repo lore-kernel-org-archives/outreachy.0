@@ -1,158 +1,114 @@
 X-GM-THRID: 6744681878871080960
-X-Received: by 2002:a17:906:7f18:: with SMTP id d24mr3272686ejr.82.1570426233179;
-        Sun, 06 Oct 2019 22:30:33 -0700 (PDT)
+X-Received: by 2002:a25:cd09:: with SMTP id d9mr8919335ybf.519.1570403014381;
+        Sun, 06 Oct 2019 16:03:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:6957:: with SMTP id c23ls2317146ejs.9.gmail; Sun, 06
- Oct 2019 22:30:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxJhthVjiCrAkTiaLkR2jMlef677d1FTiRD1QZT6pEegTQAolhSs76V2bJRMxMJAQegj5o1
-X-Received: by 2002:a17:906:168f:: with SMTP id s15mr22358772ejd.109.1570426232137;
-        Sun, 06 Oct 2019 22:30:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570426232; cv=none;
+Received: by 2002:a25:68cd:: with SMTP id d196ls2033223ybc.13.gmail; Sun, 06
+ Oct 2019 16:03:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlLjmQtqJ/dlJyX2Vw3hgjrkwzG9siJZwCOjKkP1xgDUpIZ1bUmn3q8y7ZjorEyEl4WrEM
+X-Received: by 2002:a25:9091:: with SMTP id t17mr9670652ybl.352.1570403013108;
+        Sun, 06 Oct 2019 16:03:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570403013; cv=none;
         d=google.com; s=arc-20160816;
-        b=oTrocF2pW58E0ce3Mo3mBzaYodT4KsoajiRx2Vr+I9VfBbWGPf+7y9IBQpkT0FKtg8
-         k2EXye22/aixNlWlV7yIFQZMfLUmxyGdpxr0gUCPFgpeX9FxMZ42eQ3uD0W54unCeK9c
-         EzaMwiXf3TqHN4qpIduR0yVO2uG9Icf+FWvMxHfb2MxttZ5jBNRAvC9OT78iEDzf9caZ
-         HL3OURqSQX0+/lt3PnM9deXIRLtKUw0nlIpUCnd3sWsKRTsTw6OjRkLoR5M5l00xgUq2
-         KgBxhliz09IBdNUjwShH04qtYPA8LoSPWKIxRL1jS+07l02DlhY5dNHfEijwUSE/Qn3C
-         QjhQ==
+        b=WUe69trcTw7GY+cHbOzuBLBCxgrpBarZbdVQD2fEwXhEOj8mCK4vsJTxXg9jXXSmMW
+         O/UmZx3gbfQlylpObhS0GUcEG0/bpTxdcyxvhJ6VmX1E/qDkNj3tTpF3EgG8o23aRyrr
+         +GMeDXEMWXl2Py722w7SFVffLow/ZdZfHfC7+28u9q488EXww2n3nrL4ljfuoII4lp/G
+         MXFMkR2j6Yo9xPk9BSv4viDM6OZ0DlEDAg31NXkfqXtBxu1zNZcB40NmzKrvk87d6Qmt
+         1wuJGZn+pp4fP4Puru7H5GqPnlF97TrxcP7uqxWel5JiFrEDJyL/sIbZRQikX+YJ7rOB
+         fueA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=pfQkd2KpNY9Yl0rJZlf5dzBEFD7RRn63qIeuza8AJrE=;
-        b=Mro8KAnX9wxOTwOU+c5W/H3gwWQN58hEnQ5U685hniFMjyeGf8YP7kV+Y44tqJ5s4J
-         LtFIIMiM6V0nioZuHyO357hSEnVYVtSnVV7c5a8jzMoPTnSZOy5lYfXDCD3UaLWydT2T
-         Zv/RhOFwEWbr3zq2dYL8QJyTLJhpLGMbMAmopDLl/dUitZOXodZF71GaVFDyPa921jro
-         akA6Q2mhU6jcGOLfJrm4EQxbcnYhSIS9lZa+gW6kdcTvB9lev0jiZvSvhjxAGlB6NU9Q
-         uWd/IVA012VEpbv5IAfaQWDBS+NcH1Y1i4dUO8vFNmTPdCqSaIcLmDY+2YtQOnf1a2jC
-         6dtw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=oOmzQE1lbLqxTbMNLKSaAOF4Z4q7Td/JII4gAgs144E=;
+        b=MpfV0bVAcLnFcs1oMxOrtK3fHl9GuwbPgX8QwTMpZvLyuUuaSjHuu0rs2I4da16TlA
+         rzuKoVQUxqHerhFM8jTZMv90hPYcq3WaIJnN0QUtzuC5eBq0QOZ3M2SWPStniYynvGSg
+         S2Gi6vYWeTImrbe4XyGyY94S5W7hLrNGHt7LCipuZBuR+GaUaB9oQmBgoruQmJMK9+Gg
+         +Yz+AcayzvmnfETHOHWSQ2+lwcOKGCk4Yo6EU3BKPQ2RkdkE8wN/1hm1EELaYrIziE08
+         ZoEt83O/XEbwNwstVkmfCLPlIcNw6gufo+7ZYYPvzHNVzqZTpeGTGWokdHEFCQNDjCVo
+         Nxtw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id q8si1342384edn.5.2019.10.06.22.30.32
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="TrYXSHl/";
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-ua1-x944.google.com (mail-ua1-x944.google.com. [2607:f8b0:4864:20::944])
+        by gmr-mx.google.com with ESMTPS id p140si792135ywg.4.2019.10.06.16.03.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Oct 2019 22:30:32 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 06 Oct 2019 16:03:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) client-ip=2607:f8b0:4864:20::944;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,265,1566856800"; 
-   d="scan'208";a="404969175"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2019 07:30:31 +0200
-Date: Mon, 7 Oct 2019 07:30:31 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Javier Arias <jarias.linux@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unnecessary
- braces
-In-Reply-To: <42d53c83-8aea-43c3-8095-e46577a1fcb4@googlegroups.com>
-Message-ID: <alpine.DEB.2.21.1910070730220.2753@hadrien>
-References: <20191006133016.GA22297@gmail.com> <alpine.DEB.2.21.1910061557170.2515@hadrien> <42d53c83-8aea-43c3-8095-e46577a1fcb4@googlegroups.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="TrYXSHl/";
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ua1-x944.google.com with SMTP id q11so3508926uao.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 06 Oct 2019 16:03:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=oOmzQE1lbLqxTbMNLKSaAOF4Z4q7Td/JII4gAgs144E=;
+        b=TrYXSHl/HRm7hlMw1T5wTm6gu4lxexFiY8g5nXV1w6OGxJSrqd8QDZUvTrqUK3cAcK
+         JNgn1gI84meggT2Lz6MUytjwJAcqBu4eTAR4k4JzrKQPbG3uTUvdwt4ggjVgtrxMSqkY
+         xoPN9H1qs2B+poggLbGgrabFiXIR0HGBmPSMwaOqDw7ctMfryEhGzuWzXfYhPRgsxJIG
+         WVbhURxCcPotEUJ0DN1naHW69hHIb3ZckqWwlj8m5bA02Pw9p41Miv0dPjazGc87sXIa
+         e6G08cYUglFqATzqnMEp+uilA+djKktt2ajw2D2xXHyIjI7JDDr81D+30JrOsqCog6/B
+         LepQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=oOmzQE1lbLqxTbMNLKSaAOF4Z4q7Td/JII4gAgs144E=;
+        b=j8udo9Qk3vW97nKC8r35OmFF3KKWi5XifyAOFaHiLK1VqcJ5LlqixqEbYy1YAr8T6q
+         GQxG5GgRm9ZfQ3IhswXDXaSGYSNpLtulb5g6JSNzQCE9Mih1yqrXAUmgEqTOgElb6+Gq
+         p2gtblx8U05phEhUVSPU3EFKyvJtm54nHZRcxGxOp8EshvvUoUl1E3dcMXvBsekbKfHC
+         fSVr5jhuDQtMlcAvZR2bUT9UcOmpYkcqRrXw6TOAAPtJF4DaLSO/696XkMIxvTxhxfD8
+         QdfXfW3aSyVEt/rPxcv7lWyzfy27R5EVM99a2VBS5c4JGA7F5/0dBvdgoJ2Qn1F5CFxs
+         P3KA==
+X-Gm-Message-State: APjAAAU4GIFiKcTTPAtahrKscVdS1Hcnfwt3F7qeuBVB5LQkJYCclMBM
+	7oQWkWkKwNRzTySFAHClHqPYdnMVRRE2AQ==
+X-Received: by 2002:ab0:6355:: with SMTP id f21mr13457072uap.40.1570403012751;
+        Sun, 06 Oct 2019 16:03:32 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com (dynamic-200-119-56-53.dynamic.etb.net.co. [200.119.56.53])
+        by smtp.gmail.com with ESMTPSA id v188sm3612920vka.34.2019.10.06.16.03.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Oct 2019 16:03:32 -0700 (PDT)
+Date: Sun, 6 Oct 2019 18:03:30 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8723bs: Remove unnecessary braces
+Message-ID: <20191006230327.GA4168@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-93999204-1570426231=:2753"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Remove braces that are not necessary for any arm of this statement.
+Issue found by checkpatch.
 
---8323329-93999204-1570426231=:2753
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+index 3956c43a6468..bda25e13e935 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
++++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+@@ -3063,9 +3063,8 @@ void rtw_ack_tx_done(struct xmit_priv *pxmitpriv, int status)
+ {
+ 	struct submit_ctx *pack_tx_ops = &pxmitpriv->ack_tx_ops;
+ 
+-	if (pxmitpriv->ack_tx) {
++	if (pxmitpriv->ack_tx)
+ 		rtw_sctx_done_err(&pack_tx_ops, status);
+-	} else {
++	else
+ 		DBG_871X("%s ack_tx not set\n", __func__);
+-	}
+ }
+-- 
+2.20.1
 
-
-On Sun, 6 Oct 2019, Javier Arias wrote:
-
-> Sorry seems like I answered with a direct email instead of the mail list, so
-> here it goes again:
->
-> Hello Julia,
->
-> Thanks for your feedback. I'm checking the return values and it seems like
-> the Realtek driver files would use them internally throughout the code, and
-> not returned to the system. They are defined in the following header file:
->
->       drivers/staging/rtl8723bs/include/osdep_service.h
->
->  
->        11 #define _FAIL           0
->        12 #define _SUCCESS        1
->        13 #define RTW_RX_HANDLED 2
->
->
-> Should I do something with them?
-
-I think it would be a good improvement.  But it should be done slowly and
-carefully.  Don't try to do everything at once.
-
-julia
-
-
-
->
-> On Sunday, 6 October 2019 08:58:26 UTC-5, Julia Lawall wrote:
->
->
->       On Sun, 6 Oct 2019, Javier F. Arias wrote:
->
->       > Remove unnecessary braces for single statement block.
->       > Issue found by checkpatch.
->       >
->       > Signed-off-by: Javier F. Arias <jaria...@gmail.com>
->
->       Acked-by: Julia Lawall <julia...@lip6.fr>
->
->       The patch looks fine.  To go further with this code, you could
->       see whether
->       the function can return more standdard kernel return values:
->       typically 0
->       for succes and -ENOMEM etc for various kinds of failure.
->
->       julia
->
->       > ---
->       >  drivers/staging/rtl8723bs/core/rtw_xmit.c | 3 +--
->       >  1 file changed, 1 insertion(+), 2 deletions(-)
->       >
->       > diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c
->       b/drivers/staging/rtl8723bs/core/rtw_xmit.c
->       > index b5dcb78fb4f4..29acbb1ee869 100644
->       > --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
->       > +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
->       > @@ -3022,9 +3022,8 @@ int rtw_sctx_wait(struct submit_ctx
->       *sctx, const char *msg)
->       >                  status = sctx->status;
->       >          }
->       >
->       > -        if (status == RTW_SCTX_DONE_SUCCESS) {
->       > +        if (status == RTW_SCTX_DONE_SUCCESS)
->       >                  ret = _SUCCESS;
->       > -        }
->       >
->       >          return ret;
->       >  }
->       > --
->       > 2.20.1
->       >
->       > --
->       > You received this message because you are subscribed to the
->       Google Groups "outreachy-kernel" group.
->       > To unsubscribe from this group and stop receiving emails from
->       it, send an email to outreach...@googlegroups.com.
->       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20191006133016.GA22297%4
->       0gmail.com.
->       >
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/42d53c83-8aea-43c3-8095-
-> e46577a1fcb4%40googlegroups.com.
->
->
---8323329-93999204-1570426231=:2753--
 
