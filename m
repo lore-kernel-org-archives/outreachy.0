@@ -1,122 +1,82 @@
-X-GM-THRID: 6330655085925761024
-X-Received: by 10.157.14.134 with SMTP id 6mr7732742otj.35.1473970498074;
-        Thu, 15 Sep 2016 13:14:58 -0700 (PDT)
+X-GM-THRID: 6744769542622281728
+X-Received: by 2002:a5d:9814:: with SMTP id a20mr24729792iol.19.1570444113289;
+        Mon, 07 Oct 2019 03:28:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.29.70 with SMTP id d67ls1250650iod.10.gmail; Thu, 15 Sep
- 2016 13:14:56 -0700 (PDT)
-X-Received: by 10.107.134.134 with SMTP id q6mr8429897ioi.21.1473970496063;
-        Thu, 15 Sep 2016 13:14:56 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id um12si1533597pab.2.2016.09.15.13.14.56
+Received: by 2002:a02:85e2:: with SMTP id d89ls1585339jai.4.gmail; Mon, 07 Oct
+ 2019 03:28:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzscf6PNzYa5iYAvooaL/1TJmMASrduKGGkn6QeJwEBQOfosY1+lVRZtHwjsHum13Wo1d5A
+X-Received: by 2002:a02:6017:: with SMTP id i23mr9318025jac.0.1570444111934;
+        Mon, 07 Oct 2019 03:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570444111; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ds3P/XG1lUaz/RnBHPQQy09s5a9VdCinExfXdGaLBf0lQxfya4ZmjPb9L1JUBeolYQ
+         yDLM5g8wFBJlL/qs/41u6jrfXzCrNAJWcCsnVloOpo+9qSuK2CyqaE+AFQNAjFaWTSE6
+         M/xwxVvYU8flxi30GmXO+5L0Cdyv4lMrs15yIzzlooxouBXxh57TTpobF10hf4FMZEjb
+         BMDfOrTsqF2a3GbaABeyApN3QYsAgx+1s/hg8cWhBEtcWffRpYwBaXHYdqLRBuiFMa8y
+         RGw+CRB1b/JrTyB1vZJgYKzMI0tt8PUFJKouQzHdpRTQHsc6mYCcvvwUJDpBsgNcuIVR
+         ufHA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=brtsixG0HqBX8Aw24Kvko4bzSMWbJykETLl4Fq3Mcpw=;
+        b=eC3erMN4qoHfLbVR7UHnxZP2vTvuFvW67OEsPr+TD3ewKhgYrVXHzuCHBpNKHPyNkh
+         lB5ScMXGdLStrD8PUkDQeVOgieXU9U023DRQGBXj69yI3rfniWDWM51+aJdB2bYqFfD/
+         CDaV8ki1I3j8Uvj0FoWzw2xz/NCfdQSJ2IaiZmaOBE/IHL9InUowCeYRvJUoc+2lL8tx
+         RR2s25aGCDHY1NpegtSMFyXgTEBZEY3JV0Gq945zud7XOXihOYMDtoq1R0Oov1qvLjlY
+         INJR+dcDXSTLslBDRO7XgPzTHM3TEjiohW7oDnsKwP7AnrkRulMT7ldnk0EUsEOfv4ne
+         ZvsA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=OZQCysyb;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id z21si558726ilc.3.2019.10.07.03.28.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2016 13:14:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 07 Oct 2019 03:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id z84so2629946pfi.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Sep 2016 13:14:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=d+xbraICQl25WMLxDxgtQVM7OV8JBaelcHZncgc/txw=;
-        b=RYZAeOhoKYXXzqXCdCraXNI6rOpDtiGXxJPKUDri1MWeiGSWrDOQEz0HYlO21+zCVw
-         brdpo5rfYtmsh0OYeg7kHikkAPWMNQQD6OJSWPsdZPmmZdvJawYFNBhbi6w8PMX6Fnj8
-         TH/K2t8gyNLPoNNLuS0xD2bOyynefSf2oNd0pm3tyn1cADlBXnEklL4MUnnjHzRebeIh
-         OJKE6l7mU7Dp06kOFek2yKjLAXIWTlEdAU2pQZ7TuLKEyiPQs2xvWgHE4OINqvSVAsqm
-         3vjppziAI8FGMFWuIjU5y74JG0TBYgEAowtGJPTTmuXHFJIlWRaUgylWnGSOoy5dHywj
-         VSAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=d+xbraICQl25WMLxDxgtQVM7OV8JBaelcHZncgc/txw=;
-        b=Uqa6aR+Ok53o9ztJCIBjALdz0ArhiL35AiiP/3H3Araibj+9DWMW8FYOmjQhKyHeCW
-         5SXqCVhaGhIQHTUWUjmY51kmEfTr1H2o5NeemiW98QLTo7irHYjP3TSLmlewqPk53p31
-         6VKubcm9oJjAl/ZO2LJ/xVI65JRlPeATTw6ni9ltHVUVguE38JlBcvjVXyr3mpXd01wS
-         7escWY3qi23ZQcorqa+XODlwLAmvVMqqKX8iuah2VYdtVBm9IxX8LuvMT+8oD8Y3A3Zv
-         Hm2ERT4fhKT7HMTg7xYVMfKS/OdPQHezP34qF0qA1XnSx8eUburO/rvrfWyYdV55mOe5
-         OEcA==
-X-Gm-Message-State: AE9vXwO2nx/MW3sE1LjP8t2b8qjxFZR9JiJ8hDcYHgyEXH2Ib07KcQh1gzM7iWzvdRETog==
-X-Received: by 10.98.147.22 with SMTP id b22mr17380162pfe.88.1473970495846;
-        Thu, 15 Sep 2016 13:14:55 -0700 (PDT)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id xv9sm6952840pab.36.2016.09.15.13.14.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 15 Sep 2016 13:14:55 -0700 (PDT)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: emxx_udc: add braces to if-else block
-Date: Fri, 16 Sep 2016 01:44:14 +0530
-Message-Id: <20160915201414.10494-1-gs051095@gmail.com>
-X-Mailer: git-send-email 2.9.2
+       dkim=pass header.i=@kernel.org header.s=default header.b=OZQCysyb;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id AFBC7206BB;
+	Mon,  7 Oct 2019 10:28:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1570444111;
+	bh=aD1WI8OBgBUNj/w60M7OWbmnZ/6/q1VQAbqU1+hyA1A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OZQCysyb70+qo3q16j2r7puNwBpwFSqAsT7eQAS26bg8Fnguv81G4iCsLqxyqi5RX
+	 7mbyEblRKM7VUOfsXL1zyS3FkrQL8foU/57AbEEiorqzjIPA8nny6LzD6qEsortM7H
+	 E61gKvwh5iPiu9eYOVYYDfM4y1K3eQeIj1W6l7Xs=
+Date: Mon, 7 Oct 2019 12:28:28 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: vt6656: align arguments with open parenthesis
+Message-ID: <20191007102828.GA366705@kroah.com>
+References: <20191006191020.7435-1-gabrielabittencourt00@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191006191020.7435-1-gabrielabittencourt00@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-add braces to if/else clause to fix the checkpatch issue braces {}
-should be used on all arms of if/else block. Does not affect flow
-because only single statement inside if/else block.
+On Sun, Oct 06, 2019 at 04:10:20PM -0300, Gabriela Bittencourt wrote:
+> Cleans up CHECKs of "Alignment should match open parenthesis"
+> 
+> Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+> ---
+>  drivers/staging/vt6656/rxtx.c | 63 +++++++++++++++++++++++------------
+>  1 file changed, 41 insertions(+), 22 deletions(-)
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/emxx_udc/emxx_udc.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+This patch does not apply to my staging-next branch either :(
 
-diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-index f4d9000..ffcb09a 100644
---- a/drivers/staging/emxx_udc/emxx_udc.c
-+++ b/drivers/staging/emxx_udc/emxx_udc.c
-@@ -478,9 +478,9 @@ static void _nbu2ss_dma_map_single(
- )
- {
- 	if (req->req.dma == DMA_ADDR_INVALID) {
--		if (req->unaligned)
-+		if (req->unaligned) {
- 			req->req.dma = ep->phys_buf;
--		else {
-+		} else {
- 			req->req.dma = dma_map_single(
- 				udc->gadget.dev.parent,
- 				req->req.buf,
-@@ -1236,9 +1236,9 @@ static int _nbu2ss_start_transfer(
- 	req->dma_flag = FALSE;
- 	req->div_len = 0;
- 
--	if (req->req.length == 0)
-+	if (req->req.length == 0) {
- 		req->zero = false;
--	else {
-+	} else {
- 		if ((req->req.length % ep->ep.maxpacket) == 0)
- 			req->zero = req->req.zero;
- 		else
-@@ -1941,9 +1941,9 @@ static void _nbu2ss_ep_done(
- 	if (likely(req->req.status == -EINPROGRESS))
- 		req->req.status = status;
- 
--	if (ep->stalled)
-+	if (ep->stalled) {
- 		_nbu2ss_epn_set_stall(udc, ep);
--	else {
-+	} else {
- 		if (!list_empty(&ep->queue))
- 			_nbu2ss_restert_transfer(ep);
- 	}
-@@ -2474,8 +2474,9 @@ static irqreturn_t _nbu2ss_udc_irq(int irq, void *_udc)
- 			_nbu2ss_writel(&preg->USB_INT_STA, ~USB_INT_STA_RW);
- 			_nbu2ss_writel(&preg->USB_INT_ENA, 0);
- 			status = 0;
--		} else
-+		} else {
- 			status = _nbu2ss_readl(&preg->USB_INT_STA);
-+		}
- 
- 		if (status == 0)
- 			break;
--- 
-2.9.2
+Please rebase and resend it.
 
+thanks,
+
+greg k-h
 
