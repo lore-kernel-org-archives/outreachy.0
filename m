@@ -1,72 +1,101 @@
-X-GM-THRID: 6811389983474057216
-X-Received: by 2002:a05:6808:d9:: with SMTP id t25mr2157000oic.22.1585900314186;
-        Fri, 03 Apr 2020 00:51:54 -0700 (PDT)
+X-GM-THRID: 6744681878871080960
+X-Received: by 2002:a19:8c14:: with SMTP id o20mr15459191lfd.158.1570427246500;
+        Sun, 06 Oct 2019 22:47:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:2e7:: with SMTP id 94ls2694492otl.6.gmail; Fri, 03 Apr
- 2020 00:51:53 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ8hdJ4g10bAdBn1iqXLRnpO/LGOMueaagTzqS/NMZAfCEvJ54sh+A3LoLobaFAiGEM5UEF
-X-Received: by 2002:a9d:340b:: with SMTP id v11mr5369951otb.14.1585900313063;
-        Fri, 03 Apr 2020 00:51:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585900313; cv=none;
+Received: by 2002:a2e:9d9a:: with SMTP id c26ls1969595ljj.9.gmail; Sun, 06 Oct
+ 2019 22:47:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNJiYix+Isx4JB1FpkzXU9m28G2YjXRFPy3o21BVWLbiAR1vMgmZMRfyMYXDIDZft4U0d4
+X-Received: by 2002:a2e:530d:: with SMTP id h13mr17108471ljb.109.1570427245304;
+        Sun, 06 Oct 2019 22:47:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570427245; cv=none;
         d=google.com; s=arc-20160816;
-        b=0kf+bt8E3YmllYDj2CCFbB60x+nH8g91ZfCLt3zV4KthUw07vT+ID6I0qPoIifBg5h
-         RNNm//IcIQTExlf1Rkl5ums7Zjow1LyeaRZy87xW22+ls2E/YIEXepIt9mRjNP/t8Hru
-         Bx7W5vXa0LQproUMoADn4pV9KSu4oqWD69ivIAqLCHrAV4L/e3+FlogWyEEC9Pl627Q0
-         oYsb1EP7SqUOtACRfw4N/Vdq0kQjgMQKHnOUT6Wc+WocQ9WrLbfHkD+OiFvwddqHiUTT
-         /hvnR0rl4vj7JFgDT5T4uohpD7dbv5qXejfkBejrhQqCgeXPdedpD818aZ//ikDqO5Y2
-         8wow==
+        b=hA3VeYn09J/6Dd6qGC3i9jBAMNDo2IPsINdv7Qna7hxBjYAJgj8IRhdvHQlol/qrtV
+         1sZ/rf3g4bNSG6pLNPEh1JPeWTIVWv9P5/BxcutFl0NrdImG9ezNdIWZTIW8khtUw//h
+         A02m0pukpN2+4DpOF6SmS+bveioIxe4knhXXYPIx1h+FkedLv0pHAhcAyegv9mL+ThVr
+         eE/WPvjchn2LlG9gMOlCacValflvHrQYErrxB/muuEahxoJNrETmoMbxPNjdFLUIv69+
+         R4O1wMRoe2SPOTK2KtN3aV81wzITJkJ9u6QPSJQZgoDqMNVUZuq6CuB55ehE8y5Iabj+
+         s8mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=JI2tLQLSRf04l5NDsYrR0RPsbo4MULBFnRGcuwM3C0I=;
-        b=PMChUJBF9fiKFwNp2fxhBg2yPGfmmYw6fX6Vr+bvw4ORkc3iwAoKBNX7k53cgPydct
-         jcHT1jGW6y2ztbN8RjM9hNmtYd4H0W+VrZJzfmTBp71TvaqIre583ePQapILuNEiSW07
-         QVJzYeKRuJIBMja2TMulEovmtoJhthPbFW5Li3uHdhYExN21wqpa/W+ERKpqiICEvsDT
-         Wch4PyGpenLjID9vDvKBEvzIhmjYrsWiNr3Ftt1fnZX/SAf6g21kfZMvVS9KtiyHh0iO
-         P/kjXO14+rgNtrvHcaeu8eUp85Ud1lEGu50Z078Z+8VAxozYx/uWrXFa4yzVEFpSpP7R
-         cmQQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=29hsjsjotkz6SPzetdVjZtzuDlk/YhT3p+CRK9Czepg=;
+        b=aJKL3yA1+NmIVSBTBXRuR/JpOdxjkl+QNLdcb8IhhF08sfSqGcMNTfSUtFeti2gb89
+         FndL3AyZFZsO8DTNODOEh9ucHoX6sY/KswE+erZRX1HcvG0mmhbtbBQtLhh5ShpWOQmE
+         6djFYUoOu8ivvle403625cdNQnImfDNy0+GLgKZ7uY2E4EgmM+/j0WeX7obvxyRU1u5/
+         sCd688V54P9n/oMcpkG0K5WzN5BsnPm9256YGNarYtg/Ff3yL01kd4WypjHySpRmwYKU
+         +cXFb6Erhuqo0nVSg2c3Xz/QRXdFYEBtkqjl1AbSftIS2ShcBieE7L/U2yjTubHP31yD
+         ApUw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=e7hjKbdz;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id d188si616493oig.0.2020.04.03.00.51.52
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z9si1331004ljj.4.2019.10.06.22.47.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Apr 2020 00:51:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Sun, 06 Oct 2019 22:47:25 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=e7hjKbdz;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 8F9DD2073B;
-	Fri,  3 Apr 2020 07:51:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1585900312;
-	bh=JI2tLQLSRf04l5NDsYrR0RPsbo4MULBFnRGcuwM3C0I=;
-	h=Date:From:To:Subject:From;
-	b=e7hjKbdzPW3Q3pWTK5BJYTUGT6yEIBXUUZAqnqeJcEMc9MCK07dQ+URWgrzxcBuu7
-	 N9WOTisZ+9j3/JkREgZnBw/Vt4Z8czZDPHAgjzFZkGzfMgzHxEc4EN9T6kJq5Zo9sD
-	 N7O/oA77oMkkZwQc3HhQDPavIQFgzc6+5D/ILz1s=
-Date: Fri, 3 Apr 2020 09:51:49 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: outreachy-kernel@googlegroups.com
-Subject: Outreachy patches caught up on, yet again.
-Message-ID: <20200403075149.GA3517426@kroah.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,265,1566856800"; 
+   d="scan'208";a="404970271"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2019 07:47:24 +0200
+Date: Mon, 7 Oct 2019 07:47:24 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: "Javier F. Arias" <jarias.linux@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unnecessary
+ braces
+In-Reply-To: <20191006230327.GA4168@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910070746030.2753@hadrien>
+References: <20191006230327.GA4168@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Hi all,
 
-I'm now caught up on all submitted outreachy patches that I can apply.
 
-If you have not gotten an email from my patch system saying that your
-patch was applied, consider it lost, and please rebase and resend it.
+On Sun, 6 Oct 2019, Javier F. Arias wrote:
 
-thanks,
+> Remove braces that are not necessary for any arm of this statement.
+> Issue found by checkpatch.
 
-greg k-h
+It may have been that the DBG call could disappear in some configuration,
+in which case the braces would have been necessary.  But even when
+debugging is not wanted, the DBG... macro generates a do while, so the
+braces are indeed not needed.
+
+julia
+
+>
+> Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_xmit.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+> index 3956c43a6468..bda25e13e935 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+> @@ -3063,9 +3063,8 @@ void rtw_ack_tx_done(struct xmit_priv *pxmitpriv, int status)
+>  {
+>  	struct submit_ctx *pack_tx_ops = &pxmitpriv->ack_tx_ops;
+>
+> -	if (pxmitpriv->ack_tx) {
+> +	if (pxmitpriv->ack_tx)
+>  		rtw_sctx_done_err(&pack_tx_ops, status);
+> -	} else {
+> +	else
+>  		DBG_871X("%s ack_tx not set\n", __func__);
+> -	}
+>  }
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191006230327.GA4168%40gmail.com.
+>
 
