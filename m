@@ -1,122 +1,104 @@
 X-GM-THRID: 6744906774126526464
-X-Received: by 2002:ac8:373c:: with SMTP id o57mr30338243qtb.70.1570459647225;
-        Mon, 07 Oct 2019 07:47:27 -0700 (PDT)
+X-Received: by 2002:a17:906:e0c2:: with SMTP id gl2mr22108090ejb.157.1570426337162;
+        Sun, 06 Oct 2019 22:32:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:3809:: with SMTP id q9ls63139qtb.5.gmail; Mon, 07 Oct
- 2019 07:47:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwNQWbUiOLDhz1d15vNnEhGdzjv54Lg/M29NjIgtXd1zUKEU8283bBLQXhIyLKoAc50v2vF
-X-Received: by 2002:ac8:3195:: with SMTP id h21mr31448055qte.350.1570459646107;
-        Mon, 07 Oct 2019 07:47:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570459646; cv=none;
+Received: by 2002:aa7:dd81:: with SMTP id g1ls3972708edv.15.gmail; Sun, 06 Oct
+ 2019 22:32:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzJWaplnGjo9dFZDGCVYLRt3hy3mKIA6ttVobjPTop/NIZfDrxx4PVd+7I29DxdhitpvRGD
+X-Received: by 2002:a50:9f42:: with SMTP id b60mr27720062edf.192.1570426336172;
+        Sun, 06 Oct 2019 22:32:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570426336; cv=none;
         d=google.com; s=arc-20160816;
-        b=tPtKcb6R7eaVy2oK6iu83uGTCyuXrPqwfk/gouG/VpOC88qwUkcyEGhXDOVEuuXFvr
-         H3HHOqdT4XsFgLMPg81mkb925HrpZhYkLnau06UwXgf6hklfALEIFUbO0Mtyz80l5NeX
-         dhbbv1m/IIsIozWnbjBzCtRBFQC0Omss19uQ0h2QTX/b+6V2aOs13H5vvB6EdSy8AKta
-         l9jIz5mw3zXXpC6lOMMiW7r6/79kGnXevxpylLsAuiGgKgnVzokjfNt+haIB5dPvAEL3
-         5YMWsccFwHpe+iqNrHBnoLCCPM1SpZVFJxhJCgn3wRatQNDUDtnL6eMzBNXZ92wk3T3H
-         Gi+A==
+        b=QjytvK17Nq/P+Ei7e3oXy+O0yfPtzh4RAz4/rIgHvolA5Ja/4YZ4+qcyo7b5XyoniL
+         BYLgWxBefsr5o3ppNGaaPaJXt2djrdJs0DfuWUKek7ospLDMN7d1YRXkf8zWGgRLCFcI
+         Vg0A22i9+K0pPqK/HHtbs+v3VLvoCsBuxSBQjw586RjptAp3TkYvBpRCKktejHEZZHqo
+         FpXLUR7EACiQvanLzgfnA8xRb2OLm1fvLQK29A8aNt1tHKbDN+6zPvr1tx4I/VDay9IM
+         nOGV0v/u9t+grjIW+cDoPy8HdXghTUZwEtRfEV6DLF1/+0EbbMrsrUPkWoNng16beQxK
+         ADvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:mail-followup-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=y/ofltjpQ/0gOyfh06sbq5PB9H/Mc9TSI4DzF6mFp8g=;
-        b=lAP7r6fuYn17U5lGHEVdePi9D6jJGKDRqIBIGILSz/13zgHWnFRaH1Q+q91iUzHR/a
-         /DheThpSyivZ2kq5+4VWmAe4gl6Gb985g4ASOWgszIJQSa3LFldAmyYZVCAu0yw1UhD7
-         y7+/eMwf35V9OSic8xkSX6kgp4Zmtut18Z9XLLhcHVxAhA3Ziz4wUt6ddcKZmJgRrmVm
-         CSKtZl77CwRDVUeciO1E5WU2YKBL4F4GKmGUuxf9W92wjvdKISKHg+JweVC3a60UJ5oj
-         SdwwjYT9STuXFIdklVMVlPLfIZ3/bKo/0YyhMeiDQGvPKev/7cYT+HOnj9XiP2PcxWHe
-         4cZQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=HBu/CP/nBi91k3+jt5fXKCo1M0LDqywNGiORSR5zQuU=;
+        b=kCUrKmli6Ur7HP6WtgUHCEsBQRliiMkUqcU6B61K+/mJsksy0rWfyNKo1+ngjZlKJu
+         LxU9MVv+qvW4MHGApHtZDTgdOOLvg9754/1YC9cnCbcSrQTX4lJBx6R7wGaYpUblKGYL
+         VZ8+2gGWB4PzFyaLGNIlY+LFBWmwJCEYJP7DVqZZ3aNNEEwpOIID9q7unZsd6AyeJXfl
+         XFCGFXuhfe7DEHEacTxxXcFERDEPJ/Ge9RA7jtpGBuj8tdws2ZKgbeGdRTuCU4KVItVA
+         qUnpHOXcz6C/P1yaxPn8xoR5Zo6xKEpbwdhENk9pxxIzXPlk5xPBnQ8RRO0itOkRHwEc
+         Ocew==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="J8/2p790";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e41 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vs1-xe41.google.com (mail-vs1-xe41.google.com. [2607:f8b0:4864:20::e41])
-        by gmr-mx.google.com with ESMTPS id u44si1434384qtb.5.2019.10.07.07.47.26
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id d14si1009716edb.4.2019.10.06.22.32.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Oct 2019 07:47:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e41 as permitted sender) client-ip=2607:f8b0:4864:20::e41;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 06 Oct 2019 22:32:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="J8/2p790";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e41 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe41.google.com with SMTP id y129so9078256vsc.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 07 Oct 2019 07:47:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition:user-agent;
-        bh=y/ofltjpQ/0gOyfh06sbq5PB9H/Mc9TSI4DzF6mFp8g=;
-        b=J8/2p790FKdlETNl3Sf9f12AlcRuI9Ij1mA6eyAe2JGQzS7PxI9mAkTgsh8gWbJNXU
-         ulX2iIiFWO5jUYmJSG/Li+vuVNJnsDCxwxnlQ+46V5P/E9WaA37G/9RmujIKuNMvZtau
-         07FOIhboqq6LPthzhMhhMjHNh2gdX/iQATfuQZ3tSMI2xaZyYW3UN3Ch/yLKDxApNV0o
-         TqvIMgxlpyEvYhYEE/Z7Rs2PX5aAWI+GWLW6EwoWZp9hK/HfuYtRP+FZLSlAZ3wKnUvi
-         ozk38OaoIjsvnUo+YK8LU/kf/M7EB/Ok7tAT2j+AQZH0SYKwuzWn8p5KDmAH3hLzfzDt
-         7ATg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition:user-agent;
-        bh=y/ofltjpQ/0gOyfh06sbq5PB9H/Mc9TSI4DzF6mFp8g=;
-        b=CpVRS+WSqz7KaWrpiW//kqz+IY0ms1EL2X+dIGaID8B0j0RJpUdgLamK0BnVjTQJBW
-         NI7lI9wrZ6CZ2oikH+3FKoPY06nJuup+8xzN7KfU7kZm0rrnDTnVs4vNJbix8dGfKIoM
-         hxlkT12fP3OHxDhIybEXJNh7B5BYkoHjZSzOSvYh00vaTI/a3WJNWbWUH0k2fku18YJS
-         tu6SccOdyMGTnx/HFJd1R6U4ZNti45AhBr93z6xZs7emwS2E32fSJEJ7ABghqzRXhk9C
-         S9fNPicfIKDr31cO7y/QCQQPya70UfYiRYj0LLjhJajMbsaWIhFFAizEkxnVoCAFv3XX
-         nZRw==
-X-Gm-Message-State: APjAAAXUe1AGW54VDn5qgjkPpmQOnYjkT+C1ZKQiDBiUto82PJKKT5GA
-	NuV2Z1zHOfr+LhLpz4hdNZBMMcjp/vFZgg==
-X-Received: by 2002:a67:1e04:: with SMTP id e4mr9438765vse.76.1570459644393;
-        Mon, 07 Oct 2019 07:47:24 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com (dynamic-200-119-56-53.dynamic.etb.net.co. [200.119.56.53])
-        by smtp.gmail.com with ESMTPSA id n201sm4464049vkn.16.2019.10.07.07.47.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Oct 2019 07:47:24 -0700 (PDT)
-Date: Mon, 7 Oct 2019 09:47:21 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Replace string with identifier
-Message-ID: <20191007144719.2zzlljlqymdqgom7@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,265,1566856800"; 
+   d="scan'208";a="404969284"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Oct 2019 07:32:15 +0200
+Date: Mon, 7 Oct 2019 07:32:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: "Javier F. Arias" <jarias.linux@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Replace string
+ with identifier
+In-Reply-To: <20191007040259.uoafr2taqolezves@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910070731410.2753@hadrien>
+References: <20191007040259.uoafr2taqolezves@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20180716
+Content-Type: text/plain; charset=US-ASCII
 
-Replace the hardcoded function name with it's predefined identifier.
-Issue found by checkpatch.
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 6f7a63f53d4f..fef9f1f9ba2c 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -2310,7 +2310,7 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
- 
- 	if (!pxmitframe) {
- 		drop_cnt++;
--		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("rtw_xmit: no more pxmitframe\n"));
-+		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("%s: no more pxmitframe\n", __func__));
- 		DBG_COUNTER(padapter->tx_logs.core_tx_err_pxmitframe);
- 		return -1;
- 	}
-@@ -2318,7 +2318,7 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
- 	res = update_attrib(padapter, *ppkt, &pxmitframe->attrib);
- 
- 	if (res == _FAIL) {
--		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("rtw_xmit: update attrib fail\n"));
-+		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("%s: update attrib fail\n", __func__));
- 		#ifdef DBG_TX_DROP_FRAME
- 		DBG_871X("DBG_TX_DROP_FRAME %s update attrib fail\n", __func__);
- 		#endif
--- 
-2.20.1
+On Sun, 6 Oct 2019, Javier F. Arias wrote:
 
+> Replace the hardcoded function name with the it's predefined identifier.
+
+Perhaps you could send a v2 without the unnecessary "the".
+
+julia
+
+> Issue found by checkpatch.
+>
+> Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_xmit.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+> index 6f7a63f53d4f..fef9f1f9ba2c 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+> @@ -2310,7 +2310,7 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
+>
+>  	if (!pxmitframe) {
+>  		drop_cnt++;
+> -		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("rtw_xmit: no more pxmitframe\n"));
+> +		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("%s: no more pxmitframe\n", __func__));
+>  		DBG_COUNTER(padapter->tx_logs.core_tx_err_pxmitframe);
+>  		return -1;
+>  	}
+> @@ -2318,7 +2318,7 @@ s32 rtw_xmit(struct adapter *padapter, _pkt **ppkt)
+>  	res = update_attrib(padapter, *ppkt, &pxmitframe->attrib);
+>
+>  	if (res == _FAIL) {
+> -		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("rtw_xmit: update attrib fail\n"));
+> +		RT_TRACE(_module_xmit_osdep_c_, _drv_err_, ("%s: update attrib fail\n", __func__));
+>  		#ifdef DBG_TX_DROP_FRAME
+>  		DBG_871X("DBG_TX_DROP_FRAME %s update attrib fail\n", __func__);
+>  		#endif
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191007040259.uoafr2taqolezves%40gmail.com.
+>
 
