@@ -1,86 +1,112 @@
-X-GM-THRID: 6329533652034125824
-X-Received: by 10.129.132.208 with SMTP id u199mr17040826ywf.38.1473709394370;
-        Mon, 12 Sep 2016 12:43:14 -0700 (PDT)
+X-GM-THRID: 6745544060634660864
+X-Received: by 2002:a5d:89c1:: with SMTP id a1mr220911iot.135.1570569365535;
+        Tue, 08 Oct 2019 14:16:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.40.231 with SMTP id s94ls422691ota.17.gmail; Mon, 12 Sep
- 2016 12:43:14 -0700 (PDT)
-X-Received: by 10.157.2.72 with SMTP id 66mr1814356otb.7.1473709394016;
-        Mon, 12 Sep 2016 12:43:14 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id h124si2645093pfe.0.2016.09.12.12.43.13
+Received: by 2002:a92:998a:: with SMTP id t10ls42847ilk.9.gmail; Tue, 08 Oct
+ 2019 14:16:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz8N+EHcu1SoLuFJHehCB4fQdUbuDzW28C2Gt5HVxjimIhQO/GZBRvpmE4BhIR4ky1HWD6A
+X-Received: by 2002:a92:469a:: with SMTP id d26mr365181ilk.304.1570569363473;
+        Tue, 08 Oct 2019 14:16:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570569363; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Es3s4v6jjhg/A3RCmEpXf2VoWjayVwbQfvMPLKMzWxR+6vyKeQ1FPE3ZfLOwoayHnJ
+         Ky47R+CEcOA6zTKFHiBEv37Un0ghH80SDwYToRbicz86LhMrHgJE6rWgtoGgxYc4S6Ir
+         rrIK3V/DI4lW7WMsU7EhptLfP1jJrjp1tDZ611BAxWYsXRVCUR0RwIZPgGrM542y/KQ/
+         AHZ3zPxutr4r7/XC5+5mH5w+vThoYO6HKMizx7paAJ/eitM8/3AdRJtdN6pfbJP80ALT
+         90+6/5AorKyrcKT20pMgfvj7vsIRrMDfWqbs+bA7/K7jZ3EPYQODQDOjmmVhes1u6hQB
+         RJ6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:mail-followup-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=6yqGMvttxoNt2QLRWMMScohY0lXIrbMQLDjqfts5vEQ=;
+        b=b2qcHVhplhmU8R/zY6Nzm+m4GaAgMgh1sYNaFWKe+sRqrCT+KRiyGr+PdxHLtopcgl
+         O6g29YIEBvQUyqQE/QLV4EQOq59cOU3aDItI+KSoynGF9Z9gF8qyuSVKzyAcevvpLIME
+         ugwr46NJvBOBw1ys9xPPUTpp2bvNkaiL5eraAZB/mK+BzZprGmxinz5mNuDNOWByhWFd
+         VKGHbnz50qHZaiaFfoJ1nWp5anQ4GUb1n3IjDHaev98EM9Xe4abRffhQcwNe4PKUFm3X
+         IefFpKUM/i/2tI75y35Elttosw0c4qKOzEDE7tZtP729sHgSA0aWCzX5hJ9WLWEO6QO+
+         pGDQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VxDrPU1R;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com. [2607:f8b0:4864:20::e42])
+        by gmr-mx.google.com with ESMTPS id f11si2105iok.4.2019.10.08.14.16.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Sep 2016 12:43:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 08 Oct 2019 14:16:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) client-ip=2607:f8b0:4864:20::e42;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id x24so8499475pfa.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Sep 2016 12:43:13 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VxDrPU1R;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-vs1-xe42.google.com with SMTP id p13so104679vsr.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 08 Oct 2019 14:16:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=AQ9X2dEAVArHH2EbB0bsZHVimyxXxcf5//xBFhqhleU=;
-        b=rYYuILZscdOgCCjrQj6wFVeIEWnEfchlbB6CoYSzxQX/HNIdKs+C8ihB60c+yZC2gN
-         9183GJ39BmChOU959yscuxR7gHiVTmphQeHjjQuBOL0rxUHIF2cgOhyarz+I2MuI25o3
-         OCyOIBRGD5VzuSB395kDzBzN0zKMKMSpb5D0HK9JuAS9jNR8ZFo2h7EY+bPTArq5dmBk
-         VDnwxMVh0zMpv+KePKV/a6he0DOpeSrKtwlAd3kH+mTFghFY83RBO/DNTA4SZYENuMdt
-         x+tgJTiKmJwwJzM+DOYxLkYVYCHk/EQW4R2GkhLRZSW3YTkOYgpQ+kvHsLBULKoNAdIf
-         Eg5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
          :content-disposition:user-agent;
-        bh=AQ9X2dEAVArHH2EbB0bsZHVimyxXxcf5//xBFhqhleU=;
-        b=P4RYWBfhrZTuCGFXkts338SZwlNsrec1WRuQgw+S/lC9k9XqnhLxIBZD7RlxMlpXWO
-         nMfRDnEMtrb8tC8wRfcURUhwxKSxhwXd+d/eDKtS3C2tm24ll4k3cOd/m/epqTA79yUz
-         S9ABLpkTK7XYHU6EzhbwoaOZZjfkh8IGeCOp/HVU6+4BgCe1XA8eus8PmeJBPXvGcTLH
-         t0hvJ5wn6l6m22Kk9B+AoluEJ60FHXIXnWeMYvFCKfaFG1sdVTlUw8SVL63WVUli/+qZ
-         a+zbFQWtu9FjWFZoLRFtOZioHdzPWYmKphsN+XLYxX4DoodFuSpqDbMel9QhFhvIvIAz
-         xxUA==
-X-Gm-Message-State: AE9vXwOkPJ4hwHmgPpx9G2R92ArKls157WhJjZIL4HLvCDgjq9ZR+q1EkTGeH1mVIDtNCg==
-X-Received: by 10.98.68.148 with SMTP id m20mr36365108pfi.0.1473709393639;
-        Mon, 12 Sep 2016 12:43:13 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.35.146])
-        by smtp.gmail.com with ESMTPSA id ah5sm26390862pad.30.2016.09.12.12.43.12
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 12 Sep 2016 12:43:13 -0700 (PDT)
-Date: Tue, 13 Sep 2016 01:13:45 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: bus: Space prohibited before close parenthesis ')'.
-Message-ID: <20160912194345.GA2666@sandhya>
+        bh=6yqGMvttxoNt2QLRWMMScohY0lXIrbMQLDjqfts5vEQ=;
+        b=VxDrPU1Rmx+R/RuFbHO/McNwrQPA0BJ4To93tYo24DH3LOMmUi1LdsFPRnbk1hiBCc
+         87b7uw8mr8a9ZkBVkAKCQK4ieRBbgLLs5Oazc7+ziifC3xre4Uwr0EBrFTlgVLqFaD2w
+         6BQUa/QZ3K2TE9IFC7a5SLfXoTGPDpa/UNNPlBp6h9JL6O8V9dm2+OGsftCzh8SHH6UA
+         1XeZp7meYRCL+8ZNAefxZVNLBzbKbkfdvjretPnOAW0TBO30zc4IT17OH3mQT2THU853
+         zvliNihadsLO3CDTqQn0SbREYqzMKILegNAhbi4kkzt7NUeAjAZWiw2TFg+Qx6yrrrIv
+         qbNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:mime-version:content-disposition:user-agent;
+        bh=6yqGMvttxoNt2QLRWMMScohY0lXIrbMQLDjqfts5vEQ=;
+        b=CNhK6zV7UZuNGTuFmb7z8LgOQXumi20EZ71FmqE/VqWrBVJB4lDOf2w3mP/6NKhol8
+         nan5grj2xcnFIamQQ3BMkvOHzZZVjimqKnoeSCsfKX7ruaJS3/WmsR8RZes8WXt8bl4w
+         sF48aG+Cpxp1k2F30XKnAETSGrIpV8ll0USx7vdoxkOlEgerumqluoP3kZoLd9RNlG5O
+         rKJDLS+ZCbo2OX5fJBZPgDQb8k/0qDF5bUOgDGGRg8LGEOKwjcZmyY6Y62IKIaMvSFS2
+         04kWslWFK4r7oMEqixw4zzbwzT3a6HX370alLT+XvNN3jJZck/2x64y5WcMYT85YyCrF
+         oZ/A==
+X-Gm-Message-State: APjAAAUTgEwDUmmQdXStgzMQPXqalI/c9wSvKy7VeQwbZejv35xAWEui
+	vJhCnDsUS0yp3vSbKwUAoe+zqoCXSrl//Q==
+X-Received: by 2002:a05:6102:499:: with SMTP id n25mr19720219vsa.133.1570569362939;
+        Tue, 08 Oct 2019 14:16:02 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com (dynamic-190-27-96-102.dynamic.etb.net.co. [190.27.96.102])
+        by smtp.gmail.com with ESMTPSA id j7sm19199vkj.51.2019.10.08.14.16.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Oct 2019 14:16:02 -0700 (PDT)
+Date: Tue, 8 Oct 2019 16:16:00 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8723bs: Remove space before tab
+Message-ID: <20191008211557.iv3hdpbklgaddlt3@gmail.com>
+Mail-Followup-To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+User-Agent: NeoMutt/20180716
 
-Space prohibited before close parenthesis ')'.This patch is found by checkpatch.pl script.
+Fix warning by removing space before tab.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
 ---
- drivers/bus/arm-cci.c | 2 +-
+ drivers/staging/rtl8723bs/core/rtw_mlme.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/bus/arm-cci.c b/drivers/bus/arm-cci.c
-index 5755907f..9e1020f 100644
---- a/drivers/bus/arm-cci.c
-+++ b/drivers/bus/arm-cci.c
-@@ -2108,7 +2108,7 @@ asmlinkage void __naked cci_enable_port_for_self(void)
- 	[offsetof_cpu_port_port] "i" (offsetof(struct cpu_port, port)),
- 	[sizeof_struct_cpu_port] "i" (sizeof(struct cpu_port)),
- 	[sizeof_struct_ace_port] "i" (sizeof(struct cci_ace_port)),
--	[offsetof_port_phys] "i" (offsetof(struct cci_ace_port, phys)) );
-+	[offsetof_port_phys] "i" (offsetof(struct cci_ace_port, phys)));
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+index 4000125054c3..0ba88296b104 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+@@ -19,7 +19,7 @@ int	rtw_init_mlme_priv(struct adapter *padapter)
+ 	int	i;
+ 	u8 *pbuf;
+ 	struct wlan_network	*pnetwork;
+-	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
++	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
+ 	int	res = _SUCCESS;
  
- 	unreachable();
- }
+ 	pmlmepriv->nic_hdl = (u8 *)padapter;
 -- 
-1.8.2.3
+2.20.1
 
 
