@@ -1,116 +1,93 @@
-X-GM-THRID: 6530108592701308928
-X-Received: by 10.157.1.9 with SMTP id 9mr3395960otu.33.1520409386069;
-        Tue, 06 Mar 2018 23:56:26 -0800 (PST)
+X-GM-THRID: 6745433279172706304
+X-Received: by 2002:a5d:8ac4:: with SMTP id e4mr6259275iot.185.1570557485904;
+        Tue, 08 Oct 2019 10:58:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.97.211 with SMTP id h19ls650996otk.19.gmail; Tue, 06 Mar
- 2018 23:56:25 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvcXVk5uVWBWMhI5q5pG9LwedESBQLOZdHe+ZEcWQg7j/bvpB16vVtAtZQV2gIAV2yiaxqZ
-X-Received: by 10.157.1.9 with SMTP id 9mr3395944otu.33.1520409385158;
-        Tue, 06 Mar 2018 23:56:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520409385; cv=none;
+Received: by 2002:a6b:3f8a:: with SMTP id m132ls768879ioa.13.gmail; Tue, 08
+ Oct 2019 10:58:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyn2OcxvAtghmoQGQDcm/FIP5SCLU7Qbix/qcXQY6Lv1igJO7XDphkyo9PHs69zbDBpdmWn
+X-Received: by 2002:a6b:a0d:: with SMTP id z13mr28918438ioi.5.1570557484586;
+        Tue, 08 Oct 2019 10:58:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570557484; cv=none;
         d=google.com; s=arc-20160816;
-        b=gVa7+VWpfZuoO88Eb07S1bxMiGK9m8RTyB/11uhBszouuWSknd84xKcXppZSCj7i4P
-         TH70LJTMOXyPq3mhjQy6c31Q+HfJCGeS+NPC02RSlOI4/qPFm2eeD0Ejck/V1JQlJ7Fw
-         5vfds/3Yo2K2o5QaA3cSu12bUvOJPhqwTZEXznoniKkN3teNSE8ziiLPrcm/93aorNCt
-         cUdN+2TgTGvnipYst6lLJSNhVJXVIBKOro50yhizgjI9eCBKSOSftctjtCQdw4HDVhyP
-         JNhhmANMiBUFIxh51ETHupUY3G4Gn3Fmgo5rFmFesfuLjjIu6CH7kVOYi9pmeKDwfzTJ
-         oU8A==
+        b=TTYww7RnxJO31okVgy7T6AoDVKYtC+OHUuJXJBNo3gjyXeynJLuUG7hKciLE3lU2R6
+         dh10y1Bcz2Y18x+RWGvGKwgdxQYii8unRmi75om6r4ybt/8ztmJBx/679n2Qzqc6eNld
+         bS5CKzu03spJtwAgjIkeatSey1GgmyspMpfT6/igIJL7Rntd6qldGEoJbSVwNp/81XCj
+         PTHspfNAc4U+zMYKVU5Scb8x9H15QGT/763NC2w+pD3KmKxwkT5MuWxA3fTk0/oynwbV
+         o8H16iSufO+lw6wHMEcvJnZj7zEN9+O7kXxfYhhZZSf/GhaBcMKrz0/KIleBOwyjyjFJ
+         ppBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=K3QfdClsdJ1unCMmZhfeuD7kTZjrME6AnoO0aJBAUKo=;
-        b=QK+LBUv2fEABB3mOngfXYel5WafqBQm41+Puvf0Y/qz4UOboLvuLewKIhmGBZ/6zOV
-         qzYNWQCup3yDFHY5nBAW4xhtNSDwqTX3HvguJp0LLhGHuFF3TqsEJTE5SXYCKEule6Zj
-         itKEQvUn/TpBhfdBsB2Hp2FIHGcJx0jozLJZ1DUhtjMmdzqcEtjhIktZ3fX8MeyFLE9i
-         EDgyv9a6wx7FJQW0gmmvruQBWFsX9r6tak2Z3zONJ8WbmsKqQvjxyQhIwQABhMxBeoe8
-         BcJneDz96ofuRx9/wxwrNwSuJfypP+M8OWEVbcJL59Smc7/kJtISvj4mmko0HDKV9No0
-         E/oQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ihGwtiynE0O/hbVHFduCTPxo3BBb7CeYIUlX2oedgSc=;
+        b=vQQPnXVk7e2FlWDKBRUMIRu3gR4+MGFLrd8/mrL4Tyc5pZAtF1QYsRhRyamxOvNPy8
+         LLSmv5lBRrRP0Yv+lXmGB9nCZun/449Hjz4nmxkD5XOsSD8Bqoa/+NlfObTGISWcwBBn
+         LtTk30hYBf8gfM1yoZq3WAhxfubheArSjP4WwWfJWSmrwS33pD3z7hPq1AwO6bVXbUyD
+         iRDqnjNChhXdz6SnQGQeBx0F0E3w+O/HaKQaedq8M0lNf3fOTDVCMV1Wd9TfvhYdUT8W
+         l0aVjK3nnK+btpqxAp01LpLa42Dr/w/4BQSya0sv6/AG7LKgdB39e4iGYDzcK2dL3SzE
+         cmOg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZdHlaIrN;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
-        by gmr-mx.google.com with ESMTPS id d131si1303005oib.3.2018.03.06.23.56.25
+       dkim=pass header.i=@kernel.org header.s=default header.b=1xOU6wuo;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id b2si1341765ilf.5.2019.10.08.10.58.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Mar 2018 23:56:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
+        Tue, 08 Oct 2019 10:58:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZdHlaIrN;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x236.google.com with SMTP id f80so634797pfa.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Mar 2018 23:56:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=K3QfdClsdJ1unCMmZhfeuD7kTZjrME6AnoO0aJBAUKo=;
-        b=ZdHlaIrNV+YZxk9+P4Rn24PmGkVMcn6O0PRoNd9b3B1XsjYlvT4LC+NgJFCcEVkKCJ
-         odPT5mebxiog/O00feJyrMcOsB05ckrNvweR2BiEsX18UJKQ4qaQ9kKy0aV+zWVYyKYa
-         rek+4YsfVceUtcn4/P5U4pRyIOWaa9DWtXy2gzdObxmjis9/vF3hR6j0V6G8Bwh576xx
-         sybiQ4Np49ChUsSssSHGVB18NBrDlWfJl2NeBZQVTKgX8wow7cbH307ndIBCga94ZUSr
-         AHCRHLBaUGniplXgc0lSkbthY4ikl2kfuou4Vw4+vVpbNJ8CUTo72z5P+CCjIkAdxNC4
-         G3Tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=K3QfdClsdJ1unCMmZhfeuD7kTZjrME6AnoO0aJBAUKo=;
-        b=Ykmo+s2+hIBNprE1z5XViBJLuWCH4IRiDu7sxOO8LgEQH7V9/ptMSCosv76vtT1fIH
-         toGFmG95r4n3gD4LG9YoC6nupYz5GtxPOImfgWCKfoPI0FX8hZ6adxv65uKQgGBZw8Fg
-         uXwa/ESstNeKVUX0Kgv0SKSrC6MVHChBwtcQQsUaCTrcz/6riOEfsNjYUsFDdpJ/0GYa
-         pkK9ct5FJHZLMf0e924rOBGxaTQ9bDvtsJDLBgmfrxBdd+Mmxiy2OQIsxkJ+mPSEOf1X
-         phwx+WDb8TDkcbIRULYhe0uq5t+Ho28TX8pCNrvyMSGki/6eYcHMJvb2n0Eu6pSkaE+g
-         YTxw==
-X-Gm-Message-State: APf1xPBzcJclIKAvkLUQqGcgXLZwYxsUmlKpfv9IWrHIePDZUg/JDGq1
-	2O33mSpESUO4pek9uomoXAw=
-X-Received: by 10.101.90.75 with SMTP id z11mr17135177pgs.29.1520409384787;
-        Tue, 06 Mar 2018 23:56:24 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-21-83.resnet.ucsb.edu. [169.231.21.83])
-        by smtp.gmail.com with ESMTPSA id w23sm39829664pfk.10.2018.03.06.23.56.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 06 Mar 2018 23:56:24 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: rtl8188eu: fix typo in comment
-Date: Tue,  6 Mar 2018 23:55:50 -0800
-Message-Id: <1520409350-61347-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=1xOU6wuo;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 75FDE206C0;
+	Tue,  8 Oct 2019 17:58:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1570557484;
+	bh=HbuA6L7Cvs7jU+24GWAgdF7XRoGQQ/pNu4NhM6LNBM0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=1xOU6wuoPjSwFidt3xtA6grAhyy3pIii1LiDezTsZaaeTtpf0aOYDAY4QHpMri+ft
+	 JqOtXyEAohuI1OwPv0Au8rZOBpgDyiUgykevoa/+qJdY3/Qp1MylsO/GAEjUC1SHHl
+	 vZXeS9LR6KD1Zj4Ssmzs+nczPzZqJ9t5j+MRKcHQ=
+Date: Tue, 8 Oct 2019 19:58:01 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, matthias.bgg@gmail.com
+Subject: Re: [PATCH] staging: mt7621-dma: add a blank line to fix checkpatch
+ warning
+Message-ID: <20191008175801.GA3015744@kroah.com>
+References: <20191008140552.25639-1-jbi.octave@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191008140552.25639-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Fix typo in the words 'transmitted' and 'failure' in the comment. Issue
-found using checkpatch.
+On Tue, Oct 08, 2019 at 03:05:52PM +0100, Jules Irenge wrote:
+> Add blank line to fix missed blank line warning.
+> Warning issued by checkpatch.pl tool:
+> "WARNING: Missing a blank line after declarations".
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/mt7621-dma/mtk-hsdma.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> index d964642d95a3..e309923aed2c 100644
+> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
+> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> @@ -157,6 +157,7 @@ struct mtk_hsdam_engine {
+>  	struct device_dma_parameters dma_parms;
+>  	void __iomem *base;
+>  	struct tasklet_struct task;
+> +
+>  	volatile unsigned long chan_issued;
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_mlme.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Look at the code, does this look correct?  :)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index bf0ccd3..8d49e30 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -897,7 +897,7 @@ static struct sta_info *rtw_joinbss_update_stainfo(struct adapter *padapter, str
- 		 * Commented by Albert 2012/07/21
- 		 * When doing the WPS, the wps_ie_len won't equal to 0
- 		 * And the Wi-Fi driver shouldn't allow the data
--		 * packet to be tramsmitted.
-+		 * packet to be transmitted.
- 		 */
- 		if (padapter->securitypriv.wps_ie_len != 0) {
- 			psta->ieee8021x_blocked = true;
-@@ -1371,7 +1371,7 @@ void _rtw_join_timeout_handler (struct timer_list *t)
- }
- 
- /*
-- * rtw_scan_timeout_handler - Timeout/Faliure handler for CMD SiteSurvey
-+ * rtw_scan_timeout_handler - Timeout/Failure handler for CMD SiteSurvey
-  * @adapter: pointer to struct adapter structure
-  */
- void rtw_scan_timeout_handler (struct timer_list *t)
--- 
-2.7.4
+thanks,
 
+greg k-h
 
