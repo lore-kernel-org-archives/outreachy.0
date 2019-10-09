@@ -1,106 +1,116 @@
 X-GM-THRID: 6745889659545452544
-X-Received: by 2002:ac2:5c4b:: with SMTP id s11mr3330744lfp.37.1570654284829;
-        Wed, 09 Oct 2019 13:51:24 -0700 (PDT)
+X-Received: by 2002:a17:906:7202:: with SMTP id m2mr4422257ejk.138.1570650093004;
+        Wed, 09 Oct 2019 12:41:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:3101:: with SMTP id x1ls215446ljx.1.gmail; Wed, 09 Oct
- 2019 13:51:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyG7h5u15JPf9nKgfP6Yfi11rIM5Sgb65sWpr0xIDP/41v2nk9GrVZZxh7wlRpiU59inZf7
-X-Received: by 2002:a2e:9b02:: with SMTP id u2mr3775538lji.50.1570654283890;
-        Wed, 09 Oct 2019 13:51:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570654283; cv=none;
+Received: by 2002:a17:906:6957:: with SMTP id c23ls364702ejs.9.gmail; Wed, 09
+ Oct 2019 12:41:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFthPHz6URSxdm5hW/AozYnI9oJwudPfDSJK+gOuTWBs7h1WUXhMMSqZKhdipuqXqlbgvD
+X-Received: by 2002:a17:906:4d50:: with SMTP id b16mr4442548ejv.245.1570650092081;
+        Wed, 09 Oct 2019 12:41:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570650092; cv=none;
         d=google.com; s=arc-20160816;
-        b=uk/TIudZmrOyOhTBQeMFUDFAGJtd4UHY2mJLnnUekB2pnil2SO6gTiQgQeN9DJBsge
-         Uzz+uGxYcD95f69kz8gKaStx2+81HS4aC7/W/7IF2WIMmbdeAPyQd/Pmsw3wtm9w7DpB
-         Q0Fx7Hpt6ZdXqXm+BnUrixGsDiO6eK3Q7SSJOmR8VoBZmRt5catQwwB4wq2T4LIydtva
-         Ct0XiPkUWYVbrnQRGYiMh1lJdFTbedexj2/lP7Doduhw6ozYyMjWXstg7dCpgWwo98Tr
-         vqtwjxPUMUD8B8AZQxh/JDD3S6JU4dO5a+ZhIxK4Q2dMVIrISNDxDF36OVq0X4PV3FpY
-         eJWQ==
+        b=f5SQ95cyVfBx3JAvxb7BfJ0chWJFeddsL6EsyEspeIdqEBeIsiFH/BMITUnpG+v32x
+         TyGIpeD/L/F5uTCPMLFVoJ2bO93mgZeRxHI4hzPs765LcpXyX5dDjBRUXq0wiaWmMrBr
+         RDi7Q4rT1Tlz88nrIYqs02XlZeTsdaVS5T1+ezPVMegIhaAhDg97AOSK3tJ8iwNCRYRr
+         8d16RfW1dXNl9i/4Z4m8Ovhqzd6Vsdp6kTXj0NRzdCl45TK7FZ0zdckOTjfg7ejpD3id
+         vBbbclwxjc/IqL+n0ntDIYx4ygd0F3VvSv9XRYDIwFSQxyf1Btg+rX39WYTBjQQADFNu
+         /zrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=gDIITzoxp8zQfUZYRqKFOGH4Z+GM21HJu5PNc6M81hw=;
-        b=AxvJHlSrSJ7BiQjPqf8gJrAPTNywihE3pEMYAlKAYCIk2LSIx3WGOS6HQ6ZfceQ6g5
-         NFxZ7M8S1PsIzb+w6+hrToXfuXUooacHE8rvtnt3MAxlmWaa8B/3yIaVaDaYqa4dVRtd
-         /ot6AaVYssp5oJRMv+0Hjm+8BIgQMA49j8wgw64GlCBfpwl7jYaeGcQ666RMg6TFwcpI
-         yCsUlgXGmQgx8rcZ01jilw8PgSgDF4ri6gxiisiHMeC+nnMuQsvJeN8lzOdzZMNaqwMJ
-         pAQhZHOuN1oeS1/pJUC1MKXpWQkCa2MGG9Y2aQMEfLTGVIG++WwzLAO//9pRbm2qH0vg
-         uctg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Y7r5Z69fE1yE+XsafCfc/oZ4rs1PL76oFBNneE1EVE8=;
+        b=KhxWJ2zwcoesIjSReUC5HyuG65DwkOjuzfYXyo4PDe4qcM7ySfabGIbmzB/k6r1BRw
+         AoQiJvMFe/sbWlKdHK6uVtUurpgrgIv41iGcXXAxw4f5iszzkWRCZDHooFq3DjXxjUrA
+         KCrdOSojCP++GmfKlMOy+aOZoKs7TNkDUO/mutVGs8EU5p1CpL/80hJAquHhyjaXZKxG
+         HmoA2i8hGSdQCfElZxK963CL3kNomiasMe/t44eM9mI2GQOx5xYlwFOLV6bR//c/UQ+z
+         XENm8vSewDQ8oFMwMLHkL6zdqtEVTuqrLK8HTo0bDvlxRKpK+sHsaZGnNPlUIBePzZ8T
+         7f9w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id z4si245673lfe.4.2019.10.09.13.51.23
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LwKsNBbU;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id a27si214978ejg.1.2019.10.09.12.41.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Oct 2019 13:51:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Oct 2019 12:41:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,277,1566856800"; 
-   d="scan'208";a="405491272"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Oct 2019 22:51:23 +0200
-Date: Wed, 9 Oct 2019 22:51:22 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Jules Irenge <jbi.octave@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    GR-Linux-NIC-Dev@marvell.com, netdev@vger.kernel.org, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: qlge: correct misspelled
- word
-In-Reply-To: <20191009194115.5513-1-jbi.octave@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910092249300.2570@hadrien>
-References: <20191009194115.5513-1-jbi.octave@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LwKsNBbU;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x442.google.com with SMTP id z9so4440432wrl.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 12:41:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Y7r5Z69fE1yE+XsafCfc/oZ4rs1PL76oFBNneE1EVE8=;
+        b=LwKsNBbUjphzvxLVVmv4VzwfwtPcZvTdS5KjCiLe4++bOSZD2bOs2Ec8NvYA4sJATt
+         5bTyZZEynuXgqk9X3svjHdfNbkQ/YTzF8MnSOBMJmXqGXb2LznE3jsq0aC1rasDsIqTg
+         YMQele48ovAMzUrz2Qe/Atjyp0/Wi6lSufvNt5UexqedsGf/CFaxrZfqBpuOTnCEWN3b
+         02gKCRE4TaRRZX1OlzOGbFjBh5qxg2fJozhqqWt8DdtojE+XOFxVAgfYEixG+abptIfZ
+         a64nfpB8/lCRaDFqL4NftVPnqJPqNOgIfhbDXth5yyWY6j4CpXKeNNHifS9cTkY5yZdO
+         ARGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Y7r5Z69fE1yE+XsafCfc/oZ4rs1PL76oFBNneE1EVE8=;
+        b=BfcAsapG35Hg34rdUNc0gVjAfKJj4N/XVCpxfTh+V7Y3QsvJr3z9MHgBNEl3pz8c+S
+         tZXFciC5fDzZxxIatDsFlO2ufLNJ7Q8ff9A068RdBXzJBgPZCwkYDpsFNEkSO2e7p82X
+         S9FmnB/D344eaxx5TOwhAkYfnvj9Hwnwok/LbYxmD/nSIlbLk69piLsM+pCqBN7Jqgx9
+         Q5JGRkSDTCAWat+qiVu/YUmfDj6MdixCsA4wWirXVpUgdtJq6GjGGk9nM8AKYUzaWA8t
+         yghNALPTbDYI9d3w3t13mVoCYcGYtc7jOuCODOhUzaq/+HnX36u5eAwSl12pfuewZSox
+         aQ0Q==
+X-Gm-Message-State: APjAAAXU/NqgaGWt83ijvl1s/4Q0KcG/egtQ/l4OcRJrjPBd5t984IXa
+	B1GaTx7spR0vsEA59ISZl/eHQO/mWx2oKdU=
+X-Received: by 2002:adf:f40d:: with SMTP id g13mr4103031wro.368.1570650091469;
+        Wed, 09 Oct 2019 12:41:31 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
+        by smtp.googlemail.com with ESMTPSA id t18sm3685646wmi.44.2019.10.09.12.41.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Oct 2019 12:41:31 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	GR-Linux-NIC-Dev@marvell.com,
+	netdev@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH] staging: qlge: correct misspelled word
+Date: Wed,  9 Oct 2019 20:41:15 +0100
+Message-Id: <20191009194115.5513-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+Correct misspelled word " check
+ issued by checkpatch.pl tool:
+"CHECK: serveral may be misspelled - perhaps several?".
 
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/qlge/qlge_dbg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Wed, 9 Oct 2019, Jules Irenge wrote:
+diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+index 086f067fd899..097fab7b4287 100644
+--- a/drivers/staging/qlge/qlge_dbg.c
++++ b/drivers/staging/qlge/qlge_dbg.c
+@@ -354,7 +354,7 @@ static int ql_get_xgmac_regs(struct ql_adapter *qdev, u32 *buf,
+ 
+ 	for (i = PAUSE_SRC_LO; i < XGMAC_REGISTER_END; i += 4, buf++) {
+ 		/* We're reading 400 xgmac registers, but we filter out
+-		 * serveral locations that are non-responsive to reads.
++		 * several locations that are non-responsive to reads.
+ 		 */
+ 		if ((i == 0x00000114) ||
+ 			(i == 0x00000118) ||
+-- 
+2.21.0
 
-> Correct misspelled word " check
-
-Why is there a " in the above line?
-
-You don't need to put a newline after check.
-
->  issued by checkpatch.pl tool:
-> "CHECK: serveral may be misspelled - perhaps several?".
-
-It's not reall necessary to give the checkpatch message in this case,
-although it is good to acknowledge checkpatch.  You could say something
-like:
-
-Fix a misspelling of "several" detected by checkpatch.
-
-julia
-
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/qlge/qlge_dbg.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
-> index 086f067fd899..097fab7b4287 100644
-> --- a/drivers/staging/qlge/qlge_dbg.c
-> +++ b/drivers/staging/qlge/qlge_dbg.c
-> @@ -354,7 +354,7 @@ static int ql_get_xgmac_regs(struct ql_adapter *qdev, u32 *buf,
->
->  	for (i = PAUSE_SRC_LO; i < XGMAC_REGISTER_END; i += 4, buf++) {
->  		/* We're reading 400 xgmac registers, but we filter out
-> -		 * serveral locations that are non-responsive to reads.
-> +		 * several locations that are non-responsive to reads.
->  		 */
->  		if ((i == 0x00000114) ||
->  			(i == 0x00000118) ||
-> --
-> 2.21.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191009194115.5513-1-jbi.octave%40gmail.com.
->
 
