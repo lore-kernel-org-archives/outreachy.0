@@ -1,126 +1,262 @@
-X-GM-THRID: 6260889732403691520
-X-Received: by 10.98.64.141 with SMTP id f13mr5652113pfd.3.1457726986652;
-        Fri, 11 Mar 2016 12:09:46 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.22.202 with SMTP id 68ls2452624qgn.3.gmail; Fri, 11 Mar
- 2016 12:09:46 -0800 (PST)
-X-Received: by 10.140.140.19 with SMTP id 19mr8495873qhm.29.1457726986156;
-        Fri, 11 Mar 2016 12:09:46 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id ui7si1602127pab.0.2016.03.11.12.09.46
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Mar 2016 12:09:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id hj7so9260763pac.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 11 Mar 2016 12:09:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FXgRogFOFFeVD3hQSln+MUi3JrAcROO5SKwBbh3kTYI=;
-        b=PkFo/aYRpVjJB1EA7ywmp/uJdX/rHI0GCFgu7bO++kgpBr24lqUFgVWUW92cZtdtWz
-         OYWxj3n2FCFxBGXUYFBwSueJ1dx/CmuqaOgYN+IjAYGD9l4zI20E2bGSxp20FoCsaTTu
-         0nBcFzOs3U1IaiHsR4oZAeDC5HsdMlxm5R3wmWhbfK6ImXS/ZPHEYLmhbVY7SoUS/0Jt
-         W7OAPeIvQ5ciMppKY1epGwcbJEdBiEP+bGGwfz/VJI6N8qknO10xJ9id6/O44wdl2npK
-         hRh6UHqmFaIKDX3KQSQDkqwdWdGMIxIZ4RUWvWgHUkWLswQ0FjnFqZJ1pLgVm/ytCryY
-         O5Fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FXgRogFOFFeVD3hQSln+MUi3JrAcROO5SKwBbh3kTYI=;
-        b=FynQOA3QPyWHzePtJJblW+TS46WWafIZ/pTfmEOjccT3Q935j3I9+dklHe/4BSD2DI
-         UXgL1WRyYs3XpI09Hy8bTGYP9I8Pph9xMWUp5AFoAeREgt3Qkt4SaHAQwfXTcOd0hE/d
-         jnOD/cwlj8n9CUbEP6J56PSq6oKuGOcjxxuyQCFCzdLJmUaSwnYopqCtwW/oBsh0Sy3f
-         6o18/TO40AP/W/aBBq5MajC1A6KsJj4n8qX9tgOrhII29qQIBbn+dC56YVKpUAwubhx6
-         SnQs7wfcW7KgFC+u1c05mTDwDqAYZgliUKmLcfI7GlAvLUktTI4qxCN30VCHVydLyvUf
-         WlVw==
-X-Gm-Message-State: AD7BkJKc4LfjlbHwLbNJWMJvhRnDm7zNPjw5hwqyHzDoXyaHdZqLsZeVYDAVugrwxi+7xw==
-X-Received: by 10.66.235.129 with SMTP id um1mr16846843pac.17.1457726985991;
-        Fri, 11 Mar 2016 12:09:45 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e6sm14837856pfj.71.2016.03.11.12.09.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 12:09:45 -0800 (PST)
-Date: Sat, 12 Mar 2016 01:39:28 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v3 11/13] staging: lustre: lnet: socklnd_proto: Use
- list_for_each_entry_safe
-Message-ID: <20160311200928.GA3051@Karyakshetra>
+X-GM-THRID: 6745542225820647424
+Date: Wed, 9 Oct 2019 16:31:31 -0700 (PDT)
+From: Javier Arias <jarias.linux@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <f6b92908-b8c7-43d7-bee2-8068c3ae36de@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1910082323210.2704@hadrien>
+References: <20191008210850.ldgx5n3sahpdauvu@gmail.com> <alpine.DEB.2.21.1910082313180.2704@hadrien> <c9163826-7e60-4668-8ccc-04ce37106e4f@googlegroups.com>
+ <alpine.DEB.2.21.1910082323210.2704@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Fix line over 80
+ characters
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_3117_2055300802.1570663892080"
+X-Google-Token: ENPb-ewFU5WCpZkNYAw0
+X-Google-IP: 185.229.59.77
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+------=_Part_3117_2055300802.1570663892080
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3118_804376306.1570663892080"
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
+------=_Part_3118_804376306.1570663892080
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-This was done with Coccinelle.
+Ok. I sent a patchset to deal with this issue.
 
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
+Thanks
 
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
+On Tuesday, 8 October 2019 16:24:13 UTC-5, Julia Lawall wrote:
+>
+>
+>
+> On Tue, 8 Oct 2019, Javier Arias wrote: 
+>
+> > Hello Julia, 
+> > 
+> > Thanks for the feedback. The first line was originally like this so I 
+> just 
+> > split the last argument. Should I fix that issue in this commit too or 
+> > create a new one? 
+>
+> You could make a series of the two kinds of changes. 
+>
+> If you send two independent patches on the same file, Greg will be unsure 
+> of the order in which to apply them. 
+>
+> julia 
+>
+> > 
+> > On Tuesday, 8 October 2019 16:13:45 UTC-5, Julia Lawall wrote: 
+> > 
+> > 
+> >       On Tue, 8 Oct 2019, Javier F. Arias wrote: 
+> > 
+> >       > Break last two function call arguments into two separate 
+> >       lines. 
+> >       > Issue found by checkpatch. 
+> >       > 
+> >       > Signed-off-by: Javier F. Arias <jaria...@gmail.com> 
+> >       > --- 
+> >       >  drivers/staging/rtl8723bs/core/rtw_ap.c | 3 ++- 
+> >       >  1 file changed, 2 insertions(+), 1 deletion(-) 
+> >       > 
+> >       > diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c 
+> >       b/drivers/staging/rtl8723bs/core/rtw_ap.c 
+> >       > index 6d18d23acdc0..43af76b9fa49 100644 
+> >       > --- a/drivers/staging/rtl8723bs/core/rtw_ap.c 
+> >       > +++ b/drivers/staging/rtl8723bs/core/rtw_ap.c 
+> >       > @@ -217,7 +217,8 @@ void expire_timeout_chk(struct adapter 
+> >       *padapter) 
+> >       >          #ifdef DBG_EXPIRATION_CHK 
+> >       >          if (phead != plist) { 
+> >       >                  DBG_871X(FUNC_NDEV_FMT" auth_list, cnt:%u\n" 
+> >       > -                        , FUNC_NDEV_ARG(padapter->pnetdev), 
+> >       pstapriv->auth_list_cnt); 
+> >       > +                        , FUNC_NDEV_ARG(padapter->pnetdev) 
+> >       > +                        , pstapriv->auth_list_cnt); 
+> > 
+> >       It's not normal in the kernel to put the commas at the beginning 
+> >       of the 
+> >       line like that. 
+> > 
+> >       julia 
+> > 
+> >       >          } 
+> >       >          #endif 
+> >       >          while (phead != plist) { 
+> >       > -- 
+> >       > 2.20.1 
+> >       > 
+> >       > -- 
+> >       > You received this message because you are subscribed to the 
+> >       Google Groups "outreachy-kernel" group. 
+> >       > To unsubscribe from this group and stop receiving emails from 
+> >       it, send an email to outreach...@googlegroups.com. 
+> >       > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/20191008210850.ldgx5n3sa 
+> >       hpdauvu%40gmail.com. 
+> >       > 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups 
+> > "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an 
+> > email to outreach...@googlegroups.com <javascript:>. 
+> > To view this discussion on the web visithttps://
+> groups.google.com/d/msgid/outreachy-kernel/c9163826-7e60-4668-8ccc- 
+> > 04ce37106e4f%40googlegroups.com. 
+> > 
+> >
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- Changes in v3:
-	-Combined all "Use list_for_each_entry" lustre patches into a
-	 patch-set
 
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd_proto.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+------=_Part_3118_804376306.1570663892080
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_proto.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_proto.c
-index 4499b1b..32cc31e 100644
---- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_proto.c
-+++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_proto.c
-@@ -403,6 +403,7 @@ ksocknal_handle_zcack(ksock_conn_t *conn, __u64 cookie1, __u64 cookie2)
- {
- 	ksock_peer_t *peer = conn->ksnc_peer;
- 	ksock_tx_t *tx;
-+	ksock_tx_t *temp;
- 	ksock_tx_t *tmp;
- 	LIST_HEAD(zlist);
- 	int count;
-@@ -436,8 +437,7 @@ ksocknal_handle_zcack(ksock_conn_t *conn, __u64 cookie1, __u64 cookie2)
+<div dir=3D"ltr"><div>Ok. I sent a patchset to deal with this issue.</div><=
+div><br></div><div>Thanks<br></div><br>On Tuesday, 8 October 2019 16:24:13 =
+UTC-5, Julia Lawall  wrote:<blockquote class=3D"gmail_quote" style=3D"margi=
+n: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Tue, 8 Oct 2019, Javier Arias wrote:
+<br>
+<br>&gt; Hello Julia,
+<br>&gt;
+<br>&gt; Thanks for the feedback. The first line was originally like this s=
+o I just
+<br>&gt; split the last argument. Should I fix that issue in this commit to=
+o or
+<br>&gt; create a new one?
+<br>
+<br>You could make a series of the two kinds of changes.
+<br>
+<br>If you send two independent patches on the same file, Greg will be unsu=
+re
+<br>of the order in which to apply them.
+<br>
+<br>julia
+<br>
+<br>&gt;
+<br>&gt; On Tuesday, 8 October 2019 16:13:45 UTC-5, Julia Lawall wrote:
+<br>&gt;
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 On Tue, 8 Oct 2019, Javier F. Arias wrote:
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Break last two function call arguments i=
+nto two separate
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 lines.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Issue found by checkpatch.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Javier F. Arias &lt;<a>ja=
+ria...@gmail.com</a>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; ---
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0drivers/staging/rtl8723bs/<wbr>cor=
+e/rtw_ap.c | 3 ++-
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A01 file changed, 2 insertions(+), 1=
+ deletion(-)
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/drivers/staging/rtl8723bs/<=
+wbr>core/rtw_ap.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 b/drivers/staging/rtl8723bs/<wbr>core/rtw_ap.=
+c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; index 6d18d23acdc0..43af76b9fa49 100644
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --- a/drivers/staging/rtl8723bs/<wbr>cor=
+e/rtw_ap.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +++ b/drivers/staging/rtl8723bs/<wbr>cor=
+e/rtw_ap.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; @@ -217,7 +217,8 @@ void expire_timeout_=
+chk(struct adapter
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 *padapter)
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0#ifdef DBG_EXPIRATION_CHK
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0if (phead !=3D plist) {
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0DBG_871X(<wb=
+r>FUNC_NDEV_FMT&quot; auth_list, cnt:%u\n&quot;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0, FUNC_NDEV_ARG(padapter-&gt;<wbr>pnetdev),
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 pstapriv-&gt;auth_list_cnt);
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0, FUNC_NDEV_ARG(padapter-&gt;<wbr>pnetdev)
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0, pstapriv-&gt;auth_list_cnt);
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 It&#39;s not normal in the kernel to put the =
+commas at the beginning
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 of the
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 line like that.
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 julia
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0}
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0#endif
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0while (phead !=3D plist) {
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; 2.20.1
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; You received this message because you ar=
+e subscribed to the
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 Google Groups &quot;outreachy-kernel&quot; gr=
+oup.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To unsubscribe from this group and stop =
+receiving emails from
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 it, send an email to <a>outreach...@googlegro=
+ups.com</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To view this discussion on the web visit=
+https://<a href=3D"http://groups.google.com/d/msgid/outreachy-kernel/201910=
+08210850.ldgx5n3sa" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.=
+href=3D&#39;http://groups.google.com/d/msgid/outreachy-kernel/2019100821085=
+0.ldgx5n3sa&#39;;return true;" onclick=3D"this.href=3D&#39;http://groups.go=
+ogle.com/d/msgid/outreachy-kernel/20191008210850.ldgx5n3sa&#39;;return true=
+;">groups.google.<wbr>com/d/msgid/outreachy-kernel/<wbr>20191008210850.ldgx=
+5n3sa</a>
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 hpdauvu%<a href=3D"http://40gmail.com" target=
+=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.goo=
+gle.com/url?q\x3dhttp%3A%2F%2F40gmail.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3=
+dAFQjCNF6SYGO6IiAPhbk3gMhjWdyIU0BdA&#39;;return true;" onclick=3D"this.href=
+=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40gmail.com\x26sa\x3dD\=
+x26sntz\x3d1\x26usg\x3dAFQjCNF6SYGO6IiAPhbk3gMhjWdyIU0BdA&#39;;return true;=
+">40gmail.com</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups
+<br>&gt; &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an
+<br>&gt; email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-=
+mailto=3D"5yaQdsxLCgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;ja=
+vascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;r=
+eturn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To view this discussion on the web visithttps://<a href=3D"http://=
+groups.google.com/d/msgid/outreachy-kernel/c9163826-7e60-4668-8ccc-" target=
+=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://groups.=
+google.com/d/msgid/outreachy-kernel/c9163826-7e60-4668-8ccc-&#39;;return tr=
+ue;" onclick=3D"this.href=3D&#39;http://groups.google.com/d/msgid/outreachy=
+-kernel/c9163826-7e60-4668-8ccc-&#39;;return true;">groups.google.<wbr>com/=
+d/msgid/outreachy-kernel/<wbr>c9163826-7e60-4668-8ccc-</a>
+<br>&gt; 04ce37106e4f%<a href=3D"http://40googlegroups.com" target=3D"_blan=
+k" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/u=
+rl?q\x3dhttp%3A%2F%2F40googlegroups.com\x26sa\x3dD\x26sntz\x3d1\x26usg\x3dA=
+FQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;return true;" onclick=3D"this.href=
+=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2F40googlegroups.com\x26s=
+a\x3dD\x26sntz\x3d1\x26usg\x3dAFQjCNEjt8k9OhR10y0jYLX0ZgJix1hnBQ&#39;;retur=
+n true;">40googlegroups.<wbr>com</a>.
+<br>&gt;
+<br>&gt;</blockquote></div>
+------=_Part_3118_804376306.1570663892080--
 
- 	spin_unlock(&peer->ksnp_lock);
-
--	while (!list_empty(&zlist)) {
--		tx = list_entry(zlist.next, ksock_tx_t, tx_zc_list);
-+	list_for_each_entry_safe(tx, temp, &zlist, tx_zc_list) {
- 		list_del(&tx->tx_zc_list);
- 		ksocknal_tx_decref(tx);
- 	}
---
-2.1.4
-
+------=_Part_3117_2055300802.1570663892080--
 
