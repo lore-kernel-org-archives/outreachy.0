@@ -1,90 +1,113 @@
 X-GM-THRID: 6745802643639107584
-X-Received: by 2002:a05:6830:22e6:: with SMTP id t6mr6959841otc.65.1570697745416;
-        Thu, 10 Oct 2019 01:55:45 -0700 (PDT)
+X-Received: by 2002:a5d:540d:: with SMTP id g13mr208025wrv.8.1570629571764;
+        Wed, 09 Oct 2019 06:59:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6830:1383:: with SMTP id d3ls610715otq.0.gmail; Thu, 10
- Oct 2019 01:55:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzlCdw1vyphmgGzdr00qGYl+b3isQRuLlYfPd7ZYfpqE0dkuHBGlBQiGuNr3t1/U73+azRF
-X-Received: by 2002:a9d:7dc7:: with SMTP id k7mr6930667otn.172.1570697744527;
-        Thu, 10 Oct 2019 01:55:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570697744; cv=none;
+Received: by 2002:a05:6000:c6:: with SMTP id q6ls165593wrx.9.gmail; Wed, 09
+ Oct 2019 06:59:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqybQwUCzBQSAu66p4PkBSvAQkWWt/2aJO9KP2p3dkGlA5Uqr/+cR+3zjxxZve0xu9Mz3n+R
+X-Received: by 2002:adf:ee82:: with SMTP id b2mr1945790wro.285.1570629570604;
+        Wed, 09 Oct 2019 06:59:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570629570; cv=none;
         d=google.com; s=arc-20160816;
-        b=a7xmCRYBbAvuYUyMQc6J35cROhc75V8c6lVicWbGTyf1X8CCXBQLaFnemAWY6uZ5HM
-         YB540/Giv0v3KW88zhfIct/tphJwyZXwb+qGuY9hvyC8c4YaRXYKnca6SC3ugClVYQ/8
-         pp5J5ACIKPA1sFhyr6VacRzkyP62tWZNZoTu8C2Cx3vJYfsUUpYf4a4cXFdfZZ9W3zfp
-         H7+Im6CCV5zkFHhEGMf1mJLHNZYLyDy9uExUNQzpg65sj8baH135N1mOyzYkqwr7ReG0
-         2Zr/lTC1hvMe01fL3LAJU9akkusAriZ2lztksHaRbG0AObwH7J+2UqLg7uHdeKvSBmvA
-         o7IQ==
+        b=NialPc3C/S570LWfktsepOY+p8C8Qf3z4xD2QB9blae7EpSD3grx1d4IiqrxMO74k3
+         2seFyuBGNUX3lT5dsssE55UetIhJjE2uyRi4t013hnNisB/LR92YjlZCnwpbLZKdxl7Q
+         EXD9bcNEuNiKz70Wud2r+lnw3A+D4BZXv2nbTrfOQuFC5jj8I9p46v0UXgsQD82Lk1e4
+         dN1Yene4910c1uMDeIOayjIP9SP5kXyGAUUUBSWlvnQCwLV25wM9OhPhR3HPFiKdPlQH
+         WdTy8ksDHghlCtIPO7wMKt8ZNYJ2Ft7ktyuDm4OL1acp9eARuP+22HtqV9HSSLWLcvEI
+         VIeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=R3T0YT/LBuRAtNmTZzTkqEO3GgiHGitELIF/z7Iewy4=;
-        b=A3q0fPHdmJ/ftV1YDr7wTG2lBpedTe1cduPG5T+CksUlAwyOqFTxT5mSrEePGON4Kw
-         v6QjuyRHvSU7ftD0YWR9nLe4XPdkWn5K+37HfqTvzxB/BFPhWUSyV+/JzfuD9VrvHFwH
-         RSWKfxZi8OMDmfk/6JT7Yhw/s1g/QCfhVRQNOfXqMreheYqCJlYXynIo9wpJUS/uewg+
-         lv+vDOO399oa3Nsy09WdxbgvXIny9TBThf10cmi37C2FvH+vmN0xES/E4s8ioKR3ELyL
-         R7td03nFGChCY+wu3GcAJGmYgB2HxW/CWfZwk12MeQ1f11rAC3+Zsedj668i6ZP6mnpl
-         myzQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=x18qx9JLrk7xXMEFhQwtymWXpXFvSf/vB1abZUNNOK0=;
+        b=Czn+CNv1n2owcbhaxaU55Dq8Quxk+czHs2dMOC7Kt27WzGVl2NZLt7dyGluujxEi1s
+         8RRhjd1xRYkv7oA9k71g7p4im8Fiegr7+HVmx4wOd/DqXVG+lnL+R0CwwPv8c8Oc9yTW
+         UsfPFfw46UwR4Q/IidqMCJZMRsutDUFYQWX30wFOMrXBlYq2eKHTMZ4hx0q6kim9CbAL
+         7rTtnvHjsFSvIT40FZaw+e/gmbU+QYptidrsDY9snAaS55XNwnM2/8ERy9x+A+XMbbvO
+         M1NeONQmU0rsYSEl4JhlNisl19sGPkGbUlW7cUzP7FEg9AbJPOjcwwdARaEfSLdLCAez
+         EHCA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Tqrbyxx7;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id c67si137658oig.1.2019.10.10.01.55.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tg4CEU2c;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id s65si76407wme.2.2019.10.09.06.59.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Oct 2019 01:55:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Oct 2019 06:59:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Tqrbyxx7;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 31C682190F;
-	Thu, 10 Oct 2019 08:55:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1570697743;
-	bh=fWJjbXpmFkxTYN182RrS0pGcx/QVyeR2dPDwnS/HsTs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Tqrbyxx7vQRb3pTZ4yaY7TfY+WhmKqOi6eLilR4NrlcMSSP0IWAve36knAdr3v+Xw
-	 vT6fVwb9maoaNVWLfj1OJaTMKtnXDY7OA7///Oti93WxRXDfYyv6FCyV2qPH/NZb1O
-	 Aa5/gG8zcshCE1q4zUMY9p7RqYR4afqPec9QQyQY=
-Date: Thu, 10 Oct 2019 10:49:12 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jules Irenge <jbi.octave@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: qlge: fix "alignment should match open
- parenthesis" check
-Message-ID: <20191010084912.GA394561@kroah.com>
-References: <20191009135909.19474-1-jbi.octave@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tg4CEU2c;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x442.google.com with SMTP id j11so3172007wrp.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 06:59:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=x18qx9JLrk7xXMEFhQwtymWXpXFvSf/vB1abZUNNOK0=;
+        b=tg4CEU2cZkb1tuVUQ8D8LbDUwBjlVtCC5lsmO8qvQ8VDTOwNppN85j+Tnb7zdw3KY8
+         9eD64hjYKii/cqWwHUmTtSWkBfArSyX3YhbHnYgfLYw465h/eU9SoGz+HK7BKxCG8tGV
+         bhzYHHj3aj0G9tSoqeTSK78cmalT2hEKDYhwJtv48OTTK6SE5OU7HPPEQqbYuH+ViSCL
+         oq5T0vCoy+vRtX7M1WSDpIPx9HFKIlel3okg+I9KuJFVBAm41NyQBc7c+KUWhKliYu80
+         ibDqUHDsWL4BSG9jBbnHfm4oRv57WdmEyk4PvHt5g0VA5CgRXd8eRtnu6TFUJG7BPLWd
+         1XCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=x18qx9JLrk7xXMEFhQwtymWXpXFvSf/vB1abZUNNOK0=;
+        b=Mre4vKEZwQ4Rf45qPtbditnPyJLitnoQktumlwJiJgEhcDadZ4GtF9+CSD40b17QEw
+         NxWFs5jewwnW5IwFVGqGB+EcPxwo7uj4/Bo9bsnMpcHXRU4UFNzOI1/XKWriVoSf+KZs
+         2jYHslg+WEhhr6mEvM/0Q+axVqkizLIuPjHt/03yS0IF/ECllgKSSIIx3QnQHth0UyiO
+         tBYqgNZVZk5K5DEPnpqxJqoiikw28vkJUjiFs7AgeoQkF6vPq+RKdtuyYTu10oRBPbIF
+         ujnyXqbDapHvAR6LxIc3qmR4TPXaLuDfrpw54YIvQN8N8pPXYlgsohrxRu4/cnvfgINo
+         Y9cQ==
+X-Gm-Message-State: APjAAAWkQ8HCnU1falvHYFMklxUIzsq3HfPzRDjsGmdefjPYsgRRSFPf
+	4/dzj6bbuGVEWoKguT2Fp8LZYB66ygxb
+X-Received: by 2002:adf:9101:: with SMTP id j1mr2952067wrj.71.1570629569988;
+        Wed, 09 Oct 2019 06:59:29 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
+        by smtp.googlemail.com with ESMTPSA id t83sm3989555wmt.18.2019.10.09.06.59.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Oct 2019 06:59:29 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	linux-kernel@vger.kernel.org,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH] staging: qlge: fix "alignment should match open parenthesis" check
+Date: Wed,  9 Oct 2019 14:59:09 +0100
+Message-Id: <20191009135909.19474-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191009135909.19474-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+Content-Transfer-Encoding: 8bit
 
-On Wed, Oct 09, 2019 at 02:59:09PM +0100, Jules Irenge wrote:
-> Fix "alignment should match open parenthesis" check
->  issued by checkpatch.pl tool:
-> "CHECK: Alignment should match open parenthesis".
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/qlge/qlge_dbg.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Fix "alignment should match open parenthesis" check
+ issued by checkpatch.pl tool:
+"CHECK: Alignment should match open parenthesis".
 
-Hi,
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/qlge/qlge_dbg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-You sent 8 patches for the same driver, some patches with almost
-identical subject lines, and some a bit different.  None of these gave
-me any hint as to which ones superseed which, and which order to apply
-any of these in.
+diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+index 5599525a19d5..086f067fd899 100644
+--- a/drivers/staging/qlge/qlge_dbg.c
++++ b/drivers/staging/qlge/qlge_dbg.c
+@@ -7,7 +7,7 @@
+ 
+ /* Read a NIC register from the alternate function. */
+ static u32 ql_read_other_func_reg(struct ql_adapter *qdev,
+-						u32 reg)
++				  u32 reg)
+ {
+ 	u32 register_to_read;
+ 	u32 reg_val;
+-- 
+2.21.0
 
-Please resend all of the latest versions, in a patch series properly
-numbered, so that I have a chance to apply them correctly.
-
-thanks,
-
-greg k-h
 
