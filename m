@@ -1,117 +1,110 @@
 X-GM-THRID: 6746031998697996288
-X-Received: by 2002:adf:e40c:: with SMTP id g12mr8864948wrm.216.1570713013549;
-        Thu, 10 Oct 2019 06:10:13 -0700 (PDT)
+X-Received: by 2002:a81:a9c1:: with SMTP id g184mr6313006ywh.320.1570698220256;
+        Thu, 10 Oct 2019 02:03:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:cf01:: with SMTP id l1ls1441814wmg.0.gmail; Thu, 10 Oct
- 2019 06:10:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyiuY8OeR4q5ZYd6MG8xbXWlEyUv/N5xuAqUECZyFl2UvF2hKdtCG3MAk+StY8++JwEw9GC
-X-Received: by 2002:a7b:c947:: with SMTP id i7mr7774293wml.53.1570713012472;
-        Thu, 10 Oct 2019 06:10:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570713012; cv=none;
+Received: by 2002:a81:6ac3:: with SMTP id f186ls83969ywc.8.gmail; Thu, 10 Oct
+ 2019 02:03:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwLVslj33TDBsCuvKOHskGANO4fU/UEVV71bpcYoAagYuQVLLnzv+yipPPMmG0gY37Du33m
+X-Received: by 2002:a81:9ad8:: with SMTP id r207mr6542404ywg.198.1570698218556;
+        Thu, 10 Oct 2019 02:03:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570698218; cv=none;
         d=google.com; s=arc-20160816;
-        b=ntKdyGefH9PjTtNX0uSv9GE/DaXl8MXP42syW2AFITmX5WVtmZvJazEI9LPWnwau1l
-         smeRZQ1sOSnpzc9aT4rEOFO6ikyqLiW9MLmdnNiqhxUgXRBbli4hH1FDctRdvcrvrPhX
-         vBIHFYHaWJA98KzpLhN4RJenXvuJmNReA7QV51v5bbJ5/Q2rPfV1EbBvaA9zTzajpGcG
-         Z26LUNGe6ZYEGeTMju6BbwPWSZjJPzl23fQVdjjQilpZdnTXCKz6doPPqhLaXAt3HHhv
-         2dNJUGqdqknx+0R0lARbMxoGdfpEFjJKgKcajwaMFeLmKvstR9VgLmgXd5u8e4+NTK4r
-         dIDw==
+        b=HOBC0yHnw2r7jbUEzAil//ESe2gros72WX4Eb81OlMLxWF2L5fR1B5joFPuDQE0D2N
+         SLZoLiUlcn1XCl19U6ZnJk/CNlNN8c2uAobeDwJtxLbrOcw7YwGwH/kK0M92HsuAope+
+         rsJ9AdV6SpAUTgwRb1FdJMeQ01amkIoUEDLHpioLmM+NYwEn5qytTGq7B3vfDt7y/YFG
+         8fnkklrDob0FtFdmJCCGpONHUt8sfKlmL6AD/ALhwfXXPb2SYgIO1EQitc6aKShv0FeK
+         boQ3B9WTTzJDsAYjGM8BL1isFbYMsPIa6oh1c+oCCDVzLKe+jig26k6gtvM0ekdJ6tkI
+         bocw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=bwSvEP+zMkM1DKh014PsaNx+RK06PPmZlBzLBWd2D/s=;
-        b=DB00YvNG3KqWU/7fz/5AuXWRBT9XaeSienP3njwACfU2pgJNDKoND6DR7aiHRs5s1Q
-         lNy7VeKyh1NC94Y9SebfoP+5XR8TvYTF4orRRyjf7yr9bDa/NPTJxjKDhUdg8Q8LXSek
-         s2NbXrbGk9ILMYSA0SXCKcd7v/b9nN46l4m9dG+033gyQXEeX+72yBs6ipB79bR1BJG2
-         dxMRoc5m8oVuGmcT3AoOt7fiJcp9N+EQp/Rzx0ciRueXLyM8pa3OBB1ho4camDFXodmY
-         w+tqVYrdfjh9L1atYVhm1l0EnvZHdbtvcShkq4uj/u8mse76pvjSXhlsX2CJ7ZCEjzvZ
-         GKZw==
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=1cw9oEH7ZCs2HBUY1nZ4KMAQ/HcXcPqu2GOx+IY6xHk=;
+        b=r1TjV3ss10zRvSO47Su1rnZ5zSZlXWxFuGvd7w/7DsFli7HDbLTYtEv56m3h6xFvCc
+         x8iuZbVe6uts19ghfn8e9FGlQq6AjMJUFBiquOjMylJmddhgWhbsao6Z6BxI+16sb4P/
+         oDK9c8NWxMVcX/LnhbFPk5HjerNAkAAbxAV9JfghJe36Au1sDVASgQVxoHCym6ttqvpd
+         24zSFPeGQ96+QPNN6UYdWHhw5Qk8Hl6ln8o3Bcub64vnjuvWwC0YtTLLGBBZDftkiLPS
+         W1lGLnEWNmUijoG+CvwktQPzswKea7Gzfy3Zc7W2uB9Wl8UsNAj25mkJ6Hwmj8Z7Doj1
+         WgJw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GLmF1L2i;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <wambui.karugax@gmail.com>
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id r1si231568wrn.2.2019.10.10.06.10.12
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=cZmrGisy;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id u129si214155ywc.1.2019.10.10.02.03.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Oct 2019 06:10:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Oct 2019 02:03:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GLmF1L2i;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x343.google.com with SMTP id i16so6880447wmd.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 06:10:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=bwSvEP+zMkM1DKh014PsaNx+RK06PPmZlBzLBWd2D/s=;
-        b=GLmF1L2iKr4VfJm31yyRYV+woXUh9HG/z85Dw4vL7xolhccQ9hdFIKBj1NUGt7BFLG
-         ivNokAXVbHJJAhkjrFRctjIAPdwMnpzEqC7foUih9iNIecRgeYofqk7YT7HuzxgqdxLi
-         +n50Kpn0iLYCi/QPrLDQMBXwlWzk0HsLGEhLOJ9mKuy8hL2Q3SrVQt9AGWmItixKtaEI
-         2zpgT7xO/MaAmhbhMzvM7Fb97HNGYs4i8ZUp5FDE/dpoY6oes1vOS39TrybRoSp9fs9O
-         TRc+5YiB0QDgHE5O4kRmBEN8GESNxfNMADfRB3dLUKzPQVUMkIyezYSBHbc4Mrg7EWr4
-         V5bQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-         :references:mime-version:content-disposition:in-reply-to:user-agent;
-        bh=bwSvEP+zMkM1DKh014PsaNx+RK06PPmZlBzLBWd2D/s=;
-        b=EIL3WM0pceopaMe3Uy0mHUHZs5WXD3WF5IkcvJGvPdxVlp+fKtctlo7bYPaqs834Up
-         Bh90GsrdMiCtsm58peufrMY/xhcSG5TOouXoMXGNr8MZTxK4DskQYGsRFswgLWeO+uuH
-         TUd4M/D9yNeiw17b/R171TLBHVxvwHBYdUY9VYItZZf9n+/qdmGIj+wN2zUqoZXkhAA/
-         pbbKmXG+um2DtvLpNrpNpLODy5NWS8Jjh8VYwoot/ysP0RYj0I09uUbYGwWb5CHdncVk
-         7IbFXZ23gqD1OO5hfqZcRz2RpyOnGWKnL9i4FcU7tmd9e3+IGGzxZS/1pD9hyOwl/zvc
-         xKfQ==
-X-Gm-Message-State: APjAAAXeKSZ8pHdYG00lpaAwcn+2MebdMVPSBkMt9fuktG+OCCY8zH2q
-	eXlFcyz3ueIYf6GKGhkcAykbU6fcYuT2IQ==
-X-Received: by 2002:a05:600c:2319:: with SMTP id 25mr7877228wmo.141.1570713012123;
-        Thu, 10 Oct 2019 06:10:12 -0700 (PDT)
-Return-Path: <wambui.karugax@gmail.com>
-Received: from wambui ([197.254.95.158])
-        by smtp.gmail.com with ESMTPSA id y186sm9266172wmd.26.2019.10.10.06.10.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2019 06:10:11 -0700 (PDT)
-Date: Thu, 10 Oct 2019 16:10:07 +0300
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2 1/4] staging: rtl8723bs: Remove comparisons to NULL in
- conditionals
-Message-ID: <20191010131007.GB15405@wambui>
-Reply-To: 20191010085916.GA452879@kroah.com
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=cZmrGisy;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9A91cR3151143;
+	Thu, 10 Oct 2019 09:03:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=1cw9oEH7ZCs2HBUY1nZ4KMAQ/HcXcPqu2GOx+IY6xHk=;
+ b=cZmrGisygrGJvpWx+UEHZkW6tZu3t3Nd3AwP5usb1NAjPek5krF5fYXukRoeNRqyBkxS
+ 2WmNnoY6kKFdPcdCBjZnxGvL8lcLk8ed6/Xmw55hS6OgMbRiNQohk0iwuV4EqhmJT95c
+ TL7Dj0R0hvtLpqLjGXqOnX2JxyUNjb1VNreyazNmXba0r7X/A7x0AngQlG2mDncqYbjv
+ MKL7MJahO7kX+N6DOwab2YQCdJAebAqkMM889B1ptbhpozqx5xAFcNOv1bfIXVOPXnLD
+ HOM3OC9CKYj7YvvzNEu3+iUWezrmS7qIyZ2nhDMIkFUBVjVWOzlfn+N3mOeVU3kwGDa7 Gw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by aserp2120.oracle.com with ESMTP id 2vek4qst9v-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 10 Oct 2019 09:03:34 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9A8qnRm078254;
+	Thu, 10 Oct 2019 09:03:33 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+	by userp3030.oracle.com with ESMTP id 2vhrxd95p0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 10 Oct 2019 09:03:33 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9A93WcV021873;
+	Thu, 10 Oct 2019 09:03:32 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Thu, 10 Oct 2019 02:03:31 -0700
+Date: Thu, 10 Oct 2019 12:03:23 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Wambui Karuga <wambui.karugax@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+        gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] staging: rtl8723bs: Style clean-up in rtw_mlme.c
+Message-ID: <20191010090323.GE20470@kadam>
 References: <cover.1570682635.git.wambui.karugax@gmail.com>
- <da71920fa80298badcced3519f2b84afbdd28a7e.1570682635.git.wambui.karugax@gmail.com>
- <20191010085916.GA452879@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191010085916.GA452879@kroah.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <cover.1570682635.git.wambui.karugax@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9405 signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=693
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910100082
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9405 signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=791 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910100082
 
-On Thu, Oct 10, 2019 at 10:59:16AM +0200, Greg KH wrote:
-> On Thu, Oct 10, 2019 at 07:49:05AM +0300, Wambui Karuga wrote:
-> > Remove most comparisons to NULL in conditionals in
-> > drivers/staging/rtl8723bs/core/rtw_mlme.c
-> > Issues reported by checkpatch.pl as:
-> > CHECK: Comparison to NULL could be written
-> > 
-> > Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723bs/core/rtw_mlme.c | 46 +++++++++++------------
-> >  1 file changed, 23 insertions(+), 23 deletions(-)
+On Thu, Oct 10, 2019 at 07:49:04AM +0300, Wambui Karuga wrote:
+> This patchset addresses multiple style and formatting issues reported by
+> checkpatch.pl in drivers/staging/rtl8723bs/core/rtw_mlme.c
 > 
-> Due to lots of other changes in this file recently, this patch does not
-> apply, and so the rest of this series does not apply either.
-> 
-> Can you please rebase this against my staging-testing branch and resend?
-> 
-> thanks,
-> 
-> greg k-h
+> PATCH v2 of the series corrects the "patchest" mispelling in the
+> original cover letter and provides a clearer subject line.
 
-Will do! Thanks
+The cover letter isn't stored in the git log so spelling is not
+important.  The original subjects were fine as well.
 
-Wambui Karuga
+regards,
+dan carpenter
+
 
