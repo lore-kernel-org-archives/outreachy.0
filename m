@@ -1,76 +1,76 @@
 X-GM-THRID: 6745885278091608064
-X-Received: by 2002:a19:fc14:: with SMTP id a20mr7534060lfi.76.1570743627171;
-        Thu, 10 Oct 2019 14:40:27 -0700 (PDT)
+X-Received: by 2002:aa7:df07:: with SMTP id c7mr10129690edy.110.1570743625852;
+        Thu, 10 Oct 2019 14:40:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:f613:: with SMTP id x19ls518826lfe.16.gmail; Thu, 10 Oct
- 2019 14:40:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwvCRx1rDaYujbT6A3gC4ibLZrrPUOXxPVZ9zHXXbZm3Ud77gWGtlmuIT7+iF6dOBWXh5Ao
-X-Received: by 2002:ac2:5a1e:: with SMTP id q30mr7061106lfn.30.1570743626107;
-        Thu, 10 Oct 2019 14:40:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570743626; cv=none;
+Received: by 2002:aa7:d98d:: with SMTP id u13ls1243364eds.12.gmail; Thu, 10
+ Oct 2019 14:40:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz/WvLU5RbJGzaRxgI6w2qsVKf+xB2ZRuGo9S7OipuEtvkm4H4XErwNXEJfoHxiRg9WJvVd
+X-Received: by 2002:aa7:d8c7:: with SMTP id k7mr10342222eds.138.1570743624974;
+        Thu, 10 Oct 2019 14:40:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570743624; cv=none;
         d=google.com; s=arc-20160816;
-        b=vP8SP3rlrOdU4L8x8XINecConuJJ3fi/pG2Z6v+jYY9jy3BX11o3RxGe2d2a3LnI0u
-         WcipQQy0Knh8uBFDFrVd730DdqMYfeRC3ApyPsUE8ErbdwxIhzD3suC4qI5eS47vQHE2
-         6SbvKX9yVLrjk1TXv2OtCMXFKnBc8EZoC+SBG2nEZZw1tWVGopYGqRnFJkikZNXuWemO
-         IYmnwpVtrTASHGNZG570WRSyoEg9HUAtdUfYE4HgnH7FTEsCeYBBTnMpIjWFXFv5yYjc
-         HQE+bvM9Jl3EBeVjkujrf/oFxubgm3dDRixwHtzP/2JjXdE8+qR3dPGetpIFnATil7Z2
-         g4bg==
+        b=nOmdVyvG8zLP9h7OTDMxqPvVq9V37hzTx0KF8p0Jeo2phtEoGBhdsw0seqXIN1o6pG
+         3l2ZJoL9NFnAYijUpQust5OGjbQShw52H206qe0yvk9f+SymN67DKBs5XnKVWXa9hq+3
+         +hupMKxaYRSZk6lvoafRuAACkhFte3qae7aGLtDILzBBZblmvCDTC8dPeEMzbqJNXYx0
+         ziXy2w0eGw9+nDkvuTaiBqUolYDk1HfjzOHTlBgFSScdJyb387ChWVtuezA9lJvobsNk
+         S2j8IC9o2CUNqQir06PeNmQQ4WcW4PZlNLsNM/2imqIGQXyZGsIz2DEK6Vzc1CE3YTwa
+         Jt2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/GVGRarQ+bdKBU0Z2N7AABfx+Km0CibFKi9Lr7Iu2LQ=;
-        b=ZmrROBl2D87Mk0MuUEsHCYC5Cj4gzfPzSfwwtzKxjnfa1KKXQl0d227HweTtB2cbRf
-         DH5F2Q4PUprDBte24PcLFKCa00N3isuh3gyVooR51HBBFSG+xCgFsq1Ct8qdbwJogfBc
-         IX/7oCb+TpYTIQ1j61ctFZMhiZj5aGQo5EkzZc9nUvDVInyDJR3LEDBGhZBciDRJuI6D
-         1Q77L7G955FTvrSCeVKn2qsk92SRGOA7hOiJzdoe20cg95yx3VLUPw3gHsKFSigxOx03
-         4rju2wS0zrQf5FxlOycz3kXviJ4jufZBbul67zBsnOPlaTFOL6Y97e50m9/SmvfAgSAD
-         /PJw==
+        bh=XMJglR3k39oo4lFzmZ/NkXw1yJ/6wrmxZJcm2kMQjmw=;
+        b=NHHUH0vhmKp4tCPUs2NhBpdpA1vG8cjKmgnFzKxa/2rhPSplEJlJbRKR6pUwT1hefE
+         p9cmrKTn8eqfrHLwIvKQq+dfxvpaAST7hlCHrJi+qb/CSyb6cWjmelwtp22ApDMWs8pu
+         SFJEQQmm+qwokloGNCZf1lCwbc5xLKNRye6RFih61TSwplkm1OaN69VnqnIYwaCCkapq
+         kI3GfdGK/8JyMRdpFrikLAfrabGI3WVc1901JsoO5ZUkrMt9fm8fqb77tP4z+rARKli/
+         /AjEWO0CFQkXEoHO18h+1zu+hUpmzlLBrlBaW1wbD88HRelGhd8PzaKEQ/tZgSZWnVYB
+         BXpg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iC62pWf1;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PvY+F1VY;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id h6si46104lfc.3.2019.10.10.14.40.26
+Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id d14si87503edb.4.2019.10.10.14.40.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Oct 2019 14:40:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        Thu, 10 Oct 2019 14:40:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iC62pWf1;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PvY+F1VY;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id y19so9593122wrd.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 14:40:26 -0700 (PDT)
+Received: by mail-wr1-x443.google.com with SMTP id o18so9534172wrv.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 14:40:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=/GVGRarQ+bdKBU0Z2N7AABfx+Km0CibFKi9Lr7Iu2LQ=;
-        b=iC62pWf18BZefYC7rZowamPGyqorw0yhW/QM8Ue2NAanuuXQjHA//P2HKmhvv7X9Di
-         y2P0/prdc9zX+cgZDYesbheP2d4y5Sn7QOsFm7YFSAEsmOOBraQ8osaojW9rwVoQFB/G
-         U0vw8YFTaQsXQiJjNWSA3CRCuB6p7WtjAqbltDEM+pVz1EPbZZA91iQ4RK1F3N9i1Lje
-         8QC+x+7Xm7WoeOGl8iLPfchQQ+J5f5f8E10xP0fIvR193ZIn/NokIiwYD9xZta/cQPuA
-         0zTuhfjPWNpQxevhIahdJZUK3BUuuTcFDDDlsABMUM2Ou1+BAjrJ/UqzeRiiILoBZCeD
-         ldTg==
+        bh=XMJglR3k39oo4lFzmZ/NkXw1yJ/6wrmxZJcm2kMQjmw=;
+        b=PvY+F1VYaxQrnqBlJD58hDny3N9yiiWe+m/OLkz52Dmkwp5x9bKGbWo0COyLmAXNwu
+         Vw17CkjrhVHj9qHYpXLbNitEatrskyN0M9svUZmmG77ZkxteamJ4ZTMPIW9ek8kBg9Cu
+         gTuSE4F41QCNgIjLvR6kV/lgqi1zWbNk9FGlugi3LsN/5Wgx8I96n9+vObBmMVdBK9IM
+         pRiF1C0BlurG4Hd2v0cArtcJS/Z4z1v4+VNAwWWv+pzYYE8Nl7QhFwdQ9Gul+31cvVXL
+         T5D2Qm5OgNzFsJOG9zMBE39pcAci0Xl0FzvUMvvsfYy5O+5IcUS8WKKy5ETL6PcBrXpU
+         0+dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=/GVGRarQ+bdKBU0Z2N7AABfx+Km0CibFKi9Lr7Iu2LQ=;
-        b=igwCLWJQslE1tgAEoX3lKCknYy46JL5A8ebitJkgIo2mt4G9F4iKyoirSWY8lcQEiE
-         ai5VLCCw2+/I2k/kaK1C5H6m6pAEOfSKwwi4nD+gJUrchzYMgrfwq8AwXoy6d467E2gd
-         QWynGwfzx97lH7WqgQggMslshXHzjP00QbaWAcpMC1x7PKKA3t1bjuM1zoKDTBV7WZzF
-         MT/X1wz2kpX60vKw61rUIE9A6QiDQMctmCAY4RfawIqTaqA994Q6XXtxYFz7Fk2j1Hmp
-         Df++sV0xyFyVGPBD2Cs/nIuYDkXQN73rJHo+Frd5SO2AdM8BCcYKn9zK0qxA8F7jU1Co
-         c9kw==
-X-Gm-Message-State: APjAAAUnL3jS6pB/KxiFjj5lE3iuwwaSbcV3A8KwZeQlkGkfBvgfDF/d
-	RwiBbouM4fAQWUvV8cJTfTSV3thueiD8
-X-Received: by 2002:adf:ba12:: with SMTP id o18mr134697wrg.147.1570743625253;
-        Thu, 10 Oct 2019 14:40:25 -0700 (PDT)
+        bh=XMJglR3k39oo4lFzmZ/NkXw1yJ/6wrmxZJcm2kMQjmw=;
+        b=CgjeYmuiZWePfSWMimpt1Z0v88AFTilz6ufvoOCA5I0VIUVFbpkEoEPpv0aMl0BwGz
+         cF2RcLY9tsgfC+jwX7XuDnH3YgQb2Zn1oV92sM/ImFOakwSmFwbJbpxK7UWH9mwePCAC
+         Ek4FHMSt3w3xNlYbcZ94GYFEl5+FYFGj0VzNTeY8qs12U3L2faPt8FoziopwtN0feXre
+         I8h3H4y6KHRu7Rn5r+MOMmUq4Tygi/V/Ue58jYGUYYmpn3qQR6HP0BXUNqmiXHcA9rBT
+         8h0BNrYE94psRqMCVnGd5aO4yuYOZL7NFS6nl3EXaG8VSO62hSOKIKAhirBufpLuMrv7
+         QIZA==
+X-Gm-Message-State: APjAAAX1MAlSvNz5nNcEFH8i4Ul0azjbhRE9aD47hsCa89QsqNUL7KJo
+	aiLe9jLjV1B1T4kzRf2OEbgF46XO1Dyx
+X-Received: by 2002:adf:9c81:: with SMTP id d1mr9781941wre.238.1570743624401;
+        Thu, 10 Oct 2019 14:40:24 -0700 (PDT)
 Return-Path: <jbi.octave@gmail.com>
 Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.googlemail.com with ESMTPSA id h63sm11455423wmf.15.2019.10.10.14.40.24
+        by smtp.googlemail.com with ESMTPSA id h63sm11455423wmf.15.2019.10.10.14.40.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 10 Oct 2019 14:40:24 -0700 (PDT)
 From: Jules Irenge <jbi.octave@gmail.com>
@@ -79,36 +79,95 @@ Cc: gregkh@linuxfoundation.org,
 	linux-kernel@vger.kernel.org,
 	dan.carpenter@oracle.com,
 	Jules Irenge <jbi.octave@gmail.com>
-Subject: [RESEND PATCH v1 4/5] staging: qlge: add space to fix check warning
-Date: Thu, 10 Oct 2019 22:40:05 +0100
-Message-Id: <20191010214006.23677-3-jbi.octave@gmail.com>
+Subject: [RESEND PATCH v1 3/5] staging: qlge: Fix multiple assignments warning by replacing integer variables to bool
+Date: Thu, 10 Oct 2019 22:40:04 +0100
+Message-Id: <20191010214006.23677-2-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191010214006.23677-1-jbi.octave@gmail.com>
 References: <20191010214006.23677-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Add space to fix warning of preferred space near the division operator
- issue detected by checkpatch.
+Fix multiple assignments warning " check
+ issue detected by checkpatch tool:
+"CHECK: multiple assignments should be avoided".
 
 Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/qlge/qlge_dbg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/qlge/qlge_dbg.c | 21 ++++++++++-----------
+ 1 file changed, 10 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
-index b8ff9eccc472..eb993207d224 100644
+index 27aa8de3b5ff..b8ff9eccc472 100644
 --- a/drivers/staging/qlge/qlge_dbg.c
 +++ b/drivers/staging/qlge/qlge_dbg.c
-@@ -72,7 +72,7 @@ static int ql_read_other_func_serdes_reg(struct ql_adapter *qdev, u32 reg,
- 		goto exit;
+@@ -112,7 +112,7 @@ static int ql_read_serdes_reg(struct ql_adapter *qdev, u32 reg, u32 *data)
  
- 	/* set up for reg read */
--	ql_write_other_func_reg(qdev, XG_SERDES_ADDR/4, reg | PROC_ADDR_R);
-+	ql_write_other_func_reg(qdev, XG_SERDES_ADDR / 4, reg | PROC_ADDR_R);
+ static void ql_get_both_serdes(struct ql_adapter *qdev, u32 addr,
+ 			       u32 *direct_ptr, u32 *indirect_ptr,
+-			unsigned int direct_valid, unsigned int indirect_valid)
++			       bool direct_valid, bool indirect_valid)
+ {
+ 	unsigned int status;
  
- 	/* wait for reg to come ready */
- 	status = ql_wait_other_func_reg_rdy(qdev, XG_SERDES_ADDR / 4,
+@@ -136,13 +136,12 @@ static int ql_get_serdes_regs(struct ql_adapter *qdev,
+ 			      struct ql_mpi_coredump *mpi_coredump)
+ {
+ 	int status;
+-	unsigned int xfi_direct_valid, xfi_indirect_valid, xaui_direct_valid;
+-	unsigned int xaui_indirect_valid, i;
++	bool xfi_direct_valid = false, xfi_indirect_valid = false;
++	bool xaui_direct_valid = true, xaui_indirect_valid = true;
++	unsigned int i;
+ 	u32 *direct_ptr, temp;
+ 	u32 *indirect_ptr;
+ 
+-	xfi_direct_valid = xfi_indirect_valid = 0;
+-	xaui_direct_valid = xaui_indirect_valid = 1;
+ 
+ 	/* The XAUI needs to be read out per port */
+ 	status = ql_read_other_func_serdes_reg(qdev,
+@@ -152,7 +151,7 @@ static int ql_get_serdes_regs(struct ql_adapter *qdev,
+ 
+ 	if ((temp & XG_SERDES_ADDR_XAUI_PWR_DOWN) ==
+ 				XG_SERDES_ADDR_XAUI_PWR_DOWN)
+-		xaui_indirect_valid = 0;
++		xaui_indirect_valid = false;
+ 
+ 	status = ql_read_serdes_reg(qdev, XG_SERDES_XAUI_HSS_PCS_START, &temp);
+ 
+@@ -161,7 +160,7 @@ static int ql_get_serdes_regs(struct ql_adapter *qdev,
+ 
+ 	if ((temp & XG_SERDES_ADDR_XAUI_PWR_DOWN) ==
+ 				XG_SERDES_ADDR_XAUI_PWR_DOWN)
+-		xaui_direct_valid = 0;
++		xaui_direct_valid = false;
+ 
+ 	/*
+ 	 * XFI register is shared so only need to read one
+@@ -176,18 +175,18 @@ static int ql_get_serdes_regs(struct ql_adapter *qdev,
+ 		/* now see if i'm NIC 1 or NIC 2 */
+ 		if (qdev->func & 1)
+ 			/* I'm NIC 2, so the indirect (NIC1) xfi is up. */
+-			xfi_indirect_valid = 1;
++			xfi_indirect_valid = true;
+ 		else
+-			xfi_direct_valid = 1;
++			xfi_direct_valid = true;
+ 	}
+ 	if ((temp & XG_SERDES_ADDR_XFI2_PWR_UP) ==
+ 					XG_SERDES_ADDR_XFI2_PWR_UP) {
+ 		/* now see if i'm NIC 1 or NIC 2 */
+ 		if (qdev->func & 1)
+ 			/* I'm NIC 2, so the indirect (NIC1) xfi is up. */
+-			xfi_direct_valid = 1;
++			xfi_direct_valid = true;
+ 		else
+-			xfi_indirect_valid = 1;
++			xfi_indirect_valid = true;
+ 	}
+ 
+ 	/* Get XAUI_AN register block. */
 -- 
 2.21.0
 
