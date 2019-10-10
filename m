@@ -1,136 +1,73 @@
-X-GM-THRID: 6341262958071382016
-X-Received: by 10.67.6.6 with SMTP id cq6mr2567722pad.58.1476440336075;
-        Fri, 14 Oct 2016 03:18:56 -0700 (PDT)
+X-GM-THRID: 6746097817477971968
+X-Received: by 2002:ac8:1208:: with SMTP id x8mr8935699qti.126.1570698296294;
+        Thu, 10 Oct 2019 02:04:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.15.174 with SMTP id d43ls7820472otd.11.gmail; Fri, 14 Oct
- 2016 03:18:55 -0700 (PDT)
-X-Received: by 10.200.55.187 with SMTP id d56mr2979575qtc.32.1476440335629;
-        Fri, 14 Oct 2016 03:18:55 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 203si3125538pfw.0.2016.10.14.03.18.55
+Received: by 2002:aed:3f5a:: with SMTP id q26ls139022qtf.13.gmail; Thu, 10 Oct
+ 2019 02:04:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxyM6pUUk3CmxCg5QI5EDkRO4XX9DS7Q45GD1J65+jZ547ll3IDcylL6BEhpOAnWd2eiI91
+X-Received: by 2002:ac8:234e:: with SMTP id b14mr9257589qtb.346.1570698295485;
+        Thu, 10 Oct 2019 02:04:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570698295; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Xbs41N2iBCpPFP7EZX54tCM98+u3uw/5OAjLSHEEsp44iO0v7e43jdnTpGUWCGSoO0
+         AW/Ps9De+WhGoIzur20OskEq3XDVE7mn7Eya4kWvY7BMSqrpWXPXQ6TsxlRAWuBdMq8q
+         HL9fw7/km1JIbRLm/jNesQN0Bqr9KfyOD7T75ku+NjxA28wigay17aQDBQ/a5mdeoD4e
+         YDY2xE5mVNWm94tz1fICe5tsgP2bG6qNX+BqbhUVcQzTDl3elM6QPmJrCrfoJiXwr9B2
+         DNugbMIyXeFcpX6z6mjZ0J6gWgM9Wn4jiSisa0g7iFHo3PkGCaxkmT4wLjtw5JF+Bj2H
+         bLKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=JI2tLQLSRf04l5NDsYrR0RPsbo4MULBFnRGcuwM3C0I=;
+        b=SXhQtPvESo1d3iy3x3bTMe/5f7QJhySYM7R9V0iiil7NnUrPsRAOj/UGuHOeq2iOCg
+         z4ciqpTANUYV7xQL6C+GWRiyoagAE+wmZm+eul/PSg+P9LfZflma+pb7A81Fd9xAcRz4
+         b+TMSF3Z2BWmi6B+HlPPBejkMFYUq0s7sENmm8QBbrEAbe6S+tcewTPYsI5YiHxgb9Z9
+         DZbOwNdusnyleBXXDGw0OPWINx4RGf5u0dG3pp/hiE5QkP/+i2kc7YcjvtIkZK+sW5Ij
+         b54gCXcfO7wDd8O7CBBb0SrvXFQW3eHnsMYdzJuzxHTBYz9Kqt68NIsxmsDzCFwaRWG2
+         ommg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=wQb0StSV;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id t53si220217qte.2.2019.10.10.02.04.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Oct 2016 03:18:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Thu, 10 Oct 2019 02:04:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of eraretuya@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=eraretuya@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 128so6983523pfz.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 14 Oct 2016 03:18:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=twyKOsoLoiTegvomI6tF62+CQGfg+62t9LJSEm7TJgk=;
-        b=WmH0z11lqCO98vWd5uD4sA5Fvn2e5lSQoFKs1Rzsk4EeFQi1KqJaD3s/QbHK1SIqgz
-         lGMgnvonJ4KEBVnAhNflEquL6u9OLFBjXDgHS7yQ0Un1XYu37iL+PUXoXodfWeXtyKXd
-         L4TJ3NYDIg5v7X3PcndGUbVB2zHC7Z1Y2dvqK1ioRIVtkitmRosuv2mTd8+K5WDOr+Tn
-         cU1t+ABrzcGPjlSwMsoZ/mDmQFBSRaa6fiuTIkGiZyy0+Um8x5RGTVXzbgKIq6eJXxA+
-         GbbdrGr8qc0LPxjdFaStNogoCOa9m5fVh9YlTwA7iGdaUMr58QVA8N4QtpP/P51PAXPK
-         io4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=twyKOsoLoiTegvomI6tF62+CQGfg+62t9LJSEm7TJgk=;
-        b=VDMq2guaF1KdspvrH1OQICpei+iWRBOTT6Ue5/v97lBOeRQoG+yA3yM9NxgQGeTSP0
-         m+UMU7aYd9o4FlCUhyqnsxIcezXFCJBO46kJaPiOzL1i1KndvzpBdk+lmrvONsCSCRvR
-         Ci5AU159QOiP1OMfvySQk1Q6uHcheFRZHBQfhROuVe9uK/hIk6R/K5mj9B5kfv5vkwVI
-         72HdR1AT1YSloFcwIxYFdGSmckVCkorecJCo/m/vpW3y3S6IxoyS3K7kT0cHrDKDrebu
-         COcUORO1MnC/gUd1h1Icn0Gz44XVr2zicZsug+hvaWlvs7aF/X4TODTKe7Fezs2sw379
-         CLiQ==
-X-Gm-Message-State: AA6/9RndD38s94fl5Twm6fEAjlE3nPl/UehOSm8I4yAy3YH3Kv0Dr1MKGKEngIDeINnc+w==
-X-Received: by 10.98.64.140 with SMTP id f12mr17076951pfd.45.1476440335380;
-        Fri, 14 Oct 2016 03:18:55 -0700 (PDT)
-Return-Path: <eraretuya@gmail.com>
-Received: from Socrates-DK ([103.14.62.75])
-        by smtp.gmail.com with ESMTPSA id a4sm26287059pax.8.2016.10.14.03.18.53
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 14 Oct 2016 03:18:54 -0700 (PDT)
-From: Eva Rachel Retuya <eraretuya@gmail.com>
-To: linux-iio@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: jic23@kernel.org,
-	knaack.h@gmx.de,
-	lars@metafoo.de,
-	pmeerw@pmeerw.net,
-	Eva Rachel Retuya <eraretuya@gmail.com>
-Subject: [PATCH] tools: iio: iio_generic_buffer: add -A to force-enable all channels
-Date: Fri, 14 Oct 2016 18:18:39 +0800
-Message-Id: <1476440319-11124-1-git-send-email-eraretuya@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=wQb0StSV;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id DB3042067B;
+	Thu, 10 Oct 2019 09:04:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1570698294;
+	bh=JI2tLQLSRf04l5NDsYrR0RPsbo4MULBFnRGcuwM3C0I=;
+	h=Date:From:To:Subject:From;
+	b=wQb0StSVbPTPArkJo0pQRz6NSw/ZL0XAvT5aOG7/6MuwM/T+xoIu3sCz6yTDXZf59
+	 Vu0csgrYHljX55dTYJanA9PzLSD4ghFDwjrXXlREJIFU62sBq2pkE7kQUeExzurSVK
+	 LxpPioVwFosG4giorXDkM2DGiMfxZKnqYOICBS0M=
+Date: Thu, 10 Oct 2019 11:04:52 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: outreachy-kernel@googlegroups.com
+Subject: Outreachy patches caught up on.
+Message-ID: <20191010090452.GA467315@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-If attribute/s is/are already enabled (by default or via scripts or
-manual interaction), issuing -a will fail to enable the channels thereby
-one has to manually disable the said attribute/s before proceeding with
-auto-enabling.
+Hi all,
 
-Add a command-line option -A to force-activate all channels regardless
-of their current state.
+I'm now caught up on all submitted outreachy patches that I can apply.
 
-Suggested-by: Alison Schofield <amsfield22@gmail.com>
-Signed-off-by: Eva Rachel Retuya <eraretuya@gmail.com>
----
- tools/iio/iio_generic_buffer.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+If you have not gotten an email from my patch system saying that your
+patch was applied, consider it lost, and please rebase and resend it.
 
-diff --git a/tools/iio/iio_generic_buffer.c b/tools/iio/iio_generic_buffer.c
-index f39c0e9..84c9888 100644
---- a/tools/iio/iio_generic_buffer.c
-+++ b/tools/iio/iio_generic_buffer.c
-@@ -247,6 +247,7 @@ void print_usage(void)
- 	fprintf(stderr, "Usage: generic_buffer [options]...\n"
- 		"Capture, convert and output data from IIO device buffer\n"
- 		"  -a         Auto-activate all available channels\n"
-+		"  -A         Force-activate ALL channels\n"
- 		"  -c <n>     Do n conversions\n"
- 		"  -e         Disable wait for event (new data)\n"
- 		"  -g         Use trigger-less mode\n"
-@@ -347,16 +348,22 @@ int main(int argc, char **argv)
- 	int noevents = 0;
- 	int notrigger = 0;
- 	char *dummy;
-+	int force = 0;
- 
- 	struct iio_channel_info *channels = NULL;
- 
- 	register_cleanup();
- 
--	while ((c = getopt_long(argc, argv, "ac:egl:n:N:t:T:w:", longopts, NULL)) != -1) {
-+	while ((c = getopt_long(argc, argv, "aAc:egl:n:N:t:T:w:", longopts,
-+		NULL)) != -1) {
- 		switch (c) {
- 		case 'a':
- 			autochannels = AUTOCHANNELS_ENABLED;
- 			break;
-+		case 'A':
-+			autochannels = AUTOCHANNELS_ENABLED;
-+			force = 1;
-+			break;
- 		case 'c':
- 			errno = 0;
- 			num_loops = strtoul(optarg, &dummy, 10);
-@@ -519,15 +526,15 @@ int main(int argc, char **argv)
- 			"diag %s\n", dev_dir_name);
- 		goto error;
- 	}
--	if (num_channels && autochannels == AUTOCHANNELS_ENABLED) {
-+	if ((num_channels && autochannels == AUTOCHANNELS_ENABLED) && !force) {
- 		fprintf(stderr, "Auto-channels selected but some channels "
- 			"are already activated in sysfs\n");
- 		fprintf(stderr, "Proceeding without activating any channels\n");
- 	}
- 
--	if (!num_channels && autochannels == AUTOCHANNELS_ENABLED) {
--		fprintf(stderr,
--			"No channels are enabled, enabling all channels\n");
-+	if ((!num_channels && autochannels == AUTOCHANNELS_ENABLED) ||
-+	    ((autochannels == AUTOCHANNELS_ENABLED) && force)) {
-+		fprintf(stderr, "Enabling all channels\n");
- 
- 		ret = enable_disable_all_channels(dev_dir_name, 1);
- 		if (ret) {
--- 
-2.7.4
+thanks,
 
+greg k-h
 
