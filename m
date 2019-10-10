@@ -1,105 +1,115 @@
-X-GM-THRID: 6671577370158170112
-X-Received: by 2002:a02:1e99:: with SMTP id 25mr11520137jat.131.1553347653869;
-        Sat, 23 Mar 2019 06:27:33 -0700 (PDT)
+X-GM-THRID: 6745885278091608064
+X-Received: by 2002:a2e:81cf:: with SMTP id s15mr6548429ljg.99.1570743627965;
+        Thu, 10 Oct 2019 14:40:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:455f:: with SMTP id y92ls339297ita.1.canary-gmail; Sat,
- 23 Mar 2019 06:27:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNe+2zUheXFN/0UopbOlnMl+igNht8WkQyKb53F0b2NVk7aOCW69xUFHI/xUjT09YOGJxP
-X-Received: by 2002:a24:2b8c:: with SMTP id h134mr2053125ita.15.1553347653074;
-        Sat, 23 Mar 2019 06:27:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553347653; cv=none;
+Received: by 2002:a2e:1285:: with SMTP id 5ls701591ljs.11.gmail; Thu, 10 Oct
+ 2019 14:40:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxUOQc+oY9rFTVz7MhvcAblvyu8ki5H/eYRsd8+DOCqWWrbOPzD9SwhKEgl7n7Dsp5iZOaz
+X-Received: by 2002:a2e:9890:: with SMTP id b16mr7475461ljj.181.1570743627108;
+        Thu, 10 Oct 2019 14:40:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570743627; cv=none;
         d=google.com; s=arc-20160816;
-        b=N738uWqlpxOFPfh5GnJeBVyaRELeON1fRRTQY9QKBP4g94CnPYcMV9nmNA4CrpMMxv
-         4B+70XQgjjJCySNfbLg1de1iYmPFkG8cqjvkunBQn2drOrcSUZNwv1bg9dD2zcwZlYXv
-         b/5Ki3C8LlW3yZWHNJrIkdD4HO975fTCW80L4Ix+OZQDXrwndSOflXBPakW9sLHdvICM
-         B5u6wsc2HZyUeEAqwfGkfS3NBmIbFp++nD4Se6hRzX6NZKmqUHB9oW8L9Rizf3k0RX2i
-         0hzHoMZnbaY522tjwQAmwd3JWarv8hZYQqX4Fg6L3Ej7NbnEn3oM+jEYzwpkgXuHqzt9
-         uK7Q==
+        b=iqihyeJhOFuw+CU7ZAu7/jRPsrBk08oSUgMFWN97qus7gMk9npcdfH7NSxGooLOX31
+         DGyKn1FnVOdPpn0PFanHGkLhZ0q+w8v1G85aCsh2USKNW0OcvktfVm9AXwzaHMCoMCYG
+         ATtuzxFiucEU7xd71CrsXLa6DI5E0mXNDOzavLzr9Kgp9s7m72c/Gmfnl8V/Wr4IbpoT
+         9OABhpphchsoWVI6e4ZiQpoTzUZbwyrpYdcpZ2dGBeEkNbkCd/iGTBrD+y6NLCj/UqYz
+         ABhBT/vBFwjHKfToj6clEobqF09ieUP2hvvpng222LjRvEjigblV/2cjgJUWM6peh6JL
+         s7VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+F6MsgQaY4daLxGa5UCpQZFXUwbIBNGAR5ruy3In89k=;
-        b=vrjorIXzjkJFnymdNtQPJC1QBNuSiH8KxHtsWM2AaEfHQWXawpy3K2f23KEvanApPc
-         EStMfxKFAjA97wq6u1yTnXgedi6qssGbVm1L+IjBwwa4fbS508hPENXYsu65Ti14jJj+
-         0etncTtPMSIOIiho2RtZZ1+Kq+k6kIsJu1NzGNTrnb5XwXuCePzkhgcHu9IH3A1c5NuL
-         AeWNABvKWTofwE8tVmC9I5e+7pKGVHBQVib4wVQPo2xaouVHjaZLIJxu+lltJVOoo/gM
-         fe3Z/F1TbARemQbOKH6ilZso0XZxBY2OzGXb2bCEkqxcK1IAAsQmUDsWPtn6ux4/oTQP
-         zCQQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=5YEeIOaPo1JGlJWQewk3M0wcqwSy5upFgX2fmJpZCaw=;
+        b=C/7mkfUhBLBXfszN2m7H2JqqGhmeQzKvc1/SfmzlW+djeuTtZKCP2ftpkKDuSvYfyG
+         mfFxpVvbKO/VUUumxWbQUrHlZLoajIpIjn7QaIw2C8fcn9UpHq/0HnXipJA5athC6QiO
+         GCu2uS5rjv0jMlrN4rSSuIAwx/WLxA4xOvKekz+o4tYt6V8pUPuMi+WPb4ns/OEauAeY
+         g7gWliPtYiy3B1iJ4HP6unY7FbiYUqbcgK0TaVwMXiRrOYSBrHSPAvRi9JpT7yJT/FPK
+         jRgGimkgk0kcepp0XUjjDh5SOumASaSAQxWC2UKDTf0+CTkpdeQLH2RTu2JnpxEsbd1y
+         /Xaw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C7GhQz6J;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jxQgazH0;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pf1-x436.google.com (mail-pf1-x436.google.com. [2607:f8b0:4864:20::436])
-        by gmr-mx.google.com with ESMTPS id f13si594081iok.3.2019.03.23.06.27.33
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id d3si38481lfq.1.2019.10.10.14.40.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 06:27:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) client-ip=2607:f8b0:4864:20::436;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Oct 2019 14:40:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C7GhQz6J;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jxQgazH0;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x436.google.com with SMTP id c207so3369990pfc.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 06:27:33 -0700 (PDT)
+Received: by mail-wm1-x343.google.com with SMTP id b24so8203823wmj.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 14:40:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=+F6MsgQaY4daLxGa5UCpQZFXUwbIBNGAR5ruy3In89k=;
-        b=C7GhQz6JuuEkMpjH/1rU4ArDF1ZfOKrVyZHaRu4G5dFuTudeCWxhtqdsiRUQgT+9Ej
-         RjEoPkazCr8hdGo707mNwR0qcFK+Iq52jpgo6eTtaeYBVsVnk1WTNYBC05ile3yu3UQx
-         Ll5juuqi6Vg+QgfWWtVAd642d0QhEQH/iLEDbiYROQOVxnMUeVs1smZamYrcl4WdwNeN
-         1mb5Z1HJepL6b/MMhJwvO2CVUteOwmVJKf+VLABY4Mx7yuco0l8TwugJ5ywYDse1TGXu
-         6Xy0rqK3mgSnUPOaj9mVPCTT/3DeCwnznDMsq3v+LJholb83jqu3WYt1J/Hs8tODjrx1
-         CHVQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=5YEeIOaPo1JGlJWQewk3M0wcqwSy5upFgX2fmJpZCaw=;
+        b=jxQgazH0gRz9X53R/oxw4eLM8Sv2X6SQnLG0qkR/c3GAuSNs8/ydl0EpB1UL2iy46g
+         A7dDD44p6whsuGf9dstCb+WTukxybSNKDNqFemc4SRGa2j+a63aYNb+00dUNXLBcnsHI
+         mzplDcZdnWrOErdsLXDgo71WJ0Fyh7BQyaXx37R+NXr47uYb7s532YAO+Taecllp6E56
+         8ZUvt1N6Elw9wB2Eo5zYgDeYTb4vCAbkUb6lrtJLGD97K7TWnfdDzgDiqMIqLK9Bk7j1
+         NMErXMErfjEdRCYJ65Edjqk9ZK6t9Pb1doEpjlw8uRJDJ4mWvSGXqJb1QpyV1f2VUZ12
+         78sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=+F6MsgQaY4daLxGa5UCpQZFXUwbIBNGAR5ruy3In89k=;
-        b=E4thYSj2G5/kP6oBY2PtMjcEGoxstSiZ1Co8XC8lW/MSjklxwEB03FGlsoUpP2ua6D
-         hoKcpuc5e0IxqOLY4eyWIaR18RRPYQkIJN8ekB2svKUMliuREmCiRtT4FBPYgobYnBPW
-         j8sjevDGIL970RxSZf0jytEoqUzQU+Z6guSLxvRtUbGh/Uta75VTD7yA1gr4WSS5vEL+
-         0lE3RtJwLU7DQFeCHN3vRMvzGs5UodxEe4iwDjZ8uPXZzZArlen5Ygt0atGqfuEweBCH
-         3ly+hRkKr/k4Zih9pS6aGQ+aIynw9VbDcZZZIgZB0Zbv/iXKVNRBb397l4WJSQG1WDgS
-         V6Ow==
-X-Gm-Message-State: APjAAAUSIRX5IM+saCToUPVNcYgT18WU5MhQ1RiOmznkcnL6E2iY7t8V
-	wA/VqPw60D7EwaliU6oeubdw3DvVxok=
-X-Received: by 2002:a17:902:b20e:: with SMTP id t14mr14761508plr.97.1553347652508;
-        Sat, 23 Mar 2019 06:27:32 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.188])
-        by smtp.gmail.com with ESMTPSA id j20sm13819251pfa.158.2019.03.23.06.27.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 06:27:31 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=5YEeIOaPo1JGlJWQewk3M0wcqwSy5upFgX2fmJpZCaw=;
+        b=eycXBQN7xqSY+ZZvo4tps9p6vJSnMy+xwV3m4PxFvIjAL/hZuBAdVcSluD5L3lzgxG
+         Z1Vf5evfw+aGtB0SGDu/SbNEmE35W+JGGkJg5dqw793uZGe8VZpAWcohHiqsc9BQcxoG
+         CCMsOxljjKCBbeI77oumg5P/LW7yjrzh9T7wyvOyJZTB+FsBwPRKiPeKZx1+kSZeLcPe
+         1AvUGuI8CsphnUIjHVeGLHyM8GBdEDuVNqM/74lBPJGTekDM27rfifHHL54z+VzKst/5
+         MbyQ61wkYetujjBxfS17ep8UQ7XUYjxtibEvTJgRhvhhnNI2rUB0DWAwjscaU3fWSNUy
+         I3uw==
+X-Gm-Message-State: APjAAAXcJWDlDOW0hEAJDPyvRvb4qyFgxQ8V1ZyryUoPABLN7cp2UHDA
+	TqTQYIf33PBs4d970d7c05b5ajdB33qs
+X-Received: by 2002:a1c:7dce:: with SMTP id y197mr426404wmc.171.1570743626164;
+        Thu, 10 Oct 2019 14:40:26 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
+        by smtp.googlemail.com with ESMTPSA id h63sm11455423wmf.15.2019.10.10.14.40.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2019 14:40:25 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: include: Fix a space issue
-Date: Sat, 23 Mar 2019 18:57:16 +0530
-Message-Id: <20190323132716.904-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+	linux-kernel@vger.kernel.org,
+	dan.carpenter@oracle.com,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [RESEND PATCH v1 5/5] staging: qlge: fix comparison to NULL warning
+Date: Thu, 10 Oct 2019 22:40:06 +0100
+Message-Id: <20191010214006.23677-4-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191010214006.23677-1-jbi.octave@gmail.com>
+References: <20191010214006.23677-1-jbi.octave@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Replace 'foo * bar' with 'foo *bar' to fix a checkpatch warning
+Fix comparison to NULL by replacing with !ptr instead.
+ Issue detected by checkpatch.
 
-Signed-ff-by: Vatsala Narang <vatsalanarang@gmail.com>
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/rtl8723bs/include/rtw_recv.h | 2 +-
+ drivers/staging/qlge/qlge_dbg.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
-index 1f53c1c7b0da..7d54cf211315 100644
---- a/drivers/staging/rtl8723bs/include/rtw_recv.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
-@@ -302,7 +302,7 @@ struct recv_buf
+diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+index eb993207d224..12a62a6fbb69 100644
+--- a/drivers/staging/qlge/qlge_dbg.c
++++ b/drivers/staging/qlge/qlge_dbg.c
+@@ -1804,7 +1804,7 @@ void ql_dump_hw_cb(struct ql_adapter *qdev, int size, u32 bit, u16 q_id)
+ 	pr_err("%s: Enter\n", __func__);
  
- 	u32 ref_cnt;
+ 	ptr = kmalloc(size, GFP_ATOMIC);
+-	if (ptr == NULL)
++	if (!ptr)
+ 		return;
  
--	struct adapter * adapter;
-+	struct adapter *adapter;
- 
- 	u8 *pbuf;
- 	u8 *pallocated_buf;
+ 	if (ql_write_cfg(qdev, ptr, size, bit, q_id)) {
 -- 
-2.17.1
+2.21.0
 
 
