@@ -1,137 +1,90 @@
-X-GM-THRID: 6673993192024571904
-X-Received: by 2002:a1f:6095:: with SMTP id u143mr3997728vkb.13.1553910130033;
-        Fri, 29 Mar 2019 18:42:10 -0700 (PDT)
+X-GM-THRID: 6745802643639107584
+X-Received: by 2002:a05:6830:22e6:: with SMTP id t6mr6959841otc.65.1570697745416;
+        Thu, 10 Oct 2019 01:55:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:7d4b:: with SMTP id y72ls896911vsc.1.gmail; Fri, 29 Mar
- 2019 18:42:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxB1HyFvXFbRog1Q15Agr1rSMgbCoXj3pF+/wIXG6q5TLwywjFd+zWOKbYOh9oq8Yfa36CZ
-X-Received: by 2002:a67:f54c:: with SMTP id z12mr4000491vsn.17.1553910129258;
-        Fri, 29 Mar 2019 18:42:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553910129; cv=none;
+Received: by 2002:a05:6830:1383:: with SMTP id d3ls610715otq.0.gmail; Thu, 10
+ Oct 2019 01:55:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzlCdw1vyphmgGzdr00qGYl+b3isQRuLlYfPd7ZYfpqE0dkuHBGlBQiGuNr3t1/U73+azRF
+X-Received: by 2002:a9d:7dc7:: with SMTP id k7mr6930667otn.172.1570697744527;
+        Thu, 10 Oct 2019 01:55:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570697744; cv=none;
         d=google.com; s=arc-20160816;
-        b=N7i2y6sjVtuqB30nbR3iHVAVRJBPZe3Thj7cfQswEMsJ6T7r+UvxAyjI40GPzMhIDi
-         TakejVykKzXEP1zw4CwpiQJcA44bzWJO43teYYF2sEKpLNifBS3n7djm0aaxp4V7zs5P
-         3oR/CWEKKTeDkR4g+XQ0N5rlQblEH20Oyxka9YHSrHl4qGAXgYkm/Yn/2hkGd1GKA3dp
-         Zu+99ejzOcXRbdyxHsYDUth5zMzCWvkn8cNVIh/nsFODeGVjdcF/3+OwwjUlNklxaE+7
-         N1nGAwjdBH3XYHvjlqPG9tr2iQb3UWSoV2ZAu/DktGUtmZIjYFCXhdLurZ5CgQ0XITJg
-         7C2Q==
+        b=a7xmCRYBbAvuYUyMQc6J35cROhc75V8c6lVicWbGTyf1X8CCXBQLaFnemAWY6uZ5HM
+         YB540/Giv0v3KW88zhfIct/tphJwyZXwb+qGuY9hvyC8c4YaRXYKnca6SC3ugClVYQ/8
+         pp5J5ACIKPA1sFhyr6VacRzkyP62tWZNZoTu8C2Cx3vJYfsUUpYf4a4cXFdfZZ9W3zfp
+         H7+Im6CCV5zkFHhEGMf1mJLHNZYLyDy9uExUNQzpg65sj8baH135N1mOyzYkqwr7ReG0
+         2Zr/lTC1hvMe01fL3LAJU9akkusAriZ2lztksHaRbG0AObwH7J+2UqLg7uHdeKvSBmvA
+         o7IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YKLSB+Rii5NX/CcD/bRGNd/iqgt52UAASe1JV4cutt8=;
-        b=doR95Z00nG0k/KbjQMh32nKYfAbfkFnvADd67/gsSziDnIJlhDP0Zs88tly1tCrI+s
-         h2miQnY+9+QwrxQljq9q065KTJYu+gUvxumeBd0z25XsxDf4QHtG4J4CEgsWWXeCnCi5
-         tT1kefIm0sLrNSaLWWVCo2PyUF1h36/oVueQzhIkA/vmQ7Gl07fLEPlo7/NX81llPKIJ
-         A8S/vcJ4MiD/CNVN7SxzCy1fzOjAOFXOH2+jbtPY00tZEQbc6sT59suHqMPaAzkcYsek
-         y3IMFuNPzVzQMuBot80jtCsuVvoeOlDcaFNs05VxDe/stOVl8P2hllYFr0HWxg16l2PY
-         z1+w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=R3T0YT/LBuRAtNmTZzTkqEO3GgiHGitELIF/z7Iewy4=;
+        b=A3q0fPHdmJ/ftV1YDr7wTG2lBpedTe1cduPG5T+CksUlAwyOqFTxT5mSrEePGON4Kw
+         v6QjuyRHvSU7ftD0YWR9nLe4XPdkWn5K+37HfqTvzxB/BFPhWUSyV+/JzfuD9VrvHFwH
+         RSWKfxZi8OMDmfk/6JT7Yhw/s1g/QCfhVRQNOfXqMreheYqCJlYXynIo9wpJUS/uewg+
+         lv+vDOO399oa3Nsy09WdxbgvXIny9TBThf10cmi37C2FvH+vmN0xES/E4s8ioKR3ELyL
+         R7td03nFGChCY+wu3GcAJGmYgB2HxW/CWfZwk12MeQ1f11rAC3+Zsedj668i6ZP6mnpl
+         myzQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RXTqmxNF;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id k68si242563vkg.5.2019.03.29.18.42.09
+       dkim=pass header.i=@kernel.org header.s=default header.b=Tqrbyxx7;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c67si137658oig.1.2019.10.10.01.55.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 18:42:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Thu, 10 Oct 2019 01:55:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RXTqmxNF;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id i2so2002275pgj.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 18:42:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YKLSB+Rii5NX/CcD/bRGNd/iqgt52UAASe1JV4cutt8=;
-        b=RXTqmxNFRI+CbtY/UlVy8bsIiQFI5nl/ZUw48wX0AIu9VofOjCLb9kzx+3qPPGtIlS
-         GYyahrQjD25D5uXz0+F/GC2Im8bbbrrpQFp8EHL1hzTkKnEvyAtKrTRTLtXBYjDdHzvP
-         x453TbSn7P2UZxZ/+3qUVActU86qIF1NkLZVN588nEFtcr1khLdilo2YjF+Fx4Pjx7kX
-         wXU7vx8POb8KCqNdw4AEhZC6ZHbRGkp5s6OYWFPsbtpcOEeeyGc2/T0mCUvOAt96vkUa
-         oNTA1nhJ6ModNCnprvDWxrBGBMCBGrdbzZsbF+92w49rNimgJXLcCZbnJumZhMfaBQkR
-         H6Ww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YKLSB+Rii5NX/CcD/bRGNd/iqgt52UAASe1JV4cutt8=;
-        b=gpbO3hOgYXEgyF5zqwNSSr8VYHoslm+zxY7cDYRkGzqMKpNsWcs9SImSHbA8XWxgJQ
-         qKDXQg9MzVpvgU3dirQsEHtrMXmEgQZooa7J8YRGFC00h3Qnvn7laZcWOJQy+VFS324p
-         qM3frJRfBgnHDOJ8q1N64GYoMYwB7g0YtY9Ho479B04pRhmkb+rwOAjesiJ/yay9TINg
-         joyRLQPD6hN9SbbSfVNE/puKzKumt5PswuNI9ysVEeEHMseIinkl+23MRzYLj3gCFyJ2
-         aO06CaBdNZ3H65jjRBPLkQg9yUr+PekrEVFDVMcsT4w1481FE77DL9SpeTl+i3MGwIxp
-         RN8g==
-X-Gm-Message-State: APjAAAUP03+FaCMi4TfS5PJUAhjNf0EfFVgmPOAJdsux1dbQ7kfINkPf
-	FObtH8wS2WyzbTgZf9NcsoIwFJP8HME=
-X-Received: by 2002:a63:5054:: with SMTP id q20mr48878336pgl.414.1553910128219;
-        Fri, 29 Mar 2019 18:42:08 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.82])
-        by smtp.gmail.com with ESMTPSA id p3sm8297511pfp.136.2019.03.29.18.42.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 18:42:07 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH] staging: media: zoran: Fix block comment style
-Date: Sat, 30 Mar 2019 07:11:51 +0530
-Message-Id: <20190330014151.32033-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=Tqrbyxx7;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 31C682190F;
+	Thu, 10 Oct 2019 08:55:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1570697743;
+	bh=fWJjbXpmFkxTYN182RrS0pGcx/QVyeR2dPDwnS/HsTs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Tqrbyxx7vQRb3pTZ4yaY7TfY+WhmKqOi6eLilR4NrlcMSSP0IWAve36knAdr3v+Xw
+	 vT6fVwb9maoaNVWLfj1OJaTMKtnXDY7OA7///Oti93WxRXDfYyv6FCyV2qPH/NZb1O
+	 Aa5/gG8zcshCE1q4zUMY9p7RqYR4afqPec9QQyQY=
+Date: Thu, 10 Oct 2019 10:49:12 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: qlge: fix "alignment should match open
+ parenthesis" check
+Message-ID: <20191010084912.GA394561@kroah.com>
+References: <20191009135909.19474-1-jbi.octave@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191009135909.19474-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Add trailing */ on a separate line for block comments to get rid of
-checkpatch warning.
+On Wed, Oct 09, 2019 at 02:59:09PM +0100, Jules Irenge wrote:
+> Fix "alignment should match open parenthesis" check
+>  issued by checkpatch.pl tool:
+> "CHECK: Alignment should match open parenthesis".
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/qlge/qlge_dbg.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
----
- drivers/staging/media/zoran/zr36060.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/media/zoran/zr36060.c b/drivers/staging/media/zoran/zr36060.c
-index 2c2e8130fc96..7ee53ba4f7fc 100644
---- a/drivers/staging/media/zoran/zr36060.c
-+++ b/drivers/staging/media/zoran/zr36060.c
-@@ -40,7 +40,8 @@
- #include "videocodec.h"
- 
- /* it doesn't make sense to have more than 20 or so,
--  just to prevent some unwanted loops */
-+ * just to prevent some unwanted loops
-+ */
- #define MAX_CODECS 20
- 
- /* amount of chips attached via this driver */
-@@ -725,7 +726,8 @@ zr36060_set_video (struct videocodec   *codec,
- 	 * ratio 1:2. Setting low_bitrate (insmod option) sets
- 	 * it to 1:4 (instead of 1:2, zr36060 max) as limit because the
- 	 * buz can't handle more at decimation=1... Use low_bitrate if
--	 * you have a Buz, unless you know what you're doing */
-+	 * you have a Buz, unless you know what you're doing
-+	 */
- 	size = size * cap->quality / (low_bitrate ? 400 : 200);
- 	/* Lower limit (arbitrary, 1 KB) */
- 	if (size < 8192)
-@@ -738,7 +740,8 @@ zr36060_set_video (struct videocodec   *codec,
- 
- 	/* the MBCVR is the *maximum* block volume, according to the
- 	 * JPEG ISO specs, this shouldn't be used, since that allows
--	 * for the best encoding quality. So set it to it's max value */
-+	 * for the best encoding quality. So set it to it's max value
-+	 */
- 	reg = ptr->max_block_vol;
- 	zr36060_write(ptr, ZR060_MBCVR, reg);
- 
-@@ -933,7 +936,8 @@ zr36060_setup (struct videocodec *codec)
- 	memcpy(ptr->v_samp_ratio, zr36060_decimation_v, 8);
- 
- 	ptr->bitrate_ctrl = 0;	/* 0 or 1 - fixed file size flag
--				 * (what is the difference?) */
-+				 * (what is the difference?)
-+				 */
- 	ptr->mode = CODEC_DO_COMPRESSION;
- 	ptr->width = 384;
- 	ptr->height = 288;
--- 
-2.17.1
+You sent 8 patches for the same driver, some patches with almost
+identical subject lines, and some a bit different.  None of these gave
+me any hint as to which ones superseed which, and which order to apply
+any of these in.
 
+Please resend all of the latest versions, in a patch series properly
+numbered, so that I have a chance to apply them correctly.
+
+thanks,
+
+greg k-h
 
