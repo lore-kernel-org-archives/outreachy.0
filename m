@@ -1,85 +1,85 @@
 X-GM-THRID: 6745991976602042368
-X-Received: by 2002:a17:902:524:: with SMTP id 33mr6473513plf.123.1570673771807;
-        Wed, 09 Oct 2019 19:16:11 -0700 (PDT)
+X-Received: by 2002:a81:1ac4:: with SMTP id a187mr4950926ywa.494.1570673691512;
+        Wed, 09 Oct 2019 19:14:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b485:: with SMTP id y5ls814364plr.0.gmail; Wed, 09
- Oct 2019 19:16:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxy584JKZVrRADMacBQnCBtdJWmxI3LcnkxC+K1L5u+HB02MHjVOpNsYzjrwS2FJz3SC7w8
-X-Received: by 2002:a17:902:a717:: with SMTP id w23mr6510023plq.27.1570673770614;
-        Wed, 09 Oct 2019 19:16:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570673770; cv=none;
+Received: by 2002:a81:48ca:: with SMTP id v193ls400581ywa.12.gmail; Wed, 09
+ Oct 2019 19:14:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZO1t+FkWfeqmbky4jZkt+PlgbC6hdJk+9Z3/F1mlSiRuTKyUQMXRKmQqsy2Sj3dOihmjQ
+X-Received: by 2002:a0d:eb89:: with SMTP id u131mr5226850ywe.239.1570673690197;
+        Wed, 09 Oct 2019 19:14:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570673690; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sx7dr/sFGSFUCGG6D9iqQEHFHhEFB1rvTCM4ZDXkYm2GTSpuwNmzE6Aua1HhCUk7yp
-         WH/eGEIGVSFK7seIkUoItQt7R9yvPWINrxo8Pkqabs66BPHecYFVZujxWmrQgItZes5n
-         lECM+13lmpAmaXnw7CIZlwPIwAoHOtXZ43xRfbhkerOH/i8I+4IRlEKhBEPpJaFgiHEB
-         FBLk1puJkjzUnaWbgxbpITpjYP+t9aDHBHnrvFq1RfwJupx23MkCtxbn0eTbwsqXiAHt
-         DFsa6PajigJmest5zlyH3IAZVDrJD1lV81H93bI5MMPuSMk/OoY5pIafj93sb7WpGHxM
-         6QOQ==
+        b=Yc0no2nVpVMldq1qsyX5WqmJIMM6tCbuFxIxrTnBIf5zWAG+oUP1E5jW6QXoW5P5vK
+         EbUj5JeWqrv2ztVH+Dg1srHjWVhmq2+gWLKeg+kv+KU3IINL3SsEdfE9QePmshjGmJfc
+         ZQTYuZZ1NSpOOru2OkaB0vFhHqErKOWfJ86mDlN0IFKaa2sM0mvcKIUeGDjh1oOaltZ5
+         r2HyjNicjDRuBlHym5nhn96rLnTik2qpo4+COLSdSvjQxM8XhAU6Boftb1A3NnaY9pYk
+         nxqF9dbjFDwyscm33MAVTb+8UeqP2sYO8Gs3z5z8yRgwtTbpxx/U7g3Woxpo+5dCHUtu
+         t3TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=UZ6SgvooPhg6IrmUdMN0TinE0/TKgh733maslr7lSes=;
-        b=zUdByY+dekawKToWRNrVwxsxhyX08egHW0GEYc1cn4GN7co/3GDXNByMvxrCXsxFgC
-         tzHFQr8CG2JBWnnqDpu7lopjO6MZ0nTjf/ZAFfIMI1LfjF2cryJ/rdzAxIQFNsoddpmX
-         +7uU6RrJEHr8/6xgGw04T9osEXXX2EQEqFSHdkxr+wUNLIsU8pgyfPWLisavkpHwER6l
-         blB7oTyBWri65DIuGZWWOvg+qAc002/VOzdU+vr2oy2Njey7CQkUJoyr1eHIg/KDLiy0
-         8hou7ZGKcHCgMKdZuhjQ5EPEHMq5qwWPTyQJcm5XFnE8/qihPHSbOZfWhnQ0a/PIJJn1
-         7Y4g==
+        bh=pOILJsL1tiJ3ipV5TOKSLFlsAqnNm+Syr/JxWxSUOD0=;
+        b=vmx6mHxHrfWDyMRX7iMrF0uW8NMp+pVooqH+2ujUeJJ1uF/9DNIacdbpUQ6pmTgpbt
+         uTQ5emJpJrYypYdAiMGm51kCADZ6A+VM44KT+TP3BmEkUlD/bnj62OFEYPUOiQHMO+dp
+         GqD36tdx3rz3TPRq75dAbDSrJA+6Wo9Qkvg6q822W3JwbSLCOODXGVZZhEABXAXw/fUv
+         4EbuVN0AgfRYiDpMuiSfjwz61U5mbLfkg6Fe+mY2mmYLGmcWssvMYsUHxRJu7qlmoVps
+         Cws2P6M04aguq08qgQJWpCvFdBzecJ8aCrEKrUp14J4EMH1AQcUMsyDJS5/7oVVEAaT1
+         531w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g4Ynq3QO;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TdhjSv9u;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com. [2607:f8b0:4864:20::e44])
-        by gmr-mx.google.com with ESMTPS id e6si156726pjp.2.2019.10.09.19.16.10
+Received: from mail-vs1-xe43.google.com (mail-vs1-xe43.google.com. [2607:f8b0:4864:20::e43])
+        by gmr-mx.google.com with ESMTPS id p140si449969ywg.4.2019.10.09.19.14.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Oct 2019 19:16:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) client-ip=2607:f8b0:4864:20::e44;
+        Wed, 09 Oct 2019 19:14:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) client-ip=2607:f8b0:4864:20::e43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g4Ynq3QO;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TdhjSv9u;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe44.google.com with SMTP id v10so2867211vsc.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 19:16:10 -0700 (PDT)
+Received: by mail-vs1-xe43.google.com with SMTP id v10so2865502vsc.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 09 Oct 2019 19:14:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mail-followup-to:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=UZ6SgvooPhg6IrmUdMN0TinE0/TKgh733maslr7lSes=;
-        b=g4Ynq3QO9jhgjYH8xpf8/wDK0mNbK6ZyYFNyU+GDwhgmjdp36CvQD0U8ZKCWnX1UOa
-         cmmXoAQLaNo66PVonJoVlThDOeW4pwo/NbGhADR2b+hbiWGzJOVJcMOeu1EuzbQUtgsZ
-         LhVwnCtvB2aVx5l1+Gc0ugoHOdkDn1JcMkPn8v/IKUQ7tMMHAp/sjAa21uT38eBJHQzp
-         QNQnWhqYR21NkkY5YVE/8wSquyPHSz7TlBjEcUpedY9fWnS2HoRypB+HxvhhH6qzdB6H
-         c4d30VuPeAhgkoP4eyssSWKNiiM78jO0yPvgwEUQH+avTSnl0nUtSgffPw0/YudHHwMX
-         3Nuw==
+        bh=pOILJsL1tiJ3ipV5TOKSLFlsAqnNm+Syr/JxWxSUOD0=;
+        b=TdhjSv9uIpmQYm/GpR+4XvKS0Z8/wJjArPcn0IM9tXwUHo0VgpKE7sUkOJ8+b9ftdH
+         b4n3AX6yWA5HugTyj+5r/+AhVXrRp3oZZ7HQI6uh7dj+KGwthaVIGapUpx5jFfBrxN1J
+         SaJ6FzjUfjucLI4PGi6tkxl0HcfaXjZf7HFHbWphxeUw45Snv5+2LcHUrop9xkObThYm
+         yJrg2cjXbv0WFvzWJ6va4bMLh8aCjqtamKlbM5MqKjo7zo2+T2JpUboym7Hq04b5H4mZ
+         1YSupvSjdBPkeWcTboWhwFo/w24iOCWTQD6cP+a6qajD+vvfRoIEbu0fULuOwDfGohHz
+         /XWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id
          :mail-followup-to:references:mime-version:content-disposition
          :in-reply-to:user-agent;
-        bh=UZ6SgvooPhg6IrmUdMN0TinE0/TKgh733maslr7lSes=;
-        b=rn466W67V2yvLwiyykQwlztp39/YI/OCjsAABUgjtmMqn8EZq8m4HEMhbjeBz4W6O2
-         jk7uXKlzIJr6M3Fne+w67vNp+4o9WmK/1DO9q6GPxraaq+ES9Wupby02Q3nUqIcGuj2w
-         gCtLZsVAoT+w0NBiIRxtSq21VizOTfveeF29fY+RtR2jNalwUoi1XPE/94yAR7za81NZ
-         zGJpz3rE/R0PrJ1WTo7iqzSuGjpI/tRrjfVYtNHWe7syIK4gXmvxXkjqS1JQ1fbJDpSO
-         GGTRHtgy7JsZwgBbtk1aDTc7xa0gYa8YhaIBG+Z2qvKZXRMR9nXbE7cRa5MrcdH4StCV
-         Bibg==
-X-Gm-Message-State: APjAAAVxS8ILWdmFahnnkieLrJKlSidahZHOeziivVP4gM2nloBnOSz3
-	B7YEzmFxtd/W8B5jDJY2I/00E7hKO2cIJA==
-X-Received: by 2002:a67:fac7:: with SMTP id g7mr3809868vsq.194.1570673769797;
-        Wed, 09 Oct 2019 19:16:09 -0700 (PDT)
+        bh=pOILJsL1tiJ3ipV5TOKSLFlsAqnNm+Syr/JxWxSUOD0=;
+        b=tMJNbYZFsxosFqxd4fVCrr0fVIEioI6sZaBMjebgdBDMl4KJWqdXLYpAWTIyRjIyXw
+         Sbu5K4MxY1PYPU+VWMNmSUei/oPoUfC3YgnoPqiRtXCTGkGSApYsteNiPjtHn6bZCB9j
+         xXQ8nPBOiLtM4GBkeQNWvIPcfm/rqZ65uCDlqMfhZqglOcTY3ySj8yKRXdPd2krnkiPV
+         hOKycdg2PdTQpiOp33Jj/RPTCquKxzftsvp+GsfLLR3Xph8AaBGD4elpCSeJqZF+FPS7
+         EvwF7qXyIu43Ygb4mp+rxb7aYzTpT93RBUBNbUdMLDrLzGwzGV2Lez4o1G4WWfFzbcWU
+         QgRA==
+X-Gm-Message-State: APjAAAXtuuUzoPyUdRvfbUG+upSe1xZE8dI5wM7HA64g5HYXFeig+YPb
+	nSK1C4IJ7umkLUmBNII3xo4=
+X-Received: by 2002:a05:6102:310b:: with SMTP id e11mr3769529vsh.79.1570673689888;
+        Wed, 09 Oct 2019 19:14:49 -0700 (PDT)
 Return-Path: <jarias.linux@gmail.com>
 Received: from gmail.com (dynamic-190-27-96-102.dynamic.etb.net.co. [190.27.96.102])
-        by smtp.gmail.com with ESMTPSA id f1sm1123075vsc.20.2019.10.09.19.16.09
+        by smtp.gmail.com with ESMTPSA id h62sm2232327vkd.50.2019.10.09.19.14.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2019 19:16:09 -0700 (PDT)
-Date: Wed, 9 Oct 2019 21:16:07 -0500
+        Wed, 09 Oct 2019 19:14:49 -0700 (PDT)
+Date: Wed, 9 Oct 2019 21:14:47 -0500
 From: "Javier F. Arias" <jarias.linux@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/4] staging: rtl8723bs: Remove duplicate blank lines
-Message-ID: <cdc1899acadc436c2f0247ded9ec2a8b3423350e.1570672544.git.jarias.linux@gmail.com>
+Subject: [PATCH 1/4] staging: rtl8723bs: Remove commented code
+Message-ID: <132126f0d04d5ca1129e9d682dfe9a535ec7bb39.1570672544.git.jarias.linux@gmail.com>
 Mail-Followup-To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 References: <cover.1570672544.git.jarias.linux@gmail.com>
@@ -89,129 +89,134 @@ Content-Disposition: inline
 In-Reply-To: <cover.1570672544.git.jarias.linux@gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Remove duplicate blank lines.
+Remove commented code for a cleaner file.
+Issue found by checkpatch.
 
 Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/sdio_ops.c | 14 --------------
- 1 file changed, 14 deletions(-)
+ drivers/staging/rtl8723bs/hal/sdio_ops.c | 33 ------------------------
+ 1 file changed, 33 deletions(-)
 
 diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index 1853f90511f6..dc62ac2c51ae 100644
+index 301d327d0624..1853f90511f6 100644
 --- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
 +++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -61,7 +61,6 @@ static u8 get_deviceid(u32 addr)
- 	u8 devide_id;
- 	u16 pseudo_id;
- 
--
- 	pseudo_id = (u16)(addr >> 16);
- 	switch (pseudo_id) {
- 	case 0x1025:
-@@ -72,7 +71,6 @@ static u8 get_deviceid(u32 addr)
+@@ -72,9 +72,6 @@ static u8 get_deviceid(u32 addr)
  		devide_id = WLAN_IOREG_DEVICE_ID;
  		break;
  
--
+-/* 		case 0x1027: */
+-/* 			devide_id = SDIO_FIRMWARE_FIFO; */
+-/* 			break; */
+ 
  	case 0x1031:
  		devide_id = WLAN_TX_HIQ_DEVICE_ID;
+@@ -93,7 +90,6 @@ static u8 get_deviceid(u32 addr)
  		break;
-@@ -107,7 +105,6 @@ static u32 _cvrt2ftaddr(const u32 addr, u8 *pdevice_id, u16 *poffset)
- 	u16 offset;
- 	u32 ftaddr;
  
--
- 	device_id = get_deviceid(addr);
- 	offset = 0;
+ 	default:
+-/* 			devide_id = (u8)((addr >> 13) & 0xF); */
+ 		devide_id = WLAN_IOREG_DEVICE_ID;
+ 		break;
+ 	}
+@@ -440,7 +436,6 @@ static u32 sdio_read_port(
+ 	oldcnt = cnt;
+ 	if (cnt > psdio->block_transfer_len)
+ 		cnt = _RND(cnt, psdio->block_transfer_len);
+-/* 	cnt = sdio_align_size(cnt); */
  
-@@ -426,7 +423,6 @@ static u32 sdio_read_port(
- 	u32 oldcnt;
- 	s32 err;
+ 	err = _sd_read(intfhdl, addr, cnt, mem);
  
--
- 	adapter = intfhdl->padapter;
- 	psdio = &adapter_to_dvobj(adapter)->intf_data;
- 	hal = GET_HAL_DATA(adapter);
-@@ -532,7 +528,6 @@ static s32 _sdio_local_read(
- 	u8 *tmpbuf;
- 	u32 n;
+@@ -490,7 +485,6 @@ static u32 sdio_write_port(
  
--
- 	intfhdl = &adapter->iopriv.intf;
+ 	if (cnt > psdio->block_transfer_len)
+ 		cnt = _RND(cnt, psdio->block_transfer_len);
+-/* 	cnt = sdio_align_size(cnt); */
  
- 	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-@@ -705,7 +700,6 @@ static s32 ReadInterrupt8723BSdio(struct adapter *adapter, u32 *phisr)
- 	u32 hisr, himr;
- 	u8 val8, hisr_len;
+ 	err = sd_write(intfhdl, addr, cnt, xmitbuf->pdata);
  
--
- 	if (!phisr)
- 		return false;
- 
-@@ -743,7 +737,6 @@ void InitInterrupt8723BSdio(struct adapter *adapter)
- {
- 	struct hal_com_data *haldata;
- 
--
- 	haldata = GET_HAL_DATA(adapter);
+@@ -754,22 +748,6 @@ void InitInterrupt8723BSdio(struct adapter *adapter)
  	haldata->sdio_himr = (u32)(		\
  								SDIO_HIMR_RX_REQUEST_MSK			|
-@@ -761,7 +754,6 @@ void InitSysInterrupt8723BSdio(struct adapter *adapter)
- {
- 	struct hal_com_data *haldata;
+ 								SDIO_HIMR_AVAL_MSK					|
+-/* 								SDIO_HIMR_TXERR_MSK				| */
+-/* 								SDIO_HIMR_RXERR_MSK				| */
+-/* 								SDIO_HIMR_TXFOVW_MSK				| */
+-/* 								SDIO_HIMR_RXFOVW_MSK				| */
+-/* 								SDIO_HIMR_TXBCNOK_MSK				| */
+-/* 								SDIO_HIMR_TXBCNERR_MSK			| */
+-/* 								SDIO_HIMR_BCNERLY_INT_MSK			| */
+-/* 								SDIO_HIMR_C2HCMD_MSK				| */
+-/* 								SDIO_HIMR_HSISR_IND_MSK			| */
+-/* 								SDIO_HIMR_GTINT3_IND_MSK			| */
+-/* 								SDIO_HIMR_GTINT4_IND_MSK			| */
+-/* 								SDIO_HIMR_PSTIMEOUT_MSK			| */
+-/* 								SDIO_HIMR_OCPINT_MSK				| */
+-/* 								SDIO_HIMR_ATIMEND_MSK				| */
+-/* 								SDIO_HIMR_ATIMEND_E_MSK			| */
+-/* 								SDIO_HIMR_CTWEND_MSK				| */
+ 								0);
+ }
  
--
+@@ -787,11 +765,6 @@ void InitSysInterrupt8723BSdio(struct adapter *adapter)
  	haldata = GET_HAL_DATA(adapter);
  
  	haldata->SysIntrMask = (		\
-@@ -869,7 +861,6 @@ static struct recv_buf *sd_recv_rxfifo(struct adapter *adapter, u32 size)
- 	struct recv_priv *recv_priv;
- 	struct recv_buf	*recvbuf;
+-/* 							HSIMR_GPIO12_0_INT_EN			| */
+-/* 							HSIMR_SPS_OCP_INT_EN			| */
+-/* 							HSIMR_RON_INT_EN				| */
+-/* 							HSIMR_PDNINT_EN				| */
+-/* 							HSIMR_GPIO9_INT_EN				| */
+ 							0);
+ }
  
--
- 	/*  Patch for some SDIO Host 4 bytes issue */
- 	/*  ex. RK3188 */
- 	readsize = RND4(size);
-@@ -911,7 +902,6 @@ static struct recv_buf *sd_recv_rxfifo(struct adapter *adapter, u32 size)
- 		return NULL;
+@@ -992,7 +965,6 @@ void sd_int_dpc(struct adapter *adapter)
+ 
+ 		report.state = SdioLocalCmd52Read1Byte(adapter, SDIO_REG_HCPWM1_8723B);
+ 
+-		/* cpwm_int_hdl(adapter, &report); */
+ 		_set_workitem(&(pwrctl->cpwm_event));
  	}
  
--
- 	/* 3 4. init recvbuf */
- 	recvbuf->len = size;
- 	recvbuf->phead = recvbuf->pskb->head;
-@@ -945,7 +935,6 @@ void sd_int_dpc(struct adapter *adapter)
- 	struct intf_hdl *intfhdl = &adapter->iopriv.intf;
- 	struct pwrctrl_priv *pwrctl;
- 
--
- 	hal = GET_HAL_DATA(adapter);
- 	dvobj = adapter_to_dvobj(adapter);
- 	pwrctl = dvobj_to_pwrctl(dvobj);
-@@ -1021,7 +1010,6 @@ void sd_int_dpc(struct adapter *adapter)
- 	if (hal->sdio_hisr & SDIO_HISR_RXERR)
- 		DBG_8192C("%s: Rx Error\n", __func__);
- 
--
- 	if (hal->sdio_hisr & SDIO_HISR_RX_REQUEST) {
- 		struct recv_buf *recvbuf;
+@@ -1055,7 +1027,6 @@ void sd_int_dpc(struct adapter *adapter)
  		int alloc_fail_time = 0;
-@@ -1061,7 +1049,6 @@ void sd_int_hdl(struct adapter *adapter)
+ 		u32 hisr;
+ 
+-/* 		DBG_8192C("%s: RX Request, size =%d\n", __func__, hal->SdioRxFIFOSize); */
+ 		hal->sdio_hisr ^= SDIO_HISR_RX_REQUEST;
+ 		do {
+ 			hal->SdioRxFIFOSize = SdioLocalCmd52Read2Byte(adapter, SDIO_REG_RX0_REQ_LEN);
+@@ -1133,14 +1104,12 @@ u8 HalQueryTxBufferStatus8723BSdio(struct adapter *adapter)
  {
  	struct hal_com_data *hal;
- 
--
- 	if (
- 		(adapter->bDriverStopped) || (adapter->bSurpriseRemoved)
- 	)
-@@ -1105,7 +1092,6 @@ u8 HalQueryTxBufferStatus8723BSdio(struct adapter *adapter)
- 	struct hal_com_data *hal;
  	u32 numof_free_page;
+-	/* _irql irql; */
  
--
+ 
  	hal = GET_HAL_DATA(adapter);
  
  	numof_free_page = SdioLocalCmd53Read4Byte(adapter, SDIO_REG_FREE_TXPG);
+ 
+-	/* spin_lock_bh(&phal->SdioTxFIFOFreePageLock); */
+ 	memcpy(hal->SdioTxFIFOFreePage, &numof_free_page, 4);
+ 	RT_TRACE(_module_hci_ops_c_, _drv_notice_,
+ 			("%s: Free page for HIQ(%#x), MIDQ(%#x), LOWQ(%#x), PUBQ(%#x)\n",
+@@ -1149,7 +1118,6 @@ u8 HalQueryTxBufferStatus8723BSdio(struct adapter *adapter)
+ 			hal->SdioTxFIFOFreePage[MID_QUEUE_IDX],
+ 			hal->SdioTxFIFOFreePage[LOW_QUEUE_IDX],
+ 			hal->SdioTxFIFOFreePage[PUBLIC_QUEUE_IDX]));
+-	/* spin_unlock_bh(&hal->SdioTxFIFOFreePageLock); */
+ 
+ 	return true;
+ }
+@@ -1190,7 +1158,6 @@ u8 RecvOnePkt(struct adapter *adapter, u32 size)
+ 		recvbuf = sd_recv_rxfifo(adapter, size);
+ 
+ 		if (recvbuf) {
+-			/* printk("Completed Recv One Pkt.\n"); */
+ 			sd_rxhandler(adapter, recvbuf);
+ 			res = true;
+ 		} else {
 -- 
 2.20.1
 
