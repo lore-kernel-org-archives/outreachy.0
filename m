@@ -1,90 +1,105 @@
-X-GM-THRID: 6262299386982694912
-X-Received: by 10.182.168.17 with SMTP id zs17mr8667725obb.17.1458055197581;
-        Tue, 15 Mar 2016 08:19:57 -0700 (PDT)
+X-GM-THRID: 6746657594163593216
+X-Received: by 2002:aca:abc4:: with SMTP id u187mr13925843oie.178.1570833147650;
+        Fri, 11 Oct 2019 15:32:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.42.182 with SMTP id c51ls332244qga.60.gmail; Tue, 15 Mar
- 2016 08:19:56 -0700 (PDT)
-X-Received: by 10.129.112.202 with SMTP id l193mr21840427ywc.6.1458055196892;
-        Tue, 15 Mar 2016 08:19:56 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x22b.google.com (mail-pf0-x22b.google.com. [2607:f8b0:400e:c00::22b])
-        by gmr-mx.google.com with ESMTPS id sf5si4268372pac.1.2016.03.15.08.19.56
+Received: by 2002:aca:c743:: with SMTP id x64ls1730182oif.10.gmail; Fri, 11
+ Oct 2019 15:32:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxvbRVKGIRXYfMpaNEnQf0KhwYAp/0K8SPYy0nkv4yUanVufbaQG2rGQGpTCToiZciVtfR4
+X-Received: by 2002:aca:5c06:: with SMTP id q6mr14618896oib.175.1570833146779;
+        Fri, 11 Oct 2019 15:32:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570833146; cv=none;
+        d=google.com; s=arc-20160816;
+        b=JvkXZ9JwbXILpBCE8jot8AgyF86ZKNxpCVDiUUDzMJRvoeWvetkiBAMTFTfrT6zhP+
+         XF1ANoFE4sSVR5FsgKF8OPfwfIJjOUajp5aH3qmzpr30f0oXZi6yGubYLuxTASGHdDTJ
+         ysqe1d/xDwuvzvS+qFl1Z4Lv9eB08PY8vVa02rt0CJLvH5hQhLEfdd8uO2W0YOGTdSL9
+         ikLbJl67XtFfVZMYNYzPIXDYmd6J0PPlgxC4MNIQYLIVTZwFBanrH04OYVndGPXKiGjq
+         SRC47hDq9Ynp7pgeIqu7/OSwmE1WSlbKZ/yswg44qBuyHz3Od8zz33m6JSsVrXLVaB25
+         Xrbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=7gGNAsJ1Q++hKlWb2r1TUd24UqQBL+bFHb55lLqXP0s=;
+        b=Cusbz20KlIz/VaWqQ8LFVElUackbERjCXl+6eQ1Vc+HgFd6RyD7unxeu2pFtBXfTAl
+         cXc8x6denXCvjgW5TUHU4BD9q/mrxKequ4phELSXDxrdQUJacWvSovCbD7mU5VmwV0SP
+         c0kq4SZv67QgmYLlSD4MyW8n87Kr3fqnRiPUnAe5kyq17VxRuSAsu+dGbYwH/j34uYZ9
+         yL+7iA4SnZBTiI2UGt5fbUKIIP5dfifIyd57VFcHFJM5ZPMdhHVP2sUDrVvWNulmGbFm
+         EegfbUfkdTmsVqgJD0jTczzomiMpPoHbhRx303VenvXqA9ERFmGLwIu/L9cRt1NbQkAk
+         nHiQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 216.40.44.236 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0236.hostedemail.com. [216.40.44.236])
+        by gmr-mx.google.com with ESMTPS id c67si116990oig.1.2019.10.11.15.32.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Mar 2016 08:19:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) client-ip=2607:f8b0:400e:c00::22b;
+        Fri, 11 Oct 2019 15:32:26 -0700 (PDT)
+Received-SPF: neutral (google.com: 216.40.44.236 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.236;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22b as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22b.google.com with SMTP id u190so32646560pfb.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 15 Mar 2016 08:19:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=R6j3ZycPi99DhcRXaNJ9t7+XoE0OnFULN1BIJ4R3BZI=;
-        b=Z7Ou7/dEItKKQqEAsQhO6JN63fnA/3KgiiQr0hRmWUuPoLt+c34lIZ1M9hgeGUFeO1
-         BlieFg1QsZRBds90X7+JOv0XSqpKI+xJ6IVXk2th3QBLbHQ3rPYzPKya0SXbpsF8jHv/
-         059IzQkOs3UzCsTFMQDLLzGRwX7XGvbo5hRiJcbckAkHbsLpzxb/qj11asbEd/NaR4s+
-         yij41bSAJyKEl+CZfSK8+TVSLmhaOnyu7k2icwWJVN32r36I2sy1vwU37e8httF0Jpoy
-         Q9EN6Y5Gev8XDe4EoJjtY8DbdZ+xxApCoSY2FOiA7Co+zixTZs6Vb1r3meN8Ia+XX5WJ
-         fmxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=R6j3ZycPi99DhcRXaNJ9t7+XoE0OnFULN1BIJ4R3BZI=;
-        b=m9RO9rIewVtyGyRbPxnqrnYC/MSlyMSjArEuI6pqpCTtVHLwGVt8sGsw4P8Yrizpt0
-         8CYKvwUwipIRD6yN/CRBqZctRwHvhU6xSNYn+R/J1Fsl4ITuVkW2EJK5/bCi9tKsNG8/
-         8QURkJgiQPaewIKQnIAN7t+8CbtZCcicN45uPFmA1IZTPxm4nSUwlBxwPS6MpJHDQ1x4
-         oir/b4z0Bs2ClVJiOVp3YSmLiH5LbbBYKAOWAM+JnheUsMoHgSucnTImAv92A4M0YiaU
-         JGutdvHiXNh3Squx6iBu4YmUMHYfySJA1Y6SJk5mCqUzRENj+sm48qDCxbBh/IV69JRF
-         w2Iw==
-X-Gm-Message-State: AD7BkJKfW0efQe5YR1skOyI7u2pDQKqoEqiX0z91Y+Qio09CRM6sFonV3TeB7IAU5HiyVA==
-X-Received: by 10.98.14.207 with SMTP id 76mr39448479pfo.1.1458055196644;
-        Tue, 15 Mar 2016 08:19:56 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.9.248])
-        by smtp.gmail.com with ESMTPSA id k88sm39351345pfj.0.2016.03.15.08.19.55
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Mar 2016 08:19:55 -0700 (PDT)
-Date: Tue, 15 Mar 2016 20:49:51 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: tj@kernel.org
-Subject: [PATCH] iio: light: tsl2563: Remove flush_scheduled_work
-Message-ID: <20160315151951.GA5890@amitoj-Inspiron-3542>
+       spf=neutral (google.com: 216.40.44.236 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay05.hostedemail.com (Postfix) with ESMTP id E131418016C6C;
+	Fri, 11 Oct 2019 22:32:25 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::::::::::::::::::,RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3873:4321:4605:5007:6742:7903:8660:10004:10400:10471:11026:11232:11473:11657:11658:11914:12043:12295:12297:12438:12740:12760:12895:13069:13148:13160:13229:13230:13255:13311:13357:13439:14096:14097:14659:14721:21080:21627:21774:21796:21939:30012:30029:30036:30054:30090:30091,0,RBL:47.151.152.152:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:neutral,Custom_rules:0:0:0,LFtime:26,LUA_SUMMARY:none
+X-HE-Tag: owl40_14d93818d4721
+X-Filterd-Recvd-Size: 2752
+Received: from XPS-9350.home (unknown [47.151.152.152])
+	(Authenticated sender: joe@perches.com)
+	by omf06.hostedemail.com (Postfix) with ESMTPA;
+	Fri, 11 Oct 2019 22:32:23 +0000 (UTC)
+Message-ID: <28ed468bc58c0d0e92f459b45d8e43cd3d1458b2.camel@perches.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: fix warnings
+ of lines should not end with open parenthesis
+From: Joe Perches <joe@perches.com>
+To: Julia Lawall <julia.lawall@lip6.fr>, Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+	eric@anholt.net, wahrenst@gmx.net, linux-kernel@vger.kernel.org, 
+	devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, daniela.mormocea@gmail.com, 
+	dave.stevenson@raspberrypi.org, hverkuil-cisco@xs4all.nl, 
+	mchehab+samsung@kernel.org, bcm-kernel-feedback-list@broadcom.com, 
+	sbranden@broadcom.com, rjui@broadcom.com, f.fainelli@gmail.com
+Date: Fri, 11 Oct 2019 15:32:22 -0700
+In-Reply-To: <alpine.DEB.2.21.1910112320550.3284@hadrien>
+References: <20191011211637.19311-1-jbi.octave@gmail.com>
+	 <alpine.DEB.2.21.1910112320550.3284@hadrien>
+Content-Type: text/plain; charset="ISO-8859-1"
+User-Agent: Evolution 3.32.1-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7bit
 
-flush_scheduled_work is scheduled for deprecation. 
-Replace cancel_delayed_work and flush_scheduled_work with
-cancel_delayed_work_sync instead to ensure there is no pending or
-running work item.
+On Fri, 2019-10-11 at 23:23 +0200, Julia Lawall wrote:
+> On Fri, 11 Oct 2019, Jules Irenge wrote:
+> > Fix warning of lines should not end with open parenthesis.
+> > Issue detected by checkpatch tool.
+[]
+> > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+[]
+> > @@ -337,9 +337,8 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+> >  			if (is_capturing(dev)) {
+> >  				v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+> >  					 "Grab another frame");
+> > -				vchiq_mmal_port_parameter_set(
+> > -					instance,
+> > -					dev->capture.camera_port,
+> > +			vchiq_mmal_port_parameter_set(instance,
+> > +						      dev->capture.camera_port,
+> >  					MMAL_PARAMETER_CAPTURE,
+> >  					&dev->capture.frame_count,
+> >  					sizeof(dev->capture.frame_count));
+> 
+> You can't reduce the indentation on the function call.  It has to stay
+> clearly in the if branch.
+> 
+> If you adjust the indentation of some of the arguments, you have to do so
+> to all of the arguments.
+> 
+> Similar issues arise below.  There may be no way to make some of the calls
+> look nice without a more severe reorganization of the code.
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/iio/light/tsl2563.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+My suggestion would be to shorten the vchiq_mmal_port_parameter_set
+function name (29 chars is just too long) and pass dev instead of
+dev->instance as the first argument to this function.
 
-diff --git a/drivers/iio/light/tsl2563.c b/drivers/iio/light/tsl2563.c
-index 12731d6..57b108c 100644
---- a/drivers/iio/light/tsl2563.c
-+++ b/drivers/iio/light/tsl2563.c
-@@ -806,8 +806,7 @@ static int tsl2563_probe(struct i2c_client *client,
- 	return 0;
- 
- fail:
--	cancel_delayed_work(&chip->poweroff_work);
--	flush_scheduled_work();
-+	cancel_delayed_work_sync(&chip->poweroff_work);
- 	return err;
- }
- 
--- 
-1.9.1
 
 
