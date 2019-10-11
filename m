@@ -1,118 +1,118 @@
-X-GM-THRID: 6948753197090471936
-X-Received: by 2002:ae9:f706:: with SMTP id s6mr8142736qkg.163.1617882679641;
-        Thu, 08 Apr 2021 04:51:19 -0700 (PDT)
+X-GM-THRID: 6746422022313607168
+X-Received: by 2002:a81:d501:: with SMTP id i1mr1752979ywj.108.1570791536141;
+        Fri, 11 Oct 2019 03:58:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ad4:5189:: with SMTP id b9ls1538319qvp.7.gmail; Thu, 08 Apr
- 2021 04:51:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRPhTD6FuUeBNeienyqRiHi+o97EaWN+bHYzYeEU2HviCZyDXBLzKoE0/JjVHSujAfWJJr
-X-Received: by 2002:a05:6214:370:: with SMTP id t16mr8115033qvu.16.1617882678836;
-        Thu, 08 Apr 2021 04:51:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617882678; cv=none;
+Received: by 2002:a81:48ca:: with SMTP id v193ls725244ywa.12.gmail; Fri, 11
+ Oct 2019 03:58:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw82MPN4kzk20NfZaLhG2bAD8tNQm6o2j/BMJujAf7bFpfh7gPP7K5RIUQ0rllvzkKCDURT
+X-Received: by 2002:a81:8683:: with SMTP id w125mr1950870ywf.236.1570791534926;
+        Fri, 11 Oct 2019 03:58:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570791534; cv=none;
         d=google.com; s=arc-20160816;
-        b=wZ5mmU1KCu2HiWi/7w8Ek5B6pZ0j41Qg5M5XpweRD8qztppMVddXePsNV/T87hKlKh
-         s62/8WSfJr2sGRVoAnJ8WtunRIr1hFx02ycsqhPEh8LwZYGdHvHfcGo8X1AaSnGV1uTj
-         XdBN1iqRoFrNgWEZqJpDVisQfpvheYtF5NVAy3F7JWuyJr0HXd13jD6I2rNx8pXh8PrT
-         tfvxsisD3nspPfHevON/G4oeM2PHLHW2pijrjTeyGa/rqohxy3cHGVPJ2etawPivC5ow
-         bAiVxCykvp3JrbuudcxIT7eMgAzFsQNRm3kAvfHFSGUACYfrVo/8ORuGftMGELUtZAAC
-         w1gg==
+        b=lv3ZHNRWmrVJNOoYMipsST82aCLCJA0zV64tGpcSP3PCiPpdtruYkWAQ0oHqN9hQsI
+         hdUHlVEgekpAegFS+og1yZQJm89L7jw97CehznPqLwmKBR0fW6wbj4lUGr67lHNE4nF6
+         oe9R1Fv4vSIvMynZhOVE+pe1lcC/y8EI4rdYI6ZDXkp/QblD4fNdWQTNEUDtht32ivNU
+         wmkRLvxLm982qLM8CYDwlFc8eOUYxPl8wJm79ABt/XQkqSYh7zAdN/MnpvkQsLjVpKkh
+         ErKYvBmjZTle1b38/RZ0J9VnDoRuzDdey6ZKSnGkEL01ke7uP9lckG6m+gfPLOKxso0j
+         H+SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=i9s9BkLvRdlumIZwdRHabgMYGpHTAnHPSYT3zj0wSJ4=;
-        b=URVpnXCO0PK1x0XpQR1hMQBfmc/nBrSJL+AEpottYPMLnEN40MhbQ7JT3F4LrLL4ng
-         28P137aLmP89G3EYucA1qSvDey81R+lzJA4JsCqS7dQCkbZOD+3DVN657rgqX2RRr56L
-         TrKC5Gqr9/Zh/qGhV9MEKlPYKjwnNj1fASp6PXnNKHsibJCL033kjNcmUpeTeuLc28dO
-         cC3n7yerH3/0O2I590p2bOjadVflj78TmxtKk4QJ8mxM+FPjhoGu6Z6hTvLYgVEM3e0r
-         F+Z37LDkkcmXlFkuyYAku6o6lC7n0cunLnyArJRy6fVT3ZKfkZO1BO2rbQUeJ83Rzb0i
-         M/8w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=2+Wa7wS3oWd2Zr0vdoPEF6aAnQQ9hFaPuFRwZk86Ews=;
+        b=fnPNEpj8wdTZ1wG4CNSIdWYW/xZIfsp88ZHXkS7ujektN+26VKDQnatK660RTSfWBF
+         TyK/9fFzJNHqNH7fu4bXAfAlyGp70wzfUrWDZcSANq681JBfb0FV3HY9n4ddRWwQyNNa
+         Y5/t7DAI3LjyulhVm0gAE2lrzWmXYcRV9wWOS/p3UPQMoPJccNo0Hw2EFehj4D7g2EbV
+         CAwzTovm1Xxa/H3+EuuhbXFH5Z26SYTKKoU8fIPZnC6QCkX8pt9vITrXd9Vv4Ty7BQIS
+         JWMXOYA55TJii0U5DjYiDDGsUBucFmtHXsAh8W594Itymn+kenpBZK39251ApmeoZPUm
+         hYaA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Rz7Wb35M;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com. [2607:f8b0:4864:20::42a])
-        by gmr-mx.google.com with ESMTPS id h28si1723294qkl.1.2021.04.08.04.51.18
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=UFFCIe76;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id a1si610593ywh.3.2019.10.11.03.58.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Apr 2021 04:51:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) client-ip=2607:f8b0:4864:20::42a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 Oct 2019 03:58:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Rz7Wb35M;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42a as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42a.google.com with SMTP id a12so1618541pfc.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Apr 2021 04:51:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=i9s9BkLvRdlumIZwdRHabgMYGpHTAnHPSYT3zj0wSJ4=;
-        b=Rz7Wb35MSnfgOdBmx+0oOrmFk7TaMhak5y/1PKg7A63DQqMc7bao3B4L//s4n8ViUB
-         My65OmynzFNM0EP1ctF+nOY97dx7RnG0yWcpVP2/PnP+qSVHsRW2PTCt+JpM50qjW96F
-         e7X0Km1r3NN7MRrafpZ3sAFD0LNoyzhiagsdpP5ZSk5GYqczy8F1cCVHPDk3PCL/co7U
-         YNXHyLekJyiH/HKKbxNpVdAzgUTzJ4cue9/jfofhYGit2btwMVKhIePRBe1x/DjGX6Ca
-         rqAR/1lVp05cyQrOPRTHLmY4dgXxAmF/y7synx2PzBxX32pd3ebaQ/wf9q9ne0uHCowO
-         Zxzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=i9s9BkLvRdlumIZwdRHabgMYGpHTAnHPSYT3zj0wSJ4=;
-        b=MyE+/5FmDp1Tze1vh8D2SGv9WsQY0Z3e9YmpuCj3Ws3sknQ7u5UB6DT7RgxMvcf2H5
-         92anHuS1plmsyVml7wqPTJsIoPzdsudcKl5ogK4cti8ABvIWFzmpkpunz2xcJaWA7tBs
-         sw1mIEU9lz0nqCNx2f3rU82Q8DkdydZzrfQb64Ca3hRHIKsfR98Kg9G7+OmbC+ptkHBR
-         J0OeQEmvRJrvKj0jUJ2rHpp8rHNGEgonu0PGeZhhogVjwXKX7Ins1bjdP0u1/rS1eu4A
-         dMPLt1P+j31rWf9MyJvJp2RZqfYL4BbjdaKDWA4y/xq+CsPhjNIIkFglITqpkKGXCz7Z
-         WN0Q==
-X-Gm-Message-State: AOAM530AqdAQDW2mN8PPwQaNZRHRTIQpt2NcPkx2QSbJ2AdNPC21CMzi
-	0jmDpdQMhTq35urWAiuMvez8KM8qoG7vZpiJ
-X-Received: by 2002:a63:d153:: with SMTP id c19mr7601140pgj.311.1617882678294;
-        Thu, 08 Apr 2021 04:51:18 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([152.57.11.236])
-        by smtp.gmail.com with ESMTPSA id c9sm22688550pfl.169.2021.04.08.04.51.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Apr 2021 04:51:17 -0700 (PDT)
-Date: Thu, 8 Apr 2021 17:21:09 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH v2] staging: rtl8712: add spaces around '+'
-Message-ID: <YG7uLQLGmAh97xB1@kali>
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=UFFCIe76;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9BAwgEI021085;
+	Fri, 11 Oct 2019 10:58:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=2+Wa7wS3oWd2Zr0vdoPEF6aAnQQ9hFaPuFRwZk86Ews=;
+ b=UFFCIe76+UOJRY1dNMZ3/CmqTTe2zkODOKNfGsAD7Hpu/Uieujl/YtNlKrdTtSc0g9UY
+ NMeNfT+gETYtv1xyDdP+JuioI6HJOFpqVL6WfUu0Br7AjeHb5/5ZHoqSJqk+Zb7K0Luo
+ Rx74KWa1PaB2ZlFnp0LwoX7vl7TXU/7TJPMhW0xMgF7KnAACY44+5gnokg1ZVDPWsAUA
+ KuNBx1Sw5CYclIEmexZpxsAKY09cDcPCa6AXc5he//Zw0yE5BNBSOkOm5N+uGyhcmyOm
+ 9MK0lbIY0mQUwvHx7Cza8vBTxXYA6BVAUbdiyFovavL0ZcErB4SLuWOsKHIsInGKGeb6 XA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+	by aserp2120.oracle.com with ESMTP id 2vek4r0tvy-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 11 Oct 2019 10:58:52 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+	by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9BAwpmJ012004;
+	Fri, 11 Oct 2019 10:58:51 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userp3020.oracle.com with ESMTP id 2vj9quk4jf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 11 Oct 2019 10:58:51 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9BAwBaL032347;
+	Fri, 11 Oct 2019 10:58:11 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Fri, 11 Oct 2019 10:58:11 +0000
+Date: Fri, 11 Oct 2019 13:58:04 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Wambui Karuga <wambui.karugax@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, devel@driverdev.osuosl.org,
+        outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org,
+        gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 1/5] staging: octeon: remove typedef
+ declaration for cvmx_wqe_t
+Message-ID: <20191011105804.GB4774@kadam>
+References: <cover.1570773209.git.wambui.karugax@gmail.com>
+ <1b16bc880fee5711f96ed82741f8268e4dac1ae6.1570773209.git.wambui.karugax@gmail.com>
+ <alpine.DEB.2.21.1910110817340.2662@hadrien>
+ <20191011085952.GA9748@wambui>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20191011085952.GA9748@wambui>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9406 signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910110105
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9406 signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1031
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910110105
 
-Added spaces around '+' to improve readability and adhere to linux
-kernel coding style.
-Reported by checkpatch
+On Fri, Oct 11, 2019 at 11:59:52AM +0300, Wambui Karuga wrote:
+> On Fri, Oct 11, 2019 at 08:18:25AM +0200, Julia Lawall wrote:
+> > 
+> > 
+> > On Fri, 11 Oct 2019, Wambui Karuga wrote:
+> > 
+> > > Remove typedef declaration from struct cvmx_wqe_t in
+> > 
+> > You can remove the _t from the name as well.
+> Should I remove the _t from all the enums/structs?
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
+The _t means typedef (sort of, generally).
 
-Changes from v1: No changes in the code, but only to subject description
-and patch body. 
-Changed the subject decription according to PatchPhilosophy and made
-patch body more clearer.
-
-drivers/staging/rtl8712/wlan_bssdef.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/rtl8712/wlan_bssdef.h b/drivers/staging/rtl8712/wlan_bssdef.h
-index b54ccaacc527..ec3749813728 100644
---- a/drivers/staging/rtl8712/wlan_bssdef.h
-+++ b/drivers/staging/rtl8712/wlan_bssdef.h
-@@ -176,7 +176,7 @@ struct NDIS_802_11_WEP {
- #define MIC_CHECK_TIME	60000000
- 
- #ifndef Ndis802_11APMode
--#define Ndis802_11APMode (Ndis802_11InfrastructureMax+1)
-+#define Ndis802_11APMode (Ndis802_11InfrastructureMax + 1)
- #endif
- 
- struct	wlan_network {
--- 
-2.30.2
+regards,
+dan carpenter
 
 
