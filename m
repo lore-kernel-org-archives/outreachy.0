@@ -1,103 +1,126 @@
-X-GM-THRID: 6532038435056648192
-X-Received: by 10.202.62.135 with SMTP id l129mr4008658oia.28.1520858713898;
-        Mon, 12 Mar 2018 05:45:13 -0700 (PDT)
+X-GM-THRID: 6746031998697996288
+X-Received: by 2002:a2e:9848:: with SMTP id e8mr10267744ljj.128.1570815166347;
+        Fri, 11 Oct 2019 10:32:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.14.114 with SMTP id n47ls7656871otd.1.gmail; Mon, 12 Mar
- 2018 05:45:12 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELt21ncrhDQMrHfBODBXALULubHIxDvbSRdc04rF3/lUs8PZjGbzzcImAgm4mLWGgO8cYK8c
-X-Received: by 10.157.53.1 with SMTP id o1mr4210683otc.6.1520858712908;
-        Mon, 12 Mar 2018 05:45:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520858712; cv=none;
+Received: by 2002:a2e:651a:: with SMTP id z26ls1080773ljb.2.gmail; Fri, 11 Oct
+ 2019 10:32:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxrCgaSx5UmlAitrAu8a9MVeGMbkdZySCuEHNeEOAV81pkS2GUrLbq7xtLdVByAxU5RD2v+
+X-Received: by 2002:a2e:b4d5:: with SMTP id r21mr9767165ljm.149.1570815165374;
+        Fri, 11 Oct 2019 10:32:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570815165; cv=none;
         d=google.com; s=arc-20160816;
-        b=lZXWfCmAebfIhC+GyaEJoTSWNsFg8If9/1snVDqk6yR+e4Qvu4rm4y10iWq6C2eiW/
-         XxswZ8tjI66K9R12dswvG8Qsk5LCk05yMYSvMRzPsemqQuhtgHCkCPHpS+bxqJNdtveQ
-         Ev82DLKzU3fvEMII7n1I7e2es8PD6n3T5rdAVEAiyQggIlE+Am3ODd2Un81N4crSURwq
-         ORUnOw0Lr0r2RIy7NuyAr4K6slDqjZj37XgFEm6zArqRBRlxqnQ+qdsho4FRrbUHntED
-         ZByKBJBD1gjq3DP89t00NObsLNJsBHp1DHcD7GQ9PhSBIiIYU8qWEvwxvEnaDb7Lr6cO
-         6MhA==
+        b=vPtjzEIbPxTmmfZbuNupfTNwpD9IpIAJoXdlOd9O/LvEanzmUpg6uR7/IIscapnpIu
+         9raaKFoNdtXeb3hcNwMVe+0RMzF1BZvDeqMzz3egnPhT1V89ZLKBSwnWceZv5olmoUOL
+         jRxiBDXRfBGiHtpgETvKsylGd9Zq3XD4MrXB/fitXr8wnmJpz2NE6h6iwPSICwchnCv6
+         34YNCKTiPf47vjhjxFjDW6S1ZZDWaKwimib9EKLOhUtAOHvXm2ccCB7P2UjodNWlDoN0
+         myk4F550XRmeRZ760WY7wJYwManuzAgR2twDjkUQ6lQRZMEDs0vyYqpUuM1wmTuuiYfQ
+         xIGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=q7SDmpxBufAxps+kojpK+mqpOMSx+0fK0si/0/YyRxY=;
-        b=M3rSX/DFmVl2x28060prAw+Q34WxCRwZMEdjV0apkrDxVqvI5V79Ag6Tphilyqi+Ea
-         hWFNW5VHnRKLwO6H77Pl7N6aoRz4y3ANZ4qn6DrTAgZF/F4mxt9Bf05YbLtQomRaI9od
-         xUTDucGKdPGqYK6XemzCsJGo4dKsG7GaHZ1BF4t4qOqKw9P0YHmzsbt54OAg7j6MwUCG
-         a2SFQSP5EVabvXJw6dM/F1MJxyzW9QILgYe+6JTC93xWn7/Gtv+wncsD1H5Sp5jzApdp
-         aRpxmwQHkP1HTJ+iVYclZwvQVcZxjEb7Qam36SwspPInP4ixvGZQ327ligTDQ0HLz9vq
-         vZLA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=0/9IsMNxXFpzgpaplMTTJNjUfGAJXf9fbcKoKx8v53Q=;
+        b=q88Z8NRgwhfa1rN+i2+RI5eb49Dm3UpUFwv+y7Xp1tNrIozSI9+nmz5jkbeIMwM7Q+
+         oEMrd7bRnXG8G+xRzGOFGSfDzvcuyY2sua07dr8c2WMrSQlQHe9qWRQt2Ib94+rYeLSM
+         JIbNKhkV1Io6ABordjAXjOwzAeLmH3WBVI2sd9gU9cZjnaEF8HxnqDQkZd6LnpXOxLkI
+         irCSywY6fkOUoK7psIYJxo8j5NlYGeB+260FCuMGzVc0dW9i7iXGKD9ZBAaP225VWIec
+         uZnqMwkbEdo09WuAfDrYQvplXoOWbZm3jLufgEzPMdDsQA8/jeazlmIfNlKTSXCQnUEf
+         ZGkQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=FcISZfc/;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y81si519761oia.4.2018.03.12.05.45.12
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WL7s+/2G";
+       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <wambui.karugax@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id z4si342896lfe.4.2019.10.11.10.32.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Mar 2018 05:45:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Oct 2019 10:32:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=FcISZfc/;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pg0-x243.google.com with SMTP id e3so6429696pga.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Mar 2018 05:45:12 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WL7s+/2G";
+       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x442.google.com with SMTP id v8so12821105wrt.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 11 Oct 2019 10:32:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=q7SDmpxBufAxps+kojpK+mqpOMSx+0fK0si/0/YyRxY=;
-        b=FcISZfc/QoWNaRg5lT7Q/G4KX0Bbb0JGOjOMoEZQOEaAJH1LAEzGr5HLebPdPBfXhL
-         8P3IlGwjhOzoWSXqb26fHOxYs1SoxFmB4IJvvm4gWsxxTqIPJK/wh+WDw9qHDLCVRhhM
-         QiQ2yy1GtUztst+rscDtTGsZGkcwqIHEdZCno=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=0/9IsMNxXFpzgpaplMTTJNjUfGAJXf9fbcKoKx8v53Q=;
+        b=WL7s+/2G59mCB7nzctnOqljGY5l3+vfIxsjDB1xjUGn9W7OrilZecpTx+TJoktRsJd
+         f7JyMOJFERcwQZsHG/a5dVTUde/b0hszrKiiZZ8GKnRqPXCEoJb/KNUo14/cWQ/BdLm1
+         jdaTdwmL0ywJKU4uWiovnSf4uQfvJu29PyH7yg1oKVjL8Z3arn3tOYdDonL/nBI2bRJl
+         NoHsvddfeptwaTpVENqHKY+V+ZxhIgTrzdchtMart28BJJ3+7x1tu8Ty8Mithkz41iFJ
+         4jOhLw2A5+zjTcS/ltGBgaJViHohT6TqDcBjdf2P/Yvgy1y5knUFK8QYB8w3LRjV3k4x
+         Dc2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=q7SDmpxBufAxps+kojpK+mqpOMSx+0fK0si/0/YyRxY=;
-        b=LobWXYlOn+hPY93363mX67rcsU7jsvUclFerUF3MIYCOIr5s14viAWQJstEE2lFwfH
-         258EzojsULlYAHdNmn6am73z52UEKwsTnItfuVF7Vlt6xKI0a0O8gcPAW4hmHcmqK/El
-         ZJHNJECc+4CTucpFmJpeW156lNctJr553coiWXr4Px5/XkLaYNKCTPfnR+52wgsJ4E1d
-         DoWWkPArkdvfdI2d/zo68fk+ttNKGmHUBC50dF4WcvS4OB8qJd8R4ISFnGJZnUHxgxU4
-         KUvME4lruZo/0gtrcIGlHdLmzQqLHHXZtbXSZgMJNq6ZoJ66tCAjSzRCV9hQSrrhFIaX
-         FJug==
-X-Gm-Message-State: AElRT7E2gmpemNBYnqI+8EWcgUNFuHK6uw2udE37cP1lPMR1rOPaIFdQ
-	wS6GgG4StYZBq3bIUcdSYUqvGQ==
-X-Received: by 10.101.96.5 with SMTP id m5mr6544275pgu.374.1520858712058;
-        Mon, 12 Mar 2018 05:45:12 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id t16sm16906270pfm.69.2018.03.12.05.45.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 12 Mar 2018 05:45:11 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: media: davinci_vpfe: Change to "%s...", __func__
-Date: Mon, 12 Mar 2018 12:44:57 +0000
-Message-Id: <1520858697-31275-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=0/9IsMNxXFpzgpaplMTTJNjUfGAJXf9fbcKoKx8v53Q=;
+        b=GG3ZTGby1DBgLYewrA7E7m5p/UjQBCAeqwcE11jH87qKY5sUVNRRy03m7RDVV/IJUf
+         v2waj5qbHUMILC6iYd8AodxQH82mjBsnRD4Yj+zD1o5rdWM8Qm83Vmi2/jlWkQExuD0h
+         K/JhlKjlk1S5vY5lTQB5ctsnIIldE76QXBpsfoWVjNeh+zXJ60x+3+flbzxXZBiEv02s
+         Dp3wxpwhUNnXOMAZAwLRpOcwoC0ItsTMMbLqacY5qr0JyHnyhYCxCa1o4x2gDQG2S9ta
+         3SRUDrMrtNeepYiM5CohL0HpMVwFE+B+N/cSF0Zixkbtmu0nhDxnNmNnOt0AJXZCqRf3
+         hl0Q==
+X-Gm-Message-State: APjAAAUf0/Qm09MEGGC/A/9yOCgXY4UBcfDny4TXTdH+H5V01OKNi5vv
+	CMLnUsZwy/ToMAiLtEbBhB4h0en3HaXkSQ==
+X-Received: by 2002:a5d:6b0a:: with SMTP id v10mr13374449wrw.32.1570815164747;
+        Fri, 11 Oct 2019 10:32:44 -0700 (PDT)
+Return-Path: <wambui.karugax@gmail.com>
+Received: from wambui ([197.237.61.225])
+        by smtp.gmail.com with ESMTPSA id r140sm13122626wme.47.2019.10.11.10.32.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Oct 2019 10:32:43 -0700 (PDT)
+Date: Fri, 11 Oct 2019 20:32:38 +0300
+From: Wambui Karuga <wambui.karugax@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, dan.carpenter@oracle.com
+Subject: Re: [Outreachy kernel] Re: [PATCH v3 1/4] staging: rtl8723bs: Remove
+ comparisons to NULL in conditionals
+Message-ID: <20191011173238.GA22411@wambui>
+Reply-To: 20191011120847.GB1143018@kroah.com
+References: <cover.1570712632.git.wambui.karugax@gmail.com>
+ <f4752d3a49e02193ed7b47a353e18e56d94b5a68.1570712632.git.wambui.karugax@gmail.com>
+ <20191011105404.GA4774@kadam>
+ <20191011120717.GA1143018@kroah.com>
+ <20191011120847.GB1143018@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191011120847.GB1143018@kroah.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Change string explicitly mentioning function name to "%s...", __func__.
-Issue found with checkpatch.
+On Fri, Oct 11, 2019 at 02:08:47PM +0200, Greg KH wrote:
+> On Fri, Oct 11, 2019 at 02:07:17PM +0200, Greg KH wrote:
+> > On Fri, Oct 11, 2019 at 01:54:04PM +0300, Dan Carpenter wrote:
+> > > On Thu, Oct 10, 2019 at 04:15:29PM +0300, Wambui Karuga wrote:
+> > > >  	psetauthparm = rtw_zmalloc(sizeof(struct setauth_parm));
+> > > > -	if (psetauthparm == NULL) {
+> > > > -		kfree(pcmd);
+> > > > +	if (!psetauthparm) {
+> > > > +		kfree((unsigned char *)pcmd);
+> > > 
+> > > This new cast is unnecessary and weird.
+> > 
+> > Ah, I missed that, good catch.  I'll go drop this patch now.
+> 
+> And that caused the second patch to get dropped as well.  I'll just drop
+> them all, can you redo the whole series please?
+> 
+> thanks,
+> 
+> greg k-h
+> 
+The cast seems to have been removed earlier by Nachammai Karuppiah and
+added to staging-testing, but I added it back when I cherry-picked my changes to the new
+file. 
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/media/davinci_vpfe/dm365_ipipe.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Sorry. :(
+I can remove the cast and send a new series.
+Thanks.
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-index 6a3434c..7d3349b 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe.c
-@@ -696,7 +696,7 @@ static int ipipe_get_gamma_params(struct vpfe_ipipe_device *ipipe, void *param)
- 
- 	if (!gamma->bypass_r && !gamma_param->table_r) {
- 		dev_err(dev,
--			"ipipe_get_gamma_params: table ptr empty for R\n");
-+			"%s: table ptr empty for R\n", __func__);
- 		return -EINVAL;
- 	}
- 	memcpy(gamma_param->table_r, gamma->table_r,
--- 
-2.7.4
-
+wambui karuga
 
