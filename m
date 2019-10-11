@@ -1,105 +1,189 @@
 X-GM-THRID: 6746657594163593216
-X-Received: by 2002:aca:abc4:: with SMTP id u187mr13925843oie.178.1570833147650;
-        Fri, 11 Oct 2019 15:32:27 -0700 (PDT)
+X-Received: by 2002:a19:f11e:: with SMTP id p30mr9210065lfh.152.1570829011150;
+        Fri, 11 Oct 2019 14:23:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:c743:: with SMTP id x64ls1730182oif.10.gmail; Fri, 11
- Oct 2019 15:32:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxvbRVKGIRXYfMpaNEnQf0KhwYAp/0K8SPYy0nkv4yUanVufbaQG2rGQGpTCToiZciVtfR4
-X-Received: by 2002:aca:5c06:: with SMTP id q6mr14618896oib.175.1570833146779;
-        Fri, 11 Oct 2019 15:32:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570833146; cv=none;
+Received: by 2002:a19:c709:: with SMTP id x9ls833495lff.12.gmail; Fri, 11 Oct
+ 2019 14:23:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxiriwNHE9NChL0HOq6KPIFks5Xx1rvnzw6hRQ1wumKC0z/E6RgfB6lHngtAwc2OQZYoiZd
+X-Received: by 2002:ac2:53b9:: with SMTP id j25mr9750354lfh.151.1570829010300;
+        Fri, 11 Oct 2019 14:23:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570829010; cv=none;
         d=google.com; s=arc-20160816;
-        b=JvkXZ9JwbXILpBCE8jot8AgyF86ZKNxpCVDiUUDzMJRvoeWvetkiBAMTFTfrT6zhP+
-         XF1ANoFE4sSVR5FsgKF8OPfwfIJjOUajp5aH3qmzpr30f0oXZi6yGubYLuxTASGHdDTJ
-         ysqe1d/xDwuvzvS+qFl1Z4Lv9eB08PY8vVa02rt0CJLvH5hQhLEfdd8uO2W0YOGTdSL9
-         ikLbJl67XtFfVZMYNYzPIXDYmd6J0PPlgxC4MNIQYLIVTZwFBanrH04OYVndGPXKiGjq
-         SRC47hDq9Ynp7pgeIqu7/OSwmE1WSlbKZ/yswg44qBuyHz3Od8zz33m6JSsVrXLVaB25
-         Xrbg==
+        b=kkoIpw3BPUMqROeNwxkOfdrPSGPMzLbesq+Aab8qzOtX8MAXzNJLqIIynjpZYZ6Q6v
+         +zpZS8iwOnH3i0Yn9BgUOiUI90P2ECSgWHTRriAZ3BIh7s25v2U2wVw98CXtt9LfH31n
+         hCHT2+Noam1D/GH53JLDWro5UKmWremN/4I36TAbvlo2DnG9uX/o263Z8932ptqb8+7v
+         KA/CEpL7RuL2wRR+dV78Pvj1IA+xh5wPLuNStcawgSzgbwMkNJh5eqxuJ4j8/xaa2wr9
+         z3u89PBv3Mc5v3aiWI/yhy/xXhi9PIrO20fRPGU9EM0f4env/dyIcvKpXB0l9eRDv9Ch
+         AShg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id;
-        bh=7gGNAsJ1Q++hKlWb2r1TUd24UqQBL+bFHb55lLqXP0s=;
-        b=Cusbz20KlIz/VaWqQ8LFVElUackbERjCXl+6eQ1Vc+HgFd6RyD7unxeu2pFtBXfTAl
-         cXc8x6denXCvjgW5TUHU4BD9q/mrxKequ4phELSXDxrdQUJacWvSovCbD7mU5VmwV0SP
-         c0kq4SZv67QgmYLlSD4MyW8n87Kr3fqnRiPUnAe5kyq17VxRuSAsu+dGbYwH/j34uYZ9
-         yL+7iA4SnZBTiI2UGt5fbUKIIP5dfifIyd57VFcHFJM5ZPMdhHVP2sUDrVvWNulmGbFm
-         EegfbUfkdTmsVqgJD0jTczzomiMpPoHbhRx303VenvXqA9ERFmGLwIu/L9cRt1NbQkAk
-         nHiQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=kLR9RBHEHXpumu3Nx7ytSQ948xvUcG6NQHx20hUP3rI=;
+        b=BQZErvZgcfkvbz8sFizGC11uuUv6NhYGBdsPyg/GKVXjb0tdRewVlLmQ2aCo3q1NhQ
+         bXqCnrGy/torks9lthEzwV9OBqke4hSq0FGA5ZgKvBvQh4ugX95PymEzPJliQcKPSXA9
+         D1PRHChw7b7BkFNiFBpKJi/gZpL9/Qgd35O9EOskYmKHOD7Ivp+5VjA/B1BPosb8GRwH
+         6BDVJn0tlL8YKfmyX0kohZug2hH0fKB5xFZccTl42+4JCINBtMtQwxY7Wg99S0vNWVNR
+         nuGAQEJ4Kyk69HT2GmHd524f08iWlNv9oO+jhy/HREFHz0EGOvFdFBAAU9UyqAE1fffI
+         us1w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.236 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0236.hostedemail.com. [216.40.44.236])
-        by gmr-mx.google.com with ESMTPS id c67si116990oig.1.2019.10.11.15.32.26
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id o30si118859lfi.0.2019.10.11.14.23.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Oct 2019 15:32:26 -0700 (PDT)
-Received-SPF: neutral (google.com: 216.40.44.236 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.236;
+        Fri, 11 Oct 2019 14:23:30 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.236 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay05.hostedemail.com (Postfix) with ESMTP id E131418016C6C;
-	Fri, 11 Oct 2019 22:32:25 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::::::::::::::::::,RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3873:4321:4605:5007:6742:7903:8660:10004:10400:10471:11026:11232:11473:11657:11658:11914:12043:12295:12297:12438:12740:12760:12895:13069:13148:13160:13229:13230:13255:13311:13357:13439:14096:14097:14659:14721:21080:21627:21774:21796:21939:30012:30029:30036:30054:30090:30091,0,RBL:47.151.152.152:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:neutral,Custom_rules:0:0:0,LFtime:26,LUA_SUMMARY:none
-X-HE-Tag: owl40_14d93818d4721
-X-Filterd-Recvd-Size: 2752
-Received: from XPS-9350.home (unknown [47.151.152.152])
-	(Authenticated sender: joe@perches.com)
-	by omf06.hostedemail.com (Postfix) with ESMTPA;
-	Fri, 11 Oct 2019 22:32:23 +0000 (UTC)
-Message-ID: <28ed468bc58c0d0e92f459b45d8e43cd3d1458b2.camel@perches.com>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,285,1566856800"; 
+   d="scan'208";a="322454988"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Oct 2019 23:23:28 +0200
+Date: Fri, 11 Oct 2019 23:23:27 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    eric@anholt.net, wahrenst@gmx.net, linux-kernel@vger.kernel.org, 
+    devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, 
+    linux-rpi-kernel@lists.infradead.org, daniela.mormocea@gmail.com, 
+    dave.stevenson@raspberrypi.org, hverkuil-cisco@xs4all.nl, 
+    mchehab+samsung@kernel.org, bcm-kernel-feedback-list@broadcom.com, 
+    sbranden@broadcom.com, rjui@broadcom.com, f.fainelli@gmail.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: fix warnings
  of lines should not end with open parenthesis
-From: Joe Perches <joe@perches.com>
-To: Julia Lawall <julia.lawall@lip6.fr>, Jules Irenge <jbi.octave@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-	eric@anholt.net, wahrenst@gmx.net, linux-kernel@vger.kernel.org, 
-	devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rpi-kernel@lists.infradead.org, daniela.mormocea@gmail.com, 
-	dave.stevenson@raspberrypi.org, hverkuil-cisco@xs4all.nl, 
-	mchehab+samsung@kernel.org, bcm-kernel-feedback-list@broadcom.com, 
-	sbranden@broadcom.com, rjui@broadcom.com, f.fainelli@gmail.com
-Date: Fri, 11 Oct 2019 15:32:22 -0700
-In-Reply-To: <alpine.DEB.2.21.1910112320550.3284@hadrien>
+In-Reply-To: <20191011211637.19311-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910112320550.3284@hadrien>
 References: <20191011211637.19311-1-jbi.octave@gmail.com>
-	 <alpine.DEB.2.21.1910112320550.3284@hadrien>
-Content-Type: text/plain; charset="ISO-8859-1"
-User-Agent: Evolution 3.32.1-2 
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-
-On Fri, 2019-10-11 at 23:23 +0200, Julia Lawall wrote:
-> On Fri, 11 Oct 2019, Jules Irenge wrote:
-> > Fix warning of lines should not end with open parenthesis.
-> > Issue detected by checkpatch tool.
-[]
-> > diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-[]
-> > @@ -337,9 +337,8 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
-> >  			if (is_capturing(dev)) {
-> >  				v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
-> >  					 "Grab another frame");
-> > -				vchiq_mmal_port_parameter_set(
-> > -					instance,
-> > -					dev->capture.camera_port,
-> > +			vchiq_mmal_port_parameter_set(instance,
-> > +						      dev->capture.camera_port,
-> >  					MMAL_PARAMETER_CAPTURE,
-> >  					&dev->capture.frame_count,
-> >  					sizeof(dev->capture.frame_count));
-> 
-> You can't reduce the indentation on the function call.  It has to stay
-> clearly in the if branch.
-> 
-> If you adjust the indentation of some of the arguments, you have to do so
-> to all of the arguments.
-> 
-> Similar issues arise below.  There may be no way to make some of the calls
-> look nice without a more severe reorganization of the code.
-
-My suggestion would be to shorten the vchiq_mmal_port_parameter_set
-function name (29 chars is just too long) and pass dev instead of
-dev->instance as the first argument to this function.
+Content-Type: text/plain; charset=US-ASCII
 
 
+
+On Fri, 11 Oct 2019, Jules Irenge wrote:
+
+> Fix warning of lines should not end with open parenthesis.
+> Issue detected by checkpatch tool.
+>
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  .../bcm2835-camera/bcm2835-camera.c           | 38 ++++++++-----------
+>  1 file changed, 16 insertions(+), 22 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> index d4d1e44b16b2..c7bb6e3f529c 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> @@ -337,9 +337,8 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+>  			if (is_capturing(dev)) {
+>  				v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  					 "Grab another frame");
+> -				vchiq_mmal_port_parameter_set(
+> -					instance,
+> -					dev->capture.camera_port,
+> +			vchiq_mmal_port_parameter_set(instance,
+> +						      dev->capture.camera_port,
+>  					MMAL_PARAMETER_CAPTURE,
+>  					&dev->capture.frame_count,
+>  					sizeof(dev->capture.frame_count));
+
+You can't reduce the indentation on the function call.  It has to stay
+clearly in the if branch.
+
+If you adjust the indentation of some of the arguments, you have to do so
+to all of the arguments.
+
+Similar issues arise below.  There may be no way to make some of the calls
+look nice without a more severe reorganization of the code.
+
+julia
+
+> @@ -392,9 +391,8 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+>  	    is_capturing(dev)) {
+>  		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  			 "Grab another frame as buffer has EOS");
+> -		vchiq_mmal_port_parameter_set(
+> -			instance,
+> -			dev->capture.camera_port,
+> +		vchiq_mmal_port_parameter_set(instance,
+> +					      dev->capture.camera_port,
+>  			MMAL_PARAMETER_CAPTURE,
+>  			&dev->capture.frame_count,
+>  			sizeof(dev->capture.frame_count));
+> @@ -1124,9 +1122,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  					  dev->capture.timeperframe.numerator;
+>  		ret = vchiq_mmal_port_set_format(dev->instance, preview_port);
+>  		if (overlay_enabled) {
+> -			ret = vchiq_mmal_port_connect_tunnel(
+> -				dev->instance,
+> -				preview_port,
+> +			ret = vchiq_mmal_port_connect_tunnel(dev->instance,
+> +							     preview_port,
+>  				&dev->component[COMP_PREVIEW]->input[0]);
+>  			if (!ret)
+>  				ret = vchiq_mmal_port_enable(dev->instance,
+> @@ -1154,9 +1151,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  			    camera_port->recommended_buffer.num;
+>
+>  			ret =
+> -			    vchiq_mmal_port_connect_tunnel(
+> -					dev->instance,
+> -					camera_port,
+> +			    vchiq_mmal_port_connect_tunnel(dev->instance,
+> +							   camera_port,
+>  					&encode_component->input[0]);
+>  			if (ret) {
+>  				v4l2_dbg(1, bcm2835_v4l2_debug,
+> @@ -1655,8 +1651,8 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	dev->capture.enc_level = V4L2_MPEG_VIDEO_H264_LEVEL_4_0;
+>
+>  	/* get the preview component ready */
+> -	ret = vchiq_mmal_component_init(
+> -			dev->instance, "ril.video_render",
+> +	ret = vchiq_mmal_component_init(dev->instance,
+> +					"ril.video_render",
+>  			&dev->component[COMP_PREVIEW]);
+>  	if (ret < 0)
+>  		goto unreg_camera;
+> @@ -1669,8 +1665,8 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	}
+>
+>  	/* get the image encoder component ready */
+> -	ret = vchiq_mmal_component_init(
+> -		dev->instance, "ril.image_encode",
+> +	ret = vchiq_mmal_component_init(dev->instance,
+> +					"ril.image_encode",
+>  		&dev->component[COMP_IMAGE_ENCODE]);
+>  	if (ret < 0)
+>  		goto unreg_preview;
+> @@ -1731,15 +1727,13 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>
+>  unreg_vid_encoder:
+>  	pr_err("Cleanup: Destroy video encoder\n");
+> -	vchiq_mmal_component_finalise(
+> -		dev->instance,
+> -		dev->component[COMP_VIDEO_ENCODE]);
+> +	vchiq_mmal_component_finalise(dev->instance,
+> +				      dev->component[COMP_VIDEO_ENCODE]);
+>
+>  unreg_image_encoder:
+>  	pr_err("Cleanup: Destroy image encoder\n");
+> -	vchiq_mmal_component_finalise(
+> -		dev->instance,
+> -		dev->component[COMP_IMAGE_ENCODE]);
+> +	vchiq_mmal_component_finalise(dev->instance,
+> +				      dev->component[COMP_IMAGE_ENCODE]);
+>
+>  unreg_preview:
+>  	pr_err("Cleanup: Destroy video render\n");
+> --
+> 2.21.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191011211637.19311-1-jbi.octave%40gmail.com.
+>
 
