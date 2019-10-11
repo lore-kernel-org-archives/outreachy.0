@@ -1,127 +1,201 @@
 X-GM-THRID: 6746660387703226368
-X-Received: by 2002:adf:db42:: with SMTP id f2mr7567847wrj.287.1570892474929;
-        Sat, 12 Oct 2019 08:01:14 -0700 (PDT)
+X-Received: by 2002:a17:906:9246:: with SMTP id c6mr15854331ejx.64.1570829927679;
+        Fri, 11 Oct 2019 14:38:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:cf01:: with SMTP id l1ls4063429wmg.0.gmail; Sat, 12 Oct
- 2019 08:01:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwEkjQ8UGDthahCFqh6JKATwOy50z0rxXo1NMapo1NBBlpOBaOld7W/iW9EL2yZOC0DnGqo
-X-Received: by 2002:a1c:f31a:: with SMTP id q26mr7884693wmq.68.1570892473871;
-        Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570892473; cv=none;
+Received: by 2002:aa7:dd81:: with SMTP id g1ls2015687edv.15.gmail; Fri, 11 Oct
+ 2019 14:38:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxadZGy9clwPEmX6OVc+HNChV9JZDJ4jSHbvAm5qZrgVOylNODsKdMZNy2IMEGzcU7T9lRm
+X-Received: by 2002:a50:8b45:: with SMTP id l63mr15959127edl.31.1570829926803;
+        Fri, 11 Oct 2019 14:38:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570829926; cv=none;
         d=google.com; s=arc-20160816;
-        b=o/zidcxz0ONO9r2LH8OXRTzMdSeSoAdKuJ7GSx0yur6cXn2ejDEq4V+pnM+wX2M7WQ
-         DXO2h6IPIz0+gU741Y69HMQTqrIDbWHXJvNk5DWeWAxKuCsL1ViigwSixT1M8ROyQfsi
-         EEkuseSG5JjWHuIcDyWBLbh/bbX9/kP6+ReY2hpNr+Jix+8zocvS6MHlYIf1Vc1RTuz7
-         UtRwz7dxMgzkBPxXwIXPxIj2n/mtmFzEVptP+e1fFAWQSgch1MtnS796TE6nSi2y+42e
-         lZOGsE0gP2TCZKHoyHROfI6j5c/vob+cSQMT3Ka8gdEKHAT366FioXQltJnqc19RjOSt
-         317g==
+        b=hiyu/ZtM/303LH66AYdmDHz7sV0H1lmHX2TS3IXS/D6JtfiXoJih+uDdgN1j7Gr/6C
+         nDlBdHl4r+FjDKCqe5udWieXfoIND1pK/1uM55YIzUNC90e5ZkUW3RW5gjJSJ0DZc4EN
+         ynP8ooSl/0BvrffVHkUVC7Ey/3Q5S6UMW6Z1Xc3DpANwOYzqyonyJ+Fv7Y9NmZ6Znndy
+         lmudUx/bneQtzVJFkldldHzdWhWSqdgPB0nQRE3WPcPUkGm9t7J3c1rhhjoLZPyAFw2/
+         Ryya/6s9yMPwLBRzoe48293plV4tJFaVssSsEbFh98V+BpuohIKrRrpr5L+yfgbgvyBV
+         hEzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:date:from:dkim-signature;
-        bh=wVHcI9lSX8uaanGOnUjTf6lBkgZpFUQiHj5D28R77UI=;
-        b=Rtj2m40DOWPROrPRQC1oGmOINErQIW5UG7RFbjc87+E3Xq2rH5yfm4saolU7JdI1IW
-         Ki8IVyh+T4xEO2bL13+6Oxnpxcvdqi980c6dEElgRs5UUc2eMPTFcUMUGrDCbTalHwtC
-         vwWDfmDNAqv9uDbbZr6u0ROcLMxVnuVa70CqJOllQ1GuyQcKbmzZfn4EarZPcBVkLRPL
-         vngplwTIQh6Rl6TGANwz3y6R47+9LzlNrbDkdcjz9PVO/JA0fje9u9B3lB3AEADwfClg
-         ocziJkK2L4zUt2FRgNz4apPQKo6sBTYd03JxPgc4T7zO7SQsOC5fypm6HlJ5Ex+uTwor
-         QXMg==
+         :cc:to:from:date;
+        bh=OJeej/y59JfsD9gboPofslF0F7un7V4NgLNWBaIer7U=;
+        b=AjM9BOUuNlQEXYgFf9I7o6GKLvyQwIbxGsjnUSeNxuLciK5KkBLNb4Mc/hD2xzL2X+
+         KvlkJ1KzHyCSsVzQCj6YHQzW7BntASHjS+ToXMQPr1FbUvSBEzHy/IF1/+H/qW7fU2PH
+         A964N9qsQJ7KTy+clmcbpkKH+iKr90az/tWThX7rzxJ94gOFZKHOa05kyhWauF8NHyvV
+         63CvhdlT+zS45H35j6gd/UiPbrPvA1asU2WIEaCevMls+uTGRnMxp5Osgll94nBrImmv
+         nd2t7FMmu4CD6wpeqwB9qW1rFF3jwA7TJdubtsm72zBFevGro7Hfu+hoLi4pT7MjTeun
+         J6kQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z40kAoLX;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id x8si989753wmk.2.2019.10.12.08.01.13
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a27si298004ejg.1.2019.10.11.14.38.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 Oct 2019 14:38:46 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z40kAoLX;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id o18so14837503wrv.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:in-reply-to:message-id:references
-         :user-agent:mime-version;
-        bh=wVHcI9lSX8uaanGOnUjTf6lBkgZpFUQiHj5D28R77UI=;
-        b=Z40kAoLXOa7xNeMlvgjV/XN8StTUUqzxN+pH0LjQpN9c4e/UkTuBbt26vsmjr5uqRj
-         4YMMxQ+eHT22lGwozUzw8P9hyw97FaX7Qj4RhdbFgjkNoQ+pIv6HTrJHiBvhcCu6aW/R
-         D304+7rWRCWMSCd6OtCCLA0qvDiwwaLzYQl5Dri6dTMVMkxn+Oazp+4NFKYLfYKT2tK+
-         lWp1UUUol393Oqr2L+PNLOC71Uv7Zp9kxH+tsvMbj0WT+5kecjiuSvRA1DwcLUreVE9S
-         ubLwyURpWBG8OLEjGEqYG45IMtXOxhkdKxGQR4XlPWRiMxBdY8+jq/bMJO4lwV2N2YfT
-         Ukgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
-         :references:user-agent:mime-version;
-        bh=wVHcI9lSX8uaanGOnUjTf6lBkgZpFUQiHj5D28R77UI=;
-        b=edH1QdnKhIJgxBriSyPIlGY3Ykt1eeLr125Sx0/KsXfJirYECWdPWSais3LjgAP4Ww
-         uVjwpUcSN8Fga+dtG3dfavnCi/LYm90+ujVelBVdld3pY9lH2NI0QwaP04p7bdfb1npt
-         yvLeGA9aasfjwIAgnOZ1Fx85ELD3DtrZ0T75YKAfygSq3ENrlmr9zK1q3tWfk++7ie8O
-         3gVVCckUvsYU7yjU9bHhDB4BYPMzvpfE6glhgBVV6nqkvP2Py7KKoG2RI0VDO7v0I/v5
-         X6oxCsCRoiSQSCjjMqKrblvy4OHNxjP1O7fVY17ILoxnJTdVdeGS/WwOWJQPK561dptR
-         wz/w==
-X-Gm-Message-State: APjAAAWWfyubpXpGiszbEXvMEO+GERKfaoVUMJRw4wlpgg7D4O+rsz+Q
-	EwdQfeNG8EnBlis6+J6gEg==
-X-Received: by 2002:adf:bd8f:: with SMTP id l15mr17498773wrh.362.1570892473305;
-        Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjabhubz.org (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.gmail.com with ESMTPSA id u2sm5154279wml.44.2019.10.12.08.01.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Oct 2019 08:01:12 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
-Date: Sat, 12 Oct 2019 16:00:59 +0100 (BST)
-To: Julia Lawall <julia.lawall@lip6.fr>
-cc: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com, 
-    gregkh@linuxfoundation.org, eric@anholt.net, wahrenst@gmx.net, 
-    linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, 
-    linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
-    daniela.mormocea@gmail.com, dave.stevenson@raspberrypi.org, 
-    hverkuil-cisco@xs4all.nl, mchehab+samsung@kernel.org, 
-    bcm-kernel-feedback-list@broadcom.com, sbranden@broadcom.com, 
-    rjui@broadcom.com, f.fainelli@gmail.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,285,1566856800"; 
+   d="scan'208";a="322455499"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Oct 2019 23:38:45 +0200
+Date: Fri, 11 Oct 2019 23:38:44 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    eric@anholt.net, wahrenst@gmx.net, linux-kernel@vger.kernel.org, 
+    devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, 
+    linux-rpi-kernel@lists.infradead.org, daniela.mormocea@gmail.com, 
+    dave.stevenson@raspberrypi.org, hverkuil-cisco@xs4all.nl, 
+    mchehab+samsung@kernel.org, bcm-kernel-feedback-list@broadcom.com, 
+    sbranden@broadcom.com, rjui@broadcom.com, f.fainelli@gmail.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: fix warning
  of Logical continuations should be on the previous line
-In-Reply-To: <alpine.DEB.2.21.1910112336440.3284@hadrien>
-Message-ID: <alpine.LFD.2.21.1910121551090.15982@ninjahub.org>
-References: <20191011212745.20262-1-jbi.octave@gmail.com> <alpine.DEB.2.21.1910112336440.3284@hadrien>
-User-Agent: Alpine 2.21 (LFD 202 2017-01-01)
+In-Reply-To: <20191011212745.20262-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910112336440.3284@hadrien>
+References: <20191011212745.20262-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Fri, 11 Oct 2019, Julia Lawall wrote:
+On Fri, 11 Oct 2019, Jules Irenge wrote:
+
+> Fix warning of logical continuations should be on the previous line.
+> Issue detected by checkpatch tool.
+
+There seem to be several changes mixed together in this patch.
+
+Don't have a subject line that is identical to a line in the log message.
+The subject line should be short.
+
+Keeping the arguments of && on the same line, but breaking the line after
+a == doesn't seem to be a good idea.  It would be better to have the left
+argument of == on one line and the right argument on another, if that is
+needed.
+
+julia
+
 
 >
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  .../bcm2835-camera/bcm2835-camera.c           | 41 ++++++++-----------
+>  1 file changed, 17 insertions(+), 24 deletions(-)
 >
-> On Fri, 11 Oct 2019, Jules Irenge wrote:
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> index d4d1e44b16b2..365bcd97e19d 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> @@ -337,9 +337,8 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+>  			if (is_capturing(dev)) {
+>  				v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  					 "Grab another frame");
+> -				vchiq_mmal_port_parameter_set(
+> -					instance,
+> -					dev->capture.camera_port,
+> +			vchiq_mmal_port_parameter_set(instance,
+> +						      dev->capture.camera_port,
+>  					MMAL_PARAMETER_CAPTURE,
+>  					&dev->capture.frame_count,
+>  					sizeof(dev->capture.frame_count));
+> @@ -392,9 +391,8 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+>  	    is_capturing(dev)) {
+>  		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  			 "Grab another frame as buffer has EOS");
+> -		vchiq_mmal_port_parameter_set(
+> -			instance,
+> -			dev->capture.camera_port,
+> +		vchiq_mmal_port_parameter_set(instance,
+> +					      dev->capture.camera_port,
+>  			MMAL_PARAMETER_CAPTURE,
+>  			&dev->capture.frame_count,
+>  			sizeof(dev->capture.frame_count));
+> @@ -1090,8 +1088,7 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
 >
->> Fix warning of logical continuations should be on the previous line.
->> Issue detected by checkpatch tool.
+>  	ret = vchiq_mmal_port_set_format(dev->instance, camera_port);
 >
-> There seem to be several changes mixed together in this patch.
+> -	if (!ret
+> -	    && camera_port ==
+> +	if (!ret && camera_port ==
+>  	    &dev->component[COMP_CAMERA]->output[CAM_PORT_VIDEO]) {
+>  		bool overlay_enabled =
+>  		    !!dev->component[COMP_PREVIEW]->enabled;
+> @@ -1124,9 +1121,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  					  dev->capture.timeperframe.numerator;
+>  		ret = vchiq_mmal_port_set_format(dev->instance, preview_port);
+>  		if (overlay_enabled) {
+> -			ret = vchiq_mmal_port_connect_tunnel(
+> -				dev->instance,
+> -				preview_port,
+> +			ret = vchiq_mmal_port_connect_tunnel(dev->instance,
+> +							     preview_port,
+>  				&dev->component[COMP_PREVIEW]->input[0]);
+>  			if (!ret)
+>  				ret = vchiq_mmal_port_enable(dev->instance,
+> @@ -1154,9 +1150,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  			    camera_port->recommended_buffer.num;
 >
-> Don't have a subject line that is identical to a line in the log message.
-> The subject line should be short.
+>  			ret =
+> -			    vchiq_mmal_port_connect_tunnel(
+> -					dev->instance,
+> -					camera_port,
+> +			    vchiq_mmal_port_connect_tunnel(dev->instance,
+> +							   camera_port,
+>  					&encode_component->input[0]);
+>  			if (ret) {
+>  				v4l2_dbg(1, bcm2835_v4l2_debug,
+> @@ -1655,8 +1650,8 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	dev->capture.enc_level = V4L2_MPEG_VIDEO_H264_LEVEL_4_0;
 >
-> Keeping the arguments of && on the same line, but breaking the line after
-> a == doesn't seem to be a good idea.  It would be better to have the left
-> argument of == on one line and the right argument on another, if that is
-> needed.
+>  	/* get the preview component ready */
+> -	ret = vchiq_mmal_component_init(
+> -			dev->instance, "ril.video_render",
+> +	ret = vchiq_mmal_component_init(dev->instance,
+> +					"ril.video_render",
+>  			&dev->component[COMP_PREVIEW]);
+>  	if (ret < 0)
+>  		goto unreg_camera;
+> @@ -1669,8 +1664,8 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	}
 >
-> julia
+>  	/* get the image encoder component ready */
+> -	ret = vchiq_mmal_component_init(
+> -		dev->instance, "ril.image_encode",
+> +	ret = vchiq_mmal_component_init(dev->instance,
+> +					"ril.image_encode",
+>  		&dev->component[COMP_IMAGE_ENCODE]);
+>  	if (ret < 0)
+>  		goto unreg_preview;
+> @@ -1731,15 +1726,13 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
 >
-
-Apology,
-Yesterday was my bday, I was reckless.
-I am resending now. Please do not hesitate to give me a feedback if 
-possible.
-Thanks
-Jules
+>  unreg_vid_encoder:
+>  	pr_err("Cleanup: Destroy video encoder\n");
+> -	vchiq_mmal_component_finalise(
+> -		dev->instance,
+> -		dev->component[COMP_VIDEO_ENCODE]);
+> +	vchiq_mmal_component_finalise(dev->instance,
+> +				      dev->component[COMP_VIDEO_ENCODE]);
+>
+>  unreg_image_encoder:
+>  	pr_err("Cleanup: Destroy image encoder\n");
+> -	vchiq_mmal_component_finalise(
+> -		dev->instance,
+> -		dev->component[COMP_IMAGE_ENCODE]);
+> +	vchiq_mmal_component_finalise(dev->instance,
+> +				      dev->component[COMP_IMAGE_ENCODE]);
+>
+>  unreg_preview:
+>  	pr_err("Cleanup: Destroy video render\n");
+> --
+> 2.21.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191011212745.20262-1-jbi.octave%40gmail.com.
+>
 
