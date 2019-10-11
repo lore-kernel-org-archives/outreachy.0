@@ -1,121 +1,147 @@
 X-GM-THRID: 6746422022313607168
-X-Received: by 2002:a81:7c0b:: with SMTP id x11mr1000524ywc.387.1570773829165;
-        Thu, 10 Oct 2019 23:03:49 -0700 (PDT)
+X-Received: by 2002:a25:cf58:: with SMTP id f85mr8508385ybg.169.1570773820142;
+        Thu, 10 Oct 2019 23:03:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:e81:: with SMTP id 123ls1080044ywo.15.gmail; Thu, 10 Oct
- 2019 23:03:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw1e6T6KBNXNvJa8+oMoi3sECfa21J+Pf7MPQg+rY+LoOe8j6R2c7PbSG/E07DjW10sCJjr
-X-Received: by 2002:a81:558a:: with SMTP id j132mr1067310ywb.35.1570773828204;
-        Thu, 10 Oct 2019 23:03:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570773828; cv=none;
+Received: by 2002:a25:7a82:: with SMTP id v124ls1015797ybc.15.gmail; Thu, 10
+ Oct 2019 23:03:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyw7Php46//Kk4fTInuXTO+2i+F01q73ZoT1iq9fF5OJsJBwm0okshLiEhfrpU+G/v1sVqQ
+X-Received: by 2002:a05:6902:510:: with SMTP id x16mr9168496ybs.143.1570773819106;
+        Thu, 10 Oct 2019 23:03:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570773819; cv=none;
         d=google.com; s=arc-20160816;
-        b=rjv8SlkEKa/EqPzEdF1KuTApySdPxnpT5tPH+LX8cZq9QMr2fnj2GERZtV9twdngSk
-         U2ZBjz4ByL1ASIAoIjB0cmI1R/vLMaJR9VrloiqHkOxlkQ6u7zL7KsNqaeAR04opQUYz
-         SVbdiOraanEFFOlp4RrhphNKpvuWmIKJVmCz8eWCLqVfK7v/GQ8RwRokQOZy5mru+ro5
-         OOYMmIxrq/W6nrA//76kK//syTBTZfbsL0AWmIg9QY71pjuNku7pyDjVG44tzGkJOFD6
-         fFTxa/14++pZoA41YSzZoEIDTGDCnFldb8Aa2wLhHTg2SV4aoZYMjQJ3RXbq9WO5+2DE
-         Cmmw==
+        b=PcM+Vi5wrbkSEox/WRHcF79EnkSPxwy/W6dyE9N2EFEjceVwSF8EXB9qO50UP3GAqa
+         dsSPk2D8CISNHsO+9+5qGTcSPJ9ltX5UY9Sj0Cla6xA9Qia/lW1juk6jSCd5C0ZfJyBL
+         geWfz2QK8LiUD4tow8TPn9Q8zzsKVsD7S5cd24AyyYXTq6kmhmK+LpTnvcl9r+HTIqbi
+         Ve+UwCXzDfI8C93SA8YfQyHUf3eN0yEPNf0UlbNr3WUzU6oR2OtjhhxJr8xLYwBUknzu
+         wGyzVVhOLWuJ66QI3bwMPTe09T8tBvwqjrO3OOTobHM9kjsrM0CX68nK+Trkd7RVy6Wz
+         1X/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=78A7v/fFdhcM+C5XDuRJJKeqGNkh4U2EwVbQjxNiiy4=;
-        b=yQaq8ERmD5HoqEhLCckAlhJXc5LqTd4c+8mm7j7e7nS6YSvqKN/p8mFZGhgQUsBl8M
-         pUYFg9yzPDoO0QLUZ/74qnL4i1DdSSQYi45XjDn8SzMjgCVzboSwQo5cKMbJSUjf/oI6
-         QBLieMNeeo1Gbvxv7fLQSYqto06J0nBKi8ZF0jy8tw7d3BWYovQYC7Di4tCnrtHGsZJu
-         t+GyKoLI5vMwwRxoSufTcxnmkB09U3/ZrDYqWlgOIMGD3Q3ZKehgi6GkpmotnadmNwan
-         By1f7j/iaClJAruq+yU9ZVsiQ2Bo7Rj3EV1035Aeik4ejiw7HSyM/7B7+dw6/FkB1JVD
-         423g==
+        bh=k/wT9/t7A7HYNz/iX11tkHS3rBfrsw9PYcflAAbRT90=;
+        b=ta3vDYD2Ue5xR45e0V2x1q0/3JB/QT7HBf/JD8Q1gAmZsW6nE7YGNSzVBXG2OyhG2m
+         fEG00GYJwlTcoK9ABbQ7TuMTP5EsgrgwucDiY4qRVInNNKhhA28BBMaRcnsSnN/8rzjY
+         WoTIqSXBPCiUK0nEWja24McknwUei1JqNGa7NrXWQUeXxyBBccII/CRBF846/R0KZ3VJ
+         bgIp/4Zmw1clm697yzHTvY/zLdDP6/xuCmtuQHiF9U1Cm0Sv+W/vGiJ1nZIULN3dN+A0
+         tF+M+PT/1+QBMnFgCAd2lsG7pPzoK5OX1gjfgewus2Ep1c+aUAlmYxfK94Joxl/fPm5/
+         NQqA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="TIio2u/G";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q9nQZH4C;
        spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <wambui.karugax@gmail.com>
 Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id u129si343548ywc.1.2019.10.10.23.03.48
+        by gmr-mx.google.com with ESMTPS id u129si343548ywc.1.2019.10.10.23.03.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Oct 2019 23:03:48 -0700 (PDT)
+        Thu, 10 Oct 2019 23:03:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="TIio2u/G";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q9nQZH4C;
        spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: by mail-pg1-x542.google.com with SMTP id i32so5138189pgl.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 23:03:48 -0700 (PDT)
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 23:03:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=78A7v/fFdhcM+C5XDuRJJKeqGNkh4U2EwVbQjxNiiy4=;
-        b=TIio2u/GyvX/4+US8sREUzM6Z3hhenOMPV+381jep+sjhxKO4duKvimQMh/WPE0REM
-         vQ+hdZk6PiDEiiEI5UMiLw/ELIodqrpT+mMyC4BMOpNwqbEijlZRR2UvLGuqF2TIfk/E
-         m72QSO8KEWaevDMZk1br1k5QbLZAl8VWvHZcAZsEJqnh/kvm6aU3y4x1u92gjAauMcJx
-         52kH3N0IiXPMGRJ+7CQs70UYTu0oBw38cAR1iLYvYDuypvyDYmmYbidP53/YVZAdmPVX
-         uIK1IPLS5uI3Z7/lGmjddnqWztt0vd7rZGNO01P/gZR7v2LfI8uvp9pfluKIfS5gSwga
-         yr0w==
+        bh=k/wT9/t7A7HYNz/iX11tkHS3rBfrsw9PYcflAAbRT90=;
+        b=Q9nQZH4CDkUFTAl2+DJ6ZNZ1QHR/rqxgghwGvth2AXWM0MGBrQDH44O7i0AU/86qht
+         LVO+dlnp7g5IPI9DAFW77C+A1pdePrXYwrAbQtXDZ+lME7HNkMRVMntBIcOHDKivm3rL
+         tulRrhMtEGLJ6H6T7xoCqC4QonryEe7/GKvYJkHRMj/3xyXHBe6Psu6wcqmUrCMaZq7u
+         ENu3PiQvVRYJEXD3XW23KVujsbJPBbel5WtUB+ZX93Sf3Y+t6QvxYtsvg7H7BODDr/m+
+         S3kn/8I71qrf6o05f380Veg0mIUy8fC1i1Jop1T7v8a6iYv5eE83+WPIj8WIGCFDlQWW
+         LSeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=78A7v/fFdhcM+C5XDuRJJKeqGNkh4U2EwVbQjxNiiy4=;
-        b=sKocUyexLtohHhe0o7tnQm7T9KybDhS4qrpXYKmsWvPJmtnkdGMkAfb6U/n8WogoCy
-         FZKbF/tYMwH6umDSOVieXIqozxdmKYIk8l2KnnMu7YKKVcPj51FIJP0Q5v5p/kKwVCUa
-         WmU1i80CMxwh2apMK99fZIlpqvnofsDeqU6FVB86E1Xg27SlArEbWY9dEZFTa2pJ/r63
-         1mL1hW/bDKalFkLXSscfKAkGHXFVbauVylz1zJJmBOvyrOLzelabz1J931TOS98nnU7k
-         tffwjAnMHj2IeLWdXUcClzCYHLcjEA+NA+uQv6xBYDeJ7H8PaAZGUOwrvP0xtcVlkhId
-         tlVA==
-X-Gm-Message-State: APjAAAVdnZbSoZp5DkP5rF+F5KqNLuuyUo33dyw+U050E8EKKgMm90EP
-	ZS87J5q9R+EB6ctiEN0fbqKiJamwcm3pvA==
-X-Received: by 2002:a62:6411:: with SMTP id y17mr14803815pfb.158.1570773827623;
-        Thu, 10 Oct 2019 23:03:47 -0700 (PDT)
+        bh=k/wT9/t7A7HYNz/iX11tkHS3rBfrsw9PYcflAAbRT90=;
+        b=eVP7SrO0HT8Iy1F9Gk8FVK6KZrM4ixs8sLK+dvXYlPZgDEaCCn9jNmFDuNJPbTb6q3
+         ScDE7SLfBZoLYQs/XJ9LzEj53BjItBaSpJbDC6IvKhoNukVA44aZBh80bHVsm/DovVYB
+         gxOwakMy9zOA+AUIJsvVo2dRCRzcm5dkcdY3pfCbEWkuwaE05JoVDkWe8w0Q5+HTeqSX
+         /qKeb9/dKCkaryWQpbumZ2fKSO1DcdZbucOXWnsffxPWRc64yqFaepxSwoDYgmr6H7Ba
+         YuEhiX7TQVOzxEN/w3bJIu/abvec4PZri5HhPcYQquTf+bgpjaZpD4+KN3tNUtHILAPF
+         VWVA==
+X-Gm-Message-State: APjAAAUtDvL/h9kvmKTHXs/68nRRHbOjEAHooSLPbTaHGZmo9IuihiGw
+	WVvQ+ZlfcNxxKgZOZmugmjjLNBFPxhPUpg==
+X-Received: by 2002:a63:4622:: with SMTP id t34mr15529950pga.0.1570773817999;
+        Thu, 10 Oct 2019 23:03:37 -0700 (PDT)
 Return-Path: <wambui.karugax@gmail.com>
 Received: from wambui.zuku.co.ke ([197.237.61.225])
-        by smtp.googlemail.com with ESMTPSA id p11sm9395715pgb.1.2019.10.10.23.03.41
+        by smtp.googlemail.com with ESMTPSA id p11sm9395715pgb.1.2019.10.10.23.03.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2019 23:03:47 -0700 (PDT)
+        Thu, 10 Oct 2019 23:03:37 -0700 (PDT)
 From: Wambui Karuga <wambui.karugax@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
 	devel@driverdev.osuosl.org,
 	linux-kernel@vger.kernel.org,
 	Wambui Karuga <wambui.karugax@gmail.com>
-Subject: [PATCH 5/5] staging: octeon: remove typedef declaration for cvmx_fau_op_size_t
-Date: Fri, 11 Oct 2019 09:02:42 +0300
-Message-Id: <777c55e3bb9f2f4804765bb0daca1720d8aa5085.1570773209.git.wambui.karugax@gmail.com>
+Subject: [PATCH 4/5] staging: octeon: remove typedef declartion for cvmx_pko_command_word0_t
+Date: Fri, 11 Oct 2019 09:02:41 +0300
+Message-Id: <2248b40bda9295263ba998c216fe1ac18a2324b4.1570773209.git.wambui.karugax@gmail.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <cover.1570773209.git.wambui.karugax@gmail.com>
 References: <cover.1570773209.git.wambui.karugax@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Remove addition of new typedef for enum cvmx_fau_op_size_t
-in drivers/staging/octeon/octeon-stubs.h.
-Issue found by checkpatch.pl
+Removes addition of new typedef declaration for
+cvmx_pko_command_word0_t in drivers/staging/octeon/octeon-stubs.h.
+Also replace previous instances with new union declaration.
 
 Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
 ---
- drivers/staging/octeon/octeon-stubs.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/octeon/ethernet-tx.c  | 2 +-
+ drivers/staging/octeon/octeon-stubs.h | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
+index 7ececfac0701..f88d8e6f5292 100644
+--- a/drivers/staging/octeon/ethernet-tx.c
++++ b/drivers/staging/octeon/ethernet-tx.c
+@@ -127,7 +127,7 @@ static void cvm_oct_free_tx_skbs(struct net_device *dev)
+  */
+ int cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev)
+ {
+-	cvmx_pko_command_word0_t pko_command;
++	union cvmx_pko_command_word0_t pko_command;
+ 	union cvmx_buf_ptr hw_buffer;
+ 	u64 old_scratch;
+ 	u64 old_scratch2;
 diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-index 06e6a0223416..a0aa99e7b757 100644
+index 1725d54523de..06e6a0223416 100644
 --- a/drivers/staging/octeon/octeon-stubs.h
 +++ b/drivers/staging/octeon/octeon-stubs.h
-@@ -205,12 +205,12 @@ enum cvmx_fau_reg_32_t {
- 	CVMX_FAU_REG_32_START	= 0,
+@@ -1137,7 +1137,7 @@ union cvmx_npi_rsl_int_blocks {
+ 	} cn50xx;
  };
  
--typedef enum {
-+enum cvmx_fau_op_size_t {
- 	CVMX_FAU_OP_SIZE_8 = 0,
- 	CVMX_FAU_OP_SIZE_16 = 1,
- 	CVMX_FAU_OP_SIZE_32 = 2,
- 	CVMX_FAU_OP_SIZE_64 = 3
--} cvmx_fau_op_size_t;
+-typedef union {
++union  cvmx_pko_command_word0_t {
+ 	uint64_t u64;
+ 	struct {
+ 	        uint64_t total_bytes:16;
+@@ -1157,7 +1157,7 @@ typedef union {
+ 	        uint64_t size0:2;
+ 	        uint64_t size1:2;
+ 	} s;
+-} cvmx_pko_command_word0_t;
 +};
  
- typedef enum {
- 	CVMX_SPI_MODE_UNKNOWN = 0,
+ union cvmx_ciu_timx {
+ 	uint64_t u64;
+@@ -1384,7 +1384,7 @@ static inline void cvmx_pko_send_packet_prepare(uint64_t port, uint64_t queue,
+ { }
+ 
+ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(uint64_t port,
+-		uint64_t queue, cvmx_pko_command_word0_t pko_command,
++		uint64_t queue, union cvmx_pko_command_word0_t pko_command,
+ 		union cvmx_buf_ptr packet, cvmx_pko_lock_t use_locking)
+ {
+ 	cvmx_pko_status_t ret = 0;
 -- 
 2.23.0
 
