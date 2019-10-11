@@ -1,160 +1,132 @@
 X-GM-THRID: 6746399399110246400
-X-Received: by 2002:a05:651c:237:: with SMTP id z23mr8713039ljn.214.1570773672963;
-        Thu, 10 Oct 2019 23:01:12 -0700 (PDT)
+X-Received: by 2002:a9d:53c4:: with SMTP id i4mr11391954oth.151.1570768704045;
+        Thu, 10 Oct 2019 21:38:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:5201:: with SMTP id m1ls595210lfb.3.gmail; Thu, 10 Oct
- 2019 23:01:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxqSMdRIIIk9/9fwCeuq7XGuG16LHRGbLZHKHJw7SlnVIlwspnn9XmS6zCinSIp1gQ936yw
-X-Received: by 2002:a19:ee0f:: with SMTP id g15mr7935450lfb.23.1570773672012;
-        Thu, 10 Oct 2019 23:01:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570773672; cv=none;
+Received: by 2002:a9d:66c3:: with SMTP id t3ls1199810otm.3.gmail; Thu, 10 Oct
+ 2019 21:38:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyVLvYU1v/5TsYRybm3j/bVcacRACcPZLQXkTSNU7sqNqA4dJ/FLMGuc10tevM1nduD6tnV
+X-Received: by 2002:a9d:6a59:: with SMTP id h25mr11120195otn.324.1570768703155;
+        Thu, 10 Oct 2019 21:38:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570768703; cv=none;
         d=google.com; s=arc-20160816;
-        b=LeDncwdkKvjJ6cO7Py6vMm9LqBNbqKqbo0sP0AwxtnrGXFYRAl9gkLTd0bS/lIA/jW
-         XCynDYBReotOC5tvIEFYFo150FYyZESyjAxO9Hp4KrLw84k5tAAEkth/r607OXYDB2Db
-         0gT524QurZEBdWdBrhk6LsT7iJyIc981LJz0HR/OQVSZQekoiCuhCYgN/P1Dl+dl+mwh
-         xVGwT729ZB3mEzsznYuYsyvPeJ/cJ7wIgfEUFgQ33AMILoMcNRV61pvBXxF8w8DZcGzQ
-         2DoqM60cKHfIxuF1KwVkiHfXpp+Z1hcBjTb6UdrGFr4TdEGHoSEzXqbiGxIdUAMDagVV
-         Bgwg==
+        b=gn8ay2PJobja5dEGYa3oHT5IY/2HA+auEk9xhlrEybrntOE4q9g3mJ9Fe5WJx+XQ+v
+         0nHv7mf3ks8eqdOKIZd3Ny8CVNhyCHHvmZQkwo+bu6ZXR9uMLPMs1KfFWi2d+5lrv00f
+         oTa+NpeL4drKlIE43FBXpMK7a//ZaABEKGs+1D5yUdUqJY84J2t/X0HzPgPajoHiiC7I
+         CwlCO1wrYtjrQiLHjVwb9GINIdn2v9NTOdTzERQu1gnL+e/W/QjrSQrr98iBnd8g3Caf
+         NZ4zjiINvPqrImoFkSJZAFP5hTr7RJgLqRMxmeMqxqJaK5PYxlpijMwDRX1qZgy5Yo7V
+         L1yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=vqqnfONZ81EfU4gImoAafBxp7E8PaVmEQc+8VYyjX98=;
-        b=oLG9XeUTfmXM0lcXP6mdwCqsamtwLlQBtnoaibfNT+duqfTpjQ/8SuPyNlfQBAU3F9
-         nF3D0Lrf2P9xveRjo6zCrU+5PKXozQerLDnmcf4nCSFG+Uq1fzdsjiRe8Fs+Y3wkoJaG
-         h669AqPQHhVV+IJUW87uuOuHJ10sPca0qs+9vvDdVrLDiXezRsmGCLv5QMtq3GGJKmHf
-         ewAJa61xNhP3CriFNQFH8cnrxCOB8K4m2IuNerHMYO8z0mRFCFDxczIqCgQFHuBPir9U
-         5Pm71UWHrfsDAOLhxn2qouod1+J7zFlod0M6sBP37PbsbGtNJQvJQWeOUZcMyY7YDNrg
-         hzHQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=g2z++3eMtQoZ+4AOCCn7l/Askvoay4I3uZCI0H0hHcI=;
+        b=iEkVv5r+hbjiwzEZaQw+7SNwX0wrcwoOjEUIe7Jkcrp5gqdH6+wl2kIGiT2jXCeUTF
+         Ws6M2R/H/kCeosEZoHdkNVZWVEBhYj7X5wCdWlzvtGHkQVtfrzwK3QdINcdJRcO8gtOY
+         v1LI2EVTKKz9EOEWZNttegIXz+5i8sbzMJdmW057qu5Eg3VlDHL99AvHkCLzUp/LyMIx
+         hO5uGv68ICleKdPlBOerX+ijJbmZM4J39zsnP3DVXp53ZwjyTAlPY5JXxPBHM9wyQkci
+         /PWc6Nr3Lv58YcvfUqgpmKe9J1TojtWnhOfz24l+6JpdIGf8opHs1O9wyyJTB5NTPp+a
+         ujCA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a9si94148lfk.5.2019.10.10.23.01.11
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bpACmlEr;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e41 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-vs1-xe41.google.com (mail-vs1-xe41.google.com. [2607:f8b0:4864:20::e41])
+        by gmr-mx.google.com with ESMTPS id v3si77976oth.4.2019.10.10.21.38.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Oct 2019 23:01:11 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Oct 2019 21:38:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e41 as permitted sender) client-ip=2607:f8b0:4864:20::e41;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,283,1566856800"; 
-   d="scan'208";a="405695832"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Oct 2019 08:00:28 +0200
-Date: Fri, 11 Oct 2019 08:00:27 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: "Javier F. Arias" <jarias.linux@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/6] staging: rtl8723bs: Replace string
- with identifier
-In-Reply-To: <b2ff6a52a7140480c9fdb6486a6ac6b4eb51203b.1570768179.git.jarias.linux@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910110759580.2662@hadrien>
-References: <cover.1570768179.git.jarias.linux@gmail.com> <b2ff6a52a7140480c9fdb6486a6ac6b4eb51203b.1570768179.git.jarias.linux@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bpACmlEr;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e41 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-vs1-xe41.google.com with SMTP id b1so5390501vsr.10
+        for <outreachy-kernel@googlegroups.com>; Thu, 10 Oct 2019 21:38:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=g2z++3eMtQoZ+4AOCCn7l/Askvoay4I3uZCI0H0hHcI=;
+        b=bpACmlEr/GHIyfPcm+yI8mKDDOM+/V8aVkcnBi0CwXTLDiN3DxpB5zFQwPPmIMGGDZ
+         MbQgtKyRVVOHEz7opz9IMFcMXnxDH8WkxtiJPyopVaXxicuXoTSYZ2DaQT5Asym27TD7
+         lGy5mt54GAjWF6/NhnD2IK/edvLwnnksD+0pex5v79hoePnEMUOifubaaEW7RJLcFDAY
+         5/YDjsojkpmvsePWsWSw/dxUJokxuzEoUSSUQ9RnR9j6sw3f+pIrGHXCYr1hRyA6KcJZ
+         FMA2d1kzUTJhDv8NdgX2QidEY1ujLv8CENjmoTIJGzqSxY57yVFo07hTdbE5JVix76Bv
+         hS8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to:user-agent;
+        bh=g2z++3eMtQoZ+4AOCCn7l/Askvoay4I3uZCI0H0hHcI=;
+        b=i1S65rTlqRQThwwP3eubrfHocXViVIlGgnDE8dpjgooWCsRMZ1bD+9oy8Almwwr89W
+         7tJ6yw0LAQQkNDZy5pXl1bnvz/wda+783MOqJqD3Z7sjSjGk/egqsJ1illoHEGLTMscI
+         jz9Jei42EIC7eqY/aBqOHuIbWFlkALOLEFvJznIKcEqu5RNSfxB3pndSHtE0hqHs5dML
+         +2RSEo+ZaFnTsolFfhLulCk8mx/Xi4PIgzMUFtuc0KSGtTnBN//SSpt8RwnccC7cQzjJ
+         SgvC/JlkxKCdZMYIatvKhtEtp25UuK5pzR9hPJo/H1b0kdLkikKd+iKfhvufl+PbtO3I
+         7tqw==
+X-Gm-Message-State: APjAAAVpaRfs6zjPICJzTfDGQxqjbVqd5bNgnG6qQK857W4ySdrCwNQC
+	dCJyggMkFpAEW96wN71meiCEIr3oySgKjQ==
+X-Received: by 2002:a67:f4cf:: with SMTP id s15mr1707587vsn.58.1570768702731;
+        Thu, 10 Oct 2019 21:38:22 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com (dynamic-190-27-96-102.dynamic.etb.net.co. [190.27.96.102])
+        by smtp.gmail.com with ESMTPSA id d3sm2199593vsd.34.2019.10.10.21.38.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2019 21:38:22 -0700 (PDT)
+Date: Thu, 10 Oct 2019 23:38:20 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 6/6] staging: rtl8723bs: Fix function call format
+Message-ID: <8dd3e932f49df42d598113f29c5e5e7a7c25ae52.1570768179.git.jarias.linux@gmail.com>
+Mail-Followup-To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+References: <cover.1570768179.git.jarias.linux@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1570768179.git.jarias.linux@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
+Fix function call format by following the coding style guidelines
+for argument wrapping in function calls.
+Issue found by checkpatch.
 
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_security.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-On Thu, 10 Oct 2019, Javier F. Arias wrote:
+diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
+index 08570e78d5e2..a809521da53d 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_security.c
++++ b/drivers/staging/rtl8723bs/core/rtw_security.c
+@@ -1625,15 +1625,14 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
+ 	payload_index = hdrlen + 8; /*  8 is for extiv */
+ 
+ 	for (i = 0; i < num_blocks; i++) {
+-		construct_ctr_preload(
+-				ctr_preload,
+-				a4_exists,
+-				qc_exists,
+-				pframe,
+-				pn_vector,
+-				i+1,
+-				frtype /*  add for CONFIG_IEEE80211W, none 11w also can use */
+-			);
++		construct_ctr_preload(ctr_preload,
++				      a4_exists,
++				      qc_exists,
++				      pframe,
++				      pn_vector,
++				      i+1,
++				      frtype); /*  add for CONFIG_IEEE80211W, none 11w also can use */
++
+ 
+ 			aes128k128d(key, ctr_preload, aes_out);
+ 			bitwise_xor(aes_out, &pframe[payload_index], chain_buffer);
+-- 
+2.20.1
 
-> Replace the hardcoded function names with the corresponding
-> predefined identifiers.
-
-It could have been better to address the 80 character issues first, to
-make this patch more understandable.
-
-julia
-
-
-> Issue found by checkpatch.
->
-> Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_security.c | 22 +++++++++----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
-> index 5ffaf9bfa6e8..4c92a3abb2c8 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_security.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_security.c
-> @@ -303,8 +303,8 @@ void rtw_wep_decrypt(struct adapter  *padapter, u8 *precvframe)
->  		*((u32 *)crc) = le32_to_cpu(getcrc32(payload, length-4));
->
->  		if (crc[3] != payload[length-1] || crc[2] != payload[length-2] || crc[1] != payload[length-3] || crc[0] != payload[length-4]) {
-> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_wep_decrypt:icv error crc[3](%x)!=payload[length-1](%x) || crc[2](%x)!=payload[length-2](%x) || crc[1](%x)!=payload[length-3](%x) || crc[0](%x)!=payload[length-4](%x)\n",
-> -						crc[3], payload[length-1], crc[2], payload[length-2], crc[1], payload[length-3], crc[0], payload[length-4]));
-> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s:icv error crc[3](%x)!=payload[length-1](%x) || crc[2](%x)!=payload[length-2](%x) || crc[1](%x)!=payload[length-3](%x) || crc[0](%x)!=payload[length-4](%x)\n",
-> +						__func__, crc[3], payload[length-1], crc[2], payload[length-2], crc[1], payload[length-3], crc[0], payload[length-4]));
->  		}
->
->  		WEP_SW_DEC_CNT_INC(psecuritypriv, prxattrib->ra);
-> @@ -695,7 +695,7 @@ u32 rtw_tkip_encrypt(struct adapter *padapter, u8 *pxmitframe)
->  				return _FAIL;
->  			}
->  */
-> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_tkip_encrypt: stainfo!= NULL!!!\n"));
-> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo!= NULL!!!\n", __func__));
->
->  			if (IS_MCAST(pattrib->ra))
->  				prwskey = psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey;
-> @@ -853,7 +853,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
->
->  			TKIP_SW_DEC_CNT_INC(psecuritypriv, prxattrib->ra);
->  		} else {
-> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_tkip_decrypt: stainfo == NULL!!!\n"));
-> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo == NULL!!!\n", __func__));
->  			res = _FAIL;
->  		}
->
-> @@ -1543,7 +1543,7 @@ u32 rtw_aes_encrypt(struct adapter *padapter, u8 *pxmitframe)
->
->  	/* 4 start to encrypt each fragment */
->  	if (pattrib->encrypt == _AES_) {
-> -		RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_aes_encrypt: stainfo!= NULL!!!\n"));
-> +		RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo!= NULL!!!\n", __func__));
->
->  		if (IS_MCAST(pattrib->ra))
->  			prwskey = psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey;
-> @@ -1834,10 +1834,10 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
->  	/* compare the mic */
->  	for (i = 0; i < 8; i++) {
->  		if (pframe[hdrlen+8+plen-8+i] != message[hdrlen+8+plen-8+i]) {
-> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("aes_decipher:mic check error mic[%d]: pframe(%x) != message(%x)\n",
-> -					i, pframe[hdrlen+8+plen-8+i], message[hdrlen+8+plen-8+i]));
-> -			DBG_871X("aes_decipher:mic check error mic[%d]: pframe(%x) != message(%x)\n",
-> -					i, pframe[hdrlen+8+plen-8+i], message[hdrlen+8+plen-8+i]);
-> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s:mic check error mic[%d]: pframe(%x) != message(%x)\n",
-> +					__func__, i, pframe[hdrlen+8+plen-8+i], message[hdrlen+8+plen-8+i]));
-> +			DBG_871X("%s:mic check error mic[%d]: pframe(%x) != message(%x)\n",
-> +					__func__, i, pframe[hdrlen+8+plen-8+i], message[hdrlen+8+plen-8+i]);
->  			res = _FAIL;
->  		}
->  	}
-> @@ -1868,7 +1868,7 @@ u32 rtw_aes_decrypt(struct adapter *padapter, u8 *precvframe)
->  	if (prxattrib->encrypt == _AES_) {
->  		stainfo = rtw_get_stainfo(&padapter->stapriv, &prxattrib->ta[0]);
->  		if (stainfo != NULL) {
-> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_aes_decrypt: stainfo!= NULL!!!\n"));
-> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo!= NULL!!!\n", __func__));
->
->  			if (IS_MCAST(prxattrib->ra)) {
->  				static unsigned long start;
-> @@ -1926,7 +1926,7 @@ u32 rtw_aes_decrypt(struct adapter *padapter, u8 *precvframe)
->
->  			AES_SW_DEC_CNT_INC(psecuritypriv, prxattrib->ra);
->  		} else {
-> -			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("rtw_aes_decrypt: stainfo == NULL!!!\n"));
-> +			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo == NULL!!!\n", __func__));
->  			res = _FAIL;
->  		}
->  	}
-> --
-> 2.20.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/b2ff6a52a7140480c9fdb6486a6ac6b4eb51203b.1570768179.git.jarias.linux%40gmail.com.
->
 
