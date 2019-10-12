@@ -1,195 +1,127 @@
-X-GM-THRID: 6529515465109143552
-X-Received: by 10.107.9.165 with SMTP id 37mr11529695ioj.111.1520271288018;
-        Mon, 05 Mar 2018 09:34:48 -0800 (PST)
+X-GM-THRID: 6746660387703226368
+X-Received: by 2002:adf:db42:: with SMTP id f2mr7567847wrj.287.1570892474929;
+        Sat, 12 Oct 2019 08:01:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.11.223 with SMTP id 92ls3019706iol.14.gmail; Mon, 05 Mar
- 2018 09:34:47 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtDYZZm8sQEpY3z4ykYGPWnBnIuEtUw5A0ayWvuN3VInhLjYGn9DOuXD5qWGveJ1I4Ucdx0
-X-Received: by 10.107.112.20 with SMTP id l20mr11855354ioc.124.1520271287021;
-        Mon, 05 Mar 2018 09:34:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520271286; cv=none;
+Received: by 2002:a7b:cf01:: with SMTP id l1ls4063429wmg.0.gmail; Sat, 12 Oct
+ 2019 08:01:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwEkjQ8UGDthahCFqh6JKATwOy50z0rxXo1NMapo1NBBlpOBaOld7W/iW9EL2yZOC0DnGqo
+X-Received: by 2002:a1c:f31a:: with SMTP id q26mr7884693wmq.68.1570892473871;
+        Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570892473; cv=none;
         d=google.com; s=arc-20160816;
-        b=IMlpkre9HiEIhN2CT0TymBa8FQAlh1reP60W1H0yzS57SlELb8GIpX/vitJrHxnBxG
-         FxQi9CQykDcArHeiBteOayiEmtPdipprS6CfrN+qnuSb5skLp1J9K048CjCDtVuY/cvr
-         zxP+A2iXVTtCHjZ0ynMHeA3vlV1BgXTD9HF+ny31nFv7Bix1mHnMKZyceo9WG6lse2aj
-         Hbz0EBfzxNKtQOpD7/C5coEPQu2hHpCeuMYdQblXtDFL1eARotm69/RsAxHspwndhZqp
-         lQB+c5OUypXRfdX8vYy+92X+u+QLMOCvs+JG9vJ1TdOOxeCXvG7zmkoiJW31U/V3Fv4i
-         0a/Q==
+        b=o/zidcxz0ONO9r2LH8OXRTzMdSeSoAdKuJ7GSx0yur6cXn2ejDEq4V+pnM+wX2M7WQ
+         DXO2h6IPIz0+gU741Y69HMQTqrIDbWHXJvNk5DWeWAxKuCsL1ViigwSixT1M8ROyQfsi
+         EEkuseSG5JjWHuIcDyWBLbh/bbX9/kP6+ReY2hpNr+Jix+8zocvS6MHlYIf1Vc1RTuz7
+         UtRwz7dxMgzkBPxXwIXPxIj2n/mtmFzEVptP+e1fFAWQSgch1MtnS796TE6nSi2y+42e
+         lZOGsE0gP2TCZKHoyHROfI6j5c/vob+cSQMT3Ka8gdEKHAT366FioXQltJnqc19RjOSt
+         317g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=cxA5/ocQjY/QOH63K+oIVvk2Uzw8Xi16BTlKVgrLc14=;
-        b=WkGXc9q27jzt0gEB+ImTus2cSYMiyvBBDwkeuzCE2NKdWANMGMrOafVIiIALyzUyYQ
-         +ols4lBTZaB/dte6A8mHeIVmZMA40YLuoi86VXUG0z+M2YgCtqlkSTqdX5+6nsjWd1MW
-         RoXL3xWSRDl3nneTVG3ur2e6ll4MjqzjnqkFdCL2511SmR7a8SjNaeBWbgzWLBpjkO6f
-         rX5VbHKIWlc/anwzu3pPFWzRDyueyNNEBBJHLqxbVNFOHE4OUTHBAZ6GEk36s79vDEQ0
-         /UqCsLDS5ugjuZUGm3Pg9HwCBXBHLh4dxH4XTtNB6xSeD8Bu6Wi9JC8WAOtSmbXk5NQg
-         3L4A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:date:from:dkim-signature;
+        bh=wVHcI9lSX8uaanGOnUjTf6lBkgZpFUQiHj5D28R77UI=;
+        b=Rtj2m40DOWPROrPRQC1oGmOINErQIW5UG7RFbjc87+E3Xq2rH5yfm4saolU7JdI1IW
+         Ki8IVyh+T4xEO2bL13+6Oxnpxcvdqi980c6dEElgRs5UUc2eMPTFcUMUGrDCbTalHwtC
+         vwWDfmDNAqv9uDbbZr6u0ROcLMxVnuVa70CqJOllQ1GuyQcKbmzZfn4EarZPcBVkLRPL
+         vngplwTIQh6Rl6TGANwz3y6R47+9LzlNrbDkdcjz9PVO/JA0fje9u9B3lB3AEADwfClg
+         ocziJkK2L4zUt2FRgNz4apPQKo6sBTYd03JxPgc4T7zO7SQsOC5fypm6HlJ5Ex+uTwor
+         QXMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p1QwqRVG;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z40kAoLX;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pl0-x241.google.com (mail-pl0-x241.google.com. [2607:f8b0:400e:c01::241])
-        by gmr-mx.google.com with ESMTPS id i201si412782ite.1.2018.03.05.09.34.46
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id x8si989753wmk.2.2019.10.12.08.01.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Mar 2018 09:34:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) client-ip=2607:f8b0:400e:c01::241;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=p1QwqRVG;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c01::241 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z40kAoLX;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x241.google.com with SMTP id u13-v6so10057739plq.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Mar 2018 09:34:46 -0800 (PST)
+Received: by mail-wr1-x441.google.com with SMTP id o18so14837503wrv.13
+        for <outreachy-kernel@googlegroups.com>; Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=cxA5/ocQjY/QOH63K+oIVvk2Uzw8Xi16BTlKVgrLc14=;
-        b=p1QwqRVGdFA27A18ozSP5i0I0liYKheFLwcbGsV5sDLZ0Pmh+uSYB1izO/N1FVFBCh
-         0chb5RbecGnBD2KaSrF8WL74wNivl6nqFGqK5ojyZ7uHHi7b29My4pI21vTJU6GTh6zx
-         ixNNcjhgAmkGABl3d1HgoVbKZQ8o95db6gGCaZssmaHmToMKvnw4jI0JzjwdU9Z1IjqT
-         IQgKOnfDai6QIOa215hzdwBfvARSaD1gQJ2NJmLd0Lx6r6YNR0JOzQMVJZTRUpYpgqt+
-         LL3aPh0Jyn0fzHWV7BcinfqbmTq5HWvTztyPHw0IwYfLp66QGEsX8v75zbDFN13qgEme
-         fDxA==
+        h=from:date:to:cc:subject:in-reply-to:message-id:references
+         :user-agent:mime-version;
+        bh=wVHcI9lSX8uaanGOnUjTf6lBkgZpFUQiHj5D28R77UI=;
+        b=Z40kAoLXOa7xNeMlvgjV/XN8StTUUqzxN+pH0LjQpN9c4e/UkTuBbt26vsmjr5uqRj
+         4YMMxQ+eHT22lGwozUzw8P9hyw97FaX7Qj4RhdbFgjkNoQ+pIv6HTrJHiBvhcCu6aW/R
+         D304+7rWRCWMSCd6OtCCLA0qvDiwwaLzYQl5Dri6dTMVMkxn+Oazp+4NFKYLfYKT2tK+
+         lWp1UUUol393Oqr2L+PNLOC71Uv7Zp9kxH+tsvMbj0WT+5kecjiuSvRA1DwcLUreVE9S
+         ubLwyURpWBG8OLEjGEqYG45IMtXOxhkdKxGQR4XlPWRiMxBdY8+jq/bMJO4lwV2N2YfT
+         Ukgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=cxA5/ocQjY/QOH63K+oIVvk2Uzw8Xi16BTlKVgrLc14=;
-        b=X1FYHy387sXU9Q7CvGWRfBbKGI6QP6MaQQM+gscrFL9MxUpU7aMy7ItkxFWFt8mR5u
-         XTEhIoYNOV/DEKlgIUogsPq48Y7HvvwmITBEb6yXtYSIzJV5CpKTBt9POK/Q06xWImJE
-         LyBYshC9QcFQGzvgDfseAs73NynFUIZJLFCyeLpXcT5v14mVWxseZAANvTab6J5AaPKz
-         kFbaCgrySSKbsiEBp3EbyX5bZBmiXZu2lkTLCyhm0rl9NfhYYGS0wOPnk2ZUdevFWSql
-         OC/EbEDAZYQO6wORIQAR0sxDamu3kJMqiOKA1S6Zr3n6sWi88qrQ8+t/CqyhJr9iXdJ7
-         Qaig==
-X-Gm-Message-State: APf1xPDcKmnXMtRufNPfLcucJGdwfJcI/lYp0i44ErzBGommrOGpG8wS
-	VhuY9jnbFxPIyqI5X9g9BdU=
-X-Received: by 2002:a17:902:b686:: with SMTP id c6-v6mr13794605pls.339.1520271286400;
-        Mon, 05 Mar 2018 09:34:46 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-21-83.resnet.ucsb.edu. [169.231.21.83])
-        by smtp.gmail.com with ESMTPSA id f186sm30587181pfc.86.2018.03.05.09.34.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 05 Mar 2018 09:34:45 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: samuel.thibault@ens-lyon.org,
-	kirk@reisers.ca,
-	chris@the-brannons.com,
-	w.d.hubbs@gmail.com,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: speakup: match alignment with open parenthesis
-Date: Mon,  5 Mar 2018 09:34:13 -0800
-Message-Id: <1520271253-53146-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
+         :references:user-agent:mime-version;
+        bh=wVHcI9lSX8uaanGOnUjTf6lBkgZpFUQiHj5D28R77UI=;
+        b=edH1QdnKhIJgxBriSyPIlGY3Ykt1eeLr125Sx0/KsXfJirYECWdPWSais3LjgAP4Ww
+         uVjwpUcSN8Fga+dtG3dfavnCi/LYm90+ujVelBVdld3pY9lH2NI0QwaP04p7bdfb1npt
+         yvLeGA9aasfjwIAgnOZ1Fx85ELD3DtrZ0T75YKAfygSq3ENrlmr9zK1q3tWfk++7ie8O
+         3gVVCckUvsYU7yjU9bHhDB4BYPMzvpfE6glhgBVV6nqkvP2Py7KKoG2RI0VDO7v0I/v5
+         X6oxCsCRoiSQSCjjMqKrblvy4OHNxjP1O7fVY17ILoxnJTdVdeGS/WwOWJQPK561dptR
+         wz/w==
+X-Gm-Message-State: APjAAAWWfyubpXpGiszbEXvMEO+GERKfaoVUMJRw4wlpgg7D4O+rsz+Q
+	EwdQfeNG8EnBlis6+J6gEg==
+X-Received: by 2002:adf:bd8f:: with SMTP id l15mr17498773wrh.362.1570892473305;
+        Sat, 12 Oct 2019 08:01:13 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjabhubz.org (host-2-102-13-201.as13285.net. [2.102.13.201])
+        by smtp.gmail.com with ESMTPSA id u2sm5154279wml.44.2019.10.12.08.01.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 12 Oct 2019 08:01:12 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
+Date: Sat, 12 Oct 2019 16:00:59 +0100 (BST)
+To: Julia Lawall <julia.lawall@lip6.fr>
+cc: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com, 
+    gregkh@linuxfoundation.org, eric@anholt.net, wahrenst@gmx.net, 
+    linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, 
+    linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
+    daniela.mormocea@gmail.com, dave.stevenson@raspberrypi.org, 
+    hverkuil-cisco@xs4all.nl, mchehab+samsung@kernel.org, 
+    bcm-kernel-feedback-list@broadcom.com, sbranden@broadcom.com, 
+    rjui@broadcom.com, f.fainelli@gmail.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: fix warning
+ of Logical continuations should be on the previous line
+In-Reply-To: <alpine.DEB.2.21.1910112336440.3284@hadrien>
+Message-ID: <alpine.LFD.2.21.1910121551090.15982@ninjahub.org>
+References: <20191011212745.20262-1-jbi.octave@gmail.com> <alpine.DEB.2.21.1910112336440.3284@hadrien>
+User-Agent: Alpine 2.21 (LFD 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
 
-Match alignment with the open parenthesis to conform to the Linux kernel
-coding style. Issue found using checkpatch.
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/speakup/main.c           | 2 +-
- drivers/staging/speakup/speakup_decpc.c  | 6 +++---
- drivers/staging/speakup/speakup_dectlk.c | 4 ++--
- drivers/staging/speakup/speakup_keypc.c  | 4 ++--
- drivers/staging/speakup/spk_ttyio.c      | 2 +-
- 5 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
-index d7cdec3..af30b70 100644
---- a/drivers/staging/speakup/main.c
-+++ b/drivers/staging/speakup/main.c
-@@ -417,7 +417,7 @@ static void announce_edge(struct vc_data *vc, int msg_id)
- 		bleep(spk_y);
- 	if ((spk_bleeps & 2) && (msg_id < edge_quiet))
- 		synth_printf("%s\n",
--			spk_msg_get(MSG_EDGE_MSGS_START + msg_id - 1));
-+			     spk_msg_get(MSG_EDGE_MSGS_START + msg_id - 1));
- }
- 
- static void speak_char(u16 ch)
-diff --git a/drivers/staging/speakup/speakup_decpc.c b/drivers/staging/speakup/speakup_decpc.c
-index 303f393..6649309 100644
---- a/drivers/staging/speakup/speakup_decpc.c
-+++ b/drivers/staging/speakup/speakup_decpc.c
-@@ -349,7 +349,7 @@ static int testkernel(void)
- 		return 0;
- 	else if (dt_stat == 0x0dec)
- 		pr_warn("dec_pc at 0x%x, software not loaded\n",
--				speakup_info.port_tts);
-+			speakup_info.port_tts);
- 	status = -3;
- oops:	synth_release_region(speakup_info.port_tts, SYNTH_IO_EXTENT);
- 	speakup_info.port_tts = 0;
-@@ -412,11 +412,11 @@ static void do_catch_up(struct spk_synth *synth)
- 				if (!in_escape)
- 					dt_sendchar(PROCSPEECH);
- 				spin_lock_irqsave(&speakup_info.spinlock,
--							flags);
-+						  flags);
- 				jiffy_delta_val = jiffy_delta->u.n.value;
- 				delay_time_val = delay_time->u.n.value;
- 				spin_unlock_irqrestore(&speakup_info.spinlock,
--							flags);
-+						       flags);
- 				schedule_timeout(msecs_to_jiffies
- 						 (delay_time_val));
- 				jiff_max = jiffies + jiffy_delta_val;
-diff --git a/drivers/staging/speakup/speakup_dectlk.c b/drivers/staging/speakup/speakup_dectlk.c
-index 2ea22a2..a144f28 100644
---- a/drivers/staging/speakup/speakup_dectlk.c
-+++ b/drivers/staging/speakup/speakup_dectlk.c
-@@ -262,11 +262,11 @@ static void do_catch_up(struct spk_synth *synth)
- 				if (!in_escape)
- 					synth->io_ops->synth_out(synth, PROCSPEECH);
- 				spin_lock_irqsave(&speakup_info.spinlock,
--						flags);
-+						  flags);
- 				jiffy_delta_val = jiffy_delta->u.n.value;
- 				delay_time_val = delay_time->u.n.value;
- 				spin_unlock_irqrestore(&speakup_info.spinlock,
--						flags);
-+						       flags);
- 				schedule_timeout(msecs_to_jiffies
- 						 (delay_time_val));
- 				jiff_max = jiffies + jiffy_delta_val;
-diff --git a/drivers/staging/speakup/speakup_keypc.c b/drivers/staging/speakup/speakup_keypc.c
-index de76183..3901734 100644
---- a/drivers/staging/speakup/speakup_keypc.c
-+++ b/drivers/staging/speakup/speakup_keypc.c
-@@ -260,7 +260,7 @@ static int synth_probe(struct spk_synth *synth)
- 	if (port_forced) {
- 		synth_port = port_forced;
- 		pr_info("probe forced to %x by kernel command line\n",
--				synth_port);
-+			synth_port);
- 		if (synth_request_region(synth_port-1, SYNTH_IO_EXTENT)) {
- 			pr_warn("sorry, port already reserved\n");
- 			return -EBUSY;
-@@ -269,7 +269,7 @@ static int synth_probe(struct spk_synth *synth)
- 	} else {
- 		for (i = 0; synth_portlist[i]; i++) {
- 			if (synth_request_region(synth_portlist[i],
--						SYNTH_IO_EXTENT)) {
-+						 SYNTH_IO_EXTENT)) {
- 				pr_warn
- 				    ("request_region: failed with 0x%x, %d\n",
- 				     synth_portlist[i], SYNTH_IO_EXTENT);
-diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-index 5aa3ffa..3119402 100644
---- a/drivers/staging/speakup/spk_ttyio.c
-+++ b/drivers/staging/speakup/spk_ttyio.c
-@@ -71,7 +71,7 @@ static void spk_ttyio_ldisc_close(struct tty_struct *tty)
- }
- 
- static int spk_ttyio_receive_buf2(struct tty_struct *tty,
--		const unsigned char *cp, char *fp, int count)
-+				  const unsigned char *cp, char *fp, int count)
- {
- 	struct spk_ldisc_data *ldisc_data = tty->disc_data;
- 
--- 
-2.7.4
+On Fri, 11 Oct 2019, Julia Lawall wrote:
 
+>
+>
+> On Fri, 11 Oct 2019, Jules Irenge wrote:
+>
+>> Fix warning of logical continuations should be on the previous line.
+>> Issue detected by checkpatch tool.
+>
+> There seem to be several changes mixed together in this patch.
+>
+> Don't have a subject line that is identical to a line in the log message.
+> The subject line should be short.
+>
+> Keeping the arguments of && on the same line, but breaking the line after
+> a == doesn't seem to be a good idea.  It would be better to have the left
+> argument of == on one line and the right argument on another, if that is
+> needed.
+>
+> julia
+>
+
+Apology,
+Yesterday was my bday, I was reckless.
+I am resending now. Please do not hesitate to give me a feedback if 
+possible.
+Thanks
+Jules
 
