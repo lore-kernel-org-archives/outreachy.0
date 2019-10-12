@@ -1,96 +1,208 @@
 X-GM-THRID: 6746702482716491776
-X-Received: by 2002:a81:4b09:: with SMTP id y9mr12011876ywa.19.1571512331063;
-        Sat, 19 Oct 2019 12:12:11 -0700 (PDT)
+X-Received: by 2002:aa7:d0d5:: with SMTP id u21mr17228181edo.36.1570858406984;
+        Fri, 11 Oct 2019 22:33:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:af60:: with SMTP id x32ls1517189ywj.3.gmail; Sat, 19 Oct
- 2019 12:12:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx18dFkPXxhkwIP36CQOyrAO+Jy+zls6w8ggg7yIpifcOA7Ua+BIC6k5eGKkkvCufuCWlp1
-X-Received: by 2002:a81:a693:: with SMTP id d141mr12018242ywh.290.1571512329575;
-        Sat, 19 Oct 2019 12:12:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571512329; cv=none;
+Received: by 2002:a17:907:42cf:: with SMTP id nz23ls2431314ejb.12.gmail; Fri,
+ 11 Oct 2019 22:33:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxiRk7wBKh/8iLKWgO0EX3pzLC8NWcXXqcl4WO+dhQhBQwbbNwnwXBa+0Ia0CPgHHBzjZED
+X-Received: by 2002:a17:906:8554:: with SMTP id h20mr10184209ejy.215.1570858406027;
+        Fri, 11 Oct 2019 22:33:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570858406; cv=none;
         d=google.com; s=arc-20160816;
-        b=RD3iqhj9/VYWNhugd0iubYxksXXiH5qPA5mAZGDiTs8v77MA3P8HfDFyoS2R84O3Ra
-         SFz/ojffzeWpVD9jdP3OO+VD9vr2sCj9iNczmxC5zkpV3AvRGlAWK4fsj84KAu+U+V+E
-         blhJzaMBK9CUhARJGzW2usLUh4mTkO1azVR/wrUNbZ3ea6mLBMi0VyqQmVLQ2eReHi5T
-         2UuMt6j5aTxniVlVBaEd8drHsf/Fk/vPic5ZCFis/fESoFi+2zVIH0z0Ss7dSzMeazxw
-         6tEDKGw0N9xAwXXxRTOmubjHt57JLjVySHw0W5MVxFnm4UESZxYINM5iz+g6EHj0THCI
-         D+EA==
+        b=L0XpmbDT4eWWXOlPseTRZDO8sxaWBthMGiZbJxdX7bH/csonHYhHOohH5dS8sRtFwY
+         XRwZFNkZX4JecoUo3trbxjwiWgTBh/Bt6v6hNApNT3BzP+Qdt9rWIpAMHVeQCOLb2uIL
+         I35bke48ZVg1tISvc8LMYEupRkLELeaPgtKieQ61xHBo78NA2yQr9xTqO+vZCD6PbI+x
+         ldmPo8obqLaPORxgg2XQf8vSNBbifx4Rebyvc/uDoYc1v1FAGhy2EjhUjCCh2mnfVR1T
+         qlNdfIUipjGBeULvL4moIoFPeY/bo1a7bz4k4Saz0Rlm468ZV/OkNS0z1PpcUpD94K6N
+         2pQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=JayxJpxKJERVYDQ3vo5jhFVUKz2WAw6lswwQywecDQA=;
-        b=MKoL+0OG1Q0rGXe3JxLkO02N1KcsooNLZHS3vao0/2iUE82bcINy/dCMpQyVnGuHsb
-         cTdWwcwCG5ZOHd3wfNQ+DhdASwlCs87iWW933FbUdKkF0CzXeG8ihyRMa8RmGeDjf90h
-         2vuhRfkOh14kJNOolHu3B7AAj6F0WlOerwF9FXrZYzDt0lsKAsF5bjrExEjrrh+E32b0
-         jRBL/0ASs2UadGlDkCsjAq5kdEoksr1U9CiK/2vsQVw0XTWEBgLPjjV7Gxa2Z1GIuDco
-         84xwfj3Kynrd6MVB+XGt0Fe3uEJHE3Y+s4QurpFF2BnUMsdZuJLh92PTldZSbZ1p6qKA
-         b5tg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=UV4PmhEPhdN5fViX3/t/Yappfu0bbhxGuivYEPvEKh8=;
+        b=08kV8ptSAA56KA2LChlsDfFY7PBvZZzla3K8Y1rffKwj3NpWOZ2TmQpKlmj+OvHaFm
+         hYogyAaZ0UmuZwBEqfs/txLLWRN15AzFdF89CAHq9wBukUdfau2jUyyhgLp+Lsf+Af8K
+         G2/3s4v43/vnlZYyPXAxFHA/C1+/T28IVztxE1So6iiTSI8rmp0tO0lBg6HAWGdXhgQ3
+         T3X2XKK8iMjWuQlR9VX84DdG1yiSftsH6sttMTztz1daurwG7inmKvvfkfQg/d7vAm2Y
+         FwZinti5obOkS4CFL05sW2oBLUDoYMbCC+711txYgcPwX97psr+wiOIPoAL9PvzuIKaK
+         ZXDQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bGZKMIkR;
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::92a as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <chime.evan.dri.devel@gmail.com>
-Received: from mail-ua1-x92a.google.com (mail-ua1-x92a.google.com. [2607:f8b0:4864:20::92a])
-        by gmr-mx.google.com with ESMTPS id u8si597575ybc.2.2019.10.19.12.12.09
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id d14si414583edb.4.2019.10.11.22.33.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 19 Oct 2019 12:12:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::92a as permitted sender) client-ip=2607:f8b0:4864:20::92a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 Oct 2019 22:33:26 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bGZKMIkR;
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::92a as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ua1-x92a.google.com with SMTP id l13so2745678uap.8
-        for <outreachy-kernel@googlegroups.com>; Sat, 19 Oct 2019 12:12:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=JayxJpxKJERVYDQ3vo5jhFVUKz2WAw6lswwQywecDQA=;
-        b=bGZKMIkRo/U1ymuq1vvOHmx5K+1tOb/EqnB3CLaUxfDDsDlN62PaCyk7WzZ0ZdOfqE
-         IoqHRdzUNWHRzMsCd+HDDGnr0/4m2JAkPwo1aRNzPMUU0dJHERO2gBOUfDPW1XdsVM+Y
-         rKz3sDgry09GgNvTqXEAHPhHYKa6rg6p92aUV4KRfzaRLl1qol3GFGrmqHN0FE6wXB7Y
-         rhDUqL2tkdDmFuyLUpi64EVJZWALY51AuvTpKnbruw9f0VNv/UCm9E0GmEaSiNqgMhja
-         PcIh10UC2x7Q3cWtZVRfWvVa5x8p99moaIpt82/7/NhkJPYFN2uZqYxTuowXCRRsc+X5
-         9/hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=JayxJpxKJERVYDQ3vo5jhFVUKz2WAw6lswwQywecDQA=;
-        b=IPpvpdW4ITtbUU2sW0RQjS7J/zuZIbyMr6hNTL0wgTPrj6Ft5t+3g7aiHmLWHv+tPj
-         okWTMsrrNGVV7J+Qqj4e87nKm1xR9B0twcY//FOfF7IvbuuCuEb6/uL7Y7g/OJkIhynF
-         HkAJnxBpJttqE1sS3WoBuuo30CH0JiQIWPIMZzYMWtFIJvjnRcMf38MGhydERh7FpVM2
-         DJoknaDs/+q7Bp697LkORteEg+JuB4DX43dPmLxgkuHPU+gels+uIIC8VPK/OW/DhuCi
-         pb6gFcKTtdDIOEskZy016N+Kh54KiWYEiT6ENiCJZz69jNiOvSlKa0gq3DcVaHl/cV7k
-         tKNQ==
-X-Gm-Message-State: APjAAAVMeKsaHh3CTi4SQURTU7ubCmvF7g3oVJixC8yxyMAZl/FkBZkK
-	GmpYD5HQNjdMyT5YH+FcCqo1eSOVnwy6l7rF83kcqXKu
-X-Received: by 2002:a9f:3099:: with SMTP id j25mr9012568uab.134.1571512329053;
- Sat, 19 Oct 2019 12:12:09 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,286,1566856800"; 
+   d="scan'208";a="405848531"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2019 07:33:25 +0200
+Date: Sat, 12 Oct 2019 07:33:25 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+cc: boqun.feng@microsoft.com, andrea.parri@microsoft.com, 
+    laurent.pinchart@ideasonboard.com, mchehab@kernel.org, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel]
+In-Reply-To: <20191012001017.3665-1-jamal.k.shareef@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910120732190.2637@hadrien>
+References: <20191012001017.3665-1-jamal.k.shareef@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-From: evan chime <chime.evan.dri.devel@gmail.com>
-Date: Sat, 19 Oct 2019 20:11:58 +0100
-Message-ID: <CANR89jbxRS1yZe_-QSUmyLc-CSYdo-+Et3dVc=w92H=Sh0qjZQ@mail.gmail.com>
-Subject: 
-To: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
-Content-Type: multipart/alternative; boundary="000000000000222c1e0595483a9a"
+Content-Type: text/plain; charset=US-ASCII
 
---000000000000222c1e0595483a9a
-Content-Type: text/plain; charset="UTF-8"
 
-Hello guys
 
-Please how do you find a clean up to do in the kernel
+On Fri, 11 Oct 2019, Jamal Shareef wrote:
 
-Kind regards
-Evan
+> Subject: [PATCH] staging: media: omap4iss: Fix lines ending with "("
+>
+> Fix lines ending with open left parenthesis "(".
+> Issue found by checkpatch.
+>
+> Also fix checkpatch "alignment should match open
+> parenthesis" issue.
 
---000000000000222c1e0595483a9a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The format didn't come out properly.  You need to get the subject line
+into the subject line of the message, while I see it in the body of the
+message.  Please recheck the tutorial to see where you may have gone
+wrong.
 
-<div dir=3D"auto">Hello guys=C2=A0</div><div dir=3D"auto"><br></div><div di=
-r=3D"auto">Please how do you find a clean up to do in the kernel=C2=A0</div=
-><div dir=3D"auto"><br></div><div dir=3D"auto">Kind regards=C2=A0</div><div=
- dir=3D"auto">Evan</div>
+julia
 
---000000000000222c1e0595483a9a--
+
+>
+> Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+> ---
+>  drivers/staging/media/omap4iss/iss.c | 65 +++++++++++++++++-----------
+>  1 file changed, 40 insertions(+), 25 deletions(-)
+>
+> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+> index 1a966cb2f3a6..9d6676b4618a 100644
+> --- a/drivers/staging/media/omap4iss/iss.c
+> +++ b/drivers/staging/media/omap4iss/iss.c
+> @@ -559,9 +559,11 @@ static int iss_reset(struct iss_device *iss)
+>  	iss_reg_set(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG,
+>  		    ISS_HL_SYSCONFIG_SOFTRESET);
+>
+> -	timeout = iss_poll_condition_timeout(
+> -		!(iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG) &
+> -		ISS_HL_SYSCONFIG_SOFTRESET), 1000, 10, 100);
+> +	timeout = iss_poll_condition_timeout(!(iss_reg_read(iss,
+> +							    OMAP4_ISS_MEM_TOP,
+> +							    ISS_HL_SYSCONFIG) &
+> +						ISS_HL_SYSCONFIG_SOFTRESET),
+> +						1000, 10, 100);
+>  	if (timeout) {
+>  		dev_err(iss->dev, "ISS reset timeout\n");
+>  		return -ETIMEDOUT;
+> @@ -583,9 +585,11 @@ static int iss_isp_reset(struct iss_device *iss)
+>
+>  	iss_reg_set(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_CTRL, ISP5_CTRL_MSTANDBY);
+>
+> -	timeout = iss_poll_condition_timeout(
+> -		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_CTRL) &
+> -		ISP5_CTRL_MSTANDBY_WAIT, 1000000, 1000, 1500);
+> +	timeout =
+> +	iss_poll_condition_timeout(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1,
+> +						ISP5_CTRL) &
+> +				   ISP5_CTRL_MSTANDBY_WAIT,
+> +				   1000000, 1000, 1500);
+>  	if (timeout) {
+>  		dev_err(iss->dev, "ISP5 standby timeout\n");
+>  		return -ETIMEDOUT;
+> @@ -595,9 +599,11 @@ static int iss_isp_reset(struct iss_device *iss)
+>  	iss_reg_set(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_SYSCONFIG,
+>  		    ISP5_SYSCONFIG_SOFTRESET);
+>
+> -	timeout = iss_poll_condition_timeout(
+> -		!(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_SYSCONFIG) &
+> -		ISP5_SYSCONFIG_SOFTRESET), 1000000, 1000, 1500);
+> +	timeout =
+> +	iss_poll_condition_timeout(!(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1,
+> +						  ISP5_SYSCONFIG) &
+> +				     ISP5_SYSCONFIG_SOFTRESET),
+> +				     1000000, 1000, 1500);
+>  	if (timeout) {
+>  		dev_err(iss->dev, "ISP5 reset timeout\n");
+>  		return -ETIMEDOUT;
+> @@ -964,7 +970,9 @@ iss_register_subdev_group(struct iss_device *iss,
+>  		}
+>
+>  		subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev, adapter,
+> -				board_info->board_info, NULL);
+> +						   board_info->board_info,
+> +						   NULL);
+> +
+>  		if (!subdev) {
+>  			dev_err(iss->dev, "Unable to register subdev %s\n",
+>  				board_info->board_info->type);
+> @@ -1108,33 +1116,40 @@ static int iss_create_links(struct iss_device *iss)
+>  	}
+>
+>  	/* Connect the submodules. */
+> -	ret = media_create_pad_link(
+> -			&iss->csi2a.subdev.entity, CSI2_PAD_SOURCE,
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->csi2a.subdev.entity, CSI2_PAD_SOURCE,
+> +				    &iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SINK, 0);
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->csi2b.subdev.entity, CSI2_PAD_SOURCE,
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->csi2b.subdev.entity, CSI2_PAD_SOURCE,
+> +				    &iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SOURCE_VP,
+> -			&iss->resizer.subdev.entity, RESIZER_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SOURCE_VP,
+> +				    &iss->resizer.subdev.entity,
+> +				    RESIZER_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SOURCE_VP,
+> -			&iss->ipipe.subdev.entity, IPIPE_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SOURCE_VP,
+> +				    &iss->ipipe.subdev.entity,
+> +				    IPIPE_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->ipipe.subdev.entity, IPIPE_PAD_SOURCE_VP,
+> -			&iss->resizer.subdev.entity, RESIZER_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->ipipe.subdev.entity,
+> +				    IPIPE_PAD_SOURCE_VP,
+> +				    &iss->resizer.subdev.entity,
+> +				    RESIZER_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191012001017.3665-1-jamal.k.shareef%40gmail.com.
+>
 
