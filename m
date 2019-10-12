@@ -1,112 +1,206 @@
-X-GM-THRID: 6614961709570326528
-X-Received: by 2002:a67:3790:: with SMTP id j16mr41247128vsi.46.1540165792537;
-        Sun, 21 Oct 2018 16:49:52 -0700 (PDT)
+X-GM-THRID: 6746714652058583040
+X-Received: by 2002:adf:a141:: with SMTP id r1mr16338288wrr.122.1570858609986;
+        Fri, 11 Oct 2019 22:36:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:3404:: with SMTP id b4ls3571502vka.2.gmail; Sun, 21 Oct
- 2018 16:49:51 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63CLIHsghIAUHIRUDE7cSlbE5QGlFsIfwInM4GNj1ospBEY6f4P3RGPmxSdfcQ/CaF2vSNE
-X-Received: by 2002:a1f:3250:: with SMTP id y77mr28202785vky.4.1540165791685;
-        Sun, 21 Oct 2018 16:49:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540165791; cv=none;
+Received: by 2002:adf:db07:: with SMTP id s7ls3290082wri.6.gmail; Fri, 11 Oct
+ 2019 22:36:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqySk9n+Hf7X4D7bjptJsr/DlSiS4cb8AGVO5sn/WusPliC7nx3CmRX+tlo2R73LA2TBnSQW
+X-Received: by 2002:adf:f0c8:: with SMTP id x8mr1809397wro.206.1570858609169;
+        Fri, 11 Oct 2019 22:36:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570858609; cv=none;
         d=google.com; s=arc-20160816;
-        b=bDfoJJneQtLaIf0mxfjzYsk1ee7JagjMTbfXwXwEFUZc0ktiTKOL4rJSxOFVZv18Wy
-         umTfaSKrHiIFSQrP1uzjiGoWpCc4tL2biVdXXCIYYMMhURqkFrUq2WFxX46bTNOTe/58
-         D87jJmRV+SmjUQfDNzzNqV//wofYqg+HGhjxm1B4ZS/7w/GfE2V776Fv9j36YJUPvcjp
-         RXmHeCOfjr4RF07/+FZacLVKPt9jQCBTrzVHsRHaani9rl6Hm+4bg3zchYaNJ7wfBQwI
-         jlW+nPouvIgoS6Juo9C2ADIP/pWKnec8z3hLPCbG9YCcTV7jYssOkakVIIP+zmBl2D+l
-         d91g==
+        b=D0MrY5/daEMlrvDsg3lSBodlWUyVJdovPGLHJjLGK4Vi8md9AMFUScfcXUoiHsfyZb
+         gffhY1/paU+KSXjLCzjjirHwTc1qS62jM1scNJ9jsyfDby/1pCzhnrVimKSv3kEw1MF5
+         KvQ+nA4tO5bN8OhDwLgtK1ZAegmNZlEtbMd8NMBCG1y+QGravwIZcPGXiQUbovt41Bn9
+         jZbRNuaashOo5O5cC+OTX7fL2iY3sK7W//5Rm93e4K3RlpmIbJICiDaT6uiYu54MUytp
+         dZBZNY07OOL40ULDWnVgJlchMJ9GplBWK3vVQR2lmxvyecCHfYzGoXVz1F8Neo3+DXdn
+         zwMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=6Uts7WoHfvaaVgmLOJxRD3aeCr1lUra09b9xmxiwKTI=;
-        b=KV8MuwWhHKmXCzRcWuUmQQU6F7UmCwH65nHtejHmBxqAHrfbpXPXu2aW/qC4oY0r/M
-         iS0pz8Rwd24TZihBB9vkZUnE2kgjoWdRXA/i20/W5PpG66/CxkMwYamIPM1C4nV1U8Ou
-         KsP2KgAkLOqyuyaBH43eou6Lsym5ZKso0xzhzUkie3B0Zgi+ZCBoXLVoMUPWV966eBST
-         L1UEPWRfQVG9HrlqxrgTXmKpcynVOSVikGkvWYrB5kstc5qTYS2MOtd8BKB3V7Wiwzf+
-         IKmu/I7EDWZreoKpYa5Iv+x7ddLgK7rRtdYGQs5LVEq3YNAd6eyN6iD45EnXw+zISdy/
-         ORwg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=8iXO7wkDCPjk31g3Ua52XCzujMRhWNa/5rRJbPL2X24=;
+        b=psm2oXCv8J4WjUfAHnMdNJnu/iPnx9b7XjwZG/CIv6xUK6hvMPPb3Ck1cDRPddWcwZ
+         uZc5UkIkcnJYXhQFtVv4H7wn51csO7GT+S2y+2ZkjwgZUtWU51CFtrozmDgcnVJW4NMe
+         fBBZt4lRNTUxh1mktqLa3E4I9ghH/yMET1qQn9tbRhoplKH5iR3M1RQri5zYD6rtGWCA
+         QpFQBdJ7KyOBqxPiOrCsyRlNsQ00gfftr5HE5c/JUGuOGA8LWDMCVk441IzfR2/2gpIi
+         s2y1997yDd9q3yB3LwkuiJYnJ/WTEddnWwX5nQv5NQNHG0ZhDSKvtBx1ceDBjWsECWPd
+         fgqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TynzK1Ch;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
-        by gmr-mx.google.com with ESMTPS id c74si1333103vkd.5.2018.10.21.16.49.51
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id q137si913382wme.3.2019.10.11.22.36.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Oct 2018 16:49:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
+        Fri, 11 Oct 2019 22:36:49 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TynzK1Ch;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x642.google.com with SMTP id bh10-v6so4813567plb.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Oct 2018 16:49:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=6Uts7WoHfvaaVgmLOJxRD3aeCr1lUra09b9xmxiwKTI=;
-        b=TynzK1ChttFDFfp9YoecRJoqJ6Xgh8do/RhVXllzLLhFKcllqpagIvqXxWqvzMvFRk
-         haTlZoUIixCUtuMwjNK8vA0oXjSnxxWflBGMzGCsMyXd9aq2+dY99ferNScpFFEV+eM3
-         0RZlsnRRQfr369Sg2ZDSuVvrMFNBypZZ5JqL4mkqbYlk3aoHzcF0c5hXAlhPaXV5FLih
-         I2X7J5qLJoVFUGDlqO83rofoljt+iRhcmlWXdCc4dj8aCRp+g3UaKSvY2kijekSthIfI
-         TK6YeSSckWav3+QpiaDu21nRA5kfcw0fMSxapWySNBcYpBToqo8a/flQZt6QN2g7dS9M
-         +Izg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=6Uts7WoHfvaaVgmLOJxRD3aeCr1lUra09b9xmxiwKTI=;
-        b=E0He4YXWF0WE9USgAi4VLJ5MY4av3pbWkTutWgwaLa+ALCeofmcevqbZlIFKTcBIwl
-         PFv8Pd+NmWO3V3A0xhK8t8JpvIS3jL3e0K5l9gRkhONWGfCYHGzyWmdmmaK1Ed2qUR/g
-         /9rq14ZDYkZEjEPkn/LlHHOyfk7msVYeTfeKa3BqDJ0yQK4gZXtDdkX0+EE8jxRoNBZt
-         MvQ4Bqj+hSzv0GLfHAh/1A4ummTt44Oe3+TfUmdIPbo3mZEU3LVKJRfSa369QOHEk0cb
-         eeCVjZ76xQ4hF/nOnW+4htLIj6f8aAcf4COx0RaVjDnQ8tGl/CI1iJyyNWfITqsUnjd+
-         AksQ==
-X-Gm-Message-State: ABuFfoho90WBruUkrXZk3iDp3irMB5hL33J9eJHytXFDjGyP5JBGWcIX
-	GFE/n5QMjYmpI3mgxrVZ7goHfXXT
-X-Received: by 2002:a17:902:1a7:: with SMTP id b36-v6mr33799913plb.240.1540165790676;
-        Sun, 21 Oct 2018 16:49:50 -0700 (PDT)
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id z63-v6sm36884213pfz.31.2018.10.21.16.49.49
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Oct 2018 16:49:50 -0700 (PDT)
-Date: Sun, 21 Oct 2018 16:49:49 -0700
-From: Maya Nakamura <m.maya.nakamura@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtlwifi: Remove an extra pair of braces
-Message-ID: <20181021234946.GA2183@k-vBox>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,286,1566856800"; 
+   d="scan'208";a="405848700"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2019 07:36:48 +0200
+Date: Sat, 12 Oct 2019 07:36:48 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+cc: boqun.feng@microsoft.com, andrea.parri@microsoft.com, 
+    laurent.pinchart@ideasonboard.com, mchehab@kernel.org, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [RESEND PATCH] staging: media: omap4iss: Fix
+ lines ending with "("
+In-Reply-To: <20191012005810.4459-1-jamal.k.shareef@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910120735430.2637@hadrien>
+References: <20191012005810.4459-1-jamal.k.shareef@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-Remove an extra pair of braces. Issue found while reviewing one of
-Coccinelle's semantic patch results for returnvar.cocci.
 
-Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
----
- drivers/staging/rtlwifi/phydm/phydm_hwconfig.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-index 4bf86e5a451f..90a41c64c0c2 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-@@ -484,9 +484,7 @@ static u8 odm_query_rx_pwr_percentage(s8 ant_power)
- 
- s32 odm_signal_scale_mapping(struct phy_dm_struct *dm, s32 curr_sig)
- {
--	{
--		return curr_sig;
--	}
-+	return curr_sig;
- }
- 
- static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
--- 
-2.17.1
+On Fri, 11 Oct 2019, Jamal Shareef wrote:
 
+> Fix lines ending with open left parenthesis "(".
+> Issue found by checkpatch.
+
+This looks better as a patch, but the resulting code does not look so
+nice.  Could you introduce a new local variable and pull out the calls to
+iss_reg_read?
+
+julia
+
+
+>
+> Also fix checkpatch "alignment should match open
+> parenthesis" issue.
+>
+> Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+> ---
+>  drivers/staging/media/omap4iss/iss.c | 65 +++++++++++++++++-----------
+>  1 file changed, 40 insertions(+), 25 deletions(-)
+>
+> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+> index 1a966cb2f3a6..9d6676b4618a 100644
+> --- a/drivers/staging/media/omap4iss/iss.c
+> +++ b/drivers/staging/media/omap4iss/iss.c
+> @@ -559,9 +559,11 @@ static int iss_reset(struct iss_device *iss)
+>  	iss_reg_set(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG,
+>  		    ISS_HL_SYSCONFIG_SOFTRESET);
+>
+> -	timeout = iss_poll_condition_timeout(
+> -		!(iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG) &
+> -		ISS_HL_SYSCONFIG_SOFTRESET), 1000, 10, 100);
+> +	timeout = iss_poll_condition_timeout(!(iss_reg_read(iss,
+> +							    OMAP4_ISS_MEM_TOP,
+> +							    ISS_HL_SYSCONFIG) &
+> +						ISS_HL_SYSCONFIG_SOFTRESET),
+> +						1000, 10, 100);
+>  	if (timeout) {
+>  		dev_err(iss->dev, "ISS reset timeout\n");
+>  		return -ETIMEDOUT;
+> @@ -583,9 +585,11 @@ static int iss_isp_reset(struct iss_device *iss)
+>
+>  	iss_reg_set(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_CTRL, ISP5_CTRL_MSTANDBY);
+>
+> -	timeout = iss_poll_condition_timeout(
+> -		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_CTRL) &
+> -		ISP5_CTRL_MSTANDBY_WAIT, 1000000, 1000, 1500);
+> +	timeout =
+> +	iss_poll_condition_timeout(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1,
+> +						ISP5_CTRL) &
+> +				   ISP5_CTRL_MSTANDBY_WAIT,
+> +				   1000000, 1000, 1500);
+>  	if (timeout) {
+>  		dev_err(iss->dev, "ISP5 standby timeout\n");
+>  		return -ETIMEDOUT;
+> @@ -595,9 +599,11 @@ static int iss_isp_reset(struct iss_device *iss)
+>  	iss_reg_set(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_SYSCONFIG,
+>  		    ISP5_SYSCONFIG_SOFTRESET);
+>
+> -	timeout = iss_poll_condition_timeout(
+> -		!(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_SYSCONFIG) &
+> -		ISP5_SYSCONFIG_SOFTRESET), 1000000, 1000, 1500);
+> +	timeout =
+> +	iss_poll_condition_timeout(!(iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1,
+> +						  ISP5_SYSCONFIG) &
+> +				     ISP5_SYSCONFIG_SOFTRESET),
+> +				     1000000, 1000, 1500);
+>  	if (timeout) {
+>  		dev_err(iss->dev, "ISP5 reset timeout\n");
+>  		return -ETIMEDOUT;
+> @@ -964,7 +970,9 @@ iss_register_subdev_group(struct iss_device *iss,
+>  		}
+>
+>  		subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev, adapter,
+> -				board_info->board_info, NULL);
+> +						   board_info->board_info,
+> +						   NULL);
+> +
+>  		if (!subdev) {
+>  			dev_err(iss->dev, "Unable to register subdev %s\n",
+>  				board_info->board_info->type);
+> @@ -1108,33 +1116,40 @@ static int iss_create_links(struct iss_device *iss)
+>  	}
+>
+>  	/* Connect the submodules. */
+> -	ret = media_create_pad_link(
+> -			&iss->csi2a.subdev.entity, CSI2_PAD_SOURCE,
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->csi2a.subdev.entity, CSI2_PAD_SOURCE,
+> +				    &iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SINK, 0);
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->csi2b.subdev.entity, CSI2_PAD_SOURCE,
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->csi2b.subdev.entity, CSI2_PAD_SOURCE,
+> +				    &iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SOURCE_VP,
+> -			&iss->resizer.subdev.entity, RESIZER_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SOURCE_VP,
+> +				    &iss->resizer.subdev.entity,
+> +				    RESIZER_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->ipipeif.subdev.entity, IPIPEIF_PAD_SOURCE_VP,
+> -			&iss->ipipe.subdev.entity, IPIPE_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->ipipeif.subdev.entity,
+> +				    IPIPEIF_PAD_SOURCE_VP,
+> +				    &iss->ipipe.subdev.entity,
+> +				    IPIPE_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> -	ret = media_create_pad_link(
+> -			&iss->ipipe.subdev.entity, IPIPE_PAD_SOURCE_VP,
+> -			&iss->resizer.subdev.entity, RESIZER_PAD_SINK, 0);
+> +	ret = media_create_pad_link(&iss->ipipe.subdev.entity,
+> +				    IPIPE_PAD_SOURCE_VP,
+> +				    &iss->resizer.subdev.entity,
+> +				    RESIZER_PAD_SINK, 0);
+> +
+>  	if (ret < 0)
+>  		return ret;
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191012005810.4459-1-jamal.k.shareef%40gmail.com.
+>
 
