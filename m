@@ -1,109 +1,176 @@
-X-GM-THRID: 6464507171401891840
-X-Received: by 10.202.207.197 with SMTP id f188mr1406520oig.88.1505135365546;
-        Mon, 11 Sep 2017 06:09:25 -0700 (PDT)
+X-GM-THRID: 6746720218426376192
+X-Received: by 2002:a5d:6a02:: with SMTP id m2mr10713335wru.120.1570858899587;
+        Fri, 11 Oct 2019 22:41:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.219.5 with SMTP id c5ls5371070itg.2.gmail; Mon, 11 Sep 2017
- 06:09:24 -0700 (PDT)
-X-Received: by 10.84.215.220 with SMTP id g28mr2503755plj.59.1505135364679;
-        Mon, 11 Sep 2017 06:09:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505135364; cv=none;
+Received: by 2002:adf:eb8a:: with SMTP id t10ls3278114wrn.16.gmail; Fri, 11
+ Oct 2019 22:41:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxQDXJye2OmLpgYWfiAVu7LpzM/9A/Zac+nFhLaqABfLb9JiXxisMkyDP1esLBb1M31zdE1
+X-Received: by 2002:adf:f2c7:: with SMTP id d7mr16840706wrp.318.1570858898521;
+        Fri, 11 Oct 2019 22:41:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570858898; cv=none;
         d=google.com; s=arc-20160816;
-        b=NkEv5aFyT0gyfJpnwKArKVVusuBD3xgV7VZ4EExU3gHpWrOkxMef6RcN3py36Cy96c
-         dOmZSyv685onYxS7wu5omyuDqIkWMOepJ5yTy+KIG1u/lpXGMeSgD9XvrEF8YIWkyuuV
-         pO8enTpsvu+FcIgfh9HJHUN4vVyp+2vDaqiWvjKq7La/HES/ifq73A7bIB2aSXG+Rv9A
-         HbR4Fys33EFOxfruKbYRmgnF4davANmIV/zzO4xMDa2TcwCN55OIrkJyAJvTUv6xRfpg
-         UIKxAW1Z5NcF4sTqJhCEV6nqrwXr3WSv6ItI8BJ9FFcJ79OKm7+c8Rr9Vun/mQV4prPm
-         XDQQ==
+        b=WAnhXg87C1VTHUyMWAuAFY/cvOcXC47q0oWHrrl5aPQz4YIoVbzrIy9A0ZYoOyev+U
+         HWTWHYueUYy0VX5KJcPJdKWFNNisiyE3/Z1CPBOlovJBS03bCw+nj3w80rOAgE6o6+Db
+         I1dNwOLttmXwBjC7tWWyQb8p5kSbGp1yl73AAJ9PDGD0HtF9KCPlpEOxvbqYedOslZox
+         Liu9pfBoJkCTnptgo/8b3ftVuT19fuvaYYbtGsjkgoKfazMa/f4kYRYAwMyb3eq6u/L5
+         Td+l+SNDyizVVe6RAh0oZwT6DXRlm8Ld0kqhMj/fAlXMTgSeco7+ow6L4fp9oKUTREjH
+         BFVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=ask+LgArRJoRr5Pasj6n8n4dzSLLaNLt6njTa2yh864=;
-        b=PnEwgIazP87lWMiR/WLLLDah18ZKcR2atlzcCUL+gZ6KR8PQuEkNMbgyRw1/SJO2EY
-         xwjhCcbHazHRTnGDo1BXoc9RpzvAOA2jTtgOyQKDU4ymGSV0Y6HH2LdHRVwfW1IEpZj4
-         FXpyV7gm1QKKRLEFR3ZaCmJiUThDp8OZqzA5xjiRYEsQcbHf6h9bVnRVJaV3xIxLNdOo
-         JEregkCSXxSCz10V5l2JbpfEdeadtgQwrHcsOHPZJ8573c9VP81qsAf9XN4QYIz+Q12W
-         6KPYpsDLI6nxwKVRwoINMIRBFIe2quWMYO2LO52Apfhw3LG+yjUARI1LvoKvKIagPh24
-         VaDw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=2pFUuQZY8HzYH5EodgHw4Zzz/MXxqS7h9+eg45nrLw4=;
+        b=InER7H6MilTw/jFCz+jQIyczsfDem1p527KSt4HGOm6YIddq5NDaQ0YiViVouI7Qet
+         UJfCOI4K4auCbyiVSYOGc5cELjEgeZLQOsJbFdYsZGnRr97eT5ALxJApMLxW7wVfK3+n
+         r2RovlzcvkC0l4PAZfsQHP8/Uin/wIa3TaOvb/N8nfuFFZRIE8zBPJm30ch8M9E2QUbQ
+         Qw8d+tn0Pxzx4qY823GDQkKADlza8fj1lco5nlQcTkM1zGrOCnDRLxdH9sX2lJj80I1S
+         PwVUz4jIs7LDYal+jiTOZHrdCfdMCgMujf48dYwkf9BJbH1RN1hcDm+pc65kwiWHxdzz
+         514A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=G5jGF4up;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id a17si919700pfk.15.2017.09.11.06.09.24
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id q137si914096wme.3.2019.10.11.22.41.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Sep 2017 06:09:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 11 Oct 2019 22:41:38 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=G5jGF4up;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id h4so4886530pfk.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 11 Sep 2017 06:09:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ask+LgArRJoRr5Pasj6n8n4dzSLLaNLt6njTa2yh864=;
-        b=G5jGF4upiZNcfvvx5OmaFRcISYavgWpWiWWkIdti7W6P2KJJg/V0cIatiWS9FJ3nRi
-         RKddnjIGPIm1GDJ8wKTH+I/rjNlf6cEzSJfnPm4614ZEJ9HfsFMzah2E3D7BuINji/YK
-         SmyT2XDtg+4RkHd3eHtOIhN+OiRtnItMINT73qK6psfeNho/uzrIhJ1kY/PV0RScOQch
-         bh5eVDW/T4zMbzfuxEbNwwn0UQ41h4PkFl7Mg1jMXHJDHts2FqdSvDfVogZjzcI8aukl
-         NAzW2gkrGJ464wEvW8wDRyVf0JisufA8DTcmdiwcAA92DkprhiPZM+dGKcspg0g4qRG0
-         KIPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ask+LgArRJoRr5Pasj6n8n4dzSLLaNLt6njTa2yh864=;
-        b=b7xvyqzbyXAjTnIkWyT00HI8Pr1p0QgeDZx3x714/2qo4SpVMSAITphS/pF/cvC8B4
-         Dc+o5fIjMAxq2D7qoiDIOucQVN0/F8Zj4L9o8D2XRoxUQ2lWgU6GkHswEnyKk1zy0/w3
-         tg+KYn06nHsuyfqIlgcgeYlLGI3PdyYA0TR1w+U4lZXwVnw/iQtRMsUxdKuLZaytGt7g
-         49+RhOnH9hIQGlS/uxl/3K0sGpdJK9b6OwnktGl+PEZn8a0R0HlFJxHQ1MEEvReH2Vat
-         0ogOTck7eGoefWCDuK/SsEJ4sjRDq/eGVNOVpmB+cS3wWxkp/3bt+/D2yfEsZhfSs3PO
-         LFlw==
-X-Gm-Message-State: AHPjjUhg6oAh2frF/GkjhfnF8uFuJX8nfYbwVWyJCT+1A6ARI392J7C1
-	11lD8fZClRsOQ2JH
-X-Google-Smtp-Source: ADKCNb4hWSu/ftLRVpLBWaOtu7WEVdJnhHBXYGLdf0mX8hxVQB3SmBQboRtNa+auvzmS6mrAYNq1oQ==
-X-Received: by 10.98.89.6 with SMTP id n6mr11688147pfb.27.1505135364122;
-        Mon, 11 Sep 2017 06:09:24 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.168.5.9])
-        by smtp.gmail.com with ESMTPSA id r66sm7576894pfl.15.2017.09.11.06.09.22
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 11 Sep 2017 06:09:23 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: florian.c.schilhabel@googlemail.com,
-	Larry.Finger@lwfinger.net,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] Staging: rtl8712: Remove multiple blank lines
-Date: Mon, 11 Sep 2017 18:39:18 +0530
-Message-Id: <1505135358-4408-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,286,1566856800"; 
+   d="scan'208";a="405849016"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2019 07:41:38 +0200
+Date: Sat, 12 Oct 2019 07:41:37 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+cc: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com, 
+    teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org, 
+    linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org, 
+    trivial@kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: align arguments
+ with open parenthesis
+In-Reply-To: <20191012011956.9452-1-gabrielabittencourt00@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910120738540.2637@hadrien>
+References: <20191012011956.9452-1-gabrielabittencourt00@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove extra blank line.
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
- drivers/staging/rtl8712/rtl8712_event.h | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_event.h b/drivers/staging/rtl8712/rtl8712_event.h
-index b383740..cad7085 100644
---- a/drivers/staging/rtl8712/rtl8712_event.h
-+++ b/drivers/staging/rtl8712/rtl8712_event.h
-@@ -60,7 +60,6 @@ enum rtl8712_c2h_event {
- 	MAX_C2HEVT
- };
+On Fri, 11 Oct 2019, Gabriela Bittencourt wrote:
 
--
- #ifdef _RTL8712_CMD_C_
+> Cleans up checks of "Alignment should match open parenthesis" in tree sm750fb
+>
+> Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+> ---
+>  drivers/staging/sm750fb/ddk750_display.c |  2 +-
+>  drivers/staging/sm750fb/sm750_accel.c    |  2 +-
+>  drivers/staging/sm750fb/sm750_accel.h    |  8 ++++----
+>  drivers/staging/sm750fb/sm750_cursor.h   | 10 +++++-----
+>  4 files changed, 11 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
+> index 887ea8aef43f..8be98a1058d6 100644
+> --- a/drivers/staging/sm750fb/ddk750_display.c
+> +++ b/drivers/staging/sm750fb/ddk750_display.c
+> @@ -148,7 +148,7 @@ void ddk750_set_logical_disp_out(enum disp_output output)
+>  	if (output & PNL_SEQ_USAGE) {
+>  		/* set  panel sequence */
+>  		sw_panel_power_sequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
+> -		4);
+> +					4);
+>  	}
+>
+>  	if (output & DAC_USAGE)
+> diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
+> index dbcbbd1055da..1a9555bb9edd 100644
+> --- a/drivers/staging/sm750fb/sm750_accel.c
+> +++ b/drivers/staging/sm750fb/sm750_accel.c
+> @@ -289,7 +289,7 @@ static unsigned int deGetTransparency(struct lynx_accel *accel)
+>  }
+>
+>  int sm750_hw_imageblit(struct lynx_accel *accel,
+> -		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
+> +		       const char *pSrcbuf, /* pointer to start of source buffer in system memory */
+>  		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
+>  		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
+>  		 u32 dBase,    /* Address of destination: offset in frame buffer */
 
- static struct fwevent wlanevents[] = {
---
-2.7.4
+It is strange that the change is only does for the firsr parameter, and
+not for all of them.
 
+The kernel also uses a doc format for describing function patameters in a
+single comment before the function.  Look around in other files to see the
+format.  That would look much nicer than these comments going over 80
+columns.
+
+
+> diff --git a/drivers/staging/sm750fb/sm750_accel.h b/drivers/staging/sm750fb/sm750_accel.h
+> index c4f42002a50f..8fb79b09fdd0 100644
+> --- a/drivers/staging/sm750fb/sm750_accel.h
+> +++ b/drivers/staging/sm750fb/sm750_accel.h
+> @@ -190,9 +190,9 @@ void sm750_hw_set2dformat(struct lynx_accel *accel, int fmt);
+>  void sm750_hw_de_init(struct lynx_accel *accel);
+>
+>  int sm750_hw_fillrect(struct lynx_accel *accel,
+> -				u32 base, u32 pitch, u32 Bpp,
+> -				u32 x, u32 y, u32 width, u32 height,
+> -				u32 color, u32 rop);
+> +		      u32 base, u32 pitch, u32 Bpp,
+> +		      u32 x, u32 y, u32 width, u32 height,
+> +		      u32 color, u32 rop);
+>
+>  int sm750_hw_copyarea(
+>  struct lynx_accel *accel,
+> @@ -210,7 +210,7 @@ unsigned int height, /* width and height of rectangle in pixel value */
+>  unsigned int rop2);
+>
+>  int sm750_hw_imageblit(struct lynx_accel *accel,
+> -		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
+> +		       const char *pSrcbuf, /* pointer to start of source buffer in system memory */
+>  		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
+>  		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
+>  		 u32 dBase,    /* Address of destination: offset in frame buffer */
+
+Same here.
+
+> diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
+> index 16ac07eb58d6..039ebfdf0bd9 100644
+> --- a/drivers/staging/sm750fb/sm750_cursor.h
+> +++ b/drivers/staging/sm750fb/sm750_cursor.h
+> @@ -6,13 +6,13 @@
+>  void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
+>  void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
+>  void sm750_hw_cursor_setSize(struct lynx_cursor *cursor,
+> -						int w, int h);
+> +			     int w, int h);
+>  void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
+> -						int x, int y);
+> +			    int x, int y);
+
+Perhaps these could just be all on one line?
+
+julia
+
+>  void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
+> -						u32 fg, u32 bg);
+> +			      u32 fg, u32 bg);
+>  void sm750_hw_cursor_setData(struct lynx_cursor *cursor,
+> -			u16 rop, const u8 *data, const u8 *mask);
+> +			     u16 rop, const u8 *data, const u8 *mask);
+>  void sm750_hw_cursor_setData2(struct lynx_cursor *cursor,
+> -			u16 rop, const u8 *data, const u8 *mask);
+> +			      u16 rop, const u8 *data, const u8 *mask);
+>  #endif
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191012011956.9452-1-gabrielabittencourt00%40gmail.com.
+>
 
