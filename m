@@ -1,125 +1,128 @@
-X-GM-THRID: 6808150898800328704
-X-Received: by 2002:a17:90a:dc83:: with SMTP id j3mr3976964pjv.64.1585146155316;
-        Wed, 25 Mar 2020 07:22:35 -0700 (PDT)
+X-GM-THRID: 6746936258645196800
+X-Received: by 2002:a2e:207:: with SMTP id 7mr12485271ljc.248.1570893511628;
+        Sat, 12 Oct 2019 08:18:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:8c8e:: with SMTP id t14ls1780167plo.9.gmail; Wed, 25
- Mar 2020 07:22:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt5+xNAlTlc9Yq2RpZq+KZevpMbYiM74T7MvXDRG2+sV/l4nvCxc/ZrgICX5ZDnabvhHvt9
-X-Received: by 2002:a17:902:b183:: with SMTP id s3mr3437785plr.33.1585146153790;
-        Wed, 25 Mar 2020 07:22:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585146153; cv=none;
+Received: by 2002:a19:f613:: with SMTP id x19ls957391lfe.16.gmail; Sat, 12 Oct
+ 2019 08:18:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzD8FYPs7FGojT0Zfoio3Ptjt2YCFfg1j+T9eUrIvWXQ9AEBgYXLH0BTp32+QdifVCrb6FH
+X-Received: by 2002:ac2:51b6:: with SMTP id f22mr11607834lfk.175.1570893510576;
+        Sat, 12 Oct 2019 08:18:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570893510; cv=none;
         d=google.com; s=arc-20160816;
-        b=URk80d+PU9csa+97TvGZvDaH4S+iwcGuKlIm48fQdVJuOA16iaK/WwKY3r+QvsJB8K
-         +nUzRmDez5uWcGPg2rHOcy5YB4ITD9o0ymj6Hsz6/xvTZWK5nwFErZp30T6n72+O+yLB
-         T4D21GUk1X5RYY+P6S0OqR7oTq6zNFv2re/VjT7xCJD3DsnhhxHupCg6MevXeLRy89o+
-         q/KRztWiUrFU7R2TS42UniovhVnL7iVYlqqZaF9VNCEivGOjJh9XWywtjBedqCQP5hNj
-         hh9ebAySOXidMtGE/YBq7WtW59fiV24CsHyPFamC6GQBqSAnjBfzR++AVirfI/A9DBPk
-         4ubA==
+        b=bgejThAPfH6RVw1VgjHDb9j4vs3jBQhFWq1oC7kX/X+n4+8mvp3UzMEv0MPlvZlgjH
+         2oWamdiHp44hNrMvXy4erRp7HNngEMQb0457y7PxT1YzUbJoaXOVBv2YCxlpS6svInhF
+         vtOg/MUfAy+xhtwuHKmrY7Way2aKCEsSdslHaIOvCb5ZkfENDJFXCmTVtRKZjFEAC4fS
+         Zp2dNdT1OZAPXdVDQvH/cuS+M70dHDVftVt4iaZ+nKPt6UEC6fxWVkHr4J0XbYynxpZn
+         WFRwmxKOvHLo4ysi7QJh5wVb2fdZtX1+w5OYMfFrSLfQK39iPLuNqtTfMkllCJBmt3tV
+         s2kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=pcFRyCnL2SJ7lsWb00Ktgfpiha1T6QVZTxHpgve0HfA=;
-        b=LHIYBI2VcjyrvO8qHufF8M5CiJ3rpFWVJo5AJLLS12c0jUn/s9whJ8945ItyH8hQ/v
-         /aJzfhF96g+vFpDJFkYVHbQN6gvByrcaF1X/+W+cmF8ZAr9vgAYaW+ZVa0N4XVr7huTO
-         ixe1XOqaemm1It/aHRupECWa3+nG3cg0Pu2FATgYq9OjI3x+gHu+oYFwgzyinPxzY8vB
-         lLw/RxeFq6Fjxne9K5OniYmfKnwUMn6QBXYbvI+MPPqw9liej21X8kscFPoGb9Wm+7lr
-         F2NRVTl5d8DyQS0HFxQ+3saadENI5JhzlIWACfoGdPhKsZv9IiMeoR4X40FK0K668mkb
-         McUw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=00wbDsxYMw5kLcHoK10nqGz2XPnCpxBhd7bVGwk+FAw=;
+        b=nm9sAec8FMVrM+szthoJebOv4vlz855xpgqVto6yxATZ8ZQo2u9mRTSnuwdzwdKP1q
+         dpxXYijVkTDMxsQLfAPHWs7ahrV3fI9zB59TSMPMo/ftTkSjSwMCG8Fxk5XxGXLKzowC
+         0E1XLyaOJu0s2/TC301KFgOGFHiHsNQwNNe7cBlSogYngxf6M2CeDA51qMGI3Vikdad3
+         DFoIGEvYA22dQZdc/eg0WjuO+pOiHe7vzlZHj63FtYDWF60HzO6p0CIIATsS+/Q5lh2l
+         CoJySxWulnjjmUMPmsH6wQHQjjoDKyT2tYaZ6AKAJgCgIz6XKxh7QFJS+LI/5d7RD/Ag
+         TvxA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IBvMOXic;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Waq0KdUP;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id y13si1125628plp.0.2020.03.25.07.22.33
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id z9si433443ljj.4.2019.10.12.08.18.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Mar 2020 07:22:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Sat, 12 Oct 2019 08:18:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IBvMOXic;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Waq0KdUP;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id b72so1094373pfb.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 07:22:33 -0700 (PDT)
+Received: by mail-wm1-x341.google.com with SMTP id 7so13060382wme.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 12 Oct 2019 08:18:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=pcFRyCnL2SJ7lsWb00Ktgfpiha1T6QVZTxHpgve0HfA=;
-        b=IBvMOXic3QYDgQSRZGPtISAPOTYAbBG+IPlPXOuv8W5fiiD/2joX9ypEKZDeqzeXtR
-         9hv8+1RDYXz/f0teGPl8n/iRkNmc7DMFBw6PpIJ29ObnRdulDiQB9oz0xG2tz6jqMUXp
-         cfNHYHvZPQVuVfWaa93mk4GzBZ/ynzZbbl4OwI2Pt+lARObkyRoCkY0JcZy0y8cq5u8F
-         RkTgMPqCwAyUj/JuNLaeHL57azs0LRCeL12fOcQb8KK4dMmRY2sVY80+L1JsUZeYigx3
-         qbNYX7PL1yYalalmDh8yUsrxxnR4f6kTkc/jcu3VtRtbXItJy3KqVugRDo6VH7/R1OKo
-         talw==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=00wbDsxYMw5kLcHoK10nqGz2XPnCpxBhd7bVGwk+FAw=;
+        b=Waq0KdUP+gUillAGvOrqIDV7D5eG2F9ALA4QqXAzfIOgYzTT56gi3H2MpNWLS/L+SM
+         oOuw+//6TfcIPR8s3qgncPPOF+LCmyAP8DjyoVmVFrqocGMgZhcCBhnTAqtYxy465J3M
+         7AFMTO8KgBXIjw4NxeolNqSmoUamAFYABqIfno1lzjodIxUvpMz2Dnu4wgonaBEWeoEF
+         zd116TwtaRxUIkE6ens1iMVMs0m9HfGR9qy7EC9mBihL5cO9040fojglCebTZ5AnElyx
+         QeYHcf+EZUiFEcSJsN+EYAOOfvL/rBXKD/0JsM1BgAdNMuksdQSKn8eja89736elYizz
+         24FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=pcFRyCnL2SJ7lsWb00Ktgfpiha1T6QVZTxHpgve0HfA=;
-        b=FtYK3GaLFWDv/NywMVgBnYxhTz9XZyI/T2F46by2+0B/CWPnB2/8K+3d5+uSYzjE4U
-         hNV8LIbIvBdD5mSz2kDqDdbq2BDohGHRaNlyvyI6XGkh2bIeRtsW0/wBp8oaVEce1a9R
-         ahwmXjKTe+XuxN0qRtRkuyY4xre33eoC5uPLKOqDas/M3tOPAIx+U4iKjYP0C7MlyfUC
-         Syn/sZI9dbbYoGuWcyygiUEK0vkcUQEE0a8UxaOyjk8IlysTsTfRFFL9ybFKCuI7lQ0K
-         NHAAOMbGx2vZOjibdn/ujiiboBy0Eq4tfiz9MnrDlDznYs6FuhB0jN7c1+swKmgUJTDz
-         5xsw==
-X-Gm-Message-State: ANhLgQ1FbF8R/GaUeI8raEHN4Uhe9994thMPLk74JMNDBsp4QQuazrVd
-	5yi1acPGIqzWpf/TtPC8pZ+ztlMfYS0=
-X-Received: by 2002:a63:7359:: with SMTP id d25mr3285349pgn.2.1585146152947;
-        Wed, 25 Mar 2020 07:22:32 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from simran-Inspiron-5558 ([2409:4052:78f:bb47:8124:5e4b:ea06:7595])
-        by smtp.gmail.com with ESMTPSA id x4sm16570514pgi.76.2020.03.25.07.22.30
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=00wbDsxYMw5kLcHoK10nqGz2XPnCpxBhd7bVGwk+FAw=;
+        b=RgrIzN1q/IaY79mezwrBMeL+eaBI40HVbqFNiASBZFBD4AarJgYwuet/125+7nn+DF
+         KUHvN9+yJcleqFX1XCx+VRNX4UhwLENeYBFQf+fsPbXuMchZPl5q6rEGaM20543UrriQ
+         cFW5TauEj5rWe5F9yPhWJtmacmy85ySwdJPuscOx83eTbPRtjY1pwoD4kEh2ZpeHPc+P
+         ZifsaSlNKZ8OmTZ2mny7gs1sOmGDnT6eHRzK9M2ZHq2F06nJwVTODmBTerDm30KzlOgn
+         ITdNXFJfHO8GycQQ7iODDkwCDZd+cMtZDJNzp4jKNHfrclvVoWaeDtttKpOVzJLnNwzT
+         O97A==
+X-Gm-Message-State: APjAAAWZRCDj4g7shkH8NuBSX+YdMHuO1PJ1jXP5VpS/Fj8kLzvmthUy
+	mlpHhOaJCQH9zXBhMrWeHG6JnlZt/oi8e6Q=
+X-Received: by 2002:a05:600c:2185:: with SMTP id e5mr7887447wme.78.1570893509733;
+        Sat, 12 Oct 2019 08:18:29 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
+        by smtp.googlemail.com with ESMTPSA id r6sm13905017wmh.38.2019.10.12.08.18.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2020 07:22:32 -0700 (PDT)
-Date: Wed, 25 Mar 2020 19:52:26 +0530
-From: Simran Singhal <singhalsimran0@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: rtl8723bs: Remove multiple assignments
-Message-ID: <20200325142226.GA14711@simran-Inspiron-5558>
+        Sat, 12 Oct 2019 08:18:29 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	eric@anholt.net,
+	wahrenst@gmx.net,
+	linux-kernel@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	daniela.mormocea@gmail.com,
+	dave.stevenson@raspberrypi.org,
+	hverkuil-cisco@xs4all.nl,
+	mchehab+samsung@kernel.org,
+	bcm-kernel-feedback-list@broadcom.com,
+	sbranden@broadcom.com,
+	rjui@broadcom.com,
+	f.fainelli@gmail.com,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH v2] staging: vc04_services: place the AND operator at the end of the previous line
+Date: Sat, 12 Oct 2019 16:18:05 +0100
+Message-Id: <20191012151805.17988-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Transfer-Encoding: 8bit
 
-Remove multiple assignments by factorizing them.
-Problem found using checkpatch.pl:-
-CHECK: multiple assignments should be avoided
+Place the AND logical operator at the end of the previous line;
+to fix warning of "Logical continuations should be on the previous line".
+ Issue detected by checkpatch tool.
 
-Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 61a9bf61b976..744b40dd4cf0 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -194,7 +194,9 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
+diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+index d4d1e44b16b2..beb6a0063bb8 100644
+--- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
++++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+@@ -1090,8 +1090,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
  
- 	pcmdpriv->rsp_buf = pcmdpriv->rsp_allocated_buf  +  4 - ((SIZE_PTR)(pcmdpriv->rsp_allocated_buf) & 3);
+ 	ret = vchiq_mmal_port_set_format(dev->instance, camera_port);
  
--	pcmdpriv->cmd_issued_cnt = pcmdpriv->cmd_done_cnt = pcmdpriv->rsp_cnt = 0;
-+	pcmdpriv->cmd_issued_cnt = 0;
-+	pcmdpriv->cmd_done_cnt = 0;
-+	pcmdpriv->rsp_cnt = 0;
- 
- 	mutex_init(&pcmdpriv->sctx_mutex);
- exit:
-@@ -2138,7 +2140,8 @@ void rtw_setassocsta_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *
- 		goto exit;
- 	}
- 
--	psta->aid = psta->mac_id = passocsta_rsp->cam_id;
-+	psta->aid = passocsta_rsp->cam_id;
-+	psta->mac_id = passocsta_rsp->cam_id;
- 
- 	spin_lock_bh(&pmlmepriv->lock);
- 
+-	if (!ret
+-	    && camera_port ==
++	if (!ret &&
++	    camera_port ==
+ 	    &dev->component[COMP_CAMERA]->output[CAM_PORT_VIDEO]) {
+ 		bool overlay_enabled =
+ 		    !!dev->component[COMP_PREVIEW]->enabled;
 -- 
-2.17.1
+2.21.0
 
 
