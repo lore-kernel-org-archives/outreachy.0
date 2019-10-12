@@ -1,176 +1,87 @@
 X-GM-THRID: 6746720218426376192
-X-Received: by 2002:a5d:6a02:: with SMTP id m2mr10713335wru.120.1570858899587;
-        Fri, 11 Oct 2019 22:41:39 -0700 (PDT)
+X-Received: by 2002:a9d:12f1:: with SMTP id g104mr14741453otg.358.1570846032467;
+        Fri, 11 Oct 2019 19:07:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:eb8a:: with SMTP id t10ls3278114wrn.16.gmail; Fri, 11
- Oct 2019 22:41:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQDXJye2OmLpgYWfiAVu7LpzM/9A/Zac+nFhLaqABfLb9JiXxisMkyDP1esLBb1M31zdE1
-X-Received: by 2002:adf:f2c7:: with SMTP id d7mr16840706wrp.318.1570858898521;
-        Fri, 11 Oct 2019 22:41:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570858898; cv=none;
+Received: by 2002:aca:2101:: with SMTP id 1ls1794312oiz.9.gmail; Fri, 11 Oct
+ 2019 19:07:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZnBshflHY2PtjVcENJ+gOM8ssIX79cPQr/L4DNuren3xbyDhPeeFueRTflTURCGVims6p
+X-Received: by 2002:aca:620a:: with SMTP id w10mr15354422oib.0.1570846031487;
+        Fri, 11 Oct 2019 19:07:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570846031; cv=none;
         d=google.com; s=arc-20160816;
-        b=WAnhXg87C1VTHUyMWAuAFY/cvOcXC47q0oWHrrl5aPQz4YIoVbzrIy9A0ZYoOyev+U
-         HWTWHYueUYy0VX5KJcPJdKWFNNisiyE3/Z1CPBOlovJBS03bCw+nj3w80rOAgE6o6+Db
-         I1dNwOLttmXwBjC7tWWyQb8p5kSbGp1yl73AAJ9PDGD0HtF9KCPlpEOxvbqYedOslZox
-         Liu9pfBoJkCTnptgo/8b3ftVuT19fuvaYYbtGsjkgoKfazMa/f4kYRYAwMyb3eq6u/L5
-         Td+l+SNDyizVVe6RAh0oZwT6DXRlm8Ld0kqhMj/fAlXMTgSeco7+ow6L4fp9oKUTREjH
-         BFVA==
+        b=NxRkjsZUJ0UPKyBtIbCCk01lgl1E2pH/B4wYBfCHuh6cj5juhq/GBmmClCv+/TbZRw
+         lHk5DolSCBqENMxOWyl8Snd4pXW30IdsB91EYNpzXH5ro8DHIEvSTM9jDeSx6Nw/N/Pr
+         ltDq3+JED63Gz7QW0YkAL8hAHtSv0IchlDHUuK4sqgA2bHlXkCEGzcz4lePjvcfnIt5p
+         V5nKpnB58/snwZC1YOA9CtxSH1OeQM3fy5My6Ml041HvqHjwwMZAba/4ULWg8uQPqEOL
+         u/FJif0Fj3LEtH2LNDJz5VZZxp1gD4mQWydHUKv3bUsPewnZ30PeXMxRL2hlcCvuEEVD
+         t0gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=2pFUuQZY8HzYH5EodgHw4Zzz/MXxqS7h9+eg45nrLw4=;
-        b=InER7H6MilTw/jFCz+jQIyczsfDem1p527KSt4HGOm6YIddq5NDaQ0YiViVouI7Qet
-         UJfCOI4K4auCbyiVSYOGc5cELjEgeZLQOsJbFdYsZGnRr97eT5ALxJApMLxW7wVfK3+n
-         r2RovlzcvkC0l4PAZfsQHP8/Uin/wIa3TaOvb/N8nfuFFZRIE8zBPJm30ch8M9E2QUbQ
-         Qw8d+tn0Pxzx4qY823GDQkKADlza8fj1lco5nlQcTkM1zGrOCnDRLxdH9sX2lJj80I1S
-         PwVUz4jIs7LDYal+jiTOZHrdCfdMCgMujf48dYwkf9BJbH1RN1hcDm+pc65kwiWHxdzz
-         514A==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:to:from:subject:message-id;
+        bh=Omn1sK629wOewURzdauokW0nAh8sEHW7KjETfEe3W6A=;
+        b=x5WfC9lB/tTvdIRBw4DmXSVo00ufpNP3sWDO3b7TUvTUff3LD6bqimAOXtXmLTxgAE
+         bs+lNVt8uYrMpgSs/uwGvDr6kJisYPxag0d33D1oGWCaeFA456H2YrFfzbMzY02YELcI
+         v731SmWFglEoIdbP0cf+j52JLGFLP85Ypu5cAJR57MOrjDUxBHR8T9F6pE9p6EkH26if
+         QaZua+y8RgjxVEW5SlXCtUq89MyaWKP12jVlm7UbJmdImxIusdi5LJhsHjFT22E9bsrm
+         Cwq1/lqH9e0LmRz7PHcqNUrb8fkx/ABa3+REu54QL2tInT2WDFUsMULAU7DT0LylxlPL
+         af3A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id q137si914096wme.3.2019.10.11.22.41.38
+       spf=neutral (google.com: 216.40.44.105 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0105.hostedemail.com. [216.40.44.105])
+        by gmr-mx.google.com with ESMTPS id i19si120311otk.0.2019.10.11.19.07.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Oct 2019 22:41:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Fri, 11 Oct 2019 19:07:11 -0700 (PDT)
+Received-SPF: neutral (google.com: 216.40.44.105 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.105;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,286,1566856800"; 
-   d="scan'208";a="405849016"
-Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Oct 2019 07:41:38 +0200
-Date: Sat, 12 Oct 2019 07:41:37 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-cc: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com, 
-    teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org, 
-    linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org, 
-    trivial@kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: align arguments
- with open parenthesis
+       spf=neutral (google.com: 216.40.44.105 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay08.hostedemail.com (Postfix) with ESMTP id 8DE79182CED2A;
+	Sat, 12 Oct 2019 02:07:10 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 80,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::,RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:4321:4605:5007:8957:10004:10400:11232:11658:11914:12043:12048:12296:12297:12740:12760:12895:13069:13311:13357:13439:14096:14097:14659:14721:21080:21451:21627:30003:30054:30091,0,RBL:23.242.70.174:@perches.com:.lbl8.mailshell.net-62.8.0.180 64.201.201.201,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:neutral,Custom_rules:0:0:0,LFtime:28,LUA_SUMMARY:none
+X-HE-Tag: bite17_4300371d6934
+X-Filterd-Recvd-Size: 2049
+Received: from XPS-9350 (cpe-23-242-70-174.socal.res.rr.com [23.242.70.174])
+	(Authenticated sender: joe@perches.com)
+	by omf07.hostedemail.com (Postfix) with ESMTPA;
+	Sat, 12 Oct 2019 02:07:08 +0000 (UTC)
+Message-ID: <8886b98ca936e7150abf36aa3c9d167073eaba86.camel@perches.com>
+Subject: Re: [PATCH] staging: sm750fb: align arguments with open parenthesis
+From: Joe Perches <joe@perches.com>
+To: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>, 
+ outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com, 
+ teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org, 
+ linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org, 
+ linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
+ trivial@kernel.org
+Date: Fri, 11 Oct 2019 19:07:06 -0700
 In-Reply-To: <20191012011956.9452-1-gabrielabittencourt00@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910120738540.2637@hadrien>
 References: <20191012011956.9452-1-gabrielabittencourt00@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Content-Type: text/plain; charset="ISO-8859-1"
+User-Agent: Evolution 3.32.1-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-
-
-On Fri, 11 Oct 2019, Gabriela Bittencourt wrote:
-
+On Fri, 2019-10-11 at 22:19 -0300, Gabriela Bittencourt wrote:
 > Cleans up checks of "Alignment should match open parenthesis" in tree sm750fb
->
-> Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_display.c |  2 +-
->  drivers/staging/sm750fb/sm750_accel.c    |  2 +-
->  drivers/staging/sm750fb/sm750_accel.h    |  8 ++++----
->  drivers/staging/sm750fb/sm750_cursor.h   | 10 +++++-----
->  4 files changed, 11 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
-> index 887ea8aef43f..8be98a1058d6 100644
-> --- a/drivers/staging/sm750fb/ddk750_display.c
-> +++ b/drivers/staging/sm750fb/ddk750_display.c
-> @@ -148,7 +148,7 @@ void ddk750_set_logical_disp_out(enum disp_output output)
->  	if (output & PNL_SEQ_USAGE) {
->  		/* set  panel sequence */
->  		sw_panel_power_sequence((output & PNL_SEQ_MASK) >> PNL_SEQ_OFFSET,
-> -		4);
-> +					4);
->  	}
->
->  	if (output & DAC_USAGE)
+[]
 > diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-> index dbcbbd1055da..1a9555bb9edd 100644
-> --- a/drivers/staging/sm750fb/sm750_accel.c
-> +++ b/drivers/staging/sm750fb/sm750_accel.c
+[]
 > @@ -289,7 +289,7 @@ static unsigned int deGetTransparency(struct lynx_accel *accel)
 >  }
->
+>  
 >  int sm750_hw_imageblit(struct lynx_accel *accel,
 > -		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
 > +		       const char *pSrcbuf, /* pointer to start of source buffer in system memory */
 >  		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
+
+checkpatch only warns on the first unaligned argument, but
+all statement lines are meant to align to the open parenthesis.
+
 >  		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
 >  		 u32 dBase,    /* Address of destination: offset in frame buffer */
 
-It is strange that the change is only does for the firsr parameter, and
-not for all of them.
 
-The kernel also uses a doc format for describing function patameters in a
-single comment before the function.  Look around in other files to see the
-format.  That would look much nicer than these comments going over 80
-columns.
-
-
-> diff --git a/drivers/staging/sm750fb/sm750_accel.h b/drivers/staging/sm750fb/sm750_accel.h
-> index c4f42002a50f..8fb79b09fdd0 100644
-> --- a/drivers/staging/sm750fb/sm750_accel.h
-> +++ b/drivers/staging/sm750fb/sm750_accel.h
-> @@ -190,9 +190,9 @@ void sm750_hw_set2dformat(struct lynx_accel *accel, int fmt);
->  void sm750_hw_de_init(struct lynx_accel *accel);
->
->  int sm750_hw_fillrect(struct lynx_accel *accel,
-> -				u32 base, u32 pitch, u32 Bpp,
-> -				u32 x, u32 y, u32 width, u32 height,
-> -				u32 color, u32 rop);
-> +		      u32 base, u32 pitch, u32 Bpp,
-> +		      u32 x, u32 y, u32 width, u32 height,
-> +		      u32 color, u32 rop);
->
->  int sm750_hw_copyarea(
->  struct lynx_accel *accel,
-> @@ -210,7 +210,7 @@ unsigned int height, /* width and height of rectangle in pixel value */
->  unsigned int rop2);
->
->  int sm750_hw_imageblit(struct lynx_accel *accel,
-> -		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
-> +		       const char *pSrcbuf, /* pointer to start of source buffer in system memory */
->  		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
->  		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
->  		 u32 dBase,    /* Address of destination: offset in frame buffer */
-
-Same here.
-
-> diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
-> index 16ac07eb58d6..039ebfdf0bd9 100644
-> --- a/drivers/staging/sm750fb/sm750_cursor.h
-> +++ b/drivers/staging/sm750fb/sm750_cursor.h
-> @@ -6,13 +6,13 @@
->  void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
->  void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
->  void sm750_hw_cursor_setSize(struct lynx_cursor *cursor,
-> -						int w, int h);
-> +			     int w, int h);
->  void sm750_hw_cursor_setPos(struct lynx_cursor *cursor,
-> -						int x, int y);
-> +			    int x, int y);
-
-Perhaps these could just be all on one line?
-
-julia
-
->  void sm750_hw_cursor_setColor(struct lynx_cursor *cursor,
-> -						u32 fg, u32 bg);
-> +			      u32 fg, u32 bg);
->  void sm750_hw_cursor_setData(struct lynx_cursor *cursor,
-> -			u16 rop, const u8 *data, const u8 *mask);
-> +			     u16 rop, const u8 *data, const u8 *mask);
->  void sm750_hw_cursor_setData2(struct lynx_cursor *cursor,
-> -			u16 rop, const u8 *data, const u8 *mask);
-> +			      u16 rop, const u8 *data, const u8 *mask);
->  #endif
-> --
-> 2.20.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191012011956.9452-1-gabrielabittencourt00%40gmail.com.
->
 
