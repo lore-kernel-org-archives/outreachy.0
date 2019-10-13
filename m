@@ -1,129 +1,461 @@
 X-GM-THRID: 6747357864452423680
-X-Received: by 2002:a50:da0f:: with SMTP id z15mr24811790edj.137.1570993340133;
-        Sun, 13 Oct 2019 12:02:20 -0700 (PDT)
+X-Received: by 2002:a1c:2604:: with SMTP id m4mr12928506wmm.112.1570992093111;
+        Sun, 13 Oct 2019 11:41:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:a5c2:: with SMTP id b2ls2923466edc.3.gmail; Sun, 13 Oct
- 2019 12:02:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx1ZVt4oGlFhi2oFOF/NGTnnBgNdj6kmHXg65gSLb3eJecfxj+FIUoaC97uTBf+s2wX/4ex
-X-Received: by 2002:aa7:d753:: with SMTP id a19mr25406603eds.80.1570993339242;
-        Sun, 13 Oct 2019 12:02:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570993339; cv=none;
+Received: by 2002:a1c:7304:: with SMTP id d4ls5220900wmb.0.canary-gmail; Sun,
+ 13 Oct 2019 11:41:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwnA7lbItAh4GJo/3bwrnWwvRpG8n3ud/h59by4nUJg4L9XPbbXIPBdwVCBphlMIZPJnLou
+X-Received: by 2002:a1c:e48a:: with SMTP id b132mr12594469wmh.13.1570992092214;
+        Sun, 13 Oct 2019 11:41:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570992092; cv=none;
         d=google.com; s=arc-20160816;
-        b=qNUeQ5iKyQh4H5EeeV5SyAmsCBWAfK757K9gcIykTsSpPMB/RxeghpY1kSd0LSepy2
-         37MgVfekQqEBpSA/bfzU/WhZZkOP+IMGGUAXSDmUvCwroSZhK5tAP32xT63bpXhXjB1H
-         lSwQfuE+dhsEqnJFUrGrxsvSv/1pvlhYDN8Onw4F3V/jcMZdyADy2JSdt9anAHiICfk+
-         99WPynl1iXsvVRmrIlFwyDb5CMxoKRC4eWkGeJzItw0Eh2J3AK1hz2PuFq2XOAmefzTA
-         6MkheXCcjx2HT8+yzsi0BgXAyCVaYoPuUGRZBPdjEaPbYFbmsKASdd3GUyTX2wybXC1P
-         A8WA==
+        b=n1XlUVDbv/q0spSN/QeYu/MxQZs80rvtacjR3W2pEG0KlM6jXZerF9FKgfZshbXNLo
+         lHEdsflKCRKIMlhmc6CKcUdqGtvFdCQcIwwgt72aHXZMLSsoHbC1p2IlvuS5/q0G8yPB
+         Ctyoc4YV33dOoNzjBWgiaIPj71vosq9pVoRDKzc02WxfBPBQqcmX63ugq5r9WhjoEpOs
+         frS5hNm4dKUIErwg0zWXHp8FBR4ZeoRYUCsYkTGoK5kVeTDL563sJ6v5EmoGtP0gXh0d
+         f2DvixlzK5ScfKQBWDiThUBUPlZfKivKwb26RcVjK59GMe8aFBhP9S00uzsUoJh9x4dY
+         uNpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:date:from:dkim-signature;
-        bh=PxCXXBhA2C4YLbbTIZsjjSPm4uyCjLfswHazHo9DGq8=;
-        b=vh/G4jUgh9GJepYLQbXT8BkgLc3g2Q7zDo/n8AU4tby3GBcOdbtI8+xMEKVfksQJbh
-         sQpHBUyiHJifAN07iUcdlsvt8IH5992QnAk2X5QHaSAXpcD5g6vJRTd1CKMq7BBUE7Ph
-         vGF5cTSSKAXPkz9+SWzVAixYrGpU5EVfosRb+PkXD5LOjkYSB/A3g3zJM0dFH1JUjkrp
-         2SgO475BzKB/dIIos7V+b/z0G2v5gBLE+/9cKV4CtoEVZECTgbhrPWezVxRSggLXvz4n
-         pTgZb28fuu3Kc81wjXosTXXLRuET7pOBQ49Edo1WeNCGFSEW5ibtgRqbsGsdR3KYF8KM
-         +OcQ==
+         :cc:to:from:date;
+        bh=1v3gEPt12tqPGxdMQha0SgWUiULLsxkQ7R2QbfavMos=;
+        b=WNqtMxt2v5nbJCAzuUNc5fK+pOs5BMSW6+R9M9hi2mRfC3ZYm9/x2eKqE4rpdPcCnM
+         KGxFM3mkVypbzCCjY09eRGAQHCzOWNV65xcsNbPp7ZYs4x09AJog9VvryZYsl9VtucOH
+         hf/TPPYGbpbECBmPyhL8wuctq8pr/1VXDIMqRqpqfLqKkPg3FwPYUPOR5l0VSyOAy29l
+         pGdsRWoqy7uxerNE318MMsrc5rnFNkxhkHKv/4hUsQ/pwhBmWBfOHtOkngIhYYEBxYe/
+         qSjJmlnazzIIN4OSYsCqGcE42LIeE5fstmnWWwC9vlZ2BWLgQNVlIb9ahqZY691JB4vn
+         fn8g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pmiduzxg;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id a27si706993ejg.1.2019.10.13.12.02.19
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id s194si965421wme.2.2019.10.13.11.41.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Oct 2019 12:02:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 13 Oct 2019 11:41:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Pmiduzxg;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id h4so17179500wrv.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 13 Oct 2019 12:02:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:in-reply-to:message-id:references
-         :user-agent:mime-version;
-        bh=PxCXXBhA2C4YLbbTIZsjjSPm4uyCjLfswHazHo9DGq8=;
-        b=PmiduzxgZfYZ4Y4miFLkBY+Tvs4U8DF0tCoOdP6wlSkN/AU0MkesEU1lPjXphgh6lI
-         noVBN680XLK9ZWCPkAFIR0BYJ/DUjzyOmf5H+9Fyv0hdDDCUNBdrK15k/APgabD1a0bZ
-         Fj2wih9jCXW9zok/Oja5/1BCrCkjxiIQBYyq35bzaMjis57OIJn1T8b4UKuII8elh92p
-         rzn3YMGVArTbuIu86t/iu4/fAgGxUI0DIBi/8lZ5KgiqI6th8FDG1D6ncWkwW3nb4KKR
-         MBI9biz7oh1SxCMyZnqC4lGoGphiyZlMis+EUj+hnWq1TjcfP6KBjzN8ZHRlaR5Hc5ho
-         RlrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
-         :references:user-agent:mime-version;
-        bh=PxCXXBhA2C4YLbbTIZsjjSPm4uyCjLfswHazHo9DGq8=;
-        b=jkQgh1of4lTdxBit4p0IO1m7jx3UmYdeaFg9Kt2FOFPdSOr8JeYaerHjw2oaNc04gd
-         EcenyJUbgzi5DXBZKNqjG9UgoYJd70vttvVurIPLgMi7fTBkJUMKRmhyCV5BqohRldil
-         GS4wR0KioISPnxNKDVZ8NlMDTLkDC6/QwPE26Nkycf6Q/hMv5OvGPYY7gE5YDaM5f67X
-         pe6KOKhExMq8flek/RdsuimST3QlsLAON6tOYNDHZJteO/AHcX5OURdF71PbT7kx+Tj3
-         16ThqlLz48/feuvYCQvV/WC626/1kPgTfTz1bzk/P/BYiFVmydmIwjanMA2KiVSJmPfw
-         /jCA==
-X-Gm-Message-State: APjAAAWkHSCoL8LyXAXE9CPUuoJMS403wCk5u7RHHuvppsbG3alNPaF/
-	FwvkYcNtcHd7LqeZs+jKhQ==
-X-Received: by 2002:adf:f983:: with SMTP id f3mr22369431wrr.169.1570993338769;
-        Sun, 13 Oct 2019 12:02:18 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjabhubz.org (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.gmail.com with ESMTPSA id s1sm23055438wrg.80.2019.10.13.12.02.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Oct 2019 12:02:18 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
-Date: Sun, 13 Oct 2019 20:02:04 +0100 (BST)
-To: Julia Lawall <julia.lawall@lip6.fr>
-cc: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com, 
-    gregkh@linuxfoundation.org, eric@anholt.net, wahrenst@gmx.net, 
-    linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, 
-    linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
-    daniela.mormocea@gmail.com, dave.stevenson@raspberrypi.org, 
-    hverkuil-cisco@xs4all.nl, mchehab+samsung@kernel.org, 
-    bcm-kernel-feedback-list@broadcom.com, sbranden@broadcom.com, 
-    rjui@broadcom.com, f.fainelli@gmail.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,293,1566856800"; 
+   d="scan'208";a="322546275"
+Received: from 81-65-53-202.rev.numericable.fr (HELO hadrien) ([81.65.53.202])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Oct 2019 20:41:27 +0200
+Date: Sun, 13 Oct 2019 20:41:27 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    eric@anholt.net, wahrenst@gmx.net, linux-kernel@vger.kernel.org, 
+    devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, 
+    linux-rpi-kernel@lists.infradead.org, daniela.mormocea@gmail.com, 
+    dave.stevenson@raspberrypi.org, hverkuil-cisco@xs4all.nl, 
+    mchehab+samsung@kernel.org, bcm-kernel-feedback-list@broadcom.com, 
+    sbranden@broadcom.com, rjui@broadcom.com, f.fainelli@gmail.com
 Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: vc04_services: fix lines
  ending with open parenthesis
-In-Reply-To: <alpine.DEB.2.21.1910132040140.2565@hadrien>
-Message-ID: <alpine.LFD.2.21.1910131951160.13450@ninjahub.org>
-References: <20191013183420.13785-1-jbi.octave@gmail.com> <alpine.DEB.2.21.1910132040140.2565@hadrien>
-User-Agent: Alpine 2.21 (LFD 202 2017-01-01)
+In-Reply-To: <20191013183420.13785-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910132040140.2565@hadrien>
+References: <20191013183420.13785-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Sun, 13 Oct 2019, Julia Lawall wrote:
+On Sun, 13 Oct 2019, Jules Irenge wrote:
 
-> 
-> 
-> On Sun, 13 Oct 2019, Jules Irenge wrote:
-> 
-> > Fix lines ending with open parenthesis. Issue detected by checkpatch tool.
-> > In the process, change driver functions name in the multiple files from:
-> > vchiq_mmal_port_parameter_set to vmp_prmtr_set
-> > vchiq_mmal_component_disable to vm_cmpnt_disable
-> > vchiq_mmal_port_connect_tunnel to vmp_cnnct_tunnel
-> > vchiq_mmal_component_enable to vm_cmpnt_enable
-> 
-> You should say why you change the names.
-> 
-> As far as I can see, there is no change to the actual function
-> definitions, so the code can't compile.  Perhaps that comes later in the
-> series, but the elements of the series have to be ordered such that
-> compilation is possible after each patch.
-> 
-> julia
-> 
+> Fix lines ending with open parenthesis. Issue detected by checkpatch tool.
+> In the process, change driver functions name in the multiple files from:
+> vchiq_mmal_port_parameter_set to vmp_prmtr_set
+> vchiq_mmal_component_disable to vm_cmpnt_disable
+> vchiq_mmal_port_connect_tunnel to vmp_cnnct_tunnel
+> vchiq_mmal_component_enable to vm_cmpnt_enable
 
-Thanks for the feedback, I am updating it and will be compiling  
-each point.
-Jules
+You should say why you change the names.
 
+As far as I can see, there is no change to the actual function
+definitions, so the code can't compile.  Perhaps that comes later in the
+series, but the elements of the series have to be ordered such that
+compilation is possible after each patch.
 
+julia
 
-
+>
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  .../bcm2835-camera/bcm2835-camera.c           | 191 ++++++++----------
+>  1 file changed, 89 insertions(+), 102 deletions(-)
+>
+> diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> index beb6a0063bb8..0ffe95b3bfb2 100644
+> --- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> +++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
+> @@ -337,12 +337,11 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+>  			if (is_capturing(dev)) {
+>  				v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  					 "Grab another frame");
+> -				vchiq_mmal_port_parameter_set(
+> -					instance,
+> -					dev->capture.camera_port,
+> -					MMAL_PARAMETER_CAPTURE,
+> -					&dev->capture.frame_count,
+> -					sizeof(dev->capture.frame_count));
+> +				vmp_prmtr_set(instance,
+> +					      dev->capture.camera_port,
+> +					      MMAL_PARAMETER_CAPTURE,
+> +					      &dev->capture.frame_count,
+> +					      sizeof(dev->capture.frame_count));
+>  			}
+>  			if (vchiq_mmal_submit_buffer(instance, port, buf))
+>  				v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+> @@ -392,12 +391,11 @@ static void buffer_cb(struct vchiq_mmal_instance *instance,
+>  	    is_capturing(dev)) {
+>  		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  			 "Grab another frame as buffer has EOS");
+> -		vchiq_mmal_port_parameter_set(
+> -			instance,
+> -			dev->capture.camera_port,
+> -			MMAL_PARAMETER_CAPTURE,
+> -			&dev->capture.frame_count,
+> -			sizeof(dev->capture.frame_count));
+> +		vmp_prmtr_set(instance,
+> +			      dev->capture.camera_port,
+> +			      MMAL_PARAMETER_CAPTURE,
+> +			      &dev->capture.frame_count,
+> +			      sizeof(dev->capture.frame_count));
+>  	}
+>  }
+>
+> @@ -406,20 +404,18 @@ static int enable_camera(struct bm2835_mmal_dev *dev)
+>  	int ret;
+>
+>  	if (!dev->camera_use_count) {
+> -		ret = vchiq_mmal_port_parameter_set(
+> -			dev->instance,
+> -			&dev->component[COMP_CAMERA]->control,
+> -			MMAL_PARAMETER_CAMERA_NUM, &dev->camera_num,
+> -			sizeof(dev->camera_num));
+> +		ret = vmp_prmtr_set(dev->instance,
+> +				    &dev->component[COMP_CAMERA]->control,
+> +				    MMAL_PARAMETER_CAMERA_NUM, &dev->camera_num,
+> +				    sizeof(dev->camera_num));
+>  		if (ret < 0) {
+>  			v4l2_err(&dev->v4l2_dev,
+>  				 "Failed setting camera num, ret %d\n", ret);
+>  			return -EINVAL;
+>  		}
+>
+> -		ret = vchiq_mmal_component_enable(
+> -				dev->instance,
+> -				dev->component[COMP_CAMERA]);
+> +		ret = vm_cmpnt_enable(dev->instance,
+> +				      dev->component[COMP_CAMERA]);
+>  		if (ret < 0) {
+>  			v4l2_err(&dev->v4l2_dev,
+>  				 "Failed enabling camera, ret %d\n", ret);
+> @@ -449,19 +445,17 @@ static int disable_camera(struct bm2835_mmal_dev *dev)
+>  		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  			 "Disabling camera\n");
+>  		ret =
+> -		    vchiq_mmal_component_disable(
+> -				dev->instance,
+> -				dev->component[COMP_CAMERA]);
+> +		    vm_cmpnt_disable(dev->instance,
+> +				     dev->component[COMP_CAMERA]);
+>  		if (ret < 0) {
+>  			v4l2_err(&dev->v4l2_dev,
+>  				 "Failed disabling camera, ret %d\n", ret);
+>  			return -EINVAL;
+>  		}
+> -		vchiq_mmal_port_parameter_set(
+> -			dev->instance,
+> -			&dev->component[COMP_CAMERA]->control,
+> -			MMAL_PARAMETER_CAMERA_NUM, &i,
+> -			sizeof(i));
+> +		vmp_prmtr_set(dev->instance,
+> +			      &dev->component[COMP_CAMERA]->control,
+> +			      MMAL_PARAMETER_CAMERA_NUM, &i,
+> +			      sizeof(i));
+>  	}
+>  	v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  		 "Camera refcount now %d\n", dev->camera_use_count);
+> @@ -569,11 +563,11 @@ static int start_streaming(struct vb2_queue *vq, unsigned int count)
+>  	}
+>
+>  	/* capture the first frame */
+> -	vchiq_mmal_port_parameter_set(dev->instance,
+> -				      dev->capture.camera_port,
+> -				      MMAL_PARAMETER_CAPTURE,
+> -				      &dev->capture.frame_count,
+> -				      sizeof(dev->capture.frame_count));
+> +	vmp_prmtr_set(dev->instance,
+> +		      dev->capture.camera_port,
+> +		      MMAL_PARAMETER_CAPTURE,
+> +		      &dev->capture.frame_count,
+> +		      sizeof(dev->capture.frame_count));
+>  	return 0;
+>  }
+>
+> @@ -601,11 +595,11 @@ static void stop_streaming(struct vb2_queue *vq)
+>  	v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev, "stopping capturing\n");
+>
+>  	/* stop capturing frames */
+> -	vchiq_mmal_port_parameter_set(dev->instance,
+> -				      dev->capture.camera_port,
+> -				      MMAL_PARAMETER_CAPTURE,
+> -				      &dev->capture.frame_count,
+> -				      sizeof(dev->capture.frame_count));
+> +	vmp_prmtr_set(dev->instance,
+> +		      dev->capture.camera_port,
+> +		      MMAL_PARAMETER_CAPTURE,
+> +		      &dev->capture.frame_count,
+> +		      sizeof(dev->capture.frame_count));
+>
+>  	v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  		 "disabling connection\n");
+> @@ -675,9 +669,10 @@ static int set_overlay_params(struct bm2835_mmal_dev *dev,
+>  			.height = dev->overlay.w.height,
+>  		},
+>  	};
+> -	return vchiq_mmal_port_parameter_set(dev->instance, port,
+> -					     MMAL_PARAMETER_DISPLAYREGION,
+> -					     &prev_config, sizeof(prev_config));
+> +	return vmp_prmtr_set(dev->instance,
+> +			     port,
+> +			     MMAL_PARAMETER_DISPLAYREGION,
+> +			     &prev_config, sizeof(prev_config));
+>  }
+>
+>  /* overlay ioctl */
+> @@ -772,12 +767,12 @@ static int vidioc_overlay(struct file *file, void *f, unsigned int on)
+>  		ret = vchiq_mmal_port_disable(dev->instance, src);
+>  		if (!ret)
+>  			ret =
+> -			    vchiq_mmal_port_connect_tunnel(dev->instance, src,
+> -							   NULL);
+> +			    vmp_cnnct_tunnel(dev->instance,
+> +					     src,
+> +					     NULL);
+>  		if (ret >= 0)
+> -			ret = vchiq_mmal_component_disable(
+> -					dev->instance,
+> -					dev->component[COMP_PREVIEW]);
+> +			ret = vm_cmpnt_disable(dev->instance,
+> +					       dev->component[COMP_PREVIEW]);
+>
+>  		disable_camera(dev);
+>  		return ret;
+> @@ -797,15 +792,14 @@ static int vidioc_overlay(struct file *file, void *f, unsigned int on)
+>  	if (enable_camera(dev) < 0)
+>  		return -EINVAL;
+>
+> -	ret = vchiq_mmal_component_enable(
+> -			dev->instance,
+> -			dev->component[COMP_PREVIEW]);
+> +	ret = vm_cmpnt_enable(dev->instance,
+> +			      dev->component[COMP_PREVIEW]);
+>  	if (ret < 0)
+>  		return ret;
+>
+>  	v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev, "connecting %p to %p\n",
+>  		 src, dst);
+> -	ret = vchiq_mmal_port_connect_tunnel(dev->instance, src, dst);
+> +	ret = vmp_cnnct_tunnel(dev->instance, src, dst);
+>  	if (ret)
+>  		return ret;
+>
+> @@ -1015,11 +1009,11 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  			 "vid_cap - disconnect previous tunnel\n");
+>
+>  		/* Disconnect any previous connection */
+> -		vchiq_mmal_port_connect_tunnel(dev->instance,
+> -					       dev->capture.camera_port, NULL);
+> +		vmp_cnnct_tunnel(dev->instance,
+> +				 dev->capture.camera_port, NULL);
+>  		dev->capture.camera_port = NULL;
+> -		ret = vchiq_mmal_component_disable(dev->instance,
+> -						   dev->capture.encode_component);
+> +		ret = vm_cmpnt_disable(dev->instance,
+> +				       dev->capture.encode_component);
+>  		if (ret)
+>  			v4l2_err(&dev->v4l2_dev,
+>  				 "Failed to disable encode component %d\n",
+> @@ -1072,10 +1066,10 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  	}
+>
+>  	remove_padding = mfmt->remove_padding;
+> -	vchiq_mmal_port_parameter_set(dev->instance,
+> -				      camera_port,
+> -				      MMAL_PARAMETER_NO_IMAGE_PADDING,
+> -				      &remove_padding, sizeof(remove_padding));
+> +	vmp_prmtr_set(dev->instance,
+> +		      camera_port,
+> +		      MMAL_PARAMETER_NO_IMAGE_PADDING,
+> +		      &remove_padding, sizeof(remove_padding));
+>
+>  	camera_port->format.encoding_variant = 0;
+>  	camera_port->es.video.width = f->fmt.pix.width;
+> @@ -1107,10 +1101,9 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  						    preview_port);
+>  			if (!ret)
+>  				ret =
+> -				    vchiq_mmal_port_connect_tunnel(
+> -						dev->instance,
+> -						preview_port,
+> -						NULL);
+> +				    vmp_cnnct_tunnel(dev->instance,
+> +						     preview_port,
+> +						     NULL);
+>  		}
+>  		preview_port->es.video.width = f->fmt.pix.width;
+>  		preview_port->es.video.height = f->fmt.pix.height;
+> @@ -1124,9 +1117,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  					  dev->capture.timeperframe.numerator;
+>  		ret = vchiq_mmal_port_set_format(dev->instance, preview_port);
+>  		if (overlay_enabled) {
+> -			ret = vchiq_mmal_port_connect_tunnel(
+> -				dev->instance,
+> -				preview_port,
+> +			ret = vmp_cnnct_tunnel(dev->instance,
+> +					       preview_port,
+>  				&dev->component[COMP_PREVIEW]->input[0]);
+>  			if (!ret)
+>  				ret = vchiq_mmal_port_enable(dev->instance,
+> @@ -1154,10 +1146,9 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  			    camera_port->recommended_buffer.num;
+>
+>  			ret =
+> -			    vchiq_mmal_port_connect_tunnel(
+> -					dev->instance,
+> -					camera_port,
+> -					&encode_component->input[0]);
+> +			    vmp_cnnct_tunnel(dev->instance,
+> +					     camera_port,
+> +					     &encode_component->input[0]);
+>  			if (ret) {
+>  				v4l2_dbg(1, bcm2835_v4l2_debug,
+>  					 &dev->v4l2_dev,
+> @@ -1205,9 +1196,8 @@ static int mmal_setup_components(struct bm2835_mmal_dev *dev,
+>  			}
+>
+>  			if (!ret) {
+> -				ret = vchiq_mmal_component_enable(
+> -						dev->instance,
+> -						encode_component);
+> +				ret = vm_cmpnt_enable(dev->instance,
+> +						      encode_component);
+>  				if (ret) {
+>  					v4l2_dbg(1, bcm2835_v4l2_debug,
+>  						 &dev->v4l2_dev,
+> @@ -1530,7 +1520,7 @@ static int set_camera_parameters(struct vchiq_mmal_instance *instance,
+>  		.use_stc_timestamp = MMAL_PARAM_TIMESTAMP_MODE_RAW_STC
+>  	};
+>
+> -	return vchiq_mmal_port_parameter_set(instance, &camera->control,
+> +	return vmp_prmtr_set(instance, &camera->control,
+>  					    MMAL_PARAMETER_CAMERA_CONFIG,
+>  					    &cam_config, sizeof(cam_config));
+>  }
+> @@ -1655,9 +1645,9 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	dev->capture.enc_level = V4L2_MPEG_VIDEO_H264_LEVEL_4_0;
+>
+>  	/* get the preview component ready */
+> -	ret = vchiq_mmal_component_init(
+> -			dev->instance, "ril.video_render",
+> -			&dev->component[COMP_PREVIEW]);
+> +	ret = vchiq_mmal_component_init(dev->instance,
+> +					"ril.video_render",
+> +					&dev->component[COMP_PREVIEW]);
+>  	if (ret < 0)
+>  		goto unreg_camera;
+>
+> @@ -1669,9 +1659,9 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	}
+>
+>  	/* get the image encoder component ready */
+> -	ret = vchiq_mmal_component_init(
+> -		dev->instance, "ril.image_encode",
+> -		&dev->component[COMP_IMAGE_ENCODE]);
+> +	ret = vchiq_mmal_component_init(dev->instance,
+> +					"ril.image_encode",
+> +					&dev->component[COMP_IMAGE_ENCODE]);
+>  	if (ret < 0)
+>  		goto unreg_preview;
+>
+> @@ -1708,17 +1698,16 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>  	{
+>  		unsigned int enable = 1;
+>
+> -		vchiq_mmal_port_parameter_set(
+> -			dev->instance,
+> -			&dev->component[COMP_VIDEO_ENCODE]->control,
+> -			MMAL_PARAMETER_VIDEO_IMMUTABLE_INPUT,
+> -			&enable, sizeof(enable));
+> -
+> -		vchiq_mmal_port_parameter_set(dev->instance,
+> -					      &dev->component[COMP_VIDEO_ENCODE]->control,
+> -					      MMAL_PARAMETER_MINIMISE_FRAGMENTATION,
+> -					      &enable,
+> -					      sizeof(enable));
+> +		vmp_prmtr_set(dev->instance,
+> +			      &dev->component[COMP_VIDEO_ENCODE]->control,
+> +			      MMAL_PARAMETER_VIDEO_IMMUTABLE_INPUT,
+> +			      &enable, sizeof(enable));
+> +
+> +		vmp_prmtr_set(dev->instance,
+> +			      &dev->component[COMP_VIDEO_ENCODE]->control,
+> +			      MMAL_PARAMETER_MINIMISE_FRAGMENTATION,
+> +			      &enable,
+> +			      sizeof(enable));
+>  	}
+>  	ret = bm2835_mmal_set_all_camera_controls(dev);
+>  	if (ret < 0) {
+> @@ -1731,15 +1720,13 @@ static int mmal_init(struct bm2835_mmal_dev *dev)
+>
+>  unreg_vid_encoder:
+>  	pr_err("Cleanup: Destroy video encoder\n");
+> -	vchiq_mmal_component_finalise(
+> -		dev->instance,
+> -		dev->component[COMP_VIDEO_ENCODE]);
+> +	vchiq_mmal_component_finalise(dev->instance,
+> +				      dev->component[COMP_VIDEO_ENCODE]);
+>
+>  unreg_image_encoder:
+>  	pr_err("Cleanup: Destroy image encoder\n");
+> -	vchiq_mmal_component_finalise(
+> -		dev->instance,
+> -		dev->component[COMP_IMAGE_ENCODE]);
+> +	vchiq_mmal_component_finalise(dev->instance,
+> +				      dev->component[COMP_IMAGE_ENCODE]);
+>
+>  unreg_preview:
+>  	pr_err("Cleanup: Destroy video render\n");
+> @@ -1799,13 +1786,13 @@ static void bcm2835_cleanup_instance(struct bm2835_mmal_dev *dev)
+>  	if (dev->capture.encode_component) {
+>  		v4l2_dbg(1, bcm2835_v4l2_debug, &dev->v4l2_dev,
+>  			 "mmal_exit - disconnect tunnel\n");
+> -		vchiq_mmal_port_connect_tunnel(dev->instance,
+> -					       dev->capture.camera_port, NULL);
+> -		vchiq_mmal_component_disable(dev->instance,
+> -					     dev->capture.encode_component);
+> +		vmp_cnnct_tunnel(dev->instance,
+> +				 dev->capture.camera_port, NULL);
+> +		vm_cmpnt_disable(dev->instance,
+> +				 dev->capture.encode_component);
+>  	}
+> -	vchiq_mmal_component_disable(dev->instance,
+> -				     dev->component[COMP_CAMERA]);
+> +	vm_cmpnt_disable(dev->instance,
+> +			 dev->component[COMP_CAMERA]);
+>
+>  	vchiq_mmal_component_finalise(dev->instance,
+>  				      dev->component[COMP_VIDEO_ENCODE]);
+> --
+> 2.21.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191013183420.13785-1-jbi.octave%40gmail.com.
+>
 
