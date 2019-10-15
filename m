@@ -1,97 +1,117 @@
 X-GM-THRID: 6748161945131548672
-X-Received: by 2002:a19:6917:: with SMTP id e23mr3028455lfc.4.1571228493309;
-        Wed, 16 Oct 2019 05:21:33 -0700 (PDT)
+X-Received: by 2002:a17:906:b7d0:: with SMTP id fy16mr37017480ejb.207.1571178889421;
+        Tue, 15 Oct 2019 15:34:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:c396:: with SMTP id t144ls1991043lff.8.gmail; Wed, 16
- Oct 2019 05:21:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzL27ifBz+JMdZhDtnsz3AhbzW7RMd7Syb7k5UOlBIIe1jzDxb43sySl2hUhrZu2Zbrx1yZ
-X-Received: by 2002:ac2:4a68:: with SMTP id q8mr1926933lfp.20.1571228492337;
-        Wed, 16 Oct 2019 05:21:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571228492; cv=none;
+Received: by 2002:a50:9796:: with SMTP id e22ls4532892edb.14.gmail; Tue, 15
+ Oct 2019 15:34:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwwRScbhV6wbE9nX+5af06dGjPKRDA2dRNN/L8o60M2n5nzh35ibg0WoJIReHPUyUAX4+OQ
+X-Received: by 2002:a05:6402:2022:: with SMTP id ay2mr35927569edb.219.1571178888501;
+        Tue, 15 Oct 2019 15:34:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571178888; cv=none;
         d=google.com; s=arc-20160816;
-        b=RMnPV1oTrd0R2WTeiVZD2Tb5I6Uu/W7TvFgmXHbU1A0rrRYfqnxu4rDqliKK1EhcCR
-         9hyVfGTTLTOE5gXnTIVdEGtUhskUWCiiSzzbZ55W87auSM+qzE71wGGWhcv5Ifh8H/Nn
-         sDIZ4Nj+/bt5adc5g8JDTpey2YvNuOGAMDZBizpz7R5M5rTY9b/534Ppcl5klXnj6+De
-         J51DgARxC5tzRy3Vcd075gfU9ZkDkvBk5mteBW+hbv63rTvUjB8Pr+EdPXDEocpmIUnV
-         wU0PiARhQoVu42TRQjEt5DGCgCFV8cp1x94vXGHmLNCgxsvZjw9AmRtcVxYpkQ1nvhVV
-         X2Tw==
+        b=W8esbHIDVxKV0M7CnkvNRWp/ENLkHWkjnaoGa2U+O/poAjJuE+XxLxNxWX2PMp8QOV
+         QsOzTp592D1cB1Etxa7uc2dRMBT1ygRLVErOHmzgBnpDVrJxSNniEJ9GH+IXFgFsIfbZ
+         3FsCL8LYhL9PyTX9ZXkPb3xMoxon/RwgWj540ZN/1wZduohUPNC74n9wLw1uz7PYMEtW
+         7jj7jB1Ovd05Mx+uyDcX1qhVFCbxhd6p06LElR6RlttNXlNINI3ZutqR4zZUYapXJREs
+         coGzqGFmAdcEkUnb1Xw512Rov+ju3sPp8xVhWeVTlPFBeWpLsO/6WHpyKYVu3MrlZw2i
+         vt4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=nqHe3TyB8ANnZJ1AXz7M9nTtKc28OYq+qsLv4MBxz+4=;
-        b=SlIhgPqfSlm8zPIwNq3OwqaXGJ+nEsLV8Jw2DgBsaLhNO8I1IxUeSJxvjG4u4babuR
-         wBFKWOwM9qDtBoq3F3GXZwVYx2iJnxbt5Hgs6dzx9IG5YtPjQQ679mWZbp986FJXtzv+
-         PxqQ0HeOYyfCAnmbczWgNioba2oBX8EVn1UOeHTlCRbCNNPUeH1G4aTDGHv7YjgMzkbE
-         6vQ0EM60Ldg+ah7Fw0eort3E2C/HERHN83Urrj2ALMfKLlHoCGJB7Xck/3e+Gug68Eh7
-         LA2kdWphJFUG+BlZaFHJvqQtS1hgKR5kR1tZhzPtRPOw9WiuFUgHYjWQvDjr6DFj7u2f
-         opCg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=BR/+JcLXGlF7qNlnYNXPVWo3Nql+mobYo3ybFiUKVk4=;
+        b=nRbaRkbnlsNgaPZ3XSy7MYJJKA20pEzKltMzjDWSOs74B+MAbXCPjhHPwHLg9wyQ+2
+         Y7Q7TvJ14y5gZQFm/+YJ7iriFdbI2ScYgURDrz3biDs3vlRc5mlUg3HGrPU4ncz+HHvq
+         Q+DfbPOamnKVIGiknOLy+ANBww1tbSHJycrHqc+WtjpjKRrj2fieY9kIAIgnxUicY936
+         xYPCPERedBU4gQN7GATAyh3jAjj51Mnm5Cq9F2+OCg8EdmepZARLbHw5dKAuSjDnLHCg
+         ByoX3cbjDxMa45WCgubaXeuLb1eoLvXAFyftRW/DuXWgUiGslXqn7ko/ZsipHomC8nwN
+         TU/w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb3-smtp-cloud8.xs4all.net (lb3-smtp-cloud8.xs4all.net. [194.109.24.29])
-        by gmr-mx.google.com with ESMTPS id k24si871722lji.3.2019.10.16.05.21.32
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XE5sn3iX;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id q8si1249176edn.5.2019.10.15.15.34.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Oct 2019 05:21:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) client-ip=194.109.24.29;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 15 Oct 2019 15:34:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from [192.168.2.10] ([46.9.232.237])
-	by smtp-cloud8.xs4all.net with ESMTPA
-	id KiIuiHSeVPduvKiIxiquC1; Wed, 16 Oct 2019 14:21:31 +0200
-Subject: Re: [PATCH] staging: meson: add space to fix check warning
-To: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com
-Cc: mjourdan@baylibre.com, gregkh@linuxfoundation.org, mchehab@kernel.org,
- khilman@baylibre.com, linux-media@vger.kernel.org,
- linux-amlogic@lists.infradead.org, devel@driverdev.osuosl.org
-References: <20191015223433.18784-1-jbi.octave@gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <f855f544-e546-eb3d-6346-242eb3435e35@xs4all.nl>
-Date: Wed, 16 Oct 2019 14:21:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XE5sn3iX;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x343.google.com with SMTP id i16so709630wmd.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 15 Oct 2019 15:34:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=BR/+JcLXGlF7qNlnYNXPVWo3Nql+mobYo3ybFiUKVk4=;
+        b=XE5sn3iXKdNmwXYBgSR/Fm7Fn+i5kb49u8oZLnlZNLAqvDO/yQY3vXi0OryQZUyTyz
+         1Rqv3gw8NiClH2JJsSE6iIGkl/rPMP9B5ndr7PlbXe8b4bwU8b1Lw9LLhUSqPuL1ATdP
+         m0iWdn8fkmAC9HeT8IZWVRJ49WmpPdU44Rb5zGopErJYhidVQlOaOctQ+Fgp9D+kDgHj
+         h0zXwqMNPIbo0tzROn/kplccKVmXownn0VSmLlqB3zlxfB/txeQ0L+MOgjN2C6khacyw
+         YVtmSb86Uh/LpT6tqbeIkHhVzDHH1hjbX5uTnFE9/0A6QibobxjJqtQd9LSGnkSk954Y
+         pRPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=BR/+JcLXGlF7qNlnYNXPVWo3Nql+mobYo3ybFiUKVk4=;
+        b=Q8tE4aUmsuUTvuwpuDzJmd89FCcO5b+R5chlGnjlNe//TcglLgb/vVMRRK190ApC6b
+         r7l1Iu0FW4VBrINjvuxSzp3jWzVYkcFv4merZdAiQbKVLMLZypDzGyljzXJ+ds2k87EA
+         r+fTV2z5ph4hjg/nkd7FK4j9MkfwlyFhtB+6r8oyv35XJReOctm2MwDjuiK8CtqXvYWO
+         LHQSWR3eiR0pfTU1T/1iMdtyjZUB+kO6pshudqxDkkWGILeDK/8KqPFJKkOoJwaaMmTM
+         plXmNCx/KgQunuNbHADcEHLZphCbiTDUFVWCAtNyKH0jqYNKpQrGQuMmI4HiQp2bjcdS
+         Zu5w==
+X-Gm-Message-State: APjAAAUbkwIfJqkvo6L95BFxGYiPGpgZW/uTJVu0RhK65bQ6QYL4APr+
+	L+FdZFqQfjbmGxI+gy71LfSD0JAvxmE1tuY=
+X-Received: by 2002:a1c:7219:: with SMTP id n25mr543117wmc.33.1571178887899;
+        Tue, 15 Oct 2019 15:34:47 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (host-2-102-13-201.as13285.net. [2.102.13.201])
+        by smtp.googlemail.com with ESMTPSA id m18sm35667084wrg.97.2019.10.15.15.34.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Oct 2019 15:34:47 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: mjourdan@baylibre.com,
+	gregkh@linuxfoundation.org,
+	mchehab@kernel.org,
+	khilman@baylibre.com,
+	linux-media@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	devel@driverdev.osuosl.org,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH] staging: meson: add space to fix check warning
+Date: Tue, 15 Oct 2019 23:34:33 +0100
+Message-Id: <20191015223433.18784-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <20191015223433.18784-1-jbi.octave@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4wfHsIZxW8/J7+DHm0y77EjQKA9TDKkipmz/iz2ou5vQkcABiVz0wD2N9hiUJUO5Qx9SjJqf18AoTsRI0bf0iJGgCmY6wDtzHNVBgUWcNqB6OL1/cbZbOP
- DcGNv3faNnW4Gs0IsWlHmeVwyzNThU2fpY4N6Tno5jU8R7clio/iJfTcV7LTojz1sYlUCTtj2MquZ805HHw5+UV2xeistkVER1JR/xWjYQi+KmQ6Xr7vElI5
- 7xtYGyBG0DrC9jb4mcLXDjHZ24GlAZXssVO7m+nBFiWzh/9AGGUvgGV/Gs4htWUjbaYqXUXzN+Sz7R8jUywUtD/wBgQjptycUy0ZxzK/7dwbBLFTbsIenyvq
- 7f+S9k/uBvl/Znh9Cy9icsI1A/bjqgDGdL4gN3xRlbcv1RKWDTFLxPbd+11BFJ8ddLjjz0T5JQM0rdUmirDgeXTyfunyBwIuze2Cf4VgMom1O4YGu8iW14uu
- ftTg44AK0vfCQvdp
+Content-Transfer-Encoding: 8bit
 
-On 10/16/19 12:34 AM, Jules Irenge wrote:
-> Fix "alignment should mactch open parenthesis" check.
-> Issue detected by checkpatch tool
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/media/meson/vdec/codec_mpeg12.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/meson/vdec/codec_mpeg12.c b/drivers/staging/media/meson/vdec/codec_mpeg12.c
-> index 48869cc3d973..21e93a13356c 100644
-> --- a/drivers/staging/media/meson/vdec/codec_mpeg12.c
-> +++ b/drivers/staging/media/meson/vdec/codec_mpeg12.c
-> @@ -81,7 +81,7 @@ static int codec_mpeg12_start(struct amvdec_session *sess)
->  	}
->  
->  	ret = amvdec_set_canvases(sess, (u32[]){ AV_SCRATCH_0, 0 },
-> -					(u32[]){ 8, 0 });
+Fix "alignment should mactch open parenthesis" check.
+Issue detected by checkpatch tool
 
-This is clearly intended to be aligned with the (u32[]) prefix for readability.
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/media/meson/vdec/codec_mpeg12.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-So this is one checkpatch issue where I prefer to keep the original.
-
-Regards,
-
-	Hans
-
-> +				  (u32[]){ 8, 0 });
->  	if (ret)
->  		goto free_workspace;
->  
-> 
+diff --git a/drivers/staging/media/meson/vdec/codec_mpeg12.c b/drivers/staging/media/meson/vdec/codec_mpeg12.c
+index 48869cc3d973..21e93a13356c 100644
+--- a/drivers/staging/media/meson/vdec/codec_mpeg12.c
++++ b/drivers/staging/media/meson/vdec/codec_mpeg12.c
+@@ -81,7 +81,7 @@ static int codec_mpeg12_start(struct amvdec_session *sess)
+ 	}
+ 
+ 	ret = amvdec_set_canvases(sess, (u32[]){ AV_SCRATCH_0, 0 },
+-					(u32[]){ 8, 0 });
++				  (u32[]){ 8, 0 });
+ 	if (ret)
+ 		goto free_workspace;
+ 
+-- 
+2.21.0
 
 
