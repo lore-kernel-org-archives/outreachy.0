@@ -1,214 +1,108 @@
-X-GM-THRID: 6252303141698535424
-X-Received: by 10.182.102.38 with SMTP id fl6mr2259599obb.46.1455727764730;
-        Wed, 17 Feb 2016 08:49:24 -0800 (PST)
+X-GM-THRID: 6747765295374401536
+X-Received: by 2002:a62:1bd3:: with SMTP id b202mr36176946pfb.50.1571112583063;
+        Mon, 14 Oct 2019 21:09:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.19.104 with SMTP id b101ls1731685ioj.6.gmail; Wed, 17 Feb
- 2016 08:49:24 -0800 (PST)
-X-Received: by 10.107.152.10 with SMTP id a10mr3960119ioe.28.1455727764105;
-        Wed, 17 Feb 2016 08:49:24 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id 79si334035pft.0.2016.02.17.08.49.24
+Received: by 2002:a17:90a:2766:: with SMTP id o93ls5257383pje.4.gmail; Mon, 14
+ Oct 2019 21:09:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNTyZZRSPUmaa30ugeTuQ+mafRNZUNDkYhwy/F2lwbCQ2S3vGc5iTUuLytlGbRP7QEOwuw
+X-Received: by 2002:a17:90b:313:: with SMTP id ay19mr39330383pjb.25.1571112582086;
+        Mon, 14 Oct 2019 21:09:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571112582; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EFmsta7/0Bc0+/UK6oniJpb3P+0OvKvKt8kMRuGaHoK8EKSPcj4OvEanP6law8EILU
+         63bZBXIDWbYdog0EBNSoWp7+SbFoJx2wHHvvSLJCyG7JqYSpNoImxH7dvbca1BDRF5pW
+         /SX9uvyE9TgXd59FIY2EjVgZtuX3cjeE1d08tM9MCXTP/43CjBIZsgp0fHzxFTH4frYB
+         NqlNJrtLhN7pcH0n+uNgaJPaw7zN+9UvTSU77DcamwdX+ApbiEv+NiI7RfS6S6EVj+Jc
+         Q8WdRjGuIwGKDAY79zy27Y2FyT7kS6T/x1d+FESJBmK28bEGB5psllvNsx+mNVYu9NiI
+         /eBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=VCws3EIECiQSWDyLORhyGmrsCtBIi/RCPxl+vKG0/mY=;
+        b=DFOttbVqCjPIhdpis257hGXmcsd9NqvHIKsSECrMD4VYUyvPdQ1Q3EZL7NLL9clu53
+         5giPJ5OHx+x/KS09CfJkwBLrwa23oozJVOQbO/Uv5dmJ3E7qmjCSLIGRDJT2qqplTR7f
+         E6yFLIkQxoCXp8o+NvYAHiWIJv7vz8jLgb24JqjktpyA7qBrWYbSqABbFJwgjY6qUR8q
+         6BkXoogIO9Zkw0CZvrwVbq4YToJhq+HBKEcjUUhGkaOxnh7yqFftacZOnJnAXml8Ypqd
+         Bt0YH5eMCCRRTyTwBMryrM87fK/aZ4rB6NtmVfzWrkMfYGvyyNmSynM5YhF/MvpIetes
+         xYMw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=yseyImRB;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 124si1258195pgd.4.2019.10.14.21.09.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Feb 2016 08:49:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        Mon, 14 Oct 2019 21:09:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id x65so14301384pfb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 17 Feb 2016 08:49:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=DOmYF4X9f3s2MfjtRPfSJDKQ0L7dRC9wV1KN13bQT34=;
-        b=ZjYwi50BMnIWTatWN3Cv2wwDoiKy12ALpYY9Z7JLzF8rxOOUwQqCLhJ0XgaiBtbEfn
-         3FD2rh10bygGF1IcRzvRTuQRZwdm/LqfWF7kLF0itYiS3tYutFaYhiLzhdfdllzopezQ
-         /EN1fvHfuPRZFAdU0O1RPtlSYoRk0Ee218QNW7zWoxvcWp/EK4V4EXA/XXTcXLK+AXFM
-         lwfvsIr3TDEIizX+mDAdCm431kQ/l6mkF3bC8lVHnofo1MqMbAXy9LJ7qiJ6BnKGvR/3
-         Xi3MCMvRECgRSlc8UPLJCMX7Q2ILvG+c/xsYeeUfTS2R6EYKj5Z+4Sba9lG/eT2LmL7e
-         v8gw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-type:content-disposition:in-reply-to
-         :user-agent;
-        bh=DOmYF4X9f3s2MfjtRPfSJDKQ0L7dRC9wV1KN13bQT34=;
-        b=W5/ngsLAFZTkBAhGJA4ft7QVw7qumJIldTivqXesotr5aEWH/13l+fk1mAkH2bY1BY
-         t6be0sSxG8et2nkvC/T903uWGoDbYTt1V4OgQHA9oCulF57AvDBATnohfPiogdML7HLk
-         ogHmD0ZPfnjOyM50tMxmYtvdySyY19F7kUa52+f9kExcr4r+AULIDLomqKPJGgHd9xWv
-         7xTcR2Urr1dQkIORz6PJ/PR1OBfXlYjq+y6/LaXefqvT9gR5dsg1zEXmprWhwTGqyWwx
-         xLbmrqE5CMP5OUhvGE/8Gw/ZWsOdWnAmS/vRECCp0R89MXGVAybdOG39bhZV9OtIZj5Y
-         uHCQ==
-X-Gm-Message-State: AG10YOSF3jVfjhwkxvuG5WeKJEeCzbne8mJDofuHula+DMCoI56e1V05z/ytnR0j4y+tlw==
-X-Received: by 10.98.74.17 with SMTP id x17mr3541191pfa.14.1455727763964;
-        Wed, 17 Feb 2016 08:49:23 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id o73sm3949149pfa.37.2016.02.17.08.49.21
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Feb 2016 08:49:23 -0800 (PST)
-Date: Wed, 17 Feb 2016 22:19:46 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: julia.lawall@lip6.fr
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: wilc1000: Fix line over 80 characters long
-Message-ID: <9a360b5a2d20b83ab91b34f4b0fc199cc5133a22.1455727711.git.anchalj109@gmail.com>
-References: <cover.1455727711.git.anchalj109@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=yseyImRB;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 3D7E0217D9;
+	Tue, 15 Oct 2019 04:09:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1571112581;
+	bh=6NN+mzbd4oGXrDn+dCFphMTfM4Xx4uuIFwyI3z6G4ow=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=yseyImRBEqfy26ZmNYUNBFuAkEvW4hJQ7y7IvNRYS2sZzSj66yISACm/KfU++NKCH
+	 An83cp6oEETdl5nk2cvbNEhdOD0cBDeXQstk1txrO+svkGFw+Oe5DeYrVqel9Zeuwu
+	 eKo99VpsTCdz91W4BUT9LYpvZFF2hklmw49Xfm8U=
+Date: Tue, 15 Oct 2019 06:09:38 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: boqun.feng@microsoft.com, andrea.parri@microsoft.com,
+	vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
+	elder@kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: greybus: Fix quote string split across lines
+Message-ID: <20191015040938.GC804807@kroah.com>
+References: <20191014205529.919-1-jamal.k.shareef@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1455727711.git.anchalj109@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20191014205529.919-1-jamal.k.shareef@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Break lines so that they do not exceed 80
-characters. Problem found using checkpatch.
+On Mon, Oct 14, 2019 at 01:55:29PM -0700, Jamal Shareef wrote:
+> Fix quoted string split across multiple lines.
+> Issue found by checkpatch.
+> 
+> Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+> ---
+>  drivers/staging/greybus/audio_manager_sysfs.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/audio_manager_sysfs.c b/drivers/staging/greybus/audio_manager_sysfs.c
+> index ab882cc49b41..54b0caf22b5a 100644
+> --- a/drivers/staging/greybus/audio_manager_sysfs.c
+> +++ b/drivers/staging/greybus/audio_manager_sysfs.c
+> @@ -17,11 +17,11 @@ static ssize_t manager_sysfs_add_store(struct kobject *kobj,
+>  {
+>  	struct gb_audio_manager_module_descriptor desc = { {0} };
+>  
+> -	int num = sscanf(buf,
+> -			"name=%" GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF "s "
+> -			"vid=%d pid=%d intf_id=%d i/p devices=0x%X o/p devices=0x%X",
+> -			desc.name, &desc.vid, &desc.pid, &desc.intf_id,
+> -			&desc.ip_devices, &desc.op_devices);
+> +	int num =
+> +	sscanf(buf, "name=%" GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF "s "
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
- drivers/staging/wilc1000/wilc_wlan.c | 45 +++++++++++++++++++++++++-----------
- 1 file changed, 31 insertions(+), 14 deletions(-)
+First off, this type of indent isn't ok :(
 
-diff --git a/drivers/staging/wilc1000/wilc_wlan.c b/drivers/staging/wilc1000/wilc_wlan.c
-index 98b21d4..a611cba 100644
---- a/drivers/staging/wilc1000/wilc_wlan.c
-+++ b/drivers/staging/wilc1000/wilc_wlan.c
-@@ -200,7 +200,8 @@ static inline int add_tcp_pending_ack(u32 ack, u32 session_index,
- 	if (pending_base + pending_acks < MAX_PENDING_ACKS) {
- 		pending_acks_info[pending_base + pending_acks].ack_num = ack;
- 		pending_acks_info[pending_base + pending_acks].txqe = txqe;
--		pending_acks_info[pending_base + pending_acks].session_index = session_index;
-+		pending_acks_info[pending_base + pending_acks].session_index =
-+			session_index;
- 		txqe->tcp_pending_ack_idx = pending_base + pending_acks;
- 		pending_acks++;
- 	}
-@@ -256,7 +257,8 @@ static inline int tcp_process(struct net_device *dev, struct txq_entry_t *tqe)
- 
- 				for (i = 0; i < tcp_session; i++) {
- 					if (i < 2 * MAX_TCP_SESSION &&
--					    ack_session_info[i].seq_num == seq_no) {
-+					    ack_session_info[i].seq_num ==
-+						seq_no) {
- 						update_tcp_session(i, ack_no);
- 						break;
- 					}
-@@ -513,7 +515,8 @@ void chip_wakeup(struct wilc *wilc)
- 				if ((wilc_get_chipid(wilc, true) == 0))
- 					wilc_debug(N_ERR, "Couldn't read chip id. Wake up failed\n");
- 
--			} while ((wilc_get_chipid(wilc, true) == 0) && ((++trials % 3) == 0));
-+			} while ((wilc_get_chipid(wilc, true) == 0) &&
-+				 ((++trials % 3) == 0));
- 
- 		} while (wilc_get_chipid(wilc, true) == 0);
- 	} else if ((wilc->io_type & 0x1) == HIF_SDIO)	 {
-@@ -526,7 +529,8 @@ void chip_wakeup(struct wilc *wilc)
- 			wilc->hif_func->hif_read_reg(wilc, 0xf1,
- 						     &clk_status_reg);
- 
--			while (((clk_status_reg & 0x1) == 0) && (((++trials) % 3) == 0)) {
-+			while (((clk_status_reg & 0x1) == 0) &&
-+				(((++trials) % 3) == 0)) {
- 				usleep_range(2 * 1000, 2 * 1000);
- 
- 				wilc->hif_func->hif_read_reg(wilc, 0xf1,
-@@ -672,7 +676,8 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				counter++;
- 				if (counter > 200) {
- 					counter = 0;
--					ret = wilc->hif_func->hif_write_reg(wilc, WILC_HOST_TX_CTRL, 0);
-+					ret = wilc->hif_func->hif_write_reg(
-+						wilc, WILC_HOST_TX_CTRL, 0);
- 					break;
- 				}
- 			}
-@@ -683,7 +688,9 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 
- 		timeout = 200;
- 		do {
--			ret = wilc->hif_func->hif_block_tx(wilc, WILC_VMM_TBL_RX_SHADOW_BASE, (u8 *)vmm_table, ((i + 1) * 4));
-+			ret = wilc->hif_func->hif_block_tx(wilc,
-+					WILC_VMM_TBL_RX_SHADOW_BASE,
-+					(u8 *)vmm_table, ((i + 1) * 4));
- 			if (!ret)
- 				break;
- 
-@@ -694,7 +701,8 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				break;
- 
- 			do {
--				ret = wilc->hif_func->hif_read_reg(wilc, WILC_HOST_VMM_CTL, &reg);
-+				ret = wilc->hif_func->hif_read_reg(wilc,
-+						WILC_HOST_VMM_CTL, &reg);
- 				if (!ret)
- 					break;
- 				if ((reg >> 2) & 0x1) {
-@@ -705,7 +713,8 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				}
- 			} while (--timeout);
- 			if (timeout <= 0) {
--				ret = wilc->hif_func->hif_write_reg(wilc, WILC_HOST_VMM_CTL, 0x0);
-+				ret = wilc->hif_func->hif_write_reg(wilc,
-+						WILC_HOST_VMM_CTL, 0x0);
- 				break;
- 			}
- 
-@@ -713,11 +722,13 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				break;
- 
- 			if (entries == 0) {
--				ret = wilc->hif_func->hif_read_reg(wilc, WILC_HOST_TX_CTRL, &reg);
-+				ret = wilc->hif_func->hif_read_reg(wilc,
-+						WILC_HOST_TX_CTRL, &reg);
- 				if (!ret)
- 					break;
- 				reg &= ~BIT(0);
--				ret = wilc->hif_func->hif_write_reg(wilc, WILC_HOST_TX_CTRL, reg);
-+				ret = wilc->hif_func->hif_write_reg(wilc,
-+						WILC_HOST_TX_CTRL, reg);
- 				if (!ret)
- 					break;
- 				break;
-@@ -757,9 +768,12 @@ int wilc_wlan_handle_txq(struct net_device *dev, u32 *txq_count)
- 				header = cpu_to_le32(header);
- 				memcpy(&txb[offset], &header, 4);
- 				if (tqe->type == WILC_CFG_PKT) {
--					buffer_offset = ETH_CONFIG_PKT_HDR_OFFSET;
-+					buffer_offset =
-+						ETH_CONFIG_PKT_HDR_OFFSET;
- 				} else if (tqe->type == WILC_NET_PKT) {
--					char *bssid = ((struct tx_complete_data *)(tqe->priv))->bssid;
-+					char *bssid =
-+						((struct tx_complete_data *)
-+						 (tqe->priv))->bssid;
- 
- 					buffer_offset = ETH_ETHERNET_HDR_OFFSET;
- 					memcpy(&txb[offset + 4], bssid, 6);
-@@ -853,7 +867,8 @@ static void wilc_wlan_handle_rxq(struct wilc *wilc)
- 						IS_MANAGMEMENT_CALLBACK |
- 						IS_MGMT_STATUS_SUCCES);
- 
--				WILC_WFI_mgmt_rx(wilc, &buffer[offset + HOST_HDR_OFFSET], pkt_len);
-+				WILC_WFI_mgmt_rx(wilc,
-+				&buffer[offset + HOST_HDR_OFFSET], pkt_len);
- 			} else {
- 				if (!is_cfg_packet) {
- 					if (pkt_len > 0) {
-@@ -865,7 +880,9 @@ static void wilc_wlan_handle_rxq(struct wilc *wilc)
- 				} else {
- 					struct wilc_cfg_rsp rsp;
- 
--					wilc_wlan_cfg_indicate_rx(wilc, &buffer[pkt_offset + offset], pkt_len, &rsp);
-+					wilc_wlan_cfg_indicate_rx(wilc,
-+					&buffer[pkt_offset + offset],
-+							pkt_len, &rsp);
- 					if (rsp.type == WILC_CFG_RSP) {
- 						if (wilc->cfg_seq_no == rsp.seq_no)
- 							up(&wilc->cfg_event);
--- 
-1.9.1
+> +	       "vid=%d pid=%d intf_id=%d i/p devices=0x%X o/p devices=0x%X",
+> +	       desc.name, &desc.vid, &desc.pid, &desc.intf_id,
+> +	       &desc.ip_devices, &desc.op_devices);
 
+Secondly, as Julia points out, you didn't actually change anything here
+with regards to the string.
+
+As the code is, it looks about as good as it can get, I would just leave
+this as-is.
+
+thanks,
+
+greg k-h
 
