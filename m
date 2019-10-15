@@ -1,80 +1,102 @@
-X-GM-THRID: 6806184818941886464
-X-Received: by 2002:a2e:8595:: with SMTP id b21mr4330483lji.184.1584688392760;
-        Fri, 20 Mar 2020 00:13:12 -0700 (PDT)
+X-GM-THRID: 6747989817758318592
+X-Received: by 2002:adf:dc44:: with SMTP id m4mr3131419wrj.203.1571138954275;
+        Tue, 15 Oct 2019 04:29:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8941:: with SMTP id b1ls1090293ljk.8.gmail; Fri, 20 Mar
- 2020 00:13:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsmFuxqCTW58gRVpq8BzI/OYnm+DN211a4LGlba6GdEfP7V9CGtqzUi9fDVQzXsJWtsMxya
-X-Received: by 2002:a2e:2415:: with SMTP id k21mr4642273ljk.9.1584688391384;
-        Fri, 20 Mar 2020 00:13:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584688391; cv=none;
+Received: by 2002:adf:dccc:: with SMTP id x12ls6785573wrm.3.gmail; Tue, 15 Oct
+ 2019 04:29:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNlV/5KBf2hnlh4SVxP77OAp9gnQd/7zfx1OyWtKAKz5RXAfmKbOVClrVdsTT6hl3ykAJu
+X-Received: by 2002:adf:ee4f:: with SMTP id w15mr11685521wro.378.1571138953409;
+        Tue, 15 Oct 2019 04:29:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571138953; cv=none;
         d=google.com; s=arc-20160816;
-        b=dfJlyMqvYpZLh0GJUAbtO7jhBsJ7e/fSaY8D7QHxHxu17+AKthWXDnHTmdK/B6M9zl
-         xjH8IsoHFp8aHD5L+LjTF4WZ883igB0eE2EX1CB/lTAszRgAZkswZAc9gkWsL/bkv3iO
-         MzwpDlu2T+/6R/tQs8Y/DvMqiALLlQUtoAY23FxdWpAuD/3LPeNS+P7AFBJqFF2M6579
-         yXEmkPYc0FXP/HkJR255YjxKpaIG1EWUjJo9iLxrevFvgeQnSNnyqBnB9AvXGLBWM4we
-         CNJiL0P6P6OAvW1bUlrlN6Qn7K4CPXNKDFEJdp+c63+xzV+f8IBSQ0nD2IpLEZBpGGzv
-         nKQw==
+        b=apdJ0438MWHZS9NUtNvrEBl8yc1TQQYsuTP+qX+ZBL9iznixxyFBcR7qshcc0guh+y
+         sClcZoXx/9YuCyLPnp5TrxVwOtDslTMn9U9Q+/cyzTPW6NfTTv9NLG5VSNwx3uMY1R+/
+         X8GbyIah5WAhpJ9ilYzGcbkqHgIIX/dzaoY0Mqv2oTNEGP/HcFIR2+iUvwAgCiGyAK+9
+         QWSbvb6F2Wv8DCiENy+BXuFWOQhbC8IkAGBK3HyMcWIqZIphpW3ZzYef2L3ZlWUzKLRC
+         42BPCaNZG3z5D0pEbJnf3D2ySetMGxhAmAuQVPlRSMDUE4lZNN9XdBDlRn+iRUiXB7w2
+         aEGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=QYIigB0vLHODwT0jvKFqL4FJASVRALl9zBQjFmZwr5s=;
-        b=q8oRfxTNVb5ZoJGHEibobPiu/yUxD5UVV8u+3x0SZPYSOO03r3Q8kz2HU6KqivXye5
-         rbBrM3Ci1Jgb6iWeLK+Iax393q7yB18HvYEXPBZ7vrFkwG8a92qAfqCVHGY142M5G4G2
-         mNv0FqDiZcnP7kVGOQyqh+ffnyFvIjngvP75g1BhbsFLnXfDK5TWDjhG4POb+YueGQWI
-         Gm+Z4vwgXeOih1PyGAu8EFYajeq3mqZHocV2JuZSf1eKO/gEBYiXtq+Jpdc9LZw/f8pA
-         u53er3doclBCj297zsMcov+/ZwgniJ634P6XI+vXgA2K4PNHzS4IYM9HJSwJ9oDwxEqf
-         trXA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=6LW0xA9W7mSiGy7WT/B1kxeXljLUq+zPAa3kLGxP00w=;
+        b=k3jBNOaOz2Abi+HeodRH9ZS7tSgUSBK78fTtXT1ajM89IJF2+Q+XHEIt843aZHrvvW
+         Y+X/XSBjTLfvf4lp/KK3NTX4nQzdfeUAhie/nDTpxvJ6MyhEv37cxqsHPSOl/dn6wq3n
+         1GBdB6WSVOtOsfrhU4HnvHOY6CjkRCfqkkYXVFM3JHBL89tSK+T0YdSpB3B5heicB2uU
+         kliEhBN2v3hXGn8B7i5iqeWDyYsWaxzRRlvX9OSsZDFc2pvTF/MpjElXU+3KK+IfS7Fs
+         XaN8AFXsvFsUhVmbIt7uGt4zc+wd56KGx6/33s2ojzacsu/E9us7ZY4buVkMhRLm8v1X
+         4WGg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id c15si238995ljn.3.2020.03.20.00.13.11
-        for <outreachy-kernel@googlegroups.com>;
-        Fri, 20 Mar 2020 00:13:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m1si701793wrs.0.2019.10.15.04.29.13
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 15 Oct 2019 04:29:13 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 6256 invoked from network); 20 Mar 2020 07:13:09 -0000
-Received: from unknown (HELO localhost) (vkor@vkten.in@117.249.188.29)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 20 Mar 2020 07:13:09 -0000
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: R Veera Kumar <vkor@vkten.in>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/2] staging: rtl8723bs: hal: Correct multi-line comments and typos in them
-Date: Fri, 20 Mar 2020 12:42:58 +0530
-Message-Id: <cover.1584687545.git.vkor@vkten.in>
-X-Mailer: git-send-email 2.20.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,299,1566856800"; 
+   d="scan'208";a="322762634"
+Received: from portablejulia.rsr.lip6.fr ([132.227.76.63])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Oct 2019 13:29:12 +0200
+Date: Tue, 15 Oct 2019 13:29:12 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: julia@hadrien
+To: Wambui Karuga <wambui.karugax@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: remove casts to
+ pointers in kfree
+In-Reply-To: <20191015112637.20824-1-wambui.karugax@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910151328500.2818@hadrien>
+References: <20191015112637.20824-1-wambui.karugax@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Patch 1:
 
-Correct multi-line comments as per coding style to respect
-80 characters per line limit.
 
-Amalgamate individual lines into single multi-line comment.
-Reorganize it for readability.
+On Tue, 15 Oct 2019, Wambui Karuga wrote:
 
-Patch 2:
-Correct typos in comments fixed in patch 1 as well as new
-ones.
+> Remove unnecessary casts in pointer types passed to kfree.
+>
+> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
 
-Please apply the patch in series.
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
----
-R Veera Kumar (2):
-  staging: rtl8723bs: hal: Correct multi-line comments as per coding
-    style
-  staging: rtl8723bs: hal: Correct typos in comments
-
- drivers/staging/rtl8723bs/hal/Hal8723BReg.h  | 14 ++---
- drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c | 58 +++++++++++---------
- 2 files changed, 40 insertions(+), 32 deletions(-)
-
--- 
-2.20.1
-
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_mlme.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> index 3030ae5b6b6d..71fcb466019a 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> @@ -2155,7 +2155,7 @@ sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
+>
+>  	psetauthparm = rtw_zmalloc(sizeof(struct setauth_parm));
+>  	if (!psetauthparm) {
+> -		kfree((unsigned char *)pcmd);
+> +		kfree(pcmd);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -2238,7 +2238,7 @@ sint rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, s
+>  	if (enqueue) {
+>  		pcmd = rtw_zmalloc(sizeof(struct cmd_obj));
+>  		if (!pcmd) {
+> -			kfree((unsigned char *)psetkeyparm);
+> +			kfree(psetkeyparm);
+>  			res = _FAIL;  /* try again */
+>  			goto exit;
+>  		}
+> --
+> 2.23.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191015112637.20824-1-wambui.karugax%40gmail.com.
+>
 
