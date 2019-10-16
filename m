@@ -1,113 +1,71 @@
 X-GM-THRID: 6748167848535785472
-X-Received: by 2002:ac2:555e:: with SMTP id l30mr25387312lfk.163.1571248689736;
-        Wed, 16 Oct 2019 10:58:09 -0700 (PDT)
+X-Received: by 2002:a2e:2901:: with SMTP id u1mr24705790lje.78.1571202832157;
+        Tue, 15 Oct 2019 22:13:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:7102:: with SMTP id m2ls2096457lfc.15.gmail; Wed, 16 Oct
- 2019 10:58:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxIdqJG05CkXaTpZisJHiJ01G6owDL8dBLcQ/5NQjBojL4pR4r0mJWGWzogjLlhcXXa4M5N
-X-Received: by 2002:ac2:4902:: with SMTP id n2mr23955527lfi.42.1571248688631;
-        Wed, 16 Oct 2019 10:58:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571248688; cv=none;
+Received: by 2002:a19:7102:: with SMTP id m2ls1846863lfc.15.gmail; Tue, 15 Oct
+ 2019 22:13:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxHnYN6pjl8lm0hnIN3nuG0Q4sxCa818N83cTWg+dX6XdzCmBkRLz9os4JsSs17LVPjLUJq
+X-Received: by 2002:ac2:5468:: with SMTP id e8mr4746591lfn.12.1571202831430;
+        Tue, 15 Oct 2019 22:13:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571202831; cv=none;
         d=google.com; s=arc-20160816;
-        b=xxQ7mRnB2W9jNuL4WHBCGVzdi1IqynJdJj+S1vkDnRSt4cfWz89T8ZiM3JLPjnuPdy
-         +P9WMdsaiFuOU3yiBicslXe5Ya1SvneUqzERWtSbnULnyDzPyrOr6/V3RCa5TCSAuHVx
-         Gm5ipp51N6Nh827US/Qol3g+nXRDQFY17Xmn1F1an/WWCv9t5hFTwCM4nTlx+uuexq/I
-         5xuKRZ+0t32Zqr7p+B2FDtgSY5enGPJ8FAO2tvjdFjFZBz/RU1XuLiALgnE5I4xlPNU0
-         ipyMEPt4jcuq8oh2/TwuPxm4nNSZfWKbHZBaTq4eRpVGbMr26P8tdUF/f7D5EWNE8JLV
-         m/cA==
+        b=0dk3qwOGgRdW3AIzsCbU3fJsKsZ+hGFYzd+l5u3HklMDA5RiM5pCoojy3CQfSVJnM5
+         GiWdM/tfOWJQMNR8kK7iJr59enCMsO8qR1G+Z5sVmzZ4jQjs1uPtvIv6YhE0ajWH0fN/
+         y6O1tNSu6HhLQiZxFnzglLoGxFx5w4smuhxv5LR1ZOVH/IpYRXEgdDXEcoRywTMOx9Oi
+         58SJokaL7hqCrKn6pNY2ePg9d2XHZjy2oCGBsQPvGtYPL/14RlYxkj6VVcEJ0r3STra+
+         3CJJUCv8lbT305HXgOvM7mwgHzOxs0c6b2YkAtL5RJlIdKWnxWtu4reBrlSjWCB+2m5X
+         AwPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:date:from:dkim-signature;
-        bh=nFz4T0vFX9I/roldji38Wknwl/JNJ6KhqR7kFUGrr+8=;
-        b=ABJ6bgDNK9wz5nKLJno/a1h0iOlECamVow1uIOG7GC057gk2aKOJ57WG35mEpF8jrK
-         AEaAbfGNctVkOOLxgFqEzFDpD1jn+paSJKECQz08cPFHb+Gyy71pkvIqcLepPjKh3LSU
-         p3Lkn9jl/ldl1aq5TddM2foPPBm+x0aKlkvAofAg2Dwokj6NiyGPLvJ98VIPrQEAr3KB
-         Up72o+tO/8f6zZWmG/hntIUr/MwgQvobM+jiksPMzQFMAWvp3zaC/Wix+KqdgrKXe6sn
-         ftplHq/9Fver9SGZi5m0cPze+ImNqqiL5IYffS6wiq6X7qiGOLMEOJeR8MB81uczcqsC
-         G3cg==
+         :cc:to:from:date;
+        bh=pDmU6G4FTNKg8CDar3nGWGVJIHVMPfr7BGD48cu/klg=;
+        b=wumnUPClaW08Xw1qd995lg1ZvSK+RyBVoj0qimxkiLATpFWWrt6AYxDKAdkfwno8C1
+         E2PzrNW6Z9zuFPM/Rjdkl0TtiZAdAGtiLalPQwWrLvKGiRLtyYdl8vKdlJH7AZCOIQsU
+         sPxlxcH9pCNLQoz9yxyTwutHKs9WFuZeXVGjmAXFGgtigHdeEssF77ct87ZX0nOmApKn
+         8WqGqmzIxEcH+m9ONfZr0r0q8OqN5rlcNeIu6J3gl+JVf8c+7tltW15vR7guB7/yvubY
+         1aSBHyW1upTdkEYxyxTFnhPTlTL9UHpBLR+M4Pe4G4NaUh59R/rm5zx0qQ1fx4g507+R
+         8opQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MG8kkB/m";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com. [2a00:1450:4864:20::344])
-        by gmr-mx.google.com with ESMTPS id o30si581117lfi.0.2019.10.16.10.58.08
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z4si1530760lfe.4.2019.10.15.22.13.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Oct 2019 10:58:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) client-ip=2a00:1450:4864:20::344;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 15 Oct 2019 22:13:51 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MG8kkB/m";
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x344.google.com with SMTP id v17so3734872wml.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 16 Oct 2019 10:58:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:date:to:cc:subject:in-reply-to:message-id:references
-         :user-agent:mime-version;
-        bh=nFz4T0vFX9I/roldji38Wknwl/JNJ6KhqR7kFUGrr+8=;
-        b=MG8kkB/maSXdkwrwZNVgc+Xt3j8g2HWexcftmSC0vzdBO837oFQKzV2Hlniy6PE0yH
-         WI40Q0LAOwT9M9yDnx6e0NCvpSy4g4fh8iUCaLzH/ciRPfS9YHMPj6bgX234D+yhGdse
-         ZYMPpMe5M3HTAg6sMw0/Jw/gVWMTJCypdNTDrqjnLixFJIQT3uvbrEfcWCHPxuFfMcwi
-         kRwt4w2lZLppVnDv6jcrUjfbaaRIZFEqlJj/qA0AazdcIEf8bOsvGhUCdpB2RRrexIMC
-         PlRL465867YiyQtZ8NfvBTsriVq6F11OzW1hvwIB/JKliHP5V8RHHXIpJjyolospeWtQ
-         r9Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
-         :references:user-agent:mime-version;
-        bh=nFz4T0vFX9I/roldji38Wknwl/JNJ6KhqR7kFUGrr+8=;
-        b=Gxh/JHEboIEvXLXoXLdIGIQwwrNWCioBjZ7QVzfhjHYL2jlZqoVAe3KXoEH4kJ2ZCU
-         xqHGJHMV3mhxcBbhDXbEoD9rKGf8G2NDFcbXAhMmaDYMZ7PV1fd50s440aRgHY0GydgN
-         ipNBuuZx2LNmC4ITm3QXKaLY+mOJN5pKG4of4JGRKPa3STT7Qpj3nbfAnkx14s79AIbE
-         NfXPrGcnzTRxVFFpPSBulWfk7lCHh/NDK7TyI6RvJSd9YQmvHfT6oTjstntkVX4KI8V0
-         FIWvjaYxpZki4tjXrZclsBBDmZr7fvcZEjPZQRQxrx9QOUSGKiZ1t6U3HBspaHklcozy
-         7FuQ==
-X-Gm-Message-State: APjAAAVOMqvpXr43eiXqr0DOHTNXPet37VPiXJZe0oo6AzVTirnX7fha
-	nZ1OrPGKlhphyuLCripp4g==
-X-Received: by 2002:a1c:e455:: with SMTP id b82mr4444588wmh.41.1571248687904;
-        Wed, 16 Oct 2019 10:58:07 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjabhubz.org (host-2-102-13-201.as13285.net. [2.102.13.201])
-        by smtp.gmail.com with ESMTPSA id 143sm4430952wmb.33.2019.10.16.10.58.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2019 10:58:06 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
-Date: Wed, 16 Oct 2019 18:57:42 +0100 (BST)
-To: Julia Lawall <julia.lawall@lip6.fr>
-cc: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com, 
-    eric@anholt.net, wahrenst@gmx.net, gregkh@linuxfoundation.org, 
-    bcm-kernel-feedback-list@broadcom.com, 
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,302,1566856800"; 
+   d="scan'208";a="406361704"
+Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Oct 2019 07:13:50 +0200
+Date: Wed, 16 Oct 2019 07:13:50 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: outreachy-kernel@googlegroups.com, eric@anholt.net, wahrenst@gmx.net, 
+    gregkh@linuxfoundation.org, bcm-kernel-feedback-list@broadcom.com, 
     linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
     devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Subject: Re: [Outreachy kernel] [PATCH] staging: vc04_services: fix line over
  80 characters checks warning
-In-Reply-To: <alpine.DEB.2.21.1910160713140.2732@hadrien>
-Message-ID: <alpine.LFD.2.21.1910161855320.8071@ninjahub.org>
-References: <20191015225716.10563-1-jbi.octave@gmail.com> <alpine.DEB.2.21.1910160713140.2732@hadrien>
-User-Agent: Alpine 2.21 (LFD 202 2017-01-01)
+In-Reply-To: <20191015225716.10563-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910160713140.2732@hadrien>
+References: <20191015225716.10563-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
+>  #ifndef VCHI_BULK_GRANULARITY
+>  #   if __VCCOREVER__ >= 0x04000000
+> -#       define VCHI_BULK_GRANULARITY 32 // Allows for the need to do cache cleans
+> +#	define VCHI_BULK_GRANULARITY 32 // Allows for the need of cache cleans
+>  #   else
+>  #       define VCHI_BULK_GRANULARITY 16
+>  #   endif
 
+The branches should be indented to the same degree.
 
-On Wed, 16 Oct 2019, Julia Lawall wrote:
-
-> >  #ifndef VCHI_BULK_GRANULARITY
-> >  #   if __VCCOREVER__ >= 0x04000000
-> > -#       define VCHI_BULK_GRANULARITY 32 // Allows for the need to do cache cleans
-> > +#	define VCHI_BULK_GRANULARITY 32 // Allows for the need of cache cleans
-> >  #   else
-> >  #       define VCHI_BULK_GRANULARITY 16
-> >  #   endif
-> 
-> The branches should be indented to the same degree.
-> 
-> julia
-> 
-> -- 
-
-Thanks, I have just  updated. 
+julia
 
