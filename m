@@ -1,112 +1,338 @@
 X-GM-THRID: 6746399399110246400
-X-Received: by 2002:aa7:9907:: with SMTP id z7mr1301595pff.133.1571284870232;
-        Wed, 16 Oct 2019 21:01:10 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:2766:: with SMTP id o93ls239646pje.4.gmail; Wed, 16
- Oct 2019 21:01:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx8mHSL0OcjtCG2AxD3JH6LWDe31pHUQqM5AmJuupTGMS1fODu9qYib85PYu5pqZHM8/gLL
-X-Received: by 2002:a17:90a:a00c:: with SMTP id q12mr1718188pjp.102.1571284869449;
-        Wed, 16 Oct 2019 21:01:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571284869; cv=none;
-        d=google.com; s=arc-20160816;
-        b=fOAsh5ts92za+yW7HehQpwqqv8oGn71Rh7cLICM2c8THaOJxG2rEoUueiokH2kBI+8
-         bU8QO5mjTccygnhlhD5hnNWULCwqRMWhYzVbfK6F6IqpWgsZZed+LrzUvSjbnDxJLdId
-         8DDpntG3rrce5rG0yEHVUSLRBvyFWQ0pDaerYj3tu6HJfwQxDBEUJ+X3OLzR3/JghFjL
-         mDY7ujJK+F8FcETXJQl/8X5xJaD07X7PUyJh8IBmEcw6NVQ6mc2vZbnrG1OLJfgU46FT
-         eXL9mCL+JAuFqPqoyjO8B/IxsRXzsYt/EPOTfOjKY3BxRo83Bk04yt7qz0+TVsjqdl2d
-         3NNA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:mail-followup-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=OxmQ1G5T88TINOUPa3+7UgRhwoa61oK5egeC3+MsMDc=;
-        b=adHTYOBwuZLEnuMHC3oCufrFxBd3Pc/JZensl2Ud4joA2EGeFFnCC3UbxexJOdvCou
-         L9raOp9rgPXqTgGmzHV20wsNuipZSoWQ+6za+TWYVA4/5Evx5MBcFpQxN7eUwEih/hP/
-         gChkQb4ABuGWNI4ovL3rlkCcJ8Zz0Tt69xIEhJMM2+/j2xphgEV/8EJlrxILFUeP/bMV
-         OadewIxeUqEJVQ2uDH/Dk/bapTBL9GdeZpE4YrDFYznSqRTn6dHmuDu8UWn1HBMAaQN3
-         j50fzEhiTOFr/HFT5y3RhNrBDdxITWuobGNVWBH0m/07R+HmLK0Upc8TU6C93qgUkdiS
-         TsIw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ON510tBs;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com. [2607:f8b0:4864:20::742])
-        by gmr-mx.google.com with ESMTPS id d3si40342plr.4.2019.10.16.21.01.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Oct 2019 21:01:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) client-ip=2607:f8b0:4864:20::742;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ON510tBs;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x742.google.com with SMTP id z67so595618qkb.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 16 Oct 2019 21:01:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition:user-agent;
-        bh=OxmQ1G5T88TINOUPa3+7UgRhwoa61oK5egeC3+MsMDc=;
-        b=ON510tBsbENcGv1JDweR9mtO0ZAAQZVsdyJRgL2JOx4pRSvk4i8FZpMPn2VKOToyUw
-         wpiv1h42El0E4xxdX1t6hPQ3m3aAx6uVJnZODfP9oBY0WYSomS2Qt9zwfDlcdDX7fEmI
-         7/ZbfN6qWUQxh3/8hnxdd3vEdzstXZu27ZKl+X75vwprxdEmtHZRxZwKmUI6uBVxwqsf
-         7CioE7Sy2s6w5MLABQEne8c1FjYigbsSGZCdT6u3ln7NaA4z6gXYILkVzzP61BLlxRP3
-         TtHFZ+i8L6IyHdF2z2qGSrhx3t28Y2ij8CpH4mkLyKODH2Qg+eTxBoIPMGmqJ1JdFBiT
-         BIsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition:user-agent;
-        bh=OxmQ1G5T88TINOUPa3+7UgRhwoa61oK5egeC3+MsMDc=;
-        b=BaotIn2JvEqjXoGlaR5ToZvppWWnomkfQbItImf4UPXyP9unL6Ht6TssDB/4opStPp
-         RMKYyMSA5xWet0F1xd3k/brSpypEcSbhhlVGmqvRz6JrO5BWboTfoaQkxqdhNPJBet7z
-         N7V8CovBAAmu8DdLWnB80OrQdhw8RGLVzZAh81UAprUKFn0D9XXto/IG09NBBaC5EBoR
-         NwPpyoh0cU/uI3IBQgU0UNEuVJzbn1oa5vNrfTvZSZn4hrl2iXUfyUegx2p47vCe1HsR
-         YqhEGi+cUE+0F/xuvQCoO3XEz6iYR0wmMaedAXoLUGuNY9vPTeBn4RBO4TkKxE4T9D2Y
-         5A/A==
-X-Gm-Message-State: APjAAAUyftsHXpV47wy8le9Z6gqnk+4WvHL1k2hB87i//BcM3NmIbVel
-	K2H5BXOnyugjW6dF7SbHI3DAtgnSglbZmw==
-X-Received: by 2002:a05:620a:12b9:: with SMTP id x25mr1410941qki.4.1571284868576;
-        Wed, 16 Oct 2019 21:01:08 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com (dynamic-186-31-3-221.dynamic.etb.net.co. [186.31.3.221])
-        by smtp.gmail.com with ESMTPSA id n65sm545263qkb.19.2019.10.16.21.01.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2019 21:01:08 -0700 (PDT)
-Date: Wed, 16 Oct 2019 23:01:05 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/7] staging: rtl8723bs: Clean-up in rtw_security.c
-Message-ID: <cover.1571284318.git.jarias.linux@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+Date: Wed, 16 Oct 2019 19:34:04 -0700 (PDT)
+From: Javier Arias <jarias.linux@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <e15e0497-9560-40a7-a7f3-006ec066a5da@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1910160710100.2732@hadrien>
+References: <cover.1570768179.git.jarias.linux@gmail.com> <8dd3e932f49df42d598113f29c5e5e7a7c25ae52.1570768179.git.jarias.linux@gmail.com> <alpine.DEB.2.21.1910110804200.2662@hadrien> <0b4bb686-4380-44db-a19e-7924a45f1e3f@googlegroups.com>
+ <alpine.DEB.2.21.1910160710100.2732@hadrien>
+Subject: Re: [Outreachy kernel] [PATCH 6/6] staging: rtl8723bs: Fix function
+ call format
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20180716
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_34_1282284732.1571279644632"
+X-Google-Token: EJymn-0FimYY0GDC22A0
+X-Google-IP: 186.31.3.221
 
-This patchset would improve the formatting, style and remove
-unnecessary code. 
+------=_Part_34_1282284732.1571279644632
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_35_371647110.1571279644633"
 
-v2: Reworked the "Add spaces between operators" commit to add a missing
-    line noticed by Julia Lawall <julia.lawall@lip6.fr>
-    Added a commit to change tabs for spaces as suggested by
-    Julia Lawall <julia.lawall@lip6.fr>
+------=_Part_35_371647110.1571279644633
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Javier F. Arias (7):
-  staging: rtl8723bs: Replace string with identifier
-  staging: rtl8723bs: Fix lines over 80 characters
-  staging: rtl8723bs: Add spaces between operators
-  staging: rtl8723bs: Remove commented code
-  staging: rtl8723bs: Fix indentation warnings
-  staging: rtl8723bs: Fix function call format
-  staging: rtl8723bs: Change tabs for spaces
+Ok I'm on it.
 
- drivers/staging/rtl8723bs/core/rtw_security.c | 135 ++++++++----------
- 1 file changed, 57 insertions(+), 78 deletions(-)
+About the commit order, my concern was that as the "80 character issue" is 
+changing the line numbers in the file (add new lines) if I switch the order 
+of the first 2 commits it will break. I experimented a bit and in deed had 
+a issue with rebase. So I'll be leaving it as 2nd commit and will have your 
+suggestion into account for the next patch.
 
--- 
-2.20.1
+On Wednesday, 16 October 2019 00:11:11 UTC-5, Julia Lawall wrote:
+>
+>
+>
+> On Tue, 15 Oct 2019, Javier Arias wrote: 
+>
+> > Hello Julia, 
+> > 
+> > Thanks for your feedback. I rebased so the i+1 is now addressed by a 
+> previous patch, but I'm afraid that changing the order of the "80 character 
+> issue" commit as the first one would affect the line number for the other 
+> commits. 
+> > 
+> > Should I resend the patch with the fix only or should I drop this/start 
+> again? 
+> > 
+> > On Friday, 11 October 2019 01:05:22 UTC-5, Julia Lawall wrote: 
+> > 
+> > 
+> >       On Thu, 10 Oct 2019, Javier F. Arias wrote: 
+> > 
+> >       > Fix function call format by following the coding style 
+> guidelines 
+> >       > for argument wrapping in function calls. 
+> >       > Issue found by checkpatch. 
+> >       > 
+> >       > Signed-off-by: Javier F. Arias <jaria...@gmail.com> 
+> >       > --- 
+> >       >  drivers/staging/rtl8723bs/core/rtw_security.c | 17 
+> ++++++++--------- 
+> >       >  1 file changed, 8 insertions(+), 9 deletions(-) 
+> >       > 
+> >       > diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c 
+> b/drivers/staging/rtl8723bs/core/rtw_security.c 
+> >       > index 08570e78d5e2..a809521da53d 100644 
+> >       > --- a/drivers/staging/rtl8723bs/core/rtw_security.c 
+> >       > +++ b/drivers/staging/rtl8723bs/core/rtw_security.c 
+> >       > @@ -1625,15 +1625,14 @@ static sint aes_decipher(u8 *key, 
+> uint        hdrlen, 
+>
+> Actually, while you are on this file, there seems to be something weird 
+> about the hdrlen parameter in the line above.  There is a lot of space 
+> between it and its type.  Maybe there is a tab that should be a space? 
+>
+> julia 
+>
+>
+> >       >          payload_index = hdrlen + 8; /*  8 is for extiv */ 
+> >       > 
+> >       >          for (i = 0; i < num_blocks; i++) { 
+> >       > -                construct_ctr_preload( 
+> >       > -                                ctr_preload, 
+> >       > -                                a4_exists, 
+> >       > -                                qc_exists, 
+> >       > -                                pframe, 
+> >       > -                                pn_vector, 
+> >       > -                                i+1, 
+> >       > -                                frtype /*  add for 
+> CONFIG_IEEE80211W, none 11w also can use */ 
+> >       > -                        ); 
+> >       > +                construct_ctr_preload(ctr_preload, 
+> >       > +                                      a4_exists, 
+> >       > +                                      qc_exists, 
+> >       > +                                      pframe, 
+> >       > +                                      pn_vector, 
+> >       > +                                      i+1, 
+> >       > +                                      frtype); /*  add for 
+> CONFIG_IEEE80211W, none 11w also can use */ 
+> >       > + 
+> > 
+> >       It could be more readable with more arguments on one line. 
+> > 
+> >       Also, the i+1 seems like it should have been fixed in a previous 
+> patch in 
+> >       the series? 
+> > 
+> >       julia 
+> > 
+> >       > 
+> >       >                          aes128k128d(key, ctr_preload, aes_out); 
+> >       >                          bitwise_xor(aes_out, 
+> &pframe[payload_index], chain_buffer); 
+> >       > -- 
+> >       > 2.20.1 
+> >       > 
+> >       > -- 
+> >       > You received this message because you are subscribed to the 
+> Google Groups "outreachy-kernel" group. 
+> >       > To unsubscribe from this group and stop receiving emails from 
+> it, send an email to outreach...@googlegroups.com. 
+> >       > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/8dd3e932f49df42d598113f29c5e5e7a7c25ae52.1570768179.git.jarias.linux%40gmail.com. 
+>
+> >       > 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreach...@googlegroups.com <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/0b4bb686-4380-44db-a19e-7924a45f1e3f%40googlegroups.com. 
+>
+> > 
+> >
 
+
+------=_Part_35_371647110.1571279644633
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Ok I&#39;m on it.</div><div><br></div><div>About the =
+commit order, my concern was that as the &quot;80 character issue&quot; is =
+changing the line numbers in the file (add new lines) if I switch the order=
+ of the first 2 commits it will break. I experimented a bit and in deed had=
+ a issue with rebase. So I&#39;ll be leaving it as 2nd commit and will have=
+ your suggestion into account for the next patch.<br></div><br>On Wednesday=
+, 16 October 2019 00:11:11 UTC-5, Julia Lawall  wrote:<blockquote class=3D"=
+gmail_quote" style=3D"margin: 0px 0px 0px 0.8ex; border-left: 1px solid rgb=
+(204, 204, 204); padding-left: 1ex; --darkreader-inline-border-left:#3d3d3d=
+;" data-darkreader-inline-border-left=3D"">
+<br>
+<br>On Tue, 15 Oct 2019, Javier Arias wrote:
+<br>
+<br>&gt; Hello Julia,
+<br>&gt;
+<br>&gt; Thanks for your feedback. I rebased so the i+1 is now addressed by=
+ a previous patch, but I&#39;m afraid that changing the order of the &quot;=
+80 character issue&quot; commit as the first one would affect the line numb=
+er for the other commits.
+<br>&gt;
+<br>&gt; Should I resend the patch with the fix only or should I drop this/=
+start again?
+<br>&gt;
+<br>&gt; On Friday, 11 October 2019 01:05:22 UTC-5, Julia Lawall wrote:
+<br>&gt;
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 On Thu, 10 Oct 2019, Javier F. Arias wrote:
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Fix function call format by following th=
+e coding style guidelines
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; for argument wrapping in function calls.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Issue found by checkpatch.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Javier F. Arias &lt;<a>ja=
+ria...@gmail.com</a>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; ---
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0drivers/staging/rtl8723bs/<wbr>cor=
+e/rtw_security.c | 17 ++++++++---------
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A01 file changed, 8 insertions(+), 9=
+ deletions(-)
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/drivers/staging/rtl8723bs/<=
+wbr>core/rtw_security.c b/drivers/staging/rtl8723bs/<wbr>core/rtw_security.=
+c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; index 08570e78d5e2..a809521da53d 100644
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --- a/drivers/staging/rtl8723bs/<wbr>cor=
+e/rtw_security.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +++ b/drivers/staging/rtl8723bs/<wbr>cor=
+e/rtw_security.c
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; @@ -1625,15 +1625,14 @@ static sint aes_=
+decipher(u8 *key, uint=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hdrle=
+n,
+<br>
+<br>Actually, while you are on this file, there seems to be something weird
+<br>about the hdrlen parameter in the line above. =C2=A0There is a lot of s=
+pace
+<br>between it and its type. =C2=A0Maybe there is a tab that should be a sp=
+ace?
+<br>
+<br>julia
+<br>
+<br>
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0payload_index =3D hdrlen + 8; /* =C2=A08 is for extiv */
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0for (i =3D 0; i &lt; num_blocks; i++) {
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0construct_<wbr>ctr=
+_preload(
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0ctr_preload,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0a4_exists,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0qc_exists,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0pframe,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0pn_vector,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0i+1,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0frtype /* =C2=A0add for CONFIG_IEEE80211W, none 11w also can use *=
+/
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0);
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0construct_<wbr>ctr=
+_preload(ctr_preload,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0a4_exists,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0qc_exists,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0pframe,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0pn_vector,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0i+1,
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=
+=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0frtype); /* =C2=A0add for CONFIG_IEEE80211W, =
+none 11w also can use */
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; +
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 It could be more readable with more arguments=
+ on one line.
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 Also, the i+1 seems like it should have been =
+fixed in a previous patch in
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 the series?
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 julia
+<br>&gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>aes128k128d(key, ctr_preload, aes_=
+out);
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>bitwise_xor(aes_out, &amp;pframe[p=
+ayload_index], chain_buffer);
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; 2.20.1
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; --
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; You received this message because you ar=
+e subscribed to the Google Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To unsubscribe from this group and stop =
+receiving emails from it, send an email to <a>outreach...@googlegroups.com<=
+/a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt; To view this discussion on the web visit=
+ <a href=3D"https://groups.google.com/d/msgid/outreachy-kernel/8dd3e932f49d=
+f42d598113f29c5e5e7a7c25ae52.1570768179.git.jarias.linux%40gmail.com" targe=
+t=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://group=
+s.google.com/d/msgid/outreachy-kernel/8dd3e932f49df42d598113f29c5e5e7a7c25a=
+e52.1570768179.git.jarias.linux%40gmail.com&#39;;return true;" onclick=3D"t=
+his.href=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/8dd3e932=
+f49df42d598113f29c5e5e7a7c25ae52.1570768179.git.jarias.linux%40gmail.com&#3=
+9;;return true;">https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<w=
+br>8dd3e932f49df42d598113f29c5e5e<wbr>7a7c25ae52.1570768179.git.<wbr>jarias=
+.linux%40gmail.com</a>.
+<br>&gt; =C2=A0 =C2=A0 =C2=A0 &gt;
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"gUU3GytqCQAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/0b4bb686-4380-44db-a19e-7924a45f1e3f%4=
+0googlegroups.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.h=
+ref=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/0b4bb686-4380=
+-44db-a19e-7924a45f1e3f%40googlegroups.com&#39;;return true;" onclick=3D"th=
+is.href=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/0b4bb686-=
+4380-44db-a19e-7924a45f1e3f%40googlegroups.com&#39;;return true;">https://g=
+roups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>0b4bb686-4380-44db-a19e=
+-<wbr>7924a45f1e3f%40googlegroups.<wbr>com</a>.
+<br>&gt;
+<br>&gt;</blockquote></div>
+------=_Part_35_371647110.1571279644633--
+
+------=_Part_34_1282284732.1571279644632--
 
