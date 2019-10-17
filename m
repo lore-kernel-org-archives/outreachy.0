@@ -1,118 +1,104 @@
 X-GM-THRID: 6748157701463736320
-Date: Thu, 17 Oct 2019 19:10:56 -0700 (PDT)
+Date: Wed, 16 Oct 2019 17:42:43 -0700 (PDT)
 From: Cristiane Naves <cristianenavescardoso09@gmail.com>
 To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <eccf2356-0c36-4ef5-b948-6468a4978779@googlegroups.com>
-In-Reply-To: <bd1a6b45-291e-4cc2-aef8-7d880351bac3@googlegroups.com>
+Message-Id: <bd1a6b45-291e-4cc2-aef8-7d880351bac3@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.1910160701150.2732@hadrien>
 References: <d504514a-93eb-4a60-a99c-8a50bce81677@googlegroups.com>
  <alpine.DEB.2.21.1910160701150.2732@hadrien>
- <bd1a6b45-291e-4cc2-aef8-7d880351bac3@googlegroups.com>
 Subject: Re: [Outreachy kernel] doubt on the "Make a driver change" part
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_570_1388058862.1571364656846"
-X-Google-Token: ELC-pO0FvHDG-gufkyg0
+	boundary="----=_Part_2_2129314782.1571272963748"
+X-Google-Token: EIPynu0FI6xgr4riOTE0
 X-Google-IP: 131.100.148.220
 
-------=_Part_570_1388058862.1571364656846
+------=_Part_2_2129314782.1571272963748
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_571_1546709819.1571364656847"
+	boundary="----=_Part_3_1607208343.1571272963749"
 
-------=_Part_571_1546709819.1571364656847
+------=_Part_3_1607208343.1571272963749
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
 
 
-I managed to fix it. The problem was in the reboot.
+Hello, thanks for answering! 
+I am using a module that is listed in lsmod. 
+I think the problem may be in my git/kernels/staging's .config 
+First I pass the running kernel settings to .config using cp/boot/config-4.15.0-65-generic .config, 
+but after running make menuconfig or sudo make -j4, the .config version is subscribed to by a kernel other 
+than the running kernel(5.4.0) and appears in the header of .config: # Linux / x86 header 5.4.0-rc1 Kernel Configuration
+
+Could the problem be in .config?
 
 
 
-Em quarta-feira, 16 de outubro de 2019 21:42:43 UTC-3, Cristiane Naves 
+Em quarta-feira, 16 de outubro de 2019 02:02:37 UTC-3, Julia Lawall 
 escreveu:
 >
-> Hello, thanks for answering! 
-> I am using a module that is listed in lsmod. 
-> I think the problem may be in my git/kernels/staging's .config 
-> First I pass the running kernel settings to .config using cp/boot/config-4.15.0-65-generic .config, 
-> but after running make menuconfig or sudo make -j4, the .config version is subscribed to by a kernel other 
-> than the running kernel(5.4.0) and appears in the header of .config: # Linux / x86 header 5.4.0-rc1 Kernel Configuration
->
-> Could the problem be in .config?
 >
 >
+> On Tue, 15 Oct 2019, Cristiane Naves wrote: 
 >
-> Em quarta-feira, 16 de outubro de 2019 02:02:37 UTC-3, Julia Lawall 
-> escreveu:
->>
->>
->>
->> On Tue, 15 Oct 2019, Cristiane Naves wrote: 
->>
->> > 
->> > Hello, I have a question in one part of the tutorial and I am unable to 
->> access outreachy irc. 
->> > 
->> > I'm stuck in the "Make a driver change" part of the tutorial. 
->> > I am following these steps: 
->> > First I check the file path using git grep memstick -- '* Makefile'. 
->> > Then I access the file using vim drivers/memstick/core/ms_block.c. 
->> > Then I add printk(KERN_DEBUG "I can modify") to the msb_probe function. 
->> > Then I compile the changes using sudo make -j4 and then install the 
->> changes using sudo make modules_install install. 
->> > Finally i restart my computer and i check if the text "I can modify" is 
->> present in dmesg | less using "/I can modify". 
->> > But every time I've tried this or something, it always gives Pattern 
->> not found (press return). 
->> > Has anyone else had a similar problem and can help me? 
->>
->> Maybe you don't actually use the module you changed.  You can check 
->> lsmod. 
->> Here is a random URL that explains the module related commands: 
->>
->> http://edoceo.com/howto/kernel-modules 
->>
->> julia 
->>
->> > 
->> > And Can anyone help me access outreachy IRC? I 'm not getting access. 
->> > 
->> > -- 
->> > You received this message because you are subscribed to the Google 
->> Groups "outreachy-kernel" group. 
->> > To unsubscribe from this group and stop receiving emails from it, send 
->> an email to outreach...@googlegroups.com. 
->> > To view this discussion on the web visit 
->> https://groups.google.com/d/msgid/outreachy-kernel/d504514a-93eb-4a60-a99c-8a50bce81677%40googlegroups.com. 
->>
->> > 
->> > 
->>
+> > 
+> > Hello, I have a question in one part of the tutorial and I am unable to 
+> access outreachy irc. 
+> > 
+> > I'm stuck in the "Make a driver change" part of the tutorial. 
+> > I am following these steps: 
+> > First I check the file path using git grep memstick -- '* Makefile'. 
+> > Then I access the file using vim drivers/memstick/core/ms_block.c. 
+> > Then I add printk(KERN_DEBUG "I can modify") to the msb_probe function. 
+> > Then I compile the changes using sudo make -j4 and then install the 
+> changes using sudo make modules_install install. 
+> > Finally i restart my computer and i check if the text "I can modify" is 
+> present in dmesg | less using "/I can modify". 
+> > But every time I've tried this or something, it always gives Pattern not 
+> found (press return). 
+> > Has anyone else had a similar problem and can help me? 
 >
-------=_Part_571_1546709819.1571364656847
+> Maybe you don't actually use the module you changed.  You can check lsmod. 
+> Here is a random URL that explains the module related commands: 
+>
+> http://edoceo.com/howto/kernel-modules 
+>
+> julia 
+>
+> > 
+> > And Can anyone help me access outreachy IRC? I 'm not getting access. 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreach...@googlegroups.com <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/d504514a-93eb-4a60-a99c-8a50bce81677%40googlegroups.com. 
+>
+> > 
+> > 
+>
+
+------=_Part_3_1607208343.1571272963749
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div class=3D"tw-ta-container tw-nfl" id=3D"tw-target-text=
--container"><pre class=3D"tw-data-text tw-text-large tw-ta" data-placeholde=
-r=3D"Tradu=C3=A7=C3=A3o" id=3D"tw-target-text" style=3D"text-align:left" di=
-r=3D"ltr"><span tabindex=3D"0" lang=3D"en">I managed to fix it. The problem=
- was in the reboot.</span></pre></div><br><br>Em quarta-feira, 16 de outubr=
-o de 2019 21:42:43 UTC-3, Cristiane Naves  escreveu:<blockquote class=3D"gm=
-ail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc soli=
-d;padding-left: 1ex;"><div dir=3D"ltr"><pre style=3D"text-align:left" dir=
-=3D"ltr"><span lang=3D"en">Hello, thanks for answering! <br>I am using a mo=
-dule that is listed in lsmod. <br>I think the problem may be in my git/kern=
-els/staging&#39;s .config <br>First I pass the running kernel settings to .=
-config using cp/boot/config-4.15.0-65-<wbr>generic .config, <br>but after r=
-unning make menuconfig or sudo make -j4, the .config version is subscribed =
-to by a kernel other <br>than the running kernel(5.4.0) and appears in the =
-header of .config: # Linux / x86 header 5.4.0-rc1 Kernel Configuration
+<div dir=3D"ltr"><pre class=3D"tw-data-text tw-text-large tw-ta" data-place=
+holder=3D"Tradu=C3=A7=C3=A3o" id=3D"tw-target-text" style=3D"text-align:lef=
+t" dir=3D"ltr"><span tabindex=3D"0" lang=3D"en">Hello, thanks for answering=
+! <br>I am using a module that is listed in lsmod. <br>I think the problem =
+may be in my git/kernels/staging&#39;s .config <br>First I pass the running=
+ kernel settings to .config using cp/boot/config-4.15.0-65-generic .config,=
+ <br>but after running make menuconfig or sudo make -j4, the .config versio=
+n is subscribed to by a kernel other <br>than the running kernel(5.4.0) and=
+ appears in the header of .config: # Linux / x86 header 5.4.0-rc1 Kernel Co=
+nfiguration
 
 Could the problem be in .config?</span></pre><br><br>Em quarta-feira, 16 de=
  outubro de 2019 02:02:37 UTC-3, Julia Lawall  escreveu:<blockquote class=
-=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border-left:1px #ccc s=
-olid;padding-left:1ex">
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;">
 <br>
 <br>On Tue, 15 Oct 2019, Cristiane Naves wrote:
 <br>
@@ -141,8 +127,8 @@ attern not found (press return).
 check lsmod.
 <br>Here is a random URL that explains the module related commands:
 <br>
-<br><a href=3D"http://edoceo.com/howto/kernel-modules" rel=3D"nofollow" tar=
-get=3D"_blank" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\=
+<br><a href=3D"http://edoceo.com/howto/kernel-modules" target=3D"_blank" re=
+l=3D"nofollow" onmousedown=3D"this.href=3D&#39;http://www.google.com/url?q\=
 x3dhttp%3A%2F%2Fedoceo.com%2Fhowto%2Fkernel-modules\x26sa\x3dD\x26sntz\x3d1=
 \x26usg\x3dAFQjCNGE1TXxQO-HTVxcJM1osjvn6rKt-g&#39;;return true;" onclick=3D=
 "this.href=3D&#39;http://www.google.com/url?q\x3dhttp%3A%2F%2Fedoceo.com%2F=
@@ -160,10 +146,13 @@ access.
 <br>&gt; You received this message because you are subscribed to the Google=
  Groups &quot;outreachy-kernel&quot; group.
 <br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a rel=3D"nofollow">outreach...@googlegroups.com</a>.
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"IhVYP7NpCQAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreach...@<wbr>googlegroups.com</a>.
 <br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
 .google.com/d/msgid/outreachy-kernel/d504514a-93eb-4a60-a99c-8a50bce81677%4=
-0googlegroups.com" rel=3D"nofollow" target=3D"_blank" onmousedown=3D"this.h=
+0googlegroups.com" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.h=
 ref=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/d504514a-93eb=
 -4a60-a99c-8a50bce81677%40googlegroups.com&#39;;return true;" onclick=3D"th=
 is.href=3D&#39;https://groups.google.com/d/msgid/outreachy-kernel/d504514a-=
@@ -172,8 +161,8 @@ roups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>d504514a-93eb-4a60-a99c=
 -<wbr>8a50bce81677%40googlegroups.<wbr>com</a>.
 <br>&gt;
 <br>&gt;
-<br></blockquote></div></blockquote></div>
-------=_Part_571_1546709819.1571364656847--
+<br></blockquote></div>
+------=_Part_3_1607208343.1571272963749--
 
-------=_Part_570_1388058862.1571364656846--
+------=_Part_2_2129314782.1571272963748--
 
