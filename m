@@ -1,225 +1,155 @@
 X-GM-THRID: 6748575425662812160
-X-Received: by 2002:a81:440e:: with SMTP id r14mr2646602ywa.160.1571836384651;
-        Wed, 23 Oct 2019 06:13:04 -0700 (PDT)
+X-Received: by 2002:a25:ddc7:: with SMTP id u190mr533552ybg.518.1571277160302;
+        Wed, 16 Oct 2019 18:52:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0d:d611:: with SMTP id y17ls345600ywd.13.gmail; Wed, 23 Oct
- 2019 06:13:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxOTOD03iO+WGsXPbk9lK8au8AmLUOiovmrDpHYQfZ8hLnsUViiNRZ6fjOsKlMcziyLTX7f
-X-Received: by 2002:a81:ee02:: with SMTP id l2mr2651657ywm.178.1571836383174;
-        Wed, 23 Oct 2019 06:13:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571836383; cv=none;
+Received: by 2002:a25:cf05:: with SMTP id f5ls98394ybg.5.gmail; Wed, 16 Oct
+ 2019 18:52:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxR4vEVekQZGTUk6obdYxqjK0WXy1+VCm+9akfrHYOu/W59ap2tcBDezyo5KjvWkGkNNxGC
+X-Received: by 2002:a25:230f:: with SMTP id j15mr518145ybj.397.1571277158901;
+        Wed, 16 Oct 2019 18:52:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571277158; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fy/84SZ6mHJcTEXp4TpH4Xez4PtY887dODftIxbqtjZxUCOy1eDIwWUcY2VutfO1wd
-         zS6KnmeCwHXWbO4QHmbR6s+rHqX7SNjbrrO+lntI6UZhYsyYj9tlzLpuKilJEtz0k7MJ
-         HeSt+4aOPt8uFcvwp4IAwwV14nQ/pFMU5WF+rg1NN+a+VWCo1TPwWL+tJOjBkW9TuBgE
-         aFUMYYMAOSdKYR9jbf0RN0YKFMKwxv8Zo8e7t1TlU2R4D84Eo/3rRgI3P4J06GeoIRv3
-         A61P/kLyodTNJFobnxbQWVfECIE/gIpo5oi1rCEeRDhpODZpbR1M50Y40HC0VJJuS0ag
-         rNBQ==
+        b=IBgOSagIYz4r+oJWg3ZuwsLokghJ5VQt1+Yn/u1YNsN+Oe/83HUoRPQUPJu5r5wrlI
+         k53rscJjLoEf9R0+wnmABRPOTGhvAZAN+w/Q4saDax5Dv6s69fryhZAsswzwiolGa9vu
+         3C9o1Lbpa9t0L9JVyoHMNfzGJRMBrMpZ9O/Elxto6pSxEec444vsONqgg7H6KOq5atnV
+         AkWc4RYHt4/qKdLfWzLr9anRMDQQqOO0qjJ+YGmCS7tBemrqW1XsjcSZbTBh3OlAOEEd
+         Iz6SEapY/FfzCqz3EZMsWvzjGf9hdqs9tD5RV6e8oAkfTiGXlG1UsQOeqMNWkFLswFxY
+         MmrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ohRiKoQhkRpaqt9hJhdQvzQzR+t9Fsg+JL8RFCA1XEE=;
-        b=BdarxoofsNn2ZFCkZaubhGf5Sr/7houCAg0TWXDpMJcz8T00t6q7fXErVYLzv6K/HS
-         HDghQuyoy1JwB/50eRlzqSJ6trcQ1LS+BO8XNboZJi3jTERzvznF6i8/Itq3WROdCFQS
-         /xw/v3uhI4EupdWspOA5z2Iqy5bU601gqDnpSC57agNrl9bIpVI2wa5mYgqACFkm6cU+
-         afvwQAHdId7/V40NfGcWRn1B37q5oEeMXdTDc5F2mXMJa/kNf7/brG2WC/0iMToJJDhK
-         O1innKiW4QAETLJAIEnwWqxC7NYFbtiE+cqwuSpXP68XmAfp//ak9i3P9RSFwhRFpf30
-         3DcA==
+        h=content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=nvQ3rKLYcBuvjRA9mbVxHj0zFGjRN8NFx1d63gPtKlI=;
+        b=k+F2VZXKAUgGLBK3wC4ynFcEexZbzIeEx+7Ek1375cffKowX4VQ9DH3dbpJ2vLk6o2
+         jZPIJ1vKi/n2tI8D5Ce44RX8SaKh+d1S8ya3KW9R/dejzfZIjoQ9jQShWgFnYAxOURPj
+         mZ5ZEH+sBxkZ9Uli7rAsjkTa9YfDp5UYy6/L5/XTSaELq1uPn9IHFn2fNjgW5aigh0li
+         fuDcgc1nFqpbHJVckZIk/JlQicbRtEtugrGyivPDWlcC61dIDBBIiN67iYv+IHymPCKJ
+         VFST+vufxfIw2qh5LixKaLan9UHYisV11edKiiEDkPqKDrmnBM74HG7U3A4Rm1qYdX4c
+         /zqg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QaqaR1qO;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id x7si261172ywd.5.2019.10.23.06.13.03
+       dkim=pass header.i=@infradead.org header.s=bombadil.20170209 header.b=Z0pjrXJu;
+       spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
+Return-Path: <rdunlap@infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by gmr-mx.google.com with ESMTPS id g4si22494ywe.2.2019.10.16.18.52.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2019 06:13:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QaqaR1qO;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id o49so24334363qta.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 06:13:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ohRiKoQhkRpaqt9hJhdQvzQzR+t9Fsg+JL8RFCA1XEE=;
-        b=QaqaR1qOT89rUu8StdHeaRI2FrFjxRCrlbXfhbbHR9vZnzKThIdbKrmyRWSBN2bdba
-         sE46IsgHzgT9XYWG4UdfQyRWXTMVeJ7VpFPmkCa9vj/+DpX1g7evROqCXHGhIcJN2JNO
-         8aErTqkuxElpgoSh8cNYzAjW33boa8eGOwYgwdUEbdfsQ+wnAj2GDUUzHJv5i5C5bJ21
-         6rjUKT54WjEeNI+v4/pfTwYinBFUPFIKHYhC2u8idnVI7ulG4Ascu6dmTCtCPgYNMjnl
-         uxM6Kw22wp3J3MMxVWzjjjcXHrCafX3kkVC13+EaGqgJzpbeLwjb3HKn79iWQORVb1PJ
-         wXvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ohRiKoQhkRpaqt9hJhdQvzQzR+t9Fsg+JL8RFCA1XEE=;
-        b=VOhSyOaeNoIaLaI8OibC6/pjt0MKyVpdMBt/s4X4x0GipIRyUoLZF0E6GhtYW4TEV1
-         Gy8WAJg2QeE6he0YwdUUj9/WOtiDJsoVImX1MFWypr3rePoeBlksByRzwlgWUcRtxqpE
-         Ejo9QkVAcGrg8lZm/KZtBAY1zzY9XzKnYnQEMt2k4wmW5HaJd6ps+ktF5yrqw/S+R3Cz
-         oLgxemBucClXWO0v27ZrRChpWfUYFhxg7G0Ybjrv0//wrfsayaUEjpCeU5p1CvsUNVTY
-         KXkiRQq/aRGjDCV4bErvqVF71bqVTtJawEfRKYEzn/xzKfN1denIaOB7uMMjxAhp872O
-         +8/g==
-X-Gm-Message-State: APjAAAWPY2dcfUqbzCgEKFv+n64Zc1MotTv7pdaS9Iw0e3zUBk2JCSmA
-	3j9d1umFMkp02Xs6UX0RGUQF9bIJv5g=
-X-Received: by 2002:ac8:76d9:: with SMTP id q25mr9148063qtr.23.1571836382491;
-        Wed, 23 Oct 2019 06:13:02 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain ([201.53.210.37])
-        by smtp.gmail.com with ESMTPSA id p22sm9863919qkk.92.2019.10.23.06.12.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2019 06:13:01 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	linux-fbdev@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH v2] staging: sm750fb: format description of parameters the to kernel doc format
-Date: Wed, 23 Oct 2019 10:12:52 -0300
-Message-Id: <20191023131253.20819-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        Wed, 16 Oct 2019 18:52:38 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@infradead.org header.s=bombadil.20170209 header.b=Z0pjrXJu;
+       spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=bombadil.20170209; h=Content-Type:In-Reply-To:MIME-Version
+	:Date:Message-ID:From:References:To:Subject:Sender:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	 bh=nvQ3rKLYcBuvjRA9mbVxHj0zFGjRN8NFx1d63gPtKlI=; b=Z0pjrXJuplMgIWNYVGm0gsStj
+	96vReurUOFmW75uXZh8pz+Mg7oprx62UtnewxZIrn5TVr9eEQYgOI0JSXfpqPjkgl9Z9mkT/ArORr
+	BsyRdC89eZ7KGUzgOKg0Gu5q4o6VLcmI6oMcPwiQTo6lttynxeL7L6+j9AgCwgIEI3GV58HT7+QF9
+	SEO3Z0/8R10Ufej7U7hVyTKlxWbpjbf4Z4mt3KG8F1YXdzaRkdSZK8tR7jUFl2rOhrsEkjVMPB3CE
+	uKFR3VJ6XmnDN584aT0fbbnQVmVdyU/F/CA9pJ2Nv1eriaqk0699/LBupEjqSCga5Qrsta/v0Z3e+
+	R+xL0V0mg==;
+Received: from [2601:1c0:6280:3f0::9ef4]
+	by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+	id 1iKuxv-0006Sf-1f; Thu, 17 Oct 2019 01:52:35 +0000
+Subject: Re: [PATCH] staging: sm750fb: format description of parameters the to
+ kernel doc format
+To: gbittencourt <gabrielabittencourt00@gmail.com>,
+ outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com,
+ teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org,
+ linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, lkcamp@lists.libreplanetbr.org,
+ trivial@kernel.org
+References: <20191017011849.6081-1-gabrielabittencourt00@gmail.com>
+ <799632e2-a328-d72b-397d-3ee6b5e87e06@infradead.org>
+ <d55516db-28c5-aa53-8d07-20201dc4ffca@gmail.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <c8fc60be-5bae-6b3c-d270-c0ca55be1c51@infradead.org>
+Date: Wed, 16 Oct 2019 18:52:34 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
+In-Reply-To: <d55516db-28c5-aa53-8d07-20201dc4ffca@gmail.com>
+Content-Type: multipart/mixed;
+ boundary="------------B227F5DA5237A52E62CCD8AE"
+Content-Language: en-US
+
+This is a multi-part message in MIME format.
+--------------B227F5DA5237A52E62CCD8AE
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 
-Cluster comments that describes parameters of functions and create one
-single comment before the function in kernel doc format.
+On 10/16/19 6:29 PM, gbittencourt wrote:
+> Hi Randy,
+> 
+> On 10/16/19 10:25 PM, Randy Dunlap wrote:
+>> Hi,
+>>
+>> On 10/16/19 6:18 PM, Gabriela Bittencourt wrote:
+>>> Cluster comments that describes parameters of functions and create one
+>>> single comment before the function in kernel doc format.
+>> Good plan.
+>>
+>> How did you test this patch?
+> I haven't test it. How can I do it?
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Hm. There used to be a comment in a (now deleted) document named
+Documentation/kernel-doc-nano-HOWTO.txt about how to test kernel-doc.
 
----
+I took that comment and made a script from it.
+I'll attach the script.  It's easy to use, but it is made to test only
+one function or struct or union or enum at a time.
 
-Changes v2:
- - Add name of function at the begining of comment
- - Separate each parameter in individuals lines
+You need to have a script named 'kernel-doc' in your PATH or you can
+specify where the script is located by using
+$ KERNDOC=path/to/scripts/kernel-doc kdoc_function _parameters_
 
-Here are the commands that I used to test my documentation and the
-respective outputs:
+Its usage is:
+  kdoc_function filename funcname [text|man|html|docbook|xml]
 
-$ kdoc_function sm750_acc.c sm750_hw_imageblit man
-In NAME:
- there is the name of the function, but it's without a brief description
-In ARGUMENTS:
- argument 'accel' is presented as '-- undescribed --'
+where funcname can be a function, struct, union, or enum name.
+The output format can be any of those listed, but the default is "text".
 
-$ kdoc_function sm750_acc.c sm750_hw_copyarea man
-In NAME:
- there is the name of the function, but it's without a brief description
-In ARGUMENTS:
- argument 'accel' is presented as '-- undescribed --'
+Let me know if you have any questions or problems.
 
-$ kernel-doc -none sm750_accel.c
-2 Warnings:
-sm750_accel.c:155: warning: Function parameter or member 'accel'
-			    not described in 'sm750_hw_copyarea'
-sm750_accel.c:321: warning: Function parameter or member 'accel'
-			    not described in 'sm750_hw_imageblit'
+>>> Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+>>> ---
+>>>   drivers/staging/sm750fb/sm750_accel.c | 65 +++++++++++++++------------
+>>>   1 file changed, 37 insertions(+), 28 deletions(-)
 
-I appreciate Randy's explanation about how to test documentation.
-Thank you very much.
----
- drivers/staging/sm750fb/sm750_accel.c | 72 ++++++++++++++++-----------
- 1 file changed, 44 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-index dbcbbd1055da..645813a87490 100644
---- a/drivers/staging/sm750fb/sm750_accel.c
-+++ b/drivers/staging/sm750fb/sm750_accel.c
-@@ -130,20 +130,28 @@ int sm750_hw_fillrect(struct lynx_accel *accel,
- 	return 0;
- }
- 
--int sm750_hw_copyarea(
--struct lynx_accel *accel,
--unsigned int sBase,  /* Address of source: offset in frame buffer */
--unsigned int sPitch, /* Pitch value of source surface in BYTE */
--unsigned int sx,
--unsigned int sy,     /* Starting coordinate of source surface */
--unsigned int dBase,  /* Address of destination: offset in frame buffer */
--unsigned int dPitch, /* Pitch value of destination surface in BYTE */
--unsigned int Bpp,    /* Color depth of destination surface */
--unsigned int dx,
--unsigned int dy,     /* Starting coordinate of destination surface */
--unsigned int width,
--unsigned int height, /* width and height of rectangle in pixel value */
--unsigned int rop2)   /* ROP value */
-+/**
-+ * sm750_hm_copyarea
-+ * @sBase: Address of source: offset in frame buffer
-+ * @sPitch: Pitch value of source surface in BYTE
-+ * @sx: Starting x coordinate of source surface
-+ * @sy: Starting y coordinate of source surface
-+ * @dBase: Address of destination: offset in frame buffer
-+ * @dPitch: Pitch value of destination surface in BYTE
-+ * @Bpp: Color depth of destination surface
-+ * @dx: Starting x coordinate of destination surface
-+ * @dy: Starting y coordinate of destination surface
-+ * @width: width of rectangle in pixel value
-+ * @height: height of rectangle in pixel value
-+ * @rop2: ROP value
-+ */
-+int sm750_hw_copyarea(struct lynx_accel *accel,
-+		      unsigned int sBase, unsigned int sPitch,
-+		      unsigned int sx, unsigned int sy,
-+		      unsigned int dBase, unsigned int dPitch,
-+		      unsigned int Bpp, unsigned int dx, unsigned int dy,
-+		      unsigned int width, unsigned int height,
-+		      unsigned int rop2)
- {
- 	unsigned int nDirection, de_ctrl;
- 
-@@ -288,20 +296,28 @@ static unsigned int deGetTransparency(struct lynx_accel *accel)
- 	return de_ctrl;
- }
- 
--int sm750_hw_imageblit(struct lynx_accel *accel,
--		 const char *pSrcbuf, /* pointer to start of source buffer in system memory */
--		 u32 srcDelta,          /* Pitch value (in bytes) of the source buffer, +ive means top down and -ive mean button up */
--		 u32 startBit, /* Mono data can start at any bit in a byte, this value should be 0 to 7 */
--		 u32 dBase,    /* Address of destination: offset in frame buffer */
--		 u32 dPitch,   /* Pitch value of destination surface in BYTE */
--		 u32 bytePerPixel,      /* Color depth of destination surface */
--		 u32 dx,
--		 u32 dy,       /* Starting coordinate of destination surface */
--		 u32 width,
--		 u32 height,   /* width and height of rectangle in pixel value */
--		 u32 fColor,   /* Foreground color (corresponding to a 1 in the monochrome data */
--		 u32 bColor,   /* Background color (corresponding to a 0 in the monochrome data */
--		 u32 rop2)     /* ROP value */
-+/**
-+ * sm750_hw_imageblit
-+ * @pSrcbuf: pointer to start of source buffer in system memory
-+ * @srcDelta: Pitch value (in bytes) of the source buffer, +ive means top down
-+ *	      and -ive mean button up
-+ * @startBit: Mono data can start at any bit in a byte, this value should be
-+ *	      0 to 7
-+ * @dBase: Address of destination: offset in frame buffer
-+ * @dPitch: Pitch value of destination surface in BYTE
-+ * @bytePerPixel: Color depth of destination surface
-+ * @dx: Starting x coordinate of destination surface
-+ * @dy: Starting y coordinate of destination surface
-+ * @width: width of rectangle in pixel value
-+ * @height: height of rectangle in pixel value
-+ * @fColor: Foreground color (corresponding to a 1 in the monochrome data
-+ * @bColor: Background color (corresponding to a 0 in the monochrome data
-+ * @rop2: ROP value
-+ */
-+int sm750_hw_imageblit(struct lynx_accel *accel, const char *pSrcbuf,
-+		       u32 srcDelta, u32 startBit, u32 dBase, u32 dPitch,
-+		       u32 bytePerPixel, u32 dx, u32 dy, u32 width,
-+		       u32 height, u32 fColor, u32 bColor, u32 rop2)
- {
- 	unsigned int ulBytesPerScan;
- 	unsigned int ul4BytesPerScan;
 -- 
-2.20.1
+~Randy
 
+--------------B227F5DA5237A52E62CCD8AE
+Content-Type: text/plain; charset=UTF-8;
+ name="kdoc_function"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="kdoc_function"
+
+IyEgL2Jpbi9zaAojIGZyb20gbGludXgvRG9jdW1lbnRhdGlvbi9rZXJuZWwtZG9jLW5hbm8t
+SE9XVE8udHh0CiMgdXNlcyBsaW51eC9zY3JpcHRzL2tlcm5lbC1kb2Mgb3IgYSBjb3B5IG9m
+IGl0IChpbiAkUEFUSCkuCiMgdXNpbmcgIkxBTkc9QyBvciBMQ19BTEw9QyBrZG9jX2Z1bmN0
+aW9uIDxwcm1zPiIgY2FuIGJlIHVzZWZ1bC4KIyBDYW4gdXNlICJLRVJORE9DPTxzY3JpcHRf
+ZmlsZW5hbWU+IGtkb2NfZnVuY3Rpb24gPHBybXM+IiB0byB2YXJ5CiMgd2hpY2gga2VybmVs
+LWRvYyBzY3JpcHQgaXMgdXNlZC4KCnZlcmJvc2U9CmRlYnVnPQppZiBbICIkS0VSTkRPQyIg
+PSAiIiBdOyB0aGVuCglLRVJORE9DPWtlcm5lbC1kb2MKZmkKCiMgY2FyZWZ1bDogbXVzdCBl
+bnRlciAtdiBiZWZvcmUgLXg6CmlmIFsgIiQxIiA9ICItdiIgXTsgdGhlbgoJdmVyYm9zZT0i
+LXYiCglzaGlmdApmaQppZiBbICIkMSIgPSAiLXgiIF07IHRoZW4KCWRlYnVnPSIteCIKCXNo
+aWZ0CmZpCgpmaWxlPSIkMSIKZm49IiQyIgojIGZtdCBjYW4gYmUgInRleHR8bWFufGh0bWx8
+ZG9jYm9va3x4bWwiIChkZWZhdWx0IGlzICJ0ZXh0IikKIyBkb2Nib29rIHByb2R1Y2VzIHht
+bApmbXQ9IiQzIgppZiBbIHgkMyA9IHggXTsgdGhlbgoJZm10PSJ0ZXh0IgpmaQoKaWYgWyAi
+JDIiID0gIiIgXTsgdGhlbgoJZWNobyAidXNhZ2U6IGtkb2NfZnVuY3Rpb24gZmlsZW5hbWUg
+ZnVuY25hbWUgW3RleHR8bWFufGh0bWx8ZG9jYm9va3x4bWxdIgoJZXhpdCAxCmZpCgpjYXNl
+ICRmbXQgaW4KICAgIG1hbikKCSRLRVJORE9DICR2ZXJib3NlICRkZWJ1ZyAtbWFuIC1mdW5j
+dGlvbiAkZm4gJGZpbGUgfCBucm9mZiAtbWFuIHwgbGVzcwoJOzsKICAgIGh0bWwpCgkkS0VS
+TkRPQyAkdmVyYm9zZSAkZGVidWcgLWh0bWwgLWZ1bmN0aW9uICRmbiAkZmlsZSA+a2VybmVs
+ZG9jLmh0bWwKCWVjaG8gInNlZSBrZXJuZWxkb2MuaHRtbCIKCTs7CiAgICBkb2Nib29rfHht
+bCkKCSRLRVJORE9DICR2ZXJib3NlICRkZWJ1ZyAtZG9jYm9vayAtZnVuY3Rpb24gJGZuICRm
+aWxlID5rZXJuZWxkb2MueG1sCgllY2hvICJzZWUga2VybmVsZG9jLnhtbCIKCTs7CiAgICAq
+KQoJJEtFUk5ET0MgJHZlcmJvc2UgJGRlYnVnIC10ZXh0IC1mdW5jdGlvbiAkZm4gJGZpbGUg
+fCBsZXNzCgk7Owplc2FjCg==
+--------------B227F5DA5237A52E62CCD8AE--
 
