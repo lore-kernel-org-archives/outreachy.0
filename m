@@ -1,84 +1,84 @@
 X-GM-THRID: 6748523404915113984
-X-Received: by 2002:a17:902:bf08:: with SMTP id bi8mr6447419plb.249.1571355628972;
-        Thu, 17 Oct 2019 16:40:28 -0700 (PDT)
+X-Received: by 2002:aca:4994:: with SMTP id w142mr5467777oia.88.1571354759778;
+        Thu, 17 Oct 2019 16:25:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:c086:: with SMTP id o6ls1353537pjs.4.canary-gmail;
- Thu, 17 Oct 2019 16:40:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxWvmVVRsNTW0NN6tw+3qRVBhZjtejgfcVKGwONktaylTIz5qayJplSOsuSQ3jB9NQO5q6i
-X-Received: by 2002:a17:90a:19c1:: with SMTP id 1mr7369530pjj.52.1571355627968;
-        Thu, 17 Oct 2019 16:40:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571355627; cv=none;
+Received: by 2002:aca:cc88:: with SMTP id c130ls696016oig.4.gmail; Thu, 17 Oct
+ 2019 16:25:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx00yoe6imZe2MEjJh/RnnW80ixZ56/ygY/esZ5rsoMVefXjMJuhhMikt9tDGXJ2Ohtx8oM
+X-Received: by 2002:aca:49c2:: with SMTP id w185mr5504090oia.163.1571354758819;
+        Thu, 17 Oct 2019 16:25:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571354758; cv=none;
         d=google.com; s=arc-20160816;
-        b=g+I0X5tQnoj5c2jP1bkVgEReRFHmMGWfSvOZMUeZURLwltFLOUoZssU5J08T0n/SCs
-         tKO1HOj6s2dSYw8lxC48fTOj8WJWJrTOEnrPLzgqraT3kZk/5pDi1Ctypjb1g2Kk3bhf
-         fMyB8i61agf5t/q4YJJ2JjfGgkiYfIHsSx0XzIllY/po+XMKnQi26ViIz6yjSG4io5ng
-         LOvopJzJqyZzimCxhsjhMRAlcGwABGjbS8nL8UCYn2Yer8X7/NqvDPFb6bukthLp/Q4J
-         +lWXw71sh9loKhBr6F9bWTJVPiop7kX+IeEcfUgJ/3umgtmyvVRiCSds9kYAyTd2YspG
-         uwQQ==
+        b=N2XqiNIBdfrrgDvqdalRs2p5TF/7t4brPsAqVF+rXhsCxSJeoyIYIf54rj9aqutiGt
+         SEtEu/KN3i/mCv5kK3G6ZTAsAlYYEwfyfQ+hxwOw/K0P/q+4ZzM+lsAAOs2Sju+JZc2O
+         Wnowd/v7lV8AodI93CwSN54n9sK96pmYmd/skrFnipDtHbSWiCphI4pToefW7AE7z4yH
+         AlImk1QR4XE3PuBSNxl9ehXbxFqoIb3rt+W3xdNQQPevyHV2BKBwp3wRrKCR+PEm7gtS
+         h0+dyLhw0X6VqX8n6vxfr531LXpYNMQAIJJIfElfLnfIJLQoslTg57biw20Ay2wnqPcV
+         BpRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1Y6N/JKV9EWZE7KNIEEbUJUvrB4ErJnzpt2xXQVBQwk=;
-        b=tQfkTT3UXwyt1ocmRwjDku1gJOfmZnHnNikdaCcy0lfWYjJLsM+XQq6kaw2kbMFsx8
-         yS/N1KKTt2PtJMNsvWsmwIRsryZTNAOuhL+/df0dUK3Dj9keLDu1RKVXjLcCjykNIj7c
-         82atvzb23XZRQoKCeiMM9xKzOoLT8mKhTAJt3JQGeflFLV2lJ5bb6lOET9bLXD5EGSkC
-         8jZyB5Xx5jSlitreGK6laFDFIb4OikaXExh2dBaOiBzDM+6s16CuMkFua21/Day4qSi0
-         zTQsiY6iHEeBDLcVzJi3O7haYk90rBvPVqybyzoK869/AtasgtsZ+XBj2OvfCDcvmgFk
-         2lfw==
+        bh=CnTz0Le7dIxkm7YSuiFp+2qE44rRyUYQtzzG6E5RLxU=;
+        b=fk2sph3wkAaTk97ynrZFwvsdIJsmtxvNAXS8T1oxioRsByJd/8Ku6vczQi6GLT6Gl+
+         cwz2ywULw/XimGjOULE3Obb+RycygF7B27MQawpGybh/rBVfYr8AmjvwWsAfs5t6At1T
+         O6pU0r/P2dGzRVYcsA9vAgFLlV6mYygWTdS0LwhY1YQ7tX3wNO/s0E9tqlUg6OxzhhqH
+         PzIGV5tj+jJlMYinW4jYlCB/4ZM0yOxu1r3xwYbJtCI02vyOmp5BR80XuyFG51pVgrvH
+         57/x7eFsa1V6Rf4YMcIOnutW5cL0klHlmcB08OS5BqmnAlQGnmk+7BrrrEYmcyUDJd7N
+         jnHg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RjZq28+c;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/AXSVXc";
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id f17si212245pgk.3.2019.10.17.16.40.27
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id b11si330575oii.5.2019.10.17.16.25.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 17 Oct 2019 16:40:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Thu, 17 Oct 2019 16:25:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RjZq28+c;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/AXSVXc";
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id p1so2259533pgi.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 17 Oct 2019 16:40:27 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id d22so1899179pls.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 17 Oct 2019 16:25:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id;
-        bh=1Y6N/JKV9EWZE7KNIEEbUJUvrB4ErJnzpt2xXQVBQwk=;
-        b=RjZq28+chmgvfnGpqCheRuOdxxSmJPwCjhi/8d3qQpJdvVPXbb4wOjAtVSnQgsGeCM
-         RZAVRI84ImNir23XYw9KKmRufdKQ1QXOB67hLqXS4mkwll9MtGiPOJ/4ZljxyzAkWUdF
-         rz2KzcTNTZqujzc7qmCSxwTgWQz/dOHhAYy3XQLK5R8i9X1Yx03pti3AET5LdSApKfnQ
-         iKgiFfo1uMKiuK36Z5HGyCVLbfk+QuIU5TP+XDZfEpfhC3wwg/ociZ/bPGvkA5HNIHQ7
-         LbIoCDJpO4rsMIWgaTXZamlTHPEzRd6qHGXDzOadZAAy3+Z2mLijYZqU72Wuav5bWT9+
-         bSUQ==
+        bh=CnTz0Le7dIxkm7YSuiFp+2qE44rRyUYQtzzG6E5RLxU=;
+        b=F/AXSVXciER2lY4sAJ9vBNjwWkk5QekmrJiNcdQXA1pGdag8SqR7iwwCaSt1m17X63
+         9fCx9SKVftynTNxOxisNC5VpJDd/MxyGs2wV0Xi33hDf1+KMvtLt+XFg9SYo/mfavDJF
+         NshRbcGP73tFw81AWHxIq9QkVnyA4HW/+E9WQ46uemWrtHh40wB79mvCvMcGCvEeJTlq
+         ONAgt0WvtnHBRfk3kYbuCx8iLJKv+UEFamT62tnBwtCFIwc27hHfEPKeIWOC/LhhDgGz
+         D8ngjOksg9UCDnMRfgDGy7uY1n6NlugvL16hnBtbD1Y4P3fa5+oXUARESPj4MwlsiiE+
+         KaDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=1Y6N/JKV9EWZE7KNIEEbUJUvrB4ErJnzpt2xXQVBQwk=;
-        b=G+uQpkU7ejC33/ZUrCPuPR4ujvYslYXT8D6N0S0G318ZoZlteDY2LllIY+i45V/BUL
-         6c9oduODA6QXJTe+F4PPVRPtWR3zWVBm9MD/baOTJ+vJgKnnkzgV0HnqF86bCnnEkR+n
-         ubJJXPBCOzc3RcoYyWaMtxJ3YYB9571G/7B3HSSXSu5oXlfN7H4ZfXl3KJu915dZKjxc
-         qkAvdINw0QaqQ0IJ1/T7gnabf0/R81xpDuVNqeJuMOLc8y+5//JrHYwSIgPxU/AtL1pc
-         meFc1zt7pM3Cqzy4RqoOi3Z3/FU0+LAnBofUSoBVUAiCi6NxT9A8lsAFclZ78mSbubSK
-         D6eA==
-X-Gm-Message-State: APjAAAUsjgcjGYQR682VaWXUmjhF2qyV3X/hIVg8vwkfE2vZ7NOSL3Ur
-	fBYhwO42ifAvnut3QJSI3GUE/2VA49A=
-X-Received: by 2002:a63:d246:: with SMTP id t6mr286502pgi.5.1571355627260;
-        Thu, 17 Oct 2019 16:40:27 -0700 (PDT)
+        bh=CnTz0Le7dIxkm7YSuiFp+2qE44rRyUYQtzzG6E5RLxU=;
+        b=k/XJsQ/zp7OoHLav0z9KlsszDWwhEJgVZHO6oyF23B2oyVxpK5QMmMImbr7FBic3OR
+         KcvPj428tXs+Wokdv/HzxpHrqzBDGkqxnMSTnCY55NlseZkAmc9L2kRMSDNnHAip17uV
+         1ZqZqH8FUJHfyuDSKlDt2MBMv7nFY0UtnVYGtpW1LCPizNBI1VcZzHJOUNfkdFsqr5im
+         g7TQU4AAqH3Yw8nSU4TeN+uPwvi+an2YH8uXb85tzGamEhcd9Q9nlSYUyT3I3BeML1c1
+         9TdbiFYe5KJyW7pApH3bXncePokJWiupRMuDXO7y2qgFVcAdafzFATGStvlJ9GidvVMX
+         wd5Q==
+X-Gm-Message-State: APjAAAWy1lYJvxKZuI/NXq2w//YNqmFV5YThaoBzEdtIFmelC/ufepIw
+	reTZ5VNnYLYnXTxJAi0YBzJsQvWYkJw=
+X-Received: by 2002:a17:902:d887:: with SMTP id b7mr6607088plz.301.1571354757738;
+        Thu, 17 Oct 2019 16:25:57 -0700 (PDT)
 Return-Path: <jamal.k.shareef@gmail.com>
 Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id l22sm3244797pgj.4.2019.10.17.16.40.25
+        by smtp.gmail.com with ESMTPSA id x19sm4738263pgc.59.2019.10.17.16.25.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Oct 2019 16:40:26 -0700 (PDT)
+        Thu, 17 Oct 2019 16:25:56 -0700 (PDT)
 From: Jamal Shareef <jamal.k.shareef@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
 	sudipm.mukherjee@gmail.com,
 	teddy.wang@siliconmotion.com,
 	gregkh@linuxfoundation.org
-Subject: [PATCH v3] staging: sm750sb: Edit CamelCase in dvi/sii164 files
-Date: Thu, 17 Oct 2019 16:40:15 -0700
-Message-Id: <20191017234015.27504-1-jamal.k.shareef@gmail.com>
+Subject: [PATCH v2] staging: sm750sb: Edit CamelCase in dvi/sii164 files
+Date: Thu, 17 Oct 2019 16:25:44 -0700
+Message-Id: <20191017232544.26719-1-jamal.k.shareef@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
 Edits CamelCase naming in a group of dependent
@@ -91,28 +91,25 @@ g_dcftSupportedDviController[] because it is not used.
 
 Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 ---
-Changes in v3:
- - Fix checkpatch warning for multiple blank lines.
 Changes in v2:
  - Remove dviInt function and global variable because they are
    not used.
  - Remove hungarion notation prefixes.
 ---
- drivers/staging/sm750fb/ddk750_dvi.c    |  54 -------
+ drivers/staging/sm750fb/ddk750_dvi.c    |  51 -------
  drivers/staging/sm750fb/ddk750_dvi.h    |  71 ++++-----
  drivers/staging/sm750fb/ddk750_sii164.c | 185 ++++++++++++------------
  drivers/staging/sm750fb/ddk750_sii164.h |  40 ++---
- 4 files changed, 143 insertions(+), 207 deletions(-)
+ 4 files changed, 143 insertions(+), 204 deletions(-)
 
 diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
-index cd564ea40779..dbdd27eff0f9 100644
+index cd564ea40779..c0a7d8c018d8 100644
 --- a/drivers/staging/sm750fb/ddk750_dvi.c
 +++ b/drivers/staging/sm750fb/ddk750_dvi.c
-@@ -5,58 +5,4 @@
- #include "ddk750_reg.h"
+@@ -6,57 +6,6 @@
  #include "ddk750_dvi.h"
  #include "ddk750_sii164.h"
--
+ 
 -/*
 - * This global variable contains all the supported driver and its corresponding
 - * function API. Please set the function pointer to NULL whenever the function
@@ -149,7 +146,7 @@ index cd564ea40779..dbdd27eff0f9 100644
 -	    unsigned char pll_filter_value)
 -{
 -	struct dvi_ctrl_device *pCurrentDviCtrl;
--
+ 
 -	pCurrentDviCtrl = g_dcftSupportedDviController;
 -	if (pCurrentDviCtrl->pfnInit) {
 -		return pCurrentDviCtrl->pfnInit(edge_select,
@@ -165,7 +162,7 @@ index cd564ea40779..dbdd27eff0f9 100644
 -	}
 -	return -1; /* error */
 -}
--
+ 
  #endif
 diff --git a/drivers/staging/sm750fb/ddk750_dvi.h b/drivers/staging/sm750fb/ddk750_dvi.h
 index 1c7a565b617a..f42f06f90fa7 100644
