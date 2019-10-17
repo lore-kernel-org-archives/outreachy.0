@@ -1,222 +1,162 @@
-X-GM-THRID: 6664078765132349440
-X-Received: by 2002:a63:6407:: with SMTP id y7mr5105143pgb.24.1551601748940;
-        Sun, 03 Mar 2019 00:29:08 -0800 (PST)
+X-GM-THRID: 6748827844011360256
+X-Received: by 2002:adf:f40d:: with SMTP id g13mr3843239wro.368.1571333930455;
+        Thu, 17 Oct 2019 10:38:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:1548:: with SMTP id 69ls5291483pfv.7.gmail; Sun, 03 Mar
- 2019 00:29:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz+Qx0ArOjlOPPDgXjjaGrIRJZSM3KLAOnYhsfwYaKpEIOu9lz4oTEbQrmtkZgk3u+uj3px
-X-Received: by 2002:a65:66cd:: with SMTP id c13mr5044173pgw.73.1551601748379;
-        Sun, 03 Mar 2019 00:29:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551601748; cv=none;
+Received: by 2002:adf:a517:: with SMTP id i23ls1331929wrb.9.gmail; Thu, 17 Oct
+ 2019 10:38:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw4TrZa0drkk035au0ZKlgPsRmSn/1ecjd/nfSzHuxwVOqkgh7lAegR4BND+hlbTWvnXjOe
+X-Received: by 2002:a5d:5052:: with SMTP id h18mr4309803wrt.143.1571333929442;
+        Thu, 17 Oct 2019 10:38:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571333929; cv=none;
         d=google.com; s=arc-20160816;
-        b=z2A/XTqXO8pN88pJI5WR8b0qZoxxidvb5nibOD5bK3hSFI9EykrlJoS4xq2vy1ugrB
-         TtwbHAzsTPB8LTFhreQy8MZO1Msq+jctipbNcy5EgOLt7yfRkcG+hbwKu3uLN8PpbWd5
-         v+FDOtyro3yi8UcdAyV5/cE6vMwTrKOcIUwYkK3DADE7QrjFrDa4ZI5rT6xImixTwLk/
-         kakn+UWmwx8XUfuFj3N+j6qKjWkAu2We40StSVriQoid2NADrJFwMZ8yo8iJ3vRNTBeT
-         a6CVaa/Fdc6iWseYBzFyJrCMgH1xmIC5q5xWGrypUN9lv02mQwIoCYydhA0KVccyAEMI
-         yB3Q==
+        b=FGpi8gh3G/qbPP/uPwllg3oRFxJ/dydn50lg/GbgD1HXAAACiOxE2LPozqXYSplZVW
+         qhMH4sOuEnEzMPYTpasDvXllvdbmPj/PhLog4jhOELbI7Mo4hZlFvzKTfLkyv0CG36nO
+         hMJ95R208Uig/vH8V01L0wpgb+WMo4z97UTwIihHPUVhB+Qe1oXflCbnzwkuF4NyigSu
+         hoUal8LmZhe5zifFwihx4/pVJKEVBY7dXfZ0OHLAO50dPoT1Ur8s8QY+VXwdGB8o6b75
+         /68+TpqYCpRGXTQGAatUnJT2RSULa0ZUC1/p930Mqeod0M+CWwio9qoi7H9tYdH1kgYf
+         +e9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=eIGtR4EqPzUxVX/pGk2vFk8JUq9hZS2LJuxjNI20RkA=;
-        b=ImMSYLw87kEjhZwHcgX1HGop2y9VArBG4AvyYd8+7TLGCqa8S1HGqMn6fUvjQ8NO67
-         qs42Czpw3TUDwrd4+Jm7BYqlmkG6raYmvno60fkVbJjNv0+J0Rrn1s79UhaXJCX35zJZ
-         5UX87mZluRdIas1VnvBPAr967hrI8gyyK29qLRMeyuGpNya39rhOfLmIgAbKOQxz7ERH
-         TEGQXhiu7JfQtVYa3ymWTr+3uMKCnJXIGKolhMgswJMedp7KraKxH6/RmAdmReONV1H+
-         5X6E6hgauVa5GOk1qIBs7NSb0fwaV8jVqd4AilAnPLbUMGRswEbXZ5qqCeb90ejH4Cjb
-         gncw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Lip5tfLmtFZDh54RRrzX/tt/7Qrpp2XRfblRWQOMkLs=;
+        b=E+TcNvRdAWIo8mYMfnahe8jQC0VYIW2daV823uxdA3PJ54dnR0QWFvw3bRgIDp1vXz
+         uFnm5gRziYfigCc7HjeQe1jzTfZMhM1Z8KB9XzA45RHlnl4dSDQKGCgk5oM1oAKYrapf
+         E5FvRPLyQJfHhut4xJv125HeYYQ8M3+OlKlTW3UWTwlvjyXMcxq0l4K53CrK+FlcDImg
+         SXTjzYJC1Ck6B+e6ZxotMFeeG5P0GFb7GwVxa/6B/ScmYFdXRhuCWkLbsRvcoOrSya0p
+         tBNzDi9NowWy1mF6h9BkCv3CF02lTnmzGjzIQ58ui8/QxDJECHj090Y19fRO4+GtjVxS
+         8TQQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n0UeVcI4;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RxsW6mjw;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com. [2607:f8b0:4864:20::52e])
-        by gmr-mx.google.com with ESMTPS id j8si115128plk.3.2019.03.03.00.29.08
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id x8si226506wmk.2.2019.10.17.10.38.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 00:29:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) client-ip=2607:f8b0:4864:20::52e;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 17 Oct 2019 10:38:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n0UeVcI4;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::52e as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RxsW6mjw;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52e.google.com with SMTP id l11so1040040pgq.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 00:29:08 -0800 (PST)
+Received: by mail-wm1-x341.google.com with SMTP id r17so7531335wme.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 17 Oct 2019 10:38:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=eIGtR4EqPzUxVX/pGk2vFk8JUq9hZS2LJuxjNI20RkA=;
-        b=n0UeVcI4e3e4EdyhdvV97UQfzyOeSCor4Y6SJ17ho6pEwD0k8YjhIJBt2rbnoEze16
-         cO4S4m8DbnVlM1EtsLce5esI3MRJu2LIeQOskF71mnpXKnbALDpWYiy+VaKsvVR7b4Mw
-         F61fZhfs1Q5EOpHK6rz3aaaroxBhoNbJ60Syd5HyG8Ue7yAD2xx/Zal9EcnPcJFXuhqb
-         Y42pgwRfe1PrrfyU2oNf4dO7/9WON4ya/0BAMyPKsXnpSkQdrXvAD4pCoAHlwfgGDEJZ
-         cL0aXHj5aoxJdzd7iZ1N3w4mmovL/wzh7dwWCbvhh9KtqKtdhTJ/4HDXLz1wKtF+JwyF
-         oIng==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Lip5tfLmtFZDh54RRrzX/tt/7Qrpp2XRfblRWQOMkLs=;
+        b=RxsW6mjwsltv1i0DmYokl0v6P9Mw6+mV4zwVcPwcaj/svOxEqZtmVIVDkJvz0DK9kA
+         SpWr4z1/p5LR5qtJz3VrgzyC4x+NcErXxVaKZEIfFakyfIc3rU7SpnBmHzStzniwhWEe
+         6SCyios6KUeVQeQxorpNW6UffGI6oanIF0WBpFd8+kKN2OMf7pT/qkfOvUP0ZDJkOsJW
+         o+6rMuRYOPsvNV2W8IktUFW+MB9IaXguLKXQZ/EA28U/HvxdJniC4wnEB1tg8kcaFY//
+         Z6B02it5WBQh71WW4w3Hr6v0HUcRGLYwC/qnyC4hpJ74S7gUVDkt7gOgiDukBFz3125h
+         YWyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=eIGtR4EqPzUxVX/pGk2vFk8JUq9hZS2LJuxjNI20RkA=;
-        b=Ba7SqOg+U6t3ZlMAoCX1hvlKzdKWCk000wATFJ8no0SVbySPosqUZODGpdqkhKDGd7
-         WUJ8Z4mVg0ngH3Ul5E5fodaz7Thwq1fNN0xBDDpzdyjiklBZvGqZE32IHXgjeGHitLAd
-         nR+dsTvHFlNCNzakZcgfAE0QAx3DJ6rJh1MtN5PKNpdExm0Jf6v8FQUlf2Hq3hU6V0S5
-         32osp8aShfs2QdNAV/uJnzBE97fO1j98aHx5GLnYx7HOBfC4+Boyindk8+fvOhEYzfgl
-         Bqn4GTyC+B/ubEkCeX8Sd+icOTP4fk3d+OI5PXKabC69cmWZ2WbwqyKShQHSw3u2F+SP
-         NBOA==
-X-Gm-Message-State: AHQUAuZisBoj1yw229CRvRYySnNblXlSllM41h0dV79MucOYYZMhV+3b
-	PwrOIHOo5/CmW3oTnBqneIX5ua87Zek=
-X-Received: by 2002:a62:1854:: with SMTP id 81mr14157800pfy.223.1551601747995;
-        Sun, 03 Mar 2019 00:29:07 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2405:204:9406:e157:a9ce:acf1:ad9a:ed4a])
-        by smtp.gmail.com with ESMTPSA id e21sm8080183pfh.45.2019.03.03.00.29.06
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 03 Mar 2019 00:29:07 -0800 (PST)
-Date: Sun, 3 Mar 2019 13:59:02 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>,
-	Bhagyashri <digholebhagyashri@gmail.com>
-Subject: [PATCH] Staging: fbtft: Replace udelay to usleep_range
-Message-ID: <20190303082902.GA16698@bhagyashri-Lenovo-G570>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Lip5tfLmtFZDh54RRrzX/tt/7Qrpp2XRfblRWQOMkLs=;
+        b=UOK3ebHfQHW4yt6Jy6ewYj7bWIEquyyOogxLTYSpjFRFCgoKDVroJGWPgHSIexsMmv
+         bibrpJ+yAt2sybzT990DYsAZHJd+eTqndb3velAmkv9MjaDBi11Nq/4sQuxivO5hpmZ8
+         kCGDIR5FW6Ae/8gvOQCoXTW+7NWyt7sX+l4djrSd0tnoKX0385lbbVF0NMrmioPqdyTJ
+         uNndB+WyJw+E+nYkInwzn5dNNarMWHOGufAZ73xtHAVhy/Kpqc5hv0aiPRdlmSRtrRI6
+         uPjcnCQvOBsNu52WyqH1l7BfFOVbhFa5xs4VuZXfx53soFkX4umbc9H9YBSJjkoDSRYe
+         Av4Q==
+X-Gm-Message-State: APjAAAUx3yvIXJaPOzOhq6YE3Ba5n5F8yf6WSqvKUCSO7dIA+iiwZynr
+	vR5FG/PMFZBlDEl9DhQbPkxHCOTafM6j
+X-Received: by 2002:a1c:48d6:: with SMTP id v205mr3702084wma.35.1571333928697;
+        Thu, 17 Oct 2019 10:38:48 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (host-92-23-80-57.as13285.net. [92.23.80.57])
+        by smtp.googlemail.com with ESMTPSA id x9sm3035204wrq.63.2019.10.17.10.38.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 17 Oct 2019 10:38:48 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH] staging: vc04_services: fix warnings of Block comments use of *
+Date: Thu, 17 Oct 2019 18:38:37 +0100
+Message-Id: <20191017173837.27336-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 8bit
 
-Replace udelay to usleep_range function call with 10 microsecond range.
-Detected by checkpatch.pl "CHECK: usleep_range is preferred over udelay".
+Fix warnings of Block comments use * on subsequent lines.
+Issue detected by checkpatch tool.
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/fbtft/fb_agm1264k-fl.c |  2 +-
- drivers/staging/fbtft/fb_ra8875.c      |  4 ++--
- drivers/staging/fbtft/fb_tinylcd.c     |  2 +-
- drivers/staging/fbtft/fb_upd161704.c   | 18 +++++++++---------
- drivers/staging/fbtft/fb_watterott.c   |  4 ++--
- 5 files changed, 15 insertions(+), 15 deletions(-)
+ .../vc04_services/interface/vchi/vchi.h        | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fb_agm1264k-fl.c b/drivers/staging/fbtft/fb_agm1264k-fl.c
-index 8f27bd8..b2d19b1 100644
---- a/drivers/staging/fbtft/fb_agm1264k-fl.c
-+++ b/drivers/staging/fbtft/fb_agm1264k-fl.c
-@@ -85,7 +85,7 @@ static void reset(struct fbtft_par *par)
- 	dev_dbg(par->info->device, "%s()\n", __func__);
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi.h b/drivers/staging/vc04_services/interface/vchi/vchi.h
+index bdc393d36769..0a353a468f34 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi.h
+@@ -8,7 +8,7 @@
+ #include "interface/vchi/vchi_common.h"
  
- 	gpiod_set_value(par->gpio.reset, 0);
--	udelay(20);
-+	usleep_range(20, 30);
- 	gpiod_set_value(par->gpio.reset, 1);
- 	mdelay(120);
- }
-diff --git a/drivers/staging/fbtft/fb_ra8875.c b/drivers/staging/fbtft/fb_ra8875.c
-index 70b37fc..5f857ba 100644
---- a/drivers/staging/fbtft/fb_ra8875.c
-+++ b/drivers/staging/fbtft/fb_ra8875.c
-@@ -217,7 +217,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
- 	}
- 	len--;
+ /******************************************************************************
+- Global defs
++ * Global defs
+  *****************************************************************************/
  
--	udelay(100);
-+	usleep_range(100, 110);
+ #define VCHI_BULK_ROUND_UP(x)     ((((unsigned long)(x)) + VCHI_BULK_ALIGN - 1) & ~(VCHI_BULK_ALIGN - 1))
+@@ -56,7 +56,8 @@ typedef struct opaque_vchi_instance_handle_t *VCHI_INSTANCE_T;
+ typedef struct opaque_vchi_service_handle_t *VCHI_SERVICE_HANDLE_T;
  
- 	if (len) {
- 		buf = (u8 *)par->buf;
-@@ -238,7 +238,7 @@ static void write_reg8_bus8(struct fbtft_par *par, int len, ...)
+ /******************************************************************************
+- Global funcs - implementation is specific to which side you are on (local / remote)
++ * Global funcs - implementation is specific to which side you are on
++ * (local / remote)
+  *****************************************************************************/
  
- 	/* restore user spi-speed */
- 	par->fbtftops.write = fbtft_write_spi;
--	udelay(100);
-+	usleep_range(100, 110);
- }
+ #ifdef __cplusplus
+@@ -80,7 +81,7 @@ extern void vchi_free_buffer(VCHI_SERVICE_HANDLE_T handle, void *address);
+ extern uint32_t vchi_current_time(VCHI_INSTANCE_T instance_handle);
  
- static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
-diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-index 9469248..7a9f0e1 100644
---- a/drivers/staging/fbtft/fb_tinylcd.c
-+++ b/drivers/staging/fbtft/fb_tinylcd.c
-@@ -41,7 +41,7 @@ static int init_display(struct fbtft_par *par)
- 		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
--	udelay(250);
-+	usleep_range(250, 260);
- 	write_reg(par, MIPI_DCS_SET_DISPLAY_ON);
+ /******************************************************************************
+- Global service API
++ * Global service API
+  *****************************************************************************/
+ // Routine to destroy a service
+ extern int32_t vchi_service_destroy(const VCHI_SERVICE_HANDLE_T handle);
+@@ -153,9 +154,10 @@ extern int32_t vchi_msg_look_ahead(VCHI_SERVICE_HANDLE_T handle,
+ 				   struct vchi_msg_iter *iter,
+ 				   VCHI_FLAGS_T flags);
  
- 	return 0;
-diff --git a/drivers/staging/fbtft/fb_upd161704.c b/drivers/staging/fbtft/fb_upd161704.c
-index 564a38e..b00161e 100644
---- a/drivers/staging/fbtft/fb_upd161704.c
-+++ b/drivers/staging/fbtft/fb_upd161704.c
-@@ -36,27 +36,27 @@ static int init_display(struct fbtft_par *par)
+-/******************************************************************************
+- Global service support API - operations on held messages and message iterators
+- *****************************************************************************/
++/*******************************************************************************
++ * Global service support API - operations on held messages
++ * and message iterators
++ ******************************************************************************/
  
- 	/* oscillator start */
- 	write_reg(par, 0x003A, 0x0001);	/*Oscillator 0: stop, 1: operation */
--	udelay(100);
-+	usleep_range(100, 110);
+ // Routine to get the address of a held message
+ extern void *vchi_held_msg_ptr(const struct vchi_held_msg *message);
+@@ -196,7 +198,7 @@ extern int32_t vchi_msg_iter_hold_next(struct vchi_msg_iter *iter,
+ 				       struct vchi_held_msg *message);
  
- 	/* y-setting */
- 	write_reg(par, 0x0024, 0x007B);	/* amplitude setting */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0025, 0x003B);	/* amplitude setting */
- 	write_reg(par, 0x0026, 0x0034);	/* amplitude setting */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0027, 0x0004);	/* amplitude setting */
- 	write_reg(par, 0x0052, 0x0025);	/* circuit setting 1 */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0053, 0x0033);	/* circuit setting 2 */
- 	write_reg(par, 0x0061, 0x001C);	/* adjustment V10 positive polarity */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0062, 0x002C);	/* adjustment V9 negative polarity */
- 	write_reg(par, 0x0063, 0x0022);	/* adjustment V34 positive polarity */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0064, 0x0027);	/* adjustment V31 negative polarity */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0065, 0x0014);	/* adjustment V61 negative polarity */
--	udelay(10);
-+	usleep_range(10, 20);
- 	write_reg(par, 0x0066, 0x0010);	/* adjustment V61 negative polarity */
+ /******************************************************************************
+- Global bulk API
++ * Global bulk API
+  *****************************************************************************/
  
- 	/* Basical clock for 1 line (BASECOUNT[7:0]) number specified */
-@@ -64,7 +64,7 @@ static int init_display(struct fbtft_par *par)
+ // Routine to prepare interface for a transfer from the other side
+@@ -221,7 +223,7 @@ extern int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
+ 					void *transfer_handle);
  
- 	/* Power supply setting */
- 	write_reg(par, 0x0019, 0x0000);	/* DC/DC output setting */
--	udelay(200);
-+	usleep_range(200, 210);
- 	write_reg(par, 0x001A, 0x1000);	/* DC/DC frequency setting */
- 	write_reg(par, 0x001B, 0x0023);	/* DC/DC rising setting */
- 	write_reg(par, 0x001C, 0x0C01);	/* Regulator voltage setting */
-diff --git a/drivers/staging/fbtft/fb_watterott.c b/drivers/staging/fbtft/fb_watterott.c
-index 0a5206d..4bd0b86 100644
---- a/drivers/staging/fbtft/fb_watterott.c
-+++ b/drivers/staging/fbtft/fb_watterott.c
-@@ -84,7 +84,7 @@ static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- 			par->txbuf.buf, 10 + par->info->fix.line_length);
- 		if (ret < 0)
- 			return ret;
--		udelay(300);
-+		usleep_range(300, 310);
- 	}
+ /******************************************************************************
+- Configuration plumbing
++ * Configuration plumbing
+  *****************************************************************************/
  
- 	return 0;
-@@ -129,7 +129,7 @@ static int write_vmem_8bit(struct fbtft_par *par, size_t offset, size_t len)
- 			par->txbuf.buf, 10 + par->info->var.xres);
- 		if (ret < 0)
- 			return ret;
--		udelay(700);
-+		usleep_range(700, 710);
- 	}
- 
- 	return 0;
+ #ifdef __cplusplus
 -- 
-2.7.4
+2.21.0
 
 
