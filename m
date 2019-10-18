@@ -1,112 +1,122 @@
 X-GM-THRID: 6748957441042415616
-X-Received: by 2002:a2e:9890:: with SMTP id b16mr5079153ljj.4.1571380203786;
-        Thu, 17 Oct 2019 23:30:03 -0700 (PDT)
+X-Received: by 2002:a0d:fd03:: with SMTP id n3mr4997986ywf.170.1571364104881;
+        Thu, 17 Oct 2019 19:01:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:42d1:: with SMTP id n17ls447973lfl.5.gmail; Thu, 17 Oct
- 2019 23:30:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylKrMzwqhB+wwe0vdpWj678CuFnPUYO6UZY0Km+m0V6tCLxVnoTKf243SB/x+SP1BWeiCT
-X-Received: by 2002:a19:7d06:: with SMTP id y6mr5028651lfc.120.1571380202937;
-        Thu, 17 Oct 2019 23:30:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571380202; cv=none;
+Received: by 2002:a81:77c4:: with SMTP id s187ls731403ywc.7.gmail; Thu, 17 Oct
+ 2019 19:01:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNC24wVeWXf22Es14HHrPeUW/wLgVp+hcbk0ZLBGEY3CVvMEqLHROClTG2J7IOLVFjXvGS
+X-Received: by 2002:a81:4e4d:: with SMTP id c74mr5362234ywb.94.1571364103220;
+        Thu, 17 Oct 2019 19:01:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571364103; cv=none;
         d=google.com; s=arc-20160816;
-        b=sVzG2Q43/R+wehX6zT2LlM31hhkwHgAg10KvY5fGrTIRu7dlwS6bpeYZpaXvtnUZqQ
-         lkj/MQNKAazUco9j8Qj+k4L8Lrg8yPNM4ko1KMcjeHjut9Ea3jMhVvp3MliRt1nQAKZn
-         QwziHyOMUwcnD1WuCSgVN6TaTF+5SWCH0oNoMjPbISPm6ZHTAmo4mp1KheNfR/vfl6Gi
-         4ps/nKdUJwKKw8JN36K+D+A3SdK2B1JcJEQ24aq1tKplTI+esb78AHnOgBaqtdUsH/K3
-         Uo1gbGMhRAwgrDPg8V2Z24y7T6LXlmx2yGA44R9uNhLZBXSnUthX65DX59VE6Ex3qGhS
-         T+aA==
+        b=VTvo+5i5nC9rRyFpwmMSNq/HARNmEDN0F0pOme7OJq5xoh2xUn5u0HBaZIppQKqnV9
+         oyBtrzj+Btm+f0FXYe/XTUhesKErBdFVB6yR56DSqAToex5kYEw09S84ZT7dfx9TqVrg
+         ZY94lvF9E9zq9BQn08t3CGiQwIfXGTqzvZEapnFdGj9CxA6nhGmA2ZF0fntI0qd3vagM
+         5WU1jAsMJp0k9ID8WhKYNIVoCgHmiC3PaOMIGbLy67zP0dZMuAT1+o/QnqNvDEBoPBI9
+         pzh2w4drY2EaZOynNZIZCzcoSC+yD1TXhtRL9kkosnwbFKjVOKlQRhsgFFhdLEGRDrGf
+         xG+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=rKfKhISL9kQyMiTcHWifMLHQ2EBp0BmGjmd6coESaes=;
-        b=wYDm5ppoPZ2pYmW/Mxso4x4zR2lzMLULISQ4Mf+z/9+oAT+RPxwpZLI4pkmRR5oo5/
-         T+7hGESXOZdnUG+2XMnAvKe7HPjypY2lCcBo8T5I923YggcCRd+cLuvGeo8/wktAp13B
-         euAhbPMoDUvTGOT+P80chNP4ba4S2aernoROhgOHx6KL0sPHA6IvPMKO86oQW+x/6y/R
-         zyIfaN1OrzbszAjzRx0RiPY6g5MfGyhYZuGvoAoul/DLuvlZYlS1s7zKf88T0IA3RXxH
-         0awTKasbtLyi7YYzzXZ0C4/IODEGS9hGYxn8SzN8liZPPr3uef4Na9ZS/Gp0cI6gxcs8
-         wXoQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=D5fXVTWKtDFjkuD7u67ySedM3tCvn1n1gYjPh+tJzpk=;
+        b=alkhWQJx6CfsmzFKHiuQUiJwgZGzXX3Ozc7kRXEkLzXvOuKocH8sDDXc6P75MTnlam
+         0/lsaqJxfZPUQvvLtvJaPmEa0IpB61qVLzGQQ2EcHJlOIx353BQ4JHrow47tNUJSomRl
+         TFyhVku9m044aTL2QoLPnN5jNVXPWD1gkB5QPlUykKJVITLnzwuuWgVyLdSDB0Iw0pyO
+         fU/YVSjqXFuruL/ofgrzQCI6m8OIg/gFNZdPXtkF9mUPZr6CFnFKE23bZQzvgxFJonpp
+         csY9iL97bnK/uUeziFzNNGFbEkl1/36FNpx5a/SwzQ7thFsrW7HQEoYZI9/Wr4u3+ttA
+         terw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id a9si182976lfk.5.2019.10.17.23.30.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fWockRt9;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id u129si154958ywc.1.2019.10.17.19.01.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Oct 2019 23:30:02 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 17 Oct 2019 19:01:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,310,1566856800"; 
-   d="scan'208";a="323116644"
-Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Oct 2019 08:30:01 +0200
-Date: Fri, 18 Oct 2019 08:30:01 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Jamal Shareef <jamal.k.shareef@gmail.com>
-cc: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com, 
-    teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: Edit CamelCase in
- ddk750_power.h
-In-Reply-To: <20191018020112.22226-1-jamal.k.shareef@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910180828500.2666@hadrien>
-References: <20191018020112.22226-1-jamal.k.shareef@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fWockRt9;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x541.google.com with SMTP id i76so2440851pgc.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 17 Oct 2019 19:01:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=D5fXVTWKtDFjkuD7u67ySedM3tCvn1n1gYjPh+tJzpk=;
+        b=fWockRt9NDsk11kQqdgSCHutabRgkbSmh2ldNuQOX97IB/gcv+SWo7Q/7IyIcoLDh9
+         1x7xCvoVYrMwelwHZDO+kIkHm/s2KXUBP82rCX88qSLGredVW6Coq/M42sVWbQeON961
+         vcUNYQe3MTfs+MTvScG7AINwB9c/Ni9YdsugY3HEHqm9SyxRAENWlAoYAeUxp+3c3jmL
+         MIoczsjZwHpdcP4voNqTNROkmYb/MxNH/fYCEy8+/2ESZLyQSeio89PBZVaWJaLJ1Xac
+         IjmhNbkctARpj8Tc6dcogjY8d+adUoo+UfDQ8+pNdu0QJWMUPAHIELRx4q88HlU3aJiL
+         fCuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=D5fXVTWKtDFjkuD7u67ySedM3tCvn1n1gYjPh+tJzpk=;
+        b=G7pS4W3f5XYFpUnyKq7LCKKYl2wTt6PFNviGhcldvdtARvWhQ8wHVASYJ6tkmjbXHN
+         onecNqCyMHe/sHLcy/syyWjVjlusR+egBE5t2IoRl+YbXaoHrKC3fZzBofsOJpVdawZ9
+         gulrM9cv+LNGAYt64BhR3jqxbyCOmeQaAu2DUZGhPjbRi9TjoJYeY7zAEJYFra6cXT+Q
+         wWS0HwH6LKTOCXDNe7S+mfitT9EPRczH9ZWQsJSwxkwwsJEaeQrGXd16ad9C7YPNa41t
+         3ivpbb71wiC7Pk0YlJNx2YhZzhrpYE76jHbXWGlmxBCJ/zrxyDssbV6pFx01R/j98bWF
+         lGTw==
+X-Gm-Message-State: APjAAAU/aikyad5m1OObAzU4BJ0EKsJlws5/qg2ytkH7+lpyiRobOrus
+	hkxCjbfI8brWqrzmBLN1Q5Kf642p
+X-Received: by 2002:a63:b551:: with SMTP id u17mr7271163pgo.88.1571364102276;
+        Thu, 17 Oct 2019 19:01:42 -0700 (PDT)
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
+        by smtp.gmail.com with ESMTPSA id e16sm3916702pgt.68.2019.10.17.19.01.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 17 Oct 2019 19:01:41 -0700 (PDT)
+From: Jamal Shareef <jamal.k.shareef@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
+	sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: sm750fb: Edit CamelCase in ddk750_power.h
+Date: Thu, 17 Oct 2019 19:01:12 -0700
+Message-Id: <20191018020112.22226-1-jamal.k.shareef@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-You don't need to put the name of the file in the subject line.  One can
-see that easily from the diffstat information.
+Removes instances of CamelCase. Issue found by checkpatch.
 
-On Thu, 17 Oct 2019, Jamal Shareef wrote:
+Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+---
+ drivers/staging/sm750fb/ddk750_power.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-> Removes instances of CamelCase. Issue found by checkpatch.
->
-> Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
-> ---
->  drivers/staging/sm750fb/ddk750_power.h | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
-> index 7002567a47d2..cd892f2b717f 100644
-> --- a/drivers/staging/sm750fb/ddk750_power.h
-> +++ b/drivers/staging/sm750fb/ddk750_power.h
-> @@ -3,10 +3,10 @@
->  #define DDK750_POWER_H__
->
->  enum dpms {
-> -	crtDPMS_ON = 0x0,
-> -	crtDPMS_STANDBY = 0x1,
-> -	crtDPMS_SUSPEND = 0x2,
-> -	crtDPMS_OFF = 0x3,
-> +	crt_DPMS_ON = 0x0,
-> +	crt_DPMS_STANDBY = 0x1,
-> +	crt_DPMS_SUSPEND = 0x2,
-> +	crt_DPMS_OFF = 0x3,
->  };
->
->  #define set_DAC(off) {							\
-> @@ -15,7 +15,7 @@ enum dpms {
->  }
->
->  void ddk750_set_dpms(enum dpms state);
-> -void sm750_set_power_mode(unsigned int powerMode);
-> +void sm750_set_power_mode(unsigned int power_mode);
+diff --git a/drivers/staging/sm750fb/ddk750_power.h b/drivers/staging/sm750fb/ddk750_power.h
+index 7002567a47d2..cd892f2b717f 100644
+--- a/drivers/staging/sm750fb/ddk750_power.h
++++ b/drivers/staging/sm750fb/ddk750_power.h
+@@ -3,10 +3,10 @@
+ #define DDK750_POWER_H__
+ 
+ enum dpms {
+-	crtDPMS_ON = 0x0,
+-	crtDPMS_STANDBY = 0x1,
+-	crtDPMS_SUSPEND = 0x2,
+-	crtDPMS_OFF = 0x3,
++	crt_DPMS_ON = 0x0,
++	crt_DPMS_STANDBY = 0x1,
++	crt_DPMS_SUSPEND = 0x2,
++	crt_DPMS_OFF = 0x3,
+ };
+ 
+ #define set_DAC(off) {							\
+@@ -15,7 +15,7 @@ enum dpms {
+ }
+ 
+ void ddk750_set_dpms(enum dpms state);
+-void sm750_set_power_mode(unsigned int powerMode);
++void sm750_set_power_mode(unsigned int power_mode);
+ void sm750_set_current_gate(unsigned int gate);
+ 
+ /*
+-- 
+2.17.1
 
-This looks suspicious.  You shouldn't be updating only the prototype
-without updating the definition as well.
-
-julia
-
->  void sm750_set_current_gate(unsigned int gate);
->
->  /*
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191018020112.22226-1-jamal.k.shareef%40gmail.com.
->
 
