@@ -1,169 +1,68 @@
-X-GM-THRID: 6208958539899076608
-X-Received: by 10.112.63.165 with SMTP id h5mr5460459lbs.18.1445635813659;
-        Fri, 23 Oct 2015 14:30:13 -0700 (PDT)
+X-GM-THRID: 6748157701463736320
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a17:907:4150:: with SMTP id od24mr6829895ejb.135.1571375957438;
+        Thu, 17 Oct 2019 22:19:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.21.77 with SMTP id l74ls494195lfi.20.gmail; Fri, 23 Oct
- 2015 14:30:12 -0700 (PDT)
-X-Received: by 10.112.140.202 with SMTP id ri10mr5355092lbb.10.1445635812913;
-        Fri, 23 Oct 2015 14:30:12 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from mail-wi0-x229.google.com (mail-wi0-x229.google.com. [2a00:1450:400c:c05::229])
-        by gmr-mx.google.com with ESMTPS id em5si159878wib.2.2015.10.23.14.30.12
+Received: by 2002:aa7:dd81:: with SMTP id g1ls1093042edv.15.gmail; Thu, 17 Oct
+ 2019 22:19:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxIcNrtfqiCZNgcuDu72XQRysGPSI4/c3VIBSJ8v/TW8ukTj/ZjWtUc8vy0IOKdIFLcjN40
+X-Received: by 2002:a05:6402:28c:: with SMTP id l12mr7861021edv.145.1571375956686;
+        Thu, 17 Oct 2019 22:19:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571375956; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CCq4MLYrNTb+9KWbKALmqMZkELU3usf0GYumv3E4arWALrab/CrGpv0fJM1K9MIu1n
+         g9L9D/t7zylhig0s78MjU+DQJmLlmcqaVEVTGQwx6tDEDw8weGky86rqHAXVkT40udWO
+         P4rqyVdiLCtg5wthayugf4efR6rIKiiaCLhPCBJBW6lO4YcDMxMlGz4UDo2O7RpuasUU
+         qCkRBPpO7POTK6M8Gtq+98tqOS7WvOZdwWIR/WhCiQkbrveVGDEvSGIOE+AVhl4bd/Ev
+         yo9IeWvhHG8N0iC9JDzjfo7ZUPWlggTZTOrfv9THwF0nh9gzeLhk96080Y7G9u0MzERT
+         bfUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=i8joC1v74Ri3ACGSSwOEXAO23P8bpvD/bAd4Ru6cdbM=;
+        b=x2T8n6PjMnMCGzfkKGC+oOsWHA/fn1QyFII2wl6fmCYGN4Hvre1xbiGi08GzQdJqNN
+         4BsmcLirKO7ikgriavM0iV/x4gbCxecdX35yF/e4VfHKKo46K09XioKULg1iHDccoxzT
+         SV0JaZ3TaSn08HLl1hmZpQGzRf+UReIS223OpF/QE0fRCb1DO03uKYPFL7j+KHWpfs1v
+         pmvcJMbwSpTqTuOKE6S0RNVuIAD+1sLTbGgAJP53CQXf7Vq5/REeGBAfvg3wqFs7/ykL
+         qHDAA9AetTFDJ+mpd8kpAtm9Wya2LkYlreElPyZzvQ6AFdsbvHGR/v42sdh5gahW6vSv
+         itmw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b18si239153edr.1.2019.10.17.22.19.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2015 14:30:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) client-ip=2a00:1450:400c:c05::229;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 17 Oct 2019 22:19:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of brcnakalin@gmail.com designates 2a00:1450:400c:c05::229 as permitted sender) smtp.mailfrom=brcnakalin@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x229.google.com with SMTP id ll6so47397149wic.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2015 14:30:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=dY6Wu1EApaKtVli77nxsiO4ZqqocOgeAFNp/f/O3axU=;
-        b=bR7ucedzqw20NfSm0Wkgz4axHDBGHvnfJQldMsQVcPz8u4qVWi0JQzZcJDpFn5F0H2
-         mE3rPtJ8OHgANv93DlQ9v9lqSCknIRgr98i5mlYo54aEfg7t6OveZBuXdAD98T6oJxsi
-         /TrTBxqhCkYIOj545ucUvbHE49oxSw9lGgwIaIxoNpZugnqoemZxxkxPbcgwCqs/MuS4
-         OLaA1Z6HuR7c81C9c8K9kEmW7GS9S2WS8laqLFdmkjZOErYb81iLNFamWk844/v3Ynao
-         OXtviatMurLrKUu4cn8JsfS0JLRqJZ8cTwkhuj9eVulTLpMJXp0eCeylYLgKCurAZzLl
-         5f8A==
-X-Received: by 10.194.71.164 with SMTP id w4mr6653535wju.19.1445635812607;
-        Fri, 23 Oct 2015 14:30:12 -0700 (PDT)
-Return-Path: <brcnakalin@gmail.com>
-Received: from localhost.localdomain ([95.13.215.164])
-        by smtp.gmail.com with ESMTPSA id hk5sm24656669wjb.6.2015.10.23.14.30.11
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 23 Oct 2015 14:30:12 -0700 (PDT)
-From: Burcin Akalin <brcnakalin@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Burcin Akalin <brcnakalin@gmail.com>
-Subject: [PATCH] staging: wlan-ng: Do not use multiple blank lines.
-Date: Sat, 24 Oct 2015 00:30:03 +0300
-Message-Id: <1445635803-18177-1-git-send-email-brcnakalin@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,310,1566856800"; 
+   d="scan'208";a="323110147"
+Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Oct 2019 07:19:15 +0200
+Date: Fri, 18 Oct 2019 07:19:15 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] doubt on the "Make a driver change" part
+In-Reply-To: <b693b706-b20c-4a76-9443-72c2023cfe9b@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.1910180718550.2666@hadrien>
+References: <d504514a-93eb-4a60-a99c-8a50bce81677@googlegroups.com> <alpine.DEB.2.21.1910160701150.2732@hadrien> <bd1a6b45-291e-4cc2-aef8-7d880351bac3@googlegroups.com> <76f2f240-6bb9-4798-8b03-4055d8ff72d0@googlegroups.com>
+ <b693b706-b20c-4a76-9443-72c2023cfe9b@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove multiple blank lines. Problem found using checkpatch.pl
-"CHECK: Please don't use multiple blank lines"
 
-Signed-off-by: Burcin Akalin <brcnakalin@gmail.com>
----
- drivers/staging/wlan-ng/cfg80211.c | 15 ---------------
- 1 file changed, 15 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 342e2b3..8c1e3f0 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -2,7 +2,6 @@
- #include "hfa384x.h"
- #include "prism2mgmt.h"
- 
--
- /* Prism2 channel/frequency/bitrate declarations */
- static const struct ieee80211_channel prism2_channels[] = {
- 	{ .center_freq = 2412 },
-@@ -34,7 +33,6 @@ static const u32 prism2_cipher_suites[PRISM2_NUM_CIPHER_SUITES] = {
- 	WLAN_CIPHER_SUITE_WEP104
- };
- 
--
- /* prism2 device private data */
- struct prism2_wiphy_private {
- 	wlandevice_t *wlandev;
-@@ -48,7 +46,6 @@ struct prism2_wiphy_private {
- 
- static const void * const prism2_wiphy_privid = &prism2_wiphy_privid;
- 
--
- /* Helper Functions */
- static int prism2_result2err(int prism2_result)
- {
-@@ -100,7 +97,6 @@ static int prism2_domibset_pstr32(wlandevice_t *wlandev,
- 	return p80211req_dorequest(wlandev, (u8 *) &msg);
- }
- 
--
- /* The interface functions, called by the cfg80211 layer */
- static int prism2_change_virtual_intf(struct wiphy *wiphy,
- 				      struct net_device *dev,
-@@ -298,7 +294,6 @@ static int prism2_set_default_key(struct wiphy *wiphy, struct net_device *dev,
- 	return err;
- }
- 
--
- static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
- 			      const u8 *mac, struct station_info *sinfo)
- {
-@@ -322,7 +317,6 @@ static int prism2_get_station(struct wiphy *wiphy, struct net_device *dev,
- 
- 	result = wlandev->mlmerequest(wlandev, (struct p80211msg *) &quality);
- 
--
- 	if (result == 0) {
- 		sinfo->txrate.legacy = quality.txrate.data;
- 		sinfo->filled |= BIT(NL80211_STA_INFO_TX_BITRATE);
-@@ -623,7 +617,6 @@ static int prism2_disconnect(struct wiphy *wiphy, struct net_device *dev,
- 	int result;
- 	int err = 0;
- 
--
- 	/* Do a join, with a bogus ssid. Thats the only way I can think of */
- 	msg_join.msgcode = DIDmsg_lnxreq_autojoin;
- 
-@@ -638,7 +631,6 @@ static int prism2_disconnect(struct wiphy *wiphy, struct net_device *dev,
- 	return err;
- }
- 
--
- static int prism2_join_ibss(struct wiphy *wiphy, struct net_device *dev,
- 			    struct cfg80211_ibss_params *params)
- {
-@@ -650,7 +642,6 @@ static int prism2_leave_ibss(struct wiphy *wiphy, struct net_device *dev)
- 	return -EOPNOTSUPP;
- }
- 
--
- static int prism2_set_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
- 			       enum nl80211_tx_power_setting type, int mbm)
- {
-@@ -706,9 +697,6 @@ exit:
- 	return err;
- }
- 
--
--
--
- /* Interface callback functions, passing data back up to the cfg80211 layer */
- void prism2_connect_result(wlandevice_t *wlandev, u8 failed)
- {
-@@ -731,7 +719,6 @@ void prism2_roamed(wlandevice_t *wlandev)
- 		NULL, 0, NULL, 0, GFP_KERNEL);
- }
- 
--
- /* Structures for declaring wiphy interface */
- static const struct cfg80211_ops prism2_usb_cfg_ops = {
- 	.change_virtual_intf = prism2_change_virtual_intf,
-@@ -750,7 +737,6 @@ static const struct cfg80211_ops prism2_usb_cfg_ops = {
- 	.get_tx_power = prism2_get_tx_power,
- };
- 
--
- /* Functions to create/free wiphy interface */
- static struct wiphy *wlan_create_wiphy(struct device *dev, wlandevice_t *wlandev)
- {
-@@ -788,7 +774,6 @@ static struct wiphy *wlan_create_wiphy(struct device *dev, wlandevice_t *wlandev
- 	return wiphy;
- }
- 
--
- static void wlan_free_wiphy(struct wiphy *wiphy)
- {
- 	wiphy_unregister(wiphy);
--- 
-1.9.1
+On Thu, 17 Oct 2019, Cristiane Naves wrote:
 
+>
+> I managed to fix it. The problem was in the reboot.
+
+Great :)  Now you can send some patches.
+
+julia
 
