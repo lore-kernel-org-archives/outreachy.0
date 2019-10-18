@@ -1,78 +1,93 @@
-X-GM-THRID: 746747592704
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,35770f706c8015,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.180.81.34 with SMTP id w2mr874196wix.2.1424367330448;
-        Thu, 19 Feb 2015 09:35:30 -0800 (PST)
+X-GM-THRID: 6749203879083114496
+X-Received: by 2002:adf:db0e:: with SMTP id s14mr4483440wri.341.1571421594750;
+        Fri, 18 Oct 2019 10:59:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.19.165 with SMTP id g5ls152671lae.68.gmail; Thu, 19 Feb
- 2015 09:35:30 -0800 (PST)
-X-Received: by 10.112.144.130 with SMTP id sm2mr769480lbb.9.1424367330036;
-        Thu, 19 Feb 2015 09:35:30 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x241.google.com (mail-wi0-x241.google.com. [2a00:1450:400c:c05::241])
-        by gmr-mx.google.com with ESMTPS id r6si4553422wix.0.2015.02.19.09.35.30
+Received: by 2002:a7b:c5c4:: with SMTP id n4ls4061436wmk.3.canary-gmail; Fri,
+ 18 Oct 2019 10:59:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx2EAoa3j11ukw2IDnxCR7zIWe5arutDjIa4ZkM8lAa40vvCOkTBhUqPvufjbUXifuGpzk5
+X-Received: by 2002:a05:600c:21d2:: with SMTP id x18mr8899228wmj.146.1571421593746;
+        Fri, 18 Oct 2019 10:59:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571421593; cv=none;
+        d=google.com; s=arc-20160816;
+        b=TgYdQ1NXJxgV1Q6FEbCcw/1dUp3RjFXToTwdSEYKJN8GjwHNH625CesGnnoykvlzpL
+         3RiajV1qgpdcj4dAcxM17ofs3IBtE+3baDDOnpNSFKdoEYP6YMRcDVnQm1nyoOsqyml4
+         BWcsc4rHMzu5iKITeZrYriY5cFLPQW9MhKhLxDwvK4zYmYD33WpiyeyMO7WdJdpsdcCv
+         KuGOw/vEadvjq6ylcnOM7VwBt63Dn9JO4GWr+jcZmRKLBwlaWsX5JUFXx5k3++R2mzyM
+         1Cm8HEJJhOvjs9jluhS1elxLe7P40n3hrV+Iyr3o/PRZ9gXYjz4I6fGyet6pHwE6Op3v
+         TmWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=VFyHD+SddVwdZ21vohzmwULpbFviRS3iNI+QaZQDRNs=;
+        b=llA0zE/zYH+fApRBUM70zqmRoe0rIyl09xXLC0o+Udn0vV+kzcCVg+XwG3xfj6v+3K
+         m/dy45UUbHQTP9E5IIsiofQ6rfb5OPTQADQ58AD4uV9DriC1BWah7+oW5PVTn1FPVD/p
+         hykhZeyYh/x1YIRiTZ8uxSrJs8RGWu5XdHvnyYbas6dMs1cFtUYtfXEqq+eKTv2CEXd8
+         GdLYHucj/LvLDi5MNPp5cXyaoDpIQ9XebNcO8hNeuB/wlI0+wfSWdEH6ikbtAe3eQ0nJ
+         9d7q41YLqCd1fnG/KuzAaCjqQxyutsAxxJwDk5ERZCEu2Ea3rDxbj1tLM/dJwFi3CgX7
+         9oUQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c12si136381wrn.2.2019.10.18.10.59.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Feb 2015 09:35:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) client-ip=2a00:1450:400c:c05::241;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 Oct 2019 10:59:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x241.google.com with SMTP id r20so3882445wiv.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Feb 2015 09:35:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=C/YXkbYLllRsv27acxnujc60Q30yqH1bb8/dgPhi2IY=;
-        b=KRNC+kn9siHzXWpyebQeK3m8x5/uWrDGVr+J3OpWwzcCCoSakxVfvd92xE9iEziykL
-         W/pbJz7yfzxIqber+Gpow8pu6sZOeZFAG9hvfRBm0jNxC56sf9dKipov3dsXqfz/0FiB
-         t7tqEDx2yIEubOcx9MMc9HpCqX30Wc3NY0rjk2z1u7D1ESHHB+flYfBGt/UKDp1zZ8Fw
-         xccA27R17MEyHeEZH1PkIkyxpo7E1ywmeJxnc3XGJk57OtveGDUHLEKi/tbYoPJrLTXv
-         Wqp68VyYUqyqnMuWdh/N9uFCjOR2YweYWLKXJqUuyT34Mm5iS/Fj8y2bdiOgHfq/X0L3
-         OyNw==
-X-Received: by 10.180.91.47 with SMTP id cb15mr12222636wib.39.1424367329915;
-        Thu, 19 Feb 2015 09:35:29 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id a1sm31126834wiy.10.2015.02.19.09.35.28
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Feb 2015 09:35:29 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH 4/4] Staging: drivers: dma: ste_dma40: fixed trailing statements
-Date: Thu, 19 Feb 2015 19:35:16 +0200
-Message-Id: <1424367316-26356-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,312,1566856800"; 
+   d="scan'208";a="406882965"
+Received: from portablejulia.rsr.lip6.fr ([132.227.76.63])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Oct 2019 19:59:53 +0200
+Date: Fri, 18 Oct 2019 19:59:53 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: julia@hadrien
+To: Evan Chime <chime.evan.dri.devel@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] Staging: Netlogic: Fix spelling
+ mistake
+In-Reply-To: <20191018175759.GA8294@ik-ubuntu>
+Message-ID: <alpine.DEB.2.21.1910181959390.3697@hadrien>
+References: <20191018175759.GA8294@ik-ubuntu>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Used checkpatch.pl on this patch.Trailing statements wrote on next line.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/dma/ste_dma40.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
-index 08b63f2..796c070 100644
---- a/drivers/dma/ste_dma40.c
-+++ b/drivers/dma/ste_dma40.c
-@@ -2371,8 +2371,10 @@ static struct dma_chan *d40_xlate(struct of_phandle_args *dma_spec,
- 	flags = dma_spec->args[2];
- 
- 	switch (D40_DT_FLAGS_MODE(flags)) {
--	case 0: cfg.mode = STEDMA40_MODE_LOGICAL; break;
--	case 1: cfg.mode = STEDMA40_MODE_PHYSICAL; break;
-+	case 0:
-+		cfg.mode = STEDMA40_MODE_LOGICAL; break;
-+	case 1:
-+		cfg.mode = STEDMA40_MODE_PHYSICAL; break;
- 	}
- 
- 	switch (D40_DT_FLAGS_DIR(flags)) {
--- 
-1.9.1
+On Fri, 18 Oct 2019, Evan Chime wrote:
 
+> Change "standred" on line 3 to "standard"
+
+OK, I see that you got that one too :)
+
+julia
+
+>
+> Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
+> ---
+>  drivers/staging/netlogic/TODO | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/netlogic/TODO b/drivers/staging/netlogic/TODO
+> index de8fb8009ce3..20e22ecb9903 100644
+> --- a/drivers/staging/netlogic/TODO
+> +++ b/drivers/staging/netlogic/TODO
+> @@ -1,6 +1,6 @@
+>  * Implementing 64bit stat counter in software
+>  * All memory allocation should be changed to DMA allocations
+> -* Changing comments into linux standred format
+> +* Changing comments into linux standard format
+>
+>  Please send patches
+>  To:
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191018175759.GA8294%40ik-ubuntu.
+>
 
