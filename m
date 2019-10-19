@@ -1,164 +1,102 @@
 X-GM-THRID: 6749590938696286208
-X-Received: by 2002:a05:6808:249:: with SMTP id m9mr418455oie.49.1571844272370;
-        Wed, 23 Oct 2019 08:24:32 -0700 (PDT)
+X-Received: by 2002:a9d:6f8a:: with SMTP id h10mr13083479otq.100.1571511602427;
+        Sat, 19 Oct 2019 12:00:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:de9:: with SMTP id 96ls666237ots.6.gmail; Wed, 23 Oct
- 2019 08:24:31 -0700 (PDT)
-X-Received: by 2002:a9d:7842:: with SMTP id c2mr7358523otm.177.1571844271329;
-        Wed, 23 Oct 2019 08:24:31 -0700 (PDT)
-Received: by 2002:a05:6808:10:0:0:0:0 with SMTP id u16msoic;
-        Wed, 23 Oct 2019 08:09:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw/cOszLOYmC4mx0/jbD+MKpUYDIB1iQ4zgnghhx5C/437UIvsTGNcl9/yjNK+TSgG+SSc4
-X-Received: by 2002:a6b:f216:: with SMTP id q22mr3622020ioh.36.1571843376400;
-        Wed, 23 Oct 2019 08:09:36 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1571843376; cv=pass;
+Received: by 2002:aca:ed43:: with SMTP id l64ls1554839oih.3.gmail; Sat, 19 Oct
+ 2019 12:00:01 -0700 (PDT)
+X-Received: by 2002:a05:6808:113:: with SMTP id b19mr12502878oie.169.1571511601691;
+        Sat, 19 Oct 2019 12:00:01 -0700 (PDT)
+Received: by 2002:aca:7208:0:0:0:0:0 with SMTP id p8msoic;
+        Sat, 19 Oct 2019 00:24:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFznFBQav547YQaYvrq8+/dkBCzQetluuyfLBJMMUYywYH7r+FJrkcE9W+rIJGer9KIMjf
+X-Received: by 2002:a17:90a:b391:: with SMTP id e17mr16178365pjr.132.1571469879821;
+        Sat, 19 Oct 2019 00:24:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571469879; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zr836xvXDhALkqCBHxOuHuiwsqMJJJyL0xj5BJwBVJCe/eN55wCMxE2n1ZXbc7TChl
-         1e1HLGcpGE3Jp/FO9YR4Fgl2G37BUiXHk6YufespWkhjmT3bx5mhnpg07oiGK4a2MwrV
-         RMgV3kfUNr5yZ0uc7bht93HvKyjbdU7Vfd4QpjCDw5EoM0IOkV4tLb9iDiy34RNfezfC
-         b42+2yjYC030E58DFc/kEQI/OpKDAaO3TBhoKgdBMoCVCj7yfQWz5gI09ND6ZHe7Z+gw
-         DyMMmZrPB5URP2Or3A7X57w4UXHsJO2V5PsHztkiPHT+KXhkT5QkRlloDhztnbbBswQM
-         p8SQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:user-agent
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature;
-        bh=sLsUTAwVWOhjK1KcoN0kjBv6aZkTAONVb9OoBmeizkU=;
-        b=TL3RGGxMzmBswjCPqAEkYWQ5YyekhpJsJbqDG7VqohxB0iOxpvS4WIYRCsepXOMm7J
-         OPQKtYwXc/jLmL7An/WZdnLnDdh5EnqbwFSPWl9m7aczT5b8XvqL4kI15JLB8UeAG++b
-         lKKFXjC7E/wd+FTRTCZr7O6u1c5r7HLivSA81DJQBkES2A7NJq5RW72GftFAa3PO8/Ih
-         60U7vzgvQBTB1NtM4jxbd++P/NCbyem3+0f18sb3LXwbYfQfKHIhyEHt7FzBT1v0w8i7
-         yqZ6gdmDkT5R57i1GoAjvGhjWUXpduDfqBEBqYD2NSB4xG9lVMVDKRQtaK1r3zgjF+Es
-         hKAA==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=0omwQSQz;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.78.78 is neither permitted nor denied by best guess record for domain of harry.wentland@amd.com) smtp.mailfrom=Harry.Wentland@amd.com
-Return-Path: <Harry.Wentland@amd.com>
-Received: from NAM03-BY2-obe.outbound.protection.outlook.com (mail-eopbgr780078.outbound.protection.outlook.com. [40.107.78.78])
-        by gmr-mx.google.com with ESMTPS id f66si777475ill.5.2019.10.23.08.09.36
+        b=g4uXxE/UwXb11OaiIeM67OKGfTMMz7m8A5Tn11XHxjU7WlGd7XRcS9dprYjV5T36no
+         7eoOA8mGLhqRQYqu6ntaUQ6NbtVQqhi/pawm8qbzXlZv07S2hTEghxQeTxrtlKIwWPpq
+         AUfnjDPtwx8NdPekROxAlKg9BIVgIDpCheeD2uT81UqjdvgkGaA57G/fKPw/U2DMaEwh
+         z37YuKDI6upQgRYTNuGApGqGg6EVvO3/CeAP0aF5f0V7QzQ5ngtMZzZQGuq3EBj7kew3
+         TKCRuaAHYkaulIKleHwQjfOgyQn+q9Z43yZnJW4Hq57QEUnYVlkWm3tpb/pZb9uc7MJh
+         yqxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=xjTMPqP+XSDdU0Lhtywbz21NzLyU0qgdA58tUxFEl4o=;
+        b=Kgxay/WFASsBInMsScAvQUJLDEcV3pF7KI9tbdPkqdcFEgRAftz7HxY/sXl1t5BqiQ
+         gI4VtvmL/4ZVg7hth5SpDCCAgmg66GuYsv4/ZRCdpHlmuNzD5xnIvYX32D65ic8b+lDm
+         FrM+A26IOXsumWsXXuItpV90p5ndUixF3vOril/k1r8DTJW+xFD6MvMlBRvqsCRpXD3x
+         0j67GM/MqpQ6E0QmHQ8wdcLsLXPwbKQg4u0EVZuZsLOoaE50TQntlneHQw0AXW2FLP6o
+         vLBZxVTt3EVgHHTkwmp8rPwIsOF7N3Bu56kyUaZs3ggtD84KTdM77r/YjjnV3stH7uAZ
+         nd1w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of wambui@karuga.xyz designates 198.54.122.62 as permitted sender) smtp.mailfrom=wambui@karuga.xyz
+Return-Path: <wambui@karuga.xyz>
+Received: from MTA-10-4.privateemail.com (mta-10-4.privateemail.com. [198.54.122.62])
+        by gmr-mx.google.com with ESMTPS id d5si438376pls.5.2019.10.19.00.24.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 23 Oct 2019 08:09:36 -0700 (PDT)
-Received-SPF: neutral (google.com: 40.107.78.78 is neither permitted nor denied by best guess record for domain of harry.wentland@amd.com) client-ip=40.107.78.78;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 19 Oct 2019 00:24:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wambui@karuga.xyz designates 198.54.122.62 as permitted sender) client-ip=198.54.122.62;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=0omwQSQz;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.78.78 is neither permitted nor denied by best guess record for domain of harry.wentland@amd.com) smtp.mailfrom=Harry.Wentland@amd.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=M0csRe8nO+Xlq5DSgD7KX+l//NvXgVBlFIVlejXad3yUwS8gK888eSGX6Ou21uFVD6C8hfZrHuVU14xjD+LZRmEeqsRowgnWcEPhz6xDYvE6RIKnj+WjJ+mZuQGTGrXc2NTn+YA7soHG8Qb4b3ihyvMeC/szS5JthogG06Ws3eSwzwnsFDV/gD4R+P1UuqhLknWB6GLiz5eMKXfQW4F2vSVYp22vQX6Y6A9RmZzNEusKi9BWyeSdcH4drFzAeyB0fSkLs//Zl7uTlLcB5e0N+UKlVmAyi8Fm8YZ4N35WQmUD+cihc1WGV3BnWs7AbFI+F0azRxjhp1siaBPvArKrIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sLsUTAwVWOhjK1KcoN0kjBv6aZkTAONVb9OoBmeizkU=;
- b=HwoQqKf7JJWGS1/35uVGRsgyMpA5EiRxYDQkDDrVL0u1jzd5rWEyHpatPeN8/0NyO+23oyCnHVHtzqqBqBPpoKVPpbN25N9HCgDaqhGJSjhB/AZgmHnwAgM5IZ44ied5FghWTPEEZaVIs1S6uLmzIPaRokWPmtkUdFosKP55nsJuDBOc91hQqb0S8TeakTsCNUHU70aDCGBKPMR/a7ZkhTD+HO1pjXjzSVCyDgPQ3zrwX45NYG6ZQoyhccP7qYMaMgqUu2wgrGK15AuOquwzJUweF+H/eJ5JoXP1aNzvbfAICSSWgfPbcjwrRgB68O+8O7s5B1dkitSLXYaMSLipxw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amdcloud.onmicrosoft.com; s=selector2-amdcloud-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sLsUTAwVWOhjK1KcoN0kjBv6aZkTAONVb9OoBmeizkU=;
- b=0omwQSQzBEEaCtAl+xI/Pl8oGIBs/HnnBG4KaKhl+/O9wn8xO2skqJT6Ed9He5BJCnu+4j0KNhcD5rYI/6D6C5Tv7iCEROiQwdhMshTr41QYNBG9Ffue4bYMrqhYlaqWlq6AVj3Ir/AV1B6/o1y+XMMUFxKI0nedAQCHpdv0mww=
-Received: from CY4PR1201MB0230.namprd12.prod.outlook.com (10.172.79.7) by
- CY4PR1201MB2503.namprd12.prod.outlook.com (10.172.116.137) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2367.24; Wed, 23 Oct 2019 15:09:34 +0000
-Received: from CY4PR1201MB0230.namprd12.prod.outlook.com
- ([fe80::5471:f58b:733e:1a61]) by CY4PR1201MB0230.namprd12.prod.outlook.com
- ([fe80::5471:f58b:733e:1a61%7]) with mapi id 15.20.2367.025; Wed, 23 Oct 2019
- 15:09:34 +0000
-From: Harry Wentland <hwentlan@amd.com>
-To: Wambui Karuga <wambui@karuga.xyz>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>
-CC: "airlied@linux.ie" <airlied@linux.ie>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "amd-gfx@lists.freedesktop.org"
-	<amd-gfx@lists.freedesktop.org>, "outreachy-kernel@googlegroups.com"
-	<outreachy-kernel@googlegroups.com>, "Deucher, Alexander"
-	<Alexander.Deucher@amd.com>, "Koenig, Christian" <Christian.Koenig@amd.com>
-Subject: Re: [PATCH] drm/amd/amdgpu: make undeclared variables static
-Thread-Topic: [PATCH] drm/amd/amdgpu: make undeclared variables static
-Thread-Index: AQHVhtpcup3yDyLbLkW9oq/0oA1P3KdoWgmA
-Date: Wed, 23 Oct 2019 15:09:34 +0000
-Message-ID: <0f3fa30e-0392-054b-a81e-b9cb4475fe07@amd.com>
-References: <20191019072426.20535-1-wambui@karuga.xyz>
-In-Reply-To: <20191019072426.20535-1-wambui@karuga.xyz>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [165.204.55.250]
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.2
-x-clientproxiedby: YT1PR01CA0003.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01::16)
- To CY4PR1201MB0230.namprd12.prod.outlook.com (2603:10b6:910:1e::7)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Harry.Wentland@amd.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 184adec6-bf1f-4861-6853-08d757cb031f
-x-ms-traffictypediagnostic: CY4PR1201MB2503:
-x-ms-exchange-purlcount: 1
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs:
- <CY4PR1201MB2503AA87890F9C6810D0BDC18C6B0@CY4PR1201MB2503.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 019919A9E4
-x-forefront-antispam-report:
- SFV:NSPM;SFS:(10009020)(4636009)(366004)(39860400002)(346002)(136003)(396003)(376002)(199004)(189003)(305945005)(110136005)(3846002)(2906002)(7736002)(4326008)(6246003)(6116002)(52116002)(6486002)(71190400001)(76176011)(54906003)(4001150100001)(71200400001)(316002)(36756003)(229853002)(99286004)(6436002)(58126008)(6512007)(6306002)(966005)(31696002)(478600001)(81156014)(8936002)(81166006)(446003)(14454004)(8676002)(186003)(11346002)(476003)(31686004)(386003)(5660300002)(53546011)(256004)(102836004)(6506007)(26005)(2616005)(14444005)(25786009)(66446008)(66946007)(486006)(66476007)(65806001)(66556008)(2501003)(66066001)(65956001)(64756008);DIR:OUT;SFP:1101;SCL:1;SRVR:CY4PR1201MB2503;H:CY4PR1201MB0230.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
-received-spf: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- jdR0CWfZxOV/Go+d/G0FIPBpzC2xLTYWvsZwgCieUTihtJhNWKeRwnbXGlc12pfm1V0RxLSDnen63I5Hu1MJJLvteXimsODaVIjH/zMdO1fS06WlphBRdq9ozVu8XN3cU3UH7fSV6vEEiJ7UEalFCdKUyuK0HIDe3KtfXi/SbCB/zv9lK7h1MANKvNrWUqAgclMYGlmJGNt+0bkWlLfY70VpnqP+EwNcgqYgyJAhMap1RqE51wYFoSWTpa9fss8VlRMkvbg237F6ME5TlcnU9B8aL7UsGJ8vl2/zAbAEENTU513723kI+45dwB1LmjhhEhE0DvgaV0JaBiE2OdH84L3sbasynAbY6S6YKoDf7qyBKV8RZEer1CKk7Z/yKokpp8Az9D6gi1bhQ3qbDAiKFDPRB0uETDjdeK1qa2mb+aEoTTBfeqaMags/qxcaZXnJzIXzkS0wTbq0rRE/THqsw5R7ruTrKs1gwA2zuacT32g=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <73D636242A42C84890D7BF400312A648@namprd12.prod.outlook.com>
-Content-Transfer-Encoding: base64
+       spf=pass (google.com: domain of wambui@karuga.xyz designates 198.54.122.62 as permitted sender) smtp.mailfrom=wambui@karuga.xyz
+Received: from MTA-10.privateemail.com (localhost [127.0.0.1])
+	by MTA-10.privateemail.com (Postfix) with ESMTP id 2144160038;
+	Sat, 19 Oct 2019 03:24:39 -0400 (EDT)
+Received: from wambui.zuku.co.ke (unknown [10.20.151.221])
+	by MTA-10.privateemail.com (Postfix) with ESMTPA id A45FA60033;
+	Sat, 19 Oct 2019 07:24:35 +0000 (UTC)
+From: Wambui Karuga <wambui@karuga.xyz>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org,
+	alexander.deucher@amd.com,
+	christian.koenig@amd.com,
+	David1.Zhou@amd.com,
+	airlied@linux.ie,
+	daniel@ffwll.ch,
+	amd-gfx@lists.freedesktop.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] drm/amd/amdgpu: make undeclared variables static
+Date: Sat, 19 Oct 2019 10:24:26 +0300
+Message-Id: <20191019072426.20535-1-wambui@karuga.xyz>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 184adec6-bf1f-4861-6853-08d757cb031f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Oct 2019 15:09:34.1190
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GgXB0oOxQ2lUNDbFRW5Soopm4YO4ePf1W5pKn90Dmjfx0MsHAaGF79Dzyin0djFERPjO+dPB+U4eKIy2EsYgXg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1201MB2503
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: ClamAV using ClamSMTP
 
-T24gMjAxOS0xMC0xOSAzOjI0IGEubS4sIFdhbWJ1aSBLYXJ1Z2Egd3JvdGU6DQo+IE1ha2UgdGhl
-IGBhbWRncHVfbG9ja3VwX3RpbWVvdXRgIGFuZCBgYW1kZ3B1X2V4cF9od19zdXBwb3J0YCB2YXJp
-YWJsZXMNCj4gc3RhdGljIHRvIHJlbW92ZSB0aGUgZm9sbG93aW5nIHNwYXJzZSB3YXJuaW5nczoN
-Cj4gZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rydi5jOjEwMzoxOTogd2Fybmlu
-Zzogc3ltYm9sICdhbWRncHVfbG9ja3VwX3RpbWVvdXQnIHdhcyBub3QgZGVjbGFyZWQuIFNob3Vs
-ZCBpdCBiZSBzdGF0aWM/DQoNClRoaXMgc2hvdWxkIGJlIGRlY2xhcmVkIGluIGFtZGdwdS5oLiBh
-bWRncHUgaXMgbWFpbnRhaW5lZCBvbiB0aGUNCmFtZC1zdGFnaW5nLWRybS1uZXh0IGJyYW5jaCBm
-cm9tDQpodHRwczovL2NnaXQuZnJlZWRlc2t0b3Aub3JnL35hZ2Q1Zi9saW51eC8/aD1hbWQtc3Rh
-Z2luZy1kcm0tbmV4dC4gQ2FuDQp5b3UgY2hlY2sgdGhlcmU/DQoNCj4gZHJpdmVycy9ncHUvZHJt
-L2FtZC9hbWRncHUvYW1kZ3B1X2Rydi5jOjExNzoxODogd2FybmluZzogc3ltYm9sICdhbWRncHVf
-ZXhwX2h3X3N1cHBvcnQnIHdhcyBub3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/DQo+
-IA0KPiBTaWduZWQtb2ZmLWJ5OiBXYW1idWkgS2FydWdhIDx3YW1idWlAa2FydWdhLnh5ej4NCj4g
-LS0tDQo+ICBkcml2ZXJzL2dwdS9kcm0vYW1kL2FtZGdwdS9hbWRncHVfZHJ2LmMgfCA0ICsrLS0N
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQo+IA0K
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rydi5jIGIv
-ZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1kZ3B1X2Rydi5jDQo+IGluZGV4IDNmYWUxMDA3
-MTQzZS4uYzViM2MwYzkxOTNiIDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYW1kL2Ft
-ZGdwdS9hbWRncHVfZHJ2LmMNCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FtZC9hbWRncHUvYW1k
-Z3B1X2Rydi5jDQo+IEBAIC0xMDAsNyArMTAwLDcgQEAgaW50IGFtZGdwdV9kaXNwX3ByaW9yaXR5
-ID0gMDsNCj4gIGludCBhbWRncHVfaHdfaTJjID0gMDsNCj4gIGludCBhbWRncHVfcGNpZV9nZW4y
-ID0gLTE7DQo+ICBpbnQgYW1kZ3B1X21zaSA9IC0xOw0KPiAtY2hhciBhbWRncHVfbG9ja3VwX3Rp
-bWVvdXRbQU1ER1BVX01BWF9USU1FT1VUX1BBUkFNX0xFTlRIXTsNCj4gK3N0YXRpYyBjaGFyIGFt
-ZGdwdV9sb2NrdXBfdGltZW91dFtBTURHUFVfTUFYX1RJTUVPVVRfUEFSQU1fTEVOVEhdOw0KPiAg
-aW50IGFtZGdwdV9kcG0gPSAtMTsNCj4gIGludCBhbWRncHVfZndfbG9hZF90eXBlID0gLTE7DQo+
-ICBpbnQgYW1kZ3B1X2FzcG0gPSAtMTsNCj4gQEAgLTExNCw3ICsxMTQsNyBAQCBpbnQgYW1kZ3B1
-X3ZtX2Jsb2NrX3NpemUgPSAtMTsNCj4gIGludCBhbWRncHVfdm1fZmF1bHRfc3RvcCA9IDA7DQo+
-ICBpbnQgYW1kZ3B1X3ZtX2RlYnVnID0gMDsNCj4gIGludCBhbWRncHVfdm1fdXBkYXRlX21vZGUg
-PSAtMTsNCj4gLWludCBhbWRncHVfZXhwX2h3X3N1cHBvcnQgPSAwOw0KPiArc3RhdGljIGludCBh
-bWRncHVfZXhwX2h3X3N1cHBvcnQ7DQoNClRoaXMgaXMgaW5kZWVkIG9ubHkgdXNlZCBpbiB0aGlz
-IGZpbGUgYnV0IGZvciBjb25zaXN0ZW5jeSdzIHNha2UgaXQncw0KcHJvYmFibHkgYmV0dGVyIHRv
-IGFsc28gZGVjbGFyZSBpdCBpbiBhbWRncHUuaCByYXRoZXIgdGhhbiBtYWtlIGl0DQpzdGF0aWMg
-aGVyZS4NCg0KSGFycnkNCg0KPiAgaW50IGFtZGdwdV9kYyA9IC0xOw0KPiAgaW50IGFtZGdwdV9z
-Y2hlZF9qb2JzID0gMzI7DQo+ICBpbnQgYW1kZ3B1X3NjaGVkX2h3X3N1Ym1pc3Npb24gPSAyOw0K
-PiANCg==
+Make the `amdgpu_lockup_timeout` and `amdgpu_exp_hw_support` variables
+static to remove the following sparse warnings:
+drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c:103:19: warning: symbol 'amdgpu_lockup_timeout' was not declared. Should it be static?
+drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c:117:18: warning: symbol 'amdgpu_exp_hw_support' was not declared. Should it be static?
+
+Signed-off-by: Wambui Karuga <wambui@karuga.xyz>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+index 3fae1007143e..c5b3c0c9193b 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+@@ -100,7 +100,7 @@ int amdgpu_disp_priority = 0;
+ int amdgpu_hw_i2c = 0;
+ int amdgpu_pcie_gen2 = -1;
+ int amdgpu_msi = -1;
+-char amdgpu_lockup_timeout[AMDGPU_MAX_TIMEOUT_PARAM_LENTH];
++static char amdgpu_lockup_timeout[AMDGPU_MAX_TIMEOUT_PARAM_LENTH];
+ int amdgpu_dpm = -1;
+ int amdgpu_fw_load_type = -1;
+ int amdgpu_aspm = -1;
+@@ -114,7 +114,7 @@ int amdgpu_vm_block_size = -1;
+ int amdgpu_vm_fault_stop = 0;
+ int amdgpu_vm_debug = 0;
+ int amdgpu_vm_update_mode = -1;
+-int amdgpu_exp_hw_support = 0;
++static int amdgpu_exp_hw_support;
+ int amdgpu_dc = -1;
+ int amdgpu_sched_jobs = 32;
+ int amdgpu_sched_hw_submission = 2;
+-- 
+2.23.0
+
 
