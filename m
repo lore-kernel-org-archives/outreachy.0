@@ -1,126 +1,114 @@
 X-GM-THRID: 6749590937101402112
-X-Received: by 2002:adf:edcc:: with SMTP id v12mr1356859wro.158.1571511873899;
-        Sat, 19 Oct 2019 12:04:33 -0700 (PDT)
+X-Received: by 2002:a05:6808:8da:: with SMTP id k26mr3350254oij.81.1571511602379;
+        Sat, 19 Oct 2019 12:00:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:45c5:: with SMTP id b5ls3855643wrs.12.gmail; Sat, 19 Oct
- 2019 12:04:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzzKDwdnUu53V0Na1+sEdyn+8/YcfzTDcuI8EXDOwt01Iwz/JoxmPmjFNXiB2/LtsKxLWwm
-X-Received: by 2002:adf:f686:: with SMTP id v6mr13697831wrp.141.1571511872973;
-        Sat, 19 Oct 2019 12:04:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571511872; cv=none;
+Received: by 2002:a9d:4a9c:: with SMTP id i28ls1602804otf.14.gmail; Sat, 19
+ Oct 2019 12:00:01 -0700 (PDT)
+X-Received: by 2002:a05:6830:4c1:: with SMTP id s1mr13196443otd.280.1571511601690;
+        Sat, 19 Oct 2019 12:00:01 -0700 (PDT)
+Received: by 2002:aca:5007:0:0:0:0:0 with SMTP id e7msoib;
+        Sat, 19 Oct 2019 00:18:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSGNABcGXuYVYDl3AgtFVxIP6D7yD+grWVPPiDi6J6WbZWLumilyxSlb7w7gj7Lp3tJmsR
+X-Received: by 2002:a17:90a:1a0d:: with SMTP id 13mr16043869pjk.100.1571469527996;
+        Sat, 19 Oct 2019 00:18:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571469527; cv=none;
         d=google.com; s=arc-20160816;
-        b=O6dXELgQ+yEpS+hIxBO5BpgAa5sf3UH4aUSWM4CWQF6w+uCOJkGsjnv+uRT7wrLMKV
-         +IysJobNmwvKMwTQSJAfNQP0R3sNQAhVQ2uYzw0BexO51hux9cHXmih6RfdBbj7es0P+
-         2sJNW0hmy7SfqGNMlINps0tyTvZ/Oj1h9z//4h6zgJao3AKkLRSDsnGDt+W/DQ7T15Gu
-         4KjLCzatbNqsxGBPpd6b3/5NYi9nHdOL4hnC6STefaNjCFAxjVOxTRF7K87SB+xeb2uk
-         lTzHX2qYseX1rY3sQW4OhxSO6Eiy3ziYmbZv9X9r+WHyiL0xQ5ZJWKgEQ6xMRug3yhea
-         2tvQ==
+        b=lh92kEVW5F5Q8T93BkndOTbnQYR7FWfyWgyXZ7RUeUlNGf9ZQQPPjYpUTpJVgUScKe
+         UfF43FYqHsNSs4ytxJU0R2uSIAR9Mez1EenyCD/2r6RX9QwbKNgOUF/9w7dAN1HoyPjG
+         knBY2xJVPjwccqACUUJtsL3XI5ornwvgPKY/+8KhYGr1xNEAXUyqQ2GnjCvTaUaqIJwx
+         ukUEOdWkyxgew2OMv/vfnPhsnn/FRMhFI0tLQrd1uGDfFUuAHxvYbLU9+SHiqkc5g0iQ
+         ieKiG1/F9H3WQ3BKCxihplIlw+VrvHNtp2NzizcTTOUQhOK0AWDFWX9uPHqYqzROBj84
+         PQ7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=8s7hH2oq67USPr3c3KTYDwTXtKzu1IZRS8T0+ID15JY=;
-        b=Vf1GoSDGoWoxGJsQik/sgdC7clxr/eJUkNtA+pJwEAisiBvOCJC2Wcno/G2TFAhyDX
-         KiClBFwCeFgJkIZguBYVAhUHMyIwyWv37Mp/4qrTPZhrMurfpMtkhF0AshJJ3UGlUwxZ
-         3U8gkped/zNtDymWtiTwsDBNj38B8l5Cv/p3NxNq/Hm7wYSGsrjq46tpgw9mCWEQP+WU
-         XOu8icTpdFYny9Ygl9wV3uxrtw8wM9juEUzM9ams8avScmr+hE/vQBpWvvVARFU/D4qm
-         znXfA0LUfHgNqThubrF1Suv+PoNZ/Q2Zj6Da+EmcwiD8gO5fazLvxqIA4ncTyfTbVozJ
-         ET+g==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=eL5rqVUras4Vwh4LhNYnD2Kdt75jAMEYEHh9+JFFZMw=;
+        b=zLH9gXgkD4FnJjpoSb0q4s1BRhvA0zy/0dhhRkvUb293DE+fokbwBkqZMC4aHZ/tsd
+         A3keXDx2FPEfFjOw1DAJy7giyOYsPJ7O80zFygWHbKA8zYI8OwQJ015o7oVKqSm2vg/B
+         iUM097sdwJm4NYqou1r4UXd9bbMy4+0oiy2UpRdxODnyj9plfJRfRGcUK2KuaXr4k4kx
+         FkyYeh9IM52cuFSXqqJNLOQmYgMwn4e5pDP/yMiV4wXu87ZnxHwqm6+EcBHfBQJ1evgj
+         dWZLpYpXTFCCff2U0CXVsKbXpn/8rFntlATgiUR63ntfcNJv2RT7CSfhaE+iCrXC5yjf
+         sLQw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id e17si429150wre.3.2019.10.19.12.04.32
+       spf=pass (google.com: domain of wambui@karuga.xyz designates 68.65.122.15 as permitted sender) smtp.mailfrom=wambui@karuga.xyz
+Return-Path: <wambui@karuga.xyz>
+Received: from MTA-05-3.privateemail.com (mta-05-3.privateemail.com. [68.65.122.15])
+        by gmr-mx.google.com with ESMTPS id o23si431794pjt.2.2019.10.19.00.18.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 19 Oct 2019 12:04:32 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        Sat, 19 Oct 2019 00:18:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wambui@karuga.xyz designates 68.65.122.15 as permitted sender) client-ip=68.65.122.15;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.67,316,1566856800"; 
-   d="scan'208";a="323314015"
-Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Oct 2019 21:04:31 +0200
-Date: Sat, 19 Oct 2019 21:04:31 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Wambui Karuga <wambui@karuga.xyz>
-cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-    airlied@linux.ie, daniel@ffwll.ch, sean@poorly.run, mripard@kernel.org, 
-    maarten.lankhorst@linux.intel.com, outreachy-kernel@googlegroups.com, 
-    Wambui Karuga <wambui.karugax@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] drm: remove unnecessary return
- variable
-In-Reply-To: <20191019071840.16877-1-wambui@karuga.xyz>
-Message-ID: <alpine.DEB.2.21.1910192102410.5888@hadrien>
-References: <20191019071840.16877-1-wambui@karuga.xyz>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       spf=pass (google.com: domain of wambui@karuga.xyz designates 68.65.122.15 as permitted sender) smtp.mailfrom=wambui@karuga.xyz
+Received: from MTA-05.privateemail.com (localhost [127.0.0.1])
+	by MTA-05.privateemail.com (Postfix) with ESMTP id 1FE4E60049;
+	Sat, 19 Oct 2019 03:18:47 -0400 (EDT)
+Received: from wambui.zuku.co.ke (unknown [10.20.151.220])
+	by MTA-05.privateemail.com (Postfix) with ESMTPA id 8E05560040;
+	Sat, 19 Oct 2019 07:18:43 +0000 (UTC)
+From: Wambui Karuga <wambui@karuga.xyz>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org,
+	airlied@linux.ie,
+	daniel@ffwll.ch,
+	sean@poorly.run,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	outreachy-kernel@googlegroups.com,
+	Wambui Karuga <wambui.karugax@gmail.com>
+Subject: [PATCH] drm: remove unnecessary return variable
+Date: Sat, 19 Oct 2019 10:18:40 +0300
+Message-Id: <20191019071840.16877-1-wambui@karuga.xyz>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+X-Virus-Scanned: ClamAV using ClamSMTP
 
+From: Wambui Karuga <wambui.karugax@gmail.com>
 
+Remove unnecessary variable `ret` in drm_dp_atomic_find_vcpi_slots()
+only used to hold the function return value and have the function
+return the value directly.
+Issue found by coccinelle:
+@@
+local idexpression ret;
+expression e;
+@@
 
-On Sat, 19 Oct 2019, Wambui Karuga wrote:
+-ret =
++return
+     e;
+-return ret;
 
-> From: Wambui Karuga <wambui.karugax@gmail.com>
->
-> Remove unnecessary variable `ret` in drm_dp_atomic_find_vcpi_slots()
-> only used to hold the function return value and have the function
-> return the value directly.
+Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
+---
+ drivers/gpu/drm/drm_dp_mst_topology.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-This patch applies for me, but with a huge offset.  What tree are you
-using?
+diff --git a/drivers/gpu/drm/drm_dp_mst_topology.c b/drivers/gpu/drm/drm_dp_mst_topology.c
+index 9cccc5e63309..b854a422a523 100644
+--- a/drivers/gpu/drm/drm_dp_mst_topology.c
++++ b/drivers/gpu/drm/drm_dp_mst_topology.c
+@@ -3540,7 +3540,7 @@ int drm_dp_atomic_find_vcpi_slots(struct drm_atomic_state *state,
+ {
+ 	struct drm_dp_mst_topology_state *topology_state;
+ 	struct drm_dp_vcpi_allocation *pos, *vcpi = NULL;
+-	int prev_slots, req_slots, ret;
++	int prev_slots, req_slots;
+ 
+ 	topology_state = drm_atomic_get_mst_topology_state(state, mgr);
+ 	if (IS_ERR(topology_state))
+@@ -3587,8 +3587,7 @@ int drm_dp_atomic_find_vcpi_slots(struct drm_atomic_state *state,
+ 	}
+ 	vcpi->vcpi = req_slots;
+ 
+-	ret = req_slots;
+-	return ret;
++	return req_slots;
+ }
+ EXPORT_SYMBOL(drm_dp_atomic_find_vcpi_slots);
+ 
+-- 
+2.23.0
 
-Also, Greg won't apply this, because it's not targeting staging.  Is this
-for a specific outreachy project?
-
-julia
-
-
-> Issue found by coccinelle:
-> @@
-> local idexpression ret;
-> expression e;
-> @@
->
-> -ret =
-> +return
->      e;
-> -return ret;
->
-> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
-> ---
->  drivers/gpu/drm/drm_dp_mst_topology.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/drm_dp_mst_topology.c b/drivers/gpu/drm/drm_dp_mst_topology.c
-> index 9cccc5e63309..b854a422a523 100644
-> --- a/drivers/gpu/drm/drm_dp_mst_topology.c
-> +++ b/drivers/gpu/drm/drm_dp_mst_topology.c
-> @@ -3540,7 +3540,7 @@ int drm_dp_atomic_find_vcpi_slots(struct drm_atomic_state *state,
->  {
->  	struct drm_dp_mst_topology_state *topology_state;
->  	struct drm_dp_vcpi_allocation *pos, *vcpi = NULL;
-> -	int prev_slots, req_slots, ret;
-> +	int prev_slots, req_slots;
->
->  	topology_state = drm_atomic_get_mst_topology_state(state, mgr);
->  	if (IS_ERR(topology_state))
-> @@ -3587,8 +3587,7 @@ int drm_dp_atomic_find_vcpi_slots(struct drm_atomic_state *state,
->  	}
->  	vcpi->vcpi = req_slots;
->
-> -	ret = req_slots;
-> -	return ret;
-> +	return req_slots;
->  }
->  EXPORT_SYMBOL(drm_dp_atomic_find_vcpi_slots);
->
-> --
-> 2.23.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191019071840.16877-1-wambui%40karuga.xyz.
->
 
