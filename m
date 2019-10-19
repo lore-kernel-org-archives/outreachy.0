@@ -1,140 +1,417 @@
 X-GM-THRID: 6749515623301120000
-X-Received: by 2002:a17:902:7d85:: with SMTP id a5mr15358529plm.324.1571599098879;
-        Sun, 20 Oct 2019 12:18:18 -0700 (PDT)
+X-Received: by 2002:a63:b24c:: with SMTP id t12mr17760962pgo.340.1571515356267;
+        Sat, 19 Oct 2019 13:02:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:9343:: with SMTP id 3ls3223780pfn.15.gmail; Sun, 20 Oct
- 2019 12:18:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyHjx02nctAUhtpHaO9MYnVDiUmy5+7Ts4J6R5nG3bjS42+ep1js5n+1FmgRPSkWIELG8+1
-X-Received: by 2002:a63:4d8:: with SMTP id 207mr22314666pge.168.1571599097938;
-        Sun, 20 Oct 2019 12:18:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571599097; cv=none;
+Received: by 2002:a17:90a:2766:: with SMTP id o93ls2950917pje.4.gmail; Sat, 19
+ Oct 2019 13:02:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzLERDLVHzAFGkXGeRETIe3625MaGGmdFWc+QGShSlV2v3W4ijwZOBI50Owox5ZHvgcBTia
+X-Received: by 2002:a17:90a:80c2:: with SMTP id k2mr19119906pjw.92.1571515355333;
+        Sat, 19 Oct 2019 13:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571515355; cv=none;
         d=google.com; s=arc-20160816;
-        b=lyAMrOdDpv3kNSDgxxvhWWojlsVBFSyT335YydzvNj99XhHCqy1RNfZEQk5hnUMk/m
-         LMXWbvlE0SeG4XYPfIk5iKi1FMl6AlNqyoNVwzkzxX1RYtGV1ElG1PwOuZRk0e/Q775W
-         CZYAwvyWM9PcNnYqc8YE/+AX06Xq0zOBunTKFHKXG5O+3VpF9XieJSvZJDWfZ/lwKaZ4
-         LhHk6/PJNQuYcBfGbUxXuVLBzXC2WmhnST21EvWGjUCjkIusOHkXQ8YY2/2/y2rsKJz5
-         hlR6ss3egi91OokCDzmUnfGAteVTUdZws1HAOYambAzlElhfVMhSJtEeZFjmb8F2K1Qq
-         jqAw==
+        b=WUYq3/3TyOn3r7erzLn9HSaENfH5HAZIVTuwPbZtq0YgOfgZ4W6Q0Tlt63gS4TePgK
+         5QECoNP0+tIZl98GgsKTlzqwZPn9a42CdprR0o8wgxqlSxonuOWnKtxkdNUpXhSxkDQI
+         c7FXKPszBNupvpo6WaHiFmNhiIKF7zGzKdLeiqnmVIjQgo8urpLhIYtdQcQZS+WJvili
+         09qqMBlRUUJ/RuMIZ0pEdOnqtc5aUgWiFQyNlXO29UZqBhMvCEtKfYIOAu3xEO9lyVcH
+         /gwSXc0SE3IzNpVqkBaWrDNOmzlRz424ZFdhqumsUNT5y/1WRPGQM+GWo9gzmnbJRd6O
+         wvtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=34Vdw1WCYqerk3vPMHnUTd4cEYgBGYPHBeKZ2jLQCK0=;
-        b=eBJp33bEotSjjq/vD2P/n9P+asSxp1fVunY0R4zvdO/5WxzQoZGR7MHI+iVGQf+stV
-         w69V9i92+q+l8i3+MbK+G++DC9Wtj88+SAx78XMD0kJev4M+Uq0UyJ37bAn814MiFKwt
-         mt/3765inBRxa7QvDZWGbTE6r7ku/vliUXTJg0Hdf+wR8rKOD/V34NT/yUm9sBeSe8tZ
-         fUmMFVR0ziHs89RqYVRWoaswuq83I4jr4PTKzDLFUvqufkz+U/MhOYNR6FVLcougfb3b
-         AuXBCvnfNPjAPNhWNRGNtgC4JFa9c2Gsp8VG0ht1id0lriS8LKdZKYn3H6rVfgOA55l+
-         8kBA==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=ldWk9HnK1k/0U0G5NtWDoG4aupGLK/SNkBYdtRlHVf0=;
+        b=paub5vMO1UEbDu1AKN7MMftaJIBifdZNbq0SAAWYVdkngdkkusdLLLb7kjguQRZxLD
+         Xvma4459NvUHellKFE+02+gJ6xQcxl4RqaH1F16DXN5fssEdr1IlG/2cSH+q/rqEB+Aw
+         gdnp6y4ysprJTkbOKLYDjhM/oAOlgrASqj/629iwkOaqaLM3n2wlLMsUXrNbQIlsilG9
+         GjQNpsNddLXFFhJJVdNXC2uJT+ifVGoRV8e4tb4lLue/1fPpudtMiXPKtZaN2GyysTrX
+         KIwu60pkvNTquHUtbbY48S4ynkLIEGvyrzn9zqV0TTFwF2Sgmm3ayo2C/NvOTy/hIVK1
+         kpdQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=jK84XfyT;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
-        by gmr-mx.google.com with ESMTPS id t17si542216pgk.0.2019.10.20.12.18.17
+       spf=neutral (google.com: 216.40.44.165 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0165.hostedemail.com. [216.40.44.165])
+        by gmr-mx.google.com with ESMTPS id m44si368723pjb.0.2019.10.19.13.02.35
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Oct 2019 12:18:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+        Sat, 19 Oct 2019 13:02:35 -0700 (PDT)
+Received-SPF: neutral (google.com: 216.40.44.165 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.165;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=jK84XfyT;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
-	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9KJF1Wg172880;
-	Sun, 20 Oct 2019 19:18:14 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=34Vdw1WCYqerk3vPMHnUTd4cEYgBGYPHBeKZ2jLQCK0=;
- b=jK84XfyTARhzekulLY2QAZcAwNEyHgm6f4ryiIF7+u58SPQj/OYZj//JEao+M6TB+SDK
- UdBBIzkbAAneqBF80CWYjVvf/GQ3UXcxZeV+q+FfT4pnoQh/N2G54283kbEQqoIrJnFj
- X23FlB+L06j8QCT56Yrx02HzE1S3ZhBpFQ/4y8SqHJJsp0w3Yd+cOxkXx5DGNf02GunI
- EOM+WNVnSTGeVDddI1sfglasCBzC5JA9k58+UJLQ21glYRt2ZLehNNFjETGXaDCuSp2H
- IsW1DSTlbahfY3f12VOVRFo5eAusdx84zNmvUmB8U0Gjji+tBmq4YF8quKEDFOJTiszx Gg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by userp2120.oracle.com with ESMTP id 2vqu4qbqtd-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 20 Oct 2019 19:18:14 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9KJHwsF175882;
-	Sun, 20 Oct 2019 19:18:13 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
-	by userp3030.oracle.com with ESMTP id 2vrbxrg5kq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 20 Oct 2019 19:18:13 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
-	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9KJIAuZ010905;
-	Sun, 20 Oct 2019 19:18:11 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Sun, 20 Oct 2019 12:18:09 -0700
-Date: Sun, 20 Oct 2019 22:17:59 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Joe Perches <joe@perches.com>
-Cc: Jules Irenge <jbi.octave@gmail.com>, devel@driverdev.osuosl.org,
-        outreachy-kernel@googlegroups.com, linux-kernel@vger.kernel.org,
-        gregkh@linuxfoundation.org
+       spf=neutral (google.com: 216.40.44.165 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay07.hostedemail.com (Postfix) with ESMTP id E10B9181D2FC1;
+	Sat, 19 Oct 2019 20:02:33 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::,RULES_HIT:1:41:355:379:599:960:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1593:1594:1605:1730:1747:1777:1792:2194:2199:2393:2553:2559:2562:2637:2692:2693:2828:2895:3138:3139:3140:3141:3142:3622:3865:3866:3867:3868:3870:3871:3873:3874:4250:4321:5007:6119:7875:7903:8828:8957:9038:9108:10004:10848:11026:11232:11473:11657:11658:11914:12043:12050:12295:12296:12297:12438:12555:12731:12737:12740:12760:12895:13141:13149:13230:13439:14096:14097:14659:21080:21324:21451:21627:21740:21810:21939:30012:30046:30054:30070:30075:30090:30091,0,RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.14.0.100 64.201.201.201,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:neutral,Custom_rules:0:0:0,LFtime:24,LUA_SUMMARY:none
+X-HE-Tag: pig59_33562b54e1f19
+X-Filterd-Recvd-Size: 12928
+Received: from XPS-9350.home (unknown [47.151.135.224])
+	(Authenticated sender: joe@perches.com)
+	by omf20.hostedemail.com (Postfix) with ESMTPA;
+	Sat, 19 Oct 2019 20:02:32 +0000 (UTC)
+Message-ID: <336960fdf88dbed69dd3ed2689a5fb1d2892ace8.camel@perches.com>
 Subject: Re: [PATCH v1 1/5] staging: wfx: fix warnings of no space is
  necessary
-Message-ID: <20191020191759.GJ24678@kadam>
+From: Joe Perches <joe@perches.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, Jules Irenge
+	 <jbi.octave@gmail.com>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com, 
+	linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
+Date: Sat, 19 Oct 2019 13:02:31 -0700
+In-Reply-To: <20191019180514.GI24678@kadam>
 References: <20191019140719.2542-1-jbi.octave@gmail.com>
- <20191019140719.2542-2-jbi.octave@gmail.com>
- <20191019142443.GH24678@kadam>
- <alpine.LFD.2.21.1910191603520.6740@ninjahub.org>
- <20191019180514.GI24678@kadam>
- <336960fdf88dbed69dd3ed2689a5fb1d2892ace8.camel@perches.com>
+	 <20191019140719.2542-2-jbi.octave@gmail.com> <20191019142443.GH24678@kadam>
+	 <alpine.LFD.2.21.1910191603520.6740@ninjahub.org>
+	 <20191019180514.GI24678@kadam>
+Content-Type: text/plain; charset="ISO-8859-1"
+User-Agent: Evolution 3.32.1-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <336960fdf88dbed69dd3ed2689a5fb1d2892ace8.camel@perches.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9416 signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=884
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910200197
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9416 signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=963 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910200196
+Content-Transfer-Encoding: 7bit
 
-On Sat, Oct 19, 2019 at 01:02:31PM -0700, Joe Perches wrote:
-> diff -u -p a/rtl8723bs/core/rtw_mlme_ext.c b/rtl8723bs/core/rtw_mlme_ext.c
-> --- a/rtl8723bs/core/rtw_mlme_ext.c
-> +++ b/rtl8723bs/core/rtw_mlme_ext.c
-> @@ -1132,7 +1132,7 @@ unsigned int OnAuthClient(struct adapter
->  				goto authclnt_fail;
->  			}
->  
-> -			memcpy((void *)(pmlmeinfo->chg_txt), (void *)(p + 2), len);
-> +			memcpy((void *)(pmlmeinfo->chg_txt), (p + 2), len);
+On Sat, 2019-10-19 at 21:05 +0300, Dan Carpenter wrote:
+> On Sat, Oct 19, 2019 at 04:09:03PM +0100, Jules Irenge wrote:
+> > Checkpatch was complaining about  space between type cast and the 
+> > variable. I just get rid of the space. Well I don't know whether this was 
+> > false positive one.
+> > 
+> > Thanks for the feedback. I will update the patch.
+> 
+> No no.  The patch is fine.  I was saying that in the *future* you might
+> want to look at the void casts.  Some of them are not required and
+> others are buggy code.
 
-I wonder why it didn't remove the first void cast?
+Hello Jules.
 
-[ The rest of the email is bonus comments for outreachy developers ].
+Frequently, checkpatch is not the best tool to find and
+possibly correct various unnecessary code styles.
 
-And someone needs to check the final patch probably to remove the extra
-parentheses around "(p + 2)".  Those were necessary when for the cast
-but not required after the cast is gone.
+checkpatch is OK to look at some odd uses
 
->  			pmlmeinfo->auth_seq = 3;
->  			issue_auth(padapter, NULL, 0);
->  			set_link_timer(pmlmeext, REAUTH_TO);
+coccinelle is frequently a better overall tool for these uses.
 
-It's sort of tricky to know what "one thing per patch means".
+A trivial cocci script to remove some unnecessary void * casts
+from mem<foo> and str<foo> calls might be like the below, but
+watch out for __iomem and __force uses where coccinelle doesn't
+understand the syntax.
 
--       memset((void *)(&(pHTInfo->SelfHTCap)), 0,
-+       memset((&(pHTInfo->SelfHTCap)), 0,
-                sizeof(pHTInfo->SelfHTCap));
+$ cat unnecessary_void_ptr.cocci
+@@
+type T1;
+type T2;
+T1 *p1;
+T2 *p2;
+@@
 
-Here the parentheses were never related to the cast so we should leave
-them as is.  In other words, in the first example, if we didn't remove
-the cast that would be "half a thing per patch" and in the second
-example that would be "two things in one patch".
+	\(memcpy\|memmove\|strcpy\|strncmp\)(
+-	(void *)
+	p1,
+-	(void *)
+	p2, ...)
 
-regards,
-dan carpenter
+@@
+type T1;
+type T2;
+T1 *p1;
+T2 *p2;
+@@
+
+	\(memcpy\|memmove\|strcpy\|strncmp\)(
+	p1,
+-	(void *)
+	p2, ...)
+
+@@
+type T;
+T *p;
+@@
+
+	\(memcpy\|memset\|memmove\|memzero\|strcpy\|strncmp\|strnlen\)(
+-	(void *)
+	p, ...)
+
+$
+
+For instance, when run over today's drivers/staging, this produces:
+
+$ spatch --very-quiet -sp-file unnecessary_void_ptr.cocci drivers/staging
+---
+diff -u -p a/exfat/exfat_core.c b/exfat/exfat_core.c
+--- a/exfat/exfat_core.c
++++ b/exfat/exfat_core.c
+@@ -3427,7 +3427,7 @@ s32 rename_file(struct inode *inode, str
+ 			return FFS_MEDIAERR;
+ 		}
+ 
+-		memcpy((void *)epnew, (void *)epold, DENTRY_SIZE);
++		memcpy(epnew, epold, DENTRY_SIZE);
+ 		if (fs_func->get_entry_type(epnew) == TYPE_FILE) {
+ 			fs_func->set_entry_attr(epnew,
+ 						fs_func->get_entry_attr(epnew) |
+@@ -3449,7 +3449,7 @@ s32 rename_file(struct inode *inode, str
+ 				return FFS_MEDIAERR;
+ 			}
+ 
+-			memcpy((void *)epnew, (void *)epold, DENTRY_SIZE);
++			memcpy(epnew, epold, DENTRY_SIZE);
+ 			buf_modify(sb, sector_new);
+ 			buf_unlock(sb, sector_old);
+ 		}
+@@ -3538,7 +3538,7 @@ s32 move_file(struct inode *inode, struc
+ 		return FFS_MEDIAERR;
+ 	}
+ 
+-	memcpy((void *)epnew, (void *)epmov, DENTRY_SIZE);
++	memcpy(epnew, epmov, DENTRY_SIZE);
+ 	if (fs_func->get_entry_type(epnew) == TYPE_FILE) {
+ 		fs_func->set_entry_attr(epnew, fs_func->get_entry_attr(epnew) |
+ 					ATTR_ARCHIVE);
+@@ -3558,7 +3558,7 @@ s32 move_file(struct inode *inode, struc
+ 			return FFS_MEDIAERR;
+ 		}
+ 
+-		memcpy((void *)epnew, (void *)epmov, DENTRY_SIZE);
++		memcpy(epnew, epmov, DENTRY_SIZE);
+ 		buf_modify(sb, sector_new);
+ 		buf_unlock(sb, sector_mov);
+ 	} else if (fs_func->get_entry_type(epnew) == TYPE_DIR) {
+diff -u -p a/qlge/qlge_main.c b/qlge/qlge_main.c
+--- a/qlge/qlge_main.c
++++ b/qlge/qlge_main.c
+@@ -2583,7 +2583,7 @@ static netdev_tx_t qlge_send(struct sk_b
+ 	}
+ 	tx_ring_desc = &tx_ring->q[tx_ring->prod_idx];
+ 	mac_iocb_ptr = tx_ring_desc->queue_entry;
+-	memset((void *)mac_iocb_ptr, 0, sizeof(*mac_iocb_ptr));
++	memset(mac_iocb_ptr, 0, sizeof(*mac_iocb_ptr));
+ 
+ 	mac_iocb_ptr->opcode = OPCODE_OB_MAC_IOCB;
+ 	mac_iocb_ptr->tid = tx_ring_desc->index;
+@@ -3029,7 +3029,7 @@ static int ql_start_rx_ring(struct ql_ad
+ 	/* PCI doorbell mem area + 0x1c */
+ 	rx_ring->sbq.prod_idx_db_reg = (u32 __iomem *)(doorbell_area + 0x1c);
+ 
+-	memset((void *)cqicb, 0, sizeof(struct cqicb));
++	memset(cqicb, 0, sizeof(struct cqicb));
+ 	cqicb->msix_vect = rx_ring->irq;
+ 
+ 	cqicb->len = cpu_to_le16(QLGE_FIT16(rx_ring->cq_len) | LEN_V |
+@@ -3473,7 +3473,7 @@ static int ql_start_rss(struct ql_adapte
+ 	int i;
+ 	u8 *hash_id = (u8 *) ricb->hash_cq_id;
+ 
+-	memset((void *)ricb, 0, sizeof(*ricb));
++	memset(ricb, 0, sizeof(*ricb));
+ 
+ 	ricb->base_cq = RSS_L4K;
+ 	ricb->flags =
+@@ -3486,8 +3486,8 @@ static int ql_start_rss(struct ql_adapte
+ 	for (i = 0; i < 1024; i++)
+ 		hash_id[i] = (i & (qdev->rss_ring_count - 1));
+ 
+-	memcpy((void *)&ricb->ipv6_hash_key[0], init_hash_seed, 40);
+-	memcpy((void *)&ricb->ipv4_hash_key[0], init_hash_seed, 16);
++	memcpy(&ricb->ipv6_hash_key[0], init_hash_seed, 40);
++	memcpy(&ricb->ipv4_hash_key[0], init_hash_seed, 16);
+ 
+ 	status = ql_write_cfg(qdev, ricb, sizeof(*ricb), CFG_LR, 0);
+ 	if (status) {
+@@ -3983,7 +3983,7 @@ static int ql_configure_rings(struct ql_
+ 
+ 	for (i = 0; i < qdev->tx_ring_count; i++) {
+ 		tx_ring = &qdev->tx_ring[i];
+-		memset((void *)tx_ring, 0, sizeof(*tx_ring));
++		memset(tx_ring, 0, sizeof(*tx_ring));
+ 		tx_ring->qdev = qdev;
+ 		tx_ring->wq_id = i;
+ 		tx_ring->wq_len = qdev->tx_ring_size;
+@@ -3999,7 +3999,7 @@ static int ql_configure_rings(struct ql_
+ 
+ 	for (i = 0; i < qdev->rx_ring_count; i++) {
+ 		rx_ring = &qdev->rx_ring[i];
+-		memset((void *)rx_ring, 0, sizeof(*rx_ring));
++		memset(rx_ring, 0, sizeof(*rx_ring));
+ 		rx_ring->qdev = qdev;
+ 		rx_ring->cq_id = i;
+ 		rx_ring->cpu = i % cpu_cnt;	/* CPU to run handler on. */
+@@ -4414,7 +4414,7 @@ static int ql_init_device(struct pci_dev
+ 	struct ql_adapter *qdev = netdev_priv(ndev);
+ 	int err = 0;
+ 
+-	memset((void *)qdev, 0, sizeof(*qdev));
++	memset(qdev, 0, sizeof(*qdev));
+ 	err = pci_enable_device(pdev);
+ 	if (err) {
+ 		dev_err(&pdev->dev, "PCI device enable failed.\n");
+diff -u -p a/rtl8188eu/core/rtw_ieee80211.c b/rtl8188eu/core/rtw_ieee80211.c
+--- a/rtl8188eu/core/rtw_ieee80211.c
++++ b/rtl8188eu/core/rtw_ieee80211.c
+@@ -132,7 +132,7 @@ u8 *rtw_set_ie
+ 	*(pbuf + 1) = (u8)len;
+ 
+ 	if (len > 0)
+-		memcpy((void *)(pbuf + 2), (void *)source, len);
++		memcpy((pbuf + 2), source, len);
+ 
+ 	*frlen = *frlen + (len + 2);
+ 
+diff -u -p a/rtl8188eu/core/rtw_mlme_ext.c b/rtl8188eu/core/rtw_mlme_ext.c
+--- a/rtl8188eu/core/rtw_mlme_ext.c
++++ b/rtl8188eu/core/rtw_mlme_ext.c
+@@ -2858,7 +2858,7 @@ static unsigned int OnAuthClient(struct
+ 			if (p == NULL)
+ 				goto authclnt_fail;
+ 
+-			memcpy((void *)(pmlmeinfo->chg_txt), (void *)(p + 2), len);
++			memcpy((void *)(pmlmeinfo->chg_txt), (p + 2), len);
+ 			pmlmeinfo->auth_seq = 3;
+ 			issue_auth(padapter, NULL, 0);
+ 			set_link_timer(pmlmeext, REAUTH_TO);
+diff -u -p a/rtl8192e/rtl819x_HTProc.c b/rtl8192e/rtl819x_HTProc.c
+--- a/rtl8192e/rtl819x_HTProc.c
++++ b/rtl8192e/rtl819x_HTProc.c
+@@ -655,13 +655,13 @@ void HTInitializeHTInfo(struct rtllib_de
+ 	pHTInfo->CurrentMPDUDensity = pHTInfo->MPDU_Density;
+ 	pHTInfo->CurrentAMPDUFactor = pHTInfo->AMPDU_Factor;
+ 
+-	memset((void *)(&(pHTInfo->SelfHTCap)), 0,
++	memset((&(pHTInfo->SelfHTCap)), 0,
+ 		sizeof(pHTInfo->SelfHTCap));
+-	memset((void *)(&(pHTInfo->SelfHTInfo)), 0,
++	memset((&(pHTInfo->SelfHTInfo)), 0,
+ 		sizeof(pHTInfo->SelfHTInfo));
+-	memset((void *)(&(pHTInfo->PeerHTCapBuf)), 0,
++	memset((&(pHTInfo->PeerHTCapBuf)), 0,
+ 		sizeof(pHTInfo->PeerHTCapBuf));
+-	memset((void *)(&(pHTInfo->PeerHTInfoBuf)), 0,
++	memset((&(pHTInfo->PeerHTInfoBuf)), 0,
+ 		sizeof(pHTInfo->PeerHTInfoBuf));
+ 
+ 	pHTInfo->bSwBwInProgress = false;
+diff -u -p a/rtl8192u/r819xU_cmdpkt.c b/rtl8192u/r819xU_cmdpkt.c
+--- a/rtl8192u/r819xU_cmdpkt.c
++++ b/rtl8192u/r819xU_cmdpkt.c
+@@ -373,7 +373,7 @@ static void cmpk_handle_tx_status(struct
+ {
+ 	cmpk_tx_status_t	rx_tx_sts;
+ 
+-	memcpy((void *)&rx_tx_sts, (void *)pmsg, sizeof(cmpk_tx_status_t));
++	memcpy(&rx_tx_sts, pmsg, sizeof(cmpk_tx_status_t));
+ 	/* 2. Use tx feedback info to count TX statistics. */
+ 	cmpk_count_tx_status(dev, &rx_tx_sts);
+ }
+diff -u -p a/rtl8712/ieee80211.c b/rtl8712/ieee80211.c
+--- a/rtl8712/ieee80211.c
++++ b/rtl8712/ieee80211.c
+@@ -90,7 +90,7 @@ u8 *r8712_set_ie(u8 *pbuf, sint index, u
+ 	*pbuf = (u8)index;
+ 	*(pbuf + 1) = (u8)len;
+ 	if (len > 0)
+-		memcpy((void *)(pbuf + 2), (void *)source, len);
++		memcpy((pbuf + 2), source, len);
+ 	*frlen = *frlen + (len + 2);
+ 	return pbuf + len + 2;
+ }
+diff -u -p a/rtl8723bs/core/rtw_ieee80211.c b/rtl8723bs/core/rtw_ieee80211.c
+--- a/rtl8723bs/core/rtw_ieee80211.c
++++ b/rtl8723bs/core/rtw_ieee80211.c
+@@ -112,7 +112,7 @@ int rtw_check_network_type(unsigned char
+ u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *source,
+ 				unsigned int *frlen)
+ {
+-	memcpy((void *)pbuf, (void *)source, len);
++	memcpy(pbuf, source, len);
+ 	*frlen = *frlen + len;
+ 	return pbuf + len;
+ }
+@@ -132,7 +132,7 @@ u8 *rtw_set_ie
+ 	*(pbuf + 1) = (u8)len;
+ 
+ 	if (len > 0)
+-		memcpy((void *)(pbuf + 2), (void *)source, len);
++		memcpy((pbuf + 2), source, len);
+ 
+ 	*frlen = *frlen + (len + 2);
+ 
+diff -u -p a/rtl8723bs/core/rtw_mlme_ext.c b/rtl8723bs/core/rtw_mlme_ext.c
+--- a/rtl8723bs/core/rtw_mlme_ext.c
++++ b/rtl8723bs/core/rtw_mlme_ext.c
+@@ -1132,7 +1132,7 @@ unsigned int OnAuthClient(struct adapter
+ 				goto authclnt_fail;
+ 			}
+ 
+-			memcpy((void *)(pmlmeinfo->chg_txt), (void *)(p + 2), len);
++			memcpy((void *)(pmlmeinfo->chg_txt), (p + 2), len);
+ 			pmlmeinfo->auth_seq = 3;
+ 			issue_auth(padapter, NULL, 0);
+ 			set_link_timer(pmlmeext, REAUTH_TO);
+diff -u -p a/rtl8723bs/hal/rtl8723b_hal_init.c b/rtl8723bs/hal/rtl8723b_hal_init.c
+--- a/rtl8723bs/hal/rtl8723b_hal_init.c
++++ b/rtl8723bs/hal/rtl8723b_hal_init.c
+@@ -2432,13 +2432,13 @@ void Hal_InitPGData(struct adapter *pada
+ 		if (!pEEPROM->EepromOrEfuse) {
+ 			/*  Read EFUSE real map to shadow. */
+ 			EFUSE_ShadowMapUpdate(padapter, EFUSE_WIFI, false);
+-			memcpy((void *)PROMContent, (void *)pEEPROM->efuse_eeprom_data, HWSET_MAX_SIZE_8723B);
++			memcpy(PROMContent, (void *)pEEPROM->efuse_eeprom_data, HWSET_MAX_SIZE_8723B);
+ 		}
+ 	} else {/* autoload fail */
+ 		RT_TRACE(_module_hci_hal_init_c_, _drv_notice_, ("AutoLoad Fail reported from CR9346!!\n"));
+ 		if (!pEEPROM->EepromOrEfuse)
+ 			EFUSE_ShadowMapUpdate(padapter, EFUSE_WIFI, false);
+-		memcpy((void *)PROMContent, (void *)pEEPROM->efuse_eeprom_data, HWSET_MAX_SIZE_8723B);
++		memcpy(PROMContent, (void *)pEEPROM->efuse_eeprom_data, HWSET_MAX_SIZE_8723B);
+ 	}
+ }
+ 
+diff -u -p a/rtl8723bs/os_dep/ioctl_cfg80211.c b/rtl8723bs/os_dep/ioctl_cfg80211.c
+--- a/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -98,7 +98,7 @@ static struct ieee80211_channel rtw_2ghz
+ 
+ static void rtw_2g_channels_init(struct ieee80211_channel *channels)
+ {
+-	memcpy((void*)channels, (void*)rtw_2ghz_channels,
++	memcpy(channels, (void*)rtw_2ghz_channels,
+ 		sizeof(struct ieee80211_channel)*RTW_2G_CHANNELS_NUM
+ 	);
+ }
+@@ -2548,7 +2548,7 @@ static netdev_tx_t rtw_cfg80211_monitor_
+ 
+ 		pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
+ 
+-		memcpy(pframe, (void*)buf, len);
++		memcpy(pframe, buf, len);
+ 		pattrib->pktlen = len;
+ 
+ 		pwlanhdr = (struct ieee80211_hdr *)pframe;
+@@ -2750,7 +2750,7 @@ static int rtw_add_beacon(struct adapter
+ 		return -ENOMEM;
+ 
+ 	memcpy(pbuf, (void *)head+24, head_len-24);/*  24 =beacon header len. */
+-	memcpy(pbuf+head_len-24, (void *)tail, tail_len);
++	memcpy(pbuf+head_len-24, tail, tail_len);
+ 
+ 	len = head_len+tail_len-24;
+ 
+@@ -3041,7 +3041,7 @@ static int _cfg80211_rtw_mgmt_tx(struct
+ 
+ 	pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
+ 
+-	memcpy(pframe, (void*)buf, len);
++	memcpy(pframe, buf, len);
+ 	pattrib->pktlen = len;
+ 
+ 	pwlanhdr = (struct ieee80211_hdr *)pframe;
+diff -u -p a/vt6655/rxtx.c b/vt6655/rxtx.c
+--- a/vt6655/rxtx.c
++++ b/vt6655/rxtx.c
+@@ -1170,7 +1170,7 @@ s_cbFillTxBufHead(struct vnt_private *pD
+ 
+ 	td_info->mic_hdr = pMICHDR;
+ 
+-	memset((void *)(pbyTxBufferAddr + wTxBufSize), 0, (cbHeaderLength - wTxBufSize));
++	memset((pbyTxBufferAddr + wTxBufSize), 0, (cbHeaderLength - wTxBufSize));
+ 
+ 	/* Fill FIFO,RrvTime,RTS,and CTS */
+ 	s_vGenerateTxParameter(pDevice, byPktType, tx_buffer_head, pvRrvTime, pvRTS, pvCTS,
+
+
 
