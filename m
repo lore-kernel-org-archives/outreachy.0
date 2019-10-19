@@ -1,104 +1,98 @@
 X-GM-THRID: 6749323707377778688
-X-Received: by 2002:a02:344a:: with SMTP id z10mr19746037jaz.74.1571605191379;
-        Sun, 20 Oct 2019 13:59:51 -0700 (PDT)
+X-Received: by 2002:adf:bd8f:: with SMTP id l15mr10521540wrh.362.1571466848286;
+        Fri, 18 Oct 2019 23:34:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:6712:: with SMTP id b18ls2440020ilc.7.gmail; Sun, 20 Oct
- 2019 13:59:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyglIN5lPq2YD69t5iHHjojn7mKeQnrKr62aaEPXX8G2qCTg0Z8x4vAbLBmKwiNWR0A8WyS
-X-Received: by 2002:a92:985d:: with SMTP id l90mr23655887ili.286.1571605190104;
-        Sun, 20 Oct 2019 13:59:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571605190; cv=none;
+Received: by 2002:adf:a517:: with SMTP id i23ls3691032wrb.9.gmail; Fri, 18 Oct
+ 2019 23:34:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytsF54+OXCgSiAlIQcsOVkiyB5aZBBUB1yw9w5SOAn9REhNdHBNnWN1zW3faRxm2jXb9IU
+X-Received: by 2002:adf:e805:: with SMTP id o5mr1096920wrm.223.1571466847110;
+        Fri, 18 Oct 2019 23:34:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571466847; cv=none;
         d=google.com; s=arc-20160816;
-        b=MeGVDuKiEyBL8FzCB0fPYHBWnreHgWJqTsxQdyk4l5tPfKZk3zJrkCTNlxmOsAsYHF
-         FIVBtHcLT7gWasiPwTSEqjbbYoGP2uDBu1KpvtvXGBK32je0wwdauw+jvZzaQO0XlcMe
-         7VvYirrFLJ7wevjihS24SDn7kaG8cmWOJ4nGi5eLHM1fFyxP4qdYQX7jD9d8i+kCmI6Y
-         MFH73INkvyd6UinX3NcqJZrNjdkK2jt4SnTJXrS02tWRcOsYg1dGdSRt9/Kuve11j0iH
-         5ROTsXERrP8vPdmWc4rmwhuqxlsvGsDZzHg5GNSi/PVssF9mCzv8i/P130h7QjNiTIcU
-         5SOA==
+        b=pLoNkB8a/1bZAD7xkAVp0aDA/Xni6dBdobQe0AKyjHeeKtPpgEDZRJsMXiLI0PJ5qV
+         UcpgB4mUsxKaKzxPD3jUHptGeAbgW3SloiskM4oI4bR1OHfRqKPAKWrq95c9CbFiaNQ5
+         nDQqaVJqB7E+5JD/A5fTcsjUO7ogxcFEbO3nI2tIEllfn+jJ9oghjD3ScrdtGW5zrOL/
+         Rl98ulCHGDs9/It/ALcbdv6nALY2OlHi8zaKUu3CwyPMXivFoFp9okZtVYfZtl112BbC
+         CawN4tpSIKh0SI+Dy72Q2u2HwPPO5+hTVtczCnxkbpxC54z5zY5aaX2vQxsWiquUzqDk
+         WR3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:mail-followup-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=qZ/BvhAnt/0sbzSj5QTNd6LxQjRBZuGPgnmtNq0RrXQ=;
-        b=WcKGhrKKBRLImuL1an7mFMVpntevzzvaNgzVcHQC/U46NUw/ybm803cFwGbvZTFLGv
-         Hii9K8ft1Xjj9U5V8/acRcrVyDdBkBMEQDqdwqOjb5tru96KhfrVGilTelhJytXnDaMM
-         8DHzfn5/2A9GQe155Oe7FZ3JN7ZQKUEYgcmc1MtZXeUUeHRqo/hF6Gu2wt5p2kVujpnH
-         DeLiZHCaeDGfGHeliKqGodD/zJOUHAFG+THklhcIEZTcyZYdBRKVOLqyn0HRsjk3ta6M
-         JRsNVvYZxVZivRSEDfWXVvOHFwhzfiI/4VZEeS3lNxTuUEaIoYXHWaK4TcjWtMUKWn/A
-         zNnQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=1hazCKqi3So8hGzNc7iI9WuRMs+RAnDHahSYVN71qUI=;
+        b=BJPGcQqxWmbuMnpc3+ZW4ypubc3DZmEO6BSwcpQk1RSfIC9jWXmCQkn6+wBQ/ycuE3
+         q/cGhswUX3guKdIMZFs+PE++I7QsokhQFXYsrNHCEayFvTPrnPibLhH6LeHcANzHfaEU
+         u3ycd5WBj4N/OLms/GSLVJOdjL7bIZeu5dG3CuUWx1fd77+VYXAPxCltxW5MpuA72GGk
+         UPdp+t45QkzmvBm8oAjgzIaZ83RBq5CAyo9dXNHijSpqapMZuiIIh49P8NkvX29xOgln
+         MpJr28ceO7oOFlWmdob8edYIpGDEVKu3aRz7d49dTnmya8OoFd7Xlw6wTSG911CNFZFz
+         ZfJg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Aa6BZ+T3;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-qk1-x743.google.com (mail-qk1-x743.google.com. [2607:f8b0:4864:20::743])
-        by gmr-mx.google.com with ESMTPS id i8si655505ilq.4.2019.10.20.13.59.50
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id z8si267839wmi.1.2019.10.18.23.34.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 20 Oct 2019 13:59:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) client-ip=2607:f8b0:4864:20::743;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 18 Oct 2019 23:34:07 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Aa6BZ+T3;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x743.google.com with SMTP id 4so10475053qki.6
-        for <outreachy-kernel@googlegroups.com>; Sun, 20 Oct 2019 13:59:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition;
-        bh=qZ/BvhAnt/0sbzSj5QTNd6LxQjRBZuGPgnmtNq0RrXQ=;
-        b=Aa6BZ+T3Vc+ss15nHoqLTFZO7mQv7KU+A698JOHv23Hkk4F2sNatxMYAnF87HHQ35S
-         Smefx9PnKOgmvoyG84nWtY4Rgek030GNvkMnEppGFymPTXxg1sqVfSLtDtzXzG9tSXAx
-         YCjb6fJJDNPLxxuxssfQkiNqu/jespJR2hGg6333m+ugf5I8SSK2O3lvdPaUcNA7qtfR
-         1ID3F4b8nm/78PvvNn6KWA+bb7XIqRv57OQn6s1b3TjFA+ih1Kqwi6woUP/Ec0ovLHYi
-         2s9gw7cUqIwPHv5kBmILMZ3rit9hrBVRpvz8uQit/bj9oBfUt/7Z6WMONWom281s9Xuz
-         zl1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition;
-        bh=qZ/BvhAnt/0sbzSj5QTNd6LxQjRBZuGPgnmtNq0RrXQ=;
-        b=Y5FDxnbdoS8AclwBodyzuC9T6OkbrujrIIt4dM9Z67ASGReiolIsqOiFfO02RFtaiI
-         XWm+IDpJ0YUvporP0e0n2Rt0iqh8yKLGrPfF5J1XPme3yZml/wm4R2SZ1BXmjqGbiOvQ
-         TIpI6SGqhIHNTLM3znSdlWYOwgj6YB+Wz/GUGyV5+ArrKGU3HDlI95OLwvpgkEu4F/3h
-         iGlL1ngQyvfWpmSPeFIh6RMMHJuLKChS3dfjSOlHrwq8erBg2BrOV67nqaY+zaSwL0IR
-         Evn0LcM4+u2uAyR3U9hY3fQ5VwvRdnV+NlguIe/yTJ4J7VZxaPKz4G9LeeNwNcbHSUnY
-         fQbQ==
-X-Gm-Message-State: APjAAAXpBXUGQEZSNGynkw8IG+OFhxESdvucqV1gDb6xUoIHhqpjIdv8
-	ZNflia/F9U90cS1QxFIZ8m5kUaNDB3ZJrA==
-X-Received: by 2002:a05:620a:a4e:: with SMTP id j14mr19880726qka.2.1571605189555;
-        Sun, 20 Oct 2019 13:59:49 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com ([172.98.66.22])
-        by smtp.gmail.com with ESMTPSA id a190sm7245130qkf.118.2019.10.20.13.59.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 20 Oct 2019 13:59:49 -0700 (PDT)
-Date: Sun, 20 Oct 2019 15:59:46 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/2] Adjustments in function call
-Message-ID: <cover.1571604372.git.jarias.linux@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.67,314,1566856800"; 
+   d="scan'208";a="323261682"
+Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Oct 2019 08:33:44 +0200
+Date: Sat, 19 Oct 2019 08:33:44 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: "Javier F. Arias" <jarias.linux@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: rtl8723bs: Fix line over
+ 80 characters
+In-Reply-To: <eaa22be21885d04e47f1be2ad7be007182bf22bc.1571448899.git.jarias.linux@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910190832180.2701@hadrien>
+References: <cover.1571448899.git.jarias.linux@gmail.com> <eaa22be21885d04e47f1be2ad7be007182bf22bc.1571448899.git.jarias.linux@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-This patchset fixes a warning and simplify a boolean expression in a
-function call.
 
-V2: Update the message of the second commit to include the updated
-    patch version and to use the Suggested-By tag.
 
-Javier F. Arias (2):
-  staging: rtl8723bs: Fix line over 80 characters
-  staging: rtl8723bs: Simplify boolean expression
+On Fri, 18 Oct 2019, Javier F. Arias wrote:
 
- drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+> Fix line over 80 characters by wrapping arguments in function call.
+> Fix suggested by Julia Lawall <julia.lawall@lip6.fr>.
 
--- 
-2.20.1
+There is a Suggested-by: tag that would be better to use than the second
+line.  That would limit the log message to what you are doing and why.
 
+julia
+
+>
+> Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+> index c514cb735afd..0c2f3b2d4326 100644
+> --- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+> +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+> @@ -188,7 +188,9 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
+>
+>  		bBtDisabled = hal_btcoex_IsBtDisabled(Adapter);
+>
+> -		ODM_CmnInfoUpdate(&pHalData->odmpriv, ODM_CMNINFO_BT_ENABLED, ((bBtDisabled == true)?false:true));
+> +		ODM_CmnInfoUpdate(&pHalData->odmpriv,
+> +				  ODM_CMNINFO_BT_ENABLED,
+> +				  ((bBtDisabled == true)?false:true));
+>
+>  		ODM_DMWatchdog(&pHalData->odmpriv);
+>  	}
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/eaa22be21885d04e47f1be2ad7be007182bf22bc.1571448899.git.jarias.linux%40gmail.com.
+>
 
