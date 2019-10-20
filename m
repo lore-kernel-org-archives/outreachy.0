@@ -1,177 +1,118 @@
 X-GM-THRID: 6749323707377778688
-Date: Thu, 24 Oct 2019 22:49:06 -0700 (PDT)
-From: Javier Arias <jarias.linux@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <aebb6e6e-5415-4e97-95f5-f882ee01f88c@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.1910190832180.2701@hadrien>
-References: <cover.1571448899.git.jarias.linux@gmail.com> <eaa22be21885d04e47f1be2ad7be007182bf22bc.1571448899.git.jarias.linux@gmail.com>
- <alpine.DEB.2.21.1910190832180.2701@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: rtl8723bs: Fix line
- over 80 characters
+X-Received: by 2002:a92:d34e:: with SMTP id a14mr737796ilh.289.1571607162144;
+        Sun, 20 Oct 2019 14:32:42 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a6b:6803:: with SMTP id d3ls2241545ioc.2.gmail; Sun, 20 Oct
+ 2019 14:32:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz7qWeWv3DXyOmQgP97Bjh6NuDVfOaczNzwJqYJBGnQqe2HmA6MGIia1VVLwshL1jb8NHBu
+X-Received: by 2002:a5d:97d1:: with SMTP id k17mr9674360ios.233.1571607161056;
+        Sun, 20 Oct 2019 14:32:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571607161; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hA07VOGSRe+e+tlCqwKBbd6suO4Qj0Auz15YRIasqWL2I30YXTBM859SHLOOdhdWNn
+         bs62cy8wd8Pcv2msTeCllHigR/Mp6mN23FJE6cA4/6jxJ1BfjKRmpgBwtpnfMd9IfTGl
+         PqI1WRr55fOscARNChqIHjBYEroiv6nZihycgb+m3JgSsgLFdQtRHluwlnEn0WmGjf/I
+         qCiwBAcKQd7yNcOVYT0Sw2aX/x/BrrqeFNCsjVRDWtSiya5QMyuNtULdqGESAQ7nsOvQ
+         yc+9h18nfVNF/HaU7wp/EzPa1Z4eCR5cthUSBF+EewSqFS8Pl/qzyzTApxNMIvYS7ulS
+         vxPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=RUGkmtZKbCOLeFxeBLI3d7G9s4B6dxY8hcWHGbM8FZE=;
+        b=Z/jaaSh56kBgX/Bmgi/MwU77OHBLqBkvFfk4fcOsYldOBnBXTL+SUXlKYkuirT4DeV
+         Jdrtg/UIWN8M+BQF1jYwEEuJU9ZeDn4iyrYkdaYSp3rC7O/PR0hjCdOXCwXQJEIfKKOu
+         wdlJOIn84T0hZZGYdNeaoOdfPJrmuNTwM+oL7WlISzDE3X+XVhw7jLaUw5BozCLBQEFF
+         /MV2yXztUapOtb4i2+VrTGCXcM6CTsF2QrSHCZ7fm/QgixYOw5m8ILihtnfTTWvB9gz5
+         /Adzqb9pGJAyCpRwGu8Oai6A18u+ogu2ufkrIB0M10+J5G6YiIjQ8ygxjh3CQsMI78G+
+         2B+g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qvv8anl6;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com. [2607:f8b0:4864:20::e44])
+        by gmr-mx.google.com with ESMTPS id n201si879656iod.3.2019.10.20.14.32.41
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 20 Oct 2019 14:32:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) client-ip=2607:f8b0:4864:20::e44;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qvv8anl6;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-vs1-xe44.google.com with SMTP id s7so7596179vsl.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 20 Oct 2019 14:32:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=RUGkmtZKbCOLeFxeBLI3d7G9s4B6dxY8hcWHGbM8FZE=;
+        b=qvv8anl6G2vXxfq043ob82kACyroB4rqomLx8ptwR87cWblNSvm+1zVpT4rU15//8e
+         kQwx5hpCcoa2PsJCxDD/NSK2UpyAHCGpbrc0De2plStihrdJosTLcK80HMO1MzvfFfuN
+         +46H7HFkPVSLupI5Dp36ZHFml58ybgqWAh02uwnSD7CJSz98PQXKZ0QQo8S5Q7q6C3Mt
+         H/wYRCfMFCOS5Fhavk+Yc1XHfG9l7FA6TXUNFyO7NAYltSyl0OC5X+X97EocKNLrN/G3
+         MEfVycd5bkPjBiKyWOQ33xTokVBQHwcW/Vn4z6NmPCTWtgkRJf8Rn+S5+bRCfx68AQ9O
+         r34g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=RUGkmtZKbCOLeFxeBLI3d7G9s4B6dxY8hcWHGbM8FZE=;
+        b=k5ZucOXtV7fUBVyItIorB0SQMCkyP7ApL/vJt12prmYQffxlfxvxJpREI24OQ5/non
+         MOVUlrJDlOfQsqhbgsm//4ERg+JtWIWmfVVizMA+iLqDr5Xe9Zw6GyEQAG3wQEYYo1Y1
+         Wep+k5RbHPPIu3dUcxNg0I8WLFxJyMPFNQS+Ysi5hPsNojVc5lO/meCknDQIwMLMOjXA
+         AAGfEWIrzdPR5CFA76X00VVLBa+W3EOpolUwKLLWcdzcsePanTrbV6n0/A/Qcb+33yr6
+         1TUybVceLV3gnyMsMazQUyRvihWNE/OV9LC6Yf5ReM+W40NnahVinLinYIPl7a9rclyW
+         lIBQ==
+X-Gm-Message-State: APjAAAXl6g++A0bijXwKHSsyJoB2z/uBLhLW/WyQ+m6TMRJOGyG4ry8G
+	Il8RGql60DCsklz3A0Q77Il6ay6t1jZxvw==
+X-Received: by 2002:a67:f648:: with SMTP id u8mr11155797vso.78.1571607160569;
+        Sun, 20 Oct 2019 14:32:40 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com (dynamic-186-28-46-160.dynamic.etb.net.co. [186.28.46.160])
+        by smtp.gmail.com with ESMTPSA id f1sm2857748vsc.20.2019.10.20.14.32.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Oct 2019 14:32:40 -0700 (PDT)
+Date: Sun, 20 Oct 2019 16:32:38 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH v3 2/2] staging: rtl8723bs: Simplify boolean expression
+Message-ID: <0a0213c7b33298bf12fac9ce4f1e97058026b8b9.1571605959.git.jarias.linux@gmail.com>
+Mail-Followup-To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+References: <cover.1571605959.git.jarias.linux@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_123_292713386.1571982546638"
-X-Google-Token: ENKZyu0F_LkfbqRNgUU0
-X-Google-IP: 190.27.30.48
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1571605959.git.jarias.linux@gmail.com>
 
-------=_Part_123_292713386.1571982546638
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_124_1120112838.1571982546638"
+Simplify expression that it's inverting a boolean value.
+Issue found by Coccinelle.
 
-------=_Part_124_1120112838.1571982546638
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+---
+Changes in V2:
+	- Remove the parentheses around the variable.
 
-Hello again Julia,
+ drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I updated the patch but I didn't receive any feedback nor acceptance by 
-Greg. Is there something I'm doing wrong?
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+index 0c2f3b2d4326..6f341d52afb6 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+@@ -190,7 +190,7 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
+ 
+ 		ODM_CmnInfoUpdate(&pHalData->odmpriv,
+ 				  ODM_CMNINFO_BT_ENABLED,
+-				  ((bBtDisabled == true)?false:true));
++				  !bBtDisabled);
+ 
+ 		ODM_DMWatchdog(&pHalData->odmpriv);
+ 	}
+-- 
+2.20.1
 
-Thanks
-
-On Saturday, 19 October 2019 01:34:08 UTC-5, Julia Lawall wrote:
->
->
->
-> On Fri, 18 Oct 2019, Javier F. Arias wrote: 
->
-> > Fix line over 80 characters by wrapping arguments in function call. 
-> > Fix suggested by Julia Lawall <julia...@lip6.fr <javascript:>>. 
->
-> There is a Suggested-by: tag that would be better to use than the second 
-> line.  That would limit the log message to what you are doing and why. 
->
-> julia 
->
-> > 
-> > Signed-off-by: Javier F. Arias <jaria...@gmail.com <javascript:>> 
-> > --- 
-> >  drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 4 +++- 
-> >  1 file changed, 3 insertions(+), 1 deletion(-) 
-> > 
-> > diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c 
-> b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c 
-> > index c514cb735afd..0c2f3b2d4326 100644 
-> > --- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c 
-> > +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c 
-> > @@ -188,7 +188,9 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter) 
-> > 
-> >                  bBtDisabled = hal_btcoex_IsBtDisabled(Adapter); 
-> > 
-> > -                ODM_CmnInfoUpdate(&pHalData->odmpriv, 
-> ODM_CMNINFO_BT_ENABLED, ((bBtDisabled == true)?false:true)); 
-> > +                ODM_CmnInfoUpdate(&pHalData->odmpriv, 
-> > +                                  ODM_CMNINFO_BT_ENABLED, 
-> > +                                  ((bBtDisabled == true)?false:true)); 
-> > 
-> >                  ODM_DMWatchdog(&pHalData->odmpriv); 
-> >          } 
-> > -- 
-> > 2.20.1 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an email to outreach...@googlegroups.com <javascript:>. 
-> > To view this discussion on the web visit 
-> https://groups.google.com/d/msgid/outreachy-kernel/eaa22be21885d04e47f1be2ad7be007182bf22bc.1571448899.git.jarias.linux%40gmail.com. 
->
-> > 
->
-
-------=_Part_124_1120112838.1571982546638
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hello again Julia,</div><div><br></div><div>I updated=
- the patch but I didn&#39;t receive any feedback nor acceptance by Greg. Is=
- there something I&#39;m doing wrong?</div><div><br></div><div>Thanks<br></=
-div><br>On Saturday, 19 October 2019 01:34:08 UTC-5, Julia Lawall  wrote:<b=
-lockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;borde=
-r-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Fri, 18 Oct 2019, Javier F. Arias wrote:
-<br>
-<br>&gt; Fix line over 80 characters by wrapping arguments in function call=
-.
-<br>&gt; Fix suggested by Julia Lawall &lt;<a href=3D"javascript:" target=
-=3D"_blank" gdf-obfuscated-mailto=3D"8aIlVPPCCwAJ" rel=3D"nofollow" onmouse=
-down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
-f=3D&#39;javascript:&#39;;return true;">julia...@lip6.fr</a>&gt;.
-<br>
-<br>There is a Suggested-by: tag that would be better to use than the secon=
-d
-<br>line. =C2=A0That would limit the log message to what you are doing and =
-why.
-<br>
-<br>julia
-<br>
-<br>&gt;
-<br>&gt; Signed-off-by: Javier F. Arias &lt;<a href=3D"javascript:" target=
-=3D"_blank" gdf-obfuscated-mailto=3D"8aIlVPPCCwAJ" rel=3D"nofollow" onmouse=
-down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
-f=3D&#39;javascript:&#39;;return true;">jaria...@gmail.com</a>&gt;
-<br>&gt; ---
-<br>&gt; =C2=A0drivers/staging/rtl8723bs/<wbr>hal/rtl8723b_dm.c | 4 +++-
-<br>&gt; =C2=A01 file changed, 3 insertions(+), 1 deletion(-)
-<br>&gt;
-<br>&gt; diff --git a/drivers/staging/rtl8723bs/<wbr>hal/rtl8723b_dm.c b/dr=
-ivers/staging/rtl8723bs/<wbr>hal/rtl8723b_dm.c
-<br>&gt; index c514cb735afd..0c2f3b2d4326 100644
-<br>&gt; --- a/drivers/staging/rtl8723bs/<wbr>hal/rtl8723b_dm.c
-<br>&gt; +++ b/drivers/staging/rtl8723bs/<wbr>hal/rtl8723b_dm.c
-<br>&gt; @@ -188,7 +188,9 @@ void rtl8723b_HalDmWatchDog(struct adapter *Ad=
-apter)
-<br>&gt;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0bBtDisabled =3D hal_btcoex_IsBtDisabled=
-(<wbr>Adapter);
-<br>&gt;
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ODM_<wbr>CmnInfoUpdate(&amp;pHalData-&gt;<=
-wbr>odmpriv, ODM_CMNINFO_BT_ENABLED, ((bBtDisabled =3D=3D true)?false:true)=
-);
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ODM_<wbr>CmnInfoUpdate(&amp;pHalData-&gt;<=
-wbr>odmpriv,
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0ODM_CMNIN=
-FO_BT_ENABLED,
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0((bBtDisa=
-bled =3D=3D true)?false:true));
-<br>&gt;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ODM_<wbr>DMWatchdog(&amp;pHalData-&gt;o=
-dmpriv)<wbr>;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt; --
-<br>&gt; 2.20.1
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
-ailto=3D"8aIlVPPCCwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
-ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
-turn true;">outreach...@<wbr>googlegroups.com</a>.
-<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
-.google.com/d/msgid/outreachy-kernel/eaa22be21885d04e47f1be2ad7be007182bf22=
-bc.1571448899.git.jarias.linux%40gmail.com" target=3D"_blank" rel=3D"nofoll=
-ow" onmousedown=3D"this.href=3D&#39;https://groups.google.com/d/msgid/outre=
-achy-kernel/eaa22be21885d04e47f1be2ad7be007182bf22bc.1571448899.git.jarias.=
-linux%40gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;https://gr=
-oups.google.com/d/msgid/outreachy-kernel/eaa22be21885d04e47f1be2ad7be007182=
-bf22bc.1571448899.git.jarias.linux%40gmail.com&#39;;return true;">https://g=
-roups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>eaa22be21885d04e47f1be2=
-ad7be00<wbr>7182bf22bc.1571448899.git.<wbr>jarias.linux%40gmail.com</a>.
-<br>&gt;
-<br></blockquote></div>
-------=_Part_124_1120112838.1571982546638--
-
-------=_Part_123_292713386.1571982546638--
 
