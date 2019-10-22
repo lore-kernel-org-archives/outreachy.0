@@ -1,186 +1,119 @@
-X-GM-THRID: 6950248228265656320
-X-Received: by 2002:a6b:9156:: with SMTP id t83mr13504821iod.62.1618230768281;
-        Mon, 12 Apr 2021 05:32:48 -0700 (PDT)
+X-GM-THRID: 6749515623301120000
+X-Received: by 2002:a25:3c83:: with SMTP id j125mr1594850yba.63.1571734647223;
+        Tue, 22 Oct 2019 01:57:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6e02:4a3:: with SMTP id e3ls701676ils.5.gmail; Mon, 12
- Apr 2021 05:32:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPJAga6YyyZzjSgXL2coNgjjJNFx48QEeYjpyF9PcvAjwcvL0YSbgd7qHjSxAAvrrYvqHv
-X-Received: by 2002:a05:6e02:b4a:: with SMTP id f10mr22471148ilu.278.1618230766961;
-        Mon, 12 Apr 2021 05:32:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618230766; cv=none;
+Received: by 2002:a25:3a06:: with SMTP id h6ls2422977yba.6.gmail; Tue, 22 Oct
+ 2019 01:57:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1gnTJmSUu/4wIDWWFmrBXo7wH3vQdn8ArP0oOURz1iYZhWxUyvgyDWR8VvAII4Oz8YhJL
+X-Received: by 2002:a25:680e:: with SMTP id d14mr1653389ybc.226.1571734645682;
+        Tue, 22 Oct 2019 01:57:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571734645; cv=none;
         d=google.com; s=arc-20160816;
-        b=s9Aedv6Lb5XNpVD1bAbMPFQXs8c3+CkgH1D5M8+oG/8V57V3eqNKstmpVkuALqOXQb
-         pYmMQajEwY41VsOpt18J5JnpdEeQPeV3DsnjIPQhwovbo1fqbhmqvyr1NvYwrJkOfmjZ
-         91+oppo3lkR1EUMuQz9kz6EKw3Zmqxwu0OT1EJZhIjrTB6XwqvyVuUTJYGvzS/VJnt6V
-         8qBDp4w+YaZbpuwUN74vssCA97PovCZ8HJ4J8Td2i6549Mem/LNaM9PC0pq0rglQw/oB
-         QKNuWz0m30McTpjIN3z0qBjQqIyAR7Ugeld/u+AEMAq7Fm7uj/YqLDTjzvd5eDf8eUFv
-         oELA==
+        b=coVnEegfLenZdgbXaiwwHoDFNzbZ3u2dHC+NvmtifTVimkSBR7hdqmY7MLYfSXAQ1j
+         Q3Pr5zf2iIaDGiuYOU0Xibsu0zlRwzfLg7mzEIgUP7qsFe7kAxK58471zPRQzp/J+5z/
+         Wu8zOToVYnO3VT47FZaxHLBv+okHi9r9X6mFg/L02/0sgKZiCbx1foHS/OKPcC+qIR/r
+         eM7Wte8asSBYxVtmw5T+AtbzCgXeac5irrMiOmHXKbM6KVy3M16xhyAPnxcrPS2S7ArF
+         /zkj2aJ8btZw7E5/kAzmeTCLvUPxAO58rhSJzCOTQrYw0mC6pQAcU3lYT4XRPqDH8WDI
+         Vk2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ufJcji2+m5srymBQPjBrGfe67cUzEZqDOtn26wg7648=;
-        b=TkV5v52W4uBQDmwJG5rvSmDjqPpA0D9PBZArXRtxGuMekfqHK4D7v++/kMQbWXJnf7
-         AV2L4fR5cFfmtTMnIgSYNyuLIV8W1V3h4/nyQEj7hX5zpUi6dv4y5cewaQhYOErw6b8c
-         LGIPsBGe+9JLa0AJyG2tyZrvYaPOwEaylMEz5x1bOD1Luo9Iyo8rhCe632RRy2jypS2D
-         GgZRYKesROQkpspqfcHlklg1jGt603eG17JLMmjegsvEN5IGameF9w+yQCPQAco8MPBN
-         V8Dn0nptIcTuGwhHA57QRjUDFUFBeN2g8gz3FCPlSE3/RF3jcCgLWskJire14xzNGPhf
-         Q1Wg==
+        bh=SFu/TFiwpeeKX8PKL3pXaA9wgPMjspuyljVipqet9AI=;
+        b=Sad8zkjIfM6UY6qPN42xApRvmqnj9n9joqyXzCDYYLGvT9yOwWacYcPOD811mVEp2H
+         ZwVAfD7X901v4Tu/YIVTy4sc8/+yAunwS78RXKtsIC7YxXCi5k7uSnEj9ET0WWbTammm
+         nZcgg4mL1ox0Yig87JfCv2TCPoqyqo2LDmcdc45v2V6mUNeEzRQ0NNqrGUZSTe9hakmo
+         kjL2LFBritNVBB96FvG7uqhaiZFyTruLrA8uW4S3A0r9FIZCHirzrej9qgVOE9k0ma6s
+         O0zSxyAnypIE1JpfEuYGVYGddM/5FxN5K4dkraSqBk6/Lyd6kE4pMOBii6sKG35GSCkS
+         nlCw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qmZowgBM;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::729 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x729.google.com (mail-qk1-x729.google.com. [2607:f8b0:4864:20::729])
-        by gmr-mx.google.com with ESMTPS id y8si707453iom.1.2021.04.12.05.32.46
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=RXHqFYIE;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
+        by gmr-mx.google.com with ESMTPS id a1si934596ywh.3.2019.10.22.01.57.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 05:32:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::729 as permitted sender) client-ip=2607:f8b0:4864:20::729;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Oct 2019 01:57:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qmZowgBM;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::729 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x729.google.com with SMTP id o5so13065137qkb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:32:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=ufJcji2+m5srymBQPjBrGfe67cUzEZqDOtn26wg7648=;
-        b=qmZowgBMDh564wGGBAK1Y1joojizHF7rqrmZftAPLZxtvx27k/0X6Pgut82fixi5cf
-         bA9LTq2CbQyy7wM83UFfKezSsxfv+WnJe/VKlPDE19Yes60j8YKthliqDOnVEjMk4bA2
-         heb1VIYTXB10TlggpqLE0O6Guif5cScxju6/dRAbnNVIVjggyRh9mMP/7hnBjnEvhc2T
-         GASDkr+istx/XQJSrD/Y9BzVq4CUfwoyXq5Wv7l0q66Wk4pb1Qj/M4y0ieDcaxpVtM9Z
-         LwgV+O8dqBJkR9OLyxWDW/zZ5A4k6IGVF+j99oWD4KrYc5PAMGLp3LrQDawSSlAlKxdZ
-         /GVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=ufJcji2+m5srymBQPjBrGfe67cUzEZqDOtn26wg7648=;
-        b=dJ7cTyAOZZhh5m2MfTHqDhIW/ezJBDfZMPJd4AfgdTy2ioAjO26gZ5NDiaofPoGH2F
-         dNsHUCb+Yu3a2/7TjNA/QGdIfo7soTAzElqFuM9wUr2HVHTj1zUHAA26aWG0dXdP9chY
-         hLIaXzgS3m8Pj2LMjjfCOpcb9OrjWvYMd2C4okveaEzlKDyJFX+VzE7BZYj6e6cyuqm5
-         4CbX4//NPidnWUEGUliGFBCPo+oUtMdYe94+Sr1oKOUgufOPramxPB74g1CVZeST1waV
-         B7nvWs/XFw3SK/NBw9e4+PJrNjEtQbaWyo3dzDp70eSUNW8HquKOE6FxJ6ls6NrKI19Q
-         WN9g==
-X-Gm-Message-State: AOAM533BR25fEpj2vrUsPdrKSZnEuTfFrRpL8FPCdD6AysTzyAuXBXRY
-	csWgKsghulVeKo/rFJ+z+euMGX2gbj25cBUH
-X-Received: by 2002:ae9:e015:: with SMTP id m21mr25440661qkk.420.1618230766509;
-        Mon, 12 Apr 2021 05:32:46 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([2001:1284:f016:a037:476a:dfcd:f18f:9ad5])
-        by smtp.gmail.com with ESMTPSA id f25sm6898173qtm.49.2021.04.12.05.32.45
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Mon, 12 Apr 2021 05:32:46 -0700 (PDT)
-Date: Mon, 12 Apr 2021 09:32:43 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [Outreachy kernel][PATCH 3/4] Replace macro function by static
- inline function in file iss_ipipeif.c
-Message-ID: <808aaecdd2783cd1c216ba5ca3d592242731e73a.1618230425.git.alinesantanacordeiro@gmail.com>
-References: <cover.1618230425.git.alinesantanacordeiro@gmail.com>
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=RXHqFYIE;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9M8sBCV143259;
+	Tue, 22 Oct 2019 08:57:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=SFu/TFiwpeeKX8PKL3pXaA9wgPMjspuyljVipqet9AI=;
+ b=RXHqFYIEnnvhHtMuYiLTp2GXmOtWrKyY7PL3m/PD187bWaJonFUQpY8to/P0D9Wd5+pw
+ ZQqhs+FJw4DXjPNPDBW7dbCAriWL6ZCVr993ByrTBhS7xJvuCYD7tcUoVaaV/j6NsqJA
+ RtTRbGNkNubi4C4Ijek/gZY7R+ZKHCYNgXync19JquvRDs843hTJdHX68CoHZwPZtvCY
+ unYByJvAz77iBvGnyokRqAzVXxJ8weziwh/ZRB7I6KCr6fAbrNXhAM4nh3q6Ln4MVII5
+ MyhDBr8qoWKywhf0g8xI8Dek+Gj1DT+cbTKbwKEJ/a6D6n0bK+TsxrcjNqoe0QxlLzce Yw== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+	by userp2120.oracle.com with ESMTP id 2vqu4qn0q8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 22 Oct 2019 08:57:22 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+	by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9M8rDwP049157;
+	Tue, 22 Oct 2019 08:57:22 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userp3020.oracle.com with ESMTP id 2vsp3xpt0s-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 22 Oct 2019 08:57:22 +0000
+Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x9M8vK2q003695;
+	Tue, 22 Oct 2019 08:57:20 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 22 Oct 2019 01:57:19 -0700
+Date: Tue, 22 Oct 2019 11:57:12 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Joe Perches <joe@perches.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, devel@driverdev.osuosl.org,
+        outreachy-kernel@googlegroups.com, Jules Irenge <jbi.octave@gmail.com>,
+        linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
+Subject: Re: [PATCH v1 1/5] staging: wfx: fix warnings of no space is
+ necessary
+Message-ID: <20191022085712.GK24678@kadam>
+References: <20191019140719.2542-1-jbi.octave@gmail.com>
+ <20191019140719.2542-2-jbi.octave@gmail.com>
+ <20191019142443.GH24678@kadam>
+ <alpine.LFD.2.21.1910191603520.6740@ninjahub.org>
+ <20191019180514.GI24678@kadam>
+ <336960fdf88dbed69dd3ed2689a5fb1d2892ace8.camel@perches.com>
+ <20191020191759.GJ24678@kadam>
+ <6e6bc92cac0858fe5bd37b28f688d3da043f4bef.camel@perches.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1618230425.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <6e6bc92cac0858fe5bd37b28f688d3da043f4bef.camel@perches.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9417 signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910220084
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9417 signatures=668684
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910220084
 
-Replace macro function by static inline function.
-Issue suggested by Julia.
+On Sun, Oct 20, 2019 at 12:36:50PM -0700, Joe Perches wrote:
+> > It's sort of tricky to know what "one thing per patch means".
+> 
+> It seems somewhat arbitrary and based on Greg's understanding
+> of the experience of the patch submitter and also the language
+> of the potential commit message.
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/omap4iss/iss_ipipeif.c | 62 +++++++++++++++-------------
- 1 file changed, 34 insertions(+), 28 deletions(-)
+Of course the language of the commit message matters.  You have to
+"sell" your commit and convince us why we should apply it.  That's a
+life lesson right there...  :P
 
-diff --git a/drivers/staging/media/omap4iss/iss_ipipeif.c b/drivers/staging/media/omap4iss/iss_ipipeif.c
-index c2978d0..3dc98f6 100644
---- a/drivers/staging/media/omap4iss/iss_ipipeif.c
-+++ b/drivers/staging/media/omap4iss/iss_ipipeif.c
-@@ -34,17 +34,23 @@ static const unsigned int ipipeif_fmts[] = {
-  *
-  * Also prints other debug information stored in the IPIPEIF module.
-  */
--#define IPIPEIF_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###IPIPEIF " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_IPIPEIF, IPIPEIF_##name))
-+static inline ipipeif_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###IPIPEIF " #name "=0x%08x\n",
-+		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_IPIPEIF, IPIPEIF_##name));
-+}
- 
--#define ISIF_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###ISIF " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_ISIF, ISIF_##name))
-+static inline isif_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###ISIF " #name "=0x%08x\n",
-+		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_ISIF, ISIF_##name));
-+}
- 
--#define ISP5_PRINT_REGISTER(iss, name)\
--	dev_dbg(iss->dev, "###ISP5 " #name "=0x%08x\n", \
--		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_##name))
-+static inline isp5_print_register(iss, name)
-+{
-+	dev_dbg(iss->dev, "###ISP5 " #name "=0x%08x\n",
-+		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_SYS1, ISP5_##name));
-+}
- 
- static void ipipeif_print_status(struct iss_ipipeif_device *ipipeif)
- {
-@@ -52,25 +58,25 @@ static void ipipeif_print_status(struct iss_ipipeif_device *ipipeif)
- 
- 	dev_dbg(iss->dev, "-------------IPIPEIF Register dump-------------\n");
- 
--	IPIPEIF_PRINT_REGISTER(iss, CFG1);
--	IPIPEIF_PRINT_REGISTER(iss, CFG2);
--
--	ISIF_PRINT_REGISTER(iss, SYNCEN);
--	ISIF_PRINT_REGISTER(iss, CADU);
--	ISIF_PRINT_REGISTER(iss, CADL);
--	ISIF_PRINT_REGISTER(iss, MODESET);
--	ISIF_PRINT_REGISTER(iss, CCOLP);
--	ISIF_PRINT_REGISTER(iss, SPH);
--	ISIF_PRINT_REGISTER(iss, LNH);
--	ISIF_PRINT_REGISTER(iss, LNV);
--	ISIF_PRINT_REGISTER(iss, VDINT(0));
--	ISIF_PRINT_REGISTER(iss, HSIZE);
--
--	ISP5_PRINT_REGISTER(iss, SYSCONFIG);
--	ISP5_PRINT_REGISTER(iss, CTRL);
--	ISP5_PRINT_REGISTER(iss, IRQSTATUS(0));
--	ISP5_PRINT_REGISTER(iss, IRQENABLE_SET(0));
--	ISP5_PRINT_REGISTER(iss, IRQENABLE_CLR(0));
-+	ipipeif_print_register(iss, CFG1);
-+	ipipeif_print_register(iss, CFG2);
-+
-+	isif_print_register(iss, SYNCEN);
-+	isif_print_register(iss, CADU);
-+	isif_print_register(iss, CADL);
-+	isif_print_register(iss, MODESET);
-+	isif_print_register(iss, CCOLP);
-+	isif_print_register(iss, SPH);
-+	isif_print_register(iss, LNH);
-+	isif_print_register(iss, LNV);
-+	isif_print_register(iss, VDINT(0));
-+	isif_print_register(iss, HSIZE);
-+
-+	isp5_print_register(iss, SYSCONFIG);
-+	isp5_print_register(iss, CTRL);
-+	isp5_print_register(iss, IRQSTATUS(0));
-+	isp5_print_register(iss, IRQENABLE_SET(0));
-+	isp5_print_register(iss, IRQENABLE_CLR(0));
- 
- 	dev_dbg(iss->dev, "-----------------------------------------------\n");
- }
--- 
-2.7.4
-
+regards,
+dan carpenter
 
