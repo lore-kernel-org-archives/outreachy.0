@@ -1,104 +1,96 @@
-X-GM-THRID: 6528628385749401600
-X-Received: by 10.223.129.200 with SMTP id 66mr778972wra.17.1520064749800;
-        Sat, 03 Mar 2018 00:12:29 -0800 (PST)
+X-GM-THRID: 6750702621918494720
+X-Received: by 2002:a1c:f20e:: with SMTP id s14mr3859719wmc.118.1571770920767;
+        Tue, 22 Oct 2019 12:02:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.124.15 with SMTP id x15ls637432wmc.4.canary-gmail; Sat, 03
- Mar 2018 00:12:27 -0800 (PST)
-X-Google-Smtp-Source: AG47ELuqoEwjMXkoNm6Y0KayNAQCeu/SNF3m1c0ed5ZtL9ulFDI12akGbg41VbEqc3xnPWETG72j
-X-Received: by 10.28.116.17 with SMTP id p17mr422026wmc.29.1520064747942;
-        Sat, 03 Mar 2018 00:12:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520064747; cv=none;
+Received: by 2002:adf:efce:: with SMTP id i14ls9285505wrp.10.gmail; Tue, 22
+ Oct 2019 12:01:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxXNkY9LFp2nt6W1Fdsvz4lHfA5dOD23Mo8+gGRzWVSazE2K+/u+q15X9oBJrzmmJb0aZyb
+X-Received: by 2002:a5d:4f89:: with SMTP id d9mr4998429wru.286.1571770919428;
+        Tue, 22 Oct 2019 12:01:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571770919; cv=none;
         d=google.com; s=arc-20160816;
-        b=G3erZdT6G05xDShjJbMoAV4SIPSt4aN9jph8hT1Naag//NYnplpN45lRZX9XNSL19E
-         VoqyfDX5m1t5LhdQTBAyKVqj2JUoIw/yrXq8nhK2CSwv6Olpt3VH08gpCAnIKqzcekzE
-         h+LIVtxdm6rUOhgRWJYiEbRhOdW3jaciqOwpVlM8fjcHRgAtbGv10bkwSaiXCd4oVGUW
-         RX8kFdLEyLAcpN6KWqR0JPREpRPGYPSBM1mlf5+Ilqbirfr4lJi+H1SkMcNvAUONVM+O
-         /HD/CjEeOJYvkCmRbrr0UTU7z8sAlSzxO8tnn8v60Qgk5UJfbMkN0AFkNSQV7Ml8KnPj
-         LjdQ==
+        b=uAJMOE730gZ2MiyZlejemMukwsEjnXNbfcrU28L6qlrkgmDB7sbUdLvt4a1X69i2fT
+         sZfYjLQ8WAQd1gSWTNFWJo3/AdugSws8P9vNRi328kKRyRQd0yMXv0ds5Umn4DS/ZEg2
+         2KVaOPEVQvk76Mc9mA5MoUIPlMjJrzHV4KfniruCjUHYEFYoCRiMyRyteMGfurjm8CRT
+         do9/14LNZkqejfhWdyE58VA0zGc6t6xWsyGWVzxKGU57Jn/iAMC8KqIkJE3UODmnCGLl
+         5hwad9lS5n2j/e9NSiZmJMkFaKxhs/kwnU2vZCSDHBY6dOmsSrOGfn/KNKszmS8jrXuk
+         78hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=xnWENL5Vup17Pu6tELVtLCb6KDmJmYWMu7nkON68eDk=;
-        b=MR4yfmLsVzonOAnXs0c/wlAy7to9b1CJ5Oxvsx0XBDeya3r7REXxWp5ecJ00rF7//y
-         HbxEB+vyrVIFD4BULFsPtTyioO75DPH/TTqc3iJ1tHQvPd5HndbXSgDJjuzlKDVGV+Is
-         uTJy0YtJHi3HEaPjVUnBb2Du75oe9za3uvnqRPdiUGoQ2J+lLVcxN3jwcfiRcZ6uLpwM
-         aHhTwZcrfc6s1pd51Y8YLRjuhXld1J3vHC7g3PmPJtuTlST4ec4GMAV/JhmT8W1w3282
-         PNUbBvIfe3woS8APHpDzukBmHq7uQxxLWBZ1eMp67qB5oocJSeWlV9L7lZrbvhbNKGm2
-         u/UQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=td4k0shmKmcW8w2bO79E5FoQeYUnpll+oLkRorLUyxs=;
+        b=FOXAPXreC4oIPSFV2rK7uR96xkKyz8C8lYDXMj1SnCrDvMOttKXSadDbI7O4447MX/
+         CiHxyCiimhVEvOi3kdcws+u12Abt2GAyyu8+shtWrNUqtBiReeAEhfkdK67IqOvvxM/C
+         9LWn3hRh6iqmRieokbT4slXdrLOGhQTVfRhHY9ERd3kLCZp/Qxxt8H/Uz8oqga49tlTH
+         9ZQwy2CdsrdOpIg3NlYSlDbvJqaq+425Fc7R1lJlUn/RX9gEoiXY0ij0RulECqBW7Koz
+         7OVQlBxFHnlnhW/Tw2QwYjy1H4DtZzngqYroHsJRyCOlXBkA9DncibPtWNXiuJ++CAho
+         kL8A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RfT0icvW;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wm0-x229.google.com (mail-wm0-x229.google.com. [2a00:1450:400c:c09::229])
-        by gmr-mx.google.com with ESMTPS id t15si128497wmh.1.2018.03.03.00.12.27
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p15si994731wrj.0.2019.10.22.12.01.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Mar 2018 00:12:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) client-ip=2a00:1450:400c:c09::229;
+        Tue, 22 Oct 2019 12:01:59 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RfT0icvW;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x229.google.com with SMTP id w128so7096512wmw.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Mar 2018 00:12:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=xnWENL5Vup17Pu6tELVtLCb6KDmJmYWMu7nkON68eDk=;
-        b=RfT0icvWbLPBx8NgX3DK22YJSt4FY7apnfqf9SMJyb2sWbgwjn2BOBpTlw7jXcy9xO
-         pxqNzKri8EJGLQnM9DNJeYwP1iq6OjlFuTF1rzAq8XS+LXGS+DbLNAiYhklA5+sNmwnP
-         FYY6UjqUx/lHlP4thqxUaW7HKfIBAht6ZZcH+iuPa+QMm6IRieXQityTieVrjAfAATye
-         xxVQ3Wx03qgzpTqwsWExR+x2gnVxc8J0izWRWzsKdATjjFhPZ8xfRmYE0bBjTgCDnVZo
-         grqChuI/4xwehhHkiNhEL+qveVmnHEYiCmXYQ0Jo8Cxf+3Q78xlMAv3Qt8n7g6rYOJlE
-         7fCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=xnWENL5Vup17Pu6tELVtLCb6KDmJmYWMu7nkON68eDk=;
-        b=qa2lsFaK6g79jJqq4I6F7Q3YE1hB9i5owBz/Z3tJO6Vzfv2fkFCO1Q14Pn1pietDME
-         iFQyMLBX0UIG6EQSizJ/jWBQ0rHeq/TPxy/fOiyI1lpcM9wPMr9ppubaBqVeIYFaFyog
-         ZqOrB90AWzG17PpTjGYk3BGm56g/knMNcrtDwSQlls4+UChO751VODCNmdt3haLxFyqV
-         vvRf7KJ7iIeiE3Dbog8TWLStc0csDkisZQmof0wGBixhJMiaAc4n0H5Shf4MPcPYUgcg
-         ky07FINpTGr6wtFAwVrwbrSIw6T/E2xhRITc9Jp1CA9IK0T60s1bhVFkNwkfZJAfuQA8
-         tKyw==
-X-Gm-Message-State: AElRT7Hc4EC0n9LZct+iQyqrCbIrWHpuOucHudOHShXDiDxDetrMRfzt
-	UyK02N6CVM5XO95RI+JLyf0=
-X-Received: by 10.28.237.19 with SMTP id l19mr3237685wmh.157.1520064747594;
-        Sat, 03 Mar 2018 00:12:27 -0800 (PST)
-Return-Path: <dafna3@gmail.com>
-Received: from guri.home (IGLD-84-229-54-107.inter.net.il. [84.229.54.107])
-        by smtp.gmail.com with ESMTPSA id r98sm18712986wrb.70.2018.03.03.00.12.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Mar 2018 00:12:26 -0800 (PST)
-From: Dafna Hirschfeld <dafna3@gmail.com>
-To: oleg.drokin@intel.com,
-	andreas.dilger@intel.com,
-	jsimmons@infradead.org,
-	gregkh@linuxfoundation.org
-Cc: Dafna Hirschfeld <dafna3@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/3] Cleanup for staging lustre obdclass
-Date: Sat,  3 Mar 2018 10:12:03 +0200
-Message-Id: <cover.1520014706.git.dafna3@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,217,1569276000"; 
+   d="scan'208";a="323819085"
+Received: from lstlambert-658-1-191-178.w80-13.abo.wanadoo.fr (HELO hadrien) ([80.13.206.178])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Oct 2019 21:01:58 +0200
+Date: Tue, 22 Oct 2019 21:01:57 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: julia@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [PATCH] staging: uwb: fix coccinelle warnings of comparison to
+ bool
+In-Reply-To: <20191022185328.9387-1-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1910222101240.2349@hadrien>
+References: <20191022185328.9387-1-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Fixes of issues found with checkpatch.pl for the lustre obdclass driver.
 
-Dafna Hirschfeld (3):
-  staging: lustre: obdclass: Fix Comparison issues.
-  staging: lustre: obdclass: Add 'const' to char* array
-  staging: lustre: obdclass: Replace 'unsigned' with 'unsigned int'
 
- drivers/staging/lustre/lustre/obdclass/cl_io.c            |  6 +++---
- drivers/staging/lustre/lustre/obdclass/cl_lock.c          |  4 ++--
- drivers/staging/lustre/lustre/obdclass/cl_object.c        |  2 +-
- drivers/staging/lustre/lustre/obdclass/lprocfs_counters.c |  4 ++--
- drivers/staging/lustre/lustre/obdclass/lprocfs_status.c   |  4 ++--
- drivers/staging/lustre/lustre/obdclass/lu_object.c        | 12 ++++++------
- 6 files changed, 16 insertions(+), 16 deletions(-)
+On Tue, 22 Oct 2019, Jules Irenge wrote:
 
--- 
-2.7.4
-
+> Fix warnings of comparision to bool.
+> Issue detected by coccinelle tool.
+>
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+> ---
+>  drivers/staging/uwb/rsv.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/uwb/rsv.c b/drivers/staging/uwb/rsv.c
+> index f45a04ff7275..d593a41c3d8d 100644
+> --- a/drivers/staging/uwb/rsv.c
+> +++ b/drivers/staging/uwb/rsv.c
+> @@ -614,7 +614,7 @@ int uwb_rsv_try_move(struct uwb_rsv *rsv, struct uwb_mas_bm *available)
+>  	struct uwb_rsv_move *mv;
+>  	int ret = 0;
+>
+> -	if (bow->can_reserve_extra_mases == false)
+> +	if (!bow->can_reserve_extra_mases)
+>  		return -EBUSY;
+>
+>  	mv = &rsv->mv;
+> @@ -643,7 +643,7 @@ void uwb_rsv_handle_drp_avail_change(struct uwb_rc *rc)
+>  	struct uwb_rsv *rsv;
+>  	struct uwb_mas_bm mas;
+>
+> -	if (bow->can_reserve_extra_mases == false)
+> +	if (!bow->can_reserve_extra_mases)
+>  		return;
+>
+>  	list_for_each_entry(rsv, &rc->reservations, rc_node) {
+> --
+> 2.21.0
+>
+>
 
