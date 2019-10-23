@@ -1,80 +1,120 @@
 X-GM-THRID: 6746979289302827008
-X-Received: by 2002:a5d:5591:: with SMTP id i17mr1880066wrv.151.1571894820896;
-        Wed, 23 Oct 2019 22:27:00 -0700 (PDT)
+X-Received: by 2002:ac8:704c:: with SMTP id y12mr2347379qtm.363.1571893869612;
+        Wed, 23 Oct 2019 22:11:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:ba04:: with SMTP id o4ls2737521wrg.7.gmail; Wed, 23 Oct
- 2019 22:26:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyzHogsab3pXNh1tUgHsX7WiLig8l05JUbbrnJ+q/AUaKadC77ymFAHMM+l4qWdKlybnvg1
-X-Received: by 2002:adf:d846:: with SMTP id k6mr2022972wrl.178.1571894819818;
-        Wed, 23 Oct 2019 22:26:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571894819; cv=none;
+Received: by 2002:ac8:4893:: with SMTP id i19ls1413415qtq.14.gmail; Wed, 23
+ Oct 2019 22:11:08 -0700 (PDT)
+X-Received: by 2002:ac8:f8d:: with SMTP id b13mr2320023qtk.129.1571893868721;
+        Wed, 23 Oct 2019 22:11:08 -0700 (PDT)
+Received: by 2002:a05:620a:1416:0:0:0:0 with SMTP id d22msqkj;
+        Wed, 23 Oct 2019 10:43:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzsRyAJzocFqWYpZoPvXbyIEDNRIyBIRe1eqG1/dVZPvHitDHhAsHehqOxXvFGDHUMRdrUs
+X-Received: by 2002:a2e:8684:: with SMTP id l4mr22676477lji.53.1571852585679;
+        Wed, 23 Oct 2019 10:43:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571852585; cv=none;
         d=google.com; s=arc-20160816;
-        b=BsRNKLRTiCUXTQfmJ8goq2omFORovwE4emuZhhy5r3JpzGdFvcYAvu/mKOZe5m9YK6
-         ycFNeg79wtTqM6kIjG3OeRDtf5G6ZT9+a2FshagATT0ukWlmk5GX6Ro2WRGx678f7cVz
-         sqL0rlHvniGH1gz/2FvdAKi+sXSie5Z6PRyVA72WxW3vbVjUN6D+VO9RtdBHbtPWilEM
-         MNdRAKUNfEcSDMY4426SUexd0+XxMYXDxGxOxmF6oMHiFBmbl3DmhVu+cqiZLVEta0/L
-         /u03IdnF+dYtt/bFhPD2sqxP8Y4QPzNPkV2Ere+coj7Ulg/n+KnWocuBjqW/mPndU3Nc
-         OzjA==
+        b=mE6VHiqK7rLaLg/cZuLYfhSYtidhoabrHtq3K5Zot9uHVbHR70b0pJWUmWcYQ8CFAh
+         Bvg0YsGxGWbYCDFHGIhi7tW+Yl6RmDK9M5aZmcgtpbpeCeXz5I7nmbu9MhLQYx/tWNbg
+         5MNkOJdWPani15UCaXYG2ZgE0k+aRrCqEsNTc3VY4qPFmBQGp5tWQ3HIcD6nL00d8pKv
+         RajgLJo46jGis2MNwvLZXJDvtaXul+zQp1f0dikXyIN9jsDZDp8tunGKdmmDdSMdUKC0
+         S5we203NHbDYptYNvkX9Zav0PNORPabBYLPY+6oQ1B0ru83yXemJQ8CD52iD/ijpZ71C
+         Terw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=aMVK1LtcInUmlF2BY2RpcebJX6MLBZ0QwkgJBSmtXpw=;
-        b=RCcyE9qafzU9LOwngKbw/qDXXP26PwIU7LgIKsC3w8WC0hl3Onz2TsYQFrHqVyx2uT
-         pk1HoIEy+K7VExoqnYnPYz38JNb7DcJrqaS9YEF1hwmiIUhkSYrvVlJQSd6QSXdF1r+c
-         /cs9wmrkIIdB5hTTd4SGyqdsmrH/V3e+wZiy8Tkom1IWnuuQCTKsEFsJgvEBCgNth63e
-         AMrg2CVbpE+Gva4KsoS/UJywbWLcu/9qv1HMw3sDA6Q9Gzy6ucq/tmjfvh/9GILnQ6jc
-         E65E5fPtnjtBcZg3ZT3ff7xUnCXShofSCHMANpkxKf1zS9TysKaXZKsqmMv1VG0cUq22
-         dkAQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=bJZAMWkHRq2Xutzmw/dC3RN2fX5X2oPhB++YE4VXv+U=;
+        b=y8HVrhOoW4a8Uxc6vlV75qlmNxq+wKeX8B1xe8siO/eK8CAU7XTAX5wsCgZEp9FwMv
+         UFP7VTee+XFMtwsNlBhL74KyEw78rdT2YwgwNwXWizlJuRyFjpAKtG4vQE+bHZKhM1Xw
+         J4TzAE4iLFhIkM1etmM9Tj7pSLdAo8Rb5pOsDSJVYhNYx8CDD7wh/O4N7Y9MfQxPqdhc
+         wjX+G/3Sv2IJWgXvmUmoK0TbIv3Ex7j7q8v/sAj9CZKpjBVx6sB6qwffIu+NGsHv88fX
+         eh9k5OlflaUsqv0El050JUbySVYlV8FD4KdAV9WZMkhPUEAXwoOkdulkW5Dr5DNvWjYM
+         Um3w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id v2si74930wma.3.2019.10.23.22.26.59
+       spf=neutral (google.com: 62.142.5.117 is neither permitted nor denied by domain of aaro.koskinen@iki.fi) smtp.mailfrom=aaro.koskinen@iki.fi;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iki.fi
+Return-Path: <aaro.koskinen@iki.fi>
+Received: from emh07.mail.saunalahti.fi (emh07.mail.saunalahti.fi. [62.142.5.117])
+        by gmr-mx.google.com with ESMTPS id y6si1369152lji.0.2019.10.23.10.43.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Oct 2019 22:26:59 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Wed, 23 Oct 2019 10:43:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 62.142.5.117 is neither permitted nor denied by domain of aaro.koskinen@iki.fi) client-ip=62.142.5.117;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.68,223,1569276000"; 
-   d="scan'208";a="407877160"
-Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Oct 2019 07:26:59 +0200
-Date: Thu, 24 Oct 2019 07:26:59 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Paul Burton <paulburton@kernel.org>
-cc: Wambui Karuga <wambui.karugax@gmail.com>, gregkh@linuxfoundation.org, 
-    outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] Re: [PATCH v2 1/5] staging: octeon: remove
- typedef declaration for cvmx_wqe
-In-Reply-To: <20191024050011.2ziewy6dkxkcxzvo@lantea.localdomain>
-Message-ID: <alpine.DEB.2.21.1910240722070.2771@hadrien>
-References: <cover.1570821661.git.wambui.karugax@gmail.com> <fa82104ea8d7ff54dc66bfbfedb6cca541701991.1570821661.git.wambui.karugax@gmail.com> <20191024050011.2ziewy6dkxkcxzvo@lantea.localdomain>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       spf=neutral (google.com: 62.142.5.117 is neither permitted nor denied by domain of aaro.koskinen@iki.fi) smtp.mailfrom=aaro.koskinen@iki.fi;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iki.fi
+Received: from darkstar.musicnaut.iki.fi (85-76-128-127-nat.elisa-mobile.fi [85.76.128.127])
+	by emh07.mail.saunalahti.fi (Postfix) with ESMTP id 02536B006F;
+	Wed, 23 Oct 2019 20:43:04 +0300 (EEST)
+Date: Wed, 23 Oct 2019 20:43:04 +0300
+From: Aaro Koskinen <aaro.koskinen@iki.fi>
+To: Julia Lawall <julia.lawall@lip6.fr>,
+	Wambui Karuga <wambui.karugax@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v2 0/5] Remove typedef declarations in
+ staging: octeon
+Message-ID: <20191023174304.GD18977@darkstar.musicnaut.iki.fi>
+References: <cover.1570821661.git.wambui.karugax@gmail.com>
+ <alpine.DEB.2.21.1910122034390.3049@hadrien>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.1910122034390.3049@hadrien>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-> If you're making significant changes to this driver, please test them
-> using the MIPS cavium_octeon_defconfig which is where this driver is
-> actually used.
->
-> This driver has broken builds a few times recently which makes me very
-> tempted to ask that we stop allowing it to be built with COMPILE_TEST.
-> The whole octeon-stubs.h thing is a horrible hack anyway...
+Hi,
 
-Wambui,
+On Sat, Oct 12, 2019 at 08:35:19PM +0200, Julia Lawall wrote:
+> On Sat, 12 Oct 2019, Wambui Karuga wrote:
+> > This patchset removes the addition of new typedefs data types in octeon,
+> > along with replacing the previous uses with the new declaration format.
+> >
+> > v2 of the series removes the obsolete "_t" notation in the named types.
+> >
+> > Wambui Karuga (5):
+> >   staging: octeon: remove typedef declaration for cvmx_wqe
+> >   staging: octeon: remove typedef declaration for cvmx_helper_link_info
+> >   staging: octeon: remove typedef declaration for cvmx_fau_reg_32
+> >   staging: octeon: remove typedef declartion for cvmx_pko_command_word0
+> >   staging: octeon: remove typedef declaration for cvmx_fau_op_size
+> >
+> >  drivers/staging/octeon/ethernet-mdio.c   |  6 +--
+> >  drivers/staging/octeon/ethernet-rgmii.c  |  4 +-
+> >  drivers/staging/octeon/ethernet-rx.c     |  6 +--
+> >  drivers/staging/octeon/ethernet-tx.c     |  4 +-
+> >  drivers/staging/octeon/ethernet.c        |  6 +--
+> >  drivers/staging/octeon/octeon-ethernet.h |  2 +-
+> >  drivers/staging/octeon/octeon-stubs.h    | 56 ++++++++++++------------
+> >  7 files changed, 43 insertions(+), 41 deletions(-)
+> 
+> For the series:
+> 
+> Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
-Please figure out what went wrong here.  Are there two sets of typedefs
-that should have been updated?
+This series breaks the build on MIPS/OCTEON (the only actual HW using this
+driver):
 
-Others,
+$ make ARCH=mips CROSS_COMPILE=mips64-linux-gnu- cavium_octeon_defconfig
+$ make ARCH=mips CROSS_COMPILE=mips64-linux-gnu-
+[...]
+  CC      drivers/staging/octeon/ethernet.o
+In file included from drivers/staging/octeon/ethernet.c:22:
+drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+      union cvmx_helper_link_info li);  
+            ^~~~~~~~~~~~~~~~~~~~~
+drivers/staging/octeon/ethernet.c: In function 'cvm_oct_free_work':
+drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
+  int segments = work->word2.s.bufs;
+                     ^~
+drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
+drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info' isn't known
+  union cvmx_helper_link_info link_info;
+                              ^~~~~~~~~
 
-Would it be reasonable to put the information about how the driver should
-be compied in the TODO file?  git grep cavium_octeon_defconfig in the
-octeon directory turns up nothing.
+etc.
 
-thanks,
-julia
+Probably all these patches need to be reverted.
+
+A.
 
