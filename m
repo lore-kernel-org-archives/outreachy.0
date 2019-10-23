@@ -1,258 +1,155 @@
 X-GM-THRID: 6746979289302827008
-X-Received: by 2002:aca:dd07:: with SMTP id u7mr3127552oig.106.1571893869675;
-        Wed, 23 Oct 2019 22:11:09 -0700 (PDT)
+X-Received: by 2002:aca:d405:: with SMTP id l5mr1004576oig.115.1571853938256;
+        Wed, 23 Oct 2019 11:05:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:4783:: with SMTP id b3ls1502537otf.5.gmail; Wed, 23 Oct
- 2019 22:11:08 -0700 (PDT)
-X-Received: by 2002:a9d:4e02:: with SMTP id p2mr5279331otf.21.1571893868887;
-        Wed, 23 Oct 2019 22:11:08 -0700 (PDT)
-Received: by 2002:aca:702:0:0:0:0:0 with SMTP id 2msoih;
-        Wed, 23 Oct 2019 21:59:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzd/BxESYgYWkzNLW1EAeQcBP1Ul0o9ilafnUUiMqphBdnmz25crquThCBS2m2/Y34GJLPO
-X-Received: by 2002:a6b:b2d5:: with SMTP id b204mr7656986iof.137.1571893197660;
-        Wed, 23 Oct 2019 21:59:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571893197; cv=none;
+Received: by 2002:aca:cf8f:: with SMTP id f137ls954208oig.8.gmail; Wed, 23 Oct
+ 2019 11:05:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzlxUnD5/vD1NAy5zxCGU9Tv7VouT9p8pevwV4tfY2BhnaKBWCysLh8+v9O9UZnwwNf9j/N
+X-Received: by 2002:aca:fc0d:: with SMTP id a13mr1081833oii.83.1571853933339;
+        Wed, 23 Oct 2019 11:05:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571853933; cv=none;
         d=google.com; s=arc-20160816;
-        b=vuxYkC0ZCkSTGEe+HTugBLqVc2NrvYKB8ycrpqu2jt9Ynw8qpXMqjCSg8rKeLIF7dt
-         MQ+iREtmKUIrK08RWarvhsRztaNWCS28DaicxgWjYoWuZ1KP8uEL6bUd2GeGA5iSsdLE
-         CNiQPJAW/nOyE/H6IbTYsIP3PVvC0YxSXYVONHC1aSSZJKtc2ttTp/3LZrN4oEk8Um2N
-         7KWn9u1BpqsIxUutTD6wm+EgZPtYzG0WVdy3JnBDQdRG/PbnxMLuvrKTfkWqceaCw/zd
-         KyYPUBKf05UQik9lxWzwRdokinvJ/tS1K3B7Vb9INnSbEWyu6iyvnrzysOyhBZDha3P7
-         Wi5w==
+        b=ymEaRSM6/pg+cv/hvXR4YBTlUU8ZrL7P/tMX+Ii0iA949CSqSfuNkcczWN8AastQNZ
+         uMUHJ8Q78VrOnUTq05Ao6ZXMe8IzyVDPfSmlzFltI9f3ZPtw5cpi77PIP+oPSOvkvCdi
+         RUepQ+KdrHdPWyT09yTbwdU2XuGnY6zccEvP0vu6DHlImvUaagchEuzQk1hUSWuHKjBT
+         9+g417Ee4vk3rwYJ1untObca0Tk8HNXlgz7FxyG4CzZmeuR2e9AwDdkFachtomLXZUu+
+         OaUxXsJWOwpIhFp+uPO8d0k+KvfGIIt34+w9/i2fcJPUaFtrgrlkXyJVaCDHvFvKq/6+
+         QIhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=TX+eCZ+Hj86+D+zTjguBkdVgaoLDrd0ZTB0tF031IC4=;
-        b=gQ8U3h/X3XNI+GTZKOeN1it5pTUG6dz87YIGuLcthpPSmDV+WCUlrXJqv37gM+qNUX
-         R1iV1CnEmCvbbSFyU0zStUUb2cYF6eOR94U+tyE7Oz7YA9+idH+2csDMa7A6rrZzDjTi
-         U0SG6EtFGDETXK4SZGSSn8dng37mlLEVFdBVVrLpkLhoQ+kLMrQZzxMb3MkpuGQbIlj3
-         lnpuL4EFCWBSLJEd3DaOI/8L9uGjE1RPv5cML2b/f7mHPZhV7AsmtPIFfQ0HNuPGbOfD
-         mzO2ae9ghB5SyA0EoG1jtmcT2Phl0rsRa7uAtmOvFHkobxs36atL8I28Xehbv+EQ1Gun
-         f+BA==
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=tBfEWV8k73MV4Qw3DAmfxqW3sxBZePe885VokyL+kFI=;
+        b=loEPPtOIMhHLgnoOEGpd9gPD744JqFYObqAtKAUFeNWGJHzRuOsb3XPi+Uk1fBP9Gl
+         CDpJkRxcdOqIClVFOKhiXQg7x09pB3x51cYEhPcQEOv89j2hYi19K2r3Xk7lGfN3Oc2U
+         DjPLPwmrxxhy4O24E/9lE48h77AMv1llCRJ7VZ+986NT6iVmXG9ZEPnzAbyucrXgcN68
+         wgmebx5GtzhOp23PPFioZEttJBz7bwb5+Ct2qsw5uV2XTjRN9ATUh9W7xgBwbwgIzmLf
+         bWN7An+EriX8QLb6F2yLSQEvL/Gg8WelffIEhnMUQNg4R9YAIa3FBCzoJ7nDhxemL9xR
+         hBeA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of paulburton89@gmail.com designates 209.85.210.194 as permitted sender) smtp.mailfrom=paulburton89@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <paulburton89@gmail.com>
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com. [209.85.210.194])
-        by gmr-mx.google.com with ESMTPS id f66si920483ill.5.2019.10.23.21.59.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XWHGBEjZ;
+       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <wambui.karugax@gmail.com>
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
+        by gmr-mx.google.com with ESMTPS id l141si171746oib.4.2019.10.23.11.05.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2019 21:59:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of paulburton89@gmail.com designates 209.85.210.194 as permitted sender) client-ip=209.85.210.194;
+        Wed, 23 Oct 2019 11:05:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of paulburton89@gmail.com designates 209.85.210.194 as permitted sender) smtp.mailfrom=paulburton89@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: by mail-pf1-f194.google.com with SMTP id q7so14323267pfh.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 21:59:57 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XWHGBEjZ;
+       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x642.google.com with SMTP id u20so10475879plq.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 11:05:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=tBfEWV8k73MV4Qw3DAmfxqW3sxBZePe885VokyL+kFI=;
+        b=XWHGBEjZONbK9+JQ40gwN6YVXCRHMMzdlxxNu9JFSKH+O0LdlUyrZ1J9HxXGzbPdRW
+         UDpsyBDLJHHvNx9x7qlmPdYbgbgJLrAGaJ8oOhp+3L3Zk5qaGQQCLPVMu88NfVw2L8aB
+         nbuY2rgGUYTX7RNLwlGNfPZ9o2G8FRYhBAh6fLvuLzJVXoUg/nDQWNEAniYYSMJ2wGjg
+         rRHNObfKrqxrrx+EAlPuxs0jd3PaWcA+7ApQcUVGCU75aCMTtTY5RcIzYJYH+C+2dw0I
+         xr7J7YH6pc4jRa6lb97Sv5EyaRIslGU/UhWEQ4PmyGrf6rxqTkeXzCtzJz+rxmyohyBU
+         Mitw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=TX+eCZ+Hj86+D+zTjguBkdVgaoLDrd0ZTB0tF031IC4=;
-        b=EHV+LBUtzEPfctjaLUWW3qE+f7iZbdnm8PJpFVdRO948O/JHJRqtp7ZOUOsVCmmKU3
-         nmmsDvqQJ06NdH86RIFJISwwTgWfsDwn6uFScTPb4Xc66rDPP8K/T97HuUouzH7KcGJP
-         acQ9jVh+OzG3EvKhSRE8NEHH6/kO9D2d7NaFKFrFcC/3tQO16VuhC3z6dLyRAUynAgBk
-         bYhwpiKElse1JggFPUFKPLtkEjbHnfPJ0rc1Okir7S2EuLFuyCu0JvvLVy47UW3ma1zk
-         El4nAXm4LKCIrIcY64YLhcUc+Q2dJtZmCoG5/PsgY2v+nONW07VK3LCX8drlRnlB5qmq
-         XoSA==
-X-Gm-Message-State: APjAAAUCX6nbM2eSCoklsVfqKGY9vNsirOu6jt/SuSde0WqvMTxjyiJO
-	3Y9BoKEICUsenjvLkueNGu0=
-X-Received: by 2002:a17:90a:37e4:: with SMTP id v91mr4666767pjb.8.1571893196275;
-        Wed, 23 Oct 2019 21:59:56 -0700 (PDT)
-Return-Path: <paulburton89@gmail.com>
-Received: from localhost ([2601:646:8a00:9810:5af3:56d9:f882:39d4])
-        by smtp.gmail.com with ESMTPSA id h4sm21932440pgg.81.2019.10.23.21.59.55
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+         :references:mime-version:content-disposition:in-reply-to:user-agent;
+        bh=tBfEWV8k73MV4Qw3DAmfxqW3sxBZePe885VokyL+kFI=;
+        b=o0Qyh1L24378e7afZbwqK+Zjm8O/tWyNEmP7Wi7HQgguIsYG1O4gTcKLgEtfKTILSb
+         lgt4RK+XAs+ngyW3AHmaE4n8BWMkowiQ6zxnLPQT+46YvwIJKMvTeyEJQQoml2xvbl7m
+         Bs8E83EdrOKYxCK21lPr6dkzzMA69w2Aq9v0bDMVs3m6/uT1e6LWA4mM7/AYMIyRW2U7
+         4IXq6LeOvAgCfhmuGbeRtXmRHUWBSWEpaBeq7ykOOp1xB7L1bgpKMKVvZ6d77zzF1Uoq
+         8cP+2fcHEjZRqhcYX6nc/RLeFig9UYgo2sfj9YPTu/FGzI4+22c0wjDwh/j4653ZON3j
+         FXTQ==
+X-Gm-Message-State: APjAAAUl7KNNEZ9ODUsmvQi2QrMXU7GDSRP9iTVLQCJ+SCC2tcWsMZx3
+	EILqWGWP2Orn4Tu+GDKcejE=
+X-Received: by 2002:a17:902:8348:: with SMTP id z8mr11343624pln.12.1571853932584;
+        Wed, 23 Oct 2019 11:05:32 -0700 (PDT)
+Return-Path: <wambui.karugax@gmail.com>
+Received: from wambui ([197.254.95.2])
+        by smtp.gmail.com with ESMTPSA id d20sm25278968pfq.88.2019.10.23.11.05.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2019 21:59:55 -0700 (PDT)
-Date: Wed, 23 Oct 2019 22:00:11 -0700
-From: Paul Burton <paulburton@kernel.org>
-To: Wambui Karuga <wambui.karugax@gmail.com>, gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+        Wed, 23 Oct 2019 11:05:31 -0700 (PDT)
+Date: Wed, 23 Oct 2019 21:05:21 +0300
+From: Wambui Karuga <wambui.karugax@gmail.com>
+To: Aaro Koskinen <aaro.koskinen@iki.fi>
+Cc: Julia Lawall <julia.lawall@lip6.fr>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/5] staging: octeon: remove typedef declaration for
- cvmx_wqe
-Message-ID: <20191024050011.2ziewy6dkxkcxzvo@lantea.localdomain>
+Subject: Re: [Outreachy kernel] [PATCH v2 0/5] Remove typedef declarations in
+ staging: octeon
+Message-ID: <20191023180521.GA5220@wambui>
+Reply-To: 20191023174304.GD18977@darkstar.musicnaut.iki.fi
 References: <cover.1570821661.git.wambui.karugax@gmail.com>
- <fa82104ea8d7ff54dc66bfbfedb6cca541701991.1570821661.git.wambui.karugax@gmail.com>
+ <alpine.DEB.2.21.1910122034390.3049@hadrien>
+ <20191023174304.GD18977@darkstar.musicnaut.iki.fi>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <fa82104ea8d7ff54dc66bfbfedb6cca541701991.1570821661.git.wambui.karugax@gmail.com>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <20191023174304.GD18977@darkstar.musicnaut.iki.fi>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Hi Wambui, Greg,
-
-On Sat, Oct 12, 2019 at 09:04:31PM +0300, Wambui Karuga wrote:
-> Remove typedef declaration from struct cvmx_wqe.
-> Also replace its previous uses with new struct declaration.
-> Issue found by checkpatch.pl
-
-This may work for x86 builds using COMPILE_TEST that will never actually
-run this driver, but it completely breaks the build for the systems that
-actually do use the driver...
-
-kernelci.org shows build failures resulting from this patch in
-linux-next, and I won't be surprised if other patches in this series
-result in similar build breakage too:
-
-  https://storage.kernelci.org/next/master/next-20191023/mips/cavium_octeon_defconfig/gcc-8/build.log
-
-If you're making significant changes to this driver, please test them
-using the MIPS cavium_octeon_defconfig which is where this driver is
-actually used.
-
-This driver has broken builds a few times recently which makes me very
-tempted to ask that we stop allowing it to be built with COMPILE_TEST.
-The whole octeon-stubs.h thing is a horrible hack anyway...
-
-Thanks,
-    Paul
-
+On Wed, Oct 23, 2019 at 08:43:04PM +0300, Aaro Koskinen wrote:
+> Hi,
 > 
-> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
-> ---
->  drivers/staging/octeon/ethernet-rx.c  |  6 +++---
->  drivers/staging/octeon/ethernet-tx.c  |  2 +-
->  drivers/staging/octeon/ethernet.c     |  2 +-
->  drivers/staging/octeon/octeon-stubs.h | 22 +++++++++++-----------
->  4 files changed, 16 insertions(+), 16 deletions(-)
+> On Sat, Oct 12, 2019 at 08:35:19PM +0200, Julia Lawall wrote:
+> > On Sat, 12 Oct 2019, Wambui Karuga wrote:
+> > > This patchset removes the addition of new typedefs data types in octeon,
+> > > along with replacing the previous uses with the new declaration format.
+> > >
+> > > v2 of the series removes the obsolete "_t" notation in the named types.
+> > >
+> > > Wambui Karuga (5):
+> > >   staging: octeon: remove typedef declaration for cvmx_wqe
+> > >   staging: octeon: remove typedef declaration for cvmx_helper_link_info
+> > >   staging: octeon: remove typedef declaration for cvmx_fau_reg_32
+> > >   staging: octeon: remove typedef declartion for cvmx_pko_command_word0
+> > >   staging: octeon: remove typedef declaration for cvmx_fau_op_size
+> > >
+> > >  drivers/staging/octeon/ethernet-mdio.c   |  6 +--
+> > >  drivers/staging/octeon/ethernet-rgmii.c  |  4 +-
+> > >  drivers/staging/octeon/ethernet-rx.c     |  6 +--
+> > >  drivers/staging/octeon/ethernet-tx.c     |  4 +-
+> > >  drivers/staging/octeon/ethernet.c        |  6 +--
+> > >  drivers/staging/octeon/octeon-ethernet.h |  2 +-
+> > >  drivers/staging/octeon/octeon-stubs.h    | 56 ++++++++++++------------
+> > >  7 files changed, 43 insertions(+), 41 deletions(-)
+> > 
+> > For the series:
+> > 
+> > Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 > 
-> diff --git a/drivers/staging/octeon/ethernet-rx.c b/drivers/staging/octeon/ethernet-rx.c
-> index 0e65955c746b..2c16230f993c 100644
-> --- a/drivers/staging/octeon/ethernet-rx.c
-> +++ b/drivers/staging/octeon/ethernet-rx.c
-> @@ -60,7 +60,7 @@ static irqreturn_t cvm_oct_do_interrupt(int irq, void *napi_id)
->   *
->   * Returns Non-zero if the packet can be dropped, zero otherwise.
->   */
-> -static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
-> +static inline int cvm_oct_check_rcv_error(struct cvmx_wqe *work)
->  {
->  	int port;
->  
-> @@ -135,7 +135,7 @@ static inline int cvm_oct_check_rcv_error(cvmx_wqe_t *work)
->  	return 0;
->  }
->  
-> -static void copy_segments_to_skb(cvmx_wqe_t *work, struct sk_buff *skb)
-> +static void copy_segments_to_skb(struct cvmx_wqe *work, struct sk_buff *skb)
->  {
->  	int segments = work->word2.s.bufs;
->  	union cvmx_buf_ptr segment_ptr = work->packet_ptr;
-> @@ -215,7 +215,7 @@ static int cvm_oct_poll(struct oct_rx_group *rx_group, int budget)
->  		struct sk_buff *skb = NULL;
->  		struct sk_buff **pskb = NULL;
->  		int skb_in_hw;
-> -		cvmx_wqe_t *work;
-> +		struct cvmx_wqe *work;
->  		int port;
->  
->  		if (USE_ASYNC_IOBDMA && did_work_request)
-> diff --git a/drivers/staging/octeon/ethernet-tx.c b/drivers/staging/octeon/ethernet-tx.c
-> index c64728fc21f2..a039882e4f70 100644
-> --- a/drivers/staging/octeon/ethernet-tx.c
-> +++ b/drivers/staging/octeon/ethernet-tx.c
-> @@ -515,7 +515,7 @@ int cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev)
->  	void *copy_location;
->  
->  	/* Get a work queue entry */
-> -	cvmx_wqe_t *work = cvmx_fpa_alloc(CVMX_FPA_WQE_POOL);
-> +	struct cvmx_wqe *work = cvmx_fpa_alloc(CVMX_FPA_WQE_POOL);
->  
->  	if (unlikely(!work)) {
->  		printk_ratelimited("%s: Failed to allocate a work queue entry\n",
-> diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-> index cf8e9a23ebf9..f892f1ad4638 100644
-> --- a/drivers/staging/octeon/ethernet.c
-> +++ b/drivers/staging/octeon/ethernet.c
-> @@ -172,7 +172,7 @@ static void cvm_oct_configure_common_hw(void)
->   */
->  int cvm_oct_free_work(void *work_queue_entry)
->  {
-> -	cvmx_wqe_t *work = work_queue_entry;
-> +	struct cvmx_wqe *work = work_queue_entry;
->  
->  	int segments = work->word2.s.bufs;
->  	union cvmx_buf_ptr segment_ptr = work->packet_ptr;
-> diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-> index b2e3c72205dd..7c29cfbd55d1 100644
-> --- a/drivers/staging/octeon/octeon-stubs.h
-> +++ b/drivers/staging/octeon/octeon-stubs.h
-> @@ -183,13 +183,13 @@ union cvmx_buf_ptr {
->  	} s;
->  };
->  
-> -typedef struct {
-> +struct cvmx_wqe {
->  	union cvmx_wqe_word0 word0;
->  	union cvmx_wqe_word1 word1;
->  	union cvmx_pip_wqe_word2 word2;
->  	union cvmx_buf_ptr packet_ptr;
->  	uint8_t packet_data[96];
-> -} cvmx_wqe_t;
-> +};
->  
->  typedef union {
->  	uint64_t u64;
-> @@ -1198,7 +1198,7 @@ static inline uint64_t cvmx_scratch_read64(uint64_t address)
->  static inline void cvmx_scratch_write64(uint64_t address, uint64_t value)
->  { }
->  
-> -static inline int cvmx_wqe_get_grp(cvmx_wqe_t *work)
-> +static inline int cvmx_wqe_get_grp(struct cvmx_wqe *work)
->  {
->  	return 0;
->  }
-> @@ -1345,14 +1345,14 @@ static inline void cvmx_pow_work_request_async(int scr_addr,
->  						       cvmx_pow_wait_t wait)
->  { }
->  
-> -static inline cvmx_wqe_t *cvmx_pow_work_response_async(int scr_addr)
-> +static inline struct cvmx_wqe *cvmx_pow_work_response_async(int scr_addr)
->  {
-> -	cvmx_wqe_t *wqe = (void *)(unsigned long)scr_addr;
-> +	struct cvmx_wqe *wqe = (void *)(unsigned long)scr_addr;
->  
->  	return wqe;
->  }
->  
-> -static inline cvmx_wqe_t *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
-> +static inline struct cvmx_wqe *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
->  {
->  	return (void *)(unsigned long)wait;
->  }
-> @@ -1390,21 +1390,21 @@ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(uint64_t port,
->  	return ret;
->  }
->  
-> -static inline void cvmx_wqe_set_port(cvmx_wqe_t *work, int port)
-> +static inline void cvmx_wqe_set_port(struct cvmx_wqe *work, int port)
->  { }
->  
-> -static inline void cvmx_wqe_set_qos(cvmx_wqe_t *work, int qos)
-> +static inline void cvmx_wqe_set_qos(struct cvmx_wqe *work, int qos)
->  { }
->  
-> -static inline int cvmx_wqe_get_qos(cvmx_wqe_t *work)
-> +static inline int cvmx_wqe_get_qos(struct cvmx_wqe *work)
->  {
->  	return 0;
->  }
->  
-> -static inline void cvmx_wqe_set_grp(cvmx_wqe_t *work, int grp)
-> +static inline void cvmx_wqe_set_grp(struct cvmx_wqe *work, int grp)
->  { }
->  
-> -static inline void cvmx_pow_work_submit(cvmx_wqe_t *wqp, uint32_t tag,
-> +static inline void cvmx_pow_work_submit(struct cvmx_wqe *wqp, uint32_t tag,
->  					enum cvmx_pow_tag_type tag_type,
->  					uint64_t qos, uint64_t grp)
->  { }
-> -- 
-> 2.23.0
+> This series breaks the build on MIPS/OCTEON (the only actual HW using this
+> driver):
 > 
-> _______________________________________________
-> devel mailing list
-> devel@linuxdriverproject.org
-> http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+> $ make ARCH=mips CROSS_COMPILE=mips64-linux-gnu- cavium_octeon_defconfig
+> $ make ARCH=mips CROSS_COMPILE=mips64-linux-gnu-
+> [...]
+>   CC      drivers/staging/octeon/ethernet.o
+> In file included from drivers/staging/octeon/ethernet.c:22:
+> drivers/staging/octeon/octeon-ethernet.h:94:12: warning: 'union cvmx_helper_link_info' declared inside parameter list will not be visible outside of this definition or declaration
+>       union cvmx_helper_link_info li);  
+>             ^~~~~~~~~~~~~~~~~~~~~
+> drivers/staging/octeon/ethernet.c: In function 'cvm_oct_free_work':
+> drivers/staging/octeon/ethernet.c:177:21: error: dereferencing pointer to incomplete type 'struct cvmx_wqe'
+>   int segments = work->word2.s.bufs;
+>                      ^~
+> drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
+> drivers/staging/octeon/ethernet.c:463:30: error: storage size of 'link_info' isn't known
+>   union cvmx_helper_link_info link_info;
+>                               ^~~~~~~~~
+> 
+> etc.
+> 
+> Probably all these patches need to be reverted.
+> 
+> A.
+
+Aaro, thanks for the heads up - I can try cross-compiling to see if I
+can fix the errors.
+wambui karuga.
 
