@@ -1,115 +1,168 @@
-X-GM-THRID: 6954767724907069440
-X-Received: by 2002:a05:600c:25ca:: with SMTP id 10mr11703283wml.0.1619283045200;
-        Sat, 24 Apr 2021 09:50:45 -0700 (PDT)
+X-GM-THRID: 6751114890360913920
+X-Received: by 2002:a81:288b:: with SMTP id o133mr4153559ywo.307.1571867471730;
+        Wed, 23 Oct 2019 14:51:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6000:1287:: with SMTP id f7ls3042228wrx.3.gmail; Sat, 24
- Apr 2021 09:50:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwuOZhyKnSKXPCGAw5dvT7gEE1xPC399owH8xMXuzhAfhJ23oQSHiCTHXWb5bwSKKwEahWg
-X-Received: by 2002:a5d:6607:: with SMTP id n7mr12243089wru.146.1619283043838;
-        Sat, 24 Apr 2021 09:50:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619283043; cv=none;
+Received: by 2002:a25:68cd:: with SMTP id d196ls618972ybc.13.gmail; Wed, 23
+ Oct 2019 14:51:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyPvcV18a3MKVj0ufheCEYRLdsrK1xG4u/akUqqfIiU3Aa/jFJlv1SDaRseZ2gwtbXXaUmA
+X-Received: by 2002:a25:828e:: with SMTP id r14mr8347689ybk.252.1571867470285;
+        Wed, 23 Oct 2019 14:51:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571867470; cv=none;
         d=google.com; s=arc-20160816;
-        b=rCdcB3yuhf3e2LsBJxi4XlpyaWnQ41n/jPogG/NbUF5NK+4bi9k9zGVki7le+DyYLt
-         WFjtZ/A5U+Oip5IdNNXieu5M39aNx09/nNEWfuqdhB5KAAJ1FsvuF38/WHvmWCXN3ckC
-         LXg9ougX2Ha31y5gcT3XfZw7u1ySsMiWAr7Ri9fmisgrKUXirjrV45/6l7e1Qi/1jLZi
-         RxPST+2s3JX4CZ5mMLQIMYXX9JTeSQvm2HY+gJ+hDbr6WV1nnfWOSu05Fs9dkSk0MO3V
-         3HIoIQVLGHuIZp4nLhpzxqPAu919klgli0rjx67hCI//bkh7ZMaJyC/zcPBJtOMBH21B
-         9JbA==
+        b=kAeNSmD7XxwJveHVHpG9oHj7/V/cKpzBziGJHd0m2t4vwXsYTEdll4VTEiIWBFFRnM
+         GhMfUbGlmsrekfuMMeLFBYF9NlLE8zLxFkI/qmPiJMd80pvxoE+7iGVJERFFH/ZfZRCp
+         Mjn0OuZwYbC0e+wEtwurV9AF7FYxZOOfrsMJcm6CO+NiX7ZZRLBE7WqBiqBkbT7BbwbY
+         VQdWyv9O6DJSHWslPeF9m85npxIM4cWxINdSkjOQr3gCxQz6HfcgXHoi/OY0aXcwFbHx
+         65Cc7yaFFe1krhz/X/shYVVFojVIyU/BCjfRVjZ72djsdLv0VXB2yoAG0RdNIjKGDzfF
+         743A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=5m4sbKb1mKDj2CQTY50xzkbYv3PjnU1uIP8oNNYAVao=;
-        b=GQzvPxFkdRnqtCLp3VW+1qudGZL0t+MA23IGzLBsJPEaIaL9/hPZ/nGJmi7XC2FgDT
-         aZ97+xB0aYPX4F7dReqfP3ihrFkrCiMKZ5Pdkdk7RNBwpAHhceeGVsx89rCHIpjmD57h
-         eSO68sVvv/OySvACjU8zqoNJaH5cyiCSUywZxws/68PKASYCvBLf6ZG0ePitydoBg2kl
-         MEvvUwPD4IvxTWQT2a7dVVCdcQQPU7Hdv1ZMWAJTmB64G0oj/M7J4eOPi6Ut7/+9QSc2
-         8nNW5gnxCpcji9mPx78QBo2LENsgIMyEzQ90flC4K+CxnaWyAKb8/ZYhtJUEizcUVm6K
-         i9/g==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=6/47U8HJGQz0TitDPWbZWc/Fvi3AvOuqYBxUu/oaGwc=;
+        b=ECqGVVHLmvASw+4LSHg1OS5F321kcDZId8y0Jbe3eMzAUOFFUhC4PJDY5Gx17eALfp
+         hictwaNTPvSKJbhy0R4CtW4cBOrnZ1hy+uc/IUfl4HuVbmH0JHVqh5FX4cF8pmUrWO6c
+         GKAO6jf8oh5uLFt2wvK4+Tdg0Gr96xgyw64Qcqul89+XxtHv+rz123s7v1nvLhJtNSw5
+         UvsSK4O9ylz1MTMRudRWMzalH34txf4rUTooIBoXzGhAOWIqXqVtKXkPBknc85gmoa3a
+         Qy7j/eryI2BiQPMAK1kZsfkaOvz5FCwEn050xcb2qzcROflwYXZzlJBGElMmAUiKg7PZ
+         1P9w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GFF0+1DJ;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FLYZXJOq;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com. [2a00:1450:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id a4si958230wrc.0.2021.04.24.09.50.43
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id u8si70461ybc.2.2019.10.23.14.51.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 24 Apr 2021 09:50:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) client-ip=2a00:1450:4864:20::62c;
+        Wed, 23 Oct 2019 14:51:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GFF0+1DJ;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FLYZXJOq;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62c.google.com with SMTP id r20so28433807ejo.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Apr 2021 09:50:43 -0700 (PDT)
+Received: by mail-pg1-x541.google.com with SMTP id u23so2229306pgo.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 14:51:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=5m4sbKb1mKDj2CQTY50xzkbYv3PjnU1uIP8oNNYAVao=;
-        b=GFF0+1DJiChlYl8FNWpHHNDZvW9IjIr62vsAo8VaSx4wU5tKMCxa2tvHT0DnKZILaN
-         rhjhGi9NHqbwDXQz4w5IO6TrZFweKliScVCUglRHDF/OngEFtglfrBHxu+eyYjA7ovu3
-         lB+dMJt5DSovsp5vbbO6ENqhNxSEOxaDlfBu5779i2XbljxMBEevy5CvVobw1eRLdYrx
-         FhdzKaHe/LR1tfAlhfY5VOIbwRYxZoHhuBlzQpxJWOnbKGgeTNEth6Hijqur+e9Ab1Eq
-         7evazICJpH9K47jzER0wurmaovsrr881Mefy7QfIazJmgj8hcf3mMsz3wuaEBCfFy1Sv
-         XMQQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=6/47U8HJGQz0TitDPWbZWc/Fvi3AvOuqYBxUu/oaGwc=;
+        b=FLYZXJOqubhzP0PmltPvDkVAbiQqox3IoTuXca7zAzZp1DkEwMol3WR4ezbsgsDo7C
+         yy4mYF0WOM74THf67w6CgmD5EL4PAD3XL4uWv/JYzmj3ahf5PVwkf2OQQOf+W8lt0Txj
+         OVyhAn/lBZus//Yt4VfTfj82eQtag3oMJey8JpJpDPHKCEPJAlMJV43iKjHAC3NkVupO
+         IijuKzzIWYvUogbugS52k6LzM7kFUQWmUx6HrUTV+5KMGP3vP/CbcM9xVyCcoO/1C+l1
+         QpjhiBlcAb86HIacqWcqM/JtLJGlYw24t3X3iT1kwO0r0kSVISfQJ7j4huaEYWc18dio
+         xVyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=5m4sbKb1mKDj2CQTY50xzkbYv3PjnU1uIP8oNNYAVao=;
-        b=pEtG4GfS77L9inS8TBs78ngwU/DZsaF+Xez46+JAgI8Zn64yTxMHjocha7HSMnIEXN
-         QUF6vNlhkmmR56EyG5ETKKf8rXBUaVUCpZqntWMdE4n55V/kxmEYMOxx4YcEHP7Tz2l3
-         4IHpD+CFes5DRcuwcDV4vg0oJO8ca13qgijP76Zh0cgTU0g5dFhPrwzD5tHLF8l1Hijn
-         DNU9RSdLgM3TIe3cZ1BjEFs3cfznbVW2SEVVfdLoioN0Ik0sihezrkRX+p9L4zsZqnye
-         nAJHEZ+kyqDAT75syrSrrIhaIgEJpVC9PNB3YqRhxxCaLhNFN2Mn5AoBUU6Dx+TlzL+1
-         n0rw==
-X-Gm-Message-State: AOAM5314eL9jgrH05GmWgsFu82AsuTMiSmwvbRAcldZFSgyEz5vC//wR
-	9vNP2TJXVJSY/AXIvgt25yiy71VbCNI4nKiI
-X-Received: by 2002:a17:906:9b15:: with SMTP id eo21mr10240199ejc.237.1619283043335;
-        Sat, 24 Apr 2021 09:50:43 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id n14sm7200702ejy.90.2021.04.24.09.50.42
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=6/47U8HJGQz0TitDPWbZWc/Fvi3AvOuqYBxUu/oaGwc=;
+        b=mm+qCZUlMZQs9W+6ROZMbfIenP71LRgUcZvzE6zzI4aHTH14oJ07jiCCa7ByokqZfk
+         /r5mtys4oEoIV00EdflnbmMvdQ77p4sjY6T6MpWlu7wsHwrL1NXxUIP8ZkQezZpbY+M/
+         3T4sAYQN30kjvIEgbw5girUnemQoR+JZXqaZ3WiGtqjlReNKqaaULAi/v7Rl4cj1w2Ku
+         0tUrQ0USnMlOcQf8xQShIPUlLy0potpz2wOpXOngMc0585OdK9R+RB8NViD0tMGUUx0y
+         MA1F6EzPj7ad3r0SGx4JjaSsxBsOe/HMtM43mA0vpg9Dqwn4wFjjICbTUluhhxkfKN2Q
+         ZQ8g==
+X-Gm-Message-State: APjAAAWgA4d3+axuOTsh2TZhzV/2XIcTaTe4qklGsS2gmUbEr3TM/tuR
+	x0UI1H41D2Jce3wOZ3IsZQkxYUUa
+X-Received: by 2002:a65:5b02:: with SMTP id y2mr12960742pgq.365.1571867469244;
+        Wed, 23 Oct 2019 14:51:09 -0700 (PDT)
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
+        by smtp.gmail.com with ESMTPSA id y8sm27741801pgs.34.2019.10.23.14.51.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Apr 2021 09:50:42 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org,
-	Felix Kuehling <Felix.Kuehling@amd.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] drm/amd/amdkfd/kfd_process.c: Fix kernel-doc syntax error
-Date: Sat, 24 Apr 2021 18:50:39 +0200
-Message-Id: <20210424165039.22717-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+        Wed, 23 Oct 2019 14:51:08 -0700 (PDT)
+From: Jamal Shareef <jamal.k.shareef@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
+	gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: fbtft: Fix duplicate arguments to bitwise AND
+Date: Wed, 23 Oct 2019 14:51:05 -0700
+Message-Id: <20191023215105.18049-1-jamal.k.shareef@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Fixed a kernel-doc error in the documentation of a function.
+Fix duplicated arguments to bitwise & operator.
+Issue detected by coccinelle.
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 ---
- drivers/gpu/drm/amd/amdkfd/kfd_process.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changed in v2
+ - Added parenthesis to bitwise operations to ensure
+   correct precedence
+---
+ drivers/staging/fbtft/fb_uc1611.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdkfd/kfd_process.c b/drivers/gpu/drm/amd/amdkfd/kfd_process.c
-index 65803e153a22..12587fa768a9 100644
---- a/drivers/gpu/drm/amd/amdkfd/kfd_process.c
-+++ b/drivers/gpu/drm/amd/amdkfd/kfd_process.c
-@@ -250,7 +250,7 @@ static void kfd_sdma_activity_worker(struct work_struct *work)
- }
+diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
+index 65681d0fe200..e763205e9e4f 100644
+--- a/drivers/staging/fbtft/fb_uc1611.c
++++ b/drivers/staging/fbtft/fb_uc1611.c
+@@ -91,7 +91,7 @@ static int init_display(struct fbtft_par *par)
+ 	write_reg(par, 0x2C | (pump & 0x03));
  
- /**
-- * @kfd_get_cu_occupancy() - Collect number of waves in-flight on this device
-+ * @kfd_get_cu_occupancy - Collect number of waves in-flight on this device
-  * by current process. Translates acquired wave count into number of compute units
-  * that are occupied.
-  *
+ 	/* Set inverse display */
+-	write_reg(par, 0xA6 | (0x01 & 0x01));
++	write_reg(par, 0xA6 | 0x01);
+ 
+ 	/* Set 4-bit grayscale mode */
+ 	write_reg(par, 0xD0 | (0x02 & 0x03));
+@@ -157,8 +157,8 @@ static int set_var(struct fbtft_par *par)
+ 		/* Set RAM address control */
+ 		write_reg(par, 0x88
+ 			| (0x0 & 0x1) << 2 /* Increment positively */
+-			| (0x1 & 0x1) << 1 /* Increment page first */
+-			| (0x1 & 0x1));    /* Wrap around (default) */
++			| (0x1 << 1)	   /* Increment page first */
++			| 0x1);		   /* Wrap around (default) */
+ 
+ 		/* Set LCD mapping */
+ 		write_reg(par, 0xC0
+@@ -171,11 +171,11 @@ static int set_var(struct fbtft_par *par)
+ 		write_reg(par, 0x88
+ 			| (0x0 & 0x1) << 2 /* Increment positively */
+ 			| (0x0 & 0x1) << 1 /* Increment column first */
+-			| (0x1 & 0x1));    /* Wrap around (default) */
++			| 0x1);		   /* Wrap around (default) */
+ 
+ 		/* Set LCD mapping */
+ 		write_reg(par, 0xC0
+-			| (0x1 & 0x1) << 2 /* Mirror Y ON */
++			| (0x1 << 2)	   /* Mirror Y ON */
+ 			| (0x0 & 0x1) << 1 /* Mirror X OFF */
+ 			| (0x0 & 0x1));    /* MS nibble last (default) */
+ 		break;
+@@ -183,13 +183,13 @@ static int set_var(struct fbtft_par *par)
+ 		/* Set RAM address control */
+ 		write_reg(par, 0x88
+ 			| (0x0 & 0x1) << 2 /* Increment positively */
+-			| (0x1 & 0x1) << 1 /* Increment page first */
+-			| (0x1 & 0x1));    /* Wrap around (default) */
++			| (0x1 << 1)	   /* Increment page first */
++			| 0x1);		   /* Wrap around (default) */
+ 
+ 		/* Set LCD mapping */
+ 		write_reg(par, 0xC0
+-			| (0x1 & 0x1) << 2 /* Mirror Y ON */
+-			| (0x1 & 0x1) << 1 /* Mirror X ON */
++			| (0x1 << 2)	   /* Mirror Y ON */
++			| (0x1 << 1)	   /* Mirror X ON */
+ 			| (0x0 & 0x1));    /* MS nibble last (default) */
+ 		break;
+ 	default:
+@@ -197,12 +197,12 @@ static int set_var(struct fbtft_par *par)
+ 		write_reg(par, 0x88
+ 			| (0x0 & 0x1) << 2 /* Increment positively */
+ 			| (0x0 & 0x1) << 1 /* Increment column first */
+-			| (0x1 & 0x1));    /* Wrap around (default) */
++			| 0x1);		   /* Wrap around (default) */
+ 
+ 		/* Set LCD mapping */
+ 		write_reg(par, 0xC0
+ 			| (0x0 & 0x1) << 2 /* Mirror Y OFF */
+-			| (0x1 & 0x1) << 1 /* Mirror X ON */
++			| (0x1 << 1)	   /* Mirror X ON */
+ 			| (0x0 & 0x1));    /* MS nibble last (default) */
+ 		break;
+ 	}
 -- 
-2.31.1
+2.17.1
 
 
