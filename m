@@ -1,78 +1,78 @@
 X-GM-THRID: 6748575425662812160
-X-Received: by 2002:a62:7643:: with SMTP id r64mr10622993pfc.106.1571836392430;
-        Wed, 23 Oct 2019 06:13:12 -0700 (PDT)
+X-Received: by 2002:a81:440e:: with SMTP id r14mr2646602ywa.160.1571836384651;
+        Wed, 23 Oct 2019 06:13:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:8302:: with SMTP id h2ls719763pfe.9.gmail; Wed, 23 Oct
- 2019 06:13:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyD5kvkrc1SFV6opu8bSylQph5lcGcbbA3hDtHW/lPKIQgkOiSDrOI+rB0RmCLubl0oQg/L
-X-Received: by 2002:a63:1b5d:: with SMTP id b29mr3659156pgm.426.1571836391084;
-        Wed, 23 Oct 2019 06:13:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571836391; cv=none;
+Received: by 2002:a0d:d611:: with SMTP id y17ls345600ywd.13.gmail; Wed, 23 Oct
+ 2019 06:13:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxOTOD03iO+WGsXPbk9lK8au8AmLUOiovmrDpHYQfZ8hLnsUViiNRZ6fjOsKlMcziyLTX7f
+X-Received: by 2002:a81:ee02:: with SMTP id l2mr2651657ywm.178.1571836383174;
+        Wed, 23 Oct 2019 06:13:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571836383; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tj9wA+Tm1yoJ5Q/XHRKKrD37YILjBWX+okVQ7CjFgeAmKEaAPdfuLKuSveIxIOVGhO
-         cEIFBaTN4NuJ5g+KzX6DKZp9iGGsR32lQGwNtLF7qShsG1jnsQGhqNgaTQxQYy6ZY7vh
-         RlqExuT8Gmk5jjyjOYQkUtgrf5uXNveTUZl9Pi60AVKPw1si0I03RM8j/br9XT46docT
-         akPQJcOAOXaAj0Vnp0ITCM1GgO9wIXWopMma8y+jBx/if1zzrA1mheYEeD5WhikSn+rD
-         biRut9Ylm6kFcIx3Bzyc2ItOc3KHketrvITVvhLersp8V1hCPeeNHeZURehSdOU/Tk46
-         LclQ==
+        b=Fy/84SZ6mHJcTEXp4TpH4Xez4PtY887dODftIxbqtjZxUCOy1eDIwWUcY2VutfO1wd
+         zS6KnmeCwHXWbO4QHmbR6s+rHqX7SNjbrrO+lntI6UZhYsyYj9tlzLpuKilJEtz0k7MJ
+         HeSt+4aOPt8uFcvwp4IAwwV14nQ/pFMU5WF+rg1NN+a+VWCo1TPwWL+tJOjBkW9TuBgE
+         aFUMYYMAOSdKYR9jbf0RN0YKFMKwxv8Zo8e7t1TlU2R4D84Eo/3rRgI3P4J06GeoIRv3
+         A61P/kLyodTNJFobnxbQWVfECIE/gIpo5oi1rCEeRDhpODZpbR1M50Y40HC0VJJuS0ag
+         rNBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
         bh=ohRiKoQhkRpaqt9hJhdQvzQzR+t9Fsg+JL8RFCA1XEE=;
-        b=gNAB3NZ0jA/yg+GVneXM6L1vldOuGBs8Zz5eohXFxFxgUGOqu1W4Ah/9UWsVkOCHOW
-         HyEBAHo6AGfUIunf4Wlftlvl3/TPXJheJDucaC8ULT1+W6WJtL0CBoVP9S+xvUt+l6Bx
-         TMWWELN+erRRaviAHkdmEh8z4BOn8Rvs6zxFk7BTJMlxzyeFfnkjfD0PeJ3eyu+xiWd+
-         kCcnuY0qQwR3QeYlJX8V3U2DEGie10oumUMv6UFEI6gKIKEpvsTOx+TauSiyykNMg5Em
-         6y0p1IHn55IPegSOcUdFtBSdlbM0genrwSbwHKW9qGnDpO4RLRKB7Ks/7A5mmApz05sL
-         q6DA==
+        b=BdarxoofsNn2ZFCkZaubhGf5Sr/7houCAg0TWXDpMJcz8T00t6q7fXErVYLzv6K/HS
+         HDghQuyoy1JwB/50eRlzqSJ6trcQ1LS+BO8XNboZJi3jTERzvznF6i8/Itq3WROdCFQS
+         /xw/v3uhI4EupdWspOA5z2Iqy5bU601gqDnpSC57agNrl9bIpVI2wa5mYgqACFkm6cU+
+         afvwQAHdId7/V40NfGcWRn1B37q5oEeMXdTDc5F2mXMJa/kNf7/brG2WC/0iMToJJDhK
+         O1innKiW4QAETLJAIEnwWqxC7NYFbtiE+cqwuSpXP68XmAfp//ak9i3P9RSFwhRFpf30
+         3DcA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OQbB3ahk;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QaqaR1qO;
        spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <gabrielabittencourt00@gmail.com>
 Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id q141si1239850pfc.4.2019.10.23.06.13.11
+        by gmr-mx.google.com with ESMTPS id x7si261172ywd.5.2019.10.23.06.13.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2019 06:13:11 -0700 (PDT)
+        Wed, 23 Oct 2019 06:13:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OQbB3ahk;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QaqaR1qO;
        spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id t20so32143356qtr.10
-        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 06:13:11 -0700 (PDT)
+Received: by mail-qt1-x842.google.com with SMTP id o49so24334363qta.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 06:13:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
         bh=ohRiKoQhkRpaqt9hJhdQvzQzR+t9Fsg+JL8RFCA1XEE=;
-        b=OQbB3ahkNcYiRxKZW8WuEY2S5xKzEhTNB/yLXCb1NRI8+c7ma5fAM9xNufogBcCpNg
-         V5siEzpBSch8ntre1ZdrN8kiOhhZX8AIUIELqxg5XWp11+Wn6SMTVEtWb7T2sKxwiCn0
-         AQxaWPGf9ayNFpQPdasmdYfV4vXuSjxaqeI9mN4kSB6ETuY4xI+Cotu/jBQHp22f94va
-         p/daWLWBPAxV9x2V2EwGYeMLWAj69yJelgOqu+70IE33ofgUlvNXfugBhApkps3Og5rD
-         EWc6s2CMCuPgPeMhpAWbVIbo0Y6+/csSEDR85pxw0Ixxi3LOUdDn46zToyKDyl/Y9Rkm
-         rUyg==
+        b=QaqaR1qOT89rUu8StdHeaRI2FrFjxRCrlbXfhbbHR9vZnzKThIdbKrmyRWSBN2bdba
+         sE46IsgHzgT9XYWG4UdfQyRWXTMVeJ7VpFPmkCa9vj/+DpX1g7evROqCXHGhIcJN2JNO
+         8aErTqkuxElpgoSh8cNYzAjW33boa8eGOwYgwdUEbdfsQ+wnAj2GDUUzHJv5i5C5bJ21
+         6rjUKT54WjEeNI+v4/pfTwYinBFUPFIKHYhC2u8idnVI7ulG4Ascu6dmTCtCPgYNMjnl
+         uxM6Kw22wp3J3MMxVWzjjjcXHrCafX3kkVC13+EaGqgJzpbeLwjb3HKn79iWQORVb1PJ
+         wXvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
         bh=ohRiKoQhkRpaqt9hJhdQvzQzR+t9Fsg+JL8RFCA1XEE=;
-        b=sjvyrURVLtID38KdgkfpHGDRXiMOF//dgGXmIom/Cg8QTvjS4BWt1WnBFyISoSk0ZA
-         uimqdeJ7KgjT8uZMB7iP1yoIn+R1UBSKvtAcBqDqRilKyruT5xCH271oFgrfCETvkXGO
-         aKGGpQF9xCSB+LsWPvE6rvU1CdOa8VpYy1k48y21J6REDrWxRxYlU++Xy3NkInLU3Buh
-         wf11xd3VxRlk9ZBjDu80yZh4xMBbfS6tkKk2uX5DVdP+uCblW6/LlrNbaNdKketXaOtH
-         sRYxy/F1v9WCdX++fhMFPsvD1xtsftUI4PiBnyopP9eiC3vZN1LTl2+O9D0kfS56aX/F
-         c9vg==
-X-Gm-Message-State: APjAAAW93mzwQagLz9szoEVO4XR43ziZZkJwWjKFPGkQ7fu9Tb5u4s8f
-	Ktx7+DgwzxFMxZtoIqkI2mA50LK3cXc=
-X-Received: by 2002:aed:3063:: with SMTP id 90mr7472229qte.242.1571836390299;
-        Wed, 23 Oct 2019 06:13:10 -0700 (PDT)
+        b=VOhSyOaeNoIaLaI8OibC6/pjt0MKyVpdMBt/s4X4x0GipIRyUoLZF0E6GhtYW4TEV1
+         Gy8WAJg2QeE6he0YwdUUj9/WOtiDJsoVImX1MFWypr3rePoeBlksByRzwlgWUcRtxqpE
+         Ejo9QkVAcGrg8lZm/KZtBAY1zzY9XzKnYnQEMt2k4wmW5HaJd6ps+ktF5yrqw/S+R3Cz
+         oLgxemBucClXWO0v27ZrRChpWfUYFhxg7G0Ybjrv0//wrfsayaUEjpCeU5p1CvsUNVTY
+         KXkiRQq/aRGjDCV4bErvqVF71bqVTtJawEfRKYEzn/xzKfN1denIaOB7uMMjxAhp872O
+         +8/g==
+X-Gm-Message-State: APjAAAWPY2dcfUqbzCgEKFv+n64Zc1MotTv7pdaS9Iw0e3zUBk2JCSmA
+	3j9d1umFMkp02Xs6UX0RGUQF9bIJv5g=
+X-Received: by 2002:ac8:76d9:: with SMTP id q25mr9148063qtr.23.1571836382491;
+        Wed, 23 Oct 2019 06:13:02 -0700 (PDT)
 Return-Path: <gabrielabittencourt00@gmail.com>
 Received: from localhost.localdomain ([201.53.210.37])
-        by smtp.gmail.com with ESMTPSA id p22sm9863919qkk.92.2019.10.23.06.13.07
+        by smtp.gmail.com with ESMTPSA id p22sm9863919qkk.92.2019.10.23.06.12.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2019 06:13:09 -0700 (PDT)
+        Wed, 23 Oct 2019 06:13:01 -0700 (PDT)
 From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	sudipm.mukherjee@gmail.com,
@@ -83,12 +83,10 @@ To: outreachy-kernel@googlegroups.com,
 	linux-kernel@vger.kernel.org,
 	lkcamp@lists.libreplanetbr.org
 Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH v2] staging: sm750fb: Format description of parameters the to kernel doc format
-Date: Wed, 23 Oct 2019 10:12:53 -0300
-Message-Id: <20191023131253.20819-2-gabrielabittencourt00@gmail.com>
+Subject: [PATCH v2] staging: sm750fb: format description of parameters the to kernel doc format
+Date: Wed, 23 Oct 2019 10:12:52 -0300
+Message-Id: <20191023131253.20819-1-gabrielabittencourt00@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191023131253.20819-1-gabrielabittencourt00@gmail.com>
-References: <20191023131253.20819-1-gabrielabittencourt00@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
