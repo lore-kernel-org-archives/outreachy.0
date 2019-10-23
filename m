@@ -1,129 +1,96 @@
-X-GM-THRID: 6476443340841680896
-X-Received: by 10.99.111.7 with SMTP id k7mr466717pgc.109.1507914471026;
-        Fri, 13 Oct 2017 10:07:51 -0700 (PDT)
+X-GM-THRID: 6746029180637413376
+X-Received: by 2002:a0c:f9c1:: with SMTP id j1mr70646qvo.244.1571893869568;
+        Wed, 23 Oct 2019 22:11:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.246.4 with SMTP id x4ls183322pfh.13.gmail; Fri, 13 Oct 2017
- 10:07:49 -0700 (PDT)
-X-Received: by 10.98.65.8 with SMTP id o8mr456311pfa.27.1507914469167;
-        Fri, 13 Oct 2017 10:07:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507914469; cv=none;
+Received: by 2002:a37:4e04:: with SMTP id c4ls1591575qkb.3.gmail; Wed, 23 Oct
+ 2019 22:11:08 -0700 (PDT)
+X-Received: by 2002:ae9:e8c5:: with SMTP id a188mr8573709qkg.17.1571893868722;
+        Wed, 23 Oct 2019 22:11:08 -0700 (PDT)
+Received: by 2002:ae9:f80e:0:0:0:0:0 with SMTP id x14msqkh;
+        Wed, 23 Oct 2019 10:30:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyteAPco+c+UZSRUqMfm/ATcjYf7QGSRIXK7qzwWXP0b9MeoekooqKzPeTEug4o7FZTf/Lv
+X-Received: by 2002:a2e:8310:: with SMTP id a16mr23692771ljh.48.1571851815187;
+        Wed, 23 Oct 2019 10:30:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571851815; cv=none;
         d=google.com; s=arc-20160816;
-        b=P/qLP5CzgKoemu828Xi5yIuuw+01dyRRtGSKtWIplrHs7Nje1xTuugHraym+p7K3dJ
-         QOJ/nA+itNKNKtzfnwPhXV5kuP0B4LXWP4oXsToU9wZ2Fm2vXNr31jgkzCyGem83YcHY
-         x0zgdYg00eMknB06ZS8GA6F3N/c4udXB0h1x1Pl4oTUvhOcXqPFpjJ8ZQtYwq5Ctz2Wk
-         Ql04uS3CuhmPL8M8YGih8OQySQKAyLJNhYGyt83yFzODu/ooiCSq4zY0erDvH4kpTQ4M
-         URq9fenSzwz178TIcrZL6aDNMfQDPQM3gKmT54V0s/59AyXTe2r+sbKf6FdKRa4HTHhB
-         o1jQ==
+        b=hm+2jdZAR6V4h9wRQu0mLpfSU0R2ftBcDOmemrVRgCJOvpGa6V8f5n2SAYyMlCbCvI
+         CJoCnVm6KYjlaGiOMhtJJfDVKbO9inL7/58dswtNdbxY2CKhhavK0F/nrXK5v6jxJhrE
+         TtKepQw9H3RZsX61B6R9DfHd7uECinBLkAaOplqHlksfw+MBmBdIcU17ER9vSQZ+bVqy
+         +MCTdc3utX2puMcKXt0VCep7J/ZfNIe3d2bdxttL2Zjpbv/9Nw+ueowW2sBPpFKpCsX/
+         IzQXmMCPMfj8M/uGk2/ep2PzsiLBCsfb1lCUy1YyJo/x1gYFMBVvcGztvpbzoIThOZTS
+         Wc3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=nAgd4AakMAm/lSZcdVImfAbyfjO98Hqdcj0oZv2Hhdg=;
-        b=lOmCEU64SXGXQ4B5CmLphwOsGSiL8GetOWULXG7KsKepcb86VCq1Ui3k1qrOPoU1/2
-         uUFw1Re3mbp6SwdzHdZMXwO/tav0eRVh+hEPeXaRz/had07KtRU+eFsSGIBTe0bMNj/z
-         VHh1CbrTqaaWvDWqhmY0KfXZwRDCBvtPMudB0ATHjO4DFGWC6vKL5P5yeLVYWOyFdUBa
-         8V4lkWal3cLpp/bFOAMAcwZ6DZxdNG+u4cqP0gXrlQR2+nNTxt7aENJP0fIN7C5PRPhX
-         Rn58/sRjOjufxcUDgSHq5ZZlJV3/VOHb4FZg80SOSVbYPunIz3QbiWRl7gb8DwQkLlZT
-         2YVA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=5c0iXGmMc9dOBpL2mdohF585H4PAmdh6fYFUgmVBBe8=;
+        b=EdvXI8urnPlJh8ELa5z8Dz8hkX/lzJ76F4zpp7i9kdKmxIN2KhLsDLMKaKx3/beFUJ
+         GRzetHQrlb53E65PSHCJzNnmyQWbwAwGlXrPmFMfU5mooPAtjNCDBa02ad1clBKSepk6
+         XxXWaCuEiMK/PRyou6YVW245NBQWa4PeZ70Jm6TVIJ5UL4H5cQQCMVTspHYA78Obrd7n
+         xL3RwVVxOtPJ3BjRBNRlHr+MsggmnXKL/qkzi/5dM1s6emLvge3Sn86romdN5W2q7Nhz
+         7XoRe5Mfj2empFvOZagdKExU74XWic/uRMGqhIw1lieKSRvzq58tQrHe9Rxkr2T/w5hD
+         ZaTA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eMk7a8Nm;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id z2si70718plk.4.2017.10.13.10.07.49
+       spf=neutral (google.com: 62.142.5.108 is neither permitted nor denied by domain of aaro.koskinen@iki.fi) smtp.mailfrom=aaro.koskinen@iki.fi;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iki.fi
+Return-Path: <aaro.koskinen@iki.fi>
+Received: from emh02.mail.saunalahti.fi (emh02.mail.saunalahti.fi. [62.142.5.108])
+        by gmr-mx.google.com with ESMTPS id d3si1168172lfq.1.2019.10.23.10.30.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 10:07:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Wed, 23 Oct 2019 10:30:15 -0700 (PDT)
+Received-SPF: neutral (google.com: 62.142.5.108 is neither permitted nor denied by domain of aaro.koskinen@iki.fi) client-ip=62.142.5.108;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eMk7a8Nm;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n14so10875319pfh.8
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Oct 2017 10:07:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=nAgd4AakMAm/lSZcdVImfAbyfjO98Hqdcj0oZv2Hhdg=;
-        b=eMk7a8Nmt4hfuZs17CtpuHPLzf+DUt4n2nXl6nBQiT0MNMhWxGTgjbfO+GvnhIBU6u
-         Nr4Kv8upEKb0E/9r2Z0w+dG8WPkwIA4crF0XgTWFJG/eszCmkqQLI2MB+CHB3ZNAtwrZ
-         GK1rNAHTwfMEzENHRcJoNhyjXn2DxcLKwgO+hNV5jOOfjEJ816qfxPnR+56KC0BHBSzd
-         pyXxxNBWcOJ7Dvd3Dy44JxFYQMVLl0Yr/SJPGQ2gTli+OExiObd8fH4Udg978cPMmYlu
-         DwHHkNLb281KbZYxB82uov3QIEPaX8noDTRutBqzSE1NmgayfpekVwPQTHDQelvDYJOn
-         r9iQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=nAgd4AakMAm/lSZcdVImfAbyfjO98Hqdcj0oZv2Hhdg=;
-        b=Ldo4MnOsCm6lqO3s44q8BwQntw043FHl46CxzTy28tNSPivk1vWQInQeNAYVo4YrsS
-         LTI4QqJ26L1LXNI5eegpTUkmvRWQ3a3S+lasruk4vx7YDMlwJGPSVBZHJcEVqTp2O+/n
-         L7bJpvs/WO3cf/EIKFWMPAaaPdLwk5WMSynkNkFIjorpgQ6yZbeHyj4s2fO6uc0YAHS8
-         fJbthq0pz75ef+B2hlCBqj5uAeQ8ZlI5Cpd1vD+qAoJOFgVpiChNZuwBy05mL8/wfoyW
-         zXUpFWgOZyMyEkOLzU+w8IQmevdHAGLQryPcLll3uK2JhsPLdReA5TN5rYeWA9j01glG
-         rhUg==
-X-Gm-Message-State: AMCzsaWTzw1YzjzPE4ZQZOvOvtP9hLJ+cy6gJp4GG1Z+vihp6UHs7Jt8
-	1R3BoH3ly1LJERfOo0mSzhI=
-X-Google-Smtp-Source: AOwi7QDWoFFqkOXLuYfKRN6SM5AXNlWCYQ9qVYiqTVmO6j2tP2yQ2uS7nRjnGOWwtKiAHYdcntz/IQ==
-X-Received: by 10.84.234.194 with SMTP id i2mr1919811plt.420.1507914468951;
-        Fri, 13 Oct 2017 10:07:48 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id 70sm3112795pfv.97.2017.10.13.10.07.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 10:07:48 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] Update .gitignore
-Date: Fri, 13 Oct 2017 22:35:24 +0530
-Message-Id: <20171013170524.8104-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       spf=neutral (google.com: 62.142.5.108 is neither permitted nor denied by domain of aaro.koskinen@iki.fi) smtp.mailfrom=aaro.koskinen@iki.fi;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iki.fi
+Received: from darkstar.musicnaut.iki.fi (85-76-128-127-nat.elisa-mobile.fi [85.76.128.127])
+	by emh02.mail.saunalahti.fi (Postfix) with ESMTP id 9873F200AD;
+	Wed, 23 Oct 2019 20:30:14 +0300 (EEST)
+Date: Wed, 23 Oct 2019 20:30:14 +0300
+From: Aaro Koskinen <aaro.koskinen@iki.fi>
+To: Wambui Karuga <wambui.karugax@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: octeon: Fix incorrect type in assignment
+Message-ID: <20191023173014.GC18977@darkstar.musicnaut.iki.fi>
+References: <20191010043815.14027-1-wambui.karugax@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191010043815.14027-1-wambui.karugax@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Added comments and files generated by libtools
+Hi,
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- .gitignore | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+On Thu, Oct 10, 2019 at 07:38:15AM +0300, Wambui Karuga wrote:
+> Fix the following warning generated by sparse in
+> drivers/staging/octeon/ethernet-tx.c:
+> 
+> drivers/staging/octeon/ethernet-tx.c:563:50: warning: incorrect type in assignment (different base types)
+> drivers/staging/octeon/ethernet-tx.c:563:50:    expected unsigned short [usertype] hw_chksum
+> drivers/staging/octeon/ethernet-tx.c:563:50:    got restricted __wsum [usertype] csum
+> 
+> Warning generated by running:
+> make C=2 CF="-D__CHECK_ENDIAN__" drivers/staging/octeon/
+> 
+> Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
+> ---
+>  drivers/staging/octeon/octeon-stubs.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+> index 38954b6c89e1..b2e3c72205dd 100644
+> --- a/drivers/staging/octeon/octeon-stubs.h
+> +++ b/drivers/staging/octeon/octeon-stubs.h
+> @@ -123,7 +123,7 @@ union cvmx_pip_wqe_word0 {
+>  	struct {
+>  		uint64_t next_ptr:40;
+>  		uint8_t unused;
+> -		uint16_t hw_chksum;
+> +		__wsum hw_chksum;
 
-diff --git a/.gitignore b/.gitignore
-index fa86c482..3d1fc79d 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -1,17 +1,17 @@
-+# Dependency and object files
- *.a
- *.la
- *.lo
- *.so
- *.o
-+
-+# Generated by autoconf/configure/automake
- .deps/
- .dirstamp
--.libs/
- Makefile
- Makefile.in
--
- /include/xtables-version.h
- /include/iptables/internal.h
--
- /aclocal.m4
- /autom4te.cache/
- /build-aux/
-@@ -19,3 +19,9 @@ Makefile.in
- /configure
- /libtool
- /stamp-h1
-+/iptables/iptables-apply.8
-+
-+# Generated by libtool
-+/iptables/xtables-multi
-+/iptables/xtables-compat-multi
-+.libs/
--- 
-2.11.0
+I don't think this is correct. This struct defines HW register layout,
+and the field needs to be 16 bits.
 
+A.
 
