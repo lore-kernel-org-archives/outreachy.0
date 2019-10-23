@@ -1,151 +1,151 @@
 X-GM-THRID: 6749590935912316928
-X-Received: by 2002:a19:4318:: with SMTP id q24mr3768915lfa.12.1572032197174;
-        Fri, 25 Oct 2019 12:36:37 -0700 (PDT)
+X-Received: by 2002:a0c:ef87:: with SMTP id w7mr4516684qvr.49.1571844272174;
+        Wed, 23 Oct 2019 08:24:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8806:: with SMTP id x6ls1388393ljh.11.gmail; Fri, 25 Oct
- 2019 12:36:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwkJCySuwPDhDz2IzlHH1wFsfmbRxb70kMy1xNolntLKrAoEto44vk/LuQvmjhAmd4YDQaE
-X-Received: by 2002:a2e:9d83:: with SMTP id c3mr3610114ljj.237.1572032196187;
-        Fri, 25 Oct 2019 12:36:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572032196; cv=none;
+Received: by 2002:aed:3126:: with SMTP id 35ls853209qtg.10.gmail; Wed, 23 Oct
+ 2019 08:24:31 -0700 (PDT)
+X-Received: by 2002:ac8:474c:: with SMTP id k12mr9917527qtp.319.1571844271247;
+        Wed, 23 Oct 2019 08:24:31 -0700 (PDT)
+Received: by 2002:a37:4e44:0:0:0:0:0 with SMTP id c65msqkb;
+        Wed, 23 Oct 2019 08:09:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZrtB3BiIoG/+HtxkZNKc+1LczR3lYuvvF9jba0XtXke5ADERvvmcw6vYo9MElx7CYT4I9
+X-Received: by 2002:ab0:6890:: with SMTP id t16mr2422117uar.75.1571843382150;
+        Wed, 23 Oct 2019 08:09:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1571843382; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FeAmaLtzPv/eGYTc+OBAr5755wSixC4l5atFQrfCn/jOoTZqIPlNSht5RwWAkZfZYr
-         RhWHS/AAppeQCs6NUunnJ9Y57L+eJDox0pQacVd6BzYtKw+veXwqUnriE5JaQGppSaUR
-         BZ8BogTWryXoINF5xcLxhKCaDu8hj+ZQhwVR1IOgWKdYQBtV8aUvD/l3YTfJu1z04jnq
-         owvVVnAmBVgEga64Rv+3fE2Nyv6iTWQrZlVXGmlo9O5R/AdVeSExBimjTmHjCKmEC2pg
-         rB6Kx6DvjsEHAGtQccRwM5mcXdBYGtugAOZJFffcVIf8WRaSmPp97wFYDZyPmeBuQm3E
-         ZMtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=vKgsFbx8Ep6iOXlXatCgfl2QJqYHidBhx0D+NEJMyLo=;
-        b=keWT9+FwBbuXGobQoQM98Ozms2kgH5gpZ1lMu9Me4YpoDz8rMEl3caosd5yK0aTuRf
-         5L2lmxutppCQnG8aDbrXaIP5OSYcMM3qaVNI0ZCRr29MYwD0ZYAtHsZFoFxcYhR3A3JF
-         /PbFnZi9axVw9P66d5H043VDYzQjjuEj+jwktAJdjbGtl4/asIYSR17UZUZtq+0yGQgC
-         u5NU7U3Zvf2uz9YrYF/lXKUbObZ7uLGfpARpCeyOwpJnUW/qmuIZLhJGs8bx1uwR+VfJ
-         WOpjJ3JKJNihTly+4oSJgTOlxnJT2Y0FAKRZi4vFHCrRYqrkLHaUpzINFfcH9ea+zXNR
-         A+EQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OYW0esZZ;
-       spf=pass (google.com: domain of alexdeucher@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=alexdeucher@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alexdeucher@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id c25si162713lji.2.2019.10.25.12.36.36
+        b=nfp7JFeI6pdtMQxDyrb96sphCej/zjqKqEH0D39i/gVwUTw4IYwJN/gtmb8OduhmCu
+         1vV1+OG4r0C70RcZLbfXE8fdAXrJLHy7kVuR0I3zn+1pAulUc6A8TfkygjkgsPy+Dokn
+         T7CqsCrW/75wflDv4MsuDsi84bE5KpXF7xjuSDOvDNMN9tgvtBFvqzd2ZOBVWxz+/V9S
+         pA0puEQGvRdbTjerpOjxX6sD4+0EnZYL78hI4jS55/bN2NkZ8z+qThEhkJwHtiqjwr5a
+         KOv23RHrIAhzqha3LibY0XaWakvw/hTyMrDCc5Vubd75FEgeLw5hi/YUtzVMsmA79Z18
+         9QcQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:content-id:user-agent
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature;
+        bh=JCnhIUVzMGcsPJXOAuWP66Vcw/fVbfhmNdyag6Ckgn8=;
+        b=y9EPmICK6Ix27lp/1pc0J/cPZu9MO8oyuUtuobXg3U8iSoPcwu8bVYVPqMwLkijPwl
+         kqHkKGmVTJQisVmybjppWkN5XIYeC+XBU82uJoWcX8YmaTO+Mp3blZ+mF62t8MwhmH7e
+         f0NlLdostNBjDrU8QwB3wi9wDx7s4LtINMPil5pX80S6b1aFr473E2cuPnV2c9OS7Q7Y
+         dt3UJFjqpeUKavCJXyaS191KwfJapcPTmnfzwOwGlknLcOqFmpLnXA50P9HeKBn2grJJ
+         Iz5MTNry/3r8QS/1dksEh5jV9siTwJmcq7bJweS5vdnY14ANBIPSXpEenRhJ9orHPTGL
+         Jikg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=xtnaKHon;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=neutral (google.com: 40.107.78.73 is neither permitted nor denied by best guess record for domain of harry.wentland@amd.com) smtp.mailfrom=Harry.Wentland@amd.com
+Return-Path: <Harry.Wentland@amd.com>
+Received: from NAM03-BY2-obe.outbound.protection.outlook.com (mail-eopbgr780073.outbound.protection.outlook.com. [40.107.78.73])
+        by gmr-mx.google.com with ESMTPS id p18si1189400vsn.1.2019.10.23.08.09.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2019 12:36:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alexdeucher@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 23 Oct 2019 08:09:42 -0700 (PDT)
+Received-SPF: neutral (google.com: 40.107.78.73 is neither permitted nor denied by best guess record for domain of harry.wentland@amd.com) client-ip=40.107.78.73;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OYW0esZZ;
-       spf=pass (google.com: domain of alexdeucher@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=alexdeucher@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id l10so3633997wrb.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 25 Oct 2019 12:36:36 -0700 (PDT)
+       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=xtnaKHon;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=neutral (google.com: 40.107.78.73 is neither permitted nor denied by best guess record for domain of harry.wentland@amd.com) smtp.mailfrom=Harry.Wentland@amd.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=iKdZaFiUXDI5OAoVUicNR7Bz0iqDrW+g0kjK9PJRn1JnMgsIFb0Bi7UNxefdkpgGJ0ZviRBXufQIEeH/92haABRyx1AtnYp476v7OZmoKtWnDteUuh3vR7irtbMJorzJAaHO0/2ogqpmiAy//q06x+kCE4mcdTHIY/02OJJddjokrL3MAfwZAeyVkXssIqn72Qtob0H3TFl+0nzqjrk9v0hQvLq62MgqYhQy4vKocgX9PXBl5FMALxNDP3tCssKU2iyML4Ck3Nb9mkBOkBPyFl3dzEdMn2jEP01CMW/iR6d1h2SX7knSEBveb0rz9+TWRA0X+1r8JOszGHn5bCHRxQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JCnhIUVzMGcsPJXOAuWP66Vcw/fVbfhmNdyag6Ckgn8=;
+ b=lBfZxxjmLFbw+M8RhzPpZI6jxlR8fD7RtLBEMHGUdGWwe1WfxuKpyV+tsJPWc/l9KsFQgQmgAnzLs3e4t+0AHcG2pfmWI1ly/Gs+hFPPkYawy5w5Rp9VahEV4mMUD2iSWQ6B2uCc/a6RAPBRBR/zjvDcLfIogMyPkP1BHm0e9O3vJ5f832BjMmc/2VWpiYf4W8dlmcSvOdX+iD41p/cU9S2mb7Fp2oGO/EXkalexek534w6N2gUmyMnJI4nvD/65r6wQaG0YiKdc8j7myNxBL9fpG+W5wEgMPSrerC6jP5jcUiJvAejJCDjGEZqvtWnEHRDArIEt3s4xsxrL/aAH4Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=vKgsFbx8Ep6iOXlXatCgfl2QJqYHidBhx0D+NEJMyLo=;
-        b=OYW0esZZ6B8EKsDTY2vGfRPRy99SJ3ZPr9FUu3Pu00ygV96AVxKm2XvVThu2GBAKBE
-         IP8FqmojtSAn97B4Lnko6Vl/CndCsFkjQRCZk0Qxwx9aYtaPvvzHsKjf1zUQjW0VfNR/
-         WtSXgiVb0XdlwJ/9mBbEY/qE/44PoZJUbuVFtiHJjj/PSHL4+SSu77q6wDgeS91MArDg
-         CFKAaEIYWSsWWAjy1u4icShmr+I5DJekVSuWShrkT7XD0obab0nMc9O4eML32tB31tqm
-         ebfh++CM8OfUbK+c4gTIw2SnurUjVhfdzazZWgqY7dIsctZ870wOjpFN4wqwrhNzpQnM
-         5eXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=vKgsFbx8Ep6iOXlXatCgfl2QJqYHidBhx0D+NEJMyLo=;
-        b=Nw2kFFcti87RmeuE3qxLGlZoxBKTW2l4VilWjCOPp5V538C0JXCFOznayrcEAHTdYR
-         y7PYkpKT+5aBe3TjvCmy0+NrhEissQZUrd4saqmWJzLuaEGsGMhqAro6pr6DF3pSAiZQ
-         wNaNxg8j9u4gy3Q4x4ZWBOctxceZXR1qaYvilP6V4TfjdgZ9y2MBmJGrBbGrAK1MmAir
-         9SxEkIMyhBRfLhfwLknpqvwLHpDcixvHVz54Y7CONAVDkijHf7bKQ8MCArTY3mITsSC2
-         Z8/OjkTo5RwRvye2uFAzeyc1yahzldYEx674jWr/1iDtKbYd+Ag3/l4YpTImZFyvLgXD
-         zQ3w==
-X-Gm-Message-State: APjAAAVM7Is83th1DqK9ZQ9z/tHL7AAALncIsXh6vfhn4B1JmlRNwiU1
-	HIj8Xj8ZqeYBYsiFFRYbwgZ4eGeiyLRc3sIm5EG2eA==
-X-Received: by 2002:a5d:6ac3:: with SMTP id u3mr4661857wrw.206.1572032195543;
- Fri, 25 Oct 2019 12:36:35 -0700 (PDT)
-MIME-Version: 1.0
-References: <20191019073242.21652-1-wambui@karuga.xyz> <2bed3fab-e84d-226d-b552-1ac088fc5d9c@amd.com>
-In-Reply-To: <2bed3fab-e84d-226d-b552-1ac088fc5d9c@amd.com>
-From: Alex Deucher <alexdeucher@gmail.com>
-Date: Fri, 25 Oct 2019 15:36:23 -0400
-Message-ID: <CADnq5_PeCmE-rmUaVDXtLNi20aMzYkeoLUtxHr9yT7P0Nix+qw@mail.gmail.com>
+ d=amdcloud.onmicrosoft.com; s=selector2-amdcloud-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=JCnhIUVzMGcsPJXOAuWP66Vcw/fVbfhmNdyag6Ckgn8=;
+ b=xtnaKHonNZaYKsbTFvDO+dS4kPPZrpSyp17/z+8b8svzwVGIzUCcsO1QyUrUgnqZQ0q+MWZUgsTyMssaOYCMFIq3OpcBQrSOahf6sXnsDC/nqixgUObr2VHgRmKCshtK+WUuFy38yrJICImAXJluGhiLqIrCAk6XIj/59RFBzpM=
+Received: from CY4PR1201MB0230.namprd12.prod.outlook.com (10.172.79.7) by
+ CY4PR1201MB2503.namprd12.prod.outlook.com (10.172.116.137) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2367.24; Wed, 23 Oct 2019 15:09:40 +0000
+Received: from CY4PR1201MB0230.namprd12.prod.outlook.com
+ ([fe80::5471:f58b:733e:1a61]) by CY4PR1201MB0230.namprd12.prod.outlook.com
+ ([fe80::5471:f58b:733e:1a61%7]) with mapi id 15.20.2367.025; Wed, 23 Oct 2019
+ 15:09:40 +0000
+From: Harry Wentland <hwentlan@amd.com>
+To: Wambui Karuga <wambui@karuga.xyz>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>
+CC: "airlied@linux.ie" <airlied@linux.ie>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "amd-gfx@lists.freedesktop.org"
+	<amd-gfx@lists.freedesktop.org>, "outreachy-kernel@googlegroups.com"
+	<outreachy-kernel@googlegroups.com>, "Deucher, Alexander"
+	<Alexander.Deucher@amd.com>, "Koenig, Christian" <Christian.Koenig@amd.com>
 Subject: Re: [PATCH] drm/radeon: remove assignment for return value
-To: Harry Wentland <hwentlan@amd.com>
-Cc: Wambui Karuga <wambui@karuga.xyz>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "airlied@linux.ie" <airlied@linux.ie>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>, 
-	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>, 
-	"Deucher, Alexander" <Alexander.Deucher@amd.com>, "Koenig, Christian" <Christian.Koenig@amd.com>
-Content-Type: text/plain; charset="UTF-8"
+Thread-Topic: [PATCH] drm/radeon: remove assignment for return value
+Thread-Index: AQHVhtpVI7Za6Y3hgUObDSSJ2llK9adoWhCA
+Date: Wed, 23 Oct 2019 15:09:40 +0000
+Message-ID: <2bed3fab-e84d-226d-b552-1ac088fc5d9c@amd.com>
+References: <20191019073242.21652-1-wambui@karuga.xyz>
+In-Reply-To: <20191019073242.21652-1-wambui@karuga.xyz>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [165.204.55.250]
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.2
+x-clientproxiedby: YT1PR01CA0014.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01::27)
+ To CY4PR1201MB0230.namprd12.prod.outlook.com (2603:10b6:910:1e::7)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Harry.Wentland@amd.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: bc7d57a9-bb4f-4a72-8068-08d757cb06b6
+x-ms-traffictypediagnostic: CY4PR1201MB2503:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs:
+ <CY4PR1201MB250318DBA5C9852DCD22C5628C6B0@CY4PR1201MB2503.namprd12.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4303;
+x-forefront-prvs: 019919A9E4
+x-forefront-antispam-report:
+ SFV:NSPM;SFS:(10009020)(4636009)(366004)(39860400002)(346002)(136003)(396003)(376002)(199004)(189003)(305945005)(110136005)(3846002)(2906002)(7736002)(4326008)(6246003)(6116002)(52116002)(6486002)(71190400001)(76176011)(54906003)(4001150100001)(71200400001)(316002)(36756003)(229853002)(99286004)(6436002)(58126008)(6512007)(31696002)(478600001)(81156014)(8936002)(81166006)(446003)(14454004)(8676002)(186003)(11346002)(476003)(31686004)(386003)(5660300002)(53546011)(256004)(102836004)(6506007)(26005)(2616005)(25786009)(66446008)(66946007)(486006)(66476007)(65806001)(66556008)(2501003)(66066001)(65956001)(64756008);DIR:OUT;SFP:1101;SCL:1;SRVR:CY4PR1201MB2503;H:CY4PR1201MB0230.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
+received-spf: None (protection.outlook.com: amd.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ K3EDtX/sOL1kFqbk78Ilb9AjHuw+dEqQZqCQsPOxDMx8ozKRCYGc4J1nO7i9uY4baJ5afvBkIhYP7rLLx5q9uBNYGJgEokJTixxiB6VL/tlXcso0Ra3IPFydz1knckkCQdik5/toyNC+36eHt2pj7Oes/kmYqEDfzeRPNW8oX+C0irIaqTTMyWDJ9kBBFs7HXni/KFZLh0ByGHsB8qoXy6/a53HhCotsJxe9h1JJeAVN9EKdPik/UopnB/rnGfSrXZJhWIXjuBEfZfmC+KD8wDHnc4wSLHNbaSnaqTXZwxZhbZo70fGKZnsPzu928+93MdFPsxbEOVROaPn3xgdxFq3cATo+8Bne5jrtzE94dFJprGb+iOzZeIFEoA8JsMHPVFDy4pSPjycY7x4heqv+PaTx5j4Mcn8ih5C9qLO0zeDpk5POOaM4NQvIydFHIpl9
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <02F5B14052661E4FAD9585FB77B7C616@namprd12.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bc7d57a9-bb4f-4a72-8068-08d757cb06b6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Oct 2019 15:09:40.1734
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: APw0BRkEeZD6y6aICHG2WYezWrsDR0GPYaxdTrbij/u4FYB38VNnyoJA9bgPseyYz92Mtqg12VAv+6tEkMZ7QA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1201MB2503
 
-Applied.  Thanks!
-
-Alex
-
-On Wed, Oct 23, 2019 at 11:09 AM Harry Wentland <hwentlan@amd.com> wrote:
->
-> On 2019-10-19 3:32 a.m., Wambui Karuga wrote:
-> > Remove unnecessary assignment for return value and have the
-> > function return the required value directly.
-> > Issue found by coccinelle:
-> > @@
-> > local idexpression ret;
-> > expression e;
-> > @@
-> >
-> > -ret =
-> > +return
-> >      e;
-> > -return ret;
-> >
-> > Signed-off-by: Wambui Karuga <wambui@karuga.xyz>
->
-> Thanks for your patch.
->
-> Reviewed-by: Harry Wentland <harry.wentland@amd.com>
->
-> Harry
->
->
-> > ---
-> >  drivers/gpu/drm/radeon/cik.c | 8 ++------
-> >  1 file changed, 2 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/radeon/cik.c b/drivers/gpu/drm/radeon/cik.c
-> > index 62eab82a64f9..daff9a2af3be 100644
-> > --- a/drivers/gpu/drm/radeon/cik.c
-> > +++ b/drivers/gpu/drm/radeon/cik.c
-> > @@ -221,9 +221,7 @@ int ci_get_temp(struct radeon_device *rdev)
-> >       else
-> >               actual_temp = temp & 0x1ff;
-> >
-> > -     actual_temp = actual_temp * 1000;
-> > -
-> > -     return actual_temp;
-> > +     return actual_temp * 1000;
-> >  }
-> >
-> >  /* get temperature in millidegrees */
-> > @@ -239,9 +237,7 @@ int kv_get_temp(struct radeon_device *rdev)
-> >       else
-> >               actual_temp = 0;
-> >
-> > -     actual_temp = actual_temp * 1000;
-> > -
-> > -     return actual_temp;
-> > +     return actual_temp * 1000;
-> >  }
-> >
-> >  /*
-> >
-> _______________________________________________
-> amd-gfx mailing list
-> amd-gfx@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/amd-gfx
+T24gMjAxOS0xMC0xOSAzOjMyIGEubS4sIFdhbWJ1aSBLYXJ1Z2Egd3JvdGU6DQo+IFJlbW92ZSB1
+bm5lY2Vzc2FyeSBhc3NpZ25tZW50IGZvciByZXR1cm4gdmFsdWUgYW5kIGhhdmUgdGhlDQo+IGZ1
+bmN0aW9uIHJldHVybiB0aGUgcmVxdWlyZWQgdmFsdWUgZGlyZWN0bHkuDQo+IElzc3VlIGZvdW5k
+IGJ5IGNvY2NpbmVsbGU6DQo+IEBADQo+IGxvY2FsIGlkZXhwcmVzc2lvbiByZXQ7DQo+IGV4cHJl
+c3Npb24gZTsNCj4gQEANCj4gDQo+IC1yZXQgPQ0KPiArcmV0dXJuDQo+ICAgICAgZTsNCj4gLXJl
+dHVybiByZXQ7DQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBXYW1idWkgS2FydWdhIDx3YW1idWlAa2Fy
+dWdhLnh5ej4NCg0KVGhhbmtzIGZvciB5b3VyIHBhdGNoLg0KDQpSZXZpZXdlZC1ieTogSGFycnkg
+V2VudGxhbmQgPGhhcnJ5LndlbnRsYW5kQGFtZC5jb20+DQoNCkhhcnJ5DQoNCg0KPiAtLS0NCj4g
+IGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vY2lrLmMgfCA4ICsrLS0tLS0tDQo+ICAxIGZpbGUgY2hh
+bmdlZCwgMiBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vY2lrLmMgYi9kcml2ZXJzL2dwdS9kcm0vcmFkZW9uL2Np
+ay5jDQo+IGluZGV4IDYyZWFiODJhNjRmOS4uZGFmZjlhMmFmM2JlIDEwMDY0NA0KPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vcmFkZW9uL2Npay5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yYWRl
+b24vY2lrLmMNCj4gQEAgLTIyMSw5ICsyMjEsNyBAQCBpbnQgY2lfZ2V0X3RlbXAoc3RydWN0IHJh
+ZGVvbl9kZXZpY2UgKnJkZXYpDQo+ICAJZWxzZQ0KPiAgCQlhY3R1YWxfdGVtcCA9IHRlbXAgJiAw
+eDFmZjsNCj4gIA0KPiAtCWFjdHVhbF90ZW1wID0gYWN0dWFsX3RlbXAgKiAxMDAwOw0KPiAtDQo+
+IC0JcmV0dXJuIGFjdHVhbF90ZW1wOw0KPiArCXJldHVybiBhY3R1YWxfdGVtcCAqIDEwMDA7DQo+
+ICB9DQo+ICANCj4gIC8qIGdldCB0ZW1wZXJhdHVyZSBpbiBtaWxsaWRlZ3JlZXMgKi8NCj4gQEAg
+LTIzOSw5ICsyMzcsNyBAQCBpbnQga3ZfZ2V0X3RlbXAoc3RydWN0IHJhZGVvbl9kZXZpY2UgKnJk
+ZXYpDQo+ICAJZWxzZQ0KPiAgCQlhY3R1YWxfdGVtcCA9IDA7DQo+ICANCj4gLQlhY3R1YWxfdGVt
+cCA9IGFjdHVhbF90ZW1wICogMTAwMDsNCj4gLQ0KPiAtCXJldHVybiBhY3R1YWxfdGVtcDsNCj4g
+KwlyZXR1cm4gYWN0dWFsX3RlbXAgKiAxMDAwOw0KPiAgfQ0KPiAgDQo+ICAvKg0KPiANCg==
 
