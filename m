@@ -1,109 +1,113 @@
-X-GM-THRID: 6394976013217955840
-X-Received: by 10.107.19.231 with SMTP id 100mr1610310iot.46.1488946381307;
-        Tue, 07 Mar 2017 20:13:01 -0800 (PST)
+X-GM-THRID: 6751503082420436992
+X-Received: by 2002:a25:388f:: with SMTP id f137mr560376yba.223.1571956808995;
+        Thu, 24 Oct 2019 15:40:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.53.6 with SMTP id o6ls2274211otc.47.gmail; Tue, 07 Mar
- 2017 20:13:01 -0800 (PST)
-X-Received: by 10.129.130.7 with SMTP id s7mr1730529ywf.134.1488946381009;
-        Tue, 07 Mar 2017 20:13:01 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id g82si394122pfb.5.2017.03.07.20.13.00
+Received: by 2002:a25:d3cd:: with SMTP id e196ls1178647ybf.12.gmail; Thu, 24
+ Oct 2019 15:40:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyi78KWtS+PNDp3M3GnwEDXlfDZwTvnC74SkVot1Wjpv6HRefpVmWhPNkGT+yaWBeZWMSXa
+X-Received: by 2002:a25:9d83:: with SMTP id v3mr596333ybp.425.1571956807401;
+        Thu, 24 Oct 2019 15:40:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571956807; cv=none;
+        d=google.com; s=arc-20160816;
+        b=pmG/lGrUKw3UBt0Ib/uh6QKuO3UOM3iSrLTSXn/JI8KKOiOLgQdXWHz80c8UNP4Txs
+         LSpiswDy+eKVHN0tn5CSwrDdh4RMBWvstnmQHATYgjoMxocXk8vY0PE/wn/wdDd401FU
+         MTaEuOgEdHlMnL8KVc1h0kL7RXkru2K3VSD/98PcA5uYQrQIaGmKa2raeNYWcXjfpuHp
+         PkIil3FYriHczV3WYrMDm2i3pXQm8wjnvjyBqMRCttnAFYKLj7mVZw1d/aXPVO69Bjfx
+         0CpGhu/rGkt6t/FXQWTL1kaJLCKbRypmGIAeGrJF/fQh6nyIqbtQe+pUBVh9yc97hNY4
+         K9Mw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=d0CvKy4xLdh4BQooTWlo37ffHnUxmb7ZDmr2p07UNSo=;
+        b=d1fWuATzGVdGvPIp16tIpBc+aUHOhoSpsZh4l0jVQWCSEOtdl2y17T1mAVroUvwUXl
+         1rw2UCfFDAEInm2sfVouWKtk2sOfTFug1q90o1ucuylLD3FIwx5xoDdFEcPl8Bbsv8ni
+         z3GbkoNGJVonLvVJL/QQcgaYSvMXo7OeW5m5vHT+n1WVI8gkIWF4cbtqw9UmwBViQAnj
+         x3lRCgaNfWJ0nNyCb9T6PpWK4d5yX68rP9/7wCJJ/1DZkChZabgtLV+oICzjxLsIyfA8
+         Z6O0gPikvNekopL6Xxpx+m9W5b/Mc8hH3/c6yuOUfd3XtN2nLvDvzCEPgoU+bzFPngO1
+         gj7w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SNMN1Oo2;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
+        by gmr-mx.google.com with ESMTPS id l3si20453ybj.5.2019.10.24.15.40.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 20:13:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 24 Oct 2019 15:40:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id v190so2289515pfb.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 20:13:00 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SNMN1Oo2;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x642.google.com with SMTP id v5so144461ply.10
+        for <outreachy-kernel@googlegroups.com>; Thu, 24 Oct 2019 15:40:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=g3XWSpxt/0ACvdZ71ueIuhAqjFizkjFq8YNKlIUnTgg=;
-        b=H1C4/OG6Z+c5Krk1EZIgW8y1fxal0zn+eEoB0hDhrrELJW/JDEsfmmVla8EvMMttwN
-         ZW2X142Ze3FMswQ/OXLiRTwZ//rG1z+QXF63M9H76VTTLF3drdvoWnBwsHG5ZJMJuKBl
-         dQ2tyWf/3AIH8wkuWASY0nrllqUdkuU8oKq7dLSVJq9Jx9FzI01S9Mk4xG8zjtRrUkAb
-         VGmlncCXN7b7VleGrBCaEi6dzpregsHRp1JhzcHYMr43pMLrUTqBAWmB7HeNcNjU9Z68
-         rfcauGenvKgbXcRqo3rxYLw887fXFezUegR4T4FmeZ9Mcgg3mY4LP6pkDGO5yu03SdLe
-         hrtw==
+        h=from:to:cc:subject:date:message-id;
+        bh=d0CvKy4xLdh4BQooTWlo37ffHnUxmb7ZDmr2p07UNSo=;
+        b=SNMN1Oo2H59EgOIDnvDvQLBo20iPFHl208MuL3PTs16X2Y0ba8g4+R4cbF+WmJ+lDv
+         i9toaE99/zrjpKx14sL+eVLlJwYxiOPDQxFBaF+BGiSk3eCJr6AnB2NWNdwXiEz9/kRq
+         hIM2HZZHQZ4q5KZgr4ptkl+v0TdicIs8qlrrspjp98J4vWobFMXt4mBUo1otWKqrYQNg
+         RYMlgSbUNoFbZebWVrs7qC3E1Nbz6y/t8xpE33vQ2HqTvKIWi06Y3ApZz1U0c0muijlA
+         ld8CIL+Cdaoo/hU/IKNAtRk3KIK5rFZ0D38nF6u1lPOhKspKzdZHUMEr22M7Mj0yFKFS
+         gVZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=g3XWSpxt/0ACvdZ71ueIuhAqjFizkjFq8YNKlIUnTgg=;
-        b=CzRYQILLEtfQ1XTxxzHBa0lVPgsGX1GbkJUglAOj2OaVCKpSGeXpsKk9+JmKyzEX5T
-         TLGSgnyQU06A8T6tel02eiDxLRMNIplzP+CpnpRWo8hUpePqiWnZA6b4pgTbKyd2aF6w
-         FZWn+LcShjpRwuvL2OQNZvrrq2REYGzYjkBj9gPKYN6d3wIUfQMb+6jYhM5vHXi+3eYi
-         utb0oFBP3+meoXdUHhVdeKaw3EOLArUAeQ/327NkhkvjYuo+wYzQLe7YEHXRCSez3uAz
-         A26jc48yzhMbliC5MYvLYJK92bC2LIyblEC4/9XZodxZoKecgJxGKQkyJH1zddVK9Gyh
-         GO9Q==
-X-Gm-Message-State: AMke39lbN9iH9oeri0w/oCZo0a1Ixr+2qLf6I4xCi8KzFn97fUSPOf1m1v01PPdwXzdYJw==
-X-Received: by 10.84.238.9 with SMTP id u9mr5664964plk.174.1488946380623;
-        Tue, 07 Mar 2017 20:13:00 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.151])
-        by smtp.gmail.com with ESMTPSA id x15sm2563233pgc.16.2017.03.07.20.12.59
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 20:13:00 -0800 (PST)
-Message-ID: <58bf84cc.0f7c630a.ae1eb.86c4@mx.google.com>
-X-Google-Original-Message-ID: <20170308041246.GA6298@<rvarsha016@gmail.com>>
-Date: Wed, 8 Mar 2017 09:42:46 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Aditya Shankar <aditya.shankar@microchip.com>,
-	Ganesh Krishna <ganesh.krishna@microchip.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: Remove useless cast.
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=d0CvKy4xLdh4BQooTWlo37ffHnUxmb7ZDmr2p07UNSo=;
+        b=BHRhaOoMhgPHGTUl3C9Cnm9rWukJoamnviu6pP35uETIPY800j4G+tBAyo6n+X4XoF
+         iLwZUiR5GRnLJwH7xP8OTEC9iBBPZ7jInnftbP8X4N3MZoctCWhnahPd3Veo0Hb5PSs4
+         EOkm5NG92TKYqlPcpJ9EaPQS9D/WC4MEdV/fjxMScnYIWj9frd9lR9tQ1DmeWv3MyKd8
+         8ENCoNJg11G9b0GlsCHth8rbutsir01WACD0gTLsPYbE5dh6HWN19A8hEsRpLqdMQnP0
+         mC4kd/1pRcNBznTuf8jgXQmeWk4z4zbGQxyEmEDPpOrVaDXmYTq8YMZ3r0WSTppr0qEr
+         y3UA==
+X-Gm-Message-State: APjAAAVwkauvDdae+eZnc1PZDdDQCf8gRtii1UUx5IX0MWryM62rPxLf
+	VUsrxAdj9yRdE9FzfGt+Mlg=
+X-Received: by 2002:a17:902:8e86:: with SMTP id bg6mr190779plb.240.1571956806381;
+        Thu, 24 Oct 2019 15:40:06 -0700 (PDT)
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
+        by smtp.gmail.com with ESMTPSA id j12sm149883pjz.12.2019.10.24.15.40.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 24 Oct 2019 15:40:05 -0700 (PDT)
+From: Jamal Shareef <jamal.k.shareef@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
+	gregkh@linuxfoundation.org
+Subject: [PATCH] staging: most: Change bool init to true/false
+Date: Thu, 24 Oct 2019 15:39:37 -0700
+Message-Id: <20191024223937.2800-1-jamal.k.shareef@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Variable ip_addr is already declared as pointer to u8. Again explicit type
-casting of ip_addr to u8, is not required. Hence this patch removes it
-by using the following coccinelle script.
+ Bool initializations should use true and false.  Bool tests don't need
+ comparisons.  Based on contributions from Joe Perches, Rusty Russell
+ and Bruce W Allan.
 
-@@
-type T;
-T *ptr,p;
-@@
-(
-- (T *)(&p)
-+ &p
-|
-- (T *)ptr
-+ ptr
-|
-- (T *)(ptr)
-+ ptr
-|
-- (T)(p)
-+ p
-)
+ The semantic patch that makes this report is available
+ in scripts/coccinelle/misc/boolinit.cocci.
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+ More information about semantic patching is available at
+ http://coccinelle.lip6.fr/
+
+Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 ---
- drivers/staging/wilc1000/host_interface.c | 2 +-
+ drivers/staging/most/configfs.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/wilc1000/host_interface.c b/drivers/staging/wilc1000/host_interface.c
-index 2429c85..b14b3ae 100644
---- a/drivers/staging/wilc1000/host_interface.c
-+++ b/drivers/staging/wilc1000/host_interface.c
-@@ -385,7 +385,7 @@ static void handle_set_ip_address(struct wilc_vif *vif, u8 *ip_addr, u8 idx)
+diff --git a/drivers/staging/most/configfs.c b/drivers/staging/most/configfs.c
+index 025495657b68..64c65c217d07 100644
+--- a/drivers/staging/most/configfs.c
++++ b/drivers/staging/most/configfs.c
+@@ -487,7 +487,7 @@ static struct config_item *most_snd_grp_make_item(struct config_group *group,
+ 		return ERR_PTR(-ENOMEM);
  
- 	wid.id = (u16)WID_IP_ADDRESS;
- 	wid.type = WID_STR;
--	wid.val = (u8 *)ip_addr;
-+	wid.val = ip_addr;
- 	wid.size = IP_ALEN;
- 
- 	ret = wilc_send_config_pkt(vif, SET_CFG, &wid, 1,
+ 	config_item_init_type_name(&mdev_link->item, name, &mdev_link_type);
+-	mdev_link->create_link = 0;
++	mdev_link->create_link = false;
+ 	strcpy(mdev_link->name, name);
+ 	strcpy(mdev_link->comp, "sound");
+ 	return &mdev_link->item;
 -- 
-2.9.3
+2.17.1
 
 
