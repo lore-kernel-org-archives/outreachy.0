@@ -1,139 +1,149 @@
-X-GM-THRID: 6476179573447852032
-X-Received: by 10.107.52.145 with SMTP id b139mr2648020ioa.98.1507853058872;
-        Thu, 12 Oct 2017 17:04:18 -0700 (PDT)
+X-GM-THRID: 6751743425868988416
+X-Received: by 2002:a37:bd5:: with SMTP id 204mr10604749qkl.137.1572170216078;
+        Sun, 27 Oct 2019 02:56:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.134.134 with SMTP id u128ls1372986itd.2.canary-gmail; Thu,
- 12 Oct 2017 17:04:18 -0700 (PDT)
-X-Received: by 10.107.131.18 with SMTP id f18mr2699472iod.73.1507853058167;
-        Thu, 12 Oct 2017 17:04:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507853058; cv=none;
+Received: by 2002:ac8:2fc8:: with SMTP id m8ls3539229qta.9.gmail; Sun, 27 Oct
+ 2019 02:56:55 -0700 (PDT)
+X-Received: by 2002:ac8:454d:: with SMTP id z13mr10525841qtn.130.1572170215317;
+        Sun, 27 Oct 2019 02:56:55 -0700 (PDT)
+Received: by 2002:a37:6312:0:0:0:0:0 with SMTP id x18msqkb;
+        Fri, 25 Oct 2019 08:49:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwLOqkNPb0q6EVEfcKovy/Jbe/8Mf4RyYelfIwmF1nM/n0y/0ikC916zoRH1hIXBLNnS8y1
+X-Received: by 2002:a1c:4d03:: with SMTP id o3mr4176446wmh.73.1572018595866;
+        Fri, 25 Oct 2019 08:49:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572018595; cv=none;
         d=google.com; s=arc-20160816;
-        b=KvmJ7RHN09Bzof5pVPrfMIxbGZJkP/zTO7etcIqAOWpMWiSO6HkYG7gtSKk9hhfAhf
-         JCizbEu42WL/5S04S8OgKU9IOFakIGUzAyD5VWIeA2ByP7/tB38h3cWBG2q/WPEwnzgE
-         8gDt7j3Az8yfTcaO6QSG2RTnqNYT++9tHN7ep0KJkWe17233Ne1UtCpAUq6Pq2mx/86u
-         ligFiqtYQMb6pnhpFCYPWAO37PP+2cT7NKsCYUA+stPs5GmJdYMofh87CQgw8XiW4H1y
-         5MiiMci3DC0CFpLibH80FZG4XMx/5SmnlSN/dj7z9sEtng0o6tUk2rvc4sa/2e3vhdxg
-         OzRA==
+        b=ZBp4fAsHbE1me+5v2Heyc3PJfsB7e32pe6sNOBBG/9xt1cWnr7xqmfmkxC9ovbGr2h
+         WeLHobjB659BZKDwWHAl/BmBwNykUIwDHd+6R2D/VH1DU3izNukRh+I7F7EULBOObAXI
+         asCUxHQNVgAQEF7ICyGfbjFvZduSpBaj8XWpNS8xspoZGWlK2H9SuYl9u482orn4p79X
+         mUmhYtl9GcERSac7TFSHSmjFHZU88ZZIEeRNGeC6KkVE7859stK9dxpieXa/zN4byUYR
+         qjJ1ZCfaxaE4y2skk5tpr8/Rss27BGZzmW5hJ3ZZ0f1XfRBr9hkAtwF73vcNZXUk7CCE
+         JFEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=O+u1Ci2orjzS6WiUzK1pdagWasxZ0U9ydEX3f0YDJ1c=;
-        b=nxLaB6RDzcK5mbpqNHuVlZN6mHdVBrLf4sm8qV/PnYVsQ5axhrVQU/lL7a1rLooQdQ
-         ckS4pU2QiGLifoqhzo/5ZYmrD2tKRAM21NT/tb9v+FXy6YtMGhhCAYcQh4AS4toSXfJm
-         +nWnnyWdYUV68ZbIyg5MUqZdKIuQNY7IIDcivOs61RCx7MSQ6o5pflqoAi16F1VM/Xbh
-         d5XwIQX81sJAy0yrgXIKUSiEVYp9l67QNZl326SoyRDY7zzwcGNTjWSMi8Iuxl55xxqd
-         dJzNfPrMO4G8eBVJzsohewICxkVM/LtFXI6z+/WIGJyEG/M3bQrQE/aT/R1XfM4Hz69n
-         KpOQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=if6MasUmTR9IhqZ8tFDqBAnRztckqtSWHDEo5AIEaxY=;
+        b=cEqowJv1OQZjLm4F7ZbIorkpHoTGg++5h+Knnsg86pShVvopPhiGRMC70G4qPEFfsq
+         1x8QMgrsc45Wd4CifJQrzVHnOWb+te9CBNonlS46ru+AUie7C12M9LcaFACashQkvThd
+         31CATsiMdXjtk1Ht6hmsfYjAYdK06PM0ZZqboUT8royklPs+xrIl9AERDS80ei5S4xaQ
+         NqhuXhn/ZnmqMpLwk7RtZYBBWQg3oVnqwCyEQuqqjhFWGzMKZOC+XtMChubRI36JooVk
+         39C7I6ve9whGISokgoU9W+g7PiB0LIKR/PabnmYzHpSnmxg3+X7YAD60GZn8ygIStn8B
+         8SMA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PBYFkGa7;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id c29si162351iod.3.2017.10.12.17.04.18
+       dkim=pass header.i=@linaro.org header.s=google header.b="nQxK/QLq";
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id z8si128972wmi.1.2019.10.25.08.49.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 17:04:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 25 Oct 2019 08:49:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PBYFkGa7;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id e64so7243425pfk.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Oct 2017 17:04:18 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="nQxK/QLq";
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by mail-wm1-x341.google.com with SMTP id 6so4585561wmf.0
+        for <outreachy-kernel@googlegroups.com>; Fri, 25 Oct 2019 08:49:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=O+u1Ci2orjzS6WiUzK1pdagWasxZ0U9ydEX3f0YDJ1c=;
-        b=PBYFkGa7lOntXMzbU+IXZs24/x3ayITbkirVECvPkZa+IN28JAUnAhJzjHWhJjxV/R
-         adbBYn2XHxcta8MegbK4uEXAF0AX0dYwWASY8o7h7O+Q1ClgO/20Qz+tYVAQiWZslkjm
-         XGh7mEAt1GA+Rwhi8/V6Wwq+AaZrXAZm3v++LNXyw68sM4+00Ot9dR1h8CWomyJvHUoV
-         1DCUcIp01wD6cxir+PZT7U0gJCfuElkNAVi9h9wJyEjZrAbrqX/NhaWEbUdGFGC7c1EZ
-         KFOjGiODwDdvKU+/OBdBd9Uw+iXthn5NKfe6ggOaglcSDh6WquxwnyBNj6NozPzY/rPn
-         RbuQ==
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=if6MasUmTR9IhqZ8tFDqBAnRztckqtSWHDEo5AIEaxY=;
+        b=nQxK/QLqxTLkWPgWl2sUktxyUUMPw7zBGzd7/8X4Yb94LnIzppWXGYzh47kbcEn5M6
+         a/4gBwQV1BS4PX2FA1MXhiBv6pdFy2WcfkGS8FDmkRHaYom3uB6kdTAkAsmH+tqqzbpd
+         M92hTb+ZxfIaqAwNLQJ7HUGxkbx4miP8Rt5RR5S134EsspFys7szwhYUDe/x20dCHvWL
+         teQ9Lb0mw4sTcH2D/yeXLb5OAShDLxCold4yxA4WyvrZAJYzFIpfxQIheP1D0nAnKdrU
+         z2AZis/IT5jSG5s4LR76sHkjKMLMM24PjNjqNSAI1Xz2FfgKpdynOerOjjFowvV3kBn6
+         JDGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=O+u1Ci2orjzS6WiUzK1pdagWasxZ0U9ydEX3f0YDJ1c=;
-        b=I1fOWhyExSq2jRxesCQPmR4tKMtBcwwrknZhOdl3/dnh+I4qCXvrpYI/S+WzNXS+vj
-         xTqWoJWjO56V4SKCyh9cnyM6JF3BWBUN5QtqRrFQnvSW/olsqZljjKRJ2q/F6FYyFRwh
-         TidMTGb8Z7y1KT1bklx+nNl0KIT2OgKzhXFfCpV5GLsH1w8RQGlipBVdbdvpq4yODVUW
-         /9fDsDW4ICMaar76zKKhiDFSXH/uVf9XOc+Df/S9LusLR5iVXXzCoauMJIvK3z2gIgI0
-         namronGIk56aWBy5ySHxIY1efTpDydlIeuuTCUuM5VdU2RS/frA9V4oWbSPxa/2tnpmi
-         h8Kg==
-X-Gm-Message-State: AMCzsaXhIpfFV2xCoDalj4UAaAvL6QsHjGCloskU2hVGtdpvF8TK4uYw
-	EkbMpOEIDFzUrB4KMYr5/r8=
-X-Google-Smtp-Source: AOwi7QDz6Ma7/WhaHqCFATek6w+jb/Aa/gk2VaqUY43HasNSTkdpLee1A0zuyhuAwLmtE9CcyDE5SA==
-X-Received: by 10.84.138.1 with SMTP id 1mr1534196plo.404.1507853057887;
-        Thu, 12 Oct 2017 17:04:17 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id x79sm12894424pfa.156.2017.10.12.17.04.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2017 17:04:17 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] src: Remove unnecessary cast on void pointer
-Date: Fri, 13 Oct 2017 05:31:16 +0530
-Message-Id: <20171013000116.20107-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=if6MasUmTR9IhqZ8tFDqBAnRztckqtSWHDEo5AIEaxY=;
+        b=l/INOuD/RrGU3H+AVIDIu9UqbxILbrpwHdv9DUpUauynIAM9BNT7JmrhgHjqHQ/rYw
+         vib/sz8cxQe8eOz1mdwHNN/WGyfIpZqsbaS0KoVrhGNizofSMNaoKFWtzN9reVJLy+Or
+         TbdZFY2uVI4zyiVjZURfx0orkIcom8j60PaUiDkfuqvJb9k6qounQeddtwtUVeQ/Oe/d
+         4aARnx7UhmbmNlwGix48q/nu4HhYQplaGdu9PTTNpK3shgniHzCwpR/wI4H0Ai+IP8UW
+         EpNarBooXud+lCwTwDNyielI4pPdKMj8tuaPG7qufnhVjumZZEDLYEV8zhfVAYbIrEKI
+         zNOQ==
+X-Gm-Message-State: APjAAAV+ZUx8n77FtRjnL8G3q1BnZ4ix+1PqlxrmBtUInQhVUSh3Ybdr
+	cfHHH/8Pgtoodax+Je5GNeCWzw==
+X-Received: by 2002:a1c:9d07:: with SMTP id g7mr4200348wme.53.1572018595496;
+        Fri, 25 Oct 2019 08:49:55 -0700 (PDT)
+Return-Path: <jean-philippe@linaro.org>
+Received: from lophozonia ([85.195.192.192])
+        by smtp.gmail.com with ESMTPSA id 5sm2989013wrk.86.2019.10.25.08.49.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Oct 2019 08:49:54 -0700 (PDT)
+Date: Fri, 25 Oct 2019 17:49:53 +0200
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: CristianeNaves <cristianenavescardoso09@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@lip6.fr>,
+	Greg KH <gregkh@linuxfoundation.org>,
+	Joerg Roedel <joro@8bytes.org>
+Subject: Re: [RESEND PATCH] iommu : Remove var of return
+Message-ID: <20191025154953.GA639799@lophozonia>
+References: <20191025151912.GA30952@cristiane-Inspiron-5420>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191025151912.GA30952@cristiane-Inspiron-5420>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Done with following coccinelle patch
+Hi Cristiane,
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
-(
-  *((T *)e)
-|
-  ((T *)x)[...]
-|
-  ((T*)x)->f
-|
+Thanks for the patch, the change looks fine.
 
-- (T*)
-  e
-)
+Just one note: the title of the patch should follow the naming convention
+of the IOMMU subsystem, and provide more context. You can generally find
+out which format is used by a subsystem by running "git log --oneline
+<file>", although virtio-iommu doesn't have many commit so it's not
+completely obvious. For IOMMU, the format is "iommu/<driver>: <Change
+something>", so the first line of this patch could be:
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- src/netlink.c | 2 +-
- src/tcpopt.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+    iommu/virtio: Remove unused variable
 
-diff --git a/src/netlink.c b/src/netlink.c
-index d5d410a..3a7ae62 100644
---- a/src/netlink.c
-+++ b/src/netlink.c
-@@ -2941,7 +2941,7 @@ static int netlink_events_cb(const struct nlmsghdr *nlh, void *data)
- {
- 	int ret = MNL_CB_OK;
- 	uint16_t type = NFNL_MSG_TYPE(nlh->nlmsg_type);
--	struct netlink_mon_handler *monh = (struct netlink_mon_handler *)data;
-+	struct netlink_mon_handler *monh = data;
- 
- 	netlink_events_debug(type, monh->debug_mask);
- 	netlink_events_cache_update(monh, nlh, type);
-diff --git a/src/tcpopt.c b/src/tcpopt.c
-index 7c6c255..c37c9d5 100644
---- a/src/tcpopt.c
-+++ b/src/tcpopt.c
-@@ -86,7 +86,7 @@ static const struct exthdr_desc tcpopt_timestamp = {
- };
- #undef PHT
- 
--#define TCPOPT_OBSOLETE ((struct exthdr_desc *)NULL)
-+#define TCPOPT_OBSOLETE (NULL)
- #define TCPOPT_ECHO 6
- #define TCPOPT_ECHO_REPLY 7
- static const struct exthdr_desc *tcpopt_protocols[] = {
--- 
-2.11.0
+Since this isn't in staging, I think the mailing lists given by
+scripts/get_maintainer.pl should also be on Cc
+(virtualization@lists.linux-foundation.org and
+iommu@lists.linux-foundation.org, but you can omit kernel@vger.kernel.org)
 
+Thanks,
+Jean
+
+On Fri, Oct 25, 2019 at 12:19:12PM -0300, CristianeNaves wrote:
+> Remove the variable of return. Issue found by
+> coccicheck(scripts/coccinelle/misc/returnvar.cocci)
+> 
+> Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> ---
+>  drivers/iommu/virtio-iommu.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
+> index 3ea9d76..d8f29c8 100644
+> --- a/drivers/iommu/virtio-iommu.c
+> +++ b/drivers/iommu/virtio-iommu.c
+> @@ -153,7 +153,6 @@ static off_t viommu_get_write_desc_offset(struct viommu_dev *viommu,
+>   */
+>  static int __viommu_sync_req(struct viommu_dev *viommu)
+>  {
+> -	int ret = 0;
+>  	unsigned int len;
+>  	size_t write_len;
+>  	struct viommu_request *req;
+> @@ -182,7 +181,7 @@ static int __viommu_sync_req(struct viommu_dev *viommu)
+>  		kfree(req);
+>  	}
+>  
+> -	return ret;
+> +	return 0;
+>  }
+>  
+>  static int viommu_sync_req(struct viommu_dev *viommu)
+> -- 
+> 2.7.4
+> 
 
