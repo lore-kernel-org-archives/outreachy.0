@@ -1,127 +1,180 @@
 X-GM-THRID: 6751257049994100736
-X-Received: by 2002:a92:104a:: with SMTP id y71mr22967420ill.242.1572294260480;
-        Mon, 28 Oct 2019 13:24:20 -0700 (PDT)
+X-Received: by 2002:a63:e145:: with SMTP id h5mr1308565pgk.447.1571969809119;
+        Thu, 24 Oct 2019 19:16:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:b104:: with SMTP id t4ls3211710ilh.1.gmail; Mon, 28 Oct
- 2019 13:24:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwRxwCummdBb8heCuQ+29T+8jSLBRiMfHF9RMwdSCVaiQ1arL+NZRwTSCH601nwAu4KQHF0
-X-Received: by 2002:a92:91d3:: with SMTP id e80mr23459400ill.77.1572294259193;
-        Mon, 28 Oct 2019 13:24:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572294259; cv=none;
+Received: by 2002:a63:4458:: with SMTP id t24ls2307331pgk.4.gmail; Thu, 24 Oct
+ 2019 19:16:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw9BRQgUApMlrj0EHavJVohQgfOFq34c3vE/0GzzZQJC0/QNvRKMfMcI2E1k+UcgcnelGJR
+X-Received: by 2002:a63:a05c:: with SMTP id u28mr1362262pgn.333.1571969807231;
+        Thu, 24 Oct 2019 19:16:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571969807; cv=none;
         d=google.com; s=arc-20160816;
-        b=lBzeEW/Zfhpwz2736vtoVicYl5KFsr6VVc5abyfq3ejvFoODms+fd8faDRXaGFA/Ek
-         E80RQePo98EjBsFtj+TEonXHvzsVv8GqI5ziH3aekhhETu1VPS2upMGEWaL25bDiG9Bn
-         QasGnKSonEyD/5PiaeTdWj0CaniV1k7S2DtZca47oJrC4ckzPSI8oDdcSeMC7W1eAM2C
-         ob+STnQGNCk+eme3WKyoY9UNDriFeGHyXrw+maBNeCLe6p26P8B+HJmlFr79xSjvIRiK
-         khxwy90Fro4YyKGHHxYMHxCnh+SHoTLKDh7piiAhTMd4kC0pj9Sm2yonc0zUUWynDfms
-         jFmw==
+        b=hmh+Q44U5QSkoDl+BbfVNKOCOVDe4rstRH1LRIUTldTp7X7XyugvsWPIpJq3+XilBf
+         hUMeZGFO1Na3E8hX/HmPLsRIPh62DklnNjI1fG+1tZujl3ln06nDI7PW1UJKdDMdspfL
+         wN3JcucUTnC4MlUn4kEV4w8rzbWI8m7VGO3neeiekNKj+3jccO0humjmTPfUXUDLHHeV
+         swFFr23F1mhsp9KMDQQQK8x77viejOjmrVu5sKQ9AFK9qhn3p+dTsIEyAp/OroBB9KKw
+         ilEWTDZcFMid9JZImNeEqqGoEowfDcob6Uqe3UOJypyjHkoa5RIZwjaUx601D/XMH5W5
+         Vkbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=A0DQXD9x+eV6q6hRZVxxcF+XxUJKYLAsfMVZV2gCE4M=;
-        b=RBBM2A9JpKZV0/i/PHUE/JVvK9gdGW9J+QvwWeuvvigALGBsHl79HACr9HLqRZcPqN
-         DDI5gXd2x7TaUJM/3SMRGXCVkhUqCsBRv7h1Y0nlcW86nOIu6EogflHzOCPykIRZl08s
-         YkTTPPi6rQWD0eHm9qSb0WDxVEqal3ONMrLmPQhkRZW5LcQYpW8Lk6uRGfyi0Oiyvc2f
-         OAPl1vRR3vkFJsqXLJ9ZzD3nLjQQvE2XXdJ3JDQO/dMTPEkjSETZrK9FiC0CTUm4fHBZ
-         86dEBQ37w0o5gJo01PkuTTJkt8xr6y+juzAlCHlRZ621w81MT8AoVcAEpRERB9hSJBdH
-         pZ7w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=CwPvOdK5K8xg4bP4LWriq5c96Z/9TPJjyIj1EkQrEdQ=;
+        b=o9/ntewrNu4zRZcyAGWif3ctGmCJLhNsmw5C/4Ck3GaIRIFC4aoz5XmemJFQqBapxR
+         g+htrPGfAZWmXg1PdQ97LoHaKhPEnpnOT3+rAQeMJBbhgRLju22BBIarazouCLMCeQW4
+         jJhtrzpGgNp8XkiARozBvefLhZ7/OL/CLrf7BIR0YMCH+eoULNe5M6VGqszBlG2NABks
+         FgizN9aWY3/kqvs3gxBOtRjRPfA4KZ8kiDIJmTrVXX6DpYAADzP3z/zlEDcjVLAHwJ27
+         6mmzz6DzF5E3uFJabC3yZrUKinuS7BSxpoNRcSuUUfDrJAbXYXWjPY8D7bg1GKvROfJI
+         +ZNg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CmI4yWFY;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W0suI0CG;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id h14si69301ilc.0.2019.10.28.13.24.19
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id h1si153456pju.1.2019.10.24.19.16.47
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2019 13:24:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Thu, 24 Oct 2019 19:16:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CmI4yWFY;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W0suI0CG;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id l24so7684883pgh.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 28 Oct 2019 13:24:19 -0700 (PDT)
+Received: by mail-pf1-x443.google.com with SMTP id 3so487596pfb.10
+        for <outreachy-kernel@googlegroups.com>; Thu, 24 Oct 2019 19:16:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=A0DQXD9x+eV6q6hRZVxxcF+XxUJKYLAsfMVZV2gCE4M=;
-        b=CmI4yWFYOJFWeXEPQ5gwN0qpO3E3KUSBGpOn1q4OdhxC7jno0bbheuR3xap2WwaU7Q
-         Pqw1BF8cgCEDujcwnVPk+6Ay9YZmpJSb2Fzy8Es/kyyZEAm2CPkD3Hljkkq3qo6TAkRz
-         TZoVuo9kGBz/oNAM5rliu06fuCcFTVzZLv7Nb49zLbx7BpO+RVeb7zzIE56S92kcyzGL
-         zZdD1R6giBYYUyHv6qzBQ/iNtYvcULSCA7gVnDG+Ni8NtD2DaXYhzL6iUCyyK2rPCl/z
-         CRwICLnoRxHCcCkyXCFV2tPeD8T6B//keHS3FJojmCRkowbA838t9f5AGXTdpbBXVMUI
-         roEQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=CwPvOdK5K8xg4bP4LWriq5c96Z/9TPJjyIj1EkQrEdQ=;
+        b=W0suI0CGHhNBk6B+ZUl87iQFmSxHIniZ+UOC5nyeLUNpU8XYmgfJcj0qo6icwqqJQg
+         9wSaaHjaa0ETYaF/5oPVc8E+XHlBjGiE4X3ID9lHNiW0dsyFrQXYs4u6DCn8lLn1KugL
+         m2EcXwC/ZSbPjwHiqjJg68i7rBGokLVCuyOGEfibtiwDqL3IS+VCpdPj8NZ6jznmVuBA
+         S8e5xNf80uLy0zBhiNjXVWzERSnoP8cO3e5dtfiS/8bsyQXrSBvWupdEJFHkqioE20+Y
+         d70bSrB5YoFsGaeiatSysL/pHxuTATw2MNM/tY+WehTf0z/LzPf9UeJvGnYDZ+11MOVl
+         Jgog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=A0DQXD9x+eV6q6hRZVxxcF+XxUJKYLAsfMVZV2gCE4M=;
-        b=JDt/6alxxX52c8HtYA7TXcklplplLkqMENz5OGywbIrKn4ig0OR5vXU/9JyHB/vltH
-         HmGIh1z0XqsLlZ/9ekE4kqO49n/jcCMZ1SpzXTiFrp+2Bwz94u64wkXlzrZrA+f2Rn6t
-         J+GTnzTogHe33YNvE7rXSf56b27onYQ5bOsZDms/TL4Lcrj77AwBKXrIsO7WcfaYHgWU
-         D7+yMe7VdM2utuMH0j/baCHV3O2t6chLTvKlBQsErZ5oIS8u4CSJ3KRhRzXFjD/Y6rRK
-         D566y+X2w0uGwEx3p5HNFQN65lcnkfMU3P1C4BF0RTsTtpQahMPXq8vzROR3drZrT2pq
-         AVcw==
-X-Gm-Message-State: APjAAAVXKzwOt9bParYkEo7Ox0UuDfaGzTSGlHipe8/Ode4P2rq4Z7tl
-	VJ9ZW0eokMP1myghL/OU2X4=
-X-Received: by 2002:a63:d802:: with SMTP id b2mr22985990pgh.414.1572294258608;
-        Mon, 28 Oct 2019 13:24:18 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=CwPvOdK5K8xg4bP4LWriq5c96Z/9TPJjyIj1EkQrEdQ=;
+        b=Vi+Zf2cFw1XHmHmhbwgAAIlUuHAH6bSXIWgJhgqpE/l+XUT9iRqXRXTILGLQ5d78/6
+         YDqWFQKbmAbxyRtiYz5HeO/fHdaGz58WI86iQ4A0e5IvDv/JxDjgYAZYF4O4skApi1ds
+         rksLGEZO/sg/j57JVV04GmSJsAhXQCR/SatSB+nKM2MwhyJIrcaRQVqJNpXMXQF96vWv
+         ULfdJhI0uiQSZGLC4o2TKdtEn6RuUfz716bEVGf3nF+gVbKBhe3Op/YwzkTL9iw4PN8V
+         3G543FZPxaeco4qTZ1Td4JowWr8ennm/KnXt3+a/mReavRb++qBqWWtQvC6K92C6byNJ
+         9lbA==
+X-Gm-Message-State: APjAAAXTDmsmCDHh8CPrS/QD1ZnSCiQaaVAgrpFpACXwvlM1I7Nbxn+R
+	Xpncd0g0ghw6d19fOjxuJkXoJLAN
+X-Received: by 2002:a65:498a:: with SMTP id r10mr1352762pgs.131.1571969806391;
+        Thu, 24 Oct 2019 19:16:46 -0700 (PDT)
 Return-Path: <jamal.k.shareef@gmail.com>
 Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id g187sm11715539pgc.12.2019.10.28.13.24.17
+        by smtp.gmail.com with ESMTPSA id 6sm285159pfz.156.2019.10.24.19.16.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2019 13:24:18 -0700 (PDT)
+        Thu, 24 Oct 2019 19:16:45 -0700 (PDT)
+Date: Thu, 24 Oct 2019 19:16:44 -0700
 From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH v3 2/2] staging: kpc2000: kpc_i2c: Remove commented code
-Date: Mon, 28 Oct 2019 13:24:04 -0700
-Message-Id: <c101a2ff94b3d5dcd467407bfa083679f3bbc612.1572293975.git.jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1572293975.git.jamal.k.shareef@gmail.com>
-References: <cover.1572293975.git.jamal.k.shareef@gmail.com>
-In-Reply-To: <cover.1572293975.git.jamal.k.shareef@gmail.com>
-References: <cover.1572293975.git.jamal.k.shareef@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2 1/2] staging: kpc2000: kpc_i2c: Fix lines over 80 chars
+Message-ID: <20191025021644.GA8713@jamal-XPS-13-9343>
+References: <cover.1571948876.git.jamal.k.shareef@gmail.com>
+ <e9fce17736dbd3219b4ad5c18b3436ae34299dcd.1571948876.git.jamal.k.shareef@gmail.com>
+ <20191025012648.GA265361@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191025012648.GA265361@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Remove some commented out code.
+On Thu, Oct 24, 2019 at 09:26:48PM -0400, Greg KH wrote:
+> On Thu, Oct 24, 2019 at 01:35:19PM -0700, Jamal Shareef wrote:
+> > Fix lines over 80 characters warnings.
+> > issue found by checkpatch.
+> > 
+> > Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+> > ---
+> >  drivers/staging/kpc2000/kpc2000_i2c.c | 203 ++++++++++++++++++--------
+> >  1 file changed, 139 insertions(+), 64 deletions(-)
+> > 
+> > diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
+> > index bc02534d8dc3..69128fd7fd5e 100644
+> > --- a/drivers/staging/kpc2000/kpc2000_i2c.c
+> > +++ b/drivers/staging/kpc2000/kpc2000_i2c.c
+> > @@ -99,7 +99,8 @@ struct i2c_device {
+> >  #define SMBHSTSTS_INTR          0x02
+> >  #define SMBHSTSTS_HOST_BUSY     0x01
+> >  
+> > -#define STATUS_FLAGS        (SMBHSTSTS_BYTE_DONE | SMBHSTSTS_FAILED | SMBHSTSTS_BUS_ERR | SMBHSTSTS_DEV_ERR | SMBHSTSTS_INTR)
+> > +#define STATUS_FLAGS        (SMBHSTSTS_BYTE_DONE | SMBHSTSTS_FAILED | \
+> 
+> Shouldn't you use a tab in this line?
+> 
+> > +		SMBHSTSTS_BUS_ERR | SMBHSTSTS_DEV_ERR | SMBHSTSTS_INTR)
+> 
+> That does not line up very well, it looks worse now :(
+>
+Will revise this.
+> 
+> >  
+> >  /* Older devices have their ID defined in <linux/pci_ids.h> */
+> >  #define PCI_DEVICE_ID_INTEL_COUGARPOINT_SMBUS       0x1c22
+> > @@ -136,7 +137,9 @@ static int i801_check_pre(struct i2c_device *priv)
+> >  
+> >  	status = inb_p(SMBHSTSTS(priv));
+> >  	if (status & SMBHSTSTS_HOST_BUSY) {
+> > -		dev_err(&priv->adapter.dev, "SMBus is busy, can't use it! (status=%x)\n", status);
+> > +		dev_err(&priv->adapter.dev,
+> > +			"SMBus is busy, can't use it! (status=%x)\n",
+> > +			status);
+> 
+> Why did you put status on a new line?
+>
+This was a requested change in Patch v1. Can revert if necessary.
+> >  		return -EBUSY;
+> >  	}
+> >  
+> > @@ -146,7 +149,9 @@ static int i801_check_pre(struct i2c_device *priv)
+> >  		outb_p(status, SMBHSTSTS(priv));
+> >  		status = inb_p(SMBHSTSTS(priv)) & STATUS_FLAGS;
+> >  		if (status) {
+> > -			dev_err(&priv->adapter.dev, "Failed clearing status flags (%02x)\n", status);
+> > +			dev_err(&priv->adapter.dev,
+> > +				"Failed clearing status flags (%02x)\n",
+> > +				status);
+> 
+> Same here, why this last line change?
+> 
+Same as above
+> 
+> 
+> >  			return -EBUSY;
+> >  		}
+> >  	}
+> > @@ -162,15 +167,20 @@ static int i801_check_post(struct i2c_device *priv, int status, int timeout)
+> >  	if (timeout) {
+> >  		dev_err(&priv->adapter.dev, "Transaction timeout\n");
+> >  		/* try to stop the current command */
+> > -		dev_dbg(&priv->adapter.dev, "Terminating the current operation\n");
+> > -		outb_p(inb_p(SMBHSTCNT(priv)) | SMBHSTCNT_KILL, SMBHSTCNT(priv));
+> > +		dev_dbg(&priv->adapter.dev,
+> > +			"Terminating the current operation\n");
+> > +		outb_p(inb_p(SMBHSTCNT(priv)) | SMBHSTCNT_KILL,
+> > +		       SMBHSTCNT(priv));
+> 
+> SHouldn't this line up a bit differently?
+> 
+> You might want to use a text editor that handles this properly when
+> adding indentation.  I know vim does it, and I imagine that emacs does
+> as well.
+> 
+> thanks,
+> 
+> greg k-h
 
-Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
----
- drivers/staging/kpc2000/kpc2000_i2c.c | 3 ---
- 1 file changed, 3 deletions(-)
+Checkpatch warns if it is indented any other way, is this not correct?
+It looks like the second argument to outb_p.
 
-diff --git a/drivers/staging/kpc2000/kpc2000_i2c.c b/drivers/staging/kpc2000/kpc2000_i2c.c
-index 0412dab68670..5460bf973c9c 100644
---- a/drivers/staging/kpc2000/kpc2000_i2c.c
-+++ b/drivers/staging/kpc2000/kpc2000_i2c.c
-@@ -144,7 +144,6 @@ static int i801_check_pre(struct i2c_device *priv)
- 
- 	status &= STATUS_FLAGS;
- 	if (status) {
--		//dev_dbg(&priv->adapter.dev, "Clearing status flags (%02x)\n", status);
- 		outb_p(status, SMBHSTSTS(priv));
- 		status = inb_p(SMBHSTSTS(priv)) & STATUS_FLAGS;
- 		if (status) {
-@@ -526,7 +525,6 @@ static s32 i801_access(struct i2c_adapter *adap, u16 addr,
- 	}
- 
- 	if (block) {
--		//ret = 0;
- 		dev_dbg(&priv->adapter.dev, "  [acc] block: yes\n");
- 		ret = i801_block_transaction(priv, data, read_write, size,
- 					     hwpec);
-@@ -682,7 +680,6 @@ static int pi2c_probe(struct platform_device *pldev)
- 	/* Retry up to 3 times on lost arbitration */
- 	priv->adapter.retries = 3;
- 
--	//snprintf(priv->adapter.name, sizeof(priv->adapter.name), "Fake SMBus I801 adapter at %04lx", priv->smba);
- 	snprintf(priv->adapter.name, sizeof(priv->adapter.name),
- 		 "Fake SMBus I801 adapter");
- 
--- 
-2.17.1
-
+Jamal
 
