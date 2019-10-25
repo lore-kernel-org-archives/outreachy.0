@@ -1,105 +1,88 @@
-X-GM-THRID: 6528054471582285824
-X-Received: by 10.176.20.146 with SMTP id d18mr1303556uae.96.1519931124303;
-        Thu, 01 Mar 2018 11:05:24 -0800 (PST)
+X-GM-THRID: 6748523404915113984
+X-Received: by 2002:a81:8490:: with SMTP id u138mr547591ywf.156.1571972671280;
+        Thu, 24 Oct 2019 20:04:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.124.135 with SMTP id x129ls3905989vkc.9.gmail; Thu, 01 Mar
- 2018 11:05:23 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtnRzVjo/30C8qCblGKzfHo0GPvzYRUs6dh4ioPusU1caWwUPfwcfRztlYS3MV6obbcOsRa
-X-Received: by 10.31.244.132 with SMTP id s126mr1282131vkh.8.1519931123465;
-        Thu, 01 Mar 2018 11:05:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519931123; cv=none;
+Received: by 2002:a81:7845:: with SMTP id t66ls102750ywc.14.gmail; Thu, 24 Oct
+ 2019 20:04:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzxKt4/jXlz+AF1/CJ9bykVJzd1QXo3VOFJqfGdByEIHwN+46yLQsWTijBtmI/lPk/4RW4W
+X-Received: by 2002:a81:2a46:: with SMTP id q67mr581721ywq.384.1571972669915;
+        Thu, 24 Oct 2019 20:04:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571972669; cv=none;
         d=google.com; s=arc-20160816;
-        b=uUMWgTLGYg/k2Uif7BX79Zq2CcADy44o9F6U+al+HvKDHPddLNC2HK6LrMfnbjOjX3
-         a5Y0lxvrOG6IuuDt3qwEadI3btLi8/5kpYfPWJjoEZTuOB1ZqbZxewdx9t+CwW78TSZB
-         Gu8TtyFH8mA09CC2TA5+QvyxMYdzqEDw5Uzhxd9JBhrwityoXjIE5v5Pi24QqShRLq4f
-         EXHDPvBO/1jyNMS9OmTVESDLGI/lHZC+/OoIKi7ESt5ARWc2EMHBVoKhyJhFVTCC7L41
-         TeGn2a1L00LSClehP9WtcsjswnPM8+jmDXQeSTI9PU7VjN3ag8IkNZyrFcpwryEHUJ8N
-         YcSw==
+        b=Hiqewqvbj/Uxoh+HY8/qmFJQvZ4oAoyvwL45bzIYEdcNdhryFGUxp8dq7VjGNDaSry
+         RRi2sng0ADM4SguqAh5wcRLk0LMqbZw4Qjjn3WY62KtvK+8Euz1IYwpiUnp8qrF0wtmy
+         hbCJjTEZqvhOyeC+8j64285uzKd5Yvoyn1+inwdb5D4LWb/qKgC6ilMtLlspevrnFTBN
+         cfIsuV3GBoHgoayjL9FNqKRmbJHYVL6h0pwyoPKJbR5LGRWTFcsjASxNU4r+iAX+uXz7
+         HwF0r+OKPOgJZxotY9W/yyiYtvyvDEs3mWgVlNBuLfk5s3zUQZTpGYAapujxqJuACnP0
+         z6NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Cte7jvfcg+2U7mfdT14sOqfvx/VIniSt/wvsUzu6pVk=;
-        b=fz6byu98dMQMOS1JzqI3sZp9y54EPJX0kiGlINyCS7v87gF00+hVhJ75h4cDiVG1YX
-         EjpEbUxfHNEcT/YX/UYW/iuGoIPLSZva3IqnGgMrof6AhZ0AlSzD3Lb7zuBDeheE3W82
-         QDmxt/puHIzS5g3uzQNFOS6Vd+x0+8h1RX4K75HZunQY+es7CXKx095p1+LroQM0/nhw
-         9J0HIXwVJQFYVsTKQnZ1Lnkmvef2Ajt1ID/R+3dviqsjn4t3JWvMEX81sAAyrpBtL17Y
-         QrTPDo8sZDP2HGxcLscvqWjCY6bu5Sdsv8M4oaOeqLoPmWaNc56tgfIylSGZRGubCUsA
-         Jafw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=K3RpdxDwdNF/nG0mhYRT6tsrDtvPeOsGS9zk2J0KBvs=;
+        b=B56dq5NKClVfE9smFppyXShJ0zGL18O+uzYkaFQO3n7HGRV4vSR5JUzzM42fsWXjAi
+         TB9Py1Flss7fSi3hcUIqI3sYWHiF/XCAhKUXGRGth5U0qmnKAwwdr1GEZG4OEPYfetGv
+         ZYB/WbDlN0OsxglY2t4ew6SLczZDRp7OOqJVp2V5k1h53wYKamlCsFeCNvZ4wm2zpNzr
+         evffWdc7nkVjapK2qqodnDpQIfD01rHUj0Mz4gHQuifQxsc6zllDYi2FA34rZp6/QYBM
+         3e5LlrheYf13wV6zVTbCJe+qNgq7cCxZY+T9xlsiNq+ht8J4CEvnTtQ6hNghILEpCLHd
+         kXbg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=gePXvKI1;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x242.google.com (mail-pl0-x242.google.com. [2607:f8b0:400e:c01::242])
-        by gmr-mx.google.com with ESMTPS id x135si277736vke.2.2018.03.01.11.05.23
+       dkim=pass header.i=@kernel.org header.s=default header.b=KgpY2v7J;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id r185si63807ywe.2.2019.10.24.20.04.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Mar 2018 11:05:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::242 as permitted sender) client-ip=2607:f8b0:400e:c01::242;
+        Thu, 24 Oct 2019 20:04:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=gePXvKI1;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::242 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x242.google.com with SMTP id u13-v6so4196435plq.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Mar 2018 11:05:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=Cte7jvfcg+2U7mfdT14sOqfvx/VIniSt/wvsUzu6pVk=;
-        b=gePXvKI1bcrt+DCUEDGMBkiYHQXlkoD0GdJV1ctrdQ9a+jpNmmHrupTY7UR/ER8TuM
-         NogbTTTVtmnY6ZyWMj7nPdmKUadzwZZIgVyMKlHErHfbiP9SCol6vqhUBa54p4Gh7G0s
-         DmNNzmi5Cnilhs91QdITkRIyGKb1Evoz+mBOA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Cte7jvfcg+2U7mfdT14sOqfvx/VIniSt/wvsUzu6pVk=;
-        b=gyW8kuE35wksX6SOshcRLAkK2CNBbyeoy/r8hcWFhuFRi0PlT1T+U7dzeq/DUapIwt
-         YZhWumbCm4nY81MnZxW1AtZivh/M42Qdwn/xLRF8mIkcbcUV0lQ93jCD+KtGzXnXa54N
-         JcM5wzFlrfP/dioIxKH3+bzwsNEGA2zuBusUsbEgap/4IHkij3avjjdRHeQoB7bS3yui
-         IvKyMqsHyYCKb2fkCA2bThqgxprJq3V/8PFoXjQOlaLiimxsI72VfSkH5hRl1bNMATer
-         t5Qj9Z754KFtE3KRCBkKPdDddRNgvIB0w84aONO5N/YDOWUQO7vmQHhhutkFr7wfmZsc
-         PYBQ==
-X-Gm-Message-State: APf1xPC96mZjUkArzKHugZnLrWqT0S8KUTW/CdbHPE9a9gkpgb+dcU51
-	Ig7GqbrO6oMtiK/OEwILhSocaDFN
-X-Received: by 2002:a17:902:d682:: with SMTP id v2-v6mr2818298ply.348.1519931122123;
-        Thu, 01 Mar 2018 11:05:22 -0800 (PST)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from ashoka-ThinkCentre-E73z.internal.ashoka.edu.in ([125.22.40.140])
-        by smtp.gmail.com with ESMTPSA id e5sm7176269pgs.17.2018.03.01.11.05.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 01 Mar 2018 11:05:21 -0800 (PST)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH v2] staging: ks7010: Remove spaces after typecast to int
-Date: Fri,  2 Mar 2018 00:35:10 +0530
-Message-Id: <1519931110-2763-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 1.9.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=KgpY2v7J;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [38.98.37.137])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id A27C521928;
+	Fri, 25 Oct 2019 03:04:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1571972668;
+	bh=slJQ/Xdb2WOEfE9C25EE2zsxNzero2Keb0GkyM3Yea8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KgpY2v7JlJyoFiDiiVk24Mi7KG7+tpi2jJ7ydF6QsMLY/xQ/DCEPWcGJkfYiGfQ5g
+	 IjwNySiLZHEvl5Gte60+4g4AmJCtWI3J361HVSXCPtMKZFiGpd+ef3xwXZvCYbNpni
+	 bXJOod4FklGdSrdHp7st/Q+SZUKDH/jSQTru21WA=
+Date: Thu, 24 Oct 2019 23:02:48 -0400
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com
+Subject: Re: [Outreachy kernel] [PATCH v4] staging: sm750fb: Edit CamelCase
+ in dvi/sii164 files
+Message-ID: <20191025030248.GA457824@kroah.com>
+References: <20191021010138.27604-1-jamal.k.shareef@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191021010138.27604-1-jamal.k.shareef@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Remove spaces after typecast. Issue found with checkpatch.
+On Sun, Oct 20, 2019 at 06:01:38PM -0700, Jamal Shareef wrote:
+> Edits CamelCase naming in a group of dependent
+> sm750fb files. Issue found by checkpatch.
+> 
+> Removes hungarian notation as well as part of fix to
+> CamelCase in a given word.
+> 
+> Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
-Changes in v2:
- - Revert to typecasting after removing in version 1.
- - Remove space after typecasting.
+You have sent a bunch of these CamelCase fixes for this driver, yet I
+have no idea which ones are to be applied, nor in what order.  Also I
+tried applying some of them, and the build breaks :(
 
- drivers/staging/ks7010/ks_wlan_net.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+So can you resend all of the outstanding ones, in a numbered patch
+series so I have a chance to get it right, after you test that they
+build properly?
 
-diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-index 482af50..91acf87 100644
---- a/drivers/staging/ks7010/ks_wlan_net.c
-+++ b/drivers/staging/ks7010/ks_wlan_net.c
-@@ -208,7 +208,7 @@ static int ks_wlan_set_freq(struct net_device *dev,
- 	/* for SLEEP MODE */
- 	/* If setting by frequency, convert to a channel */
- 	if ((fwrq->e == 1) &&
--	    (fwrq->m >= (int) 2.412e8) && (fwrq->m <= (int) 2.487e8)) {
-+	    (fwrq->m >= (int)2.412e8) && (fwrq->m <= (int)2.487e8)) {
- 		int f = fwrq->m / 100000;
- 		int c = 0;
- 
--- 
-1.9.1
+thanks,
 
+greg k-h
 
