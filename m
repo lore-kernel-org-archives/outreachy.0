@@ -1,116 +1,150 @@
 X-GM-THRID: 6751365568986611712
-X-Received: by 2002:ab0:22d3:: with SMTP id z19mr4860808uam.108.1572249478662;
-        Mon, 28 Oct 2019 00:57:58 -0700 (PDT)
+X-Received: by 2002:a63:1606:: with SMTP id w6mr11636902pgl.245.1572117068976;
+        Sat, 26 Oct 2019 12:11:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:324a:: with SMTP id y10ls810406uad.8.gmail; Mon, 28 Oct
- 2019 00:57:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyIDXIh6E2mxoxO2zp+8f1cUxQ80/8hUzQBMyjS5P79Yrz23//un+/T8XnfQI7ZU1jq3fZH
-X-Received: by 2002:ab0:2395:: with SMTP id b21mr7706098uan.122.1572249477594;
-        Mon, 28 Oct 2019 00:57:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572249477; cv=none;
+Received: by 2002:a62:2c1:: with SMTP id 184ls1718192pfc.7.gmail; Sat, 26 Oct
+ 2019 12:11:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy8MBn7jWyIFWYxljQNNIGMML3tarl0IXFfh9VbTwsRiK2TZ7si2DE3XvHdM8DPcsGWDRLZ
+X-Received: by 2002:a65:49ca:: with SMTP id t10mr12364811pgs.310.1572117067986;
+        Sat, 26 Oct 2019 12:11:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572117067; cv=none;
         d=google.com; s=arc-20160816;
-        b=knyRNvkya9bohQguKQuvKFlWOnBKE6Mdv8Dft/i8m5bzamnZSkac4QH3UjPlzH6q/r
-         lCrc3kU1nQ4KdjEY/4qQyB9KoBn7BWMxbGVtwDb18NVtq1/Pp5AZBGM3HbqLonSuYaTY
-         zcDypwS7T+EYOeBd8ZsMbDEtwKfA4kVs1Tj1r5F8jqlhKwC5Rrs25g9hF+h1ZD/16tjx
-         x5gemEAm9yoD4iRRUNwnS/u5q/D9iqyAh1V76PKrrJ6QVp7vt2kUr9PUUl6MpSPg9CzW
-         J8va37XMl/1C3MaLAy5BUxRYz7uo0sNillxXijwGcLcdJoS5V9rGBuP3TVn5Pe10FJJz
-         BE9w==
+        b=Fv6gk/RDcagXd3kXQSVrNtmvJBcgURmjG4X+FWOgN8eluPGf3bD9zO1KZkt9+94FVX
+         u7jrl+olH2tLLK2l5qPgs3ikANkt5RHwblMdbWZzokbD4FLh45DQMneSvZA5eq+a8R5I
+         lvgWfCkVioS9rh8e9PY4SWFkdpqKl9cFzsD7uIqqFV2bZONRS5eW7Y0E+GmO080GkB0R
+         rc3jSwulHqA7uxof4PyGSUEwE+j2p5RZwM3Z6sE6TJyH4c/yEfKF9B+7M1gJIuxWJ/mH
+         MJLIvuNMhCcZ1mNdyhC2JyHYwF5uAtxnBfOGWMT4tPwVT4PozGsa2UArpneIghlMgT9X
+         CM/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=jQ6PJCli6p5m7RwQspPzyqTvse7VkcpWcjvd3zOJ4+A=;
-        b=c688d1pkPzTUVpqVyuRvcVqtm89dtv6DZugQ/nh7tAgpSFsLnhwimcHKkh6tyufNxT
-         pr+mf9vs+zaED1QpWTowLBjIjH8zcL7e4bGjSJERVXnuP2SWZvbzfv3XlMmr5akNYyW2
-         uXe8kP4b+SwUOn+mKz3hvcyybh2FXxC31onChYsdGXIKAApCW/F3Qmes7wCfxCFg22Dy
-         CBVYlfYrpOWAOfH5htPGkJiJ6O938nBmAWlrXvHenS83GYPqmlUHQV2APlpXwap95BpS
-         FQK4hnq6lFdtk/YbrXwbPvwGFr5gbUfIBl0GeDNiWNTMGAw+E6oz8SKpNIC737G/1l64
-         0FFw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=4M2PPQu81RMk5nsX69ndHO0vXv7tXeNQzA+s8i3K/j0=;
+        b=znhqi10PvVxHqRwjQtfHSP8o9LJQWcbd3n/fp5nf4u7vilM9b8Q9oPEN/FQWgZ+Fuq
+         rXBCu+QsZAQ8lStLNxV0DdKxm9RavusWWfxwORXLLRFCysBmurkoBXEhjqnM3vmrdo9j
+         NW/8x8cYcrNEUEVEf059K0rW1DBBSCrfN25U8tsM28GTz0pUD/WHVAMx4azFticqng5M
+         wV+VVcnkYC372XxMJ61rIz7ZfnIYjCRNoZvXNyP6a4eVrHanDy3lgVd2LcbvBvwEXaEo
+         8lTwFT+q1OhkMfljWCMO+iX/lAioUN/QF0nkGmVPEmvEKj28nXQYF6KqoTo1jPYtplk3
+         vKrQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=HAQhKnpr;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
-        by gmr-mx.google.com with ESMTPS id p78si614550vkf.0.2019.10.28.00.57.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nxctGgrJ;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from mail-qk1-x743.google.com (mail-qk1-x743.google.com. [2607:f8b0:4864:20::743])
+        by gmr-mx.google.com with ESMTPS id h4si261006pjt.2.2019.10.26.12.11.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Oct 2019 00:57:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 26 Oct 2019 12:11:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) client-ip=2607:f8b0:4864:20::743;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=HAQhKnpr;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
-	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S7s6n4177032;
-	Mon, 28 Oct 2019 07:57:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=jQ6PJCli6p5m7RwQspPzyqTvse7VkcpWcjvd3zOJ4+A=;
- b=HAQhKnprpT+rni6UrLSaaxlllVPKP9qFG9g/DnYovW+Mey13732trRR/riMkNnRM66Fn
- gl7+/0Gc0h4RVBzI/RlvZ5ewCa+Jh8JsFdLxEhMof//9KM4oWmqxuAg6Iu22b74X/Hg5
- b325kHQWHNF2LPUsPxCy7bAdIUu6yqsZlHjduOVuIjVUEkR9w2u6qSeZGqM9IRXopZJT
- tl25BUtCGQvLWQPAl8gIpD1LotwFU0P6kx+GMTjOEkDLAeWyzHqNozAKQHHEKnZHfarK
- PJJOeZcQU6AkeYMFNqBs9JumOrSSdf5aqsQH78Kfl9E5zmX+aFSOgTBx1R/sE+tLebyS jA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
-	by userp2120.oracle.com with ESMTP id 2vvumf50na-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 28 Oct 2019 07:57:50 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
-	by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S7s07f105156;
-	Mon, 28 Oct 2019 07:57:50 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by userp3020.oracle.com with ESMTP id 2vw09f7h59-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 28 Oct 2019 07:57:50 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9S7vmEl029995;
-	Mon, 28 Oct 2019 07:57:49 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Mon, 28 Oct 2019 00:57:47 -0700
-Date: Mon, 28 Oct 2019 10:57:38 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Cristiane Naves <cristianenavescardoso09@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
-        Todd Poynor <toddpoynor@google.com>
-Subject: Re: [RESEND PATCH] staging: gasket: Fix lines ending with a '('
-Message-ID: <20191028075738.GC1944@kadam>
-References: <20191025232935.GA813@cristiane-Inspiron-5420>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nxctGgrJ;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x743.google.com with SMTP id 71so4911342qkl.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 12:11:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=4M2PPQu81RMk5nsX69ndHO0vXv7tXeNQzA+s8i3K/j0=;
+        b=nxctGgrJoLNSbguV4WSIiZryHyyuV9e4Lvv6AkOUd+N/OEu6UteDzWWerdaNpG79vL
+         jue5VXecsZTJHH3IrZBtMl34GEiwssY7I4lQxe2lnVY0A5a1GRtNi3SAms8iftHZxHzH
+         /F817JeWeytYvt1RJgQYbjpGtbZbn8knYH1fBO9ckc1K0wqK83vrEZWq8QMoplEvf4ti
+         n9yRs9zNiwzm3sxnV6dJ5HNKLmNvcwkQO9hvO/sLGlHIRh6UBYRW95a7tcUksgotx1Ah
+         yK+IEPKFLdC+lH9Xlf/xODpQgN/XB0VC9dLqjZWvBtneTaj8VCHBoNOjlGL6WFPKJ6tE
+         pQNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=4M2PPQu81RMk5nsX69ndHO0vXv7tXeNQzA+s8i3K/j0=;
+        b=GPGWuyqy9yiForHN7NTio96WJPkK3oPaIGtv8jYJP9vxXyI7XqlQOCVOEC85x/JdiK
+         ZjYB43/18D2YdxmUprbOnfqfToTUKWOyNeAllqnqC+0GzVhRA/TPJif5oUYngSorr4VI
+         pHq8U5F6VgZWgTd/6d8Fp705J3WCQeaunrIvXDO6EpZyJY8x0XRv4tg7XjNDHRT3qgOw
+         jTaC2k3OWmWNcpEWhws0UK/0lXLxqpizRLpT9BzfZsJr+74BiNJSjCUOHZXrRdJ72J2g
+         LuYe+15pZROdzA3UnYwnOqy+P6CQKDviCheRO3MnAKN6sS7Pkhsfqi+wCmEmcB4YIA3D
+         emIA==
+X-Gm-Message-State: APjAAAV3TOxc6vjC2gpags/rrThoifCDWcjO5ft/sCYMXegTAjl1H5kj
+	pmykrM8s6B3CunOY0CFxgfS5y8vAt7KDLQ==
+X-Received: by 2002:a37:9c44:: with SMTP id f65mr8995731qke.33.1572117066929;
+        Sat, 26 Oct 2019 12:11:06 -0700 (PDT)
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from cristiane-Inspiron-5420 ([131.100.148.220])
+        by smtp.gmail.com with ESMTPSA id i5sm3004932qtb.94.2019.10.26.12.11.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 26 Oct 2019 12:11:06 -0700 (PDT)
+Date: Sat, 26 Oct 2019 16:11:01 -0300
+From: Cristiane Naves <cristianenavescardoso09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Rob Springer <rspringer@google.com>,
+	Todd Poynor <toddpoynor@google.com>,
+	Ben Chan <benchan@chromium.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	Julia Lawall <julia.lawall@lip6.fr>
+Subject: [PATCH v3] staging: gasket: Fix lines ending with a '('
+Message-ID: <20191026191101.GA8973@cristiane-Inspiron-5420>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191025232935.GA813@cristiane-Inspiron-5420>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910280079
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910280079
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-When I see a RESEND in the subject, that means you are tell us we messed
-up and accidentally ignored your patch.  So then we have to figure out
-what went wrong with the process and so we don't mess up again.
+Fix lines ending with a '('. Issue found by checkpatch.
 
-It would help us if you put a note under the --- cut off like "I sent
-this a month ago and never received a response.  Here is a link to the
-email archive so I know that it made it to the list."
+Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+---
+Changes since v2:
+ - Join the two similar patches staging: gasket: Fix lines ending with a
+   '('.
 
-I recently had an issue like this where I complained that my patch
-wasn't applied and the maintainer said "Oh.  That's odd.  I have it
-written down in patchword that I emailed you to ask you do fix the bug
-in a different way."  So these sorts of mistakes happen.
+Changes since v1:
+ - Arranging conflict between author name and signed-off-by.
+---
+ drivers/staging/gasket/gasket_ioctl.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-regards,
-dan carpenter
-
+diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
+index 240f9bb..e3047d3 100644
+--- a/drivers/staging/gasket/gasket_ioctl.c
++++ b/drivers/staging/gasket/gasket_ioctl.c
+@@ -34,8 +34,8 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
+ 
+ 	trace_gasket_ioctl_eventfd_data(die.interrupt, die.event_fd);
+ 
+-	return gasket_interrupt_set_eventfd(
+-		gasket_dev->interrupt_data, die.interrupt, die.event_fd);
++	return gasket_interrupt_set_eventfd(gasket_dev->interrupt_data,
++					    die.interrupt, die.event_fd);
+ }
+ 
+ /* Read the size of the page table. */
+@@ -54,9 +54,9 @@ static int gasket_read_page_table_size(struct gasket_dev *gasket_dev,
+ 	ibuf.size = gasket_page_table_num_entries(
+ 		gasket_dev->page_table[ibuf.page_table_index]);
+ 
+-	trace_gasket_ioctl_page_table_data(
+-		ibuf.page_table_index, ibuf.size, ibuf.host_address,
+-		ibuf.device_address);
++	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
++					   ibuf.host_address,
++					   ibuf.device_address);
+ 
+ 	if (copy_to_user(argp, &ibuf, sizeof(ibuf)))
+ 		return -EFAULT;
+@@ -101,9 +101,9 @@ static int gasket_partition_page_table(struct gasket_dev *gasket_dev,
+ 	if (copy_from_user(&ibuf, argp, sizeof(struct gasket_page_table_ioctl)))
+ 		return -EFAULT;
+ 
+-	trace_gasket_ioctl_page_table_data(
+-		ibuf.page_table_index, ibuf.size, ibuf.host_address,
+-		ibuf.device_address);
++	trace_gasket_ioctl_page_table_data(ibuf.page_table_index, ibuf.size,
++					   ibuf.host_address,
++					   ibuf.device_address);
+ 
+ 	if (ibuf.page_table_index >= gasket_dev->num_page_tables)
+ 		return -EFAULT;
+-- 
+2.7.4
 
 
