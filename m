@@ -1,115 +1,84 @@
 X-GM-THRID: 6751575419230617600
-X-Received: by 2002:a1f:4b05:: with SMTP id y5mr7167074vka.12.1572226995658;
-        Sun, 27 Oct 2019 18:43:15 -0700 (PDT)
+X-Received: by 2002:a17:90a:bb0b:: with SMTP id u11mr12477746pjr.94.1572115519500;
+        Sat, 26 Oct 2019 11:45:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:21c7:: with SMTP id 65ls78898uac.12.gmail; Sun, 27 Oct
- 2019 18:43:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzo5tTHsDFG7xjKBLRWV2mKthocLdmDG61YFEXz0P9niVsZhJWxFqdkdo16APS40AQ1u+KD
-X-Received: by 2002:ab0:6994:: with SMTP id t20mr6993696uaq.124.1572226994284;
-        Sun, 27 Oct 2019 18:43:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572226994; cv=none;
+Received: by 2002:a62:e517:: with SMTP id n23ls3875551pff.5.gmail; Sat, 26 Oct
+ 2019 11:45:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzDfrTQXFBL5LETnuyvUs4MbI9Tx4dqX6DBm0yGW/2OTtjkwWTnr8H1x+ajnddhz95oZfzI
+X-Received: by 2002:a62:305:: with SMTP id 5mr11529515pfd.67.1572115518374;
+        Sat, 26 Oct 2019 11:45:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572115518; cv=none;
         d=google.com; s=arc-20160816;
-        b=aX5lK52/lrBN+YcZ+Hi+7aiWuvbzip8RWwSnhlE91at7hzGX3FsdsVx/9c1DXdM4PZ
-         2t+Q1Rlq7I6CoHyJk/K3Ax30dPbdshqVX7+6poJwOl0bfjdYEJWzQP1RyWjXrLubfwaV
-         yMGe0EDQCSyyv42erEbTRihVW578iYlc2BRGQn9ok6su/KZYdeyXBEW3GUg+65ycT5NO
-         oeGka3UIIaT16JsM9YW2rSYDuVOAhOpqZcwcz9YWf5sZ96bV9Ff0mSCXJtrK63IclBEm
-         CCpejBzg+eDtDOjPQlOdHjLuhqpP6xZ6H9oLXRtbcp/IzboxCKHmCT0s/1QLtoaLbdO8
-         xi9g==
+        b=D49ve6p2JOGH3LblGf5tQQ96RgHTtEgd68ODgBEn7u0e/0IpJd6yYSjTs5Mh1g9jP/
+         CaZkoKFN0OoMxKwE/g9YRGZkLtjqMdxli58p/J6XFU+w1bp7Cnt1ZU2f+XN0ADyW2C49
+         gRDlKWNGydWVi16USCYiA4BY4PjYXKfpTnVC1wFakZyHbV8xb3u7Qi91JgeDFL+SrWIT
+         LN0Q8xQHxjrNHlGsuyhcCRD8yMnJyTwaz7NcYTG5C/UpSSUuv8LATr3T6bG3sf+IPQva
+         rf+sR6geK5019x8HGUPwyi4AsONnJEcJEfOvXN9YNIGwCVt7tQKXtkKfUr5EsEXjgbp6
+         6CWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3xM/LAMgPGJPPWEWq/LASFBYFGiQh5Az2a3r6JCVpuU=;
-        b=hpv8iigoUrLZ8AENQwsczhwrXxn0n77EpYQU1uwwwj8PnawwIXe4khVnxd1fE2bHZg
-         Q06I0lYTRBwgRxUBwYa9id77fRSxJE0rN7UKiizmoEVWy++cwbaTaAabulh3/77zXCui
-         B4ItfCaz90+xyFZ8iaYqv9TQGblNjJye3fKMJHPSTPmZ//cgENtuYizpwnYu02FIhjSU
-         aNqOAJG6885K1FjRCq+JLXITCNY02YaoXwxUFB+TGAzOSrnj6fff2MsJyV/z0+UZfb0U
-         ShD3mnGEK+PVw+TlzC/8tqqHoq8dX07VYl6UZ6XmU3eaLaRO3bk3jC5wwDBvi5UuDJ9/
-         NnQw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ope3V2XYhk/1KDCsDsS5r80zEu4tWFA71VOp5/P/Oto=;
+        b=YkjNDymz471neSfzbym/oudbPKDvHPUs5kCgHsdv5weNHRRBWvGzCd/SwHv+tg/dcZ
+         PrxYZefFXACwNSWxnKN75RqVTH8/dMk1a8IrxeFnpxnV79w6fhmKha5ViTAos1HYNCDk
+         rq8A7BXoObppsyf2pWuBwyblMXMzHs8gEWwmeVBzlTV6brC4+YbIo4MAylyIGZfx7TSm
+         WI0azS2zYgtSKwu/+T3vXKBZ1D9sERMuKx8xuyHgHx4FJoAYSbI7eGPBtDW7uBTorRyz
+         b1W0vTOr4u1mAytYC93GjbA/TVlED8zoxIISA1TArMpKPh3c9223QH/COYAjKKiLCJnx
+         /98w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QsaHokea;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id u206si588783vke.2.2019.10.27.18.43.14
+       dkim=pass header.i=@kernel.org header.s=default header.b=Jrc84DP0;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id u13si379170pgf.4.2019.10.26.11.45.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 27 Oct 2019 18:43:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 26 Oct 2019 11:45:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QsaHokea;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id e4so1404663pgs.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 27 Oct 2019 18:43:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=3xM/LAMgPGJPPWEWq/LASFBYFGiQh5Az2a3r6JCVpuU=;
-        b=QsaHokeaC6dZX5SCqs0uuUVT2+lQ9NQhDQ+PNEm/hcxXbkZgDJaj8ySiTfy5bW+XyB
-         XsipvHQPO30mt15b2TdoL6tWatRKdlfub3ZcHCCKGFd3SMtIpGHx2PoUK8Ou3oDisVKW
-         WY4yrb1MTt1AuuJcW+/o6K4benGJm3UzKV/ICUuv8COeG6twmvcmeTAVQcRS7r6it+Wk
-         eUG8ZMRguVYj0QUuE2m9xZimYbOwbw7QbICO5aT4Qk5Ofn+OWghJ9dokzFfUJavI3eZr
-         u4wgFM4e7FCue84P4Z4Jt+W/I+6ACTuSMoGmW4IeDWG+J03Il9WPMjHouL85z3+4PqSG
-         rk5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=3xM/LAMgPGJPPWEWq/LASFBYFGiQh5Az2a3r6JCVpuU=;
-        b=SCdRaCsYzfTR+dgQQCHK03mvKG5fSPyiGRhaOlqnIJUynUNo6xXpusvkFctChV3nYf
-         5WN3kQkzy8K53no4QwuH7lgxy0+UcnSV9D36rnehR/8YHtitigaK3xIu710lSTba0bEQ
-         nHpyfLERTsmDAps1XQOka8uhwxSSNRlKHXwcjAHkK24Vmg8Do8E/KZE+COPnECRdWlkW
-         dygCQvqldbFE53aTwXoSCy2HLfEa5QeYfs70blU8HwzmdHJZwN02JxvuOnWl/zyjd9Z9
-         t2o3bvmdAAo/sxH0Rj2CWkKfrwAZ0bxA3IfW1Cyc1+yFlKenDZ0dJbOdRlO6ZO/+64FL
-         V3Gg==
-X-Gm-Message-State: APjAAAWoe0JFFPEY6qBxhnDvMm3WxRLnVCMC9fG9ROjq2eMagRJCNfNH
-	EuhtkJ7KVyn0Kfu+NfpY/4g=
-X-Received: by 2002:a17:90a:86c1:: with SMTP id y1mr8177475pjv.71.1572226993251;
-        Sun, 27 Oct 2019 18:43:13 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id v1sm10177489pjd.22.2019.10.27.18.43.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Oct 2019 18:43:12 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH v2 0/4] Edit CamelCase in sm750fb
-Date: Sun, 27 Oct 2019 18:43:03 -0700
-Message-Id: <cover.1572226786.git.jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=Jrc84DP0;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 92BDF2084C;
+	Sat, 26 Oct 2019 18:45:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572115518;
+	bh=VTCsA2HksKiHIP/Tj5cG2Y5DRBDKoJ132atznc9wczA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Jrc84DP0yHSHt3jWXeEe7JdRxBGArUt9owYQYrAlEO0kTkK4yYjCNZ68ScW/oOuZQ
+	 OojkJxevDBDjPODlZ/b3Quf5pI1NKrS3F0t+qdM67DWSzV4sx/+qOWLK9FSN1B9Tf0
+	 TjfqXYF87bIUiY+czhx0tJxDnDTa3bcdQ1hM2BQI=
+Date: Sat, 26 Oct 2019 20:45:15 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com
+Subject: Re: [PATCH 1/4] staging: sm750sb: Edit CamelCase in dvi/sii164 files
+Message-ID: <20191026184515.GA739424@kroah.com>
+References: <cover.1571973516.git.jamal.k.shareef@gmail.com>
+ <3c47824bcff53ae7f921c21684eb1091e8a77921.1571973516.git.jamal.k.shareef@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3c47824bcff53ae7f921c21684eb1091e8a77921.1571973516.git.jamal.k.shareef@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-This patch removes CamelCase in sm750fb files.
-Patches are organized into groups of dependent files.
+On Thu, Oct 24, 2019 at 08:20:32PM -0700, Jamal Shareef wrote:
+> Edits CamelCase naming in a group of dependent
+> sm750fb files. Issue found by checkpatch.
+> 
+> Removes hungarian notation as well as part of fix to
+> CamelCase in a given word.
+> 
+> Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 
-Changes in v2:
- - Fix merge conflicts with staging-next in Patch 1 and Patch 4
+This patch does not apply to my staging-next branch at all :(
 
-Jamal Shareef (4):
-  staging: sm750sb: Edit CamelCase in dvi/sii164 files
-  staging: sm750fb: Edit CamelCase in ddk750_mode files
-  staging: sm750fb: Edit CamelCase in ddk750_power.h
-  staging: sm750fb: Edits CamelCase in sm750 files
+Please fix up and resend the whole series as a new version.
 
- drivers/staging/sm750fb/ddk750_dvi.c    |  68 ++++-----
- drivers/staging/sm750fb/ddk750_dvi.h    |  80 +++++-----
- drivers/staging/sm750fb/ddk750_mode.c   |  86 +++++------
- drivers/staging/sm750fb/ddk750_mode.h   |   2 +-
- drivers/staging/sm750fb/ddk750_power.h  |  10 +-
- drivers/staging/sm750fb/ddk750_sii164.c | 185 ++++++++++++------------
- drivers/staging/sm750fb/ddk750_sii164.h |  40 ++---
- drivers/staging/sm750fb/sm750.c         | 144 +++++++++---------
- drivers/staging/sm750fb/sm750.h         |  70 ++++-----
- drivers/staging/sm750fb/sm750_accel.c   | 143 +++++++++---------
- drivers/staging/sm750fb/sm750_accel.h   |  26 ++--
- drivers/staging/sm750fb/sm750_cursor.c  |  18 +--
- drivers/staging/sm750fb/sm750_cursor.h  |  17 ++-
- drivers/staging/sm750fb/sm750_hw.c      |  68 ++++-----
- 14 files changed, 486 insertions(+), 471 deletions(-)
+thanks,
 
--- 
-2.17.1
-
+greg k-h
 
