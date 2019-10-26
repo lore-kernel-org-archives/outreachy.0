@@ -1,103 +1,87 @@
 X-GM-THRID: 6751912583325810688
-X-Received: by 2002:a62:5305:: with SMTP id h5mr12585811pfb.121.1572121539260;
-        Sat, 26 Oct 2019 13:25:39 -0700 (PDT)
+X-Received: by 2002:a9d:4aa:: with SMTP id 39mr7744717otm.311.1572113110788;
+        Sat, 26 Oct 2019 11:05:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:5844:: with SMTP id m65ls3942075pfb.11.gmail; Sat, 26
- Oct 2019 13:25:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw5NlhgcwqnYozvOm1qveKlUgmsruF/h+g7QYZqHZHNpHJ76MDJWi1y74b6XF/m/Px5th7j
-X-Received: by 2002:a63:dd11:: with SMTP id t17mr12397107pgg.242.1572121538394;
-        Sat, 26 Oct 2019 13:25:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572121538; cv=none;
+Received: by 2002:aca:1710:: with SMTP id j16ls60884oii.0.gmail; Sat, 26 Oct
+ 2019 11:05:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwqN4oQJYhOw0sW38j4uQSge8DVr9pnxftb9IwBzCCGsPpvVkm8nBKclbqrBJ8hm00/FkdP
+X-Received: by 2002:aca:52c2:: with SMTP id g185mr7510085oib.45.1572113109627;
+        Sat, 26 Oct 2019 11:05:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572113109; cv=none;
         d=google.com; s=arc-20160816;
-        b=GLn1kwdRuKnVq5rGjcgTQx2THbT0WMcQV50uVzfAyhcZGNB6Up0siqzZ2pZQItkKC7
-         EsmkptQOUIfQ+djdsyxpdNhyqoo4SAXv2qTxHVLtFMBNnHXOLq/iTM19Q/WcN0qtx0TI
-         gfgKzFx0m+CjS0xzqOUPctBcMEzbN9vJF7Jg12AxzOEmU3VAniWsZChqfw5RWBOcBE5S
-         VhWvwXe6blOLbEWMnZ81oDOt0TiXV0qj0oy66adPudh4Dc0crZamaYB0VjhZZgPfknTj
-         fKf1vGzCf+4eZiPavqF+csPgHoH7Msml3tEOQb5tUJvmBHSzag+h2xDpBRuolaW9JoUX
-         XdNg==
+        b=hsdVVGgPK7vEH0hHItXa0YGxE2G50yLrXsgsvfNuu2ReEeCndfxYdVkM7ihW/rtXAr
+         Cn/Ja3eXqcVRvHqb4r1vh9pcXWG7DG5ODC2xwJlnbSF1efJrA8fBcOlO9dwCAgLPqpTo
+         onbpJE52k+R7x8UUlqhfkagCGqgMEnHBknUx+G+PLhF7HBp+OtzMM/1xsexGAYZXhY1g
+         NcsXs8HYmxXpmXjX02dvEx5Hd4fDk0DWlaYT9QjIjZBIFNWJNQKS8MUA/41KdWCx6uEb
+         CyJWu8pM+iG8qcpc4zMu6HNQ4xqhz5U3Q1tRUiSQlSyFAX2dCW3cMW/2isn6Z3nNYZys
+         YRRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=SR4ASwG62o34UmHRKLJjsHdvltz31rQ0BDdExf6nznE=;
-        b=AL2na3u2t63Wcw5MIVK798R8nkZd3UtJ14XxJBT3PiRfiV2eTFHTvE1PFo1e1yHaCT
-         o5nCQU9eWRkZn79p4mhOL83CaiFFygQhfQlpcfV7NHo1imnZofVj4Wbg1k+3OW90AhYW
-         LkAI4fxW1cXzaBg56PyjnMya9zZCcqZmiMk0jwNY9Jj948bdmzOMAqZuGBjDLs4xifVs
-         mZKLIC4mWkhnpNuN2tsGoVlGQn0Vx7FVDZkCe2KXdKsRfjKo7Art1DkfjA9RVZxVljvx
-         mmrvmfdOhNwBrvq7412rVUJWcYp1w+5mkyquvuPgEFqr7NTow6ykaPFXK8ev0KRD4zjD
-         3kvQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=/3w7qmbynerzfT5o2zPQNI83uJDpAHWSe8JZlRrPJTY=;
+        b=clyu4yiyyYa/vH/O/DR7K//dygDP2wpWxDU+MJYbyb14gK1qOwv/azmx8jfgdTkCrO
+         Ggr5/QL8lXfQUEJTElc03NEd1oveBHGmwhDDhw9S1sLG6BsY9+llCDO2ZVeG8gba7Gcf
+         v6PXFpnDlFD39/ICe7RMRJqzJbPLiYkYLELBUqkn6JgrO9vamGg1iAemmnIXtP2mL8vZ
+         K/XC0ttXAlqQ2gnuUYv4tZi9vqS22DSGXNFy3ZlJfxC2rZjWilXKPdXqjAtQhvr3UORf
+         PpHYpCKET9MdvnlL7Qu51AwPXTfceNdIdtrf6tv+QUtmqpQn9vPwbXY38+5V+dQhqhOH
+         1p3A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tgqm66Vz;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qk1-x744.google.com (mail-qk1-x744.google.com. [2607:f8b0:4864:20::744])
-        by gmr-mx.google.com with ESMTPS id 83si199966pfx.4.2019.10.26.13.25.38
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 26 Oct 2019 13:25:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) client-ip=2607:f8b0:4864:20::744;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tgqm66Vz;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x744.google.com with SMTP id y81so4962722qkb.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 13:25:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=SR4ASwG62o34UmHRKLJjsHdvltz31rQ0BDdExf6nznE=;
-        b=Tgqm66Vz/U+XwMGx6TUd4V/L+t5I3fdVXAVyUgFQKQFn0WOhJEGaQp3fknp5cjdLbG
-         v9HIM/ShcpVOKhMSEPYxAl037BtowhAoaVUwtjqqq75d7EoiL9BU3/bMceG7+1Ei2/k0
-         VdeIjSq3ShioRRmcopSz99gdtQxMroxPiY6dYFTN0OZttlC8m3wn/BwkK65PH6KgffpQ
-         +uwheuBTVoXNSesao156FB/F/O59Hiq7f1Ah3cxfl0I5nG9mgTnUW6qOW9LArJVnLXcI
-         4K2eU6W6F5InMfAp2yh4NZYRFElpW64XhQ1phw1j29vc4uE3tNv0pKmnRhAUx6CQzOQ7
-         wf7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=SR4ASwG62o34UmHRKLJjsHdvltz31rQ0BDdExf6nznE=;
-        b=eo8rZ4Ob1d/7oL437rC2qlmuLnauHchHQWvpuWPw0M/EfoKXW9saHxuKb8gaaq2ar+
-         j5p6uNbABSc3eXDqNC65von3k2j7Z2D24GCmlJD5MTO2snpv4xKEGPJ+OdvpnbUnIXyp
-         kOlKBCNClVhS1xbEcwrZ1P4T5mcb99/XjcJIYVrUiy/O3A3ZatthqqZ93NAn+Fzmh3xw
-         uBg9e+Z5r2RkW86F/EtvZbcSgI11KRgx83mb3Y595StKEzxLQ7qywB1Z4Eajq7btEPHY
-         00Yc4wiuNC8oGOHD/1nxZvmNoUbiC2wfhQmBttdqN5srpqTE5wmNp4hG5Q/5aTe+r+jI
-         Ujcg==
-X-Gm-Message-State: APjAAAWB0zXOQ6KGsrwtaFbIasBWyGM5LaXy8rwkwcuUi0o5EvOGinZE
-	6rkclRTXopPBsW2lmtRZEW3cgVnXXGGp1Q==
-X-Received: by 2002:ae9:d60f:: with SMTP id r15mr9304383qkk.207.1572121537345;
-        Sat, 26 Oct 2019 13:25:37 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id b185sm4070473qkg.45.2019.10.26.13.25.36
+       dkim=pass header.i=@kernel.org header.s=default header.b=bqiciS92;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id w205si219123oib.2.2019.10.26.11.05.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 26 Oct 2019 13:25:36 -0700 (PDT)
-Date: Sat, 26 Oct 2019 17:25:33 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2 0/3] Cleanup in rtl8712
-Message-ID: <cover.1572121059.git.cristianenavescardoso09@gmail.com>
+        Sat, 26 Oct 2019 11:05:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=bqiciS92;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 72AAA20663;
+	Sat, 26 Oct 2019 18:05:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572113108;
+	bh=etgcI5LiCF7KlUXG0QY0IU1mwTAKTY2Jmd+J7FcUmyY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bqiciS92jKolql4n2q58VrGwsm+3GDw8gVT2LTI4Mforb8M1tkRxuw69b2Y0JiOUD
+	 y9xQLz4jfc64Ycj1ojLTrvjo8DeMtaWSFRd1kzzsEGeox9s3e4BnDd5JdQ9mJXwkKI
+	 bKp8zcYiz9Tzu9/YxwoG8JIymIDXELCxlgvcSw8k=
+Date: Sat, 26 Oct 2019 20:05:06 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	linux-kernel@vger.kernel.org,
+	Larry Finger <Larry.Finger@lwfinger.net>
+Subject: Re: [RESEND PATCH 2/2] staging: rtl8712: Remove lines before a close
+ brace
+Message-ID: <20191026180506.GC645771@kroah.com>
+References: <cover.1572051351.git.cristianenavescardoso09@gmail.com>
+ <0bd6b897a5af322cf54d53bb68752d3667a7acb6.1572051351.git.cristianenavescardoso09@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <0bd6b897a5af322cf54d53bb68752d3667a7acb6.1572051351.git.cristianenavescardoso09@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Changes in v2:
- - Arranging conflict between author name and signed-off-by.
- - Remove unnecessary parentheses.
- - Change the driver name to rtl8712
+On Fri, Oct 25, 2019 at 10:10:04PM -0300, Cristiane Naves wrote:
+> Fix Blank lines aren't necessary before a close brace '}'. Issue found
+> by checkpatch.
+> 
+> Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> ---
+>  drivers/staging/rtl8712/rtl8712_recv.c | 2 --
+>  1 file changed, 2 deletions(-)
 
-Cristiane Naves (3):
-  staging: rtl8712: Fix Alignment of open parenthesis
-  staging: rtl8712: Remove unnecessary parentheses.
-  staging: rtl8712: Remove lines before a close brace
+What changed from the previous version?  This isn't a "RESEND" it is a
+new version, right?  Please properly document that and resend the whole
+series.
 
- drivers/staging/rtl8712/rtl8712_recv.c | 32 +++++++++++++++-----------------
- 1 file changed, 15 insertions(+), 17 deletions(-)
+thanks,
 
--- 
-2.7.4
-
+greg k-h
 
