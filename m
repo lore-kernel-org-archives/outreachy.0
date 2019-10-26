@@ -1,197 +1,123 @@
 X-GM-THRID: 6751912583325810688
-X-Received: by 2002:a2e:2e15:: with SMTP id u21mr6715647lju.31.1572121976899;
-        Sat, 26 Oct 2019 13:32:56 -0700 (PDT)
+X-Received: by 2002:a63:d0d:: with SMTP id c13mr12410049pgl.138.1572121893108;
+        Sat, 26 Oct 2019 13:31:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8806:: with SMTP id x6ls1653305ljh.11.gmail; Sat, 26 Oct
- 2019 13:32:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKmjGAdySkc2p/05t7RGvlyJmHOzuXNKOIII6Y/+Z9BdihgDSnnKuBcLlx60xl9/t8b0GO
-X-Received: by 2002:a2e:9f11:: with SMTP id u17mr7025263ljk.104.1572121975946;
-        Sat, 26 Oct 2019 13:32:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572121975; cv=none;
+Received: by 2002:a63:b304:: with SMTP id i4ls3842880pgf.9.gmail; Sat, 26 Oct
+ 2019 13:31:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQlJyAHzndQ/RJ0scvIQddubQCNvmIWI0OeL/x+Zl9AgQI9KwIIqpiMEth0SdTDVhLVZvj
+X-Received: by 2002:a63:d246:: with SMTP id t6mr12391704pgi.5.1572121892164;
+        Sat, 26 Oct 2019 13:31:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572121892; cv=none;
         d=google.com; s=arc-20160816;
-        b=eEpx30fMfKnDNImTlaajexO/vEyERv7fnQRzjFgT7aBDVKlD9GkG4T5g6VOnV/A0Lp
-         7BleTu/EsVOXNZ+s3WgpOziaDrVhiWIN4wbTOm4hnCLrjG+FlB3N/1N5R7IicH/nDDwC
-         7OXbQtV5ujtqLDNqAuWOU1ZHYsO7wUD0R2H/bEwlwEyxInv4lALuB7535PF4Ss9XsMxo
-         16OvxqcJRGdcxAqGFf3/lKwtHSMGFeKJchl6D7LaGg5nCZD9OfJiLWZaEgju7w/StOI9
-         l948KtjttU7zd7NwS0ph83bxJlJ+EYWHyz4NQNi56KwMvRu1SBXTYgehdDoFWQenY7C+
-         YSmw==
+        b=qoc1XynTknMlwQX5dBVcMikoevQ6HEthosihvEXQxpeoXQ3h83ZBBCXdRchXx1tJv9
+         EfZqlv4cP4f0W0OZLxDfttCmaZnelYTnimAHpx7eV0J+TDJLgesYXwf0Px+7yg3y/6vH
+         iKVj2mzfKtrjgip5z5gJK8gFPJUhpfftWKCcZ8EMEfw7HKsqbZEhzF4ksbDOtIy4UvRI
+         c+JWicwQNvBDcoj/sJVacE7H5K6cUk+DUf348WAduG/kH8mwnSFZf4fm0EMvAoW3c4RX
+         BeExgMljhZo8zM48u3JCdQMb6ixWGfrCLUUjNXZ5iUgeTWZduOok8fyOnMsFu7k+I/et
+         6ffQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=LGsy4hB1zuzQPMtvbiV1eq0xGLNT3mDGk+Ub81OU6RQ=;
-        b=zi/5hH0UpomrNPXiJ48Q7D86YSFHZrvfxL+o4mi6dLKZ163bKZeX2q1pS+YcRX+GRM
-         Lh+iJvah48JR6OycyGnNw5sEe+sTK6JtrPRrotHf7k3NDl7nU2VRhYPlE2VEG8c18iyl
-         SQUyz7xx2KMXASo/dlZ1YaM6Ybb4nxeUOhsUQ4I9AzaP0XetJuMN1KYl6JTMnwdkFqKi
-         q98o3+zaCimlTa1gIctpRhUMvHxlu+vdRN4AnAY4OOL6b8fzvYihgYo8M1yp4iTSNVsp
-         l49kXIW7c+gigaT1siR1olWcnHthR03/KPwCb/PQXCKYClBuzcCzOQYxjUfEEhMcW5YW
-         //EQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=tbkGc2uRqrthDU52A0rFG/A+QNzAVuHvzOb7BZHUvFs=;
+        b=YOF8X8N44rHybeiFtK2qJz7g3tWPSMvUE5PjSnLPRobboKOPbZsyngr6H1XEMUZSV1
+         8HxMXAhtTxUnic5fP+LwkRWVWy86HTkpyJNfZpFcAmTwkTU++Zo6oIFc3Gc1D38N7fBh
+         tdXQAXg1Qh/nqKt2FyNUdAULCfUtHXkRoja4u/lTIjnWXJAlnIRUqA6xDK1+xyhPg1Wz
+         W6d5IA3cjudI1XPypQNpWeEOzG3PBzkEHgIeLCXWc0KaibRKOJVuqTc2ujstL0zLyPAM
+         C+R1+uYGH2gu+++pXAMVWfsUjjMHOWcR0xgeUJ2rN8ZoeIeWVnvI/ePidf+Pif+Nd3GG
+         o/9A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id c25si312165lji.2.2019.10.26.13.32.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FPEceSXX;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from mail-qt1-x843.google.com (mail-qt1-x843.google.com. [2607:f8b0:4864:20::843])
+        by gmr-mx.google.com with ESMTPS id u13si390773pgf.4.2019.10.26.13.31.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 26 Oct 2019 13:32:55 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 26 Oct 2019 13:31:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) client-ip=2607:f8b0:4864:20::843;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.68,233,1569276000"; 
-   d="scan'208";a="408480597"
-Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Oct 2019 22:32:55 +0200
-Date: Sat, 26 Oct 2019 22:32:55 +0200 (CEST)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: Cristiane Naves <cristianenavescardoso09@gmail.com>
-cc: outreachy-kernel@googlegroups.com, 
-    Larry Finger <Larry.Finger@lwfinger.net>, 
-    Florian Schilhabel <florian.c.schilhabel@googlemail.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH v2 1/3] staging: rtl8712: Fix Alignment
- of open parenthesis
-In-Reply-To: <c9987f6ee311c7356a9f963439d37e4a9696f8eb.1572121059.git.cristianenavescardoso09@gmail.com>
-Message-ID: <alpine.DEB.2.21.1910262231270.5545@hadrien>
-References: <cover.1572121059.git.cristianenavescardoso09@gmail.com> <c9987f6ee311c7356a9f963439d37e4a9696f8eb.1572121059.git.cristianenavescardoso09@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FPEceSXX;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x843.google.com with SMTP id o25so8676908qtr.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 13:31:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=tbkGc2uRqrthDU52A0rFG/A+QNzAVuHvzOb7BZHUvFs=;
+        b=FPEceSXX6wgU/NanFgTWiGokgDNZA26a5uaDlEegOo9p6WdNYTbE7qRfAr7Cs0uCzy
+         odeeOOiu2sm+g/A1k0BHkjyBp8CU3YORbKZZoWBw4R4eVKbpKs6slO5gm0cfOdSODB8S
+         e/4EuH5jaV1TVyLY50H4lZPKxEndESM1XYpE33S/6jQa/lZh9iuKexzOZvM3hsgl7mWu
+         kx1NRaq7oUsIK1BRE1zKARyZ7h3KfDcsRLiQ8OlzJmgDvX4EEm0eYWx/RquhSZcgv060
+         up5PwLMxdkIDa4/R7xr+BEoKT+N0dGL7VJBnBMx528WuSVfDiwg96Xf5bEEaFAduK+U7
+         By0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=tbkGc2uRqrthDU52A0rFG/A+QNzAVuHvzOb7BZHUvFs=;
+        b=Qmy+5PBYd3T2fTzlpj5rN/suFeahDCbC1aPAuvtn7Y5RCG86mJbaWf/6ApUQtncT+M
+         n+ks3tlHfqjggATTP9wsvoYMzfaiCe40AcxYCqVBekmh6ptILj7Qd2s259RBjuhiJG9v
+         0MQrdbopsqCw8NjhIZs3Pni+UJSwhSh7m6K6oaY8LhiBws7pZkbH1tAO50z2f8E5i8k1
+         XCGUw44JnT+YZTG9F76fFseXreyeRg3oUpmFrrAdkds3p8U35t1hOv430LZ1JNNfrSIj
+         AV2Ye6l46mvGg8WDD+339DZn17R/oTmTQvsNNzkWHbf97qw9X6JyQzY84+dcOZpE/sUO
+         auYQ==
+X-Gm-Message-State: APjAAAUZmoQ5tP6A0UwzZy7BB2x10BcyPjImnQFkvT0TSZQ75ezIqNLd
+	y0j3oaepn483Dxt21s1bBKCvPmIc7FwrfQ==
+X-Received: by 2002:aed:3ee4:: with SMTP id o33mr10073460qtf.267.1572121891187;
+        Sat, 26 Oct 2019 13:31:31 -0700 (PDT)
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from cristiane-Inspiron-5420 ([131.100.148.220])
+        by smtp.gmail.com with ESMTPSA id z8sm2939529qkf.37.2019.10.26.13.31.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 26 Oct 2019 13:31:30 -0700 (PDT)
+Date: Sat, 26 Oct 2019 17:31:26 -0300
+From: Cristiane Naves <cristianenavescardoso09@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 3/3] staging: rtl8712: Remove lines before a close brace
+Message-ID: <8c74dcd9afaa528a80804081f582792045bb7a7a.1572121059.git.cristianenavescardoso09@gmail.com>
+References: <cover.1572121059.git.cristianenavescardoso09@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1572121059.git.cristianenavescardoso09@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Fix Blank lines aren't necessary before a close brace '}'. Issue found
+by checkpatch.
 
+Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+---
+ drivers/staging/rtl8712/rtl8712_recv.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-On Sat, 26 Oct 2019, Cristiane Naves wrote:
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index c567a16..b7d0ea0 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -289,7 +289,6 @@ union recv_frame *r8712_recvframe_chk_defrag(struct _adapter *padapter,
+ 			r8712_free_recvframe(precv_frame, pfree_recv_queue);
+ 			prtnframe = NULL;
+ 		}
+-
+ 	}
+ 	if ((ismfrag == 0) && (fragnum != 0)) {
+ 		/* the last fragment frame
+@@ -438,7 +437,6 @@ void r8712_rxcmd_event_hdl(struct _adapter *padapter, void *prxcmdbuf)
+ 		r8712_event_handle(padapter, (__le32 *)poffset);
+ 		poffset += (cmd_len + 8);/*8 bytes alignment*/
+ 	} while (le32_to_cpu(voffset) & BIT(31));
+-
+ }
+ 
+ static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl,
+-- 
+2.7.4
 
-> Fix alignment should match open parenthesis. Issue found by checkpatch.
->
-> Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl8712_recv.c | 30 +++++++++++++++---------------
->  1 file changed, 15 insertions(+), 15 deletions(-)
->
-> diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-> index af12c16..12a3c64 100644
-> --- a/drivers/staging/rtl8712/rtl8712_recv.c
-> +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-> @@ -61,13 +61,13 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
->  		precvbuf->ref_cnt = 0;
->  		precvbuf->adapter = padapter;
->  		list_add_tail(&precvbuf->list,
-> -				 &(precvpriv->free_recv_buf_queue.queue));
-> +			      &(precvpriv->free_recv_buf_queue.queue));
->  		precvbuf++;
->  	}
->  	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
->  	tasklet_init(&precvpriv->recv_tasklet,
-> -	     (void(*)(unsigned long))recv_tasklet,
-> -	     (unsigned long)padapter);
-> +		     (void(*)(unsigned long))recv_tasklet,
-> +		     (unsigned long)padapter);
->  	skb_queue_head_init(&precvpriv->rx_skb_queue);
->
->  	skb_queue_head_init(&precvpriv->free_recv_skb_queue);
-> @@ -140,7 +140,7 @@ void r8712_free_recvframe(union recv_frame *precvframe,
->  }
->
->  static void update_recvframe_attrib_from_recvstat(struct rx_pkt_attrib *pattrib,
-> -					   struct recv_stat *prxstat)
-> +						  struct recv_stat *prxstat)
->  {
->  	u16 drvinfo_sz;
->
-> @@ -177,7 +177,7 @@ static void update_recvframe_attrib_from_recvstat(struct rx_pkt_attrib *pattrib,
->
->  /*perform defrag*/
->  static union recv_frame *recvframe_defrag(struct _adapter *adapter,
-> -				   struct  __queue *defrag_q)
-> +					  struct  __queue *defrag_q)
->  {
->  	struct list_head *plist, *phead;
->  	u8 wlanhdr_offset;
-> @@ -379,7 +379,7 @@ static void amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
->  		/* convert hdr + possible LLC headers into Ethernet header */
->  		eth_type = (sub_skb->data[6] << 8) | sub_skb->data[7];
->  		if (sub_skb->len >= 8 &&
-> -		   ((!memcmp(sub_skb->data, rfc1042_header, SNAP_SIZE) &&
-> +		    ((!memcmp(sub_skb->data, rfc1042_header, SNAP_SIZE) &&
->  		   eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) ||
->  		   !memcmp(sub_skb->data, bridge_tunnel_header, SNAP_SIZE))) {
-
-I have the impression that the alignment is not really optimal for reading
-here.  It is hard to see what is the argument of which operator. It looks
-like at least there are some parentheses that eth_type should be aligned
-with the right side of as well.
-
-julia
-
->  			/* remove RFC1042 or Bridge-Tunnel encapsulation and
-> @@ -387,18 +387,18 @@ static void amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
->  			 */
->  			skb_pull(sub_skb, SNAP_SIZE);
->  			memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->src,
-> -				ETH_ALEN);
-> +			       ETH_ALEN);
->  			memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->dst,
-> -				ETH_ALEN);
-> +			       ETH_ALEN);
->  		} else {
->  			__be16 len;
->  			/* Leave Ethernet header part of hdr and full payload */
->  			len = htons(sub_skb->len);
->  			memcpy(skb_push(sub_skb, 2), &len, 2);
->  			memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->src,
-> -				ETH_ALEN);
-> +			       ETH_ALEN);
->  			memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->dst,
-> -				ETH_ALEN);
-> +			       ETH_ALEN);
->  		}
->  		/* Indicate the packets to upper layer */
->  		if (sub_skb) {
-> @@ -472,7 +472,7 @@ static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl,
->  }
->
->  static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
-> -			      union recv_frame *prframe)
-> +				     union recv_frame *prframe)
->  {
->  	struct list_head *phead, *plist;
->  	union recv_frame *pnextrframe;
-> @@ -499,8 +499,8 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
->  }
->
->  int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
-> -			       struct recv_reorder_ctrl *preorder_ctrl,
-> -			       int bforced)
-> +				     struct recv_reorder_ctrl *preorder_ctrl,
-> +				     int bforced)
->  {
->  	struct list_head *phead, *plist;
->  	union recv_frame *prframe;
-> @@ -555,7 +555,7 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
->  }
->
->  static int recv_indicatepkt_reorder(struct _adapter *padapter,
-> -			     union recv_frame *prframe)
-> +				    union recv_frame *prframe)
->  {
->  	unsigned long irql;
->  	struct rx_pkt_attrib *pattrib = &prframe->u.hdr.attrib;
-> @@ -624,7 +624,7 @@ void r8712_reordering_ctrl_timeout_handler(void *pcontext)
->  }
->
->  static int r8712_process_recv_indicatepkts(struct _adapter *padapter,
-> -			      union recv_frame *prframe)
-> +					   union recv_frame *prframe)
->  {
->  	int retval = _SUCCESS;
->  	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
-> --
-> 2.7.4
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/c9987f6ee311c7356a9f963439d37e4a9696f8eb.1572121059.git.cristianenavescardoso09%40gmail.com.
->
 
