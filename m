@@ -1,118 +1,86 @@
 X-GM-THRID: 6749942525265444864
-X-Received: by 2002:a25:aaa3:: with SMTP id t32mr8453129ybi.221.1572114761017;
-        Sat, 26 Oct 2019 11:32:41 -0700 (PDT)
+X-Received: by 2002:a0c:d0e1:: with SMTP id b30mr9593214qvh.197.1572112950256;
+        Sat, 26 Oct 2019 11:02:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:c7c9:: with SMTP id w192ls2033589ybe.8.gmail; Sat, 26
- Oct 2019 11:32:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwa1MunEfgebmGJApCDWR2mLnMw5/M2UUJMVzqeAL3fnRNdRNLih6WfXbsLXnr4vaoB0clx
-X-Received: by 2002:a25:be48:: with SMTP id d8mr8731535ybm.353.1572114759556;
-        Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572114759; cv=none;
+Received: by 2002:aed:25f6:: with SMTP id y51ls4063998qtc.7.gmail; Sat, 26 Oct
+ 2019 11:02:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyr8O2dYBPAys02kHM3QkpVbCx4IfgCfeeU7AjimaDniaWh9xz9Cex7dB+SXgv8iTrpvtCX
+X-Received: by 2002:ac8:5310:: with SMTP id t16mr9708991qtn.258.1572112949041;
+        Sat, 26 Oct 2019 11:02:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572112949; cv=none;
         d=google.com; s=arc-20160816;
-        b=aYZCj9CndpSf0WYAC7F9VuVKgJ6sdruiqWQyYoEyHhkLRoFtcDawlPYswshO/RGoDp
-         jWt4gEryvB0Q61O/Zz+UrWqrkqH2SHqa2A+RPPVk/5/88zPo1aNpRHo7pmqu7IifiLYF
-         OdN2zfBZjJw0Xv7Mk+3booWquXZd++s90QJ9cUDV41B/eQK4GpQlH1vuV4Dn9nGLtS54
-         wE1VEfsAL36SgR28yYmdK801k9G4XOwctfgMqaAJRoi7cMli9ppDxAFWWcWxuaXnWHMc
-         ldVPFiq4Jnxrb+nnjsva4GUiLqAkOMUh9zGTpEevQoKMMxFPAnm8U98SGREKAPfnz2pe
-         XWcw==
+        b=UuW4CFWTV9nu2iaNjz35s3LqPkGazjnGyRO0gxFdmW6iBSQVR6l4BhkyvutQVngRXH
+         mEek1wcjc+fPKFxtVZYglloI9N0rzgghwdcXjJ+WMFV/MOWsnwMDAhPLctQGKwyukLRP
+         ROgAy/C80XADb0YsIrdZ94NU3/2EXRi20qZNuaWHN+1dSPg5QmmAScXIFTkPeGnAaVh3
+         hJWCRGpSUm6CNPnDOjhOzT6IDiZb8ehc5uo7F2ASrYbo0qxLaZrSiHf70LK8MtezQ8mW
+         TXgvb6hBqu+jcy5IhqnO8SqqfVZXhM72m3t4ONZGxz/K//hYcLA3r/+gQIzyfLYIXp2Y
+         9s2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=yDb/bZxBS90S88jsflf7WcUVKtLs478428CKX2xqpxc=;
-        b=VK5odsoUpK9ixyml+BxV6xYtmcrEob3uFqdAihCZuN3GmzsKomjSV5E9EHaX3DZlZS
-         CYdNm6aoDA3rLeu8dMwVhzqVHadgXyY0aicd0IZ/P5HaZms4RL0igane77S4ePpldjo5
-         2Q0Gvjh7n1tlj9Jn8lvzt+PEH1h+VqVxwv/W4NE3ldXceC11PS+1ZKQFWHAherhnaAB0
-         Jxili0B+FXe8X8FSrwNdcfjDfZTATry5+apJOKvVTkjmdmrMgDqFQnzH/quvlcOhsjuD
-         2pfmh+IiqDol5DwAtg/Qi12URvnEv8he9rWjU/Lr2lmnPfdIup5GDl77t9R7O0vMSYwO
-         G8+Q==
+        bh=OWVZ2X+/EMmWu1MEGWEFFviFBFC4lDK1tvCGDpKoGvs=;
+        b=GsLbyHUud1wzcvM9mWu3bOKo2nq+LFDMqju1fNVGimmmYBPBPlWO3Wx9pss8lx4yVD
+         Rg9fmdmNzOBscPQiOxdjZFzhxWFbconzPwznwpZTqJTIL4o6nfmMsORBVnlb9FiPA2dS
+         JR/hgesw+/bwKoKf0iHy08DopQholady/mYYcjzLS3aW2dN5KiOl18xF405nQTzZFjgE
+         ZtXQ2V29ykJBttxslj6oiGM918P8MFjXKd2B3PxA4JQx9D/FwPPWbJyXtOe6u6q8mG1N
+         V3dcgtBAMHpIe7Au8StusBhcHbCVa9IrKgC8fXAcVqC1Ul7oDlZzw6Z1xfwNFCaXZuqD
+         QOug==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gNVqLvV8;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id r185si406542ywe.2.2019.10.26.11.32.39
+       dkim=pass header.i=@kernel.org header.s=default header.b=Ns2I7xmQ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id t187si332152qkd.0.2019.10.26.11.02.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gNVqLvV8;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id o25so8422285qtr.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=yDb/bZxBS90S88jsflf7WcUVKtLs478428CKX2xqpxc=;
-        b=gNVqLvV82F5TkmzS1t4c1XrQJ8GJfkSJTNdkwzr3YYPvEDbQv6YMX1C6tm8a6RZeMx
-         jsTiqznQ4SxlpyZD0FXrULevKbGeCWfsbZoZHCfQGjfPgq5XVstclXE+z9IL6FdQvwLr
-         1AQKu0g1ZcxP4aDxcmTJj4Lhdg+OkhIJegZiBN4kL6SkfgBIqjL684wMS74/fVrYvx+Y
-         eVC4ITjjgBTf/u4Pjt4JZhm5kobbjAUAV6SxGigjpjG2DVIzmoOonYY3izhEwuwhdsiD
-         ghidC4XIK+8eIUZarAh4w35ERhsCvsnhfu7oitNNOosEjud/hLH35jEeGBgJqdRJsAlR
-         PvlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=yDb/bZxBS90S88jsflf7WcUVKtLs478428CKX2xqpxc=;
-        b=keEJDgg/4/Hqhq70XWIiJh2ckRoYMloqdT4ZNhpN076AzOUq2/FaYhUnR5Hfb3I3Ko
-         oA21QEPrVXRquSjEolY1Vc4RwVYM/4sN9z+pLJKhVz3Ofs0Zm3VUFYQvb+lVFD9jshXg
-         R6u02LbQiJ6HKaua3qwpycuTJImN9KC0m5O4f/qKc2bx8Ebqx2P45IH++iRzSm7OZ/B5
-         RYbmJ/UD6DT7jaTfHO3++EOo0uL6WQlN40uFX7GaNFL7A+Pmqt16ubPPNULKKqStweUy
-         29Y4XEIzrim1V++H3l1gmiaFw/P5uwfoK9PBiNZ7TjdEAi59HQ1+JeFIw86BgKNefgZ1
-         ndng==
-X-Gm-Message-State: APjAAAWD0pAO5oNDI7C6rUR5h/mk6Bvu2lbTtxB5/oZOzsRYYRMFcpqI
-	f2aqegfNf03jopeU+dSX1cb+Kj6EvkhMJQ==
-X-Received: by 2002:a0c:9873:: with SMTP id e48mr9558687qvd.115.1572114759137;
-        Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id d10sm2844318qko.29.2019.10.26.11.32.37
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 26 Oct 2019 11:32:38 -0700 (PDT)
-Date: Sat, 26 Oct 2019 15:32:35 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
+        Sat, 26 Oct 2019 11:02:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=Ns2I7xmQ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5744C20663;
+	Sat, 26 Oct 2019 18:02:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572112947;
+	bh=736+3LKuV8NtSBzw5PYMu27jhPpKvZMpTRt5u2a7cNE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ns2I7xmQ15+dgUq66GGoqTdRNEHOsz7OTxkXYI37ZVyVgtbTxSVjo3gQqqWUmy3jR
+	 zbKP66vg/fgJZZwAsvrCLT2PBZdR5d4iZMV2jzhCMe7vE4EjkLGlimiMde76g163qb
+	 rG7IZi6dn2OQZtUaAAK2KweuGVgem/50FiFO06cM=
+Date: Sat, 26 Oct 2019 20:02:25 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
+	Todd Poynor <toddpoynor@google.com>
 Subject: Re: [RESEND PATCH] staging: gasket: Fix line ending with a '('
-Message-ID: <20191026183235.GA8685@cristiane-Inspiron-5420>
+Message-ID: <20191026180225.GA645771@kroah.com>
 References: <20191025233909.GA1599@cristiane-Inspiron-5420>
- <20191026180225.GA645771@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191026180225.GA645771@kroah.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20191025233909.GA1599@cristiane-Inspiron-5420>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-On Sat, Oct 26, 2019 at 08:02:25PM +0200, Greg Kroah-Hartman wrote:
-> On Fri, Oct 25, 2019 at 08:39:09PM -0300, Cristiane Naves wrote:
-> > Fix line ending with a '('
-> > 
-> > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
-> > ---
-> >  drivers/staging/gasket/gasket_ioctl.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
+On Fri, Oct 25, 2019 at 08:39:09PM -0300, Cristiane Naves wrote:
+> Fix line ending with a '('
 > 
-> Why is this a "RESEND"?  Did nothing change in it?
-> 
-> Always version your patches, as the documentation suggests, and list
-> below the --- line what changed from the previous version.
-> 
-> Please fix up and resend it as a v3 (this is v2, right?)
-> 
-> thanks,
-> 
-> greg k-h
+> Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> ---
+>  drivers/staging/gasket/gasket_ioctl.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-The only thing that changed was that was conflicting between the
-author and signed-off-by, so I fixed it. I will send v3 explaining this
-change and joining the two patches 'Fix lines ending with (' because
-they are similar.
+Why is this a "RESEND"?  Did nothing change in it?
 
-Thanks for the feedback!
+Always version your patches, as the documentation suggests, and list
+below the --- line what changed from the previous version.
 
+Please fix up and resend it as a v3 (this is v2, right?)
 
+thanks,
+
+greg k-h
 
