@@ -1,86 +1,98 @@
 X-GM-THRID: 6749942525265444864
-X-Received: by 2002:a0c:d0e1:: with SMTP id b30mr9593214qvh.197.1572112950256;
-        Sat, 26 Oct 2019 11:02:30 -0700 (PDT)
+X-Received: by 2002:a17:907:20e7:: with SMTP id rh7mr768420ejb.150.1572064856181;
+        Fri, 25 Oct 2019 21:40:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:25f6:: with SMTP id y51ls4063998qtc.7.gmail; Sat, 26 Oct
- 2019 11:02:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyr8O2dYBPAys02kHM3QkpVbCx4IfgCfeeU7AjimaDniaWh9xz9Cex7dB+SXgv8iTrpvtCX
-X-Received: by 2002:ac8:5310:: with SMTP id t16mr9708991qtn.258.1572112949041;
-        Sat, 26 Oct 2019 11:02:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572112949; cv=none;
+Received: by 2002:a17:906:a956:: with SMTP id hh22ls2572091ejb.6.gmail; Fri,
+ 25 Oct 2019 21:40:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzMzWRlntC+gewzWdo12ZSoO+J/dvP0HBULEvPk0BopUWdmcq3oFay67Cg1Ss3fzz08ww4U
+X-Received: by 2002:a17:906:f54:: with SMTP id h20mr6814358ejj.55.1572064855267;
+        Fri, 25 Oct 2019 21:40:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572064855; cv=none;
         d=google.com; s=arc-20160816;
-        b=UuW4CFWTV9nu2iaNjz35s3LqPkGazjnGyRO0gxFdmW6iBSQVR6l4BhkyvutQVngRXH
-         mEek1wcjc+fPKFxtVZYglloI9N0rzgghwdcXjJ+WMFV/MOWsnwMDAhPLctQGKwyukLRP
-         ROgAy/C80XADb0YsIrdZ94NU3/2EXRi20qZNuaWHN+1dSPg5QmmAScXIFTkPeGnAaVh3
-         hJWCRGpSUm6CNPnDOjhOzT6IDiZb8ehc5uo7F2ASrYbo0qxLaZrSiHf70LK8MtezQ8mW
-         TXgvb6hBqu+jcy5IhqnO8SqqfVZXhM72m3t4ONZGxz/K//hYcLA3r/+gQIzyfLYIXp2Y
-         9s2g==
+        b=B3UkXwEBeoJuJuWZdk/SUWCnxgXkDmpQhIhdZ01yo5IFWL6v6M8UBf3YNQFiTnWX1E
+         fnXnnWfx3vxcjCmTgO8WHs5G0kptben/09a32UzowKtFH6QRfW1lsQS8wD0G/7hRHEe3
+         macn1bpgtgFMNo9dE1z9bl7rzGbTZ5/umd0/euctyGiEGQW0cHGLkKad4RJkFkySZ9rT
+         pdN1BfZ7mExaPx1Q7O3ExP8FT38ngzpcXDvJfGOea4LDb4bAHYMc259W15dFBvzxIqa1
+         A40KvCvO1NqslbIIY9yH9HIDq20JVTvOFM23mxM8JBc8U+90UfTqkIdUN7jZQd6ijDLD
+         0xdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=OWVZ2X+/EMmWu1MEGWEFFviFBFC4lDK1tvCGDpKoGvs=;
-        b=GsLbyHUud1wzcvM9mWu3bOKo2nq+LFDMqju1fNVGimmmYBPBPlWO3Wx9pss8lx4yVD
-         Rg9fmdmNzOBscPQiOxdjZFzhxWFbconzPwznwpZTqJTIL4o6nfmMsORBVnlb9FiPA2dS
-         JR/hgesw+/bwKoKf0iHy08DopQholady/mYYcjzLS3aW2dN5KiOl18xF405nQTzZFjgE
-         ZtXQ2V29ykJBttxslj6oiGM918P8MFjXKd2B3PxA4JQx9D/FwPPWbJyXtOe6u6q8mG1N
-         V3dcgtBAMHpIe7Au8StusBhcHbCVa9IrKgC8fXAcVqC1Ul7oDlZzw6Z1xfwNFCaXZuqD
-         QOug==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=LDg8z9IdGrHHoUzgUekMisRLas0kMz8LwULiJyNZJRQ=;
+        b=fzhOZr8NSM4TQklJh9PYffGJVUp80WJHUQjo6etRHjfxFUzmX5WRIRrDCROrnnNigM
+         6YVl3TXe6T6MvsLqIwHhnmr87H8LrTQquPNracH6snT0AweglH2UqyPZ98LLqEjkaV40
+         9IC7gcUWJY48RGRa/bOmSOeomXa2nk4ngjwLyPCiGcGtBdbb/ohyiJrT4cZ+8ZuSOpoq
+         s5tUjfVvJYKOlvfGtnvxHo0U2xoQxxf7BofXsRm4AmcxE3+A3vcCmxLEwN9IhJjN51ff
+         fyzFPdwtgA1nxLiQFy9p/8BfHA+SZQn+ZMSxoD5lANVWGD/IPywCnbmVYzqxfnIwb45J
+         mRiw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Ns2I7xmQ;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id t187si332152qkd.0.2019.10.26.11.02.28
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id r3si199183eds.2.2019.10.25.21.40.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 26 Oct 2019 11:02:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Fri, 25 Oct 2019 21:40:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Ns2I7xmQ;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 5744C20663;
-	Sat, 26 Oct 2019 18:02:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1572112947;
-	bh=736+3LKuV8NtSBzw5PYMu27jhPpKvZMpTRt5u2a7cNE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ns2I7xmQ15+dgUq66GGoqTdRNEHOsz7OTxkXYI37ZVyVgtbTxSVjo3gQqqWUmy3jR
-	 zbKP66vg/fgJZZwAsvrCLT2PBZdR5d4iZMV2jzhCMe7vE4EjkLGlimiMde76g163qb
-	 rG7IZi6dn2OQZtUaAAK2KweuGVgem/50FiFO06cM=
-Date: Sat, 26 Oct 2019 20:02:25 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,230,1569276000"; 
+   d="scan'208";a="408354237"
+Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Oct 2019 06:40:54 +0200
+Date: Sat, 26 Oct 2019 06:40:54 +0200 (CEST)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
 To: Cristiane Naves <cristianenavescardoso09@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
-	Todd Poynor <toddpoynor@google.com>
-Subject: Re: [RESEND PATCH] staging: gasket: Fix line ending with a '('
-Message-ID: <20191026180225.GA645771@kroah.com>
-References: <20191025233909.GA1599@cristiane-Inspiron-5420>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: outreachy-kernel@googlegroups.com, Rob Springer <rspringer@google.com>, 
+    Todd Poynor <toddpoynor@google.com>, Ben Chan <benchan@chromium.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [RESEND PATCH] staging: gasket: Fix line
+ ending with a '('
 In-Reply-To: <20191025233909.GA1599@cristiane-Inspiron-5420>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+Message-ID: <alpine.DEB.2.21.1910260640340.2559@hadrien>
+References: <20191025233909.GA1599@cristiane-Inspiron-5420>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Oct 25, 2019 at 08:39:09PM -0300, Cristiane Naves wrote:
+
+
+On Fri, 25 Oct 2019, Cristiane Naves wrote:
+
 > Fix line ending with a '('
-> 
+>
 > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+
+Acked-by: Julia Lawall <julia.lawall@lip6.fr>
+
+
 > ---
 >  drivers/staging/gasket/gasket_ioctl.c | 4 ++--
 >  1 file changed, 2 insertions(+), 2 deletions(-)
-
-Why is this a "RESEND"?  Did nothing change in it?
-
-Always version your patches, as the documentation suggests, and list
-below the --- line what changed from the previous version.
-
-Please fix up and resend it as a v3 (this is v2, right?)
-
-thanks,
-
-greg k-h
+>
+> diff --git a/drivers/staging/gasket/gasket_ioctl.c b/drivers/staging/gasket/gasket_ioctl.c
+> index 240f9bb..d1b3e9a 100644
+> --- a/drivers/staging/gasket/gasket_ioctl.c
+> +++ b/drivers/staging/gasket/gasket_ioctl.c
+> @@ -34,8 +34,8 @@ static int gasket_set_event_fd(struct gasket_dev *gasket_dev,
+>
+>  	trace_gasket_ioctl_eventfd_data(die.interrupt, die.event_fd);
+>
+> -	return gasket_interrupt_set_eventfd(
+> -		gasket_dev->interrupt_data, die.interrupt, die.event_fd);
+> +	return gasket_interrupt_set_eventfd(gasket_dev->interrupt_data,
+> +					    die.interrupt, die.event_fd);
+>  }
+>
+>  /* Read the size of the page table. */
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191025233909.GA1599%40cristiane-Inspiron-5420.
+>
 
