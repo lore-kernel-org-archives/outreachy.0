@@ -1,116 +1,118 @@
-X-GM-THRID: 6804292371114622976
-X-Received: by 2002:a2e:9c9:: with SMTP id 192mr11800901ljj.77.1584247772014;
-        Sat, 14 Mar 2020 21:49:32 -0700 (PDT)
+X-GM-THRID: 6749942525265444864
+X-Received: by 2002:a25:aaa3:: with SMTP id t32mr8453129ybi.221.1572114761017;
+        Sat, 26 Oct 2019 11:32:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:211:: with SMTP id y17ls2621793ljn.10.gmail; Sat,
- 14 Mar 2020 21:49:30 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtqfe+/a6A3YRIzQzPFkJVrbOMx21wp8EXd3w2asU8JNXaoFTKBEFpiEjpp22u7YUsMmQvF
-X-Received: by 2002:a2e:9ad1:: with SMTP id p17mr13203428ljj.26.1584247770613;
-        Sat, 14 Mar 2020 21:49:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584247770; cv=none;
+Received: by 2002:a25:c7c9:: with SMTP id w192ls2033589ybe.8.gmail; Sat, 26
+ Oct 2019 11:32:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwa1MunEfgebmGJApCDWR2mLnMw5/M2UUJMVzqeAL3fnRNdRNLih6WfXbsLXnr4vaoB0clx
+X-Received: by 2002:a25:be48:: with SMTP id d8mr8731535ybm.353.1572114759556;
+        Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572114759; cv=none;
         d=google.com; s=arc-20160816;
-        b=r+hQccKMZdxJCUiCl11ZoJHGr8034Gi2BW1jkMzr2dSrn13DkjFUx+GbhH9yQ+z8KZ
-         Oj2iozorDNe7M82ZM4zUqpwcXEIXaoK7PHzj6IdpBnNHmQy9mUxcXwiDrUz/5x+wHrWC
-         e2HGK5Cf2Oh2jr4wn4FTWL4nJdamDMvp3qKo+L9MDi8O/h5sMRApFFpg1yyl7KGnTnDM
-         BzPGPL/TN1s3DnIPkZ0q7JL00AUmNVrN45DJ07OFZiXjWXzhAOPSl0O9+SoXKVskq6WM
-         GcQ9nxYoF+aO7IDJPo1a7/dlzq4KIfLL7EzwSf7e6JB6lc3qydLNCG7CpXG7/RFeaYKl
-         7anw==
+        b=aYZCj9CndpSf0WYAC7F9VuVKgJ6sdruiqWQyYoEyHhkLRoFtcDawlPYswshO/RGoDp
+         jWt4gEryvB0Q61O/Zz+UrWqrkqH2SHqa2A+RPPVk/5/88zPo1aNpRHo7pmqu7IifiLYF
+         OdN2zfBZjJw0Xv7Mk+3booWquXZd++s90QJ9cUDV41B/eQK4GpQlH1vuV4Dn9nGLtS54
+         wE1VEfsAL36SgR28yYmdK801k9G4XOwctfgMqaAJRoi7cMli9ppDxAFWWcWxuaXnWHMc
+         ldVPFiq4Jnxrb+nnjsva4GUiLqAkOMUh9zGTpEevQoKMMxFPAnm8U98SGREKAPfnz2pe
+         XWcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=GD1Ffr5dVA5gMXyWCXEEzbpO2xWAsFANvKnkwZ3oEuk=;
-        b=F+0lJRCiT3Qj3A14GqlAP79Gh1xfUxUNV26xiITPxKQ9LsC33xB9IIfMVdu5J8+aml
-         ouEsizZ1l1sYSLesLrn40DEdwpDpz0cHMbgXAF6nWKhI0/aaFo/+VOzuO1S/XWHHWTl5
-         Fj4yhGEg7N4WWdDrJIDZoZrJHs/2r6DVlp+5Mq18sILbTbr9eQZN/C6ERTVnm7JrPL3m
-         QeYnO/5W/lDwhyItHRHWyeJ0fSRAbPtjpZFSwqATq61pJBN7Bi15lRtPqb1dLeNHWKWM
-         PdEbvlG1X7FwAyRQk/ZEkR90hAfYJk3mxl7ANwEGjU8YZNNPYFr4CtIOQGEg6OLyDgPM
-         Xqqw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=yDb/bZxBS90S88jsflf7WcUVKtLs478428CKX2xqpxc=;
+        b=VK5odsoUpK9ixyml+BxV6xYtmcrEob3uFqdAihCZuN3GmzsKomjSV5E9EHaX3DZlZS
+         CYdNm6aoDA3rLeu8dMwVhzqVHadgXyY0aicd0IZ/P5HaZms4RL0igane77S4ePpldjo5
+         2Q0Gvjh7n1tlj9Jn8lvzt+PEH1h+VqVxwv/W4NE3ldXceC11PS+1ZKQFWHAherhnaAB0
+         Jxili0B+FXe8X8FSrwNdcfjDfZTATry5+apJOKvVTkjmdmrMgDqFQnzH/quvlcOhsjuD
+         2pfmh+IiqDol5DwAtg/Qi12URvnEv8he9rWjU/Lr2lmnPfdIup5GDl77t9R7O0vMSYwO
+         G8+Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=VnwUnA3G;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id d12si622223lfi.2.2020.03.14.21.49.30
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gNVqLvV8;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
+        by gmr-mx.google.com with ESMTPS id r185si406542ywe.2.2019.10.26.11.32.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 14 Mar 2020 21:49:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=VnwUnA3G;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wr1-x441.google.com with SMTP id z15so17062352wrl.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2020 21:49:30 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gNVqLvV8;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x841.google.com with SMTP id o25so8422285qtr.5
+        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=from:to:subject:date:message-id;
-        bh=GD1Ffr5dVA5gMXyWCXEEzbpO2xWAsFANvKnkwZ3oEuk=;
-        b=VnwUnA3GhmBM1qRT3wG7Xtq7JSHNtnSifs0sddIM8DsT062ussCuoe24VcIJjvvgzS
-         3bAXTbphlGjGFpqnPMsYLTYtVXqma/xxsFoy3ocR8Ib4QPqNONr5TffssARQAGtkAzP2
-         JEWQkzFUO0ScaJvTGoWpEyQl3zfjpXdoI12Oc=
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=yDb/bZxBS90S88jsflf7WcUVKtLs478428CKX2xqpxc=;
+        b=gNVqLvV82F5TkmzS1t4c1XrQJ8GJfkSJTNdkwzr3YYPvEDbQv6YMX1C6tm8a6RZeMx
+         jsTiqznQ4SxlpyZD0FXrULevKbGeCWfsbZoZHCfQGjfPgq5XVstclXE+z9IL6FdQvwLr
+         1AQKu0g1ZcxP4aDxcmTJj4Lhdg+OkhIJegZiBN4kL6SkfgBIqjL684wMS74/fVrYvx+Y
+         eVC4ITjjgBTf/u4Pjt4JZhm5kobbjAUAV6SxGigjpjG2DVIzmoOonYY3izhEwuwhdsiD
+         ghidC4XIK+8eIUZarAh4w35ERhsCvsnhfu7oitNNOosEjud/hLH35jEeGBgJqdRJsAlR
+         PvlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=GD1Ffr5dVA5gMXyWCXEEzbpO2xWAsFANvKnkwZ3oEuk=;
-        b=mLrmVKtBa6WDgO/QSRm7pGMz7+pVA3PjpvC+dTW9AgMw883oS7Ds2y5Mo+WIGPm5am
-         7c6n6Gin6mrzwJso5MmRoGgqE3HiabQKIbGvbZtEXsm4XdyJeXMciGbzI1yODh4twXiQ
-         MQ4P6ajDykh8VCsD1nZIaNhcNo7QOnKLOJNEtOl6Ktdds+P+HEz3VqhRLZgkco8I17mP
-         bgb9fZFDclhaMaYt0HWkDc4Rtv4Bmr6iOJXffJZqx8bd6nchSd1t+3RW143adQSugent
-         xeCKxkaqxOIk41YPRWVd5I7PxhCYBq8oXv5g1h7FA4qko3l8soFjSI6r8T/ogG3bKoFW
-         K6MA==
-X-Gm-Message-State: ANhLgQ0h/g2z849UvqG+SS4l581Yx9W3PP/Ul2lra6OLnUywE8AGQR9U
-	DTqGgnmEe9F+0Vas8bpFsAivWJ2U/pqZiA==
-X-Received: by 2002:adf:f5cb:: with SMTP id k11mr20446925wrp.214.1584247769698;
-        Sat, 14 Mar 2020 21:49:29 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id f15sm12386065wrt.9.2020.03.14.21.49.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 14 Mar 2020 21:49:29 -0700 (PDT)
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org,
-	jerome.pouiller@silabs.com
-Subject: [PATCH] staging: wfx: remove unneeded spaces
-Date: Sun, 15 Mar 2020 05:49:22 +0100
-Message-Id: <20200315044922.14249-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=yDb/bZxBS90S88jsflf7WcUVKtLs478428CKX2xqpxc=;
+        b=keEJDgg/4/Hqhq70XWIiJh2ckRoYMloqdT4ZNhpN076AzOUq2/FaYhUnR5Hfb3I3Ko
+         oA21QEPrVXRquSjEolY1Vc4RwVYM/4sN9z+pLJKhVz3Ofs0Zm3VUFYQvb+lVFD9jshXg
+         R6u02LbQiJ6HKaua3qwpycuTJImN9KC0m5O4f/qKc2bx8Ebqx2P45IH++iRzSm7OZ/B5
+         RYbmJ/UD6DT7jaTfHO3++EOo0uL6WQlN40uFX7GaNFL7A+Pmqt16ubPPNULKKqStweUy
+         29Y4XEIzrim1V++H3l1gmiaFw/P5uwfoK9PBiNZ7TjdEAi59HQ1+JeFIw86BgKNefgZ1
+         ndng==
+X-Gm-Message-State: APjAAAWD0pAO5oNDI7C6rUR5h/mk6Bvu2lbTtxB5/oZOzsRYYRMFcpqI
+	f2aqegfNf03jopeU+dSX1cb+Kj6EvkhMJQ==
+X-Received: by 2002:a0c:9873:: with SMTP id e48mr9558687qvd.115.1572114759137;
+        Sat, 26 Oct 2019 11:32:39 -0700 (PDT)
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from cristiane-Inspiron-5420 ([131.100.148.220])
+        by smtp.gmail.com with ESMTPSA id d10sm2844318qko.29.2019.10.26.11.32.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 26 Oct 2019 11:32:38 -0700 (PDT)
+Date: Sat, 26 Oct 2019 15:32:35 -0300
+From: Cristiane Naves <cristianenavescardoso09@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [RESEND PATCH] staging: gasket: Fix line ending with a '('
+Message-ID: <20191026183235.GA8685@cristiane-Inspiron-5420>
+References: <20191025233909.GA1599@cristiane-Inspiron-5420>
+ <20191026180225.GA645771@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191026180225.GA645771@kroah.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Remove spaces after type casting operators in order to comply codding
-standards.
-Issue found with checkpatch.
+On Sat, Oct 26, 2019 at 08:02:25PM +0200, Greg Kroah-Hartman wrote:
+> On Fri, Oct 25, 2019 at 08:39:09PM -0300, Cristiane Naves wrote:
+> > Fix line ending with a '('
+> > 
+> > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> > ---
+> >  drivers/staging/gasket/gasket_ioctl.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> Why is this a "RESEND"?  Did nothing change in it?
+> 
+> Always version your patches, as the documentation suggests, and list
+> below the --- line what changed from the previous version.
+> 
+> Please fix up and resend it as a v3 (this is v2, right?)
+> 
+> thanks,
+> 
+> greg k-h
 
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
- drivers/staging/wfx/queue.c | 2 +-
- drivers/staging/wfx/sta.c   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+The only thing that changed was that was conflicting between the
+author and signed-off-by, so I fixed it. I will send v3 explaining this
+change and joining the two patches 'Fix lines ending with (' because
+they are similar.
 
-diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
-index ed6dc8297738..39d9127ce4b9 100644
---- a/drivers/staging/wfx/queue.c
-+++ b/drivers/staging/wfx/queue.c
-@@ -540,7 +540,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
- 		skb = wfx_tx_queue_get(wdev, queue, tx_allowed_mask);
- 		if (!skb)
- 			continue;
--		hif = (struct hif_msg *) skb->data;
-+		hif = (struct hif_msg *)skb->data;
- 		wvif = wdev_to_wvif(wdev, hif->interface);
- 		WARN_ON(!wvif);
- 
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index a60ac03fa73d..07a9991929fd 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -903,7 +903,7 @@ static void wfx_update_tim_work(struct work_struct *work)
- int wfx_set_tim(struct ieee80211_hw *hw, struct ieee80211_sta *sta, bool set)
- {
- 	struct wfx_dev *wdev = hw->priv;
--	struct wfx_sta_priv *sta_dev = (struct wfx_sta_priv *) &sta->drv_priv;
-+	struct wfx_sta_priv *sta_dev = (struct wfx_sta_priv *)&sta->drv_priv;
- 	struct wfx_vif *wvif = wdev_to_wvif(wdev, sta_dev->vif_id);
- 
- 	schedule_work(&wvif->update_tim_work);
--- 
-2.17.1
+Thanks for the feedback!
+
 
 
