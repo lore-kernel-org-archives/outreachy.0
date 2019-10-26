@@ -1,189 +1,115 @@
-X-GM-THRID: 6619390250222354432
-X-Received: by 2002:a1c:730c:: with SMTP id d12-v6mr3772wmb.10.1541196892362;
-        Fri, 02 Nov 2018 15:14:52 -0700 (PDT)
+X-GM-THRID: 6752254611928645632
+X-Received: by 2002:a92:8498:: with SMTP id y24mr12296616ilk.89.1572131787218;
+        Sat, 26 Oct 2019 16:16:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:4302:: with SMTP id h2-v6ls4464093wrq.8.gmail; Fri, 02
- Nov 2018 15:14:51 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5et3C4PzgDt+rKb2akZXc2hMaMth+04vn8Fb2SxQTIZUDWSMnGoayTJ6RuWs2sNgirxlnKe
-X-Received: by 2002:adf:b651:: with SMTP id i17-v6mr1398763wre.10.1541196891509;
-        Fri, 02 Nov 2018 15:14:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1541196891; cv=pass;
+Received: by 2002:a92:4781:: with SMTP id e1ls2348885ilk.10.gmail; Sat, 26 Oct
+ 2019 16:16:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx75+DxaRnmGWgB+9yzfWYHK3LDqwY04gI91QHXVe5fgGHBdXbwkIeOx/dLvaCrkP1d8VAj
+X-Received: by 2002:a92:dccf:: with SMTP id b15mr13057643ilr.250.1572131786048;
+        Sat, 26 Oct 2019 16:16:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572131786; cv=none;
         d=google.com; s=arc-20160816;
-        b=OTqSJVHfb8SAUIRzc3QIlVy+u4rHvgiofeivUAOnjoHcqwUsx9P4YhgrOm6Ccsg6bE
-         3ukQS4L00LjtW0IvPMrdI/x95mS8S1N8h2UsbAHVp9BBDPeVtJofPkJgDyr1NOCmlM1V
-         9NtAzeNgeElQIG+UojrDLFGzHdj5GWyGjfHFMxbeDdsOeG7bhR8kfbOmoONNHY//brRZ
-         I4jCgFqzOCFykFI/BPufAM6AlUS4qGtv/SXyr31zlMVdEpW9dvkhPJESH3fixhcdk/MR
-         t2qZPdO90ugCTiRKKGOALx65Oue9EzkuUeKP7cqkhA5tP/ICodDhrIa5Td4mX6wo15vC
-         NJkg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=odknnI5mZIxu1VugxICBnn5jGdelsCvxZKNsKmb/oekvyvvHfyTKqSK4+3CPuCIcNQ
+         Rqw1V8bOU2AMgQlL+gjW0elJdNi24aSbj68QcpkPdVboYVBJ8EhmBejE90EXgSHsrUlZ
+         zM4J8L7K43rbFiom2lED0PBNxeWMqmWLcniDPki3vOHe/gL8UP5+wNjf3Z1l1xFXE1nv
+         hqBAY3+iHDM3ZbSzmgq3fjd5yj56ZK4YwpmMoyJWIicgXE49r8yR3BktK3FQxY4EUCHF
+         PEEhgmaMydPt10UCvsBIOn2jzPFbw2zwhPZpaSFANFOD1GiYRdhywWGBjhRHeYWUTS3j
+         VFew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=PB3bRveQOPxHtFRYEkWX3KaEgVwxCmDWTho7Jg8Zi7k=;
-        b=G7wp+TFXd7advl/Fo0LN4UkavF5zz5Na9FRIfT9tVj37jO61JL6gPRsKTUHVmVttkK
-         gSk3tPZY3X/HsX+fIhlbH0O0G8zANl6rPtfK7utFyXzbGwC9esWUNhy7FEbNQeO/RNsg
-         kArbWt0xvZci+JKFyEbv09EQxWs+67sEGuRHipa2IDiJLEFBuPEmhqpZq/GvkQzmgGwY
-         pdsRCwDmq8wZ+xJdJO7DRtksfwivWs84+Vq+nCJGfb3BgyBgUOCIt6PRMrvFoifEzCWs
-         rPDJaOSwN6O7v+KBaaDS9NCNHjDEd1Rqb09fjPXgXGHmWbN3S9ptgYbCk8LQoCpS0ChJ
-         Zsxg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=ThQlC+RO;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id h137-v6si939855wmd.1.2018.11.02.15.14.51
+        bh=WembGSFsbExOh6C9xfy35r52QdLc1q9Nu1Ae4G7IdBI=;
+        b=d6p/+0E/X7eU2OYcMT0/PGG1774ei2JH8xuoUGiZiyKhDC3TINU+z/FjU2XrT5//yo
+         HVs6ROcxeIHLPGu0fXtFrmAR4caONwucWG8FD7Cpwf11zXNvvm3KgKwucApV+37cg8vn
+         luw+2MyKkDBW1KLG9v4ogJ3zubPdAERdoNE5/X9YqkrMczy2pH46zPPs1Y8r4gMC4FsT
+         71MFDjD96HNXGp4AXE+niwoUACeURLrsskeV+fL2H8wv3UhFnFXQOog7QkFrfzep5HbW
+         xbiYUR9pFDz8z/CUQlR7wrOxmwy3HoQV13BxHoP8LUFesxRDkBovMxNS/LZhHxf6aXaS
+         Zj8A==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pWkyQ1NG;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
+        by gmr-mx.google.com with ESMTPS id h14si383701ilc.0.2019.10.26.16.16.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Nov 2018 15:14:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 26 Oct 2019 16:16:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=ThQlC+RO;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541196889; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=d9KjTn8HCMWUY8n7+r62NzonlY48EEub64zmRt3RQDqxGtXisty9ySrV7eMTF9x02vxkhHgcM98g/l94yLIu+L/TYjcFQE5HFVN0+vNtafilvoiuXkRnUe4BI4XhYmMubymB5UM7W9Gfgy2EhFbBWS10hofTa0AU7C7WPdsXhNM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541196889; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=PB3bRveQOPxHtFRYEkWX3KaEgVwxCmDWTho7Jg8Zi7k=; 
-	b=cfoyBEupYgTJzKQKNlCIIUzVUmxmBqZuuL0iE7O4+oCNydGCvywp7qxDMhJ9mrWc/bGz4GpWA6vUApSfjoGeG7VYRpvDSCyPvbGxZ32D9W6x3tjTrm/LSV0iKMEN5zLXMKCKD6vUnkchon3IByiYULmn/sZBPLAp/+cZEdK15k0=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541196889;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=4085; bh=PB3bRveQOPxHtFRYEkWX3KaEgVwxCmDWTho7Jg8Zi7k=;
-	b=ThQlC+ROZol90yomkd0JGRNEoXnom0M6VubvgHV1tZKIMPgXTsqBrZIRJOCJgh9z
-	t2rHinLdPifzidKJrQ1jgVDDaIgjQYrJEPdAmyIY4Pq6xGd99B/XobMaRhBxotAOPp2
-	Jm56Y680xXwnj/e9tvyyW2FbtcEKPu5Ul7HKNH+M=
-Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 1541196888550204.09079164573086; Fri, 2 Nov 2018 23:14:48 +0100 (CET)
-Date: Fri, 2 Nov 2018 22:14:47 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pWkyQ1NG;
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x842.google.com with SMTP id z22so8965050qtq.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 16:16:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=WembGSFsbExOh6C9xfy35r52QdLc1q9Nu1Ae4G7IdBI=;
+        b=pWkyQ1NGQb6iIZ8q127AjyQtavlLiCaXvTaXTDBO605b0pyxYH/oqDhLauXmQy1r6d
+         VzLdCYj3DxDE6D1V3JbJF2UC/geCDPQnkm+xCwH5Ddh0S4Bn2iHlFrXH2SkAVRYo+7N8
+         5Qg8AJJjFZzJJLotYEeOqLmfjvTJd6Sfx+9WABWk/eq2uRTR/w7HsohxUPcNAmopzbFx
+         VLY2hDEc1rkIXyrd94xHlmVyYWMKbVU+LsRdJ+lojihb9lV4nbEdMDShmQKc8G/J1+H6
+         jywm2KLrcgVXe+hENXm7oNZUwxzpYerV5u1zrurD9flBrdnhcHmWqXIXXWzwLrFxrGxG
+         UJBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=WembGSFsbExOh6C9xfy35r52QdLc1q9Nu1Ae4G7IdBI=;
+        b=MBUB/mHPMcG3jCUQ6FU/0J7uV7c1itHSw6OVSDygMzxxuXjLPk5vAY2591XE88yJPp
+         y8lDaUrafZN4Dhtm7JAdsOitnevSWzQLcARxfZB5Nzz+HFKstPedXBYE/hsKm/tE9IOj
+         TARJDKwu/6GnoV/fy8aDVUaCcpFaX7KeiTcGyOxoJ9bCZf+8wllTR5Sg4HvVTgKEDKDL
+         Ct34ytfQMopFYq/+lLtiE4Br0R8/ZU9twLWbuRqtvr+FmcqS30ugHir8ycUc267AUNlp
+         UDgh0E4VC6cMJ+PO04+xmq1YUlSBi7cYrRmzY2pGQbDV3aZCyzJwDmhhxLAWfhLUqlWX
+         fk6w==
+X-Gm-Message-State: APjAAAXowyU/c4IkJhs2tiWcxXVLjTNfemOoB4ETAtfJ0R7wKX9CSuhE
+	Q9RN6oPs+yzTBmS/q8n0tFQg0dXR5jdKWw==
+X-Received: by 2002:a0c:a947:: with SMTP id z7mr10744288qva.103.1572131785586;
+        Sat, 26 Oct 2019 16:16:25 -0700 (PDT)
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from cristiane-Inspiron-5420 ([131.100.148.220])
+        by smtp.gmail.com with ESMTPSA id t58sm3999075qta.78.2019.10.26.16.16.22
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 26 Oct 2019 16:16:25 -0700 (PDT)
+Date: Sat, 26 Oct 2019 20:16:19 -0300
+From: Cristiane Naves <cristianenavescardoso09@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: greybus Correct SPDX License Identifier
-Message-ID: <20181102221447.GA19866@kvasir.local>
+Cc: Michael Tretter <m.tretter@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: media: allegro-dvt: remove bool comparison
+Message-ID: <20191026231619.GA14093@cristiane-Inspiron-5420>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Correct the SPDX License Identifier by using C style comments
-Reported by checkpatch.
+Bool tests don't need comparisons. Issue found by coccicheck.
 
-Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
+Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
 ---
- drivers/staging/greybus/arche_platform.h        | 2 +-
- drivers/staging/greybus/arpc.h                  | 2 +-
- drivers/staging/greybus/audio_apbridgea.h       | 2 +-
- drivers/staging/greybus/audio_codec.h           | 2 +-
- drivers/staging/greybus/audio_manager.h         | 2 +-
- drivers/staging/greybus/audio_manager_private.h | 2 +-
- drivers/staging/greybus/bundle.h                | 2 +-
- drivers/staging/greybus/connection.h            | 2 +-
- drivers/staging/greybus/control.h               | 2 +-
- 9 files changed, 9 insertions(+), 9 deletions(-)
+ drivers/staging/media/allegro-dvt/nal-h264.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/greybus/arche_platform.h b/drivers/staging/greybus/arche_platform.h
-index 02056351d25a..9d997f2d6517 100644
---- a/drivers/staging/greybus/arche_platform.h
-+++ b/drivers/staging/greybus/arche_platform.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Arche Platform driver to enable Unipro link.
-  *
-diff --git a/drivers/staging/greybus/arpc.h b/drivers/staging/greybus/arpc.h
-index 3534ba1a4e6c..3dab6375909c 100644
---- a/drivers/staging/greybus/arpc.h
-+++ b/drivers/staging/greybus/arpc.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause)
-+/* SPDX-License-Identifier: (GPL-2.0 OR BSD-3-Clause) */
- /*
-  * This file is provided under a dual BSD/GPLv2 license.  When using or
-  * redistributing this file, you may do so under either license.
-diff --git a/drivers/staging/greybus/audio_apbridgea.h b/drivers/staging/greybus/audio_apbridgea.h
-index 42ac6059bfc7..330fc7a397eb 100644
---- a/drivers/staging/greybus/audio_apbridgea.h
-+++ b/drivers/staging/greybus/audio_apbridgea.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: BSD-3-Clause
-+/* SPDX-License-Identifier: BSD-3-Clause */
- /**
-  * Copyright (c) 2015-2016 Google Inc.
-  * All rights reserved.
-diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
-index 4efd8b3ebe07..d36f8cd35e06 100644
---- a/drivers/staging/greybus/audio_codec.h
-+++ b/drivers/staging/greybus/audio_codec.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus audio driver
-  * Copyright 2015 Google Inc.
-diff --git a/drivers/staging/greybus/audio_manager.h b/drivers/staging/greybus/audio_manager.h
-index dcb1a20f5ff1..be605485a8ce 100644
---- a/drivers/staging/greybus/audio_manager.h
-+++ b/drivers/staging/greybus/audio_manager.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus operations
-  *
-diff --git a/drivers/staging/greybus/audio_manager_private.h b/drivers/staging/greybus/audio_manager_private.h
-index 9d9b58fc54c4..2b3a766c7de7 100644
---- a/drivers/staging/greybus/audio_manager_private.h
-+++ b/drivers/staging/greybus/audio_manager_private.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus operations
-  *
-diff --git a/drivers/staging/greybus/bundle.h b/drivers/staging/greybus/bundle.h
-index ffcfd43802cc..8734d2055657 100644
---- a/drivers/staging/greybus/bundle.h
-+++ b/drivers/staging/greybus/bundle.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus bundles
-  *
-diff --git a/drivers/staging/greybus/connection.h b/drivers/staging/greybus/connection.h
-index ec3f1d3ef3b9..8deeb1d5f008 100644
---- a/drivers/staging/greybus/connection.h
-+++ b/drivers/staging/greybus/connection.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus connections
-  *
-diff --git a/drivers/staging/greybus/control.h b/drivers/staging/greybus/control.h
-index 643ddb9e0f92..9eae2726ba3d 100644
---- a/drivers/staging/greybus/control.h
-+++ b/drivers/staging/greybus/control.h
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Greybus CPort control protocol
-  *
+diff --git a/drivers/staging/media/allegro-dvt/nal-h264.c b/drivers/staging/media/allegro-dvt/nal-h264.c
+index 4e14b77..bd48b88 100644
+--- a/drivers/staging/media/allegro-dvt/nal-h264.c
++++ b/drivers/staging/media/allegro-dvt/nal-h264.c
+@@ -235,7 +235,7 @@ static inline int rbsp_write_bit(struct rbsp *rbsp, bool value)
+ 
+ 	rbsp->pos++;
+ 
+-	if (value == 1 ||
++	if (value ||
+ 	    (rbsp->num_consecutive_zeros < 7 && (rbsp->pos % 8 == 0))) {
+ 		rbsp->num_consecutive_zeros = 0;
+ 	} else {
 -- 
-2.19.1
-
-
--- 
-ta
-ioannis
+2.7.4
 
 
