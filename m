@@ -1,78 +1,84 @@
 X-GM-THRID: 6752359295964151808
-X-Received: by 2002:a17:906:c836:: with SMTP id dd22mr11252140ejb.178.1572161303421;
-        Sun, 27 Oct 2019 00:28:23 -0700 (PDT)
+X-Received: by 2002:a05:6214:13aa:: with SMTP id h10mr4418680qvz.142.1572160373818;
+        Sun, 27 Oct 2019 00:12:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:2d3:: with SMTP id b19ls3294150edx.0.gmail; Sun, 27
- Oct 2019 00:28:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxIeUzInj3mH4ykmytzf4TwdWhXyxCsy1yeQ0yFAAbumiDeR5RksOE3Q4r4KB5CRc+9KPMT
-X-Received: by 2002:a50:eb42:: with SMTP id z2mr13004452edp.291.1572161302649;
-        Sun, 27 Oct 2019 00:28:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572161302; cv=none;
+Received: by 2002:a37:6d3:: with SMTP id 202ls4918514qkg.6.gmail; Sun, 27 Oct
+ 2019 00:12:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxPLHn4wv0EQ1HmF9hvXNA17wVK86bvctSndsn7hR14YGWZSvPeOMSOxy9RYwlMrebIT8ht
+X-Received: by 2002:a37:a792:: with SMTP id q140mr11025499qke.216.1572160372648;
+        Sun, 27 Oct 2019 00:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572160372; cv=none;
         d=google.com; s=arc-20160816;
-        b=zmcyznDvXIj8rgIOz+GVvA8gKHJj3lFGndL0SaouLosfPtWL9MPwrHzqN0GvpHFGbr
-         FL6DJDhSeZmSrOnvEhOQjZtT6iSAiUOx6hRowou1GBml94KXDd7VjgYcsEwfZbJB++SR
-         IrlZ8CtXVSuQVE5N+USvZ3SODU0IgIsmGhvV6mqAAvFLe48KcruWpl7CiC7LHGCEoMzm
-         tY4ZMmN2LaS+zO6qh3XXv/lpF0ROFBNLyPuAr0i1f+kiAbHraE1/Dq6w/rExZ7bHYfvy
-         LVxzRKV7/dAx2WnxANII3uuZahXgVF3UBH+PKw0l1YAHiOc7ikI7Bqf/HMuRjzH4I34R
-         Ytmw==
+        b=D8WqOqXZ/91C1xtdoZXJebF5zEHzgUETLObMZDGMGhiKae+NHY8eywal4NfgTEky2K
+         LNoNfN2XMRn1hmd185WQImEmKnuAp59DOkztsmDYJdhfgmMVTx+Gugv2y59uPh2kW92v
+         n0X6j5vG9WOdgC6BOp1CrqxxmTgh1Bk5IsgIb/vXJCkKkRHRVX/bUxOW4/NjOY4R7pCD
+         KFjYT11TUIybpZx18IKK6nz4YEdXOdHitZUFmjQKdKCEbFD8eYX+KH7LuRgrhO6Habep
+         pcibNnzuvtsN9E3dua3QzjrIK9cvTcetezu/X0xeNDb7hpvyogoc3lSQw7zJ9uuqgR0x
+         yKhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=D2EieGiaO/vLi+jhW0WjAlMO5c1Iu9DsPk8mPoKsCUI=;
-        b=vVHy16n2lL4VZBAY/O/vLV2ctbZKPhZbhtkgcARS3vLMXGQXzRg27TyM9h0CwIRi6e
-         Ayw4JmU7xzdMSidMpQ6d+gPSxvNJliwJo0LAmT0eDow0wleC4KTeikgMHPCD6I/Svp9M
-         kMEK05w/1v2inH8Ak4+5foqdll0Vyx2cvLZ1tp13Wtq1cEcO2NDfqpylPWEXopbkRoO/
-         jGr0b6Vw7XmolfWXp//8d7lCtHEhZGoFqz/lMJ/difEQhlWWq0vy06kFxECOnoxeykYf
-         Q7YfxdFJi4FfUThB5G0F79jeRnat5uSajrxGVKArfTFNXqAWXZgvEv0lxfejtUUxx9Fk
-         pllA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=usT/Cs89sCTc1Xr8GfALOuA4ucwUJ/NrS1y/RkcrP5c=;
+        b=R9VvGhZN5+JPUnb2u40nlemrMofZGUo31ypjKFg0sOrMh/7lNOQJ+X18YG//aXandY
+         eC7iPV8dt5HTkNxdZJvG4S0yLMz93LYKenNvXPKJgF12UvaFYRCgf6JUOLL49E0XG9sv
+         x+atX52Gzrl2BYkReQcZv+GqA8M67xZ4QFZLvv2P/9A/BHIgz/6vGGRNNSJPWmnd76H5
+         e5dTJuvr4ZAVZ0VWzynXD9ZLAeBCOd6mm2FXWt0f8Ewy5u6s4uVFpuWTzaDsWqudc+F6
+         A5cSbDyMxBakGl6gpvbXuRjBYGnq2NASa6q00vo7jxwnjEtB6p7+7Wiauyz3VwmJPUY+
+         WR5A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a15si296591ejj.0.2019.10.27.00.28.22
+       dkim=pass header.i=@kernel.org header.s=default header.b=e88dTmS7;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id z41si322829qtj.1.2019.10.27.00.12.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 27 Oct 2019 00:28:22 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        Sun, 27 Oct 2019 00:12:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.68,235,1569276000"; 
-   d="scan'208";a="408563153"
-Received: from ip-121.net-89-2-166.rev.numericable.fr (HELO hadrien) ([89.2.166.121])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Oct 2019 08:28:14 +0100
-Date: Sun, 27 Oct 2019 08:28:14 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@kernel.org header.s=default header.b=e88dTmS7;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 12EA720679;
+	Sun, 27 Oct 2019 07:12:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572160371;
+	bh=XasSnSt5Kz00MONxTlwqsftdUfYkRrzDncRg9N0cEYc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=e88dTmS7Q2ATr3P8ZpGVh7O2sXo0ZtccPsL9/Vt74Y0v6i+WaPqqGbboapC6g2TdZ
+	 mBKA5lRRrWV8kI+fIVzyzIx730BPk7MbsUWNNRbL6V0qi5X5/rrO9JzKEY6b5rbv9g
+	 MjG8wJOoSYEYLAdshOk6yWaKZh3MwQvpz5QVQRc0=
+Date: Sun, 27 Oct 2019 08:12:19 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
-    saiprakash.ranjan@codeaurora.org, joel@joelfernandes.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: ks7010: Fix line ending with
- a '('
-In-Reply-To: <20191027060237.GA26854@linux-kernel-dev>
-Message-ID: <alpine.DEB.2.21.1910270827210.3186@hadrien>
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org
+Subject: Re: [PATCH] staging: ks7010: Fix line ending with a '('
+Message-ID: <20191027071219.GA1704509@kroah.com>
 References: <20191027060237.GA26854@linux-kernel-dev>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191027060237.GA26854@linux-kernel-dev>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-
-
-On Sun, 27 Oct 2019, Frank A. Cancio Bello wrote:
-
+On Sun, Oct 27, 2019 at 06:02:37AM +0000, Frank A. Cancio Bello wrote:
 > checkpatch.pl message:
 > "CHECK:OPEN_ENDED_LINE: Lines should not end with a '('"
->
+> 
 > Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 > ---
 >  drivers/staging/ks7010/ks_hostif.c | 5 ++---
 >  1 file changed, 2 insertions(+), 3 deletions(-)
->
+> 
 > diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
 > index 2666f9e30c15..ab731a2f7bb3 100644
 > --- a/drivers/staging/ks7010/ks_hostif.c
 > +++ b/drivers/staging/ks7010/ks_hostif.c
 > @@ -75,9 +75,8 @@ static void ks_wlan_hw_wakeup_task(struct work_struct *work)
->
+>  
 >  	if (ps_status == PS_SNOOZE) {
 >  		ks_wlan_hw_wakeup_request(priv);
 > -		time_left = wait_for_completion_interruptible_timeout(
@@ -81,20 +87,12 @@ On Sun, 27 Oct 2019, Frank A. Cancio Bello wrote:
 > +		time_left = wait_for_completion_interruptible_timeout(&priv->psstatus.wakeup_wait,
 > +								      msecs_to_jiffies(20));
 
-This doesn't seem like a good solution, since it massively violates the 80
-character boundary.  I don't think there is a good solution in this case.
+And now you have created a line over 80 characters, so you can send a
+patch fixing that, and around you go :(
 
-julia
+Just leave this as-is, it's fine now.
 
->  		if (time_left <= 0) {
->  			netdev_dbg(priv->net_dev, "wake up timeout or interrupted !!!\n");
->  			schedule_work(&priv->wakeup_work);
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191027060237.GA26854%40linux-kernel-dev.
->
+thanks,
+
+greg k-h
 
