@@ -1,85 +1,86 @@
 X-GM-THRID: 6749323707377778688
-X-Received: by 2002:a54:4585:: with SMTP id z5mr8968379oib.128.1572144423038;
-        Sat, 26 Oct 2019 19:47:03 -0700 (PDT)
+X-Received: by 2002:a05:6830:1d8e:: with SMTP id y14mr967099oti.130.1572144400446;
+        Sat, 26 Oct 2019 19:46:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:7ac7:: with SMTP id m7ls26296otn.4.gmail; Sat, 26 Oct
- 2019 19:47:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVkjmLPlYECDo/+gTHcWSTtaXIUIpLi1ERthyuVm4qQjbnz4sucOcaCF8MEN8o+Wx0abwr
-X-Received: by 2002:a9d:5a0b:: with SMTP id v11mr8881451oth.102.1572144422279;
-        Sat, 26 Oct 2019 19:47:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572144422; cv=none;
+Received: by 2002:aca:f44c:: with SMTP id s73ls2737537oih.1.gmail; Sat, 26 Oct
+ 2019 19:46:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxtNk3AZpm5Lca0pTtMHQFacXUJhm18QSuuMAmF1ysJ6O3h1xN63+XSxHERSqiMfALr8LS/
+X-Received: by 2002:a05:6808:87:: with SMTP id s7mr9226006oic.47.1572144399432;
+        Sat, 26 Oct 2019 19:46:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572144399; cv=none;
         d=google.com; s=arc-20160816;
-        b=gv7YeLf1pF/JUc1170fYpIPbhmtLmvQLdUafiaqdF6qrY/8AFe+GEoQxi6T25FuyJm
-         BeW9cGZa9mvFFuGvMQNtbMNHrIh+GlVLVWrTRdkXAgvNdtFXsYAjDw/qapzytnhHAsjc
-         fHWTH4lcUz2Y/jem+n34CMVdK5/M3w3SWhPTLmRAcFUeOeBRAwx9Jlx6yqHqGpk3Btxx
-         Mpap/+XZmI04dmvCU+br8LVuSUylubRSjAAH6zjJFJaXLs3+hfhMUoMd2j8RpyyjWdR8
-         BZdZ723EiqWPBeqSv0dMKBCkEqUll9HdE6U3PKz1UBKTHFHsj8Tnr3cHAH1k7i1vIZXi
-         A4og==
+        b=dDHR9uVf2ONF7TtUC4TZsQZOPcGqDUenQZ1308E5rRZ7Mt6+J2vrZxo1rAJUinn4Si
+         PjHR9WfERZ2eMXbt7UOhLn9Dv2NMpkVrZMkKxzSRm89uUkHhQHBLIZRCd5LO3p06kwRV
+         8mqmiHeAGxK2jcct2s1duzj0QlUkhQW0KgzoAYJYBXKfibX/FQqob9J/ZOOAAMmFf1qI
+         n+fGx1zA5MSI1nE/+ecV0cZBkYTqV6XOfp+A56mEH0vfOjA7F/gUYO/zWh6+9gn34o8s
+         ZLQQaf/spf8K0BxBemyn8YiItn5g+HXOmV+3y5FBPz9yJ7Q/55Pq7rmutbbW4/vpoqIz
+         eR1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references
          :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=RUGkmtZKbCOLeFxeBLI3d7G9s4B6dxY8hcWHGbM8FZE=;
-        b=TEHBaUYvwjIw2Ei060GFN8NptK8HjsadmZkwVFdDMhMzo4lJRDfSa/mz2prv/wFdKs
-         PgepjtwubhutCKVeFQMGQrEzx6bSFX3koG0zjvsi2K4zAG5fTh7Ix8aEFdHakrWlWFmK
-         SxfCQ3Wpdeg9uA8gePvcF3haD745oPCotLFMMCXZJPpxGwA+59YLG2zQV4WBckbQavgL
-         OVf43XFIpcLzjXeXG81uxLt/1Dn59/ATcAPRhbHRHSekvUnuK1DzVA3M/DL6uZO3XBda
-         FbhmrfnZdTS9QSj1syBiNDautKueLVPwe3NjZATznzlb8Z8r+whcXA8F4lXuEiaPTUmP
-         EeTg==
+        bh=7Bjd6RvvtpuGu/rFOKts2a1lY7ruRXYCnbXWP1/EeCM=;
+        b=q02rHt+MHULdshe5VsAmJAzoQaGYcRNto49riB7hYWPaNY2xAIkvBT3LTa938w9/7F
+         LjANSxV+4AObx8oFvfs5cBcCpWV8WlcOssWzRK6sKWqT4dg/n0Sc/44iaOhCM+7qRtBz
+         V/X3WM47oUNfwrruQ3zSPRNianVj+J0QlqXJ+ORHXeNqRdILOkMH/Zs6voRvxx1jtnOA
+         pDUYxBVXmA6gX20kOWPQVbP4K/+3pPtwhq8BdysSnEHr204XNWzDhukaWZe9Vgh85/u4
+         vYodQjcykgwQ3VXJCNOPHmV6ZF11u0ePiY0i/vlTn1HKXh9ShT2qIc6QHLClVwnHzezL
+         Ycrw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=h5kquIKK;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jTn7ZBzU;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jarias.linux@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id m23si306982oic.1.2019.10.26.19.47.02
+Received: from mail-qk1-x741.google.com (mail-qk1-x741.google.com. [2607:f8b0:4864:20::741])
+        by gmr-mx.google.com with ESMTPS id m23si306968oic.1.2019.10.26.19.46.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 26 Oct 2019 19:47:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
+        Sat, 26 Oct 2019 19:46:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) client-ip=2607:f8b0:4864:20::741;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=h5kquIKK;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jTn7ZBzU;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id c21so9346444qtj.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 19:47:02 -0700 (PDT)
+Received: by mail-qk1-x741.google.com with SMTP id 71so5420029qkl.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 26 Oct 2019 19:46:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mail-followup-to:references
          :mime-version:content-disposition:in-reply-to;
-        bh=RUGkmtZKbCOLeFxeBLI3d7G9s4B6dxY8hcWHGbM8FZE=;
-        b=h5kquIKKQfCKo0pN6SVLFxQ08WKJGrKUqo1B/7RNIiTwNQ7sz8n5ckOmgYlBvJGid2
-         fma8B766CLwOSHyxEpLwheP25QNCqL7FW1Glhi4Rq/w1haIJ4O2Lj57+NMJLAkTSQ0fm
-         hwf957wt98rO3RyzVBr+/FKxDOxrh9Un44nMzn9wiWeq8IMk9pTOj/RK2LF1cotAw4E/
-         AZ/udjj+jCuj7rT5uoNKkQW9wizc04n7cYZpsh2Kd7oli9RFS+99+hMXjiDcfk+YfHXI
-         /TBMqMWYQ6LPRNUhS720qjsSAHBg/CZM7pOuVt+anyewHppAWlpXhyWljTMbkZbeBZvs
-         b5DQ==
+        bh=7Bjd6RvvtpuGu/rFOKts2a1lY7ruRXYCnbXWP1/EeCM=;
+        b=jTn7ZBzUuH5SvHah4vIfAoru87goIijOd5izpPkIZ4z6gS5e4D8+rKJX3pWr47fEw/
+         fyX31uJrMO5cqjDPF/C6qat9l2HHikVWdUy7ZcQvQQECmdjCrOKnEqDLSUOlWxRxNc5h
+         6aVNGCf3SuOf66f0Vs00VNAADVJbIVCTSpCp2y5Rgh1iZBPUUd7jOxXVp2lbLfRBbgdW
+         mGh6eJ9C/D/GcPpieXRYK1u0+SHK7CBXOaE0g69oJGpC2BlY39nrAQq3jFwt0PLOPXLD
+         Ddqo/cMl66aAV33h8Cm/qhMrydc6FPJNQiVj32Kz7Xs5Il2psKouOi79CeroiAXYAPMz
+         kHDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id
          :mail-followup-to:references:mime-version:content-disposition
          :in-reply-to;
-        bh=RUGkmtZKbCOLeFxeBLI3d7G9s4B6dxY8hcWHGbM8FZE=;
-        b=elh00/1fbJjAOLk7iUeSZIzA6WVCmw3EVkl5hl6gWoJ/GIAKYOxOUeI1tXxikUY/+m
-         Jimtkqzk7jQSALUiCEnZeDCEFu55x8Gdzx9C3sHUcM2pmJkK1XAuhOwtnSlXAD1FsjTT
-         mJufHzd++I6p5pc7z9OtQ/jPq/lm1VBBax5l3bRNySU1Go3Ud7NiGNdRIrrupmnWg51f
-         UgUzr6m6Xlk8gJAmVyi8zW3qiqMAJAVG3OTb6CyrHIzTONairsxZI8+fsSMa/dc74pCw
-         FiAwbgZOBPCjsRTmp4HRkmddiRC/Tv4YR+xFJFIavemo51YJ3DSSzlXwE4f5E6rMUtrN
-         A1ww==
-X-Gm-Message-State: APjAAAUdsEQ76pGp01tkpyaTgfmSSUvEBYJlblK5VTldqJFRwKmu326t
-	OWVH3cdL8Nq6oaDssFJqDVU=
-X-Received: by 2002:ac8:28a1:: with SMTP id i30mr11419351qti.245.1572144421911;
-        Sat, 26 Oct 2019 19:47:01 -0700 (PDT)
+        bh=7Bjd6RvvtpuGu/rFOKts2a1lY7ruRXYCnbXWP1/EeCM=;
+        b=NCIMsmUX5TaHm/zybeJV2XJv0gFVSuRLEFa2kT57yV4SONkC3Mkc+pu0UQ5nzmpECU
+         32UmjYAA1abkhsZwK/tNadoiiFvlElwqdUESd3OC/n9O8H5kgmgaF/Y/ggPWuRJ5BW+E
+         zwCDWCNT51Z1yI3GZjSydJ3QvGGyysJtknA4u82oARnsuXJo5lpS12ko7wsDIRhcswLk
+         Vge4eGlvWqQ/891/X1mRhQ/jS1VHxtYkvBu13WVp7xxpK7xmVSTYBLsJGDX5PAPyiH86
+         VMOnFJxj7dTFzM8n64ZfZRjJW4WwsuY3s7OpyIkLb8LPecsaLuE1Z/Re/dP0Z828RuD0
+         IqwQ==
+X-Gm-Message-State: APjAAAW9a4KImR0VzJqcVMNK6ATlATosbylFtfcIykurd0PQgSEsDf4j
+	wKATLuGSvghAS5By8e3aIOwD6v7ztIZO2A==
+X-Received: by 2002:a37:4146:: with SMTP id o67mr6954673qka.232.1572144399010;
+        Sat, 26 Oct 2019 19:46:39 -0700 (PDT)
 Return-Path: <jarias.linux@gmail.com>
 Received: from gmail.com ([172.98.66.16])
-        by smtp.gmail.com with ESMTPSA id w15sm4423992qtk.43.2019.10.26.19.47.00
+        by smtp.gmail.com with ESMTPSA id 104sm3523691qtc.6.2019.10.26.19.46.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 26 Oct 2019 19:47:01 -0700 (PDT)
-Date: Sat, 26 Oct 2019 21:46:58 -0500
+        Sat, 26 Oct 2019 19:46:38 -0700 (PDT)
+Date: Sat, 26 Oct 2019 21:46:35 -0500
 From: "Javier F. Arias" <jarias.linux@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH v3 2/2] staging: rtl8723bs: Simplify boolean expression
-Message-ID: <786c20736f58c090484a4b6ca00502e76f80b0cf.1572144163.git.jarias.linux@gmail.com>
+Subject: [RESEND PATCH v3 1/2] staging: rtl8723bs: Fix line over 80
+ characters.
+Message-ID: <6186e531d4cc59bed09329b2c9c4cac7352702bf.1572144163.git.jarias.linux@gmail.com>
 Mail-Followup-To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 References: <cover.1572144163.git.jarias.linux@gmail.com>
@@ -88,27 +89,29 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1572144163.git.jarias.linux@gmail.com>
 
-Simplify expression that it's inverting a boolean value.
-Issue found by Coccinelle.
+Fix line over 80 characters by wrapping arguments in function call.
+Suggested-by: Julia Lawall <julia.lawall@lip6.fr>.
 
 Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
 ---
 Changes in V2:
-        - Remove the parentheses around the variable.
+        - Edit the commit message to use the Suggested-by tag.
 
- drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-index 0c2f3b2d4326..6f341d52afb6 100644
+index c514cb735afd..0c2f3b2d4326 100644
 --- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
 +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
-@@ -190,7 +190,7 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
+@@ -188,7 +188,9 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
  
- 		ODM_CmnInfoUpdate(&pHalData->odmpriv,
- 				  ODM_CMNINFO_BT_ENABLED,
--				  ((bBtDisabled == true)?false:true));
-+				  !bBtDisabled);
+ 		bBtDisabled = hal_btcoex_IsBtDisabled(Adapter);
+ 
+-		ODM_CmnInfoUpdate(&pHalData->odmpriv, ODM_CMNINFO_BT_ENABLED, ((bBtDisabled == true)?false:true));
++		ODM_CmnInfoUpdate(&pHalData->odmpriv,
++				  ODM_CMNINFO_BT_ENABLED,
++				  ((bBtDisabled == true)?false:true));
  
  		ODM_DMWatchdog(&pHalData->odmpriv);
  	}
