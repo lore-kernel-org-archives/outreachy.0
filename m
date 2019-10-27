@@ -1,165 +1,100 @@
 X-GM-THRID: 6752322786481405952
-X-Received: by 2002:a81:288:: with SMTP id 130mr7336346ywc.193.1572225825748;
-        Sun, 27 Oct 2019 18:23:45 -0700 (PDT)
+X-Received: by 2002:a92:db0c:: with SMTP id b12mr13191584iln.33.1572159901670;
+        Sun, 27 Oct 2019 00:05:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0d:ea09:: with SMTP id t9ls1693830ywe.3.gmail; Sun, 27 Oct
- 2019 18:23:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwHffdUYgzHlE/VvsMivbH67aK0vWPn54ck2YrSETFAuD9sM/qSioxNATbIiuxufsxzYcDU
-X-Received: by 2002:a0d:e003:: with SMTP id j3mr11123111ywe.87.1572225823752;
-        Sun, 27 Oct 2019 18:23:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572225823; cv=none;
+Received: by 2002:a5d:9c1a:: with SMTP id 26ls2189026ioe.12.gmail; Sun, 27 Oct
+ 2019 00:05:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzPisD7bTaBreJ761Ssnpe5D29vhXRILZMneatnkQCxsy5zrn3iwRt7nzDwXTKBTd5fJ5Sl
+X-Received: by 2002:a5e:950e:: with SMTP id r14mr12696301ioj.171.1572159900254;
+        Sun, 27 Oct 2019 00:05:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572159900; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dTZwPHN9kPyLQ91kQArxM6h+3H1P5ft4njppZfdwgXCN0afZxp/qiTlHYCzmEmopn
-         ILrc0u475aSi/sv05bnQeXUQKKNhlC9gJFaPsrEMPo+RONaR7L4/NEeFYDmgRtTHA/7E
-         AGyF6Jb0b3BMhzngzSIqqeusrow2tWPGktPbiUdDh8E/BTP1vxYezIm/xn6vmiDs//nb
-         SNdWpiOND05gjZe09kh0mCKkHac6yrhGvlAm7P6vYFiWygDj1mzjV54mxJAYe2/dBYzF
-         /ilHbKe00netqKnggkDPTcul5lc5nFWw7kXjA8BfVQ40A6kLPyZyk3H47ApVZr6l7mcH
-         y2Xw==
+        b=iVN1pGGqd6FfGXshHup+9nSEB/aJYUjc1RvsD/HN11G8BNxi2F8rtYzSudOr1BYZQe
+         rehLdn/SDcQQpkWVxfsCQwzxsMSS/W87TE6X2r6CuaCYTAKs/qIc024H2sQu9xF3gbrP
+         K40Y/tAMvnWLbizjj5WDYRqnVoId4YUtGQCFevLptix9AgcO3PyvgF0QoYmLssSLTiyz
+         zcWNZ8jNfnPcFtRDACMi5ppe/Xm2YwTZhPDpcytNL5CD+1hIJEflOXzmmaRHVlrfEtI5
+         SNvhHhVnqV1qiGeIEdNEq3A7+B5eenL+NMsA7uiTiHIeU3Gf+zMILg4Gt0q5czSyR0iY
+         DZMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=YFLMMTb3+rTNbep72aANDbNhLKuuaVfvZiXGDDu1rc4=;
-        b=t+2E2v7+vYUJTO6+K2OMLOGANUkcXnvzwVWRKCkWYHbN74rG4MLfaCP5lIeN4Rq9b9
-         U7yQzzG+X05D0ezMJ3YlqMb3NMlru2Rs05h6+7ClZLChD8Rj99jJg4ovv8YqgWkn54Jw
-         bFrTOFSHNOlZi54A1yIfJ/n8YdY6PpjQOBqKxl5moVL64Hc0++oquD4n49ODKi9uZ9uX
-         bV9pEZbxDsueFVMmmRn7mAQNzZHGwcLeUywgWrSCmx8p8hHv7hjLwsM1Rp+kRMHYhN6c
-         yR6cFmXOg/BrFgPpvl7iW8Md6CPySGleNClBknXlcyxYCYS0ShWFG7b8TicFgqAi+yEn
-         BgVw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=VUM6ylbJOSp5u/JPoOis1H43OzE1xcedIP1c538JPnE=;
+        b=y5cQk+fVYQLUxqc37CVm4/bQI0EQsuhldjJ2856rjzmfMoVxk9Rq6DsJveAzRlD1Mn
+         YtiVTghA7hvbp0AQrbxoL7xSC2lJp/F4wnBW+OqR2QU//z6WU627emJwB2qJOprJbt35
+         JpMr1NBm3aO2s82peWyzzdoqU2pUMh8J16p3KIsHjWspF7asB2TnY9M+W6Ague0AdyhQ
+         QHWDZrEpGPzw1n6r6vILlQ3TnFKdIDBYlZBwEf8DRjsbERjQW7NpfMXCXv3Ee/kX6VUs
+         JmMsFt0AwFxgqvT7fgYLaOLEaCrwqO+0LNDGCY74vZz6OOzzbglv4dFpoeWHcIousz2I
+         LkBA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=Rskvbrsi;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a42 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-vk1-xa42.google.com (mail-vk1-xa42.google.com. [2607:f8b0:4864:20::a42])
-        by gmr-mx.google.com with ESMTPS id t73si492045ybi.4.2019.10.27.18.23.43
+       dkim=pass header.i=@kernel.org header.s=default header.b=iZqvOT4K;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id g1si332727ilh.1.2019.10.27.00.05.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 27 Oct 2019 18:23:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a42 as permitted sender) client-ip=2607:f8b0:4864:20::a42;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 27 Oct 2019 00:05:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=Rskvbrsi;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a42 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-vk1-xa42.google.com with SMTP id 70so1666101vkz.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 27 Oct 2019 18:23:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=YFLMMTb3+rTNbep72aANDbNhLKuuaVfvZiXGDDu1rc4=;
-        b=RskvbrsiL3zfVqvMU5cdCZfefLF9RMnj68zdZ7+f8aOPGxDdnyaCui44smTUqKRYiX
-         H+lkhRAbeICRxXSmHvbYo5q47xqMZMWV0JHxKj0yAHtq4N200dYKuilXQi6KOW6HUHk6
-         tcsMkwfgKjKTd7+Tsxk7skSDMutTOuAbOD6RqlEWH6x4/6Smtg1tLFyNe+HHX5DXt93C
-         6JSkpOAGLeZL6nUTcWsYrhsi1P2yY+gqPX7gAYXXN5l0ioueEoynHs8Gu0BAfRCExGg2
-         47GpVEEV0kIqdFCg1d9t6EwLtRiMVzUx6ep0ciXlAvIOvNQX1coIfQpUTOrUZEHBfbPt
-         WdPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=YFLMMTb3+rTNbep72aANDbNhLKuuaVfvZiXGDDu1rc4=;
-        b=hTlUp9Sjpo+xpdiu1mdJj4kt2apEWc0j/kc8MC69kh8vHEK4OnOC9t+YhrSmTS2v1k
-         gysjY2JfzUpqVkoc50Yikt8QjEPekVDWBYo82LZkm4akEsX10wFdhe8Ji2P15eADcFZv
-         e2wZjX0Q5o7sINim1MkjhbAf2ZCWvOUvOablRiMNu0N2pHRDszOA+quDNWGAg66Y4r66
-         sECl/TkObMOMk56+tTNrxJ/niLCoigDCNCNLcoYg4yPAlDqT4RDKMrL7yxThKFPaM2UF
-         on1KMZ7nVAUvl7b1aYCElM2TYXHENAaCW4vylQhehlMV+2/I35bvoMolrAF5ajoi+Gi+
-         psag==
-X-Gm-Message-State: APjAAAVDGBHz3SzyaST2IJ0XhB1SZBzqry3QDaznf492UdiPcj9Ue6Ya
-	GQ0M6+dbspbpeev7HlEWrx9PADD0fL+Nng==
-X-Received: by 2002:a1f:acd0:: with SMTP id v199mr7627177vke.5.1572225823012;
-        Sun, 27 Oct 2019 18:23:43 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from linux-kernel-dev ([172.97.41.74])
-        by smtp.gmail.com with ESMTPSA id r12sm3118791vsk.19.2019.10.27.18.23.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Oct 2019 18:23:42 -0700 (PDT)
-Date: Mon, 28 Oct 2019 01:23:40 +0000
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b=iZqvOT4K;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id DFD3420873;
+	Sun, 27 Oct 2019 07:04:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572159899;
+	bh=2p5ON40eZ4yhOX556Oa3uklxL2ue85C2N8YJLJRK6Ow=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iZqvOT4K7BL81opHkF64soUtXf7JO+OY90FNrzOkNgTQAM3ZcS/Atgo2nEGp7DGQI
+	 v8OTPXBM1hgIf0aiXqT0elOc2HM80Afc23iQLP8thY5eT+25tfTcc/hYuA61hqTyMo
+	 0JwUmFDK/f836RoHW6Ag8R2bAmNbJ7zFB5sTQ3oU=
+Date: Sun, 27 Oct 2019 08:04:56 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
 Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
 	joel@joelfernandes.org
-Subject: [PATCH v2] staging: ks7010: Fix unnecessary long lines
-Message-ID: <20191028012340.txospx2wfkefc7n2@linux-kernel-dev>
+Subject: Re: [PATCH] staging: ks7010: Fix unnecessary long lines
+Message-ID: <20191027070456.GA1703830@kroah.com>
+References: <20191027034056.GA20613@linux-kernel-dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+In-Reply-To: <20191027034056.GA20613@linux-kernel-dev>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-checkpatch message: "WARNING:LONG_LINE: line over 80 characters"
+On Sun, Oct 27, 2019 at 03:40:56AM +0000, Frank A. Cancio Bello wrote:
+> checkpatch message: "WARNING:LONG_LINE: line over 80 characters"
+> 
+> Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+> ---
+> 
+> This is the first patch that I send for "Outreachy December 2019 to
+> March 2020". My plan is to keep these first patches very simple.
+> Once they get approved I will move to less trivial fixes ;)
+> 
+>  drivers/staging/ks7010/ks7010_sdio.c | 3 ++-
+>  drivers/staging/ks7010/ks_hostif.c   | 9 ++++++---
+>  drivers/staging/ks7010/ks_wlan_net.c | 3 ++-
+>  3 files changed, 10 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
+> index 4b379542ecd5..c7ba658e234e 100644
+> --- a/drivers/staging/ks7010/ks7010_sdio.c
+> +++ b/drivers/staging/ks7010/ks7010_sdio.c
+> @@ -446,7 +446,8 @@ static void ks_wlan_hw_rx(struct ks_wlan_private *priv, size_t size)
+>  				     DUMP_PREFIX_OFFSET,
+>  				     rx_buffer->data, 32);
+>  #endif
+> -		ret = ks7010_sdio_writeb(priv, READ_STATUS_REG, REG_STATUS_IDLE);
+> +		ret = ks7010_sdio_writeb(priv,
+> +					 READ_STATUS_REG, REG_STATUS_IDLE);
 
-Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
----
-Changes in v2:
-  - As suggested by Greg, this time just the last parameter
-    "REG_STATUS_IDLE" was wrapped in the first diff.
+Why not just wrap the last parameter?  That's the normal way to do
+something like this.
 
- drivers/staging/ks7010/ks7010_sdio.c | 3 ++-
- drivers/staging/ks7010/ks_hostif.c   | 9 ++++++---
- drivers/staging/ks7010/ks_wlan_net.c | 3 ++-
- 3 files changed, 10 insertions(+), 5 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
-index 4b379542ecd5..8dc6c84630c3 100644
---- a/drivers/staging/ks7010/ks7010_sdio.c
-+++ b/drivers/staging/ks7010/ks7010_sdio.c
-@@ -446,7 +446,8 @@ static void ks_wlan_hw_rx(struct ks_wlan_private *priv, size_t size)
- 				     DUMP_PREFIX_OFFSET,
- 				     rx_buffer->data, 32);
- #endif
--		ret = ks7010_sdio_writeb(priv, READ_STATUS_REG, REG_STATUS_IDLE);
-+		ret = ks7010_sdio_writeb(priv, READ_STATUS_REG,
-+				         REG_STATUS_IDLE);
- 		if (ret)
- 			netdev_err(priv->net_dev, "write READ_STATUS_REG\n");
- 
-diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
-index 2666f9e30c15..4206e535de5e 100644
---- a/drivers/staging/ks7010/ks_hostif.c
-+++ b/drivers/staging/ks7010/ks_hostif.c
-@@ -79,7 +79,8 @@ static void ks_wlan_hw_wakeup_task(struct work_struct *work)
- 				&priv->psstatus.wakeup_wait,
- 				msecs_to_jiffies(20));
- 		if (time_left <= 0) {
--			netdev_dbg(priv->net_dev, "wake up timeout or interrupted !!!\n");
-+			netdev_dbg(priv->net_dev,
-+				   "wake up timeout or interrupted !!!\n");
- 			schedule_work(&priv->wakeup_work);
- 			return;
- 		}
-@@ -438,7 +439,8 @@ void hostif_data_indication(struct ks_wlan_private *priv)
- 
- 	/* source address check */
- 	if (ether_addr_equal(&priv->eth_addr[0], eth_hdr->h_source)) {
--		netdev_err(priv->net_dev, "invalid : source is own mac address !!\n");
-+		netdev_err(priv->net_dev,
-+			   "invalid : source is own mac address !!\n");
- 		netdev_err(priv->net_dev,
- 			   "eth_hdrernet->h_dest=%02X:%02X:%02X:%02X:%02X:%02X\n",
- 			   eth_hdr->h_source[0], eth_hdr->h_source[1],
-@@ -1831,7 +1833,8 @@ void hostif_sme_mode_setup(struct ks_wlan_private *priv)
- 			if (!is_11b_rate(priv->reg.rate_set.body[i]))
- 				break;
- 
--			if ((priv->reg.rate_set.body[i] & RATE_MASK) >= TX_RATE_5M) {
-+			if ((priv->reg.rate_set.body[i] & RATE_MASK) >=
-+			    TX_RATE_5M) {
- 				rate_octet[i] = priv->reg.rate_set.body[i] &
- 						RATE_MASK;
- 			} else {
-diff --git a/drivers/staging/ks7010/ks_wlan_net.c b/drivers/staging/ks7010/ks_wlan_net.c
-index 3cffc8be6656..0e1486ccb901 100644
---- a/drivers/staging/ks7010/ks_wlan_net.c
-+++ b/drivers/staging/ks7010/ks_wlan_net.c
-@@ -1212,7 +1212,8 @@ static inline char *ks_wlan_translate_scan(struct net_device *dev,
- 		iwe.u.mode = (capabilities & WLAN_CAPABILITY_ESS) ?
- 			      IW_MODE_INFRA : IW_MODE_ADHOC;
- 		current_ev = iwe_stream_add_event(info, current_ev,
--						  end_buf, &iwe, IW_EV_UINT_LEN);
-+						  end_buf, &iwe,
-+						  IW_EV_UINT_LEN);
- 	}
- 
- 	/* Add frequency */
--- 
-2.17.1
-
+greg k-h
 
