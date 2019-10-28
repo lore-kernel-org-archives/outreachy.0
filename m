@@ -1,182 +1,142 @@
-X-GM-THRID: 6396247239473233920
-Date: Sat, 11 Mar 2017 06:26:01 -0800 (PST)
-From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <1a480897-bdb9-4d3c-8143-d5347f67c2b6@googlegroups.com>
-Subject: Trouble with IIO dummy build.
+X-GM-THRID: 6752241350359384064
+X-Received: by 2002:a63:eb52:: with SMTP id b18mr10421813pgk.205.1572252021309;
+        Mon, 28 Oct 2019 01:40:21 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a17:902:9684:: with SMTP id n4ls5014315plp.11.gmail; Mon, 28
+ Oct 2019 01:40:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyBwCkyGJlZ8lauT+HMlsedkrzRp6mmQRWKil/3CKyhhIU1/6GWqgpRHuKEY6dK11ROJnbj
+X-Received: by 2002:a17:902:59c9:: with SMTP id d9mr210722plj.229.1572252019980;
+        Mon, 28 Oct 2019 01:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572252019; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oLOYXX7vpb2foCHusBnDM8/jQA2CI+pmb1h9uq149i+iN9AVJ3Ytary0a137jESySP
+         WWPzFJO5rTTzr4PRsqBt0kNOerUH8pdd0kQ0uSMotd6mudqhNVgzQpOsGQTCkUZccivz
+         v+ElFH1CjflSCG9pibJmSgAHfAgQJk2ZktfMGcivS5wzJuWpaNuD3sj5SPJi+sTN/ToF
+         imXMUk5OSEa392jGXSTXi9FdVbi8+uAl+HmxkfC66QOdF7w0G6diz/rGs3A+QvPoiOtR
+         HxA+tmefTSgV/jx4ehUoKvPhR79a7oALYo9XNgYDDffM5y1Ph9U+lExJZwUry6PubYIY
+         5kxQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=AAreTZABI2sh5zxTgDMdtRwIgOOV26iDp41KT28HdQ0=;
+        b=KtKvp/JUIZov7VIzSFIxe586jLM2hVJlpxqrfBIQUzXatW0HS7DpTbVebrS+iFm53K
+         pX4J0KKfWLm/BDQvQVaPgYkbp+IwMhV6kp9j8xGvQO4AU3MkLeG2N7V2PeOWJOBdFaBu
+         i41OjV/hJ4Ql+xMIaztdlAQBY0pS38VyxyIPSqnyZoAdFmrAliGtOZdmYoRgvgOmL7hQ
+         hE8/z92AJo6X4YV2I7spN2LT66MyoPq5RPyKiuhjv0eEEsc79C/q5vA7/AMgHrmuzh71
+         E9qSm+C9YSdBNKJfI9qKaSu8Oc0AUbUgdGBcbr5zJ1HtFy8pGilrAp1TfLYi/pbU3FSi
+         demA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=UNsO2OmZ;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
+        by gmr-mx.google.com with ESMTPS id f7si107772plt.5.2019.10.28.01.40.19
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 28 Oct 2019 01:40:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=UNsO2OmZ;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S8ShU8008098;
+	Mon, 28 Oct 2019 08:40:16 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=AAreTZABI2sh5zxTgDMdtRwIgOOV26iDp41KT28HdQ0=;
+ b=UNsO2OmZ6Ov72DOxYYNKxnT5P4or0VeIn9lktNKJymAjn73V43N6R9p/X7p/hIke7nUf
+ eHp5Suj32ekGYYTf8IL3JTCWYpTc7Lv7nsRwE3fEHO+ZniEUuBi0eemVEk7vjFUR9OGa
+ n3PJq8NXCmYbkTM/WLfnmpIo5LwreP8aij3wKnqeRhjc73z4adcUf7Q2AgjuNcatU6Vd
+ G2HROdVQ3rynTQHtYi2RtZX7sRZ4h66Z/MeWIkmiEgiep+P9rYj0ERTT+/ED4Iids7Uo
+ P/a8guaDSjf+8/tKqtxZrrzf67e3EuhDz30oih7tIkx99FxLsVfmhFtCIraColSugwVj UA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+	by userp2120.oracle.com with ESMTP id 2vvumf57vw-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 28 Oct 2019 08:40:16 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+	by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S8SAHp122316;
+	Mon, 28 Oct 2019 08:40:15 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+	by aserp3030.oracle.com with ESMTP id 2vwakxm0y3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 28 Oct 2019 08:40:15 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9S8eE0s024446;
+	Mon, 28 Oct 2019 08:40:14 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Mon, 28 Oct 2019 01:40:13 -0700
+Date: Mon, 28 Oct 2019 11:40:07 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Cristiane Naves <cristianenavescardoso09@gmail.com>,
+        outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: octeon: Remove unneeded variable
+Message-ID: <20191028084007.GC1922@kadam>
+References: <20191026222453.GA14562@cristiane-Inspiron-5420>
+ <20191028082732.GE1944@kadam>
+ <alpine.DEB.2.21.1910280934430.2348@hadrien>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_5605_2100085404.1489242361395"
-X-Google-Token: EPmRkMYF2cEyINPJ_8g0
-X-Google-IP: 117.192.128.140
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.1910280934430.2348@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910280086
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910280086
 
-------=_Part_5605_2100085404.1489242361395
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_5606_9919262.1489242361396"
+On Mon, Oct 28, 2019 at 09:36:04AM +0100, Julia Lawall wrote:
+> 
+> 
+> On Mon, 28 Oct 2019, Dan Carpenter wrote:
+> 
+> > On Sat, Oct 26, 2019 at 07:24:53PM -0300, Cristiane Naves wrote:
+> > > Remove unneeded variable used to store return value. Issue found by
+> > > coccicheck.
+> > >
+> > > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> > > ---
+> > >  drivers/staging/octeon/octeon-stubs.h | 4 +---
+> > >  1 file changed, 1 insertion(+), 3 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+> > > index b07f5e2..d53bd801 100644
+> > > --- a/drivers/staging/octeon/octeon-stubs.h
+> > > +++ b/drivers/staging/octeon/octeon-stubs.h
+> > > @@ -1387,9 +1387,7 @@ static inline cvmx_pko_status_t cvmx_pko_send_packet_finish(uint64_t port,
+> > >  		uint64_t queue, union cvmx_pko_command_word0 pko_command,
+> > >  		union cvmx_buf_ptr packet, cvmx_pko_lock_t use_locking)
+> > >  {
+> > > -	cvmx_pko_status_t ret = 0;
+> > > -
+> > > -	return ret;
+> > > +	return 0;
+> >
+> > What is the point of this function anyway?
+> 
+> Given that it is in octeon-stubs.h, it seems that the point is to get the
+> code to compile when COMPILE_TEST is set.  There is a real definition in
+> arch/mips/include/asm/octeon/cvmx-pko.h
 
-------=_Part_5606_9919262.1489242361396
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Oh yeah...  Duh.  I saw that it was in stubs but I just assumed that it
+was stubs for something which was never implemented or left over code...
 
- 
- Hello,
- 
- I am having issues with dummy modules compilation. I have selected the 
-required config options.
- $ cat .config | grep IIO 
- And output of it is as listed below.
+My bad.
 
-# CONFIG_SENSORS_IIO_HWMON is not set
-CONFIG_DVB_USB_FRIIO=m
-# IIO staging drivers
-CONFIG_IIO=y
-CONFIG_IIO_BUFFER=y
-CONFIG_IIO_BUFFER_CB=m
-CONFIG_IIO_KFIFO_BUF=y
-CONFIG_IIO_TRIGGERED_BUFFER=y
-CONFIG_IIO_CONFIGFS=y
-CONFIG_IIO_TRIGGER=y
-CONFIG_IIO_CONSUMERS_PER_TRIGGER=2
-CONFIG_IIO_SW_DEVICE=m
-CONFIG_IIO_SW_TRIGGER=m
-CONFIG_IIO_TRIGGERED_EVENT=m
-CONFIG_IIO_ST_ACCEL_3AXIS=m
-CONFIG_IIO_ST_ACCEL_I2C_3AXIS=m
-CONFIG_IIO_ST_ACCEL_SPI_3AXIS=m
-# Hid Sensor IIO Common
-CONFIG_HID_SENSOR_IIO_COMMON=m
-CONFIG_HID_SENSOR_IIO_TRIGGER=m
-CONFIG_IIO_MS_SENSORS_I2C=m
-CONFIG_IIO_SSP_SENSORS_COMMONS=m
-CONFIG_IIO_SSP_SENSORHUB=m
-CONFIG_IIO_ST_SENSORS_I2C=m
-CONFIG_IIO_ST_SENSORS_SPI=m
-CONFIG_IIO_ST_SENSORS_CORE=m
-# IIO dummy driver
-CONFIG_IIO_DUMMY_EVGEN=m
-CONFIG_IIO_SIMPLE_DUMMY=m
-CONFIG_IIO_SIMPLE_DUMMY_EVENTS=y
-CONFIG_IIO_SIMPLE_DUMMY_BUFFER=y
-CONFIG_IIO_ST_GYRO_3AXIS=m
-CONFIG_IIO_ST_GYRO_I2C_3AXIS=m
-CONFIG_IIO_ST_GYRO_SPI_3AXIS=m
-CONFIG_INV_MPU6050_IIO=m
-CONFIG_IIO_ST_LSM6DSX=m
-CONFIG_IIO_ST_LSM6DSX_I2C=m
-CONFIG_IIO_ST_LSM6DSX_SPI=m
-CONFIG_IIO_ADIS_LIB=y
-CONFIG_IIO_ADIS_LIB_BUFFER=y
-CONFIG_IIO_ST_MAGN_3AXIS=m
-CONFIG_IIO_ST_MAGN_I2C_3AXIS=m
-CONFIG_IIO_ST_MAGN_SPI_3AXIS=m
-CONFIG_IIO_HRTIMER_TRIGGER=m
-CONFIG_IIO_INTERRUPT_TRIGGER=m
-CONFIG_IIO_TIGHTLOOP_TRIGGER=m
-CONFIG_IIO_SYSFS_TRIGGER=m
-# CONFIG_IIO_ST_PRESS is not set
+regards,
+dan carpente
 
- There is no iio directory created after mounting configfs.
- sudo mount -t configfs none /config
-
-  config]$ ls -a
-  .  ..
- 
-  The following command execute without any error.
-  $ make drivers/iio/dummy/iio_dummy_evgen.ko 
-
- $ make drivers/iio/dummy/iio_dummy.ko
-
-  
-  I tried to load module with insmod, SELinux prevented access to it.
-
-    $ insmod iio_dummy_evgen.ko
-
-    $ insmod iio_dummy.ko
-
-
- So, I tried to load modules with modprobe. I used the following commands 
-and they executed with errors.
-
-  $ sudo modprobe iio_dummy_evgen
-
-  modprobe: ERROR: could not insert 'iio_dummy_evgen': Unknown symbol in 
-module, or unknown parameter (see dmesg)
-
-
-  $ sudo modprobe iio_dummy
-
-  modprobe: ERROR: could not insert 'iio_dummy': Unknown symbol in module, 
-or unknown parameter (see dmesg)
-
- 
-
-  dmesg output 
-
-  [ 7093.419225] iio_dummy_evgen: Unknown symbol iio_bus_type (err 0)
-
-
- I am using fedora 25 x86_64 with kernel version 4.11.0-rc1+.
-
-  
-
- Any idea to resolve this issue?
-
-
-  Thanks,
-
-  Varsha
-
-------=_Part_5606_9919262.1489242361396
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">=C2=A0<br>=C2=A0Hello,<br>=C2=A0<br>=C2=A0I am having issu=
-es with dummy modules compilation. I have selected the required config opti=
-ons.<br>=C2=A0$ cat .config | grep IIO <br>=C2=A0And output of it is as lis=
-ted below.<br><br><div style=3D"margin-left: 40px;"># CONFIG_SENSORS_IIO_HW=
-MON is not set<br>CONFIG_DVB_USB_FRIIO=3Dm<br># IIO staging drivers<br>CONF=
-IG_IIO=3Dy<br>CONFIG_IIO_BUFFER=3Dy<br>CONFIG_IIO_BUFFER_CB=3Dm<br>CONFIG_I=
-IO_KFIFO_BUF=3Dy<br>CONFIG_IIO_TRIGGERED_BUFFER=3Dy<br>CONFIG_IIO_CONFIGFS=
-=3Dy<br>CONFIG_IIO_TRIGGER=3Dy<br>CONFIG_IIO_CONSUMERS_PER_TRIGGER=3D2<br>C=
-ONFIG_IIO_SW_DEVICE=3Dm<br>CONFIG_IIO_SW_TRIGGER=3Dm<br>CONFIG_IIO_TRIGGERE=
-D_EVENT=3Dm<br>CONFIG_IIO_ST_ACCEL_3AXIS=3Dm<br>CONFIG_IIO_ST_ACCEL_I2C_3AX=
-IS=3Dm<br>CONFIG_IIO_ST_ACCEL_SPI_3AXIS=3Dm<br># Hid Sensor IIO Common<br>C=
-ONFIG_HID_SENSOR_IIO_COMMON=3Dm<br>CONFIG_HID_SENSOR_IIO_TRIGGER=3Dm<br>CON=
-FIG_IIO_MS_SENSORS_I2C=3Dm<br>CONFIG_IIO_SSP_SENSORS_COMMONS=3Dm<br>CONFIG_=
-IIO_SSP_SENSORHUB=3Dm<br>CONFIG_IIO_ST_SENSORS_I2C=3Dm<br>CONFIG_IIO_ST_SEN=
-SORS_SPI=3Dm<br>CONFIG_IIO_ST_SENSORS_CORE=3Dm<br># IIO dummy driver<br>CON=
-FIG_IIO_DUMMY_EVGEN=3Dm<br>CONFIG_IIO_SIMPLE_DUMMY=3Dm<br>CONFIG_IIO_SIMPLE=
-_DUMMY_EVENTS=3Dy<br>CONFIG_IIO_SIMPLE_DUMMY_BUFFER=3Dy<br>CONFIG_IIO_ST_GY=
-RO_3AXIS=3Dm<br>CONFIG_IIO_ST_GYRO_I2C_3AXIS=3Dm<br>CONFIG_IIO_ST_GYRO_SPI_=
-3AXIS=3Dm<br>CONFIG_INV_MPU6050_IIO=3Dm<br>CONFIG_IIO_ST_LSM6DSX=3Dm<br>CON=
-FIG_IIO_ST_LSM6DSX_I2C=3Dm<br>CONFIG_IIO_ST_LSM6DSX_SPI=3Dm<br>CONFIG_IIO_A=
-DIS_LIB=3Dy<br>CONFIG_IIO_ADIS_LIB_BUFFER=3Dy<br>CONFIG_IIO_ST_MAGN_3AXIS=
-=3Dm<br>CONFIG_IIO_ST_MAGN_I2C_3AXIS=3Dm<br>CONFIG_IIO_ST_MAGN_SPI_3AXIS=3D=
-m<br>CONFIG_IIO_HRTIMER_TRIGGER=3Dm<br>CONFIG_IIO_INTERRUPT_TRIGGER=3Dm<br>=
-CONFIG_IIO_TIGHTLOOP_TRIGGER=3Dm<br>CONFIG_IIO_SYSFS_TRIGGER=3Dm<br># CONFI=
-G_IIO_ST_PRESS is not set<br><br></div>=C2=A0There is no iio directory crea=
-ted after mounting configfs.<br>=C2=A0sudo mount -t configfs none /config<b=
-r><br>=C2=A0 config]$ ls -a<br>=C2=A0 .=C2=A0 ..<br>=C2=A0<br>=C2=A0 The fo=
-llowing command execute without any error.<br>=C2=A0 <tt>$=C2=A0make=C2=A0d=
-rivers/iio/dummy/iio_dummy_evgen.ko</tt> <p><tt>=C2=A0$=C2=A0make=C2=A0driv=
-ers/iio/dummy/iio_dummy.ko</tt></p><p><tt>=C2=A0 </tt><br>=C2=A0 I tried to=
- load module with insmod, SELinux prevented access to it.<tt><br></tt></p><=
-p><tt>=C2=A0=C2=A0=C2=A0 $=C2=A0insmod=C2=A0iio_dummy_evgen.ko</tt></p><p><=
-tt>=C2=A0=C2=A0=C2=A0 $=C2=A0insmod=C2=A0iio_dummy.ko</tt></p><p><tt><br></=
-tt></p><p><tt>=C2=A0So, I tried to load modules with modprobe. I used the f=
-ollowing commands and they executed with errors.</tt></p><p><tt>=C2=A0 $ su=
-do modprobe iio_dummy_evgen</tt></p><p><tt>=C2=A0 modprobe: ERROR: could no=
-t insert &#39;iio_dummy_evgen&#39;: Unknown symbol in module, or unknown pa=
-rameter (see dmesg)</tt></p><p><tt><br></tt></p><p><tt>=C2=A0 $ sudo modpro=
-be iio_dummy</tt></p><p><tt>=C2=A0 modprobe: ERROR: could not insert &#39;i=
-io_dummy&#39;: Unknown symbol in module, or unknown parameter (see dmesg)<b=
-r></tt></p><p><tt>=C2=A0</tt></p><p><tt>=C2=A0 dmesg output <br></tt></p><p=
-><tt>=C2=A0 [ 7093.419225] iio_dummy_evgen: Unknown symbol iio_bus_type (er=
-r 0)<br></tt></p><p><tt><br></tt></p><p><tt>=C2=A0I am using fedora 25 x86_=
-64 with kernel version 4.11.0-rc1+.</tt></p><p><tt>=C2=A0 <br></tt></p><p><=
-tt>=C2=A0Any idea to resolve this issue?<br></tt></p><p><tt><br></tt></p><p=
-><tt>=C2=A0 Thanks,</tt></p><p><tt>=C2=A0 Varsha<br></tt></p></div>
-------=_Part_5606_9919262.1489242361396--
-
-------=_Part_5605_2100085404.1489242361395--
 
