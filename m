@@ -1,106 +1,111 @@
-X-GM-THRID: 6945952502339600384
-X-Received: by 2002:a25:d613:: with SMTP id n19mr7750482ybg.290.1617230591824;
-        Wed, 31 Mar 2021 15:43:11 -0700 (PDT)
+X-GM-THRID: 6752704263003045888
+X-Received: by 2002:a81:7189:: with SMTP id m131mr10892224ywc.387.1572236479921;
+        Sun, 27 Oct 2019 21:21:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:61d0:: with SMTP id v199ls51139ybb.3.gmail; Wed, 31 Mar
- 2021 15:43:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz5iCR9Itxd0dU3rucBgKMPS7ChPH9X2TNORYQRDklx4qVCyYpSMoWHwJEPAeARrqthiFW3
-X-Received: by 2002:a25:c5c8:: with SMTP id v191mr7513171ybe.142.1617230590774;
-        Wed, 31 Mar 2021 15:43:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617230590; cv=none;
+Received: by 2002:a0d:cb92:: with SMTP id n140ls2331851ywd.15.gmail; Sun, 27
+ Oct 2019 21:21:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1kwNk8Itqsc5lM7qZ7IvUTGlNIMZW2qZR8hazv89Yf67sZw1qh/bQr5hoDEBrBE1ecZiH
+X-Received: by 2002:a81:6e43:: with SMTP id j64mr11314568ywc.91.1572236478228;
+        Sun, 27 Oct 2019 21:21:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572236478; cv=none;
         d=google.com; s=arc-20160816;
-        b=ohlwrofofami2XvzrT+AKodvFEyBiMqNhC3YrRn3ohSHzF7A2HaOM7+Q8EAPCNwLpg
-         +Akyg/JgIo0FF7jPWbn7BbfXpfsRLtEWwDeKDheoh0u6vOVC3N0ZJAZY3JJ5RLdMe8m4
-         ew27kcMNEnUNgEzw7DABdGPT5bwkpkXKfvjd0utzA+BNsiKCd2XnsQl5+5gfTMy1XKdX
-         1BLdJIopbdv83yuzVDeZlEVY4NhusCPsZXJGMfpzNBHjQI/bT4eEZg18EgayabiQW+70
-         nFEcdeA5J13rDDISj1BeYagZRaNTWweyfqO8gA71Lj4y/hdnEUqKWTpKaBMnf98/h8hU
-         w2kA==
+        b=R8QosWITjZ7p7Pt4+JT9khAQAfZEfctHP9ywufzlhEnoNBPXTBpbzRwDK2zXKTcO/I
+         xrI7eKLbm2MIsPIE/0w5cy2he38v2C/rR1mKwOxeaeSBKHXGU3Yw53hVhsq5G2eJjqSV
+         QCXJEAoMr1GonZ47FUe5IbUI7sT6xqZ35woHLr0wtNr8ASM5X2Zt8tau+V3xe5+PXai5
+         watoO0gFajWAQw8vjzomdnNyX8eBAJWYtEiIo3FYi6YNSFuVAW2IqXYzWVyniE3sinbQ
+         Nak2KKEcSc2Y/cHmktus04rjHSPgAdExgm95NrGfzuHfCGAkTTwraJJUNnuQRLlfcsWc
+         SKRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ro3je/BBvWF7sM47Lmq+Xq0Jon+ne6ToNQmIFqDmWiY=;
-        b=B1EIdnKl9mvbFuooMfXbMTBl+gbql+u1MUSSm6uOiu2H0Av1gvjAxauyG0f2p9lpmx
-         hRJM/RG8QFVkHgHBx6XMZtwYNAlkoDLaS0cLAizM6apYt7uTQs8jC6cTWMb5wBAsq7hN
-         LP5Hacu7Rvw5s0OxOaZuAHvGQM7Xy14bV8wcjIw2L8UHf8apqxIRMpAbUui9i98c1d/B
-         n6cHOPW/lfVYbIptH5WqPWKq/hYcXLuVM+7Qz19db3FeFEGj+gUPC8ggPCg1kIAO3mtC
-         x1qD7IwXttv5t3lXpMSCc++0hGfzW6jQ4OrLgXaAFXapyYT+puR4lkp4UR+06/+Y/9Y5
-         OLbw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=yDBMsYXvX1BQ8s/wNt4TyfHIg04y7ZFnSQT1j3snvC0=;
+        b=VuJ8pNLoFQeV/45z7tTczfZzGD/pokAPdtXPwkW1v7VZAoq/tC729aVhY95LbXQwYN
+         V4uAaWCtYzvcKPSKwIhZ2ujKSzCc5aBx1qOEomGWHzyEwqjYo9gpceWD4Q+OmBZO9EW2
+         EPqNigskdmhCEDIg2e1KYsAN4b2IHBMRHRwA6ZhbCkC/p0ub20NXQlVH3LHbXp23pDnq
+         0nZVkErQCg+Q1TJVlSZMoxB6AJR70ECXrHOR6q2PocGi5ulw54JVt9mjJGuPY2lLh8e2
+         TCfDQ5rGlafJr3TacC9BTqsmK99GE21ohBvoPx5VfkF+0hlkXYfVAem3fIXAAHSlG3xT
+         y1rQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hEK+hFyS;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id l14si243564ybp.4.2021.03.31.15.43.10
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=dhLUQTUv;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com. [2607:f8b0:4864:20::e44])
+        by gmr-mx.google.com with ESMTPS id r185si575978ywe.2.2019.10.27.21.21.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Mar 2021 15:43:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sun, 27 Oct 2019 21:21:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e44 as permitted sender) client-ip=2607:f8b0:4864:20::e44;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hEK+hFyS;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id q5so44944pfh.10
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Mar 2021 15:43:10 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=dhLUQTUv;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-vs1-xe44.google.com with SMTP id d3so5495697vsr.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 27 Oct 2019 21:21:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Ro3je/BBvWF7sM47Lmq+Xq0Jon+ne6ToNQmIFqDmWiY=;
-        b=hEK+hFySXLu8+oYIA1hqyF75ZfrVVL6t7J7ceUsg9icsOb09sA2C+DFnpw/xi/0/Pa
-         DaVrYEDOjkin5pJJV06x8hslITIFIiLhQMMO2gqHzpXFTCp+heLL0CDGOie63tJEhb5i
-         CYc7JNAbLqDUzEfoK+HcClNkufN/eVENTHF21VSJHqj1ZvAGUpGQgzX3Um/JVefiDxHB
-         cHN2FRBZRBLCF61HBaQY1uhs7EEHQbZ+LxrdvZBMbXu+lmOLfoiseUd8SXTCr7//mwr+
-         MDGH6m+jt8ilsNXHboGO9e3apgifCrNljhMe/Pwq5vvM5IkKPSYGtsPqsBbZIRGLdAh9
-         AgOQ==
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=yDBMsYXvX1BQ8s/wNt4TyfHIg04y7ZFnSQT1j3snvC0=;
+        b=dhLUQTUvmvyDZ/Q5NX/jzZHouhzzSxYa41uR8en3P1zdXWvZk5q5bkShmcfY0YKvt3
+         cyyRNBWfhkJkOyUaNSh7/8wI5Nt+VlNilcfQoMRzyH84quAXp46sYsvwbxQCjQvJVixp
+         QCJgT8XbpWlICIt65ANpUBKqv73Dr3eMcOVZ/cBuTw8ay1cuDhclAQ2RY6oI6qeanxBE
+         SvqZo2Ljb41ONorHxz5/rHWLQZY2Whgr0wgcBudRw796h5TriOTAX5+5VJxR01pLWFvd
+         oL9o2qgJABQXbiFIaFrCLB/mirH6EgS/DrlR1vQ3QvevnJJ9NFZqw9HXTf0nZlB1Zf80
+         Fp2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Ro3je/BBvWF7sM47Lmq+Xq0Jon+ne6ToNQmIFqDmWiY=;
-        b=NGYwVDFwhCTyfBychgStUN9wIYckHAfQYn3RMqp033H4d+Da0AVqf4LUe0ihJNP524
-         u97PQg4oQwk8fmow3C6PZ7OA+MWSygAhj1rbVXlxRQie3ym6hk+xQ3KC+wU5URrYXdi+
-         maTyc0rX8QkZeFNAvX9pCjLDqpXMsY4CMPL57Kcs2VpKTNtQ69NVkMdZicSqD9JAHsXe
-         mWFPDWCWUA+hRznq4U6uAmiU54eJMwzgcaWWn7Jd1ZljGv7+Sv1kvYm0x+JDoOShiEyH
-         ZQSbvd0V35cA8Cqi9bj+cbq1fkvWIfHTsxYj0+x7bs39m/wwSPJnpLEvjnr0MHf4FukL
-         EYZA==
-X-Gm-Message-State: AOAM532OvqL6dPnZ1Xd+OSbtNZn3X3ObZhfgu48dbBijMZLTrkCzr49S
-	zSu9AC88eOYpharWJTUwtJM=
-X-Received: by 2002:aa7:94ad:0:b029:1ef:2392:4ee8 with SMTP id a13-20020aa794ad0000b02901ef23924ee8mr4985616pfl.75.1617230590087;
-        Wed, 31 Mar 2021 15:43:10 -0700 (PDT)
-Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from djbComp.hitronhub.home (S0106ac202ecb0523.gv.shawcable.net. [70.67.120.89])
-        by smtp.gmail.com with ESMTPSA id h19sm3338830pfc.172.2021.03.31.15.43.09
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=yDBMsYXvX1BQ8s/wNt4TyfHIg04y7ZFnSQT1j3snvC0=;
+        b=ZC07sbnJOjMQ/aZ6iBKyMRnATgMXm2olZzSdby3Z0qOVQJDDoTI1gMsFTwvpEKjXaI
+         T9LH+K5zczri7pQYQW2/UgKC08HwiGZkyL5gGqxGQvd11nmlcCWwJKoAJd5938t4DMrJ
+         yves6/CIn1nlRlHwTBDVxmMAcgGDjKHAKJ8tEgdmZHvYqDbD4JNS/L5+3QzSQkgn61bB
+         E/aAjXzZEfS+ONF72RoslAH9yseWDI/PKakDhvqI63nVVwT6WwahANsfyZB/EiIMnvj2
+         PbMV5YDt8BMyy1WM2PscpULDeWfhRt9cRQaGOhu+i7t5CRIVLn3y3ZZvXrNfSaqcQ9k2
+         nnSg==
+X-Gm-Message-State: APjAAAUV3zxyuj/2n4AwzTr+3J4iKUarSySX5KX9FjsdUFgJCYOSrOIL
+	23t3FAYigqOdvSLlc9UNORNXt32Dh3glTg==
+X-Received: by 2002:a67:f2c4:: with SMTP id a4mr8142096vsn.138.1572236477569;
+        Sun, 27 Oct 2019 21:21:17 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from linux-kernel-dev ([172.97.41.74])
+        by smtp.gmail.com with ESMTPSA id l70sm3698201vsd.23.2019.10.27.21.21.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Mar 2021 15:43:09 -0700 (PDT)
-From: Deborah Brouwer <deborahbrouwer3563@gmail.com>
-To: gregkh@linuxfoundation.org,
-	ross.schm.dev@gmail.com,
-	marcocesati@gmail.com,
-	fabioaiuto83@gmail.com,
-	dan.carpenter@oracle.com,
-	phil@philpotter.co.uk,
-	amarjargal16@gmail.com
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Deborah Brouwer <deborahbrouwer3563@gmail.com>
-Subject: [PATCH v2 0/3] block comment style changes
-Date: Wed, 31 Mar 2021 15:42:28 -0700
-Message-Id: <cover.1617229359.git.deborahbrouwer3563@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Sun, 27 Oct 2019 21:21:16 -0700 (PDT)
+Date: Mon, 28 Oct 2019 04:21:11 +0000
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org
+Subject: [PATCH] staging: octeon-usb: Fix line ending with a '('
+Message-ID: <20191028042111.tzfhugs6f4erohir@linux-kernel-dev>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: NeoMutt/20171215
 
-Style changes to block comments.
+checkpatch.pl message:
+"CHECK:OPEN_ENDED_LINE: Lines should not end with a '('"
 
-Changes since v1:
-	- all commit messages have changed to be more accurate
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+---
+ drivers/staging/octeon-usb/octeon-hcd.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Deborah Brouwer (3):
-  staging: rtl8723bs: core: add comma within a comment
-  staging: rtl8723bs: core: add * to block comments
-  staging: rtl8723bs: core: remove empty comment
-
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 60 ++++++++++-------------
- 1 file changed, 27 insertions(+), 33 deletions(-)
-
---
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+index a5321cc692c5..582c9187559d 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.c
++++ b/drivers/staging/octeon-usb/octeon-hcd.c
+@@ -1836,8 +1836,7 @@ static void cvmx_usb_start_channel(struct octeon_hcd *usb, int channel,
+  *
+  * Returns: Pipe or NULL if none are ready
+  */
+-static struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(
+-		struct octeon_hcd *usb,
++static struct cvmx_usb_pipe *cvmx_usb_find_ready_pipe(struct octeon_hcd *usb,
+ 		enum cvmx_usb_transfer xfer_type)
+ {
+ 	struct list_head *list = usb->active_pipes + xfer_type;
+-- 
 2.17.1
 
 
