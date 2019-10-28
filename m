@@ -1,164 +1,123 @@
 X-GM-THRID: 6752717498070597632
-X-Received: by 2002:a63:9208:: with SMTP id o8mr18972012pgd.256.1572245619016;
-        Sun, 27 Oct 2019 23:53:39 -0700 (PDT)
+X-Received: by 2002:a2e:6101:: with SMTP id v1mr10630514ljb.122.1572244060630;
+        Sun, 27 Oct 2019 23:27:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:8612:: with SMTP id p18ls690854pfn.16.gmail; Sun, 27 Oct
- 2019 23:53:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxlmJ3K/RlMcXhiyneBSaVhQQNu1443J3DvzVG1gqoNrtKTNHBTGh1yHvo4I80bPSiOLOYr
-X-Received: by 2002:a62:1c4:: with SMTP id 187mr1960703pfb.92.1572245618010;
-        Sun, 27 Oct 2019 23:53:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572245618; cv=none;
+Received: by 2002:a19:6715:: with SMTP id b21ls543666lfc.15.gmail; Sun, 27 Oct
+ 2019 23:27:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw+6u2n8wp9uwJzFfSPEHwx4R0UQIndwcWTsW8A8us4c9D7pb3Ve2APnSWjRA8jK7fUflTD
+X-Received: by 2002:a19:41d7:: with SMTP id o206mr10201066lfa.188.1572244059440;
+        Sun, 27 Oct 2019 23:27:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572244059; cv=none;
         d=google.com; s=arc-20160816;
-        b=gs5zfe3a2ExEgB1kKjvAwwN/Wrunx6MQze4kHIojHdxCXxq8PC/yynA8LkL5sIav7K
-         TKj/5Gnh9zXce8LvHKJUD6FSGozkOtE4WLmepnuVwVThqw5wOGrysD6tIB06HkFADYyL
-         TBanSjjcMsVMHVCdxmx0sWiHWzQ9w6/y2BP+o4Dx8fK9iS6+smMW2eiiLkyQvM/bC38L
-         dM/FXSqKzVxbywchuM931/wnnPC96whsTXz6vx8Fyg1HSTEshlYK+ZjCsc9xvXBYTB8w
-         s397BzJxyK3HMxATWnVnl6fMB70mH+cCUHR+BJ5QHyKzQG8mJMbKCr7NDyIv9vZYys64
-         V/5Q==
+        b=cSOTHJdFIZjEFo0HbT9h4dAESRnXFxbN5Pll+UgJpils5GNG9I87mf+OmYI2dBxRRP
+         HK8jaRCQomChO8r/1HOGGh6Gd4l28dv3u9v9+o7k0d7yDYAUkCkvRUCHUg4Fxxedw0gW
+         iWqsgnBgbc1+Tp99VN+E+jl6FqBxAxJ6HknPugfrPFVdzJXXuHEDGcuctH/fnu2KUxwa
+         vVp4JmjWardTSzJtHgynayIsgDh+T9qoZOR3QVbH8QJWJUPkJws+d27o+n4O118BSvTu
+         H+P5Zdt2S369Xc7NT+Iax/e+zIpuJDLC7zsZSKZf7a5/pWOg/+kqgzP1nQzsMd6SHGNh
+         kakw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Ci3b6VPmJPlOA/YRLlc9z1Q8mwuDC1O5SNy0Vh94Ifc=;
-        b=QzfP4Ee4D0vXVmS3ow5U1Fi5B1ez0GXhQlLKNtWRYAJzECK1tUfby6uCBdidPAGkyG
-         CrZu6QXKcolHSqlp88EesmOHJA0OUHT74ynInk+UOjBeCKDzjG2K9CG5+eS/yFN/FyoP
-         PAcojDogChNP1AfI7RF/JZIRhrQPp/CLelLkapSk82IDeoahyPc3DW5Xb8bVc02KlnBz
-         /TQYwEocD+QREUTYdZrD7c10BwaqVnmBcTSC2u2WFkCfS/9N19yjXDfYu5Y5k6Ue4zPE
-         zHBOk3/oJmtioy92mqxVkOdDbiMbRsGANOTh5ocanU6/n0cy6UrigiM62tm5uvx4LEAb
-         h0yQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=wSOM4fv7MX392s6Fg6RRwQqXQy084FaCAuEJGSHgb/E=;
+        b=H/pwxsFfXSO9c/kEaPySFdH/SgRkyqpVHZsgo3NR98l3IQUyOe37sKVPmnZF7B8lWO
+         0BS/8Gbo3Zp09cZqPzm4umbCP5SHHFamX0bSS/2afcO4Tq18wCazhpOuaqJT30TXSIGS
+         C5kL7WaOeEqgPE2N2f3PoAvZfbnGGSGftoPjeOHO8GV4G0fXLO9CQEzkVKHoH6liqXkv
+         yiMr5lkIpU1/3vuhn+pqcuoQsbFwjyo0WeGiOxS7xCO45dhBhwWk/8kMfDMTABm432cL
+         nyZPqURTT7aMTfurrCEKzMUVXAiPdu6EsKltQ634uepPS6BUtgMU9qA/6/m1oQ9BHIpQ
+         csgA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=WDlx63Sa;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com. [2607:f8b0:4864:20::941])
-        by gmr-mx.google.com with ESMTPS id f7si101170plt.5.2019.10.27.23.53.37
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id k2si545942ljj.1.2019.10.27.23.27.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 27 Oct 2019 23:53:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) client-ip=2607:f8b0:4864:20::941;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 27 Oct 2019 23:27:39 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=WDlx63Sa;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua1-x941.google.com with SMTP id o4so1097536uat.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 27 Oct 2019 23:53:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Ci3b6VPmJPlOA/YRLlc9z1Q8mwuDC1O5SNy0Vh94Ifc=;
-        b=WDlx63SaolVvx2PIBI80AxQ5s01K5Fdj4fRhxCUEJ9kxFGGnok5ONnDPIJJ0OBxqvi
-         8wZVVDP8V7avZBbwuG6NkOR2+uFFwD8RpB5YxwDOCAmBI08ddjCmcJQ0DDJ4thbSSqQY
-         VgzHNeVoCraqVEMnem5aKxUhG3nBYOnL1dkw8WCBb/Uy8Ho4TRIlwJ6tt5pfbPJsxCdU
-         Sd1B/BS6qIlk5tu5mpjm9Z3sK9tY3XVFYRzCruRAGIgNE7Xk2ADyrwh7siaTkqZ/oTER
-         OrHCdaLJPTv91ckPcypQpbnd9al7k2zAHnQFRZqSDzJDAv2rkuzBQSx+F9jFms7dh1zP
-         Mneg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Ci3b6VPmJPlOA/YRLlc9z1Q8mwuDC1O5SNy0Vh94Ifc=;
-        b=TftQY1IawwlmGOgCOeRyCzRgsjbcOje+c3eqb/+bO9fyi7ycik/cYaDMDf8yAMo8UC
-         UjRilsTJyJSaGbRTJ1fWO1ljUW0enati+KJRHlhXjjB6/S1OyJtHREGt1s+pC97bLm6M
-         faAXDWNbhwZmP318eHH9j0KRyrT6flY/zKRe6INwZo0zGSRvv1rrmnSnxPIq+z0DczkE
-         +HgYo5RBRt+KXpGfpRCr4RSI069oADhCrK7yEKqxzRjVUS8IXYc2yO7IrVD2yrORsS9W
-         51jp6umtGE83zBXxIc6EDvT3WJSUBGqr8WVjuW1y3Fsp6uRx2j0Mk5x2XV/wIIoiCTyk
-         n+cQ==
-X-Gm-Message-State: APjAAAUJTCQJpcQBYdfxKn5d/sHAZiTDXhHLvcIaSbdZovk5sAkpCnKJ
-	hygeY9SuGFKZKOGxfPeE3cBQRQ==
-X-Received: by 2002:a9f:350f:: with SMTP id o15mr7099983uao.125.1572245616842;
-        Sun, 27 Oct 2019 23:53:36 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from linux-kernel-dev ([172.97.41.74])
-        by smtp.gmail.com with ESMTPSA id m11sm3566505vsp.17.2019.10.27.23.53.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Oct 2019 23:53:36 -0700 (PDT)
-Date: Mon, 28 Oct 2019 06:53:35 +0000
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
-	joel@joelfernandes.org, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2] staging: mt7621-dma: Remove unnecessary line continuations
-Message-ID: <20191028065335.5h6c3v6uogewbbup@linux-kernel-dev>
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,239,1569276000"; 
+   d="scan'208";a="324756430"
+Received: from ppp-seco11pareq2-46-193-149-47.wb.wifirst.net (HELO hadrien) ([46.193.149.47])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Oct 2019 07:27:37 +0100
+Date: Mon, 28 Oct 2019 07:27:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: julia@hadrien
+To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    saiprakash.ranjan@codeaurora.org, joel@joelfernandes.org, 
+    Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: mt7621-dma: Remove unnecessary
+ line continuations
+In-Reply-To: <20191028051237.3row7xnbr6pgn4bp@linux-kernel-dev>
+Message-ID: <alpine.DEB.2.21.1910280726270.2314@hadrien>
+References: <20191028051237.3row7xnbr6pgn4bp@linux-kernel-dev>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+Content-Type: text/plain; charset=US-ASCII
 
-checkpatch message:
-"WARNING:LINE_CONTINUATIONS: Avoid unnecessary line continuations"
 
-Suggested-by: Julia Lawall <Julia.Lawall@lip6.fr>
-Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
----
-Changes in v2:
-  - Fix strings cut over multiple lines.
 
- drivers/staging/mt7621-dma/mtk-hsdma.c | 45 +++++++++++++-------------
- 1 file changed, 22 insertions(+), 23 deletions(-)
+On Mon, 28 Oct 2019, Frank A. Cancio Bello wrote:
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index 03c8937f80b0..27c34e6c3b47 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -208,25 +208,24 @@ static void mtk_hsdma_reset_chan(struct mtk_hsdam_engine *hsdma,
- 
- static void hsdma_dump_reg(struct mtk_hsdam_engine *hsdma)
- {
--	dev_dbg(hsdma->ddev.dev, "tbase %08x, tcnt %08x, " \
--			"tctx %08x, tdtx: %08x, rbase %08x, " \
--			"rcnt %08x, rctx %08x, rdtx %08x\n",
--			mtk_hsdma_read(hsdma, HSDMA_REG_TX_BASE),
--			mtk_hsdma_read(hsdma, HSDMA_REG_TX_CNT),
--			mtk_hsdma_read(hsdma, HSDMA_REG_TX_CTX),
--			mtk_hsdma_read(hsdma, HSDMA_REG_TX_DTX),
--			mtk_hsdma_read(hsdma, HSDMA_REG_RX_BASE),
--			mtk_hsdma_read(hsdma, HSDMA_REG_RX_CNT),
--			mtk_hsdma_read(hsdma, HSDMA_REG_RX_CRX),
--			mtk_hsdma_read(hsdma, HSDMA_REG_RX_DRX));
--
--	dev_dbg(hsdma->ddev.dev, "info %08x, glo %08x, delay %08x, " \
--			"intr_stat %08x, intr_mask %08x\n",
--			mtk_hsdma_read(hsdma, HSDMA_REG_INFO),
--			mtk_hsdma_read(hsdma, HSDMA_REG_GLO_CFG),
--			mtk_hsdma_read(hsdma, HSDMA_REG_DELAY_INT),
--			mtk_hsdma_read(hsdma, HSDMA_REG_INT_STATUS),
--			mtk_hsdma_read(hsdma, HSDMA_REG_INT_MASK));
-+	dev_dbg(hsdma->ddev.dev,
-+		"tbase %08x, tcnt %08x, tctx %08x, tdtx: %08x, rbase %08x, rcnt %08x, rctx %08x, rdtx %08x\n",
-+		mtk_hsdma_read(hsdma, HSDMA_REG_TX_BASE),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_TX_CNT),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_TX_CTX),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_TX_DTX),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_RX_BASE),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_RX_CNT),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_RX_CRX),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_RX_DRX));
-+
-+	dev_dbg(hsdma->ddev.dev,
-+		"info %08x, glo %08x, delay %08x, intr_stat %08x, intr_mask %08x\n",
-+		mtk_hsdma_read(hsdma, HSDMA_REG_INFO),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_GLO_CFG),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_DELAY_INT),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_INT_STATUS),
-+		mtk_hsdma_read(hsdma, HSDMA_REG_INT_MASK));
- }
- 
- static void hsdma_dump_desc(struct mtk_hsdam_engine *hsdma,
-@@ -243,10 +242,10 @@ static void hsdma_dump_desc(struct mtk_hsdam_engine *hsdma,
- 		tx_desc = &chan->tx_ring[i];
- 		rx_desc = &chan->rx_ring[i];
- 
--		dev_dbg(hsdma->ddev.dev, "%d tx addr0: %08x, flags %08x, " \
--				"tx addr1: %08x, rx addr0 %08x, flags %08x\n",
--				i, tx_desc->addr0, tx_desc->flags, \
--				tx_desc->addr1, rx_desc->addr0, rx_desc->flags);
-+		dev_dbg(hsdma->ddev.dev,
-+			"%d tx addr0: %08x, flags %08x, tx addr1: %08x, rx addr0 %08x, flags %08x\n",
-+			i, tx_desc->addr0, tx_desc->flags,
-+			tx_desc->addr1, rx_desc->addr0, rx_desc->flags);
- 	}
- }
- 
--- 
-2.17.1
+> checkpatch message:
+> "WARNING:LINE_CONTINUATIONS: Avoid unnecessary line continuations"
+>
+> Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+> ---
+>  drivers/staging/mt7621-dma/mtk-hsdma.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> index 03c8937f80b0..94c2c708dc92 100644
+> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
+> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+> @@ -208,8 +208,8 @@ static void mtk_hsdma_reset_chan(struct mtk_hsdam_engine *hsdma,
+>
+>  static void hsdma_dump_reg(struct mtk_hsdam_engine *hsdma)
+>  {
+> -	dev_dbg(hsdma->ddev.dev, "tbase %08x, tcnt %08x, " \
+> -			"tctx %08x, tdtx: %08x, rbase %08x, " \
+> +	dev_dbg(hsdma->ddev.dev, "tbase %08x, tcnt %08x, "
+> +			"tctx %08x, tdtx: %08x, rbase %08x, "
+>  			"rcnt %08x, rctx %08x, rdtx %08x\n",
 
+String should not be cut over multiple lines, even if it results in
+exceeding 80 characters.  This makes it easier to grep for messages in the
+code.  You could fix both problems at once, since they affect the same
+code in each case.
+
+julia
+
+>  			mtk_hsdma_read(hsdma, HSDMA_REG_TX_BASE),
+>  			mtk_hsdma_read(hsdma, HSDMA_REG_TX_CNT),
+> @@ -220,7 +220,7 @@ static void hsdma_dump_reg(struct mtk_hsdam_engine *hsdma)
+>  			mtk_hsdma_read(hsdma, HSDMA_REG_RX_CRX),
+>  			mtk_hsdma_read(hsdma, HSDMA_REG_RX_DRX));
+>
+> -	dev_dbg(hsdma->ddev.dev, "info %08x, glo %08x, delay %08x, " \
+> +	dev_dbg(hsdma->ddev.dev, "info %08x, glo %08x, delay %08x, "
+>  			"intr_stat %08x, intr_mask %08x\n",
+>  			mtk_hsdma_read(hsdma, HSDMA_REG_INFO),
+>  			mtk_hsdma_read(hsdma, HSDMA_REG_GLO_CFG),
+> @@ -243,9 +243,9 @@ static void hsdma_dump_desc(struct mtk_hsdam_engine *hsdma,
+>  		tx_desc = &chan->tx_ring[i];
+>  		rx_desc = &chan->rx_ring[i];
+>
+> -		dev_dbg(hsdma->ddev.dev, "%d tx addr0: %08x, flags %08x, " \
+> +		dev_dbg(hsdma->ddev.dev, "%d tx addr0: %08x, flags %08x, "
+>  				"tx addr1: %08x, rx addr0 %08x, flags %08x\n",
+> -				i, tx_desc->addr0, tx_desc->flags, \
+> +				i, tx_desc->addr0, tx_desc->flags,
+>  				tx_desc->addr1, rx_desc->addr0, rx_desc->flags);
+>  	}
+>  }
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191028051237.3row7xnbr6pgn4bp%40linux-kernel-dev.
+>
 
