@@ -1,110 +1,126 @@
-X-GM-THRID: 6536479698699943936
-X-Received: by 2002:a24:e445:: with SMTP id o66-v6mr6668962ith.40.1521892775094;
-        Sat, 24 Mar 2018 04:59:35 -0700 (PDT)
+X-GM-THRID: 6752367287959814144
+X-Received: by 2002:a17:902:fe89:: with SMTP id x9mr16853884plm.62.1572228855032;
+        Sun, 27 Oct 2019 19:14:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.205.2 with SMTP id d2ls2403590iog.15.gmail; Sat, 24 Mar
- 2018 04:59:34 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/1DXR/7gYb7zqCuKvxzIt7+ZoCVUaaqVAUU3DG1OzakWb56gmhK4k02+mGLsnydMtMdvjd
-X-Received: by 10.107.139.129 with SMTP id n123mr1029948iod.115.1521892774016;
-        Sat, 24 Mar 2018 04:59:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521892773; cv=none;
+Received: by 2002:a62:6204:: with SMTP id w4ls4860236pfb.6.gmail; Sun, 27 Oct
+ 2019 19:14:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxxRT1Xu/TjBn+K6+N0gKNOPkTON6m9YZZCWtlIlEC3otOtHI3UEPhS8UwmRkiLaBrkEmrA
+X-Received: by 2002:aa7:8197:: with SMTP id g23mr17823594pfi.247.1572228854136;
+        Sun, 27 Oct 2019 19:14:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572228854; cv=none;
         d=google.com; s=arc-20160816;
-        b=BN4sO+xSNmhi5qM1ChWTLfqQpJc6AOFFmEdqjpPnnemgRIWu6Sv/gW/VNFyKLVKZ2J
-         cuvduWfiRBTyPaOOC38MVX9ms1HOv+Qf+WN12fVBYQaSoN1i3ar1DSh7wpb0FTHqUT9v
-         6s5WlwrseXNC5NzoTnsKnxMfwSZAv8mnKydZ5LES/ZwCZd3GxsXNYHiOGHLVoV3u+Nn2
-         nmEBIqXzxyws4pcX42zgkVlPCPyBmdaT69PrkK/ThLl9r276ScWUiJCWf3BWNHZGkUhG
-         s4qnlSJKLtWbZZTp0eH/lORPz5hjTI0512KZ10I7nBWbcWgGw1lK/RaVoNpcqO/iA27C
-         MxDg==
+        b=EthaqEkjFMM+QMS1j2SJvGjWKKvBTdcgCrAvz0yisTdbbFiZHq1+0xKu5wQsliOK3S
+         R3CRAZzRUSCN2B2XWwEjn2RkrD8XfsZJpzkqKkh9U49nLS5u2nU/wHkwW7na4S+XFM28
+         xo5MqHQ1vJYZoQX1bAusRvYRBTkdziIJ+d+MWh/4gdrcyocHJsWJwJTwbW6Jpf/yU2EU
+         KoXvfeeGVfwpsOJjG/sUb9n6Foo5k8+ECqa+sXgeuKQ9Q4WHRXoYxf1/AY8OvR55Pe0C
+         MJWh93bjbn7hXfzeXUNso9PPQs+QUQUDZSq46OtMQzHGMBkHVMZbMMjCB8Rk5zY8IaCB
+         8ojg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=M4FD7ioj0/+2lxXd4xV5vYtQPNT09pPxYq0Yy0CAf/c=;
-        b=YgvhgetVqroNSDzdjXNtOKc89uVj0dbgteMHqMFEWP/7NwMK+UTDtlZv2u6xciuMg4
-         Vaa1Sw992tVU69S+ZTqnrOBNk+J8wi1+z8E61tN4H+o/JEcmbM2DuzMrK8Q9s5br/oyx
-         AVXNPTAaf2xQ6vNi9GYjMZWTXXS27mf0aOnLSfqwcbi55gRYIkZyatPZQq9HrOeHaJGk
-         XU+usgZTCy29FqZUFkDIxM29Zetg5wSkkiJc4QXZsp0RUZ4lcpmdT6vfxqU8uOSb7Cpk
-         P2Yiw2fCzDh2p2aby4PStoO+sP/0CWJzdmQQ1QycdiUa72gr9CIKBQI7monCNa42thA3
-         HSzA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=a71dAf2aPMtkoGKBPmUwUOm5t5a21Uiv+U4/WotG504=;
+        b=DHg7Irh8WlKmO2UR5hJRNvkr2c3zIRj37EGdJWjvAKSNKrH+O5Udjq0LForvpUHBAk
+         u2mZYKqAN9V9mcxO7rbB1J7Wll7PXZqjxmBWi1J1FL0pnjS9cQA6j8EljIJpBerm8Vib
+         FV6S9U0MTZHRIXErUNnG8QMxvpZDRqT13j5+0JPRLHG5Ovi+9tRuhoFxtXRxoeekYe2R
+         bdPkwUWnkkAOX3n4kKKVjIOkZuqtss7529mizBiGQfR2EVy1ceOEr0xQxxkxUH4iHyo3
+         PeuSVOP+PTNp7+PykCs+fqA+GwR8Pl49a0bWV5EXIzwAWp5coAatYDL03mXad6XosBez
+         f9nQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=VWFhlEFi;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id k9si329941ioc.1.2018.03.24.04.59.33
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=SorquPtC;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com. [2607:f8b0:4864:20::941])
+        by gmr-mx.google.com with ESMTPS id u13si552897pgf.4.2019.10.27.19.14.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Mar 2018 04:59:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 27 Oct 2019 19:14:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) client-ip=2607:f8b0:4864:20::941;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=VWFhlEFi;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pg0-x241.google.com with SMTP id a19so5554455pgw.6
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Mar 2018 04:59:33 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=SorquPtC;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua1-x941.google.com with SMTP id q4so80093uap.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 27 Oct 2019 19:14:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=M4FD7ioj0/+2lxXd4xV5vYtQPNT09pPxYq0Yy0CAf/c=;
-        b=VWFhlEFik6T7K8qPhu4lGjTygiukqPE4MWt7CeT+Wv3OBp3ranbUTDXC5+LS0tkTaH
-         HdeuTnCvAtlp1hnMZBftxjq6bhKf1CVHMwzwUU0nWLnFWjNnE+FIN+DsIrPUegSASG+E
-         eK+CNvH+QqDfXtE8EZIZWov3l8Y2YCBT4Q2aQ=
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=a71dAf2aPMtkoGKBPmUwUOm5t5a21Uiv+U4/WotG504=;
+        b=SorquPtCBXWhu0nyfRrrcYCNUoV26m1KxfboGyGsFptYlq/EtFNqcOpOgtw+nSUlHq
+         FEYbKZ4LajIKLXU6hMv+ZkU6LdNPWaEf+XAcOSNOLHG6xPOjAUzuN+b/ZGn2rC96U0ck
+         Mo4kph6ur9eZwyJ7lP4WhEWpGKirfvXCJEsgJT4++N1HGPWOXEsb0hYO6JwyiZSkcFAc
+         osSvOU7i/y9dkkw+CAxOjfhKFMyQZjG2PNZfCcP7uQQdaald5+Bz2RrySf6Y0y0o7qOG
+         75xo4z8ko37NxipuYEP5Ir7igXLLrhYv4M27bBXElDhl73NYHzAAHXfs3LdySFSgGEIm
+         NCLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=M4FD7ioj0/+2lxXd4xV5vYtQPNT09pPxYq0Yy0CAf/c=;
-        b=SKrVxQQksKkJdwxvENAR7tA6dHlrXRX1tsiOoSxIu2qwFU1nDBQyd81ek2DkVzzgWB
-         i0zfPKEwnzYh7NNWHUqtmqJOXdGJ41NmUYsy9WXM05RSj4/m24oGTiXMmKICI+339MqU
-         mDOCoyV0wDbuvTYi4WrQPL6vS+Bbr9Y9ciXsx4kWCAkjugbIpD+C1boDR82mqGtQjD4K
-         NrgMQ/UIbpNVI7iHoqovL/E4x4Ic38fi/i0Qi6Jy0Txd5eOHIzoanqgMwY2y7ivaogD9
-         Q/NBUOMUF7ImVjeudUWfFMEej+XVRRpRKysMaCSI+y1c/zvSz+/soFJy/C1miGM7PR3D
-         Lw/Q==
-X-Gm-Message-State: AElRT7HAmMAOw/GOgoVFL5FyDekU+pFhPKD2TPYvF5ag10X/01CRksNS
-	z/hbIugBtFrhuSA/IGRjNWWEqA==
-X-Received: by 10.99.170.9 with SMTP id e9mr11495165pgf.331.1521892773218;
-        Sat, 24 Mar 2018 04:59:33 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id x137sm25460453pfd.162.2018.03.24.04.59.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Mar 2018 04:59:32 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH v3 1/5] staging: vt6655: Delete unused enum CARD_PKT_TYPE
-Date: Sat, 24 Mar 2018 11:59:14 +0000
-Message-Id: <1521892758-27981-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=a71dAf2aPMtkoGKBPmUwUOm5t5a21Uiv+U4/WotG504=;
+        b=kxeymz4k2j4xSGM0gQYch8Upz5SlAbFP0L4kV8gqDoCKMrX17VvCRDbr7vERD2uc3O
+         bDRAY55YCupZJbTpMssJmnG8kI6PhgPCNJI6HcTQPzLfdDev+Ffw+hAlvWa9gDk7NVy1
+         yG0m/zRzai3abigwo+CMXE+VKcygniAM+3MouChTTi7YZok3nrm/uiw37ILNwWJkqO9e
+         BX5Pd0xca9hLedJw6J7OlFyJu51SQPfPv4zaQleJbWp8qDQbO6japBqwDBQB31hxzggL
+         /bAytJ+BV1ySGrOc5Fj3ysQ2XnSqEIo15UMtHuE817odQ05ObB6Qehmgum4t4NAfa3vP
+         WEug==
+X-Gm-Message-State: APjAAAXXnRy2hgR596KadU5yNbaB+m6pHs/WxNGnF+fW5olEWn33xn+D
+	7NsdoPlh2Neh+SYBv0vKXovENQ==
+X-Received: by 2002:ab0:2319:: with SMTP id a25mr4447752uao.78.1572228852975;
+        Sun, 27 Oct 2019 19:14:12 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from linux-kernel-dev ([172.97.41.74])
+        by smtp.gmail.com with ESMTPSA id n23sm3171537uap.15.2019.10.27.19.14.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Oct 2019 19:14:12 -0700 (PDT)
+Date: Mon, 28 Oct 2019 02:14:11 +0000
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org, Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+	Mark Greer <mgreer@animalcreek.com>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>
+Subject: Re: [PATCH] staging: greybus: Fix line ending with a '('
+Message-ID: <20191028021411.zh22v3dvanbtynaz@linux-kernel-dev>
+References: <20191027063338.GA27717@linux-kernel-dev>
+ <20191027071240.GB1704509@kroah.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191027071240.GB1704509@kroah.com>
+User-Agent: NeoMutt/20171215
 
-Delete unused enum CARD_PKT_TYPE.
+On Sun, Oct 27, 2019 at 08:12:40AM +0100, Greg KH wrote:
+> On Sun, Oct 27, 2019 at 06:33:38AM +0000, Frank A. Cancio Bello wrote:
+> > checkpatch.pl message:
+> > "CHECK:OPEN_ENDED_LINE: Lines should not end with a '('"
+> > 
+> > Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+> > ---
+> >  .../staging/greybus/audio_manager_module.c    | 32 ++++++++-----------
+> >  .../staging/greybus/audio_manager_private.h   |  7 ++--
+> >  2 files changed, 16 insertions(+), 23 deletions(-)
+> > 
+> > diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/staging/greybus/audio_manager_module.c
+> > index 2bfd804183c4..1b52dd116e38 100644
+> > --- a/drivers/staging/greybus/audio_manager_module.c
+> > +++ b/drivers/staging/greybus/audio_manager_module.c
+> > @@ -70,9 +70,8 @@ static void gb_audio_module_release(struct kobject *kobj)
+> >  	kfree(module);
+> >  }
+> >  
+> > -static ssize_t gb_audio_module_name_show(
+> > -	struct gb_audio_manager_module *module,
+> > -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> > +static ssize_t gb_audio_module_name_show(struct gb_audio_manager_module *module,
+> > +		struct gb_audio_manager_module_attribute *attr, char *buf)
+> 
+> Same thing here, your line is too long now, it's fine as-is.
+>
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
-Changes in v3:
- - Deleted the enum.
+Thank you one more time for your quick response.
 
- drivers/staging/vt6655/card.h | 7 -------
- 1 file changed, 7 deletions(-)
+frank a.
 
-diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
-index be5254a..07d9fa0 100644
---- a/drivers/staging/vt6655/card.h
-+++ b/drivers/staging/vt6655/card.h
-@@ -39,13 +39,6 @@
- #define CB_MAX_CHANNEL_5G       42
- #define CB_MAX_CHANNEL          (CB_MAX_CHANNEL_24G + CB_MAX_CHANNEL_5G)
- 
--enum CARD_PKT_TYPE {
--	PKT_TYPE_802_11_BCN,
--	PKT_TYPE_802_11_MNG,
--	PKT_TYPE_802_11_DATA,
--	PKT_TYPE_802_11_ALL
--};
--
- typedef enum _CARD_STATUS_TYPE {
- 	CARD_STATUS_MEDIA_CONNECT,
- 	CARD_STATUS_MEDIA_DISCONNECT,
--- 
-2.7.4
-
+> thanks,
+> 
+> greg k-h
 
