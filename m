@@ -1,114 +1,116 @@
 X-GM-THRID: 6751365568986611712
-X-Received: by 2002:aa7:83c2:: with SMTP id j2mr22939119pfn.225.1572290360007;
-        Mon, 28 Oct 2019 12:19:20 -0700 (PDT)
+X-Received: by 2002:ab0:22d3:: with SMTP id z19mr4860808uam.108.1572249478662;
+        Mon, 28 Oct 2019 00:57:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:6307:: with SMTP id x7ls5690421pfb.0.gmail; Mon, 28 Oct
- 2019 12:19:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwVtctVPRxmGrGcmmyN3q9WIE0e4SF+tSoaavjWZUbZRDSWLpcnNTYypf2Z1CRMobLYXfQ7
-X-Received: by 2002:a63:2042:: with SMTP id r2mr1203127pgm.32.1572290358501;
-        Mon, 28 Oct 2019 12:19:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572290358; cv=none;
+Received: by 2002:a9f:324a:: with SMTP id y10ls810406uad.8.gmail; Mon, 28 Oct
+ 2019 00:57:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyIDXIh6E2mxoxO2zp+8f1cUxQ80/8hUzQBMyjS5P79Yrz23//un+/T8XnfQI7ZU1jq3fZH
+X-Received: by 2002:ab0:2395:: with SMTP id b21mr7706098uan.122.1572249477594;
+        Mon, 28 Oct 2019 00:57:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572249477; cv=none;
         d=google.com; s=arc-20160816;
-        b=tUyZY7X6nZ0xotpYtOvehKdbqDvmpNeI23AG80sCoWm/7QxVlH5HSATTIxlzVAhWDn
-         4MPmL0NfGU1j8ftNXNYpoXUbaCizQaPzVd++ZvK70PfVVeoLXdYytCLrEhfmnKyDMUiy
-         ivkdzlBp+F4ya5C5aXkrOn4lE9GwxEQ7c3laXl27HXpvGGNtHkTQC1IzFNEW25ZDFSwi
-         RQsnPSklFni3bjH4W0bTh27QlTMcoK+LxAKI8w5oZQgGasdXl3w0TJ7X8MlHBhj61ok2
-         OJPgHbvBJK3BhDL6eLsGcrR8ZmYGpT3U2HFGuU01z0lq3xvAR7CQ4BqawLXCfCfLoahT
-         V0Kg==
+        b=knyRNvkya9bohQguKQuvKFlWOnBKE6Mdv8Dft/i8m5bzamnZSkac4QH3UjPlzH6q/r
+         lCrc3kU1nQ4KdjEY/4qQyB9KoBn7BWMxbGVtwDb18NVtq1/Pp5AZBGM3HbqLonSuYaTY
+         zcDypwS7T+EYOeBd8ZsMbDEtwKfA4kVs1Tj1r5F8jqlhKwC5Rrs25g9hF+h1ZD/16tjx
+         x5gemEAm9yoD4iRRUNwnS/u5q/D9iqyAh1V76PKrrJ6QVp7vt2kUr9PUUl6MpSPg9CzW
+         J8va37XMl/1C3MaLAy5BUxRYz7uo0sNillxXijwGcLcdJoS5V9rGBuP3TVn5Pe10FJJz
+         BE9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=t4IAL5iBcM1d+uXoo3dR+9a+vzgfW9qnFbZqHboPmr4=;
-        b=giBnMvgq9DzJ3Fsc5E+RLb1903gp8xWTk6FjAHIz52mvn69w62w9o71sMUqqfd1QZs
-         Ixkz9JtgprHY3KFK1ExCJqr0rrD3j2FLstcOaNaviTzFjliSoIachoyzVCqkpIjSrDYu
-         tQ2/km82CxJ4zB9QqokKk1oU3vptWipwc7MfzQYBYdXUBSOYH2H4mN+JiJZAx9BOOfOb
-         7QyfijoJBV0lDXA0TrBs86R51AWkG0QguQfZmMq1UyLWpnOHnteS7M165RIUT7+kepqF
-         VueWhnxu9IFmRg0pNYf0wvpdBt5ZW++Gj0WHIb1by8+VlPUzmAvvPPQJ/juKlD6FdRCO
-         c8lA==
+        bh=jQ6PJCli6p5m7RwQspPzyqTvse7VkcpWcjvd3zOJ4+A=;
+        b=c688d1pkPzTUVpqVyuRvcVqtm89dtv6DZugQ/nh7tAgpSFsLnhwimcHKkh6tyufNxT
+         pr+mf9vs+zaED1QpWTowLBjIjH8zcL7e4bGjSJERVXnuP2SWZvbzfv3XlMmr5akNYyW2
+         uXe8kP4b+SwUOn+mKz3hvcyybh2FXxC31onChYsdGXIKAApCW/F3Qmes7wCfxCFg22Dy
+         CBVYlfYrpOWAOfH5htPGkJiJ6O938nBmAWlrXvHenS83GYPqmlUHQV2APlpXwap95BpS
+         FQK4hnq6lFdtk/YbrXwbPvwGFr5gbUfIBl0GeDNiWNTMGAw+E6oz8SKpNIC737G/1l64
+         0FFw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="tXgQi/PR";
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qt1-x843.google.com (mail-qt1-x843.google.com. [2607:f8b0:4864:20::843])
-        by gmr-mx.google.com with ESMTPS id t22si7407pjy.1.2019.10.28.12.19.18
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=HAQhKnpr;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
+        by gmr-mx.google.com with ESMTPS id p78si614550vkf.0.2019.10.28.00.57.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2019 12:19:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) client-ip=2607:f8b0:4864:20::843;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="tXgQi/PR";
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x843.google.com with SMTP id l15so9658089qtr.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 28 Oct 2019 12:19:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=t4IAL5iBcM1d+uXoo3dR+9a+vzgfW9qnFbZqHboPmr4=;
-        b=tXgQi/PRZPHw+dnAuppCRqxu9Ty2YQntepac9Q/z+eIgf3M91SswT0jm/q/S066AA+
-         NDz3AXZHiGtkFG8FzrSsgLKT3Dm9m1C93oPLA5lHStARiZ/ivI/EhooLHfz+abhjapNE
-         l3bIaFuz8ncMQ/x47xEosiR2Y7iy/8UQbwX9fTP+WA+Hys9J5u31I1aQ1L4nx9cLzi2a
-         HdK/n+ZyDCW8Et/kDmF9gFyZXKPj81psqOUfXqNEw6XrHXrl8laG9x5LvNwR2ALLlZMo
-         0tqlNq9x7KVUg10J1ndu3NPTyOq4P5ehffjGjZVm+qSTye98ZbkUFEfrz853yZhKukHX
-         mS4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=t4IAL5iBcM1d+uXoo3dR+9a+vzgfW9qnFbZqHboPmr4=;
-        b=WiwxYc+ZgsjyN2H+6VcleMoxqiA0qFcDJdfQMovoCbhXfWLLk9h44kcyID7AQ25TlP
-         bsTz6/dI7OROXvO0to8+dLyTXzz+gsJppTCxhu0hY7Gau0RchLFjuk7w0uf/vnjTR5Nc
-         lk/5gsydFjIu91BD3f9CogFJjXys24e+SifgHTseTvWZb4aiCJt2sROvRUgXXeAfAR5O
-         HGPZ+mMIRx0jSoc77wxqTkax0B2/fuMFLeOdkXPtTOeQOAUrp9aEOlSjohM12+b+S7CW
-         9tdqBcYYfhPf4+6cEW3fxCw2RNys7wQJCq3ezB+oI8PAKQ51rF1KhN58wlTUNb/Q2pOS
-         PMpw==
-X-Gm-Message-State: APjAAAXr4OkWdcGU1XNjH7C3WP3oaZbbkkT44K8aKbB1nVyyEhd7O0sU
-	rGG7xv1Ai6p9Gs30PQeqFsc=
-X-Received: by 2002:ac8:151:: with SMTP id f17mr69934qtg.92.1572290357488;
-        Mon, 28 Oct 2019 12:19:17 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id 4sm6278940qtf.87.2019.10.28.12.19.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 28 Oct 2019 12:19:17 -0700 (PDT)
-Date: Mon, 28 Oct 2019 16:19:13 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: outreachy-kernel@googlegroups.com
+        Mon, 28 Oct 2019 00:57:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=HAQhKnpr;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S7s6n4177032;
+	Mon, 28 Oct 2019 07:57:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2019-08-05;
+ bh=jQ6PJCli6p5m7RwQspPzyqTvse7VkcpWcjvd3zOJ4+A=;
+ b=HAQhKnprpT+rni6UrLSaaxlllVPKP9qFG9g/DnYovW+Mey13732trRR/riMkNnRM66Fn
+ gl7+/0Gc0h4RVBzI/RlvZ5ewCa+Jh8JsFdLxEhMof//9KM4oWmqxuAg6Iu22b74X/Hg5
+ b325kHQWHNF2LPUsPxCy7bAdIUu6yqsZlHjduOVuIjVUEkR9w2u6qSeZGqM9IRXopZJT
+ tl25BUtCGQvLWQPAl8gIpD1LotwFU0P6kx+GMTjOEkDLAeWyzHqNozAKQHHEKnZHfarK
+ PJJOeZcQU6AkeYMFNqBs9JumOrSSdf5aqsQH78Kfl9E5zmX+aFSOgTBx1R/sE+tLebyS jA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+	by userp2120.oracle.com with ESMTP id 2vvumf50na-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 28 Oct 2019 07:57:50 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+	by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9S7s07f105156;
+	Mon, 28 Oct 2019 07:57:50 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by userp3020.oracle.com with ESMTP id 2vw09f7h59-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 28 Oct 2019 07:57:50 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9S7vmEl029995;
+	Mon, 28 Oct 2019 07:57:49 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Mon, 28 Oct 2019 00:57:47 -0700
+Date: Mon, 28 Oct 2019 10:57:38 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        linux-kernel@vger.kernel.org, Rob Springer <rspringer@google.com>,
+        Todd Poynor <toddpoynor@google.com>
 Subject: Re: [RESEND PATCH] staging: gasket: Fix lines ending with a '('
-Message-ID: <20191028191913.GB2311@cristiane-Inspiron-5420>
+Message-ID: <20191028075738.GC1944@kadam>
 References: <20191025232935.GA813@cristiane-Inspiron-5420>
- <20191028075738.GC1944@kadam>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191028075738.GC1944@kadam>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20191025232935.GA813@cristiane-Inspiron-5420>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1910280079
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9423 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1910280079
 
-On Mon, Oct 28, 2019 at 10:57:38AM +0300, Dan Carpenter wrote:
-> When I see a RESEND in the subject, that means you are tell us we messed
-> up and accidentally ignored your patch.  So then we have to figure out
-> what went wrong with the process and so we don't mess up again.
-> 
-> It would help us if you put a note under the --- cut off like "I sent
-> this a month ago and never received a response.  Here is a link to the
-> email archive so I know that it made it to the list."
-> 
-> I recently had an issue like this where I complained that my patch
-> wasn't applied and the maintainer said "Oh.  That's odd.  I have it
-> written down in patchword that I emailed you to ask you do fix the bug
-> in a different way."  So these sorts of mistakes happen.
-> 
-> regards,
-> dan carpenter
-> 
->
-I sent the RESEND in a wrong way. The correct one in my case would be to
-have sent a new version. After observing this, I submitted PATCH v3.
+When I see a RESEND in the subject, that means you are tell us we messed
+up and accidentally ignored your patch.  So then we have to figure out
+what went wrong with the process and so we don't mess up again.
 
-I did not know that you had to send the note in case of RESEND. Thanks
-for the feedback!
+It would help us if you put a note under the --- cut off like "I sent
+this a month ago and never received a response.  Here is a link to the
+email archive so I know that it made it to the list."
+
+I recently had an issue like this where I complained that my patch
+wasn't applied and the maintainer said "Oh.  That's odd.  I have it
+written down in patchword that I emailed you to ask you do fix the bug
+in a different way."  So these sorts of mistakes happen.
+
+regards,
+dan carpenter
+
 
 
