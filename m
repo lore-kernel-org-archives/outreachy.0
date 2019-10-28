@@ -1,111 +1,151 @@
-X-GM-THRID: 6665198893900234752
-X-Received: by 2002:a0c:a992:: with SMTP id a18mr4087992qvb.15.1551862548435;
-        Wed, 06 Mar 2019 00:55:48 -0800 (PST)
+X-GM-THRID: 6752726404247322624
+X-Received: by 2002:aca:5247:: with SMTP id g68mr1713778oib.13.1572241635046;
+        Sun, 27 Oct 2019 22:47:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:b5dc:: with SMTP id o28ls718485qvf.0.gmail; Wed, 06 Mar
- 2019 00:55:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxBTlUz+Wq2w+PkjC9fi+sTSquSe3y2ouDl8xKzQJktBhSbULssQWWLGP1tCVhzw1wSTHR9
-X-Received: by 2002:a0c:89d2:: with SMTP id 18mr4079252qvs.9.1551862547844;
-        Wed, 06 Mar 2019 00:55:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551862547; cv=none;
+Received: by 2002:a9d:7a58:: with SMTP id z24ls362otm.1.gmail; Sun, 27 Oct
+ 2019 22:47:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzKLd5vQtHVrBtcB26M3EZjOy1tJcJNEZDY3cnQW90QRmSP7ieQAmoFqGY6WI84y+iaFOuo
+X-Received: by 2002:a05:6830:1be3:: with SMTP id k3mr12401129otb.180.1572241633517;
+        Sun, 27 Oct 2019 22:47:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572241633; cv=none;
         d=google.com; s=arc-20160816;
-        b=YUGSTHA2KPRIcD/IhMUfmkH1rIfr2nU/FEggaOYGXoVxU3BnVTXfWQ5RxJ9VysbD/J
-         rADeFLShBIRE3ciURZDPlG/0eEQbBx1eCyRJZRIRcYZSPTnAIgURAhCLfiumg4EbJblw
-         oLvcspuWjEWNJEY3p3uunP0XlDqnwuZWtq5s06elGxsO6iha2mMqRUJvV98cj8HC2MZl
-         1RziYOfBini9t5GRuhX5rTL8KfwJt9twH2cKeVoXMTB0Zac4pbVrjLJngcp5YyBQJeRj
-         0poKTs9ZVoXiPGfegpiu4aJFc0Uc19B+sD8jmLndflUfnvHWh3dcued9BnHzXlUuAC9Q
-         xl5Q==
+        b=Jlnpvm9P9o1veQ1ws4VQdb21iBr+Z7EVCVLQcqJOhfASxod1fsrhvqjJTDFiRCZhTe
+         0Bvs2czbWElddl8NLdfQAQOWvo6hPEBE40abgJtLgpquuApAEdrq1fHC3Tj5QHZZ6mTt
+         GbGsu9NZuJBnuyKAfv+nzWrgNJOT7PW/k083QXmC+VsUN5UPAYlvkIn6LfhpLhjRso+x
+         8H9Ak2W8eG9x0NOADhju7erYdQq4nnxhSfzYfBl3zXPw9R5CWvUnlQqmCDZmskzhO9Hr
+         JyFNY7sDbF3DCN592VY+tCX0CNSDnGEc1L1Jq20Ov5PAwp4fGARGVmG7w/u0cn11IfPd
+         2cGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=3inBLpfLhl7k+3PEM1w87KZejL0u8oOsBvA3+hFKKbo=;
-        b=dkfHQ349BsCAC0/3sIoAYzjwU0+G5EJbMvC4SGAhRb97xgaEfVnx0dWwcBJTm2nIw4
-         tdj4ZJVQBb4xOt+23zL1gTSE7LfYEJW1waZdMBnKomNOINqtA4mklpqSj7f64Rdi1zZM
-         gwNEcxck+NILEtUbVzoti0r1LqzLTJmxhed16eZkhxIZnOs+PexKkLCJvbHgU4PYZSly
-         HvDL0oVz/nLUqaEgHBkAtlziG0kv3aKZDgfj0l9cgeNN0ZfBHge38C6pwjOrH1BCL9x0
-         zOj3nD30bdLO1yLfxvTyIuNzBfKMzAv1DvlyVX3x4+oqyN/YyptnTt4NLEZYYUB0AZgu
-         v1bg==
+        bh=0sdPMsIaGeTJ6+yCvTne+NPFlHVl/+7wxfLNkzaa9Ys=;
+        b=asv33aMJ07kaOM4SBqIFzMDyfwOUYS2Nfru458pIVjgMcTf1KVNhJyvAgFvVi7xR/d
+         Rk38P24IMxkJUDFl3ZouxR7fHaQeM1pDbAkfvsIawmxf0DTl+recA6vlNpKD48KXfJjm
+         JGFPWhI2hIfCxKnmsNmeMuhFV+Evw/rsrlGml3P95+SlmgnLtOGBrfG/Vz0ufB9RKwwi
+         sib6E9NoQPhrGPMW6zzP8P8mAod4mfM0ux79KdQKaQPngCbyqjh7eHg2wMmTedahBJCm
+         jNffaUFTx7H9/ZeHFjgpsJ4gjubQOpWK7xcveMNroHSsrb5zVLuSyXE/f0vXIlrVVxbc
+         IUHA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hbJV0HJ2;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pf1-x436.google.com (mail-pf1-x436.google.com. [2607:f8b0:4864:20::436])
-        by gmr-mx.google.com with ESMTPS id a62si57845qkf.1.2019.03.06.00.55.47
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=xLJai+vH;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-ua1-x944.google.com (mail-ua1-x944.google.com. [2607:f8b0:4864:20::944])
+        by gmr-mx.google.com with ESMTPS id j19si191106oij.5.2019.10.27.22.47.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 00:55:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) client-ip=2607:f8b0:4864:20::436;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 27 Oct 2019 22:47:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::944 as permitted sender) client-ip=2607:f8b0:4864:20::944;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hbJV0HJ2;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x436.google.com with SMTP id j5so8045789pfa.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 00:55:47 -0800 (PST)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=xLJai+vH;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua1-x944.google.com with SMTP id v2so1099752uam.9
+        for <outreachy-kernel@googlegroups.com>; Sun, 27 Oct 2019 22:47:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=3inBLpfLhl7k+3PEM1w87KZejL0u8oOsBvA3+hFKKbo=;
-        b=hbJV0HJ2FV8nKMNytE2QZOaOGy0XcYTQZa815gR02YluOnFjwgCuTVFilSxPBdP157
-         G1R2FBwCpbea1IJy0hgJX2fxJhqvz9i3St8oYOp9Vs7H0nQl0tYRAOSEicT6RWvzC+x1
-         AxJWwvI9g2GB7K6P6HgJv8zRJ+nJ/4VQMvtuH90qw3lFvjPc0sGimACS0z/5plaXxMoj
-         pfhe4f4JZGQl15nn1kFLziDs4zv/o2cUJ47T9Xwf7Ynjobqbxzdk93S7tfmcDvIVm47p
-         Kk7WayvCdnAoWEEMPpyoMJjrPDoQI478CDBmZnVDlVKswZnEFUlDbdaoR728R7tnIxCb
-         NNMA==
+        bh=0sdPMsIaGeTJ6+yCvTne+NPFlHVl/+7wxfLNkzaa9Ys=;
+        b=xLJai+vH96iL1jbhrcf/5/Uv7OjDGmJW2EdoJvBgGk13LLdGLCD/2s+CpfaELtYQ33
+         yhE1zb/Ze2w4rxUMw8zX/rnedXEW/RBodfWN+1YJyslrQCVfzYm7whiDYS+HyCbBheng
+         AbH0OhgyLnw6WQs3sqFzbGlsfkkvESVbxNJ09lcyX9xUZl34myAdgjhw20oNXyp1KZVf
+         RFb4U2UTtilzz7NzvjFyoiys2g2eor3sOEBRs7ywptr4t2wCVfma0jSWR1IxIh8NTIXY
+         WIjuau0kxEObgG94Cvfwsf3PHDJmJFDFjUorOhET1EXA1Ah00at4HVKEJDNqCTEWKpTh
+         /lJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=3inBLpfLhl7k+3PEM1w87KZejL0u8oOsBvA3+hFKKbo=;
-        b=lVZEdrwKiHWtiYDFcsZqlW1Aa/VZwq+bzLXNoP9Jryo98lqrih/50gybB1PTzk7VsT
-         20+Jlkjbkt5wHzGgsbLpe2p8SQAjFSgU+qYuEeFy4EyrFthO1hBpDqBHN2uovELd7Oxi
-         8UB37CP+0hkgvHvYUIlarUWVVzfDpJsyiFq5MLB+b/4hb1OnqqnbRMItM6CNRV9XB9rR
-         gbBTqIQ2l6dlFEHpEacYZgdD/IKYmWVzzyGgirbbYwHtA/Ud0+VEYYo+bCnZmbvrXjQL
-         9IQppYnYbc+d+3BHfm4BKrUSDZ7MJ781pI3sh7PNdxUtQRx8eD7b4IDR+QXQi3bkNxU3
-         SGqw==
-X-Gm-Message-State: APjAAAX/kTQYW66NfhuL3qLAT51wrvZuEkRbwayOhO6ppKHbHlEvZIFY
-	2BoptM1D3a9wVNpGOyOEMqd8r2bqvVrTpA==
-X-Received: by 2002:a63:69c2:: with SMTP id e185mr5320986pgc.4.1551862547116;
-        Wed, 06 Mar 2019 00:55:47 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([2409:4042:2e93:b9ba:1446:ba71:6db0:9fb2])
-        by smtp.gmail.com with ESMTPSA id q62sm2689634pfi.183.2019.03.06.00.55.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 06 Mar 2019 00:55:46 -0800 (PST)
-Date: Wed, 6 Mar 2019 14:25:41 +0530
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: speakup: Comparison to NULL.
-Message-ID: <20190306085540.GA9075@bhagyashri-Lenovo-G570>
+        bh=0sdPMsIaGeTJ6+yCvTne+NPFlHVl/+7wxfLNkzaa9Ys=;
+        b=kjaU+aMl5AxTjb75wXb8o8TEHQq6NKIo2cxQAoCifY4KLYCzlOL5I06yKf0ToGJBJI
+         Jx6u+i3wDShcVqY2KaYWCoK/0OeJX6GDl8L4WWRjlBDT9sPaS0c8LXQMVZdboOJCdn47
+         XV2KgK+YbTPmzEatIxR+NVJCYyjxGUp1s0xJWGBkxUm+hlUC4SF7ZgFgVOvLap2ThsJy
+         rvq7KpX5CrZ7QR0O/X2yyhnXkLJYRlapaOUY87tkgBLZv12JsKh6Kw0tnx8WBXfCRcUJ
+         wQQ4TnfZMIW/P52y6NWo7+Hcmsx8Gedk9/R/7LQt/ZzWxesPkX110fsM1ZCDXSIDtH/O
+         YBhA==
+X-Gm-Message-State: APjAAAVLB2xtcD50sP6igThz6hHorZf75Vzh9sYIDvcNnWT4d4Mr167P
+	w5fbw8PSqXpsuosMbpX73vSlFv7gEMG2tw==
+X-Received: by 2002:a9f:2304:: with SMTP id 4mr3529652uae.69.1572241632660;
+        Sun, 27 Oct 2019 22:47:12 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from linux-kernel-dev ([172.97.41.74])
+        by smtp.gmail.com with ESMTPSA id u131sm4128562vke.11.2019.10.27.22.47.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Oct 2019 22:47:11 -0700 (PDT)
+Date: Mon, 28 Oct 2019 05:47:10 +0000
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org, Forest Bond <forest@alittletooquiet.net>
+Subject: [PATCH] staging: vt6656: Fix alignment issues
+Message-ID: <20191028054710.jo6u2jy4ftae22jh@linux-kernel-dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+User-Agent: NeoMutt/20171215
 
-Fix coding style issues, detected by checkpatch.pl "CHECK: Comparison to
-NULL could be written !tty->ops->write"
+checkpatch message:
+"HECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis"
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/speakup/spk_ttyio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/vt6656/rxtx.c | 26 +++++++++++++++++++-------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-index 0057eb9..5a9eff0 100644
---- a/drivers/staging/speakup/spk_ttyio.c
-+++ b/drivers/staging/speakup/spk_ttyio.c
-@@ -47,7 +47,7 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
- {
- 	struct spk_ldisc_data *ldisc_data;
+diff --git a/drivers/staging/vt6656/rxtx.c b/drivers/staging/vt6656/rxtx.c
+index f9020a4f7bbf..b5ac49179f13 100644
+--- a/drivers/staging/vt6656/rxtx.c
++++ b/drivers/staging/vt6656/rxtx.c
+@@ -595,17 +595,24 @@ static u16 vnt_rxtx_rts(struct vnt_usb_send_context *tx_context,
+ 	u8 need_ack = tx_context->need_ack;
  
--	if (tty->ops->write == NULL)
-+	if (!tty->ops->write)
- 		return -EOPNOTSUPP;
- 	speakup_tty = tty;
+ 	buf->rts_rrv_time_aa = vnt_get_rtscts_rsvtime_le(priv, 2,
+-			tx_context->pkt_type, frame_len, current_rate);
++							 tx_context->pkt_type,
++							 frame_len,
++							 current_rate);
+ 	buf->rts_rrv_time_ba = vnt_get_rtscts_rsvtime_le(priv, 1,
+-			tx_context->pkt_type, frame_len, current_rate);
++							 tx_context->pkt_type,
++							 frame_len,
++							 current_rate);
+ 	buf->rts_rrv_time_bb = vnt_get_rtscts_rsvtime_le(priv, 0,
+-			tx_context->pkt_type, frame_len, current_rate);
++							 tx_context->pkt_type,
++							 frame_len,
++							 current_rate);
  
+ 	buf->rrv_time_a = vnt_rxtx_rsvtime_le16(priv, tx_context->pkt_type,
+ 						frame_len, current_rate,
+ 						need_ack);
+ 	buf->rrv_time_b = vnt_rxtx_rsvtime_le16(priv, PK_TYPE_11B, frame_len,
+-					priv->top_cck_basic_rate, need_ack);
++						priv->top_cck_basic_rate,
++						need_ack);
+ 
+ 	if (need_mic)
+ 		head = &tx_head->tx_rts.tx.mic.head;
+@@ -627,12 +634,17 @@ static u16 vnt_rxtx_cts(struct vnt_usb_send_context *tx_context,
+ 	u8 need_ack = tx_context->need_ack;
+ 
+ 	buf->rrv_time_a = vnt_rxtx_rsvtime_le16(priv, tx_context->pkt_type,
+-					frame_len, current_rate, need_ack);
++						frame_len, current_rate,
++						need_ack);
+ 	buf->rrv_time_b = vnt_rxtx_rsvtime_le16(priv, PK_TYPE_11B,
+-				frame_len, priv->top_cck_basic_rate, need_ack);
++						frame_len,
++						priv->top_cck_basic_rate,
++						need_ack);
+ 
+ 	buf->cts_rrv_time_ba = vnt_get_rtscts_rsvtime_le(priv, 3,
+-			tx_context->pkt_type, frame_len, current_rate);
++							 tx_context->pkt_type,
++							 frame_len,
++							 current_rate);
+ 
+ 	if (need_mic)
+ 		head = &tx_head->tx_cts.tx.mic.head;
 -- 
-2.7.4
+2.17.1
 
 
