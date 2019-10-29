@@ -1,81 +1,87 @@
 X-GM-THRID: 6751912583325810688
-X-Received: by 2002:ad4:53c1:: with SMTP id k1mr7300435qvv.223.1572409806154;
-        Tue, 29 Oct 2019 21:30:06 -0700 (PDT)
+X-Received: by 2002:a9d:68ce:: with SMTP id i14mr13528246oto.155.1572383208391;
+        Tue, 29 Oct 2019 14:06:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:2f7a:: with SMTP id k55ls7348188qta.8.gmail; Tue, 29 Oct
- 2019 21:30:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwPmID1PtIObej+bibS3TCAZVwSWXUkP0V618CwNB733Ylha/zQDWaAcLbSmIzUMZOHLb5Q
-X-Received: by 2002:ac8:450b:: with SMTP id q11mr3017292qtn.7.1572409804735;
-        Tue, 29 Oct 2019 21:30:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572409804; cv=none;
+Received: by 2002:a05:6808:60f:: with SMTP id y15ls1701283oih.16.gmail; Tue,
+ 29 Oct 2019 14:06:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwH/LMW94ewONNtyXDbU6ivfp4GLULwfqBMUFVI2riYgphHKVJ0IV42c0SAo8mxZYkCUJAz
+X-Received: by 2002:aca:5686:: with SMTP id k128mr6127245oib.34.1572383207528;
+        Tue, 29 Oct 2019 14:06:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572383207; cv=none;
         d=google.com; s=arc-20160816;
-        b=YXFMFcD3R7zu1PpPMWs3vQKAu7KaA0iLzDnKgUyy+7kGBWw55loQMS5ELYZgMG9UJm
-         6mmK9d4IyByZRZPeRhdX1Mj8Up52VDjDdDmiMdiVDs25AA03mnFv4bFws6z4PywHqvex
-         NwGh/FMJvTrm0SeLK3AbfKzHUgfy8vyZpwWOcxMXTGWOIbp6HG2hLlEjxBnzraQ4RvuD
-         J8+NjXhyGKUwX9xFty6svs0VDmS7qy907hv9+lSe+k3SBYHVZZDhaN5VXL0EumvNg4pM
-         c7dAoMDx4UHtxB8HmSrKEelwgTe6Gc2TiFOjuqG42FnfzCMipnSqR266nGsCaB8zam5L
-         DWzA==
+        b=XwnddfhLxi5hrfDmftLeD2QPF8VB8bAF6yXPcg5DbaQ4p9PD5ErLF2zbnqqlMWsyYN
+         hvVg+adWuCq0np9R02jqG5cPrUPBxWRqFfyP29pRb06S4kTSJoO5TpSFFG6ShOtJfcK7
+         AGJuE2Q4hrP+e6fcWD9XhLeTU6ehJHqeMUvmraDZqKy0m5sr84uZ9V3I57PTSjwmkshX
+         wfLT/8XZfo/UAzIpnnZ152JW9TqS7O+AgtJ72FYtBrlz/Rm9JA4yMLJiGIdcmBBiiErQ
+         V0q19LgFyPeVVaw3RmycL2AyDPQwcWOmydbx0a1zDXq5uPqIHaL8m/K2lBJi+4eUjCaN
+         X0pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Wh5bwDyi5ogIWe76EXTWGQL7xtSOvb2CF9C7m0Bl1zQ=;
-        b=whvJTemGO1t8fknss36YZaItjMPEa0/hrg3kKgtn7SX+sCkH24V/CgNfIVE1Sqp1Rq
-         XmETaGKytNK2rr/D928zwNwaBPsUtwk45ehEMBETwvfgzmjvWgh+rAHsxCVpp6pjFQaT
-         5u8lvjCt5AcwacuKfHzlPmb2aGnjSl45eioI0JshRz+Irw+zaup2V0bukRfYi8Li/ban
-         pO4U/4248uAwtXgtZMKX+vUJw2tDTgziAmXO2P6flZ8MXIOSt6PWO6+6jxVDQGFDJC3J
-         ByzgZoMLB8MlWKajYaBmSlD0yQotpn4QiL8bdPz25KMG0VOshB2O9oXEZ4SIcrMgYo39
-         7HsQ==
+        bh=6skVi0rtFkpi80eSxc0+eNXVONcB80vIIOqF9Qu6A+Q=;
+        b=XLMh3Dlog6PZUJgphIm7WqaOyOvAuLqC71+3NPuj5+4J6kU1EakIJ+01bZcIMvuKFi
+         YZG7AMDTsaVrcNTT8yAzu8FHLg47dY2dTYpzi3hjqWzVxahjGZtyLuHpRtQ3kVHAThUs
+         /S7yTCx3fgTeWj/rNITsqY+lWjj5KvAFR8APv42erWFGwOVqDo5L1OHiubRkDK8aLeZR
+         9FeZBRfJWAifcMQMuKb3+7dubMUDLW2+KXWYL0SkE6D45vZGruQRs2DyTaD2jjrfv691
+         VhDZQxXUXDoIlIozM0yMqNLwkRTVV49rJOlehDfCS1LAcjjY8cclr/FL9jILVVuanRyM
+         fDVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=f5nWoiCc;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
-        by gmr-mx.google.com with ESMTPS id k33si5708qtd.4.2019.10.29.21.30.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="lIdb3C/G";
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com. [2607:f8b0:4864:20::742])
+        by gmr-mx.google.com with ESMTPS id c19si8762oto.3.2019.10.29.14.06.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Oct 2019 21:30:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 29 Oct 2019 14:06:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) client-ip=2607:f8b0:4864:20::742;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2019-08-05 header.b=f5nWoiCc;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
-	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9U4TWgp026221;
-	Wed, 30 Oct 2019 04:30:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=Wh5bwDyi5ogIWe76EXTWGQL7xtSOvb2CF9C7m0Bl1zQ=;
- b=f5nWoiCcxEZ1E6Aot1GNaOFOIKa8tcKEPgJdERbcZH+bcm0BS/fwoTTA9ZGkhQJVcTiX
- W7kipF6T8Uh5gDG3yO5VPL7Lp9Y3Unh1RPC2hEk3Xp5FXOCLB32wV8jNCqEgRAPE/Opo
- 8l5WggJ6KsMwsbahsM9V9/ZLXf2PhMngvNWI2Wvg9F2e0hq+jyxP0JKbSPHf0d+nKXB8
- WT80lmZ1Zq2mixqu2vxIgmwNWW5fusCQoDKK3QgCX2jzFRRgL44pbNBeLHNpgsHBcV1r
- JAaXB0cD4AJGtKkR9zcZQsRjTrOvcWn9VKv+ErFg7R35zLxSytl8LkvJg2gPxNspldVp XQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by userp2120.oracle.com with ESMTP id 2vxwhfh9vs-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 30 Oct 2019 04:30:02 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x9U4S8Fp104395;
-	Wed, 30 Oct 2019 04:30:01 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by userp3030.oracle.com with ESMTP id 2vxwhv8p4g-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 30 Oct 2019 04:30:01 +0000
-Received: from abhmp0023.oracle.com (abhmp0023.oracle.com [141.146.116.29])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x9U4U0uc006115;
-	Wed, 30 Oct 2019 04:30:00 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 30 Oct 2019 04:30:00 +0000
-Date: Wed, 30 Oct 2019 07:29:54 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Cristiane Naves <cristianenavescardoso09@gmail.com>
-Cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="lIdb3C/G";
+       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x742.google.com with SMTP id m4so345377qke.9
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 14:06:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=6skVi0rtFkpi80eSxc0+eNXVONcB80vIIOqF9Qu6A+Q=;
+        b=lIdb3C/GTtX/EWs3x2yYpBWFePbIdBuKx2Or1kdG1cA44GGtSfnGnU4mO+Fsq2bqXX
+         Hn70rswGjIxsJTYl4jUV4Hmc7J7zbNXlwDykdkiPG3T6dQpq9h189jj+aL6MmTpg8pms
+         ND/8G7/fMtQ2TpvVsvhfZ6Efs5pmvNAFS0SHImlhYxLpxcWBbO5i6zHTVIaZVNU+JPve
+         P6afrFEEBw5WwbOfnVWhHJj65KnlRCCzLSsuNjVAqUJAOq0WgThJ6BQaao/JjoAZaCfg
+         usCi9O2dRyTvj4Bg2e/AdBP+EmNkLRXMYImVCO8n5BRBuiTAAg5c01OafYd6Rd763ms3
+         INHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=6skVi0rtFkpi80eSxc0+eNXVONcB80vIIOqF9Qu6A+Q=;
+        b=T4nIzHkmLqzxTkZMq+56ER8R8UGZkgGs1gq6LR/v71U8mrTB3GM+M1rHXqXCrEdmbv
+         OwLfQ508Zxd+9emVlq78roRtzHw8YJpDftdIqX02b8v6Z0qj06ZBFFwJhovOqCcMx4ZG
+         z+ZMacnIJxTikS1XCGuHVbXfk6NBLZbeX3DaJebjKMlwUKwek7TB3E8KxJpQmqy1mbtk
+         MnRr3uxEIp00S8d/ySyivo6TfIdTu57fJ1yovuoW97/S/Waf462TuPbQV0RQmx73xwns
+         7+dm9uGV8cURzmgfymFFJOSXpKLkSgMuha3Tatou2C6PGcqRuNX9Vry8XpWzWqb35mlx
+         ej5Q==
+X-Gm-Message-State: APjAAAVdBbM4x1WAHnOElXWnMiB8k5YXafZy7qLw6c07pQsgybmfagTv
+	PwTpBU+m45ntjTJkN6rYGgU=
+X-Received: by 2002:a37:6f06:: with SMTP id k6mr23897684qkc.143.1572383206932;
+        Tue, 29 Oct 2019 14:06:46 -0700 (PDT)
+Return-Path: <cristianenavescardoso09@gmail.com>
+Received: from cristiane-Inspiron-5420 ([131.100.148.220])
+        by smtp.gmail.com with ESMTPSA id k17sm12690744qtk.7.2019.10.29.14.06.45
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 29 Oct 2019 14:06:46 -0700 (PDT)
+Date: Tue, 29 Oct 2019 18:06:42 -0300
+From: Cristiane Naves <cristianenavescardoso09@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>,
+	Dan Carpenter <dan.carpenter@oracle.com>,
+	outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Re: [PATCH v3 1/2] staging: rtl8712: Fix
  Alignment of open parenthesis
-Message-ID: <20191030042954.GC3866@kadam>
+Message-ID: <20191029210642.GA14913@cristiane-Inspiron-5420>
 References: <cover.1572273794.git.cristianenavescardoso09@gmail.com>
  <158960d90adff42169bb7ce968a4082bf3e73387.1572273794.git.cristianenavescardoso09@gmail.com>
  <20191028190259.GF1944@kadam>
@@ -83,83 +89,87 @@ References: <cover.1572273794.git.cristianenavescardoso09@gmail.com>
  <20191029080554.GA506924@kroah.com>
  <20191029081501.GA549977@kroah.com>
  <20191029202157.GA2188@cristiane-Inspiron-5420>
+ <alpine.DEB.2.21.1910292159170.2199@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191029202157.GA2188@cristiane-Inspiron-5420>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9425 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=2 malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910300045
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9425 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
- suspectscore=2 phishscore=0 bulkscore=0 spamscore=0 clxscore=1031
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
- definitions=main-1910300045
+In-Reply-To: <alpine.DEB.2.21.1910292159170.2199@hadrien>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Tue, Oct 29, 2019 at 05:21:57PM -0300, Cristiane Naves wrote:
-> On Tue, Oct 29, 2019 at 09:15:01AM +0100, Greg KH wrote:
-> > On Tue, Oct 29, 2019 at 09:05:54AM +0100, Greg KH wrote:
-> > > On Mon, Oct 28, 2019 at 06:21:37PM -0300, Cristiane Naves wrote:
-> > > > On Mon, Oct 28, 2019 at 10:02:59PM +0300, Dan Carpenter wrote:
-> > > > > On Mon, Oct 28, 2019 at 12:15:52PM -0300, Cristiane Naves wrote:
-> > > > > > Fix alignment should match open parenthesis. Issue found by checkpatch.
-> > > > > > 
-> > > > > > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
-> > > > > > ---
-> > > > > >  drivers/staging/rtl8712/rtl8712_recv.c | 36 +++++++++++++++++-----------------
-> > > > > >  1 file changed, 18 insertions(+), 18 deletions(-)
-> > > > > > 
-> > > > > > diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-> > > > > > index af12c16..304d031 100644
-> > > > > > --- a/drivers/staging/rtl8712/rtl8712_recv.c
-> > > > > > +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-> > > > > > @@ -61,13 +61,13 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
-> > > > > >  		precvbuf->ref_cnt = 0;
-> > > > > >  		precvbuf->adapter = padapter;
-> > > > > >  		list_add_tail(&precvbuf->list,
-> > > > > > -				 &(precvpriv->free_recv_buf_queue.queue));
-> > > > > > +			      (&precvpriv->free_recv_buf_queue.queue));
-> > > > > 
-> > > > > You did this correctly in v2.
-> > > > > 
-> > > > > -				 &(precvpriv->free_recv_buf_queue.queue));
-> > > > > +			      &precvpriv->free_recv_buf_queue.queue);
-> > > > > 
-> > > > > >  		precvbuf++;
-> > > > > >  	}
-> > > > > >  	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
-> > > > > >  	tasklet_init(&precvpriv->recv_tasklet,
-> > > > > 
-> > > > > regards,
-> > > > > dan carpenter
-> > > > >
-> > > > I wondered if it was better to use parentheses or not. Is it necessary
-> > > > to send a new v5 version containing this change or it's possible to get it from
-> > > > v2?
-> > > 
-> > > Send a follow-on patch to fix this up please as your other one is in my
-> > > tree now I think.
-> > 
-> > Or maybe it isn't in my tree, I have no idea, I can't remember.  YOu
-> > know if it is applied or not as you will get an email when it happens.
-> > 
-> > thanks,
-> > 
-> > greg k-h
+On Tue, Oct 29, 2019 at 09:59:31PM +0100, Julia Lawall wrote:
 > 
-> I received an email with the subject patch "staging: rtl8712: Remove
-> lines before a close brace" added to staging-next on October 27th. Is
-> this the confirmation email when a patch is accepted or is there any
-> other email?
-
-Yep.  That means the patch is in Greg's tree.  It won't hit Linus's tree
-until the next merge window.
-
-regards,
-dan carpenter
-
+> 
+> On Tue, 29 Oct 2019, Cristiane Naves wrote:
+> 
+> > On Tue, Oct 29, 2019 at 09:15:01AM +0100, Greg KH wrote:
+> > > On Tue, Oct 29, 2019 at 09:05:54AM +0100, Greg KH wrote:
+> > > > On Mon, Oct 28, 2019 at 06:21:37PM -0300, Cristiane Naves wrote:
+> > > > > On Mon, Oct 28, 2019 at 10:02:59PM +0300, Dan Carpenter wrote:
+> > > > > > On Mon, Oct 28, 2019 at 12:15:52PM -0300, Cristiane Naves wrote:
+> > > > > > > Fix alignment should match open parenthesis. Issue found by checkpatch.
+> > > > > > >
+> > > > > > > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> > > > > > > ---
+> > > > > > >  drivers/staging/rtl8712/rtl8712_recv.c | 36 +++++++++++++++++-----------------
+> > > > > > >  1 file changed, 18 insertions(+), 18 deletions(-)
+> > > > > > >
+> > > > > > > diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+> > > > > > > index af12c16..304d031 100644
+> > > > > > > --- a/drivers/staging/rtl8712/rtl8712_recv.c
+> > > > > > > +++ b/drivers/staging/rtl8712/rtl8712_recv.c
+> > > > > > > @@ -61,13 +61,13 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
+> > > > > > >  		precvbuf->ref_cnt = 0;
+> > > > > > >  		precvbuf->adapter = padapter;
+> > > > > > >  		list_add_tail(&precvbuf->list,
+> > > > > > > -				 &(precvpriv->free_recv_buf_queue.queue));
+> > > > > > > +			      (&precvpriv->free_recv_buf_queue.queue));
+> > > > > >
+> > > > > > You did this correctly in v2.
+> > > > > >
+> > > > > > -				 &(precvpriv->free_recv_buf_queue.queue));
+> > > > > > +			      &precvpriv->free_recv_buf_queue.queue);
+> > > > > >
+> > > > > > >  		precvbuf++;
+> > > > > > >  	}
+> > > > > > >  	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
+> > > > > > >  	tasklet_init(&precvpriv->recv_tasklet,
+> > > > > >
+> > > > > > regards,
+> > > > > > dan carpenter
+> > > > > >
+> > > > > I wondered if it was better to use parentheses or not. Is it necessary
+> > > > > to send a new v5 version containing this change or it's possible to get it from
+> > > > > v2?
+> > > >
+> > > > Send a follow-on patch to fix this up please as your other one is in my
+> > > > tree now I think.
+> > >
+> > > Or maybe it isn't in my tree, I have no idea, I can't remember.  YOu
+> > > know if it is applied or not as you will get an email when it happens.
+> > >
+> > > thanks,
+> > >
+> > > greg k-h
+> >
+> > I received an email with the subject patch "staging: rtl8712: Remove
+> > lines before a close brace" added to staging-next on October 27th. Is
+> > this the confirmation email when a patch is accepted or is there any
+> > other email?
+> 
+> No, that means it's good.
+> 
+> julia
+>
+So when do I know if a patch has been accepted or not? Is When An
+Acked-By Is Placed?
+> >
+> > thanks,
+> >
+> > Cristiane Naves
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191029202157.GA2188%40cristiane-Inspiron-5420.
+> >
 
