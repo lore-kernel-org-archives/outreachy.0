@@ -1,78 +1,78 @@
 X-GM-THRID: 6753369380801740800
-X-Received: by 2002:a9f:26c1:: with SMTP id 59mr13148550uay.90.1572391344040;
-        Tue, 29 Oct 2019 16:22:24 -0700 (PDT)
+X-Received: by 2002:a67:e348:: with SMTP id s8mr985277vsm.176.1572391339361;
+        Tue, 29 Oct 2019 16:22:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:d40e:: with SMTP id c14ls2067325vsj.1.gmail; Tue, 29 Oct
- 2019 16:22:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxRX3zmkQmZYhAG7gV/N8FzBLmizjMl+86GJ/WXlWUMdXWoDjSItjBUFxCIBGVAmyveS97G
-X-Received: by 2002:a67:2d8b:: with SMTP id t133mr3593344vst.17.1572391343380;
-        Tue, 29 Oct 2019 16:22:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572391343; cv=none;
+Received: by 2002:a67:ee0e:: with SMTP id f14ls1729750vsp.4.gmail; Tue, 29 Oct
+ 2019 16:22:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtN47QOICtMAHAU76/o4HWqADajtOhOKIv8GlE6sSLtA53N/pbeIwPoaK1MD1lvW76S3ii
+X-Received: by 2002:a67:e9d7:: with SMTP id q23mr860879vso.227.1572391337907;
+        Tue, 29 Oct 2019 16:22:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572391337; cv=none;
         d=google.com; s=arc-20160816;
-        b=NWtMv2mbBh7Z6nbs8moxU4Uk+rmBNLx7MeaJhwns4ArCtQYLp7QvFeJ6IqmiWh/alt
-         plxmCClzLHZh/KUnKSC5LzrArnUsDZ7akF/W29IMXACza3TTQjbCtw+c3KwuYBSXE4UT
-         /IkHTwvfV5avrOYaGPEJf5jsTA4m7xPYyjC6Hx70kCr8ujlwV/6G++6p+HvvJNdprnFm
-         toKupZmkwxqUUSGajJxCbRCJs3Wc5vLus6XjKDztenht2SCHr2kjjH+cvOoc+AgzJL1M
-         UqXzflJjbwABdSIo+Olgg400wjAMNwZdi4Wouekd0+Hu8hL8dIfqQGYoTqqraRzTwcdM
-         B0sQ==
+        b=J1if7LhCHUavGOFY+vUsnN6u2sLxE2uUxTHR7U6UChobcTwKfuKlfZ3QAS95eZ6sI/
+         J5QSU/rPIcFR6riC/cnsfbXz5lMz3xRREm6v2AQyT5MYlN9azD2WRkmKv0tsUu5HAVKX
+         QMjDBGy8BF2yagHlQN4rC4WUuGNvu/9bXgjFGzfw2R7GQvos4Yaavy6iX4lWY/QjaUOc
+         njSwR9fOgbU9ebsZqtfdFVqLEA09xt7/pUnQrkw7+qlnIFGlbrplI5ciMqfFfNl39KPf
+         A6IyVKg5c/hs0VQTkN3DcTBv7CJ7Ca9mEhOxd1mxOGBs1G4k7l6nSdYy4jAcoL/pLFKH
+         Knxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3hCkAbcriS9RlIsXdXAS7BOo4yVJsRg6vFvTMkZt0zA=;
-        b=Lx3pkfYNzgTgJTeC11wM+cFb2vdGg+HjQA0HoE6v4R9vK0QDSqX3Hu43IOjy4+8YJR
-         YAI63gqZjJLMZbsc5A3+SZavCnQruaSv7qPLyhzhbTJkC7jM3jYZE+sihQdNyvnpsPsx
-         1nZnyeLy9wuMmZJlaO5YvbCt9vYxpovqJR5l22LBlGzuEOKeqK40IgmPMdcXMlClRNft
-         4zFmDG7M+cqIT5dM+t7E2IW9MmL6gbgoB4rmeX4gaGUJS9mFv8u5pvbR3TQ00QjR3wLS
-         ggxjkoGsG44OWjM4z5txRMZCxz3RuHsIIvliD8tEnlBYF+GAT5m+p63WauQzcSXKbT6M
-         6/hQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=/RIHrM2T5t2yjqxj2JPTS71DBT+0RqAHHijTzNDzZvQ=;
+        b=tjUoB7bYMtARiJ8WTbgY23dSzE0E9Ic2QF3qJ4kKneCAT1hpJ0bofDWfUrp03wwV1+
+         n/RydR4b27gUaxWPZcKXDS5lsnmrkQabvcHFezo6JK1+1fGcOLK3yMzBJFQ1Mv3iVQsN
+         s3GG57TX2mCLJH3J/7fjclwNiGyN4mUVMrxZwgjBn9RIWjVC/E/GabK6Aihk7l5xSRI3
+         bejuxM4IL3raCJa7+oRTVQrElz1w40NXkg17jDARmh6gYTffFUuVyL1TX3CQs6nofNMY
+         ru1vu3UOFl+3TlQYjYsn0iHqYIkZCKDcBJv2pmoyeG9Zmad6Qg7IOVyPZk78z+OWH596
+         kjmg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Iyhf2LDw;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oVu5mhpb;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com. [2607:f8b0:4864:20::742])
-        by gmr-mx.google.com with ESMTPS id y8si4558vsg.2.2019.10.29.16.22.23
+Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com. [2607:f8b0:4864:20::844])
+        by gmr-mx.google.com with ESMTPS id s19si8586vsj.0.2019.10.29.16.22.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Oct 2019 16:22:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) client-ip=2607:f8b0:4864:20::742;
+        Tue, 29 Oct 2019 16:22:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) client-ip=2607:f8b0:4864:20::844;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Iyhf2LDw;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oVu5mhpb;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x742.google.com with SMTP id e2so725971qkn.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 16:22:23 -0700 (PDT)
+Received: by mail-qt1-x844.google.com with SMTP id e14so679154qto.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 16:22:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=3hCkAbcriS9RlIsXdXAS7BOo4yVJsRg6vFvTMkZt0zA=;
-        b=Iyhf2LDwrJ7hlSqQSnW+N75bzt41kj0wuqTEQk9se2IajbQTHLaDrxokn885sBN/SG
-         QDs82ykMG2hcooPX+0+ClpV4v1Ckjo55y7ad0Nb457PVcWBoxsnCaL+hsHY+Nw3mgEXr
-         jMx1I0D+pYVWIxa1C7cyLlfvHslI05QVnR+tnEjLlg4E3pybl3tLLoSecAboypaGK8fB
-         K90T5UU6H2/71o1vDPdKH6AOR6BD9TFqGT88AWiPU9C8Qk2XwxC3oU5EjMhQtztPIlFq
-         R7sSGwM9Z7gqLUxhL/OBEt3OcC88zSqQj23cH4185GKtF5GmX5FPgTgvIB1hC2fpNg3H
-         Y6Ww==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=/RIHrM2T5t2yjqxj2JPTS71DBT+0RqAHHijTzNDzZvQ=;
+        b=oVu5mhpbwaYDhSZVWLJHva8w1r3fWnI9tbf3bI81Z4kUpGcBcb2LQwxgA6rQyaaywy
+         EDQZOJBJcBKsDP3+uO4LLxe+AJF9/wVa3YgYytzy/IOYHwXeAIrHkoOp+sizz3UyROHV
+         84hjPfNn2mik6aS9KauqQptgafjsGlQVFQPL28vR+jYxSWLy0kkwodlH9evs0l69znCj
+         ya1lmfDMy9OnxY0ecCnUtlUZaCfVcU0iKHC7XToeqpR32y1271NCKeA2+NVwK9r8Z9Va
+         Jx8bR9zQ4AsSLF6bR4tzex2O8jvJjY+avCUTU6ELAV3OVxzap4FhFChnHUyeRy6fV+6w
+         r9vQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=3hCkAbcriS9RlIsXdXAS7BOo4yVJsRg6vFvTMkZt0zA=;
-        b=YMD9YgSpY3qrWTyrHTd9TcwlwYmFe0KwfdN3EuKxitEo6sNGIw3lTtxrrIKZciNqEu
-         CJYXT120/ZAfoLPuQbI27Sld9n23QReD8g9oizvx/bZtsK2SI71SpSlDshPHNCXYRRHQ
-         qbJtDgGYqDfMyi0EQ7y03sSP54SwIyDNszjy1vOtXWB578WyY1v3wX1RLOwcyLd1o05d
-         W60G1NRDW04/JjbtMzCD+HWqR5d5kEtNev74A6Cgli5IyHlaN0g0oXPko4GZud4+9DP+
-         KjZM3NbrGLaGLXlW+nrv5T7SWXn8ib3x3TZHDjO88j8yhHC53GMrAkvOXsbqCCBiYk9D
-         920w==
-X-Gm-Message-State: APjAAAXMmk6SKE9YrECjxGjyMHYVeMbAnalpzcpCX85bxg/FLxBTwSVC
-	FOq2iQzdJlYK8nwyvUHG7DXkIyf3pYA=
-X-Received: by 2002:a37:6891:: with SMTP id d139mr24311946qkc.213.1572391342722;
-        Tue, 29 Oct 2019 16:22:22 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=/RIHrM2T5t2yjqxj2JPTS71DBT+0RqAHHijTzNDzZvQ=;
+        b=WCpU99ZoamCMdwHvwtRMzRSeeM6jRp5CKwasTYKg9/DQ621CRpyHtwYKwVokXyPikt
+         ns0PUoxAhEaU7aMH72Z9VBi+udDraE8OHZZsjvjZ2utmbCwR+3dA6+tliDXL9B1uYz+A
+         WQQqyP5ZMNsVBUCWCbD0T7R+e9/VN9J3IgRAmujGlkzBnXabaZsNf/Lq6X7MmED9XC3x
+         x9c6ahUUCYpn+gBbpjd4k0LcU6FtyLrhykZKEKeqzJeDHhqupNlur8Ub5FZHZ/vemM1z
+         3OBivocuFL4OvmM98SXvQt7P+bokFBaik/QxtatNiPXJOTyI4us3giauC6G//dV1o/BS
+         dTew==
+X-Gm-Message-State: APjAAAVcJurZb74g+8GA4x9EYJuvL/PJBOp6557Tv4C243MNocMxwnN3
+	fhwa/1fP5tuOtaIMn2VtoBMovzFT2Cs=
+X-Received: by 2002:ac8:6146:: with SMTP id d6mr1980022qtm.271.1572391337209;
+        Tue, 29 Oct 2019 16:22:17 -0700 (PDT)
 Return-Path: <gabrielabittencourt00@gmail.com>
 Received: from GBdebian.ic.unicamp.br (wifi-177-220-85-136.wifi.ic.unicamp.br. [177.220.85.136])
-        by smtp.gmail.com with ESMTPSA id a18sm633940qkc.2.2019.10.29.16.22.19
+        by smtp.gmail.com with ESMTPSA id a18sm633940qkc.2.2019.10.29.16.22.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Oct 2019 16:22:22 -0700 (PDT)
+        Tue, 29 Oct 2019 16:22:16 -0700 (PDT)
 From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	sudipm.mukherjee@gmail.com,
@@ -84,35 +84,22 @@ To: outreachy-kernel@googlegroups.com,
 	lkcamp@lists.libreplanetbr.org,
 	trivial@kernel.org
 Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH 1/2] staging: sm750fb: Fix typo in comment
-Date: Tue, 29 Oct 2019 20:22:06 -0300
-Message-Id: <20191029232207.4113-2-gabrielabittencourt00@gmail.com>
+Subject: [PATCH 0/2] staging: sm750fb: Fixing codestyle error                   
+Date: Tue, 29 Oct 2019 20:22:05 -0300
+Message-Id: <20191029232207.4113-1-gabrielabittencourt00@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191029232207.4113-1-gabrielabittencourt00@gmail.com>
-References: <20191029232207.4113-1-gabrielabittencourt00@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Fixing typo in word 'and'.
+Fixing typo and usage of spaces/tabs in file sm750_accel.c
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
----
- drivers/staging/sm750fb/sm750_accel.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Gabriela Bittencourt (2):
+  staging: sm750fb: Fix typo in comment
+  staging: sm750fb: Replace multiple spaces with tabs when it suits
 
-diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-index 645813a87490..5925d7c7d464 100644
---- a/drivers/staging/sm750fb/sm750_accel.c
-+++ b/drivers/staging/sm750fb/sm750_accel.c
-@@ -224,7 +224,7 @@ int sm750_hw_copyarea(struct lynx_accel *accel,
- 
- 	/*
- 	 * Note:
--	 * DE_FOREGROUND are DE_BACKGROUND are don't care.
-+	 * DE_FOREGROUND and DE_BACKGROUND are don't care.
- 	 * DE_COLOR_COMPARE and DE_COLOR_COMPARE_MAKS
- 	 * are set by set deSetTransparency().
- 	 */
+ drivers/staging/sm750fb/sm750_accel.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
 -- 
 2.20.1
 
