@@ -1,109 +1,116 @@
 X-GM-THRID: 6749323707377778688
-X-Received: by 2002:a63:4e13:: with SMTP id c19mr31006587pgb.225.1572396507187;
-        Tue, 29 Oct 2019 17:48:27 -0700 (PDT)
+X-Received: by 2002:a17:90a:9406:: with SMTP id r6mr10877184pjo.0.1572396014684;
+        Tue, 29 Oct 2019 17:40:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:a503:: with SMTP id v3ls1036549pfm.7.gmail; Tue, 29 Oct
- 2019 17:48:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxf6aWV9m/03iVN72K/W3xJEw1gV98T4HqwTHieIGeySRQ9H8xtvr10G7U8/k1FbvmCELTY
-X-Received: by 2002:a63:2f81:: with SMTP id v123mr31695384pgv.239.1572396506297;
-        Tue, 29 Oct 2019 17:48:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572396506; cv=none;
+Received: by 2002:a17:90a:322b:: with SMTP id k40ls361759pjb.3.canary-gmail;
+ Tue, 29 Oct 2019 17:40:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyvoxBgbEwZeYNNp+VbseK2Go7c+0D3P/vAHl8tpd2tWHtyIufB/jGfdFn6nnUocxj9/ryX
+X-Received: by 2002:a17:902:7786:: with SMTP id o6mr1580149pll.109.1572396013240;
+        Tue, 29 Oct 2019 17:40:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572396013; cv=none;
         d=google.com; s=arc-20160816;
-        b=d5wfaELdXiHUCNAmIm3UOJUXOnvglA9Bt2OR94DLEpA9PYe6lY0fw/Cj5vpgslOCuH
-         vzVzf+2f9a0G8LmhsMapNWby6QjiXwjtTgUjkWapN6blkpEJ5cGgmvfsVVUwMNX++O1E
-         15ZS6GjkGOLPce03xKEc+qYuWAwikaRBGhThJRXr45oTyAWZlgg/SykaPmp99qLmnirz
-         IWKCybEX/KxQX7Ib+WQ6Ka2kZ5at2Pw0b0C3KI8hU6M57/NGXdCiE5ZCF7y4RMg1aI6e
-         ksUn2O7qBFyPbCU1oGigE5V321UxKSQ5FZtpj5pismBRRTF1oSHtvxxDz/+H5rsc3Tul
-         nbsA==
+        b=meMLwWJY+Jx7vmlnCyUaEQJ853qPZyg1vQ9yUtHQx9ejdoVmXxVcekDaFnBipZpyVs
+         l6s+pperMy+7mPceyZV2I14T7fibNDBLGhoHBLSwpbewqefJiJvUGZm8V642JXuiPo++
+         P7ucXYNOdLiYi59T6P0I8h5cPO4wX3B2v0wNMDGE25dOaJefDIslyfOaPh+3xX8JrPCH
+         ZUCMcibognzg7jKnS/63XPolc1Cf3AT3GjC/8GRqqp4veCn08xUY2kf4u4vBMC6tbDtx
+         bD87NNWG9utUZo4QttxZdAps3qdtOufX9LNsPbMXF9G3HXLkstlZrR4C6AZkD/n4qLwz
+         ex/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:mail-followup-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=m0rFszwQurgDXRebRO6CBjRpVJSBt2BBclY/BzHQ+Dk=;
-        b=uhcCGw2QOAdcsGpATJcGkRRQNhW1/y6In5L9r0lxkMiitMAXbBJLzqejvQpk8DBWcQ
-         dbkyP6ZwrkVLq72HrJR0coSLDBwdZzz8GFZrKoGoYx0qG8KEXk5exGmUrtPDBGa1hVkQ
-         bBfLo0/iOYuGZ2g/ylzbw6X+fD/nvAQMK76AF1+3mOWa5uN+gat4gNAlZ37cAIuV7YBf
-         JQ9tUtcL8aLVFde1AXho2H2Z3mkT3lOW2Ga/f/RlKvYvHks2qGE3RmVoi2Y5Gg4lt9EX
-         CUz/xH6zOGTVQo9ZId36tn/XoN/iaqn020rzgLPkEXvhBDuUFu44wUoJ1WwUkTJE8FE0
-         KWeA==
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=+BZrTz/5NVkLdak5J8oJo40dMzMeheNlqku1lS9ZDNo=;
+        b=lRn6fYlW2upqu97KNmHErnoTHuARGatj6GdS+zHFrOTqpkPEZelmsQpdz7OF/L6c88
+         KnjITVOYeoWL1nuf7Eu+04LjWx6BP/S+9PJJpynvZ5AyZSlfGsV+yDh1+b2gHGUhM558
+         CGuP3gzJTrtrQd7tTxiXoJCE6WWL0GvgvM1lOyg2RyAFtnCWqggW2fUV36zK6yb/Nk6P
+         7JWsxj+aOffj53gsA1D55vDwdqXbu1EiSPIHGyXa0Jg3/bwo0uz+Et9UaVAHnKqPRxcE
+         4qIWnN9OJpyDkzi//jGN85cqK0hKGyyeOiBV0m60ZY2XF9YNtcr2+f9vBZJvz9d1ikCT
+         Ffcg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="abqVctJ/";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::a43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L2X5pyS9;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vk1-xa43.google.com (mail-vk1-xa43.google.com. [2607:f8b0:4864:20::a43])
-        by gmr-mx.google.com with ESMTPS id t17si23251pgu.1.2019.10.29.17.48.26
+Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com. [2607:f8b0:4864:20::e44])
+        by gmr-mx.google.com with ESMTPS id f17si20432pgk.3.2019.10.29.17.40.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Oct 2019 17:48:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::a43 as permitted sender) client-ip=2607:f8b0:4864:20::a43;
+        Tue, 29 Oct 2019 17:40:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) client-ip=2607:f8b0:4864:20::e44;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="abqVctJ/";
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::a43 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L2X5pyS9;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::e44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vk1-xa43.google.com with SMTP id o198so79584vko.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 17:48:26 -0700 (PDT)
+Received: by mail-vs1-xe44.google.com with SMTP id y129so526230vsc.6
+        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 17:40:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition;
-        bh=m0rFszwQurgDXRebRO6CBjRpVJSBt2BBclY/BzHQ+Dk=;
-        b=abqVctJ/L65M6/OXZKiFsitUYYnWvipwvjZy9y72buonKmQ8+GTIFHnEdclLq/dSAD
-         taT1GszAHkx2R0VDPdh6Y1i0+an3X6pDEYfrVvRnAmWARaRdEGAO9hl5vcpjiqz8CvS/
-         Egc+KPsKvEA66FF4Yl5pQQ9f165qUMBoOx+r1IhPU8aM8indyBTf0c47NUuHkscnj1N+
-         oXYXHwZ0z0mCddZ43DCS+5lzupWLqeIae6cTJP600zefju9AGuB9YxjYdUPlraTq4nxd
-         lWeH3IJAnVxBZsPl9qYGhJh+S5YkN5ums+Qe7BtElARB99sBN1ORyPkNVZRKrsZpwPTn
-         8xuA==
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=+BZrTz/5NVkLdak5J8oJo40dMzMeheNlqku1lS9ZDNo=;
+        b=L2X5pyS9VQ4Z/PkQCPegaksIDVpWtVe+L1pLaV7DMV6Q/ET7Wa6tV+LAHqY6nUSuSg
+         d+UD+qFYyC3l1gK4pvZbj7qliieaUIrzB4YK+YFZ+XMCYwlLcOGAPScwhyw4j6qX9s7W
+         an8cTiY1W3s6CFNrYV2Ar7zCubNVWHQIYzIYPxcrtVIvF2qdnU8kpoR9KgaWAilZN4pQ
+         t3jWJy1zR8sQxVWERXGyBaj4gmaOdWkGFRYadDKZTI/in7qtxtEZ+yn/UsfC4ThbXDQc
+         Y6sjtjZPz5brfLEjwi23vPU/c71F/FdIuNrAfv2Q+h8bY0aV75SmRweVcA2AG8PIjWFK
+         TA7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition;
-        bh=m0rFszwQurgDXRebRO6CBjRpVJSBt2BBclY/BzHQ+Dk=;
-        b=ctzWoPnGtYU+KHe+bMeRITa+FNhaOF8HhpAEo3BH1iAB/9M323Yb0c2hnQjYXzPdcI
-         6bPWU6vN0Rb7VzvRvvy09OvfQdFBhbJ4rz4vHr20ldfgP4LuU92zS6+PUo4Vci2NAY4B
-         vlhSrNsGzlULRMvxyAK2WuT9/yoYoqaR6wOGY5tOhUB/WNhP3Y4CJKmC7UzFn1vtVL1Q
-         QBkMhnYUQ5f4aepKnXm7thiQjWQVKYibMIHfRxoSIPBQH3BjQ2/Sa9+LTX7H7Fe0D1zK
-         uaai0/wdTDZglgtpSz2EGY2ZoaBhbBmHg1OZssKMn+B2NAjDTOHMlkIBY6soR5kUbxfu
-         IQjg==
-X-Gm-Message-State: APjAAAXMI5f+r/XUPbV4GNcfkIJ7bguKLj+eMoOHUCdIacr1Rn2VMIbl
-	iIlsuI3vqqb4t02WvVDZX4PekjTHzWRkYg==
-X-Received: by 2002:a05:6122:328:: with SMTP id d8mr13406331vko.14.1572396505478;
-        Tue, 29 Oct 2019 17:48:25 -0700 (PDT)
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=+BZrTz/5NVkLdak5J8oJo40dMzMeheNlqku1lS9ZDNo=;
+        b=W7wPWJzrSZ+Fcqe5G4tY29sqkMe3U5APya2q5a4MSj+CBjxgoPqHDsQCbd945/eQbo
+         mC+oZ4TazhhrcHDjPjXWr3/jC06c8vdz7NUe/7iRAUekdRstW8rFuv7zNzReMHdD0hme
+         p8AWlzuq/FSbI9Vl0Ij/LbZD1qi56NekzN6PMuWnkyeqPwq+nwwKMIkarW7/s0u1BZRd
+         cAlQd3k7AErhlea5zr8g6fg8Dw5TPsasEIgUhRH2OG3ZZrUTXfx7E3fdoJeF+BSkJqC1
+         FhWnowiiNvschDVvG0U0sEq6/2NAvFyDZvOZHTIwqp5X74EnYHzkzO9ySMEB8Yr4Eqgm
+         oW2g==
+X-Gm-Message-State: APjAAAVMbc/y/0F4HEMAHGH0So66CfKXzluSn0j4+Wz1wU8Nx0LHwF5r
+	JcEmIWBOIecPol4dreywAz4=
+X-Received: by 2002:a67:fd7b:: with SMTP id h27mr3702949vsa.42.1572396012967;
+        Tue, 29 Oct 2019 17:40:12 -0700 (PDT)
 Return-Path: <jarias.linux@gmail.com>
 Received: from gmail.com ([138.59.18.103])
-        by smtp.gmail.com with ESMTPSA id l193sm366834vkl.1.2019.10.29.17.48.24
+        by smtp.gmail.com with ESMTPSA id o62sm333889vko.28.2019.10.29.17.40.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Oct 2019 17:48:25 -0700 (PDT)
-Date: Tue, 29 Oct 2019 19:48:22 -0500
+        Tue, 29 Oct 2019 17:40:12 -0700 (PDT)
+Date: Tue, 29 Oct 2019 19:40:09 -0500
 From: "Javier F. Arias" <jarias.linux@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH v5 0/2] Adjustments in function call
-Message-ID: <cover.1572396117.git.jarias.linux@gmail.com>
+Subject: [RESEND PATCH v4 1/2] staging: rtl8723bs: Fix line over 80 characters
+Message-ID: <6186e531d4cc59bed09329b2c9c4cac7352702bf.1572395770.git.jarias.linux@gmail.com>
 Mail-Followup-To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
+References: <cover.1572395770.git.jarias.linux@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1572395770.git.jarias.linux@gmail.com>
 
-This patchset fixes a warning and simplify a boolean expression in a
-function call.
+Fix line over 80 characters by wrapping arguments in function call.
 
-V2: Update the message of the second commit to include the updated
-    patch version and to use the Suggested-By tag.
-V3: Update the first commit to include the Suggested-By tag and
-    the second commit to update the patch version.
-V4: Correct the format of the first commit to use the Suggested-by
-    tag properly.
-V5: Add the version revision that wasn't included in the previous
-    patchset.
-
-Javier F. Arias (2):
-  staging: rtl8723bs: Fix line over 80 characters
-  staging: rtl8723bs: Simplify boolean expression
-
+Suggested-by: Julia Lawall <julia.lawall@lip6.fr>.
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+---
  drivers/staging/rtl8723bs/hal/rtl8723b_dm.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+index c514cb735afd..0c2f3b2d4326 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_dm.c
+@@ -188,7 +188,9 @@ void rtl8723b_HalDmWatchDog(struct adapter *Adapter)
+ 
+ 		bBtDisabled = hal_btcoex_IsBtDisabled(Adapter);
+ 
+-		ODM_CmnInfoUpdate(&pHalData->odmpriv, ODM_CMNINFO_BT_ENABLED, ((bBtDisabled == true)?false:true));
++		ODM_CmnInfoUpdate(&pHalData->odmpriv,
++				  ODM_CMNINFO_BT_ENABLED,
++				  ((bBtDisabled == true)?false:true));
+ 
+ 		ODM_DMWatchdog(&pHalData->odmpriv);
+ 	}
 -- 
 2.20.1
 
