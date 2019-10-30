@@ -1,101 +1,151 @@
-X-GM-THRID: 6469049838689320960
-X-Received: by 10.129.124.193 with SMTP id x184mr1598128ywc.191.1506193037242;
-        Sat, 23 Sep 2017 11:57:17 -0700 (PDT)
+X-GM-THRID: 6751912583325810688
+X-Received: by 2002:a50:aad2:: with SMTP id r18mr30308206edc.44.1572415102103;
+        Tue, 29 Oct 2019 22:58:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.102.132 with SMTP id a126ls169381ywc.20.gmail; Sat, 23 Sep
- 2017 11:57:16 -0700 (PDT)
-X-Received: by 10.13.249.65 with SMTP id j62mr1641656ywf.20.1506193036323;
-        Sat, 23 Sep 2017 11:57:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506193036; cv=none;
+Received: by 2002:a17:906:7e49:: with SMTP id z9ls5461682ejr.1.gmail; Tue, 29
+ Oct 2019 22:58:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyNdREbFAXVazaiL7qexxEI1bu9CxVSMC5bMdWohjbcK6xGmaP+IiiiJSFjV7HDf0uKnm/p
+X-Received: by 2002:a17:906:eda2:: with SMTP id sa2mr7022848ejb.14.1572415101253;
+        Tue, 29 Oct 2019 22:58:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572415101; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVT6S4JS7VXdlWMiao0uxLhIo7cHFC1amY+qLcVNMcw7Bq15BjW++wegC1Ux9G7iUm
-         ZXRADFlVig3T5s4G+s/5toV/SsvYx1wkUkBEEeXRSpG6faUJ9+nRiqoZFVKzf8FSjqSe
-         9nBJE/4R740tT0XhK7zXkWQ7h8Al+Jd9Myktwci4T3vZvrDU8Mcl159VmgJti4y+Ctit
-         KKumE8X8JbokUJUvLUaNZ49R8c2p1rNbboBU9P7YSwHpJB4WynZtG5LCk3WwxlH2sn1X
-         THmYZl4Eqq/VjfqUb5u49pm0Ppd6or2ziY1PuC5HarOmHZ02wQWsDHMeeSXRhlgmxGBR
-         rjxQ==
+        b=YphgUM26V/XaqjtuK1e0Qd+/p3RuGvK8IlTi8y+bh3wbT3cZRvv8sPnXpWVholGFg6
+         blIZOy8uq+ntW6Dzy8tdKk/mDiY4GIBWlvsK106ryrP7lF431orRVVUJc4iHEl4PxiY1
+         J/kAYdUf3U9wzVc68EjMHntxUYgntD2YCkzKKUsh2RZ6ZMY7oZTHDxDegvhqV5Qm1d6G
+         wvlv0fcL8ENwffdGab98q7PA8pYuwy7WYphzJgW1cMt7k7UQ45t8oZvdXBS9HpTW8sZn
+         7q3jyg7ZrOi+J3Gd6haa8tpYDbCgSmdwZh578eBR+9f522SOZR8Iq7c5JqO74bQbLron
+         kvrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=X5O7OQy/vwgnt1zc53qKdXTKH+D0Tf1fodNDrNVRp48=;
-        b=tOMZG4s98wSEFOya4PjZTmmGm54OOI59UAgAbryQGeVnoDekNI3bsYejSviAzXsMtD
-         0u/X5DkdybJXC2qpclrDiCsShQeYvxoT+cx0CeCzM2I7l3tlyiGPzRq8A9LkpmxcpT9t
-         dMwgWGHrlakIfg6feHw4sHOL8BH5ahD8YImQ8UTcHHv20a1kKZsMbWQAfnZZtcMe8bRA
-         GZZNG6fPCMyf7l1o0jQyo2iT76F+ZUhZwb2jSfWl4EHZ4IRUf2NGHKuMsjyKyUWgfKte
-         55BQMS2LdqoM0OHq94qHEpzvDvaKN2gNXXV8q4DcC/hVX+OwO2eWmiDGgXQ5cC3tq2Go
-         iTLg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=KIOq6O3aIeJFSGmu1HqwzcedfqxIEjcioCF+kVsSb2E=;
+        b=tFmxEsozbPh5m0bf1Ho3+uU+f1GfE+m8SpURwx1kNs8xTCGP5vFQO0mpFIKPWP6cI8
+         QXxoy9xFv4VNvnz3d3cJBnFhnvFcDkjcPjp4OiPQITrC4SWfHBsmuthLUNBu5E/q94X0
+         VNxgqKAn2xvktikWLGX96pYWQ5wRJfducen2Ap5To/jWHZRkcM4y1LZq/mJIlECR3qD2
+         +IWUTMBTwrXtjF/AL9+HUj8wDDyvw91Xuba1u3e3BqaZxmqzWbl8yDoaYObWAr+GmjNl
+         wDbJoqnPvO15yzuL5GPBRaZBvaIlPLYCSM+IqzhzFTaiP74Tgc9rbAoSSV80qkHDStDM
+         jUwQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dx6EVnjD;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id q65si203621pfj.8.2017.09.23.11.57.16
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z18si42331edd.5.2019.10.29.22.58.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 11:57:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 29 Oct 2019 22:58:21 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dx6EVnjD;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id i130so2551738pgc.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Sep 2017 11:57:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=X5O7OQy/vwgnt1zc53qKdXTKH+D0Tf1fodNDrNVRp48=;
-        b=dx6EVnjDYaRWgOvPKEvfr7vGwV2xrF/WpAXbOfPKyzLsMnh/SgWPLwAF0hz29By8oH
-         efdl9zcBJTzE/AQHcYoeSL3/8ZC3/nuSPbiUa8ARBUjAo0DXlDFMqJTpaSpHrZpNSzR0
-         n+QwZoOWILsuN0EkCJtkqqN1GSY6Xl2fQG382coi4ywSl2yOpM0mLl3pVAhfu8+lgmqJ
-         P53YmhBPuBmOI66GiBQqkCCLVhb/hlvTIOVasTCWMWxgi/dSIEWJ0TvXcYoEGjWaDCaX
-         6KV0pZ1/3bbIsRCHmL2C9g0kjEzmZKYYpUDDTGvQUymsF4h4LG3DC3aJhd4DyN2Bx5dJ
-         zQ+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=X5O7OQy/vwgnt1zc53qKdXTKH+D0Tf1fodNDrNVRp48=;
-        b=f5Lte/Mq/7pIaCPqf6QokR9M9lZnHIxKdfuqNkg+0LwZcFKieuaaWmqzqHoOT4Isik
-         /8gbL+zaOcT+f2TMmB+Lr5zLmeJzNT+RV8DrxL2Antz9zEwr845UMSTNCcD4z9Xq0c1I
-         z7z9/fnWcCFBDRX0LTb3myeUGCb46MMDXO4uCIhYwrEH9ZuhHmtehi6BMGu9Ts8vAZBY
-         SUb61uHxJw3sNXz0PhmhmeJUiq5g+DbBZOEz882hO86foFDzs6W1BFI1f2gkszDVGoKm
-         5fXOIqSdD24X6VQyJ4NjxDjp3coT3f5C8a5EvH5lKmDwyczVeDqpqEkLMtEepUL2xLXH
-         QQTA==
-X-Gm-Message-State: AHPjjUj6zjnmgW2dCgtvDA9Jf/jvMaRDqLTqmbg4fjXVaZOBFBhYNvPa
-	YeZkYx+McO2/rRrMYVmjNY+mUiVF
-X-Google-Smtp-Source: AOwi7QA1wOuNaM0H6PCWiW9GxU1OwSz+ApikcphIC4vC0BIVF5CZYwbBFTyMif1swDd4F4kAqSji5w==
-X-Received: by 10.99.120.3 with SMTP id t3mr2864781pgc.388.1506193035892;
-        Sat, 23 Sep 2017 11:57:15 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([14.139.122.139])
-        by smtp.gmail.com with ESMTPSA id q13sm4439615pgt.87.2017.09.23.11.57.13
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 11:57:15 -0700 (PDT)
-Date: Sun, 24 Sep 2017 00:27:13 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: wilc1000: follow coding guidelines
-Message-ID: <cover.1506192874.git.keerthigd4990@gmail.com>
+       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,246,1569276000"; 
+   d="scan'208";a="409576030"
+Received: from ppp-seco11pareq2-46-193-149-47.wb.wifirst.net (HELO hadrien) ([46.193.149.47])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 30 Oct 2019 06:58:05 +0100
+Date: Wed, 30 Oct 2019 06:58:05 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: julia@hadrien
+To: Cristiane Naves <cristianenavescardoso09@gmail.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, 
+    Dan Carpenter <dan.carpenter@oracle.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH v3 1/2] staging: rtl8712: Fix
+ Alignment of open parenthesis
+In-Reply-To: <20191029210642.GA14913@cristiane-Inspiron-5420>
+Message-ID: <alpine.DEB.2.21.1910300657461.2471@hadrien>
+References: <cover.1572273794.git.cristianenavescardoso09@gmail.com> <158960d90adff42169bb7ce968a4082bf3e73387.1572273794.git.cristianenavescardoso09@gmail.com> <20191028190259.GF1944@kadam> <20191028212137.GC2311@cristiane-Inspiron-5420>
+ <20191029080554.GA506924@kroah.com> <20191029081501.GA549977@kroah.com> <20191029202157.GA2188@cristiane-Inspiron-5420> <alpine.DEB.2.21.1910292159170.2199@hadrien> <20191029210642.GA14913@cristiane-Inspiron-5420>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch set fixes blank space related coding style
 
-Keerthi Reddy (2):
-  staging: wilc1000: No space is necessary after a cast
-  staging: wilc1000: Blank lines aren't necessary before a close brace
-    '}'
 
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Tue, 29 Oct 2019, Cristiane Naves wrote:
 
--- 
-2.7.4
+> On Tue, Oct 29, 2019 at 09:59:31PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Tue, 29 Oct 2019, Cristiane Naves wrote:
+> >
+> > > On Tue, Oct 29, 2019 at 09:15:01AM +0100, Greg KH wrote:
+> > > > On Tue, Oct 29, 2019 at 09:05:54AM +0100, Greg KH wrote:
+> > > > > On Mon, Oct 28, 2019 at 06:21:37PM -0300, Cristiane Naves wrote:
+> > > > > > On Mon, Oct 28, 2019 at 10:02:59PM +0300, Dan Carpenter wrote:
+> > > > > > > On Mon, Oct 28, 2019 at 12:15:52PM -0300, Cristiane Naves wrote:
+> > > > > > > > Fix alignment should match open parenthesis. Issue found by checkpatch.
+> > > > > > > >
+> > > > > > > > Signed-off-by: Cristiane Naves <cristianenavescardoso09@gmail.com>
+> > > > > > > > ---
+> > > > > > > >  drivers/staging/rtl8712/rtl8712_recv.c | 36 +++++++++++++++++-----------------
+> > > > > > > >  1 file changed, 18 insertions(+), 18 deletions(-)
+> > > > > > > >
+> > > > > > > > diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+> > > > > > > > index af12c16..304d031 100644
+> > > > > > > > --- a/drivers/staging/rtl8712/rtl8712_recv.c
+> > > > > > > > +++ b/drivers/staging/rtl8712/rtl8712_recv.c
+> > > > > > > > @@ -61,13 +61,13 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
+> > > > > > > >  		precvbuf->ref_cnt = 0;
+> > > > > > > >  		precvbuf->adapter = padapter;
+> > > > > > > >  		list_add_tail(&precvbuf->list,
+> > > > > > > > -				 &(precvpriv->free_recv_buf_queue.queue));
+> > > > > > > > +			      (&precvpriv->free_recv_buf_queue.queue));
+> > > > > > >
+> > > > > > > You did this correctly in v2.
+> > > > > > >
+> > > > > > > -				 &(precvpriv->free_recv_buf_queue.queue));
+> > > > > > > +			      &precvpriv->free_recv_buf_queue.queue);
+> > > > > > >
+> > > > > > > >  		precvbuf++;
+> > > > > > > >  	}
+> > > > > > > >  	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
+> > > > > > > >  	tasklet_init(&precvpriv->recv_tasklet,
+> > > > > > >
+> > > > > > > regards,
+> > > > > > > dan carpenter
+> > > > > > >
+> > > > > > I wondered if it was better to use parentheses or not. Is it necessary
+> > > > > > to send a new v5 version containing this change or it's possible to get it from
+> > > > > > v2?
+> > > > >
+> > > > > Send a follow-on patch to fix this up please as your other one is in my
+> > > > > tree now I think.
+> > > >
+> > > > Or maybe it isn't in my tree, I have no idea, I can't remember.  YOu
+> > > > know if it is applied or not as you will get an email when it happens.
+> > > >
+> > > > thanks,
+> > > >
+> > > > greg k-h
+> > >
+> > > I received an email with the subject patch "staging: rtl8712: Remove
+> > > lines before a close brace" added to staging-next on October 27th. Is
+> > > this the confirmation email when a patch is accepted or is there any
+> > > other email?
+> >
+> > No, that means it's good.
+> >
+> > julia
+> >
+> So when do I know if a patch has been accepted or not? Is When An
+> Acked-By Is Placed?
 
+No, when you get the mail from Greg.
+
+julia
+
+> > >
+> > > thanks,
+> > >
+> > > Cristiane Naves
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191029202157.GA2188%40cristiane-Inspiron-5420.
+> > >
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191029210642.GA14913%40cristiane-Inspiron-5420.
+>
 
