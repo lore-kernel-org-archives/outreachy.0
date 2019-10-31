@@ -1,84 +1,84 @@
 X-GM-THRID: 6754101895701200896
-X-Received: by 2002:ab0:5949:: with SMTP id o9mr4141411uad.65.1572561982398;
-        Thu, 31 Oct 2019 15:46:22 -0700 (PDT)
+X-Received: by 2002:a67:cfc9:: with SMTP id h9mr1846254vsm.63.1572561961240;
+        Thu, 31 Oct 2019 15:46:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:c883:: with SMTP id v3ls394232vsk.2.gmail; Thu, 31 Oct
- 2019 15:46:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwxv/NFaO3hZY1TNlTmnTEbaVeiqMbVYpgy6a5+83aArjihkW8rFtnCLGTX64lCWf8RvOjH
-X-Received: by 2002:a67:fd7b:: with SMTP id h27mr4236199vsa.42.1572561981139;
-        Thu, 31 Oct 2019 15:46:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572561981; cv=none;
+Received: by 2002:a05:6102:7d4:: with SMTP id y20ls399447vsg.7.gmail; Thu, 31
+ Oct 2019 15:46:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyp2EWJtlZPXg3hOfXdzOM8Heva7kjRufoa8krQSeUeGyVzjSZtfjw0KhURdWJowrwUYj+0
+X-Received: by 2002:a67:b84e:: with SMTP id o14mr4545650vsh.149.1572561960206;
+        Thu, 31 Oct 2019 15:46:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572561960; cv=none;
         d=google.com; s=arc-20160816;
-        b=CuebDtxQysEzIA3rvgNexYecR6n4Vfx19e5BHOSm53CHx63yn6h/voATaabwpH+MBq
-         CrbF8CXaZctI7TPoaswXRCqiZF3l8eHCyn2rwOjXZdC48bTyXR/nNAPzMOLr9ZG47KMM
-         f5yY2EA6WFKrGMgXdH8g9K9ecPIhcsWBb4C5u2s4xmydh/8ECV6ZQQ3QUBJT6W6GjpfH
-         UsDMnFjoPRcYC8DnXeNYT8oA18WFOlMes2d63t7HqKRd+bFE4CYFO1ctLQ3UIybjUers
-         jDRHdvefpCdV7yJCR3priUE3Rfo3LPOYG+sBt+tjHVjOqMwtYvacqmg6V67hetYt8TGt
-         KkDw==
+        b=sOR0vOvmvnO6uIgnU4snWzHVvYvDZkINATqLnxilesonERqBhjESHIdMMgZ57z82B2
+         O1FBgIgnkUXWSwo1cJGVLFzD3l01aUw80aTVh2oW+Af9AHB5ooufydXpQKWTt5QOyNK8
+         MN94a9PTWcR/uxHN0aVTq9j9tybj50okUrjuMKnxdNkypoyDVMvpCjPqHRc1It/sx0Hy
+         PNZBAaAMmDBEtNCKbSooDDO5uiSW3c8s65ZVWdHzQZE4xXNDRrV+Au2rsq7osQNhtrfA
+         sCfCYJHVMCIcGVdzMLekK8hODjPEyEU3MbVmC41mmIVS58uC24b6lg8Ia7VBZ8XvhVgS
+         nUjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=FnIbXeT7KcGFPRTksAUDdiH1FZ1KhLUI2Tsflpffh2g=;
-        b=T1Hxg9lV6jDLUJHXqY0bi/i9gfrr52yDCxff8rRWvAlSZDpsxzIFyfAKDKgjvu8L+4
-         5MOWWSJxFALwYW2ON582OuzPSiQMI1L1BKhzwTIymNPI7gJW9PBvzPcfzuESk28qoak2
-         wRQHcO46m72xfPogyl+OKU9Ie+x0L9S/231215Q9aRDmR3ZbRX57FamGQBR7jyaWrhaK
-         1o29er0F4DRai+L8dvreMbH3s1/K79pYWpLpJ92iLADIIs2wyaYiJWDbypsdzU/GcSFH
-         RzOhGokds2tgdrWK5K08xJU2K6tIuu0BRK0Rxuyia348vKUqphwqmLNyMSx9x7EBFvll
-         SaDA==
+        bh=V/rw2YSD5UMogX0VKu62EFzjOKTzxjQJfyLvIAqgams=;
+        b=ReVF6xZSKXLRAO9u+zCTVMd631hYsEHwI3nbis474erKC33/0p+4IzB2RM0JXgySTc
+         AHEGZWeKmfq4K1Q6xmR94QQWmAdbN0bm2rwkAwqS1T9xTJ/3Qx468UoD5thdNNVI0Ywl
+         HZUgA5NFy5lldve1IXR4GArMENtl0APXKCJ3LphmOWx5YsWxwOUn5I207pxp//7rQBxx
+         1cfqVidh4Adw+CwgBk8oXmrU+GCg591PEgCFbVA8359r2p8b4x7oAPHYlMIw6C2OY46B
+         Fnjmn/FF+hJ5OHe0jvN6N46FDnMQ03pRVOkE25xbfGLcprhmkJfkJBYREqnwprgYyZKq
+         BjXA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=YUalIqEd;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::942 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=zukie2ZU;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e34 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua1-x942.google.com (mail-ua1-x942.google.com. [2607:f8b0:4864:20::942])
-        by gmr-mx.google.com with ESMTPS id o206si373787vka.4.2019.10.31.15.46.21
+Received: from mail-vs1-xe34.google.com (mail-vs1-xe34.google.com. [2607:f8b0:4864:20::e34])
+        by gmr-mx.google.com with ESMTPS id s19si229008vsj.0.2019.10.31.15.46.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 31 Oct 2019 15:46:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::942 as permitted sender) client-ip=2607:f8b0:4864:20::942;
+        Thu, 31 Oct 2019 15:46:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e34 as permitted sender) client-ip=2607:f8b0:4864:20::e34;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=YUalIqEd;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::942 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua1-x942.google.com with SMTP id i13so2396165uaq.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 15:46:21 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=zukie2ZU;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e34 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-vs1-xe34.google.com with SMTP id k1so5241642vsm.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 15:46:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=FnIbXeT7KcGFPRTksAUDdiH1FZ1KhLUI2Tsflpffh2g=;
-        b=YUalIqEdDpcOPbyC6SNsOaOKHlpkYnPGfMLvaVAnOaJ7SnnIt8bSpeAkA9b2FLwWS0
-         PJTQJDn6xTot0z2Hu+t2TMr0+j9ArRHzTz4oNQIokBP46P8scv7JHD+fimbvPYZuHre4
-         sJUTzqjRXlE4YsXhnscGNOmrQmcI9ixTR2cAxlQTi/hZtBSwkcedgkJO7pw5i+K1kD87
-         zDpb7mr+jR3IW8cIKMq8LEZaJC4IboybGTkxakcG+0OCOoy8wqS7UMaINA5STbwGNsmW
-         g+YVIQf6FZ/2eN0UwkJWv7QDivlt4AkBz5I67Y+CKmwgqONeCZ4OjvgvdkH3Kz9ZovP5
-         euvw==
+        bh=V/rw2YSD5UMogX0VKu62EFzjOKTzxjQJfyLvIAqgams=;
+        b=zukie2ZUuvnNFXRMU55+apjWcxKaHE3/YmGPr3DLutVM/Y9km54Rhk757KyycFa2hq
+         YgIC/FWUxjqKKCUMycL+CxTd1+afRu1cd55PM9EpDO6UALeXjXgU0FFap8cNTaUEJQQC
+         mpxKa+ewsmZp1JOKCvecSbF/w0clxi+OU2IhOYsmhnLUcHT8EmypAriX42nEBrc3WL4P
+         ntA7dHL0Ibn4PQBaHpRf0caKcEquJYA9iofph+9bio8ifhX+YMxN3UFDfg5sPb7fqIpW
+         1t+LM46VMRtw8uYgUvYjyoM3WATVDEJ7+q6khf4DvyWexAP6mXs6nRhQo9paGoqQukVu
+         N4iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=FnIbXeT7KcGFPRTksAUDdiH1FZ1KhLUI2Tsflpffh2g=;
-        b=d7PEMEKOr/k6Cc7pWe03csAQIBH4cS9BkiHEpaLHdhVKGHbBfT49ZfDoi/qgT08vQx
-         P6RMEEHs3z+0NJg9BNtpbEbKVJpovOVdQd6dvwgbSyfXTP5hZFzjX5cKcD7cXGkuczDE
-         TrQWic0nbDRFjZBUHARTv/d2c74TJjbkiG01/VgHyMGRImCjCkzOI1Lf2i58rlWkbDiZ
-         sxzkTBfb7Wu/U9TCuK0e62uI3CTBF2odIp0nZvopVjsXA8RZqqPaEpDk3d2B5qs+BlGV
-         tq/FR5p6t4dzVdTBs3/tpHAaTRlEugyHJe+ftDL1zT6XYvK5eBUgK8Js/NDN7ZC2tJ0A
-         nGvw==
-X-Gm-Message-State: APjAAAUdGZx/zs2BGAw3tQLYaQiX4/kBYra8moR1y+aeeJc3CRJrEcCx
-	ftQpcJSBRTU9gDmAznfC+x5VxQ==
-X-Received: by 2002:ab0:1553:: with SMTP id p19mr4194798uae.80.1572561980636;
-        Thu, 31 Oct 2019 15:46:20 -0700 (PDT)
+        bh=V/rw2YSD5UMogX0VKu62EFzjOKTzxjQJfyLvIAqgams=;
+        b=B5okMlx2TlMhWohkoCpgS/dhBEjc0I1sFYBBEwlwAP86QDhYwAs3vEc/tzdhMGoSWC
+         9onkZaPcBDzQSetQ4GCR9NyhRRlSyy7IYZ4tAM/G6w4KVM/4U91iyKpCFd7wZhJzXytU
+         dTsZij13lbIA6j+S9WnpjUvO7ZJEibtr2f/N1dcEvsN3qmVhCCbQYfRqfbRZrpzIskkO
+         rJqP8ptPgPnukHkTUqtc9YOb0YwMy71npVjPJ/Kd0eVlJN4QAiAjtfM/xZpFyc62Oy1k
+         gTP7HXunh2l5BLw5wIBdY38A75AGJeAizQQLV9xVOoghMOtE7JafU+LGrcJhYRbz+zCu
+         lIkg==
+X-Gm-Message-State: APjAAAXr1EMpvyuerIbALzCvVH7eUzIU+yyB2diX+J8MrlJuve/9aWhD
+	JL/o7KDtXhXzkycWGAgrHBKLzg==
+X-Received: by 2002:a67:d091:: with SMTP id s17mr3040111vsi.215.1572561959531;
+        Thu, 31 Oct 2019 15:45:59 -0700 (PDT)
 Return-Path: <frank@generalsoftwareinc.com>
 Received: from linux-kernel-dev ([167.160.113.52])
-        by smtp.gmail.com with ESMTPSA id y7sm1577639vkl.2.2019.10.31.15.46.19
+        by smtp.gmail.com with ESMTPSA id u19sm1409256uap.8.2019.10.31.15.45.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Oct 2019 15:46:20 -0700 (PDT)
-Date: Thu, 31 Oct 2019 22:46:17 +0000
+        Thu, 31 Oct 2019 15:45:59 -0700 (PDT)
+Date: Thu, 31 Oct 2019 22:45:55 +0000
 From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
 	joel@joelfernandes.org, Larry Finger <Larry.Finger@lwfinger.net>,
 	Florian Schilhabel <florian.c.schilhabel@googlemail.com>
-Subject: [PATCH 3/3] staging: rtl8712: Remove unnecessary parentheses
-Message-ID: <9d9c9cfdcee83ca68ef559f25b6d5ee74a098a71.1572561194.git.frank@generalsoftwareinc.com>
+Subject: [PATCH 2/3] staging: rtl8712: Fix spacing issues
+Message-ID: <15d3fe0896aaed90cc2f870800ffb0984a16822d.1572561194.git.frank@generalsoftwareinc.com>
 References: <cover.1572561194.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -87,75 +87,103 @@ In-Reply-To: <cover.1572561194.git.frank@generalsoftwareinc.com>
 User-Agent: NeoMutt/20171215
 
 checkpatch message:
-CHECK:UNNECESSARY_PARENTHESES: Unnecessary parentheses around...
+"CHECK:LINE_SPACING: Please use a blank line after function/struct/union/
+enum declarations"
 
 Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/rtl8712/rtl871x_cmd.h   | 9 +++++++++
+ drivers/staging/rtl8712/rtl871x_event.h | 1 +
+ 2 files changed, 10 insertions(+)
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index 06de031be6a9..e829f5f891a0 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -61,7 +61,7 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
- 		precvbuf->ref_cnt = 0;
- 		precvbuf->adapter = padapter;
- 		list_add_tail(&precvbuf->list,
--			      &(precvpriv->free_recv_buf_queue.queue));
-+			      &precvpriv->free_recv_buf_queue.queue);
- 		precvbuf++;
- 	}
- 	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
-@@ -130,8 +130,8 @@ void r8712_free_recvframe(union recv_frame *precvframe,
- 		precvframe->u.hdr.pkt = NULL;
- 	}
- 	spin_lock_irqsave(&pfree_recv_queue->lock, irqL);
--	list_del_init(&(precvframe->u.hdr.list));
--	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
-+	list_del_init(&precvframe->u.hdr.list);
-+	list_add_tail(&precvframe->u.hdr.list, &pfree_recv_queue->queue);
- 	if (padapter) {
- 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
- 			precvpriv->free_recvframe_cnt++;
-@@ -327,7 +327,7 @@ static void amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
- 	struct rx_pkt_attrib *pattrib;
- 	_pkt *sub_skb, *subframes[MAX_SUBFRAME_COUNT];
- 	struct recv_priv *precvpriv = &padapter->recvpriv;
--	struct  __queue *pfree_recv_queue = &(precvpriv->free_recv_queue);
-+	struct  __queue *pfree_recv_queue = &precvpriv->free_recv_queue;
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
+index 98d7fbfce1a5..a494a621fe43 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.h
++++ b/drivers/staging/rtl8712/rtl871x_cmd.h
+@@ -333,6 +333,7 @@ struct getdatarate_parm {
+ 	u32 rsvd;
  
- 	nr_subframes = 0;
- 	pattrib = &prframe->u.hdr.attrib;
-@@ -491,8 +491,8 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
- 		else
- 			break;
- 	}
--	list_del_init(&(prframe->u.hdr.list));
--	list_add_tail(&(prframe->u.hdr.list), plist);
-+	list_del_init(&prframe->u.hdr.list);
-+	list_add_tail(&prframe->u.hdr.list, plist);
- 	return true;
- }
+ };
++
+ struct getdatarate_rsp {
+ 	u8 datarates[NumRates];
+ };
+@@ -377,6 +378,7 @@ struct	getphy_rsp {
+ struct readBB_parm {
+ 	u8	offset;
+ };
++
+ struct readBB_rsp {
+ 	u8	value;
+ };
+@@ -384,6 +386,7 @@ struct readBB_rsp {
+ struct readTSSI_parm {
+ 	u8	offset;
+ };
++
+ struct readTSSI_rsp {
+ 	u8	value;
+ };
+@@ -400,6 +403,7 @@ struct writePTM_parm {
+ struct readRF_parm {
+ 	u8	offset;
+ };
++
+ struct readRF_rsp {
+ 	u32	value;
+ };
+@@ -513,6 +517,7 @@ struct setssup_parm	{
+ struct getssup_parm	{
+ 	u32 rsvd;
+ };
++
+ struct getssup_rsp	{
+ 	u8	ss_ForceUp[MAX_RATES_LENGTH];
+ };
+@@ -524,6 +529,7 @@ struct setssdlevel_parm	{
+ struct getssdlevel_parm	{
+ 	u32 rsvd;
+ };
++
+ struct getssdlevel_rsp	{
+ 	u8	ss_DLevel[MAX_RATES_LENGTH];
+ };
+@@ -535,6 +541,7 @@ struct setssulevel_parm	{
+ struct getssulevel_parm	{
+ 	u32 rsvd;
+ };
++
+ struct getssulevel_rsp	{
+ 	u8	ss_ULevel[MAX_RATES_LENGTH];
+ };
+@@ -585,6 +592,7 @@ struct setratable_parm {
+ struct getratable_parm {
+ 	uint rsvd;
+ };
++
+ struct getratable_rsp {
+ 	u8 ss_ForceUp[NumRates];
+ 	u8 ss_ULevel[NumRates];
+@@ -621,6 +629,7 @@ struct getbcnokcnt_rsp {
+ struct getbcnerrcnt_parm {
+ 	unsigned int rsvd;
+ };
++
+ struct getbcnerrcnt_rsp {
+ 	unsigned long bcnerrcnt;
+ };
+diff --git a/drivers/staging/rtl8712/rtl871x_event.h b/drivers/staging/rtl8712/rtl871x_event.h
+index d9a5476d2426..759a2d27d8f2 100644
+--- a/drivers/staging/rtl8712/rtl871x_event.h
++++ b/drivers/staging/rtl8712/rtl871x_event.h
+@@ -102,6 +102,7 @@ struct ADDBA_Req_Report_parm {
+ 	unsigned short StartSeqNum;
+ 	unsigned char tid;
+ };
++
+ #include "rtl8712_event.h"
  
-@@ -526,7 +526,7 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
- 		pattrib = &prframe->u.hdr.attrib;
- 		if (!SN_LESS(preorder_ctrl->indicate_seq, pattrib->seq_num)) {
- 			plist = plist->next;
--			list_del_init(&(prframe->u.hdr.list));
-+			list_del_init(&prframe->u.hdr.list);
- 			if (SN_EQUAL(preorder_ctrl->indicate_seq,
- 				     pattrib->seq_num))
- 				preorder_ctrl->indicate_seq =
-@@ -992,7 +992,7 @@ static void recvbuf2recvframe(struct _adapter *padapter, struct sk_buff *pskb)
- 	union recv_frame *precvframe = NULL;
- 	struct recv_priv *precvpriv = &padapter->recvpriv;
- 
--	pfree_recv_queue = &(precvpriv->free_recv_queue);
-+	pfree_recv_queue = &precvpriv->free_recv_queue;
- 	pbuf = pskb->data;
- 	prxstat = (struct recv_stat *)pbuf;
- 	pkt_cnt = (le32_to_cpu(prxstat->rxdw2) >> 16) & 0xff;
+ #endif /* _WLANEVENT_H_ */
 -- 
 2.17.1
 
