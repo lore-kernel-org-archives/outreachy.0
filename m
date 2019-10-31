@@ -1,123 +1,162 @@
-X-GM-THRID: 6951428975234121728
-X-Received: by 2002:a25:ba85:: with SMTP id s5mr5989480ybg.336.1618505682691;
-        Thu, 15 Apr 2021 09:54:42 -0700 (PDT)
+X-GM-THRID: 6754101895701200896
+X-Received: by 2002:ab0:5949:: with SMTP id o9mr4141411uad.65.1572561982398;
+        Thu, 31 Oct 2019 15:46:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6902:702:: with SMTP id k2ls2878246ybt.2.gmail; Thu, 15
- Apr 2021 09:54:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzHgSawfxBiGNr1HLmnIGDfvUsGFSmYRig3BtgYHvQf5Oxu7j9nMwLSKHLq1uk1gooZbEOH
-X-Received: by 2002:a25:ac48:: with SMTP id r8mr5971631ybd.488.1618505681836;
-        Thu, 15 Apr 2021 09:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618505681; cv=none;
+Received: by 2002:a67:c883:: with SMTP id v3ls394232vsk.2.gmail; Thu, 31 Oct
+ 2019 15:46:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwxv/NFaO3hZY1TNlTmnTEbaVeiqMbVYpgy6a5+83aArjihkW8rFtnCLGTX64lCWf8RvOjH
+X-Received: by 2002:a67:fd7b:: with SMTP id h27mr4236199vsa.42.1572561981139;
+        Thu, 31 Oct 2019 15:46:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572561981; cv=none;
         d=google.com; s=arc-20160816;
-        b=0GFjnUP2YRLbVRVlZ4LkyeH+KlEzxBFw2tG+3ktVVS2gv72CAnb8tLnwwF3ZPHyNGs
-         wNS8BC1Y0DDWoPI+iEdXn9F3XYqopdXIyZr8kBZ1GZUfoX7kHCTyp9dXge45sl04ZDHJ
-         Z39orNxsfQabqcnB6Y43YjhqhYCEYgz//OCkgrCb72ZnYls7OML/fKgNwZ0/JFO7lWz1
-         6hTnv/YNjq+JLFCXo/BaiDjA6Vss+oVOfJdvOJJ5sFLxiYkgEEia2fIq+LDixuRdV4Ru
-         JbBqU7xW+6rmiEndsLe6jRdwwT2+4JE5/NTucycWuIwoHvoC7gth7g8hK0px6TzvtmGC
-         ZIBg==
+        b=CuebDtxQysEzIA3rvgNexYecR6n4Vfx19e5BHOSm53CHx63yn6h/voATaabwpH+MBq
+         CrbF8CXaZctI7TPoaswXRCqiZF3l8eHCyn2rwOjXZdC48bTyXR/nNAPzMOLr9ZG47KMM
+         f5yY2EA6WFKrGMgXdH8g9K9ecPIhcsWBb4C5u2s4xmydh/8ECV6ZQQ3QUBJT6W6GjpfH
+         UsDMnFjoPRcYC8DnXeNYT8oA18WFOlMes2d63t7HqKRd+bFE4CYFO1ctLQ3UIybjUers
+         jDRHdvefpCdV7yJCR3priUE3Rfo3LPOYG+sBt+tjHVjOqMwtYvacqmg6V67hetYt8TGt
+         KkDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=fR/xSrCM/HXuA5hfHE8+/OAjFdohjbHZ5jP2nSMBAdE=;
-        b=p0+3n7oM7wSA0cgNJe6ck/bkcodONr5ZkDhOBmsa3jleMXDibMA5ljFOyo+yxG74EI
-         GdVV4Ik90TP5x9ROlpoCentQj3/hKOoN94mUo4pgSmAGpJfwc5IVtzmmS82vmRTidA5B
-         Rot/QgRX6mVmHsOGwj9VYmI8+g1xGpwXQ7g2C9zPR9fyzR7TpzeW1Z94mlXeymqeP61k
-         mz8SK8iSkMECiMLJbfjhhQQUlV7u5Dz5rFlrfYeFLCJeYZv2XK2NfM6tFWXZcFcZ+pRx
-         s0hHg7ke4VJBSXmKWWNtuN+YLLuwXTbcLvIf3Hjubk6bFfqcZG3yToKHeJ8RvveuY/e3
-         +iuw==
+        bh=FnIbXeT7KcGFPRTksAUDdiH1FZ1KhLUI2Tsflpffh2g=;
+        b=T1Hxg9lV6jDLUJHXqY0bi/i9gfrr52yDCxff8rRWvAlSZDpsxzIFyfAKDKgjvu8L+4
+         5MOWWSJxFALwYW2ON582OuzPSiQMI1L1BKhzwTIymNPI7gJW9PBvzPcfzuESk28qoak2
+         wRQHcO46m72xfPogyl+OKU9Ie+x0L9S/231215Q9aRDmR3ZbRX57FamGQBR7jyaWrhaK
+         1o29er0F4DRai+L8dvreMbH3s1/K79pYWpLpJ92iLADIIs2wyaYiJWDbypsdzU/GcSFH
+         RzOhGokds2tgdrWK5K08xJU2K6tIuu0BRK0Rxuyia348vKUqphwqmLNyMSx9x7EBFvll
+         SaDA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ly1ZFEkH;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::730 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x730.google.com (mail-qk1-x730.google.com. [2607:f8b0:4864:20::730])
-        by gmr-mx.google.com with ESMTPS id t17si311531ybi.3.2021.04.15.09.54.41
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=YUalIqEd;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::942 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-ua1-x942.google.com (mail-ua1-x942.google.com. [2607:f8b0:4864:20::942])
+        by gmr-mx.google.com with ESMTPS id o206si373787vka.4.2019.10.31.15.46.21
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Apr 2021 09:54:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::730 as permitted sender) client-ip=2607:f8b0:4864:20::730;
+        Thu, 31 Oct 2019 15:46:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::942 as permitted sender) client-ip=2607:f8b0:4864:20::942;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ly1ZFEkH;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::730 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x730.google.com with SMTP id q136so4959060qka.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 09:54:41 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=YUalIqEd;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::942 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua1-x942.google.com with SMTP id i13so2396165uaq.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 15:46:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=fR/xSrCM/HXuA5hfHE8+/OAjFdohjbHZ5jP2nSMBAdE=;
-        b=ly1ZFEkH3Idb9G5huOwqD5wG1MLCgXGaiyWPzbx89bALJKcD2bIr11Jt4E5v9VNWOP
-         ++CD5FyssgkVeBJNAP16TCyRuxW82Cd8JMZ3VOrlkWv2EpNDmiHy8wmCio0YdcFonbCh
-         04ydqyC0bqjWECpcHPj3pbIr/jiKbA9W8XOF37nBwPwYSrjMQQB7QYyNnkShkmOkafsC
-         1XgVBFPdBzmotToKrYgjxBLfnNZO4bc7bCSuQ1uas3BavxfzksPXlLkVV1oMSNGwMwv0
-         CAcgqrB/u+Mln819pqzIORJ4t/eHcn7URY4TruBTVz0QvKNgPoQO9+6M9I0XOCfwK1ml
-         oTIg==
+        bh=FnIbXeT7KcGFPRTksAUDdiH1FZ1KhLUI2Tsflpffh2g=;
+        b=YUalIqEdDpcOPbyC6SNsOaOKHlpkYnPGfMLvaVAnOaJ7SnnIt8bSpeAkA9b2FLwWS0
+         PJTQJDn6xTot0z2Hu+t2TMr0+j9ArRHzTz4oNQIokBP46P8scv7JHD+fimbvPYZuHre4
+         sJUTzqjRXlE4YsXhnscGNOmrQmcI9ixTR2cAxlQTi/hZtBSwkcedgkJO7pw5i+K1kD87
+         zDpb7mr+jR3IW8cIKMq8LEZaJC4IboybGTkxakcG+0OCOoy8wqS7UMaINA5STbwGNsmW
+         g+YVIQf6FZ/2eN0UwkJWv7QDivlt4AkBz5I67Y+CKmwgqONeCZ4OjvgvdkH3Kz9ZovP5
+         euvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=fR/xSrCM/HXuA5hfHE8+/OAjFdohjbHZ5jP2nSMBAdE=;
-        b=MZWJuSIiUSBuyCdixF4TGKF0gXTCGZHTmnPrjKj6fCAlFczQNaZSt6ku9L2g9HICsE
-         LgVONh/vcC5gWu1nCENrSB7j66vToAw8HO10NxSKdZAO2TiYi13yHg8/stWKriI0eJ/Z
-         pY2mMIdKSKbIJsXja8k1LQIM1uKS6GLoZw/EpfvzvePBxGMrwVwQwYpTBfmbca2SagDV
-         khFi2Cxs2erpQ6YN0k5FiUCKle5HvDHDJBjtDitaVHh8HlMheQYyQWvFSvgtHu2fqPf+
-         Y8cUG+SaKVxuzSTOqm6+TG6zisDpkBhj4BN4VATFgT2kXdxder5lUwnKPquKd2Q17OPN
-         bMxA==
-X-Gm-Message-State: AOAM531uca4qlfLA3jM4Ks3s94ktj+KDe3nDVG/xsie43LuWgyHi/32H
-	03unDeJ/M+e72POq3T9a6Cd+NakviEg/5hHn
-X-Received: by 2002:a37:8743:: with SMTP id j64mr4210752qkd.299.1618505681316;
-        Thu, 15 Apr 2021 09:54:41 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([138.204.24.234])
-        by smtp.gmail.com with ESMTPSA id 8sm2358598qkb.32.2021.04.15.09.54.40
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Thu, 15 Apr 2021 09:54:41 -0700 (PDT)
-Date: Thu, 15 Apr 2021 13:54:38 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] staging: media: atomisp: pci: Balance braces around
- conditional statements in file atomisp_v4l2.c
-Message-ID: <ed214ffbf6c8866bfa55d4aab1655ec711174c67.1618505476.git.alinesantanacordeiro@gmail.com>
-References: <cover.1618505476.git.alinesantanacordeiro@gmail.com>
+        bh=FnIbXeT7KcGFPRTksAUDdiH1FZ1KhLUI2Tsflpffh2g=;
+        b=d7PEMEKOr/k6Cc7pWe03csAQIBH4cS9BkiHEpaLHdhVKGHbBfT49ZfDoi/qgT08vQx
+         P6RMEEHs3z+0NJg9BNtpbEbKVJpovOVdQd6dvwgbSyfXTP5hZFzjX5cKcD7cXGkuczDE
+         TrQWic0nbDRFjZBUHARTv/d2c74TJjbkiG01/VgHyMGRImCjCkzOI1Lf2i58rlWkbDiZ
+         sxzkTBfb7Wu/U9TCuK0e62uI3CTBF2odIp0nZvopVjsXA8RZqqPaEpDk3d2B5qs+BlGV
+         tq/FR5p6t4dzVdTBs3/tpHAaTRlEugyHJe+ftDL1zT6XYvK5eBUgK8Js/NDN7ZC2tJ0A
+         nGvw==
+X-Gm-Message-State: APjAAAUdGZx/zs2BGAw3tQLYaQiX4/kBYra8moR1y+aeeJc3CRJrEcCx
+	ftQpcJSBRTU9gDmAznfC+x5VxQ==
+X-Received: by 2002:ab0:1553:: with SMTP id p19mr4194798uae.80.1572561980636;
+        Thu, 31 Oct 2019 15:46:20 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from linux-kernel-dev ([167.160.113.52])
+        by smtp.gmail.com with ESMTPSA id y7sm1577639vkl.2.2019.10.31.15.46.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 31 Oct 2019 15:46:20 -0700 (PDT)
+Date: Thu, 31 Oct 2019 22:46:17 +0000
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org, Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>
+Subject: [PATCH 3/3] staging: rtl8712: Remove unnecessary parentheses
+Message-ID: <9d9c9cfdcee83ca68ef559f25b6d5ee74a098a71.1572561194.git.frank@generalsoftwareinc.com>
+References: <cover.1572561194.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1618505476.git.alinesantanacordeiro@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1572561194.git.frank@generalsoftwareinc.com>
+User-Agent: NeoMutt/20171215
 
-Balance braces around conditional statements.
-Issue detected by checkpatch.pl.
-It happens in if-else statements where one of the commands
-uses braces around a block of code and the other command
-does not since it has just a single line of code.
+checkpatch message:
+CHECK:UNNECESSARY_PARENTHESES: Unnecessary parentheses around...
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/media/atomisp/pci/atomisp_v4l2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8712/rtl8712_recv.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-index 6d853f4..948769c 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_v4l2.c
-@@ -1500,9 +1500,9 @@ static int init_atomisp_wdts(struct atomisp_device *isp)
- 	for (i = 0; i < isp->num_of_streams; i++) {
- 		struct atomisp_sub_device *asd = &isp->asd[i];
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index 06de031be6a9..e829f5f891a0 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -61,7 +61,7 @@ void r8712_init_recv_priv(struct recv_priv *precvpriv,
+ 		precvbuf->ref_cnt = 0;
+ 		precvbuf->adapter = padapter;
+ 		list_add_tail(&precvbuf->list,
+-			      &(precvpriv->free_recv_buf_queue.queue));
++			      &precvpriv->free_recv_buf_queue.queue);
+ 		precvbuf++;
+ 	}
+ 	precvpriv->free_recv_buf_queue_cnt = NR_RECVBUFF;
+@@ -130,8 +130,8 @@ void r8712_free_recvframe(union recv_frame *precvframe,
+ 		precvframe->u.hdr.pkt = NULL;
+ 	}
+ 	spin_lock_irqsave(&pfree_recv_queue->lock, irqL);
+-	list_del_init(&(precvframe->u.hdr.list));
+-	list_add_tail(&(precvframe->u.hdr.list), &pfree_recv_queue->queue);
++	list_del_init(&precvframe->u.hdr.list);
++	list_add_tail(&precvframe->u.hdr.list, &pfree_recv_queue->queue);
+ 	if (padapter) {
+ 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
+ 			precvpriv->free_recvframe_cnt++;
+@@ -327,7 +327,7 @@ static void amsdu_to_msdu(struct _adapter *padapter, union recv_frame *prframe)
+ 	struct rx_pkt_attrib *pattrib;
+ 	_pkt *sub_skb, *subframes[MAX_SUBFRAME_COUNT];
+ 	struct recv_priv *precvpriv = &padapter->recvpriv;
+-	struct  __queue *pfree_recv_queue = &(precvpriv->free_recv_queue);
++	struct  __queue *pfree_recv_queue = &precvpriv->free_recv_queue;
  
--		if (!IS_ISP2401)
-+		if (!IS_ISP2401) {
- 			timer_setup(&asd->wdt, atomisp_wdt, 0);
--		else {
-+		} else {
- 			timer_setup(&asd->video_out_capture.wdt,
- 				    atomisp_wdt, 0);
- 			timer_setup(&asd->video_out_preview.wdt,
+ 	nr_subframes = 0;
+ 	pattrib = &prframe->u.hdr.attrib;
+@@ -491,8 +491,8 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
+ 		else
+ 			break;
+ 	}
+-	list_del_init(&(prframe->u.hdr.list));
+-	list_add_tail(&(prframe->u.hdr.list), plist);
++	list_del_init(&prframe->u.hdr.list);
++	list_add_tail(&prframe->u.hdr.list, plist);
+ 	return true;
+ }
+ 
+@@ -526,7 +526,7 @@ int r8712_recv_indicatepkts_in_order(struct _adapter *padapter,
+ 		pattrib = &prframe->u.hdr.attrib;
+ 		if (!SN_LESS(preorder_ctrl->indicate_seq, pattrib->seq_num)) {
+ 			plist = plist->next;
+-			list_del_init(&(prframe->u.hdr.list));
++			list_del_init(&prframe->u.hdr.list);
+ 			if (SN_EQUAL(preorder_ctrl->indicate_seq,
+ 				     pattrib->seq_num))
+ 				preorder_ctrl->indicate_seq =
+@@ -992,7 +992,7 @@ static void recvbuf2recvframe(struct _adapter *padapter, struct sk_buff *pskb)
+ 	union recv_frame *precvframe = NULL;
+ 	struct recv_priv *precvpriv = &padapter->recvpriv;
+ 
+-	pfree_recv_queue = &(precvpriv->free_recv_queue);
++	pfree_recv_queue = &precvpriv->free_recv_queue;
+ 	pbuf = pskb->data;
+ 	prxstat = (struct recv_stat *)pbuf;
+ 	pkt_cnt = (le32_to_cpu(prxstat->rxdw2) >> 16) & 0xff;
 -- 
-2.7.4
+2.17.1
 
 
