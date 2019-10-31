@@ -1,111 +1,123 @@
-X-GM-THRID: 6534660255077367808
-X-Received: by 10.176.80.177 with SMTP id c46mr846474uaa.75.1521469153991;
-        Mon, 19 Mar 2018 07:19:13 -0700 (PDT)
+X-GM-THRID: 6753034664415330304
+X-Received: by 2002:a25:800c:: with SMTP id m12mr6256853ybk.464.1572563013478;
+        Thu, 31 Oct 2019 16:03:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.86.129 with SMTP id k123ls6744163vkb.5.gmail; Mon, 19 Mar
- 2018 07:19:12 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvOGMVdcHU6AyVMFfIOsWl7jyfEaY5mmg5ujh1H+Z86QptGPS//xdlmagzato1bk9a1tQOf
-X-Received: by 10.31.235.131 with SMTP id j125mr5386374vkh.106.1521469152979;
-        Mon, 19 Mar 2018 07:19:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521469152; cv=none;
+Received: by 2002:a25:d687:: with SMTP id n129ls744589ybg.13.gmail; Thu, 31
+ Oct 2019 16:03:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyzrWTxGTWoY55ILSb5uz7KZtrLFCNA5Hgu4J/XstvG7gkufi48adsFt9RBC4Qano7myQWz
+X-Received: by 2002:a25:c5c1:: with SMTP id v184mr6719874ybe.457.1572563011904;
+        Thu, 31 Oct 2019 16:03:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572563011; cv=none;
         d=google.com; s=arc-20160816;
-        b=xQtzpgXI91Fc2bASl3YAOb0U+PcXtBmD8Sfht0nXrO8jAphUKPiy8uI1VW8LlpKk1d
-         G5rl32FJ8NG1Gaubvf0TxkzaJp1NEKHV4LzgnGBxLznk73FBecrCO2K/54SBDOq+QzUp
-         xojw6a1wFih+MWTdHh04sK+y+R4Pweo5XRwlJMZdndddWPgOI3fQl9cw/S6+802dUbH/
-         mjULLqNMBcXlBfeTEMspGedgwLKAC0x+qBRD3+AY33fFd5nAKnMHkAlY/ZMWUkIxCnvl
-         r9cQ5jY5/hyQPY6iqFbAHlnmtYCfJbKynu/nnDU6EzG/kOPlCRJNHi5+JSLY1C2FXbil
-         UamQ==
+        b=0vUKFmms840VVz1dV/FrKeijM5Rwo24CPTvW/nCtp/wYFRXid09j6xpROJR2syrCe9
+         dPgfERTKFFW6QCPQta1+tzP5KqNakeY8Sf8r+bKKPqKgsf92EP474ScapFcY/4LyGDTL
+         hWInRAoim09Qo5pwyjVho5yUcTloo3pTgyZrHznEhGIipZnzrLo6TrMZlW4j5fU8JS07
+         hEYUeQcKjVSN4jydEnDp3Tea5DCO9IhEsI2QbMNNMtPtQHMSSSrEKKbr7RZKXcuDeomA
+         qdQXvVopLIqxz3y3cexapnzsEPkA800lHXl3stlpb/RGoisrRx2yOU3+0VqSY8npyOTp
+         fibA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Q/9DBbsu6zv4g9l856ACIVuirVTgWJvmiggCaEf3SEw=;
-        b=0BAYqGwaLhkP6p8eNTerTJ1ml7SBedRsuK2MGaWLJZ9h6V08vTidY0Njc7Jycsile8
-         4eGdOA5ACWcLEEjRki24m6qvJ+MOOGu8XBQW3DEPU67mjNTg6sP7u9vTaAFH7ln1q5dH
-         iaAtxF3/6taqgbSy8eKwazAHYkXQR5zgPskf9ZRrpB3HlrAbOLZHdz1PxNbN9p1YWyNJ
-         Ja2M23tw/Y4r5czmFgQErl2WtpLTHbAzfozGpvLbW1iLYWzn0eKcf3kZYJiP9NGknSW2
-         sW7q0nIATaqfY8H5eGHdvUiIZmk34O9q/p8QA1Q/BdZikcWmeR4z1u8MP1sr4Jsu9IGY
-         Ih2w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=w1lv6i5WMZhr+LJHUYk12uXR0Zf+Nge4dShOz7QCLY4=;
+        b=akoHcRVa03B+iZdaSooC14gq7NsUDWCNh7Sc3+ZA/+m/x7k89fV8erfFLxNBPxhLa8
+         rE3JHlLb6mesASMcTSo1rZS70NBU0QbKj2g9Dfh4pijXh6GfEOMgIzFqu342Q4LFspgs
+         A3OMYQ8WWPCgu+LcLcEg1DQ1Pr40xzFtEhfxbOJph1/H3LmQRdQWMTS35ZwMlGj505vQ
+         Q91MlEkVmSjCW2ZIaRZ+JKuK43KgEUJQexXEEI4I6qsoZXth2OadoiYppIE5uaoQrXEO
+         c30xjw7TyoUpu7EdCCZ9ZJ5MpzQYD3EvP8TBjv/AqcimXOEonb8+kUc7TU0lsBGDvS3e
+         gb2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Kc7UW+kW;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pf0-x236.google.com (mail-pf0-x236.google.com. [2607:f8b0:400e:c00::236])
-        by gmr-mx.google.com with ESMTPS id q126si12397vkf.1.2018.03.19.07.19.12
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gMivkkZ5;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gabrielabittencourt00@gmail.com>
+Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
+        by gmr-mx.google.com with ESMTPS id a1si461691ywh.3.2019.10.31.16.03.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Mar 2018 07:19:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::236 as permitted sender) client-ip=2607:f8b0:400e:c00::236;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 31 Oct 2019 16:03:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=Kc7UW+kW;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::236 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pf0-x236.google.com with SMTP id h11so7069057pfn.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Mar 2018 07:19:12 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gMivkkZ5;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x842.google.com with SMTP id r22so712679qtt.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 16:03:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=Q/9DBbsu6zv4g9l856ACIVuirVTgWJvmiggCaEf3SEw=;
-        b=Kc7UW+kWSfGPjT+V1UF95RwGfXbBkQg1JTjYd8bbmfKQHBE6g+wIhsDYCqR5KFC6B6
-         d9TUyRDO5UnIM/3uNVTzfBZpxAAKqLZmXwADAcotyRK5c1rm2z8+kHLdFC4KwZ10KWb6
-         mJe79YMMTW/Qdja25omNlSEJRER22/nwN/31s=
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=w1lv6i5WMZhr+LJHUYk12uXR0Zf+Nge4dShOz7QCLY4=;
+        b=gMivkkZ54O49XnNT6ktSMTgKwQeUd9Pjiy2DBrSJ9BCNsak1LylpmxHg8bqyZaBJBq
+         fAXl5C+HkhUS9PBr7QFiApn1HVtf1UKky3vnp1q/FfTM6nsfDLa57Ugzkt+KRmjk7BI2
+         eljn/NRnMtydKl2yk9BHWAOpVNodeDERcwWv6I5obW2farhTreah+/1gC4iAVuYa6Vuk
+         FkPNhjXYAwTUtNdwyQNUA4TDPBtJCBFTj3zJtxq9YCbBfb9+q0X1I926tSdPwuVqoYa2
+         An8hZjAhbIiIleUo/lC2P3NLHqdtKszSqc9rg82KLDoGoLgVY4ytoGx3h9dF5nSRmPcj
+         EsPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Q/9DBbsu6zv4g9l856ACIVuirVTgWJvmiggCaEf3SEw=;
-        b=uXKv6EzsfO4NtZYfgenErjb4zKyBP/cau3vVeDchqp3vOcNG8ryNHN+++EJA/av99G
-         xKz3u1SwiQcM6PfsFJ2heYrIMPxywExSCjkr2IXn0FH6p1njD/j3dDOFztzCxiur8FT3
-         zoWhSH4LgaE3DoKRkKbfRK68IOzY06TF8KnNq/bsSzoc+S6dLSgmD7CSixzJSv6X+c8l
-         rHr4uCeWUXi/PlkiLtn5BoSg/fMC29xw7elealo4Co4ra8h9/yL9740qGsk+nynpTCKQ
-         pj5Bcf5HSkB4S8L2wNfys69s3bLnppoHB3Hed8bVhKRptvGL1Z5bJbCuSIYkSKCNGDAc
-         0Eiw==
-X-Gm-Message-State: AElRT7GnDsyFpNxFDu/tct9zwLlS4sU89xLjF9Vmb9Lbn5AesWm+Xj7j
-	TCHl3kWPzq+AF/5IITRVz0enQQ==
-X-Received: by 10.99.191.65 with SMTP id i1mr7725946pgo.269.1521469152514;
-        Mon, 19 Mar 2018 07:19:12 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id z64sm321232pfi.58.2018.03.19.07.19.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 19 Mar 2018 07:19:11 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging:vc04_services:bcm2835-camera:Fix multi-line dereference
-Date: Mon, 19 Mar 2018 14:18:59 +0000
-Message-Id: <1521469139-28622-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=w1lv6i5WMZhr+LJHUYk12uXR0Zf+Nge4dShOz7QCLY4=;
+        b=l6AaCbiVvZxE2aRT1ty1bZoYmLJig963N50T18Uq0McspPcQ9Dt0IOPp0TJEP92rn6
+         OGNHRL741ZIQ29khwagKbbTeKewQPhXJm09D0Il/xybe09iYlsCTnw9C/wfn65qOxUQe
+         NBEGhCOXPQ7LxbZBE48tdD08bB2Xmn/0oOElMSAFS6yuMXqxslRI0X7AAJ6AmNxjxpzN
+         JKGox1LEPyKMwV+l+n6C3bETWYMchw45ySYwMyASwvWIsL9QjlMQlOw3WibEIl9l4L2E
+         QDNvWElf0u4JYko7cJyE1gRQhH1nSX4HEq+oEO5dqcyiG1g1nD6+f2JvjQ70aXSDL4f2
+         wGRA==
+X-Gm-Message-State: APjAAAVL1U974zNaaiE2Wm6jl1kyoU3mFQ7tuN2jo4kyMhHF0/fY89xH
+	zSrhZBqItSz8b9f2bJDNgMXWdvCJIuM=
+X-Received: by 2002:a0c:936e:: with SMTP id e43mr7260553qve.73.1572563011216;
+        Thu, 31 Oct 2019 16:03:31 -0700 (PDT)
+Return-Path: <gabrielabittencourt00@gmail.com>
+Received: from localhost.localdomain ([187.106.44.83])
+        by smtp.gmail.com with ESMTPSA id s67sm2633875qkh.70.2019.10.31.16.03.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 31 Oct 2019 16:03:30 -0700 (PDT)
+From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org,
+	kim.jamie.bradley@gmail.com,
+	nishkadg.linux@gmail.com,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	lkcamp@lists.libreplanetbr.org
+Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Subject: [PATCH v4 3/3] staging: rts5208: Eliminate the use of Camel Case in file sd.h
+Date: Thu, 31 Oct 2019 20:02:43 -0300
+Message-Id: <20191031230243.3462-4-gabrielabittencourt00@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191031230243.3462-1-gabrielabittencourt00@gmail.com>
+References: <20191031230243.3462-1-gabrielabittencourt00@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Fix multiple line dereference. Issue found with checkpatch.
+Cleans up checks of "Avoid CamelCase" in file sd.h
+Even though the constant "DCM_LOW_FREQUENCY_MODE_SET" is defined and never used,
+it's useful to keep it because it documents the device.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
+Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+
 ---
- drivers/staging/vc04_services/bcm2835-camera/controls.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Changes in v4:
+- Explain the reason of keeping a constant that is defined and not used
+---
+ drivers/staging/rts5208/sd.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index 675b454..c280114 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -1196,6 +1196,8 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
- 	int ret;
- 	int mcpp = MMAL_CAMERA_PORT_PREVIEW;
- 	int mcpv = MMAL_CAMERA_PORT_VIDEO;
-+	int mcc = MMAL_COMPONENT_CAMERA;
-+	int mcpc = MMAL_CAMERA_PORT_CAPTURE;
+diff --git a/drivers/staging/rts5208/sd.h b/drivers/staging/rts5208/sd.h
+index dc9e8cad7a74..f4ff62653b56 100644
+--- a/drivers/staging/rts5208/sd.h
++++ b/drivers/staging/rts5208/sd.h
+@@ -232,7 +232,7 @@
+ #define DCM_LOW_FREQUENCY_MODE   0x01
  
- 	if ((dev->exposure_mode_active != MMAL_PARAM_EXPOSUREMODE_OFF) &&
- 	    (dev->exp_auto_priority)) {
-@@ -1230,8 +1232,7 @@ int set_framerate_params(struct bm2835_mmal_dev *dev)
- 					     MMAL_PARAMETER_FPS_RANGE,
- 					     &fps_range, sizeof(fps_range));
- 	ret += vchiq_mmal_port_parameter_set(dev->instance,
--					     &dev->component[MMAL_COMPONENT_CAMERA]->
--					     output[MMAL_CAMERA_PORT_CAPTURE],
-+					     &dev->component[mcc]->output[mcpc],
- 					     MMAL_PARAMETER_FPS_RANGE,
- 					     &fps_range, sizeof(fps_range));
- 	if (ret)
+ #define DCM_HIGH_FREQUENCY_MODE_SET  0x0C
+-#define DCM_Low_FREQUENCY_MODE_SET   0x00
++#define DCM_LOW_FREQUENCY_MODE_SET   0x00
+ 
+ #define MULTIPLY_BY_1    0x00
+ #define MULTIPLY_BY_2    0x01
 -- 
-2.7.4
+2.20.1
 
 
