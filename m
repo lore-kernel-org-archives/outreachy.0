@@ -1,69 +1,116 @@
-X-GM-THRID: 6333856383134334976
-X-Received: by 10.194.119.196 with SMTP id kw4mr639601wjb.1.1474715858100;
-        Sat, 24 Sep 2016 04:17:38 -0700 (PDT)
+X-GM-THRID: 6754207479593172992
+X-Received: by 2002:a5d:5221:: with SMTP id i1mr8639460wra.297.1572593065844;
+        Fri, 01 Nov 2019 00:24:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.9.215 with SMTP id 206ls1448697ljj.7.gmail; Sat, 24 Sep
- 2016 04:17:37 -0700 (PDT)
-X-Received: by 10.25.155.78 with SMTP id d75mr583563lfe.5.1474715857369;
-        Sat, 24 Sep 2016 04:17:37 -0700 (PDT)
-Return-Path: <daniel.baluta@gmail.com>
-Received: from mail-lf0-x234.google.com (mail-lf0-x234.google.com. [2a00:1450:4010:c07::234])
-        by gmr-mx.google.com with ESMTPS id a126si38078wmd.1.2016.09.24.04.17.37
+Received: by 2002:adf:e8cc:: with SMTP id k12ls6056214wrn.9.gmail; Fri, 01 Nov
+ 2019 00:24:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy/0w0pmv2je4Bhk6C5o7u7EmZLg1AEVXUwkKx0OKPQLVkrANO/EsS3LxCdB73bRySmKCT1
+X-Received: by 2002:adf:ea07:: with SMTP id q7mr9542834wrm.78.1572593064638;
+        Fri, 01 Nov 2019 00:24:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572593064; cv=none;
+        d=google.com; s=arc-20160816;
+        b=R+QWFMYs2O3Qifx7vUtxRpAFY0kPXb/N59PwX0V0DcRhGtSYa3zOmyA8M5WM23DQRH
+         sl23ktXMIl17dNPSWAR0GYnamtxPTnxjAfRAOFADpBY3XvPM9WqIG24fc7FMT/azDnD2
+         KamSQuaOtE6jSkHjqrpQPqi7N36iGbxT5jz5mD6wVnMz/m9ADCUSQGY/+cvHY1VdSSRi
+         6kcV7NvC0wP5bvvVqUAMuMy+277LnQqvZNYGMLjTyghAM77zGrklk8TvRzkaHCGpeLVW
+         29nfzKdKeK7EuJsn6k0uO3eBot35RZJZwmvqd7MpvBXHW/ZVdAAHlMq4AF9up6RWTMLM
+         Teeg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=FQOygDMDy2qCPjhS3jqg2hDoAyNljfBgOPRTsX3ZGP0=;
+        b=s5h5yOUpaGnGVNXVawvgXdaOt0gX55VcYWXMVx+PPhfDvOJQS14gMk+9YkgcP45/99
+         WRt7fMdarKr7Zc/VzSVgM/ogIhtbszYbUNVH+FxraCKcNX0Ocus9zKQM86ILkqAxjfKD
+         dDjLZPBgV2Dj2/TRytZanTe+u71wPCqzvljKUsfXGBWm+Jw50KGY3U429a2xCp57bW7B
+         Ie3Tt72XhwBp6TM2cgBaR04rRyQ3FmtEKnWnANMDG2LPxBvCNNgE7HSQx1BEPM8T+Y/K
+         c5pdOUoBS9fqMx2oDN5nPqidG6ikXYgslglqLZEadDoou7FAU8NQkPzsZh8ZrfICCSRX
+         5QqQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q1si25802wrc.4.2019.11.01.00.24.24
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Sep 2016 04:17:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c07::234 as permitted sender) client-ip=2a00:1450:4010:c07::234;
+        Fri, 01 Nov 2019 00:24:24 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of daniel.baluta@gmail.com designates 2a00:1450:4010:c07::234 as permitted sender) smtp.mailfrom=daniel.baluta@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x234.google.com with SMTP id b71so83266720lfg.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Sep 2016 04:17:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=6wiH+pOrSSiuFpOguFpnrRCqS3cPqtS9VSdtO3ta+6Y=;
-        b=v1oUBrsybk3LcoI4jNWtW5KKZ/9YAFB5X8AJPMutxdokyGIJ1sWSvnOAlB78p49Myd
-         e13Ld/XKEqbG5uw6TowYUoCHxFp6oOSscfBYwMJE75Vs5gDt1fputvjh9kEFr+uKdpOP
-         OE46+DUSRxUQnuWPcElmJfQnMaqSoOg7YeQrK9bi1WG8VgHwi6M55NBsjKZiamPcKZNp
-         FBtDOd/il36mptpUqdw1WJunR+60dWQ57XVkh+o9Yaei/biZlih/EFUatYVr0nKVJi9w
-         J5j3nzbBQNIEbcuqvMJz34RPipbQgCG154dsrDoj/QB27K7SErOnxR4olOf/EBf3ENA/
-         xOng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=6wiH+pOrSSiuFpOguFpnrRCqS3cPqtS9VSdtO3ta+6Y=;
-        b=hQIvcJuavhM0WbOyXVtx/haNEZrlz8U1WGKM4nKsMICyfSUgvq9X5Pj7hl7VGZhF5K
-         jIdQM5Rf/NIJAUCPft9xRPTQMlwzYuTdb5M36u0jO4BgrdVlBqw3wsPMYBVvMgywHYPx
-         wnxlXi/qXuLaekkraOgZW8GKZXZq1vA2MNbvZfaz7PYOedE3bHkbQw6/L0KPiu++v8qV
-         IOkaaRJezqYPzRAmX1IBzMxot9VyaDpFCd3DAylQzEBworwNCdvMJ3UMzm3pRRNdxE2A
-         QCDhGjE85CRv4ZMRSrX3v+00Nlt2Q69Zuvyq33aN3F17a2X5PulXeW2NdDCH37U4CvgT
-         vEzQ==
-X-Gm-Message-State: AE9vXwMjOfpOzU0wo0uxhpdlIFkLkfDGZ2s12BcV73QU91HxhQafSaKkUu/GYFAgDUF3FFlOGGaBPKHZXxc/NA==
-X-Received: by 10.46.5.130 with SMTP id 124mr4513171ljf.45.1474715856917; Sat,
- 24 Sep 2016 04:17:36 -0700 (PDT)
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,254,1569276000"; 
+   d="scan'208";a="325305515"
+Received: from abo-45-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.45])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Nov 2019 08:24:23 +0100
+Date: Fri, 1 Nov 2019 08:24:23 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    saiprakash.ranjan@codeaurora.org, joel@joelfernandes.org, 
+    Valdis Kletnieks <valdis.kletnieks@vt.edu>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: exfat: Fix logical
+ operation continuation
+In-Reply-To: <4c1e92802ad82567fb312bce096386d3285196c1.1572586238.git.frank@generalsoftwareinc.com>
+Message-ID: <alpine.DEB.2.21.1911010822090.2883@hadrien>
+References: <cover.1572586238.git.frank@generalsoftwareinc.com> <4c1e92802ad82567fb312bce096386d3285196c1.1572586238.git.frank@generalsoftwareinc.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Received: by 10.25.208.15 with HTTP; Sat, 24 Sep 2016 04:17:36 -0700 (PDT)
-From: Daniel Baluta <daniel.baluta@gmail.com>
-Date: Sat, 24 Sep 2016 14:17:36 +0300
-Message-ID: <CAEnQRZCbJcEStPkwbH0J=inaBqZG10Sd57zh9qoZvYd11FaMrQ@mail.gmail.com>
-Subject: IIO tasks
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset=UTF-8
-
-Hi,
-
-This is for everyone interested in IIO driver project.
-
-You can work on the non-coding tasks from here [1]
-in parallel with cleanup patches.
-
-Anyhow, for the coding tasks at the bottom you should
-first get accepted at least 10 cleanup patches.
-
-thanks,
-Daniel.
+Content-Type: text/plain; charset=US-ASCII
 
 
-[1] https://kernelnewbies.org/IIO_tasks
+
+On Fri, 1 Nov 2019, Frank A. Cancio Bello wrote:
+
+> checkpatch.pl message:
+> "CHECK:LOGICAL_CONTINUATIONS: Logical continuations should be on the
+> previous line"
+
+Actually, in general, your commit message should not just repeat the
+checkpatch message.  You should say what you do and why.  It is good to
+also acknowledge checkpatch if checkpatch helped find the problem.
+
+This partch also drops an unnecessary pair of parentheses, which would be
+worth mentioning as well.
+
+julia
+
+>
+> Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+> ---
+>  drivers/staging/exfat/exfat_super.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+> index 3a7a10dbded4..3e19d5d7ef20 100644
+> --- a/drivers/staging/exfat/exfat_super.c
+> +++ b/drivers/staging/exfat/exfat_super.c
+> @@ -2980,8 +2980,8 @@ static int exfat_setattr(struct dentry *dentry, struct iattr *attr)
+>
+>  	pr_debug("%s entered\n", __func__);
+>
+> -	if ((attr->ia_valid & ATTR_SIZE)
+> -		&& (attr->ia_size > i_size_read(inode))) {
+> +	if ((attr->ia_valid & ATTR_SIZE) &&
+> +	    attr->ia_size > i_size_read(inode)) {
+>  		error = exfat_cont_expand(inode, attr->ia_size);
+>  		if (error || attr->ia_valid == ATTR_SIZE)
+>  			return error;
+> @@ -2990,8 +2990,8 @@ static int exfat_setattr(struct dentry *dentry, struct iattr *attr)
+>
+>  	ia_valid = attr->ia_valid;
+>
+> -	if ((ia_valid & (ATTR_MTIME_SET | ATTR_ATIME_SET | ATTR_TIMES_SET))
+> -		&& exfat_allow_set_time(sbi, inode)) {
+> +	if ((ia_valid & (ATTR_MTIME_SET | ATTR_ATIME_SET | ATTR_TIMES_SET)) &&
+> +	    exfat_allow_set_time(sbi, inode)) {
+>  		attr->ia_valid &= ~(ATTR_MTIME_SET |
+>  				    ATTR_ATIME_SET |
+>  				    ATTR_TIMES_SET);
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/4c1e92802ad82567fb312bce096386d3285196c1.1572586238.git.frank%40generalsoftwareinc.com.
+>
 
