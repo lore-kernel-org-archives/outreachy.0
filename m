@@ -1,150 +1,112 @@
 X-GM-THRID: 6754482318874771456
-X-Received: by 2002:a5b:88e:: with SMTP id e14mr11417398ybq.208.1572650518803;
-        Fri, 01 Nov 2019 16:21:58 -0700 (PDT)
+X-Received: by 2002:a63:cf42:: with SMTP id b2mr16383069pgj.113.1572650465550;
+        Fri, 01 Nov 2019 16:21:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:6c89:: with SMTP id h131ls1325675ybc.16.gmail; Fri, 01
- Nov 2019 16:21:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwaXheP++DF+FyN9uGBPLzNnpsae6EIjzMX1UeQrDQZy+AXlsv653oIVIH7HAnVJ4iAt498
-X-Received: by 2002:a25:2c0f:: with SMTP id s15mr12199419ybs.337.1572650517537;
-        Fri, 01 Nov 2019 16:21:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572650517; cv=none;
+Received: by 2002:a17:902:a40c:: with SMTP id p12ls1933884plq.3.gmail; Fri, 01
+ Nov 2019 16:21:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUSKo2HWz5ac7kXRe2VW7BJyerVeM6RoPCz3mNwOAygVOqQiEUKX4NRW18RU6uERn1SKDH
+X-Received: by 2002:a17:90a:25aa:: with SMTP id k39mr18554149pje.123.1572650464173;
+        Fri, 01 Nov 2019 16:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572650464; cv=none;
         d=google.com; s=arc-20160816;
-        b=dFH2QBr5mfd4LYndtQmfRfe98+YGaU+Z2I/wHGSaf/pjFmqqJlZnHeeOPTcERvU91l
-         0cNYlFMpUj/jDIefCG8AhtwZwKJMklqN1GJWcP0a/mP1CK+xrIC7NNV0v9pxRbAEWOMV
-         OXeQh3TCNT9ZwpdQb4BnMmrhkOJnShQQkBdU8PvRtg7GJOwMdKUWyQ9Syv8llVI352Qu
-         j7E76GE4NCMUVYrVu5bHbFIMP5wX2yCwfKmvdUllbe9QRYEDNGf0lpG+ZuSyNhoacv0j
-         ErbS0Jer++NFbtBZtSMMND7gQPhsdUP22S5AmyY1Cz/rhv1ByXvhPBlK4dgRokKHSzO8
-         MELA==
+        b=AG/y1i15DUbtjC1IXvGkuEeB718bpfgYCdS3HHKAy1ZjDCSs2/4tSH3t+E+VEnv2GK
+         WB3IIHlFBPU9HJS7ZFFa/YNJySltUzVwhyC3mSh7KMrqUQ9ZyOG6oo9W8A9Yd2w4hqRO
+         eT8dhYKrUA/ylDA78ERLbRopX2tC8kPPbky6akuWIRMVdRg6QrhxqZZNfBS2boMpe0u5
+         g+6pSax8r7fAkyr5Liz1AKMpxtGK4MVAgcjBy+/rK2Ke9MPGYHIRsrr+znKIVdQF1kH2
+         72+q8U6BgBbIF9RZrVSVOSvj0U4dB9PmsxUTjETMNqMaCKdpRHhMOC4ZieF39ifP7kWJ
+         QZgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=9vN2svrpAAxbHbfoFz31CGRp+IO7OUkVAGbmMj5Ltdc=;
-        b=NG5bvndmOy4RGn2S2uExnmnIKO/3LZnrYU0goO+oijKIdDWnIxFgtdllItlbMMR3P4
-         KxaIOjgWxog2F2TcZwb0+iW738TBrPsi98cCOORC2MrxBxdPBYRZDGZCUrBx7AfXXw0y
-         CVeLUg5VLBj1NOew3m0tOmN0dklarZki9czYI2K7B7KVZ27QZythYCzyK5W46E0Bwta3
-         Dg30ZlVgUSwj8+P0y3SDg/c9zAkZ3DL05A4kGOR6op8S40CU8kAcpYyogHdzL+1D695y
-         JbcGyHfG3SM+sxQjFH1Ckqe3VpL3GFY9IUbaJVMgIhhpyHyZ7b1a7wXh9ZDIwtJgodyD
-         jxPw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=cbAaI1whR+pjCmAbfMImURMPtOIf5hg1TOZ58zW3xUc=;
+        b=Ep/5xRedda2LhQSZbWfI6DwiZLYQ+yPBb3KFvzphJehirQP0MwgOxM+0qyxHbcqXx7
+         kE4ne3nt4Zqt3O8v4BWfslmOUnuPwqfLsPFwCXdrPH2tzQspw4tTngKylouf2deKImhK
+         OP6bnJTkwv7L5g64STuH/M0GzXVUczXtt2EHoIYE5uf8qvHQPeGoQJWSe0MWf2CKHDnQ
+         AR23xRhEjyRdZlBIoT8A8Yg2ILr6g1xj+7qEmHfw2uQ+g3D08zIw5Pz04Aoa0KPo0fBn
+         uyYyVAW4g0SWkDckbhgr/bAvyjW1bgdiPPxRdCEv7c9XTzrehpiKrwZxv0Aer5gBrpkM
+         nvuA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=JcdjsjoD;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a43 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=NYDhBOWz;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-vk1-xa43.google.com (mail-vk1-xa43.google.com. [2607:f8b0:4864:20::a43])
-        by gmr-mx.google.com with ESMTPS id m2si614139ybm.5.2019.11.01.16.21.57
+Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com. [2607:f8b0:4864:20::941])
+        by gmr-mx.google.com with ESMTPS id g15si89403plq.0.2019.11.01.16.21.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 16:21:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a43 as permitted sender) client-ip=2607:f8b0:4864:20::a43;
+        Fri, 01 Nov 2019 16:21:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) client-ip=2607:f8b0:4864:20::941;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=JcdjsjoD;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a43 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-vk1-xa43.google.com with SMTP id c20so1675236vko.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 16:21:57 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=NYDhBOWz;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::941 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua1-x941.google.com with SMTP id v2so3397358uam.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 16:21:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=9vN2svrpAAxbHbfoFz31CGRp+IO7OUkVAGbmMj5Ltdc=;
-        b=JcdjsjoDQtVTABnLiuYgG3T3/SVhevsLGt1mYXYDJbhE3KxBIzxACE8VHpa7iLzxH6
-         ZVvLrwGAymV0LXD9jZQjM7Ybh62OQ1b1B5DkyQ+82X4e72S+my0HU8Y6/vNC9AZE+kD2
-         cwGfg6WjBflnylLuenxaGwnAlIIV1siAdb38ltyAyK+p6o8OU5oY/V2lOp9Ay/abgt4A
-         NWyYFyGjowPUurSdyvqOMp+SySynh9Bl3USUJL0WCLPF5L2Sgs0fo0aL8RRif6I76ps2
-         7LrHAh7lXuhcQv+vf7l+YZeJENvyIShA7U9OxtLy5mQLU6FkSRazj1Vlc4pXdmF/6c+J
-         VV0w==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=cbAaI1whR+pjCmAbfMImURMPtOIf5hg1TOZ58zW3xUc=;
+        b=NYDhBOWzneNGEq2wLBNglX64Rt6Uk4WSAkBcYzkRjNDW4tU5XSiZzXcaqezT/ADAwI
+         tW0ErfRW0nwQSBxdDapEzA8Uc5zAA7lat71ofVhwt35SEajOiryXkdzi9F+50tGg/qPP
+         qaUvy99MsukO4Oj4owACUb7KuVn9MyF32yMU8l5mgDQOwZYV20Xw8orp9snfTOsp2LO8
+         VjzWz5axizqyBNAN5FJCLPT9xPntzXJdCY3CrG/2LUBlUlODC791Gha8UfneOE9dzZWc
+         F8p0YhtWZ+mtBm0iYkW23IX6ZptP5Q/xon8DlzsowhIhE08r7LRSF+u0u3thJobBUpdQ
+         BDnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=9vN2svrpAAxbHbfoFz31CGRp+IO7OUkVAGbmMj5Ltdc=;
-        b=R3lH31LBmP2GCsk+4LQjk7qOzK1vrZ0femZvGGcL1izn9uL/P3UKuSGMno034HxJpj
-         RAbA3g4x9TfV1Y4BKcKW22cY2k9bTjBN000z0yNFLlm7yXzKKXz88BgesB/mUUrPxmWy
-         plgZpqLC1kaMHGbKMQ795nGpXOd5JF0kvqetgkYUJBlm3nWD/DMsTEy4nfFCDBlzyPYy
-         Obd5r+Be3gCz7KhIrm7fMb3PRBYKWYOH486AZCdHG4+vTY0lLBjgWoPESUl8fwVrS51O
-         j4T1BrriVfaN1Ro6PCXaF6Aj3VQ0VcXJ9QuQL9yRu9YNgbkNn3CCj81F5iG/89s2T7/l
-         USZw==
-X-Gm-Message-State: APjAAAWB9K0JTFG82hMZsTF9XiUYtX/11XyD9CSRIg16jKcXJkRvcnPh
-	faNWFrpytm9G+rUD+ohl2Qqang==
-X-Received: by 2002:a1f:250b:: with SMTP id l11mr6835591vkl.10.1572650516817;
-        Fri, 01 Nov 2019 16:21:56 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=cbAaI1whR+pjCmAbfMImURMPtOIf5hg1TOZ58zW3xUc=;
+        b=aATcKXQvp0qgI/HWvVR7gjAWlSGVtf4uTZEkkcVy056t5krbq/zvwVOqzkxHmdWipE
+         4VHZAni/4K6YP9/RpoZKO7/cZCQLygNmu1qivxeyXJ75ETPBYl/z+KJd1D8yTeZmuc+d
+         LPr40FcRHzvUpp/sO33cjJ5DGb6JJOL1rLFMRI+b/xua8v2s5Q8/Uk5NNwZC6ijDZq92
+         KiGrqDdijjxicbeeWk3O3yL+7p7rJXI+9moIZfwyVSFTywpH3J+cRlZ6FkN3YCUeVHZq
+         0rnDKcePq5yTIUSWVpap1/9GaxVH+vP2lBsiQTVSoKPtjkkprxjfKhYkql9++TUW+lMJ
+         eavg==
+X-Gm-Message-State: APjAAAWwGWy+/K1d65VVFuZX7psFlAPQTcNPIVYmOIFmKaUvVWg3ii9h
+	o5jG2ARme2DLUZIEZzr4zaMUmQ==
+X-Received: by 2002:ab0:20b5:: with SMTP id y21mr6880759ual.39.1572650462866;
+        Fri, 01 Nov 2019 16:21:02 -0700 (PDT)
 Return-Path: <frank@generalsoftwareinc.com>
 Received: from linux-kernel-dev ([167.160.113.52])
-        by smtp.gmail.com with ESMTPSA id b8sm2128030uae.17.2019.11.01.16.21.55
+        by smtp.gmail.com with ESMTPSA id e62sm2479752vkg.47.2019.11.01.16.21.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 16:21:56 -0700 (PDT)
-Date: Fri, 1 Nov 2019 23:21:54 +0000
+        Fri, 01 Nov 2019 16:21:02 -0700 (PDT)
+Date: Fri, 1 Nov 2019 23:20:59 +0000
 From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
 	joel@joelfernandes.org, Forest Bond <forest@alittletooquiet.net>
-Subject: [PATCH v2 1/4] staging: vt6655: Fix parameter alignment issues
-Message-ID: <df2a5f511870bd96abb9b111de83f3a1f1d82d70.1572649242.git.frank@generalsoftwareinc.com>
-References: <cover.1572649242.git.frank@generalsoftwareinc.com>
+Subject: [PATCH v2 0/4] staging: vt6655: Code style cleanup
+Message-ID: <cover.1572649242.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1572649242.git.frank@generalsoftwareinc.com>
 User-Agent: NeoMutt/20171215
 
-Fix alignment to match open parenthesis and comply in that way with the
-preferred coding style for the linux kernel. Issue found by checkpatch.
+Code style issues like wrong spacing, long lines, open ended parameter
+and alignment make the code harder to read. This patchset improves the
+code to comply with the preferred coding style for the linux kernel.
+Issues found by checkpatch.
 
-Suggested-by: Julia Lawall <Julia.Lawall@lip6.fr>
-Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
----
- drivers/staging/vt6655/card.h        | 2 +-
- drivers/staging/vt6655/device_main.c | 2 +-
- drivers/staging/vt6655/rxtx.c        | 5 +++--
- 3 files changed, 5 insertions(+), 4 deletions(-)
+Changes in v2 by Julia Lawall suggestion:
+  - Improves log messages on all of the patches.
+  - Remove the checkpatch messages.
+  - Long line issues are in its own patch.
 
-diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
-index 887c1692e05b..25867cb9d13d 100644
---- a/drivers/staging/vt6655/card.h
-+++ b/drivers/staging/vt6655/card.h
-@@ -45,7 +45,7 @@ void CARDvSetRSPINF(struct vnt_private *priv, u8 bb_type);
- void CARDvUpdateBasicTopRate(struct vnt_private *priv);
- bool CARDbIsOFDMinBasicRate(struct vnt_private *priv);
- void CARDvSetLoopbackMode(struct vnt_private *priv,
--			   unsigned short wLoopbackMode);
-+			  unsigned short wLoopbackMode);
- bool CARDbSoftwareReset(struct vnt_private *priv);
- void CARDvSetFirstNextTBTT(struct vnt_private *priv,
- 			   unsigned short wBeaconInterval);
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index 082302944c37..2b93bea1f574 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -373,7 +373,7 @@ static void device_init_registers(struct vnt_private *priv)
- 	priv->bRadioOff = false;
- 
- 	priv->byRadioCtl = SROMbyReadEmbedded(priv->PortOffset,
--						 EEP_OFS_RADIOCTL);
-+					      EEP_OFS_RADIOCTL);
- 	priv->bHWRadioOff = false;
- 
- 	if (priv->byRadioCtl & EEP_RADIOCTL_ENABLE) {
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index a14908895b9e..37fcc42ed000 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -1289,7 +1289,7 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
- 
- 	current_rate = rate->hw_value;
- 	if (priv->wCurrentRate != current_rate &&
--			!(priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)) {
-+	    !(priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)) {
- 		priv->wCurrentRate = current_rate;
- 
- 		RFbSetPower(priv, priv->wCurrentRate,
-@@ -1396,7 +1396,8 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
- 		tx_key = info->control.hw_key;
- 		if (tx_key->keylen > 0)
- 			vnt_fill_txkey(hdr, tx_buffer_head->tx_key,
--				tx_key, skb, tx_body_size, td_info->mic_hdr);
-+				       tx_key, skb, tx_body_size,
-+				       td_info->mic_hdr);
- 	}
- 
- 	return 0;
+Frank A. Cancio Bello (4):
+  staging: vt6655: Fix parameter alignment issues
+  staging: vt6655: Fix the spacing around operators
+  staging: vt6655: Fix open ended lines
+  staging: vt6655: Fix long lines
+
+ drivers/staging/vt6655/card.h        |  2 +-
+ drivers/staging/vt6655/device_main.c | 14 ++++++++------
+ drivers/staging/vt6655/power.c       | 10 ++--------
+ drivers/staging/vt6655/rf.c          |  5 +++--
+ drivers/staging/vt6655/rf.h          | 19 +++++--------------
+ drivers/staging/vt6655/rxtx.c        |  5 +++--
+ 6 files changed, 22 insertions(+), 33 deletions(-)
+
 -- 
 2.17.1
 
