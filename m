@@ -1,102 +1,130 @@
-X-GM-THRID: 6341442141271621632
-X-Received: by 10.200.38.101 with SMTP id v34mr3707731qtv.30.1476482055333;
-        Fri, 14 Oct 2016 14:54:15 -0700 (PDT)
+X-GM-THRID: 6749323707377778688
+X-Received: by 2002:a81:4806:: with SMTP id v6mr10121395ywa.271.1572652044640;
+        Fri, 01 Nov 2019 16:47:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.13.6 with SMTP id 6ls5109438oti.32.gmail; Fri, 14 Oct 2016
- 14:54:14 -0700 (PDT)
-X-Received: by 10.237.50.194 with SMTP id z60mr3741044qtd.49.1476482054690;
-        Fri, 14 Oct 2016 14:54:14 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-ua0-x242.google.com (mail-ua0-x242.google.com. [2607:f8b0:400c:c08::242])
-        by gmr-mx.google.com with ESMTPS id t8si3100443vkb.2.2016.10.14.14.54.14
+Received: by 2002:a25:338a:: with SMTP id z132ls1330469ybz.14.gmail; Fri, 01
+ Nov 2019 16:47:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyZzof40QbLspX8HBv3r2JsGUhrJqa38nhcWUYFnuACLo0QwMm3e45cT7hsG+r5tLMTMkkG
+X-Received: by 2002:a25:7395:: with SMTP id o143mr12009400ybc.190.1572652043213;
+        Fri, 01 Nov 2019 16:47:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572652043; cv=none;
+        d=google.com; s=arc-20160816;
+        b=T7pG1mdO7nuIeCcNPxaT1RqXX4qfrM4dRzKlnF1YxXE2wrt9kM5w3tV7xi4SjbP7IN
+         BI/bJ0+fo0BJqp5FrXkuKsE1UZq9zg3028qX7prgkmYPfjGtxXQGoin6MoHQFCpvI+c6
+         ly0RZeMLbeN7iZV9hq84nwy7NZPb3HRIKax4w9SAkCU4ilfy0XBVxezPG6YZrA7qaV6W
+         9wBxJhvVLWgCj2pYYoRc0nO6yUktNh2FOWr96BYq8cmtPfKqZVA0zINQXbFdw1cMY6Uz
+         C3CRcSic+Ff84bU3kTs/omAti6BPEFlVb13dZgf98TCcewxJ1WHL+Mxj1/GEDXj1BYg+
+         TbLA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=z2jUkMPn+mMfsR3A652c7qLYXHku0OhHUC5Ak+AL/Go=;
+        b=zWpH2+AdEIlOuxjnu0AfUVQNbWmOKqEz5vdQ3nWUAtkdJdPicrbSlnjHgmVKkv9St9
+         /3Ux87RlIKyOiFEHc/wEKstFzwtuLIa+7n93DVHjsY3BTSShwLWLMT19AHmS8tI9XCWT
+         VrWtty91XgYg+HiFoEmSpNdE8tYlF3nfCaO/RkkCEEUKWIsX60O0DDQdduXpUnwPaKP+
+         7Hb2LFwkAF62ME0209MYvXcVBkzb1dWhP1kYDGwy/TM1CJff5GKeNFbEhul6rorsrow8
+         VX1QNsnLk+c4rO7Sn5bu7UdWTSv++0WHN7+n/NsY8Y2G+T5rftyumizvhf4F+dZPRdgP
+         O6RA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Esae8I0l;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id a1si648586ywh.3.2019.11.01.16.47.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Oct 2016 14:54:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c08::242 as permitted sender) client-ip=2607:f8b0:400c:c08::242;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Nov 2019 16:47:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c08::242 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ua0-x242.google.com with SMTP id u68so21351uau.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 14 Oct 2016 14:54:14 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Esae8I0l;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x541.google.com with SMTP id s23so4026130pgo.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 16:47:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PCfKu047f8zJqyAv/+F0Mo+jXwvwAgyGkOHsYSTHOBU=;
-        b=nq5AEUVzPhVSxvW7k1AXohl42ssjZHNVTZaooItloOOBuAtttT2W8/GEafKcWOCJp2
-         sHLoFt7B/GCxXMA/DTPbaLqZtU7xO0QF2g+c/m5g2Eo11+gr+gD5wSWLeatjAyuT+IZ3
-         8mERij+yT025OiQrBe3uRulHw7wWJZFvPRzZXN7zwduP7wZfxWwqPLym+ofWom7iZywl
-         GgjsaEjLzDKttvKCZOk66chI+9nRbl8lgk8Nbwuokt2IuzknVqpqAx55IDNNz8+2he/X
-         fmUs2GlTTCAYDC7F30+EJtF6fcaKRjN3lVVNm/y1SqjBkjdg1FBMw/Xnaa8eJtTyVh8c
-         BnDg==
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=z2jUkMPn+mMfsR3A652c7qLYXHku0OhHUC5Ak+AL/Go=;
+        b=Esae8I0lFpiegezt3T3Rvor/OPaA+I7deTDm/4Uqfqf6esyppQebbh6KsularfuuWg
+         8atcTnfUjSJXzqh7gdN0/lORuMNUmqJ37LZbSObNZIbl1GUbnHzBfFiwtpbNtv8UXHyX
+         qsUkKWPzOZWGLA7ZNUdPv3XCbA/MMv5cl8GezBP/pPU1gViC9y4erT9KHYId5tjKSglQ
+         fI19osH8wb/mGcaUxjHjtg3vmzVQhf3bE80SmXKtjy8l62dafXIHssJxCVrzGCv+//9Q
+         m6dNH2NYyPD6hlDjhJQd5E7wKBJScehYhIanT8C7PY04yo3slryV0htxfq9wwFwXdgmF
+         UyNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PCfKu047f8zJqyAv/+F0Mo+jXwvwAgyGkOHsYSTHOBU=;
-        b=bs2HBtRuBqUmjnovhJUtvWxXC7Rq+hgyRnUCXhfuT3HTEW2xPIHPRJpI894/zruJ3E
-         2JbLDCs1fljs+QWkRnjmN+Bg3WXLHuksjjoVa/0i1IlXga+i9XNw/rVLtwNdJdXvGDS7
-         IZV/482Dn/xlgsisQz899Y89eGIJblcVubYF/kVdT9/gfaJAdTuTIteNgN3GzQQ5CFle
-         1UHIs7TAynS7DKI80MSFGDlqPzSlO7YSu2P6k01dc5JAuf0g+7AeIJn7RyxrpX5sCqGR
-         pwfSp5j071tYLPFPpg8PJvxAx6xcSK0U1jHKhfF5afJbNRNNrarvNvB+KLMyUsxOIsD2
-         cenw==
-X-Gm-Message-State: AA6/9Rl+9UIUv1bAKwbm0VFGeoOLm5jaSmteIehHloNDK3VfZnhd1DQ0ennwHz+9s3ApIQ==
-X-Received: by 10.159.41.167 with SMTP id s36mr90175uas.171.1476482054548;
-        Fri, 14 Oct 2016 14:54:14 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id s17sm8271202vka.26.2016.10.14.14.54.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Oct 2016 14:54:14 -0700 (PDT)
-Date: Fri, 14 Oct 2016 18:54:07 -0300
-From: Elise Lennion <elise.lennion@gmail.com>
-To: vaibhav.sr@gmail.com, mgreer@animalcreek.com, johan@kernel.org,
-	elder@kernel.org, gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] staging: greybus: audio_manager_sysfs: Replace sscanf
- with kstrto* to single variable conversion.
-Message-ID: <20161014215407.GA6916@lennorien.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=z2jUkMPn+mMfsR3A652c7qLYXHku0OhHUC5Ak+AL/Go=;
+        b=BSXbeyqzqpYFcvhqzi6MGjRNSEYcGTCqsllDV7bq3I4TfejmgyMGlM5c0FqETkUN89
+         RvUpe/szkXmBHTq4+7cLx6NULQNXXam2UztiaEd8bKraBpmnuoEznqSs87eIkJM8kx6Q
+         H8GOGDsAxTVlt6qUHrLIyGgKMzANt5XL5EJC2d0MZNsw3S7a9c1T1c354O74cr5N+HNq
+         4WUXtTlEb4OcEA8wawqrZ7P3XE94lXdX7zOI1vFaBtOAwfnn6wmkKZ6NioNgo2JXhLV4
+         Y6VGV9sZ8NDWJEdh6QlkkWrP6ljrN8U6JBzacW0zjSeUkvNKVunuZAljQin8YL6d72uB
+         ac+w==
+X-Gm-Message-State: APjAAAVo/OJFttUeH3WQaZ1KAps4bFzNqCEb8oaXGrolMDc/kpd26R46
+	ifE9ksutdTsuNmsIG9fLNelbiTJjjvY=
+X-Received: by 2002:a17:90a:9201:: with SMTP id m1mr19041986pjo.42.1572652042107;
+        Fri, 01 Nov 2019 16:47:22 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com ([104.216.216.194])
+        by smtp.gmail.com with ESMTPSA id m68sm7729583pfb.122.2019.11.01.16.47.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Nov 2019 16:47:21 -0700 (PDT)
+Date: Fri, 1 Nov 2019 18:47:18 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] Re: [RESEND PATCH v5 1/2] staging: rtl8723bs:
+ Fix line over 80 characters
+Message-ID: <20191101234718.veroftfioe7qjx2x@gmail.com>
+Mail-Followup-To: outreachy-kernel@googlegroups.com,
+	Greg KH <gregkh@linuxfoundation.org>
+References: <cover.1572396117.git.jarias.linux@gmail.com>
+ <6186e531d4cc59bed09329b2c9c4cac7352702bf.1572396117.git.jarias.linux@gmail.com>
+ <20191030092456.GA637833@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20191030092456.GA637833@kroah.com>
 
-Fix checkpatch warning:
+Hello Greg,
 
-WARNING: Prefer kstrto<type> to single variable sscanf
+I've updated the patch and decided to drop the coverletter. Now all
+the changes are clearly defined. I also added your suggestion about
+the argument wrapping that I didn't see the first time.
 
-kstrto* is designed to convert string to numerical value and makes
-it easier to understand what the code does.
+Thanks.
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
- drivers/staging/greybus/audio_manager_sysfs.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/greybus/audio_manager_sysfs.c b/drivers/staging/greybus/audio_manager_sysfs.c
-index 376e17c..e74fdcf 100644
---- a/drivers/staging/greybus/audio_manager_sysfs.c
-+++ b/drivers/staging/greybus/audio_manager_sysfs.c
-@@ -44,7 +44,7 @@ static ssize_t manager_sysfs_remove_store(
- {
- 	int id;
- 
--	int num = sscanf(buf, "%d", &id);
-+	int num = kstrtoint(buf, 10, &id);
- 
- 	if (num != 1)
- 		return -EINVAL;
-@@ -65,7 +65,7 @@ static ssize_t manager_sysfs_dump_store(
- {
- 	int id;
- 
--	int num = sscanf(buf, "%d", &id);
-+	int num = kstrtoint(buf, 10, &id);
- 
- 	if (num == 1) {
- 		num = gb_audio_manager_dump_module(id);
--- 
-2.7.4
-
+On Wed, Oct 30, 2019 at 10:24:56AM +0100, Greg KH wrote:
+> On Tue, Oct 29, 2019 at 07:48:49PM -0500, Javier F. Arias wrote:
+> > Fix line over 80 characters by wrapping arguments in function call.
+> > 
+> > Suggested-by: Julia Lawall <julia.lawall@lip6.fr>.
+> > Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> > ---
+> > Changes in V3:
+> > 	- Edit the commit message to properly use the Suggested-by
+> > 	  tag.
+> > Changes in V2:
+> >         - Edit the commit message to use the Suggested-by tag.
+> 
+> This is a v5 patch, but you only show what happened in v2 and v3, what
+> about the other 2?
+> 
+> Also, you don't seem to have changed this patch from my last review, why
+> not?  I will not take this as-is, sorry.  Please fix up and send a new
+> version based on that review.
+> 
+> thanks,
+> 
+> greg k-h
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191030092456.GA637833%40kroah.com.
 
