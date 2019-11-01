@@ -1,106 +1,99 @@
-X-GM-THRID: 6670322768033087488
-X-Received: by 2002:a17:902:54f:: with SMTP id 73mr7430597plf.60.1553055543400;
-        Tue, 19 Mar 2019 21:19:03 -0700 (PDT)
+X-GM-THRID: 6754188364413403136
+X-Received: by 2002:aa7:c582:: with SMTP id g2mr10908298edq.25.1572593675216;
+        Fri, 01 Nov 2019 00:34:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:92d1:: with SMTP id k17ls389285pfa.8.gmail; Tue, 19 Mar
- 2019 21:19:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw4OB09QAoVo2JgoBBpazAtZvHN6ZorXZ8PNVHHSOLoP03D+i3VL6HZ7IXy/MZMernyJvpL
-X-Received: by 2002:a63:f201:: with SMTP id v1mr8273313pgh.27.1553055542766;
-        Tue, 19 Mar 2019 21:19:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553055542; cv=none;
+Received: by 2002:a17:906:a0e:: with SMTP id w14ls796695ejf.7.gmail; Fri, 01
+ Nov 2019 00:34:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwPcjldQwjP502KJdXFkT9r+0ISP1MUhRHowCzD/3MbGmZTapn0D1qSn0d469sSMrJUR1X0
+X-Received: by 2002:a17:906:6083:: with SMTP id t3mr8363258ejj.145.1572593674050;
+        Fri, 01 Nov 2019 00:34:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572593674; cv=none;
         d=google.com; s=arc-20160816;
-        b=oVHtcU0v6U1wMavukdkOtLoqng1dwxcJjY4YviGV6rYchb/b0His9lOMoFaN5nqI9E
-         ubJUOo58UbJ+/V48ky53dUgV6e0pV9vDx/2DU71zmnK4Ige6MnA2ngRV7mCw8McH46ZD
-         UjCunJ6agFuMUzwvkNiYsmFtaY3KGCctJI9/7+XecgD1YEX2t8YITiTD29qzytulhQWc
-         0aVXNswFtoAOXGayz1DaBuN9M5m+a0MuznC7l2ioCVSyQtXKqkA5ArtMQg54IEj/VkVR
-         5LJQXpgGMnm9YyMfW31lhehLQ8oD/LVfb6r0WIIdbhdE9WJpWEzbz0TMVSWn3B0nDVjl
-         psFA==
+        b=y/zGBRjlMxMkElgjGsw5HC17SIl2PgD11me+OBxtaH+jHUCK61+0gX1v1qPG54V8zy
+         dAWMfa/rFXqh9lhVDG+zRzR0wyHR+WPEBpaH0QEswWafn0kAetsV1m9aIV+QZHtFe9pY
+         1yjYUPo5XCR3aI/Q7CcLHu5Abg2+cCykaVu5gHYOvIEMWIYb9GwxI19cSfSV8s1JAN3n
+         6Gto9uZTaSbnGS8q+aJh5zC9Ga6m0mngrcEDE7ZLJKYa2h1CCUanV63B0pVjTNYfhs//
+         OTnzNgPAxchNC0R8fCIQBNFu/aVkS553bfYZJOLcDNps/4TrAadYeSJjFZ14nQeiioUX
+         /LGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=nZ9ASnV9lhpr20hIykad3Z4zQvN6XvVazD4C7v9Clg8=;
-        b=B91+9/6RAEJ6w0R022uap1sddYZd8tjxFE33lZciHAO3AaT1jUoJS5Ftx3tW7fLm61
-         WOAxzqjjDs1lZME22n2rFNQjeMgurLg0RpeoKNTIeCl1AuLg9Vo7qq2IePJTfAscC+F7
-         sIr5iOfRFyIH8DMLtXLAEFbd1qtqE3guOALYqaR2QMIfoym3PSP8MmIT8g/kG3YBzTw4
-         d5mMDtgtKnqtM2vWG3lu/4mdzWMtTPHZaaS1G7R7olOBL0cHw+U/IihTH7gChqwwfXaD
-         dxHlESektovTjYXRohq5O22rJtsQWzr/AJLM3FoUe5Cj6XA5mtDrWiZu14FWmKOe+t67
-         iV6w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=bzd5WNJhGkSvC1mM8IY8ZLmlb1nVDpNwEHcwk8qTE1Q=;
+        b=UDMAzs4bryEDJBwWPJvP2/aW7R4VW0wBweUE/t0D6nR0lfMt9Qyr5WoTB3u3xZZ/cT
+         WkUtv8oKEd6Mwes2Er0/qi60Y9H2o9SOO9U7Uok2+OTT/SB54+vDkygK7Ax0jyrjCx51
+         ieRIj5YwZiQlg6/PWqhX5GKCU7EP6+rHwJN7yIBHOaXm0JE3po5eXCKFklsdbYRO6hG0
+         QsFBtxWoMro12xKh555eWdBBN6yruwTrDa7GIDPrAeKJWH8eps0K2j4RcCYkwfiOL/kc
+         hmeTWSkd/Jfbwd46UF5a24uEkhyt2ZIoUAm7mQRHnAjqDmhF0p+M0QrMVDJXLHaNpvFE
+         PPdA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="D/ycT1sf";
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <etsai042@gmail.com>
-Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com. [2607:f8b0:4864:20::42c])
-        by gmr-mx.google.com with ESMTPS id p15si15363plr.4.2019.03.19.21.19.02
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a15si247380ejj.0.2019.11.01.00.34.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 21:19:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) client-ip=2607:f8b0:4864:20::42c;
+        Fri, 01 Nov 2019 00:34:34 -0700 (PDT)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="D/ycT1sf";
-       spf=pass (google.com: domain of etsai042@gmail.com designates 2607:f8b0:4864:20::42c as permitted sender) smtp.mailfrom=etsai042@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42c.google.com with SMTP id i19so955629pfd.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 21:19:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=nZ9ASnV9lhpr20hIykad3Z4zQvN6XvVazD4C7v9Clg8=;
-        b=D/ycT1sfcftM+HoGzIyd8Jj8YNdjnka3IuVhU6oYcCPpI+Ter0tsAC1sjjiahfz86P
-         VeXJTuqFBWLYNGfdiRT2rhzriSuE5x/ZbkSl4kS5T0g6uMsRm1WHFvJF9c9jowLiluPg
-         lRDAoCw4klZ3SXKJiAVVSX3vhSU3XdSdjtuy5ma1CQCBCrTIAKe5Pgk0p6F5kgQPW1V3
-         CuM/t+AD2z/GjAsdUzdWw1PSMZarT12lw+ClL/s6IWARQFao3WT9eafMqpmb1XrPy3Ju
-         Qz/J1we4Gc5eV6gAWCab9DrEexnAK8p2zYYWy5kn8zROVWzbFlgsWBQ2GTjLnCNGk3xZ
-         jEPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=nZ9ASnV9lhpr20hIykad3Z4zQvN6XvVazD4C7v9Clg8=;
-        b=sENKcMQhyFk9NOyWQBuWhgKxAaTsxTZZX+DXmgDPhlWSGEsI3J7Q7nMaPXbIaaFfyZ
-         84rCMuppK1wYEjQEM4oov5p9y1u5DlcxwD8Aev+mUAOi2aqOusOeV5HkOiUGrKCiiYcd
-         1FrA+PQlSCYsJzGf2qm3UgoU5XQnxGrOBXLGOxvVc+FMa//0jTpbMTGaEGQ3VxaPgI3E
-         Ng9Y5pxbhZflOUnhYgzwdoCgHr3YF8yEsBLuii3umpHa45tB7Pzwt2skWO2CnmG5Nf47
-         G9gOslFo+hpAispwOYh1SB5uex6S0OrbPadu7xzgg9VsIVVQ8iiVKR7vzpiizwpUJuJm
-         xqmA==
-X-Gm-Message-State: APjAAAV5eF5EwjHgNbGlW/MnYPb6jDjJOAencbk8IS6ggBBYHHomOyFL
-	fr56H46jAsUPJdkYWzH/LDGqUoL2jXo=
-X-Received: by 2002:a17:902:29aa:: with SMTP id h39mr6090230plb.190.1553055542311;
-        Tue, 19 Mar 2019 21:19:02 -0700 (PDT)
-Return-Path: <etsai042@gmail.com>
-Received: from localhost (199.138.240.35.bc.googleusercontent.com. [35.240.138.199])
-        by smtp.gmail.com with ESMTPSA id 140sm754886pfb.55.2019.03.19.21.19.00
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Mar 2019 21:19:01 -0700 (PDT)
-From: Wentao Cai <etsai042@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Wentao Cai <etsai042@gmail.com>
-Subject: [PATCH] Staging: mt7621-dma: Add blank line after declarations
-Date: Tue, 19 Mar 2019 21:18:54 -0700
-Message-Id: <20190320041854.3829-1-etsai042@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,254,1569276000"; 
+   d="scan'208";a="325306095"
+Received: from abo-45-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.45])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Nov 2019 08:34:33 +0100
+Date: Fri, 1 Nov 2019 08:34:33 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    saiprakash.ranjan@codeaurora.org, joel@joelfernandes.org, 
+    Forest Bond <forest@alittletooquiet.net>
+Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: vt6655: Fix alignment,
+ spacing and open-ended lines
+In-Reply-To: <cover.1572581578.git.frank@generalsoftwareinc.com>
+Message-ID: <alpine.DEB.2.21.1911010832550.2883@hadrien>
+References: <cover.1572581578.git.frank@generalsoftwareinc.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Add a blank line after declaration to mute checkpatch.pl warning:
-WARNING: Missing a blank line after declarations
 
-Signed-off-by: Wentao Cai <etsai042@gmail.com>
----
- drivers/staging/mt7621-dma/mtk-hsdma.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index 97571f1d697b..beeff4258b19 100644
---- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-+++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -157,6 +157,7 @@ struct mtk_hsdam_engine {
- 	struct device_dma_parameters dma_parms;
- 	void __iomem *base;
- 	struct tasklet_struct task;
-+
- 	volatile unsigned long chan_issued;
- 
- 	struct mtk_hsdma_chan chan[1];
--- 
-2.11.0
+On Fri, 1 Nov 2019, Frank A. Cancio Bello wrote:
 
+> This patchset fixes minor spacing, alignment, and open-ended lines.
+> Three types of checkpatch.pl messages are addressed:
+>   - CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
+>   - CHECK:SPACING: spaces preferred around that
+>   - CHECK:OPEN_ENDED_LINE: Lines should not end with a '('
+
+Please improve the log messages on all of these patches.  Avoid the word
+"Fix", which doesn't give any information about what you did.  Don't
+include the checkpatch messages.  Don't use ... in the SPACING case - all
+of the information about what is going on is in the ..., which the reader
+has to guess about.
+
+julia
+
+>
+> Frank A. Cancio Bello (3):
+>   staging: vt6655: Fix parameters alignment issues
+>   staging: vt6655: Fix the spacing around operators
+>   staging: vt6655: Fix open ended lines
+>
+>  drivers/staging/vt6655/card.h        |  2 +-
+>  drivers/staging/vt6655/device_main.c | 14 ++++++++------
+>  drivers/staging/vt6655/power.c       | 10 ++--------
+>  drivers/staging/vt6655/rf.c          |  4 ++--
+>  drivers/staging/vt6655/rf.h          | 19 +++++--------------
+>  drivers/staging/vt6655/rxtx.c        |  5 +++--
+>  6 files changed, 21 insertions(+), 33 deletions(-)
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1572581578.git.frank%40generalsoftwareinc.com.
+>
 
