@@ -1,100 +1,171 @@
-X-GM-THRID: 6675173585137434624
-X-Received: by 2002:a24:2584:: with SMTP id g126mr7729315itg.23.1554184962310;
-        Mon, 01 Apr 2019 23:02:42 -0700 (PDT)
+X-GM-THRID: 6754475582330765312
+X-Received: by 2002:a05:6830:1002:: with SMTP id a2mr10056121otp.212.1572648979484;
+        Fri, 01 Nov 2019 15:56:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:7d48:: with SMTP id d8ls4464276ioq.6.gmail; Mon, 01 Apr
- 2019 23:02:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx+/GiT/gUR38VMkOMLCuSn51tX0y/nYPvUHXMdrfpNJv1MpB3eMhM+Xw7RuN9/1DDcL0/b
-X-Received: by 2002:a5d:954c:: with SMTP id a12mr557644ios.31.1554184961711;
-        Mon, 01 Apr 2019 23:02:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554184961; cv=none;
+Received: by 2002:a9d:1291:: with SMTP id g17ls1658607otg.11.gmail; Fri, 01
+ Nov 2019 15:56:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx+nrciuEorpt6I1l8dxZpZ/u6NaOsyYneQkNYJ1G7OSOH2alW3jqZQTnKVgtu6dItfDzmh
+X-Received: by 2002:a9d:4c07:: with SMTP id l7mr10645757otf.206.1572648978662;
+        Fri, 01 Nov 2019 15:56:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572648978; cv=none;
         d=google.com; s=arc-20160816;
-        b=mj2MfgZ/cOZJIKxrrBnOArphOuz1HT6KVcz7CZHzz7ydpIcMD3s2Loi/v1eQraq02i
-         5HjeT+/0aI/oKYk+gso0IRargqf5sV/yPiMwCGDbLT0X9hBueA8K6cS9wyrpRH3EflEm
-         tRWAW/4XPGpomZSOzGFO2wLqpQgrvKVB3YLxqsOHKwCKDXsoQ1ghqF77uTDiKX2XmjQD
-         YsNP+ZK12t3UUqUDvkiyhOzNg/TTNGKDTBMVRPaq29+JFZmPcy8dzHBOIAzJ0Y8jMeIt
-         PbY7to4puAD2JoZistyNw7oYJaoI9weMQZRMPGx6MJfS6xoAQxZW+sGeMIqc5DmeWhz9
-         1Zow==
+        b=d4k9IdNuuiz3jo7PrXNew/L8VDyd7f5teM3wZVBtG8qaZIw8h4rIqHlCGo/nhncstj
+         sualuCJaoO+IMFTI4iCPMnCKonerSAyxsWN+GfcjFOBxcMFnT4QToM3VwSfaQqPpByCp
+         aMKJ1Zac7qA7dXjXSj2oHtibFqRxlGuT8hGG8Ox5JJ+o5cMUIsXHk54u2dNYLZuG5sUd
+         VGGTIX+41aWlutq51t0CJcmb/WR2Dnxmh+BFn3wygOTBk2xCVI7K/ySwSOo64R2DbSlB
+         8MW/kQQiiMTePASVMFrF0SIcwfzsMIJWE3Pay9M6PM5EB1nQ/VTc7HaG2nNASnDSu9dl
+         CPuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=GL2f/xoRS1RrX2nKu82Sm1RYLr0CyU69TMYlARMrFKI=;
-        b=zMtNENy/DSt8hV9xI9NKN9Q1XBM6Hn/84HniQ3ZKkpMEFhbogloxz0mNGQ1tTmyUw/
-         OR4v1p35XbHidW2owJa4VwNDrTvB8nlcY/XFImrwWg4pcOQQIVXM445b8TjX67qsz5fY
-         Soet3fIaFG9Fphf+r69potyxUI8cnCm6glLNxUBVOqyRh6ckv3LgSFyqqymPrR6h0qJ2
-         7TinogiS73KR0llPBfuTen2GHnuhUzP8YyWs2sdlAAMufQfBjbeEYq2M4shQ+ZTuC5tG
-         Ee5gOR9bXNgDpiiobLhrZ/njQKWDVZYmgxAIc7YwjB+a6ZbOtir5aLvPVSrdV/SzBYYm
-         IuTg==
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=XOWYAHWRQ4FMqXh8QRHf05Xtp7+MTNEGJj3Z0e35AjQ=;
+        b=FhMPKzAK+7tV05vfBxKEdvc5sf5plk3yEEz2Zttt3R2Ip4JgL3B1hVYv0Ntdw00NgB
+         p93fU3R6t+y075TFDFCCsG2kT7i/gXAxxyWPBCBhx3+Ak17BWnnMq033Y02qMQ0FX0Qd
+         iphfdJTg4U9wC/00IUOi2HBnUnYU/fM1cez+OvNo9Up/ygVj4qL84gng2++Iqtj/EaQU
+         sF3FJW/bdQ9Hu7Z7vQA0Ly6SOkOoypqWs9EX+8s8mqg5sa49qisyo1INqss5MlhDLOES
+         4DI8O60Y4XcztORGbUgpmGNMFS0x6Y1GuG0HkGcqHDwNGrYom/p+GsQWsad52kDCtPIf
+         XPSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=NALsQtWD;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.80 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic313-21.consmr.mail.sg3.yahoo.com (sonic313-21.consmr.mail.sg3.yahoo.com. [106.10.240.80])
-        by gmr-mx.google.com with ESMTPS id n6si561786iod.1.2019.04.01.23.02.41
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kci3Buml;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id e3si452901oti.0.2019.11.01.15.56.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Apr 2019 23:02:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.80 as permitted sender) client-ip=106.10.240.80;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Nov 2019 15:56:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=NALsQtWD;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.80 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1554184959; bh=GL2f/xoRS1RrX2nKu82Sm1RYLr0CyU69TMYlARMrFKI=; h=From:To:Cc:Subject:Date:From:Subject; b=NALsQtWDXn25IwYt3JKPim842g+eR1BufZnYnKoIti8iwjqkHjL35pPpyBgaloM03VbaHVu2fJZVu+4OZ6XSQVptrs/CMrFyRok/OzkCN0dXqBmZoLxVZufycydnn/eT0m3GkgbuE5h/pgr7/3CBLgJUtE4fN2Lz0RaDr/kiShuh+54ZO0yBjJ+8q7ExREw5t5M4m2HjKrADnC2rU7LTQT1tq9WU99mrRkEHfGR05UmdfO2umP2u5qK8sjJK0mSaJC/DUA3j6vb/9k2XNfUMS3MEdl7zNoO5OxxNGLERtL11XyoASZOLin8n9bbzOJafdjKW4RlUPNDCUql/cSZUsw==
-X-YMail-OSG: 2Myx4WMVM1l4RFO.6qZ9Pn1QYtwi5r8zUtLE71QEfuNsQBmZKDfuAcdRG9_o_Cm
- mWgJL7HygTQ5deXe9NP4e2kLi_C1QGDVunXA0e9jI.xSfFxOMmzWkfvaqwgBKLg473hyZTnmAPy0
- 7mBl7XY3_n0nFh15c1gabbRrBjI.gyDnQKf1DO_gkClusEyr_pu6E4e2Kr.PfXcZ71dg7OPghgIH
- FqOvJNc0G7cQHfnn2WT2FwTgk_AxNmypnXQxxVjRWWd51QXBdJT7ZZBC3IKO3.fIHr76mr75QZSn
- g4LnEtPeWkFp4vn41RskMqrbeYrg7BhdPV4QNMXs.4LIUjwX6WNgaPl8W5diGWsBatBwtgbJiHEl
- dFG9CdUtqovrfHtz6kDqcOSWrwjmA8j1tcLt2GZTpsW1TuU_CF9AgBj5iJpP3spsaBv.QdONL63E
- 4Hnnjz0Zt3ooRhIzGNIisfAzNeuGikR9HipCqIRdGBqlluyt8ItshhtpooC6cuNkQVLUaADkpy5G
- Gruv.coW_OIszBpOBa93vYlhkYYWgn5bxSuP5dWzb4lwf9dBLNSlzGpW3ynVnpX1kpztfKxWPKzs
- dLOEuYYFnbjtF9vU00t8Pk5t59gm8h0RpRljtp.IEIN_.hCI4q_BDF5Keqk5MNbmV_G4CiC6vADE
- STI.NetT43V1WRKouAH6hdPD3nEAJ2kqwiPbBp0JLkEjBREpUzzJbGQV93LLbGUwKGslTp.__br4
- JZ_HKKZ1jE13iXIAv.nyjqwmTtykG7mmqJRI69ileZ3VHgl2LgRQt8ZwJt7HN_V9c_epnkrbvMct
- yz8YkJStzDkbHz6XtU7ZuSLc6xCpBwKhjtP7P9.qbrXHXATHnUVoDuKYKxuFUJwCvPeEOQdCO3nC
- KZgxnM_mySwKu97_LgH8JtcEog4xYmc_zELFGIOx1YsZ35Jmmzl1eANbShwSdL6_F90p9lAzOVxf
- aPJLl1jSZCatmUybVoYb1pr0_oqB4TBsFwhSa5dgaTZ9gQynQiAyvIlfCYABQoNN.fENmOIBe7u1
- TMQfqwm6SA0x_yzs2kcex03rWKvEuFW0TKa9ru..iyfNoWOEHRZFpMO67r9YVdJ7A8wEhsCmqNu6
- gVhZv1CxPJXGHlhctaUHlqSh7dufetwJo
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic313.consmr.mail.sg3.yahoo.com with HTTP; Tue, 2 Apr 2019 06:02:39 +0000
-Received: from 210.212.93.46 (EHLO localhost.localdomain) ([210.212.93.46])
-          by smtp431.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 742726d1f3be9d287c2a67c4e8cf26ee;
-          Tue, 02 Apr 2019 06:02:36 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	matthias.bgg@gmail.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: mt7621-spi: Remove parentheses
-Date: Tue,  2 Apr 2019 10:41:56 +0530
-Message-Id: <20190402051156.6749-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kci3Buml;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x644.google.com with SMTP id j12so3021933plt.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 15:56:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=XOWYAHWRQ4FMqXh8QRHf05Xtp7+MTNEGJj3Z0e35AjQ=;
+        b=kci3BumlQ3CdIcSAy37pCKfB4Ns32TV0m4VCbWRfg1Z2o2e4Cn7+Dx8DxO5v1vS/oZ
+         idqFrK22Ma0Bm3wMrPmMtewBFUOOMlL99RGroSJaDTr9RN0ROB1mIKX9RBDBw70kaYU+
+         VcjoP0laukhE48o8EAhuTSp+i4FgfXtwMSohPBuXAXZ5rqNsJNjEChpcIwrv47GrPROc
+         dYFytR3Xut98Xfa250tCHtHIdP3x8ojEQZRNkbblXG6yyWdnc/w01OpcXzWWzmFAvIrL
+         Y7kUpYlFjE7BMDZ2flE+Uhiy9bqs/RDV+VTgij2GwSxkJPXb9yUob/PGz06EgaqI7pag
+         PS+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=XOWYAHWRQ4FMqXh8QRHf05Xtp7+MTNEGJj3Z0e35AjQ=;
+        b=BiyF+XaKtKQnU/sPTPLNSZyXHSbBdhwPDsiM38QoPtAtjEPppwZ3v5xGV+2N1E+2ef
+         uNdN+s6GFU6Bpbf7uUOFIwLZs0O0Sfe76eVQi9p4Q1iNzgPwY83qbwx69vK58/VfnSTZ
+         DmE/5vveu005NUnyHKeWFd+N5as2iLGKXC7YSvAWRrmeEWI5wjDaPsqGzZRqlw1/WOyB
+         JEKa6JaBaiIUxST29ibeRA4Q/rZpkfCnwVeczYGkuF91gWjdWOZ6Mqv3lDpPtQCfkzOQ
+         3+Yj6Jvk3s7LSu8vXFoNdvz5hA4EWI/snuKaK3M3/2Q2uouTSexfNanYvVZoZ2o0Wqwp
+         e2tQ==
+X-Gm-Message-State: APjAAAVbOxB0Qq82CWrLwpdGhJYs72/pWC6G6DXV0OGxTLMjlQd7QfG+
+	i4mRzrNP+cOPh5Tj9paBlE8jpEybamQ=
+X-Received: by 2002:a17:902:6e02:: with SMTP id u2mr8281228plk.234.1572648977987;
+        Fri, 01 Nov 2019 15:56:17 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com ([104.216.216.194])
+        by smtp.gmail.com with ESMTPSA id 39sm11323304pjo.7.2019.11.01.15.56.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Nov 2019 15:56:17 -0700 (PDT)
+Date: Fri, 1 Nov 2019 17:56:14 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH 3/3] staging: rtl8723bs: Remove blank lines after an open
+ brace
+Message-ID: <3da3319a653018d394615cc13730b8bc5edba89e.1572648706.git.jarias.linux@gmail.com>
+Mail-Followup-To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+References: <cover.1572648706.git.jarias.linux@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1572648706.git.jarias.linux@gmail.com>
 
-Remove unnecessary parentheses around right hand side of expression.
-Issue found with Coccinelle.
+This patch removes blank lines after an open brace.
+Issue found by checkpatch.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
 ---
- drivers/staging/mt7621-spi/spi-mt7621.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/drivers/staging/mt7621-spi/spi-mt7621.c b/drivers/staging/mt7621-spi/spi-mt7621.c
-index d260b42ff328..0e0e67280b00 100644
---- a/drivers/staging/mt7621-spi/spi-mt7621.c
-+++ b/drivers/staging/mt7621-spi/spi-mt7621.c
-@@ -302,7 +302,7 @@ static int mt7621_spi_setup(struct spi_device *spi)
+diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+index 0c350d080b4a..489dc5f2e3a1 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
++++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+@@ -915,7 +915,6 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
  
- 	if ((spi->max_speed_hz == 0) ||
- 		(spi->max_speed_hz > (rs->sys_freq / 2)))
--		spi->max_speed_hz = (rs->sys_freq / 2);
-+		spi->max_speed_hz = rs->sys_freq / 2;
+ static s32 xmitframe_swencrypt(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ {
+-
+ 	struct	pkt_attrib	 *pattrib = &pxmitframe->attrib;
  
- 	if (spi->max_speed_hz < (rs->sys_freq / 4097)) {
- 		dev_err(&spi->dev, "setup: requested speed is too low %d Hz\n",
+ 	if (pattrib->bswenc) {
+@@ -1334,7 +1333,6 @@ s32 rtw_mgmt_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit
+ 				psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
+ 
+ 			if (!psta) {
+-
+ 				DBG_871X("%s, psta ==NUL\n", __func__);
+ 				goto xmitframe_coalesce_fail;
+ 			}
+@@ -1442,7 +1440,6 @@ s32 rtw_put_snap(u8 *data, u16 h_proto)
+ 
+ void rtw_update_protection(struct adapter *padapter, u8 *ie, uint ie_len)
+ {
+-
+ 	uint	protection;
+ 	u8 *perp;
+ 	sint	 erp_len;
+@@ -1572,7 +1569,6 @@ struct xmit_buf *rtw_alloc_xmitbuf_ext(struct xmit_priv *pxmitpriv)
+ 	if (list_empty(&pfree_queue->queue)) {
+ 		pxmitbuf = NULL;
+ 	} else {
+-
+ 		phead = get_list_head(pfree_queue);
+ 
+ 		plist = get_next(phead);
+@@ -1641,7 +1637,6 @@ struct xmit_buf *rtw_alloc_xmitbuf(struct xmit_priv *pxmitpriv)
+ 	if (list_empty(&pfree_xmitbuf_queue->queue)) {
+ 		pxmitbuf = NULL;
+ 	} else {
+-
+ 		phead = get_list_head(pfree_xmitbuf_queue);
+ 
+ 		plist = get_next(phead);
+@@ -1896,7 +1891,6 @@ void rtw_free_xmitframe_queue(struct xmit_priv *pxmitpriv, struct __queue *pfram
+ 	plist = get_next(phead);
+ 
+ 	while (phead != plist) {
+-
+ 		pxmitframe = LIST_CONTAINOR(plist, struct xmit_frame, list);
+ 
+ 		plist = get_next(plist);
+@@ -2034,7 +2028,6 @@ s32 rtw_alloc_hwxmits(struct adapter *padapter)
+ 
+ 		hwxmits[4] .sta_queue = &pxmitpriv->be_pending;
+ 	} else if (pxmitpriv->hwxmit_entry == 4) {
+-
+ 		hwxmits[0] .sta_queue = &pxmitpriv->vo_pending;
+ 
+ 		hwxmits[1] .sta_queue = &pxmitpriv->vi_pending;
+@@ -2190,7 +2183,6 @@ inline bool xmitframe_hiq_filter(struct xmit_frame *xmitframe)
+ 	struct registry_priv *registry = &adapter->registrypriv;
+ 
+ 	if (registry->hiq_filter == RTW_HIQ_FILTER_ALLOW_SPECIAL) {
+-
+ 		struct pkt_attrib *attrib = &xmitframe->attrib;
+ 
+ 		if (attrib->ether_type == 0x0806
 -- 
-2.19.1
+2.20.1
 
 
