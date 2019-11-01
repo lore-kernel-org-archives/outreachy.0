@@ -1,156 +1,161 @@
 X-GM-THRID: 6754188364413403136
-X-Received: by 2002:a17:906:5015:: with SMTP id s21mr8096865ejj.226.1572593574265;
-        Fri, 01 Nov 2019 00:32:54 -0700 (PDT)
+X-Received: by 2002:a05:620a:1346:: with SMTP id c6mr5052532qkl.236.1572582135500;
+        Thu, 31 Oct 2019 21:22:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:f092:: with SMTP id v18ls803573edl.9.gmail; Fri, 01 Nov
- 2019 00:32:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz0e4/gPm+SaqeWH74nAE/LJvEZv+u5FrHlkc/KrgmO09H8xbIriZAdpm89Eqly1XP+T8SC
-X-Received: by 2002:aa7:c590:: with SMTP id g16mr11023262edq.292.1572593573241;
-        Fri, 01 Nov 2019 00:32:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572593573; cv=none;
+Received: by 2002:ae9:ee02:: with SMTP id i2ls1702291qkg.8.gmail; Thu, 31 Oct
+ 2019 21:22:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwk3jawa8MErOkG7jaj72bffKCe+0fgd5SAw2HhMNDdbYkDzHxCm6Ksq/lhg+MuRX6MGfd0
+X-Received: by 2002:a05:620a:20d2:: with SMTP id f18mr1316162qka.474.1572582134298;
+        Thu, 31 Oct 2019 21:22:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572582134; cv=none;
         d=google.com; s=arc-20160816;
-        b=kBATiO7WKo66liI/THhhOOHeAQuGb6A7hK/sA0wQlPOZrtXRxvr1a7IlqCm08uqWPb
-         dPMwdCfPezwQQ6iBbez+topNZV8S2+KGyHooHwOILN1EPjvZ5xRUqjYzAWPSIXAYVhlf
-         qNRrZNPAM3PQ+kZn0/vqLLLy2iZepFC1mDGplkv5HXJoP74Kwqb6b/Bq8sch80cFFXVs
-         D5uRRhFdebv34lCt0LGyOu7BbMkNnuwamhvWZ3fiv+9LRUJ7eUuhXBCiI60RZaZk7ly7
-         yoRzwwfdDnX0ZJhphNkg66vWUYTRmzicGYQyqyfKahi6B+BB4iTCtFd994F8KvOACEkA
-         eVKw==
+        b=D20DzZkq3PW9rQpGTCS0Z8ob8BwAP+xM/hDvMHwRhh2Vrw01/qgmBNZsaEHF+JpRhZ
+         yv8IUZ1FhKGz1O+sMAh8WJIl8Z0GIXB6z2migLO+AsIn/o9LON3YLSTixvZdWetEjxnM
+         7+MWDG/wzZOKjJT8TXwYnjiey1jaD2rkKaCSe1vY9YkiNWWkGNrFt4atvS2BNhT81cWb
+         C1YX+CE9T3GxbZMwQ6gE/3r65ADQgyI6ZwT88l1fd3352N1KSY3YuHN3IEIVSKbAMfaA
+         6RcQaCSrEToSvN4ZpbLbpJrTgB2PfXigdJZmtXmYMLZpY4M7u3vFTMchMJI3l3xKiOOn
+         rUXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=fAbsL7MKGYheg3t7sB4oyJsPA/ZOv5l+Kaa0oka4W54=;
-        b=WiqrQkJ1scw26H9zDIHsdNXVRl7zMYdw2hAOUM8kPz1yKzluHq2I34P+7hj4tiAQGt
-         f0URWLibaIjKsr8UzOmtEMkYrBS3gnTEnWRqkY3BzKVnAkno7jrmLvonBadFy0VSntM1
-         xUroL2BXB/kqz5J8A9lZBvbZSdb+ZiJGI5nUdBRY5+dmqEdz/9jq4u2JJDnB3YELhco1
-         Xy52mlz12ALu3uxByOCIY2MUguaY8pt4P91nl7Y+zhk0qNFWA2ax5rbb1ihMsGdFeC2l
-         5Nov9XicLWiODvChKKVOQkc0rjsT95xoHvxbYVzXImbD3MRFOfTCXmYn9+kQ9TNEtGJU
-         L5hw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ogoDgA9T8tBDwueoLj8X8XsBkM5YdSQ1V625NJKi9dM=;
+        b=VtfnE8+W9a+dndo8Jm4+3S9NaI7CuQoKlX2eOH/EQGVP90tk3avyT0quJ+o7vFV3la
+         7sYuo8jPWWcAA/xIav8C4ypwOoAkASxEV6MLrdWw/vIN9S5UP/heD2R8v4aG4bNouZEj
+         inLFsoLxPC/BV1XC0PfOjJfGaO53lztX9laAxVgk/SpwBYGNNn3dvMiQ7P9DiRGg5BAO
+         kxJYi56GhMUN7vqzQ8p7TdTn5RO41MXAv8xgBjoosV83GiOuzN5h1ZDPHbY+haPKcSIZ
+         YvT8tcZYOrxFOpcCkzkSHQVSn34vdSg4IoJMje+hxc84tIm9M1eVqv8ZVhuo3VkTcZkV
+         dQ1Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id c31si468662edb.0.2019.11.01.00.32.53
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=Ynv1t1mP;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-vs1-xe43.google.com (mail-vs1-xe43.google.com. [2607:f8b0:4864:20::e43])
+        by gmr-mx.google.com with ESMTPS id z41si467845qtj.1.2019.10.31.21.22.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Nov 2019 00:32:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 31 Oct 2019 21:22:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e43 as permitted sender) client-ip=2607:f8b0:4864:20::e43;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.68,254,1569276000"; 
-   d="scan'208";a="325305952"
-Received: from abo-45-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.45])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Nov 2019 08:32:52 +0100
-Date: Fri, 1 Nov 2019 08:32:52 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
-    saiprakash.ranjan@codeaurora.org, joel@joelfernandes.org, 
-    Forest Bond <forest@alittletooquiet.net>
-Subject: Re: [Outreachy kernel] [PATCH 1/3] staging: vt6655: Fix parameters
- alignment issues
-In-Reply-To: <5a5fc17ab55b41928df8c6097ca57ad4ae4fbfed.1572581578.git.frank@generalsoftwareinc.com>
-Message-ID: <alpine.DEB.2.21.1911010831480.2883@hadrien>
-References: <cover.1572581578.git.frank@generalsoftwareinc.com> <5a5fc17ab55b41928df8c6097ca57ad4ae4fbfed.1572581578.git.frank@generalsoftwareinc.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=Ynv1t1mP;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-vs1-xe43.google.com with SMTP id j85so5578561vsd.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 21:22:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=ogoDgA9T8tBDwueoLj8X8XsBkM5YdSQ1V625NJKi9dM=;
+        b=Ynv1t1mP5w+HRltI8MpBH/rhMTlm0rTJ9vZS4nbP0mfwbmmnE6GkUlNNDSPy8bRPtu
+         m4F1GEzeuZVkoqQgdHh3ks4Cu/CTbt7brDTHYbXIRAMqAH2AIWZRR//9LGGqIc37+OhH
+         FbgIqRoPFYaVKejLXYM+JkWG3qntsxlD6vboNfYbmE42KZ79kZI4UxKWT8Ysb2l6XPuB
+         WyJ2OvMnU1YOuKtsbZRws5NJqJXccqdhwyZTJoW/TMr7t2foG0M75U2QEcoMNH6qaF0u
+         8cgpkGUxgILdD2IRZai6Ac616m2voWgHDpp2XiLDYR6509noOjwK+B+i7Kq0GHgQw0i+
+         vMLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=ogoDgA9T8tBDwueoLj8X8XsBkM5YdSQ1V625NJKi9dM=;
+        b=eI0o9pgZm/Hh/7Md3uXTEh1Ho7G/yZBG+hN4FTSHWJg4orz68kbNRb1Qyj85gaAowi
+         6o4hI0UEcBoKQRX9rML7NlqTZTbgu0sbpqWowmy2Uax8E0ifeZzY9oWeJvWXIqCe9sEC
+         HcF89vAJETMIbmRXJ7KpqS+s2BJ3puPmS+3hADT3JyOpVMMetQWzigyvEd+4HE4Q2vrk
+         KcfzHIXdoQ7wnmjxjMUMpIAR+9o3NqwmTQjMUU7b9PYGp0y+vOIx9wty0J62kWXozjMm
+         wUKkJqeZjpszgSDGLIjFdOEwqm7ldxyLaFY7yJVkxO629kju4ZRlir60ScDlZq0m+7iF
+         V61A==
+X-Gm-Message-State: APjAAAXcDfkepnJyAURHLwMMtQEjXd7LZYIKUOIZXOfjmaZMnnwr9G9Y
+	GBs1R7n26jLt8YlS1amC9e9biw==
+X-Received: by 2002:a67:7ac5:: with SMTP id v188mr4847285vsc.191.1572582133773;
+        Thu, 31 Oct 2019 21:22:13 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from linux-kernel-dev ([167.160.113.12])
+        by smtp.gmail.com with ESMTPSA id i10sm1769986vsk.8.2019.10.31.21.22.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 31 Oct 2019 21:22:13 -0700 (PDT)
+Date: Fri, 1 Nov 2019 04:22:10 +0000
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org, Forest Bond <forest@alittletooquiet.net>
+Subject: [PATCH 3/3] staging: vt6655: Fix open ended lines
+Message-ID: <58998c223442e324c405292e1b0d5a734c1dd1e7.1572581578.git.frank@generalsoftwareinc.com>
+References: <cover.1572581578.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1572581578.git.frank@generalsoftwareinc.com>
+User-Agent: NeoMutt/20171215
 
+checkpatch message:
+CHECK:OPEN_ENDED_LINE: Lines should not end with a '('
 
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
+---
+ drivers/staging/vt6655/power.c | 10 ++--------
+ drivers/staging/vt6655/rf.h    | 19 +++++--------------
+ 2 files changed, 7 insertions(+), 22 deletions(-)
 
-On Fri, 1 Nov 2019, Frank A. Cancio Bello wrote:
+diff --git a/drivers/staging/vt6655/power.c b/drivers/staging/vt6655/power.c
+index 9725de3bca6a..bfd598a93b04 100644
+--- a/drivers/staging/vt6655/power.c
++++ b/drivers/staging/vt6655/power.c
+@@ -97,10 +97,7 @@ void PSvEnablePowerSaving(struct vnt_private *priv,
+  *
+  */
+ 
+-void
+-PSvDisablePowerSaving(
+-	struct vnt_private *priv
+-)
++void PSvDisablePowerSaving(struct vnt_private *priv)
+ {
+ 	/* disable power saving hw function */
+ 	MACbPSWakeup(priv);
+@@ -126,10 +123,7 @@ PSvDisablePowerSaving(
+  *
+  */
+ 
+-bool
+-PSbIsNextTBTTWakeUp(
+-	struct vnt_private *priv
+-)
++bool PSbIsNextTBTTWakeUp(struct vnt_private *priv)
+ {
+ 	struct ieee80211_hw *hw = priv->hw;
+ 	struct ieee80211_conf *conf = &hw->conf;
+diff --git a/drivers/staging/vt6655/rf.h b/drivers/staging/vt6655/rf.h
+index 042ac67a9709..affb70eba10f 100644
+--- a/drivers/staging/vt6655/rf.h
++++ b/drivers/staging/vt6655/rf.h
+@@ -61,23 +61,14 @@
+ 
+ bool IFRFbWriteEmbedded(struct vnt_private *priv, unsigned long dwData);
+ bool RFbSelectChannel(struct vnt_private *priv, unsigned char byRFType, u16 byChannel);
+-bool RFbInit(
+-	struct vnt_private *priv
+-);
++bool RFbInit(struct vnt_private *priv);
+ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType, u16 uChannel);
+ bool RFbSetPower(struct vnt_private *priv, unsigned int rate, u16 uCH);
+-bool RFbRawSetPower(
+-	struct vnt_private *priv,
+-	unsigned char byPwr,
+-	unsigned int rate
+-);
++bool RFbRawSetPower(struct vnt_private *priv, unsigned char byPwr,
++		    unsigned int rate);
+ 
+-void
+-RFvRSSITodBm(
+-	struct vnt_private *priv,
+-	unsigned char byCurrRSSI,
+-	long    *pldBm
+-);
++void RFvRSSITodBm(struct vnt_private *priv, unsigned char byCurrRSSI,
++		  long *pldBm);
+ 
+ /* {{ RobertYu: 20050104 */
+ bool RFbAL7230SelectChannelPostProcess(struct vnt_private *priv, u16 byOldChannel, u16 byNewChannel);
+-- 
+2.17.1
 
-> checkpatch message:
-> CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
->
-> Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
-> ---
->  drivers/staging/vt6655/card.h        | 2 +-
->  drivers/staging/vt6655/device_main.c | 8 +++++---
->  drivers/staging/vt6655/rxtx.c        | 5 +++--
->  3 files changed, 9 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
-> index 887c1692e05b..25867cb9d13d 100644
-> --- a/drivers/staging/vt6655/card.h
-> +++ b/drivers/staging/vt6655/card.h
-> @@ -45,7 +45,7 @@ void CARDvSetRSPINF(struct vnt_private *priv, u8 bb_type);
->  void CARDvUpdateBasicTopRate(struct vnt_private *priv);
->  bool CARDbIsOFDMinBasicRate(struct vnt_private *priv);
->  void CARDvSetLoopbackMode(struct vnt_private *priv,
-> -			   unsigned short wLoopbackMode);
-> +			  unsigned short wLoopbackMode);
->  bool CARDbSoftwareReset(struct vnt_private *priv);
->  void CARDvSetFirstNextTBTT(struct vnt_private *priv,
->  			   unsigned short wBeaconInterval);
-> diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-> index 082302944c37..ab7b690c622d 100644
-> --- a/drivers/staging/vt6655/device_main.c
-> +++ b/drivers/staging/vt6655/device_main.c
-> @@ -133,7 +133,8 @@ static int device_init_td1_ring(struct vnt_private *priv);
->  static int  device_rx_srv(struct vnt_private *priv, unsigned int idx);
->  static int  device_tx_srv(struct vnt_private *priv, unsigned int idx);
->  static bool device_alloc_rx_buf(struct vnt_private *, struct vnt_rx_desc *);
-> -static void device_free_rx_buf(struct vnt_private *priv, struct vnt_rx_desc *rd);
-> +static void device_free_rx_buf(struct vnt_private *priv,
-> +			       struct vnt_rx_desc *rd);
->  static void device_init_registers(struct vnt_private *priv);
->  static void device_free_tx_buf(struct vnt_private *, struct vnt_tx_desc *);
->  static void device_free_td0_ring(struct vnt_private *priv);
-> @@ -295,7 +296,8 @@ static void device_init_registers(struct vnt_private *priv)
->  	/* Get Desire Power Value */
->  	priv->byCurPwr = 0xFF;
->  	priv->byCCKPwr = SROMbyReadEmbedded(priv->PortOffset, EEP_OFS_PWR_CCK);
-> -	priv->byOFDMPwrG = SROMbyReadEmbedded(priv->PortOffset, EEP_OFS_PWR_OFDMG);
-> +	priv->byOFDMPwrG = SROMbyReadEmbedded(priv->PortOffset,
-> +					      EEP_OFS_PWR_OFDMG);
-
-The change here seems to be an 80 column issue, not what was mentioned in
-the commit log.
-
-julia
-
->
->  	/* Load power Table */
->  	for (ii = 0; ii < CB_MAX_CHANNEL_24G; ii++) {
-> @@ -373,7 +375,7 @@ static void device_init_registers(struct vnt_private *priv)
->  	priv->bRadioOff = false;
->
->  	priv->byRadioCtl = SROMbyReadEmbedded(priv->PortOffset,
-> -						 EEP_OFS_RADIOCTL);
-> +					      EEP_OFS_RADIOCTL);
->  	priv->bHWRadioOff = false;
->
->  	if (priv->byRadioCtl & EEP_RADIOCTL_ENABLE) {
-> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-> index a14908895b9e..37fcc42ed000 100644
-> --- a/drivers/staging/vt6655/rxtx.c
-> +++ b/drivers/staging/vt6655/rxtx.c
-> @@ -1289,7 +1289,7 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
->
->  	current_rate = rate->hw_value;
->  	if (priv->wCurrentRate != current_rate &&
-> -			!(priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)) {
-> +	    !(priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)) {
->  		priv->wCurrentRate = current_rate;
->
->  		RFbSetPower(priv, priv->wCurrentRate,
-> @@ -1396,7 +1396,8 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
->  		tx_key = info->control.hw_key;
->  		if (tx_key->keylen > 0)
->  			vnt_fill_txkey(hdr, tx_buffer_head->tx_key,
-> -				tx_key, skb, tx_body_size, td_info->mic_hdr);
-> +				       tx_key, skb, tx_body_size,
-> +				       td_info->mic_hdr);
->  	}
->
->  	return 0;
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/5a5fc17ab55b41928df8c6097ca57ad4ae4fbfed.1572581578.git.frank%40generalsoftwareinc.com.
->
 
