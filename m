@@ -1,83 +1,83 @@
 X-GM-THRID: 6754207479593172992
-X-Received: by 2002:a05:6830:13cc:: with SMTP id e12mr7329241otq.46.1572586537207;
-        Thu, 31 Oct 2019 22:35:37 -0700 (PDT)
+X-Received: by 2002:a9d:2261:: with SMTP id o88mr7064758ota.56.1572586509376;
+        Thu, 31 Oct 2019 22:35:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:5f56:: with SMTP id t83ls1262621oib.5.gmail; Thu, 31 Oct
- 2019 22:35:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxMVHqydoPQkWvsRpX1J8+7/Om8VKyoLKYwuNF0uH32csMZljP7D5g7s0GPaeNCfy4+STPk
-X-Received: by 2002:a05:6808:992:: with SMTP id a18mr1668781oic.82.1572586536338;
-        Thu, 31 Oct 2019 22:35:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572586536; cv=none;
+Received: by 2002:a9d:740e:: with SMTP id n14ls1311534otk.10.gmail; Thu, 31
+ Oct 2019 22:35:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzykt3/tYko9HMYP43mosl0SJGuAsJn81DJcXQeSbxmBcWrGIIpQYWKCZd7989F00KBPiXO
+X-Received: by 2002:a05:6830:1293:: with SMTP id z19mr7342869otp.222.1572586507955;
+        Thu, 31 Oct 2019 22:35:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572586507; cv=none;
         d=google.com; s=arc-20160816;
-        b=LC8vK2aLFAGpeGdphQ/dwHDfDpkg6Po6XmoQ/sbUtHvQkr38dTMjtwG3tosbXKTkz0
-         p28wIGOTuUnEAGZvL6MxwDvXWNLPmCHnfbHewpv+IO872tJc4TdQsuUh/T/dQlIMNEg2
-         Rq9DzMlrwPqtefmaCf/eWae4wA5jogwK8RP8S1Wk464L//yFEgfg0FftettdTO6SQvio
-         5ycxrxx3ssNEBgke9n6MFXSsDqojyxk8Z4Gy0K61oT9Ur+9im3vTj4jb1Z04MJ1umZ02
-         /wD2dwdJb9fic9wBLQxJLEJWB8WXbeDfT6KD9g8vaVhx1liwyjywpiFqOm5AgzgTDkF/
-         9Q0Q==
+        b=g2GHmlfSUK47g0KD38zR3q7XIBaEPwoaK4a015g/+LqeV1pcewicGRwI++yyho1nz9
+         1VLAS0fCWVJqqNQxDFHyCkeu7ynYpWsR7PKmLV8tZ6Cne2BYu4uVYpFXMxV3xHKEI7rx
+         962bIAFYP+G1KJkKdzyfLHnSQHAj0MUKKq1k0wtkX56MFzG05FyjnWTCKf99OLm9VZgw
+         wJY5/r4PPJoIF5I7Jiv8x9OXHW/NfjWAyAf7KuBnqPAaJvj+CS+O31F1iIkWpLagwWoy
+         uARdm0thWALGXtBOHuMBKlgJPXn2XGZwuYxXO3Iv5yCYqedX9BiCUQbFOJtP0Ao3AVCh
+         ouPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Pf/SCXkM8DJDn0qjaqq+4niIwLiTDfPt/HUqJ5en1dQ=;
-        b=EopLLG8JpPg95eE/CrrGkcJn5RgO5GzsnojIymxiKfrl3RNoEv2qDjQ9Qbn/Oqf+Xd
-         dtP3mLXuweUA1Za0iWIgIVC3m0sW+eSTs2yZxN7m1uM/vmLhS9ldrwP6x03wHxB4Pwvb
-         1dAo0K9Cwaj/GNJsiqWYSSD/blCIAZzXpI+5b5gHZ9U5fUgPm81giwZS2NppuD2UveLP
-         +kJ4WBhU+CDVHGdtmPjBnNBBcfENAcRu2dGMBrKPPpvsFHeO/ZDOg4tOQczrYUow9jsq
-         ueO7z0l5Qj8NUfgFslMGzW5Em2oy+XTffCe6KPm8g+FRSvputLC8r4Bn5ddzj0a26jQN
-         7OlQ==
+        bh=hy2ncqqEenhNqXiFbrWH36EWB8leJtFEe/ei55C0YNY=;
+        b=iYBx4TuwRNLq3bEFcb+S15WwKoKK62CwUy6uR5rr6++hmZuzdzaFzNsRzVzu0/ZADy
+         savqUx2hLqvS3sp2ahB1na4wgIN/BJbAmbmSnEgDNoApnqw/c6Ot5OrPuL3q0XFvxji+
+         3d9mNpNeqVRPanWP+/tLzfZfoexe/+L/yzDpta8Ehyr2MsPC7MTeyBWaui3CN7bjvqic
+         lQk6y+6jLRtH5OlSByf0Lc4SNXC7Gcsdk4RnP6fiH3g9UEWPHpUf03qZzjFNi9sJGD8I
+         pACCYse0vmJ7ClcNWABWpQIQMdLpKGo/26c8E8BE+q8mOcrg5uMr0BPSOx71SnoWgHhR
+         BKdQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=aDwJETe2;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=UCijWBzO;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a43 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
 Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com. [2607:f8b0:4864:20::e42])
-        by gmr-mx.google.com with ESMTPS id 144si371735oii.2.2019.10.31.22.35.36
+Received: from mail-vk1-xa43.google.com (mail-vk1-xa43.google.com. [2607:f8b0:4864:20::a43])
+        by gmr-mx.google.com with ESMTPS id j19si487679oij.5.2019.10.31.22.35.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 31 Oct 2019 22:35:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e42 as permitted sender) client-ip=2607:f8b0:4864:20::e42;
+        Thu, 31 Oct 2019 22:35:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a43 as permitted sender) client-ip=2607:f8b0:4864:20::a43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=aDwJETe2;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-vs1-xe42.google.com with SMTP id v10so5670326vsc.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 22:35:36 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=UCijWBzO;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::a43 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-vk1-xa43.google.com with SMTP id r85so1947945vke.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 22:35:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=Pf/SCXkM8DJDn0qjaqq+4niIwLiTDfPt/HUqJ5en1dQ=;
-        b=aDwJETe2LHxdu8pNDTXgsLGs3+pK7sNHYJSNtuM8m7yq7WoypJ+putQ731DPIpHhWf
-         RLb+YBA1CX6cmiRU70ay4qviTqy2DM/RuQeyZriyHy+ZJfl8EbF8rmcO/V9WnzXwWNXY
-         XOGhrQ5FX1Py3PEtnsH3xVLBzXBaIdwuzObjhkKuY/q4755JqWVXM1lZ8seTcJH6lh/K
-         hOxSrdcdpxyz99BKBDijLxjIBhQWU2zYVw6cqNu3SsGkmGR/69rfAwbeaA4dy+V+pFY+
-         /kEg7R8r6PCyfwsAJB6tCa+DhLYHZyfC/d3CeID6nZmtS1nLayuX3g6Usu14yh+N3dVo
-         Zjug==
+        bh=hy2ncqqEenhNqXiFbrWH36EWB8leJtFEe/ei55C0YNY=;
+        b=UCijWBzO+nYfEgs3qV/VDjtU8/+KBbbRIiwu6DGOVTKLdPgPLMrhPaLNrnEccAPhqR
+         alADzcA6oRj2RnXw6YZ+iWCihP/KeYG6ti+3jghGogKfOySSc7hhGKBel+FA8EWngr5l
+         z8dj4EllDa4te9DdZyemnU8hAbNPWkZ0e8NSFGipMQeZdAmuobBgdSgKcTi108DGD0+Q
+         RW7hsSyZKVwn9hXc+SwWgmTVqgUT+fWzdHD0+vOO1ULn4i1F9kHwnKMVmzbBeXOZtZgh
+         1O8Qh1cuturJ0IQzA1v7dM5Wi39lqCEq5aKvayJsHYL5FsGYTGxlBZ1S8BnpGl6I38IE
+         QUEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Pf/SCXkM8DJDn0qjaqq+4niIwLiTDfPt/HUqJ5en1dQ=;
-        b=eR4SN/naNF1TckHvvQ3iKTVyR8RKwUxXJXJBE+b8QSS/8VIHRwIsjCclwNJWKzzDtx
-         UlGz52LUGitg9U+e5YkKRcVWmUugiq6sqQ4dTF/QUo+KzqY/NgHLJ53R92BQPU9TtMT1
-         xKp3sxVMpCsg/PW7OrOq+6xzsUHzxsfBk/UN2Qj0zR/n1R73s4hbH0oFfhMDucR4ckkE
-         ECJm9FxcgriTLYKP5S92c6mYYATBDpKEF1m6y5Kl/lRjZGvjCNKmdDS2t8NILx8xLcTO
-         rIVMqfNttwDVKQ72Lbs06743YRacbSfXU+hNrFE4C+IVE8/HusiVeDZ7FqHCYi+y+j0T
-         M/3A==
-X-Gm-Message-State: APjAAAUKSa6EMwN2ytKhmJXiLy8CW7QBbNDyWMoTKiiMHjUwgCO4J/2e
-	Vp7bMPfWvJbr0rzyPGjnsZyyNA==
-X-Received: by 2002:a67:f90c:: with SMTP id t12mr63559vsq.37.1572586535685;
-        Thu, 31 Oct 2019 22:35:35 -0700 (PDT)
+        bh=hy2ncqqEenhNqXiFbrWH36EWB8leJtFEe/ei55C0YNY=;
+        b=N3I2LjK5Phz1EqssXOM1mAseEKq0c28pxh3Wj0EIIq5btqp0SIBzdmIch5kqU9ZJWc
+         RbSyTFDDURMcj9ii0p5pZSV49K2wTadleIOlqAO7a8CVsH0ZGNQLJqIDW2ybcXT1rDkw
+         poSOdIxSJRvkjHkPvcmwB22edqp5h5W9+HCC1Qm/pFn+eRwN0c/GBqF0TwyZFb54inqb
+         TXrr9t5Be9Wb83ZWzxk779qxaHYCgi43Z8uNY/G/bDBRCQYjd6sD366WcYq3xEdVFdwd
+         X8xQFLdoOlHDcKRwTH245v0e8ikF5R2pdMINAPpDbCZ1m8K2BWOC+AYni2gHnlsZuh7L
+         mNzw==
+X-Gm-Message-State: APjAAAXiBMlNnyk4a/JB2KAAxtRt8CD2DprcSXn8LFjB6ntdslmNyA3K
+	YKSS+MuZTceYwDhqFeFN9xvdmDDAS29fqQWD
+X-Received: by 2002:a1f:21ce:: with SMTP id h197mr4450877vkh.84.1572586507018;
+        Thu, 31 Oct 2019 22:35:07 -0700 (PDT)
 Return-Path: <frank@generalsoftwareinc.com>
 Received: from linux-kernel-dev ([167.160.113.12])
-        by smtp.gmail.com with ESMTPSA id b17sm1730613vkf.33.2019.10.31.22.35.34
+        by smtp.gmail.com with ESMTPSA id l19sm1604595vso.9.2019.10.31.22.35.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Oct 2019 22:35:35 -0700 (PDT)
-Date: Fri, 1 Nov 2019 05:35:32 +0000
+        Thu, 31 Oct 2019 22:35:06 -0700 (PDT)
+Date: Fri, 1 Nov 2019 05:35:02 +0000
 From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
 	joel@joelfernandes.org, Valdis Kletnieks <valdis.kletnieks@vt.edu>
-Subject: [PATCH 2/2] staging: exfat: Fix logical operation continuation
-Message-ID: <4c1e92802ad82567fb312bce096386d3285196c1.1572586238.git.frank@generalsoftwareinc.com>
+Subject: [PATCH 1/2] staging: exfat: Fix parameters alignment issues
+Message-ID: <314b86b2ed6ef4d12e93bffc14f3eba87203d027.1572586238.git.frank@generalsoftwareinc.com>
 References: <cover.1572586238.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -85,41 +85,37 @@ Content-Disposition: inline
 In-Reply-To: <cover.1572586238.git.frank@generalsoftwareinc.com>
 User-Agent: NeoMutt/20171215
 
-checkpatch.pl message:
-"CHECK:LOGICAL_CONTINUATIONS: Logical continuations should be on the
-previous line"
+checkpatch message:
+CHECK:PARENTHESIS_ALIGNMENT: Alignment should match open parenthesis
 
 Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/exfat/exfat_super.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/staging/exfat/exfat_core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
-index 3a7a10dbded4..3e19d5d7ef20 100644
---- a/drivers/staging/exfat/exfat_super.c
-+++ b/drivers/staging/exfat/exfat_super.c
-@@ -2980,8 +2980,8 @@ static int exfat_setattr(struct dentry *dentry, struct iattr *attr)
+diff --git a/drivers/staging/exfat/exfat_core.c b/drivers/staging/exfat/exfat_core.c
+index f71235c6a338..8e4df399d91b 100644
+--- a/drivers/staging/exfat/exfat_core.c
++++ b/drivers/staging/exfat/exfat_core.c
+@@ -1503,7 +1503,7 @@ void fat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
+ }
  
- 	pr_debug("%s entered\n", __func__);
+ void exfat_delete_dir_entry(struct super_block *sb, struct chain_t *p_dir,
+-		s32 entry, s32 order, s32 num_entries)
++			    s32 entry, s32 order, s32 num_entries)
+ {
+ 	int i;
+ 	sector_t sector;
+@@ -1919,7 +1919,8 @@ s32 write_whole_entry_set(struct super_block *sb, struct entry_set_cache_t *es)
  
--	if ((attr->ia_valid & ATTR_SIZE)
--		&& (attr->ia_size > i_size_read(inode))) {
-+	if ((attr->ia_valid & ATTR_SIZE) &&
-+	    attr->ia_size > i_size_read(inode)) {
- 		error = exfat_cont_expand(inode, attr->ia_size);
- 		if (error || attr->ia_valid == ATTR_SIZE)
- 			return error;
-@@ -2990,8 +2990,8 @@ static int exfat_setattr(struct dentry *dentry, struct iattr *attr)
- 
- 	ia_valid = attr->ia_valid;
- 
--	if ((ia_valid & (ATTR_MTIME_SET | ATTR_ATIME_SET | ATTR_TIMES_SET))
--		&& exfat_allow_set_time(sbi, inode)) {
-+	if ((ia_valid & (ATTR_MTIME_SET | ATTR_ATIME_SET | ATTR_TIMES_SET)) &&
-+	    exfat_allow_set_time(sbi, inode)) {
- 		attr->ia_valid &= ~(ATTR_MTIME_SET |
- 				    ATTR_ATIME_SET |
- 				    ATTR_TIMES_SET);
+ /* write back some entries in entry set */
+ s32 write_partial_entries_in_entry_set(struct super_block *sb,
+-	struct entry_set_cache_t *es, struct dentry_t *ep, u32 count)
++				       struct entry_set_cache_t *es,
++				       struct dentry_t *ep, u32 count)
+ {
+ 	s32 ret, byte_offset, off;
+ 	u32 clu = 0;
 -- 
 2.17.1
 
