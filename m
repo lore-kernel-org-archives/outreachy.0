@@ -1,664 +1,405 @@
 X-GM-THRID: 6753896393761357824
-X-Received: by 2002:a9d:6288:: with SMTP id x8mr2249554otk.170.1572643325738;
-        Fri, 01 Nov 2019 14:22:05 -0700 (PDT)
+X-Received: by 2002:a0c:d09b:: with SMTP id z27mr10736487qvg.168.1572643323540;
+        Fri, 01 Nov 2019 14:22:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:5717:: with SMTP id l23ls1729166oib.1.gmail; Fri, 01 Nov
- 2019 14:22:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3AQejs2d5lLqRKlCEbEhs+K6mZu55TXNpymvzfjAmpcDrcfu/1+doPYWtsxu6P17kI0vs
-X-Received: by 2002:aca:f543:: with SMTP id t64mr10474528oih.89.1572643324806;
-        Fri, 01 Nov 2019 14:22:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572643324; cv=none;
+Received: by 2002:ae9:ee02:: with SMTP id i2ls2590925qkg.8.gmail; Fri, 01 Nov
+ 2019 14:22:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzuCFtKqEa1E0MsRdrkybm+AyfqOhImhckKyHlYxP+3J7Hio7PfymaTO7GUhM770CoHl0CW
+X-Received: by 2002:a05:620a:142a:: with SMTP id k10mr7650372qkj.268.1572643322462;
+        Fri, 01 Nov 2019 14:22:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572643322; cv=none;
         d=google.com; s=arc-20160816;
-        b=RYNueBQv8ZDRJB191G7bTjLg/GtKvrG4dibAZfjwxbKCkCOkQaHUIabHX+37JEXNV5
-         g5Vig/lwiUCVH+GyqoQajdBRALaoXUgmIylhZFs5bAUjj7RyhlIMbgcO+guKKJKmXO6c
-         C//KDyR36kf9zX39PDO9+RSeaqd3iPKSh/DOlqhC+/tc0T0PTrzOjzgzdqoIXEUvz6Y2
-         ItDdUo73gI3dhCOFK/RJ9PQv8oIDBkdWXMwYzpC/WCFoLhR6CalJbAc5rLFauav6VM4R
-         ZNrqUZlrMcpM4uKZBTzRn/2LYD0hP7EhoJngDtZ/o6Re+HFd9bcnzi/TCksD32cX+Gt7
-         RFgA==
+        b=FJqMffdMDbQ3hpRQ0z/VTBnHu6S7w/LIwUlq94TppU0IqPO0fPCiEAspB3zj4u/eLu
+         gu7jslEhBnJb4xTPmEODzGY1sWJqP/cZh+mlfD7v6h4tTVTWBCQIH3Vn/KMSE2aibmx8
+         31pCaXvKB4oY7T1MBEN8et+PwRL3zbd3yDrg21RtgIqJ1O8CcG3VSkpqOAL/wNwyA99P
+         d0uRlUe5vZ4tZGWInaA1WC9Gs84DI2gaqiFq2FRdIU10BthcOkil6ynTjaCYOwgWZqea
+         Wsn+pz7MNbIR/9uAY/ASELtAuPd4xlvYsTt1RfY1ZUVTZuicxjL9N1Bb1CVHP3ZIhYa2
+         XYxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=Nfgcty++pod3M9wy1HURJ0tRsluPbtSd8Pug8tg6Nio=;
-        b=mvRBIBA/zMKM3c1ecUkKQfl8ANG8kX6ZyYc2gJulyPhc9/R1un+/pPkQabkI8AScPt
-         pgq9Vgk563EomRN52yBaV9kQlW1BqQ/kw6VgMA7VdH0KQLmZamocleUMs/V0fpUTw0PT
-         gjtnmzkawCmsPhqrkHbdmfkbLg0zGmzGJ55D+zeSL33Dc6/GOJUsA453g473ShaUE+dE
-         QBzdp1f8ZngJPP5y++N1/bhVq22Eq6INwkvw3Kru5Jj5Sjkk4kyml6JaH6TqUD2FNGJo
-         1AzFn/oovEwn1cy9u+xx6RzKsFMlPTbKn4s2UuY1W8ZxFVMWzPUoMFKI8MAs9ZYzB2WP
-         w9Wg==
+        bh=sM2gT+qaOa7Wn/Zfa3RBKoLa022i4fgFkbgXO8TsuvI=;
+        b=mtD6UfdDKUJUb/nrMAto3O4bvyZ5NxPyk87UQh7sGwz+Vem06CZ9scS8NmO9g2agvK
+         pBCWHvCtG3hhKqjDKl0llr9QivtlFsKeejtJP6dzDCjffqaRMrP6vDeiak6jy0JUXPOL
+         hKERNLrEqmDZ7mqvRKnQ0YWAGRSpnAK0NIrThWeRGe1Vrn1eQURBJ5D2imHQdooXDR5M
+         MA30WhP8CALx5sKH4VaxgiD/TOmiouTW2zwCo4jm/QdyLEObwyShNXkgBS7KZDl7SFuT
+         nUpXnjCymPxFL/3kodMyToj+mK797nzcVpx3JwG6zsJFHqBZrHsz+Q458jewNv51qJZS
+         USeQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rjxfWlue;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rbZ9+ytl;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
-        by gmr-mx.google.com with ESMTPS id 144si507035oii.2.2019.11.01.14.22.04
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id y41si627650qtb.5.2019.11.01.14.22.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 14:22:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
+        Fri, 01 Nov 2019 14:22:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rjxfWlue;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rbZ9+ytl;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52a.google.com with SMTP id j22so7243674pgh.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 14:22:04 -0700 (PDT)
+Received: by mail-pg1-x541.google.com with SMTP id f19so7210474pgn.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 14:22:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=Nfgcty++pod3M9wy1HURJ0tRsluPbtSd8Pug8tg6Nio=;
-        b=rjxfWluef5Iz3kG0kUxzGagRTbNIc1pabO4+ngFyoLdfdA45VJ7JW0Jp1hcmIJ6rVd
-         sI6/RAvQCBCXS67zq00j2Bzq5FQc/Kngj7EpScryglZpd2+4tE5hq8zYcSNyz7QvfH0e
-         cR/2hIfWLimDO+N9ljsgMO4jX17dof2AoukCG2vVPLCFI9zxPSl97wgyTxm47e8HnPCU
-         5idknH+5ANla69sGYlnx6JWuxoT73lYrxGiZIJEwXKhqjl3zZ+d1TgF+MG0gCUhTz4p7
-         YC14cz9qwSc5pbQ9mX8OMH1BHtmNSL4hqUXCJM0d14JiE/Lj+wi2HilRNfwIR8crdX4R
-         4Yig==
+        bh=sM2gT+qaOa7Wn/Zfa3RBKoLa022i4fgFkbgXO8TsuvI=;
+        b=rbZ9+ytljO4z7rs2PmLzxX9A1CmfRqHdAeJXOlInLMXnElVrmTOLTapw7wmLBZvR6g
+         Q5KQD1gyvJ6YHHHEV+w72sreyAdAtK8I1lx6PCXqdWqJmVL/rdrOcXe4Xz1WnE7/loDU
+         OwtRgeH2edbYS/TOAgVjRsMuhE4085DZPtDIFqEkHISPp4Dxr8rUJcHjlfqmMO9nhRq9
+         GGNd0qXYRMJJniITYN/96Rcj21vFp4k2VKWGwlLKk7qm8GvWo0gXMV+kgYVieMUqhqBL
+         XODNVlESHs5/S9jxIBuXrH5AtppwfAKv4Yj5SCYMlEB+5G6+EWn6qYK5Iv2mbXHApRbr
+         KBrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=Nfgcty++pod3M9wy1HURJ0tRsluPbtSd8Pug8tg6Nio=;
-        b=CsrGrcc0SVB3MIfZSCuaboP3Z1lpRga5mV+QXihg47FvNaYw2JE/2O7c5PwiqY7Wuc
-         Xyt/nwrvkm3oAhJrovSjgyYZ6Bc2gwj94E2gUnuQUq6ct8OCh1u41hsNK2+fvymc4Vwx
-         RAWNT3UYuwwYr/Kwot+WhekFcaTTWjGpksvC0E6D0Y7eWYlpPmWKrEX17h5e96YDzMMj
-         ZZV2yw+zGzzXtmpKNpVwE//Xulz6vPzJUrvQTOWSX1uW3QRpnsrjGJVpXIdHfoqzx2vo
-         dktfjfLANyLt/yDEz4NPeLDQx2JNkId3tZgoXq/PUjQvMsUlX78IBqDo7uj+apjJlcp8
-         9NSQ==
-X-Gm-Message-State: APjAAAVyTyE9kmXnMXT39DN/eeFtdnFdPojxAD6ZJ/wXDsYHhSEkhjJF
-	5IywuM8Ix2YSqtmvmn9V49I=
-X-Received: by 2002:a17:90a:a4e:: with SMTP id o72mr17741288pjo.66.1572643323742;
-        Fri, 01 Nov 2019 14:22:03 -0700 (PDT)
+        bh=sM2gT+qaOa7Wn/Zfa3RBKoLa022i4fgFkbgXO8TsuvI=;
+        b=WjU1IdwWHAat37UxZ7/duNTpJJy5uTG9V7zr4pbo7yhcAmFJS6NH8HUvPhTi/dtIb7
+         GezbpXeBe8qQee9yIOfRu7H6MrrgSFqkajznntg5X2OGLjVTjUlEswW9gS3nQggk1Qug
+         EtzaY1oozQcSx1IXSQTcLvJXMOxhMNTIG2ahbQFGohPDt3kmnxe1d7HBSPpQEHMbMEwS
+         oLS4XWX7ONfiuup3hRy4Eo/OvrhGbnzR81EmUVSPqEbRlQBEmxEsHRoOFYec+lPPSHQh
+         qZAgHfKYjxKcLvfL2Sq8iwtmKJJOGUh4Af7976W0guShf7nih7APNFYh2L5RyM29bZgS
+         rVuw==
+X-Gm-Message-State: APjAAAVf4Tu0hyXvMmc+LszRHicDVTc+3QdWg1RLufFS2oAdYCo3NsFQ
+	UcXo7E006WTmFxkBq9xmw6A=
+X-Received: by 2002:aa7:8e4a:: with SMTP id d10mr15993667pfr.176.1572643321423;
+        Fri, 01 Nov 2019 14:22:01 -0700 (PDT)
 Return-Path: <jamal.k.shareef@gmail.com>
 Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id b6sm9193594pga.12.2019.11.01.14.22.03
+        by smtp.gmail.com with ESMTPSA id y22sm1279341pfn.6.2019.11.01.14.22.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 14:22:03 -0700 (PDT)
+        Fri, 01 Nov 2019 14:22:01 -0700 (PDT)
 From: Jamal Shareef <jamal.k.shareef@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: eric@anholt.net,
 	wahrenst@gmx.net,
 	gregkh@linuxfoundation.org,
 	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH v3 3/8] staging: vc04_services: Remove struct typedefs in vchi
-Date: Fri,  1 Nov 2019 14:21:41 -0700
-Message-Id: <5989023c1a64e0e5c8d56ceb0511b4f49199703d.1572642845.git.jamal.k.shareef@gmail.com>
+Subject: [PATCH v3 2/8] staging: vc04_services: Remove enum typedefs in vchi
+Date: Fri,  1 Nov 2019 14:21:40 -0700
+Message-Id: <4afc7d28ef9ad249cac3bf7c3dd453bb64b13657.1572642845.git.jamal.k.shareef@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1572642845.git.jamal.k.shareef@gmail.com>
 References: <cover.1572642845.git.jamal.k.shareef@gmail.com>
 In-Reply-To: <cover.1572642845.git.jamal.k.shareef@gmail.com>
 References: <cover.1572642845.git.jamal.k.shareef@gmail.com>
 
-Removes opaque struct typedefs from vchi files. Issue found by
-checkpatch.
+Remove enum typedefs from header files and files which include them
+in vchi. Issue found by checkpatch.
 
 Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 ---
- .../bcm2835-audio/bcm2835-vchiq.c             |  4 +-
- .../vc04_services/bcm2835-audio/bcm2835.h     |  2 +-
- .../vc04_services/bcm2835-camera/mmal-vchiq.c |  4 +-
- .../vc04_services/interface/vchi/vchi.h       | 54 ++++++------
- .../interface/vchi/vchi_common.h              |  6 +-
- .../interface/vchiq_arm/vchiq_shim.c          | 83 +++++++++----------
- 6 files changed, 76 insertions(+), 77 deletions(-)
+ .../bcm2835-audio/bcm2835-vchiq.c             |  2 +-
+ .../vc04_services/bcm2835-camera/mmal-vchiq.c |  2 +-
+ .../vc04_services/interface/vchi/vchi.h       | 20 ++++----
+ .../interface/vchi/vchi_common.h              | 18 +++----
+ .../interface/vchiq_arm/vchiq_shim.c          | 50 ++++++++-----------
+ 5 files changed, 43 insertions(+), 49 deletions(-)
 
 diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 84ece768854f..73144f1ce45e 100644
+index 5f6a73af57f9..84ece768854f 100644
 --- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
 +++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -9,7 +9,7 @@
- 
- struct bcm2835_audio_instance {
- 	struct device *dev;
--	VCHI_SERVICE_HANDLE_T vchi_handle;
-+	struct vchi_service_handle *vchi_handle;
- 	struct completion msg_avail_comp;
- 	struct mutex vchi_mutex;
- 	struct bcm2835_alsa_stream *alsa_stream;
-@@ -122,7 +122,7 @@ static void audio_vchi_callback(void *param,
+@@ -90,7 +90,7 @@ static int bcm2835_audio_send_simple(struct bcm2835_audio_instance *instance,
  }
  
- static int
--vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
-+vc_vchi_audio_init(struct vchi_instance_handle *vchi_instance,
- 		   struct bcm2835_audio_instance *instance)
+ static void audio_vchi_callback(void *param,
+-				const VCHI_CALLBACK_REASON_T reason,
++				const enum vchi_callback_reason reason,
+ 				void *msg_handle)
  {
- 	struct service_creation params = {
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-index ed0feb34b6c8..d2fe8d36ab7d 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-@@ -44,7 +44,7 @@ enum snd_bcm2835_ctrl {
- };
- 
- struct bcm2835_vchi_ctx {
--	VCHI_INSTANCE_T vchi_instance;
-+	struct vchi_instance_handle *vchi_instance;
- };
- 
- /* definition of the chip-specific record */
+ 	struct bcm2835_audio_instance *instance = param;
 diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-index 06b7be7d8872..de03b90021a8 100644
+index 1c180ead4a20..06b7be7d8872 100644
 --- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
 +++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-@@ -155,7 +155,7 @@ struct mmal_msg_context {
- };
+@@ -535,7 +535,7 @@ static void bulk_abort_cb(struct vchiq_mmal_instance *instance,
  
- struct vchiq_mmal_instance {
--	VCHI_SERVICE_HANDLE_T handle;
-+	struct vchi_service_handle *handle;
- 
- 	/* ensure serialised access to service */
- 	struct mutex vchiq_mutex;
-@@ -1814,7 +1814,7 @@ int vchiq_mmal_init(struct vchiq_mmal_instance **out_instance)
+ /* incoming event service callback */
+ static void service_callback(void *param,
+-			     const VCHI_CALLBACK_REASON_T reason,
++			     const enum vchi_callback_reason reason,
+ 			     void *bulk_ctx)
  {
- 	int status;
- 	struct vchiq_mmal_instance *instance;
--	static VCHI_INSTANCE_T vchi_instance;
-+	static struct vchi_instance_handle *vchi_instance;
- 	struct service_creation params = {
- 		.version		= VCHI_VERSION_EX(VC_MMAL_VER, VC_MMAL_MIN_VER),
- 		.service_id		= VC_MMAL_SERVER_NAME,
+ 	struct vchiq_mmal_instance *instance = param;
 diff --git a/drivers/staging/vc04_services/interface/vchi/vchi.h b/drivers/staging/vc04_services/interface/vchi/vchi.h
-index 75b1ab4919e3..05fb5c3e8ba0 100644
+index 0a353a468f34..75b1ab4919e3 100644
 --- a/drivers/staging/vc04_services/interface/vchi/vchi.h
 +++ b/drivers/staging/vc04_services/interface/vchi/vchi.h
-@@ -50,10 +50,10 @@ struct service_creation {
- };
- 
- // Opaque handle for a VCHI instance
--typedef struct opaque_vchi_instance_handle_t *VCHI_INSTANCE_T;
-+struct vchi_instance_handle;
- 
- // Opaque handle for a server or client
--typedef struct opaque_vchi_service_handle_t *VCHI_SERVICE_HANDLE_T;
-+struct vchi_service_handle;
- 
- /******************************************************************************
-  * Global funcs - implementation is specific to which side you are on
-@@ -65,64 +65,64 @@ extern "C" {
- #endif
- 
- // Routine used to initialise the vchi on both local + remote connections
--extern int32_t vchi_initialise(VCHI_INSTANCE_T *instance_handle);
-+extern int32_t vchi_initialise(struct vchi_instance_handle **instance_handle);
- 
- extern int32_t vchi_exit(void);
- 
--extern int32_t vchi_connect(VCHI_INSTANCE_T instance_handle);
-+extern int32_t vchi_connect(struct vchi_instance_handle *instance_handle);
- 
- //When this is called, ensure that all services have no data pending.
- //Bulk transfers can remain 'queued'
--extern int32_t vchi_disconnect(VCHI_INSTANCE_T instance_handle);
-+extern int32_t vchi_disconnect(struct vchi_instance_handle *instance_handle);
- 
- // helper functions
--extern void *vchi_allocate_buffer(VCHI_SERVICE_HANDLE_T handle, uint32_t *length);
--extern void vchi_free_buffer(VCHI_SERVICE_HANDLE_T handle, void *address);
--extern uint32_t vchi_current_time(VCHI_INSTANCE_T instance_handle);
-+extern void *vchi_allocate_buffer(struct vchi_service_handle *handle, uint32_t *length);
-+extern void vchi_free_buffer(struct vchi_service_handle *handle, void *address);
-+extern uint32_t vchi_current_time(struct vchi_instance_handle *instance_handle);
- 
- /******************************************************************************
-  * Global service API
-  *****************************************************************************/
- // Routine to destroy a service
--extern int32_t vchi_service_destroy(const VCHI_SERVICE_HANDLE_T handle);
-+extern int32_t vchi_service_destroy(const struct vchi_service_handle *handle);
- 
- // Routine to open a named service
--extern int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
-+extern int32_t vchi_service_open(struct vchi_instance_handle *instance_handle,
- 				 struct service_creation *setup,
--				 VCHI_SERVICE_HANDLE_T *handle);
-+				 struct vchi_service_handle **handle);
- 
--extern int32_t vchi_get_peer_version(const VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_get_peer_version(const struct vchi_service_handle *handle,
- 				     short *peer_version);
- 
- // Routine to close a named service
--extern int32_t vchi_service_close(const VCHI_SERVICE_HANDLE_T handle);
-+extern int32_t vchi_service_close(const struct vchi_service_handle *handle);
- 
- // Routine to increment ref count on a named service
--extern int32_t vchi_service_use(const VCHI_SERVICE_HANDLE_T handle);
-+extern int32_t vchi_service_use(const struct vchi_service_handle *handle);
- 
- // Routine to decrement ref count on a named service
--extern int32_t vchi_service_release(const VCHI_SERVICE_HANDLE_T handle);
-+extern int32_t vchi_service_release(const struct vchi_service_handle *handle);
+@@ -105,8 +105,8 @@ extern int32_t vchi_service_release(const VCHI_SERVICE_HANDLE_T handle);
  
  // Routine to set a control option for a named service
--extern int32_t vchi_service_set_option(const VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_service_set_option(const struct vchi_service_handle *handle,
- 				       enum vchi_service_option option,
- 				       int value);
+ extern int32_t vchi_service_set_option(const VCHI_SERVICE_HANDLE_T handle,
+-					VCHI_SERVICE_OPTION_T option,
+-					int value);
++				       enum vchi_service_option option,
++				       int value);
  
  /* Routine to send a message from kernel memory across a service */
  extern int
--vchi_queue_kernel_message(VCHI_SERVICE_HANDLE_T handle,
-+vchi_queue_kernel_message(struct vchi_service_handle *handle,
- 			  void *data,
- 			  unsigned int size);
- 
- /* Routine to send a message from user memory across a service */
- extern int
--vchi_queue_user_message(VCHI_SERVICE_HANDLE_T handle,
-+vchi_queue_user_message(struct vchi_service_handle *handle,
- 			void __user *data,
- 			unsigned int size);
- 
- // Routine to receive a msg from a service
- // Dequeue is equivalent to hold, copy into client buffer, release
--extern int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_msg_dequeue(struct vchi_service_handle *handle,
+@@ -126,7 +126,7 @@ extern int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle,
  				void *data,
  				uint32_t max_data_size_to_read,
  				uint32_t *actual_msg_size,
-@@ -131,26 +131,26 @@ extern int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle,
+-				VCHI_FLAGS_T flags);
++				enum vchi_flags flags);
+ 
  // Routine to look at a message in place.
  // The message is not dequeued, so a subsequent call to peek or dequeue
- // will return the same message.
--extern int32_t vchi_msg_peek(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_msg_peek(struct vchi_service_handle *handle,
+@@ -134,7 +134,7 @@ extern int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle,
+ extern int32_t vchi_msg_peek(VCHI_SERVICE_HANDLE_T handle,
  			     void **data,
  			     uint32_t *msg_size,
- 			     enum vchi_flags flags);
+-			     VCHI_FLAGS_T flags);
++			     enum vchi_flags flags);
  
  // Routine to remove a message after it has been read in place with peek
  // The first message on the queue is dequeued.
--extern int32_t vchi_msg_remove(VCHI_SERVICE_HANDLE_T handle);
-+extern int32_t vchi_msg_remove(struct vchi_service_handle *handle);
- 
- // Routine to look at a message in place.
- // The message is dequeued, so the caller is left holding it; the descriptor is
- // filled in and must be released when the user has finished with the message.
--extern int32_t vchi_msg_hold(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_msg_hold(struct vchi_service_handle *handle,
+@@ -146,13 +146,13 @@ extern int32_t vchi_msg_remove(VCHI_SERVICE_HANDLE_T handle);
+ extern int32_t vchi_msg_hold(VCHI_SERVICE_HANDLE_T handle,
  			     void **data,        // } may be NULL, as info can be
  			     uint32_t *msg_size, // } obtained from HELD_MSG_T
- 			     enum vchi_flags flags,
+-			     VCHI_FLAGS_T flags,
++			     enum vchi_flags flags,
  			     struct vchi_held_msg *message_descriptor);
  
  // Initialise an iterator to look through messages in place
--extern int32_t vchi_msg_look_ahead(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_msg_look_ahead(struct vchi_service_handle *handle,
+ extern int32_t vchi_msg_look_ahead(VCHI_SERVICE_HANDLE_T handle,
  				   struct vchi_msg_iter *iter,
- 				   enum vchi_flags flags);
+-				   VCHI_FLAGS_T flags);
++				   enum vchi_flags flags);
  
-@@ -202,21 +202,21 @@ extern int32_t vchi_msg_iter_hold_next(struct vchi_msg_iter *iter,
-  *****************************************************************************/
- 
- // Routine to prepare interface for a transfer from the other side
--extern int32_t vchi_bulk_queue_receive(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_bulk_queue_receive(struct vchi_service_handle *handle,
+ /*******************************************************************************
+  * Global service support API - operations on held messages
+@@ -205,21 +205,21 @@ extern int32_t vchi_msg_iter_hold_next(struct vchi_msg_iter *iter,
+ extern int32_t vchi_bulk_queue_receive(VCHI_SERVICE_HANDLE_T handle,
  				       void *data_dst,
  				       uint32_t data_size,
- 				       enum vchi_flags flags,
+-				       VCHI_FLAGS_T flags,
++				       enum vchi_flags flags,
  				       void *transfer_handle);
  
  // Prepare interface for a transfer from the other side into relocatable memory.
--int32_t vchi_bulk_queue_receive_reloc(const VCHI_SERVICE_HANDLE_T handle,
-+int32_t vchi_bulk_queue_receive_reloc(const struct vchi_service_handle *handle,
+ int32_t vchi_bulk_queue_receive_reloc(const VCHI_SERVICE_HANDLE_T handle,
  				      uint32_t offset,
  				      uint32_t data_size,
- 				      const enum vchi_flags flags,
+-				      const VCHI_FLAGS_T flags,
++				      const enum vchi_flags flags,
  				      void * const bulk_handle);
  
  // Routine to queue up data ready for transfer to the other (once they have signalled they are ready)
--extern int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_bulk_queue_transmit(struct vchi_service_handle *handle,
+ extern int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
  					const void *data_src,
  					uint32_t data_size,
- 					enum vchi_flags flags,
-@@ -230,7 +230,7 @@ extern int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
- }
- #endif
+-					VCHI_FLAGS_T flags,
++					enum vchi_flags flags,
+ 					void *transfer_handle);
  
--extern int32_t vchi_bulk_queue_transmit_reloc(VCHI_SERVICE_HANDLE_T handle,
-+extern int32_t vchi_bulk_queue_transmit_reloc(struct vchi_service_handle *handle,
+ /******************************************************************************
+@@ -233,7 +233,7 @@ extern int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
+ extern int32_t vchi_bulk_queue_transmit_reloc(VCHI_SERVICE_HANDLE_T handle,
  					      uint32_t offset,
  					      uint32_t data_size,
- 					      enum vchi_flags flags,
+-					      VCHI_FLAGS_T flags,
++					      enum vchi_flags flags,
+ 					      void *transfer_handle);
+ #endif /* VCHI_H_ */
+ 
 diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-index c99735fc0308..07f39e1b67e0 100644
+index 1fdbe038500a..c99735fc0308 100644
 --- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
 +++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-@@ -86,9 +86,9 @@ enum vchi_service_option {
- };
+@@ -5,7 +5,7 @@
+ #define VCHI_COMMON_H_
+ 
+ //flags used when sending messages (must be bitmapped)
+-typedef enum {
++enum vchi_flags {
+ 	VCHI_FLAGS_NONE                      = 0x0,
+ 	VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE   = 0x1,   // waits for message to be received, or sent (NB. not the same as being seen on other side)
+ 	VCHI_FLAGS_CALLBACK_WHEN_OP_COMPLETE = 0x2,   // run a callback when message sent
+@@ -20,17 +20,17 @@ typedef enum {
+ 	VCHI_FLAGS_BULK_DATA_QUEUED      = 0x040000,  // internal use only
+ 	VCHI_FLAGS_BULK_DATA_COMPLETE    = 0x080000,  // internal use only
+ 	VCHI_FLAGS_INTERNAL              = 0xFF0000
+-} VCHI_FLAGS_T;
++};
+ 
+ // constants for vchi_crc_control()
+-typedef enum {
++enum vchi_crc_control {
+ 	VCHI_CRC_NOTHING = -1,
+ 	VCHI_CRC_PER_SERVICE = 0,
+ 	VCHI_CRC_EVERYTHING = 1,
+-} VCHI_CRC_CONTROL_T;
++};
+ 
+ //callback reasons when an event occurs on a service
+-typedef enum {
++enum vchi_callback_reason {
+ 	VCHI_CALLBACK_REASON_MIN,
+ 
+ 	//This indicates that there is data available
+@@ -73,21 +73,21 @@ typedef enum {
+ 	VCHI_CALLBACK_BULK_TRANSMIT_ABORTED,
+ 
+ 	VCHI_CALLBACK_REASON_MAX
+-} VCHI_CALLBACK_REASON_T;
++};
+ 
+ // service control options
+-typedef enum {
++enum vchi_service_option {
+ 	VCHI_SERVICE_OPTION_MIN,
+ 
+ 	VCHI_SERVICE_OPTION_TRACE,
+ 	VCHI_SERVICE_OPTION_SYNCHRONOUS,
+ 
+ 	VCHI_SERVICE_OPTION_MAX
+-} VCHI_SERVICE_OPTION_T;
++};
  
  //Callback used by all services / bulk transfers
--typedef void (*VCHI_CALLBACK_T)(void *callback_param, //my service local param
--				enum vchi_callback_reason reason,
--				void *handle); //for transmitting msg's only
-+ typedef void (*VCHI_CALLBACK_T)(void *callback_param, //my service local param
-+				 enum vchi_callback_reason reason,
-+				 void *handle); //for transmitting msg's only
+ typedef void (*VCHI_CALLBACK_T)(void *callback_param, //my service local param
+-				VCHI_CALLBACK_REASON_T reason,
++				enum vchi_callback_reason reason,
+ 				void *handle); //for transmitting msg's only
  
  /*
-  * Define vector struct for scatter-gather (vector) operations
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index 704afd470c88..c8e62789a540 100644
+index 5e26f0abd5ee..704afd470c88 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -23,7 +23,7 @@ struct shim_service {
- /***********************************************************
-  * Name: vchi_msg_peek
-  *
-- * Arguments:  const VCHI_SERVICE_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
+@@ -27,7 +27,7 @@ struct shim_service {
   *             void **data,
   *             uint32_t *msg_size,
  
-@@ -36,7 +36,7 @@ struct shim_service {
-  * Returns: int32_t - success == 0
+- *             VCHI_FLAGS_T flags
++ *             enum vchi_flags flags
+  *
+  * Description: Routine to return a pointer to the current message (to allow in
+  *              place processing). The message can be removed using
+@@ -37,9 +37,9 @@ struct shim_service {
   *
   ***********************************************************/
--int32_t vchi_msg_peek(VCHI_SERVICE_HANDLE_T handle,
-+int32_t vchi_msg_peek(struct vchi_service_handle *handle,
- 		      void **data,
- 		      uint32_t *msg_size,
- 		      enum vchi_flags flags)
-@@ -63,7 +63,7 @@ EXPORT_SYMBOL(vchi_msg_peek);
- /***********************************************************
-  * Name: vchi_msg_remove
-  *
-- * Arguments:  const VCHI_SERVICE_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
-  *
-  * Description: Routine to remove a message (after it has been read with
-  *              vchi_msg_peek)
-@@ -71,7 +71,7 @@ EXPORT_SYMBOL(vchi_msg_peek);
-  * Returns: int32_t - success == 0
-  *
-  ***********************************************************/
--int32_t vchi_msg_remove(VCHI_SERVICE_HANDLE_T handle)
-+int32_t vchi_msg_remove(struct vchi_service_handle *handle)
+ int32_t vchi_msg_peek(VCHI_SERVICE_HANDLE_T handle,
+-	void **data,
+-	uint32_t *msg_size,
+-	VCHI_FLAGS_T flags)
++		      void **data,
++		      uint32_t *msg_size,
++		      enum vchi_flags flags)
  {
  	struct shim_service *service = (struct shim_service *)handle;
  	struct vchiq_header *header;
-@@ -87,7 +87,7 @@ EXPORT_SYMBOL(vchi_msg_remove);
- /***********************************************************
-  * Name: vchi_msg_queue
-  *
-- * Arguments:  VCHI_SERVICE_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
-  *             ssize_t (*copy_callback)(void *context, void *dest,
-  *				        size_t offset, size_t maxsize),
-  *	       void *context,
-@@ -99,11 +99,10 @@ EXPORT_SYMBOL(vchi_msg_remove);
-  *
-  ***********************************************************/
- static
--int32_t vchi_msg_queue(VCHI_SERVICE_HANDLE_T handle,
--	ssize_t (*copy_callback)(void *context, void *dest,
--				 size_t offset, size_t maxsize),
--	void *context,
--	uint32_t data_size)
-+int32_t vchi_msg_queue(struct vchi_service_handle *handle,
-+		       ssize_t (*copy_callback)(void *context, void *dest,
-+						size_t offset, size_t maxsize),
-+		       void *context, uint32_t data_size)
- {
- 	struct shim_service *service = (struct shim_service *)handle;
- 	VCHIQ_STATUS_T status;
-@@ -139,7 +138,7 @@ vchi_queue_kernel_message_callback(void *context,
- }
- 
- int
--vchi_queue_kernel_message(VCHI_SERVICE_HANDLE_T handle,
-+vchi_queue_kernel_message(struct vchi_service_handle *handle,
- 			  void *data,
- 			  unsigned int size)
- {
-@@ -169,8 +168,7 @@ vchi_queue_user_message_callback(void *context,
- }
- 
- int
--vchi_queue_user_message(VCHI_SERVICE_HANDLE_T handle,
--			void __user *data,
-+vchi_queue_user_message(struct vchi_service_handle *handle, void __user *data,
- 			unsigned int size)
- {
- 	struct vchi_queue_user_message_context copycontext = {
-@@ -187,7 +185,7 @@ EXPORT_SYMBOL(vchi_queue_user_message);
- /***********************************************************
-  * Name: vchi_bulk_queue_receive
-  *
-- * Arguments:  VCHI_BULK_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
+@@ -190,7 +190,7 @@ EXPORT_SYMBOL(vchi_queue_user_message);
+  * Arguments:  VCHI_BULK_HANDLE_T handle,
   *             void *data_dst,
   *             const uint32_t data_size,
-  *             enum vchi_flags flags
-@@ -198,7 +196,7 @@ EXPORT_SYMBOL(vchi_queue_user_message);
+- *             VCHI_FLAGS_T flags
++ *             enum vchi_flags flags
+  *             void *bulk_handle
+  *
+  * Description: Routine to setup a rcv buffer
+@@ -198,11 +198,9 @@ EXPORT_SYMBOL(vchi_queue_user_message);
   * Returns: int32_t - success == 0
   *
   ***********************************************************/
--int32_t vchi_bulk_queue_receive(VCHI_SERVICE_HANDLE_T handle, void *data_dst,
-+int32_t vchi_bulk_queue_receive(struct vchi_service_handle *handle, void *data_dst,
- 				uint32_t data_size, enum vchi_flags flags,
- 				void *bulk_handle)
+-int32_t vchi_bulk_queue_receive(VCHI_SERVICE_HANDLE_T handle,
+-	void *data_dst,
+-	uint32_t data_size,
+-	VCHI_FLAGS_T flags,
+-	void *bulk_handle)
++int32_t vchi_bulk_queue_receive(VCHI_SERVICE_HANDLE_T handle, void *data_dst,
++				uint32_t data_size, enum vchi_flags flags,
++				void *bulk_handle)
  {
-@@ -245,7 +243,7 @@ EXPORT_SYMBOL(vchi_bulk_queue_receive);
- /***********************************************************
-  * Name: vchi_bulk_queue_transmit
-  *
-- * Arguments:  VCHI_BULK_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
+ 	struct shim_service *service = (struct shim_service *)handle;
+ 	VCHIQ_BULK_MODE_T mode;
+@@ -250,7 +248,7 @@ EXPORT_SYMBOL(vchi_bulk_queue_receive);
+  * Arguments:  VCHI_BULK_HANDLE_T handle,
   *             const void *data_src,
   *             uint32_t data_size,
-  *             enum vchi_flags flags,
-@@ -256,7 +254,7 @@ EXPORT_SYMBOL(vchi_bulk_queue_receive);
-  * Returns: int32_t - success == 0
+- *             VCHI_FLAGS_T flags,
++ *             enum vchi_flags flags,
+  *             void *bulk_handle
+  *
+  * Description: Routine to transmit some data
+@@ -259,10 +257,10 @@ EXPORT_SYMBOL(vchi_bulk_queue_receive);
   *
   ***********************************************************/
--int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
-+int32_t vchi_bulk_queue_transmit(struct vchi_service_handle *handle,
- 				 const void *data_src,
- 				 uint32_t data_size,
- 				 enum vchi_flags flags,
-@@ -307,7 +305,7 @@ EXPORT_SYMBOL(vchi_bulk_queue_transmit);
- /***********************************************************
-  * Name: vchi_msg_dequeue
-  *
-- * Arguments:  VCHI_SERVICE_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
+ int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
+-	const void *data_src,
+-	uint32_t data_size,
+-	VCHI_FLAGS_T flags,
+-	void *bulk_handle)
++				 const void *data_src,
++				 uint32_t data_size,
++				 enum vchi_flags flags,
++				 void *bulk_handle)
+ {
+ 	struct shim_service *service = (struct shim_service *)handle;
+ 	VCHIQ_BULK_MODE_T mode;
+@@ -313,18 +311,16 @@ EXPORT_SYMBOL(vchi_bulk_queue_transmit);
   *             void *data,
   *             uint32_t max_data_size_to_read,
   *             uint32_t *actual_msg_size
-@@ -318,7 +316,7 @@ EXPORT_SYMBOL(vchi_bulk_queue_transmit);
+- *             VCHI_FLAGS_T flags
++ *             enum vchi_flags flags
+  *
+  * Description: Routine to dequeue a message into the supplied buffer
+  *
   * Returns: int32_t - success == 0
   *
   ***********************************************************/
--int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle, void *data,
-+int32_t vchi_msg_dequeue(struct vchi_service_handle *handle, void *data,
- 			 uint32_t max_data_size_to_read,
- 			 uint32_t *actual_msg_size, enum vchi_flags flags)
+-int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle,
+-	void *data,
+-	uint32_t max_data_size_to_read,
+-	uint32_t *actual_msg_size,
+-	VCHI_FLAGS_T flags)
++int32_t vchi_msg_dequeue(VCHI_SERVICE_HANDLE_T handle, void *data,
++			 uint32_t max_data_size_to_read,
++			 uint32_t *actual_msg_size, enum vchi_flags flags)
  {
-@@ -376,7 +374,7 @@ EXPORT_SYMBOL(vchi_held_msg_release);
- /***********************************************************
-  * Name: vchi_msg_hold
-  *
-- * Arguments:  VCHI_SERVICE_HANDLE_T handle,
-+ * Arguments:  struct vchi_service_handle *handle,
+ 	struct shim_service *service = (struct shim_service *)handle;
+ 	struct vchiq_header *header;
+@@ -383,7 +379,7 @@ EXPORT_SYMBOL(vchi_held_msg_release);
+  * Arguments:  VCHI_SERVICE_HANDLE_T handle,
   *             void **data,
   *             uint32_t *msg_size,
-  *             enum vchi_flags flags,
-@@ -390,7 +388,7 @@ EXPORT_SYMBOL(vchi_held_msg_release);
+- *             VCHI_FLAGS_T flags,
++ *             enum vchi_flags flags,
+  *             struct vchi_held_msg *message_handle
+  *
+  * Description: Routine to return a pointer to the current message (to allow
+@@ -394,11 +390,9 @@ EXPORT_SYMBOL(vchi_held_msg_release);
   * Returns: int32_t - success == 0
   *
   ***********************************************************/
--int32_t vchi_msg_hold(VCHI_SERVICE_HANDLE_T handle, void **data,
-+int32_t vchi_msg_hold(struct vchi_service_handle *handle, void **data,
- 		      uint32_t *msg_size, enum vchi_flags flags,
- 		      struct vchi_held_msg *message_handle)
+-int32_t vchi_msg_hold(VCHI_SERVICE_HANDLE_T handle,
+-	void **data,
+-	uint32_t *msg_size,
+-	VCHI_FLAGS_T flags,
+-	struct vchi_held_msg *message_handle)
++int32_t vchi_msg_hold(VCHI_SERVICE_HANDLE_T handle, void **data,
++		      uint32_t *msg_size, enum vchi_flags flags,
++		      struct vchi_held_msg *message_handle)
  {
-@@ -428,7 +426,7 @@ EXPORT_SYMBOL(vchi_msg_hold);
- /***********************************************************
-  * Name: vchi_initialise
-  *
-- * Arguments: VCHI_INSTANCE_T *instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *
-  * Description: Initialises the hardware but does not transmit anything
-  *              When run as a Host App this will be called twice hence the need
-@@ -438,14 +436,14 @@ EXPORT_SYMBOL(vchi_msg_hold);
-  *
-  ***********************************************************/
- 
--int32_t vchi_initialise(VCHI_INSTANCE_T *instance_handle)
-+int32_t vchi_initialise(struct vchi_instance_handle **instance_handle)
- {
- 	VCHIQ_INSTANCE_T instance;
- 	VCHIQ_STATUS_T status;
- 
- 	status = vchiq_initialise(&instance);
- 
--	*instance_handle = (VCHI_INSTANCE_T)instance;
-+	*instance_handle = (struct vchi_instance_handle *)instance;
- 
- 	return vchiq_status_to_vchi(status);
- }
-@@ -454,7 +452,7 @@ EXPORT_SYMBOL(vchi_initialise);
- /***********************************************************
-  * Name: vchi_connect
-  *
-- * Arguments: VCHI_INSTANCE_T instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *
-  * Description: Starts the command service on each connection,
-  *              causing INIT messages to be pinged back and forth
-@@ -462,7 +460,7 @@ EXPORT_SYMBOL(vchi_initialise);
-  * Returns: 0 if successful, failure otherwise
-  *
-  ***********************************************************/
--int32_t vchi_connect(VCHI_INSTANCE_T instance_handle)
-+int32_t vchi_connect(struct vchi_instance_handle *instance_handle)
- {
- 	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
- 
-@@ -473,7 +471,7 @@ EXPORT_SYMBOL(vchi_connect);
- /***********************************************************
-  * Name: vchi_disconnect
-  *
-- * Arguments: VCHI_INSTANCE_T instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *
-  * Description: Stops the command service on each connection,
-  *              causing DE-INIT messages to be pinged back and forth
-@@ -481,7 +479,7 @@ EXPORT_SYMBOL(vchi_connect);
-  * Returns: 0 if successful, failure otherwise
-  *
-  ***********************************************************/
--int32_t vchi_disconnect(VCHI_INSTANCE_T instance_handle)
-+int32_t vchi_disconnect(struct vchi_instance_handle *instance_handle)
- {
- 	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
- 
-@@ -493,9 +491,9 @@ EXPORT_SYMBOL(vchi_disconnect);
-  * Name: vchi_service_open
-  * Name: vchi_service_create
-  *
-- * Arguments: VCHI_INSTANCE_T *instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *            struct service_creation *setup,
-- *            VCHI_SERVICE_HANDLE_T *handle
-+ *            struct vchi_service_handle **handle
-  *
-  * Description: Routine to open a service
-  *
-@@ -593,14 +591,14 @@ static void service_free(struct shim_service *service)
- 	}
- }
- 
--int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
--	struct service_creation *setup,
--	VCHI_SERVICE_HANDLE_T *handle)
-+int32_t vchi_service_open(struct vchi_instance_handle *instance_handle,
-+			  struct service_creation *setup,
-+			  struct vchi_service_handle **handle)
- {
- 	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
- 	struct shim_service *service = service_alloc(instance, setup);
- 
--	*handle = (VCHI_SERVICE_HANDLE_T)service;
-+	*handle = (struct vchi_service_handle *)service;
- 
- 	if (service) {
- 		struct vchiq_service_params params;
-@@ -626,7 +624,7 @@ int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
- }
- EXPORT_SYMBOL(vchi_service_open);
- 
--int32_t vchi_service_close(const VCHI_SERVICE_HANDLE_T handle)
-+int32_t vchi_service_close(const struct vchi_service_handle *handle)
- {
- 	int32_t ret = -1;
  	struct shim_service *service = (struct shim_service *)handle;
-@@ -642,7 +640,7 @@ int32_t vchi_service_close(const VCHI_SERVICE_HANDLE_T handle)
- }
- EXPORT_SYMBOL(vchi_service_close);
- 
--int32_t vchi_service_destroy(const VCHI_SERVICE_HANDLE_T handle)
-+int32_t vchi_service_destroy(const struct vchi_service_handle *handle)
- {
- 	int32_t ret = -1;
- 	struct shim_service *service = (struct shim_service *)handle;
-@@ -661,7 +659,7 @@ int32_t vchi_service_destroy(const VCHI_SERVICE_HANDLE_T handle)
- }
+ 	struct vchiq_header *header;
+@@ -668,7 +662,7 @@ int32_t vchi_service_destroy(const VCHI_SERVICE_HANDLE_T handle)
  EXPORT_SYMBOL(vchi_service_destroy);
  
--int32_t vchi_service_set_option(const VCHI_SERVICE_HANDLE_T handle,
-+int32_t vchi_service_set_option(const struct vchi_service_handle *handle,
- 				enum vchi_service_option option,
+ int32_t vchi_service_set_option(const VCHI_SERVICE_HANDLE_T handle,
+-				VCHI_SERVICE_OPTION_T option,
++				enum vchi_service_option option,
  				int value)
  {
-@@ -692,7 +690,8 @@ int32_t vchi_service_set_option(const VCHI_SERVICE_HANDLE_T handle,
- }
- EXPORT_SYMBOL(vchi_service_set_option);
- 
--int32_t vchi_get_peer_version(const VCHI_SERVICE_HANDLE_T handle, short *peer_version)
-+int32_t vchi_get_peer_version(const struct vchi_service_handle *handle,
-+			      short *peer_version)
- {
  	int32_t ret = -1;
- 	struct shim_service *service = (struct shim_service *)handle;
-@@ -710,14 +709,14 @@ EXPORT_SYMBOL(vchi_get_peer_version);
- /***********************************************************
-  * Name: vchi_service_use
-  *
-- * Arguments: const VCHI_SERVICE_HANDLE_T handle
-+ * Arguments: const struct vchi_service_handle *handle
-  *
-  * Description: Routine to increment refcount on a service
-  *
-  * Returns: void
-  *
-  ***********************************************************/
--int32_t vchi_service_use(const VCHI_SERVICE_HANDLE_T handle)
-+int32_t vchi_service_use(const struct vchi_service_handle *handle)
- {
- 	int32_t ret = -1;
- 
-@@ -731,14 +730,14 @@ EXPORT_SYMBOL(vchi_service_use);
- /***********************************************************
-  * Name: vchi_service_release
-  *
-- * Arguments: const VCHI_SERVICE_HANDLE_T handle
-+ * Arguments: const struct vchi_service_handle *handle
-  *
-  * Description: Routine to decrement refcount on a service
-  *
-  * Returns: void
-  *
-  ***********************************************************/
--int32_t vchi_service_release(const VCHI_SERVICE_HANDLE_T handle)
-+int32_t vchi_service_release(const struct vchi_service_handle *handle)
- {
- 	int32_t ret = -1;
- 
 -- 
 2.17.1
 
