@@ -1,162 +1,122 @@
 X-GM-THRID: 6754458583373447168
-X-Received: by 2002:aa7:9639:: with SMTP id r25mr31490140pfg.17.1572882618690;
-        Mon, 04 Nov 2019 07:50:18 -0800 (PST)
+X-Received: by 2002:a63:a17:: with SMTP id 23mr3320539pgk.57.1572644949037;
+        Fri, 01 Nov 2019 14:49:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:2ec5:: with SMTP id u188ls1255552pfu.0.gmail; Mon, 04
- Nov 2019 07:50:17 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwv4nCcyhHtwVMVw9QyCWryKIF46nYEqUdr3DAID01wwMlWAzzKJf0USuqHKA+Q1FAgI0h+
-X-Received: by 2002:a63:b62:: with SMTP id a34mr10884463pgl.123.1572882617565;
-        Mon, 04 Nov 2019 07:50:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572882617; cv=none;
+Received: by 2002:a17:90a:8a0d:: with SMTP id w13ls2019027pjn.4.gmail; Fri, 01
+ Nov 2019 14:49:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwUb0qEbhwntxlNaD1YTsHjkbsMxenhIzxJi6rE/7paWrEuM3uMMj7uM5lcLvsDhRx/X38i
+X-Received: by 2002:a17:90a:2ec3:: with SMTP id h3mr18390280pjs.131.1572644947703;
+        Fri, 01 Nov 2019 14:49:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572644947; cv=none;
         d=google.com; s=arc-20160816;
-        b=xrhEJj7bzX6IhAGUJ7mhYocs19L3/5lu5qJTlfHmXfMyyvGdT221wXixXZgKbP1FRl
-         qkTg8UTeUM+rQs8O0e1yeXzVdvcu7Jeg+/I3DtLQgpgYJUFwGZHOsCuiY5e4QKznAT2q
-         Bgz9kM9HymRcN/c2uYQqEecjJWj2N3vaH/mag7vW577fz33MthrDvPBdnqhw0EkBH2pR
-         dKTbonJ3qZMn+WK/0BvFry2Ya5PXr/NLyYz8EjBhFlG3pJSWkhwDh9XnnDtRKUMSyuoi
-         MpYbKrHF+jKOyV0u17J7FZlxHftutIseMfpDFZWbd0l9xtQWEjAOEwSYiRLrsO0MOp+c
-         hO1g==
+        b=ZZinQmcv8IcvddwZ2HAMVfg+Inqu5j6YgUIIfxVMxkgYW6tAfLsuyHaC3n2ZDmYeuB
+         jWFrc2+dipUphzr1tXNRKrDCIsDBygeguSUF9zAla2gMR0B0wtmKlxiBoB5JbIHUb+B6
+         uWOR8x+11r8rl/ahf+v0eZZCtcMCsbt+8xM5788wrfDyJIafM4lZ+lYN2RQPtRv+AecO
+         U4ZGK4UxiUx0WmYqSA19FEZiJVyA2cjd8dwqV6YvPWMzw6uOU7mZRYKXsy9qlOgqTdT8
+         txqjiDggd2owApAHfrHHXCx5qy4679+zjkLiZVK0dBKpITqacnBT162lnYKhXx+Ajtrt
+         djIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=kP1Dsw0pGBhULD74j5Sjmpym4D/yTZlUKtWObbsiHq4=;
-        b=iPQUBZtmV9FVtmIbabt9Afbwx5GOakoTGPWHuqqej2yejxH4Gxa66fxCCD8nsoGyHL
-         RHyZeuMAsUyyK7zDporvEDH3EUU5ya+ZRL+YtB/8KmtE/VnvOt2QfCqT3cGcSTzh9Hqm
-         wgsaKTMk8QhkkvvDGwJI/tThAjRaiuHfv2m/+v7xP2hj3QA9YHZTdfjhEb7w1biYC9U4
-         kwStL2aoHYb8bqokm42DV9X2nPTJy31IrpA1WjwkhKAwP/jlVxpeMceDVHF3MqYCXhwi
-         9NNcwVgkSIHW9xiOm6mwPP88uvr3NPXNcWdL8VwC93HhWXfISlOvjG2XdHT8DF1uJJxa
-         xPSw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hZRXOfCkDmbQwzCISueAd+Ee+dZ/XgL8g6yvVaK0HEk=;
+        b=wPGd3nY6xvIXeLeu7fTpyFs+5Fh5DTOWOuYK7ZVNrxdDHldRtVycYxWVx9BabM2OYb
+         3a7kLb7V7uSYKW5j02PIuVOop8uaoxOjkVTAfkQE+ABJtRDjqnLamyy0jpE7bhzCbJ0I
+         hy00OoGezh1CUBAxEzFhUvmbkwPLMMdxC78uA0kx6mj1RnXKO9cEMc9+Dt4xbcdPy5yL
+         ksJzsfl/kzPmu15cmGXNfdi4YOR2WHBr0hZEx6Tz7tb5IqzoATiKbuehxoqYERY0xBH6
+         aRuuo8+y/7I/d1LbczJHxRcoo+itBJjgaM/4P6g69zFk+EnefDPruVR41XzY57NNSKJi
+         1e5Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=egXtoZb7;
-       spf=pass (google.com: domain of rodrigosiqueiramelo@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=rodrigosiqueiramelo@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VtECGWAY;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <rodrigosiqueiramelo@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id ba9si585659plb.5.2019.11.04.07.50.17
+Return-Path: <gabrielabittencourt00@gmail.com>
+Received: from mail-qk1-x744.google.com (mail-qk1-x744.google.com. [2607:f8b0:4864:20::744])
+        by gmr-mx.google.com with ESMTPS id h13si521306pjb.0.2019.11.01.14.49.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Nov 2019 07:50:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of rodrigosiqueiramelo@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        Fri, 01 Nov 2019 14:49:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) client-ip=2607:f8b0:4864:20::744;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=egXtoZb7;
-       spf=pass (google.com: domain of rodrigosiqueiramelo@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=rodrigosiqueiramelo@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VtECGWAY;
+       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id h2so11344286qto.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 07:50:17 -0800 (PST)
+Received: by mail-qk1-x744.google.com with SMTP id q70so12054775qke.12
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 14:49:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=kP1Dsw0pGBhULD74j5Sjmpym4D/yTZlUKtWObbsiHq4=;
-        b=egXtoZb7MmoQ1HRgP9tQUpSPHXsTK+enkEWTl24Fk3OGYR/IOBbJiHQPQy98PTWtak
-         QmdJXQBXQJP7sUhFBUnMEYnTikz5jW4KkkK9StBmCPX0mUZFuanD20UXFQFheD3spcHb
-         CEuT1sDaWxqErg3SQ0xnbreybvvUCbm8BSDsNMnSD7WnlWuekBne0wJDC9Z1R05sC/jF
-         /slklHPsyOfI3EaXdejEC1N3dB6X5oDBSJ06oU7zummvij6J3akUSE1zI0mPJCSdjEcB
-         KC/Uwk37Tw+akwYLUtvCEviimV7d4e/sq1DkTjaD6MBSgmbm0qIXneJcjf/KAXNOr08y
-         XQBQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=hZRXOfCkDmbQwzCISueAd+Ee+dZ/XgL8g6yvVaK0HEk=;
+        b=VtECGWAYmAgHh809vWPORt9NEntfwNpVsMgB0GsJLCUiDrG2fR7ttFlYizoeMWxrKa
+         151etwuDqGi0fPOtVUtF3rwpc+3ZVN5ko3UALyVZ0eFlAytqKHSlmUvWPjzpGIjCvVTk
+         LfQEtmq49mMblA3C1Qou3Zvc7w4/oup1yP+Rn443dOp1e3X/PKh4M6E1rpwNtoNYDP3o
+         p9hJXg04jrqExuGZPGI1FPKMbQOgJQfGxo7zUjiWzBq2A72ONh6yN2+cCi7JxGBQudMd
+         IgkXdgCDvsHfgtVPiRFBRTO9CBu0rD81aY8wDXpvOS9zxL39rlQpX65O+ZLz4335X04S
+         CotA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=kP1Dsw0pGBhULD74j5Sjmpym4D/yTZlUKtWObbsiHq4=;
-        b=WKdQVCW54XD+1ibdYwwX1DgzHkW2L6F2lQfo6wOvB4WR4GS+dOE/zb3EW1FBHTDg2r
-         Fb1RQ2jOgznB52BDwLzGYhjwMOCVxD2h3rUcY+5oRM/27LC8UcO8BXA/WxhQnzhqtd4/
-         PvCofUk84I54ijcFRia7sDJbMDJUQ0GzkWkeS+GoVqskabf9zet7OJ0lp9ihOxz7EFmw
-         wiwLNr210GfbbLuMTiEpkcA0kQJwRB8Be2Nd4Q0p54a6TcYqV0wC/8n+P57DsJmUSdCW
-         z1fBgWEiL/ZFlsZX5+LF8FuhPp3Ffw2oKjY3wY0zYgl8Ov7RVU6pxAK9c+VKaprwSbHq
-         AR0g==
-X-Gm-Message-State: APjAAAXKxw2w3qz0JoSFjDZXCxkLDJCRMO2jf8JdzAn2XaDcwBZ0Dbej
-	o7wBoXN4yBI3J7q0l/KGGTE=
-X-Received: by 2002:ac8:5485:: with SMTP id h5mr13011854qtq.16.1572882615816;
-        Mon, 04 Nov 2019 07:50:15 -0800 (PST)
-Return-Path: <rodrigosiqueiramelo@gmail.com>
-Received: from smtp.gmail.com ([165.204.55.250])
-        by smtp.gmail.com with ESMTPSA id a66sm8308420qkd.34.2019.11.04.07.50.14
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=hZRXOfCkDmbQwzCISueAd+Ee+dZ/XgL8g6yvVaK0HEk=;
+        b=FH6PBQ+6WRW//R07w42sP0OmkoJ1XeQv/Sp1MUFi+GSBr8raJ4gL2IRzUf4LDBu+VD
+         j1w3try6LyFvjfX5hwB391cVOTPi0R/9JvWTd6RMEZm+7S/lKWPQn3ST4DUTkEXagHiB
+         j9t+gmvh99KSNAkRVz+63HI/JGMSxPz+A144MoaBg83O50taXltgwPx7s6lo4GKOJ/DA
+         VBPPCuf/J1LNdsTP9pxP9/LNHMaLCtBA+52eOT16ltUMGeJBS/FXj4LYEDg7r2auD5H4
+         jSby2owSJEZxWG/V8eCtav9Wjq4bUwwvsRnJyZekERJRVEETi9Syp4TPLMiGWl7QBjQM
+         JrCQ==
+X-Gm-Message-State: APjAAAXq+KW1dHpZdZJMeIjyyZxWRQ+nY3S2xLd/NabcXsOAqO3KjecI
+	3J3eZ3Nt59Y3I0AeCQ+9zrq0LqhrDao=
+X-Received: by 2002:a37:490c:: with SMTP id w12mr2661454qka.101.1572644946513;
+        Fri, 01 Nov 2019 14:49:06 -0700 (PDT)
+Return-Path: <gabrielabittencourt00@gmail.com>
+Received: from GBdebian.ic.unicamp.br (wifi-177-220-84-14.wifi.ic.unicamp.br. [177.220.84.14])
+        by smtp.gmail.com with ESMTPSA id w24sm5482300qta.44.2019.11.01.14.49.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Nov 2019 07:50:15 -0800 (PST)
-Date: Mon, 4 Nov 2019 10:50:13 -0500
-From: Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>
-To: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, manasi.d.navare@intel.com,
-	hamohammed.sa@gmail.com, daniel@ffwll.ch, airlied@linux.ie,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org, trivial@kernel.org
-Subject: Re: [PATCH v2 VKMS 0/2] drm/vkms: Changing some words in 'blend'
- function documentation
-Message-ID: <20191104155012.wdg25roebjqt4tiy@smtp.gmail.com>
+        Fri, 01 Nov 2019 14:49:05 -0700 (PDT)
+From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	manasi.d.navare@intel.com,
+	rodrigosiqueiramelo@gmail.com,
+	hamohammed.sa@gmail.com,
+	daniel@ffwll.ch,
+	airlied@linux.ie,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	lkcamp@lists.libreplanetbr.org,
+	trivial@kernel.org
+Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+Subject: [PATCH v2 VKMS 2/2] drm/vkms: Changing a 'Todo' to a 'TODO' in code comment
+Date: Fri,  1 Nov 2019 18:48:48 -0300
+Message-Id: <20191101214848.7574-3-gabrielabittencourt00@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191101214848.7574-1-gabrielabittencourt00@gmail.com>
 References: <20191101214848.7574-1-gabrielabittencourt00@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="arzbpojwlifr6sea"
-Content-Disposition: inline
-In-Reply-To: <20191101214848.7574-1-gabrielabittencourt00@gmail.com>
-User-Agent: NeoMutt/20180716
+Content-Transfer-Encoding: 8bit
 
+Changing the task introduction for the word 'TODO'. With the TODO word all
+in uppercase, as is the standard, it's easier to find the tasks that have
+to be done throughout the code.
 
---arzbpojwlifr6sea
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
+---
+ drivers/gpu/drm/vkms/vkms_composer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi Gabriela,
+diff --git a/drivers/gpu/drm/vkms/vkms_composer.c b/drivers/gpu/drm/vkms/vkms_composer.c
+index 88890ddfc4bd..4af2f19480f4 100644
+--- a/drivers/gpu/drm/vkms/vkms_composer.c
++++ b/drivers/gpu/drm/vkms/vkms_composer.c
+@@ -54,7 +54,7 @@ static uint32_t compute_crc(void *vaddr_out, struct vkms_composer *composer)
+  * at vaddr_dst using buffer's metadata to locate the new values
+  * from vaddr_src and their destination at vaddr_dst.
+  *
+- * Todo: Use the alpha value to blend vaddr_src with vaddr_dst
++ * TODO: Use the alpha value to blend vaddr_src with vaddr_dst
+  *	 instead of overwriting it.
+  */
+ static void blend(void *vaddr_dst, void *vaddr_src,
+-- 
+2.20.1
 
-In the case of this series and the patch "drm/vkms: Fix typo in function
-documentation", I recommend you to use a single patch. In general, If
-your changes produce a lot of deltas, you need to split them into
-individual patches that modify things in logical stages. In these
-patches, you made changes to some files that belong to the same patch;
-thus, a single logical change is contained within a single patch.[1]
-
-Btw, thanks for fix these issues.
-
-Best Regards
-
-1. https://www.kernel.org/doc/html/v4.17/process/submitting-patches.html#se=
-parate-your-changes
-
-On 11/01, Gabriela Bittencourt wrote:
-> Changes in v2:
-> - Add fixing typo in word 'destination'
-> - Add change of the preposition
-> - In v1 the name of the function was wrong, fix it in this version
-> - Add the patch changing the word 'TODO'
->=20
-> I've tested the patches using kernel-doc
->=20
-> Gabriela Bittencourt (2):
->   drm/vkms: Fix typo and preposion in function documentation
->   drm/vkms: Changing a 'Todo' to a 'TODO' in code comment
->=20
->  drivers/gpu/drm/vkms/vkms_composer.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> --=20
-> 2.20.1
->=20
-
---=20
-Rodrigo Siqueira
-Software Engineer, Advanced Micro Devices (AMD)
-https://siqueira.tech
-
---arzbpojwlifr6sea
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE4tZ+ii1mjMCMQbfkWJzP/comvP8FAl3ASLQACgkQWJzP/com
-vP8nuBAAtA6lod7nNzI304FKxAxD1+ZvfHaYc7MNdBouOK0OiYwKTA3yu2W97k2S
-LO/lfqZc9fBLb8r4MgogGnRbQ6esN5A/lSUpPUsHltcD6HKWK/wdl1soebYYn+M0
-LEyKFHsGptJuQyXLvBIo44UaXBmXzadRZxsaF62F/LLsbqDnHswM7OLrl832Wv3r
-YMBp6P0siy6tJXUMy0FPYWD6/t/67Fq+Z287d7Xex9Kc6RJLly98mNlmfkvg9NcD
-88NaSz3dVo0eUvUffiy3LWwRcUlVdZvE4jOjv9w+qzEJ5xKEMNHYCEd1Osqq/Q+x
-HkfWuwXY4MtIs1UHaC8uR0eC47oaX/mWuZSoEqnbS7O60sKwbxZIUdHMcGJdMkLw
-qDbJ5GXslD1nMzfOJzVyWljoLVS92ScFn+Q1f4x75j7aV5ioJW7A91GJytloLFDd
-LBGa3maYQmuvWtjOLbiIQc9fqXt0Ef/Hiv57ZRCCbPBg5wui1EtqfLiWN73tLlKh
-rEMAAFOhCDcsomnzkl6tMT37iHlhAgMSDBx0oXNtv+Pl+oo4QN5s4Gb0YBawOSTA
-kqZak08Mci4zrBFqlarBjxlJirWO4f8fS3yVYQsm1vqXcV71hoa18SwDeTApUHh7
-n3+5wK5xKmelhdgX+cJxZm8dI3NiW5+uER+cm9Kfbv7ZPusk4ro=
-=5GmA
------END PGP SIGNATURE-----
-
---arzbpojwlifr6sea--
 
