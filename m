@@ -1,111 +1,140 @@
-X-GM-THRID: 6807924039035650048
-X-Received: by 2002:ac8:6699:: with SMTP id d25mr387797qtp.153.1585093335346;
-        Tue, 24 Mar 2020 16:42:15 -0700 (PDT)
+X-GM-THRID: 6754482318874771456
+X-Received: by 2002:a67:5c41:: with SMTP id q62mr7133706vsb.236.1572650726804;
+        Fri, 01 Nov 2019 16:25:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:6192:: with SMTP id v140ls8156qkb.4.gmail; Tue, 24 Mar
- 2020 16:42:14 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vujm2eE65bTTOgWUlw4fThx4NvZ/bBL6oY02qqvBW+K89Ag7uiZw7vmGEKMHcC7ULWeFxkT
-X-Received: by 2002:a17:906:3db:: with SMTP id c27mr826457eja.371.1585093333604;
-        Tue, 24 Mar 2020 16:42:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585093333; cv=none;
+Received: by 2002:a9f:22c2:: with SMTP id 60ls398784uan.15.gmail; Fri, 01 Nov
+ 2019 16:25:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxYjMoFmWL0oRInPQhKAy7tsclhVTKYlgfl+dWpNf+D1fFXQDVgqLKer1iBoavpo2CswQxH
+X-Received: by 2002:ab0:1d4:: with SMTP id 78mr7166636ual.6.1572650725580;
+        Fri, 01 Nov 2019 16:25:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572650725; cv=none;
         d=google.com; s=arc-20160816;
-        b=d+LHmqHLw7ljS8U5DYPIcBihX9dm3uWOpsC5NE01E8CKwFM73/JLwNax4LdvxQhxT2
-         0136lj2R+I0fX/FaASJzAv3PG43BVtKFUkhaj8/epoPzOiFtJYoknHjifg61LmreXaWB
-         xG1CHirGgfbZxx3840bs73oaXTgxXfLXhhiJUfK0U3ocVMYzJDPIVhSHp/2BG4Bs9JyS
-         Xm1UEypMKBOEkFpFL2Fn0x8sMsvYxsxSrFAhBL4F+FwvaVjpCTVo4LfUq5HdkStgZPV9
-         +qxTGprzh78N2aEG8W3cXU4mIGemQ07Os6GRfxK3wSJwCNCLHtusIeFsc+ts53LUOwsT
-         MgfA==
+        b=VD5YeTbrA1Lv4LSAVUtGfviqAbC3I7zjfQ8Tv0QqEztpqKa68g6nI/bZP39N4KxV3u
+         7vweRVTo6N7Ey9mDOJF9DtcJ3K2ZSpKAnP2YWmXpnRemc+40GS3W+cQFI5IE3+oj1xoo
+         aKF7JH7lrfOaWA+MvTDuiBBPX86Np2Kyk83lWl4hCw2WvYPv9aNyTrDm2+NY/LSaICwD
+         oZuVmyU39VNbBriaL2qfz5wZMy/2qRZLk2AOt+QMFR4f+G909glqNGWj+8L3U/huVL3w
+         t0bHZAyK/ORHzriDxAx0pyXXmNBRR4T8JnUlfoKKmxMI4a1TMZmQvSJkqecBV1QPpNBS
+         cjVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=xUcrcIgJfE5c+ESLiGRJrBRe9Co/l+hO4CqN7uXJ1+0=;
-        b=PxGIP9ajbac4tISN/Xy4xdpC7T+hWK77zwvQvaCYkzkYut91XjVgTG0szk2dRXwojw
-         Oxezdn/TmgeTOmCQ1fWDt6IZlwXmYbRNkE3wvaflfM+0HgP3DJJILPE+6EZQ3J/WtODv
-         imfy64FbReUCE9/Xdj0XyWa956k94fV6ihcfpW/gL7wnyJVSnnhEyIh4bOsx9VoVVBiB
-         RzRW3A6n6mzchekkYjTIhche29XPZomuvCPnZbjRT7aDpAP6c+RTObj/a+4ih6W6iNx2
-         ykuLqPV/gEUHx4TcfV8q1Zdwvj2xoTHZ01RHN1U4QDlWfxVxpohOisgVrr/Y/rUu74F5
-         Zhqw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=07BXZzHOPwWyOZ4ZPcHe6+zN2QgtsYiJUOX2S9fSQPQ=;
+        b=HkTfN3cyICt2OKXXFtM648Mdsk3OE6RB2pVXzRTeB2D7d0aK5uZ//txideiOGAsTta
+         sCqQdF1wd8+flsGUCVAV0RHy3eI7S28/IooooHiusvNlaK2GL76C3pWrMLGpEbXopyn8
+         ib9/i9EflVSU4ILcNu0hZ5v+pOKJC8VczbScaMmRAX/ezdMIczTMzg/Md8mruWFuXny9
+         TKIbW8PYzzXnUiIZBhS6rRhAD6bPKr1NUPvIMBDrS1oEvjKsMnZCE51uD0uvXTGI7LK1
+         3Svnbizg90kPMOate13QkTsLmNrnY2K58miQ08F+zP0J3zrKXaU9PYVR1AOKOvUrB1fE
+         nbfw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dliYDQPG;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com. [2a00:1450:4864:20::144])
-        by gmr-mx.google.com with ESMTPS id k14si551648ejb.1.2020.03.24.16.42.13
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=WBYQGeFQ;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::943 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from mail-ua1-x943.google.com (mail-ua1-x943.google.com. [2607:f8b0:4864:20::943])
+        by gmr-mx.google.com with ESMTPS id s19si424900vsj.0.2019.11.01.16.25.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Mar 2020 16:42:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) client-ip=2a00:1450:4864:20::144;
+        Fri, 01 Nov 2019 16:25:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::943 as permitted sender) client-ip=2607:f8b0:4864:20::943;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dliYDQPG;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x144.google.com with SMTP id j15so288174lfk.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 16:42:13 -0700 (PDT)
+       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=WBYQGeFQ;
+       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:4864:20::943 as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
+Received: by mail-ua1-x943.google.com with SMTP id k11so754643ual.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 16:25:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=xUcrcIgJfE5c+ESLiGRJrBRe9Co/l+hO4CqN7uXJ1+0=;
-        b=dliYDQPGC7/l7mPI97eFuKFQ7dxULozSfy03ZFWWcqw4BeDiQEFBj4X/Cs/TT2sn76
-         fbVkiphhJKuSdtmWB2Xwqw4B5e3Px8EAYQCvr11pwt79pP3buyovPfAI0amoDzcv8vl6
-         mWR/iAJ9wMxSgwdqPiUX3FvX6rGdYopRR5pj8f0/2r+zcezg9BCra5wjMsAfC93yeY4R
-         TCE+h+CT54BReVc9opEIv3K9YgNs2I8dq0gdQCJs6unRVMGW3Hrd73ZzMQPJ5K/eVg9c
-         k1xdo5y0RD6qx+tnDgA8qsuHgmaeQRkx+P1LVDpLuaBgFBpGI0q7E8ey4yoaR0Gzx6es
-         AVOA==
+        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=07BXZzHOPwWyOZ4ZPcHe6+zN2QgtsYiJUOX2S9fSQPQ=;
+        b=WBYQGeFQmcOIQ/C0TvEFH5H6wNnzLTOTJAT+eMXJKaTlSP05xKgPjZaO+t8rQwMmqc
+         3SBdTY9MTKy7I1YA/Q5KhB/DBxvlaz+I5F7YvANGliYmmMa2UUQKSgO8ShqH0dRtPEb7
+         MWFfWGeXD+BXW81+nUJPIMSWNTtNtajPbuy93aZ2bLVjG1QDMAaSbQ6GbV+lCRw1zmS0
+         njA8HmwrS2uMoXnAbDAF8ESl9l6JsJ2zAwph/c5IPL13w4hT5VJag8t2er7IozjArSDm
+         Fp7SV2fZP6KEFh556p2eUemIIAYMo/8xH694/LFNflz3iyY7/eOTl6NhWxb+KqE5H1D2
+         gzLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=xUcrcIgJfE5c+ESLiGRJrBRe9Co/l+hO4CqN7uXJ1+0=;
-        b=OZi8mMA/fYPyqe16A561WSEQH7ytOrbLQd6ZKylBRj0c0NAHQzoIOEWQCmolnoxajH
-         E5W36+jWDDwJkvRvE1sUBacg65Fm8qP3kmJ7P0yagkkzfj3jvWbE0M5ldfLcFLLb8RtI
-         ZNwyPUBnquj31XuAHwtMyIdtdCphuLzu+djXanBrcJ2o4P0yKIiDq58bZDcS4L7+xtk3
-         2jcPUmaNghWhil4dpu3JFPNXjVgEylx/lU4iqd3whE6Gp2ui9cMC+nHTRzxW54H/LGcU
-         v5WPL7lrt6Zgv/MYL7A96KDh5JiqmktFokZePI5Ya8P3zT1giMRmMQa/MxCS6kacsBSD
-         2JxA==
-X-Gm-Message-State: ANhLgQ2xSER557GYAyazoOXrXhhBh4R994R1jufZaMIj/pn2AkEDD9S5
-	c1DtejHg4g0h1E4HUg8Kse/vDW41
-X-Received: by 2002:a19:953:: with SMTP id 80mr331302lfj.15.1585093332977;
-        Tue, 24 Mar 2020 16:42:12 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.68.95])
-        by smtp.gmail.com with ESMTPSA id a10sm1736083lff.24.2020.03.24.16.42.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 24 Mar 2020 16:42:12 -0700 (PDT)
-Date: Wed, 25 Mar 2020 02:42:10 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: vt6655: line over 80 characters
-Message-ID: <20200324234210.GA25539@siyah2>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=07BXZzHOPwWyOZ4ZPcHe6+zN2QgtsYiJUOX2S9fSQPQ=;
+        b=uoThiukFr1sJWi+95h7AkdlcWI3+5MI3g1/v+MAWukvU/DIDCWZQy283xDTeRTRv2B
+         VxmhXgVkGVclgNmyroarmqs0vT6/I8jvxQBMH/buuiMx761rbpDM+BVpAdN36DuLal9o
+         ncSBN2BikS84rGojemLxpxWKWbkoK7DBQGeMXUnNu+dn/zyFffEO+gsrM64MQdirH4u/
+         R0v3mjStNDygcm2xf4u4Gt0pdBtf//7LvkVRKplChgda80poCGKRfaRQJtBMvNsVFlTy
+         q1oATW5Zq5kzWvVuvqEkfNTM0k6apj2s3Q+QOpUF9a2hL6tqNm2+QjLf72prHS5Sc1x8
+         0+xQ==
+X-Gm-Message-State: APjAAAUyy3TI2UTNBVfEQDP0LTSzZ/ZkAhVZn7BGzet+sq5c92VlJWJV
+	bqGEHVXrs62Slavy5ctK/YCaeQ==
+X-Received: by 2002:ab0:5949:: with SMTP id o9mr6930581uad.65.1572650725068;
+        Fri, 01 Nov 2019 16:25:25 -0700 (PDT)
+Return-Path: <frank@generalsoftwareinc.com>
+Received: from linux-kernel-dev ([167.160.113.52])
+        by smtp.gmail.com with ESMTPSA id x2sm2237820vsq.32.2019.11.01.16.25.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Nov 2019 16:25:24 -0700 (PDT)
+Date: Fri, 1 Nov 2019 23:25:22 +0000
+From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com, saiprakash.ranjan@codeaurora.org,
+	joel@joelfernandes.org, Forest Bond <forest@alittletooquiet.net>
+Subject: [PATCH v2 4/4] staging: vt6655: Fix long lines
+Message-ID: <588c73f275b22f55323797706e5ceae44d7aa160.1572649242.git.frank@generalsoftwareinc.com>
+References: <cover.1572649242.git.frank@generalsoftwareinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1572649242.git.frank@generalsoftwareinc.com>
+User-Agent: NeoMutt/20171215
 
-Moved to the bottom line after && operator for it exceeds 80 character
+Lines longer than 80 characters should be avoided because they are ugly
+and harder to read. Fix a few of long lines to comply with the preferred
+coding style for the linux kernel. Issues found by checkpatch.
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+Suggested-by: Julia Lawall <Julia.Lawall@lip6.fr>
+Signed-off-by: Frank A. Cancio Bello <frank@generalsoftwareinc.com>
 ---
- drivers/staging/vt6655/rxtx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/vt6655/device_main.c | 6 ++++--
+ drivers/staging/vt6655/rf.c          | 3 ++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index ac1eeb7..e91d320 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -838,7 +838,8 @@ s_vFillCTSHead(
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index be3883f10520..f69fc687d4c3 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -295,7 +295,8 @@ static void device_init_registers(struct vnt_private *priv)
+ 	/* Get Desire Power Value */
+ 	priv->byCurPwr = 0xFF;
+ 	priv->byCCKPwr = SROMbyReadEmbedded(priv->PortOffset, EEP_OFS_PWR_CCK);
+-	priv->byOFDMPwrG = SROMbyReadEmbedded(priv->PortOffset, EEP_OFS_PWR_OFDMG);
++	priv->byOFDMPwrG = SROMbyReadEmbedded(priv->PortOffset,
++					      EEP_OFS_PWR_OFDMG);
+ 
+ 	/* Load power Table */
+ 	for (ii = 0; ii < CB_MAX_CHANNEL_24G; ii++) {
+@@ -660,7 +661,8 @@ static int device_init_td0_ring(struct vnt_private *priv)
+ 		desc->td_info->buf_dma = priv->tx_bufs_dma0 + i * PKT_BUF_SZ;
+ 
+ 		desc->next = &(priv->apTD0Rings[(i + 1) % priv->opts.tx_descs[0]]);
+-		desc->next_desc = cpu_to_le32(curr + sizeof(struct vnt_tx_desc));
++		desc->next_desc = cpu_to_le32(curr +
++					      sizeof(struct vnt_tx_desc));
  	}
  
- 	if (byPktType == PK_TYPE_11GB || byPktType == PK_TYPE_11GA) {
--		if (byFBOption != AUTO_FB_NONE && uDMAIdx != TYPE_ATIMDMA && uDMAIdx != TYPE_BEACONDMA) {
-+		if (byFBOption != AUTO_FB_NONE &&
-+		    uDMAIdx != TYPE_ATIMDMA && uDMAIdx != TYPE_BEACONDMA) {
- 			/* Auto Fall back */
- 			struct vnt_cts_fb *buf = pvCTS;
- 			/* Get SignalField, ServiceField & Length */
+ 	if (i > 0)
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index 7cbc5bc4aad2..fb2855e686a7 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -558,7 +558,8 @@ static bool RFbAL2230Init(struct vnt_private *priv)
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+ 	ret &= IFRFbWriteEmbedded(priv, (0x00780f00 + (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW));
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+-	ret &= IFRFbWriteEmbedded(priv, dwAL2230InitTable[CB_AL2230_INIT_SEQ - 1]);
++	ret &= IFRFbWriteEmbedded(priv,
++				  dwAL2230InitTable[CB_AL2230_INIT_SEQ - 1]);
+ 
+ 	MACvWordRegBitsOn(iobase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE3    |
+ 							 SOFTPWRCTL_SWPE2    |
 -- 
-2.7.4
+2.17.1
 
 
