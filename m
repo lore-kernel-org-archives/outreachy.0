@@ -1,128 +1,82 @@
 X-GM-THRID: 6753896393761357824
-X-Received: by 2002:a9d:1291:: with SMTP id g17mr9826119otg.76.1572643314260;
-        Fri, 01 Nov 2019 14:21:54 -0700 (PDT)
+X-Received: by 2002:a67:6202:: with SMTP id w2mr5361100vsb.22.1572602073776;
+        Fri, 01 Nov 2019 02:54:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:4a9c:: with SMTP id i28ls1683446otf.14.gmail; Fri, 01
- Nov 2019 14:21:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxwWVzMMyzJHczD8yz9CWQK1eQBFYc9u30c/poIb1JJdgOPMaoNWMrrb4eY8u5DRCl0cYud
-X-Received: by 2002:a05:6830:1197:: with SMTP id u23mr10360137otq.37.1572643313121;
-        Fri, 01 Nov 2019 14:21:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572643313; cv=none;
+Received: by 2002:a9f:324a:: with SMTP id y10ls288150uad.8.gmail; Fri, 01 Nov
+ 2019 02:54:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyvaJF5I6djNvu9R6WTf0Po2FzRcx3w0/T5i4tSI82SprOQ8U1geKWAbb8NjRplo4qEBJr/
+X-Received: by 2002:ab0:60d2:: with SMTP id g18mr5078554uam.64.1572602072709;
+        Fri, 01 Nov 2019 02:54:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572602072; cv=none;
         d=google.com; s=arc-20160816;
-        b=TfC3fAYwg/O+x4dTDPOWrsbW1R0lpIbKH0SURlJgcYXnrAgbDjPPlWS/thDSa2Zf6T
-         pqpD5OLnPfFO5Bw7H4AJ6EODZfyBCAugWB746w3s66EUy2N79LQQvuS+ZI4LSTqeeYWY
-         mCqmKNYmC0y1Atfyv2tQEM69TcXuNk3dmvEMD1dtwupIVy/+gWTtZzyn2/9cCHSUvI6/
-         YRHsX7uj78Qd6k7UxRrzY8aocBACIBhoBCX0dScFdo0n2KDOTVIHbHXJZSRMxZ77cTrR
-         omke/78J8kIc9pkkmyQSp49ft25GVm7xrDAtYXCC/SS1zFCjz6biQ7N4m8Le0eYT8BdS
-         3HvQ==
+        b=ESJO68/evnK6UoYNMprSIqN4djF3mQiOKnD7/eYp7iia3riHBH/G8yuxG2SFEz0CD5
+         7sRSez8wrZLhM0XlIJY/ayhjdVuiE+SbQ4R9F9TbOBlWmJ73pQCLJYcGFJ0VhA5Wa2CV
+         ocQ2dn000cyJRCCRDAB00ipYpcqb8FPggyGZCFNzJF0UAyOi7johKM2ECacDOLtxM/XS
+         JEKgQImOuN0r2wjwz8L8ZFEuuGbZt9v+510xmFPY0npQNjTT8+2a6xXH+fLo18qoeDJ/
+         fk9Ta4AvQ1g4yYkc1HUd61pjrKqCAEmYmKApVXqZdnL0WkMXSaBQf/zJx9dsy/TE3FXH
+         8+tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZeZzffiPtixwA2MWbSOBtgt/y9/sKhtVDR1LlW5WeLo=;
-        b=wJVHnRSz2SFBFJcyJN6iAUzsquXSKbh3kg3w9leulSw6MoTdgkA8wIHbjuDzAryw19
-         x1x4td8kdG3UfcHOtIhxtP1q/MyJzeI5KrLNG1ZGbrZV2zSAtc17Tq7HoF5sewca1kd5
-         Wj1YZwruI+NQuELMu9JZHkZpNG3rWuHH6QhC7vTKAvdDbxYdGlw3v398pdxy1W3buXHa
-         KhiA/p8TsOD7MG8PyOsx34cCG1Gfrvw7bjKf7yqh08j8pDPbmHZwDsC/LyiDRY7BBuUj
-         NRv7l1LG4peddAuDXQJIRu7LqTzM38YrMii7b/R+PkbvSh5TQ1Lahv14eKYHFNfDGxBw
-         byQQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=5hheK+aJ9thJasciaI3s9LllOetgtFXa7FmeHw9pqJA=;
+        b=QGKwpd0G9cWq/Ks8lopCBo72ueHTJmNusO+E19gQ+udnhw2ca74FbsTcQyaSCqjdSx
+         UuGksZq6Vfky7KPfyJ9GuX3L2NmfeXNfOUVPR2JtMYo1DDdm4XSh+mq+HRwvZ20NcLJR
+         lRAX5VYJRxHM7G/++MmAQ1/U3aWNqBmN4HU1rpqe52al3QQy4t2AY4ltXncvpJfA6CR+
+         MHAvPoQYRUGQxvUP3rgcgXtDreWtkmKzxRm7sedsBJmc37XWzPf1MFBEYqoaCVVKu83J
+         hK/sOSob0eM+EJ9ZzaNuRnNPYtx5BIn/btPmVvlVonEd9ub+OWAXV3wAr7ZLksM9TxnB
+         9RFA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gpSffhCn;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id j19si631655oij.5.2019.11.01.14.21.53
+       dkim=pass header.i=@kernel.org header.s=default header.b=AXFfdX5J;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id y8si316245vsg.2.2019.11.01.02.54.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 14:21:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 01 Nov 2019 02:54:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gpSffhCn;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id j22so7243416pgh.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 14:21:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZeZzffiPtixwA2MWbSOBtgt/y9/sKhtVDR1LlW5WeLo=;
-        b=gpSffhCny1gVJbz4c40a652ra1lRLVorWLrKK9QlKbn7pRp88DgXk7BpI/5sA8CwSs
-         DOaG1PwQDVVoQNBqGmEaVsgzl1ewpH0PQiMyaIWs+cD0HleR9MrkxBDQKF6U41bFrfnu
-         F95jBPst++ef1B6zgg05iZxDmBHtEUpZdM8Z5xwWcqRigzM4z9FuF0xgToYpt8D64shW
-         hROCE66NAFHup9112+j+W2b1691zSc46nDknKfwZfGouQiEZlCdENuvNNRqsmpRYTLhr
-         kJ7vFb7TXktgeYZijejqHCqvN+SPsPY/XlAJMaSxlyrnwEqx8hhZl65FkSL2yewKaqCY
-         wDSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ZeZzffiPtixwA2MWbSOBtgt/y9/sKhtVDR1LlW5WeLo=;
-        b=lYi6QfSB2lIojOhgISfpv2QIf5IS1CkB/QA8ivxPWfufsT69SZ/ymx0/Xz9ng7dRcN
-         FQro9vYZY5dtIXszX7Z1WjHbfYTvH8zMNTsNmajSKDrOdUQasqA/IkOWjoic2FKe5pAG
-         dQbHzrFc6TEXyqhWNhmr6oHHwn1NqAOSI9+rq9VLzrD2e1Bx/957v7MUwYC41adqjNcF
-         YGD8XSuzPibJdt0LG6EquXA1QAuIvlhnqlTYYYYrsAsrcBoN8sMkWnfW0Nv7VU06iCkL
-         lWg8tUdbpfqGClc+g5EmFIYdBlqaBe+g0rnGFB//wcpX5lcL1ZYShhvbShguYikTUFQQ
-         J3Kw==
-X-Gm-Message-State: APjAAAXvq1SLphCICMjDm/j+sjSmoGTJQdO3nygplbNnjYTPegFaJw6O
-	mGb6ONzjDGpZiLcdS0O9qIM=
-X-Received: by 2002:a62:76c6:: with SMTP id r189mr16207272pfc.48.1572643312296;
-        Fri, 01 Nov 2019 14:21:52 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id d16sm9443027pfo.75.2019.11.01.14.21.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 14:21:51 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: eric@anholt.net,
-	wahrenst@gmx.net,
-	gregkh@linuxfoundation.org,
-	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH v3 0/8] staging: vc04_services: Remove typedefs
-Date: Fri,  1 Nov 2019 14:21:38 -0700
-Message-Id: <cover.1572642845.git.jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=AXFfdX5J;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [84.241.195.165])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E4A2120862;
+	Fri,  1 Nov 2019 09:54:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572602071;
+	bh=5hheK+aJ9thJasciaI3s9LllOetgtFXa7FmeHw9pqJA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AXFfdX5Jqhrhn7OUO1KGeIQ79+ht+w+R1xsX4jg4fLh/jiqQ0ub4Rt34uWYmY0TK3
+	 23lW3Kj4NkliJmxrgmJ0TJdbv6swdU2AF3Kz41i481/Yj0EA4vHOSrroCP+bJE0PpD
+	 ulr9SrQvWqHN3M32iwO1PmejqyACSXZf0o8IM3nA=
+Date: Fri, 1 Nov 2019 10:54:28 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, eric@anholt.net, wahrenst@gmx.net
+Subject: Re: [PATCH v2 1/7] staging: vc04_services: Remove enum typedefs in
+ vchi
+Message-ID: <20191101095428.GA2786419@kroah.com>
+References: <cover.1572585566.git.jamal.k.shareef@gmail.com>
+ <b422f45f5120ccdb8d83036a5340ba9eb92d3fec.1572585566.git.jamal.k.shareef@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b422f45f5120ccdb8d83036a5340ba9eb92d3fec.1572585566.git.jamal.k.shareef@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-This patch removes typedefs from vc04_services files.
+On Thu, Oct 31, 2019 at 10:28:29PM -0700, Jamal Shareef wrote:
+> -// Opaque type for a connection API
+> -typedef struct opaque_vchi_connection_api_t VCHI_CONNECTION_API_T;
+> -
+> -// Opaque type for a message driver
+> -typedef struct opaque_vchi_message_driver_t VCHI_MESSAGE_DRIVER_T;
 
-Changes in v3:
- - Separate removal of unused opaque struct typedefs that were remaining
-   in the vchi enum typedef patch to a separate patch (now Patch 1).
- - Remove formatting in vchi enum typedef Patch 2 which was better
-   served in Patch 3. 
+These are not enum typedefs, as your subject line said you were doing :(
 
-Changes in v2:
- - Split patches into smaller patches limitied to typedef type.
- Patch 8:
- - Rename "struct vchiq_instance_struct' to "struct vchiq_instance" due
-   to wordiness and agreement between header files.
+Please fix up and redo the series as a new version.
 
-Jamal Shareef (8):
-  staging: vc04_services: Remove unused structs
-  staging: vc04_services: Remove enum typedefs in vchi
-  staging: vc04_services: Remove struct typedefs in vchi
-  staging: vc04_services: Remove function pointer typedef
-  staging: vc04_services: Remove vchiq_arm enum typedefs
-  staging: vc04_services: Remove callback typedef
-  staging: vc04_services: Remove int typedef
-  staging: vc04_services: Remove struct typedefs vchiq_arm
+thanks,
 
- .../bcm2835-audio/bcm2835-vchiq.c             |   6 +-
- .../vc04_services/bcm2835-audio/bcm2835.h     |   2 +-
- .../vc04_services/bcm2835-camera/mmal-vchiq.c |   6 +-
- .../vc04_services/interface/vchi/vchi.h       |  78 ++++----
- .../interface/vchi/vchi_common.h              |  27 +--
- .../interface/vchiq_arm/vchiq_2835_arm.c      |  10 +-
- .../interface/vchiq_arm/vchiq_arm.c           | 170 ++++++++---------
- .../interface/vchiq_arm/vchiq_arm.h           |  32 ++--
- .../interface/vchiq_arm/vchiq_core.c          | 116 ++++++------
- .../interface/vchiq_arm/vchiq_core.h          |  90 +++++----
- .../interface/vchiq_arm/vchiq_debugfs.c       |  14 +-
- .../interface/vchiq_arm/vchiq_debugfs.h       |   4 +-
- .../interface/vchiq_arm/vchiq_if.h            |  92 +++++----
- .../interface/vchiq_arm/vchiq_ioctl.h         |   4 +-
- .../interface/vchiq_arm/vchiq_shim.c          | 177 +++++++++---------
- 15 files changed, 405 insertions(+), 423 deletions(-)
-
--- 
-2.17.1
-
+greg k-h
 
