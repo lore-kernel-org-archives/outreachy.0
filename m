@@ -1,85 +1,136 @@
-X-GM-THRID: 6952754810830454784
-X-Received: by 2002:a37:bbc4:: with SMTP id l187mr10303943qkf.153.1618814377722;
-        Sun, 18 Apr 2021 23:39:37 -0700 (PDT)
+X-GM-THRID: 6754389089918648320
+X-Received: by 2002:a0c:8887:: with SMTP id 7mr10046384qvn.189.1572658465691;
+        Fri, 01 Nov 2019 18:34:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5a88:: with SMTP id c8ls6395560qtc.1.gmail; Sun, 18 Apr
- 2021 23:39:36 -0700 (PDT)
-X-Received: by 2002:ac8:7f14:: with SMTP id f20mr10076523qtk.339.1618814376921;
-        Sun, 18 Apr 2021 23:39:36 -0700 (PDT)
-Received: by 2002:a05:620a:2446:b029:281:145d:e270 with SMTP id af79cd13be357-2e0960daf04ms85a;
-        Sun, 18 Apr 2021 07:48:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDwY5LXrUv7rF4WSWDFWv7mThvp3cXH6uLI46ZivXyYIQPRU81VN5ArT2yPVj1vD2NKw/5
-X-Received: by 2002:a1c:804d:: with SMTP id b74mr16688769wmd.15.1618757312909;
-        Sun, 18 Apr 2021 07:48:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618757312; cv=none;
+Received: by 2002:a05:620a:15a2:: with SMTP id f2ls2766497qkk.4.gmail; Fri, 01
+ Nov 2019 18:34:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxIhOL5Op+jkNp/VPzQdgVq7961PVbdNCEUFyvS9ake+FiWnQlCYGiKgMVRbsS0Ih3MhRTQ
+X-Received: by 2002:a37:a54c:: with SMTP id o73mr6344036qke.164.1572658464627;
+        Fri, 01 Nov 2019 18:34:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572658464; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ru913ORMz2wsd39dm91DDUfHE/l226DrcpzGXXpjCC/N2e7oy2FHp5dWXhdKf9vZ0T
-         wKTzOtWwW42vxE1KMFuxd64jyX3fqHnFLTIKx4IwNFtoiaX5yIF6VD+NglSHJctEhg4h
-         zBycjudpuO2cEU/FczmAiRZSM6ZXUHiZEhcp23Sg3/ub5SIJyiYrqO/vYroP0stPwndB
-         xXO33skYvn2oMh17Fo0ZQQ6Db+I1qcAKUuTTtsODpPJpveidu4/3mk9ro/dZvCeDmq/H
-         rH2o9no+Jx9/pvZzI3yyaOw6KHTSzuSG0q/WDfEPsSgk3n2TFjKQJu8tFtxUHyvWkDuX
-         5ucg==
+        b=e29aR+YNSyaNf3PNl2UJ5XgDdOy96zkzX724kRPyc2InmJoLu1fdCuNOkDreB4PnMT
+         96g7KpWnDIUH4OLFMBYU4MIEgoKwoxok51eJEHIEBa4VbzxHkjlAFV9vGdPK7huZsRTS
+         Tax3uzimhsntBkNvpG5qX8sDVUUjf+fM1w37AnjHOL3qt79W26/D+9hBNYOPx1e2qly0
+         nR7/XBwirZ0MF/Ls0mfHw7J5y/sAnRvTo66yjA+2AbVNWzq0c0Ph7RVAZ0h3TbyMAhOb
+         qUCWM0+Lxg8cHMIDBZT9RAull3dJuW9PpUxrf7v/PP4Vz8McwRCzzXARpvtc9c68Tsi/
+         P+7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=/kZqRjhE3R5JUG9kHiYQ4hDaNWVduuH/NPkt3x6nfsA=;
-        b=abuO9RiWotT8M8DAcccVNtm8v5uF/3l6jUlwn8F58lowSrr1/oLSghU/Sel3GsCmtY
-         13JUaBaeub1C1WrLmGRu5ZYLVa7QS5JYGAEFCjV3vC+l2/+RJQULRLeHnA3wBoSASwAq
-         LphQkGe/2GDRQxea/oYxguvBln5ca5kafUkpJF9ekHcHKMpdgFIhJ/uB37rY39jsWYYf
-         9yQmSn4qBqKqAAF8zpvwzwb10dQxudldF9N1pedI6PcpYZ49Cgiki88GU6LaI5mweNgZ
-         Tp2Wqm1jb+DXSjm7JR+is3CDKxl8aiYN1X4Lt8J7OwkzvHFDJDijDLBodtI66e3fHGEU
-         5L/Q==
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=SRQ8cvSJSfl7LRg/DLwbs5NIHlvY+FhUn8tPgtCCDq8=;
+        b=NerCTl49k6/QOxV5wlSgk3dEpKTxdv2WJ30JYILuGc2KKzhwEatj7zRdadL1pm+rtC
+         +m6QTFVl0oPIsox3LKxDo53qYNokABoKQ4SHpPFIaOMxQ5M2mG6opKgel4T1jp1sLi1f
+         q1KzcYUrkQ/F5fmiTGnrxzZ/4HOsv14dEoFWGRI29Z3MlUGF3dvApowxEp4nde27fduB
+         coI9B+rsdcFR4hSD6z+tUnpo7YAG7WWVgatuKQiGvdZGMChV4f9W9bJiGadbbhwYbRid
+         n0bjn7YqYeOtwd8QzYE8Bia0paz/tlzysJyvlYKI0TjmzXeH9oiCL8sfIpctTQ5EwjS2
+         zTVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 188.37.95.113 is neither permitted nor denied by best guess record for domain of bcarvalho@bcarvalho-ubuntu.lan) smtp.mailfrom=bcarvalho@bcarvalho-ubuntu.lan;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bcarvalho@bcarvalho-ubuntu.lan>
-Received: from bcarvalho-Ubuntu.lan (113.95.37.188.rev.vodafone.pt. [188.37.95.113])
-        by gmr-mx.google.com with ESMTPS id c6si666380wmr.2.2021.04.18.07.48.32
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="pESP/vpH";
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id y41si664549qtb.5.2019.11.01.18.34.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Apr 2021 07:48:32 -0700 (PDT)
-Received-SPF: neutral (google.com: 188.37.95.113 is neither permitted nor denied by best guess record for domain of bcarvalho@bcarvalho-ubuntu.lan) client-ip=188.37.95.113;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Nov 2019 18:34:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 188.37.95.113 is neither permitted nor denied by best guess record for domain of bcarvalho@bcarvalho-ubuntu.lan) smtp.mailfrom=bcarvalho@bcarvalho-ubuntu.lan;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from bcarvalho-Ubuntu.lan (localhost [127.0.0.1])
-	by bcarvalho-Ubuntu.lan (8.15.2/8.15.2/Debian-18) with ESMTP id 13IEmTTj135423;
-	Sun, 18 Apr 2021 15:48:29 +0100
-Received: (from bcarvalho@localhost)
-	by bcarvalho-Ubuntu.lan (8.15.2/8.15.2/Submit) id 13IEmS7q135422;
-	Sun, 18 Apr 2021 15:48:28 +0100
-From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
-        airlied@linux.ie, daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
-        outreachy-kernel@googlegroups.com
-Cc: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-Subject: [PATCH 0/5] drm: Adjust end of block comment
-Date: Sun, 18 Apr 2021 15:48:20 +0100
-Message-Id: <cover.1618756333.git.martinsdecarvalhobeatriz@gmail.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="pESP/vpH";
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x643.google.com with SMTP id g9so5086891plp.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 18:34:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=SRQ8cvSJSfl7LRg/DLwbs5NIHlvY+FhUn8tPgtCCDq8=;
+        b=pESP/vpHanwMak3Sot3sr8l6HtUh8tEpiKNUnVx0eBgbOgAoiMo58riCYo0KfAsKk4
+         4AMODSFlvuj3XfFguEGCubAZIMeD5spsaU4tSUkc0rEkwInZaWJGhLzldxIgqGsXICGM
+         WJeqAJyra9GxV4SUjUQrMesbfuQmvFxfm2g0XeQ24Y/lBWlYfNixq4LP8lG71oRG9tQL
+         sgU5lTvldq15tLlhiHJYwZjrnlqgk2hpeLPlnJRaJcAOykaOYffsqsyurZcB2UOT+jCg
+         MDwcvpS41pQFSU12c1rKRro+HrEdkB9fKVRaSna3ldnLRCk3dhsFCphKCIcfT81kD8Qz
+         5VQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=SRQ8cvSJSfl7LRg/DLwbs5NIHlvY+FhUn8tPgtCCDq8=;
+        b=M0Q/xsI6TeRz64/n6u/II8fBUcbwhg2m6zvrrLDdLIFQdmO+7zq1MA1rUEUa9aWDro
+         sgbxoAC/4GQd3hn1hsVKcxK3ZgXRam36ju2AhlM5fTjmt5MzT0R9UnBnlaNI88hiHhZd
+         yp/frPZq61nxhDfEiSDF3ysMFHR3DQqXsG5+70rsOXqUmUtW7SZ8tDNSuBMC6IJ40GYk
+         bApCNEY2Pv3sf6eTuwYFqIH3UO7L9u8k4R5j0Y7V5geAvDAbfesrg9haNsVGfwHZlr9t
+         Y+wjn9usJzu6+6/TkiCi5fWxzbAgOzQ729aLpBNBIpTXQvQ9arb4L0/bPp4nP7b5xWb1
+         dxfg==
+X-Gm-Message-State: APjAAAXgFt5WGTZRBp6rQDhzISuYP1PRgcdooaIr6C43Pi6Ck94UupX3
+	uvV+o87Av5cXGBqvc+3QhryP2kqdd+A=
+X-Received: by 2002:a17:902:7089:: with SMTP id z9mr14831168plk.51.1572658463741;
+        Fri, 01 Nov 2019 18:34:23 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com ([104.216.216.194])
+        by smtp.gmail.com with ESMTPSA id i102sm9640695pje.17.2019.11.01.18.34.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Nov 2019 18:34:23 -0700 (PDT)
+Date: Fri, 1 Nov 2019 20:34:19 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] media: staging/intel-ipu3: Fix wrong
+ assignment to boolean variable
+Message-ID: <20191102013419.aoumfkx46ws6qas4@gmail.com>
+Mail-Followup-To: Julia Lawall <julia.lawall@lip6.fr>,
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+References: <20191101171914.rphvreggpu6qj77e@gmail.com>
+ <alpine.DEB.2.21.1911012009460.2883@hadrien>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.1911012009460.2883@hadrien>
 
-Add a new line with */ on the last line of a block comment to follow 
-the Linux kernel coding conventions. 
-Problem found by checkpatch.
-in tree dpu/drm
+Thanks for your feedback. I'll edit the subject.
 
-Beatriz Martins de Carvalho (5):
-  drm: drm_atomic.c: Adjust end of block comment
-  drm: drm_auth.c: Adjust end of block comment
-  drm: drm_bufs.c: Adjust end of block comment
-  drm: drm_connector.c: Adjust end of block comment
-  drm: drm_context.c: Adjust end of block comment
-
- drivers/gpu/drm/drm_atomic.c    | 3 ++-
- drivers/gpu/drm/drm_auth.c      | 3 ++-
- drivers/gpu/drm/drm_bufs.c      | 3 ++-
- drivers/gpu/drm/drm_connector.c | 9 ++++++---
- drivers/gpu/drm/drm_context.c   | 3 ++-
- 5 files changed, 14 insertions(+), 7 deletions(-)
-
--- 
-2.25.1
-
+On Fri, Nov 01, 2019 at 08:10:10PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Fri, 1 Nov 2019, Javier F. Arias wrote:
+> 
+> > This patch fixes a warning by replacing the incorrect value with
+> > a boolean.
+> > Issue found by Coccinelle.
+> 
+> The value is not really incorrect or wrong.  It is just not expressed in
+> an ideal way.
+> 
+> julia
+> 
+> >
+> > Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> > ---
+> >  drivers/staging/media/ipu3/ipu3-css.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/media/ipu3/ipu3-css.c b/drivers/staging/media/ipu3/ipu3-css.c
+> > index fd1ed84c400c..f36de501edc6 100644
+> > --- a/drivers/staging/media/ipu3/ipu3-css.c
+> > +++ b/drivers/staging/media/ipu3/ipu3-css.c
+> > @@ -1450,7 +1450,7 @@ bool imgu_css_pipe_queue_empty(struct imgu_css *css, unsigned int pipe)
+> >  bool imgu_css_queue_empty(struct imgu_css *css)
+> >  {
+> >  	unsigned int pipe;
+> > -	bool ret = 0;
+> > +	bool ret = false;
+> >
+> >  	for (pipe = 0; pipe < IMGU_MAX_PIPE_NUM; pipe++)
+> >  		ret &= imgu_css_pipe_queue_empty(css, pipe);
+> > --
+> > 2.20.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191101171914.rphvreggpu6qj77e%40gmail.com.
+> >
 
