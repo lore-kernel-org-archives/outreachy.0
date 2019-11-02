@@ -1,84 +1,84 @@
 X-GM-THRID: 6754500769734459392
-X-Received: by 2002:a63:d754:: with SMTP id w20mr16561329pgi.156.1572658823066;
-        Fri, 01 Nov 2019 18:40:23 -0700 (PDT)
+X-Received: by 2002:ab0:2716:: with SMTP id s22mr7160481uao.86.1572654761723;
+        Fri, 01 Nov 2019 17:32:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:7292:: with SMTP id d18ls1991411pll.13.gmail; Fri,
- 01 Nov 2019 18:40:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzCMKqgeQFftXFN9HDZTw9S6pBF60c0IeU5RU9GJRdQxDJ0/5luiYwOScQB9bGkkdY26V/m
-X-Received: by 2002:a17:90a:17ab:: with SMTP id q40mr18979051pja.139.1572658821911;
-        Fri, 01 Nov 2019 18:40:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572658821; cv=none;
+Received: by 2002:a9f:3117:: with SMTP id m23ls123993uab.0.gmail; Fri, 01 Nov
+ 2019 17:32:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyG1I/wcFKtW38Ee1G2Xwo/JYTlZwUudCeDSorcsKNANxrKW0k0bZKhr4A8aFmdFUdMD2HY
+X-Received: by 2002:ab0:7144:: with SMTP id k4mr4691315uao.91.1572654760605;
+        Fri, 01 Nov 2019 17:32:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572654760; cv=none;
         d=google.com; s=arc-20160816;
-        b=JkNlCczWfDtSp4GpTQlawNuOhKHWolABYjEtmRE6o9rUR0K+keM0KZy06ifz7IejEv
-         a3WJcmvTc/a85ct7OocqhXOLHRO34LiuL0jIwYoV3hsL2Gik3X110ykrektARbUXKR7w
-         lQ5GYJlhzx/rZfu3ACKiYy7G0Y8D2zDSe6rp4kFKYguzwaqpmjtkk+OEGeHQcF4Vhc4o
-         sKRu/cqYGLRv6LvOXCJk2rlZo+B3mSpSXY6zU9leWuFnvAmNgWlx8SodYczW2JeXPBSQ
-         vC5tbOvVoJYvnB3QzRgIGrJOET3TPtXM+uNzBYfMO+j5iHEyRqoltG0wMo1azSmyJUN3
-         a7bA==
+        b=b/gt66vLLBJLdvheiamK7ow4R3yQBgFEcEpR9HuuEIoPddw8KXuU89dDtOS6JNekRE
+         N5vFW8NWLJVZl6u77KgG8+reWtcGYkZ6k5cmG7M3Nh92sJWEhEoASq4AhPmCA0jezXjQ
+         Hhg/d/5FQKSh7a1RO9/dEm2V/UyHCQVEHV4fKrZ+I+z84S9INuwkpqz3Z2stWBfDUONw
+         KfJvlohzcOl0r6S0azzR26Mpy3k0JSpj9P2MeYCJbRq2tcTyVpci1dvu6zmMAm1TVdU6
+         vyImN42kt88hs8hY44+E8D22C3Bl6M50X5dMpA5MtJSW+I7k6T5whCi0msW9c+aIsI2v
+         oxzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-disposition:mime-version:mail-followup-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=cvcRSVa5RZ8Gz/PvY1KyEOVBPE/nZzp+RyiAe5TD4Fs=;
-        b=SUAhIRJ1lN7rpvRFE6lwTPitCSNmQFBOD4yLGQw2g5iI59y/DcaNBnnRX1/NrwqOXe
-         dKabWM0JQ+r0DzzzaPSbLiYEHnJqi44PfjGJVNYqAYlqLg8RIS5u5NvIkh8U6IdKrJs8
-         ralaq5NHugOxash+btu18HszAp3ITCV5U1LI3YP3xWE0quWFwLGHxkqCvp+RqlZowVna
-         KNsmoEOVW4X9r8T956KFMo+ybTJ8EyaHM9IU28wCg99dIZwm60lqM3G3tUKHX9x8ekS1
-         iaRPfSw04BdCF5bDSdQ7t0BpiRjJixHKdsNcGt3mz9dDcnRBJ8clv5Txq7ayEG2qnV7L
-         9jyQ==
+        bh=BlMAkrnyKu5xWVexX9Ig76FoxRSKHEIU4K4rFq7jLsk=;
+        b=FqHXfiMCja0JHLDq1vsOilvh3NkVMy0YcdN2dg+nqj9lkx2iKZItV4qInatO7HwSCL
+         UgaqowHx32iv4bq0ZoZZGpJAGDncICQbwjNO4iGT7IKo7zuuJ1QwZ/GYWTAB4orJ+tvk
+         Piz0L2E21VAYk+eXuOXGUCGylvxcQup0IkK3QMN2uU7fqBPR+KXAb+C+UT5dATZUIdPi
+         Q3gUPndh75focewpphRlQNv6IGvKd81+nvD3yoH0u1qCWKrCJ25ZyqyIqnTzykdE7Hxu
+         A+DXD7XZb/SqT1QnMwsaO1rGqaCx+DG7ehp/+fdTB6HXDcqfXj4U0ccPfhKeKrYUWknZ
+         kmHw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vPEfIs4x;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ArNH/2ly";
        spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jarias.linux@gmail.com>
 Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id s26si416374pgn.5.2019.11.01.18.40.21
+        by gmr-mx.google.com with ESMTPS id s197si507665vkd.5.2019.11.01.17.32.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 18:40:21 -0700 (PDT)
+        Fri, 01 Nov 2019 17:32:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vPEfIs4x;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ArNH/2ly";
        spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id x195so4698895pfd.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 18:40:21 -0700 (PDT)
+Received: by mail-pf1-x444.google.com with SMTP id c13so8107509pfp.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 17:32:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
          :content-disposition;
-        bh=cvcRSVa5RZ8Gz/PvY1KyEOVBPE/nZzp+RyiAe5TD4Fs=;
-        b=vPEfIs4x30nrzr1xL4J3Z3dVAjroOHQjgklXFD0Wlleh/D8lS6hwvXy5GWmG2EFyZu
-         ay667qn7cMfAHhhwzhNauApI5t2UKS2zZLwn3xrpO+nXpWXxJIRpr5a9LBtc0GN3UObr
-         ACWdicTfSpVp2A6yCqKGMRJk/7dBAC5gzcTb2FxBKqytUY91ySE9jrQVZCYQDBPGWTYU
-         s3c52QMS5dkKFjTCBocvjku/fVfHooIQZ0fL0ci0Vq/h0uD4/7Uu+bRZXFhiU4ixDjT9
-         c1DNshcRt5nAZ50dv3u4sanHBGL8h5yUCKcrnjAydqu6Vh2zLAKIq4cPGGs91F7cjf5r
-         3Ltw==
+        bh=BlMAkrnyKu5xWVexX9Ig76FoxRSKHEIU4K4rFq7jLsk=;
+        b=ArNH/2lyJm2jSeAgusr8g6F1kQjnt1e2r6on1QzXuOqOgorAY8DHiaxQonMltwcz/G
+         a5pDE74DfKTrnz75EX2G8c8y1PhtG559SggRCtU2cJULjZtjXbt5C0acng+rFsWuI1Gj
+         G489dxKyoxS3IvYai5x9loTKO9dLNFo8AlCJdXte2ab4i+ET0oE/hMbIz2utD46idxg9
+         DthmUslktYO7vB8wrxSRYq84pEqcoF6tZKAJ7ZdnXKjPbBnrfRZd0xrnX2tFbVy2x+Jq
+         9qDWh+zG7tptAXL+FDy67sC2/n2wPHdVld7lTs9M1eWeX7gV0wa9SgCkiId0PyXJwy+J
+         zExw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id
          :mail-followup-to:mime-version:content-disposition;
-        bh=cvcRSVa5RZ8Gz/PvY1KyEOVBPE/nZzp+RyiAe5TD4Fs=;
-        b=hiN4zjee+9hC6YUXV0bIEG69RZ8n4Be7vxdZwOqfaquyHEu0OFrevF/10MnDwPrTVS
-         bS+TBFjEiAHgMUxTdjRGlx9OcCijaoe5nuTQ976nGFA31whRWospYRn0y47Tv5lfVy55
-         OfS94fxmCk1tceRXnaun2YPpIOLyTORp1gUPHNlF3jyAUG+kmev/ofBU5UzFyPAFPYYc
-         U/dD6OCyLns/2SLOxKbuiPixm1RPiaA4Q9gcJekoCsQZzKo68FKsXLxzJyTDdZj4/KPC
-         WSMrNzOiwcJM01AoYZY6LqaMrxA0mVdPBmcDAvTUtlaC/HEslpcDJstU9I2+9Hca6chX
-         i6dQ==
-X-Gm-Message-State: APjAAAVvBzwUwnBSWBub32vg1Zl7yttBlFKanD/dvfeat+FocIjCJYLb
-	N7o49cAJ4B0leBBs4ujeEJo=
-X-Received: by 2002:a63:4b52:: with SMTP id k18mr16408915pgl.394.1572658821183;
-        Fri, 01 Nov 2019 18:40:21 -0700 (PDT)
+        bh=BlMAkrnyKu5xWVexX9Ig76FoxRSKHEIU4K4rFq7jLsk=;
+        b=uWgs1pZof1b9PK4T41gFvmWpo109O5QEoEfXpyHWFn0ELX/nUaPjBxlKiLbKo6HmEu
+         U+6GQg+iho7TXBh9htUlqLd0dMXoRweeQsxT9uqf3ZIa5j1TPNp5N2Q36b/FR/GkVZ2k
+         M/A588v9idP0eRsO7pLGSGdyEzCmxyKvA2PxAbPfbzyT3OVlckLhKgUQlSGtKNDb2kVR
+         ASZX0w6bfYRnPRcEh+ZS5vevKM0lgK4tu4HEACjB0ft9hlglIt1k9pRSYJJDiFYyrRwo
+         gOGjhMzltjBtE5lHblcNiGqO9Z/vzXMCECicycMHmDO/At0+4s7yFd0k+V/3WGVWo2Iz
+         JRJQ==
+X-Gm-Message-State: APjAAAVo1M2xfDWNaqkqbBdleJVlaBRqy/rOu5SUSnSnGB77irh7/q5z
+	DrDJytCcrOtW725Edys3dx4UQlcIQjk=
+X-Received: by 2002:a63:f704:: with SMTP id x4mr16113577pgh.336.1572654759732;
+        Fri, 01 Nov 2019 17:32:39 -0700 (PDT)
 Return-Path: <jarias.linux@gmail.com>
 Received: from gmail.com ([104.216.216.194])
-        by smtp.gmail.com with ESMTPSA id 10sm8069136pgs.11.2019.11.01.18.40.19
+        by smtp.gmail.com with ESMTPSA id q185sm12418918pfc.153.2019.11.01.17.32.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 18:40:20 -0700 (PDT)
-Date: Fri, 1 Nov 2019 20:40:17 -0500
+        Fri, 01 Nov 2019 17:32:38 -0700 (PDT)
+Date: Fri, 1 Nov 2019 19:32:36 -0500
 From: "Javier F. Arias" <jarias.linux@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH V2] staging: rtl8723bs: Remove unnecessary conditional block
-Message-ID: <20191102014017.t5rtf5syzs762nea@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: Remove unnecessary conditional block
+Message-ID: <20191102003236.hjetw3qdulk7skrg@gmail.com>
 Mail-Followup-To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 MIME-Version: 1.0
@@ -92,9 +92,6 @@ Issue found by Coccinelle.
 
 Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
 ---
-Changes in V2:
-	- Edit the commit message and description.
-
  drivers/staging/rtl8723bs/hal/sdio_halinit.c | 19 +++++++------------
  1 file changed, 7 insertions(+), 12 deletions(-)
 
