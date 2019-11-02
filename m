@@ -1,107 +1,123 @@
 X-GM-THRID: 6754500769734459392
-X-Received: by 2002:a81:a8b:: with SMTP id 133mr16325124ywk.246.1572784806852;
-        Sun, 03 Nov 2019 04:40:06 -0800 (PST)
+X-Received: by 2002:a62:b616:: with SMTP id j22mr22503553pff.55.1572734756326;
+        Sat, 02 Nov 2019 15:45:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:2388:: with SMTP id j130ls1906517ybj.7.gmail; Sun, 03
- Nov 2019 04:40:04 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyZ+kUkzHuKjCv3IojEyf3BjQ0rj97N/W5uC6oze9JlKKsF8Q6WjmIwMELhqMBejwume/rd
-X-Received: by 2002:a25:3541:: with SMTP id c62mr17229205yba.471.1572784804736;
-        Sun, 03 Nov 2019 04:40:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572784804; cv=none;
+Received: by 2002:a65:4342:: with SMTP id k2ls175431pgq.6.gmail; Sat, 02 Nov
+ 2019 15:45:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOJYVTOq6OEZb2JqotpXs0YmYBk2lnOGL/ubptCSs2FaTxBFo22Yhz9fO4DuSO4HfdL5+e
+X-Received: by 2002:aa7:8e15:: with SMTP id c21mr2101866pfr.122.1572734755125;
+        Sat, 02 Nov 2019 15:45:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572734755; cv=none;
         d=google.com; s=arc-20160816;
-        b=N0pmJprs7mE1I8DkhfOfc/0loyGDl+VrY+Kwc8PA2vNjxPgaKzvT9dK0Qq1xYwnWSt
-         cqDrcZDiGoppxNgixwUUghqifHdeZwtWUYN2um9/du8uwlQQW0YFC8/ABGDXMTpZdfVu
-         CzTbgjFSb6ciRPFocSD43jAsb3HwD77EAmoRiQZ6fBBvQNdmSMkfKSJDCKY152gsOPWh
-         Hj/m/p8RLox0Ahm30s6VgbzhM9ngkWZ1ZpV1s43Eyv1ojESPDPooa3t7PV12E3wdV46k
-         Z3HTRSWxYikPkLQMHYsR7gyOETu2969/AYY8hundwGrSLUormujPU4wFWgMUmWe1iohl
-         U4rg==
+        b=ID/jexkNJwVyp5EAPUp/Elp+CH/4MP78Qv4DyPCSjpmJhC3y0WRI4wiqCpAJDpUFMx
+         1ZZPtPjfajXMRr6rTh/D1iiFrnHDlbThYM+MfivXqDl3ugBIm0XNSQAhXc0Oi074OBtp
+         BAEDN/dMe+DLItzFqpVX8WL1YVT4vZFswvQ8XwjXb0nfpnNTFyKoZGSfPq07CCtbojer
+         kE5mYDyqmkw9MTJkAWp1nV2SuufWonkKQUnR0e+H+D2eKqWc6MR2ES6qisC1B+MxgYd+
+         hY6MeIdrMkPVFb1YbyDteQo/s3jjjqJOfc4YUR4y1EUoY14fR5TPnmm7xYv/nkVl7faZ
+         xaaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=3lTiu8spvdTXjYQ5Rt1+xw5pBa+eIMje71tZmXnQol8=;
-        b=cfrKgojAEDay1P49yxd0TB4WIegYXrpICDIzrMrZzBEEk8hmElVKZibMURqvWWeFy4
-         U5Sf3FQ9/mu13LC96Uu2RbJNBYovxtqxbRmgA8kZvcHg6nIJBvTr+XlrE2VpK+O+09FT
-         GSpiWPBv1KQAoSUf9pJX7ype9pJU/X26gT3j7KuWvKEF2gVP7zmg3DtLyj+H7rDMQL3M
-         JnXdCtbieuScj1YMnSUFV7bfzALKthBZXB5+uBfPFf/5yDQ13DPmkhX1eXGe1IwAOt/e
-         0PcCUfMbnS2SCIYFyRMcPRSZZBvJ7dAevIx8F9DONzA9btPF3SORN1YM1kQnl46QhKmU
-         AGTw==
+        h=in-reply-to:content-disposition:mime-version:references
+         :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ilT2zI4rF7nwcW2GWQdDkhVZZ9wD2h5VXAAVVL51wHA=;
+        b=It9lFKadWKAroE0+yQFDIMLnjW1aL7qmOmuuXCDcnFGRfSbwALdmtVBnnVqRiezX3C
+         SkcFPL8o8vV/D03RUXF0KK6oIySxqlrwmrQOWygAOW45FgbExpBIpLU/cQt49Yk9TkGK
+         z4MFQ8VJgQVbKrZ3Gy6o8Heo+tKbpjeYUGGgm1z6UeCVKFtXqnTHZ9x8An5EX/ID4I/N
+         BQREVJ5402lz/+e1gNuSzqLdGj6VbUBbWjZzl04c4iHzwoP91WXpzfsjKQ7ih5t6zf3W
+         1oSpYfMgKgkxRrDGCOR1JY2XMzUDX26TUVRTfPAk+1OG6ysk8m/LlISM17Jg6klV6iol
+         sKFQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=quy26Q1w;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id c79si133486ywb.3.2019.11.03.04.40.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QV32usgE;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-ua1-x944.google.com (mail-ua1-x944.google.com. [2607:f8b0:4864:20::944])
+        by gmr-mx.google.com with ESMTPS id be9si506395plb.3.2019.11.02.15.45.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Nov 2019 04:40:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 02 Nov 2019 15:45:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) client-ip=2607:f8b0:4864:20::944;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=quy26Q1w;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 333EE2080F;
-	Sun,  3 Nov 2019 12:40:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1572784803;
-	bh=x0EOiXvwhuzLUtrOUCXmm5ZWwEW6wrFHrafEsqHiHCY=;
-	h=Date:From:To:Subject:References:In-Reply-To:From;
-	b=quy26Q1wbeo9D0KK9SRMHmmPu3tGYBQ8FVE5t+mPTTD5UbTe5v0goxHxkLQrGcoFX
-	 Z8M1U7G3nmPEWmnMIhSY4L+Y9Ai6vuWt6r+d6H9xwp7GtPZMqfEGlIH0v3kcIAxIpK
-	 IPL2j6XVD4pdHkk/3yl8J6Q3xovHUgf7pqwWBTD0=
-Date: Sun, 3 Nov 2019 13:40:01 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QV32usgE;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::944 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ua1-x944.google.com with SMTP id r22so1374332uam.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 02 Nov 2019 15:45:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=ilT2zI4rF7nwcW2GWQdDkhVZZ9wD2h5VXAAVVL51wHA=;
+        b=QV32usgEpBbVa++qEYZmHagiHgKG7lWRCPrCx5SnQX4RnMrXrTkq4kZav5SVjB87wO
+         gxo6k7J8CX3QBR3YcWlVspLmOIemQnh4i/Z0cJqIRD/+9E5RnDYPDlm4zQvNFYTwin6L
+         gY4mtpavSy3Ml/Asl5ZvGRi+0vUNmoRUQqWsYgbRRDx9FGFVAG06gLja8TSH8wqgrbIg
+         rJTsDtSj6PQPxdYmnkfRN/XG6XcuV0iPTJsIPSFWdaWDvmd67npw0AV3LqQpFcOBo+RZ
+         Ici7nzMD97Gn2ei+CtcHIvBB2acWGENTu8PN9hkpu/2AfKrvCI0NquqXFFP2/akfV1j7
+         JUmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=ilT2zI4rF7nwcW2GWQdDkhVZZ9wD2h5VXAAVVL51wHA=;
+        b=TozrrGbs77qDO/gE6s1KMRQ1gR6xSd/daddv4lK8hULSUwnifL8oRqaDsK0ScmeuWc
+         Yho76Pf7xqbn2jTadhcNVJXQgLdAhX/nvyWQpRZJBGy+eXgiC9hDSUntGktK35ov/hIi
+         N+B9EmPDFmsBS91ixjUAVPGhBX8a3uK7itg3pN+qiVon13v6LIEop2if9aio9BA4ed3C
+         9kgs/DNqGdI9ISE8fbkgETOmz4t29uE45JiT0t6ha13dSOX3ypA9KlWi8o7R5aQQPSWx
+         gOR1Ilfyl2n2LFX/GTsHB8/b2W2NMv58qa5OhcM9TQeqWiZlk6DHZvLGpsh3IFyqnn90
+         8W1Q==
+X-Gm-Message-State: APjAAAVyNTt1u4dABMedSGZhHv1RRTvjnHkyyzYSmdJanw5opnqiIkPr
+	IuSCL/c57RNP9POOiEIJoi9MXHRYPlEaAA==
+X-Received: by 2002:ab0:55c8:: with SMTP id w8mr8626615uaa.66.1572734753966;
+        Sat, 02 Nov 2019 15:45:53 -0700 (PDT)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com (dynamic-190-27-29-125.dynamic.etb.net.co. [190.27.29.125])
+        by smtp.gmail.com with ESMTPSA id 184sm3126651vsk.30.2019.11.02.15.45.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 02 Nov 2019 15:45:53 -0700 (PDT)
+Date: Sat, 2 Nov 2019 17:45:51 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
 To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
 Subject: Re: [Outreachy kernel] Re: [PATCH] staging: rtl8723bs: Remove
  unnecessary conditional block
-Message-ID: <20191103124001.GA619218@kroah.com>
+Message-ID: <20191102224551.myb6rjyhvgbldpt2@gmail.com>
+Mail-Followup-To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
 References: <20191102003236.hjetw3qdulk7skrg@gmail.com>
  <20191102104324.GA184849@kroah.com>
- <20191102224551.myb6rjyhvgbldpt2@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20191102224551.myb6rjyhvgbldpt2@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+In-Reply-To: <20191102104324.GA184849@kroah.com>
 
-On Sat, Nov 02, 2019 at 05:45:51PM -0500, Javier F. Arias wrote:
-> On Sat, Nov 02, 2019 at 11:43:24AM +0100, Greg KH wrote:
-> > On Fri, Nov 01, 2019 at 07:32:36PM -0500, Javier F. Arias wrote:
-> > > This patch removes a conditional block that had no effect.
-> > > It also reformat the affected lines to set the right indentation
-> > > after the removal.
-> > > Issue found by Coccinelle.
-> > > 
-> > > Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
-> > > ---
-> > >  drivers/staging/rtl8723bs/hal/sdio_halinit.c | 19 +++++++------------
-> > >  1 file changed, 7 insertions(+), 12 deletions(-)
+On Sat, Nov 02, 2019 at 11:43:24AM +0100, Greg KH wrote:
+> On Fri, Nov 01, 2019 at 07:32:36PM -0500, Javier F. Arias wrote:
+> > This patch removes a conditional block that had no effect.
+> > It also reformat the affected lines to set the right indentation
+> > after the removal.
+> > Issue found by Coccinelle.
 > > 
-> > I have 11 patches sent from you, on the same day, for this single
-> > driver, yet I have no idea what order to apply them in :(
-> > 
-> > Please resend all of them as a single patch series so I have a clue as
-> > to what to do here.  Be kind to maintainers :)
-> > 
-> > thanks,
-> > 
-> > greg k-h
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191102104324.GA184849%40kroah.com.
+> > Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/hal/sdio_halinit.c | 19 +++++++------------
+> >  1 file changed, 7 insertions(+), 12 deletions(-)
 > 
-> I'm sorry Greg, I had some patches ready to send and i didn't want to
-> send a single patchset with +200 lines (as suggested in the
-> documentation) so I thought it was easier to split it.
+> I have 11 patches sent from you, on the same day, for this single
+> driver, yet I have no idea what order to apply them in :(
+> 
+> Please resend all of them as a single patch series so I have a clue as
+> to what to do here.  Be kind to maintainers :)
+> 
+> thanks,
+> 
+> greg k-h
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191102104324.GA184849%40kroah.com.
 
-I can easily handle patchsets of 50+ patches, so that should not be an
-issue here.  As long as you only do "one logical change per patch" then
-all is fine.
+I'm sorry Greg, I had some patches ready to send and i didn't want to send a single patchset with +200 lines (as suggested in the documentation) so I thought it was easier to split it.
 
-thanks,
-
-greg k-h
+I'm going to resend the biggest patchset for now.
 
