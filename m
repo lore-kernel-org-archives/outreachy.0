@@ -1,129 +1,114 @@
 X-GM-THRID: 6754496283091664896
-X-Received: by 2002:a25:a324:: with SMTP id d33mr13422095ybi.58.1572691170525;
-        Sat, 02 Nov 2019 03:39:30 -0700 (PDT)
+X-Received: by 2002:a05:600c:2046:: with SMTP id p6mr9115426wmg.165.1572653717198;
+        Fri, 01 Nov 2019 17:15:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:d0d7:: with SMTP id h206ls1500172ybg.12.gmail; Sat, 02
- Nov 2019 03:39:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzjIEx1LTUQ6gmZk3rrkR6cOIrb2WzyRpRr70xkUNTwIMjdXokb0YAwhIV42Vt1Zdhs1EPP
-X-Received: by 2002:a25:e696:: with SMTP id d144mr9685298ybh.173.1572691168814;
-        Sat, 02 Nov 2019 03:39:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572691168; cv=none;
+Received: by 2002:a1c:6085:: with SMTP id u127ls10424717wmb.5.gmail; Fri, 01
+ Nov 2019 17:15:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxWTpby+qGAOP8Dfi8Rb7r0G/VvVuY5hthnYt3JVqSkKXSeJ/XA661LrZ5RDBM4entHAZ3E
+X-Received: by 2002:a1c:113:: with SMTP id 19mr10962774wmb.42.1572653716190;
+        Fri, 01 Nov 2019 17:15:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572653716; cv=none;
         d=google.com; s=arc-20160816;
-        b=vXKZwAp79nwtGTBmOFZ+PAGyZz4cxoj4GxxDBHE3K3IFGCqVgh4Q3ma5aY/NouElzm
-         zv5qed8dMbu4S54L/lYLUJY39e2U8Zf4x+CgRABS9xDpFU6zGq5BnIG1sKnvUTMVyXo9
-         KJxEFfWCwfuYJtE8PaN0hLhcq2b2rZZ6A37RJnWvJk3lDaDz8JMjBml2knWT87GAupsT
-         h/3gqxUgfM9fNKWl319EdahXvTuscNAaky3MIp655p9JdVaB5OZKYkNdBKgEl3hLf7xz
-         By4MhxxcHYCGOxCJN4Yo0S8P5/fO5hG4YMcRbR7r00iDvU7OoI2UztaeBx8rua434S7k
-         mE4w==
+        b=QVSN/M1MqRvQo9ZrrwMc2wCvuqJqKEf51sFGmp1cHAGUcFy8TvW/VSLP4xSF2xbcD1
+         OyKmnv+sj+8q2+cTTfpZxCtayzrp+B/rx1m8DJDUjBGDlr3XvQ/gN77tRqHk2/DMoCvV
+         B3V3HTQgp50CAkaGF12OKWKz0ZMGSwc0vI+r809nr/stl9FsUwhi0iIp/T90EIY5ikMS
+         sve23tveJdgJtQPp4xTaE0+lu+3ol+4z0Hwd5zYNC0WNCFWt5lcH1tw3kDledzsitUhg
+         qWWDF3Wz8fwHBWn7bWHEe41bK80w6/OTRvtGA5WQ3OPhu6OdgLZwFeLyAzZPgL36ZSwU
+         zvNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=2Yh2DDRNrKspKq1cM/EQkeKYgy9gXyiI2m+Xo++q9KY=;
-        b=PvVdsOme/TPTHncwAzZliSgZhuiF474moUUi/+5ra2gkbJpaGmxENcUblIz4KUxdVy
-         7CXuYqZ0Nuqbfw4yKmy2qZNA3rgSA7BQwY0kL2WbWXaUFNGnJNhu0Ahjbzk43yws4zMl
-         lkZjfHA6XmfuqYehlZiPE0DzmDc4pktoKRR4OAtxyipJpeGkTrTMdwHQjvoePpMEc/Il
-         n+Z2ykWpE4V5J1ms3JDEi+bwqLQOpznwZ1MdQsluH+m3MK+kYzVuUnSAhFdTpBkNXiq1
-         apvBySkrudcdOj2MS37fCCQPABn2EiiI/foe7VHtmyOvgyhSzwyQyzaM2HljPWyOn5fl
-         fcBg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=73xsCJrCBga/qtyHqXYQW2cwHZFXOa/8X2wvDsMm9aY=;
+        b=eHleqhmx6jyRvHvrXI6mCLDHB0qw9S0xfqxvxG9txMq9/v0csmTjWLX95tTDJQDqUK
+         0EeGjXmPTzg8bnERqEm2uzRqxlzhsD9wopTf3rjwykJhQlgVgXBf4JjxM5cNCLB3G8T9
+         CNdOCbXugYm7fSrnkt4kUfJqaTQP8N/8zcbU8xv7ZR1cxrw3L/lnt7u0tjHoQ6+b/ou4
+         aFrxntA/gKriuW3E475lynjf/srxFcxIaP7gRjBSxlGZomngaWKXGM8RtUy3PRj391a2
+         1T6rWnJnRUqQsm8ANOqyfm/EPaIa85/pDTUCqD/mTlGUOXYsmWM1rbAnc6rt2Mxhwn8D
+         b39g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm2 header.b="rA/Y8Egr";
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=BWquDFZe;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
-        by gmr-mx.google.com with ESMTPS id u8si716163ybc.2.2019.11.02.03.39.27
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nmxNSfpY;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id y140si590472wmd.0.2019.11.01.17.15.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 02 Nov 2019 03:39:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Nov 2019 17:15:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm2 header.b="rA/Y8Egr";
-       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=BWquDFZe;
-       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 35B5A21910;
-	Sat,  2 Nov 2019 06:39:27 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute6.internal (MEProxy); Sat, 02 Nov 2019 06:39:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm2; bh=2Yh2DDRNrKspKq1cM/EQkeKYgy9
-	gXyiI2m+Xo++q9KY=; b=rA/Y8EgrtEOTSmhhpiM52u7GSYHst8IXX6Upli2jWcu
-	Pz1K3t24B10cA435toAAnOvTivN5rI9n7PLDRPjpfT4jvOIebHdt+TFRX/3XGSLB
-	xl4Pz7msWkbLEVIOdOo37gxpFZ5B5isNI5I9/eAk7UoziJpUqGJofKpnJID0IGUY
-	olVKoUOPyj0c5TOQFOBTkEhO8huGgl9VmePl++LfYBqSevCiFseh3bkiYnH2TW2C
-	ePRvK04mW+G77rpOtFbbSlkWzdxMJLHUwM8/QDkp67IrOefKSzOGo5HVJR+JJf3n
-	xC3lobBnq5suCfH8otBVpERzkhoE76lXowsQgUB7+5w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=2Yh2DD
-	RNrKspKq1cM/EQkeKYgy9gXyiI2m+Xo++q9KY=; b=BWquDFZeMXY0xHTRBaOh6m
-	slozo5PqETx7d8DwymApcKKwbHPx2LbrNWYUTKLTvQ/2n02Ax086fzzu3RITIhqA
-	uAj9xDBpzoa2kNVU1gMRlqZ0VHhdR0scx+LhvwgTtuQXdbSb3q2Y8taSGFM3kTIu
-	3nsj83oI1I8UlQkAj6QS7imFeZIOfLIQZO7W5ZeA8KJehMoTLRR5PQ1xVmrxNrwm
-	g+9qEs4H5fRLw8rtR/kzQvIPYUL80b2J2+P5/2zUMi0WY96Z3rV/HdvM+2UWxK+K
-	qceEQJypxhUIO6s4i+NjPvFq6eePEPGrs7t39W6K6UBYTbcecDk9VL9u4WIITpHg
-	==
-X-ME-Sender: <xms:3ly9XTET8HPq_J0xq0hftMzvC2pBcySZzPu0K8H3tAAk1GaNc8bqcA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedruddtledgudehucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujggfsehttd
-    ertddtredvnecuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhm
-    qeenucfkphepkeefrdekiedrkeelrddutdejnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hgrhgvgheskhhrohgrhhdrtghomhenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:31y9XUfUl_eFMvt0IcBmZJ5sa0xY1IcUyZjv-RVfF_ilDU3g8iux7A>
-    <xmx:31y9XSLrFWGxtP34aokt5ZqZzYLXhby1Ckbpk4avZczzs2bb_y9Yhg>
-    <xmx:31y9XbpFzwkvQ6hb-Nuv5dJkMYqI_EL6z__MpzI_I738qz1lYCq1kQ>
-    <xmx:31y9XfmlinZdVFREhvzc3sXHqIp2gIyZ1fxITsONiBG9Ke2VYi2HgQ>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id AC73A306005F;
-	Sat,  2 Nov 2019 06:39:26 -0400 (EDT)
-Date: Sat, 2 Nov 2019 11:39:25 +0100
-From: Greg KH <greg@kroah.com>
-To: Jules Irenge <jbi.octave@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, jerome.pouiller@silabs.com,
-	gregkh@linuxfoundation.com, Boqun.Feng@microsoft.com,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: wfx: fix warning of using plain integer
-Message-ID: <20191102103925.GA170933@kroah.com>
-References: <20191102001457.23369-1-jbi.octave@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nmxNSfpY;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x343.google.com with SMTP id t26so6417183wmi.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 17:15:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=73xsCJrCBga/qtyHqXYQW2cwHZFXOa/8X2wvDsMm9aY=;
+        b=nmxNSfpYIyq0ljP6nZQiSmeN7bkfFARpnsHy4alURYjZMgCQ6gRjKQPVEFeEd7doT+
+         hTRH0KZv+n6Te4JiwqlkIOzXZOrUcIlX50TrIh6L4X5ur2saRHLoK5YP3BTCk1eeim7G
+         Sg4tRY+4+qSjEzel7fygvZy6TN6MPYjHLjo9cKsvchmSXJfXgmJ2oAP/9wo7v6kJs6EK
+         lDtNbNsc94yKm6EXwRNZIABZWSglGoinVqhdgiTw+QjVPQoIRPpl44pWLE/hXgUIf5F7
+         trQ6/CNL6SdiCtN4JRanSjlBL/ZhRlGjqQV0mZJ7w1CIbiyrzCwg/Izx8FG0KCeOXW0F
+         hS4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=73xsCJrCBga/qtyHqXYQW2cwHZFXOa/8X2wvDsMm9aY=;
+        b=Bm6ct9rkMBIDpRJPoqT15U7RWdA02KlpyD+PLfgVN4flKdya5Wr4v6ozKqiFuUrUyW
+         7QYRRSLwYhsjiOaMayPNt5cRXwCuPePktNNhCGFndsX3ZuAfrHln5bHskHWacB02AqUK
+         sRxDKgK+MiFIhyT93gJogYqJvxvgMCVViD8199xGba6kPROWO6bvbVdx6Gervn45krK6
+         8qSMO2iG+Kgh6sRoXSrvIGdwxGhV+aFSL6oTmR1+Tr57vVrxmZeKld1cIHgBlrDpNwmC
+         n4W+2LMosQ6h8mZZEQHDGdtLb1ETeRO5jLhPGxbGJJE5g8ke3WlOC55cKNwezykuUILu
+         o9Iw==
+X-Gm-Message-State: APjAAAUJVhKAH6A/rVVz7Dt6Vfv1VnQV1eOcsc2GHq2md/FD1O0VjypR
+	2sq8tFKzOvj73rvCs9k0378HZ4mmj6Ok
+X-Received: by 2002:a1c:7d47:: with SMTP id y68mr12274820wmc.157.1572653715528;
+        Fri, 01 Nov 2019 17:15:15 -0700 (PDT)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
+        by smtp.googlemail.com with ESMTPSA id s21sm12885934wrb.31.2019.11.01.17.15.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Nov 2019 17:15:15 -0700 (PDT)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: jerome.pouiller@silabs.com,
+	gregkh@linuxfoundation.com,
+	Boqun.Feng@microsoft.com,
+	linux-kernel@vger.kernel.org,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH] staging: wfx: fix warning of using plain integer
+Date: Sat,  2 Nov 2019 00:14:57 +0000
+Message-Id: <20191102001457.23369-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191102001457.23369-1-jbi.octave@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+Content-Transfer-Encoding: 8bit
 
-On Sat, Nov 02, 2019 at 12:14:57AM +0000, Jules Irenge wrote:
-> Fix warning of using plain integer as NULL pointer.
-> Issue reported by sparse tool.
-> 
-> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
-> ---
->  drivers/staging/wfx/queue.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
-> index ef3ee55cf621..5d29bce65f71 100644
-> --- a/drivers/staging/wfx/queue.c
-> +++ b/drivers/staging/wfx/queue.c
-> @@ -565,7 +565,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
->  		}
->  
->  		if (ret)
-> -			return 0;
-> +			return NULL;
->  
->  		queue_num = queue - wdev->tx_queue;
->  
-> -- 
-> 2.21.0
-> 
+Fix warning of using plain integer as NULL pointer.
+Issue reported by sparse tool.
 
-Please send this as part of a patch series, with your other changes to
-this driver.
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+---
+ drivers/staging/wfx/queue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+index ef3ee55cf621..5d29bce65f71 100644
+--- a/drivers/staging/wfx/queue.c
++++ b/drivers/staging/wfx/queue.c
+@@ -565,7 +565,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
+ 		}
+ 
+ 		if (ret)
+-			return 0;
++			return NULL;
+ 
+ 		queue_num = queue - wdev->tx_queue;
+ 
+-- 
+2.21.0
 
-greg k-h
 
