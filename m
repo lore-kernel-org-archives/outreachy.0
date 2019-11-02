@@ -1,187 +1,129 @@
-X-GM-THRID: 6465297812332478464
-X-Received: by 10.129.182.18 with SMTP id u18mr12064863ywh.228.1505319451736;
-        Wed, 13 Sep 2017 09:17:31 -0700 (PDT)
+X-GM-THRID: 6754496283091664896
+X-Received: by 2002:a25:a324:: with SMTP id d33mr13422095ybi.58.1572691170525;
+        Sat, 02 Nov 2019 03:39:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.142.211 with SMTP id q202ls3429341iod.11.gmail; Wed, 13
- Sep 2017 09:15:43 -0700 (PDT)
-X-Received: by 10.98.215.68 with SMTP id v4mr10144152pfl.32.1505319343390;
-        Wed, 13 Sep 2017 09:15:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505319343; cv=none;
+Received: by 2002:a25:d0d7:: with SMTP id h206ls1500172ybg.12.gmail; Sat, 02
+ Nov 2019 03:39:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzjIEx1LTUQ6gmZk3rrkR6cOIrb2WzyRpRr70xkUNTwIMjdXokb0YAwhIV42Vt1Zdhs1EPP
+X-Received: by 2002:a25:e696:: with SMTP id d144mr9685298ybh.173.1572691168814;
+        Sat, 02 Nov 2019 03:39:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572691168; cv=none;
         d=google.com; s=arc-20160816;
-        b=V1PMJbMdOI2aAHim9hweFScJu483nwrZKZHLpopGI73lqJH3u9EcTYtHISRYDpzxuQ
-         D0pov0mwj5cHpgJ7aNIkHeirfSpNaR9DjKdfDIeURFVVSMxJcVks0unycwL7nW4kEsAZ
-         8vwID0dOBydDrd3vzczC9abCqFxHPPPw8fTEqu5PYO4LAVpeVEQscBwRY5ol6xAtMdDC
-         AjaHV/iOhaz4TlHNJxCTVo8ranJhtgRm0jBIrAEv2PucLebAuPQ8RR965vHn9p//BoZI
-         jEkpUYWTw8pUXkIXpiJ9hY3NuHB24h6FurKBm1qgkD2U89oQiusJj1Mwfj+K+xJrSZhV
-         O0lQ==
+        b=vXKZwAp79nwtGTBmOFZ+PAGyZz4cxoj4GxxDBHE3K3IFGCqVgh4Q3ma5aY/NouElzm
+         zv5qed8dMbu4S54L/lYLUJY39e2U8Zf4x+CgRABS9xDpFU6zGq5BnIG1sKnvUTMVyXo9
+         KJxEFfWCwfuYJtE8PaN0hLhcq2b2rZZ6A37RJnWvJk3lDaDz8JMjBml2knWT87GAupsT
+         h/3gqxUgfM9fNKWl319EdahXvTuscNAaky3MIp655p9JdVaB5OZKYkNdBKgEl3hLf7xz
+         By4MhxxcHYCGOxCJN4Yo0S8P5/fO5hG4YMcRbR7r00iDvU7OoI2UztaeBx8rua434S7k
+         mE4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=8MUg3L5eBnQ8oepSN2yDYttmZKfA08igUjxlrjcUpZY=;
-        b=qvA34x7pKDDaCsoPzVhG9Z1EuTk311w8pisZxrv2zmivK29/SIYFD1KuLTHZZyQzwE
-         Zp6jGLtzgVfJ1w7t9K0wTmwrgt/k1w0G9MbYCBcYiJnfqD17/NxX2ATUeYZbzD7eWFod
-         5VO5eJQBqrCcLCEZiXFBVN1vsDC+QIClJ/NPIH2uMX8UjszjD+vlDgmlW5UOQMG618Yd
-         5keYWw6EPILPdplMdkjvQHf7rgk1vLffMRphT4FALwKVlE/QFhbkt8k6qC8VBei2UaTX
-         ROnoK0n4tZ51O2kA9YEXm3xYRE1OxyeMiXHssyZBybuyojPBbQTqE9sP6XbnzcLZ8XOK
-         38DQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=2Yh2DDRNrKspKq1cM/EQkeKYgy9gXyiI2m+Xo++q9KY=;
+        b=PvVdsOme/TPTHncwAzZliSgZhuiF474moUUi/+5ra2gkbJpaGmxENcUblIz4KUxdVy
+         7CXuYqZ0Nuqbfw4yKmy2qZNA3rgSA7BQwY0kL2WbWXaUFNGnJNhu0Ahjbzk43yws4zMl
+         lkZjfHA6XmfuqYehlZiPE0DzmDc4pktoKRR4OAtxyipJpeGkTrTMdwHQjvoePpMEc/Il
+         n+Z2ykWpE4V5J1ms3JDEi+bwqLQOpznwZ1MdQsluH+m3MK+kYzVuUnSAhFdTpBkNXiq1
+         apvBySkrudcdOj2MS37fCCQPABn2EiiI/foe7VHtmyOvgyhSzwyQyzaM2HljPWyOn5fl
+         fcBg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DhiNp65Z;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id q15si1229558pfi.7.2017.09.13.09.15.43
+       dkim=pass header.i=@kroah.com header.s=fm2 header.b="rA/Y8Egr";
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=BWquDFZe;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com. [66.111.4.27])
+        by gmr-mx.google.com with ESMTPS id u8si716163ybc.2.2019.11.02.03.39.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 09:15:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Sat, 02 Nov 2019 03:39:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) client-ip=66.111.4.27;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DhiNp65Z;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id v82so321342pgb.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Sep 2017 09:15:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=8MUg3L5eBnQ8oepSN2yDYttmZKfA08igUjxlrjcUpZY=;
-        b=DhiNp65ZJJM6ox5aymiMQYRokcoDjHrMyEIRbmkI0SJiAP5ES6kUITG7tFMT7Yztd7
-         mvdCdZeRZ79w2euLpbPjqsmVVOUb0+fVQ8YDIMk4k6714Pc6y3YM7j1ofqIuL7AjvQ2o
-         ByGNxnE3jN/iTlE7kFrQs2l+3LhxKRcmU/h6uD8+idGAo8d3UaChNZoDfVapk7PGk7wx
-         jZzUhtoKHgrMWi/BLPtEPeuZNPNVIygH4AuvnylgLI796CYeLtiIUzqwNF+MrFJq5tjW
-         vVJ0aU0XMOKhLuEALPen6fP8IIQ6QRzwjscd0AOdVoji+dJ2cn+txEAPsdaLtX2+QSD1
-         dVGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=8MUg3L5eBnQ8oepSN2yDYttmZKfA08igUjxlrjcUpZY=;
-        b=Ncl19q6YBj+i+4cx3dYEeUoQo/VCVZTpqS1z94e/BY1+K7+pv0G+Nu9sULDuWB11vH
-         TPG0JWZaDFqti78qI8EPWcRfibJKVWl3gAyu6XDr8XVYwaNWE9Ml2648K9h0swwOa4d+
-         P0uTUxT6WAK+y0BZFKL3Bb6SCXq5Os+niMMy8ODK9G3rDxCmSbHJfSseiD9N1NqpgbQj
-         hceJwSkafOJVxs81rm9tB3pnwvC4cBTp0bhtD05sucpzIhm/RnwFfIoDsWf0Aj6giAaz
-         t96akU9MRpuzI6ReyhVip5JaTQWUS8D3AYJH72b+MtgpO7yHqF310zlXtyxE9GwKFyue
-         Zl6g==
-X-Gm-Message-State: AHPjjUjueegsYnWGo6Mk0akvTN/hLKgfzGbD/L2oHkP2GBxYstWRV4AG
-	70TuPiIuQGaRKnCZEyI=
-X-Google-Smtp-Source: ADKCNb5hMo5vGVUiGJGNFWgyC8eddmPlk7YYQHDx3tjNRaCOtSh3NpslXzN3Phuts8x8bRGLISzyJA==
-X-Received: by 10.99.98.68 with SMTP id w65mr18485493pgb.234.1505319342783;
-        Wed, 13 Sep 2017 09:15:42 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
-        by smtp.gmail.com with ESMTPSA id x189sm24605337pfx.188.2017.09.13.09.15.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Sep 2017 09:15:41 -0700 (PDT)
-Date: Wed, 13 Sep 2017 21:45:37 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v2 3/3] drm: Remove assignment in if condition
-Message-ID: <20170913161531.GA3239@meghana-HP-Pavilion-Notebook>
+       dkim=pass header.i=@kroah.com header.s=fm2 header.b="rA/Y8Egr";
+       dkim=pass header.i=@messagingengine.com header.s=fm1 header.b=BWquDFZe;
+       spf=pass (google.com: domain of greg@kroah.com designates 66.111.4.27 as permitted sender) smtp.mailfrom=greg@kroah.com
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 35B5A21910;
+	Sat,  2 Nov 2019 06:39:27 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute6.internal (MEProxy); Sat, 02 Nov 2019 06:39:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=fm2; bh=2Yh2DDRNrKspKq1cM/EQkeKYgy9
+	gXyiI2m+Xo++q9KY=; b=rA/Y8EgrtEOTSmhhpiM52u7GSYHst8IXX6Upli2jWcu
+	Pz1K3t24B10cA435toAAnOvTivN5rI9n7PLDRPjpfT4jvOIebHdt+TFRX/3XGSLB
+	xl4Pz7msWkbLEVIOdOo37gxpFZ5B5isNI5I9/eAk7UoziJpUqGJofKpnJID0IGUY
+	olVKoUOPyj0c5TOQFOBTkEhO8huGgl9VmePl++LfYBqSevCiFseh3bkiYnH2TW2C
+	ePRvK04mW+G77rpOtFbbSlkWzdxMJLHUwM8/QDkp67IrOefKSzOGo5HVJR+JJf3n
+	xC3lobBnq5suCfH8otBVpERzkhoE76lXowsQgUB7+5w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=2Yh2DD
+	RNrKspKq1cM/EQkeKYgy9gXyiI2m+Xo++q9KY=; b=BWquDFZeMXY0xHTRBaOh6m
+	slozo5PqETx7d8DwymApcKKwbHPx2LbrNWYUTKLTvQ/2n02Ax086fzzu3RITIhqA
+	uAj9xDBpzoa2kNVU1gMRlqZ0VHhdR0scx+LhvwgTtuQXdbSb3q2Y8taSGFM3kTIu
+	3nsj83oI1I8UlQkAj6QS7imFeZIOfLIQZO7W5ZeA8KJehMoTLRR5PQ1xVmrxNrwm
+	g+9qEs4H5fRLw8rtR/kzQvIPYUL80b2J2+P5/2zUMi0WY96Z3rV/HdvM+2UWxK+K
+	qceEQJypxhUIO6s4i+NjPvFq6eePEPGrs7t39W6K6UBYTbcecDk9VL9u4WIITpHg
+	==
+X-ME-Sender: <xms:3ly9XTET8HPq_J0xq0hftMzvC2pBcySZzPu0K8H3tAAk1GaNc8bqcA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedruddtledgudehucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujggfsehttd
+    ertddtredvnecuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhm
+    qeenucfkphepkeefrdekiedrkeelrddutdejnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+    hgrhgvgheskhhrohgrhhdrtghomhenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:31y9XUfUl_eFMvt0IcBmZJ5sa0xY1IcUyZjv-RVfF_ilDU3g8iux7A>
+    <xmx:31y9XSLrFWGxtP34aokt5ZqZzYLXhby1Ckbpk4avZczzs2bb_y9Yhg>
+    <xmx:31y9XbpFzwkvQ6hb-Nuv5dJkMYqI_EL6z__MpzI_I738qz1lYCq1kQ>
+    <xmx:31y9XfmlinZdVFREhvzc3sXHqIp2gIyZ1fxITsONiBG9Ke2VYi2HgQ>
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	by mail.messagingengine.com (Postfix) with ESMTPA id AC73A306005F;
+	Sat,  2 Nov 2019 06:39:26 -0400 (EDT)
+Date: Sat, 2 Nov 2019 11:39:25 +0100
+From: Greg KH <greg@kroah.com>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, jerome.pouiller@silabs.com,
+	gregkh@linuxfoundation.com, Boqun.Feng@microsoft.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: wfx: fix warning of using plain integer
+Message-ID: <20191102103925.GA170933@kroah.com>
+References: <20191102001457.23369-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20191102001457.23369-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Move the assignment so that it happens before the if
-condition. This results in syntax which is easier to read.
+On Sat, Nov 02, 2019 at 12:14:57AM +0000, Jules Irenge wrote:
+> Fix warning of using plain integer as NULL pointer.
+> Issue reported by sparse tool.
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/wfx/queue.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+> index ef3ee55cf621..5d29bce65f71 100644
+> --- a/drivers/staging/wfx/queue.c
+> +++ b/drivers/staging/wfx/queue.c
+> @@ -565,7 +565,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
+>  		}
+>  
+>  		if (ret)
+> -			return 0;
+> +			return NULL;
+>  
+>  		queue_num = queue - wdev->tx_queue;
+>  
+> -- 
+> 2.21.0
+> 
 
-Found by checkpath.pl
+Please send this as part of a patch series, with your other changes to
+this driver.
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
----
- drivers/gpu/drm/drm_agpsupport.c | 31 ++++++++++++++++++-------------
- 1 file changed, 18 insertions(+), 13 deletions(-)
+thanks,
 
-diff --git a/drivers/gpu/drm/drm_agpsupport.c b/drivers/gpu/drm/drm_agpsupport.c
-index 993e486..737f028 100644
---- a/drivers/gpu/drm/drm_agpsupport.c
-+++ b/drivers/gpu/drm/drm_agpsupport.c
-@@ -100,7 +100,8 @@ int drm_agp_acquire(struct drm_device *dev)
- 		return -ENODEV;
- 	if (dev->agp->acquired)
- 		return -EBUSY;
--	if (!(dev->agp->bridge = agp_backend_acquire(dev->pdev)))
-+	dev->agp->bridge = agp_backend_acquire(dev->pdev);
-+	if (!dev->agp->bridge)
- 		return -ENODEV;
- 	dev->agp->acquired = 1;
- 	return 0;
-@@ -200,12 +201,14 @@ int drm_agp_alloc(struct drm_device *dev, struct drm_agp_buffer *request)
- 
- 	if (!dev->agp || !dev->agp->acquired)
- 		return -EINVAL;
--	if (!(entry = kzalloc(sizeof(*entry), GFP_KERNEL)))
-+	entry = kzalloc(sizeof(*entry), GFP_KERNEL);
-+	if (!entry)
- 		return -ENOMEM;
- 
- 	pages = (request->size + PAGE_SIZE - 1) / PAGE_SIZE;
- 	type = (u32) request->type;
--	if (!(memory = agp_allocate_memory(dev->agp->bridge, pages, type))) {
-+	memory = agp_allocate_memory(dev->agp->bridge, pages, type);
-+	if (!memory) {
- 		kfree(entry);
- 		return -ENOMEM;
- 	}
-@@ -272,9 +275,8 @@ int drm_agp_unbind(struct drm_device *dev, struct drm_agp_binding *request)
- 
- 	if (!dev->agp || !dev->agp->acquired)
- 		return -EINVAL;
--	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
--		return -EINVAL;
--	if (!entry->bound)
-+	entry = drm_agp_lookup_entry(dev, request->handle);
-+	if (!entry || !entry->bound)
- 		return -EINVAL;
- 	ret = drm_unbind_agp(entry->memory);
- 	if (ret == 0)
-@@ -313,12 +315,12 @@ int drm_agp_bind(struct drm_device *dev, struct drm_agp_binding *request)
- 
- 	if (!dev->agp || !dev->agp->acquired)
- 		return -EINVAL;
--	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
--		return -EINVAL;
--	if (entry->bound)
-+	entry = drm_agp_lookup_entry(dev, request->handle);
-+	if (!entry || entry->bound)
- 		return -EINVAL;
- 	page = (request->offset + PAGE_SIZE - 1) / PAGE_SIZE;
--	if ((retcode = drm_bind_agp(entry->memory, page)))
-+	retcode = drm_bind_agp(entry->memory, page);
-+	if (retcode)
- 		return retcode;
- 	entry->bound = dev->agp->base + (page << PAGE_SHIFT);
- 	DRM_DEBUG("base = 0x%lx entry->bound = 0x%lx\n",
-@@ -356,7 +358,8 @@ int drm_agp_free(struct drm_device *dev, struct drm_agp_buffer *request)
- 
- 	if (!dev->agp || !dev->agp->acquired)
- 		return -EINVAL;
--	if (!(entry = drm_agp_lookup_entry(dev, request->handle)))
-+	entry = drm_agp_lookup_entry(dev, request->handle);
-+	if (!entry)
- 		return -EINVAL;
- 	if (entry->bound)
- 		drm_unbind_agp(entry->memory);
-@@ -394,11 +397,13 @@ struct drm_agp_head *drm_agp_init(struct drm_device *dev)
- {
- 	struct drm_agp_head *head = NULL;
- 
--	if (!(head = kzalloc(sizeof(*head), GFP_KERNEL)))
-+	head = kzalloc(sizeof(*head), GFP_KERNEL);
-+	if (!head)
- 		return NULL;
- 	head->bridge = agp_find_bridge(dev->pdev);
- 	if (!head->bridge) {
--		if (!(head->bridge = agp_backend_acquire(dev->pdev))) {
-+		head->bridge = agp_backend_acquire(dev->pdev);
-+		if (!head->bridge) {
- 			kfree(head);
- 			return NULL;
- 		}
--- 
-2.7.4
-
+greg k-h
 
