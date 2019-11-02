@@ -1,55 +1,54 @@
 X-GM-THRID: 6754510207440650240
-X-Received: by 2002:a17:906:7f94:: with SMTP id f20mr14459791ejr.333.1572688986617;
-        Sat, 02 Nov 2019 03:03:06 -0700 (PDT)
+X-Received: by 2002:adf:e286:: with SMTP id v6mr9276979wri.241.1572688906321;
+        Sat, 02 Nov 2019 03:01:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:6a4f:: with SMTP id n15ls1993797ejs.0.gmail; Sat, 02
- Nov 2019 03:03:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqws4NMvRjvzgBuAjatd/88GVyW7uINXGrFLGwqRiWdKWtHxv7xb9UmxP16mKN3TLoBKKYwU
-X-Received: by 2002:a17:906:494e:: with SMTP id f14mr14680515ejt.42.1572688985868;
-        Sat, 02 Nov 2019 03:03:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572688985; cv=none;
+Received: by 2002:a5d:690e:: with SMTP id t14ls9341967wru.2.gmail; Sat, 02 Nov
+ 2019 03:01:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwDs8ePYFwxoNGKlXVQGgmQIwCd+DSAg6LQl/9VF5fNuWBhsD35nBsubo+vyki5Y2ccHGhs
+X-Received: by 2002:adf:e286:: with SMTP id v6mr9276913wri.241.1572688905340;
+        Sat, 02 Nov 2019 03:01:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572688905; cv=none;
         d=google.com; s=arc-20160816;
-        b=EWZSUhzpfX7YC+20CMp0dWY7GA1Mqd2hYA/0xwmRhs+xrjPKLGgncNwwJ1izMfKZcR
-         bxIkiGGTNIhCe46CuF4Ol2o5ZQDUv3gUz4iTKGeHCHAEwHxNRblkMWRz6UgHWsbpgVQl
-         S5DRo7V9FKSme8UNVgE/V0pJsVZyzC8ABYWoPDe4sRBiCZ2k5u9gp9ui5s1lkSodMCUp
-         zlbQR1gnNuzx/d0n0IYYZtlUy1MfGqyRlG5g6+99h2euk+k/XvCzbGHK44j9nJNoNz0f
-         X0CS+35pGxZjWL7Zu4lbp2zMZut8GJ0N4k9pGK6C3VcndFUtZhc1j3ru/hNf7tvyZCEy
-         Ti3w==
+        b=0llbJYVLDD7QNlP0crOujYoI7bGaJ23JMoG9q5dSBIknUkNANUkjJUUf+UmXiFI/sL
+         itVGeDACE7L+fM8s7g9hBEC56ljP0L+1CvxLCJ5SHJNOJBepy2ssVhwY/sQlbXoI7bNI
+         zP8MoV5IBnsV9v+CT7VXY1rUY4ye/OsRq5tQ4EV4dYLEkwMgUxdcv/CS1rIw3DPxyYNh
+         FHqICfcSQ1HhWzWAVwt9IFXNEt6WfSKvWLhaZCXHOiV7BdvpHhZakcJ7UgM5FuO9rX9H
+         E36sZBy7FDJLqfMPRK5WcaZaXZ3RQLULALnQtJyJrR/fOh/4lIlZrwQKpwqZL9nLBHTt
+         l4hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date;
-        bh=/MsRMg1RKTk6+tXJHuHAapCcttWxI5pVADbDSOdNncs=;
-        b=Ko6ZO1q2RUi7PgJ2ZfoGmotThQn+if6rnM6OXCIioMlR8bPW+ngqh/n/s1W1+OWwLF
-         py5/hjRm4gzDMv112/SZgiQ1T9xF/+zGwkoJO5ko+vz6V85d8cLov4VPXfeZ4SbjuOhL
-         21CZL3/+I2uS20Skh1NC6zqhd9ZA/b2qDyXl7GSo/HhGLxSs2PfO8BQOX07rHJZ42PcE
-         7OQbOO1A9nE6+DsDz9ZnPnyfEUgZkNMvTMmT1BWwqhrCQwQWFFq6FprSkWrP+ZfJIpCn
-         FkrvwZhutnh7a/pV6yP9+55K/BfOZn+dU2hMN9TofKf8nLnqHu+W/NwGEvVtCbqeJk0G
-         80AQ==
+        bh=cQyJ1XL+T7eIqe+D2tD/EMkjWmiJzQIBWcXbP5ViLjk=;
+        b=jNenkNjexxLktRRZ0yl0IKB7gyMVi3juRDbOwOd7ijfmuBhL5FuYXBAuGvtDMsq13T
+         sAabn1QveR9kpCo5onKTw9It3LRQUCp8Cz0N6qKsgwwaHpiKmM/WoUm7cObq4qAgI4x2
+         EpCiKvzQ0G4oSWOUfMwZc3fqjPwVxXAX5x/70Q6J6cm5i72ZnZqFL2ZxvVC9fDuHqYXS
+         9qSRcJm4//T6qaBkEMq2q4cZpPXeEW6TZek0Z5FUNl6g2xAgHskwKyrgPKOCIZE+9D1q
+         GtGbt1Y7hIRe20qfCvHo6WwHR2FaP88/6Fqeh5bZ+Da6Zswq5tngh5KFwiMwGL1biXgD
+         aZyQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id q17si942333edi.1.2019.11.02.03.03.05
+        by gmr-mx.google.com with ESMTPS id b66si400714wme.2.2019.11.02.03.01.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 02 Nov 2019 03:03:05 -0700 (PDT)
+        Sat, 02 Nov 2019 03:01:45 -0700 (PDT)
 Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.68,259,1569276000"; 
-   d="scan'208";a="409980064"
+   d="scan'208";a="409979968"
 Received: from abo-45-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.45])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Nov 2019 11:03:05 +0100
-Date: Sat, 2 Nov 2019 11:03:05 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Nov 2019 11:01:45 +0100
+Date: Sat, 2 Nov 2019 11:01:44 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Jules Irenge <jbi.octave@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    julia.lawall@lip6.fr
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
 Subject: Re: [Outreachy kernel] [PATCH] staging: wfx: fix warning of assignment
  of 0/1 to bool variable
 In-Reply-To: <20191102010908.30269-1-jbi.octave@gmail.com>
-Message-ID: <alpine.DEB.2.21.1911021101580.8826@hadrien>
+Message-ID: <alpine.DEB.2.21.1911021101190.8826@hadrien>
 References: <20191102010908.30269-1-jbi.octave@gmail.com>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
@@ -62,10 +61,8 @@ On Sat, 2 Nov 2019, Jules Irenge wrote:
 > Fix warning of assignment of 0/1 to bool variable.
 > Issue reported by coccinelle tool.
 
-You seem to also have several patches with the same subject line, which is
-not allowed.  Either describe the affected files in a more specific way or
-merge the patches.  If you merge the patches, it would still be a v2, even
-if the number of patches is different.
+Please fix the subject line and log message as suggested for the other
+patch.
 
 julia
 
