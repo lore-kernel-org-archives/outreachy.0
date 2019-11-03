@@ -1,185 +1,107 @@
-X-GM-THRID: 7294596153344
-X-Received: by 10.236.223.166 with SMTP id v36mr26495969yhp.45.1425910194932;
-        Mon, 09 Mar 2015 07:09:54 -0700 (PDT)
+X-GM-THRID: 6754500769734459392
+X-Received: by 2002:a81:a8b:: with SMTP id 133mr16325124ywk.246.1572784806852;
+        Sun, 03 Nov 2019 04:40:06 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.82.233 with SMTP id h96ls1459823qgd.32.gmail; Mon, 09 Mar
- 2015 07:09:54 -0700 (PDT)
-X-Received: by 10.236.41.73 with SMTP id g49mr30304697yhb.57.1425910194753;
-        Mon, 09 Mar 2015 07:09:54 -0700 (PDT)
-Return-Path: <himani93@gmail.com>
-Received: from mail-pa0-x232.google.com (mail-pa0-x232.google.com. [2607:f8b0:400e:c03::232])
-        by gmr-mx.google.com with ESMTPS id gb13si2652568pac.2.2015.03.09.07.09.54
+Received: by 2002:a25:2388:: with SMTP id j130ls1906517ybj.7.gmail; Sun, 03
+ Nov 2019 04:40:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyZ+kUkzHuKjCv3IojEyf3BjQ0rj97N/W5uC6oze9JlKKsF8Q6WjmIwMELhqMBejwume/rd
+X-Received: by 2002:a25:3541:: with SMTP id c62mr17229205yba.471.1572784804736;
+        Sun, 03 Nov 2019 04:40:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572784804; cv=none;
+        d=google.com; s=arc-20160816;
+        b=N0pmJprs7mE1I8DkhfOfc/0loyGDl+VrY+Kwc8PA2vNjxPgaKzvT9dK0Qq1xYwnWSt
+         cqDrcZDiGoppxNgixwUUghqifHdeZwtWUYN2um9/du8uwlQQW0YFC8/ABGDXMTpZdfVu
+         CzTbgjFSb6ciRPFocSD43jAsb3HwD77EAmoRiQZ6fBBvQNdmSMkfKSJDCKY152gsOPWh
+         Hj/m/p8RLox0Ahm30s6VgbzhM9ngkWZ1ZpV1s43Eyv1ojESPDPooa3t7PV12E3wdV46k
+         Z3HTRSWxYikPkLQMHYsR7gyOETu2969/AYY8hundwGrSLUormujPU4wFWgMUmWe1iohl
+         U4rg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=3lTiu8spvdTXjYQ5Rt1+xw5pBa+eIMje71tZmXnQol8=;
+        b=cfrKgojAEDay1P49yxd0TB4WIegYXrpICDIzrMrZzBEEk8hmElVKZibMURqvWWeFy4
+         U5Sf3FQ9/mu13LC96Uu2RbJNBYovxtqxbRmgA8kZvcHg6nIJBvTr+XlrE2VpK+O+09FT
+         GSpiWPBv1KQAoSUf9pJX7ype9pJU/X26gT3j7KuWvKEF2gVP7zmg3DtLyj+H7rDMQL3M
+         JnXdCtbieuScj1YMnSUFV7bfzALKthBZXB5+uBfPFf/5yDQ13DPmkhX1eXGe1IwAOt/e
+         0PcCUfMbnS2SCIYFyRMcPRSZZBvJ7dAevIx8F9DONzA9btPF3SORN1YM1kQnl46QhKmU
+         AGTw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=quy26Q1w;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c79si133486ywb.3.2019.11.03.04.40.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2015 07:09:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himani93@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) client-ip=2607:f8b0:400e:c03::232;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Nov 2019 04:40:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of himani93@gmail.com designates 2607:f8b0:400e:c03::232 as permitted sender) smtp.mail=himani93@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x232.google.com with SMTP id et14so49014622pad.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2015 07:09:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=opNVkjGdGeYTEyYrnIGVeJ+ZjF2aRIhLP/D0yYWJ8EA=;
-        b=t19LL2EzJMUxt2FpkFQybUUZUc4ZY/MDJG210O7cLtsId4YToQji5Rko1ZJ2md1JW4
-         EaWoG65+uQ7xbodao2hQUWcXRAuIKgt4hBbEfQVTEZ41Eu/d5J/FnMZ8FfiVEYw/xjPl
-         jIPT+CxA/lZwPHuqqf+YDU/2NkvlXUq1ELRaYFY7AjN5OLDsb2ArVV7cwUMykAUzC9P9
-         EQGoAkQLq0pN2KMNiRStAtHjkUMvRUPyALKZlnhJPmldV9/hdYgExd14iVeCVV12gup8
-         reIq8vVQZUsOMog4vxoJTXLTJDTGnjRqkbY/M1fpKjGElzeYOX4joCKTNhVLkXEcpoKx
-         +8Vg==
-X-Received: by 10.70.40.167 with SMTP id y7mr54122517pdk.164.1425910194579;
-        Mon, 09 Mar 2015 07:09:54 -0700 (PDT)
-Return-Path: <himani93@gmail.com>
-Received: from black-dell ([122.177.234.167])
-        by mx.google.com with ESMTPSA id ji6sm19596850pac.30.2015.03.09.07.09.53
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Mon, 09 Mar 2015 07:09:54 -0700 (PDT)
-Date: Mon, 9 Mar 2015 19:39:50 +0530
-From: Himani Agrawal <himani93@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=quy26Q1w;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 333EE2080F;
+	Sun,  3 Nov 2019 12:40:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572784803;
+	bh=x0EOiXvwhuzLUtrOUCXmm5ZWwEW6wrFHrafEsqHiHCY=;
+	h=Date:From:To:Subject:References:In-Reply-To:From;
+	b=quy26Q1wbeo9D0KK9SRMHmmPu3tGYBQ8FVE5t+mPTTD5UbTe5v0goxHxkLQrGcoFX
+	 Z8M1U7G3nmPEWmnMIhSY4L+Y9Ai6vuWt6r+d6H9xwp7GtPZMqfEGlIH0v3kcIAxIpK
+	 IPL2j6XVD4pdHkk/3yl8J6Q3xovHUgf7pqwWBTD0=
+Date: Sun, 3 Nov 2019 13:40:01 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: vt6655: Fixes the checkpatch.pl warning
-Message-ID: <20150309140950.GA3393@black-dell>
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: rtl8723bs: Remove
+ unnecessary conditional block
+Message-ID: <20191103124001.GA619218@kroah.com>
+References: <20191102003236.hjetw3qdulk7skrg@gmail.com>
+ <20191102104324.GA184849@kroah.com>
+ <20191102224551.myb6rjyhvgbldpt2@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20191102224551.myb6rjyhvgbldpt2@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-warning fixed:
+On Sat, Nov 02, 2019 at 05:45:51PM -0500, Javier F. Arias wrote:
+> On Sat, Nov 02, 2019 at 11:43:24AM +0100, Greg KH wrote:
+> > On Fri, Nov 01, 2019 at 07:32:36PM -0500, Javier F. Arias wrote:
+> > > This patch removes a conditional block that had no effect.
+> > > It also reformat the affected lines to set the right indentation
+> > > after the removal.
+> > > Issue found by Coccinelle.
+> > > 
+> > > Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+> > > ---
+> > >  drivers/staging/rtl8723bs/hal/sdio_halinit.c | 19 +++++++------------
+> > >  1 file changed, 7 insertions(+), 12 deletions(-)
+> > 
+> > I have 11 patches sent from you, on the same day, for this single
+> > driver, yet I have no idea what order to apply them in :(
+> > 
+> > Please resend all of them as a single patch series so I have a clue as
+> > to what to do here.  Be kind to maintainers :)
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20191102104324.GA184849%40kroah.com.
+> 
+> I'm sorry Greg, I had some patches ready to send and i didn't want to
+> send a single patchset with +200 lines (as suggested in the
+> documentation) so I thought it was easier to split it.
 
-WARNING: line over 80 characters
+I can easily handle patchsets of 50+ patches, so that should not be an
+issue here.  As long as you only do "one logical change per patch" then
+all is fine.
 
-The function call containing several variables is broken to make it fit
-in 80 characters.
+thanks,
 
-Signed-off-by: Himani Agrawal <himani93@gmail.com>
----
- drivers/staging/vt6655/baseband.c | 48 ++++++++++++++++++++++++++++-----------
- 1 file changed, 35 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index 565ba18..b0ea38f 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -2021,14 +2021,20 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 	if (byRFType == RF_RFMD2959) {
- 		if (byLocalID <= REV_ID_VT3253_A1) {
- 			for (ii = 0; ii < CB_VT3253_INIT_FOR_RFMD; ii++)
--				bResult &= BBbWriteEmbedded(priv, byVT3253InitTab_RFMD[ii][0], byVT3253InitTab_RFMD[ii][1]);
-+				bResult &= BBbWriteEmbedded(priv,
-+					byVT3253InitTab_RFMD[ii][0],
-+					byVT3253InitTab_RFMD[ii][1]);
- 
- 		} else {
- 			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
--				bResult &= BBbWriteEmbedded(priv, byVT3253B0_RFMD[ii][0], byVT3253B0_RFMD[ii][1]);
-+				bResult &= BBbWriteEmbedded(priv,
-+					byVT3253B0_RFMD[ii][0],
-+					byVT3253B0_RFMD[ii][1]);
- 
- 			for (ii = 0; ii < CB_VT3253B0_AGC_FOR_RFMD2959; ii++)
--				bResult &= BBbWriteEmbedded(priv, byVT3253B0_AGC4_RFMD2959[ii][0], byVT3253B0_AGC4_RFMD2959[ii][1]);
-+				bResult &= BBbWriteEmbedded(priv,
-+					byVT3253B0_AGC4_RFMD2959[ii][0],
-+					byVT3253B0_AGC4_RFMD2959[ii][1]);
- 
- 			VNSvOutPortD(dwIoBase + MAC_REG_ITRTMSET, 0x23);
- 			MACvRegBitsOn(dwIoBase, MAC_REG_PAPEDELAY, BIT(0));
-@@ -2043,10 +2049,13 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		priv->ldBmThreshold[3] = 0;
- 	} else if ((byRFType == RF_AIROHA) || (byRFType == RF_AL2230S)) {
- 		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AIROHA2230[ii][0], byVT3253B0_AIROHA2230[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AIROHA2230[ii][0],
-+				byVT3253B0_AIROHA2230[ii][1]);
- 
- 		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
- 
- 		priv->abyBBVGA[0] = 0x1C;
- 		priv->abyBBVGA[1] = 0x10;
-@@ -2058,10 +2067,14 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		priv->ldBmThreshold[3] = 0;
- 	} else if (byRFType == RF_UW2451) {
- 		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_UW2451; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_UW2451[ii][0], byVT3253B0_UW2451[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_UW2451[ii][0],
-+				byVT3253B0_UW2451[ii][1]);
- 
- 		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AGC[ii][0],
-+				byVT3253B0_AGC[ii][1]);
- 
- 		VNSvOutPortB(dwIoBase + MAC_REG_ITRTMSET, 0x23);
- 		MACvRegBitsOn(dwIoBase, MAC_REG_PAPEDELAY, BIT(0));
-@@ -2076,7 +2089,9 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		priv->ldBmThreshold[3] = 0;
- 	} else if (byRFType == RF_UW2452) {
- 		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_UW2451; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_UW2451[ii][0], byVT3253B0_UW2451[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_UW2451[ii][0],
-+				byVT3253B0_UW2451[ii][1]);
- 
- 		/* Init ANT B select,TX Config CR09 = 0x61->0x45, 0x45->0x41(VC1/VC2 define, make the ANT_A, ANT_B inverted) */
- 		/*bResult &= BBbWriteEmbedded(dwIoBase,0x09,0x41);*/
-@@ -2097,7 +2112,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		bResult &= BBbWriteEmbedded(priv, 0xb0, 0x58);
- 
- 		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
- 
- 		priv->abyBBVGA[0] = 0x14;
- 		priv->abyBBVGA[1] = 0x0A;
-@@ -2111,10 +2127,13 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 
- 	} else if (byRFType == RF_VT3226) {
- 		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AIROHA2230[ii][0], byVT3253B0_AIROHA2230[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AIROHA2230[ii][0],
-+				byVT3253B0_AIROHA2230[ii][1]);
- 
- 		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
- 
- 		priv->abyBBVGA[0] = 0x1C;
- 		priv->abyBBVGA[1] = 0x10;
-@@ -2129,7 +2148,9 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		/* {{ RobertYu: 20050104 */
- 	} else if (byRFType == RF_AIROHA7230) {
- 		for (ii = 0; ii < CB_VT3253B0_INIT_FOR_AIROHA2230; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AIROHA2230[ii][0], byVT3253B0_AIROHA2230[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AIROHA2230[ii][0],
-+				byVT3253B0_AIROHA2230[ii][1]);
- 
- 
- 		/* {{ RobertYu:20050223, request by JerryChung */
-@@ -2142,7 +2163,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		/* }} */
- 
- 		for (ii = 0; ii < CB_VT3253B0_AGC; ii++)
--			bResult &= BBbWriteEmbedded(priv, byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
-+			bResult &= BBbWriteEmbedded(priv,
-+				byVT3253B0_AGC[ii][0], byVT3253B0_AGC[ii][1]);
- 
- 		priv->abyBBVGA[0] = 0x1C;
- 		priv->abyBBVGA[1] = 0x10;
--- 
-1.9.1
-
+greg k-h
 
