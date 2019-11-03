@@ -1,109 +1,100 @@
 X-GM-THRID: 6754760383787958272
-X-Received: by 2002:a50:fa4a:: with SMTP id c10mr6578779edq.51.1572804814568;
-        Sun, 03 Nov 2019 10:13:34 -0800 (PST)
+X-Received: by 2002:a05:651c:10c:: with SMTP id a12mr15673371ljb.93.1572801227578;
+        Sun, 03 Nov 2019 09:13:47 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:6a4f:: with SMTP id n15ls3242964ejs.0.gmail; Sun, 03
- Nov 2019 10:13:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwFSakTLhzPuW05wW+krbOoDSEl+q5/aJaVVM2sGNyq9afCEdawJU1tD3oQCL3sp7ykw40e
-X-Received: by 2002:a17:906:488c:: with SMTP id v12mr20069717ejq.290.1572804813771;
-        Sun, 03 Nov 2019 10:13:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572804813; cv=none;
+Received: by 2002:a2e:9c97:: with SMTP id x23ls1537193lji.2.gmail; Sun, 03 Nov
+ 2019 09:13:46 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxWmR5JJsDHyKaPTibXnrF9ypIYHyi1eVjRDYXN9fhaMpCFulbG+S4pD6B29vdttG4Sj/Da
+X-Received: by 2002:a2e:3008:: with SMTP id w8mr5640940ljw.148.1572801226552;
+        Sun, 03 Nov 2019 09:13:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572801226; cv=none;
         d=google.com; s=arc-20160816;
-        b=OGqFo4M1lR5Y9A6cDdZrreUi530ouev3pHeBYWsmFwsleMl36FGlpMfrdd/2sEW5Jz
-         gNDSe/qcHkm9rD4Rn6/is+OABIgt+SVUQfI1anJjQvzFrRkdPneKjcyYL3si82rDlEUU
-         9NPPlPD+5hTI8iCaXEYC4XTc1mLo8fLnycyt8Vi1IWGo+zhsgbSZzsbwOdM0j5CkeIz5
-         0GJY5LuLBnhtbX9yysTBWjJeqbfK8tAoYthARTsyyAmCpd8vJT5A00POJ6THjpXOpShL
-         xCv046IW8ApwUEqUeyKMRFIQ2NB5sdNvNlaqlTZFMrsD5ZTgtB548VqUK4Ib1ekXLvpn
-         mjOg==
+        b=UubneMDw2LXyLhTM94RbmRXJQiAdhwF89CN196apt1sGYOeEaPdY4OeKQk37V9A55i
+         1PO0Ka7SfWJdr5XiY1H56VaSX7Gv+fb8F2GbPVAQWzbuU+DOdOsZbhUUZzs1QywfN5Tn
+         xlsOVArbsoE2EFAHsWV6RZ2ahFSZPzxz3AkRRqrTamrcif9OU5RIh8rAGQ5p7/Js7o/q
+         RAFP7C/55HV+JvMFAtGa4px6fZGcFOVmXHdfkBUC8Dlxpr5rPkdQCNMZBMkJWCVZm815
+         O7zB+JkNvbou6ec/bw3XRHpou6Knc/Ax2Z9axHBCLNNjtFS82n+OACDGEaedre952EkD
+         m64w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Xah9TA3iFjlwJKzVksM/AXXdocV6hxwzzRZ9XCcQs0s=;
-        b=YHOUIzxqMyD+8JKDozOFZNEW00GSltXF0/t5uXLhgxJT856SnhGrN58T9pPREEhr/v
-         TKrc2NusTUZ9mcDswBmzIn6acNeXHsHrh6FOfpevE52mOkYCqAqIh116wrphC5fzMjnS
-         VPVhq6wqmpRQ/Ky4aybwRz5kn+U7Tk2UJO3tekUFFtPezBw6G/DQ2+u8oXjqej2MXopD
-         oYjVRPtUYPZEt86HATLADyp+keMyA4FRiD7mjFUOB7ka/aI2ApmmJfhyUCgRr4yH4EY5
-         xjJZls/KLP/v40ssTivPobg5iAH1fV8QqpRBb+OzVSyEtW05SCMA7rhEu3I+7ipCm88j
-         ibmw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=5xv+INOcohjD4dkPmMS8HSnUZ9TRJtRvAafZgZOvKm8=;
+        b=VUxiHJmgiwIHde4g2B1l1tqHtPCnHbcF54pxi747kIi1gQA2S6IuY1P214bHwuU9ah
+         EME9S6wkhxGg51hmGfmpX9ickUfTt5u0T4UiHIl0PTZpEVFAKutlBzOxXFhNlT0txo0U
+         ERIOZXwjgBA8u51dsQweDYyTP38GjK5ohLDpMMQm19VEYKPWZeWISUKOv/3y1RY78Qmk
+         ysJaAEvKo61+eCNxhpZvIx6Qg8QAYWL0aa/BaTU+3bEk4/594jpL71BVmL/Xl7stppfc
+         yZNUbFrJ5iJMJg7lY1Oeh2y8gym7foKewsMD+DgcZWTFbLYeGgKBXp/Rktw206DWilVz
+         JW5Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jVYOYAut;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id y21si1011535ejp.1.2019.11.03.10.13.33
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+Return-Path: <julia.lawall@lip6.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id s4si1166371ljg.1.2019.11.03.09.13.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Nov 2019 10:13:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Nov 2019 09:13:46 -0800 (PST)
+Received-SPF: neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jVYOYAut;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id a15so14548954wrf.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 10:13:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Xah9TA3iFjlwJKzVksM/AXXdocV6hxwzzRZ9XCcQs0s=;
-        b=jVYOYAutLeGYXoun4P18l9yrUshAzkNmkq6qmOKq0L0OIFqfZ8Gy46c9DNPbdwQI3z
-         WBCyvFshO2j9DgueWs5K4tFCXxhaSylXoTz+Fa/RYnh08NdtOdjzPUi0iLkbNtRQkvm9
-         JSt/lLtUSEqJsDShiUXyxNI4Ki2vZYsN5MRvuw9xS6nHXZsUQgJKFRdRh9kQxZ0CDsXr
-         9IeRaWf7cDxQdbNDA+2h2EQCdvJ/bXw2KwPQvsyznGahv1UWiFID9Mb7Acood1WZkBi1
-         mxv0UTYvC2AzlTnjAsDbwHeLT19fwQWYi59Ciinzh48+qx+z9jyaV1k6rSQKSs6gUl+8
-         KocQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Xah9TA3iFjlwJKzVksM/AXXdocV6hxwzzRZ9XCcQs0s=;
-        b=KqJ83IP4uYwwg2aQIhUDUdBjWk1NfT56Cb+VDhIFA4nIk1Jv2EBtPibxEDRPZ0hXu3
-         E80kjYHsuoGUINczPBdqTQZCEGW1VmcZE52EKk/YhZI3P1cvxwL/slLCa70yhmYzy8Oq
-         fsOv7zh+LZmmnXAP0WD9iNEpPiB+8Geon92EO1AFZ8UwSjp1jaEiw8Thy48yhPmbUNNe
-         Z0zTIzffyt1NstDb2FFoNa6vdjgzy0cfPTqWWgWsdC7paTFw9udEQEuiuE2wbYSI90HP
-         C6u5BE44nnkL0xYe8WfhAGZZeAqeusFEViycRGasxwjdB6lqt3ryJk0F5Mrvw33j+hDV
-         nMcA==
-X-Gm-Message-State: APjAAAUKEh2gYCuLc1+GlM9Xxz9DbNYuFs9oaY5CTOijOa6ZeCAmkPPu
-	u4uTj2YAFbhgzDD7AQi9wXKGaB6iQK0A
-X-Received: by 2002:adf:9b9d:: with SMTP id d29mr4819991wrc.293.1572804813217;
-        Sun, 03 Nov 2019 10:13:33 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id l18sm18467087wrn.48.2019.11.03.10.13.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 03 Nov 2019 10:13:32 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	julia.lawall@lip6.fr,
-	Boqun.Feng@microsoft.com,
-	jerome.pouiller@silabs.com,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH V5 0/2] staging: wfx: cleanups
-Date: Sun,  3 Nov 2019 18:13:13 +0000
-Message-Id: <20191103181315.26434-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.23.0
+       spf=neutral (google.com: 192.134.164.104 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
+X-IronPort-AV: E=Sophos;i="5.68,264,1569276000"; 
+   d="scan'208";a="325437914"
+Received: from abo-45-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.45])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 03 Nov 2019 18:13:45 +0100
+Date: Sun, 3 Nov 2019 18:13:45 +0100 (CET)
+From: Julia Lawall <julia.lawall@lip6.fr>
+X-X-Sender: jll@hadrien
+To: Jules Irenge <jbi.octave@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    Boqun.Feng@microsoft.com, jerome.pouiller@silabs.com
+Subject: Re: [PATCH v4 1/2] staging: wfx: replace 0 by NULL as the return
+ value of a pointer-returning function
+In-Reply-To: <20191103165308.23843-2-jbi.octave@gmail.com>
+Message-ID: <alpine.DEB.2.21.1911031813351.2557@hadrien>
+References: <20191103165308.23843-1-jbi.octave@gmail.com> <20191103165308.23843-2-jbi.octave@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Changes since
-* v1 submits changes with no accurate log message and title
-* v2 improves on log message description: remove the word "fixing", rephrase
-log message and  title.
-* v3 gives accurate description on the changes and reasons behind.
-* v4 includes a log of changes done on each version.
-* v5 shorten the subject line not to be idential to commit log.
 
-Jules Irenge (2):
-  staging: wfx: replace 0 by NULL
-  staging: wfx: replace 1 by true
 
- drivers/staging/wfx/queue.c | 4 ++--
- drivers/staging/wfx/sta.c   | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+On Sun, 3 Nov 2019, Jules Irenge wrote:
 
--- 
-2.23.0
+> Replace 0 by NULL as the return value of a pointer-returning function.
 
+Likewise here.
+
+julia
+
+> Issue detected by sparse tool.
+>
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+> changes since
+> v1 submits change of zero to NULL with no accurate log message of what
+> was done and title.
+> v2 improves on log message description: remove the word "fixing", rephrase
+> log message and title.
+> v3 gives accurate log description on changes and reason behind.
+> v4 includes a log of changes done on each version.
+>
+>  drivers/staging/wfx/queue.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+> index ef3ee55cf621..5d29bce65f71 100644
+> --- a/drivers/staging/wfx/queue.c
+> +++ b/drivers/staging/wfx/queue.c
+> @@ -565,7 +565,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
+>  		}
+>
+>  		if (ret)
+> -			return 0;
+> +			return NULL;
+>
+>  		queue_num = queue - wdev->tx_queue;
+>
+> --
+> 2.23.0
+>
+>
 
