@@ -1,86 +1,86 @@
 X-GM-THRID: 6755114272133480448
-X-Received: by 2002:a1c:9c82:: with SMTP id f124mr20753384wme.25.1572797693696;
-        Sun, 03 Nov 2019 08:14:53 -0800 (PST)
+X-Received: by 2002:a19:c354:: with SMTP id t81mr63680lff.179.1572797675127;
+        Sun, 03 Nov 2019 08:14:35 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:efcd:: with SMTP id i13ls5676990wrp.1.gmail; Sun, 03 Nov
- 2019 08:14:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqza/BN6yw6Rm70a+Llp+l8JnXcfOB8thepmqcZkZd/ei+Mk0SR1hOFhVEGuZmd5DnWPjwK8
-X-Received: by 2002:adf:f744:: with SMTP id z4mr10805753wrp.205.1572797692619;
-        Sun, 03 Nov 2019 08:14:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572797692; cv=none;
+Received: by 2002:a19:93:: with SMTP id 141ls1043868lfa.12.gmail; Sun, 03 Nov
+ 2019 08:14:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzf88H/21GNq+tG4jTJvb/3IsUaE1W6pJPmD6ZtZmVczXA26ul+8+9vmsJkDrZL/YAkp1ol
+X-Received: by 2002:ac2:46e5:: with SMTP id q5mr14230144lfo.148.1572797674216;
+        Sun, 03 Nov 2019 08:14:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572797674; cv=none;
         d=google.com; s=arc-20160816;
-        b=k5I4bW/AUrui6uAlNmK8aJWXaYsOASzpVia/eaiqVG3II+6Zye17dhtrI1EqV5rWGP
-         XtO1653Q24/MPiH0UgsSV52i4PH+nh9DziHqvBiSSpEbZBuNXRnUNool/vfPjvychqIJ
-         H6DhhfkWOqIJU8vmDvgwmLxcTTj097AaW0jv/mF10chQpd6gx3X9b5QLX8v5qMOZvB59
-         gGRzbQgf3DLxwRF6LeRJrEx25FytR6Ol4hK+8c7LQN6pP+88IuPTbtVFNfftRSQdAtlw
-         j6EN1IF2frZq3SGIqooiiDPlYowBj5nOBzQaUolWDi4GHoAwm9G8tZM5T6LifZS2LpPy
-         pwSA==
+        b=Kg5L3S9wu5LuX1X1kgaw6HCrcU74v7HfJ/nssV+fcxd30DgMzvbJZhDIHUiopYX1u6
+         8tgSxMrKQvKZnrgmusLP+rcin+OtlMdzJU4HEkcP7E2++oGzstOFthLQTkYZ7Gl2UNw7
+         8Q+ZlssyNQ+OfZohy2lhJ1nzPC8IznP8toREBKLuW3XNuT1v/u4vyEK8Dvef/yV2v8CS
+         qR77x+YZjP7vUXhv+jcAT4Je22yWORrkpXmWe3THX1tKuUHEI8UoweYdbC7AotXY8xpY
+         kazpl0CYfsCoRsHwZf+4FMzcPDcx0s4V1znUYOVqKXBm/dzcsrLAlhw3SBMBpWAbwOtU
+         NMUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=dOpQQKelOC3tNh3BQzXryGleQAyrlg7IJKFcEpASwfY=;
-        b=O5dpCIy3QBcNuGc42PrgdDEDQjI7ido/rbFoZEm6wlVorFxi6IlNLRCy5MUnt2eB1F
-         J9jT4G8f9q2Ik3or8FXe7fUKSivrNzFBOy6u4Syq34vhrS0U7KECTx7mgERQ/ovI5YVW
-         O4BK2dU1hVasCnufTU7PFTgvLqCr8cFQyRDZFoVB1ZoGnw15JvADFV/3ivIC2zAnb2o/
-         bfi9wCkJ3lr0f/RFwbvpuzpocJl2/LDYBHGwk7CBrmvmU5NhM7SPTQ6TX7m0DYCxwvW3
-         5uHhiKRmPYXP9ilpkm1S42N7CIS+OgFxPF7XwSq7F/TTECokgums9/FTj0O3Zewol+I9
-         JrPQ==
+        bh=g1s2kYYH/V8qGWf7IjHa5ZpOfbsGURVtpkApVsmufN4=;
+        b=EFWgxK+5TK1GvODVF1pIH/z5Q0UNHONtT/d2hTLpib1nIDlCBo4zYmcXmoz81NR771
+         TyfXlLL1YqdXY+xYFMh1vZEhDY1ex4uIjwHSmSU3LMrWMlKjGeasJV05bR/G2ZQUIPEN
+         OsLPCUm9nyeXNc8tJ0qEpf4aXwpH5Gc+9kri22ljHgyl/SKPbwpnulmFrgLN9TtY11YN
+         Q9cybQsqjI1yKJS/K4q5wf9cjYOe08IrRbeOAd/3bxUDOGxkzbrYi/9VVSI1ZRSq6FVl
+         9DKiuOudtoxyOz2wO1p4Xjz1svRd7wb3qknBfYNJboXywfL1NI1aGWQ3NwRXjaALxVJn
+         SN8A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IgrZL2/O";
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dlqqQ1iL;
+       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <chime.evan.dri.devel@gmail.com>
-Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id y185si703536wmd.4.2019.11.03.08.14.52
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id z18si307275lfh.1.2019.11.03.08.14.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Nov 2019 08:14:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
+        Sun, 03 Nov 2019 08:14:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IgrZL2/O";
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dlqqQ1iL;
+       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x443.google.com with SMTP id p4so14345969wrm.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 08:14:52 -0800 (PST)
+Received: by mail-wr1-x441.google.com with SMTP id e6so12526394wrw.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 08:14:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=dOpQQKelOC3tNh3BQzXryGleQAyrlg7IJKFcEpASwfY=;
-        b=IgrZL2/O7af0/h0rDNoei6GdRFKc+xVQjFWdvXZ6effnYI9KYs6fXpa38jifVn2F68
-         J0Wr7TO18bQp9DnMrhhXnXYKBm5l0FTmgF1XKoxoLGvHKlEnYD3vLdETQVCmt412hye/
-         DZx1zkilc8lX1EWhqth3GqYaLUNaF52RjH/g4VGIUDltZ5KVaPQX8jjf0C6Vb9FcpqVm
-         4IcOnFL4Fztjo15b7/AUhS96foLp1t/q4qpFuT5B1rcxx3YWMWs7E4tmm741DjkRUTsm
-         fyilPcvgIUqRo8hSVWeoHSDNSfAlbmSpU3vHMFcVykRXwHNKOU8cRYfOa4rNTZ6NWyZ1
-         kwww==
+        bh=g1s2kYYH/V8qGWf7IjHa5ZpOfbsGURVtpkApVsmufN4=;
+        b=dlqqQ1iL2lWXSNbfMJpBOyAj+opDAkKZZIcm/NPh3iCSxS5YOipguB3DVJ4CAY2H7r
+         tXU5TjHGj7Dxf31++v/HOU67mI6QnvZhknloR/TwEs5/o0nR0Ie1tI/TXLV41N6JcYqi
+         fmJZYJXtZ05S3Palu1jcFEYPgX1TAEnOMud2XhWBYT9p5/U2s9DgM6+MwvIAXVeiBKzU
+         W0fYYt4HyvGMNFx4n5mlrPM2SY5KIK7vJbIFkkD4WLt4ax4Vm6U/lBgQcylNXwYwtVJz
+         NaNcMOBglqsUwZF3rsMbkp27mKqi+SIG/HivLXX/gSRPRag1Ojfs2YZrz0zXGv00f+89
+         6Qvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=dOpQQKelOC3tNh3BQzXryGleQAyrlg7IJKFcEpASwfY=;
-        b=ukPmJGoHmiFs66GU3iT1RqN8tr/yIWJfdfiUI+/rX9ml4pO+kwmOQw4494aGY9TzGl
-         SOOpvgSJq7jcCfvjlrPqAGyS+lZeTGQhre/NOFQVdJn1fO5ncHecbmTouB1uV3fuAWkY
-         Goa5ZiQpRMiS/PiPC8bOL0dqrC+pHSAT5A8VYwBF76sJB+3zzzeUFMT+uNNmbXuz/fT4
-         mTcAgOyWL8Ywa90Wr6FSrzt8ySEg9jMHeUmlnYckgbXlx4n0g9vYJtwjrycJoGVik8jQ
-         kPiPYjfYXi99QpAY0uyGcKBSgLQbXxNiVBRj/3yJ6ebf7tkYpXMsU0/DVX5zV7Uf2Zco
-         6Dbw==
-X-Gm-Message-State: APjAAAWIW+F5xkrF6JOlmx2hWKSA0OflPlsuBalG2GdHA3vGguLcGW0v
-	/uXOz47eT5mat19FRveuaTA=
-X-Received: by 2002:adf:ec89:: with SMTP id z9mr4715918wrn.153.1572797692280;
-        Sun, 03 Nov 2019 08:14:52 -0800 (PST)
+        bh=g1s2kYYH/V8qGWf7IjHa5ZpOfbsGURVtpkApVsmufN4=;
+        b=jeox81j7bWi/JbYZy+fPyKe32gCxhr8rtZ7yyGr7oGcIz8/crJUeTeHZuSDD9cpgMS
+         h56hFfhJncSI0lorHQ8pocBfFybHBmIZ8agB26adDwbmaZqJDk7LQorOYv+S/mK8FRBr
+         zrSI4dmNsNhyHzMhlHKQJHuPsLoxa1+lKQh9CMLleRyCueYL2np8HvDsNLt60dA1rkY7
+         u7NlYp7GE1HORg3nz6pApBg8rJKQXXRZnJYTP3uTif53T55LbbNGwn+L7sO2Sapdfwdc
+         wk9bUftswPMPm7K9S3VRuMx3CsJ7F/OgiSCk1pKa9xuzn6a+yorvqXXVRJi4D1CugGXT
+         bRGg==
+X-Gm-Message-State: APjAAAUHDF+ULsjleXubDXZV1dIXdu+j+hUgq4cK4znDg6ydt07lwQDc
+	jlv0MQ8+cCESbz1lOgvKY1g=
+X-Received: by 2002:a5d:5222:: with SMTP id i2mr19327076wra.271.1572797673717;
+        Sun, 03 Nov 2019 08:14:33 -0800 (PST)
 Return-Path: <chime.evan.dri.devel@gmail.com>
 Received: from ik-ubuntu ([2a00:23c4:7286:6400:fd8b:953d:f833:bf1a])
-        by smtp.gmail.com with ESMTPSA id d16sm16439315wmb.27.2019.11.03.08.14.51
+        by smtp.gmail.com with ESMTPSA id 189sm18496063wmc.7.2019.11.03.08.14.33
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Nov 2019 08:14:51 -0800 (PST)
-Date: Sun, 3 Nov 2019 16:14:50 +0000
+        Sun, 03 Nov 2019 08:14:33 -0800 (PST)
+Date: Sun, 3 Nov 2019 16:14:31 +0000
 From: Evan Chime <chime.evan.dri.devel@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com, laurent.pinchart@ideasonboard.com,
 	mchehab@kernel.org
-Subject: [PATCH v2 2/3] Staging: media: omap4iss: Add comment to memory
+Subject: [PATCH v2 1/3] Staging: media: omap4iss: Add comment to memory
  barrier
-Message-ID: <55eb1841b82cb2b5506a219ce217ebf1501e60ef.1572797322.git.chime.evan.dri.devel@gmail.com>
+Message-ID: <88ef5bcc4ed24721253636b8dfec74bfdea23039.1572797322.git.chime.evan.dri.devel@gmail.com>
 References: <cover.1572797322.git.chime.evan.dri.devel@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -89,7 +89,7 @@ In-Reply-To: <cover.1572797322.git.chime.evan.dri.devel@gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
 Fix "WARNING: memory barrier without comment" from checkpath. Add comment
-to memory barrier smp_wmb() on line 653
+to memory barrier smp_wmb() on line 635
 
 Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
 ---
@@ -97,18 +97,18 @@ Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-index 5156ad8e4b96..ce34c19874c7 100644
+index 1a966cb2f3a6..5156ad8e4b96 100644
 --- a/drivers/staging/media/omap4iss/iss.c
 +++ b/drivers/staging/media/omap4iss/iss.c
-@@ -650,7 +650,7 @@ int omap4iss_module_sync_idle(struct media_entity *me, wait_queue_head_t *wait,
- 	if (video->dmaqueue_flags & ISS_VIDEO_DMAQUEUE_UNDERRUN) {
- 		spin_unlock_irqrestore(&video->qlock, flags);
- 		atomic_set(stopping, 0);
--		smp_wmb();
-+		smp_wmb(); /* Prevent stores reordering across the barrier */
- 		return 0;
- 	}
- 	spin_unlock_irqrestore(&video->qlock, flags);
+@@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity *me, wait_queue_head_t *wait,
+ 	 * scenario. We'll call it here to avoid race conditions.
+ 	 */
+ 	atomic_set(stopping, 1);
+-	smp_wmb();
++	smp_wmb(); /* Prevents stores from being reordered across the barrier */
+ 
+ 	/*
+ 	 * If module is the last one, it's writing to memory. In this case,
 -- 
 2.17.1
 
