@@ -1,97 +1,222 @@
 X-GM-THRID: 6755114272133480448
-X-Received: by 2002:aca:c508:: with SMTP id v8mr9952936oif.31.1572800828542;
-        Sun, 03 Nov 2019 09:07:08 -0800 (PST)
+X-Received: by 2002:ab0:5ea9:: with SMTP id y41mr9782502uag.114.1572798448168;
+        Sun, 03 Nov 2019 08:27:28 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a54:4407:: with SMTP id k7ls2488227oiw.7.gmail; Sun, 03 Nov
- 2019 09:07:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwP5VkDyOFMZpOzkPgdCfDLOZrT1ELuWmgemROcuhntalFCFAnSbzCp5NUTf5O0Pj9B6oH1
-X-Received: by 2002:aca:7285:: with SMTP id p127mr3164633oic.120.1572800827518;
-        Sun, 03 Nov 2019 09:07:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572800827; cv=none;
+Received: by 2002:a67:f68c:: with SMTP id n12ls972318vso.14.gmail; Sun, 03 Nov
+ 2019 08:27:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzbeJcISkod2edeO/3PZEDyX6OND5vPVzuTBNP8EnbFAooXTTA+YYlWl42UYvCpVWvANBjw
+X-Received: by 2002:a67:6983:: with SMTP id e125mr183490vsc.4.1572798447169;
+        Sun, 03 Nov 2019 08:27:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572798447; cv=none;
         d=google.com; s=arc-20160816;
-        b=c1Feki1TDH/cPPVTVjn4M4bRohnz3kA29Lg9lePfuBbzX//S2Y2uckWK59cuWi1GTk
-         yvVRXTzrMTcgo3wkIV0hXvFB6ZRjRBhhu++mdRYNEYxwLEqPJS3jFp0iD6YwqRjpy5qh
-         kr3YEHL6LQxTKeqnLYvJooxv0agHApEt5JsXStLLehc8I9vp8LMAb15JhlFyYY90NPaZ
-         j48UlgbIjEWxTp6/JMheITBy+OF2w0b+lZb1JIyPVVFwcsy1nPG/fRQ6cAPVtl/5Jt6/
-         JIGTwWgcZz8nkLGrHBBne5KzgrZF1OK4zHaSNUK8KgxrOkPOTlnaQqF9nXPR7mWGJoxm
-         006g==
+        b=vE3TN8zCNuiYArbZh/7dCmJoS9SwfM6pdl56a9Z0S2FWvBkIqxBQpihfOurP5RkC5i
+         NMX8ev/4sBGw8kCkAokbSX7XwSAN956d4DzmjtCpQcFfCR/cevFIK913F1X4Pw4h9Boo
+         QGXp22rsUWiJTsp0I+tYWJzD200mZPfPTfGYmd2zjKfMvhYeLR74R+hCmrqYvtNO0+EI
+         YRB6u5gHQY3oweNA2tPsGzp0r8t2qKmK70RNcrETTMnRc9MIjf/gMoIoBQxKfDuqhAIe
+         7nqWqo6Iiu9e9gRzH1kie/LnXmIiUQLUgMGe9+RYSfAB4i1p/4RjUnVEDC0lU7aMp2xv
+         ptHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=hcumXjfHfGMpNUucgzACXfDIZMfe+GByLMyraWXBVE0=;
-        b=Se1XDjPXXPP69aN7ZLAScSdgZhAQdX2iIBMNr2Bz4L/jolBfwUiiD1D8vkDObnAhsF
-         5IWMlkFuXcYp+oBS2ljJoYPLcXbU9X7pyvEaH0KyKYRCEkeQtdJ3pTyQZWjFN09LgNZg
-         nOfCxTsNV4hrTdREsY+OQpl9X7bqqtZ2cOik+AL14vdkMEeQHi4ADSnUZGn2YWWHNzM6
-         cSnTZhwwm2Qlf70WC9ZzfwRgz+qykh79gmpvI0lv6442Wt+bCIRIghZ7CxgP6pFZUkUX
-         VeZAFZ+Z/2cY+60H3IqsKMVwGSsepJV8s9bPL7d0DWX7cOQL0axQTJQXKFjC1WZCzL3o
-         ow1w==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=FY3QXzCir3Px8nUHcYIappg2Zqf5/NuQLGiqsozDsc4=;
+        b=DeScVMKg2v68onjqoPsC1skb74i5D8FYlwBWIzg9lquODeR+7BOWSntXY7URmEucaO
+         DN/0XOuc0hEd/EasMbM3TiM4o9i/yn94WLOY3ULrIvA2mJpqMq0ULVjgA6u3cmv92kGd
+         4+UC+NLJbaFkmRcmzxQ5y9cTNZO/+umnd/BAo8R2XWeOYEQsezTEMV6cDGk+CM2vEO9v
+         li8QGm8b3+Fqoa52v+J5/iEdEWZks7PqB5/aQ13Le71PpYNDmNEcRAyJA9H8FU5wYNwb
+         66tDHrbA75MmMRMQqUZ0oMa/AJDjAz+KMINbNvJ2G8xjxIWOiemHfDXt6UTLGf1733bx
+         TTuA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=OjbEu+zq;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id 144si743247oii.2.2019.11.03.09.07.07
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ak4n37HC;
+       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <chime.evan.dri.devel@gmail.com>
+Received: from mail-vs1-xe42.google.com (mail-vs1-xe42.google.com. [2607:f8b0:4864:20::e42])
+        by gmr-mx.google.com with ESMTPS id y17si182144vke.2.2019.11.03.08.27.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Nov 2019 09:07:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 03 Nov 2019 08:27:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) client-ip=2607:f8b0:4864:20::e42;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=OjbEu+zq;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id EF84020848;
-	Sun,  3 Nov 2019 17:07:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1572800826;
-	bh=mJFYBVHzHWfpSeOFXpZ2H03hUQSMB+krwGbUtihF7Sk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OjbEu+zqgjFep4L9qpIF9hN1iSzoxgE95afJYyuZFtbykYma4BPeIrg4oJIDZbvjC
-	 Begj10ClPB7AYNs46hDFStzKg+fz63ZJw7s4KO7gyM7b/BPT+MH7e7b37hh4DQFal6
-	 6jHF42pElibqYtEvGbXrGuMWGqeBm2GoyYlWznQ8=
-Date: Sun, 3 Nov 2019 18:07:03 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Evan Chime <chime.evan.dri.devel@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, laurent.pinchart@ideasonboard.com,
-	mchehab@kernel.org
-Subject: Re: [PATCH v2 1/3] Staging: media: omap4iss: Add comment to memory
- barrier
-Message-ID: <20191103170703.GA686564@kroah.com>
-References: <cover.1572797322.git.chime.evan.dri.devel@gmail.com>
- <88ef5bcc4ed24721253636b8dfec74bfdea23039.1572797322.git.chime.evan.dri.devel@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ak4n37HC;
+       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e42 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-vs1-xe42.google.com with SMTP id b16so3339338vso.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 08:27:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=FY3QXzCir3Px8nUHcYIappg2Zqf5/NuQLGiqsozDsc4=;
+        b=Ak4n37HCJYsr3UBmQwU+IXiZq+gNZff5YhTI014K/+qeNQUCrbKBvrLQ0V6sW6cTtb
+         bM7gOETmIt6kAAW3hDVmeEC3larED6Fr4qQPaO2sX5xCP97VzTe5oqwtWqly6y++xRTr
+         FtHL6UsPG8HLnYB68mo03zAo4JHdU47rV1VbtYvpdXgVlYGOPzRgkb7WwTPTNOdxFwu4
+         HrRgEG0jD3lE/qu5VoqFwFzT7ErqIQQD9obXWUMuy7C+ntL4HhnaX3BvrJl/Xwvyksjk
+         UojwMbUwI0HlBHUI8iG2fRzzkqhWTbouFxPQF/sh4jz5Zzelp/feiqLdINI8g6ilyTac
+         Kraw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=FY3QXzCir3Px8nUHcYIappg2Zqf5/NuQLGiqsozDsc4=;
+        b=MkDV59geyUgtCNDbCLZLyDqaUuM3iMQxZH13BMXv3q1oEX+p+cB69sE7Wy+hPahAz8
+         aJH3Q/ky8WZhHvKo/xFkQLzKLnP21JvvaNRWbIuYnRAv5iFHPqwDhYrc3/rfTENMLW0Z
+         AM0Cxq7Huui6dxYYi+yqZTw9UlS98lrE8HGPa9D83z05UNpxUAXH07U2WVAYNEPNNiW5
+         wnIZBaSNGei39H80KHKbPTbh2mmA0FQfu9kjyq0fNUMqbMMdO/NjUGFP91m+uRra4Cml
+         Ou0UNXfHNGNy9CI5zAm0OyE0guz6ZapvOlXohhhYd3eVqQEsegxXlGGpFgLmQcNL+doD
+         y9Xw==
+X-Gm-Message-State: APjAAAVZSfd3TU+4Dv6eG5D5IHTVgN8XnuuYT8bNAM+acw6HdUmw/Vnj
+	ZgwFsKOufyAVxUNOXAU2NAelrt7LSjtik5Ha7m3VaQ==
+X-Received: by 2002:a67:6bc1:: with SMTP id g184mr10458890vsc.161.1572798447020;
+ Sun, 03 Nov 2019 08:27:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <88ef5bcc4ed24721253636b8dfec74bfdea23039.1572797322.git.chime.evan.dri.devel@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+References: <cover.1572797322.git.chime.evan.dri.devel@gmail.com> <alpine.DEB.2.21.1911031716390.2557@hadrien>
+In-Reply-To: <alpine.DEB.2.21.1911031716390.2557@hadrien>
+From: evan chime <chime.evan.dri.devel@gmail.com>
+Date: Sun, 3 Nov 2019 16:27:16 +0000
+Message-ID: <CANR89jb9zSo_pq4rqQvH5s50R6W6t6SSZXXByb5bhjYO8SoO_A@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2 0/3] Add comment to memory barrier
+To: Julia Lawall <julia.lawall@lip6.fr>
+Cc: gregkh@linuxfoundation.org, laurent.pinchart@ideasonboard.com, 
+	mchehab@kernel.org, outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000bcf00a059673ac08"
 
-On Sun, Nov 03, 2019 at 04:14:31PM +0000, Evan Chime wrote:
-> Fix "WARNING: memory barrier without comment" from checkpath. Add comment
-> to memory barrier smp_wmb() on line 635
-> 
-> Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
-> ---
->  drivers/staging/media/omap4iss/iss.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
-> index 1a966cb2f3a6..5156ad8e4b96 100644
-> --- a/drivers/staging/media/omap4iss/iss.c
-> +++ b/drivers/staging/media/omap4iss/iss.c
-> @@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity *me, wait_queue_head_t *wait,
->  	 * scenario. We'll call it here to avoid race conditions.
->  	 */
->  	atomic_set(stopping, 1);
-> -	smp_wmb();
-> +	smp_wmb(); /* Prevents stores from being reordered across the barrier */
+--000000000000bcf00a059673ac08
+Content-Type: text/plain; charset="UTF-8"
 
-We all know what smp_wmb() does, what you need to document is what
-exactly it is here for.  What is it preventing from happening to what
-data that is being touched elsewhere where?
+On Sun, 3 Nov 2019 at 16:18, Julia Lawall <julia.lawall@lip6.fr> wrote:
 
-If you don't know the code, solving something like this might be very
-difficult, sorry.
+>
+>
+> On Sun, 3 Nov 2019, Evan Chime wrote:
+>
+> > Include outreachy mailing list in "cc" list. No change
+> >
+> > Evan Chime (3):
+> >   Staging: media: omap4iss: Add comment to memory barrier
+> >   Staging: media: omap4iss: Add comment to memory barrier
+> >   Staging: media: omap4iss: Add comment to memory barrier
+>
+> Each patch should have a different subject.  If you end up with patches
+> with the same subject, you should make the subjects more specific or merge
+> them.
+>
+> In this case, though, I think that this is an issue that only someone with
+> a deep knowledge of the code could really address.  The question is not
+> what a memory barrier does, but why one is needed at a particular place in
+> the code.
+>
+> julia
 
-greg k-h
+
+Thanks for the feedback Julia
+
+Kind Regards
+Evan
+
+
+
+>
+> >
+> >  drivers/staging/media/omap4iss/iss.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/cover.1572797322.git.chime.evan.dri.devel%40gmail.com
+> .
+> >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.1911031716390.2557%40hadrien
+> .
+>
+
+--000000000000bcf00a059673ac08
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">O=
+n Sun, 3 Nov 2019 at 16:18, Julia Lawall &lt;<a href=3D"mailto:julia.lawall=
+@lip6.fr">julia.lawall@lip6.fr</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
+-left:1ex"><br>
+<br>
+On Sun, 3 Nov 2019, Evan Chime wrote:<br>
+<br>
+&gt; Include outreachy mailing list in &quot;cc&quot; list. No change<br>
+&gt;<br>
+&gt; Evan Chime (3):<br>
+&gt;=C2=A0 =C2=A0Staging: media: omap4iss: Add comment to memory barrier<br=
+>
+&gt;=C2=A0 =C2=A0Staging: media: omap4iss: Add comment to memory barrier<br=
+>
+&gt;=C2=A0 =C2=A0Staging: media: omap4iss: Add comment to memory barrier<br=
+>
+<br>
+Each patch should have a different subject.=C2=A0 If you end up with patche=
+s<br>
+with the same subject, you should make the subjects more specific or merge<=
+br>
+them.<br>
+<br>
+In this case, though, I think that this is an issue that only someone with<=
+br>
+a deep knowledge of the code could really address.=C2=A0 The question is no=
+t<br>
+what a memory barrier does, but why one is needed at a particular place in<=
+br>
+the code.<br>
+<br>
+julia</blockquote><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks for =
+the feedback Julia</div><div dir=3D"auto"><br></div><div dir=3D"auto">Kind=
+=C2=A0Regards</div><div dir=3D"auto">Evan=C2=A0</div><div dir=3D"auto"><br>=
+</div><div dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
+<br>
+&gt;<br>
+&gt;=C2=A0 drivers/staging/media/omap4iss/iss.c | 6 +++---<br>
+&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
+&gt;<br>
+&gt; --<br>
+&gt; 2.17.1<br>
+&gt;<br>
+&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com" target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<b=
+r>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/cover.1572797322.git.chime.evan.dri.devel%=
+40gmail.com" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com=
+/d/msgid/outreachy-kernel/cover.1572797322.git.chime.evan.dri.devel%40gmail=
+.com</a>.<br>
+&gt;<br>
+<br>
+-- <br>
+You received this message because you are subscribed to the Google Groups &=
+quot;outreachy-kernel&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.com" =
+target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<br>
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/outreachy-kernel/alpine.DEB.2.21.1911031716390.2557%40hadrien" r=
+el=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid/outre=
+achy-kernel/alpine.DEB.2.21.1911031716390.2557%40hadrien</a>.<br>
+</blockquote></div></div>
+
+--000000000000bcf00a059673ac08--
 
