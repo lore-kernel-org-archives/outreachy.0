@@ -1,78 +1,78 @@
 X-GM-THRID: 6754760383787958272
-X-Received: by 2002:a19:8b54:: with SMTP id n81mr6743006lfd.114.1572804817033;
-        Sun, 03 Nov 2019 10:13:37 -0800 (PST)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:9581:: with SMTP id w1ls1544869ljh.16.gmail; Sun, 03 Nov
- 2019 10:13:35 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzE4CMW7aCyWE/8OVPcq0vk4Ym06XcpcK01mlh3vv0xdgI/tBahPvm0YWbnICefwRM/HGB9
-X-Received: by 2002:a2e:a0ce:: with SMTP id f14mr1868643ljm.241.1572804815936;
+X-Received: by 2002:a1c:152:: with SMTP id 79mr18401339wmb.70.1572804815907;
         Sun, 03 Nov 2019 10:13:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572804815; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a5d:5382:: with SMTP id d2ls10279388wrv.6.gmail; Sun, 03 Nov
+ 2019 10:13:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyR31T7Ffy+dHL9A1pwZFzBpYr/E7DWsXhSOel8TBFWCtzSJpPlUuiXjG5Wg8V67RDIWw0E
+X-Received: by 2002:adf:9ec7:: with SMTP id b7mr20112860wrf.221.1572804814840;
+        Sun, 03 Nov 2019 10:13:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572804814; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ld+01BYI1r2sS65GtW9lIwAodCkhgG0EQHxHSSaxH1Ri2IPl/+oSMfHrxWmYp6/16
-         3ee8Xi/gz1s6trDUji3D2SgImLZd3yOMAyPgJP6xMHW/osAAuy9oNUlDg9bCB53IePab
-         wbqOtgTu2EzQohzJRadZJqlRc80SHDX2hf+NRC3M5vHWtQY/nbHBhL62fwXo84DXmkBD
-         Esb1u73G1KVDCnmS63bKNXv3sCahiOwyEsOwI/LumnVNEMYWMH7GJY8hqP23b6URRL/7
-         BsicQSSTxgoO5UrwaQ8xYPQdzomYWSc2zE77qJg75duBKBB0MrAXhQblST1BHRgK4qbL
-         EEJA==
+        b=wEB8yHnXuppp3YjA7CgpNoCu/YNRLk00zwyCyKh0jfS+fBSVUp2pNEeHpR2Nm2OcOd
+         uUjqVYn6HdlOXOmJNnkM55bjX+jF0Qi557mEZWA+4033MMU95yW/rjmL3QpZjNjsA44D
+         cKREu9qjoH2Od4SItwQjCYSdQqYjJrDOyZnBJra/Q+8arIplTk9LppOSVlWT6KUtqU7y
+         eXtJkezrUVNLWA/hw+jc5nPtR0avRZiiSP+dLh9+y0zyUh2X63GyKgtj7MbxKTyk2azw
+         MpPE41IJ7TJqMTBjf2AW/OSE0Ck1JUYUOsrQ9C2DGcezoSWki8O+O/tapGo/j9dPTsQ8
+         jd1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FpoFbIZM9ifIww4YW3b4mTmE1CRomDkMPyQExokuAO4=;
-        b=XjdGGTKuZcYMbi52n7ykZ1TAYYdk8upkr2Ho6GM1wSl/rAl53xdq4QR+ftzByYaBmi
-         EYGBFNSJQFwLSCn58FK4IrHV9xHF/gNqEQj95BaRIGp/Tgcjbwo2JNzPfPp2pYCHB5Wd
-         uWvKBV0ghrav3MqvIvi6yWsfrV0ffTqcNJ2t1YYi8lVAC/zZJrKK+bv/QPirSVbzOzIH
-         oMRwusp3FqS9fqwdlUqJrfo9py+yy2v/uP4hXN/1guM1UhpK7UTJmPaACwP5fpMYYIP2
-         sNxlpsctfDjS6lz3ckHEjgh3s98pSW7ACI19fZdj6KK/h4g4X2ooKX7dr6332MC3O3yf
-         vQrQ==
+        bh=lAB8/rHaGZeFyPil7DZKUbOJiYz4qtBYdoO13fIbAvE=;
+        b=KuYhfZJuNY/wTFYJNHJ7iWrzEn97T9VqVAuYCPH6Mke6l6xEqd/7EIZjaVZfs15Y8h
+         exTawhnV4dGqmZDf/rKyXcJg2tggPrzXIL5kdSYPiTmqaPejtFlwSjn+BEax9Tfj6S56
+         DcugfSIg2RJeQfVLMk45NvU2olITXHNedj8Iob20z6orOs3OGS9bzz9igy/nmbf0kKAI
+         AYOYzJnGvLlzHiTucOhG8f6z+xBtaFl+jEZ3JUXMiWRRAa2IcmgQi2ViEHCCo7VmAat7
+         1kVOTlgqDEGcILm/vWLFbOPUe+1KVrwdEtM0APl9gpl6GoahGUXl03Vs2kGENl+0UY50
+         1gTg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tSaMD0w8;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WQjqjD2K;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id s4si1176265ljg.1.2019.11.03.10.13.35
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id q3si830277wrp.5.2019.11.03.10.13.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Nov 2019 10:13:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+        Sun, 03 Nov 2019 10:13:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tSaMD0w8;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WQjqjD2K;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id o28so14549263wro.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 10:13:35 -0800 (PST)
+Received: by mail-wr1-x444.google.com with SMTP id w18so14589278wrt.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 10:13:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=FpoFbIZM9ifIww4YW3b4mTmE1CRomDkMPyQExokuAO4=;
-        b=tSaMD0w8d3Drb7aIFzScIU0Ot7OHxJcVVM3ea420qLc9TXUxBFQY2OKb1DIfRFSCIe
-         UCY+sQYvetFRPMQlTJdegIRZ0My1Q0dTI10M/OPnWdx+ofqWVuEo+S88Zex2xLkVwJ4C
-         Mm6ZsrmiO8RulmKy+cL2XLYy5C3wwvSqqp44jDWNI4EBFeRnirmnC/fAz+JVMGyQeDYr
-         7JDrHzA3URPK/1HiyisrteVB+YYm/CQLCvacP63JXun3QnhJYjk9RlC2LSn5YhP2V0Zf
-         drfQCUfem3I0Zg3zQ9zW9pQv/JfyXQVJ8p6+TW7ErVw3ZoIOXgFUfBfj7Gu5Oib0Tyl5
-         JIsw==
+        bh=lAB8/rHaGZeFyPil7DZKUbOJiYz4qtBYdoO13fIbAvE=;
+        b=WQjqjD2KdzKYZP74JRWps3nD8/UbTEjdvm8fTr4ZvHGSdBgzIBG3jLssUXAjOC1GYg
+         NMeS5RMR2peGdGTfeYdz/5fViUaVeWC/dQbR2NEZ8dg731nr9mhTDCqBt3/31+A8QvGk
+         34daNn1DrcqiP9yt1XTrJ7/uId/bVkR6U1qmD9m4drqJ3Ukg2AyJGa8mys9nSSYhmOf9
+         QOMf4sgdowg/JWOJVykQqCzbu/s3TsCSk1nauHJdpMFKrh2MDpcFtaIWNMWAUUFxeV88
+         HGMCL5GqBbjJ+V1CCVOCUERB2NKVsiJNB/u1sw0nWhgR8fiZkhwUoDa+0S3p0qom3Xh/
+         J8+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=FpoFbIZM9ifIww4YW3b4mTmE1CRomDkMPyQExokuAO4=;
-        b=UnXUKz0BwTrFrs448dE6h5QVP3F9nmg8d2cRyFYB6Up7Yv5jUhW6RZmfZ8UkBu5Kpf
-         Mw2k4xAkEbDwmsjRvIhNvJLxu8gC39Psv/roV8S+M4f8vsmduyzbXj8gdy9qgtl6PPWS
-         sdJ/Vjksa9ZM7FDpHC2ESRXXgfHzCzjM3LJoSbvhQ7VQl+sUe8FmzxVGU3+Q//UdXKnU
-         ab2YqedB+lIsiqm/QWLIBsFlwHTsw3msQ+bslGb/ADlCdjStLmenO5KebINCF3syy0RK
-         364CrIcCUbgeB8PH6NF6uILpjgrJte6oyGzK7CINa/iR+MV28frUu3RoI4ceIksQg1D3
-         TJww==
-X-Gm-Message-State: APjAAAXOwtCdINV95sHhbuLuvJuiHS9/ZFFj4F8/6iqt2StNWaZCtxVY
-	Bo3U8VM0nmQlRlI6R7buXIyp3UqINMiw
-X-Received: by 2002:adf:e8c1:: with SMTP id k1mr3884855wrn.303.1572804815030;
-        Sun, 03 Nov 2019 10:13:35 -0800 (PST)
+        bh=lAB8/rHaGZeFyPil7DZKUbOJiYz4qtBYdoO13fIbAvE=;
+        b=UA2pMWUasp3HkWr5NOXSeY+5t+dTjH1TlxS/SyCTe/jBcJfqPJ2tD9u+XHsa3jNMaq
+         VDOcAbr+5I2VqFmHgiot2tMGuFGKNR/5kPA81d2KIWEI74i8yQCxADKbzBJ4UP9loP7/
+         f6rikvx42kTPGODQPagxuVJas/hqpHnEG8GI0iWpXDkXcEZhaW5KXgfIDkC/aM1jEyZm
+         m8NsWm9IXcCBFWhBABwtaLq4lQ1l6YtNhAfT78XkPNBBXLuySkUSEp+yhHP/ypMfQF2m
+         incj42y4e9a3TCAUjGHyyPAaED6yKbmTQFbtH0otyKxurXEUCNBvVwChbRalaFEi5AyK
+         vWDw==
+X-Gm-Message-State: APjAAAVKzvQuEHxJxj0Ps6bJq1qpHQUle5RNiFCeCKyzLXXfrGFj0QXT
+	2qcOHoS5pOunSdFrGcsRty2NrbbbGjJ2
+X-Received: by 2002:a5d:4584:: with SMTP id p4mr1776709wrq.345.1572804814172;
+        Sun, 03 Nov 2019 10:13:34 -0800 (PST)
 Return-Path: <jbi.octave@gmail.com>
 Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id l18sm18467087wrn.48.2019.11.03.10.13.34
+        by smtp.googlemail.com with ESMTPSA id l18sm18467087wrn.48.2019.11.03.10.13.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 03 Nov 2019 10:13:34 -0800 (PST)
+        Sun, 03 Nov 2019 10:13:33 -0800 (PST)
 From: Jules Irenge <jbi.octave@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
@@ -80,57 +80,44 @@ Cc: gregkh@linuxfoundation.org,
 	Boqun.Feng@microsoft.com,
 	jerome.pouiller@silabs.com,
 	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH V5 2/2] staging: wfx: replace 1 by true
-Date: Sun,  3 Nov 2019 18:13:15 +0000
-Message-Id: <20191103181315.26434-3-jbi.octave@gmail.com>
+Subject: [PATCH V5 1/2] staging: wfx: replace 0 by NULL
+Date: Sun,  3 Nov 2019 18:13:14 +0000
+Message-Id: <20191103181315.26434-2-jbi.octave@gmail.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20191103181315.26434-1-jbi.octave@gmail.com>
 References: <20191103181315.26434-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Replace 1 by true when it is stored in a boolean variable.
-Recommended by coccinelle tool.
+Replace 0 by NULL as the return value of a pointer-returning function.
+Issue detected by sparse tool.
 
 Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
-v1 submits change of 1 to true with no accurate log message of what
-was done reason.
-v2 merges two patches for the same issue into a single one, improves on log message description: rephrase, change the term warning to recommended by coccinelle tool.
-v3 gives accurate description on what was changed and reason behind:
-change from fixing to replace to indicate what was done.
-v4 includes logs of changes done on each version.
-v5 shortens subject line to give only idea of what done.
+changes since
+v1 submits change of zero to NULL with no accurate log message of what
+was done and title.
+v2 improves on log message description: remove the word "fixing", rephrase
+log message and title.
+v3 gives accurate log description on changes and reason behind.
+v4 includes a log of changes done on each version.
+v5 shorten subject line not to be identical as commit log
 
  drivers/staging/wfx/queue.c | 2 +-
- drivers/staging/wfx/sta.c   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
-index 5d29bce65f71..71e92744fed0 100644
+index ef3ee55cf621..5d29bce65f71 100644
 --- a/drivers/staging/wfx/queue.c
 +++ b/drivers/staging/wfx/queue.c
-@@ -550,7 +550,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
- 			spin_unlock_bh(&wvif->ps_state_lock);
- 
- 			if (vif_more) {
--				more = 1;
-+				more = true;
- 				tx_allowed_mask = vif_tx_allowed_mask;
- 				queue = vif_queue;
- 				ret = 0;
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index 688586e823c0..ea5707ff8847 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -291,7 +291,7 @@ u64 wfx_prepare_multicast(struct ieee80211_hw *hw, struct netdev_hw_addr_list *m
- 			ether_addr_copy(wvif->mcast_filter.address_list[i], ha->addr);
- 			i++;
+@@ -565,7 +565,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
  		}
--		wvif->mcast_filter.enable = 1;
-+		wvif->mcast_filter.enable = true;
- 		wvif->mcast_filter.num_addresses = count;
- 	}
+ 
+ 		if (ret)
+-			return 0;
++			return NULL;
+ 
+ 		queue_num = queue - wdev->tx_queue;
  
 -- 
 2.23.0
