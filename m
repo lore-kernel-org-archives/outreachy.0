@@ -1,185 +1,97 @@
 X-GM-THRID: 6755114272133480448
-X-Received: by 2002:ac8:3376:: with SMTP id u51mr9192818qta.248.1572801990021;
-        Sun, 03 Nov 2019 09:26:30 -0800 (PST)
+X-Received: by 2002:aca:c508:: with SMTP id v8mr9952936oif.31.1572800828542;
+        Sun, 03 Nov 2019 09:07:08 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ad4:58a4:: with SMTP id ea4ls1817924qvb.11.gmail; Sun, 03
- Nov 2019 09:26:28 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxTNtUpIeRfDVNRHPa0idPbRrE/KpIFHRu3ZkO2eas0nXzZ9/g6LiapdsAYZoiUbX6Sr7ia
-X-Received: by 2002:ad4:494b:: with SMTP id o11mr19540615qvy.82.1572801988704;
-        Sun, 03 Nov 2019 09:26:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572801988; cv=none;
+Received: by 2002:a54:4407:: with SMTP id k7ls2488227oiw.7.gmail; Sun, 03 Nov
+ 2019 09:07:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwP5VkDyOFMZpOzkPgdCfDLOZrT1ELuWmgemROcuhntalFCFAnSbzCp5NUTf5O0Pj9B6oH1
+X-Received: by 2002:aca:7285:: with SMTP id p127mr3164633oic.120.1572800827518;
+        Sun, 03 Nov 2019 09:07:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572800827; cv=none;
         d=google.com; s=arc-20160816;
-        b=nriuFY2ULofIDEOYKSw4iSUL0X9OnnLeNzbtrkv6QhCW7L44r330mCWwlLKV5BR1Hr
-         NiRE/7ww7b9WvBM6fuk2WF8D+2ENsAipvrWG/b6NQxSSlLnRVgtCpuwuDDKHm7TlaEcR
-         s+bUOGXQQ7C+Fc6tMvZgkozbws5GcdTRQq2hJyW+9Mksg/PuJJKnQXvTdanvo2M9xX9M
-         E3qZDwanznHUz1S05eLb6nFXjc1IuiedayL52XY+gS6eaT2tx6Vh1xx4j+6tiA87i+Z2
-         vhstmOUbVOcsQacVgeb+Tr7qG+hIhXNaZQe51HOBgufHDA+eYRKTltA2gRsVpqKDMH0l
-         ZK7w==
+        b=c1Feki1TDH/cPPVTVjn4M4bRohnz3kA29Lg9lePfuBbzX//S2Y2uckWK59cuWi1GTk
+         yvVRXTzrMTcgo3wkIV0hXvFB6ZRjRBhhu++mdRYNEYxwLEqPJS3jFp0iD6YwqRjpy5qh
+         kr3YEHL6LQxTKeqnLYvJooxv0agHApEt5JsXStLLehc8I9vp8LMAb15JhlFyYY90NPaZ
+         j48UlgbIjEWxTp6/JMheITBy+OF2w0b+lZb1JIyPVVFwcsy1nPG/fRQ6cAPVtl/5Jt6/
+         JIGTwWgcZz8nkLGrHBBne5KzgrZF1OK4zHaSNUK8KgxrOkPOTlnaQqF9nXPR7mWGJoxm
+         006g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=yeR0rc8eTe7u+Vev95G1ZEgTMwX6/Cr+N1k7VecI1/k=;
-        b=e47f24fcBpDbPZmOwCLQvh+LPQLOxasmUj5Wegsqu6uqIjv5lVIWnJMZ2h/8ByH0UF
-         n/Ws0n+UI+R8q6Et6o2hW+sXHnzwNm0MRr4zv3Cm0SZMDI2cEri/aUz7kxg3++Crkddm
-         ueWD9hVNqmhh+8qmaQEYxEbvx2E4iKrNaMPkQkXk5VwM+q5Mervz5hvBQ+h9FZNYsvvy
-         1RhDaHSYqqW1fCgVrgNPR3Nh5fyRug5753TU8E1YLDSgHSbJRp41gE3IzMvP/jAQzY5h
-         LAt7EsHO+HKdYXJuMezmxMo9KctEsJkH7uQI/Zoal3aD1vwjgzihG/psyVm4KEBlNsMT
-         Q1/A==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=hcumXjfHfGMpNUucgzACXfDIZMfe+GByLMyraWXBVE0=;
+        b=Se1XDjPXXPP69aN7ZLAScSdgZhAQdX2iIBMNr2Bz4L/jolBfwUiiD1D8vkDObnAhsF
+         5IWMlkFuXcYp+oBS2ljJoYPLcXbU9X7pyvEaH0KyKYRCEkeQtdJ3pTyQZWjFN09LgNZg
+         nOfCxTsNV4hrTdREsY+OQpl9X7bqqtZ2cOik+AL14vdkMEeQHi4ADSnUZGn2YWWHNzM6
+         cSnTZhwwm2Qlf70WC9ZzfwRgz+qykh79gmpvI0lv6442Wt+bCIRIghZ7CxgP6pFZUkUX
+         VeZAFZ+Z/2cY+60H3IqsKMVwGSsepJV8s9bPL7d0DWX7cOQL0axQTJQXKFjC1WZCzL3o
+         ow1w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pO2LB3hD;
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <chime.evan.dri.devel@gmail.com>
-Received: from mail-vs1-xe43.google.com (mail-vs1-xe43.google.com. [2607:f8b0:4864:20::e43])
-        by gmr-mx.google.com with ESMTPS id z194si709897qka.5.2019.11.03.09.26.28
+       dkim=pass header.i=@kernel.org header.s=default header.b=OjbEu+zq;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 144si743247oii.2.2019.11.03.09.07.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Nov 2019 09:26:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) client-ip=2607:f8b0:4864:20::e43;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Nov 2019 09:07:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pO2LB3hD;
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vs1-xe43.google.com with SMTP id l5so9528186vsh.12
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 09:26:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=yeR0rc8eTe7u+Vev95G1ZEgTMwX6/Cr+N1k7VecI1/k=;
-        b=pO2LB3hDp1MsBKXmtvfDYv7NEMXEi94AZopg8dfAFtmF2fi2wo0thirvDoGjMjbVo3
-         2Jo9xVxv2SemhfzPoineI5WQUmN423lQWiJHX6z51QaCRdMEPJablMBnGbSZxeasJ8+J
-         lvvok0DQTIVMohHmAFRlLEfTRNcP+Xehw3bh8Z3o+ePTAkw6eB8e/Q6+I0/EG6ViQfsP
-         /8dUEJzacfxve9+kuUPSeM9sSMjv/a8NUrfVR0W6gYs16EBanHuAsVLagz9fj0NdDa7d
-         vH6nKnaDzsZZeXhmptPmYtmWJAdNhffgZ4PaKrqS8HwcRig3a97h1LS5JsAVdaZMZF1G
-         1ipQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=yeR0rc8eTe7u+Vev95G1ZEgTMwX6/Cr+N1k7VecI1/k=;
-        b=igx1A4AFBdyvZMPNWhSpUzObZXAZ1sT3qDTgC0zs83rPUSTi+F/MYrDvMTW7klaRPT
-         TYmajkGrCaArF2lsrg5XJtDY907mcwssPQmgvGoSfzVcefu7yUO5/q4w2Ds8gJITtt9k
-         00uuciTX545ka9opjWihcym3b/I4Mi0IqUY6cG+Y2cwucwGJJlSqSwu/q0EYmnh/eeHt
-         DMR1yPqeuLEtUbO3XI9bST0sxwxUy1EkniwWultLXghS8P4DUE9goILCex9bdTkDGV+n
-         Yt5HIGLcpxizKl3YidS/TklkeH018bQOCDianqyP0GOGvdp0Sn99+JJWewOHc/dbPbSD
-         FwyQ==
-X-Gm-Message-State: APjAAAXZmpT7VjcWTcuDrtDXGe5WdEoI46lJbZeiWhztxQu6XhY48oGh
-	rspFYW3znh3kIBAGsLzP2nLTPgXt40IoiFYpkjqlWQ==
-X-Received: by 2002:a67:304a:: with SMTP id w71mr10305179vsw.92.1572801988391;
- Sun, 03 Nov 2019 09:26:28 -0800 (PST)
-MIME-Version: 1.0
+       dkim=pass header.i=@kernel.org header.s=default header.b=OjbEu+zq;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id EF84020848;
+	Sun,  3 Nov 2019 17:07:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572800826;
+	bh=mJFYBVHzHWfpSeOFXpZ2H03hUQSMB+krwGbUtihF7Sk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OjbEu+zqgjFep4L9qpIF9hN1iSzoxgE95afJYyuZFtbykYma4BPeIrg4oJIDZbvjC
+	 Begj10ClPB7AYNs46hDFStzKg+fz63ZJw7s4KO7gyM7b/BPT+MH7e7b37hh4DQFal6
+	 6jHF42pElibqYtEvGbXrGuMWGqeBm2GoyYlWznQ8=
+Date: Sun, 3 Nov 2019 18:07:03 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Evan Chime <chime.evan.dri.devel@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, laurent.pinchart@ideasonboard.com,
+	mchehab@kernel.org
+Subject: Re: [PATCH v2 1/3] Staging: media: omap4iss: Add comment to memory
+ barrier
+Message-ID: <20191103170703.GA686564@kroah.com>
 References: <cover.1572797322.git.chime.evan.dri.devel@gmail.com>
  <88ef5bcc4ed24721253636b8dfec74bfdea23039.1572797322.git.chime.evan.dri.devel@gmail.com>
- <20191103170703.GA686564@kroah.com>
-In-Reply-To: <20191103170703.GA686564@kroah.com>
-From: evan chime <chime.evan.dri.devel@gmail.com>
-Date: Sun, 3 Nov 2019 17:26:17 +0000
-Message-ID: <CANR89jacvcBW8eRnWzHXO+Rcr3qSMi8COHiyJ2=q3oPRGmhMWw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] Staging: media: omap4iss: Add comment to memory barrier
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: laurent.pinchart@ideasonboard.com, mchehab@kernel.org, 
-	outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000d1f86f0596747fc1"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <88ef5bcc4ed24721253636b8dfec74bfdea23039.1572797322.git.chime.evan.dri.devel@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
---000000000000d1f86f0596747fc1
-Content-Type: text/plain; charset="UTF-8"
+On Sun, Nov 03, 2019 at 04:14:31PM +0000, Evan Chime wrote:
+> Fix "WARNING: memory barrier without comment" from checkpath. Add comment
+> to memory barrier smp_wmb() on line 635
+> 
+> Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
+> ---
+>  drivers/staging/media/omap4iss/iss.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+> index 1a966cb2f3a6..5156ad8e4b96 100644
+> --- a/drivers/staging/media/omap4iss/iss.c
+> +++ b/drivers/staging/media/omap4iss/iss.c
+> @@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity *me, wait_queue_head_t *wait,
+>  	 * scenario. We'll call it here to avoid race conditions.
+>  	 */
+>  	atomic_set(stopping, 1);
+> -	smp_wmb();
+> +	smp_wmb(); /* Prevents stores from being reordered across the barrier */
 
-On Sun, 3 Nov 2019 at 17:07, Greg KH <gregkh@linuxfoundation.org> wrote:
+We all know what smp_wmb() does, what you need to document is what
+exactly it is here for.  What is it preventing from happening to what
+data that is being touched elsewhere where?
 
-> On Sun, Nov 03, 2019 at 04:14:31PM +0000, Evan Chime wrote:
-> > Fix "WARNING: memory barrier without comment" from checkpath. Add comment
-> > to memory barrier smp_wmb() on line 635
-> >
-> > Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
-> > ---
-> >  drivers/staging/media/omap4iss/iss.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/media/omap4iss/iss.c
-> b/drivers/staging/media/omap4iss/iss.c
-> > index 1a966cb2f3a6..5156ad8e4b96 100644
-> > --- a/drivers/staging/media/omap4iss/iss.c
-> > +++ b/drivers/staging/media/omap4iss/iss.c
-> > @@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity
-> *me, wait_queue_head_t *wait,
-> >        * scenario. We'll call it here to avoid race conditions.
-> >        */
-> >       atomic_set(stopping, 1);
-> > -     smp_wmb();
-> > +     smp_wmb(); /* Prevents stores from being reordered across the
-> barrier */
->
-> We all know what smp_wmb() does, what you need to document is what
-> exactly it is here for.  What is it preventing from happening to what
-> data that is being touched elsewhere where?
->
-> If you don't know the code, solving something like this might be very
-> difficult, sorry.
->
-> greg k-h
+If you don't know the code, solving something like this might be very
+difficult, sorry.
 
-
-Thanks for your feedback Greg. I will have a look at the code
-
-Kind regards
-Evan
-
-
-
->
-
---000000000000d1f86f0596747fc1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Sun, 3 Nov 2019 at 17:07, Greg KH &lt;<a href=3D"mailto:=
-gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<br></=
-div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-lef=
-t:1px #ccc solid;padding-left:1ex">On Sun, Nov 03, 2019 at 04:14:31PM +0000=
-, Evan Chime wrote:<br>
-&gt; Fix &quot;WARNING: memory barrier without comment&quot; from checkpath=
-. Add comment<br>
-&gt; to memory barrier smp_wmb() on line 635<br>
-&gt; <br>
-&gt; Signed-off-by: Evan Chime &lt;<a href=3D"mailto:chime.evan.dri.devel@g=
-mail.com" target=3D"_blank">chime.evan.dri.devel@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/media/omap4iss/iss.c | 2 +-<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/me=
-dia/omap4iss/iss.c<br>
-&gt; index 1a966cb2f3a6..5156ad8e4b96 100644<br>
-&gt; --- a/drivers/staging/media/omap4iss/iss.c<br>
-&gt; +++ b/drivers/staging/media/omap4iss/iss.c<br>
-&gt; @@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity =
-*me, wait_queue_head_t *wait,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 * scenario. We&#39;ll call it here to avoid=
- race conditions.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0atomic_set(stopping, 1);<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0smp_wmb();<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0smp_wmb(); /* Prevents stores from being reordere=
-d across the barrier */<br>
-<br>
-We all know what smp_wmb() does, what you need to document is what<br>
-exactly it is here for.=C2=A0 What is it preventing from happening to what<=
-br>
-data that is being touched elsewhere where?<br>
-<br>
-If you don&#39;t know the code, solving something like this might be very<b=
-r>
-difficult, sorry.<br>
-<br>
-greg k-h</blockquote><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks f=
-or your feedback Greg. I will have a look at the code=C2=A0</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">Kind regards=C2=A0</div><div dir=3D"a=
-uto">Evan=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></di=
-v><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
-1px #ccc solid;padding-left:1ex"><br>
-</blockquote></div></div>
-
---000000000000d1f86f0596747fc1--
+greg k-h
 
