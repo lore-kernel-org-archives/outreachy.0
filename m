@@ -1,109 +1,87 @@
 X-GM-THRID: 6754760383787958272
-X-Received: by 2002:a1c:f00a:: with SMTP id a10mr19921134wmb.138.1572800003339;
-        Sun, 03 Nov 2019 08:53:23 -0800 (PST)
+X-Received: by 2002:a17:902:d687:: with SMTP id v7mr16615676ply.195.1572785009283;
+        Sun, 03 Nov 2019 04:43:29 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:e74f:: with SMTP id c15ls11794272wrn.5.gmail; Sun, 03
- Nov 2019 08:53:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy5KFNqt3uCawM3vqzpnsTyhnZh9DEGr7SgRgF9LTwWy9pQ+lgWhaAEovtgtbj9tOywMylt
-X-Received: by 2002:adf:d4cc:: with SMTP id w12mr1881295wrk.93.1572800002290;
-        Sun, 03 Nov 2019 08:53:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572800002; cv=none;
+Received: by 2002:a17:90a:2144:: with SMTP id a62ls325280pje.5.canary-gmail;
+ Sun, 03 Nov 2019 04:43:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy/XcRedWXikYZWDOHqeJUlH3S/oBwroIlTLzad605/en2SuCW2Cwfqct3d3eE3pM9NY41x
+X-Received: by 2002:a17:90a:3807:: with SMTP id w7mr13272648pjb.33.1572785008088;
+        Sun, 03 Nov 2019 04:43:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572785008; cv=none;
         d=google.com; s=arc-20160816;
-        b=A6dU9v58Wz/dzXV9BjwCaz2MEVfTyliCGnP9EG0pVXdrq42+ylbFy8OFtpMaeaGxxT
-         06ouv2qLqgBMZwnuWYlh48kr6evK7sdPnILRAaTzJE4+aZGIj9IVtw1Hj0HmF3BcJijk
-         A6DfI8XRYToTIiuDSkUEeWpu2vQqdjgnQ4tnBo31FcP7waokMNspFyHMt/QUS+JBystT
-         ofi9+781yTiOiDraK8+yPxXCf9NvpLxW64+jQrYQLjUPkq0/vWapm0wJ2scb9qRUjqPE
-         LmVtBCsE3Tt7yNxCPAqV5j9hvoa43TbXqEwewVcMQKhZzQ3ekLpI2MTTHt6U3sqqcXhP
-         G0qQ==
+        b=tryqHlQNeLcsMx9fF2MLf4EExnOW79emQoP90iUooo7MjTRSufdRtgUB8TU1OkCOIV
+         FIUBpPhEHxgL4x8/oCppF4ZiFFDBETLMNYP3+qfC3ncicdjzTz3I9TJhW/q+aZ9kSqLJ
+         1hgnAHQc32rWuP+q8p4t8Eq0CDZtqs3D5iM/xAuVIQrfITlVktySY1oydLjKFZ1olMF8
+         NlJLNna0dAaF6O5YEiBu56HFNu1Tu6WoaPkxRsbMk0XzGsqHT0jtw1BEGDvTOhoqIj+6
+         EouxhLQvbtPB9MB/CQ+ZEcS4YMuc1B1XpOEWTDnqs4IWDxcbJvSbR7pgUVVw18utX6ok
+         BV2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=mA5G1epQzRTz38eWubhTP5LZGDjipBZLW0fAeMv8hDA=;
-        b=LIhiyUjzlyZRka9hiz4L/ECOJHARla/SLFjEMaLdplmsKnSLh1KR1IlVbuQI7vBVTb
-         KZam/YptLboh/sVVDJJAHLMr/jZI8XGqZAWl0CGDVkvGHVA8xYm6lUzLA++vb+iozcE6
-         RfSabTKunghKd+fcMFr3Usaz7CP/O0J9icZeA42ccY9GSjwVRWNtPsIBM5euKl/RrJ/E
-         wTJJbhU09oXhD/vlvlJ2XmYRTKA9pwGN2KHzSGkLpzYNJiLDHbrvm1i3LyZX8KmVfJXD
-         uJUXJtxEVItqbvJi/EZRBUmNT/Bhshv0hy2utMP5Rcaaf6IXU0r3kBNM6ea5Nzw+ipE7
-         pTPA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=YuJ8Y7sZPud+T7u+nW2kAsxfNPVXIYAOFXVpArggxO4=;
+        b=lwNQrb7JoSTsvpl1Vxdo4UCj4lPHa2Ln077rRwsklreeVXueCdn4EKFG1kTlyI5EjQ
+         Dedx/ZCo3PmSW1BQC8WacQMdXbhygG8gtCHRl8IASijkqrMWHe84WuB2Ud1nWb/ycl3G
+         /s6QzxFABq5IYuj+KvVaEMLE6n3LhRYlrAn5QrzJAdWO4vxmgQtAkhdUShtSsU+oRnam
+         xof6v+S1ZSrjwiCXpRF5nf9oaMU3WBLaLxxRn1PJ5WHsgNOMLsbJ84yKvxLiHNtO9eh3
+         yXHaWwy74uXimHQLBH6yBn/wGiqG08OWd8r3o+guBcDBP9/Z8/5ljkK0M53ZT3qSvqy1
+         Zldw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VLMoJrel;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id q22si643200wme.2.2019.11.03.08.53.22
+       dkim=pass header.i=@kernel.org header.s=default header.b=SZ+9ji3H;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id l7si136718pjy.0.2019.11.03.04.43.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Nov 2019 08:53:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Nov 2019 04:43:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VLMoJrel;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id p4so14412617wrm.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 08:53:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=mA5G1epQzRTz38eWubhTP5LZGDjipBZLW0fAeMv8hDA=;
-        b=VLMoJrelkmVqDOoXE3OmJyI9DWWb1gwW6511Wzk0Jf1gLgzpLHUkDtaQCmv1DJM58V
-         R/xCmYunmoh9j1DtwCVJHHeGEsfu67fAWtt6GTL6KwN3rca3vdxk+ZBYbEG5yC5a/8l3
-         uMZVyafdRiQq+SLtqMhH6cSBj/8vzMg0nV+riqRK635TH9X0keGDJcEgfeFS93DSEK+9
-         Xs4dsJcDS7YuXYFUqBj/DzyuS8oCBHEDqJrypy7vX7hMZJyInp/1xwn1kSHwsr1QmjqU
-         oWVigpGxmNahCpUuKlIurkEfshWt+Kwk3bg0H5+0UdJZzIyTIPvyW4+SXdlRvzO1NBP1
-         Eodg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=mA5G1epQzRTz38eWubhTP5LZGDjipBZLW0fAeMv8hDA=;
-        b=K5770eCJ40ibbKJqeyKXdXe4FgPYYP5tSmEYsQnohT8fIDwtwZZQAINGrmbrujI2Yz
-         a9kzEFTveomsyTkl+mtQDkRd19244IyAkOuifProboY2aXCsIBHJJCxt0ffcDBTnCV/D
-         dKwtS3OIMw3BvXNK4kZKAErr9attkrAw4rhGpqqd4SC2TPlv9CsOlSbd+34D/1nzYQHg
-         b9AtVdNIvuH+GA6wrifVsUlwaAzJk1q/7NMpfcXgqDeR+51/IbUFo68VPUn4uvmynuwY
-         JHgEHT1wriLkIkwFhq6vQqnckthKlPa/C+ZNOTwBgibA0pj5EnnBo1Z5kB1BISXrfVK3
-         lIJw==
-X-Gm-Message-State: APjAAAVVgTJMATO23KfLilVl6V1jke/tiqGOdXhrLlEbxjUVWdiYKQx2
-	2X4NwdwR6qjwiylPENEZfhvgeBgyUvG9
-X-Received: by 2002:adf:f20c:: with SMTP id p12mr4290146wro.379.1572800001651;
-        Sun, 03 Nov 2019 08:53:21 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id o187sm13180408wmo.20.2019.11.03.08.53.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 03 Nov 2019 08:53:21 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	julia.lawall@lip6.fr,
-	Boqun.Feng@microsoft.com,
-	jerome.pouiller@silabs.com,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH v4 0/2] staging: wfx: cleanups 
-Date: Sun,  3 Nov 2019 16:53:06 +0000
-Message-Id: <20191103165308.23843-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.23.0
+       dkim=pass header.i=@kernel.org header.s=default header.b=SZ+9ji3H;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4D34A2080F;
+	Sun,  3 Nov 2019 12:43:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572785007;
+	bh=23GAmmycQ2uZoxZTx3mkVyJt0fCZa579tf2E9q9PjSo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SZ+9ji3HKYBD05MozUjTQZrsZzanDhvgM+qK9DlJky21QDhAIl2njLnI8NxnDtQ+N
+	 pE+MXmOI8XRMgziK4vXLsC/RXgm4hRvYQq7Lhvw6jt5B49sze9BbhNx6H9PigSPKUa
+	 cpZ9ZVdkBOZQyFg6A53jJ5LZIpm/SAuG4z7yPzdw=
+Date: Sun, 3 Nov 2019 13:43:25 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, julia.lawall@lip6.fr,
+	Boqun.Feng@microsoft.com, jerome.pouiller@silabs.com
+Subject: Re: [PATCH v3 1/2] staging: wfx: replace 0 by NULL as the return
+ value of a pointer-returning function
+Message-ID: <20191103124325.GB619424@kroah.com>
+References: <20191103001911.10066-1-jbi.octave@gmail.com>
+ <20191103001911.10066-2-jbi.octave@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191103001911.10066-2-jbi.octave@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-changes since
-* v1 submits changes with no accurate log message and title
-* v2 improves on log message description: remove the word "fixing", rephrase
-log message and  title.
-* v3 gives accurate description on the changes and reasons behind.
-* v4 includes a log of changes done on each version.
+On Sun, Nov 03, 2019 at 12:19:10AM +0000, Jules Irenge wrote:
+> Replace 0 by NULL as the return value of a pointer-returning function.
+> Issue detected by sparse tool.
+> 
+> Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> ---
+>  drivers/staging/wfx/queue.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Jules Irenge (2):
-  staging: wfx: replace 0 by NULL as the return value of a
-    pointer-returning function
-  staging: wfx: replace 1 by true when stored in a boolean variable
+What changed from v1 and v2?
 
- drivers/staging/wfx/queue.c | 4 ++--
- drivers/staging/wfx/sta.c   | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+Always put that below the --- line.
 
--- 
-2.23.0
+Please fix up and send a v4 series.
 
+thanks,
+
+greg k-h
 
