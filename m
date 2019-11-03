@@ -1,356 +1,185 @@
 X-GM-THRID: 6755114272133480448
-X-Received: by 2002:a81:3d85:: with SMTP id k127mr13398208ywa.346.1572873995708;
-        Mon, 04 Nov 2019 05:26:35 -0800 (PST)
+X-Received: by 2002:ac8:3376:: with SMTP id u51mr9192818qta.248.1572801990021;
+        Sun, 03 Nov 2019 09:26:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:c7c9:: with SMTP id w192ls2367462ybe.8.gmail; Mon, 04
- Nov 2019 05:26:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxjnwajZcE/gCuy9J84CroBUx9hgjhW1eCIKlnPKFgVg/r4n6gjLao+ae3IrXF5uJOjZZq
-X-Received: by 2002:a25:6789:: with SMTP id b131mr6434986ybc.429.1572873994300;
-        Mon, 04 Nov 2019 05:26:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572873994; cv=none;
+Received: by 2002:ad4:58a4:: with SMTP id ea4ls1817924qvb.11.gmail; Sun, 03
+ Nov 2019 09:26:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxTNtUpIeRfDVNRHPa0idPbRrE/KpIFHRu3ZkO2eas0nXzZ9/g6LiapdsAYZoiUbX6Sr7ia
+X-Received: by 2002:ad4:494b:: with SMTP id o11mr19540615qvy.82.1572801988704;
+        Sun, 03 Nov 2019 09:26:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572801988; cv=none;
         d=google.com; s=arc-20160816;
-        b=eDBxWkeTQTRVWLml9I4Y38SXK6/QwpPGVFd+c+Shn/EzuTzEzRtORaPEUT4iMRQER6
-         rKDOx3ru4sIlt6IYFKS8u954jHr6cpBNpTtcOv4wgE8ipmuex4RvXnnqU03j+L2z6glK
-         +LYFkPm9QOMreHjkLGMFZ5R5IUnqqf5DsUftxMtEPDybQV82Oc5BAOnhRUhTokvAwHbI
-         DRs955zrOJk+dnHjekNn2Jik4YsPAvlCRsrVXT3Yt/I0PIcCAmTLVlhSaJdHJWLWDzrJ
-         FE+41lrGAv+4wfP+t8tnsa9id7F59Tx6pG4oHeRNmI8b9ss30a1WPVOW/MlI0gEKzSOJ
-         i1XQ==
+        b=nriuFY2ULofIDEOYKSw4iSUL0X9OnnLeNzbtrkv6QhCW7L44r330mCWwlLKV5BR1Hr
+         NiRE/7ww7b9WvBM6fuk2WF8D+2ENsAipvrWG/b6NQxSSlLnRVgtCpuwuDDKHm7TlaEcR
+         s+bUOGXQQ7C+Fc6tMvZgkozbws5GcdTRQq2hJyW+9Mksg/PuJJKnQXvTdanvo2M9xX9M
+         E3qZDwanznHUz1S05eLb6nFXjc1IuiedayL52XY+gS6eaT2tx6Vh1xx4j+6tiA87i+Z2
+         vhstmOUbVOcsQacVgeb+Tr7qG+hIhXNaZQe51HOBgufHDA+eYRKTltA2gRsVpqKDMH0l
+         ZK7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=Vtl3FORPtY3N8TMJ2F0+1sInx6HH/Xp1cI3Nxpl9Qi8=;
-        b=WX2mygzOx3zwzRmFU1744npIqnha3O15IX2iSiMb9/npCYVVXHMcH31UbSSo31RiVA
-         cZEAjZKmh9cn6kqgSUrjz4UHAKSQqJja6oEVSGevLnvTbl8iiDtuGtJqki2Pcolj1Q/O
-         UVU1rHQ1U+ZNWIHfTz1KyIYQYiHC9oAJXHPatx/mhDPl4MMjkKxyL2uM/UIrQU33E0Eh
-         5kP6pvFIpgtS4N5w/jhO8gb7OVWBzF3d7ZUyAONKbhUaiLZaH9nEzqL2Zl5Hp1vBdnvn
-         RqOtIFwu9c1WFPc5hvXsgioRfIF0o0k9Cef+5oyq5whIJryELgTTxIExhsZnQCzW+ubN
-         eKYA==
+        bh=yeR0rc8eTe7u+Vev95G1ZEgTMwX6/Cr+N1k7VecI1/k=;
+        b=e47f24fcBpDbPZmOwCLQvh+LPQLOxasmUj5Wegsqu6uqIjv5lVIWnJMZ2h/8ByH0UF
+         n/Ws0n+UI+R8q6Et6o2hW+sXHnzwNm0MRr4zv3Cm0SZMDI2cEri/aUz7kxg3++Crkddm
+         ueWD9hVNqmhh+8qmaQEYxEbvx2E4iKrNaMPkQkXk5VwM+q5Mervz5hvBQ+h9FZNYsvvy
+         1RhDaHSYqqW1fCgVrgNPR3Nh5fyRug5753TU8E1YLDSgHSbJRp41gE3IzMvP/jAQzY5h
+         LAt7EsHO+HKdYXJuMezmxMo9KctEsJkH7uQI/Zoal3aD1vwjgzihG/psyVm4KEBlNsMT
+         Q1/A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OE5lBLlF;
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pO2LB3hD;
+       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <chime.evan.dri.devel@gmail.com>
-Received: from mail-vk1-xa44.google.com (mail-vk1-xa44.google.com. [2607:f8b0:4864:20::a44])
-        by gmr-mx.google.com with ESMTPS id 63si46019ybe.4.2019.11.04.05.26.34
+Received: from mail-vs1-xe43.google.com (mail-vs1-xe43.google.com. [2607:f8b0:4864:20::e43])
+        by gmr-mx.google.com with ESMTPS id z194si709897qka.5.2019.11.03.09.26.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Nov 2019 05:26:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) client-ip=2607:f8b0:4864:20::a44;
+        Sun, 03 Nov 2019 09:26:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) client-ip=2607:f8b0:4864:20::e43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OE5lBLlF;
-       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pO2LB3hD;
+       spf=pass (google.com: domain of chime.evan.dri.devel@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=chime.evan.dri.devel@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vk1-xa44.google.com with SMTP id r85so3772995vke.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 05:26:34 -0800 (PST)
+Received: by mail-vs1-xe43.google.com with SMTP id l5so9528186vsh.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 03 Nov 2019 09:26:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=Vtl3FORPtY3N8TMJ2F0+1sInx6HH/Xp1cI3Nxpl9Qi8=;
-        b=OE5lBLlFcSccy6FJ+Sd5xwKXzNv5qBix7r8VLELZCF/5qx5iRmQPJf9Xf+mospcVad
-         ObDnhJwXlP/Xfu1lffvqUUBEnElEAcVrSpq6ARTFjEktppZWg0fWp0J9c74s4152NOXl
-         LtnVSQ+z8qofvBYFUTmOEaVxvOE6vVs7+Q2TVMxXNMaebQZQ1E08DeIZna9i5WLzS/IA
-         XPrDwz7INDpYvukyaHDLbvWFck15CnLgreboQ8BOeMU4//sVJaVjZ/7EvrXZ/TFblfwe
-         qeQvKC6gyQjPR+ipSGPKiFFwDsWFVtn8d+58I4KR3U5CU8AZxARbux6TiJ/2LOvbNa60
-         UURQ==
+        bh=yeR0rc8eTe7u+Vev95G1ZEgTMwX6/Cr+N1k7VecI1/k=;
+        b=pO2LB3hDp1MsBKXmtvfDYv7NEMXEi94AZopg8dfAFtmF2fi2wo0thirvDoGjMjbVo3
+         2Jo9xVxv2SemhfzPoineI5WQUmN423lQWiJHX6z51QaCRdMEPJablMBnGbSZxeasJ8+J
+         lvvok0DQTIVMohHmAFRlLEfTRNcP+Xehw3bh8Z3o+ePTAkw6eB8e/Q6+I0/EG6ViQfsP
+         /8dUEJzacfxve9+kuUPSeM9sSMjv/a8NUrfVR0W6gYs16EBanHuAsVLagz9fj0NdDa7d
+         vH6nKnaDzsZZeXhmptPmYtmWJAdNhffgZ4PaKrqS8HwcRig3a97h1LS5JsAVdaZMZF1G
+         1ipQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=Vtl3FORPtY3N8TMJ2F0+1sInx6HH/Xp1cI3Nxpl9Qi8=;
-        b=jG0zx7F2Ec/1yIIx+2imSgWSf/QTJyqxBn33e+mOMMoYyYCgxaJn/mCsC6P0JLebaY
-         W/qR7+UtrNksC4yqagRsCKhOufSCZMA3jD5Cbmd1iNdUS+pOX+vueECpNeI2ZHJ65n0d
-         xLCFenn0EBwDSTgHgKl8x8ssq78uKC12m0qtXYOqrZWW3HXtQ+4AN5gS8ghQDSgEzLQw
-         haO2zJgRpMUgUdnhYKfGOQLPVwugxvFNOw5W2MNysCnPrR7lN+sD2a50EaKbJwS8m9v+
-         sPyQsqvGO0skdey00ZkjjSyNCZm+zQ5EyAwENgFkqhxsSfDZiny9dehG2d04H1D8wqTW
-         yGOg==
-X-Gm-Message-State: APjAAAVtpfVsz/z+Z5VteWC0w5Jps0dONtC/L67AwQiJxURq/Hf6PIm+
-	eWXKGSbUgDruOIhUiWxPg67EHbDkKq3KcNzH7hE=
-X-Received: by 2002:a1f:11d7:: with SMTP id 206mr282610vkr.19.1572873993908;
- Mon, 04 Nov 2019 05:26:33 -0800 (PST)
+        bh=yeR0rc8eTe7u+Vev95G1ZEgTMwX6/Cr+N1k7VecI1/k=;
+        b=igx1A4AFBdyvZMPNWhSpUzObZXAZ1sT3qDTgC0zs83rPUSTi+F/MYrDvMTW7klaRPT
+         TYmajkGrCaArF2lsrg5XJtDY907mcwssPQmgvGoSfzVcefu7yUO5/q4w2Ds8gJITtt9k
+         00uuciTX545ka9opjWihcym3b/I4Mi0IqUY6cG+Y2cwucwGJJlSqSwu/q0EYmnh/eeHt
+         DMR1yPqeuLEtUbO3XI9bST0sxwxUy1EkniwWultLXghS8P4DUE9goILCex9bdTkDGV+n
+         Yt5HIGLcpxizKl3YidS/TklkeH018bQOCDianqyP0GOGvdp0Sn99+JJWewOHc/dbPbSD
+         FwyQ==
+X-Gm-Message-State: APjAAAXZmpT7VjcWTcuDrtDXGe5WdEoI46lJbZeiWhztxQu6XhY48oGh
+	rspFYW3znh3kIBAGsLzP2nLTPgXt40IoiFYpkjqlWQ==
+X-Received: by 2002:a67:304a:: with SMTP id w71mr10305179vsw.92.1572801988391;
+ Sun, 03 Nov 2019 09:26:28 -0800 (PST)
 MIME-Version: 1.0
 References: <cover.1572797322.git.chime.evan.dri.devel@gmail.com>
- <alpine.DEB.2.21.1911031716390.2557@hadrien> <CANR89jb9zSo_pq4rqQvH5s50R6W6t6SSZXXByb5bhjYO8SoO_A@mail.gmail.com>
-In-Reply-To: <CANR89jb9zSo_pq4rqQvH5s50R6W6t6SSZXXByb5bhjYO8SoO_A@mail.gmail.com>
+ <88ef5bcc4ed24721253636b8dfec74bfdea23039.1572797322.git.chime.evan.dri.devel@gmail.com>
+ <20191103170703.GA686564@kroah.com>
+In-Reply-To: <20191103170703.GA686564@kroah.com>
 From: evan chime <chime.evan.dri.devel@gmail.com>
-Date: Mon, 4 Nov 2019 13:26:23 +0000
-Message-ID: <CANR89jaS4PROzaUW9Z01n8=CpFP1xJE=Gh-WyChhrCBExae55g@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH v2 0/3] Add comment to memory barrier
-To: Julia Lawall <julia.lawall@lip6.fr>
-Cc: gregkh@linuxfoundation.org, laurent.pinchart@ideasonboard.com, 
-	mchehab@kernel.org, outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="000000000000aef61a059685439d"
+Date: Sun, 3 Nov 2019 17:26:17 +0000
+Message-ID: <CANR89jacvcBW8eRnWzHXO+Rcr3qSMi8COHiyJ2=q3oPRGmhMWw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] Staging: media: omap4iss: Add comment to memory barrier
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: laurent.pinchart@ideasonboard.com, mchehab@kernel.org, 
+	outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000d1f86f0596747fc1"
 
---000000000000aef61a059685439d
+--000000000000d1f86f0596747fc1
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Sun, 3 Nov 2019 at 16:27, evan chime <chime.evan.dri.devel@gmail.com>
-wrote:
+On Sun, 3 Nov 2019 at 17:07, Greg KH <gregkh@linuxfoundation.org> wrote:
 
+> On Sun, Nov 03, 2019 at 04:14:31PM +0000, Evan Chime wrote:
+> > Fix "WARNING: memory barrier without comment" from checkpath. Add comment
+> > to memory barrier smp_wmb() on line 635
+> >
+> > Signed-off-by: Evan Chime <chime.evan.dri.devel@gmail.com>
+> > ---
+> >  drivers/staging/media/omap4iss/iss.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/media/omap4iss/iss.c
+> b/drivers/staging/media/omap4iss/iss.c
+> > index 1a966cb2f3a6..5156ad8e4b96 100644
+> > --- a/drivers/staging/media/omap4iss/iss.c
+> > +++ b/drivers/staging/media/omap4iss/iss.c
+> > @@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity
+> *me, wait_queue_head_t *wait,
+> >        * scenario. We'll call it here to avoid race conditions.
+> >        */
+> >       atomic_set(stopping, 1);
+> > -     smp_wmb();
+> > +     smp_wmb(); /* Prevents stores from being reordered across the
+> barrier */
 >
-> On Sun, 3 Nov 2019 at 16:18, Julia Lawall <julia.lawall@lip6.fr> wrote:
+> We all know what smp_wmb() does, what you need to document is what
+> exactly it is here for.  What is it preventing from happening to what
+> data that is being touched elsewhere where?
 >
->>
->>
->> On Sun, 3 Nov 2019, Evan Chime wrote:
->>
->> > Include outreachy mailing list in "cc" list. No change
->> >
->> > Evan Chime (3):
->> >   Staging: media: omap4iss: Add comment to memory barrier
->> >   Staging: media: omap4iss: Add comment to memory barrier
->> >   Staging: media: omap4iss: Add comment to memory barrier
->>
->> Each patch should have a different subject.  If you end up with patches
->> with the same subject, you should make the subjects more specific or mer=
-ge
->> them.
->>
->> In this case, though, I think that this is an issue that only someone wi=
-th
->> a deep knowledge of the code could really address.  The question is not
->> what a memory barrier does, but why one is needed at a particular place =
-in
->> the code.
->>
->> julia
+> If you don't know the code, solving something like this might be very
+> difficult, sorry.
 >
->
-> Thanks for the feedback Julia
->
-> Kind Regards
-> Evan
->
-
-Please I have studied the function. From what I understand, the function
-checks if ISS submodule needs to wait for next interrupt. If yes, makes the
-caller to sleep while waiting for such event.
+> greg k-h
 
 
-The atomic_set(stopping, 1) indicates whether the submodule needs to wait,
-where stopping is the flag, and atomic_set(stopping, 0) indicates no need
-to wait
+Thanks for your feedback Greg. I will have a look at the code
 
-
-According to the comment before the first atomic_set() call and the
-smp_wmb() call that follows which says:
-
-/* Atomic set() doesn=E2=80=99t include memory barrier on ARM platform for =
-SMP
-scenario. We=E2=80=99ll call it here to avoid race conditions */, the smp_w=
-mb()
-call is I think, to avoid reordering of the atomic_set() operation
-
-
-So can I use one of the following, as the comment
-
-
-A) prevent reordering of atomic_set()
-
-
-B) sync module with it=E2=80=99s idle state(from the comment that introduce=
-d the
-function)
-
-
-C) ensures *stopping is persistent
-
-
-D) none of the above :)
-
+Kind regards
+Evan
 
 
 
 >
->
->>
->> >
->> >  drivers/staging/media/omap4iss/iss.c | 6 +++---
->> >  1 file changed, 3 insertions(+), 3 deletions(-)
->> >
->> > --
->> > 2.17.1
->> >
->> > --
->> > You received this message because you are subscribed to the Google
->> Groups "outreachy-kernel" group.
->> > To unsubscribe from this group and stop receiving emails from it, send
->> an email to outreachy-kernel+unsubscribe@googlegroups.com.
->> > To view this discussion on the web visit
->> https://groups.google.com/d/msgid/outreachy-kernel/cover.1572797322.git.=
-chime.evan.dri.devel%40gmail.com
->> .
->> >
->>
->> --
->> You received this message because you are subscribed to the Google Group=
-s
->> "outreachy-kernel" group.
->> To unsubscribe from this group and stop receiving emails from it, send a=
-n
->> email to outreachy-kernel+unsubscribe@googlegroups.com.
->> To view this discussion on the web visit
->> https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.21.19110=
-31716390.2557%40hadrien
->> .
->>
->
 
---000000000000aef61a059685439d
+--000000000000d1f86f0596747fc1
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Sun, 3 Nov 2019 at 16:27, evan chime &lt;<a href=3D"mail=
-to:chime.evan.dri.devel@gmail.com">chime.evan.dri.devel@gmail.com</a>&gt; w=
-rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex"><div><br><div class=3D"gmail_=
-quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, 3 Nov 2019 at 16:18, J=
-ulia Lawall &lt;<a href=3D"mailto:julia.lawall@lip6.fr" target=3D"_blank">j=
-ulia.lawall@lip6.fr</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">=
+=3D"gmail_attr">On Sun, 3 Nov 2019 at 17:07, Greg KH &lt;<a href=3D"mailto:=
+gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</a>&gt; wrote:<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-lef=
+t:1px #ccc solid;padding-left:1ex">On Sun, Nov 03, 2019 at 04:14:31PM +0000=
+, Evan Chime wrote:<br>
+&gt; Fix &quot;WARNING: memory barrier without comment&quot; from checkpath=
+. Add comment<br>
+&gt; to memory barrier smp_wmb() on line 635<br>
+&gt; <br>
+&gt; Signed-off-by: Evan Chime &lt;<a href=3D"mailto:chime.evan.dri.devel@g=
+mail.com" target=3D"_blank">chime.evan.dri.devel@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/media/omap4iss/iss.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/me=
+dia/omap4iss/iss.c<br>
+&gt; index 1a966cb2f3a6..5156ad8e4b96 100644<br>
+&gt; --- a/drivers/staging/media/omap4iss/iss.c<br>
+&gt; +++ b/drivers/staging/media/omap4iss/iss.c<br>
+&gt; @@ -632,7 +632,7 @@ int omap4iss_module_sync_idle(struct media_entity =
+*me, wait_queue_head_t *wait,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 * scenario. We&#39;ll call it here to avoid=
+ race conditions.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0atomic_set(stopping, 1);<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0smp_wmb();<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0smp_wmb(); /* Prevents stores from being reordere=
+d across the barrier */<br>
 <br>
-<br>
-On Sun, 3 Nov 2019, Evan Chime wrote:<br>
-<br>
-&gt; Include outreachy mailing list in &quot;cc&quot; list. No change<br>
-&gt;<br>
-&gt; Evan Chime (3):<br>
-&gt;=C2=A0 =C2=A0Staging: media: omap4iss: Add comment to memory barrier<br=
->
-&gt;=C2=A0 =C2=A0Staging: media: omap4iss: Add comment to memory barrier<br=
->
-&gt;=C2=A0 =C2=A0Staging: media: omap4iss: Add comment to memory barrier<br=
->
-<br>
-Each patch should have a different subject.=C2=A0 If you end up with patche=
-s<br>
-with the same subject, you should make the subjects more specific or merge<=
+We all know what smp_wmb() does, what you need to document is what<br>
+exactly it is here for.=C2=A0 What is it preventing from happening to what<=
 br>
-them.<br>
+data that is being touched elsewhere where?<br>
 <br>
-In this case, though, I think that this is an issue that only someone with<=
-br>
-a deep knowledge of the code could really address.=C2=A0 The question is no=
-t<br>
-what a memory barrier does, but why one is needed at a particular place in<=
-br>
-the code.<br>
-<br>
-julia</blockquote><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks for =
-the feedback Julia</div><div dir=3D"auto"><br></div><div dir=3D"auto">Kind=
-=C2=A0Regards</div></div></div><div><div class=3D"gmail_quote"><div dir=3D"=
-auto">Evan=C2=A0</div></div></div></blockquote><div dir=3D"auto"><br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex"><div><div class=3D"gmail_quote"><div dir=3D"=
-auto"></div><div dir=3D"auto"></div></div></div></blockquote><div dir=3D"au=
-to"><p class=3D"p1" style=3D"margin:0px;font-stretch:normal;font-size:17px;=
-line-height:normal;font-family:&quot;.SF UI Text&quot;;color:rgb(69,69,69)"=
-><span class=3D"s1" style=3D"font-family:&quot;.SFUIText&quot;;font-size:17=
-pt">Please I have studied the function. From what I understand, the functio=
-n checks if ISS submodule needs to wait for next interrupt. If yes, makes t=
-he caller to sleep while waiting for such event.=C2=A0</span></p><p class=
-=3D"p2" style=3D"margin:0px;font-stretch:normal;font-size:17px;line-height:=
-normal;font-family:&quot;.SF UI Text&quot;;color:rgb(69,69,69);min-height:2=
-0.3px"><span class=3D"s1" style=3D"font-family:&quot;.SFUIText&quot;;font-s=
-ize:17pt"></span><br></p><p class=3D"p1" style=3D"margin:0px;font-stretch:n=
-ormal;font-size:17px;line-height:normal;font-family:&quot;.SF UI Text&quot;=
-;color:rgb(69,69,69)"><span class=3D"s1" style=3D"font-family:&quot;.SFUITe=
-xt&quot;;font-size:17pt">The atomic_set(stopping, 1) indicates whether the =
-submodule needs to wait, where stopping is the flag, and atomic_set(stoppin=
-g, 0) indicates no need to wait=C2=A0</span></p><p class=3D"p2" style=3D"ma=
-rgin:0px;font-stretch:normal;font-size:17px;line-height:normal;font-family:=
-&quot;.SF UI Text&quot;;color:rgb(69,69,69);min-height:20.3px"><span class=
-=3D"s1" style=3D"font-family:&quot;.SFUIText&quot;;font-size:17pt"></span><=
-br></p><p class=3D"p1" style=3D"margin:0px;font-stretch:normal;font-size:17=
-px;line-height:normal;font-family:&quot;.SF UI Text&quot;;color:rgb(69,69,6=
-9)"><span class=3D"s1" style=3D"font-family:&quot;.SFUIText&quot;;font-size=
-:17pt">According to the comment before the first atomic_set() call and the =
-smp_wmb() call that follows which says:</span></p><p class=3D"p1" style=3D"=
-margin:0px;font-stretch:normal;font-size:17px;line-height:normal;font-famil=
-y:&quot;.SF UI Text&quot;;color:rgb(69,69,69)"><span class=3D"s1" style=3D"=
-font-family:&quot;.SFUIText&quot;;font-size:17pt">/* Atomic set() doesn=E2=
-=80=99t include memory barrier on ARM platform for SMP scenario. We=E2=80=
-=99ll call it here to avoid race conditions */, the smp_wmb() call is I thi=
-nk, to avoid reordering of the atomic_set() operation</span></p><p class=3D=
-"p2" style=3D"margin:0px;font-stretch:normal;font-size:17px;line-height:nor=
-mal;font-family:&quot;.SF UI Text&quot;;color:rgb(69,69,69);min-height:20.3=
-px"><span class=3D"s1" style=3D"font-family:&quot;.SFUIText&quot;;font-size=
-:17pt"></span><br></p><p class=3D"p1" style=3D"margin:0px;font-stretch:norm=
-al;font-size:17px;line-height:normal;font-family:&quot;.SF UI Text&quot;;co=
-lor:rgb(69,69,69)"><span class=3D"s1" style=3D"font-family:&quot;.SFUIText&=
-quot;;font-size:17pt">So can I use one of the following, as the comment=C2=
-=A0</span></p><p class=3D"p2" style=3D"margin:0px;font-stretch:normal;font-=
-size:17px;line-height:normal;font-family:&quot;.SF UI Text&quot;;color:rgb(=
-69,69,69);min-height:20.3px"><span class=3D"s1" style=3D"font-family:&quot;=
-.SFUIText&quot;;font-size:17pt"></span><br></p><p class=3D"p1" style=3D"mar=
-gin:0px;font-stretch:normal;font-size:17px;line-height:normal;font-family:&=
-quot;.SF UI Text&quot;;color:rgb(69,69,69)"><span class=3D"s1" style=3D"fon=
-t-family:&quot;.SFUIText&quot;;font-size:17pt">A) prevent reordering of ato=
-mic_set()</span></p><p class=3D"p2" style=3D"margin:0px;font-stretch:normal=
-;font-size:17px;line-height:normal;font-family:&quot;.SF UI Text&quot;;colo=
-r:rgb(69,69,69);min-height:20.3px"><span class=3D"s1" style=3D"font-family:=
-&quot;.SFUIText&quot;;font-size:17pt"></span><br></p><p class=3D"p1" style=
-=3D"margin:0px;font-stretch:normal;font-size:17px;line-height:normal;font-f=
-amily:&quot;.SF UI Text&quot;;color:rgb(69,69,69)"><span class=3D"s1" style=
-=3D"font-family:&quot;.SFUIText&quot;;font-size:17pt">B) sync module with i=
-t=E2=80=99s idle state(from the comment that introduced the function)</span=
-></p><p class=3D"p2" style=3D"margin:0px;font-stretch:normal;font-size:17px=
-;line-height:normal;font-family:&quot;.SF UI Text&quot;;color:rgb(69,69,69)=
-;min-height:20.3px"><span class=3D"s1" style=3D"font-family:&quot;.SFUIText=
-&quot;;font-size:17pt"></span><br></p><p class=3D"p1" style=3D"margin:0px;f=
-ont-stretch:normal;font-size:17px;line-height:normal;font-family:&quot;.SF =
-UI Text&quot;;color:rgb(69,69,69)"><span class=3D"s1" style=3D"font-family:=
-&quot;.SFUIText&quot;;font-size:17pt">C) ensures *stopping is persistent=C2=
-=A0</span></p><p class=3D"p2" style=3D"margin:0px;font-stretch:normal;font-=
-size:17px;line-height:normal;font-family:&quot;.SF UI Text&quot;;color:rgb(=
-69,69,69);min-height:20.3px"><span class=3D"s1" style=3D"font-family:&quot;=
-.SFUIText&quot;;font-size:17pt"></span><br></p><p class=3D"p1" style=3D"mar=
-gin:0px;font-stretch:normal;font-size:17px;line-height:normal;font-family:&=
-quot;.SF UI Text&quot;;color:rgb(69,69,69)"><span class=3D"s1" style=3D"fon=
-t-family:&quot;.SFUIText&quot;;font-size:17pt">D) none of the above :)</spa=
-n></p><p class=3D"p2" style=3D"margin:0px;font-stretch:normal;font-size:17p=
-x;line-height:normal;font-family:&quot;.SF UI Text&quot;;color:rgb(69,69,69=
-);min-height:20.3px"><br></p></div><div dir=3D"auto"><br></div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid=
-;padding-left:1ex"><div><div class=3D"gmail_quote"><div dir=3D"auto"><br></=
-div><div dir=3D"auto"><br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
-<br>
-&gt;<br>
-&gt;=C2=A0 drivers/staging/media/omap4iss/iss.c | 6 +++---<br>
-&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
-&gt;<br>
-&gt; --<br>
-&gt; 2.17.1<br>
-&gt;<br>
-&gt; --<br>
-&gt; You received this message because you are subscribed to the Google Gro=
-ups &quot;outreachy-kernel&quot; group.<br>
-&gt; To unsubscribe from this group and stop receiving emails from it, send=
- an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
-com" target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<b=
+If you don&#39;t know the code, solving something like this might be very<b=
 r>
-&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
-gle.com/d/msgid/outreachy-kernel/cover.1572797322.git.chime.evan.dri.devel%=
-40gmail.com" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com=
-/d/msgid/outreachy-kernel/cover.1572797322.git.chime.evan.dri.devel%40gmail=
-.com</a>.<br>
-&gt;<br>
+difficult, sorry.<br>
 <br>
--- <br>
-You received this message because you are subscribed to the Google Groups &=
-quot;outreachy-kernel&quot; group.<br>
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.com" =
-target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<br>
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/outreachy-kernel/alpine.DEB.2.21.1911031716390.2557%40hadrien" r=
-el=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid/outre=
-achy-kernel/alpine.DEB.2.21.1911031716390.2557%40hadrien</a>.<br>
-</blockquote></div></div>
+greg k-h</blockquote><div dir=3D"auto"><br></div><div dir=3D"auto">Thanks f=
+or your feedback Greg. I will have a look at the code=C2=A0</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">Kind regards=C2=A0</div><div dir=3D"a=
+uto">Evan=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex"><br>
 </blockquote></div></div>
 
---000000000000aef61a059685439d--
+--000000000000d1f86f0596747fc1--
 
