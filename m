@@ -1,113 +1,131 @@
-X-GM-THRID: 6396125246226694144
-X-Received: by 10.157.15.4 with SMTP id 4mr8987701ott.12.1489213957022;
-        Fri, 10 Mar 2017 22:32:37 -0800 (PST)
+X-GM-THRID: 6755680722127683584
+X-Received: by 2002:a81:9216:: with SMTP id j22mr22420027ywg.223.1572929490308;
+        Mon, 04 Nov 2019 20:51:30 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.6.74 with SMTP id 68ls5149822otn.3.gmail; Fri, 10 Mar 2017
- 22:32:36 -0800 (PST)
-X-Received: by 10.13.194.199 with SMTP id e190mr11095461ywd.93.1489213956667;
-        Fri, 10 Mar 2017 22:32:36 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id 2si2153619pfx.8.2017.03.10.22.32.36
+Received: by 2002:a25:3182:: with SMTP id x124ls1144425ybx.12.gmail; Mon, 04
+ Nov 2019 20:51:28 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzYCU9RbZbpmcJtMZFgi0WJB6sJCivA4iEngfVWn1+I1SWiXwV5JPdVgnnYqHYkB2vq/B07
+X-Received: by 2002:a05:6902:52f:: with SMTP id y15mr12985157ybs.402.1572929488596;
+        Mon, 04 Nov 2019 20:51:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572929488; cv=none;
+        d=google.com; s=arc-20160816;
+        b=y9waBlTtc+sl+TqMZy3k5PMrN5qZhdeqj/DilyLpaZ6evHB/4PZvx6IVtZRLr4ATOw
+         q+27LduWKXR1W8E1e7dwF8Pjc2UMVqtQJl2kB3aKFF1pxclZjPDfIsECA+3uNMevxcoa
+         vEDxb9WNS4pmfbtJ/MTQSRPs8GyRxsCtTa9Dxff3Gecd6bDtjkYs4EdyBTw2rIkhAf7J
+         zZt4o4D+1No2XwhxHMJ8/8WW+y5smV/ENRM45ON1g6Hs9DjNuofkhQTeUH5tnwWciNjC
+         zOoAn3OPq1cvkdGgOm89b1Zv1l1cYqqdiXqRgUoa/KMfLe045LgPfPczMTyGwJF2s60a
+         TPNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7K49hipKgjptKQVjHmsTNO/2GpmVnCNI3uGvzfceGO8=;
+        b=ksUnhseGDTS07e3OeHM5lHDHVQAfkZ9IdCcI6sw+LxZf8Rno2FePZC88rU9dbEswUY
+         ek66wBU8RC2mpFgDoxzr7oLhMBNCuYD6mfUY+UfUn2UGUhOFUuBU9BJEZqkcVFiYOJ5P
+         tM+0xTxdK2p6A1vBf9R5lUjT3+TYXe3gRAIVEkfFotwpIWKZRpCc5kcMe9r6uEj3Nbmb
+         rQH7j2mZDRC51SMA0Eivn4g3wq2PTQgtnmjmg05C94vMIEYJc3El3Ydn+HGKccZK63iJ
+         3POY3r7w/NebogfNxAfpI/llzF7tX41tcXuZcCc60Rw+y02owZGIq9PTZZTJb50qaqrb
+         Ds9g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SCgH5vPU;
+       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nachukannan@gmail.com>
+Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
+        by gmr-mx.google.com with ESMTPS id d192si1185859ywb.1.2019.11.04.20.51.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 22:32:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2019 20:51:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id o126so13058066pfb.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 22:32:36 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SCgH5vPU;
+       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x841.google.com with SMTP id o11so22530724qtr.11
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 20:51:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=6Yn20OLFGuEbeVPj8dqxkKYmTI7u6fIDxt6Dunf1ktw=;
-        b=qKcVtk62NMaVxEM4F7LaEXqmnFfN1ZYeiuv8YKtt+EwCN3bHnULVQO2twGQmQmRSaP
-         A+frunH/4Xx5AsIpEVsPOrGgr7jeLRqCqWBFuXYuKmV9zjJfWJn/TdbQBeW981mL7haU
-         RscentDEXJTpgdvghsHnyl1zE7lcCN/tbV5Q3WtegK1MtXZHw43pY5zcLEcnjU3FbP0g
-         w24zgwbrRWaNvivJkoF9avW/EDAgnBq5AItd2HhlMbWB9vNfPe2roC6qF2XJVq8XppDe
-         fQT6c13GoMVEDHIFRwqB87v8ZuZhyWDGzENzKDCui3CKU5S6Rn8bhm0kzxQKzIJm53cH
-         4slQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=7K49hipKgjptKQVjHmsTNO/2GpmVnCNI3uGvzfceGO8=;
+        b=SCgH5vPU6ACDVM6HXiY1LJMXTqvhVcBlVJX9jDhGg7O7zzsqj6ohuD0aZ1M2M8aG0r
+         mllblxw0lZ6XQvSS78CS+SFqvt+DOZNa++fzIpFEchIxFjtrnFUE2jIYhTazx6IIr+P5
+         AdFDJLAAdJ6q6XTYdtyi/qaeHI70TijUG5FGJgVnSmwEYFP1W6VhZCIeWSb4TSZwbeK7
+         lCzIyrD8Vd5cnZ5ZO59B7c2TxtVGcrT02kCD/Rd4vu2Vp5iRLkjyRFZChWa1pymajxAV
+         MR6vza8cnuvTZTJ4W8aTC8Bm9Y6hqgGPj/6aBsWq3bRim0qcyYPg/Nf08AnfJayxdyXT
+         DbOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=6Yn20OLFGuEbeVPj8dqxkKYmTI7u6fIDxt6Dunf1ktw=;
-        b=tTN0pF62tuy2f4kmxZModk/0HsKftjF2vu5P6m2VHy7ildJ2Fq57DdQuVfhFPicZF2
-         sR7mfoavB0tknw6UbnIUjeE/xt52VjdG8dC80GvfwJloP21yxmklQoye5SG4HzlKljhh
-         i09SQdvw2tM4+wDohPtWTrEC8dQ9q+mgD0Wp3b2pUtsXDcPWgpi8YtbpTLWZL7hf8HVO
-         kQwHvePsXJzkrDl+HEzh46Bt4ldqBwdcuLEvkvVAJc3qK+1nmJ32KWmUbJQMx4qv64CR
-         v87wPkfZw4mn4FIY+Jh9cIa+R11nY6UWEzfo2vS+gtG4qe+ZHtwbBWYfoTgzotIKFflh
-         otXQ==
-X-Gm-Message-State: AMke39ly/Wfu1F1R17V7gdOPyT09X4uCKPsiie4fYwKDTkeioszEyPH3t5IF8xw70xB5Pg==
-X-Received: by 10.98.7.86 with SMTP id b83mr25446204pfd.66.1489213956347;
-        Fri, 10 Mar 2017 22:32:36 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([42.109.85.92])
-        by smtp.gmail.com with ESMTPSA id h9sm21929692pfd.103.2017.03.10.22.32.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 22:32:35 -0800 (PST)
-Date: Sat, 11 Mar 2017 12:01:53 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: lustre: llite: rw26: Remove unused function
- definition
-Message-ID: <20170311063153.GA6625@sayli-HP-15-Notebook-PC>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7K49hipKgjptKQVjHmsTNO/2GpmVnCNI3uGvzfceGO8=;
+        b=NEXrdQJl1+AWBbz9Emh2n/uBuWdDw/Ukh52QnvMvabbhM5oYxyupbyduReY0buexG9
+         SrnMZXdDsViKKhd7EzrrNu19MLFp7kpiz6oDCkjxJ6eXzWg70NXAc+WIQOOnt5WsTik0
+         VVLVvKaI/PCvy0EfjMnaZwph/LF7qAc3rOY3t2unLDWclk7wsWo3zD1ZBAwUqHE1aovD
+         QF94lg7x0XuBFnWgZI0/zNvv0s86PfUeXOXqjP0CxgmKAdKYw8JzcKRATmqsLMUrq+wi
+         nrZ7xtJbge6nJazmUwbb0X7iZTTNm4SOO1w2YdC8VAc7YdcEaF7jh1oLplAd/HaD3QFG
+         s+jA==
+X-Gm-Message-State: APjAAAU0Vz7ulPhnUG1Jfpm9BH4ZZrQwzOs9n0ufkWajlS/g4WDJdwbr
+	0Obz3daHlG67cA1PX6k4nn8=
+X-Received: by 2002:ad4:53a7:: with SMTP id j7mr24777595qvv.77.1572929488094;
+        Mon, 04 Nov 2019 20:51:28 -0800 (PST)
+Return-Path: <nachukannan@gmail.com>
+Received: from ubuntu ([107.15.113.108])
+        by smtp.gmail.com with ESMTPSA id i4sm7912739qtp.57.2019.11.04.20.51.27
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 04 Nov 2019 20:51:27 -0800 (PST)
+From: Nachammai Karuppiah <nachukannan@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com,
+	Nachammai Karuppiah <nachukannan@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: os_dep: Remove unnecessary variable used in return statement
+Date: Mon,  4 Nov 2019 20:51:23 -0800
+Message-Id: <1572929483-78993-1-git-send-email-nachukannan@gmail.com>
+X-Mailer: git-send-email 2.7.4
 
-The patch removes unused function definition ll_get_user_pages().
+Remove the variable that is used only in return statement and return the
+expression itself. Issue found using coccinelle.
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
+Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/rw26.c | 26 --------------------------
- 1 file changed, 26 deletions(-)
+ drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/rw26.c b/drivers/staging/lustre/lustre/llite/rw26.c
-index d89e795..420f296 100644
---- a/drivers/staging/lustre/lustre/llite/rw26.c
-+++ b/drivers/staging/lustre/lustre/llite/rw26.c
-@@ -156,32 +156,6 @@ static int ll_releasepage(struct page *vmpage, gfp_t gfp_mask)
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+index a25c535..52c1f66 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+@@ -2440,7 +2440,6 @@ void rtw_cfg80211_indicate_sta_disassoc(struct adapter *padapter, unsigned char
  
- #define MAX_DIRECTIO_SIZE (2 * 1024 * 1024 * 1024UL)
+ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struct net_device *ndev)
+ {
+-	int ret = 0;
+ 	int rtap_len;
+ 	int qos_len = 0;
+ 	int dot11_hdr_len = 24;
+@@ -2506,9 +2505,7 @@ static netdev_tx_t rtw_cfg80211_monitor_if_xmit_entry(struct sk_buff *skb, struc
+ 		DBG_8192C("should be eapol packet\n");
  
--static inline int ll_get_user_pages(int rw, unsigned long user_addr,
--				    size_t size, struct page ***pages,
--				    int *max_pages)
--{
--	int result = -ENOMEM;
+ 		/* Use the real net device to transmit the packet */
+-		ret = _rtw_xmit_entry(skb, padapter->pnetdev);
 -
--	/* set an arbitrary limit to prevent arithmetic overflow */
--	if (size > MAX_DIRECTIO_SIZE) {
--		*pages = NULL;
--		return -EFBIG;
--	}
+-		return ret;
++		return _rtw_xmit_entry(skb, padapter->pnetdev);
+ 
+ 	}
+ 	else if ((frame_control & (IEEE80211_FCTL_FTYPE|IEEE80211_FCTL_STYPE))
+@@ -2815,14 +2812,11 @@ static int cfg80211_rtw_start_ap(struct wiphy *wiphy, struct net_device *ndev,
+ static int cfg80211_rtw_change_beacon(struct wiphy *wiphy, struct net_device *ndev,
+                                 struct cfg80211_beacon_data *info)
+ {
+-	int ret = 0;
+ 	struct adapter *adapter = (struct adapter *)rtw_netdev_priv(ndev);
+ 
+ 	DBG_871X(FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
+ 
+-	ret = rtw_add_beacon(adapter, info->head, info->head_len, info->tail, info->tail_len);
 -
--	*max_pages = (user_addr + size + PAGE_SIZE - 1) >> PAGE_SHIFT;
--	*max_pages -= user_addr >> PAGE_SHIFT;
--
--	*pages = libcfs_kvzalloc(*max_pages * sizeof(**pages), GFP_NOFS);
--	if (*pages) {
--		result = get_user_pages_fast(user_addr, *max_pages,
--					     (rw == READ), *pages);
--		if (unlikely(result <= 0))
--			kvfree(*pages);
--	}
--
--	return result;
--}
--
- /*  ll_free_user_pages - tear down page struct array
-  *  @pages: array of page struct pointers underlying target buffer
-  */
+-	return ret;
++	return rtw_add_beacon(adapter, info->head, info->head_len, info->tail, info->tail_len);
+ }
+ 
+ static int cfg80211_rtw_stop_ap(struct wiphy *wiphy, struct net_device *ndev)
 -- 
 2.7.4
 
