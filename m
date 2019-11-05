@@ -1,86 +1,79 @@
 X-GM-THRID: 6755642568101330944
-X-Received: by 2002:a05:6214:208:: with SMTP id i8mr3870190qvt.233.1573068365061;
-        Wed, 06 Nov 2019 11:26:05 -0800 (PST)
+X-Received: by 2002:a62:3602:: with SMTP id d2mr35408799pfa.177.1572929998786;
+        Mon, 04 Nov 2019 20:59:58 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:6289:: with SMTP id w131ls1132055qkb.15.gmail; Wed, 06
- Nov 2019 11:26:03 -0800 (PST)
-X-Received: by 2002:a37:7d03:: with SMTP id y3mr3481437qkc.385.1573068363749;
-        Wed, 06 Nov 2019 11:26:03 -0800 (PST)
-Received: by 2002:a37:6c82:0:0:0:0:0 with SMTP id h124msqkc;
-        Mon, 4 Nov 2019 20:53:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwkFmB05VZgSEOGimsDh2zfndHx3JssUhsCvR0kGb/L9e8aHDgapCMO3Z8UjpkIGQ5j2APH
-X-Received: by 2002:a1c:7905:: with SMTP id l5mr2405554wme.76.1572929621170;
-        Mon, 04 Nov 2019 20:53:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572929621; cv=none;
+Received: by 2002:a17:902:7783:: with SMTP id o3ls3895952pll.4.gmail; Mon, 04
+ Nov 2019 20:59:57 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxTaEmaG/5AKRXSSYJGA0hp1qBvyd4WCiiScthavRW3xe1J98V3gSSIpCt9VJh1vG1J/8sY
+X-Received: by 2002:a17:90a:8592:: with SMTP id m18mr3910381pjn.118.1572929997584;
+        Mon, 04 Nov 2019 20:59:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572929997; cv=none;
         d=google.com; s=arc-20160816;
-        b=sTCsni/2lFMj6l5lMjaJg7XcJt9V9Lf5ezYepNHiV2Z5DVW9WWZrFrvNjFwGrts0lG
-         6DTBeb0eJOzavbxHkd5EVkDF08TmnUTWExoy65q161L1b4kwFH/ILnVeF26wzy6t9muy
-         KUnglWkwa/5uGs7MwSW7l1kEsSR/SKKHuTADlNZu0MLg7guEkYs7Ek3YPNPKl/+V9aMD
-         A4kMnEx3M+G2E+XiCnM2zY0wqdKg9SzUptQotLeiavZAGUBKyTD2/ks2idELtEzffFcu
-         gDk7BdQnYHxOunof8RRtdXTPkKdDuN7wqZaQJePyn49VHkXFIkFufgog3hliYFUeb61p
-         jBhQ==
+        b=NGq3pMh/lGPxR3S0X/zKA9MCYgpQAPkzN9t9Mom9m3jauxC+gmZKIv6uRyvAtRxfMJ
+         pSMeCHyYHsXJwj+bAeecIvaJA7auvkJH2zxKG+NDuEjBuOca/Hr8+RPKYKlGgV+wVTZe
+         bQnFkM6KUgn+aLLcxnTsW2aOPrKQ++a+j4tjlUO6nZKBcK9udpt3BLzP3cRLSjknbDw+
+         YL35LqydfZ8jfiey7R+OmiZvdzwo7RxM32GIR6EDNrv3KKSma5TiS7hVMRvtfHCSA7vh
+         3u3IlV6sCVwS886/TxGnabgFuJa2rRBUo+6UJH8bxPz3w3wH3sioqjwcJv1xVAkHuSjb
+         3z7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=ynk/Jlv4zfIApiDvMMJssbkmr9wLbQcF3N8lX8JdzoE=;
-        b=P+Q9LuFFR9PRDnB6NxF+q7ZwzR+zK3+9561tXpfv5Sedj0zL4TRlBqC9Z9pUTi0hw+
-         tj/xSWd1QWPrm+NFTNLqniAys2xvgzGgLEpgNcvGfYey1z8EjploRsHfEbTSNLSyVkUS
-         EDnnbgDj6T6rizqH9WeHyecGETrVqin/fQFrNWH10qHT9Ytp5QYnKTjpdzdaR8BGgIwX
-         KLKTB0BkvL1eakdPVz42PrsU64OTOQL2fTcYFOyRqF52Q1gMvuTE0wJbLziUus9CPRUd
-         nMa2bG8REfZD0z0YSuFbgnBAnz3p7vUM/uO73KEvyPhdKssCaVKeFqE8WUEcuUbFZFCV
-         bJpw==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=STaCJzIb1RV7UYQ7WATazPSxTWKlrIXl97F4AEpT8NA=;
+        b=jjJ8cbBxmtVMkY/GHRrfw5OWYBWmKAD6/DTtELloZeFby59+u1JL6wIUYWrKtXD0+n
+         q5ApjX9jtRIWh7uihu/GB3drrMjalS1GAhvrzUYBZ2uOQaN2hAzL1crSREbFAemRqHn7
+         YCQy6nA8LKcHvxNOOH49upWBmD5npb438kQ21pjuVNmmNStIW0wCGc5X9dA5n++GNxtk
+         R1wC4qqh1hujQrfmExB6OZeNFWh0LqdJNsERqX2Jta7hRFpP/YozetCU+cnj7FAjtN2M
+         XbIriJn+Y0tHcm4ns2UCot7thzgTkC4g3vMj+s0pcUbRIMsDIAI+jD8+kUGQ/cGK7wXk
+         Gkrg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@rere.qmqm.pl header.s=1 header.b=FhJB42Gy;
-       spf=pass (google.com: domain of mirq-linux@rere.qmqm.pl designates 91.227.64.183 as permitted sender) smtp.mailfrom=mirq-linux@rere.qmqm.pl
-Return-Path: <mirq-linux@rere.qmqm.pl>
-Received: from rere.qmqm.pl (rere.qmqm.pl. [91.227.64.183])
-        by gmr-mx.google.com with ESMTPS id q22si848192wme.2.2019.11.04.20.53.40
+       spf=neutral (google.com: 216.40.44.212 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0212.hostedemail.com. [216.40.44.212])
+        by gmr-mx.google.com with ESMTPS id c11si1055578pjn.3.2019.11.04.20.59.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Nov 2019 20:53:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of mirq-linux@rere.qmqm.pl designates 91.227.64.183 as permitted sender) client-ip=91.227.64.183;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 04 Nov 2019 20:59:57 -0800 (PST)
+Received-SPF: neutral (google.com: 216.40.44.212 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.212;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@rere.qmqm.pl header.s=1 header.b=FhJB42Gy;
-       spf=pass (google.com: domain of mirq-linux@rere.qmqm.pl designates 91.227.64.183 as permitted sender) smtp.mailfrom=mirq-linux@rere.qmqm.pl
-Received: from remote.user (localhost [127.0.0.1])
-	by rere.qmqm.pl (Postfix) with ESMTPSA id 476cgw5LH0zJb;
-	Tue,  5 Nov 2019 05:51:24 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rere.qmqm.pl; s=1;
-	t=1572929485; bh=ynk/Jlv4zfIApiDvMMJssbkmr9wLbQcF3N8lX8JdzoE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FhJB42GySupSrJPyjQL3OufU9k7mKEsWcFJus2/144sX8U56P+8nPlHSIofh8/QZW
-	 WJrU6xxxMUXvRrvvmLwu7BMCRY55E1dLA8Xvu8QqezwJ4WzqAnx9zPkvsGHM64wugw
-	 p3PO88gw9NzyIwvT/ffb9MWcYt6O0mZXf+2itj1iyFw23LaNxRk2QQPQ/VSmAUWvd3
-	 90OWSfkUF2cMwAYBodeoJZBxVfbx4e85rCakQFZmEuMCRKIUW1ZFW4CKjbcgwUxRs1
-	 CQs2GJQ96jNY9JMzw07OlnENdp6122UT31L6oKVSyv9lSNFxgRrcput3RkCWVQ8Hn0
-	 fEWvqqx4BpA9g==
-X-Virus-Status: Clean
-X-Virus-Scanned: clamav-milter 0.101.4 at mail
-Date: Tue, 5 Nov 2019 05:53:37 +0100
-From: =?iso-8859-2?Q?Micha=B3_Miros=B3aw?= <mirq-linux@rere.qmqm.pl>
-To: Jamal Shareef <jamal.k.shareef@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, thierry.reding@gmail.com,
-	airlied@linux.ie, daniel@ffwll.ch, jonathanh@nvidia.com,
-	dri-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org,
-	linux-kernel@vger.kernel.org
+       spf=neutral (google.com: 216.40.44.212 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay06.hostedemail.com (Postfix) with ESMTP id 412FF1801A991;
+	Tue,  5 Nov 2019 04:59:56 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::,RULES_HIT:41:152:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1537:1567:1593:1594:1711:1714:1730:1747:1777:1792:2393:2553:2559:2562:3138:3139:3140:3141:3142:3622:3867:3872:3874:4043:4321:5007:7903:10004:10400:10848:11232:11658:11914:12297:12740:12895:13069:13311:13357:13894:14659:21080:21451:21627:21939:30012:30054:30090:30091,0,RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:neutral,Custom_rules:0:0:0,LFtime:25,LUA_SUMMARY:none
+X-HE-Tag: tiger32_90babfc2ae605
+X-Filterd-Recvd-Size: 1412
+Received: from XPS-9350.home (unknown [47.151.135.224])
+	(Authenticated sender: joe@perches.com)
+	by omf07.hostedemail.com (Postfix) with ESMTPA;
+	Tue,  5 Nov 2019 04:59:54 +0000 (UTC)
+Message-ID: <4df246124153bcece639fdd026c4eee629b4bb7a.camel@perches.com>
 Subject: Re: [PATCH 0/3] drm/tegra: Remove space after parenthesis
-Message-ID: <20191105045337.GB1764@qmqm.qmqm.pl>
+From: Joe Perches <joe@perches.com>
+To: =?UTF-8?Q?Micha=C5=82_Miros=C5=82aw?= <mirq-linux@rere.qmqm.pl>, Jamal
+	Shareef <jamal.k.shareef@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, thierry.reding@gmail.com, 
+	airlied@linux.ie, daniel@ffwll.ch, jonathanh@nvidia.com, 
+	dri-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Date: Mon, 04 Nov 2019 20:59:43 -0800
+In-Reply-To: <20191105045337.GB1764@qmqm.qmqm.pl>
 References: <cover.1572920482.git.jamal.k.shareef@gmail.com>
+	 <20191105045337.GB1764@qmqm.qmqm.pl>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-2
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1572920482.git.jamal.k.shareef@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 
-On Mon, Nov 04, 2019 at 06:23:19PM -0800, Jamal Shareef wrote:
-> This patchset removes spaces after left open parenthesis.
-> Issue found by checkpatch.
+On Tue, 2019-11-05 at 05:53 +0100, Michał Mirosław wrote:
+> On Mon, Nov 04, 2019 at 06:23:19PM -0800, Jamal Shareef wrote:
+> > This patchset removes spaces after left open parenthesis.
+> > Issue found by checkpatch.
+> 
+> I'd say that those spaces make code easier to look at, so it would
+> be better to teach checkpatch to ignore cases like these.
 
-I'd say that those spaces make code easier to look at, so it would
-be better to teach checkpatch to ignore cases like these.
+Good luck with that.
 
-Best Regards,
-Micha��Miros�aw
+
 
