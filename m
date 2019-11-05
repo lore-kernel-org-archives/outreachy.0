@@ -1,81 +1,86 @@
-X-GM-THRID: 2850147008512
-X-Received: by 10.112.214.234 with SMTP id od10mr1451985lbc.3.1424707740771;
-        Mon, 23 Feb 2015 08:09:00 -0800 (PST)
+X-GM-THRID: 6755642568101330944
+X-Received: by 2002:a05:6214:208:: with SMTP id i8mr3870190qvt.233.1573068365061;
+        Wed, 06 Nov 2019 11:26:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.100.225 with SMTP id fb1ls596169wib.38.canary; Mon, 23 Feb
- 2015 08:09:00 -0800 (PST)
-X-Received: by 10.180.89.194 with SMTP id bq2mr1414893wib.4.1424707740406;
-        Mon, 23 Feb 2015 08:09:00 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from mail-wi0-x241.google.com (mail-wi0-x241.google.com. [2a00:1450:400c:c05::241])
-        by gmr-mx.google.com with ESMTPS id cl5si715626wib.3.2015.02.23.08.09.00
+Received: by 2002:a37:6289:: with SMTP id w131ls1132055qkb.15.gmail; Wed, 06
+ Nov 2019 11:26:03 -0800 (PST)
+X-Received: by 2002:a37:7d03:: with SMTP id y3mr3481437qkc.385.1573068363749;
+        Wed, 06 Nov 2019 11:26:03 -0800 (PST)
+Received: by 2002:a37:6c82:0:0:0:0:0 with SMTP id h124msqkc;
+        Mon, 4 Nov 2019 20:53:41 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwkFmB05VZgSEOGimsDh2zfndHx3JssUhsCvR0kGb/L9e8aHDgapCMO3Z8UjpkIGQ5j2APH
+X-Received: by 2002:a1c:7905:: with SMTP id l5mr2405554wme.76.1572929621170;
+        Mon, 04 Nov 2019 20:53:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572929621; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sTCsni/2lFMj6l5lMjaJg7XcJt9V9Lf5ezYepNHiV2Z5DVW9WWZrFrvNjFwGrts0lG
+         6DTBeb0eJOzavbxHkd5EVkDF08TmnUTWExoy65q161L1b4kwFH/ILnVeF26wzy6t9muy
+         KUnglWkwa/5uGs7MwSW7l1kEsSR/SKKHuTADlNZu0MLg7guEkYs7Ek3YPNPKl/+V9aMD
+         A4kMnEx3M+G2E+XiCnM2zY0wqdKg9SzUptQotLeiavZAGUBKyTD2/ks2idELtEzffFcu
+         gDk7BdQnYHxOunof8RRtdXTPkKdDuN7wqZaQJePyn49VHkXFIkFufgog3hliYFUeb61p
+         jBhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=ynk/Jlv4zfIApiDvMMJssbkmr9wLbQcF3N8lX8JdzoE=;
+        b=P+Q9LuFFR9PRDnB6NxF+q7ZwzR+zK3+9561tXpfv5Sedj0zL4TRlBqC9Z9pUTi0hw+
+         tj/xSWd1QWPrm+NFTNLqniAys2xvgzGgLEpgNcvGfYey1z8EjploRsHfEbTSNLSyVkUS
+         EDnnbgDj6T6rizqH9WeHyecGETrVqin/fQFrNWH10qHT9Ytp5QYnKTjpdzdaR8BGgIwX
+         KLKTB0BkvL1eakdPVz42PrsU64OTOQL2fTcYFOyRqF52Q1gMvuTE0wJbLziUus9CPRUd
+         nMa2bG8REfZD0z0YSuFbgnBAnz3p7vUM/uO73KEvyPhdKssCaVKeFqE8WUEcuUbFZFCV
+         bJpw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@rere.qmqm.pl header.s=1 header.b=FhJB42Gy;
+       spf=pass (google.com: domain of mirq-linux@rere.qmqm.pl designates 91.227.64.183 as permitted sender) smtp.mailfrom=mirq-linux@rere.qmqm.pl
+Return-Path: <mirq-linux@rere.qmqm.pl>
+Received: from rere.qmqm.pl (rere.qmqm.pl. [91.227.64.183])
+        by gmr-mx.google.com with ESMTPS id q22si848192wme.2.2019.11.04.20.53.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Feb 2015 08:09:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) client-ip=2a00:1450:400c:c05::241;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2019 20:53:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of mirq-linux@rere.qmqm.pl designates 91.227.64.183 as permitted sender) client-ip=91.227.64.183;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of haticeerturk27@gmail.com designates 2a00:1450:400c:c05::241 as permitted sender) smtp.mail=haticeerturk27@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wi0-x241.google.com with SMTP id r20so8162933wiv.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Feb 2015 08:09:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=yUSdRJIkAGm7Lvoy3MEdPMtkvAb0k8giNwNDLxWEYow=;
-        b=SgX7qatusroJvloZhrIKUZ5N1VlNGlHJqDnPEcWMZA02mmzgf1bsFQBiJ/6jRNnBxj
-         7p4rSWiAhBkcqnKVGb5Y8g17btRjIJU2NnKg8F+n1JZAZaiiKzhfhL8XwRRz9xYvxGf4
-         wyoETTfY6ZWtZmhVPB4C0hPPQ1pI4NVkp9iGd2gur4KBkFUIROoJ8QTzwfH2pQsowo0D
-         PIEZ8/qeZ12v5iq4QEWvweJ1ItV6BXnTSc+733XdzrBgc4YaDnefn4uZkg6f/IN3pV6C
-         ienLyvJfK5pyLM4jmq7C+xpKzPaU95SjvDRUZO/1xqHvyYn/jSyZISglUPZ2hN/hjY9l
-         u7ug==
-X-Received: by 10.194.175.102 with SMTP id bz6mr24193319wjc.120.1424707740291;
-        Mon, 23 Feb 2015 08:09:00 -0800 (PST)
-Return-Path: <haticeerturk27@gmail.com>
-Received: from localhost.localdomain ([78.189.63.210])
-        by mx.google.com with ESMTPSA id p1sm16479324wib.23.2015.02.23.08.08.59
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Feb 2015 08:08:59 -0800 (PST)
-From: =?UTF-8?q?Hatice=20ERT=C3=9CRK?= <haticeerturk27@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Hatice ERTURK <haticeerturk27@gmail.com>
-Subject: [PATCH] Staging: rtl8723au: core: Add spaces around that '='
-Date: Mon, 23 Feb 2015 18:08:53 +0200
-Message-Id: <1424707733-23115-1-git-send-email-haticeerturk27@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       dkim=pass header.i=@rere.qmqm.pl header.s=1 header.b=FhJB42Gy;
+       spf=pass (google.com: domain of mirq-linux@rere.qmqm.pl designates 91.227.64.183 as permitted sender) smtp.mailfrom=mirq-linux@rere.qmqm.pl
+Received: from remote.user (localhost [127.0.0.1])
+	by rere.qmqm.pl (Postfix) with ESMTPSA id 476cgw5LH0zJb;
+	Tue,  5 Nov 2019 05:51:24 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rere.qmqm.pl; s=1;
+	t=1572929485; bh=ynk/Jlv4zfIApiDvMMJssbkmr9wLbQcF3N8lX8JdzoE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FhJB42GySupSrJPyjQL3OufU9k7mKEsWcFJus2/144sX8U56P+8nPlHSIofh8/QZW
+	 WJrU6xxxMUXvRrvvmLwu7BMCRY55E1dLA8Xvu8QqezwJ4WzqAnx9zPkvsGHM64wugw
+	 p3PO88gw9NzyIwvT/ffb9MWcYt6O0mZXf+2itj1iyFw23LaNxRk2QQPQ/VSmAUWvd3
+	 90OWSfkUF2cMwAYBodeoJZBxVfbx4e85rCakQFZmEuMCRKIUW1ZFW4CKjbcgwUxRs1
+	 CQs2GJQ96jNY9JMzw07OlnENdp6122UT31L6oKVSyv9lSNFxgRrcput3RkCWVQ8Hn0
+	 fEWvqqx4BpA9g==
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 0.101.4 at mail
+Date: Tue, 5 Nov 2019 05:53:37 +0100
+From: =?iso-8859-2?Q?Micha=B3_Miros=B3aw?= <mirq-linux@rere.qmqm.pl>
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, thierry.reding@gmail.com,
+	airlied@linux.ie, daniel@ffwll.ch, jonathanh@nvidia.com,
+	dri-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] drm/tegra: Remove space after parenthesis
+Message-ID: <20191105045337.GB1764@qmqm.qmqm.pl>
+References: <cover.1572920482.git.jamal.k.shareef@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-2
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1572920482.git.jamal.k.shareef@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-This Error found with checkpatch.pl
+On Mon, Nov 04, 2019 at 06:23:19PM -0800, Jamal Shareef wrote:
+> This patchset removes spaces after left open parenthesis.
+> Issue found by checkpatch.
 
-ERROR: spaces required around that '='
+I'd say that those spaces make code easier to look at, so it would
+be better to teach checkpatch to ignore cases like these.
 
-Signed-off-by: Hatice ERTURK <haticeerturk27@gmail.com>
----
- drivers/staging/rtl8723au/core/rtw_xmit.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723au/core/rtw_xmit.c b/drivers/staging/rtl8723au/core/rtw_xmit.c
-index 2c9fe07..bece9b3 100644
---- a/drivers/staging/rtl8723au/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723au/core/rtw_xmit.c
-@@ -645,7 +645,7 @@ static int xmitframe_addmic(struct rtw_adapter *padapter,
- 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
- 	int curfragnum, length;
- 	u8 *pframe, *payload, mic[8];
--	u8 priority[4]= {0x0, 0x0, 0x0, 0x0};
-+	u8 priority[4] = {0x0, 0x0, 0x0, 0x0};
- 	u8 hw_hdr_offset = 0;
- 	int bmcst = is_multicast_ether_addr(pattrib->ra);
- 
-@@ -672,7 +672,7 @@ static int xmitframe_addmic(struct rtw_adapter *padapter,
- 	if (pattrib->encrypt == WLAN_CIPHER_SUITE_TKIP) {
- 		/* encode mic code */
- 		if (stainfo) {
--			u8 null_key[16]={0x0, 0x0, 0x0, 0x0,
-+			u8 null_key[16] = {0x0, 0x0, 0x0, 0x0,
- 					 0x0, 0x0, 0x0, 0x0,
- 					 0x0, 0x0, 0x0, 0x0,
- 					 0x0, 0x0, 0x0, 0x0};
--- 
-1.9.1
-
+Best Regards,
+Micha��Miros�aw
 
