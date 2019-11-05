@@ -1,114 +1,153 @@
 X-GM-THRID: 6755490770490228736
-X-Received: by 2002:ac2:53ae:: with SMTP id j14mr906852lfh.137.1572952061863;
-        Tue, 05 Nov 2019 03:07:41 -0800 (PST)
+X-Received: by 2002:a1c:7c16:: with SMTP id x22mr3727863wmc.46.1572951664659;
+        Tue, 05 Nov 2019 03:01:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:c4:: with SMTP id 4ls1200682ljr.6.gmail; Tue, 05
- Nov 2019 03:07:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzUpohge2/wWjN2QtfNSQyhapjETEdiXvUHzHxEnf9JWLzQO6JMRL5JE4dwrusU/Ajb8Xn5
-X-Received: by 2002:a2e:9610:: with SMTP id v16mr3162370ljh.219.1572952059831;
-        Tue, 05 Nov 2019 03:07:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572952059; cv=none;
+Received: by 2002:a1c:82:: with SMTP id 124ls2848299wma.1.gmail; Tue, 05 Nov
+ 2019 03:01:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxFw/6/X7fB0A85TU8kaFDmsGbUz3XkK/cc4GGZ131jg0c0i6S8Dtyrw8McHT6ZxkxfVGhZ
+X-Received: by 2002:a1c:e91a:: with SMTP id q26mr3816549wmc.88.1572951663436;
+        Tue, 05 Nov 2019 03:01:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572951663; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rcxi9c/ma9QCN0XzacCblEDMh8NG+GyPB3uti56StvaIIkkW0qHUpZYzjg/AYnEjTs
-         mVa7FjLZ9qJDPNzMNoUfTxAzAVRznsC2F7Wi4KYO/nRODGY4/5tJW7wIEPotwB7EQ9iy
-         LOoK3a2j8bzUzG9MnFxJCBmpqlLs+ysHvi1SEU0XJzeW0jnMAs3LV9Mea/t+AJCFoNgZ
-         w/k+cGT5kvr+9Q+UaMwMsXcIyyR5yab2YhqRoe8Bbz0xntNy0ztuPIs+TrkCIsjd5XX2
-         8iaDOjDyXLvAHDvG886TB0n69XGNd2khUFSONuCRPBS0HqIkxdYqzEUdZhDc2ODJdiqj
-         c9lg==
+        b=t3jWuJVB7vTEVrVY87jdRCiEZwwHo7WpT43viLElG6zd/7nrGB7SkCrscwATt1EvqN
+         7LNY/BYoPf/7XD4Idfkzt3KME2NrrL+fxTxjScoEA5rhmrZxELixPZ6S1YrF+RALPIe7
+         RokuHtC09TNYnzzhl0Xq+/G2Kt5aGgAUN5RMcC69HL5X5Mw/RDNhh36TNfOBV/iEURoY
+         AJ7E4qtRXOyAVc0tDuDZIx10lPlA2HppfX5NE8ixmNcroGca3rIkf2Izub5a1dre/2W1
+         bm0HVRxbk7FGJoyYzhvqi3Eb37eq7YSR92TKyeP0OLBCPDAC1g5adcDihvKLBGucDVlG
+         h2Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:message-id:in-reply-to:subject:cc:to:date
          :from:dkim-signature;
-        bh=uam4yKu+WYMYJ5RphtXQPnJhDtJ0Zqcujz3CXjflWDU=;
-        b=031UHts7wCzHlLbikyny7xNmAnY8y7BSQjALlpfScuaKIggYozlXuQHDmDZF7WHqFW
-         Nr25Ln35qqr+RNM8rPlY9yhvfHTRFwygZvSN95du46tLUE3W/6Yzo+Au00EOc9lo6wFa
-         F0q39iqIuVNOvE2dft8jVVDS1X2nBKkV072LM+jmFvZ1Ne0tqHJbsTEJtleJqhM3G80x
-         3pUqh5H9wOj29PRLTo0wg+V5aHnZuWFuOpBq6SlEM2ePg6beCxDWUjNf403z00dkUPCa
-         qSV7qC3ESI+IawfOAyAM1d6ogmliamQ5jW7AbMelpt/R83Rpqw5puLtaeIrAQRKkOiC/
-         VkEw==
+        bh=EZghrgWEU7PinMbxhgFFAGKP8eV2Li80iVqhELRRUNk=;
+        b=XTUNOHXFHkJeqC1bpajszfhT5CHtJJXGfIIw2QOT8UZeWl/Rw+hFk9ooFsNDKqX1Rr
+         k4RJ7tCBmJpwOxSHTXRIYh5iKezqZi2Ex84M5nJPBx+P4uqDLas+mNAZeLXoVZcHQRxm
+         2uQCH4sfruqnOH+pTsU+5kK+sVDhOfP9dpGYqnlvQPyX4+4JORdD1LnGNq/wdAgGMXiv
+         4dyvK5pBTOyDMzeyRv35TPMpWJGzCA3Crg/4AU3K/0rYQaSDH6N/QH1HMd9jSK8p89mY
+         fKOjEu3c35aWaVB/BdMK8TelFtp9kWxRk+sVI+4ruc3qJE17VBwfGWd4c9u/KofXewJP
+         GmMQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N2PWqy75;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R14zOSWy;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com. [2a00:1450:4864:20::344])
-        by gmr-mx.google.com with ESMTPS id x23si590927lfq.0.2019.11.05.03.07.39
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id e17si831289wre.3.2019.11.05.03.01.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Nov 2019 03:07:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) client-ip=2a00:1450:4864:20::344;
+        Tue, 05 Nov 2019 03:01:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N2PWqy75;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R14zOSWy;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x344.google.com with SMTP id q70so20368956wme.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 03:07:39 -0800 (PST)
+Received: by mail-wr1-x444.google.com with SMTP id b3so15041528wrs.13
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 03:01:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:date:to:cc:subject:in-reply-to:message-id:references
          :mime-version;
-        bh=uam4yKu+WYMYJ5RphtXQPnJhDtJ0Zqcujz3CXjflWDU=;
-        b=N2PWqy75qroW7rjtdCd7EbvB8HjCMOXP4R1oSiKbld5G5Phcr60+yg2bTxMNak1xZO
-         c5+RtQmueIxYccx7JAR1yUKT7iWNsJ8SpsHJFmJPjPbjZZ2yuUM9zT9/Q+sQ98rjFbJO
-         SUZ8oWlnA3iSexOQs6YPCF1UhNHiaSA+4+epU8Vg/pkIIbIlCCzBAZOizXboTm4dJXR1
-         Cx4YKAbX3P06S66yJDRqzoTfj/P4Z2cGPXdvXeXOo+VkgFYb+FBlP6qFk8cZY9PDRZY0
-         0A3iYAC5dDVSWG3rhfeiDBh2F3MW//taouRqrhPgq8TIfyUQPjnFddNkeW6zFuTh5MdQ
-         Xchw==
+        bh=EZghrgWEU7PinMbxhgFFAGKP8eV2Li80iVqhELRRUNk=;
+        b=R14zOSWyNvnQV94JDavTe85Z2Fw5Vh6JQY1YZyMFH78lqlQ4CFLQK7+AK3SIm8RV1W
+         TgFgLPQuZkG/NAFioFBsPbrIfyUKjtJxvQGvRbCzrgILMad9ix/4OabzQJyDcYwgWRLI
+         szNcSya8o5WB6aGzYVgRCywhGgV0/aEH4h1ScNVje3D1nu1yvysHJA9ZNaM8sSVITay1
+         +MwePjVMuQn2DVL50ykuPTlNJfGnmQJNIaNnoHatgEfhhO4pa6iLY5NQbjSeKWLIa2VJ
+         bbxCkFYcBGUU9W+kGodO7729kMfdevtedaVuGwIGuQGf0SivS06ZRc8+X47mjlTl2m+I
+         j1rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:date:to:cc:subject:in-reply-to:message-id
          :references:mime-version;
-        bh=uam4yKu+WYMYJ5RphtXQPnJhDtJ0Zqcujz3CXjflWDU=;
-        b=ljuvoSjgdkpu0NUs5BFnJkK1IHdz8ogw1uS5QpuuzoFbzIWYmdkpQwULcRR0Rd9v80
-         bPFICsPuQkGUueJNVnxQXwJz5hhTHURsbF4FBizGpdqZbl57P5pbMMQaC1GWmE90FyDF
-         A2lGPgIHF9DincepOTsDBS3G4+TyXK4a+vHImGMkq6jBDYJb+uwPYgO2BRVCfJGiiQ1/
-         jBMboTm1vGM6oRwqnEf3rMeOY12viYango5uHxa3GmFXQErXRwbEc1JmjLpOO3+50l3T
-         /caBp+AJ1V2Tm7DEvwMmmphdoSwgLNBoXcC0wFFzUg5aOn4an1pGw/gbO0ge29HjIlq0
-         Xdkg==
-X-Gm-Message-State: APjAAAXEtOg4M6gQIn4iuiqvzE+ihMp6qDdPLWyQI+x+Kb0HFYdwSidN
-	62Pn2axJZMR8YZc0Rdp17Q==
-X-Received: by 2002:a05:600c:219a:: with SMTP id e26mr3479875wme.98.1572952059211;
-        Tue, 05 Nov 2019 03:07:39 -0800 (PST)
+        bh=EZghrgWEU7PinMbxhgFFAGKP8eV2Li80iVqhELRRUNk=;
+        b=X86nedMgxG2YfeUaKKHY3QXev2KKDOa1TS94a9WeqMYLj+jHT5IQrlMORVuAlEo73x
+         MHKAHuRcy95Ybz2OXfhs76CbA4u4cTbuaeKLePA2wfzFek3CwptS/4AEXfieUskg7fSH
+         L87uk6QxSAX+7J+GAVp8vuPZC1gdZDARCnq2+e3N/bHr4/FlOztWnAWbZUNAo40MGv7N
+         OfJ3yHXZplBPkWfNf/qSbCrd3oP5lVHbiTHrl88qX4bI4mi4YYyVoTuwKnB8mOk6+PN4
+         oPqVasGS0iLrlud34f4n8N6hmm6vsOqbVipRSL6JLZpgH2slCTvG8UWG3HaILAYP09iU
+         DjJA==
+X-Gm-Message-State: APjAAAUDDdSOgwmB8swOrb9uicjanZkwDmYlRArg2G9VHxs17d49HciJ
+	O91gSSfxlymwFeLu7BvwYg==
+X-Received: by 2002:a5d:4688:: with SMTP id u8mr10457814wrq.40.1572951662765;
+        Tue, 05 Nov 2019 03:01:02 -0800 (PST)
 Return-Path: <jbi.octave@gmail.com>
 Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.gmail.com with ESMTPSA id b17sm11175395wru.36.2019.11.05.03.07.38
+        by smtp.gmail.com with ESMTPSA id j22sm28263721wrd.41.2019.11.05.03.01.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Nov 2019 03:07:38 -0800 (PST)
+        Tue, 05 Nov 2019 03:01:02 -0800 (PST)
 From: Jules Irenge <jbi.octave@gmail.com>
 X-Google-Original-From: Jules Irenge <maxx@ninjahub.org>
-Date: Tue, 5 Nov 2019 11:07:37 +0000 (GMT)
-To: Greg KH <gregkh@linuxfoundation.org>
+Date: Tue, 5 Nov 2019 11:00:44 +0000 (GMT)
+To: Ian Abbott <abbotti@mev.co.uk>
 cc: Jules Irenge <jbi.octave@gmail.com>, outreachy-kernel@googlegroups.com, 
-    devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
-    abbotti@mev.co.uk
+    gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    linux-kernel@vger.kernel.org, hsweeten@visionengravers.com
 Subject: Re: [PATCH v2] staging: comedi: rewrite macro function with GNU
  extension typeof
-In-Reply-To: <20191104164653.GA2281588@kroah.com>
-Message-ID: <alpine.LFD.2.21.1911051106520.11074@ninjahub.org>
-References: <20191104163331.68173-1-jbi.octave@gmail.com> <20191104164653.GA2281588@kroah.com>
+In-Reply-To: <84a2d50f-a1ac-bdc5-989c-b0294e9dea22@mev.co.uk>
+Message-ID: <alpine.LFD.2.21.1911051053560.11074@ninjahub.org>
+References: <20191104163331.68173-1-jbi.octave@gmail.com> <84a2d50f-a1ac-bdc5-989c-b0294e9dea22@mev.co.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Mon, 4 Nov 2019, Greg KH wrote:
+On Mon, 4 Nov 2019, Ian Abbott wrote:
 
-> On Mon, Nov 04, 2019 at 04:33:31PM +0000, Jules Irenge wrote:
+> On 04/11/2019 16:33, Jules Irenge wrote:
 > > Rewrite macro function with the GNU extension typeof
 > > to remove a possible side-effects of MACRO argument reuse "x".
-> >  - Problem could rise if arguments have different types
+> >   - Problem could rise if arguments have different types
 > > and different use though.
+> > 
+> > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> > ---
+> > v1 - had no full commit log message, with changes not intended to be in the
+> > patch
+> > v2 - remove some changes not intended to be in this driver
+> >       include note of a potential problem
+> >   drivers/staging/comedi/comedi.h | 6 ++++--
+> >   1 file changed, 4 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/comedi/comedi.h
+> > b/drivers/staging/comedi/comedi.h
+> > index 09a940066c0e..a57691a2e8d8 100644
+> > --- a/drivers/staging/comedi/comedi.h
+> > +++ b/drivers/staging/comedi/comedi.h
+> > @@ -1103,8 +1103,10 @@ enum ni_common_signal_names {
+> >   
+> >   /* *** END GLOBALLY-NAMED NI TERMINALS/SIGNALS *** */
+> >   
+> > -#define NI_USUAL_PFI_SELECT(x)	(((x) < 10) ? (0x1 + (x)) : (0xb +
+> > (x)))
+> > -#define NI_USUAL_RTSI_SELECT(x)	(((x) < 7) ? (0xb + (x)) : 0x1b)
+> > +#define NI_USUAL_PFI_SELECT(x)\
+> > +	({typeof(x) x_ = (x); (x_ < 10) ? (0x1 + x_) : (0xb + x_); })
+> > +#define NI_USUAL_RTSI_SELECT(x)\
+> > +	({typeof(x) x_ = (x); (x_ < 7) ? (0xb + x_) : 0x1b; })
+> >   
+> >   /*
+> >    * mode bits for NI general-purpose counters, set with
+> > 
 > 
-> You can not just get away with a potential problem by documenting it :)
+> I wasn't sure about this the first time around due to the use of GNU
+> extensions in uapi header files, but I see there are a few, rare instances of
+> this GNU extension elsewhere in other uapi headers (mainly in netfilter
+> stuff), so I guess it's OK.  However, it  does mean that user code that uses
+> these macros will no longer compile unless GNU extensions are enabled.
 > 
-> You might have just broken this.  Why are you trying to "fix" something
-> that is not broken?
+> Does anyone know any "best practices" regarding use of GNU extensions in user
+> header files under Linux?
 > 
-> What is wrong with the code as-is?
+> -- 
+> -=( Ian Abbott <abbotti@mev.co.uk> || Web: www.mev.co.uk )=-
+> -=( MEV Ltd. is a company registered in England & Wales. )=-
+> -=( Registered number: 02862268.  Registered address:    )=-
+> -=( 15 West Park Road, Bramhall, STOCKPORT, SK7 3JZ, UK. )=-
 > 
-> thanks,
 > 
-> greg k-h
-> 
-Again I made a lot of mistake. I will be more carefull.
-Thanks for the feedback
+Apology, I misinterpreted the comments and send a second 
+version without thinking much.
+Please discard it unless you wish to try out.
+Any way thanks for the feedback, I really appreciate I find it educative.
+Kind regards,
+Jules
 
