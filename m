@@ -1,273 +1,137 @@
 X-GM-THRID: 6755960127598100480
-X-Received: by 2002:a25:1f45:: with SMTP id f66mr30567040ybf.218.1572994547672;
-        Tue, 05 Nov 2019 14:55:47 -0800 (PST)
+X-Received: by 2002:a81:ad24:: with SMTP id l36mr27166381ywh.416.1572994545183;
+        Tue, 05 Nov 2019 14:55:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:abb2:: with SMTP id v47ls81057ybi.0.gmail; Tue, 05 Nov
- 2019 14:55:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqysLezzmqbVcS2oXT8i7YqackBncFFZ00WK12HvEta9zR7zoIiXCYCnE9SNrrqtsbMCn2eh
-X-Received: by 2002:a25:33d4:: with SMTP id z203mr17754681ybz.149.1572994546149;
-        Tue, 05 Nov 2019 14:55:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572994546; cv=none;
+Received: by 2002:a81:ad26:: with SMTP id l38ls54752ywh.6.gmail; Tue, 05 Nov
+ 2019 14:55:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwZIMens/OjhRi8lBtT+LbnYSgpxL5BEmIRNjuMIrz7UDHsc1Bx7VB3126MAglNopY8+DBc
+X-Received: by 2002:a0d:ef46:: with SMTP id y67mr26032245ywe.364.1572994543343;
+        Tue, 05 Nov 2019 14:55:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572994543; cv=none;
         d=google.com; s=arc-20160816;
-        b=V6YH8re8DTNEU1Z7/4FYxKrC8tCNRmd+huc78fCN3DmkEXd+QLc+kvjJM+sKECUbLJ
-         whTQ1ilrbQr4awO9hpnTvVjgMnJgt0sOuHgSYfgf2JxkL36rA58elftLwfSBGxF8ekeW
-         On1hqIB4QDq4fFX+M2JXr9d0PtOPDxCfEPM9bQeWh97FDhvaKJYBrlAtX+xdrXfKhDhP
-         ojoqV3qF7RRP6IfrrFxeT6hibpkI265T6+zj4yiVgboa2LP+7/1JQ7O2IJ7GnybtHiWZ
-         U3VfSSkkBf+wBEMByrGtiT6wqVgcC+5Py9XEHAXRzIMsktWAY9flwQvFwId/0r58Lc67
-         P3Og==
+        b=LjtYICCQ1nKm65z1NnksR1RlnstCDkFbDLaiFXiy4XgUYH6a6G94NdA2h0ybNLa5ai
+         2IR96DGHTaIhenekK5/CEfn5xZTnjT18bq+yMtsG3dpy9HOi8yeAczFp8WMj9AC/A8PK
+         EI/LaZimkVlSWxCnxKW9vCMzzXykJ+EFU8usTnJ0yv7X/ethOyxR3AJpE4WRUkyDJEU5
+         Q/Q5zy5GyekNqvmjYcDqWDkrcYPJkL1htVE2IVPhxaso2HDA5iTrO0sljGR3pr5Yf4eW
+         RKGUQMSnjz9MAzgxsbFuuntQeqyIXUVH4NN2ABag9tCUftxjnWLQOoALhNABtsdfaHxG
+         ezWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=eWJnio64wh1Ao5gmmoG2ORd2ebNmQuSR8mUVap1AnQ0=;
-        b=CV7RyJisUJpw4V0yo3Qy+ZOEgmOoxX/CixikBCjGUCuLKiWgKyhhRv+dNS9JvCpk6u
-         spptwbsO2Lj4e7tyF4aE7vb80FfPP9WPAJOAsKb+1HGfmMMonlfK4ybvsFNGJJ0xV5BA
-         sS2J/Rj4a2NqAcQUcWV37G6CcrgUVLHStoNuoxN/uazfOOifDJGBeA1AnXD0S8OJSegF
-         ZH6lm8hiTK2+m3P2EiayCJ3gK+I0X3+gRDrU/T4f08d1MO1U5wS4YGjFBZGj4WMDCHfA
-         vQP2JED9uSUfkMrzvqyQnC5DXxpZNYCBjRwAu295v4TK51XECDn4kkblCwGygiTVvEB8
-         caGw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Po2HxMGk48IbsFh16rn+HWzv7+38wEWzcuk8mG/pt7s=;
+        b=Mr5AWKxAlijy5X739cL71g009m0Sk+t9Sjwx3H7IXicJc4yuJTY9HuhR0KQ6usxUJG
+         WY4YFkrRyDlXgJ1bbdua7UFeuC82wbi91Oz05N4EuGp98wUxjEIOuApFewF47TyWL33Q
+         gqVXZhaUvN86iFRLM635ISw+gIj1n1Y9fVT2/iF+IsaAeK75dyLPLSioDayjbRIyQ3pJ
+         wWUof3Qk//D5MXnDXwTaw8FZLbnR8TcD67HrA+AcuGhMJkFsGN/shRzBm1xDzONIVMyF
+         MOty+lOQ+GZPfps1snIKA3KZi7uTr2qeXrvWioa0jVxlD1KN7y2iNJok9CLTx5lQQxQ/
+         lIzA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iROZzIai;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g8wGZxLx;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::636 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com. [2607:f8b0:4864:20::430])
-        by gmr-mx.google.com with ESMTPS id d192si1338897ywb.1.2019.11.05.14.55.46
+Received: from mail-pl1-x636.google.com (mail-pl1-x636.google.com. [2607:f8b0:4864:20::636])
+        by gmr-mx.google.com with ESMTPS id d192si1338866ywb.1.2019.11.05.14.55.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Nov 2019 14:55:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) client-ip=2607:f8b0:4864:20::430;
+        Tue, 05 Nov 2019 14:55:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::636 as permitted sender) client-ip=2607:f8b0:4864:20::636;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iROZzIai;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g8wGZxLx;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::636 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x430.google.com with SMTP id p26so17187835pfq.8
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 14:55:46 -0800 (PST)
+Received: by mail-pl1-x636.google.com with SMTP id p13so10426064pll.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 14:55:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=eWJnio64wh1Ao5gmmoG2ORd2ebNmQuSR8mUVap1AnQ0=;
-        b=iROZzIair0RwZYB6ICsUbCw/nShLfTFx89d8AhM1dXLdkrfLaM+hm/PUiT0XFQXtnW
-         0qZjfe45yh65HRnp74f770/T/kLBaFYsVWEpq/8jS0+rE/JH3KguID6vlxnLai+9f6lu
-         v7KDdH+yzRBOSIxRVlstED8tpq9MlccSL/ORWAkgjbX/VLZq8mK8rGm2CYnw64gNt4ft
-         8O5cmEQB30eRxd535nhiPA63fTzAQs867KEftKWPDdiVuULiG0QahTz01H5qT77oVYow
-         FfnqNCUwY4U2CkTto7qVCTqatoUIaa8ghCY7zYHp51rD1gHi1//ufBv0W/knrTqMhdk0
-         qVZg==
+        h=from:to:cc:subject:date:message-id;
+        bh=Po2HxMGk48IbsFh16rn+HWzv7+38wEWzcuk8mG/pt7s=;
+        b=g8wGZxLx1KC42nrgsO7bQISBppeENcQPFGMOwzGrJTBv9eAcVS0nVDp5PfKpw/4L8S
+         4WELsv9ZpgtmcgLUV5MoK+0nxfaeuMbH1Q+Kxogi4WwkySKPpTvp8867/0IjfDQzcN+f
+         Q0BRUNJsnw55XoHqnWtcuV99a5/N0cQjsv4LnUJt+e+Llnhl4QKSHTArQl2WkUz2yQvH
+         bwbtdJN8krO7q8dxC2aKau6PvnPsisdJo0x98Dnk/y0bPEqZdB55/nMjwK4/Rrr/pVyp
+         WSMMEbLdebHw59CMI0lIr0t3LQlPfYqpBq4ZOeh9OAbesBsrdFymL7KNupxP3a+F/UqS
+         lthA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=eWJnio64wh1Ao5gmmoG2ORd2ebNmQuSR8mUVap1AnQ0=;
-        b=jSpbTUOIRIgN4iQ9tP94bIHRCdS2mnQ/mgtzwd2dqHkMzDAXONpJYgrmcojj1q/gsx
-         mn+AMpLIjqfZMnNTOo6sBRt+GDwvU2RSFTrUxHOQOeEutC0ejjl8/Oq9pLw2ilDkYk5E
-         1JiYBv42BzlKBLiBSTHdJt0Cgq1FyvdQWzlUHfmj4WTRvz/YBj5afyE1wEytFmeKe3k7
-         1FhFgM6gKf8suXIKuuQOdSQjQEBX79gJLsxnXegLXj3fZtZOblzgt6ONLLx1rRN1BSou
-         E6v3FWIilPN5hQEVPZUNkKbH/3Vz9VIyQWffO0z2tcyZTsIg3s8Zels4dr/AGcICJkvo
-         FwiA==
-X-Gm-Message-State: APjAAAX7VXNbo+hadzXTPL+xua52KSKcyR6NoybQmW4Y/WynL7vKWYcT
-	xkNRZ7yEmqPE6MjbtrE40/Ev9blVYljzbg==
-X-Received: by 2002:a17:90a:a401:: with SMTP id y1mr2010560pjp.118.1572994545301;
-        Tue, 05 Nov 2019 14:55:45 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Po2HxMGk48IbsFh16rn+HWzv7+38wEWzcuk8mG/pt7s=;
+        b=Y0ckRI5yelG/DZYJz/Q/EIc/Yxwm1X14kJM7KFoskKISuXTYvKmZxtJ4Jyzhm0tDeR
+         AWgT0ly8QwSC2JpdRRfTCf1yX167LJNm7wfyZsjl7uFqoovTsF+OGZxtgwYLTZMrnQcJ
+         DF6Uk5MAbhxgs+AJ5QgDld61CHqEVaw+oAPwglVWlKInPEnycht4upFGFdVnCQuurIKp
+         jgq4rzFMI7yAswVVEaJ9GHzQK8bGvc90H13ldXLbB7gV3rPCY58IKAokwDVyBpU5P4nV
+         aI+vVz5nSqo+BVGvg49nJ3sh5shfJ5+hbB3citT/KIqrvIgnzT6iA2P7f9CYkdv42RkX
+         tnEQ==
+X-Gm-Message-State: APjAAAVSh6xZw0ucC48wRSYswk3e2dBHMAycJ/vb2/BXevstdH3+Ej2/
+	2UEuWcWvksD0+y8mSqm/g90=
+X-Received: by 2002:a17:902:ab8b:: with SMTP id f11mr17096818plr.16.1572994542900;
+        Tue, 05 Nov 2019 14:55:42 -0800 (PST)
 Return-Path: <jamal.k.shareef@gmail.com>
 Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id 27sm22562508pgx.23.2019.11.05.14.55.44
+        by smtp.gmail.com with ESMTPSA id c1sm493639pjc.23.2019.11.05.14.55.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Nov 2019 14:55:44 -0800 (PST)
+        Tue, 05 Nov 2019 14:55:42 -0800 (PST)
 From: Jamal Shareef <jamal.k.shareef@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
 	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH v2 01/14] staging: vc04_services: Replace VCHI_INSTANCE_T with struct vhci_instance_handle
-Date: Tue,  5 Nov 2019 14:55:18 -0800
-Message-Id: <0b481a90b8a2b9cd6718e972dab681854ff312d7.1572994235.git.jamal.k.shareef@gmail.com>
+Subject: [PATCH v2 00/14] staging: vc04_services: Replace typedefs and
+Date: Tue,  5 Nov 2019 14:55:17 -0800
+Message-Id: <cover.1572994235.git.jamal.k.shareef@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1572994235.git.jamal.k.shareef@gmail.com>
-References: <cover.1572994235.git.jamal.k.shareef@gmail.com>
-In-Reply-To: <cover.1572994235.git.jamal.k.shareef@gmail.com>
-References: <cover.1572994235.git.jamal.k.shareef@gmail.com>
 
-Replaces VCHI_INSTANCE_T typedef with struct vchi_instance_handle to
-match kernel code style. Issue found by checkpatch.
+This patchset replaces typedefs with native types where feasible and
+renames callback functions to match kernel code style.
 
-Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
----
- .../bcm2835-audio/bcm2835-vchiq.c              |  2 +-
- .../vc04_services/bcm2835-audio/bcm2835.h      |  2 +-
- .../vc04_services/bcm2835-camera/mmal-vchiq.c  |  2 +-
- .../vc04_services/interface/vchi/vchi.h        | 12 ++++++------
- .../interface/vchiq_arm/vchiq_shim.c           | 18 +++++++++---------
- 5 files changed, 18 insertions(+), 18 deletions(-)
+Changes in v2:
+ - Rewrite patch subject lines and body to be more descriptive for all
+   patches.
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index 84ece768854f..2022ff2388dc 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -122,7 +122,7 @@ static void audio_vchi_callback(void *param,
- }
- 
- static int
--vc_vchi_audio_init(VCHI_INSTANCE_T vchi_instance,
-+vc_vchi_audio_init(struct vchi_instance_handle *vchi_instance,
- 		   struct bcm2835_audio_instance *instance)
- {
- 	struct service_creation params = {
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-index ed0feb34b6c8..d2fe8d36ab7d 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835.h
-@@ -44,7 +44,7 @@ enum snd_bcm2835_ctrl {
- };
- 
- struct bcm2835_vchi_ctx {
--	VCHI_INSTANCE_T vchi_instance;
-+	struct vchi_instance_handle *vchi_instance;
- };
- 
- /* definition of the chip-specific record */
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-index 06b7be7d8872..0f4db2f24944 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/mmal-vchiq.c
-@@ -1814,7 +1814,7 @@ int vchiq_mmal_init(struct vchiq_mmal_instance **out_instance)
- {
- 	int status;
- 	struct vchiq_mmal_instance *instance;
--	static VCHI_INSTANCE_T vchi_instance;
-+	static struct vchi_instance_handle *vchi_instance;
- 	struct service_creation params = {
- 		.version		= VCHI_VERSION_EX(VC_MMAL_VER, VC_MMAL_MIN_VER),
- 		.service_id		= VC_MMAL_SERVER_NAME,
-diff --git a/drivers/staging/vc04_services/interface/vchi/vchi.h b/drivers/staging/vc04_services/interface/vchi/vchi.h
-index 75b1ab4919e3..5c8842114607 100644
---- a/drivers/staging/vc04_services/interface/vchi/vchi.h
-+++ b/drivers/staging/vc04_services/interface/vchi/vchi.h
-@@ -50,7 +50,7 @@ struct service_creation {
- };
- 
- // Opaque handle for a VCHI instance
--typedef struct opaque_vchi_instance_handle_t *VCHI_INSTANCE_T;
-+struct vchi_instance_handle;
- 
- // Opaque handle for a server or client
- typedef struct opaque_vchi_service_handle_t *VCHI_SERVICE_HANDLE_T;
-@@ -65,20 +65,20 @@ extern "C" {
- #endif
- 
- // Routine used to initialise the vchi on both local + remote connections
--extern int32_t vchi_initialise(VCHI_INSTANCE_T *instance_handle);
-+extern int32_t vchi_initialise(struct vchi_instance_handle **instance_handle);
- 
- extern int32_t vchi_exit(void);
- 
--extern int32_t vchi_connect(VCHI_INSTANCE_T instance_handle);
-+extern int32_t vchi_connect(struct vchi_instance_handle *instance_handle);
- 
- //When this is called, ensure that all services have no data pending.
- //Bulk transfers can remain 'queued'
--extern int32_t vchi_disconnect(VCHI_INSTANCE_T instance_handle);
-+extern int32_t vchi_disconnect(struct vchi_instance_handle *instance_handle);
- 
- // helper functions
- extern void *vchi_allocate_buffer(VCHI_SERVICE_HANDLE_T handle, uint32_t *length);
- extern void vchi_free_buffer(VCHI_SERVICE_HANDLE_T handle, void *address);
--extern uint32_t vchi_current_time(VCHI_INSTANCE_T instance_handle);
-+extern uint32_t vchi_current_time(struct vchi_instance_handle *instance_handle);
- 
- /******************************************************************************
-  * Global service API
-@@ -87,7 +87,7 @@ extern uint32_t vchi_current_time(VCHI_INSTANCE_T instance_handle);
- extern int32_t vchi_service_destroy(const VCHI_SERVICE_HANDLE_T handle);
- 
- // Routine to open a named service
--extern int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
-+extern int32_t vchi_service_open(struct vchi_instance_handle *instance_handle,
- 				 struct service_creation *setup,
- 				 VCHI_SERVICE_HANDLE_T *handle);
- 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index 704afd470c88..0227c3f27697 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -428,7 +428,7 @@ EXPORT_SYMBOL(vchi_msg_hold);
- /***********************************************************
-  * Name: vchi_initialise
-  *
-- * Arguments: VCHI_INSTANCE_T *instance_handle
-+ * Arguments: struct vchi_instance_handle **instance_handle
-  *
-  * Description: Initialises the hardware but does not transmit anything
-  *              When run as a Host App this will be called twice hence the need
-@@ -438,14 +438,14 @@ EXPORT_SYMBOL(vchi_msg_hold);
-  *
-  ***********************************************************/
- 
--int32_t vchi_initialise(VCHI_INSTANCE_T *instance_handle)
-+int32_t vchi_initialise(struct vchi_instance_handle **instance_handle)
- {
- 	VCHIQ_INSTANCE_T instance;
- 	VCHIQ_STATUS_T status;
- 
- 	status = vchiq_initialise(&instance);
- 
--	*instance_handle = (VCHI_INSTANCE_T)instance;
-+	*instance_handle = (struct vchi_instance_handle *)instance;
- 
- 	return vchiq_status_to_vchi(status);
- }
-@@ -454,7 +454,7 @@ EXPORT_SYMBOL(vchi_initialise);
- /***********************************************************
-  * Name: vchi_connect
-  *
-- * Arguments: VCHI_INSTANCE_T instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *
-  * Description: Starts the command service on each connection,
-  *              causing INIT messages to be pinged back and forth
-@@ -462,7 +462,7 @@ EXPORT_SYMBOL(vchi_initialise);
-  * Returns: 0 if successful, failure otherwise
-  *
-  ***********************************************************/
--int32_t vchi_connect(VCHI_INSTANCE_T instance_handle)
-+int32_t vchi_connect(struct vchi_instance_handle *instance_handle)
- {
- 	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
- 
-@@ -473,7 +473,7 @@ EXPORT_SYMBOL(vchi_connect);
- /***********************************************************
-  * Name: vchi_disconnect
-  *
-- * Arguments: VCHI_INSTANCE_T instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *
-  * Description: Stops the command service on each connection,
-  *              causing DE-INIT messages to be pinged back and forth
-@@ -481,7 +481,7 @@ EXPORT_SYMBOL(vchi_connect);
-  * Returns: 0 if successful, failure otherwise
-  *
-  ***********************************************************/
--int32_t vchi_disconnect(VCHI_INSTANCE_T instance_handle)
-+int32_t vchi_disconnect(struct vchi_instance_handle *instance_handle)
- {
- 	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
- 
-@@ -493,7 +493,7 @@ EXPORT_SYMBOL(vchi_disconnect);
-  * Name: vchi_service_open
-  * Name: vchi_service_create
-  *
-- * Arguments: VCHI_INSTANCE_T *instance_handle
-+ * Arguments: struct vchi_instance_handle *instance_handle
-  *            struct service_creation *setup,
-  *            VCHI_SERVICE_HANDLE_T *handle
-  *
-@@ -593,7 +593,7 @@ static void service_free(struct shim_service *service)
- 	}
- }
- 
--int32_t vchi_service_open(VCHI_INSTANCE_T instance_handle,
-+int32_t vchi_service_open(struct vchi_instance_handle *instance_handle,
- 	struct service_creation *setup,
- 	VCHI_SERVICE_HANDLE_T *handle)
- {
+Jamal Shareef (14):
+  staging: vc04_services: Replace VCHI_INSTANCE_T with struct
+    vhci_instance_handle
+  staging: vc04_services: Replace VCHI_SERVICE_HANDLE_T typedef with
+    struct vchi_service_handle
+  staging: vc04_services: Rename callback VCHI_CALLBACK_T to
+    vchi_callback
+  staging: vc04_services: Replace VCHIQ_STATUS_T enum typedef with enum
+    vchiq_status
+  staging: vc04_services: Replace VCHIQ_BULK_MODE_T enum typedef with
+    enum vchiq_bulk_mode
+  staging: vc04_services: Replace VCHIQ_SERVICE_OPTION_T enum typedef
+    with enum vchiq_service_option
+  staging: vc04_services: Replace VCHIQ_CONNSTATE_T enum typedef with
+    enum vchiq_connstate
+  staging: vc04_services: Replace VCHIQ_BULK_DIR_T enum typedef with
+    enum vchiq_bulk_dir
+  staging: vc04_services: Rename callback VCHIQ_USERDATA_TERM_T to
+    vchiq_userdata_term
+  staging: vc04_services: Rename VCHIQ_CALLBACK_T to vchiq_callback
+  staging: vc04_services: Rename VCHIQ_REMOTE_USE_CALLBACK_T to
+    vchiq_remote_callback
+  staging: vc04_services: Replace VCHIQ_SERVICE_HANDLE_T typedef with
+    unsigned int
+  staging: vc04_services: Replace VCHIQ_INSTANCE_T typedef with struct
+    vchiq_instance
+  staging: vc04_services: Replace VCHIQ_PLATFORM_STATE_T typedef with
+    struct opaque_platform_state
+
+ .../bcm2835-audio/bcm2835-vchiq.c             |   4 +-
+ .../vc04_services/bcm2835-audio/bcm2835.h     |   2 +-
+ .../vc04_services/bcm2835-camera/mmal-vchiq.c |   4 +-
+ .../vc04_services/interface/vchi/vchi.h       |  56 +++---
+ .../interface/vchi/vchi_common.h              |   6 +-
+ .../interface/vchiq_arm/vchiq_2835_arm.c      |  10 +-
+ .../interface/vchiq_arm/vchiq_arm.c           | 170 +++++++++---------
+ .../interface/vchiq_arm/vchiq_arm.h           |  32 ++--
+ .../interface/vchiq_arm/vchiq_core.c          | 116 ++++++------
+ .../interface/vchiq_arm/vchiq_core.h          |  88 ++++-----
+ .../interface/vchiq_arm/vchiq_debugfs.c       |  14 +-
+ .../interface/vchiq_arm/vchiq_debugfs.h       |   4 +-
+ .../interface/vchiq_arm/vchiq_if.h            |  92 +++++-----
+ .../interface/vchiq_arm/vchiq_ioctl.h         |   4 +-
+ .../interface/vchiq_arm/vchiq_shim.c          | 116 ++++++------
+ 15 files changed, 358 insertions(+), 360 deletions(-)
+
 -- 
 2.17.1
 
