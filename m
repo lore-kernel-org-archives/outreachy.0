@@ -1,79 +1,269 @@
 X-GM-THRID: 6755642568101330944
-X-Received: by 2002:a62:3602:: with SMTP id d2mr35408799pfa.177.1572929998786;
-        Mon, 04 Nov 2019 20:59:58 -0800 (PST)
+X-Received: by 2002:a05:6830:10e:: with SMTP id i14mr362442otp.122.1572920612695;
+        Mon, 04 Nov 2019 18:23:32 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:7783:: with SMTP id o3ls3895952pll.4.gmail; Mon, 04
- Nov 2019 20:59:57 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxTaEmaG/5AKRXSSYJGA0hp1qBvyd4WCiiScthavRW3xe1J98V3gSSIpCt9VJh1vG1J/8sY
-X-Received: by 2002:a17:90a:8592:: with SMTP id m18mr3910381pjn.118.1572929997584;
-        Mon, 04 Nov 2019 20:59:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572929997; cv=none;
+Received: by 2002:aca:a890:: with SMTP id r138ls403706oie.11.gmail; Mon, 04
+ Nov 2019 18:23:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzLpL0xwQhhp24eHeBteIcpyQddkJ1nmiu1IqdsguHR94qV55yRdrRbtALSe/nXd/Hsjr2n
+X-Received: by 2002:aca:de88:: with SMTP id v130mr1912563oig.108.1572920611854;
+        Mon, 04 Nov 2019 18:23:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572920611; cv=none;
         d=google.com; s=arc-20160816;
-        b=NGq3pMh/lGPxR3S0X/zKA9MCYgpQAPkzN9t9Mom9m3jauxC+gmZKIv6uRyvAtRxfMJ
-         pSMeCHyYHsXJwj+bAeecIvaJA7auvkJH2zxKG+NDuEjBuOca/Hr8+RPKYKlGgV+wVTZe
-         bQnFkM6KUgn+aLLcxnTsW2aOPrKQ++a+j4tjlUO6nZKBcK9udpt3BLzP3cRLSjknbDw+
-         YL35LqydfZ8jfiey7R+OmiZvdzwo7RxM32GIR6EDNrv3KKSma5TiS7hVMRvtfHCSA7vh
-         3u3IlV6sCVwS886/TxGnabgFuJa2rRBUo+6UJH8bxPz3w3wH3sioqjwcJv1xVAkHuSjb
-         3z7g==
+        b=n7ZOWasF4H436MxinCwVMqqsdlYZaaRAdNYS7eET0dxg82CeflRSWOmHvKJraqUoz7
+         k1b6miHEI4cc8/C5bfSvzBs+EdsKn4ON4iwABV4FiWMYhVu3/rN6qIjbIuSTHItYMDn9
+         E/6a3+vhi4O7IzWnFvpb3ALxg3togJXdYNjRkA1UacIKjOlDW3i8/o6faJZGNslckPV0
+         PmN1lGVJGkaPRAfadGCFttIbmiFwEE1vBTVe2QZCBT1+KgOBtMUfYNZq+0vI9rPgK4zR
+         dy/X4ObafIPz4O+BZ/XCl6T4B6nbBtodYl+JJZqArT2d3by1BWogMU9HMGQvVwUFGrzH
+         lELQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id;
-        bh=STaCJzIb1RV7UYQ7WATazPSxTWKlrIXl97F4AEpT8NA=;
-        b=jjJ8cbBxmtVMkY/GHRrfw5OWYBWmKAD6/DTtELloZeFby59+u1JL6wIUYWrKtXD0+n
-         q5ApjX9jtRIWh7uihu/GB3drrMjalS1GAhvrzUYBZ2uOQaN2hAzL1crSREbFAemRqHn7
-         YCQy6nA8LKcHvxNOOH49upWBmD5npb438kQ21pjuVNmmNStIW0wCGc5X9dA5n++GNxtk
-         R1wC4qqh1hujQrfmExB6OZeNFWh0LqdJNsERqX2Jta7hRFpP/YozetCU+cnj7FAjtN2M
-         XbIriJn+Y0tHcm4ns2UCot7thzgTkC4g3vMj+s0pcUbRIMsDIAI+jD8+kUGQ/cGK7wXk
-         Gkrg==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=ixK+g9NmIOquF2TSES+OOVha+NupWLDUPvXjeKzULro=;
+        b=zmKaS3FXG+/B4I/pNn8AYwYahFBYJ2pHyZU7UWIVaxWOhgy/kDBwLIKLDs2nB130XT
+         gH6vW7D4tuayBQFaOFC94v9stblx2ivv/NA4a67L75D/xypzvRYC+tO5aoC2U7wYubmI
+         8sXwG+fyWD/8Gz68Au70H/RQnqJJB2HLu8uZi6tz+CirEy6KamQlb0HxB16JyOsVF6lY
+         T/FI4rO2vmYDMApmkFRZ+fzjfpp1eXgnEQ6FQz1mueaOuLIa6DASabpdQXX4kmZbeygT
+         cqibKEwicfnFFUqt+zLnkjmV1899Twl/nNfhb/HDSnAXLX9shnZALDwr/0NEuEbb5pw8
+         ICmQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.212 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0212.hostedemail.com. [216.40.44.212])
-        by gmr-mx.google.com with ESMTPS id c11si1055578pjn.3.2019.11.04.20.59.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KJchIpDz;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id v3si1064574oth.4.2019.11.04.18.23.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Nov 2019 20:59:57 -0800 (PST)
-Received-SPF: neutral (google.com: 216.40.44.212 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.212;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2019 18:23:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.212 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay06.hostedemail.com (Postfix) with ESMTP id 412FF1801A991;
-	Tue,  5 Nov 2019 04:59:56 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::::::::::::::,RULES_HIT:41:152:355:379:599:968:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1537:1567:1593:1594:1711:1714:1730:1747:1777:1792:2393:2553:2559:2562:3138:3139:3140:3141:3142:3622:3867:3872:3874:4043:4321:5007:7903:10004:10400:10848:11232:11658:11914:12297:12740:12895:13069:13311:13357:13894:14659:21080:21451:21627:21939:30012:30054:30090:30091,0,RBL:47.151.135.224:@perches.com:.lbl8.mailshell.net-62.8.0.100 64.201.201.201,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:fn,MSBL:0,DNSBL:neutral,Custom_rules:0:0:0,LFtime:25,LUA_SUMMARY:none
-X-HE-Tag: tiger32_90babfc2ae605
-X-Filterd-Recvd-Size: 1412
-Received: from XPS-9350.home (unknown [47.151.135.224])
-	(Authenticated sender: joe@perches.com)
-	by omf07.hostedemail.com (Postfix) with ESMTPA;
-	Tue,  5 Nov 2019 04:59:54 +0000 (UTC)
-Message-ID: <4df246124153bcece639fdd026c4eee629b4bb7a.camel@perches.com>
-Subject: Re: [PATCH 0/3] drm/tegra: Remove space after parenthesis
-From: Joe Perches <joe@perches.com>
-To: =?UTF-8?Q?Micha=C5=82_Miros=C5=82aw?= <mirq-linux@rere.qmqm.pl>, Jamal
-	Shareef <jamal.k.shareef@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, thierry.reding@gmail.com, 
-	airlied@linux.ie, daniel@ffwll.ch, jonathanh@nvidia.com, 
-	dri-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Date: Mon, 04 Nov 2019 20:59:43 -0800
-In-Reply-To: <20191105045337.GB1764@qmqm.qmqm.pl>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KJchIpDz;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id p24so7485997pfn.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 18:23:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=ixK+g9NmIOquF2TSES+OOVha+NupWLDUPvXjeKzULro=;
+        b=KJchIpDzwJIv6cT8V6IGzcPACS4Um2nfF+Do9VNfp0w5HWysfhs9LDRLIi2M1wzzxv
+         HZLe5ykkJyKy/c2wsAvqLHkCExm993kWjrPAXc9QjEzxFjZyJ1Bn5rhbdtVc4bfVmzA0
+         iCxiB+i4wYZypInvAjRSexnAG8995DpsIdjwAl2IBqdex6vhULdRroEbEy0UQY86oe8G
+         xz+GeotU73j8g9ZBfocMPlz1sg/ia7DQeuv2ogBkLXNarxRapu/VZvs+0V1jwowmTUqL
+         TfoeBfgp7D3PYZl/8mQ+ctxfBqPXJhmwxCXLc4nsZZO8nJiH07tOPKcAvmkeS6R5snCq
+         r/Kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=ixK+g9NmIOquF2TSES+OOVha+NupWLDUPvXjeKzULro=;
+        b=kS2UFvz2f76jmePc7PB7/yn/BqjKGloAx8nh+Q/fxt1Fr06bg4kCju7chW8nLntbUC
+         wQG2WAKNq8xGh4L/rSdZNKi6mW3vJrqjQktnlQ4CTNrXoRoF+iIHdcqCrtz14v3QVFcd
+         mTwZrE9LnGnfwLqMzJgpu/TR1SPnBtD1pYOcxkkPktb7Xe0J3tuuu0vacd3PURycZcBN
+         jUANG0Y0GLOyLpUQJL4/ygpmsxX9ExlHssn7kNwmbyP2bI2UjnYqCBULFkG/UFlXtOJ0
+         Hz2jYwm2xXh+bY8CbufOHhgRYtSKJK8JnVHssWJVWBYno0oHYQpVIFPZnD1o7I/GK7Ya
+         t13w==
+X-Gm-Message-State: APjAAAVF0bRTgqwcM7F+HBh09Z4A4SGSJN1WseTe8CNJ1hVL8MOd+K32
+	iVgFbQJb80M31PtcBJbpkzM=
+X-Received: by 2002:a62:7c91:: with SMTP id x139mr33389357pfc.119.1572920611096;
+        Mon, 04 Nov 2019 18:23:31 -0800 (PST)
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
+        by smtp.gmail.com with ESMTPSA id v17sm21482274pfc.41.2019.11.04.18.23.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2019 18:23:30 -0800 (PST)
+From: Jamal Shareef <jamal.k.shareef@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: thierry.reding@gmail.com,
+	airlied@linux.ie,
+	daniel@ffwll.ch,
+	jonathanh@nvidia.com,
+	dri-devel@lists.freedesktop.org,
+	linux-tegra@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Jamal Shareef <jamal.k.shareef@gmail.com>
+Subject: [PATCH 3/3] drm/tegra: gr3d: Remove space after parenthesis
+Date: Mon,  4 Nov 2019 18:23:22 -0800
+Message-Id: <54df25088b18fb99e44cfa3fb28d65ef8a0d3e40.1572920482.git.jamal.k.shareef@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1572920482.git.jamal.k.shareef@gmail.com>
 References: <cover.1572920482.git.jamal.k.shareef@gmail.com>
-	 <20191105045337.GB1764@qmqm.qmqm.pl>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.34.1-2 
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1572920482.git.jamal.k.shareef@gmail.com>
+References: <cover.1572920482.git.jamal.k.shareef@gmail.com>
 
-On Tue, 2019-11-05 at 05:53 +0100, Michał Mirosław wrote:
-> On Mon, Nov 04, 2019 at 06:23:19PM -0800, Jamal Shareef wrote:
-> > This patchset removes spaces after left open parenthesis.
-> > Issue found by checkpatch.
-> 
-> I'd say that those spaces make code easier to look at, so it would
-> be better to teach checkpatch to ignore cases like these.
+Removes spaces after open parenthesis. Issue found by checkpatch.
 
-Good luck with that.
+Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+---
+ drivers/gpu/drm/tegra/gr3d.c | 120 +++++++++++++++++------------------
+ 1 file changed, 60 insertions(+), 60 deletions(-)
 
+diff --git a/drivers/gpu/drm/tegra/gr3d.c b/drivers/gpu/drm/tegra/gr3d.c
+index 8b9a35b1cbb3..35d1dff067b7 100644
+--- a/drivers/gpu/drm/tegra/gr3d.c
++++ b/drivers/gpu/drm/tegra/gr3d.c
+@@ -176,16 +176,16 @@ static const struct of_device_id tegra_gr3d_match[] = {
+ MODULE_DEVICE_TABLE(of, tegra_gr3d_match);
+ 
+ static const u32 gr3d_addr_regs[] = {
+-	GR3D_IDX_ATTRIBUTE( 0),
+-	GR3D_IDX_ATTRIBUTE( 1),
+-	GR3D_IDX_ATTRIBUTE( 2),
+-	GR3D_IDX_ATTRIBUTE( 3),
+-	GR3D_IDX_ATTRIBUTE( 4),
+-	GR3D_IDX_ATTRIBUTE( 5),
+-	GR3D_IDX_ATTRIBUTE( 6),
+-	GR3D_IDX_ATTRIBUTE( 7),
+-	GR3D_IDX_ATTRIBUTE( 8),
+-	GR3D_IDX_ATTRIBUTE( 9),
++	GR3D_IDX_ATTRIBUTE(0),
++	GR3D_IDX_ATTRIBUTE(1),
++	GR3D_IDX_ATTRIBUTE(2),
++	GR3D_IDX_ATTRIBUTE(3),
++	GR3D_IDX_ATTRIBUTE(4),
++	GR3D_IDX_ATTRIBUTE(5),
++	GR3D_IDX_ATTRIBUTE(6),
++	GR3D_IDX_ATTRIBUTE(7),
++	GR3D_IDX_ATTRIBUTE(8),
++	GR3D_IDX_ATTRIBUTE(9),
+ 	GR3D_IDX_ATTRIBUTE(10),
+ 	GR3D_IDX_ATTRIBUTE(11),
+ 	GR3D_IDX_ATTRIBUTE(12),
+@@ -196,16 +196,16 @@ static const u32 gr3d_addr_regs[] = {
+ 	GR3D_QR_ZTAG_ADDR,
+ 	GR3D_QR_CTAG_ADDR,
+ 	GR3D_QR_CZ_ADDR,
+-	GR3D_TEX_TEX_ADDR( 0),
+-	GR3D_TEX_TEX_ADDR( 1),
+-	GR3D_TEX_TEX_ADDR( 2),
+-	GR3D_TEX_TEX_ADDR( 3),
+-	GR3D_TEX_TEX_ADDR( 4),
+-	GR3D_TEX_TEX_ADDR( 5),
+-	GR3D_TEX_TEX_ADDR( 6),
+-	GR3D_TEX_TEX_ADDR( 7),
+-	GR3D_TEX_TEX_ADDR( 8),
+-	GR3D_TEX_TEX_ADDR( 9),
++	GR3D_TEX_TEX_ADDR(0),
++	GR3D_TEX_TEX_ADDR(1),
++	GR3D_TEX_TEX_ADDR(2),
++	GR3D_TEX_TEX_ADDR(3),
++	GR3D_TEX_TEX_ADDR(4),
++	GR3D_TEX_TEX_ADDR(5),
++	GR3D_TEX_TEX_ADDR(6),
++	GR3D_TEX_TEX_ADDR(7),
++	GR3D_TEX_TEX_ADDR(8),
++	GR3D_TEX_TEX_ADDR(9),
+ 	GR3D_TEX_TEX_ADDR(10),
+ 	GR3D_TEX_TEX_ADDR(11),
+ 	GR3D_TEX_TEX_ADDR(12),
+@@ -213,16 +213,16 @@ static const u32 gr3d_addr_regs[] = {
+ 	GR3D_TEX_TEX_ADDR(14),
+ 	GR3D_TEX_TEX_ADDR(15),
+ 	GR3D_DW_MEMORY_OUTPUT_ADDRESS,
+-	GR3D_GLOBAL_SURFADDR( 0),
+-	GR3D_GLOBAL_SURFADDR( 1),
+-	GR3D_GLOBAL_SURFADDR( 2),
+-	GR3D_GLOBAL_SURFADDR( 3),
+-	GR3D_GLOBAL_SURFADDR( 4),
+-	GR3D_GLOBAL_SURFADDR( 5),
+-	GR3D_GLOBAL_SURFADDR( 6),
+-	GR3D_GLOBAL_SURFADDR( 7),
+-	GR3D_GLOBAL_SURFADDR( 8),
+-	GR3D_GLOBAL_SURFADDR( 9),
++	GR3D_GLOBAL_SURFADDR(0),
++	GR3D_GLOBAL_SURFADDR(1),
++	GR3D_GLOBAL_SURFADDR(2),
++	GR3D_GLOBAL_SURFADDR(3),
++	GR3D_GLOBAL_SURFADDR(4),
++	GR3D_GLOBAL_SURFADDR(5),
++	GR3D_GLOBAL_SURFADDR(6),
++	GR3D_GLOBAL_SURFADDR(7),
++	GR3D_GLOBAL_SURFADDR(8),
++	GR3D_GLOBAL_SURFADDR(9),
+ 	GR3D_GLOBAL_SURFADDR(10),
+ 	GR3D_GLOBAL_SURFADDR(11),
+ 	GR3D_GLOBAL_SURFADDR(12),
+@@ -230,48 +230,48 @@ static const u32 gr3d_addr_regs[] = {
+ 	GR3D_GLOBAL_SURFADDR(14),
+ 	GR3D_GLOBAL_SURFADDR(15),
+ 	GR3D_GLOBAL_SPILLSURFADDR,
+-	GR3D_GLOBAL_SURFOVERADDR( 0),
+-	GR3D_GLOBAL_SURFOVERADDR( 1),
+-	GR3D_GLOBAL_SURFOVERADDR( 2),
+-	GR3D_GLOBAL_SURFOVERADDR( 3),
+-	GR3D_GLOBAL_SURFOVERADDR( 4),
+-	GR3D_GLOBAL_SURFOVERADDR( 5),
+-	GR3D_GLOBAL_SURFOVERADDR( 6),
+-	GR3D_GLOBAL_SURFOVERADDR( 7),
+-	GR3D_GLOBAL_SURFOVERADDR( 8),
+-	GR3D_GLOBAL_SURFOVERADDR( 9),
++	GR3D_GLOBAL_SURFOVERADDR(0),
++	GR3D_GLOBAL_SURFOVERADDR(1),
++	GR3D_GLOBAL_SURFOVERADDR(2),
++	GR3D_GLOBAL_SURFOVERADDR(3),
++	GR3D_GLOBAL_SURFOVERADDR(4),
++	GR3D_GLOBAL_SURFOVERADDR(5),
++	GR3D_GLOBAL_SURFOVERADDR(6),
++	GR3D_GLOBAL_SURFOVERADDR(7),
++	GR3D_GLOBAL_SURFOVERADDR(8),
++	GR3D_GLOBAL_SURFOVERADDR(9),
+ 	GR3D_GLOBAL_SURFOVERADDR(10),
+ 	GR3D_GLOBAL_SURFOVERADDR(11),
+ 	GR3D_GLOBAL_SURFOVERADDR(12),
+ 	GR3D_GLOBAL_SURFOVERADDR(13),
+ 	GR3D_GLOBAL_SURFOVERADDR(14),
+ 	GR3D_GLOBAL_SURFOVERADDR(15),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 0),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 1),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 2),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 3),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 4),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 5),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 6),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 7),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 8),
+-	GR3D_GLOBAL_SAMP01SURFADDR( 9),
++	GR3D_GLOBAL_SAMP01SURFADDR(0),
++	GR3D_GLOBAL_SAMP01SURFADDR(1),
++	GR3D_GLOBAL_SAMP01SURFADDR(2),
++	GR3D_GLOBAL_SAMP01SURFADDR(3),
++	GR3D_GLOBAL_SAMP01SURFADDR(4),
++	GR3D_GLOBAL_SAMP01SURFADDR(5),
++	GR3D_GLOBAL_SAMP01SURFADDR(6),
++	GR3D_GLOBAL_SAMP01SURFADDR(7),
++	GR3D_GLOBAL_SAMP01SURFADDR(8),
++	GR3D_GLOBAL_SAMP01SURFADDR(9),
+ 	GR3D_GLOBAL_SAMP01SURFADDR(10),
+ 	GR3D_GLOBAL_SAMP01SURFADDR(11),
+ 	GR3D_GLOBAL_SAMP01SURFADDR(12),
+ 	GR3D_GLOBAL_SAMP01SURFADDR(13),
+ 	GR3D_GLOBAL_SAMP01SURFADDR(14),
+ 	GR3D_GLOBAL_SAMP01SURFADDR(15),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 0),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 1),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 2),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 3),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 4),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 5),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 6),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 7),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 8),
+-	GR3D_GLOBAL_SAMP23SURFADDR( 9),
++	GR3D_GLOBAL_SAMP23SURFADDR(0),
++	GR3D_GLOBAL_SAMP23SURFADDR(1),
++	GR3D_GLOBAL_SAMP23SURFADDR(2),
++	GR3D_GLOBAL_SAMP23SURFADDR(3),
++	GR3D_GLOBAL_SAMP23SURFADDR(4),
++	GR3D_GLOBAL_SAMP23SURFADDR(5),
++	GR3D_GLOBAL_SAMP23SURFADDR(6),
++	GR3D_GLOBAL_SAMP23SURFADDR(7),
++	GR3D_GLOBAL_SAMP23SURFADDR(8),
++	GR3D_GLOBAL_SAMP23SURFADDR(9),
+ 	GR3D_GLOBAL_SAMP23SURFADDR(10),
+ 	GR3D_GLOBAL_SAMP23SURFADDR(11),
+ 	GR3D_GLOBAL_SAMP23SURFADDR(12),
+-- 
+2.17.1
 
 
