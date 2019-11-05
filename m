@@ -1,73 +1,122 @@
 X-GM-THRID: 6755960127598100480
-X-Received: by 2002:a9d:590f:: with SMTP id t15mr3360476oth.118.1573140158838;
-        Thu, 07 Nov 2019 07:22:38 -0800 (PST)
+X-Received: by 2002:a02:1d04:: with SMTP id 4mr9896454jaj.48.1572994565515;
+        Tue, 05 Nov 2019 14:56:05 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6830:1e94:: with SMTP id n20ls1612981otr.12.gmail; Thu,
- 07 Nov 2019 07:22:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqydS7KQy0mPoXG9Or83h/xdstHuxCZJTUO7RY6U24BVtflOQqCP0p4FkpJgVXU5KI2usQdG
-X-Received: by 2002:a05:6830:551:: with SMTP id l17mr3671941otb.282.1573140157742;
-        Thu, 07 Nov 2019 07:22:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573140157; cv=none;
+Received: by 2002:a05:6602:22d9:: with SMTP id e25ls11943ioe.14.gmail; Tue, 05
+ Nov 2019 14:56:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqymJpWU8txS4hvWzE8PMU6/rTlExHVfLmVxgJCtr4RsGZ8g+Xx7EJXG9Y9N2HGbi8TnGnT/
+X-Received: by 2002:a6b:e403:: with SMTP id u3mr3924837iog.130.1572994564652;
+        Tue, 05 Nov 2019 14:56:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572994564; cv=none;
         d=google.com; s=arc-20160816;
-        b=NCoy6L2nOUvtGNp6G8+fgzcmn2tymxOgoj5sZEustgWeLe8GMARlr/s5xe1Y2dcBib
-         SF6JWkO3BwxGvCGLiHJAAnl+ndvapXvV4ZVpWUJUGIcga+V5sft0mkKdfueCVrLMcRxL
-         xRKaOeq5q1nOs8mftlLqYe89IkGoPxbnAqOB355R4yKezdDccI8L8lxqNacpHDnfIEaD
-         WNNocdOR0F2me68ENzFtwezuW5UNVUYbhNxIp70HZNZIOdycNDi9QBg375U90zRrAOCX
-         kuW8cPGh91qz9leTpsvHdOpw7af8s072oKK4DUdrMD1ggYI6MZdtNduuPb86xz6KIrnl
-         qsRw==
+        b=tivVip7IFd9FuhbS1bk6XJeOUKsrlwPV5PMzL4/tI6G1xSTeRTvXncUzRbClYmv5VS
+         9tZ6uaJzkzFHjBtToqdCSduD5W8+BbSfcOAliS0Wp7Nc2THJ7jlljYVLqrCfEU2pCJ4U
+         v8JTf/vJNKIExofPHhy2eIbnjYhP2MI3vmsh5SALW2wo+Ll5dnOSFlEGFb0K9LcYq6Z1
+         +TpQ4r9TulS4XuD0xAdlN70+lkbaaRz98ctw0g21BSWsLaJo9Zf8ErNSm/hxjyZUgMrS
+         z8MpJvVUos5iZG0kKlJO9Cxpy1aGbYwGl66NeDGfSfAtfSgO9Nom+SptA5h/MIsg6/eq
+         O7dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=A/JYZM98DzgOe+5QSqzw8qbwk67JgfV3LKiGMtEDlc0=;
-        b=gWgkPFrjlL8RFuLIZoPQqeW70eoISpYV8aMajJZ2yldaZT/m6xTopW6dj4GM1CIx3M
-         Bemuiehp75LM35a5DJf6L1Tz61wV4rcm/oGyr2igGpASFRH8pdtNaWqlTQdXpJfDVcI3
-         82/EPYVCcprsWYh/k1ImdsDnTzszcs+PGbby65edqed/1e3ZfNF7msgfEFRWuJuvh9z8
-         6aliK0tE4kfaG2gVBzaMdLB7HFhAIj7ncBtA88ucjmGaPiRWFuJReYnxIQB5y+uin96B
-         1o43stBmmbX5emx7B35ViJj96+jnKq3MwXoJB6JfRbKfMYD55BjkKyF+K9BdwnPUATAU
-         t3Vg==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=gOeosXgq+GHii5tlBs7DLTPJ0mfqaKhQDaY62Om8W94=;
+        b=SAzlm/jidlGfSldBIIEaOY8S6ryIEAAFKIQcxzrlVVSE2ambeiMUgF2LUeQw3p9Wvc
+         jylvfGqUQ8ioyUD2aVrDoA6wC6acSZHkbcfsiDj+AnQG2q0wWeVY6SQUZuk63An2lp9K
+         1LeYnHUX5DWcwKAFGnIKjOyNclGJJrQsUMUa6lS4EnNcWnfB6upx/tQslyizpSjq4DzS
+         U09w0yKS47qcd2KtvnGLTM8lpO+lNkII4ESux7YyB/ZsNzMamr+jqXfUecF0/FVzm0UB
+         cjG1Lmn+CsyVWCtyTWFHtZXkJqEfs4yjkvtm6jzyYLJT+vVIMRuL3OK9a2KbXsKQBakY
+         +Vhg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=fpfa+WqW;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id i15si178759otk.5.2019.11.07.07.22.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RPuGrdPu;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id 75si1363895ilw.3.2019.11.05.14.56.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Nov 2019 07:22:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 05 Nov 2019 14:56:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=fpfa+WqW;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 64E242087E;
-	Thu,  7 Nov 2019 15:22:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1573140156;
-	bh=Uw+vBOceBsLok6F6RMiZm/t9PFft2aLEybOEPd7Oj5g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fpfa+WqW/Al1UPHcVIn2VB6zYirUHW8r5vGH5A1S7EsTTHSmKyeANPqmOs4ZvKtxr
-	 iaL2Nv0cEFIDMniT7DwlV15LuVe4kunqeyjmBz7DqQWCa/B2wngEG/E0SBdVZIDZxV
-	 n6Slpb7S+iQpNsrMfjlOqssCO65pDm8w4VpfGnNg=
-Date: Thu, 7 Nov 2019 16:22:34 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Jamal Shareef <jamal.k.shareef@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2 04/14] staging: vc04_services: Replace VCHIQ_STATUS_T
- enum typedef with enum vchiq_status
-Message-ID: <20191107152234.GA190253@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RPuGrdPu;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x644.google.com with SMTP id l4so5178403plt.13
+        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 14:56:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=gOeosXgq+GHii5tlBs7DLTPJ0mfqaKhQDaY62Om8W94=;
+        b=RPuGrdPufBYrf04ByJ+JlJdRLH4VKKj/H6jTdUoUCRqhvI6U8e10+Y9GV/E61EZUgj
+         S4kdkZlc/3LGGyJtAttqiAUxHVYirZNc0tz4X3bV2kspnI2tE9tjI1+fDaO7z0TvXasZ
+         Mwrz9MFATnpHpM3gFxeg6ciajsV8X2nHzlO1MOBiZwYJFBTmH9WsiKG6Klp+s6gTIWPO
+         x67063Z9/b5PEaFd7hGddUONbDtqq6MFexVXKudgjUDH3YUqZtPBQbr4jQ+p0UFrytC9
+         U9iphE7xHaVO8FWbC9KcyoBxAoj1U/PTvTrjF94EqVxplEjOTByd4B7XvK0KvioWBoN8
+         OW/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=gOeosXgq+GHii5tlBs7DLTPJ0mfqaKhQDaY62Om8W94=;
+        b=ZwauNva2FOYObqV3XGK7tm5Md/AmYaWU8JW3SODDW6NB2/msEXIZmsi9HBage+j0cv
+         uzdg1aXV5k7qPopoteqVbO0SaL9721ovSHm6NOlHFb4xPvLRtq+YvPq2g/web5W6WJFy
+         pmE9dMzRcDhm74R0gbclYmH3782yDpx/qa/nNAx3WQrv0q3EfdpYDQ/YIFBf7icIrbhe
+         KR+92RJ2FWJV0upQT6GsOUatJTEZIx5HGpifGcyQoFytx26kBmeFqs1bXcfsIwZ7U7jq
+         vD8TsYqFHGiwFwMd44rV1+EGACTA4eDHWGkwShAxi5SZLK/v4Ha8fu9HGW2OQnzpm3zA
+         uY3g==
+X-Gm-Message-State: APjAAAWzA54PmTzlZM3p3x1UuGw1fYCMxLuTq0U4BLsoTi0WoNOANMwG
+	HxNhmvLOp1WYf/lzDbaxgeimTJVIJzn9qw==
+X-Received: by 2002:a17:902:525:: with SMTP id 34mr855772plf.55.1572994564302;
+        Tue, 05 Nov 2019 14:56:04 -0800 (PST)
+Return-Path: <jamal.k.shareef@gmail.com>
+Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
+        by smtp.gmail.com with ESMTPSA id f35sm438094pje.32.2019.11.05.14.56.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Nov 2019 14:56:03 -0800 (PST)
+From: Jamal Shareef <jamal.k.shareef@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	Jamal Shareef <jamal.k.shareef@gmail.com>
+Subject: [PATCH v2 14/14] staging: vc04_services: Replace VCHIQ_PLATFORM_STATE_T typedef with struct opaque_platform_state
+Date: Tue,  5 Nov 2019 14:55:31 -0800
+Message-Id: <ed1a877637a53881ed65dc232da04dc40fbd9fc3.1572994235.git.jamal.k.shareef@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1572994235.git.jamal.k.shareef@gmail.com>
 References: <cover.1572994235.git.jamal.k.shareef@gmail.com>
- <7509cfa679c6d383ad979282f3d33b227d4d7f87.1572994235.git.jamal.k.shareef@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7509cfa679c6d383ad979282f3d33b227d4d7f87.1572994235.git.jamal.k.shareef@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+In-Reply-To: <cover.1572994235.git.jamal.k.shareef@gmail.com>
+References: <cover.1572994235.git.jamal.k.shareef@gmail.com>
 
-On Tue, Nov 05, 2019 at 02:55:21PM -0800, Jamal Shareef wrote:
-> Replaces VCHIQ_STATUS_T enum typedef with enum vchiq_status to match kernel code style. Issue found by checkpatch.
+Replace VCHIQ_PLATFORM_STATE_T typedef with struct opaque_platform_state
+to match kernel code style. Issue found by checkpatch.
 
-Please line-wrap your comments properly.  I'll fix this up...
+Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
+---
+ .../staging/vc04_services/interface/vchiq_arm/vchiq_core.h    | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
+index 05b39c3564f6..419bcdd165b4 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
+@@ -236,7 +236,7 @@ struct remote_event {
+ 	u32 __unused;
+ };
+ 
+-typedef struct opaque_platform_state_t *VCHIQ_PLATFORM_STATE_T;
++struct opaque_platform_state;
+ 
+ struct vchiq_slot {
+ 	char data[VCHIQ_SLOT_SIZE];
+@@ -468,7 +468,7 @@ struct vchiq_state {
+ 	struct vchiq_service_quota service_quotas[VCHIQ_MAX_SERVICES];
+ 	struct vchiq_slot_info slot_info[VCHIQ_MAX_SLOTS];
+ 
+-	VCHIQ_PLATFORM_STATE_T platform_state;
++	struct opaque_platform_state *platform_state;
+ };
+ 
+ struct bulk_waiter {
+-- 
+2.17.1
 
 
