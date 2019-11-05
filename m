@@ -1,114 +1,92 @@
-X-GM-THRID: 6526240605789487104
-X-Received: by 10.55.33.197 with SMTP id f66mr4313341qki.59.1519508800621;
-        Sat, 24 Feb 2018 13:46:40 -0800 (PST)
+X-GM-THRID: 6753896393761357824
+X-Received: by 2002:a67:e446:: with SMTP id n6mr4737120vsm.56.1572974001918;
+        Tue, 05 Nov 2019 09:13:21 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.55.39.201 with SMTP id n192ls5710336qkn.11.gmail; Sat, 24 Feb
- 2018 13:46:39 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtE7YIKMTg2sFu1thGncpvj16tHNHzDINbBjrG69t8BcRLAAb6HJxY6egewdczxVzfOfOD3
-X-Received: by 10.233.232.139 with SMTP id a133mr4236921qkg.25.1519508799270;
-        Sat, 24 Feb 2018 13:46:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519508799; cv=none;
+Received: by 2002:a67:e302:: with SMTP id j2ls1572162vsf.3.gmail; Tue, 05 Nov
+ 2019 09:13:20 -0800 (PST)
+X-Google-Smtp-Source: APXvYqymLPIjQBJ67iT1Gnqv5r2zS8R8Na/mcGndZkZIBY6eorS/RthB6J8smHGQfRSDpCcO2+wp
+X-Received: by 2002:a67:e290:: with SMTP id g16mr16111262vsf.54.1572974000932;
+        Tue, 05 Nov 2019 09:13:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572974000; cv=none;
         d=google.com; s=arc-20160816;
-        b=wp9oJ3HnFa/7Ib7NgHvdtlpNvPX7sjv6DQhbdL9nwn1dlDVlJM6RCX6Ckfp3fbbwkd
-         lXGiTj+lHBZFAZbRmG6pnsI/3cw+5o7RmDAow6NaMCnDT7Rbr8p/g60SpQ/ksfRGxg0Y
-         crTKjFVMAHx1MWhf22Fs7/QfS8979gvewcpBeBi1+v8OD5WEvZCPzZwUlC8dbnrOr/kM
-         Jxuz7jmVGburmWahfcyGAYcP30GMRcXfovtQ5Rkl7qTYYwML3G6TbKLMhZ7+4MOYkmBh
-         +SejAIEDvkq4eD4RVe1sbYeIclHZvjfa8yq7WTTALLfMGF4ovtZzIl+XJTStqNBV6OXy
-         HSlw==
+        b=Zr+ah/Cl2tHfJrfqRM2nMmQ1Yw2ArJLCVbUsgiOZKU84zwhTZYhTuaT4j6L+LkaXrb
+         DUd2MUiw+z3qbleL6J6pxMCwpX7aQ2xhz6ZXIDR9RgD+DGxKQeZSSFJ5pLOkv/Tg7GmT
+         iEH5u66cJ9lv+n4q87X/XrQAoPuIhNovVA6pTGIH7X+g0I4bKGILBkTXo6H/XThlOqQI
+         tpuMdqOeZ6SRoRboQUCoW1GSl9V8eXFTv2aCzA1OrTa9Fni4tS8/gKKE+8sTgW0CEVbK
+         BokA1PvR0glehRlM8PmrKek5DfLYqe+Q8npRTrWOeCDIKd6fwOaaApvMjSNX3BnRAZnt
+         JmVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=yZ1rSBywqeoP+wHxAF9+DLeOYdpih3am23bzeQp/fVE=;
-        b=CsaSUQWNcIl3gcE8hWhuq+k65NN0Yqy+0Bw/swGsOhtNo9AxSD26w/zLLaoeD5dXXi
-         ZJ9GxkYYdpab5SZ243OVF70SX0FDTuqq9X8cqTARphCs6cryi4QxMDSL6l/scd8irT3N
-         +v7d8K/3fbV3/AMf52RB8CbFDL+dgZiGbB0uyAh1haewt+TlW27X61e0rB5Q0YcJzLED
-         Zr7GBmAhNje2bBcK5oZ/eTYZJpkWAwnwfXaEffWbuvQ3Hqmfn22YMpV/2xFF4rkqNSe7
-         xdw1beg3uRZ3g/TAKZCid8mkAR7IgIbONd7yZEyvwzXMVSyzf0PcZC/YY/u9XRVo0ebU
-         7K1w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=VvoivI3ilyWJbskEeLF/R1e9A6iNDnvjpT5Db98yOGU=;
+        b=tpzb9tGPBLznqNxPFrP0T5VYduYhBjkAaU2T0w4w/nmDaJUvyLTyRUAqp8ZoGQf9MI
+         e2ncOsOn3JXYyJyXR7BYognqTgqXtCIIuR80YxuLPEgtx/S2dTVk44gE4K3jH9bBmLW8
+         2veJazqPIgvWkIKQa3XVgl+RlcPGTbOW5wNYe6IL1yoRwdvCRLsI95e1jEOvfkxboSr0
+         0q+ucYW+b6fCtp22PTy/hvUzOxoniB2zQ7Ws+9o5xweEaUjZqX/n1pC3614H7mq4tOKe
+         p35Vq4IwFgKmGifcQmMo3nHD8whw1wp5lvwVu+n3vjk10RJ8aXqxE16oCDvBH8Mav/67
+         0ndQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q9QPRTWi;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pg0-x231.google.com (mail-pg0-x231.google.com. [2607:f8b0:400e:c05::231])
-        by gmr-mx.google.com with ESMTPS id d10si342286qtf.3.2018.02.24.13.46.39
+       dkim=pass header.i=@kernel.org header.s=default header.b=h+83HwU3;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id s197si908629vkd.5.2019.11.05.09.13.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Feb 2018 13:46:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) client-ip=2607:f8b0:400e:c05::231;
+        Tue, 05 Nov 2019 09:13:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q9QPRTWi;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::231 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x231.google.com with SMTP id l4so4719626pgp.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Feb 2018 13:46:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=yZ1rSBywqeoP+wHxAF9+DLeOYdpih3am23bzeQp/fVE=;
-        b=q9QPRTWi+z7Cd5noum3RbF/988yBUSC9t6cu1Swau5BR2mj/p2UQhqHbuDpo27KKcp
-         2n25ZXEPtl2G/Jogcfa9fEFDSVb4npILQyHpAlnD0SFBzqNd+ziFykX6Seie4KhNKKGY
-         +XDm7wKsBLfOOjKELubPRALk4K9uP/zleJ+lBwvojh7+n91Hif5oOMUnEzDpBtnj4Z3X
-         hXGOXJVZpYNI9323MgcszdWseLRxacIGUcPAcDemrE+UL13+7qsjsktWk/4eP0eZVlwP
-         ECkg9Wo69DjhCxrFto0NUS0hKPz0JnKeMmuEesMWBiukI0FkPaECh7Gb1/jCFjKQ8A9i
-         sLog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yZ1rSBywqeoP+wHxAF9+DLeOYdpih3am23bzeQp/fVE=;
-        b=Nvk9tU+xe513iima8C82v2nZPcOvlXWmMppXBxtQEgcHUAmJg8izcZSqDEio/XknXa
-         OkzVgZA7VJfGNjAppN/Ia5sC3oi3UnIgSWW1DwP0bqttkZrSoC2PEcn2DDAkvFr7JYAH
-         sxZBPg8j6+GNgB4d21meSMXEFfJHwgxFaBUVeklip6uxzwh0Fn9iYnvBYJcTYYK4IB27
-         k4ZsGZCI1X4pJmqeX2o9FBX4ClR3rzngYa/LOq4210Gj6HQAtXpppPU1PXrSbJGBOABA
-         XM7LaEsnQlok+sRyKYuIaRS1CpvdR36yllMg9Wa63TMf8qzxZC0K12zsi4M5Z3QJx5aQ
-         UC/g==
-X-Gm-Message-State: APf1xPADI4BrAxoWwo1yU1qqnmNBWPmDk61TqDVunbH/IWMcjUg6Bu4+
-	EjE6rONAmNPbF/cwRpXOLIs=
-X-Received: by 10.98.65.72 with SMTP id o69mr3902236pfa.97.1519508798902;
-        Sat, 24 Feb 2018 13:46:38 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id 7sm10997737pfk.72.2018.02.24.13.46.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Feb 2018 13:46:38 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH v3] staging: rtl8192e: use struct pointer to get the size of the struct
-Date: Sat, 24 Feb 2018 13:46:33 -0800
-Message-Id: <1519508793-11537-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=h+83HwU3;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (unknown [62.119.166.9])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B0BAB2087E;
+	Tue,  5 Nov 2019 17:13:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1572973999;
+	bh=ETdGU1NpdEA1nZ2jvi6333h7UmDbvQaaUerdtMca1V0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=h+83HwU3DdCjyD2XLa/Y+t9sNuy3DFjBb1pL2x2TX7EB+kWkz3XVRpiP9kyNLA9Rc
+	 OsJpOQO2UeSf4WPDgls42y50x/o1JHup57b7pVnUDmA9C3PX2T1r/gP6IPW7VHC9Zs
+	 oy+dkexqSq/PoxRwspY1GqxlJIPDDUYJa6/Emcpg=
+Date: Tue, 5 Nov 2019 18:13:08 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jamal Shareef <jamal.k.shareef@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, eric@anholt.net, wahrenst@gmx.net
+Subject: Re: [PATCH 01/14] staging: vc04_services: Remove instance struct
+ typedef
+Message-ID: <20191105171308.GA2815447@kroah.com>
+References: <cover.1572915104.git.jamal.k.shareef@gmail.com>
+ <ecf031601dd7c0beb9bf6ac279dbeb912994025a.1572915104.git.jamal.k.shareef@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ecf031601dd7c0beb9bf6ac279dbeb912994025a.1572915104.git.jamal.k.shareef@gmail.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
-Use pointer to the structure to get the size of the structure in order
-to conform to the Linux kernel coding style. Issue found using
-checkpatch.
+On Mon, Nov 04, 2019 at 04:55:11PM -0800, Jamal Shareef wrote:
+> Removes vchi instance struct typedef. Issue found by checkpatch.
+> 
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
-Change in v2:
- - Use single line when the number of characters is less than 80
-Change in v3:
- - Improve the subject line and the commit message
-No code change since v2
- drivers/staging/rtl8192e/rtllib_wx.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Your changelog text still needs a lot of work.
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 03fbff0..74d4d2d 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -371,8 +371,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 		struct lib80211_crypt_data *new_crypt;
- 
- 		/* take WEP into use */
--		new_crypt = kzalloc(sizeof(struct lib80211_crypt_data),
--				    GFP_KERNEL);
-+		new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
- 		if (new_crypt == NULL)
- 			return -ENOMEM;
- 		new_crypt->ops = lib80211_get_crypto_ops("R-WEP");
--- 
-2.7.4
+And your subject line is wrong there is no "instance struct typedef".
 
+A "better" subject might be:
+	staging: vc04_services: replace VCHI_INSTANCE_T with struct vhci_instance_handle
+
+And then describe why you did this in the changelog text.
+
+You are not just "removing" you are changeing something, and you need to
+say exactly what you are doing and again, why you are doing it.
+
+Please fix up the changelogs for all of these patches.
+
+Often times splitting patches up and writing good changelogs are more
+work than the original coding part was.  It seems to be that way here.
+
+thanks,
+
+greg k-h
 
