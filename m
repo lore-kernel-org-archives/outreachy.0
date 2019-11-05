@@ -1,57 +1,57 @@
 X-GM-THRID: 6755718813793124352
-X-Received: by 2002:ac2:4d10:: with SMTP id r16mr20349715lfi.70.1572941188655;
-        Tue, 05 Nov 2019 00:06:28 -0800 (PST)
+X-Received: by 2002:a19:6454:: with SMTP id b20mr10948374lfj.159.1572941100547;
+        Tue, 05 Nov 2019 00:05:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:c4:: with SMTP id 4ls1119552ljr.6.gmail; Tue, 05
- Nov 2019 00:06:27 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwzlz9kDZR73jcCqpDr+K5+2B6Ep9PTwSyj5v962HxQbO7AC8mtQCXX1BLd27i42HgZc2VS
-X-Received: by 2002:a2e:975a:: with SMTP id f26mr22586144ljj.74.1572941187732;
-        Tue, 05 Nov 2019 00:06:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572941187; cv=none;
+Received: by 2002:ac2:59dc:: with SMTP id x28ls1516020lfn.3.gmail; Tue, 05 Nov
+ 2019 00:04:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzMxwfaCTMwtCsZ0vlesZdRWhdSR1eo3GfwQIT2uoneWGtqqc98OeMZMBpSS87qYJC315zC
+X-Received: by 2002:ac2:4d17:: with SMTP id r23mr20553144lfi.56.1572941099502;
+        Tue, 05 Nov 2019 00:04:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572941099; cv=none;
         d=google.com; s=arc-20160816;
-        b=bfnAw5Up7G3Cxq/oJlZylljmHcKGg8lr5+02NYhtHf4ymow/y/m+gz6WBhHNdK3qcY
-         kyYu6B5yDCjc6wIgJqtdrAcUYRmy1lPcVFPXIjBQs/jDvf/tDcl9563gDOHCxKlTUfky
-         Z4rhn4qRCulMvUr7+Gy0J23M6KKsN10uJdPmf54aAh1tpRuVdnOfDyJUljVrZah4FiRp
-         2Md2WdnJvjkpYF3pnM5XIw/LdaUBxD+L0gX1tS2IvlkSq+TwUpoK/5GhcBNehmLsABo2
-         AGW7/5Rq6WRXqMaEQvGmshX2FGXkSSzkdfdZ+xs4UyJxpg8ai0uW5wLbbd8Xz3Wf5Uxh
-         U5bA==
+        b=Ef1gd/23m2kFF7mdKjiWA9DK/Hwvfyac5IqU8lYbWpYyO2kFb5BxyCfYBMgxgz8PAO
+         eWv+mrUKafL0ZqTgV+VZXuzopiIUXOa7OSOROToQYdIRZiAYtkcrEp5d4X//X1kAUUjR
+         biJ2ntpXGzuqInK+yfpHXs8WiYS2aI48zB6KRu9F9UDURknzkoTaaIwb304PB7wCcRnS
+         GBTUlJxYJVx5k5iuk/UAAubUuAz7U4iVETx6zr0R05c6VnEwLXXBfyYXyr+YUhzxBE6F
+         30VfyBCZAGSNzu9cCzBuqOKW0UIJ0S+lJX5DHW3J/rEfJnNEUJ4/1yFaCA9edpp77c+I
+         QVUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date;
-        bh=QGY8wJFMGXG+Gxq7bahse/KS5jh7gwVzGp71KIWAcoc=;
-        b=mnRJhn7eJ+1fVtzVyEy67jNNPusE1G6TQbVOCyNjFRxH586l0oQXsQFBraDwt4ge3P
-         36iEnWh6Uob+bG/jtJOquG3uWlGDH2zqRiqqaXRBgnQHTWmAThCZrM8DmVneQw9nxewu
-         KK7I6+qok7lXr6jaWhCJiIELkUmg8oldW9GODhbQfCTUQnognZ04W5BDeo37RXgEHiK5
-         uGZqq1twjnnc5Duzm+CIkF6KyxGK8E6VropBJvFU3mbG2HVpQBFi09sDJXePhf1LKzVE
-         1GVMqw+aq8MydU8VhKLmjAgHvWHqOV833mfmR/ILWFVd6dRV/ZnfP7RvSe2TwG+6BWOo
-         jcbw==
+        bh=4/RJ4LUf/Hajkyq6TmHJRp3YKfZYRb6PoNaL4qCJrkA=;
+        b=BE5KmLo5N2elZ7E1W66wQ0k01BE65BaVjYSKbnWKoHOo7Z9unYtYE1WXkG28IPdphc
+         MxgzdsuItqEJMiFp+sWVgzD+H9dRukFtFW5bE1wax6l6KpcpaRsy8RhDY4P+DaAQzE53
+         0E6110ak104fXrxDQG5Jckkctl5Ji8J2WyCaqoW2XEyLVJYJIgaTDZF6bWyuEYkuc8uk
+         lO252wYRsP9BhIAkfyCjoPfUvfhGhs7vfVP+abHpDxQBI/4PUiJw3666I5C1Ce/a5R6k
+         SDEg0joYyu6X6e6MQwW8aUFKnLZxYnuTULsbB8gOTT1eWIoSJngxuR2wklHxy9aaOYO7
+         4LXg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 Return-Path: <julia.lawall@lip6.fr>
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id x23si563852lfq.0.2019.11.05.00.06.27
+        by gmr-mx.google.com with ESMTPS id j14si1125668lfm.2.2019.11.05.00.04.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Nov 2019 00:06:27 -0800 (PST)
+        Tue, 05 Nov 2019 00:04:59 -0800 (PST)
 Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
 X-IronPort-AV: E=Sophos;i="5.68,270,1569276000"; 
-   d="scan'208";a="410349394"
+   d="scan'208";a="410349114"
 Received: from abo-45-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.45])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Nov 2019 09:06:11 +0100
-Date: Tue, 5 Nov 2019 09:06:11 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 05 Nov 2019 09:04:58 +0100
+Date: Tue, 5 Nov 2019 09:04:57 +0100 (CET)
 From: Julia Lawall <julia.lawall@lip6.fr>
 X-X-Sender: jll@hadrien
 To: Nachammai Karuppiah <nachukannan@gmail.com>
 cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
     Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
     outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: qlge: Avoid NULL
+Subject: Re: [Outreachy kernel] [PATCH] staging: qlge: Avoid NULL
  comparison
-In-Reply-To: <1572940458-109252-1-git-send-email-nachukannan@gmail.com>
-Message-ID: <alpine.DEB.2.21.1911050905350.2548@hadrien>
-References: <1572940458-109252-1-git-send-email-nachukannan@gmail.com>
+In-Reply-To: <1572938351-108779-1-git-send-email-nachukannan@gmail.com>
+Message-ID: <alpine.DEB.2.21.1911050904380.2548@hadrien>
+References: <1572938351-108779-1-git-send-email-nachukannan@gmail.com>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -60,20 +60,14 @@ Content-Type: text/plain; charset=US-ASCII
 
 On Mon, 4 Nov 2019, Nachammai Karuppiah wrote:
 
-> Replace NULL comparison with boolean negation. Issue found using checkpatch.pl
+> Remove NULL comparison. Issue found using checkpatch.pl
 >
 > Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
-
-I saw this just after my ack.  I assume you didn't change anything in the
-code...
 
 Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 
 
 > ---
-> Changes in v2:
->   - Make the commit message more clearer.
->
 >  drivers/staging/qlge/qlge_dbg.c  |  4 ++--
 >  drivers/staging/qlge/qlge_main.c | 18 +++++++++---------
 >  2 files changed, 11 insertions(+), 11 deletions(-)
@@ -190,6 +184,6 @@ Acked-by: Julia Lawall <julia.lawall@lip6.fr>
 > --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1572940458-109252-1-git-send-email-nachukannan%40gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/1572938351-108779-1-git-send-email-nachukannan%40gmail.com.
 >
 
