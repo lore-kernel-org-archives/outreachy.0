@@ -1,208 +1,136 @@
-X-GM-THRID: 6250833929703522304
-X-Received: by 10.182.102.38 with SMTP id fl6mr7367493obb.46.1455385687419;
-        Sat, 13 Feb 2016 09:48:07 -0800 (PST)
+X-GM-THRID: 6754760383787958272
+X-Received: by 2002:a1c:48f:: with SMTP id 137mr1709009wme.68.1572915856990;
+        Mon, 04 Nov 2019 17:04:16 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.83.9 with SMTP id i9ls2753157qgd.61.gmail; Sat, 13 Feb
- 2016 09:48:06 -0800 (PST)
-X-Received: by 10.31.47.131 with SMTP id v125mr7652038vkv.11.1455385686677;
-        Sat, 13 Feb 2016 09:48:06 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x22d.google.com (mail-pf0-x22d.google.com. [2607:f8b0:400e:c00::22d])
-        by gmr-mx.google.com with ESMTPS id u66si2219995pfa.2.2016.02.13.09.48.06
+Received: by 2002:a1c:7406:: with SMTP id p6ls1218848wmc.2.gmail; Mon, 04 Nov
+ 2019 17:04:16 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxjoBftT02K5HfZ6aHSA1ftIgZMQQWZRPSD78RrXdZgonhBVnlJr+oUUi01KvnlT9MZ2vpO
+X-Received: by 2002:a1c:a751:: with SMTP id q78mr1684509wme.129.1572915856021;
+        Mon, 04 Nov 2019 17:04:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572915856; cv=none;
+        d=google.com; s=arc-20160816;
+        b=u+wbcD4Qd2KcgnWd3YINmuZAofVm/ul4kant7e1H3D9NZQZKNPHPlSF8BRFYgnDWvt
+         O0zy+f+f+jBYQlP7dTlc0pJqpKenztpLLMHysV7UHVFvZ9h97UlFEfa1kAxW7ZOgFhM8
+         dLzmvr5fHZADAZ+RIuRY8k/YHs+u1jW2hhrki497jViJRg0wAfa1aTV3gEO0A5qJJxd4
+         Z9TtVl2e0kNN7WoVZKKdLpegRgeQ5pixAmXBFcrHYYclLmcj+kvcbRm6OqIZdmCsH7b7
+         aCht+dpdpSaOzYdw8Zc1QLct7Ld4wrn9GpjDQptnNSHJVs3WVa6adZj7T1R187eTiVqz
+         /j3A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=FpoFbIZM9ifIww4YW3b4mTmE1CRomDkMPyQExokuAO4=;
+        b=kujP9Zm7EF9e2yHyE6lya79kx2UoQ8Y68ZK3g5LPAFKKm+eA0PVIWN5WaHl1+eeABs
+         8/Pw63vASf9dnV7hewJ0AbTIN47TuC80IQQ8DvB0IBHB92cZqQU6lUTPvKgckccKoWJa
+         I9PbfrOwwslXgKjwMlMrrQ0vNTadmJEkknLkpHZiq+YaPS4wqJaaQdSY2Eftbf3vOZhc
+         NAo9A5qXGw0X1IcHqssc1S7nEnN7I/tE+bbe1eUMkhGNkCCOJFdhOji7oqL+T3YTtRlW
+         lmS+i5wELsHSP3sMTCGFZJGyMCBZuyn8C31wNKaorSdSYGy3hbbngbaRnOySdHQ9YYUc
+         9uTw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ek1BuC9i;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id s126si1389574wme.1.2019.11.04.17.04.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Feb 2016 09:48:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) client-ip=2607:f8b0:400e:c00::22d;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2019 17:04:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::22d as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22d.google.com with SMTP id e127so64266528pfe.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 13 Feb 2016 09:48:06 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ek1BuC9i;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x442.google.com with SMTP id t1so13363224wrv.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 17:04:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=3FfJ8DVHFZhQTTUEym76/pkniOCRLWMLkGF0ozBe+0k=;
-        b=Si2rB5zHUDnT1lJAwO8FUIJ367B9PwxR7NbBVeWsTbb+YhGh6LJkh3IzeF5kNngrhC
-         2lTQ2aCNdo7vuI9Yw7QCfWSw8wBL8DH5WFBCJEcgnFQMqeVMhqjbziEkyzAZADHW5jTq
-         0IM4JkwLdqTXH7o5VSMkD67dUKOLCpZ1j1fzuYiYDViFfDXNClzQaIVe10Nv/sI5l9l3
-         trEdro/7EvDqBub4QykcVHW4LW95oO2eM8HduIZh5x0fbBjgAT58O1J3YHqZSfCY3L+d
-         DkbDbaS/Am6ZlCfUWKE92X3a1++uU9mi3MQbiaXH2tKvS7XF3uToPfXnRoEzhrAW3JzN
-         ly+w==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=FpoFbIZM9ifIww4YW3b4mTmE1CRomDkMPyQExokuAO4=;
+        b=Ek1BuC9iupUUtMoIeZ/+R+aXBWPIpXAXMJ47xE/s99IxS3bu+4ZAx8Zs1qfvAdAVts
+         fHOx9ENj0DT+/gl0Iht+SSdrF9+JOKYlxEQbx5DzLScbzAeq/XCc71cuL9zytKBVFNaa
+         tvOTXq7eItqmDr4zpNtBf9WahAinTGOiCCgKrdKwrx3uPtkJtcR+/fvio45ZQYil1Hor
+         khVMSbd0ZEdy8V7BeKmTUynsGMXiT7x0yJMUYN8uEy0VRKCJGlXhDkCeWoYNXW2Drr9L
+         Yt25NJ0bmyYKIym46LXxAtGhzJv48vipfQQFr703tOOYvsw5sMIlbbhXuDzYdnICYyQu
+         RlnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=3FfJ8DVHFZhQTTUEym76/pkniOCRLWMLkGF0ozBe+0k=;
-        b=Npx0HbTGpGPZQ+/kTsnMOtwLBm0cVkxUcJys3y772sKCW63oGfwswYMWsC62PJ6Stp
-         v1/kLPx1dv1ePM/WZ8qN0Dxm6GkpjgVVLIAXF/f5CQb8e8AC9FUGU8T+Bfu0bmBRvZQI
-         4criYzr98lpz0tBrMvhpY+nWmn6CZ3UbAZrlpqVeV/UDFg0EX/AjUtCAF5gZ2y9zYvRX
-         g7Rp19MaAL0JTIEi9Jr+MbT1eYfv/o7BdZZ0p9roCeigCYKlUXJqJ6h4qtpbZHy9VuuN
-         q2HxV4oWFp5d7fwM2HbbHyeEQtjZfZqhPHsCwnoO9eItLGJ8sN8tys+rpfRaMQyrxr6w
-         JzuQ==
-X-Gm-Message-State: AG10YOQlIe2e95h5hN4njF9gov4XY32Z2ITSl4Z1uixngarw1/x3ExNXbP83s8Qer2IXRg==
-X-Received: by 10.98.93.211 with SMTP id n80mr11290651pfj.61.1455385686466;
-        Sat, 13 Feb 2016 09:48:06 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.149.32])
-        by smtp.gmail.com with ESMTPSA id b2sm27519268pfd.24.2016.02.13.09.48.04
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Sat, 13 Feb 2016 09:48:05 -0800 (PST)
-Date: Sat, 13 Feb 2016 23:18:01 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=FpoFbIZM9ifIww4YW3b4mTmE1CRomDkMPyQExokuAO4=;
+        b=BUBIk7qaZp6WT0JvCjJ1JM6lp3jBwAgnXeptGSL4/63Eiae57vp4YlW3RkwqqP+Gq0
+         z50LlD8lGUeg/sgg4epfMjgvvaczwp4AkdWC+HmZ1vuMUswn66YKiI2VmUwPssmPRYzE
+         WFZ2pDEj4WaQKkfq3SwJtfnZI6DA8y+76ZwKWh1nmfbK/V4bbEW14Utqlwh/bhZoHQ8t
+         i9cTTxMbpTwwFadLcX+T6N/efotLgixTSU/AcInlsFdhTgaOlZpYzMZCDiMX6qU9TBO/
+         GireVUn3i95AJl+iglgJJPxiaqZkZkDHTTOg6Y+6GmlfoMCTtgRKmX246AZlQB8AQHVl
+         YulA==
+X-Gm-Message-State: APjAAAUOjtAXvbYjkggHFFjgJXzsY/Djf8anLURea+6dcRm2OmnQplTN
+	WWmyb6YSAO53k9CtNmRxsLZFvw4n3WMq
+X-Received: by 2002:a5d:4208:: with SMTP id n8mr22949870wrq.136.1572915855233;
+        Mon, 04 Nov 2019 17:04:15 -0800 (PST)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
+        by smtp.googlemail.com with ESMTPSA id t29sm35903399wrb.53.2019.11.04.17.04.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2019 17:04:14 -0800 (PST)
+From: Jules Irenge <jbi.octave@gmail.com>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: most: hdm-dim2: Use devm_ functions
-Message-ID: <20160213174801.GA15312@amitoj-Inspiron-3542>
+Cc: gregkh@linuxfoundation.org,
+	Boqun.Feng@microsoft.com,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH V5 2/2] staging: wfx: replace 1 by true
+Date: Tue,  5 Nov 2019 01:03:52 +0000
+Message-Id: <20191105010352.222479-3-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20191105010352.222479-1-jbi.octave@gmail.com>
+References: <20191105010352.222479-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 8bit
 
-Devm_ functions allocate memory that is released when a driver
-detaches. Replace kzalloc, ioremap and request_irq with their devm_*
-counterparts in the probe function of a platform device which were
-originally freed in the remove function.
+Replace 1 by true when it is stored in a boolean variable.
+Recommended by coccinelle tool.
 
-Also, unnecessary labels have been removed and header file
-linux/device.h has been added to ensure devm_* routine declarations
-are unambiguously available.
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
- drivers/staging/most/hdm-dim2/dim2_hdm.c | 57 +++++++-------------------------
- 1 file changed, 12 insertions(+), 45 deletions(-)
+v1 submits change of 1 to true with no accurate log message of what
+was done reason.
+v2 merges two patches for the same issue into a single one, improves on log message description: rephrase, change the term warning to recommended by coccinelle tool.
+v3 gives accurate description on what was changed and reason behind:
+change from fixing to replace to indicate what was done.
+v4 includes logs of changes done on each version.
+v5 shortens subject line to give only idea of what done.
 
-diff --git a/drivers/staging/most/hdm-dim2/dim2_hdm.c b/drivers/staging/most/hdm-dim2/dim2_hdm.c
-index 6296aa5..759f2cc 100644
---- a/drivers/staging/most/hdm-dim2/dim2_hdm.c
-+++ b/drivers/staging/most/hdm-dim2/dim2_hdm.c
-@@ -24,6 +24,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/sched.h>
- #include <linux/kthread.h>
-+#include <linux/device.h>
+ drivers/staging/wfx/queue.c | 2 +-
+ drivers/staging/wfx/sta.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+index 5d29bce65f71..71e92744fed0 100644
+--- a/drivers/staging/wfx/queue.c
++++ b/drivers/staging/wfx/queue.c
+@@ -550,7 +550,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
+ 			spin_unlock_bh(&wvif->ps_state_lock);
  
- #include <mostcore.h>
- #include <networking.h>
-@@ -736,58 +737,41 @@ static int dim2_probe(struct platform_device *pdev)
- 	int ret, i;
- 	struct kobject *kobj;
- 
--	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
-+	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
- 	if (!dev)
- 		return -ENOMEM;
- 
- 	dev->atx_idx = -1;
- 
--	platform_set_drvdata(pdev, dev);
- #if defined(ENABLE_HDM_TEST)
- 	test_dev = dev;
- #else
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!res) {
--		pr_err("no memory region defined\n");
--		ret = -ENOENT;
--		goto err_free_dev;
--	}
--
--	if (!request_mem_region(res->start, resource_size(res), pdev->name)) {
--		pr_err("failed to request mem region\n");
--		ret = -EBUSY;
--		goto err_free_dev;
--	}
--
--	dev->io_base = ioremap(res->start, resource_size(res));
--	if (!dev->io_base) {
--		pr_err("failed to ioremap\n");
--		ret = -ENOMEM;
--		goto err_release_mem;
--	}
-+	dev->io_base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(dev->io_base))
-+		return PTR_ERR(dev->io_base);
- 
- 	ret = platform_get_irq(pdev, 0);
- 	if (ret < 0) {
- 		pr_err("failed to get irq\n");
--		goto err_unmap_io;
-+		return ret;
- 	}
- 	dev->irq_ahb0 = ret;
- 
--	ret = request_irq(dev->irq_ahb0, dim2_ahb_isr, 0, "mlb_ahb0", dev);
-+	ret = devm_request_irq(&pdev->dev, dev->irq_ahb0, dim2_ahb_isr, 0,
-+			       "mlb_ahb0", dev);
- 	if (ret) {
- 		pr_err("failed to request IRQ: %d, err: %d\n",
- 		       dev->irq_ahb0, ret);
--		goto err_unmap_io;
-+		return ret;
- 	}
- #endif
- 	init_waitqueue_head(&dev->netinfo_waitq);
- 	dev->deliver_netinfo = 0;
- 	dev->netinfo_task = kthread_run(&deliver_netinfo_thread, (void *)dev,
- 					"dim2_netinfo");
--	if (IS_ERR(dev->netinfo_task)) {
--		ret = PTR_ERR(dev->netinfo_task);
--		goto err_free_irq;
--	}
-+	if (IS_ERR(dev->netinfo_task))
-+		return PTR_ERR(dev->netinfo_task);
- 
- 	for (i = 0; i < DMA_CHANNELS; i++) {
- 		struct most_channel_capability *cap = dev->capabilities + i;
-@@ -847,6 +831,7 @@ static int dim2_probe(struct platform_device *pdev)
- 		goto err_destroy_bus;
+ 			if (vif_more) {
+-				more = 1;
++				more = true;
+ 				tx_allowed_mask = vif_tx_allowed_mask;
+ 				queue = vif_queue;
+ 				ret = 0;
+diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+index 688586e823c0..ea5707ff8847 100644
+--- a/drivers/staging/wfx/sta.c
++++ b/drivers/staging/wfx/sta.c
+@@ -291,7 +291,7 @@ u64 wfx_prepare_multicast(struct ieee80211_hw *hw, struct netdev_hw_addr_list *m
+ 			ether_addr_copy(wvif->mcast_filter.address_list[i], ha->addr);
+ 			i++;
+ 		}
+-		wvif->mcast_filter.enable = 1;
++		wvif->mcast_filter.enable = true;
+ 		wvif->mcast_filter.num_addresses = count;
  	}
  
-+	platform_set_drvdata(pdev, dev);
- 	return 0;
- 
- err_destroy_bus:
-@@ -855,16 +840,6 @@ err_unreg_iface:
- 	most_deregister_interface(&dev->most_iface);
- err_stop_thread:
- 	kthread_stop(dev->netinfo_task);
--err_free_irq:
--#if !defined(ENABLE_HDM_TEST)
--	free_irq(dev->irq_ahb0, dev);
--err_unmap_io:
--	iounmap(dev->io_base);
--err_release_mem:
--	release_mem_region(res->start, resource_size(res));
--err_free_dev:
--#endif
--	kfree(dev);
- 
- 	return ret;
- }
-@@ -878,7 +853,6 @@ err_free_dev:
- static int dim2_remove(struct platform_device *pdev)
- {
- 	struct dim2_hdm *dev = platform_get_drvdata(pdev);
--	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	struct dim2_platform_data *pdata = pdev->dev.platform_data;
- 	unsigned long flags;
- 
-@@ -892,13 +866,6 @@ static int dim2_remove(struct platform_device *pdev)
- 	dim2_sysfs_destroy(&dev->bus);
- 	most_deregister_interface(&dev->most_iface);
- 	kthread_stop(dev->netinfo_task);
--#if !defined(ENABLE_HDM_TEST)
--	free_irq(dev->irq_ahb0, dev);
--	iounmap(dev->io_base);
--	release_mem_region(res->start, resource_size(res));
--#endif
--	kfree(dev);
--	platform_set_drvdata(pdev, NULL);
- 
- 	/*
- 	 * break link to local platform_device_id struct
 -- 
-1.9.1
+2.23.0
 
 
