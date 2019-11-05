@@ -1,122 +1,625 @@
 X-GM-THRID: 6753896393761357824
-X-Received: by 2002:aca:42d7:: with SMTP id p206mr1595038oia.129.1572915356619;
-        Mon, 04 Nov 2019 16:55:56 -0800 (PST)
+X-Received: by 2002:a37:9c9:: with SMTP id 192mr25894329qkj.358.1572915355914;
+        Mon, 04 Nov 2019 16:55:55 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:5f09:: with SMTP id f9ls3687024oti.13.gmail; Mon, 04 Nov
- 2019 16:55:56 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzwhPD56vGXzCxqmvMwpEx43ccFV0hpEzmrY1Bmxt+xHkfdWKr/Vmp5ASsbZPG+b7WJ0iSB
-X-Received: by 2002:a9d:61cf:: with SMTP id h15mr4156783otk.83.1572915356097;
-        Mon, 04 Nov 2019 16:55:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572915356; cv=none;
+Received: by 2002:a37:b904:: with SMTP id j4ls1608522qkf.16.gmail; Mon, 04 Nov
+ 2019 16:55:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwZl3ov+0KRmxAW4TDtjGMfOue9iVIf4qR0yGQrHBVdRsjHdM1QRhoFM9fa9QrZCc0ziv/b
+X-Received: by 2002:a05:620a:2185:: with SMTP id g5mr2867864qka.129.1572915355168;
+        Mon, 04 Nov 2019 16:55:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572915355; cv=none;
         d=google.com; s=arc-20160816;
-        b=TC23Bar4bEUG5eTzoydByLQw3szRB1pLy9ppUkAzP8q8hwU5rv4EN4kXNQDHf+os7f
-         DuXUzoEEO2lSbaGGVS/geOktQFRQ5F8K3OtsJdwg6Ls4ZX8hxuhKcnSVye4eC623g2/y
-         6qhWtqVNZdImrsEPUvrzW7FVOuc+RaJQ4NiyNW2owtZwkP3I5GGRSCd5LQSNYxfb/VZM
-         k+xHzHXdSI0Q4dDl3lJw7bzE3QTw3avnmpHnH6vBh7Sa9Apou2xJdyAfJSsk+goI/tYi
-         /AMEvI7toaKSLpSRjlq5Hf/HTgOgMz2uU1gDyji9akzGlucrINULW8pCTJB44DSecC2C
-         7p7w==
+        b=ldZftS7NXwwBRfFb6xQcgYIR05aGKPX0BnO19z76+w3Y6A4fFMxZPmGIXriVKCPXo3
+         ouPStN9NYI6arYpVa1LEe56pDoci5C5RQyUfv/YGcytIIbn5F8MbhgyYQ52zwpg1raFy
+         AWQboRxB1bRdjGqKRvBSYNvx1qAZttUuIZ8C4qV9KbR9k0RU5cXVEPgJx44HqqYgfWx9
+         jrU33d0uyiXQPMeYLBB3pu35eUJyuoK7MJdZgE3GAYF6AoOGUB1pZk6C7RMx4v69iYbD
+         K05GshaMeHHFdoxj41UhliPmWluW6VQ98WWCoFrlkbVay4uFemHgIfNEZ6Fctp/v0KrD
+         +u9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=JAK/308wIygzdx3ZyeXwZ94Ii6n4cGKOFY7JVU7BO8g=;
-        b=FSvzYMsJjxnUqeRgCfNwEVFMIxkVym6saFkNEWXBZ4bBBEaSIgPTTA7bOrHGMVbUBa
-         3WLbzOrpqnsxqKt033P0WZZuGn8r3Rnzh7C2Yb6F4lZuLsjrLN1uOpBA1prr2jm6yh11
-         9Z8bFxhFtBB7YarnrAjxXvgLRV5hkJ6pCkXv/sQoAKEjOX+x8M48Q3bcrj95sI6xxVfv
-         cItsMOP2iiclZD8Rea/LW8H5LAaSM46CCH4cvZvN4SrRgrwQKoulmJike3AGpO875bK1
-         Ci1gLqRB4pi/aMgD70CaRGULKWJu4PufXhHRe6k1rbMZyUm2UwryehHVFQYook01Xm6j
-         qadw==
+        bh=SuY2vgn/RNPpaOfQ6iTNZ2uNEwF1jnGGdjiF+IWPhFI=;
+        b=rUrEHLDylpuTNivp91DjuuNQtPC+V+XS6c+SvTJFKbVAPnier4YE6jikjf3uZois9Y
+         4BuzLEDazaNOVYkNwDRxmxWqMx0IFoW33sd2K91tKzEgU6O4hn3MI8EaHlFr0EvUnuRN
+         y1rb2DwickQrT2tVDTiZAlpGM8p6DP1hsSB99G5VD+Ipw3/WPMvgGYKsFoVhoNUkaj0i
+         9XKtsjMuxOx7+lsHbp+7M8HD1pe2oNNzf+d6Oj7sdc/i4yKQkXbgO3d5gOJ7RORlIjf3
+         dQ2ynN2Jy40Jt3KXrCJyGbzJbKvr9SYRJVbidP3XQSAZ+tWTem+HgGcOntar4zXKVh1/
+         iSeQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T+ZbTSwC;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dw9Z8LAX;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id n18si115809otr.3.2019.11.04.16.55.56
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id z194si903777qka.5.2019.11.04.16.55.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Nov 2019 16:55:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Mon, 04 Nov 2019 16:55:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=T+ZbTSwC;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dw9Z8LAX;
+       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id g9so8525332plp.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 16:55:56 -0800 (PST)
+Received: by mail-pg1-x543.google.com with SMTP id 15so12764944pgt.7
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 16:55:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=JAK/308wIygzdx3ZyeXwZ94Ii6n4cGKOFY7JVU7BO8g=;
-        b=T+ZbTSwC5+VGe5pKhBuXZi1kVOFExTp8PTbZS13Cnw/2JAfMF4iPg5qMI6s9L2vwj1
-         QlQhWOFzzsNdlBQwPPhP0yYHoLZCqaA+hcisth87Pcl1OGx/yN3YZxr5duPtn0HVmx5e
-         bJlAmiCONcymxqW+z8a+8bejtreOs9a5UhlQXKdB0CfyYQpqYnljqHRnFdq5dVLvtn2+
-         lijxfnsMEhCyiaMpzqo0GUSDnFM6IOuytDgs3I6wee567ozIIbthomozHbgd0vEIiVM6
-         toPtCxeqsYn+ozFBTJl3zRvpmBRVbryJ0mAiDYkFFiBs/jwleXadch8FUSsy3M+WfbPd
-         Eb6A==
+        bh=SuY2vgn/RNPpaOfQ6iTNZ2uNEwF1jnGGdjiF+IWPhFI=;
+        b=dw9Z8LAXeUPf8DDVRFP2Q14NpKcpNPomLnY0rqI8LqFAAxe1LIq8bW10HBAlxPXxeQ
+         hm7h9th8sO3yWSUYuTx8VyPVKuBq+6VqIwfGAxij7ycI5iJ3OR+TLWQR7VvzGitsws0D
+         QPIEfQwchmeoNfMhsSu7jP+EUDnLNNmXZFCGjajDaVaWmfUrsW8jq9RoiKzqYWGpn7pL
+         dbkj38aGYvnbu6uR+tGtzq5oXrZXhvBjSRp0+K24BDIkOSsdvHEdq3ZNhNYk1y1zUDWS
+         UZOBBj727pbRq4VGTjeCnfKFj2FeqARGe95qlYN93pEZUwLu7o9fPNmNHgdj/jO/LxOt
+         Grbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=JAK/308wIygzdx3ZyeXwZ94Ii6n4cGKOFY7JVU7BO8g=;
-        b=WuIi23Q+Rn0XdVwUDFBf5X/5YlCF1GVBkf1KwWiCEzSxvjmISfI0POijvXk4S73n0n
-         aaFfFb5tzZ45BW7cZq/z32zF5+T7tgOo3Z4dGfvxWO5wskKJakAGQhU+LWjWJ9I3coVM
-         m35NLyTPH/AFSpSrZVhV1JbRonOnEvZKJaMFY4sFPpZFsfcENVHqYqSL30exGSkJQfE9
-         Hl+nW9nuykXmfnS8FF67Bwy4/12cg6IWF62e0Mo1gZcjOrT+G99eAWFWrusek4EPeZRk
-         Yf7+qaDSvG1dLuAwaWG8xsmmDjevxNdt8CnuLl+IC8m3Fx+A4QlMVwKDFjEUppT7cD/4
-         38Rw==
-X-Gm-Message-State: APjAAAWU/2V0g5XNvADUpis5/4gUFZ/NSow85GVKUymj7r59wpz6sKcr
-	zFXm6o3+2J6Kb+UDx1F7tIo=
-X-Received: by 2002:a17:902:b184:: with SMTP id s4mr24035909plr.236.1572915355736;
-        Mon, 04 Nov 2019 16:55:55 -0800 (PST)
+        bh=SuY2vgn/RNPpaOfQ6iTNZ2uNEwF1jnGGdjiF+IWPhFI=;
+        b=Vz1vP82URzwyOnHzRqOJvndkX43KW1B4+vgUjeF8Isi9klOEsBQGJ7cQOnZ1Ps3M/5
+         CH9y4OQUkxQUUzvrdXZO1AqDiIWi8Y2CgMNYSAbnT+tGRDyT1ebjmOmJoUL0tELcV1WC
+         oLpRd5HK5ggb2T3JR7KSZbtT0CpndT4A1YiyWiNz4oB0Z5QWZXo+H1hS7ACzeAgyZi1f
+         p4+BP37FfLD2JwGVUaBBBEaxPYEXw0FAOJ+1PnKrHcHURIVewqx6qQ7HDrd+rojN8YOF
+         TKdFL+zAYJFx4W8QL+CLFMqNtyFHyT/XnIHu9Nkk9SDD+K1ez8A9q58xTS8k00+724VP
+         3B5Q==
+X-Gm-Message-State: APjAAAVwrOq4Mz/tEx9VBUbdl9BzeYIOU6gg57pd44LRr3eASG9uZz/8
+	hgoISwclZxJ3eRYK4UIyyVY=
+X-Received: by 2002:a63:4921:: with SMTP id w33mr8926097pga.237.1572915353874;
+        Mon, 04 Nov 2019 16:55:53 -0800 (PST)
 Return-Path: <jamal.k.shareef@gmail.com>
 Received: from jamal-desktop (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id d127sm20518060pfc.28.2019.11.04.16.55.55
+        by smtp.gmail.com with ESMTPSA id n23sm15860852pff.137.2019.11.04.16.55.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Nov 2019 16:55:55 -0800 (PST)
+        Mon, 04 Nov 2019 16:55:53 -0800 (PST)
 From: Jamal Shareef <jamal.k.shareef@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: eric@anholt.net,
 	wahrenst@gmx.net,
 	gregkh@linuxfoundation.org,
 	Jamal Shareef <jamal.k.shareef@gmail.com>
-Subject: [PATCH 14/14] staging: vc04_services: Remove platform typedef
-Date: Mon,  4 Nov 2019 16:55:24 -0800
-Message-Id: <e65f802b6cff5af1630dc395d666e4b49356d29b.1572915104.git.jamal.k.shareef@gmail.com>
+Subject: [PATCH 13/14] staging: vc04_services: Remove vchiq instance typedef
+Date: Mon,  4 Nov 2019 16:55:23 -0800
+Message-Id: <34b37559cf95537ead8fcab6d5b28e8d9d194d76.1572915104.git.jamal.k.shareef@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1572915104.git.jamal.k.shareef@gmail.com>
 References: <cover.1572915104.git.jamal.k.shareef@gmail.com>
 In-Reply-To: <cover.1572915104.git.jamal.k.shareef@gmail.com>
 References: <cover.1572915104.git.jamal.k.shareef@gmail.com>
 
-Removes opaque platform struct typedef. Issue found by checkpatch.
+Removes struct vchiq instance struct typedefs. Issue found by checkpatch.
+Additionally, as part of the process renames "struct vchiq_instance_struct"
+due to wordiness.
 
 Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
 ---
- .../staging/vc04_services/interface/vchiq_arm/vchiq_core.h    | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../interface/vchiq_arm/vchiq_arm.c           | 46 +++++++++----------
+ .../interface/vchiq_arm/vchiq_arm.h           | 10 ++--
+ .../interface/vchiq_arm/vchiq_core.c          | 12 ++---
+ .../interface/vchiq_arm/vchiq_core.h          | 16 +++----
+ .../interface/vchiq_arm/vchiq_debugfs.c       | 14 +++---
+ .../interface/vchiq_arm/vchiq_debugfs.h       |  4 +-
+ .../interface/vchiq_arm/vchiq_if.h            | 16 +++----
+ .../interface/vchiq_arm/vchiq_shim.c          | 10 ++--
+ 8 files changed, 64 insertions(+), 64 deletions(-)
 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index add552226eaa..be8b2a71da2d 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -84,7 +84,7 @@ static void suspend_timer_callback(struct timer_list *t);
+ struct user_service {
+ 	struct vchiq_service *service;
+ 	void *userdata;
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 	char is_vchi;
+ 	char dequeue_pending;
+ 	char close_pending;
+@@ -103,7 +103,7 @@ struct bulk_waiter_node {
+ 	struct list_head list;
+ };
+ 
+-struct vchiq_instance_struct {
++struct vchiq_instance {
+ 	struct vchiq_state *state;
+ 	struct vchiq_completion_data completions[MAX_COMPLETIONS];
+ 	int completion_insert;
+@@ -177,11 +177,11 @@ vchiq_blocking_bulk_transfer(unsigned int handle, void *data,
+ 	unsigned int size, enum vchiq_bulk_dir dir);
+ 
+ #define VCHIQ_INIT_RETRIES 10
+-enum vchiq_status vchiq_initialise(VCHIQ_INSTANCE_T *instance_out)
++enum vchiq_status vchiq_initialise(struct vchiq_instance **instance_out)
+ {
+ 	enum vchiq_status status = VCHIQ_ERROR;
+ 	struct vchiq_state *state;
+-	VCHIQ_INSTANCE_T instance = NULL;
++	struct vchiq_instance *instance = NULL;
+ 	int i;
+ 
+ 	vchiq_log_trace(vchiq_core_log_level, "%s called", __func__);
+@@ -230,7 +230,7 @@ enum vchiq_status vchiq_initialise(VCHIQ_INSTANCE_T *instance_out)
+ }
+ EXPORT_SYMBOL(vchiq_initialise);
+ 
+-enum vchiq_status vchiq_shutdown(VCHIQ_INSTANCE_T instance)
++enum vchiq_status vchiq_shutdown(struct vchiq_instance *instance)
+ {
+ 	enum vchiq_status status;
+ 	struct vchiq_state *state = instance->state;
+@@ -267,12 +267,12 @@ enum vchiq_status vchiq_shutdown(VCHIQ_INSTANCE_T instance)
+ }
+ EXPORT_SYMBOL(vchiq_shutdown);
+ 
+-static int vchiq_is_connected(VCHIQ_INSTANCE_T instance)
++static int vchiq_is_connected(struct vchiq_instance *instance)
+ {
+ 	return instance->connected;
+ }
+ 
+-enum vchiq_status vchiq_connect(VCHIQ_INSTANCE_T instance)
++enum vchiq_status vchiq_connect(struct vchiq_instance *instance)
+ {
+ 	enum vchiq_status status;
+ 	struct vchiq_state *state = instance->state;
+@@ -302,7 +302,7 @@ enum vchiq_status vchiq_connect(VCHIQ_INSTANCE_T instance)
+ EXPORT_SYMBOL(vchiq_connect);
+ 
+ enum vchiq_status vchiq_add_service(
+-	VCHIQ_INSTANCE_T              instance,
++	struct vchiq_instance             *instance,
+ 	const struct vchiq_service_params *params,
+ 	unsigned int       *phandle)
+ {
+@@ -341,7 +341,7 @@ enum vchiq_status vchiq_add_service(
+ EXPORT_SYMBOL(vchiq_add_service);
+ 
+ enum vchiq_status vchiq_open_service(
+-	VCHIQ_INSTANCE_T              instance,
++	struct vchiq_instance             *instance,
+ 	const struct vchiq_service_params *params,
+ 	unsigned int       *phandle)
+ {
+@@ -433,7 +433,7 @@ static enum vchiq_status
+ vchiq_blocking_bulk_transfer(unsigned int handle, void *data,
+ 	unsigned int size, enum vchiq_bulk_dir dir)
+ {
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 	struct vchiq_service *service;
+ 	enum vchiq_status status;
+ 	struct bulk_waiter_node *waiter = NULL;
+@@ -516,7 +516,7 @@ vchiq_blocking_bulk_transfer(unsigned int handle, void *data,
+ ***************************************************************************/
+ 
+ static enum vchiq_status
+-add_completion(VCHIQ_INSTANCE_T instance, enum vchiq_reason reason,
++add_completion(struct vchiq_instance *instance, enum vchiq_reason reason,
+ 	       struct vchiq_header *header, struct user_service *user_service,
+ 	       void *bulk_userdata)
+ {
+@@ -593,7 +593,7 @@ service_callback(enum vchiq_reason reason, struct vchiq_header *header,
+ 	*/
+ 	struct user_service *user_service;
+ 	struct vchiq_service *service;
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 	bool skip_completion = false;
+ 
+ 	DEBUG_INITIALISE(g_state.local)
+@@ -804,7 +804,7 @@ vchiq_ioc_queue_message(unsigned int handle,
+ static long
+ vchiq_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ {
+-	VCHIQ_INSTANCE_T instance = file->private_data;
++	struct vchiq_instance *instance = file->private_data;
+ 	enum vchiq_status status = VCHIQ_SUCCESS;
+ 	struct vchiq_service *service = NULL;
+ 	long ret = 0;
+@@ -1919,7 +1919,7 @@ vchiq_compat_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+ static int vchiq_open(struct inode *inode, struct file *file)
+ {
+ 	struct vchiq_state *state = vchiq_get_state();
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 
+ 	vchiq_log_info(vchiq_arm_log_level, "vchiq_open");
+ 
+@@ -1951,7 +1951,7 @@ static int vchiq_open(struct inode *inode, struct file *file)
+ 
+ static int vchiq_release(struct inode *inode, struct file *file)
+ {
+-	VCHIQ_INSTANCE_T instance = file->private_data;
++	struct vchiq_instance *instance = file->private_data;
+ 	struct vchiq_state *state = vchiq_get_state();
+ 	struct vchiq_service *service;
+ 	int ret = 0;
+@@ -2130,7 +2130,7 @@ vchiq_dump_platform_instances(void *dump_context)
+ 
+ 	for (i = 0; i < state->unused_service; i++) {
+ 		struct vchiq_service *service = state->services[i];
+-		VCHIQ_INSTANCE_T instance;
++		struct vchiq_instance *instance;
+ 
+ 		if (service && (service->base.callback == service_callback)) {
+ 			instance = service->instance;
+@@ -2141,7 +2141,7 @@ vchiq_dump_platform_instances(void *dump_context)
+ 
+ 	for (i = 0; i < state->unused_service; i++) {
+ 		struct vchiq_service *service = state->services[i];
+-		VCHIQ_INSTANCE_T instance;
++		struct vchiq_instance *instance;
+ 
+ 		if (service && (service->base.callback == service_callback)) {
+ 			instance = service->instance;
+@@ -2288,7 +2288,7 @@ vchiq_keepalive_thread_func(void *v)
+ 	struct vchiq_arm_state *arm_state = vchiq_platform_get_arm_state(state);
+ 
+ 	enum vchiq_status status;
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 	unsigned int ka_handle;
+ 
+ 	struct vchiq_service_params params = {
+@@ -2911,13 +2911,13 @@ vchiq_release_service_internal(struct vchiq_service *service)
+ }
+ 
+ struct vchiq_debugfs_node *
+-vchiq_instance_get_debugfs_node(VCHIQ_INSTANCE_T instance)
++vchiq_instance_get_debugfs_node(struct vchiq_instance *instance)
+ {
+ 	return &instance->debugfs_node;
+ }
+ 
+ int
+-vchiq_instance_get_use_count(VCHIQ_INSTANCE_T instance)
++vchiq_instance_get_use_count(struct vchiq_instance *instance)
+ {
+ 	struct vchiq_service *service;
+ 	int use_count = 0, i;
+@@ -2932,19 +2932,19 @@ vchiq_instance_get_use_count(VCHIQ_INSTANCE_T instance)
+ }
+ 
+ int
+-vchiq_instance_get_pid(VCHIQ_INSTANCE_T instance)
++vchiq_instance_get_pid(struct vchiq_instance *instance)
+ {
+ 	return instance->pid;
+ }
+ 
+ int
+-vchiq_instance_get_trace(VCHIQ_INSTANCE_T instance)
++vchiq_instance_get_trace(struct vchiq_instance *instance)
+ {
+ 	return instance->trace;
+ }
+ 
+ void
+-vchiq_instance_set_trace(VCHIQ_INSTANCE_T instance, int trace)
++vchiq_instance_set_trace(struct vchiq_instance *instance, int trace)
+ {
+ 	struct vchiq_service *service;
+ 	int i;
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
+index 229dd262ec7d..19d2a2eefb6a 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.h
+@@ -162,19 +162,19 @@ vchiq_release_internal(struct vchiq_state *state,
+ 		       struct vchiq_service *service);
+ 
+ extern struct vchiq_debugfs_node *
+-vchiq_instance_get_debugfs_node(VCHIQ_INSTANCE_T instance);
++vchiq_instance_get_debugfs_node(struct vchiq_instance *instance);
+ 
+ extern int
+-vchiq_instance_get_use_count(VCHIQ_INSTANCE_T instance);
++vchiq_instance_get_use_count(struct vchiq_instance *instance);
+ 
+ extern int
+-vchiq_instance_get_pid(VCHIQ_INSTANCE_T instance);
++vchiq_instance_get_pid(struct vchiq_instance *instance);
+ 
+ extern int
+-vchiq_instance_get_trace(VCHIQ_INSTANCE_T instance);
++vchiq_instance_get_trace(struct vchiq_instance *instance);
+ 
+ extern void
+-vchiq_instance_set_trace(VCHIQ_INSTANCE_T instance, int trace);
++vchiq_instance_set_trace(struct vchiq_instance *instance, int trace);
+ 
+ extern void
+ set_suspend_state(struct vchiq_arm_state *arm_state,
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+index 7cdb5d50fb4e..b9d94f6b9bef 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.c
+@@ -177,7 +177,7 @@ find_service_by_port(struct vchiq_state *state, int localport)
+ }
+ 
+ struct vchiq_service *
+-find_service_for_instance(VCHIQ_INSTANCE_T instance,
++find_service_for_instance(struct vchiq_instance *instance,
+ 	unsigned int handle)
+ {
+ 	struct vchiq_service *service;
+@@ -201,7 +201,7 @@ find_service_for_instance(VCHIQ_INSTANCE_T instance,
+ }
+ 
+ struct vchiq_service *
+-find_closed_service_for_instance(VCHIQ_INSTANCE_T instance,
++find_closed_service_for_instance(struct vchiq_instance *instance,
+ 	unsigned int handle)
+ {
+ 	struct vchiq_service *service;
+@@ -227,7 +227,7 @@ find_closed_service_for_instance(VCHIQ_INSTANCE_T instance,
+ }
+ 
+ struct vchiq_service *
+-next_service_by_instance(struct vchiq_state *state, VCHIQ_INSTANCE_T instance,
++next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *instance,
+ 			 int *pidx)
+ {
+ 	struct vchiq_service *service = NULL;
+@@ -2280,7 +2280,7 @@ vchiq_init_state(struct vchiq_state *state, struct vchiq_slot_zero *slot_zero)
+ struct vchiq_service *
+ vchiq_add_service_internal(struct vchiq_state *state,
+ 			   const struct vchiq_service_params *params,
+-			   int srvstate, VCHIQ_INSTANCE_T instance,
++			   int srvstate, struct vchiq_instance *instance,
+ 			   vchiq_userdata_term userdata_term)
+ {
+ 	struct vchiq_service *service;
+@@ -2775,7 +2775,7 @@ vchiq_free_service_internal(struct vchiq_service *service)
+ }
+ 
+ enum vchiq_status
+-vchiq_connect_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance)
++vchiq_connect_internal(struct vchiq_state *state, struct vchiq_instance *instance)
+ {
+ 	struct vchiq_service *service;
+ 	int i;
+@@ -2811,7 +2811,7 @@ vchiq_connect_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance)
+ }
+ 
+ enum vchiq_status
+-vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance)
++vchiq_shutdown_internal(struct vchiq_state *state, struct vchiq_instance *instance)
+ {
+ 	struct vchiq_service *service;
+ 	int i;
 diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
-index 05b39c3564f6..419bcdd165b4 100644
+index 0339503d57d7..05b39c3564f6 100644
 --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
 +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_core.h
-@@ -236,7 +236,7 @@ struct remote_event {
- 	u32 __unused;
+@@ -268,7 +268,7 @@ struct vchiq_service {
+ 	short peer_version;
+ 
+ 	struct vchiq_state *state;
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 
+ 	int service_use_count;
+ 
+@@ -382,7 +382,7 @@ struct vchiq_state {
+ 
+ 	/* Mutex protecting services */
+ 	struct mutex mutex;
+-	VCHIQ_INSTANCE_T *instance;
++	struct vchiq_instance **instance;
+ 
+ 	/* Processes incoming messages */
+ 	struct task_struct *slot_handler_thread;
+@@ -495,12 +495,12 @@ extern enum vchiq_status
+ vchiq_init_state(struct vchiq_state *state, struct vchiq_slot_zero *slot_zero);
+ 
+ extern enum vchiq_status
+-vchiq_connect_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance);
++vchiq_connect_internal(struct vchiq_state *state, struct vchiq_instance *instance);
+ 
+ extern struct vchiq_service *
+ vchiq_add_service_internal(struct vchiq_state *state,
+ 			   const struct vchiq_service_params *params,
+-			   int srvstate, VCHIQ_INSTANCE_T instance,
++			   int srvstate, struct vchiq_instance *instance,
+ 			   vchiq_userdata_term userdata_term);
+ 
+ extern enum vchiq_status
+@@ -516,7 +516,7 @@ extern void
+ vchiq_free_service_internal(struct vchiq_service *service);
+ 
+ extern enum vchiq_status
+-vchiq_shutdown_internal(struct vchiq_state *state, VCHIQ_INSTANCE_T instance);
++vchiq_shutdown_internal(struct vchiq_state *state, struct vchiq_instance *instance);
+ 
+ extern void
+ remote_event_pollall(struct vchiq_state *state);
+@@ -560,15 +560,15 @@ extern struct vchiq_service *
+ find_service_by_port(struct vchiq_state *state, int localport);
+ 
+ extern struct vchiq_service *
+-find_service_for_instance(VCHIQ_INSTANCE_T instance,
++find_service_for_instance(struct vchiq_instance *instance,
+ 	unsigned int handle);
+ 
+ extern struct vchiq_service *
+-find_closed_service_for_instance(VCHIQ_INSTANCE_T instance,
++find_closed_service_for_instance(struct vchiq_instance *instance,
+ 	unsigned int handle);
+ 
+ extern struct vchiq_service *
+-next_service_by_instance(struct vchiq_state *state, VCHIQ_INSTANCE_T instance,
++next_service_by_instance(struct vchiq_state *state, struct vchiq_instance *instance,
+ 			 int *pidx);
+ 
+ extern void
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.c
+index f217b78d95a0..89cc52211de4 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.c
+@@ -117,7 +117,7 @@ static const struct file_operations debugfs_log_fops = {
+ 
+ static int debugfs_usecount_show(struct seq_file *f, void *offset)
+ {
+-	VCHIQ_INSTANCE_T instance = f->private;
++	struct vchiq_instance *instance = f->private;
+ 	int use_count;
+ 
+ 	use_count = vchiq_instance_get_use_count(instance);
+@@ -129,7 +129,7 @@ DEFINE_SHOW_ATTRIBUTE(debugfs_usecount);
+ 
+ static int debugfs_trace_show(struct seq_file *f, void *offset)
+ {
+-	VCHIQ_INSTANCE_T instance = f->private;
++	struct vchiq_instance *instance = f->private;
+ 	int trace;
+ 
+ 	trace = vchiq_instance_get_trace(instance);
+@@ -148,7 +148,7 @@ static ssize_t debugfs_trace_write(struct file *file,
+ 	size_t count, loff_t *ppos)
+ {
+ 	struct seq_file *f = (struct seq_file *)file->private_data;
+-	VCHIQ_INSTANCE_T instance = f->private;
++	struct vchiq_instance *instance = f->private;
+ 	char firstchar;
+ 
+ 	if (copy_from_user(&firstchar, buffer, 1))
+@@ -184,7 +184,7 @@ static const struct file_operations debugfs_trace_fops = {
  };
  
--typedef struct opaque_platform_state_t *VCHIQ_PLATFORM_STATE_T;
-+struct opaque_platform_state;
+ /* add an instance (process) to the debugfs entries */
+-void vchiq_debugfs_add_instance(VCHIQ_INSTANCE_T instance)
++void vchiq_debugfs_add_instance(struct vchiq_instance *instance)
+ {
+ 	char pidstr[16];
+ 	struct dentry *top;
+@@ -201,7 +201,7 @@ void vchiq_debugfs_add_instance(VCHIQ_INSTANCE_T instance)
+ 	vchiq_instance_get_debugfs_node(instance)->dentry = top;
+ }
  
- struct vchiq_slot {
- 	char data[VCHIQ_SLOT_SIZE];
-@@ -468,7 +468,7 @@ struct vchiq_state {
- 	struct vchiq_service_quota service_quotas[VCHIQ_MAX_SERVICES];
- 	struct vchiq_slot_info slot_info[VCHIQ_MAX_SLOTS];
+-void vchiq_debugfs_remove_instance(VCHIQ_INSTANCE_T instance)
++void vchiq_debugfs_remove_instance(struct vchiq_instance *instance)
+ {
+ 	struct vchiq_debugfs_node *node =
+ 				vchiq_instance_get_debugfs_node(instance);
+@@ -242,11 +242,11 @@ void vchiq_debugfs_deinit(void)
+ {
+ }
  
--	VCHIQ_PLATFORM_STATE_T platform_state;
-+	struct opaque_platform_state *platform_state;
+-void vchiq_debugfs_add_instance(VCHIQ_INSTANCE_T instance)
++void vchiq_debugfs_add_instance(struct vchiq_instance *instance)
+ {
+ }
+ 
+-void vchiq_debugfs_remove_instance(VCHIQ_INSTANCE_T instance)
++void vchiq_debugfs_remove_instance(struct vchiq_instance *instance)
+ {
+ }
+ 
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.h
+index 9b563d105fdb..ec2f033cdf32 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_debugfs.h
+@@ -14,8 +14,8 @@ void vchiq_debugfs_init(void);
+ 
+ void vchiq_debugfs_deinit(void);
+ 
+-void vchiq_debugfs_add_instance(VCHIQ_INSTANCE_T instance);
++void vchiq_debugfs_add_instance(struct vchiq_instance *instance);
+ 
+-void vchiq_debugfs_remove_instance(VCHIQ_INSTANCE_T instance);
++void vchiq_debugfs_remove_instance(struct vchiq_instance *instance);
+ 
+ #endif /* VCHIQ_DEBUGFS_H */
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+index dc3d204e7698..07c6a3db5ab6 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_if.h
+@@ -90,16 +90,16 @@ struct vchiq_config {
+ 	short version_min;  /* The minimum compatible version of VCHIQ */
  };
  
- struct bulk_waiter {
+-typedef struct vchiq_instance_struct *VCHIQ_INSTANCE_T;
++struct vchiq_instance;
+ typedef void (*vchiq_remote_callback)(void *cb_arg);
+ 
+-extern enum vchiq_status vchiq_initialise(VCHIQ_INSTANCE_T *pinstance);
+-extern enum vchiq_status vchiq_shutdown(VCHIQ_INSTANCE_T instance);
+-extern enum vchiq_status vchiq_connect(VCHIQ_INSTANCE_T instance);
+-extern enum vchiq_status vchiq_add_service(VCHIQ_INSTANCE_T instance,
++extern enum vchiq_status vchiq_initialise(struct vchiq_instance **pinstance);
++extern enum vchiq_status vchiq_shutdown(struct vchiq_instance *instance);
++extern enum vchiq_status vchiq_connect(struct vchiq_instance *instance);
++extern enum vchiq_status vchiq_add_service(struct vchiq_instance *instance,
+ 	const struct vchiq_service_params *params,
+ 	unsigned int *pservice);
+-extern enum vchiq_status vchiq_open_service(VCHIQ_INSTANCE_T instance,
++extern enum vchiq_status vchiq_open_service(struct vchiq_instance *instance,
+ 	const struct vchiq_service_params *params,
+ 	unsigned int *pservice);
+ extern enum vchiq_status vchiq_close_service(unsigned int service);
+@@ -133,9 +133,9 @@ extern void vchiq_get_config(struct vchiq_config *config);
+ extern enum vchiq_status vchiq_set_service_option(unsigned int service,
+ 	enum vchiq_service_option option, int value);
+ 
+-extern enum vchiq_status vchiq_remote_use(VCHIQ_INSTANCE_T instance,
++extern enum vchiq_status vchiq_remote_use(struct vchiq_instance *instance,
+ 	vchiq_remote_callback callback, void *cb_arg);
+-extern enum vchiq_status vchiq_remote_release(VCHIQ_INSTANCE_T instance);
++extern enum vchiq_status vchiq_remote_release(struct vchiq_instance *instance);
+ 
+ extern enum vchiq_status vchiq_dump_phys_mem(unsigned int service,
+ 	void *ptr, size_t num_bytes);
+diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+index 3f052cae5bb7..3055e94a53da 100644
+--- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
++++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
+@@ -440,7 +440,7 @@ EXPORT_SYMBOL(vchi_msg_hold);
+ 
+ int32_t vchi_initialise(struct vchi_instance_handle **instance_handle)
+ {
+-	VCHIQ_INSTANCE_T instance;
++	struct vchiq_instance *instance;
+ 	enum vchiq_status status;
+ 
+ 	status = vchiq_initialise(&instance);
+@@ -464,7 +464,7 @@ EXPORT_SYMBOL(vchi_initialise);
+  ***********************************************************/
+ int32_t vchi_connect(struct vchi_instance_handle *instance_handle)
+ {
+-	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
++	struct vchiq_instance *instance = (struct vchiq_instance *)instance_handle;
+ 
+ 	return vchiq_connect(instance);
+ }
+@@ -483,7 +483,7 @@ EXPORT_SYMBOL(vchi_connect);
+  ***********************************************************/
+ int32_t vchi_disconnect(struct vchi_instance_handle *instance_handle)
+ {
+-	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
++	struct vchiq_instance *instance = (struct vchiq_instance *)instance_handle;
+ 
+ 	return vchiq_status_to_vchi(vchiq_shutdown(instance));
+ }
+@@ -565,7 +565,7 @@ static enum vchiq_status shim_callback(enum vchiq_reason reason,
+ 	return VCHIQ_SUCCESS;
+ }
+ 
+-static struct shim_service *service_alloc(VCHIQ_INSTANCE_T instance,
++static struct shim_service *service_alloc(struct vchiq_instance *instance,
+ 	struct service_creation *setup)
+ {
+ 	struct shim_service *service = kzalloc(sizeof(struct shim_service), GFP_KERNEL);
+@@ -597,7 +597,7 @@ int32_t vchi_service_open(struct vchi_instance_handle *instance_handle,
+ 	struct service_creation *setup,
+ 	struct vchi_service_handle **handle)
+ {
+-	VCHIQ_INSTANCE_T instance = (VCHIQ_INSTANCE_T)instance_handle;
++	struct vchiq_instance *instance = (struct vchiq_instance *)instance_handle;
+ 	struct shim_service *service = service_alloc(instance, setup);
+ 
+ 	*handle = (struct vchi_service_handle *)service;
 -- 
 2.17.1
 
