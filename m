@@ -1,89 +1,102 @@
 X-GM-THRID: 6755712048500310016
-X-Received: by 2002:a63:1c06:: with SMTP id c6mr34955735pgc.417.1572939359522;
-        Mon, 04 Nov 2019 23:35:59 -0800 (PST)
+X-Received: by 2002:adf:f4c9:: with SMTP id h9mr22007916wrp.354.1572938633566;
+        Mon, 04 Nov 2019 23:23:53 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:2144:: with SMTP id a62ls590798pje.5.canary-gmail;
- Mon, 04 Nov 2019 23:35:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwHjwktg+EOi9sg01fnuG6ZdmLaHMkvdAoZUmbRuasnEgqXT4KUPatzf85EnBUi/PocgF8K
-X-Received: by 2002:a17:902:4a:: with SMTP id 68mr32190263pla.158.1572939358346;
-        Mon, 04 Nov 2019 23:35:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572939358; cv=none;
+Received: by 2002:adf:9d8b:: with SMTP id p11ls14777386wre.7.gmail; Mon, 04
+ Nov 2019 23:23:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzsgSyQCq7cdMk/N2qmfdhJKxJcwIQIvtITezRSZsCUZWd9ldnCc7zUsS9I5byjE62u3pe6
+X-Received: by 2002:adf:e286:: with SMTP id v6mr21717610wri.241.1572938632501;
+        Mon, 04 Nov 2019 23:23:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572938632; cv=none;
         d=google.com; s=arc-20160816;
-        b=JN91GVOcdDLbtE5k36wTID3JW2Eba44sa31AYsWBft4TwGbUkcCP7pxie7GrvLRo+L
-         l9WD+US5ItrB9Rsm/Fi+CnCakQ2lH1SI10rOLHPcMQGAbJIXB93mFG0505vskkvm9BZ/
-         8HukXzlWwzKbSWgRLU3wvcSYY+FkqYN22VOgZHHQQNw0n1F690REc+0zbcdRAHt3PobH
-         2zoH82rJcdlcbELNwt5TMrsc0mc4aZxgE21qrwhAsgDnBA314gCRDzxz6hPeeyyD7eyo
-         2XkHAkXTsWQ4VGi3bCxj5oWU+mOzkfV3gpaJ+OJdYWxIJMXsWuavbpx106vBQhe6bb85
-         480w==
+        b=zLni69wU8vsDlTM4FOCxrVNlxJMccFqjkNAS7/UyDEC0I5gdGgJOCxoZ5BhoaCjZP7
+         wDzT49tB0A+wPlHWhEqhCNNFItUYMK2SLE2R0OKiCMYlEcY2oVNJoCEq5DA4kI3FqytA
+         W7YHnEwoed6UioPWpirDj1S5XkOuMQDfqvSbsRsvtVZstWDeF9vSKRaCweVfBFeqaWUm
+         E2aiIvZ2rB9JPCOMDwLsn0jhV1+/5U8aoC5/Zg0e5BNCrYkt1HRQ3/yCJ54fXjg+D2Or
+         oOgDg2dFcPY1FvRTmFQoZVgacFCH/nN9dXuwj4T5wNSWcRc63YuG9vSE03U97TRDLsWs
+         2tIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=a2Apf4m12XOG6iGp54Ryg/RCh6G45u8rKa0gbldjo6Q=;
-        b=rbG2c58V39x6+Ony058ykW3+l4DCd8y3NyxJF2wpEi5d9NPFGE9nsmoM6L0uBcx5dM
-         jzlrOVAfl5uliPjIr2QN/taVPBrl3DUx1YlxVrQQD0Jxon/Pxgcw00aPrG7GNiteW25A
-         2WJHZDXnARK1scpU//xW90iHM9RQVHPSQojJcEhT2ePJV7+i2YBJz1diwDxo7dkeqTxB
-         4YHh0CDLb7nM56VPWKnF3hCV9wuWjZiQhWcVdE8VRc9OBnJDzoCeypmTUEJ8RV7V1lge
-         U4qW9coidbmxzC/PBftaOErFl/s3grlZ14NxTL4pMHt9h3T3C0y6mgjii+gHTWZ/ziC+
-         aaEQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=i/fODqIVF0d+S3axyBKO8bCBYeARDgDGkVQ/htnac8Q=;
+        b=Q2C4M7dz79jTydzK1mIDyFZ8VrA0yBHrueWXim/yVP7nxoNl9mIOHsxktPgrL8sTI1
+         7mttWXiBQvHVxHN/E7JQUgcuFaqStwnWFjmn5Ki/Iwo8hyjtM+AU84JX5FFsFS++NW+U
+         3OBLLi3F8btSxhQWoVkdGSM/uXbgvksW1F1FYv+mziyxmtcGmeiS/3TLy1wykg1fP1y3
+         xnKTEVIcXlATtD2O02KhM7CWw2z/YdUQ/vOxQoUFbsp9wkOtp163/wmHcR/HOquACzqO
+         ti91S2y+t2kSfIdp+IF/EysZRTW4/A6zYWAyqCyJzYszqTv+MpCsx5GVfXMdDF9czOYX
+         i/CQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YME8IZXa;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id q196si1106679pfc.0.2019.11.04.23.35.58
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q2N77x19;
+       spf=pass (google.com: domain of nachukannan@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nachukannan@gmail.com>
+Received: from mail-lf1-x141.google.com (mail-lf1-x141.google.com. [2a00:1450:4864:20::141])
+        by gmr-mx.google.com with ESMTPS id q22si863841wme.2.2019.11.04.23.23.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Nov 2019 23:35:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2019 23:23:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of nachukannan@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) client-ip=2a00:1450:4864:20::141;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=YME8IZXa;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (host6-102.lan-isdn.imaginet.fr [195.68.6.102])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 7FDF0217F4;
-	Tue,  5 Nov 2019 07:35:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1572939358;
-	bh=a2Apf4m12XOG6iGp54Ryg/RCh6G45u8rKa0gbldjo6Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YME8IZXabAbwSVPZI0/UzBMb2LD7ec9PzvSmrk9jtAng1tWC1jD1yd9TQ8UtCZh9E
-	 g26lmTUJXkuKuejcc8Uo4mbN9q5Z0DyxucDY+5mrOLkg9T3kEiEaFZtLpMYU1Z8+DN
-	 ZcyyPMcgU27aBBzZjmyohoeUMrFQwbds//tw8suI=
-Date: Tue, 5 Nov 2019 08:35:55 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Nachammai Karuppiah <nachukannan@gmail.com>
-Cc: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: wfx: Modify return statement.
-Message-ID: <20191105073555.GA2588994@kroah.com>
-References: <1572936777-105285-1-git-send-email-nachukannan@gmail.com>
- <20191105072024.GA2587462@kroah.com>
- <CAMOCsdsYwL2jf3+K+W+LiKkg5bpsfQc093paHsTENe3cx51COg@mail.gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q2N77x19;
+       spf=pass (google.com: domain of nachukannan@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x141.google.com with SMTP id y6so14285968lfj.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 04 Nov 2019 23:23:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=i/fODqIVF0d+S3axyBKO8bCBYeARDgDGkVQ/htnac8Q=;
+        b=Q2N77x19kIwMs3Q554nE4CtHcR7aHo6VX6b7rvcHG6S78EWKUI0aVswgxeyLQKctZQ
+         ZmZMiTWGrNkH8xdLMQvMqSnFahtih+ER5/sfVU4vqtmXG64gQSJeRnoS9SoVve3xa8w6
+         f0z5wH+Mh5IVBoOQlY6w/08g0Se9JxG9jcc2pesKLTFceMBox31RVa2GsUYGNoIAd/wc
+         dVHx/NgFm0COOgcMkyVFhGEyyM+Qih8RMIfJp1RoT3TkoV5agCcYTNU7y4ZcbPHcOgEF
+         nesvo1IesWXAGD7VVv6RCcIWB8pkvqKG02BxuJJhiXP8eMRAGwTe9scPzhfshrD+L1ZY
+         f/hQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=i/fODqIVF0d+S3axyBKO8bCBYeARDgDGkVQ/htnac8Q=;
+        b=EDxfuMtuP8WZhVPS3e0Hek2iAIbXe4FgJQqTPqRYLnMW665Z9me6gbqzdhT9kUIhiR
+         OO38CBniIq2RlcKch9pTsYpWhalg+xzzP1fWY28/G1e9Yy3wU7TioS/0UwTocsu5tfq4
+         m2fiNgtjbmnC/l57GdTx+Q+eVthQSUggdPuHEiwkygxjHMlRDdjh0+0n5R8JSI54RHPe
+         PkBiVxo5diUXCsxqaD7UxlrVQM2XrUoWMAj03nw/p5tA0M+VDVRK7p/iWStFj0aBFWpo
+         rHs5kvVE6ngyQguUj0Ov8hsWt3VbU3LVnfl+kACeNhpd0UR+jLNzYTSOodEmO3JOR6UT
+         TTyw==
+X-Gm-Message-State: APjAAAXC1f+07JXYhUFTT/PBPioBsbcf/im4U1ldxjoJX6QLY9DYBDGf
+	rVC2D9mon8+Q55TLObFtN06s1Q21fykfB8R+Yl6rR6MS
+X-Received: by 2002:a19:41d7:: with SMTP id o206mr18602439lfa.188.1572938631918;
+ Mon, 04 Nov 2019 23:23:51 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMOCsdsYwL2jf3+K+W+LiKkg5bpsfQc093paHsTENe3cx51COg@mail.gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+References: <1572936777-105285-1-git-send-email-nachukannan@gmail.com> <20191105072024.GA2587462@kroah.com>
+In-Reply-To: <20191105072024.GA2587462@kroah.com>
+From: Nachammai Karuppiah <nachukannan@gmail.com>
+Date: Tue, 5 Nov 2019 02:23:39 -0500
+Message-ID: <CAMOCsdsYwL2jf3+K+W+LiKkg5bpsfQc093paHsTENe3cx51COg@mail.gmail.com>
+Subject: Re: [PATCH] staging: wfx: Modify return statement.
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>, 
+	outreachy-kernel@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Nov 05, 2019 at 02:23:39AM -0500, Nachammai Karuppiah wrote:
-> On Tue, Nov 5, 2019 at 2:20 AM Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Mon, Nov 04, 2019 at 10:52:57PM -0800, Nachammai Karuppiah wrote:
-> > > Remove return variable and return the expression. Issue found using
-> > > coccinelle.
-> >
-> > This says _what_ the patch does, but not _why_ you want to do this.
-> >
-> > Also the subject is very odd...
-> >
-> Sure. Will resend the email for this patch. Should I just add resend
-> in subject line or make it V2?
+On Tue, Nov 5, 2019 at 2:20 AM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Mon, Nov 04, 2019 at 10:52:57PM -0800, Nachammai Karuppiah wrote:
+> > Remove return variable and return the expression. Issue found using
+> > coccinelle.
+>
+> This says _what_ the patch does, but not _why_ you want to do this.
+>
+> Also the subject is very odd...
+>
+Sure. Will resend the email for this patch. Should I just add resend
+in subject line or make it V2?
+Thanks for the feedback.
 
-It has to be v2 as you are going to change something, right?
-
-thanks,
-
-greg k-h
+- Nachammai
+> thanks,
+>
+> greg k-h
 
