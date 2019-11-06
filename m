@@ -1,113 +1,67 @@
-X-GM-THRID: 6746979289302827008
-X-Received: by 2002:a17:902:9347:: with SMTP id g7mr21147384plp.291.1570903530597;
-        Sat, 12 Oct 2019 11:05:30 -0700 (PDT)
+X-GM-THRID: 6756281946886635520
+X-Received: by 2002:a17:902:d910:: with SMTP id c16mr4478080plz.102.1573069474827;
+        Wed, 06 Nov 2019 11:44:34 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:9611:: with SMTP id q17ls2833564pfg.16.gmail; Sat, 12
- Oct 2019 11:05:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvDG6Cuks2ElmI2NoRx/+g8uRhO7Qg7aX0aiLFM5yH5D8qqryxBIDdd4XYm99Yeo4gq8rY
-X-Received: by 2002:a63:4622:: with SMTP id t34mr24159875pga.0.1570903529466;
-        Sat, 12 Oct 2019 11:05:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570903529; cv=none;
+Received: by 2002:a63:b042:: with SMTP id z2ls762625pgo.16.gmail; Wed, 06 Nov
+ 2019 11:44:34 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzxurxgnqxTDW7PqdHAhF12JnQaw8HFwBBBQkU0Q3XBxVPo8pPBSyM3+46pdG+lCajajD3k
+X-Received: by 2002:a63:e444:: with SMTP id i4mr5060212pgk.247.1573069473937;
+        Wed, 06 Nov 2019 11:44:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573069473; cv=none;
         d=google.com; s=arc-20160816;
-        b=aWT9C8X5WCjaN++UyHIpz7PlJVhMwKoQihE3GhiKhUSsIPSssvDLQ+MzYyVhBHWZPb
-         BI/EHai7xg4K2snAnvkyrxHBNW2dy1mc0FGOmhVEbXZpASXHTTcMZHS61WTRh+BHJRtR
-         pnKFRp1xymw34XPMBJlVELUi0vVLV2LSucUHXyfiLiKtDaD+Boh6NKYqnN4F2RRfRMZ7
-         GbWCnXfvrhfGuVz1cBsJ9e/tSkJT9Sa4pRlgpDTy0GzuckmqaGwCZaTnioxtqwo4GZdm
-         n/Tz2+tWLj5LAmr9ismsXU+TqA8xpqHXJhAEgLLvcNypn4VDDm553UoydOTZGoS/n4SY
-         d5pA==
+        b=h4hTHlRnt5qOHY090RU0ONZOAU1afjAZEHfxAfM3iP9CY//xnQv6uAL5syCiyAArk9
+         BT8qVe3hTaGGLRJuFBflNMkgICw3rLztzXcy3CqJ2fIiYmGqhdZgsqvdMc9BIlN+v21O
+         KZoe8fScN0O10OEh384aR3VpCaA3ee2mjJupevnghuBxTzhNJsoVmm5BMm32MHNBNH5T
+         O9qb+xZvm5OJWHyVATR8pgGO29WUQp4hrK1fi92eA3/wum+AcuffNHhHtI6zqRF2D7U5
+         hVFkzElmZDdfGkvh8n9XQZ269i53Cm2JiyDHaXv0WAiMTdahHqfBJjBRgNhWdWb+kwep
+         3VFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=duF6ZL+HCwryTSjDdcx8z2lA9a6wjYiYn4UO3glWalg=;
-        b=r3IYdZGZ0UKB6cLddrZWfp5J3cQFEEmdSvtuux1yQDCEXfCdvDNV9Os2Zi/OhIJ/S8
-         pMb8rAnXgh0q3F7u3SJEdYCpYSBk2j51qaP9IbqJ7qJ+Mhpk2kB3mZQYD4W2TpNq3PnE
-         mlttkyNzb5Zl+6JeMmm9zxhrBTSWgx6QJEK5SXYpuwuYQAc2Zhp4yyLVZxq1dK6nDmaM
-         sJIfJCA863WS27wAEPVNLDXRBJr4eKaiIDBcv3y+tk/gfLQCiILU2l6Jj8bjgGcOyn3J
-         PYliai2+xdQfW5bUE3NHFiBjwn8PWxmmepQtis+NMJB4B5d4U6DPzpoMiqG/gg03tV2s
-         EfNg==
+        h=to:subject:message-id:date:from:mime-version;
+        bh=Xjjxm+9VhSilUqgTgFWt+DQ1z2/tnfJP+BUsv6NePX8=;
+        b=lZziWCjbs8Dn6YLpdvxY6hkVSaheTF5phwC/ElBhWQUA2Af4wDYQtAWWqW3McymzJb
+         RVdb4UMMrM8Wgfo/XbufysDlaVLckf0juddQWRYs9xpnZXOKDICDXS3eO9Sj21GS+DWu
+         v6FSN6CrU9g6L6xdHeFds+ORmuFiA6UFy4lzTuDhGZA5na1Bg0Z1HyjfDE3XXed0fWZr
+         OSXUMvWBRXmzwgtIq6YWtLp+6Snz1GqJdauFfDaSo47npC95Ol5Kgsm98NeBzNXJF96C
+         DrIMfgTR1qP4RuzaTCRqFFM+DW+xjvi4ASGMbwvDxh1Acq4P9ZQyt7Iy4hGydEVa9fNa
+         XFwg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pe7Upv5G;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <wambui.karugax@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id x137si351141pfd.1.2019.10.12.11.05.29
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.236 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa09-07.prod.phx3.secureserver.net (p3plsmtpa09-07.prod.phx3.secureserver.net. [173.201.193.236])
+        by gmr-mx.google.com with ESMTPS id ba9si42431plb.5.2019.11.06.11.44.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 12 Oct 2019 11:05:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 06 Nov 2019 11:44:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.236 as permitted sender) client-ip=173.201.193.236;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pe7Upv5G;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id h195so7980340pfe.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 12 Oct 2019 11:05:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=duF6ZL+HCwryTSjDdcx8z2lA9a6wjYiYn4UO3glWalg=;
-        b=pe7Upv5GfSHEXJ3lhjxOf3Fl+J1g/S58wZMBl9VhRB6wt2D79P8Rad6mBvV5OHm6eE
-         iaXPrBRedzy5X6lCx+aD+JrD0P1mrRBxGODoMDXwRry1yh/7Gte1dkCAvpeVuhfMFK4g
-         LR113Wq4elzpROMOqS/lWxhQr3sEoV6EzCzfImBXOl01Yoe0t9H6nuieu8b4DBZZ8dsO
-         zEBDBzHmdeN02DKQo7J0j9RrkLnhAMiqpCFnyl/exqW0v89UKJBZFPcC2C3IK6Pa7bDs
-         Z7j19LoEn0JwmY0ad5Rcww6hVOCaT/SlEfRkSsyDcaI7zDdnYiFrbkknDLQSGd/Wl8Vw
-         K23w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=duF6ZL+HCwryTSjDdcx8z2lA9a6wjYiYn4UO3glWalg=;
-        b=JWUfzB8qg3UjxHls7jOE2z6lCyIn0gmoxlQF5misj+oCO7K4bvjGJv/qc9edR9zkpk
-         fJXyblzd5UxOH47QFn3L3KOyaug6i775m5vMhztgIL64aweprYb9zUilUCsBXUrF5Gnx
-         Vd4/Ue8MOUWJt8JSS/EPz/cE7XEMAU4v7L+PqCM7RJF6z+vRO5dGnTJ/u5A47cqgnm7u
-         HZ7K6thfwCFTGJPTFr+JMe0H2dLw7gEulMx1+RWcruWvNuFlh/+Xzwffr9aj62MQA75O
-         7Ttk6oX6QpZDT+icGShxAGwzQ6HV+NDeOV9rZmvO5JYNHpI/p5kgJ/Zb3KIm078ioER2
-         gEbg==
-X-Gm-Message-State: APjAAAUy653Mbtkn60U4sUqOcJRttTR2RJqeTSrOVarVSK0fhpa/Dj7T
-	68TL5QRRhpPCMQSBHDb4I0tcrA0Pda1mqg==
-X-Received: by 2002:a63:541e:: with SMTP id i30mr23580760pgb.130.1570903528903;
-        Sat, 12 Oct 2019 11:05:28 -0700 (PDT)
-Return-Path: <wambui.karugax@gmail.com>
-Received: from wambui.zuku.co.ke ([197.237.61.225])
-        by smtp.googlemail.com with ESMTPSA id p17sm12183475pfn.50.2019.10.12.11.05.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Oct 2019 11:05:28 -0700 (PDT)
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	Wambui Karuga <wambui.karugax@gmail.com>
-Subject: [PATCH v2 0/5] Remove typedef declarations in staging: octeon
-Date: Sat, 12 Oct 2019 21:04:30 +0300
-Message-Id: <cover.1570821661.git.wambui.karugax@gmail.com>
-X-Mailer: git-send-email 2.23.0
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.236 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-lf1-f52.google.com ([209.85.167.52])
+	by :SMTPAUTH: with ESMTPSA
+	id SREGiBGad3heuSREHi9XeX; Wed, 06 Nov 2019 12:44:33 -0700
+Received: by mail-lf1-f52.google.com with SMTP id v8so18937990lfa.12
+        for <outreachy-kernel@googlegroups.com>; Wed, 06 Nov 2019 11:44:33 -0800 (PST)
+X-Gm-Message-State: APjAAAV6df2UMrjUnTa327thllDbeC69J74TeWN2/GJDdXiW0nqEJfPd
+	23z2w0hg17BjbJq0YOc9rUHEiq32gh/ua/nJCJM=
+X-Received: by 2002:a19:4848:: with SMTP id v69mr25419291lfa.6.1573069472275;
+ Wed, 06 Nov 2019 11:44:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Thu, 7 Nov 2019 01:14:21 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbJFRHfFWpTttLn9RgyuM8KLDf1zw9Zuca=HHvq2xQ93JQ@mail.gmail.com>
+Message-ID: <CAK-LDbJFRHfFWpTttLn9RgyuM8KLDf1zw9Zuca=HHvq2xQ93JQ@mail.gmail.com>
+Subject: Application closed - December 2019 to March 2020 round
+To: Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfPHjGG8kPCBerBI2DTUMAqnyhFfUzCltmQc9eRfj1FPnDKOAKLpg0mOTdyfWfwmzXZXXKmy58JTtPakNAK/KHY7ywHJOwj1m1Edz8hVIhgXP5sckUp4P
+ 0y5Aa/khtQFtETJ1KZteXyhSvXLd4OrNSQTtHpQbyLFQdW2/IzVnFbW7NMnVmsRaVv3IVbJMDurSpeUKtpWNLBktG6k/KggNcR4=
 
-This patchset removes the addition of new typedefs data types in octeon,
-along with replacing the previous uses with the new declaration format.
+Hi All,
 
-v2 of the series removes the obsolete "_t" notation in the named types.
+Thank you for your contributions during the application period. Final
+application deadline for Outreachy is passed now. So, we won't be
+moderating this mailing list and reviewing any more patches sent over
+here. You are still very welcome and encouraged to submit it in the
+patches in the kernel mailing lists [use scripts/get_maintainer.pl].
 
-Wambui Karuga (5):
-  staging: octeon: remove typedef declaration for cvmx_wqe
-  staging: octeon: remove typedef declaration for cvmx_helper_link_info
-  staging: octeon: remove typedef declaration for cvmx_fau_reg_32
-  staging: octeon: remove typedef declartion for cvmx_pko_command_word0
-  staging: octeon: remove typedef declaration for cvmx_fau_op_size
-
- drivers/staging/octeon/ethernet-mdio.c   |  6 +--
- drivers/staging/octeon/ethernet-rgmii.c  |  4 +-
- drivers/staging/octeon/ethernet-rx.c     |  6 +--
- drivers/staging/octeon/ethernet-tx.c     |  4 +-
- drivers/staging/octeon/ethernet.c        |  6 +--
- drivers/staging/octeon/octeon-ethernet.h |  2 +-
- drivers/staging/octeon/octeon-stubs.h    | 56 ++++++++++++------------
- 7 files changed, 43 insertions(+), 41 deletions(-)
-
--- 
-2.23.0
-
+Hope you had fun and all the best with the results!
 
