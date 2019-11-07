@@ -1,168 +1,116 @@
-X-GM-THRID: 6754190139198537728
-X-Received: by 2002:a25:f20e:: with SMTP id i14mr7868654ybe.477.1572582437997;
-        Thu, 31 Oct 2019 21:27:17 -0700 (PDT)
+X-GM-THRID: 6756511751934574592
+X-Received: by 2002:a05:6512:6c:: with SMTP id i12mr1928090lfo.142.1573122980302;
+        Thu, 07 Nov 2019 02:36:20 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0d:f703:: with SMTP id h3ls764810ywf.2.gmail; Thu, 31 Oct
- 2019 21:27:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwJU13QRxauGSkf7eRVebPHkpds/4O5NwwWjOksiy8W7XDcZpF9pMYDZL6PyfM/VK8niGmo
-X-Received: by 2002:a81:61c3:: with SMTP id v186mr7205582ywb.151.1572582436696;
-        Thu, 31 Oct 2019 21:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572582436; cv=none;
+Received: by 2002:a2e:961a:: with SMTP id v26ls978301ljh.5.gmail; Thu, 07 Nov
+ 2019 02:36:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxQFMuCSs8EQ2sVls5MkoUNoOTtEd/Z9coF3W5sq2UC8M3A/TNfrxJMHEwuFVq6OPB78oVm
+X-Received: by 2002:a2e:6c0c:: with SMTP id h12mr1755520ljc.222.1573122979024;
+        Thu, 07 Nov 2019 02:36:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573122979; cv=none;
         d=google.com; s=arc-20160816;
-        b=tpV73HXlaJaY2QWmyz3At3tsH9Z5XyF58SkiusgIzTvrihq/8P9kVdSLmWiGjWaG8v
-         Eb+97KGYMZDo7BGYgeHbBwJkAvsfigoMmITGe4uBww9Ve0aALKgFnY1sR/966/lv/LeH
-         kYPKYrsHM9XUoB+qWh5r65A2v3Q+iq59aIl6Mb4L/AY7b6Hzs+PgZ1YTSwRPEs2s2lt5
-         tr4nKdRBzRH23DUyFVtdHBRLgfkCgB6PCt8glP+8qciHZpOni1zKm5aEvgUjCGPAKvmQ
-         HntYX9QTwIHp7xriwTP8zKi9aMJMPsAUkKEprR/dLq2hnCI7wiAKrf5xu3G5+N9hNzwF
-         Xmcg==
+        b=sWnwzgRQhtR9CPzHRZ5tkaMMUiNrEpN7q3xVAhGyLlM6AyBfafVG849BKvSfM72L4u
+         rKbNsosUV5StEJwTtIi50khVfroOae2jvZ8dezwAGWBQYCUKGMEHKePSHzR/LspVfRTz
+         A30xEfX+ghIep+ehZ0Yc8nKWFDsldWy/16MniPwq4uJwpZxj34UXHr9Sn83cxTVAjRtH
+         Lhb7sG9P3p7YznHmZEntFI5xx/g+1MJq6cLHgKaWdS46Fttfzw0YfQic6RfsYMAsGONu
+         89kvGWv4FZLdxFibyKPBj9DwxOXEisQNV7K/Et/Gs6es1/LEKYCV6x7VYk5X/vSceNFV
+         FN/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:dkim-signature;
-        bh=HpS7M3wugMxRqvwJlP7zk8Xh32CVSZbs51QsUAEIzfw=;
-        b=G7gJGM80Gju9l6QR1FqtKBen0wSJpxcIpHFOrIC7fdwPtPUmbODiqB35bYR6EkAiCz
-         vpmU4TLhQaj4mNsVOe9qYC7wmgVjDHzlTFhgNYWLPgrxVMVca27DwG4w/H1XSGyQ7ENr
-         tMtGkssFw8yMWdLLUJra3q3lBG/9mXL7jU/GhaYsIn4Dnn87sUPjPBfn/boEB0zJfexX
-         k2msJMn+ULGDCdWbFJ6ZoVAIZFmLd6PxfQpA49itC2/wH4fj0x9WKQUkmGGGZpXygUG/
-         c741VQDoCfU92s5Zx2xTQ8himM0jH1g/i5/YJN9xs8nNHoFiQVRNOov+Ju6bIJc+hoVY
-         vkrg==
+        bh=teW38WXulAIrUKBNvuumxpbZRbtrGwotg8AiJU+tjw4=;
+        b=toglufJ9wKjqg6gUUyPmaiG66o5+/p639/AvtpIL2ikgfYMV9Lq1SvooyHdph0QtBq
+         eNht1g9WireSPgsxh+JtGrtGgDyDoprrxHAorWe0+k1+qv3mQCc+/ng0xjlnGSF2Pui0
+         G644EMX1mBi+TFpB1YWQlcBUXgQWZXwTZIvuAWYeD0Inu5yMp1T0brNe1/V02psoxwnb
+         ORl6mPKoKPVVJOb5Ehh4a6VtU5TR8NanEAP9JDQ0Wy24vyxU9oZtBYPq8FxBI9N3+Ix2
+         CLhq8ACQhO3zyYgomp93hcNCRwwgSzZ4tih8sX+mGdHUjnQJQ1hgrk/K3loQbZhbNYns
+         9BjA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eYOl9Xry;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iZcNRyt3;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id a1si495135ywh.3.2019.10.31.21.27.16
+Return-Path: <jbi.octave@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id x23si125116lfq.0.2019.11.07.02.36.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 31 Oct 2019 21:27:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        Thu, 07 Nov 2019 02:36:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eYOl9Xry;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iZcNRyt3;
+       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id c26so11495792qtj.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 31 Oct 2019 21:27:16 -0700 (PDT)
+Received: by mail-wr1-x442.google.com with SMTP id e6so2460776wrw.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 07 Nov 2019 02:36:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=HpS7M3wugMxRqvwJlP7zk8Xh32CVSZbs51QsUAEIzfw=;
-        b=eYOl9Xry51JB4XOdcoO0HKnLb5V3OO+fyyZXo3Gyk4O17pxoDfoSvQUCR7XNoasLmn
-         1JpmLWlUEimCevap83AXVIUpMM4tmRf7BrH/H9HZPBHebQwP4EUXbC7Mpu/iAUjg9bx4
-         K/Gnk0D2Xoe4iTxrsIsps+Z1VX4K2XAEJQe1EY4qUmWUkm2MDrHWhRSkW90OsfNKH+at
-         djFMIo9+Ypc0/PLBXNAydL8HRDa6ovC53rdB2Yv+9dgU30Jc9nGMQ7WSDhRJ/YdLkB8p
-         3j//UCXEPr/yf2jxd3nXQKS5QarHMHlwIztXZJv9pIM9MK5iHpry0oPwBnaUJMvVUwNU
-         kw+Q==
+        bh=teW38WXulAIrUKBNvuumxpbZRbtrGwotg8AiJU+tjw4=;
+        b=iZcNRyt3DP47SX6ynhkUyOQ+MvqqiG2DCpTPy4uEpdf/CGYqTGawcGA+YB86s2sDN/
+         k0rMrOm9ZIg+M7fkoeNQDzl+0qmlF+eFsGk958hdenhBGS3zOe0qZYHfRXbDvEjRegk6
+         LgqPiuri7VPm9HPDo7aePyxU6GwsIemjqNaAVmwStjTQr4WxXYcDcfp0S0iIYt2xb54r
+         d4TuFYeR/4Ixj9aShZlIDJPb/iM5Pj1W5kT4rwPadGmS8d8So8VyTq2k0cGrwYeHY35N
+         xXx9fQFXQXbNqUx+HChXT+IVTAUC1eW5oU7wOnOZ7sGekBg4vICoxfmU3HbYJzhKwlqA
+         asnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=HpS7M3wugMxRqvwJlP7zk8Xh32CVSZbs51QsUAEIzfw=;
-        b=PgZTufb6HZQK7zsAHC2siM34gr3GQcsambuAzhkEVU1JvXZj0PuQ+sK61CsyhpCtkN
-         xv/fzKRWK4YOQpAvtDlveQCUd9YMgc05EmUFXuHCtB5D1Hwgz+P0Gyao6fcNuA9QrOcl
-         8nF9Mc8YTiFD6N3Xz81qlStn5BUiYpAuZZdgkDddOIZ2P72ARPaqX8js0oWIrWwtjRdp
-         Y5IaEkNbSNCgVcZQ+XaAN8OaRDbThSQXltp+HYzvDck8U3CkzW6BS8p8Dw4b0ipeEb91
-         TKeB69HeWjHh+k5kThaAjib/tbyhlZ2hi2pERrIXMC66CdnPP5r3aIktDeykQpo/OCbB
-         3xpQ==
-X-Gm-Message-State: APjAAAW19SNfh+DBiqew55Bf2hG31XE8XI8YVKB2uZVGLIR3qmqFt01j
-	+w3ZZa2JO9ln2kVsagmpxHlBl0IcNJI=
-X-Received: by 2002:aed:24af:: with SMTP id t44mr1230263qtc.135.1572582435878;
-        Thu, 31 Oct 2019 21:27:15 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain ([187.106.44.83])
-        by smtp.gmail.com with ESMTPSA id w24sm3719838qta.44.2019.10.31.21.27.11
+        bh=teW38WXulAIrUKBNvuumxpbZRbtrGwotg8AiJU+tjw4=;
+        b=pfTfUXKRntG9CcOn51c7yzE81Ztn1EV3qH+wMDAxmRKiEyjYYdvTxyFhZufXnLR4hW
+         Pu2tQlP0EUV1NxEflOnmqW2rquHkvHKxWfWXHf7/xQSh8B2OZfLBlwvqNMc9i4IivDE5
+         RyfRa4fpaqC2sQrJS693qc/rHV7SqSQQVejvEVuWW89+9EFuCwCGPxaqmdiySOzYF5Oc
+         zI+z4FV1B39FLsLDeNOCofal3l6CRmaywA/ZiQxL2qpUU0hCNBeJGJHvOhcfQiJejWeA
+         ApoCIujCSVk8CUouxrrFImbF3vWhM2yXPYQLpjWE/hauM++XnIXvaK9vFjvoRWErLuz1
+         FJqw==
+X-Gm-Message-State: APjAAAXKDHODDg63weMRyrnvWCvvABNxyqyewi1G7HjtkPdkTQgxA7Hw
+	RpKFlp8e9q9JhBaaWOZuFV0vv2vv/CyW
+X-Received: by 2002:a5d:4645:: with SMTP id j5mr2245480wrs.329.1573122978159;
+        Thu, 07 Nov 2019 02:36:18 -0800 (PST)
+Return-Path: <jbi.octave@gmail.com>
+Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
+        by smtp.googlemail.com with ESMTPSA id k125sm2094922wmf.2.2019.11.07.02.36.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Oct 2019 21:27:15 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	manasi.d.navare@intel.com,
-	rodrigosiqueiramelo@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	sean@poorly.run,
-	airlied@linux.ie,
-	daniel@ffwll.ch,
-	corbet@lwn.net,
-	dri-devel@lists.freedesktop.org,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] drm/doc: Adding VKMS module description and use to "Testing and Validation"
-Date: Fri,  1 Nov 2019 01:27:06 -0300
-Message-Id: <20191101042706.2602-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        Thu, 07 Nov 2019 02:36:17 -0800 (PST)
+From: Jules Irenge <jbi.octave@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: sakari.ailus@linux.intel.com,
+	gregkh@linuxfoundation.org,
+	julia.lawall@lip6.fr,
+	mchehab@kernel.org,
+	linux-media@vger.kernel.org,
+	Jules Irenge <jbi.octave@gmail.com>
+Subject: [PATCH] staging: ipu3: replace 0 with false
+Date: Thu,  7 Nov 2019 10:36:08 +0000
+Message-Id: <20191107103608.26598-1-jbi.octave@gmail.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Add a description on VKMS module and the cases in which it should be used.
-There's a brief explanation on how to set it and use it in a VM, along with
-an example of running an igt-test.
+Replace 0 with false to clear
+warning of assignment of 0/1 to bool variable.
+Issue detected by coccinelle tool.
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-
+Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 ---
+ drivers/staging/media/ipu3/ipu3-css.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi DRM-community,
-this is my first (of many, I hope)  patch in this subsystem. I hope to have
-a lot of learning (and fun :)) working with you guys.
-I'm starting by documenting the VKMS driver in "Userland interfaces", if I
-have been inaccurate in my description or if I misunderstood some concept,
-please let me know.
----
- Documentation/gpu/drm-uapi.rst | 38 ++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/Documentation/gpu/drm-uapi.rst b/Documentation/gpu/drm-uapi.rst
-index 94f90521f58c..7d6c86b7af76 100644
---- a/Documentation/gpu/drm-uapi.rst
-+++ b/Documentation/gpu/drm-uapi.rst
-@@ -285,6 +285,44 @@ run-tests.sh is a wrapper around piglit that will execute the tests matching
- the -t options. A report in HTML format will be available in
- ./results/html/index.html. Results can be compared with piglit.
+diff --git a/drivers/staging/media/ipu3/ipu3-css.c b/drivers/staging/media/ipu3/ipu3-css.c
+index fd1ed84c400c..f36de501edc6 100644
+--- a/drivers/staging/media/ipu3/ipu3-css.c
++++ b/drivers/staging/media/ipu3/ipu3-css.c
+@@ -1450,7 +1450,7 @@ bool imgu_css_pipe_queue_empty(struct imgu_css *css, unsigned int pipe)
+ bool imgu_css_queue_empty(struct imgu_css *css)
+ {
+ 	unsigned int pipe;
+-	bool ret = 0;
++	bool ret = false;
  
-+Using VKMS to test DRM API
-+--------------------------
-+
-+VKMS is a software-only model of a KMS driver that is useful for testing
-+and for running compositors. VKMS aims to enable a virtual display without
-+the need for a hardware display capability. These characteristics made VKMS
-+a perfect tool for validating the DRM core behavior and also support the
-+compositor developer. VKMS helps us to test DRM core function in a virtual
-+machine, which makes it easy to test some of the core changes.
-+
-+To Validate changes in DRM API with VKMS, start setting the kernel. The
-+VKMS module is not enabled by defaut, so enable it in the menuconfig::
-+
-+	$ make menuconfig
-+
-+Compile the kernel with the VKMS enabled and install it in the target
-+machine. VKMS can be run in a Virtual Machine (QEMU, virtme or similar).
-+It's recommended the use of KVM with the minimum of 1GB of RAM and four
-+cores.
-+
-+It's possible to run the IGT-tests in a VM in two ways:
-+1. Use IGT inside a VM
-+2. Use IGT from the host machine and write the results in a shared directory.
-+
-+As follow, there is an example of using a VM with a shared directory with
-+the host machine to run igt-tests. As example it's used virtme::
-+
-+	$ virtme-run --rwdir /path/for/shared_dir --kdir=path/for/kernel/directory --mods=auto
-+
-+Run the igt-tests, as example it's ran the 'kms_flip' tests::
-+
-+	$ /path/for/igt-gpu-tools/scripts/run-tests.sh -p -s -t "kms_flip.*" -v
-+
-+In this example instead of build the igt_runner it's used Piglit
-+(-p option); it's created html summary of the tests results and it's saved
-+in the folder "igt-gpu-tools/results"; it's executed only the igt-tests
-+matching the -t option.
-+
- Display CRC Support
- -------------------
- 
+ 	for (pipe = 0; pipe < IMGU_MAX_PIPE_NUM; pipe++)
+ 		ret &= imgu_css_pipe_queue_empty(css, pipe);
 -- 
-2.20.1
+2.23.0
 
 
