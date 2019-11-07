@@ -1,103 +1,131 @@
-X-GM-THRID: 6663442013681090560
-X-Received: by 2002:a17:906:938b:: with SMTP id l11mr620144ejx.8.1551453492451;
-        Fri, 01 Mar 2019 07:18:12 -0800 (PST)
+X-GM-THRID: 6755994568036974592
+X-Received: by 2002:a62:2b55:: with SMTP id r82mr4510916pfr.56.1573139146661;
+        Thu, 07 Nov 2019 07:05:46 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:9fad:: with SMTP id c42ls2561770edf.1.gmail; Fri, 01 Mar
- 2019 07:18:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxVHDAPr0tD125SOPxdBxfbPdQEYff7qYKYF7KS1xGk7g1G7FwZJOVjlETF4vCsHI8yY0y/
-X-Received: by 2002:a50:aa70:: with SMTP id p45mr783269edc.6.1551453491448;
-        Fri, 01 Mar 2019 07:18:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551453491; cv=none;
+Received: by 2002:a17:902:ac93:: with SMTP id h19ls1498112plr.6.gmail; Thu, 07
+ Nov 2019 07:05:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxBK4CCDITBonyGkSf4bXmkm/jozMTC0eohLMlrNHzI3ecB8KKy+hqgfYjHPQkZLyjafsNa
+X-Received: by 2002:a17:902:36a:: with SMTP id 97mr4284194pld.83.1573139145406;
+        Thu, 07 Nov 2019 07:05:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573139145; cv=none;
         d=google.com; s=arc-20160816;
-        b=DiFBLeM09KESMq6/pxy1vbqVwkTNNimMpOTlKCZKW6+g0AU0MS9Ux4cNPn9Biu326E
-         7mjXR1h2YtNqrx5DQ9iIUUUUn26IfdhqFixrduvSPtRgYfQ75HXuc71sLUEcQ1HtHiWv
-         Ei1UVlI1a7BZy7+SQcsAYbO6iLSB+kesOml08+44vrqY2d6RhyfLS4Gw7dMrM9q1kUI8
-         VBAa2bIaz8pmPAXCV5WxCcOxQbGOiH/TfmMugkmafvkbGyrwRvyiT+Rb9n97ZBgHd9NF
-         /d1TRH2r9LmBxiDg+GlQFutEQauoS/pICoRAH1poYMZrO7yHpMZ8CYmwT+x2MX0EfrmF
-         jumQ==
+        b=PuvPbiJn8T98bZciGmWJ72MMCgFwmv2uoXejtHn+hiLuS7ggxRRHbqTzr4R614ZFsU
+         x9cOBCycAd4QEeRokFNI9AnDK0W0HROPWhxVbyN5Gws3I9zWerzlq+NRchxg7VZTINEc
+         P2rFvsFiUDws05V4FQklq6j7yU+VgDKu7j7XS44GT3HsTJAoqGuFTee8EEiKRZ8ncNd1
+         u6eV/vE4g/Uu0aJIxVa60615EQoHJuNpC5WajDOwyLS+pD/CMBYrjh3CRFWbvjKj+j0+
+         nDLavH/TBnAQHfcWH4rvZVTsgXXxMwesbXHERlUU+IoCdYZGP4fn+nxxy+w2giFiXyNt
+         cHvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=7uUIOA3NkIGHGez/WeDBDlS6MH5CadkTI534YFEVAy4=;
-        b=GB/QgSF462uzhrA1aoiamuo0HUt9HcCnfidYv2JHsNGbmDImbgAx3ktQMjdkdsbXGz
-         Gbq0sPl21q6H60424oS1gIetYFuo9ampU61VNywlij+w/IsEvXgRNknC5aR/ApsnWTeA
-         FrK7Jkr9AA7lF7b3DJRE12rSWCsDsbktwq0zWKiKTaVWWLlGRl0oGkMB5JZ4AuJLWGt/
-         mvJDU448UM5BveKre2D8blJOchd5Gz3cLS/7fGWF7JY1cEL6SZNRM/NK3hYKN/Jm4itn
-         3zAL+EzXSci318gp3QCzOkBRAbnNgwRbUHYgva/zIuvbGCRw6iYthOZWrmEnBzQaROXm
-         XKdw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Z2x8XcJFLLWXtXabQ0QBhMJZvhoCxxsMTNyIJt5n0sk=;
+        b=bp+o2BXpQid8878soPiWumDzHQ7eWPcA1hE6GvZl4HFWu+DDjZXF3HxHQniHzTV2oq
+         jkHhFWxA+MhvduEgMVcCBESqSq7p1J77h3JUdvX2Qb3V+D85LABNeDQXz1lE2Sn0SZtl
+         dQvJLu0kAc5v5xeHcgFeSLbZr/DHocdiCAOTw8Ow9Aw2kjV2D+uB19nt0lHYLS7ysVbO
+         gXgo5+irNl43Eg7zhOUVKRBlpdZ/5nicAR8+b0/mFQ3VG455MeyyzmqtyL7Lnvw2uWHU
+         UkRAntoxf3HejY6is8WDbzzsdIZAOxkEoggqtCW93o/Mbnq0xZCEWI9yk9x0/tPDdewB
+         yCoA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MvrRSmEF;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com. [2a00:1450:4864:20::432])
-        by gmr-mx.google.com with ESMTPS id z19si843441edd.3.2019.03.01.07.18.11
+       dkim=pass header.i=@kernel.org header.s=default header.b="kUkzAVc/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id f17si88079pgk.3.2019.11.07.07.05.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 01 Mar 2019 07:18:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) client-ip=2a00:1450:4864:20::432;
+        Thu, 07 Nov 2019 07:05:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MvrRSmEF;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x432.google.com with SMTP id o17so26292448wrw.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Mar 2019 07:18:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7uUIOA3NkIGHGez/WeDBDlS6MH5CadkTI534YFEVAy4=;
-        b=MvrRSmEFNwXDoj4y5YnanV4b8/Bit/j/ZUgiK+1REdM87PlhgbVdDu4RIR5HfAeZI1
-         LmyoCnUEEcVuR783GAyEV8Rk+z2D3n3bTj6vwNGSO5pZAyLiguPyEQwjX35eJ+ERw7MW
-         Ah3c/PUqR/2Q6gh7IOzGmRbBn4/Gn6fJuKbGN+TFV0p1ZDvUqiKrWbejcub8TnZkw9Sp
-         FhEw5nPgBIyIPK/TlD7n+HpiF/nQr02P8sDVwhKqrvm4Yh4IZwd3uCYmAQvpodD0aVPZ
-         y0Mvld92zX/fxgt9exRk4z1JFCrrTcdHzRVxZe3hiz5SNg63w04v2hOu5QmVSOBc3qeE
-         k1aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7uUIOA3NkIGHGez/WeDBDlS6MH5CadkTI534YFEVAy4=;
-        b=TWSfNAqlngiXCPSjDTORrSDCL4111LPEE2Fizyi2dLlrWvNFg+9AQWL+UmkeMLF3bG
-         Mwlr+Wp6VjIccOfeIOw6+UniMDtLpXgbLaa7X13we15TfBxJZZMPOXURsD4rO89pCccP
-         PcUm3S6GTq5daQ9N5BUNAxZVfDe+x++uwnnniM/FJuMgz9Rp5lKnJ+t/SDP/yvI8ATxv
-         fMkRrWnpdaCJGJVCkAxxcexkrBDovzYOjtyV7ncs5i8kMv40/R+ZyU6ilqtBiU6YJNUx
-         Iy4PHUm8fApe3ggJf4tvOHtwqiqZ/mQqOIaVWZxAcY8Io5mrVwcezbD407mS2QM5eNYL
-         9/6Q==
-X-Gm-Message-State: APjAAAXNHPpe2cbTy1fQLZQZgs5B4ZPcACbQjW/e5eSKySBP/Q4n8VQw
-	Fe7yFBYUKK0QuKcA7u6/U8HHoVc=
-X-Received: by 2002:a05:6000:10cf:: with SMTP id b15mr3937428wrx.32.1551453490979;
-        Fri, 01 Mar 2019 07:18:10 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjatsu.public.libraries.mcc ([91.235.65.22])
-        by smtp.gmail.com with ESMTPSA id w24sm5188996wmi.40.2019.03.01.07.18.10
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Mar 2019 07:18:10 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: mt7621-dma: SPDX license cleanups
-Date: Fri,  1 Mar 2019 15:17:59 +0000
-Message-Id: <20190301151801.7886-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       dkim=pass header.i=@kernel.org header.s=default header.b="kUkzAVc/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id A368421882;
+	Thu,  7 Nov 2019 15:05:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1573139145;
+	bh=PJcKVLiEBk4IfQvG1Jcn1zCi/BiJUsx/Uz6cMYJImVY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kUkzAVc/KHB3qcWazVpOjR9sk9Tx4/qsP1lmL5fTvUw9l3z18AgqZWiEudsYi3bKR
+	 oge7vmeiPmOzxPHa/jK/lB0kFToh15RsYQWwXwDHgtci8h733r7fetV20zU6pFF7/B
+	 9vcAdoV4ae0ERIDQSbOVxcuC19mtfNqTlpIhH+CE=
+Date: Thu, 7 Nov 2019 16:05:42 +0100
+From: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Cc: Jules Irenge <jbi.octave@gmail.com>,
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH 1/3] staging: wfx: replace uint32_t with u32
+Message-ID: <20191107150542.GA154258@kroah.com>
+References: <20191106010911.157294-1-jbi.octave@gmail.com>
+ <12394833.1gViOatCiM@pc-42>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <12394833.1gViOatCiM@pc-42>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 
- This patch series adds SPDX license identifier to fix missing and
- malformed warning generated by checkpatch.pl tool 
- then removes unnecessary license boilerplates.
-         Now that we have the spdx specified,
-         the license text is not necessary.
- 
-Jules Irenge (2):
-  staging: mt7621-dma: add SPDX GPL-2.0 or later version license
-    identifier
-  staging: mt7621-dma: remove license boilerplate text
+On Wed, Nov 06, 2019 at 12:24:03PM +0000, Jerome Pouiller wrote:
+> Hello Jules,
+> 
+> On Wednesday 6 November 2019 02:09:09 CET Jules Irenge wrote:
+> > Replace kernel type uint32_t with u32.
+> > As per recommendation of checkpatch tool.
+> > 
+> > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+> > ---
+> >  drivers/staging/wfx/bh.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/wfx/bh.c b/drivers/staging/wfx/bh.c
+> > index 955ed3a1dd73..337af22b0150 100644
+> > --- a/drivers/staging/wfx/bh.c
+> > +++ b/drivers/staging/wfx/bh.c
+> > @@ -239,7 +239,7 @@ static int bh_work_tx(struct wfx_dev *wdev, int max_msg)
+> >   */
+> >  static void ack_sdio_data(struct wfx_dev *wdev)
+> >  {
+> > -       uint32_t cfg_reg;
+> > +       u32  cfg_reg;
+> Why there are two spaces between u32 and cfg_reg?
 
- drivers/staging/mt7621-dma/mtk-hsdma.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+Yes, that's not ok, I can't take this patch as-is for that reason alone.
 
--- 
-2.20.1
+> 
+> > 
+> >         config_reg_read(wdev, &cfg_reg);
+> >         if (cfg_reg & 0xFF) {
+> > --
+> > 2.23.0
+> 
+> There are plenty of other occurrences of uintXX_t:
+> 
+>    $ git grep '\buint[0-9]*_t\b' drivers/staging/wfx | wc -l
+>    628
+> 
+> Why do you solve this one particularly?
+> 
+> 
+> In add, the driver use more often uintXX_t than uXX:
+> 
+>    $ git grep '\bu[0-9]\+\b' drivers/staging/wfx | wc -l  
+>    171
+> 
+> In other parts of kernel, uintXX_t are not rare:
+> 
+>    $ git grep '\buint[0-9]*_t\b' | grep -v staging | wc -l 
+>    94005
+> 
+> I have a slight preference for uintXX_t, because it is less specific to
+> kernel (and because vim highlights uintXX_t but does not highlight uXX).
 
+uintXX_t really doesn't make sense in the kernel, as the "namespace" is
+wrong, but we tolerate it.  Ideally you will use the right types.
+
+Also, use the vim-addon-linux-coding-style pluging, makes writing kernel
+code using vim much easier.
+
+thanks,
+
+greg k-h
 
