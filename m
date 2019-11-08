@@ -1,107 +1,651 @@
-X-GM-THRID: 6622006698553901056
-X-Received: by 2002:adf:f907:: with SMTP id b7-v6mr2144224wrr.21.1541806081301;
-        Fri, 09 Nov 2018 15:28:01 -0800 (PST)
+X-GM-THRID: 6754467749932564480
+X-Received: by 2002:a17:90a:3746:: with SMTP id u64mr13479976pjb.4.1573219845540;
+        Fri, 08 Nov 2019 05:30:45 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:1a87:: with SMTP id a129-v6ls620430wma.8.gmail; Fri, 09
- Nov 2018 15:28:00 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fLCqTnC20mp086Ff1RMXN1V+SlH19dhqU9Ljh+fGQktbGoVYKb8oT+7r7tUNQ2aJFxoWVh
-X-Received: by 2002:a1c:c018:: with SMTP id q24-v6mr796689wmf.6.1541806080419;
-        Fri, 09 Nov 2018 15:28:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541806080; cv=none;
+Received: by 2002:a17:902:bb90:: with SMTP id m16ls495398pls.13.gmail; Fri, 08
+ Nov 2019 05:30:44 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxTtgzS21UV9kY3x5C4y/UQq7E7Fh7t4fRxChQd0gxlu988qNLx5RP9hfojl5ahLXZYV6lf
+X-Received: by 2002:a17:902:9686:: with SMTP id n6mr2361969plp.249.1573219843957;
+        Fri, 08 Nov 2019 05:30:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573219843; cv=none;
         d=google.com; s=arc-20160816;
-        b=m2b7jWD02N8wGfUIkMbuWuDvRoGQFknj5mbJ/OZgAqQgrNgi4mJhghDWOAkJBEKHjF
-         FVrssahiiST/Tdm1L+nA0/CCwgB1yAio3W5pHu9R+RxfYbKkbjaVVzY3WTAINUyxTe76
-         ArIvE/xxAzZfd/Qaz/oSKJWChVFsretlN18FEB0O01xhF1n4/ivXKzJ+StQh6jkOiuP5
-         44dbyXP4tBdJ+5QDjpB5IkQZ6ss5RPBc7r4HQoMa3/rtGJsr6CopAy+y+XSWzhJR88aK
-         l0qxxFi727V9bGG5fG+TvssQdk1jG+KqOJUL5b5UMk6YLV2ikn3SmZ39R5DJwZgseaRx
-         yAdw==
+        b=EMooWLUOcE05Ga5Awg3YbXILzreNgsJs++JmECwog0Mu0yWLsptVfchpk6DB/wln7L
+         gMDra8wSAcxAOy7JLNdFUcsYY0W0870SrdJ5Lp8GKt5nGdq0702TepeHWi52Bz9gOgLD
+         ueIfrlk2D1V14577NsWrDH6vDYQs5M7AALP8V17LW0DDLIQiyALqVBKEGhsNaoRRjkCt
+         sVpkwZIa6D3/4mnBNd20aBhmi9YS72QVb8S5Q9Ur2/97TqnYCbiobPyJnv+AwDvsXT58
+         M7uL+5uTlDFx0wxjG7IZoLoVGSQ8Z77vvVj+y+KePHML7DbLQv/1q+u+cC+TRsZi7Vk5
+         W38g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:subject:to:from:date;
-        bh=u7eoKyqdZxiY73iMLbj6Krvo5m4zPjDyIxuuxerv//0=;
-        b=zGpPzK9xDaL/KClcqwmLzL/oKt3QDQAYdHf6PyvYmAnI7EZleDdOQN+zBiWA6SncqX
-         zrML6jI0RRzk7kr9gTeNP98gyBUsvOKFDzR/nlWXg/LDLZHLS8oygoo0vb8We8p2h0BD
-         Nv+mheFeYZHkwRPnhfqaZekpcjFw2Ys9uRbXzTi5Ew8j4y1hARieY7Eims1TBKtOOf+2
-         b3pXyMumCH96x9YReUCdmSaB/pj8fdxA2wsJp/RjZ4MvtxhjbtdabhzVSoSdmMRjh4Dy
-         KcPwlBZpHozH71MrZHHuZIl6SigqhzjxUSx+7tYDCsVePy68FE4D3yyh30T9KwwCnlnD
-         uImg==
+        h=content-disposition:mime-version:mail-followup-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=7b+vCOQi/zfQ0jNU6zJ9hmuA9AtUNAb+q9YqVU3W1KU=;
+        b=ppSMT8N4NbnfONFGFd2ZvPERkoPj/Wx6RVdv/uEdBL9a6B1l2YuzCxE1K99E/kvzMi
+         wiJBRq7QEO12TeZ8HsinU7VlpBFQOPdAPooJCzH91piir8tNBwksWwiwkjONk7JovbCY
+         D9bGnXPas4coror9WoAE91bogFZ72wNqdUbP2m8ZBn09lq4zAMlsBE/BrCsJJGHmdwNn
+         jr9N19c6DFo/hZeEN/TexW9L9D8ikweY+3newgnlrygJ79/8Spdxu8pMpwvhjEP2wINO
+         5PrsNLsyM8yEk1aZRbLqHjJXULYYt7CB2gdGeXK9XwU3rB+/PC7TiyicPL//9YxsZDOZ
+         hx4w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-Return-Path: <julia.lawall@lip6.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h137-v6si133098wmd.1.2018.11.09.15.28.00
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TFnKIY8M;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jarias.linux@gmail.com>
+Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com. [2607:f8b0:4864:20::844])
+        by gmr-mx.google.com with ESMTPS id 83si397918pfx.4.2019.11.08.05.30.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Nov 2018 15:28:00 -0800 (PST)
-Received-SPF: neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Nov 2019 05:30:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) client-ip=2607:f8b0:4864:20::844;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 192.134.164.83 is neither permitted nor denied by domain of julia.lawall@lip6.fr) smtp.mailfrom=julia.lawall@lip6.fr
-X-IronPort-AV: E=Sophos;i="5.54,485,1534802400"; 
-   d="scan'208";a="355006499"
-Received: from unknown (HELO hadrien) ([104.129.159.57])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Nov 2018 00:27:59 +0100
-Date: Sat, 10 Nov 2018 00:27:53 +0100 (CET)
-From: Julia Lawall <julia.lawall@lip6.fr>
-X-X-Sender: jll@hadrien
-To: outreachy-kernel@googlegroups.com
-Subject: HELP WANTED: Fix -Wmissing-prototypes warnings (fwd)
-Message-ID: <alpine.DEB.2.21.1811100026460.2679@hadrien>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TFnKIY8M;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::844 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x844.google.com with SMTP id o49so6457680qta.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 08 Nov 2019 05:30:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
+         :content-disposition;
+        bh=7b+vCOQi/zfQ0jNU6zJ9hmuA9AtUNAb+q9YqVU3W1KU=;
+        b=TFnKIY8MDb8Td3ZkqDIf3rBASBTvftXjf6ZMoue4gufINevL1keJ8shPy7A/unGIIF
+         iOKd+7cbXR9LF1Z8TnvbNCg5TF7l90Qjm2z+tT01ypVdu0Xbxhbq42glvzeGGNlmNQNj
+         f+BQIuGuwbxKn8sBID5AyTktliOF8GJzksunDvxGmYiomSXQwlJYQRBnhPub30zN1SA3
+         OXGKFQbZr7XPIijo9U8CrQoayfn3dOfRKS0PsM0wJNbK6gxSDnWtyhT7/aKiMHmnO6MZ
+         +844CBiN9mUwokk/WvtqQWI93vvzwryP1kYqsNe4DDvMJT9aCSrggFHh1h2tN9zgYhXi
+         S4zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:mime-version:content-disposition;
+        bh=7b+vCOQi/zfQ0jNU6zJ9hmuA9AtUNAb+q9YqVU3W1KU=;
+        b=NeTSgHZDBjwgQFKm3gRiuLfJfb+j0g0ZEIQ3K62KOtMXsOMt4eL8GpWHkvHmmB3h79
+         Suvi2Drx179StKe63O6lmhhkuIBHHW4pRTTnBvCGyWf7Q9khONBkSMie6H4MKCdcGl66
+         H0KutPS/xy3iD63ic8ICfetCLYMH1wPER1BJ8b/xvtpw9gGrGZ9KgADzGVWGWJgxFLm5
+         08AAy7WV5oDD1VZEbwHwt+IbE8Ui+N93R29wW23dLGeXKCu25DHSZRi3Jt1YTl2LRCRh
+         ghR9aVvfwYUUVHrH101CO0h8f1kAvd2k6Aijh4JmKGJ7RPvPMM99HOpfp0LPIXrdD5qq
+         Wkbw==
+X-Gm-Message-State: APjAAAX/8DkO5nfV5uLxI7rNIyLn5uvJpIp9nkytW6qnrcXlr58ItuLz
+	IOxcof2f9Dj9OzLzk+V4TdMO8lV04GL1RA==
+X-Received: by 2002:ac8:35a4:: with SMTP id k33mr10763482qtb.354.1573219842749;
+        Fri, 08 Nov 2019 05:30:42 -0800 (PST)
+Return-Path: <jarias.linux@gmail.com>
+Received: from gmail.com ([162.253.71.231])
+        by smtp.gmail.com with ESMTPSA id g7sm2707820qkl.20.2019.11.08.05.30.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Nov 2019 05:30:41 -0800 (PST)
+Date: Fri, 8 Nov 2019 08:30:38 -0500
+From: "Javier F. Arias" <jarias.linux@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8723bs: Remove commented code
+Message-ID: <1dfda6d22e4a972b9c91c6f56d2dc76603007626.1573219728.git.jarias.linux@gmail.com>
+Mail-Followup-To: gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-For those who want to keep contributing...
+This patch removes unnecessary commented code.
 
-julia
+Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 177 +---------------------
+ 1 file changed, 2 insertions(+), 175 deletions(-)
 
----------- Forwarded message ----------
-Date: Fri, 9 Nov 2018 18:44:10 +0100
-From: Borislav Petkov <bp@alien8.de>
-To: kernel-janitors@vger.kernel.org, driverdev-devel@linuxdriverproject.org
-Cc: wang.yi59@zte.com.cn, Greg KH <gregkh@linuxfoundation.org>
-Subject: HELP WANTED: Fix -Wmissing-prototypes warnings
-
-Hi all,
-
-gcc has a warning option
-
-  -Wmissing-prototypes
-
-which fires when a global function is missing a prototype declaration.
-This warning is important as it catches cases when that global
-function's prototype has been changed but its callers haven't been
-updated. And they should be.
-
-Currently, if enabled, this warning triggers ~1400 times for an
-allmodconfig build and we would like to have 0 warnings and then add
-that option to the main Makefile.
-
-So helping out here would be lovely!
-
-And it is very easy to do: you simply build the kernel with W=1:
-
-	make -j<num_cpus+1> W=1 2>w.log
-
-choose one -Wmissing-prototypes warning in the w.log build log and fix
-it by including the header which has the function prototype. Or you
-declare the function static. If that function prototype is missing, it
-needs to be added, of course.
-
-For every function, one should ask oneself, is it better to make the
-function static and save ourselves the prototype and include file
-dependency - that would be the preferred solution - or if not possible,
-should one make the prototype visible by including the proper header so
-that gcc sees the prototype.
-
-This should be a good exercise for newbies who'd like to get involved
-into kernel development.
-
-Feel free to ask if there are any questions.
-
-Thanks!
-
+diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+index ab85abecfaaa..a4eec81a2fde 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
++++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+@@ -25,8 +25,6 @@ void _rtw_init_sta_xmit_priv(struct sta_xmit_priv *psta_xmitpriv)
+ 
+ 	spin_lock_init(&psta_xmitpriv->lock);
+ 
+-	/* for (i = 0 ; i < MAX_NUMBLKS; i++) */
+-	/* 	_init_txservq(&(psta_xmitpriv->blk_q[i])); */
+ 
+ 	_init_txservq(&psta_xmitpriv->be_q);
+ 	_init_txservq(&psta_xmitpriv->bk_q);
+@@ -54,8 +52,6 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 
+ 	pxmitpriv->adapter = padapter;
+ 
+-	/* for (i = 0 ; i < MAX_NUMBLKS; i++) */
+-	/* 	_rtw_init_queue(&pxmitpriv->blk_strms[i]); */
+ 
+ 	_rtw_init_queue(&pxmitpriv->be_pending);
+ 	_rtw_init_queue(&pxmitpriv->bk_pending);
+@@ -63,8 +59,6 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 	_rtw_init_queue(&pxmitpriv->vo_pending);
+ 	_rtw_init_queue(&pxmitpriv->bm_pending);
+ 
+-	/* _rtw_init_queue(&pxmitpriv->legacy_dz_queue); */
+-	/* _rtw_init_queue(&pxmitpriv->apsd_queue); */
+ 
+ 	_rtw_init_queue(&pxmitpriv->free_xmit_queue);
+ 
+@@ -83,8 +77,6 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 		goto exit;
+ 	}
+ 	pxmitpriv->pxmit_frame_buf = (u8 *)N_BYTE_ALIGMENT((SIZE_PTR)(pxmitpriv->pallocated_frame_buf), 4);
+-	/* pxmitpriv->pxmit_frame_buf = pxmitpriv->pallocated_frame_buf + 4 - */
+-	/* 						((SIZE_PTR) (pxmitpriv->pallocated_frame_buf) &3); */
+ 
+ 	pxframe = (struct xmit_frame *) pxmitpriv->pxmit_frame_buf;
+ 
+@@ -123,8 +115,6 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+ 	}
+ 
+ 	pxmitpriv->pxmitbuf = (u8 *)N_BYTE_ALIGMENT((SIZE_PTR)(pxmitpriv->pallocated_xmitbuf), 4);
+-	/* pxmitpriv->pxmitbuf = pxmitpriv->pallocated_xmitbuf + 4 - */
+-	/* 						((SIZE_PTR) (pxmitpriv->pallocated_xmitbuf) &3); */
+ 
+ 	pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
+ 
+@@ -489,11 +479,6 @@ static void update_attrib_phy_info(struct adapter *padapter, struct pkt_attrib *
+ 	else
+ 		pattrib->ampdu_spacing = psta->htpriv.rx_ampdu_min_spacing;
+ 
+-	/* if (pattrib->ht_en && psta->htpriv.ampdu_enable) */
+-	/*  */
+-	/* 	if (psta->htpriv.agg_enable_bitmap & BIT(pattrib->priority)) */
+-	/* 		pattrib->ampdu_en = true; */
+-	/*  */
+ 
+ 
+ 	pattrib->retry_ctrl = false;
+@@ -669,7 +654,6 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
+ 	/*  get UserPriority from IP hdr */
+ 	if (pattrib->ether_type == 0x0800) {
+ 		_rtw_pktfile_read(ppktfile, (u8 *)&ip_hdr, sizeof(ip_hdr));
+-/* 		UserPriority = (ntohs(ip_hdr.tos) >> 5) & 0x3; */
+ 		UserPriority = ip_hdr.tos >> 5;
+ 	}
+ 	pattrib->priority = UserPriority;
+@@ -818,7 +802,6 @@ static s32 update_attrib(struct adapter *padapter, _pkt *pkt, struct pkt_attrib
+ 
+ 	update_attrib_phy_info(padapter, pattrib, psta);
+ 
+-	/* DBG_8192C("%s ==> mac_id(%d)\n", __func__, pattrib->mac_id); */
+ 
+ 	pattrib->psta = psta;
+ 	/* TODO:_unlock */
+@@ -857,7 +840,6 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+ 	sint			curfragnum, length;
+ 	u8 *pframe, *payload, mic[8];
+ 	struct	mic_data		micdata;
+-	/* struct	sta_info 	*stainfo; */
+ 	struct	pkt_attrib	 *pattrib = &pxmitframe->attrib;
+ 	struct	security_priv *psecuritypriv = &padapter->securitypriv;
+ 	struct	xmit_priv 	*pxmitpriv = &padapter->xmitpriv;
+@@ -865,35 +847,11 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+ 	u8 hw_hdr_offset = 0;
+ 	sint bmcst = IS_MCAST(pattrib->ra);
+ 
+-/*
+-	if (pattrib->psta)
+-	{
+-		stainfo = pattrib->psta;
+-	}
+-	else
+-	{
+-		DBG_871X("%s, call rtw_get_stainfo()\n", __func__);
+-		stainfo =rtw_get_stainfo(&padapter->stapriv ,&pattrib->ra[0]);
+-	}
+-
+-	if (stainfo == NULL)
+-	{
+-		DBG_871X("%s, psta ==NUL\n", __func__);
+-		return _FAIL;
+-	}
+-
+-	if (!(stainfo->state &_FW_LINKED))
+-	{
+-		DBG_871X("%s, psta->state(0x%x) != _FW_LINKED\n", __func__, stainfo->state);
+-		return _FAIL;
+-	}
+-*/
+ 
+ 	hw_hdr_offset = TXDESC_OFFSET;
+ 
+-	if (pattrib->encrypt == _TKIP_) { /* if (psecuritypriv->dot11PrivacyAlgrthm == _TKIP_PRIVACY_) */
++	if (pattrib->encrypt == _TKIP_) {
+ 		/* encode mic code */
+-		/* if (stainfo!= NULL) */
+ 		{
+ 			u8 null_key[16] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
+ 
+@@ -901,16 +859,12 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+ 
+ 			if (bmcst) {
+ 				if (!memcmp(psecuritypriv->dot118021XGrptxmickey[psecuritypriv->dot118021XGrpKeyid].skey, null_key, 16)) {
+-					/* DbgPrint("\nxmitframe_addmic:stainfo->dot11tkiptxmickey == 0\n"); */
+-					/* msleep(10); */
+ 					return _FAIL;
+ 				}
+ 				/* start to calculate the mic code */
+ 				rtw_secmicsetkey(&micdata, psecuritypriv->dot118021XGrptxmickey[psecuritypriv->dot118021XGrpKeyid].skey);
+ 			} else {
+ 				if (!memcmp(&pattrib->dot11tkiptxmickey.skey[0], null_key, 16)) {
+-					/* DbgPrint("\nxmitframe_addmic:stainfo->dot11tkiptxmickey == 0\n"); */
+-					/* msleep(10); */
+ 					return _FAIL;
+ 				}
+ 				/* start to calculate the mic code */
+@@ -932,7 +886,6 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+ 
+ 			}
+ 
+-			/* if (pqospriv->qos_option == 1) */
+ 			if (pattrib->qos_en)
+ 				priority[0] = (u8)pxmitframe->attrib.priority;
+ 
+@@ -978,9 +931,6 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+ 					*(payload+curfragnum+4), *(payload+curfragnum+5), *(payload+curfragnum+6), *(payload+curfragnum+7)));
+ 			}
+ /*
+-			else {
+-				RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("xmitframe_addmic: rtw_get_stainfo == NULL!!!\n"));
+-			}
+ */
+ 	}
+ 	return _SUCCESS;
+@@ -990,11 +940,8 @@ static s32 xmitframe_swencrypt(struct adapter *padapter, struct xmit_frame *pxmi
+ {
+ 
+ 	struct	pkt_attrib	 *pattrib = &pxmitframe->attrib;
+-	/* struct	security_priv *psecuritypriv =&padapter->securitypriv; */
+ 
+-	/* if ((psecuritypriv->sw_encrypt)||(pattrib->bswenc)) */
+ 	if (pattrib->bswenc) {
+-		/* DBG_871X("start xmitframe_swencrypt\n"); */
+ 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("### xmitframe_swencrypt\n"));
+ 		switch (pattrib->encrypt) {
+ 		case _WEP40_:
+@@ -1131,14 +1078,12 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+ 
+ 					/* check BA_starting_seqctrl */
+ 					if (SN_LESS(pattrib->seqnum, tx_seq)) {
+-						/* DBG_871X("tx ampdu seqnum(%d) < tx_seq(%d)\n", pattrib->seqnum, tx_seq); */
+ 						pattrib->ampdu_en = false;/* AGG BK */
+ 					} else if (SN_EQUAL(pattrib->seqnum, tx_seq)) {
+ 						psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq+1)&0xfff;
+ 
+ 						pattrib->ampdu_en = true;/* AGG EN */
+ 					} else {
+-						/* DBG_871X("tx ampdu over run\n"); */
+ 						psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (pattrib->seqnum+1)&0xfff;
+ 						pattrib->ampdu_en = true;/* AGG EN */
+ 					}
+@@ -1206,9 +1151,6 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_fram
+ 	u8 *pframe, *mem_start;
+ 	u8 hw_hdr_offset;
+ 
+-	/* struct sta_info 	*psta; */
+-	/* struct sta_priv 	*pstapriv = &padapter->stapriv; */
+-	/* struct mlme_priv *pmlmepriv = &padapter->mlmepriv; */
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 
+ 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
+@@ -1218,30 +1160,6 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_fram
+ 	s32 bmcst = IS_MCAST(pattrib->ra);
+ 	s32 res = _SUCCESS;
+ 
+-/*
+-	if (pattrib->psta)
+-	{
+-		psta = pattrib->psta;
+-	} else
+-	{
+-		DBG_871X("%s, call rtw_get_stainfo()\n", __func__);
+-		psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
+-	}
+-
+-	if (psta == NULL)
+-  {
+-
+-		DBG_871X("%s, psta ==NUL\n", __func__);
+-		return _FAIL;
+-	}
+-
+-
+-	if (!(psta->state &_FW_LINKED))
+-	{
+-		DBG_871X("%s, psta->state(0x%x) != _FW_LINKED\n", __func__, psta->state);
+-		return _FAIL;
+-	}
+-*/
+ 	if (!pxmitframe->buf_addr) {
+ 		DBG_8192C("==> %s buf_addr == NULL\n", __func__);
+ 		return _FAIL;
+@@ -1455,7 +1373,6 @@ s32 rtw_mgmt_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit
+ 				goto xmitframe_coalesce_fail;
+ 			}
+ 
+-			/* DBG_871X("%s, action frame category =%d\n", __func__, pframe[WLAN_HDR_A3_LEN]); */
+ 			/* according 802.11-2012 standard, these five types are not robust types */
+ 			if (subtype == WIFI_ACTION &&
+ 			(pframe[WLAN_HDR_A3_LEN] == RTW_WLAN_CATEGORY_PUBLIC ||
+@@ -1750,7 +1667,6 @@ struct xmit_buf *rtw_alloc_xmitbuf(struct xmit_priv *pxmitpriv)
+ 	struct list_head *plist, *phead;
+ 	struct __queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
+ 
+-	/* DBG_871X("+rtw_alloc_xmitbuf\n"); */
+ 
+ 	spin_lock_irqsave(&pfree_xmitbuf_queue->lock, irqL);
+ 
+@@ -1772,7 +1688,6 @@ struct xmit_buf *rtw_alloc_xmitbuf(struct xmit_priv *pxmitpriv)
+ 		#ifdef DBG_XMIT_BUF
+ 		DBG_871X("DBG_XMIT_BUF ALLOC no =%d,  free_xmitbuf_cnt =%d\n", pxmitbuf->no, pxmitpriv->free_xmitbuf_cnt);
+ 		#endif
+-		/* DBG_871X("alloc, free_xmitbuf_cnt =%d\n", pxmitpriv->free_xmitbuf_cnt); */
+ 
+ 		pxmitbuf->priv_data = NULL;
+ 
+@@ -1801,7 +1716,6 @@ s32 rtw_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
+ 	_irqL irqL;
+ 	struct __queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
+ 
+-	/* DBG_871X("+rtw_free_xmitbuf\n"); */
+ 
+ 	if (!pxmitbuf)
+ 		return _FAIL;
+@@ -1823,7 +1737,6 @@ s32 rtw_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
+ 			      get_list_head(pfree_xmitbuf_queue));
+ 
+ 		pxmitpriv->free_xmitbuf_cnt++;
+-		/* DBG_871X("FREE, free_xmitbuf_cnt =%d\n", pxmitpriv->free_xmitbuf_cnt); */
+ 		#ifdef DBG_XMIT_BUF
+ 		DBG_871X("DBG_XMIT_BUF FREE no =%d, free_xmitbuf_cnt =%d\n", pxmitbuf->no, pxmitpriv->free_xmitbuf_cnt);
+ 		#endif
+@@ -1839,7 +1752,6 @@ static void rtw_init_xmitframe(struct xmit_frame *pxframe)
+ 		pxframe->pxmitbuf = NULL;
+ 
+ 		memset(&pxframe->attrib, 0, sizeof(struct pkt_attrib));
+-		/* pxframe->attrib.psta = NULL; */
+ 
+ 		pxframe->frame_tag = DATA_FRAMETAG;
+ 
+@@ -2034,7 +1946,6 @@ s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitfram
+ 	if (rtw_xmit_classifier(padapter, pxmitframe) == _FAIL) {
+ 		RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+ 			 ("rtw_xmitframe_enqueue: drop xmit pkt for classifier fail\n"));
+-/* 		pxmitframe->pkt = NULL; */
+ 		return _FAIL;
+ 	}
+ 
+@@ -2086,7 +1997,6 @@ struct tx_servq *rtw_get_sta_pending(struct adapter *padapter, struct sta_info *
+  */
+ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ {
+-	/* _irqL irqL0; */
+ 	u8 ac_index;
+ 	struct sta_info *psta;
+ 	struct tx_servq	*ptxservq;
+@@ -2096,14 +2006,6 @@ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ 
+ 	DBG_COUNTER(padapter->tx_logs.core_tx_enqueue_class);
+ 
+-/*
+-	if (pattrib->psta) {
+-		psta = pattrib->psta;
+-	} else {
+-		DBG_871X("%s, call rtw_get_stainfo()\n", __func__);
+-		psta = rtw_get_stainfo(pstapriv, pattrib->ra);
+-	}
+-*/
+ 
+ 	psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
+ 	if (pattrib->psta != psta) {
+@@ -2128,21 +2030,17 @@ s32 rtw_xmit_classifier(struct adapter *padapter, struct xmit_frame *pxmitframe)
+ 
+ 	ptxservq = rtw_get_sta_pending(padapter, psta, pattrib->priority, (u8 *)(&ac_index));
+ 
+-	/* spin_lock_irqsave(&pstapending->lock, irqL0); */
+ 
+ 	if (list_empty(&ptxservq->tx_pending)) {
+ 		list_add_tail(&ptxservq->tx_pending, get_list_head(phwxmits[ac_index].sta_queue));
+ 	}
+ 
+-	/* spin_lock_irqsave(&ptxservq->sta_pending.lock, irqL1); */
+ 
+ 	list_add_tail(&pxmitframe->list, get_list_head(&ptxservq->sta_pending));
+ 	ptxservq->qcnt++;
+ 	phwxmits[ac_index].accnt++;
+ 
+-	/* spin_unlock_irqrestore(&ptxservq->sta_pending.lock, irqL1); */
+ 
+-	/* spin_unlock_irqrestore(&pstapending->lock, irqL0); */
+ 
+ exit:
+ 
+@@ -2166,42 +2064,24 @@ s32 rtw_alloc_hwxmits(struct adapter *padapter)
+ 	hwxmits = pxmitpriv->hwxmits;
+ 
+ 	if (pxmitpriv->hwxmit_entry == 5) {
+-		/* pxmitpriv->bmc_txqueue.head = 0; */
+-		/* hwxmits[0] .phwtxqueue = &pxmitpriv->bmc_txqueue; */
+ 		hwxmits[0] .sta_queue = &pxmitpriv->bm_pending;
+ 
+-		/* pxmitpriv->vo_txqueue.head = 0; */
+-		/* hwxmits[1] .phwtxqueue = &pxmitpriv->vo_txqueue; */
+ 		hwxmits[1] .sta_queue = &pxmitpriv->vo_pending;
+ 
+-		/* pxmitpriv->vi_txqueue.head = 0; */
+-		/* hwxmits[2] .phwtxqueue = &pxmitpriv->vi_txqueue; */
+ 		hwxmits[2] .sta_queue = &pxmitpriv->vi_pending;
+ 
+-		/* pxmitpriv->bk_txqueue.head = 0; */
+-		/* hwxmits[3] .phwtxqueue = &pxmitpriv->bk_txqueue; */
+ 		hwxmits[3] .sta_queue = &pxmitpriv->bk_pending;
+ 
+-		/* pxmitpriv->be_txqueue.head = 0; */
+-		/* hwxmits[4] .phwtxqueue = &pxmitpriv->be_txqueue; */
+ 		hwxmits[4] .sta_queue = &pxmitpriv->be_pending;
+ 
+ 	} else if (pxmitpriv->hwxmit_entry == 4) {
+ 
+-		/* pxmitpriv->vo_txqueue.head = 0; */
+-		/* hwxmits[0] .phwtxqueue = &pxmitpriv->vo_txqueue; */
+ 		hwxmits[0] .sta_queue = &pxmitpriv->vo_pending;
+ 
+-		/* pxmitpriv->vi_txqueue.head = 0; */
+-		/* hwxmits[1] .phwtxqueue = &pxmitpriv->vi_txqueue; */
+ 		hwxmits[1] .sta_queue = &pxmitpriv->vi_pending;
+ 
+-		/* pxmitpriv->be_txqueue.head = 0; */
+-		/* hwxmits[2] .phwtxqueue = &pxmitpriv->be_txqueue; */
+ 		hwxmits[2] .sta_queue = &pxmitpriv->be_pending;
+ 
+-		/* pxmitpriv->bk_txqueue.head = 0; */
+-		/* hwxmits[3] .phwtxqueue = &pxmitpriv->bk_txqueue; */
+ 		hwxmits[3] .sta_queue = &pxmitpriv->bk_pending;
+ 	} else {
+ 
+@@ -2222,9 +2102,6 @@ void rtw_init_hwxmits(struct hw_xmit *phwxmit, sint entry)
+ 	sint i;
+ 
+ 	for (i = 0; i < entry; i++, phwxmit++) {
+-		/* spin_lock_init(&phwxmit->xmit_lock); */
+-		/* INIT_LIST_HEAD(&phwxmit->pending); */
+-		/* phwxmit->txcmdcnt = 0; */
+ 		phwxmit->accnt = 0;
+ 	}
+ }
+@@ -2391,17 +2268,6 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_fwstate);
+ 		return ret;
+ 	}
+-/*
+-	if (pattrib->psta)
+-	{
+-		psta = pattrib->psta;
+-	}
+-	else
+-	{
+-		DBG_871X("%s, call rtw_get_stainfo()\n", __func__);
+-		psta =rtw_get_stainfo(pstapriv, pattrib->ra);
+-	}
+-*/
+ 	psta = rtw_get_stainfo(&padapter->stapriv, pattrib->ra);
+ 	if (pattrib->psta != psta) {
+ 		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_sta);
+@@ -2423,9 +2289,7 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 
+ 	if (pattrib->triggered == 1) {
+ 		DBG_COUNTER(padapter->tx_logs.core_tx_ap_enqueue_warn_trigger);
+-		/* DBG_871X("directly xmit pspoll_triggered packet\n"); */
+ 
+-		/* pattrib->triggered = 0; */
+ 		if (bmcst && xmitframe_hiq_filter(pxmitframe))
+ 			pattrib->qsel = 0x11;/* HIQ */
+ 
+@@ -2441,7 +2305,6 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 
+ 			list_del_init(&pxmitframe->list);
+ 
+-			/* spin_lock_bh(&psta->sleep_q.lock); */
+ 
+ 			list_add_tail(&pxmitframe->list, get_list_head(&psta->sleep_q));
+ 
+@@ -2450,10 +2313,9 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 			if (!(pstapriv->tim_bitmap & BIT(0)))
+ 				update_tim = true;
+ 
+-			pstapriv->tim_bitmap |= BIT(0);/*  */
++			pstapriv->tim_bitmap |= BIT(0);
+ 			pstapriv->sta_dz_bitmap |= BIT(0);
+ 
+-			/* DBG_871X("enqueue, sq_len =%d, tim =%x\n", psta->sleepq_len, pstapriv->tim_bitmap); */
+ 
+ 			if (update_tim) {
+ 				update_beacon(padapter, _TIM_IE_, NULL, true);
+@@ -2461,7 +2323,6 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 				chk_bmc_sleepq_cmd(padapter);
+ 			}
+ 
+-			/* spin_unlock_bh(&psta->sleep_q.lock); */
+ 
+ 			ret = true;
+ 
+@@ -2484,7 +2345,6 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 		if (pstapriv->sta_dz_bitmap & BIT(psta->aid)) {
+ 			list_del_init(&pxmitframe->list);
+ 
+-			/* spin_lock_bh(&psta->sleep_q.lock); */
+ 
+ 			list_add_tail(&pxmitframe->list, get_list_head(&psta->sleep_q));
+ 
+@@ -2519,20 +2379,13 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
+ 
+ 				pstapriv->tim_bitmap |= BIT(psta->aid);
+ 
+-				/* DBG_871X("enqueue, sq_len =%d, tim =%x\n", psta->sleepq_len, pstapriv->tim_bitmap); */
+ 
+ 				if (update_tim)
+-					/* DBG_871X("sleepq_len == 1, update BCNTIM\n"); */
+ 					/* upate BCN for TIM IE */
+ 					update_beacon(padapter, _TIM_IE_, NULL, true);
+ 			}
+ 
+-			/* spin_unlock_bh(&psta->sleep_q.lock); */
+ 
+-			/* if (psta->sleepq_len > (NR_XMITFRAME>>3)) */
+-			/*  */
+-			/* 	wakeup_sta_to_xmit(padapter, psta); */
+-			/*  */
+ 
+ 			ret = true;
+ 
+@@ -2577,7 +2430,6 @@ static void dequeue_xmitframes_to_sleeping_queue(struct adapter *padapter, struc
+ 			ptxservq->qcnt--;
+ 			phwxmits[ac_index].accnt--;
+ 		} else {
+-			/* DBG_871X("xmitframe_enqueue_for_sleeping_sta return false\n"); */
+ 		}
+ 
+ 	}
+@@ -2640,7 +2492,6 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
+ 	psta_bmc = rtw_get_bcmc_stainfo(padapter);
+ 
+ 
+-	/* spin_lock_bh(&psta->sleep_q.lock); */
+ 	spin_lock_bh(&pxmitpriv->lock);
+ 
+ 	xmitframe_phead = get_list_head(&psta->sleep_q);
+@@ -2699,9 +2550,6 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
+ 
+ 	if (psta->sleepq_len == 0) {
+ 		if (pstapriv->tim_bitmap & BIT(psta->aid)) {
+-			/* DBG_871X("wakeup to xmit, qlen == 0, update_BCNTIM, tim =%x\n", pstapriv->tim_bitmap); */
+-			/* upate BCN for TIM IE */
+-			/* update_BCNTIM(padapter); */
+ 			update_mask = BIT(0);
+ 		}
+ 
+@@ -2742,24 +2590,12 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
+ 
+ 
+ 			pxmitframe->attrib.triggered = 1;
+-/*
+-			spin_unlock_bh(&psta_bmc->sleep_q.lock);
+-			if (rtw_hal_xmit(padapter, pxmitframe) == true)
+-			{
+-				rtw_os_xmit_complete(padapter, pxmitframe);
+-			}
+-			spin_lock_bh(&psta_bmc->sleep_q.lock);
+-
+-*/
+ 			rtw_hal_xmitframe_enqueue(padapter, pxmitframe);
+ 
+ 		}
+ 
+ 		if (psta_bmc->sleepq_len == 0) {
+ 			if (pstapriv->tim_bitmap & BIT(0)) {
+-				/* DBG_871X("wakeup to xmit, qlen == 0, update_BCNTIM, tim =%x\n", pstapriv->tim_bitmap); */
+-				/* upate BCN for TIM IE */
+-				/* update_BCNTIM(padapter); */
+ 				update_mask |= BIT(1);
+ 			}
+ 			pstapriv->tim_bitmap &= ~BIT(0);
+@@ -2770,12 +2606,9 @@ void wakeup_sta_to_xmit(struct adapter *padapter, struct sta_info *psta)
+ 
+ _exit:
+ 
+-	/* spin_unlock_bh(&psta_bmc->sleep_q.lock); */
+ 	spin_unlock_bh(&pxmitpriv->lock);
+ 
+ 	if (update_mask)
+-		/* update_BCNTIM(padapter); */
+-		/* printk("%s => call update_beacon\n", __func__); */
+ 		update_beacon(padapter, _TIM_IE_, NULL, true);
+ 
+ }
+@@ -2789,7 +2622,6 @@ void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *pst
+ 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
+ 
+ 
+-	/* spin_lock_bh(&psta->sleep_q.lock); */
+ 	spin_lock_bh(&pxmitpriv->lock);
+ 
+ 	xmitframe_phead = get_list_head(&psta->sleep_q);
+@@ -2842,16 +2674,11 @@ void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *pst
+ 		if ((psta->sleepq_ac_len == 0) && (!psta->has_legacy_ac) && (wmmps_ac)) {
+ 			pstapriv->tim_bitmap &= ~BIT(psta->aid);
+ 
+-			/* DBG_871X("wakeup to xmit, qlen == 0, update_BCNTIM, tim =%x\n", pstapriv->tim_bitmap); */
+-			/* upate BCN for TIM IE */
+-			/* update_BCNTIM(padapter); */
+ 			update_beacon(padapter, _TIM_IE_, NULL, true);
+-			/* update_mask = BIT(0); */
+ 		}
+ 
+ 	}
+ 
+-	/* spin_unlock_bh(&psta->sleep_q.lock); */
+ 	spin_unlock_bh(&pxmitpriv->lock);
+ }
+ 
 -- 
-Regards/Gruss,
-    Boris.
+2.20.1
 
-Good mailing practices for 400: avoid top-posting and trim the reply.
 
