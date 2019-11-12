@@ -1,83 +1,74 @@
 X-GM-THRID: 6758464167600979968
-X-Received: by 2002:a17:902:744b:: with SMTP id e11mr33142706plt.208.1573590833897;
-        Tue, 12 Nov 2019 12:33:53 -0800 (PST)
+X-Received: by 2002:a37:d8e:: with SMTP id 136mr16616710qkn.249.1573578721802;
+        Tue, 12 Nov 2019 09:12:01 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:cb0f:: with SMTP id p15ls952881pgg.1.gmail; Tue, 12 Nov
- 2019 12:33:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzULNd690dgaalvzOk5cOBqOLmLvdCKjgdiCK92miv2gjpHgK1D1jHbu2R8/z39W5nhdQVX
-X-Received: by 2002:a63:e90f:: with SMTP id i15mr14450804pgh.9.1573590832361;
-        Tue, 12 Nov 2019 12:33:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573590832; cv=none;
+Received: by 2002:ac8:18c9:: with SMTP id o9ls408757qtk.3.gmail; Tue, 12 Nov
+ 2019 09:12:00 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx9csgJm/bZKxZhOjQpRlj8+2e/7RzEWCNH7HlARVJU0Du942htRbWS+7w9dN7BYPJlVkfH
+X-Received: by 2002:aed:2a75:: with SMTP id k50mr33312792qtf.346.1573578720825;
+        Tue, 12 Nov 2019 09:12:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573578720; cv=none;
         d=google.com; s=arc-20160816;
-        b=yrotDuBvKQtMs5rrvuk2I6Fp9aKYhsDumHtQLxzeskXATg0pG1p6NQoup93SLjz39Y
-         mEd1r5qbKzOna23k5739L2yaIrUVSL13Qt/8nC6jpZcD0SCDQPIAQ72O0SLxr/HsZdIc
-         HsehWasF/Mndd6oxknBNJjMB+Lqrm3ah3Do0EzTsKX9ZME8hqPO/34Snb3cneDuR7KH4
-         IfpU+t+x/LCaW8JAGmKT2AujarrmoqWvz0Wn5tXmscSWdbH4DB2XuM8xCvQCogPCw/NR
-         yHWmhNPwd5sflbgeWMpJbDKAnlyuDcZ77VoE1IOgNivDOB8ygGTjBhFusTPEoPb89JNm
-         zJgw==
+        b=Z5xJN/gEm4hqTKJAoYt+VCLthKhdlsseLWC3noTW6CeGJgDHHY1vJqC9hb1RJrhpOf
+         8D85/iQ1+rzjt3WQeRPI36MQBAhmcWSww3MCRhZKpJC5ZdMGQBGRcGOzqPKCtE39cR04
+         SX55uR84nu5YEItl1V76nJEZ8g4o6v0jM/ustxVon4Y/v3FXWa89AVpcS0bzDSN5lwiC
+         5zzSwoCqyhb5RRAW3G+ODpnLSWSTBEsAvF5Jh4mqvnE0KsS7RfkvwUayChvcrjbO6NWv
+         GcRsU4VtJI0DuEpag6rkX3HJ0TyVrAdKR+/Z3mhmNHW3jzXGYsJuJJsDIDMOs5jA6Cym
+         sKaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=W6WcVPeP6jVYq8LoV36ELafRLgsi/5lD8HzoV1Pzyks=;
-        b=f8IV1FB0SZIIqS+HmZujJQCpF+eazpzUZmhKKxDNUYkf23zD/g/djJEPTM/aUWRd1t
-         g03dPYZR6Lfmpy0W+tF3jDL6fU9+yACGaIXvqF0I+Kbyzbpi5tQvqmBCWIDfJiG2vDO/
-         lAYTsIYlxgJt2vPubKu2PE5ZoC8+DkR0QNLLQUT1/vd1sCbk+Z9hvM3ddYSPBzoYAUXQ
-         2Ze/jCdZqcVGLQOq1gst89KA2SgMGzdyynDai8IgqJZ7sty+cxPirtmhGjmo0sU2L6/F
-         p7gAa4H5oSUdTJ/N/X5QyDxYY3TqpMotUcrvFb33Ph8kb5z+lcxiliT/TV6BD0Yni/a3
-         3U/w==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=v08Xg1VVasvS7ZAjKtbxqMZJ2/2EjoYyXBEvAmCHovU=;
+        b=lkwgKCEEnbWeTfz8lpdgvAbzRDhQPxP2l1O6iWg80tKihcV4DVTztJ2zxS3sSbycgC
+         okx4YDMsLE8GbXRbarDqS0ThtH9ZOzW5Wydl784vxDzFghQJtcchzk4GAlYIcTb8Iy3L
+         w1NwWy7XYeX9M9TE8ewQBefX2uUZD5KQtxq8Pg9Tk/YVHbQRpkAfXKf76/PKedO9FuEg
+         GMuSUdESFOaJqLHsyWN9UQXfo135D7Ums9nCsbm7c/BS0S5z7je0qv5MxvO9s44JNwOc
+         QbsUJrScuAlA722s8U8Ylh1Dw1IEvFXl5FUrR8nQ5K60zJu0cKjL/WsPfJIkQTN7e3y+
+         X6cQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=RQzt25Hx;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id 102si419877plb.3.2019.11.12.12.33.52
+       spf=neutral (google.com: 216.40.44.202 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0202.hostedemail.com. [216.40.44.202])
+        by gmr-mx.google.com with ESMTPS id v189si1063745qka.2.2019.11.12.09.12.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Nov 2019 12:33:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 12 Nov 2019 09:12:00 -0800 (PST)
+Received-SPF: neutral (google.com: 216.40.44.202 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.202;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=RQzt25Hx;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [8.46.76.96])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 43D24206A3;
-	Tue, 12 Nov 2019 20:33:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1573590832;
-	bh=Mnvf0QMRCj4tI0M1jvvA/Cd6q+zg1D2YAk4ccvhV8aQ=;
-	h=Date:From:To:Subject:References:In-Reply-To:From;
-	b=RQzt25HxE4MPL9H3xgO0Hu7OIaUSat5u0D+HttH0Y3AqB+W2OS+1h3ieDUKhQFeC6
-	 tqu9JeoGJ29UjtkkjWFu7WY3BrTov29jq6zd4Ckf4wvqRhQyW51lpfIzlhppixl28x
-	 j+dc4iv0RB7wxAfv7IbOMh2quB9XMD4C3HIiz1Pw=
-Date: Tue, 12 Nov 2019 21:33:43 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+       spf=neutral (google.com: 216.40.44.202 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay06.hostedemail.com (Postfix) with ESMTP id 74F6D18224083;
+	Tue, 12 Nov 2019 17:12:00 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,:::::::,RULES_HIT:41:355:379:599:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3351:3622:3865:3866:3867:3868:3870:4321:5007:7903:10004:10400:10848:11026:11232:11657:11658:11914:12043:12050:12296:12297:12740:12760:12895:13019:13069:13311:13357:13439:14659:14721:21080:21627:30054:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:20,LUA_SUMMARY:none
+X-HE-Tag: cats71_68b4d1f30855c
+X-Filterd-Recvd-Size: 1580
+Received: from XPS-9350.home (unknown [47.151.135.224])
+	(Authenticated sender: joe@perches.com)
+	by omf03.hostedemail.com (Postfix) with ESMTPA;
+	Tue, 12 Nov 2019 17:11:59 +0000 (UTC)
+Message-ID: <c243860eeabf9406d166deb6204a69255c51867d.camel@perches.com>
 Subject: Re: [PATCH 7/9] staging: rtl8723bs: Fix incorrect type in argument
  warnings
-Message-ID: <20191112203343.GA1833645@kroah.com>
-References: <cover.1573577309.git.jarias.linux@gmail.com>
- <637726782ce6c6ed3d68b5e595481857916bbc56.1573577309.git.jarias.linux@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+From: Joe Perches <joe@perches.com>
+To: "Javier F. Arias" <jarias.linux@gmail.com>, gregkh@linuxfoundation.org
+Cc: linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Date: Tue, 12 Nov 2019 09:11:42 -0800
 In-Reply-To: <637726782ce6c6ed3d68b5e595481857916bbc56.1573577309.git.jarias.linux@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+References: <cover.1573577309.git.jarias.linux@gmail.com>
+	 <637726782ce6c6ed3d68b5e595481857916bbc56.1573577309.git.jarias.linux@gmail.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+User-Agent: Evolution 3.34.1-2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-On Tue, Nov 12, 2019 at 11:55:27AM -0500, Javier F. Arias wrote:
+On Tue, 2019-11-12 at 11:55 -0500, Javier F. Arias wrote:
 > Fix incorrect type in declarations to solve the 'incorrect
 > type in argument 3' warnings in the rtw_get_ie function calls.
 > Issue found by Sparse.
-> 
-> Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+[]
 > diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> index db6528a01229..bb63295e8d4e 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+[]
 > @@ -83,7 +83,7 @@ static char *translate_scan(struct adapter *padapter,
 >  {
 >  	struct iw_event iwe;
@@ -85,9 +76,11 @@ On Tue, Nov 12, 2019 at 11:55:27AM -0500, Javier F. Arias wrote:
 > -	u32 ht_ielen = 0;
 > +	sint ht_ielen = 0;
 
-sint?  Ick, try fixing up the function call itself please.
+more likely the rtw_get_ie function should used u32
+and not sint.
 
-thanks,
+one day a sed of 's/\bsint\b/int/g' would be good too.
 
-greg k-h
+
+
 
