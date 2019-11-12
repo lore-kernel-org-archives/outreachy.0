@@ -1,86 +1,85 @@
 X-GM-THRID: 6758464167600979968
-X-Received: by 2002:a05:6214:14ed:: with SMTP id k13mr7312059qvw.236.1573577731093;
-        Tue, 12 Nov 2019 08:55:31 -0800 (PST)
+X-Received: by 2002:a1f:2cd:: with SMTP id 196mr22148840vkc.23.1573577700329;
+        Tue, 12 Nov 2019 08:55:00 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:bec4:: with SMTP id o187ls1077513qkf.12.gmail; Tue, 12
- Nov 2019 08:55:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzy0FmBhS37f4cTGRg+i8VL5v2gZ1XQRXgvgJM/e3bImInv/4EbbySYBgcKQM9fwAAHIyBI
-X-Received: by 2002:a37:ba44:: with SMTP id k65mr16796340qkf.169.1573577729952;
-        Tue, 12 Nov 2019 08:55:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573577729; cv=none;
+Received: by 2002:a05:6122:c1:: with SMTP id h1ls113104vkc.16.gmail; Tue, 12
+ Nov 2019 08:54:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxNc8RDfS9iu1AFSecnEOVU9CSRE6RYhpURUibT2y1eNhQsnH9ohV04bMnmw2ekAkEkAZDZ
+X-Received: by 2002:ac5:c7b1:: with SMTP id d17mr15181192vkn.90.1573577697944;
+        Tue, 12 Nov 2019 08:54:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1573577697; cv=none;
         d=google.com; s=arc-20160816;
-        b=j6Dpc8Ypz5XxFjYxL2gih0R0KsMBx94eVfdJsAtzhGe81D3GCnrzDnYdwniX0JpIzx
-         ZiU3BHMkO73RNTSfROsBcFvnFpaDyygIzw/bDquxDSI7oGPzfaPHtBlL744HVpqKNrqC
-         1vHb6Ov1U/JNeOKcdP5cgquM3Yvsaic2eFJBCnxvUuDOAsM9zBXM1ZYVPBOL1nOJfzoF
-         JSep2nwwRAK/rMg9W88DfE0vIESU/G5N0YAL52wM+SPZk8XHAkRlfLDWbIfRAbsa50Tl
-         N1GMoe5/YAKtC2SPltRWWG8UIOOrt9b+QXWwYOw1+X9UdW/1ADofquM/oM7LcNwBsIzS
-         cUkw==
+        b=sLVWBteLBMvrbwwq2Ww6eVcM9gXRjJQZyU5o3ivK2HbZTAvTlNJW5LSXqUhvNiULu+
+         M0bEfETdSCR9eLxSXtOkQbsVJIWrkYgaPujyXx0aA2LoTMUg4syS06xkeq5qIOUWbiFB
+         m5OJLEGwtbZ6jYcRDH6gcXCMBcO7QybFtKGs2uT9eVt3emYIwZNC5wX1l6tNeJhBr2CV
+         dJK/RpxWVLL7oPXr62RRNQ1TUYrKZAwK8vZthdmzT4mZwbogM6nYWiFc+eipJKeeBNGM
+         vqHG808DjBqpITNhTuAlwQ5b7EXy15lMWZvT8EkxH660jbxq+7XGO2yvIFgDdHgrMi6n
+         RNMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references
          :mail-followup-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=0M0FA1unlp8F1Z996jxzOlmlSaGicPhBII8CqVqj8hA=;
-        b=Smkk3sdlb1N8JaITQjXzXQ225KF3N4EyYwW87g4iCSB7+AfUujzScX4tf5IC0SkYmd
-         ncFW112KfqKAG3DFPS/pVY0Bfw4437hDNdDvGlQ2kmdTrfKmxVyOR43NeneHKHNwk/ls
-         hipXp8PVK8PCQ/avJMZLaT7WWe2WENNUsiIcIzyjLmRcA1k3WLIgMeFLuBHJ8yrOwVhI
-         8FBFWsvT98JWX/ojUR1aDtYZv9z66DSpGGxw/Sa0sJuccYvrGZGkqX37inxajkbY01Fu
-         XlTbppXm3pyA3kn+DeYIiuDgkmdFRuHAov1ypYWmYNCBRizQYdGDJPvOYKri815KVHbf
-         /wcw==
+        bh=2tZEjGn9AWJuu90IGU4ZcEA4pxCT88LgEy8kCZaNDsM=;
+        b=EVtc8LlYdhf+hZB3rf6RWRkdxKpZpQYzcR6yYyFG8p630TgaE5RCeYQEjL+TD2+Tu5
+         Zz3HN2a7Fh+EajheSolNGvpjbKMwkOQqgDY5LJNzB/0y2CCfpmYXg/ETdiVwxQqOabvi
+         fNrFD7+bOrSB96qHVq5sqdfapmyZ7E1bBUSiFwIqC250ZzdKGshLRr3HWFgAAffiH3FU
+         SXDLOAxu8KFyIPNeGgqm2zqzDUTF9v//5WsnlIgYfHC+yYpylHJULy9M2TKzl23DvCJh
+         dOmSHJs1sYGh6ySxwgHuMNRrzgoplMKTnREdbUYRLIjNJp9rr3C8aokP/YzqYQUTfEbB
+         hfpw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lMuvqXuC;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DpmujUOK;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::f44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jarias.linux@gmail.com>
-Received: from mail-qk1-x741.google.com (mail-qk1-x741.google.com. [2607:f8b0:4864:20::741])
-        by gmr-mx.google.com with ESMTPS id z194si1146194qka.5.2019.11.12.08.55.29
+Received: from mail-qv1-xf44.google.com (mail-qv1-xf44.google.com. [2607:f8b0:4864:20::f44])
+        by gmr-mx.google.com with ESMTPS id f12si1111894vso.1.2019.11.12.08.54.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Nov 2019 08:55:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) client-ip=2607:f8b0:4864:20::741;
+        Tue, 12 Nov 2019 08:54:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::f44 as permitted sender) client-ip=2607:f8b0:4864:20::f44;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lMuvqXuC;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DpmujUOK;
+       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::f44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x741.google.com with SMTP id e2so15063402qkn.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 12 Nov 2019 08:55:29 -0800 (PST)
+Received: by mail-qv1-xf44.google.com with SMTP id d3so5064932qvs.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 12 Nov 2019 08:54:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mail-followup-to:references
          :mime-version:content-disposition:in-reply-to;
-        bh=0M0FA1unlp8F1Z996jxzOlmlSaGicPhBII8CqVqj8hA=;
-        b=lMuvqXuCUyxt7K6tw9iOUffeRkz8nL6/nayHdtv/eE/m5Yvq0Mp4Bu4wUl8ev822K2
-         5ufbDyuNNAROGVvkDCJqzwz13Xv3qFlQahfuRzUZy23A941vJzNeqTun+9xBVx679mGp
-         k/oIKvH7b02vXAlDy+l7Apd29jJQ40PjtgN5YVYovPovRgYOD2xF+8WIOGxxBv5Ggwja
-         NL2zK6/j+8yzelhwsoxah7QpAmL1SIWHrPfitW//1jwjKw/KNcYuozjMTmJHXGrKK7RD
-         ndS997Xal8ryO2bJj39mwK2UTvSINOFki/KZa1/zr255ochOuFcOAHLDhDlymSvo5SCD
-         uMzQ==
+        bh=2tZEjGn9AWJuu90IGU4ZcEA4pxCT88LgEy8kCZaNDsM=;
+        b=DpmujUOK6jq6CWVSZcXbA1KzGl36fGH709fFYkJ/eBAPnT8MlWyCi8sShA060UTer0
+         fAZjVVHYP7z3r+OfzlgF23woZcPQsQtQ7bcd0iFp8zd7X9RY416oHa4YbLUiwFS5ZTEC
+         2aRgeErFHr+ELCMFiHkjpx4WMn3WzRz1Ui9JhCuuq7reGHSgYm92rPzl6PYBehny08FH
+         RaV3IA4e1LcWS2PFlCIbbR9HVdvtLLt/yNIt/cqWT8VRhnXIvlX4nY5kymXrSSYHw5q4
+         XfQamktekRtTMUc/NU18F8jdMotNZeIKm7CxYRZbbX2boSmN5N69kRzsNE9pDODr9w/x
+         wgtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id
          :mail-followup-to:references:mime-version:content-disposition
          :in-reply-to;
-        bh=0M0FA1unlp8F1Z996jxzOlmlSaGicPhBII8CqVqj8hA=;
-        b=MaRVmNqZ6/0baj2qO2p6z8Uo23Jhsb43BS8F9VVk28i4kVMYdP/w8cbbSnSyQcfU4t
-         B9F2m2iEs4FVARXmz7asSgBBiSUDg5X7djn3OGf+RFO3lVlsjE+VwT9JvlZSrTIduMuI
-         GCA0g//Yct8SvasJKpQgzGWf28+r9q+EUCQVFsouocsYpHLVidktLXzzznCH2n1x6CYf
-         xXfxh9RYgPnieb5MLH5T1axnollHpZtApVyqoF3h7OF842bV2craMTmXKyGqIYcf/hZ2
-         8QsWQ3KwvbkBP5SndxqhXdgUK3hx69UPdKgQ3BgCnDkjRgxEEDGMHIQwbXr0sILwno6q
-         OFaQ==
-X-Gm-Message-State: APjAAAXC0dicIhI1CE6Dx/xzwJ88LMqkSVn8RiLmOrZ9RJcTazfv/q7v
-	IQVNrWdoWiczigbTWxlvGvg=
-X-Received: by 2002:a37:582:: with SMTP id 124mr16678884qkf.396.1573577729731;
-        Tue, 12 Nov 2019 08:55:29 -0800 (PST)
+        bh=2tZEjGn9AWJuu90IGU4ZcEA4pxCT88LgEy8kCZaNDsM=;
+        b=m26+DP2JUNbu9ggGp7oGtow69ZGa56FkswhOpQobf8Xvvvq2vI0NUdnw5+cMWeroKH
+         tpNw4LnMoJvdK4D9Y4g2opVEX//8MMghB7ovgYkykCgDQObuz8nn8NFW8ZCQfr1y1sCF
+         O1mxGeXegTmsmr4ipKZrDYQmeaGw3FoAKJfR0rPqaMvRCl8J4TLl6XK7RGff5TzV5KVT
+         kPOpR4LrVXLDniG5ThnjJComgGvPeJro2zdhqO7vG92ipZFlXywJTSeX/xu4ZJ1YEjJQ
+         ZT2GkfM9wwOTExmCyQOeDFCKMAxmmqklFo5iRoS/qDhPfqHFzYz+lBsjtIGd0wQyBBd5
+         COlg==
+X-Gm-Message-State: APjAAAUIUAgUUiXWL+g+rFm+RTx89kdrKwuj/PvCVKAGlsqMc1q39arZ
+	E1i6q56aNto5/9yX36Bykf0=
+X-Received: by 2002:a0c:b064:: with SMTP id l33mr30129564qvc.34.1573577697611;
+        Tue, 12 Nov 2019 08:54:57 -0800 (PST)
 Return-Path: <jarias.linux@gmail.com>
 Received: from gmail.com (dynamic-186-154-98-65.dynamic.etb.net.co. [186.154.98.65])
-        by smtp.gmail.com with ESMTPSA id n56sm11283172qtb.73.2019.11.12.08.55.28
+        by smtp.gmail.com with ESMTPSA id h44sm14231832qtc.1.2019.11.12.08.54.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Nov 2019 08:55:29 -0800 (PST)
-Date: Tue, 12 Nov 2019 11:55:27 -0500
+        Tue, 12 Nov 2019 08:54:57 -0800 (PST)
+Date: Tue, 12 Nov 2019 11:54:55 -0500
 From: "Javier F. Arias" <jarias.linux@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 7/9] staging: rtl8723bs: Fix incorrect type in argument
- warnings
-Message-ID: <637726782ce6c6ed3d68b5e595481857916bbc56.1573577309.git.jarias.linux@gmail.com>
+Subject: [PATCH 6/9] staging: rtl8723bs: Fix unbalanced braces
+Message-ID: <d208c4db5ed51f94e61f67891dcf1c102c5501d9.1573577309.git.jarias.linux@gmail.com>
 Mail-Followup-To: gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
 References: <cover.1573577309.git.jarias.linux@gmail.com>
@@ -89,37 +88,48 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1573577309.git.jarias.linux@gmail.com>
 
-Fix incorrect type in declarations to solve the 'incorrect
-type in argument 3' warnings in the rtw_get_ie function calls.
-Issue found by Sparse.
+This patch fixes unbalanced braces around else statements. It also
+removes an empty else block.
+Issue found by Checkpatch.
 
 Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
 ---
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index db6528a01229..bb63295e8d4e 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -83,7 +83,7 @@ static char *translate_scan(struct adapter *padapter,
- {
- 	struct iw_event iwe;
- 	u16 cap;
--	u32 ht_ielen = 0;
-+	sint ht_ielen = 0;
- 	char *custom = NULL;
- 	char *p;
- 	u16 max_rate = 0, rate, ht_cap =false, vht_cap = false;
-@@ -760,7 +760,7 @@ static int rtw_wx_get_name(struct net_device *dev,
- 			     union iwreq_data *wrqu, char *extra)
- {
- 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
--	u32 ht_ielen = 0;
-+	sint ht_ielen = 0;
- 	char *p;
- 	u8 ht_cap =false, vht_cap =false;
- 	struct	mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+index 42bd5d8362fa..be0d83280e1c 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
++++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+@@ -372,8 +372,7 @@ static void update_attrib_vcs_info(struct adapter *padapter, struct xmit_frame *
+ 	if (pmlmeext->cur_wireless_mode < WIRELESS_11_24N  || padapter->registrypriv.wifi_spec) {
+ 		if (sz > padapter->registrypriv.rts_thresh) {
+ 			pattrib->vcs_mode = RTS_CTS;
+-		}
+-		else {
++		} else {
+ 			if (pattrib->rtsen)
+ 				pattrib->vcs_mode = RTS_CTS;
+ 			else if (pattrib->cts2self)
+@@ -1453,8 +1452,7 @@ void rtw_update_protection(struct adapter *padapter, u8 *ie, uint ie_len)
+ 		perp = rtw_get_ie(ie, _ERPINFO_IE_, &erp_len, ie_len);
+ 		if (!perp) {
+ 			pxmitpriv->vcs = NONE_VCS;
+-		}
+-		else {
++		} else {
+ 			protection = (*(perp + 2)) & BIT(1);
+ 			if (protection) {
+ 				if (pregistrypriv->vcs_type == RTS_CTS)
+@@ -1847,8 +1845,6 @@ s32 rtw_free_xmitframe(struct xmit_priv *pxmitpriv, struct xmit_frame *pxmitfram
+ 		queue = &pxmitpriv->free_xmit_queue;
+ 	else if (pxmitframe->ext_tag == 1)
+ 		queue = &pxmitpriv->free_xframe_ext_queue;
+-	else {
+-	}
+ 
+ 	spin_lock_bh(&queue->lock);
+ 
 -- 
 2.20.1
 
