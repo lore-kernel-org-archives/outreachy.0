@@ -1,289 +1,139 @@
-X-GM-THRID: 6885936091088551936
-X-Received: by 2002:ac8:570f:: with SMTP id 15mr1447386qtw.203.1603256932102;
-        Tue, 20 Oct 2020 22:08:52 -0700 (PDT)
+X-GM-THRID: 6792282494518427648
+X-Received: by 2002:a62:36c2:: with SMTP id d185mr8346308pfa.203.1581506367101;
+        Wed, 12 Feb 2020 03:19:27 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5956:: with SMTP id 22ls1564243qtz.4.gmail; Tue, 20 Oct
- 2020 22:08:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxt3gCTu3kiLE/m0NfEwaf7krWMOfRwuGDKmpXOtY+nFpZd0KGhD8nVnVqxu9ZH2bobAsWp
-X-Received: by 2002:ac8:5ac1:: with SMTP id d1mr1529608qtd.82.1603256930593;
-        Tue, 20 Oct 2020 22:08:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603256930; cv=none;
+Received: by 2002:a62:7a47:: with SMTP id v68ls7178625pfc.8.gmail; Wed, 12 Feb
+ 2020 03:19:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzTjXGrCScnmYYI3NOR3ZI7pEonLpO9XXA3FOPLgpXuHDrMMx1rq+bYaM8uAkCUaUTG1cNH
+X-Received: by 2002:a63:4b49:: with SMTP id k9mr11978605pgl.269.1581506365267;
+        Wed, 12 Feb 2020 03:19:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1581506365; cv=none;
         d=google.com; s=arc-20160816;
-        b=CYcB9ytF2vUFgpnGOAafkc3n5VbEHMVDITguSnC7YLvdhDVyKpZPchKO/qfPLKr3l5
-         G0je/IfycmRhzx54/aucQL54gcNMmc9xX2I44Kboc0DYABLHOywtwd9ZX1wweJq/yiBG
-         X1K1zfS1mH6IIo6yKKKy62oHSBI0KZ5rRuY4Oe3DanEhrabgCQnxnB9OROxKYMzxpAjv
-         sXAYmaZ+rGq4c7NnLSwQNurLiUZIfGyld87pDiwaPjXScjN16cry+i1xNO0LyKkzzEEB
-         RIMMpv2BWvdJsAgQ+nKgiQf7ZtdqqZIHzQdndKSmx6bLKAxH7NryS5MCWFLhHcgEaLoX
-         ODAQ==
+        b=Z4zHua4Lt80c6/z02yW1BGcTU53/f7KCiKX0Lz9mfKqHPrCBSv4vyFCiEGpAUH6t2a
+         WtBQBQkKIHTNX1UR9X0Wl5g6sSlNLBTDGM/zK3apTtO7YSyOf/zDQekFVWZgK00c23W7
+         sBsPCoHB8cMTMdldsyPxmZB3ioqX14K8b980HNnUCOL8HO94PPAQpMceXuXHS+nzwaWi
+         xtxrmrXBemnJBXIGTHMAaE1Kg69xPJHPcxw2kWsY1Gb8AbedzHcVxmuOITWQ4ZKotXTE
+         rLtpjth6Tcb6JnydbUC9nmSnO7a9WpfLc+Vba6BsEC3J0L6TaUIJ33mxJkXpFe+YVaSm
+         14ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=b+KHAvp3X5Eh/wEAqouVvPKaON8S2Itae/m7a6dyU+8=;
-        b=plYjzD5/+r99/38apswLbtiLZi1E90/PTG+YZPhnk0czl7XIuu59AH0/XjWI7+vckT
-         +aDkZVZiOw3Sjw2uiCQ3G49P3gls0QtBhdLgazrZ1Vl2x+MvOArCoRYBF32rKhhPvxRC
-         vhcWzDR8BMano8Ed6zL3+p2KHjl7eYvfP66gYt7+J4FSil597ISkRJSBoL/OHLZNCOQW
-         mkedoW/00kA0Qq5iQqlpzdWmwk6RIdUIEJmM4tAwkcHYyRJAwQWy1nO2cq3fP9ewsBq9
-         6nM7R/FBniSS0y/Z3VdxGV/QxHHPwpQ/v8ipKnB7k6bwKqcIJMBcsiFPKf0x869ASq2r
-         veBQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version;
+        bh=Vt7aFdvwnKbQALO+VNFUlwDfDh4upJia92vtO/eLh1k=;
+        b=JZZrAq+8RjU9lpx+oJHH+0f+dF78jhkW0ryyjGIDmEWhZkV5zraDgUz3zjqcTHs3wx
+         2BSvpgCqJ0HxDPQk1n/NW+EvWyUDS8buWZVxuFzNnyYlnaeUpmkdts4A5hPS7ZNsRtg1
+         +4qccseappFlD+SoKTKbtE6q/bzYOd0Varx9nNer5y3uhkOtYHfwCI+P2an7hFoAwQbd
+         E19yujJzBg6ONaHbq3lO4dHS4WyxWMPDHZHYd9mMQbl/4fmkmuUSw4HsE+H8obzY2ZbT
+         95+L58X5VfUJtSu9QSuQf5P1eRsk2s1Istu8x3YKc648aerJPBSUWuo9YN+c896MbNpM
+         tK0w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q3v94ZDI;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id g19si61413qtm.2.2020.10.20.22.08.50
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.107 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa11-06.prod.phx3.secureserver.net (p3plsmtpa11-06.prod.phx3.secureserver.net. [68.178.252.107])
+        by gmr-mx.google.com with ESMTPS id t34si191266pjb.3.2020.02.12.03.19.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Oct 2020 22:08:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Feb 2020 03:19:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.107 as permitted sender) client-ip=68.178.252.107;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q3v94ZDI;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id e7so752994pfn.12
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 22:08:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=b+KHAvp3X5Eh/wEAqouVvPKaON8S2Itae/m7a6dyU+8=;
-        b=Q3v94ZDIFQ6gNeHcR5H+z2ks2cAziMo1zAv8okbdaNcraqB9OJg0d6bBxlRkwHd/eT
-         DRdxbSOovEh7Wy4Le7kBIgUNu7YOcaFCOBYvL1E77nmLc9HRgR4VF4hOnxoK6mWgARpR
-         6NN9HLeEnZieuY1P87rU93c7vPJmNoSUoHEtiHIvp5Sg3kYu+42Sd98gbLvsn3PsgFb/
-         /Wh4k7UfjKaH0EJFXPtxgMP6HVJPQHgHnUxWBl/HZyFJgWAuNCiKk3GU02ziEA6DmBqU
-         vqe2cmw/NpGMnUVQ6PzTVLSFqJw+I4Uom8BoyzTNesFCbp7FupdpF+aaCRDjzmnv+Rg/
-         K1vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=b+KHAvp3X5Eh/wEAqouVvPKaON8S2Itae/m7a6dyU+8=;
-        b=T1wryLFms0c6YMSs13QVi/cqDYFpaHVz8Mh0CDMpXghTkCQGbkLuYW5Bq5ATDiurvJ
-         2TXnxWBmfqaXiQRc42fz24pMOpuZDu2zbSQts020Gz3XtrLfzdjb2MpMxW215CRZHm8B
-         7NJT0R3/WyLTx8BKnKRF1W4gNZDzvCht2eMQeh/z7aXmznM3/W8xx4ZoTLgx3W+7faLh
-         Np1CYT7XS/crZStBbTWj5yAwpHvkcHY1tNJ5eQTW44a5HarhmNhK75pCXHNC6hB+qIJc
-         YzsYXsfJxbpgqFWch6pKAjsTZxBTVV470K9nem3OC5GSxYc2qfxb8EVjfpo9xrI7ouHA
-         hByg==
-X-Gm-Message-State: AOAM531YRvgXPEgiH+Gs1NJc+pJYDkmFB+m11j1G7jPfRshm3srDnuiy
-	zvtjqtUbog0F8Os/r9tuPkBpgvXsv5c=
-X-Received: by 2002:a63:4457:: with SMTP id t23mr1675307pgk.108.1603256929805;
-        Tue, 20 Oct 2020 22:08:49 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id y14sm679717pfe.107.2020.10.20.22.08.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Oct 2020 22:08:49 -0700 (PDT)
-Date: Wed, 21 Oct 2020 10:38:44 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
-Cc: mh12gx2825@gmail.com
-Subject: [PATCH 1/2] staging: kpc2000: kpc_dma: rearrange lines exceeding 100
- columns
-Message-ID: <273abf291f47286a702d2a53445e7a6efcf9972b.1603256795.git.mh12gx2825@gmail.com>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.107 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-lf1-f43.google.com ([209.85.167.43])
+	by :SMTPAUTH: with ESMTPSA
+	id 1q39jpTCRZZK21q3Aj70Zb; Wed, 12 Feb 2020 04:19:24 -0700
+X-CMAE-Analysis: v=2.3 cv=UqwdyN4B c=1 sm=1 tr=0
+ a=V3SKbpRzU9DxzSgA2GKAQg==:117 a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19
+ a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10 a=l697ptgUJYAA:10 a=pFd2Zl5z2vwA:10
+ a=ZZnuYtJkoWoA:10 a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=AFfvQUj85srtwFEc7eAA:9
+ a=a-Vih_De2PIFV8kF:21 a=g9kdK_qqP1oS2tb1:21 a=QEXdDO2ut3YA:10
+ a=cDyXFGGuxjcA:10 a=_sbA2Q-Kp09kWB8D3iXc:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-lf1-f43.google.com with SMTP id 203so1294027lfa.12
+        for <outreachy-kernel@googlegroups.com>; Wed, 12 Feb 2020 03:19:24 -0800 (PST)
+X-Gm-Message-State: APjAAAWI9P0F8VPlBkrD9dkqJ9ZrmjFhZnklXS7DQqDDt6Ab8dzDrJSo
+	4e3g+KVRJFL3S8Zjyk/Y1in14gQZioz/fcO/c4I=
+X-Received: by 2002:ac2:489b:: with SMTP id x27mr6290734lfc.130.1581506363414;
+ Wed, 12 Feb 2020 03:19:23 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20200211200456.GA10351@kaaira-HP-Pavilion-Notebook>
+In-Reply-To: <20200211200456.GA10351@kaaira-HP-Pavilion-Notebook>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Wed, 12 Feb 2020 16:49:11 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbJ58HiNU2Qc-3cAsS=SMT7zv-dQTg5wWRTKftDjjtCGbA@mail.gmail.com>
+Message-ID: <CAK-LDbJ58HiNU2Qc-3cAsS=SMT7zv-dQTg5wWRTKftDjjtCGbA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging:Fix WARNING: quoted string
+ split across lines
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+Cc: Rob Springer <rspringer@google.com>, Todd Poynor <toddpoynor@google.com>, 
+	Ben Chan <benchan@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfJ6d6gmJjBAzY/xAa9PorWEpo7mwZ9EhBSSWIJdWOlun0UKwhNiwmByHJcuf2vLphGEB9d5hKHxZUs7gV0/HR15r9chG0blasd39tjcZS30lZm/TklBw
+ bqVD523tlJYytrzqxUvQSO+eF5nAtPvT2PX51FltORiWo56BGxJMOpD22bOLaxeWvgXDXMQA6co565WiIFmXk++95ofwm94GFhI=
 
-Reformat lines that exceed 100 column in length. Issue reported by
-checkpatch script.
+On Wed, Feb 12, 2020 at 1:35 AM Kaaira Gupta <kgupta@es.iitr.ac.in> wrote:
+>
+> Whenever it tries to map a region, but the region has permissions, or it attempts to open gasket with tgid, or it releases device node the messages are displayed in one line only, respectively.
+> And it becomes confusing for the developer to search for the code based on these lines' output since they are written in separate lines in the code.
+> So, this patch fixes this 'WARNING: quoted string split across lines'
+> in three lines in the file gasket_core.c.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
- drivers/staging/kpc2000/kpc_dma/dma.c         | 27 +++++++++---
- drivers/staging/kpc2000/kpc_dma/fileops.c     | 44 +++++++++++++++----
- .../staging/kpc2000/kpc_dma/kpc_dma_driver.c  |  9 ++--
- 3 files changed, 63 insertions(+), 17 deletions(-)
+Hi Kaaira,
 
-diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
-index 452a3f7c835d..b8d8294aa4c3 100644
---- a/drivers/staging/kpc2000/kpc_dma/dma.c
-+++ b/drivers/staging/kpc2000/kpc_dma/dma.c
-@@ -16,7 +16,8 @@ irqreturn_t  ndd_irq_handler(int irq, void *dev_id)
- {
- 	struct kpc_dma_device *ldev = (struct kpc_dma_device *)dev_id;
- 
--	if ((GetEngineControl(ldev) & ENG_CTL_IRQ_ACTIVE) || (ldev->desc_completed->MyDMAAddr != GetEngineCompletePtr(ldev)))
-+	if ((GetEngineControl(ldev) & ENG_CTL_IRQ_ACTIVE) ||
-+	    (ldev->desc_completed->MyDMAAddr != GetEngineCompletePtr(ldev)))
- 		schedule_work(&ldev->irq_work);
- 
- 	return IRQ_HANDLED;
-@@ -39,7 +40,9 @@ void  ndd_irq_worker(struct work_struct *ws)
- 	cur = eng->desc_completed;
- 	do {
- 		cur = cur->Next;
--		dev_dbg(&eng->pldev->dev, "Handling completed descriptor %p (acd = %p)\n", cur, cur->acd);
-+		dev_dbg(&eng->pldev->dev, "Handling completed descriptor %p (acd = %p)\n",
-+			cur,
-+			cur->acd);
- 		BUG_ON(cur == eng->desc_next); // Ordering failure.
- 
- 		if (cur->DescControlFlags & DMA_DESC_CTL_SOP) {
-@@ -56,7 +59,9 @@ void  ndd_irq_worker(struct work_struct *ws)
- 
- 		if (cur->DescControlFlags & DMA_DESC_CTL_EOP) {
- 			if (cur->acd)
--				transfer_complete_cb(cur->acd, eng->accumulated_bytes, eng->accumulated_flags | ACD_FLAG_DONE);
-+				transfer_complete_cb(cur->acd,
-+						     eng->accumulated_bytes,
-+						     eng->accumulated_flags | ACD_FLAG_DONE);
- 		}
- 
- 		eng->desc_completed = cur;
-@@ -103,7 +108,10 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
- 		eng->dir = DMA_TO_DEVICE;
- 
- 	eng->desc_pool_cnt = desc_cnt;
--	eng->desc_pool = dma_pool_create("KPC DMA Descriptors", &eng->pldev->dev, sizeof(struct kpc_dma_descriptor), DMA_DESC_ALIGNMENT, 4096);
-+	eng->desc_pool = dma_pool_create("KPC DMA Descriptors",
-+					 &eng->pldev->dev,
-+					 sizeof(struct kpc_dma_descriptor),
-+					 DMA_DESC_ALIGNMENT, 4096);
- 
- 	eng->desc_pool_first = dma_pool_alloc(eng->desc_pool, GFP_KERNEL | GFP_DMA, &head_handle);
- 	if (!eng->desc_pool_first) {
-@@ -141,7 +149,11 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
- 	INIT_WORK(&eng->irq_work, ndd_irq_worker);
- 
- 	// Grab IRQ line
--	rv = request_irq(eng->irq, ndd_irq_handler, IRQF_SHARED, KP_DRIVER_NAME_DMA_CONTROLLER, eng);
-+	rv = request_irq(eng->irq,
-+			 ndd_irq_handler,
-+			 IRQF_SHARED,
-+			 KP_DRIVER_NAME_DMA_CONTROLLER,
-+			 eng);
- 	if (rv) {
- 		dev_err(&eng->pldev->dev, "%s: failed to request_irq: %d\n", __func__, rv);
- 		return rv;
-@@ -195,7 +207,10 @@ void  stop_dma_engine(struct kpc_dma_device *eng)
- 	}
- 
- 	// Clear any persistent bits just to make sure there is no residue from the reset
--	SetClearEngineControl(eng, (ENG_CTL_IRQ_ACTIVE | ENG_CTL_DESC_COMPLETE | ENG_CTL_DESC_ALIGN_ERR | ENG_CTL_DESC_FETCH_ERR | ENG_CTL_SW_ABORT_ERR | ENG_CTL_DESC_CHAIN_END | ENG_CTL_DMA_WAITING_PERSIST), 0);
-+	SetClearEngineControl(eng, (ENG_CTL_IRQ_ACTIVE | ENG_CTL_DESC_COMPLETE |
-+				    ENG_CTL_DESC_ALIGN_ERR | ENG_CTL_DESC_FETCH_ERR |
-+				    ENG_CTL_SW_ABORT_ERR | ENG_CTL_DESC_CHAIN_END |
-+				    ENG_CTL_DMA_WAITING_PERSIST), 0);
- 
- 	// Reset performance counters
- 
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index e1c7c04f16fe..b929987844ff 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -76,7 +76,11 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 
- 	// Lock the user buffer pages in memory, and hold on to the page pointers (for the sglist)
- 	mmap_read_lock(current->mm);      /*  get memory map semaphore */
--	rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
-+	rv = pin_user_pages(iov_base,
-+			    acd->page_count,
-+			    FOLL_TOUCH | FOLL_WRITE,
-+			    acd->user_pages,
-+			    NULL);
- 	mmap_read_unlock(current->mm);        /*  release the semaphore */
- 	if (rv != acd->page_count) {
- 		nr_pages = rv;
-@@ -89,16 +93,25 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 	nr_pages = acd->page_count;
- 
- 	// Allocate and setup the sg_table (scatterlist entries)
--	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
-+	rv = sg_alloc_table_from_pages(&acd->sgt,
-+				       acd->user_pages,
-+				       acd->page_count,
-+				       iov_base & (PAGE_SIZE - 1),
-+				       iov_len, GFP_KERNEL);
- 	if (rv) {
- 		dev_err(&priv->ldev->pldev->dev, "Couldn't alloc sg_table (%d)\n", rv);
- 		goto unpin_pages;
- 	}
- 
- 	// Setup the DMA mapping for all the sg entries
--	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
-+	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev,
-+					     acd->sgt.sgl,
-+					     acd->sgt.nents,
-+					     ldev->dir);
- 	if (acd->mapped_entry_count <= 0) {
--		dev_err(&priv->ldev->pldev->dev, "Couldn't dma_map_sg (%d)\n", acd->mapped_entry_count);
-+		dev_err(&priv->ldev->pldev->dev,
-+			"Couldn't dma_map_sg (%d)\n",
-+			acd->mapped_entry_count);
- 		goto free_table;
- 	}
- 
-@@ -111,14 +124,26 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 
- 	// Figoure out how many descriptors are available and return an error if there aren't enough
- 	num_descrs_avail = count_descriptors_available(ldev);
--	dev_dbg(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
-+	dev_dbg(&priv->ldev->pldev->dev,
-+		"    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d\n",
-+		acd->mapped_entry_count,
-+		desc_needed,
-+		num_descrs_avail);
- 	if (desc_needed >= ldev->desc_pool_cnt) {
--		dev_warn(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    TOO MANY to ever complete!\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
-+		dev_warn(&priv->ldev->pldev->dev,
-+			 "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    TOO MANY to ever complete!\n",
-+			 acd->mapped_entry_count,
-+			 desc_needed,
-+			 num_descrs_avail);
- 		rv = -EAGAIN;
- 		goto err_descr_too_many;
- 	}
- 	if (desc_needed > num_descrs_avail) {
--		dev_warn(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    Too many to complete right now.\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
-+		dev_warn(&priv->ldev->pldev->dev,
-+			 "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    Too many to complete right now.\n",
-+			 acd->mapped_entry_count,
-+			 desc_needed,
-+			 num_descrs_avail);
- 		rv = -EMSGSIZE;
- 		goto err_descr_too_many;
- 	}
-@@ -163,7 +188,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
- 				desc->acd = acd;
- 
--			dev_dbg(&priv->ldev->pldev->dev, "  Filled descriptor %p (acd = %p)\n", desc, desc->acd);
-+			dev_dbg(&priv->ldev->pldev->dev,
-+				"  Filled descriptor %p (acd = %p)\n",
-+				desc,
-+				desc->acd);
- 
- 			ldev->desc_next = desc->Next;
- 			desc = desc->Next;
-diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-index 624d47bae4d1..7698e5ef2a7c 100644
---- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-+++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-@@ -138,7 +138,8 @@ int  kpc_dma_probe(struct platform_device *pldev)
- 
- 	// Setup miscdev struct
- 	dev = MKDEV(assigned_major_num, pldev->id);
--	ldev->kpc_dma_dev = device_create(kpc_dma_class, &pldev->dev, dev, ldev, "kpc_dma%d", pldev->id);
-+	ldev->kpc_dma_dev = device_create(kpc_dma_class, &pldev->dev,
-+					  dev, ldev, "kpc_dma%d", pldev->id);
- 	if (IS_ERR(ldev->kpc_dma_dev)) {
- 		rv = PTR_ERR(ldev->kpc_dma_dev);
- 		dev_err(&ldev->pldev->dev, "%s: device_create failed: %d\n", __func__, rv);
-@@ -205,9 +206,11 @@ int __init kpc_dma_driver_init(void)
- {
- 	int err;
- 
--	err = __register_chrdev(KPC_DMA_CHAR_MAJOR, 0, KPC_DMA_NUM_MINORS, "kpc_dma", &kpc_dma_fops);
-+	err = __register_chrdev(KPC_DMA_CHAR_MAJOR, 0,
-+				KPC_DMA_NUM_MINORS, "kpc_dma", &kpc_dma_fops);
- 	if (err < 0) {
--		pr_err("Can't allocate a major number (%d) for kpc_dma (err = %d)\n", KPC_DMA_CHAR_MAJOR, err);
-+		pr_err("Can't allocate a major number (%d) for kpc_dma (err = %d)\n",
-+		       KPC_DMA_CHAR_MAJOR, err);
- 		goto fail_chrdev_register;
- 	}
- 	assigned_major_num = err;
--- 
-2.25.1
+Thanks for your first patch. Although the contribution period
+for the next round of Outreachy has not yet started. So, we
+won't be moderating this mailing list and Greg won't be picking
+up patches from this mailing list. We will send a welcome
+email on March 5, 2020 when the contribution period will
+open.
 
+Till then feel free to use get_maintainer.pl and send
+patches to the appropriate people/mailing lists.
+
+Thank you!
+
+> Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+> ---
+>  drivers/staging/gasket/gasket_core.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/gasket/gasket_core.c b/drivers/staging/gasket/gasket_core.c
+> index cd8be80d2076..411aaf248b37 100644
+> --- a/drivers/staging/gasket/gasket_core.c
+> +++ b/drivers/staging/gasket/gasket_core.c
+> @@ -692,8 +692,7 @@ static bool gasket_mmap_has_permissions(struct gasket_dev *gasket_dev,
+>                 (vma->vm_flags & (VM_WRITE | VM_READ | VM_EXEC));
+>         if (requested_permissions & ~(bar_permissions)) {
+>                 dev_dbg(gasket_dev->dev,
+> -                       "Attempting to map a region with requested permissions "
+> -                       "0x%x, but region has permissions 0x%x.\n",
+> +                       "Attempting to map a region with requested permissions 0x%x, but region has permissions 0x%x.\n",
+>                         requested_permissions, bar_permissions);
+>                 return false;
+>         }
+> @@ -1180,8 +1179,7 @@ static int gasket_open(struct inode *inode, struct file *filp)
+>         inode->i_size = 0;
+>
+>         dev_dbg(gasket_dev->dev,
+> -               "Attempting to open with tgid %u (%s) (f_mode: 0%03o, "
+> -               "fmode_write: %d is_root: %u)\n",
+> +               "Attempting to open with tgid %u (%s) (f_mode: 0%03o, fmode_write: %d is_root: %u)\n",
+>                 current->tgid, task_name, filp->f_mode,
+>                 (filp->f_mode & FMODE_WRITE), is_root);
+>
+> @@ -1258,8 +1256,7 @@ static int gasket_release(struct inode *inode, struct file *file)
+>         mutex_lock(&gasket_dev->mutex);
+>
+>         dev_dbg(gasket_dev->dev,
+> -               "Releasing device node. Call origin: tgid %u (%s) "
+> -               "(f_mode: 0%03o, fmode_write: %d, is_root: %u)\n",
+> +               "Releasing device node. Call origin: tgid %u (%s) (f_mode: 0%03o, fmode_write: %d, is_root: %u)\n",
+>                 current->tgid, task_name, file->f_mode,
+>                 (file->f_mode & FMODE_WRITE), is_root);
+>         dev_dbg(gasket_dev->dev, "Current open count (owning tgid %u): %d\n",
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200211200456.GA10351%40kaaira-HP-Pavilion-Notebook.
 
