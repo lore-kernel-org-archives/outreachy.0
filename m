@@ -1,220 +1,70 @@
-X-GM-THRID: 6203339889957666816
-X-Received: by 10.31.148.206 with SMTP id w197mr7096422vkd.9.1444327619856;
-        Thu, 08 Oct 2015 11:06:59 -0700 (PDT)
+X-GM-THRID: 6800460618478387200
+X-Received: by 2002:a1c:41d6:: with SMTP id o205mr3519714wma.122.1583497384813;
+        Fri, 06 Mar 2020 04:23:04 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.43.34 with SMTP id d31ls1205419qga.59.gmail; Thu, 08 Oct
- 2015 11:06:59 -0700 (PDT)
-X-Received: by 10.140.165.83 with SMTP id l80mr7160179qhl.14.1444327619198;
-        Thu, 08 Oct 2015 11:06:59 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id zg1si5901444pbb.2.2015.10.08.11.06.59
+Received: by 2002:a5d:498c:: with SMTP id r12ls530723wrq.6.gmail; Fri, 06 Mar
+ 2020 04:23:03 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtU9C0/3JGCty9jpKHwfBMJkjlQtNAy8XyF9eBxL6meYpboaT3P7SorzPFGg+XTfOgiJrjy
+X-Received: by 2002:adf:a4d2:: with SMTP id h18mr1415500wrb.90.1583497383444;
+        Fri, 06 Mar 2020 04:23:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583497383; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lDYdp9AdY3dNX1Z4BuouHevWEthjZmZy70v8SZIH2td/ndqy7TNbVzsOESSZ1OdLMW
+         9f+J881DEshDp0GOzHSqKuLE8ZeVl0PYu6ukTLzB57v2reozMoW1wsgBA2yJ6awcjcST
+         oLU6fhBaAsisThhIQekI6qJ4UBDHv3IQ+7dPDrcuGriWnfv/t1XH+AVGKSgptyvP3uSN
+         aWdRJCCnuKuh8QlQkPmAtmwuxmBf2U/H7PdGIrmJq/V86gE0Bv3DDoCy/h2tgzUyXc8M
+         wS6rMtGafo3H3J/soWaCZAcxDbvHn5HyyPBgbkbdIINgtK+IJXBQOWsklepzk0uNPsXQ
+         DXgA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=qXjhs4OQGGwxxON+6UgKU3G2Eme+1501ddm8wbyOS5s=;
+        b=RSpfC6yzgjR6vGsuOGPtfbFz9EBPCt5JUdSVtyjO5CAPEdx3HC1yWKZw/zd4i00+yD
+         SREk/1Y7fpRauCvD96f13bhl0sIrMYwK7ocvKgj8lrf9efVjnudRmbsGtW3UsLrt2h6m
+         m/Sg5+dt04CQC7ozCFQT0NhMXFem5S20iYCb2KDlsb8/V1OwcxmgDZ9Dtyg61Z6r39F0
+         OjeItOalsOXeEbrySJKTfcoIYP14IuexNd8xJokKYW94PoHfETJLdIq43VTKkhukv2wF
+         p5VtzrdulVgwagXz9m3w1jC3pCiPjJo5J3+k5VH9a+bc0lHZpK1IoGowSn9u9tDly+a2
+         p8Ag==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id y78si106822wmd.1.2020.03.06.04.23.03
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Oct 2015 11:06:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        Fri, 06 Mar 2020 04:23:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id hy16so61161384pad.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 08 Oct 2015 11:06:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:subject:date:message-id;
-        bh=hUusUfBmjLDhAzcbbEiksWVEbUWWXPxmYhKEAL39I2g=;
-        b=dSvCCMpHWoExqWwsZSABrhyH0fKLz7cwsAz9VGyUhiGmUAhh65xNomMcYh6Cmv97Mr
-         SnI5vhAlZpm+eUWiECvShKVHObaxE0Y8j3Ksa4olnikq54d1cJBWoVuhGLn/SeW6swA7
-         Nz23a4IvtmIU3+gHG+/W361HwV+/5SMxei4Omi0coLZ49k8KR0XMcg+LFKi1Hk9CmfiU
-         spHrODW+C1WGcAOLwTTBXZKCX5J+P3PiIkYXwVfiqU9BrDaCeSSynOtOl+H070uGSoFJ
-         SiwErcIrVJj7Yl2X/Sq2rfYov+DhQYLSirr2tSHIWQMm5DADV1U7NNEHeP/pkgiharRr
-         9c3A==
-X-Received: by 10.69.10.133 with SMTP id ea5mr9424011pbd.2.1444327619010;
-        Thu, 08 Oct 2015 11:06:59 -0700 (PDT)
-Return-Path: <shraddha.6596@gmail.com>
-Received: from shraddha-370R4E-370R4V-370R5E-3570RE-370R5V.bits-goa.ac.in ([103.225.100.51])
-        by smtp.gmail.com with ESMTPSA id gy2sm27652835pbc.8.2015.10.08.11.06.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 08 Oct 2015 11:06:58 -0700 (PDT)
-From: Shraddha Barke <shraddha.6596@gmail.com>
-To: <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] Staging: lustre: Remove unused libiam.h header
-Date: Thu,  8 Oct 2015 23:36:47 +0530
-Message-Id: <1444327607-14718-1-git-send-email-shraddha.6596@gmail.com>
-X-Mailer: git-send-email 2.1.4
-X-Cyberoam-smtpxy-version: 1.0.6.3
-X-Cyberoam-AV-Policy: default
-X-CTCH-PVer:  0000001
-X-CTCH-Spam:  Unknown
-X-CTCH-VOD:  Unknown
-X-CTCH-Flags:  0
-X-CTCH-RefID:  str=0001.0A150202.5616B0C1.005A,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0
-X-CTCH-Score:  0.000
-X-CTCH-ScoreCust:  0.000
-X-CTCH-Rules:  
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,522,1574118000"; 
+   d="scan'208";a="341492525"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Mar 2020 13:23:02 +0100
+Date: Fri, 6 Mar 2020 13:23:02 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+cc: Helen Koike <helen@koikeco.de>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Outreachy contribution period - Welcome!
+In-Reply-To: <20200305135252.GA13838@kaaira-HP-Pavilion-Notebook>
+Message-ID: <alpine.DEB.2.21.2003061322140.3947@hadrien>
+References: <CAPW4XYZ43RN5nSpi8StEGy0ceR53GXfse37n1rto_BevX5mxJQ@mail.gmail.com> <20200305135252.GA13838@kaaira-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove libiam.h since it is not used anywhere throughout the kernel.
+> Sir/ Ma'am,
+> I wanted to confirm if the clean-up patches I sent in the past days
+> (not aent on this mailing list) will be considered in the 10 clean-up
+> patches or should I send another 10?
+>
+> Thanks!
 
-Signed-off-by: Shraddha Barke <shraddha.6596@gmail.com>
----
- .../staging/lustre/lustre/include/lustre/libiam.h  | 145 ---------------------
- 1 file changed, 145 deletions(-)
- delete mode 100644 drivers/staging/lustre/lustre/include/lustre/libiam.h
+Hi,
 
-diff --git a/drivers/staging/lustre/lustre/include/lustre/libiam.h b/drivers/staging/lustre/lustre/include/lustre/libiam.h
-deleted file mode 100644
-index e8e0b08..0000000
---- a/drivers/staging/lustre/lustre/include/lustre/libiam.h
-+++ /dev/null
-@@ -1,145 +0,0 @@
--/*
-- * GPL HEADER START
-- *
-- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 only,
-- * as published by the Free Software Foundation.
-- *
-- * This program is distributed in the hope that it will be useful, but
-- * WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License version 2 for more details (a copy is included
-- * in the LICENSE file that accompanied this code).
-- *
-- * You should have received a copy of the GNU General Public License
-- * version 2 along with this program; If not, see
-- * http://www.sun.com/software/products/lustre/docs/GPLv2.pdf
-- *
-- * Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa Clara,
-- * CA 95054 USA or visit www.sun.com if you need additional information or
-- * have any questions.
-- *
-- * GPL HEADER END
-- */
--/*
-- * Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved.
-- * Use is subject to license terms.
-- */
--/*
-- * This file is part of Lustre, http://www.lustre.org/
-- * Lustre is a trademark of Sun Microsystems, Inc.
-- *
-- * lustre/include/lustre/libiam.h
-- *
-- * iam user level library
-- *
-- * Author: Wang Di <wangdi@clusterfs.com>
-- * Author: Nikita Danilov <nikita@clusterfs.com>
-- * Author: Fan Yong <fanyong@clusterfs.com>
-- */
--
--/*
-- *  lustre/libiam.h
-- */
--
--#ifndef __IAM_ULIB_H__
--#define __IAM_ULIB_H__
--
--/** \defgroup libiam libiam
-- *
-- * @{
-- */
--
--
--#define DX_FMT_NAME_LEN 16
--
--enum iam_fmt_t {
--	FMT_LFIX,
--	FMT_LVAR
--};
--
--struct iam_uapi_info {
--	__u16 iui_keysize;
--	__u16 iui_recsize;
--	__u16 iui_ptrsize;
--	__u16 iui_height;
--	char  iui_fmt_name[DX_FMT_NAME_LEN];
--};
--
--/*
-- * Creat an iam file, but do NOT open it.
-- * Return 0 if success, else -1.
-- */
--int iam_creat(char *filename, enum iam_fmt_t fmt,
--	      int blocksize, int keysize, int recsize, int ptrsize);
--
--/*
-- * Open an iam file, but do NOT creat it if the file doesn't exist.
-- * Please use iam_creat for creating the file before use iam_open.
-- * Return file id (fd) if success, else -1.
-- */
--int iam_open(char *filename, struct iam_uapi_info *ua);
--
--/*
-- * Close file opened by iam_open.
-- */
--int iam_close(int fd);
--
--/*
-- * Please use iam_open before use this function.
-- */
--int iam_insert(int fd, struct iam_uapi_info *ua,
--	       int key_need_convert, char *keybuf,
--	       int rec_need_convert, char *recbuf);
--
--/*
-- * Please use iam_open before use this function.
-- */
--int iam_lookup(int fd, struct iam_uapi_info *ua,
--	       int key_need_convert, char *key_buf,
--	       int *keysize, char *save_key,
--	       int rec_need_convert, char *rec_buf,
--	       int *recsize, char *save_rec);
--
--/*
-- * Please use iam_open before use this function.
-- */
--int iam_delete(int fd, struct iam_uapi_info *ua,
--	       int key_need_convert, char *keybuf,
--	       int rec_need_convert, char *recbuf);
--
--/*
-- * Please use iam_open before use this function.
-- */
--int iam_it_start(int fd, struct iam_uapi_info *ua,
--		 int key_need_convert, char *key_buf,
--		 int *keysize, char *save_key,
--		 int rec_need_convert, char *rec_buf,
--		 int *recsize, char *save_rec);
--
--/*
-- * Please use iam_open before use this function.
-- */
--int iam_it_next(int fd, struct iam_uapi_info *ua,
--		int key_need_convert, char *key_buf,
--		int *keysize, char *save_key,
--		int rec_need_convert, char *rec_buf,
--		int *recsize, char *save_rec);
--
--/*
-- * Please use iam_open before use this function.
-- */
--int iam_it_stop(int fd, struct iam_uapi_info *ua,
--		int key_need_convert, char *keybuf,
--		int rec_need_convert, char *recbuf);
--
--/*
-- * Change iam file mode.
-- */
--int iam_polymorph(char *filename, unsigned long mode);
--
--/** @} libiam */
--
--#endif
--- 
-2.1.4
+I think this has been answered already.
 
+This message ended up in the outreachy list spam folder.
+
+julia
 
