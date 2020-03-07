@@ -1,94 +1,72 @@
 X-GM-THRID: 6801392738100051968
-X-Received: by 2002:adf:ee06:: with SMTP id y6mr2390230wrn.187.1586226361194;
-        Mon, 06 Apr 2020 19:26:01 -0700 (PDT)
+X-Received: by 2002:a17:906:5e19:: with SMTP id n25mr6392539eju.333.1583575370382;
+        Sat, 07 Mar 2020 02:02:50 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:67c2:: with SMTP id b185ls1547178wmc.1.gmail; Mon, 06
- Apr 2020 19:25:10 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJd9awuBYc3tdKgC63LY8X5SLlpI1mnfEdmjgSlKdWxXFpofH2wWbApBI08ov7HKE3GNM7o
-X-Received: by 2002:a1c:a344:: with SMTP id m65mr1990219wme.20.1586226310917;
-        Mon, 06 Apr 2020 19:25:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586226310; cv=none;
+Received: by 2002:a17:906:25ca:: with SMTP id n10ls2662084ejb.8.gmail; Sat, 07
+ Mar 2020 02:02:49 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vstzc6FB95yM7rCoge1Y0S/suOYGTmVvBxyxIeF1reb8Bwuf3aZdw8dN2Bi/Dp6jnMEdwnU
+X-Received: by 2002:a17:906:e094:: with SMTP id gh20mr6715006ejb.230.1583575369053;
+        Sat, 07 Mar 2020 02:02:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583575369; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lq7E8GPlk/yNmwJizz4XtRDLQy/G5bxtKmFtQRsYA48iDdcNteJSJRxadCztVHTXiY
-         hdsbQF/0sRTIDBEwoI1WAGsGJ8Kfo13/ep9gFhNGt9+zM9gYAer63bcDbHodjVGzQHwo
-         /VAy75ZfoiQ3rZw4KIPKiAU6zAD2dLj7KL6xDUKQPKjF62V7c9oVPWIf9kPm2w444z8V
-         8JYQtwBXbDQBPHjB3Ze4yUlKXuJMLOOSRIt0pfYHfzH0kC+QqpoG9IYK0Vb7ye9AkVVQ
-         eJoIVJA4e+Na5aqBf0pl7NbUaqUxZOD1/+HCI5Gxu5++PmMG6mt/9HCJZgyoFuDTWh/9
-         wXsA==
+        b=MnK8FVotpL+CyiLmWenWPpwYr4IV5L9cVECuBWFc5jai/nfkmTRNpQqBVNzRMiQNSv
+         ikTi3oP7WdJIJwHpvj8/fxG6nlqxFZzqtWCDTEPyZwmwdYwUFUS/PdkNGDexeXzlEywR
+         ZWxkat64ccyr7mj9YDz/b/+eCAiFMXefu3PMkpFMdmFefo6qxc8Rq0BbfS1kpTdI26VB
+         c0qSqfGtaZqVVXZ3RviA+2NuvN+0T+70f3KOEQWs3f064VgS7DvOjSRaafNux1JhPSTU
+         sJHtOEM/fc6HbnX38Laq16+Ig+uNP0muazQVeO2/oNQEoDXss/Uz7QzudYPlPlE6wyY4
+         VvWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=vv0owmRWZl+/68RRcdBHGsGMwA6lIcfk5ILx93QU7KY=;
-        b=SUN7FaVrgggW7zuNbtMRINbLpTD5Z12FfbLsahTsApeCdzWA3GjjDNF/bIMhkqRUfe
-         xGNUMaplgvKM5mkdMUXekt2PiGwGPKTSaYnPJM7uPVCtYAXRKKdXDLVsIsyO+kudaqYu
-         SFf9NDlbvm+BOsKns3rTWD9abKjIkZMhTM+iIJeO2HyY1J3Wk+mHJjcedVLHcNEvFwG5
-         TRYhv9kHnYFGCzY93gxGC/tb8pMyV0EKSX33e+JNz2+Vk/4svhDT0ejOj5wYhh41mTDh
-         U+/EJ4Sg12TSfBsjoWVNBS4nqT+Tk8VKzfR5z2pvDQ5cslLqkPYOPtQNUgFUv+73oBsY
-         qIFQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=zlWIEadOk/7uh8KnxhJqk4Szxtuougc4lQfizO0xJwY=;
+        b=MNSXEy6VIOxMkiCnM1eK0hJ9Hu+7Ja1KggC+c6E10ax/FdcJzywYWJr/KQBfyPRqe8
+         NOwsuVm1/O10AoaRPmygaOhwpVDc11qwE4YoEb16CvdIRUqgcgFoYvkvhKIBxCjfpkV9
+         WXRtF3EKD2qWGtpwKgdge8N+Gp1H98ej1vFwg6MFFno0uA/SOZa54cy3dkQ/hX7G70X5
+         PKqdTyEr8vGPq2hiSJiv7btUYnkC4wCgCN+XTlAlKTrm8YNo9dEXfc2ifl9p7xJZPgKl
+         uN4CAC7zpnEUbxym2rYyi5RURJjFlawJPtwbHcnxkaZFjgIQr1hDvW9KjWViA2JfCkOW
+         OZRQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id v11si100938wrq.4.2020.04.06.19.25.10
-        for <outreachy-kernel@googlegroups.com>;
-        Mon, 06 Apr 2020 19:25:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l35si185409ede.3.2020.03.07.02.02.48
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 07 Mar 2020 02:02:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 7342 invoked from network); 7 Apr 2020 02:25:08 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.209.216.117)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 7 Apr 2020 02:25:08 -0000
-Date: Tue, 7 Apr 2020 07:54:53 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: Need help using coccinelle
-Message-ID: <20200407022453.GA1720@tulip.local>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,525,1574118000"; 
+   d="scan'208";a="439273130"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Mar 2020 11:02:48 +0100
+Date: Sat, 7 Mar 2020 11:02:48 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: R Veera Kumar <vkor@vkten.in>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Hi, I am R Veera Kumar a selected Outreachy
+ applicant
+In-Reply-To: <284f12c6-c1ab-4f1f-a325-569a7b8bfc1c@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.2003071102220.2483@hadrien>
 References: <284f12c6-c1ab-4f1f-a325-569a7b8bfc1c@googlegroups.com>
- <alpine.DEB.2.21.2003071102220.2483@hadrien>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.2003071102220.2483@hadrien>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=US-ASCII
 
-Hi Julia,
+On Sat, 7 Mar 2020, R Veera Kumar wrote:
 
-I am trying to use coccinelle.
+> Hi,
+>
+> I am R Veera Kumar a selected Outreachy applicant for the May 2020 round.
+> This is my first post to the mailing list.
+> I mailed from my mutt mail client to outreachy-kernel@googlegroups.com
+> address but
+> has not reached here.
+> Please group owner, check If it went as spam.
 
-It is nice to know, you are one of the author of it.
+You have to be a member of the list for messages to be accepted.  You are
+a member now.
 
-Built coccinelle-1.0.8 downloaded from github site as link in inria.fr gives
-HTTP 404 not found.
-
-Please see the configure.log in attachment for the build.
-
-make coccicheck MODE=report is working.
-
-But
-
-make coccicheck DEBUG_FILE=/tmp/b2.log MODE=context
-M=drivers/staging/rtl8723bs |& tee ~/tmp/log/cocci-context-rtl8723bs.log
-
-make coccicheck DEBUG_FILE=/tmp/b3.log MODE=patch
-M=drivers/staging/rtl8723bs |& tee ~/tmp/log/cocci-patch-rtl8723bs.log
-
-are giving errors
-
-coccicheck failed
-make: *** [Makefile:1761: coccicheck] Error 255
-
-It is not with just drivers/staging/rtl8723bs.
-
-Am attaching the log files as well.
-
-Those DEBUG_FILE's have this in end:
-virtual rule context not supported
-virtual rule patch not supported
-
-Is it that something missing from my build system for their support?
-
-Thanks,
-Veera
+julia
 
