@@ -1,175 +1,124 @@
-X-GM-THRID: 6883539581978804224
-X-Received: by 2002:a17:902:9890:b029:d2:2f2a:584e with SMTP id s16-20020a1709029890b02900d22f2a584emr300715plp.29.1602698951002;
-        Wed, 14 Oct 2020 11:09:11 -0700 (PDT)
+X-GM-THRID: 6801392736188497920
+X-Received: by 2002:a63:6bc8:: with SMTP id g191mr6394784pgc.2.1583599872180;
+        Sat, 07 Mar 2020 08:51:12 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:f993:: with SMTP id cq19ls10166pjb.0.gmail; Wed, 14
- Oct 2020 11:09:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhtzZft9rgaS42GMouj5qSLq1+VWIVoy1udMwKh1XFo5msV2nn1seNq5xiA80Ry0h3Xeuc
-X-Received: by 2002:a17:902:d904:b029:d3:d2dd:2b36 with SMTP id c4-20020a170902d904b02900d3d2dd2b36mr242995plz.32.1602698949118;
-        Wed, 14 Oct 2020 11:09:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602698949; cv=none;
+Received: by 2002:aa7:868f:: with SMTP id d15ls1996374pfo.5.gmail; Sat, 07 Mar
+ 2020 08:51:10 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsvhvxWiaq0cDNBRzf30ZwRJtP4dujGolm+lDjMn0CqPOPJGsnuG/Ljxk6iVtH3uubbGiGX
+X-Received: by 2002:a63:e053:: with SMTP id n19mr8953219pgj.64.1583599870533;
+        Sat, 07 Mar 2020 08:51:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583599870; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ma6RolEAuiVKmrnlbhecubWVhoTLV8iYMVWKqc0AO6yg1D0g3Mgx2/suE1ksPz2c1K
-         0Y4E/fOfxQ5rZpVSOSNNUOiIM2TBBkhJ437HYrdvSbpkN0pRwVnA95QxqMt2zjm9wLuM
-         aK5iNWycc4r6eajqkDKqyVHH8yLR2i/Py4xXjvL0IgyY/vlP8YeNvcSTdcsEts3+plag
-         QK/3x3QhN2+hK3Lje6dreGGRUVYd5roGwfuqCIsL9bb4rCVgQ6VOt84ni2jBcOEMB97C
-         N9HleqhOmGFv6UXOMR0FyWcGsGgm8RUjHRz+nbW5hOiAtQ/OmYoprS+fePJIlLybDA7c
-         0MKg==
+        b=UBui6rAV1B+vdl2ynF/ub3YdDNhz8+qdy8rMuUmgA9sOR71pmEU8fv2uhu7swIxb6n
+         BQDgzZ+4GWKQh/ovRIr2ooC+NOjDIPB7m1WgJv/RleQn/F5g476kUYGf++csRcbeNFiT
+         3CLwgIodA1wrBA91Gt6XjBwPHhujvm5ipECv3gRB2uA+9rHcOnGHcWpc7UtDveA89ayK
+         YeZd4LUQzudP5fb6BiUs7QZFdZOnfVzXeRWyNyxxONoGV/OO94y/KCgwO9OofTiu/uZ3
+         bvasY8C7g/kGPglYc9tM/7aDjcGD9O1B7nTLr1PyrEaAxu+nB4okLMvh/jcO86IPlGy6
+         LBEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=YkcpswvzA3MNGiN49/QSkfk3qOBg7vbvYbVI4p+Agi0=;
-        b=zkeEsUOqXgap22X20EovVbE/4WheH02y46AXKO6eHinKsgdbh8sB8oh9uba7nP//Wv
-         1NQPbXmypJEfrKuxzpXmnF8/pm4RKdduZ0fUigXWSxdAlcLccUY6A4hmma+oAMAaQbhK
-         LDRKhhF0u4qRhpPZTVmj87ZSmgFsO8DBy6hGZl3THA4avSFQj9lyck17BeNZHYDpgI8a
-         +NacOqba1UzvguCndGM1Yrrcg7l3FpO/sid95s9XmxbwOjpbQ6nd34UoeZgMq0lXUIJr
-         219arX6D3EqJqya3ytyGfXA6v8Y8CRY2rYuRc5Ye3TpICNYktYypbeCzkRA4mQg4Lzk5
-         cfUw==
+        h=message-id:from:to:subject:content-transfer-encoding:mime-version
+         :references:in-reply-to:user-agent:date:dkim-signature;
+        bh=c9qIMEIj2Bg3dPsjzB2e/HRpPGx1Icwf9gZgS7c3swc=;
+        b=BR6adTyRKTvuD7GfsBlIzUjgKilg1xO0uC4g4aNcL8l393+NxWLJHVt18xFXvcEulS
+         l1swnMWUUAAm2L2V4kuPnCC8e46SsKuRPa/h4EoBbAeSaokQxIq+qc3oSmNsiJNOqhR8
+         th5H4OZji03iJE1EgdFyucUYjaRyZcTL1DBvHnnr9uLkRcnBUCtGekPwrxENCHidVFyY
+         OFfL239exQ5DvbNtBs2oLprNdRwwx/crMRvBjjB2DQPkAl9hurlyglRlNFccu6FNqhXF
+         JkdZP5gcFDRtwBEhI1VaaNkRhqeaLd9FtavRiDnpwyJX8GwlFssfVkxUgxDVLK0xZrYa
+         +UfA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U+WUWo3p;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id 191si49800pfu.3.2020.10.14.11.09.09
+       dkim=pass header.i=@joelfernandes.org header.s=google header.b=F4P9fl83;
+       spf=pass (google.com: domain of joel@joelfernandes.org designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=joel@joelfernandes.org
+Return-Path: <joel@joelfernandes.org>
+Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com. [2607:f8b0:4864:20::42b])
+        by gmr-mx.google.com with ESMTPS id s92si241332pjb.0.2020.03.07.08.51.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Oct 2020 11:09:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
+        Sat, 07 Mar 2020 08:51:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of joel@joelfernandes.org designates 2607:f8b0:4864:20::42b as permitted sender) client-ip=2607:f8b0:4864:20::42b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U+WUWo3p;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x442.google.com with SMTP id c20so270889pfr.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2020 11:09:09 -0700 (PDT)
+       dkim=pass header.i=@joelfernandes.org header.s=google header.b=F4P9fl83;
+       spf=pass (google.com: domain of joel@joelfernandes.org designates 2607:f8b0:4864:20::42b as permitted sender) smtp.mailfrom=joel@joelfernandes.org
+Received: by mail-pf1-x42b.google.com with SMTP id z65so2699155pfz.8
+        for <outreachy-kernel@googlegroups.com>; Sat, 07 Mar 2020 08:51:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=YkcpswvzA3MNGiN49/QSkfk3qOBg7vbvYbVI4p+Agi0=;
-        b=U+WUWo3pAvokXLxMIGpqByFN1rIX6EsRJ0g9XK3MBXPUMimfKs22evdsXkHnPw2hp0
-         i3tQ4kFQWdiSmBNPDRX7Jl7AeF3WnmMaaefjHPqSB6sN79LtJR8TqITaiV7XMTrDOBot
-         a9MHdP7FfFv5ddj/dHNM4l9XFQTDK5U0+owDR45PMxgGCjdWZbhM+6W5sahF/KIT9CVl
-         49IFhEuhTtPQmIt1VT5I5LE50CGKy6NXCEG3XSZBjDeatJSUXPkP4dPp/fkvOhFRttIj
-         48B7n2UZF1Ag7yNFgTI7K8/Kxu2VnqAmL/T452z6N9F4DebNx89WmZmvd2eBdSt+5G7Y
-         pN2w==
+        d=joelfernandes.org; s=google;
+        h=date:user-agent:in-reply-to:references:mime-version
+         :content-transfer-encoding:subject:to:from:message-id;
+        bh=c9qIMEIj2Bg3dPsjzB2e/HRpPGx1Icwf9gZgS7c3swc=;
+        b=F4P9fl830q/tHNTnvVAJZExR5w+TveoYD2OH33f9R3oA4j06XSXh6vJcIvhugTXHu8
+         srsFUZ2dHdhC5Xx7IFcgO5m6hoiY+SUj0HlMaKxWO/ET+I/NfWdA1FA0jbejRba0JBaT
+         g/TrELLByRfl3aZnwc4rx6uWr+0FtaHayBfaI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=YkcpswvzA3MNGiN49/QSkfk3qOBg7vbvYbVI4p+Agi0=;
-        b=j/Ve8XfjFTuDNhnzA07CQSvdZL201NtljBZXUuv0O5p7Vz5SNF9zDTXERk7CXmdv0a
-         Q7w7w5likFf2R9WkMEgkoue5tEhFdDpG3i/GgFJyShkOu1GEdCwnsmxilQvbZ16+cVLJ
-         I1TMhBF41KsMFHIPhOddNFwjikndXUq/BoMqWPOy4uwZ2cSkPqQGpE+cOfQ7lD3CYe6Z
-         RTAWkMfdmfCXZTSvp/xyYz9gBaw8+tqLEMKe2bzJyaCfx2yVaR4uKvGKwlqYOxngEyWJ
-         Hy8DbCkF8UmSJX/gj/MpDCeUV3hdb5e8rqZSzffhCsJaDhG9Ek76mf+YWQqChWmNstT4
-         eW/w==
-X-Gm-Message-State: AOAM5311VKtwP5IehX7y1J+P9dmFwS+K3OmN7e4GDjMq592M3O4Ai3aM
-	4rT53LLHbiQgbNgbivnf5dTSuohupihpJg==
-X-Received: by 2002:a62:3882:0:b029:152:127a:e852 with SMTP id f124-20020a6238820000b0290152127ae852mr494561pfa.21.1602698948630;
-        Wed, 14 Oct 2020 11:09:08 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id x10sm269143pfc.88.2020.10.14.11.09.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2020 11:09:08 -0700 (PDT)
-Date: Wed, 14 Oct 2020 23:39:03 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com, Manish Chopra <manishc@marvell.com>,
-	GR-Linux-NIC-Dev@marvell.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: qlge: remove extra blank lines
-Message-ID: <20201014180903.GA61053@ubuntu204>
+        h=x-gm-message-state:date:user-agent:in-reply-to:references
+         :mime-version:content-transfer-encoding:subject:to:from:message-id;
+        bh=c9qIMEIj2Bg3dPsjzB2e/HRpPGx1Icwf9gZgS7c3swc=;
+        b=Lj3YLiZDd0yF0qULiKfxXSJDiytO3dzA2ELc79kfbm3oiL9ClJsax1zxrmrN5EjZzv
+         6SCk7MVDS+zxdyWpcPnKUfwrQV4IGGx3vsRUtJm+9g9yU+RrEoGAOk0XuFP6PJghzh4U
+         0LF7stCgHZap8hwVSwM1YN6tODLURw1H1s2VGaGXBx1C6jiYIV47c9w8MGlG9SW5pmhG
+         ZjFcQCElgoo8J7Q4e2hzvc4Z0Lz74Iay5XgstuyYpYENNeevTBGdP+FcXtr9d9kGIj2q
+         gWsdLtKFsBbviT7g2iO5Imf3yvJ9X/OusF0gBUcAtigr6qbRH+VoGRGk8ayBW1qT4453
+         h1Lg==
+X-Gm-Message-State: ANhLgQ1qG9ynteOYnXtQ7RTWizCnf1VGMoJkqk1WhCyN5FJ0MrUMMRea
+	IJOqGhx5KJwubXs20gDSBbVll5FCZFw=
+X-Received: by 2002:a62:ea0f:: with SMTP id t15mr4545851pfh.31.1583599869699;
+        Sat, 07 Mar 2020 08:51:09 -0800 (PST)
+Return-Path: <joel@joelfernandes.org>
+Received: from ?IPv6:2600:1012:b067:7e32:12c2:424b:4077:fa47? ([2600:1012:b067:7e32:12c2:424b:4077:fa47])
+        by smtp.gmail.com with ESMTPSA id b2sm12904405pjc.40.2020.03.07.08.51.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 07 Mar 2020 08:51:09 -0800 (PST)
+Date: Sat, 07 Mar 2020 08:51:06 -0800
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20200307085911.GA5556@lily>
+References: <20200307085911.GA5556@lily>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: multipart/alternative; boundary="----JJ4H8YSXZKKKOV09DKHJVFOG0181W4"
+Content-Transfer-Encoding: 7bit
+Subject: Re: [Outreachy kernel] My first post to Outreachy-kernel mailing list
+To: outreachy-kernel@googlegroups.com,Veera <vkor@vkten.in>
+From: joel@joelfernandes.org
+Message-ID: <B5A382A7-7A80-4FB8-A224-4FD197206E0D@joelfernandes.org>
 
-Remove unnecessary blank lines as per the coding style guidelines.
-Issue reported by checkpatch scrip
+------JJ4H8YSXZKKKOV09DKHJVFOG0181W4
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Welcome aboard=2E
 
----
+On March 7, 2020 12:59:13 AM PST, Veera <vkor@vkten=2Ein> wrote:
+>Hi,
+>
+>I am R Veera Kumar and am selected as applicant for Outreachy May 2020
+>round=2E
+>This is my first post to the list=2E
+>
+>Veera
+>
+>--=20
+>You received this message because you are subscribed to the Google
+>Groups "outreachy-kernel" group=2E
+>To unsubscribe from this group and stop receiving emails from it, send
+>an email to outreachy-kernel+unsubscribe@googlegroups=2Ecom=2E
+>To view this discussion on the web visit
+>https://groups=2Egoogle=2Ecom/d/msgid/outreachy-kernel/20200307085911=2EG=
+A5556%40lily=2E
 
- drivers/staging/qlge/qlge_main.c | 9 ---------
- 1 file changed, 9 deletions(-)
+--=20
+Sent from my Android device with K-9 Mail=2E Please excuse my brevity=2E
+------JJ4H8YSXZKKKOV09DKHJVFOG0181W4
+Content-Type: text/html;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index cb19cd35d0da..406374a5a431 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -756,7 +756,6 @@ static int ql_get_8012_flash_params(struct ql_adapter *qdev)
- 				  "Error reading flash.\n");
- 			goto exit;
- 		}
--
- 	}
- 
- 	status = ql_validate_flash(qdev,
-@@ -1225,7 +1224,6 @@ static void ql_unmap_send(struct ql_adapter *qdev,
- 						     maplen), DMA_TO_DEVICE);
- 		}
- 	}
--
- }
- 
- /* Map the buffers for this transmit.  This will return
-@@ -1339,7 +1337,6 @@ static int ql_map_send(struct ql_adapter *qdev,
- 		dma_unmap_addr_set(&tx_ring_desc->map[map_idx], mapaddr, map);
- 		dma_unmap_len_set(&tx_ring_desc->map[map_idx], maplen,
- 				  skb_frag_size(frag));
--
- 	}
- 	/* Save the number of segments we've mapped. */
- 	tx_ring_desc->map_cnt = map_idx;
-@@ -2103,7 +2100,6 @@ static int ql_clean_outbound_rx_ring(struct rx_ring *rx_ring)
- 	struct tx_ring *tx_ring;
- 	/* While there are entries in the completion queue. */
- 	while (prod != rx_ring->cnsmr_idx) {
--
- 		netif_printk(qdev, rx_status, KERN_DEBUG, qdev->ndev,
- 			     "cq_id = %d, prod = %d, cnsmr = %d\n",
- 			     rx_ring->cq_id, prod, rx_ring->cnsmr_idx);
-@@ -2111,7 +2107,6 @@ static int ql_clean_outbound_rx_ring(struct rx_ring *rx_ring)
- 		net_rsp = (struct ob_mac_iocb_rsp *)rx_ring->curr_entry;
- 		rmb();
- 		switch (net_rsp->opcode) {
--
- 		case OPCODE_OB_MAC_TSO_IOCB:
- 		case OPCODE_OB_MAC_IOCB:
- 			ql_process_mac_tx_intr(qdev, net_rsp);
-@@ -2150,7 +2145,6 @@ static int ql_clean_inbound_rx_ring(struct rx_ring *rx_ring, int budget)
- 
- 	/* While there are entries in the completion queue. */
- 	while (prod != rx_ring->cnsmr_idx) {
--
- 		netif_printk(qdev, rx_status, KERN_DEBUG, qdev->ndev,
- 			     "cq_id = %d, prod = %d, cnsmr = %d\n",
- 			     rx_ring->cq_id, prod, rx_ring->cnsmr_idx);
-@@ -2462,7 +2456,6 @@ static irqreturn_t qlge_isr(int irq, void *dev_id)
- 
- static int ql_tso(struct sk_buff *skb, struct ob_mac_tso_iocb_req *mac_iocb_ptr)
- {
--
- 	if (skb_is_gso(skb)) {
- 		int err;
- 		__be16 l3_proto = vlan_get_protocol(skb);
-@@ -2869,7 +2862,6 @@ static void ql_free_rx_resources(struct ql_adapter *qdev,
- static int ql_alloc_rx_resources(struct ql_adapter *qdev,
- 				 struct rx_ring *rx_ring)
- {
--
- 	/*
- 	 * Allocate the completion queue for this rx_ring.
- 	 */
-@@ -3798,7 +3790,6 @@ static int ql_wol(struct ql_adapter *qdev)
- 
- static void ql_cancel_all_work_sync(struct ql_adapter *qdev)
- {
--
- 	/* Don't kill the reset worker thread if we
- 	 * are in the process of recovery.
- 	 */
--- 
-2.25.1
-
+<html><head></head><body>Welcome aboard=2E<br><br><div class=3D"gmail_quote=
+">On March 7, 2020 12:59:13 AM PST, Veera &lt;vkor@vkten=2Ein&gt; wrote:<bl=
+ockquote class=3D"gmail_quote" style=3D"margin: 0pt 0pt 0pt 0=2E8ex; border=
+-left: 1px solid rgb(204, 204, 204); padding-left: 1ex;">
+<pre class=3D"k9mail">Hi,<br><br>I am R Veera Kumar and am selected as app=
+licant for Outreachy May 2020 round=2E<br>This is my first post to the list=
+=2E<br><br>Veera<br></pre></blockquote></div><br>-- <br>Sent from my Androi=
+d device with K-9 Mail=2E Please excuse my brevity=2E</body></html>
+------JJ4H8YSXZKKKOV09DKHJVFOG0181W4--
 
