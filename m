@@ -1,110 +1,132 @@
-X-GM-THRID: 6675392771398828032
-X-Received: by 2002:a5d:9a0d:: with SMTP id s13mr61029iol.26.1554235995828;
-        Tue, 02 Apr 2019 13:13:15 -0700 (PDT)
+X-GM-THRID: 6801518076458172416
+X-Received: by 2002:a05:620a:2239:: with SMTP id n25mr8187880qkh.147.1583601831004;
+        Sat, 07 Mar 2020 09:23:51 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:d06:: with SMTP id 6ls1307764itx.5.gmail; Tue, 02 Apr
- 2019 13:13:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzRf514EM9jLlD3Mg325DNBPdgRvo3bOgHqN03NkobaJ3KKJb3ttCe0h9VTsS5aP0WGxllk
-X-Received: by 2002:a24:97cf:: with SMTP id k198mr8752548ite.26.1554235994875;
-        Tue, 02 Apr 2019 13:13:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554235994; cv=none;
+Received: by 2002:ac8:1208:: with SMTP id x8ls2069531qti.1.gmail; Sat, 07 Mar
+ 2020 09:23:49 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vtwSYY9aOXwPhA6lMOBjsyxF6NnhrOzcGmESXvIpY5diIOiStVlre98xBRBcZFnI4hyqmgr
+X-Received: by 2002:ac8:508:: with SMTP id u8mr8068336qtg.157.1583601829760;
+        Sat, 07 Mar 2020 09:23:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583601829; cv=none;
         d=google.com; s=arc-20160816;
-        b=FeEDfALF7TEdEeqacxClkKDkIYtwHbqKptgKBKxKZjIE/FXhhQ68jFZVBCwZDAsNEC
-         CnmGYa0F+vyfi+5J3ybXtJ0XaXadby+iCRsj6M9dVPNzdat+jWTles9PwZggr6aejxSM
-         N8GK153U7OyE/TMhiYwO60vqCsIODd2p27UMFVTkXqAKjBeDJgPP+tYSl/miFouwgZbp
-         vBOuGTE1EtnNQQlI7hObT/U8bosqzf/Bk6dqDPbUsXf+qgntOYI+3+XZkdpilfTiqD/A
-         0BWk2Co3GdhiwVW1jW7M5npxoamls1mOAH2xN/LkO/Lg0HPYUexMm/fA1tj77rcE3OD+
-         rDWA==
+        b=wJvNVVE8DIMB7xXfmvwYQ+prOdhZ0OV4zgCMUVoWKHRAaqp8Z0rUBdwjXDDFxEaw08
+         GUmNi/V7OsDkc7qLFEfSBlVKqmVwuv1dEgaPsf07WpDyvboRYs4W1K0IotQtE/mTGQAb
+         MLv/eiUvcTgCNXYUyL1cSt21Hzh8uNlbtMOj5PbjYnFDr6/bjM+yMuojeNA8RenQdL+h
+         he2lsXiBCrRqUwO2tpCcsNvVpJntSziCyhVsbCohdq8HfxrkImUjmDPW6+FIp9sYjeeQ
+         EAOEbEwoxQdw/HAMNEY62J0EwLuCKD057Vs32r1xjse4RTuZyTz/KZLByKcewF4hwUnl
+         Hewg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:content-transfer-encoding:mime-version:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=GFTzbYLUlv+T3uVCT+C1do1yfJA1IK9PHNj9AhmjqTk=;
-        b=BmEf/CnetP+9VeYE/Yps/C6/FBQiixxfe/PuZuU1+svEi6no/xhziAXZk4JMAqExn9
-         RtqTfFBenVciJteOJ6/omwcLj0x/qPTmX8VeGTlaJb8ONh/GcQ3Lnn3FJar1EtoMUpkB
-         fddN0ElGZzIUPHT96bW1mJfZheMGOOn46uFX28o+NZGEYW3wCf3E1AaliVh2rpWaxz9C
-         48fTWgcqwLRPGaF8xJ5hYHxGZqMNcF9NfJFnwCXP9nCVKLlxZuhTruZSttnNavybwGf2
-         JhA60b0YdSS+MhHXdXnxV/ZvSGEgHIvrcYSvjkCBl8cM5XP5lf6HUctwXKgxkD8VeCtX
-         ZyHw==
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=pZb3FIB5SCdTRhuEzArGnx8Xj8iZX1wFbTgtxmlGDnI=;
+        b=ZXknGNVT/dpfVms8lrMHmDLq6xVOfeKn9FZTqPjPMq2dWT/+uuYX+FK6jxNcbqgIde
+         w7UF+XFE7Y88qCLrluvHQ3xdJrQci8ZQbT0MHRlSiGkMs+6S4gc4OhoRYIwYskuMt+zB
+         J6sH85mArE/pLEAHCmTuPqUMRY57Iry01N0COyzraQgs2iHlIzp7VD5MZhOhF4+xuS2X
+         vDyqbt2qLzMeVM9SCb8zEWxb7XSRrOmFVc43UVWhCtcNy5SUeLFp4CtugZdU8+4++eBH
+         B2CLhImtq/MIKp3VORpSfCd9QgoPvq26xNZKvtdMezuKwfQda1lpIFVZd5TnpIigxrhI
+         51Dw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=iyRgPGiw;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.144 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic314-20.consmr.mail.sg3.yahoo.com (sonic314-20.consmr.mail.sg3.yahoo.com. [106.10.240.144])
-        by gmr-mx.google.com with ESMTPS id f13si659102iok.3.2019.04.02.13.13.14
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L53UF7zC;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-il1-x136.google.com (mail-il1-x136.google.com. [2607:f8b0:4864:20::136])
+        by gmr-mx.google.com with ESMTPS id e26si271378qka.2.2020.03.07.09.23.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 13:13:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.144 as permitted sender) client-ip=106.10.240.144;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 07 Mar 2020 09:23:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) client-ip=2607:f8b0:4864:20::136;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=iyRgPGiw;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.144 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1554235992; bh=GFTzbYLUlv+T3uVCT+C1do1yfJA1IK9PHNj9AhmjqTk=; h=From:To:Cc:Subject:Date:References:From:Subject; b=iyRgPGiwNgrZ+GCivsoqtPK85WOj5QTxFvRl2rP5bnF81KMJgoHltqygEyPoAmcfmPDaA7dVAK/bLu5UsxM15CGaTu4/5gLMiBPW88vuIqWXoD99nYHxwAiRCHWds3k1vuXTXkDQayPSSb0HHggDXpqHeHiU2I6u/DiuRd2mRGZbllcBAWCR4t+nmTpG42NBufwjoG4e4AeNR+9h6KT8t5Pft6WnZo2Tk5qbyTlXK0OpVQYy1lbjD3AeTqXtvxUaG4WLiFSnwuMFxAjGRiVuWSzxtPM+y/DYBQl5FFBA6uhRlnjqmdl9eX2HqeP5PQG/IuDBbVNiDLUk1wX2RSrzGg==
-X-YMail-OSG: H.XIKSYVM1lKGY8WxVB.TuLbMULGdtcpdDU2760EVBDAY_E34tLaAOvkhmmwRZs
- wzEkdx2_wl9iIxFv5CfK8HwV7nS3Z7r1YjgGzUkh4d8bXuFbn8xuGE3.mY6tZGtFl9ViSN0yM9wJ
- uvV3uz2Jdq5uTAmOZPmPHCSnkuS1G42ajz58XENB3Vp7QmScrZ.yQHocQ5IATKAYJefYaAT6ZaEJ
- SEzv6h5JHI6uuTUq87FRpA2C4s4M34vLQiDRvHEhw8D2TeAiMGPyk28hLymZar3RSgvX6pTpiFV6
- cZWTQRInr4MappOp3tbakPL8hf2KVPWrPrz_EHa3fUtTNQ9.35punv5mh4vahrPG9RnwUI1Y0hcm
- s5kdaeZ3dd00oPGlQYsQpInQgLTg7pvlx7dEBhvw1dSQ3BI.gYEFXjvp4Vyw7zc.2ZBJRkx0.k1a
- 6JO6Bi314rWFVQYrxXjQMM0DFe5_yKRf3FkDjMmwJtipkdXp4UhGBSXZiHsZTECOKbAlXDetm0os
- zmpzF.qEwthuDQF79pmNL9tUGi06ftig.9KfreT.vM_6ZqU.DgcJdovGOVm_rK.FwI5_dLBMcqv9
- QEwtxzsGxjOVI8GMUhiATiBOIzAqmHQKzykJVnuPzBftR3dI2EFEAA1i5VuRsYLGGwLvnLfqZTQB
- mRFps.yQlUH5ZMqoHF6nZXAF3VEGhZu171nt_LAISMcErRqqJ18kHHOT_3_z1WgeG8Sq96qbf9hG
- .vn_DDRRum4pyr0MQU_1YzAMrK7CdAke9kpbJD..gjchBre7zXdMvhKF4j.BS.d5GXpfnUttz7Bw
- Tw4BnPBCy6Cq3YRIrYN5KQCZ0Cy2U702Be5XyKhUQaptB3b3KkqBvBmYEE_.eELCdXJLL.LvQlp7
- RGlNLGMsBTcOJLPTmbGUtxDA_qeC7gKsTKWRfr0E_AYhGOeXXK.7oIi2pZHYBMURBHxMeeztzZ5Z
- arlqrBbRnPep51BXirxu2WXWXlJzLcVkUAKx.kewDxHtNx4UBq52GQ0LCkH5WjDTzHxcPMuNAu1o
- Q3.aOXwLFMH1oilY1NIVIfvhUz0Niz_MQH4bFddcd0OL9aXqdtQxIFu0iYaLHqur6FkCwKJXD6Z4
- WNX9LouOhQN6_BBqaIOc_lr9gTFIjg4B8Zl8aStfGzwI-
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic314.consmr.mail.sg3.yahoo.com with HTTP; Tue, 2 Apr 2019 20:13:12 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp401.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID a4580f33ff5a18b1b6b3fbe517e41c55;
-          Tue, 02 Apr 2019 20:13:11 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	mchehab@kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: media: zoran: Remove print statement
-Date: Wed,  3 Apr 2019 01:43:02 +0530
-Message-Id: <20190402201302.3317-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L53UF7zC;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-il1-x136.google.com with SMTP id r4so5002425iln.0
+        for <outreachy-kernel@googlegroups.com>; Sat, 07 Mar 2020 09:23:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to:cc;
+        bh=pZb3FIB5SCdTRhuEzArGnx8Xj8iZX1wFbTgtxmlGDnI=;
+        b=L53UF7zC6e+SFJL7uKhxxpH4XRoJ9+5ai0LdoimmL5U/YAQoD25wkNa5IetXlzM8mS
+         YUIi+Ju2MOEUcRz9NQ36mF4mss4kJXF3zxDWEHz3siTAdur126rnf3B/rnGe7jt6VJWG
+         JKASdi9JnkeQEbdJa+5/8CMWyz8zH7zfCCA4a2bMCbZ/5aMXAalDCrp+DGyJKIdFCfTV
+         KVk4P6aNd6qTFV9XIkvYOYt9/txcqHfp8To2KWcbS3B/l+vIkWASV/4nwxinaR465tJI
+         R2n5i4a6QW1MBTVleqd49OghGPQ4ePeI0RBfkEXIyUUeig2oxpCR6OgNfyAGILtoeWUk
+         5uVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+        bh=pZb3FIB5SCdTRhuEzArGnx8Xj8iZX1wFbTgtxmlGDnI=;
+        b=r7vhu9ifeJHert1YzlLh8k6Vqk8l0lZmbw65Yo97TyGIbRetUJcdNg8ADJiyLTr6JK
+         IMChkopXWfzxteK3JgpjIHUBKOplV3Oye+JSLRop977DcZ+m2gKpinUZCnu9/x/uvAFJ
+         GlBXpJtERYe04Y6amNHBGGxif5zMifenfFDjLQwoco2K6HHJrcP3L7W79A8UeBk7Unk+
+         wqEqZDoBh8yrKo1KUmDVZwlWJbQW8aFcFEoTFcrnD36fExvIC8g+ca7gKVd2gVFgaIiK
+         OoQD858PdHR7dlfFm4AqlCJWaRcfAFG/77E7IVGDYVh8vDK3deyK5a6MS1x+adEiseQL
+         ddrw==
+X-Gm-Message-State: ANhLgQ0nhJ39GVeAmAyKAMr2o7bNUQ2Ejg+Im6cSzDTrq2niDPEJ13U1
+	cRNzwO8Teej1N8nyKMwK25ODFUzLkEO+bNMTxLryQMn48HU=
+X-Received: by 2002:a92:c68d:: with SMTP id o13mr8394299ilg.83.1583601828933;
+ Sat, 07 Mar 2020 09:23:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-References: <20190402201302.3317-1-nishka.dasgupta.ref@yahoo.com>
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+Date: Sat, 7 Mar 2020 22:53:37 +0530
+Message-ID: <CAND3PyeASzgKXfg3gZfd6_1rre8=4gCpP9U8npo89r7dYU8YUg@mail.gmail.com>
+Subject: My Outreachy Participation for Summer 2020
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Vaishali Thakkar <vthakkar@vaishalithakkar.in>, Julia Lawall <julia.lawall@lip6.fr>, helen@koikeco.de, 
+	Greg KH <gregkh@linuxfoundation.org>, Daniel Baluta <daniel.baluta@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000007ab3e005a04708f0"
 
-Remove print statement following unsuccessful kmalloc. Issue found with
-the following Coccinelle script:
-@@
-identifier e1, print;
-char [] c;
-@@
-e1 = kmalloc(...);
-if(!e1){
--print(...,c,...);
-... when any
-}
+--0000000000007ab3e005a04708f0
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
----
- drivers/staging/media/zoran/zoran_card.c | 2 --
- 1 file changed, 2 deletions(-)
+Hi All,
 
-diff --git a/drivers/staging/media/zoran/zoran_card.c b/drivers/staging/media/zoran/zoran_card.c
-index ea10523194e8..ea7102c56d6f 100644
---- a/drivers/staging/media/zoran/zoran_card.c
-+++ b/drivers/staging/media/zoran/zoran_card.c
-@@ -1131,8 +1131,6 @@ static struct videocodec_master *zoran_setup_videocodec(struct zoran *zr,
- 
- 	m = kmalloc(sizeof(struct videocodec_master), GFP_KERNEL);
- 	if (!m) {
--		dprintk(1, KERN_ERR "%s: %s - no memory\n",
--			ZR_DEVNAME(zr), __func__);
- 		return m;
- 	}
- 
--- 
-2.19.1
+This is a short introduction email from my side for introducing myself to
+this community.
 
+I am a last year engineering student, pursuing my bachelor's degree in
+Information Technology. I have previously contributed to Linux Kernel
+during Outreachy and GSoC application period ( Particularly for IIO
+projects ).
+
+Other than cleanup patches I have also sent patches which included bug
+fixes and adding functionalities.
+Following are the drivers for which I've worked during my Outreachy and
+GSoC application period.
+adt7316, adis16209, ade7758  and rtl drivers
+
+All my accepted patches can be found here.
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?qt=grep&q=shreeya
+
+I am looking forward to work on "Improve Sound Open Firmware debugging
+support" project for Outreachy 2020. I will be in touch with the mentor for
+it.
+
+I will soon start sending patches to get my hands on the process again.
+
+Thank you
+
+--0000000000007ab3e005a04708f0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi All,<div><br></div><div>This is a short introduction em=
+ail from my side for introducing myself to this community.</div><div><br></=
+div><div>I am a last year engineering student, pursuing my bachelor&#39;s d=
+egree in Information Technology. I have previously contributed to Linux Ker=
+nel during Outreachy and GSoC application period ( Particularly for IIO pro=
+jects ).</div><div><br></div><div>Other than cleanup patches I have also se=
+nt patches which included bug fixes and adding functionalities.</div><div>F=
+ollowing are the drivers for which I&#39;ve worked during my Outreachy and =
+GSoC application period.</div><div>adt7316, adis16209, ade7758=C2=A0 and rt=
+l drivers</div><div><br></div><div>All my accepted patches can be found her=
+e.</div><div><a href=3D"https://git.kernel.org/pub/scm/linux/kernel/git/gre=
+gkh/staging.git/log/?qt=3Dgrep&amp;q=3Dshreeya">https://git.kernel.org/pub/=
+scm/linux/kernel/git/gregkh/staging.git/log/?qt=3Dgrep&amp;q=3Dshreeya</a><=
+br></div><div><br></div><div>I am looking forward to work on &quot;Improve =
+Sound Open Firmware debugging support&quot; project for Outreachy 2020. I w=
+ill be in touch with the mentor for it.</div><div><br></div><div>I will soo=
+n start sending patches to get my hands on the process again.</div><div><br=
+></div><div>Thank you</div><div><br></div><div><br></div></div>
+
+--0000000000007ab3e005a04708f0--
 
