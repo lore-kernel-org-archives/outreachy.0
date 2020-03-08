@@ -1,107 +1,119 @@
 X-GM-THRID: 6801918498465382400
-X-Received: by 2002:a50:cddc:: with SMTP id h28mr13716709edj.127.1583696350224;
-        Sun, 08 Mar 2020 12:39:10 -0700 (PDT)
+X-Received: by 2002:a02:7141:: with SMTP id n1mr12420299jaf.96.1583695062301;
+        Sun, 08 Mar 2020 12:17:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:8557:: with SMTP id h23ls4747626ejy.10.gmail; Sun,
- 08 Mar 2020 12:39:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvrG1ATiWrzyd3YyNSH0gZr6VIxKYKh3MCUnUMUstf0yFpmt4ebEfJ3ewfZaRr5HBYhbuJn
-X-Received: by 2002:a17:906:278e:: with SMTP id j14mr12413420ejc.124.1583696348681;
-        Sun, 08 Mar 2020 12:39:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583696348; cv=none;
+Received: by 2002:a92:c9cb:: with SMTP id k11ls1898372ilq.10.gmail; Sun, 08
+ Mar 2020 12:17:41 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvx5uCZSix14o7hMvRsiMpJEJGga+/yo119PnIY32vA+8liQt9rl0ihngPzi4EFvu5oNZaR
+X-Received: by 2002:a92:874b:: with SMTP id d11mr12257947ilm.30.1583695061040;
+        Sun, 08 Mar 2020 12:17:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583695061; cv=none;
         d=google.com; s=arc-20160816;
-        b=nulYykcGbpkka0tAQ3I6IBT4Y6+FYKoFLY3mpc68tDiRu814/eHiAAYDMAqvVbxsNA
-         UwvEss/wQQAhwQ2GNFa2j9agxYjaMSzdnUoJ/QhZjI3GTLkkO3WIh5SCOFTKVfEz7U4G
-         +Y2dVHwAYpc6M+e2ncb45zfMj83QIYGK8jOzXEs3cbXNXyPKBuFJpk0gefDfHp1PxLPS
-         8obPg6LGEOsuIYOFsPbXQBYy7ML96jf6vr7fpA6Yvx6LKZOgBWWD4bhTrKVgt4CX+BAs
-         eDmbOaFoHyCAA7iIRwv0Cmhnmy5VlWhLfRCF6R17bC1qleljsFXFWRvv6cFnnODkxgdm
-         aSgQ==
+        b=br/uAqvxpMTszAFpkDZj4TvpRHaEFPNE9Q0Sjh0YW63qih+zZ9ATEEHNlqbQRP9cfe
+         DWa/o9RJMNe0yz+sgLK8wku7TKwMbRxTRIk1SDqjgqdSU8MZDEDJn+wrMvphd7dfH8cr
+         /oDKhl7IGGhm90gh/WdAtXWABfrkfc25rOc6UND3mMiVdO6Ecvbcu2fBVuKOaBeqo4aG
+         P9kAvod92hPf/Lxxuc8UJYnipQivOjLScmMBvSrkdcQqsJ9ViW10IL54qJ8hIivMfeBE
+         5dOYDUWROUx5RCYA4AMJG69HdH82shj5XtVv8rh5nXsZNOZiHBvjvjyLXLV3hX3c4Uf0
+         8sFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=MnhwrwyFFPD6GYGXHmG/Eim7vy79Fi34wIpZ1wYjrQ4=;
-        b=WQ+qWsY/I2TMHl0/4ERrbfPm2id0ZphnPXIKEDI4HWB8XLCTeqSJuGHu5DMwZP4rL1
-         OVlh9L90DtAAScd5zTmSuHYrgRvfFf0HjAOsS+JAnbdz5WMVmctgPCbJm++a4FtC/Gsv
-         pDz6+5UXA67HqWLiMC3hz98I2mWkx7OYEqiUWnpszRDWuuWEOUdDPXGW+mdVQGIP6hCu
-         m85tgIc0Jhyk34oVYqQSTDoG77Lla0fh86arpIv7PiorYzoSVg7kIR2dUKXpvLRImkkV
-         wkrsbZs0ZPbt4tMqfRoXJR4DT7KvGTh9FZl1e+/sAXBuq92y/wy98way2vwJvo7vqL6g
-         01NA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=b20y3YqhiKfZasSy7Fpf0jpYtt3Nvhq5F3gszhcgtsg=;
+        b=zC7PzkH0GBwgCERWiyfhBNJboWn7447H9641kE6hO+VVuvr6qALiSyGmxacFeHBi7z
+         Tz/sY2XmwoKrXIb0GZ51UMc5nouPU8HDiuNlFfQy9F1lROELRIB1ZGyyqRKEXQvh8EfH
+         SEMOnS254cLUOjeEQXIVQlmJFvEqaLlEc/92iMK1+JxXpL46AGrSqHDS69+GXYjN+Mp/
+         R9J1UIK86bAgZBprWa3kgPKi8URnrHsZ/ke2naUHA8PGRkixnm2jHkf6/H7ZCH8O5fwJ
+         Irmrbq4mqU6HqXlmR/xOoAHWg9EnU7h/g7V4trY5ieimt0h2RCAgrE+9GWx7z/FWlBtO
+         FJsQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l21si223532edq.4.2020.03.08.12.39.08
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SE9TeVEZ;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pj1-x1043.google.com (mail-pj1-x1043.google.com. [2607:f8b0:4864:20::1043])
+        by gmr-mx.google.com with ESMTPS id m6si466251ili.1.2020.03.08.12.17.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Mar 2020 12:39:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 12:17:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) client-ip=2607:f8b0:4864:20::1043;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,530,1574118000"; 
-   d="scan'208";a="439382320"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Mar 2020 20:39:08 +0100
-Date: Sun, 8 Mar 2020 20:39:08 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel] staging: vt6655: remove line over 80
- characters
-In-Reply-To: <20200308191732.6367-1-payalskshirsagar1234@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003082036150.2400@hadrien>
-References: <20200308191732.6367-1-payalskshirsagar1234@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SE9TeVEZ;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1043.google.com with SMTP id d8so3429546pje.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 12:17:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=b20y3YqhiKfZasSy7Fpf0jpYtt3Nvhq5F3gszhcgtsg=;
+        b=SE9TeVEZ7gLAIrLr5vRphJZXEa+hdReOW90xwCIwWj7F7WMJjlN4noVdTMTh9Dx28k
+         CpVus2JQKjnI0BRX39r/JfxjaaIgoLorTarqFohTbz5GjCwQdAs77hmQD0SPBvMtd2VA
+         qFAkhYVtzQqlITb/UkZUu4vnYhCzSmHwk+8iNGgpyP9lt/GdTnUsvXokWWsgqQnq9Idn
+         pCc/vlDNfn1VAw75cGVnQ0Iugbn1AE2cmlWXkANfgit0eRGc9WM0BqrRDFTwTgN7Ldas
+         DE+BDB82i4MZMpsr3BIaeJ/fUIUOrfcON0npyuc1s1dox5RX23NyZD14t6yVek1h7492
+         AWRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=b20y3YqhiKfZasSy7Fpf0jpYtt3Nvhq5F3gszhcgtsg=;
+        b=Lj8Nb0n7DJs4PWnvV8X/h3WBeYoG9mAHWi/3zHTpePKccvMqNfwDS1ZtLw5kRMy5tH
+         Yhzmadx9N3CNmD5xmonW1py28O8VpjrhFU/ek69Gplg4xdH6PzO5gAwcyYZhBR7F944M
+         M7zmiSHLefuqAuTHr+QNaTM7kv6HtZGnCLNCt6n0L65J9Fdp1VH4VLqx1ZgLvk3Oc4v1
+         HbKyyWK1ZUZMdi1WN1V/Mc/Pzr1JTIjydTCAS0Rqz8xWQ2AXoIq5/WyHdc1LVhYtb8iX
+         NE+D9IxK/XAlODIwxt5JMM9C1ey03wSvgWL8fyMretz0NaWBPJs5+KZWM89hoz6PrMKc
+         TKLw==
+X-Gm-Message-State: ANhLgQ3zg74P7tErPOMHhM4Zqk7E8sMBvSkMXgzNmnj3w3P3nolcsAx5
+	DbFq0pVb+Fowqd/bouxMEAo=
+X-Received: by 2002:a17:90a:608:: with SMTP id j8mr14341278pjj.85.1583695060354;
+        Sun, 08 Mar 2020 12:17:40 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([157.33.184.119])
+        by smtp.gmail.com with ESMTPSA id b12sm5106416pjz.46.2020.03.08.12.17.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Mar 2020 12:17:39 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: vt6655: remove line over 80 characters
+Date: Mon,  9 Mar 2020 00:47:32 +0530
+Message-Id: <20200308191732.6367-1-payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Mon, 9 Mar 2020, Payal Kshirsagar wrote:
+Fix line over 80 characters.
 
-> Fix line over 80 characters.
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+ drivers/staging/vt6655/mac.h | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-The change is fine. However, the patch should be sent to more people.
-Search for get_maintainer in the tutorial.
+diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
+index c7888c4e96f2..eb56e16637f6 100644
+--- a/drivers/staging/vt6655/mac.h
++++ b/drivers/staging/vt6655/mac.h
+@@ -884,9 +884,11 @@ bool MACbIsIntDisable(struct vnt_private *priv);
+ void MACvSetShortRetryLimit(struct vnt_private *priv,
+ 			    unsigned char byRetryLimit);
+ 
+-void MACvSetLongRetryLimit(struct vnt_private *priv, unsigned char byRetryLimit);
++void MACvSetLongRetryLimit(struct vnt_private *priv,
++			   unsigned char byRetryLimit);
+ 
+-void MACvSetLoopbackMode(struct vnt_private *priv, unsigned char byLoopbackMode);
++void MACvSetLoopbackMode(struct vnt_private *priv,
++			 unsigned char byLoopbackMode);
+ 
+ void MACvSaveContext(struct vnt_private *priv, unsigned char *pbyCxtBuf);
+ void MACvRestoreContext(struct vnt_private *priv, unsigned char *pbyCxtBuf);
+@@ -913,7 +915,8 @@ void MACvSetCurrSyncDescAddrEx(struct vnt_private *priv,
+ void MACvSetCurrATIMDescAddrEx(struct vnt_private *priv,
+ 			       u32 curr_desc_addr);
+ void MACvTimer0MicroSDelay(struct vnt_private *priv, unsigned int uDelay);
+-void MACvOneShotTimer1MicroSec(struct vnt_private *priv, unsigned int uDelayTime);
++void MACvOneShotTimer1MicroSec(struct vnt_private *priv,
++			       unsigned int uDelayTime);
+ 
+ void MACvSetMISCFifo(struct vnt_private *priv, unsigned short wOffset,
+ 		     u32 dwData);
+-- 
+2.17.1
 
->
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
->  drivers/staging/vt6655/mac.h | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-> index c7888c4e96f2..eb56e16637f6 100644
-> --- a/drivers/staging/vt6655/mac.h
-> +++ b/drivers/staging/vt6655/mac.h
-> @@ -884,9 +884,11 @@ bool MACbIsIntDisable(struct vnt_private *priv);
->  void MACvSetShortRetryLimit(struct vnt_private *priv,
->  			    unsigned char byRetryLimit);
->
-> -void MACvSetLongRetryLimit(struct vnt_private *priv, unsigned char byRetryLimit);
-> +void MACvSetLongRetryLimit(struct vnt_private *priv,
-> +			   unsigned char byRetryLimit);
->
-> -void MACvSetLoopbackMode(struct vnt_private *priv, unsigned char byLoopbackMode);
-> +void MACvSetLoopbackMode(struct vnt_private *priv,
-> +			 unsigned char byLoopbackMode);
->
->  void MACvSaveContext(struct vnt_private *priv, unsigned char *pbyCxtBuf);
->  void MACvRestoreContext(struct vnt_private *priv, unsigned char *pbyCxtBuf);
-> @@ -913,7 +915,8 @@ void MACvSetCurrSyncDescAddrEx(struct vnt_private *priv,
->  void MACvSetCurrATIMDescAddrEx(struct vnt_private *priv,
->  			       u32 curr_desc_addr);
->  void MACvTimer0MicroSDelay(struct vnt_private *priv, unsigned int uDelay);
-> -void MACvOneShotTimer1MicroSec(struct vnt_private *priv, unsigned int uDelayTime);
-> +void MACvOneShotTimer1MicroSec(struct vnt_private *priv,
-> +			       unsigned int uDelayTime);
-
-If you want to work more on this file, you could improve the naming of
-variables.  This code is starting variables with p when the variable has a
-pointer type and u when the variable has an unsigned type.  The kernel
-doesn't follow that convention.  Also, camel case should not be used.
-This uDelayTime should be delay_time.
-
-These are actually function prototypes.  So you would change both the
-function prototype shown here and the definition, which is probably in
-some .c file.
-
-julia
 
