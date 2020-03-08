@@ -1,225 +1,183 @@
 X-GM-THRID: 6801919650078654464
-X-Received: by 2002:a63:1f58:: with SMTP id q24mr13937732pgm.334.1583699599008;
-        Sun, 08 Mar 2020 13:33:19 -0700 (PDT)
+X-Received: by 2002:ac8:7396:: with SMTP id t22mr12406561qtp.182.1583698869924;
+        Sun, 08 Mar 2020 13:21:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b415:: with SMTP id x21ls3346442plr.0.gmail; Sun, 08
- Mar 2020 13:33:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvMrf0cRIRqRy+EFrS6ImpseqUkGxOVsPIWkbDy1VNQd/snrlvm3RVRQsK1EaDmb2L4MBwL
-X-Received: by 2002:a17:902:9a85:: with SMTP id w5mr13488353plp.168.1583699597551;
-        Sun, 08 Mar 2020 13:33:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583699597; cv=none;
+Received: by 2002:a05:6214:1021:: with SMTP id k1ls1827882qvr.4.gmail; Sun, 08
+ Mar 2020 13:21:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtVV+W4asPjvctKiCz6CCG/kOkukJyIQQighYEhA/6ye8uBtq5lsmsJG7mT3Ql5+yZ5l69d
+X-Received: by 2002:ad4:47cc:: with SMTP id p12mr2688932qvw.162.1583698868826;
+        Sun, 08 Mar 2020 13:21:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583698868; cv=none;
         d=google.com; s=arc-20160816;
-        b=nkgr4wkzsJciZtzQIeTHTJY9vIymhF75792yuxvpDF7/ILNj2SJIw4nhuhNd+sSxSi
-         7L41Tjs7wI1hTPv62fwCeV7cZ3D75C3pJ98RfTq40WReqahixXve0EsTSsa+K1Pya5X+
-         ITBmpiy/H2ToZwflL1vMaw5vU7uem28bENRC5GtFPC2wZS+rCxPZ+MqErD5W8xo13iWf
-         cNy43PApSXsW/7qn5v0VHzCYw2DQlYkqVR4HnLl8C9rLczk+IodSU8wHR8T/gZ9N2qhF
-         iU7/Tvhc/2QruZBMtbcbdS3WT8Yreyvu7bMqhwb7etN3pFhJpeb/R3Jc+qsEqCUGyHaE
-         229A==
+        b=cIRud8F9y7S6rR39dgCeqPHXkYIc/74fChQRfDno0V2VPk6ox6zDxK1+tGA/14++Xa
+         Lqa/cBKtzW3BuZjR703+vYpqoQXIco9XhqCcOISS4sAxzvrHF2vARKT/XvZx9iSRKPCK
+         VUV+faQ0IpeML8lNaUzGASsFf390j21RUZRaZ8FVVt3Hzuc030Ncz89ZN9Qs4ag8H8Mv
+         4BwEF5f1FdiQ+FUmAt2vHuzKRPHb7Es4BqBtylrDEJXifsKcZR9MW0VBRs1evvPxumDu
+         N2uYYUhZzexEJhuj4FX0JQmI899xA64TRFHDaP0LkGpaC+On1UhG148fL+HoArbLk7uF
+         qJRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to:date
-         :cc:to:from:subject:message-id:dkim-signature;
-        bh=GK4c/eKJ7QEQIDQAkYSm28K6U9vkh6nkkxoflqtOBfo=;
-        b=lMPG9bsloRcZ4ShNgdjTvZW4VOkDw74alYuPVXUmjdP6nbtFDewV4NRqcLbqPe5wtQ
-         iyUpTQt7JXe6fI98CDYLP6iwmNjRJLYft36a19Jw9Z4CdtMmxHH872v/kXm5lGwKlYjo
-         Rcr2yAYlSz3kYsgAr6Hu6ODDm3jjFCx/YKo8VT27tNoY13lFZNYA7zpUJS/8UlfGYzn6
-         asSncneD6LpIroou6kA0JZNYs+ZOzutRvMnLMyOxvb8UEGLj+fwK7p0Z+RJ2r5hBr1bh
-         pvsBOzj3ovE6VEmNDfGDuQfvvKrFMZ7Vy5YjSzM2cir9AlXTKvQP3jc96s3oAG77dIeg
-         ALJA==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=07TOcy+3i1OOabBCwDAEVTNF5oaN70iRw7k8osHvmTg=;
+        b=jmmUAN96b3x4nYtNGqSSWuQ3pPcA6jzEgE4B+ibdOb6M17q+7amXK83fEGviLq5dKQ
+         Mqi28lzIBSxuV3FuqjB+f7B51yYFe4BZlucaCP4QRKgK6cjh1QgxblEWNH9TmtShBSAq
+         5wrLmiigLQE/mNCKI9Zn0qo4UN6YDqBI9S4EJt/io/2P9EVIPao4XjGo3x2+JJ/NffHX
+         0zmzH/qZvG2hd+qhIvUfAe9rl8HTz312FvcwBv0AEVAo3D/uR/qRpinlXfGkHLburYSZ
+         4er5x4QsGeoD2NjqoplB7234kzr1dZSOZ4eTFBtVxcDl4UaFRjwToMBObZrNXIZnGM1R
+         TSnw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQ9Pl+Ye;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id y129si528406pfg.1.2020.03.08.13.33.17
+       spf=neutral (google.com: 216.40.44.218 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0218.hostedemail.com. [216.40.44.218])
+        by gmr-mx.google.com with ESMTPS id c6si492805qko.3.2020.03.08.13.21.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 08 Mar 2020 13:33:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Mar 2020 13:21:08 -0700 (PDT)
+Received-SPF: neutral (google.com: 216.40.44.218 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.218;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YQ9Pl+Ye;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id 7so3754345pgr.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 13:33:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=GK4c/eKJ7QEQIDQAkYSm28K6U9vkh6nkkxoflqtOBfo=;
-        b=YQ9Pl+YeSr6cLsgl4sKOvl+ys4fHwJetGN0TQ3EF5eCM3m5kDEv3WUwdl2Ds/0qXaF
-         Rhv4JlRNB3tsaVf31sBW8J5QNYSK+AFXGvNvs9ivLoUvu3NhF39E0BNhzC64Yvk4R/WJ
-         CGIR6BWsby68t75OOBIMbfsWEpWK7kU1ydCr7dxSE02WiGFvnVMbFlL4+NFYd+ASaesd
-         leLSZ7fciTuowxUbPjv7/YAR6LrCwkaaoV8qOzCPQyYO6P8mhXtLkZ46rT6ZSdedu08X
-         5jw4Qgfq2R/A3BvQ7xMuU47vnybhjuheS8Sc68tk7FkxNdkR6X3CuLeqpTrVfomtGwsL
-         1Sjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=GK4c/eKJ7QEQIDQAkYSm28K6U9vkh6nkkxoflqtOBfo=;
-        b=ZVI7Vkk24jl65oaL9XBZz5+/kPamHCSwa7dyAEfu52gRavj9DLo/nL/iXmlp9yntI9
-         6CENh2aw8wYYplED0OiK44Olvokk/HVEnG2UQ2xlr6Kenj4MFO2Ae7/V+7Xw2xi5SvvA
-         YnS6LCdsXhnztDO53AD58FPVlK5KLClkL6Kn1TUpAWDxKCbRrCgNDC/SoSk1pA+7qCAh
-         DyKW97tHJIbCfGG+mtakiLSW2nIGbvP5SvzwzYqCIuR3wHJzfXhhRyv0m+7PpdAjqdCU
-         Hy1Ol0jgkzHsHOpPNYLOLcLZhzh8mkulp3rCw6v4K6lnoObtWonzv3r9yJpqGe5JEcX0
-         Fomw==
-X-Gm-Message-State: ANhLgQ0+BmWkcehEQtEJ/xMoe14qFkkvlxGr2onOZJdhcRlsaYVMq21+
-	z/PINTndkxzdzn7DLgoecPo=
-X-Received: by 2002:a63:a055:: with SMTP id u21mr10473931pgn.100.1583699597039;
-        Sun, 08 Mar 2020 13:33:17 -0700 (PDT)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from Shreeya-Patel ([1.23.250.201])
-        by smtp.googlemail.com with ESMTPSA id c17sm21500825pfo.71.2020.03.08.13.33.13
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 08 Mar 2020 13:33:16 -0700 (PDT)
-Message-ID: <bbcb07684a546a1d4f5cd063e3914788d04bea6d.camel@gmail.com>
+       spf=neutral (google.com: 216.40.44.218 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay08.hostedemail.com (Postfix) with ESMTP id 675C9182CED2A;
+	Sun,  8 Mar 2020 20:21:08 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,,RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2197:2199:2393:2559:2562:2693:2828:2895:3138:3139:3140:3141:3142:3354:3622:3865:3866:3868:3870:3871:3872:3874:4321:4605:5007:6119:7903:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12296:12297:12438:12740:12760:12895:13071:13439:14093:14096:14097:14180:14659:14721:21060:21080:21221:21611:21627:21740:30054:30070:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
+X-HE-Tag: lift73_7e1d8c9f8d338
+X-Filterd-Recvd-Size: 3514
+Received: from XPS-9350.home (unknown [47.151.143.254])
+	(Authenticated sender: joe@perches.com)
+	by omf17.hostedemail.com (Postfix) with ESMTPA;
+	Sun,  8 Mar 2020 20:21:06 +0000 (UTC)
+Message-ID: <cc0adb1f81afda526780fb217559a72031513909.camel@perches.com>
 Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Add space around
  operator
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: Joe Perches <joe@perches.com>, Julia Lawall <julia.lawall@inria.fr>
+From: Joe Perches <joe@perches.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>, Julia Lawall
+	 <julia.lawall@inria.fr>
 Cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, 
  devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
  outreachy-kernel@googlegroups.com, sbrivio@redhat.com,
  daniel.baluta@gmail.com,  nramas@linux.microsoft.com, hverkuil@xs4all.nl
-Date: Mon, 09 Mar 2020 02:03:11 +0530
-In-Reply-To: <cc0adb1f81afda526780fb217559a72031513909.camel@perches.com>
+Date: Sun, 08 Mar 2020 13:19:27 -0700
+In-Reply-To: <465a7cfe822438a8edd32d3a5120bd565797ca4d.camel@gmail.com>
 References: <20200308192152.26403-1-shreeya.patel23498@gmail.com>
 	 <alpine.DEB.2.21.2003082030310.2400@hadrien>
 	 <5a28241e8c3b11cbfe1776caadcb799cd9e39ee4.camel@perches.com>
 	 <465a7cfe822438a8edd32d3a5120bd565797ca4d.camel@gmail.com>
-	 <cc0adb1f81afda526780fb217559a72031513909.camel@perches.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+Content-Type: text/plain; charset="ISO-8859-1"
+User-Agent: Evolution 3.34.1-2 
+MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 
-On Sun, 2020-03-08 at 13:19 -0700, Joe Perches wrote:
-> On Mon, 2020-03-09 at 01:40 +0530, Shreeya Patel wrote:
-> > On Sun, 2020-03-08 at 12:59 -0700, Joe Perches wrote:
-> > Hi Joe,
-> 
-> Hello.
-> []
-> > > > > diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> > > > > b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-> > > 
-> > > []
-> > > > > @@ -924,7 +924,7 @@ static void
-> > > > > rtw_joinbss_update_network(struct
-> > > > > adapter *padapter, struct wlan_net
-> > > > >  	/* update fw_state will clr _FW_UNDER_LINKING here
-> > > > > indirectly
-> > > > > */
-> > > > >  	switch (pnetwork->network.InfrastructureMode) {
-> > > > >  	case Ndis802_11Infrastructure:
-> > > > > -		if (pmlmepriv->fw_state&WIFI_UNDER_WPS)
-> > > > > +		if (pmlmepriv->fw_state & WIFI_UNDER_WPS)
-> > > > >  			pmlmepriv->fw_state =
-> > > > > WIFI_STATION_STATE|WIFI_UNDER_WPS;
-> > > 
-> > > Like adding spaces around the | here too.
-> > > 
+On Mon, 2020-03-09 at 01:40 +0530, Shreeya Patel wrote:
+> On Sun, 2020-03-08 at 12:59 -0700, Joe Perches wrote:
+> Hi Joe,
+
+Hello.
+[]
+> > > > diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> > > > b/drivers/staging/rtl8188eu/core/rtw_mlme.c
+> > []
+> > > > @@ -924,7 +924,7 @@ static void rtw_joinbss_update_network(struct
+> > > > adapter *padapter, struct wlan_net
+> > > >  	/* update fw_state will clr _FW_UNDER_LINKING here indirectly
+> > > > */
+> > > >  	switch (pnetwork->network.InfrastructureMode) {
+> > > >  	case Ndis802_11Infrastructure:
+> > > > -		if (pmlmepriv->fw_state&WIFI_UNDER_WPS)
+> > > > +		if (pmlmepriv->fw_state & WIFI_UNDER_WPS)
+> > > >  			pmlmepriv->fw_state =
+> > > > WIFI_STATION_STATE|WIFI_UNDER_WPS;
 > > 
-> > I thought of doing this but then it was introducing another warning
-> > of
-> > "Line over 80 charachters" that is why I didn't proceed with it.
-> 
-> []
-> > What is your suggestion over it? Should I let the line be over 80
-> > characters and add spaces around the operators?
-> 
-> Just ignore the long line warnings, there are many already
-> existing long
-> lines in that subsystem.
-> 
-> That should be a style challenge for a later time.
+> > Like adding spaces around the | here too.
+> > 
+> I thought of doing this but then it was introducing another warning of
+> "Line over 80 charachters" that is why I didn't proceed with it.
+[]
+> What is your suggestion over it? Should I let the line be over 80
+> characters and add spaces around the operators?
 
-Okay got it.
+Just ignore the long line warnings, there are many already
+existing long
+lines in that subsystem.
 
-> 
-> $ git ls-files drivers/staging/rtl8188eu | \
->   xargs awk '{ print length($0); }' | \
->   sort | uniq -c | sort -rn -k2
->       1 187
->       1 180
->       1 171
->       1 166
->       1 163
->       1 159
->       1 158
->       2 157
->       1 153
->       2 151
->       1 146
->       1 145
->       1 144
->       1 143
->       1 142
->       2 141
->       1 140
->       1 139
->       1 137
->       1 135
->       5 134
->       6 132
->       3 131
->       3 130
->       6 129
->       3 128
->       6 127
->       6 126
->       3 125
->       3 124
->       5 123
->       4 122
->       8 121
->       6 120
->       4 119
->       7 118
->      10 117
->      11 116
->       9 115
->       5 114
->      11 113
->      13 112
->       8 111
->      17 110
->      25 109
->      24 108
->      14 107
->      20 106
->      19 105
->      34 104
->      19 103
->      26 102
->      22 101
->      22 100
->      25 99
->      20 98
->      23 97
->      33 96
->      32 95
->      43 94
->      40 93
->      49 92
->      47 91
->      51 90
->      48 89
->      55 88
->      50 87
->      37 86
->      48 85
->      57 84
->      45 83
->      61 82
->      61 81
+That should be a style challenge for a later time.
 
-I think the idea of yours to automate the change for some common
-warnings will be really helpful to get rid of them. 
-Thanks, I'm going to try doing it for other drivers as well :)
+$ git ls-files drivers/staging/rtl8188eu | \
+  xargs awk '{ print length($0); }' | \
+  sort | uniq -c | sort -rn -k2
+      1 187
+      1 180
+      1 171
+      1 166
+      1 163
+      1 159
+      1 158
+      2 157
+      1 153
+      2 151
+      1 146
+      1 145
+      1 144
+      1 143
+      1 142
+      2 141
+      1 140
+      1 139
+      1 137
+      1 135
+      5 134
+      6 132
+      3 131
+      3 130
+      6 129
+      3 128
+      6 127
+      6 126
+      3 125
+      3 124
+      5 123
+      4 122
+      8 121
+      6 120
+      4 119
+      7 118
+     10 117
+     11 116
+      9 115
+      5 114
+     11 113
+     13 112
+      8 111
+     17 110
+     25 109
+     24 108
+     14 107
+     20 106
+     19 105
+     34 104
+     19 103
+     26 102
+     22 101
+     22 100
+     25 99
+     20 98
+     23 97
+     33 96
+     32 95
+     43 94
+     40 93
+     49 92
+     47 91
+     51 90
+     48 89
+     55 88
+     50 87
+     37 86
+     48 85
+     57 84
+     45 83
+     61 82
+     61 81
 
-> 
-> 
 
 
