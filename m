@@ -1,94 +1,105 @@
 X-GM-THRID: 6801910810279936000
-X-Received: by 2002:a17:906:a3c8:: with SMTP id ca8mr12500948ejb.342.1583696470857;
-        Sun, 08 Mar 2020 12:41:10 -0700 (PDT)
+X-Received: by 2002:ab0:7802:: with SMTP id x2mr7179763uaq.100.1583693272349;
+        Sun, 08 Mar 2020 11:47:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:f14a:: with SMTP id z10ls5798626edl.1.gmail; Sun, 08 Mar
- 2020 12:41:09 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vumc4Pmd1HL+Vmw6JElwDzNIb5SaMUF7J6sD4THMAcWFWmyFZCX1tXRZG94YfyyuZ0Ww/rw
-X-Received: by 2002:aa7:cc8f:: with SMTP id p15mr14339222edt.41.1583696469353;
-        Sun, 08 Mar 2020 12:41:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583696469; cv=none;
+Received: by 2002:a1f:1204:: with SMTP id 4ls360945vks.8.gmail; Sun, 08 Mar
+ 2020 11:47:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vusWexN1fDsJlj3ske7sPmbwU8cXgzKF/DZNxwf7KkO/yN9T7LpBbGO4gZp1/k+7CIbJT75
+X-Received: by 2002:a1f:2543:: with SMTP id l64mr6852188vkl.69.1583693270935;
+        Sun, 08 Mar 2020 11:47:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583693270; cv=none;
         d=google.com; s=arc-20160816;
-        b=D29hqfUSnfuqDli93BZ2IoU7MkNJFZLazTK28OkUnfsLepG7k17o+6xvP6vi9a29B9
-         ceNFFYIOWHVfn2NaBTdB8IefdcF4Coa/S6dHI/eNRQpYzwRHKOECyNxYIH5pGcuY2ka9
-         81XtWtSr0Of59+53two2BUpWao2Z/FErdRxlTsOnEgsWL/PEU862gVeN+F16hqFo4MZZ
-         dlFxCAj9CvxP86mP0iWiwEZFQhNrLRWcfhtDU0yQgkYJQULf15dDn91agbRqdT8TYUnU
-         J8b7E5TCaNGrrSFiETmtdXTnOWoeGxKD00sp0fau+A4Wn3akSExFKoBhwN/gbjs0imHz
-         httw==
+        b=q6aIQu/OXzeA+JxR5uI6cP71O+yCDrEr1cYS+E9OLqwgorRs3O0ma0jedvYZFKP7wT
+         hH2cmYwu4atuKBdOxDRndM2fQ83fcRsxSWGRRBtD/HGfFxXjT5KDx3fgqsKx/a5rVngi
+         juBFCBcrgBQPL6yoKtrp2kTUaMoyswkVzlJmuzubqcGa5DyySvoJlpe5AK7cGTaBGX3Z
+         lk5PQmn5jJlmyg2Snl1UZaBddZfQ2WFdjYmVY0WABIL1XI0Jb+MbLXR5osSIFffgS+94
+         2X/VOzoOtzrLMj2oG/yjDPI11mIb0qTx6zHc49hrWn9jDjY3zaNy/spEWY3cpJWiZCcT
+         Y9nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=7u/SCo+1XYM0fcbeZOICpeVj96cTn5uXYNmIkN9Eh8Y=;
-        b=jtdhHptoou1/8+qeYh/lwhH4bIlaqHhYVXBJlzhXyc+y+MoV9U/NsnzmmBPLby8MtE
-         +VHWLAtGBILKASG7jN7DQpxngqKtSa30moyDh9UXzX4ONiXQIL+DK4Po2+YYx4niC+wO
-         zsetWgDvq5OyzuxRCtKS0d9LbotaKSNyaPI7NsykwNLQN3BU8fOG72MeYHxskY2X0ZRC
-         IgQFnlmDyYMpoFTNizPXqMXjjHIZOqlSuf8S9J+jGLxbbGQePJZBPd69nywAv1kc7Wr8
-         IWL7v85NHFhuyKJFHNrNR9bsfVvpNRsS2Bc9I+l5wA5uTCfJswubatG5JU4xBY2SSZzh
-         VPmg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=uwfP3rTRWF3WL5/6ZDKlD2q5Ac9XVL2JFlEFRpRoYYM=;
+        b=F75yCmgyXZok4BEPZsKc9UxVgdaBGONs5SyaQZh8aEsOytSA8Rv85pfIVA+Yrlrjpy
+         ykd9THcGdF51ssKaQVQS7xk5JsxHFlSJjPrdURbI749lRAwVNNhc69z51VfsbR+qXKln
+         WZU8nIITxEf5t+AXxbCT8xmRvp2J3VwP7NCs69IDulvCtrMzXgs5fTZ88jp/ljUAiBOn
+         qlQQP3r/UoZn2kYPzUIf5DKK8wA2FRyiZauSeuNd53Zo7KRRxFi/PPzdhbdCg49YpNQx
+         V8LiDqHLgQ4R1ZfOPfDswTekgl6bCulaHhe/xqFmbPwQox86Z99keL3r3x1c9jLliAbM
+         ErAA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id cw13si485337edb.2.2020.03.08.12.41.09
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=liTUdh1L;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id d7si380286vkn.1.2020.03.08.11.47.50
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Mar 2020 12:41:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 11:47:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,530,1574118000"; 
-   d="scan'208";a="439382529"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 08 Mar 2020 20:41:09 +0100
-Date: Sun, 8 Mar 2020 20:41:08 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel] staging: wfx: remove line over 80
- characters
-In-Reply-To: <20200308184743.5639-1-payalskshirsagar1234@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003082040290.2400@hadrien>
-References: <20200308184743.5639-1-payalskshirsagar1234@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=liTUdh1L;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x542.google.com with SMTP id b1so3670700pgm.8
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 11:47:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=uwfP3rTRWF3WL5/6ZDKlD2q5Ac9XVL2JFlEFRpRoYYM=;
+        b=liTUdh1L5FkJsIrpFFQt14Lt2SB7McR9qZOQlw7AtmsaxwzB7KHavxHsRndYAJhcDO
+         DoBNAzg98xqOHA9hzREicC+JhqOZYXrtVWS9OtmM8Yu3P9fIBRqvDULRXEhM+G4uDiXC
+         Eu/lTl9XqtxmaNGTNj8u+zoWQbwLRsIlheD72dunosHAlGZe1Lb393xUjoJ/+a1pPa2m
+         129da9EbrXSpO7iJWUdsIox/bA0tpYV6xJlXVDixywFu3UeU3d/snBVDb/dWjs+n1BaA
+         Iq3b/Y71SNzDJaQNcofmXjfZIeSvfzSEJd0mQDS7di5Bmt3HgyolfsIWEZIa9jZYuSf/
+         71Ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=uwfP3rTRWF3WL5/6ZDKlD2q5Ac9XVL2JFlEFRpRoYYM=;
+        b=ACBVAprguFHMYXX6JK1YA58Ob1U30do6Q1AqiFgQ++tDJNNdpuV5Xio5eZs3fwulfn
+         hadVXXJaaubr7PG3DaPRf9jvG/OrWRFS4Ez7DY+pay89N7xQBLl5BGPzgf4khkCuK+lt
+         LB4LeA3jSTDNiS91he+PNtsL1ZaHpmnB5gczy+W1tC2TjyElLvTKVRVKoIOhDqfzAef9
+         St22HZ0Hqh/mQhExarPpNJZgp6WvKoEBuG6sdZhZbuiI3SP4jbcvDdoP0FoHFTElKu/L
+         pSUigCp+pC/PXLEK3ZX8MDqoO0+QPrEJPdD5B4cA6U39jLR7fJSP+k5PI69nmI1e+qPR
+         YgOg==
+X-Gm-Message-State: ANhLgQ30mDyyrMMWcl4qz/Y2ILy+WK4NYTr/KpZQDICdCpNZob8gJjBY
+	i70E5BWXRklJfsp2dg7gJmA=
+X-Received: by 2002:a62:1552:: with SMTP id 79mr608409pfv.215.1583693269964;
+        Sun, 08 Mar 2020 11:47:49 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([157.33.184.119])
+        by smtp.gmail.com with ESMTPSA id u12sm41424759pfm.165.2020.03.08.11.47.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Mar 2020 11:47:49 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: wfx: remove line over 80 characters
+Date: Mon,  9 Mar 2020 00:17:43 +0530
+Message-Id: <20200308184743.5639-1-payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Mon, 9 Mar 2020, Payal Kshirsagar wrote:
+Remove line over 80 characters.
 
-> Remove line over 80 characters.
->
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
->  drivers/staging/wfx/data_tx.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
-> index 20f4740734f2..8b0c52392319 100644
-> --- a/drivers/staging/wfx/data_tx.c
-> +++ b/drivers/staging/wfx/data_tx.c
-> @@ -224,7 +224,8 @@ static int wfx_tx_policy_upload(struct wfx_vif *wvif)
->  		spin_lock_bh(&wvif->tx_policy_cache.lock);
->  		for (i = 0; i < HIF_MIB_NUM_TX_RATE_RETRY_POLICIES; ++i)
->  			if (!policies[i].uploaded &&
-> -			    memzcmp(policies[i].rates, sizeof(policies[i].rates)))
-> +			    memzcmp(policies[i].rates,
-> +			    sizeof(policies[i].rates)))
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+ drivers/staging/wfx/data_tx.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-The sizeof call is the second argument to memzcmp, so it should be
-indented more to reflect that.
+diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+index 20f4740734f2..8b0c52392319 100644
+--- a/drivers/staging/wfx/data_tx.c
++++ b/drivers/staging/wfx/data_tx.c
+@@ -224,7 +224,8 @@ static int wfx_tx_policy_upload(struct wfx_vif *wvif)
+ 		spin_lock_bh(&wvif->tx_policy_cache.lock);
+ 		for (i = 0; i < HIF_MIB_NUM_TX_RATE_RETRY_POLICIES; ++i)
+ 			if (!policies[i].uploaded &&
+-			    memzcmp(policies[i].rates, sizeof(policies[i].rates)))
++			    memzcmp(policies[i].rates,
++			    sizeof(policies[i].rates)))
+ 				break;
+ 		if (i < HIF_MIB_NUM_TX_RATE_RETRY_POLICIES) {
+ 			policies[i].uploaded = 1;
+-- 
+2.17.1
 
-julia
-
->  				break;
->  		if (i < HIF_MIB_NUM_TX_RATE_RETRY_POLICIES) {
->  			policies[i].uploaded = 1;
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200308184743.5639-1-payalskshirsagar1234%40gmail.com.
->
 
