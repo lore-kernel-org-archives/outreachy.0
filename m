@@ -1,165 +1,113 @@
-X-GM-THRID: 6802713893115265024
-X-Received: by 2002:a17:90a:f50b:: with SMTP id cs11mr197015pjb.145.1583880254490;
-        Tue, 10 Mar 2020 15:44:14 -0700 (PDT)
+X-GM-THRID: 6801933833462611968
+X-Received: by 2002:a05:6830:22fc:: with SMTP id t28mr10094558otc.166.1583698632895;
+        Sun, 08 Mar 2020 13:17:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ff15:: with SMTP id f21ls90139plj.0.gmail; Tue, 10
- Mar 2020 15:44:13 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsSH9+i0625FP0I4MDxcaRSaP9n+Al091oP8x4Lr66nVaFXbZ4TscPU/QQmz+LFKEmxsZJi
-X-Received: by 2002:a17:90b:194d:: with SMTP id nk13mr222604pjb.144.1583880252983;
-        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583880252; cv=none;
+Received: by 2002:a54:478e:: with SMTP id o14ls2145643oic.6.gmail; Sun, 08 Mar
+ 2020 13:17:11 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuMQUfHBRb8MyyqAy/M+fk6hXhO7+07XesH77B52NUod/Q+hGkJjJVpeKWFRCXfbenMn4s/
+X-Received: by 2002:aca:a882:: with SMTP id r124mr2850560oie.53.1583698631593;
+        Sun, 08 Mar 2020 13:17:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583698631; cv=none;
         d=google.com; s=arc-20160816;
-        b=jPt7hYNUtuJVByq0aoYIvGXOD3ySvRKSSiKUwszohLN7qwG29M0Bd0zuTvdv6SfHqy
-         9WDDv/BEGildYxYj1glpQrUnROnjf/iTVVFFHiApwgGRqdIunpuah9fXNqeM7HivfreO
-         fotJpvRzetuVsoqsctR4/IG37hLuTiguxY7VOIDUNsOhvhfi27Q6uxyrlzqemxer9ZEe
-         S7CGS6HnPBbSYb2qhiH2sVNCr1r6a/SxfVFtRjXcyq1fU/R1z3c42afucLuFyHb/U589
-         1i/x+bO5IOypoTkjlhpR5Eq7goqYMEHAMIIUSv81p4F/ILBIALCug/CMM50AWtFZwHuw
-         j0Kw==
+        b=my0RrzPCgqs5OaJRbjymNMzYf1xGAQ/tZ+tnCjkCW5ySuNA5wKitgLGarLJguge+0N
+         DdkrQgAscxObiDSFtC4Od1b/wA6gXtL+befyDNHWmJ3CdcXB7Uon6BXDCryK0owgt+AW
+         Qnp2NdvS2DK/wYWDSAutgyf7MRk45xOeh1DCFq6kTV5FM5NLpcmUUHnq5nkvKdxf36Zp
+         XLi50dbpy2vTKcUPz4tk/3mg8+MEE2onwv2N2E2UshlN1jgt3yILI/qQLRxW921beSGa
+         ApinNfTvRnUD92+Y4jHp5JETSw72ivFgpSCqMWoXk8fQP0XvO8uIlQg/AdNFfZ3eWE+m
+         YOpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=e3zpV9g8QxfTk2v8slC3BzwA0bsC/5UNJ7SMt9z/DCU=;
-        b=EAUbyN7FLEuN9z4LNURltU/dEJbCRrx/Ku2/tG9fQQuXGFdLffsEuSJ+IfKFy6UblI
-         hx6P9EAmGTG18CVBX+htwzVBcRklibVcv4ThWs4KECoG0G6O4zMWk9XMY36tFbGatWdv
-         1I6AQhq4dQgIvwuUuYVq6oJ2KwMPHIJh0MSmEG9MtRI6RyoS0q/FnelgkqTZBPIVA9hD
-         ZRncvPk52wRj7xB44yic5cgJOGLEWa8hvt0Tzl7168ok4kjTVJfPpyWvZ18Vm7y06tBw
-         aUTnGKwrLzf0IU8wlK3cTdd+zyt2FPtmVXzqIiChIT/qetgP3SyR2PiUH1ZK5rS/LC/8
-         Q7qA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gCmJ+G7TCrvBbeETOpvYyLbw+i9yV7qmAncCZUfBuCM=;
+        b=rW8QLoWX6jqe4SNEVezEGTY4nugnA8Y+k9ExXdupGRPlySYidDfcvQnc0WsZoDuAcL
+         53mXsYeNA5g3jn5ljWEe6eDTtYykvr4C03uAyOEIGTcKNT5DYh0Cgr/ebNjQOzmAg1rq
+         W3ICLjJmh62zVhecSf7KLHz4Y9CTciKwYv7urjXvBNo5BXnk0TBTq8E/D1p8/lI5DAPp
+         HI0Ikc2MkGn1bQZCVeF7YiUQv4ek9g1JOFlkLoYigYN44khhKG8cI95F6LgN5RpkvXMH
+         lnM9fXzpaNQ1AvB/VopIGqA1n9af/Faeywj1ZbZuawOy5x7z47LvvV0b6DzeXvxAAzYA
+         lg3w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HIqfuTPu;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d6px74uV;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id ng10si18903pjb.2.2020.03.10.15.44.12
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id d11si32535otk.5.2020.03.08.13.17.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        Sun, 08 Mar 2020 13:17:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HIqfuTPu;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=d6px74uV;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id z12so89453pgl.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
+Received: by mail-pl1-x644.google.com with SMTP id g6so3126846plt.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 13:17:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=e3zpV9g8QxfTk2v8slC3BzwA0bsC/5UNJ7SMt9z/DCU=;
-        b=HIqfuTPuBvgOXj/qP8yJpcWhrC+UFeuD7vt6guTAS+RpOiifzPd87N7kqOpleRW8KK
-         CT0RUaWrZIBuEB9drpUTOa23EBdVbjhbOtfusQvMQxO9/LXicRuplKGhdqpvP6/6wyWG
-         BG8BmOR5EYNjVQVJ+acB1WJTMa10+7rGhoeNc2TOyVoj+YJ+Oq+60cQEmyiIBqJR/FXQ
-         xJM1mADh+bZHkVUG0Pq8/AD9T/+jspCzYCousRbsObDWZnL7hFojwkcztnbdRDMCWQzD
-         FfFgV/xGcQ2K0flhs8gwIVoTKnBDMTooswMKsmuFnYxTtftD9UhOFoRMAD32xi2zaRgA
-         LIzQ==
+        h=from:to:cc:subject:date:message-id;
+        bh=gCmJ+G7TCrvBbeETOpvYyLbw+i9yV7qmAncCZUfBuCM=;
+        b=d6px74uVt1+SFm603mg3MlgNgNOBAcMTO19U7/2hWVGFyedLMM5yckn/R+48b5etZx
+         3Xb6/0DVjti8txu9xDFY7uv4U2qU1VbJechlphDAV96GpJWz04TopcYoYWmfeo7sKKZi
+         wmSIWW/htWhHjxMJF8PZiwlqEIloDcBMCQmrbQsnZarhT4qzoq6VIwBqk6FRLPEq1Sm5
+         CZmAYHnSDFvBTZIUVzZqLM4u4wkfu9WIMUvMliljoVJDrXC048pFPjcFrJhT+1NnvDrr
+         0SXIhBbFzV638h0TwcNZ1ZbL6AB1E+U3vNYUnPuZbqaqJmjJqUHZwU1cHHTi1AZH1Gka
+         KRCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=e3zpV9g8QxfTk2v8slC3BzwA0bsC/5UNJ7SMt9z/DCU=;
-        b=Fjeg6k91RoMu2anhPi3CqD/YBvwY2rVw6WXqVZOVJbU4beV9pUrLFR1rsbiNiH0RQ+
-         9iM5Q3Tjl9PBWU82yZrUaJs9ub31TTcNg11XofYhSqkUUnw9/od6X4VLutvbaGRqhUAx
-         I+0lOF+nt2w8ebNJG0xCYwGpok6UPF33P/pNMDPckU23Yuop7MLn/qRkJmus4ImGARkg
-         NTCQ/kQu3SstuWUQRMvv22UKtW46Z4foJ8Po8na1n/Vy/CLWhDunB/vk0kfRI++67xS4
-         3p+bHfn0B9tzracRsS/8gQwT0Cs53Yf7JR6cGEXAQ/IZjqIjWRkUEamk/n96se4ND6a1
-         46/A==
-X-Gm-Message-State: ANhLgQ31zI1xO4Ddl/rxUFPMGY8cVtTkvbuECcD1nbOkKEa/4gtotUC+
-	uE3dmQAft6hvF06MXk+5UxmCHbBr
-X-Received: by 2002:a62:be04:: with SMTP id l4mr21639914pff.234.1583880252491;
-        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.240.207.69])
-        by smtp.gmail.com with ESMTPSA id x135sm31634942pgx.41.2020.03.10.15.44.11
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
-Date: Wed, 11 Mar 2020 04:14:08 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: comedi: ni_pcimio: remove old unused code
-Message-ID: <20200310224405.GA9838@deeUbuntu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=gCmJ+G7TCrvBbeETOpvYyLbw+i9yV7qmAncCZUfBuCM=;
+        b=IdifEmRzQlWG/oPaI8HSaqxBEXe7H4fosGuSyH9byu8XrIQuP4o8sCUqN5T7y16Qd9
+         sDVy13J9JFg+nu32OvmgTiAFEaRHLWscoSmyk7QL/iCO8EbFEbg785f140tS/GIAp8Yu
+         T9zWbUzoBlfasp1ho3pm5J7PJ3L/mOjO9C7OkHfbifcGtEbnCT9Bvr+gVhsQNEBDkqSV
+         ngeVgjgFXNpKdpYPsawKTCXmoRZ3I1Qo8/QQiciKba4NfczlREJyFQzTFNpVhJTifwvj
+         qcjPZLGac4t5dolzFfQb7XMA5D0VOCuDTWu9C5o8Is5Er8SWwSvpYqko62xWPp1CR2Wu
+         qFmA==
+X-Gm-Message-State: ANhLgQ2k5NxUa/1Lqw9jog3LypcFsAo15UmzUYKrhg0pt9paadW4xoe0
+	zmBtdy0CHulM4Bqpkr+kwx0=
+X-Received: by 2002:a17:90a:17e3:: with SMTP id q90mr15491962pja.12.1583698630751;
+        Sun, 08 Mar 2020 13:17:10 -0700 (PDT)
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from localhost.localdomain ([1.23.250.201])
+        by smtp.gmail.com with ESMTPSA id x197sm27062658pfd.74.2020.03.08.13.17.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Mar 2020 13:17:10 -0700 (PDT)
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+To: gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	sbrivio@redhat.com,
+	daniel.baluta@gmail.com,
+	nramas@linux.microsoft.com,
+	hverkuil@xs4all.nl
+Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
+Subject: [Outreachy kernel] [PATCH] Staging: rtl8723bs: Remove comparison to true
+Date: Mon,  9 Mar 2020 01:47:03 +0530
+Message-Id: <20200308201703.31709-1-shreeya.patel23498@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Found multiple #if 0 code blocks that appear to have never been used.
-Additinal comments around intended functionality may be introduced
-separately. As these commented code blocks do not appear to be
-ever useful, they can be removed.
+Remove comparison to "true" from if statement to
+maintain the kernel coding style.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Reported by checkpatch.pl
+
+Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
 ---
- drivers/staging/comedi/drivers/ni_pcimio.c | 48 ----------------------
- 1 file changed, 48 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/comedi/drivers/ni_pcimio.c b/drivers/staging/comedi/drivers/ni_pcimio.c
-index 7c82d5f9778f..d8e34d2e1104 100644
---- a/drivers/staging/comedi/drivers/ni_pcimio.c
-+++ b/drivers/staging/comedi/drivers/ni_pcimio.c
-@@ -481,43 +481,6 @@ static const struct ni_board_struct ni_boards[] = {
- 		.ao_speed	= 250,
- 		.caldac		= { ad8804, ad8804 },
- 	},
--#if 0
--	/* The 6115 boards probably need their own driver */
--	[BOARD_PCI6115] = {	/* .device_id = 0x2ed0, */
--		.name		= "pci-6115",
--		.n_adchan	= 4,
--		.ai_maxdata	= 0x0fff,
--		.ai_fifo_depth	= 8192,
--		.gainlkup	= ai_gain_611x,
--		.ai_speed	= 100,
--		.n_aochan	= 2,
--		.ao_maxdata	= 0xffff,
--		.ao_671x	= 1,
--		.ao_fifo_depth	= 2048,
--		.ao_speed	= 250,
--		.reg_611x	= 1,
--		/* XXX */
--		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
--	},
--#endif
--#if 0
--	[BOARD_PXI6115] = {	/* .device_id = ????, */
--		.name		= "pxi-6115",
--		.n_adchan	= 4,
--		.ai_maxdata	= 0x0fff,
--		.ai_fifo_depth	= 8192,
--		.gainlkup	= ai_gain_611x,
--		.ai_speed	= 100,
--		.n_aochan	= 2,
--		.ao_maxdata	= 0xffff,
--		.ao_671x	= 1,
--		.ao_fifo_depth	= 2048,
--		.ao_speed	= 250,
--		.reg_611x	= 1,
--		/* XXX */
--		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
--	},
--#endif
- 	[BOARD_PCI6711] = {
- 		.name = "pci-6711",
- 		.n_aochan	= 4,
-@@ -569,17 +532,6 @@ static const struct ni_board_struct ni_boards[] = {
- 		.reg_type	= ni_reg_6711,
- 		.caldac		= { ad8804_debug },
- 	},
--#if 0
--	[BOARD_PXI6731] = {	/* .device_id = ????, */
--		.name		= "pxi-6731",
--		.n_aochan	= 4,
--		.ao_maxdata	= 0xffff,
--		.ao_fifo_depth	= 8192,
--		.ao_range_table	= &range_bipolar10,
--		.reg_type	= ni_reg_6711,
--		.caldac		= { ad8804_debug },
--	},
--#endif
- 	[BOARD_PCI6733] = {
- 		.name		= "pci-6733",
- 		.n_aochan	= 8,
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index 7117d16a30f9..a76e81330756 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -2417,7 +2417,7 @@ void stop_ap_mode(struct adapter *padapter)
+ 		paclnode = LIST_CONTAINOR(plist, struct rtw_wlan_acl_node, list);
+ 		plist = get_next(plist);
+ 
+-		if (paclnode->valid == true) {
++		if (paclnode->valid) {
+ 			paclnode->valid = false;
+ 
+ 			list_del_init(&paclnode->list);
 -- 
 2.17.1
 
