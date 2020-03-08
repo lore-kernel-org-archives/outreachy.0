@@ -1,112 +1,158 @@
-X-GM-THRID: 6615030775466164224
-X-Received: by 2002:aed:2315:: with SMTP id h21-v6mr35602704qtc.36.1540181873566;
-        Sun, 21 Oct 2018 21:17:53 -0700 (PDT)
+X-GM-THRID: 6801781024772587520
+X-Received: by 2002:a17:902:524:: with SMTP id 33mr11572254plf.241.1583664936823;
+        Sun, 08 Mar 2020 03:55:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:ad35:: with SMTP id u50ls3474357qvc.8.gmail; Sun, 21 Oct
- 2018 21:17:52 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV6234BWQ0dk48k3KNmhv7eUFVfa3VwSujly+Myw4EzJ8fugkqpTvgXUvAozUb15GCLU38fAA
-X-Received: by 2002:a0c:89cb:: with SMTP id 11mr36402569qvs.56.1540181872916;
-        Sun, 21 Oct 2018 21:17:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540181872; cv=none;
+Received: by 2002:a17:90b:1888:: with SMTP id mn8ls52720pjb.1.canary-gmail;
+ Sun, 08 Mar 2020 03:55:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsDI7QFeeqQAvtyMl2QtvnFChfTt1UqgipcCTCFXa8QR3zhurxRpS7ndelYoTd/O4ixRImI
+X-Received: by 2002:a17:90b:8d0:: with SMTP id ds16mr13628921pjb.75.1583664935436;
+        Sun, 08 Mar 2020 03:55:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583664935; cv=none;
         d=google.com; s=arc-20160816;
-        b=tO7GuNNeqptl0LL+xpqw75e1NG2dSdWP6P5YN/Gbqima1WmNN9JgFcOVIYRDxyiMSS
-         N89Q/w7pXBUNpSRyDoFmiBoWYBBcDvc94hg2ZhZcUlXGRB7OlFjm7xuB9B8G1xprvd3F
-         FRl4ByHMHJvtRxCtgiaLBvrjAe6ulYkZKxpkcronUgqjENulLo4jnr6LRaIQcI4jPYLo
-         RiejUE6xhIR57smOo0IZuGsylGsCMP/9L+cntrq6gJ47vsGGKwLaZEQ0mv8N8b+82Bi6
-         pNuKN6RTIc8GmfWw0QrzzIf/RMSvTdD85xCsay6ieU46aFujKU7NOdc5S5Q0de4yohz4
-         29gA==
+        b=F54dc9Q6ZSWXnMfq7bJi/kicnehai8pSReH8TpWR0tHe0FM0dW28ZJeeP1Rma+R3C2
+         bFXX9gQINXYDcqszuy6jNvrxqnA6LK7ij66MY3YoWQJEI2ZH5yXaxsARQ3MvjEAlag/u
+         2xymilLgnyhL3otM6/Ka1uucmB4s7pnUbl2TNbaZwCkTkab6ePMDpaPGPGZrueV0wv4Q
+         jKu/uoyk72JL8CmFvvLpATwjodJVgpi6WCaxwhvtJmvBI+b44IdeuwTbyVykuOiZu2z3
+         g7Jdg8kyz5Kr3DfwSHyxA6rysor2YVPuNCoX++MUWDfau0T6Sfc7RpoageR7IE10X8+U
+         LyJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=WKyjtxhmbeXzJuKwKKtmo0fCxsayYTdUKyrNZMyetBs=;
-        b=O+hYYwX+zFNOtIBEiDLYDZp1TihJsHiPt7f207AsRPDjKrJ2CMVmwCuGOS3CaQdSRh
-         sWQvtlc6AfCCsh3yFQw6F8VvDLbeWUFy3vYRy9yELP9Orl1cBrDtZ3wT7J1yPLw2tCa2
-         ro4FhBUBbGDlH46DlJqTAG3zWsP1K1ghEhjFBRZ2M00/PqAI8tX8CA3e+GDoWDr3A5ZW
-         XgiYz3eEotDy4uD+pjcYn71K3KYTG3783sPwr1nqyf9TsQEaV+uyUfAJUrFwF0XRi2zP
-         Fzih1ENRpDu6vyng046K4CWzGIeN6UbixJQy2Y5Rw+maWcMBRa57ZUg6t0E3X6D1dUBz
-         t+lQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=NCnqQJa8+kgx8s1UaA49xSGGNU5wUOH7gzw3WwIM6/w=;
+        b=UpOrMAelMp5JjdFgHW5WJrAH3bN3iVD0U27hdmQzOYaj8J4fIYPOXHLsCezqwTiTpT
+         XmMrdCfrwLvOS3v61o13BvLKoq5QhQF9xkkx48ogSRWsesPz3s+Wg2pwgANMdX73S2M4
+         dvskvbwoYzZJDaOtCymcwOqoy1kF275DG5zoK+Eac+3rfopfnRGVDZMniYd8T4hAnqHO
+         oCd3dsLbP3i173FdNUkAWIJACej8uM0xAAsfk23df/Z4V6vkwPaHURx+WAf9NOfSKTM/
+         DBI0cS8lXDrSmYiNDjEadyNfuYb1Tit+uHHhCberlWm5x/YWeasseyMJCuDJ7robvNH8
+         pHVg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=olDNpQ1Z;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CTJyl2n3;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d33 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id k8-v6si1527512qkg.3.2018.10.21.21.17.52
+Return-Path: <payal.s.kshirsagar.98@gmail.com>
+Received: from mail-io1-xd33.google.com (mail-io1-xd33.google.com. [2607:f8b0:4864:20::d33])
+        by gmr-mx.google.com with ESMTPS id mv5si932749pjb.0.2020.03.08.03.55.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 21 Oct 2018 21:17:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 03:55:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d33 as permitted sender) client-ip=2607:f8b0:4864:20::d33;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=olDNpQ1Z;
-       spf=pass (google.com: domain of m.maya.nakamura@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=m.maya.nakamura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CTJyl2n3;
+       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d33 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id f18-v6so18409999pgv.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 21 Oct 2018 21:17:52 -0700 (PDT)
+Received: by mail-io1-xd33.google.com with SMTP id v3so336486iom.13
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 03:55:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=WKyjtxhmbeXzJuKwKKtmo0fCxsayYTdUKyrNZMyetBs=;
-        b=olDNpQ1ZQ8nZVloVgucT6KDW0AUhRYiURaqaN/go6bzOajfNyMNp1vfN6UiRYDfS5u
-         ohDswNERHtstp/VZ5KaCiqgZ6mHRWmkcxz6leBjOLqKJFEBDTwdo6pVRZ3oVc3bdVI+u
-         HtUxs7cP+mguNX70K6ts5gG5FulpRiR15bOBuuuMkOkbVOdlnr2u9+GvzCbnlRVJxWvG
-         hC5FbatdN/KcCzyWs2M/kJzNRv/6nl0o7GjtG5KfSTZq60Oe1ZZcxN3pTPdF2KZWKFP1
-         55g5zaCia97TDsdeQJ4DpkmFE59Q0Y/V0prw3g8+kYvUUia9OdX+WjdVkwwBVzn53PN+
-         Ot8w==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=NCnqQJa8+kgx8s1UaA49xSGGNU5wUOH7gzw3WwIM6/w=;
+        b=CTJyl2n31hkn/wZWVK94Ygga+kYw9f5Tc9dkAxEK7ciK4kZbyQGeM4jQK/6Bj+3rbF
+         +7DKaCzLW+CrD0KRnN7U8EkupitjuOZ9ErJooK9xhdml2xtKl6iQs2s2J25NmR1bSktl
+         pIucd7Mr4KxjrUttDyUmTTBAAjnUQ8zQ0NY2gCtnct7Ckb2XJs94GrrhXSXFZD3NSACk
+         TsJeJYxvg58W8Sd5jwz3J7Qpu1d1JNUP7CSrhNkZd6U+s48mER8z7d2vuXmB/Xu0LoCf
+         vC2BGRsOKE1JfWSPfdWnqmcBW1fce3b0ZFyYrWzdH+srmVDqWBNTdewURo5XzE2ec9w1
+         iVow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=WKyjtxhmbeXzJuKwKKtmo0fCxsayYTdUKyrNZMyetBs=;
-        b=t2Uv0HBFnD7Qd9WpWfVwqIBN5XFA1xgwsHosSm7Z1SnrERDJZ9isX8P/qnTft/48zb
-         amcbjNlt1mfBMTixx848paILNoU+ora04yJrAwOrK5r90l/Rs+Gc9QbbiUGaIWtkEIHS
-         Djrv0tM1IMzVhYtTUY4rkxPBLHZyyABuJwGbtN8vUXuEJXUk2B+jcudsP+sDYqrvxGsz
-         euRZNMeP7S6r1RhDDVhsjqJ3Ha+OXnEq637ati5gkYl5yQSBWCQXoffpL0RasYozuR1u
-         YMAcmib0bAa9jLre4YAvRTw6iDI+N19LxdJ76nBudFEcY8o3n2vljUCjh54/ZTUlgRWL
-         TSHQ==
-X-Gm-Message-State: ABuFfoiv1rS8HZzBYemwG/8FuW6sIZyVBHUp0xUwpg/pTLGKXcHubMnQ
-	gcaoG2nnc8f1NMr+m8RzW7trgQZx
-X-Received: by 2002:a62:42d4:: with SMTP id h81-v6mr45290509pfd.0.1540181871919;
-        Sun, 21 Oct 2018 21:17:51 -0700 (PDT)
-Return-Path: <m.maya.nakamura@gmail.com>
-Received: from k-vBox (50-47-85-193.evrt.wa.frontiernet.net. [50.47.85.193])
-        by smtp.gmail.com with ESMTPSA id n63-v6sm37635496pfn.9.2018.10.21.21.17.51
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Oct 2018 21:17:51 -0700 (PDT)
-Date: Sun, 21 Oct 2018 21:17:50 -0700
-From: Maya Nakamura <m.maya.nakamura@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtlwifi: Remove unnecessary variable
-Message-ID: <20181022041747.GA2618@k-vBox>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=NCnqQJa8+kgx8s1UaA49xSGGNU5wUOH7gzw3WwIM6/w=;
+        b=VQbFWXch3rx2LBrQSUfflTJ4oBeaTS8Ha5qos9HXq+X9v5kvZLW2RlB7KDaHOOqsRe
+         7a2EOOVVYc1a9n5cQDY0RcbP/0Av+OXfwuMHvIDq4ULgVghG7ab/iYsnHITqwk/CXmuN
+         uz/UtoRTFoX03IGyLTE0p/0eBDzEdbDWzA1QMffTrcvf5varmTXn6KkPxhlNl+Ays9g6
+         BjkG7wI4irSTBbtFrxrXj3Cu1ySJZBsJsn030kF7c6ujZWoCj7orTmyGwEOq760Ndbjl
+         ITUYAr4SVhpLpxwI9ALxACXVjXEI2Umsj8IBTjH9lpoJ/5lGCaOdvFEq9+b6Y8QTdOiD
+         qoXA==
+X-Gm-Message-State: ANhLgQ1QXB+0DoJZL+cfghYXIm5YOMemo+xi7XYzUI2yNTUieZiAEXDR
+	N07pbSrgMZKnQJsSUhX/Qwnr/uyHR3SJaasyEvwyeA==
+X-Received: by 2002:a05:6602:cb:: with SMTP id z11mr9501438ioe.57.1583664934847;
+ Sun, 08 Mar 2020 03:55:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <CANTOzWF=FTWsMtRXZnvPZAkLAkOPqJ9bpXtHPeD6OH00a1ZkUQ@mail.gmail.com>
+ <alpine.DEB.2.21.2003081131500.2400@hadrien>
+In-Reply-To: <alpine.DEB.2.21.2003081131500.2400@hadrien>
+From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Date: Sun, 8 Mar 2020 16:25:21 +0530
+Message-ID: <CANTOzWEcf5_WQKtDMvtHo1JHjqhiOv8q_7CU-okrCOWOsbH=gg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Sending patches using other Email address?
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000e2882105a055b91f"
 
-Remove an unnecessary variable that is declared and assigned a value only
-to return it. Issue found by Coccinelle's semantic patch results for
-returnvar.cocci.
+--000000000000e2882105a055b91f
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Maya Nakamura <m.maya.nakamura@gmail.com>
----
- drivers/staging/rtlwifi/phydm/phydm_hwconfig.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Sun, Mar 8, 2020, 4:04 PM Julia Lawall <julia.lawall@inria.fr> wrote:
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-index 90a41c64c0c2..fdc9af56e9d7 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-@@ -491,8 +491,7 @@ static u8 odm_sq_process_patch_rt_cid_819x_lenovo(struct phy_dm_struct *dm,
- 						  u8 is_cck_rate, u8 pwdb_all,
- 						  u8 path, u8 RSSI)
- {
--	u8 sq = 0;
--	return sq;
-+	return 0;
- }
- 
- static u8 odm_evm_db_to_percentage(s8 value)
--- 
-2.17.1
+> On Sun, 8 Mar 2020, Payal Kshirsagar wrote:
+>
+> > Due to some security issues with my email ID(The email address which is
+> > associated with my outreachy account) I am not able to send patches
+> neither
+> > using mutt nor git send-email using that email ID.Can I send patches
+> using
+> > other email ID and record those patches for the outreachy account having
+> > different email address?
+> > Will those contributions be considered or not?
+> >
+> > Please help:)
+>
+> I don't think it matters at all about what account you used to sign up
+> with Outreachy.  If you are at all concerned, perhaps there is somewhere
+> in the application (I have no idea what it looks like these days :) where
+> you can explain about the different email address.  But I believe that you
+> just attach links to show your contribution.  The email address is not
+> part of that.
+>
+> julia
+>
 
+Cool, thanks:)
+
+>
+
+--000000000000e2882105a055b91f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
+On Sun, Mar 8, 2020, 4:04 PM Julia Lawall &lt;<a href=3D"mailto:julia.lawal=
+l@inria.fr">julia.lawall@inria.fr</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
+ing-left:1ex">On Sun, 8 Mar 2020, Payal Kshirsagar wrote:<br>
+<br>
+&gt; Due to some security issues with my email ID(The email address which i=
+s<br>
+&gt; associated with my outreachy account) I am not able to send patches ne=
+ither<br>
+&gt; using mutt nor git send-email using that email ID.Can I send patches u=
+sing<br>
+&gt; other email ID and record those patches for the outreachy account havi=
+ng<br>
+&gt; different email address?<br>
+&gt; Will those contributions be considered or not?<br>
+&gt;<br>
+&gt; Please help:)<br>
+<br>
+I don&#39;t think it matters at all about what account you used to sign up<=
+br>
+with Outreachy.=C2=A0 If you are at all concerned, perhaps there is somewhe=
+re<br>
+in the application (I have no idea what it looks like these days :) where<b=
+r>
+you can explain about the different email address.=C2=A0 But I believe that=
+ you<br>
+just attach links to show your contribution.=C2=A0 The email address is not=
+<br>
+part of that.<br>
+<br>
+julia<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"a=
+uto"><span style=3D"font-family:sans-serif">Cool, thanks:)</span><br></div>=
+<div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
+>
+</blockquote></div></div></div>
+
+--000000000000e2882105a055b91f--
 
