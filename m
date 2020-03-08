@@ -1,111 +1,102 @@
-X-GM-THRID: 6669791309763444736
-X-Received: by 2002:a9d:6448:: with SMTP id m8mr10255421otl.66.1552931803454;
-        Mon, 18 Mar 2019 10:56:43 -0700 (PDT)
+X-GM-THRID: 6801974283899764736
+X-Received: by 2002:a1c:3241:: with SMTP id y62mr12612198wmy.66.1583708050046;
+        Sun, 08 Mar 2020 15:54:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4255:: with SMTP id p82ls16020oia.4.gmail; Mon, 18 Mar
- 2019 10:56:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzlOZevFXg6+GM6LF9didV5zcvtG4mjXFnTwDRhr5UtDKotKM5dhO0cPxCsjFSIN8h4GofJ
-X-Received: by 2002:aca:4588:: with SMTP id s130mr11718530oia.44.1552931802198;
-        Mon, 18 Mar 2019 10:56:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552931802; cv=none;
+Received: by 2002:adf:f8d1:: with SMTP id f17ls4794582wrq.3.gmail; Sun, 08 Mar
+ 2020 15:54:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsXWIXMTsYxoR5TWPO4fK1BBKRZx0T09mgIUF1pk+bGoLcTRoMGWE9Dkevx183p0dIKRPUN
+X-Received: by 2002:a5d:640e:: with SMTP id z14mr2247924wru.204.1583708048933;
+        Sun, 08 Mar 2020 15:54:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583708048; cv=none;
         d=google.com; s=arc-20160816;
-        b=lWFbFCYBjFKeJpJrP9W9hJp8DVboI5FrsQSri+3Q3QOAliGQ3sUMjSCa9qU/qTAqm5
-         Etf+gh+VioXJxDjqA3gCS2yOyXrCY3/IWQx6O+/zs2HEJ6dyXauMXR+ZQJRMANKiMTDK
-         tUR5NJ0iylMQ680681uw9SQ1MykyJzzK6+iQvJOlSoLMR4+wAOyw1AUlPePToKx93o3K
-         KXKYzEYTT9rkjlAI5WjLkg+7piZlKy26eBvJvjRRhQC2+V9V61Jh7BU8t6bodQN0gsmo
-         A2YO8dRpy3UKhtQn94Gqbfy/fTWLOAlwRUyYXP4SdmYytUNSjshXqiJXjfWp+fleUwkU
-         Ptrg==
+        b=qzLCMeKP67eH1a2A2r2xjAoHji2RugL6FFkCkJtp+SnFklmbn4Kt+Bg3zSSsW6psFN
+         QIY26Ej5NQlgP41YWCX9vQ2JQpCif7cbaBjMHQvdeXdvs6ec2ztJeqil4jtqj/BjiiO5
+         HvCz3GBz+TEQAnpyH2MCa+YWnleSAxHBdlPzH1Z0gkysCiGERZlNFpaOD+Ue3Iw9VTGr
+         2YKShPZXu6904bK4G/dq97vKafpiZ8nbxzk4VjaC7PazqZNC22Y0QIGoWAEWuh+EZpwu
+         lpWCcuBrtnLGtXO8MOP1p2p9DXr7hSCJbVLmxGo5Gy9nDjLn5BDWf67L6okzUUK9qAmI
+         1fww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=auARcuQYd11Tm4K9dDO6TOVwhL6gZMQDOosynm1pCtk=;
-        b=t8WkjPc2nPPmF2AfdKUgeoWrC9E5s1t+SuRNUTlLjtaXlgTBBB3RaQXCZyXtDnU2AI
-         5Hm4zfVPYHDaSeAWx79ZBdMYNQfYvNOQooAzd/SyEdX2a3O9Mwp1H2wlrVK6RwaFtmA2
-         MvUCP7uTNrGPupS0dkec62b+MWPgNS2UDhwZRIbS5wJGSp41gIeFHYZd+iomttOVBIWu
-         C4hrswsn2mIHD6EmjsCqKNGEi802uTcwHTiD97z7vRQZ5WaPdWEz51P3gIYZjHBTMX2Z
-         3WU8+LVYgJ5r2z7UWtA0ozdULw+Qmu2q3Mqsb90bpgBTpfda1cJYTKJKOU0KJnzKivQ9
-         iTKQ==
+        bh=1WqUU7MXlSk/kVuhLVwaxMSZHEpygGtldCxSzvaTZKE=;
+        b=f0+dCSvcP7DoAMn10SBcXANlsjxS8ey/VG1gBSjdHImqSRf8klDgOXMmaAOVfNbN9B
+         zbtP0tsbzsI+XesFMhqHH+BQ0iDywhWTARHCaS33M8bFgt5OjUDnFMRnvovlauipSN/y
+         r67nw24jAOaDq1zMe442k54wWQRT55kiensffo/IBZO/hycPzB1dflODa562D8Z/iuSe
+         mFRMmuEltGVZ+veclqOFdIrrPYSG5wLZm1w02Ezy+IBLuLE1niDcW15vEvLtaoF2BvLQ
+         +nbyUVsgIYI0KMVGgHIoKrnWwrqJQav1WO69U7VnOdoQf2ASl/8ty3pnZVpT9xqRzdZe
+         1h1g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uxRSyqrJ;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::531 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x531.google.com (mail-pg1-x531.google.com. [2607:f8b0:4864:20::531])
-        by gmr-mx.google.com with ESMTPS id l92si289398otc.4.2019.03.18.10.56.42
+       dkim=pass header.i=@pplo.net header.s=google header.b=MPLlVota;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id f1si239744wme.1.2020.03.08.15.54.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 10:56:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::531 as permitted sender) client-ip=2607:f8b0:4864:20::531;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 15:54:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uxRSyqrJ;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::531 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x531.google.com with SMTP id u9so11905779pgo.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 10:56:42 -0700 (PDT)
+       dkim=pass header.i=@pplo.net header.s=google header.b=MPLlVota;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x442.google.com with SMTP id v2so8751188wrp.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 15:54:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
+        d=pplo.net; s=google;
         h=from:to:cc:subject:date:message-id;
-        bh=auARcuQYd11Tm4K9dDO6TOVwhL6gZMQDOosynm1pCtk=;
-        b=uxRSyqrJe9QgDzDgtsxQMvcToHQOKD+5kGfF4mLvZ8I7B9ia2ywD/Xm1Y3KECxhTIs
-         dbCB8NrazCl6G+SKt5tfIX8VfXK3hsg/nNbioJ37VExs15A5zavx27BIN2zrtEEwb4v9
-         fHzsM1tlPUULO577ArWHKy5TEfi96UEiZygTrXiXY6VFyvwdG//ZQt44LioVHKF74IMP
-         V2ArGr2/WQISp5XTTfzULCNN1S2RlkrqGwLCNii1M0EWTRKgOGc5vunHV5cSEf4qVmEJ
-         GTxOl0kLgfkz6Nfz4cfgsdsUV7+yGIvH+NSeb0wt6ysRuDSPHWEhUybJI3kQiJVhIcOO
-         h/1Q==
+        bh=1WqUU7MXlSk/kVuhLVwaxMSZHEpygGtldCxSzvaTZKE=;
+        b=MPLlVotawc/OBEWHMY2mn3DksSmZdwMWROtxxs4UYMOGnDeyLhMMV8+oIi3kAFznTd
+         sW5wzoiTdjYXnbRnuyjShHfOCyGsOQFlrWrzJAyV/YYV0SnlaxQbtqUtbDujvjo2XYlL
+         uKWoX3w59Exh+cMIXVLNGUXK+HWEYXdu+4unw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=auARcuQYd11Tm4K9dDO6TOVwhL6gZMQDOosynm1pCtk=;
-        b=p73cIBjlOjHJwfs3UzqZIZD239zEvwaGCkEWqjapXl1IC7NEsJo3xBrXfsRO9Hgu78
-         EMGnBm9YPfA4aPhf9rFB8zJBua7z0Fmai8iUbIXfz6apVFirB4bGwmJ2i3slVCt1Cbvd
-         p0WtzuRFjq5xxL/xxbbjzfXIViG87FzYoMZPom4FoIsUole/Hq3bDoBK2hymLmxEBCJm
-         q/Y4thVHHcbNif4KiLEvefC1AH0wnW8t9jHAwbUaDYQAoWKjpirVZqS+Ns1GnFtS9JBY
-         FNu4y0OSX5ASt2SjKjKg/xNfIEAuMJB10GIaKuZdsb/QINXuCzaHdTJHb0QN4HEx7iqe
-         bpmw==
-X-Gm-Message-State: APjAAAVjGa/M4rlZYd3BEusEf0B13uS6iKkFsDT3nl4erISlVfsMxfTJ
-	e0VfaLFGVEfr2/Oj3icQKshCm7iKKxs=
-X-Received: by 2002:a17:902:501:: with SMTP id 1mr20753850plf.72.1552931801924;
-        Mon, 18 Mar 2019 10:56:41 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([203.109.108.32])
-        by smtp.googlemail.com with ESMTPSA id p20sm5004451pgi.3.2019.03.18.10.56.39
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 10:56:41 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: rtw_ieee80211: Fix indent for 'if' statement.
-Date: Mon, 18 Mar 2019 23:26:31 +0530
-Message-Id: <20190318175631.6579-1-sanjana99reddy99@gmail.com>
+        bh=1WqUU7MXlSk/kVuhLVwaxMSZHEpygGtldCxSzvaTZKE=;
+        b=YsLVCp62+/zngn2Pnm6yCzrKJQitR88ZrbRJa6EkSYRPhX+P2bQNSF7WSwW1so8nfE
+         qIvouysJ+t9SAHs1J84eb8Bgcw/slnfmtj4dIcN/spGXxXL0rMqHfl0KYiTLUDeUhhUa
+         Bsl5tlPYJ5RZCTkDln9fEhkkeaMU7JGXSvqvs68qzPElwL2JlH5QldbofTBMJuPIz0Ur
+         +Xk3JowXV1riW+SshZtwNUqhf1r07/9etrMu7E5RIMsNq0nH2i7+wtIpWM8qmn5Sc6HG
+         3x6MnKHRcScjX7x4A5T//c/z/JzRFYRrNgmznIRpmphmgnLev+YsDYNYx4NmjST6CnDB
+         UM7w==
+X-Gm-Message-State: ANhLgQ0skN9HYC6ibmB1WhVzbCTRv5w7kyDdHwgUErmKRmzbxxJ7dNjE
+	Yy/D/9yFaah9ab3XZi837RjYQxOmRCE=
+X-Received: by 2002:adf:f581:: with SMTP id f1mr2975101wro.38.1583708048337;
+        Sun, 08 Mar 2020 15:54:08 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id 19sm25627014wma.3.2020.03.08.15.54.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Mar 2020 15:54:07 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: hp: remove commented out code
+Date: Sun,  8 Mar 2020 23:54:00 +0100
+Message-Id: <20200308225400.17267-1-lu@pplo.net>
 X-Mailer: git-send-email 2.17.1
 
-Adjust indentation for the condition statement.
-Issue found by checkpatch.pl
+Remove unused code.
 
-WARNING: suspect code indent for condition statements(8,24)
-
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
 ---
- drivers/staging/rtl8188eu/core/rtw_ieee80211.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/hp/hp100.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-index 094e8e78f0e8..797ffa6e64d5 100644
---- a/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_ieee80211.c
-@@ -1008,10 +1008,10 @@ void rtw_get_bcn_info(struct wlan_network *pnetwork)
- 	/* parsing HT_INFO_IE */
- 	p = rtw_get_ie(pnetwork->network.ies + _FIXED_IE_LENGTH_, _HT_ADD_INFO_IE_, &len, pnetwork->network.ie_length - _FIXED_IE_LENGTH_);
- 	if (p && len > 0) {
--			pht_info = (struct HT_info_element *)(p + 2);
--			pnetwork->BcnInfo.ht_info_infos_0 = pht_info->infos[0];
-+		pht_info = (struct HT_info_element *)(p + 2);
-+		pnetwork->BcnInfo.ht_info_infos_0 = pht_info->infos[0];
- 	} else {
--			pnetwork->BcnInfo.ht_info_infos_0 = 0;
-+		pnetwork->BcnInfo.ht_info_infos_0 = 0;
- 	}
- }
+diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+index e2f0b58e5dfd..b89c4dcf53f5 100644
+--- a/drivers/staging/hp/hp100.c
++++ b/drivers/staging/hp/hp100.c
+@@ -511,12 +511,6 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
+ 	 *   0x2260 -> EISA HP, BusMaster (Shasta Chip)
+ 	 */
  
+-#if 0
+-	local_mode = 0x2270;
+-	hp100_outw(0xfefe, OPTION_LSW);
+-	hp100_outw(local_mode | HP100_SET_LB | HP100_SET_HB, OPTION_LSW);
+-#endif
+-
+ 	/* hp100_mode value maybe used in future by another card */
+ 	local_mode = hp100_mode;
+ 	if (local_mode < 1 || local_mode > 4)
 -- 
 2.17.1
 
