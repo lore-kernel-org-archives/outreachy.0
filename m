@@ -1,120 +1,112 @@
-X-GM-THRID: 6666453061980913664
-X-Received: by 2002:a63:193:: with SMTP id 141mr9534369pgb.58.1552154557998;
-        Sat, 09 Mar 2019 10:02:37 -0800 (PST)
+X-GM-THRID: 6801815686837436416
+X-Received: by 2002:ae9:dc04:: with SMTP id q4mr11095537qkf.216.1583671693026;
+        Sun, 08 Mar 2020 05:48:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:93:: with SMTP id 141ls4478970pga.1.gmail; Sat, 09 Mar
- 2019 10:02:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy4v3RZdfiX8Lg5vhVEUHxlZfZRmj8bB2F+RP5pF5Oxbs5H1Lq4ccl3oIGpirpoD/eNgAqe
-X-Received: by 2002:a62:e513:: with SMTP id n19mr9156270pff.125.1552154557083;
-        Sat, 09 Mar 2019 10:02:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552154557; cv=none;
+Received: by 2002:aed:2ca1:: with SMTP id g30ls282862qtd.1.gmail; Sun, 08 Mar
+ 2020 05:48:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvZhpzBjF/7A+JTcEk1fPCZyddiKXl7x4K3Er7oQgRFnyFpjZsRUidZWNjEhbneGISSTP+y
+X-Received: by 2002:ac8:7290:: with SMTP id v16mr10788084qto.197.1583671691962;
+        Sun, 08 Mar 2020 05:48:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583671691; cv=none;
         d=google.com; s=arc-20160816;
-        b=WADcUyXhWw8hBSp1yc6ECAtBTCstwxeOIHTGR32BSv5SOJ8w6vU/Jl9PNceF4OuxVL
-         7qVcvHPl+JYZt+MvLiVxRVhQFO8W4LR+JLmZr4yWYgIA7W2F2X66RBJtycPBixdyoZ60
-         enZBOgmcEW3ynZaMdGyNChUqjRMwWDtMxVGJ7dMXp0R44q1wy26IOc48lcszwJqK6Jgv
-         WD3BVyNjBLetpCALzWIo6BBGBsx5WiF9Adl1FNOaVPf5wd6ki1kyYhOCgyhl2yTnJ8Go
-         67T8tr0uwnPMyr7L1BXynIJZyMfkE9TzhjRt3J8SP2CwndyIoSz+0bGWyRzRdJT0oM3p
-         Lkng==
+        b=w6hfnSEH3MDFl7/2HAy8CCJ7gWtlzUcx/LFQpFtU6HpOncn5Mle0Y7sP0jUzCpn4HN
+         obbh4zTOU8pnRNXhsd7EcKKXWvDZ0c+zjPWfFvVVSyVDadPiB44oiAEnDhRcCNRwfhUb
+         Vh6HweD9+z96HL+YCbtlsiFqE4s9dTGBNnuTnC7eqyHb5cZX8U8RJF6pc4SAGa07aYrU
+         KOxQBWqrqWtzYMRnLCXIpYSJZS3LmxkZlMkbel0zLBeUPJ13WCEZLjIJy+8omL3GZFfS
+         w6FbYrMDdNgnFGN8bQQyVM8sbJHGaupYrAyEyfoJCQxM1298Q/CpXvcBy5/V+zv6/vul
+         mKWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZrWpn758/0R8bCIoDVoD8DXuzTkKeDrtUMQL11LZ65w=;
-        b=r+EW3eLjdJitNElHjfSRrOrEceo7z7O7GQ5M63YS/Sj8atP0N2ebvFddmDB7ckV1t8
-         xiUWrgzt1mJXmTtgHxG8civNHGpxPpoYACwq8aJK/3pOmnovOL4qmMAb0fT9HoVhggIW
-         DSqATJN6dkkCMIFmZL37q+i+xywW0wICdBmS3a0cbyUwYTV93O77NM81YWFXfWNYNk2j
-         Hi5l7Mv4j760Qh4w3r2wR9gkphUCUWcQ7lnopyx1DdljQOCk86lZMmhGdwv1UxirGPgj
-         QmdUTQkDh1owqN3r1/ldowX/Tr5rM/e/utSGa6gSLNmnMt9irD/bnYOn3c94hJ5wRhV7
-         uKhw==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=TWfq5nd2GY4wK8xVUE1iWnaaw+LNfYVytkWf/WyD8gE=;
+        b=ptsspOlIU4C3eqe5/EaDuzc2gzPly+67fo51w0LsodrB41P8HKbD761R+um7ndMTFL
+         Kg/3sybhfrDhAE7mOfPJ5fzVxdYcmd+ycIulU/ox+rSq8em2g4nkSGi75PdHlVVTTcWx
+         jh8WLnwcTo7ridbyHG/d6GrWVAe9EEb8tfAzt8FNL5sA0gw3qVSmXOyqVnvu8WCOmQ6d
+         Oiij3V3Sx4TNxt4UHSkUXAaCppil2CWKEZXkw/0AR1N6fIWJ41cJjMGfYv/AL//wvN9P
+         /3dMdshvTEpaKk8fs2bzG8sO+2XKqYPp6QDA2UaZBMxTpakN18Xpfc4MN0geRJlQx34Y
+         wkQg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/4DfbCB";
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id r133si54969pgr.4.2019.03.09.10.02.37
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NPKIJyVS;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
+        by gmr-mx.google.com with ESMTPS id w10si406437qtn.1.2020.03.08.05.48.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 10:02:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        Sun, 08 Mar 2020 05:48:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="F/4DfbCB";
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id j3so703344pgm.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 10:02:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ZrWpn758/0R8bCIoDVoD8DXuzTkKeDrtUMQL11LZ65w=;
-        b=F/4DfbCBaU1tTk4eF8kxllNubHCJS05RvkiKoVdSYRdBCdEPEGR0cwNn6nnS3VbW0T
-         sbrKveYnMI0/bRug1gYvrO69pWnX2N6QLhmQr2ZjEwr6v7kDtVRSDpVFj4l4jbtbZ1G9
-         95kJDPMFI2I7HuSYfQ3mBQpKWLfInPcDLqKsqM6zw/D3A5f9i63iwmV4nnjfZ5qvqQ4q
-         22woKrz/SyA2D/YJmo+iIHOQG6xH4CjBFXB4LOOukFOeEMwVRBpn60GyGXMOsHZMJp+O
-         TjCIR8rC5cxk7eyRQcHeqTL9nuvslN4t0XTZSZKanBsNPm5n5PGahPCZFZkFxwbqKvf2
-         ql4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ZrWpn758/0R8bCIoDVoD8DXuzTkKeDrtUMQL11LZ65w=;
-        b=EHvABiNmmEaK702ar32KoTMpTVo3tuG8vJtOfrSCfRmJd9LOXUkK2z5rPdg7iwsfSz
-         e/3/RiM9MD6j5UYv1S2BSAfdo5oWSfSbMwCkb4OsmF33ZBdN39cyTxbAsojsodGFvY63
-         w2U4JvHWMWEUbQRKnB6dShqNTC7AGhRc7U6wOqKnp3uyujl+0PuyIgQnUfBOXkSJmTQY
-         xpmc2pHCWcZZam9Kh5XnTJ8HxVCP7HWfUgCOM6OCdxgmnIMzddsDnvlMHYtXc8B/xs6T
-         e8jJKKfs75i6oqnMdbbiQaT3qvfYr30pu3w9mW7inyShh2eU/ji9PaRsIHeT8NMdz5VW
-         7TXA==
-X-Gm-Message-State: APjAAAVqY3k2XgiKvy7gONxHYsF3pjc5WBB4VEv6agPu4Ux3TcNlvMhY
-	hPr01zED67ES3RXFcIGkNW9+HLVUbLI=
-X-Received: by 2002:aa7:8d53:: with SMTP id s19mr25347165pfe.16.1552154556676;
-        Sat, 09 Mar 2019 10:02:36 -0800 (PST)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([157.32.145.116])
-        by smtp.gmail.com with ESMTPSA id u13sm2107965pfa.169.2019.03.09.10.02.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 10:02:35 -0800 (PST)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH] staging: rtlwifi: phydm: remove unnecessary parentheses
-Date: Sat,  9 Mar 2019 23:32:12 +0530
-Message-Id: <20190309180212.54071-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NPKIJyVS;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1583671691;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TWfq5nd2GY4wK8xVUE1iWnaaw+LNfYVytkWf/WyD8gE=;
+	b=NPKIJyVSygbNGZHCVdRJ1eJhX0r3A4sWj9lGk1BsNbkPa+qSjo7WmzCe1ce/zwdRZxhBel
+	KRE0izpPNiuH6uKqEdqqb69sA3wLtv7YuqLu+NuU7H5iGoj2AovKAOzjoNiGFCEwhOsysf
+	xz1vh5xh8NWelVvIxAPhMg2PyBHIMAs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-392-6lXIaiXtPFWKbMetEp8hXg-1; Sun, 08 Mar 2020 08:48:10 -0400
+X-MC-Unique: 6lXIaiXtPFWKbMetEp8hXg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1748018A5510;
+	Sun,  8 Mar 2020 12:48:09 +0000 (UTC)
+Received: from elisabeth (ovpn-200-26.brq.redhat.com [10.40.200.26])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B39A360BFB;
+	Sun,  8 Mar 2020 12:48:07 +0000 (UTC)
+Date: Sun, 8 Mar 2020 13:48:01 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] [Outreachy kernel] staging: ks7010: remove line over 80
+ characters
+Message-ID: <20200308134801.349af232@elisabeth>
+In-Reply-To: <20200308123834.3377-1-payalskshirsagar1234@gmail.com>
+References: <20200308123834.3377-1-payalskshirsagar1234@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Remove unnecessary parentheses around the right hand side of assignment
-operator. Suggested by Coccinelle.
+On Sun,  8 Mar 2020 18:08:34 +0530
+Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
 
-Signed-off-by: Himadri Pandya <himadri18.07@gmail.com>
----
- drivers/staging/rtlwifi/phydm/phydm.c          | 2 +-
- drivers/staging/rtlwifi/phydm/phydm_hwconfig.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+> Remove line over 80 characters.
+> 
+> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+> ---
+>  drivers/staging/ks7010/ks7010_sdio.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/ks7010/ks7010_sdio.c b/drivers/staging/ks7010/ks7010_sdio.c
+> index 4b379542ecd5..6b2660c94f4e 100644
+> --- a/drivers/staging/ks7010/ks7010_sdio.c
+> +++ b/drivers/staging/ks7010/ks7010_sdio.c
+> @@ -446,7 +446,8 @@ static void ks_wlan_hw_rx(struct ks_wlan_private *priv, size_t size)
+>  				     DUMP_PREFIX_OFFSET,
+>  				     rx_buffer->data, 32);
+>  #endif
+> -		ret = ks7010_sdio_writeb(priv, READ_STATUS_REG, REG_STATUS_IDLE);
+> +		ret = ks7010_sdio_writeb(priv, READ_STATUS_REG,
+> +					 REG_STATUS_IDLE);
+>  		if (ret)
+>  			netdev_err(priv->net_dev, "write READ_STATUS_REG\n");
+>  
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm.c b/drivers/staging/rtlwifi/phydm/phydm.c
-index 52b85b3ddb34..a69be1c19f25 100644
---- a/drivers/staging/rtlwifi/phydm/phydm.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm.c
-@@ -1767,7 +1767,7 @@ static u8 phydm_calculate_intf_distance(void *dm_void, u32 bw, u32 fc,
- 		int_distance = (fc >= f_interference) ? (fc - f_interference) :
- 							(f_interference - fc);
- 		tone_idx_tmp =
--			(int_distance << 5); /* =10*(int_distance /0.3125) */
-+			int_distance << 5; /* =10*(int_distance /0.3125) */
- 		ODM_RT_TRACE(
- 			dm, ODM_COMP_API,
- 			"int_distance = ((%d MHz)) Mhz, tone_idx_tmp = ((%d.%d))\n",
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-index a4ad39ab3ddf..4d2630e63789 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_hwconfig.c
-@@ -1790,7 +1790,7 @@ phydm_process_rssi_for_dm_new_type(struct phy_dm_struct *dm,
- 
- 		if (undecorated_smoothed_pwdb <= 0) {
- 			accumulate_pwdb =
--				(phy_info->rx_pwdb_all << scaling_factor);
-+				phy_info->rx_pwdb_all << scaling_factor;
- 			undecorated_smoothed_pwdb = phy_info->rx_pwdb_all;
- 		} else {
- 			accumulate_pwdb = accumulate_pwdb -
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+
 -- 
-2.17.1
+Stefano
 
 
