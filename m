@@ -1,137 +1,123 @@
-X-GM-THRID: 6525272592807362560
-X-Received: by 10.28.50.4 with SMTP id y4mr519214wmy.1.1519283417734;
-        Wed, 21 Feb 2018 23:10:17 -0800 (PST)
+X-GM-THRID: 6801564551927037952
+X-Received: by 2002:a05:620a:681:: with SMTP id f1mr9936440qkh.148.1583650045203;
+        Sat, 07 Mar 2020 22:47:25 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.26.6 with SMTP id a6ls51949wma.2.gmail; Wed, 21 Feb 2018
- 23:10:16 -0800 (PST)
-X-Google-Smtp-Source: AH8x227RMbp7/67EDM52xw6S9PmndBRcw7b++J1U1M6TD+x4Gk8P7Xb4MtpPztUqU7QGTvbwVDBq
-X-Received: by 10.28.66.202 with SMTP id k71mr304488wmi.5.1519283416805;
-        Wed, 21 Feb 2018 23:10:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519283416; cv=none;
+Received: by 2002:a05:620a:15d8:: with SMTP id o24ls2573089qkm.10.gmail; Sat,
+ 07 Mar 2020 22:47:24 -0800 (PST)
+X-Google-Smtp-Source: ADFU+vsXNn8/rV7xExjvwTa3QgTCGtaYDGsqkaqpCjeypVO64Irtl5IFFpovDdy9PCqyWwco19OC
+X-Received: by 2002:a37:ac03:: with SMTP id e3mr10169783qkm.173.1583650044022;
+        Sat, 07 Mar 2020 22:47:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1583650044; cv=none;
         d=google.com; s=arc-20160816;
-        b=O46QSeUSATETKz1RdBHPawOjw5WcjVgBhNJjYOLEHl/1vcxIWxruhUxAe8AFS+rttC
-         AZ34ZX8y+sNn5IjRQZXoSKS2tprpXBUxe0+wD6vjdkNLui+9h4QV+rqR54HFb/Jn6OFY
-         PetVO8bnmtBdiTwmrSuiZrG4YTHIVTNuhmOeYax39tdNXRq5v6mBDHZNpGn28Y7EyKRX
-         aRBNrm8DSDAVFomK/TL2NWG1+pr9RAbEaSqYOhZR4Rd9DTjxYyjazivhOCgG4HmtW9Lw
-         BDqAyBqdOmGqugsnBNaERpR8FLfjs52p9bYoldrjJna897ZmjYHc/kNBymrmDZ6hlKnX
-         BhiQ==
+        b=o/OH6lEIxQu+jxpwFBfK/QdCW0uSlpIwbFnVhTrdnJy97W+D1yx5Z/QLkpmpTddzSd
+         wwYcvTecYmCyb0q4x7G9PV6ymIepfrXuF8892fPPoGdYzu3a2ZbEeObnB2MWqYimjKEx
+         7cJAVMgZ2v55jVA60poL5pg79KsRsPNWMb+UZvKnWO0gh8FW8LHM8B8/zmzR2cDEj7Qo
+         /piQ99NGCp3SqnW1gBnJM5VlsTl3gurGA/DOqcZCIycZWzhosS+H5S635dRZ5GAihFMz
+         ztK1fgly2wyRwpWCvgs1QZeoiqyxT4aEs/V7gf5yrGFU/Hl1av4JnkXBTMWAhE/VAKBT
+         smTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=9xu0r96W9mHJK3UfDuIfrP0wjJRjqm20zu9uzdaGhN0=;
-        b=LmgnsNCPw0i6U9L5VK/E7PDuNy+t8ya9O6XaNlQTumYiephIv7Qmmj9POP2taQjVt5
-         O2bW7/JeksUSmXLhXCDzOMGOMYFd8+W+m4jGtT/aRTf9WGoH+BqMYSjvnQs4zUiULS6n
-         jk/MXpPzse55GiCMbC+7JyKADUiiADP5f3gzQ+JZqASVlzVa7+ZD+nCy1TnWXj5qLp9h
-         L7KfdrtyCoIS6BXVta4cZS0bpjgOMwpTSm1vKGonFEMuc3qWW6j41Qb2f35+XEh9bpXW
-         VzD5ST7EgTvRS5hLTbnNOjpCeQBZMML20EclfWuUFaiSZt7CawsK8cvO7BYs/HneKDqQ
-         A69A==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=/WpH7BOnTTKPuLOHb6N8BwW8e+/7E1Q0LVNxQ7No6y4=;
+        b=JNB9NuLl54TxpLGVhxNNrsvr22dthGXSjZjvHieaVEsXjsGYmLpRC8tiWn3NfgH5dI
+         7R/y6Jta9Q0CB2N8LS4deR3NvcRpQ7f185XKvf0vTm9MVPcUF+HF+XXXZpYaENTBjwpO
+         wJJbYcdCK4KngBfy/Y+o3r8ez5MYqQzJxHhg3FoiTKydBms2XcU+RYDAwHm3+jBm05T6
+         K0EQEgSkEY7h2pp/4U5Sg5gPwyYTPc66Vp6f1V7DD4EnJi+3Ap0mfenM+SVr0bg0SCjE
+         C/rlJjgn0PjKrF31vUeRI2e+7RYi29/vdS9sHTrW043Ox4NwQH0Ya9v1wRIT8XsATz1f
+         kuOA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sq0cTyRp;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <dafna3@gmail.com>
-Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
-        by gmr-mx.google.com with ESMTPS id f137si43005wme.0.2018.02.21.23.10.16
+       dkim=pass header.i=@kernel.org header.s=default header.b="VtSc/ok+";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c6si402220qko.3.2020.03.07.22.47.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Feb 2018 23:10:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
+        Sat, 07 Mar 2020 22:47:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sq0cTyRp;
-       spf=pass (google.com: domain of dafna3@gmail.com designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=dafna3@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x233.google.com with SMTP id t82so1620275wmt.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Feb 2018 23:10:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=9xu0r96W9mHJK3UfDuIfrP0wjJRjqm20zu9uzdaGhN0=;
-        b=Sq0cTyRpFMLP6dWPDS14kHed3VT3AQlAU6ECWDhMOCyYvlARvhjLzNF98wlIOZFsla
-         skejlQQEzUNVtDh9qxY+aBrxGDzxhbRxHrq84In51ASNjg8po4mJctdbmiW98A8oreeN
-         QV3RXHejVF0CAybfYdZdSqWXa0OVp5zPRMKCOkYmomuCXWwBhq0Qvy9S1zBDJTqhxE/v
-         Xr8fUrmSrL/Aa2J2iNymZo7ipXBTt9X0el5zK14PXBuxwUp2VfuKAalZRDmgR/z/jxkT
-         4ec49GSUGo3fYPLCf4UcZlCsc/jsHtok39VXFrfo2XjE1zFwZjws+TnlTTj9wmW4Rrjv
-         HigQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=9xu0r96W9mHJK3UfDuIfrP0wjJRjqm20zu9uzdaGhN0=;
-        b=idFSx/YEUkoz3mNvVwFu1CXm5YoiBJM4FXFx9KkDpCpp5sPK7Nnvmr1fYzAKDFAfTX
-         uOIaLBVv8rJYaEU7E6bcnHEBI4XvXW3FncxIhyz36arT6F5Hr8E1arU35hoQ8jyGB3PF
-         5Qb/f7AWXqCYCVlzzyZwjBQos8tZ3iroC1CJHTHlJ0yyZTHr/qbvK0UuxasPpfsvOUK9
-         GrEG4Hl1yiyTbBh8G8qx6reFQS358zNSeFaGO2wYm0bPSB8KMAAzBXXvU0xHtzc9rPhJ
-         C7YG3MNNjUo5tHKEWlAaNWfP4gUAnjnoVVqXZ9pCG/mScwq7zbcF+fFfj0gCZdElIAKK
-         caRA==
-X-Gm-Message-State: APf1xPBFtz9amrkAQTGYQMGp9sobOgIHzXtfxKYL/wOMfZU8u1gRUz9o
-	nyJ4zBhyBRljSIX8ydbTMJXNoA==
-X-Received: by 10.28.97.139 with SMTP id v133mr4130309wmb.9.1519283416456;
-        Wed, 21 Feb 2018 23:10:16 -0800 (PST)
-Return-Path: <dafna3@gmail.com>
-Received: from gmail.com ([87.71.142.168])
-        by smtp.gmail.com with ESMTPSA id s18sm4218822wrg.3.2018.02.21.23.10.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Feb 2018 23:10:15 -0800 (PST)
-Date: Thu, 22 Feb 2018 09:10:12 +0200
-From: Dafna Hirschfeld <dafna3@gmail.com>
-To: aditya.shankar@microchip.com, ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b="VtSc/ok+";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 370662072A;
+	Sun,  8 Mar 2020 06:47:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1583650042;
+	bh=soSYWbNI78SEUQPhVaISR4IQ14o7pWPrzhJ/MzdLigQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VtSc/ok+iKRZC2mNuuMEfrvt2gSevdiZlqigx6U1pMwWe7iYTHFmplrPR3HCUUSu9
+	 utCwIV2DGIVEONDaXHTpuiY92r+iIbxkJDr70qc1qlG047gwtik+fGajtwsfNDtHT2
+	 yu+G4YQYuoeKscHRf5rsZEz5vOeRMPmT03Ln7veA=
+Date: Sun, 8 Mar 2020 07:47:18 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gokce Kuler <gokcekuler@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wilc1000: remove 'if' on field address
-Message-ID: <20180222071009.GA4082@gmail.com>
+Subject: Re: [PATCH] Fix line over 80 characters
+Message-ID: <20200308064718.GA3983392@kroah.com>
+References: <20200307202409.GA10517@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20200307202409.GA10517@siyah2>
 
-Remove 'if' statements testing struct's field address.
-Since such statements always return true, they are redundant.
+On Sat, Mar 07, 2020 at 11:24:09PM +0300, Gokce Kuler wrote:
+> Fix line over 80 characters
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/exfat/exfat_super.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+> index 1ae5a77..37e424f 100644
+> --- a/drivers/staging/exfat/exfat_super.c
+> +++ b/drivers/staging/exfat/exfat_super.c
+> @@ -2161,7 +2161,8 @@ static int ffsRemoveDir(struct inode *inode, struct file_id_t *fid)
+>  	mutex_lock(&p_fs->v_mutex);
+>  
+>  	clu_to_free.dir = fid->start_clu;
+> -	clu_to_free.size = (s32)((fid->size - 1) >> p_fs->cluster_size_bits) + 1;
+> +	clu_to_free.size = (s32)((fid->size - 1) >>
+> +		       	p_fs->cluster_size_bits) + 1;
+>  	clu_to_free.flags = fid->flags;
+>  
+>  	if (!is_dir_empty(sb, &clu_to_free)) {
+> -- 
+> 2.7.4
+> 
 
-Signed-off-by: Dafna Hirschfeld <dafna3@gmail.com>
----
- drivers/staging/wilc1000/linux_wlan.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+Hi,
 
-diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-index d9725ef..cf746f2 100644
---- a/drivers/staging/wilc1000/linux_wlan.c
-+++ b/drivers/staging/wilc1000/linux_wlan.c
-@@ -628,8 +628,7 @@ void wilc1000_wlan_deinit(struct net_device *dev)
- 			wl->hif_func->disable_interrupt(wl);
- 			mutex_unlock(&wl->hif_cs);
- 		}
--		if (&wl->txq_event)
--			complete(&wl->txq_event);
-+		complete(&wl->txq_event);
- 
- 		wlan_deinitialize_threads(dev);
- 		deinit_irq(dev);
-@@ -677,11 +676,8 @@ static int wlan_deinit_locks(struct net_device *dev)
- 	vif = netdev_priv(dev);
- 	wilc = vif->wilc;
- 
--	if (&wilc->hif_cs)
--		mutex_destroy(&wilc->hif_cs);
--
--	if (&wilc->rxq_cs)
--		mutex_destroy(&wilc->rxq_cs);
-+	mutex_destroy(&wilc->hif_cs);
-+	mutex_destroy(&wilc->rxq_cs);
- 
- 	return 0;
- }
-@@ -716,8 +712,7 @@ static void wlan_deinitialize_threads(struct net_device *dev)
- 
- 	wl->close = 1;
- 
--	if (&wl->txq_event)
--		complete(&wl->txq_event);
-+	complete(&wl->txq_event);
- 
- 	if (wl->txq_thread) {
- 		kthread_stop(wl->txq_thread);
--- 
-2.7.4
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
+
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 
