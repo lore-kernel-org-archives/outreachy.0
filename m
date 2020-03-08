@@ -1,77 +1,88 @@
 X-GM-THRID: 6801971762574655488
-X-Received: by 2002:a05:6000:108:: with SMTP id o8mr19220114wrx.312.1583739448068;
-        Mon, 09 Mar 2020 00:37:28 -0700 (PDT)
+X-Received: by 2002:adf:f1d2:: with SMTP id z18mr14384413wro.143.1583707463523;
+        Sun, 08 Mar 2020 15:44:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:498c:: with SMTP id r12ls1448709wrq.10.gmail; Mon, 09
- Mar 2020 00:37:26 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtVoMr8OP7NivbPrpdPy2D+u7Qw4ff0i5FqM1PHDcLlumk3igb7pyAA2pdkS+cObeV7RTwI
-X-Received: by 2002:a05:6000:12c6:: with SMTP id l6mr20378110wrx.217.1583739446915;
-        Mon, 09 Mar 2020 00:37:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583739446; cv=none;
+Received: by 2002:a7b:c4c6:: with SMTP id g6ls6113159wmk.0.canary-gmail; Sun,
+ 08 Mar 2020 15:44:22 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsNs2GP1WFeFNHgebG292vkuVQ7lsnSZThAez2VREHvpsc6YCdhrOuuMDWK1aMpgyFX9ScP
+X-Received: by 2002:a1c:e913:: with SMTP id q19mr2737988wmc.31.1583707462276;
+        Sun, 08 Mar 2020 15:44:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583707462; cv=none;
         d=google.com; s=arc-20160816;
-        b=TFvU537uxPOzn4tOSxdJ8GpGhb8vYgLeL7P3XRyzq+ZR2LQK+VNd22asGMmpN/L4n3
-         clV+S8uwrD+hojABXj7egNPAJlbLdM27RKrl0mYAuIPsyrJKIvS+O5YfB+RvSxs0CenM
-         NBu5u0wXFQRIsY73IrYv4zvhzeZl1a8LFmOYva//s2Dgd6HpTDnkSPzWPtjgxpMlPIXo
-         pX8Xv/MR33CrzJeGawos0ZqSUp60umbIt/lh2YdusTejF7hm5aPQsIkYlnvY6bMjw1Cz
-         KAveIRE3bij3k7LDx9qLrSwXv+/icyyZ5Fz6MwXM4TX/YrNas7XJCeROBjCsxI1/TPG1
-         f7yQ==
+        b=IS3yZ6gg3MErFEbp33jlh0jQN7pMZ8Drr/mhV7XC76qUyJkpY210mQ1++xgDeu8xNC
+         rw4NWSXze15v/7qIXeA9CV9RCt0r2kkvrHGBQihna3CSwoTO/mKlkD2lGWShFcXLg1WA
+         rr43MxwMbRZbjh4WFNsqalrI4DW5hUdHRLsDvEyO6H21O6zdmJzph1qLafBx23tg/15T
+         r9G2jEBe1WddZVKbHWWu7Gnq/hX8pczgbFk1i18V4G8QOab/+Rp45DbAqM4LjBMSJrVv
+         dK1A+YFv0OTtyjr6lBR3kZqQIJG0b+5Klwot0aP5ECN0LwdMF49BpIVas7aTmA18/9ne
+         bYOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=79r+zkCJN6+Ev8Xod8iGmxK2dA6M/5huSiLhr7NPRb0=;
-        b=ltTjyg1QTIOBOfnTE30VZJqRewAozgEZvmWdOxSLnEhyLlHQC7pQkd7zFBETD3JrlI
-         xZ18EAINirXAmCP8e2X3MrSsqYqn9i+MFVWE2w2W8soNCrJPgxc7LMzFICjxksfZDmef
-         MGomGv5vdDKDjj1ft2yJWsJaTuNbgplDg4L+0XVMpUDl1EV9WG0q2JLEIwysFhRv5zgL
-         VvwSoXW6iBhni/Eq7wmJKGZBC79Uarux3IaX0caLhXO4YkdCqUjAuUw4Ua9DI9Fuqa/J
-         RPEJUunyTRnLM5c9Jddhcn9xtR6nZxd3LvEfANJGQW/mKcwjerWxaTaDs+FTo1U+cNoV
-         NPSQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=aLulqPGMAmNT3URnY+u6ssx2iEjyK24EBekIcaxTQA8=;
+        b=ZCDQ0ij4TLbQECcdG6uL7ZGicgGs9JIoGPcOAGJG/ELI+pB6+iKhqArQmgiJvLpR4w
+         9yvl2M/NGcsasyBopuojJsdA5EqfBNt12se78LTxV/mZeNSadYVu+Zkb8CwgbmbJOSRn
+         hvIWnkfiEqaPJDPd5+bfRIm24mGGtRSmf7enrXQUO3kooosyX3bmiHqtBPk3mbKtLxR/
+         g/O7PFIpm6PdgbEtrqJGQ537XkwNoBiXM6L+h7n8KRaSmQTiQxI6bp9i6FSHpA45jsPV
+         MGkN3U40m6SHm8rCEfP1FGb1eQWY6MJXWLiupxGg6juWhU5rnjcIghqa+C9JQJzfOLSy
+         NaiA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id y185si342821wmd.2.2020.03.09.00.37.26
+       dkim=pass header.i=@pplo.net header.s=google header.b=Bw5ug8hd;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::330 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com. [2a00:1450:4864:20::330])
+        by gmr-mx.google.com with ESMTPS id d14si324402wru.1.2020.03.08.15.44.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2020 00:37:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 15:44:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::330 as permitted sender) client-ip=2a00:1450:4864:20::330;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,532,1574118000"; 
-   d="scan'208";a="439418492"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Mar 2020 08:37:26 +0100
-Date: Mon, 9 Mar 2020 08:37:26 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Lourdes Pedrajas <lu@pplo.net>
-cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] A question: commented out code
-In-Reply-To: <20200308224412.GA14124@supernova>
-Message-ID: <alpine.DEB.2.21.2003090836290.2676@hadrien>
-References: <20200308224412.GA14124@supernova>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@pplo.net header.s=google header.b=Bw5ug8hd;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::330 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wm1-x330.google.com with SMTP id a141so7799269wme.2
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 15:44:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=aLulqPGMAmNT3URnY+u6ssx2iEjyK24EBekIcaxTQA8=;
+        b=Bw5ug8hd6K+t9uvMNHXd024OV12wD5JCRHFGauNZwnL1B+r6klFlxMaHQj/Osse5E8
+         B/6tD+E1ZQcqiae5y982rGmCaWwlIAFQePZBfa9Rx5ale4gdOS1CR2NN9b/yovjDCL5i
+         afzW/vwM0j4jS8oCOxhYc1CP+H3xQsKQf6URk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=aLulqPGMAmNT3URnY+u6ssx2iEjyK24EBekIcaxTQA8=;
+        b=rg+SRlpmDbu08G19Ht4tBlAiEUL5BF9JcT8rhByl20sgMQvqxcVmxD5ozjhorf24wj
+         0zJ0etYKqfixYd/gb48M6tfMPBauPuQX7DRVc2u64bSAYeASgy8eKABs+tChyqZpl2A/
+         YHlGG5NX7s2mfC6rpeYcJqs9a+jM5dHQdxwJDiFq2L5w46KEoSbNs5JvXtObAS/SFyH8
+         EHYghaA8yAb053cppBbNHuKynsJslpL65aXLGjel+LjzRnLuWv0dnO1grqeDJ4Pg3rJ2
+         40hw+GdgaOJdw/5oBtmCifoBU4TzY8LNA7ZkLDYU2eqLeRsQJTM8rxa266t6I689c54P
+         1niA==
+X-Gm-Message-State: ANhLgQ3aofSRAqdCE9mpMnqGwrYU5oxc6bjF/uAYXapk6sgsmTUFeSpw
+	1IdSBkwWWT+n+7Yt7sulzbvtSAFBmL8=
+X-Received: by 2002:a7b:c770:: with SMTP id x16mr2471052wmk.159.1583707461713;
+        Sun, 08 Mar 2020 15:44:21 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id o3sm26778226wme.36.2020.03.08.15.44.20
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 08 Mar 2020 15:44:21 -0700 (PDT)
+Date: Sun, 8 Mar 2020 23:44:12 +0100
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com
+Subject: A question: commented out code
+Message-ID: <20200308224412.GA14124@supernova>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sun, 8 Mar 2020, Lourdes Pedrajas wrote:
+Is removing commented out, unused code, a good cleanup patch? I'm
+wondering that maybe that code is there for a reason. I checked TODO files
+prior to removing that code to see if they provide a reason, but for the files 
+I edited, they did not.
 
-> Is removing commented out, unused code, a good cleanup patch? I'm
-> wondering that maybe that code is there for a reason. I checked TODO files
-> prior to removing that code to see if they provide a reason, but for the files
-> I edited, they did not.
-
-The general principle is that it should go.  The git history is always
-there, so the code is not lost forever.  You can use your judgement, of
-course.
-
-julia
-
->
-> Thank you!
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200308224412.GA14124%40supernova.
->
+Thank you!
 
