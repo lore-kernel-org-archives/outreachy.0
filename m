@@ -1,95 +1,110 @@
 X-GM-THRID: 6801796609244921856
-X-Received: by 2002:a0c:f98e:: with SMTP id t14mr10453032qvn.74.1583667448354;
-        Sun, 08 Mar 2020 04:37:28 -0700 (PDT)
+X-Received: by 2002:aca:2104:: with SMTP id 4mr8456731oiz.127.1583666682993;
+        Sun, 08 Mar 2020 04:24:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:2ca1:: with SMTP id g30ls248055qtd.1.gmail; Sun, 08 Mar
- 2020 04:37:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtCZOT/GwnPfTsQTpciOm/ZW3Gou2xAAH+l91PXka0M4U9k7sqteyN6PnT1mvJObkjNyREe
-X-Received: by 2002:ac8:7b94:: with SMTP id p20mr10627578qtu.122.1583667446949;
-        Sun, 08 Mar 2020 04:37:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583667446; cv=none;
+Received: by 2002:aca:5513:: with SMTP id j19ls1892809oib.5.gmail; Sun, 08 Mar
+ 2020 04:24:41 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuHOfbrel8CbDdXgXOOkO4xlGV+aZa4ag4MLrrtxE9ifjh5buXiZXnApiWm/U61LSVvwGA9
+X-Received: by 2002:aca:be09:: with SMTP id o9mr8435311oif.177.1583666681915;
+        Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583666681; cv=none;
         d=google.com; s=arc-20160816;
-        b=caBc4CaEy+7KUMgVLgS0Cbo1X0zCLJ/eVlP9iLyG+el93cM4oekmU4bLEYnOp1SHf6
-         fOosEsRh//nU4K5rA8/Ow1NjlFe5hLpa/0VwxV15EFexEm5F8x6t1scshYfrVPGMuWYJ
-         bu15L9Ph05GvTHa51pw/DfN0Z3hagiKNE7y2wFCUlfPZ/Yz0FIaxmxkYSfvASd1HTJMx
-         KkqiAxFhERXpj5QQtV0Hu+jSaPfdz1V07EegMN/vSEi73s+SmDFaZAxyZcEvBIqpap6s
-         bANcN/5ysQvCR5DvRKUWDaCz20IXRhzo2YlYMLtwnLAH3B3n6bZTuZJxOWRzXH87cP4P
-         vn2g==
+        b=KtR7P634qToZOJwSeXfnZ5yJZcXqLnhlSKcXkbabmtutRhM+V7NnBddji7NiI5FaxT
+         0cSIxQXrvcVvpWujgHSS6B/tVX6AtA3Rl1DXHBJ4pLDbBaWS2GqEPe3WwfgrgtuACX3O
+         7Hd9b+EP11mqBj3OwjCyRWSxbRme2tfn8FWzVORuLREQkwQdTLl/WU/t0nMi9uCces2f
+         8NpG+YpwcXQ9iJf49F3437THCAyznUGKL7ZlSnBkrSfWKn01Ex82es5FucIH2+PddEri
+         IMMgJnK5OF7UfSmbwtCFhkdrg/V5LcTPJygdQJxswTESKscqLBAnEp1KblRkTibRj6dO
+         ysrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=Hbhw0QN6dd6kdK6H7AQTIJcY05CrMrKE6ez2mmfcO8c=;
-        b=0PDWLcHkPL++8s6olhGa8UDwO9+sEMQNyA6JY9bLyQL7TRjpT+zw8DsD0p7sZ8OB2Z
-         5j9QdeFMdyepC/dRkgH51O8cXQv6lnCVJMHckoqT2C+45ABMpm3xOb0GHecXGbtlh/xl
-         Bd27ZoVGrEc9Z6dtrkiddtiOotzP0ml770+JOOeR79lPseB4q4letzF5rMs9jHwYVgKd
-         GVgUVNZiGwHIseXXq5OQsA2b26rv8eEe7WBlHDQx5m9+sv+u3gLx1g+Bmmgtiy0QyDHB
-         bqYNG17i/BMxZRC/ymRUd5B91/A1d6ihvNsnvExmBZNrraaKIOPs04g3yBRT0mysdlwQ
-         83zQ==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=RRKCrppZ9AAtwokRlCEkVXAkvio7sBjyCBzyt/3L0rk=;
+        b=b04F+vq1qql22sObZyepcXXBdQtivCSBeBbrIlOT9jzE2zhdvGnBgiEegD1Bdzb8TS
+         fcheOV652KdVnx9AY6XtT0Js2uey6Wydu8188gaJBa9Sm+zq4/u3YUhhEDut8Hx4q+KV
+         BEJXdUB52jtugVdbE6Z6Yck13pPoa0mCSTjrgBE1O1+Fx1R9p7930eXKo09IcmU9qrU/
+         sJ5ZXF14I27ICMsh3R0mIba1DnHcfi/BARGXKLQigkp1ral1dd8HK6AD8JE4MwhR2w9v
+         DgTGBFrYhrMiPlbId6cnXbXga/EBO0jBa/TMG8Gu71dLivkXxdVUMEOy9+BcAmMwLo8G
+         6/Yw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=meDWqvuU;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id g23si349316qki.4.2020.03.08.04.37.26
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gRJ65kbJ;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-il1-x131.google.com (mail-il1-x131.google.com. [2607:f8b0:4864:20::131])
+        by gmr-mx.google.com with ESMTPS id m132si32284oig.3.2020.03.08.04.24.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Mar 2020 04:37:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) client-ip=2607:f8b0:4864:20::131;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=meDWqvuU;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 42AD120663;
-	Sun,  8 Mar 2020 11:37:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1583667445;
-	bh=oSRfdoPglSss1PSXHxjpDPTscNURguGdjodEG2Wknac=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=meDWqvuU1jTldwIyNYFOx2SWWg0pc2X9s9Uk4Be5BJIfM9BVfJEmxOYPZimaF13Lw
-	 IBY9IEfSIhSJRBmjaYq7hub3JgyDdDpsPOPaznqQo4rIq692YdYNDYy5OzDEg9iTTO
-	 QRIfKrOPa9PURnF0sQBC4ZRSytuvq4+ccP/wdo6Y=
-Date: Sun, 8 Mar 2020 12:37:23 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>,
-	Julia Lawall <julia.lawall@inria.fr>,
-	Vaishali Thakkar <vthakkar@vaishalithakkar.in>, helen@koikeco.de
-Subject: Re: Using 4.18.0-rc7+ kernel
-Message-ID: <20200308113723.GA4040818@kroah.com>
-References: <CAND3PyeWnvf4Zu87m_kOBw6Vz7MOwJfpR7wHUyh_udvEDvpJdw@mail.gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gRJ65kbJ;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-il1-x131.google.com with SMTP id e8so6097605ilc.13
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=RRKCrppZ9AAtwokRlCEkVXAkvio7sBjyCBzyt/3L0rk=;
+        b=gRJ65kbJUZFcP4XYzVGaE5AIf1oE7ziIA7wXL4Pp41FajYVepGqsZebicZmGncaTWk
+         x7HSGAZ+Mf74bxpvdjxtgiCCuSBHkMfPJvPmJ8aBwX3p9Wc85zVD3n+XxAeuHxJL7keH
+         NCAFWeXtLKrkre6psdxLZpSgJoGbafaSEtYCAjzCo+1wcfzQWVOrt+TC1liJNbbi7K62
+         aWb0j8Qkb+WOVbo3Ilo1fHCT1JaSjeOnx0lL+rw8nK+L4HR11CXVJmFlIg7BeCSAgfn7
+         YMXd8FehZNNgY/gx6kPBYXX6xAZeGOUI6Oq/4fMj0XOUId0LCWHCearQOzg60Bl06fTG
+         ii0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=RRKCrppZ9AAtwokRlCEkVXAkvio7sBjyCBzyt/3L0rk=;
+        b=isSiHMWC9Ep6j9OMUTjEXN4qsVIGWlVwVqjjBuCMNxQvRISY08L04KyTTmnhaVrCva
+         keoG9tsi7J2i+xqyXLeNY75tm2YK2hrvRIEUjUg93XrN1uefr/SXyRPfNk7FFf3BVuYx
+         TMCX10wydskhgTKji4MPioKO/IJGhSLEj47Zxy+3UQaEt5CYTPZdMXNWucxg4BIxMYb6
+         Npqsu8m3TDIyI4ZOQdhVeJKmMR34AG7wuvNd1dhGjaE0qEhhWx+GwReXSVXZQUIeDYMh
+         cPdEqEMSemI9lHTjXvELg/qd7RHCrBhQydctPxzv++D6yuGdw4beD99pu4zfoE91ke2+
+         WeLw==
+X-Gm-Message-State: ANhLgQ1AeSF91jl79BrWinQXVsp5NTkRlcteFgLVlaYjp4N+DdPUb5BL
+	yqt7qZMgrBY31KUYcjlb1lel5qG+t1UBYEIW2kmhFXrhdgs=
+X-Received: by 2002:a92:bf0b:: with SMTP id z11mr2742269ilh.213.1583666681387;
+ Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAND3PyeWnvf4Zu87m_kOBw6Vz7MOwJfpR7wHUyh_udvEDvpJdw@mail.gmail.com>
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+Date: Sun, 8 Mar 2020 16:54:30 +0530
+Message-ID: <CAND3PyeWnvf4Zu87m_kOBw6Vz7MOwJfpR7wHUyh_udvEDvpJdw@mail.gmail.com>
+Subject: Using 4.18.0-rc7+ kernel
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>, Julia Lawall <julia.lawall@inria.fr>, 
+	Vaishali Thakkar <vthakkar@vaishalithakkar.in>, helen@koikeco.de, 
+	Greg KH <gregkh@linuxfoundation.org>
+Content-Type: multipart/alternative; boundary="000000000000fca11d05a0562133"
 
-On Sun, Mar 08, 2020 at 04:54:30PM +0530, Shreeya Patel wrote:
-> Hi,
-> 
-> I am currently using 4.18.0-rc7+ custom kernel so to start with my
-> contributions is it recommended to compile the latest kernel or it will be
-> fine to just update it using the following commands.
-> git fetch origin
-> git rebase origin/staging-testing
-> 
-> Since the compilation process is very lengthy and takes a lot of time I
-> would like to know if it is just fine to update the kernel rather than
-> always upgrading it.
+--000000000000fca11d05a0562133
+Content-Type: text/plain; charset="UTF-8"
 
-What do you mean "update" instead of "upgrading"?
+Hi,
 
-You should always run the latest kernel version, and especially when you
-are making changes to the kernel, otherwise it's hard to know if your
-change worked properly or not.
+I am currently using 4.18.0-rc7+ custom kernel so to start with my
+contributions is it recommended to compile the latest kernel or it will be
+fine to just update it using the following commands.
+git fetch origin
+git rebase origin/staging-testing
 
-It should not take that long to rebuild a kernel, look at the 'make
-localmodconfig' option for how to rebuild a kernel that only includes
-the drivers and modules that you currently have in your system.
+Since the compilation process is very lengthy and takes a lot of time I
+would like to know if it is just fine to update the kernel rather than
+always upgrading it.
 
-And 4.18-rc7 is _VERY_ old and obsolete, I would not use that at all :)
+Thanks
 
-good luck!
+--000000000000fca11d05a0562133
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-greg k-h
+<div dir=3D"ltr">Hi,<div><br></div><div>I am currently using 4.18.0-rc7+ cu=
+stom kernel so to start with my contributions is it recommended to compile =
+the latest kernel or it will be fine to just update it using the following =
+commands.</div><font face=3D"monospace">git fetch origin<br>git rebase orig=
+in/staging-testing</font><div><font face=3D"monospace"><br></font></div><di=
+v><font face=3D"monospace">S</font>ince the compilation process is very len=
+gthy and takes a lot of time I would like to know if it is just fine to upd=
+ate the kernel rather than always upgrading it.</div><div><br></div><div>Th=
+anks</div></div>
+
+--000000000000fca11d05a0562133--
 
