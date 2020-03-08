@@ -1,114 +1,103 @@
 X-GM-THRID: 6801909209397985280
-X-Received: by 2002:ae9:f811:: with SMTP id x17mr13596036qkh.207.1583754098746;
-        Mon, 09 Mar 2020 04:41:38 -0700 (PDT)
+X-Received: by 2002:a92:8f91:: with SMTP id r17mr11270995ilk.97.1583692899461;
+        Sun, 08 Mar 2020 11:41:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5057:: with SMTP id h23ls3495794qtm.8.gmail; Mon, 09 Mar
- 2020 04:41:37 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuu7Qd+ulIjNW6rbqUB6jpHd8ptMI9o13hBl/Z8ReEIugCNe+VfukzSm5QYsYfZv9qSlAoo
-X-Received: by 2002:aed:3e8e:: with SMTP id n14mr11578244qtf.245.1583754097581;
-        Mon, 09 Mar 2020 04:41:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583754097; cv=none;
+Received: by 2002:a6b:6216:: with SMTP id f22ls1039027iog.6.gmail; Sun, 08 Mar
+ 2020 11:41:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtRfk4AO50wwz2q/Y1FaUmYhfIBaeeO3xaOxQ41+LAU6YdtwzLszvn14wp1YOd93RiPqhoA
+X-Received: by 2002:a6b:d207:: with SMTP id q7mr10777779iob.49.1583692897987;
+        Sun, 08 Mar 2020 11:41:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583692897; cv=none;
         d=google.com; s=arc-20160816;
-        b=P7WXGAwGhnYoOyBNUPZxxwBRGH+iLHKXTjJC2sLOoqNO72VjQu7d3/oqZEm3v+0jMq
-         gYXvMaxyZ/5dAre8Ip5/rYXdNKq0gS8+9HnaqSsrfqRQbBcTnAdcHlOVyXNTUIKCbm8d
-         7qu7aI2ZhH4JFmh/05IG+nQUkjIE30mgHnBlWFyOoKRSdwTcsDDEMAmuXnO+pR3wgHMA
-         gqUcWNmIx/RxBaiG87dL1AsknTHysZnIk1OywNka6PNTQ5vIqAgVb6SdO6q/+groDgI0
-         pycw1xCbHzePh6VlPm7s9uqRxqvwmuUxwF3wF0/dqsv2SWiDPyMjROXjTnRayAs4AqZT
-         xv0w==
+        b=ChfxdZeeTu3tpAaD8opiPm0QpdUmcUUorCzMPZ246olIZ9gLV5vdtywCif0U6mnoz8
+         55J5pXP4OY8Qo4v6VKo1yCvH+PwFOkro/W+xC8Rni2YniftNKUCTHd5wj6pBUg9U8G9m
+         07xyxvaq/Jm2SbVhJa2Wv89PW3pmZnx4B5quzUNtK4iyHag2jwed2lPGt0AOVdxl0jiI
+         DuzjPvEJTs4Q74R77pBUSCW4H3sz3T1TGAi7q4wOk/f5ExO7GCFJE7vv7PJFNuq+L+FM
+         zy0MKIEvWm9nJXptKrQycopVFz7h4dJSV0HEFEHlH4DRt9ilEdNINsVsp60zRgtqXVXl
+         eRFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=uqybIHWcsy/qmwfAriyK1E/1idAgAO0+lCmcUHroPZE=;
-        b=GZbx43GWVk4sItk7+WxrZ5VScHyZ+paWO3s/5VyJe3iaxlOSxzw3BZmW4eLv7XMEn8
-         8k/7bqwzzckixM49evzg4KYl2BzUK6S10fmjPjIcZigqmivRacM3tYtF0JIg0dO4Y9KI
-         2CabhzMAwuGAjJZvOvSijeluxlU5JjgxuMEbK8Ki6GLZgs4Ug1VkZmRGfLwe6JM4k9xJ
-         EodT2PmW5/5IAlZcPkjBZuL6sdg+DBv72TG7B50lgpmsdf/WgkibRn63yE5K/Ub2Sc/d
-         6fY0GOAEoEV5E+XaLfAtRpdZ8iAicFFPNu3azG6C2KbJfw+VDjohiM/EHnFUV0yj/n9l
-         jmUA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=KZcBSne3NQL5WYhAMhkrZSDj6PrNqCRZgDHjM/oqLAs=;
+        b=NTtsRv8XU4HmcP97wT8e5Jt0yi91tdHUmtQQ3B/qQ0YkiOUvXGte/ShJtonJqLN3KL
+         w3CNUEzfKuYzU4VXgRQouk93V2z80Cp86z7ZeBWWoP09aWcKym37VNHl272r+PafwT7E
+         gIxVMTzq+KigJIxRdalEJZq96SUktQR5sSjk6LQWmnsPYBHbl4bJyZj3GPC6b3GAaPu8
+         LtwdarGt991Lj2mtTVLn7BOCVzKauxP9wHklkAKhqwyw5WrfhMT/ZH7GVGlNALOEo4Vu
+         Z4DojqGqee0zfPOn2239qIc8F8MQRpMziJjiVB9qFB2LUk7JefOSNTugwrPVfORzP2DI
+         GPGA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dna20TN3;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by gmr-mx.google.com with ESMTPS id c6si598387qko.3.2020.03.09.04.41.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m1J9tNBD;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id t10si459180ilf.3.2020.03.08.11.41.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2020 04:41:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Mar 2020 11:41:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dna20TN3;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1583754097;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uqybIHWcsy/qmwfAriyK1E/1idAgAO0+lCmcUHroPZE=;
-	b=Dna20TN3BhJz464fBirYuw4uaQ6+8oWw4mFVhIotlZjzdvvXIv34fJ3CK4C9zNQCIX6jmm
-	kRJxLze4sEoO5C2BqXQ26p1ISbRoyXEUZ3JPysQajCrobu5FK8NOWADAerc+T+VcEYWVf2
-	Ix8CkBRJdsFvZw9i4z/FgPnq5k8C2EU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-477-TukY40jrPB68iv42BJaYQA-1; Mon, 09 Mar 2020 07:41:35 -0400
-X-MC-Unique: TukY40jrPB68iv42BJaYQA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D6280100550E;
-	Mon,  9 Mar 2020 11:41:34 +0000 (UTC)
-Received: from elisabeth (ovpn-200-26.brq.redhat.com [10.40.200.26])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AFA015D9C5;
-	Mon,  9 Mar 2020 11:41:33 +0000 (UTC)
-Date: Mon, 9 Mar 2020 12:41:28 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel] staging: wfx: remove blank line
-Message-ID: <20200309124128.10c8bf6d@elisabeth>
-In-Reply-To: <20200308184130.5458-1-payalskshirsagar1234@gmail.com>
-References: <20200308184130.5458-1-payalskshirsagar1234@gmail.com>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m1J9tNBD;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id n24so3656781pgk.11
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 11:41:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=KZcBSne3NQL5WYhAMhkrZSDj6PrNqCRZgDHjM/oqLAs=;
+        b=m1J9tNBD+4aG5x4Ikm8+NrNiE1tpx1/8VtY1nolEYYn3UGJaN/KKVH+e7zqE0roCfo
+         nPesHDlwYHdFJz+crBpt01x0xmWX2Mo87G7Py+y1GfSdyDl0sTPF1JJdCKZexlO1MFz0
+         gfAGFl0wUR0E+wVxRmO30w3Ae3UCAYqKRccnmbkC0UXdbl5CuPZ7vCtqib3TVKvCh6yP
+         2M2Hag7gn8Vh1HG6R0CPXw5l86D8do8NBx4MxzObxAoylRPQrinUcDtL0mRFJB1bnKAd
+         LQfD5qm6xTd6BQAjJolCEjFgsUzUmmevRDZUXhwEuxDCG/R1zx3gTw0sGfyfvkq5QKiw
+         6GxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=KZcBSne3NQL5WYhAMhkrZSDj6PrNqCRZgDHjM/oqLAs=;
+        b=uIQdY3olVEgTvbvjpuvIdwlcW1sGEShnrn8Kq+pNYkHFs83AqsU0UT1T+khK+/Dp5M
+         jplSlHLsOdr5fnck+23Iwr480R5q8hUhQc+dYJx1uus7afzpXa2hGVl9eZQaJNyW/Zl0
+         utFz00I/8uvG2kGFhb7KxheIzdfhUj1scJPtBcfOmqeMjQ55mOT3sUM5vhlyPjoa+m4o
+         06uy/W7rruppB8PwruHIz9Ds7p+rY9/mVCZqJs9PLsevEfS/MJ5PtDuk4CqH5A7YSmkJ
+         08Y5fbfSX5QcXMMBDFi3ekzwtjZAEqaryb1YvZOQfgu5kCsvqp8Wvmp7j6eqo9DCDOW/
+         mK7w==
+X-Gm-Message-State: ANhLgQ0wvmGXjdj5QIxwOyujoKCaW9U5CH3YuvG8aKOxQPmXDEvtPUxM
+	Hji1ntmPQ5Eemq9gKaUGrz8=
+X-Received: by 2002:a62:195:: with SMTP id 143mr13454560pfb.17.1583692897252;
+        Sun, 08 Mar 2020 11:41:37 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([157.33.184.119])
+        by smtp.gmail.com with ESMTPSA id x16sm15408649pfq.40.2020.03.08.11.41.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Mar 2020 11:41:36 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH] [Outreachy kernel] staging: wfx: remove blank line
+Date: Mon,  9 Mar 2020 00:11:30 +0530
+Message-Id: <20200308184130.5458-1-payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Mon,  9 Mar 2020 00:11:30 +0530
-Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
+Blank line is not necessary before a close brace '}', remove it.
 
-> Blank line is not necessary before a close brace '}', remove it.
-> 
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
->  drivers/staging/wfx/data_rx.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/staging/wfx/data_rx.c b/drivers/staging/wfx/data_rx.c
-> index 5d198457c6ce..2a09f6b978c3 100644
-> --- a/drivers/staging/wfx/data_rx.c
-> +++ b/drivers/staging/wfx/data_rx.c
-> @@ -62,7 +62,6 @@ static int wfx_drop_encrypt_data(struct wfx_dev *wdev,
->  	memmove(skb->data + iv_len, skb->data, hdrlen);
->  	skb_pull(skb, iv_len);
->  	return 0;
-> -
->  }
->  
->  void wfx_rx_cb(struct wfx_vif *wvif,
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+ drivers/staging/wfx/data_rx.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-As you're removing one single blank line from a single function, for
-the future, the commit title could be more descriptive: "staging: wfx:
-remove excess newline in wfx_drop_encrypt_data()". This might be
-subject to personal taste, though. Change looks good per se.
-
-Same here, you should Cc: more people.
-
+diff --git a/drivers/staging/wfx/data_rx.c b/drivers/staging/wfx/data_rx.c
+index 5d198457c6ce..2a09f6b978c3 100644
+--- a/drivers/staging/wfx/data_rx.c
++++ b/drivers/staging/wfx/data_rx.c
+@@ -62,7 +62,6 @@ static int wfx_drop_encrypt_data(struct wfx_dev *wdev,
+ 	memmove(skb->data + iv_len, skb->data, hdrlen);
+ 	skb_pull(skb, iv_len);
+ 	return 0;
+-
+ }
+ 
+ void wfx_rx_cb(struct wfx_vif *wvif,
 -- 
-Stefano
+2.17.1
 
 
