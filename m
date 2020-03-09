@@ -1,94 +1,175 @@
-X-GM-THRID: 6619244143382102016
-X-Received: by 2002:a9d:72c3:: with SMTP id d3mr8164172otk.2.1541162874609;
-        Fri, 02 Nov 2018 05:47:54 -0700 (PDT)
+X-GM-THRID: 6801960699600830464
+X-Received: by 2002:a05:651c:2006:: with SMTP id s6mr10129349ljo.251.1583773093761;
+        Mon, 09 Mar 2020 09:58:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:278a:: with SMTP id c10ls293775otb.13.gmail; Fri, 02 Nov
- 2018 05:47:53 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cT186bwdomH6WuKM0IyajSgtxy+f9i7M6C1W5a1Bzx7YwD/436C1U0VwHjuQJJ9e9Wy2qM
-X-Received: by 2002:a9d:48f8:: with SMTP id a53mr7698735otj.18.1541162873622;
-        Fri, 02 Nov 2018 05:47:53 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1541162873; cv=pass;
+Received: by 2002:a2e:b4e5:: with SMTP id s5ls1131418ljm.6.gmail; Mon, 09 Mar
+ 2020 09:58:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuONbZ5qCd8VGwxZMlGmzc5MGK8wDHl7JPmNAmoJshaS0g6qke7GJMXuq2Oy/hnQn2iML5x
+X-Received: by 2002:a2e:a584:: with SMTP id m4mr10431471ljp.46.1583773092439;
+        Mon, 09 Mar 2020 09:58:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583773092; cv=none;
         d=google.com; s=arc-20160816;
-        b=QcJO9jDPH7oHfl36jVfGauB1Q81qQ1YDSSb3vhPbzQQoGH35PAx2cn8yb/BOSPwmEF
-         GUw38M51WAdvhYYBteSVxp38fX+9R0BpbgbF/Lx1Fmx4zKGfTnf9hIV0XlTStRTY/QW1
-         0MzwVaYUF6lp1NHMjIUJB2ZLZTCx3/r1rlGfqevkEEA1cDOE6zDfJxc5qLX/tvF2msdA
-         Fe3mQYUgtu1hC4PsiYZhhaDgN1I9tgD1Q1do2L/3YPuTOZHLI8FC50X11CZ/gZBXg80q
-         sKEcpOi5j/1mYoheQK/J1VxloQN5w4Sq2usfU70n23PPit82wppiNXeVOifI0JV7CWJU
-         /x1Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=q99eMdmRjqUna6F0e8jyRns0XGQ6+0rSlG5FcKv2pxY=;
-        b=klW08qvahw0vdS3kAakOB9wIPsy4mhgF4bcosRoZ6Rtc5i67p5ZD29J7+9/xdObWVq
-         oGOG7KB5PCgQ9ppTnWqJoXbCN4gC93CN+c1/87uj3eiMHPk28qS7cLdIdPyxMD89ACox
-         1v9obIhDyRgQA/el8HcYQhYLM0NQmR9p01DPUx4FIXGEcVrkQmLeaVPtqCTf4LfrZM56
-         VlTTjGqRx8Peyw2XelgolmLEih3i7tfiW1DGo7WpvMWYEVRFCeZZ/0y5hN5G+KaYGKqg
-         ocQGo/rw3Rv1QmWfOi+K1gku0gdN7E73xpb7uhbehSYaZ25OsS6ffn0O0siZPv0BKkBl
-         I0qg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=CriEABbP;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id p24si786003otk.4.2018.11.02.05.47.52
+        b=cTsZwEZslFwAqJawMyeQfnEonTwzA5gJi54zkwrYlIg9cwBslrbpl2EeahOb2J1a2X
+         C+9Uwc8kJbouViha29IafCOdWBQi0cbNevv2ya9Jq5fZbfKBxkMym0GkPGjPozX7udN/
+         l49P3maoUFUnlX3Jq+atFuWJ6HGPdzyy4JWNUDe02upkweDCn2Ppv3GEKOd2n1G67CJA
+         m52Yma7rbVFk9KWqn1QeMHFFfkyq4IGyx/sNk3VjjDTKEGHRnnZHiLmHgS9fcvxLHNz6
+         iDSWkCahs14fwBktEVlBR/9kkTHyksYW/xnwPxGN+Z1THTt1XJ0gvphixQzfs4cXjywN
+         7bGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=EwqceLAk7Gfity6UQKYu04sbw4Ezw8rphZ2RobkI+YA=;
+        b=Jwb+P3aIm1aT9TDoAmWF5Uj6bbKHbvt2ePg8nu748LhD39gqP/PJ6GLRLsIwiPt0Ps
+         c1Yc/wD4EEBOxzZGkgN8XfCbiiS8ANHLQvTa+ih5PZOnwiSlBApV/3UqWfpsW/hc5LsL
+         7A0hte8ScfAz7O+gjzql1tNNtvULXlamomtC7dFKi6eDlkiUTAAUCu0UF/MLnOeJq4+I
+         SVjkI4pU3cAtIzvtdT+/WAX4y037bCrewgdhh3tqOp+fXCRMBg/qfb5rlTfrWJrH4+Kt
+         g1LqloDozN1lM2W8sf1DPsylBouzbAvDhTZMDTiDuTlih2+CCREGWjcX7wH8czKWww3e
+         nYqg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@pplo.net header.s=google header.b=P+ky5BcM;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id s8si565156ljg.0.2020.03.09.09.58.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Nov 2018 05:47:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Mar 2020 09:58:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=CriEABbP;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541162869; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=IwQVM3D3veHl5UVX6zOy4yWv1qDKV3UzsrU8jhGDzyAt7FcxM2v1PzAJG009Ju5DCNqF+YCoSf6Jilr4UVbmGLbsnFFw/TvwaeecE3F/ptdTsG/ekY8JDDfmtxQY4KV+WmvZNuOoH+dawdqlYlSti4hRM5PylQgqz9fQnu8gF4I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541162869; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=q99eMdmRjqUna6F0e8jyRns0XGQ6+0rSlG5FcKv2pxY=; 
-	b=HS7+HKotVkNC4fNmDl5Cs85G1a3OOiGMCcLtGUmUutJ0uv8syEItoNzYJEoiUNAVPNrptZ89OzrjWmVcCHxtWLEOv1o7bOXDglajGcj7n9yrq0mEzLp8fTLmAYno13/vVCiMwvb21CJzLevEyuROSef7BKTDmGmHWIk9lGjCpvQ=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541162869;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=542; bh=q99eMdmRjqUna6F0e8jyRns0XGQ6+0rSlG5FcKv2pxY=;
-	b=CriEABbPFx1fGojGnzw16thbVySLPGDaSeKheMregv+xEzXAaLkgd/IBVfofxqdk
-	gbjgaIlso82Vu5J84wmMDjUjQu79M6CJb4CUCX9d7G7dY4/6PXEOOidCBy+GrD7o/C+
-	m8Tv3EDfssnwH+q+HE6VPnRZWrZ/JP54yonG7ttg=
-Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 1541162867841874.6809470728804; Fri, 2 Nov 2018 13:47:47 +0100 (CET)
-Date: Fri, 2 Nov 2018 12:47:46 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
+       dkim=pass header.i=@pplo.net header.s=google header.b=P+ky5BcM;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x442.google.com with SMTP id 6so12159709wre.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 09:58:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=EwqceLAk7Gfity6UQKYu04sbw4Ezw8rphZ2RobkI+YA=;
+        b=P+ky5BcMa976WLaOGgIbvf3djqeYTty//PIGjqujaYdttd0tJLLt/311Ly079afq4E
+         S7cw5bWDDOzDURg8sl89+/60m0h98viNEhB2FijyAuqV/hhtlwuruDSFg1NT8uLuKESo
+         tmTv+wMeR/RD19p0wLY+HrsjtJCaE2OOU3cAM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=EwqceLAk7Gfity6UQKYu04sbw4Ezw8rphZ2RobkI+YA=;
+        b=KLUx2dW4iUj1WDrJa9cA5WCODQi2ARd9vyzZ7/WCdI9aFmxZ/Qr57Nop7tinteFdsh
+         ofKvXwPkzOWgJCqIDKWoGvnFg/hRspe3NX1hWZRbRaZWi1lzhPNwJNH6jbYGtKcrfGuP
+         aoHiccHP57l2Pb7Rmgjjs1DmgvAnq5VNzXH2VyyUR+vZ03y6M9e7OhgjkXha+YZNhNDa
+         DnEG8PPfUjC+4kpuTYTGvjEDrInCCp4MkkPJot3UO2JOIinQ08DCANPIxlKv41fluEPV
+         M40bZOj5f+Tjnwum/o0jsvFo4Vh5IFV9gYNHRKFe1WCD9DZJjPlDzzi+SJl83TwkyG2h
+         jQbQ==
+X-Gm-Message-State: ANhLgQ3fKdyTg/PCM+Ue9LRISJZQfY1D8zsI50ifmNMc4BdDh3RuNIlF
+	I5ZmHl3LHLQw18yAgKZRe1MGyY0sSM4JvA==
+X-Received: by 2002:adf:e98c:: with SMTP id h12mr5838189wrm.345.1583773091451;
+        Mon, 09 Mar 2020 09:58:11 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id h3sm65418549wrb.23.2020.03.09.09.58.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Mar 2020 09:58:10 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
 To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v2 0/5] staging: greybus Addressed minor styling issues
-Message-ID: <cover.1541162672.git.code@wizofe.uk>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
+Cc: gregkh@linuxfoundation.org,
+	valdis.kletnieks@vt.edu
+Subject: [PATCH] staging: exfat: exfat_super.c: remove commented out function
+Date: Mon,  9 Mar 2020 17:58:01 +0100
+Message-Id: <20200309165801.4827-1-lu@pplo.net>
+X-Mailer: git-send-email 2.17.1
 
-Changes in v2:
-	- Ammend commit messages per recommendation of julia
-	- Correct typo on type per note from gregkh
+Remove function ffsSetAttr() which is unused.
 
-Ioannis Valasakis (5):
-  staging: greybus Align parameters to parentheses
-  staging: greybus Shorten comparison to NULL
-  staging: greybus Add a blank line after declaration
-  staging: greybus Fix SPDX identifier
-  staging: greybus Align arguments with parentheses
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+---
+ drivers/staging/exfat/exfat_super.c | 77 -----------------------------
+ 1 file changed, 77 deletions(-)
 
- drivers/staging/greybus/control.h | 5 +++--
- drivers/staging/greybus/core.c    | 6 +++---
- 2 files changed, 6 insertions(+), 5 deletions(-)
-
+diff --git a/drivers/staging/exfat/exfat_super.c b/drivers/staging/exfat/exfat_super.c
+index 75813d0fe7a7..c3d1a77ad060 100644
+--- a/drivers/staging/exfat/exfat_super.c
++++ b/drivers/staging/exfat/exfat_super.c
+@@ -976,83 +976,6 @@ static int ffsRemoveFile(struct inode *inode, struct file_id_t *fid)
+ 	return ret;
+ }
+ 
+-#if 0
+-/* Not currently wired up */
+-static int ffsSetAttr(struct inode *inode, u32 attr)
+-{
+-	u32 type;
+-	int ret = 0;
+-	sector_t sector = 0;
+-	struct dentry_t *ep;
+-	struct super_block *sb = inode->i_sb;
+-	struct fs_info_t *p_fs = &(EXFAT_SB(sb)->fs_info);
+-	struct file_id_t *fid = &(EXFAT_I(inode)->fid);
+-	u8 is_dir = (fid->type == TYPE_DIR) ? 1 : 0;
+-	struct entry_set_cache_t *es = NULL;
+-
+-	if (fid->attr == attr) {
+-		if (p_fs->dev_ejected)
+-			return -EIO;
+-		return 0;
+-	}
+-
+-	if (is_dir) {
+-		if ((fid->dir.dir == p_fs->root_dir) &&
+-		    (fid->entry == -1)) {
+-			if (p_fs->dev_ejected)
+-				return -EIO;
+-			return 0;
+-		}
+-	}
+-
+-	/* acquire the lock for file system critical section */
+-	mutex_lock(&p_fs->v_mutex);
+-
+-	/* get the directory entry of given file */
+-	es = get_entry_set_in_dir(sb, &fid->dir, fid->entry,
+-				  ES_ALL_ENTRIES, &ep);
+-	if (!es) {
+-		ret = -ENOENT;
+-		goto out;
+-	}
+-
+-	type = exfat_get_entry_type(ep);
+-
+-	if (((type == TYPE_FILE) && (attr & ATTR_SUBDIR)) ||
+-	    ((type == TYPE_DIR) && (!(attr & ATTR_SUBDIR)))) {
+-		if (p_fs->dev_ejected)
+-			ret = -EIO;
+-		else
+-			ret = -EINVAL;
+-
+-		release_entry_set(es);
+-		goto out;
+-	}
+-
+-	fs_set_vol_flags(sb, VOL_DIRTY);
+-
+-	/* set the file attribute */
+-	fid->attr = attr;
+-	exfat_set_entry_attr(ep, attr);
+-
+-	update_dir_checksum_with_entry_set(sb, es);
+-	release_entry_set(es);
+-
+-#ifndef CONFIG_STAGING_EXFAT_DELAYED_SYNC
+-	fs_sync(sb, true);
+-	fs_set_vol_flags(sb, VOL_CLEAN);
+-#endif
+-
+-	if (p_fs->dev_ejected)
+-		ret = -EIO;
+-out:
+-	/* release the lock for file system critical section */
+-	mutex_unlock(&p_fs->v_mutex);
+-
+-	return ret;
+-}
+-#endif
+-
+ static int ffsReadStat(struct inode *inode, struct dir_entry_t *info)
+ {
+ 	s32 count;
 -- 
-2.19.1
-
+2.17.1
 
 
