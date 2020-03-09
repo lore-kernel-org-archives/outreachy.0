@@ -1,96 +1,128 @@
 X-GM-THRID: 6801966173715955712
-X-Received: by 2002:adf:e485:: with SMTP id i5mr11197175wrm.81.1583771228347;
-        Mon, 09 Mar 2020 09:27:08 -0700 (PDT)
+X-Received: by 2002:a05:6830:22eb:: with SMTP id t11mr3248053otc.9.1583754820922;
+        Mon, 09 Mar 2020 04:53:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:cd01:: with SMTP id w1ls6159808wrm.0.gmail; Mon, 09 Mar
- 2020 09:27:07 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtue85ixhnrAHg5jARrqhFNanvj8gzZKPFRhBSC5sc9Reem99k3rDQyuZbk5IlQGnJCmjii
-X-Received: by 2002:a5d:62cb:: with SMTP id o11mr11836825wrv.403.1583771227071;
-        Mon, 09 Mar 2020 09:27:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583771227; cv=none;
+Received: by 2002:a9d:787:: with SMTP id 7ls538819oto.3.gmail; Mon, 09 Mar
+ 2020 04:53:40 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtDL7pXT0hZoyvq19sRM9MYwOLmvdEloRy2t1uiJBapGGxc9GKcR6tWd73/RjbsShmxU68A
+X-Received: by 2002:a9d:554c:: with SMTP id h12mr13181953oti.16.1583754819996;
+        Mon, 09 Mar 2020 04:53:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583754819; cv=none;
         d=google.com; s=arc-20160816;
-        b=VGKHY7G7FfzbqppB25hCmiQIcsTe8kUW3fRQYlj1vbag1HmbMABs45zcSNX2Vgzul1
-         0N+YoKkGa6bD9yvgmmWrOuCSQNy8Zx0jZ4A6MQTlOmKwGPdnx9xEhnsMp7wBrKcJprO9
-         MmPNcc84CZ/zc97ZFJ6GoPQ2iOEQEd4olBob6Cz2cvhfZrndnbfmJ5t1Z5tnBL1NJBUv
-         Gs8wrxGrziIu0FT7sSUOnoylSw1wqb1W+je+1m4mJvtHroID9FWRoOHuxvR5378kmogf
-         hDWqigMPSI/iUBz32uIRo5P61HxlQzVnl1LapjKC6pJkBu9wmugbIvtOJjPrrk8EwnlV
-         VjSQ==
+        b=0/WVjU/Kw2HMcH4wqukX3zIm2xGmOxTyMkpQJ0jzGYmKPrQdG6jpB6o3v/QgxX5XFT
+         A/hp+IAAwPimueIssSSUAi17rZ/a4x+S4e19lj6VUvlbZdZ3efyzqzopBxkW+dQabN96
+         TO/8VhtLf+tVXc/4PuNtDQ/VqLYgkiODFEkc/8EO8LI5oAt95Rg9gdqEIMWFlE403cTI
+         opYpVdMEE+zszvEkOhnEFZzTyqjl2r0VXXeD9kzEKDohCStupz08rkAh5Ph5CWvn7IT6
+         nKyHo41y9Vckjqa/oam3s7nh2j2LfDF/FaCqP28pB66LS1a3adzTmtlT9hCtxZmOG1Mn
+         +TzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=R74RRGtGGk/2dB/W3/9orB/r+KlSortMpP4eX6SmNao=;
-        b=PMuSl6hzkNyc6ZkmzMvBavyBfvSj4mipnlzjfzjdRyVi3w0LXa6yRnIRmnOWR/zYrS
-         v3KFAAq1Tzr2sut7m+zC/A6EXfBTWuvUaRBJp4nDMTkXYLMaorml1e8XqLilWb/MamHe
-         EAX3jOfjYTvv6yU9Xld8vbwf8EvFZ2Zb9/ioK+byfLcv7tPniSxEmMaWmosqMEAsfv20
-         9gWe4YUfTQrJCWhA+BkeYpTVZ/Tl+ZwnUfPepHNJ4uLLwICR4AaOyWrSxYpi1k4fci8I
-         gQQvP91Fvucqm/zM+L4EVDqWSXWoX1ObaTIVfLZQ9ZRfFYw06K7eFkG2cfV5PoaCPHDo
-         f5sA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=vZqdxqr5dYHPDt44iOURmodzla80igU9dgMyGu8Ijq8=;
+        b=ZhREN8b1TnLMyFmbTWjPol/5pk9DkMhEo4Ioy1WW22GzTWrS3vlmndtK91Au/r5XhK
+         Mn6QkfDH6SvcU+vEPrNRuD2r3L/Y/X/c0pPzrJLzG3NLl5iJfOBZ8wmhQdr4C8kPJjio
+         RJLfu3j3zxidx+uV0E+r7lwsDj2GrZp3PtUrkPX7tFwyyHAtHcFeKKggPX2jD7FUj993
+         0Hbu0zRj+bkZ2C15KLBNzBJBTXnffVtQYqEMVvMS0yUD0RKjJfTSv3eoQdnGUfZR6Hh1
+         y18g7i0HiMh4YyUpRqUe0nx6lGsXQMFXkR0CWWuHs01oTIVvvHOnSYyfS3qIMYQ1bRN+
+         aBAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=GcutRx2H;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::543 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-ed1-x543.google.com (mail-ed1-x543.google.com. [2a00:1450:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id w20si20692wmk.0.2020.03.09.09.27.06
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WIhVuCWL;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
+        by gmr-mx.google.com with ESMTPS id z203si280903oia.0.2020.03.09.04.53.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Mar 2020 09:27:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::543 as permitted sender) client-ip=2a00:1450:4864:20::543;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Mar 2020 04:53:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=GcutRx2H;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::543 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-ed1-x543.google.com with SMTP id m13so12723497edb.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 09:27:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=R74RRGtGGk/2dB/W3/9orB/r+KlSortMpP4eX6SmNao=;
-        b=GcutRx2HmBd53b+4sDwNn3t9Y5emjCMycBGNJK+QrtNAyMfsfEq6BAyJ3rggMb/2c+
-         K37XMkJuSMTM0VHZXJdnAO0GaMGgu/Xb3L9eqXvozCRNlw9tEyGrTfpUvsh3bTOqWWix
-         MHeWVzT8N9Zr1A7PsGkOB/nAFfnNcDED7l/Q0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=R74RRGtGGk/2dB/W3/9orB/r+KlSortMpP4eX6SmNao=;
-        b=aTnDD4zlncMyvMbSjKjgvJOCcKKkjfOLVkQKr33cGwgtk8DPBPn5DeDBSbMXPOhPam
-         f3aUAajGBTNiUhN/bb1x058NIYI5KBEtogaIWEeEGKa5aFabJ087xkgbYPUt3sWxxAkz
-         BF5N1gwReEFq4ka2d3OST08lVQN/WUAFlHqUjmZ8flyhZtdVoIJOlpPL73oPC8rVOt6U
-         pY27tUoy24pwOog99xzufFsz2Tql2frObrFfXv0B95gwyybUIYSbXX8Wkc67tdfYsZ5a
-         BBmnaL+On/jTy5mz0BVEZXBtRKmPIxn03G/9hY/2DLVFKvci7k3dcBWGKLl9eE1Igk5g
-         I9eg==
-X-Gm-Message-State: ANhLgQ3txBsvVs2e2ogV/dPQeUvw/s/u4rNpawii25RbxGZDR6+X8ffn
-	5aQ4lj0k+IB/B0mEG0rgmbK/Zw9rWaI=
-X-Received: by 2002:a05:6402:2290:: with SMTP id cw16mr17126143edb.75.1583771226743;
-        Mon, 09 Mar 2020 09:27:06 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id y4sm2305298ejm.77.2020.03.09.09.27.05
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 09:27:06 -0700 (PDT)
-Date: Mon, 9 Mar 2020 17:26:55 +0100
-From: Lourdes Pedrajas <lu@pplo.net>
-To: Stefano Brivio <sbrivio@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WIhVuCWL;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1583754819;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vZqdxqr5dYHPDt44iOURmodzla80igU9dgMyGu8Ijq8=;
+	b=WIhVuCWLkT0WckCW/Nt0d/DmmGfaOwdJXSN8jn2bNUJrv9i643XaQwNfLraeG+gdV5MkmJ
+	pNJ2jjcWc1w0CJEBie7DhWvOhZtu+kJgiFP+cMkVZqMU4NufA//UZ5Aa/vF0M6FIzy0F+k
+	x64YJIZM547wkFpWg3HmaS9NtwbuadA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-485-DosMGLPtMFihXhRiyICzIA-1; Mon, 09 Mar 2020 07:53:35 -0400
+X-MC-Unique: DosMGLPtMFihXhRiyICzIA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36983800D50;
+	Mon,  9 Mar 2020 11:53:34 +0000 (UTC)
+Received: from elisabeth (ovpn-200-26.brq.redhat.com [10.40.200.26])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AE71F386;
+	Mon,  9 Mar 2020 11:53:32 +0000 (UTC)
+Date: Mon, 9 Mar 2020 12:53:27 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Lourdes Pedrajas <lu@pplo.net>
 Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
 Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: remove commented
  out function
-Message-ID: <20200309162655.GA3949@supernova>
+Message-ID: <20200309125327.422a1807@elisabeth>
+In-Reply-To: <20200308222218.16031-1-lu@pplo.net>
 References: <20200308222218.16031-1-lu@pplo.net>
- <20200309125327.422a1807@elisabeth>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200309125327.422a1807@elisabeth>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Mon, Mar 09, 2020 at 12:53:27PM +0100, Stefano Brivio wrote:
-> On Sun,  8 Mar 2020 23:22:18 +0100
-> Lourdes Pedrajas <lu@pplo.net> wrote:
+On Sun,  8 Mar 2020 23:22:18 +0100
+Lourdes Pedrajas <lu@pplo.net> wrote:
+
+> Remove function gb_i2c_smbus_xfer() which is unused.
 > 
-> However, you should at least Cc: the maintainers returned by
-> get_maintainer.pl.
+> Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+> ---
+>  drivers/staging/greybus/i2c.c | 14 --------------
+>  1 file changed, 14 deletions(-)
 > 
-Yes, I was about to ask because I read somewhere in kernelnewbies wiki that
-Outreachy paths hould no be CCd to everyone in the get_maintainer.pl list,
-but I was wondering if this was really correct. So thank you for the hint!
+> diff --git a/drivers/staging/greybus/i2c.c b/drivers/staging/greybus/i2c.c
+> index ab06fc3b9e7e..c48fa1de89b0 100644
+> --- a/drivers/staging/greybus/i2c.c
+> +++ b/drivers/staging/greybus/i2c.c
+> @@ -215,20 +215,6 @@ static int gb_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+>  	return gb_i2c_transfer_operation(gb_i2c_dev, msgs, msg_count);
+>  }
+>  
+> -#if 0
+> -/* Later */
+> -static int gb_i2c_smbus_xfer(struct i2c_adapter *adap,
+> -			     u16 addr, unsigned short flags, char read_write,
+> -			     u8 command, int size, union i2c_smbus_data *data)
+> -{
+> -	struct gb_i2c_device *gb_i2c_dev;
+> -
+> -	gb_i2c_dev = i2c_get_adapdata(adap);
+> -
+> -	return 0;
+> -}
+> -#endif
+> -
+>  static u32 gb_i2c_functionality(struct i2c_adapter *adap)
+>  {
+>  	struct gb_i2c_device *gb_i2c_dev = i2c_get_adapdata(adap);
+
+In case of doubt, this function isn't even a draft, and nobody
+implemented it in six years, touched last time by commit
+ed8800dc376e ("greybus: add i2c driver"). Change looks good to me.
+
+However, you should at least Cc: the maintainers returned by
+get_maintainer.pl.
+
+-- 
+Stefano
+
 
