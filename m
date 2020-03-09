@@ -1,95 +1,113 @@
 X-GM-THRID: 6801966173715955712
-X-Received: by 2002:a9d:6204:: with SMTP id g4mr14203352otj.94.1583774366286;
-        Mon, 09 Mar 2020 10:19:26 -0700 (PDT)
+X-Received: by 2002:a1c:f319:: with SMTP id q25mr89531wmq.142.1583771889209;
+        Mon, 09 Mar 2020 09:38:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:474a:: with SMTP id u71ls658226oia.0.gmail; Mon, 09 Mar
- 2020 10:19:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsEGGY4hdwGq/O9mmKya+jOY8Prk/tgiZPBb6QpVALfTnn/Q6LDhS4SVNzx3zbBQtzi0WgG
-X-Received: by 2002:aca:ec16:: with SMTP id k22mr212716oih.177.1583774364337;
-        Mon, 09 Mar 2020 10:19:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583774364; cv=none;
+Received: by 2002:a5d:4d42:: with SMTP id a2ls6140882wru.9.gmail; Mon, 09 Mar
+ 2020 09:38:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt07DGq9cWnyVFhDohdpmJwKLES5QcY5YVyP3PfAXpP5/quQrQVRVokM5VqLC/EA+AkPwBJ
+X-Received: by 2002:adf:e447:: with SMTP id t7mr1162451wrm.374.1583771887936;
+        Mon, 09 Mar 2020 09:38:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583771887; cv=none;
         d=google.com; s=arc-20160816;
-        b=VETIXw7hNDo8wO+oZcNsZ0BJvjxFI0lru1hUXn5JiaNuC/DACDLxxAJxsWxq4Y0ysR
-         mPjx+IHLVQpE43J3WDBJohCqlH0+DG8IjfT9Hd0Mag6IwK1AbZGRjJwvHE683UL24aEV
-         nIVlYjfDh3zexts4+Rq81cmpwr6pYiFbq/9DaotoFSY205dHDPmtrA53uM0dcmRwlmTu
-         vDeCg2Zk3J+mwJRqKeBpVslCVCYK4P5137gP2VwRXiDpGr9QZMvAuqUGw0CQVXkcj4qd
-         6FCBIujb4pkJSM382u84OALPxpJlvQu3hzAavq8EHI2jf/+cxVueQSsw8fRfe0ERH6TY
-         4zng==
+        b=Uj/o4ehoQCjVrTgJd/xBAqu5jv21Zy0kLS9gOMATUQGH1G3R1qzSSriY43eG/o2zFC
+         LVroZdLGTwU1kU3lah8tGCLdVZj+crXDBu0WGvSimv7OtOBXU5917FmLALi08ccai/XC
+         e4lPTTcTiefTu575+RmbGtR1CkWZMkDer9/prxuz/QeNCSQwPH8pk0qOnni8JFq/h2zX
+         Dc9ZunTaNjmoNHfxLy1MiQNks3k5Oc0dftRK7cSzhohlwsuc6MHbCiL+9GGLOH7miWjG
+         +hVerV4HfLTDZCshhXFjDiDYXtXbCPGjVuW0UHTXAchcFXDRmgs6bY6IBceO7j22yLL2
+         DwcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version;
-        bh=dRiY+nIieYwIq2VwipsDh8F8cKDc+Thz2XyYYCtRswg=;
-        b=ZrwVKKYrbqTtT7361ZNpYn2Kt5+Xs9N6x9qD7mheHnjZ/KZE1tlqXaVAzLSgVJC7MT
-         n9jwkwTSGt1wl+rLs62XIck8BypA7nfna2jQ3+XSEieA7DcSFi2uppuyPzcUgeHsfG7P
-         6xu2E5mAxhAP3FFquNsTGZecKQkyMejlkrAI2lnhzM0PmoxNLJtrQ/jsrSY6Zdm/3VBf
-         rwADa8RoF0kB6D7jojmTnvDnT7BC+VFMn/6T57eJhcEZCZ3tK65RMunXNcA41jagFvLJ
-         /l32Z9vfToFvqz4ff9XYN19pge0FnMrRuJ0q99o4RUjnjMfqTt2+LH6mT/6dXyM2ms3Q
-         Asfg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Idwn/i9QMWcWycFcJHuRSsf1y57NhhoxhVktS/tsmyA=;
+        b=pAw3HtPeId9re20iHphHdNs/wTrJMsnFSkfaTgxCdLpGEXlAk0qvqN6HEbxPuGfeJ5
+         J2x052FwhmJaIej+4rUZkooVrxylMn1ICKb+jh0/FITOk9DZ+A4t73NDnf3WApECa0da
+         C8qAL5y704+j6xuO0s/xOEHuZHVPWtNOCqyIEbOyWbNxTDUa3ObilC8oEXdpRB2qoY0d
+         toIpX2cOWThCMgmvcftWWoR4P4mXSWrlpzrZZcMu0BtNKtS135aOJ+XSDr1rk4V6fJKM
+         remgbr2WFV4WrjHcrOEm2/7HdYdWgOmIGy7LWP2rLEB0iPdkb3dwDSN6n4vLuoNUcUG1
+         WT9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.109 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa08-08.prod.phx3.secureserver.net (p3plsmtpa08-08.prod.phx3.secureserver.net. [173.201.193.109])
-        by gmr-mx.google.com with ESMTPS id m132si246682oig.3.2020.03.09.10.19.23
+       dkim=pass header.i=@pplo.net header.s=google header.b=DrasKv+V;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id l13si534359wrp.2.2020.03.09.09.38.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Mar 2020 10:19:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.109 as permitted sender) client-ip=173.201.193.109;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Mar 2020 09:38:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.109 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-lj1-f174.google.com ([209.85.208.174])
-	by :SMTPAUTH: with ESMTPSA
-	id BM3mj8Z8poMVkBM3njmWWR; Mon, 09 Mar 2020 10:19:23 -0700
-X-CMAE-Analysis: v=2.3 cv=EvWsUhUA c=1 sm=1 tr=0
- a=oakJ7VqGoKDDa4dePaZOHw==:117 a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19
- a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10 a=SS2py6AdgQ4A:10 a=pFd2Zl5z2vwA:10
- a=ZZnuYtJkoWoA:10 a=Xbn4kQIpAAAA:8 a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8
- a=VDxRAwm8vqx6A6xO54EA:9 a=QEXdDO2ut3YA:10 a=cDyXFGGuxjcA:10
- a=ILJjHVj0aWZh_QbchXkF:22 a=_sbA2Q-Kp09kWB8D3iXc:22
-X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
-Received: by mail-lj1-f174.google.com with SMTP id d23so219730ljg.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 10:19:23 -0700 (PDT)
-X-Gm-Message-State: ANhLgQ2O111bzng/UJgUpzEqg++rINTEY31kdyGMSm/yOIXlS1o1E+Jc
-	BgHhRdI4Dnimg95h7ZI2KtmvDAwGZUFdL4xhXTw=
-X-Received: by 2002:a2e:9041:: with SMTP id n1mr8216583ljg.7.1583774362029;
- Mon, 09 Mar 2020 10:19:22 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200308222218.16031-1-lu@pplo.net> <20200309125327.422a1807@elisabeth>
+       dkim=pass header.i=@pplo.net header.s=google header.b=DrasKv+V;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x442.google.com with SMTP id n15so12040052wrw.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 09:38:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Idwn/i9QMWcWycFcJHuRSsf1y57NhhoxhVktS/tsmyA=;
+        b=DrasKv+V885JcdsEEgrf/yOmB73cbzYfnsf37HCnEtwtJi6RdXzaIgKKjJu1iDtOow
+         WGjlTrGNVT1+P03GKcMAHFB1nOCc738diCvsZ9KEraNt+A6BM/r8xPHaTVCVmsh8dcAt
+         m2d1Q1LP+0UlOhNoI6mtz3oKOMYaGnLjFce1M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Idwn/i9QMWcWycFcJHuRSsf1y57NhhoxhVktS/tsmyA=;
+        b=GSh+MAp1SC0vzVjvDYGTMZ0Y5I8ssMV6OspQ4iO8b7OpJ2Wf/+NKgxG7pCFmFVc3vU
+         3dd53Ws2mwD2fZ2RhwSgOQtZr47k7l6i4yDXsMuWcb9/+RxW8+Hrs8WnmQ2AqLja6DFj
+         wJWyXLHrflQJK5VTqwl8/BaZR9OeeQgbY8u6CIowS0tsa6Rm032y8xrl+wrtt9uPz6tU
+         mP+RmgZT1neIWzLj1JdNiegdTIPI4fnhZG3kQ/vkxiUoPZPQDzqRVn2j01/+iy+zlW86
+         P/RRSG9nJYqc2mAXvRlg/Tw6BoHbyIivHb/AOn/nPdAXaWatnTgtJbC9VVxam8Q/3fS4
+         /MbA==
+X-Gm-Message-State: ANhLgQ2VjZj1G5iL+kcqIxshFhl8m9Gl9eU8dilLWzOa1sLnzAwufWAY
+	PLS816Gadsg90gnV1fQMDfjEYw==
+X-Received: by 2002:adf:979b:: with SMTP id s27mr12598781wrb.134.1583771887615;
+        Mon, 09 Mar 2020 09:38:07 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id a7sm143950wmj.12.2020.03.09.09.38.06
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Mar 2020 09:38:07 -0700 (PDT)
+Date: Mon, 9 Mar 2020 17:38:04 +0100
+From: Lourdes Pedrajas <lu@pplo.net>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: remove commented
+ out function
+Message-ID: <20200309163804.GB3949@supernova>
+References: <20200308222218.16031-1-lu@pplo.net>
+ <20200309125327.422a1807@elisabeth>
  <20200309162655.GA3949@supernova>
-In-Reply-To: <20200309162655.GA3949@supernova>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Mon, 9 Mar 2020 22:49:09 +0530
-X-Gmail-Original-Message-ID: <CAK-LDb+gx+c2oBaujvj8KSw8TvoRN=bKJTxEE_GZVHQVTZ8-cQ@mail.gmail.com>
-Message-ID: <CAK-LDb+gx+c2oBaujvj8KSw8TvoRN=bKJTxEE_GZVHQVTZ8-cQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: remove commented out function
-To: Lourdes Pedrajas <lu@pplo.net>
-Cc: Stefano Brivio <sbrivio@redhat.com>, Outreachy <outreachy-kernel@googlegroups.com>, 
-	Greg KH <gregkh@linuxfoundation.org>
-Content-Type: text/plain; charset="UTF-8"
-X-CMAE-Envelope: MS4wfB3RkBxCL5wPQUfONWCR7Uk0QRajfVHuUda5Zd0C2nthFCGFGFlBivg+bVzLZdEBnIICPKBNoXhY81dHDXmPgzrCjG+IfWG3ds6gHhtI+8vfxutebqzC
- VTHDsLBegfsNMVUAmjNbM4kVoSBo7sMlCfTIBj5wPIGxBKGS+8XfVnl59OcYTuwFI7jkDr5CLy9tUrkcwwiqq77VPcLJSl/q/h8=
+ <alpine.DEB.2.21.2003091729360.4721@hadrien>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.2003091729360.4721@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Mon, Mar 9, 2020 at 9:57 PM Lourdes Pedrajas <lu@pplo.net> wrote:
->
-> On Mon, Mar 09, 2020 at 12:53:27PM +0100, Stefano Brivio wrote:
-> > On Sun,  8 Mar 2020 23:22:18 +0100
-> > Lourdes Pedrajas <lu@pplo.net> wrote:
-> >
-> > However, you should at least Cc: the maintainers returned by
-> > get_maintainer.pl.
-> >
-> Yes, I was about to ask because I read somewhere in kernelnewbies wiki that
-> Outreachy paths hould no be CCd to everyone in the get_maintainer.pl list,
-> but I was wondering if this was really correct. So thank you for the hint!
+On Mon, Mar 09, 2020 at 05:30:25PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Mon, 9 Mar 2020, Lourdes Pedrajas wrote:
+> 
+> > On Mon, Mar 09, 2020 at 12:53:27PM +0100, Stefano Brivio wrote:
+> > > On Sun,  8 Mar 2020 23:22:18 +0100
+> > > Lourdes Pedrajas <lu@pplo.net> wrote:
+> > >
+> > > However, you should at least Cc: the maintainers returned by
+> > > get_maintainer.pl.
+> > >
+> > Yes, I was about to ask because I read somewhere in kernelnewbies wiki that
+> > Outreachy paths hould no be CCd to everyone in the get_maintainer.pl list,
+> > but I was wondering if this was really correct. So thank you for the hint!
+> 
+> Please search for get_maintainer in the tutorial and follow the
+> instructions there.  It gives some options that will get your patch to the
+> main people who are responsible for the file.
+> 
+> julia
 
-Hi Lourdes,
-
-Could you please tell me which part of the kernel first patch tutorial says that
-no other email addresses should be CC'ed? I thought we had cleared the
-instructions under 'submit the first patch' part some rounds ago but given
-that the tutorial is quite big, we might have missed some part(s).
-
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200309162655.GA3949%40supernova.
+Yes, if is not too much spam I will resend the patches including
+them, thank you!
 
