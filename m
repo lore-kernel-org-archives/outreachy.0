@@ -1,79 +1,79 @@
 X-GM-THRID: 6801960387185999872
-X-Received: by 2002:a63:1201:: with SMTP id h1mr15415903pgl.284.1583736227317;
-        Sun, 08 Mar 2020 23:43:47 -0700 (PDT)
+X-Received: by 2002:a37:496:: with SMTP id 144mr66827qke.403.1583732950325;
+        Sun, 08 Mar 2020 22:49:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:898e:: with SMTP id v14ls4327510pjn.3.gmail; Sun, 08
- Mar 2020 23:43:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs0oKlBYXrgkab7XCd883udjJH2EmXSBJvWktKmbYMlyKevl8w1f++aUk0kM3MlRSKVYRur
-X-Received: by 2002:a17:90a:9a90:: with SMTP id e16mr8504757pjp.164.1583736225889;
-        Sun, 08 Mar 2020 23:43:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583736225; cv=none;
+Received: by 2002:ac8:7358:: with SMTP id q24ls2764689qtp.4.gmail; Sun, 08 Mar
+ 2020 22:49:09 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvw92xnQLzWRWn9NgRzs8o36Aj/tYql51A3oCURI9CccVLzwz5QD7MaK4sZ4AiKC8B8VZ0h
+X-Received: by 2002:ac8:b42:: with SMTP id m2mr13199535qti.67.1583732949191;
+        Sun, 08 Mar 2020 22:49:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583732949; cv=none;
         d=google.com; s=arc-20160816;
-        b=0vi/RwHJfiVpqfxOFothKaTz18zSk/K3kMF9p0xAXSUQvCQKw4R0ezS+YmokfB1Elj
-         mBcAyqCJ/cgzlaqx1uz65k1LCMH7o9RGEMZPW5TrQWPGuaG/qD7yg5RCeTVX2ff11erF
-         CUQG6OA1n1NgeePKR0GbJYn3f7tQaahF6b0LOcVnB28+ZlHJQYNDfRTMxBecxzGCVuS5
-         2Fu0BVsc8oJLgPB4xte25L99RyAFL52vvLHmmVuxC2MGHz6RPuFMcbyNjjxS9yvCDrwj
-         MgfKIfnTbR6/IuFkFCYRhbrqkpVtIWrHzR4HIdrVAflPq1YMHxz/T7EG5Q8uBB+uClKb
-         5vhA==
+        b=k9IZUXr/melo8kq2g0rdC18kCYPfz6SpJITGzgSizsp/cZcvz4kNjIH38jOzJwWWjN
+         XA2LUPSghsGAeC2369uylboIQ+WdfFKP8qjXir1dYm/9Bek914G9SSHm+X+XZUXjlmEv
+         YD9nk3okokhJ6DeGSKMMdvGNpfLg4YBgRb6G4nKFGtbuUk11f9Jjatx/yd+8Wlzfne6y
+         2OpGiQu8BqcIHrsf7Cp5al3q0ma30BlyovBxe98BSRdwBJFa8/nojSgpj+5c0TgiX/QJ
+         A753p23w3SuCMFix3I8PZu5+P4h96m1zElPwsHXDXEF71iaGfLGnY5Q7mgUaZGZsr7XA
+         WXHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to:date
          :cc:to:from:subject:message-id:dkim-signature;
-        bh=vLzrIJTiJKWG/umLvpXl6KYDmMyAdQ96Sz6v66POXZo=;
-        b=quvG8EO9JjQlQwDdRmRUqTJ9dEex1NGfP9EIhfMmTHnhr7hGo7HjtNrTQW7IPpQQyW
-         24yBEyTMbIJV1+g3lRO7cr1Vt9BiWgtgflKn6zgneLIP0sU8nQ+Z+bs7Gq6r94jH3PIx
-         FJAPbL7TdIbyYIv+1jWqY0Yqr2YsnZqIscC44Dp0DruUNqzzUP0f1ji4Dlbrn6n1WBtY
-         YSf06Wup3Iy+gmPd7IC2TMScVB8hmUx9wGI8I4gZZ/ySbLHjBzcIt/UXZ30PND68JggU
-         dnqynvUbFw0TODwuStwzJN4id/at0MJWbhOtBsnJtfiyXnuM2jhvIMnSMOZyzOcoOBGB
-         8NTg==
+        bh=oZkC5jhk4EOPYchWGqBHGQPJ7o1ZBAozfok1ceDhJV0=;
+        b=PhvUo6iMKngNPb31//AKM4qyegYZDOZT6/OBba6l7Ze0sej+6UlALwbtSBmgX03yzP
+         PboBpQDCLwh1hWASI+l5C4j88fz7ox7SetS+zpElYv3SS6RMSBJnu3EXBE+cUlWGQ5eA
+         bQnayjz3IwibyddEXB1t5F9QT0untOMz+JlGQmpOXvCPRXNxvaJdAY0wPXDU21sUmh33
+         D+jYNQF8BA8EYjdhAGbmN1AVxr2rq3TkrSfM2zfWccoikrjF3IPBZgc/h9JFX8St1GLp
+         5h9UtO4tZLbrBPiLbdRV5Aw+urIC6lk+DdEKsd0JeFS48pbtAHZD+cDpMaNtt3T2GbgU
+         ttjQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JIOsbo3o;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZASaf3Yu;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id q197si641748pfc.5.2020.03.08.23.43.45
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id e26si463421qka.2.2020.03.08.22.49.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 08 Mar 2020 23:43:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sun, 08 Mar 2020 22:49:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JIOsbo3o;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZASaf3Yu;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id c144so4367463pfb.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 23:43:45 -0700 (PDT)
+Received: by mail-pg1-x544.google.com with SMTP id 37so29663pgm.11
+        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 22:49:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:subject:from:to:cc:date:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=vLzrIJTiJKWG/umLvpXl6KYDmMyAdQ96Sz6v66POXZo=;
-        b=JIOsbo3oJ4xYG9s8Fr+jNcxbSeSP5nY8gr6LEmZwKl+1229/GElB1DADY0z9ZQYnxw
-         D9tjUxq6f5RfNEclWemi5X22nj6/kZR6Qhjs9cTH35ibT5TCbK38kF+EY8RTxyw0RXYc
-         Qe1P6wCYCTGIGeDFRSe0XBH1I2CKat+ocEQ6zYTOV9vPEWEUtwe0IV/3lHCusLMgYH1N
-         uqdHQPSUUCRj5dxnQlyvOUUVIvXyU0JHPuakCYzOWcYxBJimQril1q8H1lfaIZ6XZlg+
-         eU0lyE9iSpH+v6tqIp+F3RNBNQgDYAGRaWa/rLRF3MTZ1c7QIucsyLzIjqEiM8qyWHLp
-         w2NQ==
+        bh=oZkC5jhk4EOPYchWGqBHGQPJ7o1ZBAozfok1ceDhJV0=;
+        b=ZASaf3YuN3B+j/KI/qNDSYWrHHUZtHeQwHKi0PaCz9w4R3sv9X+Ksj14Jcde5QYK9+
+         dxykImt3KiJAW0tX9DwbFamh1V39kcau1SxtGpbJrPjy+2z+wzWqaLdSx3RGvbGbYZP0
+         Yr8VXYTO10Hu9jB0QT0+VYkHVnz2m44MHYvZErpnNVAcEQquneuZT8UhihN8gSexas2F
+         dca1plE3EKhNXfT8p1yqwI+6byGh2w6K585Uawprfk61UtLxU9CxNL54BDGzRC3d26W0
+         jzWKqP49f9ELw1MzdPkaQiY4HBCJv5U6IZfCdY5Wxvq5N907h35Yi8C4Ul12IXr08xvi
+         vTVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=vLzrIJTiJKWG/umLvpXl6KYDmMyAdQ96Sz6v66POXZo=;
-        b=bHuyB1kSiVsTiR49pK/nNQzPk2wPCai7vn62VDGqep4wvH77FM4kUDvoeB8mHWioP9
-         U4ALVsGqJ3D7SPAdawISJdAvLRyCn5u0Ql/yrkeFeni3PR7imYFnsr1oXonRUmSnZSpe
-         igEBpV51BxZZniX81scGVwSy2ZppRl8un5/WR0+oN1GFo0p8na+CWSCQJogzU90kLOYh
-         COigGBKLw9RwqiV/FINZKUx7zKtq6+GrlE1G6HXrMAQE1OpMgbBa9qK7cIYksK5BAXtx
-         SGh3Bs0lSzenyrVN/9dYp0k4kfOQTI8QjOQJqAUx49ck5hsE3jph87mTnPyiIktniswz
-         JrgA==
-X-Gm-Message-State: ANhLgQ0srY7bO1MEHb+L1e3hf1DaXWCiQX8Z4TEFruO2Yu3YB6guIdD7
-	b5YL9rfPjuERPGQa+pDv8MA=
-X-Received: by 2002:aa7:92da:: with SMTP id k26mr5983809pfa.139.1583736225415;
-        Sun, 08 Mar 2020 23:43:45 -0700 (PDT)
+        bh=oZkC5jhk4EOPYchWGqBHGQPJ7o1ZBAozfok1ceDhJV0=;
+        b=l1DKpHNYIeV0pWVQmkRsnTjEYILGNFjNOqqu8s5kPLvjgtvr89g6Ogw5Ir9yW5gWiP
+         IScU5buxFS3aabOAlyQHCOf3PA5bbDR3bhHiHA1KTQtdIWHT80ar6y07FCKj6K0QfzsG
+         YlwkR/kmSiMp/pjv5RgGATs9w9PMOfTcfPAZuBKFOhzgG863uYSvoXg4qJ8atgWq5yRy
+         /JeIa+jdDJHHXgcV0eshFyeU3hrwkW9gDtk5dDwO06mpPLVr+41RsavzGfI5MF171VaJ
+         hPn8l4WIH425ViZ1uDJrbFWRXzmc5t9VB7ag+7L8aA5TF1trOI052F5qz5Cu2v9ZIaRY
+         5g4Q==
+X-Gm-Message-State: ANhLgQ12YKoatVaxu4UZ38L521qB8tZ8DnliRNvS5kagh2p5Grhe0jzV
+	YCU5W1UX7bTatYyUsU/5Q+I=
+X-Received: by 2002:a63:f243:: with SMTP id d3mr7471050pgk.254.1583732948106;
+        Sun, 08 Mar 2020 22:49:08 -0700 (PDT)
 Return-Path: <shreeya.patel23498@gmail.com>
 Received: from Shreeya-Patel ([2405:204:2188:9cfe:18bc:a849:c699:3914])
-        by smtp.googlemail.com with ESMTPSA id m68sm6869638pjb.0.2020.03.08.23.43.41
+        by smtp.googlemail.com with ESMTPSA id j5sm16904080pjz.44.2020.03.08.22.49.03
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 08 Mar 2020 23:43:45 -0700 (PDT)
-Message-ID: <af1a27fb8c5f7efbaf99ce3055cf3801b366d627.camel@gmail.com>
+        Sun, 08 Mar 2020 22:49:07 -0700 (PDT)
+Message-ID: <e392f09212ef4ad6dc917503e3e9782b7fefc07c.camel@gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8188eu: Add space around
  operators
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
@@ -81,8 +81,9 @@ To: Joe Perches <joe@perches.com>, outreachy-kernel
 	 <outreachy-kernel@googlegroups.com>
 Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
 	linux-kernel@vger.kernel.org, sbrivio@redhat.com, daniel.baluta@gmail.com, 
-	nramas@linux.microsoft.com, hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
-Date: Mon, 09 Mar 2020 12:13:37 +0530
+	nramas@linux.microsoft.com, hverkuil@xs4all.nl, "Larry.Finger@lwfinger.net"
+	 <Larry.Finger@lwfinger.net>
+Date: Mon, 09 Mar 2020 11:18:59 +0530
 In-Reply-To: <f1327099b774e141bbeaa8abc47f98b9c6d49264.camel@perches.com>
 References: <20200308220004.9960-1-shreeya.patel23498@gmail.com>
 	 <f1327099b774e141bbeaa8abc47f98b9c6d49264.camel@perches.com>
@@ -98,8 +99,6 @@ On Sun, 2020-03-08 at 16:05 -0700, Joe Perches wrote:
 > 
 > Hello again Shreeya.
 > 
-I have some questions here...
-
 > The subject isn't really quite appropriate as you
 > are not doing this space around operator addition
 > for the entire subsystem.
@@ -114,30 +113,19 @@ I have some questions here...
 > If you were to do this for every single file in the
 > subsystem, you could have many individual patches with
 > the exact same subject line.
+
+Oh yes, thanks for correcting me.
 > 
 > And it would be good to show in the changelog that you
 > have compiled the file pre and post patch without object
 > code change.
 > 
-I'm not sure how to show this. Do you mean to add the output of
-"make drivers/staging/rtl8188eu/core" before and after the changes?
-
-I also don't understand the meaning of no object code change. If we are
-making the changes to code and then compiling it using the make command
-then a new file with .o extension is created and replaced by the
-previous one isn't it?  
-
 > Also, it's good to show that git diff -w shows no source
 > file changes.
+
+okay will do this in v2.
+
 > 
-
-And this has to be...
-git diff -w --shortstat drivers/staging/rtl8188eu/core/
-
-Am I correct?
-
-Thanks
-
 > > Reported by checkpatch.pl
 > > 
 > > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
@@ -150,6 +138,10 @@ Thanks
 > 21 changes against the latest -next tree.
 > 
 > What tree are you doing this against?
+
+I am doing this against the latest -testing tree
+
+Thanks
 > 
 > 
 
