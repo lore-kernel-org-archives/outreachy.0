@@ -1,78 +1,78 @@
 X-GM-THRID: 6802195878840893440
-X-Received: by 2002:ac8:3feb:: with SMTP id v40mr1362041qtk.147.1583759713673;
-        Mon, 09 Mar 2020 06:15:13 -0700 (PDT)
+X-Received: by 2002:a63:cc43:: with SMTP id q3mr16658455pgi.63.1583759706138;
+        Mon, 09 Mar 2020 06:15:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6214:126:: with SMTP id w6ls1650861qvs.10.gmail; Mon, 09
- Mar 2020 06:15:12 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv5KeAgN4U+QdWyjboIxpsShfvnyUR8fv6K3wS+FPYmvKVmGztwbGKYTOuT5lX0mxFmw3OB
-X-Received: by 2002:ad4:4862:: with SMTP id u2mr10598986qvy.67.1583759712234;
-        Mon, 09 Mar 2020 06:15:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583759712; cv=none;
+Received: by 2002:a63:7744:: with SMTP id s65ls3502368pgc.3.gmail; Mon, 09 Mar
+ 2020 06:15:04 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs6a0lwaymumnngIHvBak32bs9PD4sB4KDQYgU16dmG1fbG1A32o95cNXF6Tk0uQQUikgmK
+X-Received: by 2002:aa7:9844:: with SMTP id n4mr6060088pfq.98.1583759704526;
+        Mon, 09 Mar 2020 06:15:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583759704; cv=none;
         d=google.com; s=arc-20160816;
-        b=aSewsXCgkb3iPRZUnh5/PNXVsdXcy0IsrFeiPHD4NFs4QjfjrYddKdWKi+B9tLjBEk
-         XFrpDOsp4Jhas5chTMY0FdjU0WnpIjd4+1P5jKAFuwKoQBH1ANxYjBAe6OsQ5hwPIvvJ
-         V76+w5Rl+YQrUYC4HbVcbLnB5V6P/ECCp1gfypEcXbBJRCfTE7RQLe78+V0iNdmt7knt
-         TEtsWxpwdcGyVEeVh8zXyFHPaFbVevsnQA8j3DgSAwZOqt8z77WnqydmIRxIHm+tRxBJ
-         MnoiDQlLeYUwSfE8tb3SxuZ5gU398XeTmvgJjC30dH1X3V+lynns4OCj91x5YTgz/Tnl
-         WhJA==
+        b=N78FbnKl/4237TI1HoFBpMGNndYXCUFiOUchbsbuY8S+gf8vDEIBjbRmqvxoI6rDv6
+         3Z136wHE3iZUq0+FcVbMu/DKllfc0UCPShhFW2ALgBOqBjS6FMHG5x/tuJQr/qaRSo3q
+         hkx1xg3+NrZZ4pCUC1sOnYVvNxryebD2InfM2wj4G5TF93+4a5gteRihGZFSctvEET9B
+         Kjg2D9PGDooRFdIatQct7/4McgG3agPLV0rcZwtKSApRAtp3Qni9+5RJCBV74ip0rdhG
+         XkCL1Er7ANXRthtaRvwaOk9cpZoQ5hFKbHjGNeF4nLkz5pRb5XZgpKIf/kJVVgJ9GhcR
+         InSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=G7XGN+K+LL35TBClkmBVyrMWzK9orI4CYPsUQXHlwWE=;
-        b=q4K4Ff6vdieZgPKNDSnF7goP0RWdFRMlPZ3VBWnr0FuX8kqduTffQG7XF3RQQZGkLz
-         q7HIYsKY++B2k0KW0RVAFTD4mwCFPTujIuwVsb5mmfeKkHsEEkAcIkm/bV2FgY0CR89N
-         gUkvkASFobMzOR3zwag7dunJr5NLZVBrzrGEb1jhiQAfydG7rHrk5UfD2qVaX3TAvq/0
-         t/QH6YZEv+sz2tVjf5BVlUR9vYR5doKcsKD3AsF9owgxqC6cQgs3szVzvT7VOTfTUGgV
-         ulWCGmj/taiTBkIA6HgexLRPw7qVXL2Vvo3GSDCBHSMj0Ljt1DjI8U1RVWY5y17IFB/p
-         0TIw==
+        bh=GrzlbwXNyLmQT2+BJ6YUho44LVk/sDhLl1bSCSNbutA=;
+        b=CiZed0f435+oFT5m3QF+ZAMQwUsnvv+Gadwamy6hMbXsKwPlqx3Dv4KxTpr0GYf4JV
+         u9PimrCwjBtWIw9bo3ZsgVOvIAv8ScCbxRoivfUV3yzR6x0UgzC3tOvoAg1dPEzLYSfk
+         u6X4y1u3Su6MdOaZHeQxzeYP02YyYV1XryUezb1xe7Nc6Ja2AsYvtnnpTIRXvM3Wv3dX
+         QgmAKMeqQHDSveZPHL975KOahHCTlJYW9QwIWoUjQLafPa4EbQaR5WYKBJ4bnggOE8iq
+         F4u48WKbzU2h38ITQBaofNjMXXuKik1d29ZnBaH6RDh2EQe3s12X+WI+3/hvL0kBsSub
+         sWdA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MgpNKYTa;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="YigT+/rw";
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id g23si505704qki.4.2020.03.09.06.15.12
+Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
+        by gmr-mx.google.com with ESMTPS id z7si135049pgz.5.2020.03.09.06.15.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Mar 2020 06:15:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
+        Mon, 09 Mar 2020 06:15:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MgpNKYTa;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="YigT+/rw";
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x644.google.com with SMTP id t14so3968263plr.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 06:15:12 -0700 (PDT)
+Received: by mail-pf1-x42d.google.com with SMTP id c19so2506216pfo.13
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 06:15:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=G7XGN+K+LL35TBClkmBVyrMWzK9orI4CYPsUQXHlwWE=;
-        b=MgpNKYTacQ/vk4GPN8Diy5aPZJpvyuX0chmy/W8U5YKMRq7V+VFj4j59dgWv2mBc5X
-         wEdpYQc7d1tNwP7SxjUSStC/nY2hiaWpEz0l0dc32lzZS7fBGLhmTJelpT2fh1v/0LlZ
-         xr8gYArgqvq0lL5ZDlvG3tbdomWffEzObA0x/SF58HllrZsK9OKftRwwU3s2RJq+hdIx
-         JUVagNokJHUjsvZT0qKSANPSt/USQJdKI7diRXtOitge+Ap6bIs2lHgdM/4vZvBDucaW
-         +g2WCQ8cVKzO9DN9aYJyR/MpTISYg2xafCNxurCflGxMUsdv3rWBn8+H8l6xhs29J8S7
-         gZEg==
+        bh=GrzlbwXNyLmQT2+BJ6YUho44LVk/sDhLl1bSCSNbutA=;
+        b=YigT+/rwZL+JEzV/+2KRCvLIUp9H8yvR0hc4/gya2Z3Yytv/Ben4A10KNX0ZtKmP2V
+         V5a/qXDpGoEj8vj/dQj9iWmzwuVgiTNG3TFIVip88jw8rgycFMxrb2Y7cOGMT75As2UO
+         RZR6ETaQwlZdDIO+6fu4/8ig2cPohg2NN8VMxfCCnlkoh9su3jVTZsdk09zW/ouWwEjN
+         a0Ke75c1SrPzyiO+HFxqXq1+SkzVo/kcbMoEEqTr/hSCBPJem+znKgnG9xQF94poLl1Q
+         Up9W1WTEpDYm4Q6FJ5nyNUo8GZEVTb/0fIykfnEvDzBvZMgMIsUW3cXmrZtpAZOZ7ZMb
+         IkGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=G7XGN+K+LL35TBClkmBVyrMWzK9orI4CYPsUQXHlwWE=;
-        b=LN9Hi94Mxu2cKdDh0M57y0eYaLjiby8f0C/72Gv3Iab5WVWEWxn7pZL52U+YbVjnwx
-         hHqkSSziArGE+cXGHHHrz0+RfOnYPd4f1yzuL/S/QYtdeRbfTqUYPJx8ojb+dyeZlnQ7
-         R3gbhk3+dieqqM6BLB7UvcofkZqsXbus8Qd7bP5YLT58DA12hYNojoGo4ynTzvW5zghV
-         YYbDI92vl+CUPf1ItzkRuRrBXOUZIj07QvfsOztHCDm6OtMM8U0drC2oYo+76JgPZ6Bp
-         Kk6Mbcrz1yVEFSifjQ5xgvpLQEnlFhY5TqPTSCGeSj3NS84ezQwHUh4ty6ITWW/j4JDk
-         JTYw==
-X-Gm-Message-State: ANhLgQ3fTFQzauk/ecqv1Vt250T8yWrDwGSIVDGzswh+ky1DGD8lZryr
-	v5qyVvMAw+NStUQ7TdpsmzQ=
-X-Received: by 2002:a17:90a:e998:: with SMTP id v24mr8057006pjy.171.1583759711360;
-        Mon, 09 Mar 2020 06:15:11 -0700 (PDT)
+        bh=GrzlbwXNyLmQT2+BJ6YUho44LVk/sDhLl1bSCSNbutA=;
+        b=BNb9esPl4A0nVyUCF3vJ2t99ZdYek8vHMNGXp3gCo3bUfQGwOhBhuVqE0dchLzNmhx
+         Vj23f+9i5O61q2KJqFKWoWGxSudtON6OY7K6WHUWPS+JUeIUf6h9I1d6morkbv7IF6eY
+         D7vZ1/Ofo9j5Nuwj0kywBhn6LJ240KXaKDxxWotMnb/K9e85FpW7yOMSgwoI1TN3quqX
+         +x70XDnYMNtxLYQVi68hkOUjUIVM7w/CzJz46tu8hk26X7Ws+AHiR/ky5cfLQvwGNfpf
+         R0sqjGUHAk6kNBnPWX6iFqcn8zYshbNoAxJ6yGUYMX21Bulpi0cQjawi/K0EF46ealU4
+         zJ/g==
+X-Gm-Message-State: ANhLgQ1IOP92THN9Q7TtiEkHuW/FR4YJTy3cQj4HCiHQ1ZYo+1qcPbxc
+	nyBwNHhtSxyOdAz6NE2yZn0=
+X-Received: by 2002:a62:8342:: with SMTP id h63mr1232644pfe.24.1583759704145;
+        Mon, 09 Mar 2020 06:15:04 -0700 (PDT)
 Return-Path: <payalskshirsagar1234@gmail.com>
 Received: from payal-desktop ([157.33.162.233])
-        by smtp.gmail.com with ESMTPSA id d5sm39513208pga.36.2020.03.09.06.15.09
+        by smtp.gmail.com with ESMTPSA id k3sm2533337pfp.142.2020.03.09.06.15.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Mar 2020 06:15:10 -0700 (PDT)
+        Mon, 09 Mar 2020 06:15:03 -0700 (PDT)
 From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
 To: manishc@marvell.com,
 	GR-Linux-NIC-Dev@marvell.com,
@@ -80,53 +80,128 @@ To: manishc@marvell.com,
 	outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>,
 	linux-usb@vger.kernel.org
-Subject: [PATCH 2/3] [Outreachy kernel] staging: qlge: qlge.h: add spaces around operators
-Date: Mon,  9 Mar 2020 18:43:55 +0530
-Message-Id: <3a471ee901679659280d420549610b12e9efcdf6.1583759118.git.payalskshirsagar1234@gmail.com>
+Subject: [PATCH 1/3] [Outreachy kernel] staging: qlge: remove spaces before tabs and align code
+Date: Mon,  9 Mar 2020 18:43:54 +0530
+Message-Id: <2d4e3233c8d978700f4e8f442a82cf5f468649e4.1583759118.git.payalskshirsagar1234@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1583759118.git.payalskshirsagar1234@gmail.com>
 References: <cover.1583759118.git.payalskshirsagar1234@gmail.com>
 In-Reply-To: <cover.1583759118.git.payalskshirsagar1234@gmail.com>
 References: <cover.1583759118.git.payalskshirsagar1234@gmail.com>
 
-Add spaces around operators cleanup reported by checkpatch.
+Remove white spaces before tabs and align code properly for readability.
 
 Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
 ---
- drivers/staging/qlge/qlge.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/qlge/qlge.h | 60 ++++++++++++++++++-------------------
+ 1 file changed, 30 insertions(+), 30 deletions(-)
 
 diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
-index 66641edff6b5..4ef8dae3d7a0 100644
+index 4bc5d5fce9bf..66641edff6b5 100644
 --- a/drivers/staging/qlge/qlge.h
 +++ b/drivers/staging/qlge/qlge.h
-@@ -59,7 +59,7 @@
- #define MAX_CQ 128
- #define DFLT_COALESCE_WAIT 100	/* 100 usec wait for coalescing */
- #define MAX_INTER_FRAME_WAIT 10	/* 10 usec max interframe-wait for coalescing */
--#define DFLT_INTER_FRAME_WAIT (MAX_INTER_FRAME_WAIT/2)
-+#define DFLT_INTER_FRAME_WAIT (MAX_INTER_FRAME_WAIT / 2)
- #define UDELAY_COUNT 3
- #define UDELAY_DELAY 100
+@@ -16,8 +16,8 @@
+ /*
+  * General definitions...
+  */
+-#define DRV_NAME  	"qlge"
+-#define DRV_STRING 	"QLogic 10 Gigabit PCI-E Ethernet Driver "
++#define DRV_NAME	"qlge"
++#define DRV_STRING	"QLogic 10 Gigabit PCI-E Ethernet Driver "
+ #define DRV_VERSION	"1.00.00.35"
  
-@@ -1367,7 +1367,7 @@ struct tx_ring_desc {
- 	struct tx_ring_desc *next;
- };
+ #define WQ_ADDR_ALIGN	0x3	/* 4 byte alignment */
+@@ -1077,11 +1077,11 @@ struct tx_buf_desc {
+  * IOCB Definitions...
+  */
  
--#define QL_TXQ_IDX(qdev, skb) (smp_processor_id()%(qdev->tx_ring_count))
-+#define QL_TXQ_IDX(qdev, skb) (smp_processor_id() % (qdev->tx_ring_count))
+-#define OPCODE_OB_MAC_IOCB 			0x01
++#define OPCODE_OB_MAC_IOCB		0x01
+ #define OPCODE_OB_MAC_TSO_IOCB		0x02
+-#define OPCODE_IB_MAC_IOCB			0x20
+-#define OPCODE_IB_MPI_IOCB			0x21
+-#define OPCODE_IB_AE_IOCB			0x3f
++#define OPCODE_IB_MAC_IOCB		0x20
++#define OPCODE_IB_MPI_IOCB		0x21
++#define OPCODE_IB_AE_IOCB		0x3f
  
- struct tx_ring {
- 	/*
-@@ -1792,7 +1792,7 @@ struct ql_reg_dump {
- 
- 	/* segment 34 */
- 	struct mpi_coredump_segment_header ets_seg_hdr;
--	u32 ets[8+2];
-+	u32 ets[8 + 2];
- };
- 
- struct ql_mpi_coredump {
+ struct ob_mac_iocb_req {
+ 	u8 opcode;
+@@ -1173,15 +1173,15 @@ struct ib_mac_iocb_rsp {
+ 	u8 flags1;
+ #define IB_MAC_IOCB_RSP_OI	0x01	/* Override intr delay */
+ #define IB_MAC_IOCB_RSP_I	0x02	/* Disable Intr Generation */
+-#define IB_MAC_CSUM_ERR_MASK 0x1c	/* A mask to use for csum errs */
++#define IB_MAC_CSUM_ERR_MASK	0x1c	/* A mask to use for csum errs */
+ #define IB_MAC_IOCB_RSP_TE	0x04	/* Checksum error */
+ #define IB_MAC_IOCB_RSP_NU	0x08	/* No checksum rcvd */
+ #define IB_MAC_IOCB_RSP_IE	0x10	/* IPv4 checksum error */
+ #define IB_MAC_IOCB_RSP_M_MASK	0x60	/* Multicast info */
+ #define IB_MAC_IOCB_RSP_M_NONE	0x00	/* Not mcast frame */
+ #define IB_MAC_IOCB_RSP_M_HASH	0x20	/* HASH mcast frame */
+-#define IB_MAC_IOCB_RSP_M_REG 	0x40	/* Registered mcast frame */
+-#define IB_MAC_IOCB_RSP_M_PROM 	0x60	/* Promiscuous mcast frame */
++#define IB_MAC_IOCB_RSP_M_REG	0x40	/* Registered mcast frame */
++#define IB_MAC_IOCB_RSP_M_PROM	0x60	/* Promiscuous mcast frame */
+ #define IB_MAC_IOCB_RSP_B	0x80	/* Broadcast frame */
+ 	u8 flags2;
+ #define IB_MAC_IOCB_RSP_P	0x01	/* Promiscuous frame */
+@@ -1198,16 +1198,16 @@ struct ib_mac_iocb_rsp {
+ #define IB_MAC_IOCB_RSP_FO	0x80	/* Failover port */
+ 	u8 flags3;
+ #define IB_MAC_IOCB_RSP_RSS_MASK	0x07	/* RSS mask */
+-#define IB_MAC_IOCB_RSP_M_NONE	0x00	/* No RSS match */
+-#define IB_MAC_IOCB_RSP_M_IPV4	0x04	/* IPv4 RSS match */
+-#define IB_MAC_IOCB_RSP_M_IPV6	0x02	/* IPv6 RSS match */
+-#define IB_MAC_IOCB_RSP_M_TCP_V4 	0x05	/* TCP with IPv4 */
+-#define IB_MAC_IOCB_RSP_M_TCP_V6 	0x03	/* TCP with IPv6 */
+-#define IB_MAC_IOCB_RSP_V4	0x08	/* IPV4 */
+-#define IB_MAC_IOCB_RSP_V6	0x10	/* IPV6 */
+-#define IB_MAC_IOCB_RSP_IH	0x20	/* Split after IP header */
+-#define IB_MAC_IOCB_RSP_DS	0x40	/* data is in small buffer */
+-#define IB_MAC_IOCB_RSP_DL	0x80	/* data is in large buffer */
++#define IB_MAC_IOCB_RSP_M_NONE		0x00	/* No RSS match */
++#define IB_MAC_IOCB_RSP_M_IPV4		0x04	/* IPv4 RSS match */
++#define IB_MAC_IOCB_RSP_M_IPV6		0x02	/* IPv6 RSS match */
++#define IB_MAC_IOCB_RSP_M_TCP_V4	0x05	/* TCP with IPv4 */
++#define IB_MAC_IOCB_RSP_M_TCP_V6	0x03	/* TCP with IPv6 */
++#define IB_MAC_IOCB_RSP_V4		0x08	/* IPV4 */
++#define IB_MAC_IOCB_RSP_V6		0x10	/* IPV6 */
++#define IB_MAC_IOCB_RSP_IH		0x20	/* Split after IP header */
++#define IB_MAC_IOCB_RSP_DS		0x40	/* data is in small buffer */
++#define IB_MAC_IOCB_RSP_DL		0x80	/* data is in large buffer */
+ 	__le32 data_len;	/* */
+ 	__le64 data_addr;	/* */
+ 	__le32 rss;		/* */
+@@ -1233,17 +1233,17 @@ struct ib_ae_iocb_rsp {
+ #define IB_AE_IOCB_RSP_OI		0x01
+ #define IB_AE_IOCB_RSP_I		0x02
+ 	u8 event;
+-#define LINK_UP_EVENT              0x00
+-#define LINK_DOWN_EVENT            0x01
+-#define CAM_LOOKUP_ERR_EVENT       0x06
+-#define SOFT_ECC_ERROR_EVENT       0x07
+-#define MGMT_ERR_EVENT             0x08
+-#define TEN_GIG_MAC_EVENT          0x09
+-#define GPI0_H2L_EVENT       	0x10
+-#define GPI0_L2H_EVENT       	0x20
+-#define GPI1_H2L_EVENT       	0x11
+-#define GPI1_L2H_EVENT       	0x21
+-#define PCI_ERR_ANON_BUF_RD        0x40
++#define LINK_UP_EVENT			0x00
++#define LINK_DOWN_EVENT			0x01
++#define CAM_LOOKUP_ERR_EVENT		0x06
++#define SOFT_ECC_ERROR_EVENT		0x07
++#define MGMT_ERR_EVENT			0x08
++#define TEN_GIG_MAC_EVENT		0x09
++#define GPI0_H2L_EVENT			0x10
++#define GPI0_L2H_EVENT			0x20
++#define GPI1_H2L_EVENT			0x11
++#define GPI1_L2H_EVENT			0x21
++#define PCI_ERR_ANON_BUF_RD		0x40
+ 	u8 q_id;
+ 	__le32 reserved[15];
+ } __packed;
 -- 
 2.17.1
 
