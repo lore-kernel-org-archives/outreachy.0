@@ -1,109 +1,116 @@
 X-GM-THRID: 6801903865933332480
-X-Received: by 2002:a92:9f1a:: with SMTP id u26mr16640395ili.72.1583772708126;
-        Mon, 09 Mar 2020 09:51:48 -0700 (PDT)
+X-Received: by 2002:a1c:cc11:: with SMTP id h17mr20960209wmb.154.1583756620678;
+        Mon, 09 Mar 2020 05:23:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:db11:: with SMTP id b17ls2604405iln.8.gmail; Mon, 09 Mar
- 2020 09:51:46 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuc2GZlkJQ8vOhJvvcL4YONshjp+DoHw2D9J3cSDm2Fff2MBxGm6C/zW/vWxZBBpkT3Mle5
-X-Received: by 2002:a05:6e02:e81:: with SMTP id t1mr3986143ilj.226.1583772706835;
-        Mon, 09 Mar 2020 09:51:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583772706; cv=none;
+Received: by 2002:adf:f8d1:: with SMTP id f17ls5660646wrq.3.gmail; Mon, 09 Mar
+ 2020 05:23:39 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtb58vcsTW2ykuwoMkOz/mdsIBiMV8j18TWqJ98POJgwD9XVp+yzpxi6GaYO0RkUKYNFHqV
+X-Received: by 2002:adf:ef0b:: with SMTP id e11mr21837165wro.115.1583756619387;
+        Mon, 09 Mar 2020 05:23:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583756619; cv=none;
         d=google.com; s=arc-20160816;
-        b=u9oj6joYQCufO+PI3bF6TmnolLnYFC0TCoUi6iCiEB4VfIo3jj+DxJtfDCtyXHKS1q
-         6mTXdHIIhe8eYziAvCSlieub5f0J2vqBtoYXYfVm37V0ILt3+YB1GAyXlhw+mlyM//fJ
-         8zyZUEc0XjlmF98/jXegZFwJJ0kQSCOFVLoIjkgVFYGAE8dE2AyAFha+gBuW2L+dmPJc
-         j+3WJXUbsEpMk3VG1Yuq/ojK3JXqlfeRmnK2cw2Xo6+yZt4DVx7EzIqzW36VgSAV67Xu
-         PGaRWePhMDs16ZN45/0cwnAmyWlFDXaMP8lKMZw4o1d4Jy2kqr8IuOBnDohEOsnZyfK7
-         seLQ==
+        b=VN4W25sJsmnagEEXtWQpH/C4spf7+ap4aAAdTzH6em2Orao8I9KUhUu+VnWyUN5kkL
+         WEE4fqHKUMnpPsTL5hGnrsNIE6DPY4nGE7B+cRX7+eq8epk3KM6SCTc/M7968AFvQ90C
+         TCD6I2ZnH6VlZ4Cqa8dWf+a8Hytuoj8iINiS09Kh4kJroSFzlnNzU4GGG0BKzWa4AwdG
+         2CDX44gzJ6CkosJ5S/cziHMlVBA4E/D6bQ5eEYqaeTCyY1NEesPvnEdeUHRaYwPsZBgw
+         BAMEJLsRsfNK5Vaq8N8q/ysnRzPQAlKL3XY5WHvubDQFnSmufkUeFdmP7vtbH9nNBgiY
+         QDhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HzSRe51ntOO80sAMFcqyWK2TEbBzU5pvnS9ZfU++3Jw=;
-        b=R8ZleHeBkhZhkMUc8fXzeK5aqYsCqPiNPgKeGxBn03XGgWZtEM6BkC6Da2wC5aT+gv
-         JIod+r7liuX1WYqJcAconwlcS8KzR42DNYiUhJneFcIQ70TOTEA6wb9Bj8oFPeX+qBdC
-         N8qgS0hyDZyZ08BH6pvu5DPV+Z6RoIT4s+q5zwlrdUpDnB390RcphfBE8SSynmTz71tx
-         TpboLhci5dhcPUl7UP3ky9ycaJHS7QktsHYYIDfK8TrjbF2z5G4FRdGy5mbuiiX98BTS
-         UgWfevqSvVGfwiz4uUTdw2HY4gSvIF3y/RiZPq6zyyv6A24CVaN7H1hIJwi/9FPVYU5c
-         WO9w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=cDHQXPEwOTZgR/0Mx/+u9vwsT6DOUIm7Mw+7jnxde7k=;
+        b=RdYu2E/KNn9Ijo3pAv1xTx2BtMYO4uYTxmgzSD9XFP6oJ7pEXafbBEoA6lSzFVOPZG
+         QNU6P1ljJkN1DMVBz7+7LrWvZtmOVz87AzSbvaJ+2cP3HX3cPGMOwLUF3GOcsxSjZMJm
+         qBbdzrmv+7GZTB5zcUn2960zw4EtHV48rd1lGu6cVSM0Y7wCE9hiapgpdPnXlFcfA4s/
+         Z15+UJnHyCpyY2osCqWjYiqMUgIxu7RP56sGsrTehdyPUS/xe109nIIejvgPuZQClzVj
+         Z3nCIueZsLKHcKzGJb1gX3Xyner0BlaKfAN5z0fD9ZSa43xTmLnobR4J/W5ovAlnrtT8
+         6e0g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pZQI2Wlg;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
-        by gmr-mx.google.com with ESMTPS id t14si625287ilo.4.2020.03.09.09.51.46
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id f1si277331wme.1.2020.03.09.05.23.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Mar 2020 09:51:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Mar 2020 05:23:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pZQI2Wlg;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52a.google.com with SMTP id d9so4972048pgu.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 09:51:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=HzSRe51ntOO80sAMFcqyWK2TEbBzU5pvnS9ZfU++3Jw=;
-        b=pZQI2WlgCYeI/gqLtRewB2I1nWmWqPKCL4NTKcoHyGcM/64HinmuDQ/adQWSt8rrqs
-         p1H0nuA6NE/LpmHvvfFTLosD0cTqKxgZmWbsVt1Cg5mFYx4H9HtGP203p6ugxKYVcECV
-         +8Cc0YfzzYCICjIUrYOOp8FsgD+CBT7CggcmweWC7Hfg7OJ6/c53bXPUF7iEblRz2t3h
-         lGswTim/fO+n5c9ILXDglPziZihLlrfDYswZuSURQ8ZNCoJ26Ea0y2vn942qAmxUJNPB
-         HDeF0nUe1G38Q/4SbbbmYUFGzEtFN5r0DWT3WxJnrcB9UR5r2WMi5uVOavMCKFHOVAQq
-         pBnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=HzSRe51ntOO80sAMFcqyWK2TEbBzU5pvnS9ZfU++3Jw=;
-        b=tj+HL/WFX8D+kpL/P8kORuTbqpJg5+Jsd2Q9TLqWu/t0SdcyYh10xnwdyHYth2rf3j
-         8MRMllJ2oOeY3iDwFsZ52N4ZauYWFx1TIUuvOCQIGOE/yiOi8NZoNJrANs2/fe3YuwW0
-         B2+GjDrjBLPXfAwX6lqTPa4STFwuR4aMT3zxKKKuQ3ZdMrH55BksYJKdAoj9uIezXK6Z
-         89uTv+xbjFZxn9+UQaijoyf0c02L3MOBh4uoFggyL4GDvQSfVEmm7jh0m2xUmq+t+UwZ
-         d0QolSGGP/g3PuHe68gSKsv2yzmSuI/kirHbEWhOgXCnpUVc8X04DQHuhv9VmT/2qca6
-         GzdQ==
-X-Gm-Message-State: ANhLgQ2yGOiJJQdnrSa1l2Gp93X6Y1GehMHcVA+SJqCDakHFbMvB531k
-	LyE5hLQZsLWoxAYQq9HdmL8=
-X-Received: by 2002:a63:67c5:: with SMTP id b188mr17093348pgc.111.1583772706180;
-        Mon, 09 Mar 2020 09:51:46 -0700 (PDT)
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from payal-desktop ([157.33.178.183])
-        by smtp.gmail.com with ESMTPSA id d5sm39978893pga.36.2020.03.09.09.51.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Mar 2020 09:51:45 -0700 (PDT)
-From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-To: valdis.kletnieks@vt.edu,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: exfat: alignment should match open parenthesis
-Date: Mon,  9 Mar 2020 22:21:38 +0530
-Message-Id: <20200309165138.5313-1-payalskshirsagar1234@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,533,1574118000"; 
+   d="scan'208";a="439480438"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Mar 2020 13:23:39 +0100
+Date: Mon, 9 Mar 2020 13:23:39 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
+To: Stefano Brivio <sbrivio@redhat.com>
+cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] [Outreachy kernel] staging: exfat: alignment should
+ match open parenthesis
+In-Reply-To: <20200309124025.3b8d039a@elisabeth>
+Message-ID: <alpine.DEB.2.21.2003091323010.4721@hadrien>
+References: <20200308182046.4402-1-payalskshirsagar1234@gmail.com> <20200309124025.3b8d039a@elisabeth>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Align code to match open parenthesis.
 
-Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
----
- drivers/staging/exfat/exfat.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
-index c863d7566b57..341c9192f7e8 100644
---- a/drivers/staging/exfat/exfat.h
-+++ b/drivers/staging/exfat/exfat.h
-@@ -716,9 +716,9 @@ int multi_sector_write(struct super_block *sb, sector_t sec,
- void exfat_bdev_open(struct super_block *sb);
- void exfat_bdev_close(struct super_block *sb);
- int exfat_bdev_read(struct super_block *sb, sector_t secno,
--	      struct buffer_head **bh, u32 num_secs, bool read);
-+		    struct buffer_head **bh, u32 num_secs, bool read);
- int exfat_bdev_write(struct super_block *sb, sector_t secno,
--	       struct buffer_head *bh, u32 num_secs, bool sync);
-+		     struct buffer_head *bh, u32 num_secs, bool sync);
- int exfat_bdev_sync(struct super_block *sb);
- 
- /* cluster operation functions */
--- 
-2.17.1
+On Mon, 9 Mar 2020, Stefano Brivio wrote:
 
+> On Sun,  8 Mar 2020 23:50:46 +0530
+> Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
+>
+> > Align code to match open parenthesis.
+> >
+> > Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+> > ---
+> >  drivers/staging/exfat/exfat.h | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/exfat/exfat.h b/drivers/staging/exfat/exfat.h
+> > index c863d7566b57..341c9192f7e8 100644
+> > --- a/drivers/staging/exfat/exfat.h
+> > +++ b/drivers/staging/exfat/exfat.h
+> > @@ -716,9 +716,9 @@ int multi_sector_write(struct super_block *sb, sector_t sec,
+> >  void exfat_bdev_open(struct super_block *sb);
+> >  void exfat_bdev_close(struct super_block *sb);
+> >  int exfat_bdev_read(struct super_block *sb, sector_t secno,
+> > -	      struct buffer_head **bh, u32 num_secs, bool read);
+> > +		    struct buffer_head **bh, u32 num_secs, bool read);
+> >  int exfat_bdev_write(struct super_block *sb, sector_t secno,
+> > -	       struct buffer_head *bh, u32 num_secs, bool sync);
+> > +		     struct buffer_head *bh, u32 num_secs, bool sync);
+> >  int exfat_bdev_sync(struct super_block *sb);
+> >
+> >  /* cluster operation functions */
+>
+> The change itself looks good, but as Julia mentioned, you
+> should use get_maintainer.pl and send these changes to more people. In
+> this case, adding exFAT maintainer and linux-fsdevel@vger.kernel.org to
+> Cc: would be nice.
+>
+> Note that this also depends on habits, lists, personal preferences. You
+> will find that some contributors Cc: the whole list from
+> get_maintainer.pl (which is fine by all means), some contributors might
+> already know who is actually interested in changes (and not Cc: all
+> results). Depending on what subsystem you're contributing to, you'll get
+> familiar with practice.
+
+A lot of options are suggested in the Outreachy tutorial that can be used
+to avoid sending patches to everyone who has ever touched the file.
+
+julia
+
+
+>
+> --
+> Stefano
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200309124025.3b8d039a%40elisabeth.
+>
 
