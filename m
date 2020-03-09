@@ -1,87 +1,128 @@
-X-GM-THRID: 6255184254546739200
-X-Received: by 10.50.50.138 with SMTP id c10mr2095994igo.3.1456398576204;
-        Thu, 25 Feb 2016 03:09:36 -0800 (PST)
+X-GM-THRID: 6802195878840893440
+X-Received: by 2002:a63:1c4a:: with SMTP id c10mr17641996pgm.252.1583771279861;
+        Mon, 09 Mar 2020 09:27:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.18.85 with SMTP id 79ls344727qge.15.gmail; Thu, 25 Feb
- 2016 03:09:35 -0800 (PST)
-X-Received: by 10.31.152.208 with SMTP id a199mr40674411vke.4.1456398575662;
-        Thu, 25 Feb 2016 03:09:35 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id ui7si1144815pab.0.2016.02.25.03.09.35
+Received: by 2002:a63:7744:: with SMTP id s65ls3745428pgc.3.gmail; Mon, 09 Mar
+ 2020 09:27:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvzD3ugGJNzBRq6/BMYUqCMo0rGdnfVySSkTLDykE35Y6FAn9sbTsvXyTPKdUpnydiYOuOu
+X-Received: by 2002:a63:fc1c:: with SMTP id j28mr17318883pgi.289.1583771278222;
+        Mon, 09 Mar 2020 09:27:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583771278; cv=none;
+        d=google.com; s=arc-20160816;
+        b=munoHc6ZgkYJdnjHVYf5KUCsPkb72yT1975KGL4tU3MGRxlq5ZxmcoiHkN5pDD0ZpX
+         lX35bI8/LeRaYxQMQXoQWyH990xoDWNaCqpbqB+sZchc8lJicX9SDLuINRkI7gXl0Fyf
+         TWqbVy7l4riqoG0Wl7hj1jEv5EQfqB5O1ok04GTVu8S566gJwyGeys2e6+nejeQhzQbo
+         UGjBuX6GsjY9t9CiGq9igQLXlMQTdCeRkxGhcFmx12d3mVwf2Kktuun7Q2LEbxMpGHXi
+         KsvUW2CJoBqMdQLako0Mfd3KVNecc9XL5Z2xV/hmhmCMDbRuZuzGBYWwFO7qFG44HHiZ
+         somA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=skjHIoNFW9m0Z/KJROrRid0ClfTATsnMjdC8nn8fLgs=;
+        b=QAxQ9zHd6OpuKuGOo/CsrPIAQIy2lRYJn+fiffuU8M4DKylJUxv67goT417ARtncPm
+         Lxn9t3tPd7p7+iY41e30LCQHuOo97/BaqTydVbmbj7BJGsvx0qNdpN8g6rWw9MunTrNz
+         2HX8Z18aX/akYoMSz6p4+ePzDYTOFLwz4odiHMLBFux+wNKHEPMWMt4nEVc1HhiTR1ug
+         T9T6nZCxtvnhuIOKvSxohVQuykGrkcCJFXIALz2+BEMWl+vhraeLw1iZ+tjZ1JRuc7Fy
+         JmNkPP9Yn7iS0BXxP49+kpnMLHfYvExfWNcdQ5qwotwRH5LkHqHOse+K7tBKvyY+aeih
+         pG0w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=crleq8Jx;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com. [2607:f8b0:4864:20::102b])
+        by gmr-mx.google.com with ESMTPS id y13si537301plp.0.2020.03.09.09.27.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 03:09:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Mar 2020 09:27:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) client-ip=2607:f8b0:4864:20::102b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id q63so31217700pfb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 03:09:35 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=crleq8Jx;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x102b.google.com with SMTP id o21so123154pjs.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 09:27:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=/0PoILwf7ZW2hHhFlQScHDLUUVqMyeZ06/jwLwvj65k=;
-        b=Ry63WmJaFCJl789kAoGczPx5wZT7Me/IfjCp0TCcNEOzItI1hAwVoD3aKDuJag5XnB
-         ONGUbEcmX0+fpRA2rciSOeXxGGup7eoXzF95W6c9icdY9bnlDQR9IGXmlFOtFEqPfB+P
-         3V16x6PINxOOuHL211rRJVdn5foEqdQL0XWpRXjxep8rLO/pAlm7rZt7Az6NGNf7etDx
-         2L4cgiuViyHjFFq6MCEp8vW19jbEl1ZzUlIVMub3nTTvcdLpw7FpJD0cwTUVM7eBRhm2
-         U/ZrYjqshzO94gks4Pr/lo7P8AEpKNf2InT51RcFK2iJXN0Q66/op8jlrLgcNd5ntK4W
-         KWnw==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=skjHIoNFW9m0Z/KJROrRid0ClfTATsnMjdC8nn8fLgs=;
+        b=crleq8Jx1uDLcZpe0ytVgSa7q5F2hENDt6TFMsmRrM33DLGcRTQfO9fwWchoSYIhvg
+         981umQOeu6FiwE1ihAGtJj966xuiG/3Py2IIiqNAdIZvpwfO4VWNNSly4EeZMwwUQOb/
+         lWGDBXWblOGmO9qXz/joJ4qvZalcvGo5Nto7KtYoppmDhfTBSY8mESA6EuaD/MkzJkfe
+         xV6R7JDSjXU2veggBPwqzPChBHxgl/eGAnGGvHGcq15dgB81RvNqQ+QPDMd5eKYCQBAF
+         e0ebcFF6Api151Y/Pl5JP//ebIsQMUFM0n6BRul9B6Bmi4rARZ1wV2qeFCIdikGASqIb
+         x1Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=/0PoILwf7ZW2hHhFlQScHDLUUVqMyeZ06/jwLwvj65k=;
-        b=T3H8Yie1BXs3MyuctATfe0EUtcZUwH34QaL8n5zA78oyaCbUEUNIlZ73/plaOQtSIW
-         SHoKCyRKB/piSxoWDPcp1UO9ApOZQ5VaH8kYEVxm0i8/mYOtVVSXU9m/7b4kGpzlXUfw
-         kEFcsXJVXrgv7TABjBOoJePgo9NMSHD02pfHfjUYxT4uSzMY/AT3TW37iSg0MQIKmTzO
-         yVwCIj7b7z7/dsAq7gGVo0Nyem7Fnnax9ue0jQb4+Oub4kI5Y2LQ+T9SM9/4NifUnDX4
-         N1RuXRMqVstsSUkcyVUwaNo8PbrtCb5t5lxnXjSyOXVv1Jk1zJU5uLV5lTdnbPGrY26t
-         yhOA==
-X-Gm-Message-State: AG10YORYqoF9cj5CF81Hb6QqxCjlqlqrSwHSh3LhSQCTd5hUQl8qwZDU5FUBiTHyK0zW8A==
-X-Received: by 10.98.66.81 with SMTP id p78mr62249796pfa.43.1456398575509;
-        Thu, 25 Feb 2016 03:09:35 -0800 (PST)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.73.140.109])
-        by smtp.gmail.com with ESMTPSA id lq10sm11509142pab.36.2016.02.25.03.09.34
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 03:09:35 -0800 (PST)
-Date: Thu, 25 Feb 2016 16:40:03 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: lustre: Fix unnecessary whitespace warning
-Message-ID: <20160225110955.GA3905@life-desktop>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=skjHIoNFW9m0Z/KJROrRid0ClfTATsnMjdC8nn8fLgs=;
+        b=F/b91ICJqpmBrROtpVAIWcWwpaUEq7+xjbD5X9F72G8OaBCdaBY8YeZngU5HSJxnu7
+         qliJhaoFy475E/AqdmKCPcK3RovWLe8ctpD+uqhwkZQzeiQ+B/pYFX0QOGr8/s34l4aZ
+         aJ5lmmH0aBrXRPBn9sUMZxeS4RQi7pjgeeluGXMRhwhyjWzCO/Cae+39L1feLEw0rLEl
+         dOKbV65iNsuWBR43gssHih0TIOds6OoCj60+MI+J3qZOpDTCeES0vqy/kv7wP9L1K5iq
+         8fKjrLfciuoiMFkrQhg6AkMS8aZJnglvZR+Hwy/mnEAz2DVxlzLngilHeFItNhahbo/y
+         ASFw==
+X-Gm-Message-State: ANhLgQ2A4acK9GwletrH4M2wCS+a1It93IU7kpjXX2L+JSZMOWwaePn7
+	yDRBSZWqlbehGZW4d2a7+jQ=
+X-Received: by 2002:a17:902:9b8a:: with SMTP id y10mr15933389plp.114.1583771277794;
+        Mon, 09 Mar 2020 09:27:57 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([157.33.178.183])
+        by smtp.gmail.com with ESMTPSA id b64sm26641364pfa.94.2020.03.09.09.27.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Mar 2020 09:27:57 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: manishc@marvell.com,
+	GR-Linux-NIC-Dev@marvell.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH v2 3/3] [Outreachy kernel] staging: qlge: qlge.h: remove excess newlines
+Date: Mon,  9 Mar 2020 21:57:28 +0530
+Message-Id: <20200309162728.4342-4-payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200309162728.4342-1-payalskshirsagar1234@gmail.com>
+References: <20200309162728.4342-1-payalskshirsagar1234@gmail.com>
 
-This patch remove the warning detect by checkpatch.pl
-WARNING: unnecessary whitespace before a quoted newline
+Blank lines aren't necessary after an open brace '{'.
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
 ---
- drivers/staging/lustre/lustre/lov/lov_pack.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Nothing has changed.
 
-diff --git a/drivers/staging/lustre/lustre/lov/lov_pack.c b/drivers/staging/lustre/lustre/lov/lov_pack.c
-index 4d8abb9..c65b950 100644
---- a/drivers/staging/lustre/lustre/lov/lov_pack.c
-+++ b/drivers/staging/lustre/lustre/lov/lov_pack.c
-@@ -183,7 +183,7 @@ int lov_packmd(struct obd_export *exp, struct lov_mds_md **lmmp,
- 			return -ENOMEM;
- 	}
+ drivers/staging/qlge/qlge.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/staging/qlge/qlge.h b/drivers/staging/qlge/qlge.h
+index 4ef8dae3d7a0..fc8c5ca8935d 100644
+--- a/drivers/staging/qlge/qlge.h
++++ b/drivers/staging/qlge/qlge.h
+@@ -119,7 +119,6 @@ enum {
+  * Processor Address Register (PROC_ADDR) bit definitions.
+  */
+ enum {
+-
+ 	/* Misc. stuff */
+ 	MAILBOX_COUNT = 16,
+ 	MAILBOX_TIMEOUT = 5,
+@@ -1762,7 +1761,6 @@ struct ql_nic_misc {
+ };
  
--	CDEBUG(D_INFO, "lov_packmd: LOV_MAGIC 0x%08X, lmm_size = %d \n",
-+	CDEBUG(D_INFO, "lov_packmd: LOV_MAGIC 0x%08X, lmm_size = %d\n",
- 	       lmm_magic, lmm_size);
+ struct ql_reg_dump {
+-
+ 	/* segment 0 */
+ 	struct mpi_coredump_global_header mpi_global_header;
  
- 	lmmv1 = *lmmp;
+@@ -2059,7 +2057,6 @@ enum {
+ };
+ 
+ struct nic_operations {
+-
+ 	int (*get_flash) (struct ql_adapter *);
+ 	int (*port_initialize) (struct ql_adapter *);
+ };
 -- 
-1.9.1
+2.17.1
 
 
