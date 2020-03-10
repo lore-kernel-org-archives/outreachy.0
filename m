@@ -1,126 +1,139 @@
 X-GM-THRID: 6802607426621145088
-X-Received: by 2002:a05:600c:2947:: with SMTP id n7mr3037395wmd.13.1583857355315;
-        Tue, 10 Mar 2020 09:22:35 -0700 (PDT)
+X-Received: by 2002:aa7:9f11:: with SMTP id g17mr2843820pfr.224.1583855465177;
+        Tue, 10 Mar 2020 08:51:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:4b06:: with SMTP id y6ls633877wma.3.canary-gmail; Tue,
- 10 Mar 2020 09:22:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtlcXE1qp4E6KUWoRkiyAdA5wpyzPRZofbiripfRa0cjEkyURZlc5C19eiEgIG9xh9Qi9ao
-X-Received: by 2002:a1c:b657:: with SMTP id g84mr2874067wmf.107.1583857353722;
-        Tue, 10 Mar 2020 09:22:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583857353; cv=none;
+Received: by 2002:a62:f248:: with SMTP id y8ls4991255pfl.6.gmail; Tue, 10 Mar
+ 2020 08:51:03 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsZSdnEoor2JnIfJsx+SU8FQQKiNb82cHTufedEYcJcApS3U+6Aqb7CKmqUC3D87AMckmo+
+X-Received: by 2002:a62:25c6:: with SMTP id l189mr22165172pfl.136.1583855463788;
+        Tue, 10 Mar 2020 08:51:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583855463; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kdao22sFLllNR4le8O3ntbRLB+SMdXZOl4P9fdGo9yxet2JB8SWn1Ix2ArgZRsn3i3
-         ZE7OpkSw11c1IgoUWrdfNN3QTn6dPu50qT0TSDvzA3VYmmJr0FrBNNHaCZKX29fpnKdH
-         p04qKy9j4t+IE475gW+WfWf/l1auJ/UY5uV6+McHJZ0kEpvzeENP04fpN7ukJ56hXka7
-         g+zz72a76xG5JNUoVP+9HKqMKNuiO4kmFhJggyfJbIIxfKfB6yr6kS9xyct0G9Hrz2wK
-         E9rZMlhOV2DFm31SozsvFc0mf5Bm/0HuNO93vB7tS1LI/ok3cy2nuUclEkrlSDSKCc2c
-         fTIA==
+        b=Bn/a9yNNPg5tAupD3LkdGLLBlH4tMrghB93cOW5FYGY0OpIh/jt1WO5iXtiso7P/d3
+         HCRcybjX08erR4t4Rx0u8ih8ZdhM62jF4HrZ4CqiAZfkGP17ksAhUewkV6hEWaw5J2vl
+         6J0hEvkMtQXF3uTuu/oxq/Ou6iKCDYbw/uwePAeAem2BsJeKpnREWiLQMYLN9GNhVoMb
+         egrXGvVh1ux6FZUpCVmaQ4LP6Ytp3CcJum0f0SG4pzLQqXl7F+/vNYj2NuVgTmQpgIag
+         0D8ZzE9PGunAONU3eFNU+N9cs+nq9tL0xhYF6+OqfSU+mmWQg5cK1UBJjSyHwjyZIW+R
+         D8Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=iw/HtdtEJIlKS/nyFULaYTpgPd8VJo8xadb5pfVmPNQ=;
-        b=haBb7iQQ8GvEhnwJKYE6I/cYq1SHlpnHswV43tzaEI6+UgDwBrHfGPyK8cEeGpHY38
-         Yf87kNrrpMNdGqN3aqMhgd7v89v6IuDsmxEZfwVY54fVlJIL19Wx/v3UNEPxFElmPtrd
-         bHPoSOz1NtnneCflGU+OuV2EsJ+hxNsRwOku8qnyQZLUrVll39rpZDx0W9F1MRPkLMBb
-         XdbrgS5pIaScYzN/HWP3V+7XjQ1pxKXNbzPeXTptIdAk8GjZ2fJOd1/Pz7pTOnA+3aiz
-         TX2ujU3eAv4m1jB11ylvYuwIrEPicpwK6z4SxYmFvEZf/GH0rJbcDbX9CM9rgfeeHK4a
-         JX8A==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=iqa7foDdsq0RhB7OrMkqu0XD/LH+bGdQuphEk8MsbFI=;
+        b=yxZX8d2kPhOXzkXrq1rKJgOmfizlj3c8fTgN6beFEkBAWGbDR15SheQ4Uymoyp0KTt
+         PfUcHl2BOf+b+ajqBPSmp1+hT6lwfIpdEXlVcj5Wi4aSE0+0rQBSZOblrlGNUkbMu5pt
+         ukH6NhGhH1m1a//i6aM2oj7Gvp0i2OsuN+mBrImo+Nq1CC8ETk1nw7l25upCm68kx9sJ
+         tBw5pQhtvlW3QqRs03kv7VsLXxQ69LY+LyFnSLkfgMviZEl43OXYEoOkSh0UhBNdiETU
+         J/yOe6nStronTpy+J6TXWSudPOjl6Rw3SaLkzC7EgUe4j1M9Myf+I2UNT7D05bcRyb51
+         P5kQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id s2si337266wro.5.2020.03.10.09.22.33
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BSn68XAK;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id x12si846776plv.3.2020.03.10.08.51.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 09:22:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2020 08:51:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,537,1574118000"; 
-   d="scan'208";a="341912627"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2020 17:22:33 +0100
-Date: Tue, 10 Mar 2020 17:22:32 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: julia@hadrien
-To: Deepak R Varma <mh12gx2825@gmail.com>
-cc: outreachy-kernel@googlegroups.com, abbotti@mev.co.uk, 
-    hsweeten@visionengravers.com, gregkh@linuxfoundation.org, 
-    daniel.baluta@gmail.com
-Subject: Re: [Outreachy kernel] [PATCH] staging : comedi : dt2801 : remove
- old unused code
-In-Reply-To: <20200310155053.GA27759@deeUbuntu>
-Message-ID: <alpine.DEB.2.21.2003101721460.26409@hadrien>
-References: <20200310155053.GA27759@deeUbuntu>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BSn68XAK;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id t3so6482994pgn.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 08:51:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=iqa7foDdsq0RhB7OrMkqu0XD/LH+bGdQuphEk8MsbFI=;
+        b=BSn68XAKUEseZfJBLq3kkrmJ74En0W+wIQsaA1GW8KWQJd+In4TFYc/A+2ABF5EzFe
+         pIEhQL7XBzrW+CPe4m3VN+YpcfeJ99XSiGSwWDa+ry/VOPOSsQg/uxveuGetXUK943ul
+         FBohH+Gb30QdI5uXptqxw036Ls4daSlF7gUkFJwwP2RA9KifNwlUQqYU+MDGBUCQuvY1
+         Il5xQ/cxH6V8K0rJMp1SO4pvP/8ZNwJHXoFc9DZYAwQaf5DyOrD5G/bTwxSEVAum/67p
+         Eg6FLXXdZYkz7HOJ06gHXgIMTXKi7hAiWTQyfMZglKbDg59nTBqOTCxV7LH/prtn5sH6
+         sfFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=iqa7foDdsq0RhB7OrMkqu0XD/LH+bGdQuphEk8MsbFI=;
+        b=N7eGb/pXrqfqUR5eLURljYUjuU+zD0G4qtHlriOzYLl54rq8+Rv8nCGH4tLPG0oT0N
+         1LYOqVMhQPyWhK6RQPki6/8n+TLW73s3wLiiGup5HV4Oarf+FwyBpGTblLW7Z/HSNM2u
+         n3RekgwGfBNl2ZusKyUkxxjZ/D5qov3avkKQBwpQ2eBb3evvC+gQdOrH5+bgZK+hzemF
+         HIkGHC3EPrHV5/HndBLCXdn4rqJxKeK/zjPKmODvBw0Ip/JUGjyI4jz4ClKQqmrKiPzG
+         /Xph+jJIgfPxMYEOEhpAykotgUomJ++Z5f1QVzRlY5Vugy/dG730FPwUIAcRsnRlx8PF
+         Ehyw==
+X-Gm-Message-State: ANhLgQ0P9zwZ3RMRlVVH/pxRj8lD3stKazZr6eHzF1GOj99gJ66TDiLj
+	4RX6cINfDEiXS+vukNl3PTMt3qac
+X-Received: by 2002:a62:4ed1:: with SMTP id c200mr12453915pfb.207.1583855463260;
+        Tue, 10 Mar 2020 08:51:03 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.240.207.69])
+        by smtp.gmail.com with ESMTPSA id x19sm25209472pfc.144.2020.03.10.08.51.00
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Mar 2020 08:51:02 -0700 (PDT)
+Date: Tue, 10 Mar 2020 21:20:58 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: abbotti@mev.co.uk, hsweeten@visionengravers.com,
+	gregkh@linuxfoundation.org, daniel.baluta@gmail.com
+Subject: [PATCH] staging : comedi : dt2801 : remove old unused code
+Message-ID: <20200310155053.GA27759@deeUbuntu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Subject lines don't have spaces before the colons.
+there are 2 #if 0 blocks that have no recent history of any change. We
+can remove those code blocks for improved readability of the code.
 
-You can alywas looks at other subject lines on the same file to see what
-others have done:
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/comedi/drivers/dt2801.c | 22 ----------------------
+ 1 file changed, 22 deletions(-)
 
-git log --oneline filename.c
+diff --git a/drivers/staging/comedi/drivers/dt2801.c b/drivers/staging/comedi/drivers/dt2801.c
+index a29880981d81..aad02faa2f83 100644
+--- a/drivers/staging/comedi/drivers/dt2801.c
++++ b/drivers/staging/comedi/drivers/dt2801.c
+@@ -87,17 +87,6 @@
+ #define DT2801_STATUS		1
+ #define DT2801_CMD		1
+ 
+-#if 0
+-/* ignore 'defined but not used' warning */
+-static const struct comedi_lrange range_dt2801_ai_pgh_bipolar = {
+-	4, {
+-		BIP_RANGE(10),
+-		BIP_RANGE(5),
+-		BIP_RANGE(2.5),
+-		BIP_RANGE(1.25)
+-	}
+-};
+-#endif
+ static const struct comedi_lrange range_dt2801_ai_pgl_bipolar = {
+ 	4, {
+ 		BIP_RANGE(10),
+@@ -107,17 +96,6 @@ static const struct comedi_lrange range_dt2801_ai_pgl_bipolar = {
+ 	}
+ };
+ 
+-#if 0
+-/* ignore 'defined but not used' warning */
+-static const struct comedi_lrange range_dt2801_ai_pgh_unipolar = {
+-	4, {
+-		UNI_RANGE(10),
+-		UNI_RANGE(5),
+-		UNI_RANGE(2.5),
+-		UNI_RANGE(1.25)
+-	}
+-};
+-#endif
+ static const struct comedi_lrange range_dt2801_ai_pgl_unipolar = {
+ 	4, {
+ 		UNI_RANGE(10),
+-- 
+2.17.1
 
-julia
-
-On Tue, 10 Mar 2020, Deepak R Varma wrote:
-
-> there are 2 #if 0 blocks that have no recent history of any change. We
-> can remove those code blocks for improved readability of the code.
->
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/staging/comedi/drivers/dt2801.c | 22 ----------------------
->  1 file changed, 22 deletions(-)
->
-> diff --git a/drivers/staging/comedi/drivers/dt2801.c b/drivers/staging/comedi/drivers/dt2801.c
-> index a29880981d81..aad02faa2f83 100644
-> --- a/drivers/staging/comedi/drivers/dt2801.c
-> +++ b/drivers/staging/comedi/drivers/dt2801.c
-> @@ -87,17 +87,6 @@
->  #define DT2801_STATUS		1
->  #define DT2801_CMD		1
->
-> -#if 0
-> -/* ignore 'defined but not used' warning */
-> -static const struct comedi_lrange range_dt2801_ai_pgh_bipolar = {
-> -	4, {
-> -		BIP_RANGE(10),
-> -		BIP_RANGE(5),
-> -		BIP_RANGE(2.5),
-> -		BIP_RANGE(1.25)
-> -	}
-> -};
-> -#endif
->  static const struct comedi_lrange range_dt2801_ai_pgl_bipolar = {
->  	4, {
->  		BIP_RANGE(10),
-> @@ -107,17 +96,6 @@ static const struct comedi_lrange range_dt2801_ai_pgl_bipolar = {
->  	}
->  };
->
-> -#if 0
-> -/* ignore 'defined but not used' warning */
-> -static const struct comedi_lrange range_dt2801_ai_pgh_unipolar = {
-> -	4, {
-> -		UNI_RANGE(10),
-> -		UNI_RANGE(5),
-> -		UNI_RANGE(2.5),
-> -		UNI_RANGE(1.25)
-> -	}
-> -};
-> -#endif
->  static const struct comedi_lrange range_dt2801_ai_pgl_unipolar = {
->  	4, {
->  		UNI_RANGE(10),
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200310155053.GA27759%40deeUbuntu.
->
 
