@@ -1,112 +1,123 @@
 X-GM-THRID: 6801918498465382400
-X-Received: by 2002:a92:8c42:: with SMTP id o63mr19632709ild.189.1583860638473;
-        Tue, 10 Mar 2020 10:17:18 -0700 (PDT)
+X-Received: by 2002:a63:e4d:: with SMTP id 13mr20127528pgo.343.1583843558631;
+        Tue, 10 Mar 2020 05:32:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:dcc8:: with SMTP id b8ls3560388ilr.3.gmail; Tue, 10 Mar
- 2020 10:17:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu2abmRTOah9ryJ7KTRHZKaqG3s4bokqgqQGC+AcUWxbedkvO8+JgAm4fQdj21BOanPEXbP
-X-Received: by 2002:a92:40c2:: with SMTP id d63mr21671741ill.23.1583860637139;
-        Tue, 10 Mar 2020 10:17:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583860637; cv=none;
+Received: by 2002:aa7:8597:: with SMTP id w23ls2102555pfn.8.gmail; Tue, 10 Mar
+ 2020 05:32:37 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuVsRJueWp71YE59VTOl4IZrNvRaVpS9EXA8Kgb3DAer5+fB4XtOQ+7fvqxi+sdnSaOq/Bb
+X-Received: by 2002:a65:47c9:: with SMTP id f9mr21291955pgs.85.1583843557134;
+        Tue, 10 Mar 2020 05:32:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583843557; cv=none;
         d=google.com; s=arc-20160816;
-        b=LFZLnxmgtLzaFqUq6CQCZGNpJm1sMfGSOjWLZZ6zSGApQIYCFD9TW5NzZ5R2L2QrbD
-         CUmu5v8G0lO624ofenYBeVxdPDkgjnLGGz+5wPKC4BlQrLn4KzlfFq5rdTClamAV1fxm
-         IbkD81aSvRMnxu9g9W148Jkyw63Rqd86DE2nX6fl7cXMLdIQRncP9njWpCT8ikp3CIW0
-         7AqgkhGeVhulQ4h83JOoqSUxGGXN4Fh3Y2XaJqrjf6jphaAFlbuvFCvrV1eyriCdOmfi
-         eQC6N4HH9boFphksMtCb9UVVdGc64rqPld8egjuj2+ftU+r2X4aZ6r0G4+/eMbN3M6Dq
-         B+pw==
+        b=o7cwozw4b6azc/v40KhRbF2x8AfyAWpsuEPSvXhS9NMhPCCclW5irSk9rg7vqxP5D3
+         9c26DUeP0UwR3kLztIrwXrTai7awcO+GVQA5JoMM7NudqGnkMc5d88wLDGmdJgBoRY8W
+         2AzV4HeCdGI2fzE9swH/GJe3iue22iakGOqdoEEO9qYcVFF42K/cMAMFd6yBflzypmpE
+         SH08QeGEBCh0163+xZXV5JZe2bGle0cG7TESMV/qwYQb3bGMoigY61GaevBSeWLj8VR9
+         /cTSklApiI0D/9g2JnpuanNDOUCmDxcueOogOADh+mKbagvkUDKDzmEHkcxUWGwYf/S5
+         ZQ4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=BMAEwj+lyOoFV6cTegq/WkIWpsp3B13SqP1TdAaTf5c=;
-        b=pDqZbnop5y4TjJJ5ElNbjBbwLDLalJ3wbTrdk7MBMu3XhRzpvTFd7hOS12vxUrHaG7
-         +XV2TBq6J+ehnGGVu128E/unWgiDr/iJfsmiE+Ux2vvycIUiOkTXmtxIF0ko2KEuRAXl
-         GQi8friDEyY9heo1oVEcFO0xHh3AAj6HHymRwJMNpHvK3Zzi5S7PPBsoHktqCsDuaG+e
-         UMDQO7LZZbNdfu26hPgRq3aJbHvnv5f06Xc8LOaaCkAG7RVhD0vaiRNGxBsYRL/rhfzM
-         vzZs61GwtCxfY+5sW8gLrw4idVWRA8cdUE7Q/fR/n+ewh1wQIdahTSqPweyYN710TFoS
-         0skg==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Z/iHICj995ZPm8eWC4YCMC623t0mydx9E30XjZ8RGRU=;
+        b=HIiBYFfWuFUyQ3CMt5wFa7Yfe4+LsMXWcV0jIk+q+lKOB+HArf0+S2rDdN4uXFsRvT
+         vFOKsxidBg2B2bsKrGHVBc6+y5LtZZkMiSS9zYg1jEMUdh+QLPohhVVpaQYPdBLTnSic
+         0T2ycGp4cWXNfQ00qshsXZ7EfNnoiHSgIwaM0H8/xsUpw6Ax7sX3F1f0cquWV/F2/vWg
+         ZpoL+hpEdGgTHy2uW4yBK/npN0J/ALCmShJcmYLw7EAunLhqh4nt4nOYCR4QXTsdg9Ei
+         ouiXTJFYfYtBaHuzBcD1DoH/lnYhnYw/og37uBz7dn+/HBwWwRmjEP/jimdgxS8Q9kol
+         6dmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bWDQkqbO;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by gmr-mx.google.com with ESMTPS id d26si736212ioo.1.2020.03.10.10.17.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ai7Fb6Qc;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id r11si71738pjq.0.2020.03.10.05.32.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 10:17:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2020 05:32:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bWDQkqbO;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1583860636;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BMAEwj+lyOoFV6cTegq/WkIWpsp3B13SqP1TdAaTf5c=;
-	b=bWDQkqbOnds/QNw7LipIwdRKLNa4fdZ6Cu3BGhokgglwUzUQhFBOZQf5fzkpK9iTA3ndWp
-	/ChQTAQ8SlApu4f110lR5pMy80NmtDh9UZ4/0pF61OpyHjmr3upbSymFcAZKx42lfdjKVr
-	7tRrIx+07B/3y0URsbvjxDGYG52KZOs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-248-ZX76XRL_PQ607-Q928Fj6w-1; Tue, 10 Mar 2020 13:17:12 -0400
-X-MC-Unique: ZX76XRL_PQ607-Q928Fj6w-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9CAB8107ACC4;
-	Tue, 10 Mar 2020 17:17:11 +0000 (UTC)
-Received: from elisabeth (ovpn-200-42.brq.redhat.com [10.40.200.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A286060C99;
-	Tue, 10 Mar 2020 17:17:09 +0000 (UTC)
-Date: Tue, 10 Mar 2020 18:17:03 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org,
- outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v3] [Outreachy kernel] staging: vt6655: remove line over
- 80 characters
-Message-ID: <20200310181703.299d2e41@elisabeth>
-In-Reply-To: <20200310123229.2424-1-payalskshirsagar1234@gmail.com>
-References: <20200310123229.2424-1-payalskshirsagar1234@gmail.com>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ai7Fb6Qc;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x644.google.com with SMTP id b22so5367478pls.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 05:32:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=Z/iHICj995ZPm8eWC4YCMC623t0mydx9E30XjZ8RGRU=;
+        b=Ai7Fb6QceIIH19OAmq7O5CdPg8u9glOlGvDHyfElINQuweGpRiJIDMoChTAqM3FlJ+
+         LHbkMCmIHqbvZI/DPBEvFpy4Gdw5ZdSFB7O6eEbm/tSVFGhhwp0YngUvsj9s5w4uMFkU
+         Rrizb6fAu9xD0lbDTEvF9rfTQRJkg91UIPTA615EMr1osxYdIS/va5TtPYtVDDFR6AsW
+         9z24xwDuqhk5sC57pGYAN8urafrorN2CCGto9+zxPub/JrzwZR5R3l9uytVXqfwl9Uu1
+         T/6VfmCaSSdFmgOBv0O0fqc3AY2P6YxUYQ1uOLHdJZdvIkQWgQkR2oYYPx79Thu3mtPO
+         i9Qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=Z/iHICj995ZPm8eWC4YCMC623t0mydx9E30XjZ8RGRU=;
+        b=es6ijQ2hQtD/djHd9dIyfmN9m0+oiyhOik175ZWla4KF+r0tS7PMQhCeQL8Mq2BbO9
+         jfyeEFQCBCyWmWrNTs3wthm8YnHiD3DiwTgm9r37+1BUnEXIYQsTmcYX4dS+I3Wtrzgm
+         pg3uD6mu8wcPQkBnWrLy6HKLyyYlxUtrKMjpZyfiXwmqA9SgF30LFwFRmFm/uMderEMv
+         QZoBGH63A1Yr0Nkv7ZL+uXjd91oIDA/l6g9TKDtpaF93jOxJZ92Il5TiUym7Vi4CS/+Z
+         SN5XImwx4P4ZArrLA6zp/0qiCT9id/jZA/HMQMxvrDzX2U0J6nA+K6SqjE/xPuBpnBOY
+         H13A==
+X-Gm-Message-State: ANhLgQ1arcxnugALEjkptdywQlKKQvtC3P9AyC/1+vjOOyAhaVXmyM12
+	6kVIcmLDcXQ4JGpUThaTyWE=
+X-Received: by 2002:a17:90b:30c2:: with SMTP id hi2mr1489992pjb.7.1583843556586;
+        Tue, 10 Mar 2020 05:32:36 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([157.47.39.119])
+        by smtp.gmail.com with ESMTPSA id u24sm46442853pgo.83.2020.03.10.05.32.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Mar 2020 05:32:35 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH v3] [Outreachy kernel] staging: vt6655: remove line over 80 characters
+Date: Tue, 10 Mar 2020 18:02:28 +0530
+Message-Id: <20200310123229.2424-1-payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Payal,
+Reformatting code to not have lines over 80 characters.
 
-On Tue, 10 Mar 2020 18:02:28 +0530
-Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+v3: Change in patch description.
 
-> Reformatting code to not have lines over 80 characters.
+ drivers/staging/vt6655/mac.h | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-The change looks good, but the subject (that is, the commit title)
-still doesn't match the contents of the change. You're not removing,
-and it's not a single line.
-
-Also,
-
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
-> v3: Change in patch description.
-
-This should be cumulative, that is:
-
-v4: < you know what :) >
-v3: Change in patch 
-v2: < changes you listed for v2 >
-
-Otherwise, reviewers and maintainers will have a hard time tracking
-your submissions. Thanks,
-
+diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
+index c7888c4e96f2..eb56e16637f6 100644
+--- a/drivers/staging/vt6655/mac.h
++++ b/drivers/staging/vt6655/mac.h
+@@ -884,9 +884,11 @@ bool MACbIsIntDisable(struct vnt_private *priv);
+ void MACvSetShortRetryLimit(struct vnt_private *priv,
+ 			    unsigned char byRetryLimit);
+ 
+-void MACvSetLongRetryLimit(struct vnt_private *priv, unsigned char byRetryLimit);
++void MACvSetLongRetryLimit(struct vnt_private *priv,
++			   unsigned char byRetryLimit);
+ 
+-void MACvSetLoopbackMode(struct vnt_private *priv, unsigned char byLoopbackMode);
++void MACvSetLoopbackMode(struct vnt_private *priv,
++			 unsigned char byLoopbackMode);
+ 
+ void MACvSaveContext(struct vnt_private *priv, unsigned char *pbyCxtBuf);
+ void MACvRestoreContext(struct vnt_private *priv, unsigned char *pbyCxtBuf);
+@@ -913,7 +915,8 @@ void MACvSetCurrSyncDescAddrEx(struct vnt_private *priv,
+ void MACvSetCurrATIMDescAddrEx(struct vnt_private *priv,
+ 			       u32 curr_desc_addr);
+ void MACvTimer0MicroSDelay(struct vnt_private *priv, unsigned int uDelay);
+-void MACvOneShotTimer1MicroSec(struct vnt_private *priv, unsigned int uDelayTime);
++void MACvOneShotTimer1MicroSec(struct vnt_private *priv,
++			       unsigned int uDelayTime);
+ 
+ void MACvSetMISCFifo(struct vnt_private *priv, unsigned short wOffset,
+ 		     u32 dwData);
 -- 
-Stefano
+2.17.1
 
 
