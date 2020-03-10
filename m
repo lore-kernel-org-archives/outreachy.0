@@ -1,111 +1,166 @@
 X-GM-THRID: 6802713893115265024
-X-Received: by 2002:a05:6512:304c:: with SMTP id b12mr1187042lfb.196.1583910198655;
-        Wed, 11 Mar 2020 00:03:18 -0700 (PDT)
+X-Received: by 2002:a17:90a:f50b:: with SMTP id cs11mr197015pjb.145.1583880254490;
+        Tue, 10 Mar 2020 15:44:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:b24a:: with SMTP id n10ls168004ljm.5.gmail; Wed, 11 Mar
- 2020 00:03:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu4RsAFE23+vzKPDF9YVSV16C5bocIzjdBUj3DwYqxqQD4xEnb0dY+FDcsQp+pBnbhdMHG0
-X-Received: by 2002:a2e:b008:: with SMTP id y8mr1245690ljk.35.1583910197159;
-        Wed, 11 Mar 2020 00:03:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583910197; cv=none;
+Received: by 2002:a17:902:ff15:: with SMTP id f21ls90139plj.0.gmail; Tue, 10
+ Mar 2020 15:44:13 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsSH9+i0625FP0I4MDxcaRSaP9n+Al091oP8x4Lr66nVaFXbZ4TscPU/QQmz+LFKEmxsZJi
+X-Received: by 2002:a17:90b:194d:: with SMTP id nk13mr222604pjb.144.1583880252983;
+        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583880252; cv=none;
         d=google.com; s=arc-20160816;
-        b=qZIWBX40PPfgvDie7FG15cKFdORaHg6o1BvumFXgq+DMhwD+ItfI9TsJgjuadYeRIc
-         IMpY2rDb3z9+sV8TRDxbcVad1wUoeo5F+wfZn/gElXPyCmaJbW3OTxPCBHoXZaIYtwi8
-         HIlSifEyqwmsOBT/BS1chIWIG5amWlaQscr6ePsYF8bGsym+LZ8lkz15ivseiAc2Gcuv
-         sEpjdHfp21HevDARd/4OiEp3JNWbWVCneXUKyKP5VCm8+VImVW1uNn3yNIz4y1jkq/gf
-         HbZhf36tr8Im0NAe7W+mI1JdeoX97RgLruiHrwvajmgXlCzf3Xr0g3FychI8LTsTgJUE
-         DCow==
+        b=jPt7hYNUtuJVByq0aoYIvGXOD3ySvRKSSiKUwszohLN7qwG29M0Bd0zuTvdv6SfHqy
+         9WDDv/BEGildYxYj1glpQrUnROnjf/iTVVFFHiApwgGRqdIunpuah9fXNqeM7HivfreO
+         fotJpvRzetuVsoqsctR4/IG37hLuTiguxY7VOIDUNsOhvhfi27Q6uxyrlzqemxer9ZEe
+         S7CGS6HnPBbSYb2qhiH2sVNCr1r6a/SxfVFtRjXcyq1fU/R1z3c42afucLuFyHb/U589
+         1i/x+bO5IOypoTkjlhpR5Eq7goqYMEHAMIIUSv81p4F/ILBIALCug/CMM50AWtFZwHuw
+         j0Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=3vXFRne6A0AMrbxTp0o8C23MvOIGwaNSfA2P01FW9Kk=;
-        b=lTliLHljfga0Qu9+s+u9Mzdx3arOilHcWUVv54QHOc1zsNcxbSp/Y4LrXh8dY5pLk0
-         XCxqCc+Q0jw10q93BQTo8tqm7LPANPMEZNguwMUyH7p5GHS+m8ajO50ERqqLOyMSvC5Z
-         BSKZf0bi8c7sS0KK7K+YMeyC3jrdwu+b4uA0fw/PFuKeQNbyUZY6HozGrZ+CdB7t2R4g
-         xrRQN9DX+OmppbqSa1R6dZ+WTEPs3c/nsgOh6UIdVGrJQ7PkwT9jQne5eXmD8PRsMF8r
-         dcM/VidaK54xnVOiOjcyZbZ+Z/cusVRcUAKRYDJcs375hGpc6jtKY5hN5gzOrA3RVcIs
-         M0xg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=e3zpV9g8QxfTk2v8slC3BzwA0bsC/5UNJ7SMt9z/DCU=;
+        b=EAUbyN7FLEuN9z4LNURltU/dEJbCRrx/Ku2/tG9fQQuXGFdLffsEuSJ+IfKFy6UblI
+         hx6P9EAmGTG18CVBX+htwzVBcRklibVcv4ThWs4KECoG0G6O4zMWk9XMY36tFbGatWdv
+         1I6AQhq4dQgIvwuUuYVq6oJ2KwMPHIJh0MSmEG9MtRI6RyoS0q/FnelgkqTZBPIVA9hD
+         ZRncvPk52wRj7xB44yic5cgJOGLEWa8hvt0Tzl7168ok4kjTVJfPpyWvZ18Vm7y06tBw
+         aUTnGKwrLzf0IU8wlK3cTdd+zyt2FPtmVXzqIiChIT/qetgP3SyR2PiUH1ZK5rS/LC/8
+         Q7qA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b="J/J1VD00";
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=oWDoZpiu;
-       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) smtp.mailfrom=greg@kroah.com
-Return-Path: <greg@kroah.com>
-Received: from wout1-smtp.messagingengine.com (wout1-smtp.messagingengine.com. [64.147.123.24])
-        by gmr-mx.google.com with ESMTPS id p14si60881lfo.0.2020.03.11.00.03.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HIqfuTPu;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id ng10si18903pjb.2.2020.03.10.15.44.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 00:03:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) client-ip=64.147.123.24;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kroah.com header.s=fm3 header.b="J/J1VD00";
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=oWDoZpiu;
-       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) smtp.mailfrom=greg@kroah.com
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailout.west.internal (Postfix) with ESMTP id DE0645C8;
-	Wed, 11 Mar 2020 03:03:13 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute1.internal (MEProxy); Wed, 11 Mar 2020 03:03:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=fm3; bh=3vXFRne6A0AMrbxTp0o8C23MvOI
-	GwaNSfA2P01FW9Kk=; b=J/J1VD00Ff3T/H9hUvXfYq9xV/+64B9QGbzEQD879vu
-	oEFE+wAs/I398BZXTrPQMs5RUARdvtm3zMmNZu6MFlxa3ScUt0ZfHQYZyOmmLDcq
-	+VDVOEreaElfGBzh1U3eNNErZbTYZDmwdm2JnPBluSTNTLfxIY/iDAu59YCBps3r
-	vPlHzOc5bU1mnITbAdKJUqS84Jncx/iLKfvqc3RnDjvpZsTaDpoE+ni3MIN25KTo
-	ZC0UgT/NzN9YRXr4ivWCS+uogckqoUsoQJxwz4BbOXh4RYUzeubvDRh6RqSRaFZo
-	GTSubfZvaLCGfRooHZGF7PQyANj3PBI0h0nSvqmGiTg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=3vXFRn
-	e6A0AMrbxTp0o8C23MvOIGwaNSfA2P01FW9Kk=; b=oWDoZpiuVDNcibLDJmhhho
-	fCp6FqTg+o6iv6XQwNR5uG9ZbQRcAFf4LARp6fZdBO4tntEppU9TapRqwwnpm/fp
-	cvDSZRYfxHcTxlCkyZn6TSXm6g+xRg7xYikTK19q38YBz59GwEEZFAol9e+kHAEM
-	Oc31fS3movufHN7v67yTu/WCzh0PYXlNoh5uP8haKg8E349YNNKfUuxjtWyNLl59
-	DTK3+UXr1TwY16jBRMxyFQ/yoINNaKx7zupy0M7HxFTs+llWncDK9/5g+XTI4Px2
-	oDNcbIFKYbuP14WnIXsl7ZxAwAe0orgzhnut3obsqctpnajtZINTjv6xMDhrGZ5Q
-	==
-X-ME-Sender: <xms:MY1oXmyVBAHpRzMe6A7dj7DLTUt0lrrMR-EoQo26KaUZ10To4uj7Aw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedugedruddvuddguddtgecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecunecujfgurhepfffhvffukfhfgggtuggjsehttd
-    ertddttddvnecuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhm
-    qeenucfkphepkeefrdekiedrkeelrddutdejnecuvehluhhsthgvrhfuihiivgeptdenuc
-    frrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhm
-X-ME-Proxy: <xmx:MY1oXmic55WQ0YkFD-k4WMaUTRD76fHGdXR6yTonD352y59JI6YTyw>
-    <xmx:MY1oXjX1rQtAckVFpqoBerYsSFg4mkyC0OSnfUJ0QR050aHxElMNNg>
-    <xmx:MY1oXg0POlWaWHgJDcpHAGLuNGFOrbezSczPgfqjZyDv62h9ASyXsQ>
-    <xmx:MY1oXr90poiqo9ydarcxe7fGeiZZ0lahK7gWH80aSnPBMPFvD3CZuA>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	by mail.messagingengine.com (Postfix) with ESMTPA id F12BA30611FB;
-	Wed, 11 Mar 2020 03:03:12 -0400 (EDT)
-Date: Wed, 11 Mar 2020 08:03:11 +0100
-From: Greg KH <greg@kroah.com>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: ni_pcimio: remove
- old unused code
-Message-ID: <20200311070311.GC3572180@kroah.com>
-References: <20200310224405.GA9838@deeUbuntu>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HIqfuTPu;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x541.google.com with SMTP id z12so89453pgl.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=e3zpV9g8QxfTk2v8slC3BzwA0bsC/5UNJ7SMt9z/DCU=;
+        b=HIqfuTPuBvgOXj/qP8yJpcWhrC+UFeuD7vt6guTAS+RpOiifzPd87N7kqOpleRW8KK
+         CT0RUaWrZIBuEB9drpUTOa23EBdVbjhbOtfusQvMQxO9/LXicRuplKGhdqpvP6/6wyWG
+         BG8BmOR5EYNjVQVJ+acB1WJTMa10+7rGhoeNc2TOyVoj+YJ+Oq+60cQEmyiIBqJR/FXQ
+         xJM1mADh+bZHkVUG0Pq8/AD9T/+jspCzYCousRbsObDWZnL7hFojwkcztnbdRDMCWQzD
+         FfFgV/xGcQ2K0flhs8gwIVoTKnBDMTooswMKsmuFnYxTtftD9UhOFoRMAD32xi2zaRgA
+         LIzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=e3zpV9g8QxfTk2v8slC3BzwA0bsC/5UNJ7SMt9z/DCU=;
+        b=Fjeg6k91RoMu2anhPi3CqD/YBvwY2rVw6WXqVZOVJbU4beV9pUrLFR1rsbiNiH0RQ+
+         9iM5Q3Tjl9PBWU82yZrUaJs9ub31TTcNg11XofYhSqkUUnw9/od6X4VLutvbaGRqhUAx
+         I+0lOF+nt2w8ebNJG0xCYwGpok6UPF33P/pNMDPckU23Yuop7MLn/qRkJmus4ImGARkg
+         NTCQ/kQu3SstuWUQRMvv22UKtW46Z4foJ8Po8na1n/Vy/CLWhDunB/vk0kfRI++67xS4
+         3p+bHfn0B9tzracRsS/8gQwT0Cs53Yf7JR6cGEXAQ/IZjqIjWRkUEamk/n96se4ND6a1
+         46/A==
+X-Gm-Message-State: ANhLgQ31zI1xO4Ddl/rxUFPMGY8cVtTkvbuECcD1nbOkKEa/4gtotUC+
+	uE3dmQAft6hvF06MXk+5UxmCHbBr
+X-Received: by 2002:a62:be04:: with SMTP id l4mr21639914pff.234.1583880252491;
+        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.240.207.69])
+        by smtp.gmail.com with ESMTPSA id x135sm31634942pgx.41.2020.03.10.15.44.11
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Mar 2020 15:44:12 -0700 (PDT)
+Date: Wed, 11 Mar 2020 04:14:08 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: comedi: ni_pcimio: remove old unused code
+Message-ID: <20200310224405.GA9838@deeUbuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200310224405.GA9838@deeUbuntu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, Mar 11, 2020 at 04:14:08AM +0530, Deepak R Varma wrote:
-> Found multiple #if 0 code blocks that appear to have never been used.
-> Additinal comments around intended functionality may be introduced
-> separately. As these commented code blocks do not appear to be
-> ever useful, they can be removed.
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/staging/comedi/drivers/ni_pcimio.c | 48 ----------------------
->  1 file changed, 48 deletions(-)
+Found multiple #if 0 code blocks that appear to have never been used.
+Additinal comments around intended functionality may be introduced
+separately. As these commented code blocks do not appear to be
+ever useful, they can be removed.
 
-Why did you send this same patch twice?
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/comedi/drivers/ni_pcimio.c | 48 ----------------------
+ 1 file changed, 48 deletions(-)
 
-confused,
+diff --git a/drivers/staging/comedi/drivers/ni_pcimio.c b/drivers/staging/comedi/drivers/ni_pcimio.c
+index 7c82d5f9778f..d8e34d2e1104 100644
+--- a/drivers/staging/comedi/drivers/ni_pcimio.c
++++ b/drivers/staging/comedi/drivers/ni_pcimio.c
+@@ -481,43 +481,6 @@ static const struct ni_board_struct ni_boards[] = {
+ 		.ao_speed	= 250,
+ 		.caldac		= { ad8804, ad8804 },
+ 	},
+-#if 0
+-	/* The 6115 boards probably need their own driver */
+-	[BOARD_PCI6115] = {	/* .device_id = 0x2ed0, */
+-		.name		= "pci-6115",
+-		.n_adchan	= 4,
+-		.ai_maxdata	= 0x0fff,
+-		.ai_fifo_depth	= 8192,
+-		.gainlkup	= ai_gain_611x,
+-		.ai_speed	= 100,
+-		.n_aochan	= 2,
+-		.ao_maxdata	= 0xffff,
+-		.ao_671x	= 1,
+-		.ao_fifo_depth	= 2048,
+-		.ao_speed	= 250,
+-		.reg_611x	= 1,
+-		/* XXX */
+-		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
+-	},
+-#endif
+-#if 0
+-	[BOARD_PXI6115] = {	/* .device_id = ????, */
+-		.name		= "pxi-6115",
+-		.n_adchan	= 4,
+-		.ai_maxdata	= 0x0fff,
+-		.ai_fifo_depth	= 8192,
+-		.gainlkup	= ai_gain_611x,
+-		.ai_speed	= 100,
+-		.n_aochan	= 2,
+-		.ao_maxdata	= 0xffff,
+-		.ao_671x	= 1,
+-		.ao_fifo_depth	= 2048,
+-		.ao_speed	= 250,
+-		.reg_611x	= 1,
+-		/* XXX */
+-		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
+-	},
+-#endif
+ 	[BOARD_PCI6711] = {
+ 		.name = "pci-6711",
+ 		.n_aochan	= 4,
+@@ -569,17 +532,6 @@ static const struct ni_board_struct ni_boards[] = {
+ 		.reg_type	= ni_reg_6711,
+ 		.caldac		= { ad8804_debug },
+ 	},
+-#if 0
+-	[BOARD_PXI6731] = {	/* .device_id = ????, */
+-		.name		= "pxi-6731",
+-		.n_aochan	= 4,
+-		.ao_maxdata	= 0xffff,
+-		.ao_fifo_depth	= 8192,
+-		.ao_range_table	= &range_bipolar10,
+-		.reg_type	= ni_reg_6711,
+-		.caldac		= { ad8804_debug },
+-	},
+-#endif
+ 	[BOARD_PCI6733] = {
+ 		.name		= "pci-6733",
+ 		.n_aochan	= 8,
+-- 
+2.17.1
 
-greg k-h
 
