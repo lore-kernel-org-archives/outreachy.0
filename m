@@ -1,267 +1,111 @@
 X-GM-THRID: 6802590976179175424
-X-Received: by 2002:a37:b842:: with SMTP id i63mr1844445qkf.451.1583919828613;
-        Wed, 11 Mar 2020 02:43:48 -0700 (PDT)
+X-Received: by 2002:a67:2081:: with SMTP id g123mr12395923vsg.196.1583859546145;
+        Tue, 10 Mar 2020 09:59:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:6487:: with SMTP id y129ls766850qkb.10.gmail; Wed, 11
- Mar 2020 02:43:47 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuUeLc/Qzdc+DqB4Ul+Et6a+YNkeoY6EEFyQ5kUeMlfCt79m3PdsSaCvoeOSY2Cb7H8IHuY
-X-Received: by 2002:a05:620a:571:: with SMTP id p17mr1890369qkp.355.1583919827362;
-        Wed, 11 Mar 2020 02:43:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583919827; cv=none;
+Received: by 2002:a05:6102:352:: with SMTP id e18ls1764514vsa.7.gmail; Tue, 10
+ Mar 2020 09:59:05 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs9DisTPIltFqDECnzEVuxvbM3gQUx1cAqBaqTB5VXx2MuT0UKlUI0wd7XzZZ8knG4MlaHY
+X-Received: by 2002:a05:6102:1cf:: with SMTP id s15mr5388468vsq.109.1583859545072;
+        Tue, 10 Mar 2020 09:59:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583859545; cv=none;
         d=google.com; s=arc-20160816;
-        b=SHVYuWkap61Bmmw7mP2VrNZfTNJH9lPqC1Pb3/G84wxw1YEw5RFVGCCFyQSWv8CJBL
-         wE5mGQNBY2ihzFoHfuf8ws5JuNjLF+3lyyxACie4q48qzzzgZpJAjw2zgxCaa+1GXQRJ
-         7EoO24PdNC1djE02o70oZ4nkVfraCr5HpcRI7quX/gND5VVE0v5X7wq/orCEhp/Dt3QX
-         z6t/OMuzavGKr2hTsVUgdnG4zn97pzdN1/hQQ8sEBv9PY4Z9z02FDG7C9X92OSFsCVcR
-         ncjVF1artGeE62dnBi3LeoGUiWDpH/xjcbcv0Gtvu3RLXTTXk3EMHj3KOw0af7+B/9tm
-         bgbA==
+        b=pMQj8prAttPez0NjPvURImBHyKBlCYaIri62piPxnPgyJKvGvZBCsyiX5zqGZkxaHg
+         7k43DPdo1DclAXe7TBOvOa4FspozeQDDFyBU004z/kVxSuz5L+hnj8j0HrCzyCtQTPcF
+         Dx1KyR7h9WRf6TrfShx1dH+hr4eay2lvn7VsHjASAxrKrnMhRGHXh8ZvwR/Pz2WoXEsN
+         B7rSmCnVyQ7PopnP3h+xYBSZuRYXNFUEgFCb8ue/o3h5kC5zO6PZR/T1vQBWtRhReW68
+         vDrFiCUurc1+ae3fFqZF6pWVITuSU8MhyA0JsaCYH6WyK5fL4oBLOKMaORAWGM5RM8HO
+         vfNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=z7RER8i2U2RCh3Aq3cexxxfX49K1q51Jj5phMyI5sJk=;
-        b=fdR01zhMLfeVxn/sRKf0NDVj24apFfSk5S4W9sDd432N1QTnkgnWPfMr2X1sRauqmb
-         w+zoZJ6V3vOqM/DsVdo5XoSPNZMXTWVRszSNs2G2sGB1DzCzbVgwjS4zrx2W9wQAJn9Y
-         TCca1oYmZK+bZdet86wK9vGQuYWZCa2nZFQRMzlema0jcBaBEquxEIpatLaQLC0mu3QK
-         KM9xh6i28yqO9HaCh52bYrYmx23HjjkC5d7ez8p4b+yoi7rRhk/2udj2wEMd7u8bKIVp
-         VVGNL7DNlvsn8rCvbpVOIBhcIFZGho2yhHF5PAx/B0/COLeB6SHh3nfM5SJNx4IrySbV
-         gF3A==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=F4k/ZdLYI4txTA7FL/bDdj7ydorNG2vDiLMJnHHOTuU=;
+        b=PuVpEP5zi1iDQUiPB45hJIZ6UvAWQGNQohSk8bcVI4pSpHmOmum573xDtrw5Un3fNH
+         +jplyeQDbFpnpi84YWR9UilwvcqMVebBl7znveP46RUPc1mqE+lXlgZNK/cBsvwwoPZ+
+         X4v6Nh4ZhgYWOFA4jcvlD350pgT2yBMfIgogQDW8I0VQfUjAAlfxj66UF/SJDAOgB8y+
+         jYGB6zh0A3gggzUnz4tAZRtmAXWI6wcRsP7Eyzy0kJO5VUFj8FlvxUYJ5VKfffNwfcBI
+         NNTvv7pDvbwAId6/KOpc4zB4lYl4d+pF1eTjISDQGi0jQBDnYL7v9VVm2VeokVb9FF7I
+         MITg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fa2oReUn;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id g23si69966qki.4.2020.03.11.02.43.47
+       spf=neutral (google.com: 216.40.44.159 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Return-Path: <joe@perches.com>
+Received: from smtprelay.hostedemail.com (smtprelay0159.hostedemail.com. [216.40.44.159])
+        by gmr-mx.google.com with ESMTPS id c3si51419uam.1.2020.03.10.09.59.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Mar 2020 02:43:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Fa2oReUn;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id f15so705256pjq.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 02:43:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id;
-        bh=z7RER8i2U2RCh3Aq3cexxxfX49K1q51Jj5phMyI5sJk=;
-        b=Fa2oReUnSSDXnbOrnu5Et7u3/OgXw0QmT2hj+W+Q2SqD8m8ClsPM8n0bH0W2dSQlYR
-         nIfO9Y+wjoxUJ/bZEMCRIuYOuqJzZlYktLm28ku4tQ8bb9RO31BVSMrnKALyKfIYrMjd
-         psBlpTwKO0qCmMP0jJZtT9QUREt0DJhSEy4tLGCSvBDjNEdMbrk6qUTuuGJgK2Ju17je
-         WfgXkZwv2bpvq3MH8KGku1XwzoP8DdhWoyra39reyi18nAQIBCqik9+tzw4jTTMBK8fE
-         yucajKm+ZElD4zSQ0vVzpA/MlDEriWU8VK4l16OpiP37oaMkCQM1e1MGAWBWJZ4P+X/q
-         8TAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=z7RER8i2U2RCh3Aq3cexxxfX49K1q51Jj5phMyI5sJk=;
-        b=cEnkkFW2VKuU9Sbg0doeuJY0ZNNI/+VWitzsdYuKMVMP6bO2ymCNZqgyOz+LLkLXqi
-         mwj/izuMUbpf17CQ5QxiNSQPNVQpRy8Q2zo3chU0t2iItOmiU0DHwuS1ca+pNm3P6YDn
-         Z/g9xcZIX8XCYXAUFs04p6aKIneFOdr10fxf6QWhiFvAHZsVp4CJxhLPfjJfDESXhIIs
-         V0TwSxcDl8jKqpsIPVCbtvZ4SWLdQyh2J/ODV2SlmJNfM1jcbXVkWQwlUnlrYag1tREE
-         5mAP7ebfyU/KgjmXp1Bgr28a34M9La3yt0zwN7WwguTS/C1YF/pjICj5CfD+tRe2FzxU
-         KWoQ==
-X-Gm-Message-State: ANhLgQ3KBALjLxgZTpfEa2FB+vhRtFk7xO/xIZ/2jFlMi/2u4i1YfuVz
-	7J4d+w5IfxcUIyKZH6Av1DY=
-X-Received: by 2002:a17:90a:e658:: with SMTP id ep24mr2143492pjb.70.1583919826284;
-        Wed, 11 Mar 2020 02:43:46 -0700 (PDT)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from localhost.localdomain ([2405:204:287:fb4d:18bc:a849:c699:3914])
-        by smtp.gmail.com with ESMTPSA id z63sm49669848pgd.12.2020.03.11.02.43.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 02:43:45 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	sbrivio@redhat.com,
-	daniel.baluta@gmail.com,
-	nramas@linux.microsoft.com,
-	hverkuil@xs4all.nl,
-	shreeya.patel23498@gmail.com,
-	Larry.Finger@lwfinger.net
-Subject: [Outreachy kernel] [PATCH v3] Staging: rtl8188eu: rtw_mlme: Add space around operators
-Date: Wed, 11 Mar 2020 15:13:32 +0530
-Message-Id: <20200311094332.29714-1-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Tue, 10 Mar 2020 09:59:04 -0700 (PDT)
+Received-SPF: neutral (google.com: 216.40.44.159 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.159;
+Authentication-Results: gmr-mx.google.com;
+       spf=neutral (google.com: 216.40.44.159 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+	by smtprelay01.hostedemail.com (Postfix) with ESMTP id 4BA3D100FBB16;
+	Tue, 10 Mar 2020 16:59:03 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,,RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2828:2892:3138:3139:3140:3141:3142:3353:3622:3653:3865:3866:3867:3868:3870:3871:3872:3873:3874:4321:5007:7514:7875:7903:10004:10400:10848:11026:11232:11658:11914:12043:12296:12297:12555:12740:12760:12895:13069:13255:13311:13357:13439:14181:14659:14721:21080:21451:21627:30012:30029:30054:30070:30075:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:13,LUA_SUMMARY:none
+X-HE-Tag: coat13_4ecf5281c8248
+X-Filterd-Recvd-Size: 2756
+Received: from XPS-9350.home (unknown [47.151.143.254])
+	(Authenticated sender: joe@perches.com)
+	by omf12.hostedemail.com (Postfix) with ESMTPA;
+	Tue, 10 Mar 2020 16:59:01 +0000 (UTC)
+Message-ID: <3b19da8cb94aeb1e77452348dc528dd3b8a52a2a.camel@perches.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8188eu: rtw_mlme: Add
+ space around operators
+From: Joe Perches <joe@perches.com>
+To: Julia Lawall <julia.lawall@inria.fr>, Shreeya Patel
+	 <shreeya.patel23498@gmail.com>
+Cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, 
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+ outreachy-kernel@googlegroups.com, sbrivio@redhat.com,
+ daniel.baluta@gmail.com,  nramas@linux.microsoft.com, hverkuil@xs4all.nl
+Date: Tue, 10 Mar 2020 09:57:20 -0700
+In-Reply-To: <alpine.DEB.2.21.2003101554530.26409@hadrien>
+References: <20200310144702.14653-1-shreeya.patel23498@gmail.com>
+	 <alpine.DEB.2.21.2003101554530.26409@hadrien>
+Content-Type: text/plain; charset="ISO-8859-1"
+User-Agent: Evolution 3.34.1-2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-Add space around operators for improving the code
-readability.
+On Tue, 2020-03-10 at 15:57 +0100, Julia Lawall wrote:
+> On Tue, 10 Mar 2020, Shreeya Patel wrote:
+> 
+> > Add space around operators for improving the code
+> > readability.
+> > 
+> > Reported by checkpatch.pl
+> > 
+> > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+> > ---
+> > 
+> > rtw_mlme_old.o - Previously produced object file before making any
+> > changes to the source code.
+> > rtw_mlme.o - Object file produced after compiling the changes done in source
+> > file.
+> > 
+> > Following is the output of diff between the previously produced object
+> > file and the object file produced after compiling the changes.
+> > 
+> > shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$ diff rtw_mlme_old.o rtw_mlme.o
+> > shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$
+> > 
+> > Following output shows that there was no other change in the source
+> > code except for whitespace.
+> > 
+> > shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/core/
+> > shreeya@Shreeya-Patel:~git/kernels/staging$
+> 
+> If this information is importamt, it should be above the line.  On the
+> other hand, it is much too detailed, making it hard to figure out what is
+> being said.  It would be better to just say diff of the .o files before
+> and after the changes shows no difference.  Likewise git diff -w shows no
+> difference.  That way one can quickly see what tests you did, without
+> being distracted by the machine name, the directory name, etc.
 
-Reported by checkpatch.pl
+Exactly right.
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
----
+Keep at it Shreeya.  Almost done.
 
-shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/core/
-shreeya@Shreeya-Patel:~git/kernels/staging$
+[It's also nice to trim your replies Julia]
 
-git diff -w shows no difference.
-
-shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$ diff rtw_mlme_old.o rtw_mlme.o
-shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/core$
-
-diff of the .o files before and after the changes shows no difference
-
-Changes in v3
-  - Make the diff output explanation more readable.
-
-Changes in v2
-  - Include the file name in Subject to make it more specific.
-  - Add the output of diff of the .o files before and after the changes
-to show no difference.
-  - Add the output of git diff -w to show no difference.
-
- drivers/staging/rtl8188eu/core/rtw_mlme.c | 40 +++++++++++------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme.c b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-index 8da955e8343b..9de2d421f6b1 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme.c
-@@ -149,7 +149,7 @@ static void _rtw_free_network(struct mlme_priv *pmlmepriv, struct wlan_network *
- 	    (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE)))
- 		lifetime = 1;
- 	if (!isfreeall) {
--		delta_time = (curr_time - pnetwork->last_scanned)/HZ;
-+		delta_time = (curr_time - pnetwork->last_scanned) / HZ;
- 		if (delta_time < lifetime)/*  unit:sec */
- 			return;
- 	}
-@@ -249,8 +249,8 @@ void rtw_generate_random_ibss(u8 *pibss)
- 	pibss[1] = 0x11;
- 	pibss[2] = 0x87;
- 	pibss[3] = (u8)(curtime & 0xff);/* p[0]; */
--	pibss[4] = (u8)((curtime>>8) & 0xff);/* p[1]; */
--	pibss[5] = (u8)((curtime>>16) & 0xff);/* p[2]; */
-+	pibss[4] = (u8)((curtime >> 8) & 0xff);/* p[1]; */
-+	pibss[5] = (u8)((curtime >> 16) & 0xff);/* p[2]; */
- }
- 
- u8 *rtw_get_capability_from_ie(u8 *ie)
-@@ -357,9 +357,9 @@ void update_network(struct wlan_bssid_ex *dst, struct wlan_bssid_ex *src,
- 			rssi_final = rssi_ori;
- 	} else {
- 		if (sq_smp != 101) { /* from the right channel */
--			ss_final = ((u32)(src->PhyInfo.SignalStrength)+(u32)(dst->PhyInfo.SignalStrength)*4)/5;
--			sq_final = ((u32)(src->PhyInfo.SignalQuality)+(u32)(dst->PhyInfo.SignalQuality)*4)/5;
--			rssi_final = (src->Rssi+dst->Rssi*4)/5;
-+			ss_final = ((u32)(src->PhyInfo.SignalStrength) + (u32)(dst->PhyInfo.SignalStrength) * 4) / 5;
-+			sq_final = ((u32)(src->PhyInfo.SignalQuality) + (u32)(dst->PhyInfo.SignalQuality) * 4) / 5;
-+			rssi_final = (src->Rssi + dst->Rssi * 4) / 5;
- 		} else {
- 			/* bss info not receiving from the right channel, use the original RX signal infos */
- 			ss_final = dst->PhyInfo.SignalStrength;
-@@ -510,7 +510,7 @@ static int rtw_is_desired_network(struct adapter *adapter, struct wlan_network *
- 	privacy = pnetwork->network.Privacy;
- 
- 	if (check_fwstate(pmlmepriv, WIFI_UNDER_WPS)) {
--		if (rtw_get_wps_ie(pnetwork->network.ies+_FIXED_IE_LENGTH_, pnetwork->network.ie_length-_FIXED_IE_LENGTH_, NULL, &wps_ielen))
-+		if (rtw_get_wps_ie(pnetwork->network.ies + _FIXED_IE_LENGTH_, pnetwork->network.ie_length - _FIXED_IE_LENGTH_, NULL, &wps_ielen))
- 			return true;
- 		else
- 			return false;
-@@ -925,7 +925,7 @@ static void rtw_joinbss_update_network(struct adapter *padapter, struct wlan_net
- 	switch (pnetwork->network.InfrastructureMode) {
- 	case Ndis802_11Infrastructure:
- 		if (pmlmepriv->fw_state & WIFI_UNDER_WPS)
--			pmlmepriv->fw_state = WIFI_STATION_STATE|WIFI_UNDER_WPS;
-+			pmlmepriv->fw_state = WIFI_STATION_STATE | WIFI_UNDER_WPS;
- 		else
- 			pmlmepriv->fw_state = WIFI_STATION_STATE;
- 		break;
-@@ -1097,14 +1097,14 @@ static u8 search_max_mac_id(struct adapter *padapter)
- #if defined(CONFIG_88EU_AP_MODE)
- 	if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
- 		for (aid = pstapriv->max_num_sta; aid > 0; aid--) {
--			if (pstapriv->sta_aid[aid-1])
-+			if (pstapriv->sta_aid[aid - 1])
- 				break;
- 		}
- 		mac_id = aid + 1;
- 	} else
- #endif
- 	{/* adhoc  id =  31~2 */
--		for (mac_id = NUM_STA-1; mac_id >= IBSS_START_MAC_ID; mac_id--) {
-+		for (mac_id = NUM_STA - 1; mac_id >= IBSS_START_MAC_ID; mac_id--) {
- 			if (pmlmeinfo->FW_sta_info[mac_id].status == 1)
- 				break;
- 		}
-@@ -1123,7 +1123,7 @@ void rtw_stassoc_hw_rpt(struct adapter *adapter, struct sta_info *psta)
- 
- 	macid = search_max_mac_id(adapter);
- 	rtw_hal_set_hwreg(adapter, HW_VAR_TX_RPT_MAX_MACID, (u8 *)&macid);
--	media_status = (psta->mac_id<<8)|1; /*   MACID|OPMODE:1 connect */
-+	media_status = (psta->mac_id << 8) | 1; /*   MACID|OPMODE:1 connect */
- 	rtw_hal_set_hwreg(adapter, HW_VAR_H2C_MEDIA_STATUS_RPT, (u8 *)&media_status);
- }
- 
-@@ -1213,7 +1213,7 @@ void rtw_stadel_event_callback(struct adapter *adapter, u8 *pbuf)
- 	if (mac_id >= 0) {
- 		u16 media_status;
- 
--		media_status = (mac_id<<8)|0; /*   MACID|OPMODE:0 means disconnect */
-+		media_status = (mac_id << 8) | 0; /*   MACID|OPMODE:0 means disconnect */
- 		/* for STA, AP, ADHOC mode, report disconnect stauts to FW */
- 		rtw_hal_set_hwreg(adapter, HW_VAR_H2C_MEDIA_STATUS_RPT, (u8 *)&media_status);
- 	}
-@@ -1640,7 +1640,7 @@ int rtw_restruct_wmm_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
- 	for (i = 12; i < in_len; i += (in_ie[i + 1] + 2) /* to the next IE element */) {
- 		ielength = initial_out_len;
- 
--		if (in_ie[i] == 0xDD && in_ie[i+2] == 0x00 && in_ie[i+3] == 0x50  && in_ie[i+4] == 0xF2 && in_ie[i+5] == 0x02 && i+5 < in_len) {
-+		if (in_ie[i] == 0xDD && in_ie[i + 2] == 0x00 && in_ie[i + 3] == 0x50  && in_ie[i + 4] == 0xF2 && in_ie[i + 5] == 0x02 && i + 5 < in_len) {
- 			/* WMM element ID and OUI */
- 			/* Append WMM IE to the last index of out_ie */
- 
-@@ -1734,13 +1734,13 @@ int rtw_restruct_sec_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
- 		authmode = _WPA2_IE_ID_;
- 
- 	if (check_fwstate(pmlmepriv, WIFI_UNDER_WPS)) {
--		memcpy(out_ie+ielength, psecuritypriv->wps_ie, psecuritypriv->wps_ie_len);
-+		memcpy(out_ie + ielength, psecuritypriv->wps_ie, psecuritypriv->wps_ie_len);
- 
- 		ielength += psecuritypriv->wps_ie_len;
- 	} else if ((authmode == _WPA_IE_ID_) || (authmode == _WPA2_IE_ID_)) {
- 		/* copy RSN or SSN */
--		memcpy(&out_ie[ielength], &psecuritypriv->supplicant_ie[0], psecuritypriv->supplicant_ie[1]+2);
--		ielength += psecuritypriv->supplicant_ie[1]+2;
-+		memcpy(&out_ie[ielength], &psecuritypriv->supplicant_ie[0], psecuritypriv->supplicant_ie[1] + 2);
-+		ielength += psecuritypriv->supplicant_ie[1] + 2;
- 		rtw_report_sec_ie(adapter, authmode, psecuritypriv->supplicant_ie);
- 	}
- 
-@@ -1865,7 +1865,7 @@ unsigned int rtw_restructure_ht_ie(struct adapter *padapter, u8 *in_ie, u8 *out_
- 
- 	phtpriv->ht_option = false;
- 
--	p = rtw_get_ie(in_ie+12, _HT_CAPABILITY_IE_, &ielen, in_len-12);
-+	p = rtw_get_ie(in_ie + 12, _HT_CAPABILITY_IE_, &ielen, in_len - 12);
- 
- 	if (p && ielen > 0) {
- 		struct ieee80211_ht_cap ht_cap;
-@@ -1904,16 +1904,16 @@ unsigned int rtw_restructure_ht_ie(struct adapter *padapter, u8 *in_ie, u8 *out_
- 		else
- 			ht_cap.ampdu_params_info |= IEEE80211_HT_CAP_AMPDU_DENSITY & 0x00;
- 
--		rtw_set_ie(out_ie+out_len, _HT_CAPABILITY_IE_,
-+		rtw_set_ie(out_ie + out_len, _HT_CAPABILITY_IE_,
- 			   sizeof(struct ieee80211_ht_cap),
- 			   (unsigned char *)&ht_cap, pout_len);
- 
- 		phtpriv->ht_option = true;
- 
--		p = rtw_get_ie(in_ie+12, _HT_ADD_INFO_IE_, &ielen, in_len-12);
-+		p = rtw_get_ie(in_ie + 12, _HT_ADD_INFO_IE_, &ielen, in_len - 12);
- 		if (p && (ielen == sizeof(struct ieee80211_ht_addt_info))) {
- 			out_len = *pout_len;
--			rtw_set_ie(out_ie+out_len, _HT_ADD_INFO_IE_, ielen, p+2, pout_len);
-+			rtw_set_ie(out_ie + out_len, _HT_ADD_INFO_IE_, ielen, p + 2, pout_len);
- 		}
- 	}
- 	return phtpriv->ht_option;
--- 
-2.17.1
 
 
