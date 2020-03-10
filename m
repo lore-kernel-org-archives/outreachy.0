@@ -1,127 +1,106 @@
 X-GM-THRID: 6802335278632534016
-X-Received: by 2002:ab0:7502:: with SMTP id m2mr4333907uap.98.1583846388384;
-        Tue, 10 Mar 2020 06:19:48 -0700 (PDT)
+X-Received: by 2002:a5d:4c4a:: with SMTP id n10mr28678856wrt.116.1583846275686;
+        Tue, 10 Mar 2020 06:17:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:e30b:: with SMTP id j11ls1673218vsf.11.gmail; Tue, 10
- Mar 2020 06:19:47 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuyNVHF3FiIRYoIeEPspLIrcB+W6asCoQ8T7hzZKYC2+AlhKenDC7yrFPjr8Ggqq1r/04Jo
-X-Received: by 2002:a67:dc6:: with SMTP id 189mr13467115vsn.214.1583846386959;
-        Tue, 10 Mar 2020 06:19:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583846386; cv=none;
+Received: by 2002:a1c:4b06:: with SMTP id y6ls126047wma.3.canary-gmail; Tue,
+ 10 Mar 2020 06:17:54 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvaF5WgXXkxbLLwn9GiKcbXsLm4NrdQ3WFtN7XFC9KEnKuWmf2cnT7K3XTbFolbGDRWTfzS
+X-Received: by 2002:a1c:9dc6:: with SMTP id g189mr2233615wme.91.1583846274216;
+        Tue, 10 Mar 2020 06:17:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583846274; cv=none;
         d=google.com; s=arc-20160816;
-        b=WNZK/BMVvRqSDL5i4FLTeI5irmYgEbXhiX/hoMkAFAmb6lCOZt0+xk/HXnh1y+tkoC
-         qi71ECL6zVac26NQxyrX57p3K/rRs27TQNZIm2aP59wWEV2gbWQD75wBkmo2wgVrkCnx
-         IZzERDwEgH8rjsm59gizoG4Tyvjj5QrUJf4BHP1nrsaQojr7UAUpJNyV/psqOuWICFzo
-         x0XPMYH9mceEuW+XpKat5KJg2aN76f0nW5Nfleyqi2RyOKakwhamIEqCH08HoYyNmz6a
-         3+1pVpAUXBVSbKE8el/hhKTfo1ZjDEKw2xUeoS4oE2oDAq2Au/WcuDPafw3S1nytfGrc
-         IVSQ==
+        b=jTAs7wKi5VrL/yzmDgpmeYyjszVBQt8XYLFOx5M+31DMBp8hDPpicze8KWRV+yDYeA
+         lG531JEO5v86aYEdgThJ+t9dNhYxnSCvnYXJ3vxH4w/vzWhx2ZKm5TSLwS0d2Nuo/VO3
+         v6hhvivepjcXJGI6MOlUFyxoFAnN2n+g0r0Ko/Ll9D8I4Rrif7KCG1UCjqNT9+cxMK36
+         SDshZeMO5UTr9O6k2MfNRFl0cl87RFfxnf/UpqSW7qqUnckhvMV1MPXuJraNKMfb3zCG
+         OH2oVLt5PHdHBmtdu4mKIIa88EOwo7/Jst1mBNMHFgSD2jddcU2RAsCL5h5/f/Y0n/Rk
+         /rtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=mHQ1grvRieytW9fyN5OPytpJtx0FZTvVDnaTKCsv3tE=;
-        b=S9Pq3ni7t4ZHt3RUKPWFeZwjncT1VU20kerVcJ+JOyjH53WuN90yu9u1h9wH2bQwi7
-         hjBj9rgrS3ULp1QGlo493L6SVzzz5bw9QuxfXj7bHjw5bzrNCru0uln8AEVTPqoqwud+
-         +h1xEZh3sNe55h1vYoqrcjFm1mY+Vg+goi/AaG1z0nQ20aJUbRYa6oYFyrR16w959qjU
-         rW7rfzbKjwbyd2OIhnxipSCZ1PSHkMALqOZTCL8cOoXQuGD1I75eVnkSd2K8ftf3AgMd
-         5RTkLMTF2T/3rK9eQ2gvumiylaUFM810ovxDA9nOatgJzowrwo/9HKzWC7ULfnUsHjIE
-         Om+w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=WNQyOJe3Kewg8Uhwhtlx/So6sr7a1kTIeVMal73epTg=;
+        b=Y6wUOwh5ooWiwN9lBXMYd101572FsWwOecR7AhZUTd3DrvElS78z6PoQ1B4wBLRalK
+         rNAfWQZ3BJNehmjFB/LZB/mkwl6qrAY2LaP0H4+6ohnglraiJGUKyWs8ezGltjA2v/y4
+         M2PZ7dYnjU+0AymA9c7xS7AYpSirmGTbfjwVuVKnsj5zXiu4c5sj+hPzbcFpW6tVI0Te
+         sXOdjqvbgRfg4ioPGfME4dUEL/k5UGSBbkOPO/UK6QmsvyaGXcxwvuZTen3ni4A+/6K1
+         aswPvwiQR1zUhC7ZYTlynJ53HIlermGtu+zjS5L09p0qrElzhfd8CCnzemIAw3k2GRD8
+         Jisw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=TgQATak0;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id w4si838867vse.2.2020.03.10.06.19.46
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q202si107067wme.2.2020.03.10.06.17.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 06:19:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Tue, 10 Mar 2020 06:17:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=TgQATak0;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6912B20409;
-	Tue, 10 Mar 2020 13:19:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1583846385;
-	bh=DPTQa5BgXM6sICYwsrLgmIY4f/2d2pMss/E7GZLJ/JY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TgQATak0ZsfCZGxJK2Ys56OG0tbAFFQiyLybp7u1ZsFQej+ZHC3/Rh2EF6e1sp0AG
-	 buAddj2PagBuAxq7pKaXhUTshbvpXgijaQY0WvMaRSW0RvMXmAE/foz/CSvbk0HtAH
-	 WxNw7jpP4LiTF3TIy8HxYmKxPsdlJEr6yKN8asuQ=
-Date: Tue, 10 Mar 2020 14:18:21 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,537,1574118000"; 
+   d="scan'208";a="341883455"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2020 14:17:53 +0100
+Date: Tue, 10 Mar 2020 14:17:53 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
 To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Cc: Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Forest Bond <forest@alittletooquiet.net>,
-	=?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Re: [PATCH 0/7] Cover letter
-Message-ID: <20200310131821.GA3364515@kroah.com>
-References: <20200309221449.GA5032@kaaira-HP-Pavilion-Notebook>
- <20200310090646.GA2479270@kroah.com>
- <20200310120113.GA11048@kaaira-HP-Pavilion-Notebook>
- <20200310122852.GA3116170@kroah.com>
- <20200310125424.GA22891@kaaira-HP-Pavilion-Notebook>
+cc: Ian Abbott <abbotti@mev.co.uk>, 
+    H Hartley Sweeten <hsweeten@visionengravers.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Forest Bond <forest@alittletooquiet.net>, 
+    =?ISO-8859-15?Q?J=E9r=F4me_Pouiller?= <jerome.pouiller@silabs.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 0/7] Cover letter
+In-Reply-To: <20200310121535.GC11048@kaaira-HP-Pavilion-Notebook>
+Message-ID: <alpine.DEB.2.21.2003101415580.26409@hadrien>
+References: <20200309221449.GA5032@kaaira-HP-Pavilion-Notebook> <alpine.DEB.2.21.2003100809240.2455@hadrien> <20200310121535.GC11048@kaaira-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200310125424.GA22891@kaaira-HP-Pavilion-Notebook>
+Content-Type: text/plain; charset=US-ASCII
 
-On Tue, Mar 10, 2020 at 06:24:24PM +0530, Kaaira Gupta wrote:
-> On Tue, Mar 10, 2020 at 01:28:52PM +0100, Greg Kroah-Hartman wrote:
-> > On Tue, Mar 10, 2020 at 05:31:13PM +0530, Kaaira Gupta wrote:
-> > > On Tue, Mar 10, 2020 at 10:06:46AM +0100, Greg Kroah-Hartman wrote:
-> > > > On Tue, Mar 10, 2020 at 03:44:49AM +0530, Kaaira Gupta wrote:
-> > > > > This patch set aims at improving the code style in a few drivers in
-> > > > > staging. They have been found using sparse, coccinelle, and
-> > > > > checkpatch.pl.
-> > > > > 
-> > > > 
-> > > > The cover letter should be auto-generated by 'git format-patch
-> > > > --cover-letter', and will contain a lot more information than just this
-> > > > paragraph.
-> > > > 
-> > > > Also, I did not see all 7 patches of this series on the mailing list,
-> > > > only 4 of them.  They were also not "threaded" properly, can you use
-> > > > 'git send-email' to resend all of these when you redo the series next?
-> > > 
-> > > Can you please guide me as to how I should thread the patches in a
-> > > patchset properly so that individual commits get to different patches 
-> > > and a cover-letter is generated as well. I am using mutt.
-> > 
-> > If you use 'git send-email' you do not have to use mutt to send the
-> > patches out.
-> > 
-> > If you are using mutt, you can send a patch series, but you have to do
-> > it "by hand" and it's not simple to describe through email, and only
-> > recommended if you _really_ know how to use mutt :)
-> 
-> Okay. So just to be sure I think I should describe how I understood
-> `send-email` must be used, as I have been using only mutt for a month
-> now. I'll create individual file changes, commit them one by one,the
-> format a cover letter using `git format-patch --cover-letter`, then give
-> command `git send-email --annotate HEAD~(no of commits), and the patchet
-> will be generated automatically (?). I'll jest have to send them.
 
-Close.
 
-Commit the individual patches as before, then run:
-	git format-patch --cover-letter HEAD~(no of commits)
-that will throw you in the editor to edit the cover letter, which will
-end up as the 00/NN mesage.
+On Tue, 10 Mar 2020, Kaaira Gupta wrote:
 
-Then, run 'git send-email *patch' (making sure that _only_ the patches
-you want to send out are in the directory).  That will email everything
-out properly.  Note, you do have to set up git send-email properly to
-point to your mail server, instructions on how to that should be around
-somewhere, or try this page:
-	https://git-send-email.io/
-as it will walk you through what to do to set it up.
+> On Tue, Mar 10, 2020 at 08:15:51AM +0100, Julia Lawall wrote:
+> > On Tue, 10 Mar 2020, Kaaira Gupta wrote:
+> >
+> > > This patch set aims at improving the code style in a few drivers in
+> > > staging. They have been found using sparse, coccinelle, and
+> > > checkpatch.pl.
+> >
+> > A cover letter should have a more informative subject.  It's obvious that
+> > it is a cover letter from the number of the patch being 0.
+> >
+> > The description suggests that there is no connection between the drivers
+> > or the changes being performed.  If that is the case, then there is no
+> > need to make a series.
+>
+> What kind of patch sets should Ithen submit? Please guide me.
 
-hope this helps,
+For one driver file perhaps you find a spelling mistake, some extra blank
+lines, and a useless function definition.  These are three separate
+changes, so they shoudn't be in the same patch.  But for example if the
+extra blank lines are before the useless function definition, then Greg
+will see the function definition being removed from the wrong place, if he
+applies the patches in the wrong order.  So you need a series to indicate
+the order in which the patches should be applied.
 
-greg k-h
+julia
+
+>
+> >
+> > The cover letter should contain a complete diffstat of the changes made.
+> >
+> > You should be able to find some examples on lkml.org.
+> >
+> > julia
+> >
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200309221449.GA5032%40kaaira-HP-Pavilion-Notebook.
+> > >
+>
 
