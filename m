@@ -1,106 +1,127 @@
-X-GM-THRID: 6256430806188687360
-X-Received: by 10.140.134.134 with SMTP id 128mr5912356qhg.29.1456688811368;
-        Sun, 28 Feb 2016 11:46:51 -0800 (PST)
+X-GM-THRID: 6802335278632534016
+X-Received: by 2002:ab0:7502:: with SMTP id m2mr4333907uap.98.1583846388384;
+        Tue, 10 Mar 2020 06:19:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.133.205 with SMTP id p74ls1220738ioi.11.gmail; Sun, 28 Feb
- 2016 11:46:51 -0800 (PST)
-X-Received: by 10.107.11.23 with SMTP id v23mr15567017ioi.13.1456688811106;
-        Sun, 28 Feb 2016 11:46:51 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id y20si1097115pfa.2.2016.02.28.11.46.51
+Received: by 2002:a67:e30b:: with SMTP id j11ls1673218vsf.11.gmail; Tue, 10
+ Mar 2020 06:19:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuyNVHF3FiIRYoIeEPspLIrcB+W6asCoQ8T7hzZKYC2+AlhKenDC7yrFPjr8Ggqq1r/04Jo
+X-Received: by 2002:a67:dc6:: with SMTP id 189mr13467115vsn.214.1583846386959;
+        Tue, 10 Mar 2020 06:19:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583846386; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WNZK/BMVvRqSDL5i4FLTeI5irmYgEbXhiX/hoMkAFAmb6lCOZt0+xk/HXnh1y+tkoC
+         qi71ECL6zVac26NQxyrX57p3K/rRs27TQNZIm2aP59wWEV2gbWQD75wBkmo2wgVrkCnx
+         IZzERDwEgH8rjsm59gizoG4Tyvjj5QrUJf4BHP1nrsaQojr7UAUpJNyV/psqOuWICFzo
+         x0XPMYH9mceEuW+XpKat5KJg2aN76f0nW5Nfleyqi2RyOKakwhamIEqCH08HoYyNmz6a
+         3+1pVpAUXBVSbKE8el/hhKTfo1ZjDEKw2xUeoS4oE2oDAq2Au/WcuDPafw3S1nytfGrc
+         IVSQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=mHQ1grvRieytW9fyN5OPytpJtx0FZTvVDnaTKCsv3tE=;
+        b=S9Pq3ni7t4ZHt3RUKPWFeZwjncT1VU20kerVcJ+JOyjH53WuN90yu9u1h9wH2bQwi7
+         hjBj9rgrS3ULp1QGlo493L6SVzzz5bw9QuxfXj7bHjw5bzrNCru0uln8AEVTPqoqwud+
+         +h1xEZh3sNe55h1vYoqrcjFm1mY+Vg+goi/AaG1z0nQ20aJUbRYa6oYFyrR16w959qjU
+         rW7rfzbKjwbyd2OIhnxipSCZ1PSHkMALqOZTCL8cOoXQuGD1I75eVnkSd2K8ftf3AgMd
+         5RTkLMTF2T/3rK9eQ2gvumiylaUFM810ovxDA9nOatgJzowrwo/9HKzWC7ULfnUsHjIE
+         Om+w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=TgQATak0;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id w4si838867vse.2.2020.03.10.06.19.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 11:46:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Tue, 10 Mar 2020 06:19:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id t66so3501144pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 11:46:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=EcFVvqnJVS9g/Cl8kGrkcwtOw4H9jEGOYl3u9MAmuZo=;
-        b=aOH0UEjYFzMP5ipARKcwJcU1AjxBq6z1cMsoUgmGRWR3iTJeuF4dMTGAibJUUsDy4o
-         XGYj/JvCydfsnz1eTTILkFEy60/VyYCX+WPy7C0gjyCfwBnYg2aZPw0CgITMhrFvLt6C
-         sZ3+1J9tIfgBryH1rFjLXMFHUbPaT/Aq7uMSCP7oZhUB3N5waUZ9tDnKrr82ryuTe+F7
-         6SEsG6DWx/QxPG+RD6f//ND8KpLnQJGROU/2vaMWXZTuuN1CkyhrGxwsLNV//CavHcv6
-         vD3F082k1pHrdQpmcOnVBthST6E6pEn4Xs4IGuESsgxqyYdGbZXDf7N+oUy2R3QPjEro
-         BvzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=EcFVvqnJVS9g/Cl8kGrkcwtOw4H9jEGOYl3u9MAmuZo=;
-        b=i1YiYfUmZdvah4SUs2sxNSRebqvlblaNQHejmgql1Xpj2yQf7yHyJFfA3z2PmJCroC
-         2lJD/48a0pXKTZJpLG6IvUhIUWz1iT+E5Mk8O/57Irt5ovXmAmaLghNwPLtD0AORInCT
-         5s6AW3aHUgas8Q5y7u1gWH7Xtr0Ciot6lRAHK2BeWlNYT06/3mgwVYVNE2VAPB4Lt/NO
-         fIudwobOwhj+dosJztWoGYdgNZVPIJ5Ykkj372+LKKcVJYEbHZjxglTgUZpXcTuME3ki
-         YTJwIDn//JBTYiwpLJkF1ZfSJ4W6UNwdseK47PCIcW5dmgW4K6VNMQFrvMM76MicidN1
-         BL+A==
-X-Gm-Message-State: AD7BkJIbM9EsjMUGvttCrghI0pL8Ux3wR9GLjUFiz/pGicPyCSqsTIl4GczDjdrrmt4ghA==
-X-Received: by 10.98.0.11 with SMTP id 11mr17526436pfa.5.1456688810966;
-        Sun, 28 Feb 2016 11:46:50 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id cq9sm32848724pac.26.2016.02.28.11.46.50
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 28 Feb 2016 11:46:50 -0800 (PST)
-Date: Mon, 29 Feb 2016 01:14:03 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/6] staging: rtl8188eu: core: Remove NULL test before vfree
-Message-ID: <20160228194403.GA1748@Karyakshetra>
+       dkim=pass header.i=@kernel.org header.s=default header.b=TgQATak0;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 6912B20409;
+	Tue, 10 Mar 2020 13:19:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1583846385;
+	bh=DPTQa5BgXM6sICYwsrLgmIY4f/2d2pMss/E7GZLJ/JY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TgQATak0ZsfCZGxJK2Ys56OG0tbAFFQiyLybp7u1ZsFQej+ZHC3/Rh2EF6e1sp0AG
+	 buAddj2PagBuAxq7pKaXhUTshbvpXgijaQY0WvMaRSW0RvMXmAE/foz/CSvbk0HtAH
+	 WxNw7jpP4LiTF3TIy8HxYmKxPsdlJEr6yKN8asuQ=
+Date: Tue, 10 Mar 2020 14:18:21 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+Cc: Ian Abbott <abbotti@mev.co.uk>,
+	H Hartley Sweeten <hsweeten@visionengravers.com>,
+	Forest Bond <forest@alittletooquiet.net>,
+	=?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH 0/7] Cover letter
+Message-ID: <20200310131821.GA3364515@kroah.com>
+References: <20200309221449.GA5032@kaaira-HP-Pavilion-Notebook>
+ <20200310090646.GA2479270@kroah.com>
+ <20200310120113.GA11048@kaaira-HP-Pavilion-Notebook>
+ <20200310122852.GA3116170@kroah.com>
+ <20200310125424.GA22891@kaaira-HP-Pavilion-Notebook>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20200310125424.GA22891@kaaira-HP-Pavilion-Notebook>
 
-vfree frees the virtually continuous memory area starting at addr.
-If addr is NULL, no operation is performed. So NULL test is not needed
-before vfree.
+On Tue, Mar 10, 2020 at 06:24:24PM +0530, Kaaira Gupta wrote:
+> On Tue, Mar 10, 2020 at 01:28:52PM +0100, Greg Kroah-Hartman wrote:
+> > On Tue, Mar 10, 2020 at 05:31:13PM +0530, Kaaira Gupta wrote:
+> > > On Tue, Mar 10, 2020 at 10:06:46AM +0100, Greg Kroah-Hartman wrote:
+> > > > On Tue, Mar 10, 2020 at 03:44:49AM +0530, Kaaira Gupta wrote:
+> > > > > This patch set aims at improving the code style in a few drivers in
+> > > > > staging. They have been found using sparse, coccinelle, and
+> > > > > checkpatch.pl.
+> > > > > 
+> > > > 
+> > > > The cover letter should be auto-generated by 'git format-patch
+> > > > --cover-letter', and will contain a lot more information than just this
+> > > > paragraph.
+> > > > 
+> > > > Also, I did not see all 7 patches of this series on the mailing list,
+> > > > only 4 of them.  They were also not "threaded" properly, can you use
+> > > > 'git send-email' to resend all of these when you redo the series next?
+> > > 
+> > > Can you please guide me as to how I should thread the patches in a
+> > > patchset properly so that individual commits get to different patches 
+> > > and a cover-letter is generated as well. I am using mutt.
+> > 
+> > If you use 'git send-email' you do not have to use mutt to send the
+> > patches out.
+> > 
+> > If you are using mutt, you can send a patch series, but you have to do
+> > it "by hand" and it's not simple to describe through email, and only
+> > recommended if you _really_ know how to use mutt :)
+> 
+> Okay. So just to be sure I think I should describe how I understood
+> `send-email` must be used, as I have been using only mutt for a month
+> now. I'll create individual file changes, commit them one by one,the
+> format a cover letter using `git format-patch --cover-letter`, then give
+> command `git send-email --annotate HEAD~(no of commits), and the patchet
+> will be generated automatically (?). I'll jest have to send them.
 
-This was done using Coccinelle:
+Close.
 
-@@
-expression x;
-@@
--if (x != NULL)
-    vfree(x);
+Commit the individual patches as before, then run:
+	git format-patch --cover-letter HEAD~(no of commits)
+that will throw you in the editor to edit the cover letter, which will
+end up as the 00/NN mesage.
 
-@@
-expression x;
-@@
+Then, run 'git send-email *patch' (making sure that _only_ the patches
+you want to send out are in the directory).  That will email everything
+out properly.  Note, you do have to set up git send-email properly to
+point to your mail server, instructions on how to that should be around
+somewhere, or try this page:
+	https://git-send-email.io/
+as it will walk you through what to do to set it up.
 
--if (x != NULL) {
-    vfree(x);
-    x = NULL;
--}
+hope this helps,
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_recv.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/core/rtw_recv.c b/drivers/staging/rtl8188eu/core/rtw_recv.c
-index 40b7a30..e5a6427 100644
---- a/drivers/staging/rtl8188eu/core/rtw_recv.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_recv.c
-@@ -116,8 +116,7 @@ void _rtw_free_recv_priv(struct recv_priv *precvpriv)
-
- 	rtw_free_uc_swdec_pending_queue(padapter);
-
--	if (precvpriv->pallocated_frame_buf)
--		vfree(precvpriv->pallocated_frame_buf);
-+	vfree(precvpriv->pallocated_frame_buf);
-
- 	rtw_hal_free_recv_priv(padapter);
-
---
-2.1.4
-
+greg k-h
 
