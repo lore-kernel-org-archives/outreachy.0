@@ -1,114 +1,108 @@
-X-GM-THRID: 6753357485842628608
-X-Received: by 2002:aa7:93cd:: with SMTP id y13mr23108192pff.240.1572388570720;
-        Tue, 29 Oct 2019 15:36:10 -0700 (PDT)
+X-GM-THRID: 6802337436932243456
+X-Received: by 2002:a1c:2048:: with SMTP id g69mr458345wmg.187.1583824634369;
+        Tue, 10 Mar 2020 00:17:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:5043:: with SMTP id q3ls7054263pgl.14.gmail; Tue, 29 Oct
- 2019 15:36:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxuPTsZ5ymmw5nF0BClAXF0pjKeDaVn1x826klqRXyxVc0vna8bw1pmgHCv46AQHWPtd9+0
-X-Received: by 2002:a63:aa4e:: with SMTP id x14mr17390561pgo.393.1572388569158;
-        Tue, 29 Oct 2019 15:36:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572388569; cv=none;
+Received: by 2002:a1c:bd82:: with SMTP id n124ls1401894wmf.2.gmail; Tue, 10
+ Mar 2020 00:17:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvbgXyI/UNG91HPY810jxtHYEcoYyWlDTol38jbIrWmBGMx5soViqzsYDbh9vBsMdxYq2cd
+X-Received: by 2002:a7b:c0cf:: with SMTP id s15mr537648wmh.106.1583824632907;
+        Tue, 10 Mar 2020 00:17:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583824632; cv=none;
         d=google.com; s=arc-20160816;
-        b=obl5+eCEycUvoOCI+/RcsHiMOaoaGPIM3Dh6YyCwtF565UKqDZzTD7JXnF0qEoYStn
-         hT2bMjU/IdULgG1of756ftYxYd078f+iSBFALIF3GwWgKOBJPLENIz5whIEQYZuN5cle
-         eedjDbawaLWZD1U89r96fTf7PWdFUWhiRLyFbYu/CbyOsIE1+ukAJjdESJTMEByVFSdP
-         Xk8z5kROvGVk2r1WblWl6TozTXfYv3+dhFEWjKx9SFcWmx4IvlxfYp+WjyUCXh+PUGHv
-         kEI3nmLNrvFc2cMxl1B4Sz2jIHzbmR8RiHrAlJUEm6Vpk+CiAGx52dO3InS0UZjp5zAE
-         yfnw==
+        b=uKxCFT9lkdeyMpFHgZQZzuVuVXlFavMjOPyOPzW7XOiE6eTEFY/XjufU5DNlgJNz1H
+         Y1gYq9HwgqiGzILVIK7RkM0cZ2m5c+QUQxcYNR+4zsDcagU2YMzDUL4MvDj2odJoZWwx
+         YH4j6iWLueerJ7unuPZFS0m5B9Ta2wrBtUCUv+ibB4OMC0gaqEuIcoVeehEr4poVdXhB
+         BvwliI+Zha1rJgECC5xf6DGnszVvovCFGNYOUVUQegj4/AxzvXXTinSxaQnGc2yKKtnn
+         7T9VWA3o/dLJswSoQlmowddasJQ+QmUO6GdPykxKuPUXG89DVpHFHokZ43mjhH4185Ch
+         fN4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=bAJA1RNDhAkbm1xO3/krIWUAY9zwBPAKxHWFAJSdUMY=;
-        b=aCspH0/r+ncNXPriTxsOdl4YYvtIjZxHbVUgwGcmtJBiDyWDtJXQeydro0oUVFzz2f
-         GITmJ8KAIyxn3rXnqw0R4suOJ66DzYXgJPnNyGLsCMwXBnv4Lgd10+9gg6Sa/yNQjD5L
-         zE+HZSnmVeVaW7F7ac28I787K/ZdYBfrDAlejKUbNd1mZ+AtptuFHITemQV7J05dDpgE
-         rSFV5C59M5vUkh+UbsSHf7XLJtfS9Ez5sIa1/RPtr+LZkR3/JjWKtLnuhLOc32UxLbNO
-         0qAKDijXV3ci1t+OVNn6/2TL0EwkqyMIAJeQpOdsgYNQtsg2smbMzLL7iOiaQw+8vFYN
-         QsKA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=3FhQ/cXygKz3EMQpTtDS81wzBQPJw5EsbTUMVproaco=;
+        b=gYpwYyZt5sKZBkkGPW6bJV6zQCMnS33nIEffqvKCTMxmqiVsbSHE0js+j1fD7iJMXm
+         OYR9FndcDDNj0DzpdpQ1j98bgwX2tlQMubT8S6pdSSQABb50J88EbQaOQOjJIecpyHHf
+         s82jYHA7L/f3BTDdIovfqO2t//65Mne8N96H4lqsYZFCR8uyMb6R+9/x9VYhle4AQaI0
+         /0DHW26IBJ0ezQY06tTsYrVZvcm6y1Eljq2EGcNkhmheASIO253a0T9uz6A1I/vAAl9/
+         6/OzgP0s+u/+iV3xo87z6zpG/RKCPYMG2BA8njfZnT0V9dboo5BR1JWDZsCf/aSOUFIk
+         I4JA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uCw4jKnU;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x744.google.com (mail-qk1-x744.google.com. [2607:f8b0:4864:20::744])
-        by gmr-mx.google.com with ESMTPS id d9si14089pfr.3.2019.10.29.15.36.09
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id n7si92804wmc.1.2020.03.10.00.17.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 29 Oct 2019 15:36:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) client-ip=2607:f8b0:4864:20::744;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2020 00:17:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uCw4jKnU;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x744.google.com with SMTP id a194so580388qkg.10
-        for <outreachy-kernel@googlegroups.com>; Tue, 29 Oct 2019 15:36:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=bAJA1RNDhAkbm1xO3/krIWUAY9zwBPAKxHWFAJSdUMY=;
-        b=uCw4jKnURRfwfJVwzUVthW/4p4oxCjYTxVp1YNNuyOMFS6EuZtRCFiWR5BsmhPOB0u
-         qg/UrUSKGJnODRuLeHpe8qcmCNxJbuS8l+qQlZWrd47EsAc5iSV/bt3Q/348XLydOSb+
-         13rtoDBaK7MsDyzy5mI8FyTw+JKeoOHtTTUt60x27MkPgAyNHkhwVpn6Hf3BeFKUyCAP
-         reJXOHB/pkWERSpU9kRgRlZuRd7JWj36RMs2igTybqsY2cX97Bl0t3w8OkRE0+EFtQKt
-         JQhP/qO2Y9AFSHT/8yyNcOqnKOX7MXefl9DXJPZRVLyYekAN1Pkis+9JL4O++3GU7rJX
-         agCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=bAJA1RNDhAkbm1xO3/krIWUAY9zwBPAKxHWFAJSdUMY=;
-        b=chH/b9ZA2+x1746k5sAMFzMz7DjHJAuViMwrlE+VDUEnMousbXvMaQYUm9tOOTk66P
-         XgmX1i2dOTPOBtcRq2+QVuPBO/tGxUUECQ5xtrLcY42ShsBSnmNR7kznT6bCHLxFljX6
-         1BKF+pxDjawhfqKbFgtEXDbjJy//3o+fNBCh/3+fUsopweP4C6IK2XBJv/wC0v1tuabm
-         CNhhKG9RvD53U6ji1AaTNFt/wtWLiGigpVbX41MuOmDIOsYMwktURV8097voCAi6t4Tg
-         l1QF5nzmh0NA5RXXuQZ12WPKFSlzp49nLE4C7wIl4Jr24PK4rKKS9oCViOearYc3Q14A
-         yxZg==
-X-Gm-Message-State: APjAAAXEb4dz5ZzVzsQoYVqX1lJ61ayJk6f1NT5lCZzpf6khcqxcF4yZ
-	phbrT82ajAbudrZKrC3di/jf1J4RSXk=
-X-Received: by 2002:a37:d02:: with SMTP id 2mr24922492qkn.307.1572388567956;
-        Tue, 29 Oct 2019 15:36:07 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from GBdebian.ic.unicamp.br (wifi-177-220-85-136.wifi.ic.unicamp.br. [177.220.85.136])
-        by smtp.gmail.com with ESMTPSA id c21sm72374qtg.61.2019.10.29.15.36.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Oct 2019 15:36:07 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	axboe@kernel.dk,
-	linux-block@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org,
-	trivial@kernel.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH] blk-mq: Fix typo in comment
-Date: Tue, 29 Oct 2019 19:35:56 -0300
-Message-Id: <20191029223556.2289-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,535,1574118000"; 
+   d="scan'208";a="439591174"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2020 08:17:12 +0100
+Date: Tue, 10 Mar 2020 08:17:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+cc: Ian Abbott <abbotti@mev.co.uk>, 
+    H Hartley Sweeten <hsweeten@visionengravers.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Forest Bond <forest@alittletooquiet.net>, 
+    =?ISO-8859-15?Q?J=E9r=F4me_Pouiller?= <jerome.pouiller@silabs.com>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/7] staging: comedi: remove comparison
+ to bool
+In-Reply-To: <20200309222313.GA5367@kaaira-HP-Pavilion-Notebook>
+Message-ID: <alpine.DEB.2.21.2003100816340.2455@hadrien>
+References: <20200309222313.GA5367@kaaira-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Fix typo in words: 'vector' and 'query'.
+On Tue, 10 Mar 2020, Kaaira Gupta wrote:
 
-Signed-off-by: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
----
- block/blk-mq-virtio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> The function route_register_is_valid already returns boolean datatype,
+> hence remove uneccessary comparison of its return to bool.
+>
+> Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+> ---
+>  drivers/staging/comedi/drivers/tests/ni_routes_test.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/comedi/drivers/tests/ni_routes_test.c b/drivers/staging/comedi/drivers/tests/ni_routes_test.c
+> index 52df4b7c8d52..8387a9627325 100644
+> --- a/drivers/staging/comedi/drivers/tests/ni_routes_test.c
+> +++ b/drivers/staging/comedi/drivers/tests/ni_routes_test.c
+> @@ -499,13 +499,13 @@ void test_route_register_is_valid(void)
+>  	const struct ni_route_tables *T = &private.routing_tables;
+>
+>  	init_pci_fake();
+> -	unittest(route_register_is_valid(4, O(4), T) == false,
+> +	unittest(!route_register_is_valid(4, O(4), T),
+>  		 "check for bad source 4-->4\n");
+> -	unittest(route_register_is_valid(0, O(1), T) == true,
+> +	unittest(route_register_is_valid(0, O(1), T),
+>  		 "find first source\n");
+> -	unittest(route_register_is_valid(4, O(6), T) == true,
+> +	unittest(route_register_is_valid(4, O(6), T),
+>  		 "find middle source\n");
+> -	unittest(route_register_is_valid(9, O(8), T) == true,
+> +	unittest(route_register_is_valid(9, O(8), T),
+>  		 "find last source");
+>  }
 
-diff --git a/block/blk-mq-virtio.c b/block/blk-mq-virtio.c
-index 488341628256..7b8a42c35102 100644
---- a/block/blk-mq-virtio.c
-+++ b/block/blk-mq-virtio.c
-@@ -16,7 +16,7 @@
-  * @first_vec:	first interrupt vectors to use for queues (usually 0)
-  *
-  * This function assumes the virtio device @vdev has at least as many available
-- * interrupt vetors as @set has queues.  It will then queuery the vector
-+ * interrupt vectors as @set has queues.  It will then query the vector
-  * corresponding to each queue for it's affinity mask and built queue mapping
-  * that maps a queue to the CPUs that have irq affinity for the corresponding
-  * vector.
--- 
-2.20.1
+Actually, for a unit test, maybe "== something" is nice, even if the
+something is true or false.
 
+julia
+
+>
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200309222313.GA5367%40kaaira-HP-Pavilion-Notebook.
+>
 
