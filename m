@@ -1,153 +1,144 @@
 X-GM-THRID: 6802341212191719424
-X-Received: by 2002:ad4:524c:: with SMTP id s12mr18611370qvq.138.1583845144353;
-        Tue, 10 Mar 2020 05:59:04 -0700 (PDT)
+X-Received: by 2002:a9d:7458:: with SMTP id p24mr5025260otk.197.1583842374723;
+        Tue, 10 Mar 2020 05:12:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:4695:: with SMTP id g21ls812111qto.3.gmail; Tue, 10 Mar
- 2020 05:59:02 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuJyxaxTo63LwQyuemw98/AA5tl/Fz/VWBRSoLHVQJ4hYm+A/0dwS4l2EJ06Mle82OqE1BO
-X-Received: by 2002:ac8:4b4e:: with SMTP id e14mr14951113qts.144.1583845142903;
-        Tue, 10 Mar 2020 05:59:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1583845142; cv=pass;
+Received: by 2002:a54:410e:: with SMTP id l14ls3568770oic.2.gmail; Tue, 10 Mar
+ 2020 05:12:53 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuIJh4PD+l3nVScVSLFIsp2FrdkwmpX354qK8B/oDR/Th+nOy8tvSrDGSN+N9SKPFqCtOVc
+X-Received: by 2002:aca:b187:: with SMTP id a129mr888824oif.175.1583842373679;
+        Tue, 10 Mar 2020 05:12:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583842373; cv=none;
         d=google.com; s=arc-20160816;
-        b=wucHSuEZAywSZH1sFqpY+/tzY/RqIKlf5VWmkLZj5n9RpdhZzQVCa5bozTVl/MV1zz
-         URT0Ymf3/xw2LzD5prOrtpHDw5HDrUYZ1LpZsXnpAGdb1cZzH4p2pS22M/PoHyudqLaA
-         s5VE7Y96h2h01aO/8MW5byS3LBcGccyOdWT1KpuRlLF9jZMdP0QLEwBs88vo13Es+T+d
-         LHYGxuSMMt0w09JMnpStSaZWGK09NE4sGAVKDkaK2HfSNwbscufMHn3PUhyBEw1sqGAZ
-         DqVKABL0oFHgAUO/8TtxZhhdLs1qstytmOdiRRaQz6L0GWrKDc2pIQlh9CMoSZEiArdA
-         4l9Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=0wOQOl0+TytxBiYqDzNFlRPcZOa1sqDe/SElhKx6704=;
-        b=eZ6wE8NzMGwoyJ3xyNJd54J6k1tDK9/XZttkV8ifSzyAAV+T8+bNc+QLtI+B5H5XGM
-         R04/KJTcjupdGezbKt2L6c5VpBx4y4YtSiG7vGkc2ui4/UhDvTn9p22G6Ikf/1hAPsP4
-         UHLGHdHjggGY9lMMPTQ53TtGfy8NI8lzxg5fEriYMR6s4IC62CC5t8KNE1fPdL/z6eQC
-         lwXpbJW+4tSFC4zfFz+Eut2pg6aW9I3f6LZW+pXQW8XnemkM47iDXB2GCTEcqoB0Q1Gp
-         +9U+Z0SW/b3YiEQ8PSjhSm7X780ak8Dq/gsFVgFijwzJhnj5Zo5OwYh+EN/5uAOmg+iq
-         z0xA==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@silabs.onmicrosoft.com header.s=selector2-silabs-onmicrosoft-com header.b=GSdCX5GX;
-       arc=pass (i=1 spf=pass spfdomain=silabs.com dkim=pass dkdomain=silabs.com dmarc=pass fromdomain=silabs.com);
-       spf=pass (google.com: domain of jerome.pouiller@silabs.com designates 40.107.220.77 as permitted sender) smtp.mailfrom=Jerome.Pouiller@silabs.com
-Return-Path: <Jerome.Pouiller@silabs.com>
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on2077.outbound.protection.outlook.com. [40.107.220.77])
-        by gmr-mx.google.com with ESMTPS id 198si700282qkh.7.2020.03.10.05.59.02
+        b=Kvpn8tajd7XPTr4rfymCIJgb3FyWR1kvB8Elx09caa62UY/ob8HndjxJZgpAwLKsM9
+         gS9N6Y2Y1fmnMbz/ZT77STAkrKN9DR9i7gh+nkcBUZDeeLOwl6yUA0B0m9YualndY7w2
+         cfW5R1NFHEynqUpbmUWWiFrJsZsuhPRRXqqYGG+LppUewvKO9Kis7yNAXPd+YAzbz7xj
+         jIFxJGXqDOhTIhADhLA4ZwPJxGKktxHmtDLEcCDbrhFN6M/EQZUvZJeqDVkDpErLU8Gr
+         uSYtOV0zamY+VuJvAeEhZWJcmEsYldGS9PP7N3Ma8wHGGgv6SVFc7mf9TXtz9YcjwmHV
+         MPyA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:date:from:dkim-signature;
+        bh=AT1OOcPeNIJ0qk9OsL2HEo20dOUWhQ0BLLXplE/xYG8=;
+        b=L/dS2k4K5zmekhFX+J8tjqcqlCb0IMPsgUqc4RcSxHbgpxFrjqYqNVobbXiHPseyDj
+         2hHD0gyiOSuAt24aXBAEbahiwwmdpHTOjqOqgQ9ZHEYPLnGrA+ctBo5I12Iwe3rJd3tt
+         NG7XqWPUvuAgTZOxW4Pi5ACl44VxHpvS4QN7CneWBVCBLFrZpKLiv7fa/WV90bf7uz7G
+         8wXNqS15s2gVHIJdIournzCo3z9hPygZNDAATt2dOriDtETBeAByr/gt5YiQZRceofj2
+         47UnwgZ3uYGpETfsXrvYsHS/Vg8GMUWl3Hw3Sz6HWyKyVR8nrdGJwvuhpQS9N2nGJ0jY
+         O41w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=dPfoeuUE;
+       spf=neutral (google.com: 2607:f8b0:4864:20::542 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
+Return-Path: <kgupta@es.iitr.ac.in>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id v19si231314oth.1.2020.03.10.05.12.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 05:59:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jerome.pouiller@silabs.com designates 40.107.220.77 as permitted sender) client-ip=40.107.220.77;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2020 05:12:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::542 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@silabs.onmicrosoft.com header.s=selector2-silabs-onmicrosoft-com header.b=GSdCX5GX;
-       arc=pass (i=1 spf=pass spfdomain=silabs.com dkim=pass dkdomain=silabs.com dmarc=pass fromdomain=silabs.com);
-       spf=pass (google.com: domain of jerome.pouiller@silabs.com designates 40.107.220.77 as permitted sender) smtp.mailfrom=Jerome.Pouiller@silabs.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=I86ma0RyW1v80GslV/BlPonLnMZGlD8CaH2+7H5yDY/1U98ay9BhB2CmsWripQTICcnJ3V1COzVrcb9IHLL/4UuLh2ZSJDNNHYZOOKeKLNIbdDFZnEdiZ2xViFyevJ1mIfD1/k2lwsoaQ5tF+HUWoAl8aV6GFOMOpCEoTV/KWfBPz5acqRg7FVN5RMbtazyZrxHByeOQgwQ2oVrUnDxeQErpLn4dUU45qnxtcj/PwDXUWJKY+GR2PVf8bCj62LIGXy0GgwIVxtgbSED20cdl+tfQ9Wn6aozKNLWalNWCYMGyx2o5OD42f6zkO1NFaz1lbW8QWqQMehSZDYlga2OgkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0wOQOl0+TytxBiYqDzNFlRPcZOa1sqDe/SElhKx6704=;
- b=BMEQFJ2aLKlI4eLzFguthrBnQ25uSElePtjD4ZikkHarSHgErM5EtndO5kfeAh7NJ623l9wcReYs+3aAVG+iCXmYP08FKJOtoOGVQqhrgdUDOWZOPjo/56cgkvmWgy7/IuwIOHUbjGjLtx99Bqhq2b7loeH61gAETE4KnwV5pFv2t+s1h4UfCTxTE/CNBpchP02jX8zRNdBo3eiktXIE7lB6BoQkjXRt/oq3CytvkbQURmzUH2m59djtLBMd7b7JoGvap6npQxuwJSYdhplBC9VcEaWJ+4JB6Cul+gVqcfYAjG+AMJMVqH/qsl1mU8llyTqzGe3BIRPmDHhg/WvZrw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=dPfoeuUE;
+       spf=neutral (google.com: 2607:f8b0:4864:20::542 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
+Received: by mail-pg1-x542.google.com with SMTP id m5so6235744pgg.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 05:12:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0wOQOl0+TytxBiYqDzNFlRPcZOa1sqDe/SElhKx6704=;
- b=GSdCX5GXW9yLu5y89dryVxAXG+82o+FuaZTlaUsdSZXiZGM4yi8NV0P+m/fwmxDeMNjwCg0fbYZmrJgsNyqf6TkvGBYdk1KN87Yh99sYN/agNHxHOpB0VY5Z3QTHLr+3y0tCdRUN5v4U3AchhQ/Hv4V+rAi52oeCsee0BDVyScc=
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com (2603:10b6:208:13f::22)
- by MN2PR11MB3951.namprd11.prod.outlook.com (2603:10b6:208:13b::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.14; Tue, 10 Mar
- 2020 12:59:00 +0000
-Received: from MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3]) by MN2PR11MB4063.namprd11.prod.outlook.com
- ([fe80::ade4:5702:1c8b:a2b3%7]) with mapi id 15.20.2793.013; Tue, 10 Mar 2020
- 12:59:00 +0000
-From: =?iso-8859-1?Q?J=E9r=F4me_Pouiller?= <Jerome.Pouiller@silabs.com>
-To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-CC: Julia Lawall <julia.lawall@inria.fr>, Ian Abbott <abbotti@mev.co.uk>, H
- Hartley Sweeten <hsweeten@visionengravers.com>, Forest Bond
-	<forest@alittletooquiet.net>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>, "outreachy-kernel@googlegroups.com"
-	<outreachy-kernel@googlegroups.com>
+        d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
+        h=from:date:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=AT1OOcPeNIJ0qk9OsL2HEo20dOUWhQ0BLLXplE/xYG8=;
+        b=dPfoeuUEhD6Ny+zLiYUkMV/EeCpE4phUHMbIkzFBWRCM/L79rhL+ll9Smay8MT04uE
+         3QdF6yvrUzkHX0Lp/mfeago2N7WV9fZ3iT37kLF00jzqMDAJj8RjsHoWtnUo0oR+fHT4
+         rv1dYwr0puPL8NFa4prVLH4AO6uePpH7sf3lPWQhd2cCo/BfDiopjW6FQs+fStfjyDmL
+         bFIpDcaPeAMBdkq/+C2McuUY8jN2/Ep4u1lHOlqMozMvU7kol5b0AMJ0crjLBhwfruzw
+         3wdwvY/9wN7sPH756yAAFcnZlU3osyxuvpah6N1V/YnheaEKngkOaUEamVO4rUm4qUvR
+         D5Ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:date:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=AT1OOcPeNIJ0qk9OsL2HEo20dOUWhQ0BLLXplE/xYG8=;
+        b=fw5u4kSBzxxHKxtf39FDSTgiNNT7PlhvxtTa3q3fGdgM7YA8brT4zM88SxKNTD39U3
+         GM54Llh0nF6DIHm4wJYwmUgJE93vKCcqN4pHSgptwmOkDYs/MQTU3bE0/NBBTyJZcrkG
+         yVqiSeuUNaDQqFFQwQBv/XPW3uLt0mN0KrVD+TkDqrQOLluv71o4lapIQYHJKOt5rNv/
+         6At8mxucR8zq7eLWJagTK3iBa8XCTnJIMUrpCI0mlJnU7hGFDax89aiQrUY133Vn10GK
+         kMlY2QxSLW9Gsfw5zc1AYwPsI/hCnt6UDEhgvcY/FvrLflHhVjhWntiiyYXWxtMiFf3n
+         jQ6w==
+X-Gm-Message-State: ANhLgQ0BmpfahKLwseM98D+pJvjYs0iiqB3LU090Y6Y9QhKXAR2E3Zap
+	tqi+ta205lJurQQumJTMh6aUaw==
+X-Received: by 2002:a62:1bd6:: with SMTP id b205mr1335072pfb.242.1583842372282;
+        Tue, 10 Mar 2020 05:12:52 -0700 (PDT)
+Return-Path: <kgupta@es.iitr.ac.in>
+Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.173])
+        by smtp.gmail.com with ESMTPSA id i5sm29307135pfo.173.2020.03.10.05.12.48
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Mar 2020 05:12:51 -0700 (PDT)
+From: Kaaira Gupta <kgupta@es.iitr.ac.in>
+X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
+Date: Tue, 10 Mar 2020 17:42:42 +0530
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Kaaira Gupta <kgupta@es.iitr.ac.in>, Ian Abbott <abbotti@mev.co.uk>,
+	H Hartley Sweeten <hsweeten@visionengravers.com>,
+	Forest Bond <forest@alittletooquiet.net>,
+	=?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH 3/7] staging: wfx: change 1 to bool
-Thread-Topic: [Outreachy kernel] [PATCH 3/7] staging: wfx: change 1 to bool
-Thread-Index: AQHV9mNmtWLMTVcoV0GDZ373VdB8TahBbgwAgABPkwCAAAztAA==
-Date: Tue, 10 Mar 2020 12:58:59 +0000
-Message-ID: <2641095.QEJj9zIe3E@pc-42>
+Message-ID: <20200310121242.GB11048@kaaira-HP-Pavilion-Notebook>
 References: <20200309223751.GA5676@kaaira-HP-Pavilion-Notebook>
  <alpine.DEB.2.21.2003100824490.2455@hadrien>
- <20200310121242.GB11048@kaaira-HP-Pavilion-Notebook>
-In-Reply-To: <20200310121242.GB11048@kaaira-HP-Pavilion-Notebook>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jerome.Pouiller@silabs.com; 
-x-originating-ip: [37.71.187.125]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ec0f1152-8efe-4f5f-7411-08d7c4f2cd55
-x-ms-traffictypediagnostic: MN2PR11MB3951:
-x-microsoft-antispam-prvs:
- <MN2PR11MB395102CE22E71DC235E2D79393FF0@MN2PR11MB3951.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5797;
-x-forefront-prvs: 033857D0BD
-x-forefront-antispam-report:
- SFV:NSPM;SFS:(10009020)(7916004)(39860400002)(366004)(376002)(396003)(346002)(136003)(199004)(189003)(6512007)(478600001)(2906002)(8936002)(8676002)(6916009)(5660300002)(71200400001)(316002)(33716001)(81166006)(64756008)(4744005)(81156014)(9686003)(66574012)(6486002)(76116006)(86362001)(6506007)(54906003)(186003)(26005)(66446008)(66556008)(66476007)(91956017)(4326008)(66946007)(39026012);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR11MB3951;H:MN2PR11MB4063.namprd11.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
-received-spf: None (protection.outlook.com: silabs.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- njVTJ7JllnFwqFY3YG/mVl3TARNJe4oLivUB7MvHu5e6hDVUAf2nvnTI/6TWFsFJ0O5ZIpOY1UCYhqnMgrcQ6dlJEgfCJVnYXPl8rDtdK1J+WYq4zfLyWKN2ggd+TTI0zn5WOsQ17M3sHaNhTT1PTn6wpyX+le3u+rtwHnifio49TrvxtA5m2SgGAVJSyrQOxRfJNSkGjzl53HRm85wXX/bPrX1HfKlCmaHeXu3eNHJTbb+9ij6BzT3doXbujPwL3/KtHBQkvHHCoepFwh+3ee33hrP7/WpbngV5CcTaPW63SDz+A4JNgPjzm+dVN8d7cebXKPTBLkupxfEvCYUvw90IfANaMsR0SykbTxBOTHCz0V6UCFjnGIwDFou0TlOP3lK03F0ngbiAK5zS/G/avSNXzEorkhlID/ixrARF9uqcMLOYB8nKEWhGr2ze94NZY0EtxkqZY+DHCNWel3QLUg5CtCskCLfnUQEXX4LciJu5flc645wSgqsaZmtt+bYT
-x-ms-exchange-antispam-messagedata:
- +U/W8d4d8FXwhk5qIZUz+2m1m8rgzLPjtm+X13YMOuYL1IB99RQu6Hsn7dU4DCNjM8aE58Pvhwd+IzrHoaq7qqszGD/1KEjLkU1z25UltCTLc5ypNJU+yzSCbo4vHCvzer/RvFvpEgPqBL78Udi7eA==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="iso-8859-1"
-Content-ID: <CB7366E773315344B02BB8F016126A8C@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ec0f1152-8efe-4f5f-7411-08d7c4f2cd55
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Mar 2020 12:58:59.9935
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Dniq5nuJLEhyhVdb7RSzHm6kAgKAF/diePeqGA/w7IXsBebijD8kWudiVBPHZxCCH3TFRW7Ajw9/HEOYBIAD7w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3951
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.2003100824490.2455@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Tuesday 10 March 2020 13:12:42 CET Kaaira Gupta wrote:
-> On Tue, Mar 10, 2020 at 08:27:54AM +0100, Julia Lawall wrote:
-> > On Tue, 10 Mar 2020, Kaaira Gupta wrote:
+On Tue, Mar 10, 2020 at 08:27:54AM +0100, Julia Lawall wrote:
+> On Tue, 10 Mar 2020, Kaaira Gupta wrote:
+> 
+> > policies[i].uploaded is a bool. It is equated to 1. Change it to bool.
+> 
+> equated -> assigned
+> 
+> As far as I can see, policies[i].uploaded is a u8, not a bool.  Have you
+> checked that all of the uses indicate that it is used in a boolean way?
+
+Yes, I got this warning using coccinelle, after which I checked a few
+uses of this as well. I found them to be indiacate policies[i].uploaded
+as bool. For example line 227 of the same file :
+
+`if (!policies[i].uploaded && memzcmp(policies[i].rates,
+			    sizeof(policies[i].rates)`
+
+
+> 
+> julia
+> 
 > >
-> > > policies[i].uploaded is a bool. It is equated to 1. Change it to bool=
-.
+> > Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+> > ---
+> >  drivers/staging/wfx/data_tx.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > >
-> > equated -> assigned
+> > diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+> > index 815fde0913f5..ef617347abad 100644
+> > --- a/drivers/staging/wfx/data_tx.c
+> > +++ b/drivers/staging/wfx/data_tx.c
+> > @@ -227,7 +227,7 @@ static int wfx_tx_policy_upload(struct wfx_vif *wvif)
+> >  			    memzcmp(policies[i].rates, sizeof(policies[i].rates)))
+> >  				break;
+> >  		if (i < HIF_MIB_NUM_TX_RATE_RETRY_POLICIES) {
+> > -			policies[i].uploaded = 1;
+> > +			policies[i].uploaded = true;
+> >  			memcpy(tmp_rates, policies[i].rates, sizeof(tmp_rates));
+> >  			spin_unlock_bh(&wvif->tx_policy_cache.lock);
+> >  			hif_set_tx_rate_retry_policy(wvif, i, tmp_rates);
+> > --
+> > 2.17.1
 > >
-> > As far as I can see, policies[i].uploaded is a u8, not a bool.  Have yo=
-u
-> > checked that all of the uses indicate that it is used in a boolean way?
->=20
-> Yes, I got this warning using coccinelle, after which I checked a few
-> uses of this as well. I found them to be indiacate policies[i].uploaded
-> as bool. For example line 227 of the same file :
->=20
-> `if (!policies[i].uploaded && memzcmp(policies[i].rates,
->                             sizeof(policies[i].rates)`
->=20
-
-Hello,
-
-Indeed, policies[i].uploaded is a bool since 6673f2636b41 ("staging: wfx:
-use boolean appropriately").
-
-
---=20
-J=E9r=F4me Pouiller
-
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200309223751.GA5676%40kaaira-HP-Pavilion-Notebook.
+> >
 
