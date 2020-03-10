@@ -1,139 +1,74 @@
-X-GM-THRID: 6391667528691613696
-X-Received: by 10.99.56.30 with SMTP id f30mr254877pga.121.1488176064718;
-        Sun, 26 Feb 2017 22:14:24 -0800 (PST)
+X-GM-THRID: 6802697836699844608
+X-Received: by 2002:a7b:c305:: with SMTP id k5mr4204064wmj.189.1583876886966;
+        Tue, 10 Mar 2020 14:48:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.59.194 with SMTP id k60ls11849614otc.22.gmail; Sun, 26 Feb
- 2017 22:14:24 -0800 (PST)
-X-Received: by 10.200.49.136 with SMTP id h8mr3342219qte.29.1488176064143;
-        Sun, 26 Feb 2017 22:14:24 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id h79si252348pfh.2.2017.02.26.22.14.24
+Received: by 2002:a1c:a98b:: with SMTP id s133ls1301707wme.3.gmail; Tue, 10
+ Mar 2020 14:48:05 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsSBinlAhFeE29IG4KWhqQucEB+QW51+zkUSGYhrbmu31lw0+YaW8516u4gfIMoCz4orjKx
+X-Received: by 2002:a1c:b183:: with SMTP id a125mr4157274wmf.46.1583876885556;
+        Tue, 10 Mar 2020 14:48:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583876885; cv=none;
+        d=google.com; s=arc-20160816;
+        b=O6Ftqvgv2IkVSGZ15oexHOHBHiG1WPLy7U1O6Q9my4pizwBVh/VuA1CiaSS/xiIlYw
+         umlJDWiif3J9AMcaLFpRvVE4R77a/Qvnh/MKYHv7liZbH7dm1AtM0wH3XrPte+dyC4En
+         zRqYRbqNyuCMR8Xb8k9HFU7O9lT3DtBIFFVmmd3fkazKxM9MTkOqf4xAmwS9M//eB2WM
+         ERnMSuSqjtLog7yaIqk2gBMWvd6RYZ5vqQkBN1XLUBSuZ/4Trg+RjYHBbF8XqIUzCGBt
+         HPYBzkqt4Nipd95mYyShpxvj7p2vXApA3V+Vl8g8ELCNHk0uhbbXUWEs0yvPUpLuuk2T
+         5GeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=gWgb6xPHtt9w6JJD4qLylroe4vPVO1tWAxdc0LK41jU=;
+        b=ewMqdfCd4m2dYtvv2hHKwCM+K5jzdbn/YxrflvE+7uFCGzOv+CSZgGnV1URR52ygVy
+         XjmagCQ6VwMCM8GKncOM+IdnxZPQf+HoOpU9ke5lcYmvmxepGZt3JKtp7wwfPjUT2W5W
+         NzMUfrJkVGTGcac/5qOsTyrb/is/dM3NwWq90+5D997+3P07Fsd5YaYXRBiNBFfDexnb
+         7hITBiW9rSfgtl+WZvuykKflEZp7JyEcilMtXR6lKvdeCEpBfbhhsGtNRAJYtjGOmPw3
+         0HVZPJsHQ6sQT4Jhgyio8s1OX0qP6xdbdq+1G64q01iRMnzH/76bntFG2WrCQXqdfO/X
+         jMiQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q202si498wme.2.2020.03.10.14.48.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 22:14:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        Tue, 10 Mar 2020 14:48:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id 25so3135249pgy.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 22:14:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=5rkBG8FEaPk+/4z/Q0kV4i35w6xwmapha36B/QZE6M4=;
-        b=dpB5xeMAlxjYFysC3Owe9d+Se5KUW/xdiSn0EvlNmxWqJ8594mSjVHyjO99FzvSk24
-         yj16RMVfz2fAdckhqVQrmNjamwuNq5O7suqJLP5ebjp8jT6BgvtaX0t9xGLNxnPOxWAl
-         qt/iaVEFOTEX1D2pApQPRjERWtn/zKTUBJTLTObie5Qfm3Co5FxXqidGxnqJw5FXKhvy
-         vqS5RTXAcIVcHuR9DaRutuaoROrLlCjg1SACwS1IUYjm6XtiSZM9xOdBnj+6ivlyFvPd
-         I/iM/1F4f1aAKV1BRJmRlUaoFi5i+tFibkO03aiiRQj2gNjX04z2RdhFN31kJLwBXHMz
-         Wzzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=5rkBG8FEaPk+/4z/Q0kV4i35w6xwmapha36B/QZE6M4=;
-        b=HtbMa3P7g0NVbhXsFqnAOEk7uFg8Ej36/vCfdy1xfWrWz10UVDmLTC8okzO5ays153
-         v7KlnRlz7yaha/yK5uJ/KN/i1W318xBeI/xQZMR9ViZmNbsxlqFHD2IU3rVCjRsFEEqw
-         DJ/GZ5Xs/8CXPsREQRJAY6er7ZRNNzSQ8vwTZNQaESWR7tFEtoyUJEQ9GMhcLfRg6OIJ
-         CcS90LA/2WBohZCn2EbPMJrmO/qD3ZDXRRu1FfHjgiIGNJBllpDNi7wrkhCDLhg6L3j9
-         7VVFEnzfIh014dxYxjjpBF5SeaBhaalZm/emsEnINdN4RIhntI1zNJCPlmlYRyPi92tr
-         dSog==
-X-Gm-Message-State: AMke39nlPGZBFbl5g+5q0mWjh6H3TuHlRccVupDHb+8FXl60MdscuFwXrtsF3tynPfMRuw==
-X-Received: by 10.84.214.129 with SMTP id j1mr7377827pli.23.1488176063860;
-        Sun, 26 Feb 2017 22:14:23 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id y67sm27822932pfa.96.2017.02.26.22.14.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 26 Feb 2017 22:14:23 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	lars@metafoo.de,
-	Michael.Hennerich@analog.com,
-	jic23@kernel.org,
-	pmeerw@pmeerw.net,
-	knaack.h@gmx.de,
-	linux-iio@vger.kernel.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: iio: ad5933: move contents of header file to source file
-Date: Mon, 27 Feb 2017 11:42:08 +0530
-Message-Id: <1488175928-15013-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,538,1574118000"; 
+   d="scan'208";a="341934746"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2020 22:48:05 +0100
+Date: Tue, 10 Mar 2020 22:48:04 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [OUTREACHY] Help regarding patch sets
+In-Reply-To: <20200310214145.GA14139@kaaira-HP-Pavilion-Notebook>
+Message-ID: <alpine.DEB.2.21.2003102246340.2313@hadrien>
+References: <20200310214145.GA14139@kaaira-HP-Pavilion-Notebook>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-The contents of the header file are used only by this single
-source file.  Move content into .c and remove .h.
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/iio/trigger/iio-trig-bfin-timer.c | 20 ++++++++++++++++++-
- drivers/staging/iio/trigger/iio-trig-bfin-timer.h | 24 -----------------------
- 2 files changed, 19 insertions(+), 25 deletions(-)
- delete mode 100644 drivers/staging/iio/trigger/iio-trig-bfin-timer.h
 
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-index 4e0b4ee..8077b9d 100644
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-+++ b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-@@ -19,7 +19,25 @@
- #include <linux/iio/iio.h>
- #include <linux/iio/trigger.h>
- 
--#include "iio-trig-bfin-timer.h"
-+/**
-+ * struct iio_bfin_timer_trigger_pdata - timer trigger platform data
-+ * @output_enable: Enable external trigger pulse generation.
-+ * @active_low: Whether the trigger pulse is active low.
-+ * @duty_ns: Length of the trigger pulse in nanoseconds.
-+ *
-+ * This struct is used to configure the output pulse generation of the blackfin
-+ * timer trigger. If output_enable is set to true an external trigger signal
-+ * will generated on the pin corresponding to the timer. This is useful for
-+ * converters which needs an external signal to start conversion. active_low and
-+ * duty_ns are used to configure the type of the trigger pulse. If output_enable
-+ * is set to false no external trigger pulse will be generated and active_low
-+ * and duty_ns are ignored.
-+ **/
-+struct iio_bfin_timer_trigger_pdata {
-+	bool output_enable;
-+	bool active_low;
-+	unsigned int duty_ns;
-+};
- 
- struct bfin_timer {
- 	unsigned short id, bit;
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.h b/drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-deleted file mode 100644
-index c07321f..0000000
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-+++ /dev/null
-@@ -1,24 +0,0 @@
--#ifndef __IIO_BFIN_TIMER_TRIGGER_H__
--#define __IIO_BFIN_TIMER_TRIGGER_H__
--
--/**
-- * struct iio_bfin_timer_trigger_pdata - timer trigger platform data
-- * @output_enable: Enable external trigger pulse generation.
-- * @active_low: Whether the trigger pulse is active low.
-- * @duty_ns: Length of the trigger pulse in nanoseconds.
-- *
-- * This struct is used to configure the output pulse generation of the blackfin
-- * timer trigger. If output_enable is set to true an external trigger signal
-- * will generated on the pin corresponding to the timer. This is useful for
-- * converters which needs an external signal to start conversion. active_low and
-- * duty_ns are used to configure the type of the trigger pulse. If output_enable
-- * is set to false no external trigger pulse will be generated and active_low
-- * and duty_ns are ignored.
-- **/
--struct iio_bfin_timer_trigger_pdata {
--	bool output_enable;
--	bool active_low;
--	unsigned int duty_ns;
--};
--
--#endif
--- 
-2.7.4
+On Wed, 11 Mar 2020, Kaaira Gupta wrote:
 
+> Sir/Ma'am,
+>
+> I was guided to submit a patchset with patches in a
+> single driver, but I am unable to find 5-6 different clean-ups in a
+> single driver. I am using sparse, TODOs, coccinelle, and checkpatch.pl
+> to find cleanups for the same. Can I submit a patchset with changes in
+> multiple drivers as for moving onto small tasks I have to finish at
+> least 2 patchsets?
+
+A patchset doesn't have to be 5-6 different cleanups in a single driver.
+It just has to be > 1 cleanup in a single driver.  There should be
+sufficient opportunities.
+
+julia
 
