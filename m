@@ -1,99 +1,116 @@
 X-GM-THRID: 6802508842899865600
-X-Received: by 2002:a62:16d0:: with SMTP id 199mr20178731pfw.238.1583833595086;
-        Tue, 10 Mar 2020 02:46:35 -0700 (PDT)
+X-Received: by 2002:a0c:eb92:: with SMTP id x18mr18608232qvo.15.1583832512911;
+        Tue, 10 Mar 2020 02:28:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:df41:: with SMTP id h1ls4747279pgj.8.gmail; Tue, 10 Mar
- 2020 02:46:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvua7Qw9pKPl/tp4KKtWeb3J7oAxwhA1TFOpzTrlKYeycpkgiHks5wbpeUf6NnqQCLlt92+
-X-Received: by 2002:aa7:864e:: with SMTP id a14mr20706406pfo.240.1583833593215;
-        Tue, 10 Mar 2020 02:46:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583833593; cv=none;
+Received: by 2002:a37:a603:: with SMTP id p3ls794461qke.6.gmail; Tue, 10 Mar
+ 2020 02:28:31 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vulIZCD7Qeqdz6K7y3Wfi6tvYE/J0mO0NX206L33OzaQjBZ7dYQti+hVsOkcxTeIVcxI/zK
+X-Received: by 2002:a37:5c9:: with SMTP id 192mr19287929qkf.103.1583832511762;
+        Tue, 10 Mar 2020 02:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583832511; cv=none;
         d=google.com; s=arc-20160816;
-        b=NGTSJrc9yJ7biBVqq1J0OI2xiEM+pA3sT9MTWux1VNMXeKn66+9CzXywCUJJWKzvWV
-         zBhxQm31mJetWuZ7T7+2BsBiLaN7/WznZdey0inhfBAT/fe8L8U5TV2n0LIAAw2RLcCg
-         T5v9m/IHcfdiC9v3Ie9P3ch5wIIrGfFRtK8qSyFyvlc7D2M7KFr+CwBshQOavHI0kzz9
-         5tnHEWbxkUbt5IUkZ0BOCQqYdMu1mLbIWJmmomrQr4gljrsID+eW3yqrvAQaZoUarquF
-         BfNpiWol76T+sM7LwXN8CLyrYLqt6JAGCHjFcPmBJKxC1oc5q4So1HWpnUJ4RFA439nL
-         PmhA==
+        b=GqUA/qAQYfdCpqpEg0XLCEAX1YB3qTmnKKEUsXlY1VvEYYTx4EoBgu/nRcsOqYgt+3
+         KTr/to0Vdp9ljM9kDaAk5Tkr8ux3fF+ugGSvtWSm6gwpDzGEWwQsIPXUKo9APLSAoLlM
+         gSbmM84SKFHc22rjExD40og5s3gCPnXV1aFF/nHVCoZQOHIA2eTE+IJCr1bkzDGR9MZ1
+         HuQB8T2Zz/t2O0FUEuDVrYjZWguq/tzuQ2TJYVj1kn+L77tY4+HOfPe8BcVl+2lkUpNB
+         qeHCSeF3oBi/sYI9YJGHQSl/4rMHWwGVLXWUgu4U1QGkXTY8BZ08jjyROjgyNA8Zp4Td
+         /cyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=UEAIvzQ4M0a8GttJvRyB655B4+Mf5NOvAocD4fPhxC8=;
-        b=SVUKZ2a7r5w0fFMQ0ChNN+7ei5luo+17AulHYq16T+mPXxcqx6kTp83hroEZZWOrgr
-         aNTOLq2NwZNuUdFoa+qize0HKwIbkMThPhAMpuIDxsl4NTNrWwjH8BQZLrxw8yVFic1X
-         i16e1V3AUrrxCOemCB+wyfvQqLrNmniM9TpCRQgCZLbE+Kmk+V91vUhGDEU7cH4uuWl0
-         2MrqSPkTgGINmPntmSGBGdGRREYHZL7S8RlpxVzcgx5led7mOU/aPO0Ufp/j3Efht68l
-         W3zreA0qHrGfRXgD1tFi5ZD7x4Gtikx4MKsNIVc4NLkYhhQuzhWzPAnop+2HYeEYsX6X
-         Y7Ow==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=shxEsCDAGQbCnamTJQqOtORKbkO1asetmK0VBQ+ikHk=;
+        b=1GPR8WVXFLQ1pMpaHFVvEV79cVb9swjKCfDxURiapV+d3NwBevCUCOeTLVFrSoJ9r4
+         jRnKWzEbkfYdAOhqXBppUBuH/Y3wnWdcRYX20AA9St2Ryav40SAJwqo4DsQBgW/5m/OE
+         g27o1QsgjoRdwwhKFE+St+9bUdR89MpAxossAfFDR/PH11YZAOAB5YNjuliksKWCCEQR
+         En5iVTl6546t4IG/NImHUwZpq9gzrLqxK0kHWABQNcHyk03z2pLKhEu2c9sO/+gv18Q6
+         StACnkvlTIBaIWcT2BdsnlGZJe25qvek0JMf2E5iHlb8Gu8210MVeAWjdkN5ETRLDFF6
+         lKpQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=qXGdJim4;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id x128si784527pgx.2.2020.03.10.02.46.33
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PK9ASpMP;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
+        by gmr-mx.google.com with ESMTPS id 198si675883qkh.7.2020.03.10.02.28.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 02:46:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2020 02:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=qXGdJim4;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 7CD242467D;
-	Tue, 10 Mar 2020 09:46:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1583833592;
-	bh=shQN70ftxVLtGhfvHE52kdCV8kiju2jW8eEEpXpAmL0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qXGdJim4pQ6ACE4ZxEZ9Bwx6Ygs3ACfAQ+NwSHMaXccyqJpXAGNrlzflk5mjlvPhP
-	 qktVUEGN9mGp8sOKJGIuzNcVpTam4HKLgSsAebI5BJF2abYtd4xKe1qnaoWdOan/ij
-	 myq9+9kFFAiVG7JkFRbT1KckKX+z0vtg3h3QxxjM=
-Date: Tue, 10 Mar 2020 10:46:30 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, adham.abozaeid@microchip.com,
-	ajay.kathat@microchip.com, daniel.baluta@gmail.com
-Subject: Re: [PATCH] wilc1000 : rearrange line exceeding 80 characters
-Message-ID: <20200310094630.GA2514761@kroah.com>
-References: <20200310092819.GA20959@deeUbuntu>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PK9ASpMP;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1041.google.com with SMTP id f15so177629pjq.2
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 02:28:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=shxEsCDAGQbCnamTJQqOtORKbkO1asetmK0VBQ+ikHk=;
+        b=PK9ASpMPVu025TynyB5+LDgmXV5t7nnAMkJ9Kk1pk6L9PNKBy5UQSjInT91s4BJai/
+         TjyWY2morY1SbVbd+2Qwhq8tJehtxtHVVDeVT1zsgiTqrdsHe/7bQcB/VsYPVJSbguYw
+         f8WJoGGLYJ0nfmyUw+CBbx0x2ngHtPihhhhJ7RgAnA7NVtHnuAZDpRL/tgMDQNdGs6LR
+         zcsITabQPUY09m53eQHYIf3F/KSG+sutnH1l31IBAK5yIJp6pMZidh8n4OBdrvlaLLnf
+         HRIVSf83DD/yDBPAKf9J6sdtErNYnxYZQH3/Kshc1OErZjy2F/IhE/PLFHOlipAYx4t+
+         lKZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=shxEsCDAGQbCnamTJQqOtORKbkO1asetmK0VBQ+ikHk=;
+        b=V6Wr7tS4kKk8plfAO5nI9Q4YuEQdEjSnq8RsWqZyVmxmEJdc6MUu0XynEEOZiL7pwU
+         lEFB+8L3Wu3EBgLWzeVYjPWEEvsIrFHZ4a+BxJG3kMM2lKgAfKhlhgiIGTxbmyMWQ9dZ
+         f1ixZl1HS2NTNyJlBixrXFbKITvi9/IDac71CG4Ct/tjPhQAadSTXiociTb/nhSZko2p
+         9bsIBD2dOlT+CGA77eF02MBdgBIHG+66edIIdmDmfXsIdDMBqGPSmhAfpwmYY9ZTVe+c
+         jFUkMZCWqICRGkQpsYSneWG10BQ4f64/qcCaVOM1Bhx7RQFb4DtyVMklNlgbqM4NSZTt
+         ZwiA==
+X-Gm-Message-State: ANhLgQ3ACqhgf/C2YJL6freSgV5GvF6EHG+O7Su8HelaDExNm4rr0ugh
+	Tyv/deblojaRj3mZ+mB1sb+N/XKk
+X-Received: by 2002:a17:902:61:: with SMTP id 88mr19731072pla.313.1583832510729;
+        Tue, 10 Mar 2020 02:28:30 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.240.207.69])
+        by smtp.gmail.com with ESMTPSA id 18sm48261826pfj.20.2020.03.10.02.28.27
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Mar 2020 02:28:30 -0700 (PDT)
+Date: Tue, 10 Mar 2020 14:58:24 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: adham.abozaeid@microchip.com, ajay.kathat@microchip.com,
+	gregkh@linuxfoundation.org, daniel.baluta@gmail.com
+Subject: [PATCH] wilc1000 : rearrange line exceeding 80 characters
+Message-ID: <20200310092819.GA20959@deeUbuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200310092819.GA20959@deeUbuntu>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Tue, Mar 10, 2020 at 02:58:24PM +0530, Deepak R Varma wrote:
-> A long if condition exceeding 80 characters that makes evaluation
-> appear confusing. Rearranging the condition makes it easier to understand.
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/staging/wilc1000/netdev.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+A long if condition exceeding 80 characters that makes evaluation
+appear confusing. Rearranging the condition makes it easier to understand.
 
-You forgot "staging:" in your subject line.
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/wilc1000/netdev.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-> 
-> diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
-> index 045f5cdfdca0..d7a632c92a76 100644
-> --- a/drivers/staging/wilc1000/netdev.c
-> +++ b/drivers/staging/wilc1000/netdev.c
-> @@ -802,8 +802,10 @@ void wilc_wfi_mgmt_rx(struct wilc *wilc, u8 *buff, u32 size)
->  		u16 type = le16_to_cpup((__le16 *)buff);
->  
->  		if (vif->priv.p2p_listen_state &&
-> -		    ((type == vif->frame_reg[0].type && vif->frame_reg[0].reg) ||
-> -		     (type == vif->frame_reg[1].type && vif->frame_reg[1].reg)))
-> +		    ((type == vif->frame_reg[0].type &&
-> +			vif->frame_reg[0].reg) ||
-> +		     (type == vif->frame_reg[1].type &&
-> +			vif->frame_reg[1].reg)))
+diff --git a/drivers/staging/wilc1000/netdev.c b/drivers/staging/wilc1000/netdev.c
+index 045f5cdfdca0..d7a632c92a76 100644
+--- a/drivers/staging/wilc1000/netdev.c
++++ b/drivers/staging/wilc1000/netdev.c
+@@ -802,8 +802,10 @@ void wilc_wfi_mgmt_rx(struct wilc *wilc, u8 *buff, u32 size)
+ 		u16 type = le16_to_cpup((__le16 *)buff);
+ 
+ 		if (vif->priv.p2p_listen_state &&
+-		    ((type == vif->frame_reg[0].type && vif->frame_reg[0].reg) ||
+-		     (type == vif->frame_reg[1].type && vif->frame_reg[1].reg)))
++		    ((type == vif->frame_reg[0].type &&
++			vif->frame_reg[0].reg) ||
++		     (type == vif->frame_reg[1].type &&
++			vif->frame_reg[1].reg)))
+ 			wilc_wfi_p2p_rx(vif, buff, size);
+ 
+ 		if (vif->monitor_flag)
+-- 
+2.17.1
 
-The original code is really easier to follow than your change, so I
-would just leave it as-is please.
-
-thanks,
-
-greg k-h
 
