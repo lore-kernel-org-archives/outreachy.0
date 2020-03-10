@@ -1,74 +1,121 @@
 X-GM-THRID: 6802571997822844928
-X-Received: by 2002:a63:1e06:: with SMTP id e6mr21755886pge.134.1583847622272;
-        Tue, 10 Mar 2020 06:40:22 -0700 (PDT)
+X-Received: by 2002:a19:98a:: with SMTP id 132mr7167373lfj.171.1583847219702;
+        Tue, 10 Mar 2020 06:33:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:898e:: with SMTP id v14ls59935pjn.3.gmail; Tue, 10
- Mar 2020 06:40:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtQUVarLmczJ6N9hbByal5W7Q7KRAm5iWuslNA+IlkNx4YOSm6ZQ33bfuz0MUrDUXvW60Qw
-X-Received: by 2002:a17:902:7796:: with SMTP id o22mr19904597pll.250.1583847619533;
-        Tue, 10 Mar 2020 06:40:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583847619; cv=none;
+Received: by 2002:a2e:a58b:: with SMTP id m11ls2456401ljp.0.gmail; Tue, 10 Mar
+ 2020 06:33:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsvyd1QFFwbfdev/nkuSinJnKRu4Y5PPObK2eWAlwfOIbj7+dq9mD9GXgsarxL476zIJF8l
+X-Received: by 2002:a2e:7d02:: with SMTP id y2mr8982018ljc.62.1583847217941;
+        Tue, 10 Mar 2020 06:33:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583847217; cv=none;
         d=google.com; s=arc-20160816;
-        b=U6ScS7BwsQf7VYfV+KQqVYj2yNJgaWnwHH/62mrufP2M/W0jzWv6sKWeR/s6Q0rT0a
-         MaRiiwZ74srPed1ymaLdu4PhJdqb846/TIUdNzfT1pYdKDIG7yt0qqzOP1Cm64CirkTJ
-         qBmsHd8n4xSlf/VaajfR5qNHNDRNZzBCd6OleiktzyTuJEgEV3FVkFW4vr0miGzrc2YO
-         Mwm3wWQLkQx6hYvZlDhnJtn+yu62U0XV9UvyKXzpsjXvowzX2BImP2jcZ1OTWdKBAqJS
-         Jc6Zeaakbywefl/J0CDlti5rSnL+Xqk76B/scZuSKYsYe0fbfgRP3CiF6BpSG4b7qohN
-         y8Xw==
+        b=qYWioaB3HuiQm1b2LfHv0u3CZ3oNr1X2yPztk7ZmzBxy9P7PKdRas4mbXf2M0z2+RQ
+         9AeV6o+mwVtrsDnwU/44Q0k8B+eemqp6Ui1+5rYR+o7vPcu3gZIkEbpLTGDDE24wQMES
+         qmI/ASXpKZogHSquyFAd8EYEnaDvVc3Q1Qn+m44LB94GxY1eAaYxUelyuXFGiOvPkRnO
+         wFg6iqgwbfOj5bir6t42Fnw5mK5TzjygWFggnmfeIt4KEpqQkucHxYPSV5/DMcG2EGT5
+         yQFpL8dlFKKC5dwjJwuN68w+r77Oxn/1Q9yo+KVseXECLn4CzgJOOONnYnReeV0vGyQX
+         wR6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=zdOooPXfPH7JBE4vx7yzncOubb3tcT8h7YuvPiNSA2c=;
-        b=njV72ZSOS4qcvuHkyU23XdvCwL0X5+wxS7Xf6axpecapXgXnxuB/6Rg2xs6MoRqGY2
-         A3OVJAZy9KvzoC4M3fpdSd6kos8aIJH393W8+vF8wpll7YTxbtvWN2I6yFO0QGwVnff1
-         l05xfpmOL1Z3O3C4IIEJsI9UbNACwchWjkdOhe5s+mOhGxVyU5G6riFkZP88cskjtZfX
-         bc88tg0nNTA9dPonPeeMxeJ1zs+ygKLIcpUDKjq+YkEgJMQE8mDg27MkxwgqGnNoVzxa
-         BZBXbRyP/fzAuIF+lxbsjrgQZ2b0qzUnHq2viDbLzoVZnSPuUjjPAXYLHAqsSiyMcrNV
-         ypGg==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=4LUrmGstzTweMklgAelu4ljhBa90Xh/HUDk8h/5M5B8=;
+        b=OYomb8Z6xD95tTLEwIdbUop3ZBChxIMGkWy/vsghTTZiQVNfpW3V9Y/+hIZGgz185R
+         8rPngH9qTh0j4QBpXLisNVKJF87fU4GoFIajwMjwiYEhyBET9CVZOcHumWSyAz+/RAmc
+         xrPzszTYXEnG6y8xfr3TZPLX3eXxia/PsaIHzGrEqrfzi5L3KqQy8G8VttyY77ZsTReG
+         CBgx+87wJ5nFs4U0Yh5hp0BOFjYd8w14aPZ2lP9o7mbSO5pUsOypYh4bGb3wZWZzl+bO
+         /XXSGzEk1E5RdzwDJQCpWDduafKsaV9LfxZg6T3VImel9kanGWlzXw3+lFm9l9wc/pZf
+         W7YA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mSwqyMs5;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id z7si354925pgz.5.2020.03.10.06.40.19
+       dkim=pass header.i=@pplo.net header.s=google header.b=F0qmS5R4;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id m11si411279ljj.2.2020.03.10.06.33.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 06:40:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2020 06:33:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mSwqyMs5;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id BB29620675;
-	Tue, 10 Mar 2020 13:40:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1583847619;
-	bh=HdSW9jUD6f8E5yx0hcQKqAG/RCsbH+DoQiqTnYAsYM0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mSwqyMs5BYqaqx53EMYa0nvMDhv61+X255gC0KF/uG9nU7lkiuZjM7soXcoGNhHEB
-	 6P1S3Ht+yWjxU24jOlqKAY3WMB/IRLgQW6G//ZpppmogFkF9VOXWaHbMpZ7s3qwPkp
-	 QTWCYXYt5W67lC83/TI9Ww8eUGPtNHrjOCIEmcdQ=
-Date: Tue, 10 Mar 2020 14:40:16 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Lourdes Pedrajas <lu@pplo.net>
-Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net
-Subject: Re: [PATCH 0/2] staging: exfat: exfat_super.c: remove unused code
- and improve readability
-Message-ID: <20200310134016.GA3367142@kroah.com>
-References: <20200310133309.8332-1-lu@pplo.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+       dkim=pass header.i=@pplo.net header.s=google header.b=F0qmS5R4;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wm1-x342.google.com with SMTP id x3so787726wmj.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 06:33:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=4LUrmGstzTweMklgAelu4ljhBa90Xh/HUDk8h/5M5B8=;
+        b=F0qmS5R4qJ858H4JQxDeOB4Qscbs5UBMJicj+5c/PTTkw9wvfbWhH/RPFZD4BVoVtz
+         fpnPt/uUBDd3TqS0Q1+A2wl0RlRSbAhmqkvBpJPrN5dug1FywYRNZ9zaELUxO/CmceoT
+         OwjehBzRW0bBdWxPB41qdi5Ck8ODN4sZcNKWw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=4LUrmGstzTweMklgAelu4ljhBa90Xh/HUDk8h/5M5B8=;
+        b=P0cpRSslnY/sgyk2/LqYzs1WNYOiEI4PltiI1tIgQpBLt5xXiMaICftCMEIZDRgRFk
+         BNrhIWOUppEwLyAUkfktzExeKAqTf52ItPcA8Z5o3I8PXjk1BL+W6wkEEkUtDa2N6tm1
+         5PMj+42xs6MgkDrY2hICT3qHQvIrGUkz+71fvO2qISCjjHuFyn/I9XHk+CjWmYbar1fe
+         BBJkFkrSlhzCFgTgAIe1HkIMIVpMs6nZaC1FKo6fgeKbYARrLNx8ZSV9P1mHENibD9KH
+         VqsDzVNu030o3tyunK5VrdQE9hAY3EmtHoHmTFA1fWS14tOy/2dOzpPLTKrcExqMjAVz
+         hy3Q==
+X-Gm-Message-State: ANhLgQ3Kwwc81eJ+6jnShYkjkFxvXW/rMWmfAxUua0h+Oo/wMUMqSJf9
+	15vEnw5FiP/0mML5w3xSYDWk4YBqjy08OA==
+X-Received: by 2002:a05:600c:286:: with SMTP id 6mr2315622wmk.56.1583847217087;
+        Tue, 10 Mar 2020 06:33:37 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id f4sm10462018wrt.24.2020.03.10.06.33.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Mar 2020 06:33:36 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com
+Cc: forest@alittletooquiet.net,
+	gregkh@linuxfoundation.org
+Subject: [PATCH 2/2] staging: exfat: exfat_super.c: code reformatting for improved readability
+Date: Tue, 10 Mar 2020 14:33:09 +0100
+Message-Id: <20200310133309.8332-3-lu@pplo.net>
+X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200310133309.8332-1-lu@pplo.net>
+References: <20200310133309.8332-1-lu@pplo.net>
 
-On Tue, Mar 10, 2020 at 02:33:07PM +0100, Lourdes Pedrajas wrote:
-> Here's a set of patches that performs code cleanup in the file
-> drivers/staging/vt6655/power.c
-> 
+Improve line grouping for better understanding the course of action and where
+every comment belongs to.
 
-Still not using --cover-letter.
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+---
+ drivers/staging/vt6655/power.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Also the subject line is very odd for the vt6655 driver :(
+diff --git a/drivers/staging/vt6655/power.c b/drivers/staging/vt6655/power.c
+index a68ec527679a..6b0407694e54 100644
+--- a/drivers/staging/vt6655/power.c
++++ b/drivers/staging/vt6655/power.c
+@@ -59,8 +59,10 @@ void PSvEnablePowerSaving(struct vnt_private *priv,
+ 		/* set AID */
+ 		VNSvOutPortW(priv->PortOffset + MAC_REG_AIDATIM, wAID);
+ 	}
++
+ 	/* Set AutoSleep */
+ 	MACvRegBitsOn(priv->PortOffset, MAC_REG_PSCFG, PSCFG_AUTOSLEEP);
++
+ 	/* Set HWUTSF */
+ 	MACvRegBitsOn(priv->PortOffset, MAC_REG_TFTCTL, TFTCTL_HWUTSF);
+ 
+@@ -96,10 +98,13 @@ void PSvDisablePowerSaving(struct vnt_private *priv)
+ {
+ 	/* disable power saving hw function */
+ 	MACbPSWakeup(priv);
++
+ 	/* clear AutoSleep */
+ 	MACvRegBitsOff(priv->PortOffset, MAC_REG_PSCFG, PSCFG_AUTOSLEEP);
++
+ 	/* clear HWUTSF */
+ 	MACvRegBitsOff(priv->PortOffset, MAC_REG_TFTCTL, TFTCTL_HWUTSF);
++
+ 	/* set always listen beacon */
+ 	MACvRegBitsOn(priv->PortOffset, MAC_REG_PSCTL, PSCTL_ALBCN);
+ 
+-- 
+2.17.1
+
 
