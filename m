@@ -1,125 +1,123 @@
 X-GM-THRID: 6802335278632534016
-X-Received: by 2002:ab0:144f:: with SMTP id c15mr9843555uae.113.1583842546466;
-        Tue, 10 Mar 2020 05:15:46 -0700 (PDT)
+X-Received: by 2002:aca:b60a:: with SMTP id g10mr800602oif.102.1583841684937;
+        Tue, 10 Mar 2020 05:01:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:27c5:: with SMTP id n188ls1659376vsn.8.gmail; Tue, 10
- Mar 2020 05:15:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsInSLx5fzXpPd6XWylgM62bVgX1G96T8McEsx8VEXeNENUj75nx/03t6/eCbezqXPXETmu
-X-Received: by 2002:a67:2f83:: with SMTP id v125mr6798828vsv.100.1583842545252;
-        Tue, 10 Mar 2020 05:15:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583842545; cv=none;
+Received: by 2002:aca:1c03:: with SMTP id c3ls2987514oic.8.gmail; Tue, 10 Mar
+ 2020 05:01:23 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu+Gujt6ez75KPSqsZvZ9tTQnCAh1N9+hsAibP4JCW0U6Cgb1BoVR8vGH8HjJV/wTKgvMfP
+X-Received: by 2002:aca:a882:: with SMTP id r124mr837083oie.53.1583841683924;
+        Tue, 10 Mar 2020 05:01:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583841683; cv=none;
         d=google.com; s=arc-20160816;
-        b=WN9jeEUoOMi1iZzjMWvx+4KPOlZXSAAl4hBBxf9deeSDYseiDMCqD4qcPEsnd5PYl5
-         T+RJx8HGl/aXqHTSkU6P00S20W6SmxP1qcvh/QN1DsxHU0zfnwwCEQMPaEoakBaPJDnf
-         J8EVJG2N9fVJCMqEwS+2nshqmwSDs8RDiOnJtzWjU8rqgrrUMRTXwwnlVywxVMNJTBwo
-         awwXcC7wvL3yFey7adhqciE1VBKmaAO8C/UCQp35CtWX3+7QJx56MOfCzRxdLmGIhWkF
-         9r6xUiO1W0H7Y9Xk4CaXLpMqiIadpyoQ1Dq0qlZg5JQhgkXmBrYXDliWrALbml5H2PK9
-         +MLw==
+        b=r7S73HoSgvoUrwGCiGVayC6UaJsOgoAqd6iPb10G7PKuYe/9VA4v33squICPkGMlIg
+         yPJG9vtF0U2lV2mwhvvXUdYsbBmZfB3k669MfyW8jOPju4vVSWbkfQdAoVVq/HV3nzLe
+         8cMkV29hJH2rkjQUfftzEa31JAY/FiJXvo22IeWEj5W+8VXYm9ax/jChFDQMZ9HEMTlk
+         BQLrJYgT+BZ9E5kNDK3SMz/8iIfnEB50mDV3M8Z/mb9ddDS+AxKuaeqVDCH1R0oz3Q96
+         bqWybx0RNza8ZBRiyFbq6MJKVC9h5GBVadtrnZjemWZKqrY9WDQhVVMCJ6AbaVazc0ot
+         RYmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:date:from:dkim-signature;
-        bh=z8QZOC/+MQFMDusntDGjdIGQgjLEYgEXGnhLs5iS+qI=;
-        b=03YFGyJ8irQEr9fx4Sz9R1X4xvCsg6A+UZr4y4l3ZQkLb4IYUQ6jm8yM6X/xZWiMl5
-         T+Ko0He7zqTrKDm27O259/vmWWGL1EggTDxbkxHkHukEFIPg2gjj+UCVuBNMA888K+2h
-         6FBcxbpAzeWf7CNnR/b9s0fhhC7bwJAhavqZ+kYdjtxSlI4frYGRsxCfUN7mIJeSn4D0
-         v6Hc20U6WhxhwmX3VK7weeD4bajJ/4N9FQSGuzn6uGlbfhyX6C/D42nOV0yLGZbRjrsb
-         NdS9/Yu3xFKV7W6G7R5s4amsCKOCyUD1u2zCN45Fx6pQiorHtUlSEjLcUmEG39RR2P3b
-         aO3Q==
+        bh=qkjBVQEf9Juj8v88fKptbisnQ0tsiV+TS25Ncy8/abk=;
+        b=gc4p4HFesQuEVbV3mAtqqEZQ3nWcpLhTLbMxVBQdE3x1JwCVP1A/9PGNvHsr2LbEF1
+         R3ur3/eyaYwa8TjAmJk+19EIaVDKN2vcrJ91VWRlgZJwwsYibUAQNn+os2n8e9cc5VXy
+         U+w6ZYMk4gHGMbJrfVm82rv+Lh2lF/5pp7T6hPX9zmfp0XsthaAy+aAbdDs/xKALjO7W
+         5NRqFZEIPt5GDwfBz0RBMUat0FdKsZ4bxG+QsAumIrRA7nvLG9zCmkLVnfYOJ7FaeNvJ
+         gAN5r2A8St8dXfuKkN33wUS9v0KGnsLlCn82BPtHbHKX26AtTsBGTOitDuE+r/YbX/wF
+         4EpQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=TAwsCcQc;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b="BchUQe/9";
        spf=neutral (google.com: 2607:f8b0:4864:20::643 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
 Return-Path: <kgupta@es.iitr.ac.in>
 Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id s124si258423vka.1.2020.03.10.05.15.44
+        by gmr-mx.google.com with ESMTPS id d11si350898otk.5.2020.03.10.05.01.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Mar 2020 05:15:44 -0700 (PDT)
+        Tue, 10 Mar 2020 05:01:23 -0700 (PDT)
 Received-SPF: neutral (google.com: 2607:f8b0:4864:20::643 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=TAwsCcQc;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b="BchUQe/9";
        spf=neutral (google.com: 2607:f8b0:4864:20::643 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Received: by mail-pl1-x643.google.com with SMTP id d9so5348603plo.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 05:15:43 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id t14so5342506plr.8
+        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 05:01:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
         h=from:date:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=z8QZOC/+MQFMDusntDGjdIGQgjLEYgEXGnhLs5iS+qI=;
-        b=TAwsCcQc8EaDN23Fi1Fqe2DFVqBZZCdUlePRnA7YgIM8yhsKR5KbaxiSadd2WeXDKm
-         ijfZzmnDx4AouBaG2ifrOS+bmAHu+2YBdSQ6WKFiFf+iGWl/x7t55/2VwINQ6v8aNGtt
-         G9+/KNMruwBeJ+zh4B1NT9e77x0hhbPna7yB1kKLWM/vwh5W+ffoj7N/cwhnAtrcUsKU
-         4WU5av1I4eN/HKfBqIEsuV59XvgYICGsGRK4l26mZcVeYMsdkBFAOz6sAtslHLZO0q7n
-         JPfMj9xr+9qK08FKKneSKKDjGlLf/TjrzoPdHzQnxp7FGpuE8vrIgvff/TIJ+TcVUpzN
-         TbsQ==
+        bh=qkjBVQEf9Juj8v88fKptbisnQ0tsiV+TS25Ncy8/abk=;
+        b=BchUQe/9R7my8DRWdhostxJYrTLcZjX9EbLZVKrD6aoU1MMuLFH2Rz1WHnbeKcPOuy
+         9eaHzp6TCat1bMhg5APqVOVIdmebMgv2noPOcwuSBagx4C3bin063vlcQ10pRzLfhqYQ
+         9pzBzaE/chQ7UifOe4XgXF6gS67tCzWk2Q0LctblJv5g2agAphsBrlrJ09pUoDAFEwLN
+         n4Wj5ldi0jAzv+S+ukm+A/HgMQB1TVCPB71rjso1GYaSgvzGhxxKmGQ3ibJ94rhxBw8d
+         zrhUFM+Bl0DXP2Tut2sB+mu7nPyDCdY17w0PV3PWpCs4KvYCn5tBcs1FF89T2vXszQwC
+         UUqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:date:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=z8QZOC/+MQFMDusntDGjdIGQgjLEYgEXGnhLs5iS+qI=;
-        b=Xz1iExUGza8gN9RLsx3wfW32x87HOt4qyRJjJ9HaUA3pI/0XSvhdufFWFEm2eRwt2P
-         +VBbkUYie/hqtYTppE9d7KzMd/Kf4qPGJTBQz/2KLzo8MxqhZ7c1FGzQyt2xBzuwNgCS
-         xUZpWyIWkfhdnpto+FhEfGCKvQ7R+3PJSJVl+ZVhNTiqmaqLTZLBUkR7Msz2jwcrjYpD
-         O0pOSwKEbNiRX6HX+nSAs2psjiKMeyzbO3pW91y76umIAAJHEqwkgdEJD6iKvVkn3C9z
-         Jip/rAF+5c8X1pM+tpU6Y+gtw12xv6Cd9ngj6gzFy0pFc5k0Lx2VV7qEhdNR0E176/pC
-         Sbvg==
-X-Gm-Message-State: ANhLgQ0f1XU/IKlxNl3CFHSZfMmZ2REZp/tYBi8sGgifrKatEcLYGbxj
-	w+QZr9GyIb+L6fXQVy/HM3fNNv+I/RP4eQ==
-X-Received: by 2002:a17:90a:fa81:: with SMTP id cu1mr1433225pjb.192.1583842542974;
-        Tue, 10 Mar 2020 05:15:42 -0700 (PDT)
+        bh=qkjBVQEf9Juj8v88fKptbisnQ0tsiV+TS25Ncy8/abk=;
+        b=gbTAam1lat6PdHsJU4VDH30hY5+VnDnjuEwlUdpIzHNkOpkg7+BCm8/OtqcF8N9eP8
+         QrDpiKq2/gCrlg1DjW/HNQFBJQLZozigqWootTfiOmqAkip6AuZ90XAvejQMEl6HJ1Yx
+         PEmqF4MrSGUkzIIEQKrAC3clvj+SdaPgQ42unL4OmZrLqEszBdDJnIwIp6Vva4fxa5ox
+         ZQqgJDHXsEVs52M5oLYCOhSAPnt8Sas2n1PZ5gBwngIKTIhEBFDsRFNbA2u15qSA8TIl
+         qZxLwWrlcyxtcztfnhfpJQOv0+RIK/YpJbkFduR1JqDFuk2/DIX7tcl1RzbXhZmKqb4J
+         kE9Q==
+X-Gm-Message-State: ANhLgQ2BW3ZBnlo+cvn+y+2yPi/KHRNvOtgokOQyG0O+G1JIkqStgDKG
+	CdYR6yt6Af6V7TXkXzsUXgGjQQ==
+X-Received: by 2002:a17:90a:33e5:: with SMTP id n92mr1280970pjb.39.1583841682489;
+        Tue, 10 Mar 2020 05:01:22 -0700 (PDT)
 Return-Path: <kgupta@es.iitr.ac.in>
 Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.173])
-        by smtp.gmail.com with ESMTPSA id i6sm7548698pfe.62.2020.03.10.05.15.39
+        by smtp.gmail.com with ESMTPSA id 3sm2350240pjg.27.2020.03.10.05.01.18
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Mar 2020 05:15:42 -0700 (PDT)
+        Tue, 10 Mar 2020 05:01:21 -0700 (PDT)
 From: Kaaira Gupta <kgupta@es.iitr.ac.in>
 X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
-Date: Tue, 10 Mar 2020 17:45:35 +0530
-To: Julia Lawall <julia.lawall@inria.fr>
+Date: Tue, 10 Mar 2020 17:31:13 +0530
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Kaaira Gupta <kgupta@es.iitr.ac.in>, Ian Abbott <abbotti@mev.co.uk>,
 	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Forest Bond <forest@alittletooquiet.net>,
 	=?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/7] Cover letter
-Message-ID: <20200310121535.GC11048@kaaira-HP-Pavilion-Notebook>
+Subject: Re: [Outreachy kernel] Re: [PATCH 0/7] Cover letter
+Message-ID: <20200310120113.GA11048@kaaira-HP-Pavilion-Notebook>
 References: <20200309221449.GA5032@kaaira-HP-Pavilion-Notebook>
- <alpine.DEB.2.21.2003100809240.2455@hadrien>
+ <20200310090646.GA2479270@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.2003100809240.2455@hadrien>
+In-Reply-To: <20200310090646.GA2479270@kroah.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Tue, Mar 10, 2020 at 08:15:51AM +0100, Julia Lawall wrote:
-> On Tue, 10 Mar 2020, Kaaira Gupta wrote:
-> 
+On Tue, Mar 10, 2020 at 10:06:46AM +0100, Greg Kroah-Hartman wrote:
+> On Tue, Mar 10, 2020 at 03:44:49AM +0530, Kaaira Gupta wrote:
 > > This patch set aims at improving the code style in a few drivers in
 > > staging. They have been found using sparse, coccinelle, and
 > > checkpatch.pl.
+> > 
 > 
-> A cover letter should have a more informative subject.  It's obvious that
-> it is a cover letter from the number of the patch being 0.
+> The cover letter should be auto-generated by 'git format-patch
+> --cover-letter', and will contain a lot more information than just this
+> paragraph.
 > 
-> The description suggests that there is no connection between the drivers
-> or the changes being performed.  If that is the case, then there is no
-> need to make a series.
+> Also, I did not see all 7 patches of this series on the mailing list,
+> only 4 of them.  They were also not "threaded" properly, can you use
+> 'git send-email' to resend all of these when you redo the series next?
 
-What kind of patch sets should Ithen submit? Please guide me.
+Can you please guide me as to how I should thread the patches in a
+patchset properly so that individual commits get to different patches 
+and a cover-letter is generated as well. I am using mutt.
 
 > 
-> The cover letter should contain a complete diffstat of the changes made.
+> thanks,
 > 
-> You should be able to find some examples on lkml.org.
+> greg k-h
 > 
-> julia
-> 
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200309221449.GA5032%40kaaira-HP-Pavilion-Notebook.
-> >
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200310090646.GA2479270%40kroah.com.
 
