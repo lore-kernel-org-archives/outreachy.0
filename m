@@ -1,112 +1,74 @@
-X-GM-THRID: 6755994568036974592
-X-Received: by 2002:a05:600c:2191:: with SMTP id e17mr63359wme.101.1573002563652;
-        Tue, 05 Nov 2019 17:09:23 -0800 (PST)
+X-GM-THRID: 6802571997822844928
+X-Received: by 2002:a63:1e06:: with SMTP id e6mr21755886pge.134.1583847622272;
+        Tue, 10 Mar 2020 06:40:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:f61a:: with SMTP id w26ls490734wmc.5.canary-gmail; Tue,
- 05 Nov 2019 17:09:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyFg2w2W1c1GxX8FZW1VB/xbRt6ZlCLMSBLOr6cIaXRfcpVX/KkP5piQMY136G8NfNgE8us
-X-Received: by 2002:a05:600c:2389:: with SMTP id m9mr68726wma.65.1573002562723;
-        Tue, 05 Nov 2019 17:09:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573002562; cv=none;
+Received: by 2002:a17:90a:898e:: with SMTP id v14ls59935pjn.3.gmail; Tue, 10
+ Mar 2020 06:40:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtQUVarLmczJ6N9hbByal5W7Q7KRAm5iWuslNA+IlkNx4YOSm6ZQ33bfuz0MUrDUXvW60Qw
+X-Received: by 2002:a17:902:7796:: with SMTP id o22mr19904597pll.250.1583847619533;
+        Tue, 10 Mar 2020 06:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583847619; cv=none;
         d=google.com; s=arc-20160816;
-        b=0jEJJ4+j/tS2HhDPFwCGYgG4aQZBHlymjb1z8CA1S0vHh3H53i2bh+7CK+uJXk7YMp
-         hgf6HLIgVnN4rsp2+X8NBL5yq1f8KNcvNIlk5vQ6mXSKwHJJBYSbShWI3fpate/eMFe0
-         IBYgSbl8o6D+e354STF4/I1X1pDPahaQOrV2KlYFEeB8wdoYcmhVT9k+gRsaSmfDUtrH
-         XVnsqUp0jjF+xsEGn3FY5sTeCzciJPDAgdY2ItT/w2Xz/2RJxCZY/LRtBI8XyAGUvvcN
-         Xy6WtkkpYiFY5pQoA2gAOf4zzzpicFeGH5+BweiTKM3N5maZKFxnHmRZHrxUcf5XXThJ
-         gRtw==
+        b=U6ScS7BwsQf7VYfV+KQqVYj2yNJgaWnwHH/62mrufP2M/W0jzWv6sKWeR/s6Q0rT0a
+         MaRiiwZ74srPed1ymaLdu4PhJdqb846/TIUdNzfT1pYdKDIG7yt0qqzOP1Cm64CirkTJ
+         qBmsHd8n4xSlf/VaajfR5qNHNDRNZzBCd6OleiktzyTuJEgEV3FVkFW4vr0miGzrc2YO
+         Mwm3wWQLkQx6hYvZlDhnJtn+yu62U0XV9UvyKXzpsjXvowzX2BImP2jcZ1OTWdKBAqJS
+         Jc6Zeaakbywefl/J0CDlti5rSnL+Xqk76B/scZuSKYsYe0fbfgRP3CiF6BpSG4b7qohN
+         y8Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=DVbx1gAtu75Uw8G0JGf+W12MoKBydyUt25Snh6iN0ZM=;
-        b=Y9mI2aAdJzxJm6r1p24QCQOeu7OwVyyHCRbnfApKRoJh/ey82Ot7zmg9tIyZmXzGHi
-         kX4me0qgzUvIk/p7d/CwWZQ7n16sJFWM8rSwi+WKi+PPlS6sXbn10/SLwFuGUSI7BgIM
-         6fRvYaJoAdeV8f7/wnoNf+lrCK613pspun5bqqkW6mHH4cE793DYplE9GWysbCx5Ymgp
-         aXb3tu3H8IylD1/VZ1TQMfptpVBCdXFhnpvjRqdVP8gxVTvdW+gLdJiPbKwiv7L9Z3PC
-         QQR85UJh3coEAXL3T2mAmXeQtF3gNIkWiVV1t9Mbwn5EroAXasLhV3AqOyTcIiwk3nfZ
-         9rwQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=zdOooPXfPH7JBE4vx7yzncOubb3tcT8h7YuvPiNSA2c=;
+        b=njV72ZSOS4qcvuHkyU23XdvCwL0X5+wxS7Xf6axpecapXgXnxuB/6Rg2xs6MoRqGY2
+         A3OVJAZy9KvzoC4M3fpdSd6kos8aIJH393W8+vF8wpll7YTxbtvWN2I6yFO0QGwVnff1
+         l05xfpmOL1Z3O3C4IIEJsI9UbNACwchWjkdOhe5s+mOhGxVyU5G6riFkZP88cskjtZfX
+         bc88tg0nNTA9dPonPeeMxeJ1zs+ygKLIcpUDKjq+YkEgJMQE8mDg27MkxwgqGnNoVzxa
+         BZBXbRyP/fzAuIF+lxbsjrgQZ2b0qzUnHq2viDbLzoVZnSPuUjjPAXYLHAqsSiyMcrNV
+         ypGg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W5fce0mU;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id w10si482593wru.4.2019.11.05.17.09.22
+       dkim=pass header.i=@kernel.org header.s=default header.b=mSwqyMs5;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id z7si354925pgz.5.2020.03.10.06.40.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Nov 2019 17:09:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2020 06:40:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=W5fce0mU;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x444.google.com with SMTP id a15so23728584wrf.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 17:09:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=DVbx1gAtu75Uw8G0JGf+W12MoKBydyUt25Snh6iN0ZM=;
-        b=W5fce0mUuuSKricWczLA3Il4ZWsRIur3muaXGKowXZS0k2kbZ/KUPcJKL8Ul1gc2mA
-         46l2RtLqrY4IL3SXKX5WQyHXuJD1pUboY34t+8Zp8/0iN4i5hrnneu+5HztaRimfFpK/
-         X4hhxlU37ivKMmAx0KtVOFEtz3XOryh1Yi9v7q+GB1YGcj10LV1lpY0nV+L51Kcb+yeR
-         BgftAuvztexvoPI8/9y8o6X++EQ7jueRybtRQs7ECHk5ifbezPAuGS7iLEfTE/HAbuGG
-         K18nbGof4F2YeEmEMsO9+FwkCP+cYVI0fomQsHqUDLgrmJbPV52t3/9/2HU0b0Hi5YCk
-         pqnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=DVbx1gAtu75Uw8G0JGf+W12MoKBydyUt25Snh6iN0ZM=;
-        b=JU2hGUB8DmdmXerD4UdYbLqA9aKDhTJR87gRAzmSSrnSZBAeUeqw4HJOnzuziwtenz
-         Y5GnnTFE2H1l0zpNeLcuZqelOrM1o38RTk9cVms18eJVKC9A5nzbf3TmgupqF7le/Ca3
-         ft7RunrM3HLI+RXZsRTLMZRZ9N8dbMG6xL2bl9V7J0anYJxWAmqedo2LucA+wMHtiljO
-         V5UtJ3nVvNRA03XwK2p60wqre/OSnDluklZEFMl4aJz54/BUWqz4Y2uhrKQZYKG1gYvk
-         XqczUn7Htl2OD6879TPYNL9GRbnPmcC+Yy5YRxaiYnB4A42gRtANnsd0R+nLHIvQc6u9
-         JN1w==
-X-Gm-Message-State: APjAAAV/clHnXDH8Qp+C1MB4RMEmeL3jxOJ9ij1nxrC74WhBiVMK+Q/V
-	AuSmBp7h8+gI8c2TUzBh7aI4sclJvV+c
-X-Received: by 2002:a5d:6a08:: with SMTP id m8mr162315wru.52.1573002562056;
-        Tue, 05 Nov 2019 17:09:22 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id b17sm13334650wru.36.2019.11.05.17.09.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Nov 2019 17:09:21 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: jerome.pouiller@silabs.com,
-	gregkh@linuxfoundation.org,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH 1/3] staging: wfx: replace uint32_t with u32
-Date: Wed,  6 Nov 2019 01:09:09 +0000
-Message-Id: <20191106010911.157294-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.23.0
+       dkim=pass header.i=@kernel.org header.s=default header.b=mSwqyMs5;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id BB29620675;
+	Tue, 10 Mar 2020 13:40:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1583847619;
+	bh=HdSW9jUD6f8E5yx0hcQKqAG/RCsbH+DoQiqTnYAsYM0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mSwqyMs5BYqaqx53EMYa0nvMDhv61+X255gC0KF/uG9nU7lkiuZjM7soXcoGNhHEB
+	 6P1S3Ht+yWjxU24jOlqKAY3WMB/IRLgQW6G//ZpppmogFkF9VOXWaHbMpZ7s3qwPkp
+	 QTWCYXYt5W67lC83/TI9Ww8eUGPtNHrjOCIEmcdQ=
+Date: Tue, 10 Mar 2020 14:40:16 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Lourdes Pedrajas <lu@pplo.net>
+Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net
+Subject: Re: [PATCH 0/2] staging: exfat: exfat_super.c: remove unused code
+ and improve readability
+Message-ID: <20200310134016.GA3367142@kroah.com>
+References: <20200310133309.8332-1-lu@pplo.net>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200310133309.8332-1-lu@pplo.net>
 
-Replace kernel type uint32_t with u32.
-As per recommendation of checkpatch tool.
+On Tue, Mar 10, 2020 at 02:33:07PM +0100, Lourdes Pedrajas wrote:
+> Here's a set of patches that performs code cleanup in the file
+> drivers/staging/vt6655/power.c
+> 
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/wfx/bh.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Still not using --cover-letter.
 
-diff --git a/drivers/staging/wfx/bh.c b/drivers/staging/wfx/bh.c
-index 955ed3a1dd73..337af22b0150 100644
---- a/drivers/staging/wfx/bh.c
-+++ b/drivers/staging/wfx/bh.c
-@@ -239,7 +239,7 @@ static int bh_work_tx(struct wfx_dev *wdev, int max_msg)
-  */
- static void ack_sdio_data(struct wfx_dev *wdev)
- {
--	uint32_t cfg_reg;
-+	u32  cfg_reg;
- 
- 	config_reg_read(wdev, &cfg_reg);
- 	if (cfg_reg & 0xFF) {
--- 
-2.23.0
-
+Also the subject line is very odd for the vt6655 driver :(
 
