@@ -1,68 +1,167 @@
 X-GM-THRID: 6802607426621145088
-X-Received: by 2002:a2e:9f11:: with SMTP id u17mr2074042ljk.240.1583862800308;
-        Tue, 10 Mar 2020 10:53:20 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:9141:: with SMTP id y1ls1279238lfj.8.gmail; Tue, 10 Mar
- 2020 10:53:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuyhLKz4mgGrOmtIzp3vGzcSdo4npiS9Vt7tWEYeK14Wi/0LaypvMt2aOkyyiy//e67hHFT
-X-Received: by 2002:a19:80e:: with SMTP id 14mr12967780lfi.206.1583862798737;
-        Tue, 10 Mar 2020 10:53:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583862798; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nDPSEMoiGYl09JpQ7dcNdaZDcAnw+MH/AB8gAOEZ/XQ8MijMLRiKJBxlTNLNBooFOc
-         RjZe6fttseOieI136gIcMwKMTH7fkWUZWtByHyt6/SjWkZo9dT0pX3t6eJE6Xc3puKx/
-         bsLkWn6XIWdmf/QvONyYVD/+kZzoLI1dJBN7YOFmnUOkDH+J0FeYEaHeBq3baVfavJcX
-         xt7+FNy3ReserV5iaXoRyyvI+r4IH75hqvIc3z+R/AugouUBNKUPRL1I2jrXxY8tqEDU
-         qlgWM9kghesbnnttVlKp+OIcIElSDdF2O8soHpkfJCO3q/GMfNLAsDl214V08Mmvp35k
-         Cqgg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=CA41yYE7c11QYVAm7Zte56j/O6luOIDV8BrKm88Yv+M=;
-        b=ITz1gtBmBO9c6c2x5pKbT4QrOeV8aB+x7EsxL7adg3jaxdqOA8iwXUwBFbYc5VIqQN
-         sa94emHRzlertBNZm++y9wHWkWeQ9XpYkosGGOKPfCl6DmqhxZjF99oziDMupShHcxxR
-         dIaCJJgPKA+pP6Dg1zS8OQcydT1U9CJOW/LF6dG4ZREokMVNaS2XTmZ+8fTxpT5PAMuo
-         Xe2DCrVzpcf/TmSxCASO78/5TJzqXzd+dGCJ+1FbfeNZH1N8G+YFQaOTK6cCm/KqQsEV
-         j3XYVf8jD79BCUAa7+w2tGRGdLRdeROzCmJLGEg+8Gs0K0FAuTlJmwmbj8x7dX7ass4u
-         zTQA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id o24si738039lji.4.2020.03.10.10.53.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 10:53:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,537,1574118000"; 
-   d="scan'208";a="341921898"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2020 18:53:17 +0100
-Date: Tue, 10 Mar 2020 18:53:17 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: julia@hadrien
-To: Deepak Varma <mh12gx2825@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: [PATCH] staging : comedi : dt2801 : remove
- old unused code
-In-Reply-To: <63066886-84cf-4915-8def-1528f403a20f@googlegroups.com>
-Message-ID: <alpine.DEB.2.21.2003101852350.26409@hadrien>
-References: <20200310155053.GA27759@deeUbuntu> <63066886-84cf-4915-8def-1528f403a20f@googlegroups.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Date: Tue, 10 Mar 2020 10:45:07 -0700 (PDT)
+From: Deepak Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <63066886-84cf-4915-8def-1528f403a20f@googlegroups.com>
+In-Reply-To: <20200310155053.GA27759@deeUbuntu>
+References: <20200310155053.GA27759@deeUbuntu>
+Subject: Re: [PATCH] staging : comedi : dt2801 : remove old unused code
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1978_1747049186.1583862307443"
+X-Google-Token: EKOkn_MF3V2ICDrNouQ0
+X-Google-IP: 103.240.207.69
 
+------=_Part_1978_1747049186.1583862307443
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1979_1561392215.1583862307444"
 
+------=_Part_1979_1561392215.1583862307444
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-On Tue, 10 Mar 2020, Deepak Varma wrote:
+Thank you Julia. I will update the subject line and resubmit the patch.
 
-> Thank you Julia. I will update the subject line and resubmit the patch.
+Deepak.
 
-Please don't top post.  You seem to have removed my comment completely (I
-put it at the top because it was referring to the subject line, which was
-just above).
+On Tuesday, 10 March 2020 21:21:05 UTC+5:30, Deepak Varma wrote:
+>
+> there are 2 #if 0 blocks that have no recent history of any change. We 
+> can remove those code blocks for improved readability of the code. 
+>
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com> 
+> --- 
+>  drivers/staging/comedi/drivers/dt2801.c | 22 ---------------------- 
+>  1 file changed, 22 deletions(-) 
+>
+> diff --git a/drivers/staging/comedi/drivers/dt2801.c 
+> b/drivers/staging/comedi/drivers/dt2801.c 
+> index a29880981d81..aad02faa2f83 100644 
+> --- a/drivers/staging/comedi/drivers/dt2801.c 
+> +++ b/drivers/staging/comedi/drivers/dt2801.c 
+> @@ -87,17 +87,6 @@ 
+>  #define DT2801_STATUS                1 
+>  #define DT2801_CMD                1 
+>   
+> -#if 0 
+> -/* ignore 'defined but not used' warning */ 
+> -static const struct comedi_lrange range_dt2801_ai_pgh_bipolar = { 
+> -        4, { 
+> -                BIP_RANGE(10), 
+> -                BIP_RANGE(5), 
+> -                BIP_RANGE(2.5), 
+> -                BIP_RANGE(1.25) 
+> -        } 
+> -}; 
+> -#endif 
+>  static const struct comedi_lrange range_dt2801_ai_pgl_bipolar = { 
+>          4, { 
+>                  BIP_RANGE(10), 
+> @@ -107,17 +96,6 @@ static const struct comedi_lrange 
+> range_dt2801_ai_pgl_bipolar = { 
+>          } 
+>  }; 
+>   
+> -#if 0 
+> -/* ignore 'defined but not used' warning */ 
+> -static const struct comedi_lrange range_dt2801_ai_pgh_unipolar = { 
+> -        4, { 
+> -                UNI_RANGE(10), 
+> -                UNI_RANGE(5), 
+> -                UNI_RANGE(2.5), 
+> -                UNI_RANGE(1.25) 
+> -        } 
+> -}; 
+> -#endif 
+>  static const struct comedi_lrange range_dt2801_ai_pgl_unipolar = { 
+>          4, { 
+>                  UNI_RANGE(10), 
+> -- 
+> 2.17.1 
+>
+>
+------=_Part_1979_1561392215.1583862307444
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-julia
+<div dir=3D"ltr"><div>Thank you Julia. I will update the subject line and r=
+esubmit the patch.</div><div><br></div><div>Deepak.<br></div><br>On Tuesday=
+, 10 March 2020 21:21:05 UTC+5:30, Deepak Varma  wrote:<blockquote class=3D=
+"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc s=
+olid;padding-left: 1ex;">there are 2 #if 0 blocks that have no recent histo=
+ry of any change. We
+<br>can remove those code blocks for improved readability of the code.
+<br>
+<br>Signed-off-by: Deepak R Varma &lt;<a href=3D"mailto:mh12gx2825@gmail.co=
+m" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;mailt=
+o:mh12gx2825@gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;mailt=
+o:mh12gx2825@gmail.com&#39;;return true;">mh12gx2825@gmail.com</a>&gt;
+<br>---
+<br>=C2=A0drivers/staging/comedi/<wbr>drivers/dt2801.c | 22 ---------------=
+-------
+<br>=C2=A01 file changed, 22 deletions(-)
+<br>
+<br>diff --git a/drivers/staging/comedi/<wbr>drivers/dt2801.c b/drivers/sta=
+ging/comedi/<wbr>drivers/dt2801.c
+<br>index a29880981d81..aad02faa2f83 100644
+<br>--- a/drivers/staging/comedi/<wbr>drivers/dt2801.c
+<br>+++ b/drivers/staging/comedi/<wbr>drivers/dt2801.c
+<br>@@ -87,17 +87,6 @@
+<br>=C2=A0#define DT2801_STATUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A01
+<br>=C2=A0#define DT2801_CMD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A01
+<br>=C2=A0
+<br>-#if 0
+<br>-/* ignore &#39;defined but not used&#39; warning */
+<br>-static const struct comedi_lrange range_dt2801_ai_pgh_bipolar =3D {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(10)<wbr>,
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(5),
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(2.<wbr>5),
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(1.<wbr>25)
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>-};
+<br>-#endif
+<br>=C2=A0static const struct comedi_lrange range_dt2801_ai_pgl_bipolar =3D=
+ {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(10)<wbr>,
+<br>@@ -107,17 +96,6 @@ static const struct comedi_lrange range_dt2801_ai_p=
+gl_bipolar =3D {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>=C2=A0};
+<br>=C2=A0
+<br>-#if 0
+<br>-/* ignore &#39;defined but not used&#39; warning */
+<br>-static const struct comedi_lrange range_dt2801_ai_pgh_unipolar =3D {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(10)<wbr>,
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(5),
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(2.<wbr>5),
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(1.<wbr>25)
+<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>-};
+<br>-#endif
+<br>=C2=A0static const struct comedi_lrange range_dt2801_ai_pgl_unipolar =
+=3D {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(10)<wbr>,
+<br>--=20
+<br>2.17.1
+<br>
+<br></blockquote></div>
+------=_Part_1979_1561392215.1583862307444--
+
+------=_Part_1978_1747049186.1583862307443--
 
