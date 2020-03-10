@@ -1,116 +1,101 @@
-X-GM-THRID: 6673442126229929984
-X-Received: by 2002:ab0:1d18:: with SMTP id j24mr2841655uak.6.1553781825194;
-        Thu, 28 Mar 2019 07:03:45 -0700 (PDT)
+X-GM-THRID: 6802581190455853056
+X-Received: by 2002:a92:bf10:: with SMTP id z16mr21973475ilh.87.1583860142394;
+        Tue, 10 Mar 2020 10:09:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:3c51:: with SMTP id j78ls2043049vka.1.gmail; Thu, 28 Mar
- 2019 07:03:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzxHjzj2WUeMR1l+SyB/+8V4jGBJRagm9zGpHGGsTF6DrlJoOB509+6SyE+mkVWKckgeoA
-X-Received: by 2002:a1f:3c0a:: with SMTP id j10mr1903220vka.17.1553781824498;
-        Thu, 28 Mar 2019 07:03:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553781824; cv=none;
+Received: by 2002:a92:194:: with SMTP id 142ls1621429ilb.4.gmail; Tue, 10 Mar
+ 2020 10:09:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtADseATsp03MEWvAa0qt72KuQ5y4Js1yv8SY2jb8+3pp0UVrzyN2o9AakNEmYMcMVkkFlQ
+X-Received: by 2002:a92:c702:: with SMTP id a2mr8775690ilp.128.1583860141037;
+        Tue, 10 Mar 2020 10:09:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583860141; cv=none;
         d=google.com; s=arc-20160816;
-        b=VyAW1lH77LSPpTt6uBn59t+94skaB62/GmMUpsehTavGbl8qUUc9IjKnNeATRtp5TC
-         e+sfwYUaqysNCIylqiGzNkasTzZFq2qy01MXZ1LU97+jS+QYf9SzwsZSEV87bTus1svC
-         nQyj0q8e2QJ1PSiiCCrwtKF5dYMIyi4Meuxifs7/RRRH/cbvCQA3Lz/QJM0Xuq0oMXZZ
-         xCaVHjL7sAQrSd3fF/QgS3djIQFJGGxfh+rN2WvK6AdrY3vIlO/Av1T97pZF5biTqv7s
-         hZO1VvkPhNZp5XmUfGs0oGNRVqGZQtKj2riLVr2EUtEq50MpjYcCEImDOORbtdSsovpJ
-         hOyg==
+        b=NdNW+OqKuut3DJPapFgTiuIeWay4C1B0LbOt/SHKRSSWmwIYoanRS/ULsG+RyQK0cA
+         +NGuyfrhMl3aACRMRT/Vy8d45YX7OWkbumyAm+INZK+KF96V1NfwgIOoluYpJWE+2T+g
+         zE8j7iH4APppULcqQvCIOwygxp1GxTYIyOQXLZlXmgSooasAhGrCWn7564oN7/aSEYr0
+         tqqulOMuz5O0l54E+CgzTRQmYh8yY1uRkaP3cBaxF6L1qWwlBDspREM+B23HgXE3WdWj
+         UCvTJTCdaKFB/9rwM1vJ9Q93VrJ6pRofnSWhTGeFfMTXgxN/w9L7k5HIrLlGGDM/E7Zd
+         HiVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zLYbBiIzoiRx4dGmBb1jDOqT6U7c1IHTYkGYyiq+6Ig=;
-        b=p0hIKJ6+h2YTyh5Xhs3QViIZttV75txD6TQsrWubkHz0QebBNF5rJ+8ocM2950zSOu
-         5RX7bZ2Cc9vIAOXGoQQNhy8pKVw5GQz/QtiVohPfGxPQpg1/WIf5djpnC6sS/ut/fC1A
-         OQp7s2204FIsnUMfHTD3eW27Dia8bTklngfs34B22uUJlfQw91Kq6GlplBDALJugfRPX
-         wMEoUh3nrpcgpwNoFMEYWbXazNDGZ/7qIDlNZh36R3wG1X+krEFU+WPbyEoZUscf7nI9
-         Ra4cDfA+vTs8nvChA7jk+iJZ48x7pgndeb3bVjevIe/zvz/MD1byM0SF/66AKiOex2a7
-         DEDA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=4CF6AkM+KdGgLFLMRNc2MUoEuh6FO2IBpkLMltOR+v0=;
+        b=nKw2INM1Qeq064QuwAUADX2ETlNP2t3pNn4uxRHi/i2QTdNohlPHDMskcPI4SYTvYD
+         lLVtEHxEhzQS0Eop7sSbhvjMAaj0WGyz+5h1pWjnGhhYtkv0xVP7cLdHPZZWlmIpI5bd
+         +ZOGbz3Q7kKdFIUjq283JDE0nTBgYyufrKhlEWlIyb0lQieNWPj2Fw4CGQqGL5ZY9gDo
+         xN3XlAhq8OWFd9W4pv2uvLu1SuPXD06Atys0KEEOrqAEADk/ISoxXFpVBFUHCEuautck
+         M8Yvz+EWq3n4QwmnztwRciIJzUVKoEnkUV8ECqrKock7esbDhUikABc8hJlTfBRQpwWJ
+         PclA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Q/2Zzybo";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id k77si520779vke.3.2019.03.28.07.03.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cd2vN7BL;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by gmr-mx.google.com with ESMTPS id z20si753453ill.5.2020.03.10.10.09.00
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Mar 2019 07:03:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        Tue, 10 Mar 2020 10:09:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Q/2Zzybo";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id z9so5372211pgu.10
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Mar 2019 07:03:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=zLYbBiIzoiRx4dGmBb1jDOqT6U7c1IHTYkGYyiq+6Ig=;
-        b=Q/2ZzybostmgW/PghAZjh63BLSS+hFot2iBAwHVtusOxl9cQ+LsLhSs3mk94SyQdkS
-         eKaWpKAaANNiaf+WddOPZ34nFoST+FiM3NTIcVmUeH1zQSbasql7Kemw2uwxeuLdmgCe
-         VGHtY/I/3mEV0CrHoCjeDStE7iNt3J/Kri4VhKzgscpLUpPTbpROvVoUOCcqs9ChNw6b
-         q5HV9Iws3nZJXfXibyXdXMdF+GoQbcRbfcCogX4vsFOR3g29IEddw8IJbRE/c+kkMyOA
-         hX+rLxcaoi2yTJrAh6DX6bYOTldaWZPKv5G/sUsTJjQRfLWk839XapWXlmDFA3EkI8IO
-         tpSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=zLYbBiIzoiRx4dGmBb1jDOqT6U7c1IHTYkGYyiq+6Ig=;
-        b=hHfnmrhTIy2CKSc5aGAIYrTQ90DLkwoIGIbJ8tqX/N1VWN6I+7EKg8rd7gGdrjcstL
-         XIPhLsz6omNeMH5jwF13GY8rporfGpxJaTQ9/uLCCSHJysfwRSlbE47wG6bxsrDxRWUi
-         slTMhjNUv6eDJUimzolHGYewlXxzyXc1gwlENwPeEnZbDos877xwxFQ3FGmAHb59wPfX
-         ez3oNXw46QiY1pyraeU611w94CfCt/pZdQyrr++sykW8WqAqmItxMtwUK6TdtKFF7g2U
-         DMYyD3rsZu8cKNnojyjWSfztGgGkB08wTtDz4Sv/zmlvsnW7y2j1nBxNoIMLEer5iI89
-         7pkQ==
-X-Gm-Message-State: APjAAAVkIrqYxvjd07fARxoq1pKmppKLbkSaWvi8CMfPYZgbmJ0moqH8
-	rJcBSV3GMdLqdFa/N1CbRmr+hQXL
-X-Received: by 2002:a63:4346:: with SMTP id q67mr39610417pga.92.1553781823207;
-        Thu, 28 Mar 2019 07:03:43 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.228.148])
-        by smtp.gmail.com with ESMTPSA id e184sm38665192pfc.143.2019.03.28.07.03.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 07:03:42 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.c>
-Subject: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove unnecessary parentheses
-Date: Thu, 28 Mar 2019 19:33:28 +0530
-Message-Id: <1553781808-10349-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cd2vN7BL;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1583860140;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4CF6AkM+KdGgLFLMRNc2MUoEuh6FO2IBpkLMltOR+v0=;
+	b=Cd2vN7BL3FcnZ2laehqjFgKqo94l1a5Som13COcqtKWx7zOIJ3TIVzVJVU5AJCrdsVVaYO
+	/RqcCgkx6JJ4BqIepO9RcfnVmMEk1ZTH4d78tHzB3lIdy1lyM7ZysvEG1PDjG9GdNXwgpn
+	cAA9rsHJ6o2mnI3GwP0EVNYwwxTiV6s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-446--EE8WazgMBaosoj98MSVLA-1; Tue, 10 Mar 2020 13:08:56 -0400
+X-MC-Unique: -EE8WazgMBaosoj98MSVLA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47553800D48;
+	Tue, 10 Mar 2020 17:08:55 +0000 (UTC)
+Received: from elisabeth (ovpn-200-42.brq.redhat.com [10.40.200.42])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4805E91D9B;
+	Tue, 10 Mar 2020 17:08:52 +0000 (UTC)
+Date: Tue, 10 Mar 2020 18:08:46 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Lourdes Pedrajas <lu@pplo.net>
+Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
+ gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH 0/2] staging: vt6655: power.c: remove
+ unused code and improve readability
+Message-ID: <20200310180846.7a765ce4@elisabeth>
+In-Reply-To: <cover.1583848946.git.lu@pplo.net>
+References: <cover.1583848946.git.lu@pplo.net>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Challenge suggested by coccinelle
+On Tue, 10 Mar 2020 15:09:06 +0100
+Lourdes Pedrajas <lu@pplo.net> wrote:
 
-This patch removes unnecessary parentheses while returning a value.
-Using following semantic patch:
+> Here's a set of patches that performs code cleanup in the file
+> drivers/staging/vt6655/power.c
+> 
+> Lourdes Pedrajas (2):
+>   staging: vt6655: power.c: Remove setting ATIM Window in
+>     PSvEnablePowerSaving()
+>   staging: vt6655: power.c: code reformatting for improved readability
 
-@@ 
-local idexpression id;
-@@
+For the series,
 
-- return(id);
-+ return id;
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.c>
----
-diff -u -p a/os_dep/ioctl_linux.c b/os_dep/ioctl_linux.c
---- a/os_dep/ioctl_linux.c
-+++ b/os_dep/ioctl_linux.c
-@@ -961,7 +961,7 @@ static int rtw_wx_set_pmkid(struct net_d
-         if (pPMK->cmd == IW_PMKSA_ADD) {
-                 DBG_871X("[rtw_wx_set_pmkid] IW_PMKSA_ADD!\n");
-                 if (!memcmp(strIssueBssid, strZeroMacAddress, ETH_ALEN))
--                    return(intReturn);
-+                    return intReturn;
-                 else
-                     intReturn = true;
- 
-@@ -1489,7 +1489,7 @@ exit:
- 	DBG_871X("DBG_IOCTL %s:%d return %d\n", __func__, __LINE__, ret);
- 	#endif
- 
--	return ret ;
-+	return ret;
- 
- }
- 
+-- 
+Stefano
+
 
