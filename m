@@ -1,108 +1,112 @@
-X-GM-THRID: 6669707520918945792
-X-Received: by 2002:a24:794c:: with SMTP id z73mr10354755itc.0.1552912295080;
-        Mon, 18 Mar 2019 05:31:35 -0700 (PDT)
+X-GM-THRID: 6801918498465382400
+X-Received: by 2002:a92:8c42:: with SMTP id o63mr19632709ild.189.1583860638473;
+        Tue, 10 Mar 2020 10:17:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:bdc1:: with SMTP id n184ls6325549iof.0.gmail; Mon, 18
- Mar 2019 05:31:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz4EFCXqXktUP11vwuIY1fBAZLGoYwsSsrrA0xN/d2Mg11+qi1VPf0gvMrmKkI5GOGHC+dR
-X-Received: by 2002:a6b:f717:: with SMTP id k23mr11634379iog.28.1552912294192;
-        Mon, 18 Mar 2019 05:31:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552912294; cv=none;
+Received: by 2002:a92:dcc8:: with SMTP id b8ls3560388ilr.3.gmail; Tue, 10 Mar
+ 2020 10:17:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu2abmRTOah9ryJ7KTRHZKaqG3s4bokqgqQGC+AcUWxbedkvO8+JgAm4fQdj21BOanPEXbP
+X-Received: by 2002:a92:40c2:: with SMTP id d63mr21671741ill.23.1583860637139;
+        Tue, 10 Mar 2020 10:17:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583860637; cv=none;
         d=google.com; s=arc-20160816;
-        b=k5S0S6ce4cb+GWRK9hHvs8V26g/3ZCpTY1xoqXPVNK9f8mMtIYv3Pf8MXZVkgvCfVt
-         gCfe+bfTq1/Uc8ArNdDJW8bQ6BKemfT0Q6TTAFGa2/YEZ515sRy7d1fpilXXoHFhWHNg
-         Ryr16FtNhwmyHe14blFeYGx2T0oIpUk8QXfLGYCRhNBe3xGaKRl1En0pL20s6Ht8jo+P
-         P/2IN35rvNR/or0pLS+3bn6SBq3ZOFIK1V55CIhDRqpaGijPCcMbysMohZIt0tnTmPsi
-         WZtKJfJRVv529hZykqm/7JADKy7OH7eqWaAVXhhbDCLE+dH5rniyhxwIyC+oSgw3crSi
-         r3iA==
+        b=LFZLnxmgtLzaFqUq6CQCZGNpJm1sMfGSOjWLZZ6zSGApQIYCFD9TW5NzZ5R2L2QrbD
+         CUmu5v8G0lO624ofenYBeVxdPDkgjnLGGz+5wPKC4BlQrLn4KzlfFq5rdTClamAV1fxm
+         IbkD81aSvRMnxu9g9W148Jkyw63Rqd86DE2nX6fl7cXMLdIQRncP9njWpCT8ikp3CIW0
+         7AqgkhGeVhulQ4h83JOoqSUxGGXN4Fh3Y2XaJqrjf6jphaAFlbuvFCvrV1eyriCdOmfi
+         eQC6N4HH9boFphksMtCb9UVVdGc64rqPld8egjuj2+ftU+r2X4aZ6r0G4+/eMbN3M6Dq
+         B+pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JevyDMfQs+TdUZ4bh8MSwHkRqk1l2rnozmiOjY8NSEs=;
-        b=aRP6tXZ/pDM/Ps1o5SbdKuQUkD9RZmPJl3YcLB2gYoLVvifxcDWjHP3LVXfwtBOzlB
-         NAs9gSs4V1KibHbwZLv+5A5WWfBkI4ALtxdFW2hcNIYcl0k0ue3yXbE35t5FRNacPLu/
-         OqjE20EVMzaOscsj7sEnsPgJuBFUqO0yto+xuNtMVSpGH3JGlusflv6y1pv2oA31wqUh
-         a6u75u8QTUq6DSKlBPztFjqrwJIqsWcb57uc67pNkyVdeSvR8abBV9TtO6r+b0AVf/Tq
-         6VBV6/GaE//OlpQPmlCViYV6yUL4A2JSW7hxrJ4Toj3V1EuPckyLt7I4nsncxLANPrjI
-         zpXg==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=BMAEwj+lyOoFV6cTegq/WkIWpsp3B13SqP1TdAaTf5c=;
+        b=pDqZbnop5y4TjJJ5ElNbjBbwLDLalJ3wbTrdk7MBMu3XhRzpvTFd7hOS12vxUrHaG7
+         +XV2TBq6J+ehnGGVu128E/unWgiDr/iJfsmiE+Ux2vvycIUiOkTXmtxIF0ko2KEuRAXl
+         GQi8friDEyY9heo1oVEcFO0xHh3AAj6HHymRwJMNpHvK3Zzi5S7PPBsoHktqCsDuaG+e
+         UMDQO7LZZbNdfu26hPgRq3aJbHvnv5f06Xc8LOaaCkAG7RVhD0vaiRNGxBsYRL/rhfzM
+         vzZs61GwtCxfY+5sW8gLrw4idVWRA8cdUE7Q/fR/n+ewh1wQIdahTSqPweyYN710TFoS
+         0skg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q3793Ua4;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id 185si921962itw.4.2019.03.18.05.31.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bWDQkqbO;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by gmr-mx.google.com with ESMTPS id d26si736212ioo.1.2020.03.10.10.17.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 05:31:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
+        Tue, 10 Mar 2020 10:17:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q3793Ua4;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42d.google.com with SMTP id v21so11140261pfm.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Mar 2019 05:31:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=JevyDMfQs+TdUZ4bh8MSwHkRqk1l2rnozmiOjY8NSEs=;
-        b=Q3793Ua4VrcxP+HR70QLtdxN5x5rYgHZ96tpdm0HwAbjvTdViRQ4BE9mVJ7zE1fndq
-         DK6Er85Oy8njLhvIEe+FdfyO/PjvsUAF3ojgMsGEFDRgEN9t1C8PRTBprlfb2UKCJJtH
-         P5wayiGLdiv2MlhJUAU8+jty7ETA8N6X/bibnauN9vi04zHrkt3peLt2dK+ZJxT2DwKg
-         eDdgUiZf4gvn2QH6XlfnlutxW473zhjuqu/SWDYNmba6rTtWdC6rjM8ojqXd9/SMYSiJ
-         68O9XZNIWTieIdl8cgWf5POZyPeKHL1nbPi+FwoHjDd2h5AIcYS95nTlUFXnbL5E7HXi
-         h+pQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=JevyDMfQs+TdUZ4bh8MSwHkRqk1l2rnozmiOjY8NSEs=;
-        b=nvAf/G9fsH6apzyNbg7zKFJ+XuD2ngnZGKC2nwNkZ5jci1R58mI16njMCT4ZUl552P
-         vmhGyuumwDb9yU79EniGv02AdX3kzLBiVxdjkYVDV1IN1gQb4M/2/rUCesrkbQZnK3Nu
-         vwltPKzYsWq4xkrKk1eRtFxrf8DV51dFFI25BK3GVW64IB5iA1ij8GtxWZuF46AgrCrP
-         TKUkSp4yTbfe8EOwGpLgjsxpCvfZnz7c9LntNYeYd6mYm0CmogpdSUG64POwlReBMTz6
-         MtoxpuI4xCm3gfP4v6+5KJ+xWuLdcbAHZsx2/URaAKuGS2DzDAqvg2CkoAJBlFwaIHQN
-         dREQ==
-X-Gm-Message-State: APjAAAXUrf6gYMG6lg2CdriJjAMuaAvzHCea+uJIcnEmbfhQDjsRdd8S
-	lxYLkv+p2Bl6ShKRRCX9fIM=
-X-Received: by 2002:a17:902:28a7:: with SMTP id f36mr19633549plb.169.1552912293871;
-        Mon, 18 Mar 2019 05:31:33 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([203.109.108.32])
-        by smtp.googlemail.com with ESMTPSA id l79sm22122179pfb.102.2019.03.18.05.31.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Mar 2019 05:31:32 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: core: rtw_pwrctrl.c: Fix a comparision warning.
-Date: Mon, 18 Mar 2019 18:01:21 +0530
-Message-Id: <20190318123121.11548-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bWDQkqbO;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1583860636;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BMAEwj+lyOoFV6cTegq/WkIWpsp3B13SqP1TdAaTf5c=;
+	b=bWDQkqbOnds/QNw7LipIwdRKLNa4fdZ6Cu3BGhokgglwUzUQhFBOZQf5fzkpK9iTA3ndWp
+	/ChQTAQ8SlApu4f110lR5pMy80NmtDh9UZ4/0pF61OpyHjmr3upbSymFcAZKx42lfdjKVr
+	7tRrIx+07B/3y0URsbvjxDGYG52KZOs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-248-ZX76XRL_PQ607-Q928Fj6w-1; Tue, 10 Mar 2020 13:17:12 -0400
+X-MC-Unique: ZX76XRL_PQ607-Q928Fj6w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9CAB8107ACC4;
+	Tue, 10 Mar 2020 17:17:11 +0000 (UTC)
+Received: from elisabeth (ovpn-200-42.brq.redhat.com [10.40.200.42])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A286060C99;
+	Tue, 10 Mar 2020 17:17:09 +0000 (UTC)
+Date: Tue, 10 Mar 2020 18:17:03 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org,
+ outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v3] [Outreachy kernel] staging: vt6655: remove line over
+ 80 characters
+Message-ID: <20200310181703.299d2e41@elisabeth>
+In-Reply-To: <20200310123229.2424-1-payalskshirsagar1234@gmail.com>
+References: <20200310123229.2424-1-payalskshirsagar1234@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Replace the constant at the right side of comparision.
-Issue found by checkpatch.pl semantic patch results for rtw_ap.c
+Payal,
 
-WARNING:Comparision should place the constant on the right side of the
-test.
+On Tue, 10 Mar 2020 18:02:28 +0530
+Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_pwrctrl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Reformatting code to not have lines over 80 characters.
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-index 6a846d08d449..7b16632048b7 100644
---- a/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_pwrctrl.c
-@@ -374,7 +374,7 @@ void rtw_set_ps_mode(struct adapter *padapter, u8 ps_mode, u8 smart_ps, u8 bcn_a
- 	}
- 
- 	if (pwrpriv->pwr_mode == ps_mode) {
--		if (PS_MODE_ACTIVE == ps_mode)
-+		if (ps_mode == PS_MODE_ACTIVE)
- 			return;
- 
- 		if ((pwrpriv->smart_ps == smart_ps) &&
+The change looks good, but the subject (that is, the commit title)
+still doesn't match the contents of the change. You're not removing,
+and it's not a single line.
+
+Also,
+
+> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+> ---
+> v3: Change in patch description.
+
+This should be cumulative, that is:
+
+v4: < you know what :) >
+v3: Change in patch 
+v2: < changes you listed for v2 >
+
+Otherwise, reviewers and maintainers will have a hard time tracking
+your submissions. Thanks,
+
 -- 
-2.17.1
+Stefano
 
 
