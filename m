@@ -1,167 +1,86 @@
 X-GM-THRID: 6802607426621145088
-Date: Tue, 10 Mar 2020 11:38:19 -0700 (PDT)
-From: Deepak Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <e4663f14-1453-4bcf-a571-cf66f27da689@googlegroups.com>
-In-Reply-To: <20200310155053.GA27759@deeUbuntu>
-References: <20200310155053.GA27759@deeUbuntu>
-Subject: Re: [PATCH] staging : comedi : dt2801 : remove old unused code
+X-Received: by 2002:a19:c34e:: with SMTP id t75mr12793840lff.197.1583864533359;
+        Tue, 10 Mar 2020 11:22:13 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a2e:6c13:: with SMTP id h19ls2633854ljc.7.gmail; Tue, 10 Mar
+ 2020 11:22:11 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuaFbNDQ4NcFXQqmJP59pqkd5L8H/zVjUBvkZng4zW9AIe2JJ9p2gnaeNDrldAHMtDcEHiu
+X-Received: by 2002:a05:651c:50a:: with SMTP id o10mr13607221ljp.189.1583864531895;
+        Tue, 10 Mar 2020 11:22:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583864531; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VRhebdE6loMGZkIh0BRYhvJWs7nYilM1AQ3UWlHAE1nIdY1rOyBAxM6YJFsysR5mts
+         TZ4pb734veiikSzmBH8RVGmJEoydDZUaEjJ7q2BjCEAsVrWgPrsA9EHPpTyuHPvVCbii
+         fMdVM+cbFg7AqIBiQ1MwqrWk1Dn/nZfBg+u6MBh6Xa7NG17th7s9g+8ip0FhuZJWLMJD
+         +8qohbHGjoiLVGfdmS4oKEQRbDzTnYzfuhX0Q0vT1maa3kUvEWJFbGtE1J3AermFcBpr
+         Aje6p2L/nrsldoaex62VGyhVPM4Gb6CR150whVQdn/nlHgxFuxspkMbNFaYoVYA+MUTz
+         nPpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Vg8Qfpcw5RlDY4UCYSJa+IjIkyHrR9k4wmh3sBs45tc=;
+        b=gfDkXRxl8vKk2eUbJHTIVzOi4wzyAJ5W8GjBDg8w26dRAScONDaeafmZE00FBfmQIZ
+         vxa3TB9GTSW27cBS3C61qYRi9XfTpJJaA9fZjvvj5Fz1SrSOJnjl3xt3tKtTIVZr+5Ov
+         Lp8bEuE9FcucwpsaAz+7InP1S6AtVuLMiwNXsxrxoIpNTmck2zM1w7aZcFmSXTTlHDRp
+         QIDGyuZAJyZcurYpNVFysMJma331W41opPLlEfsWHvK6N8d6vqcANSAv9iDgdtsG50g3
+         2z640+VwPqfRmZIENNsMWbp53YZwXL6eIFsX3wTT98ICJfwSRjWE3Aa2PMtYoIsQSq+5
+         p0qA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id u8si606933lfu.3.2020.03.10.11.22.11
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Mar 2020 11:22:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,537,1574118000"; 
+   d="scan'208";a="341924407"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Mar 2020 19:22:10 +0100
+Date: Tue, 10 Mar 2020 19:22:10 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
+To: Deepak R Varma <mh12gx2825@gmail.com>
+cc: outreachy-kernel@googlegroups.com, abbotti@mev.co.uk, 
+    hsweeten@visionengravers.com, gregkh@linuxfoundation.org, 
+    daniel.baluta@gmail.com
+Subject: Re: [Outreachy kernel] [PATCH V2] staging: comedi: dt2801: remove
+ old unused code
+In-Reply-To: <20200310181426.GA19938@deeUbuntu>
+Message-ID: <alpine.DEB.2.21.2003101918160.26409@hadrien>
+References: <20200310181426.GA19938@deeUbuntu>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_2057_2120325273.1583865499569"
-X-Google-Token: EJu9n_MF5K3OWFmAo4s0
-X-Google-IP: 103.240.207.69
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_2057_2120325273.1583865499569
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_2058_1468176548.1583865499570"
 
-------=_Part_2058_1468176548.1583865499570
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Thank you once again Julia. I will review and resend v3.
+On Tue, 10 Mar 2020, Deepak R Varma wrote:
 
-Deepak.
+> patch V2 revision is for updating the patch description only.
 
-On Tuesday, 10 March 2020 21:21:05 UTC+5:30, Deepak Varma wrote:
->
-> there are 2 #if 0 blocks that have no recent history of any change. We 
-> can remove those code blocks for improved readability of the code. 
->
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com> 
-> --- 
->  drivers/staging/comedi/drivers/dt2801.c | 22 ---------------------- 
->  1 file changed, 22 deletions(-) 
->
-> diff --git a/drivers/staging/comedi/drivers/dt2801.c 
-> b/drivers/staging/comedi/drivers/dt2801.c 
-> index a29880981d81..aad02faa2f83 100644 
-> --- a/drivers/staging/comedi/drivers/dt2801.c 
-> +++ b/drivers/staging/comedi/drivers/dt2801.c 
-> @@ -87,17 +87,6 @@ 
->  #define DT2801_STATUS                1 
->  #define DT2801_CMD                1 
->   
-> -#if 0 
-> -/* ignore 'defined but not used' warning */ 
-> -static const struct comedi_lrange range_dt2801_ai_pgh_bipolar = { 
-> -        4, { 
-> -                BIP_RANGE(10), 
-> -                BIP_RANGE(5), 
-> -                BIP_RANGE(2.5), 
-> -                BIP_RANGE(1.25) 
-> -        } 
-> -}; 
-> -#endif 
->  static const struct comedi_lrange range_dt2801_ai_pgl_bipolar = { 
->          4, { 
->                  BIP_RANGE(10), 
-> @@ -107,17 +96,6 @@ static const struct comedi_lrange 
-> range_dt2801_ai_pgl_bipolar = { 
->          } 
->  }; 
->   
-> -#if 0 
-> -/* ignore 'defined but not used' warning */ 
-> -static const struct comedi_lrange range_dt2801_ai_pgh_unipolar = { 
-> -        4, { 
-> -                UNI_RANGE(10), 
-> -                UNI_RANGE(5), 
-> -                UNI_RANGE(2.5), 
-> -                UNI_RANGE(1.25) 
-> -        } 
-> -}; 
-> -#endif 
->  static const struct comedi_lrange range_dt2801_ai_pgl_unipolar = { 
->          4, { 
->                  UNI_RANGE(10), 
-> -- 
-> 2.17.1 
->
->
-------=_Part_2058_1468176548.1583865499570
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+This is not the correct way to present the v2 of a patch.
 
-<div dir=3D"ltr"><div>Thank you once again Julia. I will review and resend =
-v3.</div><div><br></div><div>Deepak.<br></div><br>On Tuesday, 10 March 2020=
- 21:21:05 UTC+5:30, Deepak Varma  wrote:<blockquote class=3D"gmail_quote" s=
-tyle=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-le=
-ft: 1ex;">there are 2 #if 0 blocks that have no recent history of any chang=
-e. We
-<br>can remove those code blocks for improved readability of the code.
-<br>
-<br>Signed-off-by: Deepak R Varma &lt;<a href=3D"mailto:mh12gx2825@gmail.co=
-m" target=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;mailt=
-o:mh12gx2825@gmail.com&#39;;return true;" onclick=3D"this.href=3D&#39;mailt=
-o:mh12gx2825@gmail.com&#39;;return true;">mh12gx2825@gmail.com</a>&gt;
-<br>---
-<br>=C2=A0drivers/staging/comedi/<wbr>drivers/dt2801.c | 22 ---------------=
--------
-<br>=C2=A01 file changed, 22 deletions(-)
-<br>
-<br>diff --git a/drivers/staging/comedi/<wbr>drivers/dt2801.c b/drivers/sta=
-ging/comedi/<wbr>drivers/dt2801.c
-<br>index a29880981d81..aad02faa2f83 100644
-<br>--- a/drivers/staging/comedi/<wbr>drivers/dt2801.c
-<br>+++ b/drivers/staging/comedi/<wbr>drivers/dt2801.c
-<br>@@ -87,17 +87,6 @@
-<br>=C2=A0#define DT2801_STATUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A01
-<br>=C2=A0#define DT2801_CMD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A01
-<br>=C2=A0
-<br>-#if 0
-<br>-/* ignore &#39;defined but not used&#39; warning */
-<br>-static const struct comedi_lrange range_dt2801_ai_pgh_bipolar =3D {
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(10)<wbr>,
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(5),
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(2.<wbr>5),
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(1.<wbr>25)
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>-};
-<br>-#endif
-<br>=C2=A0static const struct comedi_lrange range_dt2801_ai_pgl_bipolar =3D=
- {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0BIP_RANGE(10)<wbr>,
-<br>@@ -107,17 +96,6 @@ static const struct comedi_lrange range_dt2801_ai_p=
-gl_bipolar =3D {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>=C2=A0};
-<br>=C2=A0
-<br>-#if 0
-<br>-/* ignore &#39;defined but not used&#39; warning */
-<br>-static const struct comedi_lrange range_dt2801_ai_pgh_unipolar =3D {
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(10)<wbr>,
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(5),
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(2.<wbr>5),
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(1.<wbr>25)
-<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>-};
-<br>-#endif
-<br>=C2=A0static const struct comedi_lrange range_dt2801_ai_pgl_unipolar =
-=3D {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A04, {
-<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0UNI_RANGE(10)<wbr>,
-<br>--=20
-<br>2.17.1
-<br>
-<br></blockquote></div>
-------=_Part_2058_1468176548.1583865499570--
+The discussion of the difference as compared to the previous version
+should go below the ---.  The text above the --- will go in the git
+history.  The git history doesn't contain the v1, so the discussion about
+how the current patch is different from the v1 is not relevant at that
+point.
 
-------=_Part_2057_2120325273.1583865499569--
+Please search for "Versioning one patch revision" in the tutorial:
+https://kernelnewbies.org/FirstKernelPatch
+
+> There are two #if 0 blocks that have no recent history of any change. We
+> can remove those code blocks for improved readability of the code.
+
+The log message should be written in the imperative.
+
+Please look at some patches submitted by others to get a feel for how they
+should be presented.  You can look at the patches on this mailing list and
+on lkml.org.
+
+julia
 
