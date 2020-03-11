@@ -1,120 +1,126 @@
-X-GM-THRID: 6747989817758318592
-X-Received: by 2002:a02:330e:: with SMTP id c14mr42783535jae.5.1571138812733;
-        Tue, 15 Oct 2019 04:26:52 -0700 (PDT)
+X-GM-THRID: 6802590976179175424
+X-Received: by 2002:a4a:2cc6:: with SMTP id o189mr1874421ooo.20.1583965844493;
+        Wed, 11 Mar 2020 15:30:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:13c6:: with SMTP id 189ls2311475jaz.0.gmail; Tue, 15 Oct
- 2019 04:26:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxUSyuJHZkiQtuIAwr7+b6K+AYLlpGB67kPzXb+/8/mp10PjPfyyjqBvx4iL+Tg/3dDRlFV
-X-Received: by 2002:a05:6638:a1b:: with SMTP id 27mr37592153jan.102.1571138811183;
-        Tue, 15 Oct 2019 04:26:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571138811; cv=none;
+Received: by 2002:a9d:787:: with SMTP id 7ls981552oto.3.gmail; Wed, 11 Mar
+ 2020 15:30:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuKseWC2aZ/XWmUEomE2ML3apElK7xtZWYYAh9F4UKoeO/PN3bgcq0i2sWBa6qxHARDelUe
+X-Received: by 2002:a9d:67c3:: with SMTP id c3mr4133155otn.340.1583965843253;
+        Wed, 11 Mar 2020 15:30:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583965843; cv=none;
         d=google.com; s=arc-20160816;
-        b=qCB/4kHG+MUujMaP85h+++1aZ+kX4Pae5j3OJrp9Cjs0LtaB4KYbdCGafBXDzdzgc+
-         AZOLWOdCLEI/jvhEhw0uQ29LJBzEyCHzCSFia1fWxEjxE9r05b2EZoTZLr0XC0k7UMI+
-         kKP/Jfy1D96MYhToQ+IWq1mMT1hyCAPzpWv3HP/5qwaXkAW9veXU0nRRRLBfd99bwoph
-         8H1yM5YwJW3FqeKuRk8BP4WPMOmmIHXlBa3WUH5Kd0KdhYI5PdZ37I0143JdKls2Totr
-         VPR0fKApv4/7pb9WcauTskzBa2/NoLCpQRU2nwlLqb71M10940qXlOvz7JfXFYfVDMUb
-         UzLg==
+        b=p7Y+HHwlSqKKdjj3sE0wEfzOqNnMg47x19Lq9b4vKkDYt83HptbLhuUiqFEKb7i9f/
+         QExEjCikbQQFIodED7tfbAIXJubpUJWpahZBi1U+3i+LROxlDqNn4fjb4odoB8aFTk/N
+         m/qUPZWQFaAvnnkCDbalcRTXBpZmkinOYLwFqttHOIABxJGvcRcP91KU3109MP5R28sx
+         cvB9Q8ze3g/MlGKeigEcW49Z8sy+6IOAzDOcu3Gn5RAd1wvBEQESTDUgPvpDfrBLMJHF
+         i/ufD9RTsD7vcCqka7TwK5pGyEg36pZCguyIbZwpwstRYJyx9PrHivYIIIq1wzZqPD7Z
+         Fv1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=P78Ogbx/JUEYn/bIu/iC6vnYMekh5viyN9GtdfVO390=;
-        b=q+BmCrZWAQuIZCBoYQZ2yAX4iWtYAtXq9JZjm630kVvLEH9WTXwmNaaY7sWA56rfLO
-         MS6b9NJZEsj4gBmdR1AHcJIT30TxHWzPGdpSUrtE94ZOB08doQUk869EIy8IeFKykifa
-         IhR4sDEKWVnYb8Kh+3I/jyHrQZhZxJcL3u+p+1iJpvvP0i9MUFO5Ncs0wtz6kYJm6YSR
-         V07l5ajEu4QljkrKuoigOeR3EhtEs9zdX5BDYL9aBmUeRECadYK5cZBgJ3LSrh04LB2A
-         ZpPwRsRbvQ0a9rsNUbXBYWdMOHkXH61dxNYtj0eV4+mciPzxS5oqKWb8P+4MTtjZKDnR
-         XsPA==
+        h=message-id:from:cc:to:subject:content-transfer-encoding
+         :mime-version:references:in-reply-to:user-agent:date:dkim-signature;
+        bh=VxId/5R2+lzGKp4xsQtvfpVORMMHYVxgyqrgJySMYzY=;
+        b=PpWFhSjHRSjA4NZyMEjwuLddRmsSnxbgK5SN89PVXjfd54Vcm4zpq9y0Gjzso/UNwO
+         zIuVcYhOH42JYYhDK6be6jECN7+gzy7EL4kZ6d9TnhdNS4y60U1AIzau3T4Es8pzIeiN
+         NWol80rmUtLLo1sLRpoQNE/AxP6uZgc+bQFyPHOVhyNMOU7QQNKlK+1el+BYsmaAH/bV
+         D/K540CXMDIGuiTxVPULzNLXC8+lBWyEp80AfW40LxG8Y4ae/8yVyz3NbIc56EuxHAWS
+         MbYc50TA3++ZGcBR7AvjqwcThX+qYUqGzHyrLbTakKBxfxmSYbbROZTr29WA+TLrZyHY
+         sR3Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g1Xy0PgW;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TbSHiffg;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <wambui.karugax@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id s5si436247iol.1.2019.10.15.04.26.51
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id u22si282887otg.4.2020.03.11.15.30.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Oct 2019 04:26:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        Wed, 11 Mar 2020 15:30:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g1Xy0PgW;
-       spf=pass (google.com: domain of wambui.karugax@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=wambui.karugax@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TbSHiffg;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id i76so11976652pgc.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 15 Oct 2019 04:26:51 -0700 (PDT)
+Received: by mail-pg1-x544.google.com with SMTP id h8so1968650pgs.9
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 15:30:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=P78Ogbx/JUEYn/bIu/iC6vnYMekh5viyN9GtdfVO390=;
-        b=g1Xy0PgWMT0Wi5ZbRL9lcQNlTD1b9pM7Napp6DJ5oapxFeZr/4gbjJCfWG6U1iMYds
-         kEUWZkyiqoQUQRNL5MZtmplu7HQGaIDudCFUxOc3/uC7xxBKmtvupqjm9gMtQwRGnlB5
-         tWkLitMdEWshU0ms96HXAPYAPwGoSeTpkm6oKG/XzWtdq23BLuPDjNLRVg0xt1uIzFTW
-         YNspxlU1tJdkY0l3W6UzCh4x/JS1uFK/XMQ5EVo31PkSIri19xSP+LAki18uMpy6NPch
-         cxiQo8CnUaz37vy5qRC2VWUz4c3duMxUMnzno4EPId5f1DKqI+KrwGy4lPbRgPlaicb8
-         F5aA==
+        h=date:user-agent:in-reply-to:references:mime-version
+         :content-transfer-encoding:subject:to:cc:from:message-id;
+        bh=VxId/5R2+lzGKp4xsQtvfpVORMMHYVxgyqrgJySMYzY=;
+        b=TbSHiffgBHgwXtx6lWGtUCIGwYo7aHUsh3UxIgr4iUYGZj78Lkbv3m0bjNFEsPt+/G
+         0aomm2mocu8Rf+ku5opnW2fnZ/LiSJ3eE8sRt1RZNJlFdGa0RJnRWRxX8yulkaJjZb+4
+         I0Wq7BvsQpJObzG9dYfRtLMo7agM/Z13SNVfjv0rAxaVjvwZcFME9jKgB5GqQ2GJUYQS
+         +AH08f80G47e5pKa7h7HIxxP3t67tHVKGrTW6AnglzAQK62Spb6YJrGFNtHSCDxYzGdZ
+         UK8EQIeIqZ0S6KqtKjYpU8EDkerh/V7WIOPN72DAbjdzhMimCQITvjoa3Yivn9ZwM03c
+         smjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=P78Ogbx/JUEYn/bIu/iC6vnYMekh5viyN9GtdfVO390=;
-        b=InHJ1EDkDpH55uQr0pyMiL+CGBxNp2KJ4BBCSx0gpn6nBj6Inh1sR3Gvw5mm9SxBAx
-         vormeV756TiUR+aXET0CypRWPqR0WWyFw/Vzr1Bt0hFPjaXU3G5cC1lPP+YZjiHEdH57
-         Zg/sWGm1PJ4sXgW9YeouWbX1v12Qk2jjgddGreJziDQ6Pu2VAtHUc62it/HO7mdpUezi
-         JZbXcpmbvA8n+NaLzStANkU6s72bwohoPHEKxxXA27SIKjWvev2J16T63Y8AQi7+MMeX
-         nW3OcS0aL+1PppAmGAHkmlnDyNDsER+U9abl8JvmOh3YWMHDDtXJ1KKJAfzr2CTqsARW
-         WF0Q==
-X-Gm-Message-State: APjAAAWCMTVSLazdCu/BP69DgiY7XiYM0OSKgjsGAprZcvVS+y1V8R4a
-	Qrn9OzX+/99ta5021KxOo4BjHxsAnTM=
-X-Received: by 2002:a17:90a:8990:: with SMTP id v16mr42084195pjn.119.1571138810266;
-        Tue, 15 Oct 2019 04:26:50 -0700 (PDT)
-Return-Path: <wambui.karugax@gmail.com>
-Received: from wambui.brck.local ([197.254.95.158])
-        by smtp.googlemail.com with ESMTPSA id y2sm23864541pfe.126.2019.10.15.04.26.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2019 04:26:49 -0700 (PDT)
-From: Wambui Karuga <wambui.karugax@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: remove casts to pointers in kfree
-Date: Tue, 15 Oct 2019 14:26:37 +0300
-Message-Id: <20191015112637.20824-1-wambui.karugax@gmail.com>
-X-Mailer: git-send-email 2.23.0
+        h=x-gm-message-state:date:user-agent:in-reply-to:references
+         :mime-version:content-transfer-encoding:subject:to:cc:from
+         :message-id;
+        bh=VxId/5R2+lzGKp4xsQtvfpVORMMHYVxgyqrgJySMYzY=;
+        b=PggIVUwZVXRkAhjgTbCtsr5jSpJbTI3W/DIULIFT/p1u51eEhkr5GKYtr8I6Tdf/Zo
+         9KdyvTcjIDO8lMRxvrn5kcBtToNl8vBR/2YBCxV6t5oWMIbtDSPiqTz+dq9euPpWdhJm
+         cSdr/ssqkyx+L8c1YJ78xdbcEdgUAS8dnc9OZVRgz+Q98DgYvcsHz8p1vJF8RvdrkUl5
+         xDG2QIn5rs9hMzE+MLfvR0KWjMAcxuYbElisiTyRZzdWFUpSctKpjHnWlHIcVJ/+z8CW
+         MPab0GGW7+OLszElQQdsLDqvpVh/AEBgqdmCka2+WnQWBjkVNUIFkduj9DZ7gl04wGnY
+         pSWw==
+X-Gm-Message-State: ANhLgQ2Bw4NoBLXc1BhS9jCn2YC5HycwqmR86m0zxXN+bR7oab6Dbw/X
+	A3B7UTKijXq9zxuVTv7VYT3dJqNsseE=
+X-Received: by 2002:a62:f842:: with SMTP id c2mr5017437pfm.104.1583965842272;
+        Wed, 11 Mar 2020 15:30:42 -0700 (PDT)
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from [192.168.0.100] ([113.193.33.106])
+        by smtp.gmail.com with ESMTPSA id v5sm1592244pff.209.2020.03.11.15.30.41
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Mar 2020 15:30:41 -0700 (PDT)
+Date: Thu, 12 Mar 2020 04:00:40 +0530
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20200311180428.6489fe9b@elisabeth>
+References: <20200311131742.31068-1-shreeya.patel23498@gmail.com> <20200311180428.6489fe9b@elisabeth>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [Outreachy kernel] [PATCH v4] Staging: rtl8188eu: rtw_mlme: Add space around operators
+To: outreachy-kernel@googlegroups.com,Stefano Brivio <sbrivio@redhat.com>
+CC: gregkh@linuxfoundation.org,devel@driverdev.osuosl.org,linux-kernel@vger.kernel.org,daniel.baluta@gmail.com,nramas@linux.microsoft.com,hverkuil@xs4all.nl,Larry.Finger@lwfinger.net
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+Message-ID: <181B01E8-5D92-458F-9C5E-7271333B96F4@gmail.com>
 
-Remove unnecessary casts in pointer types passed to kfree.
 
-Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 3030ae5b6b6d..71fcb466019a 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2155,7 +2155,7 @@ sint rtw_set_auth(struct adapter *adapter, struct security_priv *psecuritypriv)
- 
- 	psetauthparm = rtw_zmalloc(sizeof(struct setauth_parm));
- 	if (!psetauthparm) {
--		kfree((unsigned char *)pcmd);
-+		kfree(pcmd);
- 		res = _FAIL;
- 		goto exit;
- 	}
-@@ -2238,7 +2238,7 @@ sint rtw_set_key(struct adapter *adapter, struct security_priv *psecuritypriv, s
- 	if (enqueue) {
- 		pcmd = rtw_zmalloc(sizeof(struct cmd_obj));
- 		if (!pcmd) {
--			kfree((unsigned char *)psetkeyparm);
-+			kfree(psetkeyparm);
- 			res = _FAIL;  /* try again */
- 			goto exit;
- 		}
--- 
-2.23.0
+On March 11, 2020 10:34:28 PM GMT+05:30, Stefano Brivio
+ <sbrivio@redhat=2Ecom> wrote:
 
+Hey Stefano,
+
+>On Wed, 11 Mar 2020 18:47:42 +0530
+>Shreeya Patel <shreeya=2Epatel23498@gmail=2Ecom> wrote:
+>
+>> Add space around operators for improving the code
+>> readability=2E
+>> Reported by checkpatch=2Epl
+>>=20
+>> git diff -w shows no difference=2E
+>> diff of the =2Eo files before and after the changes shows no
+>difference=2E
+>>=20
+>> Signed-off-by: Shreeya Patel <shreeya=2Epatel23498@gmail=2Ecom>
+>
+>This looks good to me=2E Further clean-ups here could probably make this
+>look less messy (there are long lines, unnecessary parentheses that are
+>rather confusing, especially on that 4/5 factor, "magic" constants that
+>might make sense to figure out the meaning of, etc=2E)=2E
+>
+
+Thanks for reviewing=2E I will surely look at the other clean-ups as well =
+:)
+
+Thanks
+
+>Reviewed-by: Stefano Brivio <sbrivio@redhat=2Ecom>
+
+--=20
+Sent from my Android device with K-9 Mail=2E Please excuse my brevity=2E
 
