@@ -1,79 +1,111 @@
-X-GM-THRID: 6206591728806264832
-X-Received: by 10.112.150.229 with SMTP id ul5mr4942327lbb.2.1445084747630;
-        Sat, 17 Oct 2015 05:25:47 -0700 (PDT)
+X-GM-THRID: 6802842925013139456
+X-Received: by 2002:a7b:c92e:: with SMTP id h14mr2237664wml.90.1583910866956;
+        Wed, 11 Mar 2020 00:14:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.180.106.100 with SMTP id gt4ls289779wib.34.gmail; Sat, 17 Oct
- 2015 05:25:47 -0700 (PDT)
-X-Received: by 10.180.210.212 with SMTP id mw20mr2426818wic.3.1445084747066;
-        Sat, 17 Oct 2015 05:25:47 -0700 (PDT)
-Return-Path: <aybuke.147@gmail.com>
-Received: from mail-wi0-x234.google.com (mail-wi0-x234.google.com. [2a00:1450:400c:c05::234])
-        by gmr-mx.google.com with ESMTPS id w4si359571wiz.0.2015.10.17.05.25.47
+Received: by 2002:a1c:93:: with SMTP id 141ls669289wma.1.canary-gmail; Wed, 11
+ Mar 2020 00:14:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsh/jrng7kbNNcmJ0U5Zn79Pf6Qu++X1ZwsDIDlFqE3PCYAO12qDGqdhH/JLwlH09Jn8h5o
+X-Received: by 2002:a05:600c:214e:: with SMTP id v14mr2062218wml.85.1583910865580;
+        Wed, 11 Mar 2020 00:14:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583910865; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Xje003TD0CRU9NP3+bl3YvAbN1KpymY6QnSYSaXpjCFilPfw6T81C1OWfcDsDnzJpn
+         0GoeDYOIYoyrQqGj0H0spDTAQ8MQ88nprxha7bQz9Kddvaa4WOFIf/vxxd9QYfpF77an
+         z/bHRziLbEdiAvslPZxiHK0m6oVDT8Zf47nhX3q/567y+Smhz0miDmFVeULuPKjDsNyR
+         ScLHIqfJCbRxaWdPBM0J5ghLxJQOLSOcGaCegZ2Hs7VHLkm02ay9sZIdgS7SpmcujkUm
+         T2Xln2kd6aBIjMBs4r4PVrX6wEfDfI/SEcvHeC5t1HM3sna412UrvAC1AijRbtdOH3/B
+         oBSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=+0jJRvbY8/HuE723MBK3ryznTUjPTa21ZmWlJn9K+5o=;
+        b=njeGJb/H/p3wZdott+mTI3unB5udOtjV1KjzQ2Uav/iZ62o1KaS8rof4vtZzJDyDMC
+         l6gNzGIwSg1rjRSnBZeAnJkceq9ChMwS2pCvlRxAwLt23DIuaWMq1LlphxLn0PkDcB+P
+         mBgHhgC1fvl+yICS0c6HnjcnPUsYFNI2NAYjCiNGWO7YO/WmDSZjUcOole3G79ruumoF
+         wQUyLQC9tpNsuDWBA1pMy2ddh2LK/etXjodMZxLahgKFwFpwbImckT7T7TWjI3Gdf1qh
+         ps5Hpmj8cCK5tUyxISCDN7udcHTF+87S49PtPYBcvIEobltV4Ge4XpchvSc1trBkE7LO
+         7vfQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id o194si235654wme.2.2020.03.11.00.14.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2015 05:25:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) client-ip=2a00:1450:400c:c05::234;
+        Wed, 11 Mar 2020 00:14:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of aybuke.147@gmail.com designates 2a00:1450:400c:c05::234 as permitted sender) smtp.mailfrom=aybuke.147@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wi0-x234.google.com with SMTP id p11so42383405wij.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2015 05:25:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=xRV8YuuhQ97iEvzmlpxQFFDs2jSTIQgJzpeJ0wWiy2E=;
-        b=uz+VJwL+VGiAOrjA6i5K9p5Mc/vZ/ArG0TxLNim31tuKTL7eDxrYN/0yPV+RJpQp/+
-         Apd0Xpf++vDkHvnRXIASSclkuhx8lWXtUcw6WHYjag1vpf8eocalWyOKEzTFS1n5fOLc
-         kS2lq/GaPKscKVaGqVYEPccDWSARoomEOpCAtZIi9q4UUDqnsy6z5+6hAutIUj2K2L3Y
-         0zmQAvLZfP7AWKtf52xC2JKhhzNR2uollIT+aby0H09OjuzNwf87o1KMumIOZuBgcWml
-         TtQtOAUwunsW7uc1WcPHeIA3Y2lTVXS0/GDQXxvexnkltzTIm5y3YoGo56CuoaGpKoBV
-         CfUA==
-X-Received: by 10.180.106.37 with SMTP id gr5mr10264515wib.86.1445084746950;
-        Sat, 17 Oct 2015 05:25:46 -0700 (PDT)
-Return-Path: <aybuke.147@gmail.com>
-Received: from kripton.comu.edu.tr ([193.255.97.44])
-        by smtp.gmail.com with ESMTPSA id fz2sm6976580wic.2.2015.10.17.05.25.45
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 17 Oct 2015 05:25:46 -0700 (PDT)
-From: Aybuke Ozdemir <aybuke.147@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Aybuke Ozdemir <aybuke.147@gmail.com>
-Subject: [PATCH 1/3] Staging: wilc1000: Remove multiple blank lines
-Date: Sat, 17 Oct 2015 15:25:33 +0300
-Message-Id: <1445084735-20133-1-git-send-email-aybuke.147@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,540,1574118000"; 
+   d="scan'208";a="341956590"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 08:14:25 +0100
+Date: Wed, 11 Mar 2020 08:14:24 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] [Outreachy kernel] staging: rtl8188eu: hal: compress
+ two lines into one line
+In-Reply-To: <20200311070447.6909-1-payalskshirsagar1234@gmail.com>
+Message-ID: <alpine.DEB.2.21.2003110811160.2439@hadrien>
+References: <20200311070447.6909-1-payalskshirsagar1234@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Remove multiple blank lines. Problem found using checkpatch.pl
-CHECK: Please don't use multiple blank lines.
 
-Signed-off-by: Aybuke Ozdemir <aybuke.147@gmail.com>
----
- drivers/staging/wilc1000/coreconfigurator.c | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/coreconfigurator.c b/drivers/staging/wilc1000/coreconfigurator.c
-index 3d45cc3..93f3c75 100644
---- a/drivers/staging/wilc1000/coreconfigurator.c
-+++ b/drivers/staging/wilc1000/coreconfigurator.c
-@@ -8,7 +8,6 @@
-  *  @version	1.0
-  */
- 
--
- #include "coreconfigurator.h"
- #include "wilc_wlan_if.h"
- #include "wilc_wlan.h"
-@@ -544,7 +543,6 @@ s32 ParseAssocRespInfo(u8 *pu8Buffer, u32 u32BufferLen,
- 
- 	*ppstrConnectRespInfo = pstrConnectRespInfo;
- 
--
- 	return s32Error;
- }
- 
--- 
-1.9.1
+On Wed, 11 Mar 2020, Payal Kshirsagar wrote:
 
+> Challenge suggested by coccinelle, compress two lines into one line and remove unnecessary variable.
+
+The change looks ok but the log messahe is not really ideal.  It's nice to
+mention Coccinelle, but that's not the most important thing so it
+shouldn't be first.  Compressing lines doesn't really give a clear picture
+either.  The subject line could be "remove an unneeded variable".  The log
+message should focus on explaining why it is unneeded.  Then mentioned how
+the change was found at the end.
+
+julia
+
+>
+> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/hal/usb_halinit.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+> index 16a57b31a439..aa6354b9ffa2 100644
+> --- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
+> +++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+> @@ -40,8 +40,6 @@ static void _ConfigNormalChipOutEP_8188E(struct adapter *adapt, u8 NumOutPipe)
+>
+>  static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPipe, u8 NumOutPipe)
+>  {
+> -	bool			result		= false;
+> -
+>  	_ConfigNormalChipOutEP_8188E(adapt, NumOutPipe);
+>
+>  	/*  Normal chip with one IN and one OUT doesn't have interrupt IN EP. */
+> @@ -52,9 +50,7 @@ static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPip
+>
+>  	/*  All config other than above support one Bulk IN and one Interrupt IN. */
+>
+> -	result = hal_mapping_out_pipe(adapt, NumOutPipe);
+> -
+> -	return result;
+> +	return hal_mapping_out_pipe(adapt, NumOutPipe);
+>  }
+>
+>  void rtw_hal_chip_configure(struct adapter *adapt)
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200311070447.6909-1-payalskshirsagar1234%40gmail.com.
+>
 
