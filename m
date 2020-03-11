@@ -1,124 +1,124 @@
 X-GM-THRID: 6802879895263248384
-X-Received: by 2002:a17:902:7049:: with SMTP id h9mr1488408plt.0.1583928500633;
-        Wed, 11 Mar 2020 05:08:20 -0700 (PDT)
+X-Received: by 2002:a37:5f07:: with SMTP id t7mr1759884qkb.159.1583918938453;
+        Wed, 11 Mar 2020 02:28:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90b:4c8b:: with SMTP id my11ls987061pjb.0.gmail; Wed, 11
- Mar 2020 05:08:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vspL4snIOHeVFI70qj/4PeJY/3hXUDfQ6w9HjjIALMdFHyjbH+YSepoPXbaRoWOu+4YkHEo
-X-Received: by 2002:a17:902:9a09:: with SMTP id v9mr2673128plp.341.1583928499109;
-        Wed, 11 Mar 2020 05:08:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583928499; cv=none;
+Received: by 2002:a37:6714:: with SMTP id b20ls765035qkc.5.gmail; Wed, 11 Mar
+ 2020 02:28:57 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsboKXYArbHQ3Dj2A/9EadBZI8inKH0OVx9vQoiSr4jg9VdRwsf+tp9gIHyUe2pgMunOq2/
+X-Received: by 2002:a37:6556:: with SMTP id z83mr1819293qkb.381.1583918937111;
+        Wed, 11 Mar 2020 02:28:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583918937; cv=none;
         d=google.com; s=arc-20160816;
-        b=vzRjOPhH7ti8vFozwxO9t6FbyPDG9vSIt6Ffcm1kHErQhx8OUflEY8aC79MmupYELh
-         ACldJ+2YVyvUqGsmYny1VtUgjSToeKW7ex2s4LuZXfaTIEZJd5LBboKLJWA7kLYeWQSx
-         +fxudWaw+isvgB4bQHXTZ/bXAWsYpkcyaIAluJEZG0N15QLkbVYOVQyVMws3MD7FiUsI
-         2crxF5uiZ44DV9fC0FCkWZOoYm8xIBA1m0hVJEoqKpYtn7lJLzk/x4GPgzpQHTYlTOLc
-         4ZwQ3hRrlCF2L6PRCPPPjeew0b/rxFG3cfXtpE0B+X1RNxJphgbdu2jWEfhhWmVFrl59
-         Vsmg==
+        b=vZN7TnIR0MnqX+EJ6Q2KBJ1run38TPmHrd6NgYpRk4hagoZOSADvhiTlpFzI3KXmM8
+         W3QB2TusNzDl4kQikpK44si6NfrDcD5auqN0K51wx4XIs2Jw25GMrt/7WPALDMrV2uYd
+         8sEWLmWlO8DtBwJuw6ODokpXh4oPhm6LrNdXwCUh765P30UM+8KnnlWyRr9d2BqxFIoJ
+         qIAWuaFHYyEAQ3GipbGxZgr9Qkm/cw7IdCkKjkXyXt3OPFLLNqUBa21nQRvKPmjWigU8
+         wEWTdK0MCQU493+c+gBuMshy1gRc+Kegay2Ok56tm7isv5V9vScKM4b2QzWbFb9uzfmX
+         0UXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=LTlsrW/E1ZSwY/gloGEV4Fuu+L2yEcjZrBqGDvh09fA=;
-        b=z8cMJcnfrAEtBZgiaFGFdoChLz20LSQBEPuGjCDNCmWSHK01F+EyG6gQnXTLYvYb6z
-         GKTBWE8D5mvXTHMd3ERl2YgiKOCqA4TioiQ8HSVRXE3j0TNFPKIiD5EXESiYZKO6w33b
-         ligSPRK/K6rvbHHZhaOyCoVLNFb1I6eiWtqAl6HuKuPn856uNC1zvd2wCbnnWYQBm1aY
-         6ANXlpJu9d7c2Pqcw732o8Uud9nc7/0fXPmNsICdqMKnTTb0eknMI55g5OpyJ5mZ82R4
-         OJFnJz6Gmxn2q5lDvT2IKHKqJjSAJxy+J64OqxD51p2NQLrXQXz9bx/jLXnMgGEbveLu
-         JPFg==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=EjWaTK5c1J4sKLnO53FRxVjnmlwHw1GaEd7+1z185QA=;
+        b=0xu7+4vwdGVs3oAPrmy66Vp0HEkX9xxpJSOGJ7yhoCOyI2a5ekjcT7v0tEi3cu1B3/
+         +fJFr5AE0N9bX5SC2u9KDeAPqFa9RG3KQEpYfYKEzvi8Jh04RdldQSHBuN6ky/DXAPva
+         x4j2kTjAcUMI/y0Ck9jvC7HvGEssgdT/AqsYREYK9ptHs9q+ZtHPGKgWwTPoZGW/FPnq
+         Ub9Eq8g+/zTsOiiWbbJXopq3D13DHxFeGFz4Td9jnEoNG2nyWH5Xpzr+jLnT9bnVmaxG
+         wAJ6mrJXrvkb/g+PemVlioiwG1PY1KY16idQ+PXKls5uk8wP1tSV+XSwKeWHkkdGcshF
+         Q+sg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZAPZCeKG;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by gmr-mx.google.com with ESMTPS id h10si125663pju.1.2020.03.11.05.08.18
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nrmcDnfp;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id y5si66207qkl.6.2020.03.11.02.28.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 05:08:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Mar 2020 02:28:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZAPZCeKG;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1583928498;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LTlsrW/E1ZSwY/gloGEV4Fuu+L2yEcjZrBqGDvh09fA=;
-	b=ZAPZCeKGWYiAO03Og3jChZA1s0xBjvUKlL3XWiBBSZLMUnhAPNTopEcjOh4E9fqCTkmZBE
-	m/zStQd/wW16A6eloJbW26AW3I1po+jOQi/vwp7JZcY98Yo2Oc3ksb93CIOzacw8Jeuo93
-	ujAheCDV1Snvq+16Rgwlzd7YgZabsUI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-340-6RftJsJhPUukEYOYyr7nNw-1; Wed, 11 Mar 2020 08:08:16 -0400
-X-MC-Unique: 6RftJsJhPUukEYOYyr7nNw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7C4961007275;
-	Wed, 11 Mar 2020 12:08:15 +0000 (UTC)
-Received: from elisabeth (ovpn-200-42.brq.redhat.com [10.40.200.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6C0DF5C1D4;
-	Wed, 11 Mar 2020 12:08:13 +0000 (UTC)
-Date: Wed, 11 Mar 2020 13:08:07 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Cc: manishc@marvell.com, GR-Linux-NIC-Dev@marvell.com,
- gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 4/4] [Outreachy kernel] staging: qlge: qlge_ethtool.c:
- remove an unneeded variable
-Message-ID: <20200311130807.02e32fc8@elisabeth>
-In-Reply-To: <cf99101e09f79788fd87ad9ed455c5ef363b261f.1583918265.git.payalskshirsagar1234@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nrmcDnfp;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x444.google.com with SMTP id c144so960816pfb.10
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 02:28:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=EjWaTK5c1J4sKLnO53FRxVjnmlwHw1GaEd7+1z185QA=;
+        b=nrmcDnfpvj2VxI2sXEFc8O2BZB6uSSXdJNWx7Hd8bgobKQZNJulKuWFXKPD+tc7gk9
+         8tToxIEv0dzIGzdjxVObhtpoFgUIVysjuYGdOwpKzx+XPxBm9qYgP1mR7t2NwBl54FIq
+         /LTRWbHc7NEK/NgKwWtwfH4K+oL1WtlDplJ9Tjepu02wyCG29Nud77bFfW/RW8I+dj/A
+         baIzfFlJX0RaYfsRJ7/6yKgx4++LZSJ4aHR3DMQ2xh39LlugWS1kSbMhoU9TPFEp6lzR
+         WAHheT6bBhEPYUVqLEQ39CAKgtrS7MGCOoaHrszVIGVG5zdw/npw0qvJVc6XEexkOK7n
+         KxzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=EjWaTK5c1J4sKLnO53FRxVjnmlwHw1GaEd7+1z185QA=;
+        b=DH+YaP8kTqTYiluAQLkDXz9V03GE5nFYL9AzwGJOw7ftN2K7ZC9Zu6KO5uTx+Ahe5S
+         ctg6XxN4hMF3O9Ulv2A7E25jNTAvZ7/BCTJLzc5dOGwQUJEhevc9G70HtyOxBAQs2YyK
+         4pRJU2UjZ8bh+KxJ+dsCf32YQTbZJjoS0VkYRgaYI9ZTy/rWL0fKZpCtKBH8yTzjbXzo
+         iesLPWl6C/RIYLUlWEPIW041EGtoBrn1vjVMyNwC0oN8NzLrO/ZRO6Mk0cw4Ugz8bM8X
+         baU+NpODJ3yQoou8ReXPxkr+1IkKjn3SzXsLo8jc2MHOGshI6O/CNdO6SHuiSpk/RldE
+         dcQw==
+X-Gm-Message-State: ANhLgQ2+/wRy0hwSFzw8xjQLOr10c6e7YicBESce2rrf6L14fDNIJgcc
+	gehhgnhd3IxXrLtCPisz9Ns=
+X-Received: by 2002:a62:ed0b:: with SMTP id u11mr1990454pfh.46.1583918936180;
+        Wed, 11 Mar 2020 02:28:56 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([49.35.84.144])
+        by smtp.gmail.com with ESMTPSA id i6sm10565676pfe.62.2020.03.11.02.28.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Mar 2020 02:28:55 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: manishc@marvell.com,
+	GR-Linux-NIC-Dev@marvell.com,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH 4/4] [Outreachy kernel] staging: qlge: qlge_ethtool.c: remove an unneeded variable
+Date: Wed, 11 Mar 2020 14:58:15 +0530
+Message-Id: <cf99101e09f79788fd87ad9ed455c5ef363b261f.1583918265.git.payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
 References: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
-	<cf99101e09f79788fd87ad9ed455c5ef363b261f.1583918265.git.payalskshirsagar1234@gmail.com>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
+References: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
 
-On Wed, 11 Mar 2020 14:58:15 +0530
-Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
+Remove unneeded temporary local variable, cleanup suggested by coccinelle.
 
-> Remove unneeded temporary local variable, cleanup suggested by coccinelle.
-> 
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
->  drivers/staging/qlge/qlge_ethtool.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/qlge/qlge_ethtool.c b/drivers/staging/qlge/qlge_ethtool.c
-> index 592ca7edfc44..e15f9723b5c0 100644
-> --- a/drivers/staging/qlge/qlge_ethtool.c
-> +++ b/drivers/staging/qlge/qlge_ethtool.c
-> @@ -692,7 +692,6 @@ static int ql_set_pauseparam(struct net_device *netdev,
->  			     struct ethtool_pauseparam *pause)
->  {
->  	struct ql_adapter *qdev = netdev_priv(netdev);
-> -	int status = 0;
->  
->  	if ((pause->rx_pause) && (pause->tx_pause))
->  		qdev->link_config |= CFG_PAUSE_STD;
-> @@ -700,9 +699,7 @@ static int ql_set_pauseparam(struct net_device *netdev,
->  		qdev->link_config &= ~CFG_PAUSE_STD;
->  	else
->  		return -EINVAL;
-> -
-> -	status = ql_mb_set_port_cfg(qdev);
-> -	return status;
-> +	return ql_mb_set_port_cfg(qdev);
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+ drivers/staging/qlge/qlge_ethtool.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Here, you're also removing a newline that is typically inserted before
-a second return (or the last one in a function) for readability, or
-whenever there are two logically distinct branches, same in 3/4.
-
-And in 1/4, you might want to add one. In 2/4, there's no need.
-
+diff --git a/drivers/staging/qlge/qlge_ethtool.c b/drivers/staging/qlge/qlge_ethtool.c
+index 592ca7edfc44..e15f9723b5c0 100644
+--- a/drivers/staging/qlge/qlge_ethtool.c
++++ b/drivers/staging/qlge/qlge_ethtool.c
+@@ -692,7 +692,6 @@ static int ql_set_pauseparam(struct net_device *netdev,
+ 			     struct ethtool_pauseparam *pause)
+ {
+ 	struct ql_adapter *qdev = netdev_priv(netdev);
+-	int status = 0;
+ 
+ 	if ((pause->rx_pause) && (pause->tx_pause))
+ 		qdev->link_config |= CFG_PAUSE_STD;
+@@ -700,9 +699,7 @@ static int ql_set_pauseparam(struct net_device *netdev,
+ 		qdev->link_config &= ~CFG_PAUSE_STD;
+ 	else
+ 		return -EINVAL;
+-
+-	status = ql_mb_set_port_cfg(qdev);
+-	return status;
++	return ql_mb_set_port_cfg(qdev);
+ }
+ 
+ static u32 ql_get_msglevel(struct net_device *ndev)
 -- 
-Stefano
+2.17.1
 
 
