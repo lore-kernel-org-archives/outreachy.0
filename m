@@ -1,111 +1,75 @@
 X-GM-THRID: 6802842925013139456
-X-Received: by 2002:a7b:c92e:: with SMTP id h14mr2237664wml.90.1583910866956;
-        Wed, 11 Mar 2020 00:14:26 -0700 (PDT)
+X-Received: by 2002:a17:90a:1b22:: with SMTP id q31mr2034906pjq.106.1583910723937;
+        Wed, 11 Mar 2020 00:12:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:93:: with SMTP id 141ls669289wma.1.canary-gmail; Wed, 11
- Mar 2020 00:14:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsh/jrng7kbNNcmJ0U5Zn79Pf6Qu++X1ZwsDIDlFqE3PCYAO12qDGqdhH/JLwlH09Jn8h5o
-X-Received: by 2002:a05:600c:214e:: with SMTP id v14mr2062218wml.85.1583910865580;
-        Wed, 11 Mar 2020 00:14:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583910865; cv=none;
+Received: by 2002:aa7:84d9:: with SMTP id x25ls495851pfn.2.gmail; Wed, 11 Mar
+ 2020 00:12:02 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vufQKN7Vx9auggeWJ7UOE+oKqauBlCORoZfziFrGYQ4m1mS/bKUzoaZqxQVfLoQPUOxDXgs
+X-Received: by 2002:a63:7ce:: with SMTP id 197mr1561028pgh.429.1583910722419;
+        Wed, 11 Mar 2020 00:12:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583910722; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xje003TD0CRU9NP3+bl3YvAbN1KpymY6QnSYSaXpjCFilPfw6T81C1OWfcDsDnzJpn
-         0GoeDYOIYoyrQqGj0H0spDTAQ8MQ88nprxha7bQz9Kddvaa4WOFIf/vxxd9QYfpF77an
-         z/bHRziLbEdiAvslPZxiHK0m6oVDT8Zf47nhX3q/567y+Smhz0miDmFVeULuPKjDsNyR
-         ScLHIqfJCbRxaWdPBM0J5ghLxJQOLSOcGaCegZ2Hs7VHLkm02ay9sZIdgS7SpmcujkUm
-         T2Xln2kd6aBIjMBs4r4PVrX6wEfDfI/SEcvHeC5t1HM3sna412UrvAC1AijRbtdOH3/B
-         oBSA==
+        b=RB3/e0EMF3bj5NxHLibHOry3BMpTb3dJ9zDvojJ1Mj0wG5AuGaoTHNOleZ+RrmJ1qW
+         0VrPnwgMyD1RNS2DHCEddnF3pkKtmX5uAmVIbYovBocKpHU+Ya5N7zMRmkcyF3at+QfR
+         bugiA6TcGz0bUJVGJPvDhtcawwfXd8zP49advlIfDdWlmAmzxbOOX5iP5GgmoYCSES6A
+         Lmr/TkeivrSMN5GpQlqmwHrlyPCu5CX+GUcvUgIdfFAAxG4JFf0zzWtdxfp+oK3IhBim
+         G3z3DVglitnOFkzC0ktVMGwBRe4wbrP/H2Y83ZVbwG2ABg7HvbZcUIjPCGiM4RhS5IVf
+         6+Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=+0jJRvbY8/HuE723MBK3ryznTUjPTa21ZmWlJn9K+5o=;
-        b=njeGJb/H/p3wZdott+mTI3unB5udOtjV1KjzQ2Uav/iZ62o1KaS8rof4vtZzJDyDMC
-         l6gNzGIwSg1rjRSnBZeAnJkceq9ChMwS2pCvlRxAwLt23DIuaWMq1LlphxLn0PkDcB+P
-         mBgHhgC1fvl+yICS0c6HnjcnPUsYFNI2NAYjCiNGWO7YO/WmDSZjUcOole3G79ruumoF
-         wQUyLQC9tpNsuDWBA1pMy2ddh2LK/etXjodMZxLahgKFwFpwbImckT7T7TWjI3Gdf1qh
-         ps5Hpmj8cCK5tUyxISCDN7udcHTF+87S49PtPYBcvIEobltV4Ge4XpchvSc1trBkE7LO
-         7vfQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=PHg/uX724OnQlI8t5cw/i8d+QS9uBthnpkl2UrJC/F4=;
+        b=JpDlXlcN802ly82CRWOZNU3Of3ZQflh/nw2wPUBZQurBSRDQP6OHoaWH2irDRHi1X/
+         cx6+ocwrV+NdBMTxGT6rBGFZLgWOwnhFaz4eQ3MKMS/x4zK0Ld86iNpWoinoIUkVKbdQ
+         dIAIZLLxKTOg6GUy52TIMpbbzmjKxLYfH7A7p7+ldiF0AY7x0dH3CSMAsckACbJQkIkn
+         OxAFWiKkVkwtEOMFro6P9qnw8SzfjhBn0nJymuc6dLnTk7WQhLf3+7eIlTqNFuzuayH2
+         SDxWsvwApbd2oRchHaqEWJ3/Iba2UyZP6qDbr2zDxXTtRBMo2faVnSaWo3zh1C3eyjAY
+         CO5w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id o194si235654wme.2.2020.03.11.00.14.25
+       dkim=pass header.i=@kernel.org header.s=default header.b=HAsYsrjF;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id ng10si89479pjb.2.2020.03.11.00.12.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 00:14:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        Wed, 11 Mar 2020 00:12:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,540,1574118000"; 
-   d="scan'208";a="341956590"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 08:14:25 +0100
-Date: Wed, 11 Mar 2020 08:14:24 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@kernel.org header.s=default header.b=HAsYsrjF;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id ABDBD208E4;
+	Wed, 11 Mar 2020 07:12:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1583910722;
+	bh=PHg/uX724OnQlI8t5cw/i8d+QS9uBthnpkl2UrJC/F4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HAsYsrjFC1cP7yywgHfQTy1DIq7DQ716OFHYQH/4r9GZ//Go3jLsqZrjiV6KuH16z
+	 aExIVNP4WJJiX7f5mrMmQDENHD7/lsOlvTACxJRZz3oRHR2w+Ln+ba0r54LuqNuuii
+	 vPkuTuVeBAH1GV1zltWuRJwFM3Qkrw184hg7GQGQ=
+Date: Wed, 11 Mar 2020 08:11:59 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] [Outreachy kernel] staging: rtl8188eu: hal: compress
- two lines into one line
-In-Reply-To: <20200311070447.6909-1-payalskshirsagar1234@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003110811160.2439@hadrien>
+Cc: Larry.Finger@lwfinger.net, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] [Outreachy kernel] staging: rtl8188eu: hal: compress two
+ lines into one line
+Message-ID: <20200311071159.GA3618653@kroah.com>
 References: <20200311070447.6909-1-payalskshirsagar1234@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200311070447.6909-1-payalskshirsagar1234@gmail.com>
 
-
-
-On Wed, 11 Mar 2020, Payal Kshirsagar wrote:
-
+On Wed, Mar 11, 2020 at 12:34:47PM +0530, Payal Kshirsagar wrote:
 > Challenge suggested by coccinelle, compress two lines into one line and remove unnecessary variable.
 
-The change looks ok but the log messahe is not really ideal.  It's nice to
-mention Coccinelle, but that's not the most important thing so it
-shouldn't be first.  Compressing lines doesn't really give a clear picture
-either.  The subject line could be "remove an unneeded variable".  The log
-message should focus on explaining why it is unneeded.  Then mentioned how
-the change was found at the end.
+Please wrap your changelog text lines at 72 columns like your editor
+suggested that you do :)
 
-julia
+thanks,
 
->
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
->  drivers/staging/rtl8188eu/hal/usb_halinit.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-> index 16a57b31a439..aa6354b9ffa2 100644
-> --- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
-> +++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
-> @@ -40,8 +40,6 @@ static void _ConfigNormalChipOutEP_8188E(struct adapter *adapt, u8 NumOutPipe)
->
->  static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPipe, u8 NumOutPipe)
->  {
-> -	bool			result		= false;
-> -
->  	_ConfigNormalChipOutEP_8188E(adapt, NumOutPipe);
->
->  	/*  Normal chip with one IN and one OUT doesn't have interrupt IN EP. */
-> @@ -52,9 +50,7 @@ static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPip
->
->  	/*  All config other than above support one Bulk IN and one Interrupt IN. */
->
-> -	result = hal_mapping_out_pipe(adapt, NumOutPipe);
-> -
-> -	return result;
-> +	return hal_mapping_out_pipe(adapt, NumOutPipe);
->  }
->
->  void rtw_hal_chip_configure(struct adapter *adapt)
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200311070447.6909-1-payalskshirsagar1234%40gmail.com.
->
+greg k-h
 
