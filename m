@@ -1,120 +1,104 @@
 X-GM-THRID: 6802879895263248384
-X-Received: by 2002:a05:6830:150:: with SMTP id j16mr1558229otp.301.1583918913910;
-        Wed, 11 Mar 2020 02:28:33 -0700 (PDT)
+X-Received: by 2002:a62:f24d:: with SMTP id y13mr2071993pfl.27.1583918904520;
+        Wed, 11 Mar 2020 02:28:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:69cb:: with SMTP id v11ls335879oto.5.gmail; Wed, 11 Mar
- 2020 02:28:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvyJhJUFjf9xdBp1y3QKVK5NI0APjxLCvG59XsilqhbOPmeRJtjmg33UqQ8Tm6NmqMFpfjd
-X-Received: by 2002:a05:6830:1042:: with SMTP id b2mr1628728otp.170.1583918912649;
-        Wed, 11 Mar 2020 02:28:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583918912; cv=none;
+Received: by 2002:a17:90a:b114:: with SMTP id z20ls813979pjq.0.canary-gmail;
+ Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtr0Hry7W1EMU3M+WOrJVBamQUqjXWJS47kd08/IjQIsOuDDRm77H6U4bOeZkrm6WL4sEMW
+X-Received: by 2002:a17:90a:a417:: with SMTP id y23mr1472667pjp.184.1583918903164;
+        Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583918903; cv=none;
         d=google.com; s=arc-20160816;
-        b=vArniEXoVrJH/pI55uYE1ejCMfecHxD3eHUjJNXqHCDjNTfnQsldNrcqxVuIytQvzY
-         n313WbudZ1o8pl5dIYlgCsNNmBLHEy1YNwiCcWlxljM3F0Pyc3AuiPC6oR+O4S60jEqt
-         RBOObzD7KW+p0UPgp8IhotsRCNDAr3qJQP4kTqJy091iF43m145qhfoHOAUgvB6UQ9VX
-         DrePiQRokNLMR8gwZq/Gfb4W5YfwVFu0tga93XBwqjnPwiWvxepXq6SuHWurBxByGQZ+
-         HsMPuGQnj+0XtkbROcoK7UZUYNtLs8PrybB51K1fi9wnXDCbfZQLwsews78QQXkvSnGn
-         UABg==
+        b=eZUxGCtVFEKFC0tPbnP8ODKtcZK8S83qpcqq0It1MCCE8Qsx/pCe7dDKgGk2tgdatK
+         GCwJsKqAxuGHHgTO9TGKiPn59p2u3J2yVVk0rnguzGU6fND13m23VnCA45dnAmWYT4SV
+         f6fINbEh/7rR1bAGHsR7c7y1+s4/PtDqRKP2hDmxo6rrRZ9u4hxREHoKgry2y74OPNCr
+         MdtGbmyAHjxJnHQXX9Hims5qP4JqbKN7jjjCT6nUrpXvtLS7lduhI+vYpNN3AXo6aFMH
+         +Lz87bN7/u9qphiOkKfQoL2HpEBrx4sErdAYkhZeNpRxVvTuMKJyjLhXXoQlAF9bPSBw
+         5CnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=uICPHlYWEhqp/AyTLm5D6CUhnjOgsbEjLYKVbTA4mlw=;
-        b=cyAoOfcsEXip/3+SMVpcKAoNNkcG0QBCCBF3mY0MLsWOoq1tlcAqMWg3Jj0A8X9ePS
-         B6gRIKSxUgmyUCkzlYoS2bCHSjbdueGPMOoKkbaEBfeLS/osMMqbpbZvnV1V8WD451rl
-         +q2/uCSnmviKu+/q33735Ko5+AuFd8K6KHbBhe1rZ40bcevdQs2uDR4G+1XZjs8fmEoQ
-         P7BZf/zj4mdK+69Uln1jDeAtI8pCudXVeXtkNf1nGLtcoPyCO8QgcmmrNcTBBAg3n8Or
-         BVN5A5sFtQZQK44MTRFzF3UO8ORw4liuIxGHxcQcOAnIp2DLMW70YZG5FpZvY76+cgNh
-         NZOQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=fWZRaDRaF+mSfOiGcYxGW1dQzdc1bZy42GzifEy5enc=;
+        b=ficvo9Re0KmXIyRr8L19eTw82ZUC387bM72eduOAaN9Nvldg4WAG/LQ3Xnzw3ccB0s
+         RsLQtG06pWkvFUl5t8yCtc7Bd3imVsGq+1Q/eefum1s7W5AU8Tb3kIEmLQ9Y6d0dmMZr
+         K8VXss0C2+hBqjetgj5hR3iofcR/OLWqOB0Ov7g7RADCLI4Ca20mlRO3NB7W2pFOSrRV
+         FlmOEoSyHEimBVC4/Ev8XByQ/ky97AXlSE5gRKuq5sHUDhjOU2DsdC/eIVFjqD/coSZ8
+         5UcKc2HF0Z/dj3ju660gLX1XMoGR+yWlnrv6jZuM1FUxEngDgVQwcdFimX3mRrw/wQJs
+         KiUQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mOiOyjIX;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KJpFRJSV;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id v19si101746oth.1.2020.03.11.02.28.32
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id e2si105499pjp.1.2020.03.11.02.28.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Mar 2020 02:28:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mOiOyjIX;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KJpFRJSV;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id a32so5723pga.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 02:28:32 -0700 (PDT)
+Received: by mail-pl1-x644.google.com with SMTP id g12so819034plo.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 02:28:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=uICPHlYWEhqp/AyTLm5D6CUhnjOgsbEjLYKVbTA4mlw=;
-        b=mOiOyjIXz7SrwmCIhwrOnDAB8uPJS8jRD8OpL8mfAfxFbztyUPO27yccu93QJtIIT0
-         Vq+f46oIlyxBjkHat6mLGhDfhsSLTEfQnduWndApRsP7x9T1rDgZh8KLzL0HJpiJK4Vh
-         4owllCFANVPUQ8DZbnzuU+LjbXPColQUgqcy6HSI027Ojb/WsSOgghgkywfASO+8O1r+
-         2ep/N/N6Nzso/YNTmmliMf2i7w7hFD8koue0DIhvF6iAP5FUx4bLPvXutXSkxUf2e9UQ
-         6B4No1ivrQmYEFZ6lGMXHdKMkuZKtXgz1+pNZprMU/UohISE8Ee88jlBuKwxJ43B+6ej
-         B6sA==
+        h=from:to:cc:subject:date:message-id;
+        bh=fWZRaDRaF+mSfOiGcYxGW1dQzdc1bZy42GzifEy5enc=;
+        b=KJpFRJSVyo/hiNcZKiMRXqW+c5a4fIwGRKD4b8tAG6q7igXWtVV/Qf61KSHT92jB1m
+         W60+0+rorGZYMRhl+WB9WJMWS5XCEHLeu+8dGAG0ScqkSbuWQvjVBO7UIU2nNhkKqloa
+         s2mpj/Q8BcE+eEa620GwGXPbfxfT2YaFBhmCLqHnQVJKgNREzZklbDHDhEabdV0qZh5X
+         VYU13m91fb6dfkjFYB9KxcZQI6m+pcMUlPiNMK2c1Tp4HOvCQ89D1z3wyuR55xFyG9Qq
+         6mTT1SjW9Vb2V+tnBzgvKo33WbGg1BC/yjL+3STzWyHhwSYjqddk4i8KD55DvGlf7ycz
+         KAgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=uICPHlYWEhqp/AyTLm5D6CUhnjOgsbEjLYKVbTA4mlw=;
-        b=RZ0Ef5hhq5o7nZJWQE81nARkut1OEirXEy/vr6WNnihKKEfxjKa8OVJXGHd4MOVfQv
-         TApVCcPg3wbW790kI98DQWTOrvLBGUSNvbgfQZt1H9bcnYPspnC/QekQyRcp+orqWhwR
-         ZXy+LwF+VRfjd5G9CWV28Kpht2NjYQOVhOyxCqCTHPApAsU+D8bBzZYgGXBFdvo6GpuP
-         ZGojTV2y4QhIZbHMjLVgVQoN8NU38hpnNZdCNBKLll+LXxJSSCHSlzZgg4brAoy7m6Oc
-         NJ0mAS8mn5iCXGPYHPPh0HQy7dqHsJOYukqs9331umU+3ecE6urgyLCd8I7+I57eKE3V
-         sLQw==
-X-Gm-Message-State: ANhLgQ0M2+ZF7Kfe8xS5NwSaPHJvOgzmhPlUMHLQnwRvKMLdfUr9s3r1
-	UvPTvBpMw46CNuGPTONZc/+FhAIa
-X-Received: by 2002:aa7:924d:: with SMTP id 13mr1990036pfp.126.1583918911864;
-        Wed, 11 Mar 2020 02:28:31 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=fWZRaDRaF+mSfOiGcYxGW1dQzdc1bZy42GzifEy5enc=;
+        b=hxoSG1aV+9E4jhpNMueIPbRe2TF/5cDa2q+I/afPjYXBBndc7Oh2YkRzhO0W30KwOd
+         +rcJMbBV2VOuDAyNsk+NBywooL6zlMy8y7EszeNqSuPJUTmHdQ0OTOmLnD2/BDDJlfVb
+         G68P0zY6/06cZ9MxdDuZfrxxWucOCcXBoka+sCTASasD8DwXJCIPyMM/iFlFr04yns7N
+         ctmhAmvK+sJZ3R2awnN/FJXP9WjXzJhgUDGB4T9XbfCbZ5s20eAqvbriip9D40C91x3o
+         1WmTR3PnWEYQ5uaIbWQm+q7dKCBUZjcWizxmZDcLhUTYJWh/5MwBSIgm4UxLtWfpdjxO
+         0HGg==
+X-Gm-Message-State: ANhLgQ3ZaWYClM3rb2Vd8J7PkZWqpUyjffF6Rxi4O0nE3lIVGY3+Wb/O
+	KvfsRqPPZ9uMtyRWKedKblU=
+X-Received: by 2002:a17:90a:c396:: with SMTP id h22mr2491308pjt.128.1583918902719;
+        Wed, 11 Mar 2020 02:28:22 -0700 (PDT)
 Return-Path: <payalskshirsagar1234@gmail.com>
 Received: from payal-desktop ([49.35.84.144])
-        by smtp.gmail.com with ESMTPSA id nl3sm5470486pjb.12.2020.03.11.02.28.30
+        by smtp.gmail.com with ESMTPSA id u126sm50443116pfu.182.2020.03.11.02.28.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 02:28:31 -0700 (PDT)
+        Wed, 11 Mar 2020 02:28:22 -0700 (PDT)
 From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
 To: manishc@marvell.com,
 	GR-Linux-NIC-Dev@marvell.com,
 	gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Subject: [PATCH 1/4] [Outreachy kernel] staging: qlge: qlge_main.c: remove an unneeded variable
-Date: Wed, 11 Mar 2020 14:58:12 +0530
-Message-Id: <6385240a2566b8087de6f2d02a93a2eb45381767.1583918265.git.payalskshirsagar1234@gmail.com>
+Subject: [PATCH 0/4] [Outreachy kernel] staging: qlge: remove unneeded variables
+Date: Wed, 11 Mar 2020 14:58:11 +0530
+Message-Id: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
-References: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
-In-Reply-To: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
-References: <cover.1583918265.git.payalskshirsagar1234@gmail.com>
 
-Remove unneeded temporary local variable, cleanup suggested by coccinelle.
+Remove unneeded temporary local variables from the files of drivers/staging/qlge directory.
 
-Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
----
- drivers/staging/qlge/qlge_main.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Payal Kshirsagar (4):
+  [Outreachy kernel] staging: qlge: qlge_main.c: remove an unneeded
+    variable
+  [Outreachy kernel] staging: qlge: qlge_mpi.c: remove an unneeded
+    variable
+  [Outreachy kernel] staging: qlge: qlge_dbg.c: remove an unneeded
+    variable
+  [Outreachy kernel] staging: qlge: qlge_ethtool.c: remove an unneeded
+    variable
 
-diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-index c712e1af90de..057034319e4e 100644
---- a/drivers/staging/qlge/qlge_main.c
-+++ b/drivers/staging/qlge/qlge_main.c
-@@ -3905,14 +3905,11 @@ static void ql_release_adapter_resources(struct ql_adapter *qdev)
- 
- static int ql_get_adapter_resources(struct ql_adapter *qdev)
- {
--	int status = 0;
--
- 	if (ql_alloc_mem_resources(qdev)) {
- 		netif_err(qdev, ifup, qdev->ndev, "Unable to  allocate memory.\n");
- 		return -ENOMEM;
- 	}
--	status = ql_request_irq(qdev);
--	return status;
-+	return ql_request_irq(qdev);
- }
- 
- static int qlge_close(struct net_device *ndev)
+ drivers/staging/qlge/qlge_dbg.c     | 5 +----
+ drivers/staging/qlge/qlge_ethtool.c | 5 +----
+ drivers/staging/qlge/qlge_main.c    | 5 +----
+ drivers/staging/qlge/qlge_mpi.c     | 4 +---
+ 4 files changed, 4 insertions(+), 15 deletions(-)
+
 -- 
 2.17.1
 
