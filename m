@@ -1,76 +1,79 @@
 X-GM-THRID: 6802933186338750464
-X-Received: by 2002:a5b:4:: with SMTP id a4mr3070063ybp.109.1583931920533;
-        Wed, 11 Mar 2020 06:05:20 -0700 (PDT)
+X-Received: by 2002:aa7:dd10:: with SMTP id i16mr2776873edv.39.1583931416655;
+        Wed, 11 Mar 2020 05:56:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:d851:: with SMTP id p78ls472759ybg.3.gmail; Wed, 11 Mar
- 2020 06:05:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuRkFQytinsow/dDhmPKKFSB0GcDzXd9oow6jzDKB3jL7HtfJOj0VX/+QRFBfLk7PtXovJo
-X-Received: by 2002:a25:c482:: with SMTP id u124mr2956836ybf.286.1583931918819;
-        Wed, 11 Mar 2020 06:05:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583931918; cv=none;
+Received: by 2002:a50:bb02:: with SMTP id y2ls1359770ede.1.gmail; Wed, 11 Mar
+ 2020 05:56:55 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsnwgfuckDFS3Z+OtYFgqBo7YwI1y03eBK0ZUCKH2vOKcxwwkTk7vHTj4iH0AZJpARmCka0
+X-Received: by 2002:a05:6402:151:: with SMTP id s17mr2798641edu.141.1583931415200;
+        Wed, 11 Mar 2020 05:56:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583931415; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mbqjaawd2ooxLO7NnGg2I5r8XLfjDUN6Ar9vV2oGmiAPu58zr8WA7bmHvo3krnDXDl
-         KR3YgRSDnBBUY5QZTC2WXSyh/fM9R9e6vZXmwVI/Gig+TnGbzt0Srnyfg7ksS+cVeWXC
-         XTZci0lpekh9whKpq/oV29kNXJmbG29pjorUD8jxFb5E3quulc/Tmi4WT4mWm6p8hpJq
-         p4NycnuThdCsgmmJue40S6OXKzcTyeZc6THLd3vxvMiT3xqjGDEg+FDG0vIFuJXGJaz/
-         XIR4va/XHxEtCv5eErjHOG5f9jzzo04HU+ek3ij4EMLkWnDs/KFJhPVxUkYVQORfANZm
-         jsOA==
+        b=nXbOkYOSXIrUJGvaxrOkE5egx2KZ66i+W4556jM+SkjIOuI/zcMC65t6Xu96p0Z7eD
+         Yetd/zQzX7s64k22crlnAc+wDdUF5iEKMIZc4KdZ8jwbUACuNmkWhcXFxbYH85kfzhx3
+         UbGKTsQR7Du+O1Vv16mEs2h/7LdSug4KCI5V97C5hy5ytf3RIWGLd46V5VvmSWAv0XmA
+         c+FmB5ux71dkIq8tbZmalJ5YHboaZUynH9ZjlQy0rwqOqI0s9EhpwMo5SrNVG0DxA+RJ
+         mgjBz5nX9cHb4E/zRyJB/rIw5frQdoKid5hfXxP18lNEqDNr9u0/7WwEPbeDdQuUjPkf
+         X7vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=vtaQ+U9MA0kTmg0Z1eF9WBxoyLGoFUl+m1kVFe6IY30=;
-        b=f8iH14qgvkBPTVAZhAo++BjG4pXATJf8E5XUvLknPYCm9+qTrg51eVEiyPiawZ6+fw
-         U7MqfFjo+CtYokH8u+OE2n+I0mnoCF+VDzPZ4PHEURkb0bvOyudXx4d7GHOjtFgH7iJK
-         6sDUqfxtfE/3n6NB1vOOvyjO2FSRr4LuzBr4deIs/vQBjJ+uekoWdYIYQzA1NLLcW04/
-         Kl8ZEQFLHcoFIyQEoOiQdhevt4GQpnlU9n3PwtHkSEeXjDoMi4GWnWJdKkrG/4eHljou
-         6Jz0p/3dHdJgZQVA7LOInJC6tUFom6QCLkOT9FWwYQlr8rdfm9cnxStudKjh1YrXojLj
-         yUbw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Mx5DpTDBYp2tjNrpRDPM8axfdkKXVRaP9QTt5NdOu/s=;
+        b=eJ1lz2PUIm2nPqwV/pXOvMda3+JzMjdcfwHTHIY1060R9BxQb2fRVsy43SVmvZ4dps
+         YprcNeBG/nlnvWEIkRno5s8bRTrfxCaNICWEImzyYxtFMVATeeLIdxEmrgkKYvvIdi8A
+         6o7bID2Nt+qKD5k8e8nb+qzvQ8eI8q8FOXqBfk7sCNFElTqj7S8NM8oV9b+NBz1rBJvI
+         uP9Z9F8NESus0QC6/7GwPD8zuyujQAQGW6QY3xhLdtijo4HIwlQNEEeyQaSYiYMR0kal
+         d5aYoW1h0QmJR04xE3odyQcaw8Uek+S2bGIn988DYd+KUoXrb3Nmqkk2oC/pFDn9JZMs
+         7VnQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=XfkqkQli;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id b130si84366ywe.2.2020.03.11.06.05.18
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id dc25si111142ejb.1.2020.03.11.05.56.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 06:05:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 11 Mar 2020 05:56:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=XfkqkQli;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 5F4842146E;
-	Wed, 11 Mar 2020 13:05:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1583931917;
-	bh=Cx+gOZIgKknGIdPl+0Nfn9VKXwKcGh9NBh6FXMSvHUU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XfkqkQlixftkurJ7VriRJAsuscTbNeI8pFMzOp458I4zbmDsgpTj84waelnttSoJ+
-	 e6lJangj4aZFHzbvcZuv4U8+/oXCRJKMb7/0/a8XhFwYmZHHftshuk9YAV/yuXkEZI
-	 Nc91TFBsb2DmARCHSM9gC8P0UT1b+wFY7pQzNr3Q=
-Date: Wed, 11 Mar 2020 14:05:15 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,540,1574118000"; 
+   d="scan'208";a="439836582"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 13:56:54 +0100
+Date: Wed, 11 Mar 2020 13:56:54 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
 To: Enrique Vargas <jevargas@seas.upenn.edu>
-Cc: Chas Williams <3chas3@gmail.com>, linux-iio@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] remove unnecessary newline for brace
-Message-ID: <20200311130515.GB3823904@kroah.com>
-References: <20200311125507.GA9347@evX1>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: Chas Williams <3chas3@gmail.com>, linux-iio@vger.kernel.org, 
+    Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] remove unnecessary newline for
+ brace
 In-Reply-To: <20200311125507.GA9347@evX1>
+Message-ID: <alpine.DEB.2.21.2003111355390.2999@hadrien>
+References: <20200311125507.GA9347@evX1>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Mar 11, 2020 at 06:55:07AM -0600, Enrique Vargas wrote:
+The subject line should give information about what part of the kernel is
+being changed.  See other patches or the tutorial for examples.
+
+On Wed, 11 Mar 2020, Enrique Vargas wrote:
+
 > put brace at the end of line following coding conventions
-> 
+>
 > Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
 > ---
 >  drivers/atm/adummy.c | 3 +--
+
+Is there a reason why you are working on drivers/atm?  Normally for the
+application period you should only do cleanups on drivers/staging.
+
+julia
+
+
 >  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
+>
 > diff --git a/drivers/atm/adummy.c b/drivers/atm/adummy.c
 > index 8157925af824..6eeaa1b21f3b 100644
 > --- a/drivers/atm/adummy.c
@@ -78,20 +81,19 @@ On Wed, Mar 11, 2020 at 06:55:07AM -0600, Enrique Vargas wrote:
 > @@ -131,8 +131,7 @@ adummy_proc_read(struct atm_dev *dev, loff_t *pos, char *page)
 >  	return 0;
 >  }
->  
+>
 > -static const struct atmdev_ops adummy_ops =
 > -{
 > +static const struct atmdev_ops adummy_ops = {
 >  	.open =		adummy_open,
->  	.close =	adummy_close,	
+>  	.close =	adummy_close,
 >  	.send =		adummy_send,
-> -- 
+> --
 > 2.17.1
-> 
-
-This is an outreachy application patch?  You need to do work in
-drivers/staging/ only.  Also, the iio mailing list is not the correct
-one at all.
-
-greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200311125507.GA9347%40evX1.
+>
 
