@@ -1,99 +1,110 @@
 X-GM-THRID: 6802933186338750464
-X-Received: by 2002:aa7:dd10:: with SMTP id i16mr2776873edv.39.1583931416655;
-        Wed, 11 Mar 2020 05:56:56 -0700 (PDT)
+X-Received: by 2002:a37:9104:: with SMTP id t4mr2716654qkd.449.1583931312215;
+        Wed, 11 Mar 2020 05:55:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:bb02:: with SMTP id y2ls1359770ede.1.gmail; Wed, 11 Mar
- 2020 05:56:55 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsnwgfuckDFS3Z+OtYFgqBo7YwI1y03eBK0ZUCKH2vOKcxwwkTk7vHTj4iH0AZJpARmCka0
-X-Received: by 2002:a05:6402:151:: with SMTP id s17mr2798641edu.141.1583931415200;
-        Wed, 11 Mar 2020 05:56:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583931415; cv=none;
+Received: by 2002:a37:b7c4:: with SMTP id h187ls1048028qkf.1.gmail; Wed, 11
+ Mar 2020 05:55:10 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv6apDAZE+U1F/omXnYOmHHuDDQ1uejj9yzECLEe2LrcS8ei2YxMOac1LKOLg9cJ2LQ413y
+X-Received: by 2002:a37:4dc4:: with SMTP id a187mr2649929qkb.436.1583931310689;
+        Wed, 11 Mar 2020 05:55:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583931310; cv=none;
         d=google.com; s=arc-20160816;
-        b=nXbOkYOSXIrUJGvaxrOkE5egx2KZ66i+W4556jM+SkjIOuI/zcMC65t6Xu96p0Z7eD
-         Yetd/zQzX7s64k22crlnAc+wDdUF5iEKMIZc4KdZ8jwbUACuNmkWhcXFxbYH85kfzhx3
-         UbGKTsQR7Du+O1Vv16mEs2h/7LdSug4KCI5V97C5hy5ytf3RIWGLd46V5VvmSWAv0XmA
-         c+FmB5ux71dkIq8tbZmalJ5YHboaZUynH9ZjlQy0rwqOqI0s9EhpwMo5SrNVG0DxA+RJ
-         mgjBz5nX9cHb4E/zRyJB/rIw5frQdoKid5hfXxP18lNEqDNr9u0/7WwEPbeDdQuUjPkf
-         X7vQ==
+        b=MvwB+gjzux/8BR/EVqnCHdMVb++m0lkan2jku8Ey2PTJT64sJk0XVcHryNFoLYnOHA
+         YkxsiK/yVED+WQWj4k+ubIp/v6I9A9wSPeXm7ISQpYqM76VqHfcn9n5aq7Gsuh2sNBcy
+         Z7VhhhOuh9CG8I0I7hnytPoN102Zc2Tn8SzQmrzXTlLh+JsGSFGKknLqQC8JACwPAq+d
+         pseiWabk8XdnPXvDSn3osS55oZ+ZB8hULJiQrUxSCoNM52S6gi7J/TTXV4K8O2nvBHFB
+         SxvXSZfd83lpYo1Ro9Tm7wi8L3T7TVKNXLl1KAXZuveTL5qL3wmpj/q9YMwSrgSYiHD/
+         dT5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=Mx5DpTDBYp2tjNrpRDPM8axfdkKXVRaP9QTt5NdOu/s=;
-        b=eJ1lz2PUIm2nPqwV/pXOvMda3+JzMjdcfwHTHIY1060R9BxQb2fRVsy43SVmvZ4dps
-         YprcNeBG/nlnvWEIkRno5s8bRTrfxCaNICWEImzyYxtFMVATeeLIdxEmrgkKYvvIdi8A
-         6o7bID2Nt+qKD5k8e8nb+qzvQ8eI8q8FOXqBfk7sCNFElTqj7S8NM8oV9b+NBz1rBJvI
-         uP9Z9F8NESus0QC6/7GwPD8zuyujQAQGW6QY3xhLdtijo4HIwlQNEEeyQaSYiYMR0kal
-         d5aYoW1h0QmJR04xE3odyQcaw8Uek+S2bGIn988DYd+KUoXrb3Nmqkk2oC/pFDn9JZMs
-         7VnQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=LejFn6yYVLckCZa01sKnIbyhEF1keVyA7WsR3125o7Q=;
+        b=Oai9yBcWkhQyK6WfusXJwOOHeiq3RcA9xlj0l0gRnYCkQ0RIYIinL2+6Mbqljpc4V9
+         MAKpANyBPKDTJTYRJ8xQKkoO21GwtRs8KGJOCZ6HCt6vVMyB5ArCB6yb4bLk3sPWTKH5
+         f8WnpqfI4rGf+4PyKYjPHdbCVbPvu9zG2TmOcz0GB4Susc3FSF92gs7XowXa4nbjRj13
+         A+l8Yqo8hGKuhXwlLxDGw+AkgPZyb5oetH3H3l2Jrbxnggl7dYQHV7+LOwy/tNOrmrJU
+         bk57NcpzAedrtV48NHxZZNPQApCbzRwD9Wt2TrLPG5i8SB8GkeT8f2v2p/HeExZ8t96w
+         R+wA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id dc25si111142ejb.1.2020.03.11.05.56.55
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=wtgQdxKD;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Return-Path: <jevargas@seas.upenn.edu>
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id d193si84075qke.1.2020.03.11.05.55.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 05:56:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Mar 2020 05:55:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,540,1574118000"; 
-   d="scan'208";a="439836582"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 13:56:54 +0100
-Date: Wed, 11 Mar 2020 13:56:54 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: julia@hadrien
-To: Enrique Vargas <jevargas@seas.upenn.edu>
-cc: Chas Williams <3chas3@gmail.com>, linux-iio@vger.kernel.org, 
-    Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] remove unnecessary newline for
- brace
-In-Reply-To: <20200311125507.GA9347@evX1>
-Message-ID: <alpine.DEB.2.21.2003111355390.2999@hadrien>
-References: <20200311125507.GA9347@evX1>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=wtgQdxKD;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Received: by mail-oi1-x241.google.com with SMTP id k8so303323oik.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 05:55:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=seas-upenn-edu.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=LejFn6yYVLckCZa01sKnIbyhEF1keVyA7WsR3125o7Q=;
+        b=wtgQdxKD3cCVyNcikyZruuGpQNUh73otTPL03L1Y3nG5QJ0mu8VBC07J2FFWWv7fjR
+         jupqrrpiCkzvvIpgV6g0vJKpl0plw/q3q1I4eeM7xo4uYKOtlF9Zq/RKyTczVB83QoOH
+         oDm6XuGKM+TP+lUY2Zf0a3zmJH/7s9QIooxvTxu0bSLJhjdz9S7RUT1jGakUV2YeOGer
+         lSVa7LQXYVJFczjgZt8Vrf8Edi+Xei2X9NUapSqsEmrhjfhj9jq9oInz0UO5sEYHH68n
+         LeHhnqAviCnFHeYd9fQdi8MO0lS+d/Yw4jLZ+z6/mBa6OMeuAObj7BOJnZ904CsSCD3u
+         k+wA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=LejFn6yYVLckCZa01sKnIbyhEF1keVyA7WsR3125o7Q=;
+        b=mXbMbOJmBpjcVkTyrguF77gc/RBzLcru+aGfyvB52qsqg0vSjUoBauuJNhaGKIF5W9
+         hUrhfJZBlgnlvGkB/oz/3RGr9gffwPlhvcruAOcTKDP8kbqhq/UTJ4UcJwgt+rS3wR8D
+         b+duxeGfzoaJF9eYJkfPHHvf6NKoqNc/0SOJnpykhsABIC3OMNDv2jkQaylDhPoIN9QS
+         awixw7lCggFJwbR5G9C/wb0wVq5o+I+z7MZZWUaBEtVTAjjnlq2SBRn9bwbQv6+DjG1j
+         eQivuJXonRrVuyN+ZpuabFZ4Z/Pn1IZCTsF2ghzUHnShqx3SDcV28JpbwYA8FD4EyXAi
+         rEEw==
+X-Gm-Message-State: ANhLgQ1B3DiPyBhpjtztotS/NmmRLik3BWEDEwoCcHgau9jLaKWgg+7v
+	4IfYES28+cSXPvQ/JJp+Y7W0VtjCVx/xnA==
+X-Received: by 2002:aca:a882:: with SMTP id r124mr1826627oie.53.1583931309752;
+        Wed, 11 Mar 2020 05:55:09 -0700 (PDT)
+Return-Path: <jevargas@seas.upenn.edu>
+Received: from evX1 ([2806:106e:1f:1211:ccea:c45e:83e9:af6e])
+        by smtp.gmail.com with ESMTPSA id 67sm5392250oid.30.2020.03.11.05.55.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Mar 2020 05:55:09 -0700 (PDT)
+Date: Wed, 11 Mar 2020 06:55:07 -0600
+From: Enrique Vargas <jevargas@seas.upenn.edu>
+To: Chas Williams <3chas3@gmail.com>, linux-iio@vger.kernel.org,
+	Greg KH <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] remove unnecessary newline for brace
+Message-ID: <20200311125507.GA9347@evX1>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-The subject line should give information about what part of the kernel is
-being changed.  See other patches or the tutorial for examples.
+put brace at the end of line following coding conventions
 
-On Wed, 11 Mar 2020, Enrique Vargas wrote:
+Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+---
+ drivers/atm/adummy.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-> put brace at the end of line following coding conventions
->
-> Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
-> ---
->  drivers/atm/adummy.c | 3 +--
+diff --git a/drivers/atm/adummy.c b/drivers/atm/adummy.c
+index 8157925af824..6eeaa1b21f3b 100644
+--- a/drivers/atm/adummy.c
++++ b/drivers/atm/adummy.c
+@@ -131,8 +131,7 @@ adummy_proc_read(struct atm_dev *dev, loff_t *pos, char *page)
+ 	return 0;
+ }
+ 
+-static const struct atmdev_ops adummy_ops =
+-{
++static const struct atmdev_ops adummy_ops = {
+ 	.open =		adummy_open,
+ 	.close =	adummy_close,	
+ 	.send =		adummy_send,
+-- 
+2.17.1
 
-Is there a reason why you are working on drivers/atm?  Normally for the
-application period you should only do cleanups on drivers/staging.
-
-julia
-
-
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/atm/adummy.c b/drivers/atm/adummy.c
-> index 8157925af824..6eeaa1b21f3b 100644
-> --- a/drivers/atm/adummy.c
-> +++ b/drivers/atm/adummy.c
-> @@ -131,8 +131,7 @@ adummy_proc_read(struct atm_dev *dev, loff_t *pos, char *page)
->  	return 0;
->  }
->
-> -static const struct atmdev_ops adummy_ops =
-> -{
-> +static const struct atmdev_ops adummy_ops = {
->  	.open =		adummy_open,
->  	.close =	adummy_close,
->  	.send =		adummy_send,
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200311125507.GA9347%40evX1.
->
 
