@@ -1,119 +1,119 @@
 X-GM-THRID: 6802850530437627904
-X-Received: by 2002:a25:7102:: with SMTP id m2mr2538571ybc.134.1583927911916;
-        Wed, 11 Mar 2020 04:58:31 -0700 (PDT)
+X-Received: by 2002:a05:6638:a0d:: with SMTP id 13mr1894141jan.32.1583912067022;
+        Wed, 11 Mar 2020 00:34:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:74cd:: with SMTP id p196ls412332ybc.7.gmail; Wed, 11 Mar
- 2020 04:58:30 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsWN/c3u7kA1u1tsz64Wo7GqkMjUhYlUYcOhKcGNWiHdj4YUtDaq/2Y74GwouZyqLUv/YYc
-X-Received: by 2002:a25:2f44:: with SMTP id v65mr2643099ybv.442.1583927910494;
-        Wed, 11 Mar 2020 04:58:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583927910; cv=none;
+Received: by 2002:a02:3084:: with SMTP id q126ls134417jaq.6.gmail; Wed, 11 Mar
+ 2020 00:34:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuOpCIK2zqlL9s454MbG/523WCMbnoFh4A7iEzedzJk40s01thsPTRQC+HUg0mFzuo3B2Wd
+X-Received: by 2002:a02:9003:: with SMTP id w3mr1838322jaf.18.1583912065624;
+        Wed, 11 Mar 2020 00:34:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583912065; cv=none;
         d=google.com; s=arc-20160816;
-        b=DgslA1qtrQ12Ho4J27Gq4eFl7Uy7NSfNRL5uN5No3ukjC6Wn4ikmIPe+IjUb36gxAe
-         RcajgKMfQ8A7AzIuDqRl8jJ+/MEnsWQMZawvmsbSRBp8GWvADVo3SD69VT9G2oevtZKZ
-         3sIO7Jz9JFEV3CtXnUcXwmnIeQ0TuUZ2KJdTUlwiIH8SmTvhxQvR+j3aTsx3rALgFZCX
-         sQhYfhv8OLx12/izKH/PeIJudX9Vbi8pmCT4js28OsfpfB8HLAJfn1a0ZW3K2bHLUrSh
-         KmzWlP3NnNZqCLHWHh5P/axbk9Z93yIj6YPVung4+XZ7T9guxMKqqnVTSydin63sLtx5
-         SG/w==
+        b=udCT+VEJMGsI8ELxENisGsWq/skEMoEOD7qydbKblph5UCQRA684F88RufdHJa7ifa
+         ywMpBFaueUpjl63NE06RrbfzCphNk9Fhq13mQkG9Upnxzexlwc4QlizYs5YIzqHrM579
+         gxWsSaXO0vMSVchKrKvF3yMsxtfWknzEI1i+WhtH8ZOz7zV0C5HcKiD8ceKfSkNvfcv6
+         WOnXqVfqukhsBVMrsRfc464P60p47dv5La9XhMVyQeaYQinxE5vYGd8nN8PPAZx+lfB5
+         rIYSGHT/BN91DqTa1HyuQHMr9HgBwWOxDPMNbpE6X4o5qYZ8VJZKE1kGxxybehMdzvF8
+         PiBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=X67x37e1Be1N53+ChNqjB4/bHJarfdosz8gvB4AlUwo=;
-        b=iL5S2MTdnUlUXFVyIlBXXUjowLpM5TMF+Vbtvms8zOq8UUjiAQfgTa9l9eCfu/kDZC
-         hl4+VXT2u8hCnVk3hr96k4EekU0qzQpKv5fCncnvPOwydc8ZkoJtGy71fZRdcNWWRDk1
-         HbkHRyS2dZxShu9QCZxkLBDvnyd3YszhXNLzhQmsd5CyMDbscoH2dis1FQT/T/Dy3DMV
-         wHPn2kUBZikzegxvwkEVUIVyk/irlD/TR/FU+r1/gugUOupG3MMiiagjmDFl0cZA5nQX
-         Eos7EEGAFEQLKq0UoIb7kH9vc7J4LyficousKFc3DQLMK25s3VdElcIyoKJEUsdGhAf2
-         BFPA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=c34Hbnl+NFIztNvqc2+nXDVAtmAg2nUT/qlpYskjvJ8=;
+        b=oyTWMixYYqMe+Qj360eodJSSVPppoqOLpkY1l+mBTtPvyIsh3DWTkHLI7AUTZ4E7k6
+         1d27hTs8jqDTGAyC1wDjhJjPlKbyu87ygati4mK7FO03FCClz+LsCmKIhamFD4uCJtUw
+         q4600AZ50lsYCjGUr5AVjiv7TuSyx49Bs69Nt1KSlLobg/yj7csV0kaUAgk/bKDNvFCg
+         oRVexHIp4b7hkW4gDzUOSzb28Hxu1d3MUEzoLxE6rcRlqSIwUmjDEF5t6P84yDXQu+CT
+         JiqEdKdWWE9tFhy3BoPnftLPidHbXjTv6dKgPOpieXA4xaWQrjkWXznaH1Gp+plM4coY
+         cqAA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K7NazbgB;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
-        by gmr-mx.google.com with ESMTPS id e131si114311ybh.3.2020.03.11.04.58.30
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bVCiVgNS;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id k88si44705ilg.1.2020.03.11.00.34.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 04:58:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Mar 2020 00:34:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K7NazbgB;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1583927910;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=X67x37e1Be1N53+ChNqjB4/bHJarfdosz8gvB4AlUwo=;
-	b=K7NazbgB8rJdyOI+mA0odnpNdtfjPEkHLDzDF5C/teUfIdQuRBxSebI7h5BWNfdNRfmcUN
-	3XLwJq793haoL4BltAyFvUJKQDeCainLENZSw6KvJDMKBQa6xqPvA8N8h6ig9fxNxsQKAh
-	loc+O/UiCEioUpyQEaDrcaPd55YXVUM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-418-NlCpeSb5NMillSQiEcM4QA-1; Wed, 11 Mar 2020 07:58:26 -0400
-X-MC-Unique: NlCpeSb5NMillSQiEcM4QA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A25551088388;
-	Wed, 11 Mar 2020 11:58:25 +0000 (UTC)
-Received: from elisabeth (ovpn-200-42.brq.redhat.com [10.40.200.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D986392D25;
-	Wed, 11 Mar 2020 11:58:23 +0000 (UTC)
-Date: Wed, 11 Mar 2020 12:58:17 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org,
- outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2] [Outreachy kernel] staging: rtl8188eu: hal: remove
- an unneeded variable
-Message-ID: <20200311125817.5e6c362e@elisabeth>
-In-Reply-To: <20200311073418.7476-1-payalskshirsagar1234@gmail.com>
-References: <20200311073418.7476-1-payalskshirsagar1234@gmail.com>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bVCiVgNS;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id b72so803678pfb.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 00:34:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=c34Hbnl+NFIztNvqc2+nXDVAtmAg2nUT/qlpYskjvJ8=;
+        b=bVCiVgNSGWlFl0ubJ10s+9ZyKZDGsJ24oWLeAfjYmFhrAxtQC4fgyk3tA5/0aj5BSm
+         X+1Qn3P1WEdJXiCIXotC4EXRQBxYUCEtqxTpPUWJopbg2LfsrwLf6WfOaSGQMeJhq9ou
+         YJAJ0jF3Kn/B6xGQUgaE++ZTvxDvxVIr9s9j88AdwfD6jLFodat4KG6tK+RXNCzMYZ3L
+         TNkGILqy7Cn64pMkW+nA5OjcPFM2FCoobccGnKWVOS4RNfhbc6VjJAFCs5QQnTw2imNS
+         VXryXHONGrMuZ7Uoh9QzuElgBduA5fFolPkTXybcCaLm9v1y6+0a7sG43PVcGdcMFm1I
+         xaig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=c34Hbnl+NFIztNvqc2+nXDVAtmAg2nUT/qlpYskjvJ8=;
+        b=GqNESd6uxyoZODKsTodHbLT1p3X4tClJgulz+rrGyHJ8XBlmSMbAXnWAdX8eNAJ+e2
+         zztJ/66i6BNX3XSW/0H+frEV96J2G2aU6lD6YgpXF2TkbRQVLcBO3aeH+/Pyxnth9N/U
+         HCDpfaoB2R2KJRmBSxcdtXNZBM+j9FbF6B/vp7VRNq11wDIR9Int8OYbIuRvRa+KB34d
+         RQsP5a/QK4/tQG40+Ud2w0K3ZOkbWI0HhssBxQiiGsrVH+rC+/ACwjNw9CcRC+C5HZbz
+         AfezgaXd9IQlE5ztxb5HJMm0RoaG8iDl9x2B0eRkyiFjTFfTqv85ZZHmTy2kvJeRYV8d
+         N0LA==
+X-Gm-Message-State: ANhLgQ32lZNrwhtYO67JmrvCKiUQrz85tO2xI4xcG3jNefiFsP+snY+E
+	ZJRXhDR4NHvntBtUwZ97dOA=
+X-Received: by 2002:a63:f60e:: with SMTP id m14mr1580759pgh.342.1583912064817;
+        Wed, 11 Mar 2020 00:34:24 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([49.35.84.144])
+        by smtp.gmail.com with ESMTPSA id 26sm21015323pgs.85.2020.03.11.00.34.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Mar 2020 00:34:23 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: Larry.Finger@lwfinger.net,
+	gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH v2] [Outreachy kernel] staging: rtl8188eu: hal: remove an unneeded variable
+Date: Wed, 11 Mar 2020 13:04:18 +0530
+Message-Id: <20200311073418.7476-1-payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Wed, 11 Mar 2020 13:04:18 +0530
-Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
+Remove unneeded temporary local variable, cleanup suggested by coccinelle.
 
-> Remove unneeded temporary local variable, cleanup suggested by coccinelle.
-> 
-> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-> ---
-> v2: Change in commit message and changelog.
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+v2: Change in commit message and changelog.
 
-Note, mostly for the future: especially if changes to a patch are not
-trivial, it's a good practice to attribute suggestions to their
-authors. If the notes come before "---" (as it's the case for
-networking changes) that also ends up in the git history.
+ drivers/staging/rtl8188eu/hal/usb_halinit.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-For example, this could have been:
-
-v2: Change in commit message and changelog (as suggested by Julia
-    Lawall)
-
-or even:
-
-v2: Change in commit message and changelog (Julia)
-
-Two examples (there might be more complicated ones or different styles,
-I just could remember and quickly find these):
-
-commit 1e47b4837f3b ("ipv6: Dump route exceptions if requested")
-commit 3c4287f62044 ("nf_tables: Add set type for arbitrary concatenation of ranges")
-
-Anyway, it looks good to me!
-
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-
+diff --git a/drivers/staging/rtl8188eu/hal/usb_halinit.c b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+index 16a57b31a439..aa6354b9ffa2 100644
+--- a/drivers/staging/rtl8188eu/hal/usb_halinit.c
++++ b/drivers/staging/rtl8188eu/hal/usb_halinit.c
+@@ -40,8 +40,6 @@ static void _ConfigNormalChipOutEP_8188E(struct adapter *adapt, u8 NumOutPipe)
+ 
+ static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPipe, u8 NumOutPipe)
+ {
+-	bool			result		= false;
+-
+ 	_ConfigNormalChipOutEP_8188E(adapt, NumOutPipe);
+ 
+ 	/*  Normal chip with one IN and one OUT doesn't have interrupt IN EP. */
+@@ -52,9 +50,7 @@ static bool HalUsbSetQueuePipeMapping8188EUsb(struct adapter *adapt, u8 NumInPip
+ 
+ 	/*  All config other than above support one Bulk IN and one Interrupt IN. */
+ 
+-	result = hal_mapping_out_pipe(adapt, NumOutPipe);
+-
+-	return result;
++	return hal_mapping_out_pipe(adapt, NumOutPipe);
+ }
+ 
+ void rtw_hal_chip_configure(struct adapter *adapt)
 -- 
-Stefano
+2.17.1
 
 
