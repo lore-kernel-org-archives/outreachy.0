@@ -1,84 +1,97 @@
 X-GM-THRID: 6802954785072873472
-X-Received: by 2002:aca:a9d4:: with SMTP id s203mr1803254oie.106.1584000928804;
-        Thu, 12 Mar 2020 01:15:28 -0700 (PDT)
+X-Received: by 2002:aa7:de8d:: with SMTP id j13mr3350127edv.348.1583939167463;
+        Wed, 11 Mar 2020 08:06:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:508d:: with SMTP id e135ls1103354oib.5.gmail; Thu, 12
- Mar 2020 01:15:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv50/j0NOCCDR3UauB0Dzro4Z5ULUs0kNeaLMJjytJE6yYtqiPcID1kWZxj99oSTleR7zGz
-X-Received: by 2002:aca:5155:: with SMTP id f82mr1737722oib.103.1584000927700;
-        Thu, 12 Mar 2020 01:15:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584000927; cv=none;
+Received: by 2002:aa7:cac4:: with SMTP id l4ls1574129edt.4.gmail; Wed, 11 Mar
+ 2020 08:06:05 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvjwdbf0mLQbSE9U66GftV6QmxCNKhBZNYIXdTe78wwTrTQSqNKToDs3vhaxoYoYTUDlU8b
+X-Received: by 2002:aa7:d452:: with SMTP id q18mr3419232edr.17.1583939165338;
+        Wed, 11 Mar 2020 08:06:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583939165; cv=none;
         d=google.com; s=arc-20160816;
-        b=EHH5i1CviuGwWPPINBhlp0QpxmO2b8MYw31xAtNQTLxO2g9DT9zY/9wWQY6O7KBHAE
-         BqyssyvKmBhG0E6Sd/+uQGaig6s191dXB34S/St/Z617MXqH9MAOyIraFflwBMN4MgTO
-         lfo9Ld+qSqZftzvd4Jfw3HzCFU4ojTvf+cIsXpu9gFTHBFWFpBRMVEcYbnm4NXzBr4ou
-         LekI/1a9RnFpkk1YbI//Eju2nWze1AbI5Tge+/jhpuX1JXpcTeBlLx3/xCWqgHCwcBY/
-         YT7coLUR8gxFu5XG6OwOqgA5xRpBboLCEnKVu1Ho1htfLbYIf/b9R1dkzp0gpPpfdFP7
-         oOvA==
+        b=y9YwhleWgwVtNr92uySidlvUHziZKlIDZhAUHfTT9dMH789MTl0/ZiC0Fqv7hqC1+z
+         gHBQWgk2QoCJu/y7t0wk+esRUfUaGy5CW9yCq/+bqBLdeHl7i4gb0nAUH4/mnFUAFwSE
+         BQpS6bHN2/8bNcmsJrFGKqb2G5ICrYPM0DNbQzH42PDSrrcUXucyQel5TmsRUuZZLY9L
+         9Kip+MkCKHvkDyO4A4i9BgesifLo+ZpAP/pXkSaLn5nq37nwAE6kxrafUaQSoD9MIfLk
+         i/VpHz794qTtBTTP3S7DDB/G2jIJUZ9YH7q9f/QlhFfzV70bDyC4nPK/MWdQw1oiPs5X
+         zahw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=n80i8UcUJSvsiffklUTDKSGGgZQoPRvPva80MndYcqU=;
-        b=P6lNosS55lRq7R6F995y9ZVGQZQYPHZ2Ew4cI3xbiiOnYdcEkoTU6lNEiLg2IdXz0h
-         lTPU/Ixp/9ND4sGd92HaEE1DGVZL0wvlAUkIaPs7oilGgAhrNNHyaqropSS3VpWbP9ht
-         dow+8YM2f9ufIT1TXxXfe/SDfmXf1lLBOMHTueHx4kVDh8Q0tFWMkcarWjJMXT1X2KLw
-         hkfRsyGWUFtfoI5l+ouroZsV2Lw9cP/KUkjIFACQjVbJ7N+5UykhehX9H1Tkw5G07E10
-         5h1CyCIAiorIRJaxzWtqIk59t7PH2ZAYg9VGZRtBnxaFRuAO9ysOUrQzRrwneN4220tN
-         jTjA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=4G6yq6oACl1fCMZb1bigXv4/d+Aw/27xcqRMlTx0MCY=;
+        b=RhEbDkjsa1cOqjsN66x6AX0Sz5BQ43Lrx1ZpMaEkzt2IpVNv38VWtGO8xn9B8BQ9qT
+         YIidCSUjM6jUZ7XLH2faXmWAbA1ChdMWB7pizV3pomuiJu7ml91Jv3p+9z6fTuQ5EDXT
+         1UFAFkMBoJtxPxQajJGa47NMjBCsJZZL0So3e0PxndzfKOcoAUInhaE6q83Xj3f7IVTe
+         GpkwbFiyxnDs9JH5WHGcFQW/CTfhU9d984cvvv/5jW0KLCpLEWixB+WzmGW9ulhYlR/q
+         fKtpZeWjhoENqftFgaFmR3g9+cW8V1W8sMKvoeD8ebeIS1qpWCtp3DaftZqUKCxFTuW5
+         1Ncg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=EK45duwQ;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id y5si87892oou.0.2020.03.12.01.15.27
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id h10si140947edn.1.2020.03.11.08.06.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 01:15:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 11 Mar 2020 08:06:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=EK45duwQ;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 294CC206EB;
-	Thu, 12 Mar 2020 08:15:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584000926;
-	bh=gPHy71qNMPASegrre7bl6QUYX9jKTL+gYKUg5nbAw+w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EK45duwQZhornza+Kmq5U3rxEmML+Pffkr6Hw0jgeryiqwqaxCfhNtVEHjFvn4xr3
-	 KRRE+aMeo5Mj1sWUC29OtPwen1+7SZYNMmvf5XkBAFgvfdp/CCWNv41nkFVWRbZljr
-	 hMV8ZxBZiYklMpqd/6CQ+62W6JAZn0eK90MCLuGc=
-Date: Thu, 12 Mar 2020 09:15:24 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,541,1574118000"; 
+   d="scan'208";a="342028802"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 16:05:21 +0100
+Date: Wed, 11 Mar 2020 16:05:21 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
 To: Enrique Vargas <jevargas@seas.upenn.edu>
-Cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: qlge: include newline after declarations
-Message-ID: <20200312081524.GA11746@kroah.com>
-References: <20200311142836.GA17614@evX1>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: qlge: include newline after
+ declarations
 In-Reply-To: <20200311142836.GA17614@evX1>
+Message-ID: <alpine.DEB.2.21.2003111604560.6155@hadrien>
+References: <20200311142836.GA17614@evX1>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Mar 11, 2020 at 08:28:36AM -0600, Enrique Vargas wrote:
+
+
+On Wed, 11 Mar 2020, Enrique Vargas wrote:
+
 > Add newline following coding conventions, to eliminate WARNING found
 > using checkpath.
-> 
+>
 > Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
 > ---
 >  drivers/staging/qlge/qlge_dbg.c | 1 +
 >  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+> index 670361873d1d..52704c67e110 100644
+> --- a/drivers/staging/qlge/qlge_dbg.c
+> +++ b/drivers/staging/qlge/qlge_dbg.c
+> @@ -1332,6 +1332,7 @@ static void ql_dump_intr_states(struct ql_adapter *qdev)
+>  {
+>  	int i;
+>  	u32 value;
+> +
+>  	for (i = 0; i < qdev->intr_count; i++) {
+>  		ql_write32(qdev, INTR_EN, qdev->intr_context[i].intr_read_mask);
+>  		value = ql_read32(qdev, INTR_EN);
 
-As this is a "version 2" of the patch, you need to tell me that
-somehow.  Please read the submitting patches document in the kernel
-Documentation directory for how to do that properly.
+It looks better now, thanks.
 
-Please fix up and send a v3.
+Acked-by: Julia Lawall <julia.lawall@inria.fr>
 
-thanks,
 
-greg k-h
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200311142836.GA17614%40evX1.
+>
 
