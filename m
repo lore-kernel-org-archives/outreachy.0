@@ -1,75 +1,102 @@
-X-GM-THRID: 4554318938112
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,9993e5f8efad15bc,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.112.144.130 with SMTP id sm2mr2076109lbb.9.1425042362108;
-        Fri, 27 Feb 2015 05:06:02 -0800 (PST)
+X-GM-THRID: 6803035551467307008
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a7b:cd8e:: with SMTP id y14mr360052wmj.150.1583956178106;
+        Wed, 11 Mar 2020 12:49:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.152.115.180 with SMTP id jp20ls146962lab.64.gmail; Fri, 27 Feb
- 2015 05:06:01 -0800 (PST)
-X-Received: by 10.112.9.65 with SMTP id x1mr2079758lba.16.1425042361583;
-        Fri, 27 Feb 2015 05:06:01 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from mail-we0-x233.google.com (mail-we0-x233.google.com. [2a00:1450:400c:c03::233])
-        by gmr-mx.google.com with ESMTPS id i7si116152wif.0.2015.02.27.05.06.01
+Received: by 2002:a5d:498c:: with SMTP id r12ls1516966wrq.10.gmail; Wed, 11
+ Mar 2020 12:49:36 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtwNbFfwzuOBlhdSzyJFm0uEWRnFW3vkVuXFjO2bpvPjq8H4ouDuj2qNRj8f68VavHFcDGZ
+X-Received: by 2002:a5d:5710:: with SMTP id a16mr6307373wrv.5.1583956176556;
+        Wed, 11 Mar 2020 12:49:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583956176; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zlbnAjU1kpKcBgVuZyEPL/tbP4KVfi5vw080UKnI/kkuJaqqyliHqbOQXJZv5Ojse1
+         50xCG42Qq4h0zX1JbcEGO1qhO7o8h7dKc/uO738YhCanuxiR9jDk5XwA3TYyH25YuC7s
+         /bZAwgLNbKJwPoUM4SNEGoLTLsaXAfeINey280jMT/TXc75j7v3X36EiOlBc6M40R5xE
+         mCn94jqTVTUy8qKXas8iZ6smaRkxbG5FO5Q8NF0ro2GgYpVfP8mhpaSSdzq5EEIKoTf/
+         C/UTeWBXuk5ZBogXgMTKMLjCghkiftU4MXmwO33NctCDf/ZPUaeHMU53ARij0XP33sGf
+         Cj6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=OF2Rx4CIpSLjlhoMoQXzeHoffSJYZdwz4o9RxJvVTm8=;
+        b=KWJcocpwogR7K37maEwHH73T2H3HyDNuPgNg93GJbsru1oj8cgGHTp91jQRfyCiCHp
+         mzJaXpmSx2FTjgevdrBZOqFPlq2qbvE6+1r3ElJeMT8V/jnKrN3XYTtnGQh+zTj0+ygF
+         McFh3wMovaORqwBSOVI4ot3mQe5q7VmTrWk9/REU6hk2dZdBDm5SvZnXSmadgw911FJd
+         mzZ8lVUJ/nohN8azfR0/MXTmUX0ylzN4IlwK4lvWKWQnmI/tOJ9kWYTYzxGl7X4jEvqd
+         TRGIA+1K5gsrvxRx9jjfvTbQI5n0AKWY66EdyMYuOS93PcgD3fx8A7pFG3mJcaiXz0GG
+         fj/g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id d16si107089wrv.4.2020.03.11.12.49.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 27 Feb 2015 05:06:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) client-ip=2a00:1450:400c:c03::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Mar 2020 12:49:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of dilekuzulmez@gmail.com designates 2a00:1450:400c:c03::233 as permitted sender) smtp.mail=dilekuzulmez@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-we0-x233.google.com with SMTP id k11so20266370wes.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Feb 2015 05:06:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=KWK2kqXIGZPbTXR2TqiNwmEFxom3Gstr3kr8eMnd6v0=;
-        b=FgmQ61mWNDpBKM7EA15aIv9gpBao4jl3+yByXO1nxHUyFIOMENDiSqeJy3wdKfyuGs
-         0dgP4aREK8Oe2vpf+PjAJvstwmdOEV1e2+Gjt9HQ2f7zHbcfPKfcvCmoNyym7V4XwzHr
-         3sqB8YCYejigldsYb+nHXi3MNNT8FEW4AQOZxtdKzovg7rV9hfJiSRHxSOgfsAo3GAtV
-         A3KqF5HOev16LfcOkK5FNPaPT/q3YHK9532SAGdEkowdJyl+lAI5PbIf8Qcp8bzpnOl7
-         hDsjEsZVFUM5Fl/aMjjT7mp6mZZeXurQU3btpk5ZJLdvVMN7sIJGrgKo4KwRwrI7thc6
-         EPgQ==
-X-Received: by 10.194.240.97 with SMTP id vz1mr27913293wjc.155.1425042361430;
-        Fri, 27 Feb 2015 05:06:01 -0800 (PST)
-Return-Path: <dilekuzulmez@gmail.com>
-Received: from localhost.localdomain ([78.178.157.65])
-        by mx.google.com with ESMTPSA id bd8sm5897517wjc.21.2015.02.27.05.05.59
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 27 Feb 2015 05:06:00 -0800 (PST)
-From: Dilek Uzulmez <dilekuzulmez@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Dilek Uzulmez <dilekuzulmez@gmail.com>
-Subject: [PATCH] Staging: lustre: Added #include <linux/statfs.h> instead of #include <asm/statfs.h>
-Date: Fri, 27 Feb 2015 15:05:45 +0200
-Message-Id: <1425042345-14989-1-git-send-email-dilekuzulmez@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,541,1574118000"; 
+   d="scan'208";a="439900952"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 20:49:36 +0100
+Date: Wed, 11 Mar 2020 20:49:36 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deepak Varma <mh12gx2825@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] changes to a core file : Should all associated
+ drivers be rebuilt as [M]
+In-Reply-To: <d2f68b7d-972d-492e-abc5-915301ecc69b@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.2003112048370.6093@hadrien>
+References: <d2f68b7d-972d-492e-abc5-915301ecc69b@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-359384743-1583956176=:6093"
 
-The following patch fixes the checkpatch.pl warning:
-WARNING: Use #include <linux/statfs.h> instead of #include <asm/statfs.h>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Dilek Uzulmez <dilekuzulmez@gmail.com>
----
- drivers/staging/lustre/lustre/osc/lproc_osc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--8323329-359384743-1583956176=:6093
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/lustre/lustre/osc/lproc_osc.c b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-index 1795d3a..d622c63 100644
---- a/drivers/staging/lustre/lustre/osc/lproc_osc.c
-+++ b/drivers/staging/lustre/lustre/osc/lproc_osc.c
-@@ -35,7 +35,7 @@
-  */
- #define DEBUG_SUBSYSTEM S_CLASS
- 
--#include <asm/statfs.h>
-+#include <linux/statfs.h>
- #include "../include/obd_cksum.h"
- #include "../include/obd_class.h"
- #include "../include/lprocfs_status.h"
--- 
-1.9.1
 
+
+On Wed, 11 Mar 2020, Deepak Varma wrote:
+
+> Hello,
+> If we make a change to a core file that appear to be common across more than
+> one driver(s), should we be reconfiguring the kernel build to set all
+> drivers as [M]?
+
+You can use
+
+make allyesconfig
+
+Always be sure that the file you changed actually has a .o file after
+compiling.
+
+julia
+
+> Also, is this a correct change to the .config file:
+>
+> from : # CONFIG_FB_TFT is not set
+> to     : CONFIG_FB_TFT=m
+>
+>
+> Thank you,
+> Deepak.
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/d2f68b7d-972d-492e-abc5-
+> 915301ecc69b%40googlegroups.com.
+>
+>
+--8323329-359384743-1583956176=:6093--
 
