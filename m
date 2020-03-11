@@ -1,121 +1,135 @@
 X-GM-THRID: 6802949681377705984
-X-Received: by 2002:aa7:94a5:: with SMTP id a5mr7508839pfl.67.1584009277371;
-        Thu, 12 Mar 2020 03:34:37 -0700 (PDT)
+X-Received: by 2002:a7b:cb17:: with SMTP id u23mr544165wmj.12.1583958403952;
+        Wed, 11 Mar 2020 13:26:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:86c7:: with SMTP id x190ls2230564pfd.4.gmail; Thu, 12
- Mar 2020 03:34:35 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtNMt5oFzIiEknlt2mRct4aDKDHzyh8xadyg9uN8upcTg/1VXaXzmviLUKjkXOFvExETyFD
-X-Received: by 2002:a63:c64d:: with SMTP id x13mr5178638pgg.124.1584009275566;
-        Thu, 12 Mar 2020 03:34:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584009275; cv=none;
+Received: by 2002:a1c:a98b:: with SMTP id s133ls991909wme.3.gmail; Wed, 11 Mar
+ 2020 13:26:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuc8PLNEGwnKAVKgYWpWlA+0Ece4NFStsjE8MmN9RsaR7LZA5f5S8aqc7DCzs0F9yzI926f
+X-Received: by 2002:a1c:7f86:: with SMTP id a128mr477174wmd.185.1583958402504;
+        Wed, 11 Mar 2020 13:26:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583958402; cv=none;
         d=google.com; s=arc-20160816;
-        b=ClrjFa/Utl3aH6NvCVP0daaHZzgjCazWWF7E8Ol47JJ6Wa8hRvYaAgFH4QnlYtMjfE
-         T7XLPug7eN2LwEFJdQEqpIZKU7kuWLYbzIvW7aEYhfTVhtEO5Co4H93P1Vg/GLdDAwNP
-         d5uCadxG/Die62A5wt6VRdMrlRXb/N4pH7wyWDiu2Lb6huqf7XS1acqbu5wKSAtA1y+V
-         eytDrfO6AAz5AHe2+ZCbXImqQgKB39f5f8HtPjaEfSr/NOdAjRgpO6geLAk4lVtpEt5v
-         6vjEz14R/9HZC5QuGmK/Pg71au2aZTeLU/iMyfQycURRjWgN4S7jMRZhvUc+cm44Ws9T
-         EgVw==
+        b=kLbrZZF05qc6KGnOYZvM29zyV7CQsGIPUTIL/k0GQF/Nzupa8gaYHIA3/BDPkAIDh7
+         HLWGpjATCPYxATb0TntC9R3MYb/2hMppdeLwu8CAMktaScG0zMcJz+pZ4v3gBcuQlf8E
+         3CvmNP0SKKq7Q8bBdZ8p1wdakyj7wqYx4nteAvsggdIA+U6szuyMENS/b6EJEtjRNwFS
+         umMNQX59CWqvJXOvb/Rsj8nT75TEuTIHKNj5+mK0qZVHQWfPTf6/wWlqaC6/RNYx1wwD
+         6xpudvlILilI9A+axCvdy9eHTFEwNRq+BrpnQFKRcNTBERHuKlDLg0KWHkiAagO7rNL5
+         VTkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Elhehx58JjnpVasvGfpItQAGWL5MtskgGw42pHcHbh8=;
-        b=djC5zMqXTNae0TO1mCwzzRhctOEyyys4mv6CTroNl3PY/+9wMkMz7XcdV+iZCU8QQO
-         2MzQpl/OD32/qdmo//7Qy1BWX/gFv8gfEzhhh1QUtCH0s+KnT/JgxJrUoCKAXI7Bzm+G
-         vetYkkZ1jaHpjxkVLWp+UoI72vsVQxPVqQVyxM/h0sK8VAidMc6kFLD3nnz4+h8DEmZ4
-         waNFagBILcghL5QwXPOqLiui3+vG890b8gZOvinstmq4DS6T44rZ5tYRk8qRb3MakIoZ
-         6L/4LDb0/PatfSUf90co2rHiZw+IEOrE9BOn3Iv1JeR/2fy821+zP5kFACp2CM2C+xXN
-         Arog==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=mSCMhPajF6uOXBODMYxInmmi1XqEHAU6GKYZjmS9sYc=;
+        b=w92iC2zPKufLb2H2SWiBG5cXyfRcvNt3gD/LYXk4N//qNibJ0YAsUMOYkYsqYiAWsl
+         AoXOGWrKaZNKb7GbkOh4l6tlvS7ae/3V810zt2dRKb2PJAixBHnXdsytQ7+WTs65fcM8
+         JUTXBh//2cqwPgVYzoQiYgGqeWt858C9yVL0fnYOkTBdfryU/nSbbpssuTCbMAJ8thmO
+         2+rkU36B97DUq7IWzRTlC+sQpHiT/Bv2NP6SHwxjTZ5CZX2ffyGU2E0FnOSwerEwX/MZ
+         8ZHLx5+qpmRPxcQmQUHh86TDm5hqhFBNposQ8fK6Cd1Qfnm37oyWEFwOBaucW8/PAChn
+         M/Bw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iEOvz+ti;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by gmr-mx.google.com with ESMTPS id b10si250168pfo.6.2020.03.12.03.34.35
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l17si198509wmg.0.2020.03.11.13.26.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 03:34:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        Wed, 11 Mar 2020 13:26:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iEOvz+ti;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584009274;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Elhehx58JjnpVasvGfpItQAGWL5MtskgGw42pHcHbh8=;
-	b=iEOvz+tiFEXM6pEuQpX4MhS3QUPxuSNMDnbA3buAq83XtQ5yqZuG3obZdOBdxy0pQvlG+4
-	j+JXSb87KSwg6OIosK1GTUJ0/TfHaUKuBazdeOzBHwTEH9HdDdmcifPyHPYwBDnbUyNIUb
-	AO34OAnXGQyeFsOuVj/8ZNaZS9ijBt4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-mZfkIStbNYSgFB-GvJ0d3g-1; Thu, 12 Mar 2020 06:34:30 -0400
-X-MC-Unique: mZfkIStbNYSgFB-GvJ0d3g-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F178C8017CC;
-	Thu, 12 Mar 2020 10:34:28 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 348FB272A5;
-	Thu, 12 Mar 2020 10:34:23 +0000 (UTC)
-Date: Thu, 12 Mar 2020 11:34:16 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>,
- gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
- daniel.baluta@gmail.com, hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,542,1574118000"; 
+   d="scan'208";a="439903000"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 11 Mar 2020 21:26:42 +0100
+Date: Wed, 11 Mar 2020 21:26:42 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deepak Varma <mh12gx2825@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs: rtw_mlme: Remove
  unnecessary conditions
-Message-ID: <20200312113416.23d3db5c@elisabeth>
-In-Reply-To: <61a6c3d7-6592-b57b-6466-995309302cc2@linux.microsoft.com>
-References: <20200311135859.5626-1-shreeya.patel23498@gmail.com>
-	<61a6c3d7-6592-b57b-6466-995309302cc2@linux.microsoft.com>
-Organization: Red Hat
+In-Reply-To: <92b5d69a-d4e6-480d-82ef-3a01b893fbd0@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.2003112125030.6093@hadrien>
+References: <20200311135859.5626-1-shreeya.patel23498@gmail.com> <92b5d69a-d4e6-480d-82ef-3a01b893fbd0@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Content-Type: multipart/mixed; boundary="8323329-1587113772-1583958402=:6093"
 
-Hi Lakshmi,
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-On Wed, 11 Mar 2020 19:42:06 -0700
-Lakshmi Ramasubramanian <nramas@linux.microsoft.com> wrote:
+--8323329-1587113772-1583958402=:6093
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-> On 3/11/2020 6:58 AM, Shreeya Patel wrote:
-> 
-> > Remove unnecessary if and else conditions since both are leading to the
-> > initialization of "phtpriv->ampdu_enable" with the same value.
-> > 
-> > Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>  
-> 
-> Stating this based on the patch descriptions I have seen.
-> Others, please advise\correct me if I am wrong.
-> 
-> Patch description should state the problem first[1] and then describe 
-> how that is fixed in the given patch.
-> 
-> For example:
-> 
-> In the function rtw_update_ht_cap(), phtpriv->ampdu_enable is set to the 
-> same value in both if and else statements.
-> 
-> This patch removes this unnecessary if-else statement.
 
-That's my general preference as well, but I can't find any point in the
-"Describe your changes" section of submitting-patches.rst actually
-defining the order. I wouldn't imply that from the sequence the steps
-are presented in.
 
-In case it's possible to say everything with a single statement as
-Shreeya did here, though, I guess that becomes rather a linguistic
-factor, and I personally prefer the concise version here.
+On Wed, 11 Mar 2020, Deepak Varma wrote:
 
--- 
-Stefano
+>
+>
+> On Wednesday, 11 March 2020 19:29:13 UTC+5:30, Shreeya Patel wrote:
+>       Remove unnecessary if and else conditions since both are leading
+>       to the
+>       initialization of "phtpriv->ampdu_enable" with the same value.
+>
+>       Signed-off-by: Shreeya Patel <shreeya....@gmail.com>
+>       ---
+>        drivers/staging/rtl8723bs/core/rtw_mlme.c | 10 +++-------
+>        1 file changed, 3 insertions(+), 7 deletions(-)
+>
+>       diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c
+>       b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+>       index 71fcb466019a..48e9faf27321 100644
+>       --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
+>       +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+>       @@ -2772,13 +2772,9 @@ void rtw_update_ht_cap(struct adapter
+>       *padapter, u8 *pie, uint ie_len, u8 channe
+>        
+>                /* maybe needs check if ap supports rx ampdu. */
+>                if (!(phtpriv->ampdu_enable) &&
+>       pregistrypriv->ampdu_enable == 1) {
+>       -                if (pregistrypriv->wifi_spec == 1) {
+>       -                        /* remove this part because testbed AP
+>       should disable RX AMPDU */
+>       -                        /* phtpriv->ampdu_enable = false; */
+>       -                        phtpriv->ampdu_enable = true;
+>       -                } else {
+>       -                        phtpriv->ampdu_enable = true;
+>       -                }
+>       +                /* remove this part because testbed AP should
+>       disable RX AMPDU */
+>       +                /* phtpriv->ampdu_enable = false; */
+>       +                phtpriv->ampdu_enable = true;
+>                } else if (pregistrypriv->ampdu_enable == 2) {
+>                        /* remove this part because testbed AP should
+>       disable RX AMPDU */
+>                        /* phtpriv->ampdu_enable = true; */
+>       --
+>       2.17.1
+>
+>  Juia, can you comment if the 2 commented lines [with '+' sign now] may also
+> be removed to further simplify the code?
 
+I feel uneasy about the whole change, without having more knowledge of the
+device.  Someone already suggested that the code should be removed, but it
+seems they didn't do it.  Maybe they didn't do it for a reason...
+
+On the other hand, if the "if" is useless, the comments don't seem useful
+either, since they applied to only one of the branches.
+
+julia
+
+>
+> Deepak.
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/92b5d69a-d4e6-480d-82ef-
+> 3a01b893fbd0%40googlegroups.com.
+>
+>
+--8323329-1587113772-1583958402=:6093--
 
