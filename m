@@ -1,111 +1,108 @@
 X-GM-THRID: 6803014756528553984
-X-Received: by 2002:a25:ddc2:: with SMTP id u185mr5645010ybg.218.1583969041465;
-        Wed, 11 Mar 2020 16:24:01 -0700 (PDT)
+X-Received: by 2002:a17:906:ed1:: with SMTP id u17mr3495297eji.286.1583950304765;
+        Wed, 11 Mar 2020 11:11:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:ab94:: with SMTP id v20ls959416ybi.0.gmail; Wed, 11 Mar
- 2020 16:23:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs5GU2f2OVc3+VsPTW5IN/Z0o11uzSodYyb4+hYKMhATDTxn6zLTykF4PGtTxupFxdJHR08
-X-Received: by 2002:a25:e812:: with SMTP id k18mr5732811ybd.93.1583969039662;
-        Wed, 11 Mar 2020 16:23:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583969039; cv=none;
+Received: by 2002:a17:906:8c1:: with SMTP id o1ls1824699eje.4.gmail; Wed, 11
+ Mar 2020 11:11:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuBozGbrD9Kev2h8SurdISobKG+jdGXFdGOt7aM+cyWLvMFa56GMwxB2X/wB4W2+DiPBiW6
+X-Received: by 2002:a17:906:bfcb:: with SMTP id us11mr3560427ejb.185.1583950303447;
+        Wed, 11 Mar 2020 11:11:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583950303; cv=none;
         d=google.com; s=arc-20160816;
-        b=qhvJUsaZ30PeuwMQFZxQZwZ7VAE029r0TN6j/M2vhzly08Edd8674qr/gWQWS5jSSu
-         8TQqsnpUiSgQcYfrv6+YVFnv5eVZA1S3d63WUkUnyAf77Vk8YSn/8aBbnTM3DOrfDmi3
-         Ddxz3MgnvWBLsVjnTTRRlu8IX8PR52LthXOygz/IWoYDarrOahzWfmwvTKOuH4c51+2Q
-         KylfQk92jZeMOEhUk6h2OpuTzC2linEHzR08L9UQv8TnH6AQ+fsrYifhKYtgildd3MmU
-         YNQNHMoeW3Qu2IqDj7bX92N6VfGyswKkNWNm+/EXl4ibKc0dZIj59eJnXMbHgvZComht
-         tarA==
+        b=j+cLAMcnzCdPePfMXEeGtoolhcSVsBr8HD1OF0W8JfmPKQQob1rg2M2cVB+LB8DyBG
+         Oma5BOnYBE+In9BIu34L8+5sLEgUf5yDhuW9hJkGn0cua+h5j+Ah5vqLihtOa5OdjQX+
+         W8uu2dt4yEkMDc72hLDesmQWGldLTOaGIz/7VbBmfATxMGMPeWItjFXmCxXKTG1EgIKp
+         SFsOrXVzV+5xodrh2Q6kw8RsATVmO+BBMmg+7ed1taCHTZCL2iD1QrdxEZ8Q70yy3bwW
+         +PrQ90qIXHDkGECGJipSXmxvUry4ijE93ukIEkqoWVBP1LAh/K5ggbrdhyn9dUZ1hRTr
+         wckw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=YVB2X3fgu7VDl6wQLb69NR0eEjXNDz8EXXKwgBFaLQo=;
-        b=xH+yFgZnFyf0XXyu0wZEiMEMpdv94wJheoXgRW/rm18vlRBaCuHRpclEeMFH/6eDC+
-         YQD+WX6KbMl8R+JQxjPBjTPRJPX0JKRz0YwAdn2oCBU3fKU+9BslyRQpXKuqvPU91ZO9
-         6/iPg00RlqNYu0zdhlWV0DTY8/5qPqFoquenw6VhtZDhZC9nLfeU8ucy03IWqSjzxFtR
-         xwW5sQREeRJ7EeqTV2Sb6NDcAEY+jzqAJrNp8MOX/A11cGocKd8hHiQ0mIb2cDoIkLBO
-         dy2LrNbehD89DJMjm1ewWPVbeQ81psPT1qoagNZAL+D75ArTc+qDoda/v8wOnic9Fcig
-         5Q1A==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=8+SpACLEPmxQ6D2dJikX1NZ03ze624JlDxAwo31T44M=;
+        b=K8y0S3xjhU5tWRKlal5uqqXaMXACHBxUiRX13yWXtBYDhuPtMrRRTgZEvqvnWy0hXm
+         k+Fj7J2OSj62R+zqlHtbqC87WsTrWi3+zzBrsyq6jy4U3QV92HirZnNWZ7dml4WYeb6I
+         s+v/D4r6+lhB66pE3HGIYM9vzYgaXlZ6I274qfvc5hrSvIeOEzOUGr72GoIcswj81yI/
+         NFUUjS7N4Xy6zLZHL489Ed0JsZxZw3HrUlKa0WGXts2cTMKVLYO4a7jcVs/hEqvb4ChG
+         eakqKI9JHbMufjOKRI2RjxaVWnemQKE7Is+gFlhv/wm0RK6Kbzq8/wPn/kSRxc7blQ2Y
+         ro1g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QPblxKKh;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by gmr-mx.google.com with ESMTPS id y19si291298yby.1.2020.03.11.16.23.59
+       dkim=pass header.i=@pplo.net header.s=google header.b=I7PkyqCD;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com. [2a00:1450:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id d7si137945edo.5.2020.03.11.11.11.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 16:23:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Mar 2020 11:11:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::544 as permitted sender) client-ip=2a00:1450:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QPblxKKh;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1583969039;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YVB2X3fgu7VDl6wQLb69NR0eEjXNDz8EXXKwgBFaLQo=;
-	b=QPblxKKhtFwBeSZd2l3jF/+tS3o4R/jKmqbLRmL9jBaWOFCvCJP1ZlGTSCk+ng2s8y0HXg
-	b6Za55e82Toxr1miydb5qm7gvw2oDhnRRi9W+Pe2ReOq4dKjhJZr/lA56zwQGy2DyYMUy0
-	LOlmjG6njRd00Cg09RcWjwVt5i7Xefk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-298-frwa5NpIMQ2FJojFLD60Eg-1; Wed, 11 Mar 2020 19:23:57 -0400
-X-MC-Unique: frwa5NpIMQ2FJojFLD60Eg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3F62100550D;
-	Wed, 11 Mar 2020 23:23:56 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 062F35D9E5;
-	Wed, 11 Mar 2020 23:23:54 +0000 (UTC)
-Date: Thu, 12 Mar 2020 00:23:48 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Lourdes Pedrajas <lu@pplo.net>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Trying to use Coccinelle
-Message-ID: <20200312002348.06821daa@elisabeth>
-In-Reply-To: <20200311181134.GA17847@supernova>
-References: <20200311181134.GA17847@supernova>
-Organization: Red Hat
+       dkim=pass header.i=@pplo.net header.s=google header.b=I7PkyqCD;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-ed1-x544.google.com with SMTP id h5so4036243edn.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 11:11:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=8+SpACLEPmxQ6D2dJikX1NZ03ze624JlDxAwo31T44M=;
+        b=I7PkyqCDobC9cG+s5KDN+JCxzLiw6WhDZXLoJqRZDZvVEI55KFxZOnkvE0+o+VeDIK
+         gzVwE8TmuQksvFs8g7oeJTKlJMuLFbFFWqvdsopWxFiYfZaeKgySAesEa3YGrL9zcLy9
+         Kb8dsfgcrsBSYwAkWKZseLMMXv0GE4atlJtic=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=8+SpACLEPmxQ6D2dJikX1NZ03ze624JlDxAwo31T44M=;
+        b=DEkyWXgTuD6CE8a1vRJ/ktPzu63qbWy96GysvUATiXmvNM33rp65ISvJlpQt7qZ950
+         1H1VRrR4RDXBsR8OmlQFsKc4u9HYgYVZMB6AY7nLWCo6cI2uTikHCcI6g5w6JAV/vERO
+         ufqueviRCzqswNYIJGnhllZ3ifONneKqfaVT7OswwUa6mnCI5Stxza2r6lbCBUYsWTmR
+         zLg+CO+DJOhhjwi/xyqiDe01I0VyTm3/eGELEoksx8uIQ6juY7oVktwRQExJPNNBq8Ww
+         xB2w5uY8opAwDQH+2VTLErZCp2FUoTD8aSj5zyES3mX1iAplYWRhaFLbirwwD+u/nraz
+         ma+w==
+X-Gm-Message-State: ANhLgQ0J7GeyM8c1zVHMfpXxZHFV3SkiIhm1/aN3ZgicGiFUFmt1BAYD
+	izNrY0vw2XtpBu+KgBl0dB+sdtp8Vko=
+X-Received: by 2002:aa7:da82:: with SMTP id q2mr4247817eds.245.1583950302870;
+        Wed, 11 Mar 2020 11:11:42 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id m21sm1612170edb.90.2020.03.11.11.11.41
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Mar 2020 11:11:42 -0700 (PDT)
+Date: Wed, 11 Mar 2020 19:11:34 +0100
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com
+Subject: Trying to use Coccinelle
+Message-ID: <20200311181134.GA17847@supernova>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, 11 Mar 2020 19:11:34 +0100
-Lourdes Pedrajas <lu@pplo.net> wrote:
+Hello, I compiled Coccinelle successfully but maybe I am not getting it.
+In order to try it in drivers/staging I ran e.g.:
 
-> Hello, I compiled Coccinelle successfully but maybe I am not getting it.
-> In order to try it in drivers/staging I ran e.g.:
-> 
-> make coccicheck MODE=patch M=drivers/staging/android/
-> 
-> and then got:
-> 
-> coccicheck failed
-> make: *** [coccicheck] Error 255
-> Makefile:1740: recipe for target 'coccicheck' failed.
-> 
-> Also tried some modifications of the command, read this documentation:
-> https://www.kernel.org/doc/html/latest/dev-tools/coccinelle.html and searched
-> how to use it, but nothing did help.
-> 
-> Only when I ran make coccicheck MODE=patch over entire sources it
-> produces some good results, but eventually I got
-> 
-> coccicheck failed
-> Makefile:1740: recipe for target 'coccicheck' failed
-> make: *** [coccicheck] Error 255
+make coccicheck MODE=patch M=drivers/staging/android/
 
-Can you share a bit more output? What comes before that?
+and then got:
 
--- 
-Stefano
+coccicheck failed
+make: *** [coccicheck] Error 255
+Makefile:1740: recipe for target 'coccicheck' failed.
 
+Also tried some modifications of the command, read this documentation:
+https://www.kernel.org/doc/html/latest/dev-tools/coccinelle.html and searched
+how to use it, but nothing did help.
+
+Only when I ran make coccicheck MODE=patch over entire sources it
+produces some good results, but eventually I got
+
+coccicheck failed
+Makefile:1740: recipe for target 'coccicheck' failed
+make: *** [coccicheck] Error 255
+
+Am I missing something?
+Sorry if this question is too obvious.
+
+Lourdes
 
