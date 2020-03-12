@@ -1,104 +1,127 @@
 X-GM-THRID: 6803294176512311296
-X-Received: by 2002:a2e:b018:: with SMTP id y24mr6238816ljk.146.1584046637831;
-        Thu, 12 Mar 2020 13:57:17 -0700 (PDT)
+X-Received: by 2002:a9d:21e4:: with SMTP id s91mr480896otb.282.1584045801960;
+        Thu, 12 Mar 2020 13:43:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:3188:: with SMTP id i8ls1082456lfe.4.gmail; Thu, 12
- Mar 2020 13:57:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtXcQ6z5yJlDD0UzM4E3HX5UfIXuQN92jXoMnzQdgwOrhZxdtgRWas6xPszaITe4Gju6GEP
-X-Received: by 2002:ac2:4316:: with SMTP id l22mr6365877lfh.150.1584046636054;
-        Thu, 12 Mar 2020 13:57:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584046636; cv=none;
+Received: by 2002:aca:508d:: with SMTP id e135ls1896384oib.5.gmail; Thu, 12
+ Mar 2020 13:43:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtxMAF9RxAsEjGMSBhq59wzF5ubxjQKBq0/+UBxiG5690w9rgHwwrnYs78CFDOuIEAbw35M
+X-Received: by 2002:a05:6808:b13:: with SMTP id s19mr4282111oij.60.1584045799806;
+        Thu, 12 Mar 2020 13:43:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584045799; cv=none;
         d=google.com; s=arc-20160816;
-        b=L6IkUvbL+7H1P0WjkJ2yZPwu0gKI2EzOPygi1IaJQcmMsNk145iam/sRN51LOEG2zK
-         mh1A1Tx2KSGnVCxM4G5VemNEhlTZbXsmei5sIPSj1S1O03C+3CHu0HRs2f6bE6/jwwBq
-         cqW552jyOao1kHl1TvP84jF5eTQbt2Bgw0zJeQ2zzJnEqondBt0pXMUz1/50fr1Lq3Vz
-         Btsxg+5Y8hYjXcPVYEwmcHkv7y+YvoALH15VlpNe2LyEyA8ze0YbIBg81TXyVCqP1sf8
-         JANNY5gJ1TkJXfjKqTQkRdEj+/f/M6HPE3E+ZiXhksE6/KCsnv94Rt1EwFetUxts0E7I
-         NZ1A==
+        b=kaEjsYCtnJXy8tkTMb4p+QBThdXCCNhwpTs3yRnYSiEKQecHFwlD/T4OmH+9+tcsvP
+         Ig9QOT7xwj92tVyLHr3OOKYZ5c1QxlRJiHE2Z/UVc0S2zUapXo+5Wx7RGzuo7rBtfMhO
+         IPQnhYZs3YwflynzZ05at5rg7ZFpN8nNMRskzYXNff86XB04/Hu5JOzD3pQ7waxaWsTT
+         IKsi4iy4pIURFl+nUO/jlnbEyFHhiaMUOdSyB5zvtq6vh23UqU2wAAr6c5JmR5vht2Z3
+         eEH9hgVKbzoD/FJMAwPUePYfT+CIV6wTAuEjS8F88LTNU778HbaTZzSy6qGow4R9QAeh
+         XQfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=6378GH+VagTsYawhUyrEPK4Z6phFHe6sPuhEY8Vyqvw=;
-        b=sq+gJnULPxeV9lzbrtRkZ2cRxV/OB+KoUw2PeUZlXUoaX6N89SBWbEuFqyJZKwOoAw
-         s87TYdsgDzw5ugHaT7ACkWTsaeCH73hubs2b6DN0iHEGFP0Skm0P5kA3R6oPj9wV7mYr
-         fg9rpO5klOzhXWRtGUnqr27xO7MbYYESFt8r5QxvBSCO3BCKqcJGdWrbDzxLGpqTWs1Y
-         6W0XLGANWtH/byANV0N6GN9Uo5L1lu8UkLdEs6OMwMODINQZhkMwt/bu/U3rZgh97EcC
-         3yCUh9XmSkJn3W+SG2UXO5VNfqQpKgr0aLxZkDhFCWKfwmsI2v/WJFL+zDZVKQcH53Sm
-         4oaw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=xyP/Yoby/b9QyuWM5696wRONWUPpqQ8dXz6TkhARC+Q=;
+        b=Hq+QvaqsQ1nj3b3hgwov+KtZQ8pgI5iDSq6rFUhBl6iusA9FCJ6nf1EjhuW9QQ/946
+         Py1HaiLAxcxDdWuY4BQCAnjJdTQzvwRtQRJnKb8+w0JF8oc1oRQx1b/Fno/iFYxi8isa
+         GTAw6RpDS/tkc2RtKISSuLbol0a0biYGhQHBFfWLn2uvMd1Hwk/+ChZhqnF5bVp64pLL
+         Z7uvlGyKkSuza9F/oMXaOCPyNvljVjRcxn8ejEIVXF5A6e0Rj8Juod0koVgmTX8dgZD+
+         a+UqXsu4pU7K3YtlYlMNKA8iB8DMbMy1wKCiyT5yvTJVNSPgur4QgaC3u2YQL1JZPch/
+         3sAA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=SbJLUxPf;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com. [2a00:1450:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id u8si306790lfu.3.2020.03.12.13.57.15
+       dkim=pass header.i=@kernel.org header.s=default header.b=01K4DWcR;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id w2si450403otl.3.2020.03.12.13.43.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Mar 2020 13:57:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::544 as permitted sender) client-ip=2a00:1450:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2020 13:43:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=SbJLUxPf;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-ed1-x544.google.com with SMTP id df19so3040686edb.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 13:57:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=6378GH+VagTsYawhUyrEPK4Z6phFHe6sPuhEY8Vyqvw=;
-        b=SbJLUxPfKdTZNV3qy+jgXI4Jnt6h9vWi6S6ZnlUkSLKukGJ1R3s11B5XATjQFWOLSK
-         CMYUX/4niohUP25lyG6/T56/ipvNYWjORJPst7pA1O8SelMIESEC73hY3lVwL9bX4V9W
-         KelBgHItQmBD4q5FpH61m+gqTU0kHxD658z+M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=6378GH+VagTsYawhUyrEPK4Z6phFHe6sPuhEY8Vyqvw=;
-        b=JwWT8LL9zqhzO32UplkEcwogsq1SbRMxpYf3LUYTaDu2z5HgKsYDYcPy9frqCI4C9x
-         uJFmkERR1aLfyfl326s4TJVb37DEdyEP6COQ5RWaWDSMshr+E1Ihq/fvEzi8y7PMT17l
-         l8L5/PEC4z60fVb3iKsuByWzW8xvpAnaa1gZoBZ8c0iLnBNkKq7HbEx+1B6hh2kFl4mq
-         QGTF6v8CmAZtS0VnHp+c9NfQukSjGgBkCyVxrg7C3oooB6twPa1xm59E6Bj1/CHD9b5r
-         wgqrhNiRNrseXONVHWuMTnrBxbyFMsRX13Th9RZNwG3n5rXe2dhhM++PIQIlvClUeUXU
-         NVZw==
-X-Gm-Message-State: ANhLgQ0aj1XomtLDYIWUoCr/hWS00rB3jTxt/TW4l3B60OSYNq/Eqx9W
-	IVfRu94OntwXmkuQLXUvWknEjtD672Tu+A==
-X-Received: by 2002:a17:907:4241:: with SMTP id np1mr347171ejb.247.1584046635310;
-        Thu, 12 Mar 2020 13:57:15 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id u20sm143839ejx.80.2020.03.12.13.57.14
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 13:57:14 -0700 (PDT)
-Date: Thu, 12 Mar 2020 21:57:06 +0100
-From: Lourdes Pedrajas <lu@pplo.net>
-To: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@kernel.org header.s=default header.b=01K4DWcR;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 91510206CD;
+	Thu, 12 Mar 2020 20:43:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584045799;
+	bh=DjBKjqYHNvTOulopJwQ8k3snaK+kpO3CVwFzIt6VUrM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=01K4DWcRrmpVvoOHzq2+9S+hBc5q/IXEr+XCZ1+yrhgQjJl2ZWh3S8jRv+vo/m9ZP
+	 cTILdb+ClnsrIpOVX2KhfPMM0g8uTC1lIc3H4kOplDNR0se4pyoo6Y0ZGTornssamB
+	 BEOqylXXG7UG/ntPtctr/EZc3iAkQncqAMjbIilo=
+Date: Thu, 12 Mar 2020 21:43:16 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Lourdes Pedrajas <lu@pplo.net>
 Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy-kernel@googlegroups.com,
 	matthias.bgg@gmail.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: mt7621-dma: mtk-hsdma: make
  a variable non-volatile
-Message-ID: <20200312205706.GA9113@supernova>
+Message-ID: <20200312204316.GB590925@kroah.com>
 References: <20200312121548.6719-1-lu@pplo.net>
  <20200312133112.4f61c60b@elisabeth>
  <20200312194329.GC6485@supernova>
- <20200312204316.GB590925@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200312204316.GB590925@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200312194329.GC6485@supernova>
 
-On Thu, Mar 12, 2020 at 09:43:16PM +0100, Greg KH wrote:
-> On Thu, Mar 12, 2020 at 08:43:29PM +0100, Lourdes Pedrajas wrote:
-> > On Thu, Mar 12, 2020 at 01:29:52PM +0100, Greg KH wrote:
-> > > On Thu, Mar 12, 2020 at 01:15:48PM +0100, Lourdes Pedrajas wrote:
+On Thu, Mar 12, 2020 at 08:43:29PM +0100, Lourdes Pedrajas wrote:
+> On Thu, Mar 12, 2020 at 01:29:52PM +0100, Greg KH wrote:
+> > On Thu, Mar 12, 2020 at 01:15:48PM +0100, Lourdes Pedrajas wrote:
+> > > Change variable declaration volatile unsigned long chan_issued to
+> > > unsigned long chan_issued
+> >
+> > Are you sure this is correct?  Usually a change like this also requires
+> > some kind of lock somewhere to ensure things work properly (not that it
+> > is not working properly today...)
+> >
+> > But it's not always as simple as just removing 'volatile', otherwise
+> > that would have been done already.
+> >
+> > Please do more work to determine if this is a safe change or not and
+> > write it all up in the changelog.
+> >
+> > thanks,
+> >
+> > greg k-h
 > 
-> If you are new to programming, I would focus on other things.
-Thank for your advice.
+> On Thu, Mar 12, 2020 at 01:31:12PM +0100, Stefano Brivio wrote:
+> > On Thu, 12 Mar 2020 13:15:48 +0100
+> > Lourdes Pedrajas <lu@pplo.net> wrote:
+> > 
+> > > Change variable declaration volatile unsigned long chan_issued to
+> > > unsigned long chan_issued
+> > > 
+> > > Use of volatile is usually wrong: see Documentation/process/volatile-considered-harmful.rst
+> > 
+> > This needs some more details. From that same guide:
+> > 
+> >   Patches to remove volatile variables are generally welcome - as
+> >   long as they come with a justification which shows that the
+> >   concurrency issues have been properly thought through.
+> > 
+> > so, here you need to investigate what that "volatile" was supposed to
+> > achieve, if it is achieved by other means, if some form of locking is
+> > needed instead, if we end up in one of the "exception" cases also
+> > listed in that guide.
+> > 
+> > -- 
+> > Stefano
+> > 
+> 
+> Indeed, both of you are right. Thank you for pointing me in the right
+> direction! However, as someone who is new in programming, I find I lack the
+> knowledge needed to tackle concurrency and locks. Nevertheless, I will do some
+> research to learn a bit to see if it can be done in a reasonable amount of
+> time. Sorry :(
+> 
 
-> Concurrency and locks are not exactly "simple" things, but they are
-> essencial to learn to be a kernel programmer.
-I know, I am willing to learn it. Thanks for your patience!
-> 
-> good luck!
-> 
-> greg k-h
+If you are new to programming, I would focus on other things.
+Concurrency and locks are not exactly "simple" things, but they are
+essencial to learn to be a kernel programmer.
+
+good luck!
+
+greg k-h
 
