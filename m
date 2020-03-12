@@ -1,110 +1,118 @@
 X-GM-THRID: 6803323360497369088
-X-Received: by 2002:a05:6638:201:: with SMTP id e1mr23040852jaq.111.1584304536823;
-        Sun, 15 Mar 2020 13:35:36 -0700 (PDT)
+X-Received: by 2002:a92:884d:: with SMTP id h74mr8323966ild.3.1584022157670;
+        Thu, 12 Mar 2020 07:09:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:1803:: with SMTP id 3ls465206ioy.0.gmail; Sun, 15 Mar
- 2020 13:35:35 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vteMJLlbdUplrAmMGiTYuB+DjJOKWyEUtocfymy1/pzTIsLtyfDN+H9AZ04nPS4oQ+mAr3M
-X-Received: by 2002:a6b:5118:: with SMTP id f24mr4957548iob.20.1584304535550;
-        Sun, 15 Mar 2020 13:35:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584304535; cv=none;
+Received: by 2002:a92:3ccf:: with SMTP id j76ls1714825ilf.8.gmail; Thu, 12 Mar
+ 2020 07:09:16 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu/Zdz86nNSE3bU5PmYLFZnU2cpF0m/eusCZh7JfWtY5e35pB+bLj4MUm12WeAcA0av24fg
+X-Received: by 2002:a92:cb8b:: with SMTP id z11mr8585716ilo.240.1584022156079;
+        Thu, 12 Mar 2020 07:09:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584022156; cv=none;
         d=google.com; s=arc-20160816;
-        b=eooZQHjyJqp6NeC1NLmabEzzVRiSHROdLUVjKVw6+YFoUBTnhwmJwg2yF+GwluwD6U
-         PkgUliJSeZ0WypDdT2ITVn5AGkKhtc/yEMwX5mEIybkuHLrp07kO36YqlqeN7oC8keZc
-         zHWztOw6GMlhdPosliL46xDWJyI2ycRXtBXC3wJnKqLJFJApJRfxHIpkhmmuTgc/P22E
-         Xi2tlINjKOPprh9y38O9Uow85yHPCMmyyzd9dgWfOe0NVmB0JZRdVuvQUm5OblrJdd4l
-         bKvzcvIpEklJ2m7qYyCcrvlzJycd3tIvFUkEOg/mCKZw2ja44iZXzWhBfjzYO4r3ba99
-         SKrQ==
+        b=mxt5etvM2n1LxPSlc9lnYQNbC1oHbq9R6q9ppUqBgEnwCPPqEoRpzale0PpflZJDqk
+         5unlLzz2DDBR4fwL7341ttLZ+hBpyxsyXyqtjJ2Q1XngeJc7B0AjDcQuZ7ntPAbOfWwB
+         WpCyAN5WdRKhomoj0Yy1aA1ZA6huCPM7Ym/+SjRU8h0tRBJUZVyDQiD6nThaoGaMlz8J
+         ipakb8+Moep2F/td6jJoNxyGxfHFalpI42ELiFDS6tBEvaWO+jR59X/m7+wEMO7rRbq4
+         Fai6buoC3lLCzlF2jJTAhVowYiUq0Jz131e2EUfyfu86BiP2j1rNvArlGcWAUf3cu4xK
+         ZQEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=nVZnOd5m3porvOMaBZqIz0qexyDnIJOrYW84sRwpgvw=;
-        b=J2zhj+4UA8uYpQ9OLS20V/fogXAFN6Ju0fHW3Lw8nAE2hW7koixXpPdC0XsdEWSSdu
-         z+fhygn7CafPSzy455/5PCfWPyAwipvslVwHRxgoPLOnUp4l6/1dPQg9bIvNPl0lwJFR
-         9Dklcw9VawIBk9vnzIVviHHDo8JhAOk9tNCLPdxk1zgZ/SBf/XpLqXP2vECEBTt9q35G
-         aQmV4oQP141PtD1PCP+Mtwi6m08MC2OnO6+bZ2vJsFFvcoGrPBYD5pFfVRL5+UsRywIf
-         inDmqqu/uVJEPbtDAC72jidwrMwkIQbDupFdDXdPUaf/ifLyAkvWA2XaiV4LaEV3Ej5c
-         qE8w==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=C1lRCHmAEtiAGWNoHLNzxFdLjSGZIvxljtZ6W76mXp0=;
+        b=Ytbx4bcXHDtgMBq6cXH3Ni9ygt89OBhLQ4tbO/uus80QHXylc1ibZZhFH7+jxw2F72
+         6eWne/1Ox//RQ/v8Q/XyvMT88Mbd2rJFnGB4g7+2bxSezpGhrNNHxSuKrwuEYih6DiGW
+         PqyLVPw1E6+J/qwH2tGZ3wCprN3eJCkE+8cSRpTidgXJZxCvDoVkAHi1+Y30OGHyeAZb
+         gKYgYHJ4Ng3nnCUM3uGtOdrsGpF/dSekHEkwzD+SE/lbQBUUxiP74XFplCHZZKWJoCHq
+         nPCNcNZqkzh67HDAB6AkSeKH4JRThWXEcK0NTesq0kXIAQ2YtFXJm6/3m3HxXORGy23w
+         Jm4A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e6pZ/aPS";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by gmr-mx.google.com with ESMTPS id 131si122485iou.1.2020.03.15.13.35.35
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=iQwBLs62;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::a42 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Return-Path: <jevargas@seas.upenn.edu>
+Received: from mail-vk1-xa42.google.com (mail-vk1-xa42.google.com. [2607:f8b0:4864:20::a42])
+        by gmr-mx.google.com with ESMTPS id e7si227002iof.4.2020.03.12.07.09.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2020 13:35:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Mar 2020 07:09:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::a42 as permitted sender) client-ip=2607:f8b0:4864:20::a42;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e6pZ/aPS";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584304534;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nVZnOd5m3porvOMaBZqIz0qexyDnIJOrYW84sRwpgvw=;
-	b=e6pZ/aPSjzXGhumBOoAT6HVMVajZrhnkyX3Bj099h9px+ON1+XIKzv7MHlwZI0/RFnE8Ik
-	+f/FBVeQzzsMfeXlushvJyYbbRbRfZaddsh24slp4p+hNkZXY2YJQabhVCqcGfBG/d3S37
-	CHofBaX/RbBz1Ps+/DodszAqbGAU90Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-313-KM45FeRoPJu_w4jHbit_OQ-1; Sun, 15 Mar 2020 16:35:32 -0400
-X-MC-Unique: KM45FeRoPJu_w4jHbit_OQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F7BB18A5500;
-	Sun, 15 Mar 2020 20:35:30 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 38D6C10027AF;
-	Sun, 15 Mar 2020 20:35:24 +0000 (UTC)
-Date: Sun, 15 Mar 2020 21:35:16 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Enrique Vargas <jevargas@seas.upenn.edu>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
- <Michael.Hennerich@analog.com>, Stefan Popa <stefan.popa@analog.com>,
- Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: adc: eliminate spaces
- at the start of lineslinux-iio@vger.kernel.org
-Message-ID: <20200315213516.6c27408f@elisabeth>
-In-Reply-To: <20200312140911.GA731@evX1>
-References: <20200312140911.GA731@evX1>
-Organization: Red Hat
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=iQwBLs62;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::a42 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Received: by mail-vk1-xa42.google.com with SMTP id w4so1596578vkd.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 07:09:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=seas-upenn-edu.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=C1lRCHmAEtiAGWNoHLNzxFdLjSGZIvxljtZ6W76mXp0=;
+        b=iQwBLs62GKkcB29jABM3QVO5S06NlLDSMWxCAQ7GGeGv/aIuPogaIN+DdR/6YELVNv
+         RBx4x6zD5EQ9D0lT4/0RGEUNd5rfjg9bWQUmYSAxMzKwRWGzojsNnK0avSNYu1e25Wqm
+         enLi9M1ZhmW6259fgRRRE7sL8hXDmAl/6WcCCbbuLL7dxhUk7f8DnrvpfJ3HCBDiSp9L
+         QhzeYVwkIAHwwkIuC+Vo/AsM+aSCq0hhUlqF/E69qQMGaXQOzGX0vvHgTJ0R/ZbnUTOr
+         KUjZkR+LsNfvV2e4oEIT6Q+Bo7TR7sI6j9kDQ99nR+clrBCU4v2Hz5E3HLUgGboHzrd4
+         fFdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=C1lRCHmAEtiAGWNoHLNzxFdLjSGZIvxljtZ6W76mXp0=;
+        b=WY+6FB6pfjUewqZs5yE1RySrnsbyWEZ7+eNVql4ydYPuEnUtgHsd26ZJUXuU7TZgIG
+         Z4JBQqDBByO74BNJsgThkRHS4a3ii8/QVdDmicsoe4kTfG5aoVqQP4zdlHp4dC1yfHN5
+         PJra+qOreRDbrSar8lCRe+dETn5+sAsdVQUf/A4VK66vfQR1CKq4oPeff+yibSs8+RS1
+         lNz/IUxhicGfMye7n6KnFdAoFwpCA5IfhXXLgYO4wzqn54Vg/bJkT7oN5WADML2Gcf01
+         axJC8kAmzAsVTSxpxJUT0NHDky+BKxOFfZuKfzNa55z4YAl2bv5eGqnIm/lzFtoln2Ka
+         k2TA==
+X-Gm-Message-State: ANhLgQ1aM3cnay+cWfXHLax1e1wGSja6TcmY9UM/9yBa6PtAhXwGSKpJ
+	6PUwind+16kYUQdGVfGv+H5h1FMAl2fBwg==
+X-Received: by 2002:a1f:d5c5:: with SMTP id m188mr5306771vkg.7.1584022155265;
+        Thu, 12 Mar 2020 07:09:15 -0700 (PDT)
+Return-Path: <jevargas@seas.upenn.edu>
+Received: from evX1 ([189.172.48.149])
+        by smtp.gmail.com with ESMTPSA id q21sm15565771vkq.32.2020.03.12.07.09.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Mar 2020 07:09:14 -0700 (PDT)
+Date: Thu, 12 Mar 2020 08:09:11 -0600
+From: Enrique Vargas <jevargas@seas.upenn.edu>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Stefan Popa <stefan.popa@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: iio: adc: eliminate spaces at the start of
+ lineslinux-iio@vger.kernel.org
+Message-ID: <20200312140911.GA731@evX1>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Hi Enrique,
+Eliminate WARNING found with checkpatch.pl related to spaces
+inconsistency on identation.
 
-For some reason, an address you wanted to Cc: ended up in the subject.
+Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+---
+ drivers/staging/iio/adc/ad7192.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-A couple of comments:
-
-- well, yes, I see you're removing spaces at the start of some lines,
-  but you're also replacing them by tabs, and doing it in an enum...
-  maybe that could be part of the commit title?
-
-Also,
-
-On Thu, 12 Mar 2020 08:09:11 -0600
-Enrique Vargas <jevargas@seas.upenn.edu> wrote:
-
-> Eliminate WARNING found with checkpatch.pl related to spaces
-> inconsistency on identation.
-                   ^^^ indentation.
-
-The rest looks good to me! Can you please send a new version?
-
+diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+index bf3e2a9cc07f..51b1cd3ad1de 100644
+--- a/drivers/staging/iio/adc/ad7192.c
++++ b/drivers/staging/iio/adc/ad7192.c
+@@ -156,8 +156,8 @@
+  */
+ 
+ enum {
+-   AD7192_SYSCALIB_ZERO_SCALE,
+-   AD7192_SYSCALIB_FULL_SCALE,
++	AD7192_SYSCALIB_ZERO_SCALE,
++	AD7192_SYSCALIB_FULL_SCALE,
+ };
+ 
+ struct ad7192_state {
 -- 
-Stefano
+2.17.1
 
 
