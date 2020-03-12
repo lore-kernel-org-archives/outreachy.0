@@ -1,139 +1,108 @@
 X-GM-THRID: 6803023005726277632
-X-Received: by 2002:aca:bc86:: with SMTP id m128mr15290457oif.11.1584303843884;
-        Sun, 15 Mar 2020 13:24:03 -0700 (PDT)
+X-Received: by 2002:a17:902:7895:: with SMTP id q21mr8581980pll.222.1584026729007;
+        Thu, 12 Mar 2020 08:25:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:b98a:: with SMTP id j132ls3767880oif.3.gmail; Sun, 15
- Mar 2020 13:24:02 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsKK52DzYMwHir5U2cKg1zCm0BfULOt8vImSHlsylTBlPR/XCRP0/lDKbyWRs45w9sG84W5
-X-Received: by 2002:a54:4496:: with SMTP id v22mr15094378oiv.132.1584303842644;
-        Sun, 15 Mar 2020 13:24:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584303842; cv=none;
+Received: by 2002:a63:de4b:: with SMTP id y11ls2118012pgi.2.gmail; Thu, 12 Mar
+ 2020 08:25:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs4z3MkzspQWw3ZNI+omSitgMHjdc/fqtZ/X9KK+zdeX1k3cP+SEVygbCYJ0OK9qNoNumvm
+X-Received: by 2002:a62:3604:: with SMTP id d4mr8693263pfa.82.1584026727378;
+        Thu, 12 Mar 2020 08:25:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584026727; cv=none;
         d=google.com; s=arc-20160816;
-        b=ScT1MgLKc2DYWpP4PZG2DF1cfagfGhZSKJpb6NwQSWIfTGbJHbF0/FPbqchJeyO7Oq
-         pcvJIS9ki7in6Uxt1wvlNF4bVeYqf5jITXIUDMdF41wAWpyQ1BWcOsH0XwwcwZmxmNRG
-         4l2SzDDmQKzjC67w5OfNw7tfG9qWMekgoJVhinMjwhU1GUFx9XzZNWb7WjMEr/H7VhiN
-         Z51QjCedOSbTPBHh0cSpoeUh+F41B+J8EwwS58bVmHh0IK7mdOIr1boJmgO6cOvUD2ty
-         jn9MAjHCxJQXZOKGFsvNqzWaIZvJ2a1cx9S0KF53tZ1n2NakBx2ZU68ZGPG8M+xd7EAB
-         03nA==
+        b=MdiW3sRWVw6Pu43qXkfGe+l79u/Z91WjdFB8TGCGnVMz5TmgGmDlnM97a1vJha6ocq
+         KvYhdOfrISRDQGItzUYJ8DaQ6t6TeTU46xGrAOcoTMyhKfBtehMYEyIbjLJv9jYfk1ZY
+         3ACUxGo6qJvu2sqVBgkMHXZsbYgEmZxr/9OCmleQomO3aGse+lUJqA3dQ+P8OKJhhmCa
+         59PzVbJJa6Udmqsl6n4O/o3jGagR2uuqS/L2gzf5HSidUMEmD+0q3s5VnuUXtYNBs0rb
+         7zN0/5CWOgL05BbUigSRo71pjeuaSw00NygFTanPRLn/CadhwqJqbBU20dCqBDrWlknz
+         MMJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ntl0vj19b9p//ikBOqw2hGPl2Pwjrf6Wt+xh8EQy3/A=;
-        b=E6GKPwOEdlzLhmDV/KJnrxsYbWQ28UMGMs2nsFFoE5GM7c81AjE55VkWEaS5XbEekC
-         +4xXKHamq8EtcWHB4RVeCpY57PaUrqVEXdje9cw2/6g+wrtEehtWEaa6HQu+ITPwqpsE
-         whZRY4Yp4YeVdI2DlGC4KtrhybQieWMi08qpRZw2GfNNgJbi1uqH/vboYJErBquMlEa8
-         8GdVH8fAbuz4zhG1CKp8Uen6UjgTE07Lmorns3xFtYd6M9sz3+av+6Yg4I9HKlLk0x1j
-         JTaU0A5+9UYcCN498A8ENDU2XqLgN85iEdM7hu60plBwZJ0URe2PkgFltMOgKptoYsAv
-         pqcQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=NtEK3GCNw54PfRwQhmORU7EZTYAJ94sep4khAn+1Ki8=;
+        b=ej3MwcD0U4wlg/65TOWSBx9w/7L3AZuQKCuE7qRWX1UsavLBDp3MkREgjJh/mwkxZQ
+         2RvnzPJFlkE8t6HYVki3yt9/ttC3XxNovkFHvVreXJY31pPVaHsIycC1i/v2ujc8mD4P
+         Z9L5JpmWFVWbihNz7aegWYNVfg4WQiNZkOzBQfSBNOZ2r96yDAje1V36qpEzb18VYGUz
+         BGsZodBuWz/+JD71Oxvd7XeoUoyfhfmZz9oqzYvzF7KOetTLxoGE3wrR+1X3wYgYGPFD
+         nJxR3/GZBj/yqZPpZKu9lwDg1OQK/Kr46N6MF6z5aCXodo3Hc3tSLXog7MEFDCMt7ERI
+         /Ajg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSFcuMCN;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by gmr-mx.google.com with ESMTPS id o11si966572otk.0.2020.03.15.13.24.02
+       dkim=pass header.i=@kernel.org header.s=default header.b=eqrZ4orV;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id b10si311046pfo.6.2020.03.12.08.25.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2020 13:24:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        Thu, 12 Mar 2020 08:25:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSFcuMCN;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584303841;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ntl0vj19b9p//ikBOqw2hGPl2Pwjrf6Wt+xh8EQy3/A=;
-	b=FSFcuMCNgv12iTZ8jScSn5r/GAijtriD61LeREPG83rbnByToFeIYmmoGhDUkBiF1mNYsD
-	NQv6wbe7HSdSIRc9/QTI2BR6wPkLrdLzsSrfCs+7EBcg7ke85Xugw2g6t4PCqRVI+IrOaR
-	8Z9oSm8uSPAbUYfF9E/P+Efixk3mf2Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-135-L6uNEMdGMMKZLSmoceZ-Cg-1; Sun, 15 Mar 2020 16:24:00 -0400
-X-MC-Unique: L6uNEMdGMMKZLSmoceZ-Cg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+       dkim=pass header.i=@kernel.org header.s=default header.b=eqrZ4orV;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF64ADB30;
-	Sun, 15 Mar 2020 20:23:56 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A820694967;
-	Sun, 15 Mar 2020 20:23:51 +0000 (UTC)
-Date: Sun, 15 Mar 2020 21:23:45 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
+	by mail.kernel.org (Postfix) with ESMTPSA id A96F220674;
+	Thu, 12 Mar 2020 15:25:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584026727;
+	bh=giirGg/yYUa6GRaPVovb43vBhfGzU4O3yg3/BJ57+fQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=eqrZ4orVE3JKyGvr7KisrENdTVP4tjNF1eiB/83kwaSJa8dRsgn1I01cKipwgQk5U
+	 tavtyJq7rdEBThT4R5mtNBTtCy4IvPX1ox+MlbUuiK8dlwhBw4vbl9ESTH3mheXcFc
+	 nmVDMDagQgap+spvLovkV9K8g3JIm27S61qknIAs=
+Date: Thu, 12 Mar 2020 16:25:24 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Cc: Julia Lawall <julia.lawall@inria.fr>, Ian Abbott <abbotti@mev.co.uk>, H
- Hartley Sweeten <hsweeten@visionengravers.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 5/5] staging: comedi: drivers: use
- unsigned int
-Message-ID: <20200315212345.611a20cd@elisabeth>
-In-Reply-To: <20200311221122.GA29568@kaaira-HP-Pavilion-Notebook>
+Cc: Ian Abbott <abbotti@mev.co.uk>,
+	H Hartley Sweeten <hsweeten@visionengravers.com>,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 1/5] staging: comedi: ni_mio_common.c: reformat code
+Message-ID: <20200312152524.GC383349@kroah.com>
 References: <20200311184327.25338-1-kgupta@es.iitr.ac.in>
-	<20200311184327.25338-6-kgupta@es.iitr.ac.in>
-	<alpine.DEB.2.21.2003112150260.6093@hadrien>
-	<20200311221122.GA29568@kaaira-HP-Pavilion-Notebook>
-Organization: Red Hat
+ <20200311184327.25338-2-kgupta@es.iitr.ac.in>
+ <20200312081645.GB11746@kroah.com>
+ <20200312145603.GE30896@kaaira-HP-Pavilion-Notebook>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200312145603.GE30896@kaaira-HP-Pavilion-Notebook>
 
-On Thu, 12 Mar 2020 03:41:22 +0530
-Kaaira Gupta <kgupta@es.iitr.ac.in> wrote:
-
-> On Wed, Mar 11, 2020 at 09:51:10PM +0100, Julia Lawall wrote:
-> > 
-> > 
-> > On Thu, 12 Mar 2020, Kaaira Gupta wrote:
-> >   
-> > > Change i's type to unsigned instead of signed. It's always positive.
-> > > Reported by coccinelle.
-> > >
+On Thu, Mar 12, 2020 at 08:26:03PM +0530, Kaaira Gupta wrote:
+> On Thu, Mar 12, 2020 at 09:16:45AM +0100, Greg Kroah-Hartman wrote:
+> > On Thu, Mar 12, 2020 at 12:13:23AM +0530, Kaaira Gupta wrote:
+> > > reformat the arguments given to ni_stc_writew() to increase code
+> > > readability in ni_mio_common.c
+> > > 
 > > > Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
 > > > ---
-> > >  drivers/staging/comedi/drivers/ni_mio_common.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
+> > >  drivers/staging/comedi/drivers/ni_mio_common.c | 6 +++---
+> > >  1 file changed, 3 insertions(+), 3 deletions(-)
+> > > 
 > > > diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
-> > > index 06ed4b1dd875..034cf8dafaf0 100644
+> > > index b72a40a79930..06ed4b1dd875 100644
 > > > --- a/drivers/staging/comedi/drivers/ni_mio_common.c
 > > > +++ b/drivers/staging/comedi/drivers/ni_mio_common.c
-> > > @@ -888,7 +888,7 @@ static void ni_sync_ai_dma(struct comedi_device *dev)
-> > >  static int ni_ai_drain_dma(struct comedi_device *dev)
-> > >  {
-> > >  	struct ni_private *devpriv = dev->private;
-> > > -	int i;
-> > > +	unsigned int i;  
+> > > @@ -2445,9 +2445,9 @@ static int ni_ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+> > >  #endif
+> > >  
+> > >  	if (cmd->start_src == TRIG_NOW) {
+> > > -		ni_stc_writew(dev, NISTC_AI_CMD2_START1_PULSE |
+> > > -				   devpriv->ai_cmd2,
+> > > -			      NISTC_AI_CMD2_REG);
+> > > +		ni_stc_writew(dev, devpriv->ai_cmd2 |
+> > > +				NISTC_AI_CMD2_START1_PULSE,
+> > > +				NISTC_AI_CMD2_REG);
 > > 
-> > I'm not sure this is useful.  The value is not going to b lare enough to
-> > require an unsigned.  And loop indices often have type int.  
+> > No, the original is correct.  What caused you to want to rewrite this?
 > 
-> Sorry, I didn't know that. I'll take care to see the largest value as
-> well before making such changes. Thanks!
-> 
-> Should I resend the patchset by removing this patch or leave it as it
-> is?
+> It is more readable and gives the same results, hence changed it.
 
-I think you should remove this patch, in the three cases where you have
-that 'const int timeout = 10000' it's never needed to switch to an
-unsigned value.
+It is not more readable, you just lost some context information here,
+making the code harder to read and understand easily :(
 
-If you were to write that code from scratch, I would recommend that the
-"10000" should be a #define, and all that register polling should be
-consistent, I don't see any reason behind those differences, and the
-udelay(5) feels like an abuse: Documentation/timers/timers-howto.rst is
-a quick, nice read.
+Whitespace matters, otherwise we wouldn't be doing all of these cleanups :)
 
-However, I'm quite sure you don't have that specific hardware to test
-any change like that, so it's probably better to leave it alone :)
+thanks,
 
--- 
-Stefano
-
+greg k-h
 
