@@ -1,102 +1,102 @@
 X-GM-THRID: 6803246482935775232
-X-Received: by 2002:ac8:3550:: with SMTP id z16mr10406739qtb.217.1584304174268;
-        Sun, 15 Mar 2020 13:29:34 -0700 (PDT)
+X-Received: by 2002:a1c:29c2:: with SMTP id p185mr3868224wmp.79.1584004257545;
+        Thu, 12 Mar 2020 02:10:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:b7c4:: with SMTP id h187ls5310002qkf.1.gmail; Sun, 15
- Mar 2020 13:29:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuB3yjY7GKB3+jvdHUuCIo00KmNoPYdROecHKAZoTXB4zW2NtBNw+h1QUIwzGSPfjz/ZMq+
-X-Received: by 2002:a37:6411:: with SMTP id y17mr24066165qkb.437.1584304172390;
-        Sun, 15 Mar 2020 13:29:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584304172; cv=none;
+Received: by 2002:a1c:bd82:: with SMTP id n124ls2022521wmf.2.gmail; Thu, 12
+ Mar 2020 02:10:55 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvg/vDphRBsq6DhqNoej5uoiOVJzv05lQTDrRoxHoQ5y69GxoMDbx8WlSmXeZyIj9UQ3tbx
+X-Received: by 2002:a1c:6146:: with SMTP id v67mr3931465wmb.78.1584004255117;
+        Thu, 12 Mar 2020 02:10:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584004255; cv=none;
         d=google.com; s=arc-20160816;
-        b=l2VI+DTBZsAr7GhL7q1wS47J0iLz/gC/Ck3zfTlQFVE9xyNcBIZxvTG1XCFaoFL1dd
-         wlvsXJlqGsacfVRnEGUn9lyqguXSw4xCOtVD2qym9m23ygRkhWytSz9TgfSO6G2cZ9WD
-         pDAkUkzrStSgumtKyOxZ7HF5/+MHZR5wyRAbIwJvY2XzK2Ge0T2Hq7G0MssKAse5+vvf
-         +JoGTXMn/wJlZRGtOOdm9DMnHFerKerNjI8GyGKIEhQZ1RQLvg9S/UVBaynV9ttjph9t
-         aQIanECRoCNCexN099ImdbnsTAtgjEbRcv+Pcrw4CmkzLJjdUXoLwsMXnWBjkddngrrS
-         WcMA==
+        b=Nju8C16ZnuV5FhWfvaaGw3CfbPAkYQU0DtdP5biIe1Pe2VXDF8X0r/3Sh5zspubLhf
+         4CZ3inZqr1z7pLXGlseBhH9QvvtWmXzVBi2IU3dxUq1jrbTPKCn1ws/XSCjPdOR9l2mA
+         5Pi0Jn8/mMr2PY3Hb0mTwHDYxKZ2iD5v2wjpRse3eAKnX4QeG7Mfp44QyVbJcZjN5JHt
+         A1P7bzKI8t8MHtM6/BltahRkEGcKdR2n4+i0lYYNSInu+JeXx3TDvZJ5RjBpnsT81CFf
+         UE0Vl/XJPRJlnQ/im69wYMhrAqFiIH2C+/wDeuIMimU5nU9Cp0C1j/kKfCnCCjMykDbh
+         2lZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=sWZ9O/SZF75LWgmAl9d3FSfWyzIkl/5rOKeMI4JY+ck=;
-        b=zuCSRATnM3FEyYwQTnxutxWCAI9Zg/pqPWm9Cet+/HQwnzwmMVtWhX9UiyZEyMFoax
-         sfaAeHyqlD16qWmYO81l6GuHY0jXJEpD3KlKDC+XScJKMHVRU7+urEEO7cjEoI+MDBTu
-         BFNDdqim9t5avAxONyv8KBMtuhmugQwhgYEdQ/JDldElZbCIXddfofJRwIF9D6AKEkR3
-         9ZxH0lFO1I3HiV4Vh1yVM/5IftxBFQV15CvpYjDFVml2H8OVFJhjXOBg0wb5heqR4vEn
-         inGMIqyoM62ZCWix6YYda9liKhDjY8e9VLnj67RWLJvxT5BK1i5GJ89yfjFV/TDyn3j7
-         /+PA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date;
+        bh=qpwHe/P29g6p8GFNtpXJFK2SG5IUFvGaEb6ur5Yy2FQ=;
+        b=psN50+NUYafm0B6ajL88HbqjEj7uhUWAwMWHErrABk2xKXlb2u6VlE8N8meydKeZzN
+         vej6/3s0yAD4sYdwPm5ZHJQWXEDCbuI3Gibn3DSbh7B79u+SAlmC3fwqzd7oksIFkveg
+         dhNyoAmJIcHiKUvlXFO69l4I1C7368TbftedLjMb1ksztohQ77NNKF9+/WlzlC8R2Imo
+         aRBAeJajO+zj1f/jQXLJdDwdUmEfk7NMdhfowayZ7IP6I2tIwxtQVpgehqqj+cBrXjh2
+         GCSx9qvUby7z25VJnSgmNXOzFcxx9UWAujLouMx/Dy1Xms6M6b1TigB0Py7paEUDbOQs
+         ojWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="E8wW//gj";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
-        by gmr-mx.google.com with ESMTPS id v85si84635qka.6.2020.03.15.13.29.32
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2020 13:29:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id f1si151054wme.1.2020.03.12.02.10.54
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 12 Mar 2020 02:10:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="E8wW//gj";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584304172;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sWZ9O/SZF75LWgmAl9d3FSfWyzIkl/5rOKeMI4JY+ck=;
-	b=E8wW//gjAhBlgR+SQQh7qPDI2wZvk56gHZUMn07V4uJGDoZOgwliNq3h38W7kBy8q+VcUd
-	x3eo1n0uDXeplxwPjw/Qnv8hcxEGTzmpSUXRWUam4AK1qUBuJcvr25M91OVtyTpRYrBW6l
-	SAL9ty5Rs5BSuqpEccB5od9c0BOImA0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-258-RXvvVqN2OMewHt4mZaM5dQ-1; Sun, 15 Mar 2020 16:29:26 -0400
-X-MC-Unique: RXvvVqN2OMewHt4mZaM5dQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3BB80189F77A;
-	Sun, 15 Mar 2020 20:29:25 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E43B327094;
-	Sun, 15 Mar 2020 20:29:19 +0000 (UTC)
-Date: Sun, 15 Mar 2020 21:29:01 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: R Veera Kumar <vkor@vkten.in>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Larry Finger
- <Larry.Finger@lwfinger.net>, Florian Schilhabel
- <florian.c.schilhabel@googlemail.com>, outreachy-kernel
- <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Fixes for simple
- typos in C comments
-Message-ID: <20200315212901.6b515c24@elisabeth>
-In-Reply-To: <20200312091042.GA4246@tulip.local>
-References: <20200312091042.GA4246@tulip.local>
-Organization: Red Hat
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 11511 invoked from network); 12 Mar 2020 09:10:54 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.246.223.143)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 12 Mar 2020 09:10:54 -0000
+Date: Thu, 12 Mar 2020 14:40:48 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] staging: rtl8712: Fixes for simple typos in C comments
+Message-ID: <20200312091042.GA4246@tulip.local>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Hi,
+Fixes for simple typos in C comments.
+Found using checkpatch.pl.
 
-On Thu, 12 Mar 2020 14:40:48 +0530
-R Veera Kumar <vkor@vkten.in> wrote:
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+ drivers/staging/rtl8712/rtl871x_cmd.h  | 2 +-
+ drivers/staging/rtl8712/rtl871x_recv.h | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-> Fixes for simple typos in C comments.
-> Found using checkpatch.pl.
-
-This looks good to me, except for the same points Julia had on your
-patch:
-	"[Outreachy kernel] [PATCH] staging: rts5208: Fix long line in C func call argument"
-
-Can you please fix that up (title and description) and resend?
-
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
+index 98d7fbfce1a5..254182a6ce8e 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.h
++++ b/drivers/staging/rtl8712/rtl871x_cmd.h
+@@ -478,7 +478,7 @@ struct drvint_cmd_parm {
+ 	unsigned char *pbuf;
+ };
+ 
+-/*------------------- Below are used for RF/BB tunning ---------------------*/
++/*------------------- Below are used for RF/BB tuning ---------------------*/
+ 
+ struct	setantenna_parm {
+ 	u8	tx_antset;
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
+index 0146a774e19d..e93f356ed2b0 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.h
++++ b/drivers/staging/rtl8712/rtl871x_recv.h
+@@ -53,7 +53,7 @@ struct rx_pkt_attrib {
+ 	u8	privacy; /* in frame_ctrl field */
+ 	u8	bdecrypted;
+ 	int	hdrlen;	 /* the WLAN Header Len */
+-	int	encrypt; /* 0 no encrypt. != 0 encrypt algorith */
++	int	encrypt; /* 0 no encrypt. != 0 encrypt algorithm */
+ 	int	iv_len;
+ 	int	icv_len;
+ 	int	priority;
+@@ -105,7 +105,7 @@ struct recv_priv {
+ 	u8 *precv_buf;    /* 4 alignment */
+ 	struct  __queue	free_recv_buf_queue;
+ 	u32	free_recv_buf_queue_cnt;
+-	/* For the phy informatiom */
++	/* For the phy information */
+ 	s8 rssi;
+ 	u8 signal;
+ 	u8 noise;
 -- 
-Stefano
+2.20.1
 
 
