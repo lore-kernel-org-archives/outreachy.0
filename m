@@ -1,119 +1,121 @@
 X-GM-THRID: 6802937311305662464
-X-Received: by 2002:ad4:49c6:: with SMTP id j6mr6814413qvy.68.1584009783482;
-        Thu, 12 Mar 2020 03:43:03 -0700 (PDT)
+X-Received: by 2002:adf:fc0e:: with SMTP id i14mr4628895wrr.422.1583975691736;
+        Wed, 11 Mar 2020 18:14:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:5b41:: with SMTP id p62ls2632085qkb.9.gmail; Thu, 12 Mar
- 2020 03:43:01 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuBiR+6Qn03ueS7t6RZBnm5CmV7lLzEyavaMs/wupda21g2UaFiqCMkDxr5R6RQbLNuQgxD
-X-Received: by 2002:ae9:dec7:: with SMTP id s190mr6511836qkf.303.1584009781795;
-        Thu, 12 Mar 2020 03:43:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584009781; cv=none;
+Received: by 2002:a5d:5233:: with SMTP id i19ls2017314wra.6.gmail; Wed, 11 Mar
+ 2020 18:14:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtwl/qF/Xg/dvdS1UVOwI9/cVayb+EP0594m8CQkD2XHU7ux6EZFhN0iI0SAVMSC941QbVk
+X-Received: by 2002:a5d:468f:: with SMTP id u15mr7762738wrq.394.1583975690422;
+        Wed, 11 Mar 2020 18:14:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583975690; cv=none;
         d=google.com; s=arc-20160816;
-        b=HcO6wWj+A+St3njoDtrvfKgi7uPK5SqCJ7036sqXolgiMQh0reBzfpwtAGYmppd/8M
-         Rw3ovwY4wT3pE5/VM+nL13PLIX7Xi9FyPj8O0rJYK/Nd16fHZT+djXPX6TyBWrdCa/P0
-         AhnZlheTeg03HMBC9vq024vEBE6NddA7jhW63a270tjlSG+pO8IIzf5XPnM53pZCP+Np
-         tk29bBfLdTWjpl5OUah/seJWjkcJAimvTSAgFhhRhWFtMe64t6YW4NfjQXAH2hQ96nqQ
-         MovDbSXueEP2OIHSVw/2mqE71uPNSf00+bui8i/rPUaCJobuU4KFlpFokkeKHBzgGJ5H
-         5m8w==
+        b=u8Xm7bL7Jx+2m9+HgIisrjgO/J1TU1p+HIdhkGHzgn94weie2fZynEqARLE4QdkHt+
+         /AjwNLXrOvgQrbY54mmwkK+WdqZIAf2WM54/3Wn83O6pfiUFmU57Hkcrjcn2IcVkwl+V
+         SEuKK4EyrmGP5aVpA3vxjSr0Gzmbh78DgzuCmOpOY+schZ3gvGT0P6EZVPSlrGCtzVM4
+         sRrlenOqvGEB9TWOOT95fo93zaM0qhpKG/iK5dN3RjQLNgowLy/9AWbLkBDyZhHws7Vp
+         Wmu7iF1YhwR+MWOyN5HHN8eKqeNOrWtDxi28T3YRcsMuW6hgJJ0tNeV1kUzCEb2hDN+h
+         jfOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=fbddB2iO5FQ0fkBZ0rgLKlx7XTDocpEFEreQV0vSsw8=;
-        b=jP2oOD10FNMDLW1d9/aucesNpUoT2PpHyhW+IkvpyypW/prmCUCRyJXLlw4e6TKVpB
-         N6MAc3j10SQ4eSdeLV5oslOUyXVrtzFr/E3v/MTOY5PGDrxyux0veMWmi3pU8NdLjXoX
-         kSJMHrZc3eWVFclyfoI1CfJq2cPcuB11Y3KzrimpwiPu2NHK5s1yqqZgIk5UZirAib5Z
-         m/5V1sqSU/wRi08nHtDPmtKoMqnSpCP3YOFOs4YCcZWi0r524/BlEO9S8YDj6pHKotpm
-         2YXZCWcXD0HUXM0WH2z1kpdbtnKACBxL+HfFjUYP6SgsxNoJ9syAj87Iytf7x9ugM4Pc
-         8UWA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=V42RcoKM56vHYl2L7kxpLD2ORuufpDN3Uo2CdpHkzOc=;
+        b=YkjaHS9M6AgGZjJ3b7XJ7jO2RhGEzxVIAGz7j5jfzeJiXfa4j4S2pyPKrYf8jwZO+l
+         2fGbZ4HRyKL5jdMxyt+9QJfIClU0l+lrWz3YseOLdAtvNRpzPWQbDQOpCI5ejaaYsKSO
+         YmwDZhrSRcDRLDi2cpFAPzlK4xyECU1Zz7NYuq3QM4nnh1sX6QncZBXr5oT5iyOm4Dne
+         poPtyZaOAbXYQ7wC1lbUEaPL0/LhfzgCYNMcR5FibNXs3AvugXjXKbRLlJxk2SiB2xd8
+         cG8nY/6vEGuEIkaUcwpWbF9Nd0GCCW7uJC7NIsGK7oT5OHWIoqXI/P/riKW6q+CKEYwr
+         AegQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YNSzFl1S;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by gmr-mx.google.com with ESMTPS id 198si248933qkh.7.2020.03.12.03.43.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 03:43:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id b81si132740wmc.2.2020.03.11.18.14.50
+        for <outreachy-kernel@googlegroups.com>;
+        Wed, 11 Mar 2020 18:14:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YNSzFl1S;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584009781;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fbddB2iO5FQ0fkBZ0rgLKlx7XTDocpEFEreQV0vSsw8=;
-	b=YNSzFl1SzEiVViaKqzGyBZ/Gq6w5a1P5upN+9hAYIxJRL2QyHcXSKTPuEt4F2sUHgaDFFG
-	Mg9Xb2HHLeSRuMxz4dVV0fAbwWAvfEd5Rfupo6e/Dbr3IIWyeUTSU7WCRSsG1RM6qju2um
-	zu18WAdE3tGXxGnNh5ore9H6/YeecJ0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-406-uTyO-JpKNzKN1F3_ZYAEwg-1; Thu, 12 Mar 2020 06:43:00 -0400
-X-MC-Unique: uTyO-JpKNzKN1F3_ZYAEwg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A7C0D189F760;
-	Thu, 12 Mar 2020 10:42:58 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C265791D87;
-	Thu, 12 Mar 2020 10:42:54 +0000 (UTC)
-Date: Thu, 12 Mar 2020 11:42:48 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Veera <vkor@vkten.in>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sudip Mukherjee
- <sudipm.mukherjee@gmail.com>, Teddy Wang <teddy.wang@siliconmotion.com>,
- outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: makefile variable
- longline fix
-Message-ID: <20200312114248.547750ef@elisabeth>
-In-Reply-To: <20200312011444.GA1928@localhost>
-References: <20200311131056.GA4361@tulip.local>
-	<20200311175839.24085e54@elisabeth>
-	<20200312011444.GA1928@localhost>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 6693 invoked from network); 12 Mar 2020 01:14:48 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.246.223.143)
+  de/crypted with TLSv1.2: ECDHE-RSA-AES256-GCM-SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 12 Mar 2020 01:14:48 -0000
+Date: Thu, 12 Mar 2020 06:44:46 +0530
+From: Veera <vkor@vkten.in>
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: makefile variable longline fix
+Message-ID: <20200312011444.GA1928@localhost>
+References: <20200311131056.GA4361@tulip.local> <20200311175839.24085e54@elisabeth>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200311175839.24085e54@elisabeth>
+User-Agent: Mutt/1.4.2.3i
 
-On Thu, 12 Mar 2020 06:44:46 +0530
-Veera <vkor@vkten.in> wrote:
-
-> On Wed, Mar 11, 2020 at 05:58:39PM +0100, Stefano Brivio wrote:
-> > 
-> > On Wed, 11 Mar 2020 18:41:02 +0530
-> > R Veera Kumar <vkor@vkten.in> wrote:
-> >   
-> > > -sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o ddk750_chip.o ddk750_power.o ddk750_mode.o
-> > > -sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o ddk750_dvi.o ddk750_hwi2c.o
-> > > +sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o
-> > > +sm750fb-objs		+= ddk750_chip.o ddk750_power.o ddk750_mode.o
-> > > +sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o
-> > > +sm750fb-objs		+= ddk750_dvi.o ddk750_hwi2c.o  
-> > 
-> > ...and while this fixes the long lines for sure, a more common way is
-> > to use backslashes at the end of the lines. Compare it with other
-> > similar cases: you don't need to do something like:
-> > 	drivers/staging/wfx/Makefile
-> > 
-> > but what's done for example in:
-> > 	drivers/staging/comedi/Makefile
-> >   
+On Wed, Mar 11, 2020 at 05:58:39PM +0100, Stefano Brivio wrote:
+> Hi Veera,
 > 
-> Yes. I knew it. But thought preserving maintainer style may be right.
+> Thanks, this mostly looks good, in general. A few notes:
+> 
+> - the commit title is typically in an imperative form, that is, for
+>   example, "[...]: Fix long line in Makefile variable"
+> 
+> Also,
+> 
+> On Wed, 11 Mar 2020 18:41:02 +0530
+> R Veera Kumar <vkor@vkten.in> wrote:
+> 
+> > A simple makefile variable longline definition fix
+> 
+> It would be nice to also mention if you used a tool to find this.
+> 
+> > 
+> > Signed-off-by: R Veera Kumar <vkor@vkten.in>
+> > ---
+> >  drivers/staging/sm750fb/Makefile | 6 ++++--
+> >  1 file changed, 4 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/sm750fb/Makefile b/drivers/staging/sm750fb/Makefile
+> > index 1cf3849cef23..6f832916ba65 100644
+> > --- a/drivers/staging/sm750fb/Makefile
+> > +++ b/drivers/staging/sm750fb/Makefile
+> > @@ -1,5 +1,7 @@
+> >  # SPDX-License-Identifier: GPL-2.0
+> >  obj-$(CONFIG_FB_SM750)	+= sm750fb.o
+> >  
+> > -sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o ddk750_chip.o ddk750_power.o ddk750_mode.o
+> > -sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o ddk750_dvi.o ddk750_hwi2c.o
+> > +sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o
+> > +sm750fb-objs		+= ddk750_chip.o ddk750_power.o ddk750_mode.o
+> > +sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o
+> > +sm750fb-objs		+= ddk750_dvi.o ddk750_hwi2c.o
+> 
+> ...and while this fixes the long lines for sure, a more common way is
+> to use backslashes at the end of the lines. Compare it with other
+> similar cases: you don't need to do something like:
+> 	drivers/staging/wfx/Makefile
+> 
+> but what's done for example in:
+> 	drivers/staging/comedi/Makefile
+> 
 
-As a general rule, absolutely, but I wonder if we can even define a
-"style" here at all. It's also the single occurrence of this, in this
-file, and for this driver altogether.
+Yes. I knew it. But thought preserving maintainer style may be right.
 
--- 
-Stefano
+> looks appropriate here (using 3 or 4 lines I guess).
+> 
+> If you send another version of this patch, don't forget to indicate
+> that under "---", see recent discussions on the outreachy-kernel list
+> for examples.
+>
 
+I note 
+ 
+> Stefano
+> 
+
+Regards,
+Veera
 
