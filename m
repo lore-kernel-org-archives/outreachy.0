@@ -1,115 +1,119 @@
 X-GM-THRID: 6803293292760924160
-X-Received: by 2002:a05:600c:218f:: with SMTP id e15mr6607868wme.152.1584039840832;
-        Thu, 12 Mar 2020 12:04:00 -0700 (PDT)
+X-Received: by 2002:a2e:89c7:: with SMTP id c7mr5810618ljk.265.1584030288010;
+        Thu, 12 Mar 2020 09:24:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:93:: with SMTP id 141ls3323491wma.1.canary-gmail; Thu,
- 12 Mar 2020 12:03:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv15UXB4ZpyGhaHVBwDfxz9kWDF58zNQpvwlOQGsMosSjGWw60MYdlrBpOxLgferovCdDlq
-X-Received: by 2002:a1c:e257:: with SMTP id z84mr6539025wmg.91.1584039839562;
-        Thu, 12 Mar 2020 12:03:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584039839; cv=none;
+Received: by 2002:a2e:8647:: with SMTP id i7ls1245609ljj.11.gmail; Thu, 12 Mar
+ 2020 09:24:46 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtggH7pHsCDmcWGgB339Me7OaHdX1V68u+aC1UvgbXoa2AlYtXU+Gl8H+Rpb+YE8HfmMhAN
+X-Received: by 2002:a2e:a556:: with SMTP id e22mr5631069ljn.130.1584030286593;
+        Thu, 12 Mar 2020 09:24:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584030286; cv=none;
         d=google.com; s=arc-20160816;
-        b=x6z6G/JoEZEfeSrcYEPk/9shid0V78+UNnpE7JDnx8gaz9plROkz1WRukNRfOzfocL
-         XDI97m1VAcnvGsP9DKKQEQLLnVnV6U/oBdikmjcvrkV+KGG6+cC10gNFYIg+bPEJwyQY
-         1rqVEZUYUup3fHxRi8AlJPOnVZTrcz5RtG4c6MS/9e0nrwQtb5KrjTaCFJU1kYs5X8YS
-         zPftg6N1mL3ekmfi/G7RDJHdK+wPiTjvAWopJ5XUiSuDfHVo7vq+cxGr6fqa+bqluwyD
-         q3cJO8jJXJb4pVko4HshwJDIc32vqQvMzoMVckwrhnzu0bxsU5PJNqUJjPybhIbMwFuG
-         8yHQ==
+        b=dRbiz3p+YwoqYbL3pVwpvsVeAw/ukpq4o/ueoIyMOfEGADhUkzbvSFDwQ0Gzjs/Fp1
+         Dd/R59iSDwAcMWzJGcoH3GNjalvyXxEX/4R5n+Uns4w/6I2see7DYfzf2wv8ccbXqA7k
+         mmMrdSOeFmdImEDGapysLJF7L62uY6H1s4sdKm8LS/H5dDE4W04NjOTJ/noWc/9qw1g5
+         Wd2R28WMZGin5ow2TEDmo599I5ISjpCxs/bbZpohIH7NS7ZKlPbNPnV2BzLujbxXr8nk
+         77V9HetI/6l+b96R5EA2bPE7HqvVnl3iQbE/Nie4lrlCbAb1DSQ1wqFyz/2oZBdR0XDP
+         kiwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zqsC/ouOjNyX3oAdVQyhvjxcqCym2PJ47dVMMY9nBUs=;
-        b=i8+WESA9rV1Mk/ZsL1w8rouUSfEgnmLDfaHaBODbWSIyEoVyP8w0jtW8CnLvhXiCRe
-         3d6pBKKzrIr9IiTZhvkPY25+YwIkTWpYlDQRNpvFFfAZojmY+xXVHc5iklZesyeTMm73
-         5BZTtbQYayn0sWqWsPOzuh/imU/ZLa6ls7r96MxCf9K/Hx2aWzLb12DHBbDKC/kV1sGV
-         KfmzXdTjyzaxTxQVO+nzKEgdmein2oS7K+MwB98g3WAXADOieXauNjRrWmaM1pvhzz53
-         TTh44+14jP0ZVVixYoDrapn0jsNJ+x1D3AnYdZVJFnEpoFH4BxBYND9LboRHIL8+eSd5
-         u2YA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=+JCpDvElp+CrGqi6bK+MtYLYcCCjK4ef59nffCUwhAQ=;
+        b=jmxwrvtIDYm/0+7aSUwQ1N6WcO5lyaWhpY4MlMSknZMpcH8nuwq3Yfp0e1/14GrSbI
+         lCCELvv4ywXUs0tPABh15R5rYyyl8vNw+xTaJKruBgfg5zSc0q+dbC1r8zQgVmbRPH3i
+         sTya7EzVEN9qzcxFFeiRDd6AlcwN2awT5R3nThALAZPaag7NQjslOoqAE7GYzfVqt8eQ
+         UHuSJ+aDwsq4Kd3JmKsRPOdYEWNDzn49FUR1rpgqEka3D/TLEjOpd39A24vBaIHrQXdK
+         wC64IpuogdfKaO1mcJ9BEIZVqeEzHWDQKTaVCz4ZUAlORFWacl714O4z4smi03xrhnmX
+         FG1Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=TrTIdluv;
+       dkim=pass header.i=@pplo.net header.s=google header.b=RGieFGZZ;
        spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
 Return-Path: <lu@pplo.net>
 Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id i19si382866wml.0.2020.03.12.12.03.59
+        by gmr-mx.google.com with ESMTPS id u8si273073lfu.3.2020.03.12.09.24.46
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Mar 2020 12:03:59 -0700 (PDT)
+        Thu, 12 Mar 2020 09:24:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=TrTIdluv;
+       dkim=pass header.i=@pplo.net header.s=google header.b=RGieFGZZ;
        spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wm1-x342.google.com with SMTP id n8so7309351wmc.4
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 12:03:59 -0700 (PDT)
+Received: by mail-wm1-x342.google.com with SMTP id m3so7047456wmi.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 09:24:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=pplo.net; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=zqsC/ouOjNyX3oAdVQyhvjxcqCym2PJ47dVMMY9nBUs=;
-        b=TrTIdluvoT6zdb2azLg7i69sTZ8tWLjQqJyrFFGLxktG/m2u8jLUEN5thiR9Jnphtt
-         uVvdHAoijF3T16E5W3BVfRXU/LIabyhtKWsPTXY/6mEcJYtgwFjRBKpscAPMihyUg4ck
-         M/NOrwcqDIHSUlOeZVWxPvCM6HJC4hdZ16hC4=
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=+JCpDvElp+CrGqi6bK+MtYLYcCCjK4ef59nffCUwhAQ=;
+        b=RGieFGZZ9olyrM3/eNFkMgARXMXwDxEF1FLB3JSYK+812qn1Vvt/d661ke1GsneZk3
+         dj6d4LR09/q92fxWsJ/MxDsaW3+kUAVSDf8yz46U0JY7Jzwoznv3YNKWK7o6dZdzUOmA
+         PzEy0yvjz1QZB02waSfYN2YOlX1aI/A6HyY9U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=zqsC/ouOjNyX3oAdVQyhvjxcqCym2PJ47dVMMY9nBUs=;
-        b=oLILzenFxj86cj4eOvMOcai8CfD5a2HhPD2jyDHYbbapuKCzxzTTSIRym8SffKNpaH
-         lhl2W+3NKDSPxTymYTjPXIx+RY7yJAnI86ChWricb3arKT6/mtSsaJ3+FwIjAlGrkcsK
-         e6qPqfHugOeBK4nVEtpPkQA/An8gi6fToEGnz/15rY+xjR1BcsXpo0BKoSuVvg0FxVkg
-         IehDtdVN0FHsxtUzt1G2W0/8k03vc1AUHMTW249fi0BuwMuaZ2x0iSRU7aBlWWp62/Dx
-         D4ycBDBfZONEozurnwdsgZ97ADYJ07BMxDYXb5Qvl/Nc74AjgSB+zAZIRdq8xdaSouXE
-         22GQ==
-X-Gm-Message-State: ANhLgQ0QCa1aSop/Elnr+JRPEVq9J00v1Pm+k/tA5Sr1MbYWq73q7BlP
-	0HTxtX7ISN8Pkh3J37fUfBdiX5aKzvqV5A==
-X-Received: by 2002:a7b:ce0d:: with SMTP id m13mr6002269wmc.135.1584039838873;
-        Thu, 12 Mar 2020 12:03:58 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=+JCpDvElp+CrGqi6bK+MtYLYcCCjK4ef59nffCUwhAQ=;
+        b=W5gPM3u2lppRMWwAvmFIjtEuz3VEHni4mCnxstzckqzjSz5hFr3o9rkwYjCG/cl727
+         7rwOJtewGIurXoerz/PQBcTVwaeBsaQIFEtE23C6luuGcMNjAQOSJWQgD2pHKTlnRiFB
+         yVpDdAUphwZ699gVPh48VdVB9W0I2+tSM0AzOha5TJaFFVz3z7canr45BUQofeJER1yX
+         DMuWM2U71mdJRLnzDPXiCYB5VAp99YKUI3QZNxMT2/FyXhe0TOaCt110EMNI2GAdL/NK
+         m78SwsnGV4ngkUbStW4Pet7soKPONnjc7P+rY0hYzRiD14eTQByWm+V/Qsk/nXXbXAHN
+         OOKQ==
+X-Gm-Message-State: ANhLgQ2mc/Zx2lqadSyJXIlIQDfVAQ909dyy/gGDZchN9MWs7u+0KqEu
+	/4HIbReb4DDRJFjSzHpBUiCHng==
+X-Received: by 2002:a1c:196:: with SMTP id 144mr5739533wmb.100.1584030285877;
+        Thu, 12 Mar 2020 09:24:45 -0700 (PDT)
 Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id d18sm13539275wrq.22.2020.03.12.12.03.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Mar 2020 12:03:57 -0700 (PDT)
+Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id 98sm14845560wrm.64.2020.03.12.09.24.44
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Mar 2020 09:24:45 -0700 (PDT)
+Date: Thu, 12 Mar 2020 17:24:42 +0100
 From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org,
-	vireshk@kernel.org,
-	johan@kernel.org,
-	elder@kernel.org
-Cc: Lourdes Pedrajas <lu@pplo.net>
-Subject: [PATCH v2] staging: greybus: i2c: remove unused pointers
-Date: Thu, 12 Mar 2020 20:03:49 +0100
-Message-Id: <20200312190349.7892-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	vireshk@kernel.org, johan@kernel.org, elder@kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: i2c: remove unused
+ pointers
+Message-ID: <20200312162442.GB6485@supernova>
+References: <20200312121222.6609-1-lu@pplo.net>
+ <20200312134202.729e9b8b@elisabeth>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200312134202.729e9b8b@elisabeth>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Remove unused pointers in gb_i2c_algorithm structure and gb_i2c_probe()
-function, as they are not touched since 2014.
+On Thu, Mar 12, 2020 at 01:42:02PM +0100, Stefano Brivio wrote:
+> On Thu, 12 Mar 2020 13:12:22 +0100
+> Lourdes Pedrajas <lu@pplo.net> wrote:
+> 
+> > Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+> > Suggested-by: Johan Hovold <johan@kernel.org>
+> 
+> This might be a pet peeve of mine, I'm quite sure I've seen similar
+> observations by others (on netdev?) but I can't find related messages
+> right now: I think it's nice to reflect a temporal or causal ordering
+> here.
+> 
+> That is, Johan suggested it, and you made the change, so Suggested-by:
+> should come first. It helps following the logic, especially with
+> growing numbers of tags.
+> 
+> What I personally do, and this is totally subject to taste (hence not
+> documented or formalised), is:
+> 
+> 1. Reported-by/Suggested-by: (if any)
+> 2. Fixes: (if any)
+> 3. Co-authored-by: (if any)
+> 4. Signed-off-by:
+> 5. Reviewed-by/Acked-by: (if I'm carrying any before they are added by
+>    the maintainer)
+> 
+> -- 
+> Stefano
+> 
+I will follow your advice for the ordering, thank you, Stefano!
 
-Suggested-by: Johan Hovold <johan@kernel.org>
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
-Changes since v1:
-- Corrections in log message
-
- drivers/staging/greybus/i2c.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/staging/greybus/i2c.c b/drivers/staging/greybus/i2c.c
-index c48fa1de89b0..de2f6516da09 100644
---- a/drivers/staging/greybus/i2c.c
-+++ b/drivers/staging/greybus/i2c.c
-@@ -224,7 +224,6 @@ static u32 gb_i2c_functionality(struct i2c_adapter *adap)
- 
- static const struct i2c_algorithm gb_i2c_algorithm = {
- 	.master_xfer	= gb_i2c_master_xfer,
--	/* .smbus_xfer	= gb_i2c_smbus_xfer, */
- 	.functionality	= gb_i2c_functionality,
- };
- 
-@@ -267,7 +266,6 @@ static int gb_i2c_probe(struct gbphy_device *gbphy_dev,
- 	adapter->owner = THIS_MODULE;
- 	adapter->class = I2C_CLASS_HWMON | I2C_CLASS_SPD;
- 	adapter->algo = &gb_i2c_algorithm;
--	/* adapter->algo_data = what? */
- 
- 	adapter->dev.parent = &gbphy_dev->dev;
- 	snprintf(adapter->name, sizeof(adapter->name), "Greybus i2c adapter");
--- 
-2.17.1
-
+Lourdes.
 
