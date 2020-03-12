@@ -1,112 +1,116 @@
 X-GM-THRID: 6803328043405279232
-X-Received: by 2002:a7b:c4d6:: with SMTP id g22mr14352wmk.79.1584023914612;
-        Thu, 12 Mar 2020 07:38:34 -0700 (PDT)
+X-Received: by 2002:aca:c78d:: with SMTP id x135mr444018oif.51.1584023247073;
+        Thu, 12 Mar 2020 07:27:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:a5c6:: with SMTP id o189ls2712921wme.2.canary-gmail;
- Thu, 12 Mar 2020 07:38:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvJq6cqm54/gom7SVALsGD93k1K0LEeW7kBy32azsMtemmnND6zw5LTjEiOC4gp7BwAMaQf
-X-Received: by 2002:a1c:6146:: with SMTP id v67mr5355599wmb.78.1584023913152;
-        Thu, 12 Mar 2020 07:38:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584023913; cv=none;
+Received: by 2002:aca:d0e:: with SMTP id 14ls1422415oin.9.gmail; Thu, 12 Mar
+ 2020 07:27:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtDV1elNisVLqQl1rXGXZxBHVrC7F5f7IRrit0nH1w/Tf6CgOACOAVcla1PrrEXG4cxw68s
+X-Received: by 2002:aca:dc45:: with SMTP id t66mr2848929oig.39.1584023245978;
+        Thu, 12 Mar 2020 07:27:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584023245; cv=none;
         d=google.com; s=arc-20160816;
-        b=OLR1QtucaANmTzKHfvc4YbAaSVt8KH/WMzzMQaG3eqE0MHxjTzyB+G5+LISGz1yXmu
-         3Df9gs9oqh1540fkj2H6qwWahXK8kGIPzMFbaio50+lo1P1cjFyM4/fuA6QMofZNgAQz
-         N6y3UVn2eOZe3PsLzd77n/HHHyJeNn1B6ohq64O9/b15cgpGnHTyV6q2BbbwjRdwd95W
-         2lU6vNPPWuionFOoTLL1W4Q99xpEjWoKglopd35O4QN5iC1wW0os0La/T3crblUiBD58
-         JJzdKoiynR2t5wYLSMgVoHiNFewd9OlF4SMlYhgMGjUDJVtuYbDhI9GrwGa8LcY7elo7
-         Ntlw==
+        b=AwbZzJXrfZ6Q/qv+gGk5neaSY0svxwOoZgQJOxpfrDJRb6uVvI5+sWUZj8aVx/tyMK
+         QXiVX4Lm2D3/WzEIjJRfVFh5mvYB0nCYvKu7QFCIyupg8SuoC87RAV4JVNqilhzX968w
+         2jZ7/tn/i+g29ivRb54anDo1gvrH7XcQgRJ4EVB3vnq2I8jhK7iWc67pg8d+a4qUKwiv
+         gRGP5eDN/OghEO4RN5UC5ZTQHY1HcVwwDr+/3po0i+Zq+5O3rY955jurTo63la789zyh
+         kOYrr73qqyK3lSJyp+FNvPttCZA+FQtLL1my+xt5MBZfgdDcinHAYllZy714Sh3G+eh9
+         5cKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=LwwUihgi11jfLeqr3d06ZvCb6NuAyU0Y/evtogtLFtE=;
-        b=BSfH2uhRBc/rJuJBSfEIgnt0dDYcuRr1zEGKjFn7HZuBmJWjQyttC8tpuMaar5dNx9
-         wlMPW31sHtvGUWkmQsWaZD0T7HgnPrlNf4nzKFo5HJu0vLAzKPpWlDgcFNOBAEp49vTN
-         GokvCvMj7jPQ8VGEARKbAdFhecEdcOeQitpBDsoJDO23IsRVlEGZL3qBIGFer9X9CyUS
-         Pvwwglp0UNFNk+zKsu4JbeCSet/mgNehVvTZG/CQUH5U99yLfusEc9UekXE4Ec5JFV7f
-         FqNnhmFyph3ogFfhZ8qAt2vSZHHh1OxUFBWFTG94L1ucpWwgTfalfkAgDeqgjR0QxCI9
-         +yxA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=0OR79l8awnCWEsFtkKq9JgDzwwDGvBfUvW5RRWKJYms=;
+        b=UswUKIHWH5EQryPNWaDQwhXuhJua7G/UhswKzYBaNeRBmape9RyYpj5miz9778st/s
+         Mrg4omjq4FJNyHPUc3J9h//C6o2FsDf0E7v23UHVEL8uGYK8pRZGcsTxpYveWWBDVSgw
+         WXNGezn1pfbpT8NqtUiIn1XwwvTJud2o3QmsUfGUJILHqS6CkwAz1BkOSAEHALJb+PHq
+         WP7eG/EJuRRIbEZdrYO0W++Dfyq2WAaNFeNR8eoGP6jnV6/hpGpBo+RmsVBubm/Mj1pU
+         0z8NbpqKvHnxiTzqzcsMz1UX1C21rmSgmH6AkVGszE4CxuBHEPfw/KOxtGGy0FiN9jMO
+         dAOA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id d14si211894wru.1.2020.03.12.07.38.33
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=MPJNhViy;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Return-Path: <jevargas@seas.upenn.edu>
+Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id v19si370310oth.1.2020.03.12.07.27.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 07:38:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Mar 2020 07:27:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,545,1574118000"; 
-   d="scan'208";a="342154099"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2020 15:38:32 +0100
-Date: Thu, 12 Mar 2020 15:38:31 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Enrique Vargas <jevargas@seas.upenn.edu>
-cc: Lars-Peter Clausen <lars@metafoo.de>, 
-    Michael Hennerich <Michael.Hennerich@analog.com>, 
-    Stefan Popa <stefan.popa@analog.com>, Jonathan Cameron <jic23@kernel.org>, 
-    Hartmut Knaack <knaack.h@gmx.de>, 
-    Peter Meerwald-Stadler <pmeerw@pmeerw.net>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-iio@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: adc: align multi-line
- function argument with open parenthesis
-In-Reply-To: <20200312142721.GA2748@evX1>
-Message-ID: <alpine.DEB.2.21.2003121536280.2418@hadrien>
-References: <20200312142721.GA2748@evX1>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=MPJNhViy;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Received: by mail-ot1-x341.google.com with SMTP id f21so6392149otp.12
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 07:27:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=seas-upenn-edu.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=0OR79l8awnCWEsFtkKq9JgDzwwDGvBfUvW5RRWKJYms=;
+        b=MPJNhViyHf9HE1gryTmtKi7mxV8tbDG25XOMje9/qAV+r6nMXYwuKYEqgTWecP2/Y4
+         FnZo62MbkhX35o0qRRXQLjkckMqpAwSRqdrppkrOhhy0NVd6AI2jD96UUSNUX0JlZJc1
+         hg6cWmpfKCa4j8gSpvCx2slTQRg/HHzgA4MB2TRUVfZJfWJJPUHJMIGDH2RFtOHdGjLQ
+         6C9pU0cX96Xuu/wYKXlFK/+6Zk9AguKil1kqD10N4BG4xvh7a8Fvt2k+3Dj/HuHmYWpI
+         Cdv6PfXjK9LbpMCcRgVAGiWSI4JKaP19LatsAezu9d3UxW+b/dIah88KY6gMzVh2uNZY
+         lT5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=0OR79l8awnCWEsFtkKq9JgDzwwDGvBfUvW5RRWKJYms=;
+        b=rPxt0cqwt18O8oXptYWyrp7tLiNOxZnbi5aQ5fUhJ3G/s4CN2LQZ82HS/hRMOpr0K7
+         9Q10JpmLxrTdDyLD2us9Jr3kP8mAx1C9uDvupfDrC0kaTBIVQcy4ztAxh/WLSGuW7w0m
+         rZOOyIit84uiQD53eypqOIbN1UCntsjv13b/20DYRwG41WhFjQ2swOntNFtrpO0br3Bd
+         E2e23PKJthwdmEIp2yLy8KIw9SAWsqwG/4D4TiN6HoItuji9dOub1mmNWA+9QJ5SLnpH
+         s9teVZ6rbg1ObjriJ5/ju5yMBm1nzKDeb1JraRp4MmAkVXd1LsUsacrjzPG0gKIDpXo/
+         5LBA==
+X-Gm-Message-State: ANhLgQ20H8YL7Fxxlj7OvVlJleroLcmIOmTWlheLysFVggRqmtyrMppd
+	9ZqzRbU588pSmhzdGFbtl8ISud1P4j3nxQ==
+X-Received: by 2002:a9d:ac5:: with SMTP id 63mr1923598otq.239.1584023245493;
+        Thu, 12 Mar 2020 07:27:25 -0700 (PDT)
+Return-Path: <jevargas@seas.upenn.edu>
+Received: from evX1 ([189.172.48.149])
+        by smtp.gmail.com with ESMTPSA id s128sm6654990oia.4.2020.03.12.07.27.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Mar 2020 07:27:25 -0700 (PDT)
+Date: Thu, 12 Mar 2020 08:27:21 -0600
+From: Enrique Vargas <jevargas@seas.upenn.edu>
+To: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Stefan Popa <stefan.popa@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Hartmut Knaack <knaack.h@gmx.de>,
+	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-iio@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] Staging: iio: adc: align multi-line function argument with
+ open parenthesis
+Message-ID: <20200312142721.GA2748@evX1>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
+Eliminate WARNING found with checkpatch.pl for argument split in two
+lines not matching coding conventions identation.
 
+Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+---
+ drivers/staging/iio/adc/ad7192.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Thu, 12 Mar 2020, Enrique Vargas wrote:
+diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+index 51b1cd3ad1de..5f65d084e320 100644
+--- a/drivers/staging/iio/adc/ad7192.c
++++ b/drivers/staging/iio/adc/ad7192.c
+@@ -477,7 +477,7 @@ static ssize_t ad7192_set(struct device *dev,
+ }
+ 
+ static void ad7192_get_available_filter_freq(struct ad7192_state *st,
+-						    int *freq)
++					     int *freq)
+ {
+ 	unsigned int fadc;
+ 
+-- 
+2.17.1
 
-> Eliminate WARNING found with checkpatch.pl for argument split in two
-> lines not matching coding conventions identation.
-
-The message seems a bit obscure.  There is no argument that is split in
-two lines, although it is the case that the argument list is split in two
-lines.
-
-For the subject line, maybe "reduce parameter indentation"
-
-And then for the log message:
-
-"Align function parameter with the right side of the open parenthesis
-starting the parameter list, to follow kernel coding style.  Problem found
-using checkpatch."
-
-julia
-
-
->
-> Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
-> ---
->  drivers/staging/iio/adc/ad7192.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-> index 51b1cd3ad1de..5f65d084e320 100644
-> --- a/drivers/staging/iio/adc/ad7192.c
-> +++ b/drivers/staging/iio/adc/ad7192.c
-> @@ -477,7 +477,7 @@ static ssize_t ad7192_set(struct device *dev,
->  }
->
->  static void ad7192_get_available_filter_freq(struct ad7192_state *st,
-> -						    int *freq)
-> +					     int *freq)
->  {
->  	unsigned int fadc;
->
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200312142721.GA2748%40evX1.
->
 
