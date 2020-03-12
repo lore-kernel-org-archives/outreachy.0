@@ -1,120 +1,109 @@
-X-GM-THRID: 6755750343438499840
-X-Received: by 2002:a81:7004:: with SMTP id l4mr23583230ywc.462.1572945700203;
-        Tue, 05 Nov 2019 01:21:40 -0800 (PST)
+X-GM-THRID: 6803327190249242624
+X-Received: by 2002:ac8:4e25:: with SMTP id d5mr8685654qtw.361.1584039622761;
+        Thu, 12 Mar 2020 12:00:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:af0a:: with SMTP id n10ls2770931ywh.4.gmail; Tue, 05 Nov
- 2019 01:21:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqylw7Xas5+uaCisKrOo9pTadALa/ZitGp7bnLlcY089kI1de0AtipaJFXtr2fVQk7PXEnLZ
-X-Received: by 2002:a81:784b:: with SMTP id t72mr24455267ywc.118.1572945698094;
-        Tue, 05 Nov 2019 01:21:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572945698; cv=none;
+Received: by 2002:a37:b8b:: with SMTP id 133ls3461850qkl.0.gmail; Thu, 12 Mar
+ 2020 12:00:21 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtizjzMKk8kLXhcU/tekGaDkmjNhH5eNCoAFx04tJ+ho7Aw6ozE7JYE/rt5Pi0mGQZDjPJp
+X-Received: by 2002:a37:6811:: with SMTP id d17mr9212375qkc.29.1584039621355;
+        Thu, 12 Mar 2020 12:00:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584039621; cv=none;
         d=google.com; s=arc-20160816;
-        b=qsnRNbPQo4l6m41hENA6PYHVe8MusMPHK31np7n3slAJ2LlDhumo0vJL4vijF43qWj
-         sZaOJ0ij+pshvs9DGkKh+nzp9RVdZBmuHYoO4gx8S7VmtjvAJ5qrapWkQf089BXc5N0o
-         YCobmmtQDuPR7E1H7paoL36+Ka5o86bxzYnbYNkdFfuRIGCqz37r+JnuD0BwHA+8hXAB
-         MC5pZM2CziM58pW9JGH3RI6MYj3rhQyjWWQBtq1XKLLV+qX7t7YP8Ns1MW7lmknz2RfV
-         6OR9C7Um5s1VQIzofSSXxgSW2yMlZgaMlovJe+akG1C3n5MRqKT/Gjbc6D+jEj1frYmK
-         ThnA==
+        b=0VYwGnRb5lrnafX7jKMZ95WwgVWEvkG2P1fCnmYFpj/+eUDn0i/cm52MSrKXEurYaP
+         4fLnj7CxRN7xLPSEumISTtqH7kF98XDBldR9UuymVDgoW4j0mbK9sA+7TNLNbC5C9RcH
+         fBiFgMLXYKi3GITROp3xT9gBqHOhinSK3vlyBJXcWe5kx9OlCqsZJSTZ38CinUr5cjJE
+         lYLiZyzy9NXCsin+aR9zs8orwaxE4pqi3m6SMJ6k0YpqQSQRrM2dGqXONJ5IWyMBWBA2
+         8YFMLhG83z/U5GvmCMLiw6G2IQlUGfl45kU/zL7kFPa3h5T7ZPPLRIoCxFW5CFm3tZYO
+         PNAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=sEhVcEV/fh8dk2cYKiDZe3NlFUL6jm/hSJ1tHuXCpRw=;
-        b=LPPxBcbaXuCgYxMS8zTU40JCHC5Fyi7OlSlh4rYGF+b0/LeBjVuDEkAQycYFex7Qt5
-         tZtRsH684lAw0j8VjKjgSTYSySOOVT9xCR6MO0NVvBGwjlJo7ktsjWz6K0ZsODtg2qdr
-         7Th5LOXVlncxNrB8x3ee/13oxE91toUxi5UzAjb6GDs1Rx8st/oU7sTbHpHMpfW1ZAKb
-         aNrsGzIpjW0EC19O6ZhK0ofIq1LpSJ66jW3nrOpZraZdgyWH3OLN/DAR3b/Dhby0Mg5e
-         wmxcPfyL1zEbDxZUPCtt16pt8HgLnli510fbMX9/6IX0YoKhGljYs0vJguoh1/ooP49r
-         dtKg==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Xmdy+CZopQt0uxRHrOmRnK9c4WJ5lMNXNxCQcjcDYVw=;
+        b=hA03taMlYVVOWff5A/xBOMJZZgyYyqa/q8tM+Ryy+uOqffTutovaYlG7gLAUDpYPUn
+         QJzC0PXKLTYwQMp0rb3gwkzBA0xPPhCSoBXIakwaWNm0zc1a9QF3+Dop2P7KPNs4ZsrR
+         +jBHLVMrtCyFETX+cmey5euyseK4GOKtQNV37n4JfiApZfKcITHR9+Vicea8XbRGWzSt
+         z8dR+ZPgAEJQjtsDbWxDt9TdFlkLA8Z69AsMovFkZU1Blxa0LbphYxiX+yL7N82zuSef
+         qxzNV+YNdw3P9KJeTLqkt8bvBGJH0vqzg/FvyyCW2vXYo6zgV3lGR+0KNwvI3G6g9cst
+         LKug==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SPKUgP5U;
-       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nachukannan@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id f11si598127ybk.5.2019.11.05.01.21.38
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PYaNhBGM;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by gmr-mx.google.com with ESMTPS id c6si420217qko.3.2020.03.12.12.00.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Nov 2019 01:21:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2020 12:00:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SPKUgP5U;
-       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id r22so18309122qtt.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Nov 2019 01:21:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=sEhVcEV/fh8dk2cYKiDZe3NlFUL6jm/hSJ1tHuXCpRw=;
-        b=SPKUgP5UGUOtByK/l8URKur3NtmUJTkbMLL8W91qjdBjj8dRKbpg5JVbFJAIJlddpQ
-         pPt39RueIvzxHohYfkqysS7hPARUM67FGZLQYB7lrKEaSmDa+XJk5L9g3pWzOiHjmtb6
-         A+3BAf85h10fJiz0YWPr+Tw7piLwV2VKZ/WGztxfxhn45OHmgyCNrp6RN/gmM1YosH1W
-         pmeYznrEEiywCHLJiGDCdgKFCFBlFpChSsdLT2pyTkFMh4D64gHDAhQhNgbKdxi4iyML
-         TbzKnNZqBVcwz1khoA3BOWgcfX/alOTIh0ehK1DlyZpDZvubJ/81j6sHik3EVwG+6oDr
-         VQJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=sEhVcEV/fh8dk2cYKiDZe3NlFUL6jm/hSJ1tHuXCpRw=;
-        b=si1y/ZESd28+SlJ+IYlV6kOFfbCXVfXfo0/dExoAfKR5Onq+nTKOaEK56UedP8Atd8
-         lEgN8OzfYz5leU2BNZJFeKevMcBd4TyFaXOPQnum0d1FyBjgaFjgVl+sAf4VMT+V4GK6
-         cnc/I6l1J1Ak1lNm/iDFBCBBuGlkkOd47DFo4MIQK2lDmTmsW+5dKNn65eacoI2jx/px
-         lTYsgpynDUB6rfKJHT/weyE8f5xCAPP2uEekTOFpNuSByjoH8MuXCsQtN9iqoErlGs41
-         aU21VQ5FBeH43Ol754wH8AFL1Go66XLQtAzncYhRHWIBPMwcZWy+1G/U6ZGM83vSAL5p
-         CWcQ==
-X-Gm-Message-State: APjAAAU0pom3Hv9wteoDpcIdi42jUn+90mL2LMw/YpTmSYZc8d74HxIl
-	h4/by1dEAlSQqkwH+08zeVg=
-X-Received: by 2002:ac8:93d:: with SMTP id t58mr16759639qth.217.1572945697594;
-        Tue, 05 Nov 2019 01:21:37 -0800 (PST)
-Return-Path: <nachukannan@gmail.com>
-Received: from ubuntu ([107.15.113.108])
-        by smtp.gmail.com with ESMTPSA id t26sm2976785qta.75.2019.11.05.01.21.36
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Nov 2019 01:21:36 -0800 (PST)
-From: Nachammai Karuppiah <nachukannan@gmail.com>
-To: =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Nachammai Karuppiah <nachukannan@gmail.com>
-Subject: [PATCH v2] staging: wfx: Remove local variable used only in return statement.
-Date: Tue,  5 Nov 2019 01:21:31 -0800
-Message-Id: <1572945691-109992-1-git-send-email-nachukannan@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PYaNhBGM;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584039621;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Xmdy+CZopQt0uxRHrOmRnK9c4WJ5lMNXNxCQcjcDYVw=;
+	b=PYaNhBGMIrt0MDH4F3Wre+ya/GIRiVOWT9olCvIC0UoFkPNLZTgAVjhLOTQumZsJFRcNrw
+	gsJfkEYibXRmWTFbMujTcqh+IXoGpg22RRaGUH0hzhPsSHCV1fR9QtIfgIs6U+11p96YM6
+	Smdcuy0t/WUEUKemxm1vv48bdUINcZA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-15-9MGOxF8fMlqzEl4Y5L7ZDg-1; Thu, 12 Mar 2020 15:00:19 -0400
+X-MC-Unique: 9MGOxF8fMlqzEl4Y5L7ZDg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F17C94C25;
+	Thu, 12 Mar 2020 19:00:18 +0000 (UTC)
+Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A6BF08D57F;
+	Thu, 12 Mar 2020 19:00:15 +0000 (UTC)
+Date: Thu, 12 Mar 2020 20:00:05 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Deepak Varma <mh12gx2825@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: fbtft: Reformat longer
+ macro definitions
+Message-ID: <20200312200005.51569670@elisabeth>
+In-Reply-To: <70084eb2-233f-48ad-b1ff-f6a22a1f49a0@googlegroups.com>
+References: <20200312142357.GA29468@deeUbuntu>
+	<alpine.DEB.2.21.2003121538470.2418@hadrien>
+	<70084eb2-233f-48ad-b1ff-f6a22a1f49a0@googlegroups.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Remove unnecessary local variable that is used in return statement and
-return the expression directly. Issue found using coccinelle.
+On Thu, 12 Mar 2020 09:32:52 -0700 (PDT)
+Deepak Varma <mh12gx2825@gmail.com> wrote:
 
-Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
----
-Changes in v2
-  - Make the commit message more clearer.
+> On Thursday, 12 March 2020 20:10:04 UTC+5:30, Julia Lawall wrote:
+> >
+> > Thsi information goes below the --- so that it will be dropped when the 
+> > patch is applied.  When someone looks through the git history they will 
+> > have no idea what "and earlier patch description" refers to. 
+> >
+> > julia 
+> >  
+> 
+> Is this done at the time of "commit --amend" or should this be added in the 
+> email template manually before sending the patch?
 
- drivers/staging/wfx/sta.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+I typically do it "manually" after git format-patch (especially because
+for networking patches we write non-trivial stuff before ---, and
+trivial stuff such as "new patch in series" or "no changes" after ---).
 
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index 93f3739..be22537 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -114,8 +114,6 @@ void wfx_cqm_bssloss_sm(struct wfx_vif *wvif, int init, int good, int bad)
- static int wfx_set_uapsd_param(struct wfx_vif *wvif,
- 			   const struct wfx_edca_params *arg)
- {
--	int ret;
--
- 	/* Here's the mapping AC [queue, bit]
- 	 *  VO [0,3], VI [1, 2], BE [2, 1], BK [3, 0]
- 	 */
-@@ -148,8 +146,7 @@ static int wfx_set_uapsd_param(struct wfx_vif *wvif,
- 	wvif->uapsd_info.max_auto_trigger_interval = 0;
- 	wvif->uapsd_info.auto_trigger_step = 0;
- 
--	ret = hif_set_uapsd_info(wvif, &wvif->uapsd_info);
--	return ret;
-+	return hif_set_uapsd_info(wvif, &wvif->uapsd_info);
- }
- 
- int wfx_fwd_probe_req(struct wfx_vif *wvif, bool enable)
+I just got to know about the --notes option of git format-patch, I
+guess you could also check that out.
+
 -- 
-2.7.4
+Stefano
 
 
