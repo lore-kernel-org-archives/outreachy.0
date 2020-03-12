@@ -1,109 +1,250 @@
 X-GM-THRID: 6803327190249242624
-X-Received: by 2002:ac8:4e25:: with SMTP id d5mr8685654qtw.361.1584039622761;
-        Thu, 12 Mar 2020 12:00:22 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:b8b:: with SMTP id 133ls3461850qkl.0.gmail; Thu, 12 Mar
- 2020 12:00:21 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtizjzMKk8kLXhcU/tekGaDkmjNhH5eNCoAFx04tJ+ho7Aw6ozE7JYE/rt5Pi0mGQZDjPJp
-X-Received: by 2002:a37:6811:: with SMTP id d17mr9212375qkc.29.1584039621355;
-        Thu, 12 Mar 2020 12:00:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584039621; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0VYwGnRb5lrnafX7jKMZ95WwgVWEvkG2P1fCnmYFpj/+eUDn0i/cm52MSrKXEurYaP
-         4fLnj7CxRN7xLPSEumISTtqH7kF98XDBldR9UuymVDgoW4j0mbK9sA+7TNLNbC5C9RcH
-         fBiFgMLXYKi3GITROp3xT9gBqHOhinSK3vlyBJXcWe5kx9OlCqsZJSTZ38CinUr5cjJE
-         lYLiZyzy9NXCsin+aR9zs8orwaxE4pqi3m6SMJ6k0YpqQSQRrM2dGqXONJ5IWyMBWBA2
-         8YFMLhG83z/U5GvmCMLiw6G2IQlUGfl45kU/zL7kFPa3h5T7ZPPLRIoCxFW5CFm3tZYO
-         PNAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Xmdy+CZopQt0uxRHrOmRnK9c4WJ5lMNXNxCQcjcDYVw=;
-        b=hA03taMlYVVOWff5A/xBOMJZZgyYyqa/q8tM+Ryy+uOqffTutovaYlG7gLAUDpYPUn
-         QJzC0PXKLTYwQMp0rb3gwkzBA0xPPhCSoBXIakwaWNm0zc1a9QF3+Dop2P7KPNs4ZsrR
-         +jBHLVMrtCyFETX+cmey5euyseK4GOKtQNV37n4JfiApZfKcITHR9+Vicea8XbRGWzSt
-         z8dR+ZPgAEJQjtsDbWxDt9TdFlkLA8Z69AsMovFkZU1Blxa0LbphYxiX+yL7N82zuSef
-         qxzNV+YNdw3P9KJeTLqkt8bvBGJH0vqzg/FvyyCW2vXYo6zgV3lGR+0KNwvI3G6g9cst
-         LKug==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PYaNhBGM;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by gmr-mx.google.com with ESMTPS id c6si420217qko.3.2020.03.12.12.00.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 12:00:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PYaNhBGM;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584039621;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Xmdy+CZopQt0uxRHrOmRnK9c4WJ5lMNXNxCQcjcDYVw=;
-	b=PYaNhBGMIrt0MDH4F3Wre+ya/GIRiVOWT9olCvIC0UoFkPNLZTgAVjhLOTQumZsJFRcNrw
-	gsJfkEYibXRmWTFbMujTcqh+IXoGpg22RRaGUH0hzhPsSHCV1fR9QtIfgIs6U+11p96YM6
-	Smdcuy0t/WUEUKemxm1vv48bdUINcZA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-15-9MGOxF8fMlqzEl4Y5L7ZDg-1; Thu, 12 Mar 2020 15:00:19 -0400
-X-MC-Unique: 9MGOxF8fMlqzEl4Y5L7ZDg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F17C94C25;
-	Thu, 12 Mar 2020 19:00:18 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A6BF08D57F;
-	Thu, 12 Mar 2020 19:00:15 +0000 (UTC)
-Date: Thu, 12 Mar 2020 20:00:05 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Deepak Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Date: Thu, 12 Mar 2020 09:32:52 -0700 (PDT)
+From: Deepak Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <70084eb2-233f-48ad-b1ff-f6a22a1f49a0@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.2003121538470.2418@hadrien>
+References: <20200312142357.GA29468@deeUbuntu>
+ <alpine.DEB.2.21.2003121538470.2418@hadrien>
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: fbtft: Reformat longer
  macro definitions
-Message-ID: <20200312200005.51569670@elisabeth>
-In-Reply-To: <70084eb2-233f-48ad-b1ff-f6a22a1f49a0@googlegroups.com>
-References: <20200312142357.GA29468@deeUbuntu>
-	<alpine.DEB.2.21.2003121538470.2418@hadrien>
-	<70084eb2-233f-48ad-b1ff-f6a22a1f49a0@googlegroups.com>
-Organization: Red Hat
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1564_1387299375.1584030772516"
+X-Google-Token: ELTIqfMFkvY1L5sPKFY0
+X-Google-IP: 103.39.128.28
+
+------=_Part_1564_1387299375.1584030772516
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1565_1275069242.1584030772516"
+
+------=_Part_1565_1275069242.1584030772516
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-On Thu, 12 Mar 2020 09:32:52 -0700 (PDT)
-Deepak Varma <mh12gx2825@gmail.com> wrote:
 
-> On Thursday, 12 March 2020 20:10:04 UTC+5:30, Julia Lawall wrote:
-> >
-> > Thsi information goes below the --- so that it will be dropped when the 
-> > patch is applied.  When someone looks through the git history they will 
-> > have no idea what "and earlier patch description" refers to. 
-> >
-> > julia 
-> >  
-> 
-> Is this done at the time of "commit --amend" or should this be added in the 
-> email template manually before sending the patch?
 
-I typically do it "manually" after git format-patch (especially because
-for networking patches we write non-trivial stuff before ---, and
-trivial stuff such as "new patch in series" or "no changes" after ---).
+On Thursday, 12 March 2020 20:10:04 UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Thu, 12 Mar 2020, Deepak R Varma wrote: 
+>
+> > Multiple macro definitions crossings 80 character line length nakes it 
+> > hard to understand. Reformating the these lines makes the code more 
+> > readable and easy to understand. Issue flagged by checkpatch script. 
+> > 
+> > Signed-off-by: Deepak R Varma <mh12g...@gmail.com <javascript:>> 
+> > 
+> > Changes in V2: 
+> >         - Update patch short description to avoid confution with an 
+> earlier patch 
+> > description. 
+>
+> Thsi information goes below the --- so that it will be dropped when the 
+> patch is applied.  When someone looks through the git history they will 
+> have no idea what "and earlier patch description" refers to. 
+>
+> julia 
+>
 
-I just got to know about the --notes option of git format-patch, I
-guess you could also check that out.
+Is this done at the time of "commit --amend" or should this be added in the 
+email template manually before sending the patch?
 
--- 
-Stefano
+Deepak.
 
+>
+> > --- 
+> >  drivers/staging/fbtft/fbtft.h | 14 +++++++++++--- 
+> >  1 file changed, 11 insertions(+), 3 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/fbtft/fbtft.h 
+> b/drivers/staging/fbtft/fbtft.h 
+> > index 5f782da51959..81da30f4062e 100644 
+> > --- a/drivers/staging/fbtft/fbtft.h 
+> > +++ b/drivers/staging/fbtft/fbtft.h 
+> > @@ -348,9 +348,17 @@ module_exit(fbtft_driver_module_exit); 
+> > 
+> >  /* shorthand debug levels */ 
+> >  #define DEBUG_LEVEL_1        DEBUG_REQUEST_GPIOS 
+> > -#define DEBUG_LEVEL_2        (DEBUG_LEVEL_1 | 
+> DEBUG_DRIVER_INIT_FUNCTIONS | DEBUG_TIME_FIRST_UPDATE) 
+> > -#define DEBUG_LEVEL_3        (DEBUG_LEVEL_2 | DEBUG_RESET | 
+> DEBUG_INIT_DISPLAY | DEBUG_BLANK | DEBUG_REQUEST_GPIOS | DEBUG_FREE_GPIOS | 
+> DEBUG_VERIFY_GPIOS | DEBUG_BACKLIGHT | DEBUG_SYSFS) 
+> > -#define DEBUG_LEVEL_4        (DEBUG_LEVEL_2 | DEBUG_FB_READ | 
+> DEBUG_FB_WRITE | DEBUG_FB_FILLRECT | DEBUG_FB_COPYAREA | DEBUG_FB_IMAGEBLIT 
+> | DEBUG_FB_BLANK) 
+> > +#define DEBUG_LEVEL_2        (DEBUG_LEVEL_1 | 
+> DEBUG_DRIVER_INIT_FUNCTIONS        \ 
+> > +                                       | DEBUG_TIME_FIRST_UPDATE) 
+> > +#define DEBUG_LEVEL_3        (DEBUG_LEVEL_2 | DEBUG_RESET | 
+> DEBUG_INIT_DISPLAY   \ 
+> > +                                       | DEBUG_BLANK | 
+> DEBUG_REQUEST_GPIOS  \ 
+> > +                                       | DEBUG_FREE_GPIOS               
+>     \ 
+> > +                                       | DEBUG_VERIFY_GPIOS             
+>     \ 
+> > +                                       | DEBUG_BACKLIGHT | DEBUG_SYSFS) 
+> > +#define DEBUG_LEVEL_4        (DEBUG_LEVEL_2 | DEBUG_FB_READ | 
+> DEBUG_FB_WRITE     \ 
+> > +                                       | DEBUG_FB_FILLRECT             
+>      \ 
+> > +                                       | DEBUG_FB_COPYAREA             
+>      \ 
+> > +                                       | DEBUG_FB_IMAGEBLIT | 
+> DEBUG_FB_BLANK) 
+> >  #define DEBUG_LEVEL_5        (DEBUG_LEVEL_3 | DEBUG_UPDATE_DISPLAY) 
+> >  #define DEBUG_LEVEL_6        (DEBUG_LEVEL_4 | DEBUG_LEVEL_5) 
+> >  #define DEBUG_LEVEL_7        0xFFFFFFFF 
+> > -- 
+> > 2.17.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreach...@googlegroups.com <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20200312142357.GA29468%40deeUbuntu. 
+>
+> > 
+>
+
+------=_Part_1565_1275069242.1584030772516
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Thursday, 12 March 2020 20:10:04 UTC+5:30, Juli=
+a Lawall  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin=
+-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Thu, 12 Mar 2020, Deepak R Varma wrote:
+<br>
+<br>&gt; Multiple macro definitions crossings 80 character line length nake=
+s it
+<br>&gt; hard to understand. Reformating the these lines makes the code mor=
+e
+<br>&gt; readable and easy to understand. Issue flagged by checkpatch scrip=
+t.
+<br>&gt;
+<br>&gt; Signed-off-by: Deepak R Varma &lt;<a href=3D"javascript:" target=
+=3D"_blank" gdf-obfuscated-mailto=3D"QULH9uVoAgAJ" rel=3D"nofollow" onmouse=
+down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
+f=3D&#39;javascript:&#39;;return true;">mh12g...@gmail.com</a>&gt;
+<br>&gt;
+<br>&gt; Changes in V2:
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0- Update patch sho=
+rt description to avoid confution with an earlier patch
+<br>&gt; description.
+<br>
+<br>Thsi information goes below the --- so that it will be dropped when the
+<br>patch is applied. =C2=A0When someone looks through the git history they=
+ will
+<br>have no idea what &quot;and earlier patch description&quot; refers to.
+<br>
+<br>julia
+<br></blockquote><div><br></div><div>Is this done at the time of &quot;comm=
+it --amend&quot; or should this be added in the email template manually bef=
+ore sending the patch?</div><div><br></div><div>Deepak.<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: =
+1px #ccc solid;padding-left: 1ex;">
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/fbtft/fbtft.h | 14 +++++++++++---
+<br>&gt; =C2=A01 file changed, 11 insertions(+), 3 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/fbtft/fbtft.<wbr>h b/drivers/staging/=
+fbtft/fbtft.<wbr>h
+<br>&gt; index 5f782da51959..81da30f4062e 100644
+<br>&gt; --- a/drivers/staging/fbtft/fbtft.<wbr>h
+<br>&gt; +++ b/drivers/staging/fbtft/fbtft.<wbr>h
+<br>&gt; @@ -348,9 +348,17 @@ module_exit(fbtft_driver_<wbr>module_exit);
+<br>&gt;
+<br>&gt; =C2=A0/* shorthand debug levels */
+<br>&gt; =C2=A0#define DEBUG_LEVEL_1=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0DEBUG_<wbr>REQUEST_GPIOS
+<br>&gt; -#define DEBUG_LEVEL_2=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(DEBUG_<wbr>LEVEL_1 | DEBUG_DRIVER_INIT_FUNCTIONS | DEBUG_TIME_FIRST_=
+UPDATE)
+<br>&gt; -#define DEBUG_LEVEL_3=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(DEBUG_<wbr>LEVEL_2 | DEBUG_RESET | DEBUG_INIT_DISPLAY | DEBUG_BLANK =
+| DEBUG_REQUEST_GPIOS | DEBUG_FREE_GPIOS | DEBUG_VERIFY_GPIOS | DEBUG_BACKL=
+IGHT | DEBUG_SYSFS)
+<br>&gt; -#define DEBUG_LEVEL_4=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(DEBUG_<wbr>LEVEL_2 | DEBUG_FB_READ | DEBUG_FB_WRITE | DEBUG_FB_FILLR=
+ECT | DEBUG_FB_COPYAREA | DEBUG_FB_IMAGEBLIT | DEBUG_FB_BLANK)
+<br>&gt; +#define DEBUG_LEVEL_2=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(DEBUG_<wbr>LEVEL_1 | DEBUG_DRIVER_INIT_FUNCTIONS =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0\
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_TIME_FIRST_UPDATE)
+<br>&gt; +#define DEBUG_LEVEL_3=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(DEBUG_<wbr>LEVEL_2 | DEBUG_RESET | DEBUG_INIT_DISPLAY =C2=A0 \
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_BLANK | DEBUG_REQUEST_GPIOS =C2=A0\
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_FREE_GPIOS =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 \
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_VERIFY_GPIOS =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 \
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_BACKLIGHT | DEBUG_SYSFS)
+<br>&gt; +#define DEBUG_LEVEL_4=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0(DEBUG_<wbr>LEVEL_2 | DEBUG_FB_READ | DEBUG_FB_WRITE =C2=A0 =C2=A0 \
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_FB_FILLRECT =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0\
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_FB_COPYAREA =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0\
+<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | DEBUG_FB_IMAGEBLIT | DEBUG_FB_BLANK)
+<br>&gt; =C2=A0#define DEBUG_LEVEL_5=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0(DEBUG_<wbr>LEVEL_3 | DEBUG_UPDATE_DISPLAY)
+<br>&gt; =C2=A0#define DEBUG_LEVEL_6=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0(DEBUG_<wbr>LEVEL_4 | DEBUG_LEVEL_5)
+<br>&gt; =C2=A0#define DEBUG_LEVEL_7=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0<wbr>0xFFFFFFFF
+<br>&gt; --
+<br>&gt; 2.17.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"QULH9uVoAgAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20200312142357.GA29468%40deeUbuntu" ta=
+rget=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://gr=
+oups.google.com/d/msgid/outreachy-kernel/20200312142357.GA29468%40deeUbuntu=
+&#39;;return true;" onclick=3D"this.href=3D&#39;https://groups.google.com/d=
+/msgid/outreachy-kernel/20200312142357.GA29468%40deeUbuntu&#39;;return true=
+;">https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>20200312142=
+357.GA29468%<wbr>40deeUbuntu</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_1565_1275069242.1584030772516--
+
+------=_Part_1564_1387299375.1584030772516--
 
