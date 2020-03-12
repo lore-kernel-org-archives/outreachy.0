@@ -1,133 +1,110 @@
-X-GM-THRID: 6399180589235175424
-X-Received: by 10.129.51.208 with SMTP id z199mr11901135ywz.92.1489925335497;
-        Sun, 19 Mar 2017 05:08:55 -0700 (PDT)
+X-GM-THRID: 6802850530437627904
+X-Received: by 2002:a17:90b:19ca:: with SMTP id nm10mr4022789pjb.157.1584018566572;
+        Thu, 12 Mar 2020 06:09:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.81.210 with SMTP id s201ls1564662ita.18.gmail; Sun, 19 Mar
- 2017 05:08:55 -0700 (PDT)
-X-Received: by 10.99.164.9 with SMTP id c9mr13633290pgf.4.1489925335025;
-        Sun, 19 Mar 2017 05:08:55 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id a3si2178383pfb.2.2017.03.19.05.08.54
+Received: by 2002:a63:7744:: with SMTP id s65ls2471611pgc.3.gmail; Thu, 12 Mar
+ 2020 06:09:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtJrWzkGF+5pWY0oYnWVha0b2gFcdFjs2hDDgX+Fz2WUj7MGa7ZeUuhqAc60YGesawtlAYD
+X-Received: by 2002:a65:6414:: with SMTP id a20mr8066649pgv.48.1584018564928;
+        Thu, 12 Mar 2020 06:09:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584018564; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xObVqnLcZCdy7OFJPyERSjGvgqPFkwTIICu85R5hZemZyPdXosXsInzWbaBA+VtdGk
+         XOSIqAMwrW/2ljcZeBf6+N7g20AUfhZze4SKo1LnsndTkF0wKQSslLfr4kFuFE3fAMKi
+         FztLWNBFhBBfNJANElj+nXw8bZCeJ8D1xlOupqTamNHGB+7ThjDs/YBxU9b/BycgUO71
+         TvjKljwOeKZGNlJjCjWsUtlYu+fRrm55IiNoDsBVynhvxaw3LfoH7fC0oBxagx4SI8VK
+         PU52FDBydjNnQoNIzGjiiNacab0LGBN4oss0kUxdUua2rfVZucJZf9wKWTvfVjoQSWB2
+         enZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:from:cc:to:subject:content-transfer-encoding
+         :mime-version:references:in-reply-to:user-agent:date:dkim-signature;
+        bh=rUe24luD5QHEIuNQx//i9Eg2GI3DU4SG0abhzfELmQA=;
+        b=1DgcrPRv2T1sow3EVLZDsYw3cIQ4Z2QwaqCi4KNH/c8XWZjWq5P/RuI8BnQPNvh3pm
+         qCOAMiU8unmIXC2MphTqx4LYBc2RkO2PfjN9muLEEMJNvhi7eJ7XYS35rIx4Ids9Zbrv
+         1wvILoTauif1MBehoCbyoaOFP9gipg+j30FmQ/yPLLbeV4HH1G+yoolYNj86FdN4yykx
+         6lvLgdiILehM0nQCjYetrHYMF9r/KkcC6yhRRM448ouEsPP4vu0cOhTHx17FMfvHG5mA
+         MzRtFUL+oPI4z6Gs9IOAzFO9qHj2UER0Qf4ESSG+kRF6bmcUHeZmIrTXPikU4aCI0WxH
+         7ddA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JsxlvDOR;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id c10si520922pjo.2.2020.03.12.06.09.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 05:08:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Mar 2020 06:09:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id g2so15879314pge.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 05:08:54 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JsxlvDOR;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x541.google.com with SMTP id h8so3058401pgs.9
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 06:09:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=IiQvos6UC2S6iG3ZZbcUl9pRWkP3gF51qIgHNFI/sX8=;
-        b=ahc2Fb6MKqwbnO2AACG+Vd2cgjdPTXXoLjwtY5yuquiv+mF99EXXatoKjLFjriwJ+e
-         e794c7WOZi8DBgAEUwu5WqyJZbuOcr/G4JPDCmpDUtuFcneMRnpfMehst2xb6KRAH4AX
-         vQMUjgmnGNXwi+LVXuC6YKHu5sjf8bTvgohO6b1aKyx3DW5n0DSLQHTtlRs3JS7ejY3F
-         MuUcOXHx/is+TImzAm2bnfcc7J9ktXLaPcAP+XhgFNjlu3iTekM8frkAJ5ql4foStHmR
-         fLZOKBfzq/UQKxT3MtILG9vom1DOpaXjimfboklhzHgsq56itgcP0LcL/g+TV7rEWRoi
-         zcOg==
+        h=date:user-agent:in-reply-to:references:mime-version
+         :content-transfer-encoding:subject:to:cc:from:message-id;
+        bh=rUe24luD5QHEIuNQx//i9Eg2GI3DU4SG0abhzfELmQA=;
+        b=JsxlvDORML/QcwWEHF3jBaib2bEokZsraP9f2a5219h/G0donUC8dTteVHV3A9WgaK
+         PdYnJawCasGe32q/gQ2BFeOhbueVZDqWgRIkRoVmC7DQFWWzlY983zEhJzYzjKne/EV/
+         EZfKpOvmk68bXlJWanYpaYjJsLAgrgjixsl0fc+R0gGVJaq0ouECS+zYWMdbcuxzaJpY
+         ilMyyY8kAPYPzLM5JPe9Qynkmq7uuIJPIkr4YiLJcoklUPrfOroYaXGwRjCZfOHssfv5
+         OmLUJBH48ZSmm7RPI7e5xEVm2kPb+CX5nysIPfxlbMN2qi+kU6+3ADvU3oZoDMk822nD
+         lTQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=IiQvos6UC2S6iG3ZZbcUl9pRWkP3gF51qIgHNFI/sX8=;
-        b=NECOnPlZTPqdWCTjHuTvq37vNg06NqyA4ECg3swL4wknsJZMh9QPwdyng5Rv2vyZQq
-         ebxxfFr1vNsKl9nLiJDV4IoUDvrASy4b5YtTHO4Vbnx31wnBVcJ9X0pONUl7MyKGb92w
-         puP11dA9MWi5bE56ougY3IqK/iBpe6U8nMiptTiErzrOsqYOpiq4LZxbdx/icM2bi3Dd
-         JCjFKIVxv4rCNv7yNs8q9fAqQsFX9oxjil/vHSeeXjn3M45KvdlfArHp7OY/pMq/Pc+C
-         C1Pz1m0iQNQvkn2eCa3KKNr5e6sFLK7kPOZyHXuYMqSixqI1yMtP3OrwXIGlDseLDpHo
-         t9Xw==
-X-Gm-Message-State: AFeK/H29TYAgPh97wYclo6IsuulhWto4T8a5ZKNER5QI5zgbD34MK7MyjvZx0KUSYPKR+Q==
-X-Received: by 10.98.147.195 with SMTP id r64mr27179261pfk.207.1489925334823;
-        Sun, 19 Mar 2017 05:08:54 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([118.151.209.30])
-        by smtp.gmail.com with ESMTPSA id a8sm27122950pfa.30.2017.03.19.05.08.53
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Mar 2017 05:08:54 -0700 (PDT)
-Message-ID: <58ce74d6.081a620a.caedd.6601@mx.google.com>
-X-Google-Original-Message-ID: <20170319120828.GA8187@<rvarsha016@gmail.com>>
-Date: Sun, 19 Mar 2017 17:38:28 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 4/4] staging: media: atomisp: Remove unnecessary braces.
-References: <cover.1489924542.git.rvarsha016@gmail.com>
+        h=x-gm-message-state:date:user-agent:in-reply-to:references
+         :mime-version:content-transfer-encoding:subject:to:cc:from
+         :message-id;
+        bh=rUe24luD5QHEIuNQx//i9Eg2GI3DU4SG0abhzfELmQA=;
+        b=DfUwj/4ytOGuWm4CAjp/bz7xAqVTxpAfC6azdis6u0UbvA+jHTe/t7TUEkIRhXiEZR
+         CbE2s52wvVPQH3dT9LxelApEqr5RIdOj66R9UB+RkfYFQROheVxOR8KAqX8APkdf8DNP
+         wKBL93HxXbSPLqEav0Aq0oiMJYIvoNnBl9uMoL7PPSJPRGlGQmYFV1CuxT0/yN8MQ1SN
+         s0/ODPwWC5HDvCjxkQZU0JHdGyChzDsPxnicv/InM3DS1ZpY8s0kbvt0AM0refiJZlBt
+         /Gkz2cDMs/GC+e4GYMCNUJzH/OZSOGzopsVZLZlI8Z4yyzKLlsCGVRk6SbkN3NTBWwlD
+         gHoA==
+X-Gm-Message-State: ANhLgQ3bb0VV+DcnlG6NFjT5tlBj4d2er0LvlG1O4j24xHhrM03VI6Ci
+	W2tTXRHeT3gUC9HXto32CZs=
+X-Received: by 2002:a63:8042:: with SMTP id j63mr7586062pgd.224.1584018564464;
+        Thu, 12 Mar 2020 06:09:24 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from ?IPv6:2409:4042:221f:a089::232d:c0a5? ([2409:4042:221f:a089::232d:c0a5])
+        by smtp.gmail.com with ESMTPSA id x197sm5977307pfc.99.2020.03.12.06.09.22
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2020 06:09:23 -0700 (PDT)
+Date: Thu, 12 Mar 2020 18:39:17 +0530
+User-Agent: K-9 Mail for Android
+In-Reply-To: <alpine.DEB.2.21.2003121358500.2418@hadrien>
+References: <20200311073418.7476-1-payalskshirsagar1234@gmail.com> <20200312082739.GA54601@kroah.com> <13eb3ca2d7db751231b3a755e1609e385ce3c36a.camel@gmail.com> <alpine.DEB.2.21.2003121335310.2418@hadrien> <53433b4e1b0e28e1ebf25f8bb5f395f6880f39ba.camel@gmail.com> <alpine.DEB.2.21.2003121358500.2418@hadrien>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1489924542.git.rvarsha016@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2] [Outreachy kernel] staging: rtl8188eu: hal: remove an unneeded variable
+To: Julia Lawall <julia.lawall@inria.fr>
+CC: Greg KH <gregkh@linuxfoundation.org>,outreachy-kernel@googlegroups.com
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Message-ID: <B0606EBC-3845-44BE-9D42-EEC3AA6FBB11@gmail.com>
 
-Remove braces which are not required to fix the check patch issue. The
-following coccinelle script is used to fix this issue.
 
-@@
-expression e,e1;
-@@
-if(e)
--{
- e1;
--}
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- .../pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c       | 3 +--
- .../pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c    | 3 +--
- drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c       | 3 +--
- 3 files changed, 3 insertions(+), 6 deletions(-)
+On March 12, 2020 6:29:51 PM GMT+05:30, Julia Lawall <julia=2Elawall@inria=
+=2Efr> wrote:
+>
+>> I deleted the declaration because it will be of no use if I delete
+>> other two lines which is the only use of that variable=2E
+>> I am Extremly sorry, but I am not understanding what need to be done=2E
+>
+>As far as I could see there was another use of the variable in an if
+>branch=2E  Those can be easy to overlook=2E  Just be sure that you get a =
+=2Eo
+>file after compiling the code that you changed and you should be mostly
+>ok=2E
+>
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
-index 5d58dc1..07bd24e 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/ctc/ctc2/ia_css_ctc2.host.c
-@@ -52,9 +52,8 @@ static int ctc2_slope(int y1, int y0, int x1, int x0)
- 	assert(x1 > 0 && x1 <= max_slope);
- 	assert(dx > 0);
- 
--	if (dy < 0) {
-+	if (dy < 0)
- 		rounding = -rounding;
--	}
- 	slope = (int) (dy_shift + rounding) / dx;
- 
- 	/*the slope must lie within the range
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
-index f61bfab..955b6c8 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/isp/kernels/xnr/xnr_3.0/ia_css_xnr3.host.c
-@@ -97,9 +97,8 @@ compute_alpha(int sigma)
- 		alpha = ((IA_CSS_XNR3_SIGMA_SCALE * XNR_ALPHA_SCALE_FACTOR) + offset)/ sigma;
- #endif
- 
--		if (alpha > XNR_MAX_ALPHA) {
-+		if (alpha > XNR_MAX_ALPHA)
- 			alpha = XNR_MAX_ALPHA;
--		}
- 	}
- 
- 	return alpha;
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
-index 8bc1ca0..7e3893c 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_mipi.c
-@@ -79,9 +79,8 @@ static bool ia_css_mipi_is_source_port_valid(struct ia_css_pipe *pipe,
- 	if (ret) {
- 		assert(port < max_ports);
- 
--		if (port >= max_ports) {
-+		if (port >= max_ports)
- 			ret = false;
--		}
- 	}
- 
- 	*pport = port;
--- 
-2.9.3
+Okay, Thank You:)
 
+>julia
 
