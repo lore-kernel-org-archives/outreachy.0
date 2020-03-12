@@ -1,118 +1,111 @@
 X-GM-THRID: 6803293292760924160
-X-Received: by 2002:a17:90a:d350:: with SMTP id i16mr3964260pjx.38.1584016939834;
-        Thu, 12 Mar 2020 05:42:19 -0700 (PDT)
+X-Received: by 2002:aa7:c716:: with SMTP id i22mr5562387edq.205.1584016903557;
+        Thu, 12 Mar 2020 05:41:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ab86:: with SMTP id f6ls2591206plr.10.gmail; Thu, 12
- Mar 2020 05:42:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vti3dtvVsRxgAKF8v9GmY2SArzVHrr7TvS5gtQrra2V2sfSI6uEArVlNjCVpvnJf7ULWsrb
-X-Received: by 2002:a17:902:ac88:: with SMTP id h8mr8017394plr.256.1584016937930;
-        Thu, 12 Mar 2020 05:42:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584016937; cv=none;
+Received: by 2002:a50:9e83:: with SMTP id a3ls3747900edf.8.gmail; Thu, 12 Mar
+ 2020 05:41:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu3pCxLTxPXgyruBRfsHV2AIDBMPdtQgQLaf+hsEOksb0pqtqGgFpyBShG0pMe7OMElo2ff
+X-Received: by 2002:aa7:c3d8:: with SMTP id l24mr7938520edr.232.1584016902065;
+        Thu, 12 Mar 2020 05:41:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584016902; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZnxIGzodgVjknv2D03J8taEontDzP7GxLsr7UxxL+sT1VYY0cy17zH4LQzzw6psw41
-         f+nnw2G6oyM7V5fhGt39pnd1BNHa2e1EIKRucQAo72kxeIPdW05KlFUfxrrCki+mgwXf
-         5bEc1Kq53SGNFPJ6goHDSq4YwTFMlpo4kGRDaFgs5BzJuY0RmflFuj9TjWVnk1twZv8f
-         mysBQlTB0a+sAw8UF6i9BRgpQZ5PziWKZkzX5/oVKIM4KLITd8Pr5BCfNMYQRU8/ygmq
-         Rz1PVE7YcrqVp0faEpS+HfR9wviKfZTe8zxgC5uqQQaOXqQaXEetC0E2Q7fv2Yn93hui
-         SExQ==
+        b=E+kwtwCRV9HFwAM/VBOyepTiMaxi6dPTHJppXEvLo+uhkY6iwhdh+pZ64zGNpMpomt
+         zL7hzTrZRvPvCCxP27qbEO0+Xi9W6JLMjcAoaVLhzUsF8M/uBqFTVrznJPr8O160B2vR
+         CaYhOdMq9zEWG/Ohuj35i8f1XOi7cW5GkkiHkI04g7M5J3Z/xg5X8SFeTOgCuCiYLEiF
+         GKPh6EAqxZQq46Vucncf2mI8pOfYGjZM0RLQyNuExz9pgh8KTKmlPLJe7v0Yd0yJaebm
+         fptc9ux2n318FkVqWWFPQ7ZIFuf1wpsp1k0BJSinLY/rwDXGb5Y1+FTpll7aijbzsnct
+         eJdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=L7a6ZmfuTm8KwaMVQq4BZkKic2A8Lk1Ybue/qxewzFI=;
-        b=v68JcoOy9TslUB0b1s6BxAIqZmNMMZmAha3HAhNEEfI9ywA9GqodQlvWPWKNInhJcG
-         CmeHNORxAhprrA/H+xPSqx/hcbfRcMe2e/I3EwSkrmEbqCJK4Uc7XlYrn45wOtPG+erL
-         1x8brX5x9GQ/GQ1Np3rn+U9H1b09dQi64dT29sAbmv5YwFUlajboAfkFTr8wwH+ferCg
-         nSMlBjuTWyC3oHYFK2MzCYqrPGIyI1rZIcR1uwdt3giLzKE8xceb/20oi5WmblyGwwqq
-         enIGjpkZBZv6Zn70cdwmPO5wdBGe18Y0aLGo+gbz09cIHPFAGVIWziDdqf4+OUMZ9auF
-         aB4w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=mvw5gMP6uiaiqCLSdqiHhFmH3h1UjOFU70UxzRp0r2U=;
+        b=WQfCZxfzR7j1+xAg0V4dwRwgc7WJRZZjQ8PSUv9zc1iHMi5eUh+5DWK/8f6WQzzo8S
+         21EfqwXgu2Th/e3ZpOQBG6hrHurZEZvEv2g8kfukqWBky7rqiKoYrlxpN3tasmgSRV1E
+         02dLn/SxclMZ+9QATuoFU6e3WS8ihF+d7mkfGtFPEMYE6AMEZ9kHQGJRfeVRZaCQIO91
+         WsUBedcUNJ/eZh3YajhEu7aPIgWnWG35euKMfDU+6a7k8t4WH7AY2VR/hGOBBxjdQ9IP
+         kMBlZKl0+JZmYWlEHZsqRBSDb730+hfaVv7Ncr2+o6BXlirwsfcALcmYtI6H7IqCe2C3
+         EmnA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OvvtaAlE;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by gmr-mx.google.com with ESMTPS id q197si357934pfc.5.2020.03.12.05.42.17
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l21si218655edq.4.2020.03.12.05.41.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 05:42:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        Thu, 12 Mar 2020 05:41:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OvvtaAlE;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584016936;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=L7a6ZmfuTm8KwaMVQq4BZkKic2A8Lk1Ybue/qxewzFI=;
-	b=OvvtaAlEnXg7qhwzqgrS1ahVTE4NgwcRnyENShvr5zFv34OEnzM4A1p88egXPLBtzTbpYt
-	hm7VeVhseXtvGxindCZHNMUFzFk4xJszkZe60sugUmCJGYAov4jXcN+sBp0X5UVCiWzmLU
-	zj05QqbVnfN8uQ+osuNmStZV32s+7rI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-liL1XJybMZSe1n4U8rHTZw-1; Thu, 12 Mar 2020 08:42:13 -0400
-X-MC-Unique: liL1XJybMZSe1n4U8rHTZw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8A858100550D;
-	Thu, 12 Mar 2020 12:42:11 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 20D4D92D1C;
-	Thu, 12 Mar 2020 12:42:08 +0000 (UTC)
-Date: Thu, 12 Mar 2020 13:42:02 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,544,1574118000"; 
+   d="scan'208";a="342134332"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Mar 2020 13:41:41 +0100
+Date: Thu, 12 Mar 2020 13:41:40 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: Lourdes Pedrajas <lu@pplo.net>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
- vireshk@kernel.org, johan@kernel.org, elder@kernel.org
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    vireshk@kernel.org, johan@kernel.org, elder@kernel.org
 Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: i2c: remove unused
  pointers
-Message-ID: <20200312134202.729e9b8b@elisabeth>
 In-Reply-To: <20200312121222.6609-1-lu@pplo.net>
+Message-ID: <alpine.DEB.2.21.2003121339270.2418@hadrien>
 References: <20200312121222.6609-1-lu@pplo.net>
-Organization: Red Hat
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
 
-On Thu, 12 Mar 2020 13:12:22 +0100
-Lourdes Pedrajas <lu@pplo.net> wrote:
+
+
+On Thu, 12 Mar 2020, Lourdes Pedrajas wrote:
 
 > Remove unused pointers in gb_i2c_functionality() and int gb_i2c_probe()
-
-No, wait, gb_i2c_functionality() is a function, but you're not touching
-it. I guess you got confused by 'git diff'.
-
 > functions.
-> 
+
+There is no connection to gb_i2c_functionality.  Diff doesn't provide the
+right location information when the code extract covers two top level
+entities.
+
+You can refer to gb_i2c_probe without the return type.
+
+It could be helpful to mention how long this code has been commented out.
+You can find this with git blame.
+
+julia
+
+>
 > Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
 > Suggested-by: Johan Hovold <johan@kernel.org>
-
-This might be a pet peeve of mine, I'm quite sure I've seen similar
-observations by others (on netdev?) but I can't find related messages
-right now: I think it's nice to reflect a temporal or causal ordering
-here.
-
-That is, Johan suggested it, and you made the change, so Suggested-by:
-should come first. It helps following the logic, especially with
-growing numbers of tags.
-
-What I personally do, and this is totally subject to taste (hence not
-documented or formalised), is:
-
-1. Reported-by/Suggested-by: (if any)
-2. Fixes: (if any)
-3. Co-authored-by: (if any)
-4. Signed-off-by:
-5. Reviewed-by/Acked-by: (if I'm carrying any before they are added by
-   the maintainer)
-
--- 
-Stefano
-
+> ---
+>  drivers/staging/greybus/i2c.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/drivers/staging/greybus/i2c.c b/drivers/staging/greybus/i2c.c
+> index c48fa1de89b0..de2f6516da09 100644
+> --- a/drivers/staging/greybus/i2c.c
+> +++ b/drivers/staging/greybus/i2c.c
+> @@ -224,7 +224,6 @@ static u32 gb_i2c_functionality(struct i2c_adapter *adap)
+>
+>  static const struct i2c_algorithm gb_i2c_algorithm = {
+>  	.master_xfer	= gb_i2c_master_xfer,
+> -	/* .smbus_xfer	= gb_i2c_smbus_xfer, */
+>  	.functionality	= gb_i2c_functionality,
+>  };
+>
+> @@ -267,7 +266,6 @@ static int gb_i2c_probe(struct gbphy_device *gbphy_dev,
+>  	adapter->owner = THIS_MODULE;
+>  	adapter->class = I2C_CLASS_HWMON | I2C_CLASS_SPD;
+>  	adapter->algo = &gb_i2c_algorithm;
+> -	/* adapter->algo_data = what? */
+>
+>  	adapter->dev.parent = &gbphy_dev->dev;
+>  	snprintf(adapter->name, sizeof(adapter->name), "Greybus i2c adapter");
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200312121222.6609-1-lu%40pplo.net.
+>
 
