@@ -1,98 +1,94 @@
-X-GM-THRID: 3774394400768
-X-Received: by 10.66.196.11 with SMTP id ii11mr8015087pac.37.1424955734803;
-        Thu, 26 Feb 2015 05:02:14 -0800 (PST)
+X-GM-THRID: 6803294715110227968
+X-Received: by 2002:a25:86c9:: with SMTP id y9mr9109484ybm.376.1584016229345;
+        Thu, 12 Mar 2020 05:30:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.182.60.10 with SMTP id d10ls30056obr.11.gmail; Thu, 26 Feb
- 2015 05:02:14 -0800 (PST)
-X-Received: by 10.182.248.227 with SMTP id yp3mr8396133obc.22.1424955734618;
-        Thu, 26 Feb 2015 05:02:14 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
-        by gmr-mx.google.com with ESMTPS id nt14si80031pab.2.2015.02.26.05.02.14
+Received: by 2002:a25:d851:: with SMTP id p78ls1436512ybg.3.gmail; Thu, 12 Mar
+ 2020 05:30:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuKXiIgLq33O9dNlTnh9ehOjMU9M8ifjC03V1snIuZ/awHO68glnF0cgxZZYvWdk1BJye7N
+X-Received: by 2002:a25:9382:: with SMTP id a2mr2564224ybm.518.1584016227794;
+        Thu, 12 Mar 2020 05:30:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584016227; cv=none;
+        d=google.com; s=arc-20160816;
+        b=o5vyYKSkvwz4mj3hQljeOUWclkKTf1GRQgtmLSeH4xIZlXeo/cIjRcrHmmNDj8WKnu
+         3k/p1KWpCTPasERKCsODwC3RzuhibZMJ7bESuwOLb48EOhn1Z16KLcdu5Se/IWw/TR2a
+         WlfmWWOXSKavMDi+mCnW8/M8KjE1uvZI9l8GCTsAuzYohA/nq1B0KI0CuV7FMgueJPi8
+         YKMAV7AGCMO5ATCp4tMepQnXGrTO5AibRaGXkYlDd7uKYpEGCage+9izIXicWK97luTm
+         ZRcXlGLFoRANgdU3hIRP4Mf9boetjWRPGlVwE9VvHfr00NSOwa4OqTghCa6EwWGe2YDT
+         UPpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=qkntRWEpphywib3CW6wfGuWhVlc8Z62krNYr4PYDMFI=;
+        b=BITb03QYKwrg/2CMbby3RydbvhatZjv0u9jNsa5hTYV8L0ZN8qC5kNtl0rkyrN5tTn
+         LflYSW2mcp2poRtb3TKNdNwKrfMfMgrNkUgjJThb2cVIDGHB5bgk/5yruivkcGoDkPot
+         b1vg5xI+c9E0taglAI31oxYmTBXhkYs9r6kJ2SBXynmNMCuk9hTsvyG8GakVAhgpDIak
+         mF5HQ6TBFbBbb4lYDcrnj0iHdTcxG7No+AbpNn7CLiYxCAAJP9FFlxMGBuWnOnzK8IIH
+         /VZZ7d4emRuxUd8/GtgCo8XpSVvlU+wbpxGGS5gq2odIiyjHWpi5OvvEEIbKD3DXnQD8
+         mqvg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b="VrwAoN6/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 207si24944ybe.5.2020.03.12.05.30.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Feb 2015 05:02:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2020 05:30:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vatikaharlalka@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=vatikaharlalka@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pdjy10 with SMTP id y10so12789062pdj.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Feb 2015 05:02:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=SCSqRJJb1qpuAGUBOx3c6DaM5rp4pjqQCBkrEOmmBEs=;
-        b=htqnegaj9hF0LZZ2/H2AjwqieBmXnI2TmhhKkq+tm5yEgt/BeLAKgDX8ew+YTqCbz8
-         YYVW9GsCWT9CHC1MUd8n7LToklgcscpaaIEw+WKPc7NWAXQQI5YIEyC7HUnf9/uJn4aG
-         gtH1ihCe58ICMowrsirm4iqUakpqK+QNv4qPZSJvr3bNUxF6QXV/4gpLeUf7bkJ+WZhz
-         nxmcnWIA3UJIcS5zRfKyQGodPkeBD9JH4dddTpS6tt3ZQeYLSte0KXl+uRmxLswtwkSg
-         6lLWoEnDI1xaQ8altRn5OobD0LEkmJUV8P9MF9uGTwYZ8B6s0NLJjA4zkOk9BEGvALcj
-         6OBQ==
-X-Received: by 10.68.130.101 with SMTP id od5mr14889226pbb.108.1424955734493;
-        Thu, 26 Feb 2015 05:02:14 -0800 (PST)
-Return-Path: <vatikaharlalka@gmail.com>
-Received: from batra ([14.139.82.6])
-        by mx.google.com with ESMTPSA id s4sm1008200pdd.40.2015.02.26.05.02.12
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Thu, 26 Feb 2015 05:02:13 -0800 (PST)
-Date: Thu, 26 Feb 2015 18:31:52 +0530
-From: Vatika Harlalka <vatikaharlalka@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v4] Staging: rtl8188eu: Remove redundant if condition
-Message-ID: <20150226130152.GA23206@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b="VrwAoN6/";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5684B206B1;
+	Thu, 12 Mar 2020 12:30:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584016226;
+	bh=4nNURy3cz9N7dpI+swspL+9wYlByP9ABdSxh2bfqy0U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VrwAoN6/WsZ72NwLDWEMUZszJwwe81KDo2Yje6jhLUcQ482otkb872IYyMN5fImeI
+	 jhxD8Q+/1sQnBLGyI21loBjfxjYjBOn83h06hUnFCFmuC93lvY4x2jTN5iL+nIW86E
+	 VR+jwP9d0JNVC/pzALb1rWAKuJWXPKfsCrk5ntzk=
+Date: Thu, 12 Mar 2020 13:30:24 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Lourdes Pedrajas <lu@pplo.net>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: ralink-gdma: ralink-gdma: change variable to a
+ non-volatile
+Message-ID: <20200312123024.GC260420@kroah.com>
+References: <20200312121756.6799-1-lu@pplo.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20200312121756.6799-1-lu@pplo.net>
 
-Remove redundant if condition as !result is always false.
+On Thu, Mar 12, 2020 at 01:17:56PM +0100, Lourdes Pedrajas wrote:
+> Change variable declaration volatile unsigned long chan_issued to
+> unsigned long chan_issued
+> 
+> Use of volatile is usually wrong: see Documentation/process/volatile-considered-harmful.rst
+> 
+> Issue found with checkpatch.pl
+> 
+> Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+> ---
+>  drivers/staging/ralink-gdma/ralink-gdma.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
+> index eabf1093328e..8d1b81f720fd 100644
+> --- a/drivers/staging/ralink-gdma/ralink-gdma.c
+> +++ b/drivers/staging/ralink-gdma/ralink-gdma.c
+> @@ -122,7 +122,7 @@ struct gdma_dma_dev {
+>  	struct gdma_data *data;
+>  	void __iomem *base;
+>  	struct tasklet_struct task;
+> -	volatile unsigned long chan_issued;
+> +	unsigned long chan_issued;
 
-Signed-off-by: Vatika Harlalka <vatikaharlalka@gmail.com>
----
+Same comment here as on the other patch.
 
-Changes in v4: Added "Staging: rtl8188eu" to commit message.
-Changes in v3: Removed unneeded newline after if condition to
-                follow kernel coding conventions.
-Changes in v2: Removed {} around the outer if condition as
-                it has single statement.
-
- drivers/staging/rtl8188eu/hal/phy.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index a91bc6d..a708ff9 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -361,7 +361,6 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
- {
- 	struct hal_data_8188e *hal_data = GET_HAL_DATA(adapt);
- 	u8 tmpchannel = hal_data->CurrentChannel;
--	bool  result = true;
- 
- 	if (hal_data->rf_chip == RF_PSEUDO_11N)
- 		return;
-@@ -371,15 +370,10 @@ void phy_sw_chnl(struct adapter *adapt, u8 channel)
- 
- 	hal_data->CurrentChannel = channel;
- 
--	if ((!adapt->bDriverStopped) && (!adapt->bSurpriseRemoved)) {
-+	if ((!adapt->bDriverStopped) && (!adapt->bSurpriseRemoved))
- 		phy_sw_chnl_callback(adapt, channel);
--
--		if (!result)
--			hal_data->CurrentChannel = tmpchannel;
--
--	} else {
-+	else
- 		hal_data->CurrentChannel = tmpchannel;
--	}
- }
- 
- #define ODM_TXPWRTRACK_MAX_IDX_88E  6
--- 
-1.9.1
-
+thanks,
+greg k-h
 
