@@ -1,103 +1,107 @@
 X-GM-THRID: 6802694026822680576
-X-Received: by 2002:a2e:95c8:: with SMTP id y8mr7421762ljh.153.1584083087650;
-        Fri, 13 Mar 2020 00:04:47 -0700 (PDT)
+X-Received: by 2002:a2e:9897:: with SMTP id b23mr6364060ljj.97.1584047155809;
+        Thu, 12 Mar 2020 14:05:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:a58b:: with SMTP id m11ls1648904ljp.0.gmail; Fri, 13 Mar
- 2020 00:04:46 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuFQ00q/Uy3rpwW6q0O6ILFG5RilXWegeV9TuAdw4/DB/urLMWzTKlD0rCDDnJSnNBcViTd
-X-Received: by 2002:a2e:9a01:: with SMTP id o1mr7448796lji.247.1584083085965;
-        Fri, 13 Mar 2020 00:04:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584083085; cv=none;
+Received: by 2002:ac2:4207:: with SMTP id y7ls1088482lfh.5.gmail; Thu, 12 Mar
+ 2020 14:05:54 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvcD/dRenMOqBd0YSu62HoxCalGSGy4rqZqX5t2wVMyOPTGR0NyX/8xFROC24t36++0B6x3
+X-Received: by 2002:ac2:5594:: with SMTP id v20mr6378081lfg.2.1584047154285;
+        Thu, 12 Mar 2020 14:05:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584047154; cv=none;
         d=google.com; s=arc-20160816;
-        b=BNSCjkTjhVIC20GA4FR7yV+2IQKln9vDPZqEESNWcIMmje+QcqLsrc8YsWHDzgQgZ9
-         0PEaFqX/Iw/00hEo+zJ/mDHo3m+h+lnVgebR4QeoVfTtohk6yHfPaO1hUsGHVJDbF+1S
-         FLl0QPE6ai+ttY53KK0mdCasa6NHAud99nlw0hxfGivIZRsVdTfClg6uF9iUKddikaKi
-         OM77tGMk/Nz66CZsUng0kXsZiTFjTRczwx8Tb/HPp/vsaJpKi01VPZ4/lNOKUzUKK9cx
-         8tSWusfJP0fsCutMlfVjZ7dwgF7fIAs+BnJQjcnqhrn+gt7kFwHjnMHjJL2lYwj4bJE3
-         Rrmw==
+        b=g2xAVItH+FD6044Xi/HWZq2Q5/qOscxEgCzkP5Hf+Fjoy2VfzoxUrC8sF/yVxUu56w
+         M85QBXV9gFPO6myQIklUTgjXtWrz0RmuEh/5y9/7qffk7zUSdCjPzQzRKoyj8F7bAD/o
+         Oxg5/6xKjCLaoXjKCivYERdBA4SksVCivut35TbcH0LVGSkLFIJS2Urnakdtg5sGJiCV
+         P5RHZSwANNU2REy1JSOzw4l/BsiCuK9zQN4w+/7wye8P9fgtQh6EddTOnfpG8zjk0yql
+         kzm0FXgiwncY2UQfl/p3u8cyszMTHdEBT4Rlb/Cs5lZQZ8WehBC0VSE4JA/SupySrBWT
+         Df+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=eHJj1faS9q1LLKtj9Q4NgQAwY3ZA/T+3ffnmNCBGSQ8=;
-        b=x8ZkLE1OpWRsvnKAiIoPPHPiv+q59vnYrFmxmPgXGeoHuZ7expOkPMMiqPEarWboYg
-         fWG7thwk8UuZuLpcrGvN05D+a3eBEHdT7UIt+MubCJzw/xgdFFUkEsL9axGdfKwnzXRL
-         SRPhsKF1RUulI6A4xhXI1OSaS7AfaGILPzXBBV68LUKz4knHGjaAhxY5sfQF+kuMNm1Z
-         t0kzVXqb87q42X1+AeVC10YjKeYZ32xolUSMG7+bPw+KBB15dBXd11ks1EhmsGxqsFeZ
-         BTsWte14b9gnRiyZwpCMesQNzO8mRw7v/urX099i8utgLUl3Y6RBM5PZ4M3R+oKm6ykm
-         WlsA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=BYMQgA4JGvSKd4LuvosYbLTC59Bsf08TxbmWWOiI00g=;
+        b=wQiAY1DU2yfL3GkQxUN/v/SVpxvtoAGquGKt236jBsOK5+Um6XgNkyy3oarqc03IJI
+         pqumH6yTu8eidvGRhic4dG9DxvtoRoHvAwKqcyXxdiXvtdjytXZb9C7RYn+WreLbOP4H
+         HrW1Bx81Z4KrUeFYhDFr9QYn7H3vBehtMQlctUur9TyvTCsG3vTq0mIJl3QrqIUfbXk0
+         NE4gGdzPYMcjFnGQDkgJ0lw3YBRRvtKmt47QqfA10UmhTdtxg5tAusjdH9h3be57OKLs
+         uxgJuLMfonQSMOYx6OPEUaQ5lqG0b6ENVPS27IQvGvAy6t/Mlzuo3/5ftEF1NHGU1+Yr
+         S5YA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id w6si376683lfa.1.2020.03.13.00.04.45
+       dkim=pass header.i=@pplo.net header.s=google header.b=BzCScCj0;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com. [2a00:1450:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id s8si385267ljg.0.2020.03.12.14.05.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2020 00:04:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Mar 2020 14:05:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) client-ip=2a00:1450:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,547,1574118000"; 
-   d="scan'208";a="342221792"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Mar 2020 08:04:44 +0100
-Date: Fri, 13 Mar 2020 08:04:44 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Lourdes Pedrajas <lu@pplo.net>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH v5] staging: rtl8192u: r8192U_wx: use
- netdev_warn() instead of printk()
-In-Reply-To: <20200312210540.9381-1-lu@pplo.net>
-Message-ID: <alpine.DEB.2.21.2003130803300.2355@hadrien>
-References: <20200312210540.9381-1-lu@pplo.net>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+       dkim=pass header.i=@pplo.net header.s=google header.b=BzCScCj0;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::443 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x443.google.com with SMTP id l18so9321537wru.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 14:05:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=BYMQgA4JGvSKd4LuvosYbLTC59Bsf08TxbmWWOiI00g=;
+        b=BzCScCj0Kjl3tnz7vZq9sga2KOOQRwDW+u1WqCy8hUyGSw3okVDtDFzWSmz/O0Qx4D
+         vVz54psewb8xsr5D20ny/e828r4MFv81yQB/k7ibDo7kY/2RMtOuuhg47t4PS2oYEBES
+         PkyeibuPNnp5no1XpmDCB+67XuF3nNQuzTJw0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=BYMQgA4JGvSKd4LuvosYbLTC59Bsf08TxbmWWOiI00g=;
+        b=K72UepirHNI5mrvCaWDbxS0Hjil4IdhTfh4mnp/PUWDL2Oc0ttrWYr+L+rYZWVMASq
+         odWlGn4sRwyLKsrp4dXhO7Jek4TEqAm1fQZiDIWDKD6jOLx17kwXiRMgcZK/vyYqJfI5
+         SIVeLcN7PAYjPeIhRZTVL/133UwDNFiHwdgag/TFCyox98gBbF371c+sg7ELvTLP6LV+
+         Qsj2zAauNz67E/OV4OS1hyr+X3TSnC3OhbSneKdY6t76Jy+trFnxY9smvAmvbBPyjAeZ
+         EkmFn0yWecgUaiTr8qKpLi3oiP/4GddHfNkkiDEQjqHNWe1OUWqlHlPUhHkrvp/MfhqD
+         o1Sg==
+X-Gm-Message-State: ANhLgQ2dkgIwLwuz7QA0FyJYvOv+xBKCbwQQrjcS8ityeKGaVg+orUnU
+	/J0s/PQOQks13ivwbRJHqpPh3IaGUdNRjg==
+X-Received: by 2002:a05:6000:4a:: with SMTP id k10mr12305699wrx.381.1584047153491;
+        Thu, 12 Mar 2020 14:05:53 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id d18sm13928642wrq.22.2020.03.12.14.05.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Mar 2020 14:05:52 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Lourdes Pedrajas <lu@pplo.net>
+Subject: [PATCH v5] staging: rtl8192u: r8192U_wx: use netdev_warn() instead of printk()
+Date: Thu, 12 Mar 2020 22:05:40 +0100
+Message-Id: <20200312210540.9381-1-lu@pplo.net>
+X-Mailer: git-send-email 2.17.1
 
+printk() is deprecated, use netdev_warn() instead, which is a message printing
+function specific for network devices defined in include/linux/netdevice.h.
+Issue found by checkpatch.
 
+Suggested-by: Julia Lawall <julia.lawall@inria.fr>
+Suggested-by: Stefano Brivio <sbrivio@redhat.com>
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+---
+Changes since v4:
+- Log message correction.
 
-On Thu, 12 Mar 2020, Lourdes Pedrajas wrote:
+ drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> printk() is deprecated, use netdev_warn() instead, which is a message printing
-> function specific for network devices defined in include/linux/netdevice.h.
+diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
+index 0118edb0b9ab..100532598781 100644
+--- a/drivers/staging/rtl8192u/r8192U_wx.c
++++ b/drivers/staging/rtl8192u/r8192U_wx.c
+@@ -588,7 +588,7 @@ static int r8192_wx_set_enc(struct net_device *dev,
+ 				hwkey);                 /* KeyContent */
+ 
+ 		} else {
+-			printk("wrong type in WEP, not WEP40 and WEP104\n");
++			netdev_warn(dev, "wrong type in WEP, not WEP40 and WEP104\n");
+ 		}
+ 
+ 	}
+-- 
+2.17.1
 
-I still don't think that "defined in include/linux/netdevice.h" is
-necessary.  It's a well known function, and anyway if I don't know what it
-is, then grep or elixir is sufficient to find the definition.
-
-julia
-
-> Issue found by checkpatch.
->
-> Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> Suggested-by: Stefano Brivio <sbrivio@redhat.com>
-> Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
-> ---
-> Changes since v4:
-> - Log message correction.
->
->  drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
-> index 0118edb0b9ab..100532598781 100644
-> --- a/drivers/staging/rtl8192u/r8192U_wx.c
-> +++ b/drivers/staging/rtl8192u/r8192U_wx.c
-> @@ -588,7 +588,7 @@ static int r8192_wx_set_enc(struct net_device *dev,
->  				hwkey);                 /* KeyContent */
->
->  		} else {
-> -			printk("wrong type in WEP, not WEP40 and WEP104\n");
-> +			netdev_warn(dev, "wrong type in WEP, not WEP40 and WEP104\n");
->  		}
->
->  	}
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200312210540.9381-1-lu%40pplo.net.
->
 
