@@ -1,94 +1,115 @@
 X-GM-THRID: 6803231056018276352
-X-Received: by 2002:ac2:5f58:: with SMTP id 24mr1615145lfz.81.1584611744418;
-        Thu, 19 Mar 2020 02:55:44 -0700 (PDT)
+X-Received: by 2002:a25:360c:: with SMTP id d12mr3944424yba.271.1584015294347;
+        Thu, 12 Mar 2020 05:14:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:550:: with SMTP id q16ls399509ljp.1.gmail; Thu, 19
- Mar 2020 02:55:42 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtJ02HglF767wqNDTOBDGRknNG8upa2tD8uoCB0wAn492GhKafykRB7pSuylQ/qEpL/PhMX
-X-Received: by 2002:a05:651c:1b5:: with SMTP id c21mr1657185ljn.174.1584611742835;
-        Thu, 19 Mar 2020 02:55:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584611742; cv=none;
+Received: by 2002:a25:ab94:: with SMTP id v20ls1418451ybi.0.gmail; Thu, 12 Mar
+ 2020 05:14:52 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvehkKA5t+VgGRmQG/rK+oxFRtn4uB9Boc1QDwiesafqiGtui17pHQnd3R18MH6iYAvCJVw
+X-Received: by 2002:a25:bbcd:: with SMTP id c13mr5216289ybk.9.1584015292803;
+        Thu, 12 Mar 2020 05:14:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584015292; cv=none;
         d=google.com; s=arc-20160816;
-        b=mCXbvcb6HYLbwT4rfJayih5WlO64dF0u8dcPvAZKM4wf8e04jBdor1q8LtIRSEw1O3
-         E0F//wSH9GmH7WDXU//Lg9oQexU155b5yXudPf6ufnf+em6yOTMcWoZTnpwk2HOaABFx
-         suvXAYh4KHorAG6EXAYMmSHNbizX1PQFdSHPETtyqnPQyDUOj6whTMyZyYtNPe1u38n4
-         5Y39rvvja7NUT1RqjrACzZl1cH+DE2FVA+zZ/04VR0K7177KrXz22qVYm+FqW8b0m4qe
-         zhWlEbdXOESu5kmQyVyH/9HGv+RBNhDNd44/VGKzJS9Z4svlplt7FYeS4vtgy4yVsneO
-         jvGw==
+        b=zgL8LFgfNwhr+U8FxczwdCwBbhSYLF9WjHgsJbZNDRUHnj0WR8jaUQSFFFdzgTiYop
+         p89KSrGDrY5uK+tKm9BtqLpkUPKXQEZi6xRq0aplCvL+dJQg6FFGBJSAsMXiQ+Z2drc8
+         TXOUNl1iIcigUYfH5eCpLm/bvMBtmCI7hERZGE4S3SAWDQQtdhfkFl03WNnLoUEGWLxk
+         vey/NgmPgdLRthlTjYu6P/enoCc2gAv0T2CBXiJaPWq05DuZDTSTM3G2fgVvBCs39/1f
+         PQi9eQmj1G41HDC6sVbKfbj5+YqL+SrKZNbGjxas4oljRyvzUYVuiTtXFY4+lh6mn5GQ
+         rlnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=fKBdUfFkfkQTNjgIS65JenM1siVYLzhefjJGAUh1GA0=;
-        b=IpeS8IQfdyPMXTrHvduLoNt7JvzUHA20jaFCLzVW8UUZ/Fq3ZuED9nvhXK5YyEZYMo
-         zZzZ7roQyomilxMiy2eInTAAqcqpzas0Mab0wr0MgEJTYp1rrwJIMcBs9s+IFH8+yHHp
-         Z1S5U9S8l5XJrUQIjTIi9Y2EyEvWGYIIOd8yZlfWPcFoq8H4kOef9vhZUn4r7/KrOZ16
-         AqyHzS9IR0FV6LPfYnuk+J8XcDaG12lD+bTnRzcWpSz7yDPJ+vlRJJnh8LFcsBEeXnUL
-         hJzmU8lUVmwUFBoS4waJn2qXs5O6HaCIEuSi6HQ/uVjknhrZrdr0kZmlH7DKOCzcWbtR
-         4pLQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=GXcLJG5GLSPJvWmaIlVBHsVEiPaZm7aICItM2n8E/tg=;
+        b=04xdi343QIId5/NLua2a7pY2fHmKz+vT3Dk/9wk7SsdzIxB4ib5R1wqSWnwRLNccB+
+         GyJZJrTn4YGXYlKtJnz9MS5RtRqG5RmNOSrTQJB7zPxAe14bnzL9HtOcGdJtBrvfWagy
+         Xk6pNxM6usqy9fmm5gCJlWqYlMr7k2xpbEGS4oXWo7wbdyo664emUNmqQ3Mvt4TK7KlI
+         xNunc18DlS/YABXLBy4nEWpLiHxeOs1toiqB817Lezg50E1XmGFIlqgX/0FTds9M/mnW
+         QkJlhglmFQsA7Cl2dj7KDowx4TPGkv6YNhnV+UuY+mQriID2cake82MUGfCvk/7H/qFS
+         5Fnw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id s17si99400ljm.5.2020.03.19.02.55.42
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 02:55:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       dkim=pass header.i=@kernel.org header.s=default header.b=l9n6kMZG;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id e131si255227ybh.3.2020.03.12.05.14.52
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2020 05:14:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 26715 invoked from network); 19 Mar 2020 09:55:41 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 09:55:41 -0000
-Date: Thu, 19 Mar 2020 15:25:34 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Larry Finger <Larry.Finger@lwfinger.net>,
-	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v3] staging: rtl8712: Fix for long lines in Kconfig help
-Message-ID: <20200319095513.GA3078@tulip.local>
+       dkim=pass header.i=@kernel.org header.s=default header.b=l9n6kMZG;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 6A0A1206E9;
+	Thu, 12 Mar 2020 12:14:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584015291;
+	bh=2I/qJimIPZfRSaJOuKJgnuQPukUbw9mmC73XDdI3Uqc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=l9n6kMZG3PXBKWWiketmKOsfyfFbFkbQ+rqaQlBrSoehwyGoxohC2x0QMDY/CGeYN
+	 Nlt8ZhrkyMnq12Wjcmetf/06L2qHCAo7e2olJ9vhPzWMD3vGvOD8tLmmDqycXbblI7
+	 SzAwTVCMzDXQqlMNnnq1zCka+Ky6D7rr1KLwqHdc=
+Date: Thu, 12 Mar 2020 13:14:49 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH] staging: rtl8712: Fix for long lines in Kconfig help
+Message-ID: <20200312121449.GA260420@kroah.com>
+References: <20200312081044.GA3742@tulip.local>
+ <20200312115409.GA224615@kroah.com>
+ <20200312120817.GB5010@tulip.local>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200312120817.GB5010@tulip.local>
 
-Fixes two long line in Kconfig help.
-Found using checkpatch.pl
+On Thu, Mar 12, 2020 at 05:38:18PM +0530, R Veera Kumar wrote:
+> On Thu, Mar 12, 2020 at 12:54:09PM +0100, Greg Kroah-Hartman wrote:
+> > On Thu, Mar 12, 2020 at 01:40:55PM +0530, R Veera Kumar wrote:
+> > > Fixes two long line in Kconfig help.
+> > > Found using checkpatch.pl
+> > > 
+> > > Signed-off-by: R Veera Kumar <vkor@vkten.in>
+> > > ---
+> > >  drivers/staging/rtl8712/Kconfig | 7 +++++--
+> > >  1 file changed, 5 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/rtl8712/Kconfig b/drivers/staging/rtl8712/Kconfig
+> > > index b6dcda77db1f..678bbeace823 100644
+> > > --- a/drivers/staging/rtl8712/Kconfig
+> > > +++ b/drivers/staging/rtl8712/Kconfig
+> > > @@ -6,13 +6,16 @@ config R8712U
+> > >  	select WEXT_PRIV
+> > >  	select FW_LOADER
+> > >  	help
+> > > -	    This option adds the Realtek RTL8712 USB device such as the D-Link DWA-130.
+> > > +	    This option adds the Realtek RTL8712 USB device such as the
+> > > +	    D-Link DWA-130.
+> > > +
+> > >  	    If built as a module, it will be called r8712u.
+> > >  
+> > >  config R8712_TX_AGGR
+> > >  	bool "Realtek RTL8712U Transmit Aggregation code"
+> > >  	depends on R8712U && BROKEN
+> > >  	help
+> > > -	    This option provides transmit aggregation for the Realtek RTL8712 USB device.
+> > > +	    This option provides transmit aggregation for the
+> > > +	    Realtek RTL8712 USB device.
+> > >  
+> > 
+> > Why did you pick two different line lengths to wrap at for these two
+> > options?
+> > 
+> > Please be consistent.
+> > 
+> 
+> So should I resend the patch.
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
----
-Changes in v3:
- - Removed "Better" word from start of the subject line
-Changes in v2:
- - Match Kconfig help style
----
- drivers/staging/rtl8712/Kconfig | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+I can not take it as-is, so why wouldn't you fix it up and resend it?
+:)
 
-diff --git a/drivers/staging/rtl8712/Kconfig b/drivers/staging/rtl8712/Kconfig
-index b6dcda77db1f..c62747c90968 100644
---- a/drivers/staging/rtl8712/Kconfig
-+++ b/drivers/staging/rtl8712/Kconfig
-@@ -6,13 +6,16 @@ config R8712U
- 	select WEXT_PRIV
- 	select FW_LOADER
- 	help
--	    This option adds the Realtek RTL8712 USB device such as the D-Link DWA-130.
-+	    This option adds the Realtek RTL8712 USB device such as the
-+	    D-Link DWA-130.
-+
- 	    If built as a module, it will be called r8712u.
- 
- config R8712_TX_AGGR
- 	bool "Realtek RTL8712U Transmit Aggregation code"
- 	depends on R8712U && BROKEN
- 	help
--	    This option provides transmit aggregation for the Realtek RTL8712 USB device.
-+	    This option provides transmit aggregation for the Realtek
-+	    RTL8712 USB device.
- 
- 
--- 
-2.20.1
+thanks,
 
+greg k-h
 
