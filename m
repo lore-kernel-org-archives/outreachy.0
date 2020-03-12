@@ -1,138 +1,105 @@
 X-GM-THRID: 6803294176512311296
-X-Received: by 2002:a5d:4acc:: with SMTP id y12mr12122172wrs.385.1584042213682;
-        Thu, 12 Mar 2020 12:43:33 -0700 (PDT)
+X-Received: by 2002:a67:2f97:: with SMTP id v145mr5000748vsv.63.1584016287096;
+        Thu, 12 Mar 2020 05:31:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:5233:: with SMTP id i19ls3561202wra.6.gmail; Thu, 12 Mar
- 2020 12:43:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtSUijPRswPl9CxBI1wE+55jQtxgSB7pC80GhwTQ/WXwUU0+6t8XuJUU08LmXnpwWH9pYhk
-X-Received: by 2002:adf:9204:: with SMTP id 4mr12960422wrj.143.1584042212441;
-        Thu, 12 Mar 2020 12:43:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584042212; cv=none;
+Received: by 2002:a67:ce9a:: with SMTP id c26ls22908vse.7.gmail; Thu, 12 Mar
+ 2020 05:31:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvEcGBuLMDZ3DC/0dKbSZlr6rMUqxJu26Up1XESMW3LTlLF+1yuXd2Dl+hcK3pwVPweC5Q7
+X-Received: by 2002:a67:320f:: with SMTP id y15mr5461190vsy.157.1584016285559;
+        Thu, 12 Mar 2020 05:31:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584016285; cv=none;
         d=google.com; s=arc-20160816;
-        b=LVowJT9hxpbv2X6untuUClLMNiNFEZcETgVPY5lJ6g8vb+Rh8jWhJWkey160m6+IUh
-         3CZmeQdYz+gpg8xcs3hSf+jHF4nC8vh2Y0vwI1uzjB5xVNnvXj5fhaoDvRv/RKFjtK9d
-         kLMdqw71vYfgEhx6QYbTmMxYk/Si1OJxDN1amYuJiwU9nP+8XF1fa6R1fftflIb1ItO8
-         DtLtNa6eHw9mGNLvsPArPIqHfnpfGZuIYHVAV+Eqf6OrNqrOMaZhoelyG316TsVKRYsU
-         V9jfW/RMiGjzeAmHYADSdqvEocCh5PHPZgvakXVu1btIo2vt/+xnrUmjtvesa8mYYhj6
-         +f2Q==
+        b=UFjxDUbVHpxYnTzIYPmBqp6lMUwDB6TMCGJq6e87SMMtaYG26WVscaZLAoU1TuQLYj
+         2TVw9C91PxEjffAnalQBhba0idEDVXh6Y37W6TAdzjhwI5AUGdqI3zn8Aaou0ZrhCFPa
+         CDZRLplL2YMQfmza0TtrSPBPfJytzmQ4Qt6XBCdMaAeOQk1WpoOKDItFMFNoTL+wvVyc
+         ygtNQqGPk1dQKQrLj//A7N4p6edtMe1xykxgtgRFWk3gT3nuhYEPV9wv/TVVGM2DaEs/
+         hA+JDWHiBBeF0ha/+6kkXekZgLMZgK2x5rrdK9gCDsHkbbsi5c5QwqTX9tZA55Uk2TZD
+         whRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=foS3Lq7Xw2BYEFHILo8RRTKqB5yF1mJmAuBZT0Mvad4=;
-        b=JkgVgXzKZa71N9wfWxJ7Vo4nG4mRCLychBFJaSCwSTu6POy8+8vxNYycGF9RdevB5J
-         Wh0cZVL/vtljrq3FLcC2g33n5w2lGvicEEA7UA6Yb4zv8X10O4Zhs8b4Q/854ieeyBrt
-         C4nZdrlgRlRzojWCWUVrqUJsxizwtN8PbDnMuYiYHei3dVGRkwFW2qTux+3zqO3IC/G8
-         N5RuDO4Ct1pRPWCI11LaT9ArBwtXJ1JvjpHlL2QKKSa9viETi6y+z0dj3Vy30/owHMHV
-         /bNSAzGKMzdTbTNiiXNcyPKLkmt870oa+/YpPK7CJ9gsPFbIuOpqsOuufnx1i+PpgeAh
-         7ocA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=atk7dPe9w3xlsO62HVVXQ1ADfhEopAVFLeEvQuA9Hlk=;
+        b=uEVIxHa/DgH//ozt1s3TvP3DQAYeqBIbMRwUcHSpa+9LMSDWcQCpOz/2Kjwjjw2PTQ
+         kTufFWo+YVYamGOWmhjr4wBX5AB/h5R7+efVfhapEVt4IGl1qpTQwPvRFNZSZeEB6k5C
+         MBxYz7dYT3vIHqQRzuZvsw21tiAWa02OkG8kZAI/NCqcg/i/fAJt1cBpjodj3HNEUj/r
+         OtIzt/y90HJNHzBRCyHMUhNpgwALe6Fy8a09Sm56eX0eTOWfClt96bawkYk45GA29jd6
+         hr99Di0cVCqkww/Vk1arRaUEjbk9VrqfcuHDlUgGgBdwmwnmES2eP2Tmk3Tf5vmPbOcU
+         ZxDg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=gEkTwFXj;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id y201si88644wmc.0.2020.03.12.12.43.32
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B4AMwQa7;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by gmr-mx.google.com with ESMTPS id c6si198831uan.0.2020.03.12.05.31.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Mar 2020 12:43:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2020 05:31:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=gEkTwFXj;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wm1-x342.google.com with SMTP id a5so7448419wmb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 12:43:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=foS3Lq7Xw2BYEFHILo8RRTKqB5yF1mJmAuBZT0Mvad4=;
-        b=gEkTwFXjaElZKP9UcUo9AFoXZuwqbRuAtjhlUck+tE6dt+g5iltlk80KMPqLOfQaIA
-         M9/u3NItoACTiQkvXfU6bfxqxzZa46BSPlGAlMgSAos3hGrcxFbAg/2LmFV92Kyc6sw9
-         gZsBLyAsCH0c1n00x91Wy5EUeLC5kqjjUvDE0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=foS3Lq7Xw2BYEFHILo8RRTKqB5yF1mJmAuBZT0Mvad4=;
-        b=r6KYYiYH7eq9DGjEPaPZKidzQa49aSLxigrqCW6/axC7YmEbD9KE6m+jLRp+IX6T0z
-         rEsb3lCj6BQ/98HMjS6VyuLookEFkk4nMQeVWHPhhfVUnW+y4lQ+7L3MnfFYN8qkgIb8
-         hcjvrQQTJXpwoMUkgT3/Ki6dxyzTmjNdv/d3vKecDhksm6UmM7mzr1vpEGLRS5kh0c3p
-         lFBrotZHAMifLkSrN5uDaOyiQtmlLBPaMpR6YnqCn6shqnND+EAA0pyIGgmeQlXplVWr
-         42S1BE5FJzaBWvfGtvtA4aZMO76+XQbeepazf8ToFFOIQ7ccnOXPVSBb4lggCNLUAF5s
-         VTKA==
-X-Gm-Message-State: ANhLgQ0AyAJPSczJO10AERlDtqEmE6wrah6tohwZ1/qKf/3z6Ztsr65W
-	EIETe0gtN+eY4SEMRrfLR6pf4w==
-X-Received: by 2002:a1c:bcd4:: with SMTP id m203mr6208758wmf.35.1584042212020;
-        Thu, 12 Mar 2020 12:43:32 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id p4sm1538978wma.21.2020.03.12.12.43.30
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 12:43:31 -0700 (PDT)
-Date: Thu, 12 Mar 2020 20:43:29 +0100
-From: Lourdes Pedrajas <lu@pplo.net>
-To: Stefano Brivio <sbrivio@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B4AMwQa7;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584016285;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=atk7dPe9w3xlsO62HVVXQ1ADfhEopAVFLeEvQuA9Hlk=;
+	b=B4AMwQa798p0hSz7gsWGsbBFnFRcQz15tJXhJD7eNbtHiR4t2ibo5sGDfXARMNy1klHokC
+	LCVMhHC9Y88Hm4fzo8jYDIU+4UxJRctcJccdC6wlHrxdJCMlcGptgM64UrRrCY0p9k7IbE
+	sILTeah1yC1ebpcCxjrYa+K+iqF0buQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-244-DqTgAbetMK-866PEkci_3A-1; Thu, 12 Mar 2020 08:31:21 -0400
+X-MC-Unique: DqTgAbetMK-866PEkci_3A-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57732100550D;
+	Thu, 12 Mar 2020 12:31:20 +0000 (UTC)
+Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6815719C6A;
+	Thu, 12 Mar 2020 12:31:18 +0000 (UTC)
+Date: Thu, 12 Mar 2020 13:31:12 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Lourdes Pedrajas <lu@pplo.net>
 Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	matthias.bgg@gmail.com
+ matthias.bgg@gmail.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: mt7621-dma: mtk-hsdma: make
  a variable non-volatile
-Message-ID: <20200312194329.GC6485@supernova>
+Message-ID: <20200312133112.4f61c60b@elisabeth>
+In-Reply-To: <20200312121548.6719-1-lu@pplo.net>
 References: <20200312121548.6719-1-lu@pplo.net>
- <20200312133112.4f61c60b@elisabeth>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200312133112.4f61c60b@elisabeth>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Thu, Mar 12, 2020 at 01:29:52PM +0100, Greg KH wrote:
-> On Thu, Mar 12, 2020 at 01:15:48PM +0100, Lourdes Pedrajas wrote:
-> > Change variable declaration volatile unsigned long chan_issued to
-> > unsigned long chan_issued
->
-> Are you sure this is correct?  Usually a change like this also requires
-> some kind of lock somewhere to ensure things work properly (not that it
-> is not working properly today...)
->
-> But it's not always as simple as just removing 'volatile', otherwise
-> that would have been done already.
->
-> Please do more work to determine if this is a safe change or not and
-> write it all up in the changelog.
->
-> thanks,
->
-> greg k-h
+On Thu, 12 Mar 2020 13:15:48 +0100
+Lourdes Pedrajas <lu@pplo.net> wrote:
 
-On Thu, Mar 12, 2020 at 01:31:12PM +0100, Stefano Brivio wrote:
-> On Thu, 12 Mar 2020 13:15:48 +0100
-> Lourdes Pedrajas <lu@pplo.net> wrote:
+> Change variable declaration volatile unsigned long chan_issued to
+> unsigned long chan_issued
 > 
-> > Change variable declaration volatile unsigned long chan_issued to
-> > unsigned long chan_issued
-> > 
-> > Use of volatile is usually wrong: see Documentation/process/volatile-considered-harmful.rst
-> 
-> This needs some more details. From that same guide:
-> 
->   Patches to remove volatile variables are generally welcome - as
->   long as they come with a justification which shows that the
->   concurrency issues have been properly thought through.
-> 
-> so, here you need to investigate what that "volatile" was supposed to
-> achieve, if it is achieved by other means, if some form of locking is
-> needed instead, if we end up in one of the "exception" cases also
-> listed in that guide.
-> 
-> -- 
-> Stefano
-> 
+> Use of volatile is usually wrong: see Documentation/process/volatile-considered-harmful.rst
 
-Indeed, both of you are right. Thank you for pointing me in the right
-direction! However, as someone who is new in programming, I find I lack the
-knowledge needed to tackle concurrency and locks. Nevertheless, I will do some
-research to learn a bit to see if it can be done in a reasonable amount of
-time. Sorry :(
+This needs some more details. From that same guide:
 
-Lourdes
+  Patches to remove volatile variables are generally welcome - as
+  long as they come with a justification which shows that the
+  concurrency issues have been properly thought through.
+
+so, here you need to investigate what that "volatile" was supposed to
+achieve, if it is achieved by other means, if some form of locking is
+needed instead, if we end up in one of the "exception" cases also
+listed in that guide.
+
+-- 
+Stefano
 
 
