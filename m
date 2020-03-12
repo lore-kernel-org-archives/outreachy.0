@@ -1,124 +1,119 @@
 X-GM-THRID: 6803023005726277632
-X-Received: by 2002:a17:90a:5d97:: with SMTP id t23mr4646984pji.61.1584024900409;
-        Thu, 12 Mar 2020 07:55:00 -0700 (PDT)
+X-Received: by 2002:a37:5685:: with SMTP id k127mr7908406qkb.481.1584024850208;
+        Thu, 12 Mar 2020 07:54:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:84d9:: with SMTP id x25ls2456994pfn.2.gmail; Thu, 12 Mar
- 2020 07:54:58 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtQJV62NUO4ou6MXW677HEgHgjdy1uwFxP8hBY46PQSEtZKtdEq39PKm1nw8QhezeTbN8Zh
-X-Received: by 2002:a62:f24d:: with SMTP id y13mr8862227pfl.27.1584024898743;
-        Thu, 12 Mar 2020 07:54:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584024898; cv=none;
+Received: by 2002:a37:a784:: with SMTP id q126ls3017477qke.11.gmail; Thu, 12
+ Mar 2020 07:54:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtiqAPG0RjydHo6WomM7u+0sycOsi/Vw9UZ1J9HZdncI93gBW6x1ORA3BFslKbQfcrUrFHN
+X-Received: by 2002:a37:a08b:: with SMTP id j133mr8536469qke.265.1584024848724;
+        Thu, 12 Mar 2020 07:54:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584024848; cv=none;
         d=google.com; s=arc-20160816;
-        b=vvGuObCylcw2DJ/9TwsqGTxav0SnQ8jo+4GPHd5d6fzOFuWUqaEBmSQRHSR0kn0SVK
-         MrPJemThaqt7KXpdhmj/H70X+sBwm8909cjt/nZ+/RVvtkQ4dH4DR3Nq+q0t67mx4WDD
-         pvT8BVaCdVoAjbxCeK/uoYr6kXg7ZIrvu3aFsSrjGFymW1FdXVtWIn7H/BwbEfhpXS2l
-         HpK1PsETmRZHSlGHMdQv2x5OOvfGovfMjc//qqWEgw7DY7iODSSs/6FzjzQNEVTgGXNL
-         NXEVZyUUSsrKjN7ZJzswjKPQAuCevfNNGjwn4AoixqgI82DxuC8QJRqo+UhRx1RHFeQp
-         NKWg==
+        b=Y4DWanF411cqlstIGVh5zAbjGtLNKoFlpR2dj0mI7KvpASAbFoUU7HiykSlmE6Z57q
+         Ozt49pwTUTqEltmpkwkjyrFVTv749w/l1O9S76D0OO9Vi1gPqVYujFkGfMwYho3nTGtd
+         h9eJAywr9r4XdElvQmuW1PJOHYHM9pevTr2OjLZmswOu9pj2CLY57xQ9mo/79bn8gjkA
+         E94vBvrAKMCDzr1atOkOUsoQvCalKmZwCczADh1RvKb+0E2tvfeYMOz+tEZ6VRQw+z6W
+         MSfxovKWAVqtzVfPIK66LsXCIDf37TuPwsRXGxo9UayRd/aZe9xqe4OEkYpZ3QncCwVN
+         T9qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:date:from:dkim-signature;
-        bh=9yFFa0kjMaS7TrAXDFmNk8v+Kkh/MN7Amw6M9TXHjOU=;
-        b=STGAOZwTsFfd9FDHJxnbXg+y2kSYjbMeBRpGTsiZzXkYfNbqnnMjge7Ezn76zC8pTX
-         IOyD7FI6EpzPxMEhsV+vOx7Js44dbvl4UYy+bGGbozjuuPa4oXv/LmN3RbJdaVhPLxCX
-         z/A0nGFOXV1AF+nZ55nhnowNSvJv33IXGJdZ4XorA5+C2iQ7H5xjKK3RHT3kGHcvG0Ty
-         5ZmRrDA+L4NxEvv5tZNeOpp3NKUxdc03QIquWEmaV+es66Uo7/uwOLMG/YccKKToZ/W9
-         tH0R6MLEMQJOG/xlLIKcGCOIGuwQIRZ0URdkpLIaqvdyA0igTbd+lg5L9Xa4JdwnHXrU
-         jmZw==
+        bh=MvT/BVTIBcG1FAxWSVAeKz31N5UfjYiczXA5MrVm9bU=;
+        b=rgHSK4d0n8oetkufMVIBoKBkQv4G2vFAIcCdGKG679o/CacCt/1T8JA4XWPFk9C0yU
+         f5tvRnl0fmA3BIJIZ22SmdWI2UeTEfyCFDmNvIzi9V17MwxUX9RVpnFecI/6afSRaxmU
+         xSZFdHj/bbbXclkodV49jK+MgW9top83xLfDLNRsAZNfKqeWR/HunglYEpXdmVHQL43H
+         nN9FJ+Rnhf5daRxEHRe1foBxkEkg2/+BiNzCf2YWfPDGmpES9adZoLANAUr58ZcIVmap
+         7fpmIXj3SRZxbjRH/0EhYOrt9FHO7oA0atEGDpKdnvAO8fQ2C0qLMwpL233SLzPCxV0/
+         21Ig==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=D+ETrRII;
-       spf=neutral (google.com: 2607:f8b0:4864:20::644 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b="HDUrMMl/";
+       spf=neutral (google.com: 2607:f8b0:4864:20::544 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
 Return-Path: <kgupta@es.iitr.ac.in>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id e2si372279pjp.1.2020.03.12.07.54.58
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id w10si244442qtn.1.2020.03.12.07.54.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Mar 2020 07:54:58 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::644 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::644;
+        Thu, 12 Mar 2020 07:54:08 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::544 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=D+ETrRII;
-       spf=neutral (google.com: 2607:f8b0:4864:20::644 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b="HDUrMMl/";
+       spf=neutral (google.com: 2607:f8b0:4864:20::544 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Received: by mail-pl1-x644.google.com with SMTP id b22so2750032pls.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 07:54:58 -0700 (PDT)
+Received: by mail-pg1-x544.google.com with SMTP id 7so3203331pgr.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 12 Mar 2020 07:54:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
         h=from:date:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=9yFFa0kjMaS7TrAXDFmNk8v+Kkh/MN7Amw6M9TXHjOU=;
-        b=D+ETrRIIsitbsTYEdJdN58QcXoA/qLkNWdCE0TpgkObZuXP3Y37+h8yslJDNdgGMnv
-         i7T0GTwyPu2mYE9K2lGa0bnMNmEHZV6PDXjmL5wvJ1Go0LKoKUTNMumok/WqAAQ36SMb
-         3KKiyg3InL/zQ0C+Dx7zK4hmv4lIGtcbt0D6N2p88TJZYryWyTw9SAD+MhD6EPxRhZiI
-         X7xpACMzOl65MSfQ7sjD0um7vbaLL4MBbSs4y8ZduYjSiRmnorX8Dd4ApKSzLE5BDOxh
-         un+byTABaUm/u1BuTW6mOurmFfUDOV8gxYVZbu5qL55atIhVi7E6D6vNPl3k22NPB1xP
-         As2Q==
+        bh=MvT/BVTIBcG1FAxWSVAeKz31N5UfjYiczXA5MrVm9bU=;
+        b=HDUrMMl/Gh08uwjuJuajD2Nf91T1uOcD0LKUwBRHRETxy/Lj7tzetmm2845IaOG3Zf
+         6JktihLygwJexuGJAizQbZXuzfeJa9O3R4w6ZV5WR7S13g76qVz/ZAnazr5NGmrvKb+B
+         yqiGCaNnH80HBZ0vZPYSV6iIAgR1nHuznDGdFb1GXHEdCwyhJvPWaZLxYpnTzpm3ggKO
+         FW3v/vK8rJjSg6hU8/aZZI/Hp1deuyPfCP7yv43kssziH0WT4zj0UAhzhNoP5MGJDLD+
+         PiO1nH1xtmgL5CTsWFN6AOENuScQ42tSoJ4ZrYDFELTZfI+asosQh0LMAvwkbrOx4Rwu
+         Gejg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:date:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=9yFFa0kjMaS7TrAXDFmNk8v+Kkh/MN7Amw6M9TXHjOU=;
-        b=OYxz5a+3IKsi7qGg2l6ynYEJQxb5DOP6MG7zewy5Uwb6H9QDec1blfdTvzmI096Vdu
-         VUSt+u86jjpDE5/Gg+6SlLkUC3WcHnotFWz3RgTWmL+FmMYmcrEQsZ2C9geagPLdYa6A
-         IStZXfa7m/l7cy7qSLjcGU8B7eYaCjY3vBOuQSVeeddG+7i5nq4WaR7NsX1AyFDWY87A
-         X4GtRJkc5+hXMCiMyxN2FpWSSlw7GH3QLE9JTtHBO9bphhEEQmDGLdtTH/12//YlFc6n
-         7tqztCOu9TATet7fQHrc9UWbIubrAMMnGzdHTyRc0h+8r/totqZjWKkFer973btwdIbO
-         9drg==
-X-Gm-Message-State: ANhLgQ0/2eI47roUxWR/KLOtGFHqV300AGdNG1EhS/kVLalqJ13Akkp1
-	tk9+20so9zedrPjhj+8nvS/kaQ==
-X-Received: by 2002:a17:90a:cc02:: with SMTP id b2mr454759pju.125.1584024898227;
-        Thu, 12 Mar 2020 07:54:58 -0700 (PDT)
+        bh=MvT/BVTIBcG1FAxWSVAeKz31N5UfjYiczXA5MrVm9bU=;
+        b=WWsvK1kuRDfwaTHIE4G9eYn4+zGLGRRfB2ct2NQVzf46WYmxs+s3Nvtl2yR060lFFN
+         dtNvXcjzKpBtKSz6e3OJTstREUWkxmeonOfWkHkRi0Hoez5Y6OHl+iuuP3oLvAIfF2qU
+         y4lg4BGlcZVhhzDryKPZNwBJ+YdEFapQqJKVwHVkyThn0ved8aFgWGfUzBku0EwmKsaK
+         /DZOxSuJEbdi+vkzNeJ/DQcInAxCxoizXfS+ldZg4Tcy+oKrxLe6eATuu+dD2dBE0E//
+         2+kG3aQYZTUZ5faEhejqSqrc3fRaPgUDnCZlxh1LQ/VC9bZudck6MJ9zKRSvvJM/M3Jw
+         Mbgg==
+X-Gm-Message-State: ANhLgQ1H5ddSH4TBGy9S9yj0lnpxaB6BpQr/gIHRVwPVr+nbp2djF02R
+	LTIqYnSNsgGXXWfsJt+2lKPbKA==
+X-Received: by 2002:a65:68d9:: with SMTP id k25mr7943821pgt.89.1584024847321;
+        Thu, 12 Mar 2020 07:54:07 -0700 (PDT)
 Return-Path: <kgupta@es.iitr.ac.in>
 Received: from kaaira-HP-Pavilion-Notebook ([103.37.201.175])
-        by smtp.gmail.com with ESMTPSA id b25sm55731814pfo.38.2020.03.12.07.54.55
+        by smtp.gmail.com with ESMTPSA id s20sm9141741pfm.154.2020.03.12.07.54.04
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Mar 2020 07:54:57 -0700 (PDT)
+        Thu, 12 Mar 2020 07:54:06 -0700 (PDT)
 From: Kaaira Gupta <kgupta@es.iitr.ac.in>
 X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
-Date: Thu, 12 Mar 2020 20:24:50 +0530
+Date: Thu, 12 Mar 2020 20:23:59 +0530
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Kaaira Gupta <kgupta@es.iitr.ac.in>, Ian Abbott <abbotti@mev.co.uk>,
 	H Hartley Sweeten <hsweeten@visionengravers.com>,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 2/5] staging: comedi: check condition in one statement
-Message-ID: <20200312145450.GD30896@kaaira-HP-Pavilion-Notebook>
+Subject: Re: [PATCH 3/5] staging: comedi: drivers: add line after struct
+Message-ID: <20200312145359.GC30896@kaaira-HP-Pavilion-Notebook>
 References: <20200311184327.25338-1-kgupta@es.iitr.ac.in>
- <20200311184327.25338-3-kgupta@es.iitr.ac.in>
- <20200312081702.GC11746@kroah.com>
+ <20200311184327.25338-4-kgupta@es.iitr.ac.in>
+ <20200312081846.GF11746@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200312081702.GC11746@kroah.com>
+In-Reply-To: <20200312081846.GF11746@kroah.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Thu, Mar 12, 2020 at 09:17:02AM +0100, Greg Kroah-Hartman wrote:
-> On Thu, Mar 12, 2020 at 12:13:24AM +0530, Kaaira Gupta wrote:
-> > check two conditions in one `if` statement rather than two since both
-> > return same thing in file usbdux.c
+On Thu, Mar 12, 2020 at 09:18:46AM +0100, Greg Kroah-Hartman wrote:
+> On Thu, Mar 12, 2020 at 12:13:25AM +0530, Kaaira Gupta wrote:
+> > Add a blank line after struct declaration
 > > 
 > > Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
 > > ---
-> >  drivers/staging/comedi/drivers/usbdux.c | 4 +---
-> >  1 file changed, 1 insertion(+), 3 deletions(-)
+> >  drivers/staging/comedi/drivers/das08.c | 1 +
+> >  1 file changed, 1 insertion(+)
 > > 
-> > diff --git a/drivers/staging/comedi/drivers/usbdux.c b/drivers/staging/comedi/drivers/usbdux.c
-> > index 0350f303d557..8eff7f140560 100644
-> > --- a/drivers/staging/comedi/drivers/usbdux.c
-> > +++ b/drivers/staging/comedi/drivers/usbdux.c
-> > @@ -617,9 +617,7 @@ static int receive_dux_commands(struct comedi_device *dev, unsigned int command)
-> >  		ret = usb_bulk_msg(usb, usb_rcvbulkpipe(usb, 8),
-> >  				   devpriv->insn_buf, SIZEINSNBUF,
-> >  				   &nrec, BULK_TIMEOUT);
-> > -		if (ret < 0)
-> > -			return ret;
-> > -		if (le16_to_cpu(devpriv->insn_buf[0]) == command)
-> > +		if (ret < 0 || le16_to_cpu(devpriv->insn_buf[0]) == command)
-> >  			return ret;
+> > diff --git a/drivers/staging/comedi/drivers/das08.c b/drivers/staging/comedi/drivers/das08.c
+> > index 65e5f2e6c122..e6c1ff0e5beb 100644
+> > --- a/drivers/staging/comedi/drivers/das08.c
+> > +++ b/drivers/staging/comedi/drivers/das08.c
+> > @@ -141,6 +141,7 @@ static const struct comedi_lrange *const das08_ai_lranges[] = {
+> >  static const int das08_pgh_ai_gainlist[] = {
+> >  	8, 0, 10, 2, 12, 4, 14, 6, 1, 3, 5, 7
+> >  };
+> > +
 > 
-> The original is better, please leave it as-is.
+> You said _what_ you did in the changelog (and subject), but not _WHY_
+> you did it.
 
-OKay! 
-Thanks!
+I'll correct it. Thanks!
 
 > 
 > thanks,
