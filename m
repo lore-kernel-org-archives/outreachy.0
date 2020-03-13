@@ -1,111 +1,132 @@
 X-GM-THRID: 6802944332146933760
-X-Received: by 2002:a05:6808:907:: with SMTP id w7mr6179132oih.78.1584096937829;
-        Fri, 13 Mar 2020 03:55:37 -0700 (PDT)
+X-Received: by 2002:a67:ee81:: with SMTP id n1mr8614747vsp.184.1584096576661;
+        Fri, 13 Mar 2020 03:49:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:6082:: with SMTP id m2ls2680525otj.8.gmail; Fri, 13 Mar
- 2020 03:55:36 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsJCCY3ca6YhT0bFMNxS1sv2vi7ePnHNYWN7ahQ+ZTK5plewNFFiaUIp6c2wzNyWM0wxfSV
-X-Received: by 2002:a05:6830:1f54:: with SMTP id u20mr4057817oth.322.1584096936581;
-        Fri, 13 Mar 2020 03:55:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584096936; cv=none;
+Received: by 2002:a67:27c5:: with SMTP id n188ls1169351vsn.8.gmail; Fri, 13
+ Mar 2020 03:49:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vthv7zn7imPE5fFJASEH5rnkvzit0t9qviP1zjA4T1kA/tOgDBQw7MFCg1elwOa/xZzZm1x
+X-Received: by 2002:a67:3102:: with SMTP id x2mr8385407vsx.193.1584096575281;
+        Fri, 13 Mar 2020 03:49:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584096575; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tn8o33k2l9LUdxbZJHwkUDivd5gEglZeiCIyD356pu8wIcpdPyChwod4v30KY91cSE
-         pSkzyrgWK7RoQrUs7tj1hrBSaXnmLujEqaanzvSMld9bgRnPp83rW1tuJ3vhXQw+Lo0h
-         ejiJ14Tvkc+j+NzoS/IM3aBcgQT651Rpo61NUVCM3EBM1T5e+K5QfpZu9RHZpmDTufEC
-         DO8kespzoBB77WAXlWHqh09aBvf83mJ9lkur72hGW7APUohYXA4FJ+Jz4lLzQGkoxYAd
-         1Z/NcXldN+zL7RzIB5T1FlLls4KjNldskXPqevmrdsNTl5DY6t2ZkRfFNGIbttPHPGUK
-         DEFQ==
+        b=YAo2DfxIgPqnEBKnofevfKNajEGFu+1BJB5XGyaTW9vpypd+0kt1l+uDQyqp9UrAbW
+         cdAP8BbejzgVszXA1IB0qXgKhKq9nEEUfqYEAKqW8XRIB4SIOwbVx4sf3UpdKbdn0fSL
+         Q3lYB6c3DYZ9cCjz598lKmpSFpZ3BtcCfelSc3h1DMSy4U1IEbPxdwihC3bx74r2H69Q
+         gmuBJUb3B9TE/lxybdAXPOzKi5Mk26u3o/eScRBoKiZsZJOE7vFQwDa9cLC6tXrx3N7T
+         wzHlXTQmRi2Qci4SKQ6bTUttyrM+T20MgsHVaVA3EauZ63soaIhdgMzfpkDwSrtKZhUd
+         oxyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=CTUdE2f8E8NgC8/4KDMI6yvjJ94p2sQr5a2U0IEbmvw=;
-        b=oNcLFK0c1Nzrrj2o1TYMmct2/njJxSNoANwFDV82LcwgQWadmgeisrjIFVxw4CTKfR
-         hU1wKPR1RTPLZHKNoP9tGsU650VtoCtBUMB0lUBDrYgY8e9+sUij5RHG96RlwqNGD+6U
-         Ikbf4L39hxN9wz2eKyc8Ix/uNDialss/9S4AJSA3d3MBUVXGJEqeC1NGgVLpjCEBvSqH
-         4EKuSDvIo4Nv4IRTkSTeiR5D3PrcVWY2nfiLpAjHrfv6r9vnDhuzF/hwc8z49NiYRB7m
-         LqfbXc8FKSU+UdDRO4Te2SAsDDOq3rN5wtNI6GdRzgPCOIogeRFkrtsPFL+use1i+TG4
-         Nr5w==
+        h=message-id:date:subject:to:from:dkim-signature;
+        bh=o6afTbf7/yCeF+VeaZhhomT+KkYIZitsMbrfbHYx5jo=;
+        b=iasaCsIz+cE66w1h7F2tKGNrLh0USGcI4p+818GQJhZ3QarnhJlrEqajCvounPGPSI
+         EnD4oLHgIqB4RFMTPhZ/8k7pb+jp4f88wMhzmBAysVcAvQbg+H8PmVx0ytz8rEa5SvHB
+         rVJQRmSNU46U0+Id4++H3bBvcC9rrfpHlT+4FMJh2S1oEo7Mkult5Nqdc8ETCngTcEY3
+         9NiTbrOOvnE9yCKBeIKYUwJFc7nKa9s/tTMz6R1hKenYD61GZNGCazDrACaqOISAs/NY
+         QvTh1K7ZPqBXfnOGyemrrc0GljVaLBAzgtOWnMTXN/ZUYQRPzwJyGIvv9GyhudAq4nGo
+         3e9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=zLIUiQhE;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
-        by gmr-mx.google.com with ESMTPS id u22si671933otg.4.2020.03.13.03.55.36
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vbpA6qyC;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id s124si462581vka.1.2020.03.13.03.49.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2020 03:55:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 03:49:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=zLIUiQhE;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
-	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02DAqjep037961;
-	Fri, 13 Mar 2020 10:55:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=CTUdE2f8E8NgC8/4KDMI6yvjJ94p2sQr5a2U0IEbmvw=;
- b=zLIUiQhEyI19lyjn/b2E9lHuqHWqZOdrL/KbpHZLXtaSUDi0BqBpVCAW7xWClAa7k8S7
- Heq05K470y/1BswSW0DRVTKHg+LsiyDKr3x0YA1wTm07BfYD4+/83TUWeFpLjJsmQUhJ
- YlR6VtTCJZLL+pJ2+CtACu7FHAZ9pV948qSvEzNIt9UXc4DPUncmqCZ4EkqxBDPyrMHk
- pj3Blj4vO1+15xoVWVeR7fZlyItHv8aam/89NwVelIaP2sfVCJIbUkj15yQ0KlR+FAWs
- mpoDttPVvARx4RxoNz2Mlr5SoFZ5ghp1qL+nNbeeq0vVCcL7LpP9ltuJEEuNbhQw9cMg rQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by aserp2120.oracle.com with ESMTP id 2yqtaeu8du-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 13 Mar 2020 10:55:32 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02DAqFS1154577;
-	Fri, 13 Mar 2020 10:55:31 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by userp3030.oracle.com with ESMTP id 2yqtaccvny-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 13 Mar 2020 10:55:31 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02DAtTaB023409;
-	Fri, 13 Mar 2020 10:55:29 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Fri, 13 Mar 2020 03:55:28 -0700
-Date: Fri, 13 Mar 2020 13:55:23 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Shreeya Patel <shreeya.patel23498@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-        linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-        sbrivio@redhat.com, daniel.baluta@gmail.com,
-        nramas@linux.microsoft.com, hverkuil@xs4all.nl,
-        Larry.Finger@lwfinger.net
-Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: sdio_halinit:
- Remove unnecessary conditions
-Message-ID: <20200313105522.GU11561@kadam>
-References: <20200313104920.19974-1-shreeya.patel23498@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200313104920.19974-1-shreeya.patel23498@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 suspectscore=0
- malwarescore=0 bulkscore=0 adultscore=0 mlxscore=0 spamscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2003130059
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 impostorscore=0
- lowpriorityscore=0 bulkscore=0 priorityscore=1501 suspectscore=0
- mlxlogscore=999 mlxscore=0 adultscore=0 malwarescore=0 spamscore=0
- clxscore=1031 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2003130059
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vbpA6qyC;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x643.google.com with SMTP id w3so4073005plz.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 03:49:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:subject:date:message-id;
+        bh=o6afTbf7/yCeF+VeaZhhomT+KkYIZitsMbrfbHYx5jo=;
+        b=vbpA6qyCkQZysoUFRYL8Xxn2pnO4dRlSazfhuWfmQUOk9n6sko2frj+BH233MglTZb
+         76MOtY7REhMlznesQtdgjfFmpKRwaUVV8WfwRISpiZ5opVQaboLUU3gEb9pvqpcI6Iss
+         0wASXvaqSwh9PcouLcW3OCaniq4chLiNblYClT0UDpq3R7b+zTSjGyQvdQ06VZwZgDPf
+         tbXcKCtTmSvOUWIv0a6U9tMW49xwSAIVjFsDnAFiv9Ie+5nCAWpBNzpsgh44t1dQiihT
+         9xaQTakJCyH3KphdV7CB9fj4UIT5c2jQE5wgMbTPi+qWPmUnG2ka9bU1bXwL7AsjXxyB
+         lV9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:subject:date:message-id;
+        bh=o6afTbf7/yCeF+VeaZhhomT+KkYIZitsMbrfbHYx5jo=;
+        b=gE0DUvjRQ2Kba05vh60cdt8AGUBTPv8zlrGxayFrnPg0MHlqhT9h+PxzmK268Jpx/L
+         SCWAdoPtsd4r0qVVYd1jXooDkqV+VHDNaZMZsto+iWJIAFu0WbHfUpGYtTRIDjhGyRid
+         2MSM+qW6lf1EIkN1Esm2A7iW4hpy9ajm/jshRSpMEItGQtvZH5mXWjscOouE55WyyKXt
+         yjH9O0ttvO8ZtaWxgQ1StjuAnNz7fRvsw6Jo4lngm7UfcjKzT9j8MbTABBzBl1k099RR
+         xZwa453iTLOvMAgRgAu0GiXHUBA3hIsT7ilM8GVy5UO4o2cyAZbRyF2Ie59cJ7uIDQ+t
+         0O1w==
+X-Gm-Message-State: ANhLgQ1U7IgHkJ8Bf3Bz1pfFEIc9snioNsqJFyHxxIRRRzWw33t64ikG
+	sPhKJGzwaTkT7uXaFRcG/qA=
+X-Received: by 2002:a17:902:a408:: with SMTP id p8mr12893133plq.132.1584096574274;
+        Fri, 13 Mar 2020 03:49:34 -0700 (PDT)
+Return-Path: <shreeya.patel23498@gmail.com>
+Received: from localhost.localdomain ([2405:204:22f:d418:f8a5:7ca8:f99b:fa30])
+        by smtp.gmail.com with ESMTPSA id gx7sm11718756pjb.16.2020.03.13.03.49.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Mar 2020 03:49:33 -0700 (PDT)
+From: Shreeya Patel <shreeya.patel23498@gmail.com>
+To: gregkh@linuxfoundation.org,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com,
+	sbrivio@redhat.com,
+	daniel.baluta@gmail.com,
+	nramas@linux.microsoft.com,
+	hverkuil@xs4all.nl,
+	shreeya.patel23498@gmail.com,
+	Larry.Finger@lwfinger.net
+Subject: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: sdio_halinit: Remove unnecessary conditions
+Date: Fri, 13 Mar 2020 16:19:20 +0530
+Message-Id: <20200313104920.19974-1-shreeya.patel23498@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-Thanks!
+Remove if and else conditions since both are leading to the
+initialization of "valueDMATimeout" and "valueDMAPageCount" with
+the same value.
 
-You sent the same patch twice.  Next time put a note under the ---
-"Resending because I had a typo in Greg's email address".
+Found using coccinelle script.
 
-Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+---
 
-regards,
-dan carpenter
+Changes in v2
+  - Remove unnecessary comments.
+
+ drivers/staging/rtl8723bs/hal/sdio_halinit.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+index e813382e78a6..4894f7d9a1d4 100644
+--- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
++++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
+@@ -551,18 +551,8 @@ static void HalRxAggr8723BSdio(struct adapter *padapter)
+ 
+ 	pregistrypriv = &padapter->registrypriv;
+ 
+-	if (pregistrypriv->wifi_spec) {
+-		/*  2010.04.27 hpfan */
+-		/*  Adjust RxAggrTimeout to close to zero disable RxAggr, suggested by designer */
+-		/*  Timeout value is calculated by 34 / (2^n) */
+-		valueDMATimeout = 0x06;
+-		valueDMAPageCount = 0x06;
+-	} else {
+-		/*  20130530, Isaac@SD1 suggest 3 kinds of parameter */
+-		/*  TX/RX Balance */
+-		valueDMATimeout = 0x06;
+-		valueDMAPageCount = 0x06;
+-	}
++	valueDMATimeout = 0x06;
++	valueDMAPageCount = 0x06;
+ 
+ 	rtw_write8(padapter, REG_RXDMA_AGG_PG_TH + 1, valueDMATimeout);
+ 	rtw_write8(padapter, REG_RXDMA_AGG_PG_TH, valueDMAPageCount);
+-- 
+2.17.1
 
 
