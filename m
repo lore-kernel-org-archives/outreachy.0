@@ -1,101 +1,93 @@
 X-GM-THRID: 6803727344338993152
-X-Received: by 2002:a25:234f:: with SMTP id j76mr3348319ybj.502.1584406223979;
-        Mon, 16 Mar 2020 17:50:23 -0700 (PDT)
+X-Received: by 2002:a19:760c:: with SMTP id c12mr8930588lff.48.1584116216655;
+        Fri, 13 Mar 2020 09:16:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:d982:: with SMTP id q124ls1685879ybg.11.gmail; Mon, 16
- Mar 2020 17:50:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtjD2CLifXXrZPF2sujVmCT9r1MzRwuAhQffI8UrlMTt4WQkZ13iDbnuuqgX24H1uaqS8dJ
-X-Received: by 2002:a25:2b01:: with SMTP id r1mr3671952ybr.163.1584406222484;
-        Mon, 16 Mar 2020 17:50:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584406222; cv=none;
+Received: by 2002:a2e:8997:: with SMTP id c23ls636379lji.7.gmail; Fri, 13 Mar
+ 2020 09:16:55 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtcqQZaj8HVttvzy7HeUFYxK29H7oh2ydzoKEYiyBJYUxgJqA2AJtPOEBiNA9zSfZO/zAgf
+X-Received: by 2002:a2e:9008:: with SMTP id h8mr8668560ljg.217.1584116215225;
+        Fri, 13 Mar 2020 09:16:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584116215; cv=none;
         d=google.com; s=arc-20160816;
-        b=OumdS8RH2L7AXRRsrizXpNbZSEQM2vSwC/jUB6HU7NsYQ5M+dvJEdoOh4iLCpzNc/K
-         cFuzdb50OHM889MbVr9ElSGULF0r75q4BNsAkqnn0hb1kZiuMi0qmfxSe+56rFwKmhDo
-         FXrQo7u8QSXshfIbrrH1GiZF9xCFQ+cnelUQ9mPZTYNGfCsEQnE55mXrx2UMzLfRG71s
-         g26AvwiM4z28m4kNMljNDOUzBPNn6JexC5px598rZ1tzhNyHow/1BP5d1tevf0mQG3eQ
-         u9j46WFz88T5blqdA6hLXcdJIfeKMNMtfaBA/u9sF4DDx8qw3SrYpq4W2M1lEJkGL7rW
-         J3jA==
+        b=skt5t0ErBPTqDfUOuXRhNNRf1scS/L40iZCb00H6vuya4obj9N5JvTYpZ9fKwrvaII
+         5oFGCOHe3+e6pBLpWCFzcS+tZVJezkRD8FOQQ3NkNVyxZgF3XF+evswB37a7/IK73tTD
+         /zDxurMi9EArC81QgIodV5QDMyKcSALhdHz3KIzv4ZzYd3R53LOVMM4ASe/FHlnMSV1A
+         3Xyv208YoihNRaizTEc4Kh7baNcxX0mslvjTug0sG9t/75jtiJ4P8Z+HHzJe1n3AT/Be
+         /J/5A8hoZrdPXRNuNGYkSugFAGimm+oMK5pE7T/mmpKFvFQ2ZRp6B/lf9Jb9HU7Keb8f
+         FDtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=s0cbdn9hLtJJSRzE+HGEJPWUGqAkb+szuBdLY+9Z1U0=;
-        b=MJOMaVkCyiB0gEDOKQhCGjd0hf/V9UZNixt8Cf295DEPcTqEzSZmOpneSK+hOgqUVb
-         5CiCPT+UJ2EmR/WpZ5mIyLRH5JCFneQ75kNXYhZ80D4MFeR9K9wzWwg3Eo+057H40Y2u
-         QvhrGqa/PXAMhzvdKvdw7b8PDUHD7vZTGAeY71X5kW4//J57CYOSmA9BsKSFRnfz4Ioi
-         bXSrAtnCHsiv8185SrnhPiQtLcVgaBjQ0T5nNaJx6usL+OMO4VaVxOXloUKe7QGDLlGd
-         z8p4mket1FdtKg1ZQr9rntOxsAhIEcndoVHBDJ++hmA8dyQ1k7LZLPTua1oopscT8wpq
-         r+mQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date;
+        bh=1J4PeSx+krNY6jtVUAtEr5DivaT/AUceyABfwb6BiEE=;
+        b=qlTbOgynACnob3Q+LTljsbIPSoeoGopkbK8P2ZL2Vj2CQOyrbFpSrp/V7oy+Elnczt
+         0fpLZlTDPR8eA5/Z2+9zVHhVnQuy9zIN/G+kewi2dVt6PBLcoj4SFN/j29h0iiCfwAxF
+         WNqYmX8U4Hm8oBeYglD2ssiFIwR/H1H8oNyzO+7p8RiAA13N5zkUBcuBRJ6HZkK4/CaK
+         ZtISLJSn08kFihwzWf7xC/fyQ8vQYFxq3ANtHz+qE7Hpw447Mx435EmGIXfyCqVmqIiZ
+         RHKcEf46rjTQk8/NEceS4kZ1oaolyicW0uozpfySZ7uxRE/rKRng9TadT8vfIJw/cjCl
+         N+mA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D1AMQepp;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id x13si159708ybs.4.2020.03.16.17.50.22
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 17:50:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id e4si142129ljn.1.2020.03.13.09.16.54
+        for <outreachy-kernel@googlegroups.com>;
+        Fri, 13 Mar 2020 09:16:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D1AMQepp;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584406222;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=s0cbdn9hLtJJSRzE+HGEJPWUGqAkb+szuBdLY+9Z1U0=;
-	b=D1AMQeppd+gy/0us6ZIk0ibzee14ZSATkBAfm6113Vj1nLdTeQNXlQlk26bWxtH4Qs5tGS
-	RKwlh1KE78b4CYIxYwN7jqTnNi2vKTBYhpkh81FNEOkqD1sfg31uFf8Zzt3Cumgu5Lh3Vi
-	M4Js3uiaQ7l8Deqy9aoxAFCks8KTUXI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-47-9u9AfV1PPwm1IvMQm0lGow-1; Mon, 16 Mar 2020 20:50:18 -0400
-X-MC-Unique: 9u9AfV1PPwm1IvMQm0lGow-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A5FF1801E70;
-	Tue, 17 Mar 2020 00:50:16 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C38CA60C63;
-	Tue, 17 Mar 2020 00:50:14 +0000 (UTC)
-Date: Tue, 17 Mar 2020 01:50:08 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: R Veera Kumar <vkor@vkten.in>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Larry Finger
- <Larry.Finger@lwfinger.net>, Florian Schilhabel
- <florian.c.schilhabel@googlemail.com>, outreachy-kernel
- <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: Better Fix for
- long lines in Kconfig help
-Message-ID: <20200317015008.66b7d14c@elisabeth>
-In-Reply-To: <20200313161631.GA2376@tulip.local>
-References: <20200313161631.GA2376@tulip.local>
-Organization: Red Hat
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 27451 invoked from network); 13 Mar 2020 16:16:53 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.246.187.131)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 13 Mar 2020 16:16:53 -0000
+Date: Fri, 13 Mar 2020 21:46:45 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2] staging: rtl8712: Better Fix for long lines in Kconfig
+ help
+Message-ID: <20200313161631.GA2376@tulip.local>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Hi Veera,
+Fixes two long line in Kconfig help.
+Found using checkpatch.pl
 
-Note that who reads the commit title won't know in which way this is
-"better" than v1, because v1 isn't tracked by git. I think the "Better"
-part should be omitted in the title. Looks good to me otherwise, just
-one minor comment:
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+Changes in v2:
+ -Match Kconfig help style
+---
+ drivers/staging/rtl8712/Kconfig | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-On Fri, 13 Mar 2020 21:46:45 +0530
-R Veera Kumar <vkor@vkten.in> wrote:
-
-> Fixes two long line in Kconfig help.
-                 ^^^^ lines
-
+diff --git a/drivers/staging/rtl8712/Kconfig b/drivers/staging/rtl8712/Kconfig
+index b6dcda77db1f..31ff7cc6a7d2 100644
+--- a/drivers/staging/rtl8712/Kconfig
++++ b/drivers/staging/rtl8712/Kconfig
+@@ -6,13 +6,16 @@ config R8712U
+ 	select WEXT_PRIV
+ 	select FW_LOADER
+ 	help
+-	    This option adds the Realtek RTL8712 USB device such as the D-Link DWA-130.
++	    This option adds the Realtek RTL8712 USB device such as the
++	    D-Link DWA-130.
++
+ 	    If built as a module, it will be called r8712u.
+ 
+ config R8712_TX_AGGR
+ 	bool "Realtek RTL8712U Transmit Aggregation code"
+ 	depends on R8712U && BROKEN
+ 	help
+-	    This option provides transmit aggregation for the Realtek RTL8712 USB device.
++	    This option provides transmit aggregation for the Realtek 
++	    RTL8712 USB device.
+ 
+ 
 -- 
-Stefano
+2.20.1
 
 
