@@ -1,114 +1,97 @@
 X-GM-THRID: 6803716874412490752
-X-Received: by 2002:a6b:5c12:: with SMTP id z18mr12271121ioh.138.1584113786086;
-        Fri, 13 Mar 2020 08:36:26 -0700 (PDT)
+X-Received: by 2002:a67:f648:: with SMTP id u8mr9561929vso.50.1584113779510;
+        Fri, 13 Mar 2020 08:36:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:8616:: with SMTP id f22ls1752645iol.9.gmail; Fri, 13 Mar
- 2020 08:36:24 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsCsChL8OWI1jfzmex9HRniGn0IpDG5AGiIZde7rPWyZtfdQXJhw0IT8kJvChYo1U/WJgfO
-X-Received: by 2002:a5e:990f:: with SMTP id t15mr13095036ioj.153.1584113784721;
-        Fri, 13 Mar 2020 08:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584113784; cv=none;
+Received: by 2002:a1f:a989:: with SMTP id s131ls554576vke.4.gmail; Fri, 13 Mar
+ 2020 08:36:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvGo1mtMkwKcoWH2qv8EsPCDtmakfrq3XAXQ2fl7lNx4gSgACvbWBWbAyqUV/x8OSzjCICr
+X-Received: by 2002:a1f:6182:: with SMTP id v124mr9111504vkb.48.1584113777842;
+        Fri, 13 Mar 2020 08:36:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584113777; cv=none;
         d=google.com; s=arc-20160816;
-        b=A16KSszmOB7njVH+nRsZbz8MNHJ0s2QS1KC7ii9p3H6o4tPjRiTDPnJBpfLB44GXAv
-         uL1DOnVfFUOEXIS/u5B4eEcKDx15qvtQgDvvSP/QtFlHaBDIu14669F+Qm32VGWkYmUR
-         STaZXjlQ+jxmf+GvH+750OI3/u36odUK+J1kh8F7qsLEOb+POopX19Vv7YIJmpAv2xec
-         IvUi7b4SXgLNWNghl30gcXUls1ytMOEsSGGgjsH10ukpICGy2jIMtK3QMQXqLBnX/KHg
-         0ctzMdTrATbQ8wCk6P0uj1X8i/qhNDiqXqgFfCOojFBx2cAtiwbcuukRrLVfB/a66Oyr
-         JEeg==
+        b=kkIgWgaO8laBfy7arkqKb+WlfczYNPmscSRU3Xlk4YNs8PDeKFobJsljzcjolF2qLq
+         1DQ/pqE7HOEKKzWOjKxcba02YMm8tZkmKdrBD6PfBrNeuuThKS/c72mmQiCfKF4TeKbG
+         rCE2IB+nYEQ5rQhf8AyVLveuoweTNs/S4Bc/DDVkZcYimX38NJ0qblT/imirxRQkmof1
+         BgHSh6+CLI23pNKSJKQtmubc7W7/VJhnNN0d3fY5L7Xw+Z8U4Hzo2bZ4F/JsM8y4Ts0R
+         SWrU/YkmtKa0ENmJJszjTAxA1g4/o6zX5Z7dl6MRw1D8Hnf0JDNk+N3qHdZW7mGmjzQE
+         gEig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=nPI6xPNanytQOWTJH0/ia/MT84CeVaEiqB1xueU8ePo=;
-        b=FL7W0WB0U4tjOdQsR28LO8qjZr8yAh1RRzshFduePN/W7q3oBUl9qfl3XJgjIj3UUR
-         682xYnNxipqndkcia3nyiIQ6ZPmxSGYDzcu1mw8JYJQBuVJ0zAV9rneQ80W5QhukZYcQ
-         JjZr287zcVaG1w3s95mn+nnsx/CZGFscnWKHYWl7cJ+qOVFryOvk1c+GZAZNbBw17qB5
-         z3RCqGFrAK20I2CROOaIQs3VYDECO2aR9K/jzmdsTPTO+VFebafrJMeqPTTrCnv8ys8P
-         aR1VYBlhw0tDNjZaIIxO8rfTax841lF5fh1izNlVZzU0tqFix01s8CgjDQfcQGPvk9qa
-         AGwA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=g9BhPHoKB3v8z77jy/UurkswKK+hUcQTaASWVDGt+8M=;
+        b=IhgzBaqq76BH5JJ4jhPdYLqy4GcuuDnC+fuT4y8USoQ1GU+LVW4nbZ4WHcJhSvkcw/
+         pcJ2dMk/349eI6T90pqq5NOGC0Hlc1O95DIKvDCCc6W8O7v2w3WBiNo+zx4p+UWA9/rH
+         5v7cLUhk8wJaGFy1wl2P4/hsSHu3DOaeZUllvVBf56Z21AEeo8E9FHCHKvdo7tO6EaAf
+         IEZrFMw0MQOtlhPvlbop/f5ROzBbqnsqIiNUfLKOGXaoYi55V4AcoMjvmvkC6sB/hC55
+         jDw7iG7NZE7sIlHZc7Ni+a8WQRwA99Igf7xkHUPsQ0vsZ1NqEkMHZsuhQ6rMbJNwJ6K9
+         +Vow==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TYkWtC3n;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nghXUgTj;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id q6si381403ild.2.2020.03.13.08.36.24
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id 205si428451vkw.2.2020.03.13.08.36.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 08:36:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        Fri, 13 Mar 2020 08:36:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TYkWtC3n;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nghXUgTj;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id l36so4311004pjb.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 08:36:24 -0700 (PDT)
+Received: by mail-pj1-x1044.google.com with SMTP id mj6so4168771pjb.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 08:36:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :in-reply-to:references;
-        bh=nPI6xPNanytQOWTJH0/ia/MT84CeVaEiqB1xueU8ePo=;
-        b=TYkWtC3nzq4eefI7JBkOgH26r1660RdeRdr11IKiCZrNbUJtRjBOzBO8VGjIfO+85L
-         vKMgBYWIEC3Ued0MAx4Ie4Y/xDpeby5vxsK+Ej7vXp4LoG7mhQC2a7tPbE/bUEKXXJN7
-         tNcekNDKr+o18dF6oEdpps2zMlwHc/0nDqpKCKYXRswN7QltmjSSHJwq45BTkrhNEtBq
-         2sdCxy3KTnReQjoNUOOd1hvb8SXXK4+rVNpUlpefd1leT9xe2oUIXwVAuMeC5/6PPxxi
-         7lCNCkppFKG2aWnHop6erTPyt2UrsXrhxXWQAbSufaLhx40xcRxtXNSgPt8SI/pdnH1n
-         dX2g==
+        h=from:to:cc:subject:date:message-id;
+        bh=g9BhPHoKB3v8z77jy/UurkswKK+hUcQTaASWVDGt+8M=;
+        b=nghXUgTj64Yqj/zkxj4afDau5IXS3ENmNbEHIpaWgA2ZYNYnhbAX+swXeMlTtGWhOZ
+         JPv3TyzZMLW+7D1CFNNKYnC6D091YyZl887XJCDF6TNxD9e1Sh64YkJ/1SIniWjdFxqj
+         H/x9XvIyq/6fpOR8jd19zAv7vn5PtZ7erOgVz37Z8jnFef9MhQHvraBRIbxU6ReoH2my
+         vi3Ji9/mlMrGub6MCuoAOA4jS1/y9kq2gkP7nwcBQ1MTPAWfXrlb+iy2kQ70R3F0u+aP
+         ExYfAk0YFiygfmGTNcHClUgJRYo3og63SzcBWBJe+5cXeaWpBfAbRPvDtejR9DCjxHa7
+         lvKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references;
-        bh=nPI6xPNanytQOWTJH0/ia/MT84CeVaEiqB1xueU8ePo=;
-        b=OGy9qQTd3nzupSYuqBIhSu45/Ok94BJ3q+9dau6xhAZ89IC/c55tXW1EOkxhy1EVzM
-         7fxYSwKBazXOtFxyrwgYuh3fYOCx/ZRnn31yaoxa5njiqCPZ02bTa0N5f15aF3QLPt7n
-         j4eOrU/HhRob+FqUzxQK81aEfXe8ctuVBQF8DrYhD6aqI6Mfarz1ZvzhmGj0BNbKb5mf
-         urXFCVE0hrvSbSRJpwYnQCba2mtWjhu0okrVbtBV+mM1XZvM7wvpWGDR9VC9XfApC/Wt
-         7KIbO7YGL/jhOmnrRoW+aPgzwYgvPMhDsZyYzuOrqQwSELt9+RlrozR0gOY6o8jYt8z9
-         cRgQ==
-X-Gm-Message-State: ANhLgQ0vI1ivzxPJQZ80rv0WgVI7RH0HR4RuTXGCCdBaPtKCHxsrZN6x
-	yi0SQ0bkFAhJt9zvlBV8r4o=
-X-Received: by 2002:a17:902:561:: with SMTP id 88mr960618plf.78.1584113784194;
-        Fri, 13 Mar 2020 08:36:24 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=g9BhPHoKB3v8z77jy/UurkswKK+hUcQTaASWVDGt+8M=;
+        b=hSbPOLH8BLPh18I1iUYLwWXYRodxmeXAteSRPWqfYDGZHMSn+pZ+VGbCVHp0TpQvH/
+         cJP0AYw6wdrs415wRAV8uBRyfos5WpJr+CqZBPRL+AW/i/vllB37pKxsZlgtspn+dev5
+         goAlmZiplEisYpyYaZl2VTAmEjOGC5RAr975Gg+oCsf4qz61TomPcm+7CcwZhVSmbfDG
+         VKuYW4oDgCjkGDJjmWesE1M+AMgHkfZHiu0eWZUUUSfoNa4ytsV9N/1GVA6T5ys6CaDR
+         jGxk/90/PeFBZm/j98oBnT1C3WBiEeHOOfCqOcZjIagtD7uLz1F2oKySdiz6/RQ3vRtZ
+         MirA==
+X-Gm-Message-State: ANhLgQ3fJneW5Ppq+odWDvypnMHYEhlMpo/DQrN0OM/WL8I5D3tbaGuq
+	6TSuwnLgbHiS1yKAEfLjoTg=
+X-Received: by 2002:a17:90b:14c2:: with SMTP id jz2mr10214062pjb.152.1584113776613;
+        Fri, 13 Mar 2020 08:36:16 -0700 (PDT)
 Return-Path: <payalskshirsagar1234@gmail.com>
 Received: from payal-desktop ([157.33.225.150])
-        by smtp.gmail.com with ESMTPSA id n7sm962891pgm.28.2020.03.13.08.36.22
+        by smtp.gmail.com with ESMTPSA id x21sm7800356pfa.212.2020.03.13.08.36.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 08:36:23 -0700 (PDT)
+        Fri, 13 Mar 2020 08:36:15 -0700 (PDT)
 From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com
 Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Subject: [PATCH 1/3] staging: rtl8723bs: hal: hal_com.c: remove unneeded variable
-Date: Fri, 13 Mar 2020 21:06:08 +0530
-Message-Id: <8976787aaf5f74b4c903b0abadd5e2ee6492f89f.1584113084.git.payalskshirsagar1234@gmail.com>
+Subject: [PATCH 0/3] staging: rtl8723bs: remove unneeded local variables
+Date: Fri, 13 Mar 2020 21:06:07 +0530
+Message-Id: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
-References: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
-In-Reply-To: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
-References: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
 
-Remove unneeded local variable, cleanup suggested by coccinelle.
+Remove unneeded variables and their declarations from the files of
+staging/rtl8723bs directory.
 
-Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
----
- drivers/staging/rtl8723bs/hal/hal_com.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Payal Kshirsagar (3):
+  staging: rtl8723bs: hal: hal_com.c: remove unneeded variable
+  staging: rtl8723bs: core: rtw_io.c: remove unneeded variables
+  staging: rtl8723bs: core: rtw_pwrctrl.c: remove unneeded variable
 
-diff --git a/drivers/staging/rtl8723bs/hal/hal_com.c b/drivers/staging/rtl8723bs/hal/hal_com.c
-index 109bd85b0cd8..02676da5c166 100644
---- a/drivers/staging/rtl8723bs/hal/hal_com.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_com.c
-@@ -961,10 +961,7 @@ s32 c2h_evt_read_88xx(struct adapter *adapter, u8 *buf)
- 
- u8 rtw_get_mgntframe_raid(struct adapter *adapter, unsigned char network_type)
- {
--
--	u8 raid;
--	raid = (network_type & WIRELESS_11B) ? RATEID_IDX_B : RATEID_IDX_G;
--	return raid;
-+	return (network_type & WIRELESS_11B) ? RATEID_IDX_B : RATEID_IDX_G;
- }
- 
- void rtw_hal_update_sta_rate_mask(struct adapter *padapter, struct sta_info *psta)
+ drivers/staging/rtl8723bs/core/rtw_io.c      | 9 ++-------
+ drivers/staging/rtl8723bs/core/rtw_pwrctrl.c | 7 +------
+ drivers/staging/rtl8723bs/hal/hal_com.c      | 5 +----
+ 3 files changed, 4 insertions(+), 17 deletions(-)
+
 -- 
 2.17.1
 
