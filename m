@@ -1,116 +1,123 @@
 X-GM-THRID: 6803763855931473920
-X-Received: by 2002:a67:5ec6:: with SMTP id s189mr2117283vsb.56.1584407463294;
-        Mon, 16 Mar 2020 18:11:03 -0700 (PDT)
+X-Received: by 2002:a17:90a:ec0f:: with SMTP id l15mr11650953pjy.191.1584124717230;
+        Fri, 13 Mar 2020 11:38:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:a617:: with SMTP id p23ls1067674vke.10.gmail; Mon, 16
- Mar 2020 18:11:02 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtd/idq0ZNIKMmAeuZaeooYzJ8SKHxea7Mmgt7yZkkobvZ7lvS5TnFK0CQF7g7L4nLhCmdp
-X-Received: by 2002:a1f:2c58:: with SMTP id s85mr2042717vks.93.1584407461986;
-        Mon, 16 Mar 2020 18:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584407461; cv=none;
+Received: by 2002:a62:ab0b:: with SMTP id p11ls4311580pff.0.gmail; Fri, 13 Mar
+ 2020 11:38:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vviYEwIv7nEpEUGOPAfP0Q1hAFTGr7j6IxL8kGI/5mWxuOWPISsZQlcsQ7Nj68ksAHtrGqf
+X-Received: by 2002:aa7:9471:: with SMTP id t17mr12777126pfq.272.1584124715767;
+        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584124715; cv=none;
         d=google.com; s=arc-20160816;
-        b=EgXcYEm2S/Xkf+cBkiI5BDsNZBEgwTCxlea2x3qEPLWLuTFUE6J790ebIUEbh9dr9H
-         Q+VDK4qQpUAptVGtb9xLPkE/7JvvrF8pp21uT/fF0hH/88jnEdo3LGmEAobs5D+LCppM
-         Od3wwrmGDMB39PP7EgmPbF4R0lQumoLOX0VCS90Q7iCGm9HB4iaoHHKjwX1lDCYb1qxl
-         OAWYX3DKx85hoiG3+PTCQDAD85fs3x01Wvj1yfVOBCf5iwhQE/S9Ce910tVd7LqHLypj
-         sYB5yUJPFELfhEyHWHWfuinE2gHEyu7VHPGHzTv27NAspVto/3MNsXimXkY8yxcYwCKE
-         gpMQ==
+        b=z7vAe4GmFm8gcqHjzv9BwFd9r8txUIff/2g+ri9ASp6olVIRCxtIXJtR+oybRUUaZa
+         1IT1qpBPnPnIzHn+YpsfYgOxg0+ZDFhYx4v3EWt4AwmQKGmJ8ewcaM3y85nN4jHseB+2
+         Ve3Tux1536hp6nnYewDgoP+2c3aUHbfnqvxX8RzsnFMrX+rOf7kJ2jjXCc3YiIOkzCw5
+         iaxmPbV2fqEoGuSv+LHDq5t8T8hBokVhZcdFd2Q5CRCZQN7nmLaZafLFIqK73mivfGif
+         L4bvCJmZxOwj43czogUe4vChPy78workkK9jZ3MiIpEtyGbNFB7KtidadGPTVhvwCw3c
+         12ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=PcnJS3vd4Pt2cLYsJUWuzFJE+sh6pHnt8KfP/iFfQNs=;
-        b=hWrAmLlUBzsL7kIuYW5EfKahGIyoCYgSDlU0jqmHsEW8sVRBk/SBS2gNvgZl2IMepG
-         BWqSdojEVLyS3oltixKZCv8Oi36nGDQJ8yc9K+CiiWUce9DjDsqDSMs5vDbdu8CwEj7d
-         D0UFnQe4eur2N8I9+hw/aIEXDBL3EC+thvaF//I1ZiNHMk5G4jlp0kfqK0pfCFVwjXFY
-         z7zCSdBUsoqceJeiHwTrBW7LwpR+YcSwbiGyAPXVrzjpt7ximwuKRgm2WdauUD0rnGkm
-         8TKCjn4EDtjVJNOWeQk2/DpuKj7VGIQWjdnVGj/5ACJ8pSYIkIh8uXl5iGyOUP/wrOWb
-         mqAw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=4AIxeUfOD1SctCpTFMClgUYEaOaT4few9FShijzheEE=;
+        b=i2Si35ipTAIMfbwNQuOMEs2SFD9YlJDH8lkPHsgomly7C7IhevJJ+6mH4kLFZxJWP/
+         VHt9EODX/boKLFI8763AwPTTUfbRzVyJ6ebBIivG/svbjYpxnPp1xFRl7QBD5PUstOMm
+         T47Tl9CjKs3WjdcBDiwpNg07nK5QGooLqDaEXZ63u9EsN9dEoqh/JIDYtySLHj2gPWci
+         yd5JnLuIPwTlImP/wVWxx9UfzkhO6i9d2YV7vuCaAy67L1u3c26RiCvek7eDxeA6Xao7
+         MymoRZ9MTgi/5MHq6u1zHwyIipEfGfsz6/bme1qZTkSpg2+xb7XatKax/Pd1nrAF837m
+         pxcg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=atr8GWYc;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id s124si70744vka.1.2020.03.16.18.11.01
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=piFb85RB;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id 59si390366ple.2.2020.03.13.11.38.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 18:11:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=atr8GWYc;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584407461;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PcnJS3vd4Pt2cLYsJUWuzFJE+sh6pHnt8KfP/iFfQNs=;
-	b=atr8GWYcIEAYDpgSgYFWQ8avaRhaLluj1BmJrMbSAxzbpBrwiHX421TMgHrctnGSzIyb9h
-	QhIN6/8ZP2gs1VRAFgxCMWVaubBS5WCb3SXSCzxEiXuCe7YKcASnMUGfPy4dEJ07+L61It
-	ZDSaPwPZ0pLdCcF1IXsxZt9n7edAjAw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-430-sE_yAM-SNY-9YfCyEXpkiQ-1; Mon, 16 Mar 2020 21:10:59 -0400
-X-MC-Unique: sE_yAM-SNY-9YfCyEXpkiQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8C795801F8E;
-	Tue, 17 Mar 2020 01:10:45 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6AA9560BFB;
-	Tue, 17 Mar 2020 01:10:42 +0000 (UTC)
-Date: Tue, 17 Mar 2020 02:10:36 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
- daniel.baluta@gmail.com, mchehab@kernel.org, sakari.ailus@linux.intel.com
-Subject: Re: [Outreachy kernel] [PATCH] media: staging/intel-ipu3: Reformat
- pointer definition
-Message-ID: <20200317021036.7fe16fe4@elisabeth>
-In-Reply-To: <20200313183827.GA20795@deeUbuntu>
-References: <20200313183827.GA20795@deeUbuntu>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=piFb85RB;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1044.google.com with SMTP id d8so4786614pje.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=4AIxeUfOD1SctCpTFMClgUYEaOaT4few9FShijzheEE=;
+        b=piFb85RBN92hq5/YL0wp0MBrt+5J5KPorgM1JWqnvqrBLaRAxyi8+lOHWqtBSMW29S
+         D0agkQp3u954Za0msMquSFgQrq80BRDiOZWMP1PNChHT7XKNZsWLwElMOSfDU8lXlSRU
+         wct/J0JEIG+/yAo0a302SFVsq9X9m3t+wgDqa8C4CY5Kjh6Y2Q/BGjmafvlpb3m72REI
+         o1Q1FuOsIJ1ah2dzEITlowOtWdmj9Xyx34T9H+RplY9yxIycORK3W4S5MTZu3hEDyHU0
+         RivK2hzoQk1cROxmYA+rMdKy6j+1cioeGJXIReABv35MUD9BSbmKU6Pn3N7kpr3ddfDR
+         PqlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=4AIxeUfOD1SctCpTFMClgUYEaOaT4few9FShijzheEE=;
+        b=WuyzAD+fUrfPJZ6jXFoEqLckgBsiEuhebvBvQRG0XvveVYNwLX/CZkxq+iNTV+Hdi0
+         nJ8mUWLoJ71nFg0CBs/o4IjnylY5ZCXIxOudwhHz16ZblfgcEauHcR2t+Vgma2IO3UPA
+         ExfUQURT0rEnsNYi391dIgL/vCpPPB1kHghRH8Xo5B7mgBrU7H62PRD9oaI7oqbb1dJn
+         X1p0ibyNxohAOdPeptBITHOqLreT3eya6T1gPOkE0cujYPLHp33kVLvyFYnpcl7AIbM2
+         /np4wjsznpWEnJVZKrwW425iXRP36F4kBwULwsvomc/3NCe5q58pY8PmNf+UmBm2/7ti
+         oavw==
+X-Gm-Message-State: ANhLgQ2Eg0NnonGa3EUnuzWbBhnKQPOTcj7hRZxw0ZTxLZ6lPq3SPaba
+	B39Bgbi0r20b8daJVm2x8BRfx2aq
+X-Received: by 2002:a17:902:9a42:: with SMTP id x2mr15244719plv.194.1584124715383;
+        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.228.147.139])
+        by smtp.gmail.com with ESMTPSA id h132sm54846668pfe.118.2020.03.13.11.38.33
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Mar 2020 11:38:35 -0700 (PDT)
+Date: Sat, 14 Mar 2020 00:08:30 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org, daniel.baluta@gmail.com, mchehab@kernel.org,
+	sakari.ailus@linux.intel.com
+Subject: [PATCH] media: staging/intel-ipu3: Reformat pointer definition
+Message-ID: <20200313183827.GA20795@deeUbuntu>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sat, 14 Mar 2020 00:08:30 +0530
-Deepak R Varma <mh12gx2825@gmail.com> wrote:
+Reformat pointer definition to make it more readable as per the coding
+standards. Problem detected by checkpatch.
 
-> Reformat pointer definition to make it more readable as per the coding
-> standards. Problem detected by checkpatch.
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/media/ipu3/ipu3-v4l2.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-What you're actually changing here is the assignment or initialisation,
-not the definition.
-
-Can you please re-send this with adjusted description and title? The
-rest looks good to me, except for the unrelated change:
-
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/staging/media/ipu3/ipu3-v4l2.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c b/drivers/staging/media/ipu3/ipu3-v4l2.c
-> index 569e27b824c8..52826fad6f42 100644
-> --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
-> +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
-> @@ -485,7 +485,6 @@ static int imgu_vb2_start_streaming(struct vb2_queue *vq, unsigned int count)
->  	if (r < 0)
->  		goto fail_return_bufs;
->  
-> -
-
-here.
-
+diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c b/drivers/staging/media/ipu3/ipu3-v4l2.c
+index 569e27b824c8..52826fad6f42 100644
+--- a/drivers/staging/media/ipu3/ipu3-v4l2.c
++++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
+@@ -485,7 +485,6 @@ static int imgu_vb2_start_streaming(struct vb2_queue *vq, unsigned int count)
+ 	if (r < 0)
+ 		goto fail_return_bufs;
+ 
+-
+ 	if (!imgu_all_nodes_streaming(imgu, node))
+ 		return 0;
+ 
+@@ -1013,8 +1012,9 @@ static const struct v4l2_ioctl_ops imgu_v4l2_meta_ioctl_ops = {
+ 
+ static int imgu_sd_s_ctrl(struct v4l2_ctrl *ctrl)
+ {
+-	struct imgu_v4l2_subdev *imgu_sd =
+-		container_of(ctrl->handler, struct imgu_v4l2_subdev, ctrl_handler);
++	struct imgu_v4l2_subdev *imgu_sd = container_of(ctrl->handler,
++							struct imgu_v4l2_subdev,
++							ctrl_handler);
+ 	struct imgu_device *imgu = v4l2_get_subdevdata(&imgu_sd->subdev);
+ 	struct device *dev = &imgu->pci_dev->dev;
+ 
 -- 
-Stefano
+2.17.1
 
 
