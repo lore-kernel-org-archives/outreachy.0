@@ -1,99 +1,105 @@
-X-GM-THRID: 6391320776651309056
-X-Received: by 10.99.170.11 with SMTP id e11mr4055158pgf.54.1488095330367;
-        Sat, 25 Feb 2017 23:48:50 -0800 (PST)
+X-GM-THRID: 6802944332146933760
+X-Received: by 2002:a17:902:70c8:: with SMTP id l8mr12341716plt.89.1584096982550;
+        Fri, 13 Mar 2020 03:56:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.39.17 with SMTP id g17ls1507517ita.21.canary-gmail; Sat, 25
- Feb 2017 23:48:49 -0800 (PST)
-X-Received: by 10.99.154.9 with SMTP id o9mr4231919pge.6.1488095329637;
-        Sat, 25 Feb 2017 23:48:49 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id c123si2244390pfa.4.2017.02.25.23.48.49
+Received: by 2002:a17:902:8493:: with SMTP id c19ls4274288plo.8.gmail; Fri, 13
+ Mar 2020 03:56:21 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtA1arkrIR8LVJLV7TTjaLAKSrkkSmitz9jzSI/asspLFQPIDgFqs5Bbgsrz+EcDhXcP9uH
+X-Received: by 2002:a17:90a:db49:: with SMTP id u9mr9104881pjx.175.1584096981043;
+        Fri, 13 Mar 2020 03:56:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584096981; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ysC2P57sIsgAmHSL0yauFRxgH8tskDoovVYEPdDnxBZxoRYQxYf2TkYlxp+Wg2xfuC
+         KoNuRwyGunjfysmiXc0vxgJcl9FlR1+sf9xp4o4Vgbm7EJRmw5+zUaLD6E6t23oetOcS
+         q348Eg7HBrLSqEypiMOubYl5gYGl4cYGrH13Dg7D+mWBZQIdMZf+b0sRAPVC4yH/LNwE
+         nxDc1UIXnTEakSrzBPIThcTKcNRoHbzQ45S1m5ynmwNWXx+OFU2cdDt0DAYjRAorsQFy
+         PXF0m2fsaUJb7UhaklQgxtsJcu69b3IUnMPSw9HcdonfiIxuRY02XilhDEdDbLyzXlum
+         5HOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=D1c/QCAsr3vu+wjm35cURmeCWnmdtLIQ7tyr7FWslxs=;
+        b=YPPqTXVMZpRCqJuLy9Gi4F5R7Dcgk/yGPhluhf/EbpdT4+zhWoAYLpH9bZrCqSBjvJ
+         cFHzqLABjeiKuAgC7bkO9/1Mp05mFFTOzLZQVD+eoQX5T/suxsxG5a/qKvZ7Z/Nu3meI
+         wlILGB/FhXtNAkSh38M6qOwwpyhI68IJhrxO7Y2BP8a9qScJ9m8DtRqpWo56amXtLBB2
+         WxAhrPpQpz/puPlDYp9u9xopD2sqyrZifSxchrLpPAg1msHQse0K8qsyBPTzO1JbcrQ5
+         my9l0Gm5q4dD3xX1LVKln9FYyO9TVqBnmnycQYNdjWtPoS9+ic9WXwPf685QaBiT0xco
+         U/Hg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=ZyDQ2BgP;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id ng10si155313pjb.2.2020.03.13.03.56.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Feb 2017 23:48:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        Fri, 13 Mar 2020 03:56:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id s67so8928645pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 23:48:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=x9IN2aE9YHH2t9AGK4/KF/tE/cKeXI++obc7Pautomo=;
-        b=llMq8fV23noQH2kz2tOYL18pESH7B0QsQrnzyt5bZkssifwBg1wpRwqpIVi42iXiED
-         1zpN49TPHN2TlGo+oiayYmkslEY8jhbxhEy01Ig+iKoHzOypmAWdQZy1V/2kPq9mKiXo
-         Q6aCyPdc39p4lsI6LSd9OwuTGL7UCVKpBZfTcWXmhhNxtWOUk9UBN0fkjHrlxQi7gsHR
-         9gsFVvI7B4MVId+9slw1WN3OCgS/ok4iaW/LBNLKayCH4ytXWrtqmz5n4poIx+ElZRfH
-         89SpSVqVYZskhZ9sg7MfGOgWOETP7JjkzHgWdJilhQOvEE158X9jKtQDFHiJld3Xt4hL
-         h7qQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=x9IN2aE9YHH2t9AGK4/KF/tE/cKeXI++obc7Pautomo=;
-        b=cdoqjOxlthB0jms9BzE+rtHE5OY2+o2shXQ7OXFJhri9tLrBIdLa8bVbgQemMIE/xx
-         UWb2mbUGX0RPqTaWns04wSw+uJDjIDcErxPht51ibXr5u9W5Vu+wKCUp8lmMltpwTgma
-         Wc9OhhojVnmK1fb+9j+GxqoTVUDUI9ezL6oPvimsKPqWFwUGQ4zboC7D7+wtHjx720sX
-         x1PqK/mXlqs4ZDsSGdNR/xTL9QSL3rFkcuGuziMRtUEUvp/vQcMDzDJ7/at+zye8gOs1
-         WSFdsmOvBSvnQy4tIRxSUHL4YFpRf/qrTWJxby0ZdzU7VrXOIV4474eQJdJVMcmQ45bj
-         fiKA==
-X-Gm-Message-State: AMke39mvMuMXhJ7D1y8gry31vlg5zAbFbHeBeTLfItK6lbBQhT23cTLCYhYaZHLXvyUZKA==
-X-Received: by 10.98.21.71 with SMTP id 68mr13650428pfv.16.1488095329470;
-        Sat, 25 Feb 2017 23:48:49 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.144.60])
-        by smtp.gmail.com with ESMTPSA id g28sm8091290pgn.67.2017.02.25.23.48.48
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Feb 2017 23:48:48 -0800 (PST)
-Message-ID: <58b28860.5c37630a.52b6.2c1f@mx.google.com>
-X-Google-Original-Message-ID: <20170226074845.GA3815@<rvarsha016@gmail.com>>
-Date: Sun, 26 Feb 2017 13:18:46 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: sm750fb: Remove unnecessary braces.
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=ZyDQ2BgP;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02DAqUSl037864;
+	Fri, 13 Mar 2020 10:56:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=D1c/QCAsr3vu+wjm35cURmeCWnmdtLIQ7tyr7FWslxs=;
+ b=ZyDQ2BgPBJgcHYVbc8S22FSFGXSI/fr7dKHRloYnBINQSchaLZLX2RAad+4ooqYvQ1AW
+ p478gKt8ymGqmWIFEstVKaTGbSU3Jvywtrz5MjsLR4MimLEzqmQ1jHbXdchIfVzBYpP8
+ O45/cGfS9b68tewBq28XRdcxAiqiw5LrvqtNffzGp3tp2oxRf6ZRL1/gMl8eIz9LYBGN
+ T4VyxIDTAN09EYgue8jxow2kcnZ7AbzPOEXf4GMIjYQ4tKZL1n7HeMBIRE1TQhgd8zWY
+ uqwZXr+pqRUywiVlpMnsTfR4DZ/9ira76mEU6ER0l61mrXDtvCdaAB/iOTCuiKr4JCDD zA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+	by aserp2120.oracle.com with ESMTP id 2yqtaeu8hb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 13 Mar 2020 10:56:18 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+	by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02DAqBZc067312;
+	Fri, 13 Mar 2020 10:56:17 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by userp3020.oracle.com with ESMTP id 2yqtaavx15-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 13 Mar 2020 10:56:17 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02DAuGKn005674;
+	Fri, 13 Mar 2020 10:56:16 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Fri, 13 Mar 2020 03:56:15 -0700
+Date: Fri, 13 Mar 2020 13:56:10 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+        outreachy-kernel@googlegroups.com, sbrivio@redhat.com,
+        daniel.baluta@gmail.com, nramas@linux.microsoft.com,
+        hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: sdio_halinit:
+ Remove unnecessary conditions
+Message-ID: <20200313105610.GV11561@kadam>
+References: <20200313104640.19787-1-shreeya.patel23498@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <20200313104640.19787-1-shreeya.patel23498@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 suspectscore=0 adultscore=0
+ mlxlogscore=996 bulkscore=0 phishscore=0 spamscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003130059
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 impostorscore=0
+ lowpriorityscore=0 bulkscore=0 priorityscore=1501 suspectscore=0
+ mlxlogscore=999 mlxscore=0 adultscore=0 malwarescore=0 spamscore=0
+ clxscore=1031 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003130059
 
-Removed braces which are not required and the trailing spaces caused by
-removal of braces.
+Ignore this one.  There was a typo in Greg's email address.
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/sm750fb/sm750_accel.c | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/staging/sm750fb/sm750_accel.c b/drivers/staging/sm750fb/sm750_accel.c
-index 57ae743..9548863 100644
---- a/drivers/staging/sm750fb/sm750_accel.c
-+++ b/drivers/staging/sm750fb/sm750_accel.c
-@@ -259,8 +259,6 @@ unsigned int rop2)   /* ROP value */
- 	if (accel->de_wait() != 0)
- 		return -1;
- 
--	{
--
- 	write_dpr(accel, DE_SOURCE,
- 		  ((sx << DE_SOURCE_X_K1_SHIFT) & DE_SOURCE_X_K1_MASK) |
- 		  (sy & DE_SOURCE_Y_K2_MASK)); /* dpr0 */
-@@ -276,8 +274,6 @@ unsigned int rop2)   /* ROP value */
- 		DE_CONTROL_COMMAND_BITBLT | DE_CONTROL_STATUS;
- 	write_dpr(accel, DE_CONTROL, de_ctrl); /* dpr0c */
- 
--	}
--
- 	return 0;
- }
- 
--- 
-2.9.3
+regards,
+dan carpenter
 
 
