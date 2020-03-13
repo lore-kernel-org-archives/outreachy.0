@@ -1,127 +1,129 @@
 X-GM-THRID: 6803797198848917504
-X-Received: by 2002:a0c:9104:: with SMTP id q4mr6045781qvq.61.1584136482856;
-        Fri, 13 Mar 2020 14:54:42 -0700 (PDT)
+X-Received: by 2002:a92:d842:: with SMTP id h2mr14391608ilq.34.1584136467789;
+        Fri, 13 Mar 2020 14:54:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:a784:: with SMTP id q126ls5630115qke.11.gmail; Fri, 13
- Mar 2020 14:54:41 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvL/WBktqaUqnDk0Gk/6vIUPX3LhR+fuoxKA7HZPaL8hn5REZ2qLME85y2D20tRE+ihWtKG
-X-Received: by 2002:a37:66cf:: with SMTP id a198mr15469426qkc.203.1584136481643;
-        Fri, 13 Mar 2020 14:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584136481; cv=none;
+Received: by 2002:a92:cf0f:: with SMTP id c15ls3123669ilo.2.gmail; Fri, 13 Mar
+ 2020 14:54:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtE0XH0kxX+rVRG4dDnyej6dRs6bMq/7v+6hw47RWWFDApZahq0xA9ncGZU35Tn4+/vtWIM
+X-Received: by 2002:a92:c50e:: with SMTP id r14mr16159702ilg.52.1584136466515;
+        Fri, 13 Mar 2020 14:54:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584136466; cv=none;
         d=google.com; s=arc-20160816;
-        b=SWhEGmebyDCyTIHPuYR2l7ytfAOpssJaM24M04A2r0llvu4PX9kG9pmI8BWzU2rUOh
-         HF6m9vB5bp0Fb5i6lbyxb8YrpqtGnJqmbImmTzgnJYH6VGfLbJ9YylayLmcqMykN7H+g
-         JhJchp85pChY+UFFUZaxHnDGSnrqb8LFLiBKXqzY4W7UJBj1c2P3xEG3Ra/TiE3/Pp+4
-         tpYsi+n7oOnYlIYf/ifiLZtjzaFzmK5x3NwmJR1miX9073vdvUfXCMhf8xnWuLaX0Fyh
-         CtIU0qZztwu7m+XdP2Zza/TmQf3hobi2So27ioxjNd8U8TFkPaSC/AKXA7JVCO2RQ86S
-         Jv0Q==
+        b=sd8mJMr3C16xWgQGI/gHWYdOgEkt4vY8td8+yakQ2hGny41d6JMAMiqDzWLDzGr+XX
+         cMab6Nun8i+uxARqlFG7mbCdvx+WFlgG+bC1ViKmZvSxGFnjdFKXDUugyyfIVdbdswMJ
+         0QSJlpW2F/zV7vUvRY6CyT8/TYN3n67N7+fCJ1SuoI7Vz0aeBaa8SwX0UiKGKG8bRdPz
+         7SVE4WgqjgiY0uChb/uX1arwlsAqs1pd9Q++3iCPp+lrfKhWCh96vhM0e5J2LR7UeCFn
+         o72uSqkhBQZBiHdX/ka1EKDWajhFvk7iGHr0TkvNa7faVdi1rhiTUrQlNSc04W9JpOjJ
+         RRPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=cXP5DdQCpxUnXbLWHin/s+XVDxOSlaFnTt40+Upwp9k=;
-        b=n5pXIZgeIQ8GcBUGSIEokskKqcKfpRBfBTO2PNMJZHp5Obg1mplUoes2O+l/EBv3lG
-         Tnqz1Wu9iLuyKTtCEQKO4NoPurtl6h2XTEFfTvVwc9Q+HkFF9kfaKcDIdyqOI/WuDNRo
-         +EMzf6gGJxuT6ImEvDYohEf+41Q7GKuJI9ubE+HoA4dbqCgYzzY7nZkOiVjsbHQFQRC3
-         stosfsxgfisJq5vGvZYqHGv8lplhh7O+ExnED38gbOLv7euO1oCCJUMD02UxwRFpFbuF
-         5QL9kxAWUeYDh4lLkg7AA7j4BjRieYy8LUa68HveQvw/6Q4e9sGFUe+iGwhV4YeWSBkX
-         7ifA==
+        bh=LWqp8lCL1uffHil6B2ZXNucYg5cBJNbMrdKGr/WNt3c=;
+        b=q2qgajVC0bTpusnicdysrBZ75SYuTqJ8w12ap6COUQyfw57VYppUJfeSqLv+Tde7Ch
+         no6PU3X/FyOg33yQKiBZEV/8xCgSHDRd6oWJNZu5ivBWtYAQXzlyulwkFTSX4AYRZJUO
+         /uUSybHrbpwcbOYFIOGt78IROgxYDEm8dxlybY+nBq+q9rJyIGcyivsRW8UBUeN8bbCN
+         PNIsObo5HAoip4S3gRs0k+bnQ2MH+s8WUHrVJiAUF8fWFQhpecv92p8FHHDJbkg/cxBU
+         tzCBFadS1JWll5Ys/8RD5L6lwT6Ubjfso8e1xpjpPB9dDjgkia52thdZrsfQfmOiEUGm
+         N7tw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b="wrF08/za";
-       spf=neutral (google.com: 2607:f8b0:4864:20::644 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=SAUQfuzq;
+       spf=neutral (google.com: 2607:f8b0:4864:20::444 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
 Return-Path: <kgupta@es.iitr.ac.in>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id c6si695442qko.3.2020.03.13.14.54.40
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id v13si448195ilg.4.2020.03.13.14.54.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 14:54:40 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::644 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::644;
+        Fri, 13 Mar 2020 14:54:25 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::444 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b="wrF08/za";
-       spf=neutral (google.com: 2607:f8b0:4864:20::644 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=SAUQfuzq;
+       spf=neutral (google.com: 2607:f8b0:4864:20::444 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
-Received: by mail-pl1-x644.google.com with SMTP id j20so4914163pll.6
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 14:54:40 -0700 (PDT)
+Received: by mail-pf1-x444.google.com with SMTP id l184so6060847pfl.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 14:54:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=cXP5DdQCpxUnXbLWHin/s+XVDxOSlaFnTt40+Upwp9k=;
-        b=wrF08/zafhucqi7I0w7Y8zH21ZME3VFB/Pc4qcmu7vrrH45GsTiSWwjoR2yd0ZB0KQ
-         tqIGX1Po1oES+b0uj7qif9LqDsC2pkIlHYdn4Gg9Jx5cPg/WxlATLL8E7sIb0hG7/UNq
-         pGAuDXIzqU1UQJPxV3PFY31dMr7MYLJEfW861inQEVmk7aFSEnOSiK9vp3J9sNrhhgHs
-         2amiR6wJxaFEP8IgFNCXUozHsZCIheioxo/f/F2six6hf8AeKDeIe8tMDy4OJx/iiN2A
-         k04LeygzUeELl7iU7BeyY6FfHvY13zjsCY08F+6M+3QF+JYDrmh7UCnwBdyXY41qDgS4
-         HPjw==
+        bh=LWqp8lCL1uffHil6B2ZXNucYg5cBJNbMrdKGr/WNt3c=;
+        b=SAUQfuzqPvSSdh0R/frszSPpblV/Ynn24e/2jzeoohnv7MLSpYf5GdGtsxthAYzVK5
+         +mxdXGEtjTIoQw3wTGWAfBBLEXQg0G4x3/ncjGJ9D8iZLeCymgmNhXmWggWMKKkLSr9+
+         7zgXcVP4jyMEmHr4U98GL5wkw+Xp5lU+4mmvbAIsE74ZsMCUE+Tusiinm2di1pnY2u7n
+         9cNDvUSFCFMp7L+8X5krxg4D0ZaLnM05mV8BFRPpfQS64xYSYKR2ryDna2Wvmxm2Smrl
+         rKzEI47V080JBRbxsIDZBIpI40d3WLR2erROTywPlyhWBgj4d7vzkNh2xDNaZF8pZFNT
+         xgGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=cXP5DdQCpxUnXbLWHin/s+XVDxOSlaFnTt40+Upwp9k=;
-        b=ndaWYuGjIE4+l9xMjwu4gZ32cIheZtn3T8o4539nVgb0pTV4YtB8O5YEgLAU3BSt+U
-         FxBC3E7HV/nGZ+BhwskhgaBgO1bmUopxiOcLiCV+457iHaOS1XTFEeCnvLXvA2JrkiVr
-         p+OuFsPEZ9I60VCa0DOV8DcmXHSwtJw6/e5RYkOONZuX/cnyvZdWzL/C4xEx/Gw9I3Pg
-         1waIdCxTKwZlm8/7GqX6RsWQmlEniZd/sN63A0uFryTaYMGAhvlmA+Kr/hEJJFd0ER+F
-         tX+7tkAGGUVA8RVCHpzB9wHzfBmLU/iw38aIWkB2MdMtAKj//9ZQxoMOX6n3lhvE9iFX
-         sUkg==
-X-Gm-Message-State: ANhLgQ2OatViNcVnt65E1ZRfjEcQyd/76T+nWOzjtMBBy97RHbHJBZIg
-	lTUhEf3rsugqVUc3rnMtG959Aw==
-X-Received: by 2002:a17:902:7594:: with SMTP id j20mr12775566pll.118.1584136479708;
-        Fri, 13 Mar 2020 14:54:39 -0700 (PDT)
+        bh=LWqp8lCL1uffHil6B2ZXNucYg5cBJNbMrdKGr/WNt3c=;
+        b=uRcjc1VaEj5wF/tYArDaPVd6ciY02BIy1mabSBIkVgv+4zlPiuk+K+JoGs+0GuIRUt
+         2ezFJBeenft+sJlEdDpaDp2h8S69CTrctoc3ubmmslsTXD++YFDBZ6WoBumaFuczV7pj
+         0tpPY0X3vch8A3V1+F4T+p/BWzauD0WBru1iWMftfBFdSX1AymWWqIUYhNyvJcYgLIXn
+         Fkm3Cx70VIIK5h0mHWhUjxGirxkMvwKvxW9he7HsCBnGDtcK4MctIGb3a9iMbS1LXqVu
+         p8WEda+4/MIDaalYzaSyvcQ+HmP7U7r8BDVbHMi1akGHbsGLyydMjpG4fC9DqxG8Xg68
+         reGg==
+X-Gm-Message-State: ANhLgQ1v/5/wFVVOM5AX8g6tvT6ZNp0/IDAHLHeaPbiTDy9u2oyptj3Y
+	G0uV20qWfc4IiHYuCGWMUyv5sQ==
+X-Received: by 2002:a65:638e:: with SMTP id h14mr14871363pgv.433.1584136465016;
+        Fri, 13 Mar 2020 14:54:25 -0700 (PDT)
 Return-Path: <kgupta@es.iitr.ac.in>
 Received: from kaaira-HP-Pavilion-Notebook ([103.113.213.153])
-        by smtp.gmail.com with ESMTPSA id e20sm6460146pfi.171.2020.03.13.14.54.38
+        by smtp.gmail.com with ESMTPSA id s25sm32199973pfe.147.2020.03.13.14.54.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 14:54:39 -0700 (PDT)
+        Fri, 13 Mar 2020 14:54:24 -0700 (PDT)
 From: Kaaira Gupta <kgupta@es.iitr.ac.in>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	outreachy-kernel@googlegroups.com
 Cc: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Subject: [PATCH v2 2/4] staging: media: imx: remove temporary variable
-Date: Sat, 14 Mar 2020 03:24:04 +0530
-Message-Id: <20200313215406.2485-3-kgupta@es.iitr.ac.in>
+Subject: [PATCH v2 1/4] staging: media: allegro: align with parenthesis
+Date: Sat, 14 Mar 2020 03:24:03 +0530
+Message-Id: <20200313215406.2485-2-kgupta@es.iitr.ac.in>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200313215406.2485-1-kgupta@es.iitr.ac.in>
 References: <20200313215406.2485-1-kgupta@es.iitr.ac.in>
 
-Remove unnecessary local variable `ret` in file `imx6-mipi-csi2.c` and
-directly returning the value assigned to `ret.`
+Align the lines of allegro-core.c with open parenthesis by giving proper
+tabs and thereby fix checkpatch.pl warnings of matching alignment with
+open parenthesis. Do it only for lines where character limit doesn't
+exceed 80 characters.
 
 Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
 ---
- drivers/staging/media/imx/imx6-mipi-csi2.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ drivers/staging/media/allegro-dvt/allegro-core.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/media/imx/imx6-mipi-csi2.c b/drivers/staging/media/imx/imx6-mipi-csi2.c
-index cd3dd6e33ef0..8ab823042c09 100644
---- a/drivers/staging/media/imx/imx6-mipi-csi2.c
-+++ b/drivers/staging/media/imx/imx6-mipi-csi2.c
-@@ -592,22 +592,19 @@ static int csi2_probe(struct platform_device *pdev)
- 	csi2->pllref_clk = devm_clk_get(&pdev->dev, "ref");
- 	if (IS_ERR(csi2->pllref_clk)) {
- 		v4l2_err(&csi2->sd, "failed to get pll reference clock\n");
--		ret = PTR_ERR(csi2->pllref_clk);
--		return ret;
-+		return PTR_ERR(csi2->pllref_clk);
- 	}
+diff --git a/drivers/staging/media/allegro-dvt/allegro-core.c b/drivers/staging/media/allegro-dvt/allegro-core.c
+index 0a09b3622e78..1162cc38f3fc 100644
+--- a/drivers/staging/media/allegro-dvt/allegro-core.c
++++ b/drivers/staging/media/allegro-dvt/allegro-core.c
+@@ -2324,10 +2324,10 @@ static int allegro_open(struct file *file)
+ 			0, ALLEGRO_GOP_SIZE_MAX,
+ 			1, channel->gop_size);
+ 	v4l2_ctrl_new_std(handler,
+-			&allegro_ctrl_ops,
+-			V4L2_CID_MIN_BUFFERS_FOR_OUTPUT,
+-			1, 32,
+-			1, 1);
++			  &allegro_ctrl_ops,
++			  V4L2_CID_MIN_BUFFERS_FOR_OUTPUT,
++			  1, 32,
++			  1, 1);
+ 	channel->fh.ctrl_handler = handler;
  
- 	csi2->dphy_clk = devm_clk_get(&pdev->dev, "dphy");
- 	if (IS_ERR(csi2->dphy_clk)) {
- 		v4l2_err(&csi2->sd, "failed to get dphy clock\n");
--		ret = PTR_ERR(csi2->dphy_clk);
--		return ret;
-+		return PTR_ERR(csi2->dphy_clk);
+ 	channel->mcu_channel_id = -1;
+@@ -2933,8 +2933,8 @@ static int allegro_probe(struct platform_device *pdev)
+ 		return -EINVAL;
  	}
- 
- 	csi2->pix_clk = devm_clk_get(&pdev->dev, "pix");
- 	if (IS_ERR(csi2->pix_clk)) {
- 		v4l2_err(&csi2->sd, "failed to get pixel clock\n");
--		ret = PTR_ERR(csi2->pix_clk);
--		return ret;
-+		return PTR_ERR(csi2->pix_clk);
- 	}
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	sram_regs = devm_ioremap(&pdev->dev,
+-					 sram_res->start,
+-					 resource_size(sram_res));
++				 sram_res->start,
++				 resource_size(sram_res));
+ 	if (IS_ERR(sram_regs)) {
+ 		dev_err(&pdev->dev, "failed to map sram\n");
+ 		return PTR_ERR(sram_regs);
 -- 
 2.17.1
 
