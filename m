@@ -1,88 +1,115 @@
 X-GM-THRID: 6803716874412490752
-X-Received: by 2002:a05:6512:1109:: with SMTP id l9mr9572687lfg.50.1584127619290;
-        Fri, 13 Mar 2020 12:26:59 -0700 (PDT)
+X-Received: by 2002:a17:902:7241:: with SMTP id c1mr13827627pll.301.1584113807142;
+        Fri, 13 Mar 2020 08:36:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:4207:: with SMTP id y7ls1608551lfh.5.gmail; Fri, 13 Mar
- 2020 12:26:57 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsZWtIQG2XZR9XMUa5W/8iiRoR83UpZjXyFSvNsWu0pdcxFmM6lclc6Guiy4lGktcp4USMu
-X-Received: by 2002:ac2:59de:: with SMTP id x30mr9034319lfn.144.1584127617679;
-        Fri, 13 Mar 2020 12:26:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584127617; cv=none;
+Received: by 2002:a17:902:a701:: with SMTP id w1ls4514452plq.7.gmail; Fri, 13
+ Mar 2020 08:36:45 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vta8GeyUw8dilGtZYO9rHayAgQ0o9k+1Wh6ipDxitKUx6EEZVNhmcYrR4j6cU/RH+23JHum
+X-Received: by 2002:a17:902:ed0a:: with SMTP id b10mr13923334pld.6.1584113805631;
+        Fri, 13 Mar 2020 08:36:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584113805; cv=none;
         d=google.com; s=arc-20160816;
-        b=OANohDxMTAPC937h7jxw9yIcutK9yYl2E/TFg/OIJQnyttN9eJH+t+mDJfexmkGGYN
-         jbLeCrVRn1Ai70MqNxcnaqzLQo6QI0b1oWXPHEgpUw1rvlA/fDPqufuJ7jfVfyRrwRcj
-         zTy25J4ay3EnYt0BHvMBEG/3nuoxthARkqDhn97J/F36GqkCn7mZpiaqfzQHX/vyqZfL
-         oEZnc46d/1ZhMWrp/EGsoSj4w6rCwrxd8RBhSXsXDFMVLiwKFVTeZUpsqE/Z9J16a7lZ
-         a1yyujdXkykqDEircYOFvqgPJ5DyCt9DCkPbakZpGkK+P+CJg3xDkRX9JF8KTa8ho4AA
-         9lHA==
+        b=vm8bv1NksyhNvyP0OtvaHTzuw/DJNHcL9ZSP6KgiLDxHD4B5GXKvafvDNdNhta1W0h
+         09YLjz235DFkGOfEKnGHki4CfZaO5ivzA2joByCa8Eff04gSuumpHylYy2D2LvuVEmWi
+         upo1SW2B8aQaD54pCGiXkm+irGyChumNYbWzgtr/OP3klNB1pFLt2Lfh1g2YtryNB+JI
+         8VCicHjs9dRbQ/AuMw1XSSnMj+LPkd7YiviAH/FI5U6BpsIXX7nsGBbGnvinH6Vth9eX
+         7L2vxCn9j/GeBsDExqmS5UPf+ay6KcloAWK9dxlpBYUV2+JpWR/Y+e4Xd140CoL57cDd
+         IRcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=GQE6XWh4N3Vx2h21foGA5K7G/8NFamha64/JnnnBdLY=;
-        b=q8uM7erNjF/W3lDrdAVgwU1FiUJfW2Ew9EwqD4wef/XS+gYLnsTJekL//KUP2p4PKc
-         RVh27HdL4zv+i7nIwq3HbaZGcQrk9OGgt86sWXtfQxYrtY+JQ0TCWfJ0O4AsSKEJbagm
-         HZtxQgAEt2pL/CPx6cDP2jhbWAzupvfkfgKCTTGn/7s0sankwP98FyD2zOlVxFqEDEe7
-         CuE9LgtYrqeuW0tiK0S8TWgPCQnl36kaCtq1bRsqrLN/HUFx4qLVbL5/ZQ+n49EJGSIO
-         pwVBlcm0J8/FwYd0Ph/rwEA938ITkEthxpkibokuUAfxnLZhIDYlzqjVwx52pGw3s83E
-         q2LA==
+        h=references:in-reply-to:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=NzJUsILpGLU8bVga5l+c3XbbwOaLd+Ur/lCuhoi80Fg=;
+        b=eABKS8pQcabXkufzsN/11u4hrgWiys9p7NrLAfxdLAEmExQs5q8yGcDvT9mQ/kVNg7
+         OR5N/GciDgghcj6pJTl0kMVhF8N2mt9kmHuYfHF+9y90kIvfAFhG96eLNi22LMjeqw80
+         a+8SCiQocr2DVKaKcTWkWwLIVrVtNpNMPiqh7QjnHCUEz8Z72JgLi6droqlCI0F4ZkBA
+         RdftL3Qn0PRPBSyOO7nystffR7mhg3j9Qd9IPTL9GE7KMcdhlBqZDmwjKlMVzEafXbk3
+         ioJHNbaQMmwFPD937mLs1QMsegH/gEpB35gkWbsuztWfHzl4Z4YXvlIFifZmCq3YgSQX
+         odkw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id j11si388131lfe.4.2020.03.13.12.26.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hfLkrtYp;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pj1-x1042.google.com (mail-pj1-x1042.google.com. [2607:f8b0:4864:20::1042])
+        by gmr-mx.google.com with ESMTPS id 59si361631ple.2.2020.03.13.08.36.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Mar 2020 12:26:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 08:36:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) client-ip=2607:f8b0:4864:20::1042;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,549,1574118000"; 
-   d="scan'208";a="342321273"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Mar 2020 20:26:26 +0100
-Date: Fri, 13 Mar 2020 20:26:26 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: rtl8723bs: remove unneeded
- local variables
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hfLkrtYp;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1042.google.com with SMTP id np16so4309869pjb.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 08:36:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :in-reply-to:references;
+        bh=NzJUsILpGLU8bVga5l+c3XbbwOaLd+Ur/lCuhoi80Fg=;
+        b=hfLkrtYpdcWXHpkMuUYTNA/1O9RDS7SX6RbpUfY+p56YFR4MU4NZCZSDwjiGmtLFzs
+         HBdycOAWcEZiQoodluGu/2uqQAol94aUqt9mGj1FS5mH83UgdSQWlRfiFiH4COned1Xu
+         BvoCj/Mnd3PjlXIW5zXXYoysDBIoyuxAt/0U9s0irDEJHpzo5yZxjE+P8gzgvjqINBZT
+         V+YEvPtRQKuV0sjuw2yPeR1YocRPyLNK445HCdb1xGtni4rbQlo/EFzvmGsF4+2ANx//
+         KVfQnxHspy0v7ImsigOK/t3ENtdTyuw7EB2/oFLSIruH05gyOGj/PHGECB0qabJFqBq0
+         561A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:in-reply-to:references;
+        bh=NzJUsILpGLU8bVga5l+c3XbbwOaLd+Ur/lCuhoi80Fg=;
+        b=g1Y2FLzDdAhwrPPq+ttzNzhOA2WDpG6EJ4TB7n4qWXXqp8JwMafCNiWggO5LH3B5PV
+         DD24UKGRc9InQsvoYP6NQR3pRoK2PIHWZwg/j4K7j4QXCqKvmqJ1Q13EaxZFRT/WGPUq
+         SnIkPG+sbnlqIwGq8G+cT62DxxkN3YhkNS98lWMmYckwh829mcmoMbUKB4I6A4mkN/ih
+         pYkaYE30PvEKxgByjc9phlo8pBIlHmzm5Ns3Z6CwBq+mJApGBJBv0fBbOjBXF1oP1kFg
+         L9/wh1au6Uvg/9nnVL3RTnzc+fNTML0KFBFlXLcpeCzrYP4N6L7VxkJ9+ccWclqM3t8q
+         kQvQ==
+X-Gm-Message-State: ANhLgQ01caRdraR6QN/BuPcLW3gEQztW7OpfBWDdW5MLzJHDXsj5GUCc
+	M7QTXvMG7zABT+5JVKpfWWk=
+X-Received: by 2002:a17:902:b103:: with SMTP id q3mr13719426plr.262.1584113805273;
+        Fri, 13 Mar 2020 08:36:45 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([157.33.225.150])
+        by smtp.gmail.com with ESMTPSA id b9sm28175860pgi.75.2020.03.13.08.36.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Mar 2020 08:36:44 -0700 (PDT)
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy-kernel@googlegroups.com
+Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Subject: [PATCH 3/3] staging: rtl8723bs: core: rtw_pwrctrl.c: remove unneeded variable
+Date: Fri, 13 Mar 2020 21:06:10 +0530
+Message-Id: <d2f2d2774ba625346b067e53aa5cfa99816133c6.1584113084.git.payalskshirsagar1234@gmail.com>
+X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003132025350.2355@hadrien>
 References: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
+References: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
 
+Remove unneeded local variable and remove blank lines.
 
+Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_pwrctrl.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-On Fri, 13 Mar 2020, Payal Kshirsagar wrote:
+diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+index 30137f0bd984..9ff35a2da024 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
++++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
+@@ -1390,10 +1390,5 @@ void rtw_ps_deny_cancel(struct adapter *padapter, enum PS_DENY_REASON reason)
+  */
+ u32 rtw_ps_deny_get(struct adapter *padapter)
+ {
+-	u32 deny;
+-
+-
+-	deny = adapter_to_pwrctl(padapter)->ps_deny;
+-
+-	return deny;
++	return adapter_to_pwrctl(padapter)->ps_deny;
+ }
+-- 
+2.17.1
 
-> Remove unneeded variables and their declarations from the files of
-> staging/rtl8723bs directory.
->
-> Payal Kshirsagar (3):
->   staging: rtl8723bs: hal: hal_com.c: remove unneeded variable
->   staging: rtl8723bs: core: rtw_io.c: remove unneeded variables
->   staging: rtl8723bs: core: rtw_pwrctrl.c: remove unneeded variable
-
-The subject lines should be created according to what others have done for
-these files.  In any case, there should not be .c
-
-julia
-
->
->  drivers/staging/rtl8723bs/core/rtw_io.c      | 9 ++-------
->  drivers/staging/rtl8723bs/core/rtw_pwrctrl.c | 7 +------
->  drivers/staging/rtl8723bs/hal/hal_com.c      | 5 +----
->  3 files changed, 4 insertions(+), 17 deletions(-)
->
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cover.1584113084.git.payalskshirsagar1234%40gmail.com.
->
 
