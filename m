@@ -1,125 +1,90 @@
 X-GM-THRID: 6803689046764683264
-X-Received: by 2002:a62:e417:: with SMTP id r23mr14471095pfh.216.1584120116005;
-        Fri, 13 Mar 2020 10:21:56 -0700 (PDT)
+X-Received: by 2002:a17:90a:37ea:: with SMTP id v97mr10844148pjb.26.1584116108961;
+        Fri, 13 Mar 2020 09:15:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:8a89:: with SMTP id a9ls4183755pfc.10.gmail; Fri, 13 Mar
- 2020 10:21:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu3vWKDjYAO2yipjumLnmVnONFkhgZyJwgb1SlYDnXuriCuitPQ227Xc8bBDgicnbfLLmWR
-X-Received: by 2002:a63:5546:: with SMTP id f6mr14351475pgm.260.1584120114479;
-        Fri, 13 Mar 2020 10:21:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584120114; cv=none;
+Received: by 2002:a17:90a:9e2:: with SMTP id 89ls1333014pjo.2.canary-gmail;
+ Fri, 13 Mar 2020 09:15:07 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuLoQWYdrP2IobSyJRRa9sXN0y9bgi2cIW9zAg0jXcBmKnbbRFZ+ix5EsRXsvHtgSJIlC/f
+X-Received: by 2002:a17:90a:5d03:: with SMTP id s3mr11019143pji.31.1584116107102;
+        Fri, 13 Mar 2020 09:15:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584116107; cv=none;
         d=google.com; s=arc-20160816;
-        b=tpM5wbigif1SymS1FO9OI1YsbmANT3WL2/HNfPM/tAUsuaZ4IHEp4HEH65Nc8kRyBO
-         fDyYTeuRb01FgcW8e8+P6kUlx3kFzmRhecbJIuInsV3KmgNNZKXGuIrahv0UodOQA2hy
-         oRXC7LUH4EC4yJU4+4yTiylhKLIEixvbEuomdHsFHFEVjXIp5WawrCxnXdf+OO7kzNDG
-         +zHZaf44XtJmiqc068rTFUxIxsKgCsMNCR4Ft+qzFIfTBT9r6ot1j57/TFO7bBvZta2x
-         b/Ibv6pMzKTu8Mpde/ySicTTXme89P2b+R5G9hgnDUoWJcOUsIy6Mbwq9YJIN/0JNa3G
-         fosg==
+        b=Z4lxQ1HyKNNJC8CBxJaphqSfWjQNYRbR4xdHemri+2g095R67odyGMkpwbFqZTB80o
+         Wcxf81TyYYVj55Npe6n0rtU7mXSVAUdSdGGXRnYNCpiKyFN2mXhRjo7xj4K8PlnZ6ro/
+         p5vffTzu9IFm1RDL3O2q5w4aFV1iDP6rehCMQJgnhKx1VPfMUqMur5Bw/D4CR2omf1ym
+         RTiP0sfbiZFFOZlXbD6cniAJ5omTjTZKThH5cKURTc1Ch62GQ11+spx9o10tIFonCTWv
+         jgGIdO/XTE58+U+NJi/ldQizgob5zVeknIpPlnDk8Ejj6hdm8C2QKkudtDifMpXHpYuN
+         u3cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=37tqJECn7YQ7vJb+10gPtQmz8eEltMUhtPs6A2jvq+A=;
-        b=vSXTxfJ1zX8vIyKzQZ5ciSyMyGfZxLN6zQGgsjiJU3KP013skIUhMjQdERXEK9rRsi
-         nAzCmJJIeRi9Ig0H6Dm9hmAl0IU+3RE7vYTmzhnp+vnHgLwYeHv/x90bBhfIqZaD1Can
-         u6JL+39Eq1NMCm5spBfdF1ZLF+6aX2RMlbh8LAEMscZ9XPyb4isjmeYgE24jYAT5ZkR6
-         eEs2lrPe2VKRbJqHCh16j7GUi86tTvBXo/5xWTC1SmYjfpFCr/pjrQRXnaSLRGYWgKs3
-         TEMmsJ3ztIcb1hXxt5BXX+hcinfyUQVEO9cHJqKF5sanhvZkqpXNToGE26LegQKVdU/m
-         iVpg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=8vF06DAPcnAL6R2Ppp6r11E0hn8EKts6Z1YHmZvm3Bs=;
+        b=Yy5CeYX0xYU7k82t2c7lJ7vBZA1xRerGWnaml456HsUfZzL8SBZ6K+jvUKegZ065SM
+         yFCgiv9wE24lNfGYwKx9cFRxk80b41kha2vNsqgGlVvRZJuqkqxfHwb2VlL9+ylD20Nc
+         nwZFLhgmulT+MTXvXzzs/A7HX/ZF/dUMF2UjLJ0MXOl3eK9bVftXmV9oa4jD0DVz4nBn
+         poa7CqXHlD5tf5IE8sw0dGfMFNG0+RdfkpJz/ZLkAZq4S8MU3bZbaCqM95r1VUT3+drq
+         n1OCOtkO/crb28II/tcIB5lDVBqhKUiMOvxJFUQGtKRI56oWv7IsyqUGiwGR1DJsP3hp
+         eh+g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=Whv3H8uA;
-       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
-Return-Path: <jevargas@seas.upenn.edu>
-Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com. [2607:f8b0:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id q1si634461pff.4.2020.03.13.10.21.54
+       dkim=pass header.i=@kernel.org header.s=default header.b=l1NprPCH;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id q66si474310pfq.3.2020.03.13.09.15.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 10:21:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::342 as permitted sender) client-ip=2607:f8b0:4864:20::342;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Mar 2020 09:15:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=Whv3H8uA;
-       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
-Received: by mail-ot1-x342.google.com with SMTP id t28so8258588ott.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 10:21:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=seas-upenn-edu.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=37tqJECn7YQ7vJb+10gPtQmz8eEltMUhtPs6A2jvq+A=;
-        b=Whv3H8uANRVen72DamX6+dmFeKoTni8uZ+CjRU2UfxQOyA5LXxmkKdM9K2+LZ8pb7U
-         iekSZ/RZQ8f9Kml4xo80iff2NOh2rDroKW+VO+qVA1a7AbgzJm0gvssUNhGavhiGoXgF
-         /L3pYmVGYQDu4BnrAJZNrAIMP8VGRZDmYDDZMgcAjKRdJ/HmnkvNprsMqrxORXZm+Wa5
-         dUNiNTG6PfC1FmWTZP8/iW9FrHpqPui+zr4VlpuodKBT9Of9LfpOd4x51e1GLHfXLhNo
-         pQMSyf2QYMO6Jvy57G6fe5xt8k0ughzjZNwrJxGAXUx8QkcbR2cVVz6SVhg330DFO6Wc
-         3TRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=37tqJECn7YQ7vJb+10gPtQmz8eEltMUhtPs6A2jvq+A=;
-        b=tKYvdF9Y8cVTAorALOR3/oI0twMvSfN2hKXiLgZSX8MB4P13WuJDhAiP+5RJPrkFl7
-         9mlvljRzggw/rQnkIV9fFoFtahVe9hDtAIR1pdH2TuixTGMbk3SqRk1sOXl/UFnNbIoz
-         7G/pSKyETgln+DKwcIb4reNyKGJ+BH9QWNQAtQD3En8K826ebnFrPHaOSY2umIcxjkJ3
-         8BUx5FYWP+Z0Ix0wr9zNe+FK4zbDMIAuDZ8E9KX9U59OUThCOxEhgJlLDMnP0x1GCVrc
-         90OITeWUNA/ShT9fEqubLWQREowadHpC365q4buJXfOoA202Q6gkGOj50yUetApI+0AU
-         Jzgw==
-X-Gm-Message-State: ANhLgQ026XM7BrjABlYpcygj1spBgc2YWiXR/kd7T77Gk5b/rQcUt+XH
-	wmgkrxMDs8ddKXqeKnVF+gPIfRNDks3JmQ==
-X-Received: by 2002:a9d:734f:: with SMTP id l15mr5488253otk.55.1584120113805;
-        Fri, 13 Mar 2020 10:21:53 -0700 (PDT)
-Return-Path: <jevargas@seas.upenn.edu>
-Received: from evX1 ([189.172.49.121])
-        by smtp.gmail.com with ESMTPSA id 90sm12586974otv.5.2020.03.13.10.21.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 10:21:53 -0700 (PDT)
-Date: Fri, 13 Mar 2020 11:21:49 -0600
-From: Enrique Vargas <jevargas@seas.upenn.edu>
-To: Steve Longerbeam <slongerbeam@gmail.com>,
+       dkim=pass header.i=@kernel.org header.s=default header.b=l1NprPCH;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 5C646206B7;
+	Fri, 13 Mar 2020 16:15:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584116106;
+	bh=2HOFAuOgl5emJm3OOO2kyvkE74jiTw31wASXLdPtjMc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=l1NprPCH9l/xXf6oQENyCYuF/4FLcfWOXAK/+WQvWtHv6hnBlfNl4WO9pS3c9pn0x
+	 CyiKnW1Q3XNH/COhd3/4osb2iMgAkcPdW+sn5Hvy/3xphd6rvkjhHTrQ8Y7PHGhgrI
+	 VieXJVzDC8PZvKUkcFqP6MbPdXOmJLXtgbhxMy0o=
+Date: Fri, 13 Mar 2020 17:15:03 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Enrique Vargas <jevargas@seas.upenn.edu>
+Cc: Steve Longerbeam <slongerbeam@gmail.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Shawn Guo <shawnguo@kernel.org>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
 	Fabio Estevam <festevam@gmail.com>,
 	NXP Linux Team <linux-imx@nxp.com>,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH v3] Staging: media: imx: eliminate unused code
-Message-ID: <20200313172019.GA22581@evX1>
+Subject: Re: [PATCH v2] Staging: media: imx: eliminate unused code
+Message-ID: <20200313161503.GB2298954@kroah.com>
+References: <20200313134953.GA11354@evX1>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200313134953.GA11354@evX1>
 
-Eliminate code that is never used inside #ifdef 0 / #endif.  This eliminates WARNING found using checkpatch.
+On Fri, Mar 13, 2020 at 07:49:53AM -0600, Enrique Vargas wrote:
+> Eliminate code that is never used inside #ifdef 0 / #endif.  This eliminates WARNING found using checkpatch.
+> 
+> Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+> ---
+>  drivers/staging/media/imx/imx-media-csi.c | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
 
-Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
----
-v2 Fix description typo with broken line
-v3 Include change control, as suggested by Greg.
+What changed from v1?
 
- drivers/staging/media/imx/imx-media-csi.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+Always put that below the --- line.
 
-diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index b60ed4f22f6d..2001f7851e90 100644
---- a/drivers/staging/media/imx/imx-media-csi.c
-+++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -1131,13 +1131,7 @@ static int csi_link_validate(struct v4l2_subdev *sd,
- 		 * enters the CSI's however, they are treated internally
- 		 * in the IPU as virtual channel 0.
- 		 */
--#if 0
--		mutex_unlock(&priv->lock);
--		vc_num = imx_media_find_mipi_csi2_channel(&priv->sd.entity);
--		if (vc_num < 0)
--			return vc_num;
--		mutex_lock(&priv->lock);
--#endif
-+
- 		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
- 					  &priv->format_mbus[CSI_SINK_PAD]);
- 	}
--- 
-2.17.1
+Please fix up and send a v3.
 
+thanks,
+
+greg k-h
 
