@@ -1,115 +1,107 @@
 X-GM-THRID: 6802694026822680576
-X-Received: by 2002:a63:5d8:: with SMTP id 207mr23788415pgf.413.1584307094979;
-        Sun, 15 Mar 2020 14:18:14 -0700 (PDT)
+X-Received: by 2002:aa7:ccd3:: with SMTP id y19mr12613392edt.175.1584090356939;
+        Fri, 13 Mar 2020 02:05:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:834a:: with SMTP id h71ls7837756pge.4.gmail; Sun, 15 Mar
- 2020 14:18:13 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vugbY4Qk7b9W/p1lkuQuNvRZ6uk2wZC7zOWN/b5G4ezpgL7njNeGQ1pW9wt2ZUcLAG37aje
-X-Received: by 2002:aa7:94b9:: with SMTP id a25mr21123258pfl.193.1584307093490;
-        Sun, 15 Mar 2020 14:18:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584307093; cv=none;
+Received: by 2002:a50:ce14:: with SMTP id y20ls5758181edi.2.gmail; Fri, 13 Mar
+ 2020 02:05:55 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuaJEGIQOq+ltg/FbyED5z3rYKMlzjnwREGW/a6L9zty4QSrq6JvXndM/WCDC0iOVoSIgah
+X-Received: by 2002:a50:b061:: with SMTP id i88mr4321245edd.325.1584090355602;
+        Fri, 13 Mar 2020 02:05:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584090355; cv=none;
         d=google.com; s=arc-20160816;
-        b=hwf4WFOCQhbAcLu4gRNoZRviFk2YTg6n/O6keRAth3ic0uIHGypjE83NtMms7MJKOq
-         NJ3I6yxxYSWLp6joYQ50v7D0f/F0ztQROcYtjPw6+oeDyR+gsqu5RxYN3fL2vNHYIsEn
-         ssRVryct5cessfEZaQqQwDpYPZQg6qGtNFH3K89a716DjdrVDPkPWsh/WVc0jtybXuse
-         3i5Ptz+k63J1SKMGAfeSLyeiNGjemQHy6YVVVUgCDdp4kdFcJ0DBou7gBjZ+U5E2w0j7
-         WnCHBjc01r1S6OgbxL7MhW9gZIXuUD4KUEbGkq2YOaEgRSTQ9QL/71WnMrgaqIXe2sgx
-         R8gw==
+        b=qoPiu0pfxv7vTwILcNitDeRkpyjcuZGLQYCGVBXNCaeKXEc5WtRXV2pdkdYq/T/6i5
+         oTYFL+5gsLTUU6IfeWPHQV9sakdYF98gm0V16RXmb5ujNDIrnJbG9Nd9TPX31Vbdl7uA
+         wR7HCofyAMbGGkF0Gu0HheyiUlsGRx0gUi6GsJbo7BSs08sNiMR3XUSNTvOUmMa07SOk
+         8L1d8rpn3853UQzC9GRCrSf76HZNQO6/WuunVCBczOS5x5kF1B1gVhraYVSnyMTxNqZJ
+         JkYKXhHk1WPFT3mQDX4YcgN0OPqrLsIhkvoUaYaqiBmUDS9xOlxW+hdXc1PoXAx6UUhW
+         Q9XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=P928OW2k/bJQjXlNFLSdDJ9VBgjgc+DIuCGdmMMdNM4=;
-        b=ahZuYxjydBtv24fCdCJmdpLkQA7BDX4lfLiruo2D6AYvWoVtOaF/T6g2O8mC+z+tK6
-         ZmK/Py7LQR8V8bW84wLxdfFXXsS2C8J8cmRyhdwjK5LNsTf7O1zjbMlk0I4iMvgvM0bU
-         yC2Jhc3EH7Sf/lMRAGcWRm3fFAty0uOwF3GKk4/RTSYJh7BeKs1SNmwSqeeVyiR606ML
-         mpsewSil0G4CbFd/SCYhcmK/96CleY4XjoNXwLAaLjJ/8zfQ+YMBPMDHgIRzpbq4qjO9
-         hUDtaL9CUmKdWwtq56BwfRa6Efn1DX9gZrUH+BI1Q8pS6GnSaFjqDcGml5hy6iVYUD1I
-         IcEQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=5aw1qv+ix3/bF/s8X7GNTAKme3J/KexmOKqPkZIgsK8=;
+        b=vUWDgYPbIJL2UmZHHbytrxuqMGjqenKhdW0dF5WOcrGpjSVCsUiVFQXqVAs8SPRxFJ
+         pDSkcDR8X8CJYcj1hxB6PW6Gb98IpqfOpmo8OmaDp/wbiIcEFiQRfoMaSG13UtdSHXQA
+         qyICuBTELnugVgQ/XkpTxtWGtouLzahY3cot5HYCedm0oBm2OFEx8oyx9IVn/uX2NYyH
+         W1GFeTAUN6AB1PaSteGeD/MH2ZBm3y0n2nktuLrP4BLuN1Q5SdJt0kwy2PUD4RR4nPXT
+         A4EBvfxjPAQt2YScXOpoH5lnvE3INdiyVpB1Cizp8LqHo8N6dLrXR4O7KIPQesUyGbHH
+         gZ5Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V5F2O7ER;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by gmr-mx.google.com with ESMTPS id ml9si24061pjb.2.2020.03.15.14.18.13
+       dkim=pass header.i=@pplo.net header.s=google header.b="BUo7x/ci";
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id x7si225454ejw.0.2020.03.13.02.05.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 15 Mar 2020 14:18:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 02:05:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=V5F2O7ER;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584307092;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=P928OW2k/bJQjXlNFLSdDJ9VBgjgc+DIuCGdmMMdNM4=;
-	b=V5F2O7ERCawqm3MKbPfRA8XDXzG/b8Ri5SL/xCA1pWYCuCBuRhP2E1Sai6q1L6pFuO0czm
-	5VZuULiaRqnExh/9gdQlSt8N0wpbkhDWkyCdP3Qyn0qVIr48VnF+Z14Kg22If+ICGpXKPI
-	QT0R8cIKzkV4zz6fClxB5CFCrdoARCk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-75-bce_Bk8eNZKrakJa5Q54tg-1; Sun, 15 Mar 2020 17:18:10 -0400
-X-MC-Unique: bce_Bk8eNZKrakJa5Q54tg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EA560800D50;
-	Sun, 15 Mar 2020 21:18:08 +0000 (UTC)
-Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5AF1F92D41;
-	Sun, 15 Mar 2020 21:18:05 +0000 (UTC)
-Date: Sun, 15 Mar 2020 22:17:56 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Lourdes Pedrajas <lu@pplo.net>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH v5] staging: rtl8192u: r8192U_wx: use
- netdev_warn() instead of printk()
-Message-ID: <20200315221756.43c21285@elisabeth>
-In-Reply-To: <20200313090544.6334-1-lu@pplo.net>
-References: <20200313090544.6334-1-lu@pplo.net>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+       dkim=pass header.i=@pplo.net header.s=google header.b="BUo7x/ci";
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x441.google.com with SMTP id b2so4818368wrj.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 02:05:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=5aw1qv+ix3/bF/s8X7GNTAKme3J/KexmOKqPkZIgsK8=;
+        b=BUo7x/ci/WjTULWKdUSn4qYVLQFZwLi2esJU1EKtWiAEqxOSB2OxQNpcYDAS2aOxSP
+         oOMeebP1Qzns+pp/zxFadWnC7Df07JFQKA+3UkguOCPiGc3VV9pDy0S1aN0XwqqLsVEL
+         fyjYzygbC6hNpSFVzOeYbWw4YpHb6JlodrB+k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=5aw1qv+ix3/bF/s8X7GNTAKme3J/KexmOKqPkZIgsK8=;
+        b=FQnFMCWBF5ITFMljHcnWHKQyECckzhu2LOiotzsYFoHFPZgeoJXTJ5M0BU5ZPNA/MZ
+         d0ndftR43ll77iWib1WRA6TRH/9pa2VTBvRYwp28sYeGMWp+FXlkstoFebuZujcbsAoK
+         9QyYhmOj97PNYHs6HMAoerTFKsvw0o9eOp83/dy2flbj8y6UP2M4/gR0I4IACIGRPShA
+         JyCCTI8XTt+ib62qpqQGYjTaWI1SjfF9l6kpv0gx/0/w+zUR2Qo3VvTLDcyq3E6l6yVU
+         ZKSRpPKJIw2dkU65XCoYfZaH7X64T+WZ5dJ0KLtzGR/1Br3upQRQzGI9xKiJL2cQszAy
+         EPaw==
+X-Gm-Message-State: ANhLgQ3quu7cSz4q9W1vtrvZV4nz52ROu/QbNcHPOYV90SiBGkaLDH06
+	30ARq7oFDoKwTfRccM3GBNXxPfCBanuQDw==
+X-Received: by 2002:a5d:4ac8:: with SMTP id y8mr16352101wrs.272.1584090355043;
+        Fri, 13 Mar 2020 02:05:55 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id q13sm27747250wrs.91.2020.03.13.02.05.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Mar 2020 02:05:54 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Lourdes Pedrajas <lu@pplo.net>
+Subject: [PATCH v5] staging: rtl8192u: r8192U_wx: use netdev_warn() instead of printk()
+Date: Fri, 13 Mar 2020 10:05:44 +0100
+Message-Id: <20200313090544.6334-1-lu@pplo.net>
+X-Mailer: git-send-email 2.17.1
 
-On Fri, 13 Mar 2020 10:05:44 +0100
-Lourdes Pedrajas <lu@pplo.net> wrote:
+printk() is deprecated, use netdev_warn() instead, which is a message printing
+function specific for network devices.
+Issue found by checkpatch.
 
-> printk() is deprecated, use netdev_warn() instead, which is a message printing
-> function specific for network devices.
-> Issue found by checkpatch.
-> 
-> Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> Suggested-by: Stefano Brivio <sbrivio@redhat.com>
-> Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
-> ---
-> Changes since v4:
-> - Log message correction.
-> 
->  drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
-> index 0118edb0b9ab..100532598781 100644
-> --- a/drivers/staging/rtl8192u/r8192U_wx.c
-> +++ b/drivers/staging/rtl8192u/r8192U_wx.c
-> @@ -588,7 +588,7 @@ static int r8192_wx_set_enc(struct net_device *dev,
->  				hwkey);                 /* KeyContent */
->  
->  		} else {
-> -			printk("wrong type in WEP, not WEP40 and WEP104\n");
-> +			netdev_warn(dev, "wrong type in WEP, not WEP40 and WEP104\n");
+Suggested-by: Julia Lawall <julia.lawall@inria.fr>
+Suggested-by: Stefano Brivio <sbrivio@redhat.com>
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+---
+Changes since v4:
+- Log message correction.
 
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+ drivers/staging/rtl8192u/r8192U_wx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/staging/rtl8192u/r8192U_wx.c b/drivers/staging/rtl8192u/r8192U_wx.c
+index 0118edb0b9ab..100532598781 100644
+--- a/drivers/staging/rtl8192u/r8192U_wx.c
++++ b/drivers/staging/rtl8192u/r8192U_wx.c
+@@ -588,7 +588,7 @@ static int r8192_wx_set_enc(struct net_device *dev,
+ 				hwkey);                 /* KeyContent */
+ 
+ 		} else {
+-			printk("wrong type in WEP, not WEP40 and WEP104\n");
++			netdev_warn(dev, "wrong type in WEP, not WEP40 and WEP104\n");
+ 		}
+ 
+ 	}
 -- 
-Stefano
+2.17.1
 
 
