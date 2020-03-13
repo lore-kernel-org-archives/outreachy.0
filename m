@@ -1,116 +1,125 @@
 X-GM-THRID: 6803689046764683264
-X-Received: by 2002:a17:90a:c38e:: with SMTP id h14mr10474909pjt.98.1584120149540;
-        Fri, 13 Mar 2020 10:22:29 -0700 (PDT)
+X-Received: by 2002:a62:e417:: with SMTP id r23mr14471095pfh.216.1584120116005;
+        Fri, 13 Mar 2020 10:21:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:ab0b:: with SMTP id p11ls4204491pff.0.gmail; Fri, 13 Mar
- 2020 10:22:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsY2/DC5CAdH3n2ocPnEuGCf6L9mVE2m2UclW78JE2TkpVUVTJn7NPIsgk4weCLZtD1R8d0
-X-Received: by 2002:a63:fb0c:: with SMTP id o12mr14563030pgh.204.1584120147869;
-        Fri, 13 Mar 2020 10:22:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584120147; cv=none;
+Received: by 2002:aa7:8a89:: with SMTP id a9ls4183755pfc.10.gmail; Fri, 13 Mar
+ 2020 10:21:54 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu3vWKDjYAO2yipjumLnmVnONFkhgZyJwgb1SlYDnXuriCuitPQ227Xc8bBDgicnbfLLmWR
+X-Received: by 2002:a63:5546:: with SMTP id f6mr14351475pgm.260.1584120114479;
+        Fri, 13 Mar 2020 10:21:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584120114; cv=none;
         d=google.com; s=arc-20160816;
-        b=nxSDhSmbhgtNQxIwryhVqQECU/tl9CRgRFr9uJMCv8EH8n3peDLmra9M8QTw/noakd
-         RbVwHZDn7nfrZItuZe4jgouUpVJEN9ldnzdnloAkQfTlThNeyXCcq/9DnAFgvzxGL+NM
-         QeRL2YilJ1rlGI2diB8XyRPhvXAvqOlcQSv64XY9tn3VcmHcjYmlJAk/DJnjBN0i46tf
-         sf9ncPgAZg3Lm8svFCd7UEiFwds9uS++SVfceHAuooAUEaJqayPo/Uj0Fd5iHyHsw9yy
-         +dRuif7unebDRmy3ouYwlSmlKOdWS0gSw1cBdISb92VbDhuv3Pxyml6QOK8eTLkBnLmT
-         J6IQ==
+        b=tpM5wbigif1SymS1FO9OI1YsbmANT3WL2/HNfPM/tAUsuaZ4IHEp4HEH65Nc8kRyBO
+         fDyYTeuRb01FgcW8e8+P6kUlx3kFzmRhecbJIuInsV3KmgNNZKXGuIrahv0UodOQA2hy
+         oRXC7LUH4EC4yJU4+4yTiylhKLIEixvbEuomdHsFHFEVjXIp5WawrCxnXdf+OO7kzNDG
+         +zHZaf44XtJmiqc068rTFUxIxsKgCsMNCR4Ft+qzFIfTBT9r6ot1j57/TFO7bBvZta2x
+         b/Ibv6pMzKTu8Mpde/ySicTTXme89P2b+R5G9hgnDUoWJcOUsIy6Mbwq9YJIN/0JNa3G
+         fosg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=GWjxOP2hWk6MfH/7BfaA9E9phnnnA9ZqUGi/u9yozjY=;
-        b=sHm4YhfDZrgQxzh3eF1CJAOCy60xCo5rK40HjFjTmGhW3Aq5UgIJvBtfUFzGpxe5SJ
-         syrVwzRdirP8lgYgmuuRtoSPu+jRtNTc3oSmDvTNHmFSfj+VoRv0SzhQsljjnLM9sHvp
-         l4MzaYxl6ujpW1K7OEjkk6tIq29+mblKrMTB99R9TVKrlrYg5r1KppygQiBaEN5Kk7+3
-         vp3HuaXk+fLQWHRS0T3JeU+hvkAJDZiy+HD7rX2E7t1CPePonNYQSRR/IuZBxZg3dtMH
-         /ovIq19YqiZgQi/UNrwb+RfZonkjGOMpTFHGBzhG/32oH49tgXbNB3136FbEuGBbE5J4
-         IquA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=37tqJECn7YQ7vJb+10gPtQmz8eEltMUhtPs6A2jvq+A=;
+        b=vSXTxfJ1zX8vIyKzQZ5ciSyMyGfZxLN6zQGgsjiJU3KP013skIUhMjQdERXEK9rRsi
+         nAzCmJJIeRi9Ig0H6Dm9hmAl0IU+3RE7vYTmzhnp+vnHgLwYeHv/x90bBhfIqZaD1Can
+         u6JL+39Eq1NMCm5spBfdF1ZLF+6aX2RMlbh8LAEMscZ9XPyb4isjmeYgE24jYAT5ZkR6
+         eEs2lrPe2VKRbJqHCh16j7GUi86tTvBXo/5xWTC1SmYjfpFCr/pjrQRXnaSLRGYWgKs3
+         TEMmsJ3ztIcb1hXxt5BXX+hcinfyUQVEO9cHJqKF5sanhvZkqpXNToGE26LegQKVdU/m
+         iVpg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=cFCl+S4c;
-       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=Whv3H8uA;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
 Return-Path: <jevargas@seas.upenn.edu>
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id y13si413455plp.0.2020.03.13.10.22.27
+Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com. [2607:f8b0:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id q1si634461pff.4.2020.03.13.10.21.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 10:22:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
+        Fri, 13 Mar 2020 10:21:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::342 as permitted sender) client-ip=2607:f8b0:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=cFCl+S4c;
-       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
-Received: by mail-ot1-x343.google.com with SMTP id 66so10878882otd.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 10:22:27 -0700 (PDT)
+       dkim=pass header.i=@seas-upenn-edu.20150623.gappssmtp.com header.s=20150623 header.b=Whv3H8uA;
+       spf=pass (google.com: domain of jevargas@seas.upenn.edu designates 2607:f8b0:4864:20::342 as permitted sender) smtp.mailfrom=jevargas@seas.upenn.edu
+Received: by mail-ot1-x342.google.com with SMTP id t28so8258588ott.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 10:21:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=seas-upenn-edu.20150623.gappssmtp.com; s=20150623;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding:content-language;
-        bh=GWjxOP2hWk6MfH/7BfaA9E9phnnnA9ZqUGi/u9yozjY=;
-        b=cFCl+S4cDitNgse+d9K+9h2xL/EGteumH4qRqXvcCO3Nkcq6gh43CZZcYgnarZ/xp3
-         DE/dz9dIJ6EMS95fvVcMxHj/VNJZnKbWFB4v8p64UyEZphzO1hHkrQwIj6DKkHQGmN+j
-         3wjcubDaF+HGPcY82HzxHFW3dBvkKTAwD02ZE8qlyIxoC5zw1pibbNpOseJAYrz/9EMQ
-         zdTt6gPVbDAqCjd4wOckZerM2Zj/uch+MtKu6bq+NEYZQzbcb0BEPK3VwQiEwOkRKSF6
-         tJCWnP34SCT1MYi36ncfOOuR90iu9SpKwK9CLCXdu/VFPm2D94novZokdf4MOFt6iq5m
-         LmYQ==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=37tqJECn7YQ7vJb+10gPtQmz8eEltMUhtPs6A2jvq+A=;
+        b=Whv3H8uANRVen72DamX6+dmFeKoTni8uZ+CjRU2UfxQOyA5LXxmkKdM9K2+LZ8pb7U
+         iekSZ/RZQ8f9Kml4xo80iff2NOh2rDroKW+VO+qVA1a7AbgzJm0gvssUNhGavhiGoXgF
+         /L3pYmVGYQDu4BnrAJZNrAIMP8VGRZDmYDDZMgcAjKRdJ/HmnkvNprsMqrxORXZm+Wa5
+         dUNiNTG6PfC1FmWTZP8/iW9FrHpqPui+zr4VlpuodKBT9Of9LfpOd4x51e1GLHfXLhNo
+         pQMSyf2QYMO6Jvy57G6fe5xt8k0ughzjZNwrJxGAXUx8QkcbR2cVVz6SVhg330DFO6Wc
+         3TRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding
-         :content-language;
-        bh=GWjxOP2hWk6MfH/7BfaA9E9phnnnA9ZqUGi/u9yozjY=;
-        b=EEKbxmzNwQDboQeJQg7S53Z2g/DcNdOY4QiY0z/YXRAkMKxUl7twIeo+UWHYxQJsa3
-         xYE2Jl70osRkkMeCvcqnbbE1OTHaakNJnpgwd68oaUW+LaXGma5PAR4ZcrOwVmT3XAaK
-         v8qTchVkPWQPXCSeIIe9FDomhA7kczIKKjkWHi154EpLrozI1xmA+hK6HPld7xwxevWs
-         m/Unu5UPLh4X+34L+7govHToOppsczuRqEGNEEQuwOyz7CZcNoTsFIGAuxcwuLTUik6/
-         bEcAfCoRYaOBAoPyQNUrbNh/B+UVR9WFmbvxSpg8IXgZeKS90tS+gkpn8uGqX3eJ6Tz6
-         QC8Q==
-X-Gm-Message-State: ANhLgQ0undr8+pjPmGvI9Z9qiyhKtlBCsBURjMk6k11nGwpaLoxHIhRg
-	nSCdGqupIvq0tzw5dv7EOWBIVqjAEWcKdw==
-X-Received: by 2002:a9d:bf5:: with SMTP id 108mr12646433oth.260.1584120146729;
-        Fri, 13 Mar 2020 10:22:26 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=37tqJECn7YQ7vJb+10gPtQmz8eEltMUhtPs6A2jvq+A=;
+        b=tKYvdF9Y8cVTAorALOR3/oI0twMvSfN2hKXiLgZSX8MB4P13WuJDhAiP+5RJPrkFl7
+         9mlvljRzggw/rQnkIV9fFoFtahVe9hDtAIR1pdH2TuixTGMbk3SqRk1sOXl/UFnNbIoz
+         7G/pSKyETgln+DKwcIb4reNyKGJ+BH9QWNQAtQD3En8K826ebnFrPHaOSY2umIcxjkJ3
+         8BUx5FYWP+Z0Ix0wr9zNe+FK4zbDMIAuDZ8E9KX9U59OUThCOxEhgJlLDMnP0x1GCVrc
+         90OITeWUNA/ShT9fEqubLWQREowadHpC365q4buJXfOoA202Q6gkGOj50yUetApI+0AU
+         Jzgw==
+X-Gm-Message-State: ANhLgQ026XM7BrjABlYpcygj1spBgc2YWiXR/kd7T77Gk5b/rQcUt+XH
+	wmgkrxMDs8ddKXqeKnVF+gPIfRNDks3JmQ==
+X-Received: by 2002:a9d:734f:: with SMTP id l15mr5488253otk.55.1584120113805;
+        Fri, 13 Mar 2020 10:21:53 -0700 (PDT)
 Return-Path: <jevargas@seas.upenn.edu>
-Received: from [192.168.0.167] (fixed-187-189-60-137.totalplay.net. [187.189.60.137])
-        by smtp.gmail.com with ESMTPSA id p130sm4293885oig.51.2020.03.13.10.22.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 10:22:25 -0700 (PDT)
-Subject: Re: [PATCH v2] Staging: media: imx: eliminate unused code
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Steve Longerbeam <slongerbeam@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- outreachy-kernel@googlegroups.com
-References: <20200313134953.GA11354@evX1> <20200313161503.GB2298954@kroah.com>
+Received: from evX1 ([189.172.49.121])
+        by smtp.gmail.com with ESMTPSA id 90sm12586974otv.5.2020.03.13.10.21.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Mar 2020 10:21:53 -0700 (PDT)
+Date: Fri, 13 Mar 2020 11:21:49 -0600
 From: Enrique Vargas <jevargas@seas.upenn.edu>
-Message-ID: <55005d92-2da1-0ed8-6ef7-2c5192afff73@seas.upenn.edu>
-Date: Fri, 13 Mar 2020 11:22:23 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+To: Steve Longerbeam <slongerbeam@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v3] Staging: media: imx: eliminate unused code
+Message-ID: <20200313172019.GA22581@evX1>
 MIME-Version: 1.0
-In-Reply-To: <20200313161503.GB2298954@kroah.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
+Eliminate code that is never used inside #ifdef 0 / #endif.  This eliminates WARNING found using checkpatch.
 
-On 3/13/20 10:15 AM, Greg Kroah-Hartman wrote:
-> On Fri, Mar 13, 2020 at 07:49:53AM -0600, Enrique Vargas wrote:
->> Eliminate code that is never used inside #ifdef 0 / #endif.  This eliminates WARNING found using checkpatch.
->>
->> Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
->> ---
->>  drivers/staging/media/imx/imx-media-csi.c | 8 +-------
->>  1 file changed, 1 insertion(+), 7 deletions(-)
-> What changed from v1?
->
-> Always put that below the --- line.
->
-> Please fix up and send a v3.
->
-> thanks,
->
-> greg k-h
-Thanks, I sent v3.
+Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+---
+v2 Fix description typo with broken line
+v3 Include change control, as suggested by Greg.
+
+ drivers/staging/media/imx/imx-media-csi.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
+index b60ed4f22f6d..2001f7851e90 100644
+--- a/drivers/staging/media/imx/imx-media-csi.c
++++ b/drivers/staging/media/imx/imx-media-csi.c
+@@ -1131,13 +1131,7 @@ static int csi_link_validate(struct v4l2_subdev *sd,
+ 		 * enters the CSI's however, they are treated internally
+ 		 * in the IPU as virtual channel 0.
+ 		 */
+-#if 0
+-		mutex_unlock(&priv->lock);
+-		vc_num = imx_media_find_mipi_csi2_channel(&priv->sd.entity);
+-		if (vc_num < 0)
+-			return vc_num;
+-		mutex_lock(&priv->lock);
+-#endif
++
+ 		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
+ 					  &priv->format_mbus[CSI_SINK_PAD]);
+ 	}
+-- 
+2.17.1
+
 
