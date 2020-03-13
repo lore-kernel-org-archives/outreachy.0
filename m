@@ -1,96 +1,86 @@
 X-GM-THRID: 6803736049205903360
-X-Received: by 2002:a17:902:740b:: with SMTP id g11mr1949222pll.166.1584406246959;
-        Mon, 16 Mar 2020 17:50:46 -0700 (PDT)
+X-Received: by 2002:a5d:4a49:: with SMTP id v9mr18786691wrs.343.1584118243605;
+        Fri, 13 Mar 2020 09:50:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b203:: with SMTP id t3ls3181548plr.1.gmail; Mon, 16
- Mar 2020 17:50:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt0HqVsmb+yRiHMUPPDxNTYmZB2aPLjJmi6Y9EA+h2DuWYhU6PPXElrF568X9wxZ08M9EFj
-X-Received: by 2002:a17:90a:346f:: with SMTP id o102mr2332292pjb.162.1584406245521;
-        Mon, 16 Mar 2020 17:50:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584406245; cv=none;
+Received: by 2002:a5d:5233:: with SMTP id i19ls5249106wra.6.gmail; Fri, 13 Mar
+ 2020 09:50:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu8/v56zFktXNfurqnHa7A07CxmCXRb5n61PpMof+7fF9AFLgfrQgm9i2Ye5WyxYK+7mr7B
+X-Received: by 2002:adf:ec82:: with SMTP id z2mr11393811wrn.302.1584118242387;
+        Fri, 13 Mar 2020 09:50:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584118242; cv=none;
         d=google.com; s=arc-20160816;
-        b=YprZVLOo+sZUQ6TO+O9PUGxL9fTlVTDxXcucNxa+QSzD3Q4HuBxIL5S8wkm6CngUWl
-         SX2r/pCTEmKFU7BBKuQWF3YShRpN8sCRJtRB6Cj71KY/A1d/Bw5EUt8RAuwMVvQp9Mnz
-         kQwOst0PpiH1dOIdRJWUXIQLSRj1+qez9+c11uraXk+xpOCsfSnXAboHFF26e4eE/v52
-         1ZQrA5dxT5xp4k7m1jLFeB7zE5QM6oib+Gqq6CNqJ/g+bi4AXMHaSsKrjRmTyrXrXqhg
-         GY2N6Tl4MAoTy4my/+wtpPofrjAuzVY5YkjOpKOq7yp5CinBlIqbQ3b23K3uJsy/bzYv
-         5k2A==
+        b=o85pmsOz6PosEqVeKuE3sAcnKhnvyF6amUD98/wYBcgcDmqiwPrTl9F36PTdBBCm7N
+         Y5eeRROI/FYLh4aXJoVbPP0ZsTryxDTOGY1iAJTlj32BlDGt8oYYzwNtJzWAnKsf0yK6
+         dDEqKDpUfjqN/WmmdGr9STRUKUcikDLQ63pBpVeUwaiW+udsAENsYs1Jwj+75r34MGL6
+         ZKI3qlrSglfsLJkR/KPxKyRzJXcxFDKBSI5Tz9VnfpTCNs/Q0rfewCyT9GTROnsa8Gmt
+         4H08INu6CNGIy3cALr1qc8w+AOuAX1k/8W5MQ2LwAKqAAsrKnPaxz4mOmgo5IwOdT41D
+         9C3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=eylwKSGtQQ2tQiBFxA8IPKj60krKNgSMV1bTSaAc7kw=;
-        b=yIRjiHKWkh3RmgvbsZvUi9CsV5N+HniXeLdVPd/FKGJjKwa68WoMisb4I51CMhp9oe
-         AjmNtRCxsl/RsVcWrT1YEFozYSsKL9qg3QlW8ykoZn7X1a4vSpywgTfc8PgEgvI+KUJw
-         fon1f0ML15tiHVQ8eK2WRwIb6Nt/oA84ZUUWBTKzwFT1lUt6QsCWLrgfIpjv11MW24oi
-         2M8sJAcSkeilxa5gbdKh5D8AvnacL0k1Ehm3VN7QLAHg7RTx5Y/7QbLMgRZdD8im2Vef
-         UkRKTdn7jVxLQ+fZirm9DaddftdQu/IQPASc019lOWum4i85+XtU6UMmxBMZpwYHLANI
-         wbaQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date;
+        bh=K/mkgYcKWrBpATTZxPPv05gahdf5B5v3fNRdQuFHAfg=;
+        b=DGnDBTwLi4IkN1qo1khMlh2TIcJAovDH7VNE+7R3rHKh+8/SgzoMATpwGqZCR1bhYh
+         8/wFsdW6xzf5Z345DnoMFwaznLyakezMoLi0Grq5I+oHqYSb3W1Gi9zpS0KBEU3zxox9
+         Xj22UzLuNmLRbC/wyIi5F7NYKTTbeUNorL0kHdojYv02FPXrS/m1g7HQ1u9eNE1ekoh/
+         s8IW+80EJrRtME0NH9q8teXN/gG5+1+BArtGXFbyTLqFPP4wZiV//9ZcawBZALTYUOLX
+         vL7Ufz52QE4BuQz7mwDw378umAl8oeku7OCX9Be0cNhZez6PRFtVOFWJ1VERXlCPimif
+         K/bA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i3XZm36F;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id ml9si116070pjb.2.2020.03.16.17.50.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 17:50:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id n7si603977wmc.1.2020.03.13.09.50.42
+        for <outreachy-kernel@googlegroups.com>;
+        Fri, 13 Mar 2020 09:50:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i3XZm36F;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584406244;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eylwKSGtQQ2tQiBFxA8IPKj60krKNgSMV1bTSaAc7kw=;
-	b=i3XZm36FJnV5Fk4qbilVFJMz0KZLm1P40POB5z+O0SlmMT6PAlEXFhTRyRch89/NVVZxds
-	i+9lxFPnW60rXKXW4JfdWyGT2Pj7o5hVlnIHN8ce1vET8kw2e11ZEvuaPr9mcpSzfpmZES
-	ThTdxvtfVxRhmSri5Jez7Iewl5QHNRU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-156-e62QRTMYNdiF8mboFDdCwA-1; Mon, 16 Mar 2020 20:50:39 -0400
-X-MC-Unique: e62QRTMYNdiF8mboFDdCwA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5058E477;
-	Tue, 17 Mar 2020 00:50:38 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 212FA92D0C;
-	Tue, 17 Mar 2020 00:50:35 +0000 (UTC)
-Date: Tue, 17 Mar 2020 01:50:30 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: R Veera Kumar <vkor@vkten.in>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sudip Mukherjee
- <sudipm.mukherjee@gmail.com>, Teddy Wang <teddy.wang@siliconmotion.com>,
- outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH v3] staging: sm750fb: Better Fix of
- long line in makefile variable
-Message-ID: <20200317015030.0de5ef50@elisabeth>
-In-Reply-To: <20200313165018.GA3172@tulip.local>
-References: <20200313165018.GA3172@tulip.local>
-Organization: Red Hat
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 27685 invoked from network); 13 Mar 2020 16:50:39 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.246.187.131)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 13 Mar 2020 16:50:39 -0000
+Date: Fri, 13 Mar 2020 22:20:30 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3] staging: sm750fb: Better Fix of long line in makefile
+ variable
+Message-ID: <20200313165018.GA3172@tulip.local>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-On Fri, 13 Mar 2020 22:20:30 +0530
-R Veera Kumar <vkor@vkten.in> wrote:
+A simple fix of long line in makefile variable assignment.
+Found using checkpatch.pl.
 
-> A simple fix of long line in makefile variable assignment.
-> Found using checkpatch.pl.
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+Changes in v3:
+ - change make variable definition using a clean style
+Changes in v2:
+ - Make the subject line imperative one
+---
+ drivers/staging/sm750fb/Makefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Same comment as v2 for your rtl8172 patch: I think "Better" should be
-omitted in the commit title. It looks good to me otherwise.
-
+diff --git a/drivers/staging/sm750fb/Makefile b/drivers/staging/sm750fb/Makefile
+index 1cf3849cef23..b89aa4c12e9d 100644
+--- a/drivers/staging/sm750fb/Makefile
++++ b/drivers/staging/sm750fb/Makefile
+@@ -1,5 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ obj-$(CONFIG_FB_SM750)	+= sm750fb.o
+ 
+-sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o ddk750_chip.o ddk750_power.o ddk750_mode.o
+-sm750fb-objs		+= ddk750_display.o ddk750_swi2c.o ddk750_sii164.o ddk750_dvi.o ddk750_hwi2c.o
++sm750fb-objs		:= sm750.o sm750_hw.o sm750_accel.o sm750_cursor.o \
++			   ddk750_chip.o ddk750_power.o ddk750_mode.o \
++			   ddk750_display.o ddk750_swi2c.o ddk750_sii164.o \
++			   ddk750_dvi.o ddk750_hwi2c.o
 -- 
-Stefano
+2.20.1
 
 
