@@ -1,109 +1,125 @@
 X-GM-THRID: 6803797198848917504
-X-Received: by 2002:aca:bd46:: with SMTP id n67mr1653314oif.120.1584407906387;
-        Mon, 16 Mar 2020 18:18:26 -0700 (PDT)
+X-Received: by 2002:a25:abc8:: with SMTP id v66mr21459801ybi.36.1584136498466;
+        Fri, 13 Mar 2020 14:54:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:49cc:: with SMTP id w195ls6257428oia.10.gmail; Mon, 16
- Mar 2020 18:18:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuvuxSyATRSVnQrPywjPz83x6a40S/TDjPA+RzMXYOgP4PT26npYmU8ImsT/iRPthfbATL3
-X-Received: by 2002:a05:6808:103:: with SMTP id b3mr1795754oie.46.1584407905330;
-        Mon, 16 Mar 2020 18:18:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584407905; cv=none;
+Received: by 2002:a25:d851:: with SMTP id p78ls3389167ybg.3.gmail; Fri, 13 Mar
+ 2020 14:54:57 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvzXSJQCWOWOZCPvKhJpBgHW6n3SqKjEnHfA4vWRi3tPpAW8A4CBs58ivqPB8awDA7r8Mx6
+X-Received: by 2002:a25:b904:: with SMTP id x4mr19889472ybj.184.1584136497020;
+        Fri, 13 Mar 2020 14:54:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584136497; cv=none;
         d=google.com; s=arc-20160816;
-        b=uLWRpyBxmNWCkEDcXAUXUyMSwk22IHpPtZJatUrsxsVgfyOIUsbNi4mhe5ajEI+qwc
-         M688YfR06KtqZmDcoRynsikTMLnxIQVRGW6l0Z2BdyHjDnz/lRkbdzshDrECO7Z3O/0W
-         2382fuSG3O5OwRChhQQ1A7VQ+U80fDKg/Cu4K/8NRVjW5UFEdKonSeey/FN79BZlQwwc
-         mTpi85jYNICh7dWeAa3caopHV7sWVHYAPHqv1accCPwXwS1BqfWAvunNzJr46Ml18yC9
-         Hq9chYM0pTzRhEPYLkepAH3/vQdpsQSgOaHwH0AWbamM5XQCcjgRmYDtBg88LkNMxrEr
-         qXkw==
+        b=BrOdQYO7nBKVt+8Ras8lsU0BcRTlf9f67247tU+yh8hdqP5ytoQCxE1Ydn5zYazrv/
+         uP7gCMEnPj2h+MTkbO9PgKy944lz682+6mCT6jD5v4BeNVqWcIutrVNGmVP5ezqKoAhT
+         j3ce59qsbDsu3Wr0KaqN9H+8c+Xv2X89JsMbs/xHyXR54prxuJ0yJBguEXJX9UEkflVQ
+         x2Km9isW+FGjHrmcDvM1pOQQ7attj/3Q+Y7Apq6AZbVyBfbUKiX0UYDLqhJyexRW7KDy
+         8ocewxD8nTZyarJ00EJRDPipDdCKjd94vzSaU7LPIUe7OWaIBqtNC0AVWJkLXf4Bk7oP
+         8mjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=FUULoYohHYGzXbeRQZMl1HUZSdYW7f+GtFs15k2lwCQ=;
-        b=yZGNztq8SCCMDmnydBx8eWLmOopKyDXrXEvwFNzxcOY77wpQeV1ri54/12ni8MRy9Y
-         a3rj4R8o5aATJZDTXZu2lPpI6/0Ny1lENt8V151T1Ir6JhUGQDj4kTGxx1ZwXBDjljGS
-         A+W97N3XpJ8IfUs87mDG9VDGyowQMRTofS4YTZFxtjOp06eSIXGtfjPObmloslXbobi9
-         2hN++RfMxQMD8TFPRHpeHeHeqOmwBxK7FxzLJ6qHHuoFS89UeidOgYwieWbUql9VL3Jj
-         zlnFsSqAgNXiQzzYnjJuGvuRmyayu82THazh+TINXJnnA6VNOYnfJSPCkNu8rdkgk3XD
-         LCzw==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=haF1c/b5KW4qKJiX5VoVcqarHGhn3TY6tRTH5E4LL2o=;
+        b=cTRUNWOtsIFweTcHdSXUVuDfgS43ruuCqLBEpSYwt/Oo0xPCHtlN8oF8mEqs5pzTj3
+         IYee4guYmx/PYl6egxakpEvyPHZXjMx4Fp5+LO2oR3hLl9uVfFLwE95NzGc6ZQQ8E6mY
+         KYveqcFrR/zzVY0kmRdQsSn43XM4YQHaPtvEoaNSNrc9qq/pwEa+DbbxDzMWBXR8ZxBi
+         QmUaOq2hkp5DOHrTy6mwu/NBgFBViYHRJaxp1TNyh1FS02LWBTRL2yAGk8OoE4AiVKX1
+         mp2VZygerpTyhQaznuOZNb8F3rg/+VqLgcPKs5IYm1EZ9wF7FV3dRqtOo9TyitRcyElL
+         6aSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S11b4aju;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id o10si128393oic.1.2020.03.16.18.18.25
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=gPCrHkQu;
+       spf=neutral (google.com: 2607:f8b0:4864:20::441 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
+Return-Path: <kgupta@es.iitr.ac.in>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id 207si312324ybe.5.2020.03.13.14.54.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 18:18:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 14:54:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::441 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S11b4aju;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584407904;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FUULoYohHYGzXbeRQZMl1HUZSdYW7f+GtFs15k2lwCQ=;
-	b=S11b4aju+i4UeF1va8IxEcI/ly7BZEKuolhAI6tCw5ow6PPqlMdh9sVQ6Y4KfAuwJTSdvp
-	8vIJBhLR178rwZa9l/BTcFWAa03A1zDgrax9QuDFZy+25u+glx0NFQuvG5aUnGKn/sjfZh
-	Ege8Z1f7JxF0zHXv0AVW8PPxsPVDPg8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-32-m9y-lKLOOi2qj0W519r1MQ-1; Mon, 16 Mar 2020 21:18:20 -0400
-X-MC-Unique: m9y-lKLOOi2qj0W519r1MQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6A8D38010F0;
-	Tue, 17 Mar 2020 01:18:19 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7CA5919C7F;
-	Tue, 17 Mar 2020 01:18:15 +0000 (UTC)
-Date: Tue, 17 Mar 2020 02:18:09 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Kaaira Gupta <kgupta@es.iitr.ac.in>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v2 0/4] patchset for clean-ups in
- media
-Message-ID: <20200317021809.252e858a@elisabeth>
+       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=gPCrHkQu;
+       spf=neutral (google.com: 2607:f8b0:4864:20::441 is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=iitr.ac.in
+Received: by mail-pf1-x441.google.com with SMTP id c19so6058835pfo.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 14:54:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=haF1c/b5KW4qKJiX5VoVcqarHGhn3TY6tRTH5E4LL2o=;
+        b=gPCrHkQupXspE/76kRsNUj4xHlGTklys2/gHi2PqmVWa2Dv9l4bX+DAZA7vEP1vzXi
+         GaCHSAIhEThcbRJtIx/P9oaZRnXzM9fgIpCpE/dhJIpGnW7Jomkl1sHH8D+TgkogqBJi
+         z1qglRiPbbVxW9yDE9jpLe6IN0I7a+6uQgI+WmJPdPRcwp86NgcE8PHKIaqnMYiM8NaA
+         svD2NkoYfd/ug96vVWWODEM1MS05H90hs1HuZcZW7ug9Z5nIgtocIfm+XOxW+eTfoyio
+         6nDsUO7Pfe9V8OmwyVt0M5+iqaUAilg+rk6G8cz+gF64oxTXVCShbz/ReEmaRKd536R7
+         pTmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=haF1c/b5KW4qKJiX5VoVcqarHGhn3TY6tRTH5E4LL2o=;
+        b=GPnuNlE4NGLqCaqtmjD77VnMFOejlR0YjTc/3kfO6le42s9a2+UxY0w0NYjfrQJcYa
+         EjeR5bmJDf7XP/0+AlG7xn3PXHk6/iYG0PurmOc4rfW5BFzTbxIWGK8NwLDDwxDiSEqr
+         wB7cvQk4kYPlSWFJVaC+Fj5KcXU0j/2AnsAq2vsNb3zW5OG+H5R877Ek/rJsVJtiJiU7
+         Y5fvLs94CcY1L7ZxQ/Pi/oNzcIB+0ru1Kuw9iSrfmqresDlvVQL3LH/MpoSgXRRhVhbu
+         DMY20LJk+K5KtZ8F3GSQZCKPI9EFgUXciRMG91TK/Krhn+6RPx7WIT/DVK8D0YEKF5as
+         II6Q==
+X-Gm-Message-State: ANhLgQ1RRgx+hZLAy9BKcnmguFEBwvz+RMqgO4vHre1AfGKm32LYkfFp
+	OKDCQN4uDoa7S9pfvkI9p1IODU9jqSY=
+X-Received: by 2002:a62:ae0f:: with SMTP id q15mr5092320pff.72.1584136495810;
+        Fri, 13 Mar 2020 14:54:55 -0700 (PDT)
+Return-Path: <kgupta@es.iitr.ac.in>
+Received: from kaaira-HP-Pavilion-Notebook ([103.113.213.153])
+        by smtp.gmail.com with ESMTPSA id r186sm2438051pfc.181.2020.03.13.14.54.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Mar 2020 14:54:55 -0700 (PDT)
+From: Kaaira Gupta <kgupta@es.iitr.ac.in>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Cc: Kaaira Gupta <kgupta@es.iitr.ac.in>
+Subject: [PATCH v2 4/4] staging: media: hantro: remove parentheses
+Date: Sat, 14 Mar 2020 03:24:06 +0530
+Message-Id: <20200313215406.2485-5-kgupta@es.iitr.ac.in>
+X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200313215406.2485-1-kgupta@es.iitr.ac.in>
 References: <20200313215406.2485-1-kgupta@es.iitr.ac.in>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
 
-On Sat, 14 Mar 2020 03:24:02 +0530
-Kaaira Gupta <kgupta@es.iitr.ac.in> wrote:
+Remove unnecessary parentheses in file hantro_postproc.c. Check reported
+by coccinelle.
 
-> Changes since v1:
-> Renumbered the patches to account for a deleted patch in the series.
-> 
-> Patch 1: No Change
-> Patch 2: No Change
-> Patch 3: No Change
-> Patch 4: Correct subject line from `hanto` to `hantro`. And remove
-> unnecessary parentheses around `vpu` and `val` as well.
-> Patch 5: Deleted: No precedence issues possible.
-> 
-> Kaaira Gupta (4):
->   staging: media: allegro: align with parenthesis
->   staging: media: imx: remove temporary variable
->   staging: media: imx: remove parentheses
->   staging: media: hantro: remove parentheses
+Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+---
+ drivers/staging/media/hantro/hantro_postproc.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-For the series,
-
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index 28a85d301d7f..44062ffceaea 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -14,16 +14,16 @@
+ 
+ #define HANTRO_PP_REG_WRITE(vpu, reg_name, val) \
+ { \
+-	hantro_reg_write((vpu), \
+-			 &((vpu)->variant->postproc_regs->reg_name), \
+-			 (val)); \
++	hantro_reg_write(vpu, \
++			 &(vpu)->variant->postproc_regs->reg_name, \
++			 val); \
+ }
+ 
+ #define HANTRO_PP_REG_WRITE_S(vpu, reg_name, val) \
+ { \
+-	hantro_reg_write_s((vpu), \
+-			   &((vpu)->variant->postproc_regs->reg_name), \
+-			   (val)); \
++	hantro_reg_write_s(vpu, \
++			   &(vpu)->variant->postproc_regs->reg_name, \
++			   val); \
+ }
+ 
+ #define VPU_PP_IN_YUYV			0x0
 -- 
-Stefano
+2.17.1
 
 
