@@ -1,180 +1,204 @@
 X-GM-THRID: 6804107396790616064
-X-Received: by 2002:adf:d844:: with SMTP id k4mr24829782wrl.21.1584205862112;
-        Sat, 14 Mar 2020 10:11:02 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:5233:: with SMTP id i19ls6679712wra.6.gmail; Sat, 14 Mar
- 2020 10:11:00 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtmmXYQf0vEzS2LfdDOIKD3lCM1Z8tB1RnQsPodbLxE0v2WEJmVnwITRJyJSPJQZCK8AvSC
-X-Received: by 2002:a5d:640a:: with SMTP id z10mr21428683wru.301.1584205860781;
-        Sat, 14 Mar 2020 10:11:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584205860; cv=none;
-        d=google.com; s=arc-20160816;
-        b=aJ7ES9jZGiTYbAny/QS2EZwA4B1X4oh5whLpAzAL+1uFsAX3FApoeWADhu62G54zrb
-         veq52oOwADDK9iquiSXuO3oxjoMqKNSrb7pf/3EG9VJI74pCVFsv9VuF4L+Nnlx052U3
-         3TzfUyeYHjjv37zGyiCWct5EvjFF3WbI53b0BZ2lwoiMxk7WJ6OzdZN77+bqguApxh7c
-         EMP8XAxTZBHrGxUVdCTQyMNZ59Gcnc374uBdoethOJFwEwx1oJVvT7dKF+Pf/Ajjs9kB
-         khEu1GPW1lB0Hqwr5K5v7pMogQISw8qqBvauQ0W5lG6bLnIUYlq8K8vKfq63Kf5PuLTe
-         tNPA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=TQ6dZumDSZBsbGelfFPHMurv9pnh7ngsCZA83lzQ5zQ=;
-        b=q5e51E+FqvtE777oeKpZFfbsG1Ske3OAd3mylOtCJCcI9q8tMVcGudW7DgHhup13N+
-         0TF11drRtbH3OCHF+3QJbPplTCBe4XMcQF3TjkFP4cW6XRmhR6VmH+8aXsHmNJmxuZKQ
-         BNhDx+GaLG+QAneSwVgfdmjRi6rTTeY2nK3mJkdtcqsshP3btKslj+k/DIzqPkprRv30
-         VIGBfgmDuQa0Ux+7g0nsUFPwLU1eMNdAbi82iFN3VVZrGOQbTs/75lrUMwyGRKNtyDcw
-         Uu38W6qZAXQV7DpeLzSOXFU9zGBBzV6hGqxDRAM4iQUCoockr0Zu6BcEFEATM3oVkgY7
-         4E1A==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id o194si752806wme.2.2020.03.14.10.11.00
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Mar 2020 10:11:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
-Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,553,1574118000"; 
-   d="scan'208";a="342369904"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2020 18:11:00 +0100
-Date: Sat, 14 Mar 2020 18:10:59 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Deepak Varma <mh12gx2825@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Date: Sat, 14 Mar 2020 10:04:37 -0700 (PDT)
+From: Deepak Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <7842c46c-710b-4a2a-bf46-396ed319e2a6@googlegroups.com>
+In-Reply-To: <alpine.DEB.2.21.2003141756000.3026@hadrien>
+References: <20200314165130.GA18939@deeUbuntu>
+ <alpine.DEB.2.21.2003141756000.3026@hadrien>
 Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: ni_atmio16d: remove
  commented code blocks
-In-Reply-To: <7842c46c-710b-4a2a-bf46-396ed319e2a6@googlegroups.com>
-Message-ID: <alpine.DEB.2.21.2003141808100.3026@hadrien>
-References: <20200314165130.GA18939@deeUbuntu> <alpine.DEB.2.21.2003141756000.3026@hadrien> <7842c46c-710b-4a2a-bf46-396ed319e2a6@googlegroups.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-170443489-1584205860=:3026"
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_3802_1369150962.1584205478269"
+X-Google-Token: EKWdtPMFbV36yHvpSg40
+X-Google-IP: 103.228.147.139
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+------=_Part_3802_1369150962.1584205478269
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3803_1734225593.1584205478269"
 
---8323329-170443489-1584205860=:3026
+------=_Part_3803_1734225593.1584205478269
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 
 
 
-On Sat, 14 Mar 2020, Deepak Varma wrote:
+On Saturday, 14 March 2020 22:27:15 UTC+5:30, Julia Lawall wrote:
+>
+>
+>
+> On Sat, 14 Mar 2020, Deepak R Varma wrote: 
+>
+> > Remove two if# 0 directive code blocks. The first commented code block 
+>
+> #if 
+>
+> > is redundant too; whereas the other code block is never used. Problem 
+>
+> Why do you say that the first one is redundant? 
+>
+> julia 
+>
 
->
->
-> On Saturday, 14 March 2020 22:27:15 UTC+5:30, Julia Lawall wrote:
->
->
->       On Sat, 14 Mar 2020, Deepak R Varma wrote:
->
->       > Remove two if# 0 directive code blocks. The first commented
->       code block
->
->       #if
->
->       > is redundant too; whereas the other code block is never used.
->       Problem
->
->       Why do you say that the first one is redundant?
->
->       julia
->
->
-> The instructions in if and else block are exactly the same. so, if or else,
-> you are going to run the same instruction. Let me know if I misunderstood or
-> misquoted.
+The instructions in if and else block are exactly the same. so, if or else, 
+you are going to run the same instruction. Let me know if I misunderstood 
+or misquoted.
 
-Since one of them is under an #if 0, the current effect is quite
-different.  Only the statement in the then branch will be executed.
+Thank you.
 
-Redundant would be eg:
 
-x = 0;
-x = 0;
-
-There is no point in having the second line, because x is already 0.
-
-Even without the #if 0, if you have:
-
-if (x)
-  y = 0;
-else y = 0;
-
-It doesn't seem reasonable to say that the second y = 0 is redundant. It
-is the if that is is not necessary.  But once you have the if, you need
-both the then and else branches.
-
-julia
-
+> > detected by checkpatch script. 
+> > 
+> > Signed-off-by: Deepak R Varma <mh12g...@gmail.com <javascript:>> 
+> > --- 
+> >  drivers/staging/comedi/drivers/ni_atmio16d.c | 10 ---------- 
+> >  1 file changed, 10 deletions(-) 
+> > 
+> > diff --git a/drivers/staging/comedi/drivers/ni_atmio16d.c 
+> b/drivers/staging/comedi/drivers/ni_atmio16d.c 
+> > index 68ad9676f962..0bca7d752015 100644 
+> > --- a/drivers/staging/comedi/drivers/ni_atmio16d.c 
+> > +++ b/drivers/staging/comedi/drivers/ni_atmio16d.c 
+> > @@ -266,19 +266,9 @@ static int atmio16d_ai_cmdtest(struct comedi_device 
+> *dev, 
+> >          if (cmd->scan_begin_src == TRIG_FOLLOW) { 
+> >                  /* internal trigger */ 
+> >                  err |= 
+> comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0); 
+> > -        } else { 
+> > -#if 0 
+> > -                /* external trigger */ 
+> > -                /* should be level/edge, hi/lo specification here */ 
+> > -                err |= 
+> comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0); 
+> > -#endif 
+> >          } 
+> > 
+> >          err |= comedi_check_trigger_arg_min(&cmd->convert_arg, 10000); 
+> > -#if 0 
+> > -        err |= comedi_check_trigger_arg_max(&cmd->convert_arg, 
+> SLOWEST_TIMER); 
+> > -#endif 
+> > - 
+> >          err |= comedi_check_trigger_arg_is(&cmd->scan_end_arg, 
+> >                                             cmd->chanlist_len); 
+> > 
+> > -- 
+> > 2.17.1 
+> > 
+> > -- 
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group. 
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreach...@googlegroups.com <javascript:>. 
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/20200314165130.GA18939%40deeUbuntu. 
 >
-> Thank you.
+> > 
 >
->
->       > detected by checkpatch script.
->       >
->       > Signed-off-by: Deepak R Varma <mh12g...@gmail.com>
->       > ---
->       >  drivers/staging/comedi/drivers/ni_atmio16d.c | 10 ----------
->       >  1 file changed, 10 deletions(-)
->       >
->       > diff --git a/drivers/staging/comedi/drivers/ni_atmio16d.c
->       b/drivers/staging/comedi/drivers/ni_atmio16d.c
->       > index 68ad9676f962..0bca7d752015 100644
->       > --- a/drivers/staging/comedi/drivers/ni_atmio16d.c
->       > +++ b/drivers/staging/comedi/drivers/ni_atmio16d.c
->       > @@ -266,19 +266,9 @@ static int atmio16d_ai_cmdtest(struct
->       comedi_device *dev,
->       >          if (cmd->scan_begin_src == TRIG_FOLLOW) {
->       >                  /* internal trigger */
->       >                  err |=
->       comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0);
->       > -        } else {
->       > -#if 0
->       > -                /* external trigger */
->       > -                /* should be level/edge, hi/lo specification
->       here */
->       > -                err |=
->       comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0);
->       > -#endif
->       >          }
->       >
->       >          err |=
->       comedi_check_trigger_arg_min(&cmd->convert_arg, 10000);
->       > -#if 0
->       > -        err |=
->       comedi_check_trigger_arg_max(&cmd->convert_arg, SLOWEST_TIMER);
->       > -#endif
->       > -
->       >          err |=
->       comedi_check_trigger_arg_is(&cmd->scan_end_arg,
->       >                                            
->       cmd->chanlist_len);
->       >
->       > --
->       > 2.17.1
->       >
->       > --
->       > You received this message because you are subscribed to the
->       Google Groups "outreachy-kernel" group.
->       > To unsubscribe from this group and stop receiving emails from
->       it, send an email to outreach...@googlegroups.com.
->       > To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/20200314165130.GA18939%4
->       0deeUbuntu.
->       >
->
-> --
-> You received this message because you are subscribed to the Google Groups
-> "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an
-> email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/7842c46c-710b-4a2a-bf46-
-> 396ed319e2a6%40googlegroups.com.
->
->
---8323329-170443489-1584205860=:3026--
+
+------=_Part_3803_1734225593.1584205478269
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Saturday, 14 March 2020 22:27:15 UTC+5:30, Juli=
+a Lawall  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin=
+-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On Sat, 14 Mar 2020, Deepak R Varma wrote:
+<br>
+<br>&gt; Remove two if# 0 directive code blocks. The first commented code b=
+lock
+<br>
+<br>#if
+<br>
+<br>&gt; is redundant too; whereas the other code block is never used. Prob=
+lem
+<br>
+<br>Why do you say that the first one is redundant?
+<br>
+<br>julia
+<br></blockquote><div><br></div><div>The instructions in if and else block =
+are exactly the same. so, if or else, you are going to run the same instruc=
+tion. Let me know if I misunderstood or misquoted.</div><div><br></div><div=
+>Thank you.<br></div><div> <br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left:=
+ 1ex;">
+<br>&gt; detected by checkpatch script.
+<br>&gt;
+<br>&gt; Signed-off-by: Deepak R Varma &lt;<a href=3D"javascript:" target=
+=3D"_blank" gdf-obfuscated-mailto=3D"eLL4oIsNAwAJ" rel=3D"nofollow" onmouse=
+down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
+f=3D&#39;javascript:&#39;;return true;">mh12g...@gmail.com</a>&gt;
+<br>&gt; ---
+<br>&gt; =C2=A0drivers/staging/comedi/<wbr>drivers/ni_atmio16d.c | 10 -----=
+-----
+<br>&gt; =C2=A01 file changed, 10 deletions(-)
+<br>&gt;
+<br>&gt; diff --git a/drivers/staging/comedi/<wbr>drivers/ni_atmio16d.c b/d=
+rivers/staging/comedi/<wbr>drivers/ni_atmio16d.c
+<br>&gt; index 68ad9676f962..0bca7d752015 100644
+<br>&gt; --- a/drivers/staging/comedi/<wbr>drivers/ni_atmio16d.c
+<br>&gt; +++ b/drivers/staging/comedi/<wbr>drivers/ni_atmio16d.c
+<br>&gt; @@ -266,19 +266,9 @@ static int atmio16d_ai_cmdtest(struct comedi_=
+device *dev,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (cmd-&gt;=
+scan_begin_src =3D=3D TRIG_FOLLOW) {
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* internal trigger */
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0err |=3D comedi_check_trigger_arg_is(&a=
+mp;<wbr>cmd-&gt;scan_begin_arg, 0);
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else {
+<br>&gt; -#if 0
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* external trigger */
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* should be level/edge, hi/lo specificati=
+on here */
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0err |=3D comedi_check_trigger_arg_is(&amp;=
+<wbr>cmd-&gt;scan_begin_arg, 0);
+<br>&gt; -#endif
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+<br>&gt;
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0err |=3D com=
+edi_check_trigger_arg_min(&amp;<wbr>cmd-&gt;convert_arg, 10000);
+<br>&gt; -#if 0
+<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0err |=3D comedi_c=
+heck_trigger_arg_max(&amp;<wbr>cmd-&gt;convert_arg, SLOWEST_TIMER);
+<br>&gt; -#endif
+<br>&gt; -
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0err |=3D com=
+edi_check_trigger_arg_is(&amp;<wbr>cmd-&gt;scan_end_arg,
+<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 cmd-&gt;chanlist_len);
+<br>&gt;
+<br>&gt; --
+<br>&gt; 2.17.1
+<br>&gt;
+<br>&gt; --
+<br>&gt; You received this message because you are subscribed to the Google=
+ Groups &quot;outreachy-kernel&quot; group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
+ailto=3D"eLL4oIsNAwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
+ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
+turn true;">outreach...@<wbr>googlegroups.com</a>.
+<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
+.google.com/d/msgid/outreachy-kernel/20200314165130.GA18939%40deeUbuntu" ta=
+rget=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://gr=
+oups.google.com/d/msgid/outreachy-kernel/20200314165130.GA18939%40deeUbuntu=
+&#39;;return true;" onclick=3D"this.href=3D&#39;https://groups.google.com/d=
+/msgid/outreachy-kernel/20200314165130.GA18939%40deeUbuntu&#39;;return true=
+;">https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>20200314165=
+130.GA18939%<wbr>40deeUbuntu</a>.
+<br>&gt;
+<br></blockquote></div>
+------=_Part_3803_1734225593.1584205478269--
+
+------=_Part_3802_1369150962.1584205478269--
 
