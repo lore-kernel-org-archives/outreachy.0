@@ -1,114 +1,125 @@
 X-GM-THRID: 6803689046764683264
-X-Received: by 2002:a92:5fc1:: with SMTP id i62mr2389729ill.15.1584407156652;
-        Mon, 16 Mar 2020 18:05:56 -0700 (PDT)
+X-Received: by 2002:a67:2701:: with SMTP id n1mr10832749vsn.103.1584147251182;
+        Fri, 13 Mar 2020 17:54:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3084:: with SMTP id q126ls2400494jaq.6.gmail; Mon, 16
- Mar 2020 18:05:55 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvdD0qvw6eFGZB7gAn1AF11A+bDeHlYGoVRIryl96kMavyw+gbBuPFbKUmfu+XU0CeKrH7n
-X-Received: by 2002:a02:856a:: with SMTP id g97mr2574236jai.97.1584407155323;
-        Mon, 16 Mar 2020 18:05:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584407155; cv=none;
+Received: by 2002:a67:f315:: with SMTP id p21ls1487856vsf.1.gmail; Fri, 13 Mar
+ 2020 17:54:09 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt9pCKn9aldryPA6JgGpJvrE/u6DNyN4wCXAOjNl9e+PyZ/I/SKD3nF0szWugI0SXdz44J7
+X-Received: by 2002:a67:5ec6:: with SMTP id s189mr4266906vsb.56.1584147249379;
+        Fri, 13 Mar 2020 17:54:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584147249; cv=none;
         d=google.com; s=arc-20160816;
-        b=xctW95qzFNCAEq4KoYpsgwcp705Oh1Tw4gSevQsQAhLY9kWeGtpgwc09li/myub34k
-         GUy8jKDQZN9fhZVV5VQkR+WZ82WSuTLYla6b7d9eEULyun7xOQkiUoyF2Kppq3rXm3Fb
-         NikBI+X1Ar5NSPm0WWbLUPxPrXKWwNOE35+zch+LOppoibH3TWzVjT8QvB61LKH3GdcW
-         itSbs+SEItl4FvX2dkpOKt2cj46NxwC/hlbITJIwVPTKqGg/YVy2tl+r/W6cXmgTTzyz
-         jX94dmgdSBP8cUqQlLuxLtPe5fvCc5Y2EBRXBBmlEMxaf6CvFO/x+uyx2aopxDQFXZfL
-         2FCw==
+        b=KZqM6iJH7k3makZn1J0qwwTpzcL5OivLjmgdPh5CW3CJwJjgyKTFMjvfYWOHdnSJ/t
+         K0AH01bqr7H3vk4EzdVqm0wl3ar3wxW+9fs1dzcWuomAkboGrEQeGyMUrewIMagg1oT1
+         iSoEl0MpBMnI84KBz8rDWYbVkQQi2CRi3KO5zaVQPwGJhXsCVnsKsRwFd9mLRqzQwBiy
+         kBMmUeAdWdX0v8ys98zZylRrYUYhVmcfXp9cvQxRyF2DZKt26r7Ad7vg+LxBFtLIylcJ
+         iL1au7LuQYXElJOIBQf/Aw+ETLRYEcfJLG4XPpamHCFbnFKMhhe09Bd8qs/ARkdD4GhW
+         +RrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=2xBC9BIhVpGHL2x4i2Jzb6AKCqMo7ef2u/OAkj0OGrk=;
-        b=C4Rz0cR0vvgPJ1vyeXD4MQKndhRLVooquX8G7/5Gz7nbPbpNUYhM56oyWdRIxEznkR
-         bwUsSoeQNH8mQfUQpCYSIRYRjkB9yfj+tNIdkQifa92WkgFDImLyczTHQRJHw4dxi5/r
-         LlsdB15Vrwscar/TlFoshqqHX8YnLo6X+OMbJH5sM1V4yWPedIrsBN7xMYdf20MuIkWj
-         +cI4sdCZpiFFUp5Z/CVpfVDNRK+uq1VRki3TCB7mkBI6CpoWz4NMLWzs0oZv7yBkK0wV
-         Bw14XobP/WpeNuKao9EkzK0hazYEo9PPA1xwS5f3W1lMh49sEMcWN1Hm8cikBjBtYn+i
-         +JNg==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=BxEs3b0sn7GB/g1imOxKxYJVftQK6AX69UvvFxipLzg=;
+        b=RM3Kzb6SRfOcB4hLfUitEgaXSaP6uXqsFjKI1liAjJZ8PMDpqn+xDoO1MZ1tCaEirb
+         YFfAEohWV+FNpOjcoUNCNm7zsOF56G/XR/pu5WzZaZi1hp8jTRgR7UvAEFue5WAFocK/
+         Fg4tyAkAPeAL9/3wiguPp9fFNP0sTGpGEwENU8AO0fNKPARdoKcRfx4dFJ+giUTozIja
+         7PaBKW+HckrpcWuETwhqs4v2jN94stowzqSspicXiGEXzMm8adjoap6w86A5KTQRr2lP
+         EYq7PgQiPxw2HYBsyk3VTfue1LWgC90P/hjzdNAP/irqJsk/UJhXrl9O8fN1EoplE+GY
+         9GlQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CIqCWIF6;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id q6si127353ild.2.2020.03.16.18.05.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OCTnpCHs;
+       spf=pass (google.com: domain of slongerbeam@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=slongerbeam@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <slongerbeam@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id g4si517524vke.3.2020.03.13.17.54.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 18:05:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 17:54:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of slongerbeam@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CIqCWIF6;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584407154;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2xBC9BIhVpGHL2x4i2Jzb6AKCqMo7ef2u/OAkj0OGrk=;
-	b=CIqCWIF6hly1JqawZNmP+3w9vFhv5d5zbhpGgeAWz85xxfkn3QRaWuDv+CWe/N8LBEzm/O
-	B9nXGSrIHCYnZy2gjFHIb0fjZwXOMzy/Ks29kEiWlWnIubcdKniw5ktGqZimXJktZsadzb
-	Y5SZJohXDANCUIo2CeP2EIw/npEMO68=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-414-393xmCbfNBuc1C-vwHUfBA-1; Mon, 16 Mar 2020 21:05:52 -0400
-X-MC-Unique: 393xmCbfNBuc1C-vwHUfBA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0EA97100550E;
-	Tue, 17 Mar 2020 01:05:51 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 48DFA1001B28;
-	Tue, 17 Mar 2020 01:05:46 +0000 (UTC)
-Date: Tue, 17 Mar 2020 02:05:37 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Enrique Vargas <jevargas@seas.upenn.edu>
-Cc: Steve Longerbeam <slongerbeam@gmail.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v3] Staging: media: imx: eliminate
- unused code
-Message-ID: <20200317020537.1eff25a3@elisabeth>
-In-Reply-To: <20200313172019.GA22581@evX1>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OCTnpCHs;
+       spf=pass (google.com: domain of slongerbeam@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=slongerbeam@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id c19so6296721pfo.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 17:54:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=subject:to:references:from:message-id:date:user-agent:mime-version
+         :in-reply-to:content-transfer-encoding:content-language;
+        bh=BxEs3b0sn7GB/g1imOxKxYJVftQK6AX69UvvFxipLzg=;
+        b=OCTnpCHsbX4AdiBu+K8EanMvEi9NmvqzTfcGlEPs75ud7TJ5gM1YoswW+fLIqiUe0U
+         oqQF4lglhIP4Uw6toAjPF9HbtpZ5uzVyyPnGdRVHVZwcV7sxcvyqyglyw2Yd4dGUrUAY
+         5DETfGUVtjKQ9G41Hw2aDvKRTDlECpEZ3Y5Vcwe4K65u3znpG5Fnn0fZzYt4X9mtVXXz
+         LNaDLnABajW/1ZmWsiusuj9g8EOiUY0+VBiVJtrwBv4wlreced9VB9ko6vZNV3eSmSy0
+         RkA8mlNqcr4S/OmDDwGQZZWY+ER5/x8Bs+CK59hPMbxFGwKlkqZ1Qkkz0rxXuRyePL28
+         PYlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-transfer-encoding
+         :content-language;
+        bh=BxEs3b0sn7GB/g1imOxKxYJVftQK6AX69UvvFxipLzg=;
+        b=mYMqV0R4dzIrLvUCfP4d0/DSBeSRziIKP16/L5q/P5Ed351mo8MlMIcgNYXhws2x9+
+         48fJlUosKRBI4z/3JYcaUkhnyN9qCbhDGd2tJAvTA819beLrCQFQ5MRrNYTA64fBI5U2
+         u6DyVcUq7HbjkVJFgQMsgB7W3HnnQY5usTkEOmSvMVn7nQIhZNj9fBSPjHg5ug3xDRDw
+         T2MGzQzhmcZYzv6np/xeS7FJcNPEv49Jt4EJANm4nVL88FZkgnuexChkvG1FZdS8IRLJ
+         epo3JlPSk+dtfCgt3tjRz2LcuIu/7Bqw2KY33hs3APPssnYbc/6wzaq3Fem4cVB8Rf2S
+         xB5w==
+X-Gm-Message-State: ANhLgQ0YrBQtfd2RtsRgZiY/xKDRauXbaGWaVuu2p4mXkWzhc+x8gl2w
+	vpjI7337ErYFWq1iWnnJMq8gwUx5IFM=
+X-Received: by 2002:a63:a35c:: with SMTP id v28mr16197380pgn.251.1584147248003;
+        Fri, 13 Mar 2020 17:54:08 -0700 (PDT)
+Return-Path: <slongerbeam@gmail.com>
+Received: from ?IPv6:2605:e000:d445:6a00:bd03:a881:a59:15cb? ([2605:e000:d445:6a00:bd03:a881:a59:15cb])
+        by smtp.gmail.com with ESMTPSA id i4sm1531716pfq.82.2020.03.13.17.54.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Mar 2020 17:54:07 -0700 (PDT)
+Subject: Re: [PATCH v3] Staging: media: imx: eliminate unused code
+To: Enrique Vargas <jevargas@seas.upenn.edu>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ outreachy-kernel@googlegroups.com
 References: <20200313172019.GA22581@evX1>
-Organization: Red Hat
+From: Steve Longerbeam <slongerbeam@gmail.com>
+Message-ID: <5e63bd2c-f5a4-8375-4cbc-c9b4ccac9cd0@gmail.com>
+Date: Fri, 13 Mar 2020 17:54:04 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200313172019.GA22581@evX1>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
+Content-Language: en-US
 
-On Fri, 13 Mar 2020 11:21:49 -0600
-Enrique Vargas <jevargas@seas.upenn.edu> wrote:
 
+
+On 3/13/20 10:21 AM, Enrique Vargas wrote:
 > Eliminate code that is never used inside #ifdef 0 / #endif.  This eliminates WARNING found using checkpatch.
-
-This should be wrapped to at most 76 characters, so that it can be
-displayed by git (e.g. git log) without exceeding 80 columns. Some
-personally prefer 72 columns or even less, I usually stick to 70.
-
+>
 > Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+
+Acked-by: Steve Longerbeam <slongerbeam@gmail.com>
+
 > ---
 > v2 Fix description typo with broken line
 > v3 Include change control, as suggested by Greg.
-> 
->  drivers/staging/media/imx/imx-media-csi.c | 8 +-------
->  1 file changed, 1 insertion(+), 7 deletions(-)
-> 
+>
+>   drivers/staging/media/imx/imx-media-csi.c | 8 +-------
+>   1 file changed, 1 insertion(+), 7 deletions(-)
+>
 > diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
 > index b60ed4f22f6d..2001f7851e90 100644
 > --- a/drivers/staging/media/imx/imx-media-csi.c
 > +++ b/drivers/staging/media/imx/imx-media-csi.c
 > @@ -1131,13 +1131,7 @@ static int csi_link_validate(struct v4l2_subdev *sd,
->  		 * enters the CSI's however, they are treated internally
->  		 * in the IPU as virtual channel 0.
->  		 */
+>   		 * enters the CSI's however, they are treated internally
+>   		 * in the IPU as virtual channel 0.
+>   		 */
 > -#if 0
 > -		mutex_unlock(&priv->lock);
 > -		vc_num = imx_media_find_mipi_csi2_channel(&priv->sd.entity);
@@ -117,16 +128,8 @@ personally prefer 72 columns or even less, I usually stick to 70.
 > -		mutex_lock(&priv->lock);
 > -#endif
 > +
->  		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
->  					  &priv->format_mbus[CSI_SINK_PAD]);
-
-By the way, now that you remove that, it's not clear from the comment
-why vc_num is even a variable. You could directly call
-ipu_csi_set_mipi_datatype() with 0 as channel (in this patch, or in
-another one, I don't have a strong preference -- I would personally
-do that in the same patch).
-
--- 
-Stefano
+>   		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
+>   					  &priv->format_mbus[CSI_SINK_PAD]);
+>   	}
 
 
