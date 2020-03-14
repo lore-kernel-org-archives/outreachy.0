@@ -1,118 +1,116 @@
 X-GM-THRID: 6804062901536555008
-X-Received: by 2002:aca:474e:: with SMTP id u75mr3104102oia.52.1584447407091;
-        Tue, 17 Mar 2020 05:16:47 -0700 (PDT)
+X-Received: by 2002:a05:620a:2142:: with SMTP id m2mr17534111qkm.365.1584194344214;
+        Sat, 14 Mar 2020 06:59:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:c441:: with SMTP id u62ls2423692oif.9.gmail; Tue, 17 Mar
- 2020 05:16:45 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtthb6MwjyeVHDbH5xsYsUT2539KvqUd7G8DPAepSNxSeicPXPxEmC75GPVjqIpsPkOW2Ai
-X-Received: by 2002:aca:4154:: with SMTP id o81mr3242570oia.125.1584447405750;
-        Tue, 17 Mar 2020 05:16:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584447405; cv=none;
+Received: by 2002:ac8:5057:: with SMTP id h23ls4996810qtm.8.gmail; Sat, 14 Mar
+ 2020 06:59:03 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuxA7aVMYmavpNhccUdtZhdk5R4XwQNDwkAoQ0ilLRNjqj+/5lJxHgiY9SIJiqoXq3YieoH
+X-Received: by 2002:aed:2169:: with SMTP id 96mr17900324qtc.124.1584194343156;
+        Sat, 14 Mar 2020 06:59:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584194343; cv=none;
         d=google.com; s=arc-20160816;
-        b=mOVn18v0uKWT6wuUmZlv+NgtIfRAfUaGH+OT5Iz4hf1h3AGWdb+oMqbg1htzZ3MzZn
-         ZpH9LF0vkEZhQsJwl0VC/+eSXjVkZfHQE4/Q8mO4c8n0gvdUWF+NUKVcIFoRc7BZK7Er
-         iIOM+7MENFjUsXT9vh/k5MFZRoXLISPCUqVFgCWkGt1t3R1j/ozqJWjAXtMeqppOXkwJ
-         BPOmKvDSkWROgRerxYlN0fp/62h4lGry9xs6aHFTe3UWJ4dj/m+KQgnFC43A9rguPtA4
-         MitOareaaMWv57b+aNLqNmX6KOYPnKu3npo0d4SsQwUTIpalnUpQ7kKD6U+QQVkINIaQ
-         hDPQ==
+        b=MonZGOdw0BfPvl0wzLKT/VKBeHqaiufRGPXTcQVEWK+HvN5Pu+kn936/O+2zRZ5ZqI
+         a202mj3CnraLf3mTKNdcrmQ7yRshelwu6K0X0B3qyeilhD2p9rVq3myZE2W4r0UwvA6E
+         MAJsyZy/sYtzxreBiv2ZXftNGYi5Pl1N5VI+K6HDy0+/dxy5u/6iWO6WU4o9KTs8+nJg
+         verQn9pcdS8NzumTgM9Uvr9k6dgoU2EsrYYE7ZYAcRQamo05PmlloztA4e29Y/2YXpdC
+         7yCEApGx60YPcpro0KMSP4WuXZkksN1z1SiMxyVikMIKGjZrr5tJupfuFmWnxBI266ze
+         6yuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=/9KA2rSdoSlQNXR7GSeivvYEYwO7BXSB0M7nJIPM5w0=;
-        b=ZXZ7qKbQSyPVqToYRqmeQtECAL6dMfF39kwBdS4qBr/MlCUb01h3tZI/HA9mViNOF6
-         k28BJoSDGPCLQFY5h21VCCrRCVDIED5NSo9EuCTJQhZ634grSYfd8nCIpBWO/IK65jaZ
-         YsGTPagXOCfHlWeWXzWZL5YM06/9121DR/s1jR+Q1lOAvYdr5OuwYz0h3dXYLhMhVI6R
-         0tWDqJP+f7hyp3wKtrA2ctOpjurnnrIcwDrQpnZkdT5x4Ogx7PvWgmlPIgg8GSaVFUH8
-         zA3KM4UD1jz78wS16d7XGe1blBuokou920fwFiES7ql971QflTPeZVN96wMJSwjtTgkl
-         o5pQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=cCCp57fkXiWhKuFd13Ij02QsZpOc2yU1Nv+KoqjoMsk=;
+        b=btdhPsSfXC8j9QFml0Y/Mm931gMij4aS+nyyCS2jARE67Jburo0it7LBeYWBCUUSHI
+         G0s0KzEutpPVs+8dUC+8aC1pqUa9W7tyLCjR6OV9mQdnGeOJ9MSD6oh7cXEurg/kLmuL
+         8SpZd1KK84lFE71U6qmaNsN+jyNccyLytW+GpZerDX1/CFJPWIegv9Wh8DzinWSJC1db
+         B5W+l4fLb2Ofn9fBBOjsuwF/nDHkfAwMkBy79cgFFshVwHnOH8x+tCnts4IgjneZeuux
+         ZVn09zuoECCUwAl5wEmLtNUswv+U8ZOW62KQ5ByBvGvB6TAyO0Wx2YwtMiNT0cwRJZ4G
+         KD9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SmkpvMIY;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id w2si247004otl.3.2020.03.17.05.16.45
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dl6C3A9s;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id e89si684583qtd.3.2020.03.14.06.59.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2020 05:16:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 14 Mar 2020 06:59:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SmkpvMIY;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584447405;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/9KA2rSdoSlQNXR7GSeivvYEYwO7BXSB0M7nJIPM5w0=;
-	b=SmkpvMIY7bdUCoziM20WVf29GttS/BPN5oIzhH3Fmb2WoHNzmmFtfXiQsMB8sWh74ElMIB
-	hgKkQY4hzfQdYUT0ODRu968mY1LP5yrp8uhGkpnN9aqGn7rRr3wWLBgReZb3JHrECWeSs+
-	TOzpHwGfagrj6Ypc6sZBCyUtYyaI8mg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-XLvxm7HLNT-GTK2ijddH4w-1; Tue, 17 Mar 2020 08:16:41 -0400
-X-MC-Unique: XLvxm7HLNT-GTK2ijddH4w-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 00F46DBA3;
-	Tue, 17 Mar 2020 12:16:40 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F94760BF3;
-	Tue, 17 Mar 2020 12:16:36 +0000 (UTC)
-Date: Tue, 17 Mar 2020 13:16:30 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
- daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com,
- abbotti@mev.co.uk, hsweeten@visionengravers.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: dt3000: Reformat
- multiple line dereference
-Message-ID: <20200317131630.21053bbb@elisabeth>
-In-Reply-To: <20200314135852.GA6336@deeUbuntu>
-References: <20200314135852.GA6336@deeUbuntu>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Dl6C3A9s;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id t24so6730583pgj.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2020 06:59:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=cCCp57fkXiWhKuFd13Ij02QsZpOc2yU1Nv+KoqjoMsk=;
+        b=Dl6C3A9sihIgydYOxF8+i1ru4q78wepd20VsAM/g4jLpAAFB5dKuAohaprs3Uzonun
+         yQzjiaddkJuqWzDiIsuQDzew47QJ/81Q+WX183GZ5UdQAYkhbxoz46Q+MgseyE7rxLYk
+         3dPjxB3YCuxOQk83OYCbj7uuqu+TlcD4u7ru502r/j6njZ+8yY+p5eoxDJBo1fRoAO3s
+         9rL8p4nHnpNptxB1gqyhgxbwiWollf+1g8rW99WmEvtGwbgc0dWK1jsddTJR7tur6Gfv
+         G6fdGaIsla79NSocYhua8WwE+13vRWdkRe9xyR1T2yEZ0L4zbaOfwsBUCjgkvMpcHjAY
+         9xeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=cCCp57fkXiWhKuFd13Ij02QsZpOc2yU1Nv+KoqjoMsk=;
+        b=O63ha8iYZVTQKQUBQSw8I4Zyl4NZKiwxjYXeiuDmMfgKT4WmxKK+S24QRerXQdi0NK
+         41P1zSUrGYqhvKAs9I7hQ2NvsbaNK9xkT87vWQhzpERToFbhGRSRIz1TYZl5h16xibXD
+         SkrEzGUom9RGuOqLTikbE2pPBmx1wnjCARyw7mpFztuxUDzjVR8fEVsH/B6WCzFea3kF
+         hk5Co88IiGoNJENKwSZW4w08F3iWmr0AP7ChlLe57L+EaTy2YsDn6rlrBDOTBACZUwPH
+         BPBdcB7iSyXOJWSHoqRy4AHREQ/C7GhJ7ntPuKhd+OTUawBpPuCpjS4tx5Ao0xQwIHpl
+         /9OQ==
+X-Gm-Message-State: ANhLgQ3ZDrM5RlC2QupxB+/VV2Z50xeGlgbdYrsL81UapnNcRPy1NxgH
+	3eQ/BArou3C6nVCWUKUXDMdSYIkq
+X-Received: by 2002:a62:7696:: with SMTP id r144mr19827563pfc.177.1584194342114;
+        Sat, 14 Mar 2020 06:59:02 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.228.147.139])
+        by smtp.gmail.com with ESMTPSA id h198sm15971052pfe.76.2020.03.14.06.58.59
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 14 Mar 2020 06:59:01 -0700 (PDT)
+Date: Sat, 14 Mar 2020 19:28:57 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org, daniel.baluta@gmail.com,
+	kieran.bingham@ideasonboard.com, abbotti@mev.co.uk,
+	hsweeten@visionengravers.com, mh12gx2825@gmail.com
+Subject: [PATCH] staging: comedi: dt3000: Reformat multiple line dereference
+Message-ID: <20200314135852.GA6336@deeUbuntu>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sat, 14 Mar 2020 19:28:57 +0530
-Deepak R Varma <mh12gx2825@gmail.com> wrote:
+Reformat multiple line dereferences for &cmd->scan_begin_arg. Problem
+detected by checkpatch.
 
-> Reformat multiple line dereferences for &cmd->scan_begin_arg. Problem
-> detected by checkpatch.
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> ---
->  drivers/staging/comedi/drivers/dt3000.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/comedi/drivers/dt3000.c b/drivers/staging/comedi/drivers/dt3000.c
-> index f7c365b70106..011e19161b78 100644
-> --- a/drivers/staging/comedi/drivers/dt3000.c
-> +++ b/drivers/staging/comedi/drivers/dt3000.c
-> @@ -439,9 +439,8 @@ static int dt3k_ai_cmdtest(struct comedi_device *dev,
->  
->  		if (cmd->scan_begin_src == TRIG_TIMER) {
->  			arg = cmd->convert_arg * cmd->scan_end_arg;
-> -			err |= comedi_check_trigger_arg_min(&cmd->
-> -							    scan_begin_arg,
-> -							    arg);
-> +			err |= comedi_check_trigger_arg_min(
-> +				&cmd->scan_begin_arg, arg);
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/comedi/drivers/dt3000.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Isn't this introducing an equivalent issue to the one you're fixing in:
-	[PATCH] staging: comedi: s626: Reformat function arguments
-?
-
-That is, I think this should be more indented than that.
-
+diff --git a/drivers/staging/comedi/drivers/dt3000.c b/drivers/staging/comedi/drivers/dt3000.c
+index f7c365b70106..011e19161b78 100644
+--- a/drivers/staging/comedi/drivers/dt3000.c
++++ b/drivers/staging/comedi/drivers/dt3000.c
+@@ -439,9 +439,8 @@ static int dt3k_ai_cmdtest(struct comedi_device *dev,
+ 
+ 		if (cmd->scan_begin_src == TRIG_TIMER) {
+ 			arg = cmd->convert_arg * cmd->scan_end_arg;
+-			err |= comedi_check_trigger_arg_min(&cmd->
+-							    scan_begin_arg,
+-							    arg);
++			err |= comedi_check_trigger_arg_min(
++				&cmd->scan_begin_arg, arg);
+ 		}
+ 	}
+ 
 -- 
-Stefano
+2.17.1
 
 
