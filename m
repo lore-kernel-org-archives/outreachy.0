@@ -1,473 +1,168 @@
 X-GM-THRID: 6804152716629114880
-Date: Sat, 14 Mar 2020 13:13:46 -0700 (PDT)
-From: Deepak Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <facae09d-0a64-4007-af28-d9da637a95c8@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.21.2003142054110.2293@hadrien>
-References: <20200314194724.GA2711@deeUbuntu>
- <alpine.DEB.2.21.2003142054110.2293@hadrien>
+X-Received: by 2002:a05:6402:214:: with SMTP id t20mr20341345edv.78.1584215847942;
+        Sat, 14 Mar 2020 12:57:27 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a17:906:1e42:: with SMTP id i2ls7723679ejj.1.gmail; Sat, 14
+ Mar 2020 12:57:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtowf7oLzZIjp4+SdgS9EMHlbjIq0y8zB/aXxL8jkcrj0xhlPIa/BzOspc+cmXNXgR+AXaY
+X-Received: by 2002:a17:906:bcc4:: with SMTP id lw4mr17460201ejb.228.1584215846004;
+        Sat, 14 Mar 2020 12:57:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584215846; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PBie6N12m7uPILDj4/LOu2eW585vFzueKEh67hGd3MOLiOPD4w85MfO0KE5QBXyWbK
+         XWOsxJ0NHr7KyPlIJ24nG27GsR1iIitRUzT0TIBdsyefR82sgW+L1YZZE4E+phgqIgQf
+         onX0zmtylNJdaXJZ7OSDcprS/E4Zp/jKi+1C14lXSovaLN4/xk9T6PWiM8IkWcXcnkyI
+         Xh1X2CirKFfQKJ04RMIL5L1cp3rNQvHa0MBnH3P/PR3mP4fi4FgipzcWT29twg5FtAiy
+         Sp3kiyvtoYQbdimW+6Y9NNjYp42XFvyyptHiI+5tWBm2XMwnPb+Q7Vv8QR8oO8g2RqKY
+         m5zA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=EqW4BllvOeYiCNNDH/43w/EouFtqSyZYUsmc7NAA8j0=;
+        b=gwVA89Sx6G6AIw10Nagj8brn5Zqt+9aH7PaQSiCtgAJsN3glkAaHxCuE/I1YKKtQ32
+         fNVtNz1qoHndK9aeuiY2ilwwGFu1WrZIDa7INsrMYWFXUEoYSWeKqMB3pk3L/dXoYI0k
+         gkphyCqAsZWNx3HNK/miyDFayfxzLlQkkFKaHKQF9wuNzV+ArvNqt7tVzPXjAwc+LMsF
+         NTF1U9nN+IRlT3rOACxNCp13A8UvhFVfYP8xGG0upgKAe5bTVSx9NNL3xfe5vhPi2Shw
+         lH8jVngsO0435OwQHzYdk/qvGP/qGGflwYdjLQEySl6Uit5eI+xpE/X6ZB1HBgzChdi/
+         E1sw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id d7si632989edo.5.2020.03.14.12.57.25
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 14 Mar 2020 12:57:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,553,1574118000"; 
+   d="scan'208";a="440339563"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2020 20:57:25 +0100
+Date: Sat, 14 Mar 2020 20:57:25 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deepak R Varma <mh12gx2825@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com, 
+    abbotti@mev.co.uk, hsweeten@visionengravers.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: ni_mio_common: Code
  reformat and re-indentation
+In-Reply-To: <20200314194724.GA2711@deeUbuntu>
+Message-ID: <alpine.DEB.2.21.2003142054110.2293@hadrien>
+References: <20200314194724.GA2711@deeUbuntu>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_780_427384381.1584216827007"
-X-Google-Token: EPr1tPMFuHdNnF_8R8M0
-X-Google-IP: 103.228.147.139
-
-------=_Part_780_427384381.1584216827007
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_781_710840987.1584216827007"
-
-------=_Part_781_710840987.1584216827007
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Sunday, 15 March 2020 01:27:27 UTC+5:30, Julia Lawall wrote:
->
->
->
-> On Sun, 15 Mar 2020, Deepak R Varma wrote: 
->
-> > Resolve general code indentation problems as detected by checkpatch 
-> script. 
-> > Implement code reformat and re-indentation as per coding style to 
-> > improve readability. 
-> > 
-> > Signed-off-by: Deepak R Varma <mh12g...@gmail.com <javascript:>> 
-> > --- 
-> >  .../staging/comedi/drivers/ni_mio_common.c    | 62 ++++++++++--------- 
-> >  1 file changed, 32 insertions(+), 30 deletions(-) 
-> > 
-> > diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c 
-> b/drivers/staging/comedi/drivers/ni_mio_common.c 
-> > index b72a40a79930..48e20de3ebcf 100644 
-> > --- a/drivers/staging/comedi/drivers/ni_mio_common.c 
-> > +++ b/drivers/staging/comedi/drivers/ni_mio_common.c 
-> > @@ -2198,10 +2198,10 @@ static int ni_ai_cmd(struct comedi_device *dev, 
-> struct comedi_subdevice *s) 
-> >                             NISTC_AI_TRIG_START1_SEL(0); 
-> >                  break; 
-> >          case TRIG_EXT: 
-> > -                ai_trig |= NISTC_AI_TRIG_START1_SEL( 
-> > -                        ni_get_reg_value_roffs(CR_CHAN(cmd->start_arg), 
-> > -                                               NI_AI_StartTrigger, 
-> > -                                               
-> &devpriv->routing_tables, 1)); 
-> > +                ai_trig |= 
-> NISTC_AI_TRIG_START1_SEL(ni_get_reg_value_roffs( 
-> > +                                        CR_CHAN(cmd->start_arg), 
-> > +                                        NI_AI_StartTrigger, 
-> > +                                        &devpriv->routing_tables, 1)); 
->
-> These may have been better as they were.  At least the two function calls 
-> are more visible in the original. 
->
+On Sun, 15 Mar 2020, Deepak R Varma wrote:
 
-I think the reformatting makes it look simpler and more readable. Did you 
-review it in mutt or here on this page? Please confirm if you want me to 
-revert these back.
+> Resolve general code indentation problems as detected by checkpatch script.
+> Implement code reformat and re-indentation as per coding style to
+> improve readability.
+>
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> ---
+>  .../staging/comedi/drivers/ni_mio_common.c    | 62 ++++++++++---------
+>  1 file changed, 32 insertions(+), 30 deletions(-)
+>
+> diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+> index b72a40a79930..48e20de3ebcf 100644
+> --- a/drivers/staging/comedi/drivers/ni_mio_common.c
+> +++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+> @@ -2198,10 +2198,10 @@ static int ni_ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  			   NISTC_AI_TRIG_START1_SEL(0);
+>  		break;
+>  	case TRIG_EXT:
+> -		ai_trig |= NISTC_AI_TRIG_START1_SEL(
+> -			ni_get_reg_value_roffs(CR_CHAN(cmd->start_arg),
+> -					       NI_AI_StartTrigger,
+> -					       &devpriv->routing_tables, 1));
+> +		ai_trig |= NISTC_AI_TRIG_START1_SEL(ni_get_reg_value_roffs(
+> +					CR_CHAN(cmd->start_arg),
+> +					NI_AI_StartTrigger,
+> +					&devpriv->routing_tables, 1));
 
->
-> [...] 
->
-> > @@ -3079,12 +3081,10 @@ static void ni_ao_cmd_set_update(struct 
-> comedi_device *dev, 
-> >           * zero out these bit fields to be set below. Does an ao-reset 
-> do this 
-> >           * automatically? 
-> >           */ 
-> > -        devpriv->ao_mode1 &= ~( 
-> > -          NISTC_AO_MODE1_UI_SRC_MASK         | 
-> > -          NISTC_AO_MODE1_UI_SRC_POLARITY     | 
-> > -          NISTC_AO_MODE1_UPDATE_SRC_MASK     | 
-> > -          NISTC_AO_MODE1_UPDATE_SRC_POLARITY 
-> > -        ); 
-> > +        devpriv->ao_mode1 &= ~(NISTC_AO_MODE1_UI_SRC_MASK          | 
-> > +                                NISTC_AO_MODE1_UI_SRC_POLARITY     | 
-> > +                                NISTC_AO_MODE1_UPDATE_SRC_MASK     | 
-> > +                                NISTC_AO_MODE1_UPDATE_SRC_POLARITY); 
->
-> This looks like an improveemnt.  Are the subsequent NISTCs lines up with 
-> the right side of the (?  It doesn't look like it, but the +s can change 
-> the appearance of the indentation. 
->
+These may have been better as they were.  At least the two function calls
+are more visible in the original.
 
-sorry, I did not follow this fully. Could you please explain what do you 
-mean by improvement? There is no code change. I only realigned the NISTC* 
-lines so that the "&= ~(" part is clearly visible. It definitely looks 
-different here on the web page that the vi editor.   
+[...]
 
->
->
-> >          if (cmd->scan_begin_src == TRIG_TIMER) { 
-> >                  unsigned int trigvar; 
-> > @@ -3133,10 +3133,10 @@ static void ni_ao_cmd_set_update(struct 
-> comedi_device *dev, 
-> >          } else { /* TRIG_EXT */ 
-> >                  /* FIXME:  assert scan_begin_arg != 0, ret failure 
-> otherwise */ 
-> >                  devpriv->ao_cmd2  |= NISTC_AO_CMD2_BC_GATE_ENA; 
-> > -                devpriv->ao_mode1 |= NISTC_AO_MODE1_UPDATE_SRC( 
-> > -                        ni_get_reg_value(CR_CHAN(cmd->scan_begin_arg), 
-> > -                                         NI_AO_SampleClock, 
-> > -                                         &devpriv->routing_tables)); 
-> > +                devpriv->ao_mode1 |= 
-> NISTC_AO_MODE1_UPDATE_SRC(ni_get_reg_value( 
-> > 
-> +                                                CR_CHAN(cmd->scan_begin_arg), 
->
-> > +                                                NI_AO_SampleClock, 
-> > 
-> +                                                &devpriv->routing_tables)); 
->
-> >                  if (cmd->scan_begin_arg & CR_INVERT) 
-> >                          devpriv->ao_mode1 |= 
-> NISTC_AO_MODE1_UPDATE_SRC_POLARITY; 
-> >          } 
-> > @@ -3672,13 +3672,15 @@ static int ni_cdio_cmd(struct comedi_device 
-> *dev, struct comedi_subdevice *s) 
-> >           */ 
-> >          cdo_mode_bits = NI_M_CDO_MODE_FIFO_MODE | 
-> >                          NI_M_CDO_MODE_HALT_ON_ERROR | 
-> > -                        NI_M_CDO_MODE_SAMPLE_SRC( 
-> > 
-> -                                ni_get_reg_value(CR_CHAN(cmd->scan_begin_arg), 
->
-> > -                                                 NI_DO_SampleClock, 
-> > -                                                 
-> &devpriv->routing_tables)); 
-> > +                        NI_M_CDO_MODE_SAMPLE_SRC(ni_get_reg_value( 
-> > 
-> +                                                CR_CHAN(cmd->scan_begin_arg), 
->
-> > +                                                NI_DO_SampleClock, 
-> > 
-> +                                                &devpriv->routing_tables)); 
->
->
-> These like the earlier ones are probably better left as is. 
->
+> @@ -3079,12 +3081,10 @@ static void ni_ao_cmd_set_update(struct comedi_device *dev,
+>  	 * zero out these bit fields to be set below. Does an ao-reset do this
+>  	 * automatically?
+>  	 */
+> -	devpriv->ao_mode1 &= ~(
+> -	  NISTC_AO_MODE1_UI_SRC_MASK         |
+> -	  NISTC_AO_MODE1_UI_SRC_POLARITY     |
+> -	  NISTC_AO_MODE1_UPDATE_SRC_MASK     |
+> -	  NISTC_AO_MODE1_UPDATE_SRC_POLARITY
+> -	);
+> +	devpriv->ao_mode1 &= ~(NISTC_AO_MODE1_UI_SRC_MASK          |
+> +				NISTC_AO_MODE1_UI_SRC_POLARITY     |
+> +				NISTC_AO_MODE1_UPDATE_SRC_MASK     |
+> +				NISTC_AO_MODE1_UPDATE_SRC_POLARITY);
 
-Same as above. Please confirm if you want me to revert these.
+This looks like an improveemnt.  Are the subsequent NISTCs lines up with
+the right side of the (?  It doesn't look like it, but the +s can change
+the appearance of the indentation.
 
 
-> >          if (cmd->scan_begin_arg & CR_INVERT) 
-> >                  cdo_mode_bits |= NI_M_CDO_MODE_POLARITY; 
-> > + 
-> >          ni_writel(dev, cdo_mode_bits, NI_M_CDO_MODE_REG); 
-> > + 
->
-> I'm not sure what motivated adding these blank lines, but it doesn't seem 
-> to be the same issue as what is done in the rest of the patch. 
->
+>  	if (cmd->scan_begin_src == TRIG_TIMER) {
+>  		unsigned int trigvar;
+> @@ -3133,10 +3133,10 @@ static void ni_ao_cmd_set_update(struct comedi_device *dev,
+>  	} else { /* TRIG_EXT */
+>  		/* FIXME:  assert scan_begin_arg != 0, ret failure otherwise */
+>  		devpriv->ao_cmd2  |= NISTC_AO_CMD2_BC_GATE_ENA;
+> -		devpriv->ao_mode1 |= NISTC_AO_MODE1_UPDATE_SRC(
+> -			ni_get_reg_value(CR_CHAN(cmd->scan_begin_arg),
+> -					 NI_AO_SampleClock,
+> -					 &devpriv->routing_tables));
+> +		devpriv->ao_mode1 |= NISTC_AO_MODE1_UPDATE_SRC(ni_get_reg_value(
+> +						CR_CHAN(cmd->scan_begin_arg),
+> +						NI_AO_SampleClock,
+> +						&devpriv->routing_tables));
+>  		if (cmd->scan_begin_arg & CR_INVERT)
+>  			devpriv->ao_mode1 |= NISTC_AO_MODE1_UPDATE_SRC_POLARITY;
+>  	}
+> @@ -3672,13 +3672,15 @@ static int ni_cdio_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
+>  	 */
+>  	cdo_mode_bits = NI_M_CDO_MODE_FIFO_MODE |
+>  			NI_M_CDO_MODE_HALT_ON_ERROR |
+> -			NI_M_CDO_MODE_SAMPLE_SRC(
+> -				ni_get_reg_value(CR_CHAN(cmd->scan_begin_arg),
+> -						 NI_DO_SampleClock,
+> -						 &devpriv->routing_tables));
+> +			NI_M_CDO_MODE_SAMPLE_SRC(ni_get_reg_value(
+> +						CR_CHAN(cmd->scan_begin_arg),
+> +						NI_DO_SampleClock,
+> +						&devpriv->routing_tables));
 
-I think with the new line in place, it makes it easier to spot the ni_write 
-function call easily. Otherwise it may get overlooked during a quick glace 
-of this area. Let me know if you still think the new line is unnecessary 
-and I will revert it. No problem. 
+These like the earlier ones are probably better left as is.
 
->
-> julia 
->
-> >          if (s->io_bits) { 
-> >                  ni_writel(dev, s->state, NI_M_CDO_FIFO_DATA_REG); 
-> >                  ni_writel(dev, NI_M_CDO_CMD_SW_UPDATE, 
-> NI_M_CDIO_CMD_REG); 
-> > -- 
-> > 2.17.1 
-> > 
-> > -- 
-> > You received this message because you are subscribed to the Google 
-> Groups "outreachy-kernel" group. 
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an email to outreach...@googlegroups.com <javascript:>. 
-> > To view this discussion on the web visit 
-> https://groups.google.com/d/msgid/outreachy-kernel/20200314194724.GA2711%40deeUbuntu. 
->
-> > 
->
+>  	if (cmd->scan_begin_arg & CR_INVERT)
+>  		cdo_mode_bits |= NI_M_CDO_MODE_POLARITY;
+> +
+>  	ni_writel(dev, cdo_mode_bits, NI_M_CDO_MODE_REG);
+> +
 
-------=_Part_781_710840987.1584216827007
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+I'm not sure what motivated adding these blank lines, but it doesn't seem
+to be the same issue as what is done in the rest of the patch.
 
-<div dir=3D"ltr"><br><br>On Sunday, 15 March 2020 01:27:27 UTC+5:30, Julia =
-Lawall  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-l=
-eft: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>
-<br>On Sun, 15 Mar 2020, Deepak R Varma wrote:
-<br>
-<br>&gt; Resolve general code indentation problems as detected by checkpatc=
-h script.
-<br>&gt; Implement code reformat and re-indentation as per coding style to
-<br>&gt; improve readability.
-<br>&gt;
-<br>&gt; Signed-off-by: Deepak R Varma &lt;<a href=3D"javascript:" target=
-=3D"_blank" gdf-obfuscated-mailto=3D"4yBlGWEXAwAJ" rel=3D"nofollow" onmouse=
-down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
-f=3D&#39;javascript:&#39;;return true;">mh12g...@gmail.com</a>&gt;
-<br>&gt; ---
-<br>&gt; =C2=A0.../staging/comedi/drivers/<wbr>ni_mio_common.c =C2=A0 =C2=
-=A0| 62 ++++++++++---------
-<br>&gt; =C2=A01 file changed, 32 insertions(+), 30 deletions(-)
-<br>&gt;
-<br>&gt; diff --git a/drivers/staging/comedi/<wbr>drivers/ni_mio_common.c b=
-/drivers/staging/comedi/<wbr>drivers/ni_mio_common.c
-<br>&gt; index b72a40a79930..48e20de3ebcf 100644
-<br>&gt; --- a/drivers/staging/comedi/<wbr>drivers/ni_mio_common.c
-<br>&gt; +++ b/drivers/staging/comedi/<wbr>drivers/ni_mio_common.c
-<br>&gt; @@ -2198,10 +2198,10 @@ static int ni_ai_cmd(struct comedi_device =
-*dev, struct comedi_subdevice *s)
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 =C2=A0 NISTC_AI_TRIG_START1_SEL(0);
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0break;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case TRIG_EX=
-T:
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ai_trig |=3D NISTC_AI_TRIG_START1_SEL(
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0ni_<wbr>get_reg_value_roffs(CR_CHAN(<wbr>cmd-&gt;start_arg),
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 NI_AI_StartTrigger,
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;devpriv-&gt;rou=
-ting_tables, 1));
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ai_trig |=3D NISTC_AI_TRIG_START1_SEL(ni_<=
-wbr>get_reg_value_roffs(
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0CR_CHAN(cmd-&gt;start_<wbr>arg),
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0NI_AI_StartTrigger,
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&amp;devpriv-&gt;routing_<wbr>tables, 1));
-<br>
-<br>These may have been better as they were. =C2=A0At least the two functio=
-n calls
-<br>are more visible in the original.
-<br></blockquote><div><br></div><div>I think the reformatting makes it look=
- simpler and more readable. Did you review it in mutt or here on this page?=
- Please confirm if you want me to revert these back.<br></div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px=
- #ccc solid;padding-left: 1ex;">
-<br>[...]
-<br>
-<br>&gt; @@ -3079,12 +3081,10 @@ static void ni_ao_cmd_set_update(struct co=
-medi_device *dev,
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * zero out =
-these bit fields to be set below. Does an ao-reset do this
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * automatic=
-ally?
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0devpriv-&gt;ao_mo=
-de1 &amp;=3D ~(
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0NISTC_AO_M=
-ODE1_UI_SRC_MASK =C2=A0 =C2=A0 =C2=A0 =C2=A0 |
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0NISTC_AO_M=
-ODE1_UI_SRC_<wbr>POLARITY =C2=A0 =C2=A0 |
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0NISTC_AO_M=
-ODE1_UPDATE_SRC_<wbr>MASK =C2=A0 =C2=A0 |
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0NISTC_AO_M=
-ODE1_UPDATE_SRC_<wbr>POLARITY
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0);
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0devpriv-&gt;ao_mo=
-de1 &amp;=3D ~(NISTC_AO_MODE1_UI_SRC_MASK =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0|
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0NISTC_AO_MODE1_U=
-I_SRC_<wbr>POLARITY =C2=A0 =C2=A0 |
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0NISTC_AO_MODE1_U=
-PDATE_SRC_<wbr>MASK =C2=A0 =C2=A0 |
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0NISTC_AO_MODE1_U=
-PDATE_SRC_<wbr>POLARITY);
-<br>
-<br>This looks like an improveemnt. =C2=A0Are the subsequent NISTCs lines u=
-p with
-<br>the right side of the (? =C2=A0It doesn&#39;t look like it, but the +s =
-can change
-<br>the appearance of the indentation.
-<br></blockquote><div><br></div><div>sorry, I did not follow this fully. Co=
-uld you please explain what do you mean by improvement? There is no code ch=
-ange. I only realigned the NISTC* lines so that the &quot;&amp;=3D ~(&quot;=
- part is clearly visible. It definitely looks different here on the web pag=
-e that the vi editor. =C2=A0 <br></div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-lef=
-t: 1ex;">
-<br>
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (cmd-&gt;=
-scan_begin_src =3D=3D TRIG_TIMER) {
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned int trigvar;
-<br>&gt; @@ -3133,10 +3133,10 @@ static void ni_ao_cmd_set_update(struct co=
-medi_device *dev,
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0} else { /* =
-TRIG_EXT */
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* FIXME: =C2=A0assert scan_begin_arg !=
-=3D 0, ret failure otherwise */
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0devpriv-&gt;ao_<wbr>cmd2 =C2=A0|=3D NIS=
-TC_AO_CMD2_BC_GATE_ENA;
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0devpriv-&gt;ao_<wbr>mode1 |=3D NISTC_AO_MO=
-DE1_UPDATE_SRC(
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0ni_<wbr>get_reg_value(CR_CHAN(cmd-&gt;<wbr>scan_begin_arg),
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 NI_AO_SampleClock,
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 &amp;devpriv-&gt;routing_tables));
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0devpriv-&gt;ao_<wbr>mode1 |=3D NISTC_AO_MO=
-DE1_UPDATE_SRC(ni_<wbr>get_reg_value(
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0CR_CHAN(<wbr>cmd-&gt;scan_begin_arg),
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0NI_AO_<wbr>SampleClock,
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0&amp;devpriv-&gt;<wbr>routing_tables));
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (cmd-&gt;scan_begin_arg &amp; CR_INV=
-ERT)
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0<wbr>devpriv-&gt;ao_mode1 |=3D NISTC_AO_MODE1_UPDATE_SRC_<wbr>POLA=
-RITY;
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-<br>&gt; @@ -3672,13 +3672,15 @@ static int ni_cdio_cmd(struct comedi_devic=
-e *dev, struct comedi_subdevice *s)
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0cdo_mode_bit=
-s =3D NI_M_CDO_MODE_FIFO_MODE |
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0NI_M_<wbr>CDO_MODE_HALT_ON_ERROR |
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0NI_M_<wbr>CDO_MODE_SAMPLE_SRC(
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0ni_get_reg_value=
-(CR_CHAN(<wbr>cmd-&gt;scan_begin_arg),
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 NI_DO_SampleClock,
-<br>&gt; -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 &amp;devpriv-&gt;routing_tables));
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0NI_M_<wbr>CDO_MODE_SAMPLE_SRC(ni_get_<wbr>reg_value(
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0CR_CHAN(<wbr>cmd-&gt;scan_begin_arg),
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0NI_DO_<wbr>SampleClock,
-<br>&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0<wbr>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0&amp;devpriv-&gt;<wbr>routing_tables));
-<br>
-<br>These like the earlier ones are probably better left as is.
-<br></blockquote><div><br></div><div>Same as above. Please confirm if you w=
-ant me to revert these.</div><div> <br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;paddi=
-ng-left: 1ex;">
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (cmd-&gt;=
-scan_begin_arg &amp; CR_INVERT)
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0cdo_mode_bits |=3D NI_M_CDO_MODE_POLARI=
-TY;
-<br>&gt; +
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ni_writel(de=
-v, cdo_mode_bits, NI_M_CDO_MODE_REG);
-<br>&gt; +
-<br>
-<br>I&#39;m not sure what motivated adding these blank lines, but it doesn&=
-#39;t seem
-<br>to be the same issue as what is done in the rest of the patch.
-<br></blockquote><div><br></div><div>I think with the new line in place, it=
- makes it easier to spot the ni_write function call easily. Otherwise it ma=
-y get overlooked during a quick glace of this area. Let me know if you stil=
-l think the new line is unnecessary and I will revert it. No problem. <br><=
-/div><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8e=
-x;border-left: 1px #ccc solid;padding-left: 1ex;">
-<br>julia
-<br>
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (s-&gt;io=
-_bits) {
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ni_writel(<wbr>dev, s-&gt;state, NI_M_C=
-DO_FIFO_DATA_REG);
-<br>&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ni_writel(<wbr>dev, NI_M_CDO_CMD_SW_UPD=
-ATE, NI_M_CDIO_CMD_REG);
-<br>&gt; --
-<br>&gt; 2.17.1
-<br>&gt;
-<br>&gt; --
-<br>&gt; You received this message because you are subscribed to the Google=
- Groups &quot;outreachy-kernel&quot; group.
-<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
-send an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-m=
-ailto=3D"4yBlGWEXAwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;jav=
-ascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;re=
-turn true;">outreach...@<wbr>googlegroups.com</a>.
-<br>&gt; To view this discussion on the web visit <a href=3D"https://groups=
-.google.com/d/msgid/outreachy-kernel/20200314194724.GA2711%40deeUbuntu" tar=
-get=3D"_blank" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;https://gro=
-ups.google.com/d/msgid/outreachy-kernel/20200314194724.GA2711%40deeUbuntu&#=
-39;;return true;" onclick=3D"this.href=3D&#39;https://groups.google.com/d/m=
-sgid/outreachy-kernel/20200314194724.GA2711%40deeUbuntu&#39;;return true;">=
-https://groups.google.com/d/<wbr>msgid/outreachy-kernel/<wbr>20200314194724=
-.GA2711%<wbr>40deeUbuntu</a>.
-<br>&gt;
-<br></blockquote></div>
-------=_Part_781_710840987.1584216827007--
+julia
 
-------=_Part_780_427384381.1584216827007--
+>  	if (s->io_bits) {
+>  		ni_writel(dev, s->state, NI_M_CDO_FIFO_DATA_REG);
+>  		ni_writel(dev, NI_M_CDO_CMD_SW_UPDATE, NI_M_CDIO_CMD_REG);
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200314194724.GA2711%40deeUbuntu.
+>
 
