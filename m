@@ -1,131 +1,234 @@
 X-GM-THRID: 6804107396790616064
-X-Received: by 2002:a25:bb4f:: with SMTP id b15mr26238411ybk.175.1584207807057;
-        Sat, 14 Mar 2020 10:43:27 -0700 (PDT)
+X-Received: by 2002:a1c:8149:: with SMTP id c70mr17456119wmd.123.1584207088401;
+        Sat, 14 Mar 2020 10:31:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:c102:: with SMTP id r2ls4500136ybf.5.gmail; Sat, 14 Mar
- 2020 10:43:25 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuh9Q55GWpebQDogz2MczI5wdyzgH2KFSgyco+zn3Y6f1lpMwWRTbF61qkfbqqlz3M4/St+
-X-Received: by 2002:a25:a2cc:: with SMTP id c12mr17690092ybn.70.1584207805721;
-        Sat, 14 Mar 2020 10:43:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584207805; cv=none;
+Received: by 2002:a5d:548b:: with SMTP id h11ls6690211wrv.9.gmail; Sat, 14 Mar
+ 2020 10:31:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt4jQPWwB8PRyXEtP/bvTbKYJqK9VkbjDDzaj9kdwQ3EhGjbYSV5I398LWAvI/bilPVETa8
+X-Received: by 2002:adf:9501:: with SMTP id 1mr25398525wrs.426.1584207087078;
+        Sat, 14 Mar 2020 10:31:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584207087; cv=none;
         d=google.com; s=arc-20160816;
-        b=zEBoTgYQmxD/V9UbUn0bFPxEeihn/63LYI/z2eN+Jrfzi6Yd0uXxzayJ8VkOIZZeRs
-         GNihmzIIhMNxl3TqL33PBYsf5hz5MXdGFQRfw6HOru+HMp3by19r7Cd/n01+kOp8L8mg
-         e0T9O4KAg7mqKP1RP0Ki2gz9inL3nTxGuslc28GbxQ9dttqOeoYkqhvGWtJ1QegKqqUb
-         KPOhR8Vxfw+sqPYEw2uF8u2CyszNkRFqCpNJ7acWr85XFx3LwCyVOHvxt+tviAVezVjt
-         MGRGqk+KMuMmDKHIdgP7VhxsBbwzwfUoCTV/h0I4qZ4EkJB3QroCWt/sSr4Gqdv0RiWD
-         d7dw==
+        b=vnkAEdfQ2KtYTesCPGdLuQbANjPqKq1ukTLpuvYb/IvWFfQyZksYWtRqtzmv2l1KDg
+         Amg4wyIu+x7RYJ58tq+LwyXuDGmML3wqIqwkTQ5TD9EMx1AFVw3EvmRyu+qyipdUHtSd
+         hX06yhDSil631n+Q8ivd+1ZuKJuxwBR9hhIrgRiVzXH/dN/RdYBnBrrhmRUZFkgL6bVt
+         GWC6iSinuTSsydQC9OWFlCzWoxYKp0I9xqx+EoMLC1/bJMarKeTK5JoCVcIKeG6AB13u
+         ZXAm/5NfdQUzZunTAJyOu7I/7J79kQXHO3n9bWtqSviK9+Cfxde3V+1hDLND7baVAGni
+         twCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=snfXEPiDf6nuYI7gJkhkumcMKfPKPc9oxxz9Dc5ZZ1I=;
-        b=ZiHg1jFadTk8UrzzA5tNkNlyzDf8QOPuR4HSRChsb0zbEYwaiLYZnmsCB4VReOUSOz
-         3y5HCxZ7aCDFoWho1dlie3Y6wtBOGM3HfOa30f18XVT2tH3823EwV3Qq9utVsihGz/ob
-         wyDdYKltQTso6t2ciX23Qbh6YD/JGVEuF0O/FImj+iVsDmUgwjGDPlg4FCsDs3zah+x4
-         qcDuH9rGDHXE8w2lyhY5wgD3ByO2DmIzDypfgjkuwUzVrT9ma4oo90yHYyB1xCFbDSOb
-         hwMvBzlsm13idW+Qh3HSfqQSk3D33LUMXGXiNb9BMrf0d8nAwmhUOR9QBZCPcXOOuUyr
-         PTGQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=35CcVScVjlTRq4uGVQ6GqQx4dAzGfGM/0ePE90yjnrE=;
+        b=KicXqNCEkggKW32QuXU6xQVt5PPA6ZdKtloP5mXSlU9x/pV7hW85Bb1p/qCki12sOt
+         wGfrIQ9df17xj3MaV9HmAPa02dQCUEQL0HSxN2QCpiS/cq4sLNXSJ08xLbUPxbb0j9Bm
+         jpa4sWICv3I+T6GaMmh74Rrh/kwc+i7fNgAYtd/+/Eu652UcNpMp6RdrMIyk1nJf5fUR
+         6PYaiaM0ZzCFlB/3Egk39w+d19KBIw8G7CUsHCOkV2aKyN/JE5hmhGFV2LuUBljCKqoe
+         zENcSVlyXQ3346kU+PoL1KzYyxTqdoX+TAqFlJJbccasdnz0QvNUYfsMdoqhVsbSt6Br
+         U1JQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mgSLT56S;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id x13si1045796ybs.4.2020.03.14.10.43.25
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l13si596272wrp.2.2020.03.14.10.31.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 14 Mar 2020 10:43:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 14 Mar 2020 10:31:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mgSLT56S;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id mj6so5617166pjb.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2020 10:43:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=snfXEPiDf6nuYI7gJkhkumcMKfPKPc9oxxz9Dc5ZZ1I=;
-        b=mgSLT56SNH/1SYS787M4cz89hwqZXAljqOXinSzTkALUDz5pUEjWv0VLY2REkDvqNV
-         DQ0fpimnB16WW/bhH6TIZgEFkQaGWpFkRSvRVqKF9P3yMT2Cg7rnD2lrpV545iYt9Wcy
-         W+Ou5T6xD33aK1KghXDJWj9yVqRLNHW62d0BDVnwEhOvjM4q6tV6euFaEFEnFhI8d58I
-         JMlmR0UqG3PBhnU+aeckimchsHL+AwyApG7c+SeGYDHcndZY02lD2KKwg578puQmBweI
-         UlffZ0Bvj+zebjOo0Pmm/dLYVDAHMwERUcpuaosbw+bNs13SmN2O1ews6Y32zmD3OVBD
-         HpGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=snfXEPiDf6nuYI7gJkhkumcMKfPKPc9oxxz9Dc5ZZ1I=;
-        b=XiZyNWfgwtVFL/vbBr+3Ibha41tqOq11tMYmcyoRWbAD1ucBVGW1pQCGNnJljGIGhM
-         e1Scy6WVAsGJcbNU6hrk4E+Oz49IpHFrmMxKDNrLOLy/JTOFgKSR12SFRCIf3LEj8w3y
-         6kwMvelRT8YFxz2oHCF1R8FYLLkbpv11EMDzRPq35QovJESk9uyioR/hlpPE4g2+XKwl
-         U7ppCMBnWJReZ3ANIrvMXstTNt6gNUeVa1weCP5MOq3KBpCKRRtto7K1yopy5jLG4R6o
-         hzKEWo+mHaHz9twrGk8ui0NJeVgiZSXJfshM9jMt7mYyxGP5P2YAtWvU1GCoJe/JmrKk
-         d8jg==
-X-Gm-Message-State: ANhLgQ1I2DRxIHBKas32VFrjCyHYYiFY7wmGulMKzqKHmdGGuHkl80aZ
-	6i4JEBQaj7gPe+MBqnyHlr81F5jM
-X-Received: by 2002:a17:90a:c695:: with SMTP id n21mr2754181pjt.133.1584207804676;
-        Sat, 14 Mar 2020 10:43:24 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.228.147.139])
-        by smtp.gmail.com with ESMTPSA id e11sm19429004pfj.95.2020.03.14.10.43.22
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Mar 2020 10:43:24 -0700 (PDT)
-Date: Sat, 14 Mar 2020 23:13:19 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, daniel.baluta@gmail.com,
-	kieran.bingham@ideasonboard.com, abbotti@mev.co.uk,
-	hsweeten@visionengravers.com
-Subject: [PATCH v2] staging: comedi: ni_atmio16d: remove commented code blocks
-Message-ID: <20200314174316.GA10615@deeUbuntu>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,553,1574118000"; 
+   d="scan'208";a="342370553"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Mar 2020 18:31:26 +0100
+Date: Sat, 14 Mar 2020 18:31:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deepak Varma <mh12gx2825@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: comedi: ni_atmio16d: remove
+ commented code blocks
+In-Reply-To: <7731265e-42a7-4c67-a0f5-245cecbecc0b@googlegroups.com>
+Message-ID: <alpine.DEB.2.21.2003141831050.3026@hadrien>
+References: <20200314165130.GA18939@deeUbuntu> <alpine.DEB.2.21.2003141756000.3026@hadrien> <7842c46c-710b-4a2a-bf46-396ed319e2a6@googlegroups.com> <alpine.DEB.2.21.2003141808100.3026@hadrien> <7731265e-42a7-4c67-a0f5-245cecbecc0b@googlegroups.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: multipart/mixed; boundary="8323329-1316783797-1584207086=:3026"
 
-Remove two if# 0 directive code blocks. Problem detected by
-checkpatch script.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
+--8323329-1316783797-1584207086=:3026
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Changes since v1:
-    - Add following review comments by Julia
-	1. Remove reference to redundant comments in the patch
-	description since it's not accurate.
 
-	
- drivers/staging/comedi/drivers/ni_atmio16d.c | 10 ----------
- 1 file changed, 10 deletions(-)
 
-diff --git a/drivers/staging/comedi/drivers/ni_atmio16d.c b/drivers/staging/comedi/drivers/ni_atmio16d.c
-index 68ad9676f962..0bca7d752015 100644
---- a/drivers/staging/comedi/drivers/ni_atmio16d.c
-+++ b/drivers/staging/comedi/drivers/ni_atmio16d.c
-@@ -266,19 +266,9 @@ static int atmio16d_ai_cmdtest(struct comedi_device *dev,
- 	if (cmd->scan_begin_src == TRIG_FOLLOW) {
- 		/* internal trigger */
- 		err |= comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0);
--	} else {
--#if 0
--		/* external trigger */
--		/* should be level/edge, hi/lo specification here */
--		err |= comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0);
--#endif
- 	}
- 
- 	err |= comedi_check_trigger_arg_min(&cmd->convert_arg, 10000);
--#if 0
--	err |= comedi_check_trigger_arg_max(&cmd->convert_arg, SLOWEST_TIMER);
--#endif
--
- 	err |= comedi_check_trigger_arg_is(&cmd->scan_end_arg,
- 					   cmd->chanlist_len);
- 
--- 
-2.17.1
+On Sat, 14 Mar 2020, Deepak Varma wrote:
 
+>
+>
+> On Saturday, 14 March 2020 22:41:02 UTC+5:30, Julia Lawall wrote:
+>
+>
+>       On Sat, 14 Mar 2020, Deepak Varma wrote:
+>
+>       >
+>       >
+>       > On Saturday, 14 March 2020 22:27:15 UTC+5:30, Julia Lawall
+>       wrote:
+>       >
+>       >
+>       >       On Sat, 14 Mar 2020, Deepak R Varma wrote:
+>       >
+>       >       > Remove two if# 0 directive code blocks. The first
+>       commented
+>       >       code block
+>       >
+>       >       #if
+>       >
+>       >       > is redundant too; whereas the other code block is
+>       never used.
+>       >       Problem
+>       >
+>       >       Why do you say that the first one is redundant?
+>       >
+>       >       julia
+>       >
+>       >
+>       > The instructions in if and else block are exactly the same.
+>       so, if or else,
+>       > you are going to run the same instruction. Let me know if I
+>       misunderstood or
+>       > misquoted.
+>
+>       Since one of them is under an #if 0, the current effect is quite
+>       different.  Only the statement in the then branch will be
+>       executed.
+>
+>       Redundant would be eg:
+>
+>       x = 0;
+>       x = 0;
+>
+>       There is no point in having the second line, because x is
+>       already 0.
+>
+>       Even without the #if 0, if you have:
+>
+>       if (x)
+>         y = 0;
+>       else y = 0;
+>
+>       It doesn't seem reasonable to say that the second y = 0 is
+>       redundant. It
+>       is the if that is is not necessary.  But once you have the if,
+>       you need
+>       both the then and else branches.
+>
+>       julia
+>
+>
+> Agreed. if(x) becomes redundant when #if 0 becomes #if 1. I was trying to
+> make the same point that even if the #if 0 block is turned on, it will still
+> have the same behavior with the if(x) .. else in place. But, I though the
+> else part will be redundant, but it was wrong. The if part would be
+> redundant. I got your point. Well explained. Thank you!
+>
+> Would you suggest I reword the patch description and send in v2? Is the rest
+> looking good to you?
+
+Yes for both.
+
+julia
+
+> Deepak.
+>
+>
+>       >
+>       > Thank you.
+>       >
+>       >
+>       >       > detected by checkpatch script.
+>       >       >
+>       >       > Signed-off-by: Deepak R Varma <mh12g...@gmail.com>
+>       >       > ---
+>       >       >  drivers/staging/comedi/drivers/ni_atmio16d.c | 10
+>       ----------
+>       >       >  1 file changed, 10 deletions(-)
+>       >       >
+>       >       > diff --git
+>       a/drivers/staging/comedi/drivers/ni_atmio16d.c
+>       >       b/drivers/staging/comedi/drivers/ni_atmio16d.c
+>       >       > index 68ad9676f962..0bca7d752015 100644
+>       >       > --- a/drivers/staging/comedi/drivers/ni_atmio16d.c
+>       >       > +++ b/drivers/staging/comedi/drivers/ni_atmio16d.c
+>       >       > @@ -266,19 +266,9 @@ static int
+>       atmio16d_ai_cmdtest(struct
+>       >       comedi_device *dev,
+>       >       >          if (cmd->scan_begin_src == TRIG_FOLLOW) {
+>       >       >                  /* internal trigger */
+>       >       >                  err |=
+>       >       comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0);
+>       >       > -        } else {
+>       >       > -#if 0
+>       >       > -                /* external trigger */
+>       >       > -                /* should be level/edge, hi/lo
+>       specification
+>       >       here */
+>       >       > -                err |=
+>       >       comedi_check_trigger_arg_is(&cmd->scan_begin_arg, 0);
+>       >       > -#endif
+>       >       >          }
+>       >       >
+>       >       >          err |=
+>       >       comedi_check_trigger_arg_min(&cmd->convert_arg, 10000);
+>       >       > -#if 0
+>       >       > -        err |=
+>       >       comedi_check_trigger_arg_max(&cmd->convert_arg,
+>       SLOWEST_TIMER);
+>       >       > -#endif
+>       >       > -
+>       >       >          err |=
+>       >       comedi_check_trigger_arg_is(&cmd->scan_end_arg,
+>       >       >                                            
+>       >       cmd->chanlist_len);
+>       >       >
+>       >       > --
+>       >       > 2.17.1
+>       >       >
+>       >       > --
+>       >       > You received this message because you are subscribed
+>       to the
+>       >       Google Groups "outreachy-kernel" group.
+>       >       > To unsubscribe from this group and stop receiving
+>       emails from
+>       >       it, send an email to outreach...@googlegroups.com.
+>       >       > To view this discussion on the webvisithttps://groups.google.com/d/msgid/outreachy-kernel/20200314165130.GA18
+>       939%4
+>       >       0deeUbuntu.
+>       >       >
+>       >
+>       > --
+>       > You received this message because you are subscribed to the
+>       Google Groups
+>       > "outreachy-kernel" group.
+>       > To unsubscribe from this group and stop receiving emails from
+>       it, send an
+>       > email to outreach...@googlegroups.com.
+>       > To view this discussion on the webvisithttps://groups.google.com/d/msgid/outreachy-kernel/7842c46c-710b-4a2a-
+>       bf46-
+>       > 396ed319e2a6%40googlegroups.com.
+>       >
+>       >
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/7731265e-42a7-4c67-a0f5-
+> 245cecbecc0b%40googlegroups.com.
+>
+>
+--8323329-1316783797-1584207086=:3026--
 
