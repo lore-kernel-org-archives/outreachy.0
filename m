@@ -1,96 +1,139 @@
-X-GM-THRID: 6394884347886829568
-X-Received: by 10.28.105.80 with SMTP id e77mr88062wmc.23.1488925038246;
-        Tue, 07 Mar 2017 14:17:18 -0800 (PST)
+X-GM-THRID: 6803023005726277632
+X-Received: by 2002:aca:bc86:: with SMTP id m128mr15290457oif.11.1584303843884;
+        Sun, 15 Mar 2020 13:24:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.46.84.73 with SMTP id y9ls206429ljd.8.gmail; Tue, 07 Mar 2017
- 14:17:17 -0800 (PST)
-X-Received: by 10.46.77.69 with SMTP id a66mr595473ljb.11.1488925037840;
-        Tue, 07 Mar 2017 14:17:17 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by gmr-mx.google.com with ESMTPS id b186si1549205wme.1.2017.03.07.14.17.17
+Received: by 2002:aca:b98a:: with SMTP id j132ls3767880oif.3.gmail; Sun, 15
+ Mar 2020 13:24:02 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsKK52DzYMwHir5U2cKg1zCm0BfULOt8vImSHlsylTBlPR/XCRP0/lDKbyWRs45w9sG84W5
+X-Received: by 2002:a54:4496:: with SMTP id v22mr15094378oiv.132.1584303842644;
+        Sun, 15 Mar 2020 13:24:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584303842; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ScT1MgLKc2DYWpP4PZG2DF1cfagfGhZSKJpb6NwQSWIfTGbJHbF0/FPbqchJeyO7Oq
+         pcvJIS9ki7in6Uxt1wvlNF4bVeYqf5jITXIUDMdF41wAWpyQ1BWcOsH0XwwcwZmxmNRG
+         4l2SzDDmQKzjC67w5OfNw7tfG9qWMekgoJVhinMjwhU1GUFx9XzZNWb7WjMEr/H7VhiN
+         Z51QjCedOSbTPBHh0cSpoeUh+F41B+J8EwwS58bVmHh0IK7mdOIr1boJmgO6cOvUD2ty
+         jn9MAjHCxJQXZOKGFsvNqzWaIZvJ2a1cx9S0KF53tZ1n2NakBx2ZU68ZGPG8M+xd7EAB
+         03nA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=ntl0vj19b9p//ikBOqw2hGPl2Pwjrf6Wt+xh8EQy3/A=;
+        b=E6GKPwOEdlzLhmDV/KJnrxsYbWQ28UMGMs2nsFFoE5GM7c81AjE55VkWEaS5XbEekC
+         +4xXKHamq8EtcWHB4RVeCpY57PaUrqVEXdje9cw2/6g+wrtEehtWEaa6HQu+ITPwqpsE
+         whZRY4Yp4YeVdI2DlGC4KtrhybQieWMi08qpRZw2GfNNgJbi1uqH/vboYJErBquMlEa8
+         8GdVH8fAbuz4zhG1CKp8Uen6UjgTE07Lmorns3xFtYd6M9sz3+av+6Yg4I9HKlLk0x1j
+         JTaU0A5+9UYcCN498A8ENDU2XqLgN85iEdM7hu60plBwZJ0URe2PkgFltMOgKptoYsAv
+         pqcQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSFcuMCN;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by gmr-mx.google.com with ESMTPS id o11si966572otk.0.2020.03.15.13.24.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 14:17:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+        Sun, 15 Mar 2020 13:24:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id z63so3260659wmg.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 14:17:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=CQXIpT+hPQpHtjFHZ331V+pv2idsr5livnB1dbYweNI=;
-        b=brpz4z5lwwlo6c7rsJX5PX6e+C3ZLwNZ9fdM+5gHuDHWTXOPvar9YsQWTPnXh7BTI2
-         ibnXdO++Zt+7u8DlEJUnQiUeXul6wML4taz583xya2yILBR+bwMfs8KxrJZMQ9Z2dNwW
-         sJnEs+VqLaDrs4LQ5voFVGyJ2QSK0Zgg9i3h2f1hSkCiEiFHhdOQM7v/5gXGL7Sxazo4
-         HHmd7ePO2kJxOssXkXdHOGTdBYPygA78FIh+TSpXPYU8gHubmgZOgdcYlqMCjZ+I0Nux
-         IZnhT/3QEDtnuErNHHRxVXFBa4Rma6xx/hlg0+b4EwlYyIVFtePChcdQr4lUUj0gsZz2
-         eQ6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=CQXIpT+hPQpHtjFHZ331V+pv2idsr5livnB1dbYweNI=;
-        b=tPrDK1KWNSAYdY/K+p8CgSJmVwdm0rQbG2zf3L5auDRbx0SfvZOBxeY0Nf5TDYv2F4
-         QlRBiTkpxSwBoap9rRlKSgR59sFPp4UTETwrbIqroHSITRW/0lUnADs47hSrszs7rvZ3
-         VGQ7lPUp5sp1CUl0bq/JrDdSkWLqQWMgE/D2Amxlo8XbBCs9FTZK3TBQYm2n/vNlXxqw
-         npHj09ydbvFcIHpWP0XkoWvoZLWEKfOK927lVZoJL3WUwn7yAjLqIoZU0bn3tQTExRD1
-         R+G/+XGzQnR150hMkb4SOFRcEVYgxRmf4ooErIaLStp5Ia+9nEzRoWuAjCQRck32JqxM
-         EkYA==
-X-Gm-Message-State: AMke39mlEjZ0HFLwO/4VyzfLvcdg3jFM+vvU2BqF4/Vf6vWHTmuWe1y7Ltm0U0JMFMkXsA==
-X-Received: by 10.28.134.70 with SMTP id i67mr4937490wmd.124.1488925037649;
-        Tue, 07 Mar 2017 14:17:17 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:8168:a9b6:7cd0:c4cf])
-        by smtp.gmail.com with ESMTPSA id s18sm20658023wmb.18.2017.03.07.14.17.16
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 14:17:16 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH] staging: speakup: wilc1000: Align the code
-Date: Wed,  8 Mar 2017 00:17:09 +0200
-Message-Id: <20170307221709.5489-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSFcuMCN;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584303841;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ntl0vj19b9p//ikBOqw2hGPl2Pwjrf6Wt+xh8EQy3/A=;
+	b=FSFcuMCNgv12iTZ8jScSn5r/GAijtriD61LeREPG83rbnByToFeIYmmoGhDUkBiF1mNYsD
+	NQv6wbe7HSdSIRc9/QTI2BR6wPkLrdLzsSrfCs+7EBcg7ke85Xugw2g6t4PCqRVI+IrOaR
+	8Z9oSm8uSPAbUYfF9E/P+Efixk3mf2Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-135-L6uNEMdGMMKZLSmoceZ-Cg-1; Sun, 15 Mar 2020 16:24:00 -0400
+X-MC-Unique: L6uNEMdGMMKZLSmoceZ-Cg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF64ADB30;
+	Sun, 15 Mar 2020 20:23:56 +0000 (UTC)
+Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A820694967;
+	Sun, 15 Mar 2020 20:23:51 +0000 (UTC)
+Date: Sun, 15 Mar 2020 21:23:45 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Kaaira Gupta <kgupta@es.iitr.ac.in>
+Cc: Julia Lawall <julia.lawall@inria.fr>, Ian Abbott <abbotti@mev.co.uk>, H
+ Hartley Sweeten <hsweeten@visionengravers.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 5/5] staging: comedi: drivers: use
+ unsigned int
+Message-ID: <20200315212345.611a20cd@elisabeth>
+In-Reply-To: <20200311221122.GA29568@kaaira-HP-Pavilion-Notebook>
+References: <20200311184327.25338-1-kgupta@es.iitr.ac.in>
+	<20200311184327.25338-6-kgupta@es.iitr.ac.in>
+	<alpine.DEB.2.21.2003112150260.6093@hadrien>
+	<20200311221122.GA29568@kaaira-HP-Pavilion-Notebook>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Deleted tabs and added spaces to align the code.
+On Thu, 12 Mar 2020 03:41:22 +0530
+Kaaira Gupta <kgupta@es.iitr.ac.in> wrote:
 
-Fixed the checkpath.pl issue:
-CHECK: Aligment should match open paranthesis.
+> On Wed, Mar 11, 2020 at 09:51:10PM +0100, Julia Lawall wrote:
+> > 
+> > 
+> > On Thu, 12 Mar 2020, Kaaira Gupta wrote:
+> >   
+> > > Change i's type to unsigned instead of signed. It's always positive.
+> > > Reported by coccinelle.
+> > >
+> > > Signed-off-by: Kaaira Gupta <kgupta@es.iitr.ac.in>
+> > > ---
+> > >  drivers/staging/comedi/drivers/ni_mio_common.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+> > > index 06ed4b1dd875..034cf8dafaf0 100644
+> > > --- a/drivers/staging/comedi/drivers/ni_mio_common.c
+> > > +++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+> > > @@ -888,7 +888,7 @@ static void ni_sync_ai_dma(struct comedi_device *dev)
+> > >  static int ni_ai_drain_dma(struct comedi_device *dev)
+> > >  {
+> > >  	struct ni_private *devpriv = dev->private;
+> > > -	int i;
+> > > +	unsigned int i;  
+> > 
+> > I'm not sure this is useful.  The value is not going to b lare enough to
+> > require an unsigned.  And loop indices often have type int.  
+> 
+> Sorry, I didn't know that. I'll take care to see the largest value as
+> well before making such changes. Thanks!
+> 
+> Should I resend the patchset by removing this patch or leave it as it
+> is?
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/wilc1000/linux_wlan.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+I think you should remove this patch, in the three cases where you have
+that 'const int timeout = 10000' it's never needed to switch to an
+unsigned value.
 
-diff --git a/drivers/staging/wilc1000/linux_wlan.c b/drivers/staging/wilc1000/linux_wlan.c
-index 2eebc62..c65c5e8 100644
---- a/drivers/staging/wilc1000/linux_wlan.c
-+++ b/drivers/staging/wilc1000/linux_wlan.c
-@@ -870,12 +870,12 @@ static int wilc_mac_open(struct net_device *ndev)
- 				if (memcmp(wl->vif[i ^ 1]->bssid,
- 					   wl->vif[i ^ 1]->src_addr, 6))
- 					wilc_set_wfi_drv_handler(vif,
--							 wilc_get_vif_idx(vif),
--							 0);
-+								 wilc_get_vif_idx(vif),
-+								 0);
- 				else
- 					wilc_set_wfi_drv_handler(vif,
--							 wilc_get_vif_idx(vif),
--							 1);
-+								 wilc_get_vif_idx(vif),
-+								 1);
- 			}
- 			wilc_set_operation_mode(vif, vif->iftype);
- 
+If you were to write that code from scratch, I would recommend that the
+"10000" should be a #define, and all that register polling should be
+consistent, I don't see any reason behind those differences, and the
+udelay(5) feels like an abuse: Documentation/timers/timers-howto.rst is
+a quick, nice read.
+
+However, I'm quite sure you don't have that specific hardware to test
+any change like that, so it's probably better to leave it alone :)
+
 -- 
-2.9.3
+Stefano
 
 
