@@ -1,95 +1,109 @@
-X-GM-THRID: 6669000631583244288
-X-Received: by 2002:a63:2584:: with SMTP id l126mr3028751pgl.139.1552747709527;
-        Sat, 16 Mar 2019 07:48:29 -0700 (PDT)
+X-GM-THRID: 6804290192961175552
+X-Received: by 2002:ac2:4110:: with SMTP id b16mr14956116lfi.211.1584310408221;
+        Sun, 15 Mar 2020 15:13:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:8d4b:: with SMTP id s11ls1650535pfe.8.gmail; Sat, 16 Mar
- 2019 07:48:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqweX/P66IN6EzuqFYKgb3cPSXbJO6hVYUsrwqWb4LHNjyUFcclDQzj74T8CyrLqViLk2cf6
-X-Received: by 2002:a62:e90b:: with SMTP id j11mr3513214pfh.21.1552747708650;
-        Sat, 16 Mar 2019 07:48:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552747708; cv=none;
+Received: by 2002:ac2:5476:: with SMTP id e22ls2247117lfn.7.gmail; Sun, 15 Mar
+ 2020 15:13:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvV/wwuhuS9ersSbH+4SZK82FLhfDcagSQaMKa22yOz/1uiynnY83SZbcCjUkiyNh4gHwoL
+X-Received: by 2002:ac2:46ec:: with SMTP id q12mr14904470lfo.60.1584310406777;
+        Sun, 15 Mar 2020 15:13:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584310406; cv=none;
         d=google.com; s=arc-20160816;
-        b=ncHfCTPbmE/iyPy97wMiMW0mFakyTg8XyBUhZGKuZCELJzW1aqfyGr8NKheiTqFq2d
-         qI+0vG7LAXp+v0qfLj42qHg8k5H8yY2FjieR91OyaTAfe2csHnYeU4V3WoMjkXebhbCL
-         SHjql4mOYKyYaYJxGuYN//2yWlpqgHp0PKkIQjL5B4Cg3rRMaM6+i157N+vu60b48Zle
-         caw/cmsugCla8ExW090UReUJKcM5aWfJmEfdmMbvErv6yCjPDP8SA2+vQugeu0TFgoQs
-         xuXCTcMuR9O9tv+W3m8adDXGql+FbJ+H7/1xWrdHOezXtBmpOG5Jvbg0Ytxps3abc3uS
-         7IQw==
+        b=IsETvWiZxa/xepDG5ftEI8Xp47pbdFo3XbAR++4+5v8VVf28ksB0kS52uJSrvVtvL0
+         rMB26A2YOB3bRr/xZQFoQ+sp8iWeesEy8iU5V4De22jFJpmeBKGuZd2LkG1f2YoxmIRV
+         HRS+1Y2hx3RPtg7eAJUaPLLvQdUCP+kgg9gEthtuO/mDe+ClpSDd7ygkzQeQAbSHjssW
+         eRbOOjw97DMjm/dZwIzTKXd5cEjw1PzTRkYOLD1umLBAh0eQVd+volYwz2R963y+HmRp
+         bgDUb2Wk1HoALCfNNHSAaHyqfFgqxJ7La63rb+h3kg+zQvMlv+66l4rga9c1y86q3Ogv
+         Ukyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GearSIuf/x0nD//J9WKEWrh0t+55xWDTvhbuebI2mG8=;
-        b=L1JrNKUI/aCsvQSQ6hcGmzEE2dESHyRG//sSCnKo4rjPe+ZMTx+MCLoQqJDJSq+yNd
-         a24y8jDdFrYGnxc4i5qv2mMbHDC+Dtr9Jz4r/3yH3xeDhjK90CaB6/vYSIwhRKej50bY
-         cMmwC1NkC/4CWk6q9ZWCqN2NCto+lmkBdiI/sCGM+0a77sdzWUPYjv5z9FqVSCJEN4Pj
-         8mroQslIvGQ17JwLCVQ5ROyh8NIqYcYtU/4WkkHwvp+JmG9KWBv6m2Fdzmxlu4K6TE7E
-         OpuceGqNeLkJEjZCTZVoZsJ/shWYvWfvnXwUOjdynDTOMoZmVdT4c+M4Gm2RfN0KCvq5
-         WNHw==
+        h=user-agent:organization:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date;
+        bh=nMNHsgs804si8rCr2Ju+m1dKNpmexEsvb/bcjKMawyI=;
+        b=oWxUJ5o9ZtiQCy34SgP+ppoRTvR+IPmkDxfIQJpf9Ey1/UX/3CvvmPCAyLIfK6y8hk
+         ow4DWohSkgI/mFNaeYN7zcdBKD8BzJmiAxfxRXgBYLuaw0ZLXJ/TKRpW0EB58C7aorst
+         FDFLm8i3wGdiQCCri5r+JSRo1XNTqrWyoyHNxiN/ogNMoFKWdkpuWE2Sn2XPOQVZ/FDU
+         OOpJv1ASo29Nsr4o6H2jc177ZMUmhEMsnGbW/+30svH/KyruWMyf0qB5AVirJtNwsOJj
+         s1RLlD8X6HzA+8xd3yND7jY//SJ7LsRCse8Ilu7VTAf+VyT1824oTVmEPyoz0oncxCZt
+         HnHQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BRqRFIx1;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id e124si297863pgc.3.2019.03.16.07.48.28
+       spf=neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
+Return-Path: <samuel.thibault@ens-lyon.org>
+Received: from hera.aquilenet.fr (hera.aquilenet.fr. [2a0c:e300::1])
+        by gmr-mx.google.com with ESMTPS id a21si234784lff.3.2020.03.15.15.13.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 07:48:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sun, 15 Mar 2020 15:13:26 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) client-ip=2a0c:e300::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BRqRFIx1;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id n125so8317416pfn.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 07:48:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=GearSIuf/x0nD//J9WKEWrh0t+55xWDTvhbuebI2mG8=;
-        b=BRqRFIx1gXHbQKow278MRji9H7Oua7nZsOv+hSf9kXQOAuHXkabgSafQMV/YyabATk
-         DHDvC2T/Y0t9GJNegdq9tK/r+Ce7lO3kLRYmf0aP1y4iZqwZpH61y8x3PNV6ID3bJeol
-         kq8nsOYyNsUGs9yfiGVbtGhlNk3qaMB6zAK3RMvlwjy+aMJKR0F/nFr+Mqne7YRUfeXI
-         1ou8WNAAhdS03NzsRxVGX9a6vhFPuYqseSV1VCBfpeuD8ZkJShy47SGDkqCq+dProbd/
-         0RMgTErnuO/nbOHntUQ2oX81rniQL7Fdfm7HJmRNAE4EUP6AYS9LZbVuDmtoJ80CKRVN
-         gmiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=GearSIuf/x0nD//J9WKEWrh0t+55xWDTvhbuebI2mG8=;
-        b=cBzOVLWykCPN0tj9sAPv/q6neym7wHvPNdXJSM66QsYveLauPXoqj8AZ/ONDm8Kkp5
-         2wx+xyJWuivLjgh6mDLg7RuRa86f9wnk9Un4Qo3xWhqXwTLDg4oYDxXdvrvjWTb7Zo0T
-         i4Peu+O9UKCNNgbHyfPJxhOhqf23ZC0OXTmSmn3PoQc6iZqnznSKp/Vv6E6rBhKPAonC
-         HStxe/WRwgvrmM0yP7pnUANdoU3EsnbIVJ1Wf6ays37qIORcSUk54N3m+wlONxgBp8W/
-         CxR47a2kYIS+aldBfI6QoSEkrToDpp86gEIb3KIj3kdWiwUwba1OsFkIrBpgLVFINk5K
-         1HnA==
-X-Gm-Message-State: APjAAAUyg9fZUKoUx1Unn68SjAoKDD9n8HQPd5OLAzZn4tdUs7k87I6G
-	t9h8047By+lvks4fPFmDSvZca7aM9SI=
-X-Received: by 2002:a62:17d4:: with SMTP id 203mr9615910pfx.244.1552747708076;
-        Sat, 16 Mar 2019 07:48:28 -0700 (PDT)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id t10sm7997761pfa.151.2019.03.16.07.48.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 07:48:27 -0700 (PDT)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 0/2] Staging: mt7621-mmc: Remove ret.cocci warnings
-Date: Sat, 16 Mar 2019 20:18:10 +0530
-Message-Id: <20190316144812.7427-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=neutral (google.com: 2a0c:e300::1 is neither permitted nor denied by domain of samuel.thibault@ens-lyon.org) smtp.mailfrom=samuel.thibault@ens-lyon.org
+Received: from localhost (localhost [127.0.0.1])
+	by hera.aquilenet.fr (Postfix) with ESMTP id 71FF9DFD5;
+	Sun, 15 Mar 2020 23:13:25 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at aquilenet.fr
+Received: from hera.aquilenet.fr ([127.0.0.1])
+	by localhost (hera.aquilenet.fr [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 16Nawvdc0mlI; Sun, 15 Mar 2020 23:13:24 +0100 (CET)
+Received: from function (lfbn-bor-1-797-11.w86-234.abo.wanadoo.fr [86.234.239.11])
+	by hera.aquilenet.fr (Postfix) with ESMTPSA id EC158DFD4;
+	Sun, 15 Mar 2020 23:13:23 +0100 (CET)
+Received: from samy by function with local (Exim 4.93)
+	(envelope-from <samuel.thibault@ens-lyon.org>)
+	id 1jDbVb-000cMx-10; Sun, 15 Mar 2020 23:13:23 +0100
+Date: Sun, 15 Mar 2020 23:13:22 +0100
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+To: Lourdes Pedrajas <lu@pplo.net>
+Cc: outreachy-kernel@googlegroups.com, w.d.hubbs@gmail.com,
+	chris@the-brannons.com, kirk@reisers.ca, gregkh@linuxfoundation.org
+Subject: Re: [PATCH v2] staging: speakup: main: switch multiple assignment
+ for one assignment per line
+Message-ID: <20200315221322.qoz62h2m5r6l434t@function>
+References: <20200315221247.16629-1-lu@pplo.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200315221247.16629-1-lu@pplo.net>
+Organization: I am not organized
+User-Agent: NeoMutt/20170609 (1.8.3)
 
-This patch series clears the ret.cocci warnings and removes unused locl
-variables.
+Lourdes Pedrajas, le dim. 15 mars 2020 23:12:47 +0100, a ecrit:
+> One assignment per line is preferred, instead of multiple assignments.
+> To make it more readable.
+> Issue found with checkpatch.
+> 
+> Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
 
-Bhanusree Pola (2):
-  Staging: mt7621-mmc: Fix ret.cooci warnings
-  Staging: mt7621-mmc: Remove unused local variable
+Reviewed-by: Samuel Thibautl <samuel.thibault@ens-lyon.org>
 
- drivers/staging/mt7621-mmc/sd.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Thanks!
+
+> ---
+> Changes since v1:
+> - log and code corections
+> 
+>  drivers/staging/speakup/main.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/speakup/main.c b/drivers/staging/speakup/main.c
+> index 488f2539aa9a..5c47643b302c 100644
+> --- a/drivers/staging/speakup/main.c
+> +++ b/drivers/staging/speakup/main.c
+> @@ -2117,7 +2117,8 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
+>  			spk_keydown = 0;
+>  			goto out;
+>  		}
+> -		value = spk_lastkey = pad_chars[value];
+> +		value = pad_chars[value];
+> +		spk_lastkey = value;
+>  		spk_keydown++;
+>  		spk_parked &= 0xfe;
+>  		goto no_map;
+> -- 
+> 2.17.1
+> 
 
 -- 
-2.17.1
-
+Samuel
+"...Unix, MS-DOS, and Windows NT (also known as the Good, the Bad, and
+the Ugly)."
+(By Matt Welsh)
 
