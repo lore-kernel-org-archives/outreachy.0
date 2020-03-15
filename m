@@ -1,103 +1,135 @@
 X-GM-THRID: 6802949681377705984
-X-Received: by 2002:a37:b0d:: with SMTP id 13mr5520564qkl.9.1584553972399;
-        Wed, 18 Mar 2020 10:52:52 -0700 (PDT)
+X-Received: by 2002:a63:9210:: with SMTP id o16mr3310564pgd.442.1584307665675;
+        Sun, 15 Mar 2020 14:27:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:6542:: with SMTP id z63ls10657547qkb.3.gmail; Wed, 18
- Mar 2020 10:52:51 -0700 (PDT)
-X-Received: by 2002:a37:9cd:: with SMTP id 196mr5326597qkj.157.1584553971144;
-        Wed, 18 Mar 2020 10:52:51 -0700 (PDT)
-Received: by 2002:a37:6112:0:0:0:0:0 with SMTP id v18msqkb;
-        Thu, 12 Mar 2020 09:31:04 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs7hVqwbzJijx+ge3gBNT9ugODT3hIq5hZ9x6Bqi8sB0EeaCvFy9tG3O92gAzIcDD+8lwB5
-X-Received: by 2002:ac8:1b33:: with SMTP id y48mr8371900qtj.136.1584030663923;
-        Thu, 12 Mar 2020 09:31:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584030663; cv=none;
+Received: by 2002:a17:90a:8048:: with SMTP id e8ls5542511pjw.0.canary-gmail;
+ Sun, 15 Mar 2020 14:27:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtDbeDfAUuGWHmE6aJWC1O4BXnS3neHb7hTjBosRXQQ7Nok3VIYPgHT4lkBpCQ3hCf6l33r
+X-Received: by 2002:a17:902:8e84:: with SMTP id bg4mr22760213plb.11.1584307664151;
+        Sun, 15 Mar 2020 14:27:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584307664; cv=none;
         d=google.com; s=arc-20160816;
-        b=INhXGgW2oRveuWCdDPffdi0o196TY6SFv6CrXTBL4DmqnXft19ieX224ceA+6yVKcx
-         kWstvyNWAdwiK8p5ODg2gz0dmDyiLolta8K8kUOz5qF9UVv8v/0nCidAlJoBDmA4zQsF
-         mtE1supOkWWHdRdzlXTy3rqgX5foUzzvX9K2Tz4uEsHxcZ9klcPsR8ET5Dk/tIAP648e
-         VfSl+uyU6L3Q89joVdGkrreK9ULF5yuETlLuNMiVVofBWqXihfPJkDJ16uQ+O+YUq8j1
-         33D8JqsCACHBBL3HVwZ5Gf51BmPF006hdfaubciyGRVkvq0cPhgYgjvHMQjgG07t4LBu
-         fs5A==
+        b=NBkginrdTaY0IEsFRM9eq7W0BIoggle5fFKnmw3eZhYM209YEqxJST5Q+QJuVFEleU
+         mxYfiYjhCy15jGCzYjjV1zu8t2YwweQz+Eml+5FqLs9AWetyqVm7+rk04hTA9JNogKnt
+         ur9MrS1LWbZTt+8yiC4//P0m5wqpAlwCNjZVlLQKcvt6+XDi7d8fJtJBGX/6lgZcTrIM
+         btJq51jtMNfJgIzopdVfW673uS6NEoQXaTJkLBQLhMqB/db+sB8OPXHKp7ajBm/i4bvu
+         uYcVUfAjs5sDewz0ylGY9Rd+p0ytupWfocDoRZYe5spfZlHZaYgzfHspLhVbK4yMN2R2
+         LUSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:dkim-filter;
-        bh=OjaD6vj5jDRRnc88DeZb3dxL22aY2mB5SenuU5W0AH8=;
-        b=LaTeVbH1mK4Z4Drz0XAXE8iuKOA8eTu0EmjfUoeQR11IPqFfWffExuUx9GXPnDYfjz
-         LG/2186+M6edGR+HUC087P0MO/MCAyeC5ah3dL6FTl8wXTNcaqk21baVAKq5FTkR4YgR
-         sDKPeMSdryYv9RC1R88FnbZgA030a01eeXMofqFoxAsqVc6J49zE3I9UcAefYAzSg5Y/
-         BywpoUm0WimDmAO3r7hKmlhmWj73o5Fs0sEa1mLZeQFCl5rOy4UFDTHPn+lpKGMDPXev
-         z0qP2QMlAIHuJ4NA5aDzCazDMM9cSHdJwywaTWDt0OsB+oO5eI/X9hVV3UKUa+dYvJNz
-         SdRQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=UrI29gnK2Fgk/ugrno8dGJOP/2UGa5/L2T729KrGlw4=;
+        b=zkNYEAKoz6+sMfAYz3L0ruHxwdXCjphWH1di/cXhmZD2WIrpro77warC/oMDuSmElg
+         Eds1XU8n4JQGeIcKRMunhD52mVwnrTUb1nd5g4FRhWyCJtJk0AdHnLtXg7cn1UbFEFl1
+         FMRElNQoTKQM8oGO8lL+D4mRwrQErGbAjTyif8Oq9lsaWQKE8vN4hNm+HbiVqQRJRvsm
+         bk01MvfYdFt3GMEKhmN7einSSw+jwB5qchN2XtzWUnGsuGcWw/hCfAVvN0IFE9OP8L22
+         JNSoJKfWyU2Lx78HYgnoBUWADLOImsKqmF8QjSvSIks5rOVYz/hKMdfaHjhh0UQKmvgF
+         lmJg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=T1oKFagd;
-       spf=pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) smtp.mailfrom=nramas@linux.microsoft.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <nramas@linux.microsoft.com>
-Received: from linux.microsoft.com (linux.microsoft.com. [13.77.154.182])
-        by gmr-mx.google.com with ESMTP id 198si304008qkh.7.2020.03.12.09.31.03
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 12 Mar 2020 09:31:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) client-ip=13.77.154.182;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LCuXv7Vd;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
+        by gmr-mx.google.com with ESMTPS id y13si712282plp.0.2020.03.15.14.27.43
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 15 Mar 2020 14:27:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=T1oKFagd;
-       spf=pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) smtp.mailfrom=nramas@linux.microsoft.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from [10.137.112.111] (unknown [131.107.147.111])
-	by linux.microsoft.com (Postfix) with ESMTPSA id D182A200767C;
-	Thu, 12 Mar 2020 09:31:02 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D182A200767C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1584030663;
-	bh=OjaD6vj5jDRRnc88DeZb3dxL22aY2mB5SenuU5W0AH8=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
-	b=T1oKFagdtk0+yUEjGk+EeSbt0BRqrPF+TjppnSaSCIZq6gHmgNzQEknovZwS+2trS
-	 lrRXeniy/m7g0Asyv4MnTr5iv8afQj/mulQobN9l/AXEy3r5FpQ//mx0rYa/ihztaw
-	 i97tvY9P7a0sVVFitEeD4C8621QkgO9MUfYDRzsY=
-Subject: Re: [Outreachy kernel] [PATCH] Staging: rtl8723bs: rtw_mlme: Remove
- unnecessary conditions
-To: Julia Lawall <julia.lawall@inria.fr>, Stefano Brivio <sbrivio@redhat.com>
-Cc: Shreeya Patel <shreeya.patel23498@gmail.com>, gregkh@linuxfoundation.org,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com, daniel.baluta@gmail.com,
- hverkuil@xs4all.nl, Larry.Finger@lwfinger.net
-References: <20200311135859.5626-1-shreeya.patel23498@gmail.com>
- <61a6c3d7-6592-b57b-6466-995309302cc2@linux.microsoft.com>
- <20200312113416.23d3db5c@elisabeth>
- <alpine.DEB.2.21.2003121145540.2418@hadrien>
-From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Message-ID: <b5daea1c-8172-93b6-0956-b31c3798d373@linux.microsoft.com>
-Date: Thu, 12 Mar 2020 09:31:33 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LCuXv7Vd;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584307663;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=UrI29gnK2Fgk/ugrno8dGJOP/2UGa5/L2T729KrGlw4=;
+	b=LCuXv7Vd1N+dLCFiAcYEYtoX1JqKtJr9slU02TCx+RHzbAShAQUZY5NfPYRc8jGbSZds+y
+	PVrOkyJIRxXlgKW7BkYct+OkfyidaL6xjtungZ0fsHfx3y9rAyIK2LgP1tZJ/1Smqbu9ir
+	owaTch0VqzmOJp45Jw24ZNSka/BXdu8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-236-_5NmTzabMsewadlTWehCAA-1; Sun, 15 Mar 2020 17:27:39 -0400
+X-MC-Unique: _5NmTzabMsewadlTWehCAA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A9221107ACC4;
+	Sun, 15 Mar 2020 21:27:37 +0000 (UTC)
+Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 81D8810027A7;
+	Sun, 15 Mar 2020 21:27:32 +0000 (UTC)
+Date: Sun, 15 Mar 2020 22:27:23 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ daniel.baluta@gmail.com, nramas@linux.microsoft.com, hverkuil@xs4all.nl,
+ Larry.Finger@lwfinger.net
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: rtl8723bs: rtw_mlme:
+ Remove unnecessary conditions
+Message-ID: <20200315222723.666470f7@elisabeth>
+In-Reply-To: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
+References: <20200313102912.17218-1-shreeya.patel23498@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.2003121145540.2418@hadrien>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 
-On 3/12/2020 3:49 AM, Julia Lawall wrote:
+On Fri, 13 Mar 2020 15:59:12 +0530
+Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
 
-Thanks for your input Julia and Stefano.
-
->> That's my general preference as well, but I can't find any point in the
->> "Describe your changes" section of submitting-patches.rst actually
->> defining the order. I wouldn't imply that from the sequence the steps
->> are presented in.
->>
->> In case it's possible to say everything with a single statement as
->> Shreeya did here, though, I guess that becomes rather a linguistic
->> factor, and I personally prefer the concise version here.
+> Remove unnecessary if and else conditions since both are leading to the
+> initialization of "phtpriv->ampdu_enable" with the same value.
+> Also, remove the unnecessary else-if condition since it does nothing.
 > 
-> https://kernelnewbies.org/PatchPhilosophy suggests:
+> Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+> ---
 > 
-> In patch descriptions and in the subject, it is common and preferable to
-> use present-tense, imperative language. Write as if you are telling git
-> what to do with your patch.
+> Changes in v2
+>   - Remove unnecessary comments
+>   - Remove unnecessary else-if condition which does nothing.
+> 
+>  drivers/staging/rtl8723bs/core/rtw_mlme.c | 11 +----------
+>  1 file changed, 1 insertion(+), 10 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> index 71fcb466019a..d7a58af76ea0 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+> @@ -2772,16 +2772,7 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+>  
+>  	/* maybe needs check if ap supports rx ampdu. */
+>  	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
+> -		if (pregistrypriv->wifi_spec == 1) {
+> -			/* remove this part because testbed AP should disable RX AMPDU */
+> -			/* phtpriv->ampdu_enable = false; */
+> -			phtpriv->ampdu_enable = true;
+> -		} else {
+> -			phtpriv->ampdu_enable = true;
+> -		}
+> -	} else if (pregistrypriv->ampdu_enable == 2) {
+> -		/* remove this part because testbed AP should disable RX AMPDU */
+> -		/* phtpriv->ampdu_enable = true; */
+> +		phtpriv->ampdu_enable = true;
 
-Use of imperative language is the approach I was thinking as well.
+I suspect this is actually a bug, that is:
 
-thanks,
-  -lakshmi
+os_dep/os_intfs.c:74:static int rtw_ampdu_enable = 1;/* for enable tx_ampdu ,0: disable, 0x1:enable (but wifi_spec should be 0), 0x2: force enable (don't care wifi_spec) */
+
+and that seems to actually map to the ampdu_enable field in
+pregistrypriv.
+
+However, I wouldn't change this without testing it on the actual
+hardware, change looks good to me and doesn't affect functionality,
+
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+
+-- 
+Stefano
+
 
