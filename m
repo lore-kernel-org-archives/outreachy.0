@@ -1,120 +1,108 @@
-X-GM-THRID: 6949661210955481088
-X-Received: by 2002:a17:902:780c:b029:e6:9193:56e2 with SMTP id p12-20020a170902780cb02900e6919356e2mr19091081pll.39.1618094092102;
-        Sat, 10 Apr 2021 15:34:52 -0700 (PDT)
+X-GM-THRID: 6803652137195667456
+X-Received: by 2002:ae9:df47:: with SMTP id t68mr1428159qkf.262.1584307800148;
+        Sun, 15 Mar 2020 14:30:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:144:: with SMTP id 62ls5643531plb.11.gmail; Sat, 10
- Apr 2021 15:34:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyDP/QPOaASWa1n4S95VJIKRFR990ZtTAliFASt9NFnEUj10RmfYF6Udc4f2Bf2y69OaWmD
-X-Received: by 2002:a17:90a:a505:: with SMTP id a5mr3185071pjq.58.1618094091064;
-        Sat, 10 Apr 2021 15:34:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618094091; cv=none;
+Received: by 2002:a0c:8e46:: with SMTP id w6ls3214942qvb.6.gmail; Sun, 15 Mar
+ 2020 14:29:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsP5hgY1eIOQOb8xkuLdp4lnfz5yWsYQJDNreV056cVH3/9APiD0MqVQztP1stUTB4/DeKv
+X-Received: by 2002:ad4:57b3:: with SMTP id g19mr22428751qvx.87.1584307798758;
+        Sun, 15 Mar 2020 14:29:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584307798; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYHOPd7bTnhpPpkuj4wzcBQ/Xz2zBQEuoeh39nGMb5IynmuAKhD7TkvKt6fjS8KN6s
-         zEqj3U3vvXCSx3K56M0SnNkqIcxRQ0BVROmElvHVwwm6TISicl3DZWQXYsMXb4niEsk7
-         kysriKhO3RACdoFM0vGc+LIrF13ys5AR4sqyWtGqAwNxLEE9PYEZZ+w8XUJMvHsHr43X
-         hnObLbUv5tQD5X2iccYVOLz38KL1jrhuVHAmLZwwbQ/yJFmBQ0C5hD22WFFe9dalot2h
-         l0KPPqX/YgYzDMI9i2ueksw1/klF94fUw9/J2wKnoJNd+jNjrB5xawcd62PPxtmDwHB7
-         hMow==
+        b=j/0wL6GPaskWTB82KWRTTaCFcwGWZymhoFu/i3nSet1FKJy4K9dfQ/e/HCKZjEPTll
+         3capcFEoALxdmlCpKUKHR61HT4dk35qD0KCmK4HMqhoEvImoHjTyAn1DAW4S+wYH+r5C
+         qd7HV2BJpseohulCgcvkk8z2QYR4qSj0unDjPSVrOT1Ohzdzu9uZyOGfbZGRQcxHNs4Q
+         hKTiN8zYfAqUzYGMkWN8uYig0v6TIaE+GF+5nAegpgmJ1NT9besKUNnCOLzVAZfD8+HA
+         RMeS5VY54EzBvIDAbhbmB6i/jbTBF9OZL/t+Rv3dS+3TjiHdEeX3CjKm2R7zUakOYAuM
+         +/dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=qGGdMQt5QMmA36v/dghHSvgB21nbu/uyCpwsrXIGw/M=;
-        b=L5YARqV0KbU39Rq4hWeTWMVjXPwwyVdYKUNS08RBw50nj0Jt5b84JoaGxHeE8vTGZo
-         fNcC1jcAzgB5jQkCJOcbF7LZOZJcOIB1px6T2GcxSpZ0AmJ3+UaGJUj4lFxyh1Q9FFhu
-         9tVHZn/yFNjGKKAXkYdNSvKb6J+hoH05QSkYcytNVfe/0HcbMPX5LkA+sSPOv13boHH/
-         i0EzWSP2YqyYqm573jyku1DEAyFW7QMWQO1bHgOhkZOXNM7qK8MLfhsFsbilqNS5kN1y
-         MWG+rCxz8bUtDE17Oc4znA5IsYpt7JwiQ5T0kKAqq3YItUs4Ypc56yFu7ou/LeU7ChBc
-         iwfw==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=nCZjjXhZtIZTco2GVuY9U8dtD4rKbgr/KTIhT3OsK/I=;
+        b=Z02mH2VqgemBufeGFZg8U2GNm6wUVLJ/j2V5OP9x5JQht+mKy8xliO8otfAZ2IlXSy
+         TT+EkRivpKDeNy4u+ylGwW908uWxVibHCpMn2FEXXBhFONxwVQ145jaqns7lmSCE75uL
+         8a3s+vwhljvA/XvzhCuhFeswGeWP5lsaI/VdQYkKRxM1IwJQBdFe5FnMQANzni9pRDgn
+         /jnt8l0dqyUcYXKVgltj0csPoFf3OiuiccesTL1evZIyloHugD1WIM2QqdTHepHGnE7l
+         c/9aq7PFW8FgZQURVXDW7ZwYB6kLlAmOz4lsX0gFUn5dNU0+IxHJC3BEx3S4oj5Hl7YK
+         HQ+A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="d/WVlbkH";
-       spf=pass (google.com: domain of siddmohamed19@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=siddmohamed19@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <siddmohamed19@gmail.com>
-Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com. [2607:f8b0:4864:20::633])
-        by gmr-mx.google.com with ESMTPS id mp9si456131pjb.1.2021.04.10.15.34.51
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MTniCmoK;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
+        by gmr-mx.google.com with ESMTPS id c2si757703qtn.0.2020.03.15.14.29.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 10 Apr 2021 15:34:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of siddmohamed19@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) client-ip=2607:f8b0:4864:20::633;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 15 Mar 2020 14:29:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="d/WVlbkH";
-       spf=pass (google.com: domain of siddmohamed19@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=siddmohamed19@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x633.google.com with SMTP id m18so2213796plc.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 10 Apr 2021 15:34:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=qGGdMQt5QMmA36v/dghHSvgB21nbu/uyCpwsrXIGw/M=;
-        b=d/WVlbkHWTV46rVCUYAm6rKNL6NTqP71WYGP0kZ6y3ktOYCIjHdTXaxi65JNLY0m/A
-         3yD7Vkpt5iAhszMn/4QzVqCxjFoT0n5l5p9ZTJcJmOGVqQTxpan1fFh+EyTJ/mTN7W0Z
-         IqqpE3umB6b0FcxnjZfHLWhWQgEi9tDEpMlXDDa2SIlL6iMOwzT59NoIF44ArPXOet8A
-         FDvTZ2PrcgfwHMEqgcckLW9Kn/EuIh+38FmY05QiMsOprvh6jVwkBm60Rz1jncDByXf2
-         jRHVcgih3fFhEkqu5sZVENCKyH3W2gtqGOGZFR3OHBOJEoViW1NqWBuHeSruckRqr08E
-         ZcyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=qGGdMQt5QMmA36v/dghHSvgB21nbu/uyCpwsrXIGw/M=;
-        b=jzV2ckLzMIDBpZTWIzDkvF6lwbTiLM+6Rnm629bYYJFEtOvUYXMCd73zb1FQD6s/gk
-         MXABrO4y0756kkMa3NpxNiVZ7lWoXnPNnv+cvjQW3dZrDjhP6eiCZg+wqznSxhTL+pyn
-         vW8LeSpr7L3Tn9Lp8apcI7HLSLHNVXaFfMrPiWE2BmMq2R8Lhg6s33y6MSSCNgGn47Zt
-         WuTFVv+lZ/p86FAAYHTAkWmpqGkC0R5x+ejzv5lXVgzJ715jLGyvlJAd7Ms8qMcLCJQD
-         MW0/yj3gmkpfVuS9eE0MiBbf1HAaa9rVhMegLF9Ec+b4MHD4EY8RNd7KMbtJ/MsAliJm
-         q+9w==
-X-Gm-Message-State: AOAM533fd5O3lcYPQKk7tL7iQvlpy5lw+l6ZAdtkX5kGyoAAUOSMlpr9
-	eTzan5EZZVv2Phw0QxyAB28=
-X-Received: by 2002:a17:90a:7884:: with SMTP id x4mr20332362pjk.185.1618094090778;
-        Sat, 10 Apr 2021 15:34:50 -0700 (PDT)
-Return-Path: <siddmohamed19@gmail.com>
-Received: from Ali-Ubuntu ([2409:4053:2d82:28d1:8dc9:5e41:d52e:704b])
-        by smtp.gmail.com with ESMTPSA id r1sm6145715pjo.26.2021.04.10.15.34.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 Apr 2021 15:34:50 -0700 (PDT)
-Date: Sun, 11 Apr 2021 04:04:44 +0530
-From: majauhar <siddmohamed19@gmail.com>
-To: siddmohamed19@gmail.com
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH 0] Staging(VT6656): Modified camelCase Variables
-Message-ID: <20210410223444.GA110316@Ali-Ubuntu>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MTniCmoK;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584307798;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nCZjjXhZtIZTco2GVuY9U8dtD4rKbgr/KTIhT3OsK/I=;
+	b=MTniCmoK8te0pj45YyeqTCV3YSQ5yLUYxEuonWQv263mTR4lQv+A9e28nIRp49NFs02EsV
+	4oHNqPvN4AhVRUmESBZEiGQXEOp1gDEC65jg8Vizu8Ypt4sm7W/9Ff8cqTM1DAnkTYcT+n
+	bHibl88nLQlYqmTS3K0huKNTihQFD34=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-476-4bSSCoquNZ2P3989GY5_Pg-1; Sun, 15 Mar 2020 17:29:54 -0400
+X-MC-Unique: 4bSSCoquNZ2P3989GY5_Pg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E82BA800D50;
+	Sun, 15 Mar 2020 21:29:52 +0000 (UTC)
+Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B737B60BFB;
+	Sun, 15 Mar 2020 21:29:46 +0000 (UTC)
+Date: Sun, 15 Mar 2020 22:29:38 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: adham.abozaeid@microchip.com, ajay.kathat@microchip.com,
+ linux-wireless@vger.kernel.org, gregkh@linuxfoundation.org,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com, daniel.baluta@gmail.com,
+ nramas@linux.microsoft.com, hverkuil@xs4all.nl
+Subject: Re: [Outreachy kernel] [PATCH] Staging: wilc1000: cfg80211: Use
+ kmemdup instead of kmalloc and memcpy
+Message-ID: <20200315222938.23a9faec@elisabeth>
+In-Reply-To: <20200313112451.25610-1-shreeya.patel23498@gmail.com>
+References: <20200313112451.25610-1-shreeya.patel23498@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 
-'''
-Variables 'uVar' and 'uModulo' were generating camelCase style issue.
-Modified them as 'u_var' and 'u_modulo' and the issue disappeared.
+On Fri, 13 Mar 2020 16:54:51 +0530
+Shreeya Patel <shreeya.patel23498@gmail.com> wrote:
 
-Recompiled and installed the modules and all was fine.
-'''
+> Replace calls to kmalloc followed by a memcpy with a direct call to
+> kmemdup.
+> 
+> The Coccinelle semantic patch used to make this change is as follows:
+> @@
+> expression from,to,size,flag;
+> statement S;
+> @@
+> 
+> -  to = \(kmalloc\|kzalloc\)(size,flag);
+> +  to = kmemdup(from,size,flag);
+>    if (to==NULL || ...) S
+> -  memcpy(to, from, size);
+> 
+> Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
 
-Signed-off-by: Mohd Ali Jauhar <siddmohamed19@gmail.com>
----
- drivers/staging/vt6656/device.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
 
-diff --git a/drivers/staging/vt6656/device.h b/drivers/staging/vt6656/device.h
-index 947530fefe94..847c79e3fb78 100644
---- a/drivers/staging/vt6656/device.h
-+++ b/drivers/staging/vt6656/device.h
-@@ -385,11 +385,11 @@ struct vnt_private {
- 	struct ieee80211_low_level_stats low_stats;
- };
- 
--#define ADD_ONE_WITH_WRAP_AROUND(uVar, uModulo) {	\
--	if ((uVar) >= ((uModulo) - 1))			\
--		(uVar) = 0;				\
-+#define ADD_ONE_WITH_WRAP_AROUND(u_var, u_modulo) {	\
-+	if ((u_var) >= ((u_modulo) - 1))		\
-+		(u_var) = 0;				\
- 	else						\
--		(uVar)++;				\
-+		(u_var)++;				\
- }
- 
- int vnt_init(struct vnt_private *priv);
 -- 
-2.25.1
+Stefano
 
 
