@@ -1,117 +1,116 @@
 X-GM-THRID: 6804292371114622976
-X-Received: by 2002:a67:c10f:: with SMTP id d15mr3552255vsj.7.1584449120183;
-        Tue, 17 Mar 2020 05:45:20 -0700 (PDT)
+X-Received: by 2002:a2e:9c9:: with SMTP id 192mr11800901ljj.77.1584247772014;
+        Sat, 14 Mar 2020 21:49:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:8797:: with SMTP id j145ls140554vsd.3.gmail; Tue, 17 Mar
- 2020 05:45:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsWGkq+kHTZ3/qf2a0SSyskpN51S5amT3MgQDupRUKcsZ97chcgPtQSEWtMfW2FfkVxwDwM
-X-Received: by 2002:a67:d706:: with SMTP id p6mr3317866vsj.143.1584449118515;
-        Tue, 17 Mar 2020 05:45:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584449118; cv=none;
+Received: by 2002:a05:651c:211:: with SMTP id y17ls2621793ljn.10.gmail; Sat,
+ 14 Mar 2020 21:49:30 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtqfe+/a6A3YRIzQzPFkJVrbOMx21wp8EXd3w2asU8JNXaoFTKBEFpiEjpp22u7YUsMmQvF
+X-Received: by 2002:a2e:9ad1:: with SMTP id p17mr13203428ljj.26.1584247770613;
+        Sat, 14 Mar 2020 21:49:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584247770; cv=none;
         d=google.com; s=arc-20160816;
-        b=uoog+4MvD6Aw9KnQhFyjZOwFsrOVkDe4zsRjC3szspE93rxc4TlhMXi8296mx185SA
-         rqd6bU2zkDcuOPHIghRsnfgzhInHmDAiuttzkIZo/cyjcrNPrO4Qd7g4MTuszpF3Q4GW
-         IvMnusBRQm3y3F6IS5fIpuObLLEIqtvkBq1iuWfTvV0OT9HRLliZw8Gs9MAOUoxG4Dby
-         9wdXn7QN8ycSl1rBtipcuBJN9/kwDj07e6XWclR9faJgzpN87qWv9+nVFJYWgMbjDHJu
-         GURFRIKCPYVpF/VLMawicMLr8pnVvMHH/rrBgmPP/gegemRIPPHumx+kKofivpZzdMsG
-         oCfQ==
+        b=r+hQccKMZdxJCUiCl11ZoJHGr8034Gi2BW1jkMzr2dSrn13DkjFUx+GbhH9yQ+z8KZ
+         Oj2iozorDNe7M82ZM4zUqpwcXEIXaoK7PHzj6IdpBnNHmQy9mUxcXwiDrUz/5x+wHrWC
+         e2HGK5Cf2Oh2jr4wn4FTWL4nJdamDMvp3qKo+L9MDi8O/h5sMRApFFpg1yyl7KGnTnDM
+         BzPGPL/TN1s3DnIPkZ0q7JL00AUmNVrN45DJ07OFZiXjWXzhAOPSl0O9+SoXKVskq6WM
+         GcQ9nxYoF+aO7IDJPo1a7/dlzq4KIfLL7EzwSf7e6JB6lc3qydLNCG7CpXG7/RFeaYKl
+         7anw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=5/dNpvDm8MskbUSAtnqme4VpzrBqrR900j/EqlxsdWA=;
-        b=l+n8zPDj3KQWXIURAgqkc+YaCdlo5YqNB7tgRhFMy85s/a/EjHjg2Y1LAJikM5XRl9
-         hk8rL11gjX8XE7OA8ZkjDcnGcsDLHL2Ur+kUrQf6BLgjtpjFDO2KqicEdyPAUxoZI/ZA
-         ebdO63vBgRFLDcQMK2qGtyifzqlf7AuaC6jS8i0uzVRpeFYQgzlU89m9LtlKwIRKo5Yc
-         7r8K/9XE40Zo+ROa70mexqVTLpNM4L/FS5ivixcjlsosd3GanaW5qbPsxr2PGpF4x+TI
-         y/mSjJiUuqtEFKzvmNVtRDMNt+0S55f2wVPk0nZu6lxUCc8FFCDd9SM85jA+519bH/Eu
-         X5Nw==
+        h=message-id:date:subject:to:from:dkim-signature;
+        bh=GD1Ffr5dVA5gMXyWCXEEzbpO2xWAsFANvKnkwZ3oEuk=;
+        b=F+0lJRCiT3Qj3A14GqlAP79Gh1xfUxUNV26xiITPxKQ9LsC33xB9IIfMVdu5J8+aml
+         ouEsizZ1l1sYSLesLrn40DEdwpDpz0cHMbgXAF6nWKhI0/aaFo/+VOzuO1S/XWHHWTl5
+         Fj4yhGEg7N4WWdDrJIDZoZrJHs/2r6DVlp+5Mq18sILbTbr9eQZN/C6ERTVnm7JrPL3m
+         QeYnO/5W/lDwhyItHRHWyeJ0fSRAbPtjpZFSwqATq61pJBN7Bi15lRtPqb1dLeNHWKWM
+         PdEbvlG1X7FwAyRQk/ZEkR90hAfYJk3mxl7ANwEGjU8YZNNPYFr4CtIOQGEg6OLyDgPM
+         Xqqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fSmAiDqr;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id z26si71071vsp.1.2020.03.17.05.45.18
+       dkim=pass header.i=@pplo.net header.s=google header.b=VnwUnA3G;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id d12si622223lfi.2.2020.03.14.21.49.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2020 05:45:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 14 Mar 2020 21:49:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fSmAiDqr;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584449118;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5/dNpvDm8MskbUSAtnqme4VpzrBqrR900j/EqlxsdWA=;
-	b=fSmAiDqrPtbePMf1HJFOr6GBnoIyxtFZTirMR2l9bpa9WYqLdAVE8+H91rbWjCRyWJr2da
-	bKgX4HFvzVkqgJQE5FvSHXgc4dm5Ie0U8pbc45lo0cMhvq8HnQ0Y6QFevIQBqTRue+F6F3
-	gFX7BewQ1yp/iOflomt5Iurtey7sOYo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-456-jm8_CChYODKwx_Odb2ipZQ-1; Tue, 17 Mar 2020 08:45:16 -0400
-X-MC-Unique: jm8_CChYODKwx_Odb2ipZQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 38022107ACC4;
-	Tue, 17 Mar 2020 12:45:15 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9EC5719C58;
-	Tue, 17 Mar 2020 12:45:12 +0000 (UTC)
-Date: Tue, 17 Mar 2020 13:45:05 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Lourdes Pedrajas <lu@pplo.net>, gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, jerome.pouiller@silabs.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: wfx: remove unneeded spaces
-Message-ID: <20200317134505.2e417b36@elisabeth>
-In-Reply-To: <20200315044922.14249-1-lu@pplo.net>
-References: <20200315044922.14249-1-lu@pplo.net>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+       dkim=pass header.i=@pplo.net header.s=google header.b=VnwUnA3G;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x441.google.com with SMTP id z15so17062352wrl.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2020 21:49:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=from:to:subject:date:message-id;
+        bh=GD1Ffr5dVA5gMXyWCXEEzbpO2xWAsFANvKnkwZ3oEuk=;
+        b=VnwUnA3GhmBM1qRT3wG7Xtq7JSHNtnSifs0sddIM8DsT062ussCuoe24VcIJjvvgzS
+         3bAXTbphlGjGFpqnPMsYLTYtVXqma/xxsFoy3ocR8Ib4QPqNONr5TffssARQAGtkAzP2
+         JEWQkzFUO0ScaJvTGoWpEyQl3zfjpXdoI12Oc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:subject:date:message-id;
+        bh=GD1Ffr5dVA5gMXyWCXEEzbpO2xWAsFANvKnkwZ3oEuk=;
+        b=mLrmVKtBa6WDgO/QSRm7pGMz7+pVA3PjpvC+dTW9AgMw883oS7Ds2y5Mo+WIGPm5am
+         7c6n6Gin6mrzwJso5MmRoGgqE3HiabQKIbGvbZtEXsm4XdyJeXMciGbzI1yODh4twXiQ
+         MQ4P6ajDykh8VCsD1nZIaNhcNo7QOnKLOJNEtOl6Ktdds+P+HEz3VqhRLZgkco8I17mP
+         bgb9fZFDclhaMaYt0HWkDc4Rtv4Bmr6iOJXffJZqx8bd6nchSd1t+3RW143adQSugent
+         xeCKxkaqxOIk41YPRWVd5I7PxhCYBq8oXv5g1h7FA4qko3l8soFjSI6r8T/ogG3bKoFW
+         K6MA==
+X-Gm-Message-State: ANhLgQ0h/g2z849UvqG+SS4l581Yx9W3PP/Ul2lra6OLnUywE8AGQR9U
+	DTqGgnmEe9F+0Vas8bpFsAivWJ2U/pqZiA==
+X-Received: by 2002:adf:f5cb:: with SMTP id k11mr20446925wrp.214.1584247769698;
+        Sat, 14 Mar 2020 21:49:29 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id f15sm12386065wrt.9.2020.03.14.21.49.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Mar 2020 21:49:29 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org,
+	jerome.pouiller@silabs.com
+Subject: [PATCH] staging: wfx: remove unneeded spaces
+Date: Sun, 15 Mar 2020 05:49:22 +0100
+Message-Id: <20200315044922.14249-1-lu@pplo.net>
+X-Mailer: git-send-email 2.17.1
 
-On Sun, 15 Mar 2020 05:49:22 +0100
-Lourdes Pedrajas <lu@pplo.net> wrote:
+Remove spaces after type casting operators in order to comply codding
+standards.
+Issue found with checkpatch.
 
-> Remove spaces after type casting operators in order to comply codding
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
+---
+ drivers/staging/wfx/queue.c | 2 +-
+ drivers/staging/wfx/sta.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-with coding...
-
-> standards.
->
-> Issue found with checkpatch.
-> 
-> Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
-
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-
-By the way, question for Greg:
-
-> [...]
->
-> index a60ac03fa73d..07a9991929fd 100644
-> --- a/drivers/staging/wfx/sta.c
-> +++ b/drivers/staging/wfx/sta.c
-> @@ -903,7 +903,7 @@ static void wfx_update_tim_work(struct work_struct *work)
->  int wfx_set_tim(struct ieee80211_hw *hw, struct ieee80211_sta *sta, bool set)
->  {
->  	struct wfx_dev *wdev = hw->priv;
-> -	struct wfx_sta_priv *sta_dev = (struct wfx_sta_priv *) &sta->drv_priv;
-> +	struct wfx_sta_priv *sta_dev = (struct wfx_sta_priv *)&sta->drv_priv;
->  	struct wfx_vif *wvif = wdev_to_wvif(wdev, sta_dev->vif_id);
-
-Will this eventually have to conform to networking coding style? At
-what point in time is this stuff checked, if at all?
-
+diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+index ed6dc8297738..39d9127ce4b9 100644
+--- a/drivers/staging/wfx/queue.c
++++ b/drivers/staging/wfx/queue.c
+@@ -540,7 +540,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
+ 		skb = wfx_tx_queue_get(wdev, queue, tx_allowed_mask);
+ 		if (!skb)
+ 			continue;
+-		hif = (struct hif_msg *) skb->data;
++		hif = (struct hif_msg *)skb->data;
+ 		wvif = wdev_to_wvif(wdev, hif->interface);
+ 		WARN_ON(!wvif);
+ 
+diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
+index a60ac03fa73d..07a9991929fd 100644
+--- a/drivers/staging/wfx/sta.c
++++ b/drivers/staging/wfx/sta.c
+@@ -903,7 +903,7 @@ static void wfx_update_tim_work(struct work_struct *work)
+ int wfx_set_tim(struct ieee80211_hw *hw, struct ieee80211_sta *sta, bool set)
+ {
+ 	struct wfx_dev *wdev = hw->priv;
+-	struct wfx_sta_priv *sta_dev = (struct wfx_sta_priv *) &sta->drv_priv;
++	struct wfx_sta_priv *sta_dev = (struct wfx_sta_priv *)&sta->drv_priv;
+ 	struct wfx_vif *wvif = wdev_to_wvif(wdev, sta_dev->vif_id);
+ 
+ 	schedule_work(&wvif->update_tim_work);
 -- 
-Stefano
+2.17.1
 
 
