@@ -1,133 +1,110 @@
-X-GM-THRID: 6803652137195667456
-X-Received: by 2002:a65:6909:: with SMTP id s9mr12037191pgq.92.1584098706352;
-        Fri, 13 Mar 2020 04:25:06 -0700 (PDT)
+X-GM-THRID: 6803323360497369088
+X-Received: by 2002:a05:6638:201:: with SMTP id e1mr23040852jaq.111.1584304536823;
+        Sun, 15 Mar 2020 13:35:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:a9c1:: with SMTP id b1ls4050417plr.11.gmail; Fri, 13
- Mar 2020 04:25:04 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu1JRoTH6w8+ZYlbRbUEgHoxZdXA0Le+2X3RN3nrsXQJeZmUuGrbwWybtPMwqQoFcDnW+tn
-X-Received: by 2002:a17:902:7d94:: with SMTP id a20mr13314290plm.307.1584098704661;
-        Fri, 13 Mar 2020 04:25:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584098704; cv=none;
+Received: by 2002:a6b:1803:: with SMTP id 3ls465206ioy.0.gmail; Sun, 15 Mar
+ 2020 13:35:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vteMJLlbdUplrAmMGiTYuB+DjJOKWyEUtocfymy1/pzTIsLtyfDN+H9AZ04nPS4oQ+mAr3M
+X-Received: by 2002:a6b:5118:: with SMTP id f24mr4957548iob.20.1584304535550;
+        Sun, 15 Mar 2020 13:35:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584304535; cv=none;
         d=google.com; s=arc-20160816;
-        b=zVqIV/q4EgJ5fMFHxYv4+HdYRWziClL/l6AJI5tLi2uiS4eqzNrFZuvj2eLzVQEDal
-         0ieMKbEB40K2NZBykmEIWRRaOk36y8q8xTzpUXMmyvIi+odl4HHTv8bMQn1WCsA/SPWI
-         ih/iUpwRdyo2+aCUrjMq+B/wmLDK0bAmEJJcwt/cTJL5x8qcWLNFYs5WkdzcCTXZBi6/
-         df3rM58EiGGHkv7pXIGFVMYLEhL1n3X1bINwmySz0j9SeHYJUCHBviyrQIbJn6M6DzSi
-         fqPf4MlqK0/DSgCQh4NQ6458RR56mM6xrIV6PnVgEx26rAJdGKzuoLBdDn5hSnXEeRDk
-         DRZQ==
+        b=eooZQHjyJqp6NeC1NLmabEzzVRiSHROdLUVjKVw6+YFoUBTnhwmJwg2yF+GwluwD6U
+         PkgUliJSeZ0WypDdT2ITVn5AGkKhtc/yEMwX5mEIybkuHLrp07kO36YqlqeN7oC8keZc
+         zHWztOw6GMlhdPosliL46xDWJyI2ycRXtBXC3wJnKqLJFJApJRfxHIpkhmmuTgc/P22E
+         Xi2tlINjKOPprh9y38O9Uow85yHPCMmyyzd9dgWfOe0NVmB0JZRdVuvQUm5OblrJdd4l
+         bKvzcvIpEklJ2m7qYyCcrvlzJycd3tIvFUkEOg/mCKZw2ja44iZXzWhBfjzYO4r3ba99
+         SKrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=YSkGa2UvwX+1eAP/7tt1QNSs+cG/P3JEIi8YH4DrwtI=;
-        b=OMWoJXBcRi9gU/fRo46FcviGGvIJ8COInoyWyyaDq1MKiilXgSF7pympWg27DWBUL0
-         0ERQ1PEPPWywmIpZRAygiCXWypBS/stKizvN/s6/rhoDu8fWtkDUm3cyzPd6mgxS1TdA
-         Zqe7XvMvY3eOxOQgMdbCMMZOs9deNcbVrJxMg38iqSFdcOvzuObSMMgF/uszZhdYgV2q
-         mNyGOQ+7/aPAFiKj8F3ZPHEGdhpbIlun03S0XlX7xf9NmmBHfFfe55HEaOzAUMW9UP19
-         HRcEarZ+wM+aPYDRP3DmpayI7zBtCRTDFBXqz/hSG+pr6ZAc+HzK8xrVQas7tu/gueU/
-         XnJQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=nVZnOd5m3porvOMaBZqIz0qexyDnIJOrYW84sRwpgvw=;
+        b=J2zhj+4UA8uYpQ9OLS20V/fogXAFN6Ju0fHW3Lw8nAE2hW7koixXpPdC0XsdEWSSdu
+         z+fhygn7CafPSzy455/5PCfWPyAwipvslVwHRxgoPLOnUp4l6/1dPQg9bIvNPl0lwJFR
+         9Dklcw9VawIBk9vnzIVviHHDo8JhAOk9tNCLPdxk1zgZ/SBf/XpLqXP2vECEBTt9q35G
+         aQmV4oQP141PtD1PCP+Mtwi6m08MC2OnO6+bZ2vJsFFvcoGrPBYD5pFfVRL5+UsRywIf
+         inDmqqu/uVJEPbtDAC72jidwrMwkIQbDupFdDXdPUaf/ifLyAkvWA2XaiV4LaEV3Ej5c
+         qE8w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ds12Pbz5;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id ng10si159728pjb.2.2020.03.13.04.25.04
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e6pZ/aPS";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by gmr-mx.google.com with ESMTPS id 131si122485iou.1.2020.03.15.13.35.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 04:25:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 15 Mar 2020 13:35:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ds12Pbz5;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id 37so4811725pgm.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 13 Mar 2020 04:25:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id;
-        bh=YSkGa2UvwX+1eAP/7tt1QNSs+cG/P3JEIi8YH4DrwtI=;
-        b=ds12Pbz56P3HtbbsNiP4zu8oLtv3DjT0vb9zDsJp975Z7iWT+UKql7Bn1CkRWx/e+Z
-         lhHdDYzzewJ0hOIL29hwJcGLYEwZXnsQQ7j/8DWWJiZ0fq3dt7T5IFczsndvW2IAKj56
-         6wVOm9bWVjGqxkNIZGRpKm4PXbyb9TyJxux37s3ASVI2BmtOMyvWRtqFSgnRbJZK4xW5
-         lpGgT5PBTw0HyO559MN+VBkV+5rIvXlP91pA4yLTkQESr8+XQ0zIVB6nhjvlzO9UQ3Wh
-         7Gjt4KQnntaCUkE/cQ/e0nDuF3SPxxKH0T9EZ5QQhrzMXqJs1JFaJJpz0uJoN+P4YEWM
-         fxjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=YSkGa2UvwX+1eAP/7tt1QNSs+cG/P3JEIi8YH4DrwtI=;
-        b=JWxIxeIBhW5RtSS8bRfwLaFztOBLB5mhBAG4+Bc391N5bjONS4smsoRiodgwmVy6Mn
-         YIkv//V4blJsqVGhzHfpMurliVZJgxn8ybpwcPIBLsnO9ToikLKbY06vMalXTiBRBJqn
-         rnAHG47bfD0ImlrD8wpDXmqTYzP9G+V+tbsISWD0qPlRYB7inrSVOQWCrbANzksp9wKQ
-         zPspmH0hNIX4U6lHLj9l78Jchr4x/vUGrCslwLIYkO7HqsyrfYEFp5XZhc2YKW63jSzT
-         PAKp9K5oiOnEHm+HLbH8GGVraHX7RWFsrGx6rdrihyCazSGzmancWwTgmEO8ncngGLJ1
-         bDzQ==
-X-Gm-Message-State: ANhLgQ0WkFAm8xewDn3ffIkDd6FrtTT/9Xn80gall3BUTPT9ATEc2SVe
-	HeBQPNfblqBpePULO8bqwwVolLn6UHw=
-X-Received: by 2002:a63:6944:: with SMTP id e65mr13251443pgc.406.1584098704226;
-        Fri, 13 Mar 2020 04:25:04 -0700 (PDT)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from localhost.localdomain ([2405:204:22f:d418:f8a5:7ca8:f99b:fa30])
-        by smtp.gmail.com with ESMTPSA id q26sm2094820pff.63.2020.03.13.04.24.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 04:25:03 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: adham.abozaeid@microchip.com,
-	ajay.kathat@microchip.com,
-	linux-wireless@vger.kernel.org,
-	gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	sbrivio@redhat.com,
-	daniel.baluta@gmail.com,
-	nramas@linux.microsoft.com,
-	hverkuil@xs4all.nl,
-	shreeya.patel23498@gmail.com
-Subject: [Outreachy kernel] [PATCH] Staging: wilc1000: cfg80211: Use kmemdup instead of kmalloc and memcpy
-Date: Fri, 13 Mar 2020 16:54:51 +0530
-Message-Id: <20200313112451.25610-1-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="e6pZ/aPS";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584304534;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nVZnOd5m3porvOMaBZqIz0qexyDnIJOrYW84sRwpgvw=;
+	b=e6pZ/aPSjzXGhumBOoAT6HVMVajZrhnkyX3Bj099h9px+ON1+XIKzv7MHlwZI0/RFnE8Ik
+	+f/FBVeQzzsMfeXlushvJyYbbRbRfZaddsh24slp4p+hNkZXY2YJQabhVCqcGfBG/d3S37
+	CHofBaX/RbBz1Ps+/DodszAqbGAU90Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-313-KM45FeRoPJu_w4jHbit_OQ-1; Sun, 15 Mar 2020 16:35:32 -0400
+X-MC-Unique: KM45FeRoPJu_w4jHbit_OQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F7BB18A5500;
+	Sun, 15 Mar 2020 20:35:30 +0000 (UTC)
+Received: from elisabeth (ovpn-200-18.brq.redhat.com [10.40.200.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 38D6C10027AF;
+	Sun, 15 Mar 2020 20:35:24 +0000 (UTC)
+Date: Sun, 15 Mar 2020 21:35:16 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Enrique Vargas <jevargas@seas.upenn.edu>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
+ <Michael.Hennerich@analog.com>, Stefan Popa <stefan.popa@analog.com>,
+ Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: iio: adc: eliminate spaces
+ at the start of lineslinux-iio@vger.kernel.org
+Message-ID: <20200315213516.6c27408f@elisabeth>
+In-Reply-To: <20200312140911.GA731@evX1>
+References: <20200312140911.GA731@evX1>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Replace calls to kmalloc followed by a memcpy with a direct call to
-kmemdup.
+Hi Enrique,
 
-The Coccinelle semantic patch used to make this change is as follows:
-@@
-expression from,to,size,flag;
-statement S;
-@@
+For some reason, an address you wanted to Cc: ended up in the subject.
 
--  to = \(kmalloc\|kzalloc\)(size,flag);
-+  to = kmemdup(from,size,flag);
-   if (to==NULL || ...) S
--  memcpy(to, from, size);
+A couple of comments:
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
----
- drivers/staging/wilc1000/cfg80211.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+- well, yes, I see you're removing spaces at the start of some lines,
+  but you're also replacing them by tabs, and doing it in an enum...
+  maybe that could be part of the commit title?
 
-diff --git a/drivers/staging/wilc1000/cfg80211.c b/drivers/staging/wilc1000/cfg80211.c
-index 54e02807cebf..4bdcbc5fd2fd 100644
---- a/drivers/staging/wilc1000/cfg80211.c
-+++ b/drivers/staging/wilc1000/cfg80211.c
-@@ -1142,14 +1142,13 @@ static int mgmt_tx(struct wiphy *wiphy,
- 		goto out;
- 	}
- 
--	mgmt_tx->buff = kmalloc(len, GFP_KERNEL);
-+	mgmt_tx->buff = kmemdup(buf, len, GFP_KERNEL);
- 	if (!mgmt_tx->buff) {
- 		ret = -ENOMEM;
- 		kfree(mgmt_tx);
- 		goto out;
- 	}
- 
--	memcpy(mgmt_tx->buff, buf, len);
- 	mgmt_tx->size = len;
- 
- 	if (ieee80211_is_probe_resp(mgmt->frame_control)) {
+Also,
+
+On Thu, 12 Mar 2020 08:09:11 -0600
+Enrique Vargas <jevargas@seas.upenn.edu> wrote:
+
+> Eliminate WARNING found with checkpatch.pl related to spaces
+> inconsistency on identation.
+                   ^^^ indentation.
+
+The rest looks good to me! Can you please send a new version?
+
 -- 
-2.17.1
+Stefano
 
 
