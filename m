@@ -1,47 +1,47 @@
 X-GM-THRID: 6804511537677467648
-X-Received: by 2002:adf:e4ca:: with SMTP id v10mr34852149wrm.305.1584358345541;
-        Mon, 16 Mar 2020 04:32:25 -0700 (PDT)
+X-Received: by 2002:a5d:6908:: with SMTP id t8mr36373227wru.92.1584358330561;
+        Mon, 16 Mar 2020 04:32:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:498c:: with SMTP id r12ls9169336wrq.10.gmail; Mon, 16
- Mar 2020 04:32:24 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vscs3k0j8xCLkZa0J5k+wT4BYAptqTTft+0dyDw7wXuumRoT0k8/pBYAQA3pqHmsvDrcPNE
-X-Received: by 2002:a5d:498f:: with SMTP id r15mr14367769wrq.81.1584358344468;
-        Mon, 16 Mar 2020 04:32:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584358344; cv=none;
+Received: by 2002:a1c:208f:: with SMTP id g137ls6484818wmg.1.gmail; Mon, 16
+ Mar 2020 04:32:08 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuqLvVVFpTNphI7C/cXG+bx95/tSWsN6C5ZI7XFO/YJT5IvNB3dlhZ4XnhLof7hCHWVAKfo
+X-Received: by 2002:a1c:1fc9:: with SMTP id f192mr28206793wmf.4.1584358328936;
+        Mon, 16 Mar 2020 04:32:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584358328; cv=none;
         d=google.com; s=arc-20160816;
-        b=NfARWlfsFw5LCTueC2jhb/ljObMZXYmnp2BnzFnXqvvDINxFyNDoJ9Qr99zy0AsOwL
-         3UyAF+3Dv6ANQC16q99XROyhUsaAGS2wr6MP8ZToiCUo7vvBfVT/D326QHY1ZFAEXeb4
-         8Dquc3ru/zhVm1XPrbbpWHnRq895hZ5Wmiv0+ISC1FoFs6GBrZ1K+Qq7tszAtOFIKFH5
-         94VYeUq8GVphpcwZCLpRneS6lgLxpEYIVMaMzqG8FUo6EMGElMLVU1zXb3s67OUZRX5L
-         KzIDfVe3K4ATOhoqK35xqV4zlw3VcgqorIX3jzAMJgTsgHc/fzwNvjbGs1BIKeM1FSn1
-         pHoA==
+        b=rwNWI/y3Ex6cTFG2hHM5Fnu6flsNzu5obF9k3XRjh52eMMSA1RIjHWgEwwF9niK69u
+         +3ipr/cJWs8T0PMM3lp87XWfP8MbjKSegHolcZaY0lRhogPisJpndD9xAB0IC/WhJWj8
+         2AmDBBQXb1L1q+iK7XrAw9JqRV/SYMLWt60ZWxUcrVB9I322FG3sXrP+qpHJe23PzUXs
+         C7HybnBIg2ZrJYXnx7KdIlvX+rGDyjJeKHwRM8jgPPKRcZXUPnqLRd/BJ57v62RGeC9+
+         MLWDobvN4NeQCD1Q1vlR1gGaOZS+Eq+HS5a1bgw3gs/sKl+XlC5iS7HFRxI2SYeIxZ9n
+         y5SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=N3pXI7T+DvRetfhxvDu0vRu+dRdltJ/iUkxZwkqYW1M=;
-        b=cg2Ky/gjpw1X3Vd7Zpw/bXh05T/QfwAHS/FCGTw4f7SxY5k8XojNtCVvlyuNFMiCov
-         gy/sWhvmAn1NlLaFJuMjZ+rul25DCyypMvd6IEN5DpEoz5taR5boHBb1O9DOankRoqRZ
-         LYhnHACoFajoXWW41YxTfotQ242AyRNwtvppQoC/0NYYP7oNPVeCv63oSVne5pLp6F13
-         VPW6Up7h19YI+zXwyJm356RvmOHTQf4gOhhL93yS8I60Ej/cFHY9FHFVPXwxcID0hPFe
-         fKXzNlGMt9SN/qP0pTwWb++F1JR+QF0ky25aDdlKNUTGpDDmrywnJFJ0LgowAUQHOL3p
-         VRmw==
+        bh=HHFO1TAe4jONDf33LalMqhf0127Susmv0ilLSQN3t3g=;
+        b=QxmCXvrmHqDLeHePTk6WQkrGG83ABFADVE+O3dEis4M+VFXXEQJpNCPg3qPr8PFfgz
+         x2BNGWBQW6MqQqgxxwQEfHOisvZIvmLOd0VUhI6PKgEIOZoU1WaEVFfEUoinrK9rB6Qb
+         8fltYbc3Y1ia1/oVinSfOPX0wb6Z14s1UNq+llLb5gHi10gHHQHRJIOhqsOPUQun/AI6
+         stVGbV69PYOIV9SNLZVho/ckCe4Ow/bKaFx7MABDIFf7x3zB1TE+iH1DuHQK4f/NUWWa
+         SaXE1w/lAf2J4h7Rvf5fKeCOCyTlgJvK6ZcyPgAJRT8UjyzAlBC7k93dSa8Ioy2n8std
+         65MQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.koike@collabora.com designates 2a00:1098:0:82:1000:25:2eeb:e3e3 as permitted sender) smtp.mailfrom=helen.koike@collabora.com;
+       spf=pass (google.com: domain of helen.koike@collabora.com designates 46.235.227.227 as permitted sender) smtp.mailfrom=helen.koike@collabora.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
 Return-Path: <helen.koike@collabora.com>
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk. [2a00:1098:0:82:1000:25:2eeb:e3e3])
-        by gmr-mx.google.com with ESMTPS id a18si209623wra.0.2020.03.16.04.32.24
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk. [46.235.227.227])
+        by gmr-mx.google.com with ESMTPS id e12si277856wru.1.2020.03.16.04.32.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Mar 2020 04:32:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.koike@collabora.com designates 2a00:1098:0:82:1000:25:2eeb:e3e3 as permitted sender) client-ip=2a00:1098:0:82:1000:25:2eeb:e3e3;
+        Mon, 16 Mar 2020 04:32:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of helen.koike@collabora.com designates 46.235.227.227 as permitted sender) client-ip=46.235.227.227;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.koike@collabora.com designates 2a00:1098:0:82:1000:25:2eeb:e3e3 as permitted sender) smtp.mailfrom=helen.koike@collabora.com;
+       spf=pass (google.com: domain of helen.koike@collabora.com designates 46.235.227.227 as permitted sender) smtp.mailfrom=helen.koike@collabora.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=collabora.com
 Received: from [127.0.0.1] (localhost [127.0.0.1])
 	(Authenticated sender: koike)
-	with ESMTPSA id CE076291A6E
-Subject: Re: [PATCH 0/2] Staging: media: rkisp1: trim diagram in comments to
+	with ESMTPSA id 4A396291A6E
+Subject: Re: [PATCH 1/2] Staging: media: rkisp1: reduce comments width bellow
  80 chars
 To: Enrique Vargas <jevargas@seas.upenn.edu>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -49,37 +49,112 @@ To: Enrique Vargas <jevargas@seas.upenn.edu>,
  outreachy-kernel@googlegroups.com
 Cc: linux-usb@vger.kernel.org
 References: <cover.1584298430.git.jevargas@seas.upenn.edu>
+ <5e08334eae9ca864dbb09c02291fd72687681c39.1584298430.git.jevargas@seas.upenn.edu>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <c4e2ce5d-848c-3a97-9260-57c67d94cd6e@collabora.com>
-Date: Mon, 16 Mar 2020 08:32:18 -0300
+Message-ID: <6a89e7a9-6571-1925-f312-26687fec7ca1@collabora.com>
+Date: Mon, 16 Mar 2020 08:32:02 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.2
 MIME-Version: 1.0
-In-Reply-To: <cover.1584298430.git.jevargas@seas.upenn.edu>
+In-Reply-To: <5e08334eae9ca864dbb09c02291fd72687681c39.1584298430.git.jevargas@seas.upenn.edu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 
-Hi Enrique,
+Hi Enric,
 
-On 3/15/20 3:59 PM, Enrique Vargas wrote:
-> *** BLURB HERE ***
+On 3/15/20 4:00 PM, Enrique Vargas wrote:
+> Make 'Main Picture Path' part of block diagram on separate rows to avoid
+> 80 chars WARNING found with checkpatch.
+> 
+> Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-dev.c | 57 ++++++++++++++++-------
+>  1 file changed, 39 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
+> index 558126e66465..194fc33941f0 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
+> @@ -37,26 +37,47 @@
+>   *
+>   * ISP Block Diagram
+>   * -----------------
+> - *                                                             rkisp1-resizer.c          rkisp1-capture.c
+> - *                                                          |====================|  |=======================|
+> - *                                rkisp1-isp.c                              Main Picture Path
+> - *                        |==========================|      |===============================================|
+> - *                        +-----------+  +--+--+--+--+      +--------+  +--------+              +-----------+
+> - *                        |           |  |  |  |  |  |      |        |  |        |              |           |
+> - * +--------+    |\       |           |  |  |  |  |  |   -->|  Crop  |->|  RSZ   |------------->|           |
+> - * |  MIPI  |--->|  \     |           |  |  |  |  |  |   |  |        |  |        |              |           |
+> - * +--------+    |   |    |           |  |IE|IE|IE|IE|   |  +--------+  +--------+              |  Memory   |
+> - *               |MUX|--->|    ISP    |->|0 |1 |2 |3 |---+                                      | Interface |
+> - * +--------+    |   |    |           |  |  |  |  |  |   |  +--------+  +--------+  +--------+  |           |
+> - * |Parallel|--->|  /     |           |  |  |  |  |  |   |  |        |  |        |  |        |  |           |
+> - * +--------+    |/       |           |  |  |  |  |  |   -->|  Crop  |->|  RSZ   |->|  RGB   |->|           |
+> - *                        |           |  |  |  |  |  |      |        |  |        |  | Rotate |  |           |
+> - *                        +-----------+  +--+--+--+--+      +--------+  +--------+  +--------+  +-----------+
 
-I think you forgot to fill out the cover letter.
+To be honest, I prefer the old way, I think it is easier to visualize.
+But lets see what others think.
 
-Please, see more information on https://kernelnewbies.org/PatchSeries
 
-Let me know if you have any questions.
+> + *                                                          
+> + *                                                          
+> + *                                rkisp1-isp.c              
+> + *                        |==========================|      
+> + *                        +-----------+  +--+--+--+--+   
+> + *                        |           |  |  |  |  |  |   
+> + * +--------+    |\       |           |  |  |  |  |  |   
+> + * |  MIPI  |--->|  \     |           |  |  |  |  |  |   
+> + * +--------+    |   |    |           |  |IE|IE|IE|IE|   
+> + *               |MUX|--->|    ISP    |->|0 |1 |2 |3 |--[A]--
+> + * +--------+    |   |    |           |  |  |  |  |  |   
+> + * |Parallel|--->|  /     |           |  |  |  |  |  |   
+> + * +--------+    |/       |           |  |  |  |  |  |   
+> + *                        |           |  |  |  |  |  |   
+> + *                        +-----------+  +--+--+--+--+   
+
+You can eliminate the trailing spaces in this patch, since it was generated due to this
+line break, so you don't need the second patch.
 
 Regards,
 Helen
 
+>   *                                               ^
+> - * +--------+                                    |          |===============================================|
+> - * |  DMA   |------------------------------------+                          Self Picture Path
+> + * +--------+                                    |       
+> + * |  DMA   |------------------------------------+       
+>   * +--------+
+> - *
+> + * 
+> + * 
+> + *              rkisp1-resizer.c          rkisp1-capture.c
+> + *            |====================|  |=======================|
+> + *                         Main Picture Path
+> + *            |===============================================|
+> + *            +--------+  +--------+              +-----------+
+> + *            |        |  |        |              |           |
+> + *         -->|  Crop  |->|  RSZ   |------------->|           |
+> + *         |  |        |  |        |              |           |
+> + *         |  +--------+  +--------+              |  Memory   |
+> + * --[A]---+                                      | Interface |
+> + *         |  +--------+  +--------+  +--------+  |           |
+> + *         |  |        |  |        |  |        |  |           |
+> + *         -->|  Crop  |->|  RSZ   |->|  RGB   |->|           |
+> + *            |        |  |        |  | Rotate |  |           |
+> + *            +--------+  +--------+  +--------+  +-----------+
+> + *  
+> + *            |===============================================|
+> + *                          Self Picture Path
+> + * 
+> + * 
+>   *         rkisp1-stats.c        rkisp1-params.c
+>   *       |===============|      |===============|
+>   *       +---------------+      +---------------+
 > 
-> Enrique Vargas (2):
->   reduce comments width bellow 80 chars
->   eliminate trailing whitespaces on comments
-> 
->  drivers/staging/media/rkisp1/rkisp1-dev.c | 54 ++++++++++++++++-------
->  1 file changed, 37 insertions(+), 17 deletions(-)
-> 
+
+
 
