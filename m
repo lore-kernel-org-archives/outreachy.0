@@ -1,102 +1,113 @@
 X-GM-THRID: 6803435195586314240
-X-Received: by 2002:aa7:95a1:: with SMTP id a1mr4854873pfk.279.1584445578672;
-        Tue, 17 Mar 2020 04:46:18 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:9308:: with SMTP id p8ls5021616pjo.0.gmail; Tue, 17
- Mar 2020 04:46:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtDSbneGvDFMhu2vVk/WAbJiyO/0gHCLUf6CQy4J+7U3su2V90yemkWgEFsB5FU3ZeSdFrp
-X-Received: by 2002:a17:902:a40e:: with SMTP id p14mr3979020plq.295.1584445577064;
-        Tue, 17 Mar 2020 04:46:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584445577; cv=none;
-        d=google.com; s=arc-20160816;
-        b=DA6W4EBUuOQoXjW6wuDooBETNUEjOpo4KWMwXhdnAb+e/FsCbYzlzdKX2H9Bs/0QQd
-         EfENPiC2ZfPUDqe64sDmVbNlHc4TE4bSmq4DousV1suQ/uwatBn5qhe7N6F6KBlr5gLW
-         n1bZF91qMCuiat0Bp9B7oKUSkCP57N0j0CswdYOCAFWkGIEezbX7oDtBxWj+P2QjDqYw
-         1GK8rtDQs0D2HG/2M+GXqZgchYoEcu2TN9CiFdR9CwiytcMPTbYg3YbD0+1cTSwFQJms
-         LaRePWLD5YEKID01MULhoFh42Iyh9xVFHyb66Uz4yj2BO1d2Ae05Fk2f9FMvamoBnLhY
-         FzZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=7rDyLpiRzsefTYFXl/q7SS+x+IVykNS2yPLZWGcgajc=;
-        b=YwLZKHxzfZ2xB/WVe1+H86DfDKVPXyUt4NTgVfBuEnEUNh+eNaaNXuSS8MAnZSjWIe
-         giG8nvaRyPMfc1GnkUIvNGX8F0tnYvJTw0q5duEVTtfUYB7JGj9JizGCj2vSC8hXsDJd
-         LFygaiSHCYS4eRxLe7yCp73eNB34rH7uSXNZFefB18NHwRgIoi0gHdBJPOUaSDUXqEdu
-         GhMvCEpgUEL79eXmf1ojh5wowb9hPbC3+oxCh3zjZGUCQ4VSqmfrKFKBrDib6Hx2DRZn
-         hpueccxb6l+fLFe+a4m+wi1qoebtNoxucuLaxBZy2kEx64JbRSCiNIIUtrpxE9h5T69i
-         dyhA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=PxSbe4VJ;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id j44si624651pje.0.2020.03.17.04.46.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Mar 2020 04:46:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=PxSbe4VJ;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 5346D206EC;
-	Tue, 17 Mar 2020 11:46:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584445576;
-	bh=cHNo5A/eTclTeH39V+3/m2mmmyNzR7rDY1N3zHLZlIE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PxSbe4VJxoYKA91RrXJS4X1TKokL/0x3+J1OiizCqwr5kBkF6/k7eMTCSYKPHa8o0
-	 bFiqFWXyV/v0yOU/wUvSkXHWCUvfkkyrg47DzfxtjeZYqxtOM2ywhxBKv2AmiCh0L7
-	 hcztgKkEqQvgQCm8TpUtXMe9KIj1TtCRGvcP4BQo=
-Date: Tue, 17 Mar 2020 12:46:14 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, daniel.baluta@gmail.com,
-	kieran.bingham@ideasonboard.com
-Subject: Re: [PATCH 4/4] staging: fbtft: Avoid potential precedence issues
-Message-ID: <20200317114614.GA1233256@kroah.com>
+Date: Mon, 16 Mar 2020 07:55:50 -0700 (PDT)
+From: Deepak Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <9532228d-e601-4cb3-83f1-82d0a2dd5489@googlegroups.com>
+In-Reply-To: <20200316144403.5b08bfdc@elisabeth>
 References: <cover.1584314603.git.mh12gx2825@gmail.com>
  <5c8520a5c3da453460608deee9a25232d52f4513.1584314604.git.mh12gx2825@gmail.com>
+ <20200316144403.5b08bfdc@elisabeth>
+Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: fbtft: Avoid potential
+ precedence issues
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5c8520a5c3da453460608deee9a25232d52f4513.1584314604.git.mh12gx2825@gmail.com>
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_304_388524708.1584370551038"
+X-Google-Token: EPamvvMFEPv6Ok69_1o0
+X-Google-IP: 103.241.225.138
 
-On Mon, Mar 16, 2020 at 05:12:32AM +0530, Deepak R Varma wrote:
-> Put parentheses around uses of macro parameters to avoid possible
-> precedence issues. Problem detected by checkpatch.
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-> ---
->  drivers/staging/fbtft/fbtft.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-> index 81da30f4062e..76f8c090a837 100644
-> --- a/drivers/staging/fbtft/fbtft.h
-> +++ b/drivers/staging/fbtft/fbtft.h
-> @@ -406,8 +406,8 @@ do {                                                         \
->  
->  #define fbtft_par_dbg(level, par, format, arg...)            \
->  do {                                                         \
-> -	if (unlikely(par->debug & level))                    \
-> -		dev_info(par->info->device, format, ##arg);  \
-> +	if (unlikely((par)->debug & (level)))                    \
-> +		dev_info((par)->info->device, format, ##arg);  \
+------=_Part_304_388524708.1584370551038
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_305_1675601745.1584370551038"
 
-"precedence issues" are impossible to happen here, it's a pointer that
-we are dealing with, not some other type of expression.
+------=_Part_305_1675601745.1584370551038
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-So I'll take this, just to shut checkpatch up, but note that this is
-_NOT_ a real issue at all.
 
-And what about all of the other macros like this in this file?  Does
-only this one need the changes?
 
-thanks,
+On Monday, 16 March 2020 19:14:18 UTC+5:30, Stefano Brivio wrote:
+>
+> By "carrying" the tag I really meant that you would, here (not in the 
+> cover letter), add: 
+>
+> On Mon, 16 Mar 2020 05:12:32 +0530 
+> Deepak R Varma <mh12g...@gmail.com <javascript:>> wrote: 
+>
+> > Put parentheses around uses of macro parameters to avoid possible 
+> > precedence issues. Problem detected by checkpatch. 
+> > 
+> > Signed-off-by: Deepak R Varma <mh12g...@gmail.com <javascript:>> 
+>
+>         "Reviewed-by: Stefano Brivio <sbr...@redhat.com <javascript:>>" 
+>
+> after your Signed-off-by. Mind, however, that you should only do this 
+> in case the reviewer tells you explicitly (I've seen it being done 
+> implicitly, with myself and others, it's really not nice). 
+>
+> In any case, 
+>
+> Reviewed-by: Stefano Brivio <sbr...@redhat.com <javascript:>> 
+>
+> (will check the rest later). 
+>
+> -- 
+> Stefano 
+>
+My apologies for any confusion. I learned it now. will take care going 
+forward.
 
-greg k-h
+Thank you,
+Deepak.
+
+------=_Part_305_1675601745.1584370551038
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><br>On Monday, 16 March 2020 19:14:18 UTC+5:30, Stefan=
+o Brivio  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin=
+-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">By &quot;carry=
+ing&quot; the tag I really meant that you would, here (not in the
+<br>cover letter), add:
+<br>
+<br>On Mon, 16 Mar 2020 05:12:32 +0530
+<br>Deepak R Varma &lt;<a href=3D"javascript:" target=3D"_blank" gdf-obfusc=
+ated-mailto=3D"YYplLS2gAwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#=
+39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#=
+39;;return true;">mh12g...@gmail.com</a>&gt; wrote:
+<br>
+<br>&gt; Put parentheses around uses of macro parameters to avoid possible
+<br>&gt; precedence issues. Problem detected by checkpatch.
+<br>&gt;=20
+<br>&gt; Signed-off-by: Deepak R Varma &lt;<a href=3D"javascript:" target=
+=3D"_blank" gdf-obfuscated-mailto=3D"YYplLS2gAwAJ" rel=3D"nofollow" onmouse=
+down=3D"this.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.hre=
+f=3D&#39;javascript:&#39;;return true;">mh12g...@gmail.com</a>&gt;
+<br>
+<br>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&quot;Reviewed-by: Stef=
+ano Brivio &lt;<a href=3D"javascript:" target=3D"_blank" gdf-obfuscated-mai=
+lto=3D"YYplLS2gAwAJ" rel=3D"nofollow" onmousedown=3D"this.href=3D&#39;javas=
+cript:&#39;;return true;" onclick=3D"this.href=3D&#39;javascript:&#39;;retu=
+rn true;">sbr...@redhat.com</a>&gt;&quot;
+<br>
+<br>after your Signed-off-by. Mind, however, that you should only do this
+<br>in case the reviewer tells you explicitly (I&#39;ve seen it being done
+<br>implicitly, with myself and others, it&#39;s really not nice).
+<br>
+<br>In any case,
+<br>
+<br>Reviewed-by: Stefano Brivio &lt;<a href=3D"javascript:" target=3D"_blan=
+k" gdf-obfuscated-mailto=3D"YYplLS2gAwAJ" rel=3D"nofollow" onmousedown=3D"t=
+his.href=3D&#39;javascript:&#39;;return true;" onclick=3D"this.href=3D&#39;=
+javascript:&#39;;return true;">sbr...@redhat.com</a>&gt;
+<br>
+<br>(will check the rest later).
+<br>
+<br>--=20
+<br>Stefano
+<br></blockquote><div>My apologies for any confusion. I learned it now. wil=
+l take care going forward.</div><div><br></div><div>Thank you,</div><div>De=
+epak.<br></div></div>
+------=_Part_305_1675601745.1584370551038--
+
+------=_Part_304_388524708.1584370551038--
 
