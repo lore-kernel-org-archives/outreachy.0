@@ -1,317 +1,128 @@
 X-GM-THRID: 6803014756528553984
-X-Received: by 2002:a2e:2e11:: with SMTP id u17mr3228908lju.90.1584648965074;
-        Thu, 19 Mar 2020 13:16:05 -0700 (PDT)
+X-Received: by 2002:a63:5d04:: with SMTP id r4mr437630pgb.241.1584373493135;
+        Mon, 16 Mar 2020 08:44:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5476:: with SMTP id e22ls611021lfn.7.gmail; Thu, 19 Mar
- 2020 13:16:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv7mMwfpT0N6pCove4YtMNpNS+rx5SzPapKm/zKkkYStlSA3vReLDBYOMokF9/UGzXysFgj
-X-Received: by 2002:a19:c206:: with SMTP id l6mr2322424lfc.118.1584648963527;
-        Thu, 19 Mar 2020 13:16:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584648963; cv=none;
+Received: by 2002:a17:902:a701:: with SMTP id w1ls9699678plq.7.gmail; Mon, 16
+ Mar 2020 08:44:51 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvG8TEOkCujL+5wwO3axV9VS6MdauviTc34wTtPGufjgeRfFOnQn6SFM3q1z2dTbelNb9f/
+X-Received: by 2002:a17:90a:aa0c:: with SMTP id k12mr71021pjq.193.1584373491388;
+        Mon, 16 Mar 2020 08:44:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584373491; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nnh4ULVWqR+lSFm8F1a34F9O6kW3M20XTRcRGh2D5tJJS9ikgh6c3rmN9OKRWOeM8h
-         70uRiyLcQgy+2P6UEXfFf6klD5jRbbaiyIYab7Hy/JOxLJjaGJoC8A7dDSzHdaBUWO9r
-         EjAkd86Z8HtWmTmOcY6IfJ78ESwbTzeq30HqGCCfxcNzxtk6QrOEWp2qC+kxpz8vcWnd
-         zajiBg2kvBMw0ACrT4DWFXM7dlLjI77wRqWs7NqswRJ1DHQg8PyOlpP0PuPeHOhWSe1j
-         IX+E6rLdcXjwi4cdr5iZ+EJtsU211w8nNYjJd/XhXI0QO7loRlRVeD/XSJRjsBcA/48t
-         IQKg==
+        b=h4RsfZTuMJddMrHCPvW33XI8bYcqdU5OxvF0yKSY9/lDgGcjW+mms3iAxd5jJ5JB8K
+         VLC+BGUpoo7Jhc8lyUG31wAf/oDnZf5jv/vOdohuS3tPkn/Tr4QiBhsG/AYu0swgeaJz
+         65UKkmNwAqHeq9SqyEUCoDZT/lMm4eMWulTGBtPdGA73/O++WVfTW5T9fpJQuc09HkF0
+         616AesqwwZKOOZh3WcFZwpyTCWPgbiKDMmhyejpkQGU7hpMZmIOmzFpU8F6sFkQ3FVON
+         hEWTdXPXCwnbI0KK2XTV3+FLbSEEG7sZsWwyDwKt0DS9rGlkFxmPJ9hdQMcHsnlCPYqx
+         dQWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=QeU2HyQeRfXaS74q3CWujpsBZqyBRMkdR/CutN/4UEE=;
-        b=g31aQ6vupBNc/RMVCG/XfZCy149iXTo5tIXndtlDl6dRBo7Q3BvbMT5SUpCf5kpuua
-         H3ehqvF819aOgVDejqmAi4LPNA7dOyhCpLVMyy53sVRubaw5wkCcuE++t+mURevOY70W
-         sHQCVTIYD4W7OQiPmKdqQXH5AhQcMBC3z9IGXy84sfLxT+7FsI11E5SyUdPXSHUftFuP
-         OitiGhd9eBWmouwGCtTpwulfCdiMG1LkP059QHlmpBz1YeMeoX4lyPSBK+oMIM5RVpmJ
-         sztvex4QqjfJiBDpANn7pNYEtWVjsxbR3ODu4t0/C7H+Yf3FXiBSIqojORDdndtvIpNc
-         hvlg==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=rFenHpegyCpu74CnZxqCWfklRZWof1Ki9CxmKVaSPk8=;
+        b=UjPWAItLYVtDNn3c9nIGYCwOh8sBP3rTnoZz/8xo5OWewaOGf11aJH2dv371uFbm62
+         OmKDcWyZ1rU4qGgOrCIoZNZjDlJH+5huAo8P+kg1IyYunD4oOZjitAgMhGlgGiPK+iHW
+         xAvUQ6mpDPvOLLUZTYUBvQnRh8RPmHs7kiPcVRa9UkemOJlM3Gpl8HkdAGMpR3lz17iq
+         hE2uoLSX762OzA+LZHLE6aVUGh9UPrS8VO9LI6hikLCkwLjtLcTpRbEpaUP2cfKnH4Np
+         jyKe527PcpIRFgHJBlDHJguNMJx3NJVj8O4uwJBvSKCiA9SVirhuu+eVV9wMyR72tVsO
+         PyGA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=XW44Tdp5;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::542 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-ed1-x542.google.com (mail-ed1-x542.google.com. [2a00:1450:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id w6si160377lfa.1.2020.03.19.13.16.03
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSAiSpaR;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id s20si23147plq.5.2020.03.16.08.44.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Mar 2020 13:16:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::542 as permitted sender) client-ip=2a00:1450:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2020 08:44:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=XW44Tdp5;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::542 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-ed1-x542.google.com with SMTP id v6so4320770edw.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 13:16:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=QeU2HyQeRfXaS74q3CWujpsBZqyBRMkdR/CutN/4UEE=;
-        b=XW44Tdp5f6LtArkiJqXme2LeRf/HimsMUrVEi2sczRYBybzvYSJn1x99+ejN2QEGa+
-         nES9xdrFuxSyPbMk+Wp33lWkasHWH795teM0dJuBGgNN7CzjXhsf1p+j/xOeNAIQ5o92
-         nzKePqD53wBvKDwMAk+ufxPTTwn02ztgjAtHI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=QeU2HyQeRfXaS74q3CWujpsBZqyBRMkdR/CutN/4UEE=;
-        b=X3PggwRwkhSho4q8dFaWeebDIHNvfxQMs9lly+jt4wPTei3ECxkSVfkurzbukZHvsR
-         VBZbVk35qvH+HveRZ8xJTzRdP56vnIylmP5nJnIPKYt9yiiSLSqPJ1fKu71gwpp2pAQJ
-         y2Qe/L80RAr0FD8t/riCs2mIxKN5kP2f9UyHyWVPO8G6bE/kjwyRud6PhVikovv45pXK
-         Yw1xK0QeglV2c9+PZzWiLH3uYNOMpbIQ7BmYD+D0xMP/Kr4X0/CIWuXS09V3kv0nDzwo
-         gQkh+/alIWuRgA+85K6XyMFQmT0rp5keeYTH77yvnDF+b+fNubfiUDS/Gam+6UbvzfzE
-         Ui2Q==
-X-Gm-Message-State: ANhLgQ3cn1qSKiw3T962Zu695d+aLWOuyG9kS9Kf/eoh5/DEcuj1d+7S
-	VN7xaO384DyrEIaOi9PxjAnB6LAzKB0=
-X-Received: by 2002:a17:906:43c6:: with SMTP id j6mr4764799ejn.39.1584648962586;
-        Thu, 19 Mar 2020 13:16:02 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id l9sm214028ejg.42.2020.03.19.13.16.00
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Mar 2020 13:16:01 -0700 (PDT)
-Date: Thu, 19 Mar 2020 21:15:53 +0100
-From: Lourdes Pedrajas <lu@pplo.net>
-To: Stefano Brivio <sbrivio@redhat.com>,
-	Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSAiSpaR;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584373490;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rFenHpegyCpu74CnZxqCWfklRZWof1Ki9CxmKVaSPk8=;
+	b=iSAiSpaRVaL5UYWzxXocbFNkeh+AfkBKjzsMfqHtE5m2vj2Mm5KDz9cSZGnjS0m7IGpqee
+	/NYhgm7rWqsP9qNTLoOkOJsr8yO43hOACeAQ0iOvhpok3k2cxR3OlN+awtStkgJ1s1f8+w
+	jPJb9FaJ1L6NgBBwp3TIQqlmEc/p8a0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-379-43FfDWfyO5iEzOAgq-tPRA-1; Mon, 16 Mar 2020 11:44:48 -0400
+X-MC-Unique: 43FfDWfyO5iEzOAgq-tPRA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 58CEE8DF411;
+	Mon, 16 Mar 2020 15:44:47 +0000 (UTC)
+Received: from elisabeth (ovpn-200-84.brq.redhat.com [10.40.200.84])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F203D5C1BB;
+	Mon, 16 Mar 2020 15:44:45 +0000 (UTC)
+Date: Mon, 16 Mar 2020 16:44:40 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Lourdes Pedrajas <lu@pplo.net>, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Trying to use Coccinelle
-Message-ID: <20200319201553.GA10911@supernova>
+Message-ID: <20200316164440.54fe16a8@elisabeth>
+In-Reply-To: <alpine.DEB.2.21.2003161631270.5216@hadrien>
 References: <20200311181134.GA17847@supernova>
- <20200312002348.06821daa@elisabeth>
- <20200313094046.GB3844@supernova>
- <20200316150829.370975f2@elisabeth>
- <alpine.DEB.2.21.2003161527020.5216@hadrien>
- <20200316153629.0fde04f8@elisabeth>
- <alpine.DEB.2.21.2003161543170.5216@hadrien>
- <20200316162343.36bacaa7@elisabeth>
- <alpine.DEB.2.21.2003161631270.5216@hadrien>
- <20200316164440.54fe16a8@elisabeth>
+	<20200312002348.06821daa@elisabeth>
+	<20200313094046.GB3844@supernova>
+	<20200316150829.370975f2@elisabeth>
+	<alpine.DEB.2.21.2003161527020.5216@hadrien>
+	<20200316153629.0fde04f8@elisabeth>
+	<alpine.DEB.2.21.2003161543170.5216@hadrien>
+	<20200316162343.36bacaa7@elisabeth>
+	<alpine.DEB.2.21.2003161631270.5216@hadrien>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200316164440.54fe16a8@elisabeth>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Julia, Stefano,
+On Mon, 16 Mar 2020 16:32:47 +0100 (CET)
+Julia Lawall <julia.lawall@inria.fr> wrote:
 
-I would like to move to coccinelle instead of continue using checkpatch. So 
-after the problem I explained in my last email, I have been trying various
-combinations of commands and modifications in some makefiles, as Stefano
-suggested. In order to see what is happening or to see why I can't use
-coccinelle.
+> On Mon, 16 Mar 2020, Stefano Brivio wrote:
+> 
+> > On Mon, 16 Mar 2020 15:44:05 +0100 (CET)
+> > Julia Lawall <julia.lawall@inria.fr> wrote:
+> >  
+> > > On Mon, 16 Mar 2020, Stefano Brivio wrote:
+> > >
+> > > [...]
+> > >  
+> > > >
+> > > > One idea might be, in run_cmd_parmap(), to avoid redirecting stderr
+> > > > here:
+> > > > 	        $@ 2>>$DEBUG_FILE
+> > > >
+> > > > if DEBUG_FILE is not set (that is, it's /dev/null) and we detect V=1 --
+> > > > otherwise, spatch output is thrown away.
+> > > >
+> > > > That works for me, but I'm not sure how elegant you would consider that.  
+> > >
+> > > Actually, I was just going to try to fix the semantic patch that caused
+> > > the problem.  I don't really maintain make coccicheck, but I will suggest
+> > > it to the person who does.  Thanks.  
+> >
+> > Wait, was it really caused by a semantic patch on scripts/coccicheck? I
+> > couldn't find anything like that in logs. My problem, ultimately, was
+> > simply libpython2.7-dev missing.  
+> 
+> Ah.  Thanks for the clarification.  That is another problem that should be
+> fixed then.  You installed the opam version?
 
-This is long, so I ask for forgiveness for that :( 
+Yes, read my previous email on this thread
+(<20200316150829.370975f2@elisabeth>).
 
-Lines preceded with $ are the commands I have run. Lines inside braces () are 
-some modifications I have done that is not reflected in the console's output or 
-clarifications.  The majority of the output is stripped in the sake of brevity, 
-only the obvious errors are here.                                               
-                                                                                
-I don't know if this will be useful or not :( But I'll be glad if as least my 
-problem helps to find any error or bug, or helps coccinelle itself.
+-- 
+Stefano
 
-Thank you,
-Lourdes 
-
-
-====
-
-$ make coccicheck MODE=patch J=8 M=drivers/staging/android/ --debug
-
---(stripped output)
-File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-
-Please check for false positives in the output before submitting a patch.
-When using "patch" mode, carefully review the patch before submitting it.
-
-coccicheck failed
-Makefile:1740: recipe for target 'coccicheck' failed
-make: *** [coccicheck] Error 255
-
-====
-
-$ make coccicheck MODE=patch J=8 M=drivers/staging/android/ --debug
-
-(showing $(BASH) and $(srctree) variables from 1740 line of the main Makefile,
-and DIR and SPATCH from scripts/coccicheck lines 10-11)
-
---(stripped output)
-File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-
-Please check for false positives in the output before submitting a patch.
-When using "patch" mode, carefully review the patch before submitting it.
-
-BASH = bash
-srctree = .
-
-DIR = /mnt/btrfsimg/gregkh/staging/scripts/..
-SPATCH = /usr/local/bin/spatch
-
-coccicheck failed
-Makefile:1740: recipe for target 'coccicheck' failed
-make: *** [coccicheck] Error 255
-
-====
-
-$ make /mnt/btrfsimg/gregkh/staging/scripts/coccicheck MODE=patch J=8
-  M=drivers/staging/android/ --debug
-
-(but x86_64 binutils are installed!! It don't repeat the error of last command
-about not finding coccicheck file here)
-
---(stripped output)
-
-arch/x86/Makefile:147: CONFIG_X86_X32 enabled but no binutils support
-
-====
-
-$ make /mnt/btrfsimg/gregkh/staging/scripts/coccicheck MODE=patch J=8
-  M=drivers/staging/android/ --debug
-
-(w/o CONFIG_X86_X32 or commenting-out the ifdef CONFIG_X86_X32 section of
-arch/x86/Makefile)
-
---(stripped output)
-
-make: Nothing to be done for '/mnt/btrfsimg/gregkh/staging/scripts/coccicheck'.
-
-====
-
-$ make coccicheck C=2 MODE=patch J=8 drivers/staging/android/ashmem.c --debug
-
---(stripped output)
-File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-./scripts/coccicheck: line 65: shift: -1: shift count out of range
-Successfully remade target file 'coccicheck'.
-make: Nothing to be done for 'drivers/staging/android/ashmem.c'.
-
-====
-
-$ make coccicheck C=2 MODE=patch J=8 --debug drivers/staging/*/*.c
-
---(stripped output)
-File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-./scripts/coccicheck: line 65: shift: -1: shift count out of range
-Successfully remade target file 'coccicheck'.
-make: Nothing to be done for 'drivers/staging/android/ashmem.c'.
-make: Nothing to be done for 'drivers/staging/axis-fifo/axis-fifo.c'.
---(stripped output: it repeats the same line for all C files inside staging
-   drivers)
-
-====
-
-$ make coccicheck C=1 MODE=patch J=8 --debug drivers/staging/*/*.c
-
---(stripped output)
-File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-./scripts/coccicheck: line 65: shift: -1: shift count out of range
-Successfully remade target file 'coccicheck'.
-make: Nothing to be done for 'drivers/staging/android/ashmem.c'.
-make: Nothing to be done for 'drivers/staging/axis-fifo/axis-fifo.c'.
---(stripped output: it repeats the same line for all C files inside staging
-   drivers)
-
-====
-
-$ make coccicheck MODE=patch J=8 drivers/staging/android/ --debug
-
-Reading makefiles...
-Updating goal targets....
- File 'coccicheck' does not exist.
-   File '__build_one_by_one' does not exist.
-  Must remake target '__build_one_by_one'.
-GNU Make 4.1
-Built for x86_64-pc-linux-gnu
-Copyright (C) 1988-2014 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Reading makefiles...
-Updating goal targets....
- File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-
---(stripped output: after a while it produces some patches in drivers/ but not
-   drivers/staging/. And then the same error:)
-
-coccicheck failed
-Makefile:1740: recipe for target 'coccicheck' failed
-make: *** [coccicheck] Error 255
-
-====
-
-$ make coccicheck MODE=patch V=1 J=8 --debug
-
-(it works, but doesn't descend into drivers/staging/ before giving this error:)
-
-coccicheck failed
-Makefile:1740: recipe for target 'coccicheck' failed
-make: *** [coccicheck] Error 255
-
-====
-
-$ make coccicheck MODE=patch V=1 J=8 --debug
-(with variable KBUILD_EXTMOD set to drivers/staging/ in scripts/coccicheck)
-
---(stripped output)
-File 'coccicheck' does not exist.
-Must remake target 'coccicheck'.
-bash ./scripts/coccicheck
---(stripped output)
-
-Processing alloc_cast.cocci
-with option(s) " --no-includes --include-headers"
-
---(stripped output)
-
-Running (8 in parallel): /usr/local/bin/spatch -D patch --very-quiet
---cocci-file ./scripts/coccinelle/api/alloc/alloc_cast.cocci --no-includes
---include-headers --patch . --dir ./drivers/staging/. -I ./arch/x86/include
--I ./arch/x86/include/generated -I ./include -I ./arch/x86/include/uapi
--I ./arch/x86/include/generated/uapi -I ./include/uapi
--I ./include/generated/uapi --include ./include/linux/kconfig.h --jobs 8
---chunksize 1
-Processing pool_zalloc-simple.cocci
-with option(s) " --no-includes --include-headers"
-
---(stripped output)
-
-Running (8 in parallel): /usr/local/bin/spatch -D patch --very-quiet
---cocci-file ./scripts/coccinelle/api/alloc/pool_zalloc-simple.cocci
---no-includes --include-headers --patch . --dir ./drivers/staging/.
--I ./arch/x86/include -I ./arch/x86/include/generated -I ./include
--I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
--I ./include/uapi -I ./include/generated/uapi
---include ./include/linux/kconfig.h --jobs 8 --chunksize 1
-Processing zalloc-simple.cocci
-with option(s) " --no-includes --include-headers
-
---(stripped output)
-
-Running (8 in parallel): /usr/local/bin/spatch -D patch --very-quiet
---cocci-file ./scripts/coccinelle/api/alloc/zalloc-simple.cocci
---no-includes --include-headers --patch . --dir ./drivers/staging/.
--I ./arch/x86/include -I ./arch/x86/include/generated -I ./include
--I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
--I ./include/uapi -I ./include/generated/uapi
---include ./include/linux/kconfig.h --jobs 8 --chunksize 1
-Processing atomic_as_refcounter.cocci
-with option(s) " --include-headers --very-quiet"
-
---(stripped output)
-
-Running (8 in parallel): /usr/local/bin/spatch -D patch --very-quiet
---cocci-file ./scripts/coccinelle/api/atomic_as_refcounter.cocci
---include-headers --very-quiet --patch . --dir ./drivers/staging/.
--I ./arch/x86/include -I ./arch/x86/include/generated -I ./include
--I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
--I ./include/uapi -I ./include/generated/uapi
---include ./include/linux/kconfig.h --jobs 8 --chunksize 1
-coccicheck failed
-Makefile:1740: recipe for target 'coccicheck' failed
-make: *** [coccicheck] Error 255
 
