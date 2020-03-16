@@ -1,110 +1,97 @@
 X-GM-THRID: 6804610075497332736
-X-Received: by 2002:a92:79cf:: with SMTP id u198mr1534160ilc.23.1584389008873;
-        Mon, 16 Mar 2020 13:03:28 -0700 (PDT)
+X-Received: by 2002:adf:8023:: with SMTP id 32mr1010035wrk.189.1584388265980;
+        Mon, 16 Mar 2020 12:51:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6638:31c:: with SMTP id w28ls2299057jap.1.gmail; Mon, 16
- Mar 2020 13:03:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvvBieE/heOPKt7wqp8Hbd0KnUtITcqP2/BMniHpYHk4sa2/+Mq5v4ZiFFAe5WnSxKhmtoT
-X-Received: by 2002:a02:a813:: with SMTP id f19mr1533070jaj.35.1584389007602;
-        Mon, 16 Mar 2020 13:03:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584389007; cv=none;
+Received: by 2002:a1c:a98b:: with SMTP id s133ls290604wme.3.gmail; Mon, 16 Mar
+ 2020 12:51:04 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs6jKAwzWZfx2CFB8P77Tl/FweYh1S996K2lk8cLC0NoUDYFY7ZPd/gcWn99gHwFZYJKEVI
+X-Received: by 2002:a7b:cb42:: with SMTP id v2mr764454wmj.170.1584388264050;
+        Mon, 16 Mar 2020 12:51:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584388264; cv=none;
         d=google.com; s=arc-20160816;
-        b=tXM+luOglZaOlb/aCqaDLuMnadDIc2DPeskZNJIVgbKek7SRd944ZRkAoGimZ90twU
-         Qxrts69sH3Q8oqKCra41TpRBV/UWa/eFoQHDHrldGCsvc+9m6+08lri4E8pp93aSokX5
-         Kf9jx16wlVLWylljRPq/1Hxj5BP5nMKizWy/1zGxwC023CscFI2llKYbyRs7+jOxIHyE
-         KuSm5KTcO11ZRWWKSpxiylVL1ZiZG/ALzUp1fP1+X8VeByc8d+CXf8UI1Kcs7aq1bBFA
-         /INSHaq91k4MYueHr0Mx7DmAc4kmE2gprgfXpcf29j49E9hu52O1NFdTSb8gU6MgSa7B
-         6QPg==
+        b=KwmXCUa7CLG5apaHoU9PpdJUlbVvWPG+bSOzQkDlFB4glxfgh49wq5XuELn0FOiTm8
+         LIb3CJlGsmc0485mZhtQo1FxTbGErsVIy3/5EE9x/0zQd66X93t6Ev8DdCdqET/oBhYA
+         rzZ8waziDibXEi4ElVjBlwPGjG6GXsuBbHYYy4Ye7NQBUv0odGqkhRUn3fSNPRDWSsDG
+         PhaDpiT4y0VLlqjF7qpxb3YQmbYwXJNVZeTmpB0AiFo3fqVHxd0gvEOcjburxJ7sLxEU
+         +w7RJR3SpcQcBLEjsu9KEW9KDZu7GWx1NmiwSMcUdF2EGk1uj8NBggc957BL7eBJ8KDq
+         MIJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=dwV5gyztHCdm9eDj17K2baVYSQiI6QXF96phlF8hkWE=;
-        b=UUq5vUr0yn7+jLvirZ+sWWQE4oCFeUnl2Xuz6uU81FTT1bVnJyLEYzkmMUn5+/C/Fv
-         4/onTwyhd8YGaD9/4KIQDQ/Y1L+NoRdDItFVf7qiJ0KHg6UaiaHPgH3JHtMuGzNes+f7
-         +2+F94tuaQmawMwNAMDVVuCfMhr/NHFLvxEJTyLl7BCGTMNLxqAws4wQW0BHcFWnyhMS
-         IOrhiHFMj75rv4bo780+cHERbju77pnVpnZpw0WmqBLyJ/RGBRiBm/O2/EFOLre3+Hzk
-         /tFnhoPVuQ8pphVII8XzR/ZMMpt3RYZxyDeR3cYCtCdvdBLrnMmgTYt3Y0ffCq+uaaG0
-         vX+A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=fy+A25Lr6kjHSnQrTn/qJQAAN2FrGqw/6KEHyHTg3JQ=;
+        b=dUQlfWaT3M04MEGVhWlSoTHCdBltXT/DOXJgPXkrjr5a1WmGHaaqHeJ/Qab34vSuFs
+         iQzxZ/PPIjLv+EZ6rhKhBi8L2mnpWTtwwhLlmNelJKdILl6l2tUaX5FXAshNt8RPbn2g
+         HrXGsWyMRC3KY/Q63k+tCxBGJ8151PgDT7NJCb+UhQN4dVBWzI5I0YEcByxbioG9ZJ+r
+         W0GT63OxWzsqBTA3N2cvY0atl8B+N3iHn6IDJtwImGBnZblB50EKWD1HIwUO2pNwduxz
+         WnCBrDKf69BtXlRou2BicGGeqQy/bnU5oQfLpgMnwxp1y84xIIlUOdl3KA/Qyk2ajAam
+         PTZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="h5/D0FL+";
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbwyatt4@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id s201si67200ilc.0.2020.03.16.13.03.27
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id w17si15295wrn.3.2020.03.16.12.51.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 16 Mar 2020 13:03:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2020 12:51:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="h5/D0FL+";
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id d8so9255135pje.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 16 Mar 2020 13:03:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=dwV5gyztHCdm9eDj17K2baVYSQiI6QXF96phlF8hkWE=;
-        b=h5/D0FL+S94IKkgbXjNRpVXtDUTn8tFQFrXPj5qMN9B5VUkV9RrT/6EpZ/gH1P0wCw
-         rMiFHZIXa0TBdDL9Q1AZv7m407sCF30O9e9td2hqsTUSVLI5StLvRxTPRNa6k2ouqYfT
-         WzLDM1BAddMu4DzgKjEfLb+vcoziSRRG0uveq7hi/LoxBWwts8f5SDeIPd1+4govqZR4
-         RlaHpPIiZMtR45WMXzWmKudSaHH9szUnByxImN2OHfCpVtMCOZUaKvhVXeGegZFlNRfe
-         JqpEqX0Ci2fFlfntH9z5reSyBd7LdVM0qTitMnpiVWebxKT3+XCupSRhckP4gDLW8Br8
-         UEVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=dwV5gyztHCdm9eDj17K2baVYSQiI6QXF96phlF8hkWE=;
-        b=T2L4YUkjBpfIct0lCCr77Pi3UeiWpP5HHDHz4BbvV/1E+oW5Q0uhw00GySUZsQG2Zh
-         jl4drwfI9jJOaaA80qUm5JFzMYLMOXzudukHIcWtaWTPaBJUC5/t+FPe4lmMqx1m1/Zi
-         vHwBiJp5kc1BIPREHENXzaAeOoBYl1cjVk4dLEYx6GpoynGctw1DaBQSNQzWNhxwvoIJ
-         jKgeo1OXnFCClnG5yZ9FSMrRh66VnmaB54OTwiad1Q6cyYuUxlj+Hx2Lzg6b5KUHA4FQ
-         c22K6HhKr7U6e4v9jPmW12wN8tpFyGPExdolahzVEq8R2vRrx9OmnFHLJq5GOcLTwAnk
-         5CmQ==
-X-Gm-Message-State: ANhLgQ0tMq5jXFpG+mk60IZMyfyw5PyL4KuX8gjIGVE+5Rg08uzM1GDR
-	ccZCFDnCvr03nvecHWv+Blg=
-X-Received: by 2002:a17:90a:3328:: with SMTP id m37mr1237034pjb.158.1584389007212;
-        Mon, 16 Mar 2020 13:03:27 -0700 (PDT)
-Return-Path: <jbwyatt4@gmail.com>
-Received: from ManjaroKDE ([47.144.161.84])
-        by smtp.gmail.com with ESMTPSA id e30sm343376pga.6.2020.03.16.13.03.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Mar 2020 13:03:26 -0700 (PDT)
-Message-ID: <1f03af664ed57dca20821d59a4af282ec6f32001.camel@gmail.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,561,1574118000"; 
+   d="scan'208";a="440629834"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Mar 2020 20:51:03 +0100
+Date: Mon, 16 Mar 2020 20:51:03 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+cc: outreachy-kernel@googlegroups.com, Stefano Brivio <sbrivio@redhat.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [PATCH v2] staging: wlan-ng: Fix line going over 80 characters
-From: John Wyatt <jbwyatt4@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy-kernel@googlegroups.com, Stefano Brivio <sbrivio@redhat.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Mon, 16 Mar 2020 13:03:20 -0700
-In-Reply-To: <alpine.DEB.2.21.2003162050510.5216@hadrien>
-References: <20200316012148.1200745-1-jbwyatt4@gmail.com>
-	 <20200316193723.1247875-1-jbwyatt4@gmail.com>
-	 <alpine.DEB.2.21.2003162050510.5216@hadrien>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.34.4 
+In-Reply-To: <20200316193723.1247875-1-jbwyatt4@gmail.com>
+Message-ID: <alpine.DEB.2.21.2003162050510.5216@hadrien>
+References: <20200316012148.1200745-1-jbwyatt4@gmail.com> <20200316193723.1247875-1-jbwyatt4@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, 2020-03-16 at 20:51 +0100, Julia Lawall wrote:
-> 
-> On Mon, 16 Mar 2020, John B. Wyatt IV wrote:
-> 
-> > Add a newline before the second argument for style, readability,
-> > and
-> > consistency.
-> > 
-> > Please note checkpath reports the third argument as being over 80
-> > characters, but not the second argument.
-> 
-> checkpatch :)
 
-Thank you :)
 
-For v3 (v2 is also missing the [Outreachy kernel] tag - did I reference
-the previous email properly for a v2 patch?
+On Mon, 16 Mar 2020, John B. Wyatt IV wrote:
 
+> Add a newline before the second argument for style, readability, and
+> consistency.
+>
+> Please note checkpath reports the third argument as being over 80
+> characters, but not the second argument.
+
+checkpatch :)
+
+julia
+
+>
+> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+> ---
+> 20200316012148.1200745-1-jbwyatt4@gmail.com
+>
+>  drivers/staging/wlan-ng/hfa384x_usb.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
+> index b71756ab0394..f8485601aead 100644
+> --- a/drivers/staging/wlan-ng/hfa384x_usb.c
+> +++ b/drivers/staging/wlan-ng/hfa384x_usb.c
+> @@ -3317,7 +3317,8 @@ static void hfa384x_usbin_rx(struct wlandevice *wlandev, struct sk_buff *skb)
+>  		break;
+>
+>  	default:
+> -		netdev_warn(hw->wlandev->netdev, "Received frame on unsupported port=%d\n",
+> +		netdev_warn(hw->wlandev->netdev,
+> +			    "Received frame on unsupported port=%d\n",
+>  			    HFA384x_RXSTATUS_MACPORT_GET(usbin->rxfrm.desc.status));
+>  		break;
+>  	}
+> --
+> 2.25.1
+>
+>
 
