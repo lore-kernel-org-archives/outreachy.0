@@ -1,102 +1,85 @@
 X-GM-THRID: 6803246482935775232
-X-Received: by 2002:a5d:56c5:: with SMTP id m5mr20254407wrw.35.1584349623950;
-        Mon, 16 Mar 2020 02:07:03 -0700 (PDT)
+X-Received: by 2002:a2e:9d11:: with SMTP id t17mr15254697lji.169.1584322083381;
+        Sun, 15 Mar 2020 18:28:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:548b:: with SMTP id h11ls8964169wrv.9.gmail; Mon, 16 Mar
- 2020 02:07:02 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuzGAzV0R/T52i+efRoN9sF5z7Yc0/u+nYRJGH5pGiygT+iWc5tLMqsMNd5Gsfq97KJzglm
-X-Received: by 2002:a5d:428a:: with SMTP id k10mr4921118wrq.150.1584349622289;
-        Mon, 16 Mar 2020 02:07:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584349622; cv=none;
+Received: by 2002:a05:6512:3188:: with SMTP id i8ls2293762lfe.4.gmail; Sun, 15
+ Mar 2020 18:28:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtslHzG5B54yQAAAqpedGybnyQDCeX79p9/7dmRJ8Wn3gCgBFXDuXSuvOSZHu2LNOrAa8Q1
+X-Received: by 2002:a19:4cc2:: with SMTP id z185mr15419511lfa.0.1584322081744;
+        Sun, 15 Mar 2020 18:28:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584322081; cv=none;
         d=google.com; s=arc-20160816;
-        b=dFCa8ofLwdz2xhl5Cm2yHx6GQHcS950F1sgSP+sBOk0Ep4VwZh7NGXodHxVOJ55DHW
-         gNoTNHkqeiuyzBMpt+4O36hAsvt9UJy6yVFeUYTwE86rf6LbX4RzvhEFoxCtqliJ0WPl
-         S6L8WEumsq76jcN0bND3wNQphxGAM5gVMBNBf1UejsF0SDDAtqq5h3HUdCZssy1klEvP
-         I5mB24MBPnOCHSf8iH+GQ55Za/wVIx6gtzhwktEjOvN8Kag30ePsniifS8QYK4at7Fb8
-         O9Ih7abfYKqPhWoUS2YkoHClYWlGMelkutcY8ry2SMICv1hEWnY7V03l4W1QQn4SfMpK
-         BX9Q==
+        b=NdwJ6cXR7IZiko/fRJPznn87NnaKZUM166EEzNVY3ipYeHwfy74zs5yH6dymXJI4lA
+         mTYOX7JZQ6BJeHZ7ji65KxAg5rQWRZmNCfs+ROX4Lds62CDUGYSlRTBxBU+z8+ISKdxi
+         OdaaeGD2SiuJBkG1W9J11ebIqSZ8t3y0vEWE7TB/jFGhSaammEOjocJ3MI6xNIgY57md
+         u82EuF1/MXpR3fasZ2fcem9il9oPjJYMNZYiJJhhBODusNaVGhZNcdHwcdNM1hhQeHGM
+         ny/BdEW87OdGqH+EH0utdeeOAqQqLWk8cd2IWFV226AWLqT0FKRVmqx59AEKqq53mcwV
+         3wKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=iQgNkxaxi0ZGTjU79WO+6GC3iTqIBNZsILdrUHneB04=;
-        b=z4e3sJPnpTxobsvmJkkweyjWCtaOWWmvgJe1qLoST+NB3H2IooJx2fxsDUN+ZiBFAR
-         vHmQokN2FlLYAUKJVk98nxiaZmedWoHT5M9//C2DqRQY5B2o9cUecHl+s8d9+t13lPjP
-         K8BSXZBrULry+4RPsS5EjDfWVs7J2ZCs6q7HqXsMkKvVYLnivRFGjWTwaXrNohmbrhQ2
-         oFIDDoP4+1879JlAc6yqYFvJ7fH0xXHO3PlvZnc7fyh5Kup62tyIR5G9DSq4hkrJNDfp
-         fRirM/X/iCCwS89NiiQMGiO+gaf/0UXmvyS1WMAXGbidAVMkU045XCbpqq09tTMUOEMg
-         2Pbg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=SCHIrHEbjV7HkzW1cmYlWIyDyLOAIDx9UA2YnbJNVQc=;
+        b=esvkIH19z8wbttQz8rLIu6fcaOmGUiWPeVSnx6wrO+yPaABjTlNb5nYgHIvPRwuVRp
+         zhl/CubhCZ5LkTxIMvVCt0agyM+CoVQKkxjdJOdHHToXdFEwpMg4GZaQO/WkgfzQXKV5
+         mRRclSM2TJhAx+VuZuuPkt1IJyLx2iqAoGkqGJB18SP1MXLOLNw8G8EYd2HGaiuwoaqw
+         r1AZrGZ5nmUTZz95dChd4GokG8go4egCnTooHFncQQWLNWuRLLGU0APq+Q/VE1Tnp5cp
+         5WyOZ1Pbz4RP3MwzVCEKrANAhfkaxKePfE5xdQyh8flKci7OLqiXDVZP65fOcYyemIVX
+         Cxbw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id y185si550454wmd.2.2020.03.16.02.07.02
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Mar 2020 02:07:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id j11si632267lfe.4.2020.03.15.18.28.01
+        for <outreachy-kernel@googlegroups.com>;
+        Sun, 15 Mar 2020 18:28:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,559,1574118000"; 
-   d="scan'208";a="440494129"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 16 Mar 2020 10:07:01 +0100
-Date: Mon, 16 Mar 2020 10:07:01 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: R Veera Kumar <vkor@vkten.in>
-cc: Stefano Brivio <sbrivio@redhat.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Larry Finger <Larry.Finger@lwfinger.net>, 
-    Florian Schilhabel <florian.c.schilhabel@googlemail.com>, 
-    outreachy-kernel <outreachy-kernel@googlegroups.com>
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 20961 invoked from network); 16 Mar 2020 01:27:59 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.251.238.193)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 16 Mar 2020 01:27:59 -0000
+Date: Mon, 16 Mar 2020 06:57:53 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Larry Finger <Larry.Finger@lwfinger.net>,
+	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: Fixes for simple
  typos in C comments
-In-Reply-To: <20200316012751.GA608@tulip.local>
-Message-ID: <alpine.DEB.2.21.2003161006480.5216@hadrien>
-References: <20200312091042.GA4246@tulip.local> <20200315212901.6b515c24@elisabeth> <20200316012751.GA608@tulip.local>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Message-ID: <20200316012751.GA608@tulip.local>
+References: <20200312091042.GA4246@tulip.local>
+ <20200315212901.6b515c24@elisabeth>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200315212901.6b515c24@elisabeth>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
+On Sun, Mar 15, 2020 at 09:29:01PM +0100, Stefano Brivio wrote:
+> Hi,
+> 
+> On Thu, 12 Mar 2020 14:40:48 +0530
+> R Veera Kumar <vkor@vkten.in> wrote:
+> 
+> > Fixes for simple typos in C comments.
+> > Found using checkpatch.pl.
+> 
+> This looks good to me, except for the same points Julia had on your
+> patch:
+> 	"[Outreachy kernel] [PATCH] staging: rts5208: Fix long line in C func call argument"
+> 
+> Can you please fix that up (title and description) and resend?
+> 
 
+But, this patch has already been accepted by Greg KH and is in
+staging-testing and staging-next branch. May be late.
 
-On Mon, 16 Mar 2020, R Veera Kumar wrote:
+Regards,
+Veera
 
-> On Sun, Mar 15, 2020 at 09:29:01PM +0100, Stefano Brivio wrote:
-> > Hi,
-> >
-> > On Thu, 12 Mar 2020 14:40:48 +0530
-> > R Veera Kumar <vkor@vkten.in> wrote:
-> >
-> > > Fixes for simple typos in C comments.
-> > > Found using checkpatch.pl.
-> >
-> > This looks good to me, except for the same points Julia had on your
-> > patch:
-> > 	"[Outreachy kernel] [PATCH] staging: rts5208: Fix long line in C func call argument"
-> >
-> > Can you please fix that up (title and description) and resend?
-> >
->
-> But, this patch has already been accepted by Greg KH and is in
-> staging-testing and staging-next branch. May be late.
-
-Yes, you can let it go.
-
-julia
-
-
->
-> Regards,
-> Veera
->
-> > --
-> > Stefano
-> >
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200316012751.GA608%40tulip.local.
->
+> -- 
+> Stefano
+> 
 
