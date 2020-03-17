@@ -1,143 +1,95 @@
-X-GM-THRID: 6391526097172824064
-X-Received: by 10.129.40.134 with SMTP id o128mr5127268ywo.82.1488143135976;
-        Sun, 26 Feb 2017 13:05:35 -0800 (PST)
+X-GM-THRID: 6803761138305597440
+X-Received: by 2002:aca:bac1:: with SMTP id k184mr1732118oif.157.1584407436489;
+        Mon, 16 Mar 2020 18:10:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.45.170 with SMTP id g39ls12595019otb.49.gmail; Sun, 26 Feb
- 2017 13:05:35 -0800 (PST)
-X-Received: by 10.13.224.70 with SMTP id j67mr5343701ywe.44.1488143135619;
-        Sun, 26 Feb 2017 13:05:35 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id h130si2725303pfe.1.2017.02.26.13.05.35
+Received: by 2002:a9d:2e7:: with SMTP id 94ls1333060otl.6.gmail; Mon, 16 Mar
+ 2020 18:10:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtDOnrOnlEj9JwPi+SWGXdo10Nf6zk0hElX0c6dvXSQH5Eo4xl1m2X6Eg7Sb6HifE0supw3
+X-Received: by 2002:a9d:4e3:: with SMTP id 90mr1713036otm.261.1584407435086;
+        Mon, 16 Mar 2020 18:10:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584407435; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SCmlvr/lneQhRvrBKd+Vu/pq6IaRLy6df5GKszYFwixNgNfDlUJkksczmMhiOaXZgO
+         IeVn4+lRfVI+1ceIfOPv2yXdzcsWZgdz5nbhDHm53f8MtiHCanrUTtaouR+7+IyGkPSX
+         /nmXIlcvKIYXTUC7QqmuKjeOqG1i1fLJbS31uCCSSld/taKYedh+NO4zTzS4jDXM6Jy3
+         yIVamWiy4iDpN4Z/gCX5yJzmgC0E9be7WmoRdEWBn3o9Qcf8UFZu+V6w0cuZYVW5YDsx
+         bnK7sCTE1skHpgagYwZXXWx2FKbW73XQ1Ql2BFZ89VCwHSETtDB2F1ZoWG1caq6ksdlm
+         X3Kw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=/jfColGgEgXuIlEIcvPDbI930d/eWUR9O2HR7dTlg74=;
+        b=FBA/NC6qRTioey/aI7EoQRYfhUbJl4hAkQAifrAtcZLhjd0MDaOdcX8/+0e9OB9SV5
+         LxqmvH0Q5QiKQJGV8tOcPmp6Ue1gjM41m8cYRs3RkU18dbm/Onmx0h5uC12WeTWZKBqu
+         HRpa6Xt3Cy4mDczwmgWtE4VBS2F2/mUDXxg2KH3lnzgMbU0fwiid4cu4V4H4gqV3lGZ5
+         RCYmtDPPsWdp3NTH+7l0GBBe/kUqDmNsEv8FCBx/XKE+FqELNGyvvQi83MswJTZ4XUEL
+         Fn19rBmAwgPCZ79ogD6u7RUUq0O1PanxxICzrqGokKmVbv7fCiuP2v5cT28D18hSzyqn
+         BQGw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QEb+KQZj;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id x23si143398oif.2.2020.03.16.18.10.34
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 13:05:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        Mon, 16 Mar 2020 18:10:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id s67so10411601pgb.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 26 Feb 2017 13:05:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=xUcLvsWAEnEgR8g0pbQKbtyln+vc2jYFuEdIzmLmbfc=;
-        b=X7Eg8vC4EFJoK/4+PTlCuUzJPnTeALdnyzZ5dVBoJFpqjW9adn+68tIdgmPTPanKdT
-         wyEk1oR5MnVMNkVf7AWwhvEnTILQICcxMhAZHqnKPus8C/Eghro2rf3Iu/RQ9Vfxoe2W
-         ceW04498nxk2umc8AGOWh8BlEJYgdfFOnVn5ZIxMZSD8lRFyYrb/sky+bBxkUV6/1a2p
-         qiE5Ia4CUtYzVVTnuUZc+w52mEo31jLWhUWIeyA9oBeUqQzcGa+hDfIz70Hg09g047gW
-         R75oqw6Sv2z26mciF1qXGQY+NYeasAwCEdWQMiZGDVmhqJUXklPTaxk+cAksmPO4hm/8
-         anbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=xUcLvsWAEnEgR8g0pbQKbtyln+vc2jYFuEdIzmLmbfc=;
-        b=CBazGcqNd5tZGhxSaOF2ZQSBYCEdESrbkkH+BzJ7J1cv4jwWigtBzwK8Pyt9trgK3L
-         mZL6cnB1GX1oU/CGEfgVMdgWXpcC1GwEea6kZNFzMz/tHkagi5YOty7Iu9ygJH2xRj7K
-         AF0WgRkPzweumLvzKZD7kyt2Awm24Hj3Ls3QOAOxp/3d3QK7yr1eQ3hzFb0RK81e6vpi
-         CVY7jr5+9GaaI4WNreEp7RHJnwWZFOGLKnz6jVcsctshhuZbrIsXmTytPsTfHRwlDhii
-         YB2G4tSp44ROIVVonl0DcGmzSqT+sb9FGB8RhsUHNHIfkRrDR28Ua01cmSMEgyfEu4nB
-         nF9A==
-X-Gm-Message-State: AMke39kgktS2gg0XsK4AYRiUq7y06fHMuXzZyHscHzg2RGD2M8B94lqmIRhi1qf0slOllw==
-X-Received: by 10.84.197.131 with SMTP id n3mr19695976pld.43.1488143135346;
-        Sun, 26 Feb 2017 13:05:35 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.241.100])
-        by smtp.gmail.com with ESMTPSA id f3sm26355071pga.34.2017.02.26.13.05.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 26 Feb 2017 13:05:34 -0800 (PST)
-Date: Mon, 27 Feb 2017 02:35:17 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org
-Subject: [PATCH] staging: iio: iio-trig-bfin-timer: Move contents of header
- file to source file
-Message-ID: <20170226210516.GA20649@sayli-HP-15-Notebook-PC>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QEb+KQZj;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584407434;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/jfColGgEgXuIlEIcvPDbI930d/eWUR9O2HR7dTlg74=;
+	b=QEb+KQZjMP2NHurp5MsuYzSKDwbNHVoZrxReVnY6rhJceol9zSWvEjCkLPsKpgCdB59IOn
+	gT+3aV9RgEM4COjYfeexeuqY36GBZ7ptzPMjTiYx5hKWsO29RkhxRixTIiHSb0nGv/ny+C
+	sY1oAgCQ22Xu8jMOCOe7JlqR0n9LeXg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-179-xvmq5VhQNOidLFqqaSd-PA-1; Mon, 16 Mar 2020 21:10:31 -0400
+X-MC-Unique: xvmq5VhQNOidLFqqaSd-PA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4DDBD8017CC;
+	Tue, 17 Mar 2020 01:10:30 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9979B7E305;
+	Tue, 17 Mar 2020 01:10:27 +0000 (UTC)
+Date: Tue, 17 Mar 2020 02:10:20 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Deepak R Varma <mh12gx2825@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+ daniel.baluta@gmail.com, mchehab@kernel.org, sakari.ailus@linux.intel.com
+Subject: Re: [Outreachy kernel] [PATCH] media: staging: imgu: Remove extra
+ type detail
+Message-ID: <20200317021020.04f3157d@elisabeth>
+In-Reply-To: <20200313182754.GA20501@deeUbuntu>
+References: <20200313182754.GA20501@deeUbuntu>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-The contents of the header file are used only by this single
-source file. Move content into .c and delete .h.
+On Fri, 13 Mar 2020 23:57:58 +0530
+Deepak R Varma <mh12gx2825@gmail.com> wrote:
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/iio/trigger/iio-trig-bfin-timer.c | 21 +++++++++++++++++++-
- drivers/staging/iio/trigger/iio-trig-bfin-timer.h | 24 -----------------------
- 2 files changed, 20 insertions(+), 25 deletions(-)
- delete mode 100644 drivers/staging/iio/trigger/iio-trig-bfin-timer.h
+> Remove unwanted variable type detail as detected by checkpatch script.
+> 
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-index 4e0b4ee..5708247 100644
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-+++ b/drivers/staging/iio/trigger/iio-trig-bfin-timer.c
-@@ -19,7 +19,26 @@
- #include <linux/iio/iio.h>
- #include <linux/iio/trigger.h>
- 
--#include "iio-trig-bfin-timer.h"
-+/**
-+ * struct iio_bfin_timer_trigger_pdata - timer trigger platform data
-+ * @output_enable: Enable external trigger pulse generation.
-+ * @active_low: Whether the trigger pulse is active low.
-+ * @duty_ns: Length of the trigger pulse in nanoseconds.
-+ *
-+ * This struct is used to configure the output pulse generation of the blackfin
-+ * timer trigger. If output_enable is set to true an external trigger signal
-+ * will generated on the pin corresponding to the timer. This is useful for
-+ * converters which needs an external signal to start conversion. active_low and
-+ * duty_ns are used to configure the type of the trigger pulse. If output_enable
-+ * is set to false no external trigger pulse will be generated and active_low
-+ * and duty_ns are ignored.
-+ **/
-+
-+struct iio_bfin_timer_trigger_pdata {
-+	bool output_enable;
-+	bool active_low;
-+	unsigned int duty_ns;
-+};
- 
- struct bfin_timer {
- 	unsigned short id, bit;
-diff --git a/drivers/staging/iio/trigger/iio-trig-bfin-timer.h b/drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-deleted file mode 100644
-index c07321f..0000000
---- a/drivers/staging/iio/trigger/iio-trig-bfin-timer.h
-+++ /dev/null
-@@ -1,24 +0,0 @@
--#ifndef __IIO_BFIN_TIMER_TRIGGER_H__
--#define __IIO_BFIN_TIMER_TRIGGER_H__
--
--/**
-- * struct iio_bfin_timer_trigger_pdata - timer trigger platform data
-- * @output_enable: Enable external trigger pulse generation.
-- * @active_low: Whether the trigger pulse is active low.
-- * @duty_ns: Length of the trigger pulse in nanoseconds.
-- *
-- * This struct is used to configure the output pulse generation of the blackfin
-- * timer trigger. If output_enable is set to true an external trigger signal
-- * will generated on the pin corresponding to the timer. This is useful for
-- * converters which needs an external signal to start conversion. active_low and
-- * duty_ns are used to configure the type of the trigger pulse. If output_enable
-- * is set to false no external trigger pulse will be generated and active_low
-- * and duty_ns are ignored.
-- **/
--struct iio_bfin_timer_trigger_pdata {
--	bool output_enable;
--	bool active_low;
--	unsigned int duty_ns;
--};
--
--#endif
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+
 -- 
-2.7.4
+Stefano
 
 
