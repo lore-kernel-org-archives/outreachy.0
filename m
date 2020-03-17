@@ -1,110 +1,132 @@
-X-GM-THRID: 6464370677237415936
-X-Received: by 10.101.66.141 with SMTP id j13mr6659193pgp.0.1505103585179;
-        Sun, 10 Sep 2017 21:19:45 -0700 (PDT)
+X-GM-THRID: 6803689046764683264
+X-Received: by 2002:a92:5fc1:: with SMTP id i62mr2389729ill.15.1584407156652;
+        Mon, 16 Mar 2020 18:05:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.103.14 with SMTP id u14ls4780585itc.7.canary-gmail; Sun, 10
- Sep 2017 21:19:44 -0700 (PDT)
-X-Received: by 10.200.10.1 with SMTP id b1mr5678105qti.53.1505103584158;
-        Sun, 10 Sep 2017 21:19:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505103584; cv=none;
+Received: by 2002:a02:3084:: with SMTP id q126ls2400494jaq.6.gmail; Mon, 16
+ Mar 2020 18:05:55 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvdD0qvw6eFGZB7gAn1AF11A+bDeHlYGoVRIryl96kMavyw+gbBuPFbKUmfu+XU0CeKrH7n
+X-Received: by 2002:a02:856a:: with SMTP id g97mr2574236jai.97.1584407155323;
+        Mon, 16 Mar 2020 18:05:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584407155; cv=none;
         d=google.com; s=arc-20160816;
-        b=ENqNnHgPb/4sP3Z8s2BXjwEd9Y9PSW/mdw/UoTrgUGkBZXU/UolE+6ltZdkoLYYJZX
-         qMUPBDa3+lQxJo6hst/DNLMzuvkCO4z/6aXWl3RO5/RBiusIM6ckCYNeosSTohKGuKkj
-         9VI26eGafCjTDCrdv7eU+vHN/Z4M0QM8d5SqZbtpOWQ6R1HdHTuwVsdf0iUP70z/baOs
-         vnR7QDISAmq4wOCQUqcpeXcpzhpBzwS/d5nduZ4NS3J+XbD3Oq2xxe3IFv75lMbZJco+
-         OOIUBpu4MTojxozmv0DYeIXbTi7CQiO89j23bhQeY/os/OSlb8r1WT0JpB4tMF+Hnshl
-         7K0A==
+        b=xctW95qzFNCAEq4KoYpsgwcp705Oh1Tw4gSevQsQAhLY9kWeGtpgwc09li/myub34k
+         GUy8jKDQZN9fhZVV5VQkR+WZ82WSuTLYla6b7d9eEULyun7xOQkiUoyF2Kppq3rXm3Fb
+         NikBI+X1Ar5NSPm0WWbLUPxPrXKWwNOE35+zch+LOppoibH3TWzVjT8QvB61LKH3GdcW
+         itSbs+SEItl4FvX2dkpOKt2cj46NxwC/hlbITJIwVPTKqGg/YVy2tl+r/W6cXmgTTzyz
+         jX94dmgdSBP8cUqQlLuxLtPe5fvCc5Y2EBRXBBmlEMxaf6CvFO/x+uyx2aopxDQFXZfL
+         2FCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=YG4dAbDc4ptaK7NqrbFIT6SPohs+3waDIvWamTdlbmo=;
-        b=esaCcbYf264v0+R1tDp0Qg5dTeYvv4e8jQp1tq/c9ndPzMiWELlR0vRQZNEYXtieGa
-         G3skaoWHx4mDeqHrPuq83pGt1KLyNKApp3MGkw4MsYqIQFkJZfcGJwzhIO27P9rIcUtb
-         YG8tMZiMdXXvFFUUfIk5exS2BiFWDYj7wri3N7pRbSE7h+zbXCF/FBDUDEJt4/OAwciU
-         fzGFkmo7GxcJFoemzmqLA6JSQLZjla6ONBYpOaokgNLDyLDowAJZi14bHHmKn/ElVS7l
-         Nu3kfR2xBRqWGucS4fbSzcLk4sZ2s5fMkQMFTeWOo0C81XhWmnfCHnyBiYp9lAxVkVau
-         katQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=2xBC9BIhVpGHL2x4i2Jzb6AKCqMo7ef2u/OAkj0OGrk=;
+        b=C4Rz0cR0vvgPJ1vyeXD4MQKndhRLVooquX8G7/5Gz7nbPbpNUYhM56oyWdRIxEznkR
+         bwUsSoeQNH8mQfUQpCYSIRYRjkB9yfj+tNIdkQifa92WkgFDImLyczTHQRJHw4dxi5/r
+         LlsdB15Vrwscar/TlFoshqqHX8YnLo6X+OMbJH5sM1V4yWPedIrsBN7xMYdf20MuIkWj
+         +cI4sdCZpiFFUp5Z/CVpfVDNRK+uq1VRki3TCB7mkBI6CpoWz4NMLWzs0oZv7yBkK0wV
+         Bw14XobP/WpeNuKao9EkzK0hazYEo9PPA1xwS5f3W1lMh49sEMcWN1Hm8cikBjBtYn+i
+         +JNg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PAHuePAq;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id y18si57283pfj.18.2017.09.10.21.19.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CIqCWIF6;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id q6si127353ild.2.2020.03.16.18.05.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Sep 2017 21:19:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        Mon, 16 Mar 2020 18:05:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PAHuePAq;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id q76so4415452pfq.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 10 Sep 2017 21:19:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YG4dAbDc4ptaK7NqrbFIT6SPohs+3waDIvWamTdlbmo=;
-        b=PAHuePAqCTRqHdM3OiP07LI1SP4FwghICOX8zhJsOZXJFebebMkXeAFiGr1rTB1xm7
-         olBHscDpViCjIMYaHTLFODrlzN2Mlnx3O6wQPDguoI7pegxIJ5hyOPBIwrtiPLkLTIZQ
-         IxvuMAXO0HLinfd84/0cDjmDKwxm9PwltgBOoQ18yHDTVgt53rpEg6Sa87gZpHZhwqeO
-         tQTOdHrDtCXHYLXGIY388nq8tcFo/jR1XaCoqW5h5mWIq9Y9QX+dDtagO5H/e9k8TXFi
-         85t14ec7AzAl4OanmaIB5ohsyxZjtrsW6GGqfIZ+/jWzOgEN7Hn1NjGv4Tr4q3g2d0Xf
-         ZZUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YG4dAbDc4ptaK7NqrbFIT6SPohs+3waDIvWamTdlbmo=;
-        b=brI5LF/Es+qSL1ofCuv3MrmxnrTEWJFbC64L3/9uhSPEr9/h6qeDyNxDDPA3gfAAH5
-         rxdbbDfh37OLx77c0uGtnLCVfyKJbJ3h6MMIpCPge3kmWJoVbMnQa8dkV6PS6SCp/GCe
-         etIX7lf+mk01KtOKCCTv+KaAK9GNxmNVO2um1BNBhSM1WuK2iVY8BNYpW2wV/CjWooEA
-         vnBrSiQw9U4b+3dBfYCfoLDa2pTf5xz+aZd9rWPN318559DwxSxPMTZOg9iAsqruBfgC
-         6FfppVVkfAwRZXvEZMekmOdoPI8eKcMuxuzpsSBKcvMAf6T2F3T7r0LPbzMXYwY7xJl7
-         iPhQ==
-X-Gm-Message-State: AHPjjUhJ2MXYGJrE0c7KB2nyRDHY5xNQdHwv6khrYe+F49XYG9VfeSBH
-	0x/AVrFCy+LQXw==
-X-Google-Smtp-Source: ADKCNb7njmYcauO8tyFIiXcW4SxAhCzl4U+Ad/UK1sbBFLGjH+vas7Zg6AUdyjAt52zD8Pks4CnSqA==
-X-Received: by 10.98.159.137 with SMTP id v9mr10571247pfk.49.1505103583774;
-        Sun, 10 Sep 2017 21:19:43 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([182.77.47.123])
-        by smtp.gmail.com with ESMTPSA id z89sm12882494pff.13.2017.09.10.21.19.42
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 10 Sep 2017 21:19:43 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Arnaud Patard <arnaud.patard@rtp-net.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] staging: xgifb: fix multiple line dereference
-Date: Mon, 11 Sep 2017 09:49:35 +0530
-Message-Id: <1505103575-5301-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CIqCWIF6;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584407154;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2xBC9BIhVpGHL2x4i2Jzb6AKCqMo7ef2u/OAkj0OGrk=;
+	b=CIqCWIF6hly1JqawZNmP+3w9vFhv5d5zbhpGgeAWz85xxfkn3QRaWuDv+CWe/N8LBEzm/O
+	B9nXGSrIHCYnZy2gjFHIb0fjZwXOMzy/Ks29kEiWlWnIubcdKniw5ktGqZimXJktZsadzb
+	Y5SZJohXDANCUIo2CeP2EIw/npEMO68=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-414-393xmCbfNBuc1C-vwHUfBA-1; Mon, 16 Mar 2020 21:05:52 -0400
+X-MC-Unique: 393xmCbfNBuc1C-vwHUfBA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0EA97100550E;
+	Tue, 17 Mar 2020 01:05:51 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 48DFA1001B28;
+	Tue, 17 Mar 2020 01:05:46 +0000 (UTC)
+Date: Tue, 17 Mar 2020 02:05:37 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Enrique Vargas <jevargas@seas.upenn.edu>
+Cc: Steve Longerbeam <slongerbeam@gmail.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ NXP Linux Team <linux-imx@nxp.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v3] Staging: media: imx: eliminate
+ unused code
+Message-ID: <20200317020537.1eff25a3@elisabeth>
+In-Reply-To: <20200313172019.GA22581@evX1>
+References: <20200313172019.GA22581@evX1>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-This patch fixes the checkpatch.pl warning:
+On Fri, 13 Mar 2020 11:21:49 -0600
+Enrique Vargas <jevargas@seas.upenn.edu> wrote:
 
-WARNING: Avoid multiple line dereference - prefer'XGI330_EModeIDTable[ModeIdIndex].Ext_ModeFlag'
+> Eliminate code that is never used inside #ifdef 0 / #endif.  This eliminates WARNING found using checkpatch.
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
- drivers/staging/xgifb/vb_setmode.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+This should be wrapped to at most 76 characters, so that it can be
+displayed by git (e.g. git log) without exceeding 80 columns. Some
+personally prefer 72 columns or even less, I usually stick to 70.
 
-diff --git a/drivers/staging/xgifb/vb_setmode.c b/drivers/staging/xgifb/vb_setmode.c
-index cea128b..bf69dc9 100644
---- a/drivers/staging/xgifb/vb_setmode.c
-+++ b/drivers/staging/xgifb/vb_setmode.c
-@@ -5479,8 +5479,7 @@ unsigned char XGISetModeNew(struct xgifb_video_info *xgifb_info,
- 						   ModeIdIndex))
- 				return 0;
- 
--		pVBInfo->ModeType = XGI330_EModeIDTable[ModeIdIndex].
--						Ext_ModeFlag & ModeTypeMask;
-+		pVBInfo->ModeType = XGI330_EModeIDTable[ModeIdIndex].Ext_ModeFlag & ModeTypeMask;
- 
- 		pVBInfo->SetFlag = 0;
- 		pVBInfo->VBInfo = DisableCRT2Display;
+> Signed-off-by: Enrique Vargas <jevargas@seas.upenn.edu>
+> ---
+> v2 Fix description typo with broken line
+> v3 Include change control, as suggested by Greg.
+> 
+>  drivers/staging/media/imx/imx-media-csi.c | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
+> index b60ed4f22f6d..2001f7851e90 100644
+> --- a/drivers/staging/media/imx/imx-media-csi.c
+> +++ b/drivers/staging/media/imx/imx-media-csi.c
+> @@ -1131,13 +1131,7 @@ static int csi_link_validate(struct v4l2_subdev *sd,
+>  		 * enters the CSI's however, they are treated internally
+>  		 * in the IPU as virtual channel 0.
+>  		 */
+> -#if 0
+> -		mutex_unlock(&priv->lock);
+> -		vc_num = imx_media_find_mipi_csi2_channel(&priv->sd.entity);
+> -		if (vc_num < 0)
+> -			return vc_num;
+> -		mutex_lock(&priv->lock);
+> -#endif
+> +
+>  		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
+>  					  &priv->format_mbus[CSI_SINK_PAD]);
+
+By the way, now that you remove that, it's not clear from the comment
+why vc_num is even a variable. You could directly call
+ipu_csi_set_mipi_datatype() with 0 as channel (in this patch, or in
+another one, I don't have a strong preference -- I would personally
+do that in the same patch).
+
 -- 
-2.7.4
+Stefano
 
 
