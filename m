@@ -1,149 +1,150 @@
 X-GM-THRID: 6803757345304215552
-X-Received: by 2002:ab0:6796:: with SMTP id v22mr11811980uar.41.1584904750654;
-        Sun, 22 Mar 2020 12:19:10 -0700 (PDT)
+X-Received: by 2002:a17:90a:d997:: with SMTP id d23mr2336411pjv.187.1584408615237;
+        Mon, 16 Mar 2020 18:30:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:354c:: with SMTP id o70ls60145uao.1.gmail; Sun, 22 Mar
- 2020 12:19:09 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vus8fHMZ9kxl2952OOuPuNNqh+tTeX5I3YyAZIHHRRD8grDnXJmsvNQazeSGMtnwhAvqMys
-X-Received: by 2002:a9f:2c8d:: with SMTP id w13mr11930243uaj.51.1584904749382;
-        Sun, 22 Mar 2020 12:19:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584904749; cv=none;
+Received: by 2002:a62:ab0b:: with SMTP id p11ls9744608pff.0.gmail; Mon, 16 Mar
+ 2020 18:30:13 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtSoNVjubss2a6v9e7yVNoVq887EXSyFVU+2ePHfkWMgtrVSqVvveIp//cpYFlSXlJ5MApd
+X-Received: by 2002:aa7:9888:: with SMTP id r8mr2518628pfl.293.1584408613145;
+        Mon, 16 Mar 2020 18:30:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584408613; cv=none;
         d=google.com; s=arc-20160816;
-        b=ELzpa60eJ91c+4KZY4BwLVmPacjTjJBnj04FPgODl4klnkYMAthkvBhKSZqS5nMwmQ
-         Z93ew5R9KMS4+QFtwElDP8pfF+ZtTNQoc+s/1WqTr4JKTxkVKjc4AcZRrzw92EYoX7p3
-         8XhqM0KalkrvR3WMFf0ky4iyOAZvXCFZiO1g+x1+28iiX3cAk+nhx4OeaFNzH3ku3vkn
-         y1ofQq+UjNk7r+EaBpjtezoGtiGja1dYxpO2QsuRs1WnHGbDd3VCEGd5hQfeL6r8iN+z
-         zc1Mm3/Yd4N1cxb/CCG8Q0RHWekX1xp40lDEdhAc32z8YGVzFtXw2PGqcyvbvUi35JGm
-         VSzA==
+        b=QMhhqYCNoKnmS+wwe7hcWqB+na/gc3LDKBH2sxWge4S/G0iIZncdDEYUe0Xd2roCBb
+         hT3EwCYVoOGRl/DP0SKrTNy/VEJ/mWgkUnxiZz5KOZHdrsEpVEWACcOOs1gEePZluhDa
+         Cq2YW86GdBY+2FlX+AinGIk91T7h5VbnSqRcGozt4/60ZypkDgVgmIK0c+RaZZkvHOiR
+         Z/zafOB0PKcvp8NsLsCXhWgUehOTGIPPZwVFr7XfGwUSXS/NRAb7YEc3nQA2Nq4Hc2Ix
+         S7OLDEaqbSkpV1WCSFicvlVB/6KOx7ykCBiiEo/SOcHnjUMmLHOSG4Tvnclksgq4g857
+         ELUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Sy1jw0koKAJeVxsBec0uGKaUTT4NgaXIq1/WmLgWUkA=;
-        b=rXIdn5gvIdjeLpVjdWHHjq9dPosCgpOwpjkmLdLZFT40Cid2G4keZHujhs6SczDuh1
-         UR70vzdyZ/Te5vc3xlwoZZiZk2t7NCVOz94FSfe4bUj3aVLB6UgbXuoMsxBsKouQBvOr
-         Tbi5oEXbl7vel7mCGsu8XphOQkswYhYV6zMAQlyASDihRB9iTiCcUF+VRa/Bu4HEYW7G
-         PpnYjo8o0WqAP9owpqMMAlsdLoP6fqy8m6aHsQXaoQwLP2sZTh5Nf5uqcLWksXkjgfgY
-         woPa2Hsk1V9IEASQy6zfKTzXR7Rtir5wrIvowqj5go7vrP6H2ClbzOFMHVDbpRpT+bsM
-         YwrQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=v+j5+E6R9obgLcgfbIY2evcFGEIa3DBuxZ4WKFszDqg=;
+        b=dCkuaR092YFo88wb/6KHrPKKlvmVDCTnL3jfD1/Fmzxbzox7bperCdDP2Reb1rYP+d
+         fqb7ceSPuPxbpwzvdBzUSPurFOcCthoimHjfvtSiwJnTNvsV8NXtuMgLD+7TzbrdUudT
+         0ZxxXYHSw0y+XTjEkcnZEVUWfFkblY8kNTvtbpEMAc4GiAvABGFjQmK9/ruDtJi2YRip
+         jUzrkg16muKdYAPhSeSIjnpAvHf1Z6NrNPSC/jZBZELRwckSeiaDihJRG7ktUQZsGrFm
+         dYdoiE8x8cpYWkcwz4/8VgsoKGK7TqDtBbGKdsO1cfgWamaxIW9I8mhOFmK0cBzhbbH5
+         H6zw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Vvx2XDdz;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id c9si654240vsq.2.2020.03.22.12.19.09
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bj6A9RlT;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id k3si99913plt.1.2020.03.16.18.30.12
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 12:19:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 Mar 2020 18:30:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Vvx2XDdz;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id ng8so5074140pjb.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 12:19:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Sy1jw0koKAJeVxsBec0uGKaUTT4NgaXIq1/WmLgWUkA=;
-        b=Vvx2XDdzxJdCt/vmV2YMqti5qP1kZy6PPi3zFMp7Cv7vpLl5CFaZo+rb3bePyv1qVg
-         rDBGAPrlrmbJEpNC1pG5+pu441q549xa0iOQeK5PgMLUHjSkkoVMUIdHui2m4ORI8xmT
-         2mziEFJIHxNqgxE6tWAUkrTPQ7+G9ixASSXbsSpwcgAZvZnFRzbj7X7G5+1Hq7VVzQ5M
-         VFG9FHOPo3rgPneRGffn0fViW20bVIuMiROEezIsn1F/eNj69ZVNd2jD08UQ7+8yfkAp
-         0dCr/MMH7MVKsDBC0JAdIEawYYwNtuZc4gIFFBS+83oZN1a+SdtYYmDr6z/EF7Bni4W6
-         AJWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Sy1jw0koKAJeVxsBec0uGKaUTT4NgaXIq1/WmLgWUkA=;
-        b=HvIVAKGOtWfodasGqFqlZElLHbFgPC3bc9hnN90nkcirWkMxN1nbzWWALE76lrIML8
-         EPXdq1i+yHl0SP8rzS1DXHqplKiVMNcwhJRgNHadUmCNdJzkASeEB2DNplguSFC47d3n
-         FGMNk2JGkB9GJCbiP0R2GEoGt81VxfcGOu+HdMta6QMB1bvWeJRDprKdJEjOcJ7zagDU
-         d8jOvPoIABAYn9UH1xdPo/opEMT7BUfmzjFfa5HywicJcLsQ0xymykTELj1p5KmQUtCD
-         84kAEck0WbJjg8nDwZT4ODV/BcmQkQzgOF6BkSVwIEno3LJ3df4Fen1FRvLjHOBCw3es
-         saHw==
-X-Gm-Message-State: ANhLgQ0duC7bLCmY/e+XJQ/27+ZjQDa6ZPFeUn4Kmw7i2wjs9sKLRxTI
-	TtMd+a38+FGZYfTnoa/wTSoKParu
-X-Received: by 2002:a17:902:7615:: with SMTP id k21mr17914531pll.160.1584904748208;
-        Sun, 22 Mar 2020 12:19:08 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.240.207.191])
-        by smtp.gmail.com with ESMTPSA id t17sm10372592pgn.94.2020.03.22.12.19.05
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Mar 2020 12:19:07 -0700 (PDT)
-Date: Mon, 23 Mar 2020 00:49:03 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-	daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com
-Cc: Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v4] media: staging/intel-ipu3: css: simplify expression
-Message-ID: <20200322191859.GA13840@deeUbuntu>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Bj6A9RlT;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584408612;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v+j5+E6R9obgLcgfbIY2evcFGEIa3DBuxZ4WKFszDqg=;
+	b=Bj6A9RlTni8AiU4AUPpobiBwGVjgWmYxPDCUakyYNXUPBWQ79nNOed286piZsrtUx2kVsv
+	ylzUX1ItZSE0EVDHt6+eBFmaWwUxn9XrjchDcj9OkMPJycqGr7EPWK4ie1dCyxziXkBjcj
+	nlbBMYeiiwwNiLXN01tB55imuxCFVQY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-295-CKjLUnH-MkiuJlez11N1Gg-1; Mon, 16 Mar 2020 21:30:08 -0400
+X-MC-Unique: CKjLUnH-MkiuJlez11N1Gg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6C2C61007268;
+	Tue, 17 Mar 2020 01:30:06 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CFD8E8F374;
+	Tue, 17 Mar 2020 01:30:02 +0000 (UTC)
+Date: Tue, 17 Mar 2020 02:29:56 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Deepak R Varma <mh12gx2825@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+ daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com,
+ sakari.ailus@linux.intel.com, mchehab@kernel.org
+Subject: Re: [Outreachy kernel] [PATCHi v3] media: staging/intel-ipu3: css:
+ simplify expression
+Message-ID: <20200317022956.1982719d@elisabeth>
+In-Reply-To: <20200313222811.GA31838@deeUbuntu>
+References: <20200313222811.GA31838@deeUbuntu>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-An array index computed inside square brackets complicates the code
-and also extends the line beyond 80 character. Add new variable to
-compute array index separately and use it as an index during assignment.
+Subject has an extra 'i' after PATCH (this might actually confuse some
+systems for processing patches). Two comments:
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
-Changes since v3:
-	1. Removed extra 'i' alongside word PATCH in the subject line
-	2. Removed extra curly braces that are no more needed post
-	implemented changes. Pointed out by Stefano.
-Changes since v2:
-  - Added feedback from Julia
-        1. Rephrase patch description to make it concise and simpler. 
-Changes since v1:
-  - Added feedback from Helen
-        1. Updated variable type to "unsigned int" from earlier "int"
-        2. Implemented the change in another area in same scope
-        3. Left newly added variable uninitialised. 
-	
- drivers/staging/media/ipu3/ipu3-css-params.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+On Sat, 14 Mar 2020 03:58:15 +0530
+Deepak R Varma <mh12gx2825@gmail.com> wrote:
 
-diff --git a/drivers/staging/media/ipu3/ipu3-css-params.c b/drivers/staging/media/ipu3/ipu3-css-params.c
-index 4533dacad4be..cc526c57248c 100644
---- a/drivers/staging/media/ipu3/ipu3-css-params.c
-+++ b/drivers/staging/media/ipu3/ipu3-css-params.c
-@@ -49,14 +49,13 @@ imgu_css_scaler_setup_lut(unsigned int taps, unsigned int input_width,
- 	int tap, phase, phase_sum_left, phase_sum_right;
- 	int exponent = imgu_css_scaler_get_exp(output_width, input_width);
- 	int mantissa = (1 << exponent) * output_width;
--	unsigned int phase_step;
-+	unsigned int phase_step, phase_taps;
- 
- 	if (input_width == output_width) {
- 		for (phase = 0; phase < IMGU_SCALER_PHASES; phase++) {
--			for (tap = 0; tap < taps; tap++) {
--				coeff_lut[phase * IMGU_SCALER_FILTER_TAPS + tap]
--					= 0;
--			}
-+			phase_taps = phase * IMGU_SCALER_FILTER_TAPS;
-+			for (tap = 0; tap < taps; tap++)
-+				coeff_lut[phase_taps + tap] = 0;
- 		}
- 
- 		info->phase_step = IMGU_SCALER_PHASES *
-@@ -82,8 +81,8 @@ imgu_css_scaler_setup_lut(unsigned int taps, unsigned int input_width,
- 			coeff += 1 << (IMGU_SCALER_COEFF_BITS - 1);
- 			coeff >>= IMGU_SCALER_COEFF_BITS;
- 
--			coeff_lut[phase * IMGU_SCALER_FILTER_TAPS + tap] =
--				coeff;
-+			phase_taps = phase * IMGU_SCALER_FILTER_TAPS + tap;
-+			coeff_lut[phase_taps] = coeff;
- 		}
- 	}
- 
+> An array index computed inside square brackets complicates the code
+> and also extends the line beyond 80 character. Add new variable to
+> compute array index separately and use it as an index during assignment.
+> 
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> ---
+> Changes since v2:
+>   - Added feedback from Julia
+>         1. Rephrase patch description to make it concise and simpler.
+> Changes since v1:
+>   - Added feedback from Helen
+>         1. Updated variable type to "unsigned int" from earlier "int"
+>         2. Implemented the change in another area in same scope
+>         3. Left newly added variable uninitialised. 
+> 
+>  drivers/staging/media/ipu3/ipu3-css-params.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/media/ipu3/ipu3-css-params.c b/drivers/staging/media/ipu3/ipu3-css-params.c
+> index 4533dacad4be..5622319b69ff 100644
+> --- a/drivers/staging/media/ipu3/ipu3-css-params.c
+> +++ b/drivers/staging/media/ipu3/ipu3-css-params.c
+> @@ -49,13 +49,13 @@ imgu_css_scaler_setup_lut(unsigned int taps, unsigned int input_width,
+>  	int tap, phase, phase_sum_left, phase_sum_right;
+>  	int exponent = imgu_css_scaler_get_exp(output_width, input_width);
+>  	int mantissa = (1 << exponent) * output_width;
+> -	unsigned int phase_step;
+> +	unsigned int phase_step, phase_taps;
+>  
+>  	if (input_width == output_width) {
+>  		for (phase = 0; phase < IMGU_SCALER_PHASES; phase++) {
+> +			phase_taps = phase * IMGU_SCALER_FILTER_TAPS;
+>  			for (tap = 0; tap < taps; tap++) {
+> -				coeff_lut[phase * IMGU_SCALER_FILTER_TAPS + tap]
+> -					= 0;
+> +				coeff_lut[phase_taps + tap] = 0;
+>  			}
+
+I'm not sure if checkpatch reports this (I haven't tried), but now you
+can remove the curly brackets.
+
+>  		}
+>  
+> @@ -82,8 +82,8 @@ imgu_css_scaler_setup_lut(unsigned int taps, unsigned int input_width,
+>  			coeff += 1 << (IMGU_SCALER_COEFF_BITS - 1);
+>  			coeff >>= IMGU_SCALER_COEFF_BITS;
+>  
+> -			coeff_lut[phase * IMGU_SCALER_FILTER_TAPS + tap] =
+> -				coeff;
+> +			phase_taps = phase * IMGU_SCALER_FILTER_TAPS + tap;
+> +			coeff_lut[phase_taps] = coeff;
+
+For consistency with the input_width == output_width case, I would
+instead keep phase_taps as phase * IMGU_SCALER_FILTER_TAPS (otherwise
+the same variable has two rather different meanings), and, here, assign
+it in the outer loop.
+
 -- 
-2.17.1
+Stefano
 
 
