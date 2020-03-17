@@ -1,150 +1,115 @@
-X-GM-THRID: 6471286775030480896
-X-Received: by 10.28.135.132 with SMTP id j126mr887287wmd.0.1506713865897;
-        Fri, 29 Sep 2017 12:37:45 -0700 (PDT)
+X-GM-THRID: 6803727344338993152
+X-Received: by 2002:a6b:e806:: with SMTP id f6mr3282579ioh.52.1584438104048;
+        Tue, 17 Mar 2020 02:41:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.141.225 with SMTP id o88ls2058504wrb.3.gmail; Fri, 29 Sep
- 2017 12:37:44 -0700 (PDT)
-X-Received: by 10.223.151.213 with SMTP id t21mr366453wrb.12.1506713864883;
-        Fri, 29 Sep 2017 12:37:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506713864; cv=none;
+Received: by 2002:a5d:85cf:: with SMTP id e15ls3386935ios.7.gmail; Tue, 17 Mar
+ 2020 02:41:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsP6lxkBqT9Nm39mmXpEGBRQLRXylemIquF0H3Sx3SqUpJPFYXWUMvfwUg2MtaLjE9PkzZ7
+X-Received: by 2002:a6b:7c4d:: with SMTP id b13mr3176509ioq.46.1584438102637;
+        Tue, 17 Mar 2020 02:41:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584438102; cv=none;
         d=google.com; s=arc-20160816;
-        b=hyrw59GyxJRFDbhOkdgE69l9z7rzZureGveuf89Xu287xaeNe5oJVSZocqULxKQIsv
-         geZi4r6AP+7FuZOuRoHwJzXr7nIG+CoYpj4b1mpGRhQ3pDDQwkz1g70cNoYc/NiHsJZu
-         lmrB+0D53Vmdz5YNzDcDrLstOXLW/BefgO3dizRZvQxznuOOqgHtzkaeK0ov9tMrz9YK
-         cun6acbJPyntPQm43xbkcUlZIpQxrqrM8nOhZudBib/j+P2/CH8YwOAGm6b9pUiMoAyT
-         MN4pKqZBXos4/uq+B+gRSrEm9JoQVCB1WoF65tZwgDHkBE++ao3MtcG2zZQMIBUz66Cd
-         kRzg==
+        b=Ndh+2H6hH96TH7LEFQrCyt4njFkuJH3h+bL3ztMZDSLrHBwqQmJiBLb0E0OM6bqjvD
+         SepZQwg76v60nZ8c4X01wf1neTD8scPdjc4egKcqUWCCV5mSzR5Ue4/KGuP5NG/ZlJ6l
+         oJGi7413pnu8sLD3Da681MAm/npQ6E2+FDbPfzO9yvqjXh7oRLp2K6i2z9V2TcLAzV+N
+         h770vsfXaeqj/blWxFXbrT3P22bLjRG42WftC3GGB1yRv+UXey4NxtL78jzVoSLI/x7C
+         r2itQpWQiiI45HjQChGM0EsTZ0TInkv7M4auIZw2fro4IiPU37KKmkCi8sMyyPQibovK
+         o8eQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=OaFXurcGBVrVuO8yldsGLsE96Geix15Uo35BKloI7SY=;
-        b=r3s+Hjc+rbAk8PMoo/zxtPU8AfIPysPYnur45bm1rttK+a0lBYS0Q5usHO08yF9zlG
-         TTjSDeVGXE1gUFgJUiyYpEC3MYuUntL6q5MBOErfwtuUnn52n0MMveBJMbETVOP/ROK7
-         mIqW2QQTuyrZzncJtB/sGaeNHGDmCN5NH25UJN3n92/C/BwEqwfp4NAAkKic36FZRiaQ
-         +fZGMFCX26+7L0hOVRSttATSP9WojVrjlmCPAFbygXXbjf9AMJY70rBNiM/p7EfP3QrD
-         frlGJjLvXm0c+tkwCYl3gJLv+TfIPrAAzy6IhA3DynFVuvCM6AC0P6NFy6+9zjGxvBGE
-         9pHw==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=u/DXrOtSdWhWoElJXMYMyJV0n6cFUz/5X6DPF4KxNcM=;
+        b=YJBzPSQDKGWEJ74Lrs3t1cZfJTrH94EC3mvnh6WpzwAnff23KfsYQWuT6XAQgUlaDX
+         M0itvIA8Il4i9WowRd98HglJUkbfnj06vrc3FS4mvifOWfTuAjcH/5YEtRORqdGsF8rq
+         m96tDapAXwpbnCcz6JHB7w/5dur+LWuxNUjbIwudySs6KNmCnby77z7SumLsNie0JMdi
+         npc6vnjHHgMn9s4vTugbqA2gqhlf/Oj+TSCTmMaqxkytOV0em/gbhY4tdX0xIcF8Pzkh
+         0E7dT0CaYs+Tlc3798BIXTf5VQaBPuk1j2ujPUwf7JokBoEQtVaOqF8Pazxr1eQJhTGo
+         dU1g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bdMjk6vK;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id q145si768474wme.4.2017.09.29.12.37.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ndl8V3Th;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id q6si193875ild.2.2020.03.17.02.41.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 12:37:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Tue, 17 Mar 2020 02:41:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bdMjk6vK;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id i131so1345514wma.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Sep 2017 12:37:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=OaFXurcGBVrVuO8yldsGLsE96Geix15Uo35BKloI7SY=;
-        b=bdMjk6vKCRcofzQqwErIssdZvSu52xW4n8Mg9MZ/4Di/CeHJF4mTv5wrNL84MCPpco
-         TP7XfY5V2ooJal2YlZS6FIWPCDo8og92PKt+X1875ULl0FEzqg019ISdg48jRvP2Kown
-         w2emGMo8sarXnmv510VgHQYdBuWg1UGcDH3PDCklk9L+ZMZhK+KvGxa4yRhWHP27OmMT
-         ElAoinosTFYAXYbl8tMCaGuEz6uGWo2s7Twy+TSOeWeeo27CC6D4DThPfzd+vUBlFjnX
-         SG0wDmVO8hG9vDhMcTuceQlx61FEJSYXlDnFg3uBQuZ0OAX+pwP1tJUhZqbHxXUJQ46V
-         WnTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=OaFXurcGBVrVuO8yldsGLsE96Geix15Uo35BKloI7SY=;
-        b=k945stH12MohYmDhj4zSj34I/EUuEc4KWoJLwRustcL6YUrueG2MiDo8LZLhj2Lp6s
-         p1GVnfOOXXjCONQUILEXIQP904MolV1y+/hgTedPTtxdsU3teJXpn5d7+DA34VSBE8eC
-         6+16rWQQtD2s4S5yR9XJ/Bd1NKKL2WKqyhcwZVEb2KR28J2vPEQdM9Y16JUHOu6z06cK
-         mCD2ncSVAo56QAmWyzXpzOv/9UVStFTNAn0F9jRhz4/alXUhKSOnYJgr5fti6CQfora2
-         wl0RdR5bQhve0QdNPm4sKCcoQ/PhcU2Llsb2ofgJFKy7riKew393OueOPpXAWxLafG2a
-         nd1w==
-X-Gm-Message-State: AMCzsaXAOYqTtX9D4Icf+LoInJshogx8TA3/JHzWF2nVzI9FtJHtfnKq
-	sTCO90pkkwiNM6ua1Qrw7Wc=
-X-Google-Smtp-Source: AOwi7QBc5JUbNK5/LPhXRVN1PV6nh9uvHzBGVsIpty7AaNPfHRf1Vc6H7nyR7vDPAi2qxoIKm6+KMA==
-X-Received: by 10.28.23.76 with SMTP id 73mr5546090wmx.70.1506713864440;
-        Fri, 29 Sep 2017 12:37:44 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.83.158.26])
-        by smtp.gmail.com with ESMTPSA id k141sm4175096wmg.15.2017.09.29.12.37.43
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 12:37:43 -0700 (PDT)
-Date: Fri, 29 Sep 2017 22:37:42 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: rtl8188eu: Place the constant on the right side in
- comparisons
-Message-ID: <20170929193742.GA10959@domino-MS-16Y1>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ndl8V3Th;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584438101;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=u/DXrOtSdWhWoElJXMYMyJV0n6cFUz/5X6DPF4KxNcM=;
+	b=Ndl8V3ThbdNSrHeYKSrSYybC4cq0bOW3aT2lXJK0ljhVzKClQmEY4hVzb4abBd2cefOIgK
+	/qPzEmft8hI3BUkr1S070FmlKJJGq2SdVz+ALKcSqaIPydgFdCGOU+RWqFWjVob+apDvgN
+	01/OZQRBUJfde7y6wb3YmhbD/WUGsGc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-152-Prd_TaJQPpi5OMiMTA0v1Q-1; Tue, 17 Mar 2020 05:41:38 -0400
+X-MC-Unique: Prd_TaJQPpi5OMiMTA0v1Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A05E3A2380;
+	Tue, 17 Mar 2020 09:41:23 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 688B65C21B;
+	Tue, 17 Mar 2020 09:41:20 +0000 (UTC)
+Date: Tue, 17 Mar 2020 10:41:15 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Veera <vkor@vkten.in>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Larry Finger
+ <Larry.Finger@lwfinger.net>, Florian Schilhabel
+ <florian.c.schilhabel@googlemail.com>, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8712: Better Fix for
+ long lines in Kconfig help
+Message-ID: <20200317104115.49725ecb@elisabeth>
+In-Reply-To: <20200317015728.GA5977@lily.local>
+References: <20200313161631.GA2376@tulip.local>
+	<20200317015008.66b7d14c@elisabeth>
+	<20200317015728.GA5977@lily.local>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Move constant to the right side of comparison operator.
+On Tue, 17 Mar 2020 07:27:30 +0530
+Veera <vkor@vkten.in> wrote:
 
-Issue found by checkpatch.pl
+> On Tue, Mar 17, 2020 at 01:50:08AM +0100, Stefano Brivio wrote:
+> > Hi Veera,
+> > 
+> > Note that who reads the commit title won't know in which way this is
+> > "better" than v1, because v1 isn't tracked by git. I think the "Better"
+> > part should be omitted in the title. Looks good to me otherwise, just
+> > one minor comment:
+> >   
+> 
+> Okay.
+> 
+> The "better" thing is coming from "Outreachyfirstpatch - Linux Kernel
+> Newbies.html" page.
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+I've seen that, I guess that was just a quick example to show a v2 with
+a different subject. Maybe it's actually misleading and it should be
+fixed...
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-index 52f31c7..22f4e9f 100644
---- a/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_mlme_ext.c
-@@ -3999,7 +3999,7 @@ static void init_channel_list(struct adapter *padapter, struct rt_channel_info *
- 				continue;
- 
- 			if ((0 == (padapter->registrypriv.cbw40_enable & BIT(1))) &&
--			    ((BW40MINUS == o->bw) || (BW40PLUS == o->bw)))
-+			    ((o->bw == BW40MINUS) || (o->bw == BW40PLUS)))
- 				continue;
- 
- 			if (reg == NULL) {
-@@ -4030,7 +4030,7 @@ static u8 init_channel_set(struct adapter *padapter, u8 ChannelPlan, struct rt_c
- 
- 	if (padapter->registrypriv.wireless_mode & WIRELESS_11G) {
- 		b2_4GBand = true;
--		if (RT_CHANNEL_DOMAIN_REALTEK_DEFINE == ChannelPlan)
-+		if (ChannelPlan == RT_CHANNEL_DOMAIN_REALTEK_DEFINE)
- 			Index2G = RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE.Index2G;
- 		else
- 			Index2G = RTW_ChannelPlanMap[ChannelPlan].Index2G;
-@@ -4040,14 +4040,14 @@ static u8 init_channel_set(struct adapter *padapter, u8 ChannelPlan, struct rt_c
- 		for (index = 0; index < RTW_ChannelPlan2G[Index2G].Len; index++) {
- 			channel_set[chanset_size].ChannelNum = RTW_ChannelPlan2G[Index2G].Channel[index];
- 
--			if ((RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN == ChannelPlan) ||/* Channel 1~11 is active, and 12~14 is passive */
--			    (RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN_2G == ChannelPlan)) {
-+			if ((ChannelPlan == RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN) ||/* Channel 1~11 is active, and 12~14 is passive */
-+			    (ChannelPlan == RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN_2G)) {
- 				if (channel_set[chanset_size].ChannelNum >= 1 && channel_set[chanset_size].ChannelNum <= 11)
- 					channel_set[chanset_size].ScanType = SCAN_ACTIVE;
- 				else if ((channel_set[chanset_size].ChannelNum  >= 12 && channel_set[chanset_size].ChannelNum  <= 14))
- 					channel_set[chanset_size].ScanType  = SCAN_PASSIVE;
--			} else if (RT_CHANNEL_DOMAIN_WORLD_WIDE_13 == ChannelPlan ||
--				   RT_CHANNEL_DOMAIN_2G_WORLD == Index2G) {/*  channel 12~13, passive scan */
-+			} else if (ChannelPlan == RT_CHANNEL_DOMAIN_WORLD_WIDE_13 ||
-+				   Index2G == RT_CHANNEL_DOMAIN_2G_WORLD) {/*  channel 12~13, passive scan */
- 				if (channel_set[chanset_size].ChannelNum <= 11)
- 					channel_set[chanset_size].ScanType = SCAN_ACTIVE;
- 				else
-@@ -4767,7 +4767,7 @@ void linked_status_chk(struct adapter *padapter)
- 			if (pmlmeinfo->FW_sta_info[i].status == 1) {
- 				psta = pmlmeinfo->FW_sta_info[i].psta;
- 
--				if (NULL == psta)
-+				if (psta == NULL)
- 					continue;
- 				if (pmlmeinfo->FW_sta_info[i].rx_pkt == sta_rx_pkts(psta)) {
- 					if (pmlmeinfo->FW_sta_info[i].retry < 3) {
+> Should I make a new patch revision and send again?
+
+Yes, thanks.
+
 -- 
-2.7.4
+Stefano
 
 
