@@ -1,115 +1,136 @@
-X-GM-THRID: 6334597152345423872
-X-Received: by 10.200.49.244 with SMTP id i49mr5508843qte.35.1474888332199;
-        Mon, 26 Sep 2016 04:12:12 -0700 (PDT)
+X-GM-THRID: 6805647461769543680
+X-Received: by 2002:a1c:7405:: with SMTP id p5mr5516409wmc.73.1584564225382;
+        Wed, 18 Mar 2020 13:43:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.203.7 with SMTP id u7ls2311020itg.16.canary; Mon, 26 Sep
- 2016 04:12:08 -0700 (PDT)
-X-Received: by 10.107.156.80 with SMTP id f77mr5555719ioe.94.1474888328297;
-        Mon, 26 Sep 2016 04:12:08 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id f12si4143937pfk.0.2016.09.26.04.12.08
+Received: by 2002:a5d:6748:: with SMTP id l8ls4322278wrw.2.gmail; Wed, 18 Mar
+ 2020 13:43:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt3SD5BM+JM089nWD/pTv2s3x63o1X/1T0nHTwLNv6317FkgCdcr16IKc1p5pHggFbb1BzM
+X-Received: by 2002:a05:6000:1212:: with SMTP id e18mr8020442wrx.371.1584564223942;
+        Wed, 18 Mar 2020 13:43:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584564223; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sU+O9NjNFHJ2V+lnB2IdFNoCANpIoaU2H4Qi3w00juhiOcs6ufEPdKqmKV9dMD/TkO
+         vogVvbWdn97L6rsaT6rxzP2GUTD6G12TamtgR4xL6Q9CfM6esKygTDlx9DHtmdhFbcUJ
+         ieWpGmHnbgyIPG+n5/s7kDcCj+ppdvRxz1K8YdJ538NRP3c8kt+KNpLPNsNJ+j7x9lNL
+         kymz7k2KeafL1/NsXP8r7dwjSNSS6lL/2oBDFtgKg3ia/OeIBwV8MIE300RvCOofwPbe
+         t1oHjRRcq1CUE9BIgshMdaiXH5tyuRSNAck7b4+3ka9SBTV7qGdfGeWn3BsQZynQjqxL
+         r9rA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=2pumth9j86R9jJ+g6t/lG+7jEJWl8vnbTauv6BcqoWY=;
+        b=V28VFwyIbdhaaTshwiXK6cd/AmUV4m1pBAeasOCZSVjkDAWWgIXOft2mbvfcU/dOtp
+         BOceAGXOZSeOtX47Wo32qP1Ha0R54Gp+FAPsdKQdnC1Z21QR1Go587KYFHu7x/JSI8Zm
+         Mz5vQ6iDJoVC3wNQwOkzhaoGjE3Sd0tVAaKeDb90b96ZV053KPtZr85Y1L9N1GiyEK+9
+         bc/3ZUvnRHdVQnU4aNlvL594ojaaLmqBEH11DEYSPj70N1Pw8VACffL5zdOZI4menpwO
+         26+mx60a7zWtWBD38KIsrqokS8NN91mS0xZPs5sUf2vQ3AaNkk7m4+redfZxISTYR20g
+         Irmw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a18si3952wra.0.2020.03.18.13.43.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 04:12:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Wed, 18 Mar 2020 13:43:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id j3so646513paj.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Sep 2016 04:12:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=dkheZAjM3oblATCbbEOy6YEZ+u2XDgpRjm5qYjt0N+w=;
-        b=lVEo55lx87B1n6cVeshXQJKISuRipVf4aJ0goEYHplTkTmkuF7N/sfhuhkNw6QePqd
-         gz0fJW7iMhdLemZM5cEZY83Gm5vCNTBUEnDBjiaS8qx3xi0BADaTMhz+bzukVj5RjP/d
-         KvFgHcYMhkNu7/NdIcR005/fE365XSFs7wAkH8DWmGwv4qIZpvwBM5vUd6oWZ55VtfCk
-         x6haulGGDgsXMa3Ve32HThj9uAaYzKN95cu2coqumvxBZ8PSd3DvVhR2gLZsUo/aT6Xd
-         MMdxDejZJ/ouXxiBy1ssjz48/b8IbxuzuC5yRygs9BR+hRxRiZJx6XUIFn8fM1YwlvSJ
-         NRhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=dkheZAjM3oblATCbbEOy6YEZ+u2XDgpRjm5qYjt0N+w=;
-        b=KRK69ByQkQOPWcHtKOSa4LhQ/KZLD7ZtJVap8Pib97INVxDyknqnkIkTAI5quSErh/
-         U8AePo4mTQq41GRaDxuNcaJnD4nvYPv50v7EJiqWzXtvZgYppCl5eSbkkEFCvjS8wAIv
-         3TvCqSoMML1oIwQpeIH1YsI+eJLum4X5zm/KnonwNtnqIQOURYcYlxIYPWs3LMPFo4NJ
-         Hvhj/Thn2/JyXZTLLP909DHAqZ4z7GlB8l1WFaiuIlGIOOBKh53mJVSpb4LYdZfq2EqI
-         P+2PovKTt6SkisqvIaltI4znfEVH3JZMUixs9kWy17F66Yq+a3PfCQkA8NcatBUkG+GD
-         CUbQ==
-X-Gm-Message-State: AE9vXwO19Ev9y5H9UTFPlOrMiisNXxIrvtfsbaZ+VO+OSl3Y43eHYDQoyiA9JoIkVGeJTQ==
-X-Received: by 10.66.160.72 with SMTP id xi8mr37671188pab.78.1474888328096;
-        Mon, 26 Sep 2016 04:12:08 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id b125sm30268323pfg.36.2016.09.26.04.12.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 04:12:07 -0700 (PDT)
-Date: Mon, 26 Sep 2016 16:42:03 +0530
-From: Namrata A Shettar <namrataashettar@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Rithvik Patibandla <rithvikp98@gmail.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: vt6656: Remove unneccesary return variable
-Message-ID: <20160926111158.GA9984@namrata-HP-Pavilion-g6-Notebook-PC>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,568,1574118000"; 
+   d="scan'208";a="342856612"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Mar 2020 21:43:43 +0100
+Date: Wed, 18 Mar 2020 21:43:42 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Sam Muhammed <jane.pnx9@gmail.com>
+cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: qlge: Elemenate anomalies
+ in driver's coding style.
+In-Reply-To: <40b9ab7772e7c2de78e2c674b1ecda2f94fb8ecd.camel@gmail.com>
+Message-ID: <alpine.DEB.2.21.2003182141030.2979@hadrien>
+References: <20200318202747.4218-1-jane.pnx9@gmail.com>  <alpine.DEB.2.21.2003182131510.2979@hadrien> <40b9ab7772e7c2de78e2c674b1ecda2f94fb8ecd.camel@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Remove uneccessary return variable 'ret'. Return value directly.
 
-Signed-off-by: Namrata A Shettar <namrataashettar@gmail.com>
----
- drivers/staging/vt6656/card.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index 53b469c..33de99a 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -708,8 +708,6 @@ void vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
-  */
- int vnt_radio_power_off(struct vnt_private *priv)
- {
--	int ret = true;
--
- 	switch (priv->rf_type) {
- 	case RF_AL2230:
- 	case RF_AL2230S:
-@@ -728,7 +726,7 @@ int vnt_radio_power_off(struct vnt_private *priv)
- 
- 	vnt_mac_reg_bits_on(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
- 
--	return ret;
-+	return true;
- }
- 
- /*
-@@ -745,8 +743,6 @@ int vnt_radio_power_off(struct vnt_private *priv)
-  */
- int vnt_radio_power_on(struct vnt_private *priv)
- {
--	int ret = true;
--
- 	vnt_exit_deep_sleep(priv);
- 
- 	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
-@@ -765,7 +761,7 @@ int vnt_radio_power_on(struct vnt_private *priv)
- 
- 	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
- 
--	return ret;
-+	return true;
- }
- 
- void vnt_set_bss_mode(struct vnt_private *priv)
--- 
-2.7.4
+On Wed, 18 Mar 2020, Sam Muhammed wrote:
 
+> On Wed, 2020-03-18 at 21:33 +0100, Julia Lawall wrote:
+> >
+> > On Wed, 18 Mar 2020, Sam Muhammed wrote:
+> >
+> > > This driver maintains a coding style of declaring variables
+> > > and assigning values to them in separate lines.
+> > > There are anomalies, elemenate them.
+> >
+> > I think I was not clear.  When I suggested to do only one thing, rather
+> > than starting with a series, I meant that you should do one or the other
+> > of the things in your previous patch, but not both.  If you make multiple
+> > changes to a file, they must be in a series, or Greg won't know in what
+> > order to apply them.
+> >
+> > julia
+> >
+> >
+>
+> Oh, so this patch should have this one _logical_ change only?
+> so i resend as v2? or resend as a new patch?
+> sorry it's a bit confusing.
+
+You have sent two patches on the same file.  Each one indeed does have
+only one change.  But since they are affecting the same file, to submit
+both of them, you have to make a series, to indicate the other in which
+they are applied.
+
+Since this is your first patch, I would suggest to forget about this patch
+and forget about the series, and just get the patch with the blank lines
+accepted.
+
+That one needs to be a v3 now, because you have sent two previous
+versions.  As compared to v2 you are just adding the versioning
+information.  As compared to v1 you are dropping the declaration splitting
+change to only do one thing.
+
+julia
+
+
+>
+> Sam
+>
+> > >
+> > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+> > > ---
+> > >  drivers/staging/qlge/qlge_dbg.c | 3 ++-
+> > >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+> > > index 1795533cbd3a..8bf592812518 100644
+> > > --- a/drivers/staging/qlge/qlge_dbg.c
+> > > +++ b/drivers/staging/qlge/qlge_dbg.c
+> > > @@ -496,7 +496,8 @@ static int ql_get_mpi_shadow_regs(struct ql_adapter *qdev, u32 *buf)
+> > >  static int ql_get_mpi_regs(struct ql_adapter *qdev, u32 *buf,
+> > >  			   u32 offset, u32 count)
+> > >  {
+> > > -	int i, status = 0;
+> > > +	int i;
+> > > +	int status = 0;
+> > >
+> > >  	for (i = 0; i < count; i++, buf++) {
+> > >  		status = ql_read_mpi_reg(qdev, offset + i, buf);
+> > > --
+> > > 2.20.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200318202747.4218-1-jane.pnx9%40gmail.com.
+> > >
+>
+>
+>
 
