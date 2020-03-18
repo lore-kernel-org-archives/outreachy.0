@@ -1,83 +1,149 @@
 X-GM-THRID: 6805641341994795008
-X-Received: by 2002:a25:1e8a:: with SMTP id e132mr2701520ybe.425.1584606921599;
-        Thu, 19 Mar 2020 01:35:21 -0700 (PDT)
+X-Received: by 2002:a1c:e1c3:: with SMTP id y186mr3828872wmg.151.1584563079592;
+        Wed, 18 Mar 2020 13:24:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:c102:: with SMTP id r2ls541254ybf.5.gmail; Thu, 19 Mar
- 2020 01:35:20 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuEYk0eJgznd1N3yC0JUrIk4+HKWY/keFiaL85fHq9NasGRGP/QzOyYuFX9RPwBQo+6TDr4
-X-Received: by 2002:a25:b49:: with SMTP id 70mr2966814ybl.138.1584606920187;
-        Thu, 19 Mar 2020 01:35:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584606920; cv=none;
+Received: by 2002:a7b:c771:: with SMTP id x17ls1405926wmk.2.canary-gmail; Wed,
+ 18 Mar 2020 13:24:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvaEsZoLiz3DmtSqHyD5KM4GVx70UyjphyBRxaQJPc7/gVJnzmZCLxotOIw3Sfbd7TcDt1t
+X-Received: by 2002:a1c:7405:: with SMTP id p5mr5439133wmc.73.1584563077987;
+        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584563077; cv=none;
         d=google.com; s=arc-20160816;
-        b=gPTyk4cRYQiBHFB0T7fFiZbf67/VnoWB9Ia2ogji+D6z4XvdmiB8XaGk0+GVngX+Ss
-         j8IYvgURScp+YngwE3WQuNFMBGEvD4xFY1EK9W8+YJSuNbV7WkzEhD3pc1+12c9lRfgK
-         yTowTGymKDIGzMMJ4lI0O3OSVjtDkbevXz2CbbWxuEBY85MhSUhmFlcbeVDA00VWhkMj
-         41DdoJCt4iMZLeub9yDOx+914P8jqxoCpv9ic/vyEt5+jVgFIc/pFvc4kcmRCMV+XDY9
-         D7kcyupJb3vLIse33AGA9B6r7JSMNpBvq1LfpttlsCZGrBo1rd/NJF7lB2eU3mG2wqAG
-         x4tA==
+        b=DIShIc9/EfdU2/5ISxCZCmY3KqsJnUfOyVoQ+Qfoknxy5ifU9kIKe5VS+UxU9XhCkK
+         wIUw9KxvxCBSDOGvKbzopBf7u2HvseNHspAX+jVudAps+H1p4po5FQMPRzK/NS2exCLw
+         DaCUSXbk2USJQ8UjVD7ySrfYuN+9xDbOLwDU7rogVvBtjGvGpYpFINhfE1P471zSFsf5
+         S5rAOVRWTzrCcIDnCux0SJI42X+tuxUt45U1A4GLOg8hPtWgl1ThNHS85/zfzA0hJz1X
+         KlEGj/9SPP6EJ0OJ1TxHNHcIYzFFg9DCCoLW2E5k9mZyot8GOp0oF34bGaUNI9HU4hMz
+         h6VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=qPres+guTyfbvzg4+ieIN7jW0wgSHgU0eJa9GkjGTUQ=;
-        b=sElE0FOjhYpd/15R3luat7dVvtdr9862DVJI5VFOf1WGMm9RWE1I0lyxwKUm/MF/s+
-         kA4rHVfxP6DrguyBqv77n39TKOB5Se6F34pU5oTX2ECdcLYBtBXAxBFDtHxqHEV3sB2Y
-         jm6za2hjpyzDMGGgs0vdjYLCpMVsEM1myIWhA7BqcDPtDAJVWfqNQ1AHIRuzSC5QWEMU
-         VQF8SJrEATBpmSUyWAQ/1AmyKq0sDn02fcDZNA6kVX0ssRdBe1xDo9JNbVxbHjPQ6D+d
-         gpHaZf+iA4EgrPmo0IRem9JGsdGE6vg7U9lH2TTkjdniwrV59jtEW31pm7JyAP9Q8qCG
-         /Gnw==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:to:from:subject:message-id:dkim-signature;
+        bh=5fkTC7WgnnsdpZ9j+svcYj/vpyuw7oJgwmCWJGrNgYc=;
+        b=zdV2PteIK1KCTkADBjkj9vWJH/o+zqlhR+k4EJewEloXPc7VFTvK5LxL10Q+tsr4qj
+         JNQ1gLoTUf+PxKpOHeUz+rXTFNXWhhLg8anQgbrBHs1LOdJH7Kv+jwXVELyRMQP0BId1
+         zK3h/YXWklul+lm7vsUeqb/IPnUllF/RM2Cp7JXR9oKEHJQ2O2SGSisKGDpxwg+Aygpy
+         6y70gmEntdmWzSXEUF7FQL7hwotZsFgCcnH+L+5RVU2enMxdiH6VCouC5Em7CzNWdL1k
+         l+vkiu7VG62AYm9GdJeLRzpZfobyCeZgc45uQdOyU9GxSH5FEf7hmJM0mBpaJnTdZK7F
+         TuVQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="gODij/gm";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id 207si53787ybe.5.2020.03.19.01.35.20
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I0jXUzK8;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com. [2a00:1450:4864:20::344])
+        by gmr-mx.google.com with ESMTPS id l13si2394wrp.2.2020.03.18.13.24.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2020 01:35:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) client-ip=2a00:1450:4864:20::344;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="gODij/gm";
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id C41AE20724;
-	Thu, 19 Mar 2020 08:35:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584606919;
-	bh=NC1jPSb9LQ03oe635JpPb9rtB8g1bcFlnhkc2ghHhBQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gODij/gmCXAuDtb52Xtkgg8uww575PMlMtiLanjT4yjx1kzdc4I8DfEMZdlG3+dwh
-	 eRDWzlY5dCpdvatqKEuDd1Qq48KJeDpohPHnsyxJDgPPQIcAeZzIR7Ce3olDsTYOyD
-	 va50FFCpbR4BBVKnKhQFIY6KF4S1fxJ57sXAYCrI=
-Date: Thu, 19 Mar 2020 09:35:16 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Sam Muhammed <jane.pnx9@gmail.com>
-Cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
-	outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I0jXUzK8;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x344.google.com with SMTP id 11so5010050wmo.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:subject:from:to:date:in-reply-to:references:user-agent
+         :mime-version:content-transfer-encoding;
+        bh=5fkTC7WgnnsdpZ9j+svcYj/vpyuw7oJgwmCWJGrNgYc=;
+        b=I0jXUzK850/olGuWzmx5dRT74J7WMVyYO0PhybaKpXZNJOsnnfW9fP3q1hvbvXK4C/
+         F1wwbtlPt8JGLu9LAnQ0dd38zfPtUMTxmx7rzulI+oRoC+wnfDRmh8EjwS0dIdC9TXa3
+         h0A53bVl/vbrh0N35AwNVE1rHRwlbPy3xrM5NUHOu64ptpLskNjspb7392JzpxQYZiUZ
+         RvR4IGrkKMSz+xV3Qlez9OU+YFqN3tcOQ3Zj8TXD+BXctBBvU6OJq8emYtO5Vc2V4gkn
+         mfylEe2miQLjXrzwZu3ewHfMM6sahL6Az1sM4Lp0S0JTUMMvacfDkpa/i7FjJvMsL3B4
+         jS8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=5fkTC7WgnnsdpZ9j+svcYj/vpyuw7oJgwmCWJGrNgYc=;
+        b=jUyWQq0TzZNZK5JLRfIKWLsviVErADorPDtlxGJ3rrNY7v2T5UP3D6337dpwm0Y8tV
+         0fBN4qqW05Whv5aHN1WtmwvMfVu9B7l1f/M0P7ZZJrpcnTaupSKELVR7eMN0QVcXCcos
+         qcjX2jHssCodgW6h/v2HaJlz614psw7wrqSdKSxeyUFOV/x8Rg8PMcqHonN64aEo8bam
+         AmzHmJEVSLTDQj0X1fzLAzJcVu7tI0iVnS7a7vz+7ddh9FnW386tM1c6obMbdo5D4NtR
+         M08oTSSCjTo/5Grb1DQgHRyMPEdJbPLj3vwVAE/uD1Fx7ye7wi9MOgg1YOoVQ5ejqXqf
+         h6tA==
+X-Gm-Message-State: ANhLgQ1l50rEdCbyngsRWkqZTqpP4beM2GFATaQkX6h0yWLxyuuf2XD5
+	2VOfuil7qSQ/3z9YGdEpZ2EKGy72Ls8=
+X-Received: by 2002:a05:600c:2244:: with SMTP id a4mr6588310wmm.147.1584563077617;
+        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from debian ([197.34.71.247])
+        by smtp.gmail.com with ESMTPSA id p16sm5258573wmg.22.2020.03.18.13.24.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
+Message-ID: <40b18761b15e8de56919b3afe61c7caa118f1391.camel@gmail.com>
 Subject: Re: [PATCH] Staging: qlge: Add a blank line after variable
  declaration.
-Message-ID: <20200319083516.GA3492527@kroah.com>
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ outreachy-kernel@googlegroups.com
+Date: Wed, 18 Mar 2020 16:24:32 -0400
+In-Reply-To: <20200318200352.3497-1-jane.pnx9@gmail.com>
 References: <20200318200352.3497-1-jane.pnx9@gmail.com>
- <40b18761b15e8de56919b3afe61c7caa118f1391.camel@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <40b18761b15e8de56919b3afe61c7caa118f1391.camel@gmail.com>
+Content-Transfer-Encoding: 7bit
 
-On Wed, Mar 18, 2020 at 04:24:32PM -0400, Sam Muhammed wrote:
-> On Wed, 2020-03-18 at 16:03 -0400, Sam Muhammed wrote:
-> > Cleanup checkpatch.pl WARNINGS: Missing a blank line after declarations.
-> > 
-> > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
-> > ---
-> > ---
+On Wed, 2020-03-18 at 16:03 -0400, Sam Muhammed wrote:
+> Cleanup checkpatch.pl WARNINGS: Missing a blank line after declarations.
 > 
-> duplicate :(, should i resend or revision?
+> Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+> ---
+> ---
 
-I need a v2 of this please.
+duplicate :(, should i resend or revision?
 
-thanks,
+>  drivers/staging/qlge/qlge_dbg.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+> index 737d6abd8076..1795533cbd3a 100644
+> --- a/drivers/staging/qlge/qlge_dbg.c
+> +++ b/drivers/staging/qlge/qlge_dbg.c
+> @@ -497,6 +497,7 @@ static int ql_get_mpi_regs(struct ql_adapter *qdev, u32 *buf,
+>  			   u32 offset, u32 count)
+>  {
+>  	int i, status = 0;
+> +
+>  	for (i = 0; i < count; i++, buf++) {
+>  		status = ql_read_mpi_reg(qdev, offset + i, buf);
+>  		if (status)
+> @@ -1330,6 +1331,7 @@ static void ql_dump_intr_states(struct ql_adapter *qdev)
+>  {
+>  	int i;
+>  	u32 value;
+> +
+>  	for (i = 0; i < qdev->intr_count; i++) {
+>  		ql_write32(qdev, INTR_EN, qdev->intr_context[i].intr_read_mask);
+>  		value = ql_read32(qdev, INTR_EN);
+> @@ -1415,6 +1417,7 @@ void ql_dump_routing_entries(struct ql_adapter *qdev)
+>  {
+>  	int i;
+>  	u32 value;
+> +
+>  	i = ql_sem_spinlock(qdev, SEM_RT_IDX_MASK);
+>  	if (i)
+>  		return;
+> @@ -1565,6 +1568,7 @@ void ql_dump_stat(struct ql_adapter *qdev)
+>  void ql_dump_qdev(struct ql_adapter *qdev)
+>  {
+>  	int i;
+> +
+>  	DUMP_QDEV_FIELD(qdev, "%lx", flags);
+>  	DUMP_QDEV_FIELD(qdev, "%p", vlgrp);
+>  	DUMP_QDEV_FIELD(qdev, "%p", pdev);
+> @@ -1650,6 +1654,7 @@ void ql_dump_tx_ring(struct tx_ring *tx_ring)
+>  void ql_dump_ricb(struct ricb *ricb)
+>  {
+>  	int i;
+> +
+>  	pr_err("===================== Dumping ricb ===============\n");
+>  	pr_err("Dumping ricb stuff...\n");
+>  
 
-greg k-h
+
 
