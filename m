@@ -1,117 +1,128 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:a17:90a:25c8:: with SMTP id k66mr5156290pje.90.1584544769732;
-        Wed, 18 Mar 2020 08:19:29 -0700 (PDT)
+X-Received: by 2002:a63:fc52:: with SMTP id r18mr4932506pgk.96.1584544723552;
+        Wed, 18 Mar 2020 08:18:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ff15:: with SMTP id f21ls13918652plj.0.gmail; Wed,
- 18 Mar 2020 08:19:28 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuVfS/iIzbgK+UD9X9ERp2B9jFKe09ZuTPoynFIUuQ6OCtX+x1cLcZlphXYznQUasEsvto9
-X-Received: by 2002:a17:902:bd89:: with SMTP id q9mr4527646pls.236.1584544768292;
-        Wed, 18 Mar 2020 08:19:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584544768; cv=none;
+Received: by 2002:a63:150:: with SMTP id 77ls13127458pgb.0.gmail; Wed, 18 Mar
+ 2020 08:18:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vshGEdhT+J0ZBrJ+w7GcFk5A4FfX7ECltPR4tgmhGwlshCQBsaia7UvWa+Mz0sccN4d/MOA
+X-Received: by 2002:a62:3888:: with SMTP id f130mr4702563pfa.141.1584544721929;
+        Wed, 18 Mar 2020 08:18:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584544721; cv=none;
         d=google.com; s=arc-20160816;
-        b=dWdxL4PoeoRt0CAlb5C+hqk6gqwFUprC7jTooaLdBNiJU8mPP+hW0r0tl2MHaacx+9
-         4pbnE4EptqVcKcpMIEby8MC42BfYvdJqOzw3k1JLHome1uN5vFVgofTBwelzTPWNreM5
-         XyLFAzzAZb0Y1Cj3t7/lkm50B2UMeKKq2OK5fJX2rA6cgzX/ty/jM/sjssO3JVcBmJ6d
-         dNuofDviwsOHI/h80JZK6xgctAZ2pWgGZJB058WHQZ5LW9nXhdvNqk5wTFQdDEnn85Uh
-         l3AjT5eUgCNfMEq8an6NDLXNWdcKZLHuLXQp4ab3ixnfCIuIuOxGRlHjRRzTrOL397W8
-         /Ocw==
+        b=Cuedv2RrrrLqlhN+7j2+DNNrwXDDuSQlcW4dcn++9hCQb++9fDRCxqc+WpVC2guYZP
+         VNfcir2kJ44+2GL0x1KOVCsrK9l9uQAiBHLA9m3+YvHx5wzsy1OXwprWdHafnpnUhgh2
+         UbsHrFgDDbyUzXQLi6iFhFTFFrZfsuuJaxPVDk1QPBPzyRyMrkFoMZ8lKQmYovBEGaP/
+         5FPR84Go7uwuWlqUW3ze3zjmC36zMV6J3TZdClTqUk8a3h8/o+DIm/ocAVO+3pM10eTN
+         3t/p9pQeCK8059qdbV3xbnV68QcPgph/ccuv61Qs6zNVWN8p60INKGHQq1sn8F9dtEPp
+         jBvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=MGXWr5nkEn4FRkRgvOst+a0HwmxSRb80bdHPdkX2wsI=;
-        b=MRjgNsRUAGijY3X/4H1hYNJLO8sCeh9g2ge+EBx0VHbp9J/3QAyvSv92v8Dpp5bjG1
-         L4doWFJ2SmAImu+p8XYciKNRi0c/anIfqGaSPxpJ4EmPQ1xnHPa6u55Ek8f+sJ3xMigS
-         usuvP7RsiYP4Tbl1jhhidNdK8lFyHLyQgWV0sFFFwZVUSqYTugNeX8AXcts+3iQtIwxF
-         UfoOB+aOKQkxvtNa0QU6Lx/YyUe+/klAkiKvJt/cCFaZjSn6eL1BG/AYs5Cwr4eyf1ie
-         nQOQ9rgtlg5ZqctoIAiTYBLbVFGpLjbGkqmRvRG80gn+C/Cgmz3LeL33Kgrtu/9F6r1j
-         59Sw==
+        bh=0JyljRdiFJWpnUunqcsUJ7qa0jaNLsCU3QGf/F0TO2w=;
+        b=E9KdkyWVVb59JFThar7Vj5uYYDFL0FCvICoZyP4APDVabkk/CipSVotaz7gUHVNQxF
+         OWlnjvVVuZZulq8G5Qug83WVl57V2Ah2AeQ8KFvX1vRXQ8+Rjn/XF96EnqpvJI6n1PiM
+         CIus1pEKdhI6uCcTanjE5QrdJoJGuu8c0fJc5oAUSd3JGpKHr710J4LZA7OInkkanDfn
+         v9XM6jYXAYlcYxhLlKD/7TdZyWBELb5sjBmjRlODDYOGsMjqgrxJLt+Y3e27XzjHxlfo
+         anA7Vt0cH/PXOwH96lUBODuYrQMw00Sqd+ihrxDjOoU1+zvS3DhAdseFPswDmJEFeJX3
+         rGag==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="DM/UFrVy";
+       dkim=pass header.i=@kernel.org header.s=default header.b=AwWNdmn5;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id q66si439521pfq.3.2020.03.18.08.19.28
+        by gmr-mx.google.com with ESMTPS id a141si293294pfd.5.2020.03.18.08.18.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 Mar 2020 08:19:28 -0700 (PDT)
+        Wed, 18 Mar 2020 08:18:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="DM/UFrVy";
+       dkim=pass header.i=@kernel.org header.s=default header.b=AwWNdmn5;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id B3D2320757;
-	Wed, 18 Mar 2020 15:19:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id 1D05820770;
+	Wed, 18 Mar 2020 15:18:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584544768;
-	bh=O3sFf4pylIltl1MSb6cyEp6cT9cnjfUiA8TDrdSTS5U=;
+	s=default; t=1584544721;
+	bh=F859fJ/sB++ZOHd4fXzaKvxObov5lRC7ze365VuxEY8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DM/UFrVygjTBJBMWDPpMMgTzLnEXUrTUN0T7Yvhv9Yh27+wOP/7PKaTugtsbLmabQ
-	 b2gpva4FDOSoZ1V1s9vQdy5aM98iCNtfQnYemBC98DnJh0JId4UPG7OzD8UQ9pIu/g
-	 Jpklxdn+LABdS8Qhfv9dP8trklj6bvxK9NHfrmLk=
-Date: Wed, 18 Mar 2020 16:19:24 +0100
+	b=AwWNdmn5mmGh0ZvImbWDnv3Hkh70cweWqZaVOkg+dslhUTa55JL2rf0tQORnhleYi
+	 qz2izubutup4j2ksBypOptievKIVcVxFa20LtuCZDMOLGKMCpeJDtIt1JKOL8z74DY
+	 SN9yMlbXqTw9YtaLn87CzubEts5qdi7XUuzQLvcM=
+Date: Wed, 18 Mar 2020 16:18:39 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Lars-Peter Clausen <lars@metafoo.de>
-Cc: Deepak R Varma <mh12gx2825@gmail.com>,
-	outreachy-kernel@googlegroups.com, daniel.baluta@gmail.com,
-	kieran.bingham@ideasonboard.com, Michael.Hennerich@analog.com,
-	stefan.popa@analog.com, jic23@kernel.org, knaack.h@gmx.de,
-	pmeerw@pmeerw.net, linux-iio@vger.kernel.org
-Subject: Re: [PATCH 2/2] staging: iio: adc: ad7280a: Add spaces around
- operators
-Message-ID: <20200318151924.GB2862853@kroah.com>
+To: DEEPAK VARMA <mh12gx2825@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, daniel.baluta@gmail.com,
+	kieran.bingham@ideasonboard.com, lars@metafoo.de,
+	Michael.Hennerich@analog.com, stefan.popa@analog.com,
+	jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net,
+	linux-iio@vger.kernel.org
+Subject: Re: [PATCH 1/2] staging: iio: adc: ad7192: Reformat lines crossing
+ 80 columns
+Message-ID: <20200318151839.GA2862853@kroah.com>
 References: <cover.1584505215.git.mh12gx2825@gmail.com>
- <6703668c512dd665a2299a1f5bf14d99262314f8.1584505215.git.mh12gx2825@gmail.com>
- <20200318060038.GB1594471@kroah.com>
- <35afdc4b-bd59-7851-aa4f-3d8807668931@metafoo.de>
+ <50419988d636c90511a07da256c91aa3b3e33bff.1584505215.git.mh12gx2825@gmail.com>
+ <20200318060004.GA1594471@kroah.com>
+ <20200318151244.GB22841@deeUbuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <35afdc4b-bd59-7851-aa4f-3d8807668931@metafoo.de>
+In-Reply-To: <20200318151244.GB22841@deeUbuntu>
 
-On Wed, Mar 18, 2020 at 04:12:28PM +0100, Lars-Peter Clausen wrote:
-> On 3/18/20 7:00 AM, Greg KH wrote:
-> > On Wed, Mar 18, 2020 at 09:58:13AM +0530, Deepak R Varma wrote:
-> > > Add spaces around operator symbols to improve readability. Warning
-> > > flagged by checkpatch script.
+On Wed, Mar 18, 2020 at 08:42:45PM +0530, DEEPAK VARMA wrote:
+> On Wed, Mar 18, 2020 at 07:00:04AM +0100, Greg KH wrote:
+> > On Wed, Mar 18, 2020 at 09:56:59AM +0530, Deepak R Varma wrote:
+> > > Macro arguments are computed at the time of macro invocation. This makes
+> > > the lines cross 80 column width. Add variables to perform the
+> > > calculations before hand and use these new variable in the macro calls
+> > > instead.
+> > > 
+> > > Also re-indent enum members to address checkpatch warning / check messages.
+> > 
+> > When you say "also" in a changelog description, that's a huge hint the
+> > patch needs to be broken up.
+> > 
+> > And that is what needs to happen here.
+> > 
 > > > 
 > > > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 > > > ---
-> > >   drivers/staging/iio/adc/ad7280a.c | 4 ++--
-> > >   1 file changed, 2 insertions(+), 2 deletions(-)
+> > >  drivers/staging/iio/adc/ad7192.c | 15 ++++++++-------
+> > >  1 file changed, 8 insertions(+), 7 deletions(-)
 > > > 
-> > > diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
-> > > index 19a5f244dcae..34ca0d09db85 100644
-> > > --- a/drivers/staging/iio/adc/ad7280a.c
-> > > +++ b/drivers/staging/iio/adc/ad7280a.c
-> > > @@ -825,14 +825,14 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
-> > >   }
-> > >   static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
-> > > -			     in_voltage-voltage_thresh_low_value,
-> > > +			     in_voltage - voltage_thresh_low_value,
-> > >   			     0644,
-> > >   			     ad7280_read_channel_config,
-> > >   			     ad7280_write_channel_config,
-> > >   			     AD7280A_CELL_UNDERVOLTAGE);
-> > >   static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
-> > > -			     in_voltage-voltage_thresh_high_value,
-> > > +			     in_voltage - voltage_thresh_high_value,
-> > >   			     0644,
-> > >   			     ad7280_read_channel_config,
-> > >   			     ad7280_write_channel_config,
+> > > diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+> > > index bf3e2a9cc07f..0265f6607d75 100644
+> > > --- a/drivers/staging/iio/adc/ad7192.c
+> > > +++ b/drivers/staging/iio/adc/ad7192.c
+> > > @@ -156,8 +156,8 @@
+> > >   */
+> > >  
+> > >  enum {
+> > > -   AD7192_SYSCALIB_ZERO_SCALE,
+> > > -   AD7192_SYSCALIB_FULL_SCALE,
+> > > +	AD7192_SYSCALIB_ZERO_SCALE,
+> > > +	AD7192_SYSCALIB_FULL_SCALE,
 > > 
-> > Did you try building this code?
+> > Because this has nothing to do with the subject, please make it a
+> > separate patch.
 > > 
-> > It catches everyone...
 > 
-> The problem is it builds. The token is stringyfied and
-> "in_voltage - voltage_thresh_high_value" is a valid string.
+> Okay. Got your point. I was thinking since this is a clean up patch I can include both
+> the changes for the same file in a single patch. No problem; I will
+> correct and send in a v2.
 
-Ah, I thought it used to break the build when it happened.  Oh well,
-it's still a great "trick" to see if people understand C or not :)
+From my patch bot which would have normally triggered on this patch had
+it not been part of the outrechy project:
 
-thanks,
 
-greg k-h
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
+
+
 
