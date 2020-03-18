@@ -1,165 +1,106 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:ac2:4145:: with SMTP id c5mr1208543lfi.71.1584601392215;
-        Thu, 19 Mar 2020 00:03:12 -0700 (PDT)
+X-Received: by 2002:a02:6c50:: with SMTP id w77mr378516jab.39.1584571875712;
+        Wed, 18 Mar 2020 15:51:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:b4e5:: with SMTP id s5ls287876ljm.6.gmail; Thu, 19 Mar
- 2020 00:03:10 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv+kTvK6NjoyqQI8xyjnwKhMe8zzf6gkjhjTJNKgcuy2WXOLrqLD3xD/XE9jWO2fBkSn0dv
-X-Received: by 2002:a2e:90d1:: with SMTP id o17mr1170305ljg.284.1584601390301;
-        Thu, 19 Mar 2020 00:03:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584601390; cv=none;
+Received: by 2002:a5d:85cf:: with SMTP id e15ls76537ios.7.gmail; Wed, 18 Mar
+ 2020 15:51:14 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtkrWijn/c+In3LoTr6+LPtGLlwOzKlSif1PsQWubImZVmlkOcL5zW7qL68G7aKmr0wQpkb
+X-Received: by 2002:a6b:d207:: with SMTP id q7mr82218iob.49.1584571874362;
+        Wed, 18 Mar 2020 15:51:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584571874; cv=none;
         d=google.com; s=arc-20160816;
-        b=bOXydAdxB7jvF1fnc2pGD3TsnABY5Go/nRTvkyhGtgVeMXY484TLfdZoKNKL53ZUNN
-         /lCpjdrKrVoug/WUStz3vCz6KE9foC/smmmh1BoWRy/JlOTElzulWv482PHTFyM7Dd4L
-         422THcjmkENHkVOfZrXVZ1HCGhWxbnLGlr0qmMaN+W672JxDdrF0/zIRsVopWmfSuVFY
-         cvDTLhBGARBGZMa/7Of1q8DcyNC28URMUFr0rujXm90tknV2WvAchakdtxe3Fm66rnvc
-         uaSWKY9sY+gcd5RFDoF1iguCTMqBBRCCSEEBfDGFSoVBmyi4I7zJ3x5T/CrQpkRFxMZH
-         5YeQ==
+        b=VOTwI8CaIxsAGIQudJLeIkwyMDYJkOb3RoW3EbybAsTzBoMVk2SGmLCFpIWWxS37qJ
+         fc/EvLbj+SyRy1nhfdyoaj9rWDO2syhJ61JSwSaDJujVmPopWMcRSK6WWJZckmIArpq0
+         dhCn1SFiBJxV7b7FDM0jS7IrqJrf6lmGhnKrgMW+Vx9SLY9nIL8ek6Q/9a+AL98GdLzX
+         YQdANb3THY6KVMYeYaPk3ea3hCkiqT4r6TBN5JuPjtXmrlntkOJVcBQoRj0CdiTWOqHF
+         BNOmwo+r7IYMft1YrqeAlEQGqB+oaa6UR02lLAV5sxm9HZbTU4W9ofjmMh8oKSuLFvZP
+         oG5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=oaAAfC7yIq0Ym2ZdczOWZL8GrEJCgghuB/hk/31cTEc=;
-        b=indwtr2xaqoJV/cKacXe/Yw49g6L6kIMMU0ZHz5OClZDlAGPMZxuOWfClToMAaxUWZ
-         +goSVBVFELYUTim9GS50KnLgyRtHZaGBm4ko9Lwp2egIiZU28BZ8JBD6M0biX33Axby+
-         pWBYX1SzakIdHfY1R20TuLj+6dcZ/64pjXF9vXGPpajpBKMiky1DnHN/0k0NEsIlwB9d
-         Bw1cbbje8xzCs/59i0scP2+ICPIPACPN/n0hPHaVZP292tFSmIi7a1mPVCLDNMXZ20XC
-         ql0WT2NnCHPXqcTGq2MWJq96Sn88lFbEspJ++pD8+0bELmTcVIjeOebpJaThvZifTYDv
-         HOjA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=OsT8y8UZFRfG+HGRJDP8qrLB9AX5R1GNyZr/HRuK41I=;
+        b=tCgVtLhnMMbXEjuGa+58PNHhcxUWqj+HwgozM29LQeGNORhS8wOTiwhbOSQcH3KVge
+         1fcaxZ+FrdlfPcByr04hWgfT7WfOE2F8nFlUdHVtndCCS0YVnVAD6rjPc+ehs8aY4Jvh
+         9kmoX+FW/gsyn7yonzxC+gNan6uj4Y/6oX1t70R3uCxvkEAQn7i4lr8lHGgrDE7q28di
+         fwUmR9QWWYv5yslFayrZSiw3SmIAizO6gjGplAsoz5yiOskuXH7DA/6DQtCD5hy8hM0N
+         9Dna8V6zRnzRmiMvyE6w7inBLuGbhnRdNHLTbvQRqr7b2Kb691pg8Mcpl+1faIWd58Yp
+         o1Gw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id s17si72982ljm.5.2020.03.19.00.03.10
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GGgPeyRu;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id u6si30334ili.3.2020.03.18.15.51.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2020 00:03:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        Wed, 18 Mar 2020 15:51:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.70,570,1574118000"; 
-   d="scan'208";a="342881201"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2020 08:03:08 +0100
-Date: Thu, 19 Mar 2020 08:03:08 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-cc: "mh12gx2825@gmail.com" <mh12gx2825@gmail.com>, 
-    "kieran.bingham@ideasonboard.com" <kieran.bingham@ideasonboard.com>, 
-    "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, 
-    "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>, 
-    "jic23@kernel.org" <jic23@kernel.org>, "knaack.h@gmx.de" <knaack.h@gmx.de>, 
-    "Hennerich, Michael" <Michael.Hennerich@analog.com>, 
-    "lars@metafoo.de" <lars@metafoo.de>, 
-    "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>, 
-    "daniel.baluta@gmail.com" <daniel.baluta@gmail.com>, 
-    "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>
-Subject: Re: [Outreachy kernel] Re: [PATCH 2/2] staging: iio: adc: ad7280a:
- Add spaces around operators
-In-Reply-To: <b471d6102a731d577fff9f2175d4e35217a45e18.camel@analog.com>
-Message-ID: <alpine.DEB.2.21.2003190802450.3010@hadrien>
-References: <cover.1584505215.git.mh12gx2825@gmail.com>  <6703668c512dd665a2299a1f5bf14d99262314f8.1584505215.git.mh12gx2825@gmail.com>  <20200318060038.GB1594471@kroah.com>  <35afdc4b-bd59-7851-aa4f-3d8807668931@metafoo.de>  <20200318151924.GB2862853@kroah.com>
- <20200318162353.GA23226@deeUbuntu>  <alpine.DEB.2.21.2003181727440.2979@hadrien>  <20200318170051.GA23498@deeUbuntu> <b471d6102a731d577fff9f2175d4e35217a45e18.camel@analog.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GGgPeyRu;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584571873;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=OsT8y8UZFRfG+HGRJDP8qrLB9AX5R1GNyZr/HRuK41I=;
+	b=GGgPeyRudFZnZVQ+04MB3UapVHUjqB2djnjAIZidMWCARzNR0Nc27o1bZBxW34kOBA/aQK
+	H/jjqGJnVXrJ42wWay0K5d9WJYYFEBwYH6OBKjOmIpBn4xdU5Wf4SiFdVykvoS6y7ejE2a
+	uH9mRKr5c4PXFRJwhKZr1oH3UrqcQyo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-355-KMlfn90nOf2rypVQW7CKPg-1; Wed, 18 Mar 2020 18:51:09 -0400
+X-MC-Unique: KMlfn90nOf2rypVQW7CKPg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D7ADA107B7D7;
+	Wed, 18 Mar 2020 22:51:07 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C6D4C912AC;
+	Wed, 18 Mar 2020 22:51:03 +0000 (UTC)
+Date: Wed, 18 Mar 2020 23:50:57 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Deepak R Varma <mh12gx2825@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+ daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com, lars@metafoo.de,
+ Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de,
+ pmeerw@pmeerw.net, linux-iio@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 2/3] staging: iio: adc: ad7192:
+ Correct macro names from SYNC to SINC
+Message-ID: <20200318235057.4da5cd5c@elisabeth>
+In-Reply-To: <4eaa90f120a24fd5f08338d0643ee8f215f169b1.1584557481.git.mh12gx2825@gmail.com>
+References: <cover.1584557481.git.mh12gx2825@gmail.com>
+	<4eaa90f120a24fd5f08338d0643ee8f215f169b1.1584557481.git.mh12gx2825@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 
+On Thu, 19 Mar 2020 00:39:13 +0530
+Deepak R Varma <mh12gx2825@gmail.com> wrote:
 
+> Three macros include SYNC in their names which is a typo. Update those
+> names to SINC. Change suggested by Lars-Peter Clausen.
 
-On Thu, 19 Mar 2020, Ardelean, Alexandru wrote:
+There are tags for that, in particular:
 
-> On Wed, 2020-03-18 at 22:30 +0530, DEEPAK VARMA wrote:
-> > [External]
-> >
-> > On Wed, Mar 18, 2020 at 05:28:17PM +0100, Julia Lawall wrote:
-> > >
-> > > On Wed, 18 Mar 2020, DEEPAK VARMA wrote:
-> > >
-> > > > On Wed, Mar 18, 2020 at 04:19:24PM +0100, Greg KH wrote:
-> > > > > On Wed, Mar 18, 2020 at 04:12:28PM +0100, Lars-Peter Clausen wrote:
-> > > > > > On 3/18/20 7:00 AM, Greg KH wrote:
-> > > > > > > On Wed, Mar 18, 2020 at 09:58:13AM +0530, Deepak R Varma wrote:
-> > > > > > > > Add spaces around operator symbols to improve readability. Warning
-> > > > > > > > flagged by checkpatch script.
-> > > > > > > >
-> > > > > > > > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > > > > > > > ---
-> > > > > > > >   drivers/staging/iio/adc/ad7280a.c | 4 ++--
-> > > > > > > >   1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > > > > >
-> > > > > > > > diff --git a/drivers/staging/iio/adc/ad7280a.c
-> > > > > > > > b/drivers/staging/iio/adc/ad7280a.c
-> > > > > > > > index 19a5f244dcae..34ca0d09db85 100644
-> > > > > > > > --- a/drivers/staging/iio/adc/ad7280a.c
-> > > > > > > > +++ b/drivers/staging/iio/adc/ad7280a.c
-> > > > > > > > @@ -825,14 +825,14 @@ static irqreturn_t ad7280_event_handler(int
-> > > > > > > > irq, void *private)
-> > > > > > > >   }
-> > > > > > > >   static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
-> > > > > > > > -			     in_voltage-voltage_thresh_low_value,
-> > > > > > > > +			     in_voltage - voltage_thresh_low_value,
-> > > > > > > >   			     0644,
-> > > > > > > >   			     ad7280_read_channel_config,
-> > > > > > > >   			     ad7280_write_channel_config,
-> > > > > > > >   			     AD7280A_CELL_UNDERVOLTAGE);
-> > > > > > > >   static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
-> > > > > > > > -			     in_voltage-voltage_thresh_high_value,
-> > > > > > > > +			     in_voltage - voltage_thresh_high_value,
-> > > > > > > >   			     0644,
-> > > > > > > >   			     ad7280_read_channel_config,
-> > > > > > > >   			     ad7280_write_channel_config,
-> > > > > > >
-> > > > > > > Did you try building this code?
-> > > > > > >
-> > > > > > > It catches everyone...
-> > > > > >
-> > > > > > The problem is it builds. The token is stringyfied and
-> > > > > > "in_voltage - voltage_thresh_high_value" is a valid string.
-> > > > >
-> > > > > Ah, I thought it used to break the build when it happened.  Oh well,
-> > > > > it's still a great "trick" to see if people understand C or not :)
-> > > > >
-> > > > Yes, it did build. I am sorry but I am not following you fully. Can you
-> > > > please let me know if the change I introduced is not good. You may
-> > > > please direct me to a document where I can read more about it.
-> > >
-> > > The code involves a macro, as indicated by the capital letters.  You will
-> > > see the issue when you look at the definition of the macro.
-> > >
-> > > julia
-> >
-> > Thank you Julia and all. I got my mistake. I will revert the change.
-> > Sorry for the trouble.
+Suggested-by: Lars-Peter Clausen <lars@metafoo.de>
+Fixes: 77f6a23092c0 ("staging: iio: adc: ad7192: Add low_pass_3db_filter_frequency")
+
+Please keep an eye on messages from/to others on the outreachy-kernel
+list, these topics are being discussed quite frequently.
+
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> ---
 >
-> I'll try to make some time to address this somehow, so that checkpatch doesn't
-> bump into this.
->
-> In the last 2-3 years, I think I saw 3-4 patches trying to address this [for
-> various Analog drivers].
-> So, don't feel too bad.
+> [...]
 
-Maybe a comment?
+-- 
+Stefano
 
-julia
-
->
->
-> >
-> > Deepak.
-> > > > Thanks,
-> > > > Deepak.
-> > > > > thanks,
-> > > > >
-> > > > > greg k-h
-> > > >
-> > > > --
-> > > > You received this message because you are subscribed to the Google Groups
-> > > > "outreachy-kernel" group.
-> > > > To unsubscribe from this group and stop receiving emails from it, send an
-> > > > email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > > To view this discussion on the web visit
-> > > > https://groups.google.com/d/msgid/outreachy-kernel/20200318162353.GA23226%40deeUbuntu
-> > > > .
-> > > >
->
 
