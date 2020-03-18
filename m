@@ -1,105 +1,84 @@
 X-GM-THRID: 6805641341994795008
-X-Received: by 2002:a1c:e1c3:: with SMTP id y186mr3828872wmg.151.1584563079592;
-        Wed, 18 Mar 2020 13:24:39 -0700 (PDT)
+X-Received: by 2002:a05:6402:1d95:: with SMTP id dk21mr5672213edb.93.1584562998863;
+        Wed, 18 Mar 2020 13:23:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:c771:: with SMTP id x17ls1405926wmk.2.canary-gmail; Wed,
- 18 Mar 2020 13:24:38 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvaEsZoLiz3DmtSqHyD5KM4GVx70UyjphyBRxaQJPc7/gVJnzmZCLxotOIw3Sfbd7TcDt1t
-X-Received: by 2002:a1c:7405:: with SMTP id p5mr5439133wmc.73.1584563077987;
-        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584563077; cv=none;
+Received: by 2002:a17:906:8548:: with SMTP id h8ls1314849ejy.11.gmail; Wed, 18
+ Mar 2020 13:23:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vti+9v6jggtx77FbRoiLxXW7mYkmpMF96Izi63g6eLr0Sy+kZdVobwgp4cKbtHfHNd4QCv/
+X-Received: by 2002:a17:906:7083:: with SMTP id b3mr43080ejk.238.1584562997477;
+        Wed, 18 Mar 2020 13:23:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584562997; cv=none;
         d=google.com; s=arc-20160816;
-        b=DIShIc9/EfdU2/5ISxCZCmY3KqsJnUfOyVoQ+Qfoknxy5ifU9kIKe5VS+UxU9XhCkK
-         wIUw9KxvxCBSDOGvKbzopBf7u2HvseNHspAX+jVudAps+H1p4po5FQMPRzK/NS2exCLw
-         DaCUSXbk2USJQ8UjVD7ySrfYuN+9xDbOLwDU7rogVvBtjGvGpYpFINhfE1P471zSFsf5
-         S5rAOVRWTzrCcIDnCux0SJI42X+tuxUt45U1A4GLOg8hPtWgl1ThNHS85/zfzA0hJz1X
-         KlEGj/9SPP6EJ0OJ1TxHNHcIYzFFg9DCCoLW2E5k9mZyot8GOp0oF34bGaUNI9HU4hMz
-         h6VQ==
+        b=wMvNk5sivXNtx7/tyWWPrT4OOsP0wNJyB1qMk2lRYQYGYIaodjxPvvETmS27UCb1Rz
+         hEFbUMssChFJtK3dENZOTMRY1sVWyF9M3qwuWiOY3bluoAzVNCmwmLqyz8oIhE1TaSCg
+         4S38WpEcfBapirHqtm72jo/MJ3LqnWPiWptex67FE+myip7BWetuO7oCdnDaKTu3GEIg
+         VWAgwxvPGLISmZ0XaMMVLqAJt6Webh+NVtHFPv7vngjCREFg8RkbJcftoBtDqMEALfor
+         G03f7esExICr0Ug9/XAQw6fEKVhZnz4zmvG8KpE8FzhSiQoybHxslXA03Ce7p+XzmPek
+         fzIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:to:from:subject:message-id:dkim-signature;
-        bh=5fkTC7WgnnsdpZ9j+svcYj/vpyuw7oJgwmCWJGrNgYc=;
-        b=zdV2PteIK1KCTkADBjkj9vWJH/o+zqlhR+k4EJewEloXPc7VFTvK5LxL10Q+tsr4qj
-         JNQ1gLoTUf+PxKpOHeUz+rXTFNXWhhLg8anQgbrBHs1LOdJH7Kv+jwXVELyRMQP0BId1
-         zK3h/YXWklul+lm7vsUeqb/IPnUllF/RM2Cp7JXR9oKEHJQ2O2SGSisKGDpxwg+Aygpy
-         6y70gmEntdmWzSXEUF7FQL7hwotZsFgCcnH+L+5RVU2enMxdiH6VCouC5Em7CzNWdL1k
-         l+vkiu7VG62AYm9GdJeLRzpZfobyCeZgc45uQdOyU9GxSH5FEf7hmJM0mBpaJnTdZK7F
-         TuVQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=5pGut5fwxem6bZHGsFuAYN9sJ78ykqzMz0zx0OqZQKU=;
+        b=BvCVyrarL/5fV2gydqu4Q8aMV5P8vLhWB3+TCPv3cNRNsaQ46KsdcrLJZHH21KhbSt
+         fh0kLqJVoZ/Nfqd7SxNIobCMq8J1LJp+Wpt1LwvWwYx/YbDkAonwH3jtVsEl1bvXvAE4
+         32GRZepymZlqWyiyjP0nq1sCoMcOwe1q4sNkD9RAaKW/EjUn4+VGHw276bOfTlyEjUCM
+         3C1FnSsDO7b771DdioLRjTtmiuJ4/2S85EiNO2h2KdHetWNDSDYAwxwG6ZDHdiuAK//b
+         ldw/45PhPizdAF9PbYtG71pg2ee9u4CR+X19DgPaQQLhLMgOb2ht5nmkOfW68Ypy+PpJ
+         8nVw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I0jXUzK8;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com. [2a00:1450:4864:20::344])
-        by gmr-mx.google.com with ESMTPS id l13si2394wrp.2.2020.03.18.13.24.37
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id x7si2876ejw.0.2020.03.18.13.23.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) client-ip=2a00:1450:4864:20::344;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 18 Mar 2020 13:23:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I0jXUzK8;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x344.google.com with SMTP id 11so5010050wmo.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:date:in-reply-to:references:user-agent
-         :mime-version:content-transfer-encoding;
-        bh=5fkTC7WgnnsdpZ9j+svcYj/vpyuw7oJgwmCWJGrNgYc=;
-        b=I0jXUzK850/olGuWzmx5dRT74J7WMVyYO0PhybaKpXZNJOsnnfW9fP3q1hvbvXK4C/
-         F1wwbtlPt8JGLu9LAnQ0dd38zfPtUMTxmx7rzulI+oRoC+wnfDRmh8EjwS0dIdC9TXa3
-         h0A53bVl/vbrh0N35AwNVE1rHRwlbPy3xrM5NUHOu64ptpLskNjspb7392JzpxQYZiUZ
-         RvR4IGrkKMSz+xV3Qlez9OU+YFqN3tcOQ3Zj8TXD+BXctBBvU6OJq8emYtO5Vc2V4gkn
-         mfylEe2miQLjXrzwZu3ewHfMM6sahL6Az1sM4Lp0S0JTUMMvacfDkpa/i7FjJvMsL3B4
-         jS8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=5fkTC7WgnnsdpZ9j+svcYj/vpyuw7oJgwmCWJGrNgYc=;
-        b=jUyWQq0TzZNZK5JLRfIKWLsviVErADorPDtlxGJ3rrNY7v2T5UP3D6337dpwm0Y8tV
-         0fBN4qqW05Whv5aHN1WtmwvMfVu9B7l1f/M0P7ZZJrpcnTaupSKELVR7eMN0QVcXCcos
-         qcjX2jHssCodgW6h/v2HaJlz614psw7wrqSdKSxeyUFOV/x8Rg8PMcqHonN64aEo8bam
-         AmzHmJEVSLTDQj0X1fzLAzJcVu7tI0iVnS7a7vz+7ddh9FnW386tM1c6obMbdo5D4NtR
-         M08oTSSCjTo/5Grb1DQgHRyMPEdJbPLj3vwVAE/uD1Fx7ye7wi9MOgg1YOoVQ5ejqXqf
-         h6tA==
-X-Gm-Message-State: ANhLgQ1l50rEdCbyngsRWkqZTqpP4beM2GFATaQkX6h0yWLxyuuf2XD5
-	2VOfuil7qSQ/3z9YGdEpZ2EKGy72Ls8=
-X-Received: by 2002:a05:600c:2244:: with SMTP id a4mr6588310wmm.147.1584563077617;
-        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from debian ([197.34.71.247])
-        by smtp.gmail.com with ESMTPSA id p16sm5258573wmg.22.2020.03.18.13.24.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Mar 2020 13:24:37 -0700 (PDT)
-Message-ID: <40b18761b15e8de56919b3afe61c7caa118f1391.camel@gmail.com>
-Subject: Re: [PATCH] Staging: qlge: Add a blank line after variable
- declaration.
-From: Sam Muhammed <jane.pnx9@gmail.com>
-To: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- outreachy-kernel@googlegroups.com
-Date: Wed, 18 Mar 2020 16:24:32 -0400
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,568,1574118000"; 
+   d="scan'208";a="342855311"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Mar 2020 21:23:16 +0100
+Date: Wed, 18 Mar 2020 21:23:16 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Sam Muhammed <jane.pnx9@gmail.com>
+cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: qlge: Add a blank line after
+ variable declaration.
 In-Reply-To: <20200318200352.3497-1-jane.pnx9@gmail.com>
+Message-ID: <alpine.DEB.2.21.2003182122060.2979@hadrien>
 References: <20200318200352.3497-1-jane.pnx9@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.30.5-1.1 
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, 2020-03-18 at 16:03 -0400, Sam Muhammed wrote:
+
+
+On Wed, 18 Mar 2020, Sam Muhammed wrote:
+
 > Cleanup checkpatch.pl WARNINGS: Missing a blank line after declarations.
-> 
+
+This is a revision of what you did before.  So there should be v2 in the
+subject line.  And under the --- there should be a description of what you
+did differently as compared to the previous version.
+
+>
 > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
 > ---
 > ---
 
-duplicate :(, should i resend or revision?
+Only one --- is needed.  Perhaps you added one and another one was added
+automatically?
+
+julia
 
 >  drivers/staging/qlge/qlge_dbg.c | 5 +++++
 >  1 file changed, 5 insertions(+)
-> 
+>
 > diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
 > index 737d6abd8076..1795533cbd3a 100644
 > --- a/drivers/staging/qlge/qlge_dbg.c
@@ -143,7 +122,13 @@ duplicate :(, should i resend or revision?
 > +
 >  	pr_err("===================== Dumping ricb ===============\n");
 >  	pr_err("Dumping ricb stuff...\n");
->  
-
-
+>
+> --
+> 2.20.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200318200352.3497-1-jane.pnx9%40gmail.com.
+>
 
