@@ -1,144 +1,130 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:a05:6830:1d7:: with SMTP id r23mr4145621ota.181.1584544373668;
-        Wed, 18 Mar 2020 08:12:53 -0700 (PDT)
+X-Received: by 2002:a1c:ba04:: with SMTP id k4mr5804156wmf.165.1584544356444;
+        Wed, 18 Mar 2020 08:12:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:ec0a:: with SMTP id k10ls2738237oih.8.gmail; Wed, 18 Mar
- 2020 08:12:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtujZoL4+l70AFnp6UtTlNPkj9BpgcBNEuBghr7Snx+8HxNnORtWM90WmnMUBXYEzxJFMBg
-X-Received: by 2002:a54:4e13:: with SMTP id a19mr3616297oiy.108.1584544372636;
-        Wed, 18 Mar 2020 08:12:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584544372; cv=none;
+Received: by 2002:a05:600c:2116:: with SMTP id u22ls946998wml.1.gmail; Wed, 18
+ Mar 2020 08:12:35 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv36LyeuSpX2AnG5IKTLzpbLwmKQZl/lnRB1C+gWNvMgSy/IDwbVlimSr5lCPTSMTKqP8al
+X-Received: by 2002:a1c:418b:: with SMTP id o133mr5855993wma.165.1584544355010;
+        Wed, 18 Mar 2020 08:12:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584544355; cv=none;
         d=google.com; s=arc-20160816;
-        b=OxdKu1Iyyr4DDWd/fecAUQGDvC5VkGf7rqsTeFvFo/2hSxyYBjVbTKm0hYqQwcNnkr
-         A1dGmH8xSEGtUK6am4v82rYMpVInU30zkYGM8puRFaRK8xrRkQwhmBVXmTT6e5Kdwk/z
-         bjnLFeVhS/TPYS69fJkaU+kYBYcPbF+xs3AbvhxWN0V9H7afjsxxoN/Feuf/vVr3eDto
-         p8EoJnhP+VC0lK0nSUZOs22vyyQzIodN0qZoJWgSkeBVq8QTK7GS+IRn5Eau33JoXY5H
-         GZyc/D6dtvmoxBenEe+eEd+mpf/kFW6dreuQnQh7+PcBCnm8qHOkoCblfPcz+jg8sqq2
-         Ukog==
+        b=UIN4OCiM+Buycx6a+zwGx8ycEnA8IcOxWnzxh01tjPUs2EEnH9TE44Wosy3/13yeiw
+         XNXkxadqIjN4BqxlH3Ccp3KUIh5FROt1qshhU9IHe/RMq8Z58WNGD6bl4HXiGVDhwnGH
+         tfDgbI9PxLZb8ske0SpbaM3aPApacKaaO7U08lrQapg+UW32kvfnMmdcHh6/o9U+CvE4
+         2w70U55FuNCFCGxBFRNiibZjm7LUyVq5AT81eI7ijs5NTpok4bwwmYTtfr+ajo2bNahi
+         cM6Vp7NyDJDTAe+O2qWGuepwY/lPZsUkCQjhl9wFWr63eTBKwRjmKOkCzoFGF5TN1fNs
+         kX/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=wF8CFYJRZh0RDbh41QGHox+AieZTHYsKPH2kgQaSb8Q=;
-        b=VSfRl8nnwAh6ezdZeNnC62reEaMMT3p1AQRWeHV5B6YJMRbgVDgBSIbxYMQWeVqyW7
-         xUYsGLmLBioGd4p8nzXm2q81oNZYU/oeNBJ0n6TggB0H2UAQUc1JIkmMzHaQMvuk/fWW
-         MbZLuBhooaj1qan+n8gU11NFZikuS+RkpZAzY7SGFIskTuwr8w4l9+Kp4Eqzw9ImTs9y
-         UN8KLGXhzCVwTuAQAAbnyE72UVfW1LESD8PkXhcFsaOxYmqGSMj0DOUq0RZNsHHGmxNb
-         fv/LG/L52jXWkR1nue7KAEJ0Qoc9/c7uKouBTFk4/+XF7CtCCgTrCak2Ohv0OmdI4B0o
-         O6Kg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=jXFg+Lk+O8IuGT9rfESA6msiedOcS1jJ2FlUgALBYw4=;
+        b=arIKIHaw5XQkPEJssDnK3oRZ3oWoCTmh6z1+i2//hPUZU/UQw5zmvIRaD9fI2WY/uF
+         lLD/FXyMoDwD99mxwkSIewtas1h2vnqNsfcSI1BFG50QgCXsCqOgCdD9XlKOmHWZObCQ
+         BqS8k2r1TJvDZctheuZtbR9F83dR1BwgZ1+AkkDPcJ3y9IFpXS9B0l8JZsQ80dvC4P/4
+         /0eXvt9N3HpebTsebhJPhr+HaU9KRl3XS+dEBTtCE/h3+SJ6RT3Yc/QfjCLGWLLTb2EU
+         EGTWdFzAyesmAKsguJFN5RIBC7TEjV296UVe2q2YavoaTEjdGhHZz+lwjso2Srj7cA0+
+         2sSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KGChfQgZ;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1042.google.com (mail-pj1-x1042.google.com. [2607:f8b0:4864:20::1042])
-        by gmr-mx.google.com with ESMTPS id a63si424216oib.4.2020.03.18.08.12.52
+       dkim=pass header.i=@metafoo.de header.s=default2002 header.b=g89qvkF3;
+       spf=pass (google.com: domain of lars@metafoo.de designates 78.46.137.84 as permitted sender) smtp.mailfrom=lars@metafoo.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=metafoo.de
+Return-Path: <lars@metafoo.de>
+Received: from www381.your-server.de (www381.your-server.de. [78.46.137.84])
+        by gmr-mx.google.com with ESMTPS id l10si100482wmg.2.2020.03.18.08.12.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Mar 2020 08:12:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) client-ip=2607:f8b0:4864:20::1042;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KGChfQgZ;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1042.google.com with SMTP id mj6so1462427pjb.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 18 Mar 2020 08:12:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=wF8CFYJRZh0RDbh41QGHox+AieZTHYsKPH2kgQaSb8Q=;
-        b=KGChfQgZNR4RjX+ojB8Znn8PEZ21Gn9PNZxpMBd/BlsB0tpg303AptQ4L/r5g+6fOO
-         LGhmRc3Y+UOgg2mC8cXWrTv6noFZ4e8JDpRZh4ojf4fb61p4K4Kc5ICthPzIlF9zVmyr
-         1/7xtoI0q7J0VYlTznffnvsIzqbMv/BjC47YRZtKuOiVA0dCtazgxE0PeDTrCMTY+6pJ
-         Hvagdl86HPhGDObVZ4NWbqTBn8PxGqIs6orKk1VR0qLXjAdmEDuyz+rPcFg5QBWtU9zv
-         5FyDJAEcomR8DYAlX7eyFk/NjETlhyl8a89Y7yNpLS66vFYSUbeoLkdvcTY0ocdm/7Zi
-         Fe6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=wF8CFYJRZh0RDbh41QGHox+AieZTHYsKPH2kgQaSb8Q=;
-        b=OESATc+FiWGvylWvr3XLdxK2QsvBwhFo4XfC9VBaTJzhGIy4vGfGm+HTy1fsrT8b0a
-         5LXG1aITadZzcrxDyTjBaMW1IaYRuRr7O1V80dFmHDH6Ei7ns6BNrF5C/r/0efpxCi29
-         6d6bkJ7HDfenZKHRfqWlTjm5V3OvcKnx49GxUm+JensKgsDeHic7yNo1jeef0q+kCTqI
-         cN8sZewtxsP/HBjaq8a4Kd0cMTp5XtvDvLgq4kITBPSmH+hdHAOudclO6JjHT3RX1ogY
-         fjPq8UJ+Afa2lXc3hg7CDjzpY0lOl1Kiiu6ad8oegWt+5EJz5CpprUahn6BoOf5S/gjD
-         1ukg==
-X-Gm-Message-State: ANhLgQ33ptghEoRjyJnkhIy52F47Qf+MfPYbukbCJdMjEAj2PKdZpNmx
-	1KqCLQv3T3KS2OGkvZkthvA=
-X-Received: by 2002:a17:90a:7f06:: with SMTP id k6mr5118122pjl.78.1584544371950;
-        Wed, 18 Mar 2020 08:12:51 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.241.226.97])
-        by smtp.gmail.com with ESMTPSA id b133sm6550212pga.43.2020.03.18.08.12.48
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Mar 2020 08:12:51 -0700 (PDT)
-Date: Wed, 18 Mar 2020 20:42:45 +0530
-From: DEEPAK VARMA <mh12gx2825@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+        Wed, 18 Mar 2020 08:12:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lars@metafoo.de designates 78.46.137.84 as permitted sender) client-ip=78.46.137.84;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@metafoo.de header.s=default2002 header.b=g89qvkF3;
+       spf=pass (google.com: domain of lars@metafoo.de designates 78.46.137.84 as permitted sender) smtp.mailfrom=lars@metafoo.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=metafoo.de
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=metafoo.de;
+	 s=default2002; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+	MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=jXFg+Lk+O8IuGT9rfESA6msiedOcS1jJ2FlUgALBYw4=; b=g89qvkF3dRfH3RvOnYstrWAAuX
+	HRtboA4fvqnG3tafG9R6C8UJZMxnJTm/y/hi+yNUiLmajT0KBofTL8PENZVsIuoHCxjajGPuicf3H
+	JpWZ0vstX0wTeZjDqf51lykgmKYxqJHYZQnI4z/fqPauMpSGmAAaaPn0jmsD8RkfufhO5TdeXhv13
+	W/X/9WTiBlcUSMZh8+h/iBUhKKEoiCF2SpbrZvZOP0zNr6YcImNokt/W14hltX9ZrQmXx+6Lkh6eH
+	ok67Q46HDdNb4jQ3TpxvK3LFQC+L1R6Eof1NfYlmoNq4s5qcKHO793K1e/S+zpccPbldIpdGAF+cR
+	277l3ltQ==;
+Received: from sslproxy03.your-server.de ([88.198.220.132])
+	by www381.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+	(Exim 4.89_1)
+	(envelope-from <lars@metafoo.de>)
+	id 1jEaMw-00035z-4Q; Wed, 18 Mar 2020 16:12:30 +0100
+Received: from [93.104.115.49] (helo=[192.168.178.20])
+	by sslproxy03.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <lars@metafoo.de>)
+	id 1jEaMv-00049T-Pn; Wed, 18 Mar 2020 16:12:29 +0100
+Subject: Re: [PATCH 2/2] staging: iio: adc: ad7280a: Add spaces around
+ operators
+To: Greg KH <gregkh@linuxfoundation.org>,
+ Deepak R Varma <mh12gx2825@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, daniel.baluta@gmail.com,
-	kieran.bingham@ideasonboard.com, lars@metafoo.de,
-	Michael.Hennerich@analog.com, stefan.popa@analog.com,
-	jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net,
-	linux-iio@vger.kernel.org
-Subject: Re: [PATCH 1/2] staging: iio: adc: ad7192: Reformat lines crossing
- 80 columns
-Message-ID: <20200318151244.GB22841@deeUbuntu>
+ kieran.bingham@ideasonboard.com, Michael.Hennerich@analog.com,
+ stefan.popa@analog.com, jic23@kernel.org, knaack.h@gmx.de,
+ pmeerw@pmeerw.net, linux-iio@vger.kernel.org
 References: <cover.1584505215.git.mh12gx2825@gmail.com>
- <50419988d636c90511a07da256c91aa3b3e33bff.1584505215.git.mh12gx2825@gmail.com>
- <20200318060004.GA1594471@kroah.com>
+ <6703668c512dd665a2299a1f5bf14d99262314f8.1584505215.git.mh12gx2825@gmail.com>
+ <20200318060038.GB1594471@kroah.com>
+From: Lars-Peter Clausen <lars@metafoo.de>
+Message-ID: <35afdc4b-bd59-7851-aa4f-3d8807668931@metafoo.de>
+Date: Wed, 18 Mar 2020 16:12:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200318060004.GA1594471@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200318060038.GB1594471@kroah.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: lars@metafoo.de
+X-Virus-Scanned: Clear (ClamAV 0.102.2/25755/Wed Mar 18 14:14:00 2020)
 
-On Wed, Mar 18, 2020 at 07:00:04AM +0100, Greg KH wrote:
-> On Wed, Mar 18, 2020 at 09:56:59AM +0530, Deepak R Varma wrote:
-> > Macro arguments are computed at the time of macro invocation. This makes
-> > the lines cross 80 column width. Add variables to perform the
-> > calculations before hand and use these new variable in the macro calls
-> > instead.
-> > 
-> > Also re-indent enum members to address checkpatch warning / check messages.
+On 3/18/20 7:00 AM, Greg KH wrote:
+> On Wed, Mar 18, 2020 at 09:58:13AM +0530, Deepak R Varma wrote:
+>> Add spaces around operator symbols to improve readability. Warning
+>> flagged by checkpatch script.
+>>
+>> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+>> ---
+>>   drivers/staging/iio/adc/ad7280a.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+>> index 19a5f244dcae..34ca0d09db85 100644
+>> --- a/drivers/staging/iio/adc/ad7280a.c
+>> +++ b/drivers/staging/iio/adc/ad7280a.c
+>> @@ -825,14 +825,14 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
+>>   }
+>>   
+>>   static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+>> -			     in_voltage-voltage_thresh_low_value,
+>> +			     in_voltage - voltage_thresh_low_value,
+>>   			     0644,
+>>   			     ad7280_read_channel_config,
+>>   			     ad7280_write_channel_config,
+>>   			     AD7280A_CELL_UNDERVOLTAGE);
+>>   
+>>   static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
+>> -			     in_voltage-voltage_thresh_high_value,
+>> +			     in_voltage - voltage_thresh_high_value,
+>>   			     0644,
+>>   			     ad7280_read_channel_config,
+>>   			     ad7280_write_channel_config,
 > 
-> When you say "also" in a changelog description, that's a huge hint the
-> patch needs to be broken up.
+> Did you try building this code?
 > 
-> And that is what needs to happen here.
-> 
-> > 
-> > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > ---
-> >  drivers/staging/iio/adc/ad7192.c | 15 ++++++++-------
-> >  1 file changed, 8 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-> > index bf3e2a9cc07f..0265f6607d75 100644
-> > --- a/drivers/staging/iio/adc/ad7192.c
-> > +++ b/drivers/staging/iio/adc/ad7192.c
-> > @@ -156,8 +156,8 @@
-> >   */
-> >  
-> >  enum {
-> > -   AD7192_SYSCALIB_ZERO_SCALE,
-> > -   AD7192_SYSCALIB_FULL_SCALE,
-> > +	AD7192_SYSCALIB_ZERO_SCALE,
-> > +	AD7192_SYSCALIB_FULL_SCALE,
-> 
-> Because this has nothing to do with the subject, please make it a
-> separate patch.
-> 
+> It catches everyone...
 
-Okay. Got your point. I was thinking since this is a clean up patch I can include both
-the changes for the same file in a single patch. No problem; I will
-correct and send in a v2.
+The problem is it builds. The token is stringyfied and
+"in_voltage - voltage_thresh_high_value" is a valid string.
 
-Thank you,
-Deepak.
-
-
-> thanks,
-> 
-> greg k-h
+- Lars
 
