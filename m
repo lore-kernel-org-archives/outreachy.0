@@ -1,198 +1,196 @@
 X-GM-THRID: 6803014756528553984
-X-Received: by 2002:a17:90a:358e:: with SMTP id r14mr16256286pjb.182.1584921621034;
-        Sun, 22 Mar 2020 17:00:21 -0700 (PDT)
+X-Received: by 2002:adf:ecc3:: with SMTP id s3mr4913998wro.32.1584655570458;
+        Thu, 19 Mar 2020 15:06:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:b203:: with SMTP id t3ls7520213plr.1.gmail; Sun, 22
- Mar 2020 17:00:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv5q/Zzx6PG9rd8T4AsYuiz9I7AYVDN8yjqxIkDbZMLVTTIZAoQnQ+HDCYHUTMW6TNN3Mzc
-X-Received: by 2002:a17:902:7045:: with SMTP id h5mr7058688plt.266.1584921619193;
-        Sun, 22 Mar 2020 17:00:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584921619; cv=none;
+Received: by 2002:adf:f803:: with SMTP id s3ls881576wrp.10.gmail; Thu, 19 Mar
+ 2020 15:06:09 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsZ/WeSnct37BsMAgYB2ajaBH4jUX+wERS9/RVcnYuO7x828su9k12YM83hFsWvEoWszaPX
+X-Received: by 2002:adf:ab5d:: with SMTP id r29mr1515253wrc.158.1584655569006;
+        Thu, 19 Mar 2020 15:06:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584655569; cv=none;
         d=google.com; s=arc-20160816;
-        b=vOBHskZ0aXp05vgvLgQ2LBZ6FeYxs5lxqLcBpcr9klNmHbffZ4wKkgiakFqUDuJk3p
-         M+2lUSL9S5r/VE1nB/ifiHFZGAfsJMfrWoqvnBzdzXKWbptOBdkQq4YnBQtl3/0mY9xv
-         Ip6rN43k/p97ab+mWz227jrFRH+otJHNq+MRHXhAwffVozqVDZP8IdrRD00jwyQkSU1s
-         mIzleJ/NJPnu/BB22qVYF6aJjAVBOhohO9+asWuWF+feqyaAC6SNbkgm7AtlkkWFK/il
-         w4G3sVOVTYAyxXgeWW2jsnEBpdPk2vh88yKEokqQ+I2NJTeIUKTbb1DRKWRP7h2+wCOP
-         YQmw==
+        b=b7C5arwO+KGXfX47kfh5IeeeTbj1ezL1FoTtMe/4+hwOFLMW2Ds7JhF85+3F6lefb3
+         FyWSNsLoJa6zwqM6vqOQGUnZt0OqnNGIzEVwxFI5eEw3T9f0EdLsJub4KjBqYgVYYa5v
+         LnorfLrJTWZOUwMICw6IaZStffo3FFqgGyzBnrfUDDzFc4Q3YFVaJaC+T8JnpvWQTTKD
+         S53InUYVJlMoLKkBzm0DUravaOCeTaUxgrJZwEYW47EB3U4uht6WNc2x5zBxbT3yc7EL
+         gb94i+y+5yVPZ9B4Z4HcXZaIh914nre7uPnKBa+BVyzF8iOJRhojFX0kt2/yv0s9JPxo
+         CJxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ebWjGhCgA9jVXWqwImhpi0dls5aoeiTw0T/yHkJE0Qk=;
-        b=kT604mcXn1yWFcj8JmOIMYovbdwuHNkAIwCelrpKSredf8Jrg/yBH7H0e935/HfTYv
-         +DDEbOrPxC4P0jOaH+BdpwRs2VtG6zVWdTvh2v12CNbv7zkX+PGGmUs3ZQN3iHNQtmdE
-         /kkgfUsxsRjXbtF2S95/rSvIdeezhfMo0TVAK4uKsIQp0yfzTyPRCnWGeSG489yGLhLN
-         jJHz19/Hve2FoRfptuASYTpjCYIeCGGljxsP87v1ynBveKj8gGC1RMG3UThyXAg2eRiY
-         ce9CioapavAFm8O2tuKqhGEs2ulvLw3f5yK0pQszJcF35+POGm10XUsN9A+Y5s5aocZg
-         WkDw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Tz2WP/S/3BUuSeHYuF9ceufuOyyqM1r821fuFSLopvA=;
+        b=AanMQhMsn5zZOn5M1nG+5juaZHEljtSvE3Ne+w8k9K5wOGKmSdDW21XgMT/7866C0r
+         /coVmgIwQejHCeDcskkk7AjqN6vb9nUwg3FfhQYDTB45Sn7hubVb2psEkiBGAnACV/fm
+         EhUatXTEPN7d0DESVXH37RbZm/dHXD/bi53RNzgld259Mtrt8MYPOwYnAbQkINXIPa+p
+         Tc17Ny/yjbHZRBv9cuqPY7Uw2+B1IdB99Vi0eamGKgi7H33qH5Vf9EzkTL050iigNRLC
+         1SQK41Gf3+5APC96tDIfcvSlGqbWLHjTExaLusOr8qSmGU+JPev8+tSPd6Dkaqkd6WTn
+         9Nqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yj3A99k3;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id y5si296115plr.4.2020.03.22.17.00.18
+       dkim=pass header.i=@pplo.net header.s=google header.b=j5tD6iH2;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id n9si166777wmi.0.2020.03.19.15.06.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2020 17:00:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Mar 2020 15:06:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yj3A99k3;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584921617;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ebWjGhCgA9jVXWqwImhpi0dls5aoeiTw0T/yHkJE0Qk=;
-	b=Yj3A99k3o/jDVzp/THajmf2ooqQasuO44CJjpEyRcYqX92teVZtpu7J2y0GiADZ87m63v3
-	m+oJod196a46sC6UOTuDsGYbxKDR+tQfdP4nqFNqYu+uEfaD2SALfEDV0PCgGx5ZmcawTk
-	fR0PQJNvEjYWPZrq378Hej0CUIXiups=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-220-J16RIxHAO22DxHoAUHLKRA-1; Sun, 22 Mar 2020 20:00:15 -0400
-X-MC-Unique: J16RIxHAO22DxHoAUHLKRA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 98141189D6CE;
-	Mon, 23 Mar 2020 00:00:14 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8CAB760BE2;
-	Mon, 23 Mar 2020 00:00:11 +0000 (UTC)
-Date: Mon, 23 Mar 2020 01:00:03 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Lourdes Pedrajas <lu@pplo.net>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@pplo.net header.s=google header.b=j5tD6iH2;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wr1-x442.google.com with SMTP id h6so5178787wrs.6
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 15:06:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pplo.net; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Tz2WP/S/3BUuSeHYuF9ceufuOyyqM1r821fuFSLopvA=;
+        b=j5tD6iH2cUTaudz10Djt+gvzCUAW/7kfuRnctWLDqiZrRPSNknJSW3NMysb8mo86xL
+         +sMyJeSE9dUjzA0wbLjQyBKu0Lo99r3XRCx5YPjMA3Sh1/g7WCpqUcjrE/rBgvgRL8Qj
+         Ds7LMy6eAg8P9g6lJj0pK46RJ8rIFQ6v71E5I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Tz2WP/S/3BUuSeHYuF9ceufuOyyqM1r821fuFSLopvA=;
+        b=d4UVwuk4aBuSSnNrzVvsJ2uYkyMtrFru3u/SWvGF35f1uR1Xo/W+YPxj23E0IFrq+J
+         t+0CeyHnMNJIXvZgCTU0cZov4vOkzyCeb4o56z7eoRUf5qAiyLc8LgRSD+mgVOY+GH/F
+         /bV++K4eby1V4Oes0X69wuq4r9hUQZzz4OJuOHTySlM0rsZxDFz73CWotQZ5B4P1JUMH
+         MRa3tCZF06qfHxS+mMAY5YUpphC/jbJh8axOTwPc034+n9T1A6N5Q6PZkL8jcA3fq6f+
+         /vAV00pDZE0pQDyFSjTQYTTy/qJEJgob75rdCtVf52p8rIWnrKQrsiyapmLmfIxlcM7A
+         Le7g==
+X-Gm-Message-State: ANhLgQ0hALWThSxC+b/1PKoLhvED9BNbnnzeOD0FunacIAxB9LuzpC62
+	s3XI+JwSiz2WTXmR3lIuqf4dGIBlf10=
+X-Received: by 2002:a5d:474c:: with SMTP id o12mr6942807wrs.156.1584655568531;
+        Thu, 19 Mar 2020 15:06:08 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from supernova (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id b12sm5127354wro.66.2020.03.19.15.06.07
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Mar 2020 15:06:08 -0700 (PDT)
+Date: Thu, 19 Mar 2020 23:06:05 +0100
+From: Lourdes Pedrajas <lu@pplo.net>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Trying to use Coccinelle
-Message-ID: <20200323010003.705a9755@elisabeth>
-In-Reply-To: <20200319220605.GD10911@supernova>
+Message-ID: <20200319220605.GD10911@supernova>
 References: <alpine.DEB.2.21.2003161543170.5216@hadrien>
-	<20200316162343.36bacaa7@elisabeth>
-	<alpine.DEB.2.21.2003161631270.5216@hadrien>
-	<20200316164440.54fe16a8@elisabeth>
-	<20200319201553.GA10911@supernova>
-	<20200319214321.2060a5ef@elisabeth>
-	<20200319213047.GB10911@supernova>
-	<alpine.DEB.2.21.2003192236110.9011@hadrien>
-	<20200319214757.GC10911@supernova>
-	<alpine.DEB.2.21.2003192249420.9011@hadrien>
-	<20200319220605.GD10911@supernova>
-Organization: Red Hat
+ <20200316162343.36bacaa7@elisabeth>
+ <alpine.DEB.2.21.2003161631270.5216@hadrien>
+ <20200316164440.54fe16a8@elisabeth>
+ <20200319201553.GA10911@supernova>
+ <20200319214321.2060a5ef@elisabeth>
+ <20200319213047.GB10911@supernova>
+ <alpine.DEB.2.21.2003192236110.9011@hadrien>
+ <20200319214757.GC10911@supernova>
+ <alpine.DEB.2.21.2003192249420.9011@hadrien>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.2003192249420.9011@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Thu, 19 Mar 2020 23:06:05 +0100
-Lourdes Pedrajas <lu@pplo.net> wrote:
-
-> On Thu, Mar 19, 2020 at 10:50:15PM +0100, Julia Lawall wrote:
-> > 
-> > 
-> > On Thu, 19 Mar 2020, Lourdes Pedrajas wrote:
-> >   
-> > > On Thu, Mar 19, 2020 at 10:38:59PM +0100, Julia Lawall wrote:  
-> > > >
-> > > >
-> > > > On Thu, 19 Mar 2020, Lourdes Pedrajas wrote:
-> > > >  
-> > > > > On Thu, Mar 19, 2020 at 09:43:21PM +0100, Stefano Brivio wrote:  
-> > > > > > On Thu, 19 Mar 2020 21:15:53 +0100
-> > > > > > Lourdes Pedrajas <lu@pplo.net> wrote:
-> > > > > >
-> > > > > > Can you just run this spatch command:
-> > > > > >  
-> > > > > > > Running (8 in parallel): /usr/local/bin/spatch -D patch --very-quiet
-> > > > > > > --cocci-file ./scripts/coccinelle/api/atomic_as_refcounter.cocci
-> > > > > > > --include-headers --very-quiet --patch . --dir ./drivers/staging/.
-> > > > > > > -I ./arch/x86/include -I ./arch/x86/include/generated -I ./include
-> > > > > > > -I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
-> > > > > > > -I ./include/uapi -I ./include/generated/uapi
-> > > > > > > --include ./include/linux/kconfig.h --jobs 8 --chunksize 1
-> > > > > > > coccicheck failed
-> > > > > > > Makefile:1740: recipe for target 'coccicheck' failed
-> > > > > > > make: *** [coccicheck] Error 255  
-> > > > > >
-> > > > > > alone, from the same directory? The issue (okay, I'll send a patch) is
-> > > > > > that the coccicheck script suppresses stderr for it.
-> > > > > >
-> > > > > > --
-> > > > > > Stefano
-> > > > > >  
-> > > > >
-> > > > > It says "274 files match" and if I suppress the "--very-quiet" part of
-> > > > > the command, it outputs many files preceded with the word "HANDLING:".
-> > > > >
-> > > > > After that, If I try, by example, this command:
-> > > > >
-> > > > > /usr/local/bin/spatch -D patch
-> > > > > --cocci-file ./scripts/coccinelle/api/alloc/alloc_cast.cocci
-> > > > > --no-includes --include-headers -I ./arch/x86/include
-> > > > > -I ./arch/x86/include/generated -I ./include -I ./arch/x86/include/uapi
-> > > > > -I ./arch/x86/include/generated/uapi -I ./include/uapi
-> > > > > -I ./include/generated/uapi --include ./include/linux/kconfig.h --jobs 8
-> > > > > --chunksize 1 drivers/staging/qlge/qlge_mpi.c
-> > > > >
-> > > > > It says:
-> > > > >
-> > > > > HANDLING: drivers/staging/qlge/qlge_mpi.c
-> > > > >
-> > > > > But nothing more.
-> > > > >
-> > > > > The command Julia suggest has similar results.
-> > > > >
-> > > > > Is this correct? I thought it outputs reports or patches.  
-> > > >
-> > > > Yes, that is correct.  Maybe it has nothing to do on that file.
-> > > >
-> > > > Could you try the following file:
-> > > >
-> > > > drivers/net/ethernet/qlogic/qed/qed_roce.c
-> > > >
-> > > > with the semantic patch
-> > > >
-> > > > scripts/coccinelle/api/alloc/alloc_cast.cocci
-> > > >
-> > > > julia  
+On Thu, Mar 19, 2020 at 10:50:15PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Thu, 19 Mar 2020, Lourdes Pedrajas wrote:
+> 
+> > On Thu, Mar 19, 2020 at 10:38:59PM +0100, Julia Lawall wrote:
 > > >
-> > > Yes, now it worked! :)  
-> > 
-> > Um, now what worked?  I guess you got a message for this file, but is make
-> > coccicheck now working too?
-> > 
-> > julia  
+> > >
+> > > On Thu, 19 Mar 2020, Lourdes Pedrajas wrote:
+> > >
+> > > > On Thu, Mar 19, 2020 at 09:43:21PM +0100, Stefano Brivio wrote:
+> > > > > On Thu, 19 Mar 2020 21:15:53 +0100
+> > > > > Lourdes Pedrajas <lu@pplo.net> wrote:
+> > > > >
+> > > > > Can you just run this spatch command:
+> > > > >
+> > > > > > Running (8 in parallel): /usr/local/bin/spatch -D patch --very-quiet
+> > > > > > --cocci-file ./scripts/coccinelle/api/atomic_as_refcounter.cocci
+> > > > > > --include-headers --very-quiet --patch . --dir ./drivers/staging/.
+> > > > > > -I ./arch/x86/include -I ./arch/x86/include/generated -I ./include
+> > > > > > -I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
+> > > > > > -I ./include/uapi -I ./include/generated/uapi
+> > > > > > --include ./include/linux/kconfig.h --jobs 8 --chunksize 1
+> > > > > > coccicheck failed
+> > > > > > Makefile:1740: recipe for target 'coccicheck' failed
+> > > > > > make: *** [coccicheck] Error 255
+> > > > >
+> > > > > alone, from the same directory? The issue (okay, I'll send a patch) is
+> > > > > that the coccicheck script suppresses stderr for it.
+> > > > >
+> > > > > --
+> > > > > Stefano
+> > > > >
+> > > >
+> > > > It says "274 files match" and if I suppress the "--very-quiet" part of
+> > > > the command, it outputs many files preceded with the word "HANDLING:".
+> > > >
+> > > > After that, If I try, by example, this command:
+> > > >
+> > > > /usr/local/bin/spatch -D patch
+> > > > --cocci-file ./scripts/coccinelle/api/alloc/alloc_cast.cocci
+> > > > --no-includes --include-headers -I ./arch/x86/include
+> > > > -I ./arch/x86/include/generated -I ./include -I ./arch/x86/include/uapi
+> > > > -I ./arch/x86/include/generated/uapi -I ./include/uapi
+> > > > -I ./include/generated/uapi --include ./include/linux/kconfig.h --jobs 8
+> > > > --chunksize 1 drivers/staging/qlge/qlge_mpi.c
+> > > >
+> > > > It says:
+> > > >
+> > > > HANDLING: drivers/staging/qlge/qlge_mpi.c
+> > > >
+> > > > But nothing more.
+> > > >
+> > > > The command Julia suggest has similar results.
+> > > >
+> > > > Is this correct? I thought it outputs reports or patches.
+> > >
+> > > Yes, that is correct.  Maybe it has nothing to do on that file.
+> > >
+> > > Could you try the following file:
+> > >
+> > > drivers/net/ethernet/qlogic/qed/qed_roce.c
+> > >
+> > > with the semantic patch
+> > >
+> > > scripts/coccinelle/api/alloc/alloc_cast.cocci
+> > >
+> > > julia
+> >
+> > Yes, now it worked! :)
 > 
-> Oh, sorry I was not clear, this command worked:
+> Um, now what worked?  I guess you got a message for this file, but is make
+> coccicheck now working too?
 > 
-> /usr/local/bin/spatch -D report
-> --cocci-file ./scripts/coccinelle/api/alloc/alloc_cast.cocci --no-includes
-> --include-headers -I ./arch/x86/include -I ./arch/x86/include/generated
-> -I ./include -I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
-> -I ./include/uapi -I ./include/generated/uapi
-> --include ./include/linux/kconfig.h --jobs 8
-> --chunksize 1 drivers/net/ethernet/qlogic/qed/qed_roce.c
-> 
-> You were right, it had nothing to do in the file I tried (and some others too)
-> but in this file worked:
-> 
-> drivers/net/ethernet/qlogic/qed/qed_roce.c
-> 
-> > but is make coccicheck now working too?  
-> 
-> No, it is not working, sorry :(
+> julia
 
-What if you try the spatch command (without --quiet or similar) that
-gets printed by 'make coccicheck' when it actually fails?
+Oh, sorry I was not clear, this command worked:
 
-I'm asking because the only way an issue could be hidden like this
-seems to be if it's spatch failing.
+/usr/local/bin/spatch -D report
+--cocci-file ./scripts/coccinelle/api/alloc/alloc_cast.cocci --no-includes
+--include-headers -I ./arch/x86/include -I ./arch/x86/include/generated
+-I ./include -I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi
+-I ./include/uapi -I ./include/generated/uapi
+--include ./include/linux/kconfig.h --jobs 8
+--chunksize 1 drivers/net/ethernet/qlogic/qed/qed_roce.c
 
--- 
-Stefano
+You were right, it had nothing to do in the file I tried (and some others too)
+but in this file worked:
 
+drivers/net/ethernet/qlogic/qed/qed_roce.c
+
+
+> but is make coccicheck now working too?
+
+No, it is not working, sorry :(
+
+For the record, I'm using linux mint, installed the dependencies the
+official site says for ubuntu/debian, but got some compilation errors
+and eventually solved them. 
+
+Thank you for your patience,
+
+Lourdes
 
