@@ -1,103 +1,188 @@
 X-GM-THRID: 6805856323251470336
-X-Received: by 2002:ad4:57a8:: with SMTP id g8mr3031586qvx.78.1584627037558;
-        Thu, 19 Mar 2020 07:10:37 -0700 (PDT)
+X-Received: by 2002:aa7:d318:: with SMTP id p24mr1878914edq.386.1584611908381;
+        Thu, 19 Mar 2020 02:58:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:34c6:: with SMTP id x64ls1116468qtd.5.gmail; Thu, 19 Mar
- 2020 07:10:34 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuSC5pTT+4SzL2yuWYnZxWpeVEZyFqfo/GYKO3NKzflAOiKR/VV2TUkFu6MKmmsn2p1YGeE
-X-Received: by 2002:ac8:4d97:: with SMTP id a23mr3155162qtw.176.1584627034718;
-        Thu, 19 Mar 2020 07:10:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584627034; cv=none;
+Received: by 2002:a17:906:358b:: with SMTP id o11ls827300ejb.3.gmail; Thu, 19
+ Mar 2020 02:58:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvJY+KitMnPew+WsMdvzfGjrye60re2vagSMVlzMTCjp+wOhgPTiOYsWobdeppK5S0Pc9lD
+X-Received: by 2002:a17:906:939a:: with SMTP id l26mr2439802ejx.276.1584611907142;
+        Thu, 19 Mar 2020 02:58:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584611907; cv=none;
         d=google.com; s=arc-20160816;
-        b=yppb6Y08cTqD24fq/GKztgVCDmdlHX8ZJHp8Jtw66sIrGFvpFah6t1qySwhKU25NlX
-         qBz8yCkB0gZRR/0uN50FCAb+mM3ZpyCXgbQlTOUN4TFjm/+N+8CQ991u7SEw6a8pQyVL
-         5jJr0fvzaQv0Plp9v5dzRJqS3FU3e4EyfhFzH4Fzu9LWtEc3x8ql89Ihwdmd3iEL92t7
-         E/dwgGwxV5jmo+KIJYOvAfsrkogcA+5Bh3Vz5dtVK0yNH4er+X01Aaq+EqoR3+digOro
-         Gox15l3EHlTonC1p4x0ogHK4MU6XfYrkLlJbWEv9lJh13RND/ONVju3Jn4rYSuPJqeD0
-         fakQ==
+        b=qMGM3d5U3CCzG91w30TAaBSAnSiTKhKtddDh+e2WMiwBM7AR/PI8qZnE2duM0Mbyiw
+         BgAxYg+vxffNbsdczvlBwgl1BdcXdXyeRDg7OljD60Jv/3edou9qeBn9V9plRvnn3jCw
+         +CFge97eiKIoqHhhuE09b1AvWmcm5jvJi5EBfojAxtzdVF0o31qV/W/5uAL4wYO+rySF
+         SGcBbACVmlkIMl+Yl4Q+1tqX4b5h2/S7Xyax4dWf285rqO8FRu99dlKve9q6GCKELuJX
+         wiB8K3F6rFUmUa8iY5CFdCYW+zw5w5LiSBl0i9x9xGfE40meAVBNyKSUMjNnS3Zhppzs
+         Kueg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=zCWoXaE9CSIx1Fjr1ylz1D6qB6/9bGR/F957/IacbAU=;
-        b=oqL3Z3IQGSF0BHyZ3fyvm/sC6Ntp+S3Cl8UOgnb1m0CbLAXpyel/772u0wogF3F7UF
-         8Kgg+Ds4e1tT8Yt1+HwvPpETQPDTu9cFcZ16wUmc3kqN7R3jWyJ/JyVE1nW8/PadZqWh
-         bJMMs1VWtLn+8+7pDexQaqFz5Hpfk+o+H977w1/F+yjy37PH9dCbn5atjp/jgc5ZDkvz
-         HPHJThkdk98CZQhIQigBki7jhf94H8M03ad7QCOiAeiFSi1XdofvoCDGcBnRFaxZpaEY
-         euj7AH9zW8iVsjH8x1XAmIzMV7522z1dl1Nebvhm1nYNfexT0mnxSEs0qsuSoMD8oOl+
-         4ezw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date;
+        bh=wDXvgexGRKQ7fGBA23f8xKPsKBQYwDPjnmBJ+pvTvrs=;
+        b=y4/biMTLksTfv6h1iQUejB897j3/qVjadLEIbO8z7MuysIf3lHimdeIwV+aOLnWh3l
+         tXb7HWwCnBaDRJ/568QBtLjEQM13lzhR9O5TLjLdrZPalVBYAy24XWtkN45p9fgaQFfG
+         pMAqbndq61IrfyNLsGa3FyzpmLKdRK2gaK4K2YTxpHZ0yGXqHTLlt6JJhERvb291bizd
+         iNy0BiRkr3JiYttZzexhYsop47bSuqLe63UkEQw/49eqvGzdatLQhDjcr9gqHPIn9mwP
+         /rhGErccmg0eApiAqyNT6mPOBgC/4zSoxrTNtqAT1jkGl4WUFkxomo4pbT5E4mNh9LP5
+         mvcA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=c45QblMY;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id e89si194313qtd.3.2020.03.19.07.10.34
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2020 07:10:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id x7si80089ejw.0.2020.03.19.02.58.27
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 02:58:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=c45QblMY;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 24F862070A;
-	Thu, 19 Mar 2020 14:10:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584627033;
-	bh=yKhkUWOWnbbbm9QJQ/4MYfWciCB5avXwORs6prg5UeM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=c45QblMYSqls0jopjnq32hcgvmMOMwuY++hGBN8iAuzqqiiZOdyjeVJoWB+qqNfjK
-	 tjniqG0GBAEIxC6BSJqQHrYKrAQ7sFSFtu8ep5+TGyMS5E2q7AnNImIkWFVhFhLm/i
-	 rMdQEODhzqK6QFEQ4lht61HmGupeNqVZ9eurFzCQ=
-Date: Thu, 19 Mar 2020 15:10:31 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: R Veera Kumar <vkor@vkten.in>
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 26735 invoked from network); 19 Mar 2020 09:58:25 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 09:58:25 -0000
+Date: Thu, 19 Mar 2020 15:28:15 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Hans de Goede <hdegoede@redhat.com>,
 	Larry Finger <Larry.Finger@lwfinger.net>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [RESEND PATCH] staging: rtl8723bs: hal: Correct typos and long
- line comments
-Message-ID: <20200319141031.GA24885@kroah.com>
-References: <20200319095807.GA3243@tulip.local>
+Subject: [RESEND PATCH] staging: rtl8723bs: hal: Correct typos and long line
+ comments
+Message-ID: <20200319095807.GA3243@tulip.local>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200319095807.GA3243@tulip.local>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-On Thu, Mar 19, 2020 at 03:28:15PM +0530, R Veera Kumar wrote:
-> Correct long line comments to respect 80 character line limit.
-> Correct comment lines as per kernel-doc coding style.
-> Correct typos in the comments.
-> Misspelling found using checkpatch.pl.
+Correct long line comments to respect 80 character line limit.
+Correct comment lines as per kernel-doc coding style.
+Correct typos in the comments.
+Misspelling found using checkpatch.pl.
 
-Hi,
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+ drivers/staging/rtl8723bs/hal/Hal8723BReg.h  | 14 ++---
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c | 61 ++++++++++++--------
+ 2 files changed, 44 insertions(+), 31 deletions(-)
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+diff --git a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
+index ce02457922b7..b9aca99478db 100644
+--- a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
++++ b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
+@@ -415,13 +415,13 @@
+ #define	IMR_BCNDMAINT3_8723B		BIT23	/*  Beacon DMA Interrupt 3 */
+ #define	IMR_BCNDMAINT2_8723B		BIT22	/*  Beacon DMA Interrupt 2 */
+ #define	IMR_BCNDMAINT1_8723B		BIT21	/*  Beacon DMA Interrupt 1 */
+-#define	IMR_BCNDOK7_8723B		BIT20	/*  Beacon Queue DMA OK Interrup 7 */
+-#define	IMR_BCNDOK6_8723B		BIT19	/*  Beacon Queue DMA OK Interrup 6 */
+-#define	IMR_BCNDOK5_8723B		BIT18	/*  Beacon Queue DMA OK Interrup 5 */
+-#define	IMR_BCNDOK4_8723B		BIT17	/*  Beacon Queue DMA OK Interrup 4 */
+-#define	IMR_BCNDOK3_8723B		BIT16	/*  Beacon Queue DMA OK Interrup 3 */
+-#define	IMR_BCNDOK2_8723B		BIT15	/*  Beacon Queue DMA OK Interrup 2 */
+-#define	IMR_BCNDOK1_8723B		BIT14	/*  Beacon Queue DMA OK Interrup 1 */
++#define	IMR_BCNDOK7_8723B		BIT20	/*  Beacon Queue DMA OK Interrupt 7 */
++#define	IMR_BCNDOK6_8723B		BIT19	/*  Beacon Queue DMA OK Interrupt 6 */
++#define	IMR_BCNDOK5_8723B		BIT18	/*  Beacon Queue DMA OK Interrupt 5 */
++#define	IMR_BCNDOK4_8723B		BIT17	/*  Beacon Queue DMA OK Interrupt 4 */
++#define	IMR_BCNDOK3_8723B		BIT16	/*  Beacon Queue DMA OK Interrupt 3 */
++#define	IMR_BCNDOK2_8723B		BIT15	/*  Beacon Queue DMA OK Interrupt 2 */
++#define	IMR_BCNDOK1_8723B		BIT14	/*  Beacon Queue DMA OK Interrupt 1 */
+ #define	IMR_ATIMEND_E_8723B		BIT13	/*  ATIM Window End Extension for Win7 */
+ #define	IMR_TXERR_8723B			BIT11	/*  Tx Error Flag Interrupt Status, write 1 clear. */
+ #define	IMR_RXERR_8723B			BIT10	/*  Rx Error Flag INT Status, Write 1 clear */
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+index a69e8ae16565..f85cbcaf2c2b 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+@@ -823,7 +823,11 @@ static void ConstructProbeRsp(struct adapter *padapter, u8 *pframe, u32 *pLength
+ }
+ #endif /*  CONFIG_AP_WOWLAN */
+ 
+-/*  To check if reserved page content is destroyed by beacon beacuse beacon is too large. */
++/*
++ * To check if reserved page content is destroyed by beacon because
++ * beacon is too large.
++ */
++
+ /*  2010.06.23. Added by tynli. */
+ void CheckFwRsvdPageContent(struct adapter *Adapter)
+ {
+@@ -1409,16 +1413,22 @@ void rtl8723b_set_ap_wowlan_cmd(struct adapter *padapter, u8 enable)
+ }
+ #endif /* CONFIG_AP_WOWLAN */
+ 
+-/*  */
+-/*  Description: Fill the reserved packets that FW will use to RSVD page. */
+-/* 			Now we just send 4 types packet to rsvd page. */
+-/* 			(1)Beacon, (2)Ps-poll, (3)Null data, (4)ProbeRsp. */
+-/* 	Input: */
+-/* 	    bDLFinished - false: At the first time we will send all the packets as a large packet to Hw, */
+-/* 						so we need to set the packet length to total lengh. */
+-/* 			      true: At the second time, we should send the first packet (default:beacon) */
+-/* 						to Hw again and set the lengh in descriptor to the real beacon lengh. */
+-/*  2009.10.15 by tynli. */
++/*
++ * Description: Fill the reserved packets that FW will use to RSVD page.
++ *
++ * Now we just send 4 types packet to rsvd page.
++ * (1)Beacon, (2)Ps-poll, (3)Null data, (4)ProbeRsp.
++ *
++ * Input:
++ *
++ * bDLFinished - false: At the first time we will send all the packets as a
++ * large packet to Hw, so we need to set the packet length to total length.
++ *
++ * true: At the second time, we should send the first packet (default:beacon)
++ * to Hw again and set the length in descriptor to the real beacon length.
++ */
++
++/* 2009.10.15 by tynli. */
+ static void rtl8723b_set_FwRsvdPagePkt(
+ 	struct adapter *padapter, bool bDLFinished
+ )
+@@ -1599,7 +1609,7 @@ static void rtl8723b_set_FwRsvdPagePkt(
+ #ifdef CONFIG_GTK_OL
+ 	BufIndex += (CurtPktPageNum*PageSize);
+ 
+-	/* if the ap staion info. exists, get the kek, kck from staion info. */
++	/* if the ap station info. exists, get the kek,kck from station info. */
+ 	psta = rtw_get_stainfo(pstapriv, get_bssid(pmlmepriv));
+ 	if (!psta) {
+ 		memset(kek, 0, RTW_KEK_LEN);
+@@ -1791,18 +1801,21 @@ static void rtl8723b_set_FwRsvdPagePkt(
+ }
+ 
+ #ifdef CONFIG_AP_WOWLAN
+-/*  */
+-/* Description: Fill the reserved packets that FW will use to RSVD page. */
+-/* Now we just send 2 types packet to rsvd page. (1)Beacon, (2)ProbeRsp. */
+-/*  */
+-/* Input: bDLFinished */
+-/*  */
+-/* false: At the first time we will send all the packets as a large packet to Hw, */
+-/* 	 so we need to set the packet length to total lengh. */
+-/*  */
+-/* true: At the second time, we should send the first packet (default:beacon) */
+-/* 	to Hw again and set the lengh in descriptor to the real beacon lengh. */
+-/*  2009.10.15 by tynli. */
++/*
++ * Description: Fill the reserved packets that FW will use to RSVD page.
++ *
++ * Now we just send 2 types packet to rsvd page. (1)Beacon, (2)ProbeRsp.
++ *
++ * Input: bDLFinished
++ *
++ * false: At the first time we will send all the packets as a large packet to
++ * Hw, so we need to set the packet length to total length.
++ *
++ * true: At the second time, we should send the first packet (default:beacon)
++ * to Hw again and set the length in descriptor to the real beacon length.
++ */
++
++/* 2009.10.15 by tynli. */
+ static void rtl8723b_set_AP_FwRsvdPagePkt(
+ 	struct adapter *padapter, bool bDLFinished
+ )
+-- 
+2.20.1
 
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did many different things all at once, making it difficult
-  to review.  All Linux kernel patches need to only do one thing at a
-  time.  If you need to do multiple things (such as clean up all coding
-  style issues in a file/driver), do it in a sequence of patches, each
-  one doing only one thing.  This will make it easier to review the
-  patches to ensure that they are correct, and to help alleviate any
-  merge issues that larger patches can cause.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 
