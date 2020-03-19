@@ -1,94 +1,75 @@
 X-GM-THRID: 6805913239014080512
-X-Received: by 2002:a62:19d8:: with SMTP id 207mr4326657pfz.278.1584626910235;
-        Thu, 19 Mar 2020 07:08:30 -0700 (PDT)
+X-Received: by 2002:a5d:9902:: with SMTP id x2mr2797386iol.81.1584626883825;
+        Thu, 19 Mar 2020 07:08:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:a35b:: with SMTP id v27ls1602481pgn.6.gmail; Thu, 19 Mar
- 2020 07:08:28 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtkNNtxa6MiB+/4KFypPdgTzZ6MUkn+c+ZmcJfSxMe4dEqij3jT2bsrk846Dy6TgCaEP8ZL
-X-Received: by 2002:a62:76c3:: with SMTP id r186mr4214458pfc.303.1584626908706;
-        Thu, 19 Mar 2020 07:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584626908; cv=none;
+Received: by 2002:a92:c9d1:: with SMTP id k17ls601848ilq.9.gmail; Thu, 19 Mar
+ 2020 07:08:02 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt3lMVj/2ujGUtb1iPWgNJiiRTnK/bNL/Zux0MxUb2NrC+xARkHAUKWs/+8EMYHabcsVy0q
+X-Received: by 2002:a92:8901:: with SMTP id n1mr3588213ild.176.1584626882453;
+        Thu, 19 Mar 2020 07:08:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584626882; cv=none;
         d=google.com; s=arc-20160816;
-        b=Er5jKLNRktcT+6sCznGAlwr0fmprL22ql2duzoS2VP9KXCMLhd/Sbfi7EITL9HuHNU
-         X/c4M1Mn6Sc8oheFzXNUy9w0rnQ+w7/nMWqzDLJlAAX2fKclQwf0ikhXk6nQK2iBH2mA
-         zz0mMm5CFtPJeZjdp0BJPIgMJKp5Vql+YsA8Gf1zba1vVP3zBunDB67HWEJgrFw6+z/G
-         QkMEBCrntwcam4D4fyk+dfRZZcfagmAuoPjFATARvF6a7XQOmdyDC5ABFMC14XoqJGuA
-         DDZpYdqy6c9pyFXiCxlVsiwTzy87pdRL6nsUT6p2mAxaekWUMB8GmBTlJRyYB80wVfg3
-         7tyQ==
+        b=tF4NPQwuL8rr/bVB6qnyMPkVs+crP42mifIR7vG6aRqVnB+0heWF3l69h24sbcj0oN
+         CWD6EltUfR5KUS0oCL7D0zHMz0RVuUtVaVJqOy1KY/XENn+7+dBfBZZCjbXP7IOswjL1
+         h9ld0Fz1X20Z4CRImv2xagAn2pbGCYj+j5Oi4J3IjR8fRy//LHbPnv4pvaWva6B32GMu
+         lcllNKQ3s17/DaBgucYkVU/2Q5STqI0E+NvwcIszWeMLh7LCNZrifKpO+ZIVjSw20mSL
+         AubDbzdIr/JXz+4ovGKRLtoQIm427eclv1YF2DnnVJnrawnJ3SleDMyqpLKlfGi5/6TC
+         +J3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=tXL89U5qFiqEFHJ6bxjquqs8sEVFMDEIk54VyxX3kak=;
-        b=qnJoKrQrHJ11QJMPL/jvIVeHpBA7obEe6OoeuhTOmunZDfelW0EKV22he5xvHes+rS
-         lb+3ni8DIFQYsJPaUJoMU49GxwaJXaAbxRMGaMUnE526EHL1CADEqzikRiGtS4wLsHYQ
-         zTUDM5C8N77Yde3U5EqOdkCeCh52KBwPG4gg27h0Cwsw2+4afSLVhKN1tJwq81MivUuh
-         SP3CB6YsPmlvRWZ6rccO5BuN4u2V1XS7tdFhw3PboQrHpllGUU0vXtqKApBLxR8m1Bn2
-         ui0rZzQXjGdkmthxdbnMb2ygBgWF1kqZYQUzB+ZXDhzhV34/EG8CKCevoq7TKrM66fur
-         vTmw==
+        bh=9oX1bXgkhwXZNUM6oYZL97bvFLrKjuBtvJGw52x7P78=;
+        b=uGUypoS/fHL2QG2DOHwq+K9eb+kDlr08/xmBWh/ZGVeN5xybipv+a8ZiUv4AvJcOgt
+         gq1kMWsymUkjxzRZ95xMq+5axLvz0fjvFwCoBQPf7lsFbOJubPqyNv+MWQJjbtgX2Qvd
+         ZJBwwJtoz5O0Ao+MvzRGLkFso6Clu4qEtvvMLVf/+HZFN9OYHoUZArj08ieMT+Hqku2e
+         pK3TKB5vr35vrnwr6M0QeWE9RBVLAnulBnv+KpXu2iEezlgSjcprjH63TJ/bu+42UrYP
+         jfc9i3zXySM1sOLqStAyn4n/rqge2MtpDyhO0gBSU8P4Q3AuA4lkyp1cFrEu6dsA3opF
+         31yg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=OGl0IZnB;
+       dkim=pass header.i=@kernel.org header.s=default header.b=xS8QT3od;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Return-Path: <gregkh@linuxfoundation.org>
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id u15si119279pjm.1.2020.03.19.07.08.28
+        by gmr-mx.google.com with ESMTPS id k88si144042ilg.1.2020.03.19.07.08.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2020 07:08:28 -0700 (PDT)
+        Thu, 19 Mar 2020 07:08:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=OGl0IZnB;
+       dkim=pass header.i=@kernel.org header.s=default header.b=xS8QT3od;
        spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 0B4642137B;
-	Thu, 19 Mar 2020 14:08:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4878B2137B;
+	Thu, 19 Mar 2020 14:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584626908;
-	bh=VpSg+xHlzQnKXZ0niKRPqKBpHrAu+hu84pB8VRtynOU=;
+	s=default; t=1584626881;
+	bh=jzgz5ftASLqloZf5Q3mh71ToWwIlUgv7Gn9xyoCvw48=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OGl0IZnBJuUArjuczfC4ypfY0eaeYpuPCIHe+UQYkinf6TrRZqcdK2ZFsYYuYq5OZ
-	 yCvnXzsLAw18H2FoKX5EZ20H3Y5foC52fZVF4m4+Htpx5aCPYCGMH6ohfxqka9LOSV
-	 gbGRKDLdjVK4p0AOfDIriIKZClJ3ExfnyzaZxN3M=
-Date: Thu, 19 Mar 2020 15:08:25 +0100
+	b=xS8QT3odTyj7/D+jTlyFBkARqq+l6Rtdl7YoxSX64Y5IMvQZODJrfcatuAi/U9k8C
+	 7ZS1HQOb8Jq4vY+inmA11+4o+uk8+y75SNqkMalXVYiS4aV4gGUoj+9fit4x+h9HTs
+	 LdN5dCj91zgNV38uy9uTqpv9GHILcCEs3A9dsmps=
+Date: Thu, 19 Mar 2020 15:07:59 +0100
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: R Veera Kumar <vkor@vkten.in>
 Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [PATCH 2/2] staging: rtl8723bs: os_dep: Correct long line
- comments
-Message-ID: <20200319140825.GC4192874@kroah.com>
+Subject: Re: [PATCH 1/2] staging: rtl8723bs: os_dep: Correct typo in comments
+Message-ID: <20200319140759.GB4192874@kroah.com>
 References: <cover.1584624834.git.vkor@vkten.in>
- <96f4bde2df7cea5309398a6fdd5d52836d5ae914.1584624834.git.vkor@vkten.in>
+ <b2b27aad972dc77158e06bedda1a4a677b47f3af.1584624834.git.vkor@vkten.in>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <96f4bde2df7cea5309398a6fdd5d52836d5ae914.1584624834.git.vkor@vkten.in>
+In-Reply-To: <b2b27aad972dc77158e06bedda1a4a677b47f3af.1584624834.git.vkor@vkten.in>
 
-On Thu, Mar 19, 2020 at 07:09:00PM +0530, R Veera Kumar wrote:
-> Correct long line comments to respect 80 character line
-> limit.
+On Thu, Mar 19, 2020 at 07:08:59PM +0530, R Veera Kumar wrote:
+> Correct a typo in two comments.
+> Misspelling found using checkpatch.pl.
 > 
 > Signed-off-by: R Veera Kumar <vkor@vkten.in>
-> ---
->  drivers/staging/rtl8723bs/os_dep/recv_linux.c | 27 ++++++++++++++-----
->  1 file changed, 21 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-> index a6491f163272..8296ea03ecde 100644
-> --- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-> +++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-> @@ -35,7 +35,9 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
->  
->  	for (i = 0; i < NR_RECVFRAME; i++) {
->  		if (precvframe->u.hdr.pkt) {
-> -			dev_kfree_skb_any(precvframe->u.hdr.pkt);/* free skb by driver */
-> +
-> +			/* free skb by driver */
-> +			dev_kfree_skb_any(precvframe->u.hdr.pkt);
 
-Why did you add an extra blank line for no reason?
-
-Be careful.
+Like your other series, you need better subject lines for these as well.
 
 thanks,
 
