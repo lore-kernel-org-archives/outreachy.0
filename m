@@ -1,123 +1,123 @@
-X-GM-THRID: 6947467648210829312
-X-Received: by 2002:ac8:5716:: with SMTP id 22mr20951097qtw.212.1617583364283;
-        Sun, 04 Apr 2021 17:42:44 -0700 (PDT)
+X-GM-THRID: 6805954026607214592
+X-Received: by 2002:a17:902:ba93:: with SMTP id k19mr4071214pls.73.1584635465301;
+        Thu, 19 Mar 2020 09:31:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:620a:4455:: with SMTP id w21ls7880628qkp.7.gmail; Sun,
- 04 Apr 2021 17:42:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsBVHNJVLeylGup0gStsxyAEWYVtHvYn5Z5IRTSMdbzTSiirV2JCzVQCB75XwcSJgiFf3G
-X-Received: by 2002:a37:6243:: with SMTP id w64mr21725677qkb.295.1617583363497;
-        Sun, 04 Apr 2021 17:42:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617583363; cv=none;
+Received: by 2002:a17:902:bb93:: with SMTP id m19ls1590554pls.6.gmail; Thu, 19
+ Mar 2020 09:31:03 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtov4o+He2iu1ZGgAAXPOL/Mr4rHfADHSecMZTmXigztcXbKpFhK6ZJWCoQc+m7KKKk3pjO
+X-Received: by 2002:a17:902:b617:: with SMTP id b23mr4286995pls.285.1584635463722;
+        Thu, 19 Mar 2020 09:31:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584635463; cv=none;
         d=google.com; s=arc-20160816;
-        b=G9/oXM36cH6DfFefsYEMlR7HBCpc1fJTpJnoTG4ufgxYZjTcC3+n2KPmG/sQn6KBdN
-         jR9x7tuu1Ajymd1cxTpMKHeA4Yy3GYjczLBDYlpNsnw594xPQ7hRBssHMv2W0UcZfeiY
-         7OiWabc07fWVRK7xCLLQ1ku2d0Mo8Q2Fg34T2FaUKdbEbeICzsew8Fk1r7s3gPqXGkQh
-         tq8jpx35CEx5DxbCuxhuHG7keMq1LH28ATvjrQ7iFZhMLRTOTGHQD70D6onioId0U3NE
-         rvH9kyJZGwmABAwTz0na8VL3uhlketcQ75ei2yBW27Sy7PQCTZPrnoII6aRFI80t+Jsb
-         tQhw==
+        b=w8Xxl2cPytUd0VwKJ4cZy9JREYfWQQcg7+IM/AA4ETTv3ZyAaj6FVNPkQIHHRfDjAL
+         oZTIt7tPbP94NXBHcdGCFSN7NWu6QtzC+1WDWu3yP2nq3WeMr2A9HAXIvLHNjEI9PK3F
+         pkiw9/MSgLfqU3WCN2TGMYeTt5jTGA+XdRvohG2tbH4SpbmL+n8hEnQQfhh9FhLaxtrQ
+         vyxOG99T50+5V4fxcUJUcYx9GX7h2yhJ5P5apgVN9sZGsq+kGYnuf9ZZlk86fwJ2Mgdy
+         d2d5zwp+6EWsi4O6TnvE6SXzDRrwHa9NSdvPg6tXdzEXLmQan3qxzokm5m5EgqlRHJvt
+         /o2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=IroJdoAcq5zAI1honZ3ThwMkWQDS5Bqq0q4OifWOrBY=;
-        b=JShKd4A22Gozc0InA/hacCF47pSECX9UrWwS7LmLh/b0of5i0vmRzzdhbyffHhuh0O
-         sJ2qtsBDQJnxOH29GgkAGGLV3Y9knDOAkdcidWNeqTMHE8s4NKrNQwdnqlHr8yrvAGsv
-         gnZqpM1UR9vnjovi3Hp9L/OEi1dJz9AFQRqsbkFHYEzZf4FgO9lE5QvAHgscUX6PPv95
-         SYEOD0ufFaBawCe3oWf/hHGFLZlCtjWjh24yJj1ZAROMWuri037WwEzzhoQ3TtNo5HoU
-         6/6voSjVdGPm8F24RI/S6E42PEQ/GriSqGvfW0aW7xFtFnFDoRoBRG3iZgogFtcdB5K8
-         +DlA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=LLPQP4FYX8Zm/sMa5BwLYM32YtKjTvqGv8E0qY71aIU=;
+        b=AzThcPaemdDxSh5J2XseMDOEjdfSW5P8mbfVttkTFywefNMCCiL/J96sX63X6+iPyf
+         blmgYulvjq5T1RZTZsGUBu3bdvxoZHnYWnOOT+9wbJ1TO9sVj0/aPOz72YpNjrBLoitE
+         we0yl2Qn3CTkD8m/UDTNHCQDbzcDBbHKdhenwyCYNTVb6lyVA351nmTKTJh8O6bJGdjs
+         wdXJ07ZfaR6QDFAEUAYElVzEhfwe0WVd+c/EbNoYw9Oo9q+1JZfGtOHPqC3ehFEg58xo
+         5Bm8v0Z9082j6bd3v68OEmB6YfVzQut3xPQxsN5Wve+4NyVh8lpSKnm5SNvct3688Ygz
+         cudA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i3C6WhOM;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1029 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pj1-x1029.google.com (mail-pj1-x1029.google.com. [2607:f8b0:4864:20::1029])
-        by gmr-mx.google.com with ESMTPS id k1si2882482qtg.2.2021.04.04.17.42.43
+       dkim=pass header.i=@kernel.org header.s=default header.b="HR3xTa/O";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 188si257261pfb.1.2020.03.19.09.31.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 04 Apr 2021 17:42:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1029 as permitted sender) client-ip=2607:f8b0:4864:20::1029;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Mar 2020 09:31:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i3C6WhOM;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1029 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1029.google.com with SMTP id t24so1159884pjw.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Apr 2021 17:42:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=IroJdoAcq5zAI1honZ3ThwMkWQDS5Bqq0q4OifWOrBY=;
-        b=i3C6WhOMU0EGF4ZLXdWYwphURgSehOFih2BYREbGOAokXJ7mN1DWHHZcFPF3r3lAZU
-         zekilOVO0OAJ/QLe/J1Q/dLt0NqTBP8TxHNnDvo4ECHR9o1QCvRwkFwt/DGH6taUAchR
-         ModzHy0esq9zd2fKxkn/lD7HhWA6zfnk/xgt+Y9piYPpkJkA5fQcj4Utz+gM1MztnT0v
-         uiqfpOaJoReWJ91Q+7RJWbhs/3vyObiVvGEccB8zkM54rtOCS3a3Z1hUEQyNIGHQuzqm
-         h2FPvaLt5rJl47YRSqAcO724h10Ns+UA0p8hb8vDhft8U8DcuX60ZICALDosO6Wsn2EI
-         W21g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=IroJdoAcq5zAI1honZ3ThwMkWQDS5Bqq0q4OifWOrBY=;
-        b=IbFxw4zFD36ujPJpUbp3drxMhpbVQGyrjlZVVsHgY645A23m1/Q/+Zd2w2mJsrFB4y
-         5EfSdJ3xA/nDqQWcboPzkNE6To5hmLBk5NYRxdCILYc5r2xKdNzzsCoghlk8jfiUDKIk
-         2+u9h14B0nb9p1WOq3m0yAODQMyDSJcb+xgficOTdaxrwir33/RyDC7EZXSqraCmuYnz
-         eR3kxle+eg9XV6Ql0805igAKa3ylcGDhoKuq/VYkScPPnZigqUOzgt0KRdjkwEm1XW6u
-         mP8Kobe2wt73noy1uBujLaba9jQfzIFEuJH4Cxo5y6dQSxDsqWZyHvK+pX1DmiyEVWfV
-         cJiw==
-X-Gm-Message-State: AOAM531lgqPknKi/Adkda3+c0qWQbrJFwxsiFKWiXEHF8gQTwjfFGNQ5
-	3r9rElwSICQ6V7xqqd1CWeA=
-X-Received: by 2002:a17:902:ec06:b029:e8:e57f:680 with SMTP id l6-20020a170902ec06b02900e8e57f0680mr6438673pld.8.1617583362893;
-        Sun, 04 Apr 2021 17:42:42 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([2409:4042:4d84:a21:5e54:ca6d:ddda:81d3])
-        by smtp.gmail.com with ESMTPSA id q19sm13364813pgv.38.2021.04.04.17.42.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Apr 2021 17:42:42 -0700 (PDT)
-Date: Mon, 5 Apr 2021 06:11:43 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: manish@marvell.com, GR-Linux-NIC-Dev@marvell.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, mitaliborkar810@gmail.com
-Subject: [PATCH] staging: qlge: remove else after break
-Message-ID: <YGpcx9MZuZJFy0Z/@kali>
+       dkim=pass header.i=@kernel.org header.s=default header.b="HR3xTa/O";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E86372072C;
+	Thu, 19 Mar 2020 16:31:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584635463;
+	bh=9xXmcZ2JgehAjPClBVp3wuOlsi7g5YzirmWePU5/H+I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HR3xTa/OX8WnTTRkcpp6IBtbpclapHg6nXCodEstSrfG8wQ6gUzDKED0rYYJ87Ot0
+	 KKq5fsmqzBtpTAOC/j1t2k32o3P+UtqbQfDBM8/z/jK5edQ1X/0WspF9IOHeOyoWsa
+	 t/V9VHW5CYfg5WZCEf1awKT+HVmjMGNqv/uL56CM=
+Date: Thu, 19 Mar 2020 17:31:01 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [PATCH v2 2/2] staging: rtl8723bs: os_dep: Correct long line
+ comments
+Message-ID: <20200319163101.GA240188@kroah.com>
+References: <cover.1584633953.git.vkor@vkten.in>
+ <876ab0cca61886355ca75004ba9ec9e62465b7bd.1584633953.git.vkor@vkten.in>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <876ab0cca61886355ca75004ba9ec9e62465b7bd.1584633953.git.vkor@vkten.in>
 
-linux-staging@lists,linux-kernel@vger.kernel.org
-Bcc: 
-Subject: [PATCH] staging: qlge:remove else after break
-Reply-To: 
+On Thu, Mar 19, 2020 at 09:47:13PM +0530, R Veera Kumar wrote:
+> Correct long line comments to respect 80 character per
+> line limit.
+> 
+> Signed-off-by: R Veera Kumar <vkor@vkten.in>
+> ---
+> Changes in v2:
+>  - Remove an extra blank line added by error
+> ---
+>  drivers/staging/rtl8723bs/os_dep/recv_linux.c | 26 ++++++++++++++-----
+>  1 file changed, 20 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+> index a6491f163272..35241c0493d2 100644
+> --- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+> +++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+> @@ -35,7 +35,8 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
+>  
+>  	for (i = 0; i < NR_RECVFRAME; i++) {
+>  		if (precvframe->u.hdr.pkt) {
+> -			dev_kfree_skb_any(precvframe->u.hdr.pkt);/* free skb by driver */
+> +			/* free skb by driver */
+> +			dev_kfree_skb_any(precvframe->u.hdr.pkt);
+>  			precvframe->u.hdr.pkt = NULL;
+>  		}
+>  		precvframe++;
+> @@ -80,7 +81,10 @@ _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8
+>  		((!memcmp(sub_skb->data, rtw_rfc1042_header, SNAP_SIZE) &&
+>  		  eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) ||
+>  		 !memcmp(sub_skb->data, rtw_bridge_tunnel_header, SNAP_SIZE))) {
+> -		/* remove RFC1042 or Bridge-Tunnel encapsulation and replace EtherType */
+> +		/*
+> +		 * remove RFC1042 or Bridge-Tunnel encapsulation and replace
+> +		 * EtherType
+> +		 */
+>  		skb_pull(sub_skb, SNAP_SIZE);
+>  		memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->src, ETH_ALEN);
+>  		memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->dst, ETH_ALEN);
+> @@ -112,7 +116,10 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+>  			/* DBG_871X("bmcast =%d\n", bmcast); */
+>  
+>  			if (memcmp(pattrib->dst, myid(&padapter->eeprompriv), ETH_ALEN)) {
+> -				/* DBG_871X("not ap psta =%p, addr =%pM\n", psta, pattrib->dst); */
+> +				/*
+> +				 *  DBG_871X("not ap psta =%p, addr =%pM\n",
+> +				 *  psta, pattrib->dst);
+> +				 */
 
-Fixed Warning:- else is not needed after break
-break terminates the loop if encountered. else is unnecessary and
-increases indenatation
+Why the extra ' ' character before the comment?
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
- drivers/staging/qlge/qlge_mpi.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+And that was a code line, not a comment line, it should just be removed
+entirely.  But as a separate patch please.
 
-diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
-index 2630ebf50341..3a49f187203b 100644
---- a/drivers/staging/qlge/qlge_mpi.c
-+++ b/drivers/staging/qlge/qlge_mpi.c
-@@ -935,13 +935,11 @@ static int qlge_idc_wait(struct qlge_adapter *qdev)
- 			netif_err(qdev, drv, qdev->ndev, "IDC Success.\n");
- 			status = 0;
- 			break;
--		} else {
--			netif_err(qdev, drv, qdev->ndev,
-+		}	netif_err(qdev, drv, qdev->ndev,
- 				  "IDC: Invalid State 0x%.04x.\n",
- 				  mbcp->mbox_out[0]);
- 			status = -EIO;
- 			break;
--		}
- 	}
- 
- 	return status;
--- 
-2.30.2
+thanks,
 
+greg k-h
 
