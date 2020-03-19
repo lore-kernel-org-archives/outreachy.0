@@ -1,258 +1,239 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:a17:902:8543:: with SMTP id d3mr7034844plo.314.1584688434324;
-        Fri, 20 Mar 2020 00:13:54 -0700 (PDT)
+X-Received: by 2002:a17:902:8d94:: with SMTP id v20mr4235341plo.259.1584634579169;
+        Thu, 19 Mar 2020 09:16:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:9887:: with SMTP id s7ls2965083plp.9.gmail; Fri, 20
- Mar 2020 00:13:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsipdNvjlRcrLrZq8IS4Zm2mCguGktt+lyRPkMPgxZ3xN6Ctn8nvPtE+SDX9Wx9zu+bRyIs
-X-Received: by 2002:a17:90a:1d4:: with SMTP id 20mr7602498pjd.95.1584688432764;
-        Fri, 20 Mar 2020 00:13:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1584688432; cv=pass;
+Received: by 2002:a62:1853:: with SMTP id 80ls1458046pfy.11.gmail; Thu, 19 Mar
+ 2020 09:16:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsQTIsebMpFD46QLf+JoSBB4YCjCKeWdMoQyL2hh0ePvA50WjYhWYjMZhUxwI8u0MDGfxSQ
+X-Received: by 2002:a05:6a00:2c7:: with SMTP id b7mr4791300pft.226.1584634577585;
+        Thu, 19 Mar 2020 09:16:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584634577; cv=none;
         d=google.com; s=arc-20160816;
-        b=xXoijhy+0DR8A2m1mIbMb7UuY49sfweLfnS/wvg+mYy2F6wJcZnT6YZJR2MEoWa1pf
-         ts8RZjc6vWkECoPu0UdCbdKq9soOzolKH8jnJ6YkEfYeIrd+PlvAJ7WPJtP7e8Z18YFP
-         wEcBmS5BV4UHCwroJnnd7nYDYZt8k4vBxjPfUEerzF1/WT+xbjfQCghLF3RKY7YWZWUY
-         uLJQ/ORzLHkvU91XPY7hqfCbEGw3LjSlz2/eBIPhXh5UC7zVme2GSxSYEJKzzwbpQANv
-         ChheNUfTDptZ8WpbnDNwfu/Lwkf2jJ9WDVlSur9xDRzHItQX5KwVjXl3WkthChzeISHk
-         4vNw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=E8aFbf3TEDKrY8TkPvSVFO4taYq939xC6fVIg9H5yHo=;
-        b=sAr26F9fe6kd7LLhDZbziHOAWFGmVGjMbndGUABpi4Dbx1W8QKTwQDCtB/SCHT+xCC
-         3rXAsTSCGPuR8KN0RF3nzXIyiBe771RQFmaC1O7OTFlwdcU3zRzELsqo7SwSrmlHtub5
-         SP8j76kAsghVoID0sYKwPMnPkM90l7RY0kU759YtqUSzAWxQQas1rhjSDf2iQ92Dd2cr
-         LT5f9c4V+Yygqy7qIviEmPCnpWZGXUDDvwD+PR4DoJhwU5NY6cMJCx4O5kirGxyaPWg2
-         nVP4kNLOU7MzTuoMfHTNLEI83lPalptmEbUrwrIk+HBbQ0PYNB3NmwBYXYLTPZcAhKbn
-         +tJQ==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@analog.onmicrosoft.com header.s=selector2-analog-onmicrosoft-com header.b=2uYGAGN3;
-       arc=pass (i=1 spf=pass spfdomain=analog.com dkim=pass dkdomain=analog.com dmarc=pass fromdomain=analog.com);
-       spf=pass (google.com: domain of alexandru.ardelean@analog.com designates 148.163.135.77 as permitted sender) smtp.mailfrom=alexandru.Ardelean@analog.com
-Return-Path: <alexandru.Ardelean@analog.com>
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com. [148.163.135.77])
-        by gmr-mx.google.com with ESMTPS id j14si275196pgg.1.2020.03.20.00.13.52
+        b=G5Oe8txoB0hR/0BPhPAkLAin1/OQwMsI0eiMvVaZ/THynJKAfrnrQcW6LyQpP9MIJU
+         K6p5/Mh9dtEZ8g7gRCyDQjpoZKX32t1VbaDVkIWwSSpZYdqEVZYNNUXPUJuy+6s80JAc
+         1QAL26siPYI+PgU3xqye6koFKd6lqRGhjtUQGrIA8xOHWTkFADyXZ0CD9jokFk51ku4Q
+         NRtyLNrO9HJ7xo+Lat4Q50ZwiPFL7nMbvPXAnxR/iDs3f72eBuUZ6oiNfP5eA/RO+vjS
+         27ZcCqm8DrclCzM49DQ1zw9ZrH6+w2r95PmpDbbIKsZzHf+eoX1lWdeMsksmr7svraF/
+         aW9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=yfshhC39biBSdzchj6GiihemTNljr8EJSQyq8KQYNfE=;
+        b=xH8+8AiWh7gJ9oNLHpVcFGKdFux+hnwAhqElV4jTRt5pdpZhNHn6xneshI5+QHP093
+         Fftx7xNTdVyNsGjxbfaGpfo1lQPNnzOzTDDCThrOvqvcMgvPq8LCvUWDgzo8u1ZZSAve
+         OFMvM3CGhA3tt0j92KS9+401GydoEwAIFL6MSoTbUjObvxu2bnhBl2WLXItrGfXczZpZ
+         W45XMoTA/nyw+SoCKTdWHKbMdPzlFRE7GmCJCayVaUZn9KSDLqZgnPi42RfVhIJpsZ0X
+         aBE7/p0p4J7lUtdz8JxxVSrlDVyMk7FRbNE73qNoffenZZuoc8CtDk1Z7sZmrXtOH2TF
+         AnKQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="rrR/PhBq";
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id b10si221091pfo.6.2020.03.19.09.16.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2020 00:13:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alexandru.ardelean@analog.com designates 148.163.135.77 as permitted sender) client-ip=148.163.135.77;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Mar 2020 09:16:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@analog.onmicrosoft.com header.s=selector2-analog-onmicrosoft-com header.b=2uYGAGN3;
-       arc=pass (i=1 spf=pass spfdomain=analog.com dkim=pass dkdomain=analog.com dmarc=pass fromdomain=analog.com);
-       spf=pass (google.com: domain of alexandru.ardelean@analog.com designates 148.163.135.77 as permitted sender) smtp.mailfrom=alexandru.Ardelean@analog.com
-Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 02K7DEA1017965;
-	Fri, 20 Mar 2020 03:13:49 -0400
-Received: from nam12-mw2-obe.outbound.protection.outlook.com (mail-mw2nam12lp2042.outbound.protection.outlook.com [104.47.66.42])
-	by mx0a-00128a01.pphosted.com with ESMTP id 2yu751292u-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 20 Mar 2020 03:13:49 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AcGQBO4sKKjLX29TZwS7WOwsoOV7ZcFEliVTrwhaZq7S8rfUJfbUwgJJWffHLIWTZCRI6TpWjt3pPER7IqjDCTlv9dj9GoO8wdsDoaRzbrCQ5bQUvNMTuVrV//uw07BZtDWOZvixr+oqbh65v0xDFO1qDtvPB6svQhU9mS7J6gWkyeeEaWUHK6BvtdiUfLGU/gthnBVyYa/Q3d5tOrNMgcN8owsDgXlRY1KjoS4ep9W/1eetH3bfP7/10N2Ey1LYrhxtPITfisTc5XWbk3koasJM9Bu0nJM7kI99//wreT8Z2kfXMJJNO6Oziqvz8z7tkwHlHtIW6NqSZ+cSkiuITQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E8aFbf3TEDKrY8TkPvSVFO4taYq939xC6fVIg9H5yHo=;
- b=ZxFxGJQMI8wtWBsES1Dl5YTVYaNKnSk2JGoaBzwPzYmRQuTTOxioZJsQwVHqQXvTCmGaEtoRgTWnsDWGqEOh1O08gv1pGBMzNdnn74lzUI9RxmpY+nnnGmvjEcXVF4wFO3omdkiOu7guDRAYPtnUSSZLUNBHJGA8ob4RjSeFPUICAlttlsA41Eby6IIpbUzpZM89O1rwcfyFRARuGRIob1XePlwlOqc5wGTfpfBmqHodcVlkpJeS3wZEUr0ESuLU06OUe5iTX/GBSVvbpiEf6USWlHfvwP5GxttOpRAvJ9uV16jVM5byJkADWKgB9EB3Q1xRq7jozZXQwkkbHONx3w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analog.com; dmarc=pass action=none header.from=analog.com;
- dkim=pass header.d=analog.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="rrR/PhBq";
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id b72so1661347pfb.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 09:16:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=analog.onmicrosoft.com; s=selector2-analog-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E8aFbf3TEDKrY8TkPvSVFO4taYq939xC6fVIg9H5yHo=;
- b=2uYGAGN3TrmPA8FARE8Dq3uhvs88JTkGfRf+fT72AFqBTJ1NdZsE0ebvLwSo3cq0qoRplhf/RcCuy+BvZ9H9Pxb3NFIUsICmJqayxg6/Q+qdfCaD1yy0n9U8PzaHFtVCPYwbMUT9cxyWMQShKzf9VtJZhAAAOmN18T4ja4m189g=
-Received: from DM6PR03MB4411.namprd03.prod.outlook.com (2603:10b6:5:10f::14)
- by DM6PR03MB3609.namprd03.prod.outlook.com (2603:10b6:5:b0::31) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.16; Fri, 20 Mar
- 2020 07:13:48 +0000
-Received: from DM6PR03MB4411.namprd03.prod.outlook.com
- ([fe80::c47f:ceee:cfda:6a7f]) by DM6PR03MB4411.namprd03.prod.outlook.com
- ([fe80::c47f:ceee:cfda:6a7f%3]) with mapi id 15.20.2814.025; Fri, 20 Mar 2020
- 07:13:47 +0000
-From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
-To: "mh12gx2825@gmail.com" <mh12gx2825@gmail.com>
-CC: "kieran.bingham@ideasonboard.com" <kieran.bingham@ideasonboard.com>,
-        "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-        "linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
-        "jic23@kernel.org"
-	<jic23@kernel.org>,
-        "lars@metafoo.de" <lars@metafoo.de>,
-        "knaack.h@gmx.de"
-	<knaack.h@gmx.de>,
-        "Hennerich, Michael" <Michael.Hennerich@analog.com>,
-        "julia.lawall@inria.fr" <julia.lawall@inria.fr>,
-        "daniel.baluta@gmail.com"
-	<daniel.baluta@gmail.com>,
-        "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>,
-        "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=yfshhC39biBSdzchj6GiihemTNljr8EJSQyq8KQYNfE=;
+        b=rrR/PhBqsQW2DbgSgjU/i4DlcEhjvnHOv39jEQxizd3DN18RoLPEQ9Fxm9k0Hu7ZH1
+         HJrTi1e6xrgZW/JgaY/7CJQ8saZZ1Djwn8KHyb1uNQkyPl1ggiP4IdGbrCYyX73mrV3u
+         E2Jp0R0LXmmcZYdDsp5/ehfP83gy4ROvisCc9SWTJuDrRl4C6Qp+CErAeOHhmoeNgwA5
+         0EbqFg4of7Jy1kju1rS65RCNfn26hU+y1y9aQ/HUNFjKtK6CFCQSuTiU+S+ZQL82nMzS
+         gxZG+1yZnKMHjbKEWRjTBJ0Ahq0vhVy66+8xyUlANCtmiXIHCW1AuwFZ8dpdRY68bX3I
+         77FQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=yfshhC39biBSdzchj6GiihemTNljr8EJSQyq8KQYNfE=;
+        b=Zdf9gbCvQJ3oGbvaCLxHceizmeQ7hXE7ubUcpGOmh7ccKtUPkWkAq7tkoyM6vq5RQP
+         QL4ob1sdDOkQScENcXkrTypqdiTKlMKVcC15dvA1yXDnrFMt7pQENUO8ujW5QKZRVyfL
+         WPsYNWar4O7QywJx8up1GwyRP0XQlfwA63FmPaauzCxqVAF18mFiCvXc4Xf1dOZ6cHPR
+         N1c+LTnvGCe6W+EEgiOo0ltX/W1NKZOpPK8Ho+C507jRJqwKkAEf99AbV6EBei08hebK
+         N3Qu1+TFA688e7+x+rB/SqCY/nMhJkO3cXi73hqmNUhZKStLtTJ7Z66lhB4+4JsIJfP5
+         9zsg==
+X-Gm-Message-State: ANhLgQ3IO8/t5bDtdQotaWX5Q689LS/+2rlp6wsQPKnvbSRncUJtR1Ve
+	n9W33yGfBK4zZ5fVEXnM1c8=
+X-Received: by 2002:a63:c54b:: with SMTP id g11mr4177225pgd.164.1584634577220;
+        Thu, 19 Mar 2020 09:16:17 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.241.226.97])
+        by smtp.gmail.com with ESMTPSA id o128sm3151789pfg.5.2020.03.19.09.16.13
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Mar 2020 09:16:16 -0700 (PDT)
+Date: Thu, 19 Mar 2020 21:46:10 +0530
+From: DEEPAK VARMA <mh12gx2825@gmail.com>
+To: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+Cc: "julia.lawall@inria.fr" <julia.lawall@inria.fr>,
+	"kieran.bingham@ideasonboard.com" <kieran.bingham@ideasonboard.com>,
+	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+	"jic23@kernel.org" <jic23@kernel.org>,
+	"Hennerich, Michael" <Michael.Hennerich@analog.com>,
+	"lars@metafoo.de" <lars@metafoo.de>,
+	"knaack.h@gmx.de" <knaack.h@gmx.de>,
+	"daniel.baluta@gmail.com" <daniel.baluta@gmail.com>,
+	"pmeerw@pmeerw.net" <pmeerw@pmeerw.net>,
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH 2/2] staging: iio: adc: ad7280a:
  Add spaces around operators
-Thread-Topic: [Outreachy kernel] Re: [PATCH 2/2] staging: iio: adc: ad7280a:
- Add spaces around operators
-Thread-Index: 
- AQHV/N2ybpBps/EzlU+x4vN/65WR1qhN21wAgACaLgCAAAHwAIAAEgeAgAABOICAAAkcgIAA63EA////4QCAAAIeAIAAmGYAgAD7vIA=
-Date: Fri, 20 Mar 2020 07:13:47 +0000
-Message-ID: <76805d0d1507c9f3c37adc93b8ad24315881d522.camel@analog.com>
-References: 
- <6703668c512dd665a2299a1f5bf14d99262314f8.1584505215.git.mh12gx2825@gmail.com>
-	 <20200318060038.GB1594471@kroah.com>
-	 <35afdc4b-bd59-7851-aa4f-3d8807668931@metafoo.de>
-	 <20200318151924.GB2862853@kroah.com> <20200318162353.GA23226@deeUbuntu>
-	 <alpine.DEB.2.21.2003181727440.2979@hadrien>
-	 <20200318170051.GA23498@deeUbuntu>
-	 <b471d6102a731d577fff9f2175d4e35217a45e18.camel@analog.com>
-	 <alpine.DEB.2.21.2003190802450.3010@hadrien>
-	 <f783d807e2e74ae492c83eb9827ac43767411808.camel@analog.com>
-	 <20200319161608.GA14738@deeUbuntu>
-In-Reply-To: <20200319161608.GA14738@deeUbuntu>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [188.26.73.247]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 428da85c-20e6-452b-e88b-08d7cc9e3b90
-x-ms-traffictypediagnostic: DM6PR03MB3609:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: 
- <DM6PR03MB3609EE76EC4CA21E1F662C23F9F50@DM6PR03MB3609.namprd03.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 03484C0ABF
-x-forefront-antispam-report: 
- SFV:NSPM;SFS:(10009020)(39860400002)(346002)(396003)(376002)(136003)(366004)(199004)(76116006)(4326008)(2906002)(6486002)(5660300002)(71200400001)(54906003)(64756008)(66446008)(66476007)(6512007)(81156014)(66556008)(6506007)(53546011)(8936002)(81166006)(8676002)(7416002)(316002)(478600001)(66946007)(91956017)(6916009)(966005)(2616005)(36756003)(86362001)(26005)(186003);DIR:OUT;SFP:1101;SCL:1;SRVR:DM6PR03MB3609;H:DM6PR03MB4411.namprd03.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;
-received-spf: None (protection.outlook.com: analog.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 
- TMF5Qty7A0+okW5v4VpIFpW6MD6iDGAjOeQRLp8DoiKFf2YWKTmNXd64bYZdXTTh3Qkn7UBvVAkchqxBMWaJK5qOQFBKlFmM4y5D7mUfJB9gr2qW3jnJcphq+DaLxYsdKoZd625WjI7zROmibjqmIpr3mbP7Q8RuLcqKGSrw874J6Rgb+82a8ZQKXMrCkvWRv92RxvpUDET05eSVZS+LEDj/dQDN81pta8NRgFh/5nSrlc8YcZFoYnEkGCATiog5spTVHSf9H4LsS2+baUbJ9TSAiio1N2JV605bwcNlLYR4+mv+DO6rM5XD//ac8gWwDMQ53R9yBYwrcPhPiRMEz+yghZijyJjerkGW22HPIsNIIIE/765wdwchVxJzleQSqx/NvgXT3VwDrjsay5orwj59R5lZHxPlVP3CspQ1PioC4KCtKKV4WX8x0ggs34LNnIP7gd0NhuvqK/HdV/qGaM3pu5srFC65BVwt/w1vbgAk1xoeHIz/JITD6VWa9C0KA6jdcU/KlTkolTOoaiLhaQ==
-x-ms-exchange-antispam-messagedata: 
- 7SPIFMfGLbe7ruWO84ukPJPh7gV/2UQ+tysY4JfMMHEttXXlI97zj8GQ5nQzVHtb6nLZUYyb77wSI4TfCX5w5YbF3GI1giTWjyUgDziZ/ydhJyBXxV7WZ1N/+yKo4AnDAe097eIBJNDVpsSYAriHSw==
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <D2F416B8A31FA9478AC672A7947986D5@namprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+Message-ID: <20200319161608.GA14738@deeUbuntu>
+References: <6703668c512dd665a2299a1f5bf14d99262314f8.1584505215.git.mh12gx2825@gmail.com>
+ <20200318060038.GB1594471@kroah.com>
+ <35afdc4b-bd59-7851-aa4f-3d8807668931@metafoo.de>
+ <20200318151924.GB2862853@kroah.com>
+ <20200318162353.GA23226@deeUbuntu>
+ <alpine.DEB.2.21.2003181727440.2979@hadrien>
+ <20200318170051.GA23498@deeUbuntu>
+ <b471d6102a731d577fff9f2175d4e35217a45e18.camel@analog.com>
+ <alpine.DEB.2.21.2003190802450.3010@hadrien>
+ <f783d807e2e74ae492c83eb9827ac43767411808.camel@analog.com>
 MIME-Version: 1.0
-X-OriginatorOrg: analog.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 428da85c-20e6-452b-e88b-08d7cc9e3b90
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Mar 2020 07:13:47.1296
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: eaa689b4-8f87-40e0-9c6f-7228de4d754a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rSlCrZ0heT7FvCAOCpdqETQIjbx9BOK2z+oegZ4FKGLj7vZk+fC8Kq1fJokeba3gLXN+Nk3Buaznhx1Lt81p+de8WNVKt/9Ay4RlWDl8K3s=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR03MB3609
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138,18.0.645
- definitions=2020-03-20_01:2020-03-19,2020-03-20 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- bulkscore=0 phishscore=0 malwarescore=0 mlxscore=0 suspectscore=0
- clxscore=1031 adultscore=0 spamscore=0 mlxlogscore=999 priorityscore=1501
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2003200031
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f783d807e2e74ae492c83eb9827ac43767411808.camel@analog.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-T24gVGh1LCAyMDIwLTAzLTE5IGF0IDIxOjQ2ICswNTMwLCBERUVQQUsgVkFSTUEgd3JvdGU6DQo+
-IFtFeHRlcm5hbF0NCj4gDQo+IE9uIFRodSwgTWFyIDE5LCAyMDIwIGF0IDA3OjA3OjIwQU0gKzAw
-MDAsIEFyZGVsZWFuLCBBbGV4YW5kcnUgd3JvdGU6DQo+ID4gT24gVGh1LCAyMDIwLTAzLTE5IGF0
-IDA4OjAzICswMTAwLCBKdWxpYSBMYXdhbGwgd3JvdGU6DQo+ID4gPiBbRXh0ZXJuYWxdDQo+ID4g
-PiANCj4gPiA+IA0KPiA+ID4gDQo+ID4gPiBPbiBUaHUsIDE5IE1hciAyMDIwLCBBcmRlbGVhbiwg
-QWxleGFuZHJ1IHdyb3RlOg0KPiA+ID4gDQo+ID4gPiA+IE9uIFdlZCwgMjAyMC0wMy0xOCBhdCAy
-MjozMCArMDUzMCwgREVFUEFLIFZBUk1BIHdyb3RlOg0KPiA+ID4gPiA+IFtFeHRlcm5hbF0NCj4g
-PiA+ID4gPiANCj4gPiA+ID4gPiBPbiBXZWQsIE1hciAxOCwgMjAyMCBhdCAwNToyODoxN1BNICsw
-MTAwLCBKdWxpYSBMYXdhbGwgd3JvdGU6DQo+ID4gPiA+ID4gPiBPbiBXZWQsIDE4IE1hciAyMDIw
-LCBERUVQQUsgVkFSTUEgd3JvdGU6DQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gT24gV2Vk
-LCBNYXIgMTgsIDIwMjAgYXQgMDQ6MTk6MjRQTSArMDEwMCwgR3JlZyBLSCB3cm90ZToNCj4gPiA+
-ID4gPiA+ID4gPiBPbiBXZWQsIE1hciAxOCwgMjAyMCBhdCAwNDoxMjoyOFBNICswMTAwLCBMYXJz
-LVBldGVyIENsYXVzZW4NCj4gPiA+ID4gPiA+ID4gPiB3cm90ZToNCj4gPiA+ID4gPiA+ID4gPiA+
-IE9uIDMvMTgvMjAgNzowMCBBTSwgR3JlZyBLSCB3cm90ZToNCj4gPiA+ID4gPiA+ID4gPiA+ID4g
-T24gV2VkLCBNYXIgMTgsIDIwMjAgYXQgMDk6NTg6MTNBTSArMDUzMCwgRGVlcGFrIFIgVmFybWEN
-Cj4gPiA+ID4gPiA+ID4gPiA+ID4gd3JvdGU6DQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gQWRkIHNw
-YWNlcyBhcm91bmQgb3BlcmF0b3Igc3ltYm9scyB0byBpbXByb3ZlIHJlYWRhYmlsaXR5Lg0KPiA+
-ID4gPiA+ID4gPiA+ID4gPiA+IFdhcm5pbmcNCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBmbGFnZ2Vk
-IGJ5IGNoZWNrcGF0Y2ggc2NyaXB0Lg0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+
-ID4gPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IERlZXBhayBSIFZhcm1hIDxtaDEyZ3gyODI1QGdt
-YWlsLmNvbT4NCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiAtLS0NCj4gPiA+ID4gPiA+ID4gPiA+ID4g
-PiAgIGRyaXZlcnMvc3RhZ2luZy9paW8vYWRjL2FkNzI4MGEuYyB8IDQgKystLQ0KPiA+ID4gPiA+
-ID4gPiA+ID4gPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkNCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL2lpby9hZGMvYWQ3MjgwYS5jDQo+ID4gPiA+ID4gPiA+
-ID4gPiA+ID4gYi9kcml2ZXJzL3N0YWdpbmcvaWlvL2FkYy9hZDcyODBhLmMNCj4gPiA+ID4gPiA+
-ID4gPiA+ID4gPiBpbmRleCAxOWE1ZjI0NGRjYWUuLjM0Y2EwZDA5ZGI4NSAxMDA2NDQNCj4gPiA+
-ID4gPiA+ID4gPiA+ID4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvaWlvL2FkYy9hZDcyODBhLmMN
-Cj4gPiA+ID4gPiA+ID4gPiA+ID4gPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvaWlvL2FkYy9hZDcy
-ODBhLmMNCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBAQCAtODI1LDE0ICs4MjUsMTQgQEAgc3RhdGlj
-IGlycXJldHVybl90DQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gYWQ3MjgwX2V2ZW50X2hhbmRsZXIo
-aW50DQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gaXJxLCB2b2lkICpwcml2YXRlKQ0KPiA+ID4gPiA+
-ID4gPiA+ID4gPiA+ICAgfQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ICAgc3RhdGljIElJT19ERVZJ
-Q0VfQVRUUl9OQU1FRChpbl90aHJlc2hfbG93X3ZhbHVlLA0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+
-IC0JCQkgICAgIGluX3ZvbHRhZ2UtDQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gdm9sdGFnZV90aHJl
-c2hfbG93X3ZhbHVlLA0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ICsJCQkgICAgIGluX3ZvbHRhZ2Ug
-LQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+IHZvbHRhZ2VfdGhyZXNoX2xvd192YWx1ZSwNCj4gPiA+
-ID4gPiA+ID4gPiA+ID4gPiAgIAkJCSAgICAgMDY0NCwNCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiAg
-IAkJCSAgICAgYWQ3MjgwX3JlYWRfY2hhbm5lbF9jb25maWcsDQo+ID4gPiA+ID4gPiA+ID4gPiA+
-ID4gICAJCQkgICAgIGFkNzI4MF93cml0ZV9jaGFubmVsX2NvbmZpZw0KPiA+ID4gPiA+ID4gPiA+
-ID4gPiA+ICwNCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiAgIAkJCSAgICAgQUQ3MjgwQV9DRUxMX1VO
-REVSVk9MVEFHRSk7DQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gICBzdGF0aWMgSUlPX0RFVklDRV9B
-VFRSX05BTUVEKGluX3RocmVzaF9oaWdoX3ZhbHVlLA0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+IC0J
-CQkgICAgIGluX3ZvbHRhZ2UtDQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gdm9sdGFnZV90aHJlc2hf
-aGlnaF92YWx1ZSwNCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiArCQkJICAgICBpbl92b2x0YWdlIC0N
-Cj4gPiA+ID4gPiA+ID4gPiA+ID4gPiB2b2x0YWdlX3RocmVzaF9oaWdoX3ZhbHVlLA0KPiA+ID4g
-PiA+ID4gPiA+ID4gPiA+ICAgCQkJICAgICAwNjQ0LA0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ICAg
-CQkJICAgICBhZDcyODBfcmVhZF9jaGFubmVsX2NvbmZpZywNCj4gPiA+ID4gPiA+ID4gPiA+ID4g
-PiAgIAkJCSAgICAgYWQ3MjgwX3dyaXRlX2NoYW5uZWxfY29uZmlnDQo+ID4gPiA+ID4gPiA+ID4g
-PiA+ID4gLA0KPiA+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiA+ID4gRGlkIHlv
-dSB0cnkgYnVpbGRpbmcgdGhpcyBjb2RlPw0KPiA+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4g
-PiA+ID4gPiA+ID4gSXQgY2F0Y2hlcyBldmVyeW9uZS4uLg0KPiA+ID4gPiA+ID4gPiA+ID4gDQo+
-ID4gPiA+ID4gPiA+ID4gPiBUaGUgcHJvYmxlbSBpcyBpdCBidWlsZHMuIFRoZSB0b2tlbiBpcyBz
-dHJpbmd5ZmllZCBhbmQNCj4gPiA+ID4gPiA+ID4gPiA+ICJpbl92b2x0YWdlIC0gdm9sdGFnZV90
-aHJlc2hfaGlnaF92YWx1ZSIgaXMgYSB2YWxpZCBzdHJpbmcuDQo+ID4gPiA+ID4gPiA+ID4gDQo+
-ID4gPiA+ID4gPiA+ID4gQWgsIEkgdGhvdWdodCBpdCB1c2VkIHRvIGJyZWFrIHRoZSBidWlsZCB3
-aGVuIGl0IGhhcHBlbmVkLiAgT2gNCj4gPiA+ID4gPiA+ID4gPiB3ZWxsLA0KPiA+ID4gPiA+ID4g
-PiA+IGl0J3Mgc3RpbGwgYSBncmVhdCAidHJpY2siIHRvIHNlZSBpZiBwZW9wbGUgdW5kZXJzdGFu
-ZCBDIG9yIG5vdA0KPiA+ID4gPiA+ID4gPiA+IDopDQo+ID4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+
-ID4gPiA+IFllcywgaXQgZGlkIGJ1aWxkLiBJIGFtIHNvcnJ5IGJ1dCBJIGFtIG5vdCBmb2xsb3dp
-bmcgeW91IGZ1bGx5Lg0KPiA+ID4gPiA+ID4gPiBDYW4NCj4gPiA+ID4gPiA+ID4geW91DQo+ID4g
-PiA+ID4gPiA+IHBsZWFzZSBsZXQgbWUga25vdyBpZiB0aGUgY2hhbmdlIEkgaW50cm9kdWNlZCBp
-cyBub3QgZ29vZC4gWW91IG1heQ0KPiA+ID4gPiA+ID4gPiBwbGVhc2UgZGlyZWN0IG1lIHRvIGEg
-ZG9jdW1lbnQgd2hlcmUgSSBjYW4gcmVhZCBtb3JlIGFib3V0IGl0Lg0KPiA+ID4gPiA+ID4gDQo+
-ID4gPiA+ID4gPiBUaGUgY29kZSBpbnZvbHZlcyBhIG1hY3JvLCBhcyBpbmRpY2F0ZWQgYnkgdGhl
-IGNhcGl0YWwgbGV0dGVycy4gIFlvdQ0KPiA+ID4gPiA+ID4gd2lsbA0KPiA+ID4gPiA+ID4gc2Vl
-IHRoZSBpc3N1ZSB3aGVuIHlvdSBsb29rIGF0IHRoZSBkZWZpbml0aW9uIG9mIHRoZSBtYWNyby4N
-Cj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4ganVsaWENCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBU
-aGFuayB5b3UgSnVsaWEgYW5kIGFsbC4gSSBnb3QgbXkgbWlzdGFrZS4gSSB3aWxsIHJldmVydCB0
-aGUgY2hhbmdlLg0KPiA+ID4gPiA+IFNvcnJ5IGZvciB0aGUgdHJvdWJsZS4NCj4gPiA+ID4gDQo+
-ID4gPiA+IEknbGwgdHJ5IHRvIG1ha2Ugc29tZSB0aW1lIHRvIGFkZHJlc3MgdGhpcyBzb21laG93
-LCBzbyB0aGF0IGNoZWNrcGF0Y2gNCj4gPiA+ID4gZG9lc24ndA0KPiA+ID4gPiBidW1wIGludG8g
-dGhpcy4NCj4gPiA+ID4gDQo+ID4gPiA+IEluIHRoZSBsYXN0IDItMyB5ZWFycywgSSB0aGluayBJ
-IHNhdyAzLTQgcGF0Y2hlcyB0cnlpbmcgdG8gYWRkcmVzcyB0aGlzDQo+ID4gPiA+IFtmb3INCj4g
-PiA+ID4gdmFyaW91cyBBbmFsb2cgZHJpdmVyc10uDQo+ID4gPiA+IFNvLCBkb24ndCBmZWVsIHRv
-byBiYWQuDQo+ID4gPiANCj4gPiA+IE1heWJlIGEgY29tbWVudD8NCj4gPiANCj4gPiBDb21tZW50
-IHdvcmtzIGZvciBub3cuDQo+ID4gQW55Ym9keSB3YW50cyB0byBkbyBhIHBhdGNoIGZvciB0aGF0
-Pw0KPiA+IElmIG5vYm9keSBzZW5kcyBhIHBhdGNoIGZvciB0aGlzIGluIDEtMiB3ZWVrcywgSSds
-bCBzZW5kIG9uZS4NCj4gPiANCj4gPiBQYXJ0aWN1bGFybHksIHRoaXMgd291bGQgaGVscCB3aXRo
-IHJldmlldywgc2luY2UgcGVvcGxlIHRoYXQgYXJlIHVuZmFtaWxpYXINCj4gPiB3aXRoDQo+ID4g
-SUlPLXNwZWNpZmljIG1hY3JvcyB3b3VsZCBhbHNvIGZpbmQgaXQgZWFzaWVyIGF0IHJldmlldy4N
-Cj4gPiANCj4gPiBUaGUgZ29vZCBwYXJ0LCBpcyB0aGF0IGl0J3Mgb25seSBuZWVkZWQgZm9yIEFE
-NzI4MEEuDQo+ID4gQUQ3MTkyIGhhcyBiZWVuIHJlLXdvcmtlZCwgYW5kIGlzIG5vIGxvbmdlciBv
-biBjaGVja3BhdGNoJ3MgcmFkYXIuDQo+ID4gSSdtIHJld29ya2luZyBBRDc3OTMgbm93Lg0KPiA+
-IA0KPiANCj4gSSB3aWxsIGJlIGhhcHB5IHRvIGFkZCBhIGNvbW1lbnQgYXJvdW5kIHRoZSBjb2Rl
-IGFyZWEgdG8gaW5kaWNhdGUNCj4gaWdub3JlIGNoZWNrcGF0Y2ggd2FybmluZyBmb3IgdGhlIG1l
-bnRpb25lZCBhcmd1bWVudC4gUGxlYXNlIGNvbmZpcm0gaWYNCj4gdGhhdCBpcyB3aGF0IHlvdSBh
-cmUgZXhwZWN0aW5nIHRvIGJlIGRvbmUuDQoNClN1cmUuDQpQbGVhc2Ugc2VuZCBhIHBhdGNoLg0K
-DQpUaGFua3MNCkFsZXgNCg0KPiANCj4gVGhhbmtzLA0KPiBEZWVwYWsuDQo+IA0KPiA+ID4ganVs
-aWENCj4gPiA+IA0KPiA+ID4gPiA+IERlZXBhay4NCj4gPiA+ID4gPiA+ID4gVGhhbmtzLA0KPiA+
-ID4gPiA+ID4gPiBEZWVwYWsuDQo+ID4gPiA+ID4gPiA+ID4gdGhhbmtzLA0KPiA+ID4gPiA+ID4g
-PiA+IA0KPiA+ID4gPiA+ID4gPiA+IGdyZWcgay1oDQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+
-ID4gPiAtLQ0KPiA+ID4gPiA+ID4gPiBZb3UgcmVjZWl2ZWQgdGhpcyBtZXNzYWdlIGJlY2F1c2Ug
-eW91IGFyZSBzdWJzY3JpYmVkIHRvIHRoZSBHb29nbGUNCj4gPiA+ID4gPiA+ID4gR3JvdXBzDQo+
-ID4gPiA+ID4gPiA+ICJvdXRyZWFjaHkta2VybmVsIiBncm91cC4NCj4gPiA+ID4gPiA+ID4gVG8g
-dW5zdWJzY3JpYmUgZnJvbSB0aGlzIGdyb3VwIGFuZCBzdG9wIHJlY2VpdmluZyBlbWFpbHMgZnJv
-bSBpdCwNCj4gPiA+ID4gPiA+ID4gc2VuZA0KPiA+ID4gPiA+ID4gPiBhbg0KPiA+ID4gPiA+ID4g
-PiBlbWFpbCB0byBvdXRyZWFjaHkta2VybmVsK3Vuc3Vic2NyaWJlQGdvb2dsZWdyb3Vwcy5jb20u
-DQo+ID4gPiA+ID4gPiA+IFRvIHZpZXcgdGhpcyBkaXNjdXNzaW9uIG9uIHRoZSB3ZWIgdmlzaXQN
-Cj4gPiA+ID4gPiA+ID4gaHR0cHM6Ly9ncm91cHMuZ29vZ2xlLmNvbS9kL21zZ2lkL291dHJlYWNo
-eS1rZXJuZWwvMjAyMDAzMTgxNjIzNTMuR0EyMzIyNiU0MGRlZVVidW50dQ0KPiA+ID4gPiA+ID4g
-PiAuDQo+ID4gPiA+ID4gPiA+IA0K
+On Thu, Mar 19, 2020 at 07:07:20AM +0000, Ardelean, Alexandru wrote:
+> On Thu, 2020-03-19 at 08:03 +0100, Julia Lawall wrote:
+> > [External]
+> > 
+> > 
+> > 
+> > On Thu, 19 Mar 2020, Ardelean, Alexandru wrote:
+> > 
+> > > On Wed, 2020-03-18 at 22:30 +0530, DEEPAK VARMA wrote:
+> > > > [External]
+> > > > 
+> > > > On Wed, Mar 18, 2020 at 05:28:17PM +0100, Julia Lawall wrote:
+> > > > > On Wed, 18 Mar 2020, DEEPAK VARMA wrote:
+> > > > > 
+> > > > > > On Wed, Mar 18, 2020 at 04:19:24PM +0100, Greg KH wrote:
+> > > > > > > On Wed, Mar 18, 2020 at 04:12:28PM +0100, Lars-Peter Clausen wrote:
+> > > > > > > > On 3/18/20 7:00 AM, Greg KH wrote:
+> > > > > > > > > On Wed, Mar 18, 2020 at 09:58:13AM +0530, Deepak R Varma wrote:
+> > > > > > > > > > Add spaces around operator symbols to improve readability.
+> > > > > > > > > > Warning
+> > > > > > > > > > flagged by checkpatch script.
+> > > > > > > > > > 
+> > > > > > > > > > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> > > > > > > > > > ---
+> > > > > > > > > >   drivers/staging/iio/adc/ad7280a.c | 4 ++--
+> > > > > > > > > >   1 file changed, 2 insertions(+), 2 deletions(-)
+> > > > > > > > > > 
+> > > > > > > > > > diff --git a/drivers/staging/iio/adc/ad7280a.c
+> > > > > > > > > > b/drivers/staging/iio/adc/ad7280a.c
+> > > > > > > > > > index 19a5f244dcae..34ca0d09db85 100644
+> > > > > > > > > > --- a/drivers/staging/iio/adc/ad7280a.c
+> > > > > > > > > > +++ b/drivers/staging/iio/adc/ad7280a.c
+> > > > > > > > > > @@ -825,14 +825,14 @@ static irqreturn_t
+> > > > > > > > > > ad7280_event_handler(int
+> > > > > > > > > > irq, void *private)
+> > > > > > > > > >   }
+> > > > > > > > > >   static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+> > > > > > > > > > -			     in_voltage-
+> > > > > > > > > > voltage_thresh_low_value,
+> > > > > > > > > > +			     in_voltage -
+> > > > > > > > > > voltage_thresh_low_value,
+> > > > > > > > > >   			     0644,
+> > > > > > > > > >   			     ad7280_read_channel_config,
+> > > > > > > > > >   			     ad7280_write_channel_config,
+> > > > > > > > > >   			     AD7280A_CELL_UNDERVOLTAGE);
+> > > > > > > > > >   static IIO_DEVICE_ATTR_NAMED(in_thresh_high_value,
+> > > > > > > > > > -			     in_voltage-
+> > > > > > > > > > voltage_thresh_high_value,
+> > > > > > > > > > +			     in_voltage -
+> > > > > > > > > > voltage_thresh_high_value,
+> > > > > > > > > >   			     0644,
+> > > > > > > > > >   			     ad7280_read_channel_config,
+> > > > > > > > > >   			     ad7280_write_channel_config,
+> > > > > > > > > 
+> > > > > > > > > Did you try building this code?
+> > > > > > > > > 
+> > > > > > > > > It catches everyone...
+> > > > > > > > 
+> > > > > > > > The problem is it builds. The token is stringyfied and
+> > > > > > > > "in_voltage - voltage_thresh_high_value" is a valid string.
+> > > > > > > 
+> > > > > > > Ah, I thought it used to break the build when it happened.  Oh well,
+> > > > > > > it's still a great "trick" to see if people understand C or not :)
+> > > > > > > 
+> > > > > > Yes, it did build. I am sorry but I am not following you fully. Can
+> > > > > > you
+> > > > > > please let me know if the change I introduced is not good. You may
+> > > > > > please direct me to a document where I can read more about it.
+> > > > > 
+> > > > > The code involves a macro, as indicated by the capital letters.  You
+> > > > > will
+> > > > > see the issue when you look at the definition of the macro.
+> > > > > 
+> > > > > julia
+> > > > 
+> > > > Thank you Julia and all. I got my mistake. I will revert the change.
+> > > > Sorry for the trouble.
+> > > 
+> > > I'll try to make some time to address this somehow, so that checkpatch
+> > > doesn't
+> > > bump into this.
+> > > 
+> > > In the last 2-3 years, I think I saw 3-4 patches trying to address this [for
+> > > various Analog drivers].
+> > > So, don't feel too bad.
+> > 
+> > Maybe a comment?
+> 
+> Comment works for now.
+> Anybody wants to do a patch for that?
+> If nobody sends a patch for this in 1-2 weeks, I'll send one.
+> 
+> Particularly, this would help with review, since people that are unfamiliar with
+> IIO-specific macros would also find it easier at review.
+> 
+> The good part, is that it's only needed for AD7280A.
+> AD7192 has been re-worked, and is no longer on checkpatch's radar.
+> I'm reworking AD7793 now.
+> 
+
+I will be happy to add a comment around the code area to indicate
+ignore checkpatch warning for the mentioned argument. Please confirm if
+that is what you are expecting to be done.
+
+Thanks,
+Deepak.
+
+> 
+> > 
+> > julia
+> > 
+> > > 
+> > > > Deepak.
+> > > > > > Thanks,
+> > > > > > Deepak.
+> > > > > > > thanks,
+> > > > > > > 
+> > > > > > > greg k-h
+> > > > > > 
+> > > > > > --
+> > > > > > You received this message because you are subscribed to the Google
+> > > > > > Groups
+> > > > > > "outreachy-kernel" group.
+> > > > > > To unsubscribe from this group and stop receiving emails from it, send
+> > > > > > an
+> > > > > > email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > > > To view this discussion on the web visit
+> > > > > > https://groups.google.com/d/msgid/outreachy-kernel/20200318162353.GA23226%40deeUbuntu
+> > > > > > .
+> > > > > > 
 
