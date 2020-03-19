@@ -1,98 +1,155 @@
-X-GM-THRID: 6803932242595807232
-X-Received: by 2002:a1c:8103:: with SMTP id c3mr14056798wmd.166.1584163923149;
-        Fri, 13 Mar 2020 22:32:03 -0700 (PDT)
+X-GM-THRID: 6805908696363696128
+X-Received: by 2002:aa7:c41a:: with SMTP id j26mr2769029edq.33.1584624102307;
+        Thu, 19 Mar 2020 06:21:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:afd4:: with SMTP id y20ls5994536wrd.5.gmail; Fri, 13 Mar
- 2020 22:32:01 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsRqbpF1VgAsbfb11ncVL6ogm8t0IAIb5DztLgiW1gaH4xR5yC0vuAAtIZ19MdQobm0oZia
-X-Received: by 2002:adf:b60f:: with SMTP id f15mr23054681wre.372.1584163921862;
-        Fri, 13 Mar 2020 22:32:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584163921; cv=none;
+Received: by 2002:a17:906:3715:: with SMTP id d21ls1031818ejc.5.gmail; Thu, 19
+ Mar 2020 06:21:40 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvO/I0ZgctUorYc4p5Qi8ijl9Tw+qesiua1mbeYavvuB3iWl5ZQYij/fuOHqp15mNnlg0Kv
+X-Received: by 2002:a17:906:5214:: with SMTP id g20mr3256331ejm.5.1584624100741;
+        Thu, 19 Mar 2020 06:21:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584624100; cv=none;
         d=google.com; s=arc-20160816;
-        b=hO5usm0Yp97bhVUzrPtaw9oxL8soSLcQcsstw89CqykRa0G0hNKIRb2Smv8H89JPgM
-         dTLmdHo3gJovdyXPeZqVmVJG8Tg548QSTw1vqIUuMPU0BIm86MOdwDBY9POGOwuJjIXv
-         VtXHXpHbFB4+3hn58slc6vAxctDlkzmQ/TgWfeqm/VF0vzeuwGyTgeujIbSPJxEWtpXT
-         GLGp0haTDxMNrs2XumT1tTODBR5ApIYSSUt+1QNCK9lE1AA+ZLZeXex6oeh+ZtpxCVGS
-         TIdAYdpuknmyISd7oAJ+26MJbImkuOtIIC35G8J39ouHMMe1b8bY0whPsU6TzQr2IDk3
-         bYTA==
+        b=s9Ep9Xh91hnCHFWTpC4PKtrB+lQngtJeeftsjRxhJuuiIp/bEyKKDSrjwg2bnUki/E
+         AMgA59JYs2p8oVX1f0RNPLEJB53I7Jv+i/tLSEuKiVRxTZWiTlSp498A4Ji/D7qwik1b
+         Eip8rOxsw4sHNSXdm3KS7YanHoNiDjh7tQFhgAGkXVYzkXkKPar9o761nko3NNFNLamH
+         WRqiyFQrDn1Weh7MIP8GpBUs9E5gA+V6V8tSilDDJkcPDp+aRraCTh42aq4JYAlMkgPT
+         oOV3eSrd8y2vylsQnxwTpUJRGyfDIelSUrdxwdYJkOmTQ/yE8lIX9EIgTnCjNtjQnTzE
+         7xgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=YX1HCf4e/spdtdlyoJQmbJGHfiGTAfBhBnXWm6cwtPA=;
-        b=dzD2n5wCXykKWY54qUKobZ8z8SpD/hKAig/XbeOjsmpF0J+iO5sP0x2OA5keXjP0bx
-         wzlYpWDaC49SVlrVkb2QfG/aiyKTJLMv+IH2KN6g1e6E1eZMr87YweRKG03Kj77i7eXv
-         /51H3rOXTRIz0QwDJBCsgb5GvqX3lhgFvrEUgAoc1TaxpWWSt97iWhoFZK74tQd7ht6l
-         dFDKQIkWdlzHhpU8s7AftWScYVWNywVmLbo2x8UnCkLx72hOoPU23gUV47ljxu7eLWYm
-         PO1jj0UhFQadKZ0WHxsfGHe4h4G5/3F/BGDVEV4Fujai/JN/G4i+g+Cg/sCD1PzpQ7JT
-         WwPQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=R3rcKbtiCiI7lpKBnnWUJmojDLZLTMOmba3ZYXQVf3s=;
+        b=DC1nBmoPtRN7qeg1kHFySfqN3dm3PPNKRbD88OR/5IJBMQEpnzLRHJjlbUULosnj12
+         D0LewKE6Gg9srYiKm17WP+Br+mOmdqMRxvM/yg2wAl7BC7NjPtCGVI6+SjIZCvRUJh+N
+         iy6YjHUkVne69Lk6ZWEaywvGHpx6OYBrvXcqDvGA3SYgmiXbNyx8z8Imzxp2af7W01Mk
+         zrQ210Q2Lk/MRuNIfW3kjH0kct93E/KLGgzKUE6+tW9cllSM7soSYiwIA1OfUdFXcfm7
+         sBtK5W+E0+Hl6/0gvtRb/Mq5mT0PXkw9LQ5WA3yLwKOZYY/syf8xqrFl2dqbd3+o9tlr
+         r6vg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id b81si421294wmc.2.2020.03.13.22.32.01
-        for <outreachy-kernel@googlegroups.com>;
-        Fri, 13 Mar 2020 22:32:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qSjocnPT;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
+        by gmr-mx.google.com with ESMTPS id l21si102397edq.4.2020.03.19.06.21.40
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Mar 2020 06:21:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 1495 invoked from network); 14 Mar 2020 05:31:59 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.242.88.46)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 14 Mar 2020 05:31:59 -0000
-Date: Sat, 14 Mar 2020 11:01:51 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: David Kershner <david.kershner@unisys.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: unisys: Documentation: Fix for longline and typo in
- doc
-Message-ID: <20200314053136.GA2160@tulip.local>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qSjocnPT;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x343.google.com with SMTP id m3so2257164wmi.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 06:21:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=R3rcKbtiCiI7lpKBnnWUJmojDLZLTMOmba3ZYXQVf3s=;
+        b=qSjocnPTDJ0xts/OZypewbIIg1CIl1EjbGPBqho/FonhqXA8no4yyFmqiMKaJKZ6cx
+         kmfn6zE6bz4a4x+oA5YYEAOM9e1FiBVQ22FA7EpKzOK+y8RpuFPZw4p7+MYc4Ac+KwNa
+         I3wQ47PK2JbOslpOSebsyXlgBXYmn8jZN8rigZpI38dE4kveAYCDyfVbK/0i6sU7WARs
+         nWPraBSFy7/autm8q6kmWCmTIFKyfUCVJ8HFPrT7dJqvRZJVf2RcnoZ1rFC/sV6typ9R
+         IFGP4y8E24gh6vsaaJzEjd9o8QUrt8MjBWWiqfkiCRk52CRtopnVBOnvOaB56dDKMbVZ
+         U+Sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=R3rcKbtiCiI7lpKBnnWUJmojDLZLTMOmba3ZYXQVf3s=;
+        b=qAZJyodheCOwDnFh4WsA8Fu/6MiqWdYyLtEpJXQX19cP7q9kS7LH8ONH/L72i8R/AE
+         zzd4O+V0Kp9hAOAWENpq4r0CVTAsqoZTJsDtwmwHfvsa0xY4hy1xdsAvU4YIDxNQoab6
+         8EEID8TMHLEcEug1tCbegfvlgyUxmqVDcdQf6O6LtRzI/PjpMRcBY2yMxi5XYGz+9J/m
+         LZgvHM5fG4Q3UbhvBUoHcavc0fzy4O57kYII9WrYNDpLk+JtICOP0p7Cffsmd0id+QoO
+         FKhRyPyV/Dh4YM9bgkctWhk1VeJ2qAJHvOPqfjNNqRhr5RNjf1S5c/cklpB45rHu9Ypp
+         c1fg==
+X-Gm-Message-State: ANhLgQ0DVzHy7o7B+8+v6HGd3zSNrNFyT/ZvcwKL9rBx/FAW1Z4xYvpt
+	BJFZZ7qTnnuXiDnvkfHm6Rk=
+X-Received: by 2002:a1c:a714:: with SMTP id q20mr3734341wme.148.1584624100490;
+        Thu, 19 Mar 2020 06:21:40 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from localhost.localdomain ([197.34.140.220])
+        by smtp.gmail.com with ESMTPSA id f12sm3183100wmh.4.2020.03.19.06.21.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Mar 2020 06:21:40 -0700 (PDT)
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Manish Chopra <manishc@marvell.com>,
+	GR-Linux-NIC-Dev@marvell.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Cc: Sam Muhammed <jane.pnx9@gmail.com>
+Subject: [PATCH v4] Staging: qlge: Add a blank line after variable
+Date: Thu, 19 Mar 2020 09:21:35 -0400
+Message-Id: <20200319132135.3362-1-jane.pnx9@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
 
-Fix longline and a typo in documentation.
-Found using checkpatch.pl.
+Cleanup checkpatch.pl WARNINGS: Missing a blank line after declarations.
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
+Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
 ---
- drivers/staging/unisys/Documentation/overview.txt | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+Changes in v4:
+- Reverting a blank line at the end of the patch that was mistakenly removed,
+this blank line is actually part of the original code and has nothing
+to do with the patch.
 
-diff --git a/drivers/staging/unisys/Documentation/overview.txt b/drivers/staging/unisys/Documentation/overview.txt
-index f8a4144b239c..7f0427cafca9 100644
---- a/drivers/staging/unisys/Documentation/overview.txt
-+++ b/drivers/staging/unisys/Documentation/overview.txt
-@@ -15,12 +15,12 @@ normally be unsharable, specifically:
- * visorinput - keyboard and mouse
+Changes in v3:
+- Adding a version change log.
+
+Changes in v2:
+- This patch originally had two different logical changes. The change that
+is the subject of this patch was kept, the other was dropped.
  
- These drivers conform to the standard Linux bus/device model described
--within Documentation/driver-api/driver-model/, and utilize a driver named visorbus to
--present the virtual busses involved. Drivers in the 'visor*' driver set are
--commonly referred to as "guest drivers" or "client drivers".  All drivers
--except visorbus expose a device of a specific usable class to the Linux guest
--environment (e.g., block, network, or input), and are collectively referred
--to as "function drivers".
-+within Documentation/driver-api/driver-model/, and utilize a driver named
-+visorbus to present the virtual busses involved. Drivers in the 'visor*'
-+driver set are commonly referred to as "guest drivers" or "client drivers".
-+All drivers except visorbus expose a device of a specific usable class to the
-+Linux guest environment (e.g., block, network, or input), and are collectively
-+referred to as "function drivers".
+ drivers/staging/qlge/qlge_dbg.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
+index 737d6abd8076..1795533cbd3a 100644
+--- a/drivers/staging/qlge/qlge_dbg.c
++++ b/drivers/staging/qlge/qlge_dbg.c
+@@ -497,6 +497,7 @@ static int ql_get_mpi_regs(struct ql_adapter *qdev, u32 *buf,
+ 			   u32 offset, u32 count)
+ {
+ 	int i, status = 0;
++
+ 	for (i = 0; i < count; i++, buf++) {
+ 		status = ql_read_mpi_reg(qdev, offset + i, buf);
+ 		if (status)
+@@ -1330,6 +1331,7 @@ static void ql_dump_intr_states(struct ql_adapter *qdev)
+ {
+ 	int i;
+ 	u32 value;
++
+ 	for (i = 0; i < qdev->intr_count; i++) {
+ 		ql_write32(qdev, INTR_EN, qdev->intr_context[i].intr_read_mask);
+ 		value = ql_read32(qdev, INTR_EN);
+@@ -1415,6 +1417,7 @@ void ql_dump_routing_entries(struct ql_adapter *qdev)
+ {
+ 	int i;
+ 	u32 value;
++
+ 	i = ql_sem_spinlock(qdev, SEM_RT_IDX_MASK);
+ 	if (i)
+ 		return;
+@@ -1565,6 +1568,7 @@ void ql_dump_stat(struct ql_adapter *qdev)
+ void ql_dump_qdev(struct ql_adapter *qdev)
+ {
+ 	int i;
++
+ 	DUMP_QDEV_FIELD(qdev, "%lx", flags);
+ 	DUMP_QDEV_FIELD(qdev, "%p", vlgrp);
+ 	DUMP_QDEV_FIELD(qdev, "%p", pdev);
+@@ -1650,6 +1654,7 @@ void ql_dump_tx_ring(struct tx_ring *tx_ring)
+ void ql_dump_ricb(struct ricb *ricb)
+ {
+ 	int i;
++
+ 	pr_err("===================== Dumping ricb ===============\n");
+ 	pr_err("Dumping ricb stuff...\n");
  
- The back-end for each device is owned and managed by a small,
- single-purpose service partition in the s-Par firmware, which communicates
-@@ -56,7 +56,7 @@ NOT covered in this document:
- 2.1.1. Overview
- ---------------
- 
--The visorbus driver handles the virtual busses on which all of the virtual
-+The visorbus driver handles the virtual buses on which all of the virtual
- devices reside. It provides a registration function named
- visorbus_register_visor_driver() that is called by each of the function
- drivers at initialization time, which the function driver uses to tell
--- 
+---
 2.20.1
 
 
