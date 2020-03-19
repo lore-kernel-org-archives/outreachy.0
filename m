@@ -1,76 +1,139 @@
 X-GM-THRID: 6805913239014080512
-X-Received: by 2002:a05:6214:9d1:: with SMTP id dp17mr3156282qvb.34.1584626864546;
-        Thu, 19 Mar 2020 07:07:44 -0700 (PDT)
+X-Received: by 2002:a17:906:1e56:: with SMTP id i22mr3204801ejj.314.1584625174483;
+        Thu, 19 Mar 2020 06:39:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:b7c4:: with SMTP id h187ls1311117qkf.1.gmail; Thu, 19
- Mar 2020 07:07:43 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt2vjgfLulcnIwcVqQ6ahwitlXBHrebTobn1LPR9gQTvAuIKQ3t4Vd73/KZIpHjl4afKskW
-X-Received: by 2002:a37:4fd2:: with SMTP id d201mr3174988qkb.190.1584626863307;
-        Thu, 19 Mar 2020 07:07:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584626863; cv=none;
+Received: by 2002:a17:906:16ca:: with SMTP id t10ls488008ejd.9.gmail; Thu, 19
+ Mar 2020 06:39:33 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuplZSHah+7Oc1s1we+lqyb0oAnzztk8YkRiho9GjDM0rG4EgoieVhv7Q20n1Fk3MFKZvl4
+X-Received: by 2002:a17:906:4a4d:: with SMTP id a13mr3418096ejv.72.1584625173354;
+        Thu, 19 Mar 2020 06:39:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584625173; cv=none;
         d=google.com; s=arc-20160816;
-        b=li+8Nh/tg56xZQQR/cdm8C1Po32kQJhO3IqISQFpQRDDx6AL9HHbAV9dnU9FKZafuw
-         F3NeuaCfRH4goUWQzCL4L9xV9kuQUytjrH/LXwGAdOuXCSvnwfRkxDuU6zOph9VxgWKf
-         azfH20IHC0LHrOkLwR7AAAEhRBA2/aGJzVitRI1Ah7QXINt7Tkq/1VDc3FbM+NgWxzAd
-         WHFqmZ76g2klvt6n2qA5pPdAIQ7CAVwpDE1paPwHfSBN8Hs0CiOFdSy5ytX7znuW0NP0
-         XiaiM/fRqcG4IT/osEubq7aCRr+KhANeC4OKKkC0dxbZUBJTGepuxcRITWWscgSVqf0C
-         p0Dw==
+        b=hDbA2zT6/7kZxgByh2uS+EfHN80Qs1nAuCib+gUfj87yqbzwWExrvWfih3jf1raW+x
+         BJbVYqWJPptRWRHMHv9OjrtVTc/FZBWBawlelcv+sTfQJ1b/KxBqVEJu/08VzaaFPG1J
+         NSU3tAw8IOgfFXMoqxP2GcezBc1eb3G6EzEZASEgeeyGqfKYUtDAe9KB/EvAz48H2qxA
+         s/AuLxd9U0+HJGXxWcx4ouf/PQEU/nFdrGbF9R26YPYalej+kjNsyUN2K60pTXhV3iRX
+         U+kRlx6UKv2+K+rMBbQF7y1wgiASLUEZkqbk84726+mmC5f3dL6T/Vlmk8t09fuwF/Fo
+         fqgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=AkKKpp7GpijaobOh0bgeU1UqO/IKKe9+N7EZrtumRGQ=;
-        b=TjT0Ai5DZrkduGeAzgBueJs4CowB6+hcf7OOV+f+/q1DUHUBKmeoqn1Md6S+yR5DH9
-         m4MmppMa/1a3og+v2plrv3thdC9l9E2TgopNIHvBYCOmBfzq2R5GFoO7AE+s3Sqmdux3
-         nkH7U/TFcgI0QYUynvj0GpyANPVtohhf+mn26NpsXGsudI6PJTIpfbffnMPcoyU9KXpT
-         2UzLH9IX0T+uiHj9Ls+tWYYwNrhS3DDDRvaZxWPPCOBn0X4YBddWcQJvnLmxh0FqLda3
-         muiGWtw4E/wH4WjCer44mvKa3FaW7l3VSeXr1Uy306+MIwcTvi0r3r+W4kfA4SANYXgz
-         6huw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=9IN7BOF4QaxaBHfbBbAqu+yxCwamtOVU8WNfTbW9Rlg=;
+        b=vDzxYJOgeEzspYcF/RqER9l0GSbBLT1tIQ4wPXnbqmAj3uRN3VjfustYgZTyZSQNA1
+         3hyEIYvwFV/po7kup7+2IY3hd4t0TIPJsy7bT6XxW7vRasTJVvT/hSxucnnfQbcdhCxD
+         3G4W6vlLVkbvMIT+5AeqUa3q0iMpNAQQ/W6GX/tjqfHJ0Lia7QfyHIC3dcMkvEPVDEn0
+         W6m6loxVZA2AiwmuCJwgd8qrnIJFa6XYQjwPLd251/7ZyPG2VVpBMWj3Z5WOh6enA8xH
+         JhL2i3lwzGybobjOCzwUw2hUH17vmr0I1rH2oJYCji+tooHC31j7MqzojzkzeDaklMl4
+         ds9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Qa0TDSBE;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id v85si118044qka.6.2020.03.19.07.07.43
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2020 07:07:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id l21si105689edq.4.2020.03.19.06.39.33
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 06:39:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Qa0TDSBE;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id D48F22137B;
-	Thu, 19 Mar 2020 14:07:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584626862;
-	bh=GL0T6jxt2MYvTMIF3pGLe9B/OBS4dRqWXVCNYivHSAA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qa0TDSBEfOeamMHa2FGXKLGZaWbLUOuv1cabIcjkBD9X3ALRXe7JyV3NfgzHorPMx
-	 m02XexMxPFuEE2Rgb9qTZLmCSgN51maWVKE+f/uNQOm1nJz1S9Np4fMKcaApVCCXBZ
-	 mhM2x5k2DlciEEY+6nbJLFUrLMp/u4HWVzCbuHuI=
-Date: Thu, 19 Mar 2020 15:07:40 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: R Veera Kumar <vkor@vkten.in>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [PATCH 0/2] Correct typos and long line comments
-Message-ID: <20200319140740.GA4192874@kroah.com>
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 28916 invoked from network); 19 Mar 2020 13:39:31 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.202.245.105)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 13:39:31 -0000
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: R Veera Kumar <vkor@vkten.in>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH 2/2] staging: rtl8723bs: os_dep: Correct long line comments
+Date: Thu, 19 Mar 2020 19:09:00 +0530
+Message-Id: <96f4bde2df7cea5309398a6fdd5d52836d5ae914.1584624834.git.vkor@vkten.in>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1584624834.git.vkor@vkten.in>
 References: <cover.1584624834.git.vkor@vkten.in>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1584624834.git.vkor@vkten.in>
+Content-Transfer-Encoding: 8bit
 
-On Thu, Mar 19, 2020 at 07:08:58PM +0530, R Veera Kumar wrote:
-> Correct typo in comments found using checkpatch.pl.
-> 
-> Correct long line comments to match coding style.
+Correct long line comments to respect 80 character line
+limit.
 
-Nit, you forgot "staging: rtl8723bs" in your subject line here for 0/2.
-You can fix that up when you resend this patch series.
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c | 27 ++++++++++++++-----
+ 1 file changed, 21 insertions(+), 6 deletions(-)
 
-thanks,
+diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+index a6491f163272..8296ea03ecde 100644
+--- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+@@ -35,7 +35,9 @@ void rtw_os_recv_resource_free(struct recv_priv *precvpriv)
+ 
+ 	for (i = 0; i < NR_RECVFRAME; i++) {
+ 		if (precvframe->u.hdr.pkt) {
+-			dev_kfree_skb_any(precvframe->u.hdr.pkt);/* free skb by driver */
++
++			/* free skb by driver */
++			dev_kfree_skb_any(precvframe->u.hdr.pkt);
+ 			precvframe->u.hdr.pkt = NULL;
+ 		}
+ 		precvframe++;
+@@ -80,7 +82,10 @@ _pkt *rtw_os_alloc_msdu_pkt(union recv_frame *prframe, u16 nSubframe_Length, u8
+ 		((!memcmp(sub_skb->data, rtw_rfc1042_header, SNAP_SIZE) &&
+ 		  eth_type != ETH_P_AARP && eth_type != ETH_P_IPX) ||
+ 		 !memcmp(sub_skb->data, rtw_bridge_tunnel_header, SNAP_SIZE))) {
+-		/* remove RFC1042 or Bridge-Tunnel encapsulation and replace EtherType */
++		/*
++		 * remove RFC1042 or Bridge-Tunnel encapsulation and replace
++		 * EtherType
++		 */
+ 		skb_pull(sub_skb, SNAP_SIZE);
+ 		memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->src, ETH_ALEN);
+ 		memcpy(skb_push(sub_skb, ETH_ALEN), pattrib->dst, ETH_ALEN);
+@@ -112,7 +117,10 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 			/* DBG_871X("bmcast =%d\n", bmcast); */
+ 
+ 			if (memcmp(pattrib->dst, myid(&padapter->eeprompriv), ETH_ALEN)) {
+-				/* DBG_871X("not ap psta =%p, addr =%pM\n", psta, pattrib->dst); */
++				/*
++				 *  DBG_871X("not ap psta =%p, addr =%pM\n",
++				 *  psta, pattrib->dst);
++				 */
+ 
+ 				if (bmcast) {
+ 					psta = rtw_get_bcmc_stainfo(padapter);
+@@ -124,7 +132,10 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 				if (psta) {
+ 					struct net_device *pnetdev = (struct net_device*)padapter->pnetdev;
+ 
+-					/* DBG_871X("directly forwarding to the rtw_xmit_entry\n"); */
++					/*
++					 * DBG_871X("directly forwarding to the
++					 * rtw_xmit_entry\n");
++					 */
+ 
+ 					/* skb->ip_summed = CHECKSUM_NONE; */
+ 					pkt->dev = pnetdev;
+@@ -236,7 +247,10 @@ static void rtw_os_ksocket_send(struct adapter *padapter, union recv_frame *prec
+ 			u16 len = *(u16*)(skb->data+ETH_HLEN+2);
+ 			/* u16 ctrl_type = *(u16*)(skb->data+ETH_HLEN+4); */
+ 
+-			/* DBG_871X("eth, RC: len = 0x%x, ctrl_type = 0x%x\n", len, ctrl_type); */
++			/*
++			 * DBG_871X("eth, RC: len = 0x%x, ctrl_type = 0x%x\n",
++			 * len, ctrl_type);
++			 */
+ 			DBG_871X("eth, RC: len = 0x%x\n", len);
+ 
+ 			for (i = 0; i < len; i++)
+@@ -291,7 +305,8 @@ int rtw_recv_indicatepkt(struct adapter *padapter, union recv_frame *precv_frame
+ 
+ 	rtw_os_recv_indicate_pkt(padapter, skb, pattrib);
+ 
+-	precv_frame->u.hdr.pkt = NULL; /*  pointers to NULL before rtw_free_recvframe() */
++	/*  pointers to NULL before rtw_free_recvframe() */
++	precv_frame->u.hdr.pkt = NULL;
+ 
+ 	rtw_free_recvframe(precv_frame, pfree_recv_queue);
+ 
+-- 
+2.20.1
 
-greg k-h
 
