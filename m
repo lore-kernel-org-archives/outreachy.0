@@ -1,102 +1,82 @@
 X-GM-THRID: 6805874038364176384
-X-Received: by 2002:a05:6402:376:: with SMTP id s22mr2168648edw.273.1584616059404;
-        Thu, 19 Mar 2020 04:07:39 -0700 (PDT)
+X-Received: by 2002:a7b:c4cd:: with SMTP id g13mr3216620wmk.151.1584616054526;
+        Thu, 19 Mar 2020 04:07:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:358b:: with SMTP id o11ls898259ejb.3.gmail; Thu, 19
- Mar 2020 04:07:38 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvuMiELAZ+D2JKxTPxGLP/uVzYMlway1Ev5IbCoykX8Mj8BH3DvG/rBifRiAaMaYCV7VH7G
-X-Received: by 2002:a17:906:d939:: with SMTP id rn25mr2724197ejb.85.1584616058285;
-        Thu, 19 Mar 2020 04:07:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584616058; cv=none;
+Received: by 2002:a1c:a98b:: with SMTP id s133ls958782wme.3.gmail; Thu, 19 Mar
+ 2020 04:07:33 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtakKw8BjUL2kVcfnBGZXq7yav+72htDsQFuCxGO/50PtGYxDMwcdqWWb7RKCURNsidN2RX
+X-Received: by 2002:a1c:3105:: with SMTP id x5mr3193045wmx.51.1584616053451;
+        Thu, 19 Mar 2020 04:07:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584616053; cv=none;
         d=google.com; s=arc-20160816;
-        b=jVuodHvJSFKpM0r9R+GyPTyiSrFOhDU0EQ6YKNQbZjIgrJOintlg6SsfaZzERM6qwI
-         ahPo1Z7XA7meQMhZvo/LLeNK/sofV2SaJq0beEqsOFsthJ13RPcFeXUuDhouOpc7yPEF
-         2qBk6I5cbGQvg8ZRORKLFbDzufuttgBo0ztXFVIgCvxbqY8Wzni4v6SPYkS97UwEXokP
-         agHhGcu+v4W9xU9FNIz+XL7KhFqhsC4MerW4l9ziqsy3nEektxP0TxRw2EsBqKNo4YQ8
-         QF4mQFZiAUir9RczifaZFmTRHsvhtkLF5dGUnLPRAsQdGH766dm8mEF+C9OrM6Az8nW1
-         N1QQ==
+        b=bCiwsZyZ1vDlkcEDDdrqeJiSw+671zfSuwAC6paz9pPObwPDRoXU1LtMB+I21wizkA
+         1z3GW3lqFc8PqVMc9tCd2nCdSEcbBKoeYRXm/RcUZJ/DIrh+KKbXusXQAdV2M2ONApzH
+         hmCzR9DAgl+Y9NpNbyh4JlLzOM/PsQpPja+oGrkE+DlL+RT3oNPQ3toCK7VBW1InJGWT
+         2Eq5I6Qgb0L5s6cCkxOJeku6Kptii8VpO6M+g2jvaoAJfzJc5bhXj3W+BeWM2U1rXK4e
+         BlUJ1YlczfrHa0fiV1/ehZwTX8AGnBmCduz11U6csxUGc6WNEFQdSJGeb1NnQbPI0/n3
+         kjcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=Ddw5Rdi9xF3jmq7KVAAMuSW9WBwervZuX7cJC/DHJNM=;
-        b=xmPm/NCAOsn+1SmvV22fslOJXkAFgAxzrK62i1dOYNhorTlfF1S529N9iASaqs+hDz
-         8qhw40SSVwxSToUaWGrQo0ezIyNpZkpdfabBs/kef24SrUeLR1C1aaZuWMicGzqgitEH
-         8Reye51kzKmwmEfC7QA7rCbitnTx615G+xrHthctEre3ZunlIcksY1SRig/7ToTvtWqX
-         vdX2wv8+xPs19PSdVf7Qcu16IqzxQCzsstiwEluBOHh8Kq6unw82/VX/jEyDVj4RTQzp
-         MvmxWeb8nhBXFOekoWSIteh3rxEfYy4HVGjx66fb+u/J26ORUhXWEDoRiQl5fq8A3eCg
-         tw6A==
+        bh=IU1MqKueu37YJY1uR7iTpiXIiNuHta2pgBbDC/hEfyc=;
+        b=eCRqUdE3yVUH2v7qKgyopzN3mx5LPCU98Kw/B+6vK492cb+IRdfvYBCyBKRVMS0n2L
+         c6U0iEhVM1qeuhpSMf2PwhI08NlPRrfnEXZwOBWOQinltAdXUUQ52lqEH1WR1EckYDOr
+         d0sNjYOiDmHpAp9uR6R+SsGYjZ7u4WpXydt5SBfkmsLBD7SKd0Nf+KTxsWjtdnHNmnCN
+         bQXBsOclXVpBNM116zccPUPaGrQb/x9nEqKxxWns3NXJKb6nTS/ZNAMCeEQ9RGnEcWi1
+         ta76riuXkNhRddGzxgceE/U2U53Qv726M2CuWiGpezJ2uigo/oqgyBwtgfDHzLVuXFAS
+         NfIQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
 Return-Path: <vkor@vkten.in>
 Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id x7si89491ejw.0.2020.03.19.04.07.38
+        by gmr-mx.google.com with ESMTP id e12si69409wru.1.2020.03.19.04.07.33
         for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 04:07:38 -0700 (PDT)
+        Thu, 19 Mar 2020 04:07:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 27767 invoked from network); 19 Mar 2020 11:07:37 -0000
+Received: (qmail 27753 invoked from network); 19 Mar 2020 11:07:32 -0000
 Received: from unknown (HELO localhost) (vkor@vkten.in@117.202.245.105)
   de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 11:07:37 -0000
+  by vkten with ESMTPSA; 19 Mar 2020 11:07:32 -0000
 From: R Veera Kumar <vkor@vkten.in>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: R Veera Kumar <vkor@vkten.in>,
 	Hans de Goede <hdegoede@redhat.com>,
 	Larry Finger <Larry.Finger@lwfinger.net>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [RESEND PATCH 06/10] staging: rtl8723bs: hal: Correct typos and long line of comments
-Date: Thu, 19 Mar 2020 16:36:49 +0530
-Message-Id: <270d3170897108cf692e489f29471824800cca79.1584514678.git.vkor@vkten.in>
+Subject: [RESEND PATCH 05/10] staging: rtl8723bs: hal: Correct a typo and long line of a comment
+Date: Thu, 19 Mar 2020 16:36:48 +0530
+Message-Id: <11cde6ad8b94e32ab17200b4a889f5c2d3d63699.1584514678.git.vkor@vkten.in>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1584514678.git.vkor@vkten.in>
 References: <cover.1584514678.git.vkor@vkten.in>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-    Correct long line comments to respect 80 character line limit.
-    Correct typo in the same comments.
-    Misspelling found using checkpatch.pl.
+Correct a long line comment to respect 80 character line limit.
+Correct a typo in the same comment.
+Misspelling found using checkpatch.pl.
 
 Signed-off-by: R Veera Kumar <vkor@vkten.in>
 ---
- drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ drivers/staging/rtl8723bs/hal/hal_intf.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-index 9950934c3ab3..2bcbe3171dbe 100644
---- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-+++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-@@ -101,10 +101,11 @@ static void odm_RxPhyStatus92CSeries_Parsing(
- 		u8 cck_agc_rpt;
+diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c b/drivers/staging/rtl8723bs/hal/hal_intf.c
+index 7d8f21f32fb9..8aebb8bc11c4 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_intf.c
++++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
+@@ -365,7 +365,8 @@ void rtw_hal_dm_watchdog_in_lps(struct adapter *padapter)
+ {
+ 	if (adapter_to_pwrctl(padapter)->bFwCurrentInPSMode == true) {
+ 		if (padapter->HalFunc.hal_dm_watchdog_in_lps)
+-			padapter->HalFunc.hal_dm_watchdog_in_lps(padapter); /* this fuction caller is in interrupt context */
++			padapter->HalFunc.hal_dm_watchdog_in_lps(padapter);
++			/* this function caller is in interrupt context */
+ 	}
+ }
  
- 		pDM_Odm->PhyDbgInfo.NumQryPhyStatusCCK++;
--		/*  */
--		/*  (1)Hardware does not provide RSSI for CCK */
--		/*  (2)PWDB, Average PWDB cacluated by hardware (for rate adaptive) */
--		/*  */
-+		/*
-+		 * (1)Hardware does not provide RSSI for CCK
-+		 * (2)PWDB, Average PWDB calculated by hardware
-+		 *    (for rate adaptive)
-+		 */
- 
- 		cck_agc_rpt = pPhyStaRpt->cck_agc_rpt_ofdm_cfosho_a;
- 
-@@ -177,9 +178,10 @@ static void odm_RxPhyStatus92CSeries_Parsing(
- 		}
- 
- 
--		/*  */
--		/*  (2)PWDB, Average PWDB cacluated by hardware (for rate adaptive) */
--		/*  */
-+		/*
-+		 * (2)PWDB, Average PWDB calculated by hardware
-+		 * (for rate adaptive)
-+		 */
- 		rx_pwr_all = (((pPhyStaRpt->cck_sig_qual_ofdm_pwdb_all) >> 1)&0x7f)-110;
- 
- 		PWDB_ALL_BT = PWDB_ALL = odm_QueryRxPwrPercentage(rx_pwr_all);
 -- 
 2.20.1
 
