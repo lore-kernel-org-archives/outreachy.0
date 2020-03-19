@@ -1,122 +1,84 @@
 X-GM-THRID: 6805826308521590784
-X-Received: by 2002:a2e:7a0f:: with SMTP id v15mr1890377ljc.156.1584616649714;
-        Thu, 19 Mar 2020 04:17:29 -0700 (PDT)
+X-Received: by 2002:a2e:9bd2:: with SMTP id w18mr1612080ljj.58.1584608847738;
+        Thu, 19 Mar 2020 02:07:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:550:: with SMTP id q16ls451252ljp.1.gmail; Thu, 19
- Mar 2020 04:17:28 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuU/g20pmzNuZf6v9r76hI8zUo9ysnbCLVrTNJ7GO+G9HffMzD/wgjy54t3H/fFjopgxsg1
-X-Received: by 2002:a2e:9dc8:: with SMTP id x8mr1902871ljj.212.1584616648524;
-        Thu, 19 Mar 2020 04:17:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584616648; cv=none;
+Received: by 2002:a2e:8541:: with SMTP id u1ls354914ljj.10.gmail; Thu, 19 Mar
+ 2020 02:07:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv3Rfz9ezM18gjKvZO5lmKFTe5FIU+29oz9/3Tzmakk3tDvwDT1v+c20rkROBQh/e6U4Pzc
+X-Received: by 2002:a2e:8192:: with SMTP id e18mr1557852ljg.57.1584608846100;
+        Thu, 19 Mar 2020 02:07:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584608846; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDfBGG62uIJ3z8rAvvt5C5ou+0lobfEBbpuDD3E8EcfdVIEB5etOHlJF0zo6vzDLeF
-         XMMCskpmcZ1u+5XgKMp2yhpmA24O0lsF/EZ8DJ7AjY3bxUbxBNC02P6ytfzNImXXlsgp
-         nU6KxUJKJ4eaZg5FcH3k1HRp8rGNKjjJ1ralC5vYOlxsf0ba9QbQQCwFDXNbVDhfQ9h3
-         EDErTTFOqkpMu7J7XNQ4OlmZKn2va0RfpOzMZfSi5g/gaJFDPyIh4TmQq867FMzT6x0i
-         SP3q5Z0/cS0E/luKVEbwKBlVgZ//lvzquNM4Bz6ZnSw9u5JrxXGS/i07hurTUZJanZyF
-         pKLQ==
+        b=UHOG8VlB3JCeMME/pC58sQqt8Cn9gBi1v4+VNf3GSyqOvUjJk1iZqRXmWFIrrV21P/
+         HfIFV6IQMYbEibOdY/cL64k2MR81yCw+1R2dxMWZ0P/Kftx4Dt2h6AheVwq7/FqN3CAP
+         fzFgGadZ2XHNAfJp+n6Z1RCvAJ4ZAoZ3mOQ2+XXs+Qnd1GcLZCY9VQzTRX9rr0Trx2gA
+         EzP0ne0wx10CPWkERYE5bp3oZhWJY7RgAa1v26JgI1tOEWWQrMFvq8qOw7dDl4MNcrlZ
+         OpbBGBWoFfBLty1lCg4eU8LeLgiOdSTLX3VrY7gyilw3IOT/nkwruNbp6XajRQyVmQKt
+         ydCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=Hx27Od7ckxMzbok3po4C5uFC4+PI762PyH6lCZ65hYQ=;
-        b=wCuyZhhh+VwVdjXu4p8SERLEn/khcmVjBAbyLmA1aCKvgEIse+7GEvx+BMMH92bgIX
-         6uPFieRKxWN/4WI9lgdBR2yxjex6bxqjgG3Q85+qyMBPZ6SHFlxSWSt65ew7GpBMV48D
-         oq0BzC3G0d6j4b/zOyy2zD67Xhe0zaFCGKKN5WD2+wdPCf3AeRISCzHwE35Fwrm9PsRL
-         QzIIPBpzi5R7yLlm2av07l3VIvFNLuyrfRSxStd6UjbJzgKNysKDmlMQCi+bbSCcBhmt
-         NWwpKiamO6FC/esleyWG1UHSxrtBQxJvUvjNYadHnjFycIVbH9ttUEtCqX64LFrJHFxD
-         Jl8g==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=h1R0YbIxSL/5zM7eKZcbIFfdEOYaVit5KiTCfGSjJII=;
+        b=Qe99z8LANPEiP7Bl474Gyn2WdEYvDd+7BCrP+7FgoL+Ga/lM8XJSw30qeTsnok7VpQ
+         zUCvVycwY/tY9BVne3lz2C0JjP9VhuGVa/RLdAzxBQpEvSZoukeYgT0Ch8HGVwEzPvuL
+         TOFYO+83V+JAXhRUQCP8QuGDn0tkZGn++ND94KAQBha0d0dVobwx/f5UQNWyhKYMqSJI
+         SZPZGHLSeE/8c5khsN47iNv2CqzxM5AdOB3x5DHAS7JuslUbJJkNwFvgzDBUSUMf1jMt
+         MdUBftUVhqfsi0CILO2gW/r0tWc/wHTatmOcKy3L3igCevq1V7G9WuYexJCNXIuU7ajy
+         Uxng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id s22si86684ljp.0.2020.03.19.04.17.28
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 04:17:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id m11si63084ljj.2.2020.03.19.02.07.25
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Mar 2020 02:07:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 27911 invoked from network); 19 Mar 2020 11:17:26 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 11:17:26 -0000
-Date: Thu, 19 Mar 2020 16:47:19 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.70,571,1574118000"; 
+   d="scan'208";a="342897997"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 19 Mar 2020 10:07:24 +0100
+Date: Thu, 19 Mar 2020 10:07:24 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: R Veera Kumar <vkor@vkten.in>
+cc: Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Re: I need feedback on my posted patches
-Message-ID: <20200319111718.GB3889@tulip.local>
-References: <20200319080144.GA1723@tulip.local>
- <20200319080905.GA3489391@kroah.com>
- <20200319082249.GC1723@tulip.local>
- <20200319083600.GA3490824@kroah.com>
- <20200319085151.GE1723@tulip.local>
- <20200319085950.GA3495501@kroah.com>
+In-Reply-To: <20200319090413.GF1723@tulip.local>
+Message-ID: <alpine.DEB.2.21.2003191004480.3010@hadrien>
+References: <20200319080144.GA1723@tulip.local> <20200319080905.GA3489391@kroah.com> <20200319082249.GC1723@tulip.local> <alpine.DEB.2.21.2003190930420.3010@hadrien> <20200319083953.GD1723@tulip.local> <alpine.DEB.2.21.2003190940190.3010@hadrien>
+ <20200319090413.GF1723@tulip.local>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200319085950.GA3495501@kroah.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=US-ASCII
 
-On Thu, Mar 19, 2020 at 09:59:50AM +0100, Greg Kroah-Hartman wrote:
-> On Thu, Mar 19, 2020 at 02:21:54PM +0530, R Veera Kumar wrote:
-> > On Thu, Mar 19, 2020 at 09:36:00AM +0100, Greg Kroah-Hartman wrote:
-> > > On Thu, Mar 19, 2020 at 01:52:54PM +0530, R Veera Kumar wrote:
-> > > > On Thu, Mar 19, 2020 at 09:09:05AM +0100, Greg Kroah-Hartman wrote:
-> > > > > On Thu, Mar 19, 2020 at 01:31:52PM +0530, R Veera Kumar wrote:
-> > > > > > Hi,
-> > > > > > 
-> > > > > > I posted patches on Saturday. But I did not got a msg from Greg
-> > > > > > for the patches we should resend. So I resent it yesterday.
-> > > > > 
-> > > > > What specific patches did you submit that you did not get a response on?
-> > > > > 
-> > > > > thanks,
-> > > > > 
-> > > > > greg k-h
-> > > > >
-> > > > 
-> > > > They are:
-> > > > 
-> > > > Subject: [RESEND PATCH] staging: rtl8188eu: core: Correct a typo in a comment
-> > > > Message-Id: <20200317233020.575-1-vkor@vkten.in>
-> > > 
-> > > I do not see any of these patches in my system at all.
-> > > 
-> > > I would suggest resending all patches that you have that I have not
-> > > applied as I am currently caught up on all pending outreachy patches.
-> > > 
-> > 
-> > Oh.
-> > Perhaps the issue is I am sending email patches with
-> >  To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> >  CC: outreachy-kernel <outreachy-kernel@googlegroups.com>, others
-> > 
-> > I do not know but should I send all of them with To: field.
-> > 
-> > Greg, do you only read outreachy-kernel@googlegroups.com msgs for patch
-> > lookup.
-> 
-> I read whatever shows up in my inbox :)
-> 
-> I am subscribed to the mailing list, odds are things are broken on your
-> end with your 'git send-email' setup.
-> 
+> Sending msgs to outreachy-kernel@googlegroups.com using cc does not
+> works. If I send as To: it reaches.
+> Google groups blocks CC msgs I think.
+> Oh my. I wasted all the time.
+>
+> I am sending all the patches again.
+> Please specify these things in Outreachy pages.
 
-Thanks Greg!
+When I received this message it had the mailing list in CC:
 
-It was definitely broken git send-email setup.
-I use msmtp instead of esmtp. Which was wrongly set up.
-Direct git send-email was not working as my SMTP server
-does not supports STARTTLS, but  only TLS REQUIRED PORT:465.
-Esmtp also only supports STARTTLS not TLS REQUIRED.
+Date: Thu, 19 Mar 2020 14:34:15 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: I need feedback on my posted patches
 
-git send-email should be made to support that.
-Or may be I am wrong, as it did not worked in my server.
+I am also sending this message with the mailing list in CC.  I think that
+the problem is elsewhere.
 
-Veera
+Also Greg said that he didn't get your messages at all, even though his
+address was given explicitly.  So I think that the problem is somewhere
+else.
 
-> good luck!
-> 
-> greg k-h
-> 
+Nevertheless, it seems to be solved.  So just do for your other patches
+what you did for this one.
+
+julia
 
