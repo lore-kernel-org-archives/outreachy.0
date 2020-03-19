@@ -1,123 +1,132 @@
-X-GM-THRID: 6886889197397868544
-X-Received: by 2002:a1c:6643:: with SMTP id a64mr3772971wmc.142.1603478844586;
-        Fri, 23 Oct 2020 11:47:24 -0700 (PDT)
+X-GM-THRID: 6805826308521590784
+X-Received: by 2002:aa7:9f49:: with SMTP id h9mr1438313pfr.217.1584620125359;
+        Thu, 19 Mar 2020 05:15:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:82ab:: with SMTP id 40ls3244624wrc.1.gmail; Fri, 23 Oct
- 2020 11:47:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZtvGXNYj/TZZErEqcUO+SNdcgMtklQc56uV/KVh7sJWvesoluRefu7XQyUiC5Z+jTbh4+
-X-Received: by 2002:adf:a557:: with SMTP id j23mr4237853wrb.95.1603478842493;
-        Fri, 23 Oct 2020 11:47:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603478842; cv=none;
+Received: by 2002:a63:b258:: with SMTP id t24ls1500177pgo.10.gmail; Thu, 19
+ Mar 2020 05:15:24 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsGNqfBDUC3cFDaFbsgRM7G6JfCRTNbbvkio1Fl4kAuSTWde3YOsVNXfneM/MBi9FY5KsWJ
+X-Received: by 2002:a62:447:: with SMTP id 68mr3657563pfe.174.1584620123992;
+        Thu, 19 Mar 2020 05:15:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584620123; cv=none;
         d=google.com; s=arc-20160816;
-        b=g5bg7BundvSaJGaCqBMfJ9n1fFx8DvC5u6zimkjWmI94gOzX2SYoMsNcFXyNQp1cHG
-         vgyU0T6YCiIguc+PGbmFZjYeO2rzzhZaB1SiHHmlyNfPbGFrq7Ne37wggP4sv7ZN6cPE
-         Q4Pk3lecFNRSnb9kZAiZJEL2ESe00ZB7dnG7xgZab7LTuHjVipjl57pOcxaiAeMIO9QY
-         jrIasKfEHHHp/5UPM3+8G+5Piz5ZZaPZr+8RPmjgmT/OQi6HHqiZrHiZwg8TsfVwBMAV
-         NSSiwxrQTKWSPBgGXCf/7Z+SSslzD55JrrppWnfo/I43ERmU9QKznSK7SjCeQO+RrS4l
-         8vMQ==
+        b=tkHx9usShUyey3Nm4wYWxfQvmK8k/NtrvS70d+DdeBeqBBPa3ODX5x0BRS0lJNLfKn
+         gJ5Nh2cS7gh1//Y4zxXZRKQoLP3/nMKV5zoh3xIW1Mzn42tskiKhn2oLMGyVAgbjMgLn
+         dIOu3ke8jiV9dQziozQMKBXbArs0GmFIv8lQapaMsZlRALvhV1CjT5k3znmuIqQXu302
+         FRkmLAx+pPK+1msZXzziOYvhHIZvThpavBoLj5GPkNsLYlKxby130L/X9wuL/52AyQWs
+         EJfM+zP/MpMuNU+U0A+rVsBgRDfnjqaWVFkI6s3LS1nLbo5xMDev3vCU4K+uod4aZecT
+         HqGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=u/tW7eVCfHGY9hMZbenszHfGZCctcOjNQMSRv2EDhcU=;
-        b=aV58dZgRuobH/OqG7Ag2QPCT8Jt9zGzMI6FNWW/39jXAfI8uxlPrgI9lQuw3BCVNaK
-         btNxaf4MZHNSBBFrPSn2Y+q9+rYllxetxVj4JsuReLPDz0U9jNmsBRmvUCCcmjduM4Gp
-         8jkgZ9h4qKh71Vwkjxn1xOMz99nD1iqo1RJFPPlVvumSMaUC9kk6Fsbdfo3ghrDSeaPm
-         0ACNFGWq+oNrT0dF81Q1o0MZX3f69Lt7RxjXi0wQuLrxL+RhBL2E++VED0jLSICQy/bj
-         9xDX8S0x6gsmA7paBzFZN4dBxiSYtaCL5jRa3jYtQ4fI8BGUco2FmKf2jspVegeTcOGu
-         3Bew==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=PA4JbwqmGxtOp7e0UKqLDrCwgd3UcsotlcSPzvmmjPo=;
+        b=snAQvSoSK/+7gKwZXuWeCKVMqoeev1kRCLuqln75tPb8kuLYuesJ/s9ilnkxKS+tqS
+         2PHy+kcI2zccn1O7yBSF4GHNUYsnX5vJwFD1EG68PVV0KwxnKKV0vI8easp2E6WAxDI/
+         6hCPJphybU+7q91mGHJfe9s3IXbl1B5ev9WLirL3xE/vDdZdLOyAr5tNqVGndeD8owp+
+         XZ+4SVIvodebGxU6xNyBfBRsXGvqbU2I66EO7/UmTG9jMdGJcMJ4cW+dZ/HtRo5PFodF
+         oSyx5C8LAkxyZVvQLEoqT49k2DD/KU6Epb2NBbYE7X0+AAzd7cpdDEY2UPcfXDOkZcje
+         Jkrw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tNxvnlbM;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <eafanasova@gmail.com>
-Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
-        by gmr-mx.google.com with ESMTPS id 11si84463wmg.0.2020.10.23.11.47.22
+       dkim=pass header.i=@kernel.org header.s=default header.b=bA9fyWpT;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id i19si320860pjx.1.2020.03.19.05.15.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Oct 2020 11:47:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Mar 2020 05:15:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tNxvnlbM;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x241.google.com with SMTP id c21so2640478ljj.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2020 11:47:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:user-agent:mime-version
-         :content-transfer-encoding;
-        bh=u/tW7eVCfHGY9hMZbenszHfGZCctcOjNQMSRv2EDhcU=;
-        b=tNxvnlbMoRurgHQF4IvYKx8rWo3rrZNrk1qOv3slPPyRFsNla0OkJgWkuBhmSSOqX0
-         QMaCvbKbZuu6gyHtF6Frg2PRHAH9K2/gCoAZ2EF4ck+Bhwq0by+BRf4Fon+fi6B0pIaY
-         h1SujMBuaOJYeJ/cnacm82mxDuJ5/+aLllh+KIUlBgMzmaKNiJlCwYOMsv5hkc5TaaXU
-         EF49uurQJwlfEERk8WNz+h1rqW+UfY528gRz0Mnc3bYmnh0Bsu4UkIJPxL9d93k3ulq6
-         5jH7J9LRdhUSONd1uhTSDjwJRg+XpYJVNdpFROgm0KsdE+E/z9DTfDX2D2Df95OWvOIO
-         1LJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
-         :mime-version:content-transfer-encoding;
-        bh=u/tW7eVCfHGY9hMZbenszHfGZCctcOjNQMSRv2EDhcU=;
-        b=aQR1/LJqKcgA7iH+6NtBsNbDsrJcsJtvC1ePOW1tOxXsU+FXgrhmfWNwZvIpXDYsZA
-         qouB906ev9yyOr1Bv0Z9/rCL8Kb8EzXhzHi6QPxw4uSL3mO543EzIGOoDFkDSH3fhM+S
-         1y3Hzof+a0yzivEb7rhlwlJV55K5VmBoOs2s6D4yImkq7bHUjuQn0LXjZ3dZIdWxn5ws
-         zJkHHz2tU/t6KpByLFLOeFfx/wV55vxKU2YRffP9jHSf9LNoy/hjIXv4a9LFX+yXV6s9
-         TaFc8bTrMvPf7NDr2dqMj7FoWI+aFSMRlUmD46tMW9oaWKs3mMsDithhj+Eq59DzQ0+l
-         X9vA==
-X-Gm-Message-State: AOAM5330J/6BKJLzSqqF5MNihgHC/ZwMVL/g4/TroMD8T47FmyOErHeg
-	Sd4X6qWtXfLN3UGaS5gR9dw=
-X-Received: by 2002:a2e:5853:: with SMTP id x19mr1321082ljd.24.1603478841928;
-        Fri, 23 Oct 2020 11:47:21 -0700 (PDT)
-Return-Path: <eafanasova@gmail.com>
-Received: from [192.168.167.128] (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
-        by smtp.gmail.com with ESMTPSA id w71sm214005lff.36.2020.10.23.11.47.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Oct 2020 11:47:21 -0700 (PDT)
-Message-ID: <b0d792de290fd492ac77cfa574150d67d3b6276c.camel@gmail.com>
-Subject: [PATCH v2] staging: rtl8192u: ieee80211: replace kmalloc/memset
- with kzalloc
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
-Date: Fri, 23 Oct 2020 11:47:05 -0700
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.36.4-0ubuntu1 
+       dkim=pass header.i=@kernel.org header.s=default header.b=bA9fyWpT;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 2B97D20663;
+	Thu, 19 Mar 2020 12:15:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584620123;
+	bh=Eh2MAzAjmu6HHIbdA7EX0LjSMGZoR5FLykqpZljqorg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bA9fyWpT5f54NCgbX1ORv40VTT0vBQwBatqkB8o8kVKFa2dR9WFfv7XEC2ZPEIduC
+	 Q0A+L+xXJvq0ewXAB1nCndRlPkStO9OAl8yiGndE1PSXgmGc6f/ieyeHOUFYK1W3Tz
+	 X4nF7mBDH5kHKHM9FZ8U3r/JozDAf79SbPtmtSTA=
+Date: Thu, 19 Mar 2020 13:15:21 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: I need feedback on my posted patches
+Message-ID: <20200319121521.GC3802220@kroah.com>
+References: <20200319080144.GA1723@tulip.local>
+ <20200319080905.GA3489391@kroah.com>
+ <20200319082249.GC1723@tulip.local>
+ <20200319083600.GA3490824@kroah.com>
+ <20200319085151.GE1723@tulip.local>
+ <20200319085950.GA3495501@kroah.com>
+ <20200319111718.GB3889@tulip.local>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200319111718.GB3889@tulip.local>
 
-Replace kmalloc + memset 0 by a call to kzalloc which zeroes memory too.
-Found with Coccinelle.
+On Thu, Mar 19, 2020 at 04:47:19PM +0530, R Veera Kumar wrote:
+> On Thu, Mar 19, 2020 at 09:59:50AM +0100, Greg Kroah-Hartman wrote:
+> > On Thu, Mar 19, 2020 at 02:21:54PM +0530, R Veera Kumar wrote:
+> > > On Thu, Mar 19, 2020 at 09:36:00AM +0100, Greg Kroah-Hartman wrote:
+> > > > On Thu, Mar 19, 2020 at 01:52:54PM +0530, R Veera Kumar wrote:
+> > > > > On Thu, Mar 19, 2020 at 09:09:05AM +0100, Greg Kroah-Hartman wrote:
+> > > > > > On Thu, Mar 19, 2020 at 01:31:52PM +0530, R Veera Kumar wrote:
+> > > > > > > Hi,
+> > > > > > > 
+> > > > > > > I posted patches on Saturday. But I did not got a msg from Greg
+> > > > > > > for the patches we should resend. So I resent it yesterday.
+> > > > > > 
+> > > > > > What specific patches did you submit that you did not get a response on?
+> > > > > > 
+> > > > > > thanks,
+> > > > > > 
+> > > > > > greg k-h
+> > > > > >
+> > > > > 
+> > > > > They are:
+> > > > > 
+> > > > > Subject: [RESEND PATCH] staging: rtl8188eu: core: Correct a typo in a comment
+> > > > > Message-Id: <20200317233020.575-1-vkor@vkten.in>
+> > > > 
+> > > > I do not see any of these patches in my system at all.
+> > > > 
+> > > > I would suggest resending all patches that you have that I have not
+> > > > applied as I am currently caught up on all pending outreachy patches.
+> > > > 
+> > > 
+> > > Oh.
+> > > Perhaps the issue is I am sending email patches with
+> > >  To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > >  CC: outreachy-kernel <outreachy-kernel@googlegroups.com>, others
+> > > 
+> > > I do not know but should I send all of them with To: field.
+> > > 
+> > > Greg, do you only read outreachy-kernel@googlegroups.com msgs for patch
+> > > lookup.
+> > 
+> > I read whatever shows up in my inbox :)
+> > 
+> > I am subscribed to the mailing list, odds are things are broken on your
+> > end with your 'git send-email' setup.
+> > 
+> 
+> Thanks Greg!
+> 
+> It was definitely broken git send-email setup.
+> I use msmtp instead of esmtp. Which was wrongly set up.
+> Direct git send-email was not working as my SMTP server
+> does not supports STARTTLS, but  only TLS REQUIRED PORT:465.
+> Esmtp also only supports STARTTLS not TLS REQUIRED.
+> 
+> git send-email should be made to support that.
 
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
----
-Changes in v2:
-	- correct the subject line
-	- correct the commit message
+git send-email works with msmtp just fine, that is how I use it.
 
- drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-index 63a561ab4a76..fb8483c499b3 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-@@ -227,13 +227,10 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
- {
- 	struct ieee80211_txb *txb;
- 	int i;
--	txb = kmalloc(
--		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
--		gfp_mask);
-+	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags), gfp_mask);
- 	if (!txb)
- 		return NULL;
- 
--	memset(txb, 0, sizeof(struct ieee80211_txb));
- 	txb->nr_frags = nr_frags;
- 	txb->frag_size = __cpu_to_le16(txb_size);
- 
--- 
-2.25.1
-
-
+greg k-h
 
