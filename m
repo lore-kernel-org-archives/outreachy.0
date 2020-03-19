@@ -1,105 +1,78 @@
-X-GM-THRID: 6662079194667679744
-X-Received: by 2002:a50:eb05:: with SMTP id y5mr2379656edp.5.1551136186768;
-        Mon, 25 Feb 2019 15:09:46 -0800 (PST)
+X-GM-THRID: 6805850934737895424
+X-Received: by 2002:a19:7406:: with SMTP id v6mr1548484lfe.194.1584610653623;
+        Thu, 19 Mar 2020 02:37:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:ae9d:: with SMTP id e29ls2891606edd.4.gmail; Mon, 25 Feb
- 2019 15:09:46 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia8T5x5mnnyJmYKgztVtiDIabw26IlEDioP62gntJScgiunfw/MUg2HxsuHXM8OVccJMSOr
-X-Received: by 2002:a50:b361:: with SMTP id r30mr1220832edd.8.1551136185985;
-        Mon, 25 Feb 2019 15:09:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551136185; cv=none;
+Received: by 2002:a2e:8189:: with SMTP id e9ls167977ljg.4.gmail; Thu, 19 Mar
+ 2020 02:37:32 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuWDlb9UsKIt5ytrdOnZ//wPylg/ep9Gc8mf5QHG5sVnwh53XvJBG0Df/JBPxy9s/N9/sTK
+X-Received: by 2002:a2e:9256:: with SMTP id v22mr1583462ljg.38.1584610652368;
+        Thu, 19 Mar 2020 02:37:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584610652; cv=none;
         d=google.com; s=arc-20160816;
-        b=07aMiJQpkopHGIsrkwdL3nbJsb1f57Vx+8XyX/tHafvkdYBsSPf8ccZXAj/1FeSEbW
-         h6raVpVL3nt2uKyMenqRfcqclG+vDUoOS+g/7a9mWMF8Aupu1WfuujJorFHjIM7dFHgp
-         FepG5uhvm7Qz+oJiSdMofAwLpEvFDO1LLh0SAhAVcoRxoPgA3Yvkbq85aINP4R9MyYJF
-         by8xwjHtdcmg1fhnmpxz5Zncs9OEETm8oX8jem6jo7BK9XOZRu+JZzNoQoal+y5k+aDe
-         pK2rzMj2JRmLEa32S26hw0IsARRJ/519Y4FRm6w0H57JYMD039soI/dFyO4dDp4QmyJl
-         jJzw==
+        b=BlcQDWnvvaOvlc7QuDi+IO4SCjG6z0V3xd3D7dVXjdkqQ2gICGPmwWtxIaZvv++SnW
+         IiaJ5aKXQb/FpNXKgqHms5upWIJaBrkLYkYU6P4zSERrHsBymtFVrU85Kpr+4gPRZAnl
+         Bgu+avlA1PYGD/LbKqq91QyFuQJqvPW/4XbDM2E2bsSbA3R1Gv/axcGwi86jSSlX5owY
+         wHqYElHwpMcSpy8Q3npnEGkaVZLqWae67FbwddRSYyw3w5afb/AONNaO9Ih9xkgRVv+u
+         Yvx872AAqvS+XWsM5faMEE8nmOtqxsUQTKrrgExt4442YpycHHpVG836Eix+VbqnOfpw
+         sJyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=I8jhrOAgQYQHbxRMkOpmin2GJLxbGR4aU0mrGaUw0J4=;
-        b=uWScnT1vbWs3hObUURqPArB7XUovq35NU6MdZ0PR3OotiXb3Bx8zdzlWsZdoIbUSQj
-         I43UyavoCdaaP24jzNnp0AxQDIO5KYBP2M8xHsU86wA2kU3zOOCU2wHYh93Y6GBqfZtR
-         6fsBleWIGosJpajGiPXoyHDHcRMQ0jmv3lTyRZCY9cQDXGf3mhBQIhIV2XcUQBBEUe/M
-         +HHSvIradssemYS1fqxzgGYAYLHoZ6o7KTpFhFfFXFfb6JC/eZg2NnXnRHtEYiYYf2rW
-         g+UzR8+ED/6is/hZmN9XFnfj3pbDafJ6KW7wEZMmjiUsGqrlF8EZbPi5rHtf8UOeAa03
-         TR0w==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date;
+        bh=O9kZc/o9Jw7RdF7EonmqsGlawHI1Sj550RmL5aUPIVE=;
+        b=APCff/eWNNT7eQ2TSfJQwWuTgwAbZucuUzKgB6HQUlpm7kN6OpkNMA/iOieZ+G8doA
+         q9s8VywNcSTwMmkdYUySLvZ2JJ6aVwlYxg2w5kIlolG/1pV/rkw9v2Z0WvoxLiVEoWeQ
+         hzCbjmq7cz+4kNnAD3RzKukvbRy8MN+W60cP6sUWtOixy1SEOJ5lss17NXnLQPMuF8cn
+         D+tniRLdhN+oayNn4iL9wixS/aRADk+c+wttGTf+AFC4hzFcVvsLn6Rd8xYFEzk2madd
+         ChD2zI5kzKuFYiX9MQ86gSlANq/jTigvoe8x+tdxvG3Ko3RmVRjDyJyyFi9H7io+AWFl
+         XMfg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LkQN9N+j;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
-        by gmr-mx.google.com with ESMTPS id r37si142171edd.2.2019.02.25.15.09.45
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 15:09:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id b26si91333ljk.4.2020.03.19.02.37.32
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 02:37:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LkQN9N+j;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x442.google.com with SMTP id w2so11787418wrt.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 15:09:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=I8jhrOAgQYQHbxRMkOpmin2GJLxbGR4aU0mrGaUw0J4=;
-        b=LkQN9N+j/dvP4pddRw4SAPH6rn3ByuJ5+YqiiFeKTFiIaYnbaUZIRuc4KoVIUodCGJ
-         LwrkTge5c0xieOOvY+ZV+7C1yyMjA1JLZsZ+NFlFEYEjFhoJEPA/mhD7OFmXuHAZ8g1f
-         mX23Le/1F3+gm5CtpyPp3SkZ7YAFPmgHlCML3ALfSCMwf91lVuemeaqi+nvZPWlSEOi8
-         YVej5TVcAOcwQ6NEmhqSFZ13yFA4Vc71aE4FPEjW4UMRd9BgRJROx1aRVDDXq27lBysw
-         Sv7pbRRz4cIvWYaK9JQAXlAgFPDgfSQpYxNiCbkWXIsHHBr9/N6kniQVsYjTonxuw6Vg
-         Vacw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=I8jhrOAgQYQHbxRMkOpmin2GJLxbGR4aU0mrGaUw0J4=;
-        b=hk8qSocw3YZRLgROSD85LxWHE8mxUixRKJrk9P3B3w6k8Jo5FCy3N/kerhYEn4Q3LP
-         cSsScq9w6WgOmnCAFrInzaf5jEhAlqIfVLS0fz0WBXfGyWjbuSqfBUOJpLrZeDdKUzMm
-         ufRmwiyuidFGhUIiHclNLUehW3AzUaMnELNx9ihqVHU6ssR42TYMQm+M/DzSZqC7qaUr
-         QfwBLRBmaqwdXb5+MaWtgFMpKCUPSflAo5sg0/rrpmcHxqeIENtXwR9vRXG6r0KK+rTu
-         nq4kznw+dG7YKg1+q5DzGoimK0OXSowccl41TAdrnI30uvPXY9GAEEgS1kFYsZCV6WXZ
-         ajPg==
-X-Gm-Message-State: AHQUAuYLv+8cBPHNTQQcJNn/l9mnmX5JEqYCvqvddlzM9ljkJovb8x4t
-	djN+Vr1C7OcPel1Ayr+pkw==
-X-Received: by 2002:adf:9103:: with SMTP id j3mr14035649wrj.236.1551136185487;
-        Mon, 25 Feb 2019 15:09:45 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
-        by smtp.gmail.com with ESMTPSA id c1sm17075746wrw.7.2019.02.25.15.09.44
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Feb 2019 15:09:44 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: mt7621-eth: add SPDX GPL-2.0 license identifier ---added punctuation to v1 changelog text
-Date: Mon, 25 Feb 2019 23:09:29 +0000
-Message-Id: <20190225230929.3861-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 26574 invoked from network); 19 Mar 2020 09:37:31 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 09:37:31 -0000
+Date: Thu, 19 Mar 2020 15:07:24 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [RESEND PATCH] staging: rtl8188eu: include: Correct a typo in a
+ comment
+Message-ID: <20200319093715.GA2550@tulip.local>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Add SPDX GPL-2.0 license to fix missing SPDX warning
- reported by checkpatch.pl.
+Correct a single typo in a comment.
+Misspelling found using checkpatch.pl.
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
 ---
- drivers/staging/mt7621-eth/ethtool.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/staging/rtl8188eu/include/rtw_xmit.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/mt7621-eth/ethtool.h b/drivers/staging/mt7621-eth/ethtool.h
-index 40b4cf011660..d0e97ae0d82e 100644
---- a/drivers/staging/mt7621-eth/ethtool.h
-+++ b/drivers/staging/mt7621-eth/ethtool.h
-@@ -1,3 +1,4 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
- /*   This program is free software; you can redistribute it and/or modify
-  *   it under the terms of the GNU General Public License as published by
-  *   the Free Software Foundation; version 2 of the License
+diff --git a/drivers/staging/rtl8188eu/include/rtw_xmit.h b/drivers/staging/rtl8188eu/include/rtw_xmit.h
+index ba7e15fbde72..b9f11ef327e7 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_xmit.h
++++ b/drivers/staging/rtl8188eu/include/rtw_xmit.h
+@@ -112,7 +112,7 @@ struct pkt_attrib {
+ 	u32	last_txcmdsz;
+ 	u8	nr_frags;
+ 	u8	encrypt;	/* when 0 indicate no encrypt. when non-zero,
+-				 * indicate the encrypt algorith
++				 * indicate the encrypt algorithm
+ 				 */
+ 	u8	iv_len;
+ 	u8	icv_len;
 -- 
 2.20.1
 
