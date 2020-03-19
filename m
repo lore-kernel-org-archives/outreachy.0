@@ -1,115 +1,125 @@
-X-GM-THRID: 6471841659603648512
-X-Received: by 10.223.157.134 with SMTP id p6mr1257193wre.14.1506843059444;
-        Sun, 01 Oct 2017 00:30:59 -0700 (PDT)
+X-GM-THRID: 6805942899825442816
+X-Received: by 2002:a2e:920f:: with SMTP id k15mr2659566ljg.178.1584632225370;
+        Thu, 19 Mar 2020 08:37:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.195.40 with SMTP id n37ls1650571wrf.2.gmail; Sun, 01 Oct
- 2017 00:30:58 -0700 (PDT)
-X-Received: by 10.28.22.4 with SMTP id 4mr1289583wmw.13.1506843058604;
-        Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506843058; cv=none;
+Received: by 2002:a2e:8189:: with SMTP id e9ls441266ljg.4.gmail; Thu, 19 Mar
+ 2020 08:37:03 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuPk2YHct4q0leOFHM55SIKi+iUnGJmW2XbaWHYqBLmkFETomrn3nFKglZHmh2Ixd3zRfuJ
+X-Received: by 2002:a05:651c:10f:: with SMTP id a15mr2639625ljb.158.1584632223609;
+        Thu, 19 Mar 2020 08:37:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584632223; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZXxjHVYPBWUYm3h7Gwc9kpGuoRGhlU+zNNgFDRZMowPR5EGzDjTD5Pio1LWSZ8YcMS
-         YlBjGuHIXFEhQBh6wdoAv0SfaKOlbrTsEvVErQaZp+aeykw0Ozh2aUwtoux1AQ6SZFVh
-         9GPAYOwG8DRl7mpGCVByf/PYwWeuV6GKVByPyIDq7MdkG+tnU3Ti4K7mbvsRZY1c1IFZ
-         HkP9qW78NIM2j+R3ddsTvhnYKHq0nWaahstp9B/8wPxRgi/4A37+1gJgmQhq4WG+ccHT
-         bD07U6tt3sc5OQNSzcakZB21qZXwF8vxe8kp8QhC76IzdPefmeogI0ttaqTtAeNXcLhE
-         1YBw==
+        b=n4WP9oqmzzhttf83A2nTeGaA4HW+ZmSe1GLggz/l5sCeBVtTnLWxjma8PNTLDjhGK+
+         g5rKhpETbvrNmcgSkid26MJwwSwk+vO5bkTpXYGdqZPBRMaG9RS0pIsRrM6oYQxsbmrT
+         /NfNAevaNHLsU1UxaImAu2d3x8094nAKWQ4ppugZSMk0Iq+9EBH/1jH1W1mKsB/qxM+0
+         G16f6kKNz+w12LeshZHYPzMeBK3++GCHEvdCTQrLlDLS/4F/V8JLpcdBfyVu3aMG0Mn4
+         oV5gpJykNNfP7XCBSCaAIAiYh+hKN31NPo01s0OQtLpklY6veS1oY98xkT3KOWYxTj3j
+         hvkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=NDqwegI3L1RGjlgP7KihOVmMCjRtjUVYzj3GhP9Oddg=;
-        b=YzWDcOTkSAtpvb+g6YObC2/mFcWHHAxCv5/lbSQ1NQKCFOSbqg2i0vO4L1KQzh6fvn
-         rG7aBJhEzH7C4wq7eOvgmVS2UJoqk2gnMG8oRYHIRRJvSko9l1N06kNbuxl+8IA4YBBO
-         7CMA6YZValVitC7G+c1c0qUZUf8QS99lgRhoYnldaOD+b/CvyHiGunYSt7IRLwMH2lTx
-         IFWp7vJ4KHS7Pz4GQj1Ue4O3DGFQh6DlXB7QQ0KAfl/lU4hvexVhBoUk2+DLxhgcZa7n
-         XLGb9QuggdzJe5JH74683V2DHpZeqKnrTFyMDZS7krKGubjN4ejrDCiZBHi5wvm1PC/a
-         E/JA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=ioTDMPJILkhHwDLheDaHVb8PPjte8AyG2fskNwZdhNM=;
+        b=jalZj2Jvt3aKwDSo8e2R3w3d9SvcV53FoLszc3I+HozBpC6CnJfgsohAOQIl4YpKHS
+         vzy5PyKLkQIQo07FCHZbvWlb6Fegw+7Iw+UFwDF27aVr2lRaQJdhL01Tk2oTGfVX0PdY
+         /8uzHPWRRnXF/TxvXwY+XNodxMh/6+kpXh0flGJDbOT2Ml2qyNHsW0iYwdVep+AVr43Y
+         qI6ccohhmEsaQzhM7DYuTfYBtZtyiPE0zWIqTyu8msvJ75FoBu4cuWuv2G4VYAd3sfUB
+         5HprL6WJ8/wa6YIpKMQb2HIlaGtMdEHFXyTG0XopqyMtXjbJAYyyE3NcvXrbOY4mgu9O
+         UfMA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=duK5hHPs;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from mail-wr0-x243.google.com (mail-wr0-x243.google.com. [2a00:1450:400c:c0c::243])
-        by gmr-mx.google.com with ESMTPS id h17si961082wmd.0.2017.10.01.00.30.58
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b=fa8C8xPN;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=EPmiSY1V;
+       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) smtp.mailfrom=greg@kroah.com
+Return-Path: <greg@kroah.com>
+Received: from wout1-smtp.messagingengine.com (wout1-smtp.messagingengine.com. [64.147.123.24])
+        by gmr-mx.google.com with ESMTPS id a21si186241lff.3.2020.03.19.08.37.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) client-ip=2a00:1450:400c:c0c::243;
+        Thu, 19 Mar 2020 08:37:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) client-ip=64.147.123.24;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=duK5hHPs;
-       spf=pass (google.com: domain of mihaela.muraru21@gmail.com designates 2a00:1450:400c:c0c::243 as permitted sender) smtp.mailfrom=mihaela.muraru21@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wr0-x243.google.com with SMTP id z96so515479wrb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=NDqwegI3L1RGjlgP7KihOVmMCjRtjUVYzj3GhP9Oddg=;
-        b=duK5hHPsZqGJosl2L8HNpcHaQAoSmWbezt91VeH+koei1l+dDdI3+lVr96mIXy9rTI
-         Zlznpi35KN2j4sq5b2AfMkI6PTRsAS1htsHLeeCu5plKuEkxVAFP6v5VTzSS5Tn1+x5o
-         +RTnozPZWAZ2KxoUsxUCEwjP2U/z+z15gKHiwOLRmcWKjKq1Bx/2E7WP+fPPIfNAk9L4
-         M7AX7rW9u4f7rtnns4ZQXo1WzhYzSGEFlrmfi1FmZXgDCrVaQCBzUyWLqf4MLGyGLNJQ
-         +7rApzgQvgeJ5+OJ30hT29gTapC9EIu4OVHH9xjXChHWSg46zNtVLTmW/wJ4hkvfBvNA
-         xtYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=NDqwegI3L1RGjlgP7KihOVmMCjRtjUVYzj3GhP9Oddg=;
-        b=PA++FYU71+NKlogRSSK/Seg0pDru3+Dal2E7YjNe5hhsHXVHKYo1/3cLqNx3X5sr1T
-         +961uR23Z1SYPOKO8CBH0AUZ7lPKenTpx2FUgh2xGjD/6/X8r4v4JyErJu88ttxEO2F0
-         jPW5kb1GC+YxyRaL48sRA+Zxb9T0Hip39vSv5PhAlcCZTvpxi2s2pcjlEKbm7K3K95o3
-         IRzlZ1dfypctuLIhUTiY7bBcVSjo0rBByrOvKfKD2SewpxBadG1fbuVsr3XFq+aMI0/u
-         ixcXl42CleydQ4aoojn1tRqmDdrzSbajHPru2HVLvdQ8jaZvWqKOOOfB1KPmfYp81SuH
-         mKMg==
-X-Gm-Message-State: AHPjjUh8M5xQgYcqiN1xgLJcEGx8K/dyUjfEZINiDY2DEsFJofxZR3q5
-	ZxImMm3Q9gtzaNXb9cIukUa4NA==
-X-Google-Smtp-Source: AOwi7QAJOyMd1kbS0bXSfvyFApti7xNrOHkvBl++8Go72hC5AeKyiSgZO7JA2G4VZVvY5NHJXjdkXA==
-X-Received: by 10.223.175.100 with SMTP id z91mr12830687wrc.177.1506843058277;
-        Sun, 01 Oct 2017 00:30:58 -0700 (PDT)
-Return-Path: <mihaela.muraru21@gmail.com>
-Received: from domino-MS-16Y1 ([92.83.158.26])
-        by smtp.gmail.com with ESMTPSA id o59sm13979786wrc.45.2017.10.01.00.30.57
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 01 Oct 2017 00:30:57 -0700 (PDT)
-Date: Sun, 1 Oct 2017 10:30:56 +0300
-From: Mihaela Muraru <mihaela.muraru21@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Eric Anholt <eric@anholt.net>, Stefan Wahren <stefan.wahren@i2se.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: vc04_services: Use usleep_range() instead of
- msleep()
-Message-ID: <20171001073056.GA7890@domino-MS-16Y1>
+       dkim=pass header.i=@kroah.com header.s=fm3 header.b=fa8C8xPN;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=EPmiSY1V;
+       spf=pass (google.com: domain of greg@kroah.com designates 64.147.123.24 as permitted sender) smtp.mailfrom=greg@kroah.com
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailout.west.internal (Postfix) with ESMTP id 57F37A57;
+	Thu, 19 Mar 2020 11:37:00 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute1.internal (MEProxy); Thu, 19 Mar 2020 11:37:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=fm3; bh=ioTDMPJILkhHwDLheDaHVb8PPjt
+	e8AyG2fskNwZdhNM=; b=fa8C8xPNXIRzW6JESzviajU/u1wtfEtiS5iEEpBz7g1
+	w1ADUmRlqek0AKc1QWvQMFmbFsCqfXZMYq9vI5w/eyTR+Kd5I8SWOg7uGeVwY9fZ
+	Rc4fEOxlmXFqTaxKAUUtFuw+sYFT0W6IDorkp59PF2V8sTrGlqZ6/mEfxiY5gBEV
+	mrJ6ZWlKS7YbbrmAe/A+4KcH4PW17SgvqJJdM/tx6N0wnLceiOD1T/XipAxBX9Ng
+	1wtpiuzjnxEYda/Fd0NSBp5CESEJlSd/r+3r2DP3EnWAmnypb03PjVDys3lZDLRh
+	FNFCgvfOZ1p9ft7I5hE8q3foDIdkKroZhQrxANveBbg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=ioTDMP
+	JILkhHwDLheDaHVb8PPjte8AyG2fskNwZdhNM=; b=EPmiSY1VJFn+0V5yAHn/5n
+	m0hghfGGlnWoE5eOu+FuTfvmLJuXhri+A4Q8ClqEiUq1HhfXxXCCPeeGu33lwCgl
+	EY3gAmCVbtr/SEqWJtRar54wyR1co+GxhZSBoijzU2HL8nIrd//ehfbcmRJZfnnN
+	W2LgVTvq0+dywI/vM9zGvaSA2eF7ZbayA7yeABFHYpbuy9GaHToxxRwj7f1ezBIf
+	pYGjmhdIeVTmM+xr8V33ZVFYOflkG1ukbMQoVJZzzhnVJpSOyoqTKNfyv3v+Yg/J
+	am6Rb8B79UG6SF9d2Lai3OWQ/rfS+X9wk/YXDbCA5qBKpq5T0wF0UgcxNA0Na+IA
+	==
+X-ME-Sender: <xms:m5FzXviVClwPLWbyytFA3O299DscISbJkYVFiIkwnN8ApGk3tBE-IQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedugedrudefledgjeekucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvuffkfhggtggujgesthdtre
+    dttddtvdenucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheq
+    necukfhppeekfedrkeeirdekledruddtjeenucevlhhushhtvghrufhiiigvpedtnecurf
+    grrhgrmhepmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
+X-ME-Proxy: <xmx:m5FzXusz-6qJsQZwF3AaRCZDnBJB8PP4p9-CX96kqLx1TR9JIzU0NQ>
+    <xmx:m5FzXq4gYledC1VLV1Z_nwaIUeMPiA3DVelEbbkrOK9b-h0mbguiGA>
+    <xmx:m5FzXitKU7TPiwTjiy4ytrrL1IdXomQ7U9-5dNRW_dtvXuzcmXRkug>
+    <xmx:m5FzXne5Phjc0byQ3ZtcGuFcLhk2PhlpXKKUTf7BufDHDy4xrV1tKw>
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 5038B3061856;
+	Thu, 19 Mar 2020 11:36:59 -0400 (EDT)
+Date: Thu, 19 Mar 2020 16:36:57 +0100
+From: Greg KH <greg@kroah.com>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] I made a two patches in a set with two
+ different changes; does it qulifies
+Message-ID: <20200319153657.GA135326@kroah.com>
+References: <20200319153412.GA464@tulip.local>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20200319153412.GA464@tulip.local>
 
-Since msleep() will often sleep 20 ms for any value given in the
-1~20ms range, use usleep_range() for a precise wakeup.
+On Thu, Mar 19, 2020 at 09:04:17PM +0530, R Veera Kumar wrote:
+> 
+> Hi,
+> 
+> I made a patchset of two patches.
+> 
+> one patch fixing misspelling in comments.
+> 
+> other fixing long lines in comments.
+> 
+> Does it qualifies as a patchset.
+> I sent it to Greg.
 
-Issue found by checkpatch.pl.
+Greg rejected it so it doesn't qualify as anything :)
 
-Signed-off-by: Mihaela Muraru <mihaela.muraru21@gmail.com>
----
- drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> And he says the subject is not unique and to be named
+> something better.
+> 
+> Sub1: Correct typos in comments.
+> Sub2: Correct long lines in comments
+> 
+> I am unable to think of anything more descriptive.
 
-diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-index 631ff73..daf18e8 100644
---- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-+++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_shim.c
-@@ -357,7 +357,7 @@ int32_t vchi_bulk_queue_transmit(VCHI_SERVICE_HANDLE_T handle,
- 		if (status != VCHIQ_RETRY)
- 			break;
- 
--		msleep(1);
-+		usleep_range(1000, 2000);
- 	}
- 
- 	return vchiq_status_to_vchi(status);
--- 
-2.7.4
+Take a day off, come back and look at what you did, compare it to the
+hundreds of other patches accepted for these drivers, and see what you
+could do differently.
 
+good luck!
+
+greg k-h
 
