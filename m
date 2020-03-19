@@ -1,67 +1,73 @@
-X-GM-THRID: 6756281946886635520
-X-Received: by 2002:a17:902:d910:: with SMTP id c16mr4478080plz.102.1573069474827;
-        Wed, 06 Nov 2019 11:44:34 -0800 (PST)
+X-GM-THRID: 6805880138024091648
+X-Received: by 2002:a19:ee13:: with SMTP id g19mr1945964lfb.205.1584619259766;
+        Thu, 19 Mar 2020 05:00:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:b042:: with SMTP id z2ls762625pgo.16.gmail; Wed, 06 Nov
- 2019 11:44:34 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxurxgnqxTDW7PqdHAhF12JnQaw8HFwBBBQkU0Q3XBxVPo8pPBSyM3+46pdG+lCajajD3k
-X-Received: by 2002:a63:e444:: with SMTP id i4mr5060212pgk.247.1573069473937;
-        Wed, 06 Nov 2019 11:44:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573069473; cv=none;
+Received: by 2002:ac2:41d5:: with SMTP id d21ls347744lfi.11.gmail; Thu, 19 Mar
+ 2020 05:00:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv0kNW8LJL4q4oy26Q0jt4ebu6sDOrdZhytit5GSwzmTqGCGWGfleEFLHUBaLyFPavMfych
+X-Received: by 2002:ac2:4c0f:: with SMTP id t15mr1121767lfq.143.1584619256761;
+        Thu, 19 Mar 2020 05:00:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584619256; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4hTHlRnt5qOHY090RU0ONZOAU1afjAZEHfxAfM3iP9CY//xnQv6uAL5syCiyAArk9
-         BT8qVe3hTaGGLRJuFBflNMkgICw3rLztzXcy3CqJ2fIiYmGqhdZgsqvdMc9BIlN+v21O
-         KZoe8fScN0O10OEh384aR3VpCaA3ee2mjJupevnghuBxTzhNJsoVmm5BMm32MHNBNH5T
-         O9qb+xZvm5OJWHyVATR8pgGO29WUQp4hrK1fi92eA3/wum+AcuffNHhHtI6zqRF2D7U5
-         hVFkzElmZDdfGkvh8n9XQZ269i53Cm2JiyDHaXv0WAiMTdahHqfBJjBRgNhWdWb+kwep
-         3VFg==
+        b=kfqGZvbjn6CQTDfMf14X3OzhG6tLenHN9gnoGQGkEmqTwDxNUCn5Ju3klaya+dMZMP
+         tt1IM5Xj+RnER8SiiIDINUGZg5p49zHp9BTJKorfFPw0SGAg/VCgsWyfd/qfLZc+5FBS
+         DympaNdBtH5i9Xz9wibA8ynW/p8EqkkjXyInqLsVJVKFwbmsJK/Suw3wKVWJcAr+QZlf
+         f+bh9HgKJf6Va7KSmiVov13bUg6gyw08FvPV9Cf7r+YmEvOqFHW70Bhx1nRB3QSleJVQ
+         ra/3dllgbBL7KidLuEcyVDS2X3/ufLDcOi94F7BMV2sYWpQj7wDFqfiEOtFQ6KVtUGs7
+         ZlJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version;
-        bh=Xjjxm+9VhSilUqgTgFWt+DQ1z2/tnfJP+BUsv6NePX8=;
-        b=lZziWCjbs8Dn6YLpdvxY6hkVSaheTF5phwC/ElBhWQUA2Af4wDYQtAWWqW3McymzJb
-         RVdb4UMMrM8Wgfo/XbufysDlaVLckf0juddQWRYs9xpnZXOKDICDXS3eO9Sj21GS+DWu
-         v6FSN6CrU9g6L6xdHeFds+ORmuFiA6UFy4lzTuDhGZA5na1Bg0Z1HyjfDE3XXed0fWZr
-         OSXUMvWBRXmzwgtIq6YWtLp+6Snz1GqJdauFfDaSo47npC95Ol5Kgsm98NeBzNXJF96C
-         DrIMfgTR1qP4RuzaTCRqFFM+DW+xjvi4ASGMbwvDxh1Acq4P9ZQyt7Iy4hGydEVa9fNa
-         XFwg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=mVQdlXkvl/mRzqlxTacwLBPtYnYMm5Ccpc1N/qj7WaM=;
+        b=f1V2k9m8rBJIoPFCZtuk2Me2BrzttDYx1npdkP1LF85B0NDzb7vmgnrsZtRoRldQKQ
+         PT8ErLLMEV+jaI2qXdyN2W7ti5vijjbvXVrjOm0faxUdUuodwuphiWRC2s+Nw/HmZEty
+         xvXB8P+Kv9X/ZkICX86FlhB258hninxfCdCjgbPID1B11q9roAsQk7gXSWFsvxWZd+Ih
+         n2AwJjoHgR9HILvtzgH4vA6dF5iPsFOE2vysAltUqElJUbs6LEwlon2qzklq24Ss/9LL
+         wmevYd1R7ppT7OyfpTOBZNo3kDBNXw1ANgZ6DUZ7RVCBg5htptjkS/qWoUYDNZuXcDf3
+         Pg5w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.236 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa09-07.prod.phx3.secureserver.net (p3plsmtpa09-07.prod.phx3.secureserver.net. [173.201.193.236])
-        by gmr-mx.google.com with ESMTPS id ba9si42431plb.5.2019.11.06.11.44.33
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Nov 2019 11:44:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.236 as permitted sender) client-ip=173.201.193.236;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id s22si92161ljp.0.2020.03.19.05.00.56
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 05:00:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.236 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-lf1-f52.google.com ([209.85.167.52])
-	by :SMTPAUTH: with ESMTPSA
-	id SREGiBGad3heuSREHi9XeX; Wed, 06 Nov 2019 12:44:33 -0700
-Received: by mail-lf1-f52.google.com with SMTP id v8so18937990lfa.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Nov 2019 11:44:33 -0800 (PST)
-X-Gm-Message-State: APjAAAV6df2UMrjUnTa327thllDbeC69J74TeWN2/GJDdXiW0nqEJfPd
-	23z2w0hg17BjbJq0YOc9rUHEiq32gh/ua/nJCJM=
-X-Received: by 2002:a19:4848:: with SMTP id v69mr25419291lfa.6.1573069472275;
- Wed, 06 Nov 2019 11:44:32 -0800 (PST)
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 28276 invoked from network); 19 Mar 2020 12:00:54 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 12:00:54 -0000
+Date: Thu, 19 Mar 2020 17:28:42 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] I sent a patchset of 4 rtl8723bs/os_dep it is
+ not showing in web interface
+Message-ID: <20200319115831.GD3889@tulip.local>
+References: <20200319113044.GC3889@tulip.local>
 MIME-Version: 1.0
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Thu, 7 Nov 2019 01:14:21 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbJFRHfFWpTttLn9RgyuM8KLDf1zw9Zuca=HHvq2xQ93JQ@mail.gmail.com>
-Message-ID: <CAK-LDbJFRHfFWpTttLn9RgyuM8KLDf1zw9Zuca=HHvq2xQ93JQ@mail.gmail.com>
-Subject: Application closed - December 2019 to March 2020 round
-To: Outreachy <outreachy-kernel@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
-X-CMAE-Envelope: MS4wfPHjGG8kPCBerBI2DTUMAqnyhFfUzCltmQc9eRfj1FPnDKOAKLpg0mOTdyfWfwmzXZXXKmy58JTtPakNAK/KHY7ywHJOwj1m1Edz8hVIhgXP5sckUp4P
- 0y5Aa/khtQFtETJ1KZteXyhSvXLd4OrNSQTtHpQbyLFQdW2/IzVnFbW7NMnVmsRaVv3IVbJMDurSpeUKtpWNLBktG6k/KggNcR4=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200319113044.GC3889@tulip.local>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Hi All,
+On Thu, Mar 19, 2020 at 05:00:45PM +0530, R Veera Kumar wrote:
+> Hi,
+> 
+> I sent three patchset. Two are showing in google group but one is not.
+> 
+> Though I have received mail for all the 3 from outreachy as the subject
+> line is changed to [Outreachy kernel].
+> 
+> Can you please help.
+> 
 
-Thank you for your contributions during the application period. Final
-application deadline for Outreachy is passed now. So, we won't be
-moderating this mailing list and reviewing any more patches sent over
-here. You are still very welcome and encouraged to submit it in the
-patches in the kernel mailing lists [use scripts/get_maintainer.pl].
+Sorry. I see that it is below previous one.
 
-Hope you had fun and all the best with the results!
+Veera
+
+> Veera
+> 
 
