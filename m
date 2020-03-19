@@ -1,53 +1,53 @@
 X-GM-THRID: 6805867897863274496
-X-Received: by 2002:a2e:920f:: with SMTP id k15mr1885002ljg.178.1584615430941;
-        Thu, 19 Mar 2020 03:57:10 -0700 (PDT)
+X-Received: by 2002:a5d:474c:: with SMTP id o12mr3597485wrs.156.1584615426312;
+        Thu, 19 Mar 2020 03:57:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:3188:: with SMTP id i8ls330113lfe.4.gmail; Thu, 19
- Mar 2020 03:57:09 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsISBzJL9LEEqgQ514q/ClrZFvaYDt61oaY+ZHhHyy6pY5SWCLlW+ONtdXN1fxcJ8/v3Jtw
-X-Received: by 2002:ac2:51a3:: with SMTP id f3mr1815709lfk.170.1584615429691;
-        Thu, 19 Mar 2020 03:57:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584615429; cv=none;
+Received: by 2002:adf:afd4:: with SMTP id y20ls764940wrd.5.gmail; Thu, 19 Mar
+ 2020 03:57:05 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv8g/d5drqvqhphnn2UCvsMlQKO7pNWMun/qvHKlSw6mtmVHmEuu6Zql5dwH6B1b1iJb5Nh
+X-Received: by 2002:a5d:4c87:: with SMTP id z7mr3721376wrs.39.1584615425125;
+        Thu, 19 Mar 2020 03:57:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584615425; cv=none;
         d=google.com; s=arc-20160816;
-        b=IYS/vTIJldaa6rrNUzcA8XhayELW/ttBbY25UKsXelZ15CqmVWaBdFjNKaa4rhjKCG
-         NGb/0MappkGsqTxz6jEcqR8RUGkTLfazPXolfjuOTvAiiepfW1MbP4IjJW5qGPMMb59W
-         cOtnSX2ecofT88wGpf9XQWMQbVsHvJbsvtv6pX8YA/nE88MzCT1XqHPBIFcp48GSCIYU
-         UXn1t2ljqM7Kurc+OqrnIQKjWF64plYH+rg6N6t2Wnvo3h3hhWvYtvKsk5ueQ4NZK/IQ
-         vMok1B4c0sDlYPT7S4Q404kSQDCtEID9HFDoBsZylOX6JcL51XZxCOjnH4SQ1Gqeum73
-         Q2lQ==
+        b=uckkujrXfB4e2Fg4HAorv9CW1u83DHNyTtmlxLuINNqKkd5d6TRwfKi+8p9TQgP6AV
+         DNK3JoyBkuQCiB3OBAjnm6NJpA/5AGE8ZrAAnFBdxpByhZLZM76SuZnPWbI+UZN0r9BZ
+         nW0xjXKqs/VGSAy+w2w58/Vez+pwcNPLRwdJE8M18Mr8Orao/MKzX03Y3jZICZvf1tl+
+         5JF/NCLphQ4BLa/12mc/r9U6wnjdTswMa50EA5LwLB/hNmN7wXYLWJLSycFn+/p3AUO+
+         kY8BMu8jo2V1GLTnwsadoGBdpe0q/i8EpzaJw+lzS8nGpFycs+ukZpCWy75LzmKonsS8
+         B7jA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=6SiNlJIZRAgPXP90c6gLS/pEJ0XYew7FEV/CWEE3eQo=;
-        b=srQKYEMQy/QsY0fl36QBExm245hV6PSsj5g7jcJ92qR8l2lieM2AElqid595ZjpC6i
-         m8Wbtjp/4HJqTgWLQ/LxjfrSf3CkqUSlc44a/gG4ZW2unZ6xoa47HubxL4fVXSLwe3hO
-         c8xOqjIk+D6OirnLhh/igZvKM4+zy6AX3NGhciBOHShuy9quGt6ORMjkaImEzCb4CDP3
-         nWDihoWkcWdlkN4oGVEdkYu0aXWUk4otiSyAo4qk5mkBePyyQgFYGaEhT11bt1YoSsTY
-         fXwH4iYq0r6KPUfchIQdPYxnnu0g4zfv9HU3O6CBMuBVrN6VSBs6Ppi9jn2dhleuXe/e
-         X49g==
+        bh=utmB9c51+QQCMJSSs6/h01Yw1fD8RO0nQPnVWauzFtA=;
+        b=SO0o8AYyKqkn+7FANADICCHTzgW4q7G189kU/XLw5RPRho4y3tRqQdt3xMxqrwvBFs
+         pM4OP88D3SnSNkTcq+dAy84j3vw1wBB+HbZJnz5bEkKTT+ldBtMQDdWN1sgbUuWTmijk
+         A1x2+i9IZh7yzOIpjn06JOW5+nWxXuKTXUVFQh4i+sUBC84TM03JQZyj6GCFraOvxTQS
+         GAYyvfRPzeGWrCKwiI+ptuxpcT9hQoPyI8SRa0DDcEyX/32kwzqCmXG1aGs6xU8yxQGu
+         1R0ULdzFyGwhRRNSkdW50YcbquDRjJClV2oPbsKsOl2vckyAAXMIphGIoMLgobl1PSQX
+         jH6Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
 Return-Path: <vkor@vkten.in>
 Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id m11si78732ljj.2.2020.03.19.03.57.09
+        by gmr-mx.google.com with ESMTP id x12si103013wmk.1.2020.03.19.03.57.05
         for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 03:57:09 -0700 (PDT)
+        Thu, 19 Mar 2020 03:57:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 27501 invoked from network); 19 Mar 2020 10:57:08 -0000
+Received: (qmail 27487 invoked from network); 19 Mar 2020 10:57:04 -0000
 Received: from unknown (HELO localhost) (vkor@vkten.in@117.202.245.105)
   de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 10:57:08 -0000
+  by vkten with ESMTPSA; 19 Mar 2020 10:57:04 -0000
 From: R Veera Kumar <vkor@vkten.in>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: R Veera Kumar <vkor@vkten.in>,
 	Hans de Goede <hdegoede@redhat.com>,
 	Larry Finger <Larry.Finger@lwfinger.net>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 4/4] staging: rtl8723bs: os_dep: Correct typo in comment
-Date: Thu, 19 Mar 2020 16:26:41 +0530
-Message-Id: <580891abf87d5fd0f24bab225bc5b5d2981104ca.1584517384.git.vkor@vkten.in>
+Subject: [PATCH v2 3/4] staging: rtl8723bs: os_dep: Correct typo in comment
+Date: Thu, 19 Mar 2020 16:26:40 +0530
+Message-Id: <b5bccd2b5b581c229eaf123382b242c2e9fca967.1584517384.git.vkor@vkten.in>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1584517384.git.vkor@vkten.in>
 References: <cover.1584517384.git.vkor@vkten.in>
@@ -64,22 +64,22 @@ Changes in v2:
  - Change "C comments" to "comments" in subject line
  - Change "C comments" to "comments" in body
 ---
- drivers/staging/rtl8723bs/os_dep/recv_linux.c | 2 +-
+ drivers/staging/rtl8723bs/os_dep/osdep_service.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index 22059bbbed9d..a6491f163272 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -101,7 +101,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
- 	struct mlme_priv*pmlmepriv = &padapter->mlmepriv;
- 	int ret;
+diff --git a/drivers/staging/rtl8723bs/os_dep/osdep_service.c b/drivers/staging/rtl8723bs/os_dep/osdep_service.c
+index f5614e56371e..4238209ec175 100644
+--- a/drivers/staging/rtl8723bs/os_dep/osdep_service.c
++++ b/drivers/staging/rtl8723bs/os_dep/osdep_service.c
+@@ -289,7 +289,7 @@ void *rtw_cbuf_pop(struct rtw_cbuf *cbuf)
+ }
  
--	/* Indicat the packets to upper layer */
-+	/* Indicate the packets to upper layer */
- 	if (pkt) {
- 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
- 			_pkt *pskb2 = NULL;
+ /**
+- * rtw_cbuf_alloc - allocte a rtw_cbuf with given size and do initialization
++ * rtw_cbuf_alloc - allocate a rtw_cbuf with given size and do initialization
+  * @size: size of pointer
+  *
+  * Returns: pointer of srtuct rtw_cbuf, NULL for allocation failure
 -- 
 2.20.1
 
