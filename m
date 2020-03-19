@@ -1,114 +1,101 @@
-X-GM-THRID: 6745542225820647424
-X-Received: by 2002:a02:c550:: with SMTP id g16mr52254jaj.94.1570568938402;
-        Tue, 08 Oct 2019 14:08:58 -0700 (PDT)
+X-GM-THRID: 6805874038364176384
+X-Received: by 2002:a5d:440a:: with SMTP id z10mr5429064wrq.177.1584636373722;
+        Thu, 19 Mar 2020 09:46:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:3f8a:: with SMTP id m132ls863809ioa.13.gmail; Tue, 08
- Oct 2019 14:08:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyt1FLQP6Dk/VfQBxQoi/3AWFqKsJcHl82isdNZW90f3JL4UgCyChVh9vx4lwEGKJmnWiVr
-X-Received: by 2002:a05:6602:2206:: with SMTP id n6mr226216ion.272.1570568936871;
-        Tue, 08 Oct 2019 14:08:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570568936; cv=none;
+Received: by 2002:a5d:4441:: with SMTP id x1ls1236535wrr.4.gmail; Thu, 19 Mar
+ 2020 09:46:12 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt13bHfz3DvaGamGMvRA88nPsBVahEzUIiXxy4Lm+GOlg8smB530I2fR/FPeegVAK+TerfN
+X-Received: by 2002:adf:80af:: with SMTP id 44mr5380940wrl.241.1584636372477;
+        Thu, 19 Mar 2020 09:46:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584636372; cv=none;
         d=google.com; s=arc-20160816;
-        b=rGAmD6ldleFpFKGUF3C7BEbCdmSLuqpieP4tnv7scAPWnFoUIyEtz6oqAdaNzWOPhb
-         neS4c2AzUpfCRWIvInXPSBvLwvZoOO9J+BfnlIRShv366qTeVMwciB+EbV9FdsVqJwfm
-         Uur+FSDdkv/PI1H9O5oZDK0EBEthls1qEPxcA7WTS3mgh84nbe9MoPZyPgzTaMnyFCXn
-         3sSM47jiNrrWRyd73EN1DaR9866sMwTLy+AJlLXdu32IRoUNTXa0rjhNtqD8zzMsOQKi
-         XhJBsUPta+QO4v7pSOCIPJ2DnHjRze8C6F2T2Hoaimx4pYhbKXFhGk0NCV1jRFNXetVb
-         Lt/w==
+        b=iKlnW4yZZinpFJWeFPgx5ne62CasxgMC5liUmI36x1cdvlGIATa1rUYbbPPZmSiodb
+         LAap+fhtG5aWy/Gmh4Anx6m5t039kz0UslfNRqryBZI5R1Z4fVyNKHYkjAsTkdz7Nc88
+         hWefYbdfkYBK41SHYrITSED8OeskZjaQGYSWYLqGmCFzeLKjguVyqqLCs4f0CkgATK3F
+         BnjRfKT9EVEFppdW2eDqDBDCEKuS2Ck15MKOpAtyz3+HhR7Decxmkp8pkIhhluw0Iuym
+         b2ZkMWfLgux0EEM2LHFg5K/urk4Ar/QVipxOre589EkHoNv2yvxPxzASoRX636rAUg/v
+         ngpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:mail-followup-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Rqn9Dyz+FjGbrPJU1spqIHxsTGcestXLjfcUFzH+aBE=;
-        b=IGjtplkW3wJUmPHRGbSwi/gxYLSCznu11M9gIcET1C1a9j0vGg8m5kUNs5h4qsdlqx
-         R20ZIuWV3hRFe9+e//qqdi7NDuHRCQAZbuVoWPxXmmEAX6oH1tqAEOjAsts9PQIYQcAA
-         ag76LkSd0c2cslcPWfyxIx4/fQARJy0RNwUXNrAYrP/Ea3XDHvogtta3A/8Kq/lsTspN
-         t2ZPZbA2vII3thdNfDQeNCotwcoDkO4SxJEpiGjn2s4rbpp3vBwynKUOu79w4+asYE42
-         U3fiplVNGi2SwXkJgDQ4oKolg4qVqGQHMa2DvhrNYqpL+IdBWzraZhOhshAHzT3+feGN
-         NaAA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=/V+YhG1vDy8QBO2imwZJkMOrBW0I6L4yGlbK8EYKf/k=;
+        b=s5GEmwN9XsX/Wo8qiAQ+lYzWixdF64B1Jn+BtoZu7y6JlYmyaI4YGiNRJeijg1KVks
+         3+tI/qvUmlSmWjsJ8Pd7S0c7cycsRpDWPru0lWkvNZKjY6Z91skWJR4X8CRGbqYj2XPi
+         rPz5WWrEh2FnZx3GsP8U/X9pp6r5m3LBRr+ocH6NyHbVuqgrRO4jDixbTsb7XefenEhn
+         ZpfrW/UpcQAPWelOaAhbOAiCZ901GcFMbAZqVh8xlObDQNoehAV2wmwRNwXS12/pLhW+
+         0AODVoMQKhmng4WlETg1/KWzKjZRFZ5lSf3VoaXhwm266jE/thBVSobp65nfDj7qw/1a
+         JwBg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NVv1S03p;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-vk1-xa44.google.com (mail-vk1-xa44.google.com. [2607:f8b0:4864:20::a44])
-        by gmr-mx.google.com with ESMTPS id i8si9958ilq.4.2019.10.08.14.08.56
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Oct 2019 14:08:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) client-ip=2607:f8b0:4864:20::a44;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id m2si340621wmi.3.2020.03.19.09.46.12
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 09:46:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NVv1S03p;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-vk1-xa44.google.com with SMTP id d66so76609vka.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Oct 2019 14:08:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition:user-agent;
-        bh=Rqn9Dyz+FjGbrPJU1spqIHxsTGcestXLjfcUFzH+aBE=;
-        b=NVv1S03puIxclQsYUtQmJhp0HARyTaNM6ApKYF1IgOquGZv6VnEsRG1qR7Y6ZbRVdk
-         6A6dKKpbJfbieJ4YmwPe2A0sup/B8amK9N+ZvVIhazP9LNJHWRxBUTqnEaPSGBnm9OC2
-         0nXsRed2xmE3uhYW+AwIKp4J3vCDjC1/Ug1a167teHLel4boPlUAA/d4UEsCNqfsVEEZ
-         sibCREFnQXJ40YVlmzItwh4fkfByEJ1KR+s7NO2WR4UzOeb/nbjXHFzyAZyuh8+QPs31
-         58YqmpwYxR/j3J2DurUtsA/AmEOngW60zR8RWCqjSLdbWmk6GETUp0TI3y8VmVIi2qOx
-         /UNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition:user-agent;
-        bh=Rqn9Dyz+FjGbrPJU1spqIHxsTGcestXLjfcUFzH+aBE=;
-        b=Rv8as1CYmaoGfxtFijrnO8HP3nmaWMPEHu4Whw0AEU/lM0h1Qc9Ht1+ADgYfkTbVpa
-         Ik5RCHJiTf3tF4WCFCJDfNa2Jcyh3yIczEx7K1kl2cWFl5q62D8r5NsSqMTRkB1mplNs
-         //ekGVNbkl6Rke8FYyOfsHPzi41XaRYmNNxw77niW5hzTGlSeDuZa+wYrSyHsPFWh5Wv
-         TwCDLxLNm6bEPqYmyiEEWyCFWCLcZo2pyTx8PxWmgWDf1ZcE9XR45W542V7mWzU9lbf3
-         AiAcsuZfPyn8sbyZjLnYMwcSP1obb+EttuW8jn4R5pfKolZDVSHVHQVcVrCMK1KisyH8
-         9dHw==
-X-Gm-Message-State: APjAAAXsn+fZXNylv02THrub4RQUzcDKtNz4WcPZxV4VfuvA0d8qDeXL
-	aR3jHG9rL9avqU4i1D3/rMVoO+yiILLriQ==
-X-Received: by 2002:a1f:1605:: with SMTP id 5mr265795vkw.16.1570568936255;
-        Tue, 08 Oct 2019 14:08:56 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com (dynamic-190-27-96-102.dynamic.etb.net.co. [190.27.96.102])
-        by smtp.gmail.com with ESMTPSA id u6sm42955vsq.28.2019.10.08.14.08.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2019 14:08:55 -0700 (PDT)
-Date: Tue, 8 Oct 2019 16:08:53 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Fix line over 80 characters
-Message-ID: <20191008210850.ldgx5n3sahpdauvu@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 30757 invoked from network); 19 Mar 2020 16:46:11 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.249.224.198)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 16:46:11 -0000
+Date: Thu, 19 Mar 2020 22:16:03 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [RESEND PATCH 00/10] Correction of typos and
+ long lines of comments
+Message-ID: <20200319164601.GA2240@tulip.local>
+References: <cover.1584514678.git.vkor@vkten.in>
+ <alpine.DEB.2.21.2003191656520.2312@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: NeoMutt/20180716
+In-Reply-To: <alpine.DEB.2.21.2003191656520.2312@hadrien>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Break last two function call arguments into two separate lines.
-Issue found by checkpatch.
+On Thu, Mar 19, 2020 at 04:58:05PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Thu, 19 Mar 2020, R Veera Kumar wrote:
+> 
+> > Correction of typos and long lines of comments.
+> > Misspellings found using checkpatch.pl.
+> >
+> > ---
+> > R Veera Kumar (10):
+> >   staging: rtl8723bs: hal: Correct a typo in a comment
+> >   staging: rtl8723bs: hal: Correct a typo in a comment
+> 
+> Maybe you could just put all the typo ones in a single patch?  They should
+> be easy to check and have no impact on the execution, so it is hard to see
+> why one would want to revert them separately.
+>
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_ap.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Yes. That's what he meant in reply. But I did otherwise because in my
+first patch to mailing list I had typos in two different files. I sent
+it as single patch and he accepted. And the I asked him whether it could
+have been sent as patchset, and he said yes.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index 6d18d23acdc0..43af76b9fa49 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -217,7 +217,8 @@ void expire_timeout_chk(struct adapter *padapter)
- 	#ifdef DBG_EXPIRATION_CHK
- 	if (phead != plist) {
- 		DBG_871X(FUNC_NDEV_FMT" auth_list, cnt:%u\n"
--			, FUNC_NDEV_ARG(padapter->pnetdev), pstapriv->auth_list_cnt);
-+			, FUNC_NDEV_ARG(padapter->pnetdev)
-+			, pstapriv->auth_list_cnt);
- 	}
- 	#endif
- 	while (phead != plist) {
--- 
-2.20.1
+Now reading submitting-patches doc it says if it is single kind of
+change then it should be put in one patch. And only if it is logically
+different then in two separate patches.
 
+> On the other hand, the patch would be just typos, not long line changes
+> mixed in as well.
+> 
+
+Yeah.
+
+Veera
+
+> julia
+> 
+> >
+> >  drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c |  2 +-
+> >  drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c |  2 +-
+> >  drivers/staging/rtl8723bs/hal/HalPhyRf.c        |  7 +++++--
+> >  10 files changed, 27 insertions(+), 18 deletions(-)
+> >
 
