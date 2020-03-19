@@ -1,79 +1,86 @@
 X-GM-THRID: 6805867897863274496
-X-Received: by 2002:a63:9210:: with SMTP id o16mr3166821pgd.442.1584620051407;
-        Thu, 19 Mar 2020 05:14:11 -0700 (PDT)
+X-Received: by 2002:a2e:920f:: with SMTP id k15mr1885002ljg.178.1584615430941;
+        Thu, 19 Mar 2020 03:57:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:98de:: with SMTP id e30ls1301561pfm.0.gmail; Thu, 19 Mar
- 2020 05:14:10 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvfBNKp6LwGwIH/CaGNVoNzC/EAmXQHydAPCchO2Mb1Tzpbtf4uy2ZPdYkHRWLK8SffPHXP
-X-Received: by 2002:a63:3753:: with SMTP id g19mr3222081pgn.262.1584620050009;
-        Thu, 19 Mar 2020 05:14:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584620050; cv=none;
+Received: by 2002:a05:6512:3188:: with SMTP id i8ls330113lfe.4.gmail; Thu, 19
+ Mar 2020 03:57:09 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsISBzJL9LEEqgQ514q/ClrZFvaYDt61oaY+ZHhHyy6pY5SWCLlW+ONtdXN1fxcJ8/v3Jtw
+X-Received: by 2002:ac2:51a3:: with SMTP id f3mr1815709lfk.170.1584615429691;
+        Thu, 19 Mar 2020 03:57:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584615429; cv=none;
         d=google.com; s=arc-20160816;
-        b=LZ46JJEW9V9FMBPjYZgEzlzU5aJ9/rO0Zu6VSQLYzwmo1mWoAkUvHjvmKYE8i4EIlc
-         9sjgHk2Vl+qyEXD0s0Nau0hhouTL5e5tvJ/hm6LPtLXrhtQ1HN1ox4aFQWQ3bRnQRUgz
-         F62TovDSGjQTEmTlnfuBflD8pLfzausJcmbxrcn3MGhYcWiykx/isg5grV42Xfl0PvdG
-         kT8DqcIMniXmjfccXEc6db69e5LniXDO3mHbkNI37BFuk+VrQbgGucdivKHy9QqV0XxP
-         kMt/o3hcNVZVNvmrphlIS/oO17CzeowHdwSVmUHpWv8p449rxLiMHugiVuTjvPAWtpgU
-         ZwSg==
+        b=IYS/vTIJldaa6rrNUzcA8XhayELW/ttBbY25UKsXelZ15CqmVWaBdFjNKaa4rhjKCG
+         NGb/0MappkGsqTxz6jEcqR8RUGkTLfazPXolfjuOTvAiiepfW1MbP4IjJW5qGPMMb59W
+         cOtnSX2ecofT88wGpf9XQWMQbVsHvJbsvtv6pX8YA/nE88MzCT1XqHPBIFcp48GSCIYU
+         UXn1t2ljqM7Kurc+OqrnIQKjWF64plYH+rg6N6t2Wnvo3h3hhWvYtvKsk5ueQ4NZK/IQ
+         vMok1B4c0sDlYPT7S4Q404kSQDCtEID9HFDoBsZylOX6JcL51XZxCOjnH4SQ1Gqeum73
+         Q2lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=BuDDW3HRSh4xGSYVgqTL9HNdjoW4F6srQ+j9ZX3ZCNM=;
-        b=fcGQsKIK/VkTjEe/N0TwkdOAIO+Xp7lV6Ep6UzB/jGjILc+0dSrFnF/MPUgI+kdvU8
-         FImvHpQ3g6XcN164b9RMxANwSbLvWWScUVLqignCGvkmbeudcKNtW2TImSxdzJYsvtBh
-         TumowOyto8VNXrV4njX8KTJHr9rDI+ch7TzrZYwyoKQXdW3YsRzdjhox0GduTI16IgkB
-         +FYTwoIa2bT5G60YX6I6E/TUAd5iIXO/JgR1dL7r/Ji28VL2n5kWgk8qTnK8T0lcRL2q
-         4KbNhyBDVyAUoav1LyVblkbdKiULbg7AxIdKV2wIK8xHhftABHek7LxmvuhAfelYsmYg
-         Ar8g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=6SiNlJIZRAgPXP90c6gLS/pEJ0XYew7FEV/CWEE3eQo=;
+        b=srQKYEMQy/QsY0fl36QBExm245hV6PSsj5g7jcJ92qR8l2lieM2AElqid595ZjpC6i
+         m8Wbtjp/4HJqTgWLQ/LxjfrSf3CkqUSlc44a/gG4ZW2unZ6xoa47HubxL4fVXSLwe3hO
+         c8xOqjIk+D6OirnLhh/igZvKM4+zy6AX3NGhciBOHShuy9quGt6ORMjkaImEzCb4CDP3
+         nWDihoWkcWdlkN4oGVEdkYu0aXWUk4otiSyAo4qk5mkBePyyQgFYGaEhT11bt1YoSsTY
+         fXwH4iYq0r6KPUfchIQdPYxnnu0g4zfv9HU3O6CBMuBVrN6VSBs6Ppi9jn2dhleuXe/e
+         X49g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=K20KCPN+;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id q66si163386pfq.3.2020.03.19.05.14.09
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Mar 2020 05:14:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id m11si78732ljj.2.2020.03.19.03.57.09
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 03:57:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=K20KCPN+;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 4745420663;
-	Thu, 19 Mar 2020 12:14:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584620049;
-	bh=HT0/QZYuffkhYCr6Kxqgi3BiCY8xEalZL1MRdFMUQFg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=K20KCPN+JD/cLnUXyqa0r1y6Ge2wI8j5FyHfKCu7tzCUlPqhNdrJaIWf0sEgw5R1j
-	 zjB/O6zjVZJXfGdzNxZUZc0Ot2L6qOXW0gxSx5EN5qLwqA50vL/jlLznQTPuDg8l3l
-	 ywQS3rVt1K2Y9/AoQ00HOQMg91yjJXR/xI5lLgHI=
-Date: Thu, 19 Mar 2020 13:14:07 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: R Veera Kumar <vkor@vkten.in>
-Cc: Hans de Goede <hdegoede@redhat.com>,
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 27501 invoked from network); 19 Mar 2020 10:57:08 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.202.245.105)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 10:57:08 -0000
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: R Veera Kumar <vkor@vkten.in>,
+	Hans de Goede <hdegoede@redhat.com>,
 	Larry Finger <Larry.Finger@lwfinger.net>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [PATCH v2 0/4] Correction of typos in comments
-Message-ID: <20200319121407.GA3802220@kroah.com>
+Subject: [PATCH v2 4/4] staging: rtl8723bs: os_dep: Correct typo in comment
+Date: Thu, 19 Mar 2020 16:26:41 +0530
+Message-Id: <580891abf87d5fd0f24bab225bc5b5d2981104ca.1584517384.git.vkor@vkten.in>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1584517384.git.vkor@vkten.in>
 References: <cover.1584517384.git.vkor@vkten.in>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1584517384.git.vkor@vkten.in>
+Content-Transfer-Encoding: 8bit
 
-On Thu, Mar 19, 2020 at 04:26:37PM +0530, R Veera Kumar wrote:
-> Correct typos in comments.
-> Misspellings found using checkpatch.pl
-> 
-> ---
-> R Veera Kumar (4):
->   staging: rtl8723bs: os_dep: Correct typos in comments
->   staging: rtl8723bs: os_dep: Correct typos in comments
->   staging: rtl8723bs: os_dep: Correct typo in comment
->   staging: rtl8723bs: os_dep: Correct typo in comment
+Correct typos in comment.
+Misspelling found using checkpatch.pl.
 
-You need unique subject lines, please.
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+Changes in v2:
+ - Remove word "Fix" from subject line
+ - Change "C comments" to "comments" in subject line
+ - Change "C comments" to "comments" in body
+---
+ drivers/staging/rtl8723bs/os_dep/recv_linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+index 22059bbbed9d..a6491f163272 100644
+--- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
+@@ -101,7 +101,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
+ 	struct mlme_priv*pmlmepriv = &padapter->mlmepriv;
+ 	int ret;
+ 
+-	/* Indicat the packets to upper layer */
++	/* Indicate the packets to upper layer */
+ 	if (pkt) {
+ 		if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true) {
+ 			_pkt *pskb2 = NULL;
+-- 
+2.20.1
+
 
