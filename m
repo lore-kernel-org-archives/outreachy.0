@@ -1,51 +1,51 @@
 X-GM-THRID: 6805867897863274496
-X-Received: by 2002:a2e:b4e5:: with SMTP id s5mr1786118ljm.190.1584614639622;
-        Thu, 19 Mar 2020 03:43:59 -0700 (PDT)
+X-Received: by 2002:a50:9e82:: with SMTP id a2mr1968585edf.155.1584614634339;
+        Thu, 19 Mar 2020 03:43:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8997:: with SMTP id c23ls419770lji.7.gmail; Thu, 19 Mar
- 2020 03:43:58 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv7kdXgfHv21c5S/mdhGcD2jeFIQf3eRJmfNv8xsi///pGiJBSyWJfubfAYXs0Pwb/YFAWU
-X-Received: by 2002:a2e:b801:: with SMTP id u1mr989291ljo.84.1584614638287;
-        Thu, 19 Mar 2020 03:43:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584614638; cv=none;
+Received: by 2002:a17:906:344d:: with SMTP id d13ls851018ejb.8.gmail; Thu, 19
+ Mar 2020 03:43:53 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuYhq3gxzF4EXG5mpwB1klqkFAjjeltEqOHV6CKlqLMC2/ONfoHv9E7v4F9rcVntDPahlwi
+X-Received: by 2002:a17:906:400d:: with SMTP id v13mr2566558ejj.107.1584614633186;
+        Thu, 19 Mar 2020 03:43:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584614633; cv=none;
         d=google.com; s=arc-20160816;
-        b=nPLmO7gAXVzkFXwrpTnGzgf+0+W9Q6Rmb3PXe3AJyFjEVNpCl1lxiVW55Egem/zoSZ
-         XDTab8l16pPi+Yw5oEN9Y5hJnEeL1wZwwPWP8i1rhbFut4k7oIOEx4KP4Wc5qKf9q9VT
-         8XzWSmCS/VfW2UUAuWCeXh0CqG+oI8M3tGyz+eQxSvuz5PhVUVqo9d8FqvTuzb3TVCMv
-         basO16PtNngart+DCi/swOB/wE/Yhdauu/SXqgEy0PYCOF3+ZnW96gXmV5oB0CFrxusQ
-         PCWbMZ1nvbdG5fCYEChNdOpu6p8Gm7NlV/EhpaQpuR8D1ax/nd62pKEem0rABX1IZIvn
-         WJ7w==
+        b=CKSmTcfycF7XNfXVuCRC+vtz7eZKGxU8LY03GLBY8Cs77GIgZ/R5d9BO4kUV2EzVNI
+         Kac+xaE+dqmXLdMB3ozgexeqwmF6PbA2OGBSun2xtSYr/Bw05+7h5Z+hbCpqzAmfQdbY
+         1UE76mcC9baJe9nhoC6HCnI5rfzicnjaFyb9CdqC5Hihjutna/+cKvhsH9f8XVDgXmhA
+         INZE4zWlSkraooM5DUKVM6wJFbg21if+HLKt8V4RKaJOl6/2nVQWcRWlnNWyp+8yUvhh
+         8CAgTS0vjp1kdzqwqyBSocWwPpBvYDYn1bWOYkcuSMhua0uizItzPOwxOAoRSLY20RY9
+         TJNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=GE/w4HF9QPd9bhRHqv9nOrgVEXbecjMAVE8QNicasLA=;
-        b=B4WqaJLsn8L29oVAnR+c2JLWPi7eqRyD7fWqV7WL763GwQCgh4v+DinTjd/itWV0wj
-         HFSAp/gTgnfxFIssvqmFlWXHMqWGuphYLL0KWbvFJa2c1676mqEgRnpDHe/Y+XKBlWRX
-         M7rDRfVuhVb4jpbHU7IjY409hNeO412ZgckEn1qvekwCk7mtxckEK1sEU3OwYU9bLVju
-         PVQtzN2hjNQo41tdTwqMSN7HiX1ouYAJUMQf8DYP7z/8alf74eIXMxFIpxWYrixup1BN
-         +TRgSQQXAyzD8Gs9OB2EpVSoY0UB0FBa0kjYNbiRZxszyzTtlbAFV/O5KayaEJ9Pc3G+
-         VxCQ==
+        bh=rOiHq9ELC6RwvySJFUNUumF4yVRU1iZpFlgUavE9O7g=;
+        b=irR5dKqgTt+kuZ0vKNvINt1isphLNkvj93C1UqcGH6rApQJNNym5tG+Unocrti2Tfz
+         0Ktw5JID3hMwTTfPvkLhWVXTFQ5yuGMFBq7ItqiXAmhP/ca8/i0GNxFl6lZvTveGLhrf
+         jCmVxu0iCc7zJPoJjvBh5+IH/MPr7Bc266LbI5Klvt74xcKHV2WslJXnJRySYZuae0ic
+         S1LZSm0mc+NkCwPAKVV0VSbsEhvoo2QGg1XJd1fGjCy7S5mQR+vqR5nzTEHpJhBlinMW
+         Znuui4JaMVCCG8XE9PyqfUZp3cv1Qc7n2KL7Vz7UgAnky+/x91wNyEbRlPOOq5tlcMty
+         8Hlg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
 Return-Path: <vkor@vkten.in>
 Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id w6si75033lfa.1.2020.03.19.03.43.58
+        by gmr-mx.google.com with ESMTP id dc25si70718ejb.1.2020.03.19.03.43.53
         for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 03:43:58 -0700 (PDT)
+        Thu, 19 Mar 2020 03:43:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 27292 invoked from network); 19 Mar 2020 10:43:57 -0000
+Received: (qmail 27280 invoked from network); 19 Mar 2020 10:43:52 -0000
 Received: from unknown (HELO localhost) (vkor@vkten.in@117.202.245.105)
   de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 10:43:57 -0000
+  by vkten with ESMTPSA; 19 Mar 2020 10:43:52 -0000
 From: R Veera Kumar <vkor@vkten.in>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: R Veera Kumar <vkor@vkten.in>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2 7/7] staging: rtl8723bs: core: Correct a typo in comment
-Date: Thu, 19 Mar 2020 16:12:57 +0530
-Message-Id: <90897439ab1a82393f9fb0782e2cadefce48ded5.1584519269.git.vkor@vkten.in>
+Subject: [PATCH v2 6/7] staging: rtl8723bs: core: Correct a typo in comment
+Date: Thu, 19 Mar 2020 16:12:56 +0530
+Message-Id: <09856cc4ee8ac6d484bf66e006c18ffed7980873.1584519269.git.vkor@vkten.in>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1584519269.git.vkor@vkten.in>
 References: <cover.1584519269.git.vkor@vkten.in>
@@ -62,31 +62,22 @@ Changes in v2:
  - Change "C comments" to "comments" in subject line
  - Change "C comments" to "comments" in body
 ---
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_wlan_util.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index fdb585ff5925..571353404a95 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -1180,7 +1180,7 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, _pkt *pkt, struct xmit_fram
- 			mpdu_len -= pattrib->icv_len;
+diff --git a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+index 49807d865e32..110338dbe372 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
++++ b/drivers/staging/rtl8723bs/core/rtw_wlan_util.c
+@@ -1503,7 +1503,7 @@ void update_beacon_info(struct adapter *padapter, u8 *pframe, uint pkt_len, stru
  
- 		if (bmcst) {
--			/*  don't do fragment to broadcat/multicast packets */
-+			/*  don't do fragment to broadcast/multicast packets */
- 			mem_sz = _rtw_pktfile_read(&pktfile, pframe, pattrib->pktlen);
- 		} else {
- 			mem_sz = _rtw_pktfile_read(&pktfile, pframe, mpdu_len);
-@@ -2303,7 +2303,7 @@ sint xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fr
- 				pstapriv->tim_bitmap |= BIT(psta->aid);
- 
- 				if (update_tim)
--					/* upate BCN for TIM IE */
-+					/* update BCN for TIM IE */
- 					update_beacon(padapter, _TIM_IE_, NULL, true);
- 			}
- 
+ 		switch (pIE->ElementID) {
+ 		case _VENDOR_SPECIFIC_IE_:
+-			/* to update WMM paramter set while receiving beacon */
++			/* to update WMM parameter set while receiving beacon */
+ 			if (!memcmp(pIE->data, WMM_PARA_OUI, 6) && pIE->Length == WLAN_WMM_LEN)	/* WMM */
+ 				if (WMM_param_handler(padapter, pIE))
+ 					report_wmm_edca_update(padapter);
 -- 
 2.20.1
 
