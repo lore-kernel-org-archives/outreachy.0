@@ -1,102 +1,78 @@
-X-GM-THRID: 6251868693669609472
-X-Received: by 10.182.250.201 with SMTP id ze9mr6289751obc.0.1455626611198;
-        Tue, 16 Feb 2016 04:43:31 -0800 (PST)
+X-GM-THRID: 6805849851722465280
+X-Received: by 2002:a19:ee0f:: with SMTP id g15mr1540885lfb.213.1584610401518;
+        Thu, 19 Mar 2020 02:33:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.93.165 with SMTP id d34ls3845247qge.89.gmail; Tue, 16 Feb
- 2016 04:43:30 -0800 (PST)
-X-Received: by 10.140.136.135 with SMTP id 129mr21112967qhi.10.1455626610659;
-        Tue, 16 Feb 2016 04:43:30 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pa0-x235.google.com (mail-pa0-x235.google.com. [2607:f8b0:400e:c03::235])
-        by gmr-mx.google.com with ESMTPS id 79si3991876pft.0.2016.02.16.04.43.30
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Feb 2016 04:43:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) client-ip=2607:f8b0:400e:c03::235;
+Received: by 2002:a05:651c:96:: with SMTP id 22ls387735ljq.0.gmail; Thu, 19
+ Mar 2020 02:33:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtEBG40UCy/rQETbmRweaj6SUvNaO4KWixAsdUQL+6kiDi44P6un09rtJljLSO1igaXCugg
+X-Received: by 2002:a2e:9e16:: with SMTP id e22mr1693504ljk.220.1584610399848;
+        Thu, 19 Mar 2020 02:33:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584610399; cv=none;
+        d=google.com; s=arc-20160816;
+        b=K5GWrSwX6LtBhWO70F+5GF2x8UFzFmFHkx6bjYqCFy6w35QBBZJPItE+w+/rmONWS4
+         JhthG1ZzOb5n1GNowDEuIZSGigSneOpy1yqKYMU7AM0yi6qNUPcrVV8qXXSD8gP9qA37
+         JzZc58gBYmOjhAa+XI40aVhy+lY9/85PVrcuVo/N8+6tcpgxvEuqWWfZY12SIM2mRyzj
+         q8/fWT/TVxrtuVC62nN4Zex+glRWjWIKqGL1WAAIDXaiC0WyT1clDjGSyTlAICuyFb5c
+         4GBlol+aUM2HtoQJc+7GoBzZjMmzQpSBsfTl+Tpus6rnHA2awNbRcyABkXk3rwpmmmdx
+         vlXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date;
+        bh=uZxH4IenKjwza2xEER797c75qq/PJPMb0sEg1Pf99us=;
+        b=GA45cfgxHUv4hXsqIcgEHdtYOCumVjD06hX9AzAvA8rNdJY+CQBq1Jn/gDNlEccQDZ
+         COquZdFAKeL28jux3LIUqrEbxVGWi6AjQJ93b+vqdHks6MiIlt12Brdo01QjIDXijY/u
+         OVlPhK+Akhin1XlawiAUaQ3/al3+AN8GHEsv4SgsRSkgAoL41qAuxjCE/1H0JO6Sk/2q
+         Q7UrUeZUkuaDR3M5DT4UJjDq7KivkPcLgyu1sxoHupG3OPeU7xO4HlRaJlXgJnpFaCNJ
+         Oz7uRtz18m6AdV8U1BezyP7GYIIUnPnbzm361+gN7H87JM0ds11N9+KVxLgBXZJOpSTW
+         FxBw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id v191si54211lfa.4.2020.03.19.02.33.19
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 02:33:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c03::235 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x235.google.com with SMTP id yy13so102908037pab.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 16 Feb 2016 04:43:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=nFIuqEcBYZdTCgJ5Ojjem7KkLVFSqbWbolCC6bQ+sCc=;
-        b=ZX62YELyjcishECXhGI2Xu+OCFW4g31e78UhCLl/bsB0RHPCpBeOPoX6SZ7wf5v67V
-         JmukR5jovFas6tBZ/1Iq1YD8Css01cNks3mEoop1QvAW0xdbPtk0hw8iEt0sTDC/sHF8
-         NmGoksr8SMeGFoX24QYDmxoKh6aaCMe7YzTGzx5kVwCvtI73b9Yc9WHyuQPC8XGAGPbb
-         P7mDIbYOlJHFracjnYFHfGY3SYtuYPH509HMxEYrICwrmtIK8mROdqDtfKnthRs+LsUF
-         pgQMLsNdsm7a6an0ySO4kmOhnRDf+eMZDRtyYVe0JKG0SWxNoQYe9fIJHBFmsUt0Hqe3
-         aFJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=nFIuqEcBYZdTCgJ5Ojjem7KkLVFSqbWbolCC6bQ+sCc=;
-        b=IY2URtT9rp54E+oNTNYYtE9YykmcoxU0S4yMXb3ONr1CwpJLQ0FBSKPjRGvLD80s7c
-         tgH2EO76PgwwhKDUpRKcL/2N9STwIO/ph9RcSrfjEtRYDNhYGVzFwvTH6iLdGrDOdw8w
-         egLq5mPhXo3P3CzFwkgne8JWl7BOd+gXohY4XhTGTYlyQJJ0zat4uVg6XrGp1Ap08cI1
-         EgoGiSwlruaA9ZdCjd7WHVjGHSryFhquGW/xTHsxmuIEFOb5kI9CGMZz9I1wIY/uAFTR
-         DOOif97xxaLgiZzZdsugW3hJpCvyglHil9omLRqB/v0cflioKvj1hsbq+pHx/dJuC3Oz
-         ebWA==
-X-Gm-Message-State: AG10YOS389Etj5k9nFYO9yINiZatmDr6LVGk3LJDxbpvy0Ey8nPdvvyJ8EmB1H70KTHFag==
-X-Received: by 10.66.251.65 with SMTP id zi1mr30570939pac.133.1455626610479;
-        Tue, 16 Feb 2016 04:43:30 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.69.135.170])
-        by smtp.gmail.com with ESMTPSA id tv6sm45788143pab.4.2016.02.16.04.43.29
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 04:43:30 -0800 (PST)
-Date: Tue, 16 Feb 2016 18:13:26 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: osc: osc_request: Fix sparse warnings
-Message-ID: <20160216124326.GA1802@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 26549 invoked from network); 19 Mar 2020 09:33:18 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 19 Mar 2020 09:33:18 -0000
+Date: Thu, 19 Mar 2020 15:03:09 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [RESEND PATCH] staging: rtl8188eu: core: Correct a typo in a comment
+Message-ID: <20200319093301.GA2453@tulip.local>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Declare osc_cleanup() function and osc_obd_ops structure as static
-since they are defined and called only in this file.
+Correct a single typo in a comment.
+Misspelling found using checkpatch.pl.
 
-This fixes the following sparse warnings:
-drivers/staging/lustre/lustre/osc/osc_request.c:3210:5: warning:
-symbol 'osc_cleanup' was not declared. Should it be static?
-drivers/staging/lustre/lustre/osc/osc_request.c:3259:16: warning:
-symbol 'osc_obd_ops' was not declared. Should it be static?
-
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
 ---
- drivers/staging/lustre/lustre/osc/osc_request.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_cmd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
-index 3ae00fc..47b4e8d 100644
---- a/drivers/staging/lustre/lustre/osc/osc_request.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_request.c
-@@ -3207,7 +3207,7 @@ static int osc_precleanup(struct obd_device *obd, enum obd_cleanup_stage stage)
- 	return 0;
- }
- 
--int osc_cleanup(struct obd_device *obd)
-+static int osc_cleanup(struct obd_device *obd)
- {
- 	struct client_obd *cli = &obd->u.cli;
- 	int rc;
-@@ -3256,7 +3256,7 @@ static int osc_process_config(struct obd_device *obd, u32 len, void *buf)
- 	return osc_process_config_base(obd, buf);
- }
- 
--struct obd_ops osc_obd_ops = {
-+static struct obd_ops osc_obd_ops = {
- 	.owner          = THIS_MODULE,
- 	.setup          = osc_setup,
- 	.precleanup     = osc_precleanup,
+diff --git a/drivers/staging/rtl8188eu/core/rtw_cmd.c b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+index 815dfee11968..f69e9453ad45 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_cmd.c
++++ b/drivers/staging/rtl8188eu/core/rtw_cmd.c
+@@ -199,7 +199,7 @@ int rtw_cmd_thread(void *context)
+ 				rtw_free_cmd_obj(pcmd);
+ 			} else {
+ 				/* todo: !!! fill rsp_buf to pcmd->rsp if (pcmd->rsp!= NULL) */
+-				pcmd_callback(pcmd->padapter, pcmd);/* need conider that free cmd_obj in rtw_cmd_callback */
++				pcmd_callback(pcmd->padapter, pcmd);/* need consider that free cmd_obj in rtw_cmd_callback */
+ 			}
+ 		} else {
+ 			RT_TRACE(_module_rtl871x_cmd_c_, _drv_err_, ("%s: cmdcode = 0x%x callback not defined!\n", __func__, pcmd->cmdcode));
 -- 
-1.9.1
+2.20.1
 
 
