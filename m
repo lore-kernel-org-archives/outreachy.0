@@ -1,86 +1,111 @@
 X-GM-THRID: 6806439797189509120
-X-Received: by 2002:a6b:f616:: with SMTP id n22mr10863842ioh.100.1584773686011;
-        Fri, 20 Mar 2020 23:54:46 -0700 (PDT)
+X-Received: by 2002:a2e:9ccb:: with SMTP id g11mr6534374ljj.271.1584747758013;
+        Fri, 20 Mar 2020 16:42:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:9418:: with SMTP id v24ls1367257ion.10.gmail; Fri, 20
- Mar 2020 23:54:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtIZxNrs7jNJuiENW/UmQWTpbIkEzdS9ZadeXO5rE4uE6XvUyeBi2LmjY9MmfzPrqBIf4m5
-X-Received: by 2002:a5e:8214:: with SMTP id l20mr10689203iom.168.1584773684793;
-        Fri, 20 Mar 2020 23:54:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584773684; cv=none;
+Received: by 2002:a2e:8941:: with SMTP id b1ls1712555ljk.8.gmail; Fri, 20 Mar
+ 2020 16:42:36 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vshD+3YIbx4ZgtI7V2qd64mnjcmtTwYGOVBdWFc1kFlHOJFDUdRtltPfNB0m5CS9e4Z1w1u
+X-Received: by 2002:a2e:818e:: with SMTP id e14mr7160665ljg.104.1584747756734;
+        Fri, 20 Mar 2020 16:42:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584747756; cv=none;
         d=google.com; s=arc-20160816;
-        b=SdpiyvFFo8CsmFLRMyxIfepmLa8XKK+gg64N5+xpPRQwc9Ke+pk1Oaslei4W6j7i9Z
-         ESq8ji+T3sbwHRueAZuSOMZAV5fS+Jo/fs85Txzy6wHZQ+BwSuJFA5vxo2N48HEw2H3O
-         RY0QQwQXVBfD0GVbxJVyA6E6NOTddBZBv9tlTtkmGLZpQ+3jQ34cZMo64vyeuvmwnq8l
-         r0tRLRWbMrO4livBCOWoaRVc8TFq18xPHemOus+2Wjzjm1Gt+tTxz5oPyNmLpnd9iIP9
-         AsfjoYWW/P2tTHe2e0XI8pr+eZQYunyMXw7O1F10sAmmShXEjmlcqqBB+f9VCTEev381
-         PuDQ==
+        b=KWFpO/8LVGQT+BqiB8JxLctz37uThXzhYI513gN6PhV5UzWj+paZkZ1Tf/MQpYOCOP
+         RWy/WpK1rKVmAs0G/25qZE9Plw9uqPxDDgRsaJhxA//ys4YBCNjS5yrpNGKFLb8rhvfv
+         OyLtsUmoiesj/uZZ67DZSvPwJzlULWPT2WfVpS+tlF7ffLTWZJUskuqJg7iX650BzA9r
+         2xSeqlJDJNBf33LtWwebC4naBnyUUQo1jS7QHf1v60pCHGzCx5O3krHkw/80YjEiGx/M
+         ks+XsLz9DVuXOAG+dcR8HilLR+qbu+MTX+UY7bgmgCddcIcx91V+saF8FJxFeoOoeDU0
+         bx1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=dQARWGybATmOo+jENT4RF1jEG2oRU2o43ax19FtXbf0=;
-        b=mzbFz2Hx/Vs1DcZ80gG11+nM3s1T+0lb2QsYnjIrZXkZOeC9ocqihU6aIQ+eS53nu3
-         gcpNq4gGzutF7xZ3sMPC6r1TFIsAxRtGC46J5Rsf7ZRLRQiZY1tjCEX5aVLYDtR1majq
-         8/bqr5FXefWzDjbJ7ArHOZVpu97mEjc5XlBqPwWe2FS1Q+C7YFRitzLS3Y8zorkMUdrO
-         Gw3/2e1LJIZjBMe6UxHbOHioQZ7t4big5EUPV715+xePgm1gFxAFT1bLud6y+COm+sGD
-         weSktaXWxa4yX8BCmm/F26YXw1IvkoxKrlBb8C2OSO9Gmh8q2BqAsbk0xOcaFzZLmFF3
-         V5IA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=l7Xr1GKnylbVM1KnZWnKIjPm+9ZvmR1UoqvoCT7VAMY=;
+        b=GoqEtnE3LPeeyqsiKE/rQh5fjSwzIyr8Eqq9HrtFFvGZED1l3+Nad93ZszyBp+FHsM
+         AEUYoF+sdiELiN4qrv8tAopt+IBCSzb63g+yZ3NCNsOt/lx+jdKqWBTbQrbTptHri9bV
+         cNUWgQl5pwMDkJH0Ga/+H8oph7P6RUncRGjJqqL6rTTcxMaeJwYuryKi7q9YKjHDuEkD
+         gxhqWaAQyHoPpe4d3hzWNSvlprk0/XeNjUTGS4Zf5RiBnDnkLNT/M047O7HkT3iJVSZf
+         fUytUd716v7YMXajs6i1g+uNCyFscn6Ni3VfXVwJWzNoXObIJ9s3Ysm9XyxGEiWDz5j7
+         m08w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mF7c6B4I;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id v13si488610ilg.4.2020.03.20.23.54.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="jHkU1/Wh";
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-lf1-x142.google.com (mail-lf1-x142.google.com. [2a00:1450:4864:20::142])
+        by gmr-mx.google.com with ESMTPS id e4si294155ljn.1.2020.03.20.16.42.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Mar 2020 23:54:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 20 Mar 2020 16:42:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) client-ip=2a00:1450:4864:20::142;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mF7c6B4I;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id B5EB9206F9;
-	Sat, 21 Mar 2020 06:54:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584773684;
-	bh=j0/LgC5POGeleKBNYZ8hoDudTJGlzpmDcE7EfD0p8pA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mF7c6B4IY6iMIXpGlVUK9il/NAmCzfABRXv9cJ6Fe8FHRnXR4SImmPA9RWWRrGiy7
-	 TQ+78ch/sXs6ek5hhkAsXKAi/N2ijvHF3t6/LXxMiyG3DJPdhXdjmwPoW44ev3Ci/j
-	 oLvlVEci1hEgsTAdfoc7DydXF1acctQD1xi+rI1A=
-Date: Sat, 21 Mar 2020 07:54:41 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Gokce Kuler <gokcekuler@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: mt7621-dma: Possible unnecessary 'out of
- memory' message
-Message-ID: <20200321065441.GD849159@kroah.com>
-References: <20200320234234.GA9861@siyah2>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="jHkU1/Wh";
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x142.google.com with SMTP id j15so5885655lfk.6
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2020 16:42:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=l7Xr1GKnylbVM1KnZWnKIjPm+9ZvmR1UoqvoCT7VAMY=;
+        b=jHkU1/WhUqmiSewuh2d5TcVbwvVj4zkhRVgb8XSdYYJPYo21lEpuHvVhKNDf4GBBbi
+         pPZGaURsuqgkEnLULK71mkXr7IOFr751TVYsPFTiN+pJJehWoAmD3K6jjv8DGheSvtWz
+         0UT6Qq8HI4uI2wYQu+gEdUP5rI40DF1GmCQMXtXRfYdFxcjGS8Dxzosr/El6Ivi9SNB1
+         8rNnHClC8yAwOxlOIjBWMvrbd5ZiA9q71QLYO00MCvUoEF5KpQEfUG+zzV1uT21Zfvwa
+         dcIRzNcjaK+KwGnb9Q5ahx6n1DTEn7B/3OAMscHy8tadyis6W0ZELQTbSYH8FJcqFKiO
+         k23Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=l7Xr1GKnylbVM1KnZWnKIjPm+9ZvmR1UoqvoCT7VAMY=;
+        b=q2ZvQWwTLWTDKx+L2AfLncOeFBwX6GUCzb+hXOhNtdcwxj1gQRu4KUWAiibwNQb3LE
+         VzIxxmreSo2XnHPyxMsSU21Eu3oEmfo/N5qmBUlcnVqNlhYnt2cC+pj/icToFj9f1q3E
+         C3lna4CXtZOFO37RhMBAQpl1rrShUWXdOEcMUEWFVkA9jxR5JsJci+1dreeqfxE6ovCi
+         R9qu4vMu6ifCqDNyUC+lYsY28BZb85X0YDd8l29fQw4egoG4RNUaS28GWBrKcFVHLeOd
+         Tv+9EvbiuAGubwGH/zJbiaQ+5Nu1KZB4pNV5jSFzSku5dBhkybbD812nNGfW6mcEhYXP
+         jNfw==
+X-Gm-Message-State: ANhLgQ2c0BExw9GUamfDh3JZUiibXfd9uYo9Bhvl0trMpNTw5qTfE5ds
+	VV4J6itZV0h83e37cGrY4zZQvVy0TsU=
+X-Received: by 2002:ac2:4199:: with SMTP id z25mr6902924lfh.90.1584747756512;
+        Fri, 20 Mar 2020 16:42:36 -0700 (PDT)
+Return-Path: <gokcekuler@gmail.com>
+Received: from siyah2 ([88.241.68.50])
+        by smtp.gmail.com with ESMTPSA id l16sm4137103lje.7.2020.03.20.16.42.35
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 20 Mar 2020 16:42:35 -0700 (PDT)
+Date: Sat, 21 Mar 2020 02:42:34 +0300
+From: Gokce Kuler <gokcekuler@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: mt7621-dma: Possible unnecessary 'out of memory'
+ message
+Message-ID: <20200320234234.GA9861@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200320234234.GA9861@siyah2>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sat, Mar 21, 2020 at 02:42:34AM +0300, Gokce Kuler wrote:
-> Delete unnecessary 'out of memory' message 
-> 
-> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
-> ---
->  drivers/staging/mt7621-dma/mtk-hsdma.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> index 47f7784..14a3215 100644
-> --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
-> +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-> @@ -467,7 +467,7 @@ static struct dma_async_tx_descriptor *mtk_hsdma_prep_dma_memcpy(
->  
->  	desc = kzalloc(sizeof(*desc), GFP_ATOMIC);
->  	if (!desc) {
-> -		dev_err(c->device->dev, "alloc memcpy decs error\n");
-> +		dev_err(c->device->dev );
+Delete unnecessary 'out of memory' message 
 
-Did you build this file after this change?  I don't think so :(
+Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+---
+ drivers/staging/mt7621-dma/mtk-hsdma.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
+index 47f7784..14a3215 100644
+--- a/drivers/staging/mt7621-dma/mtk-hsdma.c
++++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
+@@ -467,7 +467,7 @@ static struct dma_async_tx_descriptor *mtk_hsdma_prep_dma_memcpy(
+ 
+ 	desc = kzalloc(sizeof(*desc), GFP_ATOMIC);
+ 	if (!desc) {
+-		dev_err(c->device->dev, "alloc memcpy decs error\n");
++		dev_err(c->device->dev );
+ 		return NULL;
+ 	}
+ 
+-- 
+2.7.4
+
 
