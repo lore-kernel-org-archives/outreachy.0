@@ -1,84 +1,84 @@
 X-GM-THRID: 6806430751874088960
-X-Received: by 2002:a05:6402:1d95:: with SMTP id dk21mr10266299edb.93.1584747060379;
-        Fri, 20 Mar 2020 16:31:00 -0700 (PDT)
+X-Received: by 2002:a2e:8719:: with SMTP id m25mr6962554lji.17.1584746771413;
+        Fri, 20 Mar 2020 16:26:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:8548:: with SMTP id h8ls3889911ejy.11.gmail; Fri, 20
- Mar 2020 16:30:59 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtlM2V8EKPOCPL160PuOG6B2CWMcAggAq9VY79RZkL/TU8JOKCLyzDyHZ2SiOx+Xn9xXtDf
-X-Received: by 2002:a17:906:b809:: with SMTP id dv9mr10770173ejb.321.1584747059254;
-        Fri, 20 Mar 2020 16:30:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584747059; cv=none;
+Received: by 2002:a05:651c:550:: with SMTP id q16ls1714425ljp.1.gmail; Fri, 20
+ Mar 2020 16:26:10 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt/nKoJjbSyQyXnFVU9Irazvw44k5ZVifxDysdiEDjgiVx0Rowa4sq8i+Xa+QaGuTaj6EGC
+X-Received: by 2002:a2e:9243:: with SMTP id v3mr6596178ljg.12.1584746770032;
+        Fri, 20 Mar 2020 16:26:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584746770; cv=none;
         d=google.com; s=arc-20160816;
-        b=E6pi5/ia4ZsNJ7Oh+7ezGSOy9XiYebjvC1n1xkiD0zfZtNp4OM8g33d68q0y2HR/JY
-         aV/tO0JyZu7eOJLd6KwE+5edgFaguDHKYZzvdRJrwtl+e4I+5K5KIJqy622ehcW8KBQ8
-         YlnZPIOHbZ16KUivlXFZaKb2F0J9e+NuZa1rXrThI9XlKr4arAJsESBu72SweEizIYU2
-         YjIdiN2+bJ914P0YRdhZdMGGYYSUMBJda4wWHpwB08I7XUiIL3A/uc2gK+zo8g8pO0ej
-         88JfRmv/D7jf/MEOnv3d2HDeP3rTxzHKoPS29vzWEtfTcRtwHIE3bbAITf+vYEwdYXac
-         hN1A==
+        b=qv47vLXAScihCCrqH/ixEhcQUDwTrQR57zKknUXloGYFa1sQrDNHEsUvbX8V0SdnCm
+         Lo928ZS8HzpsdKGkcIJZtRXua2oBrCDK0RvYSJ0VzDiLMPiW0gftwLFUScPqw+Ys/+K4
+         UdtjPksWi32/u56DfPwtTA5K+TO91mXKdz/XWI8a0hWrKMASO8yG0ayqJbTLisfOoaM3
+         ihPbJ70w2QO4BLaO1aJhNiBIYG+piU24mkjr4lULxoD4/mOBp8jFCyI19s4vp+q4AWS/
+         oxkZNqZ75lDxpxMIKttRf5URSVd2j3fjhY8lme5fgdkwJrbuCfkA+/eZHnrQhtSzLgFE
+         k0gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=9ihwqZuNivlJWw+T/K7JCO5qtNt9JOk/oxlQPx3bcm4=;
-        b=IGup/NclRWC+Fv5DTII2S7vcGpKDM61mSqcDZBwGvoMJAEWMRdNf/HmLhFwsb8akvr
-         7bEy3OB62OVh1Uvg7YbdpgzRZgjsKiO6AFI9OPGmP2w5zq5zgOgi8Q0+POpGbtmQSdYx
-         VsaWtqIE6o3dzFU3fskcoOZNNSh5J3EPyAyMpQZrPPXaVboIhmjaNG276FAomXtaJMMM
-         z0wfGU5ZzqVjRf2SDjWXNPieVOIUWd3NF2BXngpiauN4IdFTydRcM0C+GnDHWIhRRFNe
-         2MBLEHuK5RF6OQeW2Xy4M3XvEqRfByc93efZoCep6p6Q34NbwjrCoSn8i7P2AGzx5uMv
-         wW+g==
+        bh=+zSWXiJAwc+l7iBHwROFHsAoeGF1/PvwhJdRVtXPYec=;
+        b=qLt+bEIQiQ1GUGOdEiLsLfoiZSs4BS/wfAHD3gjLQwK/bxAvhzqmTLsz875C/rGAiw
+         N/ErTk67A8ADKxlr8P2kjKpVevkENOGjC3Bcem14HkPpMF01Sas5nR7o8+zNshlAU481
+         oGClT8lB4bbG/gI9722DyBR+9dGE642e/rNykE9eTiONFPsfTLqEqFxXBLHHfwU1F+xD
+         LJTAprbB2LrIZfFUDGHQqmfk0xkvjWI8Wnv4Pop3DCHRP44is/EXkvFTBJ7ea44Oq5bi
+         CZpkqbe4dvU/oHzJSmLVUq0TBUeRMNasMHF6JZcHC9JUHFm5WErUY4w+DalYrFwlx1dK
+         BoMQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jhHtlKdw;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TM0Ytf+7;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lf1-x141.google.com (mail-lf1-x141.google.com. [2a00:1450:4864:20::141])
-        by gmr-mx.google.com with ESMTPS id f2si133536edm.1.2020.03.20.16.30.59
+Received: from mail-lf1-x143.google.com (mail-lf1-x143.google.com. [2a00:1450:4864:20::143])
+        by gmr-mx.google.com with ESMTPS id w6si352873lfa.1.2020.03.20.16.26.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Mar 2020 16:30:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) client-ip=2a00:1450:4864:20::141;
+        Fri, 20 Mar 2020 16:26:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) client-ip=2a00:1450:4864:20::143;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jhHtlKdw;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TM0Ytf+7;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x141.google.com with SMTP id t21so5861995lfe.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2020 16:30:59 -0700 (PDT)
+Received: by mail-lf1-x143.google.com with SMTP id s1so5869692lfd.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2020 16:26:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=9ihwqZuNivlJWw+T/K7JCO5qtNt9JOk/oxlQPx3bcm4=;
-        b=jhHtlKdwVbo5lpsVoSj+XBmtvQfZbxWB/fqFOUCOcXOqw8R+O8bP+uxa0Zbh15StGG
-         HAUIlbVNHavciBHNGqvvy3DGxApsP2CR6eJ4OdCj5VOOvzhtLbvIR0tDbNUsVZXFH8e9
-         a8viz+6L8KHVcmuifVrkAveu7LeIj9h7IdkawrWUwARLSVtrvBfgNTpY1AUzd8a1ncDB
-         nuNSJ5ZDzvR3up2dHLMoDCEq/L/P95I6UYe7lDoV7jCANYV44hiKNVaCPNfynXon8opc
-         ngeNDM+/BH36z9LwQ+OKax05+sMRvtaJfiWMHreTzh9mp384QMkJL+Zy/WbQzmaG8fzF
-         prGg==
+        bh=+zSWXiJAwc+l7iBHwROFHsAoeGF1/PvwhJdRVtXPYec=;
+        b=TM0Ytf+72QSBN7yaNM6VJ5JW/W5rjeOyI3pcSK8AspdOyDSbbGoufUXjvY/PXMwiPh
+         OmIGX+WKWihz7ubccmm1HMnJ75sldnjHGtCuAduiklWRF4Olxc6NfAQzexFyVOG5ytdK
+         u7QrKXwWUq2H28XBhnV6J/AqQws6QRehJ/1OJLCNls5bp0d/AwYuOg8gouetpaPri+VS
+         KJnOOtevtMhXWmAwoufrH3q/wAHxA6HE5LFvee18Xsg3m3F13llRrrY4tDK02/jNLSp4
+         hdRYmkEky0SII+R9hjf585GyTq5WhVaAvxuOwUXGkSBns91jHGAiT4vfj9gScdex65ic
+         /j8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=9ihwqZuNivlJWw+T/K7JCO5qtNt9JOk/oxlQPx3bcm4=;
-        b=eWzbR3v+XL/OE3GnsppxWAZMfNYpgQhv+KNXhkTCpfJzza8FduI1KtFOtGfYJvVby4
-         cQOj+6CmUm0xaw67nqx9kPnbl51TxJi8X4WH97gBLHqLAVy34s/0fbu5ykJoxQe4T82f
-         11gXxI6dkxpkKn58vidikMVyB7A4x7NINUAizJEwbpjv+a5BcoSeLqAnHQr4id7Ob+Dy
-         13NGuebWoNrx5iFA6E7ZX/2SZA8eI3t4PE8AARQssXr6S3v5yAlI+EJVEUweWI+eWeAd
-         /mHivBSuhYJBeKjfnDv/TyLMKnmlAmtAbk2RXGD1EcrETTBmwwoco/QPxah25TvGMS/I
-         ZN9g==
-X-Gm-Message-State: ANhLgQ1ETOKX4dVpiZ5ECIPE1lFxF2d/jW7VUvUcJKN4vhS8WGvMKH9L
-	SQ8aZ6APsqlRvvYywoDgWRR3JuqrIwI=
-X-Received: by 2002:ac2:54af:: with SMTP id w15mr6704570lfk.17.1584747058737;
-        Fri, 20 Mar 2020 16:30:58 -0700 (PDT)
+        bh=+zSWXiJAwc+l7iBHwROFHsAoeGF1/PvwhJdRVtXPYec=;
+        b=gvIKssv+L2JFLPlxTCQ9nlkgHox/9zD/NsWfbyYm/XVBvoEL82mgAscuYKRiaOGvew
+         Zp8lG11ut/fWMv/r9ujUxR8aFyFexE7CzoVIABKP12QKUq7ow2EyJz0hJjex2byig3My
+         fxzT2bIlKXzzQR2zsynRcbR4MW20Z/ZigJyLeKXW9znBe2AzJb9bXdKhFFxIZaionJeM
+         +MsAAKQ0Qy+j9VJpx+Lv1csZ8kXEC1S+e8s8WWo1XjcVMAx58KffvGudf7XTC1XV7Xmy
+         buXWfLuiNOpgpemTcMeukqbbsm5scFgBcSiwej2x/byuNpv4CpXgVIRX8RQWY4UQI9VN
+         WXzQ==
+X-Gm-Message-State: ANhLgQ3ODDlWuC4YkTt3ZzGHRE3NLNZP65lltFkTBzl84ErdQ8Fg9tYo
+	ph4Rd3yCvU2T9XgvJwLqV7V20c6Il28=
+X-Received: by 2002:ac2:41c9:: with SMTP id d9mr6656577lfi.41.1584746769788;
+        Fri, 20 Mar 2020 16:26:09 -0700 (PDT)
 Return-Path: <gokcekuler@gmail.com>
 Received: from siyah2 ([88.241.68.50])
-        by smtp.gmail.com with ESMTPSA id u19sm4205811lfq.23.2020.03.20.16.30.57
+        by smtp.gmail.com with ESMTPSA id r23sm4183645lfi.89.2020.03.20.16.26.08
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Mar 2020 16:30:58 -0700 (PDT)
-Date: Sat, 21 Mar 2020 02:30:56 +0300
+        Fri, 20 Mar 2020 16:26:09 -0700 (PDT)
+Date: Sat, 21 Mar 2020 02:26:07 +0300
 From: Gokce Kuler <gokcekuler@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
 Subject: [PATCH] staging: mt7621-dma: quoted string split across lines
-Message-ID: <20200320233056.GA9027@siyah2>
+Message-ID: <20200320232607.GA8601@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -92,19 +92,19 @@ Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/mt7621-dma/mtk-hsdma.c b/drivers/staging/mt7621-dma/mtk-hsdma.c
-index e619d75a..47f7784 100644
+index e194dfa..e619d75a 100644
 --- a/drivers/staging/mt7621-dma/mtk-hsdma.c
 +++ b/drivers/staging/mt7621-dma/mtk-hsdma.c
-@@ -241,8 +241,7 @@ static void hsdma_dump_desc(struct mtk_hsdam_engine *hsdma,
- 		tx_desc = &chan->tx_ring[i];
- 		rx_desc = &chan->rx_ring[i];
+@@ -219,8 +219,7 @@ static void hsdma_dump_reg(struct mtk_hsdam_engine *hsdma)
+ 			mtk_hsdma_read(hsdma, HSDMA_REG_RX_CRX),
+ 			mtk_hsdma_read(hsdma, HSDMA_REG_RX_DRX));
  
--		dev_dbg(hsdma->ddev.dev, "%d tx addr0: %08x, flags %08x, "
--				"tx addr1: %08x, rx addr0 %08x, flags %08x\n",
-+		dev_dbg(hsdma->ddev.dev, "%d tx addr0: %08x, flags %08x, tx addr1: %08x, rx addr0 %08x, flags %08x\n",
- 				i, tx_desc->addr0, tx_desc->flags,
- 				tx_desc->addr1, rx_desc->addr0, rx_desc->flags);
- 	}
+-	dev_dbg(hsdma->ddev.dev, "info %08x, glo %08x, delay %08x, "
+-			"intr_stat %08x, intr_mask %08x\n",
++	dev_dbg(hsdma->ddev.dev, "info %08x, glo %08x, delay %08x, intr_stat %08x, intr_mask %08x\n",
+ 			mtk_hsdma_read(hsdma, HSDMA_REG_INFO),
+ 			mtk_hsdma_read(hsdma, HSDMA_REG_GLO_CFG),
+ 			mtk_hsdma_read(hsdma, HSDMA_REG_DELAY_INT),
 -- 
 2.7.4
 
