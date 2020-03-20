@@ -1,84 +1,84 @@
 X-GM-THRID: 6806104906273914880
-X-Received: by 2002:a2e:9c8:: with SMTP id 191mr3782408ljj.259.1584669857282;
-        Thu, 19 Mar 2020 19:04:17 -0700 (PDT)
+X-Received: by 2002:a2e:93c5:: with SMTP id p5mr3821917ljh.192.1584669823894;
+        Thu, 19 Mar 2020 19:03:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5476:: with SMTP id e22ls725663lfn.7.gmail; Thu, 19 Mar
- 2020 19:04:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsv+mrjNCAwdx01L3nue4+9jijGeFNrDMiCvDmDGJlwqcFeEcSh7V77Ifz4I9/eLGCvVO8k
-X-Received: by 2002:a05:6512:6d4:: with SMTP id u20mr3876845lff.209.1584669856099;
-        Thu, 19 Mar 2020 19:04:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584669856; cv=none;
+Received: by 2002:a2e:8541:: with SMTP id u1ls974449ljj.10.gmail; Thu, 19 Mar
+ 2020 19:03:42 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvpMzqglRt5IJvMVVzCBcL9cR6Dx3ZsrmitaIOztsMmWVrQXguj+y1WVhJg46QysuPbBr5k
+X-Received: by 2002:a2e:8798:: with SMTP id n24mr3894807lji.114.1584669822058;
+        Thu, 19 Mar 2020 19:03:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584669822; cv=none;
         d=google.com; s=arc-20160816;
-        b=TmrHbGYYhkGDsk4rk5OIqi0ChEaSUWebTuWXrO0oLisf/JzGqvyVRRJFYQ7UTU8uYt
-         GlcEhDb5fLcOQoj953S0l4fl5EgGbsrnLheaMZ9lf3FVtO8TIY4syISA0fRxV0ckdHiS
-         Bp4NW9mtKNmxDb9vWxIqTzw1HM7/Pq7gAfytBT4J3eoxbjzLoMe0CZDwd2W1+2N1FoNm
-         xEP/GrQ0WaIz6W/dhJTpF9PHxK7EBWq5KFPu/p4Mp0w0N2hZCmCie+1Xs2J6qv29zLGg
-         9fukN1DBG5aR5IYTdb5mFWnIGirhf3IhJ10FCJSZ6ycwOUTcShqNpiuKFT517IRUD/Lg
-         xm7g==
+        b=vAuAzChXoqz/hsiGunTeOiJ+W00r9DAYoTAQkNKosI42nK28O9PAi8tfVdGprSDnpu
+         Wo3zE+jtMqlPQYlKSHaBvnqjUgJurO80bySTlST1PA+jGPm9JUIeHMBce2yFDfUuf93L
+         U6nSEAQWAXL1ijKXFNaVo61QNmErR8/OdJK9/I9D2Bdir8XpJYU4+QP85L0MqKsyHxRf
+         RYwSvPRHuA4DWyBWQ16GUYatyQ//H76lD7DSSnfVs3qQTT+mxmCt9o3y9dQ2oBs3bZzS
+         SnUet8Chz+hphut3fPeN6kwv+3JWNpey4titOcTJ2kgkLyFjHUAdTC4gbyUN2wFaJzwP
+         DRKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=QU4RN4EtkuJKZhC4tTxbQi7GTpKwNRktYK0ZiyOfs7U=;
-        b=dURnOLMWVhf/6hLW2YLgR3BMx/L067EYXHTibEeIv+TN/d9lVIq0a16mfe9ZclQOnK
-         jPU+xlOoBn3wEuOqzJGgjqC/OdWFto3nnadOjteTBACF1rwg5S/q9OtcKayigUD+oLPz
-         MEGFv5gEfw5CESiChTLxr5QcHNS+3zfx7Bf8MwITCnIfO9QZA2qLBfE9xiulq8nqH15K
-         rzn+Ll3Cl59ogF8aBxCfQOjz9+nzRReaTHN5MJlLQ+HL6DnqpPkYAPDTK7SXkoCLFYIS
-         ETxx0GmLgOuj/D2SQp6wPl/LbnSrUdqHsyG6YCz1dVA3LAbBgYgJ5QHqAOazSd+XckL4
-         tDPA==
+        bh=I69HdjzAo7WYzqHf5ZKcwQo4vs8GT14NEPwhfoW8ieY=;
+        b=IYMn5llrVuP7Wl2RdUnzvHmVRhwKTyT6WASfno/emcFodJFDNo5Wbclv0lOqcfp5PR
+         Oz987mxOEGa0ua0UH5GqHNGXJFEOSTMAu7VdgoXUv/4lpW4Fxk3aDheJt1hSxMcSDBAb
+         vANNYSDpRrdRsMp5fTzhAlGaRm3gLUedbyJoa5VDwSTiiJgKoGwVpa5pEPiVTOnXHSka
+         kPJc40rucqUdrD746XFzt3FqqHsGOOn2Dde4zaFqosYPnM+WHzRuuZJr5yezAuHmyu4n
+         aP4u1p3s8GM1Opisunt9c1gLRYfyYmeB10skKAPWCMlIJGrts3OpGRYo69ISyRgjotfJ
+         1I9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K2BRwCnz;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JfP94Z8r;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com. [2a00:1450:4864:20::144])
-        by gmr-mx.google.com with ESMTPS id w6si198545lfa.1.2020.03.19.19.04.16
+Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
+        by gmr-mx.google.com with ESMTPS id s17si294372ljm.5.2020.03.19.19.03.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Mar 2020 19:04:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) client-ip=2a00:1450:4864:20::144;
+        Thu, 19 Mar 2020 19:03:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K2BRwCnz;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JfP94Z8r;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x144.google.com with SMTP id t21so3283133lfe.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 19:04:16 -0700 (PDT)
+Received: by mail-lj1-x244.google.com with SMTP id w1so4780749ljh.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 19:03:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=QU4RN4EtkuJKZhC4tTxbQi7GTpKwNRktYK0ZiyOfs7U=;
-        b=K2BRwCnzwJh5p/UZaRKctv0Cbh13bOYtrrCUE7fhlqs0II4ZpMF7b4AhC4bitInNTD
-         6jjsGuhkQ9HY8lc1Z5PIDvBvpjO6j2tf6TLy0sKK8KOVQL96Xr4gSDwNOmGS0Fe0m8aJ
-         lN7m1t4iEOTHGsI5Dv/o3i5SZgM9IVdB3FLb95aA4pdW0UPppiPBdeVW9MjLTGTmRI2F
-         HlbjYhLu4vc9hO2oN608KkpCKOxX9MdfDiBD0jKy1Kgce+bgPl1yEDCyV5haxcByluzG
-         1y60r5X59pki/dVHRI0/jAMKkGYZeDW8Wzl3LmljV/GGoI2VHZVC8hd8Ydzr63q9kGU0
-         e7Xg==
+        bh=I69HdjzAo7WYzqHf5ZKcwQo4vs8GT14NEPwhfoW8ieY=;
+        b=JfP94Z8r8qWfN/QuLFIHOvwspWc/wB5lQH1eNHGyux7jmyE8rOAYvA9ZS5vT+aCgUa
+         KL79QU55f4JtL9p6lHJYNVK9kDzd3JyZIHvt0Edclnd32FLOsCQvCZXUtBq2JXLTSN0i
+         DMqhIVcbgHL09yl3+A3HSug4UT+9IphqDpahPbfdUY6WNdowWqdYT5aRMD9AJa6x60v0
+         OcezRLB0lbOuF6/2SY1JMzBeAPaAzDJY6OgLllHimsN3mqQqJafW4vNLNqQvcHrYKq9F
+         iCQXNNpVxzk61V2Hd1jlyd+CIv37Nw+grO86NyryUZkc7JoRS68hzsOBjxMc+a0CK8fM
+         +UnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=QU4RN4EtkuJKZhC4tTxbQi7GTpKwNRktYK0ZiyOfs7U=;
-        b=V96OtFK0XSXIUk/tpIVPJBDY1oMnJqmj0UO1b5tC46HcPJgcShJAvq5LKPRhCTZbV2
-         CA6V3NhZdd3Ew65RGAlX7HfDyYcYGhVE0TBzuM8kv8aL2za/pUkXBNZr3O23kqlbI6qU
-         U9BQ/Y5DDAgPINJkyH0nwWdbNVZ+aOoq0ZDrFCM2Y/0UXsxo884MkjpRcvS6tMdydnXL
-         0mMM72zz9st1AwCqWm4/EcUUUwz0ex8A3eeKBLcyKk/hq+OR7wfE6WKUM42PjXv7PSm3
-         6brxwaTvBU82YUF7X7kiiat6GvIApFSlo186fymeQw29qSd/yFWAq9lo3g1hLHXF+5yE
-         p61A==
-X-Gm-Message-State: ANhLgQ125h+Xasr0WTGHNY3cnLB1jYs31rZ2u5tKNl+Vi8rp8IFROZf5
-	pBrzkA5jDLY7zazH8u9obLw=
-X-Received: by 2002:a19:c206:: with SMTP id l6mr2943454lfc.118.1584669855850;
-        Thu, 19 Mar 2020 19:04:15 -0700 (PDT)
+        bh=I69HdjzAo7WYzqHf5ZKcwQo4vs8GT14NEPwhfoW8ieY=;
+        b=XAMoJ5QJymKU6SyqNAPkeoZpAKZi/yg8AP1/Nx8No4eCZBEFtgnqqEUYLHuCjGzIzO
+         b3fX+6pXqTwH1aoJXYR5GfN0VEDwWj6YlkjrPBvfiWdACHhBaMEZKYJV7XTaijPElIz/
+         e3PRFr8OtZAY6Wqb9BVFJd86ev5O9XmrhlfPjzBuBKNCnFPhoXUk1aVptX2VfHqiG6ux
+         DF9GYA0AhqshD7A3Bz429NKIIARgU/obejF0MC4hSzN2fPjZcuC/NfxNf5X0eMhX5alW
+         UNEgCLkBMifxQ/udlFc5huWg9vuFJyiAbwy1quKAzXnx6MKr42Dskx5trvR6n/B7sJ6C
+         A2Lg==
+X-Gm-Message-State: ANhLgQ1iF2K3HTNASBL8QDbt8z0LUbQjdvC3uHSkCgLIXA3ufJA9r+x5
+	lbSIGrjCQjSFUVcXWojighY=
+X-Received: by 2002:a2e:330e:: with SMTP id d14mr3899357ljc.72.1584669821859;
+        Thu, 19 Mar 2020 19:03:41 -0700 (PDT)
 Return-Path: <gokcekuler@gmail.com>
 Received: from siyah2 ([88.241.68.50])
-        by smtp.gmail.com with ESMTPSA id d12sm2403163lfi.86.2020.03.19.19.04.13
+        by smtp.gmail.com with ESMTPSA id l17sm2867519lje.81.2020.03.19.19.03.39
         (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Mar 2020 19:04:15 -0700 (PDT)
-Date: Fri, 20 Mar 2020 05:03:58 +0300
+        Thu, 19 Mar 2020 19:03:41 -0700 (PDT)
+Date: Fri, 20 Mar 2020 05:03:30 +0300
 From: Gokce Kuler <gokcekuler@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: linux-usb@vger.kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH 2/2] staging: rtl8712: Avoid multiple line dereference
-Message-ID: <5227586f7d1d91ee6f19b1ad8e69b1eefac32f0b.1584668081.git.gokcekuler@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8712: Avoid multiple line dereference
+Message-ID: <340c8671b671ed9b1416cfc7790e0e4426f89371.1584668081.git.gokcekuler@gmail.com>
 References: <cover.1584668081.git.gokcekuler@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -94,19 +94,19 @@ Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 74dac74..7d5a50a 100644
+index cabdb35..74dac74 100644
 --- a/drivers/staging/rtl8712/rtl871x_mlme.c
 +++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -1094,8 +1094,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
- 			src_ssid = pmlmepriv->assoc_bssid;
- 			if (!memcmp(dst_ssid, src_ssid, ETH_ALEN)) {
- 				if (check_fwstate(pmlmepriv, _FW_LINKED)) {
--					if (is_same_network(&pmlmepriv->
--					    cur_network.network,
-+					if (is_same_network(&pmlmepriv->cur_network.network,
- 					    &pnetwork->network)) {
- 						_clr_fwstate_(pmlmepriv,
- 							_FW_UNDER_LINKING);
+@@ -944,8 +944,7 @@ void r8712_stadel_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 			pdev_network = &(adapter->registrypriv.dev_network);
+ 			pibss = adapter->registrypriv.dev_network.MacAddress;
+ 			memcpy(pdev_network, &tgt_network->network,
+-				r8712_get_wlan_bssid_ex_sz(&tgt_network->
+-							network));
++				r8712_get_wlan_bssid_ex_sz(&tgt_network->network));
+ 			memcpy(&pdev_network->Ssid,
+ 				&pmlmepriv->assoc_ssid,
+ 				sizeof(struct ndis_802_11_ssid));
 -- 
 2.7.4
 
