@@ -1,52 +1,54 @@
 X-GM-THRID: 6806184818941886464
-X-Received: by 2002:ac2:4110:: with SMTP id b16mr5946602lfi.211.1585233046156;
-        Thu, 26 Mar 2020 07:30:46 -0700 (PDT)
+X-Received: by 2002:a50:eb08:: with SMTP id y8mr1806867edp.49.1584688405626;
+        Fri, 20 Mar 2020 00:13:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:89c8:: with SMTP id c8ls187488ljk.7.gmail; Thu, 26 Mar
- 2020 07:30:44 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKHtPnBcWzNKO46gbMakVSP0jYkYSMKZTsIm5leF8wz0NGA2mpDoLwQ2AG+uZU0lf2LMuRJ
-X-Received: by 2002:a2e:9ed6:: with SMTP id h22mr5693797ljk.211.1585233044760;
-        Thu, 26 Mar 2020 07:30:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585233044; cv=none;
+Received: by 2002:a05:6402:206d:: with SMTP id bd13ls965101edb.9.gmail; Fri,
+ 20 Mar 2020 00:13:24 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvff/0GxXq9huNbfpGIXHLbVUFBdqqWMIqKM12KK2dTUCimZTCrgummyRlHcEjpxzsZMZ2Y
+X-Received: by 2002:a50:c314:: with SMTP id a20mr6611361edb.201.1584688404076;
+        Fri, 20 Mar 2020 00:13:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584688404; cv=none;
         d=google.com; s=arc-20160816;
-        b=pEf97ssYMrYbQ8XF5azIXloYuL+uhbvWTJUIUbPp/ojjOwdWhOLVHjb9CTbQCGsA0v
-         qr9lA/BOjnneBKl+/CpnIrEGskVXnIAqeCcZnEhvlcRiXmHVj7UjIApFsq0/nh1MoMki
-         BZS5DnliFp5+Ukc4RXBziCapE85oTVNPpTM+gmwEe96784mmCkn/wH78sChDWHS9EYAN
-         u2LYtAHKl96ns1Ktc8o/cjSO52nvMl0MIjhCfnBSJxzmhHIJkuEbCGdOoIb9G43Rq5Fn
-         vt9e8natFvUrhP34+Wb6u9DtsaNUCYysnAYZbrYVvMkdzBTMFoJWYYOwJmrFF4RXnm9c
-         LcYg==
+        b=vqt8XSf2PBoAdAz/WLuuuU7WN1nSSQWHjVrYpWqmcM3J1ul5q8nE5269Yp5EYpybIi
+         7XWfIHR7VdLtLsg2Utep+xwQbZW25KNRnKzEdzZCgk2F7my+F+nInQkBCuq1zkNYK5Ye
+         67xMuSaSdk012T+etYZYLSEGpvEKzw5De/XRFScaGAd6bXAmvjtIuUN4AYbg3U4/L8iD
+         2MC8JjXil/MsdB1+r556x/UCNBDfqcKpuVkiJdet3Xec+TqQcKLYHjYOJZV5AQzoZzL1
+         ETJLvpHiOnA+K5A+ZyxxYKGtqGpPeBgFSAlm9xXCRdaECle1Z9slqyBz0ZsvQkpmrHpx
+         q+ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=NJqs2uMWTLIeO9ys03Hhi3Brv0dgM0wZHCsou10mPsg=;
-        b=D39nrekOHa1KQAE1tdG2z9utlb0qvm7y9n4Tq9kaRd+mKK9v+KFDqLDwm4fpK7CDei
-         Jun9nVkVOnzDlVGaZH+hBGt2RIdf/udfbOBCdZ5DJ3oSEADuzLPEoQrbY5SwoBQBLmyC
-         EF4DVv4be9EEjYPqA63NQPQjB6ztvPAWle9lYy3Z7+w5cEi9wvggcG4IzBzUpAgQqZKR
-         wzAC6K5jff2OUJoaJ7WwvXXo5/kt1eliaslmgA84ApU+xgpnveKnf2LctmtGA0ReHitj
-         Rc60+Sq661TKKQO/afhTrsDXVPU34ylSy0i5zSjPFL+bzUN1z08QTIJ96pCRgytNvXZh
-         Kxmw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=3fi+kh/bTioYapRm++FnTKNIN4um/QGYdoLX59dNl+Y=;
+        b=0Yn4nD+MJWWTHQvDtLLQ2ddyFe3JRkIFtyi49lEAph5qGC2ksjIRJdbuNF1/CfrZNk
+         KRQy6gZD16PzMBfhyvvBRF5709sy+b+sI/1NblfoaBzfQuvvaTvHIaUBZxQpd/AhApV5
+         SYcFH8rQwvXUdjiMi7QQsJ1InXt3ejmR8c6Dqw9bWS92pz7/8sZYDDZ8UU/mQE0s3/Iz
+         UnSDfHhKyVQq9IWZ0M/0BMXFMrrbI7/ELl/ya0nMMgodFxkooq54FDGs0yp6cG4NNEXK
+         CjZhk5M5ZuyKX6XsnW1eZJQ4FTt76n9Ut9nsQzJb1W3tLmwgk0TtKplosLC7n66j6MGt
+         Vi/g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
 Return-Path: <vkor@vkten.in>
 Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id s17si168250ljm.5.2020.03.26.07.30.44
+        by gmr-mx.google.com with ESMTP id cw13si256496edb.2.2020.03.20.00.13.23
         for <outreachy-kernel@googlegroups.com>;
-        Thu, 26 Mar 2020 07:30:44 -0700 (PDT)
+        Fri, 20 Mar 2020 00:13:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 23930 invoked from network); 26 Mar 2020 14:30:37 -0000
-Received: from unknown (HELO localhost) (vkor@vkten.in@117.249.131.241)
+Received: (qmail 6281 invoked from network); 20 Mar 2020 07:13:22 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.249.188.29)
   de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 26 Mar 2020 14:30:37 -0000
+  by vkten with ESMTPSA; 20 Mar 2020 07:13:22 -0000
 From: R Veera Kumar <vkor@vkten.in>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: R Veera Kumar <vkor@vkten.in>,
 	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: rtl8723bs: hal: Correct typos in comments
-Date: Thu, 26 Mar 2020 20:00:23 +0530
-Message-Id: <20200326143023.13681-1-vkor@vkten.in>
+Subject: [PATCH 2/2] staging: rtl8723bs: hal: Correct typos in comments
+Date: Fri, 20 Mar 2020 12:43:00 +0530
+Message-Id: <46d4e7cd66ec8d5bf7445201e10e3d50fe1c618e.1584687545.git.vkor@vkten.in>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1584687545.git.vkor@vkten.in>
+References: <cover.1584687545.git.vkor@vkten.in>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
@@ -55,175 +57,83 @@ Misspellings found using checkpatch.pl.
 
 Signed-off-by: R Veera Kumar <vkor@vkten.in>
 ---
- drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c | 2 +-
- drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c | 2 +-
- drivers/staging/rtl8723bs/hal/HalPhyRf.c        | 4 ++--
- drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c    | 2 +-
- drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
- drivers/staging/rtl8723bs/hal/odm_HWConfig.c    | 4 ++--
- drivers/staging/rtl8723bs/hal/odm_debug.h       | 4 ++--
- drivers/staging/rtl8723bs/hal/odm_types.h       | 2 +-
- drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c  | 2 +-
- drivers/staging/rtl8723bs/hal/sdio_halinit.c    | 2 +-
- 10 files changed, 13 insertions(+), 13 deletions(-)
+ drivers/staging/rtl8723bs/hal/Hal8723BReg.h  | 14 +++++++-------
+ drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c | 12 ++++++------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c b/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c
-index dd349c506da8..c60e8c58d9cc 100644
---- a/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c
-+++ b/drivers/staging/rtl8723bs/hal/HalBtc8723b1Ant.c
-@@ -1807,7 +1807,7 @@ static void halbtc8723b1ant_TdmaDurationAdjustForAcl(
- 		result = 0;
- 		WaitCount = 0;
- 	} else {
--		/* accquire the BT TRx retry count from BT_Info byte2 */
-+		/* acquire the BT TRx retry count from BT_Info byte2 */
- 		retryCount = pCoexSta->btRetryCnt;
- 		btInfoExt = pCoexSta->btInfoExt;
- 		/* BTC_PRINT(BTC_MSG_ALGORITHM, ALGO_TRACE_FW_DETAIL, ("[BTCoex], retryCount = %d\n", retryCount)); */
-diff --git a/drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c b/drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c
-index 8dfa9b988e20..2779dba92bab 100644
---- a/drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c
-+++ b/drivers/staging/rtl8723bs/hal/HalBtc8723b2Ant.c
-@@ -1646,7 +1646,7 @@ static void halbtc8723b2ant_TdmaDurationAdjust(
- 		result = 0;
- 		WaitCount = 0;
- 	} else {
--		/* accquire the BT TRx retry count from BT_Info byte2 */
-+		/* acquire the BT TRx retry count from BT_Info byte2 */
- 		retryCount = pCoexSta->btRetryCnt;
- 		BTC_PRINT(BTC_MSG_ALGORITHM, ALGO_TRACE_FW_DETAIL, ("[BTCoex], retryCount = %d\n", retryCount));
- 		BTC_PRINT(
-diff --git a/drivers/staging/rtl8723bs/hal/HalPhyRf.c b/drivers/staging/rtl8723bs/hal/HalPhyRf.c
-index 357802db9aed..7b435840746d 100644
---- a/drivers/staging/rtl8723bs/hal/HalPhyRf.c
-+++ b/drivers/staging/rtl8723bs/hal/HalPhyRf.c
-@@ -92,7 +92,7 @@ void ODM_TXPowerTrackingCallback_ThermalMeter(struct adapter *Adapter)
- 	u8 *deltaSwingTableIdx_TUP_B;
- 	u8 *deltaSwingTableIdx_TDOWN_B;
+diff --git a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
+index ce02457922b7..b9aca99478db 100644
+--- a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
++++ b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
+@@ -415,13 +415,13 @@
+ #define	IMR_BCNDMAINT3_8723B		BIT23	/*  Beacon DMA Interrupt 3 */
+ #define	IMR_BCNDMAINT2_8723B		BIT22	/*  Beacon DMA Interrupt 2 */
+ #define	IMR_BCNDMAINT1_8723B		BIT21	/*  Beacon DMA Interrupt 1 */
+-#define	IMR_BCNDOK7_8723B		BIT20	/*  Beacon Queue DMA OK Interrup 7 */
+-#define	IMR_BCNDOK6_8723B		BIT19	/*  Beacon Queue DMA OK Interrup 6 */
+-#define	IMR_BCNDOK5_8723B		BIT18	/*  Beacon Queue DMA OK Interrup 5 */
+-#define	IMR_BCNDOK4_8723B		BIT17	/*  Beacon Queue DMA OK Interrup 4 */
+-#define	IMR_BCNDOK3_8723B		BIT16	/*  Beacon Queue DMA OK Interrup 3 */
+-#define	IMR_BCNDOK2_8723B		BIT15	/*  Beacon Queue DMA OK Interrup 2 */
+-#define	IMR_BCNDOK1_8723B		BIT14	/*  Beacon Queue DMA OK Interrup 1 */
++#define	IMR_BCNDOK7_8723B		BIT20	/*  Beacon Queue DMA OK Interrupt 7 */
++#define	IMR_BCNDOK6_8723B		BIT19	/*  Beacon Queue DMA OK Interrupt 6 */
++#define	IMR_BCNDOK5_8723B		BIT18	/*  Beacon Queue DMA OK Interrupt 5 */
++#define	IMR_BCNDOK4_8723B		BIT17	/*  Beacon Queue DMA OK Interrupt 4 */
++#define	IMR_BCNDOK3_8723B		BIT16	/*  Beacon Queue DMA OK Interrupt 3 */
++#define	IMR_BCNDOK2_8723B		BIT15	/*  Beacon Queue DMA OK Interrupt 2 */
++#define	IMR_BCNDOK1_8723B		BIT14	/*  Beacon Queue DMA OK Interrupt 1 */
+ #define	IMR_ATIMEND_E_8723B		BIT13	/*  ATIM Window End Extension for Win7 */
+ #define	IMR_TXERR_8723B			BIT11	/*  Tx Error Flag Interrupt Status, write 1 clear. */
+ #define	IMR_RXERR_8723B			BIT10	/*  Rx Error Flag INT Status, Write 1 clear */
+diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+index 11ddab1dce3b..fd2b74003faf 100644
+--- a/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
++++ b/drivers/staging/rtl8723bs/hal/rtl8723b_cmd.c
+@@ -824,7 +824,7 @@ static void ConstructProbeRsp(struct adapter *padapter, u8 *pframe, u32 *pLength
+ #endif /*  CONFIG_AP_WOWLAN */
  
--	/* 4 2. Initilization (7 steps in total) */
-+	/* 4 2. Initialization (7 steps in total) */
+ /*
+- * To check if reserved page content is destroyed by beacon beacuse beacon
++ * To check if reserved page content is destroyed by beacon because beacon
+  * is too large.
+  */
+ /* 2010.06.23. Added by tynli. */
+@@ -1420,10 +1420,10 @@ void rtl8723b_set_ap_wowlan_cmd(struct adapter *padapter, u8 enable)
+  * Input:
+  *
+  * bDLFinished - false: At the first time we will send all the packets as
+- * a large packet to Hw, so we need to set the packet length to total lengh.
++ * a large packet to Hw, so we need to set the packet length to total length.
+  *
+  * true: At the second time, we should send the first packet (default:beacon)
+- * to Hw again and set the lengh in descriptor to the real beacon lengh.
++ * to Hw again and set the length in descriptor to the real beacon length.
+  */
+ /* 2009.10.15 by tynli. */
+ static void rtl8723b_set_FwRsvdPagePkt(
+@@ -1606,7 +1606,7 @@ static void rtl8723b_set_FwRsvdPagePkt(
+ #ifdef CONFIG_GTK_OL
+ 	BufIndex += (CurtPktPageNum*PageSize);
  
- 	ConfigureTxpowerTrack(pDM_Odm, &c);
- 
-@@ -213,7 +213,7 @@ void ODM_TXPowerTrackingCallback_ThermalMeter(struct adapter *Adapter)
- 
- 	/* 3 7. If necessary, move the index of swing table to adjust Tx power. */
- 	if (delta > 0 && pDM_Odm->RFCalibrateInfo.TxPowerTrackControl) {
--		/* delta" here is used to record the absolute value of differrence. */
-+		/* delta" here is used to record the absolute value of difference. */
- 		delta =
- 			ThermalValue > pHalData->EEPROMThermalMeter ?
- 			(ThermalValue - pHalData->EEPROMThermalMeter) :
-diff --git a/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c b/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c
-index c24156873fed..3b34a516075f 100644
---- a/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c
-+++ b/drivers/staging/rtl8723bs/hal/HalPwrSeqCmd.c
-@@ -118,7 +118,7 @@ u8 HalPwrSeqCmdParsing(
- 						&GET_PWR_CFG_MASK(PwrCfgCmd)
- 					);
- 
--					/*  Write the value back to sytem register */
-+					/*  Write the value back to system register */
- 					rtw_write8(padapter, offset, value);
- 				}
- 				break;
-diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c b/drivers/staging/rtl8723bs/hal/hal_intf.c
-index 7d8f21f32fb9..23df729acb7b 100644
---- a/drivers/staging/rtl8723bs/hal/hal_intf.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
-@@ -365,7 +365,7 @@ void rtw_hal_dm_watchdog_in_lps(struct adapter *padapter)
- {
- 	if (adapter_to_pwrctl(padapter)->bFwCurrentInPSMode == true) {
- 		if (padapter->HalFunc.hal_dm_watchdog_in_lps)
--			padapter->HalFunc.hal_dm_watchdog_in_lps(padapter); /* this fuction caller is in interrupt context */
-+			padapter->HalFunc.hal_dm_watchdog_in_lps(padapter); /* this function caller is in interrupt context */
- 	}
- }
- 
-diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-index 9950934c3ab3..9c190b1024d8 100644
---- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-+++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-@@ -103,7 +103,7 @@ static void odm_RxPhyStatus92CSeries_Parsing(
- 		pDM_Odm->PhyDbgInfo.NumQryPhyStatusCCK++;
- 		/*  */
- 		/*  (1)Hardware does not provide RSSI for CCK */
--		/*  (2)PWDB, Average PWDB cacluated by hardware (for rate adaptive) */
-+		/*  (2)PWDB, Average PWDB calculated by hardware (for rate adaptive) */
- 		/*  */
- 
- 		cck_agc_rpt = pPhyStaRpt->cck_agc_rpt_ofdm_cfosho_a;
-@@ -178,7 +178,7 @@ static void odm_RxPhyStatus92CSeries_Parsing(
- 
- 
- 		/*  */
--		/*  (2)PWDB, Average PWDB cacluated by hardware (for rate adaptive) */
-+		/*  (2)PWDB, Average PWDB calculated by hardware (for rate adaptive) */
- 		/*  */
- 		rx_pwr_all = (((pPhyStaRpt->cck_sig_qual_ofdm_pwdb_all) >> 1)&0x7f)-110;
- 
-diff --git a/drivers/staging/rtl8723bs/hal/odm_debug.h b/drivers/staging/rtl8723bs/hal/odm_debug.h
-index 3e58cb806c8c..a7381173d1a3 100644
---- a/drivers/staging/rtl8723bs/hal/odm_debug.h
-+++ b/drivers/staging/rtl8723bs/hal/odm_debug.h
-@@ -13,7 +13,7 @@
- /* Define the debug levels */
- /*  */
- /* 1.	DBG_TRACE and DBG_LOUD are used for normal cases. */
--/* So that, they can help SW engineer to develope or trace states changed */
-+/* So that, they can help SW engineer to developed or trace states changed */
- /* and also help HW enginner to trace every operation to and from HW, */
- /* e.g IO, Tx, Rx. */
- /*  */
-@@ -34,7 +34,7 @@
- #define ODM_DBG_SERIOUS				2
- 
- /*  */
--/* Abnormal, rare, or unexpeted cases. */
-+/* Abnormal, rare, or unexpected cases. */
- /* For example, */
- /* IRP/Packet/OID canceled, */
- /* device suprisely unremoved and so on. */
-diff --git a/drivers/staging/rtl8723bs/hal/odm_types.h b/drivers/staging/rtl8723bs/hal/odm_types.h
-index 28f42c9c3dd7..c79fc1813c3f 100644
---- a/drivers/staging/rtl8723bs/hal/odm_types.h
-+++ b/drivers/staging/rtl8723bs/hal/odm_types.h
-@@ -28,7 +28,7 @@ typedef enum _HAL_STATUS {
- 
- 
- /*  */
--/*  Declare for ODM spin lock defintion temporarily fro compile pass. */
-+/*  Declare for ODM spin lock definition temporarily from compile pass. */
- /*  */
- typedef enum _RT_SPINLOCK_TYPE {
- 	RT_TX_SPINLOCK = 1,
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-index 1e8b61443408..2b375e75be50 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_recv.c
-@@ -192,7 +192,7 @@ static inline union recv_frame *try_alloc_recvframe(struct recv_priv *precvpriv,
- 		rtw_enqueue_recvbuf_to_head(precvbuf,
- 					    &precvpriv->recv_buf_pending_queue);
- 
--		/*  The case of can't allocte recvframe should be temporary, */
-+		/*  The case of can't allocate recvframe should be temporary, */
- 		/*  schedule again and hope recvframe is available next time. */
- 		tasklet_schedule(&precvpriv->recv_tasklet);
- 	}
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-index 4894f7d9a1d4..7853af53051d 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-@@ -235,7 +235,7 @@ static void _InitQueueReservedPage(struct adapter *padapter)
- 	if (pHalData->OutEpQueueSel & TX_SELE_LQ)
- 		numLQ = bWiFiConfig ? WMM_NORMAL_PAGE_NUM_LPQ_8723B : NORMAL_PAGE_NUM_LPQ_8723B;
- 
--	/*  NOTE: This step shall be proceed before writting REG_RQPN. */
-+	/*  NOTE: This step shall be proceed before writing REG_RQPN. */
- 	if (pHalData->OutEpQueueSel & TX_SELE_NQ)
- 		numNQ = bWiFiConfig ? WMM_NORMAL_PAGE_NUM_NPQ_8723B : NORMAL_PAGE_NUM_NPQ_8723B;
- 
+-	/* if the ap staion info. exists, get the kek, kck from staion info. */
++	/* if the ap station info. exists, get the kek, kck from station info. */
+ 	psta = rtw_get_stainfo(pstapriv, get_bssid(pmlmepriv));
+ 	if (!psta) {
+ 		memset(kek, 0, RTW_KEK_LEN);
+@@ -1805,10 +1805,10 @@ static void rtl8723b_set_FwRsvdPagePkt(
+  * Input: bDLFinished
+  *
+  * false: At the first time we will send all the packets as a large packet to
+- * Hw, so we need to set the packet length to total lengh.
++ * Hw, so we need to set the packet length to total length.
+  *
+  * true: At the second time, we should send the first packet (default:beacon)
+- * to Hw again and set the lengh in descriptor to the real beacon lengh.
++ * to Hw again and set the length in descriptor to the real beacon length.
+  */
+ /* 2009.10.15 by tynli. */
+ static void rtl8723b_set_AP_FwRsvdPagePkt(
 -- 
 2.20.1
 
