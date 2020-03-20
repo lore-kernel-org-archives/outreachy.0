@@ -1,111 +1,93 @@
 X-GM-THRID: 6806104906273914880
-X-Received: by 2002:a19:f008:: with SMTP id p8mr4585395lfc.217.1584695657648;
-        Fri, 20 Mar 2020 02:14:17 -0700 (PDT)
+X-Received: by 2002:aca:d645:: with SMTP id n66mr5122636oig.66.1584687619138;
+        Fri, 20 Mar 2020 00:00:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:96d9:: with SMTP id d25ls1147903ljj.11.gmail; Fri, 20
- Mar 2020 02:14:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vti4q+uBCmuIJr0bfj3CwE5/1ziLDEGnS1xDzeIDkrPg35Lf9ILaCLQdyd1YDS/3c/cgrZy
-X-Received: by 2002:a2e:870b:: with SMTP id m11mr4756661lji.109.1584695656322;
-        Fri, 20 Mar 2020 02:14:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584695656; cv=none;
+Received: by 2002:aca:c441:: with SMTP id u62ls1699713oif.9.gmail; Fri, 20 Mar
+ 2020 00:00:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt3WeJuRTnbpia5+6tqzEuBgZXHraQtNpvxmCSM1DerYcriS7dcJbmzwp2QApergqy4uSlZ
+X-Received: by 2002:aca:3089:: with SMTP id w131mr5421354oiw.121.1584687617868;
+        Fri, 20 Mar 2020 00:00:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584687617; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kn/q6SQP2Y5BzFWoQ/CEUuAKjEheH9AQVzU1MqWw8HgEZvF+MyT4Yxu8VnUxeffpJA
-         ypQuOJfGQA7fHcKNDXkqAvLjUUhdFsNt+A2X6G/Z840kHz8il7w8W1jgqEZEpS+yEkVe
-         avxXcGPljM2MPjuuTirADfBrFE0lMsPnZWuRjE9si/jbJ9stm9HH80W5g3NX7ZOtRmeC
-         UU9txgvAjObviGu5h7i/VS6KnNcJFtqFAcnGS2AyL49UBgm+cWOl4DWSLAiwlqEsLugT
-         PsAD6X5yT/k5810efhjhLl9QJFl+KeNmHGRHRMqUY/KT5uLXjh3S5SQxtex3EOLCVh0d
-         ocqg==
+        b=Pv8LjYkkYx2IUwNQsDFE6Yg0D4wQIVgt798fpTbWM/hNVkxHEvYAT+bLMLHepBjbh/
+         4QAVsEDPEePfkFYY29EnJ7/VpqC8pTP3vnoC0EUy78My1ySZvoZ1uT/HuorylbY9Yrvs
+         MmNFYwWDyevQ5G8Wfrr5Z/9b5dOkC22pS5I1cwMforCQM59wiQRp9zBaJb4dCyW72Ccn
+         /+4abuTkOff2s+f7JtfRxEBcgAkMHVzscPQtjj8nbJqhir/UFjxSUwhOvdkyH/mSph6x
+         IMMty49hLZSYATe3Fn/jguMSTnP+s3NKS/rkUSIXBqXoKkeAhNUj9Ptaok/P+yvn2P4r
+         q9QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=QU4RN4EtkuJKZhC4tTxbQi7GTpKwNRktYK0ZiyOfs7U=;
-        b=upZG8VG/Mel78DTzL/+58RkGOBYafcasyQNYl9m7WZ9OgSf+/xFZ4LQCoxh6t3koni
-         ZLTGMs6RJ3rsp/YFjhOmFjAiRl6gpOvvjR3qCHpAPojz0YlUDzVJSvxIGR8UVEapqwC3
-         YgCCx5K6uXVJgYqAp1YHPr10ey1pe5E4wbyAW3yA4/w2a+Mdfa8dtJ010y4XO3+9Q25c
-         wBwSgDyzppkGWyvfyMSu7y4qKyBxO+cAyeGHudUbH/XTsSgAQ1RyEZr+2YtXoRwNyP9h
-         ZZJLMDEkoQGVXiawuoqQnyLSmBPEthy3zWkoShgL3AzDd12WMhRoGanlJGmVqMhy+byh
-         e2tA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=RQsohB4weXpwqp5YyZVY0Z93hwQ4aNQkGJC0oYkAaJs=;
+        b=Z4mYj1IWgw6gK/2vvnYZue8PzsSgG2bZOs5fyuEsi2RE1HGYKR0kbo2z3I/i2rOXlX
+         IxIpTsuHeMb1IcBuh3vpuQ13Uv2Jp9R+bUZuhekyPxBcQiX1esq+jgjOSEFJBD8+ctHZ
+         tmRkvGy4nztJkyl+yJtXM1uWm0617fUD/OkRVjCHeuEML6EHGR+/MPycH/Jjj4FRGvop
+         ZNTx32q/gV3UGF4NNsZFVutsuyUoLCIxSbSeq5Pa+LO6VFbMTpY5nrkW9S3yuovgGYmN
+         1X3giCoyuEBT67iWDcI75dOqhCwX0OvDQbpXFBE49BepbbRvzwsp4Ka5zOi6xHP4sTr1
+         bYmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m26iqJcU;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lj1-x243.google.com (mail-lj1-x243.google.com. [2a00:1450:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id t3si141002lfq.5.2020.03.20.02.14.16
+       dkim=pass header.i=@kernel.org header.s=default header.b=T3GLF4Re;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id w2si317320otl.3.2020.03.20.00.00.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Mar 2020 02:14:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) client-ip=2a00:1450:4864:20::243;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Mar 2020 00:00:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m26iqJcU;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x243.google.com with SMTP id w1so5599254ljh.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 20 Mar 2020 02:14:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=QU4RN4EtkuJKZhC4tTxbQi7GTpKwNRktYK0ZiyOfs7U=;
-        b=m26iqJcURsyPPt/UsfN82RZu9Q3LVP6vPJSwwL9QH+u4zOO5yN8J2A7uj3lKDQF/u4
-         MEwh5APUTpmR4waxKp4aFfLMg+heOyA90sll6MC4aZLxT7euvQHpsPpywOeOjyHqaIv0
-         YfyoJolNFkuAQjGaaXIaGO2oTyfURiJixnmWNqJUGUHpjRz+c/yL9D2AjTExzZ2JPAcq
-         Uu9aj3IzM2+ajiIrdZ0c/EA2XWruaVjnNgUZx2dLJvauH0OIQI7FZvIC3Rxjn1am7r0O
-         sGc9cgYTlDTMFv/2HZ3ZDSXBqwoULvBESEguvw3ppxywg1Vq+7WL2xzNscTzAwqudgAo
-         VJUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=QU4RN4EtkuJKZhC4tTxbQi7GTpKwNRktYK0ZiyOfs7U=;
-        b=UYMG2UKzmCIq+Z8n5bApl/ideLefu4ooB8dm36VBEnUbaIds2HCtm1qajOiKAyj+uw
-         lsu2oi5LPGSu46btIht2vPIHVSY55n/DwsXHZw5vBHIkZs1n707YqFRLoCt55HdW45th
-         60fezgXXcxIHVaH/YitHM1KeM705JP+Joj8trPHJHe+sHz5jg5ozY6Cc2Gcc2r9TbGn3
-         Wxv5fB3sWv2DONuWjEqaVU71fQ7KcWPncmzyUHm5noiozP9PQHrJeQ9ytrz7HFwOO/TD
-         8qOeyQ/hhcXWSi4Z3qZlHDmMEDDpG0KQT2b72C/ZGCNPn1MN4pZ+ezjqpikXb+GnJJC9
-         1g8Q==
-X-Gm-Message-State: ANhLgQ3RWZ9+2XURhiM9m3Dfd2HXDG+EVnwN8hiZh4eyDVj+a10ljlo1
-	2esrjP+dbRsz/fHzVecdftlFvMaQaN0=
-X-Received: by 2002:a2e:860e:: with SMTP id a14mr4564670lji.218.1584695656109;
-        Fri, 20 Mar 2020 02:14:16 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.68.50])
-        by smtp.gmail.com with ESMTPSA id v200sm3060526lfa.48.2020.03.20.02.14.15
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 20 Mar 2020 02:14:15 -0700 (PDT)
-Date: Fri, 20 Mar 2020 12:14:13 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8712: Avoid multiple line dereference
-Message-ID: <20200320091413.GA6302@siyah2>
+       dkim=pass header.i=@kernel.org header.s=default header.b=T3GLF4Re;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 674D320774;
+	Fri, 20 Mar 2020 07:00:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584687616;
+	bh=Wx2NDRaC1QOdWxleWTMWNTMNxcUwA7KWDbnvfFS0LDQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=T3GLF4ReYRXEGtgMaJH6bIWeZqh4swar4eDyLwC1tXgWSsnJZq7axU4qvLBeq2fUj
+	 oiMhPMNaNCZDFLKTAuhwwjDR6442ZZ/+RQG8b5Q3/t4TA0yhiLqtF6wuHr8WZ9es7L
+	 KNzfddH4n/Etw6SyXHgGDTpsC1TWFp6RyAivoZio=
+Date: Fri, 20 Mar 2020 07:59:50 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-usb@vger.kernel.org
+Subject: Re: [PATCH 0/2] Avoid multiple line dereference
+Message-ID: <20200320065950.GC307955@kroah.com>
+References: <cover.1584668081.git.gokcekuler@gmail.com>
+ <20200320065906.GB307955@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20200320065906.GB307955@kroah.com>
 
-merge a line -> with a line ending with a sign
+On Fri, Mar 20, 2020 at 07:59:06AM +0100, Greg KH wrote:
+> On Fri, Mar 20, 2020 at 05:03:03AM +0300, Gokce Kuler wrote:
+> > merge a line -> with a line ending with a sign
+> > 
+> > merge a line -> with a line ending with a sign
+> > 
+> > Gokce Kuler (2):
+> >   staging: rtl8712: Avoid multiple line dereference
+> >   staging: rtl8712: Avoid multiple line dereference
+> 
+> You should put the subsystem and driver in this 0/2 email subject as
+> well.
+> 
+> But the big problem of this (have you been reading other patch
+> submissions here?) is that you sent 2 patches that did different things,
+> yet had the same subject line, which is not ok.
+> 
+> Please make them unique.
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_mlme.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+And why is this 2 patches anyway?  SHouldn't it just be 1 patch as you
+are doing 1 logical thing to the file?
 
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index 74dac74..7d5a50a 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -1094,8 +1094,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
- 			src_ssid = pmlmepriv->assoc_bssid;
- 			if (!memcmp(dst_ssid, src_ssid, ETH_ALEN)) {
- 				if (check_fwstate(pmlmepriv, _FW_LINKED)) {
--					if (is_same_network(&pmlmepriv->
--					    cur_network.network,
-+					if (is_same_network(&pmlmepriv->cur_network.network,
- 					    &pnetwork->network)) {
- 						_clr_fwstate_(pmlmepriv,
- 							_FW_UNDER_LINKING);
--- 
-2.7.4
+Do not make multiple patches were a single one is all that is needed.
 
+thanks,
+
+greg k-h
 
