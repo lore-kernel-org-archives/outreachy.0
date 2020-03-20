@@ -1,113 +1,141 @@
-X-GM-THRID: 6469021492969472000
-X-Received: by 10.107.3.228 with SMTP id e97mr1363236ioi.27.1506186438456;
-        Sat, 23 Sep 2017 10:07:18 -0700 (PDT)
+X-GM-THRID: 6806083506577342464
+X-Received: by 2002:adf:ed0a:: with SMTP id a10mr7828570wro.198.1584664803513;
+        Thu, 19 Mar 2020 17:40:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.73.1 with SMTP id w1ls1072270ywa.21.gmail; Sat, 23 Sep
- 2017 10:07:17 -0700 (PDT)
-X-Received: by 10.129.88.6 with SMTP id m6mr1457109ywb.42.1506186437686;
-        Sat, 23 Sep 2017 10:07:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506186437; cv=none;
+Received: by 2002:a1c:a98b:: with SMTP id s133ls2070071wme.3.gmail; Thu, 19
+ Mar 2020 17:40:02 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv/tcudcr6TatcWGufl8HP4G7yr96XFvLfUlu0I7sMmaoxohKAIvpdXVvBBDoZGaMKAGCTt
+X-Received: by 2002:a1c:998b:: with SMTP id b133mr6693358wme.130.1584664802188;
+        Thu, 19 Mar 2020 17:40:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584664802; cv=none;
         d=google.com; s=arc-20160816;
-        b=EKyt8BwLzPJqPzedgWLROeq0QYIKL4m+MqQuW7nTBKidUamI3bUVu6LqGcSnGl3Wwx
-         x+aScXg4EGmHvI8zoYM+2lrRCf3AvMlKVJ1UktQi7n3kdPOe2QiQnRczcxPZ1l+LzOYJ
-         KYpesikjax0Fqeo8S1X5o94DjOmYMWPvpE8H7iyHBdEkjKNZHOBWaZy/AayELbCWZuEV
-         bQtdMlQCq/O3Qv/d/mTrfMR2hNZCV1/7drgeP4n8UKaOsHJTWaP/89ZIG4KNBMIMAlnJ
-         iTx3FsJAbbuS/uPjI734wYIhs649ocI1Xhh+YxREIoBmgtxzy/NG6jkiRjIKlLhdFw+6
-         Tg2g==
+        b=x2rJquGX/TRTWiEYV/RizRJMivVdqj/6+8MxJ3UOm2abHjEx6YW7RA5kYlxB1euU9Q
+         JypDCstn/BKnDxKyrh8Gb+D1Ku3oawf4BJYH3V6jxTEI2AZy4H+xr6PNK6x0PFFrTTjb
+         4mvBRQ1LQ2LHb3OdYZ7kEqpeqd1z8eCvKfX3Cgm3iiV7iIc+XmZ2HaUluB3N1E9IL5AC
+         CXiwT/yoS/26vmEI+xsM0aMkoKyIn/3K0rrYmCRJLlk0/dng+zrDvDt6mH6dUMglONqz
+         fIkmLmH4LCTVk2ltitQCPP6NvgJPsnw5Qa+/ofuGKDmL/E8JchzMyO+mmA1htxmDkWz7
+         j35Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=GvXxb1W6EldBp0JVx3rroHhpfErwQj2T5ymqUFnChWA=;
-        b=xbI6QlkrguIt9+r+t3daxjcv7TEtRJ6AAPy/O9Z+X7LbhkRx8udVCP9DMxFvCgH6kZ
-         6piJy5bYNb5yRIMEGeH4+GVUM2b/sTipfIhtUDopPZNi9VHwnzeyJzsQimltRdjUdULI
-         CYirENOTsbP7vUulLEe1dsJHopJBxnmMm4ZQxhNn3PRXRdu3uqhJXeIOztfL4piOMu1U
-         ZwMby3+YYsxy98zgfFI5VB+Dsv2WiO6WtJGgmwkNbXKzopLhDgo7uYJzAf0+qU7UXJN/
-         e3jka6MV8Y0XapGlP/k5UjOeICQyjrzXpek/c8uCW74mvaSQIMUoOJ3fbK7H7jAPHjky
-         soQA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7k5jHg/ojcIAZpfUZaM7CODOEsDq4yGvLxmxkmK2kp4=;
+        b=KTy3YQ3xyq3RkxdvxGZLaYboydODjjjyUi5V61BKiNO+plZIw//baFEXBfDYD96cFI
+         nUDKFTaahrHqie0Rxo/mOzaZtDRT8qsMguSWiuB1T5WD5vwhJL5LyATmwAcKGUkIxuLr
+         7nlTJKaPPT+gWMx2grAT036ZZbRxr6VxKU/mYVyoAdAkiEyyW12SCJ7SIlTkhkys3Uqy
+         xyMQSUAs92uAykWSuaCWxk3kdxuHBuCkqIBUkvO4x7BMmv97ISJeN7LUYAIbuqYGZOW8
+         C07i5Xhs4VgVS8gvc3TQmtCyRsGdC2G1EPfMxd8UqceZviH1Pk2U65QpHH+ikzPBvwlZ
+         6tUg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nK3ejEZG;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <keerthigd4990@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id a17si180258pfk.15.2017.09.23.10.07.17
+       dkim=pass header.i=@pplo.net header.s=google header.b=lNIABsp8;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=lu@pplo.net
+Return-Path: <lu@pplo.net>
+Received: from mail-wm1-x344.google.com (mail-wm1-x344.google.com. [2a00:1450:4864:20::344])
+        by gmr-mx.google.com with ESMTPS id q205si226286wme.4.2020.03.19.17.40.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 10:07:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 19 Mar 2020 17:40:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::344 as permitted sender) client-ip=2a00:1450:4864:20::344;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nK3ejEZG;
-       spf=pass (google.com: domain of keerthigd4990@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=keerthigd4990@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id a7so1787324pfj.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Sep 2017 10:07:17 -0700 (PDT)
+       dkim=pass header.i=@pplo.net header.s=google header.b=lNIABsp8;
+       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::344 as permitted sender) smtp.mailfrom=lu@pplo.net
+Received: by mail-wm1-x344.google.com with SMTP id 26so1816073wmk.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 19 Mar 2020 17:40:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=GvXxb1W6EldBp0JVx3rroHhpfErwQj2T5ymqUFnChWA=;
-        b=nK3ejEZGY6Svrgac5+MDiYRr+XDmUG3YIuTE7K3B5b+NwN/krbCtHQDhjfq/4GPHHC
-         JyCGloZxb6XSYDSuXMnSZ0HIVzGGof6pPKOSBN3OjIl1eLA7QpBmKQbJLrD/u2G8mpSC
-         ApnhIUkP4mA0/nbzQjuTqbG0DNAyMVOHjU2iZ4TFdR9OyCGflQhStmsC2xzkQZq+g9HX
-         NByFTd/KDiAq7hLiAk1n403ORakhlTKY4nPK51g9Nxt+eyp/uZn6a5tTpTo3hA9vhdlM
-         rKK3u8+jNeJjjAqUb1FwQcwA/Zyigv8/IwCZ1ZdIlEt4PbaApoP4S7cWrt82vjWwHFVd
-         e7jA==
+        d=pplo.net; s=google;
+        h=from:to:cc:subject:date:message-id;
+        bh=7k5jHg/ojcIAZpfUZaM7CODOEsDq4yGvLxmxkmK2kp4=;
+        b=lNIABsp8ztYdpcdbJLIj0J/UPiD+LpU7y+u3m4aIFJfYOxcbVWn4RPauk50bhs/QgS
+         Pw8eESHRh6/ibUN8rc/0dze7PsDwUskmUpQ55vjE//ujjByt1flvOApBa/a+sr1joThe
+         LF2MO2jnw81GPNN6eI9cx2WfMTfNm+6PynzbM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=GvXxb1W6EldBp0JVx3rroHhpfErwQj2T5ymqUFnChWA=;
-        b=Sg19FElGNbAPQ/hvrwxFMq6yUfhBbwu06aUDXYXKwi6Keqf51jcPzko5zvRCEXPpH7
-         n0GnV9R++gBpN7a9RVzzt4roz6F0b6nyajowykmHV1SAeEUL7LxKrEbK7CHwdr3SweoX
-         bckavzdSnhP7423y/eBq4XOIzeqv1TLqUynTUKyhqAZtY1GvIStT9/UqSWlXUHr+1yP8
-         LdcrPDcAUneZhsXXT0kk0hl2dy5DtI7/3ihRFlyvM5r2W2dtZ5KQBTIRRKm2Hp+fTaVU
-         8Aqu2dpXAxLaOhfO5jaAj4cH6Eee1bby7KHwaQRR5cBZaydlYjgSg7LbFWpJj9vHipw9
-         tsTA==
-X-Gm-Message-State: AHPjjUjWUrDPNRN32v/7eH93JWaQbQBUxqXCkEkldyBw4y1PCOwr9dAO
-	T8XHdSIoaNiv/vd80rS0Qlon0Src
-X-Google-Smtp-Source: AOwi7QDIMRW3U0V+jALXPuNuV92YW4vLiDSRLOGqpByQ6WXvxP8JVuBGLZ7VSCZXGYmZSzlnAY/dxg==
-X-Received: by 10.84.241.201 with SMTP id t9mr2683851plm.154.1506186437127;
-        Sat, 23 Sep 2017 10:07:17 -0700 (PDT)
-Return-Path: <keerthigd4990@gmail.com>
-Received: from manoharreddy ([14.139.122.139])
-        by smtp.gmail.com with ESMTPSA id g66sm5132452pfj.161.2017.09.23.10.07.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Sep 2017 10:07:16 -0700 (PDT)
-Date: Sat, 23 Sep 2017 22:37:15 +0530
-From: Keerthi Reddy <keerthigd4990@gmail.com>
-To: outreachy-kernel@googlegroups.com, johnny.kim@atmel.com
-Subject: [PATCH] staging: wilc1000: No space is necessary after a cast
-Message-ID: <20170923170715.GA8329@manoharreddy>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7k5jHg/ojcIAZpfUZaM7CODOEsDq4yGvLxmxkmK2kp4=;
+        b=RvubxwRacOfUFd6r31hwZtN2DCd5+WiZWUJ6eGj5DXk8qPa3hIyN15y1BQk3KLNxB3
+         eLVMRlIYBN+eOf4CfxU4PbhOoSZY+XtD9WAu8CH6FS0PcPZpomSSBNHR+BiZMByLOYlK
+         zF9ewYAlEkG2DMHQLB/t5QCYmJr7IGgF8VD1IsvxF7ToJsQiYUiV/emcskHtTkNZXpyr
+         lvwBdXdoRB0YiK9xuA32vz3pNJtu7siQ+RbyyTFKh50AgZBGNZ19srTE/J+ksJCKRZM6
+         zO9CgP9gC1BNNCRSsjjvUJou0jpUn+jruDlwC7D1CbYs5x4qh/uqeOpTJuT6MVbr1+vP
+         xSww==
+X-Gm-Message-State: ANhLgQ3LEHggjwclrAIaSW7ua/IJmqXqBI3wVOxV8iWEWMyOCkvfMl/q
+	xl3yCZxypIYTLgWOuB6XoaekYKXrd3o=
+X-Received: by 2002:a1c:f00a:: with SMTP id a10mr1154096wmb.102.1584664801539;
+        Thu, 19 Mar 2020 17:40:01 -0700 (PDT)
+Return-Path: <lu@pplo.net>
+Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
+        by smtp.gmail.com with ESMTPSA id n9sm5569084wmi.23.2020.03.19.17.40.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Mar 2020 17:40:01 -0700 (PDT)
+From: Lourdes Pedrajas <lu@pplo.net>
+To: outreachy-kernel@googlegroups.com,
+	gregkh@linuxfoundation.org
+Cc: Lourdes Pedrajas <lu@pplo.net>
+Subject: [PATCH] staging: gdm724x: use netdev_err() instead of pr_err()
+Date: Fri, 20 Mar 2020 01:39:47 +0100
+Message-Id: <20200320003947.31726-1-lu@pplo.net>
+X-Mailer: git-send-email 2.17.1
 
-A space after type casting is not needed. All the other typecasts
-in this file don't put space after typecast. so remove space
-after typecast at this line.
+use netdev_err() which is a message printing function specific for network
+devices instead of pr_err(), in function netlink_send().
 
-checked with checkpatch.pl script
-
-Signed-off-by: Keerthi Reddy <keerthigd4990@gmail.com>
+Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
 ---
- drivers/staging/wilc1000/wilc_wfi_cfgoperations.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/gdm724x/gdm_lte.c   | 2 +-
+ drivers/staging/gdm724x/netlink_k.c | 7 ++++---
+ drivers/staging/gdm724x/netlink_k.h | 3 ++-
+ 3 files changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-index ac5aaaf..36dc2a0 100644
---- a/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-+++ b/drivers/staging/wilc1000/wilc_wfi_cfgoperations.c
-@@ -1617,7 +1617,7 @@ static int mgmt_tx(struct wiphy *wiphy,
+diff --git a/drivers/staging/gdm724x/gdm_lte.c b/drivers/staging/gdm724x/gdm_lte.c
+index db11498f6fc7..354727f0a1fc 100644
+--- a/drivers/staging/gdm724x/gdm_lte.c
++++ b/drivers/staging/gdm724x/gdm_lte.c
+@@ -513,7 +513,7 @@ static int gdm_lte_event_send(struct net_device *dev, char *buf, int len)
  
- 	*cookie = (unsigned long)buf;
- 	priv->u64tx_cookie = *cookie;
--	mgmt = (const struct ieee80211_mgmt *) buf;
-+	mgmt = (const struct ieee80211_mgmt *)buf;
+ 	length = gdm_dev16_to_cpu(phy_dev->get_endian(phy_dev->priv_dev),
+ 				  hci->len) + HCI_HEADER_SIZE;
+-	return netlink_send(lte_event.sock, idx, 0, buf, length);
++	return netlink_send(lte_event.sock, idx, 0, buf, length, dev);
+ }
  
- 	if (ieee80211_is_mgmt(mgmt->frame_control)) {
- 		mgmt_tx = kmalloc(sizeof(struct p2p_mgmt_data), GFP_KERNEL);
+ static void gdm_lte_event_rcv(struct net_device *dev, u16 type,
+diff --git a/drivers/staging/gdm724x/netlink_k.c b/drivers/staging/gdm724x/netlink_k.c
+index 92440c3f055b..7902e52a699b 100644
+--- a/drivers/staging/gdm724x/netlink_k.c
++++ b/drivers/staging/gdm724x/netlink_k.c
+@@ -89,7 +89,8 @@ struct sock *netlink_init(int unit,
+ 	return sock;
+ }
+ 
+-int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len)
++int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len,
++		 struct net_device *dev)
+ {
+ 	static u32 seq;
+ 	struct sk_buff *skb = NULL;
+@@ -118,8 +119,8 @@ int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len)
+ 		return len;
+ 
+ 	if (ret != -ESRCH)
+-		pr_err("nl broadcast g=%d, t=%d, l=%d, r=%d\n",
+-		       group, type, len, ret);
++		netdev_err(dev, "nl broadcast g=%d, t=%d, l=%d, r=%d\n",
++			   group, type, len, ret);
+ 	else if (netlink_has_listeners(sock, group + 1))
+ 		return -EAGAIN;
+ 
+diff --git a/drivers/staging/gdm724x/netlink_k.h b/drivers/staging/gdm724x/netlink_k.h
+index c9e1d3b2d54f..d42eea9bea3e 100644
+--- a/drivers/staging/gdm724x/netlink_k.h
++++ b/drivers/staging/gdm724x/netlink_k.h
+@@ -10,6 +10,7 @@
+ struct sock *netlink_init(int unit,
+ 			  void (*cb)(struct net_device *dev,
+ 				     u16 type, void *msg, int len));
+-int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len);
++int netlink_send(struct sock *sock, int group, u16 type, void *msg, int len,
++		 struct net_device *dev);
+ 
+ #endif /* _NETLINK_K_H_ */
 -- 
-2.7.4
+2.17.1
 
 
