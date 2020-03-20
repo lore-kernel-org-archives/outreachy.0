@@ -1,110 +1,134 @@
-X-GM-THRID: 6801796609244921856
-X-Received: by 2002:aca:2104:: with SMTP id 4mr8456731oiz.127.1583666682993;
-        Sun, 08 Mar 2020 04:24:42 -0700 (PDT)
+X-GM-THRID: 6806115438328545280
+X-Received: by 2002:a2e:9b44:: with SMTP id o4mr3844822ljj.63.1584672238582;
+        Thu, 19 Mar 2020 19:43:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:5513:: with SMTP id j19ls1892809oib.5.gmail; Sun, 08 Mar
- 2020 04:24:41 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuHOfbrel8CbDdXgXOOkO4xlGV+aZa4ag4MLrrtxE9ifjh5buXiZXnApiWm/U61LSVvwGA9
-X-Received: by 2002:aca:be09:: with SMTP id o9mr8435311oif.177.1583666681915;
-        Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583666681; cv=none;
+Received: by 2002:a05:6512:1103:: with SMTP id l3ls742390lfg.6.gmail; Thu, 19
+ Mar 2020 19:43:57 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtpQ0O9rmdYHTwLn69hdyRVA3CLYCoy/pCymUOxwE7Y3MAvPqi6U3zZQodBDi+TSvVQYsbC
+X-Received: by 2002:a19:ec08:: with SMTP id b8mr3848281lfa.34.1584672237115;
+        Thu, 19 Mar 2020 19:43:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584672237; cv=none;
         d=google.com; s=arc-20160816;
-        b=KtR7P634qToZOJwSeXfnZ5yJZcXqLnhlSKcXkbabmtutRhM+V7NnBddji7NiI5FaxT
-         0cSIxQXrvcVvpWujgHSS6B/tVX6AtA3Rl1DXHBJ4pLDbBaWS2GqEPe3WwfgrgtuACX3O
-         7Hd9b+EP11mqBj3OwjCyRWSxbRme2tfn8FWzVORuLREQkwQdTLl/WU/t0nMi9uCces2f
-         8NpG+YpwcXQ9iJf49F3437THCAyznUGKL7ZlSnBkrSfWKn01Ex82es5FucIH2+PddEri
-         IMMgJnK5OF7UfSmbwtCFhkdrg/V5LcTPJygdQJxswTESKscqLBAnEp1KblRkTibRj6dO
-         ysrQ==
+        b=YNKGTvOAxCDIAer7jycUwHXTQO4yfHUkAKL/Go8+31X0+UNjB0XmLFNF0KyEzI35xT
+         nWo65QZMOxY4XNG8ESSp7F7YsB0kR3T8gbTsYBhE5pAlumlZXULz0ysTU/azy/g52lY0
+         Yxyx4/ztA+/tuWPmDGWlT6iDpg4piNoVkIA97ug5RUzoqUz0Ugukr/lGemE1qP1iSGBa
+         HVJW0pmESeLJK0kSPVLaL4AVOERv0jm8ndsvJ43A39XveXHfn6pYuEKShl19f/sNP/8R
+         hMYdzCXYyH6KHDZE4tPddtwBkx0OCeDdwWW+ZSIxnDvGkcZnuUldn8sGX81ceFDkOAUC
+         p74g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=RRKCrppZ9AAtwokRlCEkVXAkvio7sBjyCBzyt/3L0rk=;
-        b=b04F+vq1qql22sObZyepcXXBdQtivCSBeBbrIlOT9jzE2zhdvGnBgiEegD1Bdzb8TS
-         fcheOV652KdVnx9AY6XtT0Js2uey6Wydu8188gaJBa9Sm+zq4/u3YUhhEDut8Hx4q+KV
-         BEJXdUB52jtugVdbE6Z6Yck13pPoa0mCSTjrgBE1O1+Fx1R9p7930eXKo09IcmU9qrU/
-         sJ5ZXF14I27ICMsh3R0mIba1DnHcfi/BARGXKLQigkp1ral1dd8HK6AD8JE4MwhR2w9v
-         DgTGBFrYhrMiPlbId6cnXbXga/EBO0jBa/TMG8Gu71dLivkXxdVUMEOy9+BcAmMwLo8G
-         6/Yw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=sCytqDIUiRdPSqT3AyzPbgraAkTpejx3bSkafhc4RUY=;
+        b=v3Ca5995d0bPoTXY6cFtGdEgCNXMtJEgBW3hdSY4ks4JvNzn/q9YGsYdekvZxI0nep
+         /aNRTrTO9r81dxnsXMZP4l9WQTiba0jHjGtZKB4r04l5FZLRXBpTP59v8YLFmVW/Rcic
+         C8xZG0iiIyT7N6sVt7cQYhCMgoMAbK920orUp2DweexANEmN0RrI9QNuqgacxskAuryg
+         eHNDtKlPLhnLfra/pokwdZvLVS00L4SwxvTw20bM2L+m85FonqosFJX6bxnrQOTD+B/n
+         E+GrC4G6xRWgNzAnA9IcmP24zuav8I2EaHFbo4tLy4PHhqMnV1NZrCvbR8y+CHtd80Mn
+         HfXQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gRJ65kbJ;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-il1-x131.google.com (mail-il1-x131.google.com. [2607:f8b0:4864:20::131])
-        by gmr-mx.google.com with ESMTPS id m132si32284oig.3.2020.03.08.04.24.41
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) client-ip=2607:f8b0:4864:20::131;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id t3si113762lfq.5.2020.03.19.19.43.56
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 19 Mar 2020 19:43:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gRJ65kbJ;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::131 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-il1-x131.google.com with SMTP id e8so6097605ilc.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=RRKCrppZ9AAtwokRlCEkVXAkvio7sBjyCBzyt/3L0rk=;
-        b=gRJ65kbJUZFcP4XYzVGaE5AIf1oE7ziIA7wXL4Pp41FajYVepGqsZebicZmGncaTWk
-         x7HSGAZ+Mf74bxpvdjxtgiCCuSBHkMfPJvPmJ8aBwX3p9Wc85zVD3n+XxAeuHxJL7keH
-         NCAFWeXtLKrkre6psdxLZpSgJoGbafaSEtYCAjzCo+1wcfzQWVOrt+TC1liJNbbi7K62
-         aWb0j8Qkb+WOVbo3Ilo1fHCT1JaSjeOnx0lL+rw8nK+L4HR11CXVJmFlIg7BeCSAgfn7
-         YMXd8FehZNNgY/gx6kPBYXX6xAZeGOUI6Oq/4fMj0XOUId0LCWHCearQOzg60Bl06fTG
-         ii0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=RRKCrppZ9AAtwokRlCEkVXAkvio7sBjyCBzyt/3L0rk=;
-        b=isSiHMWC9Ep6j9OMUTjEXN4qsVIGWlVwVqjjBuCMNxQvRISY08L04KyTTmnhaVrCva
-         keoG9tsi7J2i+xqyXLeNY75tm2YK2hrvRIEUjUg93XrN1uefr/SXyRPfNk7FFf3BVuYx
-         TMCX10wydskhgTKji4MPioKO/IJGhSLEj47Zxy+3UQaEt5CYTPZdMXNWucxg4BIxMYb6
-         Npqsu8m3TDIyI4ZOQdhVeJKmMR34AG7wuvNd1dhGjaE0qEhhWx+GwReXSVXZQUIeDYMh
-         cPdEqEMSemI9lHTjXvELg/qd7RHCrBhQydctPxzv++D6yuGdw4beD99pu4zfoE91ke2+
-         WeLw==
-X-Gm-Message-State: ANhLgQ1AeSF91jl79BrWinQXVsp5NTkRlcteFgLVlaYjp4N+DdPUb5BL
-	yqt7qZMgrBY31KUYcjlb1lel5qG+t1UBYEIW2kmhFXrhdgs=
-X-Received: by 2002:a92:bf0b:: with SMTP id z11mr2742269ilh.213.1583666681387;
- Sun, 08 Mar 2020 04:24:41 -0700 (PDT)
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 3941 invoked from network); 20 Mar 2020 02:43:49 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.249.188.29)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 20 Mar 2020 02:43:49 -0000
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: R Veera Kumar <vkor@vkten.in>,
+	Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v3] staging: vc04_services: interface: vchi: Correct long line comments and make them C89 style
+Date: Fri, 20 Mar 2020 08:13:37 +0530
+Message-Id: <20200320024337.4754-1-vkor@vkten.in>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-Date: Sun, 8 Mar 2020 16:54:30 +0530
-Message-ID: <CAND3PyeWnvf4Zu87m_kOBw6Vz7MOwJfpR7wHUyh_udvEDvpJdw@mail.gmail.com>
-Subject: Using 4.18.0-rc7+ kernel
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>, Julia Lawall <julia.lawall@inria.fr>, 
-	Vaishali Thakkar <vthakkar@vaishalithakkar.in>, helen@koikeco.de, 
-	Greg KH <gregkh@linuxfoundation.org>
-Content-Type: multipart/alternative; boundary="000000000000fca11d05a0562133"
+Content-Transfer-Encoding: 8bit
 
---000000000000fca11d05a0562133
-Content-Type: text/plain; charset="UTF-8"
+Correct long lines of comments to respect 80 character per line
+limit and make them C89 style one.
+Found using checkpatch.pl.
 
-Hi,
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+Changes in v3:
+ - Drop unneccessary changes in long line comments
+   which decreased readability
+ - Some comments did not need to be C89 style
+Changes in v2:
+ - Change the comments to C89 style
+---
+ .../interface/vchi/vchi_common.h              | 36 ++++++++++++-------
+ 1 file changed, 23 insertions(+), 13 deletions(-)
 
-I am currently using 4.18.0-rc7+ custom kernel so to start with my
-contributions is it recommended to compile the latest kernel or it will be
-fine to just update it using the following commands.
-git fetch origin
-git rebase origin/staging-testing
+diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+index 141af16ce031..7fc04e38936d 100644
+--- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
++++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
+@@ -33,10 +33,14 @@ enum vchi_crc_control {
+ enum vchi_callback_reason {
+ 	VCHI_CALLBACK_REASON_MIN,
+ 
+-	//This indicates that there is data available
+-	//handle is the msg id that was transmitted with the data
+-	//    When a message is received and there was no FULL message available previously, send callback
+-	//    Tasks get kicked by the callback, reset their event and try and read from the fifo until it fails
++	/*
++	 * This indicates that there is data available handle is the msg id that
++	 * was transmitted with the data
++	 * When a message is received and there was no FULL message available
++	 * previously, send callback
++	 * Tasks get kicked by the callback, reset their event and try and read
++	 * from the fifo until it fails
++	 */
+ 	VCHI_CALLBACK_MSG_AVAILABLE,
+ 	VCHI_CALLBACK_MSG_SENT,
+ 	VCHI_CALLBACK_MSG_SPACE_AVAILABLE, // XXX not yet implemented
+@@ -51,9 +55,11 @@ enum vchi_callback_reason {
+ 
+ 	VCHI_CALLBACK_SERVICE_CLOSED,
+ 
+-	// this side has sent XOFF to peer due to lack of data consumption by service
+-	// (suggests the service may need to take some recovery action if it has
+-	// been deliberately holding off consuming data)
++	/*
++	 * this side has sent XOFF to peer due to lack of data consumption by
++	 * service (suggests the service may need to take some recovery action
++	 * if it has been deliberately holding off consuming data)
++	 */
+ 	VCHI_CALLBACK_SENT_XOFF,
+ 	VCHI_CALLBACK_SENT_XON,
+ 
+@@ -112,12 +118,16 @@ struct vchi_msg_vector {
+ 	int32_t vec_len;
+ };
+ 
+-// Iterator structure for reading ahead through received message queue. Allocated by client,
+-// initialised by vchi_msg_look_ahead. Fields are for internal VCHI use only.
+-// Iterates over messages in queue at the instant of the call to vchi_msg_lookahead -
+-// will not proceed to messages received since. Behaviour is undefined if an iterator
+-// is used again after messages for that service are removed/dequeued by any
+-// means other than vchi_msg_iter_... calls on the iterator itself.
++/*
++ * Iterator structure for reading ahead through received message queue.
++ * Allocated by client, initialised by vchi_msg_look_ahead. Fields are for
++ * internal VCHI use only.
++ * Iterates over messages in queue at the instant of the call to
++ * vchi_msg_lookahead - will not proceed to messages received since.
++ * Behaviour is undefined if an iterator is used again after messages for that
++ * service are removed/dequeued by any means other than vchi_msg_iter_...
++ * calls on the iterator itself.
++ */
+ struct vchi_msg_iter {
+ 	struct opaque_vchi_service_t *service;
+ 	void *last;
+-- 
+2.20.1
 
-Since the compilation process is very lengthy and takes a lot of time I
-would like to know if it is just fine to update the kernel rather than
-always upgrading it.
-
-Thanks
-
---000000000000fca11d05a0562133
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div><br></div><div>I am currently using 4.18.0-rc7+ cu=
-stom kernel so to start with my contributions is it recommended to compile =
-the latest kernel or it will be fine to just update it using the following =
-commands.</div><font face=3D"monospace">git fetch origin<br>git rebase orig=
-in/staging-testing</font><div><font face=3D"monospace"><br></font></div><di=
-v><font face=3D"monospace">S</font>ince the compilation process is very len=
-gthy and takes a lot of time I would like to know if it is just fine to upd=
-ate the kernel rather than always upgrading it.</div><div><br></div><div>Th=
-anks</div></div>
-
---000000000000fca11d05a0562133--
 
