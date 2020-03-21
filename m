@@ -1,77 +1,77 @@
 X-GM-THRID: 6806789560169660416
-X-Received: by 2002:a17:90a:db02:: with SMTP id g2mr2975516pjv.15.1584829468726;
-        Sat, 21 Mar 2020 15:24:28 -0700 (PDT)
+X-Received: by 2002:ad4:500c:: with SMTP id s12mr14931160qvo.138.1584829418130;
+        Sat, 21 Mar 2020 15:23:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:58a:: with SMTP id 132ls5338133pgf.5.gmail; Sat, 21 Mar
- 2020 15:24:27 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtu0rThHkrSrlWG9EsFH5cJ57ZLPjqEHAthSX8LKHXnPsRr9l6+U9vvsdUE0Z9VpCfTemWC
-X-Received: by 2002:a62:1909:: with SMTP id 9mr16699926pfz.196.1584829467033;
-        Sat, 21 Mar 2020 15:24:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584829467; cv=none;
+Received: by 2002:ac8:4695:: with SMTP id g21ls4656363qto.3.gmail; Sat, 21 Mar
+ 2020 15:23:37 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsHQr/TtUWxD33a6uaZGeI3wEZVvOUsRB6T7hcEdHDZS0+p70YBCFAXJiQeMQL/cWEh6G5S
+X-Received: by 2002:aed:2bc1:: with SMTP id e59mr14864555qtd.86.1584829417088;
+        Sat, 21 Mar 2020 15:23:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584829417; cv=none;
         d=google.com; s=arc-20160816;
-        b=gDRJ5098/gIrwZi0FBPD3SZVybfk2ivze0ahfPo1EPZPw7MKFNRCaHA6PKYTp6s5rn
-         jGtxG0PXJBxfVvsWPZU6fhfCOi9sR1zld0FP8Frs5D7B+Bo+xLF4qwgjs/t94z63mJPK
-         BrsTBWxR3J+nCGqlUG5NFfptferA8Uxk3USJy4TI6sEAxChSlrWgvo/aYEmDnyJLIYcL
-         MRxAgROqmPvnwIHjopW/RmSdp4VTyEqthAksYLLsCzaEs5KBEZ0JXW4SnCNXm+FR5x8u
-         ff3Oi6TsHl3K6Gsa65n1vA0ie9vt4ExO0zSuXB6SfCAaIUqHg75FbDrIHY5J42N+l+Gd
-         Tf7w==
+        b=TZWm3xWnMxUoRAHh+ARDxmX++a2K5igpskCE4Cq4fYSLx5Jl+r6n17yFUkw7y87Xui
+         5axBpOZdiWqjQbjn1OET1XAN61iKfGPyrd7EzHqVz20sUv+cZYDn7XIDh/roN8RrrMyb
+         9AITB7/cBXT7ZXjdPjh/3+6wqvlXbCGNqtBAgBOkNhbJBJwLEGBH99IY2KbBhwJ8VQEa
+         3eWKSwiyGSHyCHSJfFbouy6o8sfBkO8mrKmHrbpWw9jwI7Tc+7NVRPJZn9AOJ0AU3tjM
+         5iaz6y+ftmIX8YSB3wyl0un4IOaa/u9qpx8ZmsQBw/AMU16QWRVjjgRPEDdXvxmF8k70
+         kW1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=UUW8XP/KDrV3Nf5I8So1L9B3/7J7B+exBPy8n5BY8u4=;
-        b=1HcA2s7zxLOXroZlJN166fikn36+NuxCp4bq+wWxBD0tBJzHYQfSVha8JapSboPsQz
-         dc3mfUDiN3LEylewozxnj5/1T1vr4dlY0g9JmZOWcIa6QjKau5zrXqzUVf8jcskvlrOD
-         fZhejbk4qqxJ37xdC8dM2gMKm4YtLGkA2WQlIRTYlcYXqeL9hueshpc6p/n+3Hnt582I
-         dJLH/SpsQsruow17OLPRw8Nd7aqifKNkHjlW61lm59FkHn2pO4BFi3AI4JY8DkUCTzML
-         3j8gJo1lLhnfRv0tKedi7FYcga157nM5I/rCmEH65qjogDx56QQF0KuMNkCO1aGRkZXm
-         Nydw==
+        bh=QuTjrbwPSgvBw7KasH82kLdGIg2Chd4cyvMlvYtc5+8=;
+        b=hZfZtR3YyDUom11laTLNR05Hh3BSUCqh8U5A1ROvXqQtp/0pjjYkIvHlWJS1jrVQ/K
+         scmwRhWuA9WaQ4lKqiMxszKH20fSYC6BSFhiJviDFSkL+ibCp5Y/T1jlfCqZa/a6pH+m
+         k4ROa9O7PCx+dfkQr50xZYkqy/jTpDLJUp2dQwnJkKOOUigBCTbJQWyM6j1KJ9a/kNgM
+         6o7QdnBcyCtM7yCE54swV5k7sBle0dus5RCBNMguueAMghT1EglkIxw54X7FL4eI3qIx
+         H6B5frT9adJ+vXveZLbtSFfjuJOe+JDJe3t1VTP2BkuL6FOheDyGhiPF+a7qLflu1ZUG
+         FwXg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="KKbY/PI7";
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="O/oClR7L";
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id f8si138268pjw.3.2020.03.21.15.24.27
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id d193si475220qke.1.2020.03.21.15.23.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Mar 2020 15:24:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Sat, 21 Mar 2020 15:23:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="KKbY/PI7";
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="O/oClR7L";
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id z25so1033726pfa.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 15:24:27 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id v23so88182ply.10
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 15:23:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=UUW8XP/KDrV3Nf5I8So1L9B3/7J7B+exBPy8n5BY8u4=;
-        b=KKbY/PI7v1SVgnHytnL/fZjEuA1iRGJTZUjH44NdpTrgrRAhCiimFvq1dIyeJQFaln
-         zDULdVJ47kF0GhQ7ZKtA5+ohF3v4ekLZ+EFQgfy3nL9hh38sWaZBPSBUymZwrS3lvIRH
-         S+0lo//+epgOo/q7WC/oczR/hcnG7Eczp4Et/xwNzbNndNadJ1Ii5qbFmNXtITEzHlEB
-         S8ZCPXizJA+m8kD0DHsbo15A/Rfhph2qNzPlZGGJhO3QJfxYPcglwQ6ztRfMsjfZLpjJ
-         iQ+gPe+AChgdaCbgQsWCAfMloIY4/lmcvuNzfpC6JEcpSHSkWADe5W5Hb68G/wkoYxHn
-         afzg==
+        bh=QuTjrbwPSgvBw7KasH82kLdGIg2Chd4cyvMlvYtc5+8=;
+        b=O/oClR7LFycFGyWRmdp0FutAkv682n49Tv/ROjxJEk2TGJ+f81Kd4hNCtd4Po5wKJf
+         +6QuMqv6Rg04Byb0LbZ00FZNUhgDN1plHdtkWY5eG9kpEHkr2P8Albj5QBLXC5DDSpfu
+         MXyzRH/l4qflF/OLPR/doj0oe8jIyF6+5HnsAPg9mSR+fWi5B1SX0rq/0gfBCXRqWue7
+         a23oOmCbNEM+qIVfB0W3I6d8kviNNR2CIciNMhTifGSVFvzkeZzZi2nMZfXRKeRRDqlT
+         PJ7ppLtVuLYpFwsxc5b5M7+mX2krnDax3SFxte90OtcIUVj/RX3lJHtNaHijVmBdNQcD
+         S/sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=UUW8XP/KDrV3Nf5I8So1L9B3/7J7B+exBPy8n5BY8u4=;
-        b=fqm5PwO3mtnY9x4+2yhB4iikWXs2b/lNxcG0usYZWhu+Vc8fNHE+Fmny4TQoyZ466k
-         PVlSEkJh3R/xDODT6VwBDvOjHa8DjcJ3rixgtHzZ4vX4qKKZ4HLERYo1UcJ8PRs46CsO
-         q+VR3qj1x/OJiOx3hFxys99AzvMSLgMyoTEwMm98vkUpqp5jmlk+IWcQlBnCqtQEhfOA
-         hC3jaVa8LcS0PbP7pVjZgYb3feNaTc3pEPCFi6+BOjju+56dSGGx6LycBrojBdK9Ht39
-         XReI/2uqDYgixpdhqq/ylFw8FVPohwDoiL0/h9t7sVbPZGtES6q6GtbmVbo5pnWhG8UG
-         hnZg==
-X-Gm-Message-State: ANhLgQ0ijmHbgZtcI6xxy3HBtUt/seOvQPNw0iBZzWRzZvN6dCXVzfWw
-	LdpCve3URULoBZaZvVublsc=
-X-Received: by 2002:a63:ec12:: with SMTP id j18mr14511541pgh.137.1584829466536;
-        Sat, 21 Mar 2020 15:24:26 -0700 (PDT)
+        bh=QuTjrbwPSgvBw7KasH82kLdGIg2Chd4cyvMlvYtc5+8=;
+        b=F6JchuQ1fkX02mdz/Q/SPe9XBBO0ufzhWMsTSsDNMtfcEYd5J3EMwRxiUExlepvnRX
+         B4Z/POPlYZN5zGq7auPBOsAjeqEVA28uhI+XB6o/e97+jHlt4ssE3FP42pdYPdVDijC3
+         xt0qfvfBGVaoSMgFssR15TFdH5hddU8FW7LX35Jkp3BoRTNK6YT7+1kYLesigPrZdaOE
+         XJfzZ/R3rvWqtsAfxxnNDMVDTngVEspkY1n5wPOCBa+GfWPrGTLE7A+1VQMmpsf1prSj
+         Xfh0IUf1DfA2UKmRi0OEB94NSWd1EaHnBOb+sN27f94l5bgLdFCO+zsBcD41357mXeuX
+         CkTQ==
+X-Gm-Message-State: ANhLgQ14tZuI+Yo4J9EO6emEdaQsmKXDeydnWBXZ/oA/JpeyyD+ffnhq
+	UFuqKjYS/cga6nymOfRKWHs=
+X-Received: by 2002:a17:902:b710:: with SMTP id d16mr14244709pls.293.1584829416342;
+        Sat, 21 Mar 2020 15:23:36 -0700 (PDT)
 Return-Path: <shreeya.patel23498@gmail.com>
 Received: from localhost.localdomain ([113.193.33.115])
-        by smtp.gmail.com with ESMTPSA id y123sm9044088pfb.13.2020.03.21.15.24.24
+        by smtp.gmail.com with ESMTPSA id f69sm9252124pfa.124.2020.03.21.15.23.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2020 15:24:26 -0700 (PDT)
+        Sat, 21 Mar 2020 15:23:36 -0700 (PDT)
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
 To: Larry.Finger@lwfinger.net,
 	gregkh@linuxfoundation.org,
@@ -79,9 +79,9 @@ To: Larry.Finger@lwfinger.net,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
 Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: [Outreachy kernel] [PATCH 04/11] Staging: rtl8188eu: phy: Add space around operators
-Date: Sun, 22 Mar 2020 03:54:20 +0530
-Message-Id: <9ae02593b7645c9b1b5fa4fb86623466fa70ef19.1584826154.git.shreeya.patel23498@gmail.com>
+Subject: [Outreachy kernel] [PATCH 03/11] Staging: rtl8188eu: odm_hwconfig: Add space around operators
+Date: Sun, 22 Mar 2020 03:53:30 +0530
+Message-Id: <42b670d93cbacd0413207b59f587e0147eb618fb.1584826154.git.shreeya.patel23498@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1584826154.git.shreeya.patel23498@gmail.com>
 References: <cover.1584826154.git.shreeya.patel23498@gmail.com>
@@ -96,392 +96,175 @@ diff of the .o files before and after the changes shows no difference.
 Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
 ---
 
-shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/hal/phy.c
+shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/hal/odm_hwconfig.c
 shreeya@Shreeya-Patel:~git/kernels/staging$
 
-shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$ diff phy_old.o phy.o
+shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$ diff odm_hwconfig_old.o odm_hwconfig.o
 shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$
 
- drivers/staging/rtl8188eu/hal/phy.c | 138 ++++++++++++++--------------
- 1 file changed, 69 insertions(+), 69 deletions(-)
+ drivers/staging/rtl8188eu/hal/odm_hwconfig.c | 54 ++++++++++----------
+ 1 file changed, 27 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/phy.c b/drivers/staging/rtl8188eu/hal/phy.c
-index afaf9e55195a..b9025815b682 100644
---- a/drivers/staging/rtl8188eu/hal/phy.c
-+++ b/drivers/staging/rtl8188eu/hal/phy.c
-@@ -69,10 +69,10 @@ static u32 rf_serial_read(struct adapter *adapt,
- 					    bMaskDWord);
+diff --git a/drivers/staging/rtl8188eu/hal/odm_hwconfig.c b/drivers/staging/rtl8188eu/hal/odm_hwconfig.c
+index d5a9ac51e907..a6f2731b076d 100644
+--- a/drivers/staging/rtl8188eu/hal/odm_hwconfig.c
++++ b/drivers/staging/rtl8188eu/hal/odm_hwconfig.c
+@@ -103,33 +103,33 @@ static void odm_RxPhyStatus92CSeries_Parsing(struct odm_dm_struct *dm_odm,
+ 		switch (LNA_idx) {
+ 		case 7:
+ 			if (VGA_idx <= 27)
+-				rx_pwr_all = -100 + 2 * (27-VGA_idx); /* VGA_idx = 27~2 */
++				rx_pwr_all = -100 + 2 * (27 - VGA_idx); /* VGA_idx = 27~2 */
+ 			else
+ 				rx_pwr_all = -100;
+ 			break;
+ 		case 6:
+-			rx_pwr_all = -48 + 2 * (2-VGA_idx); /* VGA_idx = 2~0 */
++			rx_pwr_all = -48 + 2 * (2 - VGA_idx); /* VGA_idx = 2~0 */
+ 			break;
+ 		case 5:
+-			rx_pwr_all = -42 + 2 * (7-VGA_idx); /* VGA_idx = 7~5 */
++			rx_pwr_all = -42 + 2 * (7 - VGA_idx); /* VGA_idx = 7~5 */
+ 			break;
+ 		case 4:
+-			rx_pwr_all = -36 + 2 * (7-VGA_idx); /* VGA_idx = 7~4 */
++			rx_pwr_all = -36 + 2 * (7 - VGA_idx); /* VGA_idx = 7~4 */
+ 			break;
+ 		case 3:
+-			rx_pwr_all = -24 + 2 * (7-VGA_idx); /* VGA_idx = 7~0 */
++			rx_pwr_all = -24 + 2 * (7 - VGA_idx); /* VGA_idx = 7~0 */
+ 			break;
+ 		case 2:
+ 			if (cck_highpwr)
+-				rx_pwr_all = -12 + 2 * (5-VGA_idx); /* VGA_idx = 5~0 */
++				rx_pwr_all = -12 + 2 * (5 - VGA_idx); /* VGA_idx = 5~0 */
+ 			else
+-				rx_pwr_all = -6 + 2 * (5-VGA_idx);
++				rx_pwr_all = -6 + 2 * (5 - VGA_idx);
+ 			break;
+ 		case 1:
+-			rx_pwr_all = 8-2 * VGA_idx;
++			rx_pwr_all = 8 - 2 * VGA_idx;
+ 			break;
+ 		case 0:
+-			rx_pwr_all = 14-2 * VGA_idx;
++			rx_pwr_all = 14 - 2 * VGA_idx;
+ 			break;
+ 		default:
+ 			break;
+@@ -138,7 +138,7 @@ static void odm_RxPhyStatus92CSeries_Parsing(struct odm_dm_struct *dm_odm,
+ 		PWDB_ALL = odm_query_rxpwrpercentage(rx_pwr_all);
+ 		if (!cck_highpwr) {
+ 			if (PWDB_ALL >= 80)
+-				PWDB_ALL = ((PWDB_ALL-80)<<1) + ((PWDB_ALL-80)>>1) + 80;
++				PWDB_ALL = ((PWDB_ALL - 80) << 1) + ((PWDB_ALL - 80) >> 1) + 80;
+ 			else if ((PWDB_ALL <= 78) && (PWDB_ALL >= 20))
+ 				PWDB_ALL += 3;
+ 			if (PWDB_ALL > 100)
+@@ -162,7 +162,7 @@ static void odm_RxPhyStatus92CSeries_Parsing(struct odm_dm_struct *dm_odm,
+ 				else if (SQ_rpt < 20)
+ 					SQ = 100;
+ 				else
+-					SQ = ((64-SQ_rpt) * 100) / 44;
++					SQ = ((64 - SQ_rpt) * 100) / 44;
+ 			}
+ 			pPhyInfo->SignalQuality = SQ;
+ 			pPhyInfo->RxMIMOSignalQuality[RF_PATH_A] = SQ;
+@@ -200,8 +200,8 @@ static void odm_RxPhyStatus92CSeries_Parsing(struct odm_dm_struct *dm_odm,
+ 			pPhyInfo->RxMIMOSignalStrength[i] = (u8)RSSI;
  
- 	tmplong2 = (tmplong2 & (~bLSSIReadAddress)) |
--		   (offset<<23) | bLSSIReadEdge;
-+		   (offset << 23) | bLSSIReadEdge;
- 
- 	phy_set_bb_reg(adapt, rFPGA0_XA_HSSIParameter2, bMaskDWord,
--		       tmplong&(~bLSSIReadEdge));
-+		       tmplong & (~bLSSIReadEdge));
- 	udelay(10);
- 
- 	phy_set_bb_reg(adapt, phyreg->rfHSSIPara2, bMaskDWord, tmplong2);
-@@ -102,7 +102,7 @@ static void rf_serial_write(struct adapter *adapt,
- 	struct bb_reg_def *phyreg = &adapt->HalData->PHYRegDef[rfpath];
- 
- 	offset &= 0xff;
--	data_and_addr = ((offset<<20) | (data&0x000fffff)) & 0x0fffffff;
-+	data_and_addr = ((offset << 20) | (data & 0x000fffff)) & 0x0fffffff;
- 	phy_set_bb_reg(adapt, phyreg->rf3wireOffset, bMaskDWord, data_and_addr);
- }
- 
-@@ -143,20 +143,20 @@ static void get_tx_power_index(struct adapter *adapt, u8 channel, u8 *cck_pwr,
- 	for (TxCount = 0; TxCount < path_nums; TxCount++) {
- 		if (TxCount == RF_PATH_A) {
- 			cck_pwr[TxCount] = hal_data->Index24G_CCK_Base[TxCount][index];
--			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
-+			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
- 					    hal_data->OFDM_24G_Diff[TxCount][RF_PATH_A];
- 
--			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
-+			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
- 					    hal_data->BW20_24G_Diff[TxCount][RF_PATH_A];
- 			bw40_pwr[TxCount] = hal_data->Index24G_BW40_Base[TxCount][index];
- 		} else if (TxCount == RF_PATH_B) {
- 			cck_pwr[TxCount] = hal_data->Index24G_CCK_Base[TxCount][index];
--			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
--			hal_data->BW20_24G_Diff[RF_PATH_A][index]+
-+			ofdm_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
-+			hal_data->BW20_24G_Diff[RF_PATH_A][index] +
- 			hal_data->BW20_24G_Diff[TxCount][index];
- 
--			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index]+
--			hal_data->BW20_24G_Diff[TxCount][RF_PATH_A]+
-+			bw20_pwr[TxCount] = hal_data->Index24G_BW40_Base[RF_PATH_A][index] +
-+			hal_data->BW20_24G_Diff[TxCount][RF_PATH_A] +
- 			hal_data->BW20_24G_Diff[TxCount][index];
- 			bw40_pwr[TxCount] = hal_data->Index24G_BW40_Base[TxCount][index];
+ 			/* Get Rx snr value in DB */
+-			pPhyInfo->RxSNR[i] = (s32)(pPhyStaRpt->path_rxsnr[i]/2);
+-			dm_odm->PhyDbgInfo.RxSNRdB[i] = (s32)(pPhyStaRpt->path_rxsnr[i]/2);
++			pPhyInfo->RxSNR[i] = (s32)(pPhyStaRpt->path_rxsnr[i] / 2);
++			dm_odm->PhyDbgInfo.RxSNRdB[i] = (s32)(pPhyStaRpt->path_rxsnr[i] / 2);
  		}
-@@ -205,7 +205,7 @@ static void phy_set_bw_mode_callback(struct adapter *adapt)
- 	/* Set MAC register */
- 
- 	reg_bw_opmode = usb_read8(adapt, REG_BWOPMODE);
--	reg_prsr_rsc = usb_read8(adapt, REG_RRSR+2);
-+	reg_prsr_rsc = usb_read8(adapt, REG_RRSR + 2);
- 
- 	switch (hal_data->CurrentChannelBW) {
- 	case HT_CHANNEL_WIDTH_20:
-@@ -215,9 +215,9 @@ static void phy_set_bw_mode_callback(struct adapter *adapt)
- 	case HT_CHANNEL_WIDTH_40:
- 		reg_bw_opmode &= ~BW_OPMODE_20MHZ;
- 		usb_write8(adapt, REG_BWOPMODE, reg_bw_opmode);
--		reg_prsr_rsc = (reg_prsr_rsc&0x90) |
--			       (hal_data->nCur40MhzPrimeSC<<5);
--		usb_write8(adapt, REG_RRSR+2, reg_prsr_rsc);
-+		reg_prsr_rsc = (reg_prsr_rsc & 0x90) |
-+			       (hal_data->nCur40MhzPrimeSC << 5);
-+		usb_write8(adapt, REG_RRSR + 2, reg_prsr_rsc);
- 		break;
- 	default:
- 		break;
-@@ -236,7 +236,7 @@ static void phy_set_bw_mode_callback(struct adapter *adapt)
- 		 * These settings are required only for 40MHz
- 		 */
- 		phy_set_bb_reg(adapt, rCCK0_System, bCCKSideBand,
--		    (hal_data->nCur40MhzPrimeSC>>1));
-+		    (hal_data->nCur40MhzPrimeSC >> 1));
- 		phy_set_bb_reg(adapt, rOFDM1_LSTF, 0xC00,
- 			       hal_data->nCur40MhzPrimeSC);
- 		phy_set_bb_reg(adapt, 0x818, (BIT(26) | BIT(27)),
-@@ -337,8 +337,8 @@ void rtl88eu_dm_txpower_track_adjust(struct odm_dm_struct *dm_odm, u8 type,
- 	if (pwr_value >= ODM_TXPWRTRACK_MAX_IDX_88E && *direction == 1)
- 		pwr_value = ODM_TXPWRTRACK_MAX_IDX_88E;
- 
--	*out_write_val = pwr_value | (pwr_value<<8) | (pwr_value<<16) |
--			 (pwr_value<<24);
-+	*out_write_val = pwr_value | (pwr_value << 8) | (pwr_value << 16) |
-+			 (pwr_value << 24);
- }
- 
- static void dm_txpwr_track_setpwr(struct odm_dm_struct *dm_odm)
-@@ -389,9 +389,9 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
- 
- 	if (thermal_val) {
- 		/* Query OFDM path A default setting */
--		ele_d = phy_query_bb_reg(adapt, rOFDM0_XATxIQImbalance, bMaskDWord)&bMaskOFDM_D;
-+		ele_d = phy_query_bb_reg(adapt, rOFDM0_XATxIQImbalance, bMaskDWord) & bMaskOFDM_D;
- 		for (i = 0; i < OFDM_TABLE_SIZE_92D; i++) {
--			if (ele_d == (OFDMSwingTable[i]&bMaskOFDM_D)) {
-+			if (ele_d == (OFDMSwingTable[i] & bMaskOFDM_D)) {
- 				ofdm_index_old[0] = (u8)i;
- 				dm_odm->BbSwingIdxOfdmBase = (u8)i;
- 				break;
-@@ -472,18 +472,18 @@ void rtl88eu_dm_txpower_tracking_callback_thermalmeter(struct adapter *adapt)
+ 		/*  (2)PWDB, Average PWDB calculated by hardware (for rate adaptive) */
+ 		rx_pwr_all = (((pPhyStaRpt->cck_sig_qual_ofdm_pwdb_all) >> 1) & 0x7f) - 110;
+@@ -280,8 +280,8 @@ static void odm_Process_RSSIForDM(struct odm_dm_struct *dm_odm,
+ 	if (dm_odm->AntDivType == CG_TRX_SMART_ANTDIV) {
+ 		if (pDM_FatTable->FAT_State == FAT_TRAINING_STATE) {
+ 			if (pPktinfo->bPacketToSelf) {
+-				antsel_tr_mux = (pDM_FatTable->antsel_rx_keep_2<<2) |
+-						(pDM_FatTable->antsel_rx_keep_1<<1) |
++				antsel_tr_mux = (pDM_FatTable->antsel_rx_keep_2 << 2) |
++						(pDM_FatTable->antsel_rx_keep_1 << 1) |
+ 						pDM_FatTable->antsel_rx_keep_0;
+ 				pDM_FatTable->antSumRSSI[antsel_tr_mux] += pPhyInfo->RxPWDBAll;
+ 				pDM_FatTable->antRSSIcnt[antsel_tr_mux]++;
+@@ -289,8 +289,8 @@ static void odm_Process_RSSIForDM(struct odm_dm_struct *dm_odm,
+ 		}
+ 	} else if ((dm_odm->AntDivType == CG_TRX_HW_ANTDIV) || (dm_odm->AntDivType == CGCS_RX_HW_ANTDIV)) {
+ 		if (pPktinfo->bPacketToSelf || pPktinfo->bPacketBeacon) {
+-			antsel_tr_mux = (pDM_FatTable->antsel_rx_keep_2<<2) |
+-					(pDM_FatTable->antsel_rx_keep_1<<1) | pDM_FatTable->antsel_rx_keep_0;
++			antsel_tr_mux = (pDM_FatTable->antsel_rx_keep_2 << 2) |
++					(pDM_FatTable->antsel_rx_keep_1 << 1) | pDM_FatTable->antsel_rx_keep_0;
+ 			rtl88eu_dm_ant_sel_statistics(dm_odm, antsel_tr_mux, pPktinfo->StationID, pPhyInfo->RxPWDBAll);
+ 		}
+ 	}
+@@ -328,17 +328,17 @@ static void odm_Process_RSSIForDM(struct odm_dm_struct *dm_odm,
+ 			} else {
+ 				if (pPhyInfo->RxPWDBAll > (u32)UndecoratedSmoothedOFDM) {
+ 					UndecoratedSmoothedOFDM =
+-							(((UndecoratedSmoothedOFDM) * (Rx_Smooth_Factor-1)) +
++							(((UndecoratedSmoothedOFDM) * (Rx_Smooth_Factor - 1)) +
+ 							(RSSI_Ave)) / (Rx_Smooth_Factor);
+ 					UndecoratedSmoothedOFDM = UndecoratedSmoothedOFDM + 1;
+ 				} else {
+ 					UndecoratedSmoothedOFDM =
+-							(((UndecoratedSmoothedOFDM) * (Rx_Smooth_Factor-1)) +
++							(((UndecoratedSmoothedOFDM) * (Rx_Smooth_Factor - 1)) +
+ 							(RSSI_Ave)) / (Rx_Smooth_Factor);
  				}
  			}
- 			if (offset >= index_mapping_NUM_88E)
--				offset = index_mapping_NUM_88E-1;
-+				offset = index_mapping_NUM_88E - 1;
  
- 			/* Updating ofdm_index values with new OFDM / CCK offset */
- 			ofdm_index[0] = dm_odm->RFCalibrateInfo.OFDM_index[0] + ofdm_index_mapping[j][offset];
--			if (ofdm_index[0] > OFDM_TABLE_SIZE_92D-1)
--				ofdm_index[0] = OFDM_TABLE_SIZE_92D-1;
-+			if (ofdm_index[0] > OFDM_TABLE_SIZE_92D - 1)
-+				ofdm_index[0] = OFDM_TABLE_SIZE_92D - 1;
- 			else if (ofdm_index[0] < ofdm_min_index)
- 				ofdm_index[0] = ofdm_min_index;
+-			pEntry->rssi_stat.PacketMap = (pEntry->rssi_stat.PacketMap<<1) | BIT(0);
++			pEntry->rssi_stat.PacketMap = (pEntry->rssi_stat.PacketMap << 1) | BIT(0);
  
- 			cck_index = dm_odm->RFCalibrateInfo.CCK_index + ofdm_index_mapping[j][offset];
--			if (cck_index > CCK_TABLE_SIZE-1)
--				cck_index = CCK_TABLE_SIZE-1;
-+			if (cck_index > CCK_TABLE_SIZE - 1)
-+				cck_index = CCK_TABLE_SIZE - 1;
- 			else if (cck_index < 0)
- 				cck_index = 0;
- 
-@@ -548,8 +548,8 @@ static u8 phy_path_a_iqk(struct adapter *adapt, bool config_pathb)
- 	reg_e9c = phy_query_bb_reg(adapt, rTx_Power_After_IQK_A, bMaskDWord);
- 
- 	if (!(reg_eac & BIT(28)) &&
--	    (((reg_e94 & 0x03FF0000)>>16) != 0x142) &&
--	    (((reg_e9c & 0x03FF0000)>>16) != 0x42))
-+	    (((reg_e94 & 0x03FF0000) >> 16) != 0x142) &&
-+	    (((reg_e9c & 0x03FF0000) >> 16) != 0x42))
- 		result |= 0x01;
- 	return result;
- }
-@@ -600,13 +600,13 @@ static u8 phy_path_a_rx_iqk(struct adapter *adapt, bool configPathB)
- 	reg_e9c = phy_query_bb_reg(adapt, rTx_Power_After_IQK_A, bMaskDWord);
- 
- 	if (!(reg_eac & BIT(28)) &&
--	    (((reg_e94 & 0x03FF0000)>>16) != 0x142) &&
--	    (((reg_e9c & 0x03FF0000)>>16) != 0x42))
-+	    (((reg_e94 & 0x03FF0000) >> 16) != 0x142) &&
-+	    (((reg_e9c & 0x03FF0000) >> 16) != 0x42))
- 		result |= 0x01;
- 	else					/* if Tx not OK, ignore Rx */
- 		return result;
- 
--	u4tmp = 0x80007C00 | (reg_e94&0x3FF0000)  | ((reg_e9c&0x3FF0000) >> 16);
-+	u4tmp = 0x80007C00 | (reg_e94 & 0x3FF0000)  | ((reg_e9c & 0x3FF0000) >> 16);
- 	phy_set_bb_reg(adapt, rTx_IQK, bMaskDWord, u4tmp);
- 
- 	/* 1 RX IQK */
-@@ -648,8 +648,8 @@ static u8 phy_path_a_rx_iqk(struct adapter *adapt, bool configPathB)
- 	phy_set_rf_reg(adapt, RF_PATH_A, 0xdf, bRFRegOffsetMask, 0x180);
- 
- 	if (!(reg_eac & BIT(27)) && /* if Tx is OK, check whether Rx is OK */
--	    (((reg_ea4 & 0x03FF0000)>>16) != 0x132) &&
--	    (((reg_eac & 0x03FF0000)>>16) != 0x36))
-+	    (((reg_ea4 & 0x03FF0000) >> 16) != 0x132) &&
-+	    (((reg_eac & 0x03FF0000) >> 16) != 0x36))
- 		result |= 0x02;
- 	else
- 		ODM_RT_TRACE(dm_odm, ODM_COMP_CALIBRATION, ODM_DBG_LOUD,
-@@ -677,15 +677,15 @@ static u8 phy_path_b_iqk(struct adapter *adapt)
- 	regecc = phy_query_bb_reg(adapt, rRx_Power_After_IQK_B_2, bMaskDWord);
- 
- 	if (!(regeac & BIT(31)) &&
--	    (((regeb4 & 0x03FF0000)>>16) != 0x142) &&
--	    (((regebc & 0x03FF0000)>>16) != 0x42))
-+	    (((regeb4 & 0x03FF0000) >> 16) != 0x142) &&
-+	    (((regebc & 0x03FF0000) >> 16) != 0x42))
- 		result |= 0x01;
- 	else
- 		return result;
- 
- 	if (!(regeac & BIT(30)) &&
--	    (((regec4 & 0x03FF0000)>>16) != 0x132) &&
--	    (((regecc & 0x03FF0000)>>16) != 0x36))
-+	    (((regec4 & 0x03FF0000) >> 16) != 0x132) &&
-+	    (((regecc & 0x03FF0000) >> 16) != 0x36))
- 		result |= 0x02;
- 	else
- 		ODM_RT_TRACE(dm_odm, ODM_COMP_CALIBRATION,
-@@ -711,7 +711,7 @@ static void patha_fill_iqk(struct adapter *adapt, bool iqkok, s32 result[][8],
- 		tx0_a = (x * oldval_0) >> 8;
- 		phy_set_bb_reg(adapt, rOFDM0_XATxIQImbalance, 0x3FF, tx0_a);
- 		phy_set_bb_reg(adapt, rOFDM0_ECCAThreshold, BIT(31),
--			       ((x * oldval_0>>7) & 0x1));
-+			       ((x * oldval_0 >> 7) & 0x1));
- 
- 		y = result[final_candidate][1];
- 		if ((y & 0x00000200) != 0)
-@@ -719,11 +719,11 @@ static void patha_fill_iqk(struct adapter *adapt, bool iqkok, s32 result[][8],
- 
- 		tx0_c = (y * oldval_0) >> 8;
- 		phy_set_bb_reg(adapt, rOFDM0_XCTxAFE, 0xF0000000,
--			       ((tx0_c&0x3C0)>>6));
-+			       ((tx0_c & 0x3C0) >> 6));
- 		phy_set_bb_reg(adapt, rOFDM0_XATxIQImbalance, 0x003F0000,
--			       (tx0_c&0x3F));
-+			       (tx0_c & 0x3F));
- 		phy_set_bb_reg(adapt, rOFDM0_ECCAThreshold, BIT(29),
--			       ((y * oldval_0>>7) & 0x1));
-+			       ((y * oldval_0 >> 7) & 0x1));
- 
- 		if (txonly)
- 			return;
-@@ -757,7 +757,7 @@ static void pathb_fill_iqk(struct adapter *adapt, bool iqkok, s32 result[][8],
- 		phy_set_bb_reg(adapt, rOFDM0_XBTxIQImbalance, 0x3FF, tx1_a);
- 
- 		phy_set_bb_reg(adapt, rOFDM0_ECCAThreshold, BIT(27),
--			       ((x * oldval_1>>7) & 0x1));
-+			       ((x * oldval_1 >> 7) & 0x1));
- 
- 		y = result[final_candidate][5];
- 		if ((y & 0x00000200) != 0)
-@@ -766,11 +766,11 @@ static void pathb_fill_iqk(struct adapter *adapt, bool iqkok, s32 result[][8],
- 		tx1_c = (y * oldval_1) >> 8;
- 
- 		phy_set_bb_reg(adapt, rOFDM0_XDTxAFE, 0xF0000000,
--			       ((tx1_c&0x3C0)>>6));
-+			       ((tx1_c & 0x3C0) >> 6));
- 		phy_set_bb_reg(adapt, rOFDM0_XBTxIQImbalance, 0x003F0000,
--			       (tx1_c&0x3F));
-+			       (tx1_c & 0x3F));
- 		phy_set_bb_reg(adapt, rOFDM0_ECCAThreshold, BIT(25),
--			       ((y * oldval_1>>7) & 0x1));
-+			       ((y * oldval_1 >> 7) & 0x1));
- 
- 		if (txonly)
- 			return;
-@@ -851,9 +851,9 @@ static void mac_setting_calibration(struct adapter *adapt, u32 *mac_reg, u32 *ba
- 	usb_write8(adapt, mac_reg[i], 0x3F);
- 
- 	for (i = 1; i < (IQK_MAC_REG_NUM - 1); i++)
--		usb_write8(adapt, mac_reg[i], (u8)(backup[i]&(~BIT(3))));
-+		usb_write8(adapt, mac_reg[i], (u8)(backup[i] & (~BIT(3))));
- 
--	usb_write8(adapt, mac_reg[i], (u8)(backup[i]&(~BIT(5))));
-+	usb_write8(adapt, mac_reg[i], (u8)(backup[i] & (~BIT(5))));
- }
- 
- static void path_a_standby(struct adapter *adapt)
-@@ -902,22 +902,22 @@ static bool simularity_compare(struct adapter *adapt, s32 resulta[][8],
- 
- 		if (diff > MAX_TOLERANCE) {
- 			if ((i == 2 || i == 6) && !sim_bitmap) {
--				if (resulta[c1][i] + resulta[c1][i+1] == 0)
--					final_candidate[(i/4)] = c2;
--				else if (resulta[c2][i] + resulta[c2][i+1] == 0)
--					final_candidate[(i/4)] = c1;
-+				if (resulta[c1][i] + resulta[c1][i + 1] == 0)
-+					final_candidate[(i / 4)] = c2;
-+				else if (resulta[c2][i] + resulta[c2][i + 1] == 0)
-+					final_candidate[(i / 4)] = c1;
- 				else
--					sim_bitmap = sim_bitmap | (1<<i);
-+					sim_bitmap = sim_bitmap | (1 << i);
+ 		} else {
+ 			RSSI_Ave = pPhyInfo->RxPWDBAll;
+@@ -349,16 +349,16 @@ static void odm_Process_RSSIForDM(struct odm_dm_struct *dm_odm,
  			} else {
--				sim_bitmap = sim_bitmap | (1<<i);
-+				sim_bitmap = sim_bitmap | (1 << i);
+ 				if (pPhyInfo->RxPWDBAll > (u32)UndecoratedSmoothedCCK) {
+ 					UndecoratedSmoothedCCK =
+-							((UndecoratedSmoothedCCK * (Rx_Smooth_Factor-1)) +
++							((UndecoratedSmoothedCCK * (Rx_Smooth_Factor - 1)) +
+ 							pPhyInfo->RxPWDBAll) / Rx_Smooth_Factor;
+ 					UndecoratedSmoothedCCK = UndecoratedSmoothedCCK + 1;
+ 				} else {
+ 					UndecoratedSmoothedCCK =
+-							((UndecoratedSmoothedCCK * (Rx_Smooth_Factor-1)) +
++							((UndecoratedSmoothedCCK * (Rx_Smooth_Factor - 1)) +
+ 							pPhyInfo->RxPWDBAll) / Rx_Smooth_Factor;
+ 				}
  			}
+-			pEntry->rssi_stat.PacketMap = pEntry->rssi_stat.PacketMap<<1;
++			pEntry->rssi_stat.PacketMap = pEntry->rssi_stat.PacketMap << 1;
  		}
- 	}
+ 		/* 2011.07.28 LukeLee: modified to prevent unstable CCK RSSI */
+ 		if (pEntry->rssi_stat.ValidBit >= 64)
+@@ -367,16 +367,16 @@ static void odm_Process_RSSIForDM(struct odm_dm_struct *dm_odm,
+ 			pEntry->rssi_stat.ValidBit++;
  
- 	if (sim_bitmap == 0) {
--		for (i = 0; i < (bound/4); i++) {
-+		for (i = 0; i < (bound / 4); i++) {
- 			if (final_candidate[i] != 0xFF) {
--				for (j = i*4; j < (i+1)*4-2; j++)
-+				for (j = i * 4; j < (i + 1) * 4 - 2; j++)
- 					resulta[3][j] = resulta[final_candidate[i]][j];
- 				result = false;
- 			}
-@@ -1038,9 +1038,9 @@ static void phy_iq_calibrate(struct adapter *adapt, s32 result[][8],
- 		path_a_ok = phy_path_a_iqk(adapt, is2t);
- 		if (path_a_ok == 0x01) {
- 				result[t][0] = (phy_query_bb_reg(adapt, rTx_Power_Before_IQK_A,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				result[t][1] = (phy_query_bb_reg(adapt, rTx_Power_After_IQK_A,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 			break;
+ 		for (i = 0; i < pEntry->rssi_stat.ValidBit; i++)
+-			OFDM_pkt += (u8)(pEntry->rssi_stat.PacketMap>>i) & BIT(0);
++			OFDM_pkt += (u8)(pEntry->rssi_stat.PacketMap >> i) & BIT(0);
+ 
+ 		if (pEntry->rssi_stat.ValidBit == 64) {
+ 			Weighting = min_t(u32, OFDM_pkt << 4, 64);
+-			UndecoratedSmoothedPWDB = (Weighting * UndecoratedSmoothedOFDM + (64-Weighting) * UndecoratedSmoothedCCK)>>6;
++			UndecoratedSmoothedPWDB = (Weighting * UndecoratedSmoothedOFDM + (64 - Weighting) * UndecoratedSmoothedCCK) >> 6;
+ 		} else {
+ 			if (pEntry->rssi_stat.ValidBit != 0)
+ 				UndecoratedSmoothedPWDB = (OFDM_pkt * UndecoratedSmoothedOFDM +
+-							  (pEntry->rssi_stat.ValidBit-OFDM_pkt) *
+-							  UndecoratedSmoothedCCK)/pEntry->rssi_stat.ValidBit;
++							  (pEntry->rssi_stat.ValidBit - OFDM_pkt) *
++							  UndecoratedSmoothedCCK) / pEntry->rssi_stat.ValidBit;
+ 			else
+ 				UndecoratedSmoothedPWDB = 0;
  		}
- 	}
-@@ -1049,9 +1049,9 @@ static void phy_iq_calibrate(struct adapter *adapt, s32 result[][8],
- 		path_a_ok = phy_path_a_rx_iqk(adapt, is2t);
- 		if (path_a_ok == 0x03) {
- 				result[t][2] = (phy_query_bb_reg(adapt, rRx_Power_Before_IQK_A_2,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				result[t][3] = (phy_query_bb_reg(adapt, rRx_Power_After_IQK_A_2,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 			break;
- 		}
- 		ODM_RT_TRACE(dm_odm, ODM_COMP_CALIBRATION, ODM_DBG_LOUD,
-@@ -1073,19 +1073,19 @@ static void phy_iq_calibrate(struct adapter *adapt, s32 result[][8],
- 			path_b_ok = phy_path_b_iqk(adapt);
- 			if (path_b_ok == 0x03) {
- 				result[t][4] = (phy_query_bb_reg(adapt, rTx_Power_Before_IQK_B,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				result[t][5] = (phy_query_bb_reg(adapt, rTx_Power_After_IQK_B,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				result[t][6] = (phy_query_bb_reg(adapt, rRx_Power_Before_IQK_B_2,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				result[t][7] = (phy_query_bb_reg(adapt, rRx_Power_After_IQK_B_2,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				break;
- 			} else if (i == (retry_count - 1) && path_b_ok == 0x01) {	/* Tx IQK OK */
- 				result[t][4] = (phy_query_bb_reg(adapt, rTx_Power_Before_IQK_B,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 				result[t][5] = (phy_query_bb_reg(adapt, rTx_Power_After_IQK_B,
--								 bMaskDWord)&0x3FF0000)>>16;
-+								 bMaskDWord) & 0x3FF0000) >> 16;
- 			}
- 		}
- 
-@@ -1138,12 +1138,12 @@ static void phy_lc_calibrate(struct adapter *adapt, bool is2t)
- 	/* Check continuous TX and Packet TX */
- 	tmpreg = usb_read8(adapt, 0xd03);
- 
--	if ((tmpreg&0x70) != 0)
--		usb_write8(adapt, 0xd03, tmpreg&0x8F);
-+	if ((tmpreg & 0x70) != 0)
-+		usb_write8(adapt, 0xd03, tmpreg & 0x8F);
- 	else
- 		usb_write8(adapt, REG_TXPAUSE, 0xFF);
- 
--	if ((tmpreg&0x70) != 0) {
-+	if ((tmpreg & 0x70) != 0) {
- 		/* 1. Read original RF mode */
- 		/* Path-A */
- 		rf_a_mode = rtw_hal_read_rfreg(adapt, RF_PATH_A, RF_AC,
-@@ -1157,12 +1157,12 @@ static void phy_lc_calibrate(struct adapter *adapt, bool is2t)
- 		/* 2. Set RF mode = standby mode */
- 		/* Path-A */
- 		phy_set_rf_reg(adapt, RF_PATH_A, RF_AC, bMask12Bits,
--			       (rf_a_mode&0x8FFFF)|0x10000);
-+			       (rf_a_mode & 0x8FFFF) | 0x10000);
- 
- 		/* Path-B */
- 		if (is2t)
- 			phy_set_rf_reg(adapt, RF_PATH_B, RF_AC, bMask12Bits,
--				       (rf_b_mode&0x8FFFF)|0x10000);
-+				       (rf_b_mode & 0x8FFFF) | 0x10000);
- 	}
- 
- 	/* 3. Read RF reg18 */
-@@ -1170,12 +1170,12 @@ static void phy_lc_calibrate(struct adapter *adapt, bool is2t)
- 
- 	/* 4. Set LC calibration begin bit15 */
- 	phy_set_rf_reg(adapt, RF_PATH_A, RF_CHNLBW, bMask12Bits,
--		       lc_cal|0x08000);
-+		       lc_cal | 0x08000);
- 
- 	msleep(100);
- 
- 	/* Restore original situation */
--	if ((tmpreg&0x70) != 0) {
-+	if ((tmpreg & 0x70) != 0) {
- 		/* Deal with continuous TX case */
- 		/* Path-A */
- 		usb_write8(adapt, 0xd03, tmpreg);
 -- 
 2.17.1
 
