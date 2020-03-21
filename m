@@ -1,124 +1,92 @@
 X-GM-THRID: 6802515514721566720
-X-Received: by 2002:aca:3255:: with SMTP id y82mr9886649oiy.44.1584774291348;
-        Sat, 21 Mar 2020 00:04:51 -0700 (PDT)
+X-Received: by 2002:a25:d4c3:: with SMTP id m186mr19886317ybf.415.1584773501437;
+        Fri, 20 Mar 2020 23:51:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:474a:: with SMTP id u71ls3156954oia.0.gmail; Sat, 21 Mar
- 2020 00:04:50 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vscXDisGZFShysJeRNNzdNaLdYFQGhPwQEQ+FRzSuc0fgFbtc/GXNTOr/qm+3EuuU3ZAgys
-X-Received: by 2002:aca:c488:: with SMTP id u130mr9795626oif.154.1584774289966;
-        Sat, 21 Mar 2020 00:04:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584774289; cv=none;
+Received: by 2002:a25:e691:: with SMTP id d139ls3145564ybh.4.gmail; Fri, 20
+ Mar 2020 23:51:40 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vspJ0YA939jV/doFPZ5vKBfmtJr+19jVjncLnU2heen7GtQk1Cykw6RNxyVYMl32DuYErmT
+X-Received: by 2002:a25:d887:: with SMTP id p129mr13997061ybg.18.1584773499871;
+        Fri, 20 Mar 2020 23:51:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584773499; cv=none;
         d=google.com; s=arc-20160816;
-        b=xZcwYz4/5/t4g0JdrZ9pyKblgM0YlNDXgemaaiHPQZ2VmPTJK44KCZeaE7FHoEh6yC
-         v4PgvizLrHiLiKdIuXhMMbdeE8ZiPebpykAfWKe7MK0YNcDcNFvbqebOHhM2LGKnGgLh
-         u8WKZHDyA2yAsbqSTKIK30AipKlVAU+IWKGtTPGZeNKXWBkoSK7awBgXuOGJ7UiiOfQ8
-         02Pu+NaZZ250J+ozb0MXsndb84YI8ndwXbC4DOyw+uo89Xk8Xgn8sT6R4cbZo1Bk9Tpj
-         HyULzY23NRWL8aJ0Nh5QeblPr6FZD6y/hErFBOmOtcsgLnFKY4LTVqmrrDgTFWcOXmIF
-         xZkg==
+        b=crMlL6PLszasfYlpRt+vjp0pEKgN0N30Ib9cvnwomzHeZcImi+u8GUwMfkflHStcu2
+         Bz7z1lMpFIA5GZ5Azzxwlf6nxw82GeTqrT69uMJtNNaZXVKL1AE9woHSpjKh5xrIRvlX
+         fWXWr9xSRAl1fOqa4nCRaivXn/mfkjFPKtgN/P9bZz8ImPhJ8EAXXxV1dLg9tkZzBA/y
+         JjsNheVidUY6ckoMsdS1+yZsf+0YYRrbNACqp0AOpAQZI9DjJ1cZQzHlBFLbErxR4YUx
+         hyqbGSyLvhDYeomA350Pv7ZFqKIm6rEObfppTkseAwAz/AQ7kw+J5yqX1o7CBbTBboSl
+         fugg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=0VE4t9eGrnOPqakwc7oK3WrIUDIH+kEnkSpf+SdHPZQ=;
-        b=g+2DU5PmJkIqqDlaUGF5bIYqx0hvkoMuM+aqALXKTv6L/XQ5X9b04X3kgVP/kWBVzl
-         YLuGXRaUJbHqTBBt3+UvY15SXrDuI8QdkWXc2Ut4T3Pb/pBlI4C+CfPycC4Qr4Pq+ku3
-         kUq+j8ncuynjiGbNjSLvRkdbik+yKLTSxAqdbYHOfVYC1H3+ffyysKkEToLodRjAThTU
-         e2n2mzWIO01xhgmUT5weLLAAJUhiyy8lQeRd4jQq583QbbfJsPexJHycLIGKMrnKK4Lj
-         buANhaict2M5hYbuT5qinq8GTIghki7L0Pi12Rw1qJXALPWcDbLdi2ZB6Og8+COJj0/d
-         mJjw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=G9kKq+hADir0QecisqjvmgOjrXhHEzeED3816ctsgMk=;
+        b=gEOmR3N86XDNyeiqNSQEMAVx4/SC4wFoaoglHaXne4q9HXtuLWoJPih5+LvBCkT4ui
+         yl1JSi6PpibO86K6YXDJRgFR/K3kkJiXsiy50ljwNmSINQOr5skbz5piF9YIKy97VxRS
+         iTS8QUYTQvK1ZkB9YEiHupu3R3LI+pBLAvFPDocg2p/Y4h1h3DXvK0Xq334DyVLP4bDz
+         P9/OnLX9b5lfWs7kKq99f7CacFJVrwsBX20idCpSHZGl2A8O3jhj9Ra1TM8wlNQGR1ab
+         iP99rGoD7oPVYgcZ/5sjkB2S0QG3MIX3qivfkOBBBKR6wkP+tha7cUs3qHxeVDb9TEK2
+         HN2w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C0R8MmLI;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::32a as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbwyatt4@gmail.com>
-Received: from mail-ot1-x32a.google.com (mail-ot1-x32a.google.com. [2607:f8b0:4864:20::32a])
-        by gmr-mx.google.com with ESMTPS id n5si33133otf.3.2020.03.21.00.04.49
+       dkim=pass header.i=@kernel.org header.s=default header.b=oKlTdsH6;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id l1si395055ybt.2.2020.03.20.23.51.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Mar 2020 00:04:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::32a as permitted sender) client-ip=2607:f8b0:4864:20::32a;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Mar 2020 23:51:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C0R8MmLI;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::32a as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x32a.google.com with SMTP id e19so8325010otj.7
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 00:04:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=0VE4t9eGrnOPqakwc7oK3WrIUDIH+kEnkSpf+SdHPZQ=;
-        b=C0R8MmLINssoGfYCTomTJTSzXbfkJN0ZwHVI+2n87FZnf+JNGF1XTKOr081M5f5pRo
-         4Cm8FAzXXUB0aMA4xj+WaM5BibKvxjONwK+XKT4JFFNeP28aWIoHh0wHAcig+UZ6kSwx
-         5OVANgTQTG8ShE4ZECixaDqxF9xPndLmOGIEnDe0edrCKslztBmMm6OM1iPixV1mmq/D
-         h33phitkifinmFS2YM04mt+hUOmX2DVYMeOndV2RRxbL0f7Z1jmutf3JbR2dQJQ0G7ZG
-         J47pJcC5zw2hImPxWzYciFfIe2X4iBpnyg1WYhK/3BlP8a0S+j7rAGK4yx+HVMVaL4uv
-         54Xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=0VE4t9eGrnOPqakwc7oK3WrIUDIH+kEnkSpf+SdHPZQ=;
-        b=DHRpvbifMxSG9dhCpnZoI04qRIwGhy2XJSWWXcqEDWuoMDTJ/mFwZ3ZK5/6exhreYT
-         O5FkyUmtqezio6dV0HrDhnB+UNOp31jiVEJUpFsjewnPfQa4UNGUuJ6O4FDrUG/poIrV
-         mjOH8yNgyuSjc1/heQtNa/G8aO7QIBEzWBKq/Wb5Ijtiz2w40VfVlToLWCIczYm5816b
-         OgR87LGdUG2/+VUl1lv/bM7SrFI7qaFxkm8kfDMP19sY2uPutPO9acA56u22Mt+5XPTn
-         Zn/FDFr1PBYi+KzAhOta3Pz1Rl4efed9Z6u0NzQCK/vYKEFM2ZHd48EAtebVlZqohHi2
-         mzLg==
-X-Gm-Message-State: ANhLgQ2Yl1m29UKcSeIIizcD/CHBTwvA8ixocDt/y4WvGpTlutMvy4PZ
-	zo+WYue1R/MLMeOhWLgKx8s=
-X-Received: by 2002:a9d:64ca:: with SMTP id n10mr10217052otl.325.1584774289742;
-        Sat, 21 Mar 2020 00:04:49 -0700 (PDT)
-Return-Path: <jbwyatt4@gmail.com>
-Received: from ManjaroKDE ([47.144.161.84])
-        by smtp.gmail.com with ESMTPSA id p130sm2872230oig.51.2020.03.21.00.04.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2020 00:04:49 -0700 (PDT)
-Message-ID: <7cb25312f9f972d73881e488c3bcf2c4e438456a.camel@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=oKlTdsH6;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 6C27E206F9;
+	Sat, 21 Mar 2020 06:51:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584773498;
+	bh=MpGnSZIgUVz8LJoLjLegSZH62JSbXFXAySdfzi0cHeA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oKlTdsH6mvU3bkbSd+WpY8oh5JgfQga/R7hLc7xuR/FX70rTKn0YDZQoOHa0RVwaT
+	 8DRU49N01nDrT4VxXMmE91LK1LrdSzRjWAxmBI3OFy1hRMepyCrc/VK00VauIwiJ5b
+	 3rHqVHuNdIkpJ615SmMeaJNLXnklNKHMwb4rjlmI=
+Date: Sat, 21 Mar 2020 07:51:34 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: John Wyatt <jbwyatt4@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Outreachy patches caught up on.
-From: John Wyatt <jbwyatt4@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Julia Lawall <julia.lawall@inria.fr>,
- "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
-Date: Sat, 21 Mar 2020 00:04:43 -0700
-In-Reply-To: <20200321065134.GA849159@kroah.com>
+Message-ID: <20200321065134.GA849159@kroah.com>
 References: <20200320141418.GA707555@kroah.com>
-	 <024f9fe964fce4a9ede1d58c87b7bb75c6a35ac2.camel@gmail.com>
-	 <20200321065134.GA849159@kroah.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.34.4 
+ <024f9fe964fce4a9ede1d58c87b7bb75c6a35ac2.camel@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <024f9fe964fce4a9ede1d58c87b7bb75c6a35ac2.camel@gmail.com>
 
-On Sat, 2020-03-21 at 07:51 +0100, Greg KH wrote:
-> On Fri, Mar 20, 2020 at 11:33:41AM -0700, John Wyatt wrote:
-> > On Fri, 2020-03-20 at 15:14 +0100, Greg KH wrote:
-> > > Hi all,
-> > > 
-> > > I'm now caught up on all submitted outreachy patches that I can
-> > > apply.
-> > > 
-> > > If you have not gotten an email from my patch system saying that
-> > > your
-> > > patch was applied, consider it lost, and please rebase and resend
-> > > it.
+On Fri, Mar 20, 2020 at 11:33:41AM -0700, John Wyatt wrote:
+> On Fri, 2020-03-20 at 15:14 +0100, Greg KH wrote:
+> > Hi all,
 > > 
-> > Hi Greg,
+> > I'm now caught up on all submitted outreachy patches that I can
+> > apply.
 > > 
-> > I just sent my patch in ~10 hours ago.
-> > 
-> > Do I need to rebase/resend it?
-> > 
-> > If I do, should I make it a v2?
-> > 
-> > Apologies if you already answered this earlier in the mailing list.
+> > If you have not gotten an email from my patch system saying that your
+> > patch was applied, consider it lost, and please rebase and resend it.
 > 
-> Julia provided comments on what you need to do to fix up your patch,
-> please follow them and resend a v2.
+> Hi Greg,
+> 
+> I just sent my patch in ~10 hours ago.
+> 
+> Do I need to rebase/resend it?
+> 
+> If I do, should I make it a v2?
+> 
+> Apologies if you already answered this earlier in the mailing list.
 
-I believe I did in v2. The code wasn't at issue-the description was?
+Julia provided comments on what you need to do to fix up your patch,
+please follow them and resend a v2.
 
-Julia-please advise.
+thanks,
 
-https://groups.google.com/forum/#!original/outreachy-kernel/RqwZpdvL8Js/tIbnooMBBQAJ
-
+greg k-h
 
