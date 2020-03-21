@@ -1,77 +1,77 @@
 X-GM-THRID: 6806789560169660416
-X-Received: by 2002:a63:e56:: with SMTP id 22mr2742050pgo.173.1584829712161;
-        Sat, 21 Mar 2020 15:28:32 -0700 (PDT)
+X-Received: by 2002:a63:e607:: with SMTP id g7mr2418685pgh.303.1584829660477;
+        Sat, 21 Mar 2020 15:27:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:9911:: with SMTP id z17ls5435939pff.5.gmail; Sat, 21 Mar
- 2020 15:28:30 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtMTBVT//MXB0ZVdO0utXUAB31DuFg+eJKS1xVQ1KRrXoQLp8gdP8bRfvIq4jK2vBHqjWG/
-X-Received: by 2002:a62:2a8c:: with SMTP id q134mr5212899pfq.35.1584829710299;
-        Sat, 21 Mar 2020 15:28:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584829710; cv=none;
+Received: by 2002:a65:6455:: with SMTP id s21ls865174pgv.9.gmail; Sat, 21 Mar
+ 2020 15:27:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuYIIbkIEKWCzC70lkpibpyNrIOtoNeua6jVjVowYh2+gzxOzezKuY0ihkVW5eavhs/R8hB
+X-Received: by 2002:a62:3854:: with SMTP id f81mr17255481pfa.81.1584829658870;
+        Sat, 21 Mar 2020 15:27:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584829658; cv=none;
         d=google.com; s=arc-20160816;
-        b=g/FIU9f1meVJ1+FuxPRWYlgfq603xuitYeICSNBwiXDsv4/vF+3mXep3lUvSrK0JSI
-         4aU2pWq3Bndjg0A1d4/Mkq5o0Idnsx6yXDBpjevoxkY7xJSpPkkZY9WmL0+276A2wbLc
-         wGM0ysg1v04sLemQUJiyzDc+9Eev3jl3t12/YuVpFPbPFuO3h87q6wcoutmtaNSZZrWb
-         9ZMgqIYAd6YJUs96PlGmG83g7mzdT/MfdxqzE/bdgRJP1jaFq9vgNXPTe5MdzzQtfXpw
-         GjPxXVbgmru50G/1UprwtVCIKtMB95f2obr1PePEx6jtrxZwcfJICCBPU9B1M6gUoBWp
-         WjWA==
+        b=ue+rlc8xID6w4h+kk6isI/q6rUhgm93nWaacP0hRzn0dJay08m+aK9jvHd0b9nEsAo
+         JYXXjXBHBioskTh86hnClP0Ebl7eZmZuxAppan60HlPY1LsYbRJrVo+y653aQer59zKO
+         Zfu8Fy5rtHjUwHAXwfLvivcLOEstVjzAUzKUuh2U1WoXffjMwar/Gxb5qajIHmrpWATf
+         fAAc5uMffPzji7LpWLIgzCzCdv3MKcq+0ELaUC1LK4WGLh8DKmX+cOgOs1rzt9qEKsgL
+         i3Q2SGtlg2Gayyvt58C6jtK0bEAMcSsS3qTU0q3UnCrK3Jz32A2x65mxWi3cOq+yp72C
+         Y2uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=FJ7czszs6QJI52MOo7v8xxGTQX047zvU5p3YQaPDb+k=;
-        b=Pw7x+wxa0yIIbP3jFgcRC8FlxaFjh9nMP92IEcP6wEgGhgyaZzriNtYt3VnyRvpECH
-         z5DwX1593Bx0laVk8mIvejApbiS6f60/hOd8reacV+zHI/KISPIMq8ye92kAQOhlfh8+
-         nBVh/Xupf2hWoA5WITH6ryRKLqwMFY9N7tBWvzrbu1q6w/HVVbAr/KsJo6zJS8SsDlww
-         DbUWV8K3Rk6kKdUV0PUu9QbNHml5aoL4Z973KlO1i7hrMH5UeHC9ftVDyUyLYn/VhChz
-         RbeDpjaevQATEcmHvxnRun1XZTd12JY8bvbDv38X+J7RISjZPYvVTDb1RySPnHJEZwAR
-         ygCA==
+        bh=CZqCAd8fEfoSI7i8iCIr7kIGmsBn9jsEuUmW+GsXhCw=;
+        b=My4Cp1PLwgZuJVPomGL6aRKlOUFAwB5IHGCq9YV5J0z4vRYCkOxtlapphzmBMGiq4n
+         GRq5WtYO5IjR7Yleg94pOAZD0TXaPH/Qy7AbUIrWkJtZbeKLXqD7M6Sl1PJ6bxI6L2YO
+         5uRF3L5U32XqivBqG+U8xyrWK9/2uNr/OEX05ELE0ecUnb5HeDEhDXsBrQgA4Kp/Us13
+         gSkdzq/La6TvKAk2C4O0uI7xobflu/DSHJD7ccMuPixeh8ztJ5fOMnMF8sCaH/19LicT
+         a1RIZUBUOYKj68/JbR1ViWyRUWonTOQ7dfcqPd5ffoQf3wtWGnJYxg1W5YOTywxUgSNg
+         M+aQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=de9JvBu2;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=O6cOlr5E;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id c125si53994pga.5.2020.03.21.15.28.30
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id b10si705124pfo.6.2020.03.21.15.27.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Mar 2020 15:28:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Sat, 21 Mar 2020 15:27:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=de9JvBu2;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=O6cOlr5E;
+       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id z25so1039773pfa.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 15:28:30 -0700 (PDT)
+Received: by mail-pg1-x544.google.com with SMTP id u12so5046386pgb.10
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 15:27:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=FJ7czszs6QJI52MOo7v8xxGTQX047zvU5p3YQaPDb+k=;
-        b=de9JvBu2UqzMxj3fuRcgHmsF8hzyM0lXaU4CooF6DJPHUeBi3LCTAal4ol13kbVilZ
-         86FsZIrgyzdcrcxUhmW/A3Yd8XalKO0AcuwK4C9qjUYIXiyiIU5ggvCpa3/TIo/B+Yfn
-         ylFfxDjVCOQmEi49R/+DOBPx1x+oMVYXsviaRfQr33He2KxH0tnzEBVKkcOhc0ZPDT+S
-         1bDuMiUlWZT48OpLLJi3A3lwixRXplyef/AeyATPDmhJe9rhckhseiQGH9OspqXTMTY3
-         xBq7vZqcBGu8FTyiHzM8g5VRx4BJzlxWs3LBXZ3ssyLYiQUJ3gTr0y1kzbivvUUqWHcO
-         avYA==
+        bh=CZqCAd8fEfoSI7i8iCIr7kIGmsBn9jsEuUmW+GsXhCw=;
+        b=O6cOlr5ETmUyzJ+0hmOt4r9B6qycja6+ryhT0cWda4n8sUIFJxDIswLzkMgECizORe
+         Gnu2BUcMSICoNQukwqWGDTvXjn8yit/iB1I62l3vTo95539FCjzi0HK9+g+/HcekJfXB
+         afpeis7kAsk7S9khMpITb987SnzMy3Ji+qTLLxxy93+Z68rkpISWE5I/G655nu/7kdGx
+         uKE5ylWCHvW37S2mb1N6Net9njkZIfoWhW9ngJb8hhc0AGejOE+iv3D/K7pCArecTOdV
+         VhTuBkEg4uOZ2h9Ws3PF3QkUAEqYf3Mz2NjpHf7IfUzkWz9/zwyL3o4kbZIs/gbOzNcL
+         ebpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=FJ7czszs6QJI52MOo7v8xxGTQX047zvU5p3YQaPDb+k=;
-        b=mr1bnFiFkt2xisDMul6C8AA+SaGtyk7Ny93t9n4TbdwB2O9NE2FJGMvJTno0Bud2yL
-         ThcV1tW6lfp5nj9cJfm+IelQWTKK6k7C6Zt0vp8Jg9Tbzv7f07V0QodDQD4mwtdTUXPz
-         l2jm9XmHT3kxQ7ROfPnlyYIpdjO9POCVaXn39rkXiAxTbt0fV6ITcQyXsv3hg0M5j8MI
-         wevKkQAiMFGZQOTEs0Uz8muVU+gCpMrKq/9j+LnrLjZ3bxFMDnHws3EGhS26D87Pf3QM
-         G7vMkfxj6BifZ7qLF6TaeK7y0LlMw1iH3pG75vszHuoN1QVAARF/qdin+iEVOCG6iU71
-         zlMg==
-X-Gm-Message-State: ANhLgQ3LzIEiQXjuO9FpN4A3nWh+UwuLQGagAWBveARVdPReonxeMYey
-	qQ4/qgk9Jws/QJ0kcd86VxqLd+RDwFE=
-X-Received: by 2002:a62:7d4e:: with SMTP id y75mr16802146pfc.32.1584829709861;
-        Sat, 21 Mar 2020 15:28:29 -0700 (PDT)
+        bh=CZqCAd8fEfoSI7i8iCIr7kIGmsBn9jsEuUmW+GsXhCw=;
+        b=XoFxsmw9a2sQvOLORor2ZQHDMrBlAD9aHAb5eBpymT5Ommaj8BbTXFxdm3LSC0wcfQ
+         +oyJEp1GrnIe7pg1VRD4WznSWQKBfxurQm8y8/H1/CQlR5wcDfW3HOLWCLNRUZinIy4V
+         oQ+GWmhmqWJB2UtYLRuVYGEMCePq96mUlYd81gC7lX/YwhWmme2xFZJrRXrMMjy4S8Cg
+         Z98CVtxWFkt+I2PkufM5aWzf1cEcn8vWWheEwn17t2pawbEUPDZj1f95J3GHxaBHPtNm
+         7ju9/0NbqSvjwBwWUM0pv1iHTv6uuH4QoNl4J2iF40YZJMDS4zc3ul3z7NYFxTXdHBLO
+         szlA==
+X-Gm-Message-State: ANhLgQ1OEKdc87esibg8fTPVkazQxE9ZaY37p/5gq9s8YY54ggmwLbeU
+	s7RSwLzK/tZUgvzeK8IehiA=
+X-Received: by 2002:a63:f502:: with SMTP id w2mr7019455pgh.423.1584829658394;
+        Sat, 21 Mar 2020 15:27:38 -0700 (PDT)
 Return-Path: <shreeya.patel23498@gmail.com>
 Received: from localhost.localdomain ([113.193.33.115])
-        by smtp.gmail.com with ESMTPSA id l13sm2476898pjq.42.2020.03.21.15.28.27
+        by smtp.gmail.com with ESMTPSA id o29sm9499141pfp.208.2020.03.21.15.27.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2020 15:28:29 -0700 (PDT)
+        Sat, 21 Mar 2020 15:27:38 -0700 (PDT)
 From: Shreeya Patel <shreeya.patel23498@gmail.com>
 To: Larry.Finger@lwfinger.net,
 	gregkh@linuxfoundation.org,
@@ -79,9 +79,9 @@ To: Larry.Finger@lwfinger.net,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
 Cc: Shreeya Patel <shreeya.patel23498@gmail.com>
-Subject: [Outreachy kernel] [PATCH 09/11] Staging: rtl8188eu: rtl8188e_hal_init: Add space around operators
-Date: Sun, 22 Mar 2020 03:58:23 +0530
-Message-Id: <7b214cfa7179468b7cd25759612d0f29c7fc9aed.1584826154.git.shreeya.patel23498@gmail.com>
+Subject: [Outreachy kernel] [PATCH 08/11] Staging: rtl8188eu: rtl8188e_cmd: Add space around operators
+Date: Sun, 22 Mar 2020 03:57:32 +0530
+Message-Id: <ae8d35a3d8e59c6085468b21eaa760f7b57e61b0.1584826154.git.shreeya.patel23498@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1584826154.git.shreeya.patel23498@gmail.com>
 References: <cover.1584826154.git.shreeya.patel23498@gmail.com>
@@ -96,180 +96,180 @@ diff of the .o files before and after the changes shows no difference.
 Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
 ---
 
-shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
+shreeya@Shreeya-Patel:~git/kernels/staging$ git diff -w drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
 shreeya@Shreeya-Patel:~git/kernels/staging$
 
-shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$ diff rtl8188e_hal_init_old.o rtl8188e_hal_init.o
+shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$ diff rtl8188e_cmd_old.o rtl8188e_cmd.o
 shreeya@Shreeya-Patel:~git/kernels/staging/drivers/staging/rtl8188eu/hal$
 
- .../staging/rtl8188eu/hal/rtl8188e_hal_init.c | 44 +++++++++----------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+ drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c | 42 ++++++++++----------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-index 57ae0e83dd3e..740004d71a15 100644
---- a/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-+++ b/drivers/staging/rtl8188eu/hal/rtl8188e_hal_init.c
-@@ -22,7 +22,7 @@ void iol_mode_enable(struct adapter *padapter, u8 enable)
- 	if (enable) {
- 		/* Enable initial offload */
- 		reg_0xf0 = usb_read8(padapter, REG_SYS_CFG);
--		usb_write8(padapter, REG_SYS_CFG, reg_0xf0|SW_OFFLOAD_EN);
-+		usb_write8(padapter, REG_SYS_CFG, reg_0xf0 | SW_OFFLOAD_EN);
+diff --git a/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c b/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
+index 7646167a0b36..371e746915dd 100644
+--- a/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
++++ b/drivers/staging/rtl8188eu/hal/rtl8188e_cmd.c
+@@ -113,24 +113,24 @@ void rtw_hal_add_ra_tid(struct adapter *pAdapter, u32 bitmap, u8 arg, u8 rssi_le
+ 	struct odm_dm_struct *odmpriv = &pAdapter->HalData->odmpriv;
+ 	u8 macid, init_rate, raid, shortGIrate = false;
  
- 		if (!padapter->bFWReady) {
- 			DBG_88E("bFWReady == false call reset 8051...\n");
-@@ -42,9 +42,9 @@ s32 iol_execute(struct adapter *padapter, u8 control)
- 	u8 reg_0x88 = 0;
- 	unsigned long start = 0;
+-	macid = arg&0x1f;
++	macid = arg & 0x1f;
  
--	control = control&0x0f;
-+	control = control & 0x0f;
- 	reg_0x88 = usb_read8(padapter, REG_HMEBOX_E0);
--	usb_write8(padapter, REG_HMEBOX_E0,  reg_0x88|control);
-+	usb_write8(padapter, REG_HMEBOX_E0,  reg_0x88 | control);
+-	raid = (bitmap>>28) & 0x0f;
++	raid = (bitmap >> 28) & 0x0f;
+ 	bitmap &= 0x0fffffff;
  
- 	start = jiffies;
- 	while ((reg_0x88 = usb_read8(padapter, REG_HMEBOX_E0)) & control &&
-@@ -54,7 +54,7 @@ s32 iol_execute(struct adapter *padapter, u8 control)
+ 	if (rssi_level != DM_RATR_STA_INIT)
+ 		bitmap = ODM_Get_Rate_Bitmap(odmpriv, macid, bitmap, rssi_level);
  
- 	reg_0x88 = usb_read8(padapter, REG_HMEBOX_E0);
- 	status = (reg_0x88 & control) ? _FAIL : _SUCCESS;
--	if (reg_0x88 & control<<4)
-+	if (reg_0x88 & control << 4)
- 		status = _FAIL;
- 	return status;
- }
-@@ -64,7 +64,7 @@ static s32 iol_InitLLTTable(struct adapter *padapter, u8 txpktbuf_bndy)
- 	s32 rst = _SUCCESS;
+-	bitmap |= ((raid<<28)&0xf0000000);
++	bitmap |= ((raid << 28) & 0xf0000000);
  
- 	iol_mode_enable(padapter, 1);
--	usb_write8(padapter, REG_TDECTRL+1, txpktbuf_bndy);
-+	usb_write8(padapter, REG_TDECTRL + 1, txpktbuf_bndy);
- 	rst = iol_execute(padapter, CMD_INIT_LLT);
- 	iol_mode_enable(padapter, 0);
- 	return rst;
-@@ -92,9 +92,9 @@ void _8051Reset88E(struct adapter *padapter)
- {
- 	u8 u1bTmp;
+-	init_rate = get_highest_rate_idx(bitmap&0x0fffffff)&0x3f;
++	init_rate = get_highest_rate_idx(bitmap & 0x0fffffff) & 0x3f;
  
--	u1bTmp = usb_read8(padapter, REG_SYS_FUNC_EN+1);
--	usb_write8(padapter, REG_SYS_FUNC_EN+1, u1bTmp&(~BIT(2)));
--	usb_write8(padapter, REG_SYS_FUNC_EN+1, u1bTmp|(BIT(2)));
-+	u1bTmp = usb_read8(padapter, REG_SYS_FUNC_EN + 1);
-+	usb_write8(padapter, REG_SYS_FUNC_EN + 1, u1bTmp & (~BIT(2)));
-+	usb_write8(padapter, REG_SYS_FUNC_EN + 1, u1bTmp | (BIT(2)));
- 	DBG_88E("=====> _8051Reset88E(): 8051 reset success .\n");
- }
+ 	shortGIrate = (arg & BIT(5)) ? true : false;
  
-@@ -122,7 +122,7 @@ void rtw_hal_read_chip_version(struct adapter *padapter)
- 	value32 = usb_read32(padapter, REG_SYS_CFG);
- 	ChipVersion.ChipType = ((value32 & RTL_ID) ? TEST_CHIP : NORMAL_CHIP);
- 	ChipVersion.VendorType = ((value32 & VENDOR_ID) ? CHIP_VENDOR_UMC : CHIP_VENDOR_TSMC);
--	ChipVersion.CUTVersion = (value32 & CHIP_VER_RTL_MASK)>>CHIP_VER_RTL_SHIFT; /*  IC version (CUT) */
-+	ChipVersion.CUTVersion = (value32 & CHIP_VER_RTL_MASK) >> CHIP_VER_RTL_SHIFT; /*  IC version (CUT) */
+ 	if (shortGIrate)
+ 		init_rate |= BIT(6);
  
- 	dump_chip_info(ChipVersion);
+-	raid = (bitmap>>28) & 0x0f;
++	raid = (bitmap >> 28) & 0x0f;
  
-@@ -163,10 +163,10 @@ void rtw_hal_notch_filter(struct adapter *adapter, bool enable)
- {
- 	if (enable) {
- 		DBG_88E("Enable notch filter\n");
--		usb_write8(adapter, rOFDM0_RxDSP+1, usb_read8(adapter, rOFDM0_RxDSP+1) | BIT(1));
-+		usb_write8(adapter, rOFDM0_RxDSP + 1, usb_read8(adapter, rOFDM0_RxDSP + 1) | BIT(1));
- 	} else {
- 		DBG_88E("Disable notch filter\n");
--		usb_write8(adapter, rOFDM0_RxDSP+1, usb_read8(adapter, rOFDM0_RxDSP+1) & ~BIT(1));
-+		usb_write8(adapter, rOFDM0_RxDSP + 1, usb_read8(adapter, rOFDM0_RxDSP + 1) & ~BIT(1));
+ 	bitmap &= 0x0fffffff;
+ 
+@@ -172,7 +172,7 @@ void rtl8188e_set_FwPwrMode_cmd(struct adapter *adapt, u8 Mode)
+ 		break;
+ 	}
+ 
+-	H2CSetPwrMode.SmartPS_RLBM = (((pwrpriv->smart_ps<<4)&0xf0) | (RLBM & 0x0f));
++	H2CSetPwrMode.SmartPS_RLBM = (((pwrpriv->smart_ps << 4) & 0xf0) | (RLBM & 0x0f));
+ 
+ 	H2CSetPwrMode.AwakeInterval = 1;
+ 
+@@ -239,9 +239,9 @@ static void ConstructBeacon(struct adapter *adapt, u8 *pframe, u32 *pLength)
+ 	pframe += 2;
+ 	pktlen += 2;
+ 
+-	if ((pmlmeinfo->state&0x03) == WIFI_FW_AP_STATE) {
++	if ((pmlmeinfo->state & 0x03) == WIFI_FW_AP_STATE) {
+ 		pktlen += cur_network->ie_length - sizeof(struct ndis_802_11_fixed_ie);
+-		memcpy(pframe, cur_network->ies+sizeof(struct ndis_802_11_fixed_ie), pktlen);
++		memcpy(pframe, cur_network->ies + sizeof(struct ndis_802_11_fixed_ie), pktlen);
+ 
+ 		goto _ConstructBeacon;
+ 	}
+@@ -258,7 +258,7 @@ static void ConstructBeacon(struct adapter *adapt, u8 *pframe, u32 *pLength)
+ 	/*  DS parameter set */
+ 	pframe = rtw_set_ie(pframe, _DSSET_IE_, 1, (unsigned char *)&(cur_network->Configuration.DSConfig), &pktlen);
+ 
+-	if ((pmlmeinfo->state&0x03) == WIFI_FW_ADHOC_STATE) {
++	if ((pmlmeinfo->state & 0x03) == WIFI_FW_ADHOC_STATE) {
+ 		u32 ATIMWindow;
+ 		/*  IBSS Parameter Set... */
+ 		ATIMWindow = 0;
+@@ -473,7 +473,7 @@ static void SetFwRsvdPagePkt(struct adapter *adapt, bool bDLFinished)
+ 	/* 3 (2) ps-poll *1 page */
+ 	RsvdPageLoc.LocPsPoll = PageNum;
+ 	ConstructPSPoll(adapt, &ReservedPagePacket[BufIndex], &PSPollLength);
+-	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex-TxDescLen], PSPollLength, true, false);
++	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex - TxDescLen], PSPollLength, true, false);
+ 
+ 	PageNeed = (u8)PageNum_128(TxDescLen + PSPollLength);
+ 	PageNum += PageNeed;
+@@ -483,7 +483,7 @@ static void SetFwRsvdPagePkt(struct adapter *adapt, bool bDLFinished)
+ 	/* 3 (3) null data * 1 page */
+ 	RsvdPageLoc.LocNullData = PageNum;
+ 	ConstructNullFunctionData(adapt, &ReservedPagePacket[BufIndex], &NullDataLength, pnetwork->MacAddress, false, 0, 0, false);
+-	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex-TxDescLen], NullDataLength, false, false);
++	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex - TxDescLen], NullDataLength, false, false);
+ 
+ 	PageNeed = (u8)PageNum_128(TxDescLen + NullDataLength);
+ 	PageNum += PageNeed;
+@@ -493,7 +493,7 @@ static void SetFwRsvdPagePkt(struct adapter *adapt, bool bDLFinished)
+ 	/* 3 (4) probe response * 1page */
+ 	RsvdPageLoc.LocProbeRsp = PageNum;
+ 	ConstructProbeRsp(adapt, &ReservedPagePacket[BufIndex], &ProbeRspLength, pnetwork->MacAddress, false);
+-	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex-TxDescLen], ProbeRspLength, false, false);
++	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex - TxDescLen], ProbeRspLength, false, false);
+ 
+ 	PageNeed = (u8)PageNum_128(TxDescLen + ProbeRspLength);
+ 	PageNum += PageNeed;
+@@ -504,7 +504,7 @@ static void SetFwRsvdPagePkt(struct adapter *adapt, bool bDLFinished)
+ 	RsvdPageLoc.LocQosNull = PageNum;
+ 	ConstructNullFunctionData(adapt, &ReservedPagePacket[BufIndex],
+ 				  &QosNullLength, pnetwork->MacAddress, true, 0, 0, false);
+-	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex-TxDescLen], QosNullLength, false, false);
++	rtl8188e_fill_fake_txdesc(adapt, &ReservedPagePacket[BufIndex - TxDescLen], QosNullLength, false, false);
+ 
+ 	PageNeed = (u8)PageNum_128(TxDescLen + QosNullLength);
+ 	PageNum += PageNeed;
+@@ -546,17 +546,17 @@ void rtl8188e_set_FwJoinBssReport_cmd(struct adapter *adapt, u8 mstatus)
+ 	if (mstatus == 1) {
+ 		/*  We should set AID, correct TSF, HW seq enable before set JoinBssReport to Fw in 88/92C. */
+ 		/*  Suggested by filen. Added by tynli. */
+-		usb_write16(adapt, REG_BCN_PSR_RPT, (0xC000|pmlmeinfo->aid));
++		usb_write16(adapt, REG_BCN_PSR_RPT, (0xC000 | pmlmeinfo->aid));
+ 		/*  Do not set TSF again here or vWiFi beacon DMA INT will not work. */
+ 
+ 		/* Set REG_CR bit 8. DMA beacon by SW. */
+ 		haldata->RegCR_1 |= BIT(0);
+-		usb_write8(adapt,  REG_CR+1, haldata->RegCR_1);
++		usb_write8(adapt,  REG_CR + 1, haldata->RegCR_1);
+ 
+ 		/*  Disable Hw protection for a time which revserd for Hw sending beacon. */
+ 		/*  Fix download reserved page packet fail that access collision with the protection time. */
+ 		/*  2010.05.11. Added by tynli. */
+-		usb_write8(adapt, REG_BCN_CTRL, usb_read8(adapt, REG_BCN_CTRL)&(~BIT(3)));
++		usb_write8(adapt, REG_BCN_CTRL, usb_read8(adapt, REG_BCN_CTRL) & (~BIT(3)));
+ 		usb_write8(adapt, REG_BCN_CTRL, usb_read8(adapt, REG_BCN_CTRL) | BIT(4));
+ 
+ 		if (haldata->RegFwHwTxQCtrl & BIT(6)) {
+@@ -565,7 +565,7 @@ void rtl8188e_set_FwJoinBssReport_cmd(struct adapter *adapt, u8 mstatus)
+ 		}
+ 
+ 		/*  Set FWHW_TXQ_CTRL 0x422[6]=0 to tell Hw the packet is not a real beacon frame. */
+-		usb_write8(adapt, REG_FWHW_TXQ_CTRL+2, (haldata->RegFwHwTxQCtrl&(~BIT(6))));
++		usb_write8(adapt, REG_FWHW_TXQ_CTRL + 2, (haldata->RegFwHwTxQCtrl & (~BIT(6))));
+ 		haldata->RegFwHwTxQCtrl &= (~BIT(6));
+ 
+ 		/*  Clear beacon valid check bit. */
+@@ -582,7 +582,7 @@ void rtl8188e_set_FwJoinBssReport_cmd(struct adapter *adapt, u8 mstatus)
+ 				/*  check rsvd page download OK. */
+ 				rtw_hal_get_hwreg(adapt, HW_VAR_BCN_VALID, (u8 *)(&bcn_valid));
+ 				poll++;
+-			} while (!bcn_valid && (poll%10) != 0 && !adapt->bSurpriseRemoved && !adapt->bDriverStopped);
++			} while (!bcn_valid && (poll % 10) != 0 && !adapt->bSurpriseRemoved && !adapt->bDriverStopped);
+ 		} while (!bcn_valid && DLBcnCount <= 100 && !adapt->bSurpriseRemoved && !adapt->bDriverStopped);
+ 
+ 		if (adapt->bSurpriseRemoved || adapt->bDriverStopped)
+@@ -600,7 +600,7 @@ void rtl8188e_set_FwJoinBssReport_cmd(struct adapter *adapt, u8 mstatus)
+ 
+ 		/*  Enable Bcn */
+ 		usb_write8(adapt, REG_BCN_CTRL, usb_read8(adapt, REG_BCN_CTRL) | BIT(3));
+-		usb_write8(adapt, REG_BCN_CTRL, usb_read8(adapt, REG_BCN_CTRL)&(~BIT(4)));
++		usb_write8(adapt, REG_BCN_CTRL, usb_read8(adapt, REG_BCN_CTRL) & (~BIT(4)));
+ 
+ 		/*  To make sure that if there exists an adapter which would like to send beacon. */
+ 		/*  If exists, the origianl value of 0x422[6] will be 1, we should check this to */
+@@ -608,7 +608,7 @@ void rtl8188e_set_FwJoinBssReport_cmd(struct adapter *adapt, u8 mstatus)
+ 		/*  the beacon cannot be sent by HW. */
+ 		/*  2010.06.23. Added by tynli. */
+ 		if (bSendBeacon) {
+-			usb_write8(adapt, REG_FWHW_TXQ_CTRL+2, (haldata->RegFwHwTxQCtrl | BIT(6)));
++			usb_write8(adapt, REG_FWHW_TXQ_CTRL + 2, (haldata->RegFwHwTxQCtrl | BIT(6)));
+ 			haldata->RegFwHwTxQCtrl |= BIT(6);
+ 		}
+ 
+@@ -621,6 +621,6 @@ void rtl8188e_set_FwJoinBssReport_cmd(struct adapter *adapt, u8 mstatus)
+ 		/*  Do not enable HW DMA BCN or it will cause Pcie interface hang by timing issue. 2011.11.24. by tynli. */
+ 		/*  Clear CR[8] or beacon packet will not be send to TxBuf anymore. */
+ 		haldata->RegCR_1 &= (~BIT(0));
+-		usb_write8(adapt,  REG_CR+1, haldata->RegCR_1);
++		usb_write8(adapt,  REG_CR + 1, haldata->RegCR_1);
  	}
  }
- 
-@@ -308,7 +308,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 			if (pwrInfo24G->IndexCCK_Base[rfPath][group] == 0xFF)
- 				pwrInfo24G->IndexCCK_Base[rfPath][group] = EEPROM_DEFAULT_24G_INDEX;
- 		}
--		for (group = 0; group < MAX_CHNL_GROUP_24G-1; group++) {
-+		for (group = 0; group < MAX_CHNL_GROUP_24G - 1; group++) {
- 			pwrInfo24G->IndexBW40_Base[rfPath][group] =	PROMContent[eeAddr++];
- 			if (pwrInfo24G->IndexBW40_Base[rfPath][group] == 0xFF)
- 				pwrInfo24G->IndexBW40_Base[rfPath][group] =	EEPROM_DEFAULT_24G_INDEX;
-@@ -319,7 +319,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 				if (PROMContent[eeAddr] == 0xFF) {
- 					pwrInfo24G->BW20_Diff[rfPath][TxCount] = EEPROM_DEFAULT_24G_HT20_DIFF;
- 				} else {
--					pwrInfo24G->BW20_Diff[rfPath][TxCount] = (PROMContent[eeAddr]&0xf0)>>4;
-+					pwrInfo24G->BW20_Diff[rfPath][TxCount] = (PROMContent[eeAddr] & 0xf0) >> 4;
- 					if (pwrInfo24G->BW20_Diff[rfPath][TxCount] & BIT(3))		/* 4bit sign number to 8 bit sign number */
- 						pwrInfo24G->BW20_Diff[rfPath][TxCount] |= 0xF0;
- 				}
-@@ -327,7 +327,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 				if (PROMContent[eeAddr] == 0xFF) {
- 					pwrInfo24G->OFDM_Diff[rfPath][TxCount] =	EEPROM_DEFAULT_24G_OFDM_DIFF;
- 				} else {
--					pwrInfo24G->OFDM_Diff[rfPath][TxCount] =	(PROMContent[eeAddr]&0x0f);
-+					pwrInfo24G->OFDM_Diff[rfPath][TxCount] =	(PROMContent[eeAddr] & 0x0f);
- 					if (pwrInfo24G->OFDM_Diff[rfPath][TxCount] & BIT(3))		/* 4bit sign number to 8 bit sign number */
- 						pwrInfo24G->OFDM_Diff[rfPath][TxCount] |= 0xF0;
- 				}
-@@ -337,7 +337,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 				if (PROMContent[eeAddr] == 0xFF) {
- 					pwrInfo24G->BW40_Diff[rfPath][TxCount] =	EEPROM_DEFAULT_DIFF;
- 				} else {
--					pwrInfo24G->BW40_Diff[rfPath][TxCount] =	(PROMContent[eeAddr]&0xf0)>>4;
-+					pwrInfo24G->BW40_Diff[rfPath][TxCount] =	(PROMContent[eeAddr] & 0xf0) >> 4;
- 					if (pwrInfo24G->BW40_Diff[rfPath][TxCount] & BIT(3))		/* 4bit sign number to 8 bit sign number */
- 						pwrInfo24G->BW40_Diff[rfPath][TxCount] |= 0xF0;
- 				}
-@@ -345,7 +345,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 				if (PROMContent[eeAddr] == 0xFF) {
- 					pwrInfo24G->BW20_Diff[rfPath][TxCount] =	EEPROM_DEFAULT_DIFF;
- 				} else {
--					pwrInfo24G->BW20_Diff[rfPath][TxCount] =	(PROMContent[eeAddr]&0x0f);
-+					pwrInfo24G->BW20_Diff[rfPath][TxCount] =	(PROMContent[eeAddr] & 0x0f);
- 					if (pwrInfo24G->BW20_Diff[rfPath][TxCount] & BIT(3))		/* 4bit sign number to 8 bit sign number */
- 						pwrInfo24G->BW20_Diff[rfPath][TxCount] |= 0xF0;
- 				}
-@@ -354,7 +354,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 				if (PROMContent[eeAddr] == 0xFF) {
- 					pwrInfo24G->OFDM_Diff[rfPath][TxCount] = EEPROM_DEFAULT_DIFF;
- 				} else {
--					pwrInfo24G->OFDM_Diff[rfPath][TxCount] =	(PROMContent[eeAddr]&0xf0)>>4;
-+					pwrInfo24G->OFDM_Diff[rfPath][TxCount] =	(PROMContent[eeAddr] & 0xf0) >> 4;
- 					if (pwrInfo24G->OFDM_Diff[rfPath][TxCount] & BIT(3))		/* 4bit sign number to 8 bit sign number */
- 						pwrInfo24G->OFDM_Diff[rfPath][TxCount] |= 0xF0;
- 				}
-@@ -362,7 +362,7 @@ static void Hal_ReadPowerValueFromPROM_8188E(struct txpowerinfo24g *pwrInfo24G,
- 				if (PROMContent[eeAddr] == 0xFF) {
- 					pwrInfo24G->CCK_Diff[rfPath][TxCount] =	EEPROM_DEFAULT_DIFF;
- 				} else {
--					pwrInfo24G->CCK_Diff[rfPath][TxCount] =	(PROMContent[eeAddr]&0x0f);
-+					pwrInfo24G->CCK_Diff[rfPath][TxCount] =	(PROMContent[eeAddr] & 0x0f);
- 					if (pwrInfo24G->CCK_Diff[rfPath][TxCount] & BIT(3))		/* 4bit sign number to 8 bit sign number */
- 						pwrInfo24G->CCK_Diff[rfPath][TxCount] |= 0xF0;
- 				}
-@@ -450,9 +450,9 @@ void Hal_ReadTxPowerInfo88E(struct adapter *padapter, u8 *PROMContent, bool Auto
- 
- 	/*  2010/10/19 MH Add Regulator recognize for CU. */
- 	if (!AutoLoadFail) {
--		pHalData->EEPROMRegulatory = (PROMContent[EEPROM_RF_BOARD_OPTION_88E]&0x7);	/* bit0~2 */
-+		pHalData->EEPROMRegulatory = (PROMContent[EEPROM_RF_BOARD_OPTION_88E] & 0x7);	/* bit0~2 */
- 		if (PROMContent[EEPROM_RF_BOARD_OPTION_88E] == 0xFF)
--			pHalData->EEPROMRegulatory = (EEPROM_DEFAULT_BOARD_OPTION&0x7);	/* bit0~2 */
-+			pHalData->EEPROMRegulatory = (EEPROM_DEFAULT_BOARD_OPTION & 0x7);	/* bit0~2 */
- 	} else {
- 		pHalData->EEPROMRegulatory = 0;
- 	}
-@@ -532,9 +532,9 @@ void Hal_ReadAntennaDiversity88E(struct adapter *pAdapter, u8 *PROMContent, bool
- 	if (!AutoLoadFail) {
- 		/*  Antenna Diversity setting. */
- 		if (registry_par->antdiv_cfg == 2) { /*  2:By EFUSE */
--			pHalData->AntDivCfg = (PROMContent[EEPROM_RF_BOARD_OPTION_88E]&0x18)>>3;
-+			pHalData->AntDivCfg = (PROMContent[EEPROM_RF_BOARD_OPTION_88E] & 0x18) >> 3;
- 			if (PROMContent[EEPROM_RF_BOARD_OPTION_88E] == 0xFF)
--				pHalData->AntDivCfg = (EEPROM_DEFAULT_BOARD_OPTION&0x18)>>3;
-+				pHalData->AntDivCfg = (EEPROM_DEFAULT_BOARD_OPTION & 0x18) >> 3;
- 		} else {
- 			pHalData->AntDivCfg = registry_par->antdiv_cfg;  /*  0:OFF , 1:ON, 2:By EFUSE */
- 		}
 -- 
 2.17.1
 
