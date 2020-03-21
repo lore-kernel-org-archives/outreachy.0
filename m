@@ -1,105 +1,102 @@
-X-GM-THRID: 6675312425405775872
-X-Received: by 2002:a25:828e:: with SMTP id r14mr7535705ybk.7.1554217288489;
-        Tue, 02 Apr 2019 08:01:28 -0700 (PDT)
+X-GM-THRID: 6806467742549409792
+X-Received: by 2002:a63:f502:: with SMTP id w2mr5388872pgh.423.1584798717740;
+        Sat, 21 Mar 2020 06:51:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:3d0e:: with SMTP id k14ls4731931ywa.4.gmail; Tue, 02 Apr
- 2019 08:01:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzE+Ac8gVz4msmWIDFdzpGT4qLwnd7LDXtYdk3Z3SQWkTxWZrQ5EOeU4cw9I0NkKb2uLivz
-X-Received: by 2002:a81:dd0:: with SMTP id 199mr7793881ywn.21.1554217287885;
-        Tue, 02 Apr 2019 08:01:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554217287; cv=none;
+Received: by 2002:aa7:9911:: with SMTP id z17ls4659460pff.5.gmail; Sat, 21 Mar
+ 2020 06:51:56 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vte9+aYCBCd9NO5GPPpzpS8j5ZlqjQ0pHQITYYoMKMkvxERa0UrdzA3QiRl9HBSzjHgwXfg
+X-Received: by 2002:a63:3547:: with SMTP id c68mr13673574pga.380.1584798716129;
+        Sat, 21 Mar 2020 06:51:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584798716; cv=none;
         d=google.com; s=arc-20160816;
-        b=P7cM70fbn8oAuR3GV2hNbSdwsakoDPnctZxymlkKaUUsgorPOvm8aoyFAnFPU9yL4k
-         M+ChZdvpo1HhcBCqg/sCyjpVw2hVJxNr8x8ns5Bl1zf3XIk605aBrOR2F1c+K1NqvX12
-         ojCQmOKWtam7abSt3I8bkiW0UK6Oc8aZFrcYI5K+HIgaSy0IQzDkzxalQ3K96Fvs8Q+4
-         +/KA7FzTp748TxQeBzEk5lyA0zM40ksuBc7s49hspZ5FTX21/OztKbem+0/7zcpdczuG
-         BEtRxMN5gMgWmVz4DO6tVQ7XKj3fAMlJw3WlZsjfdBRdNdCuMD2Z02R5InjzEgnTcKAU
-         TbQg==
+        b=yUaq8kfk8qHmUrlDhf6Aav9Q9YvLpjwQ1Uz4uU6f+BQfZVyVPYTedKHmj77wwlrdmW
+         eqN04sFeRta2jpW6BojvvrryyLUoTdtiOSUiFcrwoTj6lDiGk2RtcD4UugN5Fdlb5Zay
+         Rj3l9YQ1/999n3zCo+1uCO4UK224bHIqcz+3dOKdkRMwaSPHV3xELrIfDsIpn8Zlhvtn
+         2u3qXEUohwuiNaVUsA+sJ8q0xFK6ldQ2r+6QB8yjj1ftrffSsqwAYptKv49NSb9IGr5d
+         Brr4DaRwO+0aKPa/w+kWJjANiyMfV3GaIywI5u4Y2vf8JN+2h6x30pKbJ19SOfe86Ch2
+         gzRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zfZKcZP9SDkqEaZ4PdC1gaXY/vo+gmShSRWe+h8C85Q=;
-        b=0UkpIm+nBYjUDqtvXETBZzdD8F1pQiy2fMNeZyA/MrTlsSw7Fq5ve+bNvmPO1B3L8B
-         m5jxXqALm7hxnnu+Gb++hBsjh8UUdTDtXypyak2tJdgjO5VMi4y/nSs8eEPv5miu6cVx
-         aOkodjB1wq2hZuvLIBQ7Khw7r8dU9JOYw5KWHDq8MpHvvCgOpLGaL43cPs6ofqFNm592
-         5DsXxr6eAVdoSOLaGQ4LzEQC+cAqcwPrkoF0U4sCErFMc/cnD26kg58acVRqUsT1Fb89
-         wlRdYXmsEZAkAGG95n8cmgT7bs++s//bb3C2/4AHUysXHbeur5a7Nmp7V+Ajk35cmRpR
-         0FyA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=h/VWQKQuuTiXNsqC9/XOHagWZPK6WffF9lltfbQvVls=;
+        b=U2Ft4kiGd4rj44V7lZPB1CHMBwE5DRVn+96gE5VFD6+NJZfoo0/koVcykggtKmWE3Y
+         7etOe4DQ9PkYaTuNyCKbQqR3wi/5FYxuBCDg4b69FMNCup975rIcKHnf0e1tpykr/ijV
+         Uo+aDieFfKdPgEeuqAG+1+OB2XLVnknF3lBS/UQ8iZT2ZVF6QQye/vUy/oOBLoqmlR/Y
+         ANXLjpP2krSfSuCt3BZr4cC8A2qU7CB2/PmnnOT4TvfcmpdztAuPL90fq1x42sAqEHD5
+         QNhJUxuW2FPYIeF2eSpFl6FBmCNarweAYncE+Kq1DgqFEPIKhSiRQMkSQq3p3/5k/r4t
+         hIYw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MrykcdTH;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::62d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com. [2607:f8b0:4864:20::62d])
-        by gmr-mx.google.com with ESMTPS id 204si729019ywd.4.2019.04.02.08.01.27
+       dkim=pass header.i=@kernel.org header.s=default header.b=qfci72e5;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c125si3299pga.5.2020.03.21.06.51.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 08:01:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::62d as permitted sender) client-ip=2607:f8b0:4864:20::62d;
+        Sat, 21 Mar 2020 06:51:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MrykcdTH;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::62d as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62d.google.com with SMTP id t16so4533007plo.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 08:01:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=zfZKcZP9SDkqEaZ4PdC1gaXY/vo+gmShSRWe+h8C85Q=;
-        b=MrykcdTHROO1g1IujL+0d/A4IMANA7prNf+HkPGxopblsDcRzBtGus2QHapB7my7if
-         VhrvPLIkUli0TCwKip9aYZPkROVo7udk+PBf1mac/aT+C4P0NbTnoi4l+UQQ7ABkLI87
-         cBMaDcaZTFT+aFbckhMoN408Rg76LBvz28+AHlg5bfSJOQIRxMK0zofooGFAyIoeEzj7
-         YhzO9xyZ7PdHdshribbDsIonbKoou1/emOJ5Md/MlVHDPjjBOn944nuMOY2JGQvGnuM5
-         2IxmQ7wZMoOBlsRALzCVVu8vakgbtXyp42F/+5obQEgfB0P637vNOKWbJKVHYu8bc1l2
-         A4vA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=zfZKcZP9SDkqEaZ4PdC1gaXY/vo+gmShSRWe+h8C85Q=;
-        b=LUpVAj/K6xm5WaNWkbkQXGC0vtE87W/txcDEnRrWy1diqwXuQrxo7vOCVXsYkCPvi/
-         zsDpx5Y4q75wd/uWKKj2mM+btgtJQ+93qQN9w4s2i8YVGf01+w1IEU7lK+ETIwv82TPy
-         OgunQmY2DhQqYsBrR4nXCIk1UxPo1bRieAFyZaedazltwtmlJQR/ue2ssz8bqHaZ7QOT
-         9j0tRgDd9mbjBXEjz8c7BLDsxy9wNuKTkyGwKwTEvII9mKDvJoGxkoJlhOotBwGHXctw
-         63f9plTBa96iPHt50L8tspqpU1B3UbyKMmiPzCODvgwzn6y8r+MMALybAiLfgiQkXBom
-         /BXA==
-X-Gm-Message-State: APjAAAVKBGJ0XbjZQJtqblio5JW19ausJfRhYPVb09dMl+0id4bXNxVW
-	6s+plmM1pBv4kKg74OUZr05D3Io6
-X-Received: by 2002:a17:902:2888:: with SMTP id f8mr71907396plb.244.1554217287256;
-        Tue, 02 Apr 2019 08:01:27 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id y19sm19122117pfn.164.2019.04.02.08.01.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 08:01:26 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: sm750fb: ddk750_chip.c: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 20:31:12 +0530
-Message-Id: <1554217272-10859-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@kernel.org header.s=default header.b=qfci72e5;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4AF3920754;
+	Sat, 21 Mar 2020 13:51:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584798715;
+	bh=O4Of9Ij0u0WCxeygy4mLrMqXToRYOpLnrRwDgGtYtbE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qfci72e50LtkL6pQ0DgkXAJSxWQ3YiXNVZHxgAqXuWf0eLn7VSwhhM+gvyee06Daw
+	 bPBZb/KZV1hrf3YjjF8I8bTlVIOw+Ej6HDIgtbtWJxazjGCoFz9cAM5t1rXfH14j/g
+	 hhYwKBXh2jlGi1LnhWOph5lMoqAM/yp376Xhzxfc=
+Date: Sat, 21 Mar 2020 14:51:52 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sam Muhammed <jane.pnx9@gmail.com>
+Cc: Gokce Kuler <gokcekuler@gmail.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: hp100: Block comments
+ use a trailing */ on a separate line
+Message-ID: <20200321135152.GA1219517@kroah.com>
+References: <20200321013101.GA17131@siyah2>
+ <20200321093325.GC917692@kroah.com>
+ <e60514a251eb3f690e9136670def0ee2b8289969.camel@gmail.com>
+ <20200321124615.GA1215294@kroah.com>
+ <4ffae0704bd21da5e36c1beac0f454746689a31a.camel@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4ffae0704bd21da5e36c1beac0f454746689a31a.camel@gmail.com>
 
-Challenge suggested by coccinelle.
-Prefer using BIT and replace bit shifting with the BIT(x) macro.
+On Sat, Mar 21, 2020 at 08:50:49AM -0400, Sam Muhammed wrote:
+> On Sat, 2020-03-21 at 13:46 +0100, Greg KH wrote:
+> > On Sat, Mar 21, 2020 at 08:44:48AM -0400, Sam Muhammed wrote:
+> > > On Sat, 2020-03-21 at 10:33 +0100, Greg KH wrote:
+> > > > On Sat, Mar 21, 2020 at 04:31:01AM +0300, Gokce Kuler wrote:
+> > > > > Moved to the bottom line */ for block comments
+> > > > 
+> > > > Again, you said what you did, but not why.
+> > > > 
+> > > > Also, you _added_ two new checkpatch warnings, not a good ratio :(
+> > > > 
+> > > > thanks,
+> > > > 
+> > > 
+> > > Iam sorry, are we allowed to work on this driver, because i got; 
+> > > WARNING: drivers/staging/hp/hp100.c is marked as 'obsolete' in the
+> > > MAINTAINERS hierarchy.  No unnecessary modifications please.
+> > 
+> > For basic code cleanups, to learn the process, it's fine, but note that
+> > the code will be deleted from the kernel "soon", so any changes you make
+> > will not stick around.
+> > 
+> 
+> So outreachy-wise, would this be considered as a contribution?
+> This driver is juicy :)
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Sure, I'll take contributions to it until Wednesday, and then I'll
+delete it from the tree as it's about time it needs to go.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index 4c1f00f..eea4c08 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -45,7 +45,7 @@ static unsigned int get_mxclk_freq(void)
- 	OD = (pll_reg & PLL_CTRL_OD_MASK) >> PLL_CTRL_OD_SHIFT;
- 	POD = (pll_reg & PLL_CTRL_POD_MASK) >> PLL_CTRL_POD_SHIFT;
- 
--	return DEFAULT_INPUT_CLOCK * M / N / (1 << OD) / (1 << POD);
-+	return DEFAULT_INPUT_CLOCK * M / N / BIT(OD) / BIT(POD);
- }
- 
- /*
--- 
-2.7.4
+thanks,
 
+greg k-h
 
