@@ -1,96 +1,112 @@
 X-GM-THRID: 6806661932796346368
-X-Received: by 2002:a9d:895:: with SMTP id 21mr15430874otf.365.1584924454506;
-        Sun, 22 Mar 2020 17:47:34 -0700 (PDT)
+X-Received: by 2002:a17:902:9a4c:: with SMTP id x12mr12639101plv.297.1584799478744;
+        Sat, 21 Mar 2020 07:04:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:52d2:: with SMTP id g201ls5202042oib.11.gmail; Sun, 22
- Mar 2020 17:47:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt1iMaFvHuoXK4mBIJ0MmLFMpWH3cyPr0OML90tchOmb2lXMrg+UxWOjOej8aHuKLTst4ju
-X-Received: by 2002:aca:3089:: with SMTP id w131mr15676929oiw.121.1584924453472;
-        Sun, 22 Mar 2020 17:47:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584924453; cv=none;
+Received: by 2002:a17:902:b58e:: with SMTP id a14ls3421528pls.5.gmail; Sat, 21
+ Mar 2020 07:04:37 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvxQIwaVjxVdGK/wa4SU/ArJTtsxsF34ECU6Luf8W7ni4nB9/8EAY5Vqlxz0Cn+9q5B604E
+X-Received: by 2002:a17:902:a5c6:: with SMTP id t6mr12768572plq.323.1584799477176;
+        Sat, 21 Mar 2020 07:04:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584799477; cv=none;
         d=google.com; s=arc-20160816;
-        b=wzP2cZxXOILbIXLZWhCL1KkwzdYw+02ntm7aJsG121o3veXCEBBQfgshxvehcIql/q
-         KvP+BKcN86OuOeHjpfjxO38yNbqEgOusfSLuTMdA7mg4tqjd0od0mi7JFUVjNi5zZj/T
-         zQxrK3FKl1USpW7qhcCLF7IMm7fzEhgNa+8jxktIVs1WdchCO5T/+d5keBVhvKrOqxWJ
-         LJm3+49C9xS1yOOjQtdQ0hsAmM/JU5621+5e6r4eFOeWbOEHCVnhHhyptuyy66CBUd2B
-         siEt+NM90JvD3pw3vPSWsf/0zBTqG29pKmfxV/d/bd8XgLqI7AyNMW3a23qlYqT64xDR
-         3QVA==
+        b=JbC5nqFIQap1wR1g3Z/ELvwTx4BNDmmEbPwsmL3d9fXAI2sN/6BH9QHsvga9xTtSTK
+         4NE/+RT5ckkrfpr5XaQxZZMXBHynrebpKZhL3xK7sGdViOr3Bqsd0lFs7A80N0T6b2Sh
+         h0TCYQI7HVXxR9xpZyJxAls6bMhVdh+HxlMWX7GOq81pcOQif8q9A0FDw4A8mt0sZ5KB
+         /rqFKD4s/VbaU1oXZRFbQL0xxe5NhwGlzkgG4ldUHxc3R9aWCpeSW5yLeUJx7ENPqFZb
+         cw/3qnUbYsXUfaIYj/yxxYiU+nLVuUGlcTPxD+NFG1Fxn0lE5tljKBMURB6mAOCaF3mm
+         Mg0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Ig4doA85riL2XtPeQfs/qUQldiVkDlW3JAidx8gyjPc=;
-        b=OnPxRUmQsK3lj3W2KNtVdHFF8vN62SJFeVzL1F1kiLcfud6Vvq4521EqavicblhpUi
-         t1x/rXwS3MllpGv3vq5/R9W3x9Kl3J45yk+Brr95yyf9A4NUToNQtNK+MV6ZdU+GkI3C
-         BE0G26ULk+havTNqj1ceEPo2Y2xZvZbvFzPMVCZvIt/rzarxvxX7s3gdY9U4SGA450Bt
-         NxGRvuMnFfqwlyaVsNmcvkRK+N2Kp64LbQUdXwCxhF5rmXqxhvj9IMTVB5DUiitb4AQ+
-         95VdqQBC4AvN+4aTmRmjigJ7ASAe1kffh+aex9AcTkaCce0XuGxQU74XGuWqME5/sk8z
-         6/8g==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=J9eGr1XRuuMVhT4BB0OXqzh8ZUNEQwk5lWfXIehE4RU=;
+        b=tl5yNCntDWmCXl7k0sfqYwaQdPpbWJJEXs1/TgVTOPlajgPk6aPLtPYKj2MzpSjLmw
+         rsvMh/1hWcsWB1Gr0TwQQmd8zOqv1qojGz187+dMf5XV4oEflnIf4E1uhOhEtdCx1QvV
+         jN5aeMGv6e4LfDKGORPiphGfqedre4Lv27oXQ8KE7BvMotaMQfm9DEeobP2TQ2pWvBcw
+         fGpCnBvUgwoFMnbFyKdvQNmEALkpJeDBOWGw+ImUDOMQDj7xVKq2m71/dF5WcVdQAtiK
+         JpaieyYku4BEXMI71164oraTuKVRnfFLT0l643oDJM5mJ01Np0bHbLP23aybYo/409iA
+         saaQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vr8vHGR0;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id n5si353968otf.3.2020.03.22.17.47.33
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=skHcS7F3;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id 188si677783pfb.1.2020.03.21.07.04.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2020 17:47:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 21 Mar 2020 07:04:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vr8vHGR0;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584924452;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Ig4doA85riL2XtPeQfs/qUQldiVkDlW3JAidx8gyjPc=;
-	b=Vr8vHGR0aXm2uFpNGGAmkOTiTxU/Yi4MB0/PuM2x8+4FnEJCGJqTavoE+6K2Xqds3nAjy9
-	MfPAjKhuMqy0QDhNEcgi7vpti2Fk0UIIHTgw7PBQCg9y3dGeMhNYsq8FpzZSIaxZAkfFeb
-	YXXSyOTsfVs2XygPFP2E9IrU1CSuy0k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-wd9H0AT3Pfu9Z28AQ4ibbQ-1; Sun, 22 Mar 2020 20:47:29 -0400
-X-MC-Unique: wd9H0AT3Pfu9Z28AQ4ibbQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48259189D6C3;
-	Mon, 23 Mar 2020 00:47:27 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E17D25C1B2;
-	Mon, 23 Mar 2020 00:47:24 +0000 (UTC)
-Date: Mon, 23 Mar 2020 01:47:18 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Simran Singhal <singhalsimran0@gmail.com>
-Cc: gregkh@linuxfoundation.org, jeremy@azazel.net,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: kpc2000: Removing multiple
- blank lines
-Message-ID: <20200323014718.461a6bbe@elisabeth>
-In-Reply-To: <20200321140430.GA18933@simran-Inspiron-5558>
-References: <20200321140430.GA18933@simran-Inspiron-5558>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=skHcS7F3;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1044.google.com with SMTP id np9so3778988pjb.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 07:04:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=J9eGr1XRuuMVhT4BB0OXqzh8ZUNEQwk5lWfXIehE4RU=;
+        b=skHcS7F3YJWvMX4rRiycVWZ7L8rACzYJkh6R1+nulg0+KzXQS2OcNPrqfQjZgnJGVX
+         +O1jF/a7lmk/2Uqx76M+eoKLfgwz2chvOz0q68gUN3liu3cBVVSKVgSSCX8scFOxnzhB
+         im1AMBM/pu+fA1VJbHiqLkgAnLuurIahr8G/2YOAUeZg32wzUuFpofhTcffvbDRBhMMH
+         Lyb/7HhK1tsbzfAraKZ+jmap7FQCec8AI7vfPZF84S1hr1fKn9JmguxcTK+YOfCM+Rou
+         HFBedKFyAGEapSfaHZsKonbU4NdBwAw1T5GQfkgyXvwWqT2dh3J4Yfpfj9IYRYb6EZIx
+         0qIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=J9eGr1XRuuMVhT4BB0OXqzh8ZUNEQwk5lWfXIehE4RU=;
+        b=WajQ3EFHP/qz8s4vW2UIq5HS7+og+pydo6PN5HxgV5+QIj8XwJHJO+DRB/xM7rQN0y
+         OkYTPJFrP0gAoS5wcEMRjXfMD4TEj3gCZLNZvCdfZdfdHxq6l7I05QOmcm2++gXZrevq
+         ajrtQfBWS3C94UWWTz81jUiRNRmRwDTbXJ+gSbV268T5Qa83xAVHzKXirsaGzlcQlCCA
+         El0p1+R2H+OpbktrlZFi7bVMKrxW8n2HzbjFTeVIjK9wZHwud+9aL4RkXZ8SOQIvUMIA
+         Ycv9Fll3mRZkiepGhpjyeHhhTQzZHh1I3IVKXxe7Cri4HWbres0klnUad1yZyNzNt9NM
+         Xj5g==
+X-Gm-Message-State: ANhLgQ0W1Db5TiZMX5hd1u2iPL0rW9cQdimppRVvtbWI6fo/U6FVy4yz
+	WjWn7rK1VaZYplDiTbxtZ0/Y8ynqGSI=
+X-Received: by 2002:a17:902:7b87:: with SMTP id w7mr14025772pll.214.1584799476391;
+        Sat, 21 Mar 2020 07:04:36 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from simran-Inspiron-5558 ([14.139.82.6])
+        by smtp.gmail.com with ESMTPSA id g2sm1257540pfh.193.2020.03.21.07.04.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 21 Mar 2020 07:04:35 -0700 (PDT)
+Date: Sat, 21 Mar 2020 19:34:31 +0530
+From: Simran Singhal <singhalsimran0@gmail.com>
+To: gregkh@linuxfoundation.org, jeremy@azazel.net,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: kpc2000: Removing multiple blank lines
+Message-ID: <20200321140430.GA18933@simran-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sat, 21 Mar 2020 19:34:31 +0530
-Simran Singhal <singhalsimran0@gmail.com> wrote:
+This patch fixes the checkpatch warning by removing multiple blank
+lines.
+CHECK: Please don't use multiple blank lines
 
-> This patch fixes the checkpatch warning by removing multiple blank
-> lines.
+Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/kpc2000/kpc2000/pcie.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-Actually, you're removing just one. Can you please re-post fixing the
-description? Mind that it's going to be a "v2", that is, the second
-version of this patch. Please see recent examples on this list about
-that.
-
+diff --git a/drivers/staging/kpc2000/kpc2000/pcie.h b/drivers/staging/kpc2000/kpc2000/pcie.h
+index cb815c30faa4..f1fc91b4c704 100644
+--- a/drivers/staging/kpc2000/kpc2000/pcie.h
++++ b/drivers/staging/kpc2000/kpc2000/pcie.h
+@@ -6,7 +6,6 @@
+ #include "../kpc.h"
+ #include "dma_common_defs.h"
+ 
+-
+ /*      System Register Map (BAR 1, Start Addr 0)
+  *
+  *  BAR Size:
 -- 
-Stefano
+2.17.1
 
 
