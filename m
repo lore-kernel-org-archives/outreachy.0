@@ -1,105 +1,112 @@
-X-GM-THRID: 6661032131712516096
-X-Received: by 2002:a24:1fc2:: with SMTP id d185mr1027218itd.6.1550892398183;
-        Fri, 22 Feb 2019 19:26:38 -0800 (PST)
+X-GM-THRID: 6806516278512058368
+X-Received: by 2002:adf:e78e:: with SMTP id n14mr17224607wrm.363.1584781901927;
+        Sat, 21 Mar 2020 02:11:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:5a55:: with SMTP id v82ls1990456ita.0.canary-gmail; Fri,
- 22 Feb 2019 19:26:37 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbSJUJENzQdG1SLXl2YfpdhU2KCH3QJ2lsBYDtrWxEKqFYxK1u4MZ+01K9KcVaX0JEKwGp/
-X-Received: by 2002:a24:7f4d:: with SMTP id r74mr1015146itc.13.1550892397366;
-        Fri, 22 Feb 2019 19:26:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550892397; cv=none;
+Received: by 2002:a1c:230e:: with SMTP id j14ls4180110wmj.0.canary-gmail; Sat,
+ 21 Mar 2020 02:11:40 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtlDGztRzZe9GGQ0pD2kjYREn5ofdYJuI3PS/kASys6QEPmRS8YRtdo3CFe6dBYVYZqblgk
+X-Received: by 2002:a1c:25c5:: with SMTP id l188mr15859915wml.105.1584781900555;
+        Sat, 21 Mar 2020 02:11:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584781900; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zc4sh+dSe1AAXGph//XA5A79Ot270J21dTaGuISNpPq7fP9yABegb+GBHgsKqwgU8a
-         lNCHAvlmOfa1C1lYy9SDH82m88vhw84HIRFwd6VW93c8pZepCW3KD0lNbBnTA1APmeS0
-         H7YACiHO1t0vsWNtdZYWIrS+FwWdh8lwepbHda7hBi9TQGvpWD3cZfTKgGeNgA1wVXDK
-         qrCSVnO07nJWF8JhPWdps+aJdyKVHJfoRynRPS5oP0n/P/wpTiPjlsVSHJ+MwlM9hq86
-         lwlBv9K/LCzmWOOqNcpP//fbiJlFoWcM4qJ/tSEQNg61jIMe6ek+cP79y2vjBo4/C1fp
-         wHCg==
+        b=xeQkr/88xdgUTwcDwK3B+fnxNjUEt6TGCIqpMX8IOQse1abM7M9vzmi+p1hbwtK4Tr
+         H4AExBCRa3rWZB1wsnoxIOF71XsATj27RzQ2h6ROIgBVMUCVFjwwUnPmbHkIqomBKizh
+         SKiYDnSo1PY75TAVLpOlLnwylOky9vmHH1qAw+uyOCGvwReWp7WSt3dmIIVHkV8wtVB4
+         B+qmAJjKNBzbxfYNV0guKW9u/I8u+kW46lI5xa/WHg67gGCjDCY2uYWKVb8EXxp+xX7s
+         ez3FCJOZleLNeYxb90J3x9BupByaTTSNV07+dQH8Gd2QexcwX5nEsJ9OnMInNDNKa+RB
+         vFNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=B2vQdOpnwi6hS+n3aPMyvGJZHM9ymQ6nezjnPVKTEDI=;
-        b=fr+stqkKJUeLaHP6t5pg+bL5glxbK4Vd+WPjhFuQQyW/5GSbWeIU1HxW1kvNtsDpKA
-         uIV1Dj8WpUHTDP20eeJkZ5bc9sWzz2qyvtA9tLrynm1/bd25dFIOqpHjlEDcPZEssP+J
-         P9tKo5b92HMAezsvgj7aZAQm7GT4x/842mXceohnbfzlrSJBtWu8XOyQedIPC3EHiwqm
-         zlWE/ZcutgaftLr23RM5t34WnME7cMeuGOBtSgnIQWwIzMdcdKPaV+y+UZqC9FXxeWKF
-         i3s4Tst1GDxZSxL7HAQYpDvMo1Rz9oa9KIDL92RWLGdo+f1FT05S84qhgj8vbgvLw67t
-         rYjw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Pyyfl/JlqQeljG53sVIM4WcdCa0bWQSIOoUr16gMHOg=;
+        b=WDzmOdRuDOyHoeYgAmifLsOVmysoszWllZOYjq80TXSF8Ft0vo3SValGHKYChzWaia
+         EV1KjTN5m5hkARsVlD/RS3MVO+SsknNpuOPVk/SJka7SFxON+r0bWCJ7Sfa6O8Gm4pY5
+         JI+huT88XxVlRrF9sD7o+3vYx9IHhE8xX367VfIzRYvs7arhSgv38MDjEQyA7LUtKde9
+         Edf6RYCtClP1ykW7voUhgawcpFzNDOikKZ6cS+zCG8Kyym89oc5zedcG5yhcLvHatcaJ
+         j8HAJVvEXLrOjBmBjDCA0zgu5hTZ6JFZhHTSBc9QPHhZn9ImevgtiZP/KdDkkFt/YIzb
+         2r0g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="SD19/a4e";
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x244.google.com (mail-oi1-x244.google.com. [2607:f8b0:4864:20::244])
-        by gmr-mx.google.com with ESMTPS id u1si156630itb.2.2019.02.22.19.26.37
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id e12si334980wru.1.2020.03.21.02.11.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 19:26:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) client-ip=2607:f8b0:4864:20::244;
+        Sat, 21 Mar 2020 02:11:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="SD19/a4e";
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x244.google.com with SMTP id x187so3331080oia.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 19:26:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=B2vQdOpnwi6hS+n3aPMyvGJZHM9ymQ6nezjnPVKTEDI=;
-        b=SD19/a4eAV+m4M5qUGOoV4PiZj4LSC+TTwQNc+6h0pqoa4DDWKBawc9oBE5tRhIU+s
-         kfgHEV9z6PjwYmbDMn0tL3G7T70VF5oINVieyvujfeNRw0uSjCLhWU3uoUULYRQm5iOT
-         I5AH7J7QzWUnf46Zgn9XMkcTFmNqy7lP8vDA9mHBozRcNjDcDXfT35tEKEaJUt3VNs16
-         tKBeO9dH3zUbAE+HNPDq8Qug0O4Eqmgx3OeNx2J8k0qijo4jKfcKGCAaJ5qW2gllkevr
-         9yWUwVo+fF3PFOC+Yfek9j9+Xn+H/XAOXSPDTiiNJnc3JxI0bvWDin4M8GW+ZNgsOm5b
-         ybDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=B2vQdOpnwi6hS+n3aPMyvGJZHM9ymQ6nezjnPVKTEDI=;
-        b=VUWbsRgckra8Ua8X/rFISWr8JRHFVnMukfhJlgpHs35Fyhqh1GMyOlecG0wvZlmgtJ
-         RWAFAPx1cDUrA78MK/q0DGu29h+08HFZ5nCerp3s10M58ShGyn3SzByztElKC4cjemX7
-         FF94MzxiRoVnHBzZoiL+vvVdjKpTgp56C/up3Fl8AQCXOQ1lNG8EXVJ22qM/u9Sw08Ay
-         fn7oV9ujUFaT75FC/7no5sV/2wkMiPoq2UjzZMRjKFR5bKg7q8Ox4q5/1+6caaE+TU4q
-         uSskq4JbPbNEEwOI6Vy0ndiwLI040urNtbc5wdGuI/M3ABsYyVWY/jzaMGqPqY5oDn6t
-         1G9Q==
-X-Gm-Message-State: AHQUAuaSZBXcehZPOSiYMK4+oDrrCWAmcRaM83EVt5Jphbd6Hs6gp+RD
-	9Lbx2ZsG9LQ5vLGP0VrHBV8=
-X-Received: by 2002:aca:d746:: with SMTP id o67mr4624740oig.100.1550892396852;
-        Fri, 22 Feb 2019 19:26:36 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id g128sm33495oif.56.2019.02.22.19.26.35
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Feb 2019 19:26:36 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: sm750fb: Fix missing a blank line after declarations
-Date: Fri, 22 Feb 2019 21:26:32 -0600
-Message-Id: <20190223032632.18892-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,287,1580770800"; 
+   d="scan'208";a="343143409"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Mar 2020 10:11:40 +0100
+Date: Sat, 21 Mar 2020 10:11:39 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: R Veera Kumar <vkor@vkten.in>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v3 1/3] staging: rtl8723bs: os_dep:
+ Remove commented out code lines
+In-Reply-To: <20200321091018.GA1978@tulip.local>
+Message-ID: <alpine.DEB.2.21.2003211011180.2522@hadrien>
+References: <cover.1584764104.git.vkor@vkten.in> <a62d2fbb77990210b939a5ec99ee27cfa5749a09.1584764104.git.vkor@vkten.in> <alpine.DEB.2.21.2003210832000.2522@hadrien> <20200321080741.GA1942@tulip.local> <alpine.DEB.2.21.2003210945070.2522@hadrien>
+ <20200321091018.GA1978@tulip.local>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fix a warning
-WARNING: Missing a blank line after declarations
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/sm750fb/sm750_accel.h | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/sm750fb/sm750_accel.h b/drivers/staging/sm750fb/sm750_accel.h
-index c4f42002a50f..018adf3d82a1 100644
---- a/drivers/staging/sm750fb/sm750_accel.h
-+++ b/drivers/staging/sm750fb/sm750_accel.h
-@@ -223,4 +223,5 @@ int sm750_hw_imageblit(struct lynx_accel *accel,
- 		 u32 fColor,   /* Foreground color (corresponding to a 1 in the monochrome data */
- 		 u32 bColor,   /* Background color (corresponding to a 0 in the monochrome data */
- 		 u32 rop2);
-+
- #endif
--- 
-2.17.1
+On Sat, 21 Mar 2020, R Veera Kumar wrote:
 
+> On Sat, Mar 21, 2020 at 09:46:01AM +0100, Julia Lawall wrote:
+> > On Sat, 21 Mar 2020, R Veera Kumar wrote:
+> >
+> > > On Sat, Mar 21, 2020 at 08:32:49AM +0100, Julia Lawall wrote:
+> > > >
+> > > >
+> > > > On Sat, 21 Mar 2020, R Veera Kumar wrote:
+> > > >
+> > > > > Remove multiple commented out code lines.
+> > > > > Remove blank lines next to them.
+> > > >
+> > > > You don't have the change it, but mentioning removing the blank lines was
+> > > > not really necessary.  It is normal that you should clean up the
+> > > > adjacent whitespace when you clean up the code.
+> > > >
+> > >
+> > > Sorry I can't make out: "You don't have the change it"
+> > >
+> > > So I keep those commented lines or remove them.
+> >
+> > I was commenting on your log message, not on your changes.
+> >
+> > There was no need to include "Remove blank lines next to them." in the log
+> > message.
+> >
+>
+> Okay.
+>
+> Since that log msg is going to be included in git repo commit log,
+> do I have to remove it and send a new patchset revision.
+
+No.  It doesn't harm anything.  It is just not necessary.
+
+julia
+
+>
+> Veera
+>
+> > julia
+> >
+> > >
+> > > But Greg said in comment to patch:
+> > > Again, this is not a long-line comment, it is a code line that is
+> > > commented out. "Remove it in a patch previous to this one please."
+> > >
+> > > Veera
+> > >
+> > > > julia
+> > > >
+>
 
