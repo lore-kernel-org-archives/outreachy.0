@@ -1,113 +1,163 @@
-X-GM-THRID: 6661153650381946880
-X-Received: by 2002:adf:a390:: with SMTP id l16mr474725wrb.11.1550920691015;
-        Sat, 23 Feb 2019 03:18:11 -0800 (PST)
+X-GM-THRID: 6806733335671341056
+X-Received: by 2002:a1c:4e14:: with SMTP id g20mr16712480wmh.143.1584817164189;
+        Sat, 21 Mar 2020 11:59:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:ce03:: with SMTP id m3ls1036802wmc.10.canary-gmail; Sat,
- 23 Feb 2019 03:18:09 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbK9Mw+WF0gi84i6tKvSFE2/ty/zqnq9RAuJi7jLiXkWjDqSMkIL3kJa6CCFed8TQub6udi
-X-Received: by 2002:a1c:be10:: with SMTP id o16mr104966wmf.24.1550920689485;
-        Sat, 23 Feb 2019 03:18:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550920689; cv=none;
+Received: by 2002:adf:a799:: with SMTP id j25ls335868wrc.7.gmail; Sat, 21 Mar
+ 2020 11:59:22 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuTe+RlQWCK8YX+Iqe9nezKO3YQB3z9C9djfoTlfEqHC4CfWkINjd7IoKrsRMbFkKJY3bqd
+X-Received: by 2002:a05:6000:370:: with SMTP id f16mr19540281wrf.9.1584817162803;
+        Sat, 21 Mar 2020 11:59:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584817162; cv=none;
         d=google.com; s=arc-20160816;
-        b=iU6b7n8ic7gqnFzyFRAxlIuIQOWmfOOmiBMwMIp2wokkVz45oOxxYN61MeeE34ZQ3c
-         Aj3jUATWsORMJAilzLeERnWcF7QFNDR9t/Y/0FaFVkpBWZ/daA4lZx/N2fmJlJjcHXRm
-         ee1Ld9TdMw1SFSXsty/cczEIUnCWZ/u8DT8ucDtpi7qNP1koQJpQjDUOV9PLUutqxOAe
-         PeOr4dCm5+k5JD3/lSdyXcieyOqa5URkWPZAJDKA9A3n55HQLSJOC6x7b6CQbHnDicgI
-         Y/hr+wNYrvT/NTygohm6mfKP5198eJOWBX1zifoDrqDcyt9Hbc+gk1Qz4rCBPgpdR8K0
-         E13w==
+        b=zDTM+u7iltRmgVcRbT7C5UQVybRSW6OlzTabQ8bJnK7qsheHsZgXu3me1vmHWv388a
+         hhluQ3bnKjnXbKZRk1PPZ4UhU/6XnJPqfwMUwul/m5cjEAkTHtEvtNlw0H5IMaFoQFH0
+         s8MDiup9koa76zwSesCypQDmgzgkyiCup76qHIzZNPaNbaJbLz7V3l6TFmhA+6opfRUj
+         j0JX4VdHLEN+hpvor+xtEluiwML4VF0hfotjJSy+9ew6sSbONe9JQoxuk2czvwPIzRfU
+         INpb/lyUp8CXl2qV0eerPqHLXsPJUq5Xku5HN3W+4FUeC25ibRQ0Msz5X5qNmYrSroPq
+         xBLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=+GsSC8kWeNV/R5tzYgG2c+8rJl0TR4KyHpnRG356StI=;
-        b=bG76GX/vQNAAbcBe+i7pPT/gS28K4ILj0zLlEVi7B+yeXRZ0SQWW4L3E1drJYiY8n7
-         Y1VZCeeWsZ1z/GRdu1NYGgGRcXbtnoCUONvhtHoECerj/zo8HS4W+GxBsbPXbnkqc8mD
-         IUmyna1W9HOdsjdw+XeWW+U2hkh+CDtVhH4Btm0PkF+mfvFjSvgWRwuYu6k937VPIqiN
-         1Diu4fKHpdMdr4AVqjxz4bOddTvAU6bRRsnlptK68fSW2To3JGbcclDcCuyPZCzsMtX5
-         ftaOzHWJcPj+5kZ3fV+glB/C2DmkkXiPSXJ+5asNLFtkDlGNfOob/wxQ4M+oZkkU2PPj
-         hOvg==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=+GXVSbYJrL1Kx8T3vA6n5LwHpHP7W43SBW9l/hM96lA=;
+        b=qowXk+hbe9ZP7w0ZCB8TsLpidpOD/8mwG9X2Q+Q4XdBzjcYroIAUt1RrWflEp/fDxI
+         ExZqhn3pKLroZPM0qTRtsDpCe/UDO77VCLfxN54X11vkYob4Z9DKhOxH4aWyyGNhqjR7
+         cX6pfxMSr8DXQX8AKJPjnDKMY9iJshFZ7tFrn+ihfnWhOThdGjvF+mwdf0oWXLb2TaUC
+         HhePKdy7e7p5KdX5AEFf24ZQN9EqNKE+4cOiRgFbYvBZLWRAk3yKzQxn/SuUyoYZC9S4
+         aLlOrdvRLHrKoPHhFGqP69ACf9lK0rZRcgLonIcCXJbe+gglxnl+MiIzsgsOvxCo/0aV
+         lSIw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fRrBQi1D;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="W7WLs7/q";
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id t2si131918wrn.3.2019.02.23.03.18.09
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id b17si138504wme.3.2020.03.21.11.59.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Feb 2019 03:18:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 21 Mar 2020 11:59:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fRrBQi1D;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="W7WLs7/q";
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x342.google.com with SMTP id x10so4099807wmg.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Feb 2019 03:18:09 -0800 (PST)
+Received: by mail-wr1-x442.google.com with SMTP id t7so6884651wrw.12
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 11:59:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=+GsSC8kWeNV/R5tzYgG2c+8rJl0TR4KyHpnRG356StI=;
-        b=fRrBQi1D01cnqbMJVM4n0JMvL8mc0axr2ZstRz/OxbFmzvrYUELvT8u4HD9R5Czgcf
-         CPjnn8YS5g7G/ejmZY7pEQwdFP9GJPM/7vJlW7qkEJRKb/06UVU7iH2oTGnDMasZecFQ
-         +FrK02J5qO2pa4TAxL2pmksE7axb+ZaoSvKsmG6HPj/HR/LjF0n/Mx7TbYba7Ddn/40i
-         y+ayWOuT2osOwgZXdbCtD1g7is2W6oTaH70PWf37msDR5fvk5v4/UQaf4d+3tJDeDtKu
-         fzzdiwn+O0W9tV0kdEHiEJWLCQO8XenlojapcqPWX7VAOV3vaJF5zoRRoWIZj+94n0yr
-         /yDA==
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=+GXVSbYJrL1Kx8T3vA6n5LwHpHP7W43SBW9l/hM96lA=;
+        b=W7WLs7/qePMB0XHjhkOky5x9UmjDAH31REYTeWWkq+TocfmnyiGu0poe2FtdHn2V0U
+         HwJYrLn0mobGSsZGyMoQgo9c92AjN8xIqubKfZW+7n/B7S/YuTuW2QAmDb2pmCHD3nIf
+         b6zvjf3VtsbPE7EN+rwPDzdSUEb0ZwkJiwvjpHe9Ss/pSZZvCWdg14NIPutTXC6x4yK9
+         fDfv/c9FaUwAs29quMWdWK6mQjoXZub3s9LJ47oawPsc4r/8twkFaJWGksZzZOVyNDD+
+         /c85SqZUCq8FDCT+4CMX8Er4+LvL8Yd0OJyJYLtvitahgQ9N7sksC9VKIp1aNaACj2ux
+         Slbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=+GsSC8kWeNV/R5tzYgG2c+8rJl0TR4KyHpnRG356StI=;
-        b=r8BrAUAbX8vY/dMFKE1pJsG+OelGBG5+ZqEIvApaxaTD0nUaZx/vVTaY2hpHQpgEBY
-         7GDr7yb6k5tXjfvULXxt0wsqGiOorIOvTwCx0gskE78y5BtrzxdBp9Yw2/jL29jp/8Nr
-         rm89rBjkpYrd632qZwWBx3a7fHACMSUwXB0CmaUSgOW/V+vdz7cdYovBpk3E79VheqSv
-         cxKlRj9BuKCRqmebPaeOtIH5G/9Sgh2X+SDRfjaBh2iSnSnzB37nbBT7SLnzxZg8aVpU
-         yK6bK6SiROBvAib4tlTZJstURoHE+wvtbOz7QoS7wH8xfqNPs+DeloQcw2wwzlkvTc2K
-         jiuQ==
-X-Gm-Message-State: AHQUAuaButrAuaG18h1PZ7wPeXPj6y4vFXkQszG9RisTuWt5MdkCJ7g8
-	oq4E30JbeuvpaZHQBYjBOyC8+aPe5g==
-X-Received: by 2002:a1c:6788:: with SMTP id b130mr5574456wmc.102.1550920688846;
-        Sat, 23 Feb 2019 03:18:08 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain ([185.61.164.85])
-        by smtp.gmail.com with ESMTPSA id g202sm6940124wme.26.2019.02.23.03.18.07
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 23 Feb 2019 03:18:08 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: jreuter@yaina.de
-Cc: linux-hams@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	davem@davemloft.net,
-	ralf@linux-mips.org,
-	netdev@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	jbi.octave@gmail.com
-Subject: [PATCH] net: ax25: Fix  multiple blank lines warning
-Date: Sat, 23 Feb 2019 11:17:51 +0000
-Message-Id: <20190223111751.14620-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=+GXVSbYJrL1Kx8T3vA6n5LwHpHP7W43SBW9l/hM96lA=;
+        b=orxrQS3V3njlF3OCqHQkITVE0IOOUNO4YNbtYIN1mMbL6mv7zNcNFm41mNbrON/OWv
+         soRsGWJNm1zbZCL4ZaX8NBpUlIqIL6KCuqLo/yJzb1SyWG3HNaiMMPaEKgsNGgD04ka2
+         D3FhBvel972tpyf3GMnPSaz+L5Xy71QdJZRFxkoETYs0PZTvBfAkgHxs9EA3TNSjmesT
+         yEUpT3NGGdR//6tVkrm1k/ZkRDFh7tO2I5WF0Rq68e4HjaWY59wG/knyPIZn7l2lqErL
+         l7rw66idukt51zRljvjASgbNy7cWtzD9gxcoeRql7eXNbdih9H+o5fnzxwIZ8bpjpppV
+         zEBw==
+X-Gm-Message-State: ANhLgQ3E5newP4FZeqAwA60SzdmRKNdgguBJqG5CTX3Za6y0FGzHZDvU
+	HsqqrovfYOqmGGqdTPmA5xOqigdVHJc=
+X-Received: by 2002:adf:f6c7:: with SMTP id y7mr19434449wrp.269.1584817162431;
+        Sat, 21 Mar 2020 11:59:22 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from debian ([197.34.115.229])
+        by smtp.gmail.com with ESMTPSA id 133sm14212155wmd.5.2020.03.21.11.59.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 21 Mar 2020 11:59:22 -0700 (PDT)
+Message-ID: <1017f66758decbbb83d378e9c35057446b056d8f.camel@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: hp: Replace
+ printk(KERN_WARNING ...) with netdev_warn().
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Jaroslav Kysela <perex@perex.cz>, Greg Kroah-Hartman
+	 <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Date: Sat, 21 Mar 2020 14:59:20 -0400
+In-Reply-To: <alpine.DEB.2.21.2003211945390.2522@hadrien>
+References: <20200321184132.1908-1-jane.pnx9@gmail.com>
+	 <alpine.DEB.2.21.2003211945390.2522@hadrien>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- net/ax25/af_ax25.c | 2 --
- 1 file changed, 2 deletions(-)
+On Sat, 2020-03-21 at 19:48 +0100, Julia Lawall wrote:
+> 
+> On Sat, 21 Mar 2020, Sam Muhammed wrote:
+> 
+> > Fixup the following checkpatch.pl WARNING:
+> > WARNING: Prefer [subsystem eg: netdev]_warn([subsystem]dev, ...
+> > then dev_warn(dev, ... then pr_warn(...  to printk(KERN_WARNING ...
+> 
+> Sorry to complain some more, but the subject line and the log message are
+> not really idea.  The subject line should be concise and get the main
+> point across, but doen't need a lot of detail.  So "use netdev_warn" could
+> be fine.  The log message is where you should explain what you do and why.
+> Your log message has a lot of words, but the only one that says what you
+> do is "Fixup", which is not very descriptive, and there is no mention of
+> why.
+> 
 
-diff --git a/net/ax25/af_ax25.c b/net/ax25/af_ax25.c
-index 5048790a75f6..2da349b7854a 100644
---- a/net/ax25/af_ax25.c
-+++ b/net/ax25/af_ax25.c
-@@ -49,8 +49,6 @@
- #include <net/ip.h>
- #include <net/arp.h>
- 
--
--
- HLIST_HEAD(ax25_list);
- DEFINE_SPINLOCK(ax25_list_lock);
- 
--- 
-2.20.1
+And I just thought it went smooth :D
+Okay, v3 then.
+Thank you!
+
+Sam
+
+> julia
+> 
+> >
+> > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+> > ---
+> > Changes in v2:
+> > - Removing " : " in the print message, netdev_warn() doesn't need it.
+> >
+> >  drivers/staging/hp/hp100.c | 9 ++++-----
+> >  1 file changed, 4 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+> > index b89c4dcf53f5..1afd511260d0 100644
+> > --- a/drivers/staging/hp/hp100.c
+> > +++ b/drivers/staging/hp/hp100.c
+> > @@ -469,8 +469,7 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
+> >
+> >  	eid = hp100_read_id(ioaddr);
+> >  	if (eid == NULL) {	/* bad checksum? */
+> > -		printk(KERN_WARNING "%s: bad ID checksum at base port 0x%x\n",
+> > -		       __func__, ioaddr);
+> > +		netdev_warn(dev, "bad ID checksum at base port 0x%x\n", ioaddr);
+> >  		goto out2;
+> >  	}
+> >
+> > @@ -478,9 +477,9 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
+> >  	for (i = uc = 0; i < 7; i++)
+> >  		uc += hp100_inb(LAN_ADDR + i);
+> >  	if (uc != 0xff) {
+> > -		printk(KERN_WARNING
+> > -		       "%s: bad lan address checksum at port 0x%x)\n",
+> > -		       __func__, ioaddr);
+> > +		netdev_warn(dev,
+> > +			    "bad lan address checksum at port 0x%x)\n",
+> > +			    ioaddr);
+> >  		err = -EIO;
+> >  		goto out2;
+> >  	}
+> > ---
+> > 2.20.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200321184132.1908-1-jane.pnx9%40gmail.com.
+> >
+
 
 
