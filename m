@@ -1,181 +1,139 @@
-X-GM-THRID: 6664868733855465472
-X-Received: by 2002:a2e:9613:: with SMTP id v19mr1374790ljh.16.1551785677049;
-        Tue, 05 Mar 2019 03:34:37 -0800 (PST)
+X-GM-THRID: 6803716874412490752
+X-Received: by 2002:a02:ac09:: with SMTP id a9mr11711239jao.128.1584776125437;
+        Sat, 21 Mar 2020 00:35:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:4352:: with SMTP id o18ls1713142lfl.11.gmail; Tue, 05
- Mar 2019 03:34:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxnyd1GjNuKGcfHSRJCcS12nxDhk3svD/GQKKj809Gsmr6fjKa2grn8606sINEhtSWhKB3C
-X-Received: by 2002:ac2:548b:: with SMTP id t11mr69821lfk.9.1551785676059;
-        Tue, 05 Mar 2019 03:34:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551785676; cv=none;
+Received: by 2002:a6b:ab47:: with SMTP id u68ls1389233ioe.2.gmail; Sat, 21 Mar
+ 2020 00:35:24 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtWMEeveR3lkLhtV77UW8rklqX0fWcniIHs0H48e4zuTcgyNM7uYoKdQdUZdTunllpuuewq
+X-Received: by 2002:a5d:974b:: with SMTP id c11mr5054040ioo.63.1584776124324;
+        Sat, 21 Mar 2020 00:35:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584776124; cv=none;
         d=google.com; s=arc-20160816;
-        b=ChogaeTkWjocHfLnAom/uEwZDa/kPTgsziBiLRoX24taED5bf/f1vKGHhFjdsnQsC3
-         vmnhniwvThu7vxj89Y5B4YE5RXrlpbQ0ModZ+ZyQxD3ShkrFQci4sNXU+S9A6V3RdYZ/
-         7584AfwnMpHWPUQZvqOdpRlGE4vVDwrVOJhb7mD37k6oGpHjpz6Cv5ixDQTogEDWNSdg
-         SNTqbxay4H9J/8agiwgnwWs/wijKYwBjLG0btA1YtSTyaXtnDFERZIVvRrE/0Hz4fkyU
-         Yrs2w0AM9Et2SfNXJQdw7ibBeQYFvrHhvmjtcHoGGi01kxMXhv6tQowy0k9y34D01vtZ
-         PKeg==
+        b=UcFA/JthuaKwLs+s7tVXqvx07lDAcxJM3ZxOGENZraXR9AndgbjHUokV7VnzFBHLV2
+         a8CnaqnIOKPZzF5lN8LUQFDDkLPbj3YXp8cBmO+xwoRxGfVTWONvOKSfIYH/xF+IKi7N
+         GpurnSlkeyu7PlzISzgZv2I27j2MQe9pOAmqeqIhX1YK0AdoUXXKcgOVTbNnwwVRkn56
+         0ZnDImvRUhV5g1/xnt17r1fQAZGHXUxbwtUXmz35wP2IVe9VYuoszL4Z2Iy/HhOTwYDT
+         IXNT5BhmlQJsRzkpB31bCU5+KrLIy/DKSYLhsxiW3uB3xNp10x/SmUQHtglyoQQAL6+l
+         QMRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=SNMrolHYY30V+Pg+1OLOZIbqwX44JxvoOO25qJtXmLY=;
-        b=fifmckWeQlvSwDTCUyYDBxEHndlKtxGVgRlTFZ2hCg4HmMLgXV4q7i+HiG3AlbR88L
-         iUGNB91nBBA5P4L2FaccOMRvk5MKEOG+MTzo6i+dthWQzVwAxHE9W88JbCwDUoaVeenV
-         HYz7LZ0wLUBMCcNBY2p+20YBTNnV7ppQO1ZRGwStPEBF53aDo8bhnL7EW6//V0r4p5vs
-         uabsRHiVqIhZV5rDz3EnTF1b83ur7tEUjL1RksWUAOEvnacI7yOzkOl92WIkP9KIhc2E
-         q5bLD4xVZ5sJBA5x707p8goLvYUWP7HSEc6ZaIkI58SJFK2tYWfhh5D9mOiOp0MX5Imv
-         M57w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to:date
+         :cc:to:from:subject:message-id:dkim-signature;
+        bh=dN2gc2VL/tWJcbYaiy/5AjuwzdqE+wZx4ZEls90gwPY=;
+        b=ltqk1BVN2QKAbMqAxIZwPydRr9VfhsFPIG7t9ahT+G/MCwGBWWW6JMnQX25i78CCDS
+         dxYIJbruQQmpJHEzp1kUgG26/Zu98Zxav813a2T5oHo3TXagagQsj8AL6tIg94OElQ6/
+         96+E7nJDG8muzn4ZEiC7PTinQrFZmDAgpsPoaJO5cfRtcN14wqbG/cUHI/dJlHc3izQI
+         fNjBHd2v7+XJ4jUXS/8CjNePvCLJVrIJQfr/vqDbZ4lpSytulXSIlBXbmom3Y7F8L/WP
+         vbtzUgPzzHGd783rdB58kzzO/obrAzTyoRxamUiC+BE72IQ664zvWOjl+9IOumfAZEgO
+         RPAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ltPWRuJw;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pFAu5S90;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com. [2a00:1450:4864:20::432])
-        by gmr-mx.google.com with ESMTPS id m16si296901lfl.0.2019.03.05.03.34.36
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id a3si598443iog.2.2020.03.21.00.35.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 Mar 2019 03:34:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) client-ip=2a00:1450:4864:20::432;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 21 Mar 2020 00:35:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ltPWRuJw;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pFAu5S90;
+       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x432.google.com with SMTP id r5so9051116wrg.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 05 Mar 2019 03:34:36 -0800 (PST)
+Received: by mail-pj1-x1044.google.com with SMTP id m15so3500837pje.3
+        for <outreachy-kernel@googlegroups.com>; Sat, 21 Mar 2020 00:35:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=SNMrolHYY30V+Pg+1OLOZIbqwX44JxvoOO25qJtXmLY=;
-        b=ltPWRuJwzLJObp6Z33tSmVzR6y0xZoI0jEXutH/6ljJibaIzvldr+42KQhOoNwFCTD
-         Dyb93h2+ZIXh4lVlDwjH7YgRGwkQ6QsdTDDQUhQ4BR2HZw10bkd8OTFGgqf/6wbTIiQh
-         psXCTYEAa95Fwlu7BB7NqBQkqLQ+k2OkfH4vvahiXXWTVy0MVcw+yuEIiJACUMnkEZc7
-         WM5ps2vujtAVraD/efbCph97p9ZnpkymnJDf9DD7OO8Be/YbryZdsBnfAGRfqFv17TmB
-         y8ZRbWpOeVgrsuyXbwxY3lf7s4ev013Kl1HfVUQigj6nvi68q9oXRuNO6rn4efyHJcHX
-         ZWbw==
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=dN2gc2VL/tWJcbYaiy/5AjuwzdqE+wZx4ZEls90gwPY=;
+        b=pFAu5S90XLZ/NDWN2brs06CREMNIt2MUogFGauc+W8OIFD1gxBH1q2dmrsXR7L6Snz
+         CZQ8gXDKK8F9dSF2SMvvaV8sTe9O64+IA75ETTZzbANH8oy/FoQgFxI8mWIAAaoCMKHI
+         aCqWX7bGyIjL44ZxRXS6y9+j7L4QOuT7sRA/a3Z4g0fey9oNXBs9217bCSOQb4nI7+3N
+         6YDXazI8LGi++sn3zDd/1O1vJLHBLLz01xIE+SLUbuZikieSUXHX/O0AmUVVBF/k3Pu1
+         6D/xvp8Uew4RT2KjEJtXXXK9AS3FjiVyzCTwY5uL5/Egw27h6EEyyzDQEAJ91N3G3pB5
+         20Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=SNMrolHYY30V+Pg+1OLOZIbqwX44JxvoOO25qJtXmLY=;
-        b=F9zalY8IDMwEngUnq1sQ42xVTKXYgEWxAusm2XcQtbTsCuavJMp3bmz+aqs2F7pt7Q
-         +oTTe01Gl0uRdYmCs5G8+1AFcr5KB6L1nOxTT+liNeVaodtixZdLEBhOGR3LEI6urGFs
-         gLxTo8OP7DNv8c7glnrp9lVofshBKkROHp+WytfQZBH6zqF0PhcML/8tPeXAmHmJGQqO
-         PdJSvhxmzeOa/sVE3sUY4UlNNtggaeT3yDdCQOcGq7Jn9LWCPgHvsUZSVu1fYXqtZmwo
-         mtbFoTVu9B3Jqzk5HdoaVTN4+1NwRDMZUtk+GzxY/MEnOFKfj5CZqeFBFqWz2hpnFc6M
-         B/9g==
-X-Gm-Message-State: APjAAAUM+P+Q8/tuZXz+DgjiodecyqdaBKz8fuWEqQIn/LhoOdOagnbo
-	qZ3C31wNhGO4GoLEwtCx9KM9Yc31
-X-Received: by 2002:a05:6000:1084:: with SMTP id y4mr16209991wrw.14.1551785675503;
-        Tue, 05 Mar 2019 03:34:35 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([2a02:2f0a:b600:4700:9c19:34c6:5e3b:e162])
-        by smtp.gmail.com with ESMTPSA id y140sm29206955wmd.18.2019.03.05.03.34.34
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 03:34:34 -0800 (PST)
-Date: Tue, 5 Mar 2019 13:34:33 +0200
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: ralink-gdma: Avoid unnecessary line continuations
-Message-ID: <20190305113433.GA16894@pthm>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=dN2gc2VL/tWJcbYaiy/5AjuwzdqE+wZx4ZEls90gwPY=;
+        b=o1bj2eSn0boUb2prZIF/XvIBzN0BdEAFfyAH2M++txyJW4iW1lJjEkXc+D4c8x05ii
+         zhyjLMVUPfxwXaHxhY27I7s8ylID2mgYLzKnLOnJDfwu8j5ILd0UJ3yshbcbTXXfJbpR
+         nZK0WqkoYNgf3rT5iyN6ilcWQzO/CpuG3EzWARPqSUZ3yYHl34oFH/qp1SZte7MdP0mD
+         1+o019Z1HcLsnFyBh5qOs0VLNpjfyR/+ld07yCb236Se7hFHC0QLg/mN/gySBFq6MGsl
+         A2Uij4hvU/9sLkvQAGYGF3Widew1hAUZSkcXISCAfEn0n0Op/QTdO3IQbN6fjYMFkfAE
+         v7nQ==
+X-Gm-Message-State: ANhLgQ2/YjJZ3DhYKOi7nUrujZ9oAgjcD6uiULj5yA3DVXwIHuzC8QSs
+	qz5I3LAQR4UVfPWK1Sol2uMu1mJv
+X-Received: by 2002:a17:902:b682:: with SMTP id c2mr12604552pls.36.1584776123276;
+        Sat, 21 Mar 2020 00:35:23 -0700 (PDT)
+Return-Path: <payalskshirsagar1234@gmail.com>
+Received: from payal-desktop ([49.35.14.249])
+        by smtp.googlemail.com with ESMTPSA id h11sm7614039pfn.103.2020.03.21.00.35.20
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 21 Mar 2020 00:35:22 -0700 (PDT)
+Message-ID: <fb33df4b25a1a588fe1850b6cbc9397791ce6499.camel@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0/3] staging: rtl8723bs: remove
+ unneeded local variables
+From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com
+Date: Sat, 21 Mar 2020 13:05:17 +0530
+In-Reply-To: <20200317113849.GA1222404@kroah.com>
+References: <cover.1584113084.git.payalskshirsagar1234@gmail.com>
+	 <alpine.DEB.2.21.2003132025350.2355@hadrien>
+	 <5dd7e63b4fea205ec7a45456794ec8b12d8faa4f.camel@gmail.com>
+	 <alpine.DEB.2.21.2003150940050.2645@hadrien>
+	 <f46d12c4e5ae5dbe5ff6d1faffcb14d02799da5f.camel@gmail.com>
+	 <20200317113849.GA1222404@kroah.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-Get rid of unnecessary line continuations in
-boolean expressions, warning detected by checkpatch
+On Tue, 2020-03-17 at 12:38 +0100, Greg KH wrote:
+> On Sun, Mar 15, 2020 at 03:51:24PM +0530, Payal Kshirsagar wrote:
+> > On Sun, 2020-03-15 at 09:40 +0100, Julia Lawall wrote:
+> > > 
+> > > On Sun, 15 Mar 2020, Payal Kshirsagar wrote:
+> > > 
+> > > > On Fri, 2020-03-13 at 20:26 +0100, Julia Lawall wrote:
+> > > > > 
+> > > > > On Fri, 13 Mar 2020, Payal Kshirsagar wrote:
+> > > > > 
+> > > > > > Remove unneeded variables and their declarations from the
+> > > > > > files
+> > > > > > of
+> > > > > > staging/rtl8723bs directory.
+> > > > > > 
+> > > > > > Payal Kshirsagar (3):
+> > > > > >   staging: rtl8723bs: hal: hal_com.c: remove unneeded
+> > > > > > variable
+> > > > > >   staging: rtl8723bs: core: rtw_io.c: remove unneeded
+> > > > > > variables
+> > > > > >   staging: rtl8723bs: core: rtw_pwrctrl.c: remove unneeded
+> > > > > > variable
+> > > > > 
+> > > > > The subject lines should be created according to what others
+> > > > > have
+> > > > > done for
+> > > > > these files.  In any case, there should not be .c
+> > > > > 
+> > > > 
+> > > > Since I had done same change in all the files in only a single
+> > > > directory, I needed to add their names to make the seperate
+> > > > patches
+> > > > for
+> > > > each file.
+> > > 
+> > > Someone suggested that still there should not be the .c part.
+> > 
+> > Okay, I will make sure from next time:)
+> 
+> Please fix this and make sure _this_ time :)
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
----
- drivers/staging/ralink-gdma/ralink-gdma.c | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/staging/ralink-gdma/ralink-gdma.c b/drivers/staging/ralink-gdma/ralink-gdma.c
-index ccf9ccc..44a65e2 100644
---- a/drivers/staging/ralink-gdma/ralink-gdma.c
-+++ b/drivers/staging/ralink-gdma/ralink-gdma.c
-@@ -298,14 +298,14 @@ static int rt305x_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
- 	if (chan->desc->direction == DMA_MEM_TO_DEV) {
- 		src_addr = sg->src_addr;
- 		dst_addr = chan->fifo_addr;
--		ctrl0 = GDMA_REG_CTRL0_DST_ADDR_FIXED | \
--			(8 << GDMA_RT305X_CTRL0_SRC_REQ_SHIFT) | \
-+		ctrl0 = GDMA_REG_CTRL0_DST_ADDR_FIXED |
-+			(8 << GDMA_RT305X_CTRL0_SRC_REQ_SHIFT) |
- 			(chan->slave_id << GDMA_RT305X_CTRL0_DST_REQ_SHIFT);
- 	} else if (chan->desc->direction == DMA_DEV_TO_MEM) {
- 		src_addr = chan->fifo_addr;
- 		dst_addr = sg->dst_addr;
--		ctrl0 = GDMA_REG_CTRL0_SRC_ADDR_FIXED | \
--			(chan->slave_id << GDMA_RT305X_CTRL0_SRC_REQ_SHIFT) | \
-+		ctrl0 = GDMA_REG_CTRL0_SRC_ADDR_FIXED |
-+			(chan->slave_id << GDMA_RT305X_CTRL0_SRC_REQ_SHIFT) |
- 			(8 << GDMA_RT305X_CTRL0_DST_REQ_SHIFT);
- 	} else if (chan->desc->direction == DMA_MEM_TO_MEM) {
- 		/*
-@@ -314,8 +314,8 @@ static int rt305x_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
- 		 */
- 		src_addr = sg->src_addr;
- 		dst_addr = sg->dst_addr;
--		ctrl0 = GDMA_REG_CTRL0_SW_MODE | \
--			(8 << GDMA_REG_CTRL1_SRC_REQ_SHIFT) | \
-+		ctrl0 = GDMA_REG_CTRL0_SW_MODE |
-+			(8 << GDMA_REG_CTRL1_SRC_REQ_SHIFT) |
- 			(8 << GDMA_REG_CTRL1_DST_REQ_SHIFT);
- 	} else {
- 		dev_err(dma_dev->ddev.dev, "direction type %d error\n",
-@@ -323,8 +323,8 @@ static int rt305x_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
- 		return -EINVAL;
- 	}
- 
--	ctrl0 |= (sg->len << GDMA_REG_CTRL0_TX_SHIFT) | \
--		 (chan->burst_size << GDMA_REG_CTRL0_BURST_SHIFT) | \
-+	ctrl0 |= (sg->len << GDMA_REG_CTRL0_TX_SHIFT) |
-+		 (chan->burst_size << GDMA_REG_CTRL0_BURST_SHIFT) |
- 		 GDMA_REG_CTRL0_DONE_INT | GDMA_REG_CTRL0_ENABLE;
- 	ctrl1 = chan->id << GDMA_REG_CTRL1_NEXT_SHIFT;
- 
-@@ -376,21 +376,21 @@ static int rt3883_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
- 		src_addr = sg->src_addr;
- 		dst_addr = chan->fifo_addr;
- 		ctrl0 = GDMA_REG_CTRL0_DST_ADDR_FIXED;
--		ctrl1 = (32 << GDMA_REG_CTRL1_SRC_REQ_SHIFT) | \
-+		ctrl1 = (32 << GDMA_REG_CTRL1_SRC_REQ_SHIFT) |
- 			(chan->slave_id << GDMA_REG_CTRL1_DST_REQ_SHIFT);
- 	} else if (chan->desc->direction == DMA_DEV_TO_MEM) {
- 		src_addr = chan->fifo_addr;
- 		dst_addr = sg->dst_addr;
- 		ctrl0 = GDMA_REG_CTRL0_SRC_ADDR_FIXED;
--		ctrl1 = (chan->slave_id << GDMA_REG_CTRL1_SRC_REQ_SHIFT) | \
--			(32 << GDMA_REG_CTRL1_DST_REQ_SHIFT) | \
-+		ctrl1 = (chan->slave_id << GDMA_REG_CTRL1_SRC_REQ_SHIFT) |
-+			(32 << GDMA_REG_CTRL1_DST_REQ_SHIFT) |
- 			GDMA_REG_CTRL1_COHERENT;
- 	} else if (chan->desc->direction == DMA_MEM_TO_MEM) {
- 		src_addr = sg->src_addr;
- 		dst_addr = sg->dst_addr;
- 		ctrl0 = GDMA_REG_CTRL0_SW_MODE;
--		ctrl1 = (32 << GDMA_REG_CTRL1_SRC_REQ_SHIFT) | \
--			(32 << GDMA_REG_CTRL1_DST_REQ_SHIFT) | \
-+		ctrl1 = (32 << GDMA_REG_CTRL1_SRC_REQ_SHIFT) |
-+			(32 << GDMA_REG_CTRL1_DST_REQ_SHIFT) |
- 			GDMA_REG_CTRL1_COHERENT;
- 	} else {
- 		dev_err(dma_dev->ddev.dev, "direction type %d error\n",
-@@ -398,8 +398,8 @@ static int rt3883_gdma_start_transfer(struct gdma_dmaengine_chan *chan)
- 		return -EINVAL;
- 	}
- 
--	ctrl0 |= (sg->len << GDMA_REG_CTRL0_TX_SHIFT) | \
--		 (chan->burst_size << GDMA_REG_CTRL0_BURST_SHIFT) | \
-+	ctrl0 |= (sg->len << GDMA_REG_CTRL0_TX_SHIFT) |
-+		 (chan->burst_size << GDMA_REG_CTRL0_BURST_SHIFT) |
- 		 GDMA_REG_CTRL0_DONE_INT | GDMA_REG_CTRL0_ENABLE;
- 	ctrl1 |= chan->id << GDMA_REG_CTRL1_NEXT_SHIFT;
- 
--- 
-2.7.4
+Okay, I will send them all in a single patch so that I won't need to
+add .c file names in the subject lines.
 
 
