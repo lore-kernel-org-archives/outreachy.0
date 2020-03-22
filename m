@@ -1,88 +1,138 @@
-X-GM-THRID: 6342256003248029696
-X-Received: by 10.13.200.5 with SMTP id k5mr5468474ywd.60.1476671547558;
-        Sun, 16 Oct 2016 19:32:27 -0700 (PDT)
+X-GM-THRID: 6807040455722663936
+X-Received: by 2002:a05:600c:2048:: with SMTP id p8mr20619606wmg.58.1584888894766;
+        Sun, 22 Mar 2020 07:54:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.130.39 with SMTP id e39ls3255586iod.11.gmail; Sun, 16 Oct
- 2016 19:32:23 -0700 (PDT)
-X-Received: by 10.98.194.74 with SMTP id l71mr6106110pfg.11.1476671542417;
-        Sun, 16 Oct 2016 19:32:22 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from mail-vk0-x243.google.com (mail-vk0-x243.google.com. [2607:f8b0:400c:c05::243])
-        by gmr-mx.google.com with ESMTPS id p131si4637041vkf.1.2016.10.16.19.32.22
+Received: by 2002:a5d:548b:: with SMTP id h11ls1058235wrv.9.gmail; Sun, 22 Mar
+ 2020 07:54:53 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vustonXwdBJhIm8LjzBHRjuwdewNv6sLhMIjkQa8onN2fyUN7bTAFyubhgEMD763zInxF60
+X-Received: by 2002:adf:90e1:: with SMTP id i88mr24761536wri.95.1584888893456;
+        Sun, 22 Mar 2020 07:54:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584888893; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dUUPVlDIKZiNgQ94fi4qZEZqJQeRkVXowe+xR0V3vu/TJbYVRPllGe7krPurKPJBLZ
+         5iH/jz35rvKZtcVDom6Fs/yCO7Df24i91EZCEwOr0Pobwx0xlqMRP9mXKLGksxrA+sXM
+         DrsgLC8BGD0ysq0cmW+TEvjOtlXH+THQNnwGIolaqdThWdg3S882+6DK1wcrXVfm+nx9
+         IrwZib7tVv5MIrptRlp5cPB0ok5vXBT2m/zpyPpzelYTDqe0XZoGvLmtLmqdomMFknIH
+         Ssq/W9fzSUmNVr1DadxDV3umHzFcLByniI2sMiu5m+NjnEcZmOsPCCm8vfvdfqQwJeRN
+         NlCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=TDye0u/ABL6RwTn3AS2/ov1iSyvTF3YMC6NH4VMO+wQ=;
+        b=s8BcmWpO52ic+HrYcOK1j8lt0u10ZEs/LmgZwwmnf0yrRMOg+VUVPlgN/35z7AR4dn
+         7caEHmrXU6PdrQSclYG5n2lGQYlqeUdpIeIddzjYghbb/CwjPLELKmhdZQWnRHHzRlLf
+         qziQA+VLfNHQM/vp2/d9zhqMBmIKJOV1vuya15nOS2/x6Imu2QYCv+HPKhb5duRmYVM1
+         kcytTWQIR9OEN7ML+vruoTDaPKRwJ9AOYuo/nQzTxm1XM620FQgthDn4E9vFb9tyK0jp
+         ct30jmeEhX3v9YFFf5PlTmR4LsI6LjV3bNXByVLk9/G0zDqgMsDYHQY3td1vt2REsoMU
+         tMbw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a18si566995wra.0.2020.03.22.07.54.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 16 Oct 2016 19:32:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) client-ip=2607:f8b0:400c:c05::243;
+        Sun, 22 Mar 2020 07:54:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of elise.lennion@gmail.com designates 2607:f8b0:400c:c05::243 as permitted sender) smtp.mailfrom=elise.lennion@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-vk0-x243.google.com with SMTP id b186so7213268vkb.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 16 Oct 2016 19:32:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=G4hnWgTJO2sarcvMAgdMU1CHH62eibmaRGU0nvRC2IM=;
-        b=wHXEnOuwjUGro85+DqL/s1xzGZflgQrYrTGS1avN+FXFvRthmMpWeTDup0zn6eQ+ol
-         ElE6Z/I6O4FvFi1cZqDPf52V969+0YmoSQTI4HQQSTsLw0EEpkoilRARSQpS2sqUfH0/
-         oAD7tzcYAzLe0v7dFoHpIqKwNK5mjz9hbWlBV/lhOV3CvbJeCKeny4+BwelZKKvLJq/o
-         NLZcYyPnPeDRH7zIh+xNK8TKYFKWKPfD4jYpP1Se+hkTbHxleuNlbzQ1hSVWNgBO+C1t
-         eGI/2zB7zN6qIqUfyOJ6N0tHWPej2VIxP4sHHyWBX+dpmd3DNu2KLrRzCsRpEKau0xdO
-         OZdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=G4hnWgTJO2sarcvMAgdMU1CHH62eibmaRGU0nvRC2IM=;
-        b=A7ocWwRwRjvevtiXzmumgMaJucNsfi3SRkQDxCHjqHsHAqb9KByVBHKkAwJ7RDRGch
-         XqAOttIO25SfPMg8Wj4AAQj5+IzSO/zjHP8zfcmFsy+WyN1YxnqYGZj9Yi1hjkAhHmW5
-         pcZHR0WHmrbGCu67zZfOalzQVfcx4TIFwDYUA+4zWUyedqi7burcwE+ub26WJOXPHQL4
-         A1j7aPMdOcR4ozgNNKElWJBXChiclhmC3Kc2rdldFRt/Rd/BHZNbP2HBbxbAyAjLat54
-         cSKrqilEv27fF3VMITYCLQExpWP0pI+JFVRrR0vfcW/hqYHxdqP7BNR16zWm0hCm7DXo
-         Q5ew==
-X-Gm-Message-State: AA6/9RlYSf4MkIVhn+XzZq8TBg2oPyVsRz1ZBccpKrMGtC6Tvd+qb9v9UTEeDoK7Lnrgrw==
-X-Received: by 10.31.207.133 with SMTP id f127mr16038058vkg.114.1476671542240;
-        Sun, 16 Oct 2016 19:32:22 -0700 (PDT)
-Return-Path: <elise.lennion@gmail.com>
-Received: from lennorien.com ([187.64.224.84])
-        by smtp.gmail.com with ESMTPSA id t198sm11045315vkc.6.2016.10.16.19.32.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 16 Oct 2016 19:32:21 -0700 (PDT)
-Date: Mon, 17 Oct 2016 00:32:16 -0200
-From: Elise Lennion <elise.lennion@gmail.com>
-To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: sm750fb: Make variable read only after
- initialization.
-Message-ID: <20161017023216.GA17876@lennorien.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,292,1580770800"; 
+   d="scan'208";a="343201772"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2020 15:54:52 +0100
+Date: Sun, 22 Mar 2020 15:54:52 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Sam Muhammed <jane.pnx9@gmail.com>
+cc: Samuel Thibault <samuel.thibault@ens-lyon.org>, 
+    outreachy-kernel@googlegroups.com, William Hubbs <w.d.hubbs@gmail.com>, 
+    Chris Brannon <chris@the-brannons.com>, Kirk Reiser <kirk@reisers.ca>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] Re: [PATCH] Staging: speakup: Use pr_warn()
+ defined in <linux/printk.h>.
+In-Reply-To: <35ae3f18d6f774d19119d0fed29773f14f99da94.camel@gmail.com>
+Message-ID: <alpine.DEB.2.21.2003221553440.2325@hadrien>
+References: <20200322143322.29098-1-jane.pnx9@gmail.com>  <20200322143516.wsekmcsreziw5tvo@function> <35ae3f18d6f774d19119d0fed29773f14f99da94.camel@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Use __ro_after_init to protect variable, initialized in several steps,
-from overwrite during runtime.
 
-Signed-off-by: Elise Lennion <elise.lennion@gmail.com>
----
- drivers/staging/sm750fb/sm750.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 0663ec0..5c02ad8 100644
---- a/drivers/staging/sm750fb/sm750.c
-+++ b/drivers/staging/sm750fb/sm750.c
-@@ -719,7 +719,7 @@ static int sm750fb_set_drv(struct lynxfb_par *par)
- 	return ret;
- }
- 
--static struct fb_ops lynxfb_ops = {
-+static __ro_after_init struct fb_ops lynxfb_ops = {
- 	.owner = THIS_MODULE,
- 	.fb_check_var =  lynxfb_ops_check_var,
- 	.fb_set_par = lynxfb_ops_set_par,
--- 
-2.7.4
+On Sun, 22 Mar 2020, Sam Muhammed wrote:
 
+> On Sun, 2020-03-22 at 15:35 +0100, Samuel Thibault wrote:
+> > Sam Muhammed, le dim. 22 mars 2020 10:33:22 -0400, a ecrit:
+> > > Dropping a user-defined pr_warn() and using the kernel
+> > > message printing functions implemented in <linux/printk.h>.
+> > >
+> > > Since both have the same functionality, using the standard
+> > > kernel functions is better.
+> > >
+> > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+> >
+> > Reviewed-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+> >
+>
+> Thank you!
+> I have a question though, some drivers define pr_fmt() to include the
+> driver's KBUILD_MODNAME
+>
+> #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+>
+> I added it, it builds fine but prompts me about a warning that its
+> redefined over the original pr_fmt() in <linux/printk.h>
+>
+> is this warning usually ignored? because there are lots of drivers
+> redefined their own pr_fmt()
+>
+> if so should i add it?
+
+I don't know the details of this issue, but you shouldn't add warnings.
+If you do make make path/file.i you will see the result of preprocessing
+the file.  Then maybe you can see why there is a warning in your case, but
+not in the other cases.
+
+julia
+
+>
+> Sam
+>
+> > Thanks!
+> >
+> > > ---
+> > >  drivers/staging/speakup/spk_priv.h | 6 ++----
+> > >  1 file changed, 2 insertions(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/speakup/spk_priv.h b/drivers/staging/speakup/spk_priv.h
+> > > index ac6a74883af4..c75b40838794 100644
+> > > --- a/drivers/staging/speakup/spk_priv.h
+> > > +++ b/drivers/staging/speakup/spk_priv.h
+> > > @@ -11,13 +11,11 @@
+> > >  #ifndef _SPEAKUP_PRIVATE_H
+> > >  #define _SPEAKUP_PRIVATE_H
+> > >
+> > > +#include <linux/printk.h>
+> > > +
+> > >  #include "spk_types.h"
+> > >  #include "spk_priv_keyinfo.h"
+> > >
+> > > -#ifndef pr_warn
+> > > -#define pr_warn(fmt, arg...) printk(KERN_WARNING fmt, ##arg)
+> > > -#endif
+> > > -
+> > >  #define V_LAST_VAR { MAXVARS }
+> > >  #define SPACE 0x20
+> > >  #define SYNTH_CHECK 20030716 /* today's date ought to do for check value */
+> > > ---
+> > > 2.20.1
+> > >
+> >
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/35ae3f18d6f774d19119d0fed29773f14f99da94.camel%40gmail.com.
+>
 
