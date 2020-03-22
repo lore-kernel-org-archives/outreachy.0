@@ -1,69 +1,111 @@
 X-GM-THRID: 6806824358191824896
-X-Received: by 2002:a17:90b:3656:: with SMTP id nh22mr7143270pjb.71.1584959704247;
-        Mon, 23 Mar 2020 03:35:04 -0700 (PDT)
+X-Received: by 2002:adf:dd8f:: with SMTP id x15mr27489381wrl.201.1584921067193;
+        Sun, 22 Mar 2020 16:51:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:58a:: with SMTP id 132ls7360178pgf.5.gmail; Mon, 23 Mar
- 2020 03:35:02 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vucNAJMwvV22CiOgFrbmatVQhZADi8yqsQ7UXHtM33qStZhgCfxhfiBD9fPr8EjTTPdPxqW
-X-Received: by 2002:a63:585:: with SMTP id 127mr3439020pgf.196.1584959702627;
-        Mon, 23 Mar 2020 03:35:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584959702; cv=none;
+Received: by 2002:a05:600c:24c:: with SMTP id 12ls37564wmj.1.experimental-gmail;
+ Sun, 22 Mar 2020 16:51:05 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvd5ca7SRQuOdsLLH1JJVBHwqc6vK/QCJTuP+IRgDJzSg8/L15ilkyy0wJz2na2t2EsoX1O
+X-Received: by 2002:a1c:5419:: with SMTP id i25mr20302438wmb.89.1584921065573;
+        Sun, 22 Mar 2020 16:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584921065; cv=none;
         d=google.com; s=arc-20160816;
-        b=RIdtKHHKc1fc4Pzo6pZUT1CbXPpSmL/+2bq2+REsqaEUVj8xL4HMBQdh+v3hKgMfih
-         VUKcRTOmOETXgEf/oxdw6d44DojWeZ05EI0DRvaBld4cvQgEGqFS2YiYL344Nd4WrAIW
-         NOjR8UMOuk7I2IktiJ9/meQqzN9DP+22Jux34QqXum9YXcHYL4dgR6CJoi0gE2pO34jW
-         jIWAWcOCPhTSLFgRCb2RIuC+Xgav9mmkZc4givUPaUfI3mtoye8OT2cmD44jggsZfsnu
-         0qQCDG4OKVlRPbA1Opylg/yYq2AkzWYym/DNe6lFnn9LnCHoBP9PN4MNgXmFe2iFfweO
-         pF6g==
+        b=A5su6qKOcJsdasOqUxoec/fQcBbCPxmu6M98AbiBKwthvWbFi9hbW/WIhjkrP36GGO
+         sm5XP54VoQaPf+v6sW2Doi/FbdGepMaomzFmN9fVPJ+cuHV7VdzYDSIYIIiUV3UGr07L
+         tYfKMv2/CAVKfggDsFn8TvtqieadU/VPvfikvYu6NNItduK0++9UBtIMQrjJMkGTnNHQ
+         ItB5RPUwhZERo989ilJFOhdEKq/wzZ8UZq/z/3k+204R6Fw9J2cYlL+wbGAShkXep8sz
+         b6l/Gkn7o3PWUrBngaD1EZ/CynUhALhZow0B6P/UHK4I86fLAknEtkqjTI13hdp4O2/p
+         YoGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=T3v/r/tJPOQGhK48XWuVjgoO1DsVjEz8IZfl1yiRM8Y=;
-        b=WZrKE6cjnztHhBpX7J1cY2bRx0Pfo3kFzzroMGHFkQKFd9tnQT9sDj4nYREru9vNGj
-         fHrF0DW/V4wYrpSPDlZBFerLUip5BW+puX9wZroQRrGBS0wzw1V1cBAAeO9eM4p1bHGT
-         SNXe8duZLakCK4bc7ZoO+pPJW5RrMmhfZo0Dve9pXuPpyPTV/46TmgT+kgjwFIKWXZtT
-         i5D14CK9rD00W1xF+yBMEHyw6Jn+LOyIiudWLr1aStmkJwbuRK9JoI/mLZUnGuWtaxbl
-         eAOZoGOb1Wly940K4XouA+n9iHCxOBXc5Y0SLOaYR7fQcMMqacRuhw1sc21v9iDvue5z
-         cspg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=VFOXHR2vAexD9G4Xvi4Ur+/hYQshZUm7mxB5gPivt/Y=;
+        b=00KSZ3edzCscmictelayG5oLs+RSQMmuOeOmZVA5caGRNsHsBXLl5q1wR1fag5GQ3B
+         fra93IdrHdtcJ4M2jH1RSsmdGDpwmjr1Aicd2P/TL1ScYrmHwRRqGJDJNKvFjnNdpVQp
+         /MRuQSpY+1cnv8Lm5KYn+gC+hVGBLjto51PQFj0Zy346Bm71Voy7PElcB+QZp41KD1ft
+         bFnO+VrWW8NTwND25viVUgxxM1RRhqx3YwLvwtl2TfMBNQIsjoJi2aX27H3AvRnCIuYM
+         VZ5dxWNYqkurS0yAlgQQoZglhqHq+coffLbNGfVGK9lwpS8InTeAV4d9sErGYUCDblBa
+         k/vA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Pk0EfFof;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id y1si286956pjv.2.2020.03.23.03.35.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jQKESszA;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-lf1-x141.google.com (mail-lf1-x141.google.com. [2a00:1450:4864:20::141])
+        by gmr-mx.google.com with ESMTPS id q205si615199wme.4.2020.03.22.16.51.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Mar 2020 03:35:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Mar 2020 16:51:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) client-ip=2a00:1450:4864:20::141;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=Pk0EfFof;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id D462B20722;
-	Mon, 23 Mar 2020 10:35:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1584959702;
-	bh=T3v/r/tJPOQGhK48XWuVjgoO1DsVjEz8IZfl1yiRM8Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Pk0EfFofh1UNQ3Y7cqV5omNnYsembdeCZn1kDeBzHjonCBvJ9E0r/EjBIVtLSRge5
-	 0uejJDURqB0vd/Oi/7dbpvwcSGZyCVtnaaIv78HIxlWXu9UdJtEZCH6POx9zrcgeHA
-	 MfigX/rz++ISF33p6jSvpYFGW3QBxMi+EyASSCe0=
-Date: Mon, 23 Mar 2020 11:34:59 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Gokce Kuler <gokcekuler@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH v2] staging: hp100: Remove unnecessary braces
-Message-ID: <20200323103459.GA452208@kroah.com>
-References: <20200322235103.GA14205@siyah2>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jQKESszA;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x141.google.com with SMTP id j17so8828187lfe.7
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 16:51:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=VFOXHR2vAexD9G4Xvi4Ur+/hYQshZUm7mxB5gPivt/Y=;
+        b=jQKESszAY+b81TmVxpLhXrBfnGng1iVz0300Ew/pY+AsAHvIBPcNgBLUFrfQuGHksK
+         uvrx1ENSGW/2sl5Z9a3uAWURr3yjztJr48jXtxCk6nvD/epfxJJCDIVkfC5N89zP9Ten
+         Mz3ibynk8ekLbVXIGbYU7IK63U6kgDxZpDCh25n2zCMmSml9pLE9Twy605j+0cRyNwtM
+         t4BpQeHONus7uhNOSqDNNSy1j1vHUgW1KasB9e7AKstP56dmcpfXLGsERKtL7c2CbW60
+         RVJzyyQNqIQZG5U2dnKiayaYIZsRAEt+J3uTyT9ZyviafKtsWFDlWWklTQzo41/9cDtx
+         E5Vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=VFOXHR2vAexD9G4Xvi4Ur+/hYQshZUm7mxB5gPivt/Y=;
+        b=JzpUmYILmC03BKQ0uXgDCn94rIAEIV67E+v5V8vfYbUY6BBnQn/G5wr2dYx0Xnnl5B
+         5sI2fDrlOJHLvbP+U0DMjRS5D/blR1V/uoAVL+SSFc+U0iAnlN8JonH10ZeAEXOSkJmT
+         DDfRMHCzH9AYRNUDeVsWkwDDmE3H+Dd82S3FELTZ2vcB7dS8s1Gw4qBe/Ofio7PfUbMD
+         aL0DImgVetTcjUrqjwNDE9KaqaVr/UWcn/moimUfJOCXZ8/A9pb1DVhC0w5yAS1AqrSS
+         stKBuJGq/RDmYwClCqk3N66YC18DjzDBn0BS9eG9sQqT1PBPCBD16DKBeQpcKLJn6YWd
+         LVbQ==
+X-Gm-Message-State: ANhLgQ28CmJvwKrWcObp584IiXFpwYZEypN3GNVEGOzxJiLmZP2a0Gka
+	l9KlcSs9yJVnqJIUi4EUT6vJLH3DnUo=
+X-Received: by 2002:a19:c217:: with SMTP id l23mr11743811lfc.40.1584921065064;
+        Sun, 22 Mar 2020 16:51:05 -0700 (PDT)
+Return-Path: <gokcekuler@gmail.com>
+Received: from siyah2 ([88.241.65.39])
+        by smtp.gmail.com with ESMTPSA id k23sm7546626ljk.40.2020.03.22.16.51.04
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 22 Mar 2020 16:51:04 -0700 (PDT)
+Date: Mon, 23 Mar 2020 02:51:03 +0300
+From: Gokce Kuler <gokcekuler@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: hp100: Remove unnecessary braces
+Message-ID: <20200322235103.GA14205@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200322235103.GA14205@siyah2>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Mon, Mar 23, 2020 at 02:51:03AM +0300, Gokce Kuler wrote:
-> Delete unnecessary blank line.
+Delete unnecessary blank line.
 
-This does not match your subject line :(
+Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+---
+ drivers/staging/hp/hp100.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+index 43607fb..32a9e29 100644
+--- a/drivers/staging/hp/hp100.c
++++ b/drivers/staging/hp/hp100.c
+@@ -2792,8 +2792,7 @@ void hp100_RegisterDump(struct net_device *dev)
+ 			/* Display Register contents except data port */
+ 			if (((Register != 0x10) && (Register != 0x12)) || (Page > 0)) 
+ 				printk("0x%.2x = 0x%.4x\n", Register, inw(ioaddr + Register));
+-			
+-		}
++			}
+ 	}
+ 	hp100_page(PERFORMANCE);
+ }
+-- 
+2.7.4
+
 
