@@ -1,200 +1,129 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:a63:ec50:: with SMTP id r16mr20375275pgj.274.1584920421960;
-        Sun, 22 Mar 2020 16:40:21 -0700 (PDT)
+X-Received: by 2002:a5d:9707:: with SMTP id h7mr16414732iol.112.1584907053643;
+        Sun, 22 Mar 2020 12:57:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:9416:: with SMTP id r22ls71457pjo.0.canary-gmail;
- Sun, 22 Mar 2020 16:40:20 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsRV4Wt7LWIy9CTbADrCIrSSmKhdBK93b+DtoZvNnhoRMZRp3Bxy/OhVTcCXY6a0lyATAeD
-X-Received: by 2002:a17:90a:a511:: with SMTP id a17mr22305379pjq.178.1584920420387;
-        Sun, 22 Mar 2020 16:40:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584920420; cv=none;
+Received: by 2002:a92:8619:: with SMTP id g25ls2802353ild.7.gmail; Sun, 22 Mar
+ 2020 12:57:32 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvVmlrIj5ozYqywKUN30W/BWvW4beKDg29P49/sXxt4LThdKl6Ac34ygY1dMwJFSUJq1HO7
+X-Received: by 2002:a92:8989:: with SMTP id w9mr18198410ilk.56.1584907052580;
+        Sun, 22 Mar 2020 12:57:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584907052; cv=none;
         d=google.com; s=arc-20160816;
-        b=oOuGhqD/FaUecEDQPXHNeg1MLXxxsxFpVPiGEG7ZyRUw/aRHIE1VuYId2lTdV+s3E6
-         bmnNa6AuEn3YOnCx8mtm0NWjlBqTaEPq3cgS6jo7RmsKHIcS3PD+VcUIIOY/RPqaibkJ
-         jDwCa3BjwFTU9Y6ofxZQ0QwUEOph8qVCHCmdmBBreJKslJL/HG5nhAwZelRmz6MsFhM2
-         L8YEHUKj319gdy4z8o7hRUO/lA9vC28KUcU5oNtKxQ2tjY72w1lPtbWqvcRBSFQaWZ+y
-         mofGEmh7jzPLg+NSxStyMe2aPk5whZAD+2CiK3zUOL0AIJXmzq9oxsCMwNvknhjQq+fA
-         RnkQ==
+        b=Lsbtv1JUEVFA/ObjHoY27SFooECiuSR8hnd1GKycHe3IZ/Nh/6orANL45TT5KfbujW
+         EwLOi6ft7cRsFC4ad9mBNgOiXsdMwKn5GvQw/Mex16EOSMsBifaicXDHrRsk2DB5+hML
+         WJvMFk1dftQKvGAg8PdwtMTiWelQ6sdHuGDEvjlqZmljQggQihttbzNZpYh714yRfdRY
+         ds/iq15WKj7J8iVW4epH+uJ9h96tr2Eb3Tb6z2g3fZHRMR5r3sfckNmo2nWyR/OtK/rZ
+         W5agPLUPLTtAVjaN0IFBKO/h/Yugic2XTnxTNo8xt1gTXsDYo9H0tUNqqjYOFTpXZXrV
+         CA6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=LSoiX2KDtuHcjAvxn49iG05bHr7GoZNqUhV+VjEizwk=;
-        b=u0XBmymcfrmPDUrb5e/Dq6OccecUjPy5Zwr0klev/8eJXNpPH1b0rVuS2P01JtZEMz
-         JUaqtaNlhxi/h/87TPinb0NTa0xiiolWSvJUx2I5LMyZ1FC5eN+03IL7CFD4XjDtU6qg
-         d7ICJfg/5o+gFlylVQRxEnOcdx6Iejr8WD6aS1QsY33IN3oBtOfGLZhK6gXmcEt7b+YE
-         ltyUKw7Pq/b6z5ley9vtP+RLeHVoyEPNLI2U/gR7OL/+5prgu4sZnU+b1rmPpLjcCayJ
-         /PIVZU0MebKWf1ml4lyIVxFYh/qwDYE2QEb39kIZs4yLXJpMDz4FuGfmCFmnn93v7a96
-         v4VA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=nQ9eVZZkX7CNW4Rrn5Fg/rgNjC4YD968Vs0CMRGqKrU=;
+        b=wZRe3npgEprDrfE4NDfvepOqB2TUtCQc4YJ0ulBMckcAeQ3LE5+PJ19AGAh5ViazQC
+         9H5lHSqu4oGkVKvGQo2WfX3rSsH1GuxDzdX3R3nW73etX+6aiykHfbCGbKX+wLQEedEo
+         mAI+VC14X4ng67A8i9+/O9ZtVrw91bm04/I9is6lqb/RWW+MwOr4xzCAZfI1JsmIAYqZ
+         eOoMFFoC1Nf12ztHNHa0M6iumRs/+DtJxxoh4nB9whZme7iDJCUmH/ktVKLmUBFhgjjA
+         M2jmvuwcwz1XCrBS2C8gRvb/J3JacW+bilZOGaPRdBiCksfK8Hh9BiRZlmlMF1bJMamC
+         745w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WZ/Ip6wy";
-       spf=pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=andy.shevchenko@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SfDgZrJ2;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <andy.shevchenko@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id i19si1017992pjx.1.2020.03.22.16.40.20
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id a3si890405iog.2.2020.03.22.12.57.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 16:40:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Sun, 22 Mar 2020 12:57:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WZ/Ip6wy";
-       spf=pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=andy.shevchenko@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SfDgZrJ2;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id m15so6202394pgv.12
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 16:40:20 -0700 (PDT)
+Received: by mail-pf1-x441.google.com with SMTP id f206so6380456pfa.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 12:57:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=LSoiX2KDtuHcjAvxn49iG05bHr7GoZNqUhV+VjEizwk=;
-        b=WZ/Ip6wynDqJa9GGL49tMWQvik+WaB0D69d3p+XvJGoesXA3FtD+CMF8+jIW25XvTz
-         nJDQhCnczt7zliOOYI6U6j/G9vVgAhL5WK3bH/8H3fxglqA/U98iVQSKQN9lmwVvAIe+
-         vKyd0jz08PlxCGq4SD+0EKGcp9S1uAqqHDtKtmo+7dUkFszA15/juQULGJ9t3cwF/ztR
-         CFah5QcrIkiCRTYKYTzBq6EUfzuQYuji0qQkYHuNaI4U4YSNk6piKhcyYvVXJzwgTgXQ
-         B5CyI0/58j3yKrpHG9aQnnfehWQ53EP5bhEgdafipqbS6a0TZnwtY7GZCT2cRFse9sFY
-         mvGA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=nQ9eVZZkX7CNW4Rrn5Fg/rgNjC4YD968Vs0CMRGqKrU=;
+        b=SfDgZrJ2myaLMUKc8v50MYhR/ORCTCARjHVrRdgFRIHRtvBbSZVJ8NrM+1Y1G8OK5x
+         E0V2ZFYM6atbNEzKsRBVLbQXwArHAbHil0UgbTa+IQZ+AdlrmKuJ1omJrT8OroMEwUyS
+         WBoH+Q562xyd5BSOSkf+bjpu9MlGx1IP2OEWYXJyisyKPLGFHwg/t0Q4aHlXSerSVtwW
+         3k3wym1CHHEFGFAq6YSot2VjmiQiNQOTStyl1JDH+LKqDBLDwtGF2eaoawc7ZGhjEWmy
+         kiUUsdWgvaQWw7+VidG9kdb09z+Tr/jUEG2fHTnTXAo2KL8Ikndi+XekJkZWZUHsSWwe
+         js4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=LSoiX2KDtuHcjAvxn49iG05bHr7GoZNqUhV+VjEizwk=;
-        b=fIgzvHYiyRRtYIMoCSb2HoXWH/cgq3i3nbaXDNV2cVEekfE51iE0ULrJ86HIv7/OQV
-         WkO+j5wILwlAn5jxJRxi1SS7IvPNsYHFh4LHh3JJaHTFioS7Zkp/kn2D5vvucjJPAVkx
-         ZEFSb/ozChsPYuYY5pgHtk5uiID5OxomfvN8+u1p670D5QXebOlpR0T/yFoiqSZkM+4D
-         v3PvTJLt17NbcGRWHaShzBy4d2Tt8H3IIgOuN6ZyTHtcUlaRBmG3zJC6Xf+7xc4E93Mb
-         5Bcv6Nx7BrrLn+QHPU9qTCrHONkRuWdPikrMZSk7ZX+6/bq39qDuP+OWMMjelbYk9ltQ
-         KJ6A==
-X-Gm-Message-State: ANhLgQ0qVht/AB+eh+EU3OwafqXmHFYsG7u9UnHJKhaHiZY6Q59DyRzM
-	qScOSvrb+NfSQR9AMezIEQE6N2UTqYVAomZREsI=
-X-Received: by 2002:aa7:958f:: with SMTP id z15mr20806386pfj.130.1584920420057;
- Sun, 22 Mar 2020 16:40:20 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=nQ9eVZZkX7CNW4Rrn5Fg/rgNjC4YD968Vs0CMRGqKrU=;
+        b=haeWy3WD0PKcd3mpNiuA/tIJqPJw53A0z1AUt+ce48n5bcPhXBBj8qLCji+VrBBOzn
+         ojB5WvIylpq5S/STRKl5rm010urAL48YVRl15HoG7VJlbFGhT3cuMHJPKtTch3uczuc5
+         eWAUJ3AvivLqbEnWJSHgjRIIpJIMDWPpsiu7tdIW6BGPGas6a4KfabB1LTv7irp5O6dy
+         X7tajHya8uKgFC2+J68chdX47AsQVxYWOHW6lwjYaO5e6x6/RPGOIyjtSezIW/x6aprm
+         1psEVMsUu/a6GGbcdMJRG6kWzApYByT0T1Z5KzqvO512BA0c9HttFwF9FMr5sZdPWsxu
+         /Nlg==
+X-Gm-Message-State: ANhLgQ1Y0JItQUxo7FmdfaD1ZWK8+ZNybML16w6JdW6uOuG41DrcUi+4
+	puU6qnNRDqKvrXu/NRoZz89f0svE
+X-Received: by 2002:a62:520a:: with SMTP id g10mr20571648pfb.271.1584907051846;
+        Sun, 22 Mar 2020 12:57:31 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from deeUbuntu ([103.240.207.191])
+        by smtp.gmail.com with ESMTPSA id b22sm11068549pfi.213.2020.03.22.12.57.28
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 22 Mar 2020 12:57:31 -0700 (PDT)
+Date: Mon, 23 Mar 2020 01:27:26 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com
+Cc: lars@metafoo.de, Michael.Hennerich@analog.com, jic23@kernel.org,
+	knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org,
+	linux-iio@vger.kernel.org
+Subject: [PATCH v3 4/4] staging: iio: adc: ad7280a: Add comments to clarify
+ stringified arguments
+Message-ID: <469bf8db1c228913e72841367182fba2168fe795.1584904896.git.mh12gx2825@gmail.com>
+References: <cover.1584904896.git.mh12gx2825@gmail.com>
 MIME-Version: 1.0
-References: <cover.1584904896.git.mh12gx2825@gmail.com> <a5aea6836da9aa2f950449225892ee18f10e217c.1584904896.git.mh12gx2825@gmail.com>
-In-Reply-To: <a5aea6836da9aa2f950449225892ee18f10e217c.1584904896.git.mh12gx2825@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 23 Mar 2020 01:40:08 +0200
-Message-ID: <CAHp75VetdASuw60zcp+O=RWK+pmksuPtkGL3smrqYbdfgC98xw@mail.gmail.com>
-Subject: Re: [PATCH v3 2/4] staging: iio: adc: ad7192: Correct macro names
- from SYNC to SINC
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Baluta <daniel.baluta@gmail.com>, 
-	kieran.bingham@ideasonboard.com, Lars-Peter Clausen <lars@metafoo.de>, 
-	Michael Hennerich <Michael.Hennerich@analog.com>, Jonathan Cameron <jic23@kernel.org>, 
-	Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald <pmeerw@pmeerw.net>, 
-	linux-iio <linux-iio@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1584904896.git.mh12gx2825@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sun, Mar 22, 2020 at 9:57 PM Deepak R Varma <mh12gx2825@gmail.com> wrote:
->
-> Three macros include SYNC in their names which is a typo. Update those
-> names to SINC.
+Checkpatch would flash a check message around a stringified macro
+argument containing a '-' character. Add comment to indicate the
+argument is legitimate and doesn't need fixing.
 
-It is good to elaborate the source of the above statement (e.g.
-datasheet pages).
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Suggested-by: Lars-Peter Clausen <lars@metafoo.de>
 
-> Fixes: 77f6a23092c0 ("staging: iio: adc: ad7192: Add low_pass_3db_filter_frequency")
+---
 
->
+Changes since v2:
+	- None. Patch added in v3
 
-This blank line should go before Fixes tag. The rule is that tags are
-forming a block at the end of commit message.
+Changes since v1:
+	- None. Patch added in v3
 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> Suggested-by: Lars-Peter Clausen <lars@metafoo.de>
+ drivers/staging/iio/adc/ad7280a.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-The code below looks good to me.
-
-
->
-> ---
->
-> Changes since v2:
->         - None. Version increment to follow patch series versioning.
->
-> Changes since v1:
->         - None. Patch added in v2 version as suggested by Stefano.
->
->
->  drivers/iio/adc/ad7192.c | 20 ++++++++++----------
->  1 file changed, 10 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/iio/adc/ad7192.c b/drivers/iio/adc/ad7192.c
-> index 02981f3d1794..d9a220d4217f 100644
-> --- a/drivers/iio/adc/ad7192.c
-> +++ b/drivers/iio/adc/ad7192.c
-> @@ -144,9 +144,9 @@
->  #define AD7192_EXT_FREQ_MHZ_MAX        5120000
->  #define AD7192_INT_FREQ_MHZ    4915200
->
-> -#define AD7192_NO_SYNC_FILTER  1
-> -#define AD7192_SYNC3_FILTER    3
-> -#define AD7192_SYNC4_FILTER    4
-> +#define AD7192_NO_SINC_FILTER  1
-> +#define AD7192_SINC3_FILTER    3
-> +#define AD7192_SINC4_FILTER    4
->
->  /* NOTE:
->   * The AD7190/2/5 features a dual use data out ready DOUT/RDY output.
-> @@ -367,7 +367,7 @@ static int ad7192_setup(struct ad7192_state *st, struct device_node *np)
->                 st->conf |= AD7192_CONF_REFSEL;
->
->         st->conf &= ~AD7192_CONF_CHOP;
-> -       st->f_order = AD7192_NO_SYNC_FILTER;
-> +       st->f_order = AD7192_NO_SINC_FILTER;
->
->         buf_en = of_property_read_bool(np, "adi,buffer-enable");
->         if (buf_en)
-> @@ -484,11 +484,11 @@ static void ad7192_get_available_filter_freq(struct ad7192_state *st,
->
->         /* Formulas for filter at page 25 of the datasheet */
->         fadc = DIV_ROUND_CLOSEST(st->fclk,
-> -                                AD7192_SYNC4_FILTER * AD7192_MODE_RATE(st->mode));
-> +                                AD7192_SINC4_FILTER * AD7192_MODE_RATE(st->mode));
->         freq[0] = DIV_ROUND_CLOSEST(fadc * 240, 1024);
->
->         fadc = DIV_ROUND_CLOSEST(st->fclk,
-> -                                AD7192_SYNC3_FILTER * AD7192_MODE_RATE(st->mode));
-> +                                AD7192_SINC3_FILTER * AD7192_MODE_RATE(st->mode));
->         freq[1] = DIV_ROUND_CLOSEST(fadc * 240, 1024);
->
->         fadc = DIV_ROUND_CLOSEST(st->fclk, AD7192_MODE_RATE(st->mode));
-> @@ -576,25 +576,25 @@ static int ad7192_set_3db_filter_freq(struct ad7192_state *st,
->
->         switch (idx) {
->         case 0:
-> -               st->f_order = AD7192_SYNC4_FILTER;
-> +               st->f_order = AD7192_SINC4_FILTER;
->                 st->mode &= ~AD7192_MODE_SINC3;
->
->                 st->conf |= AD7192_CONF_CHOP;
->                 break;
->         case 1:
-> -               st->f_order = AD7192_SYNC3_FILTER;
-> +               st->f_order = AD7192_SINC3_FILTER;
->                 st->mode |= AD7192_MODE_SINC3;
->
->                 st->conf |= AD7192_CONF_CHOP;
->                 break;
->         case 2:
-> -               st->f_order = AD7192_NO_SYNC_FILTER;
-> +               st->f_order = AD7192_NO_SINC_FILTER;
->                 st->mode &= ~AD7192_MODE_SINC3;
->
->                 st->conf &= ~AD7192_CONF_CHOP;
->                 break;
->         case 3:
-> -               st->f_order = AD7192_NO_SYNC_FILTER;
-> +               st->f_order = AD7192_NO_SINC_FILTER;
->                 st->mode |= AD7192_MODE_SINC3;
->
->                 st->conf &= ~AD7192_CONF_CHOP;
-> --
-> 2.17.1
->
-
-
+diff --git a/drivers/staging/iio/adc/ad7280a.c b/drivers/staging/iio/adc/ad7280a.c
+index 19a5f244dcae..bef6bd1295ea 100644
+--- a/drivers/staging/iio/adc/ad7280a.c
++++ b/drivers/staging/iio/adc/ad7280a.c
+@@ -824,6 +824,10 @@ static irqreturn_t ad7280_event_handler(int irq, void *private)
+ 	return IRQ_HANDLED;
+ }
+ 
++/* Note: No need to fix checkpatch warning that reads:
++ *	CHECK: spaces preferred around that '-' (ctx:VxV)
++ * The function argument is stringified and doesn't need a fix
++ */
+ static IIO_DEVICE_ATTR_NAMED(in_thresh_low_value,
+ 			     in_voltage-voltage_thresh_low_value,
+ 			     0644,
 -- 
-With Best Regards,
-Andy Shevchenko
+2.17.1
+
 
