@@ -1,121 +1,136 @@
 X-GM-THRID: 6806929906514001920
-X-Received: by 2002:a17:906:f842:: with SMTP id ks2mr16074512ejb.379.1584875376217;
-        Sun, 22 Mar 2020 04:09:36 -0700 (PDT)
+X-Received: by 2002:a17:906:3ec5:: with SMTP id d5mr16035292ejj.106.1584874847132;
+        Sun, 22 Mar 2020 04:00:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:17f6:: with SMTP id t22ls6268010edy.6.gmail; Sun,
- 22 Mar 2020 04:09:34 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtYFnirsUYVV0C1KjyQ3ltz+zYNmGriP5M31bSFhVvt5e6vtz8okG/8QHswRYW+/RreuYcB
-X-Received: by 2002:aa7:cfc5:: with SMTP id r5mr2269041edy.78.1584875374903;
-        Sun, 22 Mar 2020 04:09:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584875374; cv=none;
+Received: by 2002:a05:6402:1599:: with SMTP id c25ls6271490edv.4.gmail; Sun,
+ 22 Mar 2020 04:00:45 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt28tShoHnUrY8oljsaFoVupBqbiyq2QhM4ywXXr4PQo+Z+nVnaLUdGSUndfpY/PYlSaDpP
+X-Received: by 2002:a05:6402:8ca:: with SMTP id d10mr16520685edz.362.1584874845635;
+        Sun, 22 Mar 2020 04:00:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584874845; cv=none;
         d=google.com; s=arc-20160816;
-        b=HRZqnd9olJGWEA6IHisiKk1iWxdm8nTBMZV1bC52Ye31PCfpzWpK1HwrIrG1ACDbx0
-         6a+/Y04t3SA1lPw51bz3YJqk6mnw1HsmHcdkQXUdPpZuq43m68eW8IYH5PpTr1gIVe/z
-         7l9wKLx46i3GvTblO3aQX2NjJ8HfuIkd8M6u9eAdn8eCrZpr0Dj8EYC3ZlKuuoiLAH9I
-         Lt7/2rDg+spky1aaJ8cyh3GYKZV9uvR28wnU9vWudqbGi2Z7L0bBBlNf7F54z2unmx6V
-         ZxVw024hcG38Ewb6gKMqtlbfjVeDEak2ZbNJFbCxaH/pXHOv0s+WdoBHgmoOCogAysAZ
-         yRww==
+        b=g2M4xRKWFTFcr+1oPWDbPlinNBpQW9kPYE42+ESzeBKP9wEJQYr1pkcH37sol6+zfw
+         PrG4Kj7vBVEx+8GxFI3lPJ+w7+DCRKM5+9dK4WpYqZfRPpcp2aXvMvd3r6hyzAhoLOok
+         IhcbohmZ7ggEu6AYc4qJrqrHvibGzg7VKgcYl5og8MoC7RJHUiaWRfURfqA6guRrB8NA
+         z5Qy3sU/ED2OhLf0i/WrN/MnL8Oz5Ci5F/F2PkONr7y8s+GJT9wfAGKGyr03K4E8Hb9T
+         Ato+ttqCpuGjDqZsMaGmdMiVE7e2QtSVS3gJF6hcbK3GP0z08pMvCAZHK70X4+zwmy4d
+         dT9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=t1PQgabdC2XfTjyhUxdpH/yBauHRTTAf3/s9K6ExUy4=;
-        b=eFfTq3j5Yroas6k5G2ybz5VqSB7COceAm3SJ2nDoIrqfPM6ck/niZSBiCM1LcIK979
-         +/99NReNvaehaJ9b+KT7Nzm0+UMURGPKq0FlKT4+9wD/ghpb9+5QXNQFY+v0eE2njBlE
-         Fkzn75hsAbdUPQMDWWV7wDkJUDUAg958yVZT9VsKoOvP1yVyrCZ3oJfLHCPYi80oXvnC
-         HRGw9OD/TeF4MF3Cc4vE2fgoIkhfeWEeHBiHd45izV7dS1KobM4vXHrHnMcdTD7SK6HI
-         7csqxRLmXYxHxmPxlJKcx6Uz87lR+BIg/7pNCy9OsOZY9csJaL5MpxxEZRYCuu5m6P6Z
-         J6yg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=S+gJPpyPyVs9DeVG+oh27c6QySg2aqGtjMHm73FMb1g=;
+        b=gFuwHCbSLtFdxUzkGcUf4YISdPnjD/s8zJucS1l1sB2sLPqwx+dnoBYThdW5+wGqCS
+         2rv1nwXrRVZ2Zxg/neLKzMBZ3tV2M7XpgSCMJtFxiH78zlDNGLasdG+GsSGsPjkzewxp
+         JRTPpHxGduMofQS3X+L2z5QDUQp/6hgnZ2cgLSJS3akJ5sD3Yg4sBT5kPNghuyjqJxX8
+         u2GIoTwwXSxUQgTpu6411Ll0vMCEawxwUtoHa/C2NJ7a/cz+L50+aacbRI6KOzujlf1Q
+         xeHrgZl3yKBm+R1OHzU09fMx8PwHY/7BKMK9heAyvhNjkwRNIvbcsDg1KT0aVDLmle/j
+         La4Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f2si301690edm.1.2020.03.22.04.09.34
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lqBHiD6B;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id b6si69095edq.3.2020.03.22.04.00.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2020 04:09:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Mar 2020 04:00:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.72,292,1580770800"; 
-   d="scan'208";a="441535605"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2020 12:09:34 +0100
-Date: Sun, 22 Mar 2020 12:09:34 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Sam Muhammed <jane.pnx9@gmail.com>
-cc: Jaroslav Kysela <perex@perex.cz>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH v4] Staging: hp: Use netdev_warn().
-In-Reply-To: <20200322110035.2756-1-jane.pnx9@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003221207570.2325@hadrien>
-References: <20200322110035.2756-1-jane.pnx9@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lqBHiD6B;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x342.google.com with SMTP id m3so11161840wmi.0
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 04:00:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=S+gJPpyPyVs9DeVG+oh27c6QySg2aqGtjMHm73FMb1g=;
+        b=lqBHiD6BbYi2hnp0yAp/BK4whB88HxkX9+RGieUmYv7Bw+K/zBTaML6NZQ/eoy9WEM
+         IIN+/qOHQHjv6FgReVZA5zMIwNGSogy+OZKIEzAeW767bN/nPUHoPLKKgSt25AF+ivpe
+         4hv4R7/yMhSh+ZrA+mOIAyecW4ohKeJDpM9TIUAjkhI5PEu9s7+a4GtoGXTTSnYcrL42
+         h9cxu5BZnLrOmP0QGecSfE1A42E99W/b0DTOsJ3t9HJ6tDMDP3zmaUcnHMG0asHJ/cTo
+         ejHGAVkVd8HEPnC9Rgr2rrrTVMXxlwy+cxPvDlb1MBThinOZIrJdDBw1Rl3eNQGcJfVq
+         pi1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=S+gJPpyPyVs9DeVG+oh27c6QySg2aqGtjMHm73FMb1g=;
+        b=R8eGAh7CPa54UJcPJMvtMRS4Qp+aijRjgvoF6lYbgYVB3Y0HqZcllgz9RU5fqRpITf
+         jU9BxBxADJi7uL3ilIJgv5OkynYwz2YFB/q8fkSGm+VO2fT2f28Zw8UmADk7mb7a2tYo
+         RPcMCqOzLEITcpl1GhByP88ickO4eDl5e+Vptitybm5RyT2Do2QFxNLznFGJhsirUoHB
+         Y8is+9srSpX76va6qBa+aM6zpxPGuoNnuvZGgPTz6HwfQruOPw8dL1AaVDIDPe3bZ50A
+         Tbo6mM1qyLlOxW6qf0G+HXvzQjJ9MDZ2lXJfRDWu2YwvB0E8ktVBHJWPn5DL/KVRlMBb
+         8DjA==
+X-Gm-Message-State: ANhLgQ06WcdKbntoLZrO7V29vPnd1vB0PGmhWBem6uU3IT75K5GUTE56
+	mpmjJlo0aS9DlOI0Eq6QA44=
+X-Received: by 2002:a7b:cb17:: with SMTP id u23mr21953316wmj.12.1584874845342;
+        Sun, 22 Mar 2020 04:00:45 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from localhost.localdomain ([197.34.132.208])
+        by smtp.gmail.com with ESMTPSA id f10sm18007027wrw.96.2020.03.22.04.00.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 22 Mar 2020 04:00:44 -0700 (PDT)
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Jaroslav Kysela <perex@perex.cz>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Cc: Sam Muhammed <jane.pnx9@gmail.com>
+Subject: [PATCH v4] Staging: hp: Use netdev_warn().
+Date: Sun, 22 Mar 2020 07:00:35 -0400
+Message-Id: <20200322110035.2756-1-jane.pnx9@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+This replaces printk(KERN_WARNING ..) with netdev_warn(),
+as the use of printk() isn't preferred when
+a struct net_device is available.
 
+Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+---
+Changes in v4:
+- Make log message more clear.
 
-On Sun, 22 Mar 2020, Sam Muhammed wrote:
+Changes in v3:
+- Update subject line and log message to be more desriptive.
 
-> This replaces printk(KERN_WARNING ..) with netdev_warn(),
-> as the use of printk() isn't preferred when
-> a struct net_device is available.
->
-> Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
-> ---
-> Changes in v4:
-> - Make log message more clear.
->
-> Changes in v3:
-> - Update subject line and log message to be more desriptive.
->
-> Changes in v2:
-> - Remove " : " from the printing message, netdev_warn() doesn't need it.
->
->  drivers/staging/hp/hp100.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-> index b89c4dcf53f5..1afd511260d0 100644
-> --- a/drivers/staging/hp/hp100.c
-> +++ b/drivers/staging/hp/hp100.c
-> @@ -469,8 +469,7 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
->
->  	eid = hp100_read_id(ioaddr);
->  	if (eid == NULL) {	/* bad checksum? */
-> -		printk(KERN_WARNING "%s: bad ID checksum at base port 0x%x\n",
-> -		       __func__, ioaddr);
-> +		netdev_warn(dev, "bad ID checksum at base port 0x%x\n", ioaddr);
+Changes in v2:
+- Remove " : " from the printing message, netdev_warn() doesn't need it.
 
-After I apply the patch, I see this as 1 character over 80 characters.
-You could put ioaddr on another line.
+ drivers/staging/hp/hp100.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-julia
+diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+index b89c4dcf53f5..1afd511260d0 100644
+--- a/drivers/staging/hp/hp100.c
++++ b/drivers/staging/hp/hp100.c
+@@ -469,8 +469,7 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
 
->  		goto out2;
->  	}
->
-> @@ -478,9 +477,9 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
->  	for (i = uc = 0; i < 7; i++)
->  		uc += hp100_inb(LAN_ADDR + i);
->  	if (uc != 0xff) {
-> -		printk(KERN_WARNING
-> -		       "%s: bad lan address checksum at port 0x%x)\n",
-> -		       __func__, ioaddr);
-> +		netdev_warn(dev,
-> +			    "bad lan address checksum at port 0x%x)\n",
-> +			    ioaddr);
->  		err = -EIO;
->  		goto out2;
->  	}
-> ---
-> 2.20.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200322110035.2756-1-jane.pnx9%40gmail.com.
->
+ 	eid = hp100_read_id(ioaddr);
+ 	if (eid == NULL) {	/* bad checksum? */
+-		printk(KERN_WARNING "%s: bad ID checksum at base port 0x%x\n",
+-		       __func__, ioaddr);
++		netdev_warn(dev, "bad ID checksum at base port 0x%x\n", ioaddr);
+ 		goto out2;
+ 	}
+
+@@ -478,9 +477,9 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
+ 	for (i = uc = 0; i < 7; i++)
+ 		uc += hp100_inb(LAN_ADDR + i);
+ 	if (uc != 0xff) {
+-		printk(KERN_WARNING
+-		       "%s: bad lan address checksum at port 0x%x)\n",
+-		       __func__, ioaddr);
++		netdev_warn(dev,
++			    "bad lan address checksum at port 0x%x)\n",
++			    ioaddr);
+ 		err = -EIO;
+ 		goto out2;
+ 	}
+---
+2.20.1
+
 
