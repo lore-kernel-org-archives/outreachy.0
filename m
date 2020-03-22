@@ -1,91 +1,86 @@
 X-GM-THRID: 6806789560169660416
-X-Received: by 2002:a05:6638:3a4:: with SMTP id z4mr5024652jap.141.1584889878533;
-        Sun, 22 Mar 2020 08:11:18 -0700 (PDT)
+X-Received: by 2002:a25:7002:: with SMTP id l2mr26413517ybc.113.1584876468972;
+        Sun, 22 Mar 2020 04:27:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:79c7:: with SMTP id u190ls2695299ilc.10.gmail; Sun, 22
- Mar 2020 08:11:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtYULimR3OvBRHqSWtMZ0Jc3ej9hPxRoGLt8hRY17sZeHzKmrVqKe+usryKZWVf4atYVSI3
-X-Received: by 2002:a92:3d42:: with SMTP id k63mr16573818ila.219.1584889876765;
-        Sun, 22 Mar 2020 08:11:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584889876; cv=none;
+Received: by 2002:a25:c102:: with SMTP id r2ls4122544ybf.5.gmail; Sun, 22 Mar
+ 2020 04:27:47 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu7cR+GldfrraAeVNYsXAb9puCQoextqZ7pbno33A9oy0VzpDvHv3fzW9IhSbwuOIuFvNn2
+X-Received: by 2002:a25:aca8:: with SMTP id x40mr27595070ybi.512.1584876467541;
+        Sun, 22 Mar 2020 04:27:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584876467; cv=none;
         d=google.com; s=arc-20160816;
-        b=x0IQ+TN6qPT1Dsl1YCF38U8N2zAQrG4WF4E8GM02lpzEF4dLT+ddJtiTEoajSfKNzV
-         mtfQChFS0vFqa1ZyzSlk+sKW5qwdHrqOfzkxT90lgmifBOPDW0JbLa7DNnjBlLhH8Ffc
-         OZKY3Kci2aHblIQEpYeFKm/3LzXl52dTrrvM8LdCX3/cZyhkV6r3xScDNL29NG/9R0hz
-         CtgbrYJ9LkkJpggfOLvIWjpFgJnTFm8yf1LvBS/6tC3sd6BdeRjYZT6OU241RQXoNxEE
-         Oym342LfRJ7ww5azEMqqO5MYOMc+EWwkfeITUMt8Ml9/4qzB0xbX5JGChpBY/FC7+gVz
-         KjLg==
+        b=GuQLxhXDEV/U8q4GcyZwToijN3FOagpw0DqwjcnVQ9y1X2QJlit/2E5kZs2TRaHjW3
+         N3N15Se81tzaeHBjuWbR/2D7ACl0BrMLiFlzZOKnR6SABg3HrRa/BdYF177j8G58w36r
+         mx4wpi1qg4OqWfjgDl5WjX2nUew1u6bW7xCle0zNLsUJbq8Rk8ZhgQsBeDWvlolLEHiN
+         NInyl9d74MLR9eBhnlefUtXk4XXyGfbI8ds6LdyW5rGEZwnsr9Nng0UiqKStdmeOMVeq
+         Y0g7MkomnnuSuqQxnU1WJIheFT/lTlNnyYb6r5pK0amGBJhhU4K8EHv1UutYCrHM5JWS
+         Pwug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id;
-        bh=Nc91eu0k70tqYlwgZ/RXBB28QqiUTANWAUI0rLVhm4k=;
-        b=Q9jcJOEl9yHepKXl1RxQjpBqykcnRjJbjR1kmTYFAQn1s8quYcd0lCxhAo31IMlR2C
-         Le42p3F+wAgYZ4aycpJ3SDu9V27qK7sDLlx5nUxPL+krWG4SekUsxY2H9lNY2t1V5PTS
-         wF1GNBK87aB49upwMTXM7YvvnPvtkT0y3UPE/7keCnG58tlJYCvlDqg22sCQqjgyJmS7
-         oA2UTYAXx8R5HOCQGWVSea0yLxuerQKf8UUXD4HJahDdRi9fZVU/brMwg7JPFIyczbTr
-         l5r2sLHrO5qBRmLhVK+ZEZe5L8pXlBWD13gRoa+sk5SspMnKEkh2IKNJDOPNs9t3lBLN
-         +H9g==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=MiRWCSXSrrm/oDu/jhrLgCQHfq3wo0rdYWSgXnYr8jA=;
+        b=W/K/HSyYZAe0fUuG2URsVWViwr5A2BFnLblpqkiRqbRbtyORb6X8wsAFJJyn2xxV+3
+         8TdruTlNyxx8TW6pxf+sEwUpdspsqpvkR//bitbTa9B6MyXXt+l/JWWZymMPZJaWgxST
+         WPuzBx9oNeVNDWIAWzIiMy72LGVqmWRjau118ZRtbLk/IJ1pjh/8IKr/VhRmpQVrRYkF
+         rF+FIN2hzYnUdAJxtz/pD8lR87K6/1Csan6LKC0+MBo82xIfBeQpjzPpy/MBuTdyJ4cB
+         rFXVRWeurv/w5CifHNLSofd1GGjlCJWu1AYYIREzvuNCJtm9UanlRWdTKuqKuooZDKm8
+         X1bg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.121 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0121.hostedemail.com. [216.40.44.121])
-        by gmr-mx.google.com with ESMTPS id u6si885780ili.3.2020.03.22.08.11.16
+       dkim=pass header.i=@kernel.org header.s=default header.b="fm/5Npgl";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id l1si598910ybt.2.2020.03.22.04.27.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Mar 2020 08:11:16 -0700 (PDT)
-Received-SPF: neutral (google.com: 216.40.44.121 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.121;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 22 Mar 2020 04:27:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.121 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay07.hostedemail.com (Postfix) with ESMTP id EEC47181D2FE4;
-	Sun, 22 Mar 2020 15:11:15 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,,RULES_HIT:41:355:379:599:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1539:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3870:3871:3872:3874:4250:4321:5007:6691:7903:10004:10400:10848:11232:11658:11914:12297:12740:12760:12895:13069:13161:13229:13255:13311:13357:13439:14096:14097:14181:14659:21080:21627:30012:30054:30070:30090:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
-X-HE-Tag: talk44_7f4b0ad682943
-X-Filterd-Recvd-Size: 1813
-Received: from XPS-9350.home (unknown [47.151.143.254])
-	(Authenticated sender: joe@perches.com)
-	by omf11.hostedemail.com (Postfix) with ESMTPA;
-	Sun, 22 Mar 2020 15:11:14 +0000 (UTC)
-Message-ID: <e40d49aaa96a61019804255c2990d229b2eef7dc.camel@perches.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b="fm/5Npgl";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 0BEFE20714;
+	Sun, 22 Mar 2020 11:27:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1584876466;
+	bh=Zlt25t7XisTrtu+UdnuJ5QG6TBUbTde7SUL83ydeDjQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fm/5Npgl1pGyF0sBACsLEEeeXNojurSvhC1lKABFeruhHdMdEmHj74QyF1cDqq3OT
+	 eeMrO7OpPpQYOVLGqJrkMFLzrL8/2FSpRf/nIG5jlVWTsiaUjIxKLNFce89CsvHfWt
+	 oEYX+JwfYlrYBoJIdS1oMpvGiDqUbbRDwqQ7sTXA=
+Date: Sun, 22 Mar 2020 12:27:44 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Shreeya Patel <shreeya.patel23498@gmail.com>
+Cc: Larry.Finger@lwfinger.net, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH 01/11] Staging: rtl8188eu: hal_com:
  Add space around operators
-From: Joe Perches <joe@perches.com>
-To: Greg KH <gregkh@linuxfoundation.org>, Shreeya Patel
-	 <shreeya.patel23498@gmail.com>
-Cc: Larry.Finger@lwfinger.net, devel@driverdev.osuosl.org, 
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Date: Sun, 22 Mar 2020 08:09:26 -0700
-In-Reply-To: <20200322112744.GC75383@kroah.com>
+Message-ID: <20200322112744.GC75383@kroah.com>
 References: <cover.1584826154.git.shreeya.patel23498@gmail.com>
-	 <19950c71482b3be0dd9518398af85e964f3b66b1.1584826154.git.shreeya.patel23498@gmail.com>
-	 <20200322112744.GC75383@kroah.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-User-Agent: Evolution 3.34.1-2 
+ <19950c71482b3be0dd9518398af85e964f3b66b1.1584826154.git.shreeya.patel23498@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <19950c71482b3be0dd9518398af85e964f3b66b1.1584826154.git.shreeya.patel23498@gmail.com>
 
-On Sun, 2020-03-22 at 12:27 +0100, Greg KH wrote:
-> On Sun, Mar 22, 2020 at 03:51:13AM +0530, Shreeya Patel wrote:
-> > Add space around operators for improving the code
-> > readability.
-> > Reported by checkpatch.pl
-> > 
-> > git diff -w shows no difference.
-> > diff of the .o files before and after the changes shows no difference.
+On Sun, Mar 22, 2020 at 03:51:13AM +0530, Shreeya Patel wrote:
+> Add space around operators for improving the code
+> readability.
+> Reported by checkpatch.pl
 > 
-> There is no need to have these two lines on every changelog comment in
-> this series :(
+> git diff -w shows no difference.
+> diff of the .o files before and after the changes shows no difference.
 
-In my opinion, there's no need for a series here.
+There is no need to have these two lines on every changelog comment in
+this series :(
 
-Whitespace only changes _should_ be done all at once.
+And pick a column to line wrap on (usually 72) and stick with that.  You
+are using two different ones here, and for this whole series, and it
+looks very odd, don't you think?
 
-Whitespace changes _could_ have changed string constants.
+thanks,
 
-So noting that the patch in only whitespace and that
-there isn't a difference in object files is useful as
-it shows any change has been compiled and tested.
-
-
+greg k-h
 
