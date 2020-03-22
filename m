@@ -1,87 +1,100 @@
-X-GM-THRID: 6332112108128305152
-X-Received: by 10.129.145.5 with SMTP id i5mr13620862ywg.55.1474309737111;
-        Mon, 19 Sep 2016 11:28:57 -0700 (PDT)
+X-GM-THRID: 6806835007878856704
+X-Received: by 2002:adf:f6c8:: with SMTP id y8mr23223356wrp.403.1584863941203;
+        Sun, 22 Mar 2020 00:59:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.174.38 with SMTP id x38ls3576552ioe.42.gmail; Mon, 19 Sep
- 2016 11:28:56 -0700 (PDT)
-X-Received: by 10.36.33.200 with SMTP id e191mr3836732ita.12.1474309736699;
-        Mon, 19 Sep 2016 11:28:56 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id si10si5754877pab.1.2016.09.19.11.28.56
+Received: by 2002:adf:fd03:: with SMTP id e3ls803656wrr.0.gmail; Sun, 22 Mar
+ 2020 00:59:00 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsLvTNfDOdz2XfZEufuKkVRmOQTJjd5LPQKhOVdkLB6XBi+A7D30mCNIiCBJ061+bg1ELlY
+X-Received: by 2002:adf:d0cf:: with SMTP id z15mr23039198wrh.357.1584863939956;
+        Sun, 22 Mar 2020 00:58:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584863939; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eetO5w+2aDIv7GVLgocmYPM36GyuuhXUWItS5HD6TPjeoD6jTRSIkHIjkvfYLUfLMz
+         t6gbSuHk0QmZUFkdPiCUxIvVR75ThFScJLL47yTBK37VvK8amvrh9dfjNRAVMAmjwnLA
+         Rgl790cze2QoCmIInCQPLrZfE7eZ7k6xJA2MbNQDZ0fSF8KWDLPZtXX80NCiHDIg7IO2
+         +SPWpIDGcqT4mJ6oUcSSuducrxM4E6Zj2lJntUZCE6aT3+B3FT1stQk2RYlClXKfqmis
+         S2Gnzz9KspYISJfMs4gaDlYxQpGfU5Dg0ZGxkk2St/et3K7xGOi2p8Va4/3JdeLnyPjj
+         Kmqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=X9paIeLLlItJfkvP9MYFUu3id1oDCbrtkzFPMEk0yGU=;
+        b=ieTOXHChw7i4dJMn4ennyVdvGCGUq90cj1C0tgkCRoULN3gj0A9JQz9ee55HK7xraB
+         CZK3hX+cjgV5Tft2UALo+XfqP1vN6zMrnL1ZoQb6y02SPPHZWnfgkUcU+QKccB153GSl
+         1om+4fvoxIzUJKHHOWtOkjJ2VPY+1+19ZL6wSb8YFx1NVHCzjpHBzzJt6YMjNe4fEzfN
+         ObEqeJocGDynwCKP1z5fVqPGNEzUxP/yBzOIU5aNln6jPVBP0H9Ft/o1HSLanfm+2u/h
+         3yRStcj+Wd87gYRjKrFfCCDg8E+njgtcIf6aNbuvP8xcf1VsQFXKidS/UYFasf015tGU
+         Ie1Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l16si397763wmg.1.2020.03.22.00.58.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 11:28:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Sun, 22 Mar 2020 00:58:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id oz2so7295329pac.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 11:28:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=iGHBTTwaJymJFloq+ubau4BDzIA2mj7tRfkXfvmxR8E=;
-        b=aCopcm2IvZmvorvxfRwK57XDKHy+ovXA1YOQGeySirdJ/4WJBj1P7AyL7VBOuyjjS0
-         o9+L82jJJVDwL3NVs206vnj8gP57zmW4exey+RcsmmxcWybWY8QeXKQIQa+gu3Zz/8wS
-         NPNOUvhNu2KBTN7RLs7WBWN6SOegJDddXDSk7zBqLjSKvacM1yAFmrjfMog7ESyKKcI1
-         6v542y7Lw0BWxH1hi62ogV88q2xe6S2MVxvQl/Qu8ZxKOiVzPQoB0TbhYoIxI8ONSyL+
-         adZA3zr6SecJmd4QQG0a6Tb8gmI4e6nDeJ1+OEPX0kI1y5YklJ6vKeYkona8sZ2RWrIQ
-         zqmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=iGHBTTwaJymJFloq+ubau4BDzIA2mj7tRfkXfvmxR8E=;
-        b=HINlHOAV22Wt6VQUJ9jTLONEDSVMT+VlJmMZdKNFc+ItyVmwNc9+5vhLvOlCDx4IL4
-         0FUw2CRhP2k/seTfdFOHTwn8eAbKWrtN9gfQff8Lyh6zzg8UpYEb6Vxt6OAzeXGwcOjO
-         bx8N1ft+7wvru7yGkYL7oZSrDsvAIFbqssPshVvLlQxbm1rnathzSzcemYtEpdQQ9yci
-         ULAt7Z5DpC/Kgk+9hbPPbRiMT731fawXi70HfEaMp28dqL17M8EMG97VTfSdPZXh6jGz
-         kJ5mkAFgCpQ2eDzbNULdfA1d1moIcM25KoqgpkYjYRw73KYqT+jHOE1evre+6QDkXnhx
-         T3Kg==
-X-Gm-Message-State: AE9vXwPRfEb64WOezhLZuhThORCedWCJPybozUfnkh0tVyTs8O1ADBJJ6Nri/yen0vGBhQ==
-X-Received: by 10.66.217.170 with SMTP id oz10mr49557900pac.61.1474309736487;
-        Mon, 19 Sep 2016 11:28:56 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([122.170.138.71])
-        by smtp.gmail.com with ESMTPSA id b7sm73230217pfg.87.2016.09.19.11.28.53
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Sep 2016 11:28:55 -0700 (PDT)
-Date: Mon, 19 Sep 2016 23:59:36 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: lustre: lmv_obd: Remove redundant test.
-Message-ID: <20160919182936.GA23833@sandhya>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,291,1580770800"; 
+   d="scan'208";a="343187862"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2020 08:58:59 +0100
+Date: Sun, 22 Mar 2020 08:58:59 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Gokce Kuler <gokcekuler@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: hp100: rearrange line
+ exceeding 80 characters
+In-Reply-To: <20200322011612.GA4357@siyah2>
+Message-ID: <alpine.DEB.2.21.2003220855430.3006@hadrien>
+References: <20200322011612.GA4357@siyah2>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+Content-Type: text/plain; charset=US-ASCII
 
-filp != NULL is already checked, so no need to check it again.
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/lustre/lustre/lmv/lmv_obd.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/lmv/lmv_obd.c b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-index dad572e..7dbb2b9 100644
---- a/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-+++ b/drivers/staging/lustre/lustre/lmv/lmv_obd.c
-@@ -865,7 +865,7 @@ static int lmv_hsm_ct_register(struct lmv_obd *lmv, unsigned int cmd, int len,
- 
- 	rc = libcfs_kkuc_group_add(filp, lk->lk_uid, lk->lk_group,
- 				   &kcd, sizeof(kcd));
--	if (rc && filp)
-+	if (rc)
- 		fput(filp);
- 
- 	return rc;
--- 
-1.7.1
+On Sun, 22 Mar 2020, Gokce Kuler wrote:
 
+> moved to the bottom line after && operator for it exceeds 80 character
+
+Sentences need to begin with a capital letter and end with a period.  It
+may seem picky, but in an open source setting, this is the only form of
+communication available, so things need to be done in an expected way.
+
+Maybe the tests could be rewritten with ! and then the whole thing could
+stay on one line.
+
+julia
+
+>
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/hp/hp100.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+> index 61b891d..8aadb5b 100644
+> --- a/drivers/staging/hp/hp100.c
+> +++ b/drivers/staging/hp/hp100.c
+> @@ -1407,7 +1407,8 @@ static void hp100_BM_shutdown(struct net_device *dev)
+>  			for (time = 0; time < 10000; time++) {
+>  				/* RX_PDL: PDLs not executed. */
+>  				/* RX_PKT_CNT: RX'd packets on card. */
+> -				if ((hp100_inb(RX_PDL) == 0) && (hp100_inb(RX_PKT_CNT) == 0))
+> +				if ((hp100_inb(RX_PDL) == 0) &&
+> +			       	    (hp100_inb(RX_PKT_CNT) == 0))
+>  					break;
+>  			}
+>
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200322011612.GA4357%40siyah2.
+>
 
