@@ -1,56 +1,56 @@
 X-GM-THRID: 6807027945867051008
-X-Received: by 2002:a5d:63d2:: with SMTP id c18mr2562453wrw.385.1584885372954;
-        Sun, 22 Mar 2020 06:56:12 -0700 (PDT)
+X-Received: by 2002:a2e:5844:: with SMTP id x4mr10714372ljd.40.1584885258110;
+        Sun, 22 Mar 2020 06:54:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:f5cc:: with SMTP id k12ls760734wrp.6.gmail; Sun, 22 Mar
- 2020 06:56:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu92G0y0AJXsC8hkmTUCkkD5uey6zKZ3b18tcjQl4dZQ2MVtFHn62Lvrd+JnTfmah1Fl0V4
-X-Received: by 2002:adf:dd06:: with SMTP id a6mr13137619wrm.189.1584885371761;
-        Sun, 22 Mar 2020 06:56:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584885371; cv=none;
+Received: by 2002:a05:651c:96:: with SMTP id 22ls2274993ljq.0.gmail; Sun, 22
+ Mar 2020 06:54:16 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsSyhKcVJkJRNFViZKdwtKXWDiG0vB1GGxi5/sfsNEy3yYZQsovBfN0yy1ojbfWSIr6tcrz
+X-Received: by 2002:a2e:151e:: with SMTP id s30mr11223562ljd.92.1584885256518;
+        Sun, 22 Mar 2020 06:54:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584885256; cv=none;
         d=google.com; s=arc-20160816;
-        b=bzjgtHdntXnJJjhn8Dgbgu28WVeL/E7kP+0Xx+PKt8DGNEA17FaI0tHL41DJqpqVma
-         /4eZwjoDVyOmQ+B0GDwHh6lYgkFU8O+n+WUsWnGyHygau/+gLRm3twxzhN+hnbu41oT1
-         FJXqfb8zy8gL1+YxIs6I5vaAMPR5TIOeVF7wyD1v7n0Emi9Iubli4KJHVAbgtACJGxRo
-         2s9imoRsd59KTSE4RR/als7I8laRDBq+8kYMtnYWYwfQO6NLzDXwesimW+rl6lh2YmnW
-         zklJiQ9rC1sNbglCloJyP3ZVPJteQrX4YkZGIHkggGEAES4ILM42K5WJAgixT4TOIpew
-         AOXw==
+        b=yk5k0OWKIx9+rdMHAv3aqO/hxlQE9UYkEWNx33/iNtmbPtc3xpJhQ1MTxKLosVszMy
+         IWJrJYMoCiHe8ueZfoK3bqLlebGD99eXlaAHwRfSw6lpnFreZ7PQIpjs0ojt1GyiVW6u
+         2ih7D/rFUY9cAXiN1yZMpm6FYnsVe5A6PBvYMRztvlxz/t4Kp0H4honlRdi7UZ7OxPmm
+         /RdY+ZKOyqHUMhXdBOuB61tB54EOtjiMCWHaTyYGS5xUX2+62CKi0wTSEBi+n69Ucs4T
+         xdlx1/G6exrWyA8q0L3dipreURuPPdr3nX6ej5E9Y1EtFvBn64hVQtYMjD8Tx++tE/gf
+         VlUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:references:message-id:in-reply-to:subject
          :cc:to:from:date;
-        bh=vbx6g14hNYW9X/LTIOdT1MNrBVG5nlIUtbJTMzHmLuk=;
-        b=SCcHFAC+mqBi4xnYXETVveYydDs2e+njOmEXH++yFoRGLru22lGVJTSYThRjSGNxvm
-         2mmf++xZ0GcU/YDcm874KlgAFyMW/phrYELpWSPsnEy+oVIN0VesKNzsEyu5FTXgBr7o
-         f78OyEtnOKY8ZSjOSYXky2Mv9RQvaSXPH4z7/8sLomxP3fax3UXY4xCW3JvPYnxWtMPr
-         rLjVTdKdigSD5PkPBVnCWaLP+g9WidT9aOfyRSviDo2mR4NelMMCykev4xUHk7e/epx5
-         A8phmzDq9z2Do0tujN3ahvCnjst/9rwqJmr/2JIVdZKZwZKZlYDpsFDCqNkcEsjYgbmw
-         Brag==
+        bh=7TzY9rgEOzKjRDJDKFVcZc9ommjCY1znAJdx1gwzaN4=;
+        b=h1xOF9vbZLpJKp8xBSj4wPgDekTRBo6CKzldhQ6VgXrHU9jXxQMz+bdPjq8432OKsZ
+         zQ9QHsjjVTpN73EOPcNjzw5t9dc7MJRL8JvizK6svbD7n+zowz2IfmdduAUBDo7I2dA0
+         sDF5U8fLaVDHRRwVxjDJoGt8Ng7QrUrra2b2HBsajVSnRC0OwM4UEoDIyODAr6qSX4U+
+         ssr9mRf37BeI7TFBJcxsptw169mu7uOKbWi5wIEJHoJKGjkWVuBVrA1J4DtZc066g5ID
+         b6HjEeH5nTHFJhQOobOY40KdrkqiUe5E0Z/H4lJjnJU0ijXvSf030RfK8rRLzrwFg59r
+         CrKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
 Return-Path: <julia.lawall@inria.fr>
 Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id b17si224526wme.3.2020.03.22.06.56.11
+        by gmr-mx.google.com with ESMTPS id m11si531761ljj.2.2020.03.22.06.54.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2020 06:56:11 -0700 (PDT)
+        Sun, 22 Mar 2020 06:54:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
        spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
 X-IronPort-AV: E=Sophos;i="5.72,292,1580770800"; 
-   d="scan'208";a="343199705"
+   d="scan'208";a="343199648"
 Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2020 14:55:47 +0100
-Date: Sun, 22 Mar 2020 14:55:47 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 22 Mar 2020 14:54:15 +0100
+Date: Sun, 22 Mar 2020 14:54:14 +0100 (CET)
 From: Julia Lawall <julia.lawall@inria.fr>
 X-X-Sender: jll@hadrien
 To: Soumyajit Deb <debsoumyajit100@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    perex@perex.cz
+cc: gregkh@linuxfoundation.org, perex@perex.cz, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging: hp100: Add space around +
  operator and remove space around pointers
-In-Reply-To: <20200322134852.GA30778@ubuntu>
-Message-ID: <alpine.DEB.2.21.2003221455370.2325@hadrien>
-References: <20200322134852.GA30778@ubuntu>
+In-Reply-To: <20200322134439.GA30399@ubuntu>
+Message-ID: <alpine.DEB.2.21.2003221453470.2325@hadrien>
+References: <20200322134439.GA30399@ubuntu>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -61,12 +61,13 @@ On Sun, 22 Mar 2020, Soumyajit Deb wrote:
 
 > Add space around + operator and remove space after * in pointer
 > declaration to improve code readability
-> Reported by checkpatch.pl
 
-Did you send the same thing twice?
+These seem like two different kinds of changes, so they should be in
+separate patches, in a patch series.
 
 julia
 
+> Reported by checkpatch.pl
 >
 > Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
 > ---
@@ -117,6 +118,6 @@ julia
 > --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200322134852.GA30778%40ubuntu.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200322134439.GA30399%40ubuntu.
 >
 
