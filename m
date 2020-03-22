@@ -1,95 +1,219 @@
-X-GM-THRID: 6670193586677481472
-X-Received: by 2002:a0d:ed05:: with SMTP id w5mr1267439ywe.14.1553025466030;
-        Tue, 19 Mar 2019 12:57:46 -0700 (PDT)
+X-GM-THRID: 6807025252399316992
+X-Received: by 2002:a5d:470b:: with SMTP id y11mr16002787wrq.282.1584895758400;
+        Sun, 22 Mar 2020 09:49:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:19c6:: with SMTP id 189ls20116ybz.3.gmail; Tue, 19 Mar
- 2019 12:57:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxAU88bxzPr7xFUr1+WgFUvVUultAI2nqCjEbG4vLkJZAEjuDBpLaSy42OOjfpsX4bH/b/r
-X-Received: by 2002:a5b:bc4:: with SMTP id c4mr1209526ybr.42.1553025465159;
-        Tue, 19 Mar 2019 12:57:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553025465; cv=none;
+Received: by 2002:adf:d4c4:: with SMTP id w4ls1134372wrk.8.gmail; Sun, 22 Mar
+ 2020 09:49:16 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvyGCXW3VwaGFzxq7bZDIFm5gHTGvIiX7NZHz2q03Y3LdjmHegnmnsX3kvCQG9iJ0DFRdJ2
+X-Received: by 2002:a5d:6386:: with SMTP id p6mr23926549wru.194.1584895756214;
+        Sun, 22 Mar 2020 09:49:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584895756; cv=none;
         d=google.com; s=arc-20160816;
-        b=nHAxfhQGsuBHfGcwyC1cw9eC2A1LdadljnJXrilxu+SdV6DrhY2jo5br2kiPBF62sN
-         ZFPYk2SAT6V5dn1VJ5Cz6pXI/ehSaF6kWSpAugXI7U2fLhsC9JTsFL0TcHLb2eVC0Rf9
-         fNMBQEtLmnNch37EeR76P0kR8TDoriij/4t2CVn2lbsjEw2pEtf88z+3FMgw91nqVyGb
-         jh+35JzEvc2/D63v9YSOad7B2azdfC67C01RT+vdjugWG6a5pGI0b/b7FL4iT7dmOXIM
-         1O1m/eraeX8Stw6Md6kgO2+eWSVguMiJJbxMIKqkS52+lPtw3/uWTAvq35srLSTDI8YG
-         FD2w==
+        b=aBDVjicFYEW8IJ99X4RI46a3FXT/5oxvOBEb0U9X3fODGdVfBsPTIHUeo69qIatca7
+         4egvFSWmgJdy+PKB4Y66q1U1iis1Xw2sZXGDgbMY1wjhNvjDkC/zLAyx9ScTGdkwIudd
+         M0/EapiZtsN7Dx1c3leA0FLNsJEFNV/0KFErJkj5ktsDa+GpopkWTEGPtUwFynnb7CFF
+         P3JUxuWPT/U9H6JKNtkuiRHeFa2Th5JHb8m20ToV4walY1wvCC8ihZJi/KOo330Uu3Az
+         +x9y4E9ukU+PF47SLY8pV2/iFxKjBkV0TSzv5hVz1uEkFUVX7DQTu2PVEw2a8boobqP0
+         kHhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=U1go1yFBje/+ear/SQ9jcuMoHpuYTvz1Th99D8WI044=;
-        b=haloUDl6xCP30EEbCF7gYeTOs988EgQ3z8AWdZliD1yIUKrSVNBj0Wqgi/IkOr4bTt
-         9+Zda1a4Tu0vaUMSa48lAl0joI1NYBA630gUG2JT2Bf+pJn2x+PQO6f+TX2hGmRUqdg3
-         lJGFUqvtAY0faVDz5TR3+GyTVJgFoumvkxbgb0PZVZt8OM9VQuxkxE1RN3z4m0RyWN8h
-         hmhnmrrwYEXj6a0x7HFvkF5/EEBIKLIRWeMJ743kRi6U7/1CUE1WmiGpN77muUaKjFSv
-         KLJdTatHTxO+2Czvd6rRQc9eVl+Ig0AUdCm+JWZzNk0Cp8jR7wBxdEzFGAbGFW2a1/Nb
-         Twsg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=BwbGiL3RagHI94a1iDlbHO9wYVfxt41Oe53hPi6+SFE=;
+        b=0X/6sM41HafBIR7O+E7czpu4alwDGJyPFNNzkUMHbA0mJComMfuW5WBSL32nLIMkoD
+         BQ0GukqhAiMTlY2JF/Gmel20Zse0ap9HkXvVjQZO0cSfDfx2sztvyN2p9JgkgyRn3k6k
+         HjfnZt5yPyuNsd7iNRXY/phCu8LYZIP1EaolVVq4Ek+xMyhSJqPXRi+0SzijsraSZKS8
+         NIFlv29Suo9Ea8cku+fBoyirfMPY8duqKbYoaCSP65o2P+LFxKuJqz8EDxSUrUcfE8yW
+         p13ZyvSD0OWGB1ytX6pvSMn9p76yivrzmyZ99Z8iA6DOa1ArZsWcrA9wk77nmlFDp+XL
+         byXw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=Hj3p4VZO;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic305-20.consmr.mail.sg3.yahoo.com (sonic305-20.consmr.mail.sg3.yahoo.com. [106.10.241.83])
-        by gmr-mx.google.com with ESMTPS id k15si702195ybk.0.2019.03.19.12.57.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Acfi4wk2;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-lj1-x243.google.com (mail-lj1-x243.google.com. [2a00:1450:4864:20::243])
+        by gmr-mx.google.com with ESMTPS id q205si572132wme.4.2020.03.22.09.49.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 12:57:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.83 as permitted sender) client-ip=106.10.241.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Mar 2020 09:49:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) client-ip=2a00:1450:4864:20::243;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=Hj3p4VZO;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.241.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553025462; bh=U1go1yFBje/+ear/SQ9jcuMoHpuYTvz1Th99D8WI044=; h=From:To:Cc:Subject:Date:From:Subject; b=Hj3p4VZO0BRru+5TnvuMDaNeR1+iKdnuxh/B5x8ZD1Y4GYqgXt7Sn6XHZMTxwUJMZB9tY8zb6e1byWuaWIe0jVfCdxq4te/rm3GWTqysyeUWDNbAU4tsfcIzSInr9G6k9RMhme5dxgiZWoDeGYJ7Bri3MiEtRjhTzhrW1Ud/Eyk+a2YetoEr0jGCJkG+Ri28HY9nkMTeBPtismxijxLcrSs/MWHldo6QLvqu+SkWw0ZUOZnHSUub2gRqClHIzXAtWRj+TEoLvEV+zhAU6aEB/2zJgqLX6us7kvLD4KN6JVd3c2UqZOq0lXoc/jkjZd3AJhtORIO5lP+8gUvgg4Fgyw==
-X-YMail-OSG: C7rxMEQVM1n1pGcrDeMObFO7lQTqEttCT6pi64Nv4mQFVjI1f9sPraBbTtJ2nNL
- 7BZjI_a433kxHRyH2DTY05zytT88wh9jCfD.G6x.izo1w_h2kl74zwNbqYW5Dev3T4xQ8pKWY9Kv
- MMpTHKWE5ZyYf1vhkP4_O1XPyMFpMfOTpvQyus_jpaa5fn4hlWi_rxknbhd8.WxpSgMQARsxVp2K
- 5xsCqYezyy8RQ.yzumHYe8.psgG.bmIlMEQKXwd2adxim6roZnK14NECw8202OjsQt78xFSs96.m
- IfWa7cFNgValsDCaACxKuc.O9_2uPANyPYjamON.OlJWmJr6N4sQr35UYwzXp9njBc0grrcykFrT
- X0cHY5DRFS5rFNcIfAn4T8kHaNPfi7E0Xkl4jHzxUPKfVDM4UtHxdjxpkgvl_29SrCpLvAYXlsfm
- 7ayZcdPMmbxHYQhjVgQ10tdZSLs7GoN.LeSzYRElfELCMCsg1l6ChhrChQPT0idx80lYxdkfoB1p
- xjFf8DYKuHkDz6YxdY4c0LM303i27sK5itxHh3IlvHE4BdVTEKTKxWfp3Df7NX71pZxCS8Uraa_D
- Yy9J3kL7OozAkoBXCOedpH4VeY6f0zWoBLyu_E4G3Jno2GTZCFF5k3wv7pyHQTpSXscQAbOKTZS_
- _1zV3tiIOD3HZfTwgfhZrGXgo1tzpB2.VJJucNkPEMG5bwq_egi_hWHCD1o8TdPhwHKpw.kxohC0
- drPbSu3fulsdWtWCrmNNKEdkpEXlGHn4rdVYqlDKpKOgVJtWZaPyjGy.eExNmkQLT66QGGhts.uO
- T4LUDcgUC5gClunT0hIXULiqjXlkZsBwYy7vbTG7ZkKMzZgPFGjDdh0fsueaBYsSy0SvgxQH9TBD
- Q1IQmbeTvxuvJKLWMreuL2ZOYwfblk1M6c3pwOZVPs9baK5KwEKbmuLs9flKno67Dnl0cxkL3e3i
- fFsCXDkSxfWS9WQX3n0FuBYm21NVgstCuz_2nkJgj9tPz2zNgp9zqRXRMjDhUbsLoq3CGQKSdkdP
- F_Mf1rtcFaE.CFoRab1fbwO2ZIPdabltwjtdf5Ilal.OM1Dsw.hVl9LxcoFKmHMMOJj_IPJv0CAX
- dGQgT63I-
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic305.consmr.mail.sg3.yahoo.com with HTTP; Tue, 19 Mar 2019 19:57:42 +0000
-Received: from 125.22.40.140 (EHLO localhost.localdomain) ([125.22.40.140])
-          by smtp422.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID b707d24ec4d48d531001bc1a2a399b3c;
-          Tue, 19 Mar 2019 19:57:41 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	ajay.kathat@microchip.com,
-	adham.abozaeid@microchip.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH 0/5] Remove return variables in multiple functions
-Date: Wed, 20 Mar 2019 01:27:26 +0530
-Message-Id: <cover.1553025265.git.nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Acfi4wk2;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x243.google.com with SMTP id 19so11839522ljj.7
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 09:49:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=BwbGiL3RagHI94a1iDlbHO9wYVfxt41Oe53hPi6+SFE=;
+        b=Acfi4wk28Q5jlefQQegQQ2fCk8Z4OtL/1jpIeNwfvkiW7Se1qFAbWJxDmWOVjNLewq
+         hiuobxhA1XMjvicQ4/NFTwQxtCC7sfwUPfI+TG3ssdGB+CbGIdPM5Fn2/Ce1CTqe9G2c
+         2srPX0b0ncLjSuf0EDjoLWB2z+WhqNvyhHeZj8uVh0kfKVbt29r07L3hT5FP4WobHWNj
+         Qo62soswJSi84dbJaqygVxADdfF5kzPCKrxY9bpfxwbjQBRicN0YlbliWoMYPAx5NEB4
+         Er8DpiDXet57rgc3ZW+xL7hifxKmm1IdTQYdzTvt3Kf9eQGDbgBWn1KfRnFroDxcUYNr
+         n4nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=BwbGiL3RagHI94a1iDlbHO9wYVfxt41Oe53hPi6+SFE=;
+        b=dwpFZG3EN7Muty59Ws3QeQt+MXGm0H1FmA53YCDKRZqNqO95boK26WhuCNW1WUm5tA
+         x4L79O43kumnAfHF1iGFM8Rd2zHK2rg8jQ/0ia25yT56XpSdlymMSAgidzz57kZGb2aZ
+         d7AjB7JlYYBglvh01hFzCcgn6cXE7bs3k5wdHbc+dYfhdL++GseUqhaUlj7MgFCiBnRZ
+         Heu+kYO11e7FLByzDa7Q40GmXLurAe8kaBqIkVyAkLVVsG+2qawY5ZhIC0TxYJ2Myydp
+         gTKWSkcpfCXxG4+hULCJhjTuZr87dVIszUlQhFl1ZDQ9hOWsBRZJo0VhmnAeBqxgwM0h
+         Ya1Q==
+X-Gm-Message-State: ANhLgQ2msdOyepbE+1s68qocLmxEQbPmsTx3Uag/2mXM5tFl+hV40ZSk
+	B/KVdOUeXbYrJlU/rBDj5aojYtKvQejgbjEU3xA=
+X-Received: by 2002:a05:651c:233:: with SMTP id z19mr10612194ljn.176.1584895755252;
+ Sun, 22 Mar 2020 09:49:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20200322133423.GA27425@simran-Inspiron-5558> <alpine.DEB.2.21.2003221439440.2325@hadrien>
+In-Reply-To: <alpine.DEB.2.21.2003221439440.2325@hadrien>
+From: Simran Singhal <singhalsimran0@gmail.com>
+Date: Sun, 22 Mar 2020 22:19:03 +0530
+Message-ID: <CALrZqyMm4HY2W7D83nRutT0dRrnC1xaY=v0B2XHVUwQWid2F=Q@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: tools: Fix
+ RETURN_VOID warnings
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="0000000000007f77d205a1744c2e"
 
-The following patches remove the return variable in multiple functions
-and return the required values directly. These issues were suggested by
-Coccinelle using ret.cocci.
+--0000000000007f77d205a1744c2e
+Content-Type: text/plain; charset="UTF-8"
 
-Nishka Dasgupta (5):
-  staging: wilc1000: Remove return variable
-  staging: wilc1000: Remove return variable
-  staging: wilc1000: Remove return variable
-  staging: wilc1000: Remove return variable
-  staging: wilc1000: Remove return variable
+On Sun, Mar 22, 2020 at 7:10 PM Julia Lawall <julia.lawall@inria.fr> wrote:
 
- drivers/staging/wilc1000/host_interface.c | 11 +++--------
- drivers/staging/wilc1000/wilc_spi.c       |  6 ++----
- 2 files changed, 5 insertions(+), 12 deletions(-)
+>
+>
+> On Sun, 22 Mar 2020, Simran Singhal wrote:
+>
+> > Fix 'void function return statements are not generally useful'
+> > checkpatch.pl warnings.
+> >
+> > Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+> > ---
+> >  drivers/staging/greybus/tools/loopback_test.c | 3 ---
+> >  1 file changed, 3 deletions(-)
+> >
+> > diff --git a/drivers/staging/greybus/tools/loopback_test.c
+> b/drivers/staging/greybus/tools/loopback_test.c
+> > index ba6f905f26fa..78333fb45b70 100644
+> > --- a/drivers/staging/greybus/tools/loopback_test.c
+> > +++ b/drivers/staging/greybus/tools/loopback_test.c
+> > @@ -855,11 +855,8 @@ void loopback_run(struct loopback_test *t)
+> >
+> >       log_results(t);
+> >
+> > -     return;
+> > -
+>
+> This is not correct.  Please think about what you are doing.
+>
 
--- 
-2.19.1
+Yes, what I did is wrong. I should not have remove the return statement
+before err as it will let the statements below err to execute when they
+should not.
 
+I am sorry for this patch and I request maintainers to drop this patch.
+
+
+>
+> julia
+>
+> >  err:
+> >       printf("Error running test\n");
+> > -     return;
+> >  }
+> >
+> >  static int sanity_check(struct loopback_test *t)
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20200322133423.GA27425%40simran-Inspiron-5558
+> .
+> >
+>
+
+--0000000000007f77d205a1744c2e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div dir=3D"ltr"><div dir=3D"lt=
+r"><br></div><br><div class=3D"gmail_quote"><div class=3D"gmail_attr" dir=
+=3D"ltr">On Sun, Mar 22, 2020 at 7:10 PM Julia Lawall &lt;<a href=3D"mailto=
+:julia.lawall@inria.fr">julia.lawall@inria.fr</a>&gt; wrote:<br></div><bloc=
+kquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex" class=3D"gmail_quote"><br>
+<br>
+On Sun, 22 Mar 2020, Simran Singhal wrote:<br>
+<br>
+&gt; Fix &#39;void function return statements are not generally useful&#39;=
+<br>
+&gt; <a rel=3D"noreferrer" href=3D"http://checkpatch.pl">checkpatch.pl</a> =
+warnings.<br>
+&gt;<br>
+&gt; Signed-off-by: Simran Singhal &lt;<a href=3D"mailto:singhalsimran0@gma=
+il.com">singhalsimran0@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/greybus/tools/loopback_test.c | 3 ---<br>
+&gt;=C2=A0 1 file changed, 3 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/s=
+taging/greybus/tools/loopback_test.c<br>
+&gt; index ba6f905f26fa..78333fb45b70 100644<br>
+&gt; --- a/drivers/staging/greybus/tools/loopback_test.c<br>
+&gt; +++ b/drivers/staging/greybus/tools/loopback_test.c<br>
+&gt; @@ -855,11 +855,8 @@ void loopback_run(struct loopback_test *t)<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0log_results(t);<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0return;<br>
+&gt; -<br>
+<br>
+This is not correct.=C2=A0 Please think about what you are doing.<br></bloc=
+kquote><div><br></div><div>Yes, what I did is wrong. I should not have remo=
+ve the return statement before err as it will let the statements below err =
+to execute when they should not.<br></div><div><br></div><div>I am sorry fo=
+r this patch and I request <span><span>maintainers</span></span> to drop th=
+is patch.<br></div><div>=C2=A0</div><blockquote style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex" class=3D"gm=
+ail_quote">
+<br>
+julia<br>
+<br>
+&gt;=C2=A0 err:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0printf(&quot;Error running test\n&quot;);<br=
+>
+&gt; -=C2=A0 =C2=A0 =C2=A0return;<br>
+&gt;=C2=A0 }<br>
+&gt;<br>
+&gt;=C2=A0 static int sanity_check(struct loopback_test *t)<br>
+&gt; --<br>
+&gt; 2.17.1<br>
+&gt;<br>
+&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com">outreachy-kernel+unsubscribe@googlegroups.com</a>.<br>
+&gt; To view this discussion on the web visit <a rel=3D"noreferrer" href=3D=
+"https://groups.google.com/d/msgid/outreachy-kernel/20200322133423.GA27425%=
+40simran-Inspiron-5558">https://groups.google.com/d/msgid/outreachy-kernel/=
+20200322133423.GA27425%40simran-Inspiron-5558</a>.<br>
+&gt;<br>
+</blockquote></div></div>
+</div>
+
+--0000000000007f77d205a1744c2e--
 
