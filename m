@@ -1,110 +1,98 @@
 X-GM-THRID: 6807276568426053632
-X-Received: by 2002:a05:6102:21a7:: with SMTP id i7mr4960202vsb.239.1584942593904;
-        Sun, 22 Mar 2020 22:49:53 -0700 (PDT)
+X-Received: by 2002:a05:6602:2251:: with SMTP id o17mr6756026ioo.101.1584942584776;
+        Sun, 22 Mar 2020 22:49:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:8797:: with SMTP id j145ls1622840vsd.3.gmail; Sun, 22
- Mar 2020 22:49:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vucrtktgy15EuWUwQTphHOjiQ2HoZuPsCrvKsJ7bLKhEpbFN0Bt3jIp5+tCoXZe2qjho1AC
-X-Received: by 2002:a67:ffd0:: with SMTP id w16mr5589309vsq.151.1584942592594;
-        Sun, 22 Mar 2020 22:49:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584942592; cv=none;
+Received: by 2002:a5d:8787:: with SMTP id f7ls1993257ion.3.gmail; Sun, 22 Mar
+ 2020 22:49:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvjJXsE+y4oFkTzI+Yibiw5Sbee+uTHzMyhEM2UBk40Ge95u6gQLhLzHiUfv0NSAUvnlj43
+X-Received: by 2002:a6b:5406:: with SMTP id i6mr17947939iob.188.1584942583678;
+        Sun, 22 Mar 2020 22:49:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584942583; cv=none;
         d=google.com; s=arc-20160816;
-        b=k3oirTEZh5U1XJOBYdtYzf7JifQEF6MKwqY4kfLSEKLFV687gnJbcIHkNWAutCeUN7
-         gQji5PNqFUJc5CnivhC7KqEMZamVphXDM/9ZwIjTikjGpSrAN21FrdzQGAXVlFbfNxH9
-         6C+2A7TNSVP+QYLTRzGUHOg34+e/w0/3nQ0C2Bwjn8n+ypUOaV4mHk/5ENTOOizdce9U
-         /OwtwmOMFl8T0JOHoaMBmMWymwsNsgcumLihajKEzYkVWIPN4CusqXstNPIPBdQ88lEP
-         sI7FN6Qqys5j5w81KCJTQRIdgnqFF9BJosHRrXpX8mEx6uFoVGhXjkg91lbWor2h0KHc
-         DxrQ==
+        b=KHeTagjEK1lf/iQoByN1s9JabeKu1Ig57A0W0mUtmEXi+zfMlNgSDJMWXpGwznOY0O
+         89WL2FdsUT4nvf8R9mprmBZsDHGlSSfZ3T5D9xj+PpCXsJVVRdmgKomoJRkrNixltSdX
+         p9XvyQ/bm6rZxoex9V48eGyYBLPzUxOyKFmOLlWO65bEbxADuOyv3drXQANKBNSgl8VU
+         QKgOhk/C4wxenGPvFxURYfbbxBh/8BSm3qeADV8bi8YYhNpB26FDJVOnKT7BFiAXnj0M
+         hrG8zZr/auTyP8idzXmZ7q06pFf0cCzq0lxctfQMozvfn4lQdLM8irzGoTpimoR6oSlP
+         0oLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=ZSoPFSIoYuevJ/KpvqckuaOqUqAljl6gtKbHNbZT/3E=;
-        b=cJ8UVYcN6FS8QVtlMy9xVCl5W7sp2yIbdKUdxsT1cDOZZDiibS+zeqBSlADnN/PVkF
-         qjrIUWoV3Ek4vdrg+PCVnJHyJRc7Nu2BNKMoP3zHZVMnOGVPpa+ETedK7bFYRJuN8bih
-         MsiZ4i/xzZ5o2jzHJ9h2E8ThTt+6grLqFaG5Uz8wDO2J4woCcLEKGEbFMkIyFK9S94GP
-         GjxswofT+zrQw6YtWeiQKIz1yKPee/nejuGOpzz7IvK7pZ+IUxN06wP5XPWnIJgp1s+M
-         qUwRZfcsQIbpIgHo4U/Rn7CaD+UBja520q8ds/3SfKCAzfDwI6gagzXP/aiOaBCoIrXa
-         c1aA==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=NYy9NuE8WBJf7SBWrwA6eIOGGrKEdaTbGfo4Hrff190=;
+        b=iteA0gEcRbMw61PfpLwTeyivFWm4g7Wlf1yZJ//2Q1aTtcoA8hA0bZ0q5Il/Eo85Mb
+         qfXBt3cKvALjkYmv6Q6Yasfs0FIJ6CQ/xv85ivNL4eAuhusO9iPm5pyjdci5d4fy+dxx
+         zzOyxS4Pgbm7ss4rQjdYF1lxWVCW0c7U5N//P6a5oqxAB9Gun/jZ+yydfOvkfowTWS1s
+         cgLgXipyOby3SPCkmxtHdDUP6OiSR7c/nCoVvx7LjSPU7LqCfKld3RtSs5iHlUhQR25K
+         XDxqI4CaHMElPUhZldxnSrKszMJHVv21hTOFz+M2PFWof59bTP7MafFwqZwFQmuQDX+p
+         ks7w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="JCO4/wtz";
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qq0bW+GO;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1029 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id g6si440480uab.1.2020.03.22.22.49.52
+Received: from mail-pj1-x1029.google.com (mail-pj1-x1029.google.com. [2607:f8b0:4864:20::1029])
+        by gmr-mx.google.com with ESMTPS id a3si980075iog.2.2020.03.22.22.49.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 22:49:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        Sun, 22 Mar 2020 22:49:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1029 as permitted sender) client-ip=2607:f8b0:4864:20::1029;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="JCO4/wtz";
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qq0bW+GO;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1029 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id o12so1839825pjs.2
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 22:49:52 -0700 (PDT)
+Received: by mail-pj1-x1029.google.com with SMTP id q16so5407783pje.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 22:49:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=ZSoPFSIoYuevJ/KpvqckuaOqUqAljl6gtKbHNbZT/3E=;
-        b=JCO4/wtz5mTg31ZsEeznAdkx/9+6zkLQ18UD5s03/mo+9roZri48QDXi/zS31EgQxy
-         Sv8HK2m8Z0NRS3Pru3G75ESe7fnmQnjHuMuYL+tz+XnlkTDncT+baotPADe385f2zzSu
-         Sc6W+TypUSQmuVbOBNXtRIOpMWqb91/XzvGwjHZNbfeo+7VamA0CH5bKlybWilLWA60p
-         1ruVWyjpPziQdoMz+Ij1rWrG4TbGyPTXNCL8grRWLt3weLwnyTxznXJAZcxQzbf7NK+c
-         R77apdzvKLsCtPArdfxxO4Q9sHR3aP97TfVNsqAZeTXI9ACpNORv1B45NNSgRfFFsBFJ
-         Ye1Q==
+        h=from:to:cc:subject:date:message-id;
+        bh=NYy9NuE8WBJf7SBWrwA6eIOGGrKEdaTbGfo4Hrff190=;
+        b=qq0bW+GOBcJtXxrMsCbmPHYRZoBe9+3eq33S2OtV1BirRG42PjF+Bll4gzfTL5IVJi
+         HBm2D/T+HI3TWYwLSeq7VM15+XWneUPqcFRDPS1yqHBlqBxwqjK1K3JpSvLZFpLjrzAs
+         HqvkKIRnCnqEiJDFBBfvpIAPs2g24pW1y+t2iDdqcYYZdbPNb+3rxIOZJM9UIFsG8uHE
+         naAhTuiObYiqrUv2knz18/W0nFRctQRQiAUSAeAP9mi25KmhbYUe/yzwqEf8wGHSK5Yx
+         D/uZ+8PUrz5Wj5mRi0fZrdS09oDLLQGUFrJImfWECLHYrXT5rPMmoI/PPnoA7wrJu/px
+         GHKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=ZSoPFSIoYuevJ/KpvqckuaOqUqAljl6gtKbHNbZT/3E=;
-        b=Z/xf9oOJ7VNJ/914uJCHuvtIQ9pglKJcLzauFPgSHtbsIBjZTAGchwqy5SVcSRq3VI
-         xR5npSYQqXl115eX4TMUyOBmhaID5t1CT0dTpVVxVE4xrRVVLrZOuIIY9zXrrHEuMHZ2
-         wB4oIdQZlThmdne2nf/94xlgfFpQbuDFbc5uVrGz0bsxUlM9jtLv1SkQS50cl0//SlKg
-         ViyLeKkdZdn0kaAJy18k9lHuhRfPPfVnUnIo2OuSrh9+pU6M/Tl23mlhjSn+MjD/A7sF
-         e0udjQn/G9fgdchgSYo1Zu+Lgp8OEqRfPi/3FybeoZY/vcAH3Fpb5uoHbCmh8ERgZlWk
-         Xgiw==
-X-Gm-Message-State: ANhLgQ2DM+hEKF+WlFlQy76yklMBsZ04S/OYX+7lizaEvrhWVt9taw6Q
-	nmcXfFJiR11ySvD7l1ZFbrRunj1jKRRuFw==
-X-Received: by 2002:a17:90a:9f88:: with SMTP id o8mr11620778pjp.145.1584942591168;
-        Sun, 22 Mar 2020 22:49:51 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=NYy9NuE8WBJf7SBWrwA6eIOGGrKEdaTbGfo4Hrff190=;
+        b=caL1r2+UxsYI+GofOw+SUYvKIwrUCepEmKqlu1uhHweAEVFOiUM1QkxcUv6fNNbV3w
+         dcCPHYmeavBGkI+DqbZNluem1VyOQGXHnmQ7jEFIRrj47RpaE5hnOSkbziPlnZtDMj2u
+         Ryyo5QARqMeL1c6dS+4g7lei+mRsWUVA4A+maPomdyPpb3k5sCbJzLoI91DZ/A8sC1Cx
+         Ag0Iu3M4rh/hRw2fWoatULVDq5kravMP+x+c/uWkA4z7hierI1QnzcQKW64C/2DYlzji
+         aMfI34C0wUSS3SBrCH37/SQF9XMX9N3+SNUrmwUrbCJ52cljFn3EOyWxsORGtmGa67EE
+         55ag==
+X-Gm-Message-State: ANhLgQ0SDWH5URZ5Gpwn3jX4RC/ByZThc4Nx6w+OabeHBRjdUfujzgYT
+	Fin7ZYXdDxm2EhcM0QUs5mhCg0VIJOq76Q==
+X-Received: by 2002:a17:902:8d89:: with SMTP id v9mr20492188plo.83.1584942582689;
+        Sun, 22 Mar 2020 22:49:42 -0700 (PDT)
 Return-Path: <debsoumyajit100@gmail.com>
 Received: from localhost.localdomain ([47.29.172.125])
-        by smtp.googlemail.com with ESMTPSA id r17sm335142pgl.80.2020.03.22.22.49.48
+        by smtp.googlemail.com with ESMTPSA id r17sm335142pgl.80.2020.03.22.22.49.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Mar 2020 22:49:50 -0700 (PDT)
+        Sun, 22 Mar 2020 22:49:41 -0700 (PDT)
 From: Soumyajit Deb <debsoumyajit100@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
 	perex@perex.cz,
 	Soumyajit Deb <debsoumyajit100@gmail.com>
-Subject: [PATCH 1/3] staging: hp100: Add space around operator +
-Date: Mon, 23 Mar 2020 11:18:34 +0530
-Message-Id: <20200323054836.48816-2-debsoumyajit100@gmail.com>
+Subject: [PATCH 0/3] Resolve indentation and space warnings generated by checkpatch
+Date: Mon, 23 Mar 2020 11:18:33 +0530
+Message-Id: <20200323054836.48816-1-debsoumyajit100@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200323054836.48816-1-debsoumyajit100@gmail.com>
-References: <20200323054836.48816-1-debsoumyajit100@gmail.com>
 
-Add space around operator + to improve code readability.
-Reported by checkpatch.pl
+This patchset adds space around operators and remove space after * in
+pointer declarations and lastly removes uneccesary blank lines for the
+same from the file hp100.c present under drivers/staging/hp/ directory.
 
-Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
----
- drivers/staging/hp/hp100.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Soumyajit Deb (3):
+  staging: hp100: Add space around operator +
+  staging: hp100: Remove space after * in pointer declarations
+  staging: hp100: Remove uneccessary blank lines and resolve indentation
+    issues
 
-diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-index b89c4dcf53f5..00b3db8144c3 100644
---- a/drivers/staging/hp/hp100.c
-+++ b/drivers/staging/hp/hp100.c
-@@ -119,7 +119,7 @@
- #define HP100_REGION_SIZE	0x20	/* for ioports */
- #define HP100_SIG_LEN		8	/* same as EISA_SIG_LEN */
- 
--#define HP100_MAX_PACKET_SIZE	(1536+4)
-+#define HP100_MAX_PACKET_SIZE	(1536 + 4)
- #define HP100_MIN_PACKET_SIZE	60
- 
- #ifndef HP100_DEFAULT_RX_RATIO
+ drivers/staging/hp/hp100.c | 61 ++++++++++++++++----------------------
+ 1 file changed, 26 insertions(+), 35 deletions(-)
+
 -- 
 2.17.1
 
