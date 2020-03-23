@@ -1,107 +1,96 @@
-X-GM-THRID: 6664357391399649280
-X-Received: by 2002:aca:ed95:: with SMTP id l143mr10369187oih.56.1551666620176;
-        Sun, 03 Mar 2019 18:30:20 -0800 (PST)
+X-GM-THRID: 6806841558557523968
+X-Received: by 2002:a5d:56ca:: with SMTP id m10mr30255796wrw.313.1584961660153;
+        Mon, 23 Mar 2020 04:07:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:be04:: with SMTP id o4ls2109481oif.1.gmail; Sun, 03 Mar
- 2019 18:30:19 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYpyptootvWnE5mewmJXrYHnPczG3dh/qaJBhpMNbcavPQ2cgkLzG6NACGkvVpdGnpiCZww
-X-Received: by 2002:aca:cd06:: with SMTP id d6mr10191247oig.10.1551666619028;
-        Sun, 03 Mar 2019 18:30:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551666619; cv=none;
+Received: by 2002:a1c:a98b:: with SMTP id s133ls2215406wme.3.gmail; Mon, 23
+ Mar 2020 04:07:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtj09hWE8XGC/rVqLJQXvRxaWDoOwJk5iUA2yDrMbFY8nLlV/ynP+LDiT7wVxGfdL7O4Rxk
+X-Received: by 2002:a05:600c:414a:: with SMTP id h10mr27625029wmm.53.1584961658580;
+        Mon, 23 Mar 2020 04:07:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584961658; cv=none;
         d=google.com; s=arc-20160816;
-        b=QEaqAHPkvHCb+OpWb52qMhMyYkn+PTOWoe8u5pVRcUGWF5r0Wmr3dVkKCr1xuoNkym
-         /OkqjEk5Hh7aiULc6Bv2T/Yu+Akcbr3ACMsi12H45uffSBh1oG3zecf+5cKriyWURqbY
-         Ash1Z1Xs1r/ACFm2wmdPgf4ydNCd6UAM1BjZASPkcQXvzW/ClsanMqXV90iEQpRhn6+4
-         mF3iOjWIegnxxuU5kDs/arcs92CpR/Wvjm1NiuOISi4A6BYlAappq2Wos6xHa7obBb35
-         hIWmeFli8419UdNDuUjiYC+QTLqOdRn1Z4LzQayXskDSH3akO6Q2hYW5PKfIGV4RYnar
-         B/6g==
+        b=vUNMF/df4g8Z7SDcE2oljPPXX6ZgRSAH0jIJNJDyvVAFYZVQULXlla2wG7FA7gAJt1
+         T0pleQ8fOw/UR4TG7Bmh7E3znok+/m3nvwFCH6yE5uQOez4wXC+5oDRYInxxlJC8DKnn
+         iWg0ZX24045qVEQG1rRIXTaY0Y6DdUe9YuTYQDw9hCsRhvSkK2d6XtWIs//+jPO3q8mH
+         guO0D3TyaVUwz1iVvz7YJY5YX9gQLiMIgjKolapH0TqKOfRx7971c7iF1UVfealNhRWX
+         h7/YC7Q2n+2hFN0GOaolh9QqMx6GKBe/m0CHQjjjDPrx2JCEB9T4J7dTFXJw3Ulo5ihe
+         r5TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=h0kTcG1C3nCyH6BFVXDI0Agz09VGpFy0x/kjpnAvEzk=;
-        b=B/aHA5rwBPAIlE/9k+cfkSFh2BW3XI3c1T3D8hy0pRB7Zk+yq2dGIv40MMa8yd1vL4
-         nqFLdFlYECmvHu6+dw9pkJ3+Y6TQO+ONIXJasdqGYWTagGybtpfPJukn+xonssuGTtls
-         fOdnUUJ9fvT0c0mf//nkkpeUK3hkNNmABcdrsRFtesHaNaac9VvaIMBL4MNQmtZpK1+R
-         nQowgqn3g8HRWjWomi+0tXtJdlpNwmeskIxuFbffnHWyZjzX11YHJ0Szc+Rwb5Bb/C2/
-         SQgf3pm6U2CH8MIvXldv7wweJn4NeQvELCjvB/GJO85KjEoXzklaaD69XZEU+PLG2PWY
-         EAJQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=7cPmuHgd0E7hXUteoK4F9NDmNvyE4W5Cmcc6vwtw1Tk=;
+        b=cE/Gun924jWKPJXgupysCbhVTfq4Ya7Tx18Nvmho8FiVx01YnpPn2rMAW8iTRqmlN1
+         uxZxZfgT740TBjl62Gkmj148wnYlG5/AO2XQrVmIfAs9SMDj7/jjY54g4fZ6S3mOC/ZG
+         pjBM8VRTNMCjPMJlZbQmqZqkK4pkEhi3WoL5NKCO7yLryYqE7eD3bsCJ77DsLKXzfx4V
+         OWCUslm61LCc5nad9hk1BnYCUMGo8KOv3FrzRqXk0+yZGQZKL2kUluigyyuXei20AL/n
+         xGTfsWo+svnD4TIkP8oaP5JBaohmZ1ACOiXEHhz6bOUSH/u5IS1tOOTx3I0mlIvL+G7k
+         u2sA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oryInB3G;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x344.google.com (mail-ot1-x344.google.com. [2607:f8b0:4864:20::344])
-        by gmr-mx.google.com with ESMTPS id x31si354140otb.1.2019.03.03.18.30.19
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id l16si590351wmg.1.2020.03.23.04.07.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 18:30:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) client-ip=2607:f8b0:4864:20::344;
+        Mon, 23 Mar 2020 04:07:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oryInB3G;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::344 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x344.google.com with SMTP id m1so2977750otf.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 18:30:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=h0kTcG1C3nCyH6BFVXDI0Agz09VGpFy0x/kjpnAvEzk=;
-        b=oryInB3GGrNFY2rSk0A9zgZse2K3RAnU+DTHISIzXsVJfZnl4aAI7IaXic14AMlUfT
-         OdVDZRHVLAua6a1RR4trKFvtOuaxLGUkyaRP3JqKbXXpmXLO2i7yAIZERF44BBBsOoKT
-         eG2hDLe88p/Ra9JPPcyFYtkxDv0ipKMvoUk5PmbnnOlNMyimogThMpQ9GMwI+DHcLrx7
-         rafbJBDryawANrTwph2j41sqhtXpcmQ3QRNhNII0JKOosUaG6OczjGvAK/rL1ie3xKWp
-         imb61TTl9IDanIQ7isPeGTCGXFWiBh9Ah6fEJ9cPJM7TiQIch62N3Kwx6C/9QXBYLvOg
-         ITYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=h0kTcG1C3nCyH6BFVXDI0Agz09VGpFy0x/kjpnAvEzk=;
-        b=MEXQxRRR62ZWt2CW83+xtmIb/ol5Pby0lgicBaOWUrOJb5u82vnqcsMEvM1Hw+WJFX
-         NwJ1TwxSr+x0AX1eW6w/BZT9u758V0RJWWcGHdlr7AOAIg+Cj13hMOXeHiaRgDWdVbaH
-         HteXQsL0NVwwBzcQ4f9TGwMpbMcXkcKkDJW5PSyQpo7tAfh9L63N32Jr2FTLV/ml/3wi
-         IidRJ2MVdoZQw63iqp7vUSYzwEjgbEDIfDXLrt2/oLx/uZ76BkRRMiQA1COcUmyOfMjZ
-         4dMKwkkcRws9EyTK6JxqpfnMcQuiWV8uMAQsNZxQSF/hAwo1KLxzgBsfvpnWeIT62UVa
-         IdhA==
-X-Gm-Message-State: APjAAAWLPFlHjLgGX4qhXru6jxDmwfj+pMSrGLVR6cpzicA9aY1uXycL
-	vyYNR8IV0z4WNmGJmZU1IE0=
-X-Received: by 2002:a9d:798c:: with SMTP id h12mr10471255otm.86.1551666618581;
-        Sun, 03 Mar 2019 18:30:18 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id n25sm2081344otj.76.2019.03.03.18.30.17
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Mar 2019 18:30:17 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: vt6655: Fix space around binary operator
-Date: Sun,  3 Mar 2019 20:30:13 -0600
-Message-Id: <20190304023013.18421-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,296,1580770800"; 
+   d="scan'208";a="343271170"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Mar 2020 12:07:37 +0100
+Date: Mon, 23 Mar 2020 12:07:37 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Gokce Kuler <gokcekuler@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: hp100: line over 80
+ characters
+In-Reply-To: <20200323002450.GA15867@siyah2>
+Message-ID: <alpine.DEB.2.21.2003231206380.3054@hadrien>
+References: <20200323002450.GA15867@siyah2>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Fix the check as per Linux kernel style for use of spaces
-CHECK: spaces preferred around that '-'
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/vt6655/rf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 825b6ab5c0de..fd09b9771cf5 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -792,7 +792,7 @@ bool RFbSetPower(
- 			byDec = byPwr + 10;
- 
- 		if (byDec >= priv->byMaxPwrLevel)
--			byDec = priv->byMaxPwrLevel-1;
-+			byDec = priv->byMaxPwrLevel - 1;
- 
- 		byPwr = byDec;
- 		break;
--- 
-2.17.1
+On Mon, 23 Mar 2020, Gokce Kuler wrote:
 
+> Add a spaces character before that for correct syntax.
+
+I think Greg already noted that the subject line doesn't match the log
+message or what is done.  Also, adding spaces won't affect the correctness
+of the syntax.  It can make the code more readable.
+
+julia
+
+>
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/hp/hp100.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+> index 32a9e29..280b5a0 100644
+> --- a/drivers/staging/hp/hp100.c
+> +++ b/drivers/staging/hp/hp100.c
+> @@ -550,7 +550,7 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
+>  			local_mode = 3;
+>  		} else if (chip == HP100_CHIPID_LASSEN &&
+>  			   (lsw & (HP100_BM_WRITE | HP100_BM_READ)) ==
+> -			   (HP100_BM_WRITE | HP100_BM_READ)) {
+> +			    (HP100_BM_WRITE | HP100_BM_READ)) {
+>  			/* Conversion to new PCI API :
+>  			 * I don't have the doc, but I assume that the card
+>  			 * can map the full 32bit address space.
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200323002450.GA15867%40siyah2.
+>
 
