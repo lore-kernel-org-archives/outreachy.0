@@ -1,107 +1,94 @@
-X-GM-THRID: 6670186659922837504
-X-Received: by 2002:a9d:6314:: with SMTP id q20mr1210664otk.18.1553023853167;
-        Tue, 19 Mar 2019 12:30:53 -0700 (PDT)
+X-GM-THRID: 6806564909415923712
+X-Received: by 2002:a17:90a:1d4:: with SMTP id 20mr21501628pjd.95.1584924404913;
+        Sun, 22 Mar 2020 17:46:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4255:: with SMTP id p82ls1168217oia.4.gmail; Tue, 19 Mar
- 2019 12:30:52 -0700 (PDT)
-X-Received: by 2002:aca:f54b:: with SMTP id t72mr1330369oih.4.1553023852564;
-        Tue, 19 Mar 2019 12:30:52 -0700 (PDT)
-Received: by 2002:aca:897:0:0:0:0:0 with SMTP id 145msoii;
-        Tue, 19 Mar 2019 12:23:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy23KDtCII/6eVG3WnED2s0g/PQJFcBpzjW75Iqm7X90mQE3uo+uv3RN3oxszrFB3IyjQ4o
-X-Received: by 2002:a17:902:5c5:: with SMTP id f63mr7115284plf.108.1553023379874;
-        Tue, 19 Mar 2019 12:22:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553023379; cv=none;
+Received: by 2002:a17:90a:982:: with SMTP id 2ls7980303pjo.1.gmail; Sun, 22
+ Mar 2020 17:46:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtxSzQN64RfeUSGK8SBVNexki06Qbi2/hiWVykO3cAv1bmYvHxlV4wWpFH/aGGQKBDhooEk
+X-Received: by 2002:a17:902:7045:: with SMTP id h5mr7200267plt.266.1584924403290;
+        Sun, 22 Mar 2020 17:46:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584924403; cv=none;
         d=google.com; s=arc-20160816;
-        b=wq0FyOC46tY2NnmYbdCOnqoIJm6BmzsudxXrLb4lOfCa0K27Icr3BY1ze9Lls7D9BG
-         wuq0GFDDiDDUKKy4GL/AA2RugoejF+fWMAJq4DmClprobkfVLvAPsOrlLvpAwMsNvvb+
-         pqkzBxOTTCVIrQDFytC7ydAqnotBOYfQ6hRZBPMKZAOFARnpwYC27LGonBiBO9mwOj/m
-         SYkiw0UqBEAHORDNyqBmI6cqo8m+sQ7IwGf9YX4FHKI2w35YzexNx9Gk5USjDU6Iy/rb
-         jEE3HY34e/XY4p+yAdhzXQ7/KHgXMoVsGYackG3SLuxDi/GDVjMyDEEFU24L27hxPxhe
-         nUbQ==
+        b=VAJuLbNzBNmbJfxHwqNweWptZKEbnQhLbein6vBHfgBQQd6mETiYCfU8nbpzsoAuKM
+         c/x2893h8R19vwba/sIF3524aNG2ujQqBY2fSnStWQHKOfh/j3xrnEq4N70esygHpQdy
+         ai8Ge8Wy/G0kNMSqCpvFlkTD4WOf7zz7eYfrea7Z0+54lCSo4SaEqxfJzXxAEvKh6RjN
+         t+io1GRxyH7LaR8fw8qIRtGgMyx6ek2kNd4R4tTBvLU6C3quAdKuJWhPstGNOUHxi15V
+         OFXV4elbU7/Q77qQL7Kjh59WRbGWHuW6hvbDwbcT5dA5wg/Ur3wuHCARxf1W/otWVPlR
+         BoIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=y6SPQIk5S5+woeHuOCAZW7bsWRuJTDcXERgaNT/JLr4=;
-        b=l3Yh6/tUdDK6gz9baJIrMTFOeHjsIgCX6U+a+hONvTeuN97pqPw7LdPUjoz4pNPe0H
-         y9bgAZI0TSIViBxLSEeOdfMWPX9b4kqq9N8vUzBDWhKhYHwe9YTYb9hXIFY2VR8AyXmo
-         GXalg722qV181NsnAwjKexPPfR7sq1k115YkV/HIbkGG/d4197F9t4wFhRvPSgqLRkIT
-         FUj2Mh8FOg7Dzb3ovm5g6ns5RCVBBz0STlNAs81N5SvT5fG5E6zNH8iK/SfbZ7S82KKI
-         +cllwRtgj+dZ/DwlskrTZCNepi8zp2vigCYSQwJz6kK8dGYwEt3cF26du1bVM9uRaBD4
-         ti/Q==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=GCzEEOul16BqqAKOJihh11F6d0QUwRoW5B7TTYyGrcM=;
+        b=X8YLy7kPUTMOeFcoj+1vBgxN08GOYYuzkQwmGa+wQn88TpdzRyGtzCL1HxcfajsMGY
+         VzwVcX9mril6vfmorfEjjX1EHbjYYNnIIFVuTCdete7drYAy7MwQlO5u0V1H3rtQtMQH
+         dn7hDr5A3o5w71aFA7nk90qmBlzjzP8QberS3MfAwa+cJIJyhotyVUBhiYLqUwdmCCVB
+         PqhJETqRc5KPv1rfOg7YOfpDYKbCbxOcx2Q3srHw4FzwK+nO/nh0doyMCDjBxZtqEiz4
+         oIPBRre/luaJzROBNijv/AlDy0qo388Y+0IXAld9lrNV5w4OW3bexTwgO5J2nsRiYFsR
+         fNAQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=nEw4ujIe;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic309-20.consmr.mail.sg3.yahoo.com (sonic309-20.consmr.mail.sg3.yahoo.com. [106.10.244.83])
-        by gmr-mx.google.com with ESMTPS id p15si820938plr.4.2019.03.19.12.22.59
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VU148cwj;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id 83si528596pge.4.2020.03.22.17.46.43
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 12:22:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) client-ip=106.10.244.83;
+        Sun, 22 Mar 2020 17:46:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=nEw4ujIe;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553023377; bh=y6SPQIk5S5+woeHuOCAZW7bsWRuJTDcXERgaNT/JLr4=; h=From:To:Cc:Subject:Date:From:Subject; b=nEw4ujIeSG61RKHCLb6ufGVwrDO9XEW/+Co0bsggP/WeE9WQ+ox/G3+YJyVZaN/PH6nktiocRLZv7T9MuuESruTnxqC5zf+uLWgIHJyT6VZnRMAfpoC7LJ0YvI/VR90EX7H9/5aTBz6Y6vjTydwC19EuBzcdZ2KCqQCcEPUlz8kBv9jrdLy0RJmTNZBvfKZ1b2VfRvjI5vjP3K49C7otvghaMH9d0CGV5Kdo4JziDVvtkih2oPmLTUQDpCJJr51GUvdRjiTz3LnfXzq9Kdx4N7/r+LwP0eMVwW9mRglV59mXXIGlbLGxzsywD/YDAi6F2jmwPtPzb0BVoHCkaZEFSA==
-X-YMail-OSG: TpU0yvQVM1mvBjvvX70rxPuq2ruMIcthsvvBSediDr2OxHNTg9E.mbn3CHt0OZY
- RZJG9TWFTJMpZYbXXnWSH_k_FgC4nUz1mH7J1riaTNCywigOO.1Nm_efoYCDH8N5I5ZjzwmZGIxD
- hesScACaPDA09FBNqZwEPOCu3YbzITag24Yyw.myPqdJ8cO34rX4f2D_h84CIVbl6khOhft9VLC6
- Z49ByeYZDeWITM4kyPK3Hjun_9_XIfNXVQyCwrQc0y_HXJs1zR8IKTV_NlA.lDIeK4gJXZQTQ3m7
- crOzvsZblOFPl_hE.WjMyyzBtlyUznRInJ2rvio03YyJnS5jhsC5TBrbwHxC.u4SMRwndTHl2qij
- XLHYlJ8hiEZHGWZMnuDNUCmVgApleCQOtlV6hLyNeXozoxNXtgb.GKMv._4m98So.5tudQF9NhIg
- os2JF1E4_xWJaZvV0ZT.uD_H8UZlNoF2nN50NFrw4KnH7lTFEF9zKE8ZxoGXVVNfV17zbvSlSDIa
- x7CGnGQ26V.l5vCeQxf5bMoPr8CBHcNtE8CJE7UaWjvaqp4ErmGp6bIX.E_21RpmtrqWyuaeq7f3
- QDDbkJ_9WdL1rUm_eU6jiQfcWFcHXx_ZTqxSVkXN.fGLjsOkOg1rW1EUqg9hNH7cG7CGZ6cdLe8J
- t_zgpGDaYHnrbw_2PSmltlfWJDuvE_Y_6.Mm3D0iRy4mi65Oje46KcxbCaB1MU_d_6HjoMEP2o5M
- cG9zW1pMcufeYfnaArhnFWxIovKsj2UOAPAhI3G7L0TZwLbSsHO5sdma8S5h0e5Oy2bt2.Am0lWD
- P89K1Fj_FtEIt9Sjamdb4pVuM7M_yDuTuvGyqgYmHk4rE3shYa2pFdtlXUIEGiCI8klncKZT.KXt
- 8hwq0dN01uPSfAq9RRl7Bo9v1nPp.EJ0EFFRUwgu_Ide0cr5vJEo.FvulaCdeFGFXNyvqw1Kq140
- o22EdUbhJDw_z85jSAFHym61vIunqDLfT_vxcLe4Bbqf5U.bAGsdY..fkrGJL6YkmI114fJnFVRs
- 6GL3jR5OvDzMVlxHzptu0DZYvtdpNoj8ai2ksofRO8XwWy5jsvxI5iULyt.kazq6HASTBJNAsh12
- pSyRQUJ.JuqoXbDfpYb6pB0HabGRjmv0-
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic309.consmr.mail.sg3.yahoo.com with HTTP; Tue, 19 Mar 2019 19:22:57 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp407.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 4c2b548424ea4d330dd4af205e2cd67f;
-          Tue, 19 Mar 2019 19:22:57 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	ioana.ciornei@nxp.com,
-	ruxandra.radulescu@nxp.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: fsl-dpaa2: ethsw: Remove return variable
-Date: Wed, 20 Mar 2019 00:52:31 +0530
-Message-Id: <20190319192231.8422-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VU148cwj;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584924401;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GCzEEOul16BqqAKOJihh11F6d0QUwRoW5B7TTYyGrcM=;
+	b=VU148cwjSEB4XcjGFfSgmyXufDBthXhcGrSwumu05pNBo16X4OPE1sSLtmx5JzGWkxPS8t
+	tLOS3pZxzwFIc/PEtZPwRLil1DBv0+3WfXfg/MiAUUiygX2RJNrv/hLBA1/zR9GgFph+L4
+	BQthH49vJ2kyd00QtM4mHYiesKLUr8Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-186-qbyW_4DcPTCYALNesCjQ8Q-1; Sun, 22 Mar 2020 20:46:40 -0400
+X-MC-Unique: qbyW_4DcPTCYALNesCjQ8Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4D6768010EC;
+	Mon, 23 Mar 2020 00:46:39 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id BC6FF9B927;
+	Mon, 23 Mar 2020 00:46:36 +0000 (UTC)
+Date: Mon, 23 Mar 2020 01:46:18 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
+Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: remove unneeded
+ variables
+Message-ID: <20200323014618.249ac37e@elisabeth>
+In-Reply-To: <20200321074757.8321-1-payalskshirsagar1234@gmail.com>
+References: <20200321074757.8321-1-payalskshirsagar1234@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Remove return variable and return return value directly. Issue found by
-Coccinelle using ret.cocci.
+On Sat, 21 Mar 2020 13:17:57 +0530
+Payal Kshirsagar <payalskshirsagar1234@gmail.com> wrote:
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
----
- drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> Remove unneeded temporary local variables and their declarations.
+> 
+> Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
 
-diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-index ad577beeb052..e3c3e427309a 100644
---- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-+++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-@@ -1350,9 +1350,7 @@ static int ethsw_port_init(struct ethsw_port_priv *port_priv, u16 port)
- 		return err;
- 	}
- 
--	err = ethsw_port_fdb_add_mc(port_priv, def_mcast);
--
--	return err;
-+	return ethsw_port_fdb_add_mc(port_priv, def_mcast);
- }
- 
- static void ethsw_unregister_notifier(struct device *dev)
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+
 -- 
-2.19.1
+Stefano
 
 
