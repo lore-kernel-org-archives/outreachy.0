@@ -1,155 +1,148 @@
-X-GM-THRID: 5277654974464
-X-Google-Groups: outreachy-kernel
-X-Google-Thread: 9ca63f596c,d8c831628d8fe76f,start
-X-Google-Attributes: gid9ca63f596c,domainid0,private,googlegroup
-X-Google-NewGroupId: yes
-X-Received: by 10.66.219.131 with SMTP id po3mr1612452pac.16.1425165439185;
-        Sat, 28 Feb 2015 15:17:19 -0800 (PST)
+X-GM-THRID: 6807276568426053632
+X-Received: by 2002:a50:da4a:: with SMTP id a10mr20692503edk.158.1584962844518;
+        Mon, 23 Mar 2020 04:27:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.164.137 with SMTP id yq9ls624634igb.32.canary; Sat, 28 Feb
- 2015 15:17:18 -0800 (PST)
-X-Received: by 10.50.57.47 with SMTP id f15mr9883664igq.1.1425165438957;
-        Sat, 28 Feb 2015 15:17:18 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from mail-pa0-x22c.google.com (mail-pa0-x22c.google.com. [2607:f8b0:400e:c03::22c])
-        by gmr-mx.google.com with ESMTPS id xj4si946157pbc.2.2015.02.28.15.17.18
+Received: by 2002:a50:a40f:: with SMTP id u15ls7673732edb.5.gmail; Mon, 23 Mar
+ 2020 04:27:23 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuG2Tpicsh7xkYDHXYQTyRX2Sgg82ZuA3GnJQTjxc735bN4Vrjq8sjyHzScy8wCHrsycRkt
+X-Received: by 2002:aa7:cfc5:: with SMTP id r5mr6738001edy.78.1584962843269;
+        Mon, 23 Mar 2020 04:27:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584962843; cv=none;
+        d=google.com; s=arc-20160816;
+        b=D+RTpISYKEo40AQBtOnhJCetS69nPeQ6h2QyVVEuhCwjJ/ggWtK71vaeflJn5kaP3J
+         T8r3paT213Klc3PVdahXH3nn+2OnKjVgrvtWhdTUaK28YwPl0MMJDnQC5sTMz+wI5oZt
+         HFjZd2WQEcT8YfWEHDzirsr+nUd1Gla4RKbaCQjuViYAu9lkIf4JSPwddfr/1i8vaQu1
+         tZ0acPcPLFSPUAH9uCMmCi/ZwJUqbUQ+Em+lrb/no4fBQheDLraYLR9qMrIBg91C3FYv
+         Z3dYyMyPW4N05JbX8chgLP1vnpn8FCdPm3pkPDtjN+Xnsr7j2GOl0a4WvFt/Q6byXZIf
+         NG1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=qAjVBX+mIewYkyy9v2Eyjb1WY9H6GJpxos31QRVsa/8=;
+        b=jQupFUrvfBciacdM3ZzmTmw/QcrQcy25VXdsAeWqf0lqwYprj74GcEFcnozqDg9crf
+         MQk92psCZQSfuLNg+9JL+6b/4RvY6NH0z7yFxkXQ9S4eFBd+rJZ1u0Wsa4VJQBiGOV5/
+         UyItW3Td6+8kqF9GWneecUjPZBzFyj3uJqg4XDbeRlyS0edTmvFQkm7zfNkF3Rdf3dky
+         ZGAa4r9lyQy7bd/vYRXuhncLcA4TGae4Vnnhfl0VW0b9FBI84WbUk3r+7PslNOiVioli
+         Vrl0w0G9iAURNyGwAxMKiJ1p4SM9Gt9j4GvBvj2UyzG+aOKk6WEN8lI02wizGncVlrWq
+         EHAw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rpxCGgw4;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from mail-lf1-x143.google.com (mail-lf1-x143.google.com. [2a00:1450:4864:20::143])
+        by gmr-mx.google.com with ESMTPS id f2si459806edm.1.2020.03.23.04.27.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 28 Feb 2015 15:17:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) client-ip=2607:f8b0:400e:c03::22c;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 23 Mar 2020 04:27:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) client-ip=2a00:1450:4864:20::143;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of navyasri.tech@gmail.com designates 2607:f8b0:400e:c03::22c as permitted sender) smtp.mail=navyasri.tech@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22c.google.com with SMTP id li10so3149932pab.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Feb 2015 15:17:18 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rpxCGgw4;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x143.google.com with SMTP id c20so9932010lfb.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2020 04:27:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=3x7gbFCp392YVYqEWB8yRmA7YCd2vcb0ghbGD9/lDaY=;
-        b=p4w4kTY9wUJDCcuINrlQv6IWxa6Ay4zEBcSpVj9s9ZTJvu2zXvQFxawE58SD2XlVUX
-         dOpwPk2VjPpK5Ri4r+NxFPhwDb6ojySHMVs+hMwvuVKB2IllP86m+v3vH+bOs5VBUAbd
-         CChERUCr8P8QIxZbqAOy28JGiU26qSKl5lwpSOTXN2QADck4Dle5PI+AE9xpcN6Ebe3q
-         WzMgnV8HCBVzeMflzQHjZ5eHGuF8GXDE9ZqTWOwdKSYQV0FTKCQbnznoOlWHTwdWVz6W
-         e+bVAWLNvbm8JqCDI3yhO9B9F1nXxtkZR55oQqzoeHUrFsDxOM7CXf3W5l+z8EZy/DM5
-         RVjA==
-X-Received: by 10.70.89.99 with SMTP id bn3mr34905245pdb.149.1425165438773;
-        Sat, 28 Feb 2015 15:17:18 -0800 (PST)
-Return-Path: <navyasri.tech@gmail.com>
-Received: from nizamkari ([111.93.6.70])
-        by mx.google.com with ESMTPSA id p4sm7695567pdl.87.2015.02.28.15.17.17
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
-        Sat, 28 Feb 2015 15:17:18 -0800 (PST)
-Date: Sun, 1 Mar 2015 04:48:31 +0530
-From: Navya Sri Nizamkari <navyasri.tech@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8192e: Use netdev_info instead of printk.
-Message-ID: <20150228231831.GA10144@localhost>
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=qAjVBX+mIewYkyy9v2Eyjb1WY9H6GJpxos31QRVsa/8=;
+        b=rpxCGgw4VbSnmIWhXOE8bKXjYttk+Oi4XaNgALMfodo5ounJ+Mp8Px49z3KkbNF2NM
+         rs3ACNXNTjPrh7dLw/rlV52I1U5MSWadYqU17PkCtsIqerR4SSFBMCUVBS2L3kwfhcB2
+         MpraRy1bOBmHEag3VSNLWy3ggyk02DDjWRJ1FOvecNQDA8B9tPv62pWnA8R+GOSgQZ3F
+         tJa7Lz89LLZL+hiU+UupFNGvIiG9sA4ebooJ+An93jvuomMxHK/Y9YKJ53W8zrRY8dTq
+         mnavVN8hFRZG/0hgT3/m1sgrnFYcTVyJLpILd2H0ve3/gr7fz1eDI8URzY1fCC6R0x6W
+         8bZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=qAjVBX+mIewYkyy9v2Eyjb1WY9H6GJpxos31QRVsa/8=;
+        b=Zgpm6+GV+1xqW1y2uTt8kVdI7OuV/Z3yZuk/M6VaZ5QUd4lh4Ytn3TAQzl0WfwEWsA
+         ZeOrViJFJy4TpwIhiZiAzTonNoJc4S8G29wOL6mQsStmU0cCtnq0tpqI1oDWgl8X+rx/
+         o4BKu2rxBrlZ87CAVn3UMGgOBRKX5K0sfs9e+7aq9mYw2KpBouTIV/5TkjmVmeRqL16D
+         D0B5fmoGensNpmI7HWR8+ASaOCCHAwktsPxbvZ3/WqEYDEBKpJa65RlM/3t61IyNzXEt
+         JLOgHCE55ssH35Z1sFcciutMt+23zJh9YfZsjcl/Tt4jSYebrbojwx1E5MHF5fihyR5Q
+         F0og==
+X-Gm-Message-State: ANhLgQ2xRNDRi+5SV+sEvnDkKsbIxammUOLm1/DBqq8QEBkZ2G9n+aaE
+	j91G9kW4N3f5zHYwQEAvr8DExioxC5gUiaozw4N1p8n/AWE=
+X-Received: by 2002:a19:8093:: with SMTP id b141mr13302032lfd.184.1584962842536;
+ Mon, 23 Mar 2020 04:27:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+References: <20200323054836.48816-1-debsoumyajit100@gmail.com>
+ <20200323103652.GC452208@kroah.com> <20200323112335.GA595778@kroah.com>
+In-Reply-To: <20200323112335.GA595778@kroah.com>
+From: Soumyajit Deb <debsoumyajit100@gmail.com>
+Date: Mon, 23 Mar 2020 16:57:11 +0530
+Message-ID: <CAMS7mKBnbnJPs3YOQEWcNh86-GHNa9TBJ_5L2Q7Rc7CCk5yc-g@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Resolve indentation and space warnings generated by checkpatch
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, perex@perex.cz
+Content-Type: multipart/alternative; boundary="00000000000036305a05a183eb7b"
 
-This patch uses netdev_info instead of printk(KERN_INFO..)
-as this is network driver to fix the following
-checkpatch.pl warning:
+--00000000000036305a05a183eb7b
+Content-Type: text/plain; charset="UTF-8"
 
-WARNING: Prefer netdev_info(netdev, ... then dev_info(dev, ...
-then pr_info(...  to printk(KERN_INFO ...
+No problem, thanks!
 
-Signed-off-by: Navya Sri Nizamkari <navyasri.tech@gmail.com>
----
- drivers/staging/rtl8192e/rtl8192e/rtl_wx.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+On Mon, 23 Mar 2020 at 16:53, Greg KH <gregkh@linuxfoundation.org> wrote:
 
-diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
-index c233a1c..b2b5716 100644
---- a/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
-+++ b/drivers/staging/rtl8192e/rtl8192e/rtl_wx.c
-@@ -254,7 +254,7 @@ static int r8192se_wx_set_radio(struct net_device *dev,
- 
- 	down(&priv->wx_sem);
- 
--	printk(KERN_INFO "%s(): set radio ! extra is %d\n", __func__, *extra);
-+	netdev_info(dev, "%s(): set radio ! extra is %d\n", __func__, *extra);
- 	if ((*extra != 0) && (*extra != 1)) {
- 		RT_TRACE(COMP_ERR, "%s(): set radio an err value,must 0(radio "
- 			 "off) or 1(radio on)\n", __func__);
-@@ -277,7 +277,7 @@ static int r8192se_wx_set_lps_awake_interval(struct net_device *dev,
- 
- 	down(&priv->wx_sem);
- 
--	printk(KERN_INFO "%s(): set lps awake interval ! extra is %d\n",
-+	netdev_info(dev, "%s(): set lps awake interval ! extra is %d\n",
- 	       __func__, *extra);
- 
- 	pPSC->RegMaxLPSAwakeIntvl = *extra;
-@@ -293,7 +293,7 @@ static int r8192se_wx_set_force_lps(struct net_device *dev,
- 
- 	down(&priv->wx_sem);
- 
--	printk(KERN_INFO "%s(): force LPS ! extra is %d (1 is open 0 is "
-+	netdev_info(dev, "%s(): force LPS ! extra is %d (1 is open 0 is "
- 	       "close)\n", __func__, *extra);
- 	priv->force_lps = *extra;
- 	up(&priv->wx_sem);
-@@ -311,7 +311,7 @@ static int r8192_wx_set_debugflag(struct net_device *dev,
- 	if (priv->bHwRadioOff == true)
- 		return 0;
- 
--	printk(KERN_INFO "=====>%s(), *extra:%x, debugflag:%x\n", __func__,
-+	netdev_info(dev, "=====>%s(), *extra:%x, debugflag:%x\n", __func__,
- 	       *extra, rt_global_debug_component);
- 	if (c > 0)
- 		rt_global_debug_component |= (1<<c);
-@@ -344,7 +344,7 @@ static int r8192_wx_set_mode(struct net_device *dev, struct iw_request_info *a,
- 					up(&priv->wx_sem);
- 					return -1;
- 				} else {
--					printk(KERN_INFO "=========>%s(): "
-+					netdev_info(dev, "=========>%s(): "
- 					       "IPSLeave\n", __func__);
- 					down(&priv->rtllib->ips_sem);
- 					IPSLeave(dev);
-@@ -471,7 +471,7 @@ static int r8192_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
- 	}
- 
- 	if (priv->bHwRadioOff == true) {
--		printk(KERN_INFO "================>%s(): hwradio off\n",
-+		netdev_info(dev, "================>%s(): hwradio off\n",
- 		       __func__);
- 		return 0;
- 	}
-@@ -573,7 +573,7 @@ static int r8192_wx_set_essid(struct net_device *dev,
- 	int ret;
- 
- 	if (priv->bHwRadioOff == true) {
--		printk(KERN_INFO "=========>%s():hw radio off,or Rf state is "
-+		netdev_info(dev, "=========>%s():hw radio off,or Rf state is "
- 		       "eRfOff, return\n", __func__);
- 		return 0;
- 	}
-@@ -826,7 +826,7 @@ static int r8192_wx_set_enc(struct net_device *dev,
- 			set_swcam(dev, key_idx, key_idx, KEY_TYPE_WEP104,
- 				  zero_addr[key_idx], 0, hwkey, 0);
- 		} else {
--			 printk(KERN_INFO "wrong type in WEP, not WEP40 and WEP104\n");
-+			 netdev_info(dev, "wrong type in WEP, not WEP40 and WEP104\n");
- 		}
- 	}
- 
-@@ -1148,7 +1148,7 @@ static int r8192_wx_set_PromiscuousMode(struct net_device *dev,
- 			(rtllib_EnableIntelPromiscuousMode(dev, false)) :
- 			(rtllib_DisableIntelPromiscuousMode(dev, false));
- 
--		printk(KERN_INFO "=======>%s(), on = %d, filter src sta = %d\n",
-+		netdev_info(dev, "=======>%s(), on = %d, filter src sta = %d\n",
- 		       __func__, bPromiscuousOn, bFilterSourceStationFrame);
- 	} else {
- 		return -1;
--- 
-1.9.1
+> On Mon, Mar 23, 2020 at 11:36:52AM +0100, Greg KH wrote:
+> > On Mon, Mar 23, 2020 at 11:18:33AM +0530, Soumyajit Deb wrote:
+> > > This patchset adds space around operators and remove space after * in
+> > > pointer declarations and lastly removes uneccesary blank lines for the
+> > > same from the file hp100.c present under drivers/staging/hp/ directory.
+> > >
+> > > Soumyajit Deb (3):
+> > >   staging: hp100: Add space around operator +
+> > >   staging: hp100: Remove space after * in pointer declarations
+> > >   staging: hp100: Remove uneccessary blank lines and resolve
+> indentation
+> > >     issues
+> > >
+> >
+> > I somehow don't see patch 1/3 here, did it get lost somewhere?
+>
+> Found it in my spam folder, gmail's fault, sorry for the noise.
+>
+>
+> greg k-h
+>
 
+--00000000000036305a05a183eb7b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">No problem, thanks! <br></div><br><div class=3D"gmail_quot=
+e"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, 23 Mar 2020 at 16:53, Greg=
+ KH &lt;<a href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundatio=
+n.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">On Mon, Mar 23, 2020 at 11:36:52AM +0100, Greg KH wrote:<br>
+&gt; On Mon, Mar 23, 2020 at 11:18:33AM +0530, Soumyajit Deb wrote:<br>
+&gt; &gt; This patchset adds space around operators and remove space after =
+* in<br>
+&gt; &gt; pointer declarations and lastly removes uneccesary blank lines fo=
+r the<br>
+&gt; &gt; same from the file hp100.c present under drivers/staging/hp/ dire=
+ctory.<br>
+&gt; &gt; <br>
+&gt; &gt; Soumyajit Deb (3):<br>
+&gt; &gt;=C2=A0 =C2=A0staging: hp100: Add space around operator +<br>
+&gt; &gt;=C2=A0 =C2=A0staging: hp100: Remove space after * in pointer decla=
+rations<br>
+&gt; &gt;=C2=A0 =C2=A0staging: hp100: Remove uneccessary blank lines and re=
+solve indentation<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0issues<br>
+&gt; &gt; <br>
+&gt; <br>
+&gt; I somehow don&#39;t see patch 1/3 here, did it get lost somewhere?<br>
+<br>
+Found it in my spam folder, gmail&#39;s fault, sorry for the noise.<br>
+<br>
+<br>
+greg k-h<br>
+</blockquote></div>
+
+--00000000000036305a05a183eb7b--
 
