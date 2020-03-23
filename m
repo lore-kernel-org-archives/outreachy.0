@@ -1,103 +1,96 @@
-X-GM-THRID: 6619404937628483584
-X-Received: by 2002:a1c:814d:: with SMTP id c74-v6mr14708wmd.19.1541200312461;
-        Fri, 02 Nov 2018 16:11:52 -0700 (PDT)
+X-GM-THRID: 6806824358191824896
+X-Received: by 2002:adf:8385:: with SMTP id 5mr12180633wre.35.1584961768570;
+        Mon, 23 Mar 2020 04:09:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:cc1a:: with SMTP id h26-v6ls630752wmb.18.gmail; Fri, 02
- Nov 2018 16:11:51 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5e+mYM6WTmYsmodcnH9LMigxPr3zFaZRpA0fXg+k9OwFqjobOaTDGz4lpETtqC4mRXgUpJP
-X-Received: by 2002:a1c:f308:: with SMTP id q8-v6mr16791wmq.0.1541200311367;
-        Fri, 02 Nov 2018 16:11:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1541200311; cv=pass;
+Received: by 2002:a5d:548b:: with SMTP id h11ls1998511wrv.9.gmail; Mon, 23 Mar
+ 2020 04:09:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsx3AWyIuoWhMWa3RbhLP7kNEmpnwIlyCZ54NcKQSlckO1MU62XscTlhEPl4WBje8W1wYeV
+X-Received: by 2002:adf:84c2:: with SMTP id 60mr29768132wrg.399.1584961767096;
+        Mon, 23 Mar 2020 04:09:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584961767; cv=none;
         d=google.com; s=arc-20160816;
-        b=snNc9gEWt07IUhlhYZsWhOhIezZd/PNnS/Y8qZLATgxfEJiwmoOx68Ey0BtkAS62XW
-         3WLTscq5OkHEup9PKoEc/tBpPs01fiFxEt+5UcPSIuFrscSvAkhZF2yntExvbhVkrOCJ
-         tnKwHPSI42a+RR0jDpnNvkEKENDi5NSVnfWfF1+QpfbL2E5a+CN5H/fsZD3Vxwdz8MEt
-         XJJQgoeGbu6z207YvKyMJlRpkYEItVpTMAQ79GaJXa2scT5DA+N846RZZ2gd+YcQ7BUP
-         g+Srty2Vwx+2SIoijaX5qNo+3W2wXa0/57xPLYN+kuBdpLBTScm51LX9OH7e6wQKxdfN
-         V/pg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=gR4Rnyp8okiMtxwxUcYpIdtoxtwbjlsvct8KXxWRK5U=;
-        b=N8n5c62pdSMQGIRS5Y/WJmZPxar1kuG4f4J6CF8rPkDR4jSEUCcxMqiiVbRRkNJHW7
-         gUjktN9uG/jqKn+oDS7TqSP1jwK4TzPjxIvYgVzLjtwu2pew/xGnbn20H3Bd19/k6Jc5
-         UyhrVQ5UYuyD/iGvDjqe8Ts2CWPIJLtVWsqda/qBhofT0m5ntuB48w8MVNUfM0br9fDU
-         aYsLSDvggbzgmtEiuwRdBCrchlHV7wNSzXVWFi8OHw8OyDjqCWODXcW34f5H2ot5ifll
-         YwaIMq9sBGsEEea2sV9okbQXKdvDbvs2iiaLHYcRuSPWvmwUl7p1/RTfl8MNM2SBYjn5
-         CHKQ==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=flaqCDum;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-Return-Path: <code@wizofe.uk>
-Received: from sender-of-o51.zoho.eu (sender-of-o51.zoho.eu. [185.20.209.243])
-        by gmr-mx.google.com with ESMTPS id z139-v6si552403wmc.0.2018.11.02.16.11.51
+        b=GaQ3AUQXvrQ/+SsskE6qGReqPFRkz/LWBlUTK8/rY6CLIq56I89EYskiyvbtmz9TjW
+         GMlBP9cNTkyh/OCd56oauMwfXqTkYRFpm2hhnWE+1Fwt/05PrPh1q0cIvofiRvRux2rC
+         nAuRG0x/gWpPgloG6+olE71KbykuzRGkwkpN8mVI//9KUQBp3N75OdDLZVuYbbsnttKT
+         nAJNFzsfIqmNPKiKPvu4gKCm6ttLJ+8dXsrAjol4LzpuJ70jXNbqBAAR9g8ptzq0UWTl
+         0yTglWli3CYNTRh6tXVXODxtUF0m2jDLcNh/65Oruf//32NPs1DvraV/TT6W5oxTLpIU
+         Djaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=Y2TD9rx9h229G9ibpVLd1QNOeRNfASTcQN1vD3JLH4w=;
+        b=gFnHOb0vws46MdFQ8vj1FIDD27CbcCc3WHDZ51tleoR+4ycCJneiSWgcvGnP9Ee4xZ
+         DtMniArM7pHLHUDKb7cSQF7Yd+ugLn60TO2G4E6Je834H0wplgb+ZOSFalyqVDANpE0y
+         EzJPbISiNv9OoUklBDRKROUxUdrdLWmJ0ed6R3vYU5TKHtGCcDpABj44ehj6E2Ahp89C
+         6gKzOcmbJHRXErXAUVvsSVZDL6LjMGCJ3UWldEx6oS1JuldRR2/8rlqqqVRgcBEmtxy8
+         OM+p9OiiZjwZ5iXGNXmOBEmuUv4yw3+Kh2Enrrqg20/5lmEJ/+3aS22qMxnT4L4mt4C7
+         q6jQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id q205si669251wme.4.2020.03.23.04.09.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Nov 2018 16:11:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) client-ip=185.20.209.243;
+        Mon, 23 Mar 2020 04:09:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=temperror (no key for signature) header.i=@wizofe.uk header.s=zoho header.b=flaqCDum;
-       arc=pass (i=1 spf=pass spfdomain=wizofe.uk dkim=pass dkdomain=wizofe.uk dmarc=pass fromdomain=wizofe.uk>);
-       spf=pass (google.com: domain of code@wizofe.uk designates 185.20.209.243 as permitted sender) smtp.mailfrom=code@wizofe.uk
-ARC-Seal: i=1; a=rsa-sha256; t=1541200307; cv=none; 
-	d=zoho.eu; s=zohoarc; 
-	b=OwLE3Il+RCqiDIs1qutDC19aDMa8XVCb5+NWab6qUfD/2RRE35CSB+ubJiy2my3XbZxqwliXrj1TV+mGmFZ5/xorYLJIZ7uRNpsutxuYN8DTjC5qUojlrvpFmXrRjSLBbYuhvzXWQ3iWt/JglmhLzAUtK+OE0NPh9YC3QhKnfFw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.eu; s=zohoarc; 
-	t=1541200307; h=Content-Type:Cc:Date:From:MIME-Version:Message-ID:Subject:To:ARC-Authentication-Results; 
-	bh=gR4Rnyp8okiMtxwxUcYpIdtoxtwbjlsvct8KXxWRK5U=; 
-	b=H87b4sAsbgUaLmr5OvhiBD3R6N+UxQjuSc575eghyl0UAUsh2+t2RNQDOZ2rPn8TyglJbEzLVLvbbGBt7mRzOBNtaSBdNdQbVIRqpYWMxLTSOQAV+50qoAAXaZd3zRXXtepqhZNRXXeGuYvjPXJEwN/oP1QSsXbc6CASXQNPcFw=
-ARC-Authentication-Results: i=1; mx.zoho.eu;
-	dkim=pass  header.i=wizofe.uk;
-	spf=pass  smtp.mailfrom=code@wizofe.uk;
-	dmarc=pass header.from=<code@wizofe.uk> header.from=<code@wizofe.uk>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1541200307;
-	s=zoho; d=wizofe.uk; i=code@wizofe.uk;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type;
-	l=642; bh=gR4Rnyp8okiMtxwxUcYpIdtoxtwbjlsvct8KXxWRK5U=;
-	b=flaqCDumgc9h6GFvE3rxm9ZI91+b+GnerpkkT8kd67cEuUWrqRze958yCXvZ8yEA
-	UW7vrxy35NUHyc5epEx1dPKtwwjWk/gp07I7eo9xjiBAuEWg7I2h2pUDLpNlVZpPYdP
-	zSE2qTOhEoN6H7buNfqKMcxDnmD3W49baJIDos0U=
-Received: from kvasir.local (90.242.56.176 [90.242.56.176]) by mx.zoho.eu
-	with SMTPS id 154120030576366.3051862584224; Sat, 3 Nov 2018 00:11:45 +0100 (CET)
-Date: Fri, 2 Nov 2018 23:11:44 +0000
-From: Ioannis Valasakis <code@wizofe.uk>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH] staging: greybus Insert empty line after struct
-Message-ID: <20181102231144.GA27291@kvasir.local>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,296,1580770800"; 
+   d="scan'208";a="343271452"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Mar 2020 12:09:26 +0100
+Date: Mon, 23 Mar 2020 12:09:26 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Gokce Kuler <gokcekuler@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: hp100: Remove unnecessary
+ braces
+In-Reply-To: <20200322235103.GA14205@siyah2>
+Message-ID: <alpine.DEB.2.21.2003231208381.3054@hadrien>
+References: <20200322235103.GA14205@siyah2>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ZohoMailClient: External
-
-Insert empty line after struct definition
-Reported by checkpatch
-
-Signed-off-by: Ioannis Valasakis <code@wizofe.uk>
----
- drivers/staging/greybus/bundle.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/staging/greybus/bundle.h b/drivers/staging/greybus/bundle.h
-index ffcfd43802cc..a69200c786d0 100644
---- a/drivers/staging/greybus/bundle.h
-+++ b/drivers/staging/greybus/bundle.h
-@@ -31,6 +31,7 @@ struct gb_bundle {
- 
- 	struct list_head	links;	/* interface->bundles */
- };
-+
- #define to_gb_bundle(d) container_of(d, struct gb_bundle, dev)
- 
- /* Greybus "private" definitions" */
--- 
-2.19.1
+Content-Type: text/plain; charset=US-ASCII
 
 
--- 
-ta
-ioannis
 
+On Mon, 23 Mar 2020, Gokce Kuler wrote:
+
+> Delete unnecessary blank line.
+
+The subject line and the commit log don't match.  No braces are removed,
+but one brace is moved to the right.  It's not clear why.
+
+julia
+
+>
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/hp/hp100.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+> index 43607fb..32a9e29 100644
+> --- a/drivers/staging/hp/hp100.c
+> +++ b/drivers/staging/hp/hp100.c
+> @@ -2792,8 +2792,7 @@ void hp100_RegisterDump(struct net_device *dev)
+>  			/* Display Register contents except data port */
+>  			if (((Register != 0x10) && (Register != 0x12)) || (Page > 0))
+>  				printk("0x%.2x = 0x%.4x\n", Register, inw(ioaddr + Register));
+> -
+> -		}
+> +			}
+>  	}
+>  	hp100_page(PERFORMANCE);
+>  }
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200322235103.GA14205%40siyah2.
+>
 
