@@ -1,113 +1,110 @@
 X-GM-THRID: 6806841558557523968
-X-Received: by 2002:a05:620a:2fc:: with SMTP id a28mr1688842qko.467.1584924611247;
-        Sun, 22 Mar 2020 17:50:11 -0700 (PDT)
+X-Received: by 2002:adf:ecc7:: with SMTP id s7mr26830554wro.386.1584923094173;
+        Sun, 22 Mar 2020 17:24:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:b7c4:: with SMTP id h187ls6784996qkf.1.gmail; Sun, 22
- Mar 2020 17:50:10 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvoQT85cwJsiGDDHnrzXaaaGd3bIa+X3Ru/PJFpl0m/SwD36KcswQ5/+EQtpO5OP6pF1pbQ
-X-Received: by 2002:ae9:e306:: with SMTP id v6mr18986932qkf.2.1584924609929;
-        Sun, 22 Mar 2020 17:50:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584924609; cv=none;
+Received: by 2002:a1c:6402:: with SMTP id y2ls1595720wmb.1.canary-gmail; Sun,
+ 22 Mar 2020 17:24:53 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuqCWAchKgwCrmBGDGKPZ8nC19NVECFvBDwJmhuV22F3DsyV8IPZij5E25xuUXGt8nk4hqq
+X-Received: by 2002:a1c:9ac2:: with SMTP id c185mr23624995wme.45.1584923093070;
+        Sun, 22 Mar 2020 17:24:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584923093; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tex5Lm6chpl/Tjuliwwh1O1eFZ7BRmd339A/HT7LdaGUzhmDBOAGppFcV4V56E0FWB
-         ZZ+lswOHBI8jVrBP972k7jtulMS59imFWNNupVjPVKk8LhIMOJ1Cg+EFLVHqncha/LZ3
-         M+yBIZuw3053mr7/UDXASePWjpZWgwnxx+5fXUoX96Qh0OPhrz/hZYTFCYUr4LvbE5wq
-         7grnuounPMSYsMKC93O3EDqs0HUFOPwuXk8sz8t7go2OYf5GPKmixvsad6OZSIxAPh8Y
-         g9EvnR0DvhhIW2xbMX2XIEm+wz9QQ9vz9C7Zs3A07mLXEcOg1AJGf1T6pCAxuRreayCQ
-         irLA==
+        b=DnVIwyD1tys0ZrnJDmR+U286YRmyRM9T0KMlOYpJbHe+RojM1uQmpFHDPzeOXi6PEO
+         wV/38xeeaeH2jgSbCzYxCJVYUbXdzZbqRujyq/KE+bFwLnSJQIV5+lYYI+mAYmILhJ3l
+         wJ9fFGhIfqlfPL0lINu3zH8VzPQraoLTaDMflE6FAkW4pr83h04eSydQYXDzfTD4CgEu
+         RA2Fqw5KWi/S1x+wrJaNBQGjn7IJ3LA6vlja/hhTJ6bgOxIcAFM+es9UIPlvbZOb2x+X
+         VnCCYFUS3ArLlm1rkolNBILFnDZyaCo1E+EUdkxAoPmm+GHTltlIwjbIeqR8rHtznQL3
+         F3Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=eoMlV6TTI91HZoq97ufTTVGnhBepk5YJrYtW61BcWEc=;
-        b=RGsIp0U6JvxF31leGOTrX5MwtF1ckPTwix7WjFS8DKkbMYH2//2DdmCgU1vLGrjD7n
-         UT62QY5hopmjztpwkr5u4psXlB2RMcZjytWep/jP4xzgXeWCXunGXr/g7pI1Wyr+VS/t
-         6GeNUE87u0uqb6oijFtlPeH6XmxvIcb204A530g23p7FibF7K/kkYQQ/B9M9iyfkNqSN
-         aJ129Hh/2TtyhcOn8V2fD29djSdaCdrRcPi/A/sXKY9oQq8m9zRc3obrMWKaQiiuYz0o
-         555uTGy3j1XmTEqalV/KQ42zWfvQQKNdwouW5Tt2fTCFkLzDewmHodgl0sI1Y4c8DA9Z
-         IZoA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=9k3bZ9Ed/Q7SahFa3gwMYEqPlfkfbYS9Y2mUpZ5Qqpc=;
+        b=QezrgluxillkB4H8/goYVLogH2j+w4rB2QtWyLkKrYQBFU7soSg/banS073/AHLw3F
+         ZelptBvcCuMnSVgZG9INOD5FOEzzIgsREK6MoqLng66PUyttS1IRAulKwjTf88+gH2Q/
+         vQERqhApen9D1x5tPiruecdJbAcJNTrD3A4BhmA0aLCfMx+SA0Hi8stfehj9/GRPqrol
+         Fkg8LcwE0vLfRfJirINJAm2cW3vSw6ONx2wANv95SrnKbUC7psu0zyc/0UivzQxXrUI2
+         uJ6QzzicYRXDGL421aVFEmD5GRhe1WnDdGvCP0/hGawFjr2q+18YK1JocHOeXE9aLo6L
+         aV4Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F+llnicg;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id d34si836856qte.4.2020.03.22.17.50.09
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=USYCbzKk;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com. [2a00:1450:4864:20::144])
+        by gmr-mx.google.com with ESMTPS id g78si34907wmg.0.2020.03.22.17.24.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 22 Mar 2020 17:50:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Mar 2020 17:24:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) client-ip=2a00:1450:4864:20::144;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F+llnicg;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1584924609;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eoMlV6TTI91HZoq97ufTTVGnhBepk5YJrYtW61BcWEc=;
-	b=F+llnicg5gV3fYFMNO1dYH1cX0ydGSTZHw+GwBgVZivSzdf6RpeA74Za3xhErsItIuMBtM
-	71gETu0+DzaJksvHQru9sxnm+hVjB1qykimvGPMzDkiQ2M+FhZaOd5hWQNJCO4Vs4Xdton
-	u55NozUTiZfSZNtSxpmGVJcKUZIsliA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-202-u6xpNKa4N8mdOfwCZ4JTpQ-1; Sun, 22 Mar 2020 20:50:08 -0400
-X-MC-Unique: u6xpNKa4N8mdOfwCZ4JTpQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 003FC107ACC4;
-	Mon, 23 Mar 2020 00:50:07 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6DD8160BF1;
-	Mon, 23 Mar 2020 00:50:05 +0000 (UTC)
-Date: Mon, 23 Mar 2020 01:49:59 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Gokce Kuler <gokcekuler@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: hp100: line over 80
- characters
-Message-ID: <20200323014959.3267920c@elisabeth>
-In-Reply-To: <20200322014137.GA6031@siyah2>
-References: <20200322014137.GA6031@siyah2>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=USYCbzKk;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x144.google.com with SMTP id v4so5175466lfo.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 17:24:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=9k3bZ9Ed/Q7SahFa3gwMYEqPlfkfbYS9Y2mUpZ5Qqpc=;
+        b=USYCbzKkHmqPBgwyyHXWX/i7HUzsYGrugl1lEpHLpSHqJDp3uzc991dB/t7vauOrxx
+         3Dj8Z1gnu8UFIDhYNElhliL/siv1jV9Ah47+NNCCd+cmZezzILVFz1bra/AzXrUeg14L
+         B6U4zOmMqCvLH4T3ZCONo0yP5ssXtEm8LR2EB2maSAVfMAv2xf4gO+nue4+c3VmjAsyg
+         UTinRFtpyDk3K2GgbYmmXhG4YJ0cFBFGFATxU+JsgWi0um9QCk53veQUoBF0+lQYBUJw
+         NJtm9keJpr7Vyt5y2YeS6pmFpykgshcEdhaoqg8OOEcOtcf81zQJqxsDFRmQK3D7Q6Jt
+         TfAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=9k3bZ9Ed/Q7SahFa3gwMYEqPlfkfbYS9Y2mUpZ5Qqpc=;
+        b=Nbfu+uWzxxBYtQZQtUVcQkgRgzVgN+Qfq1Rv9JFOzPobUNE4BCUhRf+sbKsxXhSeUl
+         Ya8GmUVYC6qRbhP7ANM317sm8i3M56pKs6YxVK0MHuBo4Ast5SnldSBDbaACmwfmds0W
+         639VwUW9NSUwTpCmQNAzhlWbao6xqTvZEXJHnq3Mm1a7z5UpuHTcZa8Nj6SMwbsHoBoa
+         6E5cOPF579q0TM7neNfQSITu0wnsOP6HVCgMxhMtYiy9NNSyHkB77IEchpzd8Tp/kSQ1
+         CiDBmaS7htDJJ9vhYYwT1Ql6thB0Pl0X6Cbj0hsTeviI24kOSXkr6Ca2KxoveVQG61zR
+         qGrw==
+X-Gm-Message-State: ANhLgQ1wk36z6PhsdPXQ6IR9YGYu1+EchWxC9XL7QvdTiWxXKrLWDx4+
+	ga3nopsxNns7ipfN2+rjMDdGs2QdVmI=
+X-Received: by 2002:ac2:5de1:: with SMTP id z1mr11256212lfq.95.1584923092719;
+        Sun, 22 Mar 2020 17:24:52 -0700 (PDT)
+Return-Path: <gokcekuler@gmail.com>
+Received: from siyah2 ([88.241.65.39])
+        by smtp.gmail.com with ESMTPSA id r21sm3171676lfe.85.2020.03.22.17.24.51
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Sun, 22 Mar 2020 17:24:52 -0700 (PDT)
+Date: Mon, 23 Mar 2020 03:24:50 +0300
+From: Gokce Kuler <gokcekuler@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v2] staging: hp100: line over 80 characters
+Message-ID: <20200323002450.GA15867@siyah2>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Sun, 22 Mar 2020 04:41:37 +0300
-Gokce Kuler <gokcekuler@gmail.com> wrote:
+Add a spaces character before that for correct syntax.
 
-> Moved to the bottom line after == operator for it exceeds 80 character
-> 
-> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
-> ---
->  drivers/staging/hp/hp100.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-> index 1b957aa..43607fb 100644
-> --- a/drivers/staging/hp/hp100.c
-> +++ b/drivers/staging/hp/hp100.c
-> @@ -549,7 +549,8 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
->  #endif
->  			local_mode = 3;
->  		} else if (chip == HP100_CHIPID_LASSEN &&
-> -			   (lsw & (HP100_BM_WRITE | HP100_BM_READ)) == (HP100_BM_WRITE | HP100_BM_READ)) {
-> +			   (lsw & (HP100_BM_WRITE | HP100_BM_READ)) ==
-> +			   (HP100_BM_WRITE | HP100_BM_READ)) {
+Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+---
+ drivers/staging/hp/hp100.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-There's another way to fix this:
-	a & (x | y) == x | y <=> a & x && a & y 
-
-it should be more readable this way, as it's then immediately clear
-that those and only those bits need to be set.
-
+diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+index 32a9e29..280b5a0 100644
+--- a/drivers/staging/hp/hp100.c
++++ b/drivers/staging/hp/hp100.c
+@@ -550,7 +550,7 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
+ 			local_mode = 3;
+ 		} else if (chip == HP100_CHIPID_LASSEN &&
+ 			   (lsw & (HP100_BM_WRITE | HP100_BM_READ)) ==
+-			   (HP100_BM_WRITE | HP100_BM_READ)) {
++			    (HP100_BM_WRITE | HP100_BM_READ)) {
+ 			/* Conversion to new PCI API :
+ 			 * I don't have the doc, but I assume that the card
+ 			 * can map the full 32bit address space.
 -- 
-Stefano
+2.7.4
 
 
