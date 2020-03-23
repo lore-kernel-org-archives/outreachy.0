@@ -1,115 +1,90 @@
-X-GM-THRID: 6528802195768344576
-X-Received: by 10.107.3.225 with SMTP id e94mr3606128ioi.7.1520105217828;
-        Sat, 03 Mar 2018 11:26:57 -0800 (PST)
+X-GM-THRID: 6807140134242222080
+X-Received: by 2002:a05:6830:1bca:: with SMTP id v10mr7043109ota.286.1585583906125;
+        Mon, 30 Mar 2020 08:58:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.53.79 with SMTP id k76ls153763ita.0.canary-gmail; Sat, 03
- Mar 2018 11:26:57 -0800 (PST)
-X-Google-Smtp-Source: AG47ELufh/HWkBBmRw/AT29rBqKLzlNR9OC1k6FGrHurz96nJCzJ1LvT+TExDZZfHVbXz6w2bbfn
-X-Received: by 10.36.73.133 with SMTP id e5mr4031693itd.49.1520105216990;
-        Sat, 03 Mar 2018 11:26:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520105216; cv=none;
+Received: by 2002:a9d:6750:: with SMTP id w16ls6595092otm.4.gmail; Mon, 30 Mar
+ 2020 08:58:25 -0700 (PDT)
+X-Received: by 2002:a05:6830:1d90:: with SMTP id y16mr10028032oti.157.1585583905329;
+        Mon, 30 Mar 2020 08:58:25 -0700 (PDT)
+Received: by 2002:aca:c490:0:0:0:0:0 with SMTP id u138msoif;
+        Mon, 23 Mar 2020 00:10:32 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vt527WCa3hvcKMinPluut1+NEjvHN5uDMez4fBgsd1l9YYjdK2wb6APVp/cZv8J3CFbNCvA
+X-Received: by 2002:a63:cf4a:: with SMTP id b10mr20827233pgj.354.1584947432604;
+        Mon, 23 Mar 2020 00:10:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584947432; cv=none;
         d=google.com; s=arc-20160816;
-        b=lRXgvoCJTY7hIOoYap6a24DYnVN3Z+/7jRC8bXNzWci/Q6YsHNa1xGhh/Zig032xLv
-         a3NwyK69ixmRVMplHdMEtcwxTYK3KI1ZW6+hr6Y8G/PHdasLP3WrMnYFfoLOQ7Dcs+90
-         LtcSDlcG/0ISlg8ENjsSBLIBIkUWDu7eUnH7ofP8yMflY9bMxQzrJRfWZafZ4iHwBqzi
-         agniP/ZC4UlTPW7Wjww8p2WHAOtMpK0dyF1J7C/TPr+jwn5k5ocQi5w5tAX1vApFxU9u
-         uMnyS/9HTaqESuuklft5qOtSWH/g7GIDKcIDq+vVKn/jBN3CfcN9ymKZsSz0e2tyxv0+
-         P02Q==
+        b=PLEcxhZT93i1optaKb+ysewxuthAltJH8f4aY8LNsR/ALBRE2xqna99VpTSI+xc+Pc
+         70Mxu9mLvi5w3v0BCnTdmET9X19vC6eGfM4LYE7xsjmCXY/YACnurk/cQurDcZgMIFDL
+         Ev8F0IX50nle2sz8QFHp7ADobye4/LX1VelhEinkzawgQeWpnIAiFZ1AzbNdnUI5Ny5j
+         GT82h+etUT++169xZD//ON8zH5xKh/g8jnOchgBr9v98fXV3b6ewfWFbYwAaCo5j+gNj
+         gBlIZkw/PtT3SkqKs76cR2se8mRgF9sSRncvDb3Sq39rLaMuCTc1zTjbLpFg5Yrj/d+x
+         IeNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=0FlZxDeuUGn0Txb/P7JFY75CoT95HDkQCp+xCcDINA0=;
-        b=F5iw4myppMdatrDS5M0hfekosQVF+f6CJSYw9wRTfsn2sJJow+bC8zCCXSvh040DEg
-         viMEQnKX30v5FfdmQrhbkzOBiDOB611wXnnvNNqccRTsFi4AR+WbB6KWjsi/dtKjLt+T
-         ino6yGlzj3dRT7evQ3l4CwPJHRmZa+WX8ODr5oMxoi0qhCf/SLGJ4Wg3FokIcmMZsPKW
-         /U2FSRNlE7i4aSaGSzSEVWeU70345/UcvhFQ2pK7XzyRRmH8eOEhcBYUOQ6jm+QNs9Cz
-         ess+U5x/L0nL49e3KN62QQXMj937f4X/EMhQiFVkA3XnZCinwKXGL6GJNM0O4XU+9y0V
-         1Spw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=p8GmO+SA69TjfOT+FLIa7cf8DEFfhRKNnfyDZiavcck=;
+        b=VUosLaATV7Nq2ythwgS0sTlA/4DEKwLs+L95RwiEmLw2/VuDLegYN6PABxz7vkYJpM
+         THofP/eDq4uCG+Z486794UInG8KdFkYEQdtjsB1Az6EjMgQ1WRH8kWU8/vta91WE68bg
+         n9vt+ft6AyrAhex883Fdzr3nq04a8jIctgrgikPO8L5/hHm/VNz2MRxGIMbeQyYnPzuI
+         bqRil+SM1m+zp7qWGwbEHqDY5ld/urKDSo1hBxLdDQusIUsyQ1NMUmSCFrzTGmrCLa0A
+         Wkj4INHSJPZmPKhfbyarwJZzxVi8a2AirH/XM5fmpfk9Eikgw1KGQdpii0e4F9OVMFuu
+         BCwg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q27sMiSa;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pl0-x244.google.com (mail-pl0-x244.google.com. [2607:f8b0:400e:c01::244])
-        by gmr-mx.google.com with ESMTPS id w89si1115290ioe.5.2018.03.03.11.26.56
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
+        by gmr-mx.google.com with ESMTPS id 83si560367pge.4.2020.03.23.00.10.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Mar 2018 11:26:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) client-ip=2607:f8b0:400e:c01::244;
+        Mon, 23 Mar 2020 00:10:32 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q27sMiSa;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c01::244 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl0-x244.google.com with SMTP id 9-v6so2010616ple.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Mar 2018 11:26:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=0FlZxDeuUGn0Txb/P7JFY75CoT95HDkQCp+xCcDINA0=;
-        b=q27sMiSavqyQe2kM0bqn0qL4KZZ/75pRV93VKJAdDLNCaL4+B+2ZroIJ5MjxNwgzXE
-         1bDKytA1ASAwT7uFNTXtsiyhSTt9PrSrumG/B5lwW1TlFIRJnpuAnyy21aSK7evKwJhz
-         2kLTvdiCvaJVykSpnLjgAsBm+AbPyDekORJjvMApWXKYM+3h5rKAnk+sn+pIhLG9N+P+
-         Fm7RQTnq22kSs76gGWWKmvkmkzV1MhdXKGCOdyxcBh9LNkHJ4e3MYjOxCmtvFRMUFewo
-         Kmgm7dYr0sNyZGSzRijMwRjoh+jvZKWD+/N5UVo8UzRDtapkNY4jr3Imhb4/K2y5xkqC
-         WcRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=0FlZxDeuUGn0Txb/P7JFY75CoT95HDkQCp+xCcDINA0=;
-        b=G9tmY24jJPohixGn2qddNDT9iEv2rAQXDUe6X0JMcjLVuluH3W2rrYQAvmdkD24LtL
-         SIviDYy1/Us7IT+n7a2K55vKLwnHTXNSsrz4iZoRKsQ58dntYgQtR04zOLKc+K6KIOTB
-         TPKMo1t9kRMb1daejTBiT5YrQzTICn/aoqRXj/P+ESijp5rfs9JNG9DuKwqoYuAVtXzP
-         Xq+6Vx4ZY6EAl5LlBVum4Y507AChJhjT6G6Y0sglG9T+rfuZB3+cYf/FdZcNiKJCK6Sv
-         CXBkG3ZFBLskI8eZcrOINJTyO+G/oEGfbKGxklq5SEzUrQirKM6yfavpcpZR122o6QO/
-         T2bQ==
-X-Gm-Message-State: APf1xPDv/OT/jDLqFTRWTcWS+eBHbUJB7OGoQl2JwXdr67uclzM/F8AA
-	ZYpRlV56JPoxxHMdE2NU9uDIfg==
-X-Received: by 2002:a17:902:7284:: with SMTP id d4-v6mr6725684pll.296.1520105215934;
-        Sat, 03 Mar 2018 11:26:55 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id 75sm19600716pfl.169.2018.03.03.11.26.54
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Mar 2018 11:26:54 -0800 (PST)
-Date: Sun, 4 Mar 2018 00:56:29 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: alan@linux.intel.com
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: media: Remove unnecessary semicolon
-Message-ID: <20180303192629.GA5198@seema-Inspiron-15-3567>
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: sWEjJRb+qomgu4P03Qzpvla1Ux7WOr2aFe4Z2ZrPeCesTJaxhvzNvMvgZNyTDPlV1Xjh7mVoBG
+ Zrh6kXQavqjw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Mar 2020 00:10:32 -0700
+IronPort-SDR: UWrSdd15uyCHI0u0Tius4pP/1evgo2AFT4/vEx6mWnLQczFlexaD7Rev7Qef6J/BvVSFMuYeNI
+ SlMJw9iWM+Vw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,295,1580803200"; 
+   d="scan'208";a="445706921"
+Received: from nisrani-mobl2.amr.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.252.54.204])
+  by fmsmga005.fm.intel.com with ESMTP; 23 Mar 2020 00:10:30 -0700
+Received: by kekkonen.fi.intel.com (Postfix, from userid 1000)
+	id 3B64D21EF2; Mon, 23 Mar 2020 09:10:25 +0200 (EET)
+Date: Mon, 23 Mar 2020 09:10:25 +0200
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Deepak R Varma <mh12gx2825@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	daniel.baluta@gmail.com, kieran.bingham@ideasonboard.com,
+	Mauro Carvalho Chehab <mchehab@kernel.org>
+Subject: Re: [PATCH] media: staging/intel-ipu3: Remove extra blank lines
+Message-ID: <20200323071024.GB20234@kekkonen.localdomain>
+References: <20200322210005.GA27747@deeUbuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20200322210005.GA27747@deeUbuntu>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Remove unnecessary semicolon found using semicolon.cocci Coccinelle
-script.
+Hi Deepak,
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- .../media/atomisp/pci/atomisp2/css2400/runtime/frame/src/frame.c        | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, Mar 23, 2020 at 02:30:10AM +0530, Deepak R Varma wrote:
+> Remove extra blank lines from the code blocks.
+> 
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/frame/src/frame.c b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/frame/src/frame.c
-index 5faa89a..7562bea 100644
---- a/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/frame/src/frame.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp2/css2400/runtime/frame/src/frame.c
-@@ -196,7 +196,7 @@ enum ia_css_err ia_css_frame_map(struct ia_css_frame **frame,
- 						  attribute, context);
- 		if (me->data == mmgr_NULL)
- 			err = IA_CSS_ERR_INVALID_ARGUMENTS;
--	};
-+	}
- 
- 	if (err != IA_CSS_SUCCESS) {
- 		sh_css_free(me);
+Thanks for the patches. They seem fine to me, but could you send them to
+the linux-media list, please? That's where the media patches are reviewed,
+including the staging tree.
+
 -- 
-2.7.4
+Kind regards,
 
+Sakari Ailus
 
