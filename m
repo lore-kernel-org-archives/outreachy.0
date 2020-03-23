@@ -1,93 +1,99 @@
 X-GM-THRID: 6806841558557523968
-X-Received: by 2002:adf:f6c8:: with SMTP id y8mr29444806wrp.403.1584947732614;
-        Mon, 23 Mar 2020 00:15:32 -0700 (PDT)
+X-Received: by 2002:a1f:8ccf:: with SMTP id o198mr13076304vkd.53.1584924688482;
+        Sun, 22 Mar 2020 17:51:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:230e:: with SMTP id j14ls1908995wmj.0.canary-gmail; Mon,
- 23 Mar 2020 00:15:31 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtbFk4lkrs7fID5gPKCtBd0ue+szdPN/wJLRfUNys/S1OX6reGNAq4Aln6RwNzhfGHwlbuE
-X-Received: by 2002:a05:600c:10ce:: with SMTP id l14mr10757584wmd.161.1584947731306;
-        Mon, 23 Mar 2020 00:15:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584947731; cv=none;
+Received: by 2002:a1f:a989:: with SMTP id s131ls649155vke.4.gmail; Sun, 22 Mar
+ 2020 17:51:25 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsntlwADrUl1HKfiMnZ3vI53TJnFZEf1jwVDLmJhA/9EV2l/CozAFo2ezXS/PX2IzMPitDk
+X-Received: by 2002:a1f:900d:: with SMTP id s13mr12906381vkd.81.1584924685818;
+        Sun, 22 Mar 2020 17:51:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584924685; cv=none;
         d=google.com; s=arc-20160816;
-        b=p6N6997RAihDqw3V3ulzzDI43EVhKwcFmmeaPqQXIayMLjMRzLrF4/hINrzFL1dOn7
-         UKFjviDg4t3D6Jrt+oNgFwG//29JeUVERFl7pxIhp4SFFKo7i81Ydf2UydvKoQXewKt9
-         bEmyqPyseZOr1FYicUfRNkgdX2h6b38boit1j9XLiMnlfq1xRrV7DBSDEcMUcsUu7Mow
-         WX4f6ba3JC1dYhzh6SZmJ/vTd8fm1IGP/N1VVXxSLDd99Q31LLCgaeYBtK0gFTEyrTWJ
-         TSuF95VkTXHjcshskd5ujPVarbfYScBl6t6c6Rh3EhUk6gT4CIjs94pvIyANRx3Nbu68
-         QEVA==
+        b=nN8NNkgEx0TVhCiyPScB4hShwEzW93Tx/Sf4AdZUej4UnX6OuOzCiJuBJfefrdiBr2
+         L0GlUjfEsSjp5xj71wJeC50hr29fLZuD/OeZux+toeVSyMj7ev0j7haaK6cHbBA8XKJE
+         tpMNcHuXjdtbkiSUO/HrSP3phgbr/x3sBquXda1EWteGHSu8GJRng+k4EijYQKRBCe6W
+         ZrtCgSMmoYqvsqX3fxcpw/wFRVpmsviIhI212TG+EJ65Duye5EGjFxTD7l/ft/GpSpIM
+         PIDG9L2BXovUYmJtD3gRFEBLHF4Bv66tnyrpslVU443nN16IjLSt0WV34o1clQT5NX7C
+         YdHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=Jkr1ksj1DkAeFiV4C1zwZVztGVpdys7P9F3bFVh9Fp8=;
-        b=Lv95nh4Gh4gclVp+5wUFSWaY5Pn+hLPLySwLy7nBwMUaPiRLAF29SkR6SfIIeCrl1r
-         jEoQD1fNGAsAx7aQJPdvYzXmQl15ZEQUnvXLQMakMYNrEvKCwGQQbVULMIbpr3UGz/WE
-         Vu6wagOZmLVRusLyMSB3qpGMUjzpWXGLLGMCnwPh6qjznLgeWuBersSvhFECn2mdeJkf
-         FV2jiJoQq1GvCDGuROqOnMzG3wzKVrgyghALtWqoDBmn5XzcPxwSUmBxLP1oGFhNl770
-         +ffpd+UJ10sqHJEq8VPbruPKSPRYVW3O0Dc1fMHrVqRND8ZCQO06JxI6Lkyf5PaPYXoT
-         Zw5Q==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=skyAx3yZiFsMd527IxmZ1ZELaUGI4XyloRYrF0aWA8g=;
+        b=aIOnjDmT5YRHC6ipmKwYJUScvCWZcdZe7+holEK8mfdEKdPgZd35hMdm+G7B+2ZVdh
+         mxiiq6+FH9vevB7dx401+fTlQeB64XepRJC7+xdvfiPj2dYnCT4FOMq37vMded1Oy+dm
+         3yb//1Ex1cJ3ANQhHGzkJl+of17dSAvg9qMBfuAsNXJ4Qm7EReDUChe9xkNIb+AOyVJM
+         BsDApFIW5pOGkWQ7kqFe4705r/kYavCxkHRtijBmn/JzxvMj84As+MZm+ygx+sgAKyxs
+         xoX1RNpRicDW/TeOochgC1lXQ84uVVnE3huoWAZbQhEXydfmR69i5vDjMKv7s6kYUWBZ
+         0NZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a18si655276wra.0.2020.03.23.00.15.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HDJJ3pqK;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id k6si85288vso.1.2020.03.22.17.51.25
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Mar 2020 00:15:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        Sun, 22 Mar 2020 17:51:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.72,295,1580770800"; 
-   d="scan'208";a="441597352"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Mar 2020 08:15:30 +0100
-Date: Mon, 23 Mar 2020 08:15:30 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Stefano Brivio <sbrivio@redhat.com>
-cc: Gokce Kuler <gokcekuler@gmail.com>, outreachy-kernel@googlegroups.com, 
-    gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: hp100: line over 80
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HDJJ3pqK;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584924685;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=skyAx3yZiFsMd527IxmZ1ZELaUGI4XyloRYrF0aWA8g=;
+	b=HDJJ3pqKv7oXuRagVHk7bqHvLJF7pVTkDMVfnSOLMc0vCnSyEjVOHjtpALMrgpAvNpJlER
+	+u+4/FhhY9cbk94o/E9U24p9jM7rL9afwrsQpMU1dhe0t9hOWN9Z29bxS1Vh9Zh4/3CTg+
+	5M14V3VKIfbLA8IMm9glWrwdism+HRY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-380--k1Rg5ZiMvSEb0XtUrG9jg-1; Sun, 22 Mar 2020 20:51:23 -0400
+X-MC-Unique: -k1Rg5ZiMvSEb0XtUrG9jg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 71D74100550D;
+	Mon, 23 Mar 2020 00:51:22 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E7DA310013A1;
+	Mon, 23 Mar 2020 00:51:19 +0000 (UTC)
+Date: Mon, 23 Mar 2020 01:51:12 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: hp100: line over 80
  characters
-In-Reply-To: <20200323014959.3267920c@elisabeth>
-Message-ID: <alpine.DEB.2.21.2003230814520.3054@hadrien>
-References: <20200322014137.GA6031@siyah2> <20200323014959.3267920c@elisabeth>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Message-ID: <20200323015112.50b56447@elisabeth>
+In-Reply-To: <20200322220836.GA8560@siyah2>
+References: <20200322220836.GA8560@siyah2>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
+G=C3=B6k=C3=A7e,
 
+On Mon, 23 Mar 2020 01:08:36 +0300
+Gokce Kuler <gokcekuler@gmail.com> wrote:
 
-On Mon, 23 Mar 2020, Stefano Brivio wrote:
+> Moved to the bottom line after && operator for it exceeds 80 characters.
+>=20
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
 
-> On Sun, 22 Mar 2020 04:41:37 +0300
-> Gokce Kuler <gokcekuler@gmail.com> wrote:
->
-> > Moved to the bottom line after == operator for it exceeds 80 character
-> >
-> > Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
-> > ---
-> >  drivers/staging/hp/hp100.c | 3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
-> > index 1b957aa..43607fb 100644
-> > --- a/drivers/staging/hp/hp100.c
-> > +++ b/drivers/staging/hp/hp100.c
-> > @@ -549,7 +549,8 @@ static int hp100_probe1(struct net_device *dev, int ioaddr, u_char bus,
-> >  #endif
-> >  			local_mode = 3;
-> >  		} else if (chip == HP100_CHIPID_LASSEN &&
-> > -			   (lsw & (HP100_BM_WRITE | HP100_BM_READ)) == (HP100_BM_WRITE | HP100_BM_READ)) {
-> > +			   (lsw & (HP100_BM_WRITE | HP100_BM_READ)) ==
-> > +			   (HP100_BM_WRITE | HP100_BM_READ)) {
->
-> There's another way to fix this:
-> 	a & (x | y) == x | y <=> a & x && a & y
->
-> it should be more readable this way, as it's then immediately clear
-> that those and only those bits need to be set.
+As you're sending a subsequent version of the same patch, you should
+indicate a revision log here, after the '---'. Please have a look at
+recent patches sent on this list, there are plenty of examples.
 
-Maybe with ()s?  All those &s looks confusing.
+--=20
+Stefano
 
-julia
 
