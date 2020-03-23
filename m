@@ -1,220 +1,137 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:a17:902:8341:: with SMTP id z1mr22569799pln.178.1584985815529;
-        Mon, 23 Mar 2020 10:50:15 -0700 (PDT)
+X-Received: by 2002:a25:6a0b:: with SMTP id f11mr33950677ybc.251.1584965753125;
+        Mon, 23 Mar 2020 05:15:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:cf0b:: with SMTP id j11ls1807503pgg.10.gmail; Mon, 23
- Mar 2020 10:50:13 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvovQcLiTFw6mgInWqrH5megxeL+u3NLK7Ul+Uav2oKxqlKJfvOR9cbRxxkwUZrZfR7qmRn
-X-Received: by 2002:a63:3850:: with SMTP id h16mr7980670pgn.344.1584985813761;
-        Mon, 23 Mar 2020 10:50:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584985813; cv=none;
+Received: by 2002:a25:25d4:: with SMTP id l203ls2074362ybl.3.gmail; Mon, 23
+ Mar 2020 05:15:51 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuuLhaL0m/I+CEWhMVpJGu3gYoUPP6cUFTM1GGr1WZxpRYoXxI9STnoKg8rF4oEIK4jZJX6
+X-Received: by 2002:a25:b105:: with SMTP id g5mr14103383ybj.41.1584965751513;
+        Mon, 23 Mar 2020 05:15:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584965751; cv=none;
         d=google.com; s=arc-20160816;
-        b=HPtVG4D7cWPPCVr9glipLIpDsn0TWP2tIs7/ptuA13GYSAbNNorDsUzv8U9yVfZC7h
-         nk0XuXnUyxGN7XeivlC7jxwC8xApWY+r7fo4Otc8rjCM++wmvXIw6eiDKoE9ZzJgmhRN
-         BaC06vlcQTp86Z3jfklETlgmjvMUrcGxo2z1Zh3So4Tk3qjNPPTVcTS8nXxaKW74DExs
-         ACjYPx3w9mPBQip9XTDPCEw/ADOGnWxuhbX4WvXjaOI5073YBGxN3nmRBIAOX/N7au5R
-         A5OA7X9Hm1vRtLu9hCxK94mhZG0d2OCLNnAdh/BfPJzK75V42PCBw+VV8F9Nrk99YGD4
-         XF5Q==
+        b=Tp9LWUNNF9w5VQMnqGbPtW/6lZV7TeJgAMFN68Gt2A6TN1sD/4d7RGf0TjzaFPOhv+
+         t5yQSsLtwtwOmW1BV2PKN7TWTJH+4/+sQ7bc0wMtOD87c2skEYocWndNYAZpmt45n3r/
+         SOKwCvGsXBKJGY73J3clsLr8zCKdyWLnrETRz/0KU0Zcy7+nd/I5jr6j/qNUmvexWFcE
+         7G/p2kq9ur57WaebEV3ljRKZ9pqn0vOu38GOdnlEE94Y5FsK9MMz8+8fom/eJEzeJe0m
+         KFjSd91XgysZCk+MfGK4zdEhTQTq+Fem9PqpE6SaBQTiNNp9jfhm7O+oThTecJ8ge54/
+         vCuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=GvzX87ZAuDOtSf9ktETqmuX5+J+Lr+vZommjhI4YPnA=;
-        b=QA3fgejRMGz4ETdSGTu6NQbLKrwKA/VWKmkNQjKRDCjByppETSTBbBIwLVj7afYVEZ
-         Qyk/equ+lYPv8Lrg62ZEKH3cEfDrxzhJluGTGYy14Fj8efo6tIa6SMg3u3FJx6R1i/CY
-         FxJAgp8xRUMLiTxYdfHwHeepY97PgKjEFzXLZLznXzr3izhBVN83rM5QOfaWR3LmXxBQ
-         TSow9+SFf//MsqlojI0FTcI0fLbeSAspkfiNPB2aVBzECrbsMtEJ4E873s8UVHiVHyBz
-         FSG96l5EMGMDNkkeMVXPFNcPji+Y8Oa5ZoPeqkRi9NOHNXTOmNigHG3FMZkT49K3c7cy
-         4ZvA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=STBVOZ4+HTCp+/CYO9CQUgh44ZzKbpQfDmFXO2XUPKg=;
+        b=cCb+G+shWN4ro3j7oaoc2o23imBiYVVz8nwWiD7cnFrhvgQy9eXnWAKhO/cfv/TKvK
+         Nf8AYSIuWsrao8XjcItGDEtwEWdF/TzxA/0RXmFpSCsVrhZUI2J7Q264XuVlKPb+LnSL
+         xdwMoHXCWx5bE1UZzdPRnKHXDj3ZbbUMPnepCInckRLovc+S4EUZ3bsvIzEzZB34uZmK
+         ld9knj2q859+fMVkwgF7t5f0+e9vvVT3eJV+KV9JWgmn5nLMAs2Cbux5oeIdnuZV2kW+
+         wEs5cHGpa1HXLIHphxWQ4njPUtq90JXhzW9jv1upLKuGsw5Z8Gm7tFIklpWU02azYuP3
+         NEDA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uRmBCOIl;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id j14si846627pgg.1.2020.03.23.10.50.13
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BWJ9F0zX;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id e14si1109813ybp.0.2020.03.23.05.15.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Mar 2020 10:50:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 23 Mar 2020 05:15:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uRmBCOIl;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id q16so207398pje.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2020 10:50:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=GvzX87ZAuDOtSf9ktETqmuX5+J+Lr+vZommjhI4YPnA=;
-        b=uRmBCOIlK4vFDtlWZD0dXx5uBtaO4UoSj+N0FGlGCu7BVmLTtVQHjr2EBtuJYk0M3L
-         7C8bCNhHFDSLLoSGy20igYAL1YOJBqyX+WTwUOFL2Iqe6VUs54Nk2Ys5GjG7UjRbdhkb
-         wtnlxtL8VpMehg7oBKa9VX2pgPvqEROQVaCEI6k1lpTgnmKOkct4AaZJoZS/3qzbtSg3
-         Vwm8Ne3gS0DmtGMzk5KXoWcICMsw4OozgwplOvnpN3GI6dkAtg+Xd4RBOy8MIzvwSo7a
-         C7xQZs/rz+Qe7u8jBndLFGHti5sEZCODH8E44nmG+EJARk79vYkjUX+0QzbUG79ekVLe
-         I/CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=GvzX87ZAuDOtSf9ktETqmuX5+J+Lr+vZommjhI4YPnA=;
-        b=NctAxBxOKtYSK8BDnL6/USDwuw5GvAmw5xulG7DYlkpDZ6VyoH1hOcMmyJsXbvxY1Z
-         cdTG4+LesUzCQx2G9a8zgJlp9rPB4GQdyjqEmLNworDYHHlCjjVoqrpYPS2TQKVF3hF7
-         cmJXkYvaiJY79ZOeqOZSOJjKZuunrMiafZ/litVLSKcNk6nlNWUXwczmKbNV6P67rELe
-         tztyQwcc+H9rdKdK2Emmef599DvwJdOtwRDaIoFEh2sSKeT3NKGyeur93d/8EuDcyFdi
-         hXKgvTpkknC6FMuBWO2+F7qWkuSBSJlF4YbuBxibuPmG3yAEd7yM1RbCvcpmfHUrceuS
-         flug==
-X-Gm-Message-State: ANhLgQ3Hkux0CZuMBnbqWYMeOLFKUQ1w+LIRnPK9PSzkWS6ShkBvtpkS
-	VGO5awIG/UNZnZLewQG5zjOJrXpn
-X-Received: by 2002:a17:90a:fa08:: with SMTP id cm8mr548614pjb.144.1584985813421;
-        Mon, 23 Mar 2020 10:50:13 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.240.207.191])
-        by smtp.gmail.com with ESMTPSA id i3sm7919350pgj.13.2020.03.23.10.50.08
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Mar 2020 10:50:12 -0700 (PDT)
-Date: Mon, 23 Mar 2020 23:20:05 +0530
-From: DEEPAK VARMA <mh12gx2825@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BWJ9F0zX;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1584965751;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=STBVOZ4+HTCp+/CYO9CQUgh44ZzKbpQfDmFXO2XUPKg=;
+	b=BWJ9F0zXDNxEstdE42l7O8KzmASs84LsnL9JtORlsF5ty16FU2yjC6QWq41OWNI6cIzvXZ
+	MiwX7FhjN2JjAeeblT/qIwn40VECfADA8d8ZCu+sLMRVxN22Tj8zouuFfF1hMjzJp7Cw1b
+	PwSWvYZF+xEVnidjM4k0yWxaw0Ij//Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-318-7A9IluPYNSO8LOmaQ1My8A-1; Mon, 23 Mar 2020 08:15:47 -0400
+X-MC-Unique: 7A9IluPYNSO8LOmaQ1My8A-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D6758017CC;
+	Mon, 23 Mar 2020 12:15:45 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3FA569497C;
+	Mon, 23 Mar 2020 12:15:38 +0000 (UTC)
+Date: Mon, 23 Mar 2020 13:15:31 +0100
+From: Stefano Brivio <sbrivio@redhat.com>
 To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Baluta <daniel.baluta@gmail.com>,
-	kieran.bingham@ideasonboard.com,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Hartmut Knaack <knaack.h@gmx.de>,
-	Peter Meerwald <pmeerw@pmeerw.net>,
-	linux-iio <linux-iio@vger.kernel.org>
-Subject: Re: [PATCH v3 2/4] staging: iio: adc: ad7192: Correct macro names
- from SYNC to SINC
-Message-ID: <20200323175003.GB22110@deeUbuntu>
+Cc: Deepak R Varma <mh12gx2825@gmail.com>,
+ outreachy-kernel@googlegroups.com, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Daniel Baluta <daniel.baluta@gmail.com>,
+ kieran.bingham@ideasonboard.com, Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>, Jonathan Cameron
+ <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>, Peter Meerwald
+ <pmeerw@pmeerw.net>, linux-iio <linux-iio@vger.kernel.org>
+Subject: Re: [Outreachy kernel] Re: [PATCH v3 3/4] staging: iio: adc:
+ ad7192: get_filter_freq code optimization
+Message-ID: <20200323131531.1d6c8f93@elisabeth>
+In-Reply-To: <CAHp75VfF+oDWsOF+_=U6YBeP60XLF=SLYzExa=5WjLSgoMUw9A@mail.gmail.com>
 References: <cover.1584904896.git.mh12gx2825@gmail.com>
- <a5aea6836da9aa2f950449225892ee18f10e217c.1584904896.git.mh12gx2825@gmail.com>
- <CAHp75VetdASuw60zcp+O=RWK+pmksuPtkGL3smrqYbdfgC98xw@mail.gmail.com>
+	<dad3cdb5de76234cc460300c31aea6af671f81ad.1584904896.git.mh12gx2825@gmail.com>
+	<CAHp75VfC=y1mHW5=ghwdMMZYg=00_a5RB0Phz4j_vM77pehvMA@mail.gmail.com>
+	<20200323014935.48048405@elisabeth>
+	<CAHp75VfF+oDWsOF+_=U6YBeP60XLF=SLYzExa=5WjLSgoMUw9A@mail.gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHp75VetdASuw60zcp+O=RWK+pmksuPtkGL3smrqYbdfgC98xw@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 
-On Mon, Mar 23, 2020 at 01:40:08AM +0200, Andy Shevchenko wrote:
-> On Sun, Mar 22, 2020 at 9:57 PM Deepak R Varma <mh12gx2825@gmail.com> wrote:
-> >
-> > Three macros include SYNC in their names which is a typo. Update those
-> > names to SINC.
-> 
-> It is good to elaborate the source of the above statement (e.g.
-> datasheet pages).
-> 
-> > Fixes: 77f6a23092c0 ("staging: iio: adc: ad7192: Add low_pass_3db_filter_frequency")
-> 
-> >
-> 
-> This blank line should go before Fixes tag. The rule is that tags are
-> forming a block at the end of commit message.
-> 
-> > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > Suggested-by: Lars-Peter Clausen <lars@metafoo.de>
-> 
-> The code below looks good to me.
+On Mon, 23 Mar 2020 11:28:52 +0200
+Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
 
-Thank you for your feedback. I agree with your comments. I will update
-and send this back as next version.
+> On Mon, Mar 23, 2020 at 2:49 AM Stefano Brivio <sbrivio@redhat.com> wrote:
+> > On Mon, 23 Mar 2020 01:44:20 +0200
+> > Andy Shevchenko <andy.shevchenko@gmail.com> wrote:  
+> > > On Sun, Mar 22, 2020 at 9:57 PM Deepak R Varma <mh12gx2825@gmail.com> wrote:  
+> > > >
+> > > > Current implementation of the function ad7192_get_available_filter_freq
+> > > > repeats calculation of output data rate a few times. We can simplify
+> > > > these steps by refactoring out the calculation of fADC. This would also
+> > > > addresses the checkpatch warning of line exceeding 80 character.  
+> > >
+> > > I'm not sure you did an equivalent changes. I believe in the original
+> > > code precision is better. Consider low clock frequencies when 10 bit
+> > > right shift may hide some bits of the division.  
+> >
+> > Note that those bits are eventually "hidden" in the same way later,  
+> 
+> Even if mathematically (arithmetically) evaluation is correct, we have
+> to remember that computers are bad with floating point and especially
+> kernel, which uses integer arithmetic. That said, it's easy to get
+> off-by-one error (due to precision lost) if we do big division before
+> (not so big) multiplication.
 
-Deepak.
+That's exactly the point I was trying to explain below: swapping steps
+in a sequence of DIV_ROUND_CLOSEST() (*not* of arithmetic divisions),
+*should* not affect quantisation ("off-by-one") error.
 
+I'm not entirely sure in this case, so a quick "demonstration" in
+Python or suchlike as you suggested would be nice to have, indeed.
+
+> > despite the different sequence, due to DIV_ROUND_CLOSEST() being used
+> > at every step (both before and after the change) without other
+> > operations occurring.  
 > 
-> 
-> >
-> > ---
-> >
-> > Changes since v2:
-> >         - None. Version increment to follow patch series versioning.
-> >
-> > Changes since v1:
-> >         - None. Patch added in v2 version as suggested by Stefano.
-> >
-> >
-> >  drivers/iio/adc/ad7192.c | 20 ++++++++++----------
-> >  1 file changed, 10 insertions(+), 10 deletions(-)
-> >
-> > diff --git a/drivers/iio/adc/ad7192.c b/drivers/iio/adc/ad7192.c
-> > index 02981f3d1794..d9a220d4217f 100644
-> > --- a/drivers/iio/adc/ad7192.c
-> > +++ b/drivers/iio/adc/ad7192.c
-> > @@ -144,9 +144,9 @@
-> >  #define AD7192_EXT_FREQ_MHZ_MAX        5120000
-> >  #define AD7192_INT_FREQ_MHZ    4915200
-> >
-> > -#define AD7192_NO_SYNC_FILTER  1
-> > -#define AD7192_SYNC3_FILTER    3
-> > -#define AD7192_SYNC4_FILTER    4
-> > +#define AD7192_NO_SINC_FILTER  1
-> > +#define AD7192_SINC3_FILTER    3
-> > +#define AD7192_SINC4_FILTER    4
-> >
-> >  /* NOTE:
-> >   * The AD7190/2/5 features a dual use data out ready DOUT/RDY output.
-> > @@ -367,7 +367,7 @@ static int ad7192_setup(struct ad7192_state *st, struct device_node *np)
-> >                 st->conf |= AD7192_CONF_REFSEL;
-> >
-> >         st->conf &= ~AD7192_CONF_CHOP;
-> > -       st->f_order = AD7192_NO_SYNC_FILTER;
-> > +       st->f_order = AD7192_NO_SINC_FILTER;
-> >
-> >         buf_en = of_property_read_bool(np, "adi,buffer-enable");
-> >         if (buf_en)
-> > @@ -484,11 +484,11 @@ static void ad7192_get_available_filter_freq(struct ad7192_state *st,
-> >
-> >         /* Formulas for filter at page 25 of the datasheet */
-> >         fadc = DIV_ROUND_CLOSEST(st->fclk,
-> > -                                AD7192_SYNC4_FILTER * AD7192_MODE_RATE(st->mode));
-> > +                                AD7192_SINC4_FILTER * AD7192_MODE_RATE(st->mode));
-> >         freq[0] = DIV_ROUND_CLOSEST(fadc * 240, 1024);
-> >
-> >         fadc = DIV_ROUND_CLOSEST(st->fclk,
-> > -                                AD7192_SYNC3_FILTER * AD7192_MODE_RATE(st->mode));
-> > +                                AD7192_SINC3_FILTER * AD7192_MODE_RATE(st->mode));
-> >         freq[1] = DIV_ROUND_CLOSEST(fadc * 240, 1024);
-> >
-> >         fadc = DIV_ROUND_CLOSEST(st->fclk, AD7192_MODE_RATE(st->mode));
-> > @@ -576,25 +576,25 @@ static int ad7192_set_3db_filter_freq(struct ad7192_state *st,
-> >
-> >         switch (idx) {
-> >         case 0:
-> > -               st->f_order = AD7192_SYNC4_FILTER;
-> > +               st->f_order = AD7192_SINC4_FILTER;
-> >                 st->mode &= ~AD7192_MODE_SINC3;
-> >
-> >                 st->conf |= AD7192_CONF_CHOP;
-> >                 break;
-> >         case 1:
-> > -               st->f_order = AD7192_SYNC3_FILTER;
-> > +               st->f_order = AD7192_SINC3_FILTER;
-> >                 st->mode |= AD7192_MODE_SINC3;
-> >
-> >                 st->conf |= AD7192_CONF_CHOP;
-> >                 break;
-> >         case 2:
-> > -               st->f_order = AD7192_NO_SYNC_FILTER;
-> > +               st->f_order = AD7192_NO_SINC_FILTER;
-> >                 st->mode &= ~AD7192_MODE_SINC3;
-> >
-> >                 st->conf &= ~AD7192_CONF_CHOP;
-> >                 break;
-> >         case 3:
-> > -               st->f_order = AD7192_NO_SYNC_FILTER;
-> > +               st->f_order = AD7192_NO_SINC_FILTER;
-> >                 st->mode |= AD7192_MODE_SINC3;
-> >
-> >                 st->conf &= ~AD7192_CONF_CHOP;
-> > --
-> > 2.17.1
-> >
-> 
-> 
-> -- 
-> With Best Regards,
-> Andy Shevchenko
+> By the way, where AD7192_SINC3_FILTER and AD7192_SINC4_FILTER
+> multiplications disappear and why?
+
+Those were in fact divisions (multiplications of the divisor). Overall,
+these steps are now arranged in a way closer to how they are presented
+in the datasheet mentioned here (up to "Chop Enabled" paragraph, page
+26).
+
+-- 
+Stefano
+
 
