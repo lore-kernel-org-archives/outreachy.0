@@ -1,102 +1,127 @@
-X-GM-THRID: 6667585252544741376
-X-Received: by 2002:a81:4fcc:: with SMTP id d195mr18062220ywb.4.1552418165834;
-        Tue, 12 Mar 2019 12:16:05 -0700 (PDT)
+X-GM-THRID: 6807920699878932480
+X-Received: by 2002:a17:906:3013:: with SMTP id 19mr788925ejz.8.1585092558748;
+        Tue, 24 Mar 2020 16:29:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:3414:: with SMTP id b20ls2294552yba.2.gmail; Tue, 12 Mar
- 2019 12:16:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwgwuDa+m9S5juSsPGkn2K6pGELegXelAeuSHS0olpFhLveaPxixt/FSenGVhFErfvIGXMv
-X-Received: by 2002:a25:660d:: with SMTP id a13mr10090027ybc.0.1552418164998;
-        Tue, 12 Mar 2019 12:16:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552418164; cv=none;
+Received: by 2002:a17:906:a985:: with SMTP id jr5ls9755648ejb.10.gmail; Tue,
+ 24 Mar 2020 16:29:17 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuKu4a1Au6Df6ux6mAs/jqb9OJUABX4p0cCQpDeI0L7xAJ39JxFnN/BlG/bhE3z0vvP8Esv
+X-Received: by 2002:a17:906:3db:: with SMTP id c27mr778653eja.371.1585092557501;
+        Tue, 24 Mar 2020 16:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585092557; cv=none;
         d=google.com; s=arc-20160816;
-        b=udvf7pEKVnZ/P8rMYdlMDF1raoy/sR5eCOqXmdbUzj0AzGU3DuQmjOPpVrSX9PXsZa
-         Rjcj+Iu+yDXOOHPzujt7P3866Z0ocCH4wVq4bsCvjMB3b6hufmNsBBtbXoa8ZuoV+2fk
-         Y7ZWvmlcUSHyiKtw896d4F317YrEHk+LSTQpZ1RgI9kKm9HwOi9iLkxbW00ejLltBTsn
-         h8yy5V601toviMraojtR3iAuUtkHl2/vg66Sc8XGQdHAFpXPGInXDNNWVpaqPtzxya2M
-         vv8FNMiQIfXGoThHpi9mXM9JgZ4rLPtOkZRjjTXhDHB5f3elggwfD40Zk3yCqQPtODTM
-         lReQ==
+        b=iJJ2okeOoKdocC7rIwJLlf4vvaVVuxsdU+XGT+joSk5KYkVaWKUc81vxvRY62ATRtH
+         xXioXPJrWgDKz8tEQxBFST+egxnq9AImF3eqAHwndeRabvHhiK1YwUvRvKkaKvpOuLCX
+         3QFdY/jQSrYlPyXIsKJh0G3xJQThx/Ie0uLzniXCe5FbgdfBPDWqcwd/fSJYAgQYSMlX
+         gycqebjxKdptxDCwmOk5BT3WjTIASvmMgEuw6GiENh+xj29m3W/PrHg+ryVDp7s0bOMe
+         hGLHIiz/K6bLauOksSxHxyxUuZrb0gJhI4mDNopShgCA0i7F6xCPb/bhBmWvioAcAt7e
+         0bzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=+tF5YCEEwXiC6t/eGG/WpLCG+fbLq/gWfl+De6VUOeM=;
-        b=xQL4L0NYArOSzCtcTCCUHyG8NUad9RBFoPrnviEG6LATOvdVNGWGDvI4sJB1JJBnjS
-         BJKERkqailHxG2UiWb6A4R1+taK4eoWtftB7peAe1jNMIJTQZVIfuwWWP44dy3ycV6Fq
-         +BwEFyJ5HQhsupDmIipHA75K8995NSxuUCgoWv18S0OCl+SnqCSo1MBljhexvRYQTyGi
-         F/qORfV3z3IgXYQ1sm+1N5zk4mX9RC9yVRwBXlEIab0cnYdySQrHSJdWtz85nNkQ6xHv
-         GcNhHDOGytlBkv6W3wxOnM+cPMpAkyElVI8SNIblCBMtis2KMq9YOdNGe/X+uAlE9n7d
-         czhQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=PrUZW6Z5uhE0vIlAZJs/BPdxq6Jaqm/BzQJrYJsLcbc=;
+        b=hnCelbcPVBs+CMSF4oYiQa6RTJQEXJ+t984jGkl0ojJLNNo3asej4dzat54JQ/DGDW
+         FAWmG2Dn0BMEAWa2Ta2Eu3COwNz07zPxSA/zm/3ryqU3vunS7vrRpnuRakP5HsXpGf7v
+         dp4EXYhRkIiYiFV7qVVLow9GiXBdaBfyqzQH398f5z/ycLnZB2ZD1XVhX/+YbTSYfZ9i
+         YLLtyITzCvY70oumH7t7CQN7BfO7Ed8UoAjpEMzmSSekAsx/Aj7PG4ViDzfgfRpZiaa9
+         7UdvfQa4A5hNoS2Npqe9pkzS0jlOhmA3MRTlq8MC2C4SOjYNZFZVc165Bk/tspgq9u91
+         gKmw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=jNR+tD9X;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id t128si466390ywa.4.2019.03.12.12.16.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mIobxQdR;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
+        by gmr-mx.google.com with ESMTPS id k14si550289ejb.1.2020.03.24.16.29.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Mar 2019 12:16:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 24 Mar 2020 16:29:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=jNR+tD9X;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (unknown [104.133.8.98])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id DC2B22077B;
-	Tue, 12 Mar 2019 19:16:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1552418164;
-	bh=xOusnD3lfc+CQkpL45OajFYk4zp9xp8FpX9589p7dWg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jNR+tD9XDqQcIvh4OfhawzS+0AD+C0UQo1JuaouWFXKCSAftp+sAbg+Z1GKkjc02A
-	 N6QWGlUwnCWu1WFgL+vSIfqtX9nP6Ewyy0EJrqNFVqoCb902idJroX3TGwPVjC789D
-	 KW3M7mKU6UmlRFbnSP7D5BRc64zsq4Ep/sLTw22A=
-Date: Tue, 12 Mar 2019 12:16:02 -0700
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Shadaab G <shadaab2202@gmail.com>
-Cc: Forest Bond <forest@alittletooquiet.net>,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] Staging: vt6655: Update TODO & checkpatch.pl check
-Message-ID: <20190312191602.GA18223@kroah.com>
-References: <20190312190832.GA3330@sreyansh>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mIobxQdR;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x244.google.com with SMTP id t17so498390ljc.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 16:29:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=PrUZW6Z5uhE0vIlAZJs/BPdxq6Jaqm/BzQJrYJsLcbc=;
+        b=mIobxQdRMZ0QD5Px8APyNVZKNJuLbIsX9Hqu5WF/roNoVRZIZ/HFS3MKpL7b+97TMR
+         7AwoMyaDY4WATkji2FAljCxhj90DdmZi0daoUg4g9OkylgLLPpzQwxpkY5ZPfQssoVJs
+         vtJcuqHKzOwW/AC9S3osp1AXoizvaYzfls4OAbxGYQ+s7V0Mrx/oNTx9GcTyLpg3ItWn
+         5UoYFilcEcYfZR4shT+jypXpcQRofT6a4DQvEnMj31qjgK7FGbXKbLAXRCiVBjwnGdpI
+         EzqmRZX9LFEmzteAmXbYBM2uBxLKkyEUWKvfGcCvln+c4Gu3sInhQnMT3DxmVdXqfrnN
+         FuTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=PrUZW6Z5uhE0vIlAZJs/BPdxq6Jaqm/BzQJrYJsLcbc=;
+        b=pU0DqiJz4PaDZC73Me54YYYchFEbdLud5cXdqvYbpR/ljSzS21jqzTNS2eYpWkXgHO
+         6Ap+DS7vBBjNFXC7dGmllk/yPHO83ZGBi2mP+MPSAt0u8oxSF27CCFfzJE0cTy09idgd
+         SJpcj4E3tvgJS70hEB1dY+RJXon9cupNXYepTXdidWVkrFtvVcZbZyV1z45B/deiVkns
+         vk7JYg+k7TRAAxqiB8L6AhDa2DqOxrxfOnzzZgQAGb5bT10BM0hyq4tO/eLwnpmCcU77
+         /0HWwSNys4jInAXCik2NlmLkQVehxJnxdVO8h4T8sMtR9aYgrIV9YhZTx1tkB9PdRVAd
+         YKPA==
+X-Gm-Message-State: ANhLgQ3CjLeYoPEKLcp+ta/yZzZwO/nBOu6cVnKhRwlSyppZvgQif72L
+	4tzBiMBm+Gb/N4zAcKxfgQlpItsC
+X-Received: by 2002:a2e:b5d1:: with SMTP id g17mr91466ljn.139.1585092556973;
+        Tue, 24 Mar 2020 16:29:16 -0700 (PDT)
+Return-Path: <gokcekuler@gmail.com>
+Received: from siyah2 ([88.241.68.95])
+        by smtp.gmail.com with ESMTPSA id y20sm3068694ljy.100.2020.03.24.16.29.15
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 24 Mar 2020 16:29:16 -0700 (PDT)
+Date: Wed, 25 Mar 2020 02:29:13 +0300
+From: Gokce Kuler <gokcekuler@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH] staging: vt6655: remove line over 80 characters
+Message-ID: <20200324232913.GA3907@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190312190832.GA3330@sreyansh>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On Wed, Mar 13, 2019 at 12:38:32AM +0530, Shadaab G wrote:
-> This updates TODO where task of killing ttype.h is done but
-> not updated. It also fixes the following checkpatch.pl check:
-> 
-> CHECK: spaces preferred around that '-'
-> 
-> Signed-off-by: Shadaab G <shadaab2202@gmail.com>
+Moved from the comma character to the bottom line after
+for it exceeds 80 characters.
 
-We need a "full" name for the signed-off-by line.  Do you sign documents
-with just "G" as your name?
+Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+---
+ drivers/staging/vt6655/rxtx.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-> ---
->  drivers/staging/vt6655/TODO   |  2 +-
->  drivers/staging/vt6655/rxtx.c | 48 +++++++++++++++++++++----------------------
->  2 files changed, 25 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/staging/vt6655/TODO b/drivers/staging/vt6655/TODO
-> index 63607ef..462cbdd 100644
-> --- a/drivers/staging/vt6655/TODO
-> +++ b/drivers/staging/vt6655/TODO
-> @@ -7,7 +7,7 @@ TODO:
->    - remove dead code
->    - abstract VT3253 chipset specific code
->  - add common vt665x infrastructure
-> -- kill ttype.h
-> +- kill ttype.h -- done
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index b19faa4..ac1eeb7 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -1170,14 +1170,19 @@ s_cbFillTxBufHead(struct vnt_private *pDevice, unsigned char byPktType,
+ 
+ 	td_info->mic_hdr = pMICHDR;
+ 
+-	memset((void *)(pbyTxBufferAddr + wTxBufSize), 0, (cbHeaderLength - wTxBufSize));
++	memset((void *)(pbyTxBufferAddr + wTxBufSize), 0,
++		       	(cbHeaderLength - wTxBufSize));
+ 
+ 	/* Fill FIFO,RrvTime,RTS,and CTS */
+-	s_vGenerateTxParameter(pDevice, byPktType, tx_buffer_head, pvRrvTime, pvRTS, pvCTS,
+-			       cbFrameSize, bNeedACK, uDMAIdx, hdr, pDevice->wCurrentRate);
++	s_vGenerateTxParameter(pDevice, byPktType, tx_buffer_head, 
++			       pvRrvTime, pvRTS, pvCTS,
++			       cbFrameSize, bNeedACK, uDMAIdx, hdr,
++			       pDevice->wCurrentRate);
+ 	/* Fill DataHead */
+-	uDuration = s_uFillDataHead(pDevice, byPktType, pvTxDataHd, cbFrameSize, uDMAIdx,
+-				    bNeedACK, 0, 0, uMACfragNum, byFBOption, pDevice->wCurrentRate, is_pspoll);
++	uDuration = s_uFillDataHead(pDevice, byPktType, pvTxDataHd,
++			            cbFrameSize, uDMAIdx,
++				    bNeedACK, 0, 0, uMACfragNum,
++				    byFBOption, pDevice->wCurrentRate, is_pspoll);
+ 
+ 	hdr->duration_id = uDuration;
+ 
+-- 
+2.7.4
 
-
-Why is this change part of the coding style change?
-
-Shouldn't this be multiple patches?
-
-thanks,
-
-greg k-h
 
