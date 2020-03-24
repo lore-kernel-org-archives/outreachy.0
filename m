@@ -1,125 +1,159 @@
-X-GM-THRID: 6330198991314092032
-X-Received: by 10.66.42.161 with SMTP id p1mr2295168pal.20.1473864305447;
-        Wed, 14 Sep 2016 07:45:05 -0700 (PDT)
+X-GM-THRID: 6807744599816142848
+X-Received: by 2002:a2e:8e77:: with SMTP id t23mr17746200ljk.221.1585061382327;
+        Tue, 24 Mar 2020 07:49:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.54.178 with SMTP id h47ls1119464otc.37.gmail; Wed, 14 Sep
- 2016 07:45:05 -0700 (PDT)
-X-Received: by 10.129.0.194 with SMTP id 185mr2221279ywa.12.1473864305043;
-        Wed, 14 Sep 2016 07:45:05 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id o13si117504itc.3.2016.09.14.07.45.04
+Received: by 2002:a05:651c:550:: with SMTP id q16ls3596258ljp.1.gmail; Tue, 24
+ Mar 2020 07:49:40 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtfFjkCJH08XTWd95CsbCOfVvnXNVb/YOSAeLyqCk55NS2PKpgOzezme6SVRZUFQ5/KouDh
+X-Received: by 2002:a2e:a401:: with SMTP id p1mr17429415ljn.106.1585061380518;
+        Tue, 24 Mar 2020 07:49:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585061380; cv=none;
+        d=google.com; s=arc-20160816;
+        b=p0vKHbGIvWN3DSuKSeEoPS/EpAE0lzZOm+FRKz1o9CNFLLbTStuJt0bc333tDmFlHJ
+         dsiiF1sN0ktAezMDLo2yX5eRXk1wD+oM9Ey6zfCQVu+5SChDRuQCdbuoPfuDYf+nL2QR
+         wscXCwoSOvpFi8KbzxrIukqkFxOJT6C+oyjM0C+K5buRv8yFy3sL8AfFFJ2T7vXqVZZh
+         R/mKAtIZtM433FQrso0cTve+arFxGnUSC2IFuAorcztxcweH0wVGzdrT+0Fp6tBNylTj
+         lg6Aje15JDB1kmM1ODQ/dp6Uxm//SdfjeJV/YjkSsr/oHJP0Quow7w1Mif5Qev6cQubk
+         +Hrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=a7UaagtfTtwQA4YR4FV4Q+2jVBC5MA6ZAjuOcQAIr0k=;
+        b=Ue7M8yBe69Fy8fzUCpiLZEw1Buf3TnG1RtRTgrVCZz70yctovwOyasKFOZkeaOQJQl
+         M/VosiEJWHmEfs1gfUW84fdqJPHzm+5soW5VK+Maf3uv3Tr00tDEzsj4m4N9j9pzb+Ua
+         OHdsi0G68rIq+nGL/lyUdu38pFEJe1Za1S7eY9PaK7/hVw4/9Fp62h4fFfERaD8Kd2d0
+         eMiwQbXWL2CRzTXKZKP/I6rL8BYU32AY/i106WeE9xJA+qzPs9SAYAysA2UGcCpch8bZ
+         k8fhY+Yr6WKQpY9R1xYLcroQddGXjvgw+5qR3q53RBaa0lZFEcMKKvdpD6MYljJoc+VY
+         Fa/Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id d12si1058064lfi.2.2020.03.24.07.49.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Sep 2016 07:45:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Tue, 24 Mar 2020 07:49:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id n24so885524pfb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Sep 2016 07:45:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=HX8tDT/rDmYqyMC+d2uW6XyHBE+lOxmlzeYMf1H+5xI=;
-        b=CjKzasQTSlfC4mfQFwZaLVWqscxJBLkXJ5cwpjZViIuKC3IP4NnLAJEXzLeA6a4d8Q
-         c0NctnT3BpvsUd3WZ3grCZW78POJZ8vm1bf+pXV86a1RjcYRCN0gx5NSrN0ubPW6F4d9
-         DlE7vQ+w9QUt3sWBDA+iKqMx5filr4veM26/N0D9rqsQlU5flMNbqX6t0dTyFux76WHm
-         g45ZrjgOREgAWdIbAwvX9gFwkk5k/XGQLwRAiboU15pxPieeWgzRxVLvJyc5fAWBVSbk
-         vsKOtWo11LRzW2vMOqUO5eF65cSKL5ZKS5Z/494dBJoZRvm94ffMjnR1JGzGKlYOJDOf
-         A5lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=HX8tDT/rDmYqyMC+d2uW6XyHBE+lOxmlzeYMf1H+5xI=;
-        b=NWCF87keSukZkNYLMVoInUohB5o/MR05uY8lI+e3DF3F9fYJBltIqVCIwFtPpjMsaz
-         +fbxFwd0/+aOt5cdIz5uCWHdGrHhIX6WYCaIBLqGkNB/iHXFt+5jptthY6kd6y6+vrvF
-         FCF9DCTmLoVQV9pG7e6bvCQeFVRs5Q0M9phPoI2gzG7PTwBgBvMjIrKox29+8usglhOc
-         S9RfZsgflO6CPWwz7R3bmqO0lIkMvzrXtG/o9jDzAZ6PyMa005gVtWWPMv/kJ/UXeRHk
-         1fsBo3gtLM4HPrQj5Ny3JOPZChD02g1VjwmF7mx8kGOkm7DfNNuQNlcl80Re2cxuHRor
-         FrsA==
-X-Gm-Message-State: AE9vXwMx7iKxyFOZkAnVmfmAuW/5ggdLEWONNr23AgG/RmoxkH0HQiGJ5dd+hFMjLQEN+w==
-X-Received: by 10.98.142.1 with SMTP id k1mr5262311pfe.20.1473864304575;
-        Wed, 14 Sep 2016 07:45:04 -0700 (PDT)
-Return-Path: <bhumirks@gmail.com>
-Received: from gmail.com ([223.176.141.25])
-        by smtp.gmail.com with ESMTPSA id c64sm38852744pfa.51.2016.09.14.07.44.56
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 07:45:03 -0700 (PDT)
-Received: by gmail.com (sSMTP sendmail emulation); Wed, 14 Sep 2016 20:14:50 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: netlogic: Remove unused function
-Date: Wed, 14 Sep 2016 20:14:49 +0530
-Message-Id: <1473864289-13857-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,300,1580770800"; 
+   d="scan'208";a="343474978"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2020 15:49:39 +0100
+Date: Tue, 24 Mar 2020 15:49:39 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Sam Muhammed <jane.pnx9@gmail.com>
+cc: Stefano Brivio <sbrivio@redhat.com>, 
+    "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Subject: Re: Following up on Coccinelle.
+In-Reply-To: <8249c08d6c739a40441d2bb066e828d004d56d02.camel@gmail.com>
+Message-ID: <alpine.DEB.2.21.2003241547480.3306@hadrien>
+References: <eaac641de00be14d48192180c624c2e13f7d897a.camel@gmail.com>  <alpine.DEB.2.21.2003241334100.3306@hadrien> <8249c08d6c739a40441d2bb066e828d004d56d02.camel@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-The function xlr_wakeup_queue is not used anywhere in the kernel.
-Therefore, remove it. The static unused functions were detected
-using Coccinelle but the change was done by hand.
-Script used:
 
-@initialize:python@
-@@
-def display(name,p):
-	print(name,p[0].file)
 
-@r1@
-identifier func;
-type T;
-position p;
-@@
-static T func@p(...)
-{
-...
-}
+On Tue, 24 Mar 2020, Sam Muhammed wrote:
 
-@r@
-identifier r1.func;
-position p;
-@@
-(
- func(...)
-|
- func
-)
+> On Tue, 2020-03-24 at 13:39 +0100, Julia Lawall wrote:
+> >
+> > On Tue, 24 Mar 2020, Sam Muhammed wrote:
+> >
+> > > Following this thread:
+> > > <20200311181134.GA17847%40supernova>
+> > >
+> > > While tinkering with Coccinelle, i found that this error:
+> > >
+> > > coccicheck failed
+> > > make: *** [Makefile:1742: coccicheck] Error 255
+> > >
+> > > only happens with (as far as i tried) two COCCIs:
+> > > using MODE=patch
+> > > scripts/coccinelle/api/atomic_as_refcounter.cocci
+> > > scripts/coccinelle/api/check_bq27xxx_data.cocci
+> > >
+> > > So running make coccicheck with no COCCI= will always fail at the
+> > > scripts/coccinelle/api/atomic_as_refcounter.cocci
+> > >
+> > > Adding that MODE=report is okay to report all ERRORs ..etc
+> > >
+> > > so specifying a COCCI to get round it worked for me.
+> >
+> >
+> > Could you try with the option DEBUG_FILE="err.log" and then see what is in
+> > err.log when it crashes?
+> >
+>
+> Okay, on both files, it complained:
+> virtual rule patch not supported
+>
+> and when i looked into both COCCIs i found both only support (virtual
+> report) --both are rules with no +/-/*--
+>
+> i put "virtual patch" anyways and it obviously complained:
+>
+> No rules apply.  Perhaps your semantic patch doesn't contain any +/-/*
+> code, or you have a failed dependency.  If the problem is not clear,
+> try --debug-parse-cocci or check whether any virtual rules (e.g.,
+> patch) should be defined.
+>
+> So i guess both of these COCCIs are only for reporting?
+> thats why its fine with MODE=report.
 
-@script:python depends on !r@
-func<<r1.func;
-p<<r1.p;
-@@
-display(func,p)
+Yes.  But make coccicheck shouldn't crash if you run it with MODE=patch
+and some semantic patches don't support that.  It should just move on to
+the next option.
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/netlogic/xlr_net.c | 10 ----------
- 1 file changed, 10 deletions(-)
+julia
 
-diff --git a/drivers/staging/netlogic/xlr_net.c b/drivers/staging/netlogic/xlr_net.c
-index 7db88aa..552a7dc 100644
---- a/drivers/staging/netlogic/xlr_net.c
-+++ b/drivers/staging/netlogic/xlr_net.c
-@@ -269,16 +269,6 @@ static void xlr_make_tx_desc(struct nlm_fmn_msg *msg, unsigned long addr,
- 	msg->msg3 = 0;
- }
- 
--static void __maybe_unused xlr_wakeup_queue(unsigned long dev)
--{
--	struct net_device *ndev = (struct net_device *)dev;
--	struct xlr_net_priv *priv = netdev_priv(ndev);
--	struct phy_device *phydev = xlr_get_phydev(priv);
--
--	if (phydev->link)
--		netif_tx_wake_queue(netdev_get_tx_queue(ndev, priv->wakeup_q));
--}
--
- static netdev_tx_t xlr_net_start_xmit(struct sk_buff *skb,
- 				      struct net_device *ndev)
- {
--- 
-1.9.1
-
+>
+> this has a workaround until we depend on make coccicheck with with
+> MODE=patch and no COCCI=
+>
+>
+> > >
+> > > ++
+> > > but i have a question, maybe a couple:
+> > >
+> > > + If i have a simple .cocci and it produces patches, how do i make a
+> > > commit of it?    _newbie_ :)
+> >
+> > Apply the patch to your code:
+> >
+> > patch -p1 < the_patch
+> >
+> > Then proceed as if you had made the change by hand.
+> >
+> > > + If this .cocci propagated across a driver, a patchset of this change
+> > > across the driver will have the same subject for all patches, I guess
+> > > thats not okay? so one patch of all the driver files should do it?
+> >
+> > It depends on the changes.  If all of the changes are quite uniform, then
+> > putting multiple changes in a single patch could be ok.  If each change is
+> > a special case, you may want to put more detail about the file in the
+> > subject line, ie before the :
+> >
+> > In general, the point of a patch is to make something that is
+> > understandable for the person who has to review it.
+> >
+> > > + Basically, how to format a patch found by EITHER an existing .cocci
+> > > in the source tree, or one that is made and not included in the
+> > > /scripts/coccinelle ??
+> >
+> > If it is made by a semanitic patch that is in the kernel tree, then you
+> > can use the tag Generated-by: and then give the path to the semantic
+> > patch.
+> >
+> > If you do something on your own, it could be helpful to include the
+> > semantic patch in the log message, or a simplified version.  The point is
+> > to show the maintainer what reasoning you have used to come to your
+> > change, without overwhelming him with tedious detail.
+> >
+> > julia
+>
+>
+>
 
