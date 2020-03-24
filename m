@@ -1,196 +1,129 @@
 X-GM-THRID: 6807884729429262336
-X-Received: by 2002:a50:ec0e:: with SMTP id g14mr24364719edr.107.1585084193338;
-        Tue, 24 Mar 2020 14:09:53 -0700 (PDT)
+X-Received: by 2002:a05:6402:376:: with SMTP id s22mr29297067edw.273.1585084190488;
+        Tue, 24 Mar 2020 14:09:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:c818:: with SMTP id a24ls134525edt.4.gmail; Tue, 24 Mar
- 2020 14:09:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvKxQGQLf7J/o7XDteXckqvxtVPLcZH1mdv+AyvF6x2Y3vMYIewsdd7+HYfkL9blCBLSrPP
-X-Received: by 2002:aa7:cd78:: with SMTP id ca24mr29220542edb.293.1585084191994;
-        Tue, 24 Mar 2020 14:09:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585084191; cv=none;
+Received: by 2002:a17:906:860b:: with SMTP id o11ls3370356ejx.3.gmail; Tue, 24
+ Mar 2020 14:09:49 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vupqFLwbmX7/FRJSlsus4j9xie+ANa354ZYGqbWqbBhVqJSdb+0TCJN8kl5//XQq6nd7aPm
+X-Received: by 2002:a17:906:b318:: with SMTP id n24mr279923ejz.15.1585084189044;
+        Tue, 24 Mar 2020 14:09:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585084189; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z9ofIIhKjcAurfz8XRWYF8ybKa8c7orBD4zAPUDsUlEWGGb+PI4q5IBA8RnVpDUo/D
-         1WZ5jQzAkZrv//Ni3oVEPfUhGTu0gFIjzaetVupGE74x3jiC1mGZ7/G1FdEgBPXza91r
-         ZkYMF10s1DIVr5CU+GukglnUqb70fH/8QZj3F9KjAz1o9pRb+XBVopKDyFVsz7i7i2NC
-         1FBd2EU013hnlGT3Rfq4GMhhbg4Ab8IzDfuvuZygzJqoyLLEKMolH5n81gPbiHDNx+rm
-         1ypNIdKbFW4rz8a+fen5iiZACQX9oE7Ag9QlN0P+yAhUYwvnZeYAPRwk4qWgXjRScPCi
-         FUGA==
+        b=k/HzFRFFbhZcpKSPa6aQvYT2Lygd0PKGizi04qpap1+UxMNs77Ug8q7hRoN21rD6Cq
+         ZhSF5bfZ6OtWGMe9UFoOnBc7w1LcRJ1iIat5klgGDDTJ4KabdUJRKS5WJi5gn3yJKEFs
+         DyNN0xnmLcciSR24xnfZNHJ8/GyC6OFu4b6w5DpTbBm388NHa0D/Eafp0hXri0+qfIL3
+         4i4HstO8NcKdIIlPD77xx3JMF+pC8WkRZM2mQAsjy6PFufsk3KMwxtJx6iHlhQKoz8UG
+         +UsVBQ45DCNf9CJVc0VcfojH4MuIhCc11ghwGmMF3JrWdwaDPUZZ5jFUhvllGMcLrnz8
+         +MBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/eWg+01uIPEv2c1cDNUJkEyeqMPDc4YJKFDv0yj17UM=;
-        b=RazKC6skH9IjcN8C/bnwWZLUulQfMVnNJKgUEFVt5xBQjMPm4wfFUGzqmdEk+w1mWj
-         iYbEGscleTzTov83piqQ4rtKF/MoNFWM9Qa0WZunbwSkh53x7AhJUtr2lJAPWYv74FAr
-         kghxEJZsJJswEtxGu2ehJCC9cO0uHR7vBqTPf3c6hLtL7B4mb00c5P5/0l8eeFhki0fU
-         DjppXPB3Ta5zLeloxjh39eOzSICNggs0LQZjh9W80uyGUO/XI7T/ScoHDOSyU9dTkixV
-         wABPQP69v4DNEOJ8ZJGWTybtMF9gj8HKmT1sopwShPE8DddnGqA6ESCF4OWhVq6oeoCP
-         D+HA==
+        bh=gTR0Sutjj3QW/ZESUZbVoskPpJS76dCwDBAaFpR2e7Y=;
+        b=jTymXeo2fBnkXwUhI0tG4Rk8VFYVdIFOrq4RAjigMKmflXVtHb10fnd1Sdeu5IknS+
+         vAU1k8PQ+XPZ9tC6hXOSzk8Vofu4pFSIpxdgQz8OzEZn0P5oDN+3+tMTQHLEGcGpDYWo
+         iAC5pxf//7SGGet7KlugqamY6UZoC3JkkACL9jJc33Q0iozHP6RmC2+LWiJgULW967Xo
+         YkHRtxKbgapTG17gX3ElhYPl7nW8K+S652sxNYOtmz6qTsw8kvche//wLl9yv4f0xfay
+         bnmXL2RRHY2R4C+ohswlqQJMuZileQAq2ebdEVRgoyEpD5VFFr54DgjmvGMYTh3jIupc
+         LZog==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L9+dgbte;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42f as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="huYEZ1p/";
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com. [2a00:1450:4864:20::42f])
-        by gmr-mx.google.com with ESMTPS id f2si760773edm.1.2020.03.24.14.09.51
+Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id v14si559485edr.4.2020.03.24.14.09.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 24 Mar 2020 14:09:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42f as permitted sender) client-ip=2a00:1450:4864:20::42f;
+        Tue, 24 Mar 2020 14:09:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L9+dgbte;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42f as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="huYEZ1p/";
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42f.google.com with SMTP id m17so250258wrw.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 14:09:51 -0700 (PDT)
+Received: by mail-wm1-x342.google.com with SMTP id a9so126079wmj.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 14:09:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=/eWg+01uIPEv2c1cDNUJkEyeqMPDc4YJKFDv0yj17UM=;
-        b=L9+dgbteolH5osRrpPjUVXk9z8iMIFWqjqnlP2usupIgWYqPyjbQo4ZNZjs+dkGcyR
-         68QXsXtuHE9LJZlxoUdWhN6IsMPZg2td1GZ9buk5OpiB63WEJ0S98fkuvMhkJMFLoh9/
-         o3auzdJT8cGJqLWkkhvhfNXwPz+5jRhvOlYiDpIVRM2xnIq0NVDxNZ3woYJKNQB1pxrE
-         Dvad1AwJ8L8IUeicyaQRafYqIRCoDKWa9uYiHONSKx0oXT3NF2G5/jR/vgiwZTwk5Hk2
-         186gkXmRypEbsK2Vr2PTpzWOvt+IQoD5dy0fXVJpgQCH3aePxW0iMtHUmU+YrCNTmBTL
-         AhpQ==
+        bh=gTR0Sutjj3QW/ZESUZbVoskPpJS76dCwDBAaFpR2e7Y=;
+        b=huYEZ1p/vFEFskRfLznyhRxobZ/Gk0idc+nR5IVCrMlUrCE7egb5Oz+ARpfSJJ93PY
+         aH/jd+L9oECRnpL/nwrjT1x0EQ7kKia8bBj6gH3oytvJL6zxiSVBsnWFi1V8hoFybLVI
+         cuj27fIyOYLux9L8R0VY/wlK7FDJ+kJ4m06y+1VnFDv3tvnbwKan5OnmUFPDDtijOsSj
+         SuMLB6waU5exe3UO2QMJGIotXSU+xDV1AAd8kBimUe2StXm+RY+9CIspdSi726yqkNf4
+         vi2CdLx3ba7DhKaHrLl4XpPCR2X+1dX9Q4cLoy0pDECn8tYucsGSg4mlRWocCXqhl8bz
+         yboQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=/eWg+01uIPEv2c1cDNUJkEyeqMPDc4YJKFDv0yj17UM=;
-        b=F33u6WRo5RCo6hC72RjSdJmAY0+WUDBcmUx/EYUBFdrpMSFUDsG+V1A4GcZ03njBR/
-         fLG12j2IAJ5owxjk3gOgrhmmNiqM73wNpvoRdrgG+ZlUndGD/dbw7ENcGqRHxpG9CvE2
-         3/8N/e6Ztn88pbV0fX86ossASKQgZR7HQmBSpX+Ggg5eL2LfzxKBd2VnJVKdKUSzbQTK
-         Du/2hd1fTEzcPYAhnscQFRzCetCRMHguOWrlz+Y2pwTVeVBfQzH4cLKXH7urwSfDPHTc
-         R9g2pAlawU3KIG+EOsPTpzDZb9L2Jkx+rBlrtggqmV3zFwQw6H4/5gSSEczPBTE7X5IR
-         jYhQ==
-X-Gm-Message-State: ANhLgQ2hYG9DUr5PCG/tUTzT4Oj+/wABEGuHlCzNZBwEm4FRRkpKpVE5
-	7EcOPiScHCziw0FHKnz40/E=
-X-Received: by 2002:adf:a319:: with SMTP id c25mr3262843wrb.197.1585084191721;
-        Tue, 24 Mar 2020 14:09:51 -0700 (PDT)
+        bh=gTR0Sutjj3QW/ZESUZbVoskPpJS76dCwDBAaFpR2e7Y=;
+        b=uRjKMDNSdAtqxLZtcwUUoBuXnfFwtZsfBGjRKmdqpsqIeiwf/INKJpQ8C8Jek2xQ+I
+         zJYLX5BMgEQgywVWTx5Fgee43HIEtx46iRiNVHcQF5izn6QpzsLBtziMgZ50A6nbapRh
+         Ap4j+DYJEHdkKrAi8IUC3hQT678iwFqCEw9DnvoGwCHaX2TXCDXLecFq8iQUqcNV58AU
+         +dz7r4ZZDFlT7H463ds65U3hR5Ly+izKjNX9FzwHNHxAoLZ5nE9EyKmFQBlAcJL/6ca4
+         p8KiFlt4SDXdwIkkeX5hBRAmdB0jHjK26IsYDz7MVizTfvgDr1VNF3oMGJCktemfoPI+
+         Cx+A==
+X-Gm-Message-State: ANhLgQ0NyTOgz098EcUuMF6T+E0GKeWfniQyQpyz/d8AvESEvfGjRKkU
+	PvuprRXMakumwzO8m8yMfxU=
+X-Received: by 2002:a1c:a5cc:: with SMTP id o195mr7787746wme.169.1585084188798;
+        Tue, 24 Mar 2020 14:09:48 -0700 (PDT)
 Return-Path: <jane.pnx9@gmail.com>
 Received: from localhost.localdomain ([197.34.93.161])
-        by smtp.gmail.com with ESMTPSA id t16sm27758455wra.17.2020.03.24.14.09.50
+        by smtp.gmail.com with ESMTPSA id t16sm27758455wra.17.2020.03.24.14.09.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Mar 2020 14:09:51 -0700 (PDT)
+        Tue, 24 Mar 2020 14:09:48 -0700 (PDT)
 From: Sam Muhammed <jane.pnx9@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	outreachy-kernel@googlegroups.com
 Cc: Sam Muhammed <jane.pnx9@gmail.com>
-Subject: [PATCH 3/6] Staging: kpc2000: kpc_dma: Remove unnecessary braces.
-Date: Tue, 24 Mar 2020 17:09:16 -0400
-Message-Id: <0a3ec63321dce008fc8dd790f42ef8490135b307.1585082158.git.jane.pnx9@gmail.com>
+Subject: [PATCH 2/6] Staging: kpc2000: kpc_dma: Use sizeof(*var) in kzalloc().
+Date: Tue, 24 Mar 2020 17:09:15 -0400
+Message-Id: <bbb3adbd20ae89db6a0d3360bc09d22eed778e86.1585082158.git.jane.pnx9@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1585082157.git.jane.pnx9@gmail.com>
 References: <cover.1585082157.git.jane.pnx9@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Removing braces of single statement blocks,
-they are not really needed.
+Modify struct allocations in kzalloc() to match the
+coding standards.
+
+Checkpatch.pl CHECK: Prefer kzalloc(sizeof(*var)...)
+over kzalloc(sizeof(struct var)...)
 
 Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
 ---
- drivers/staging/kpc2000/kpc_dma/dma.c         |  5 ++---
- drivers/staging/kpc2000/kpc_dma/fileops.c     | 20 +++++++++----------
- .../staging/kpc2000/kpc_dma/kpc_dma_driver.c  |  3 +--
- 3 files changed, 12 insertions(+), 16 deletions(-)
+ drivers/staging/kpc2000/kpc_dma/fileops.c        | 2 +-
+ drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
-index 4bfbc717bc07..5ccc93ed2b61 100644
---- a/drivers/staging/kpc2000/kpc_dma/dma.c
-+++ b/drivers/staging/kpc2000/kpc_dma/dma.c
-@@ -97,11 +97,10 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
- 	if (WARN(!(caps & ENG_CAP_PRESENT), "%s() called for DMA Engine at %p which isn't present in hardware!\n", __func__, eng))
- 		return -ENXIO;
-
--	if (caps & ENG_CAP_DIRECTION) {
-+	if (caps & ENG_CAP_DIRECTION)
- 		eng->dir = DMA_FROM_DEVICE;
--	} else {
-+	else
- 		eng->dir = DMA_TO_DEVICE;
--	}
-
- 	eng->desc_pool_cnt = desc_cnt;
- 	eng->desc_pool = dma_pool_create("KPC DMA Descriptors", &eng->pldev->dev, sizeof(struct kpc_dma_descriptor), DMA_DESC_ALIGNMENT, 4096);
 diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index 21ebab7dbc7b..d93097ed781c 100644
+index 5eb6c5f24feb..21ebab7dbc7b 100644
 --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
 +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -126,11 +126,11 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 			// Fill out the descriptor
- 			BUG_ON(!desc);
- 			clear_desc(desc);
--			if (p != pcnt-1) {
-+			if (p != pcnt-1)
- 				desc->DescByteCount = 0x80000;
--			} else {
-+			else
- 				desc->DescByteCount = sg_dma_len(sg) - (p * 0x80000);
--			}
-+
- 			desc->DescBufferByteCount = desc->DescByteCount;
-
- 			desc->DescControlFlags |= DMA_DESC_CTL_IRQONERR;
-@@ -148,9 +148,9 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 			desc->DescSystemAddrMS = (dma_addr & 0xFFFFFFFF00000000UL) >> 32;
-
- 			user_ctl = acd->priv->user_ctl;
--			if (i == acd->mapped_entry_count-1 && p == pcnt-1) {
-+			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
- 				user_ctl = acd->priv->user_ctl_last;
--			}
-+
- 			desc->DescUserControlLS = (user_ctl & 0x00000000FFFFFFFFUL) >>  0;
- 			desc->DescUserControlMS = (user_ctl & 0xFFFFFFFF00000000UL) >> 32;
-
-@@ -188,9 +188,9 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 	sg_free_table(&acd->sgt);
-  err_dma_map_sg:
-  err_alloc_sg_table:
--	for (i = 0 ; i < acd->page_count ; i++) {
-+	for (i = 0 ; i < acd->page_count ; i++)
- 		put_page(acd->user_pages[i]);
--	}
-+
-  err_get_user_pages:
- 	kfree(acd->user_pages);
-  err_alloc_userpages:
-@@ -210,16 +210,14 @@ void  transfer_complete_cb(struct aio_cb_data *acd, size_t xfr_count, u32 flags)
- 	BUG_ON(!acd->ldev->pldev);
-
- 	for (i = 0 ; i < acd->page_count ; i++) {
--		if (!PageReserved(acd->user_pages[i])) {
-+		if (!PageReserved(acd->user_pages[i]))
- 			set_page_dirty(acd->user_pages[i]);
--		}
+@@ -253,7 +253,7 @@ int  kpc_dma_open(struct inode *inode, struct file *filp)
+ 		return -EBUSY; /* already open */
  	}
 
- 	dma_unmap_sg(&acd->ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, acd->ldev->dir);
-
--	for (i = 0 ; i < acd->page_count ; i++) {
-+	for (i = 0 ; i < acd->page_count ; i++)
- 		put_page(acd->user_pages[i]);
--	}
-
- 	sg_free_table(&acd->sgt);
+-	priv = kzalloc(sizeof(struct dev_private_data), GFP_KERNEL);
++	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+ 		return -ENOMEM;
 
 diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-index 25ea16a1981e..bc81afb6ade2 100644
+index ec79a8500caf..25ea16a1981e 100644
 --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
 +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-@@ -26,9 +26,8 @@ struct kpc_dma_device *kpc_dma_lookup_device(int minor)
+@@ -98,7 +98,7 @@ int  kpc_dma_probe(struct platform_device *pldev)
+ 	int rv = 0;
+ 	dev_t dev;
 
- 	mutex_lock(&kpc_dma_mtx);
- 	list_for_each_entry(c, &kpc_dma_list, list) {
--		if (c->pldev->id == minor) {
-+		if (c->pldev->id == minor)
- 			goto out;
--		}
- 	}
- 	c = NULL; // not-found case
- out:
+-	struct kpc_dma_device *ldev = kzalloc(sizeof(struct kpc_dma_device), GFP_KERNEL);
++	struct kpc_dma_device *ldev = kzalloc(sizeof(*ldev), GFP_KERNEL);
+
+ 	if (!ldev) {
+ 		dev_err(&pldev->dev, "%s: unable to kzalloc space for kpc_dma_device\n", __func__);
 ---
 2.20.1
 
