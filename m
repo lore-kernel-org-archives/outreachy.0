@@ -1,101 +1,125 @@
-X-GM-THRID: 6339156207314403328
-X-Received: by 10.129.25.211 with SMTP id 202mr6132401ywz.8.1475949819407;
-        Sat, 08 Oct 2016 11:03:39 -0700 (PDT)
+X-GM-THRID: 6807521221589073920
+X-Received: by 2002:a1c:cc0a:: with SMTP id h10mr4628118wmb.127.1585046761817;
+        Tue, 24 Mar 2020 03:46:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.23.236 with SMTP id j99ls7029738otj.7.gmail; Sat, 08 Oct
- 2016 11:03:39 -0700 (PDT)
-X-Received: by 10.200.38.232 with SMTP id 37mr3617115qtp.14.1475949819102;
-        Sat, 08 Oct 2016 11:03:39 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id 80si3136860pfw.0.2016.10.08.11.03.39
+Received: by 2002:adf:f3ca:: with SMTP id g10ls3607845wrp.11.gmail; Tue, 24
+ Mar 2020 03:46:00 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vurG8eqXWwff8KFDpUIYu0g5CebGEVZIVLyHVLSP02UKdYcm/aQOZb/70d+ZSqfHzd6zwLZ
+X-Received: by 2002:adf:dd01:: with SMTP id a1mr27471353wrm.153.1585046760637;
+        Tue, 24 Mar 2020 03:46:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585046760; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Bm82ecxwZKYKEkj5wnLTdYc65FB+yObC3evg7NaWrniBVj+HKoRww0YmbyOJfN4rL2
+         VZxPYpsYYP1yAtuvZvmxqbVbIe3NLVn8uQAxg7Agpn9fSkF+9SYJXzwVF2/Izwol50fx
+         tHh95DiWssaIL9QMWWQpfcCzH0BJ7UbhV8Tue//uXpW81uvWsti9awZkNmGxSJCzt42g
+         K1j0uHcSeTAlP0sdEupmtXlWUtDplnC3KYeXNUMSMqgG1pj7hP/cprxSJxyUdsh+9BBf
+         dTsHAcEk+mrYvOJufjBDl9zHsfKbriHIiN3NqFfxtWw5m9PjowRednZ0fwJwot3pq4Dc
+         9Wuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=n8p2QkxhdQGiGVUtAC6r0tYJVJ05PV0bV+PvLvkIiAk=;
+        b=uOvTGeVNydtm/rywlDIQHRwv8H1CCkmgSBevDJGMG7MMr0O/ZMcXhGYbVpfMYYFJlT
+         F1EoAvXreYlK4UF4yhO3i1LLqE4t0eK27op6oeXwgHeTRmjSRM0sW5HVGHB0AP9XupXC
+         eKbj6hx3OisFZHZCDLc/Dj0sIECNri5DBvctt0MvXcokSvAfJ1zI4fqWPBQH/WaGMSqS
+         ZrsS4jy5y8RnVRMFFWW8v9mD6wFGOYFcDfQsc5e7LEMqxFZXsyBocvSnacQjLhSPAYOM
+         8BZtzmjzVfoZb2ib1fSgVNdX+of9XqZaqHdvYJmzvZfAl9UzV1ZPiOP9I3Hph5/hbqYz
+         ygkA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ad7xq32G;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id i22si43461wml.0.2020.03.24.03.46.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 11:03:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 24 Mar 2020 03:46:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 128so3109859pfz.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 11:03:39 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ad7xq32G;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x342.google.com with SMTP id g62so2893443wme.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 03:46:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=6pIy4+PjbF4mY6abMXkVrd3asy9fUWVq0UzvSaZfAAA=;
-        b=oDutZlddBTTD8yOuPK+RLT0acn2mV4JGtfwlaBOCXmNJzfCm0ExVM5rCPDofx2J7rl
-         fF7WpwXTMXCeg0Wn/c45I2mvd7Rk4wyVPa3LGtntHE2Ka5XNg7VCJrL0RMGDXO2azHo/
-         Gp6XHVe25arY/4y/EOJoaVcp2uJ00QDjeVOfHvtTPjU0c8kNID0209iYQI06a5eJOeAl
-         9VtzdjnQXINqMg8CfxuytMwKEydqQyIhR+GcUm9up17GpYgTRgB3NkYgcYE1+4N39QMr
-         Nf3aLNaItZ4SZThlILsJuSCARP77o7A1Y4rOiM2I3t9G6rKOBlBUMlvGwba4BYabPOBa
-         R/dQ==
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=n8p2QkxhdQGiGVUtAC6r0tYJVJ05PV0bV+PvLvkIiAk=;
+        b=Ad7xq32GEi6C4i8KgZ49A5QvlUapA+9MVoCLJIpSbS5JFFc+Cu427r3z6E6ueJqOCZ
+         Ff6fef3VV1MoJM9F9drg8kIxXcyESkCNoLkDHDRQfiSwyoABkfPgh3L6tmdYNmq9CFo2
+         fOXatLe6LhANtaDSLflznlyUkOeckslCKskmj7UMrpGAfQmBIb/KclLud4Tw7YamUcAI
+         IRl5368UWPWEquXWt8bqVVp1h1UvkNN5pFYvjbtbvtQwsmdPi1qMoI4AeTQC1rTyQiaO
+         ax+u2W+kvCTHrCsvwHYGn4zHK3VIrioQUMf3dkS8a/DjFn+P1bP5PabOCVZHcsNlTr4/
+         EWeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=6pIy4+PjbF4mY6abMXkVrd3asy9fUWVq0UzvSaZfAAA=;
-        b=bWCEgR/To98FhbMIih0QxUxCCilKZMfIH5mMbsXFqBvaYFRaAJ6rA2+5qZgCqXIj0E
-         43gXT+MXfftYdavdA8njmkpdaQTljACCP3zO7WjCPM6ByM/FU2pKBWRg4PjVtBvaQwcJ
-         DgjbzOUilQshDA19L95D/1IiwhlGdd72GrE7L8NoLt5KvcYKyvC0WvyY3f1uHsJjPOd7
-         oIlajiKXM4q2Nw1YPSn5NbYNL09laqxqxuN8yuMEkWop97HN7izhgpX79ftKKm2nurRV
-         k/INfjcOw71Djmo3WU6wXhYg1THfp3RGl205iR5jks9nPiC8lfLFdNB89bD5facxqXcY
-         tV8g==
-X-Gm-Message-State: AA6/9Rk3IlxV90I3Tk14OzykThwTM75ro3m3sgJxDpDDjZL3fNGjwIsc43oq5ikAFY/CrQ==
-X-Received: by 10.98.71.204 with SMTP id p73mr38738813pfi.121.1475949818896;
-        Sat, 08 Oct 2016 11:03:38 -0700 (PDT)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([103.62.68.129])
-        by smtp.gmail.com with ESMTPSA id t18sm22777954pfk.29.2016.10.08.11.03.37
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 11:03:38 -0700 (PDT)
-Date: Sat, 8 Oct 2016 23:33:35 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org
-Cc: rvarsha016@gmail.com
-Subject: [PATCH] Staging: vt6655: Replace byVT3253InitTab_RFMD with
- byvt3253inittab_rfmd
-Message-ID: <20161008180335.GA5425@euri>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=n8p2QkxhdQGiGVUtAC6r0tYJVJ05PV0bV+PvLvkIiAk=;
+        b=MhmYOLohQ3XmTMZvib7xvrUu//FPtJgPdBzdjg/nlERzEnjVBpLOy/44OHHMLhPox4
+         apvW9JKFM96xL2r11BpIyPGmXcTn3UBp7l+Q8ECtQ/Qv4v6oCLnZZhBCBNgrEFQ4AOcG
+         b087Un7ByX5bWrbCUXtCh+CtLMIBUV3Xev0Z95qkMQ7xXl8h3gwWCtRMdrv594vKHkE/
+         ZACZmcvZmOXOcxXnZ96HlrWuCZPghCx6Ehci8e3s5mt4FJ3WZ0euqmhxNPIdboIGfK4s
+         2xD0t86IurGLhN08dbvJ9mVZaikWI4l7mNl60sQqawjBrnAynD9ShQlxg6X+pmbyG4jz
+         GcoA==
+X-Gm-Message-State: ANhLgQ0Ggtd7BC9+ZXQwFmPVD2ezlukzoMesYNkaluVTo1Dgb+5jt5yM
+	jKeaeUaCzbD7wrq6YSzFi7I=
+X-Received: by 2002:a1c:5641:: with SMTP id k62mr2008259wmb.82.1585046760211;
+        Tue, 24 Mar 2020 03:46:00 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from localhost.localdomain ([197.34.93.161])
+        by smtp.gmail.com with ESMTPSA id f1sm19009025wrv.37.2020.03.24.03.45.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Mar 2020 03:45:59 -0700 (PDT)
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: William Hubbs <w.d.hubbs@gmail.com>,
+	Chris Brannon <chris@the-brannons.com>,
+	Kirk Reiser <kirk@reisers.ca>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Cc: Sam Muhammed <jane.pnx9@gmail.com>
+Subject: [PATCH v3 2/2] Staging: speakup: Add identifier name to function declaration arguments.
+Date: Tue, 24 Mar 2020 06:45:49 -0400
+Message-Id: <b2a1ca962553194840d8cd2bf1f7d3174e3b1336.1585046066.git.jane.pnx9@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1585046066.git.jane.pnx9@gmail.com>
+References: <cover.1585046066.git.jane.pnx9@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.0 (2016-08-17)
+Content-Transfer-Encoding: 8bit
 
-This patch fixes the patchcheck issue of CamelCase.This
-is done by replacing byVT3253InitTab_RFMD with
- byvt3253inittab_rfmd.
+void (*read_buff_add) argument didn't have an identifier name,
+adding a name to it like the rest of all functions' arguments.
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
+Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+Reviewed-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
 ---
- drivers/staging/vt6655/baseband.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v3:
+- Adding Reviewed-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+  tag.
 
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index e739ecc..ff96c5e 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -68,7 +68,7 @@
- /*---------------------  Static Variables  --------------------------*/
- 
- #define CB_VT3253_INIT_FOR_RFMD 446
--static const unsigned char byVT3253InitTab_RFMD[CB_VT3253_INIT_FOR_RFMD][2] = {
-+static const unsigned char byvt3253inittab_rfmd[CB_VT3253_INIT_FOR_RFMD][2] = {
- 	{0x00, 0x30},
- 	{0x01, 0x00},
- 	{0x02, 0x00},
-@@ -2022,8 +2022,8 @@ bool BBbVT3253Init(struct vnt_private *priv)
- 		if (byLocalID <= REV_ID_VT3253_A1) {
- 			for (ii = 0; ii < CB_VT3253_INIT_FOR_RFMD; ii++)
- 				bResult &= BBbWriteEmbedded(priv,
--					byVT3253InitTab_RFMD[ii][0],
--					byVT3253InitTab_RFMD[ii][1]);
-+					byvt3253inittab_rfmd[ii][0],
-+					byvt3253inittab_rfmd[ii][1]);
- 
- 		} else {
- 			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
--- 
-2.7.4
+Changes in v2:
+- None.
+
+ drivers/staging/speakup/spk_types.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/speakup/spk_types.h b/drivers/staging/speakup/spk_types.h
+index a2fc72c29894..fc6a9416829c 100644
+--- a/drivers/staging/speakup/spk_types.h
++++ b/drivers/staging/speakup/spk_types.h
+@@ -189,7 +189,7 @@ struct spk_synth {
+ 	void (*flush)(struct spk_synth *synth);
+ 	int (*is_alive)(struct spk_synth *synth);
+ 	int (*synth_adjust)(struct st_var_header *var);
+-	void (*read_buff_add)(u_char);
++	void (*read_buff_add)(u_char c);
+ 	unsigned char (*get_index)(struct spk_synth *synth);
+ 	struct synth_indexing indexing;
+ 	int alive;
+---
+2.20.1
 
 
