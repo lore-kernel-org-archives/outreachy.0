@@ -1,109 +1,169 @@
 X-GM-THRID: 6807662174396219392
-X-Received: by 2002:a17:902:b617:: with SMTP id b23mr28416353pls.285.1585071078890;
-        Tue, 24 Mar 2020 10:31:18 -0700 (PDT)
+X-Received: by 2002:a9d:2004:: with SMTP id n4mr6139517ota.74.1585032376355;
+        Mon, 23 Mar 2020 23:46:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:34cb:: with SMTP id b194ls6444542pga.1.gmail; Tue, 24
- Mar 2020 10:31:17 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuouGXj9A4NUwS9Ydk7GS13TBd2Deyh5vzq8HjqcNBO3iD4iIlPiqyxVaiFnUlw4eHkzqq6
-X-Received: by 2002:a63:70e:: with SMTP id 14mr8232782pgh.290.1585071077064;
-        Tue, 24 Mar 2020 10:31:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585071077; cv=none;
+Received: by 2002:aca:4dc4:: with SMTP id a187ls1398354oib.4.gmail; Mon, 23
+ Mar 2020 23:46:15 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsitsqZkg6DzkqmLJ4PXWDEdnJR3Q86hOyikU2Y2Uu1oqlcYKYrFD0ZyKIqZPUmo1mTu79j
+X-Received: by 2002:aca:c596:: with SMTP id v144mr2397862oif.136.1585032375302;
+        Mon, 23 Mar 2020 23:46:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585032375; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lc/DaMa0XGLZfTCRAc0llwiDcQ/Drq3zlzgwwgyTwI2PQygS5CsGa6mFiUIcxhraPu
-         ii1/8G8AccIYe7RNJZkf29M9P7cd5bf5NbbiWsfdOO92PNe2T/ispt0DAr4JiCgGVxjY
-         lKHmQbsA6kw1GIeTheGUbo/FceHVY73fDUK9PaL3LF6p5l6HMpvRgUudyC9KS4ultg7Z
-         06wOY+Ik0oXEsuLuSYRtuUSP40BPvgH3SSBW17D5Gv8q8U4BD+UNN2MIKrxISSoSqHz4
-         GImdrzONWLrW3xk0xewNRlLf8mlU2R+OonZmv1CncST7D92p7ZK1ayIAxTad6RPt//5N
-         rzaw==
+        b=y/cQtJpZ26TCZVlnM6Y2l4cQ7Nc52wIyvVzs5NcflPNsjiakvjj0+tn6xpkybtDMg3
+         etWQJ0lBDvuTLKq7MoFenYZ2xdS30iEnwaZU4oKfWVd277WEtDzR6ytcYgWLgsbi/PmF
+         56RocZpqGmgEvFwIG6bqLRStFrDsQuu+T3lHi5jyp2mHXmx4VsI4XbeXJCE5fEBecnh3
+         Dl3Q6ObDaS2KJeEtoX0EFLmTnSl6gWj1Ak8XEpP5+qM47nJtsEk0rh8n3QmYm3kQ+RGW
+         LT9EGBY1RJ0GtW44tYjCoARmvfeoM3IUUV9ppdwiete3QXUtzkpKidGV3tbCtYwUbXBc
+         Nb+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=wIeRi4ao8R5b/EkoPra/HUsoNLDCY4TwY0SR/Vhrc+0=;
-        b=nzfgovDlquGwtM+Giycwce1y7RvmJfa0EnYjzTR8vn5mtKpfajMqJ+RNfQ9CJItSxE
-         KbLt5ek9j/XoBAviQxib1CGYuDTxuN6dGzZwM5x1gmJq/+kzdz20XBfXwZBFtx3Jw3Jz
-         XsVbW9nSFQzs5kA9LKF0TP6FZu9aAtrRRujnA/M2gZyMY7yO4P5U44sEUKMfSN+cPhlw
-         4BEp4DBdehr1iCLezCXEhIJSPKVmaXUUTa/8xoDIvce1168ui9DssXakWop45svW66wB
-         WgsEl1spfT9o2Y5YnMHYbXA00Nx+CgLb2Oqjy7tHCYE0vSKKdrus5p1G/w13gEGo9ZoT
-         ambg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=dxldRsVgM50y/CNdhaywWvfHOux55cFEhCcDUOIPfIc=;
+        b=EP9V1Pi4DpTsIgwxlk55QuZPRCzFaWu8zVdsIAYXLxqlZD4wqFB2EiGeupLUbEVSx/
+         I7hL19HuQieyTxJebW8gY5f7J2E641S2VtP0uNu0B6D3N1XE+SKBoPhRKD2flSRmytkc
+         xplHumyXFlMPu+kOLiYT3MH5kT7tIFacVSqsLNQTTQvaSla6uql9Fis8v+tTqO+DNFQX
+         RVcqAMChw3HIdtxcPXwu9DtXbPFasFkvA9R0LtKrVbnzD87/JtwW6njLeH1mRfZly7ST
+         BdlKtJ9ZPjkDNcQRka0HUzBCw1nxWZWxqfk2pnaVPx4s283JnqESEdywydyc9V3D6bkj
+         Ktng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=c5Q4svt2;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
-        by gmr-mx.google.com with ESMTPS id j44si145453pje.0.2020.03.24.10.31.16
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tUBTb3+e;
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbwyatt4@gmail.com>
+Received: from mail-oi1-x244.google.com (mail-oi1-x244.google.com. [2607:f8b0:4864:20::244])
+        by gmr-mx.google.com with ESMTPS id o10si1046587oic.1.2020.03.23.23.46.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Mar 2020 10:31:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 23 Mar 2020 23:46:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) client-ip=2607:f8b0:4864:20::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=c5Q4svt2;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
-	by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02OHEvCk005056;
-	Tue, 24 Mar 2020 17:31:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=wIeRi4ao8R5b/EkoPra/HUsoNLDCY4TwY0SR/Vhrc+0=;
- b=c5Q4svt25cC7qi2Iw+EfmWqN5wZPEMEtLNnFz28V0tf5c4+wbt4wMrflyu/zY4vMTQyl
- 5t86WanbVUQe/wg8moPrvNrmj5amiVxmKvB7a7QsvwT5tijnnJoS1PJAoStyqNQYwl0v
- 3u6oVIbp3jc/z5VZjopTnV1giOnD0Oy+Y+aRS8mqZO4TyympOCKfjFCXeoIu5AJh4pfk
- HvkjqMISeQyP1PPtv/tfANcypyjxyU7P8cc4jAJ7Yb6+YIBVQm+J7KegZBPaO0pfJGfo
- 89riBNdBo/PkJ69auZQ1sxSJsMULa4kzTOI/VKherv5Xo6eS561PMns8DZK2bZdETUBg uw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
-	by userp2120.oracle.com with ESMTP id 2yx8ac2ng1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 24 Mar 2020 17:31:06 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
-	by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02OHJsXd076303;
-	Tue, 24 Mar 2020 17:29:05 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
-	by aserp3030.oracle.com with ESMTP id 2yxw931bkw-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 24 Mar 2020 17:29:05 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
-	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02OHT2qd012403;
-	Tue, 24 Mar 2020 17:29:02 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 24 Mar 2020 10:29:01 -0700
-Date: Tue, 24 Mar 2020 20:28:50 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
-        Forest Bond <forest@alittletooquiet.net>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
-        Colin Ian King <colin.king@canonical.com>,
-        Malcolm Priestley <tvboxspy@gmail.com>,
-        Oscar Carter <oscar.carter@gmx.com>, devel@driverdev.osuosl.org,
-        linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/2] staging: vt6656: change function from always
- returning 0 to void
-Message-ID: <20200324172850.GG26299@kadam>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tUBTb3+e;
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-oi1-x244.google.com with SMTP id l22so6692718oii.12
+        for <outreachy-kernel@googlegroups.com>; Mon, 23 Mar 2020 23:46:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=dxldRsVgM50y/CNdhaywWvfHOux55cFEhCcDUOIPfIc=;
+        b=tUBTb3+eObvRl1e/GyketYIRgCE1+FzmKzggzqiKcr26yjwZz9zLn2jScZ8Z+KFMzC
+         DBVivRgcnTY0kWmXvqlz2FC0HZS2sJwiq5sp8yZ4S/C3T1KDE/1zTIJxZjzVqbbX/mH5
+         5NZcYlf+iRhdxU/BuW66MIp8leVkBwXYSIHFxVbXnlDBSR4qcQUOQBKP+0hmxtlcjcGx
+         1ur6/7rP1TKySS8VZ3OUKmPYHAmNjYMgNrJtCFSEPafe36X3JBGAd8t4KxPIwjPs4eU2
+         OQg+vfvrbRt/jdjYdCQy/QJ1hs4AhgkRv0p25in+SsyEoAgV0dfZKzOIhDsRWLxmCNpl
+         L60A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=dxldRsVgM50y/CNdhaywWvfHOux55cFEhCcDUOIPfIc=;
+        b=sulnmx68hIMg6SxY82aEyTvJGeoj/hesQrKKaanBSMH2th4Pnk2uU4IdWwSSLvt6ul
+         ATv7kjf4Dtnb106w5pLvpCvrKdKTi2sGuWW4gEQT3EmCaFU5vteL0f6oEZYmFrNhBN8n
+         B2oiuyYObqGxpDmaaeWoA4SwIaUbannLCqabS3OMiXgv2hR0uTiEzmlNISHAd3mBlWic
+         qKK7SZekDITYNlolwWlbRj80R2LOmZC9HSmarfA2emFJW25R0B3kbYAK5a+1xXfPamgM
+         jhCuI3DIResVmuXh+aoOqIcQUr48gMkfaHHKdLo6E4UPFfMTJYfBRNppzmK3MnBQr0SS
+         D40A==
+X-Gm-Message-State: ANhLgQ355tkd/dn9t5UuxZg5un0msSOxSIZVGo5GzI947VouMrMH/Ch8
+	hky4qE/oizpR79WIMIUgEWIrz/Q5QpTfGA==
+X-Received: by 2002:aca:d503:: with SMTP id m3mr2217585oig.165.1585032374928;
+        Mon, 23 Mar 2020 23:46:14 -0700 (PDT)
+Return-Path: <jbwyatt4@gmail.com>
+Received: from localhost.localdomain ([47.144.161.84])
+        by smtp.gmail.com with ESMTPSA id x1sm2910134ota.7.2020.03.23.23.46.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Mar 2020 23:46:14 -0700 (PDT)
+From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Julia Lawall <julia.lawall@inria.fr>,
+	Forest Bond <forest@alittletooquiet.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
+	Colin Ian King <colin.king@canonical.com>,
+	Malcolm Priestley <tvboxspy@gmail.com>,
+	Oscar Carter <oscar.carter@gmx.com>,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Subject: [PATCH 2/2] staging: vt6656: change unused int return value to void
+Date: Mon, 23 Mar 2020 23:45:45 -0700
+Message-Id: <20200324064545.1832227-3-jbwyatt4@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200324064545.1832227-1-jbwyatt4@gmail.com>
 References: <20200324064545.1832227-1-jbwyatt4@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200324064545.1832227-1-jbwyatt4@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9570 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 spamscore=0 bulkscore=0
- adultscore=0 mlxscore=0 malwarescore=0 mlxlogscore=937 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2003240089
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9570 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 suspectscore=0 priorityscore=1501 malwarescore=0
- mlxscore=0 adultscore=0 phishscore=0 impostorscore=0 mlxlogscore=999
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2003240089
+Content-Transfer-Encoding: 8bit
 
-Fold these two patches together so its just one patch.
+Change unused int function return value to void from previous patch.
 
-regards,
-dan carpenter
+Update function documentation to remove mention of return value.
+
+Remove if statement check of the only usage of function in the
+kernel. Replace with calling the function.
+
+Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+ drivers/staging/vt6656/card.c     | 7 ++-----
+ drivers/staging/vt6656/card.h     | 2 +-
+ drivers/staging/vt6656/main_usb.c | 4 +---
+ 3 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
+index 05b57a2489a0..4be7fca32796 100644
+--- a/drivers/staging/vt6656/card.c
++++ b/drivers/staging/vt6656/card.c
+@@ -715,11 +715,8 @@ int vnt_radio_power_off(struct vnt_private *priv)
+  *      priv         - The adapter to be turned on
+  *  Out:
+  *      none
+- *
+- * Return Value: 0
+- *
+  */
+-int vnt_radio_power_on(struct vnt_private *priv)
++void vnt_radio_power_on(struct vnt_private *priv)
+ {
+ 	vnt_exit_deep_sleep(priv);
+ 
+@@ -739,7 +736,7 @@ int vnt_radio_power_on(struct vnt_private *priv)
+ 
+ 	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
+ 
+-	return 0;
++	return;
+ }
+ 
+ void vnt_set_bss_mode(struct vnt_private *priv)
+diff --git a/drivers/staging/vt6656/card.h b/drivers/staging/vt6656/card.h
+index 75cd340c0cce..fcab6b086e71 100644
+--- a/drivers/staging/vt6656/card.h
++++ b/drivers/staging/vt6656/card.h
+@@ -40,7 +40,7 @@ void vnt_update_next_tbtt(struct vnt_private *priv, u64 tsf,
+ u64 vnt_get_next_tbtt(u64 tsf, u16 beacon_interval);
+ u64 vnt_get_tsf_offset(u8 rx_rate, u64 tsf1, u64 tsf2);
+ int vnt_radio_power_off(struct vnt_private *priv);
+-int vnt_radio_power_on(struct vnt_private *priv);
++void vnt_radio_power_on(struct vnt_private *priv);
+ u8 vnt_get_pkt_type(struct vnt_private *priv);
+ void vnt_set_bss_mode(struct vnt_private *priv);
+ 
+diff --git a/drivers/staging/vt6656/main_usb.c b/drivers/staging/vt6656/main_usb.c
+index 8e7269c87ea9..8214427f5ee3 100644
+--- a/drivers/staging/vt6656/main_usb.c
++++ b/drivers/staging/vt6656/main_usb.c
+@@ -370,9 +370,7 @@ static int vnt_init_registers(struct vnt_private *priv)
+ 	if (ret)
+ 		goto end;
+ 
+-	ret = vnt_radio_power_on(priv);
+-	if (ret)
+-		goto end;
++	vnt_radio_power_on(priv);
+ 
+ 	dev_dbg(&priv->usb->dev, "<----INIbInitAdapter Exit\n");
+ 
+-- 
+2.25.1
 
 
