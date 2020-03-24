@@ -1,140 +1,131 @@
 X-GM-THRID: 6807884729429262336
-X-Received: by 2002:a1c:2d8a:: with SMTP id t132mr8332440wmt.83.1585084943508;
-        Tue, 24 Mar 2020 14:22:23 -0700 (PDT)
+X-Received: by 2002:a1c:26c4:: with SMTP id m187mr7691338wmm.43.1585084199981;
+        Tue, 24 Mar 2020 14:09:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:a98b:: with SMTP id s133ls85814wme.3.gmail; Tue, 24 Mar
- 2020 14:22:21 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvFIQJgba6v6DkMmW5AyfsNgsJ7HynAsGKeBxhP39NijWZvcRNR6lStuDpMSuaseoLG01+0
-X-Received: by 2002:a7b:caf2:: with SMTP id t18mr10157wml.80.1585084941570;
-        Tue, 24 Mar 2020 14:22:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585084941; cv=none;
+Received: by 2002:adf:f3ca:: with SMTP id g10ls4326365wrp.11.gmail; Tue, 24
+ Mar 2020 14:09:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvAzgeXvo3GvTLu830J8L7QLGIp0Euz9JwefO81S1ku3/5JX2omIdqq+62h8ArxB2DqB0qh
+X-Received: by 2002:adf:f4d1:: with SMTP id h17mr8243774wrp.276.1585084198682;
+        Tue, 24 Mar 2020 14:09:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585084198; cv=none;
         d=google.com; s=arc-20160816;
-        b=x6JeuxK6UTP3DH9KQkqNu6NeCWrqaAQbfs6WpfqAw/tf8ya0lN1cwZVgmQpWgj0YcH
-         B4MwlRPzf1jX9Lz3OhM3z6WCBEE4zLk427KhJePUzuMOvNowWwnpATUKiKcB9+JFkLY+
-         Z18sGmBL0rt6BygTx5cLU38FQb6l+mfGsTTulIoOxvKRlJhGKjwHNs8eTHYL/WAYCVLJ
-         0a6JGoh2NvC1R9xuC5ZFIfnZCJyz8Fh7ilW3YEAtG+C6S8FIMuJ9iDdQjH0yhqAvCya4
-         LRF/Hh05mWrw1vv14mRtTaHm8KOnoMQnIW4misiSbuX+tKiBkiqBqP+rOrcjqGBPW+GM
-         o+yw==
+        b=dpXll1qYFYHEsjU2aoa0pth1XfK+4n54mmh2d5flY6MJW7/GO4OWT5ariALnZo5oOf
+         bSW64wDK1EG65x/LBEEZrTiYoVZSur+j3lGZqDdbnJtY2EWkck8bjk267nHEMrw4oEI1
+         aDOiouJYUr8UjdBbRyZOm8kNLLA+ZkBnQY55U5+ZHV22UElFPq6NVfD/2i43B3shc4jA
+         d7WHmJsz3LO/pqXY8nRaVuJzrlMy5dBwDZYtUXweCTxr8MkKd0X2eoY4EDXV0g8KvC6G
+         Xlk3aLAv2dO5hb+e6BpPGRhdS+KAUaM2Ow0YbKeEaqaPb/+tlsPF7BknkT4O/Czau8N5
+         41nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=E6qHr+52sZYWoKz6aGZdedqDRTh+Yx+CU30h7JszRGI=;
-        b=CgP8X+F09f+s1L8I65zfEduo6qwBuSugAdwBC2RW06DwSSBnSBFbIwGKQL9KyTVGUh
-         Rk3GdW1yHBOAcA9I5cQGRYWOGhehewa3JJNw4OT5e8CqNmB5cYQorakLT6yjVbxgHecM
-         NOGU6yUXVBCOpS2+be9/jJY+X/zms8z38UNk164yOAJWEg9TPq1AiELuIzICmgGSp1/B
-         rFA62NNL+STVUp+PJLgqek2uPDHyjRdH+SWR1649Izj8uSc5XOFtefV4OoLxOeZoBOZR
-         DPlPRLLysF9y3Q1ogMio48H3sU/BuVr7vAJi/j6RCgpk5VziDrljAGKiC21oLf78amNx
-         B4sw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=PgPCMeOyk0eXirkNjgvEsj+lVvgulZrJhraF7rVgHu4=;
+        b=cfAb11CM4S2fBRpwxM2stOQmTzfhf2gCePbvOGjyC9wF5bZV0HcMSgl4u/hKj0zQ8I
+         SF5oEuqvG5WgG8Hjl5kInvcGbO41+W/C6OHUs6wqTr55eX1oKGtRX++B+m+4a4g+RkSu
+         y6+7i4/1M/Epon3vZ7JJrSnS0xwgn1YQbBxJZ4diIbGjTbABWyd/7WRhq6ZqY5ZcJh09
+         TnugLjIh1tOpINHJcuKnCKg5A/+RSPtTv3MCdaPkqdOLHjTgWEbRGxeWpRcCOMj+PkWd
+         4/N+ameU2vdhVUJHBtlUaRCAkVi92dPGT/yaaCn0aIkSuTFRIh/m3ueeEh6IuQoubh0r
+         0++g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id l8si286758wrr.1.2020.03.24.14.22.21
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ti7C89wo;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
+        by gmr-mx.google.com with ESMTPS id g78si275731wmg.0.2020.03.24.14.09.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Mar 2020 14:22:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 24 Mar 2020 14:09:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.72,301,1580770800"; 
-   d="scan'208";a="343544199"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 24 Mar 2020 22:22:20 +0100
-Date: Tue, 24 Mar 2020 22:22:20 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Sam Muhammed <jane.pnx9@gmail.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 4/6] Staging: kpc2000: kpc_dma: Use
- spaces around operators.
-In-Reply-To: <d881bf9d5c442ae5a0d6669624355f7af73f5fac.1585082158.git.jane.pnx9@gmail.com>
-Message-ID: <alpine.DEB.2.21.2003242221390.3306@hadrien>
-References: <cover.1585082157.git.jane.pnx9@gmail.com> <d881bf9d5c442ae5a0d6669624355f7af73f5fac.1585082158.git.jane.pnx9@gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ti7C89wo;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x341.google.com with SMTP id b12so112972wmj.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 24 Mar 2020 14:09:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=PgPCMeOyk0eXirkNjgvEsj+lVvgulZrJhraF7rVgHu4=;
+        b=Ti7C89wovXDCTKV00hrBgsmcpD0b/84QeNxkO9FtVGv8zEIS3AqDdsW+BvhOul+Jj9
+         2q8hvMGTOu5KWh3rs/RFqnArwa5WwYRnI4+H8oWPPnty4i/9TlExRY2JIw+9e71q3J1g
+         AjhyarBE88Xf6QvXKDVrUUzBNvmmi8Zew5n4HzRxgzCJV+Rb/FUA7jWP1hfd6UTNVTgH
+         FSGEEiSDn8mcxZpKJeaCq+WHEc3UEtRzOzKxllJhh/FfjXaNqYKRi3NVPtticfT9/58D
+         1M2s2CllK54nbdjSCLwsrvZ7Mqm//3SMWzd5x+DxXIcLEqQ7DTkN4/hsK2MeLx6nn5Qr
+         Ecgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=PgPCMeOyk0eXirkNjgvEsj+lVvgulZrJhraF7rVgHu4=;
+        b=XrnPc5aG9YC776lsZ5X7VpNb+q0+MDvjVo0BwZ9IxSD4HBISF8dX1sWGdbtkZ7VPpg
+         DMSosQ38NzJaPcE5FhftJm8VGc+cpzX2xyF+7j8rB658E7kFYyhouE7cd8HDruh64+9L
+         bWjGLD0FtKZxNyl6kCCac+GOA/gRf8ATDMChZLrca8sWnub8BhDLfZHktzw/y/yz4nUC
+         T9vTay0ca8zSAvOno1jvIdFWZS4jgsMKQmtQjXqtjE19sgXk0Li7eR6Gh3Czq5Xxle3L
+         zBe//HSQBds7OMQ2fY88VjQszUhxMDVGCDjzbx9JcXskhQFfEHC4DtMg8lfnBFDkkWb8
+         isSQ==
+X-Gm-Message-State: ANhLgQ0nCyH6DGDWc/J62IjDPo54TiHzqOxOGMvO3op8G8DbWPgtffZF
+	CegNTR+6Bo2iqVS9K9Ng4lo=
+X-Received: by 2002:a7b:cd02:: with SMTP id f2mr7626112wmj.97.1585084198475;
+        Tue, 24 Mar 2020 14:09:58 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from localhost.localdomain ([197.34.93.161])
+        by smtp.gmail.com with ESMTPSA id t16sm27758455wra.17.2020.03.24.14.09.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Mar 2020 14:09:58 -0700 (PDT)
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Cc: Sam Muhammed <jane.pnx9@gmail.com>
+Subject: [PATCH 6/6] Staging: kpc2000: kpc_dma: Use the SPDK comment style.
+Date: Tue, 24 Mar 2020 17:09:19 -0400
+Message-Id: <20a98d0635bb41b592c99c188ceb8b634cc402c1.1585082158.git.jane.pnx9@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1585082157.git.jane.pnx9@gmail.com>
+References: <cover.1585082157.git.jane.pnx9@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+SPDK-License-Identifier comment should have this form
+// SPDX-License-Identifier: <GPL-...>
 
+Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+---
+ drivers/staging/kpc2000/kpc_dma/dma.c            | 2 +-
+ drivers/staging/kpc2000/kpc_dma/fileops.c        | 2 +-
+ drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-On Tue, 24 Mar 2020, Sam Muhammed wrote:
-
-> Cleanup Checkpatch.pl CHECKs about missing
-> spaces around multiple operators.
->
-> Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
-> ---
->  drivers/staging/kpc2000/kpc_dma/fileops.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> index d93097ed781c..e599ae1bdfd0 100644
-> --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-> +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> @@ -19,7 +19,7 @@ static inline
->  unsigned int  count_pages(unsigned long iov_base, size_t iov_len)
->  {
->  	unsigned long first = (iov_base             & PAGE_MASK) >> PAGE_SHIFT;
-> -	unsigned long last  = ((iov_base+iov_len-1) & PAGE_MASK) >> PAGE_SHIFT;
-> +	unsigned long last  = ((iov_base + iov_len - 1) & PAGE_MASK) >> PAGE_SHIFT;
-
-It seems that the & operators were lined up before and that is not the
-case any more.
-
-julia
-
->
->  	return last - first + 1;
->  }
-> @@ -83,7 +83,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
->  	}
->
->  	// Allocate and setup the sg_table (scatterlist entries)
-> -	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE-1), iov_len, GFP_KERNEL);
-> +	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
->  	if (rv) {
->  		dev_err(&priv->ldev->pldev->dev, "Couldn't alloc sg_table (%ld)\n", rv);
->  		goto err_alloc_sg_table;
-> @@ -126,7 +126,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
->  			// Fill out the descriptor
->  			BUG_ON(!desc);
->  			clear_desc(desc);
-> -			if (p != pcnt-1)
-> +			if (p != pcnt - 1)
->  				desc->DescByteCount = 0x80000;
->  			else
->  				desc->DescByteCount = sg_dma_len(sg) - (p * 0x80000);
-> @@ -136,7 +136,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
->  			desc->DescControlFlags |= DMA_DESC_CTL_IRQONERR;
->  			if (i == 0 && p == 0)
->  				desc->DescControlFlags |= DMA_DESC_CTL_SOP;
-> -			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
-> +			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
->  				desc->DescControlFlags |= DMA_DESC_CTL_EOP | DMA_DESC_CTL_IRQONDONE;
->
->  			desc->DescCardAddrLS = (card_addr & 0xFFFFFFFF);
-> @@ -148,13 +148,13 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
->  			desc->DescSystemAddrMS = (dma_addr & 0xFFFFFFFF00000000UL) >> 32;
->
->  			user_ctl = acd->priv->user_ctl;
-> -			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
-> +			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
->  				user_ctl = acd->priv->user_ctl_last;
->
->  			desc->DescUserControlLS = (user_ctl & 0x00000000FFFFFFFFUL) >>  0;
->  			desc->DescUserControlMS = (user_ctl & 0xFFFFFFFF00000000UL) >> 32;
->
-> -			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
-> +			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
->  				desc->acd = acd;
->
->  			dev_dbg(&priv->ldev->pldev->dev, "  Filled descriptor %p (acd = %p)\n", desc, desc->acd);
-> ---
-> 2.20.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/d881bf9d5c442ae5a0d6669624355f7af73f5fac.1585082158.git.jane.pnx9%40gmail.com.
->
+diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
+index 5ccc93ed2b61..452a3f7c835d 100644
+--- a/drivers/staging/kpc2000/kpc_dma/dma.c
++++ b/drivers/staging/kpc2000/kpc_dma/dma.c
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
++// SPDX-License-Identifier: GPL-2.0+
+ #include <linux/init.h>
+ #include <linux/module.h>
+ #include <linux/types.h>
+diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+index e599ae1bdfd0..15089a8f78c0 100644
+--- a/drivers/staging/kpc2000/kpc_dma/fileops.c
++++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
++// SPDX-License-Identifier: GPL-2.0+
+ #include <linux/module.h>
+ #include <linux/init.h>
+ #include <linux/mm.h>
+diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+index 0bdd345cc8c8..c3b30551e0ca 100644
+--- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
++++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
++// SPDX-License-Identifier: GPL-2.0+
+ #include <linux/init.h>
+ #include <linux/module.h>
+ #include <linux/types.h>
+---
+2.20.1
 
