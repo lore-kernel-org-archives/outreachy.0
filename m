@@ -1,143 +1,161 @@
 X-GM-THRID: 6807884729429262336
-X-Received: by 2002:ac8:7288:: with SMTP id v8mr9495766qto.31.1585530179093;
-        Sun, 29 Mar 2020 18:02:59 -0700 (PDT)
+X-Received: by 2002:a05:600c:257:: with SMTP id 23mr3847760wmj.155.1585146459999;
+        Wed, 25 Mar 2020 07:27:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:290d:: with SMTP id y13ls3936729qty.10.gmail; Sun, 29
- Mar 2020 18:02:58 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsibRZtUZ9YCL8BPyE73tYYQqdIAgTftesfKUGCsLrQAKx/xja6Y0yugDkbz4BjTUr+8Af2
-X-Received: by 2002:ac8:76c4:: with SMTP id q4mr9805811qtr.375.1585530177973;
-        Sun, 29 Mar 2020 18:02:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585530177; cv=none;
+Received: by 2002:a5d:56d2:: with SMTP id m18ls868310wrw.3.gmail; Wed, 25 Mar
+ 2020 07:27:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsaDlHqLdSciWrw6r0rtJLS5C3h529ZOO8GJgy8Hb4HUi0BWTQ6GEy47QniK3BV/NtbzGC5
+X-Received: by 2002:adf:bb06:: with SMTP id r6mr3831552wrg.324.1585146458575;
+        Wed, 25 Mar 2020 07:27:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585146458; cv=none;
         d=google.com; s=arc-20160816;
-        b=oawlBOZNQ8oY12QoWQVoYSKsbGKwfCFbDhYFn+S3rUM4grXTjBcgmqtJwsqGJu4WsU
-         oje11SN5Mbj9PuUThZ4DkXOh/zGU31565lm+uZrh4MNKid2hPGYICwJyzDIfOCqscpzJ
-         mnQIi8x+p0u/2pyW87q9H7LyHnnFwFRlR1oS8toge2DUaxjZGPcv+6wC8BtSBxxjBE6p
-         87SDICd9mO6DrXnZTKv5kQQ0CUUGztisXs1CwZdWSn7nBPEnyBotOe4G0RMogDDqK1aY
-         VxXwOFtrt4W7ND+R+KUDixicT7yHS3I88jQX84tam282oAsCwoN3YqzSIBreJ7Enighu
-         8BXg==
+        b=RtXN33XDbyGJ3hv6PIiXX45apYTsQhXfGI9q1nvV6htUn3siEvS1Io3DTCt+CVk9ZD
+         IqZXTzkKHaL+NBORvpG0MLBHNrjEVQyG6+sd/XAVjp3UmTsaTRNeXt0knZziHm4TY9m0
+         OMREo0egNnMzMjdPvTcFkzrCrcuML4uVhbm/gyvPMB8DadxLbXY7AdPgByHls9JfcF2d
+         wxN29gTbVqdRMgrIms+mbt33XHNePlyYLg6bM3SS3U3dXcEzIRpqpjZdOEXvgMpRzTf1
+         iIvVtq+JheAHyfuOjAad3P+umWVixOoTloioBU6n2rbsXyiZdnZA6zK4VUdPJYAWo4VO
+         6LMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=A00MA2znYDYyZSe5CU9EFJEgjZVU1bM3pjnnC4rTXTk=;
-        b=lGYrHbfaq4rVr89urdODXMEkalWBblOy3kF4dGk2PTmvc/LWgPQB1bYzv1qjFj2qT+
-         +eCQJ7KMkRzI+QKsx9vTEVyC8PiO1qySJXrCvjj6uj9SNUl7tmJOydvTDbiBvt2LEUvK
-         5Zqihtv2jTy+/vTwKotxvjLsfkqJpuK3LwOPJG2iiBJv58IeDtW4Vz5OTdv1emrKEatD
-         CvpGyNlzEheA8f5RdyTny72NGpxFxK0vw3b7ACaPsPc/grGh3khixuiDad7/8gNkoh4+
-         oCuZ1SdPTfHoz1B9hdnRYlzzuNS4FNm6I4/m89urt1cGeVp1nmKwqxbSRmwfu1aO++PY
-         T6Aw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=2hRt03I8drrQuUGYgB/HyhA2ZxjUuGJQS+gaNF6HLO4=;
+        b=stXTTK4nRfs9PhPw8vNfYXXZR+TSmfGCOWfEjDyHFhQd3LR2OZ9TCc0qDgx55Siipv
+         P9/+1gArKfYtKWbKDr8LZa5U63aR2UwLiDZKuy3/kAqlXzNLua8E7NpT70Upd6sEuU/V
+         ew0ZR8boPoYW2VkjMXipazhgdnune/wybifptWdZ6D6Hj+aE/6zFRSwJlpgzgGqbxf4t
+         JL54sYcsfobztYQMYsyrareHnHbNXl7ye7RDguc2h6nUH4RneK0E+655QbcC0WAZ2n0M
+         qe3LRC1pb3/ttgacpwjRz6wUrfRwll6uJ56+i0tfsLlqntmYFx1zWLu8dUsrWGVmsYzD
+         +Vqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JXejEUHm;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id t24si914650qtt.1.2020.03.29.18.02.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pu16KU+Z;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
+        by gmr-mx.google.com with ESMTPS id v12si1258519wrp.5.2020.03.25.07.27.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 29 Mar 2020 18:02:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2020 07:27:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JXejEUHm;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585530177;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=A00MA2znYDYyZSe5CU9EFJEgjZVU1bM3pjnnC4rTXTk=;
-	b=JXejEUHmm9Qclhot54nARoVYjUxcZhuFHI1t7nxyZyGMPpc03EhdndmsiWWJrlswcJvO0F
-	j3N7Hc+5hB4B5hFJFEVPnWk5UJynBH459N6A7IqvZYKA2jbjESdIlrbKv6vb89xmOLpm/8
-	uPis9mSypyLeJqeOjy+irH0aeIioitk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-239-J8s3TkvtNN-uUsqfR5nDkg-1; Sun, 29 Mar 2020 21:02:52 -0400
-X-MC-Unique: J8s3TkvtNN-uUsqfR5nDkg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 30C3F107ACCA;
-	Mon, 30 Mar 2020 01:02:51 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.4])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3283F60FC1;
-	Mon, 30 Mar 2020 01:02:48 +0000 (UTC)
-Date: Mon, 30 Mar 2020 03:02:44 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Sam Muhammed <jane.pnx9@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Julia Lawall
- <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 4/6] Staging: kpc2000: kpc_dma: Use
- spaces around operators.
-Message-ID: <20200330030244.5a906bdd@elisabeth>
-In-Reply-To: <633ff2c9781a296317fe5004e64ea6a6d3a08c80.camel@gmail.com>
-References: <cover.1585082157.git.jane.pnx9@gmail.com>
-	<d881bf9d5c442ae5a0d6669624355f7af73f5fac.1585082158.git.jane.pnx9@gmail.com>
-	<alpine.DEB.2.21.2003242221390.3306@hadrien>
-	<44ca99f66316430555a2da1379283ca846acb027.camel@gmail.com>
-	<20200325123643.GA3454907@kroah.com>
-	<633ff2c9781a296317fe5004e64ea6a6d3a08c80.camel@gmail.com>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pu16KU+Z;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x342.google.com with SMTP id z5so2675357wml.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 07:27:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=2hRt03I8drrQuUGYgB/HyhA2ZxjUuGJQS+gaNF6HLO4=;
+        b=pu16KU+ZHWHZVoyXpItCOUc6NU2PWd5DEUAcmjn3sILl/Q3jJH+BfQwRY+8BxgRxVg
+         eOdvq5mnY2t5/1cbdkreK2iBqTHMls8e7Pd4UQmbxGQi/iXUQcHl2gJl6aIu71XFUDcu
+         FejhFcVtSm11mPkjITiFPyNIA7O89jHzLspdLXoK43W7gUQyKBnKVgLK0w9Cv7V24iak
+         BFwbyfDsH9BSkSyXJHd5Ctjuf11KDilTlFHvkv6KdaGRZQ7AznjiKFz8IJEMggjpiODc
+         idCNJR08eJWWWkniNAd5+ie4DKwb2FPkj6V9Vq7GlheyV0TUXfKkDjQTQToPShuqBuqN
+         XMRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=2hRt03I8drrQuUGYgB/HyhA2ZxjUuGJQS+gaNF6HLO4=;
+        b=qULIERapZGKvpP+WSdft2FNcaZosUC8ebay2sN0FZhiqIsICKONVzXBIdK7tZu2+F4
+         WeFEROzbUR1BsemmhWxhHWdQ0QFT1eeHQMmM8jNLzgpAC1QrTCThlz0k5FT9HQ2pnVZQ
+         uEH7ouuL9jLuBXYzxZ8AIfOu9TtzeHIEdpse9uSu532BtC8hc9CTV7o3e3y5dMloqG8j
+         Igrzv7dhZFUHR8hDXcnPknZ+DP9rUoKoH2S0d0fhq6EjaIlyw1QZbVwImBev+hCXncSW
+         oY+mSWdMV/F52zs+zg0/62dNVZdUI++f/7yU3MROjE3jW6qMJYyScG50RKfCsUsCDvKE
+         IToQ==
+X-Gm-Message-State: ANhLgQ1LRfmpMYTlL629dGdNcYhDowzuhXEpr+6h0oO5uBhEuKmuTlF9
+	BWxaKuR307QpS1Pjg6mMXVIkfM/f7A8=
+X-Received: by 2002:a1c:790f:: with SMTP id l15mr3749112wme.92.1585146458368;
+        Wed, 25 Mar 2020 07:27:38 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from localhost.localdomain ([197.34.86.140])
+        by smtp.gmail.com with ESMTPSA id b7sm13098778wrn.67.2020.03.25.07.27.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Mar 2020 07:27:38 -0700 (PDT)
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com
+Cc: Sam Muhammed <jane.pnx9@gmail.com>
+Subject: [PATCH v2 7/7] Staging: kpc2000: kpc_dma: Use spaces around operators.
+Date: Wed, 25 Mar 2020 10:26:42 -0400
+Message-Id: <22025abc8f8f3452c2d886e8faf1fe0532e8bb1d.1585143581.git.jane.pnx9@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1585143581.git.jane.pnx9@gmail.com>
+References: <cover.1585143581.git.jane.pnx9@gmail.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Wed, 25 Mar 2020 08:57:30 -0400
-Sam Muhammed <jane.pnx9@gmail.com> wrote:
+Cleanup Checkpatch.pl CHECKs about missing
+spaces around multiple operators.
 
-> On Wed, 2020-03-25 at 13:36 +0100, Greg Kroah-Hartman wrote:
-> > On Wed, Mar 25, 2020 at 04:00:36AM -0400, Sam Muhammed wrote:  
-> > > On Tue, 2020-03-24 at 22:22 +0100, Julia Lawall wrote:  
-> > > > 
-> > > > On Tue, 24 Mar 2020, Sam Muhammed wrote:
-> > > >   
-> > > > > Cleanup Checkpatch.pl CHECKs about missing
-> > > > > spaces around multiple operators.
-> > > > >
-> > > > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
-> > > > > ---
-> > > > >  drivers/staging/kpc2000/kpc_dma/fileops.c | 12 ++++++------
-> > > > >  1 file changed, 6 insertions(+), 6 deletions(-)
-> > > > >
-> > > > > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > > > index d93097ed781c..e599ae1bdfd0 100644
-> > > > > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > > > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > > > @@ -19,7 +19,7 @@ static inline
-> > > > >  unsigned int  count_pages(unsigned long iov_base, size_t iov_len)
-> > > > >  {
-> > > > >  	unsigned long first = (iov_base             & PAGE_MASK) >> PAGE_SHIFT;
-> > > > > -	unsigned long last  = ((iov_base+iov_len-1) & PAGE_MASK) >> PAGE_SHIFT;
-> > > > > +	unsigned long last  = ((iov_base + iov_len - 1) & PAGE_MASK) >> PAGE_SHIFT;  
-> > > > 
-> > > > It seems that the & operators were lined up before and that is not the
-> > > > case any more.
-> > > >   
-> > > 
-> > > Yes, why they were aligned anyways?   
-> > 
-> > Because it is easier to understand the code that way, don't you think?
-> >   
-> My bad, iam not used to see the patterns yes, so aligning the first
-> statement to the second would be a different change? or since a change
-> is made anyways they both would go together? 
+Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+---
+Changes in v2:
+- Recover a properly aligned code in count_pages()
+  that was messed up in the previous revision.
 
-I think yes, this should be a single patch, because:
+ drivers/staging/kpc2000/kpc_dma/fileops.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-1. realigning the first line is needed only as you edit the second one,
+diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
+index 8c7859ed1237..7caabdd77bbf 100644
+--- a/drivers/staging/kpc2000/kpc_dma/fileops.c
++++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
+@@ -18,8 +18,8 @@
+ static inline
+ unsigned int  count_pages(unsigned long iov_base, size_t iov_len)
+ {
+-	unsigned long first = (iov_base             & PAGE_MASK) >> PAGE_SHIFT;
+-	unsigned long last  = ((iov_base+iov_len-1) & PAGE_MASK) >> PAGE_SHIFT;
++	unsigned long first = (iov_base                 & PAGE_MASK) >> PAGE_SHIFT;
++	unsigned long last  = ((iov_base + iov_len - 1) & PAGE_MASK) >> PAGE_SHIFT;
 
-2. with two patches the alignment would be "broken" after the first one
-   (this is especially a hard rule with build failures and warnings, but
-   the concept usually applies to these cases as well)
+ 	return last - first + 1;
+ }
+@@ -84,7 +84,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 	}
 
-...however, why would you ask this question and anyway re-post the
-series 89 minutes later? Mind that this is a good way to get your
-patches ignored by some maintainers.
+ 	// Allocate and setup the sg_table (scatterlist entries)
+-	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE-1), iov_len, GFP_KERNEL);
++	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
+ 	if (rv) {
+ 		dev_err(&priv->ldev->pldev->dev, "Couldn't alloc sg_table (%ld)\n", rv);
+ 		goto err_alloc_sg_table;
+@@ -127,7 +127,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 			// Fill out the descriptor
+ 			BUG_ON(!desc);
+ 			clear_desc(desc);
+-			if (p != pcnt-1)
++			if (p != pcnt - 1)
+ 				desc->DescByteCount = 0x80000;
+ 			else
+ 				desc->DescByteCount = sg_dma_len(sg) - (p * 0x80000);
+@@ -137,7 +137,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 			desc->DescControlFlags |= DMA_DESC_CTL_IRQONERR;
+ 			if (i == 0 && p == 0)
+ 				desc->DescControlFlags |= DMA_DESC_CTL_SOP;
+-			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
++			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
+ 				desc->DescControlFlags |= DMA_DESC_CTL_EOP | DMA_DESC_CTL_IRQONDONE;
 
--- 
-Stefano
+ 			desc->DescCardAddrLS = (card_addr & 0xFFFFFFFF);
+@@ -149,13 +149,13 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
+ 			desc->DescSystemAddrMS = (dma_addr & 0xFFFFFFFF00000000UL) >> 32;
 
+ 			user_ctl = acd->priv->user_ctl;
+-			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
++			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
+ 				user_ctl = acd->priv->user_ctl_last;
+
+ 			desc->DescUserControlLS = (user_ctl & 0x00000000FFFFFFFFUL) >>  0;
+ 			desc->DescUserControlMS = (user_ctl & 0xFFFFFFFF00000000UL) >> 32;
+
+-			if (i == acd->mapped_entry_count-1 && p == pcnt-1)
++			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
+ 				desc->acd = acd;
+
+ 			dev_dbg(&priv->ldev->pldev->dev, "  Filled descriptor %p (acd = %p)\n", desc, desc->acd);
+---
+2.20.1
 
