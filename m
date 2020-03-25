@@ -1,81 +1,112 @@
 X-GM-THRID: 6808044843867045888
-X-Received: by 2002:a17:90a:1946:: with SMTP id 6mr5355122pjh.42.1585161400591;
-        Wed, 25 Mar 2020 11:36:40 -0700 (PDT)
+X-Received: by 2002:a63:6ac1:: with SMTP id f184mr3461963pgc.212.1585145858628;
+        Wed, 25 Mar 2020 07:17:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:9308:: with SMTP id p8ls2492692pjo.0.gmail; Wed, 25
- Mar 2020 11:36:39 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvO2UQdRG2PGA5CrIwFXgIz6Gv08jm8OhXbOJXXmzBkUU6Tljqtz6IueeSskT/7S6dh2yXs
-X-Received: by 2002:a17:90b:1b04:: with SMTP id nu4mr5103149pjb.81.1585161399109;
-        Wed, 25 Mar 2020 11:36:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585161399; cv=none;
+Received: by 2002:a17:902:b58e:: with SMTP id a14ls1792884pls.5.gmail; Wed, 25
+ Mar 2020 07:17:37 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vubJYC2M42RDmsvjJuLr7c0rEFDUeWSPL1ZZh1wsXN5q2NwzaqrduiVf5yxkDrC/rAko2q4
+X-Received: by 2002:a17:90a:d585:: with SMTP id v5mr4068025pju.4.1585145857116;
+        Wed, 25 Mar 2020 07:17:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585145857; cv=none;
         d=google.com; s=arc-20160816;
-        b=IpPj20eAkNCglbTqJXtLmkgpIcu/hjkOIFLNUh9uWRu02g+0KMYC3lO9qwgIejVvhG
-         yWiQRV3xVAywnUIXfoM4ZKJnSkK+UYkfngYInQIMzaknl8L0hH1cABc5uMyT0IeswXng
-         SVw3B9NquMvMGv9kHIoBPGvOFfA1WYwu20ZZzSa5mxSUSOQ5OYq5LtfLrc41lK276KyD
-         Sm6P46GJkwy2Iwj4w27KkeyC4aSLYrJ6eIfe8Mb/Boy/emVEY08Z7kkV2ZJY36B8VLR7
-         lXRoUQ1gPB9vN8iCQ0bAecA5mqqcDfG1z3UK9YXDqjgSAAn+uKAGUXEVxWP4jbpxaOMc
-         H7Ew==
+        b=kAt+THfUfDFnFS8KFFx15eGwHwrQZCMfgeQMAVSfIg0ab9afbGsmnJFPVK/uBgjWug
+         p1w2tq5aBLR3K310+IJ1G6nc2dSYAhLT5JuK+xzfkVOUUw37Udl/GP4OORSL/nRP60e9
+         3m+Q6AC680apweZCfDQPLFVACdWjGyEbboFRII4pAQD7+66DmtyHeJbbYSe1r0VJMhu7
+         Q79Sft/A9X89p90E42Oi9SVSsc06+YEmH5Jfu9c66BJ3Dp57Wg5vNUa3kHFqXhXJbaFH
+         bqaYRA5H0WlzYSQdR14rOma8X/cQulwRI4+o9b95w1T5phRWcKR1DbJP9LtK9Tu+ECs4
+         DpPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=A7CSNoRYyHrqRgpMIAii2las2yFrdsWSUxgHyL7DVCI=;
-        b=gOKYsu1akyLspKcXF9MOa1+EmhGkDQuttxWA/mHDo1th4RDIdOIVdmKz7re3DzA1JV
-         mW9UWPfNwtJqumV2992mWQK4vmAX/WuO7XmkslRb7DONS1b45VoUM2qQBleqczYXbwyb
-         LtAzz/o9pbrpjyVPzQYxeegOvyyKH7ZeDjIjgiqhCyPc3K6Hl9rGLXtolq25IuNkDvt4
-         yYbISvn2YJEkykBG9goyYG2qUSMWvuvos5rcrALORfSF3Otx6mLYFjIUukXWrqpOFqJA
-         rHgTRpK3f9kGenexSE9xj6f5Zjds+64pUaE6ElsVE32ZIvqHFPTZOAT4HOwAIPa4vC7a
-         1/hQ==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7oyxbsxvZYtcGLGqNycMwNG78JmT2ZrN/QOSrkWTJi4=;
+        b=DkMsmxVoK3nInt0z35VK3XiU4AkeA75xjkpNCUaRCQrFuzkVfzk/yGaUfwDXo6Plvg
+         IjNnffMQ14JP1r8GtcuxJpxVebpRjpDOYze32Vftti577147YOxa22m/fFdsofAMUN1i
+         o84vHLyjMlVzGuHRGtmDmzY/wdQAhNhtguD7d49YIiRGGMfE9nuLyKN8Z09ez14YHTSO
+         C6RYBbcXTxHNnU9gGkgiXbE4nve79KQFsG2miUvoAlw32gkNwn0XoqDyxnW3Zv6Us0nJ
+         icrliwbAL19+2xEHMJdGijAfRU8DEgzHe/Qn7A+TMwsxHxpCuGO/KMcRAQYSnIPJtcVM
+         jpWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=gYxKWE8b;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id m21si297003pls.5.2020.03.25.11.36.39
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=roCooveq;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id y5si855355plr.4.2020.03.25.07.17.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2020 11:36:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2020 07:17:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=gYxKWE8b;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 4E93620777;
-	Wed, 25 Mar 2020 18:36:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1585161398;
-	bh=XNaxk4kl5JifETixZo+9um+wX+XJrl+bfte4n63ILf8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gYxKWE8bKNsObKBVE72TDIfoTSLMEQ7Qb1bUXW4UyKVtZXytizF4HuGEPVorzfhKh
-	 wsvgqelbg/+9UQsqTJEHyEy7NIGN1vjUZloiwG17WbZaQmYBekjyMWM9DZuqCpA4AS
-	 P2Q3nD0A3UpKKrikHulklWz4uNEVfkdlNlCDbOpA=
-Date: Wed, 25 Mar 2020 19:36:35 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Soumyajit Deb <debsoumyajit100@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, perex@perex.cz, sbrivio@redhat.com
-Subject: Re: [PATCH v2 1/6] staging: hp100: Properly indent the multiline
- comment
-Message-ID: <20200325183635.GA3813636@kroah.com>
-References: <20200325141540.41877-1-debsoumyajit100@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200325141540.41877-1-debsoumyajit100@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=roCooveq;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x643.google.com with SMTP id a23so858274plm.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 07:17:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id;
+        bh=7oyxbsxvZYtcGLGqNycMwNG78JmT2ZrN/QOSrkWTJi4=;
+        b=roCooveqawHbmeHw/w3Sb5rJZleFWAoVkV0yyfD3HUgFBW2fmDCBoHHeSwoFaWLAI/
+         OUHrxJXO3eHnXihGN2Spd3LO4eIDvzuCfMWtQWnhpFIBhwQqYY4YDZOgbDdLtjj5Dkcb
+         l/0IWIbz/7R3B1bb9xoFASyTVtFq6RzEE6v0NF/yWRyntIFrsZwH7cIlbowa6EyZrGx6
+         +3pfhNYGZgXfkbSMb9Jyupusx0iHHBkXWgPt83UUhtWtu+Kfx2CU7r6XTNugkhN+Q4nI
+         dKIAgyTNvDSpXkVxpR/xd8fG6syqHKuTm3rxP5dRjKyakJNZ1U+EHR5mjDaxEdfcrD1T
+         Iehg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=7oyxbsxvZYtcGLGqNycMwNG78JmT2ZrN/QOSrkWTJi4=;
+        b=juGa7WDg8l3JJbaDm9eD5f3iIY3Hs+co5UfMKqBf8MTy1EerTI9QcNq3XDA4mQ655Z
+         1VNpiDwqQPu2QHE/9r/ZRyMvSMfqux4EbsEmlQA/nlnzv8Qb2JuZXCAc8WoUOaUOxRW0
+         UEkT/1z/3nGo2ExQYMMW0L6mBTe3zHm6eYks68BEZDWUQpVQB+moaaRwAj1Cfm1iodjR
+         rSyoYeFspxwDY1OgAoM9pVgqdu0TUoTHkyPNnlJ83+45lkxsxIhX88wxPGO3VCx5U/MT
+         Q4ctC1ZcnUwojBxNN036GQ9Kk9fVe/scPix6kdqK1By/wObV71qUp6Hp3p1wvk4coG4/
+         p5oQ==
+X-Gm-Message-State: ANhLgQ1o7xpqmkugjU7ddq4q/P+dXyMrDbzt+2iHYPSjYUbOERIDqzcB
+	YYcR86VJeMAPJ748S+MImFUYjQqygIvdhw==
+X-Received: by 2002:a17:90a:30c7:: with SMTP id h65mr4204274pjb.44.1585145856346;
+        Wed, 25 Mar 2020 07:17:36 -0700 (PDT)
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from localhost.localdomain ([47.29.210.159])
+        by smtp.googlemail.com with ESMTPSA id k14sm4186493pje.3.2020.03.25.07.17.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Mar 2020 07:17:35 -0700 (PDT)
+From: Soumyajit Deb <debsoumyajit100@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	perex@perex.cz,
+	sbrivio@redhat.com,
+	Soumyajit Deb <debsoumyajit100@gmail.com>
+Subject: [PATCH v2 1/6] staging: hp100: Properly indent the multiline comment
+Date: Wed, 25 Mar 2020 19:45:40 +0530
+Message-Id: <20200325141540.41877-1-debsoumyajit100@gmail.com>
+X-Mailer: git-send-email 2.17.1
 
-On Wed, Mar 25, 2020 at 07:45:40PM +0530, Soumyajit Deb wrote:
-> Shift the end of multiline comment "*/" to the next line.
-> Reported by checkpatch.pl
-> 
-> Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
-> ---
-> Changes in v2:
->   -Remove the blank line after the end of multiline comment.
+Shift the end of multiline comment "*/" to the next line.
+Reported by checkpatch.pl
 
-Where are the other 5 patches in this series?  I only received patch 1/6
-here.
+Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+---
+Changes in v2:
+  -Remove the blank line after the end of multiline comment.
 
-thanks,
+ drivers/staging/hp/hp100.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-greg k-h
+diff --git a/drivers/staging/hp/hp100.c b/drivers/staging/hp/hp100.c
+index ba9595facda1..31d1ee6182dd 100644
+--- a/drivers/staging/hp/hp100.c
++++ b/drivers/staging/hp/hp100.c
+@@ -262,7 +262,8 @@ static void hp100_RegisterDump(struct net_device *dev);
+  * This work *only* for memory fragments part of lp->page_vaddr,
+  * because it was properly DMA allocated via pci_alloc_consistent(),
+  * so we just need to "retrieve" the original mapping to bus/phys/dma
+- * address - Jean II */
++ * address - Jean II
++ */
+ static inline dma_addr_t virt_to_whatever(struct net_device *dev, u32 *ptr)
+ {
+ 	struct hp100_private *lp = netdev_priv(dev);
+-- 
+2.17.1
+
 
