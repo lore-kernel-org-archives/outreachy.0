@@ -1,101 +1,130 @@
 X-GM-THRID: 6808259246011973632
-X-Received: by 2002:a9d:19ca:: with SMTP id k68mr8281287otk.232.1585550884982;
-        Sun, 29 Mar 2020 23:48:04 -0700 (PDT)
+X-Received: by 2002:a05:620a:15a9:: with SMTP id f9mr4480389qkk.28.1585171382417;
+        Wed, 25 Mar 2020 14:23:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:3b23:: with SMTP id z32ls6306576otb.1.gmail; Sun, 29 Mar
- 2020 23:48:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtLZj4aOft8wD/ya5QZmpwgMyISIE2cwm+9tOyWvRHxkva6H4cYq6dF70j8zq/kUP9WsmnR
-X-Received: by 2002:a9d:d0f:: with SMTP id 15mr8377785oti.161.1585550883899;
-        Sun, 29 Mar 2020 23:48:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585550883; cv=none;
+Received: by 2002:a37:5084:: with SMTP id e126ls1547307qkb.7.gmail; Wed, 25
+ Mar 2020 14:23:01 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvKrSI7KvKu9KyNjEvCAC128tZHUXemEYaL6b/bbgAyvw6bw1hXOSR5fUJfvZQG+RqKlLGt
+X-Received: by 2002:a37:a746:: with SMTP id q67mr5187972qke.215.1585171381090;
+        Wed, 25 Mar 2020 14:23:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585171381; cv=none;
         d=google.com; s=arc-20160816;
-        b=yO3eQgmewo14NxbiLtcEuJ+fYgsxjFJJZFUkfLH+OOMo2QkPgBdWeno66SKfXf0qFu
-         6QW+MZu0YqF7Vsi5qUu2Y5LUwdfDrFVT4+nSL0rubn2gtsZYv6l4Z8vJ1VvX07fLkBax
-         KWv1QixwiKmDPMwa8UUa7EBVQPPjMtYfLRS45MiLJXAIdammi5HbfV41hOR+kzqW3LWn
-         hJfWW9MduO9RCVl1GxCfOE+MGHL3jpp/gu7+d7TXz2eE2O8nO9AkQK6YMiRcOmV9JU0i
-         yHuoYgiqyJ0OQSi9HmcDhR3EqaL1IbJ3GZwIyG++ONP0PmgB2bM1jeFYj76ziyyJW3Oc
-         SQpw==
+        b=VfEJrGsItsHZ6B+Nnk42MR/slCuspDRDLB/2YGxfkCWhXEv+b3N8qLeIczobuQa2q/
+         wyo7WnKl4omwvoan7ejwhIDaitWk+TVE8J6oH1AbljxRXsI/wWDWR83pw7vBNnHqEsZA
+         8PSEZi8IkHOYHD7b5HLrjdQzaY1QR0otiBA2EQp2WkQvvfzlmX+zLF0HXaiHJVOjkaH9
+         DUEISzlBdgEYk34uSUPZQJIHJeXX8qjz1X1eTU0oWvD1Y+4pJ24ltNLrL2dGvC+JH9qQ
+         T2M63H3WbVmhElbJ2MnJdWyyGqlFmIQUIPgztTZg33otVM3/b2f2yLRo2mPkEgVVUEoT
+         nV4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=nyfUsO/T0E/7xzoexsaycHqsJ0KjG21nQpinw4BcqNI=;
-        b=fCq7PYQLmmEoOdFCojbtJ218LX4OD1Mhg8z+TfbwsjZpoFM6kPZ8ca8GCOFybqHnLo
-         Yu9B4JXWlzzWvtE9AhsnfZNkVICQkf8+fDsfupVQZ6Mj62J/tUXELA7uCM/Uji9PmN0X
-         N3+s+2zelfwpPK1rHvYlFT+7RZaGMK3E4WFKxbHXqo+le2ULE28Bp8Nn1eYr7i/rWlLX
-         8/FbEHcbIQ9ET4aknrjxPIIiANKWMk9PSC6WyWkDRyugDPYvCdVoeHYxJFZlrk04/Ysw
-         oqi0dCvKyatdcr64v+o8NzZ5b9XiCVFOH0VQdi+mKGS2pP+RSunR1qxTagYDCcYNGafg
-         oX/g==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=D50Ea1KkZKi7MRIpZ2tdbEpQFy9vwTNoscFn6swOS/0=;
+        b=os9FM0loBoLKug9fD2HqaeOGishySA/4tgE7ACRAiOK+Mepsw1MWUnVIlNl+9L98JD
+         J52bVIWCOJ9E0SE3PlDsg7VnkI+t0g7jcYdow1IIymqTK2MWG4lYfCWf6G5zZd5kZh2C
+         3wZxiPGotTpFR3i4J+K2VC5ammX8zbQ62Yp9oep4jF21Y+T43BXOZDYVyRnfxMLh8EIr
+         U5Z2gv+dOLO43xFFjiYFQlNHH/BP0VIJhu9FU2sq0cXAr6K6xaQvbjkg3ymcyCnsS19w
+         9PIqZ8+BPGppERdaiLvGl9ybX2ICe+5aL+G8rZXETwLg0Fg8TnNcPugw1jlgfTKJcm/l
+         +eiw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="EpfD/yRi";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id n5si1012488otf.3.2020.03.29.23.48.03
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EMvoS3tq;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id r14si36907qtc.5.2020.03.25.14.23.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 29 Mar 2020 23:48:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2020 14:23:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="EpfD/yRi";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585550883;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nyfUsO/T0E/7xzoexsaycHqsJ0KjG21nQpinw4BcqNI=;
-	b=EpfD/yRiQVa2SDfw4WV4V3UBX5gTrNxIlmyJgW360A/BBLkw3tMHbeIwWc1bA5/6iwIcgV
-	N6rsgEGDLmRMjWp1H7yYL49+5r6vpTddaFIjnikoMaAkEE4PFpcHyDMOVzsa3f4h6gGfqR
-	GDm6Lg9/3E3b0tstZYMPlBJaCmDoay8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-54-oot0cUrMMpKseoO5axt2Pg-1; Mon, 30 Mar 2020 02:48:01 -0400
-X-MC-Unique: oot0cUrMMpKseoO5axt2Pg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 05523102CE14;
-	Mon, 30 Mar 2020 06:48:00 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.4])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EAC7B5E009;
-	Mon, 30 Mar 2020 06:47:57 +0000 (UTC)
-Date: Mon, 30 Mar 2020 08:47:52 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Simran Singhal <singhalsimran0@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: rtw_cmd:
- Compress lines for immediate return
-Message-ID: <20200330084752.7a0557ca@elisabeth>
-In-Reply-To: <20200325212253.GA8175@simran-Inspiron-5558>
-References: <20200325212253.GA8175@simran-Inspiron-5558>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EMvoS3tq;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x643.google.com with SMTP id h11so1298484plr.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 14:23:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=D50Ea1KkZKi7MRIpZ2tdbEpQFy9vwTNoscFn6swOS/0=;
+        b=EMvoS3tq9nhI2rqp5Wg+ogOhZR97+iLl7eEsa2La3ApbUDZFA/dOSiObyzdlJ2ZPXK
+         2OPPTjtyXsxvP4+WJXOzeABy4EuHuPtg7ffJfknHfk7CJ4s2GPVTYIiv/7FgypPBNg9L
+         farz9a7IOdydKsycs7pw2emyg7iZ9+bz0rx+JjHp96HcmnElRd/TDAI2CzobHLjl+MeH
+         BsI92ipo15AxcEp2HM/PsMDE8wRpApQfW5lYPVVqTrhHPOMJbMIoPM7muPZxdvrUDnMK
+         c3AX+vGHZe6RcPSJ0IKwA5+oC4JPjL4939SEIbjKj2IDX8h+SDZsfdbw26BRKkmAQu1u
+         jYOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=D50Ea1KkZKi7MRIpZ2tdbEpQFy9vwTNoscFn6swOS/0=;
+        b=DawQ5iShrVhglg7wNWa61Naj4Iuh74tP7ASwrDA5Xth8yETTuq0zIfOogpV8WRrv1i
+         VDirGpSKFCB3uOCAZICn2PRmTfwkV11C3+1eZXTkjsIlsawmPxFMV9ERSIAIW2afxtiC
+         YQy3wp6ZTYCrh+jnpTjRvq09S3VCJlf1dNPtx+/DfH6lIeI31AfL1vYcCvYhhJpzJs3O
+         Iau/bFq/mPYvDT4CnszCuSNotqguaEo1dbGcZ1XLEh4xn4xEIdG7LYEOwP0hRB0J4VLr
+         lC0VZqhAP4O+3SBDXb4ZPEcKjcEL1nuFDwnYDeMyt8eGFIkFuuTdQU//nVp6+tNKRyQ+
+         eBEg==
+X-Gm-Message-State: ANhLgQ1fiI0sc4LU5NOHMFr8SbO8nMmrNvRH+lMcZXKYpvXxU1Glcqkc
+	BidxZBl6dxiWooFmUdJRjy7Prxuos6s=
+X-Received: by 2002:a17:902:7008:: with SMTP id y8mr5096140plk.279.1585171379953;
+        Wed, 25 Mar 2020 14:22:59 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from simran-Inspiron-5558 ([2409:4052:78f:bb47:8124:5e4b:ea06:7595])
+        by smtp.gmail.com with ESMTPSA id s14sm77650pgl.4.2020.03.25.14.22.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Mar 2020 14:22:58 -0700 (PDT)
+Date: Thu, 26 Mar 2020 02:52:53 +0530
+From: Simran Singhal <singhalsimran0@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: rtl8723bs: rtw_cmd: Compress lines for immediate
+ return
+Message-ID: <20200325212253.GA8175@simran-Inspiron-5558>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Thu, 26 Mar 2020 02:52:53 +0530
-Simran Singhal <singhalsimran0@gmail.com> wrote:
+Compress two lines into a single line if immediate return statement is found.
+It also removes variable cmd_obj as it is no longer needed.
 
-> Compress two lines into a single line if immediate return statement is found.
-> It also removes variable cmd_obj as it is no longer needed.
-> 
-> It is done using script Coccinelle.
+It is done using script Coccinelle.
+And coccinelle uses following semantic patch for this compression function:
 
-This should be consistent. What does "it" refer to, now? If you start
-with an imperative mode, switching to indicative makes it hard to
-follow.
+@@
+expression ret;
+identifier f;
+@@
 
-By the way, Coccinelle is not exactly a script. Saying something is
-detected by Coccinelle is enough, you don't need to qualify that
-further.
+-ret =
++return
+     f(...);
+-return ret;
 
+Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+index 744b40dd4cf0..42b0ea8abd9c 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+@@ -362,11 +362,7 @@ int rtw_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
+ 
+ struct	cmd_obj	*rtw_dequeue_cmd(struct cmd_priv *pcmdpriv)
+ {
+-	struct cmd_obj *cmd_obj;
+-
+-	cmd_obj = _rtw_dequeue_cmd(&pcmdpriv->cmd_queue);
+-
+-	return cmd_obj;
++	return _rtw_dequeue_cmd(&pcmdpriv->cmd_queue);
+ }
+ 
+ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
 -- 
-Stefano
+2.17.1
 
 
