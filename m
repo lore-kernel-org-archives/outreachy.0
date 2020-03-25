@@ -1,228 +1,164 @@
-X-GM-THRID: 6634593201522999296
-X-Received: by 2002:a24:6c93:: with SMTP id w141mr795459itb.35.1544736605630;
-        Thu, 13 Dec 2018 13:30:05 -0800 (PST)
+X-GM-THRID: 6808213747145900032
+X-Received: by 2002:a05:6602:22cb:: with SMTP id e11mr4222061ioe.62.1585160788179;
+        Wed, 25 Mar 2020 11:26:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:ac6a:: with SMTP id m42ls1219448iti.3.gmail; Thu, 13 Dec
- 2018 13:30:04 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WP93cgyK2ArJiwkG28bRqaMinJlZchHC0LHwyBWaDuprgWA8y0fk9+FX2AGhgT71zF0mnq
-X-Received: by 2002:a24:2f0e:: with SMTP id j14mr870461itj.14.1544736604565;
-        Thu, 13 Dec 2018 13:30:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544736604; cv=none;
+Received: by 2002:a92:3a9a:: with SMTP id i26ls827195ilf.3.gmail; Wed, 25 Mar
+ 2020 11:26:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vubp57X1twcaGy5+x0QoopV1PIve7WuHIOOR1f2Vqn7tmWPZT9GDNiEpEvfpJIkkCZborNp
+X-Received: by 2002:a92:7ec5:: with SMTP id q66mr4825784ill.110.1585160786932;
+        Wed, 25 Mar 2020 11:26:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585160786; cv=none;
         d=google.com; s=arc-20160816;
-        b=saipfEgr9x6ejB+fngWOiuxV9Qyam07oJBAlT6d3QJk0GHxRKj3AW1MLxeeT2P0cDL
-         yp2Q7azUdBgP0/InE9PXBSRLv6rOKS75tBv0up5znN25ir0WzhD6r8JQqa/JTbmgEv+6
-         tJ3aZnwZKGZkewUSj1iy1naN+ayvVJ0oyjzV3S84qpz7R/qgis+0cKl0f9++Gao2aCUv
-         n1OSOTScioXtdcvEGbe8GZYr6rvagD5ziJlYaLUpHewViEU3Y1lhQ9UNaXqPSDUb3ARU
-         Ct277Ap+OQUYh7fEkTYyO0f8nFt8LM3Rzccm5fzCdHscjLmVusR6jbMAySH5dx5q03Vw
-         uC7A==
+        b=ciguw73PBRGvgV+MA+sZxXSvsPP4HTn9UzZRf/j6bxnKds3Dc4IHLrsOhk9NJKmz5e
+         jcFMSLeKAm4mkf2mpNtYowRmS3/W+CGbjveXPwKblDvvhxtmAAXzppzhvSRJdVzc54nL
+         FeU+yoMjGhJg17gpNVxd9XWG5sEDR/u0HsllVrqoyV5XzI5E0YvjFcwMUuVzA57NvIWW
+         EqOcCN9uUWUM8cf5kpoXWJfMqWZjA3EZfOy/L8fXuk/0FtS6CDaMEHBOGlzaQY6LXTBM
+         lrJDeL3+KV1AW7axSWuk90s8cykUusxb2JBlBD3zfz8l+mCjNXXUTJGUQhjh69ZE379i
+         syhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=M1jct51NouuWowl8d6PZRlHpN7bjDs8mqzL9LudzrXg=;
-        b=B/3moN85EX9QEcrZCrNPtCMTpfymGbfkCKCjz7mdhfMONvhphIuajARuJLqftNvma6
-         FdTn+cnXWY2FfQIIoutDdqtWbAgf5+kl68ofm68wEYp4EaNK1DRDPQB71T/qdl0UA3gh
-         PWnFgkFqr8mvmr6rxYzEQqfs3BAz1BtwvsJsfUGnx32TuInB6z2cjREIEcaGxfqTW3Dy
-         xq3+7cS58G8+D7yPzPrQ9uUFF3KiA65if7xJ0neWHhfDpUNUwovYStDG6MmW2KXou93S
-         4uY6oXxYeozh8gB0b2ISS7ohtmJBEIfXHSfbAHIwcUArzGXH1PWpdlhXq5LG7hD+5AfT
-         XXYw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=rdOwQ11n3cpKxP1BnmbKbCp9D6XytaUHGx7F/xFAJIw=;
+        b=So3bIymhpJQs0HqqGWEW46eyp7nDGpwGd1Aoabkaq0lks1U8GLPLgPideH+yHhKxcI
+         bdu8YBReAwipEhvvp5mwdtGllbc9mzzRJC1JY4po2vwa4Shpl0eZna2hPIumZDcAEj0k
+         rJyA0vv0UjmnndjDgG7Jw6bQwlGqqZ9cQ9XKqrdvjdwjo+WjukgNVhe28pF2VmHLpWaW
+         kW7ZCA9uVVFpz6jjYjLE3pkR4KCiWl+SOM2wJvuT9pZyfHmcpilbCFR0Tfdmpv8UTiJQ
+         /DMr7Ifb3kMqRjfgMPxSfNF8/X67OGy4cT/LH+0iUNuoILxVQrapIJ6jDRcaaOCAhx++
+         16dQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PlfzYqT2;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YLQ5jdqM;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from mail-qt1-x843.google.com (mail-qt1-x843.google.com. [2607:f8b0:4864:20::843])
-        by gmr-mx.google.com with ESMTPS id m65si991798itb.4.2018.12.13.13.30.04
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id t13si1766122ilk.5.2020.03.25.11.26.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Dec 2018 13:30:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) client-ip=2607:f8b0:4864:20::843;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2020 11:26:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PlfzYqT2;
-       spf=pass (google.com: domain of shayenneluzmoura@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=shayenneluzmoura@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YLQ5jdqM;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x843.google.com with SMTP id d19so3902119qtq.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 13 Dec 2018 13:30:04 -0800 (PST)
+Received: by mail-pf1-x441.google.com with SMTP id 22so1449665pfa.9
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 11:26:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+        h=date:from:to:subject:message-id:mime-version:content-disposition
          :user-agent;
-        bh=M1jct51NouuWowl8d6PZRlHpN7bjDs8mqzL9LudzrXg=;
-        b=PlfzYqT29n0B84Tz1v4gGi9OGAP1N9qef6S47dZmxaUKDlVL/V5NdHVUhDLJgXBYLQ
-         07TY29iH47GN7jf3YN2VJLrk+XbRJPrWKfDW+nYYNTRogGoXxD7fW5gYy1jFQW/+q7BA
-         LECOZfVD56Dm22xIi37XCpqBFt0DtC9HngswCMECAFwbZhLCPWuF59y4RILm95JVYaQ5
-         YsWueOeOQppTrfAbo/TM2Err8lCJlh4LR3svpxi5mkRfVp3F2aQCSLdxBbn+ymxF37ro
-         8myGs9OTzniPvbqaxHivstt+rEy/TZ3wWj55JkESDfu40sAvVLaYd8X02SwO4wzZ/UJE
-         aOBw==
+        bh=rdOwQ11n3cpKxP1BnmbKbCp9D6XytaUHGx7F/xFAJIw=;
+        b=YLQ5jdqMUqkf5nUdhOeIqGBUKQMvKSU5dOE/f/on/yy1ZjkRYbO+QC0yH3loc1RBrI
+         8vq2BARKAuVLS4B4rkewceFxkPUnbVuNcwx2TvXQGBJ/uyM5cua7oqCYDdFD4x3Qcf0P
+         MVGIUCA8QeCEVWeuBNNruftZGmJfbxGwCw+w6rJpBshpXXluQcFANXQ3c0FkhgzZYold
+         xF/N7snIgVzB7mPP3fxPlFSbTWs4Ln5Y9VO1dBgN8ri9Gy0O8IL1IC2rNKJS/Tcc0JBW
+         Dr8qmOckxGoJMz/fdhJbasckqIEXNxe2IeItDFu9BvwmDJi8TL9a7Dqris43Fi0Ru1AX
+         TkGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
          :content-disposition:user-agent;
-        bh=M1jct51NouuWowl8d6PZRlHpN7bjDs8mqzL9LudzrXg=;
-        b=cuvweXCkO4k27D7wpdZoJgKiJ1/5eTmqhcXyHg0X4c2rUuxm/Z//mGULiwizqr/L/5
-         uY302ezd+jgv+nb9ShEMZccoyJaUtst9897uw7nMPiZOAWAEpZ4JHyFVsmTz3ViD8tt9
-         AaX2QuFOxEblCbXo/PbbuwoqoXScTAP0fr+VcJ7/68KAP5Y1qSDQFPq/uXD/Sv4fRfMp
-         auQwhOXfRcGBkaUZ/OdDFMG2Dz3KpJTmAyZAihZTVU4PRTERQN6WN/YKREoJn78X5PZh
-         a1grUlA70wiJo3xGYumLLfHAg9ysxQSQPpNQZ/Un5fXAXuQwZcoYOiKeKrWyzSU99/gm
-         wALg==
-X-Gm-Message-State: AA+aEWaGaShtBqPDO88959Vmqb+CAlCIINX9hGBH1MoauQQXMSQ0O7ku
-	f/1VCMarIIx1xPUO/y3AGP0=
-X-Received: by 2002:a0c:ba24:: with SMTP id w36mr460071qvf.60.1544736604084;
-        Thu, 13 Dec 2018 13:30:04 -0800 (PST)
-Return-Path: <shayenneluzmoura@gmail.com>
-Received: from smtp.gmail.com ([143.107.45.1])
-        by smtp.gmail.com with ESMTPSA id r56sm1944559qtj.30.2018.12.13.13.30.00
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Dec 2018 13:30:03 -0800 (PST)
-Date: Thu, 13 Dec 2018 19:29:57 -0200
-From: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <maxime.ripard@bootlin.com>,
-	Sean Paul <sean@poorly.run>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        bh=rdOwQ11n3cpKxP1BnmbKbCp9D6XytaUHGx7F/xFAJIw=;
+        b=i99hTAUoLIBJLMwvWpl66Mj5VWaXXGfqU+zb6sfPIdKqouLxB4Ecjqsfe+7Nl7Jym8
+         URwjaijDBsTXRc5NNkwERkxOtFLPDPRjMJmCX5AaVRliaK7dE49oTBFMG4/SY6kJy0M7
+         wZOjeKBi4NWTtmM+gxX9azs4r+/d5JF7NjqCTctGGWPSLJ7pypSjrLqklqAWi0GjCF0Q
+         wA1kYs9e8xlhx9EWrZiafHkMuGnrMWGOrSB3zW5RSPTJ5OPuOjVkZK/CKwMpRqF5KL+X
+         2d/mtKqJyITj1Di4yX/gxgcIfbhPKAWPR7jN4ZDmgELBK/xNzMrBvc1VatGoNGMLuFbO
+         irrg==
+X-Gm-Message-State: ANhLgQ0c299BtXbjjJ5OciSnlzO5NUvdlZ2FMcMBKeHMcwZO1kxudJ8R
+	pQxAlq4/6Znuz95aA6c64833RTTvZM4=
+X-Received: by 2002:a63:df15:: with SMTP id u21mr4022987pgg.95.1585160785420;
+        Wed, 25 Mar 2020 11:26:25 -0700 (PDT)
+Return-Path: <singhalsimran0@gmail.com>
+Received: from simran-Inspiron-5558 ([2409:4052:78f:bb47:8124:5e4b:ea06:7595])
+        by smtp.gmail.com with ESMTPSA id k6sm4160953pfa.214.2020.03.25.11.26.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Mar 2020 11:26:24 -0700 (PDT)
+Date: Wed, 25 Mar 2020 23:56:17 +0530
+From: Simran Singhal <singhalsimran0@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [RESEND PATCH v2] drm: Rename crtc_idr as object_idr to KMS cleanups
-Message-ID: <20181213212957.vkitkyl5cj2qh7qr@smtp.gmail.com>
+Subject: [PATCH] staging: rtl8723bs: Remove blank line before '}' brace
+Message-ID: <20200325182617.GA9411@simran-Inspiron-5558>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: NeoMutt/20171215
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-This patch solves this TODO task:
- drm_mode_config.crtc_idr is misnamed, since it contains all KMS object.
- Should be renamed to drm_mode_config.object_idr.
+Remove unneeded blank line before a close brace '}'.
+Issue found by checkpatch.pl:
+CHECK: Blank lines aren't necessary before a close brace '}'
 
-Signed-off-by: Shayenne da Luz Moura <shayenneluzmoura@gmail.com>
-
+Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
 ---
-Changes in v2:
- - Make commit message more clear and change header file
+ drivers/staging/rtl8723bs/core/rtw_security.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
- drivers/gpu/drm/drm_lease.c       | 6 +++---
- drivers/gpu/drm/drm_mode_config.c | 4 ++--
- drivers/gpu/drm/drm_mode_object.c | 8 ++++----
- include/drm/drm_mode_config.h     | 6 +++---
- 4 files changed, 12 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/gpu/drm/drm_lease.c b/drivers/gpu/drm/drm_lease.c
-index 977f069f6d90..b2cbb58834bc 100644
---- a/drivers/gpu/drm/drm_lease.c
-+++ b/drivers/gpu/drm/drm_lease.c
-@@ -218,7 +218,7 @@ static struct drm_master *drm_lease_create(struct drm_master *lessor, struct idr
- 
- 	idr_for_each_entry(leases, entry, object) {
- 		error = 0;
--		if (!idr_find(&dev->mode_config.crtc_idr, object))
-+		if (!idr_find(&dev->mode_config.object_idr, object))
- 			error = -ENOENT;
- 		else if (!_drm_lease_held_master(lessor, object))
- 			error = -EACCES;
-@@ -434,7 +434,7 @@ static int fill_object_idr(struct drm_device *dev,
- 		/*
- 		 * We're using an IDR to hold the set of leased
- 		 * objects, but we don't need to point at the object's
--		 * data structure from the lease as the main crtc_idr
-+		 * data structure from the lease as the main object_idr
- 		 * will be used to actually find that. Instead, all we
- 		 * really want is a 'leased/not-leased' result, for
- 		 * which any non-NULL pointer will work fine.
-@@ -675,7 +675,7 @@ int drm_mode_get_lease_ioctl(struct drm_device *dev,
- 
- 	if (lessee->lessor == NULL)
- 		/* owner can use all objects */
--		object_idr = &lessee->dev->mode_config.crtc_idr;
-+		object_idr = &lessee->dev->mode_config.object_idr;
- 	else
- 		/* lessee can only use allowed object */
- 		object_idr = &lessee->leases;
-diff --git a/drivers/gpu/drm/drm_mode_config.c b/drivers/gpu/drm/drm_mode_config.c
-index ee80788f2c40..ab553b6465e2 100644
---- a/drivers/gpu/drm/drm_mode_config.c
-+++ b/drivers/gpu/drm/drm_mode_config.c
-@@ -381,7 +381,7 @@ void drm_mode_config_init(struct drm_device *dev)
- 	INIT_LIST_HEAD(&dev->mode_config.property_list);
- 	INIT_LIST_HEAD(&dev->mode_config.property_blob_list);
- 	INIT_LIST_HEAD(&dev->mode_config.plane_list);
--	idr_init(&dev->mode_config.crtc_idr);
-+	idr_init(&dev->mode_config.object_idr);
- 	idr_init(&dev->mode_config.tile_idr);
- 	ida_init(&dev->mode_config.connector_ida);
- 	spin_lock_init(&dev->mode_config.connector_list_lock);
-@@ -484,7 +484,7 @@ void drm_mode_config_cleanup(struct drm_device *dev)
- 
- 	ida_destroy(&dev->mode_config.connector_ida);
- 	idr_destroy(&dev->mode_config.tile_idr);
--	idr_destroy(&dev->mode_config.crtc_idr);
-+	idr_destroy(&dev->mode_config.object_idr);
- 	drm_modeset_lock_fini(&dev->mode_config.connection_mutex);
- }
- EXPORT_SYMBOL(drm_mode_config_cleanup);
-diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
-index cd9bc0ce9be0..bb1dd46496cd 100644
---- a/drivers/gpu/drm/drm_mode_object.c
-+++ b/drivers/gpu/drm/drm_mode_object.c
-@@ -38,7 +38,7 @@ int __drm_mode_object_add(struct drm_device *dev, struct drm_mode_object *obj,
- 	int ret;
- 
- 	mutex_lock(&dev->mode_config.idr_mutex);
--	ret = idr_alloc(&dev->mode_config.crtc_idr, register_obj ? obj : NULL,
-+	ret = idr_alloc(&dev->mode_config.object_idr, register_obj ? obj : NULL,
- 			1, 0, GFP_KERNEL);
- 	if (ret >= 0) {
- 		/*
-@@ -79,7 +79,7 @@ void drm_mode_object_register(struct drm_device *dev,
- 			      struct drm_mode_object *obj)
- {
- 	mutex_lock(&dev->mode_config.idr_mutex);
--	idr_replace(&dev->mode_config.crtc_idr, obj, obj->id);
-+	idr_replace(&dev->mode_config.object_idr, obj, obj->id);
- 	mutex_unlock(&dev->mode_config.idr_mutex);
- }
- 
-@@ -99,7 +99,7 @@ void drm_mode_object_unregister(struct drm_device *dev,
- {
- 	mutex_lock(&dev->mode_config.idr_mutex);
- 	if (object->id) {
--		idr_remove(&dev->mode_config.crtc_idr, object->id);
-+		idr_remove(&dev->mode_config.object_idr, object->id);
- 		object->id = 0;
+diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
+index 9c4607114cea..5ebf691bd743 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_security.c
++++ b/drivers/staging/rtl8723bs/core/rtw_security.c
+@@ -434,7 +434,6 @@ void rtw_seccalctkipmic(u8 *key, u8 *header, u8 *data, u32 data_len, u8 *mic_cod
+ 			rtw_secmicappend(&micdata, &header[16], 6);
+ 		else
+ 			rtw_secmicappend(&micdata, &header[10], 6);
+-
  	}
- 	mutex_unlock(&dev->mode_config.idr_mutex);
-@@ -131,7 +131,7 @@ struct drm_mode_object *__drm_mode_object_find(struct drm_device *dev,
- 	struct drm_mode_object *obj = NULL;
+ 	rtw_secmicappend(&micdata, &priority[0], 4);
  
- 	mutex_lock(&dev->mode_config.idr_mutex);
--	obj = idr_find(&dev->mode_config.crtc_idr, id);
-+	obj = idr_find(&dev->mode_config.object_idr, id);
- 	if (obj && type != DRM_MODE_OBJECT_ANY && obj->type != type)
- 		obj = NULL;
- 	if (obj && obj->id != id)
-diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_config.h
-index d643d268693e..4750fccb5b4a 100644
---- a/include/drm/drm_mode_config.h
-+++ b/include/drm/drm_mode_config.h
-@@ -385,18 +385,18 @@ struct drm_mode_config {
- 	/**
- 	 * @idr_mutex:
- 	 *
--	 * Mutex for KMS ID allocation and management. Protects both @crtc_idr
-+	 * Mutex for KMS ID allocation and management. Protects both @object_idr
- 	 * and @tile_idr.
- 	 */
- 	struct mutex idr_mutex;
+@@ -723,7 +722,6 @@ u32 rtw_tkip_encrypt(struct adapter *padapter, u8 *pxmitframe)
  
- 	/**
--	 * @crtc_idr:
-+	 * @object_idr:
- 	 *
- 	 * Main KMS ID tracking object. Use this idr for all IDs, fb, crtc,
- 	 * connector, modes - just makes life easier to have only one.
- 	 */
--	struct idr crtc_idr;
-+	struct idr object_idr;
+ 			TKIP_SW_ENC_CNT_INC(psecuritypriv, pattrib->ra);
+ 		}
+-
+ 	}
+ 	return res;
+ }
+@@ -829,11 +827,9 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
+ 			RT_TRACE(_module_rtl871x_security_c_, _drv_err_, ("%s: stainfo == NULL!!!\n", __func__));
+ 			res = _FAIL;
+ 		}
+-
+ 	}
+ exit:
+ 	return res;
+-
+ }
  
- 	/**
- 	 * @tile_idr:
+ 
+@@ -1219,7 +1215,6 @@ static void construct_mic_header2(
+ 		if (!qc_exists && a4_exists) {
+ 			for (i = 0; i < 6; i++)
+ 				mic_header2[8+i] = mpdu[24+i];   /* A4 */
+-
+ 		}
+ 
+ 		if (qc_exists && !a4_exists) {
+@@ -1234,7 +1229,6 @@ static void construct_mic_header2(
+ 			mic_header2[14] = mpdu[30] & 0x0f;
+ 			mic_header2[15] = mpdu[31] & 0x00;
+ 		}
+-
+ }
+ 
+ /************************************************/
+@@ -1413,7 +1407,6 @@ static sint aes_cipher(u8 *key, uint	hdrlen,
+ 		}
+ 		bitwise_xor(aes_out, padded_buffer, chain_buffer);
+ 		aes128k128d(key, chain_buffer, aes_out);
+-
+ 	}
+ 
+ 	for (j = 0 ; j < 8; j++)
+@@ -1719,7 +1712,6 @@ static sint aes_decipher(u8 *key, uint	hdrlen,
+ 		}
+ 		bitwise_xor(aes_out, padded_buffer, chain_buffer);
+ 		aes128k128d(key, chain_buffer, aes_out);
+-
+ 	}
+ 
+ 	for (j = 0; j < 8; j++)
 -- 
-2.19.1
+2.17.1
 
 
