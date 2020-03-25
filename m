@@ -1,134 +1,119 @@
 X-GM-THRID: 6807884729429262336
-X-Received: by 2002:a2e:988c:: with SMTP id b12mr2208206ljj.138.1585146454823;
-        Wed, 25 Mar 2020 07:27:34 -0700 (PDT)
+X-Received: by 2002:adf:e611:: with SMTP id p17mr3709184wrm.212.1585146451752;
+        Wed, 25 Mar 2020 07:27:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:686:: with SMTP id t6ls319946lfe.3.gmail; Wed, 25
- Mar 2020 07:27:33 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt7Cg2a0CAPSoJopGhomMCdJ95p+1puWYnjUxIx3am7oaCa7YAl7Kyh2gVKH3GNe1qnytEE
-X-Received: by 2002:a19:c102:: with SMTP id r2mr2588346lff.170.1585146453128;
-        Wed, 25 Mar 2020 07:27:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585146453; cv=none;
+Received: by 2002:adf:f2cf:: with SMTP id d15ls859108wrp.8.gmail; Wed, 25 Mar
+ 2020 07:27:30 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsAtnV6uPQy59b7rjhfgiMEZIDNRqm/Qyo60rhqXRAN0lVNGgxvcfC2+IjJNmMQ7lXvGc6G
+X-Received: by 2002:adf:ab12:: with SMTP id q18mr3867214wrc.148.1585146450419;
+        Wed, 25 Mar 2020 07:27:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585146450; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgmqK0/tV1g4M5CYyVRkFDlb30jAUwg9vVWEVunw6whti2J41fX7CRePcBwrLXOWa3
-         o87tZMNvocQXv1p05SNp7QTk77VfXmQgmmkjv7aR656xmWzC4ECj7bz01FcfZ43TeKg5
-         7XgPhiIFzr1xmYhQS7mX/y8EZmaXNU8Q/rW3odAkBiIbC2pmmXCeYhN6cb+yqFKlhdU+
-         elA4wDBd3shNqnqFk/o7xtn8XgeebAnJ8aL+dtpvuYXp9qVoXvtzyahPAaaASFG4jryh
-         gc5A9GNA2Djtqb9fK91LmLgSmYnroWs2z6t/RVEzf8lGOc7WP0j5NAiEmbVzxSx6XKwP
-         07mQ==
+        b=ZuAmQSibq5WrKErc21PmFY1PKIutRPfIcQylXr23w3oYYDn1n0gtLUkMpFzkHuENRd
+         qLxNL5DJFA9Fc1Ov+Jk1Pd5/o7DaDDgEWvMSmF71js/YSb5ai46Q0wpZIzJ8o35TG01/
+         xfWhI/tkonSyzriElPwCPryplHoPWRM2f+BI/eX6Rcsl7krXbHQLAnDoj7Elm5lvfBLP
+         CByiNibgzG7iPPEkI2FLja5J1NdpmRY94RXb5Pv3TwSk8QSCcy0ULC6GQIqKY0x+pWFN
+         Yfws0/6hAVM6uMHj8Q0NbezVsX/ZZa5xDwpEnH1sza/ReWqnLynWV44eQ2edzFsU5pe4
+         GdPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CvBqWsYFkM4FOm06XI4WgArZTuCWMIBeZjOlGiU9OeA=;
-        b=zBcs+6qeEXx7fjDcVdw2q1NXWU/iuw+aC/T1v74lJlQdp5rqbTUGzh9rQlXncVqaJ2
-         yIAxJQVnwAMiuES7XXxpklqK2VUNawiqUJ9IIgrAlwzJgr34ew2m6IV60u4rew9ar2Zi
-         BF59c+DETG+RufOfaxjPfrnBmTodT3vhC4EXXJl7k8qxeY+O0bxbCzxynu/eoY5HXrpK
-         H79rSqN1fqF/L3EfnKQrTOLt9M9Nv6+PImjLaYXBMsxKT8iEx+9eDm90qGFpXTrgQLun
-         NN5S2tt4W4KWKmfYI5CRWvXSAt1d/0O6/0cTxt7IexqM64eossqvmfQj4V75INxlVLLi
-         860A==
+        bh=5W0Krd5at7NVIhS9x7nP8yz2YuP980pUwnCJvWmjbaQ=;
+        b=Gis4+AiHWJtEhoGRO7d4+5KeXYm7aTEjGDrAl5KOSBSfPi4gO4y6mxaToCjjW5Lg97
+         /BBfKNpnJePWNnua8FCx7EJH5f0Z/lDErHSgIdTbE6jJ4lDW4G1KgpoyTMN+K1fyKWGk
+         wQ4SM2F/+gOm4LXVcofa/mL/lgyfIZnHpdkW6N7YdwZUeukm3w0x6IpXG8vF6Pc0IWBe
+         9IsTTEOevW5NRhrKOLM6EvbWxFaijLOOuk+6lN22cLg4+NWEz+4zw8WUtaXwuhvZKFdX
+         qm/U9m4O1CuQlFpm7gnpJZQyRaw+NYUmJfGTTr6EWIeEhhUpOZuahrDncsD9QdxLW2AJ
+         H0Bg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dH8oqagP;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YJC0cTdo;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com. [2a00:1450:4864:20::432])
-        by gmr-mx.google.com with ESMTPS id m11si1133031ljj.2.2020.03.25.07.27.33
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id v12si1258527wrp.5.2020.03.25.07.27.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Mar 2020 07:27:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) client-ip=2a00:1450:4864:20::432;
+        Wed, 25 Mar 2020 07:27:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dH8oqagP;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::432 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YJC0cTdo;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x432.google.com with SMTP id s1so3364079wrv.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 07:27:33 -0700 (PDT)
+Received: by mail-wr1-x442.google.com with SMTP id 65so3404371wrl.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 07:27:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=CvBqWsYFkM4FOm06XI4WgArZTuCWMIBeZjOlGiU9OeA=;
-        b=dH8oqagP4xj3gCPEjNGcmUqKKJ0SiyJg1Md6ExB3H8DHGFIELxG9EFJgHqFLaUmE4k
-         hvpmdmkVYpm3QXLKvDM6Erdz15ZOT4f+ixzhqfrYE30PsCnVQWt6JDrBMiknzTx3YooV
-         tfU1LKssCfKKgQL2xUIfLvOvHK3rN2X3apj4/qpd43nLASWwiw5PYsuhLgxg3UWio9/r
-         KG/D+JBog3rzaHOh6Cy+9aN6r7o7e8AeGhps9XuZTL2mBhbKv5XtY1ybz6dQ9bA01ABh
-         y+8l1bV+T3DhF+fE/Dn/7WLpoBraZLyBl8MbJWp+9A7fEPk7pxUQLyN3tILH4K73uSJO
-         4FdA==
+        bh=5W0Krd5at7NVIhS9x7nP8yz2YuP980pUwnCJvWmjbaQ=;
+        b=YJC0cTdotuInHvsIfIwFf9qofcUXIJIwkE0iaUWxzkQmc1O8sjC9HZlAECyDo2JV/G
+         0p181+03lzcJVNwN5MPW/ZQKFiMzJAZuoX4PyP5fdeqXmesbeVXcHhZlUPsM6WDWkXac
+         +032eW6Is/qtM8rvmTck664ZS4CoBax4BohW5UqmfShuqE76dSnz4jaHErm7dc5mCeEw
+         p+1cGSAP95qMjivy6x7bbTw5pGjFp8bC+WTrFD6XFfQ97oRyOifs7X5MiaBVXhZCZbXI
+         YgUetNj/+zdM1/K0NSJCNYEg+49EUk96kPIa/TgzSMI5mHQVfDaqmafmOkfz0bBNRi9v
+         6hQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=CvBqWsYFkM4FOm06XI4WgArZTuCWMIBeZjOlGiU9OeA=;
-        b=AKgrBwA78ACRjRG/AfaJhzWxInI6WOQ92MxpfkC53dfIZRWTwmdQE8HDxSVz8wdHXG
-         DahpheaRqUg/6uM2K9HoMpJ9IoCOnWE4/nwZbBl4zk3qlyq/XJrsYS9E0X6nSyxTdZqG
-         3mZ7nyD+5TlZaJdOKWCLpq9kOAnCdtLmsLspLqwg2sglz96FSkNif9kcCxxaNoPY1zRt
-         YSV6CoYkIWLf3X7EnW06o/PZf9n7MMa6zJTGGRwjbb4p3gL4I2PU1+56Su6FayMvmm0+
-         O8SggQKfmRHx49LWxTqHif7IPO8yawxmgK310m111dnqQGaY/ZKNYQNMPV56s3HKo58U
-         tWbQ==
-X-Gm-Message-State: ANhLgQ2Or9P4b1e/r4Wcxw7qaZdaZ7VU09kLP5YvE/kWlbDCFANQqbGR
-	IHRsLiWWHuGXm/05LpTxUjg=
-X-Received: by 2002:adf:d0cf:: with SMTP id z15mr3890594wrh.357.1585146452815;
-        Wed, 25 Mar 2020 07:27:32 -0700 (PDT)
+        bh=5W0Krd5at7NVIhS9x7nP8yz2YuP980pUwnCJvWmjbaQ=;
+        b=EDShwwnF3FMacgUHVJyQpJhQmiMdJAFrLOXYcsgClUBc2mVnw3/hvXgxTTsC/bMPZC
+         YyxMmd4suctUr/4RNymh/2CSEpamcLpWX3hav7LgbtQSFAmYoOA8uUkKRKCs430yJwHx
+         8K3Egfo4FAh1RjJ9JudmT0Cnd+RT/xmW57u3NgKO6NLVDj8+5GeZWz1x5CuiVTEC4OHY
+         Bpxmgwlc1HUtHoW6LtZWdpOHNEoF028cDzr8WHLbTBjlilxQu7eRswr7HR1jhnmZyYqL
+         2v7qmIMUcMTuiOU+r5MSvqNmuGMflZ/1BDZTxVKlPbkU3X1rQFCwndU1EfKvcinP5X/9
+         kjtg==
+X-Gm-Message-State: ANhLgQ28QNumzhU7k3Q4EIhocM1DHKQFy95MntXcAizsnwEcUl67jcUZ
+	8xW8OOoP/VV2pOm1tXhIa54=
+X-Received: by 2002:adf:bb45:: with SMTP id x5mr3421124wrg.388.1585146450130;
+        Wed, 25 Mar 2020 07:27:30 -0700 (PDT)
 Return-Path: <jane.pnx9@gmail.com>
 Received: from localhost.localdomain ([197.34.86.140])
-        by smtp.gmail.com with ESMTPSA id b7sm13098778wrn.67.2020.03.25.07.27.31
+        by smtp.gmail.com with ESMTPSA id b7sm13098778wrn.67.2020.03.25.07.27.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2020 07:27:32 -0700 (PDT)
+        Wed, 25 Mar 2020 07:27:29 -0700 (PDT)
 From: Sam Muhammed <jane.pnx9@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	outreachy-kernel@googlegroups.com
 Cc: Sam Muhammed <jane.pnx9@gmail.com>
-Subject: [PATCH v2 5/7] Staging: kpc2000: kpc_dma: Use the SPDK comment style.
-Date: Wed, 25 Mar 2020 10:26:40 -0400
-Message-Id: <7531e3e3fa7c046e93d2caaa6fa2e76c5c53f04d.1585143581.git.jane.pnx9@gmail.com>
+Subject: [PATCH v2 4/7] Staging: kpc2000: kpc_dma: Include the preferred header.
+Date: Wed, 25 Mar 2020 10:26:39 -0400
+Message-Id: <c7a824c3a2ddc5f44bd89504b8c03a328d69f81d.1585143581.git.jane.pnx9@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1585143581.git.jane.pnx9@gmail.com>
 References: <cover.1585143581.git.jane.pnx9@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-SPDK-License-Identifier comment should have this form
-// SPDX-License-Identifier: <GPL-...>
+<linux/io.h> is the preferred header to include
+instead of <asm/io.h>.
+
+Checkpatch.pl WARNING:
+Use #include <linux/io.h> instead of <asm/io.h>
 
 Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
 ---
 Changes in v2:
 - None.
 
- drivers/staging/kpc2000/kpc_dma/dma.c            | 2 +-
- drivers/staging/kpc2000/kpc_dma/fileops.c        | 2 +-
  drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
-index 5ccc93ed2b61..452a3f7c835d 100644
---- a/drivers/staging/kpc2000/kpc_dma/dma.c
-+++ b/drivers/staging/kpc2000/kpc_dma/dma.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
-+// SPDX-License-Identifier: GPL-2.0+
- #include <linux/init.h>
- #include <linux/module.h>
- #include <linux/types.h>
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index d93097ed781c..d80d894f3aac 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
-+// SPDX-License-Identifier: GPL-2.0+
- #include <linux/module.h>
- #include <linux/init.h>
- #include <linux/mm.h>
 diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-index 0bdd345cc8c8..c3b30551e0ca 100644
+index bc81afb6ade2..0bdd345cc8c8 100644
 --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
 +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
-+// SPDX-License-Identifier: GPL-2.0+
+@@ -2,7 +2,7 @@
  #include <linux/init.h>
  #include <linux/module.h>
  #include <linux/types.h>
+-#include <asm/io.h>
++#include <linux/io.h>
+ #include <linux/export.h>
+ #include <linux/slab.h>
+ #include <linux/platform_device.h>
 ---
 2.20.1
+
 
