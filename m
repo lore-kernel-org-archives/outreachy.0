@@ -1,200 +1,126 @@
 X-GM-THRID: 6805399652543758336
-X-Received: by 2002:a17:90a:228c:: with SMTP id s12mr5560195pjc.68.1585166419970;
-        Wed, 25 Mar 2020 13:00:19 -0700 (PDT)
+X-Received: by 2002:a9d:7497:: with SMTP id t23mr3612586otk.291.1585165071791;
+        Wed, 25 Mar 2020 12:37:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:df41:: with SMTP id h1ls2107208pgj.8.gmail; Wed, 25 Mar
- 2020 13:00:18 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vscVDGQECEAE1UngRPJxIDtgXWFxm49V9F3woJqVQ6zxYsF8zUedKtO/+hpm3s91Urrdn/c
-X-Received: by 2002:a62:1ace:: with SMTP id a197mr5045770pfa.105.1585166418272;
-        Wed, 25 Mar 2020 13:00:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585166418; cv=none;
+Received: by 2002:a9d:708f:: with SMTP id l15ls1065664otj.11.gmail; Wed, 25
+ Mar 2020 12:37:50 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu8PqVQhJAFvduphea3zbOL1erZP4QLy7K+hPDIBKlYYKyuTWVqZ99vgmeWvpAed/rndRGC
+X-Received: by 2002:a9d:62c6:: with SMTP id z6mr3686362otk.328.1585165070538;
+        Wed, 25 Mar 2020 12:37:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585165070; cv=none;
         d=google.com; s=arc-20160816;
-        b=PRyQOy98v/xC/UMYbhI/f/Qtx9FsA7rCx7tPZGDn2n59nhlfdnMb20d7/4UbqnggCF
-         jmLIgqn5Bg80m8jgWefouQjOY1IgRun1uvVn+9s42/90fpBxRtH9skC7xBfDoVWdbtGn
-         FATs5GyvhVcYld2sFIj1y9kMnOig7lafGUSCtba0mxFfxTHcdRj7auG0A7nxwvXCHezC
-         AcgerQwYajomIJalGCBU5xUDGJrlyARi0owfofS4q8Nv5EJVxA9zRQsPiS8pLBYNOHHp
-         tCYf0TN9aOJO0r0OvypZOmGuIHzKVt8efui/yRSspl0dlkcyNXbEq/TNMvbEbfc10u7h
-         P6+A==
+        b=IbzBQ/5u+pM5zVxI5euq6BHCyq9Xkai1T2NUKUPHi7aiqlhkejfpXaF2fX44k9AMig
+         Z0aNik+i/s2vjgDu8cnjc4Epxm8ao3EdSKcb72hcp3/QS9KJhH4NWNFuIz6J0KPYPEjq
+         lvGvbIBdCH6nfLAFT4Z2HqgDtBDePrbsL9Pgca/VPjedLnMsbQBjdzy8C+wY+O9xC/Za
+         S2TeUlZQ969TjZFoVpO49J3apAsCGo76FXQw5hhS0z5Swf/F4L2aHPRxxkiFtXu3r39M
+         6Eq3HBsPyytoz2jvDlTxwbhAPbezPgTpuYUXFyMwnAW5pA92x+g6hAz/AF9fnC9suVQ4
+         Fc0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=TcnmO7fRGNuZ1u/wocvqveXwUy5+lAiES0Bl8oMnk2c=;
-        b=rxI9hnDWFyBOyaqXjAbSAAyAoTC42E3F4xU5eE7V/lYzw/vEZ/bZucTUeD+B0vIHK2
-         YZixS8aX0bUxlym87gBIyiYzaVDtNBO8HDcVFXuKPZLFqh6LVVSfChNs3nkYb517pFTA
-         QRhRQlQu1psVAh6MJrKeArTHnNxqarfYt4iheq4X0MytGLHzMcMOYdTIPPCoCMgYGHLo
-         mZ3N6VaylCmLq44ereSnwH02ugrtaeQn7Ct0wNXVqJj7KMmgAIJkhTUITExDxUvjGep5
-         XdezVltTBj8V3oplXneg3Q+Iwkh/IMUewsOA+R54+l/HeXPgpjLb1rJFGpGes94QnkCk
-         cwdA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=rddCUKG87r7Bq6dWzJnqpFjeuq8ftyaCXi979E4AXfU=;
+        b=HrEiXkAnUzfnM5al0mCaaUnSm5/Prp0Na1AYMuoA+uy7E3GMbWf5bUzBIISBg+zA1Z
+         rAJL3EMe0TDDBbhpjPBUGC4vpzqM6CGaq56farGgdJtYBxmFZ7jLebDQVDIyOsrPsJPk
+         /AXi/d+qlBNmJNqdN9JMx6UGBYvp/48v5HtkuEzkbv0ju4Lh8H2OzUd1H5MsxNRLOytW
+         s48i9pCMPwSet0FhD1rE5imxHB5hOKzrKxjRUiSgAzd2qsOCERa9lGh8p5ezW74yWKwE
+         jmTMGtTchcZnREeFhTcZFbfQhrhlmgOYBbBx+8uGp+AcJKvK08N02T6DPj0VsXXvX0M5
+         BFbg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C9MlnW0h;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id a141si3101pfd.5.2020.03.25.13.00.17
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fN+i13xi;
+       spf=pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=andy.shevchenko@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <andy.shevchenko@gmail.com>
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id n5si7102otf.3.2020.03.25.12.37.50
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Mar 2020 13:00:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2020 12:37:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C9MlnW0h;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585166416;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=TcnmO7fRGNuZ1u/wocvqveXwUy5+lAiES0Bl8oMnk2c=;
-	b=C9MlnW0heff8l2FMa6JARyU7LP6Td0/jWBEWyl9kXeSp3GPJMcJLSjjGfv2KWxJ2IPyaJw
-	GBmbqqAoBrPJ2t0rlG8LnowJl3mRwBD8IZbu4LxdLhaCi2oiu1mxBcT/7XGYMJT4mYBbt9
-	N9tlopzhTsbZFVxlXSyPpkPYHzuPI4E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-0_FNnFoGPlyYnbdq0gc69w-1; Wed, 25 Mar 2020 16:00:13 -0400
-X-MC-Unique: 0_FNnFoGPlyYnbdq0gc69w-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 50CF8107B765;
-	Wed, 25 Mar 2020 20:00:10 +0000 (UTC)
-Received: from localhost (unknown [10.36.110.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 00EFC5C1D8;
-	Wed, 25 Mar 2020 20:00:03 +0000 (UTC)
-Date: Wed, 25 Mar 2020 20:59:40 +0100
-From: Stefano Brivio <sbrivio@redhat.com>
-To: DEEPAK VARMA <mh12gx2825@gmail.com>
-Cc: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>, "Caprioru,
- Mircea" <Mircea.Caprioru@analog.com>, "kieran.bingham@ideasonboard.com"
- <kieran.bingham@ideasonboard.com>, "gregkh@linuxfoundation.org"
- <gregkh@linuxfoundation.org>, "linux-iio@vger.kernel.org"
- <linux-iio@vger.kernel.org>, "jic23@kernel.org" <jic23@kernel.org>,
- "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
- "Hennerich, Michael" <Michael.Hennerich@analog.com>, "lars@metafoo.de"
- <lars@metafoo.de>, "andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
- "daniel.baluta@gmail.com" <daniel.baluta@gmail.com>, "pmeerw@pmeerw.net"
- <pmeerw@pmeerw.net>, "knaack.h@gmx.de" <knaack.h@gmx.de>
-Subject: Re: [Outreachy kernel] Re: [PATCH v3 3/4] staging: iio: adc:
- ad7192: get_filter_freq code optimization
-Message-ID: <20200325205940.06bc84b6@redhat.com>
-In-Reply-To: <20200325173815.GA28246@deeUbuntu>
-References: <cover.1584904896.git.mh12gx2825@gmail.com>
-	<dad3cdb5de76234cc460300c31aea6af671f81ad.1584904896.git.mh12gx2825@gmail.com>
-	<CAHp75VfC=y1mHW5=ghwdMMZYg=00_a5RB0Phz4j_vM77pehvMA@mail.gmail.com>
-	<20200323014935.48048405@elisabeth>
-	<CAHp75VfF+oDWsOF+_=U6YBeP60XLF=SLYzExa=5WjLSgoMUw9A@mail.gmail.com>
-	<20200323131531.1d6c8f93@elisabeth>
-	<20200323175223.GC22110@deeUbuntu>
-	<4385dc0509f035bbd14d85b81527997f7a2538e8.camel@analog.com>
-	<20200325173815.GA28246@deeUbuntu>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fN+i13xi;
+       spf=pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=andy.shevchenko@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x443.google.com with SMTP id h72so1561961pfe.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 12:37:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=rddCUKG87r7Bq6dWzJnqpFjeuq8ftyaCXi979E4AXfU=;
+        b=fN+i13xi9ph8eBAPsQjTaGuoLjpOq672ojPRl4NnTLVE8i/SaZloifztd4K3hf/rdG
+         7g7Cs8AMBFgaZ69BN2fLV3cFBFIMLF1hG9zhNg/XwfzyJXVh1wpYzjxeHPd3t0sBxu1J
+         7TBaV25h1/Vf4BPdPRUCGZB+Mn/JQJVDCLDeZNdMmrgW0rwOrOPVTlKnxeiuFbbjOfqf
+         +kRtzfpjYGwWhuhGazOWge/K8dKJhSIcwQGx9MyvchFQGbAzp6wyeSoOzRWKmYURVWoV
+         eMuggTjLqJWp/Wbe64Gmg99e5lB81/gY5gMRqURH7iFlnoy48e6xKtAGjt7z2mhDnCH/
+         tuOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=rddCUKG87r7Bq6dWzJnqpFjeuq8ftyaCXi979E4AXfU=;
+        b=jQqXSYEE8pieE4+cULb1Gsv6paj/7EgwEdfAKtlsmVGr/M8U6udk+VjurhAL4jJNOj
+         QUiXzaopQVlfZ+fNX0sK0AWmLtXzmQimfwduYSyGIEsmra1sZtU0tKVnzL9M6jOoHZHh
+         vQ6HFfP18LxPQ/B3n0cPng26Re8BUzPdjbWvvHDNsAWZCkAI/oltbotF58kv0NHh8+Zg
+         gzu1WRo6kam7viZflH3m+PZD1unjxVf+CMUDF8UH/yKIfGhQXIBs/mES9JjmquNKRkBA
+         KlqI/DLaU22GXC5Vtg0q0tNSIQr9uIcPBaz4VKwZgnMBgvB6tMOoKH//HZae0OaW+Cay
+         a3/A==
+X-Gm-Message-State: ANhLgQ3mMwMMHiH9a6Nb8PMvG+TfNJCaNxkkcv1Ns9q8q6FqxwPzCVRf
+	DerMTqcsT/hP3+7xQGSfFLhDadvDN9axVm9RgMahZU6s
+X-Received: by 2002:a63:5859:: with SMTP id i25mr4519803pgm.74.1585165069778;
+ Wed, 25 Mar 2020 12:37:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+References: <cover.1584904896.git.mh12gx2825@gmail.com> <dad3cdb5de76234cc460300c31aea6af671f81ad.1584904896.git.mh12gx2825@gmail.com>
+ <CAHp75VfC=y1mHW5=ghwdMMZYg=00_a5RB0Phz4j_vM77pehvMA@mail.gmail.com>
+ <20200323014935.48048405@elisabeth> <CAHp75VfF+oDWsOF+_=U6YBeP60XLF=SLYzExa=5WjLSgoMUw9A@mail.gmail.com>
+ <20200323131531.1d6c8f93@elisabeth> <20200323175223.GC22110@deeUbuntu>
+ <4385dc0509f035bbd14d85b81527997f7a2538e8.camel@analog.com> <20200325173815.GA28246@deeUbuntu>
+In-Reply-To: <20200325173815.GA28246@deeUbuntu>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 25 Mar 2020 21:37:42 +0200
+Message-ID: <CAHp75VcLj8YLg=iBejQj+UGmhK2nTm1TxETASxt4qDhGOnN0WA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH v3 3/4] staging: iio: adc: ad7192:
+ get_filter_freq code optimization
+To: DEEPAK VARMA <mh12gx2825@gmail.com>
+Cc: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>, 
+	"sbrivio@redhat.com" <sbrivio@redhat.com>, "Caprioru, Mircea" <Mircea.Caprioru@analog.com>, 
+	"kieran.bingham@ideasonboard.com" <kieran.bingham@ideasonboard.com>, 
+	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, 
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>, "jic23@kernel.org" <jic23@kernel.org>, 
+	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>, 
+	"Hennerich, Michael" <Michael.Hennerich@analog.com>, "lars@metafoo.de" <lars@metafoo.de>, 
+	"daniel.baluta@gmail.com" <daniel.baluta@gmail.com>, "pmeerw@pmeerw.net" <pmeerw@pmeerw.net>, 
+	"knaack.h@gmx.de" <knaack.h@gmx.de>
+Content-Type: text/plain; charset="UTF-8"
 
-On Wed, 25 Mar 2020 23:08:17 +0530
-DEEPAK VARMA <mh12gx2825@gmail.com> wrote:
-
+On Wed, Mar 25, 2020 at 7:38 PM DEEPAK VARMA <mh12gx2825@gmail.com> wrote:
 > On Tue, Mar 24, 2020 at 08:06:34AM +0000, Ardelean, Alexandru wrote:
-> > On Mon, 2020-03-23 at 23:22 +0530, DEEPAK VARMA wrote:  
-> > > [External]
-> > > 
-> > > On Mon, Mar 23, 2020 at 01:15:31PM +0100, Stefano Brivio wrote:  
-> > > > On Mon, 23 Mar 2020 11:28:52 +0200
-> > > > Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
-> > > >   
-> > > > > On Mon, Mar 23, 2020 at 2:49 AM Stefano Brivio <sbrivio@redhat.com> wrote:  
-> > > > > > On Mon, 23 Mar 2020 01:44:20 +0200
-> > > > > > Andy Shevchenko <andy.shevchenko@gmail.com> wrote:    
-> > > > > > > On Sun, Mar 22, 2020 at 9:57 PM Deepak R Varma <mh12gx2825@gmail.com>
-> > > > > > > wrote:    
-> > > > > > > > Current implementation of the function
-> > > > > > > > ad7192_get_available_filter_freq
-> > > > > > > > repeats calculation of output data rate a few times. We can simplify
-> > > > > > > > these steps by refactoring out the calculation of fADC. This would
-> > > > > > > > also
-> > > > > > > > addresses the checkpatch warning of line exceeding 80 character.    
-> > > > > > > 
-> > > > > > > I'm not sure you did an equivalent changes. I believe in the original
-> > > > > > > code precision is better. Consider low clock frequencies when 10 bit
-> > > > > > > right shift may hide some bits of the division.    
-> > > > > > 
-> > > > > > Note that those bits are eventually "hidden" in the same way later,    
-> > > > > 
-> > > > > Even if mathematically (arithmetically) evaluation is correct, we have
-> > > > > to remember that computers are bad with floating point and especially
-> > > > > kernel, which uses integer arithmetic. That said, it's easy to get
-> > > > > off-by-one error (due to precision lost) if we do big division before
-> > > > > (not so big) multiplication.  
-> > > > 
-> > > > That's exactly the point I was trying to explain below: swapping steps
-> > > > in a sequence of DIV_ROUND_CLOSEST() (*not* of arithmetic divisions),
-> > > > *should* not affect quantisation ("off-by-one") error.
-> > > > 
-> > > > I'm not entirely sure in this case, so a quick "demonstration" in
-> > > > Python or suchlike as you suggested would be nice to have, indeed.
-> > > >   
-> > > > > > despite the different sequence, due to DIV_ROUND_CLOSEST() being used
-> > > > > > at every step (both before and after the change) without other
-> > > > > > operations occurring.    
-> > > > > 
-> > > > > By the way, where AD7192_SINC3_FILTER and AD7192_SINC4_FILTER
-> > > > > multiplications disappear and why?  
-> > > > 
-> > > > Those were in fact divisions (multiplications of the divisor). Overall,
-> > > > these steps are now arranged in a way closer to how they are presented
-> > > > in the datasheet mentioned here (up to "Chop Enabled" paragraph, page
-> > > > 26).
-> > > >   
-> > > 
-> > > Thank you Andy and Stefano for your comments. Its very thoughtful. I am
-> > > not much familiar with Python so far, but thinking on evaluating your
-> > > suggestion in a sample c program. I will share the outcome shortly.  
-> > 
-> > +adding Mircea Caprioru
-> > 
-> > Umm, this math-cleanup looks pretty dangerous.
-> > If possible, I wouldn't change it.
-> > At least without some testing on HW.
-> > 
-> > Maybe doing math-simulations in Python scripts would also work, but not sure.
-> >   
-> 
-> Hello All,
+
 > I further reviewed current and proposed implementation of the
 > get_filter_freq() function[Thank you Stefano for your time]. We realised that I
 > was wrong in swapping DIV_ROUND_CLOSEST calls with mixing
 > multiplication in it. It is indeed incorrect to mix multiplication if we
-> want to reorder the calls.
+> want to reorder the calls. Comparison of the results from current and
+> proposed implementation proved it. In short, the patch I sent is wrong.
+> My apologies for any trouble.
 
-Specifically, my wrong assumption was that we were just reordering
-DIV_ROUND_CLOSEST() operations -- that's actually fine: with rounding,
-integer division (not mixed with other operations) is associative.
 
-However, here, we had those 0.23, 0.24, 0.272 factors. I missed them.
+No problem, that's what community is for!
+And everybody has been learning always something new.
 
-If we factor together these multiplications and do them first, of
-course, the result is more accurate, which, I assume from the usage of
-DIV_ROUND_CLOSEST() and the typical application of the ADC, is quite
-relevant here.
-
-The observation here is that, by doing all of them first, the code is
-more accurate (e.g. with a fclk of 2458464 and 904 as "mode" we get 722
-for freq[4] instead of 723 -- 722.377747 with real division) and
-actually becomes more readable, too.
-
-> [...]
+> We have further improved the test program with a revised implementation
+> [attached with this email] and found that this revision appears to
+> provide more accurate results [I think].
 >
 > May I please request you to review the attached test program, verify the
 > results and share your feedback.
 
-As an alternative to what Andy suggested, I guess you could also post it
-inline, just like we do for patch reviews. Commenting becomes natural
-and the discussion can be referenced later via archives.
+Do you have GH account? I would highly recommend to use its Gist
+facility for such small (one file) type of programs. It allows you to
+update them and see versioning. Dunno if possible to comment, but
+anyway more advantages.
+Thank you!
 
 -- 
-Stefano
-
+With Best Regards,
+Andy Shevchenko
 
