@@ -1,99 +1,109 @@
-X-GM-THRID: 6663223880955461632
-X-Received: by 2002:a17:902:7889:: with SMTP id q9mr811737pll.28.1551402705015;
-        Thu, 28 Feb 2019 17:11:45 -0800 (PST)
+X-GM-THRID: 6808081754590543872
+X-Received: by 2002:a19:5e06:: with SMTP id s6mr2115738lfb.154.1585136280301;
+        Wed, 25 Mar 2020 04:38:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e393:: with SMTP id ch19ls3413236plb.2.gmail; Thu,
- 28 Feb 2019 17:11:44 -0800 (PST)
-X-Google-Smtp-Source: APXvYqynu547usJbRpX7kXq+L/xfmMm14JqjikUBSrbXVpqJUsaU0jnnqURKfnne+mthFYzNm5gg
-X-Received: by 2002:a17:902:2948:: with SMTP id g66mr814099plb.0.1551402704230;
-        Thu, 28 Feb 2019 17:11:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551402704; cv=none;
+Received: by 2002:a05:6512:3188:: with SMTP id i8ls249774lfe.4.gmail; Wed, 25
+ Mar 2020 04:37:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvSjI4ZkGALbix4nADfcVGisaPpIsQHEvLTjp4da+aQ6h0rFM1+cOmbrPb4D24PpxiskvvW
+X-Received: by 2002:a19:f618:: with SMTP id x24mr2090814lfe.106.1585136278583;
+        Wed, 25 Mar 2020 04:37:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585136278; cv=none;
         d=google.com; s=arc-20160816;
-        b=yewzrNdhRdO/t30mYCgA98/c83JG98ZniaXRlyRtrejWxiNT8yJQMiq2UazpgMvU6D
-         idsGV3nsGvBGp7dYjf8fSLVMNJn3lca5i7Wa9Lo6qlQqqSPBMyB5QZN4GMuFPSn9oOlM
-         gFu4y5PR6Ez3Q5ojUCRlYDSTSF06NYZOC9uIUr00n69yvf2EoKBkLcym/48iJfyivRM6
-         TizqbWHFMq58C68ykp6C74fgLMzvlD3yiMwdjQDT+XWjhOULtUEvfWp2ZlhI9EV0bbyE
-         l5/p+W9+Aq4C+b4HEy6moBXUhRFsMXEGrrc4ONo+fEDB6QsBgD8PxcRgG/HgEd7Q0xQJ
-         AAjA==
+        b=yvPbgpgTLl/z4EQMSYHPAx3x/L9qOoED1+6dAwWdEs5QU0+BDm8pL76hbB43IWKlWe
+         frRybqBocyG0wNu98Do+Wmz+R18A/y1ebQ1tiEiS8xCdNaHSRQycFnv+Q3UTkMjip0Fz
+         Isy09nM4h2YNT/ljIPZvOb8+yGntu5Jv7FNyuHFH332OoUuIxAjyCZbWlAbxGwR9rmv4
+         LshGgqclvLga8+u4UiSvX37+cq4CS4+yeP1WiV9HF4py+SMSDmrFy6M6o7mXlpD+1gG7
+         V8v6E7PVOy/GT+3u87yVowq7Q94DezkiPcB0sBl78mmf7G2MfoJZRMOEGmwLmYmnRA+j
+         JlsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pwORDTpBfabZv3XSlvH+JBPhN2BDO/rGezfZkn5z7Y8=;
-        b=fFSCttk55/drGPfS7jD6+84XRhqWxR5lsv1a9L0+tPdpih1VJDq/AUjmTeJqID4/r1
-         3B506Q8Iqtz4TqAibCXUZ8ksT8M1F5dllwKABf6b2DUUZ1vApOF30bksdRate0jL9v/p
-         r0l1TdTerkdjSSPibDLTiHnIpp3RTulQO0t0Ro9T8Y0O91ok6tNDxbVui4IaBagwPuQS
-         qx/onMxUOjuEm1TPDdnfX0SLCHoC1h2MeTjf18IhO+vXubGAJT/xTJDKkugeDsvLAvoD
-         KffB/3Lq304OXlFJEy2VCrWa3l2PMfeFZ/rsRi0yBJj3Oo2sJgJhDW2x774YMB1VvsEg
-         +9ew==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=6CE7k7VEYyFG9gKlgzJuFO6WceRc21+4CLxw1CCwsKE=;
+        b=IgnjDg1JJFzWk7MEGR4ZARdQm4taniTY/mMc1WM6yMCNQkTPdBEp8JTcnsBJ0WTzGF
+         t1iwkBkHU9i69v21GIzVZ0iHACC1MUt9a7C9d2apBZ85Rc/igRpgh0GZkjzrAyfgqePH
+         CY2OCg3T3iVdQwrTa7qjljkEOucPInGreNCJ6lf8BkqIlVcwLdLIEOyNLDD64uWhLvme
+         ObS60EfCUUSzgb/3oGn25Z61/FZKfKGjsK8qCU+76heFcdTgrkbcx7EMKmv7CRA50Tyx
+         Ok1pM0xeZZ8WX65orI0RWdi/f6+XOnPjGtat8DrjmBsgeH0QT+jaCnfZy3dKwXXG9ydh
+         zwSA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lRxTfAqM;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-oi1-x244.google.com (mail-oi1-x244.google.com. [2607:f8b0:4864:20::244])
-        by gmr-mx.google.com with ESMTPS id e71si420830pfc.1.2019.02.28.17.11.44
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id a21si1510392lff.3.2020.03.25.04.37.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 17:11:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) client-ip=2607:f8b0:4864:20::244;
+        Wed, 25 Mar 2020 04:37:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lRxTfAqM;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::244 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-oi1-x244.google.com with SMTP id j135so18198775oib.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Feb 2019 17:11:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=pwORDTpBfabZv3XSlvH+JBPhN2BDO/rGezfZkn5z7Y8=;
-        b=lRxTfAqM1cMAejqU9sXTKx+27ySxM52CNZvBXdFTPepJmK6EPZ4lYIWF3H0fDxwejA
-         cTVIiOUH3LaB4hUvAUWW+GJ4EXYl4FXw7mc2biFNSAhRl4CU4D6F51GpGASyvKE5iigK
-         oHIvaMx2AQwaqPsdKJAkLnVJMOfdzSOxekMMPM4DNqnzO95ujYHKaze7jj7Kjdi5yLs8
-         CUKDxMDEzu4dqiY1pxK6cbnCpg4hsBfpbXzAGW0CUuZgeLbDJMzuI6QaPXkhlvOsFLCi
-         mrnEvAS1fVtOjm0u6SHoT2XYl8OPW0R777xhe/gqJsrGzX2cbUWc1co9eB7/LjAcc7GL
-         8wyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=pwORDTpBfabZv3XSlvH+JBPhN2BDO/rGezfZkn5z7Y8=;
-        b=bBGSmWRYjb8VD+Sv0dmQw0A0ii7/mDIccFEwE4a6kN9M4zekAkTUCHmTdNF2JgxK5H
-         TrjPVZLT21B6vYpjmLMEEk/b+E1C61iquIg3q6njUtzyq4LuIGf4xzVQ5HbtUdIjcFGh
-         X1SQfaaXwamWJ9HiYbxo7GHmVRhj4N35bsS5LKlN/pVpHqr7AqyW2CqMO42IbQacbP65
-         SEeQIjudW1w14mfABoGHEFTkFRBzSRZwBzNL35Yanb94H6JNro6mNpTyGAHD6myYpSKk
-         lKm8tFO9s6EAmBrIe971yb3nufDJinoUDLRcluEaLb+exVuw63nXMF5D7wk+64Ur2MT4
-         xZgg==
-X-Gm-Message-State: APjAAAWkrrEgxC4K2w9cno4O7UJSqSxgSeE3CnnYwyJ5RmMdZ/DRVirx
-	2f1XbY5Qi8qcfkMDtNPiYI8=
-X-Received: by 2002:aca:cd93:: with SMTP id d141mr1685541oig.163.1551402703476;
-        Thu, 28 Feb 2019 17:11:43 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id y19sm7854546oih.42.2019.02.28.17.11.42
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Feb 2019 17:11:42 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH 0/2] Staging: vt6655: Fix comment style of SPDX-License
-Date: Thu, 28 Feb 2019 19:11:37 -0600
-Message-Id: <cover.1551402120.git.madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,304,1580770800"; 
+   d="scan'208";a="343676712"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 25 Mar 2020 12:37:57 +0100
+Date: Wed, 25 Mar 2020 12:37:56 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Simran Singhal <singhalsimran0@gmail.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, jeremy@azazel.net, 
+    driverdevel <devel@driverdev.osuosl.org>, 
+    Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+    outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: kpc2000: Removing a blank
+ line
+In-Reply-To: <20200325095407.GA3788@simran-Inspiron-5558>
+Message-ID: <alpine.DEB.2.21.2003251234560.2444@hadrien>
+References: <20200325095407.GA3788@simran-Inspiron-5558>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+On Wed, 25 Mar 2020, Simran Singhal wrote:
 
-This patchset fixes the comment styles of SPDX-License Identifier based
-on License Identifier syntax.
+> This patch fixes the checkpatch warning by removing a blank
+> line.
+> CHECK: Please don't use multiple blank lines
 
-Madhumitha Prabakaran (2):
-  Staging: vt6655: Modify comment style of SPDX License Identifier
-  Staging: vt6655: Fix comment style of SPDX License Identifier
+The subject line and the log message should be written in the imperative.
+So that would be Remove, rather than Removing for the subject line.
 
- drivers/staging/vt6655/channel.h | 2 +-
- drivers/staging/vt6655/desc.h    | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+The log message should first say what you did to fix the problem and why.
+How the problem was found can come afterwards.  So you should not start
+with "This patch fixes the checkpatch warning by".  "This patch" is not
+useful, because it is obvious that it is a patch, based on the subject
+line.  "fixes" does not given any information about what is done or why.
+"the checkpatch warning" is useful, but it's not what one wants to see
+first.
 
--- 
-2.17.1
+julia
 
+>
+> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+> ---
+> Changes in v2:
+>   - Make the subject and commit message correct by mentioning that
+>     this patch specifically removes a blank line.
+>
+>  drivers/staging/kpc2000/kpc2000/pcie.h | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/kpc2000/kpc2000/pcie.h b/drivers/staging/kpc2000/kpc2000/pcie.h
+> index cb815c30faa4..f1fc91b4c704 100644
+> --- a/drivers/staging/kpc2000/kpc2000/pcie.h
+> +++ b/drivers/staging/kpc2000/kpc2000/pcie.h
+> @@ -6,7 +6,6 @@
+>  #include "../kpc.h"
+>  #include "dma_common_defs.h"
+>
+> -
+>  /*      System Register Map (BAR 1, Start Addr 0)
+>   *
+>   *  BAR Size:
+> --
+> 2.17.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200325095407.GA3788%40simran-Inspiron-5558.
+>
 
