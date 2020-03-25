@@ -1,103 +1,114 @@
 X-GM-THRID: 6808244889450446848
-X-Received: by 2002:a05:620a:12fc:: with SMTP id f28mr5351020qkl.31.1585176696401;
-        Wed, 25 Mar 2020 15:51:36 -0700 (PDT)
+X-Received: by 2002:a17:906:264d:: with SMTP id i13mr436670ejc.1.1585175519237;
+        Wed, 25 Mar 2020 15:31:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:1971:: with SMTP id g46ls1425134qtk.7.gmail; Wed, 25 Mar
- 2020 15:51:35 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsVtKb+g2RV7iMIja/R9fIb1J1b8SfUSf7yzyyPyp2iS9YHAnVhdHT07SxosKwFG/9MPhKC
-X-Received: by 2002:ac8:3543:: with SMTP id z3mr5255483qtb.214.1585176695231;
-        Wed, 25 Mar 2020 15:51:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585176695; cv=none;
+Received: by 2002:aa7:c818:: with SMTP id a24ls2461958edt.4.gmail; Wed, 25 Mar
+ 2020 15:31:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vurG7YRZBH+y5TaGAiagxMtxh+UYtd4HOs6pTL2NUZmg/DL0Lj7pftyWrOIwEK9LL/oEeAD
+X-Received: by 2002:a50:d5c8:: with SMTP id g8mr5454730edj.370.1585175518010;
+        Wed, 25 Mar 2020 15:31:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585175518; cv=none;
         d=google.com; s=arc-20160816;
-        b=ed4Jo+wxmNKICrbzjcROgp4PyjhtxGnAZfWtZ2pcqzc7d+tcOL2fY+cIzg+7siFHCn
-         fVBw4cKu+X6gjcVNdBJoaGD4VGIlYxK9zAM2URqgN1jaQG4tosygDm4ch9h+gPUYjCGV
-         QxxZE7zBSpUVRwKHWcgzuj8afoBIQwNWoAsNmAwio9Z9PLvlZ7cOVQOPtTHc12qZC+i4
-         TqC9IB3vWF/dg9dvGuhS4hMGpZT3ICPwdJ3fc/w1HjSTz0g6pqbTP5FKGhUm3kPsHVCo
-         Fh0UNQEBlOo5oZJV3a52in5T1Dv6GLqiarHXNU2hqBJ0ZTBc0t1qJIxPq4It7AStgC8n
-         zt0A==
+        b=cWGLhZzk+KG1/NPgxNDDlj+GlYQuKzLe4ym+YwpB0TssIPCES4DitmyNUgG511g36f
+         DlCQbF9vgni8itWiUZDoirROn2lpmUUdGBy5ansAu0/OtWo3H0DgmkOcR2xqZVbHOsYv
+         yfScRzx1f++CKDA9fxGnsLP6hJ6BgMpIGAlrH1gqDOGUIlhP/fs8UoT8CZtYXwBHkT08
+         XyLUwVvNqEiLX64/u5Ds2vpG4jQPA5TEVGAhzWUW6OOuYVoIYGinQJu3KCiEepZdmFS2
+         2+A8541TjVaIlk41g0WLnbAToVWtSf5v48ixSjVVd3AOdz7mItq6p1lAUC7BjFOhdUCh
+         dsNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:dkim-filter;
-        bh=BzdHH+13YMAkSiadH/JqQ++WFtXQZS/n4kHHOqncKJc=;
-        b=FNtMhdO5dDZXZkiCnzikP/eezDEy9yKpQNPxj5odDetS19aKvtFVCrfAgoC58fh4id
-         owAP0Ld0gAPY7FC9Wi6NFK92ydE7nnJ+e+NKD7sHHtXPRFur5cC8pMp/mq+7tVmih/Fr
-         Wciu2WVqwCcg/sp4NvGoDFdHTaFSFPh6LHGt2wqzy0QRuACJUI8nWYEwBMG3qJqmbkc4
-         zijPZzOMIdf8+0KwJbclRXpEZ7w03E7xUXX9/P/4IyjJYQ3OLUmtGmkJ47pQr5hOjzt1
-         r34m7nIzi4+UjQ6zme/YoA1cni9ZLH+WnsReY9hQDJBc2yGd548pJDAQwIt2Ww0CUDko
-         kGVg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=JaDNxmowIHppQzyXmLT2oTAbpeEFjiMH/SxX0pUMGKo=;
+        b=n4PshluJLJ94sEgEa3eeuvFD9tRBhMludndM6ZHx6wqaN0TF55gbs2laz1e83hKWr0
+         NxwL0PkEP3L1fuvZMgUd1X+lXdyrgdTNuiUIMNesYHrxP+eTGMTMqDhXDcIy9UuVIDzX
+         Bfr8aeDHQVNGUiRZZx60tm2P0h9WZHUGz97gCvgz+7U8PSjzNVLo/cXiGB/+QFwc93q6
+         jkB2w/bqCib5gFLrHIwvAb8WBzFG4bNea1blAUr036qeZU5yFqYCME+MpN90aNWdoclT
+         jZVX0hDGh7VdEMgfU2kY/5viz8s5PWovy9DD4UieoIBz/2AN2GDz2VZ1Qk2dDx3n9vYP
+         m0Rg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=HyCIDKpb;
-       spf=pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) smtp.mailfrom=nramas@linux.microsoft.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <nramas@linux.microsoft.com>
-Received: from linux.microsoft.com (linux.microsoft.com. [13.77.154.182])
-        by gmr-mx.google.com with ESMTP id e89si59223qtd.3.2020.03.25.15.51.35
-        for <outreachy-kernel@googlegroups.com>;
-        Wed, 25 Mar 2020 15:51:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) client-ip=13.77.154.182;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=txMgZieu;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-lf1-x142.google.com (mail-lf1-x142.google.com. [2a00:1450:4864:20::142])
+        by gmr-mx.google.com with ESMTPS id w13si24299edv.2.2020.03.25.15.31.58
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Mar 2020 15:31:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) client-ip=2a00:1450:4864:20::142;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=HyCIDKpb;
-       spf=pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) smtp.mailfrom=nramas@linux.microsoft.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from [192.168.0.109] (c-73-42-176-67.hsd1.wa.comcast.net [73.42.176.67])
-	by linux.microsoft.com (Postfix) with ESMTPSA id 2A7F320B4737;
-	Wed, 25 Mar 2020 15:51:34 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 2A7F320B4737
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1585176694;
-	bh=BzdHH+13YMAkSiadH/JqQ++WFtXQZS/n4kHHOqncKJc=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
-	b=HyCIDKpbDS47SEz0s6bWYu2oXpnivchsso4T5ia2shpNVGdO+qGTwrZ1SIBM3qGYQ
-	 HBnJGafi90HefCk8OA42YQpLkSdPLlR3hJL4W+5vwt8eC5atkqYh+O7vl2oShh+hPk
-	 D/qP3SVw21Hpl2dqxBXbwBaRtrGZbJNyl3dZXz78=
-Subject: Re: [Outreachy kernel] [PATCH v2] staging: octeon-usb: line over 80
- characters
-To: Gokce Kuler <gokcekuler@gmail.com>, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=txMgZieu;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x142.google.com with SMTP id t16so2375107lfl.2
+        for <outreachy-kernel@googlegroups.com>; Wed, 25 Mar 2020 15:31:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=JaDNxmowIHppQzyXmLT2oTAbpeEFjiMH/SxX0pUMGKo=;
+        b=txMgZieuBidU4+XKJPdVCkfSs4yjyDC7a6028StGfadSW8dZ3M+DfemEk8eOcZRou8
+         uGShF0KG/wtTOoUWKI2s8VzpIA2KEjrewXGOI6KfqPySy99MpwsY3Pojqi0TNFg5SRP6
+         0DA3o71ojNCWFnqqszLJYAJ5UVGKAuJZh9P/ySDP/P4fu+G4brgUhMGUXUum3D3kXKc4
+         QuXbrkvnhNIj+sSHf6GXVWL0UIQdNYkWP/P2t28pGtuUyGswv0hrWF3AOWdJTJ4xKVBz
+         Z+HQuqP11oztMsFFCp4FGHoc9RPlhO2S/4iQsQPxvGH02MT87sX5PuSRRP4oFHMcDE+E
+         7GdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=JaDNxmowIHppQzyXmLT2oTAbpeEFjiMH/SxX0pUMGKo=;
+        b=eRSGP7Vq7eon7CGiubvClOPwYGZRXFyAy5uy+AyWUkF3V7zVAXqav5uq8zBccOo9eV
+         JK8s06rf69lp7q1B6HLaNbZxZxaWvZrAKAzezFrehJqRaJRecoyOSA6Zi+vZxPDmZuF2
+         ExXaX4TWvDGU7Zo8pS9ApDBv5i80diRdibIY8vrRbXsTi6UzAsV4LT5TKdFSmEQcw4AX
+         mdwwhtZ0YwRUDHsKQJ3sfGWcffJUkLAGrZULQaeJdN5R0rww66GMhnhiGhWubdxJaDuk
+         tKG+EnTeN6BqwQgjvxMgBGvSZgaj7QlBZkruBSbbfzs9diZpSQ9xw57PDlg67r1nTu4M
+         UBCg==
+X-Gm-Message-State: ANhLgQ1C5NQtpE3EA5K8jZS+Xw4lIprkm3ioANwcskgyPMLFwCvf//qI
+	oWoRvrU1WHhYMAKtxFbKzXA=
+X-Received: by 2002:a05:6512:1054:: with SMTP id c20mr3561413lfb.69.1585175517458;
+        Wed, 25 Mar 2020 15:31:57 -0700 (PDT)
+Return-Path: <gokcekuler@gmail.com>
+Received: from siyah2 ([88.241.65.199])
+        by smtp.gmail.com with ESMTPSA id h6sm298546lji.39.2020.03.25.15.31.56
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 25 Mar 2020 15:31:56 -0700 (PDT)
+Date: Thu, 26 Mar 2020 01:31:55 +0300
+From: Gokce Kuler <gokcekuler@gmail.com>
+To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org
-References: <20200325223155.GA6515@siyah2>
-From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Message-ID: <727b4f05-6f14-7397-513d-d6d4d2364e47@linux.microsoft.com>
-Date: Wed, 25 Mar 2020 15:51:33 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Subject: [PATCH v2] staging: octeon-usb: line over 80 characters
+Message-ID: <20200325223155.GA6515@siyah2>
 MIME-Version: 1.0
-In-Reply-To: <20200325223155.GA6515@siyah2>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On 3/25/20 3:31 PM, Gokce Kuler wrote:
+Code readability increased for 80 character limit.
 
-> @@ -2641,9 +2641,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
->   						     hcintmsk.u32);
->   				usbc_hcchar.s.chdis = 1;
->   				cvmx_usb_write_csr32(usb,
-> -						     CVMX_USBCX_HCCHARX(
-> -						     channel, usb->index),
-> -						     usbc_hcchar.u32);
-> +						CVMX_USBCX_HCCHARX(channel,
-> +						       	usb->index),
-> +						usbc_hcchar.u32);
+Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+---
+ drivers/staging/octeon-usb/octeon-hcd.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-This v2 patch is a diff from the v1. Right?
-You should fix the v1 commit and generate the patch so that the diff is 
-from the original code (I mean, the one prior to v1 change).
-
-Could you please check?
-
-Also, am not able to tell from the diff - please make sure the 
-parameters are aligned with the previous line.
-
-     cvmx_usb_write_csr32(usb,
-                          CVMX_USBCX_HCCHARX(channel,
-                                             usb->index),
-                          usbc_hcchar.u32);
-
-If I am not mistaken, that's the coding style followed now.
-
-thanks,
-  -lakshmi
-
+diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+index dbafd46..de3b082 100644
+--- a/drivers/staging/octeon-usb/octeon-hcd.c
++++ b/drivers/staging/octeon-usb/octeon-hcd.c
+@@ -2641,9 +2641,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
+ 						     hcintmsk.u32);
+ 				usbc_hcchar.s.chdis = 1;
+ 				cvmx_usb_write_csr32(usb,
+-						     CVMX_USBCX_HCCHARX(
+-						     channel, usb->index),
+-						     usbc_hcchar.u32);
++						CVMX_USBCX_HCCHARX(channel,
++						       	usb->index),
++						usbc_hcchar.u32);
+ 				return 0;
+ 			} else if (usbc_hcint.s.xfercompl) {
+ 				/*
+-- 
+2.7.4
 
 
