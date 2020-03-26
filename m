@@ -1,122 +1,97 @@
-X-GM-THRID: 6754497626903674880
-X-Received: by 2002:a0d:dd09:: with SMTP id g9mr10082011ywe.95.1572654030481;
-        Fri, 01 Nov 2019 17:20:30 -0700 (PDT)
+X-GM-THRID: 6808244889450446848
+X-Received: by 2002:ac8:1c17:: with SMTP id a23mr6992279qtk.239.1585208169157;
+        Thu, 26 Mar 2020 00:36:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a81:ad26:: with SMTP id l38ls1048348ywh.6.gmail; Fri, 01 Nov
- 2019 17:20:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7kwGttOjUiz/6sZMQIlMA8U2KDKiHTLUnGABIn/8aS5UGLdV3azVxeTRUyeZWPI7nEKYJ
-X-Received: by 2002:a0d:c802:: with SMTP id k2mr10978680ywd.358.1572654029294;
-        Fri, 01 Nov 2019 17:20:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572654029; cv=none;
+Received: by 2002:a05:6214:1021:: with SMTP id k1ls1133053qvr.4.gmail; Thu, 26
+ Mar 2020 00:36:07 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsMmkIzyOB0iADArKhbkK53nXjKL7+XekbmiDR5otE4cerKiOBMzv8xWLuxyqC3RWp9ghf/
+X-Received: by 2002:ad4:5648:: with SMTP id bl8mr6698839qvb.189.1585208167861;
+        Thu, 26 Mar 2020 00:36:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585208167; cv=none;
         d=google.com; s=arc-20160816;
-        b=dYf6xOcMDGcPfqAUIIx+T7ihDOxES0r0X33XwUkTMB6D6jkLkkqqllt0hbxQ0/EqLd
-         SXrtAjHlLXxSDzkxkj4pIcJFqNdioGvcNa5XIjfQbqXfyucNV3MyPy5RSLs01Ekoat+p
-         kH/S7H4DMutd4rMLuFLEWGSXmWUDgd6nOPc3OaHwSDCKQLULOEACGzFbZMJeOOn24/O9
-         1l5vHJLRFaukiuKqpS2nxMlBVElhorJrI9knIkv3DC+X3en7aRxdch1JmF0PPgd6Q3cR
-         /HCmggNVFnHFWsvfr7IPv+QGgTQDLVwFUUdY9xaQjIFylpX4KddPJl4hcx4SINX8m10k
-         jehQ==
+        b=0o6p3f1wVKnqRoRpUlLQlwzdOXJ8DK7HRrO3oDOVXJh0h9J2SRFos/b/YpeP4v8Tdq
+         hT5tkCvTypFd43rcvjVq1xhgA/gYw3NaeueLmwY5zmLh0LJ1322H4SjjlXl14OCG0ROs
+         NZILGt4AGkwe132a7KJKFYwLq+Jm9hVV7YwhnTq8+0diK0y7wuSFhd1fmZVIjC07WOka
+         j/+nvLi/kCS+46Z+1EkMjSscwYLN0wa9fNS5ITEBg7plu6Mqnzmh8Xb0bSl2+kWTkrHP
+         cbXSGqaMeNT7dn4IVVP/hswUtDj7RCaTbbcS8d4d5SyYvHib9heByk51f0olTNXi9nVj
+         WypQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:mail-followup-to:message-id
+        h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=0M0FA1unlp8F1Z996jxzOlmlSaGicPhBII8CqVqj8hA=;
-        b=BT9sYzyUiCkKkJ+YEx0nKAqpqV1eHQSoP0sRTc25XCh8IsXKvmIC58IlErFIPERbF2
-         Ws0h75QtZ//MbpJ6I5JEiJlSfbJzDaSMkhOBW1kuqIUz96MAjq2Vvyfc35j2wtXlJWoF
-         Ls9pYtQQBhu1irDSeJVmaorj6B5Lv2o1zGingZTAfo8RcXj3T/QoRTFXmVZXb7Asace0
-         dZrPCgKQgH3O78nMJREPlEuO+layG3KGk6Uwh6KJXctDG8kZBUR/U3tcWpJR29ju281a
-         2Cny0b/iC7OD1zq/HvW1gpGy8mQiITDrwCDbyZW/XrG4mvTsx5msszAVRzgPdqEWxzMx
-         MPKg==
+        bh=fUbZrpKzQyw580OoWDnAJRE6qVG0ConyPXT4EypGJLo=;
+        b=nZdgDkjDl2PbVb4oMKi0dKPo5XTRckFmNE/P8NIbnqmmzCubTWjt8TxXeTJjQTlJBM
+         yaDQsXyyApkQCxJnke3QjQw7Zq263VRpIbABhyx7BX+yqnzaDkh8BECL/M0U/kT6S6+X
+         Csm4k8UDRM3lhGLgDt6JLYzXFDVOT0lWfwsTabQfvX/5b5Ji+kkWzDHPkxKYEPjQJ4Ip
+         V/YyhqvrgBvJQa0HaQ+rFOi9Qxgth6HgkImOHIMwKOODsjVEC1OZWRoO6EwtpiHbtwQs
+         fmeikwjZMFh0uZ8bNIcxKdnzBV0KndwZO/9fvt06XR3/PRXkTlDMP17SMkVlbCS56VLj
+         vgKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mKROfTSm;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jarias.linux@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id j136si387879ybj.3.2019.11.01.17.20.29
+       dkim=pass header.i=@kernel.org header.s=default header.b=ZR0vLV6Z;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id d34si126987qte.4.2020.03.26.00.36.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 17:20:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Mar 2020 00:36:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mKROfTSm;
-       spf=pass (google.com: domain of jarias.linux@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jarias.linux@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id l24so7428703pgh.10
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 17:20:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:mime-version
-         :content-disposition;
-        bh=0M0FA1unlp8F1Z996jxzOlmlSaGicPhBII8CqVqj8hA=;
-        b=mKROfTSm4QhHWPC91kQBTj8+azGrVUnmq41zLleJvFxlDTbC59zZV1DNX046pLmimn
-         f/XlJZbBO82uFaLyfTOqxAr6OdSDeEGk62d9/2pLTU3WIW1/L8Fy+AjpKTufTfaYH+Sx
-         7m5Cx2K7z+ijfkkJW+gsb+6Feq8X8pY1ZLueVQUXFE9NYexoEKJ9cW3Zp9nUemNbAWyC
-         A5soLEHMQsWKMUJ4CT0+b8X/pzx5BmqzI2yq2/QJJIdBcqmhoyimsZ1/wmojlVkh/dZ7
-         vB64jUqhpQf4KOFARU9RCTVUbDnwU3vsQWxDGvZOkn2RQzFFS45QCuz0H8AExOug0kPw
-         5P3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:mime-version:content-disposition;
-        bh=0M0FA1unlp8F1Z996jxzOlmlSaGicPhBII8CqVqj8hA=;
-        b=D6c1R7+3HVQP8xDsUE+LpBL8EaAo/AqHNWXHRRRlIV6PX2LLSDRFdztmVxqYj7tjQR
-         U4k0XcyNVfr2iNDNBDxYASBOCiliBgfdHbxePDxnLECHITZduxGFUsO3arIU2LTuOb5E
-         BvlzB0rSRSD2iyT6ATzyaM4gluyjDgcHYAQxo2LQmnUxpH6S9E5xfXpFzemxKjKMQ+O6
-         1AVAmlgjKn9j+wjxnR/R0hKiNZZlKIuuq1dTmW0/XOxxDbXtfRRn8Tjyz1rNFx+9Mziv
-         lkB2I5hWiq3DJsJuDrXBzUA3rOt9Yea61KHfebxTSa9vzC/SzVuj3yoTPCJ+0ibz+BVG
-         H2oA==
-X-Gm-Message-State: APjAAAXV2lZaP9k65qLvtt7Gz175M7GdhnhXzGl18Mzti9JE/9nLA5XF
-	ZdN6MSGLQav3asYhMKc/RUCS//LzewI=
-X-Received: by 2002:a63:541e:: with SMTP id i30mr16390004pgb.130.1572654028523;
-        Fri, 01 Nov 2019 17:20:28 -0700 (PDT)
-Return-Path: <jarias.linux@gmail.com>
-Received: from gmail.com ([104.216.216.194])
-        by smtp.gmail.com with ESMTPSA id n62sm14782144pjc.6.2019.11.01.17.20.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 17:20:28 -0700 (PDT)
-Date: Fri, 1 Nov 2019 19:20:25 -0500
-From: "Javier F. Arias" <jarias.linux@gmail.com>
-To: gregkh@linuxfoundation.org
+       dkim=pass header.i=@kernel.org header.s=default header.b=ZR0vLV6Z;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 2027E206F8;
+	Thu, 26 Mar 2020 07:36:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1585208166;
+	bh=oT6x9cY/UWcgp0a7uWV3ukSJe8lz/goBe8oXGy1qFm4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZR0vLV6ZSpWJDWC/esQjoZt/0LWk3c5t8lVLemcWIcheeeG37igSigtzSZTmQYGSx
+	 PqTfMr9AJ9KIae3l+SKNg6pyeB7i9SvcLodh/n1Zx3+PvFcYkd2qQ6dSOQ0mM8YvyC
+	 y/1GgJ9sNWHGf2DtycVWrvN3X7vMcdSWyrQTJYcg=
+Date: Thu, 26 Mar 2020 08:36:03 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gokce Kuler <gokcekuler@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Fix incorrect type in argument warnings
-Message-ID: <20191102002025.jsdzln5mzuftbqoq@gmail.com>
-Mail-Followup-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: octeon-usb: line over 80 characters
+Message-ID: <20200326073603.GA936188@kroah.com>
+References: <20200325223155.GA6515@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20200325223155.GA6515@siyah2>
 
-Fix incorrect type in declarations to solve the 'incorrect
-type in argument 3' warnings in the rtw_get_ie function calls.
-Issue found by Sparse.
+On Thu, Mar 26, 2020 at 01:31:55AM +0300, Gokce Kuler wrote:
+> Code readability increased for 80 character limit.
+> 
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/octeon-usb/octeon-hcd.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Signed-off-by: Javier F. Arias <jarias.linux@gmail.com>
----
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+What changed from v1?  Always put that below the --- line
 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index db6528a01229..bb63295e8d4e 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -83,7 +83,7 @@ static char *translate_scan(struct adapter *padapter,
- {
- 	struct iw_event iwe;
- 	u16 cap;
--	u32 ht_ielen = 0;
-+	sint ht_ielen = 0;
- 	char *custom = NULL;
- 	char *p;
- 	u16 max_rate = 0, rate, ht_cap =false, vht_cap = false;
-@@ -760,7 +760,7 @@ static int rtw_wx_get_name(struct net_device *dev,
- 			     union iwreq_data *wrqu, char *extra)
- {
- 	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
--	u32 ht_ielen = 0;
-+	sint ht_ielen = 0;
- 	char *p;
- 	u8 ht_cap =false, vht_cap =false;
- 	struct	mlme_priv *pmlmepriv = &(padapter->mlmepriv);
--- 
-2.20.1
+> 
+> diff --git a/drivers/staging/octeon-usb/octeon-hcd.c b/drivers/staging/octeon-usb/octeon-hcd.c
+> index dbafd46..de3b082 100644
+> --- a/drivers/staging/octeon-usb/octeon-hcd.c
+> +++ b/drivers/staging/octeon-usb/octeon-hcd.c
+> @@ -2641,9 +2641,9 @@ static int cvmx_usb_poll_channel(struct octeon_hcd *usb, int channel)
+>  						     hcintmsk.u32);
+>  				usbc_hcchar.s.chdis = 1;
+>  				cvmx_usb_write_csr32(usb,
+> -						     CVMX_USBCX_HCCHARX(
+> -						     channel, usb->index),
+> -						     usbc_hcchar.u32);
+> +						CVMX_USBCX_HCCHARX(channel,
+> +						       	usb->index),
+> +						usbc_hcchar.u32);
 
+No, that is harder to read now, you can try to get closer, but I would
+just leave this alone for now as many people keep messing with it :)
+
+thanks,
+
+greg k-h
 
