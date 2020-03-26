@@ -1,210 +1,221 @@
-X-GM-THRID: 6528829311020957696
-X-Received: by 10.101.81.200 with SMTP id i8mr1975380pgq.103.1520111530692;
-        Sat, 03 Mar 2018 13:12:10 -0800 (PST)
+X-GM-THRID: 6808287066247397376
+X-Received: by 2002:a62:1b05:: with SMTP id b5mr10642507pfb.281.1585250891941;
+        Thu, 26 Mar 2020 12:28:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.194.153 with SMTP id w25ls3801535pfk.10.gmail; Sat, 03 Mar
- 2018 13:12:09 -0800 (PST)
-X-Google-Smtp-Source: AG47ELv1/nui4qXQ6F2BKkN0psxcnGDlZwuKQB5Kvy9u+btkl4bFA3mD8hS0sBPAM+cMWOIJIcbF
-X-Received: by 10.101.64.66 with SMTP id h2mr1914252pgp.119.1520111529219;
-        Sat, 03 Mar 2018 13:12:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1520111529; cv=none;
+Received: by 2002:a17:902:ff18:: with SMTP id f24ls4602252plj.0.gmail; Thu, 26
+ Mar 2020 12:28:10 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtD4la4E1JAQQeIG7n7qmYhnPz79NEZBhfLWjNIG8jQWA+B/NNr8pwBNNA2ckpfVrGhCmjE
+X-Received: by 2002:a17:90a:8806:: with SMTP id s6mr1681771pjn.141.1585250890272;
+        Thu, 26 Mar 2020 12:28:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585250890; cv=none;
         d=google.com; s=arc-20160816;
-        b=AM5sIIwVRPlN5SfqNiYtGmhqy89awXgIGuzHWQSqypxaFgwm1PaqI8t71l6qUOWyoU
-         2yI0VI9e8UTzK2WkZajFBTzN5GudNIFUtbtObL/hRPusl7a0KUgJfbg2OfUNUogwAuav
-         J2dtAxN8r+POlmuvyzk2gAM/DAKriwfTTp3ADATE5JTvRXk5/50Zbru8f8ZgsIGoph/W
-         4+q3Cj5/UfI5FSTU1neujnfkBb48w8wTfABfNV/PBUxF9J2l5ovl4+mRzJT2kyRz13Jr
-         /e8RAAv42tXw8o2iYPrt1utzz2VhBo+m1csWQORX2cE3lLux1XJ+UFlTIANUgK23U6o8
-         2zvw==
+        b=x04esXoX3dGwINsHFDHilE8dEJpdwDMxp5Tiob1/cJtj3eV99hmxtiv74MoPW7wQkV
+         FK7w9CTJTP+PBOOUFjjMMpuW/HQG6Ug+DBfpoPe0uHruKdXS7XjiJZRr+j+fq0WDmRuH
+         mb//5Q7sRSc0d5fAMp8mL3l0d0SWKZQ1oH+Qs38Gg21wPLJb6G14vctlFBXSxUrHrGWf
+         1foviDGcGRUrkoFTTp3REwL/Wq7t6Qj2VVLFPoUKjTHrZP1OLb9lTioe7yKlOyTGLX3X
+         DnnJXXU+xQQuZ64qmhFz8tgHGSfFshn+jMZhFvhKILiCGki/FJCMbYIA2dMVysfoJ4IE
+         0bdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=qYFOliKs+GL/KpN4UyjZwqeV2Fe1NyMsGcGIf7VxdLs=;
-        b=MLI8ytjiT28rhPC36Oysn4sqtwJpRdI5jlivkM902MzMprTKK/KZkqC8xe+6Y6i6iW
-         jlRV4CHhGTdhnwQdzy47sxIbcKh0kkilD1FIkl/7SAU05TFkygGxduIqYqpuIXodAS/a
-         yMxD2g/lK7SwE37I3Ooian7uXYETmiX1UBQ6oQSZyhQF25ergttm/H3uFgGLVVtmQv6Z
-         odjOsOkMHG/FgxXGFLm8Zm6Crya8/o9NB3KZh3QWrD3ZzIUVHjuljTEL2o0bpnHgUw+J
-         tGTyDm0M0d14l96yopmdA1Ld8g1tRZofudQv6U5Enm8xFXt5OB8cI6cjVT+GTeOulXuQ
-         ERLw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=2Bn1o6cEGb4ftm/y8eY16FT9RjCs+HWtKGWPHKEalRE=;
+        b=i1uXu8Se5L8zi0gKkjPm3tX8Tcf+2Uy570GnQjDG0IJREl0EwOQkBQrtVAUNDJZ340
+         qJwiEcXMi6nJl5A6c9nObTqKSvRmTGXjsrAGXHq62W/27nMw10mp/RjB8qeLsmV0nWhS
+         1S29n/1tQd6q7wt71r/J2lgzwUtMAA+XZTX7Jtdi9rIZPgqMIVSaesAVXSMSg2WE4TSW
+         aIxYk4bES990s+FUOZa/Nfj6xNVtRQgA8iwRKV1MwWdl0tu57Tz/SZVTfIK2MujwNri4
+         KfmL1BVJRpbVH2+8ECEB0YNZoCi1i2RiozhS+oO132rGKbdHFjBJ24N4R+3Wv4j70MEp
+         Bs/w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tMiWR76U;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sucanPSh;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id y22si410068pfe.5.2018.03.03.13.12.09
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-vk1-xa44.google.com (mail-vk1-xa44.google.com. [2607:f8b0:4864:20::a44])
+        by gmr-mx.google.com with ESMTPS id m21si222265pls.5.2020.03.26.12.28.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Mar 2018 13:12:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 26 Mar 2020 12:28:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) client-ip=2607:f8b0:4864:20::a44;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tMiWR76U;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sucanPSh;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2607:f8b0:4864:20::a44 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id y8so5237981pgr.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Mar 2018 13:12:09 -0800 (PST)
+Received: by mail-vk1-xa44.google.com with SMTP id n128so2034521vke.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2020 12:28:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=qYFOliKs+GL/KpN4UyjZwqeV2Fe1NyMsGcGIf7VxdLs=;
-        b=tMiWR76UNIBMC7/+8F7Ur3omtptZBd1dmQ6CxLVxyAuB3E9WZc5fzofVR6hdjIbnUi
-         /6Bor6TkQH3Q3NGsHdFvsZX/bVRMdfXd3qo9CWr1uRnKVZxXjK2KEtGSdw7sIftkE1wP
-         YY3NkEnxZSubTYMzAkoLMYm8My+6fZ6bvN+H/Nz78ke6QQ/jelS4fKW3pVzm+vPUcGiY
-         MBrE06ijCUUYTccQYvXxT9Z655ek6mQ9zaGXoD40U4kzrwVNZpQbcD4NfFgqyxEfB3ah
-         /W5FUOcJfxr4hvZcuuTZbp4tmeEjzI0vvdZ7AZ4atsuN+v2Uh66x3S2/N0tGVtVcmL/x
-         H+xQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=2Bn1o6cEGb4ftm/y8eY16FT9RjCs+HWtKGWPHKEalRE=;
+        b=sucanPShS3lFEgR9te9nWTXJpZlvXKpQJ6JK1aixB5Fq2Ngd21rc/uXOn1VKdXQbed
+         owLaPz3ituvfW/Lhx5/APkJ7dNpvpbL+OiKd7J09g59OKVBB/U+vOpAeutyMhqwLKZuL
+         j+kxcHAfdVYYC9DtPK75yfgLKy/IRPJlm3p9NPFJOXioQXJJtdzvGrETvAyp24bOaAEu
+         6Iq2YljRccrg44cJ4jIyqq9z6nWO+jZFiwHNjtDN8x/6Q0ywIWRwqzCi4SB/GPyAJ7ax
+         8ZP9zpQbuPc4cPPLtt2SebJzU28nS8BtAa9j9pCdSNTPYwSaCX2gmMXj/ATPPmxgYmrc
+         QVcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=qYFOliKs+GL/KpN4UyjZwqeV2Fe1NyMsGcGIf7VxdLs=;
-        b=t02CTLGaNNlQcsepxGUKumlOCXCU/CvkuBqXrSJMeXhiT90pRceO3uZwxutXkrOD3h
-         5L1CPLqKg6WMvF+JMQp8flbtinB6o7UoZpjxOfS0puIe4IKLVQCe2/sx4XbRzSk/S7UH
-         InhOV5GDbgMCnAKKD4pHWHhogJFgizIipbr6TwkfHx+Ei7q8rTttl1QCeK5ncgQi0ObV
-         L2v+ENghSG7UduBYfWBapSvx0GzyPmiwMB6mnfc2ft8C2gR2wTOVH17+shd+yN+kuHjS
-         dwRUO9bxNd9imNvibNMQxtyrvzvzMOrzKZJ3hcQZl5tGAc/tFOen5VDbKVQXNhlLfvcv
-         y7kQ==
-X-Gm-Message-State: APf1xPCfczbuQmUWt9a+6hCOyUeQ7SX2YYAhZ2j1Irhe4fFWATBGdhw5
-	kwTwlhmebOldD+cghye/Z8vkpQ==
-X-Received: by 10.98.33.204 with SMTP id o73mr10211577pfj.54.1520111528058;
-        Sat, 03 Mar 2018 13:12:08 -0800 (PST)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from seema-Inspiron-15-3567 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id g80sm19511765pfj.101.2018.03.03.13.12.06
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 03 Mar 2018 13:12:06 -0800 (PST)
-Date: Sun, 4 Mar 2018 02:41:42 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723bs: Replace memset with eth_zero_addr
-Message-ID: <20180303211142.GA10078@seema-Inspiron-15-3567>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=2Bn1o6cEGb4ftm/y8eY16FT9RjCs+HWtKGWPHKEalRE=;
+        b=XqBoJIVTxwBSfu3MsK17VLK5v6XErgJCDle3wVTMh0liN0gmz/wHnaBo8grqZb/b8U
+         +I45Ay7eS7Se/xWjmREqSSOZDIIliHrKj4w/gQ50LOJ6+O9SvVQyVOxdact7oXFNHVwQ
+         qTBiyU9Kfj6YaPL/HUFn2BMzhH9zwd7J62kb/y8T8wFSUdwTQWCRIPd4altCO6MIk2ck
+         0tbhsDxfi5PxOU1AeuKSxi5SF+tssquJ5x9Wcna4w+v0CHxichme1VsI7AjiGiyRINH4
+         UsnLKY02uLT5TF+Iwht2Xo1+VyoJ4qI4afRFSx7CkPfYUR6tehxlQKK/NsEAoN9yGH+6
+         S+EA==
+X-Gm-Message-State: ANhLgQ0NIGDXVbfsPYThJK1nOTWvCnwKjduTy5OzAajRIreKz1ToG0v1
+	ULrHUZO8uXeWqh6S1/Xyf6YA+81DSDG0tRpFdA8N2A==
+X-Received: by 2002:ac5:ccb9:: with SMTP id p25mr8023832vkm.69.1585250889317;
+ Thu, 26 Mar 2020 12:28:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <20200325231055.GA29122@siyah2> <alpine.DEB.2.21.2003260818140.3019@hadrien>
+In-Reply-To: <alpine.DEB.2.21.2003260818140.3019@hadrien>
+From: Gokce Kuler <gokcekuler@gmail.com>
+Date: Thu, 26 Mar 2020 22:27:43 +0300
+Message-ID: <CAL9LiBJDg2-ibT9eJda_F95Ogexm0efGXaudhFcehOv+M-iRLQ@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: qlge: Block comments use a
+ trailing */ on a separate line
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Content-Type: multipart/alternative; boundary="000000000000233f6f05a1c6fcb3"
 
-Use eth_zero_addr to assign zero address to the given address array
-instead of memset when the second argument in memset is address
-of zero. Coccinelle was used to do the replacement and add the
-header file linux/etherdevice.h if not already present.
+--000000000000233f6f05a1c6fcb3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-The Coccinelle semantic patch that makes this change is as follows:
-@header@
-@@
-#include <linux/etherdevice.h>
+Thanks for the feedback!
 
-@r1@
-expression e;
-@@
+Julia Lawall <julia.lawall@inria.fr>, 26 Mar 2020 Per, 10:21 tarihinde =C5=
+=9Funu
+yazd=C4=B1:
 
--memset(e,0x00,ETH_ALEN);
-+eth_zero_addr(e);
+>
+>
+> On Thu, 26 Mar 2020, Gokce Kuler wrote:
+>
+> > Deleted more * for block comments rules.
+>
+> The subject line and the log message should be in the imperative.
+> Actually, your subject line is quite confusing, because it describes the
+> situation one wants to end up with, rather than what should be done.
+> Something like "Adjust end of block comment" would be fine for the subjec=
+t
+> line.  The log message could be "Drop an unnecessary * on the last line o=
+f
+> a block comment to follow the Linux kernel coding conventions.  Problem
+> found by checkpatch.".
+>
+> julia
+>
+> >
+> > Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> > ---
+> >  drivers/staging/qlge/qlge_mpi.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/qlge/qlge_mpi.c
+> b/drivers/staging/qlge/qlge_mpi.c
+> > index 60c08d9..31322ec 100644
+> > --- a/drivers/staging/qlge/qlge_mpi.c
+> > +++ b/drivers/staging/qlge/qlge_mpi.c
+> > @@ -1178,7 +1178,7 @@ void ql_mpi_idc_work(struct work_struct *work)
+> >               /* Signal the resulting link up AEN
+> >                * that the frame routing and mac addr
+> >                * needs to be set.
+> > -              * */
+> > +              */
+> >               set_bit(QL_CAM_RT_SET, &qdev->flags);
+> >               /* Do ACK if required */
+> >               if (timeout) {
+> > --
+> > 2.7.4
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20200325231055.GA29122=
+%40siyah2
+> .
+> >
+>
 
-@includeheader depends on r1 && !header@
-@@
-+ #include <linux/etherdevice.h>
-#include <...> 
+--000000000000233f6f05a1c6fcb3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme.c         | 3 ++-
- drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c | 3 ++-
- drivers/staging/rtl8723bs/os_dep/ioctl_linux.c    | 9 +++++----
- 3 files changed, 9 insertions(+), 6 deletions(-)
+<div dir=3D"ltr">Thanks for the feedback!=C2=A0<br></div><br><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Julia Lawall &lt;<a href=
+=3D"mailto:julia.lawall@inria.fr">julia.lawall@inria.fr</a>&gt;, 26 Mar 202=
+0 Per, 10:21 tarihinde =C5=9Funu yazd=C4=B1:<br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex"><br>
+<br>
+On Thu, 26 Mar 2020, Gokce Kuler wrote:<br>
+<br>
+&gt; Deleted more * for block comments rules.<br>
+<br>
+The subject line and the log message should be in the imperative.<br>
+Actually, your subject line is quite confusing, because it describes the<br=
+>
+situation one wants to end up with, rather than what should be done.<br>
+Something like &quot;Adjust end of block comment&quot; would be fine for th=
+e subject<br>
+line.=C2=A0 The log message could be &quot;Drop an unnecessary * on the las=
+t line of<br>
+a block comment to follow the Linux kernel coding conventions.=C2=A0 Proble=
+m<br>
+found by checkpatch.&quot;.<br>
+<br>
+julia<br>
+<br>
+&gt;<br>
+&gt; Signed-off-by: Gokce Kuler &lt;<a href=3D"mailto:gokcekuler@gmail.com"=
+ target=3D"_blank">gokcekuler@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/qlge/qlge_mpi.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt;<br>
+&gt; diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/ql=
+ge_mpi.c<br>
+&gt; index 60c08d9..31322ec 100644<br>
+&gt; --- a/drivers/staging/qlge/qlge_mpi.c<br>
+&gt; +++ b/drivers/staging/qlge/qlge_mpi.c<br>
+&gt; @@ -1178,7 +1178,7 @@ void ql_mpi_idc_work(struct work_struct *work)<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Signal the re=
+sulting link up AEN<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * that the fram=
+e routing and mac addr<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * needs to be s=
+et.<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0set_bit(QL_CAM_R=
+T_SET, &amp;qdev-&gt;flags);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Do ACK if req=
+uired */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (timeout) {<b=
+r>
+&gt; --<br>
+&gt; 2.7.4<br>
+&gt;<br>
+&gt; --<br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com" target=3D"_blank">outreachy-kernel+unsubscribe@googlegroups.com</a>.<b=
+r>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20200325231055.GA29122%40siyah2" rel=3D"no=
+referrer" target=3D"_blank">https://groups.google.com/d/msgid/outreachy-ker=
+nel/20200325231055.GA29122%40siyah2</a>.<br>
+&gt;<br>
+</blockquote></div>
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index fe739eb..c13e514 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -14,6 +14,7 @@
-  ******************************************************************************/
- #define _RTW_MLME_C_
- 
-+#include <linux/etherdevice.h>
- #include <drv_types.h>
- #include <rtw_debug.h>
- #include <linux/jiffies.h>
-@@ -2109,7 +2110,7 @@ int rtw_select_roaming_candidate(struct mlme_priv *mlme)
- 		mlme->roam_network = candidate;
- 
- 		if (!memcmp(candidate->network.MacAddress, mlme->roam_tgt_addr, ETH_ALEN))
--			memset(mlme->roam_tgt_addr, 0, ETH_ALEN);
-+			eth_zero_addr(mlme->roam_tgt_addr);
- 	}
- 
- 	ret = _SUCCESS;
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-index 1e6c587..75a4b23 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-@@ -14,6 +14,7 @@
-  ******************************************************************************/
- #define  _IOCTL_CFG80211_C_
- 
-+#include <linux/etherdevice.h>
- #include <drv_types.h>
- #include <rtw_debug.h>
- #include <linux/jiffies.h>
-@@ -2391,7 +2392,7 @@ static int cfg80211_rtw_del_pmksa(struct wiphy *wiphy,
- 	{
- 		if (!memcmp(psecuritypriv->PMKIDList[index].Bssid, (u8 *)pmksa->bssid, ETH_ALEN))
- 		{ /*  BSSID is matched, the same AP => Remove this PMKID information and reset it. */
--			memset(psecuritypriv->PMKIDList[index].Bssid, 0x00, ETH_ALEN);
-+			eth_zero_addr(psecuritypriv->PMKIDList[index].Bssid);
- 			memset(psecuritypriv->PMKIDList[index].PMKID, 0x00, WLAN_PMKID_LEN);
- 			psecuritypriv->PMKIDList[index].bUsed = false;
- 			bMatched = true;
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-index cc18d0a..bf437c8 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
-@@ -14,6 +14,7 @@
-  ******************************************************************************/
- #define _IOCTL_LINUX_C_
- 
-+#include <linux/etherdevice.h>
- #include <drv_types.h>
- #include <rtw_debug.h>
- #include <rtw_mp.h>
-@@ -124,7 +125,7 @@ void rtw_indicate_wx_disassoc_event(struct adapter *padapter)
- 	memset(&wrqu, 0, sizeof(union iwreq_data));
- 
- 	wrqu.ap_addr.sa_family = ARPHRD_ETHER;
--	memset(wrqu.ap_addr.sa_data, 0, ETH_ALEN);
-+	eth_zero_addr(wrqu.ap_addr.sa_data);
- }
- 
- /*
-@@ -1080,7 +1081,7 @@ static int rtw_wx_set_pmkid(struct net_device *dev,
- 		for (j = 0 ; j<NUM_PMKID_CACHE; j++) {
- 			if (!memcmp(psecuritypriv->PMKIDList[j].Bssid, strIssueBssid, ETH_ALEN)) {
- 				/*  BSSID is matched, the same AP => Remove this PMKID information and reset it. */
--                                memset(psecuritypriv->PMKIDList[ j ].Bssid, 0x00, ETH_ALEN);
-+                                eth_zero_addr(psecuritypriv->PMKIDList[j].Bssid);
-                                 psecuritypriv->PMKIDList[ j ].bUsed = false;
- 				break;
- 			}
-@@ -1294,7 +1295,7 @@ static int rtw_wx_get_wap(struct net_device *dev,
- 
- 	wrqu->ap_addr.sa_family = ARPHRD_ETHER;
- 
--	memset(wrqu->ap_addr.sa_data, 0, ETH_ALEN);
-+	eth_zero_addr(wrqu->ap_addr.sa_data);
- 
- 	RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_, ("rtw_wx_get_wap\n"));
- 
-@@ -1303,7 +1304,7 @@ static int rtw_wx_get_wap(struct net_device *dev,
- 			((check_fwstate(pmlmepriv, WIFI_AP_STATE)) == true)) {
- 		memcpy(wrqu->ap_addr.sa_data, pcur_bss->MacAddress, ETH_ALEN);
- 	} else {
--		memset(wrqu->ap_addr.sa_data, 0, ETH_ALEN);
-+		eth_zero_addr(wrqu->ap_addr.sa_data);
- 	}
- 
- 	return 0;
--- 
-2.7.4
-
+--000000000000233f6f05a1c6fcb3--
 
