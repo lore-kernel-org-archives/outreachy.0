@@ -1,96 +1,109 @@
 X-GM-THRID: 6805867897863274496
-X-Received: by 2002:a6b:3944:: with SMTP id g65mr9257102ioa.78.1585553721138;
-        Mon, 30 Mar 2020 00:35:21 -0700 (PDT)
+X-Received: by 2002:adf:ce07:: with SMTP id p7mr9076577wrn.261.1585227322456;
+        Thu, 26 Mar 2020 05:55:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:194:: with SMTP id 142ls5027203ilb.4.gmail; Mon, 30 Mar
- 2020 00:35:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtY6VdE+PkuGLpgrIJ1dxxX16mrv8Q06QwzOsTcd3p5JX0dF/uZiUFIMNf1YvS6vYSWTBzH
-X-Received: by 2002:a92:b74d:: with SMTP id c13mr10251733ilm.105.1585553719723;
-        Mon, 30 Mar 2020 00:35:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585553719; cv=none;
+Received: by 2002:a5d:4690:: with SMTP id u16ls2249726wrq.11.gmail; Thu, 26
+ Mar 2020 05:55:21 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs2wxNTP2ZLX8iBMju3SqimVxCE3lAefPslrUxelI2qhIG8M4ZPbguAA2ItzA9H9jVogkGR
+X-Received: by 2002:adf:9071:: with SMTP id h104mr9333469wrh.359.1585227321198;
+        Thu, 26 Mar 2020 05:55:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585227321; cv=none;
         d=google.com; s=arc-20160816;
-        b=BiAaiqff/5LM2uqIkO2rULClMKqeG2TLyw2VYhtl21cop9jsvm2821iz6MgOYKEZUB
-         RzP7br59C8HGTu2RoHYOT4qfnNmSl+/hDFTYNNPzIjFGQxfC4XW7+7Ue61qM25DBLjgp
-         LsW+eAOGaTL6tQ9vtmgdOU9ep1DBJifVY2pfWF7Rq2ofrJ8Rgcc0wmYR9Kl0IaeWtWjQ
-         UBCnof2D8Ykbyb/hdDplaZ/lzav3H5ELkDOkTf6KUjnMZVRrSnBQyO9ZbeEqo+V0CGTA
-         qO4TuIaOzxcDYWvJTva1JDQBlYqdPqo8LQP9JuWdAby8SNomlJ0OmEdnXQnAgwXFg1wC
-         ByiQ==
+        b=KkOXOjQzlUrYG4fujRrZxK+/8GR756fRlm8xdxzLfvBAsH2ZAlZtM1hL6N3QTdjepH
+         uBVk03GICPe7pdZ/vnRgZH/fx6m63MoIpABoxJjxI0J22eCZIuv7hVaUB62uqqGh1eSe
+         IQosG4c7Tw6fpf7b+YbhCnfvekY9CBKT2H/6hX5TFv8G5WTPjrebmMCKtikvFrNFdT79
+         Cms7BYPsifvYM/6J7E4Tx3DygDB1tYtK9hwWE2pHkFB0wQCukUyTOKuu4E/qI/jznOju
+         IyaOsxdK5G2AcQ0wQZ/NOgGV9eb/Sj6swX9Qy3zM65DxNlZ1IFHpgLntl7zkO0CB3FYj
+         SWDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=N/XqwabKl1wKb0mjh2zs5gFMYl4f8WDXgXXm22CKyC0=;
-        b=b18YBi7haYG6CZcWhHrKS7BlZBj16JHkUHBcWUUc5xHYlOyyMIDL0dZjOD3Ppr+ZIu
-         nPGUCvuXaIDugR5oziXHLjFBMQQadF4dnjQNNgNb4/2NwY1PNTZM1s1tpMOMtwwPle3V
-         qtcZ/gU/C+jvDLD2AWbPKwMiQ4UI32N7W9pLV1/P+Z8cjvI0vvNkHb+0+ddpnrhbeao3
-         5QlYep+sttQQQuuYcXAk768oPgJXPrn1DiPNngF2gU+gpvMw8ftvlBfEeUSgWXM9sBB2
-         QFb+D2yF3vdsyZ0jkrYdPAJHHLKXOBfVnThXKDy7krN35xbxhAQ13ncZOwNRXUgG3RCk
-         xMsg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=8o+PVdyHb9Lld4rEA4CQzoZ2Acg01K1OebeC1i8wdB8=;
+        b=UmgBWVuywJ1eTSePPjRJjTCRS40XvTuOnP4kHeFUdJb9wJ3rhzv50VtPYAnxPVNGQw
+         XLzw3QIFwU3itlO6/G7bL94jppst7KWbOQg9GCH9mEAzC1j++nj7p1p4bulN8AAqb3zS
+         ZyzqX+vXJCBLM8pV7zcv0mpWZ7A04hHNwAPJQqlAAyPjliANi5oCd71IPmsdmz2JRpga
+         zlFxa0WXfVAzuFsPHWMU7Ja9XF+yIdZDTA6fjMqlicS8kCHp2jT18yF2Kb78q2SZRehD
+         7IBzTWMPhOSvSy7MYevB61pv4LHl0uy89DtwGpfwzXijM6DMXv4remee6ohoSSl/L1sQ
+         eRqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OwD53xUD;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id d207si1240377iof.3.2020.03.30.00.35.19
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 00:35:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id d16si93754wrv.4.2020.03.26.05.55.21
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 26 Mar 2020 05:55:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OwD53xUD;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585553719;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=N/XqwabKl1wKb0mjh2zs5gFMYl4f8WDXgXXm22CKyC0=;
-	b=OwD53xUDGRwC7SPLvjZ4vTze8e49pVvxB/papbyc2x3ypOwf9bBchxsNczm42vrX3zXvcN
-	Ua9QXUGT0KO/VT125JuW1IGei3dXDywZvhi64z6cSOSv3AfW6p/85ipnkhwroim7B/h3Qh
-	B4MPEehkP3grXJiVlHq3R/OFetjTw7w=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-430-kKlmIMwnNXugtEvaF6uA7g-1; Mon, 30 Mar 2020 03:35:15 -0400
-X-MC-Unique: kKlmIMwnNXugtEvaF6uA7g-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C6EB149C1;
-	Mon, 30 Mar 2020 07:35:14 +0000 (UTC)
-Received: from elisabeth (unknown [10.40.208.4])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BA2325DA66;
-	Mon, 30 Mar 2020 07:35:12 +0000 (UTC)
-Date: Mon, 30 Mar 2020 09:35:06 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: R Veera Kumar <vkor@vkten.in>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy-kernel
- <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: core: Correct
- typos in comments
-Message-ID: <20200330093506.6f5dab06@elisabeth>
-In-Reply-To: <20200326123540.12401-1-vkor@vkten.in>
-References: <20200326123540.12401-1-vkor@vkten.in>
-Organization: Red Hat
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 21625 invoked from network); 26 Mar 2020 12:55:19 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.249.131.241)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 26 Mar 2020 12:55:19 -0000
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: R Veera Kumar <vkor@vkten.in>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] staging: rtl8723bs: os_dep: Correct typos in comments
+Date: Thu, 26 Mar 2020 18:25:00 +0530
+Message-Id: <20200326125500.12861-1-vkor@vkten.in>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Thu, 26 Mar 2020 18:05:40 +0530
-R Veera Kumar <vkor@vkten.in> wrote:
+Correct typos in comments.
+Misspellings found using checkpatch.pl.
 
-> Correct typos in comments.
-> Misspellings found using checkpatch.pl.
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+ drivers/staging/rtl8723bs/os_dep/ioctl_linux.c | 4 ++--
+ drivers/staging/rtl8723bs/os_dep/os_intfs.c    | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-This change and the following two on rtl8723bs look good to me, but I
-think you should re-submit them as a series, as they are very clearly
-related (you also prepared and posted them one after the other...).
-
+diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+index 29f36cca3972..5059b874080e 100644
+--- a/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
++++ b/drivers/staging/rtl8723bs/os_dep/ioctl_linux.c
+@@ -1093,7 +1093,7 @@ static int rtw_wx_get_range(struct net_device *dev,
+ /*  Commented by Albert 2009/10/13 */
+ /*  The following code will proivde the security capability to network manager. */
+ /*  If the driver doesn't provide this capability to network manager, */
+-/*  the WPA/WPA2 routers can't be choosen in the network manager. */
++/*  the WPA/WPA2 routers can't be chosen in the network manager. */
+ 
+ /*
+ #define IW_SCAN_CAPA_NONE		0x00
+@@ -1391,7 +1391,7 @@ static int rtw_wx_set_scan(struct net_device *dev, struct iw_request_info *a,
+ 
+ 		}
+ 
+-		/* jeff: it has still some scan paramater to parse, we only do this now... */
++		/* jeff: it has still some scan parameter to parse, we only do this now... */
+ 		_status = rtw_set_802_11_bssid_list_scan(padapter, ssid, RTW_SSID_SCAN_AMOUNT);
+ 
+ 	} else {
+diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+index 17e65934fb5b..d29f59bbb613 100644
+--- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
++++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
+@@ -1274,7 +1274,7 @@ void rtw_suspend_wow(struct adapter *padapter)
+ 			padapter->intf_stop(padapter);
+ 		}
+ 
+-		/*  2.1 clean interupt */
++		/*  2.1 clean interrupt */
+ 		if (padapter->HalFunc.clear_interrupt)
+ 			padapter->HalFunc.clear_interrupt(padapter);
+ 
+@@ -1348,7 +1348,7 @@ void rtw_suspend_ap_wow(struct adapter *padapter)
+ 	/*  2. disable interrupt */
+ 	rtw_hal_disable_interrupt(padapter); /*  It need wait for leaving 32K. */
+ 
+-	/*  2.1 clean interupt */
++	/*  2.1 clean interrupt */
+ 	if (padapter->HalFunc.clear_interrupt)
+ 		padapter->HalFunc.clear_interrupt(padapter);
+ 
 -- 
-Stefano
+2.20.1
 
 
