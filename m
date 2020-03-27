@@ -1,119 +1,83 @@
 X-GM-THRID: 6808597928719941632
-X-Received: by 2002:a5d:68c4:: with SMTP id p4mr15339070wrw.308.1585315024440;
-        Fri, 27 Mar 2020 06:17:04 -0700 (PDT)
+X-Received: by 2002:a02:a1c2:: with SMTP id o2mr11264441jah.98.1585299261472;
+        Fri, 27 Mar 2020 01:54:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:afd4:: with SMTP id y20ls369689wrd.5.gmail; Fri, 27 Mar
- 2020 06:17:03 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvoNVDXQ4VNYso8t9jdI+/FB0DgC539o1jPIMkU9urxS1PcvFWPvIlmunXmsQWFvxqZ/Cbb
-X-Received: by 2002:adf:e807:: with SMTP id o7mr15842253wrm.77.1585315023149;
-        Fri, 27 Mar 2020 06:17:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585315023; cv=none;
+Received: by 2002:a05:6e02:608:: with SMTP id t8ls2576506ils.11.gmail; Fri, 27
+ Mar 2020 01:54:20 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu00kdqWE8o0SVlIOcLh/xBiwq+2Ktu6g4p9nnlrGM3JSfkSmAmeMfr4+fUmotySD3Sxo2J
+X-Received: by 2002:a05:6e02:8b3:: with SMTP id a19mr491873ilt.36.1585299260139;
+        Fri, 27 Mar 2020 01:54:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585299260; cv=none;
         d=google.com; s=arc-20160816;
-        b=mDDF4EGHA3SHz6gDlQc95+QOJ5knVJ8H7efSvXC1rAsjLWtjl2evPZr8okCOjl/MtR
-         0L87snVBh6KaJXm1HIibbPF+I5WO+XUdmFd6f4OAjULH9aSYQxzumsayZxvqQJK7cgvk
-         N5mF8ooxVy0h6gyCfwzzyL9YBKMDl4kHCGjlsiTSb2Yegdi/UU+PRYbez48jD2alJu9u
-         9FTtiuj9Gs39t2RWUYJJ4Ann1JNn3Nxbwj4dlSb9frRa5FasGgzAhv6lORvDWK+Ao96+
-         fvPv2RzP2DPnDxHHAckDkRSQautO+2eDdVgg1uZYgprbUwutWtEbUxDwgohT18ZTc+tY
-         rDaw==
+        b=y8HZUELF31Ek7aBFhYeEVEaGRBx0a2X15pp3DkbYqlWPvnnNaFKHoFN8jqjw9RR1Xx
+         hugT2ZDYd1uSVMNx4vFH4/FJ++2P/SBHlJGEYvat+PDFsqn8uztL5xELWLgQBUUVqSYG
+         I0vQaeceDEGROjearzVyUYo25cIrbHzFeDRbfUEmyRoDXvsHThrIuqnO0pJDmNLcqGFi
+         1qSy1XHtjB+e/RN7DlNTXSpdpEb8lx544kffLE97xMEzHZjaSyRF6ADto1SdWicK3EEN
+         EmWQUExSvYJfs0GVvPQLoI0z3oguojyXV84DuNBsQhAhn2NaVN/08h77m8blVW006ntB
+         N5/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=cIBw8lZ+YGRDQPkuxTqwLMTALVMFP4tzTQKZKqeC7P0=;
-        b=n2SPqQLzyyxwmcH1fTnnmQR/0P1Ih5mgDm6tpuoUccv5IfYhno8FYe4XguWAcB+YMi
-         xjDeVWfAu4M6qXEXVbsntYLOhT6xL9V9SELQFS2+Pj7RacbksLIIT0FzN/uRxdTdW6Au
-         /NYEFFby7QGRa8UoOXI6Ss5rLq1DruyxpPPyvDrm+811d/r7ftWdC8KnryaIPKo/xyAl
-         8CYTu0kDYxcPxBO97MxyAnA85UHwLlsk5UUau9d8fHe/UJbReI1axgRHFvMB/2Q/RUdv
-         A3ZsmiemA3dvcnA/80uQ3smblRlPRqveYgjTF/SnGBUHkpgG0dFAjjHwXHNE9VMYczS3
-         h9Iw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=dxp8kmZe+5gh+7FAuF+2bAFbkdp7yeyVVr9DQgz1xEg=;
+        b=faHghGrCcJo2DjsFRRUZxVXUwuFedOlM8oPJEe3MTt9uaU9Pg3+8VACoc/fI/SW+mJ
+         7JO4JaWCdpmeIu8zOUTxjJJdwTvczqSlfbEKDS+eB72NmA3zOhUqeKrahTzjbhdCJ5SZ
+         Ik3ZPq0L4eruzXVCY26Ag2xEWcDSuszLaAObdw2KbBINndXzm8qMiWZBk6EmLZYb5tPz
+         HbuJXi1HN9h7RdkLgUuotcIWhhGN/1SpZSBUqDrjM41khZvLKlNk0uErOsb/u2qQY76O
+         /D3vyu22NQ9L3JZCiWWxMItbhDpsYJg1dbhdIYNnZaUH6Q52vVK3cIlcVsjqAIESqFU6
+         +WrQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jeD6Kk0B;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lf1-x143.google.com (mail-lf1-x143.google.com. [2a00:1450:4864:20::143])
-        by gmr-mx.google.com with ESMTPS id q197si236861wme.2.2020.03.27.06.17.03
+       dkim=pass header.i=@kernel.org header.s=default header.b="1/zQv+K4";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id t13si241726ilk.5.2020.03.27.01.54.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Mar 2020 06:17:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) client-ip=2a00:1450:4864:20::143;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Mar 2020 01:54:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jeD6Kk0B;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::143 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x143.google.com with SMTP id v4so7782184lfo.12
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 06:17:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=cIBw8lZ+YGRDQPkuxTqwLMTALVMFP4tzTQKZKqeC7P0=;
-        b=jeD6Kk0BwPCpTW/Pjc3yiLNyq36Ieebt5pP5PVljt63dUW+S3EWEHW9qGmzh166wQw
-         p1rApL3F/Q0cu8FIX5BWV2QBOEGghTUSvkUWzRI+PUTvJ91KWciijNKaGliQ2zliGjIe
-         r/uGzYbPcuHwuY5p8XidFryKRHHLfHBGCRd1Fc0QW1iOE9wB1yDO+eH8NFqeNbrEOky/
-         DSs1WSlcxygMI7NpMxQOAQPPe9xJF4l5qAkTlOgzVaEKTS9GOxQJT/wFUKj8TtESu7mh
-         +CGYorte+nmIYbJGOWt4escCUayGnZk2d4tZM2WYPoXduON/hiSqPByHMxB+7zhYcQiA
-         EHew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=cIBw8lZ+YGRDQPkuxTqwLMTALVMFP4tzTQKZKqeC7P0=;
-        b=bmQk27cjjeFTO4NOdtCtpb99KKM3xJg/qG5jS66h3AuiqvgiN62uKCysl4htVT47x3
-         NJdyo4u/u+6ULJjdlyfp1GgAYxlws+rTKB7SBw+uG10lotnu8gU3JX5R4XFKkGhbGVoN
-         SLA4Y5akYNos1wuYVreMrH0X2T/zDyme+BU8riv1LFk2JgGa3dCBTQ9vRDTn239QyOKy
-         faiViZbLHzj6KM3Y6zddf6uhtOwnNKtglYJza9zZWbycGdRHYfYjt3c9etjyUlf6n/4m
-         jcgX0l6xXhi5SP4TDiLEQaGmnD7g87t9i8gRFaplIWxjK2W3y+beyJ09pwKeuVy682qN
-         dMJg==
-X-Gm-Message-State: AGi0PuZ0rsj2ybg3zP//jgSjMJVgI+zecHZ3jhhaCP0py+qPwMP9chMI
-	3MkdhTykeWFIfjAw3k/S4oV2tGkCqzY=
-X-Received: by 2002:a19:844f:: with SMTP id g76mr2248605lfd.112.1585315022592;
-        Fri, 27 Mar 2020 06:17:02 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.65.149])
-        by smtp.gmail.com with ESMTPSA id d23sm2717927lji.62.2020.03.27.06.17.01
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 27 Mar 2020 06:17:02 -0700 (PDT)
-Date: Fri, 27 Mar 2020 16:16:59 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v3] staging: qlge: Adjust end of block comment
-Message-ID: <20200327131659.GA8032@siyah2>
+       dkim=pass header.i=@kernel.org header.s=default header.b="1/zQv+K4";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id DFC4920714;
+	Fri, 27 Mar 2020 08:54:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1585299259;
+	bh=YBK0/nb9jaOelkvqSQok457DxRmhUvO/WWgs5d3xqo0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=1/zQv+K4qOejnPgnMxN1L8+C/w9PhNyyS+X7sdgDs/3nP6ycZEd/+X7NtOGm9B1iu
+	 KfmXTxhRMW9Pn0SbWQbPkg0MMko6xB0JSOpFcBNWK1/GgHM0H3WLgH18VK14hZMYXB
+	 R3TkPE11AD8eqVypud/BHQbZPo85XBAruZY5fDVk=
+Date: Fri, 27 Mar 2020 09:54:15 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH v2] staging: qlge: Adjust end of block comment
+Message-ID: <20200327085415.GA1654282@kroah.com>
+References: <20200326191712.GA9938@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <20200326191712.GA9938@siyah2>
 
-Drop an unnecessary * on the last line of
-a block comment to follow the Linux kernel coding conventions.
-Problem found by checkpatch.
+On Thu, Mar 26, 2020 at 10:17:12PM +0300, Gokce Kuler wrote:
+> Drop an unnecessary * on the last line of
+> a block comment to follow the Linux kernel coding conventions.
+> Problem found by checkpatch.
+> 
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/qlge/qlge_mpi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
----
-Changes in v3:
--Add v2 and v1 changes in e-mail.
-Changes in v2:
--Edited the subject line and the log message.
-Changes in v1:
--Drop an unnecessary * on the last line of a block comment.
----
-drivers/staging/qlge/qlge_mpi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+What changed from v1?
 
-diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
-index 60c08d9..31322ec 100644
---- a/drivers/staging/qlge/qlge_mpi.c
-+++ b/drivers/staging/qlge/qlge_mpi.c
-@@ -1178,7 +1178,7 @@ void ql_mpi_idc_work(struct work_struct *work)
- 		/* Signal the resulting link up AEN
- 		 * that the frame routing and mac addr
- 		 * needs to be set.
--		 * */
-+		 */
- 		set_bit(QL_CAM_RT_SET, &qdev->flags);
- 		/* Do ACK if required */
- 		if (timeout) {
--- 
-2.7.4
+Always put that below the --- line.  Please do a v3 with that
+information.
 
+thanks,
+
+greg k-h
 
