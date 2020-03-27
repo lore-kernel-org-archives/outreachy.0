@@ -1,109 +1,111 @@
 X-GM-THRID: 6808859565738688512
-X-Received: by 2002:a17:90a:77cc:: with SMTP id e12mr3453254pjs.134.1585557912934;
-        Mon, 30 Mar 2020 01:45:12 -0700 (PDT)
+X-Received: by 2002:a1c:988d:: with SMTP id a135mr5543549wme.16.1585311155873;
+        Fri, 27 Mar 2020 05:12:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:d78e:: with SMTP id z14ls14587688pju.3.gmail; Mon,
- 30 Mar 2020 01:45:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt3r0RliCS9kyEZQpzmc/MsZw8Dzp+FfZ/+9Ku44AKTQiv1dbdiTnnQFQ18uv0UY1jjFwPX
-X-Received: by 2002:a17:90a:30c7:: with SMTP id h65mr15403081pjb.44.1585557911660;
-        Mon, 30 Mar 2020 01:45:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585557911; cv=none;
+Received: by 2002:a1c:230e:: with SMTP id j14ls358856wmj.0.canary-gmail; Fri,
+ 27 Mar 2020 05:12:34 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvAHEEl+0jF8kIzdVO5CiZM9EDyi38dc2OYUhwYBeLq5UFgqAJghLykV+Aceu34YKb3moRU
+X-Received: by 2002:a7b:c5cb:: with SMTP id n11mr5329474wmk.160.1585311154562;
+        Fri, 27 Mar 2020 05:12:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585311154; cv=none;
         d=google.com; s=arc-20160816;
-        b=rp9Q0nJ7qLZbZ7vZ+d1MR8djJXXrWzCotkitMyKpGjl39hetLJ6kOs5X2uVA1/lM1k
-         TCKTQ237+70eP3Az9Wi7RcRBuSqvCr3zAokKnMd2rVvH2QjceT9sHZNZQlTfT0mnjSFp
-         P5y3frY/npX5zmVP/wz2YsHTKemFRg2stNEXzw3s7z7iW8Mq1I0lkmmHmSL+mTQ0oR6c
-         Apf9SppVk9HBaHFXIFkOEhl4fNj+qJTTZn0sHt8gEEg2/mS2TJHIEH1myp+LjAJGJTns
-         GiEO3/IlbNTcHICqoF+Vs/xsa0k8O/Ip9z45ewWglhuKWqGR/F7TL9UtFN0RBj0AEFzi
-         rIFw==
+        b=Sg63AhnD1iFnDdAfIoFN9qef7ADDS1jxRng6J9yG4NH6XqyD3xQKj/NsSPqCt03hUG
+         rVefVqs/UgylJg5UoNBqhAjoHE6Qyx5oOKFwi81hWeianvvQIVnzx/iWGWFpQ8aaoubE
+         w9yHE2jppM+LFotJiDocpubeTPIEXJ9TXeRFZp0CVWKZo5bxQegV1a2Ecra3XZJUEvys
+         CEnXqkG3LeOx2wfbHreHddTTWHEToA5MmVpNgV1fSXFrEP+Xyju4TGvXgsOOo6+KpdXr
+         GhkOKKz3PLMt/tKb3vRFbUo4j3Ldufflg/JGrFs4TbdNmZ/HRyoS5GgboGlY2r7YNR1m
+         7DNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=S6nvbFFLnIbiTIpYs9R62XsPWPBHFG8DTPt7ohPl+z4=;
-        b=n/PQ/2kWWS3aUA+vmDeFqyQBhxQ4+H3mNc+yQyMj6HseT01eSbZvkLpqSkausgPUrw
-         WcFxXDJ4H+6fuU9iQILfnO8fFA2zk79ubM3pgKT6Oa8xoX4XZl0z6ne21ObiypzYLIgy
-         U+HLf3REOgldIq3os6jIcKMXOgadxwCvmhrhyJfAJ5NhtmzESj6e3iL6ihXURMpoRFcb
-         iK3PQcEQmM/NePcIft9hNramBarGFpGEiyiJLjWGKuNhvojLw1ZfHepS0t9ITXH/0/zy
-         K8UvA7S+MJvXkauUrESBLZpPTt5RXOTuudQnfW2M4mokKnzVhkYSUOwncODHuCLxhQ3M
-         d4gg==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=7mcKm4yGiGKgDlp5s0j377/A7OBEO3XCSnYW//VZVVQ=;
+        b=KkV/onwLsZ9wWUr/timbNgIq5hyivvT2o7Oi7nL3ODu/1ZW+CaxO7UTQE3luoSzyzW
+         jpwt3nWK41V3xj5N2aCX6b7Sdc5WrbAWWg35XtRNShtCAFN6SWS6V2KKOOL7fg1nlj9v
+         d3YOnqhuVq6khX8Sn12PdcUlUMJDpN+NhzV+fZybrv4bRdn+rRYUjFzl1OZyIiUdJ1fI
+         Obz2rnTXtcKqTRlSiNEOrscffRKegJnL38K75bACewxARRrQ9eMMndKsIoUVJsw8Vf02
+         DPfg2iU6nO3e/FuWBDQpsiZoH+C2E77TIIm3YWruZyfQT+riaKP9qM7NA0Sly3YIVCZM
+         2Bfw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ToGITdWr;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id c207si804805pfc.3.2020.03.30.01.45.11
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fLKHWSrn;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from mail-lj1-x230.google.com (mail-lj1-x230.google.com. [2a00:1450:4864:20::230])
+        by gmr-mx.google.com with ESMTPS id f3si507188wmc.2.2020.03.27.05.12.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 01:45:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Mar 2020 05:12:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) client-ip=2a00:1450:4864:20::230;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ToGITdWr;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585557910;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S6nvbFFLnIbiTIpYs9R62XsPWPBHFG8DTPt7ohPl+z4=;
-	b=ToGITdWr1XNPRANHU7dUkagisoeWJYx2Bv1z4/W3ndbXam5d85iYnydMye5k949Eq1rUrV
-	z9XqenJ51QQFkRW6cdvAylVrOUiNfMuBhoRAu4PKC4FRPPWuR1SXwX2c8KLa79FxrlLnQL
-	m5HYoGp2cw2DX2kDnlNGHidg38XCj74=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-174-HSy0EYtGOnStitspzYUh4Q-1; Mon, 30 Mar 2020 04:45:06 -0400
-X-MC-Unique: HSy0EYtGOnStitspzYUh4Q-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 73D06190B2A3;
-	Mon, 30 Mar 2020 08:45:05 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.47])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DC42F60BE2;
-	Mon, 30 Mar 2020 08:45:02 +0000 (UTC)
-Date: Mon, 30 Mar 2020 10:44:53 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Soumyajit Deb <debsoumyajit100@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Converting unsigned type to signed type.
-Message-ID: <20200330104453.5276d5e9@elisabeth>
-In-Reply-To: <CAMS7mKAjK8OgRzpCifKn+_17y-NzMbAepKSqnOMzRDbWLqTV1A@mail.gmail.com>
-References: <CAMS7mKAjK8OgRzpCifKn+_17y-NzMbAepKSqnOMzRDbWLqTV1A@mail.gmail.com>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fLKHWSrn;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x230.google.com with SMTP id 19so9911739ljj.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 05:12:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=7mcKm4yGiGKgDlp5s0j377/A7OBEO3XCSnYW//VZVVQ=;
+        b=fLKHWSrnASDMDTkd9K0uVOP17Tv7DS7w29+tKPeYfGdbBrK/bRHMWrC46yT8tUnMXV
+         JStfnBKUI8fXn16B9N1o/xcZ8ok+vveWmOScR8LnB78xrxe873kkS4jjDkSdfkQWMYhG
+         pui7ajvKu+vBgyFdlzfN8RhI9v+j+imM13wX/4hI+17WA8uoYhBcjLtx1RTAKP3VSzpM
+         bXSVHNbgrvSqLl1Fu3nbXvaRpqOdXuWZST3Sq3xfHCrYUrEk0Za15Dtp87t33hy8WWX0
+         YlpbxKHgKfjj59gloU5wvteO2b9iptDmpMOxmJQ/XPJ9j0dQGvjLl39QmSzOm6qtAHoY
+         L86A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=7mcKm4yGiGKgDlp5s0j377/A7OBEO3XCSnYW//VZVVQ=;
+        b=nEqAfjklAyZ1Jhh61b77mjz+5kQ8XNpNSYgbdkJEELAQXyJZbKg1KjwRS5cF5wOfBx
+         PwJZ9dchhNaUlUI8w1eE2G8XMhOvXwS2D0l9eskc3Lv5ghkyClOG1JOQF/GW6ZAPCVlh
+         N2+J6vD+VtJx98YAplM3C42YbKFYuVnbmxt945CCvXhcxTZpe1vWMGEfAjjqzymRJEc4
+         iaadZ3IsY4LVeiM4eTrho8ZMb1E6ZGa7Hhm67a9wCaBafdG8Ps7DNRiCxBVlQe9fyPH2
+         D1ZLEBtFf3TYaMV/dqdO6z3h77+twt7Gs0aY92F1uL1DZ4sEDB6vFqDazp9OJ6RbBlax
+         Pbew==
+X-Gm-Message-State: AGi0PuaicY6hGf2kYRwvx9qY+obQuLmOb5H8CzScu0qySzo02SAcmKcm
+	otSoXAEaSRk5Np3tBDb4XVKHUPjrNukCthpHT85q8xVq/itMfw==
+X-Received: by 2002:a2e:45c2:: with SMTP id s185mr1278205lja.66.1585311153717;
+ Fri, 27 Mar 2020 05:12:33 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+From: Soumyajit Deb <debsoumyajit100@gmail.com>
+Date: Fri, 27 Mar 2020 17:42:22 +0530
+Message-ID: <CAMS7mKAjK8OgRzpCifKn+_17y-NzMbAepKSqnOMzRDbWLqTV1A@mail.gmail.com>
+Subject: [Outreachy kernel] Converting unsigned type to signed type.
+To: outreachy-kernel@googlegroups.com
+Content-Type: multipart/alternative; boundary="0000000000002d060305a1d5044a"
 
-On Fri, 27 Mar 2020 17:42:22 +0530
-Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+--0000000000002d060305a1d5044a
+Content-Type: text/plain; charset="UTF-8"
 
-> Hi,
-> 
-> (msg2.signal.data - 65536) * 100, /* Conversion to signed type */
-> 
-> I came across the above line in one of the staging driver which it seems is
-> trying to convert msg2.signal.data to signed type according the comment
-> provided. I looked it up and msg2.signal.data field is of type u32.
+Hi,
 
-Right, but that's actually an abuse: u32 is not the appropriate type
-for it. See how it's filled in by prism2mgmt_scan_results():
+(msg2.signal.data - 65536) * 100, /* Conversion to signed type */
 
-        req->signal.data = le16_to_cpu(item->sl);
+I came across the above line in one of the staging driver which it seems is
+trying to convert msg2.signal.data to signed type according the comment
+provided. I looked it up and msg2.signal.data field is of type u32. My
+question is can't we change type to signed type by simply type casting to
+i32 ?
+Also, I can't understand how the above expression is performing the type
+conversion?
+Currently the above expression is giving a "more than 80 characters"
+warning when I run checkpatch.pl script. So a simple typecast to i32 will
+be able to resolve that warning.
 
-now, there's no "p80211item_" type that could cover that, so leave it
-like it is (at least for the moment). You need to convert a 16-bit
-value (we don't know if it's signed or unsigned, but I'd rather say
-it's unsigned and expressed as 0 - x) to a signed 32-bit value.
+--0000000000002d060305a1d5044a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-So, I would suggest that you write a small test program that does the
-same thing, and find out how it works. Then, once you understand that,
-you can think of an equivalent way to do this operation.
+<div dir=3D"ltr"><div>Hi,</div><div><br></div><div>(msg2.signal.data - 6553=
+6) * 100, /* Conversion to signed type */</div><div><br></div><div>I came a=
+cross the above line in one of the staging driver which it seems is trying =
+to convert msg2.signal.data to signed type according the comment provided. =
+I looked it up and msg2.signal.data field is of type u32. My question is ca=
+n&#39;t we change type to signed type by simply type casting to i32 ? <br><=
+/div><div>Also, I can&#39;t understand how the above expression is performi=
+ng the type conversion?</div><div>Currently the above expression is giving =
+a &quot;more than 80 characters&quot; warning when I run <a href=3D"http://=
+checkpatch.pl">checkpatch.pl</a> script. So a simple typecast to i32 will b=
+e able to resolve that warning.<br></div></div>
 
--- 
-Stefano
-
+--0000000000002d060305a1d5044a--
 
