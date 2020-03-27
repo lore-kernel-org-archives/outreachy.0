@@ -1,103 +1,121 @@
 X-GM-THRID: 6808597928719941632
-X-Received: by 2002:a6b:3b50:: with SMTP id i77mr9979878ioa.145.1585562250553;
-        Mon, 30 Mar 2020 02:57:30 -0700 (PDT)
+X-Received: by 2002:a2e:854e:: with SMTP id u14mr65567ljj.182.1585331046358;
+        Fri, 27 Mar 2020 10:44:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:3d8d:: with SMTP id k13ls5115635ilf.5.gmail; Mon, 30 Mar
- 2020 02:57:29 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsVttE7wbWPKpCaWlmIgYHEk6nR2GvctKRJjBhaojlIjXmI8qAE3ZmraFMMr1iIRnfZKAog
-X-Received: by 2002:a92:c60d:: with SMTP id p13mr8511189ilm.241.1585562249215;
-        Mon, 30 Mar 2020 02:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585562249; cv=none;
+Received: by 2002:a2e:8941:: with SMTP id b1ls2401078ljk.8.gmail; Fri, 27 Mar
+ 2020 10:44:04 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIYpqmPn0iDqHHdB/Xozyl/2QFJba/VhIIyPmbg/z7RKrw0r0f6SGQ0u2AwwxrdpXzI0DVe
+X-Received: by 2002:a2e:9585:: with SMTP id w5mr70877ljh.178.1585331044529;
+        Fri, 27 Mar 2020 10:44:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585331044; cv=none;
         d=google.com; s=arc-20160816;
-        b=KHaml3D5ozqw2BpRIhCiGfKODlLDXj4FuTmWVeChKXfgaFkaCtBqxwR+uFA32kq+Dy
-         rLD4WyHptejtizUfTE+by33iCHnEaX2/4GBs64q4GFzu0bRDNy5FceoCH4pUXFdEtbcE
-         j5y26Gm8L1T6NsXXkNTX1RqH9FfcBn6+ypmANAqn+7qWEBOUNIQOMwZSHSPABxBvmbbK
-         rqiYOcnZQbjOBjoyCtP792qjNpe7XxODDu0IUBWDkEh0znJu9XokAM0Xvr84dALNPoKh
-         VRNMt5uC6fwFWj32K+a4fOdv7Jc+av+NOrxPKUO/X2NJrEA3N25IwRBx1lCP4b5CAbLK
-         4P9Q==
+        b=B+h2geNnjeNSwYYQgRdvqL8qFXbUALpso35ApDyxX2XsCRi7QP8Xgfq4XbcJ+yQtlZ
+         th37EysaYr+mUlCPgNXo1M2Q8BdiHnXHnkkIWnS5rlCQfSegz9lpfYLuf9ddh4sWkF+Y
+         5KLBfjh+sRLZYJmLPqZX4t0a31H+cLn794Fpqzst+tg7B1VlzzwqvdyApLksD3ToKxW2
+         ETTyEqvIJ7c6/WFmeYpJbg8JDO0h6+xteqoDUe+qJmqqeyB+HwdUvmsvzynDpmj6o0i6
+         Vb6CxuB72kISTZj8TaWzif9n49uDAffcPKNhxyZRqjKTFSj80M/HfhQRngAKvXRidmaN
+         KfHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=t/z3/CCZMGU38TydekqVfeMg4pC09pZB0am9gOPpAMI=;
-        b=TcDxMxV1ORO/9bI4uHBr61KvtdiDaxAwK3DU+b4rdQWGvuG6PCRrDqtZUOrmi8YDY/
-         v5XBoJRjgXgY0lB7k4xjghEu0JqaRTEhMxd0fQQKLMC5nbBkZg31lW9HGUWehkKZZyuV
-         nOnmWZLW4I42aUq11B8nnhNCDKBpIgTy4MHoRywklvYjVFtyVzpWt557+7oSEQ7tr1zu
-         Ih1nsiGjE1CiOE9foWBfkQHREUU+FcDOEM+ty6ykWzDPuohhF8q7u9ncnduplNwS7r27
-         dUjuaMAVxNDnKA5Py/pZsLzP8MnDkqC4HNiCnxTicW34+HI04wXGJt58dcxhrvEKDv0w
-         kDtA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=DrXYvERUH2v/B8mXpZbzudiGaj/dNkSplFituTatYpA=;
+        b=Dd1C2qyXKJfAutdJqWXefGsSl+kChKmSCuVleROg1zZ8vSq6qAd7ALAY+UASJGzF2C
+         +jKyfxlsHCZlZwh4uJRq/VtFbG4QfbMq6rJiDpAxd5TY8SDblhs51aE3fpmtpQqCM7lx
+         xIqv4V1Uol7C/68LhvPJD1hQvDKx4fiQzxYlc+59a5YrzKtCZDQEkATAm2W1kzb0sase
+         O3H3Wz1a0FKIPBHmSI7F3U7QWjftK/Muyhyx8rd42B96aGWOCgYT4Iqa3/EjtNH8D68C
+         UH4i1JWgBPhvI68MKS2DCrbNuTPsopKH69CsEr6uQ3mSvHzNBY6X+nfbxRQw0fiBIZ6O
+         vnTw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CS2e4cbq;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id t125si1007767iof.4.2020.03.30.02.57.29
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DlmVjxjD;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <gokcekuler@gmail.com>
+Received: from mail-lf1-x142.google.com (mail-lf1-x142.google.com. [2a00:1450:4864:20::142])
+        by gmr-mx.google.com with ESMTPS id w186si84621lff.4.2020.03.27.10.44.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 02:57:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Mar 2020 10:44:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) client-ip=2a00:1450:4864:20::142;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CS2e4cbq;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585562248;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t/z3/CCZMGU38TydekqVfeMg4pC09pZB0am9gOPpAMI=;
-	b=CS2e4cbqKQZLtJ69P9Cj5aglcVBd11sBf5TecxzFM+6OKcG9vTvbS5Id2XoWMxBSniR9DX
-	sX2fhAUanYEBK+KWJfJzhppxiTpvQVWqXVxrNKBefWnCGm/T/22Q1wmB399BrB2O0av1RD
-	UBkZmvRN5kgJMmWcLAWSori8zgPY7lg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-KJ95FzYTM-qUDcbnKeGnZw-1; Mon, 30 Mar 2020 05:57:26 -0400
-X-MC-Unique: KJ95FzYTM-qUDcbnKeGnZw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92BF91005509;
-	Mon, 30 Mar 2020 09:57:25 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 193AC97B12;
-	Mon, 30 Mar 2020 09:57:23 +0000 (UTC)
-Date: Mon, 30 Mar 2020 11:57:18 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Gokce Kuler <gokcekuler@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [PATCH v5] staging: qlge: Adjust end of
- block comment
-Message-ID: <20200330115718.502d2c65@elisabeth>
-In-Reply-To: <20200327174401.GA7763@siyah2>
-References: <20200327174401.GA7763@siyah2>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DlmVjxjD;
+       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x142.google.com with SMTP id h6so2805967lfp.6
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 10:44:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=DrXYvERUH2v/B8mXpZbzudiGaj/dNkSplFituTatYpA=;
+        b=DlmVjxjDIvi/J3kWr5k1NpUHw+6mTcaLMsRSrqNUpIVv4NcrRdN3idr/HtQ96bMaww
+         C9ZKT1wZfVpB5XiWqwX4MfGsM+peVyJGGaYKJ8R4vNwA3il9ZQxTFuzkxsGxq4f+Ik3y
+         big0aAdYS1GSQy5sUBH8Kc1aVtFb5x62pn6ACxoe5DSaQBUo8KoywX4CZw7sBdmLStAC
+         00fuOfQ72CbypqvgavgaSLHXKKsB2yT+Yzf4KcS9CDuhq5hvJcwyRJ4E90Bafe35Q9VG
+         FXJ6KjVTuuvOPpUS1jbiLH9M+Sim/cHxA6igKTXj9RlGKKlPZiAxSHSUeFwnNrPl/1Uv
+         /DAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=DrXYvERUH2v/B8mXpZbzudiGaj/dNkSplFituTatYpA=;
+        b=P3V8bpvvNrAZsxOBtQ37zVYvb6WPugwqPhqIG5KFN1Nn4HQuF2arj3+3e+0u5tXzxc
+         zdw0q3xNi6XIPc5SKvEtFzGzsJN+L6NyWJlk957F5mon3iKau5hd3IVJ3j0RpYA4S2zr
+         ih66nVlaTGYno01utTQAu5cFMbp+x69a8wRL/5f3mJ+u5dFENCfbOu8TT9hxPbC/MZub
+         4DUI4X5SUI2Fv5/xAetKEqaeP3ibpfV3BXemVh2Y5kJUbzKf9RlpL3YXIKIpQsNAMnYh
+         vS8aVfKBTmULzezw6soef3mGilEubRCPPdytFjjCJUE+xwSHVPmvsPe+0YKm/w2kYDWd
+         Ie+g==
+X-Gm-Message-State: AGi0Puay1RUjVIvlVfjbsYa+3ZRGF3NCJKkup74QExGlLa6YJkSiyfG7
+	nJFlwPbiZs3apfiHOQd5AF720CuKHfk=
+X-Received: by 2002:a19:4cc3:: with SMTP id z186mr261527lfa.69.1585331044211;
+        Fri, 27 Mar 2020 10:44:04 -0700 (PDT)
+Return-Path: <gokcekuler@gmail.com>
+Received: from siyah2 ([88.241.65.149])
+        by smtp.gmail.com with ESMTPSA id h9sm2917240ljk.96.2020.03.27.10.44.03
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Fri, 27 Mar 2020 10:44:03 -0700 (PDT)
+Date: Fri, 27 Mar 2020 20:44:01 +0300
+From: Gokce Kuler <gokcekuler@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org
+Subject: [PATCH v5] staging: qlge: Adjust end of block comment
+Message-ID: <20200327174401.GA7763@siyah2>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi G=C3=B6k=C3=A7e,
+Drop an unnecessary * on the last line of a block comment to follow the Linux kernel coding conventions.
 
-On Fri, 27 Mar 2020 20:44:01 +0300
-Gokce Kuler <gokcekuler@gmail.com> wrote:
+Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+---
+Changes in v5:
+-Add a line before Signed-off-by: line
+Changes in v4:
+-Odd line-wrapping to message.
+Changes in v3:
+-Add v2 and v1 changes in e-mail.
+Changes in v2:
+-Edited the subject line and the log message.
+Changes in v1:
+-Drop an unnecessary * on the last line of a block comment.
+---
+ drivers/staging/qlge/qlge_mpi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Drop an unnecessary * on the last line of a block comment to follow the L=
-inux kernel coding conventions.
-
-Thanks for sticking with this, I understand this might be frustrating
-but it's important that you get familiar with it.
-
-So... Greg suggested that you should fix the strange line wrapping in
-the commit message -- not that you avoid it altogether. Messages should
-still be wrapped (to 70, 72, or 76 columns, you choose) characters.
-
-A message like the one above, 104 columns, won't really be practical
-for usage with git.
-
---=20
-Stefano
+diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
+index 60c08d9..31322ec 100644
+--- a/drivers/staging/qlge/qlge_mpi.c
++++ b/drivers/staging/qlge/qlge_mpi.c
+@@ -1178,7 +1178,7 @@ void ql_mpi_idc_work(struct work_struct *work)
+ 		/* Signal the resulting link up AEN
+ 		 * that the frame routing and mac addr
+ 		 * needs to be set.
+-		 * */
++		 */
+ 		set_bit(QL_CAM_RT_SET, &qdev->flags);
+ 		/* Do ACK if required */
+ 		if (timeout) {
+-- 
+2.7.4
 
 
