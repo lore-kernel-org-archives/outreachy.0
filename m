@@ -1,300 +1,98 @@
 X-GM-THRID: 6808004693646639104
-X-Received: by 2002:a62:2b8a:: with SMTP id r132mr13031552pfr.56.1585277590319;
-        Thu, 26 Mar 2020 19:53:10 -0700 (PDT)
+X-Received: by 2002:aca:be57:: with SMTP id o84mr2467198oif.138.1585271654516;
+        Thu, 26 Mar 2020 18:14:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:3087:: with SMTP id w129ls5215879pfw.1.gmail; Thu, 26
- Mar 2020 19:53:08 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsHl9WYmlTqB5t59o1gJaoZbq/NkU4r28PJiClz2rEMCjwYYW0jxu8cnUaKAuF1DYcxDqiB
-X-Received: by 2002:a65:62c7:: with SMTP id m7mr11889854pgv.380.1585277588566;
-        Thu, 26 Mar 2020 19:53:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585277588; cv=none;
+Received: by 2002:a9d:6750:: with SMTP id w16ls2684535otm.4.gmail; Thu, 26 Mar
+ 2020 18:14:13 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vu+IFeCftPFNt4aMP34/fCNQU2yKv0fi1a7UIDN5QPhoNYkqkU4Or+JcmYwCQEzNb/Godra
+X-Received: by 2002:a9d:171a:: with SMTP id i26mr8912929ota.170.1585271653322;
+        Thu, 26 Mar 2020 18:14:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585271653; cv=none;
         d=google.com; s=arc-20160816;
-        b=KKdSG6rOklek5N2cm9frYdPNV27PjmN6U5a41UvhMF3ECEDkklSC8co7y97Nx7HJUU
-         3WVfjUaZ+9x4zhXu9P/7MgMG8exgdtTn25DmWkBayXETuFxx4kZ2cfCEuUZOym4JLM8k
-         r6XkLHEJ7lw5mgUO5dFJRRmO3bqCL0WJjn8SHq1AOnJ7CUADC9FohuLGAVwyWpx+x4Je
-         kwkfAPWY24+vjFKzuO1ZUDZcNXQWBMrYME+POHevKMuRivdam5kdkZ+k1UJm61YFHtLG
-         f2uuvoilaJIwYD+5601vgCxreX4Y7FtHsx46+bRTCqiCnfFvaithdI4dTEjnc5f0OCUV
-         R/PQ==
+        b=Gh36CQTWHgHoeSMiav30xMWSoQVEh/r4Qhlap6CmoIXgWi0KbnGeYJnsHTbxtJCIGo
+         vSUKc38C4aJW3Nuj5Xtpg77FKph92vrjmlIsgKnjDEJEkeY+0Af+zinh0oSufM0Tn1eh
+         clnfpiHjwHP8tUKN/AgqeanBZqOzNd4E86EX4vmw662pCFxF0N66f5J6gVtZU0lJgO+A
+         ZVJ2XEOHeNYkv9NLVBW3NMqjzAPNizB/HTxcfefd5gbxLaWiJfUjiPkURicswUnXuSKc
+         W2cSoX7N5ntNo9eYQpri3iW6vSx0pT1AMqIPIkmn1UTh4W7/paMdxj0WqAImOVhIKnlo
+         hJuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=h0ZB/0YY3bVRvjz4ZTCalEiDEEAbZbv5re+o+0ISFoM=;
-        b=AU4WSIZJoIWziVI0iNXn23IdfbmU0geVF6RFRrv4HziqYxuWQmNLsH5tSbiIsRxSz2
-         coedIxbRw5aEBG3/RxISF8823KPJulVBpeYaCihnjt00ZTBQLu119TCL5RoRfVX2txzS
-         LnZyst82Ijm9+pWlhmV6Dt33GnKlwLCwDEdLmGY7w/XXy2gaglNNKfQjpfkNxvaeI89A
-         L+eDNdfemwdP8jqX1GTwLJzuSSeBzPza9u/9P/SIPr8Xe1ACpmBCa36a4TPwpFKLbR58
-         7yDNBqFEwRXXBdBoYKC6Lmzunwt3gopn//gxcNOVQtOEOVZnIhRzj9f7GHUNdGygIpRY
-         NnKw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature:dkim-filter;
+        bh=ix621Dt6qjM3Vmy+f0fZ3r1ulnoR/m5MJYYDj5qeFZg=;
+        b=TtjskDb8GvdeLhRvFeZ4vr1JCe7duyE9UxCpzwLRqZ5L2g+N47bsRfnQ3b+RZFgodz
+         YOWcEW5A4McFRGkpn/JW6dwTGkz9wu3eSgia92wdr4sYtdMBuxIjLxdzCJsmM5uwZ1G7
+         Vu1DjlM4OMyTwbKc5O1uEI05AXZzZ3s+RH72ly4GAw7yZetTCsrLUu4MPZ4+j+eURYkd
+         VVy2LfHZQXQXP9mzTnrYDDbWlhAuXJP8bSbOS6zWwYs7RO30N+tfigngsyz7T/ou4BNo
+         e2fwekCR8NDAiHGKxvutW5PblSGQMb38at0CvGLT1gfpyjBMadmeFJnHueCL3HnFwyad
+         PKKA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ixen71Gn;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <briana.oursler@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id c125si297531pga.5.2020.03.26.19.53.08
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Mar 2020 19:53:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=pjBt8dFW;
+       spf=pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) smtp.mailfrom=nramas@linux.microsoft.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Return-Path: <nramas@linux.microsoft.com>
+Received: from linux.microsoft.com (linux.microsoft.com. [13.77.154.182])
+        by gmr-mx.google.com with ESMTP id e21si420591oob.1.2020.03.26.18.14.13
+        for <outreachy-kernel@googlegroups.com>;
+        Thu, 26 Mar 2020 18:14:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) client-ip=13.77.154.182;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ixen71Gn;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id jz1so3903897pjb.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 26 Mar 2020 19:53:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=h0ZB/0YY3bVRvjz4ZTCalEiDEEAbZbv5re+o+0ISFoM=;
-        b=Ixen71Gn1F6UdJRWSep73lnwPsHtY0yGE2mEntT6WvNfrPQy/2ltqBY7ZGO3PNfTTC
-         mu61OV5syzwpIOjzEIA19rghu6T0O9QtPHq0HBxYG/C+vZZHHOtwsB+Y+mnVGSHgnsmy
-         UOxIIZXTBdOY5+AZgHS+VC0tYaQSYI5uIE0gmrlvOa7bIct8+xeCe7khgnA4NIaUD6dm
-         wxEGCMkP0nHU+LSu/riWRSUOwyLNjMhjUPEdBSo65LngxPpkGLY7D+JrjwZABfkIdyQT
-         MHvtpDug6Xh2rq801MbHp8AU79ktgNrP+s4cw9xJpcgW+wK1ixDuafZOSATpuyF1/YXT
-         uLEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=h0ZB/0YY3bVRvjz4ZTCalEiDEEAbZbv5re+o+0ISFoM=;
-        b=GoPF8wK++1ZnyWLsmVpV9t9YmvoSokxBJ4h75JXzUiKaAe0xs6Rz6ciq5t6AFlrIne
-         WxpHl/a1IlZ5ICetefoOBSa6GF0A955CLU6D0iVI2H9H55EjjqAfW5xnSlK/gvm+ZD7O
-         aYSXG7L96YMyf9CtV1MQ2CSX7L+UPg3lW2ePFVMJ2HzP0G6yypPfUkprYKR50py+t80D
-         V4Y8gfp/SoKK35ZuMk0aoOUB/lI0NDz0fjVTi1if7B3/ZHwmCKzwmdAGpXLr2qVf7sJi
-         oAlO8W8iZWIAo64w4xkUzQIJgvqB+bw3Wg3jgmlccIWMqmP7jbyr0fvvT0/aTf/LL0c3
-         C32g==
-X-Gm-Message-State: ANhLgQ06Sikd1rcRKc12B6msnuprPys0GTAmf6ciNJjFiXLpsxGGK4R9
-	AgT5/8GqhTLZp93f0CSFwMU=
-X-Received: by 2002:a17:90b:1b05:: with SMTP id nu5mr3422200pjb.110.1585277588097;
-        Thu, 26 Mar 2020 19:53:08 -0700 (PDT)
-Return-Path: <briana.oursler@gmail.com>
-Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
-        by smtp.gmail.com with ESMTPSA id t60sm2709979pjb.9.2020.03.26.19.53.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Mar 2020 19:53:07 -0700 (PDT)
-From: Briana Oursler <briana.oursler@gmail.com>
-To: nramas@linux.microsoft.com,
-	gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	outreachy-kernel@googlegroups.com
-Cc: Briana Oursler <briana.oursler@gmail.com>
-Subject: [Outreachy][PATCH v3] Staging: vt6655: Refactor switch case statement.
-Date: Thu, 26 Mar 2020 19:53:01 -0700
-Message-Id: <20200327025301.74819-1-briana.oursler@gmail.com>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <584c79ff-3022-5b4d-e4e3-05a2a29befab@linux.microsoft.com>
-References: <584c79ff-3022-5b4d-e4e3-05a2a29befab@linux.microsoft.com>
+       dkim=pass header.i=@linux.microsoft.com header.s=default header.b=pjBt8dFW;
+       spf=pass (google.com: domain of nramas@linux.microsoft.com designates 13.77.154.182 as permitted sender) smtp.mailfrom=nramas@linux.microsoft.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Received: from [192.168.0.109] (c-73-42-176-67.hsd1.wa.comcast.net [73.42.176.67])
+	by linux.microsoft.com (Postfix) with ESMTPSA id 5565220B4737;
+	Thu, 26 Mar 2020 18:14:12 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 5565220B4737
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+	s=default; t=1585271652;
+	bh=ix621Dt6qjM3Vmy+f0fZ3r1ulnoR/m5MJYYDj5qeFZg=;
+	h=Subject:To:References:From:Date:In-Reply-To:From;
+	b=pjBt8dFWZHuLH2rfu4TVT+O4G/gvRTEgJa17H6eEzbxLEMEC9DBWxr+n7Gw7QhULh
+	 JaA/ljG7Ep6T29e/ITLvVUbd0TUjiGwTRwxIbP4UvCrJA2wkV9aQlCFC5HiJhnhX7+
+	 b47UHAlqs8BeEoOYvUiwOWm8IqMGtBZVt13Tg1vQ=
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging: vt6655: Refactor switch
+ case statement.
+To: Briana Oursler <briana.oursler@gmail.com>, gregkh@linuxfoundation.org,
+ forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+References: <20200325123545.GB3430583@kroah.com>
+ <20200327003311.73204-1-briana.oursler@gmail.com>
+From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Message-ID: <584c79ff-3022-5b4d-e4e3-05a2a29befab@linux.microsoft.com>
+Date: Thu, 26 Mar 2020 18:14:11 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200327003311.73204-1-briana.oursler@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 
-Pull some logic branches above switch case. Create variables to reduce
-code duplication and improve readability.
+On 3/26/20 5:33 PM, Briana Oursler wrote:
 
-Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
----
+Hi Briana,
 
-Changes in v3:
-	- Update grammar and meaning in patch description.
+> Pulls some logic branches above switch case and holds outcomes in
+> variables to improve readability and reduce code duplication within
+> switch case.
 
-Changes in v2:
-	- Remove ternary logic in switch case.
-	- Introduce 'flag' bool.
-	- Move len definition above switch case.
+I have copy & pasted the guidance Julia Lawall had pointed to on how 
+"subject" and "patch description" should be written. Please see below:
 
- drivers/staging/vt6655/rxtx.c | 128 ++++++++++++++++++----------------
- 1 file changed, 66 insertions(+), 62 deletions(-)
+https://kernelnewbies.org/PatchPhilosophy suggests:
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 37fcc42ed000..5b45d66b7f39 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -239,11 +239,21 @@ s_uGetDataDuration(
- )
- {
- 	bool bLastFrag = false;
-+	bool flag = false;
- 	unsigned int uAckTime = 0, uNextPktTime = 0;
-+	unsigned int len;
- 
- 	if (uFragIdx == (uMACfragNum - 1))
- 		bLastFrag = true;
- 
-+	if (uFragIdx == (uMACfragNum - 2))
-+		len = cbLastFragmentSize;
-+	else
-+		len = cbFrameLength;
-+
-+	if (byFBOption == AUTO_FB_0)
-+		flag = true;
-+
- 	switch (byDurType) {
- 	case DATADUR_B:    /* DATADUR_B */
- 		if (((uMACfragNum == 1)) || bLastFrag) {/* Non Frag or Last Frag */
-@@ -254,17 +264,17 @@ s_uGetDataDuration(
- 				return 0;
- 			}
- 		} else {/* First Frag or Mid Frag */
--			if (uFragIdx == (uMACfragNum - 2))
--				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wRate, bNeedAck);
--			else
--				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
-+			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wRate, bNeedAck);
- 
- 			if (bNeedAck) {
--				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
--				return pDevice->uSIFS + uAckTime + uNextPktTime;
-+				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
-+							   byPktType, 14,
-+							   pDevice->byTopCCKBasicRate);
- 			} else {
--				return pDevice->uSIFS + uNextPktTime;
-+				uAckTime = 0;
- 			}
-+
-+			return pDevice->uSIFS + uAckTime + uNextPktTime;
- 		}
- 		break;
- 
-@@ -277,17 +287,18 @@ s_uGetDataDuration(
- 				return 0;
- 			}
- 		} else {/* First Frag or Mid Frag */
--			if (uFragIdx == (uMACfragNum - 2))
--				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wRate, bNeedAck);
--			else
--				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
-+			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len,
-+						       wRate, bNeedAck);
- 
- 			if (bNeedAck) {
--				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
--				return pDevice->uSIFS + uAckTime + uNextPktTime;
-+				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
-+							   byPktType, 14,
-+							   pDevice->byTopOFDMBasicRate);
- 			} else {
--				return pDevice->uSIFS + uNextPktTime;
-+				uAckTime = 0;
- 			}
-+
-+			return pDevice->uSIFS + uAckTime + uNextPktTime;
- 		}
- 		break;
- 
-@@ -300,35 +311,33 @@ s_uGetDataDuration(
- 				return 0;
- 			}
- 		} else { /* First Frag or Mid Frag */
--			if (byFBOption == AUTO_FB_0) {
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
--
--				if (uFragIdx == (uMACfragNum - 2))
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
--				else
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
--
--			} else { /* (byFBOption == AUTO_FB_1) */
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
--
--				if (uFragIdx == (uMACfragNum - 2))
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
--				else
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
-+			if (wRate < RATE_18M)
-+				wRate = RATE_18M;
-+			else if (wRate > RATE_54M)
-+				wRate = RATE_54M;
-+
-+			 /* flag true if (byFBOption == AUTO_FB_0) */
-+			if (flag) {
-+				uNextPktTime = s_uGetTxRsvTime(pDevice,
-+							       byPktType, len,
-+							       wFB_Opt0[FB_RATE0][wRate - RATE_18M],
-+							       bNeedAck);
-+			} else {
-+				uNextPktTime = s_uGetTxRsvTime(pDevice,
-+							       byPktType, len,
-+							       wFB_Opt1[FB_RATE0][wRate - RATE_18M],
-+							       bNeedAck);
- 			}
- 
- 			if (bNeedAck) {
--				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
--				return pDevice->uSIFS + uAckTime + uNextPktTime;
-+				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
-+							   byPktType, 14,
-+							   pDevice->byTopOFDMBasicRate);
- 			} else {
--				return pDevice->uSIFS + uNextPktTime;
-+				uAckTime = 0;
- 			}
-+
-+			return pDevice->uSIFS + uAckTime + uNextPktTime;
- 		}
- 		break;
- 
-@@ -341,34 +350,29 @@ s_uGetDataDuration(
- 				return 0;
- 			}
- 		} else { /* First Frag or Mid Frag */
--			if (byFBOption == AUTO_FB_0) {
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
--
--				if (uFragIdx == (uMACfragNum - 2))
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
--				else
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
--
--			} else { /* (byFBOption == AUTO_FB_1) */
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
--
--				if (uFragIdx == (uMACfragNum - 2))
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
--				else
--					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
-+
-+			 /* flag true if (byFBOption == AUTO_FB_0) */
-+			if (flag) {
-+				uNextPktTime = s_uGetTxRsvTime(pDevice,
-+							       byPktType, len,
-+							       wFB_Opt0[FB_RATE0][wRate - RATE_18M],
-+							       bNeedAck);
-+			} else {
-+				uNextPktTime = s_uGetTxRsvTime(pDevice,
-+							       byPktType, len,
-+							       wFB_Opt1[FB_RATE0][wRate - RATE_18M],
-+							       bNeedAck);
- 			}
-+
- 			if (bNeedAck) {
--				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
--				return pDevice->uSIFS + uAckTime + uNextPktTime;
-+				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
-+							   byPktType, 14,
-+							   pDevice->byTopOFDMBasicRate);
- 			} else {
--				return pDevice->uSIFS + uNextPktTime;
-+				uAckTime = 0;
- 			}
-+
-+			return pDevice->uSIFS + uAckTime + uNextPktTime;
- 		}
- 		break;
- 
--- 
-2.24.1
+In patch descriptions and in the subject, it is common and preferable to
+use present-tense, imperative language. Write as if you are telling git
+what to do with your patch.
 
+It provides the following as an example of a good description:
+
+     somedriver: fix sleep while atomic in send_a_packet()
+
+     The send_a_packet() function is called in atomic context but takes a
+     mutex, causing a sleeping while atomic warning.  Change the skb_lock
+     to be a spinlock instead of a mutex to fix.
+
+thanks,
+  -lakshmi
 
