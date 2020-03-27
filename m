@@ -1,150 +1,97 @@
 X-GM-THRID: 6808898651661795328
-X-Received: by 2002:a92:bbd8:: with SMTP id x85mr14492089ilk.40.1585320327214;
-        Fri, 27 Mar 2020 07:45:27 -0700 (PDT)
+X-Received: by 2002:a17:90a:3783:: with SMTP id v3mr6621666pjb.31.1585320255215;
+        Fri, 27 Mar 2020 07:44:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:ea0d:: with SMTP id m13ls1851871ioc.1.gmail; Fri, 27 Mar
- 2020 07:45:26 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvYqGQT/6hCCCoRoLnxW1JzooQ+G5wqNeG13YLNjNucgaEjxhqbHZ+VyJWOT6O7osOvIXOe
-X-Received: by 2002:a5e:df04:: with SMTP id f4mr12935308ioq.32.1585320326049;
-        Fri, 27 Mar 2020 07:45:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585320326; cv=none;
+Received: by 2002:a17:90a:9416:: with SMTP id r22ls7434416pjo.0.canary-gmail;
+ Fri, 27 Mar 2020 07:44:13 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv8Ap57bhVXjnjnBml55b/PRIUYW2ks497Mrq5G2h5vDoPsaIYdngBhC8DheH7t9PZ09JUL
+X-Received: by 2002:a17:902:b703:: with SMTP id d3mr13793027pls.39.1585320253701;
+        Fri, 27 Mar 2020 07:44:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585320253; cv=none;
         d=google.com; s=arc-20160816;
-        b=xXzcDUHBHAFLpAUIfsfzmn2gpibuOop4T2cxY3G/TXbnskZv0yW04jAxTtKyiCDNFQ
-         mNsKEBFC6WhiuFqzc8HWrt+iVB1p/nJkjZQQPKKCJWvCv7EAUtG7CMCLp3MSnX6XmcmJ
-         OWt73QHr2RjztwPGtt0KEsHMruSMpWseicpk7F0MJ8aTpCyFZiGVpWouJig9OxJjltUC
-         FE59Ze6ChERjr1W7OFRAeTQJVQIwhx3wRXTA2fzclM5uO3buYR+zX8Yf0po3yPM5kfY6
-         sOELpyarBQD3dz3dJYA/pbIosIqnL8NNVI8DWUPZbnpqr27ITUfySaNUT/UGUveD3yo+
-         Li5A==
+        b=ev86G9A13TYn/Eul85gwLX+YJoiSGhOAT1RTietYRjRodg2Q7bbWSS4i2vWnPRs9iO
+         TP2Df+7qzf5RvvMrsUeQHEUd6lJGcmwVfYm7ukpug0/6yo7uK5OcGWaguJEE0OF76Gjy
+         Zf0yq1NA8J1KyxDgTk2JFHP5a4Tn/F3c62byXPXDOSxxmu/HkxPiNEovPKaLl8npZGPs
+         Oe5aaK2wXkF10UBYnh4H88CISW0tijwyca70OlPXgba6/jMbOyGgCMygytlrER5d+933
+         d8RQke0S9kP3l/ODGn+f0baxAeEV5YT68ckZjEAoySu+EU9Xm4jK9LU9szebHLsyHL1d
+         Pfeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=jY5mQk/uRf3fBlD0rRsw184r1JdZcrGZuBqVaCvjPbg=;
-        b=asu+1n6xW8AqswXee01tNtAc65zmK81QHCt7ckbXB8LrqEgrN5Lxt8OjhvizPzQJss
-         Z7ykBaYw5EAPNDF2kjF5fNmDONs7H6HmL7FLB6sSF1NzvXXoqVYuPZEdIeZSdY7yqLPs
-         sbLtO5FDkWkMiosu6+8yZKBBLXH07ExMjN6tfvHna1FL6AQf/X+TN+jehxTsa7K4s18a
-         xO28ncYhdFyyq4+rmh3V9rhDa2qinftsAODrjqyL2BW++v+mi0Su8uJxaI2nnQ7HUzhW
-         ZCd9uTGRXu6/hpZ/ROrbYHeo8qkN0CXXFurv0uCB585ImG925UrVgBFknDJLUlt1E+mf
-         GZfw==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=yLjsGLzoayEJ9lh0r6/8/aI2EDrVQLL+I6t1neA4j4Y=;
+        b=e6qT07Re1lMMN/8N42Rkno8/cAMbga0RmDbOKB8XiCyzMN/6AQtw8c7RhbbNopo3c5
+         CdKUvLTxP343GDQ8tUt3y+o/kMcPzCIoO0yGADpbGOMXLWL+iJNIXCYaY6JVA4p0uH9u
+         Q8Fv281uoL2h+K6dUQcwbmSQVWEoym6hDA8J9zzGGEblyUEzH+qUw58PTYIVE5Jm7qy/
+         n2heOKHrtuqwA5TkLbz7iUTc09y6l7JwrKIdVNjHyffj9YHMkRmH57iBHe9dEp2ATUEV
+         HHOgqVemFV2yWIqRw269IqkHABpjlvOnwcBr/XD/1E1VnIDLE03UbpCCvBBFXvpmJY7V
+         PMRw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="KK2kaOd/";
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Jn+1UWt0;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id j25si343578ili.4.2020.03.27.07.45.26
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id 185si405449pgh.3.2020.03.27.07.44.13
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 27 Mar 2020 07:45:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Fri, 27 Mar 2020 07:44:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="KK2kaOd/";
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Jn+1UWt0;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id b72so4593115pfb.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 07:45:26 -0700 (PDT)
+Received: by mail-pj1-x1044.google.com with SMTP id m15so3865423pje.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 07:44:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=jY5mQk/uRf3fBlD0rRsw184r1JdZcrGZuBqVaCvjPbg=;
-        b=KK2kaOd/X82l5sR84ko45Sb74Kh6heR4DLKgFHJkUZ8mDsGpnormOZlyxBYfro/jtH
-         SAXG99gURBkGejEMA+/NDjig0z8md/AnBCIxwT9S3ijbgsWFUaB2FZIF0QKN8E0T/XHD
-         srUPke+nDmo31LOZU1sK3DxCzDZkc81kLDH7nuYUaUdvrT9CI8HVrC0zRKr2yNZOlxCW
-         kaECw8kk7u+J/owWc0FWKVYbJOvB/6yNGvvOo9ycszv/hekBc0sgYeQ9Jt5ucJ6TCTY7
-         QegsoTlQZMMbWeyaMkpzVqJqN9kmvYgbOzdDZQ8El1+3YQ8x6qRX9TaKgl/Jx9F/6gSD
-         KGhg==
+        h=from:to:cc:subject:date:message-id;
+        bh=yLjsGLzoayEJ9lh0r6/8/aI2EDrVQLL+I6t1neA4j4Y=;
+        b=Jn+1UWt0SACCIleTOgRvHpPltaPR843NJf1V+OgwdLDZ5lFsdY9vHJ2JRYqfLtFEeS
+         3tfb5Xvaz1lyTnhvYNrA+ucIx1+vuuGxEV/VMy6ux1UQ90XKJVpmcDRvqQruhNQK6Fbq
+         7MCGFuZIU2ld0V8UM3YkQyFOZ6DNaXwbhRQd23lVhj1AlPC9lZrfFdgVsQpkcB59fmCq
+         mDNTXvPwSwaL2hPPFp5PG39Rb+nsVwjz5qFVK+KB9D4MHsfbs9gcuV8F3FcN5vNXckij
+         Kl7wOFphVQTJSkPZxOddkqSxfN/aMB2lsZJXrffhQsyPhD9V+aOL50fQEzJbnxAaOZ/o
+         YZqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=jY5mQk/uRf3fBlD0rRsw184r1JdZcrGZuBqVaCvjPbg=;
-        b=S4dSCrEQQwaXRKUinomBh6XSGzCApIW94FiIqpTwnaIpci3k3x7QahdNYbbEZAps/K
-         7+/HkAZXkdZRIUcjtrE2ZjWaxiFOxbrucXdzFioU5hNOzgkbEYYCKM2WKnja3bEN7IZK
-         756Ez0ZOfEto2/+GMR6Fz6Z7Uop1SBX9Lt3G4QgIGhI0fqtGkQwnRP9P2RE9NIBLZ7nh
-         +Wotr242IQ6baZytvqX/VbsSF5IMy73VVwNwFVHT235vvahVctKKIcutsGO3HzL40b5Z
-         BjyhLpfh3f0nS6OgKrl3waWlOdoOZ3XtOslpHiW4icanUx7c6f45YIumraEVfqxB2jtL
-         TCbQ==
-X-Gm-Message-State: ANhLgQ04B7MY/l9T1440ykQp/YxiAhrt4mhJfj3KzXnPDh4ybK8TM+dG
-	9h7P2MxwXQX5+jTs20bG8kErJrhZA9Z/Ug==
-X-Received: by 2002:a63:ce42:: with SMTP id r2mr15087148pgi.106.1585320325017;
-        Fri, 27 Mar 2020 07:45:25 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=yLjsGLzoayEJ9lh0r6/8/aI2EDrVQLL+I6t1neA4j4Y=;
+        b=rT887vthq8ItJbAU2ZKMn04aHROPCYjKmYapOToCV7B2FTK2o0bb9DRL6aWjLFGvce
+         EGSj9gP+kEx2M/k0sa0oEl+Q3jJZckxUkXZJGpII4UH7PcQ7YF4CFTNx3qEZOXUZB2le
+         oDphduQnOhjWHw69+qAhgf6BC5THyOE/sFeYvOH8lrP2e1QpfMWKp4jij7G6goyEf2jZ
+         JisL9S/EL2bwGjhIaPWmcH9kv65kLQ8vpSw6owUj1Yf5hJHyjB+7LzA/WWTIShpwo1Wd
+         wsyJOsNS9mw0ohYHnuVdmb6CYASfGpqZ2PmVnHPDt3WK1q+zKbvQkNGrHiUOKFeJ5Df5
+         /dBA==
+X-Gm-Message-State: ANhLgQ0X+t8NeGIDOJO9sEuncOQ5OHfb7wQ7wC9YXr449A4Qdb+QVmZO
+	U1y5qQsq23fk8JxQyXKbgyaTx6cJQWfLjQ==
+X-Received: by 2002:a17:90b:11ce:: with SMTP id gv14mr5762019pjb.63.1585320252954;
+        Fri, 27 Mar 2020 07:44:12 -0700 (PDT)
 Return-Path: <debsoumyajit100@gmail.com>
 Received: from localhost.localdomain ([47.29.233.220])
-        by smtp.googlemail.com with ESMTPSA id g69sm3939333pje.34.2020.03.27.07.45.21
+        by smtp.googlemail.com with ESMTPSA id g69sm3939333pje.34.2020.03.27.07.44.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Mar 2020 07:45:24 -0700 (PDT)
+        Fri, 27 Mar 2020 07:44:12 -0700 (PDT)
 From: Soumyajit Deb <debsoumyajit100@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
 	sbrivio@redhat.com,
 	Soumyajit Deb <debsoumyajit100@gmail.com>
-Subject: [Outreachy Kernel][PATCH 1/2] staging: wlang-ng: Properly align the lines of function call
-Date: Fri, 27 Mar 2020 20:12:28 +0530
-Message-Id: <20200327144229.19738-2-debsoumyajit100@gmail.com>
+Subject: [Outreachy Kernel][PATCH 0/2] staging: wlan-ng: Resolve various warnings reported by checkpatch.pl
+Date: Fri, 27 Mar 2020 20:12:27 +0530
+Message-Id: <20200327144229.19738-1-debsoumyajit100@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200327144229.19738-1-debsoumyajit100@gmail.com>
-References: <20200327144229.19738-1-debsoumyajit100@gmail.com>
 
-Align the lines of function call to improve code readability and to
-adhere to the uniform Linux Kernel coding style.
-Reported by checkpatch.pl
+This patchset resolve warnings issued by checkpatch.pl
+This patchset properly aligns the lines of a function call and breaks a
+line into two lines to respect the 80 character width constraint. This
+helps in maintaining a uniform Linux Kernel coding style.
 
-Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
----
- drivers/staging/wlan-ng/cfg80211.c | 27 +++++++++++++--------------
- 1 file changed, 13 insertions(+), 14 deletions(-)
+Soumyajit Deb (2):
+  staging: wlang-ng: Properly align the lines of function call
+  staging: wlan-ng: Line over 80 characters
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index fac38c842ac5..3d17037f954e 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -359,16 +359,15 @@ static int prism2_scan(struct wiphy *wiphy,
- 		freq = ieee80211_channel_to_frequency(msg2.dschannel.data,
- 						      NL80211_BAND_2GHZ);
- 		bss = cfg80211_inform_bss(wiphy,
--			ieee80211_get_channel(wiphy, freq),
--			CFG80211_BSS_FTYPE_UNKNOWN,
--			(const u8 *)&msg2.bssid.data.data,
--			msg2.timestamp.data, msg2.capinfo.data,
--			msg2.beaconperiod.data,
--			ie_buf,
--			ie_len,
--			(msg2.signal.data - 65536) * 100, /* Conversion to signed type */
--			GFP_KERNEL
--		);
-+					  ieee80211_get_channel(wiphy, freq),
-+					  CFG80211_BSS_FTYPE_UNKNOWN,
-+					  (const u8 *)&msg2.bssid.data.data,
-+					  msg2.timestamp.data, msg2.capinfo.data,
-+					  msg2.beaconperiod.data,
-+					  ie_buf,
-+					  ie_len,
-+					  (msg2.signal.data - 65536) * 100, /* Conversion to signed type */
-+					  GFP_KERNEL);
- 
- 		if (!bss) {
- 			err = -ENOMEM;
-@@ -473,8 +472,8 @@ static int prism2_connect(struct wiphy *wiphy, struct net_device *dev,
- 				return -EINVAL;
- 
- 			result = prism2_domibset_uint32(wlandev,
--				DIDMIB_DOT11SMT_PRIVACYTABLE_WEPDEFAULTKEYID,
--				sme->key_idx);
-+							DIDMIB_DOT11SMT_PRIVACYTABLE_WEPDEFAULTKEYID,
-+							sme->key_idx);
- 			if (result)
- 				goto exit;
- 
-@@ -586,8 +585,8 @@ static int prism2_set_tx_power(struct wiphy *wiphy, struct wireless_dev *wdev,
- 		data = MBM_TO_DBM(mbm);
- 
- 	result = prism2_domibset_uint32(wlandev,
--		DIDMIB_DOT11PHY_TXPOWERTABLE_CURRENTTXPOWERLEVEL,
--		data);
-+					DIDMIB_DOT11PHY_TXPOWERTABLE_CURRENTTXPOWERLEVEL,
-+					data);
- 
- 	if (result) {
- 		err = -EFAULT;
+ drivers/staging/wlan-ng/cfg80211.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
 -- 
 2.17.1
 
