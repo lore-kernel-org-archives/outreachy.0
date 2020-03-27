@@ -1,146 +1,113 @@
 X-GM-THRID: 6808898651661795328
-X-Received: by 2002:a02:cb4b:: with SMTP id k11mr8827091jap.115.1585559588010;
-        Mon, 30 Mar 2020 02:13:08 -0700 (PDT)
+X-Received: by 2002:a17:902:8d91:: with SMTP id v17mr12876423plo.53.1585320359667;
+        Fri, 27 Mar 2020 07:45:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6638:e87:: with SMTP id p7ls2229578jas.6.gmail; Mon, 30
- Mar 2020 02:13:06 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtHlil8xjAekB+3JWVsSIn2+rPpNyF3mi7Ukx1CsXyO2zi9ACrOgxXSoU+A+1VIkvoxvgxu
-X-Received: by 2002:a05:6638:506:: with SMTP id i6mr1925431jar.59.1585559586665;
-        Mon, 30 Mar 2020 02:13:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585559586; cv=none;
+Received: by 2002:a17:90b:245:: with SMTP id fz5ls7422336pjb.3.canary-gmail;
+ Fri, 27 Mar 2020 07:45:58 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsT0l7woHqIk4bMZkhfAWDHVR3JTpQ/LS8jxww0zEvPUg2vbmK1beq6wqrG/L5iuLiXH64L
+X-Received: by 2002:a17:902:a702:: with SMTP id w2mr13706272plq.107.1585320358268;
+        Fri, 27 Mar 2020 07:45:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585320358; cv=none;
         d=google.com; s=arc-20160816;
-        b=MftJIL1/YZfiM+UShaqNp7+kZ6tYBRfqnw1KPnOxw0vCB3vOGVb1wGTd3u6XPoC3Af
-         pTRQ2fKDSXYxSwwTAdqKcoNvDpcab4iW2aHBe7AYae3958Q2M9Yny+3lQJ47Xnphkm0E
-         rXeIvKneQeqdjKgACXIWnPBVU9xRlBQIK4lif0jjIAPmmXHcHyo9olZIQMmPOpo4vUc9
-         ZYYdn5kmKOiJEyKM7iW3JDfoDQtoURf4loF0a4FZKHAJiRz2wCxHEKO+RSTFJVcklZb2
-         2s4awhI1pslEymuuvnmolqA6LSAp41ME36tfiJgRUgnOiAglsI3grno3nD2iEAwhl1hz
-         ZWZw==
+        b=c28Tnq04tnmsktkhhDcHOKDIa/epYsXdnRw9QY/a5vUyX65fYhvBDSXGQYqmmWbOm9
+         jK29oQzknRglCsx2u0K1yXjjGgoSKifaJ/m5q1BD8kkZeNFOU+uxm+rng4H1TUnHSLry
+         WXwH/lfG/OkyWAs5oaPuqcFMkxMEi3Ek4u4l8Q+P7F01HI8KTa/FsU0TZqwGENtjCUDP
+         sckS4C3O1uDGFgD/qsG58TUy0zkMW/yiDuvHRmKLaG1wd0vpkYFmS/u8QKoBvn4H5MHx
+         +9eQGYm7aqaovSvbUmG/kUn3zyoREYKBvYLh9l3yV9G3t0aNDNEyHVwFzpNo5uMBDQEU
+         lITA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=3fm/RyRA4eEG+XzycPhu7fTF5Eof5F2/DGa4vJMbMU0=;
-        b=TT2l8ItkCAYPBTnnwMyvNquEO/nd+jS69Wk/UOjurHEyO27mJd9JqaDqJBZP1LAdgS
-         Py5F3YrOOpnVok2YyDF0vj1OUVQ6vy2DNus8/e+z0kvLcarKhssj8SpYIfDegBvjpTFO
-         Dx02+ofijlsmULlr9a/R5aunK2p/wrJLuYxQUe5Dq9QSNHC3NzlNF7AAtJyXWWmQFfIS
-         vfwAumh1v4DjnCatcMqkLsbXvarqNgqHzS0QBvE7ueTCHF9dwJFVNLnp7lSGjr5N4raq
-         FQEJTt/88KjSBerksvJjjozFpxoXTFVY/jVQvJ8SQtya8ucNjnNreBgwXt26T69VlmH8
-         lSPQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=YaNw4SstDdfvPMGgrlwgDm8isHo2zZE8TTZmoTNzoqU=;
+        b=aQ1578tKrCtZOj9psy0Ogs8SWtPYBcdQXg3j86Knf8ca8Ofui92TySHGqgAa7c9E00
+         GkYd19D+9jhgjJf+1v+gS2AAErLkvohsdVSpXzuscLhEuF1tp22v0D7v3bIZz1LR6HTp
+         a9eZYtsAoz39C3OMRD3y9NeUElDI3Xm6MNTxmqb+/tKRQonZcVy5kqI112ZPK32hplUk
+         xl+d1izqyUiekziXdqx81AMtkGUXmgNOaeN2kDBY6yWcqQetnlC7X6woIveFa55DkGgl
+         cyyccgjJUchmI2sNndCNq2UlduzSljc9HAaigfFJ+dtmuU1o1g+w65ZYGxs1NuHAmbRI
+         M2Hg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="W/EFtvna";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id m8si975521ili.2.2020.03.30.02.13.06
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cb7Na2tI;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from mail-pj1-x1042.google.com (mail-pj1-x1042.google.com. [2607:f8b0:4864:20::1042])
+        by gmr-mx.google.com with ESMTPS id w18si495996pfi.4.2020.03.27.07.45.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 02:13:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Mar 2020 07:45:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) client-ip=2607:f8b0:4864:20::1042;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="W/EFtvna";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585559586;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=3fm/RyRA4eEG+XzycPhu7fTF5Eof5F2/DGa4vJMbMU0=;
-	b=W/EFtvnaNzAkofYXOsNFgU5ZhkRVJiXiRauq3b3jzLSoxqqdD9GwYgewaUM5AfRDEHw43W
-	B5QMhEW7FmBmmtZozJaeEWij0PZuXtRpioud3VFJ/ptZ0GmtrCRl7xeguM6yv/Kb2wl9NG
-	wgou759IAjYFc7c2OljTzvol8T/0j00=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-179-fnZOeJDsNha61jA-xNivcQ-1; Mon, 30 Mar 2020 05:13:01 -0400
-X-MC-Unique: fnZOeJDsNha61jA-xNivcQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33FC218A8C80;
-	Mon, 30 Mar 2020 09:13:00 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.47])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 28EE75DA76;
-	Mon, 30 Mar 2020 09:12:57 +0000 (UTC)
-Date: Mon, 30 Mar 2020 11:12:51 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Soumyajit Deb <debsoumyajit100@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [Outreachy Kernel][PATCH 1/2] staging:
- wlang-ng: Properly align the lines of function call
-Message-ID: <20200330111251.1d2e6db6@elisabeth>
-In-Reply-To: <20200327144229.19738-2-debsoumyajit100@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cb7Na2tI;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1042.google.com with SMTP id q16so4412327pje.1
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 07:45:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=YaNw4SstDdfvPMGgrlwgDm8isHo2zZE8TTZmoTNzoqU=;
+        b=cb7Na2tINyJS/5C0VVqIqPDA9fFiJ6sxP+cB60+sRib4WjJyR5ICCiT19H948eo8C/
+         /l619iStGqj2A/zScEhgCcWbIyLtBfwEP426fCEgMbWkJbkEKntfmX/EhIVVB9uqsSsP
+         ds1qpw3KOVppNN0asUXzFaNIcg8Mkwcp6mgy7XIZ+4tn9GFyggZk3z39AzYEObba9Lgr
+         dRgaHlsRsXwplU+fq5/O0nfpnzVvODue/O6ItY5Ux7x5BsBwShW7ww9/t/RAWbxX8h9I
+         d0KUZW2X7E3wcysEDQYh/2III1QczZLUUHMEii4B4GRNmJnZokThGEBgclAJOXEiUCyH
+         FwrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=YaNw4SstDdfvPMGgrlwgDm8isHo2zZE8TTZmoTNzoqU=;
+        b=C8ZSvbZx/4KkQ6R5F0t+KKpPFZyTwSHYqwMkg6gno2TIhSEtXhAfV2JSvMrqQCQcDg
+         8xLCqxf8XqR/cmpKb/YghskyWPnDyPAN4znRu6eTIOG/4JKYgvvjCES5GTuwJsiyc7gP
+         re1uZKTtOJq77fmNJ6CFrmjptPtnbCc0oEk0zDwWBkx6YxmJ8WXTsQG2eLl2edrDwwDf
+         uOwi1iInbMuNVtcSHjRWqH6nerS5nv6oYzM0/nZ+cE9rYx9yAkCkJnOjkCY9xTitSTDK
+         akwuWcyefUGHYQWpTYeRy3btdwmPcCSjD7EHBuKXrE/A/Vz3/c6qg/5sX9lDKrOlBl+9
+         pXUA==
+X-Gm-Message-State: ANhLgQ0353sYavkvD7oK/i0d5v0D0f0uPguwhYgyz17JQIss9316V5bM
+	eFym3kz528arPYbEP1nmJXRAQ/0qPo1YVg==
+X-Received: by 2002:a17:902:26a:: with SMTP id 97mr14034260plc.82.1585320357586;
+        Fri, 27 Mar 2020 07:45:57 -0700 (PDT)
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from localhost.localdomain ([47.29.233.220])
+        by smtp.googlemail.com with ESMTPSA id g69sm3939333pje.34.2020.03.27.07.45.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Mar 2020 07:45:56 -0700 (PDT)
+From: Soumyajit Deb <debsoumyajit100@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	sbrivio@redhat.com,
+	Soumyajit Deb <debsoumyajit100@gmail.com>
+Subject: [Outreachy Kernel][PATCH 2/2] staging: wlan-ng: Line over 80 characters
+Date: Fri, 27 Mar 2020 20:12:29 +0530
+Message-Id: <20200327144229.19738-3-debsoumyajit100@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200327144229.19738-1-debsoumyajit100@gmail.com>
 References: <20200327144229.19738-1-debsoumyajit100@gmail.com>
-	<20200327144229.19738-2-debsoumyajit100@gmail.com>
-Organization: Red Hat
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, 27 Mar 2020 20:12:28 +0530
-Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+Move the last argument of the line to the next line to prevent the line
+from exceeding 80 character width limit.
+Reported by checkpatch.pl
 
-> Align the lines of function call to improve code readability and to
-> adhere to the uniform Linux Kernel coding style.
-> Reported by checkpatch.pl
->=20
-> Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
-> ---
->  drivers/staging/wlan-ng/cfg80211.c | 27 +++++++++++++--------------
->  1 file changed, 13 insertions(+), 14 deletions(-)
->=20
-> diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng=
-/cfg80211.c
-> index fac38c842ac5..3d17037f954e 100644
-> --- a/drivers/staging/wlan-ng/cfg80211.c
-> +++ b/drivers/staging/wlan-ng/cfg80211.c
-> @@ -359,16 +359,15 @@ static int prism2_scan(struct wiphy *wiphy,
->  =09=09freq =3D ieee80211_channel_to_frequency(msg2.dschannel.data,
->  =09=09=09=09=09=09      NL80211_BAND_2GHZ);
->  =09=09bss =3D cfg80211_inform_bss(wiphy,
-> -=09=09=09ieee80211_get_channel(wiphy, freq),
-> -=09=09=09CFG80211_BSS_FTYPE_UNKNOWN,
-> -=09=09=09(const u8 *)&msg2.bssid.data.data,
-> -=09=09=09msg2.timestamp.data, msg2.capinfo.data,
-> -=09=09=09msg2.beaconperiod.data,
-> -=09=09=09ie_buf,
-> -=09=09=09ie_len,
-> -=09=09=09(msg2.signal.data - 65536) * 100, /* Conversion to signed type =
-*/
-> -=09=09=09GFP_KERNEL
-> -=09=09);
-> +=09=09=09=09=09  ieee80211_get_channel(wiphy, freq),
-> +=09=09=09=09=09  CFG80211_BSS_FTYPE_UNKNOWN,
-> +=09=09=09=09=09  (const u8 *)&msg2.bssid.data.data,
-> +=09=09=09=09=09  msg2.timestamp.data, msg2.capinfo.data,
-> +=09=09=09=09=09  msg2.beaconperiod.data,
-> +=09=09=09=09=09  ie_buf,
-> +=09=09=09=09=09  ie_len,
-> +=09=09=09=09=09  (msg2.signal.data - 65536) * 100, /* Conversion to sign=
-ed type */
+Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+---
+ drivers/staging/wlan-ng/cfg80211.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-So... wait a moment:
-
-- March 21, 17:30 UTC: you ask me on IRC how to fix the checkpatch
-  warning you're introducing now. You propose to move the comment on a
-  line by itself. I suggest that you write a test program and find out
-  if this conversion can be done in another way. You say you will do
-  that
-
-- March 27, 10:58 UTC: you ask me on IRC if you can use a cast to "i32".
-  I have a d=C3=A9j=C3=A0 vu, can't really remember who asked me this, and
-  suggest that you write a test program. You say you will do that
-
-- March 27, 12:12 UTC: you send the same question to this list
-
-- March 27, 14:45 UTC: you send this patch
-
-...why, exactly?
-
---=20
-Stefano
+diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
+index 3d17037f954e..9ab57822979b 100644
+--- a/drivers/staging/wlan-ng/cfg80211.c
++++ b/drivers/staging/wlan-ng/cfg80211.c
+@@ -362,7 +362,8 @@ static int prism2_scan(struct wiphy *wiphy,
+ 					  ieee80211_get_channel(wiphy, freq),
+ 					  CFG80211_BSS_FTYPE_UNKNOWN,
+ 					  (const u8 *)&msg2.bssid.data.data,
+-					  msg2.timestamp.data, msg2.capinfo.data,
++					  msg2.timestamp.data,
++					  msg2.capinfo.data,
+ 					  msg2.beaconperiod.data,
+ 					  ie_buf,
+ 					  ie_len,
+-- 
+2.17.1
 
 
