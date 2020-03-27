@@ -1,117 +1,141 @@
-X-GM-THRID: 6256352550355730432
-X-Received: by 10.129.155.201 with SMTP id s192mr9485260ywg.4.1456670591918;
-        Sun, 28 Feb 2016 06:43:11 -0800 (PST)
+X-GM-THRID: 6808264476634120192
+X-Received: by 2002:aa7:cfc5:: with SMTP id r5mr14722316edy.78.1585327087882;
+        Fri, 27 Mar 2020 09:38:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.34.208 with SMTP id l74ls2190842qgl.47.gmail; Sun, 28 Feb
- 2016 06:43:11 -0800 (PST)
-X-Received: by 10.31.160.209 with SMTP id j200mr9172837vke.6.1456670591128;
-        Sun, 28 Feb 2016 06:43:11 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-ig0-x236.google.com (mail-ig0-x236.google.com. [2607:f8b0:4001:c05::236])
-        by gmr-mx.google.com with ESMTPS id i9si798937igg.1.2016.02.28.06.43.11
+Received: by 2002:a50:bb02:: with SMTP id y2ls6809764ede.1.gmail; Fri, 27 Mar
+ 2020 09:38:06 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv05ANEIF82tbmmu4f4kbdb7V2dX3v7y6PM5C9fPhCjrUi6jLOheNP8HuL/bc1rXcCOj/WR
+X-Received: by 2002:a50:9eaf:: with SMTP id a44mr14571819edf.58.1585327086674;
+        Fri, 27 Mar 2020 09:38:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585327086; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0/d7FmrjNWHVlg0N1aXiS6+mcLM4mz5uvDXWEKu17X5WVQh4Vv3in/yD4HyUZAA7NR
+         JarhVRAk36NSb7IlYbuXLSl8OQJBLml/lgW5vv3Bjr/3q+xF9lyQacoU5ZTUVjJG147m
+         wrr82hIFJCwW2LjZ6MoP2JlHezJsBV4tngomf0f/Ymh9NFgs0pC1acDs2CVMCIh3yziq
+         3x2xANqXksPc9PfExQYQf4hyYSwxCJfhWIQwWk93yG/l5Qd67ITp1kiVHPG/HgDGGtdx
+         4HT9OGgytmKQiXAr94heULPv6SgTyifzZLuLtInVAryxsMCIctdhOCxNiH7OBjc9v3ah
+         O6pA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=X1Kie6cxxYN8H1Ei27s8L7OHAwBAZR6Uge4esMhmQ80=;
+        b=xINX2sTubfOXfeLf5xhoa2r5szoAXpmgD3OUAyqgdzhoHVjLQcwnV6krndfPI+G3tz
+         2O7859cX+DZOCt5phWVVWUjK9NJtyLzdIp/GDcymIdS1HpJx0n7mFqApB7YA+yusKgzc
+         p70hThr1V8f3N4UKEiDpjw2NN8tA+oXVtVI6Nn2dJLXSNGsGzszwQVSAvjVpIR5jq0vw
+         2BB/Gi4gcYrEIPu011P+dhhM6p3pi8+LRoqvgt+RhGJrSSY0lSxRHDnc1BveSWni8cTq
+         lpiNRMSVDHh+Sl2v3nLVhLPuKFFkC73sM8meG3EWgTKDud3Ag7ZUvwg3DgXBzINWgb9p
+         CYjQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nETVKi11;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <singhalsimran0@gmail.com>
+Received: from mail-lj1-x243.google.com (mail-lj1-x243.google.com. [2a00:1450:4864:20::243])
+        by gmr-mx.google.com with ESMTPS id ck3si447296edb.5.2020.03.27.09.38.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 06:43:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::236 as permitted sender) client-ip=2607:f8b0:4001:c05::236;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 27 Mar 2020 09:38:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) client-ip=2a00:1450:4864:20::243;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c05::236 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ig0-x236.google.com with SMTP id z8so63118580ige.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 06:43:11 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nETVKi11;
+       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x243.google.com with SMTP id g12so10917406ljj.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 27 Mar 2020 09:38:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=PyqjDnO3q72XV+07sNertu3GNSy5VhbOcB3EfBEb1yE=;
-        b=harvwySiLghGSNe1gZve3J1YntjTpm3LltidEX9voHyx2arMeKQfr0o/Vx2v2FDUwt
-         8JLOp6hHVIRGqsBWvAgGnMnH+T2cRLcmXaSGJ9K9HIAW0VeYcCQ8pm9C9AGv7t87Tr6a
-         yE9/LpaXOauIlSw680bLo4mKq9LAG5+8BQfSHtR/4AuVR55TTXMfCAbQvzYKmDMnxb7F
-         wqGfxsqS4VnvoG8GqrhJNjWdMuKTGelmLRGIMnWKE6DKSs9mGbcCNy8pW0unrdOcJHab
-         66dTn5Y09kGEXvC7+LtINeoBHA1tNS2RNdzLADobyqzKbzoObBfI4NifqyFABM9XCOUk
-         o61A==
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=X1Kie6cxxYN8H1Ei27s8L7OHAwBAZR6Uge4esMhmQ80=;
+        b=nETVKi11BYL8cQ42dEACABiJaOXSZcW56W2tWJisryaJqhjnWsiWPhoBSUdAYV4Lb6
+         7OpeKKQcN8o9A07mm0ecPz3ot9xoDcB0AeQvrts5n4bnOT7NEvwKUsfCy6fyvO3gWsYl
+         JWw3y2W1KdSbWwW5xgosRA0zOHzEiDrMlu7wIdNAFpd4ExQkqBFcd2jKDBV3lAUQtH9T
+         GRjllS09d687iTIFPrgGdNAD2TYj5pNHSc9Yg+33YlTcDoVS/vyPy7GzMbaNvUHtK1Yj
+         s4/Hva5GBhsujdyAYQTT+kRkzeI4d4dBHtZNN2zn8cuYvIzWB6sc1vl1gpSM5fQWzta/
+         5d6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=PyqjDnO3q72XV+07sNertu3GNSy5VhbOcB3EfBEb1yE=;
-        b=aKuBAUGIF9ZSrBFZtb1TiEgy1wggydbFIpCPSSZnjNuLFsGO1RzbrggQNmPc0jxOXW
-         8EtEl+5+qDPnoGG4U52vtB5tKX5dom9I0Qw6iFWQ0kN7OVpoJZpoX8puYfFp3vto8Tz3
-         5do1YPEcUDGXbYnlZM9LA1Ay22Ghi4L8a30ygqbugpIwNUCSHMk5pPs5bB2AzWZfwSyy
-         +6XhPvXVtq9ECtI/zOLAuZQtb3N3jHrcNR5NPsMmyDzgr3yfwI6Q4bbein0N3zF2Q0t7
-         6fIAGoCHQT0k7FJ0qF1PrSmdcA10e5PJKHmpHKGO7qnoW8Kncre4iHaNGT+Mwcq8BTZX
-         8D4Q==
-X-Gm-Message-State: AD7BkJJwodDZfjTxYuftyf9jLI0vXElOdaZHx22bRb7eypxUJPOLpq4UkWM86NQUkDxTvw==
-X-Received: by 10.50.161.8 with SMTP id xo8mr3982609igb.1.1456670590926;
-        Sun, 28 Feb 2016 06:43:10 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id j18sm8848931ioj.40.2016.02.28.06.43.10
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 06:43:10 -0800 (PST)
-Date: Sun, 28 Feb 2016 14:42:20 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723au: core: Prefer list_for_each_entry_safe()
-Message-ID: <20160228194220.GA6211@janani-Inspiron-3521>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=X1Kie6cxxYN8H1Ei27s8L7OHAwBAZR6Uge4esMhmQ80=;
+        b=ek02GiBy5qXynRTgTUaS5YE2PwQPvo+k3oUB0JcZRe/7MjmtVdbluKf6rTLR7GUD97
+         FC7ybRwKYc2HNfRxWpemHlioGSkPcYw4vo1Bb/e058M36PYhg22EAuJpW691qITFvCZ2
+         gzqB/62y8jAi8KZxncvliwF80zQW9v0uIokJHGGH2gTKjCzpE5TpDnpkr/kYXdC/zppp
+         1tgPGv96JbwzOa9kqtePkEfi5LoYglcuLKEcdghoQEKSSeFtuoB5aQBNrqiTzruDdoH9
+         C3kRiAipFbrqnkJreeOsJitrqn5XibpQROivVMoGQnAQUHSXmbevaA1XjX6xfETz8gwT
+         4AkA==
+X-Gm-Message-State: AGi0PuaNr0Hh9ZfCD1OCi/aB7Nz/h1EcS6+BSafIXAbATAMejp/hpasG
+	SyY7XtLRso4G/LoU7tby334Pemc7JQNHj+JQWr08K9yYd7o=
+X-Received: by 2002:a2e:5ce:: with SMTP id 197mr9117390ljf.234.1585327086084;
+ Fri, 27 Mar 2020 09:38:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+References: <20200325214312.GA1936@simran-Inspiron-5558> <27ca4063-f34b-030d-f593-1d9a4f3c1165@linux.microsoft.com>
+In-Reply-To: <27ca4063-f34b-030d-f593-1d9a4f3c1165@linux.microsoft.com>
+From: Simran Singhal <singhalsimran0@gmail.com>
+Date: Fri, 27 Mar 2020 22:07:53 +0530
+Message-ID: <CALrZqyPKBYji7+n3YNETMtbqPURSQp8vVd4CvqNqy=bh8RsktA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: hal: Compress
+ return logic
+To: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, driverdevel <devel@driverdev.osuosl.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="000000000000d1a77f05a1d8b929"
 
-Use list_for_each_entry_safe() rather than a combination of
-list_for_each_safe() and container_of().
+--000000000000d1a77f05a1d8b929
+Content-Type: text/plain; charset="UTF-8"
 
-Semantic patch used:
+On Thu, Mar 26, 2020 at 11:57 PM Lakshmi Ramasubramanian <
+nramas@linux.microsoft.com> wrote:
 
-@a@ 
-expression pos, n, head; 
-expression mem; 
-type t; 
-identifier var; 
-iterator name list_for_each_entry, list_for_each_entry_safe; 
-iterator name list_for_each, list_for_each_safe; 
-@@   
+> On 3/25/20 2:43 PM, Simran Singhal wrote:
+>
+> > Simplify function returns by merging assignment and return into
+> > one command line.
+>
+> "Simplify function returns by merging assignment and return into one line".
+>
+> You could change the subject also to "Simplify function return logic".
+>
 
-(   
-- list_for_each(pos, head) 
-+ list_for_each_entry(var, head, mem) 
-  { 
-   ... when != var 
--  var = \(list_entry \| container_of\)(pos, t, mem); 
-   ... when any 
-  } 
-| 
-- list_for_each_safe(pos, n, head) 
-+ list_for_each_entry_safe(var, n, head, mem) 
-  { 
-   ... when != var 
-- var = \(list_entry \| container_of\)(pos, t, mem); 
-   ... when any 
-  } 
-)
+Thanks for your suggestion, Lakshmi. Yes, "Simplify function return logic"
+could be a better subject.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/rtl8723au/core/rtw_recv.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Simran
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_recv.c b/drivers/staging/rtl8723au/core/rtw_recv.c
-index a66d631..3ad81d4 100644
---- a/drivers/staging/rtl8723au/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723au/core/rtw_recv.c
-@@ -1795,8 +1795,7 @@ static int enqueue_reorder_recvframe23a(struct recv_reorder_ctrl *preorder_ctrl,
- 	ppending_recvframe_queue = &preorder_ctrl->pending_recvframe_queue;
- 	phead = get_list_head(ppending_recvframe_queue);
- 
--	list_for_each_safe(plist, ptmp, phead) {
--		hdr = container_of(plist, struct recv_frame, list);
-+	list_for_each_entry_safe(hdr, ptmp, phead, list) {
- 		pnextattrib = &hdr->attrib;
- 
- 		if (SN_LESS(pnextattrib->seq_num, pattrib->seq_num)) {
--- 
-2.5.0
 
+>
+> thanks,
+>   -lakshmi
+>
+
+--000000000000d1a77f05a1d8b929
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Mar 26, 2020 at 11:57 PM Laks=
+hmi Ramasubramanian &lt;<a href=3D"mailto:nramas@linux.microsoft.com">nrama=
+s@linux.microsoft.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">On 3/25/20 2:43 PM, Simran Singhal wrote:<br>
+<br>
+&gt; Simplify function returns by merging assignment and return into<br>
+&gt; one command line.<br>
+<br>
+&quot;Simplify function returns by merging assignment and return into one l=
+ine&quot;.<br>
+<br>
+You could change the subject also to &quot;Simplify function return logic&q=
+uot;.<br></blockquote><div><br></div><div>Thanks for your suggestion, Laksh=
+mi. Yes, &quot;Simplify function return logic&quot; could be a better subje=
+ct.</div><div><br></div><div>Simran<br></div><div>=C2=A0</div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">
+<br>
+thanks,<br>
+=C2=A0 -lakshmi<br>
+</blockquote></div></div>
+
+--000000000000d1a77f05a1d8b929--
 
