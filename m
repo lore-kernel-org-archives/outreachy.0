@@ -1,95 +1,111 @@
 X-GM-THRID: 6809352032264126464
-X-Received: by 2002:a6b:f413:: with SMTP id i19mr1178736iog.203.1585562447147;
-        Mon, 30 Mar 2020 03:00:47 -0700 (PDT)
+X-Received: by 2002:a9f:21aa:: with SMTP id 39mr3193062uac.138.1585425816684;
+        Sat, 28 Mar 2020 13:03:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:3ccf:: with SMTP id j76ls5104252ilf.8.gmail; Mon, 30 Mar
- 2020 03:00:44 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsUiwoKEvE9oM4yr/x9qOGdbnHaxcXtQ1Y1DlTq8WJGLi9L9G077kq9ZA4A6F87f7klfsW7
-X-Received: by 2002:a92:d288:: with SMTP id p8mr10160288ilp.272.1585562444505;
-        Mon, 30 Mar 2020 03:00:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585562444; cv=none;
+Received: by 2002:ab0:5589:: with SMTP id v9ls999306uaa.11.gmail; Sat, 28 Mar
+ 2020 13:03:35 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI3wRSMTcyv5l48R3yIzonhvmvfKCBrqpemC+NlKAwLwwqstl40fk54X3jCtTReuu+4KRLA
+X-Received: by 2002:a9f:35c3:: with SMTP id u3mr3359442uad.140.1585425815410;
+        Sat, 28 Mar 2020 13:03:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585425815; cv=none;
         d=google.com; s=arc-20160816;
-        b=XLKZeIQrLoVUxX9qn2Kp6UUTT87RskqEtIW1ybQnqa5VIVf4HWJwV7u/sfiHv2Y8kD
-         sayNzJiHPLLazvC4jYicE8a2qJ8IzBCTvF5cNtsr3KRd0MWxD+l/Lr8yyQizscbsJrze
-         FtO2h/nNZ3ECrui5/e0qjmFcRm5iSt6SsIIlXKCYnoFBk6+k7LPTzkJR9UAF8j+JTNff
-         7zbdcg/F8doOtxCmr20oYoDVK4wJbN9pRDZ/8GzwDY4cXGb3xP6VnI0BOrWgbRkM8uv5
-         wkgEYb9QmTPn/n/qdsmJur6AltiP3kFTDAS2L66z2kEFxpsxiQJceHSgkmo1TDrvEnLl
-         Wsag==
+        b=BVvpFCm04JfdH8SLlvcaQUnvMe8EQNfqcEPWTWBD1lNXeGKy22wA1igkQZdedSAkkx
+         t6yD5kroRcf9zlyL814GC3qWtNJ3pZCgQVxN3kKPedxp4OMrXlsIQAeURsq7/IMBfP74
+         DSPTsj+9YpwfVoG4S8uYoa580/cstgsA8vY87eGA1fbOrSYZvvahGj4Mlj3rj0eLTIDq
+         M/jkJQrXXrKbMFB4VdzRAANxZt4BpYoUNXVvMCHjyZBb7W0dhPa0FCkeZ98021kchjP7
+         P0u3siajrdt+X7cFtY6A/ejSKYbf9AyVD4sK0Xd9sT2F+8lFvBHkpUf/smI161n0NT40
+         L7vA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=EDbIwPgA2GwnyxuzC3/x5RBRW3+k1Gm3rD8PhaNRHzI=;
-        b=ZtBP26Y/BrSvk9z1kVlndSV5B79DhkJAHAucw/D1kND1tNzFnOrQNTdTvZFHkZjH7K
-         q2H3uZkA0NhbTs2Pp6RB0RHgmW/VMHKB614UZA3343Q8nW1kvMp6CVEKu3/0v0ZT8ZVn
-         0cDJnRhdtqdXLZcC8Gsc9lNRTD0MPyqSWF/vIVRH3inBfYy7NlDYPy+wjQtzc7n6RIjC
-         5P7ITxPz95uVy4Z4RhH6vsJdYC1tJKmP2pvuM9PkOEA0jkA8afEl/UrnzK/+HqidDKtq
-         u3gVmZQ4mv5HcPuOuTqdxbROexPYPxPWi9DeGNNptFyrecLVMPNEFEu1LaFwE29mH+s0
-         7wug==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=AV2+yNnRBWX1/wtW0x5hHdjEUVkiXTznOl0AQzYyyfI=;
+        b=kJQFznSmSLYxeuqllWXe6xrzZ1xebRmrz2H0yK+dj9YDO3yuDT1IIrKiNU4oyGW03U
+         Y2Gd8hdnpHDmuETeOd9JCWzF+6PfJp8oSR4nQNV3l0Ij7vbWumWxXyPETEoQ0zHY7PME
+         hVv89NFWegNMlbf1n0SFQwFBm40HnWUyk0PKtlfnPhvTZDcYgBAI6P9uX1RU6Ztmmpod
+         Cs8UCOMFCz1erNTtPYl9R9R6Cqzg89uGO9OBKhcQxYTnxi/UERspoBaU2Iu+qAMRHk5c
+         mv2jY66vZoEu4Gh04T9OkBiV9+B0J4tF4RzYYnl4XtNM5uJ00InYZ8TMx1lePPPqD+f4
+         zMgA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EH+y9FH1;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id j25si751707ili.4.2020.03.30.03.00.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ev0vKqSk;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <briana.oursler@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id v5si426960vsl.0.2020.03.28.13.03.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 03:00:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 28 Mar 2020 13:03:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EH+y9FH1;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585562444;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EDbIwPgA2GwnyxuzC3/x5RBRW3+k1Gm3rD8PhaNRHzI=;
-	b=EH+y9FH1wxOAxEKh5V7DosPXe7ReH4sD2NpgL1AZe7VgqA9VRPgMcH9g1Fpuzgn2LHenJO
-	DJ5W4Kp4OAv6KFqlRLqoXfjubkbdesrb4rTfDQpbX5ILWw6iaj0kuz+08NAHfWdmjuMoYm
-	K584M1zslXOncqRr8kM7sYRkrEu1G7c=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-41-AHUzNtwGM9SNU-3Pkc6wxw-1; Mon, 30 Mar 2020 06:00:41 -0400
-X-MC-Unique: AHUzNtwGM9SNU-3Pkc6wxw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A63EDB63;
-	Mon, 30 Mar 2020 10:00:40 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5749C10246F8;
-	Mon, 30 Mar 2020 10:00:38 +0000 (UTC)
-Date: Mon, 30 Mar 2020 12:00:32 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Briana Oursler <briana.oursler@gmail.com>
-Cc: gregkh@linuxfoundation.org, forest@alittletooquiet.net,
- outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Remove
- BBvCalculateParameter comment.
-Message-ID: <20200330120032.0637015c@elisabeth>
-In-Reply-To: <20200328200331.136265-1-briana.oursler@gmail.com>
-References: <20200328200331.136265-1-briana.oursler@gmail.com>
-Organization: Red Hat
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ev0vKqSk;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x641.google.com with SMTP id c12so2114903plz.2
+        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2020 13:03:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=AV2+yNnRBWX1/wtW0x5hHdjEUVkiXTznOl0AQzYyyfI=;
+        b=Ev0vKqSk6mlEmZUcjOfSqLe2QjZsOFGQcrCVzk0ChiCQct80CXNAx+xAkJlnJQj6Df
+         QWrNgN41BJJtZQL+hQg14SOpalqeK3y09oFs5tZ+eTCdK8sM9FkfHDMk9jex9V0iYIw8
+         xI4KVtrOf++PbqLfYXBy3M53ub7R1nGCYj+5lRm8/Xcr+kYM5xODUGiSysLCg752Y0kE
+         9ZJuePW0k/tHLpMiCs9SCwTZDAlt+Zjf+xTnrFnGXNgSr9H68ZZMjwrmyZ63V+Bvsckd
+         VIkidW6eoYI075IwNdkoMYHfmxjZwj1PTDylmRwJFgYWaM+/ojL1PR2tNFtkdKB1kQ5D
+         oaCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=AV2+yNnRBWX1/wtW0x5hHdjEUVkiXTznOl0AQzYyyfI=;
+        b=gbN5NLoX0bjB5oUzTsGam0vJQmizjyNTqXmrIemqc/mxTqtLABZ4VfYs9WV5MN3AAn
+         2RPUMJbk4xZPJjV34tBrSj28WcGT/nD5lV/uMFcqxZrKW3XYqCmDqxnNWHI+NpHMKNK/
+         1P6vVjD/aT+Kv6d1k7icLlELrgn0/Lm02naGYe/vjvQYWjVfW+doxWD/h8Y3WM/1br4k
+         iLdu3hbz4ZgBb9gAALjTXPMnUQj4BsSXqxYhOEZGHQLsBy7Wj30lNmdng+mQSeab4phW
+         LOUXyy9otepFA1mjG09L30mmVunKxGCH0GYQl8OeiWYoVujHbIdTQRzDU9WDaKca9rI8
+         Ferg==
+X-Gm-Message-State: ANhLgQ3JZ5DIefetCj8tO6Rm7YlgpTCbFw+mrdHSpKselfWcU4yLH56v
+	TkXqBxmBRkHq19gXUyJRJF2iNxrqxQK0fw==
+X-Received: by 2002:a17:902:6bc1:: with SMTP id m1mr5150529plt.90.1585425814293;
+        Sat, 28 Mar 2020 13:03:34 -0700 (PDT)
+Return-Path: <briana.oursler@gmail.com>
+Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
+        by smtp.gmail.com with ESMTPSA id nh14sm1327280pjb.17.2020.03.28.13.03.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 Mar 2020 13:03:33 -0700 (PDT)
+From: Briana Oursler <briana.oursler@gmail.com>
+To: gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com
+Cc: Briana Oursler <briana.oursler@gmail.com>
+Subject: [PATCH] Staging: vt6655: Remove BBvCalculateParameter comment.
+Date: Sat, 28 Mar 2020 13:03:31 -0700
+Message-Id: <20200328200331.136265-1-briana.oursler@gmail.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Sat, 28 Mar 2020 13:03:31 -0700
-Briana Oursler <briana.oursler@gmail.com> wrote:
+Remove comment that refers to function that no longer exists.
 
-> Remove comment that refers to function that no longer exists.
-> 
-> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+---
+ drivers/staging/vt6655/baseband.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-
+diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+index b4cdc0b7fee7..3d75e0156d02 100644
+--- a/drivers/staging/vt6655/baseband.c
++++ b/drivers/staging/vt6655/baseband.c
+@@ -13,8 +13,6 @@
+  *
+  * Functions:
+  *      BBuGetFrameTime        - Calculate data frame transmitting time
+- *      BBvCalculateParameter   - Calculate PhyLength, PhyService and Phy Signal
+- *                               parameter for baseband Tx
+  *      BBbReadEmbedded         - Embedded read baseband register via MAC
+  *      BBbWriteEmbedded        - Embedded write baseband register via MAC
+  *      BBbVT3253Init          - VIA VT3253 baseband chip init code
 -- 
-Stefano
+2.24.1
 
 
