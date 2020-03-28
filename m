@@ -1,119 +1,109 @@
 X-GM-THRID: 6809045974031269888
-X-Received: by 2002:a7b:ce95:: with SMTP id q21mr5461719wmj.65.1585426517850;
-        Sat, 28 Mar 2020 13:15:17 -0700 (PDT)
+X-Received: by 2002:adf:f0c5:: with SMTP id x5mr4203946wro.415.1585390528015;
+        Sat, 28 Mar 2020 03:15:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:6402:: with SMTP id y2ls2515317wmb.1.canary-gmail; Sat,
- 28 Mar 2020 13:15:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvGVLf1o2hnYK46UZyHBA9G7bWFJ9Kl/jQzp8A2YZun6onGDP0alXA3Z2i88vRg/7cDagkE
-X-Received: by 2002:a1c:4b14:: with SMTP id y20mr5441531wma.163.1585426516641;
-        Sat, 28 Mar 2020 13:15:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585426516; cv=none;
+Received: by 2002:a5d:4441:: with SMTP id x1ls5154654wrr.4.gmail; Sat, 28 Mar
+ 2020 03:15:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsmyB/DCKdV2oGTobX9oIqKmOJXWwpEwexs6yyQLNih3g4Cg9uGKFdUfkCRmasZpMJl0DZA
+X-Received: by 2002:adf:fd44:: with SMTP id h4mr4226161wrs.177.1585390526783;
+        Sat, 28 Mar 2020 03:15:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585390526; cv=none;
         d=google.com; s=arc-20160816;
-        b=FX10w6UqNRAHht27Lo0UNLTeXeE24GObX04d+FQpGJ8GRI52bjK2uWXyM1aIWD40Fl
-         djcr0t8BmvpOU/5vv/v1Fy0N2mG0sHi8QQknri5Yq21WWODV1xnyM5trIzs37rqWzKQh
-         /SZeDJ14PkpZkWi1up6rrYUme15CVSPRF8ILv03JX9kmhLLwP2sfQ02Bx/qKj8JpIPz5
-         PX28DBG9PGg4E9jVah/DUbVDv7xIHvPQ62JXUhai/OsYUHR7EcV42VkdRFXS7rHQHV8l
-         ECW0ufgJsWp+P8oMWpg1f0zMeNffbbe90A2osgebbVJrykDvRRbunuIEDHehA4mnSDCv
-         yWJA==
+        b=oHnT1SrgXa33ZmK1td2JsL6kxZUM+udLPxxMGVq/PFzY51KUEZzyIzpUAQrYBBmTKH
+         AWyzih4OCdyfLx9zlolo22WIx83mCHaJR/ehUzkJo9UuggPskguCdLhM4qi/gblLn1Bm
+         gOVIogX87lnBsB3jS6KJ/5W/NgtEfdqqMN94txAvEpSgEnQtiWe5KGal7Gx9Fr9i2drN
+         RUPADsdJ0EHnOKbl50mqN74bE5/jnvrqLGq6kNVTWudm7laP5ua0jf3qdxAETfTnXv8i
+         4GyKWa9wTFHj1HNwTZEMFnCbC/L4Fh+zdPPUd4PA3YIqeXKqQXV/pe4Ajb3SGJFoC2i/
+         2t2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=eYO7eq/qJ6sHtjD709KyNXLHK+m0rsFnMN1eWZWygoU=;
-        b=0V90PuP+CHDvZzrFbL1dHI75rIpehUoxi8T355k6LShr/FChMXwLiRd6ri7s1CIvML
-         TtEmgq6e57OvXOzCHQCmlZob69GxEM9MOSwXZT1rk0AjAVqzBWCthfy/MIfmsAB4WiDe
-         OhrjDWwl1zU01QIAP/C2/dgE9StkDqWTDWQ2PpixqPWK4N71zhlcuq7Yg1neaV0Nj3UL
-         dWzabrHpBaQLN531Le95JLgviBxaDdIQMAxZG2SH4mYljrPUg14fYBcc2F6PBPk1LNuj
-         rjiuKf61ba/wwHl0RbUEOlCQSBUdp2i1Wg7dQmCKTdgPp+V6Sp8SNWGSIWo9kCNOGA4C
-         G5XQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=9npCFPSMR3ctH+1ZEgDXpXIiYt3b3+N8xQcR2xlUQRw=;
+        b=AVCTEffxLOe6vuelIXDAIrO3tTzeKeUOxhMLYiADNDbPL6ATQ84sSy4ZWGinlJSb6p
+         IByIdQvdfjbbjhZSDpfwyrisoPvi3SHJiB9oUcSk6h/rex5v3fPBB+oqt0j3ANW7Hfe1
+         r5aF3YPkJpvYC68UHAkQSMeTgxXII3Zdbg6CGuI6xPiM4QrGyajdAhebjjWA76i8zRus
+         QBRzAB85+Xe7tUMOkg8bImoYQ6lXgsNfx26Mk3ahvU2dV23Z12KpUtDTKfG+skT6D9ut
+         I0A4lHknJ/7cCxRw4fVcEHYQOoaf4FcdXA9uBJZm63idMwOV+52DSpqHpyDvKnkATHJ0
+         KESw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SZNIVu0X;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gokcekuler@gmail.com>
-Received: from mail-lj1-x242.google.com (mail-lj1-x242.google.com. [2a00:1450:4864:20::242])
-        by gmr-mx.google.com with ESMTPS id a18si439667wra.0.2020.03.28.13.15.16
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id d16si349452wrv.4.2020.03.28.03.15.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 Mar 2020 13:15:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) client-ip=2a00:1450:4864:20::242;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 28 Mar 2020 03:15:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SZNIVu0X;
-       spf=pass (google.com: domain of gokcekuler@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=gokcekuler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x242.google.com with SMTP id r7so6115961ljg.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2020 13:15:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=eYO7eq/qJ6sHtjD709KyNXLHK+m0rsFnMN1eWZWygoU=;
-        b=SZNIVu0XkQgdnoNXOFrgP8hgpB6fpaAI5jXwIebsISDp62/h15KVe3EzR0TeMEJ9L0
-         C6cdgd3aVuF88h+5C1+vH8OM8NhqH9eccEplUWZ06aqp7+V20LR4xowyuu0AUilYVZDo
-         Qg8TxihDPK10iKp9muFFyrHNYIxoHF+HNVyhkc6ZpXnzHpxhQjHomIR59yRRDCkW/sj5
-         1D9v6oGcMvJkXQRdbZIdpZHyCcNgRtHIyRJku0JbIHDi4EJZkndv/CaVVI37P+6l6N71
-         c/iBuw87AAscs3dc1nh0vCrM84L9rWhE3guLajxL0xtRllFXULySBoureE3VZXLB5JpU
-         kLAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=eYO7eq/qJ6sHtjD709KyNXLHK+m0rsFnMN1eWZWygoU=;
-        b=BgcjcQCw6qizGeWEMpzJbNPjQNp/3XpPnsa+8y+kuZnLlGeY6fy9+gZ0jLhpttqcxx
-         kv7iGxGuEVDXO5wx2A84xWArwDysjGEkz82x4eIayHDDMNhls8OpylZ8KEHnyBF1CWdl
-         uD1luzdLLcim5xFm0P0+hMrFuV4WUtUUc4sxcF/FXKvcAb5okk3i0ImjEqKO0NUx32Bf
-         INIEOFeN7yw3y4+wzzm4ObMzZJzZbbHsZ9FtltnAA6HvwZRD4r32xE1ahdjZeYKAGb+E
-         aGQcBVvNkG2+AgnnIN/q8pcoQSgq/GMT9jKEjjg5AOirslukup5TJmm7PIiS1kE6fKSD
-         KW9g==
-X-Gm-Message-State: AGi0Pua6zXlMTR3/EB9l6lNdh24aMZEfHM+X27GCu4B+A980RAcV8B+Q
-	kiHVFHHIdaiiRhMODHSPIxqnsSvm
-X-Received: by 2002:a2e:7c19:: with SMTP id x25mr2775289ljc.253.1585426516093;
-        Sat, 28 Mar 2020 13:15:16 -0700 (PDT)
-Return-Path: <gokcekuler@gmail.com>
-Received: from siyah2 ([88.241.65.149])
-        by smtp.gmail.com with ESMTPSA id x28sm2810767lfq.46.2020.03.28.13.15.15
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 28 Mar 2020 13:15:15 -0700 (PDT)
-Date: Sat, 28 Mar 2020 23:15:13 +0300
-From: Gokce Kuler <gokcekuler@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org
-Subject: [PATCH v2] staging: sm750fb: line over 80 characters
-Message-ID: <20200328201513.GA16863@siyah2>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,316,1580770800"; 
+   d="scan'208";a="344121157"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Mar 2020 11:15:26 +0100
+Date: Sat, 28 Mar 2020 11:15:25 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Gokce Kuler <gokcekuler@gmail.com>
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: line over 80
+ characters
+In-Reply-To: <20200328001552.GA14914@siyah2>
+Message-ID: <alpine.DEB.2.21.2003281112420.3005@hadrien>
+References: <20200328001552.GA14914@siyah2>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
+
+
+
+On Sat, 28 Mar 2020, Gokce Kuler wrote:
+
+> Line is split from comma and add bottom line for 80 characters rule.
+
+"from comma" is not an important piece of information.  Since comments
+aren't code, they can be split anywhere.
+
+From the log message, it looks like you are doing two different things.
+But the second one is actually necessary because you have converted a
+single line comment to a multiline comment.
+
+It would probably be clear enough just to say:
 
 Convert a single line comment to a multiline comment to respect the 80
-character rule.Problem found using checkpatch. 
-
-Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
----
-Changes in v2:
--Edited log message.
-Changes in v1:
--Convert a single line comment to a multiline comment to respect the 80
 character rule.
----
- drivers/staging/sm750fb/sm750.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 8f305c9..092f1c6 100644
---- a/drivers/staging/sm750fb/sm750.c
-+++ b/drivers/staging/sm750fb/sm750.c
-@@ -711,7 +711,9 @@ static int sm750fb_set_drv(struct lynxfb_par *par)
- 		} else {
- 			output->paths = sm750_crt;
- 			crtc->channel = sm750_primary;
--			/* not consider of padding stuffs for oScreen,need fix */
-+			/* not consider of padding stuffs for oScreen,
-+			 * need fix
-+			 */
- 			crtc->oScreen = sm750_dev->vidmem_size >> 1;
- 			crtc->vScreen = sm750_dev->pvMem + crtc->oScreen;
- 		}
--- 
-2.7.4
+Problem found using checkpatch. (if that was the case)
 
+julia
+
+
+>
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/staging/sm750fb/sm750.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+> index 8f305c9..092f1c6 100644
+> --- a/drivers/staging/sm750fb/sm750.c
+> +++ b/drivers/staging/sm750fb/sm750.c
+> @@ -711,7 +711,9 @@ static int sm750fb_set_drv(struct lynxfb_par *par)
+>  		} else {
+>  			output->paths = sm750_crt;
+>  			crtc->channel = sm750_primary;
+> -			/* not consider of padding stuffs for oScreen,need fix */
+> +			/* not consider of padding stuffs for oScreen,
+> +			 * need fix
+> +			 */
+>  			crtc->oScreen = sm750_dev->vidmem_size >> 1;
+>  			crtc->vScreen = sm750_dev->pvMem + crtc->oScreen;
+>  		}
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20200328001552.GA14914%40siyah2.
+>
 
