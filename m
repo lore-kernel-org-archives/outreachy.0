@@ -1,133 +1,144 @@
 X-GM-THRID: 6809557952024805376
-X-Received: by 2002:a05:6830:1dfa:: with SMTP id b26mr9572484otj.13.1585590080703;
-        Mon, 30 Mar 2020 10:41:20 -0700 (PDT)
+X-Received: by 2002:a05:6102:2051:: with SMTP id q17mr4855467vsr.165.1585484575647;
+        Sun, 29 Mar 2020 05:22:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:ec0a:: with SMTP id k10ls7726394oih.8.gmail; Mon, 30 Mar
- 2020 10:41:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvSbvOWbIEY+5b6J5dqm8+2pANgan3dh6qfdRPM8rqA4WHlCmHrbZmMkUXp7p645E6ZIrOS
-X-Received: by 2002:aca:fd0d:: with SMTP id b13mr308529oii.179.1585590079520;
-        Mon, 30 Mar 2020 10:41:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585590079; cv=none;
+Received: by 2002:ab0:3750:: with SMTP id i16ls1038016uat.4.gmail; Sun, 29 Mar
+ 2020 05:22:54 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKzigZZ97DBGkvv2b0qKCozz4Uz0R/C6aeitrp8KefxCl7xbKyaveCaYngWwaNuh3j3LSb/
+X-Received: by 2002:ab0:7504:: with SMTP id m4mr4951653uap.105.1585484574402;
+        Sun, 29 Mar 2020 05:22:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585484574; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkcOFo6o39WUpmFIgwcsDtYMvZTuMduSXZ0unHn5rLRm+OmdrHVbK2IhRTBRah1PLL
-         +KXrLQk+tPtbGFyatYCK1MqWeFNDRWIkKFMPJajVgHCGyklHg3R4KKbv89G/1VPxyew2
-         LfJK7e/lv1d0cmX0go6/LztpywgkW8K8Rcp6bdqQD8vCrOy2qpelwISn+YQkLA/Bvjqd
-         M4TIcLZNH8omOkMJzpUhsi+5AKWLPHbjtzCL5vmq5A6pxxaUDcKrHrHvXaoBzT1JzMrR
-         YBWo1AAzwMW6dVhOGdORlKqzhRbNluOZp126LbTIHRvB65Ggq1xf/D+aXs6tdaPiBJFX
-         oSYQ==
+        b=UOxCvfGnQcUvPtmzA2dNTrrtQynknKtGM8PJ89xVQA8wBIQt9sHjDMcEY/WazBOaTc
+         YujSU74ppjwHzvUxC46m1BJuF6hgq04GiHCKr6rnTd2Uz+ivXRNV9NjImUnVRojdVxiN
+         u2bhf/FGr1OFg686Q3ljX9G5zIEukaeTwpa3XdYIBBLumMiZ3skBtAqXv9PjtcfJ71Zg
+         8+s6eb91pWyt6HoOEpjZQtCcRsgG/3LeQ1vZybi87qOATsM4i+/Rqs9g7mHkUES4y/8o
+         in3ei9hF62rBdooTU+gjO/scYbeXorhCEerFil6xIL/q/asLnOZBT0206gVfRJMmMcld
+         LTIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=YGHvH2P6nK7TQrcIUAsAOYU1x8zpv/Ba4jDsyhsFhTg=;
-        b=Khx9FiAL4qRzSdmsI2Dsname56rysIra4XpEa3N2whPm/E6PtWfi9yCcig8zCUQ16C
-         zCAvRSRzqB2veGfs5tdF6hLa/EVjJuTaR2aHe5e6UVjR2G1tRZ4dSv/mc600QYSkCIGK
-         mFpum2NoERAi17dgXW3BjWN35WhITvk2RIpd5bA+LT2jXYl4jet81bpWn81nSn85adCP
-         yt9RtXdnF0+aQwQVaOzA01uJBp030PlExIzudAJrr5cI/EowXYzzXBj/GFQORNH/iWKK
-         23txtLGV56wV+BUe3REzr3j0+mOiJanMwJtMs5zjST1G00GynE6n5CPHJFlAF0muCFiq
-         L9bg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=6UClIPWeDMQPAzXntBk2QoHfbWj9MDU21yOBf0GHeHw=;
+        b=S3Nn5RMLvy/ss2k77hdp2YTOJ/JYWRl44ms3XkoQ1RHTTbccL5MyzpWVrDq2Cvj7mF
+         Ad2VoOvWhrgJ8i3YhQ+8VIhpEmAYPIk8pQi24V89nshDortsSsWVVK5TYP3NTmtHitBA
+         3f57ji9Rim89XQTgB/x9TTE5PXnW5Q/FeQK/rEHdINh5oEh1ADKDLUdx1fQi2/JcGze1
+         z7bpJbqLanlGumVZF5kfd2zHDLKUjgFI+NrSQcUfi7lOWtRSe97VBhOD69Z9K0m7zi8Z
+         hZgqoZKuw3jchPPtYK7vtmfErA88YSoeBKiC3XM1Fj/KzZGiq7F6tLLnpGU5s2wzOlV2
+         XtXA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UCMpPqRR;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id n5si17206otf.3.2020.03.30.10.41.19
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jdUOwg33;
+       spf=pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=andy.shevchenko@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <andy.shevchenko@gmail.com>
+Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id s124si583428vka.1.2020.03.29.05.22.54
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 10:41:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 29 Mar 2020 05:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UCMpPqRR;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585590078;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YGHvH2P6nK7TQrcIUAsAOYU1x8zpv/Ba4jDsyhsFhTg=;
-	b=UCMpPqRRaesbakLTnE6tBzVCL0ueKS64hTODQLUyPe3MWiIJEVA83Al+grGnT9It4hEUQW
-	a3bbHuolBy+hCWQ1c09OZH1rwTKlBaLmjpWYtHfER05s26XYO1kklJrRIZxE0rkvSXXIID
-	ECT/H+WU/iMvRBjj1uiDs3yciMnMkNw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-109-vixzt7PyMZC7dnLS7w5LvQ-1; Mon, 30 Mar 2020 13:41:03 -0400
-X-MC-Unique: vixzt7PyMZC7dnLS7w5LvQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2189B1B2C980;
-	Mon, 30 Mar 2020 17:41:00 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E96E7CDBFF;
-	Mon, 30 Mar 2020 17:40:54 +0000 (UTC)
-Date: Mon, 30 Mar 2020 19:40:43 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: John Wyatt <jbwyatt4@gmail.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>, Soumyajit Deb
- <debsoumyajit100@gmail.com>, outreachy-kernel@googlegroups.com, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Payal Kshirsagar
- <payal.s.kshirsagar.98@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jdUOwg33;
+       spf=pass (google.com: domain of andy.shevchenko@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=andy.shevchenko@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x441.google.com with SMTP id h72so7178648pfe.4
+        for <outreachy-kernel@googlegroups.com>; Sun, 29 Mar 2020 05:22:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=6UClIPWeDMQPAzXntBk2QoHfbWj9MDU21yOBf0GHeHw=;
+        b=jdUOwg337Wg8hPuF5NdV1z+1iXNGjwb+YDUmS97pf9xkU/BWMOmRa8gpqg/wHMmz2a
+         h58yHx1+HaoLmCL6hnIeTPqm+2YMk9XzXIgi8Vgh9+ZM41zzixi1r10H3tUGl6hbw2fa
+         +/SCEv5PddejDs3d49ieJ06lzLGUMqG9GyxGvtAAn6VGkc3VIzvQFeTpteUPogXC2Pzf
+         Nck2ZgMO6TY1u9JXPbiayQdMPaVsYZN0gYMyxOTiZ2uHnfym+nSJ5RCtbfwJVF5O2hRj
+         FXgxRY9UmwUvEuFr258gE1lMF0n3PSTtd9BUt9ycNv+7B5vOzdWySiaKBoIv9i+HiGuE
+         66Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=6UClIPWeDMQPAzXntBk2QoHfbWj9MDU21yOBf0GHeHw=;
+        b=d/U/l2c7oOwLYgiNep72iQ6S5p4xuPqmm2dUUmVbiYpjfRYibKkzLEiMrEHSyF4qYg
+         aPMNxdCz3tEsPHCA7NMTOuMmC8y6iI/kxpm/GiPMVkgVWmRnwbBpUO/sq7v3bpZq/I28
+         zvbPlqbYnM6Q9TMdLoKJPP8bmch37AV5GIxZW6v3X7gAF2YZzj/RH4UVThHsAuWjYuXN
+         5upAizBiYXTLd1bRO1TzlmPvVm7yIRFGUVm2Rm3UVqaPfkVCfht/MXZEhjbAp2zXNfhH
+         CpXWOyOJPzl4/mem+MrPyTqC44bim+sbAJj4DrwvCb2UvhWXj2yk9CYe7LdozXAX8ff5
+         nNLw==
+X-Gm-Message-State: ANhLgQ24sCWev970dQS4tGipMr0GuYMouzDv9JS+bqQ7pCkSr6+rJIiW
+	ogsnb1PKW5MoPeTEGQwg0I8aJMef/7beQAecsw8=
+X-Received: by 2002:a63:798a:: with SMTP id u132mr8699746pgc.203.1585484573149;
+ Sun, 29 Mar 2020 05:22:53 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200329092204.770405-1-jbwyatt4@gmail.com> <alpine.DEB.2.21.2003291127230.2990@hadrien>
+ <2fccf96c3754e6319797a10856e438e023f734a7.camel@gmail.com>
+ <alpine.DEB.2.21.2003291144460.2990@hadrien> <CAMS7mKBEhqFat8fWi=QiFwfLV9+skwi1hE-swg=XxU48zk=_tQ@mail.gmail.com>
+ <alpine.DEB.2.21.2003291235590.2990@hadrien> <ab06bc216dc07b2b070bc2635aaabb1942c6089c.camel@gmail.com>
+In-Reply-To: <ab06bc216dc07b2b070bc2635aaabb1942c6089c.camel@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Sun, 29 Mar 2020 15:22:41 +0300
+Message-ID: <CAHp75VeyV5t3rMw5Za8yFoKmrFLwxDqbLLdDyOr+pezAC+Lv7w@mail.gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH] staging: fbtft: Replace udelay with
  preferred usleep_range
-Message-ID: <20200330194043.56c79bb8@elisabeth>
-In-Reply-To: <alpine.DEB.2.21.2003291235590.2990@hadrien>
-References: <20200329092204.770405-1-jbwyatt4@gmail.com>
-	<alpine.DEB.2.21.2003291127230.2990@hadrien>
-	<2fccf96c3754e6319797a10856e438e023f734a7.camel@gmail.com>
-	<alpine.DEB.2.21.2003291144460.2990@hadrien>
-	<CAMS7mKBEhqFat8fWi=QiFwfLV9+skwi1hE-swg=XxU48zk=_tQ@mail.gmail.com>
-	<alpine.DEB.2.21.2003291235590.2990@hadrien>
-Organization: Red Hat
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+To: Sam Muhammed <jane.pnx9@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, Soumyajit Deb <debsoumyajit100@gmail.com>, 
+	John Wyatt <jbwyatt4@gmail.com>, outreachy-kernel@googlegroups.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>, 
+	dri-devel <dri-devel@lists.freedesktop.org>, linux-fbdev@vger.kernel.org, 
+	"open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 
-On Sun, 29 Mar 2020 12:37:18 +0200 (CEST)
-Julia Lawall <julia.lawall@inria.fr> wrote:
+On Sun, Mar 29, 2020 at 2:23 PM Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> On Sun, 2020-03-29 at 12:37 +0200, Julia Lawall wrote:
+> > On Sun, 29 Mar 2020, Soumyajit Deb wrote:
+> >
 
-> On Sun, 29 Mar 2020, Soumyajit Deb wrote:
->=20
-> > I had the same doubt the other day about the replacement of udelay() wi=
-th
-> > usleep_range(). The corresponding range for the single argument value of
-> > udelay() is quite confusing as I couldn't decide the range.=C2=A0But as=
- much as I
-> > noticed checkpatch.pl gives warning for replacing udelay() with
-> > usleep_range() by checking the argument value of udelay(). In the
-> > documentation, it is written udelay() should be used for a sleep time o=
-f at
-> > most 10 microseconds but between 10 microseconds and 20 milliseconds,
-> > usleep_range() should be used.=C2=A0
-> > I think the range is code specific and will depend on what range is
-> > acceptable and doesn't break the code.
-> > =C2=A0Please correct me if I am wrong. =20
->=20
-> The range depends on the associated hardware.
+First of all, let's stop topposting.
 
-John, by the way, here you could have checked the datasheet of this LCD
-controller. It's a pair of those:
-	https://www.sparkfun.com/datasheets/LCD/ks0108b.pdf
+> > > I had the same doubt the other day about the replacement of udelay() with
+> > > usleep_range(). The corresponding range for the single argument value of
+> > > udelay() is quite confusing as I couldn't decide the range. But as much as I
+> > > noticed checkpatch.pl gives warning for replacing udelay() with
+> > > usleep_range() by checking the argument value of udelay(). In the
+> > > documentation, it is written udelay() should be used for a sleep time of at
+> > > most 10 microseconds but between 10 microseconds and 20 milliseconds,
+> > > usleep_range() should be used.
+> > > I think the range is code specific and will depend on what range is
+> > > acceptable and doesn't break the code.
+> > >  Please correct me if I am wrong.
+> >
+> > The range depends on the associated hardware.  Just because checkpatch
+> > suggests something doesn't mean that it is easy to address the problem.
 
-reset time is 1=C2=B5s minimum, which is the only actual constraint here.
-The rise time should then be handled by power supply and reflected
-with some appropriate usage of the regulator framework.
+> Hi all, i think when it comes to a significant change in the code, we
+> should at least be familiar with the driver or be able to test the
+> change.
+>
+> In the very beginning of the Documentation/timers/timers-howto.rst
+> there is the question:
+> "Is my code in an atomic context?"
+> It's not just about the range, it's more of at which context this code
+> runs, for atomic-context -> udelay must be used.
+> for non-atomic context -> usleep-range is better for power-management.
+>
+> unless we are familiar with the driver we wouldn't really know in what
+> context this code is run at.
+>
+> This thread though had the same conversation about this change, for the
+> same driver.
+> https://patchwork.kernel.org/patch/11137125/
 
-That 120ms delay, however, must be there for a reason, that is, most
-likely to develop this quickly without exposing a proper model of the
-power supplies to the driver.
+While it's a good discussion it reminds me that this entire function,
+i.e. reset(), repeats the on provided by fbtft core.
+Yes, the only question if it's atomic or not. IIRC ->reset() is being
+called only in non-atomic contexts and keeping reset signal longer is
+fine (but better to check with datasheet).
 
-So... in this case, with the datasheet alone, you won't go very far,
-you would need the actual module (probably connected to a Raspberry Pi
-to catch a typical usage). Still, it's usually worth a check. In any
-case, most likely, as Andy suggested, this function can eventually be
-dropped.
+So, I would rather to drop the function completely in order to use
+fbtft's core one.
 
---=20
-Stefano
-
+--
+With Best Regards,
+Andy Shevchenko
 
