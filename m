@@ -1,110 +1,77 @@
-X-GM-THRID: 6949315230484660224
-X-Received: by 2002:a05:622a:1c5:: with SMTP id t5mr14626024qtw.49.1618013538613;
-        Fri, 09 Apr 2021 17:12:18 -0700 (PDT)
+X-GM-THRID: 6809407412551811072
+X-Received: by 2002:a25:6b05:: with SMTP id g5mr8274606ybc.111.1585465888792;
+        Sun, 29 Mar 2020 00:11:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6214:224c:: with SMTP id c12ls1825619qvc.1.gmail; Fri,
- 09 Apr 2021 17:12:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw7haoJxsmHU9DjGYyb0K6xvFyWpYRcDx38RUuXP2Gy2JVtavhyJ0oWyJpuDrPQYwKPUdX
-X-Received: by 2002:a05:6214:a6b:: with SMTP id ef11mr16530928qvb.43.1618013537886;
-        Fri, 09 Apr 2021 17:12:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618013537; cv=none;
+Received: by 2002:a25:5789:: with SMTP id l131ls4645779ybb.9.gmail; Sun, 29
+ Mar 2020 00:11:27 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs7WgpNicWxrCCTdj6PQoIuwTwW/RubD1yA01FeTavur8hsy2EpZZLzrDlIg0GrCJG4mUKX
+X-Received: by 2002:a25:b7ce:: with SMTP id u14mr10623497ybj.192.1585465887165;
+        Sun, 29 Mar 2020 00:11:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585465887; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sw9DUgjh09KWSHE735o0dhVK2IrReF93bPX6gdMzVAbudCNTp6o3bzRqez/Fgg4MbH
-         Us7nhtB3oASwRbUIj8KABHmVIg2lz2reIBGwzkiDTyw3NaOtbdA7eoRX8PDAnxoik/O5
-         w11Ty9OzR9V/f4D6nrRnA0XAj9QdSn8JkDBtntkdl8nHuFar5z/K7/BOSsyTdxEARAgI
-         JPNW0HzEpDLf76QqZoBHKpSZlWQvJqEHsxJVn1q7WnFjX2Y9QQotq+OxukX3onuQA4Ob
-         QYyX/s+koYViFm7yrSa6OAy8gV2TTHqQFVoBsaAtYy2C9Q9PJslxIh/JiZLP+P/NGrl/
-         jpUA==
+        b=jSzWcHGVEbAuZ9myjpaZ7kEGqWe/Jg9L1bDV6LdIcmgXNVzluOUXeDSgVkdA34oBak
+         G0nuf45Mf9ONhp4ZLbT1ERkahJxhf5Lb1/JK8LFAFsZUaM5PIGVZo0QD9pkyO+KGTlno
+         T7AZrWSODggg82eb7Grzma5gytBRwAyanzEa2HWXrILB1H1b7HZxaigxfWrWCLylL8ur
+         qSStORAcm7PTBi5ZGUzf6+R3YJdetnFfVGKMxGZsKcf5Fn4RrHzrnuOm/kA0u73Ffsiu
+         m/ZrkDB9lAUWdC4+1cDRlQpnvG0e0Uyy1pD/BFOqxmntt/N6hUmwKxMar1YGbE9O1Ayv
+         T5Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=2lxfN5ByZEbEMKEjmWp1Q7WunCY5qRG4cae/+TcjBiw=;
-        b=LYm+4EGDy3qIzES1vCk/ffqqB1n7b+QQkUq8zz8mnQ5k9A+IhCA2g3urqy1cUCAY/k
-         lEUtXgzeO5jgFsSl6D79COjcM2UBuJwU7NK/UqIhFBSZdqjY8phC6Fa0OZ9r+L6abw2P
-         fXw0a/Oc4iDPbwJjJ+BhWOJiNL+9cvZvDG7YNxC8+BInde22M19N0GfLg8bx6wHlQJZ+
-         TYtxDodcYMp0Yw8tn92/ioQhFQBMSMjndBi3L8kai9XTUe0YtXIuyMln7RjPOF47osho
-         GphlWTqlXnTcgOHap2afiV5RbRr0YXF4/Yu34iJBECxPh3r2o5zy5ELcVzjSxENurJ8O
-         tQ2A==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=F7djGvWCbabmj6kBMUnKy43CqCq2yRCLfiIwnPunyu0=;
+        b=s5aMBdGOyzoEFTpRxyg3So/pbPT4YAsiYg2Ck7VGWQFg+6fusiaAczzv/2NTGspeuT
+         x8JKwOgzdlcM0k0SKeUhSM4ajVbzRzsDbLgRi8tq3vBx/NHB75ve4yTnxuBmJ6ckf9P6
+         Vrq9X15OwQMm/guHvFnZvdKigeoITjFv/wPJmTH6n7Q9ssPWgQrJqmDD+SxGuXxrKJbU
+         a832yySFhtUwbUPwnAHxwPQLh3ri3MmfuAnHyC4i7fYHi0okBQBxPg7Iw5dre9jKSD9j
+         L43gfVJ8b52pD9dCg5OQo4TnGT0U9kC+CP7YWW2OQS2RCAjKXkpWdUiHnO59002eInUo
+         GihQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nNLrhJg0;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com. [2607:f8b0:4864:20::1031])
-        by gmr-mx.google.com with ESMTPS id w1si215063qkp.4.2021.04.09.17.12.17
+       dkim=pass header.i=@kernel.org header.s=default header.b=DDBD8bsz;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id e14si625183ybp.0.2020.03.29.00.11.27
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Apr 2021 17:12:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) client-ip=2607:f8b0:4864:20::1031;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 29 Mar 2020 00:11:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nNLrhJg0;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1031.google.com with SMTP id kk2-20020a17090b4a02b02900c777aa746fso3984387pjb.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 17:12:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=2lxfN5ByZEbEMKEjmWp1Q7WunCY5qRG4cae/+TcjBiw=;
-        b=nNLrhJg01t54nH/nElkvEhcvw2owYft633IxmHULTyL9BdkUnROR8QFoRypeZfkKRa
-         etaDJ1PEK3ghpeEaXfO1legoCBaVQ55m9elz9GtyRAmCBd7hD2+jsvZZG16od8vZSaOp
-         fcgc85nlx9VDpTU0rudcm/NrKKvTVpBZ+tZbsAFLbN6do8LQlndorth2PBAssBTrH0+o
-         IR4LXu56UUnTb4W5dqCF4cc2PHfq4eP+ENoIMaa9BaZ6WQJZTgK30qXW98ydovS+xffZ
-         pGoeIIpXDxzVuErKvFY1ebqZIcEUp/eY+S29dW7kQaTVz1fUVYVvGdus9WhMMpSrPxtU
-         GdVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=2lxfN5ByZEbEMKEjmWp1Q7WunCY5qRG4cae/+TcjBiw=;
-        b=NshiYW/OaHtt6MjeRPV1MrzbYh1vJpWIyS28QqZTsTCeyVLzkU4IhPXpdHMzemzmpt
-         LXoDoYK7hndFPvfE0NjyyvZR/m6nfvNb8+ysZvrVvPgkppDvu+TrnBhYmaGbAG0ZQHTf
-         0oqfHTgpmR8eY7EU9MtZpcNyELJCoqNxyFvq/E8Hek6Tx3UYhtOEpeF++rEI3xm1Z3rV
-         rO/A4RKuGMOTP+VT1k17xXB9YuvmvDM1lhqTyk54VhfBWEgJyEWGoFqF5RQXqf4++thT
-         J2Os4e/ss5Cc2YFqNOeMu/4AWF5Sfgq8oUCgfiOcauKBftzv8swqhbUmDwCQSduw2r6/
-         9p0A==
-X-Gm-Message-State: AOAM532+45L5QwSpBGx2jYt0osv0i/m9kL8zm+q4QMeLyCkwBFMa6jlh
-	uwzexTHf3UyHH3243NxB+5NQ8t2JIsZR7w==
-X-Received: by 2002:a17:90a:2bc4:: with SMTP id n4mr5147236pje.52.1618013536891;
-        Fri, 09 Apr 2021 17:12:16 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id s19sm3203011pfh.168.2021.04.09.17.12.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Apr 2021 17:12:16 -0700 (PDT)
-Date: Sat, 10 Apr 2021 05:42:10 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH] staging: rtl8192e: remove unnecesasry f-trace like logging
-Message-ID: <YHDtWizzh5EVLL4/@kali>
+       dkim=pass header.i=@kernel.org header.s=default header.b=DDBD8bsz;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 82EBF206E6;
+	Sun, 29 Mar 2020 07:11:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1585465886;
+	bh=cMRexdqbR2iH2t/nb+AGJEsRVmrGtk1BRVXYAZ5gXTg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DDBD8bszcoLjabhpOhwoEWpGRZbnILHXbpgO/s4/8R7eY2I+0hxQo4yt5av/AWr8N
+	 w2vz9TDdobU0vPnEYCsIROQww9B8x4n3CKDnsrWn2SIzkvYmBcqv3zCB6wUzF/0pq7
+	 WuaIfCi61oS3rWhqHJi9UHQ8jFzHo4cPVmddg2j0=
+Date: Sun, 29 Mar 2020 09:11:22 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux@armlinux.org.uk
+Subject: Re: [PATCH] ARM: amba: Add blank line
+Message-ID: <20200329071122.GA3907908@kroah.com>
+References: <20200328233825.GA28891@siyah2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20200328233825.GA28891@siyah2>
 
-Fixed Check: Remove unnecessary f-trace like logging by simply deleting
-that statement as we have other modes of logging like ftrace.
-Reported by checkpatch.
+On Sun, Mar 29, 2020 at 02:38:25AM +0300, Gokce Kuler wrote:
+> Add missing blank line after declarations.Problem found using checkpatch.
+> 
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+>  drivers/amba/bus.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
- drivers/staging/rtl8192e/rtl819x_TSProc.c | 1 -
- 1 file changed, 1 deletion(-)
+I can not take patches for outreachy that are outside of
+drivers/staging/ sorry.
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-index 476875125e87..4457c1acfbf6 100644
---- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-@@ -136,7 +136,6 @@ void TSInitialize(struct rtllib_device *ieee)
- 	struct rx_reorder_entry *pRxReorderEntry = ieee->RxReorderEntry;
- 	u8				count = 0;
- 
--	netdev_vdbg(ieee->dev, "%s()\n", __func__);
- 	INIT_LIST_HEAD(&ieee->Tx_TS_Admit_List);
- 	INIT_LIST_HEAD(&ieee->Tx_TS_Pending_List);
- 	INIT_LIST_HEAD(&ieee->Tx_TS_Unused_List);
--- 
-2.30.2
-
+greg k-h
 
