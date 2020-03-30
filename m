@@ -1,95 +1,101 @@
-X-GM-THRID: 6391110237247504384
-X-Received: by 10.99.38.199 with SMTP id m190mr3348316pgm.42.1488046310151;
-        Sat, 25 Feb 2017 10:11:50 -0800 (PST)
+X-GM-THRID: 6809045974031269888
+X-Received: by 2002:a4a:d258:: with SMTP id e24mr8896235oos.93.1585562502915;
+        Mon, 30 Mar 2020 03:01:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.43.135 with SMTP id h129ls1293777ita.4.canary-gmail; Sat,
- 25 Feb 2017 10:11:49 -0800 (PST)
-X-Received: by 10.107.12.220 with SMTP id 89mr3351593iom.13.1488046309454;
-        Sat, 25 Feb 2017 10:11:49 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id s64si2283920pfk.0.2017.02.25.10.11.49
+Received: by 2002:a9d:3985:: with SMTP id y5ls6318374otb.7.gmail; Mon, 30 Mar
+ 2020 03:01:41 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsOXe4g1wKh4brwWokTsCF9NlYohw5w2NTH6SnAQjpUULOxDK5a054lt1306ZE6BsL/VipI
+X-Received: by 2002:a9d:8e4:: with SMTP id 91mr9057970otf.130.1585562501525;
+        Mon, 30 Mar 2020 03:01:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585562501; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MgX013eNGNgEAWi0iXEXT7mOqKWivzzWbG+uRaguIqj19E4sx8AhaSHPLP+n9UheKc
+         ssmp9pH3rNYth8Vt/l5JOjdJMUKdTDAcwD7ydZ3LIQWhztFvIUZXaKhazMYDEgrDqthl
+         a6RMlh8ChJ8wv4Kr4ZmP9qQABrblNGXTjogwXiNFWV0L9UF0Lbzlz/Ake+J5s3ldZLLU
+         kcIDtTGQeM/xgJPG0bDw7R197HhRauoJmLeInk7fNSbtMU6qmBgvC3M5U1qJK87pirur
+         +v2QReDaxiL9jwfXFimN6bm9jRDODN7JWEjISgQpfXpZYMVbNlHLFy5W6blB0zsnxvY6
+         rUyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=jv5YvRUQeb2S0EqTZwt8uBOyn+kmP9NZPIsqRNmjI2w=;
+        b=cxF0Vzc0FNVgdf8cjaVIfi+stWkCLJWEgFA1fLUHz+SOQ2XGGPBkBtgpFYpPL2j0AA
+         bPgW5msJzl+poh5GsdOLkTIRTWMMWWyUPUhM0YNvRqqs7oiomWnWI7AyFSYBnhjA3aV5
+         XVLhxGlcMGkzcFRgOvMwI0CccrIKD/XmMie9Hpx7t3GftaGMr4hW4WD9C4+oP+avD3ge
+         Ot/ZutAlcjgiFsb+6Z9wF5yYnE7CTkBwHFD9jm0ApRqJQUKHIG4EIrw8K2PqnHoZM2o9
+         7lKzXWsY9kalNDPMlf7QMkBVlcDTfT5+lIXrw9L5oUNafh9sug7fOjVHqusb4M1N+/Ms
+         CSeA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VI12xHF9;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id e21si1335803oob.1.2020.03.30.03.01.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 25 Feb 2017 10:11:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 30 Mar 2020 03:01:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id m88so743730pfi.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 25 Feb 2017 10:11:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=P8eXr+2HBTpomvuyuKCS96XpjdrrEd7au+x/9k261WM=;
-        b=tV1OId+8+t0MQpOAhVEJoU5W2kXIXb+2+dUTdxhHEZ/u9EKhZ+wZB3/HKc3kf8c0Vj
-         LT1qQ3b+fwBATGrTozhwC4JtZmkSe3vgCTazLqMZ92ra15vefEk8TlV5SsuYym4mXM61
-         GFz2CdbIl0aJPs6nsq8GQxSvdHoOKL7Gj6308N6O/UtVd6whNImjUmluSDPSmSTsDuh2
-         O0bivFkFaVFH08Yt98UzrE4IRWEjao/M+2/crKmsRw7tK6MGUqNaEF8bpNCd/9lWzR9B
-         AVgxG1ZlnZQ0iqRkDOh84HnvJy9mbPRppdSMfhf7Mfe+0OVfjzLin22x+XLci53tpCEu
-         DSmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=P8eXr+2HBTpomvuyuKCS96XpjdrrEd7au+x/9k261WM=;
-        b=lk9i3MQtdr2Qlmpo+qtsTq44vMRQA4puCAaKwWx0U5qrqvbuqQm04MzA9peCUw778n
-         ErxNdxy9JyJoXsu+aZd5zKb+4tkLMguvDLvzbP9/Ni98I9K8FfSXx3C3s1+W/AmaGyZ1
-         030n/GW076cVfbZBt3Iklu9+hdW6+XWnYmIJZes715i8NcK0p+8fAhWyOZK+MAWO6U21
-         n6ir+v+KxtR5hEVPbvgJxrICdmA98mTzxXGGsdLLzHYu3r3nxgcKzf4rS6MJy3x+B0ha
-         lx7/nQHvzH3Um1RcwQCBrdtZ+nkZbdopmTaQh/SObH1yhq+r7+Z7lpeHNsMUiIOkGlIy
-         zJgg==
-X-Gm-Message-State: AMke39mB/xk84DGoB4niVaBSI3p6OHUAmRjAYyfyWVNKW1KPlQBHBnrTbPf1OJpB9HfdCg==
-X-Received: by 10.99.113.92 with SMTP id b28mr11206408pgn.180.1488046309242;
-        Sat, 25 Feb 2017 10:11:49 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.192.154.88])
-        by smtp.gmail.com with ESMTPSA id b83sm21745917pfe.12.2017.02.25.10.11.47
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 25 Feb 2017 10:11:48 -0800 (PST)
-Message-ID: <58b1c8e4.5693620a.9138.cc5e@mx.google.com>
-X-Google-Original-Message-ID: <20170225181140.GA6897@<rvarsha016@gmail.com>>
-Date: Sat, 25 Feb 2017 23:41:40 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/7] staging: sm750fb: Fix multiple checkpatch issues.
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VI12xHF9;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585562501;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jv5YvRUQeb2S0EqTZwt8uBOyn+kmP9NZPIsqRNmjI2w=;
+	b=VI12xHF9WKjgODqBEeQ9w0rjDl6b50cTucx1izo88vcUVXhIBPyYV13vGejdh6KEw9dMO1
+	kZXZp4sINBXnCuwvrh/eVplInWxbkxI3SBZXpFuTVolMU3sFEsNfL0KhivIT9x1Mm5NQzE
+	EsGY9VR5pSCV8KB22tQfene8Kq+QiWY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-397-yvU9nfZsOomn09tWx7soBw-1; Mon, 30 Mar 2020 06:01:39 -0400
+X-MC-Unique: yvU9nfZsOomn09tWx7soBw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C06E514E8;
+	Mon, 30 Mar 2020 10:01:34 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B57C60BEC;
+	Mon, 30 Mar 2020 10:01:32 +0000 (UTC)
+Date: Mon, 30 Mar 2020 12:01:27 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: sm750fb: line over 80
+ characters
+Message-ID: <20200330120127.7e946587@elisabeth>
+In-Reply-To: <20200328201513.GA16863@siyah2>
+References: <20200328201513.GA16863@siyah2>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Fixes multiple checkpatch issues in sm750fb driver.
+On Sat, 28 Mar 2020 23:15:13 +0300
+Gokce Kuler <gokcekuler@gmail.com> wrote:
 
-Varsha Rao (7):
-  staging: sm750fb: Add braces around if statement.
-  staging: sm750fb: Fix line over 80 characters
-  staging: sm750fb: Add identifier to function definition argument.
-  staging: sm750fb: Remove unnecessary blank lines.
-  staging: sm750fb: Added spaces around arithmetic operators.
-  staging: sm750fb: Replace NULL comparison.
-  staging: sm750fb: Remove blank lines after { and before } braces.
+> Convert a single line comment to a multiline comment to respect the 80
+> character rule.Problem found using checkpatch. 
+> 
+> Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> ---
+> Changes in v2:
+> -Edited log message.
+> Changes in v1:
+> -Convert a single line comment to a multiline comment to respect the 80
+> character rule.
 
- drivers/staging/sm750fb/ddk750_chip.c    | 14 +++++++-------
- drivers/staging/sm750fb/ddk750_chip.h    |  2 +-
- drivers/staging/sm750fb/ddk750_display.h |  5 -----
- drivers/staging/sm750fb/ddk750_dvi.c     |  6 +-----
- drivers/staging/sm750fb/ddk750_mode.c    |  5 -----
- drivers/staging/sm750fb/ddk750_mode.h    |  2 --
- drivers/staging/sm750fb/ddk750_power.c   |  5 -----
- drivers/staging/sm750fb/ddk750_power.h   |  1 -
- drivers/staging/sm750fb/ddk750_reg.h     |  4 ----
- drivers/staging/sm750fb/sm750.c          |  1 -
- drivers/staging/sm750fb/sm750.h          |  2 +-
- drivers/staging/sm750fb/sm750_accel.c    |  4 +---
- drivers/staging/sm750fb/sm750_cursor.c   |  4 ----
- 13 files changed, 11 insertions(+), 44 deletions(-)
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
 
 -- 
-2.9.3
+Stefano
 
 
