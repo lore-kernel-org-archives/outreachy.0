@@ -1,134 +1,234 @@
-X-GM-THRID: 6474640766573477888
-X-Received: by 10.101.67.3 with SMTP id j3mr767864pgq.150.1507494777089;
-        Sun, 08 Oct 2017 13:32:57 -0700 (PDT)
+X-GM-THRID: 6808625193830842368
+X-Received: by 2002:ac2:418b:: with SMTP id z11mr8594998lfh.134.1585585945738;
+        Mon, 30 Mar 2020 09:32:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.80.77 with SMTP id k13ls518275pgo.30.gmail; Sun, 08 Oct
- 2017 13:32:56 -0700 (PDT)
-X-Received: by 10.101.88.77 with SMTP id s13mr234082pgr.173.1507494776040;
-        Sun, 08 Oct 2017 13:32:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507494776; cv=none;
+Received: by 2002:a19:484d:: with SMTP id v74ls3279140lfa.7.gmail; Mon, 30 Mar
+ 2020 09:32:22 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK4bUKdc1OI+oQ4x4blekjtRdOaG7gY/Bs/ArropfhU4ywG/HcCAsUuoYS92lKxhvDN5GTs
+X-Received: by 2002:a05:6512:3b4:: with SMTP id v20mr8579870lfp.215.1585585942633;
+        Mon, 30 Mar 2020 09:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585585942; cv=none;
         d=google.com; s=arc-20160816;
-        b=yW/nGTOvjiGkdbjcB82CBnbUyJhHSgxhpoYHEpMXR3cX9CKfe3YhZygY7DMUp722WF
-         ypuJLCCMGK3XGa+I72Y0NHvbgTxtRWNhQH/EfjgrDapHafD76r2CUX6fW2LOeI0uYyTe
-         lwMVckI4tG5IuU9HYKVnehQhEj/2SbIzZUrOgO2p36YziQXpyN3vPnxPA3RCi1laH5+z
-         tbtzdLe6UqSw4gBfT0qyj4rlUl0l/NdQDkL6eO5MIbVDyOvewYX7CM/Z4ikhoIjAG4Ff
-         xRbFLriK+myZqJxk/rBxsUuUMyRzNcFcekKeE1KrL0nP3BZneWBiuBG42hZ2DBNI+Eak
-         oElQ==
+        b=ts+aR8yM4ujAZW7wUgbWMpjMgwYeLL+G/Hc05E9vU0lFE37TbvXcAAOh+6kytUNHHT
+         N2X9Yrk3m/nGQaW8B4fexyNz3pCpIdY+p7GHyAC+cdGc43+NbnJ1c2nXkaCkiP6LYHmB
+         r5ufcgYwzTIdrr+KP0t527WcAIckL4Os13+vWHgfusfmh17UQ/FrmCnFt4uGLN4dLI3u
+         IE77AsdVbzxhJ5muJ77tofd6lepo7w7Ekmv/lmNYwaLpBIBTMHXMZjSMsnBZVZADN5M2
+         qwoYh5tUOjMvI+FlCSYDvMFk8jWIQGqPA4Q8AzQHXA/y6tNjaVCWdL9RlgyEVS99G4y1
+         l7kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=loALiGG8VRNTach0ES1mXWVO+3MZRTdOPNl6ZwcY47E=;
-        b=FcSmF0UrmU+2RHUmwkQDJp080FKU7MBF+nP53RUl/5bhvUqIVvkMviZtSxJidfrmJS
-         NU6d0rxCODo5HOV3rKmr6PYIlIyc0xUrxp1VNIj9yj4FNnYK1ROOgfmDOJYUQSmJwSbc
-         pwaFA+RGgh4ONHkRL5nkW0QI3tfgz9RT0duhBRyNbkZwg2FMqujqhXuldM9Q3u22lIkN
-         /TCpVIB+H0ppEFpcZSaHqyQghUcdscgcg2NKgI+/o95QG9yr8LJ5Awyl3x6/Kkd24v34
-         x0mxkoqJOTcCutKOwUrA7yZK8V2xIFt9mOuwnPiiKr/sayLMGLtMPLts3+yQhPtYRp86
-         PPnw==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=Q+srowEtYVHek0VCmaddZlFMStE1h1tC303Ve/dMXHU=;
+        b=RJg8wH94e3iOR4ItlRr1uQgw7RyHI+JXfPGD5XOxOcLlzDLkDWropk0p1AmLrIPyhO
+         rJAPCvSoVjWfp+TXrefurZqw4TZQEvV0XdweMyywtC3kbXLPVNub0OXqZY4mI6aT5GTp
+         JcAD+CToGlGEQpHYEyfUySdEdDnJLtIFEdY6hAH1s8D5EXf+AWelDzQ5B5QgsaTKEhvF
+         qBLF1XcnG+tWl852Dz0E0lfZLuaOj3GaPr82vnTrUGHjkJ6S3nYDKif8rKps4E+bly5+
+         pLAuD71lqi2JH3eCH8Y+NhrRhWcnthGUhMYlhEIF2xgNhYgx/DajDlh/8G5YXlcmjjtE
+         3t7A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H7LGwF8x;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id w11si717858pfk.4.2017.10.08.13.32.56
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RHMxAK6N;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
+        by gmr-mx.google.com with ESMTPS id s22si615253ljp.0.2020.03.30.09.32.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Oct 2017 13:32:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 30 Mar 2020 09:32:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H7LGwF8x;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id m28so22763596pfi.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Oct 2017 13:32:56 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RHMxAK6N;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x441.google.com with SMTP id p10so22479681wrt.6
+        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2020 09:32:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=loALiGG8VRNTach0ES1mXWVO+3MZRTdOPNl6ZwcY47E=;
-        b=H7LGwF8xWZn7ZnKN8zzv8opzS55Oy+rAhjMI6Y3g8pfJv27OZMKs6Q6ur++VKczv0F
-         xVYsqZrYJLa6kw6dA+xfCe5hamiosjTfJwoKVB4hC+A9jO/kbRbjsN0X/zzrt0f5L2KU
-         BJVe2jUFf+YeUdtW/RKuegeSbwTMsTPhuY4F92oQjP7xSYapamJzx8qJNIwbKrcaYan8
-         4eiYD4QeXi274/zugLV50D04WqhFoO5jIPpwH2rptRt/N1pk8gbv13LTOFKr61KA3e+l
-         1+Z8ZJS0R5jGxvw1QdhwKBfT0ZcN3q5IY/USs1C16hvx94p5GqLZOzc2RFiZnhn+7Btd
-         EVjw==
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=Q+srowEtYVHek0VCmaddZlFMStE1h1tC303Ve/dMXHU=;
+        b=RHMxAK6NjpYQZ5p2EXLjXZfuYDs+hjD0+MngvEck2UgtHgw2Zp2jyn7EHUsFjlTiB6
+         IdNVdP0BmD7KMNY4nJp7E+H7eIFur8/bEyT6EhHWxgQMVsde4SiE/VHw11lUeREtvyOq
+         rG4iSNoBJRUUx97eoLDAZZJ5vTOvwt67PDzi7KdwTbsiLqTgS4zL78oZvsp1/e+WczpG
+         Rbwaj1vXlkmF57KziLlqfeGmXpSXX92dK6SY54rAoKzgaWjIKxdlm+2ruJjuLEdiSxYZ
+         9lpRBZaXpzqdo552zARcKE09txsTUTEP074KtJ3l8LJiT3XLC8al9Y8TrWuRU8Gh5VED
+         k4Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=loALiGG8VRNTach0ES1mXWVO+3MZRTdOPNl6ZwcY47E=;
-        b=BSaW5QQnMnE5DxWaxcR3aIfuTkQnqOMvoYU9FPultS167VDctvIJYC8T39d3Qtp3kd
-         EO4Kru+YPXXgw9s2Wi8k0p4NMQEBIyfBWnFPXG//Ne1Cqe//Uupi5gvWM98pAxqpWLeI
-         qwNPQu/nFmpAuyiJj0387AzAv5WKi7ILfs1K2+C4olOLtjymgBABKX4o9JC72a3kGg7j
-         ypWTHSqGRXsdoe/w3Fwkt/usyrH7qyBabaU/i7pdxPrh8fg/3K+pPNOJbe5au2Rl0LHr
-         pt9AjgAkescy9BpazTrGdq43aPkiPNPrkqdLYmmjFo/XW14eejZd60xBiuXkJiY8RZ50
-         1c+w==
-X-Gm-Message-State: AMCzsaUBadTogVgYqPHN0wilbJI5bRTQaKftuKok4osO6ziLtoWCb81+
-	MVVzA1UYYFPYQeQH6jsdbMY=
-X-Google-Smtp-Source: AOwi7QAOBbFpdeXJcV653/L9YCuX0PUw2P7omPdvboVZLGXvCypYu/Zb2zZXQyU7YbJ3INRjM3hI8w==
-X-Received: by 10.101.80.133 with SMTP id r5mr7328978pgp.183.1507494775831;
-        Sun, 08 Oct 2017 13:32:55 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id p14sm11278871pgr.51.2017.10.08.13.32.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Oct 2017 13:32:55 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] datatype: Change "%Zx" to "%zx" and "%Zu" to "%zu"
-Date: Mon,  9 Oct 2017 02:00:36 +0530
-Message-Id: <20171008203036.24619-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=Q+srowEtYVHek0VCmaddZlFMStE1h1tC303Ve/dMXHU=;
+        b=le/I23IXxsRZrWJy7mJJzDKEaZkmSmnODh1G4BWRGRClaujwIs2xFEMI9JmhYnjBc6
+         rrZdZcHAkT2LvB8LWUGJU1qmHtzOG/UqHgMRqjuEKvBwIK+mekxZMwFLSO/0qPhw20an
+         5bT8cKofunxt0LB0fJ7nIkn13No5lMRUYQaXmZG2BaEvuWwQGmiKOykCmAYiRl8Jf7ml
+         vhX4MScWsNUBN2H3WOTeCF0xqHuiRfziBxhEPBvL5YWjo9yVgNOdb1uJlJeIoYxxqy/e
+         EJnj7c138/v4E0er3NH1YuLEBKCaVrMwYIkZhJMlZAwWqdC/s8OFKf4r9gs6sZtcTXo3
+         isxQ==
+X-Gm-Message-State: ANhLgQ1fj3q++tejrBwc1H8CTxoizermlNIY24Gy+CLLQBFgUXkvefpQ
+	x5JIQ3aMAbUfSMC5r2UKyR4=
+X-Received: by 2002:a5d:5141:: with SMTP id u1mr14963380wrt.146.1585585942129;
+        Mon, 30 Mar 2020 09:32:22 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from debian ([197.34.98.112])
+        by smtp.gmail.com with ESMTPSA id p22sm71492wmg.37.2020.03.30.09.32.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Mar 2020 09:32:21 -0700 (PDT)
+Message-ID: <76a1b7179729256aff7ecea4eb6f487cd2c6d9e6.camel@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: media: omap4iss: Use BIT()
+ macro.
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho
+ Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>, Julia Lawall <julia.lawall@inria.fr>
+Date: Mon, 30 Mar 2020 12:32:19 -0400
+In-Reply-To: <20200330162316.30fe0b81@elisabeth>
+References: <20200326210247.4746-1-jane.pnx9@gmail.com>
+	 <20200330101107.1c84b8f6@elisabeth>
+	 <d09f3d39c7fc8326711119c73954bfbd8c92091a.camel@gmail.com>
+	 <20200330162316.30fe0b81@elisabeth>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.30.5-1.1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-Use "%zx" and "%zu" over "%Zx" and "%Zu" respectively as "%Zx" and "%Zu"
-is non-standard C.
+On Mon, 2020-03-30 at 16:23 +0200, Stefano Brivio wrote:
+> On Mon, 30 Mar 2020 07:40:22 -0400
+> Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> 
+> > On Mon, 2020-03-30 at 10:11 +0200, Stefano Brivio wrote:
+> > > On Thu, 26 Mar 2020 17:02:47 -0400
+> > > Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> > >
+> > > [...]
+> > >
+> > > > +++ b/drivers/staging/media/omap4iss/iss_regs.h
+> > > > @@ -38,7 +38,7 @@
+> > > >  #define ISS_CTRL_CLK_DIV_MASK				(3 << 4)
+> > > >  #define ISS_CTRL_INPUT_SEL_MASK				(3 << 2)
+> > > >  #define ISS_CTRL_INPUT_SEL_CSI2A			(0 << 2)
+> > > > -#define ISS_CTRL_INPUT_SEL_CSI2B			(1 << 2)
+> > > > +#define ISS_CTRL_INPUT_SEL_CSI2B			(BIT(2))
+> > > >  #define ISS_CTRL_SYNC_DETECT_VS_RAISING			(3 << 0)  
+> > > 
+> > > The existing code is saying: there are three bits to select the input,
+> > > starting from bit number 2. For those three bits, 0 means the CSI2A
+> > > input is selected, and 1 means CSI2B is selected.
+> > > 
+> > > You're changing it to: there are three bits to select the input,
+> > > starting from bit number 2. For those three bits, 0 means the CSI2A
+> > > input is selected. CSI2B is a special case, though: register bit 2 needs
+> > > to be set.
+> > 
+> > Oh, So defining BIT(2) totally changed the logic?
+> 
+> No, it has no functional effect. And I also don't care too much about
+> "the pattern" here -- I would just recommend that you practice
+> actually reading code stuff before you change it :) So:
+> 
+> 1. #define ISS_CTRL                                        0x80
+> 	"we have a register at 0x80"
+> 	https://en.wikipedia.org/wiki/Hardware_register
+> 
+> 2. how big is it? Datasheet tells you, but before you even look for it:
+>    #define ISS_CTRL_CLK_DIV_MASK				(3 << 4)
+> 	"at least 7 bits"
+> 
+>    #define ISS_CLKCTRL                                     0x84
+>    #define ISS_CLKCTRL_VPORT2_CLK                          BIT(30)
+> 	"probably they are all the same size, might be 32 bits"
+> 
+> 3. picture it:
+> 	|_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_ b2 _|_ b1 _|_ b0 _|
+>    (might be bigger, not too important)
+> 
+> 4. #define ISS_CTRL_INPUT_SEL_MASK			(3 << 2)
+>    	"these bits define the input selection [whatever it is]":
+> 
+> 	|_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_ b2 _|_ b1 _|_ b0 _|
+>                                        ^^     ^^  | << shift by 2
+>                                        2^1 + 2^0 = 3
+>                                                    ^----(3 << 2)
+> 
+> 5. #define ISS_CTRL_INPUT_SEL_CSI2A			(0 << 2)
+> 	"to select input CSI2A [whatever it is]", we need:
+> 	|_ b7 _|_ b6 _|_ b5 _|_ b4 _|_  0 _|_  0 _|_ b1 _|_ b0 _|
+>                                        ^^     ^^  | << shift by 2
+>                                         0  +  0   = 0
+>                                                     ^----(0 << 2)
+> 
+>    #define ISS_CTRL_INPUT_SEL_CSI2B			(1 << 2)
+> 	"to select input CSI2B [whatever it is]", we need:
+> 	|_ b7 _|_ b6 _|_ b5 _|_ b4 _|_  0 _|_  1 _|_ b1 _|_ b0 _|
+>                                        ^^     ^^  | << shift by 2
+>                                         0  + 2^0  = 1
+>                                                     ^----(1 << 2)
+> 
+> Now, that's how the current #defines work. I think they are
+> actually intuitive (you could use the GENMASK() macro, but I think
+> the difference is not that big).
+> 
+> With your change:
+> 
+> 5. #define ISS_CTRL_INPUT_SEL_CSI2A			(0 << 2)
+> 	"to select input CSI2A [whatever it is]", we need:
+> 	|_ b7 _|_ b6 _|_ b5 _|_ b4 _|_  0 _|_  0 _|_ b1 _|_ b0 _|
+>                                        ^^     ^^  | << shift by 2
+>                                         0  +  0  =  0
+>                                                     ^----(0 << 2)
+> 
+>    #define ISS_CTRL_INPUT_SEL_CSI2B			BIT(2)
+> 	"to select input CSI2B [whatever it is]", we need:
+> 	|_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_  1 _|_ b1 _|_ b0 _|
+>                                                ^
+>                                                ' this bit set.
+> 		What, why? How is this related with the rest?
+> 
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- src/datatype.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+The difference is somehow clear now, Thanks for clarifying!
 
-diff --git a/src/datatype.c b/src/datatype.c
-index 94b1224..34dda84 100644
---- a/src/datatype.c
-+++ b/src/datatype.c
-@@ -239,7 +239,7 @@ void symbol_table_print(const struct symbol_table *tbl,
- 
- static void invalid_type_print(const struct expr *expr, struct output_ctx *octx)
- {
--	nft_gmp_print(octx, "0x%Zx [invalid type]", expr->value);
-+	nft_gmp_print(octx, "0x%zx [invalid type]", expr->value);
- }
- 
- const struct datatype invalid_type = {
-@@ -313,14 +313,14 @@ const struct datatype bitmask_type = {
- 	.type		= TYPE_BITMASK,
- 	.name		= "bitmask",
- 	.desc		= "bitmask",
--	.basefmt	= "0x%Zx",
-+	.basefmt	= "0x%zx",
- 	.basetype	= &integer_type,
- };
- 
- static void integer_type_print(const struct expr *expr, struct output_ctx *octx)
- {
- 	const struct datatype *dtype = expr->dtype;
--	const char *fmt = "%Zu";
-+	const char *fmt = "%zu";
- 
- 	do {
- 		if (dtype->basefmt != NULL) {
-@@ -749,7 +749,7 @@ const struct datatype mark_type = {
- 	.size		= 4 * BITS_PER_BYTE,
- 	.byteorder	= BYTEORDER_HOST_ENDIAN,
- 	.basetype	= &integer_type,
--	.basefmt	= "0x%.8Zx",
-+	.basefmt	= "0x%.8zx",
- 	.print		= mark_type_print,
- 	.parse		= mark_type_parse,
- 	.flags		= DTYPE_F_PREFIX,
--- 
-2.11.0
+> > 
+> >  [...]  
+> > > 
+> > > Also no need for parentheses around BIT().
+> > >   
+> >  [...]  
+> > > 
+> > > "Standby mode is forced by clearing 3 bits at index 4. Smart mode is set
+> > > by setting 2 as value for those bits. No standby mode is an entirely
+> > > different story: set bit 4 of ISP5_SYSCONFIG."  
+> > 
+> > Since iam a noob, i have this question, what's better, to leave 
+> > (1 << 4) alone since it looks familiar between the rest,
+> >  
+> > or since BIT(4) already sets HIGH bit at bit 4, we better use the macro
+> > though it might look as an odd in the pattern?
+> 
+> Same here, I'm not exceedingly interested in the pattern or how it looks
+> like -- with your change, it would still work, but it would make no
+> sense.
+> 
+> > Thanks for clarifying the code, much help to understand this a bit.
+> 
+> Sorry, that's why I quoted my "explanation": that's how one would read
+> it after your change.
+> 
+
+Well, That's a different perspective that i needed to test the change,
+that it's not enough to just _build it_ and i'am afraid i would never
+have this perspective in mind since iam only making minor changes, and
+some implications of these changes are not visible to me until it's
+pointed out.
+
+I guess that's why i send a patch and wait for review :)
+
+> That is, the "No standby mode is an entirely different story" part is
+> how one would read the code after your change, and... it's wrong! :)
+> 
+
+Thank You.
+
+Sam
 
 
