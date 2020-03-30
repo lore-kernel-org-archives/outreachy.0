@@ -1,108 +1,74 @@
-X-GM-THRID: 6670186659940663296
-X-Received: by 2002:ae9:ea0f:: with SMTP id f15mr11797513qkg.55.1553023853007;
-        Tue, 19 Mar 2019 12:30:53 -0700 (PDT)
+X-GM-THRID: 6807924039035650048
+X-Received: by 2002:a17:902:988e:: with SMTP id s14mr10509738plp.179.1585582700515;
+        Mon, 30 Mar 2020 08:38:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:acb6:: with SMTP id m51ls8790105qvc.1.gmail; Tue, 19 Mar
- 2019 12:30:52 -0700 (PDT)
-X-Received: by 2002:a0c:c125:: with SMTP id f34mr12982920qvh.48.1553023852501;
-        Tue, 19 Mar 2019 12:30:52 -0700 (PDT)
-Received: by 2002:a37:4909:0:0:0:0:0 with SMTP id w9msqka;
-        Tue, 19 Mar 2019 12:29:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzbxMBE+cKSKoo57dre9zjXZvYYs0z6a7A4d0Uh1bSq2Y4s5HqnNw8jxrmc5Vj+fRZuU7DY
-X-Received: by 2002:ae9:ec08:: with SMTP id h8mr12462064qkg.22.1553023770002;
-        Tue, 19 Mar 2019 12:29:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553023769; cv=none;
+Received: by 2002:a17:902:a701:: with SMTP id w1ls12670929plq.7.gmail; Mon, 30
+ Mar 2020 08:38:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtB31V3JSCidbEJ0NW0//l0pjr8r5chAi1239SdwA9lhL5BQEXk49Li/L9HQAGwfiXDVBtj
+X-Received: by 2002:a17:90a:9408:: with SMTP id r8mr16830779pjo.1.1585582699130;
+        Mon, 30 Mar 2020 08:38:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585582699; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jb9TA2HRk/6kwKGHU/SjtoPk9RLy5rRnpTTr6DrHGvm4/3+V1UfYghdphCsvC+VQeP
-         qarNKVqP3gsbqt5rg2qzDBQqyg+gGiuy28sWhGW3GiPDyhpgYLtEqi8hD+fHMry1lh7w
-         yN4jxisVr2KGqqGRABzJIlMiwXb8gZ7HFDBQYX6UnV10UT/BgmKPk/BKQ9aQ8lWQRq8Q
-         lO+aOc9IgAndcgWpFdSFV9eECboabbMEuBu7tDvwLnED3Oe5xuQu35WCZFmHqcPo78t5
-         XV4AErfx0NlU3HxJhZDQiy/LMzCuit2N8XliQub/GIXqCvV3BNNpxzE6yBy++jbPBS7p
-         TCdA==
+        b=SShZ67Kj44G4eJ4s7ko2Enj1RDtkZL486A9dh8y9wMKVUlKfBxkH4sqCwov1NF3Kp2
+         LbZ7BK13IL2vt+EDnlblQawxaAEAMvy4vp8OrfmybSQWS/Mz33a4gIzoctGQ8wqwx86X
+         gVj5s4v9B5zUOh5QC1NNHBDc585jDJR17DqdR/96g6VBue9tk769XhtYGIrjzq6SVE7y
+         G/sOpr6xdRDZsC23cgqB5G6l8uZBl5Ch4Pa9PgdAXBTRkDNykQUEXsPJuC9CZSDh5iwd
+         U4a4GAbWUT8ZgoUyzqox9zN68G3d+wxc8kSCb1uaGC0TDVBNS0TaNjn1aEy0AjmZv5Ov
+         XT8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=YsS/4TUrBWJsrkrJ/SL3pXVx1FMRl+39XqOX7naA4z4=;
-        b=MVUZJnGcPxcqqU5m/Fsn3Kdt8ssp+zisyTTESpoWjDjxwKkPyonmzD4fqcFI3+Ln2F
-         T25cEYttpX7rcOjGr/lONl/4EnEN/ldg/Tjpx623LLrfA6pmxaDJOdVysFi+V8B+zFiy
-         8XhXmxjQX4uDlPt1IuUTiRRNY1x0+gs+0nUEg/mh+oljiDYneU1CfMuyWNJ/syIBEDtz
-         E+iAsKVnTKKcdkFLDQ1ccFjMrfDaryZ5B8/Dp/jdtdd+GcfRqf1cnSJBi/H65ipivzJ0
-         Bl45intYe3creBd/gQ/8qVS1qXugz1tHAlzvzIf7/Z9QNaDI7BlDIt0falgMUFsChoU6
-         liPw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=WRr9Czo4Erfhvf+xKk+kT7CICVMsegHcQRyfH6gxguI=;
+        b=O9pVGCbz5DaRJW3tbmglodNYEPKom5czjUOCJU716+AfUb2Y6WCQGx6nzTilav1U9s
+         G3AULH7d6rtxMemN/Rj7eZS5STHkvoaW/bJ7v9WDruL5glVY3qfp9+qnuMB7Z4zuiBHe
+         KlmOxuS17YOKrZGoWEnSv+qAYefqTFmx3soRoVG3E/5QATUhFvT4koA4a/XFLWEGQFEt
+         zLSvoffToib9R4fwt3Cjd3xwm9LrwIGkTwi3/m8ZTkSP6oTDkDGFHSSlvQBTORfWI4zr
+         S5asryfP03EGbw/8a7lrZDxGsCVvI96uX6IWCVx+GPFBe6h9nosurGp5AbpLbAwXWx7Q
+         a9rQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b="ZB7B/mno";
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.79 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic313-20.consmr.mail.sg3.yahoo.com (sonic313-20.consmr.mail.sg3.yahoo.com. [106.10.240.79])
-        by gmr-mx.google.com with ESMTPS id e12si507524qtg.5.2019.03.19.12.29.29
+       dkim=pass header.i=@kernel.org header.s=default header.b=jvpKHB6o;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id x12si898971plv.3.2020.03.30.08.38.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 12:29:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.79 as permitted sender) client-ip=106.10.240.79;
+        Mon, 30 Mar 2020 08:38:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b="ZB7B/mno";
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.79 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553023767; bh=YsS/4TUrBWJsrkrJ/SL3pXVx1FMRl+39XqOX7naA4z4=; h=From:To:Cc:Subject:Date:From:Subject; b=ZB7B/mnoLy5LTSMALc2/Or16q/FMQHXd57bU2Cc6dJ1Wd6tVaaaIPUofOtZ+dtI0v/FfH05XRUugIMfnoMeErRNXbYt+MpTQ+RmhdbKF16jX+TJd4OiEtgqoLt+8n8wK9i3/Y3AQAcNsR2mdAu9aYA1hAt0U0w9DjRGNCdBL0xlBRPiPSyo6Y2AfYREOkFZV75IcjGvCVpMayMRKkRtQUEgEEEZq4G0yRw4jb/dBWi2GqkTGKCuS+IPucDgzHnocV4nxmZPw7VL8uDiCFGHMIxQDyAvAIgy0DKcUfh6oMLt/qpQJI5m/zT2gMVDvr98yg3o9ewOi/qb1AufOwumJAg==
-X-YMail-OSG: 29cOgSQVM1kjggWFbooquZaHnFdvpjpiHITUydI3ob0LV3jEqS1EGyzkHoEXDsD
- YZpLYpkivJOjgAc5kuKh2CHp7OTr4BwSUi6pEsjHW39X0vUTDY2Y.Tn9oU5gcvXsusa7T.NVymOX
- ybuKtuadfGop6Z7MtgIG7yN7rUXjWAA4WRpIz6kXugjAVRVz5pNwxjElXzt.JHbmyK7KozpZZYba
- pvdqoxovWTN_i09PYiEzhYsDNHqdY1olZQbPzKhCtYfq6k.ITtL1kChmBM8KC1whGipXhWjSBglT
- xLqvOpIHxNedGPm8sCfe9fuh0wdVeDzkv.P7.AI7MOBnzeBVAhKt4P3KduUHZrHx5JufHnXy8C9H
- .gHxuI1nSFmdz.ZrHgEA4EVz1E3J8S3EYG7yRaJ4kOql6abhh7Njg5OqU40Mub5IdIGV589sr5Ya
- 9PVZhdlfb.bTARk6yqJIZJRuwn3SPhy1jXEpfQAUPhOgOsz1SAMguPzmczf904cffBJJFI4QYeA2
- gEb0Jl0EtQUt6y0l.yN22o2KNIHgh9CIqOcmHInShKech.V04HFc1lregDIXNp6Fnfm7L6Nlowyq
- 4xZ.Dl6pL05LQhsh37qYwvklJuF3.6ZYbiIXRDvBzyy3zx7rLsW_FZc0tq53.UViApuhcDdmfHo8
- BHmDPkn2I.stvF3W5MBjxv5jncggixmWTwRb9BsO.UvIWOs6Kg_4KIqqCyyOUqflHcdPbOnafpBq
- iZ1rVuxJ.O8MLvoPGng6zppAQYA61iEpDMu2tiMqnSbFWA7ZqPXMzb6XkZzLd29osuKic5T2.4e7
- X7l3.jWWo5wfK6DMjdmz4P2j63H5A1VspctForDx7MdIrXHLCKwpZeSlp3f9RAuDhB3bzqiKu4I7
- GX2kH9qpoSj7gXV8iiTQGG9IRKU1_91f4ZIN.fYU1yMJX3YC3MMYjymDaCZ7aq7JKxYgq5psJkgf
- A_c8R6wb3I18a.80ZuGKMESTczy16tP6Axeme82ThYENZUeWM5qap.yDfk_uZyjAe9.V7ZHcTQOo
- UDL4uj8g95NaF8ThDFKZSEFkyqL.hDV5i2JO5ILrGHFz1BTWhrQYSN0w1TNccBIniDGnNDi9IAym
- Myyteook6T5WLlYAiWcvqhuNa2QIW59vz
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic313.consmr.mail.sg3.yahoo.com with HTTP; Tue, 19 Mar 2019 19:29:27 +0000
-Received: from 125.22.40.140 (EHLO localhost.localdomain) ([125.22.40.140])
-          by smtp415.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID dc686c8f5f5fe22eeb3e32a07fcb85f7;
-          Tue, 19 Mar 2019 19:29:25 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: rspringer@google.com,
-	toddpoynor@google.com,
-	benchan@chromium.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: gasket: Remove return variable
-Date: Wed, 20 Mar 2019 00:59:11 +0530
-Message-Id: <20190319192911.8526-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@kernel.org header.s=default header.b=jvpKHB6o;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 56BB92072E;
+	Mon, 30 Mar 2020 15:38:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1585582698;
+	bh=iYDBbGnA/TGndbLXSmPH5HHZ76WGuMSvgDjkFcgwGjw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jvpKHB6ov4f4wZPqTfPkAMyPsFta5X0FHGCeL7k3h6kXrZvz3r4YTZEXvNJMOSggi
+	 niKCqB8Fuy1MlFHOyYl3eRLIdlTCg1x/8+IMopR2RnLR8goa+OadPDgh2P4qIfCzI+
+	 IHdXpmD09MO7M7qe1v44XODngVADcW7LrvTdRqwo=
+Date: Mon, 30 Mar 2020 17:38:16 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net
+Subject: Re: [PATCH] staging: vt6655: line over 80 characters
+Message-ID: <20200330153816.GA772452@kroah.com>
+References: <20200327234513.GA11857@siyah2>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200327234513.GA11857@siyah2>
 
-Remove return variable and return the return value directly. Issue
-suggested by ret.cocci.
+On Sat, Mar 28, 2020 at 02:45:13AM +0300, Gokce Kuler wrote:
+> Move to bottom lines from comma for 80 characers limit.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
----
- drivers/staging/gasket/apex_driver.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+I'm sorry, but I can't really understand what you are trying to say
+here.  Perhaps word it differently?
 
-diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-index 0578bf1ba1e9..a5da9bbd8396 100644
---- a/drivers/staging/gasket/apex_driver.c
-+++ b/drivers/staging/gasket/apex_driver.c
-@@ -439,9 +439,7 @@ static int apex_reset(struct gasket_dev *gasket_dev)
- 		if (ret)
- 			return ret;
- 	}
--	ret = apex_quit_reset(gasket_dev);
--
--	return ret;
-+	return apex_quit_reset(gasket_dev);
- }
- 
- /*
--- 
-2.19.1
+thanks,
 
+greg k-h
 
