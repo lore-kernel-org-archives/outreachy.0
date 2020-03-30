@@ -1,145 +1,148 @@
-X-GM-THRID: 6673109681211179008
-X-Received: by 2002:a17:902:b615:: with SMTP id b21mr501914pls.34.1553704422480;
-        Wed, 27 Mar 2019 09:33:42 -0700 (PDT)
+X-GM-THRID: 6808532332710985728
+X-Received: by 2002:a63:4752:: with SMTP id w18mr12303482pgk.379.1585576239106;
+        Mon, 30 Mar 2020 06:50:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:9f86:: with SMTP id g6ls7909487plq.3.gmail; Wed, 27
- Mar 2019 09:33:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyxShJPXingmQHr7jaXgMUL+EFElkCnH6lmMTvDU4Ck4vCzeJgyA7URdfA9pUz5zGI4tUaV
-X-Received: by 2002:a17:902:8f8e:: with SMTP id z14mr295570plo.99.1553704421712;
-        Wed, 27 Mar 2019 09:33:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553704421; cv=none;
+Received: by 2002:a17:902:a9c1:: with SMTP id b1ls12446686plr.11.gmail; Mon,
+ 30 Mar 2020 06:50:37 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvAZIVVMwdMHA/yjEqSxy2IS9sSITAyf/LU9MnJkjeYa0XkWp7kGgYkhT7rWvGqJc45JXCi
+X-Received: by 2002:a17:90a:c482:: with SMTP id j2mr16123246pjt.71.1585576237763;
+        Mon, 30 Mar 2020 06:50:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585576237; cv=none;
         d=google.com; s=arc-20160816;
-        b=nR+1zcf/gChznM6ypi+BbpuPp8eDZbkLmHRS+JB7xwMK06q04tkqoWFz73Uhh+P+eh
-         BT/AMlWfRzXDqZP46yk5OJYW0JKrOGqZWZHkrCYoycUKgHl0VwpbdehuTKRIi4o1dywt
-         I2k8oLNXPw1xN66V5ZEckaB8oTFCfsYhwpveRx0GMZTjRv05npFWtqMnD4Ap2NCWB+JH
-         1FTNjjpeeecYPX8FJX9DZRiqOH7NADfh0iS+TVxzyGP2vnMdMbpehqlvuaPJ29Wmk1OW
-         a3TWBtZn+3OhUu0P0DiqcK/fqmzexO9i3G5J6TT1ON/flfm82T0o9PLj4d7H+93apO7Q
-         U17Q==
+        b=jZJEK3nSKk9g9mDnVlDqNK0WZdu6G4FxyW8FZv8sAispT7GlAtYQeBIjVE4bgXbpYP
+         Q240O88DrkM8sKqqGESF68Y/M6xdKZ3wkNgTGJqt0QXF3geLXdeJRxft5PHUz+7ejxyX
+         TxdTqNyguj+akuTeqcPSSUXqWh7b/920Ws6phOzcLpDWiZtVaVtyv3E/WxZW76r08t3b
+         lwEhB1O35oswwkv4cKqfonbwVuuotu8Gz4klxxRLwqSoVKi6b6iBrXTsmOOgctRTP1h4
+         Mf5kqGhyNq4W5JoGP+wBn4D7YhioM+z7u1osxWCLgzEM9GsXPaAkdp02ZjHzQn3SD3gJ
+         l/eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WWiAPEHplYmRDS0uuBpqONUKNL28AmvrAFic7FqHjKk=;
-        b=kx1f8ex4Kux0MRfkWIBP+4yo8xaUqD/kc1Xq+O7qHdkTEDHmJAQ2KTey7XSFqFqP4u
-         b5vVVrHM9rRIj3zNFcDmK/Nd8UH92RRabOjFOEv0jiYZmEK3eYoVnIP1jyhmqAsbPE4N
-         /31M7TX0uqhGQiNTZxVDFUY1A4VuQxqZ3c+g58TK94/wPBCcF0PyH1TXT0ieAFRL25VL
-         2UxZeguw6EHAeFOZneK+qAY5Wt5ZiVUby5Zc2M/5CcXRlpgihwifxcUEFCV1k+hqWQsq
-         yCG6/S7f2PlzuHJYckOiwVLNTaZNmYOvXfLAbd4eRAUz3Z/Jt67xI2b7Diy9Z1D/g381
-         B6vw==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=6l27H2qBmHg1rHivkXLei3tj4wqX7FN7/aEmhnS4tEM=;
+        b=cNEXr5lbnuzOsaKDx6/eAvHuSV6FGIjYXvWNXNJFT+Izr79IluNf1fYJoo/XqREwvX
+         MNmOm7MEZx+r2EsWhD9y3O2Wg2JT0vKH3SCw4FA9dmOUzwrzRdMa+zWnYllD0B5dz0Fb
+         I4/n0QPedLi4R735dzAj6YzvhCcR3u0IZe9UWslOM3ydFfJ6xG2KpTE2lZmcgmlkDpGg
+         wyoWMpVBQxhENycD9zy+ZWxgwkT32Gw6ZRiTvlb+kteO2HnqZdlEqE2SOmVg/ZzusQWp
+         E7HPF1fIgmyZ1hxlv4I4IFnTdNAWRkn5W/IlO+FhpSzgHWc+eWvHACp6kZoaCUFrfLZ/
+         ucCA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RkbOAJR2;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com. [2607:f8b0:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id d19si134945pfm.5.2019.03.27.09.33.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GDVbjx5E;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id c207si854810pfc.3.2020.03.30.06.50.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 Mar 2019 09:33:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) client-ip=2607:f8b0:4864:20::341;
+        Mon, 30 Mar 2020 06:50:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RkbOAJR2;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::341 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x341.google.com with SMTP id 64so15456370otb.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 27 Mar 2019 09:33:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=WWiAPEHplYmRDS0uuBpqONUKNL28AmvrAFic7FqHjKk=;
-        b=RkbOAJR2dyQzYyDw3N2RDM3ccNIFt34thwHBsEw8mLNKeAYnK8xAkcY1j7FRUCjXjh
-         y6OupfnmZK8TXaza69YmgFh7OGnGu4Vm9B3uMinieELfzUk+pXm2YKzysvI3s2XCy679
-         inA5+E3YLwAwRZWb5ABQcp8C3smW8kNp9UlsNYy0x5s5/QQ4nFZ4slO+ls0B5cdQAXV9
-         5nFo65kLEJaDGvXKBTf4isxHWcCsTTG1RV9k7/jwO2+TIU3u8cbDv1GYrdb9yseWxFrA
-         8tugkxcT3KmHCPWFbd6fCs1Yx0HYveoH9g0pTRbqvGa5Oy7eyOmjXFSUH90aXTCosivB
-         rqBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WWiAPEHplYmRDS0uuBpqONUKNL28AmvrAFic7FqHjKk=;
-        b=WJTm74G8cMwOQMdwRXxAyVaCRjQ0P80vgwEEVRtDB/sN/cTE1G0BeT4OyFND1yM67g
-         h1NengZslZNgOHIOUBu1MCLyBZqyRnshaE+d6Q7jd+RhMeGI2Fa+czfDOlO+/wKTq2Ig
-         q2mFjwn2yIsEPTgh7bKzfW2gOTO09GLGpcN1xuNsDa0toyodW+Ii2QoOZlimwJzQvRBK
-         ItSL56IQcVdNGAOc/mTGfXh4sLPdphhyRUgDZt3nuBD3B44H3hn6zRHrMACXJ/hhNfOe
-         2dffQb8s8htfV5ubbAp5WsOe15Zh8Uu1FoneKIc2+E+Z28BsF418/ogCaGgVkE3r+wUU
-         poWw==
-X-Gm-Message-State: APjAAAVSb7EpjGBtSEnO3Uu08Gvvb2jFhA0QT9oOznaFbFcZpEvVgVrR
-	wm8i+nyg3jeJeCtAaBkTQ2c=
-X-Received: by 2002:a9d:7697:: with SMTP id j23mr26106942otl.344.1553704420901;
-        Wed, 27 Mar 2019 09:33:40 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:b885:380e:c834:19c3])
-        by smtp.gmail.com with ESMTPSA id p132sm3915163oig.37.2019.03.27.09.33.39
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Mar 2019 09:33:40 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: media: davinci_vpfe: Convert macro into an inline function
-Date: Wed, 27 Mar 2019 11:33:37 -0500
-Message-Id: <20190327163337.12083-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GDVbjx5E;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585576236;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=6l27H2qBmHg1rHivkXLei3tj4wqX7FN7/aEmhnS4tEM=;
+	b=GDVbjx5EmRAYpSNOA2sLN0fZ3CBO2rcDyokMSZgJgdz7l/Pb9SCJqQKqffDsJ8sEcj5pup
+	7HpPyFrJoGphZXWjLg9X0RVdE1gWri9AB1L5v4K9cyT/guk3x1CbGbV/bv9NW1ir6v8Psm
+	1eDzz242SOv2obQkVAZO/ptIG23eN2E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-74-eH1JQh7oP4G_WubnCPN0Ug-1; Mon, 30 Mar 2020 09:50:35 -0400
+X-MC-Unique: eH1JQh7oP4G_WubnCPN0Ug-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1555C80256D;
+	Mon, 30 Mar 2020 13:50:34 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A965A19925;
+	Mon, 30 Mar 2020 13:50:32 +0000 (UTC)
+Date: Mon, 30 Mar 2020 15:50:18 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Sam Muhammed <jane.pnx9@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, Greg Kroah-Hartman
+  <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH 1/4] Staging: rtl8192u: ieee80211:
+ Use netdev_dbg() for debug messages.
+Message-ID: <20200330155018.3db23c64@elisabeth>
+In-Reply-To: <7ade5ee43581a6fb3bdb8d5a567b28976525b843.camel@gmail.com>
+References: <cover.1585233434.git.jane.pnx9@gmail.com>
+	<84dc7e33954509457efce2a35fb293e631845a96.1585233434.git.jane.pnx9@gmail.com>
+	<20200330095924.4824f330@elisabeth>
+	<7ade5ee43581a6fb3bdb8d5a567b28976525b843.camel@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Convert macro into an inline function to maintain Linux kernel coding
-style based on which inline function is preferable to macro resembling
-function.
+On Mon, 30 Mar 2020 09:01:19 -0400
+Sam Muhammed <jane.pnx9@gmail.com> wrote:
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- .../media/davinci_vpfe/dm365_ipipe_hw.c       | 24 ++++++++++---------
- 1 file changed, 13 insertions(+), 11 deletions(-)
+> On Mon, 2020-03-30 at 09:59 +0200, Stefano Brivio wrote:
+> > On Thu, 26 Mar 2020 11:02:35 -0400
+> > Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> >   
+> > > +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
+> > > @@ -436,7 +436,7 @@ int ieee80211_wx_set_encode(struct ieee80211_device *ieee,
+> > >  	if (ieee->reset_on_keychange &&
+> > >  	    ieee->iw_mode != IW_MODE_INFRA &&
+> > >  	    ieee->reset_port && ieee->reset_port(dev)) {
+> > > -		printk(KERN_DEBUG "%s: reset_port failed\n", dev->name);
+> > > +		netdev_dbg(ieee->dev, "reset_port failed\n");  
+> > 
+> > I guess you should stick to 'dev' here -- it's the same as ieee->dev,
+> > but reset_port() is invoked on 'dev', so it would be less confusing.
+> 
+> Thank You for pointing this out! this got me hesitant but i thought i
+> could be more explicit?
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
-index 565a3dc5bed1..110473c30577 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipe_hw.c
-@@ -825,8 +825,10 @@ ipipe_set_lum_adj_regs(void __iomem *base_addr, struct ipipe_lum_adj *lum_adj)
- 	regw_ip(base_addr, val, YUV_ADJ);
- }
- 
--#define IPIPE_S12Q8(decimal, integer) \
--	(((decimal & 0xff) | ((integer & 0xf) << 8)))
-+inline u32 ipipe_s12q8(unsigned short decimal, short integer)
-+{
-+	return (decimal & 0xff) | ((integer & 0xf) << 8);
-+}
- 
- void ipipe_set_rgb2ycbcr_regs(void __iomem *base_addr,
- 			      struct vpfe_ipipe_rgb2yuv *yuv)
-@@ -835,23 +837,23 @@ void ipipe_set_rgb2ycbcr_regs(void __iomem *base_addr,
- 
- 	/* S10Q8 */
- 	ipipe_clock_enable(base_addr);
--	val = IPIPE_S12Q8(yuv->coef_ry.decimal, yuv->coef_ry.integer);
-+	val = ipipe_s12q8(yuv->coef_ry.decimal, yuv->coef_ry.integer);
- 	regw_ip(base_addr, val, YUV_MUL_RY);
--	val = IPIPE_S12Q8(yuv->coef_gy.decimal, yuv->coef_gy.integer);
-+	val = ipipe_s12q8(yuv->coef_gy.decimal, yuv->coef_gy.integer);
- 	regw_ip(base_addr, val, YUV_MUL_GY);
--	val = IPIPE_S12Q8(yuv->coef_by.decimal, yuv->coef_by.integer);
-+	val = ipipe_s12q8(yuv->coef_by.decimal, yuv->coef_by.integer);
- 	regw_ip(base_addr, val, YUV_MUL_BY);
--	val = IPIPE_S12Q8(yuv->coef_rcb.decimal, yuv->coef_rcb.integer);
-+	val = ipipe_s12q8(yuv->coef_rcb.decimal, yuv->coef_rcb.integer);
- 	regw_ip(base_addr, val, YUV_MUL_RCB);
--	val = IPIPE_S12Q8(yuv->coef_gcb.decimal, yuv->coef_gcb.integer);
-+	val = ipipe_s12q8(yuv->coef_gcb.decimal, yuv->coef_gcb.integer);
- 	regw_ip(base_addr, val, YUV_MUL_GCB);
--	val = IPIPE_S12Q8(yuv->coef_bcb.decimal, yuv->coef_bcb.integer);
-+	val = ipipe_s12q8(yuv->coef_bcb.decimal, yuv->coef_bcb.integer);
- 	regw_ip(base_addr, val, YUV_MUL_BCB);
--	val = IPIPE_S12Q8(yuv->coef_rcr.decimal, yuv->coef_rcr.integer);
-+	val = ipipe_s12q8(yuv->coef_rcr.decimal, yuv->coef_rcr.integer);
- 	regw_ip(base_addr, val, YUV_MUL_RCR);
--	val = IPIPE_S12Q8(yuv->coef_gcr.decimal, yuv->coef_gcr.integer);
-+	val = ipipe_s12q8(yuv->coef_gcr.decimal, yuv->coef_gcr.integer);
- 	regw_ip(base_addr, val, YUV_MUL_GCR);
--	val = IPIPE_S12Q8(yuv->coef_bcr.decimal, yuv->coef_bcr.integer);
-+	val = ipipe_s12q8(yuv->coef_bcr.decimal, yuv->coef_bcr.integer);
- 	regw_ip(base_addr, val, YUV_MUL_BCR);
- 	regw_ip(base_addr, yuv->out_ofst_y & RGB2YCBCR_OFST_MASK, YUV_OFT_Y);
- 	regw_ip(base_addr, yuv->out_ofst_cb & RGB2YCBCR_OFST_MASK, YUV_OFT_CB);
+Hmm, I see. Look, these would be my points, in order of priority:
+
+1. ieee->reset_port(dev), port reset failed on dev, nothing else
+
+2. it's nice to have a 'dev' pointer representing the device instead of
+   having to spell out ieee->dev every time in this function,
+   especially as the container is called 'ieee', which has a very weak
+   meaning
+
+2. having a 'dev' variable is useless, ieee->dev leaves no room for
+   interpretation and wondering (when was 'dev' assigned? where does it
+   come from?)
+
+So if I understand correctly you are referring to the second "2."
+point. About those two points, I really have no preference. I also
+couldn't decide myself. I guess I'd instinctively go for "ieee->dev"
+everywhere.
+
+However, I guess point 1. is arguably the most important here.
+
+> Now since this change is already been made, i guess i should make this
+> a new patch?
+
+Ouch, I missed that. Yes.
+
+> is there any information i should say to tie it with this series? or
+> should be treated like a new separate patch?
+
+It's a separate patch. You can use the Fixes: tag as documented in
+submitting-patches.rst, but this is really subject to interpretation.
+
+My personal interpretation is that it's not a functional fix and the
+Fixes: tag should be omitted, even though you should refer to the merged
+commit in the message of the new change.
+
+Some maintainers want it no matter what. I don't recall having ever
+sent a patch directly to Greg, so I don't know :) Try without :)
+
 -- 
-2.17.1
+Stefano
 
 
