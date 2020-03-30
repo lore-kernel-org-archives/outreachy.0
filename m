@@ -1,114 +1,97 @@
-X-GM-THRID: 6339007538213683200
-X-Received: by 10.107.35.149 with SMTP id j143mr5496965ioj.1.1475915205470;
-        Sat, 08 Oct 2016 01:26:45 -0700 (PDT)
+X-GM-THRID: 6808656295974928384
+X-Received: by 2002:ac8:3656:: with SMTP id n22mr10629272qtb.296.1585556259535;
+        Mon, 30 Mar 2020 01:17:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.56.29 with SMTP id i29ls6712353otc.12.gmail; Sat, 08 Oct
- 2016 01:26:45 -0700 (PDT)
-X-Received: by 10.157.2.71 with SMTP id 65mr6235061otb.100.1475915205037;
-        Sat, 08 Oct 2016 01:26:45 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by gmr-mx.google.com with ESMTPS id ua1si6518437pac.1.2016.10.08.01.26.44
+Received: by 2002:ae9:dc83:: with SMTP id q125ls8080525qkf.9.gmail; Mon, 30
+ Mar 2020 01:17:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsG0M7XxAM6dKHL25eDPu7tguAp3IoK3veKwinzm+8Z9h3uhhmyQWdgwphruCjTLZ6+NOg3
+X-Received: by 2002:a37:d244:: with SMTP id f65mr10861508qkj.373.1585556258032;
+        Mon, 30 Mar 2020 01:17:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585556258; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mr1MAJt1+sjU5ujhc2zGBwmV3rwmjkDCyMwdcre6W8IsQRkdBoKRV8sNMNG8RJuFUC
+         6fDg69fZj4V1PVx7zzg4nwsVteN/jIfqC5x64GK8gCwm7PnbMF9AefKSjR/gMSZSWaK7
+         4Y9fxCsNYzgn0hJQesg+Fqsavb4cfzyuQ5qU2My9v3p9AcLQmMrzBu4XLsTeS15dxxFX
+         7OsJw7+VA26SxQTS6J6VWz+0jIfPRhIQXQINfyDYU/t2Rn9VGQkL3blr5Km/xyY0yORQ
+         8MfvZbKXBPXig2RRhYcCkOdaQ+TbFOMzhKQAf/DVmlY/ixF9oS4ulUm4aRSEHnP6W1eY
+         jmtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=MdBeKYhhm1mcNHvgo+o5z2pp2eXaN//G3UpNcsEod34=;
+        b=mUmAi4MhLprquOYMoro2KQgNM9HOIO/kvQ+0R4PQG5vao4cgZLNH01XvOt6FlDtYee
+         ZRcyhWVmUoDhcUPwaKtqTyvxSMSUm8YdLlsmEqd7/qoYGDwjs8A8EES44963FagQJ1TO
+         EzyWQ+2XH5bsKHdR18t6MQf0s2s6Hsw82wIzchSmun2UHqPDV0tRLDAN1z1EvmWHolbh
+         qIpeMww08w80iINLRvuZXHoohibOTuWEIPy7ZuqmXv1FogxJaMBtfTPpO2Z2WCaRxwO/
+         FivURdq6N0GTSzXRZrU6vQ3dxmzPFHpPrZRAwjDMOqoKfFLr391cb1y08NpE4mZsHHAB
+         qELA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KgRPGwLi;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id j56si1102413qta.0.2020.03.30.01.17.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Oct 2016 01:26:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Mon, 30 Mar 2020 01:17:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id cd13so3857626pac.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 08 Oct 2016 01:26:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=rhjLY0RdHH0aEO/e+FCuCwy/YS2RiBPJtz+4pRz5WJA=;
-        b=o7gog7NJdeUrK3qNN06Uu8aC//bjHZ3a+39MfIWlrGW3IIzQwob2mn14p1jwWHbaQs
-         /t7oA7WA1l/UHzOIdSRlw+kygosFW99f+GQvcEIuE8WHq9T9cXx0RvSsX8CmyMu2Jg09
-         BTR9XikuLF0fOLp2qMFjATObrsbEjYciklIS+bGcuVE5Nj2Hpvv16uU/TXg+97Pq1gp3
-         1OsRtpSyHhtDbsThtH+P3xfSTvSOIhHFWWLfS6k1yUeR99EpTAHBPTax+EDMb+F91Xo9
-         Sk8O7ABAwEf4UiEo2qKFMy89fKBvxV9ZHbXTr0CF8Cc0EIh9aXpwO8l9mgaYIHtVJkHY
-         Z1HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=rhjLY0RdHH0aEO/e+FCuCwy/YS2RiBPJtz+4pRz5WJA=;
-        b=WubOHtvwoPM0aMAWeOL8IZt3KrFHZANGpSjEFwNTK9BPEmn43O523r+hgr8E897wxD
-         gGHY4p2TGz5GUP2ZIKiCxORzEC1iQklss8d92023F9S4Tunt4GxzndZ5UfJDPlYMLWD5
-         yuMzirjzEM+FCXGIS/JUm9s0OienYMbxD4nytEwls6J+ss2FH6MlQRR3CeCfJzTZhuUv
-         Y5enxyzNneZHmk2+y70rd0mHcdAVXm0GrlLabXKvvsKuFQ0vF243wDd3a0WBQQIxtAKE
-         20a32CUynGVbgfXVAszw0Q2aORM+Jzc4YJkHgcTrlb7ald9Y8AjfSPPUmQMpasUiX1RF
-         TBzQ==
-X-Gm-Message-State: AA6/9RknklvWT8jxIqI1H3LLzAiu5mLA8ohHyVI2jh/yxXdN2bQdX5xcZbApcrQFmyaPRg==
-X-Received: by 10.66.163.227 with SMTP id yl3mr37531163pab.0.1475915204848;
-        Sat, 08 Oct 2016 01:26:44 -0700 (PDT)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([177.68.230.98])
-        by smtp.gmail.com with ESMTPSA id s82sm142721pfg.56.2016.10.08.01.26.43
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 08 Oct 2016 01:26:44 -0700 (PDT)
-Date: Sat, 8 Oct 2016 05:26:42 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH 08/13] staging: wlan-ng: renames hfa384x_ChInfoResultSub to
- avoid camelcase
-Message-ID: <20161008082642.GA8993@spock>
-References: <cover.1475912465.git.juliana.orod@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KgRPGwLi;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585556257;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MdBeKYhhm1mcNHvgo+o5z2pp2eXaN//G3UpNcsEod34=;
+	b=KgRPGwLinlmXaGVDbS1ZZRfN4zy9AGMcvgEzJRtVnqHQgGhsJxQD91vhutw8w7NXyfpg6r
+	ImC+LSyMup6n+M2pAhrVZ6ZbCn3iu6zFWFIjDmLclxYjvYmiL4dyKLeORT7u3H67ydvBjT
+	2Gp8eizUuohzWBu8GoEWol7c8XumrVk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-50-emUi9ZoqPBytLzHyI4bELw-1; Mon, 30 Mar 2020 04:17:33 -0400
+X-MC-Unique: emUi9ZoqPBytLzHyI4bELw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A24991005509;
+	Mon, 30 Mar 2020 08:17:32 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.47])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A37A919756;
+	Mon, 30 Mar 2020 08:17:29 +0000 (UTC)
+Date: Mon, 30 Mar 2020 10:17:20 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Briana Oursler <briana.oursler@gmail.com>
+Cc: gregkh@linuxfoundation.org, nramas@linux.microsoft.com,
+ forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [Patch v3] staging: vt6655: Remove multiple
+ assignments.
+Message-ID: <20200330101708.73a51b5b@elisabeth>
+In-Reply-To: <20200327192700.12289-1-briana.oursler@gmail.com>
+References: <20200327090534.GB1669531@kroah.com>
+	<20200327192700.12289-1-briana.oursler@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1475912465.git.juliana.orod@gmail.com>
-User-Agent: Mutt/1.7.0 (2016-08-17)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Renames the camelcased struct hfa384x_ChInfoResultSub to
-hfa384x_ch_info_result_sub in order to fix a checkpatch warning.
+On Fri, 27 Mar 2020 12:27:00 -0700
+Briana Oursler <briana.oursler@gmail.com> wrote:
 
-Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x.h   | 4 ++--
- drivers/staging/wlan-ng/prism2sta.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+> Remove multiple assignments at initialization and in computations to
+> better match Linux style. Issue found by checkpatch.pl.
+> 
+> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index e3fae14..7b6b373 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -678,7 +678,7 @@ struct hfa384x_scan_result {
- } __packed;
- 
- /*--  Inquiry Frame, Diagnose: ChInfo Results & Subfields--*/
--struct hfa384x_ChInfoResultSub {
-+struct hfa384x_ch_info_result_sub {
- 	u16 chid;
- 	u16 anl;
- 	u16 pnl;
-@@ -690,7 +690,7 @@ struct hfa384x_ChInfoResultSub {
- 
- struct hfa384x_ChInfoResult {
- 	u16 scanchannels;
--	struct hfa384x_ChInfoResultSub result[HFA384x_CHINFORESULT_MAX];
-+	struct hfa384x_ch_info_result_sub result[HFA384x_CHINFORESULT_MAX];
- } __packed;
- 
- /*--  Inquiry Frame, Diagnose: Host Scan Results & Subfields--*/
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index f6bb397..900ae8c 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1139,8 +1139,8 @@ static void prism2sta_inf_chinforesults(struct wlandevice *wlandev,
- 	    le16_to_cpu(inf->info.chinforesult.scanchannels);
- 
- 	for (i = 0, n = 0; i < HFA384x_CHINFORESULT_MAX; i++) {
--		struct hfa384x_ChInfoResultSub *result;
--		struct hfa384x_ChInfoResultSub *chinforesult;
-+		struct hfa384x_ch_info_result_sub *result;
-+		struct hfa384x_ch_info_result_sub *chinforesult;
- 		int chan;
- 
- 		if (!(hw->channel_info.results.scanchannels & (1 << i)))
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+
 -- 
-2.10.0
+Stefano
 
 
