@@ -1,114 +1,148 @@
-X-GM-THRID: 6675322787924541440
-X-Received: by 2002:a6b:7614:: with SMTP id g20mr35226iom.14.1554219701930;
-        Tue, 02 Apr 2019 08:41:41 -0700 (PDT)
+X-GM-THRID: 6809557952024805376
+X-Received: by 2002:a25:6755:: with SMTP id b82mr24032503ybc.380.1585606619258;
+        Mon, 30 Mar 2020 15:16:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:7dcc:: with SMTP id b195ls647999itc.2.canary-gmail; Tue,
- 02 Apr 2019 08:41:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyZ0n/DsPOXtl29zbx3ROiubJhEqaG1Q+bFFvbpLbel8Ph12tX7VT7r5XpPheYlt/ycWYnW
-X-Received: by 2002:a24:5ed3:: with SMTP id h202mr8201977itb.17.1554219700878;
-        Tue, 02 Apr 2019 08:41:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554219700; cv=none;
+Received: by 2002:a25:b9c9:: with SMTP id y9ls6472365ybj.8.gmail; Mon, 30 Mar
+ 2020 15:16:57 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtYpc67lOTsMHFLwn+iFE9SlYSK7gSS9+LBxp+jC0Wq9o1xaysmmhW3IcYAq5ZbXYV58o25
+X-Received: by 2002:a25:cec8:: with SMTP id x191mr22992615ybe.39.1585606617671;
+        Mon, 30 Mar 2020 15:16:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585606617; cv=none;
         d=google.com; s=arc-20160816;
-        b=JGGCr47xnk4Ctt3RQyCMM5Q8mdrfgzKSCP9HRZKVqP249DotUmyy7B5dWBBZNFcog1
-         m7xOVUNTGC3uUMZu8ZpkIJ0Xc3v4ArAWEMQOFizIcdMnk1juHU+7x4T1YnOGV/65rz9m
-         qx/8ts0tVnkSN/r8QkCuYYT8OYxuI15Pza3IxDTdX70HoiJS074fVGHd3xbP7zo+hyAq
-         nZCZq3410FQ9zAOnAOwUAs0kLP7K7Cbn8hI7b+Rxu+j02hju5Lef3Fa8wqaP0juCtTnw
-         ZYXpPd1ai3ScEh95IExsqh1KgD36aI/dI8C0W1g0gnjwNXKD4evBmUoXQZQtfop9E+7I
-         xRWQ==
+        b=yfj1wszrbJDHsE+BdmNwtbbzXybu1D7mYfGffFosOqqiu048mu43vR5KtgjcEOQbY5
+         n2r91NntxytXxGh5u6R2Q4TJIVhTEBai+rMaOO0oamkTC098Cj+KCafsfoaS9vRr7Hz0
+         eMV/2iy5+Y5n+NLEGE0cmEY3WHZxaqwuom18DtP7hecE8TlB9vJ7TrkLXfk1LvGF/VtH
+         9spHQwqpg77GVAwdwOBgw5jX2m6F96FlHv89ShtswTG4Y7cvgMz9h4fXH4rkVkJ8odY8
+         /kk3a5gy4vjXoDTctf/NVGecWoEyamkxInaBabXXwN494ez4s4xx05+UgLzJDaQcgwvK
+         A/kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7qqfdiuXzJ//jeHi+kWFRNrXcRLwKQKDVM7aXprpG20=;
-        b=ICiLmGBXuAAFp7YKJbJTjUqqELdv70fQVwifwhVDRXWx/NTg2MG4FduOus3O/j8ZXF
-         09/jDw2CNIqqAmHMJmf8R4DUtBnZbnm4y2Wv4sMSMeaprxv6IzboZzcbX9v/AC4lNxZd
-         giWHH4p/lOoelROgg1BdKG8T+CXrv6o09RKY3S3AJMjTGAyjJeU5zD0Uonr2s0whZ+d5
-         1u9L8nQyT7NXaAD98olFzLmZJ3TXz1t3TqtBIoOMwuqivVEvUN9kWsqPQsIgfWn1X7A7
-         mV6wYcamWN054b3ujvLs7OFVxiu1rIpO7SKGU/vmed/SlmJfE4bk5d+i7WxKvDLv0XkK
-         Cqfw==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=kFxQ6sa3As6Jtugci2z3HRdxNU4LPCC1zzYUuabLxUU=;
+        b=EkTLlfw28VN6lCFdYivIofs9cXIqGZkUc2CrPfA2xD5XgAGR5+MhnLz1Iv0OZGkpvb
+         4B7s6/obtMVrqc58dYRoU1t+ZJbrqCSGM7a5Et3fLU7GiIDRdEbQW3yYfCcwHPaIu/Ag
+         hm983t1uocwrbONOj5A1IlT3MLxBM1tjhbIH5naXHkWnBGZeQCCnvbZOep1m08UKewe5
+         SmdGo3qfe0yEXbCPOSU1g04o47pEHtjZKpH4mqikh41Z6og9AmuD981+43yJzlHuHvOv
+         TKZfLmjxlqYECwNpPnW3wbwSE0ndvwOq1z2nSbeIJQz3KA4ayZ6sBM3cNhctxenSVpJT
+         M1xQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rVnYeDAE;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id 3si815044itz.0.2019.04.02.08.41.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GNl79egB;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id l1si257835ybt.2.2020.03.30.15.16.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 08:41:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Mon, 30 Mar 2020 15:16:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rVnYeDAE;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id y6so6458498pll.13
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 08:41:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=7qqfdiuXzJ//jeHi+kWFRNrXcRLwKQKDVM7aXprpG20=;
-        b=rVnYeDAE2Af+uqi7YbaQ0/W3E6loOaDD8iQ75pr/vzsLUJu8r2GKya4p793CtKYsdb
-         c8axiGQZS8jdtVCtzCJWFWLYoaY/2V1h9hMQxBNuA6S1XuHJamT1ObqXXpDGKpCjbQpH
-         qM5w5h0675cZAq+S0PMOUnbiotdfdn8FIVpfsSb2iSGeuz/6qx7Yv7Hnvrd3wBQpxIkE
-         Hijdeg1sZUU3N23PlHq4cqhXydLH9fUp3QokANcsCpB9XA8SIV822WoGVkXXDWUvZKLS
-         V141mOJpY92qGILsMRBLj9AgxqrA0dNdesO7O9l8rKVS010wdepXIcVGCP1iKJGfU6qV
-         4S3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7qqfdiuXzJ//jeHi+kWFRNrXcRLwKQKDVM7aXprpG20=;
-        b=MHZqjJ+CbNvjY+x5BiyTbKqNlD/54L57KM3ZU1zHNF3FjDP04MmOZMNM1IljGI/FTq
-         V4SRtdo1eSHl5tfi4/1I7zf3PdOFDlHx3GMhTpZ9KLhLIvU3uCwoMGabvxvtac8Mr/VH
-         kwW1kwDAiMu1cNd2QFc5DsK/sUfEuCn2ogEVOCmvwkNpkHtNjciQEcbGy+LZiuqunJas
-         3DhCKYbPwyppEbot0U68XaLnBjXAA+KVhzQ44Brmyf1wjHD0uTI74qc74NTo2SHcU8eI
-         PyoZ3aj4LrIAmjw8WL3r9Z8363vlx3/QhruFF7Y8BBcyP9Hcrr066MAc5T2Phv4N+MvE
-         AH/g==
-X-Gm-Message-State: APjAAAV4btGhGoZVYKYTzeUQrmZ2L2NUpogDZjlcIAuvU2llkA057/l2
-	0WRGU9s8skZZqLKuTwxb4ki224iE
-X-Received: by 2002:a17:902:f094:: with SMTP id go20mr48252218plb.159.1554219699864;
-        Tue, 02 Apr 2019 08:41:39 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id l88sm24514341pfb.104.2019.04.02.08.41.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 08:41:39 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: iio: impedance-analyzer: ad5933.c: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 21:11:25 +0530
-Message-Id: <1554219685-13181-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GNl79egB;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585606616;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kFxQ6sa3As6Jtugci2z3HRdxNU4LPCC1zzYUuabLxUU=;
+	b=GNl79egBDmZJ0fgiovPTTkjbC0iRFAnnPYyehWIj7T4c2nTjtsPAEyTF46S5O7FohgOfcu
+	y8+MHkJLyr9qFbKWvYia5WR2Mw4vy9rMhtvkjgeATKEMnHRAgwBnOKz2XCr6YImw1xpIg3
+	NZ3HBdt9I1+Ce4iRmQKrfZaNVeWADLA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-445-L_lh2rRnM8uuiqNlMRll3Q-1; Mon, 30 Mar 2020 18:16:51 -0400
+X-MC-Unique: L_lh2rRnM8uuiqNlMRll3Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEB1A18A5500;
+	Mon, 30 Mar 2020 22:16:49 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 180CF5C1BB;
+	Mon, 30 Mar 2020 22:16:43 +0000 (UTC)
+Date: Tue, 31 Mar 2020 00:16:37 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, Soumyajit Deb
+ <debsoumyajit100@gmail.com>, outreachy-kernel@googlegroups.com, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, Payal Kshirsagar
+ <payal.s.kshirsagar.98@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: fbtft: Replace udelay with
+ preferred usleep_range
+Message-ID: <20200331001637.6bf108ed@elisabeth>
+In-Reply-To: <53befe00af657428b591200b31b5349a4a462eb1.camel@gmail.com>
+References: <20200329092204.770405-1-jbwyatt4@gmail.com>
+	<alpine.DEB.2.21.2003291127230.2990@hadrien>
+	<2fccf96c3754e6319797a10856e438e023f734a7.camel@gmail.com>
+	<alpine.DEB.2.21.2003291144460.2990@hadrien>
+	<CAMS7mKBEhqFat8fWi=QiFwfLV9+skwi1hE-swg=XxU48zk=_tQ@mail.gmail.com>
+	<alpine.DEB.2.21.2003291235590.2990@hadrien>
+	<20200330194043.56c79bb8@elisabeth>
+	<53befe00af657428b591200b31b5349a4a462eb1.camel@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 
-Challenge suggested by coccinelle.
-Prefer using BIT and replace bit shifting with the BIT(x) macro.
+On Mon, 30 Mar 2020 15:03:55 -0700
+"John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
----
- drivers/staging/iio/impedance-analyzer/ad5933.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> On Mon, 2020-03-30 at 19:40 +0200, Stefano Brivio wrote:
+> > On Sun, 29 Mar 2020 12:37:18 +0200 (CEST)
+> > Julia Lawall <julia.lawall@inria.fr> wrote:
+> >  =20
+> > > On Sun, 29 Mar 2020, Soumyajit Deb wrote:
+> > >  =20
+> > > > I had the same doubt the other day about the replacement of
+> > > > udelay() with
+> > > > usleep_range(). The corresponding range for the single argument
+> > > > value of
+> > > > udelay() is quite confusing as I couldn't decide the range. But
+> > > > as much as I
+> > > > noticed checkpatch.pl gives warning for replacing udelay() with
+> > > > usleep_range() by checking the argument value of udelay(). In the
+> > > > documentation, it is written udelay() should be used for a sleep
+> > > > time of at
+> > > > most 10 microseconds but between 10 microseconds and 20
+> > > > milliseconds,
+> > > > usleep_range() should be used.=20
+> > > > I think the range is code specific and will depend on what range
+> > > > is
+> > > > acceptable and doesn't break the code.
+> > > >  Please correct me if I am wrong.   =20
+> > >=20
+> > > The range depends on the associated hardware. =20
+> >=20
+> > John, by the way, here you could have checked the datasheet of this
+> > LCD
+> > controller. It's a pair of those:
+> > 	https://www.sparkfun.com/datasheets/LCD/ks0108b.pdf
+>=20
+> No I have not. This datasheet is a little over my head honestly.
+>=20
+> What would you recommend to get familiar with datasheets like this?
 
-diff --git a/drivers/staging/iio/impedance-analyzer/ad5933.c b/drivers/staging/iio/impedance-analyzer/ad5933.c
-index 3134295..0922cc1 100644
---- a/drivers/staging/iio/impedance-analyzer/ad5933.c
-+++ b/drivers/staging/iio/impedance-analyzer/ad5933.c
-@@ -284,7 +284,7 @@ static ssize_t ad5933_show_frequency(struct device *dev,
- 	freqreg = be32_to_cpu(dat.d32) & 0xFFFFFF;
- 
- 	freqreg = (u64)freqreg * (u64)(st->mclk_hz / 4);
--	do_div(freqreg, 1 << 27);
-+	do_div(freqreg, BIT(27));
- 
- 	return sprintf(buf, "%d\n", (int)freqreg);
- }
-@@ -420,7 +420,7 @@ static ssize_t ad5933_store(struct device *dev,
- 		if (val > 1022)
- 			val = (val >> 2) | (3 << 9);
- 		else if (val > 511)
--			val = (val >> 1) | (1 << 9);
-+			val = (val >> 1) | BIT(9);
- 
- 		dat = cpu_to_be16(val);
- 		ret = ad5933_i2c_write(st->client,
--- 
-2.7.4
+Well, you don't necessarily have to, there are many subsystems in the
+kernel which are almost completely abstracted away from hardware.
+
+If you're interested, look around yourself for something simple chip,
+or get something that you can easily plug on a "maker board", Raspberry
+Pi, something like that. Perhaps via I=C2=B2C or SPI.
+
+Some types of sensors (temperature, pressure) have very simple
+datasheets. If you are allergic to hardware, try:
+	$ ls -Ssl drivers/iio/*
+
+pick the smallest sensor driver in the category that is the most likely
+to spark your interest, and go through it, checking it against the
+datasheet, at some point it will make sense.
+
+--=20
+Stefano
 
 
