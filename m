@@ -1,80 +1,82 @@
 X-GM-THRID: 6807884729429262336
-X-Received: by 2002:a37:a854:: with SMTP id r81mr44236qke.384.1585576556020;
-        Mon, 30 Mar 2020 06:55:56 -0700 (PDT)
+X-Received: by 2002:ab0:74cd:: with SMTP id f13mr6886442uaq.111.1585576326317;
+        Mon, 30 Mar 2020 06:52:06 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:2ca1:: with SMTP id g30ls6915043qtd.1.gmail; Mon, 30 Mar
- 2020 06:55:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs5QYiG7LGpy+FfFY7nk3NPhoe8eEChIK7m4fhX7vZ96i1oN+040Pj5nMYMUohzMK7Sebrb
-X-Received: by 2002:ac8:366d:: with SMTP id n42mr63773qtb.180.1585576553896;
-        Mon, 30 Mar 2020 06:55:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585576553; cv=none;
+Received: by 2002:a67:684c:: with SMTP id d73ls2328799vsc.7.gmail; Mon, 30 Mar
+ 2020 06:52:04 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLvg4yjg0oBi0eB+qpCwiNxwWcQHcL8WYl9Hg/CNapRgqcHWRs+8nSHClFFNEAm/bUu4k7Y
+X-Received: by 2002:a67:d60d:: with SMTP id n13mr8853925vsj.230.1585576324571;
+        Mon, 30 Mar 2020 06:52:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585576324; cv=none;
         d=google.com; s=arc-20160816;
-        b=tQGEgUBQeaFujBLFeyFame0gtEqj1yJZ/bD6cu+4x1V/KmV6zacl4cTpCRykqu8ejb
-         VXxWoq+xEkaY5p0ecSID7fRDV2wgBSC+x1czfwCBlNZrIXKT3NAT/Lf/C1+imkdjYWMy
-         kceCwaF3RRScXyzAhaV3Z2Klkqj+2nwWMgcv1oWgTUOZCltFdscBmTZ/5ejijzWSnkNL
-         4u0Qv0xolFmR+vCE5U34m0Yzaq5zuTz2bI+C+Dbp4JgyW6DvDZDHySx3gpnnf/Y22Ujy
-         7U4bfydabkeyDoW7TL5GV6v3TaFONMj8lOMQ+c9fJMG1MX5IQBguTWP8hkwkfew4Gwdv
-         1eXA==
+        b=OuOgeOL8SsSTrpVe6hvoE1NWNsiCIa1Q73XiY5rDRbkECeOcyIZI1j3vsR+5m8kx4Q
+         m7vVOT6m+GrwM70znq+bIDOKsRjRH2spqCpYK48MUNtNzPe78disjH1bBAo08ZKPLhdS
+         7t0OfummQ9pv9K7U517pdLCFtsX+4AFHEMmyk5hDIcUwT93SNzgn8fpAdBdW+0/AsVUA
+         rzZwanh+6rsrUnFfgDZYvvCaMN7aP0Y4CunkDD0lvm6/38dLaOdrTNJYMk2czgctof2h
+         MTqlGNXuMDdxD8ubw8dSw9NPRJeIaCbgu/lNFdpugeaEfZvw5+fYjyR9gm0d7RGBmX3f
+         YKkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=bE0I9JNfskMsY0d+oVSss15e5oCK2MlSAiAJunOZLTU=;
-        b=YhH+bGIZYlZ90sImIVAbpIw2vxttmac6PR+3r3nq5vWeSzzmplQGxosuCe3qe1VcON
-         uPFfNsKVvKwCSGs83liimwbeDFde/hsXffp79ScLbUjBN03OhlYkZRppVCIk9VK/hl5J
-         RuAXza6x6blhkuNsWEhpJeReRC99AC/72CyF7xsFrmczJ+6guHpsKaDdWc19aTF7CzBF
-         JW008M3/RGf0YhthA1vUya3s+ADKb/xxJQCyGRyoXAvHBQL7GnDaRfkDxrosvc6WPt2y
-         f1YC46gIMO/+EkVbxGhASL8OHz/BfeIiKzmvjZM9Exbp0bd/DkmCflYAIbiiB9wtxyGX
-         gvKw==
+        bh=eKksIWMKGyhBxmOyEKEsU58pSh/Wz0oPF6i8BW6IapA=;
+        b=pp56QhEbG3lgxjZNLnkcuTkaC3BCIhMhdA/e8PGx8AXykM3GWGnJcuxw2VZpToXLSV
+         ijGV7BeAXmgWzwmj+dcgLGH71WcDASlnvAh4jCNOp2Nt2q0ZShNiucyhs9NsZZanjWGN
+         Mzxb3YwnE9mB1Vc1IUfQf6v6+medw2B5gUV6V2fmWYANc2yVcAohuyHJdRhI8aMbX9VI
+         Y5EL3OGM76ETPozjHF34bkjLUtsmSw3aBpgrzmRHCU4afKMqdBaYeLyN8TAhfj/ff+lQ
+         IH0VoUhRQhayoTqcgMxj/076n/fV9S2wWnMCdjg1bqhzRlQ/d6PhtNBAKmsQBQJumeTw
+         Fpeg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GqQ4EbH4;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T6RhtEr/";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
-        by gmr-mx.google.com with ESMTPS id z126si896838qkd.2.2020.03.30.06.55.53
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id t191si881970vkt.0.2020.03.30.06.52.04
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 06:55:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
+        Mon, 30 Mar 2020 06:52:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GqQ4EbH4;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T6RhtEr/";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585576553;
+	s=mimecast20190719; t=1585576323;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=bE0I9JNfskMsY0d+oVSss15e5oCK2MlSAiAJunOZLTU=;
-	b=GqQ4EbH4lwFs5Lo0og5e3Xjz5cGoOhqyUdskESS+mqC/UdRX7CgfUyzAHqkyLL4oG+vze/
-	xCf8WxN+KKU2WuIHg2NE5nTA6QiMdrQsPt3+ES3EcfjudlEUUo4RCOu4lpLF1JzCwE45NY
-	a/xdJF5cpnFs29Ga0wH1Tcms8BMGQ9w=
+	bh=eKksIWMKGyhBxmOyEKEsU58pSh/Wz0oPF6i8BW6IapA=;
+	b=T6RhtEr/whVBqb2EH4Q/LOtA1tu5mTG+oWIzawlGE+x/7p029B7mvsCLXSkwOoaQ8Epp1H
+	DZs0MHy4EV//Nd/sCxrIoOA+oQl2encAdvkgqJUbLIgzjG+4XK9756/Ebpy3Rv3VQW7Rlc
+	8GCJ3tVBafiWlpTdFzHSPKvaybxYxhI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-122-N0VIcR-5Pg6CtTJSR7wX5A-1; Mon, 30 Mar 2020 09:55:51 -0400
-X-MC-Unique: N0VIcR-5Pg6CtTJSR7wX5A-1
+ us-mta-353-cxWyhzK9NJu0cjeIp10t3A-1; Mon, 30 Mar 2020 09:51:59 -0400
+X-MC-Unique: cxWyhzK9NJu0cjeIp10t3A-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62902107ACCC;
-	Mon, 30 Mar 2020 13:55:50 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 884808010F6;
+	Mon, 30 Mar 2020 13:51:58 +0000 (UTC)
 Received: from elisabeth (unknown [10.36.110.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B147D60BE2;
-	Mon, 30 Mar 2020 13:55:48 +0000 (UTC)
-Date: Mon, 30 Mar 2020 15:55:43 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1200160C85;
+	Mon, 30 Mar 2020 13:51:56 +0000 (UTC)
+Date: Mon, 30 Mar 2020 15:51:51 +0200
 From: Stefano Brivio <sbrivio@redhat.com>
 To: Sam Muhammed <jane.pnx9@gmail.com>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>
-Subject: Re: [Outreachy kernel] [PATCH v2 1/7] Staging: kpc2000: kpc_dma:
- Remove comparison to NULL.
-Message-ID: <20200330155543.5f52b955@elisabeth>
-In-Reply-To: <415066fb503764a528fa5cf4d681c5cd25065d24.camel@gmail.com>
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2 2/7] Staging: kpc2000: kpc_dma:
+ Use sizeof(*var) in kzalloc().
+Message-ID: <20200330155151.590dbd98@elisabeth>
+In-Reply-To: <a8827e9f7e29b2db976a3f77b0f9f2e5d0da55f9.camel@gmail.com>
 References: <cover.1585143581.git.jane.pnx9@gmail.com>
-	<f344afba0a8bb0413941a63678688435f04a96b4.1585143581.git.jane.pnx9@gmail.com>
-	<20200330030346.6420ddc6@elisabeth>
-	<415066fb503764a528fa5cf4d681c5cd25065d24.camel@gmail.com>
+	<bbb3adbd20ae89db6a0d3360bc09d22eed778e86.1585143581.git.jane.pnx9@gmail.com>
+	<20200330030433.4b924c5e@elisabeth>
+	<1e4819bb3fc9377f19755625518b0cafabaed509.camel@gmail.com>
+	<20200330145605.285d8877@elisabeth>
+	<a8827e9f7e29b2db976a3f77b0f9f2e5d0da55f9.camel@gmail.com>
 Organization: Red Hat
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
@@ -83,87 +85,59 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 
-On Mon, 30 Mar 2020 06:48:21 -0400
+On Mon, 30 Mar 2020 09:10:27 -0400
 Sam Muhammed <jane.pnx9@gmail.com> wrote:
 
-> On Mon, 2020-03-30 at 03:04 +0200, Stefano Brivio wrote:
-> > On Wed, 25 Mar 2020 10:26:36 -0400
+> On Mon, 2020-03-30 at 14:56 +0200, Stefano Brivio wrote:
+> > On Mon, 30 Mar 2020 06:45:00 -0400
 > > Sam Muhammed <jane.pnx9@gmail.com> wrote:
 > >   
-> > > Comparison to NULL been used across the driver,
-> > > remove them and use (!var) instead.
-> > > 
-> > > Checkpatch.pl: CHECK:
-> > > Comparison to NULL could be written "!desc"... etc
-> > > 
-> > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
-> > > ---
-> > > Changes in v2:
-> > > - None.
-> > > 
-> > >  drivers/staging/kpc2000/kpc_dma/dma.c            |  2 +-
-> > >  drivers/staging/kpc2000/kpc_dma/fileops.c        | 12 ++++++------
-> > >  drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.h |  4 ++--
-> > >  3 files changed, 9 insertions(+), 9 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
-> > > index 51a4dd534a0d..4bfbc717bc07 100644
-> > > --- a/drivers/staging/kpc2000/kpc_dma/dma.c
-> > > +++ b/drivers/staging/kpc2000/kpc_dma/dma.c
-> > > @@ -236,7 +236,7 @@ int  count_descriptors_available(struct kpc_dma_device *eng)
-> > >  	struct kpc_dma_descriptor *cur = eng->desc_next;
-> > > 
-> > >  	while (cur != eng->desc_completed) {
-> > > -		BUG_ON(cur == NULL);
-> > > +		BUG_ON(!cur);
-> > >  		count++;
-> > >  		cur = cur->Next;
-> > >  	}
-> > > diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > index 40525540dde6..5eb6c5f24feb 100644
-> > > --- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > +++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-> > > @@ -124,7 +124,7 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
-> > >  		pcnt = count_parts_for_sge(sg);
-> > >  		for (p = 0 ; p < pcnt ; p++) {
-> > >  			// Fill out the descriptor
-> > > -			BUG_ON(desc == NULL);
-> > > +			BUG_ON(!desc);
-> > >  			clear_desc(desc);
-> > >  			if (p != pcnt-1) {
-> > >  				desc->DescByteCount = 0x80000;
-> > > @@ -203,11 +203,11 @@ void  transfer_complete_cb(struct aio_cb_data *acd, size_t xfr_count, u32 flags)
-> > >  {
-> > >  	unsigned int i;
-> > > 
-> > > -	BUG_ON(acd == NULL);
-> > > -	BUG_ON(acd->user_pages == NULL);
-> > > -	BUG_ON(acd->sgt.sgl == NULL);
-> > > -	BUG_ON(acd->ldev == NULL);
-> > > -	BUG_ON(acd->ldev->pldev == NULL);
-> > > +	BUG_ON(!acd);
-> > > +	BUG_ON(!acd->user_pages);
-> > > +	BUG_ON(!acd->sgt.sgl);
-> > > +	BUG_ON(!acd->ldev);
-> > > +	BUG_ON(!acd->ldev->pldev);  
+> > > On Mon, 2020-03-30 at 03:04 +0200, Stefano Brivio wrote:  
+> > > > On Wed, 25 Mar 2020 10:26:37 -0400
+> > > > Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> > > >     
+> > > > > kzalloc(sizeof(*var), ...) was the format been used
+> > > > > across the driver, which is the preferred format,
+> > > > > but missed two instances, correct them to match the
+> > > > > coding standards.
+> > > > > 
+> > > > > Checkpatch.pl CHECK: Prefer kzalloc(sizeof(*var)...)
+> > > > > over kzalloc(sizeof(struct var)...)
+> > > > > 
+> > > > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+> > > > > ---
+> > > > > Changes in v2:
+> > > > > - Update the log message to be more descriptive.    
+> > > > 
+> > > > It would be nicer to refer here to the person who suggested the change,
+> > > > if it's not you directly noticing the problem (you can just mention
+> > > > them by name, name and surname, or explicitly say "suggested by ...",
+> > > > "requested by ...", etc). There are many recent examples on this list.
+> > > >     
+> > > Ohh, Sorry for that, i thought this tag is more of a code related
+> > > change. since being new to the process, most of the time log messages
+> > > and subject lines will be commented on to follow the conventions. which
+> > > i thought is a different case than changes in the patch itself.  
 > > 
-> > I've seen some tool reporting this (perhaps Coccinelle?): with
-> > x == NULL, BUG_ON(!x) causes a kernel panic just like dereferencing x.
-> > So the first statement in e.g.:
+> > Wait, I wasn't talking about tags here:
 > > 
-> > 	BUG_ON(!acd);
-> > 	BUG_ON(!acd->user_pages);
+> > - use a Suggested-by: tag if the patch itself was suggested by somebody
+> >   (which is not the case for this patch)
 > > 
-> > is redundant. This change wouldn't be related to this patch, though.
+> > - v2 was prompted by comments you received for v1 by Julia, so it would
+> >   be appropriate to state, in the history of log changes:
+> > 	- Update the log message to be more descriptive (suggested by
+> > 	  Julia Lawall)
 > >   
-> Please correct me if i got this wrong:
 > 
-> Does it mean that explicitly stating BUG_ON(!x) case to cause a kernel
-> panic is not necessary since its already being dereferenced, and
-> dereferencing it is stated to cause a kernel panic already?
+> My bad, yes.
+> 
+> Now is there a way to add this and your Reviewed-by tag over the series
+> since the changes have already been made?
 
-Yes... it took me a bit longer to understand this compared to Julia's
-explanation :) but I think it's correct.
+Ah, no. "This" doesn't end up in git anyway, so there's no need and no
+way to add it. My Reviewed-by: tag was just functional to get this
+merged, but I didn't notice it was merged already. Never mind then.
 
 -- 
 Stefano
