@@ -1,189 +1,165 @@
 X-GM-THRID: 6809468497850007552
-X-Received: by 2002:a6b:3112:: with SMTP id j18mr13089318ioa.127.1585611145310;
-        Mon, 30 Mar 2020 16:32:25 -0700 (PDT)
+X-Received: by 2002:a63:3083:: with SMTP id w125mr15311733pgw.282.1585608152311;
+        Mon, 30 Mar 2020 15:42:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:dcca:: with SMTP id b10ls5971569ilr.9.gmail; Mon, 30 Mar
- 2020 16:32:24 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsPJXkALcwy9misSZLRsu3rvl+thcAZ89v0xInRcntM46AIK/zay22Bg9Htb2qo49d5GEYi
-X-Received: by 2002:a05:6e02:10d0:: with SMTP id s16mr7713698ilj.30.1585611144103;
-        Mon, 30 Mar 2020 16:32:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585611144; cv=none;
+Received: by 2002:a17:902:ff18:: with SMTP id f24ls13499478plj.0.gmail; Mon,
+ 30 Mar 2020 15:42:29 -0700 (PDT)
+X-Google-Smtp-Source: APiQypL0UhnMMgiytryntafUFIY3d+EXo+jI0gYAZE6DTd+N6Vd2qfwKJGqg3kfGXMAEkSdm9/If
+X-Received: by 2002:a17:902:aa48:: with SMTP id c8mr4955863plr.95.1585608149630;
+        Mon, 30 Mar 2020 15:42:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585608149; cv=none;
         d=google.com; s=arc-20160816;
-        b=BaMV3+tu4qXYF0C2KIPtGYoqmSkH/75NTGcoSqtMMc8e5ucrZKoCskE1TJ04DWgLxx
-         2UdoYWmr1x4NvUsjCanNkMwDzN9ZxGur5Ae0X44GNU5sF04vB17UkmpeAd4PKLn222bc
-         6TeuRL6JwH3lZEawJn5bTXiEHGVpAOEuLHOXifVktlffBBCkhdkHOEAHMFCx9qH51vXT
-         fjXoliOaP67ItTjFZHjlPMN2fimHK7yPdjFzFg0cD3rpboLXDgvE9JSkIxXT3JFVtjy7
-         SZY798YEN1og9nguWrfHh+ymc528jSZMxoNtYhH12S6IYbGphyextQn5a9LJ6onZew83
-         +zTQ==
+        b=olUh9yc7OI3XzNhS/Gf5rsdIFVDKY3XBFe4IwOhce0MuceQG2h+q8MTNVEIqLNOwBD
+         C0x16ay510fxbZ7yfV6b29ElW0BpyHNpOiFGPDxoS2+QB9dp7Y53JtIiligbiladVw29
+         4xQ/0LKUk3CUi48UzTx38W/wUEQu0wEv8rrb5RSI/BiUWDiS97j1iLX23whmsvI4AVXu
+         wl/dDV0EBBVEeBQIl/EyDk81KYskgvVj0YKws8kXLEs1dU9ry3fi8U6/4WjNYz9YwQrG
+         JRfSw9ESKiC/mwmMZ5x7Zecf7l3Rj8/IgfQ2tbf/KU+bOj5jkfmFo9f0M39IUeS+y3cA
+         qDgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=YmXm/3/ySoSCBdXTqKuN6yVAH5JMGZyG+4nCFBPekZ4=;
-        b=j0XXzZlZlbXq0V2kwZxwA3lnxBANgGkVOlEPhIA//jPP6SE6a0ski9pEGhT55DZHJ6
-         QejYTveLoQ5HlzxQfpsu47CFHMrDhEX+xZbYnZdc+WeBKGkRUgGBBVJoN1CHTqI9GYdP
-         SMNHCmJhNIL1D/0waWKChs0T0EPyreL3RlRPesHim25AVnXKIyyv4anYwF1uxTvLcWAV
-         da7R/e2NEVKeCzg+nGEwQYLWgWbtp0NETChGzW2Ycoc0BowYmY6RBwZc5N0OZ7YEGFs9
-         wbwwiLoRHGFYrHV91D6z9lHdPNlbW19JjaSwJYcST6eJacQp6xDhMYJKap2kDYTx2j9N
-         dyHg==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=+1MMFLdM0MmXR1bUi1l23sVqviEl2BQc8iGkwz4+h/0=;
+        b=X4eNRZ0X7NbeA4jp5uFZ9ZoK6jGoeA4Fjx/JmS+yq5T/BSwXpnJLl4XZNcLtOd9J3D
+         2UvnKunBPb8xMz1ABT+k9jtlEhgKeyz3T0ILy5XNz9Wl0N6V8gNDYOjmxFz/ol02UYcx
+         pt+nK3E36bMdIEWvoipNuw32njVBZHqn/wPY6viyhUQrxsp2e06liFRjKtZ/KWWXaroD
+         abH2Jgn1JHvHQrVPXsK4+CHmwUxoXWhQMdLIqSw/71xreHzpFbuNUmeLxH92WUdeoqB+
+         hJO5lDgL9uwczLl9AuCatf7ThnbFZPgHTEWgJV47/ykrqgAolqRVOpBKyND9wLVx2ymT
+         QEfg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q3CWQRj7;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbwyatt4@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id k88si950836ilg.1.2020.03.30.16.32.24
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QNad5/0x";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id f8si89818pjw.3.2020.03.30.15.42.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 30 Mar 2020 16:32:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Mar 2020 15:42:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q3CWQRj7;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id d24so3550069pll.8
-        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2020 16:32:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=YmXm/3/ySoSCBdXTqKuN6yVAH5JMGZyG+4nCFBPekZ4=;
-        b=q3CWQRj70zrECqtoVIaTOe9sA36DTH/LGFpudFW5IX+5PnRdFac9wnVrcA7JGuE7nP
-         8weINSeAB/jP5eihsW7Qv19Fkr/Eh0iR56JjkJ6SGKLFpUv6VKYu45d2fiuZ9jt3FV1s
-         OS8cdNPbJzOOu4KQpg/vuVUI3Z+ehIazsEnmzw6FknP45MBj0E7XBCUTimH7NVk6WmBV
-         22gkhmg/GWoo0CYb9fRu2vf6j2+kuuZtL+abU2dNCapI2hkoCNC47SZ+IfRhKS5xBeS2
-         W5NrfzK0KWKis7g/69eSkhqKjqcxjnjuD+V0vjTlPAC69lnwK32Kgbx4kXlJdarHMMYS
-         RQLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=YmXm/3/ySoSCBdXTqKuN6yVAH5JMGZyG+4nCFBPekZ4=;
-        b=OeMpA75J7bLnPY00y7iOf9zvvpak1AY6xxT40c0LKC2YZv0g+wHRhOck45b0RCUa0q
-         gc3WUL9THJ4RhSuyijMg/8M1D3T52hp0K8UnwEcoMd2+RXSSc9w1Qve8F9NYOhoAHEgV
-         7nvSr6GgSnS+Fdotq5SwmiSu0UZVBmlrPNeO3DZCeSq9cTw5DjrZikec12hWmS9Xhx15
-         bDw1ich/idbyRmq3siKaBF4fAOy56bt6n7GzmOKUn5/ceEIYV8Pe4OTFOwo9hI6RXr+S
-         qay1x9JAkJhpF4hCm7ViFCi5PhhLUSZuOqOJfSS2dCqtJc0c8nxaUO6hMHBxzJdRghpH
-         Z4ZA==
-X-Gm-Message-State: AGi0PuYScoUEJLx555Z4u2Lkl+2s6T6f+FAWcC89rtem28nUtqr/mnRi
-	G2OGohv5TddgrAdR8NwlWgg=
-X-Received: by 2002:a17:90a:a414:: with SMTP id y20mr600264pjp.124.1585611143430;
-        Mon, 30 Mar 2020 16:32:23 -0700 (PDT)
-Return-Path: <jbwyatt4@gmail.com>
-Received: from OptiPlexFedora ([47.144.161.84])
-        by smtp.gmail.com with ESMTPSA id v42sm10510446pgn.6.2020.03.30.16.32.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Mar 2020 16:32:22 -0700 (PDT)
-Message-ID: <098d00e455dbc4ad5500d797b62d472160d065a5.camel@gmail.com>
-Subject: Re: [PATCH v7] staging: vt6656: add error code handling to unused
- variable
-From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QNad5/0x";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585608148;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+1MMFLdM0MmXR1bUi1l23sVqviEl2BQc8iGkwz4+h/0=;
+	b=QNad5/0xuIn+3pEY73vTTkSQgfgE6KFNt/9ykXDeFQLGwj9uFRRW5F8HxA3j/EKDl1FjG0
+	wSgtT300rTYiBtQ0FqGq7tHZlE6yEVsjDdqxELL7NsTZ/6Cen/W9haDOSy37t0g18fBwOe
+	0AhvRZiYwX2psl/ULE6Sl3tuYwQ2+1w=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-382-F5fCHUd8PfefDBGkdhik1w-1; Mon, 30 Mar 2020 18:42:24 -0400
+X-MC-Unique: F5fCHUd8PfefDBGkdhik1w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A51C4800D50;
+	Mon, 30 Mar 2020 22:42:22 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 739335DA60;
+	Mon, 30 Mar 2020 22:42:19 +0000 (UTC)
+Date: Tue, 31 Mar 2020 00:42:13 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, Julia Lawall <julia.lawall@inria.fr>,
-  Forest Bond <forest@alittletooquiet.net>, Greg Kroah-Hartman
+ Forest Bond <forest@alittletooquiet.net>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>, Quentin Deslandes
  <quentin.deslandes@itdev.co.uk>, Colin Ian King <colin.king@canonical.com>,
  Malcolm Priestley <tvboxspy@gmail.com>, devel@driverdev.osuosl.org,
  linux-kernel@vger.kernel.org
-Date: Mon, 30 Mar 2020 16:32:21 -0700
-In-Reply-To: <20200331004213.1c319d94@elisabeth>
+Subject: Re: [PATCH v7] staging: vt6656: add error code handling to unused
+ variable
+Message-ID: <20200331004213.1c319d94@elisabeth>
+In-Reply-To: <20200330223718.33885-1-jbwyatt4@gmail.com>
 References: <20200330223718.33885-1-jbwyatt4@gmail.com>
-	 <20200331004213.1c319d94@elisabeth>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+Organization: Red Hat
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 
-On Tue, 2020-03-31 at 00:42 +0200, Stefano Brivio wrote:
-> On Mon, 30 Mar 2020 15:37:18 -0700
-> "John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
-> 
-> > Add error code handling to unused 'ret' variable that was never
-> > used.
-> > Return an error code from functions called within
-> > vnt_radio_power_on.
-> > 
-> > Issue reported by coccinelle (coccicheck).
-> > 
-> > Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> > Suggested-by: Stefano Brivio <sbrivio@redhat.com>
-> > Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-> > Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> > ---
-> > v7: Move an if check.
-> >     Suggested by Stefano Brivio <sbrivio@redhat.com>
-> > 
-> > v6: Forgot to add all the v5 code to commit.
-> > 
-> > v5: Remove Suggested-by: Julia Lawall above seperator line.
-> >     Remove break; statement in switch block.
-> >     break; removal checked by both gcc compile and checkpatch.
-> >     Suggested by Stefano Brivio <sbrivio@redhat.com>
-> > 
-> > v4: Move Suggested-by: Julia Lawall above seperator line.
-> >     Add Reviewed-by tag as requested by Quentin Deslandes.
-> > 
-> > v3: Forgot to add v2 code changes to commit.
-> > 
-> > v2: Replace goto statements with return.
-> >     Remove last if check because it was unneeded.
-> >     Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> > 
-> >  drivers/staging/vt6656/card.c | 20 ++++++++++++--------
-> >  1 file changed, 12 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/drivers/staging/vt6656/card.c
-> > b/drivers/staging/vt6656/card.c
-> > index dc3ab10eb630..df12c73097e0 100644
-> > --- a/drivers/staging/vt6656/card.c
-> > +++ b/drivers/staging/vt6656/card.c
-> > @@ -723,9 +723,13 @@ int vnt_radio_power_on(struct vnt_private
-> > *priv)
-> >  {
-> >  	int ret = 0;
-> >  
-> > -	vnt_exit_deep_sleep(priv);
-> > +	ret = vnt_exit_deep_sleep(priv);
-> > +	if (ret)
-> > +		return ret;
-> >  
-> > -	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
-> > +	ret = vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
-> > +	if (ret)
-> > +		return ret;
-> >  
-> >  	switch (priv->rf_type) {
-> >  	case RF_AL2230:
-> > @@ -734,14 +738,14 @@ int vnt_radio_power_on(struct vnt_private
-> > *priv)
-> >  	case RF_VT3226:
-> >  	case RF_VT3226D0:
-> >  	case RF_VT3342A0:
-> > -		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
-> > -				    (SOFTPWRCTL_SWPE2 |
-> > SOFTPWRCTL_SWPE3));
-> > -		break;
-> > +		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
-> > +					  (SOFTPWRCTL_SWPE2 | 
-> > +					  SOFTPWRCTL_SWPE3));
-> 
-> Grrr, sorry, almost there, I didn't notice this: SOFTPWRCTL_SWPE3
-> needs
-> to be aligned *after* the open (useless) parenthesis:
-> 
-> 					  (SOFTPWRCTL_SWPE2 | 
-> 					   SOFTPWRCTL_SWPE3));
-> 
-> because it's another operand of the | operation surrounded by ().
-> Doesn't checkpatch warn?
-> 
-> The rest looks good to me.
-> 
+On Mon, 30 Mar 2020 15:37:18 -0700
+"John B. Wyatt IV" <jbwyatt4@gmail.com> wrote:
 
-I had to switch from a VM to native and forget to put the git hook in
-this repo clone.
+> Add error code handling to unused 'ret' variable that was never used.
+> Return an error code from functions called within vnt_radio_power_on.
+> 
+> Issue reported by coccinelle (coccicheck).
+> 
+> Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+> Suggested-by: Stefano Brivio <sbrivio@redhat.com>
+> Reviewed-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
+> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+> ---
+> v7: Move an if check.
+>     Suggested by Stefano Brivio <sbrivio@redhat.com>
+> 
+> v6: Forgot to add all the v5 code to commit.
+> 
+> v5: Remove Suggested-by: Julia Lawall above seperator line.
+>     Remove break; statement in switch block.
+>     break; removal checked by both gcc compile and checkpatch.
+>     Suggested by Stefano Brivio <sbrivio@redhat.com>
+> 
+> v4: Move Suggested-by: Julia Lawall above seperator line.
+>     Add Reviewed-by tag as requested by Quentin Deslandes.
+> 
+> v3: Forgot to add v2 code changes to commit.
+> 
+> v2: Replace goto statements with return.
+>     Remove last if check because it was unneeded.
+>     Suggested-by: Julia Lawall <julia.lawall@inria.fr>
+> 
+>  drivers/staging/vt6656/card.c | 20 ++++++++++++--------
+>  1 file changed, 12 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
+> index dc3ab10eb630..df12c73097e0 100644
+> --- a/drivers/staging/vt6656/card.c
+> +++ b/drivers/staging/vt6656/card.c
+> @@ -723,9 +723,13 @@ int vnt_radio_power_on(struct vnt_private *priv)
+>  {
+>  	int ret = 0;
+>  
+> -	vnt_exit_deep_sleep(priv);
+> +	ret = vnt_exit_deep_sleep(priv);
+> +	if (ret)
+> +		return ret;
+>  
+> -	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
+> +	ret = vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
+> +	if (ret)
+> +		return ret;
+>  
+>  	switch (priv->rf_type) {
+>  	case RF_AL2230:
+> @@ -734,14 +738,14 @@ int vnt_radio_power_on(struct vnt_private *priv)
+>  	case RF_VT3226:
+>  	case RF_VT3226D0:
+>  	case RF_VT3342A0:
+> -		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
+> -				    (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
+> -		break;
+> +		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
+> +					  (SOFTPWRCTL_SWPE2 | 
+> +					  SOFTPWRCTL_SWPE3));
 
-Still, after I did, checkpatch complained about trailing white space
-after SOFTPWRCTL_SWPE2 |, but not the alignment issue. Fixing the
-alignment issue produced no warnings either. :(
+Grrr, sorry, almost there, I didn't notice this: SOFTPWRCTL_SWPE3 needs
+to be aligned *after* the open (useless) parenthesis:
+
+					  (SOFTPWRCTL_SWPE2 | 
+					   SOFTPWRCTL_SWPE3));
+
+because it's another operand of the | operation surrounded by ().
+Doesn't checkpatch warn?
+
+The rest looks good to me.
+
+-- 
+Stefano
 
 
