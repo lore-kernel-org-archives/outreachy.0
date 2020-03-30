@@ -1,145 +1,146 @@
 X-GM-THRID: 6807884729429262336
-X-Received: by 2002:ab0:74cd:: with SMTP id f13mr6886442uaq.111.1585576326317;
-        Mon, 30 Mar 2020 06:52:06 -0700 (PDT)
+X-Received: by 2002:a2e:9616:: with SMTP id v22mr5725667ljh.107.1585573832376;
+        Mon, 30 Mar 2020 06:10:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:684c:: with SMTP id d73ls2328799vsc.7.gmail; Mon, 30 Mar
- 2020 06:52:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLvg4yjg0oBi0eB+qpCwiNxwWcQHcL8WYl9Hg/CNapRgqcHWRs+8nSHClFFNEAm/bUu4k7Y
-X-Received: by 2002:a67:d60d:: with SMTP id n13mr8853925vsj.230.1585576324571;
-        Mon, 30 Mar 2020 06:52:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585576324; cv=none;
+Received: by 2002:ac2:5085:: with SMTP id f5ls196568lfm.6.gmail; Mon, 30 Mar
+ 2020 06:10:30 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJMwsF59mBCeg7vyd0VziXVXd22Lts1XSL6s6tODyJ4yHd+M1I00AORc9dOjyK/QXblr7dE
+X-Received: by 2002:a05:6512:48e:: with SMTP id v14mr7461578lfq.35.1585573830558;
+        Mon, 30 Mar 2020 06:10:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585573830; cv=none;
         d=google.com; s=arc-20160816;
-        b=OuOgeOL8SsSTrpVe6hvoE1NWNsiCIa1Q73XiY5rDRbkECeOcyIZI1j3vsR+5m8kx4Q
-         m7vVOT6m+GrwM70znq+bIDOKsRjRH2spqCpYK48MUNtNzPe78disjH1bBAo08ZKPLhdS
-         7t0OfummQ9pv9K7U517pdLCFtsX+4AFHEMmyk5hDIcUwT93SNzgn8fpAdBdW+0/AsVUA
-         rzZwanh+6rsrUnFfgDZYvvCaMN7aP0Y4CunkDD0lvm6/38dLaOdrTNJYMk2czgctof2h
-         MTqlGNXuMDdxD8ubw8dSw9NPRJeIaCbgu/lNFdpugeaEfZvw5+fYjyR9gm0d7RGBmX3f
-         YKkg==
+        b=XIeEZtM4vO6eZKuoKvQlLdL+qSVjf0bYcqKMcG1/Ll0C/7OWwLvARD66uasLQCBCxS
+         K992Wa/4EDIaV9IzA1zBNgroy/5FYn2OqyFq6icK4DHnm3QFYPRy7WVhPwvdCDUdUmMO
+         8EvxxpAyNZ206JojnFuCwtCMlgtD9tO6qQgFXG5hbfAdKNKk60SP1fiVrrCH8AUVYOwK
+         W6+1Pe/KHqgUJqXOTyTyQ9U+cfHctNzvATRGLC8xamxHdJX5hv425qarn4kzJXYGkepS
+         1IsqjgTeNIeUDiwovRvhmzA4sa4fyrI9cfbrlDnv1CqjkmbJXVU9zCROlR0Lm9mQWMYr
+         px5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=eKksIWMKGyhBxmOyEKEsU58pSh/Wz0oPF6i8BW6IapA=;
-        b=pp56QhEbG3lgxjZNLnkcuTkaC3BCIhMhdA/e8PGx8AXykM3GWGnJcuxw2VZpToXLSV
-         ijGV7BeAXmgWzwmj+dcgLGH71WcDASlnvAh4jCNOp2Nt2q0ZShNiucyhs9NsZZanjWGN
-         Mzxb3YwnE9mB1Vc1IUfQf6v6+medw2B5gUV6V2fmWYANc2yVcAohuyHJdRhI8aMbX9VI
-         Y5EL3OGM76ETPozjHF34bkjLUtsmSw3aBpgrzmRHCU4afKMqdBaYeLyN8TAhfj/ff+lQ
-         IH0VoUhRQhayoTqcgMxj/076n/fV9S2wWnMCdjg1bqhzRlQ/d6PhtNBAKmsQBQJumeTw
-         Fpeg==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=N3Estgz3jQVMnO71jtwmpRgj3r4vTghdcmhC9quFe9c=;
+        b=Ierf0DtwFSFTQLqrfdXQ7KID3Vd+W4GAtGejF8j2zxTJlvDvEDWAJVlyjBQmUYgPvE
+         U6SH6+BlSOgGIW+5cX0AjlQIIhdjTnK2LYez74Zk3PlG4MMBitH9Y+6X9VdsmGXPz4Wx
+         MKZ6LvyjVbEbO8qXOHk9Gj3HhKZiowQdM3NykHx+mQaEoHBZAQ1j2nkPMm9zBysjcMda
+         Ftqut1308zYtE3ZnG6cFfL6Ly+os4KLM5TetBpVQ2iOA8W3yQS0KS9L6lQPArorAe7Mt
+         1iZXe4v/0vlCE7WrFo42FMvMFsyBFkAuckJQIlZ6ortNUhXvZa3dtbEXAx3IspUAESi4
+         ZZhQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T6RhtEr/";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
-        by gmr-mx.google.com with ESMTPS id t191si881970vkt.0.2020.03.30.06.52.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R+XBjl6R;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jane.pnx9@gmail.com>
+Received: from mail-wr1-x444.google.com (mail-wr1-x444.google.com. [2a00:1450:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id p5si883629ljj.3.2020.03.30.06.10.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 30 Mar 2020 06:52:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 30 Mar 2020 06:10:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) client-ip=2a00:1450:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T6RhtEr/";
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585576323;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=eKksIWMKGyhBxmOyEKEsU58pSh/Wz0oPF6i8BW6IapA=;
-	b=T6RhtEr/whVBqb2EH4Q/LOtA1tu5mTG+oWIzawlGE+x/7p029B7mvsCLXSkwOoaQ8Epp1H
-	DZs0MHy4EV//Nd/sCxrIoOA+oQl2encAdvkgqJUbLIgzjG+4XK9756/Ebpy3Rv3VQW7Rlc
-	8GCJ3tVBafiWlpTdFzHSPKvaybxYxhI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-353-cxWyhzK9NJu0cjeIp10t3A-1; Mon, 30 Mar 2020 09:51:59 -0400
-X-MC-Unique: cxWyhzK9NJu0cjeIp10t3A-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 884808010F6;
-	Mon, 30 Mar 2020 13:51:58 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1200160C85;
-	Mon, 30 Mar 2020 13:51:56 +0000 (UTC)
-Date: Mon, 30 Mar 2020 15:51:51 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Sam Muhammed <jane.pnx9@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R+XBjl6R;
+       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::444 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x444.google.com with SMTP id h15so21521677wrx.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2020 06:10:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=N3Estgz3jQVMnO71jtwmpRgj3r4vTghdcmhC9quFe9c=;
+        b=R+XBjl6RIIM5z5EsBnR9Ufg3lwD+MESat67NPj77STwL8Yz3P7KOluD9WcKKQyk1IC
+         ha7edUAddwT9KQJYPeyQJs9wPuHM712F6jUh5s9S4yJGTbMXtsfpdtxRQWFrG6001Hsa
+         Wp/CqqnHD6vbSUvzUe0UbWeP7bZzvoLocRTjlSiJ1xu1fUFRk4CGTxdlcfs9jhUjik95
+         fLEkvVl1VMCljYEOBDwm+d6pF0Kr5gDJyfNC9b5w3U1GGQvFQ5YhRefMg1n7Zy/1AbK1
+         xoVhRxtTPDtKjpFiNg/lGduVLGfuZXyaHLPbGGr8pnGhv6xfdvUSSoWBpNil1h4hDo25
+         6X5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=N3Estgz3jQVMnO71jtwmpRgj3r4vTghdcmhC9quFe9c=;
+        b=sAJKCSS5uk+sZsIRKynCC29uztisdZVvW7kJfmtTGi/6XzvHZVLvng3Fb/FOd1ud76
+         KtYZC1YuEwglsSZXKJwPD/2QqUhYYNnTZi98TAV3ftORgJskog2aIsfJO81ezu9qQ+bY
+         OV9DC6v9AgjGz3PaHUJBwUPosRNJi36liK5ucjeZuX3XTlZhQTq3B0gtyvYlj5IVa1th
+         zKY+QkrFFgAN3eCx5FQojQqMsRghpsknkbLzMX/6zBijgkICWVx7I1paB+XYbT7JHq9O
+         1fSWsnt+TRPvZEsIX1psiwrjyRSZUppKW0J3eKD9M+uqj4fnXk2u1pVxIuCfpbdSpkXi
+         RgBA==
+X-Gm-Message-State: ANhLgQ3JbEJcbLiJ5TLOibKgfyRzR6BCrM+g2i46Zp/UINgcXsLgsBm6
+	WCauEUaPOigFegrKdK5W6a35Kmk6PZI=
+X-Received: by 2002:adf:e848:: with SMTP id d8mr14497797wrn.209.1585573830024;
+        Mon, 30 Mar 2020 06:10:30 -0700 (PDT)
+Return-Path: <jane.pnx9@gmail.com>
+Received: from debian ([197.34.98.112])
+        by smtp.gmail.com with ESMTPSA id h5sm21790623wro.83.2020.03.30.06.10.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Mar 2020 06:10:29 -0700 (PDT)
+Message-ID: <a8827e9f7e29b2db976a3f77b0f9f2e5d0da55f9.camel@gmail.com>
 Subject: Re: [Outreachy kernel] [PATCH v2 2/7] Staging: kpc2000: kpc_dma:
  Use sizeof(*var) in kzalloc().
-Message-ID: <20200330155151.590dbd98@elisabeth>
-In-Reply-To: <a8827e9f7e29b2db976a3f77b0f9f2e5d0da55f9.camel@gmail.com>
+From: Sam Muhammed <jane.pnx9@gmail.com>
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	outreachy-kernel@googlegroups.com
+Date: Mon, 30 Mar 2020 09:10:27 -0400
+In-Reply-To: <20200330145605.285d8877@elisabeth>
 References: <cover.1585143581.git.jane.pnx9@gmail.com>
-	<bbb3adbd20ae89db6a0d3360bc09d22eed778e86.1585143581.git.jane.pnx9@gmail.com>
-	<20200330030433.4b924c5e@elisabeth>
-	<1e4819bb3fc9377f19755625518b0cafabaed509.camel@gmail.com>
-	<20200330145605.285d8877@elisabeth>
-	<a8827e9f7e29b2db976a3f77b0f9f2e5d0da55f9.camel@gmail.com>
-Organization: Red Hat
+	 <bbb3adbd20ae89db6a0d3360bc09d22eed778e86.1585143581.git.jane.pnx9@gmail.com>
+	 <20200330030433.4b924c5e@elisabeth>
+	 <1e4819bb3fc9377f19755625518b0cafabaed509.camel@gmail.com>
+	 <20200330145605.285d8877@elisabeth>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 
-On Mon, 30 Mar 2020 09:10:27 -0400
-Sam Muhammed <jane.pnx9@gmail.com> wrote:
-
-> On Mon, 2020-03-30 at 14:56 +0200, Stefano Brivio wrote:
-> > On Mon, 30 Mar 2020 06:45:00 -0400
-> > Sam Muhammed <jane.pnx9@gmail.com> wrote:
-> >   
-> > > On Mon, 2020-03-30 at 03:04 +0200, Stefano Brivio wrote:  
-> > > > On Wed, 25 Mar 2020 10:26:37 -0400
-> > > > Sam Muhammed <jane.pnx9@gmail.com> wrote:
-> > > >     
-> > > > > kzalloc(sizeof(*var), ...) was the format been used
-> > > > > across the driver, which is the preferred format,
-> > > > > but missed two instances, correct them to match the
-> > > > > coding standards.
-> > > > > 
-> > > > > Checkpatch.pl CHECK: Prefer kzalloc(sizeof(*var)...)
-> > > > > over kzalloc(sizeof(struct var)...)
-> > > > > 
-> > > > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
-> > > > > ---
-> > > > > Changes in v2:
-> > > > > - Update the log message to be more descriptive.    
+On Mon, 2020-03-30 at 14:56 +0200, Stefano Brivio wrote:
+> On Mon, 30 Mar 2020 06:45:00 -0400
+> Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> 
+> > On Mon, 2020-03-30 at 03:04 +0200, Stefano Brivio wrote:
+> > > On Wed, 25 Mar 2020 10:26:37 -0400
+> > > Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> > >   
+> > > > kzalloc(sizeof(*var), ...) was the format been used
+> > > > across the driver, which is the preferred format,
+> > > > but missed two instances, correct them to match the
+> > > > coding standards.
 > > > > 
-> > > > It would be nicer to refer here to the person who suggested the change,
-> > > > if it's not you directly noticing the problem (you can just mention
-> > > > them by name, name and surname, or explicitly say "suggested by ...",
-> > > > "requested by ...", etc). There are many recent examples on this list.
-> > > >     
-> > > Ohh, Sorry for that, i thought this tag is more of a code related
-> > > change. since being new to the process, most of the time log messages
-> > > and subject lines will be commented on to follow the conventions. which
-> > > i thought is a different case than changes in the patch itself.  
-> > 
-> > Wait, I wasn't talking about tags here:
-> > 
-> > - use a Suggested-by: tag if the patch itself was suggested by somebody
-> >   (which is not the case for this patch)
-> > 
-> > - v2 was prompted by comments you received for v1 by Julia, so it would
-> >   be appropriate to state, in the history of log changes:
-> > 	- Update the log message to be more descriptive (suggested by
-> > 	  Julia Lawall)
-> >   
+> > > > Checkpatch.pl CHECK: Prefer kzalloc(sizeof(*var)...)
+> > > > over kzalloc(sizeof(struct var)...)
+> > > > 
+> > > > Signed-off-by: Sam Muhammed <jane.pnx9@gmail.com>
+> > > > ---
+> > > > Changes in v2:
+> > > > - Update the log message to be more descriptive.  
+> > > 
+> > > It would be nicer to refer here to the person who suggested the change,
+> > > if it's not you directly noticing the problem (you can just mention
+> > > them by name, name and surname, or explicitly say "suggested by ...",
+> > > "requested by ...", etc). There are many recent examples on this list.
+> > >   
+> > Ohh, Sorry for that, i thought this tag is more of a code related
+> > change. since being new to the process, most of the time log messages
+> > and subject lines will be commented on to follow the conventions. which
+> > i thought is a different case than changes in the patch itself.
 > 
-> My bad, yes.
+> Wait, I wasn't talking about tags here:
 > 
-> Now is there a way to add this and your Reviewed-by tag over the series
-> since the changes have already been made?
+> - use a Suggested-by: tag if the patch itself was suggested by somebody
+>   (which is not the case for this patch)
+> 
+> - v2 was prompted by comments you received for v1 by Julia, so it would
+>   be appropriate to state, in the history of log changes:
+> 	- Update the log message to be more descriptive (suggested by
+> 	  Julia Lawall)
+> 
 
-Ah, no. "This" doesn't end up in git anyway, so there's no need and no
-way to add it. My Reviewed-by: tag was just functional to get this
-merged, but I didn't notice it was merged already. Never mind then.
+My bad, yes.
 
--- 
-Stefano
+Now is there a way to add this and your Reviewed-by tag over the series
+since the changes have already been made?
+
+Thank You.
+
+Sam
 
 
