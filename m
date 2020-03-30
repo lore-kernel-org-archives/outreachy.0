@@ -1,139 +1,209 @@
-X-GM-THRID: 6259698705969971200
-X-Received: by 10.140.179.210 with SMTP id z201mr9742943qhz.26.1457449678799;
-        Tue, 08 Mar 2016 07:07:58 -0800 (PST)
+X-GM-THRID: 6809858298158776320
+X-Received: by 2002:a63:2057:: with SMTP id r23mr5591331pgm.232.1585591456254;
+        Mon, 30 Mar 2020 11:04:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.36.210 with SMTP id p76ls460941qgp.17.gmail; Tue, 08 Mar
- 2016 07:07:58 -0800 (PST)
-X-Received: by 10.140.29.75 with SMTP id a69mr21365568qga.0.1457449678350;
-        Tue, 08 Mar 2016 07:07:58 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pf0-x231.google.com (mail-pf0-x231.google.com. [2607:f8b0:400e:c00::231])
-        by gmr-mx.google.com with ESMTPS id yd9si536918pab.1.2016.03.08.07.07.58
+Received: by 2002:a62:16d5:: with SMTP id 204ls12299821pfw.3.gmail; Mon, 30
+ Mar 2020 11:04:14 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsUEHOWGS9Xsj2Ff5723vBH+8D5cVRu4sx/7iJ2V31vtNmA5H0RJkwEzJpQUMjsZrqWKirf
+X-Received: by 2002:a62:5f06:: with SMTP id t6mr14529291pfb.192.1585591454747;
+        Mon, 30 Mar 2020 11:04:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585591454; cv=none;
+        d=google.com; s=arc-20160816;
+        b=P/vsKZd9Ls/+KQascMd2RqgRdC6pW6oF6NVhRqogOKF/uIzfBpaj4mY72EUA+z5kPw
+         pNl4Gxuuq7PwFM83pA5Dc6X+8aK8C9hvDtHBcAAUzzGOd0eED+zLTZXfstYkLsEyxpDM
+         whveESQymcotpDY7mXE5GITLl9rhMlHTrjwS09ZINqpBH72xTk9Vb8h6aIfbqEZOJeZ+
+         DdX17K/3/GXXVlJV+D5GdpJ5+GokI7dlfQWPnwPEFOa9FQMv4ixBrv3ARpr4Nm2uVe1u
+         6jG+87/aijgJdY1Fkc5GkfikbbhLSehKXZ6CjbScngkSKPEuxi04oOKfoyixa/G8B5nx
+         DEWA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=EVO9z9JuscNd0U0CohE4I44mHhoyRejTwx2NiSIbcyk=;
+        b=jGvCfv9FC8H1TvCeMvOQf5ZBGQyxZIkHWxcL+fuitSMxVFw59rA6RP6ZOFkoyiQuu+
+         pw7Ts3O/9cgyXmdo+seTBugXspfmDdYhKgY4D0eOdJ3OK+VHGkLx9zAekA6nZPKgmBeG
+         wcXedU4r8hjwwQMa8yo2hl4rMT/zFDiU7zz0oyL1Rt2LmjvVoGqeRBSK+llV/UPVSX8U
+         1WABJjKl1Fj/k1pyjA/xIUukK6yWRMNen0DbPdwuC17lu2yKEtjZ3o95Bu+MGTobhTt8
+         9muydLZZVu32GczJpkby7CtQzm2L6NWq9y//6wsmRJS1Ycn7NrnBK3W7IgqxVLk6cvt5
+         rxYw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YjOU3DSF;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id j14si782412pgg.1.2020.03.30.11.04.14
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Mar 2016 07:07:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) client-ip=2607:f8b0:400e:c00::231;
+        Mon, 30 Mar 2020 11:04:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c00::231 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x231.google.com with SMTP id 63so14712287pfe.3
-        for <outreachy-kernel@googlegroups.com>; Tue, 08 Mar 2016 07:07:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=CUwdBidNkrhlOPg2g3DJgk95bqepVrBd5yaA5mdM31o=;
-        b=E9Wdbn65hAN1d2pKks1NFXActq+jAT7iHohOOMX37arIVCKi8Hzy/zAnS5YB/O2kMy
-         nLSf1GrbP3ZxhQXqVUxLosUg/AMrndqXoNe0sqExouSmUnX5n6GUxX2Y785o/wkbCedz
-         v4dqHh/HLLZ/9rAlB7UrhMV3LHZ4A2we2hLXvLrqr5WuVvJq6IoDoww58lUJq6lsMmHB
-         QKGu/6Vhqg4Ca16hGeQk9PPUUGzHIFo8hizbrE3p3yi1i8brzHdHwC6c5anMy2pzHdXj
-         +dKX+nby8C3UbzwHJf5b533N6FuSDKVUilRiu0EIo7XyE84JoJFrRjfrA2xvtj4ou78d
-         G8eA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=CUwdBidNkrhlOPg2g3DJgk95bqepVrBd5yaA5mdM31o=;
-        b=U6d95KiNwXKRWinpQu8lCyw/fp42hlJDDDOQa6Zl8h+qGzTUU1M7f6z3wKUqFq8HgT
-         0AJMV0y7q21M/2qWT0s81yO5tEYIgUcsswq7uq9Erv9X+ih2KXyKccwTRLx/xcQ/FZvo
-         afzjKaFBy7Ibu8jZbQksYXzwU+M1Fi7/508kd82Q03tYhIZlcvg+aOlW9BTDnRW8+wew
-         NQAXBTikD9S5qDndr6rkNPaIKm8ooZ4VrVkiVjFYGj8r/CyGJvVvOFhzS5+1UfQbTwNX
-         lXLyRfd9nkFBuIEWqV2fzU39Y6e2SurbJinXMwYYBx4sMJvkFJJ4p7a6iSXI7tzljGHC
-         04Ig==
-X-Gm-Message-State: AD7BkJLm6Mma3P0OkfuD/kE9gDj5wOUGQhVbZqi6eAvQyADJJhR1/0EdZP1SbgRxOgRL/g==
-X-Received: by 10.98.79.7 with SMTP id d7mr6649112pfb.77.1457449678111;
-        Tue, 08 Mar 2016 07:07:58 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id dy6sm5725916pab.48.2016.03.08.07.07.57
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 07:07:57 -0800 (PST)
-Date: Tue, 8 Mar 2016 20:25:45 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: osc_cache: Use list_for_each_entry_safe
-Message-ID: <20160308145545.GA31692@Karyakshetra>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YjOU3DSF;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585591454;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EVO9z9JuscNd0U0CohE4I44mHhoyRejTwx2NiSIbcyk=;
+	b=YjOU3DSF/PGakTAjNPTE+25UZqsuJtQE4EV4YMzfroRcNTUF2J1i61CgwbtjlR9UU5yWwG
+	QylU/j6jD4uoI1+qfpa5KwXJANYoPhBkm4L+wOA/YGECnNLlAUv93SAWG7qhETCDUO5KR1
+	2gH6v/nWLoryRrgPw0OC0AJjPzH6mnQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-195-rfJqzJn3PmeRqW8_VubEDw-1; Mon, 30 Mar 2020 14:04:10 -0400
+X-MC-Unique: rfJqzJn3PmeRqW8_VubEDw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DAFD585EE70;
+	Mon, 30 Mar 2020 18:04:06 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 11EF2A0A91;
+	Mon, 30 Mar 2020 18:04:02 +0000 (UTC)
+Date: Mon, 30 Mar 2020 20:03:56 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Briana Oursler <briana.oursler@gmail.com>
+Cc: gregkh@linuxfoundation.org, forest@alittletooquiet.net,
+ julia.lawall@inria.fr, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/4] Staging: vt6655: Create new
+ variable len.
+Message-ID: <20200330200356.6e50ab08@elisabeth>
+In-Reply-To: <8e046065ad86e79b8133f6c24ecf055c3b5a897f.1585542564.git.briana.oursler@gmail.com>
+References: <cover.1585542564.git.briana.oursler@gmail.com>
+	<8e046065ad86e79b8133f6c24ecf055c3b5a897f.1585542564.git.briana.oursler@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Doubly linked lists which are  iterated  using list_empty
-and list_entry macros have been replaced with list_for_each_entry_safe
-macro.
-This makes the iteration simpler and more readable.
+On Sun, 29 Mar 2020 21:48:01 -0700
+Briana Oursler <briana.oursler@gmail.com> wrote:
 
-This patch replaces the while loop containing list_empty and list_entry
-with list_for_each_entry_safe.
+> Create variable len to determine function input needed for
+> s_uGetTxRsvTime. Use len to eliminate a nested if else statement, reduce
+> code duplication, and shorten long lines found by checkpatch.
 
-This was done with Coccinelle.
+The commit description looks okayish to me, except perhaps that the
+solution (creating a new variable) shouldn't be stated first. The
+commit title is not very representative of the change, though.
 
-@@
-expression E1;
-identifier I1, I2;
-type T;
-iterator name list_for_each_entry_safe;
-@@
+> 
+> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+> ---
+>  drivers/staging/vt6655/rxtx.c | 44 +++++++++++++----------------------
+>  1 file changed, 16 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> index 4be867b95d9d..6068cf65e3fe 100644
+> --- a/drivers/staging/vt6655/rxtx.c
+> +++ b/drivers/staging/vt6655/rxtx.c
+> @@ -240,10 +240,16 @@ s_uGetDataDuration(
+>  {
+>  	bool bLastFrag = false;
+>  	unsigned int uAckTime = 0, uNextPktTime = 0;
+> +	unsigned int len;
 
-T *I1;
-+ T *tmp;
-...
-- while (list_empty(&E1) == 0)
-+ list_for_each_entry_safe (I1, tmp, &E1, I2)
-{
-...when != T *I1;
-- I1 = list_entry(E1.next, T, I2);
-...
-}
+The other two are declared on one line, you could add it there.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/lustre/lustre/osc/osc_cache.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+>  
+>  	if (uFragIdx == (uMACfragNum - 1))
+>  		bLastFrag = true;
+>  
+> +	if (uFragIdx == (uMACfragNum - 2))
+> +		len = cbLastFragmentSize;
+> +	else
+> +		len = cbFrameLength;
+> +
+>  	switch (byDurType) {
+>  	case DATADUR_B:    /* DATADUR_B */
+>  		if (((uMACfragNum == 1)) || bLastFrag) {/* Non Frag or Last Frag */
+> @@ -254,10 +260,7 @@ s_uGetDataDuration(
+>  				return 0;
+>  			}
+>  		} else {/* First Frag or Mid Frag */
+> -			if (uFragIdx == (uMACfragNum - 2))
+> -				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wRate, bNeedAck);
+> -			else
+> -				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+> +			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wRate, bNeedAck);
+>  
+>  			if (bNeedAck) {
+>  				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
+> @@ -278,10 +281,7 @@ s_uGetDataDuration(
+>  				return 0;
+>  			}
+>  		} else {/* First Frag or Mid Frag */
+> -			if (uFragIdx == (uMACfragNum - 2))
+> -				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wRate, bNeedAck);
+> -			else
+> -				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+> +			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wRate, bNeedAck);
+>  
+>  			if (bNeedAck) {
+>  				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+> @@ -308,16 +308,9 @@ s_uGetDataDuration(
+>  				wRate = RATE_54M;
+>  
+>  			if (byFBOption == AUTO_FB_0) {
+> -				if (uFragIdx == (uMACfragNum - 2))
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
+> -				else
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
+> -
+> -			} else { /* (byFBOption == AUTO_FB_1) */
+> -				if (uFragIdx == (uMACfragNum - 2))
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
+> -				else
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
+> +				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
+> +			} else {
+> +				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
+>  			}
+>  
+>  			if (bNeedAck) {
+> @@ -338,17 +331,11 @@ s_uGetDataDuration(
+>  				return 0;
+>  			}
+>  		} else { /* First Frag or Mid Frag */
+> +
 
-diff --git a/drivers/staging/lustre/lustre/osc/osc_cache.c b/drivers/staging/lustre/lustre/osc/osc_cache.c
-index 2e45255..6336311 100644
---- a/drivers/staging/lustre/lustre/osc/osc_cache.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_cache.c
-@@ -1905,13 +1905,12 @@ static int get_write_extents(struct osc_object *obj, struct list_head *rpclist)
- {
- 	struct client_obd *cli = osc_cli(obj);
- 	struct osc_extent *ext;
-+	struct osc_extent *temp;
- 	int page_count = 0;
- 	unsigned int max_pages = cli->cl_max_pages_per_rpc;
+Unrelated change.
 
- 	LASSERT(osc_object_is_locked(obj));
--	while (!list_empty(&obj->oo_hp_exts)) {
--		ext = list_entry(obj->oo_hp_exts.next, struct osc_extent,
--				 oe_link);
-+	list_for_each_entry_safe(ext, temp, &obj->oo_hp_exts, oe_link) {
- 		LASSERT(ext->oe_state == OES_CACHE);
- 		if (!try_to_add_extent_for_io(cli, ext, rpclist, &page_count,
- 					      &max_pages))
-@@ -2667,6 +2666,7 @@ int osc_cache_truncate_start(const struct lu_env *env, struct osc_io *oio,
- {
- 	struct client_obd *cli = osc_cli(obj);
- 	struct osc_extent *ext;
-+	struct osc_extent *temp;
- 	struct osc_extent *waiting = NULL;
- 	pgoff_t index;
- 	LIST_HEAD(list);
-@@ -2726,10 +2726,9 @@ again:
+>  			if (byFBOption == AUTO_FB_0) {
+> -				if (uFragIdx == (uMACfragNum - 2))
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
+> -				else
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
+> -
+> -			} else { /* (byFBOption == AUTO_FB_1) */
+> -				if (uFragIdx == (uMACfragNum - 2))
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
+> -				else
+> -					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
+> +				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
+> +			} else {
+> +				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
+>  			}
+>  
+>  			if (bNeedAck) {
+> @@ -356,6 +343,7 @@ s_uGetDataDuration(
+>  			} else {
+>  				uAckTime = 0;
+>  			}
+> +
 
- 	osc_list_maint(cli, obj);
+Unrelated change.
 
--	while (!list_empty(&list)) {
-+	list_for_each_entry_safe(ext, temp, &list, oe_link) {
- 		int rc;
+>  			return pDevice->uSIFS + uAckTime + uNextPktTime;
+>  		}
+>  		break;
 
--		ext = list_entry(list.next, struct osc_extent, oe_link);
- 		list_del_init(&ext->oe_link);
-
- 		/* extent may be in OES_ACTIVE state because inode mutex
---
-2.1.4
+-- 
+Stefano
 
 
