@@ -1,106 +1,128 @@
-X-GM-THRID: 6670543913490579456
-X-Received: by 2002:a62:ee01:: with SMTP id e1mr8637004pfi.58.1553107032016;
-        Wed, 20 Mar 2019 11:37:12 -0700 (PDT)
+X-GM-THRID: 6808150898800328704
+X-Received: by 2002:a63:5ec6:: with SMTP id s189mr11004064pgb.374.1585530214531;
+        Sun, 29 Mar 2020 18:03:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:322:: with SMTP id 31ls1766927pld.1.gmail; Wed, 20
- Mar 2019 11:37:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyEETjUnZ1/HRAhFvdEkK6AGWh4RbSp4zH1O6+E2MLMXMa3zSq1URYq4ipMsMW38XFUObgV
-X-Received: by 2002:a17:902:e20d:: with SMTP id ce13mr4012912plb.100.1553107031175;
-        Wed, 20 Mar 2019 11:37:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553107031; cv=none;
+Received: by 2002:a17:90a:9308:: with SMTP id p8ls13875722pjo.0.gmail; Sun, 29
+ Mar 2020 18:03:33 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vvV6iMJ3dBh5VqSt1F0seFRxMIwDtHUfsUuIKQEzonC0YhU+e+ngLJA9gE1pmJ9JJ4ZiW33
+X-Received: by 2002:a17:902:a70b:: with SMTP id w11mr10863781plq.59.1585530213141;
+        Sun, 29 Mar 2020 18:03:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585530213; cv=none;
         d=google.com; s=arc-20160816;
-        b=dTvgK6eZ9NxIzkz6zUfFZtSwOcIa3l4Iz7d3UJm9oRBl46k61YfK+w/q+j29wKcGbK
-         niTF0h/xI4dAhL1oYD7vZBDhf3z4mMUyTI83t2mdD4PDzoisSs6qDd/qLhtDB7sU76zA
-         g68h/dVBZ+Z4Lseh5PekclCtCgnlRnkH/VUpLkQ252gTEossrrYdoA5jB0N+GX0MjUQZ
-         MJZsgCkVrcpho5EaMtFJKsCp8ECyzVA+lb7PHI/72Pg9ylt5tAApmi2L7VzBN5BN3Ini
-         0W2mB5K3oOCW94wNKQ2zKqlXf+kShlNGf7lT2nIWlV7KxexvVTP8mtRxHmOY8YDoVZcv
-         /Mag==
+        b=JHG5gon7wfbHMVyEK/8fU48tpPKTsIpac1/zoRoZH+nc3bzdsODd12zc52Irv3Aswj
+         A2GOIPVmBfpFsukQZtmqb8bz0d/HatzHPHThx/fgSpxFJUT4MvxP5dGLwHHh0Jj0jL9m
+         +y9a7UyewYp43AlVsUHizew/W80yO82Yz+rhyPxgwdcaAwQekLy0X8MQyZYY/J364n2W
+         exvIQaPwHxdxK7VTx3xZmAcx4cXaIZ/Iay5KuoKmOuFmWLTIK4SQe6eyw4Fw3vcQPt1j
+         ZrovTUQ+tgxBeEGmnDGh23heeNASgw0MTctiZ7zKN6jz+j/ekJVFKVkWw3JYhh1GuDgI
+         +mIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7OwfsT7yGmTorvGZxkJA6m+mBYovRmoNinuO+nHwg+A=;
-        b=uT4m2Qls96jUQ+s5Y779ngptlz0Hkk81cWFdlT5swY5/2lemTI7FbENiymunGCrRRO
-         W1ohHdpph16NAS53wEBeSMvmmTZTAJ9Wos9RITrZxw9WW5LWTFUxu8QE6zhirrA4a3dw
-         19ZUSPHIkb1ltkqHsH9BADHmp7XQpj4RzTdFs79nr4bwg9QwNz3UsOcv8IsBn47XNoCc
-         sOguzxUpjE3cxSg6XBGIteWcqfeVW0/eA6nIPiv4Dg9yw/z1F25CJ7vgNhxULbcNEh8/
-         ymMpifq+Eu73dHo2jrBozWhT4WPwZ2pe6u/LgBow/jz98XtCmlK/lo9hv2S9nvraNJVT
-         RkrA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=IhDQmK8knMvx7axTYBvMjdkY5zqMjvS+uVG/7sLvC9M=;
+        b=00A0thGU+liepuFneefJDbHxzW2oaqGUsXHG3HB8tAj2Ms/WaCVZ1cQtYV5CN7vXO5
+         oHV3RyiYzybWj9JwO2IYtvpEXXSip9sM+XiNlSpYjigYo7ZgDTPyAK/IFDdRB96LPaHh
+         LkNa+OvFhC+xAVu4mog4SlSmvfi0p/jtWQ9/8EBKy3uSJLFfoG8MVnMevMmLDhmnFIEQ
+         jRhXGzJkb2N951JD0tTJWi/FnhJh5UpNOMM7H4JRVLQLu+3LvOkA6WSSQLlllLfJdF9f
+         J1h8PC3aDb12qYGFrXjjnsJ3ex/3SaCLF+RcuDKwEsFxzAM+BAY4dsoRC+mjdWr5jBZL
+         gcPw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hylYNikY;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::134 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-it1-x134.google.com (mail-it1-x134.google.com. [2607:f8b0:4864:20::134])
-        by gmr-mx.google.com with ESMTPS id c6si204025pgm.2.2019.03.20.11.37.11
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FJyOfr2G;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id ne6si1005027pjb.1.2020.03.29.18.03.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Mar 2019 11:37:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::134 as permitted sender) client-ip=2607:f8b0:4864:20::134;
+        Sun, 29 Mar 2020 18:03:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hylYNikY;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::134 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x134.google.com with SMTP id 139so379746ita.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Mar 2019 11:37:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=7OwfsT7yGmTorvGZxkJA6m+mBYovRmoNinuO+nHwg+A=;
-        b=hylYNikY+xLqWqIhKWn9/bghUzYwavm0tLdpUCgSoY3rjOgVFsKd0d1FRXs3tnuIT2
-         J/IKaHD16tLz1w1OtQhdJSNt9vfmffpVntUPPx+sKslxOwtPMpAsScdYOdAaMZgECHWo
-         JlNFd5xaPL8q54OKOwAcoqJb5WG2BNLkiU+wyVV+fgDtC8yy9dDISV1erM5nBOQQ4rSi
-         nfKXZZjD8Zu4JUkTHeNvHo/ze4iez6vrjauwaa4ha5/sqs2+TdJQngbFX3iBXUq3mxMI
-         tyW6iJ1ojoyIscvkgy2MyQXhXTxxj/8jbjVBE7yl5PSfaYjXllI20qQBQ+As8jEB1cDI
-         EP0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=7OwfsT7yGmTorvGZxkJA6m+mBYovRmoNinuO+nHwg+A=;
-        b=ngH4G2naagHfQU5zR3kMPpZMurYM0yXBjiGfshXkkgZfWfGnePSrR3ycjJtq7o0JLL
-         YCfGhtDn1Mg4jh3pkgDlggQTLkiWhpqK9NEAHR0RSMpnLfoCi2tTkc9/oBDCed/PWS/I
-         51CqaY4LGjdK1qf0qmMFfWJF2oO6N6XlzOIJtDxsoAoRBNtGMG/SK31RT4Er8E9ijcg1
-         RUHtpRjj1vHFba0KsFPUnfZSY27qjOjeA6FJpiOkwzf9UEFUeLqUE/AvLqY/z20TMUuX
-         UzixUzXeTFgXP++P8beqPb7DvxViTZn6fHpz2j1/7Hj6EQ3fJHzupFWBbMFAFYYXiSTF
-         yS+Q==
-X-Gm-Message-State: APjAAAU1czQBxNUfzdQ7tWW6RDmzHJ01RUUHz7R7F/soQ2xT9VDXOzLD
-	1qARHg2ROo9GBL33Ib2hPG40kiPXIy2Q
-X-Received: by 2002:a02:3806:: with SMTP id b6mr6135493jaa.60.1553107030720;
-        Wed, 20 Mar 2019 11:37:10 -0700 (PDT)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:b901:3ecb:17cf:ca79])
-        by smtp.gmail.com with ESMTPSA id m25sm1485224iti.16.2019.03.20.11.37.09
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Mar 2019 11:37:10 -0700 (PDT)
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: gdm724x: Rename dftEpsId to dft_eps_id
-Date: Wed, 20 Mar 2019 14:37:04 -0400
-Message-Id: <20190320183704.8073-1-brandonbonaby94@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FJyOfr2G;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585530212;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=IhDQmK8knMvx7axTYBvMjdkY5zqMjvS+uVG/7sLvC9M=;
+	b=FJyOfr2GFua9JOBHIX3jljJndI+P0iju4bCmd1hVBzYrrJeNJM4NKX4EpE2HYJr27YAhKT
+	5jBnOJkGwhcxREKpOuPkrvbpOG2V7D1y/PVCESaE8kBJ1yx4Z8hqDSRErHVH2Bojr1e9YU
+	qcT/26Z03nmVLwiUMOw4j4rQQJF2B/s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-196-XgmSHP17MXGpFKZV1LnHWQ-1; Sun, 29 Mar 2020 21:03:30 -0400
+X-MC-Unique: XgmSHP17MXGpFKZV1LnHWQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1E9AB1005509;
+	Mon, 30 Mar 2020 01:03:29 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1609660BEC;
+	Mon, 30 Mar 2020 01:03:26 +0000 (UTC)
+Date: Mon, 30 Mar 2020 03:03:21 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Simran Singhal <singhalsimran0@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove multiple
+ assignments
+Message-ID: <20200330030321.73bab680@elisabeth>
+In-Reply-To: <20200325142226.GA14711@simran-Inspiron-5558>
+References: <20200325142226.GA14711@simran-Inspiron-5558>
+Organization: Red Hat
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 
-Rename member element dftEpsId to dft_eps_id to avoid camelcase.
-checkpatch warning: Avoid CamelCase.
+On Wed, 25 Mar 2020 19:52:26 +0530
+Simran Singhal <singhalsimran0@gmail.com> wrote:
 
-Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
----
- drivers/staging/gdm724x/hci_packet.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Remove multiple assignments by factorizing them.
+> Problem found using checkpatch.pl:-
+> CHECK: multiple assignments should be avoided
+> 
+> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_cmd.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> index 61a9bf61b976..744b40dd4cf0 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> @@ -194,7 +194,9 @@ int rtw_init_cmd_priv(struct	cmd_priv *pcmdpriv)
+>  
+>  	pcmdpriv->rsp_buf = pcmdpriv->rsp_allocated_buf  +  4 - ((SIZE_PTR)(pcmdpriv->rsp_allocated_buf) & 3);
+>  
+> -	pcmdpriv->cmd_issued_cnt = pcmdpriv->cmd_done_cnt = pcmdpriv->rsp_cnt = 0;
+> +	pcmdpriv->cmd_issued_cnt = 0;
+> +	pcmdpriv->cmd_done_cnt = 0;
+> +	pcmdpriv->rsp_cnt = 0;
 
-diff --git a/drivers/staging/gdm724x/hci_packet.h b/drivers/staging/gdm724x/hci_packet.h
-index 83fbd2515467..6dea3694afdd 100644
---- a/drivers/staging/gdm724x/hci_packet.h
-+++ b/drivers/staging/gdm724x/hci_packet.h
-@@ -40,7 +40,7 @@ struct tlv {
- struct sdu_header {
- 	__dev16 cmd_evt;
- 	__dev16 len;
--	__dev32 dftEpsId;
-+	__dev32 dft_eps_id;
- 	__dev32 bearer_ID;
- 	__dev32 nic_type;
- } __packed;
+I think this is better than the original because the original exceeds
+80 columns (and looks horrible in general). But the second hunk:
+
+>  
+>  	mutex_init(&pcmdpriv->sctx_mutex);
+>  exit:
+> @@ -2138,7 +2140,8 @@ void rtw_setassocsta_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *
+>  		goto exit;
+>  	}
+>  
+> -	psta->aid = psta->mac_id = passocsta_rsp->cam_id;
+> +	psta->aid = passocsta_rsp->cam_id;
+> +	psta->mac_id = passocsta_rsp->cam_id;
+
+I would leave this alone, because psta->aid is really the same thing
+here, it's not just a value that happens to be assigned to both by
+accident.
+
 -- 
-2.17.1
+Stefano
 
 
