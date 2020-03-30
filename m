@@ -1,82 +1,95 @@
-X-GM-THRID: 6387647463261470720
-X-Received: by 10.36.34.144 with SMTP id o138mr3794437ito.14.1487240070700;
-        Thu, 16 Feb 2017 02:14:30 -0800 (PST)
+X-GM-THRID: 6809352032264126464
+X-Received: by 2002:a6b:f413:: with SMTP id i19mr1178736iog.203.1585562447147;
+        Mon, 30 Mar 2020 03:00:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.39.226 with SMTP id c89ls1060129otb.2.gmail; Thu, 16 Feb
- 2017 02:14:30 -0800 (PST)
-X-Received: by 10.237.36.7 with SMTP id r7mr386207qtc.54.1487240070364;
-        Thu, 16 Feb 2017 02:14:30 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id z3si1245496pfj.0.2017.02.16.02.14.30
+Received: by 2002:a92:3ccf:: with SMTP id j76ls5104252ilf.8.gmail; Mon, 30 Mar
+ 2020 03:00:44 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsUiwoKEvE9oM4yr/x9qOGdbnHaxcXtQ1Y1DlTq8WJGLi9L9G077kq9ZA4A6F87f7klfsW7
+X-Received: by 2002:a92:d288:: with SMTP id p8mr10160288ilp.272.1585562444505;
+        Mon, 30 Mar 2020 03:00:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585562444; cv=none;
+        d=google.com; s=arc-20160816;
+        b=XLKZeIQrLoVUxX9qn2Kp6UUTT87RskqEtIW1ybQnqa5VIVf4HWJwV7u/sfiHv2Y8kD
+         sayNzJiHPLLazvC4jYicE8a2qJ8IzBCTvF5cNtsr3KRd0MWxD+l/Lr8yyQizscbsJrze
+         FtO2h/nNZ3ECrui5/e0qjmFcRm5iSt6SsIIlXKCYnoFBk6+k7LPTzkJR9UAF8j+JTNff
+         7zbdcg/F8doOtxCmr20oYoDVK4wJbN9pRDZ/8GzwDY4cXGb3xP6VnI0BOrWgbRkM8uv5
+         wkgEYb9QmTPn/n/qdsmJur6AltiP3kFTDAS2L66z2kEFxpsxiQJceHSgkmo1TDrvEnLl
+         Wsag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=EDbIwPgA2GwnyxuzC3/x5RBRW3+k1Gm3rD8PhaNRHzI=;
+        b=ZtBP26Y/BrSvk9z1kVlndSV5B79DhkJAHAucw/D1kND1tNzFnOrQNTdTvZFHkZjH7K
+         q2H3uZkA0NhbTs2Pp6RB0RHgmW/VMHKB614UZA3343Q8nW1kvMp6CVEKu3/0v0ZT8ZVn
+         0cDJnRhdtqdXLZcC8Gsc9lNRTD0MPyqSWF/vIVRH3inBfYy7NlDYPy+wjQtzc7n6RIjC
+         5P7ITxPz95uVy4Z4RhH6vsJdYC1tJKmP2pvuM9PkOEA0jkA8afEl/UrnzK/+HqidDKtq
+         u3gVmZQ4mv5HcPuOuTqdxbROexPYPxPWi9DeGNNptFyrecLVMPNEFEu1LaFwE29mH+s0
+         7wug==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EH+y9FH1;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id j25si751707ili.4.2020.03.30.03.00.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Feb 2017 02:14:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Mon, 30 Mar 2020 03:00:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gs051095@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=gs051095@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id e4so1309121pfg.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 16 Feb 2017 02:14:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Tlg93hxS9qTZhRdrOfnMS46CpfJHgxZydB7/MQBiF0c=;
-        b=t+TcA57LX2hoOI1Gc8NjaMFixla76Acvc6bx42QTB9U3483izUq0kn61ImpwKTlJq5
-         MctZv0Sx7wd9owvSJ9IT9Fea04LvkM7R1JgOhSDOe/435qKKuIidHsY+7N1dmy037pwx
-         HNWTTPl7uonHptibmERG1o0/1dFOzmbwHjNILF61px1mpUL/bdWit0B1U9RD91E/4KEe
-         /5U6rKR/y8tXDizzmBof2nKmtRJDmnprMPGF9++ZbZr799KvZT8mPCtIj4BL2XniV76Y
-         CPZpmRMQqv5RVFKJdT5IOtjv80Nhg2T3hQzJpODoDtBMbcxW9/8UWAUNSOuGJPs7MFF/
-         SGxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Tlg93hxS9qTZhRdrOfnMS46CpfJHgxZydB7/MQBiF0c=;
-        b=j5CdoHHoRUSoyE9+5QSooGHycOatl43fhz30IS9KXt2LudLUqBq8nETecdeRSD3r4G
-         lMzOgskGA0EONeZmxZLpUuEnp+4hZvly/IDAJ4GqKhpu5+h7Pa8dXpG41aKIU4z8ej39
-         Zxb0i/ejLGVPJNcM7oHymMZnSkXjnzQzX8CxuSEMaLDREGOZZyDdlETNFoOfk9+Xv5rU
-         zzUNnPuAr1Oxxt9LSqgVQhmiP2KAQEkTEXmTeY7P+tmuelyrsFpbdS3HBnFD3eAq/jto
-         6H8EMj922nq5RoxZQklhNRpWGwle439lOhUBmFtSWZ1upICkzDNnxG8PBuwYSyvIcgHU
-         WGVA==
-X-Gm-Message-State: AMke39lvieNNQZB1CI2KlGe6Jkfn0fmQr5owuN+n/n5sG/v/E1oyELP3vhbkDo5waUHnbg==
-X-Received: by 10.98.211.8 with SMTP id q8mr1712669pfg.164.1487240070123;
-        Thu, 16 Feb 2017 02:14:30 -0800 (PST)
-Return-Path: <gs051095@gmail.com>
-Received: from gargi-HP-Pavilion-15-Notebook-PC.bits-pilani.ac.in ([45.65.11.138])
-        by smtp.googlemail.com with ESMTPSA id f65sm12724028pfk.5.2017.02.16.02.14.28
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 16 Feb 2017 02:14:29 -0800 (PST)
-From: Gargi Sharma <gs051095@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Gargi Sharma <gs051095@gmail.com>
-Subject: [PATCH] staging: wlan-ng: add blank line after declaration
-Date: Thu, 16 Feb 2017 15:42:16 +0530
-Message-Id: <1487239937-26115-1-git-send-email-gs051095@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EH+y9FH1;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585562444;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EDbIwPgA2GwnyxuzC3/x5RBRW3+k1Gm3rD8PhaNRHzI=;
+	b=EH+y9FH1wxOAxEKh5V7DosPXe7ReH4sD2NpgL1AZe7VgqA9VRPgMcH9g1Fpuzgn2LHenJO
+	DJ5W4Kp4OAv6KFqlRLqoXfjubkbdesrb4rTfDQpbX5ILWw6iaj0kuz+08NAHfWdmjuMoYm
+	K584M1zslXOncqRr8kM7sYRkrEu1G7c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-41-AHUzNtwGM9SNU-3Pkc6wxw-1; Mon, 30 Mar 2020 06:00:41 -0400
+X-MC-Unique: AHUzNtwGM9SNU-3Pkc6wxw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A63EDB63;
+	Mon, 30 Mar 2020 10:00:40 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5749C10246F8;
+	Mon, 30 Mar 2020 10:00:38 +0000 (UTC)
+Date: Mon, 30 Mar 2020 12:00:32 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Briana Oursler <briana.oursler@gmail.com>
+Cc: gregkh@linuxfoundation.org, forest@alittletooquiet.net,
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] Staging: vt6655: Remove
+ BBvCalculateParameter comment.
+Message-ID: <20200330120032.0637015c@elisabeth>
+In-Reply-To: <20200328200331.136265-1-briana.oursler@gmail.com>
+References: <20200328200331.136265-1-briana.oursler@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-add blank line after struct declaration to fix the checkpatch issue, add
-blank line after declarations.
+On Sat, 28 Mar 2020 13:03:31 -0700
+Briana Oursler <briana.oursler@gmail.com> wrote:
 
-Signed-off-by: Gargi Sharma <gs051095@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x.h | 1 +
- 1 file changed, 1 insertion(+)
+> Remove comment that refers to function that no longer exists.
+> 
+> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
 
-diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
-index 5f1851c..f199847 100644
---- a/drivers/staging/wlan-ng/hfa384x.h
-+++ b/drivers/staging/wlan-ng/hfa384x.h
-@@ -1175,6 +1175,7 @@ struct hfa384x_usbctlx {
- 	enum ctlx_state state;	/* Tracks running state */
- 
- 	struct completion done;
-+
- 	volatile int reapable;	/* Food for the reaper task */
- 
- 	ctlx_cmdcb_t cmdcb;	/* Async command callback */
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
+
 -- 
-2.7.4
+Stefano
 
 
