@@ -1,144 +1,100 @@
-X-GM-THRID: 6532874572090310656
-X-Received: by 10.107.165.137 with SMTP id o131mr2651831ioe.5.1521053391938;
-        Wed, 14 Mar 2018 11:49:51 -0700 (PDT)
+X-GM-THRID: 6808187713389330432
+X-Received: by 2002:a65:5a4f:: with SMTP id z15mr10778115pgs.103.1585530339517;
+        Sun, 29 Mar 2020 18:05:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.142.71 with SMTP id q68ls474557iod.6.gmail; Wed, 14 Mar
- 2018 11:49:50 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvuMr3oPIPR4lLpk1HLZ5UjJ6jjWnTMvDhRZ9wBSRSvlBtIZXR0j9qs7uy0EILq3aDCBMUy
-X-Received: by 10.107.201.143 with SMTP id z137mr2629880iof.49.1521053390526;
-        Wed, 14 Mar 2018 11:49:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521053390; cv=none;
+Received: by 2002:a17:90b:245:: with SMTP id fz5ls13865677pjb.3.canary-gmail;
+ Sun, 29 Mar 2020 18:05:38 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsqawH8q4PID4JCPOxX2N0xcnYAZ+ujlOV/T/oM111iFsHXmQgSebEWvv9YsafKjj2MM2o+
+X-Received: by 2002:a17:90a:1b42:: with SMTP id q60mr13311781pjq.84.1585530338116;
+        Sun, 29 Mar 2020 18:05:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585530338; cv=none;
         d=google.com; s=arc-20160816;
-        b=ymmgW0BrG9zHg3MZRskNKEsLJ+2JOC1XqKuJGHUoryO+/4Qgielb3qTH96uvJDFwBk
-         4PA0A6DaX2HUBmj0aECKNdfeEoGArEo0V59WmuuBOLv98FDJ1iXdmlSvQu1xGNHIH+wT
-         AJVY+1l15uqO3Iilz//aybmrsiWc7bkQ2EWYYd8CUlm/qt5AxljjsmES93eRqqaWVe2v
-         ATz9aNxm3KzOixSpx2eFhnIDsuy3/1DTPWb2FpYcb7yiqXzcpOoUBH1vUysMy3/Wpcu9
-         N8qyDUaNIx6Ofdi3i5XoxDw6mZdWGU2oiqq1I6pyjRoJrM7yhEMY2J20NAmi5Co2TC/2
-         5Wdw==
+        b=RHRdWr/O3wyDymIAiURbrVJuNi3LLW92qaRc1drYzZno7jLytwta8BkX21OUBEvpRt
+         5Xrln8r9opAr6YQyq+QRyqJQtj3GM5qJngIOsEevTex1K9xPeoyE6ZTRh0yrP9zKDg8v
+         lpXHgTXQPmQ6a3wBMJMT7XG3SSU8ALQ/cr7eKZv1EPRsfnVHHgGP8rbI+wyQ1TPeCzSl
+         QoU3S47QaxUKJiUxgKXFtMTaVIxk67Go3BJzKbAxMOifO4VC7f0azG/i7syx/vZ0nlyN
+         hy2HAH0DE5yoYj8B0D7eTqN3fC+B1Jnz2fY2HqrilVbK7PnVYGl8AzAZJizqi+cqPqdB
+         NsCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=BnfSiPdIkju/kqwm6BatsqKxWsNVPX7oIIq9t0JOmC8=;
-        b=NdlPA2qH7YsVEnX2B/upGDPxebmBw03lJPHMWQoFm9kI1uhPUQUPSqWBQxI5gxab/G
-         6kSimtwsfmVEr7mK36BbC12DwUz2SkFp2ksCYtVFzYMam77XhF4oLKuisGPOb+X0ZmbD
-         W2waFr0TCUcukX9xlBt1X18qzNcAGs7/lNHRQ9Eo2wRHR7a3OtMnHNd6lyeE/bBs5Mtx
-         zOk3loI4dp9gHDBlSV55pLaKGIDDhGLDB4SX0swChzSfWqMN2R8XvehhQhjU9ThiLjAZ
-         l7p4JYCq+0sxRGGU1yvMfVWdn3S4A5Rb0nV0meeKieFw6PaNAP6ZxW1sx/b7tttXefxq
-         cL7A==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=RuVMi+yzQuqrWt1PfGiMDTX9P2hZ817ws+8wqAp5qk0=;
+        b=jQ8QC1GDabt4P8Amcf5ca8yaOvk1SlAV57XUi2qJyKKdHIrxvwXeVMGBV2M9g5HfUF
+         GEaVmQVRShRVSOjzdEvfea45KkeMkVIGydrHe2x0FWvvutbPMt/OWQtMCRbPVI1u0JdB
+         r9IYQ2ayLOr2Gl5eq2Z+rVPld/n07/aaMuIK4j9HLiRUbQfkGJn5OSZabqOgNFQ0vPEu
+         5zy7tyIbK2Qoq7IWHL3AsPze8pOnfypPyvfKDPlLBaZbgZLmmtUokQ05RHkSNmD8zUo9
+         yiMrg56QiZhRmrk4HgQ7psnZ+5DxdvvE8V45pAD/7iIDU+sS7WyU7lvAut/b+8Jwji4e
+         imBQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=V5LQ9Gy8;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::235 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pl0-x235.google.com (mail-pl0-x235.google.com. [2607:f8b0:400e:c01::235])
-        by gmr-mx.google.com with ESMTPS id h1si252201iob.1.2018.03.14.11.49.50
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OFTc6ukA;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id y5si733068plr.4.2020.03.29.18.05.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Mar 2018 11:49:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::235 as permitted sender) client-ip=2607:f8b0:400e:c01::235;
+        Sun, 29 Mar 2020 18:05:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=V5LQ9Gy8;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c01::235 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pl0-x235.google.com with SMTP id w12-v6so2208652plp.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Mar 2018 11:49:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=BnfSiPdIkju/kqwm6BatsqKxWsNVPX7oIIq9t0JOmC8=;
-        b=V5LQ9Gy8nEC8oYCHur29lA81WePOUSkU7NXLFTRjAx9j1SFTpOS1yVNzKRHx/+kfp1
-         93NV1+/aCmBfbo17QPgB4WYw//vgPNArR6UShZVDdq+TEBCvvdZq2oJmNwun+UDHeLtM
-         X5FxJPgQQQHv0+OUQgmFClPFY3DhKKzyvLFK8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=BnfSiPdIkju/kqwm6BatsqKxWsNVPX7oIIq9t0JOmC8=;
-        b=Ivx5pPw6NFPX6LhDhCitBoXi4aWceabMRm3vOghUP7oqfGcXU0rkZKNsstv+cD5r//
-         I7G6KGvHGrDOZh60mxi0iWf2ersYV4a3aGtJ8trQfXzD8e6Ni41qK6140WDPR2dD9otf
-         6+ETTtK+ynx9SO/HaN27htViDUyxdxybjqWDxwgCLkt7CWOJD0DSf2dJgNSpyRquOWuT
-         n2tpGMlLDru04AZOSWS8RyYiiSdD/tJvR3p4xJu/mKRvEqOGAW9vjN5ukMm52ZxdjYLy
-         raeRdzkxhnhxl2yfbgtk28M+h8fh7ajnNU5GCuFQJdq0ZVk7EfrRcW9PvGiQYWtAOkwZ
-         xbAQ==
-X-Gm-Message-State: AElRT7Hl9ZLpLvYKXJzauXtOgSXCd5gRggY3MveLCAUuqsltKNGLEvU3
-	jxt+0NXQBJ6jNKexNN9AnkpfNA==
-X-Received: by 2002:a17:902:8d8f:: with SMTP id v15-v6mr5026980plo.100.1521053390041;
-        Wed, 14 Mar 2018 11:49:50 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id x5sm5226762pgq.84.2018.03.14.11.49.47
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Mar 2018 11:49:49 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: sm750fb: Remove typedef
-Date: Wed, 14 Mar 2018 18:49:37 +0000
-Message-Id: <1521053377-28914-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OFTc6ukA;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585530337;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=RuVMi+yzQuqrWt1PfGiMDTX9P2hZ817ws+8wqAp5qk0=;
+	b=OFTc6ukA9Eu7/YROBinqV8JEddEk1WV2Oz9uDpKOL0yj+KcrLuMnp6Ztxyt8ANy4QmN59z
+	7CdVlf1taT9k7BG31u8hIh3Dy3g23Cg8bv1wZyfGgzW3JsRwVVWbVND6FFM8BlYfL4CEsZ
+	g6tjNA9PKTSNl0ACLavVPW/vdNqMJYw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-38-w4fOFj-WPMetl7R3dG9Hmw-1; Sun, 29 Mar 2020 21:05:35 -0400
+X-MC-Unique: w4fOFj-WPMetl7R3dG9Hmw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 211B1189F77A;
+	Mon, 30 Mar 2020 01:05:34 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0EED35C1BB;
+	Mon, 30 Mar 2020 01:05:31 +0000 (UTC)
+Date: Mon, 30 Mar 2020 03:05:26 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Simran Singhal <singhalsimran0@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Add line after
+ variable declarations
+Message-ID: <20200330030526.7a1a3b9d@elisabeth>
+In-Reply-To: <20200325164451.GA17569@simran-Inspiron-5558>
+References: <20200325164451.GA17569@simran-Inspiron-5558>
+Organization: Red Hat
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 
-Change typedef enum to enum and add backward compatibility. Issue found 
-with checkpatch.
+Hi Simran,
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/sm750fb/ddk750_display.c | 2 +-
- drivers/staging/sm750fb/ddk750_display.h | 7 +++----
- drivers/staging/sm750fb/sm750_hw.c       | 2 +-
- 3 files changed, 5 insertions(+), 6 deletions(-)
+On Wed, 25 Mar 2020 22:14:52 +0530
+Simran Singhal <singhalsimran0@gmail.com> wrote:
 
-diff --git a/drivers/staging/sm750fb/ddk750_display.c b/drivers/staging/sm750fb/ddk750_display.c
-index c6fd901..7710454 100644
---- a/drivers/staging/sm750fb/ddk750_display.c
-+++ b/drivers/staging/sm750fb/ddk750_display.c
-@@ -111,7 +111,7 @@ static void swPanelPowerSequence(int disp, int delay)
- 	primary_wait_vertical_sync(delay);
- }
- 
--void ddk750_setLogicalDispOut(disp_output_t output)
-+void ddk750_setLogicalDispOut(enum _disp_output output)
- {
- 	unsigned int reg;
- 
-diff --git a/drivers/staging/sm750fb/ddk750_display.h b/drivers/staging/sm750fb/ddk750_display.h
-index 523bbf3..3eeb02f 100644
---- a/drivers/staging/sm750fb/ddk750_display.h
-+++ b/drivers/staging/sm750fb/ddk750_display.h
-@@ -89,7 +89,7 @@
-  * LCD1 means panel path TFT1  & panel path DVI (so enable DAC)
-  * CRT means crt path DSUB
-  */
--typedef enum _disp_output_t {
-+enum _disp_output {
- 	do_LCD1_PRI = PNL_2_PRI | PRI_TP_ON | PNL_SEQ_ON | DAC_ON,
- 	do_LCD1_SEC = PNL_2_SEC | SEC_TP_ON | PNL_SEQ_ON | DAC_ON,
- 	do_LCD2_PRI = CRT_2_PRI | PRI_TP_ON | DUAL_TFT_ON,
-@@ -100,9 +100,8 @@ typedef enum _disp_output_t {
- 	 */
- 	do_CRT_PRI = CRT_2_PRI | PRI_TP_ON | DPMS_ON | DAC_ON,
- 	do_CRT_SEC = CRT_2_SEC | SEC_TP_ON | DPMS_ON | DAC_ON,
--}
--disp_output_t;
-+};
- 
--void ddk750_setLogicalDispOut(disp_output_t output);
-+void ddk750_setLogicalDispOut(enum _disp_output output);
- 
- #endif
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index f996f84..3248f88 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -185,7 +185,7 @@ int hw_sm750_output_setMode(struct lynxfb_output *output,
- 			    struct fb_fix_screeninfo *fix)
- {
- 	int ret;
--	disp_output_t disp_set;
-+	enum _disp_output disp_set;
- 	int channel;
- 
- 	ret = 0;
+> Add whiteline after variable declarations to remove the checkpatch.pl
+> warning:
+> WARNING: Missing a blank line after declarations
+> 
+> Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
+
+Sorry for the late review. This patch introduces similar changes to the
+other patches you posted to fix checkpatch warnings for rtl8723bs, so I
+think they should be posted as a patchset instead.
+
 -- 
-2.7.4
+Stefano
 
 
