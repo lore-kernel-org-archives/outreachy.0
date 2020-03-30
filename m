@@ -1,130 +1,104 @@
-X-GM-THRID: 6889119685603753984
-X-Received: by 2002:a05:6a00:2cf:b029:160:c0c:a95c with SMTP id b15-20020a056a0002cfb02901600c0ca95cmr5539622pft.76.1603998170215;
-        Thu, 29 Oct 2020 12:02:50 -0700 (PDT)
+X-GM-THRID: 6806184818941886464
+X-Received: by 2002:a17:902:8bc7:: with SMTP id r7mr11611521plo.12.1585553700929;
+        Mon, 30 Mar 2020 00:35:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:7809:: with SMTP id p9ls1664789pll.7.gmail; Thu, 29
- Oct 2020 12:02:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwiGFo7G4FYBsap6gV43gmUtGUfMleB6SnsxGbPWJ4nCHzoFLPNW+oQmfmbUkAIYsXZzxff
-X-Received: by 2002:a17:902:7b91:b029:d4:da66:ef6e with SMTP id w17-20020a1709027b91b02900d4da66ef6emr5391732pll.10.1603998168585;
-        Thu, 29 Oct 2020 12:02:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603998168; cv=none;
+Received: by 2002:a05:6a00:c9:: with SMTP id e9ls11429257pfj.10.gmail; Mon, 30
+ Mar 2020 00:34:59 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuY51lRHugj7ltAVwfC2A7a0iUVp8L3+Xp/O8YhFgo++UNJ7yL8SMEGeEQC0u92m22zajfG
+X-Received: by 2002:a62:4ec4:: with SMTP id c187mr12116130pfb.223.1585553699548;
+        Mon, 30 Mar 2020 00:34:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585553699; cv=none;
         d=google.com; s=arc-20160816;
-        b=cONVY5iKA26lADnv9sqVOLm+RA0IyX05fvPWyhGltIRu5jf7WueKylo4gMeIYP1w9G
-         gl8zqs4y8DzWITRTlyp0Cc3cUyxBIVwj1MVYq4Dq315wwj8RMxLqf+0Wt6JhoJE/x4ck
-         esAauyI9kNZQilXx9hjSZFWR0GaZ8xbXN6hYkRaIyyb3E8EYiL/PDWIlrDZJyfl79Xjm
-         bFefIA775yHZgkLFC/tDDQYIjf0Q3+qQDdExv4CpONWm9MKONIqITbIzT8RCh2VCHVXr
-         H1D37I004lr3DlkBaxZCBb1SAGMdydZ025N0K7cwVwe/THWJ0E44cG2TbjlyuxR9dFcm
-         Jm6w==
+        b=UtPBtT24GqrKHRF0gxtl3c+GT0daYbudu/mOW3M8430uQJ0uW0Cpg4gteAeK+KbBYh
+         xi/EVEqE/fU8IFcH6KrttLqYa62gveE5Xm2Ea5c9ZmE9pZ87P+lSEkrjFVQVIvO7gw0u
+         0sfpVI0y8OIFx8+qhBg5dxGYwd5ClOlBfsjJKDMxkwXkMrCWE5Y3C3XTNfLk+fxJSgv9
+         CJeO1X1fxXmGFB3T04suGus6PpGDjAy7z/aLd/mw7o6kFfgo56HrYoGKHr0mOmwYPI8u
+         HX09Ba2TwrbmNC4LFlVn5AS4zoalFiygkvbX6E32AXiFMbl/84fcKsUXckQn0tTnzjx6
+         lhww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=azmT/G24N8TE/tNqTJcXP4u4R0G+FAx2JFXhfXQuMug=;
-        b=heN0rtYeTLOwAM8GINXA/J8PazZlR4XOOZ4XrsQ+LJHds8QKjvpytuZ7dyAH5sJecr
-         3VsdjcC5T9AkAzPnfSF68WJepMSW/Gxx/Ryzrt5JAfTbUsedSyd3u8oWKyPv3cJxwiad
-         qbjEuyVpaK+2W85Vl+Kt7kpgzkX/adBOHyBlrd+slM80y/213gvt0ZyRud8bGXvtuu3S
-         CsWzAwolRLGQXno0tUKy93OS4r/66qPFExFU/uql7tVA2OyowrODGG4pT5Gn1L15lt/A
-         /mNvgGK3pCoE+n+11g5ZrHaQJTzMGlqEyjlUbF1hb/+YwFjkB8Z6Do222n2VqrSa5dke
-         gtog==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=h3SQbY6aLe4015TFu/1sFQgARySxrMnF5HvjVPulwIA=;
+        b=Up3mzL68Sf6NfMnuu/mD/0s25GgyuHKbbWj9nup0qzw7Ojz3kzBl1CsW6UmU6aDPxW
+         QTdDOVwdK9kxCZrNW9ZbQIi/00lhaDzHRnyYeEdNA53D4l9ITTQyS2Ud0nwN5GqvHGn+
+         CP6p7gqd6dpqu2aZsfaGBaKqL/s+MwVaF3dfI8iNF+Scv6up5Fjoe6fTQFWux3AfHUA2
+         yHj7f+hhPVVHPu+0qalsGRJd4UyNLfVN5N1ND38A4JuxrV+NxxI/wLxs627yQy1QkHsM
+         H4Nym/tMA3Jsh7Yqp4mheVCV+xljG5ytAppN78wJXfTSP3ha+l5AvwusUkNitYMDySJa
+         Wbgg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MFzmyii/";
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id m62si324131pgm.2.2020.10.29.12.02.48
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ehpO0onT;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id x2si589227plo.0.2020.03.30.00.34.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Oct 2020 12:02:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Mar 2020 00:34:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MFzmyii/";
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id r186so3142033pgr.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 12:02:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=azmT/G24N8TE/tNqTJcXP4u4R0G+FAx2JFXhfXQuMug=;
-        b=MFzmyii/YJeRHKCIqFT/YTLhoiu2BinAEhntzjpS0mqt8LswpzA/CFS2KeuOEv0HGK
-         j2kWo8RJcKrKSy9nuG9J3NMPHBqdopefT/QJVs5GD1Kv/0lBbUXzLNxmXAy4zVkD1MIN
-         C7eRRuc5W5q+khDk26AsTcgo6t81c/3Bga+gwjYlIJF+qXbzuQmp7zKmJiuwmISf1/sz
-         vufi+QuFE79Mi9ObCs67utwW3qT3kmJjiUiGkaflT9N+c7AXQydioHOMQdPBQPdtGNQG
-         SSxWYFcXMcRJs+Y2j1QSkzGMl/OwBF3VlfvhPIJvhSGaO7mO84hQQWSxxf8BQLM5WAkk
-         bNnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=azmT/G24N8TE/tNqTJcXP4u4R0G+FAx2JFXhfXQuMug=;
-        b=ntCW4y/pxRVqWq5lmHjnc9BFxkykWIrYBJCRETlIzKHjCUYZuUC3cY6uXkgWy3la4r
-         54GDNwGOvlnoBdCaCdVlnQ77iK0vK897jj7UBNog+PApQ7+ZKg3zlfoJzi2dKlEMiHXo
-         vQkVjHb223Z1zjBxTbwMX+kv2ofdpSJ+nbynT3TPW4sccIbGjY7iFGKXai9LS6+IMjsi
-         kja3hPA7POtS31/NHxsmG55dOocMWqxObWykU4Qu80vU8WjFwXODxJcne7/NPrnz/DAL
-         8PX/Wv0Ot1TDRNy6cB/jg8jwz9J2QtpM75H+4YPcNptUOO5DSc0ntyG6e6PUC1/Th2gb
-         5a9Q==
-X-Gm-Message-State: AOAM5338VhFNjn9OIIRzmerQOvevHnOPIicqpQ+H7K4q7Bc599xsuYe+
-	gzXT7kB8pWN7ySuc354icwo=
-X-Received: by 2002:a62:6496:0:b029:155:b152:f0cf with SMTP id y144-20020a6264960000b0290155b152f0cfmr5910952pfb.75.1603998168350;
-        Thu, 29 Oct 2020 12:02:48 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from my--box ([103.98.79.70])
-        by smtp.gmail.com with ESMTPSA id i123sm3680527pfc.13.2020.10.29.12.02.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2020 12:02:47 -0700 (PDT)
-Date: Fri, 30 Oct 2020 00:32:41 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>,
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-	linux-arm-msm@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	freedreno@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Cc: mh12gx2825@gmail.com
-Subject: [PATCH 1/2] drm: msm: adreno: use DEFINE_DEBUGFS_ATTRIBUTE with
- debugfs_create_file_unsafe()
-Message-ID: <9ca2c2e4cbd9ebb282b90f742305fd9b481aacc2.1603998014.git.mh12gx2825@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ehpO0onT;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585553698;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=h3SQbY6aLe4015TFu/1sFQgARySxrMnF5HvjVPulwIA=;
+	b=ehpO0onT5Nye7K9DmD3zXDQYud1hj1CIT2VqPCvjYv12XE9GuSnHBWqc3JEFc2v2tU+7SQ
+	YM+lbOmzgM9r+jQsGgPu1VZsVKJCAYiBcjkCHRbK6yWiyJE8LBd1SCSDWogAgQKwPmSM9q
+	zHgH8n+LfqkpNNCwuJEGCe/2VJdn33o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-402-4X_rE3gNNoCpt27ZsqpwhA-1; Mon, 30 Mar 2020 03:34:56 -0400
+X-MC-Unique: 4X_rE3gNNoCpt27ZsqpwhA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9447E19057A6;
+	Mon, 30 Mar 2020 07:34:55 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9B08210027A4;
+	Mon, 30 Mar 2020 07:34:52 +0000 (UTC)
+Date: Mon, 30 Mar 2020 09:34:47 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: hal: Correct
+ typos in comments
+Message-ID: <20200330093447.70b35039@elisabeth>
+In-Reply-To: <20200326143023.13681-1-vkor@vkten.in>
+References: <20200326143023.13681-1-vkor@vkten.in>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
-function in place of the debugfs_create_file() function will make the
-file operation struct "reset" aware of the file's lifetime. Additional
-details here: https://lists.archive.carbon60.com/linux/kernel/2369498
+On Thu, 26 Mar 2020 20:00:23 +0530
+R Veera Kumar <vkor@vkten.in> wrote:
 
-Issue reported by Coccinelle script:
-scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+> +++ b/drivers/staging/rtl8723bs/hal/odm_debug.h
+> @@ -13,7 +13,7 @@
+>  /* Define the debug levels */
+>  /*  */
+>  /* 1.	DBG_TRACE and DBG_LOUD are used for normal cases. */
+> -/* So that, they can help SW engineer to develope or trace states changed */
+> +/* So that, they can help SW engineer to developed or trace states changed */
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
-Please Note: This is project task specific patch.
+Now, this doesn't make the comment much clearer, but I think "develop"
+was intended here (it goes along with "or trace").
 
- drivers/gpu/drm/msm/adreno/a5xx_debugfs.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+>  /* and also help HW enginner to trace every operation to and from HW, */
 
-diff --git a/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c b/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c
-index fc2c905b6c9e..ffe1fb9be155 100644
---- a/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c
-+++ b/drivers/gpu/drm/msm/adreno/a5xx_debugfs.c
-@@ -138,7 +138,7 @@ reset_set(void *data, u64 val)
- 	return 0;
- }
- 
--DEFINE_SIMPLE_ATTRIBUTE(reset_fops, NULL, reset_set, "%llx\n");
-+DEFINE_DEBUGFS_ATTRIBUTE(reset_fops, NULL, reset_set, "%llx\n");
- 
- 
- void a5xx_debugfs_init(struct msm_gpu *gpu, struct drm_minor *minor)
-@@ -154,6 +154,6 @@ void a5xx_debugfs_init(struct msm_gpu *gpu, struct drm_minor *minor)
- 				 ARRAY_SIZE(a5xx_debugfs_list),
- 				 minor->debugfs_root, minor);
- 
--	debugfs_create_file("reset", S_IWUGO, minor->debugfs_root, dev,
--			    &reset_fops);
-+	debugfs_create_file_unsafe("reset", S_IWUGO, minor->debugfs_root, dev,
-+				&reset_fops);
- }
+and while at it, you could also fix the typo here.
+
 -- 
-2.25.1
+Stefano
 
 
