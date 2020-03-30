@@ -1,184 +1,96 @@
-X-GM-THRID: 6534991187044990976
-X-Received: by 2002:a25:5ed5:: with SMTP id s204-v6mr6351332ybb.33.1521546204250;
-        Tue, 20 Mar 2018 04:43:24 -0700 (PDT)
+X-GM-THRID: 6805867897863274496
+X-Received: by 2002:a6b:3944:: with SMTP id g65mr9257102ioa.78.1585553721138;
+        Mon, 30 Mar 2020 00:35:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.145.142 with SMTP id i136ls45357ywg.1.gmail; Tue, 20 Mar
- 2018 04:43:23 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELuDZWOdS6sx3RGVhVZsekx55xSGLiC2c+ADdmumMrdx2oUbF3o1Ae36xtHpL+1u6l94AghR
-X-Received: by 10.129.55.82 with SMTP id e79mr6537353ywa.228.1521546203251;
-        Tue, 20 Mar 2018 04:43:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521546203; cv=none;
+Received: by 2002:a92:194:: with SMTP id 142ls5027203ilb.4.gmail; Mon, 30 Mar
+ 2020 00:35:19 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtY6VdE+PkuGLpgrIJ1dxxX16mrv8Q06QwzOsTcd3p5JX0dF/uZiUFIMNf1YvS6vYSWTBzH
+X-Received: by 2002:a92:b74d:: with SMTP id c13mr10251733ilm.105.1585553719723;
+        Mon, 30 Mar 2020 00:35:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585553719; cv=none;
         d=google.com; s=arc-20160816;
-        b=pfgCmvaEX/wxVzMvotUbW17OT0MhNrfA1JhJGjAOE1/818WX7KkG65RVcI3m1I22yS
-         G+EdaknRdjL5WxR/XJp9hXadmy5h2twLWc6pucXybTBIvCRqxlRo3KZR6jlAwb8zDBAR
-         dZ+erJnevtQYQ1/hC4oMRqDolguhbAUgT9X2fa5odd/gH2Bv9/W4ITtL62IxMS3FPtRp
-         JX/eqISEPKCgh644fonwcm7JS/W5PwbG8pVZKnTwtAsRW9O3nQq4/+/Ziuje+anN/1rn
-         AF4Zs2j9tg9XsFzs2xnMkJ72iDO8V8TmyYyPXT749PeHSiTZcEMicP9q7ze/jaEzJsPE
-         AotQ==
+        b=BiAaiqff/5LM2uqIkO2rULClMKqeG2TLyw2VYhtl21cop9jsvm2821iz6MgOYKEZUB
+         RzP7br59C8HGTu2RoHYOT4qfnNmSl+/hDFTYNNPzIjFGQxfC4XW7+7Ue61qM25DBLjgp
+         LsW+eAOGaTL6tQ9vtmgdOU9ep1DBJifVY2pfWF7Rq2ofrJ8Rgcc0wmYR9Kl0IaeWtWjQ
+         UBCnof2D8Ykbyb/hdDplaZ/lzav3H5ELkDOkTf6KUjnMZVRrSnBQyO9ZbeEqo+V0CGTA
+         qO4TuIaOzxcDYWvJTva1JDQBlYqdPqo8LQP9JuWdAby8SNomlJ0OmEdnXQnAgwXFg1wC
+         ByiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=UEFx1cKq1O0JlJVwEEvHL8k/RwEzM4kTdpc+sM4F2Ac=;
-        b=b/rtH06Zw08DQrevn+p7Qa2+FHcMpUpsNZDaF+eteVaXxgEFevzgi8NZbn4goshaKt
-         KSu1eJmgWXtZvRijeGw4gd/OJMz3SOeFvhUFccoPwFJSQWpN+9+QoqSfqNI2g7NXqteM
-         Iq9VugP80N4NVLmB2wMEntd8JyZMnca++ee+q0viYOF0IkAlvsLpW3tqYQ2mP0qlM6Tl
-         9p6TsYDhLWCcoK7IZ7lrv/mlG2MvVweP5Ii9CiZK8+hdB6TQ470xtf7rGY10h0fUs8cH
-         pCLeArs8rUOpU0T+DIMDIE4YL1/Y75waS2FYkiFfpRSGxc3MVYYAURokqKGRgtxplGqp
-         WEOA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=N/XqwabKl1wKb0mjh2zs5gFMYl4f8WDXgXXm22CKyC0=;
+        b=b18YBi7haYG6CZcWhHrKS7BlZBj16JHkUHBcWUUc5xHYlOyyMIDL0dZjOD3Ppr+ZIu
+         nPGUCvuXaIDugR5oziXHLjFBMQQadF4dnjQNNgNb4/2NwY1PNTZM1s1tpMOMtwwPle3V
+         qtcZ/gU/C+jvDLD2AWbPKwMiQ4UI32N7W9pLV1/P+Z8cjvI0vvNkHb+0+ddpnrhbeao3
+         5QlYep+sttQQQuuYcXAk768oPgJXPrn1DiPNngF2gU+gpvMw8ftvlBfEeUSgWXM9sBB2
+         QFb+D2yF3vdsyZ0jkrYdPAJHHLKXOBfVnThXKDy7krN35xbxhAQ13ncZOwNRXUgG3RCk
+         xMsg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uYDb12fR;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-qt0-x243.google.com (mail-qt0-x243.google.com. [2607:f8b0:400d:c0d::243])
-        by gmr-mx.google.com with ESMTPS id p12si79296ywg.4.2018.03.20.04.43.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OwD53xUD;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id d207si1240377iof.3.2020.03.30.00.35.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Mar 2018 04:43:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) client-ip=2607:f8b0:400d:c0d::243;
+        Mon, 30 Mar 2020 00:35:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uYDb12fR;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c0d::243 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt0-x243.google.com with SMTP id i8so1179131qtj.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 20 Mar 2018 04:43:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=UEFx1cKq1O0JlJVwEEvHL8k/RwEzM4kTdpc+sM4F2Ac=;
-        b=uYDb12fR/WFg8ixwjbQJJhucrg1KKZtXbMrP2Aoc2PDc7Vp+DGcCQfQTjRsU9EdZ4S
-         RTFK/rX3IDGknGSm/r6xhpK0yblQCXzmudg3TzlxickD7jz7Nbt4wk2RgjUHgRZbol81
-         tA8JW0rZ4z4PRi0uZYE717Ltg8l0KUtw4dXxqXOe/ZoDNb6/+UZzfMynNPzOcL2bLI1O
-         3shfOvH9ufahdYapNTC0y7x9nCrWAf2ufkIL/SGnYyujLWFpwvYjio0PCIN9hQFwIygO
-         hOa/dRIEVgKOCgelbzvminoNYLRnZilmMdSJ11ZvADYfx0ESwMW+syhgL1ZzJ6pIT9zi
-         QhGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=UEFx1cKq1O0JlJVwEEvHL8k/RwEzM4kTdpc+sM4F2Ac=;
-        b=H9MHp39f5Sy4aWmGdpmfqSbcAX73xfZFairnj+XU8W+LgYAf2dywqdrB6gLDf2l0uN
-         xC/l824KTCQitW79vhvhb+teM31kOuBVU3H0HEfFSc+gybZ1T8jo0X/SiRAqnwCW7JKP
-         XmFSU2DC+qZMj6i3BU7Pqd3bkwppmU4EPNUnFVp5WGlz/jq9lMS9rXYQVqZO5kmMqYzf
-         TKviCvHyDrIhmDiHR8wN4dhu6PiHxV2fYawySq9lMvKhOFnh54p/ogH6B8qanSr6eMSK
-         IEmRHPvbgQFMxwy8bSWRcKJvB/BCZBcZm3e5WJEn+zyrkJGsptIVHcJpLHWqTeQdgCkC
-         3+iQ==
-X-Gm-Message-State: AElRT7GW78XaRhE32Oq4NeFxPrpcNR6QvgDb2vMBsVpapPbV9MywhVEh
-	oR3dom8Q616jt6B0uLCkmsKMFQ9kqh8=
-X-Received: by 10.237.62.84 with SMTP id m20mr23939399qtf.283.1521546202893;
-        Tue, 20 Mar 2018 04:43:22 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from haneen-VirtualBox (rrcs-24-103-222-2.nys.biz.rr.com. [24.103.222.2])
-        by smtp.gmail.com with ESMTPSA id e36sm661378qtk.41.2018.03.20.04.43.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Mar 2018 04:43:22 -0700 (PDT)
-Date: Tue, 20 Mar 2018 07:43:20 -0400
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: hamohammed.sa@gmail.com
-Cc: Shawn Guo <shawnguo@kernel.org>, David Airlie <airlied@linux.ie>,
-	dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com,
-	seanpaul@chromium.org, daniel.vetter@intel.com
-Subject: [PATCH DRM] drm/zte: Replace include drmP.h with drm_print.h
-Message-ID: <20180320114320.GA23062@haneen-VirtualBox>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OwD53xUD;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585553719;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=N/XqwabKl1wKb0mjh2zs5gFMYl4f8WDXgXXm22CKyC0=;
+	b=OwD53xUDGRwC7SPLvjZ4vTze8e49pVvxB/papbyc2x3ypOwf9bBchxsNczm42vrX3zXvcN
+	Ua9QXUGT0KO/VT125JuW1IGei3dXDywZvhi64z6cSOSv3AfW6p/85ipnkhwroim7B/h3Qh
+	B4MPEehkP3grXJiVlHq3R/OFetjTw7w=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-kKlmIMwnNXugtEvaF6uA7g-1; Mon, 30 Mar 2020 03:35:15 -0400
+X-MC-Unique: kKlmIMwnNXugtEvaF6uA7g-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5C6EB149C1;
+	Mon, 30 Mar 2020 07:35:14 +0000 (UTC)
+Received: from elisabeth (unknown [10.40.208.4])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id BA2325DA66;
+	Mon, 30 Mar 2020 07:35:12 +0000 (UTC)
+Date: Mon, 30 Mar 2020 09:35:06 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: core: Correct
+ typos in comments
+Message-ID: <20200330093506.6f5dab06@elisabeth>
+In-Reply-To: <20200326123540.12401-1-vkor@vkten.in>
+References: <20200326123540.12401-1-vkor@vkten.in>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Remove drmP.h as it is not needed anymore since nothing it defines is
-used in these files and use drm_print.h instead as these files are using
-the debug macros defined there.
+On Thu, 26 Mar 2020 18:05:40 +0530
+R Veera Kumar <vkor@vkten.in> wrote:
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
- drivers/gpu/drm/zte/zx_drm_drv.c | 2 +-
- drivers/gpu/drm/zte/zx_hdmi.c    | 2 +-
- drivers/gpu/drm/zte/zx_plane.c   | 2 +-
- drivers/gpu/drm/zte/zx_tvenc.c   | 2 +-
- drivers/gpu/drm/zte/zx_vga.c     | 2 +-
- drivers/gpu/drm/zte/zx_vou.c     | 2 +-
- 6 files changed, 6 insertions(+), 6 deletions(-)
+> Correct typos in comments.
+> Misspellings found using checkpatch.pl.
 
-diff --git a/drivers/gpu/drm/zte/zx_drm_drv.c b/drivers/gpu/drm/zte/zx_drm_drv.c
-index 6f4205e8..f375cb0 100644
---- a/drivers/gpu/drm/zte/zx_drm_drv.c
-+++ b/drivers/gpu/drm/zte/zx_drm_drv.c
-@@ -24,7 +24,7 @@
- #include <drm/drm_gem_cma_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
- #include <drm/drm_of.h>
--#include <drm/drmP.h>
-+#include <drm/drm_print.h>
- 
- #include "zx_drm_drv.h"
- #include "zx_vou.h"
-diff --git a/drivers/gpu/drm/zte/zx_hdmi.c b/drivers/gpu/drm/zte/zx_hdmi.c
-index 13ea90f..4cc9ebd 100644
---- a/drivers/gpu/drm/zte/zx_hdmi.c
-+++ b/drivers/gpu/drm/zte/zx_hdmi.c
-@@ -23,7 +23,7 @@
- #include <drm/drm_crtc_helper.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_of.h>
--#include <drm/drmP.h>
-+#include <drm/drm_print.h>
- 
- #include <sound/hdmi-codec.h>
- 
-diff --git a/drivers/gpu/drm/zte/zx_plane.c b/drivers/gpu/drm/zte/zx_plane.c
-index 68fd2e2..eeeea99 100644
---- a/drivers/gpu/drm/zte/zx_plane.c
-+++ b/drivers/gpu/drm/zte/zx_plane.c
-@@ -14,7 +14,7 @@
- #include <drm/drm_gem_cma_helper.h>
- #include <drm/drm_modeset_helper_vtables.h>
- #include <drm/drm_plane_helper.h>
--#include <drm/drmP.h>
-+#include <drm/drm_print.h>
- 
- #include "zx_common_regs.h"
- #include "zx_drm_drv.h"
-diff --git a/drivers/gpu/drm/zte/zx_tvenc.c b/drivers/gpu/drm/zte/zx_tvenc.c
-index 0de1a71..355b7fb 100644
---- a/drivers/gpu/drm/zte/zx_tvenc.c
-+++ b/drivers/gpu/drm/zte/zx_tvenc.c
-@@ -15,7 +15,7 @@
- 
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_crtc_helper.h>
--#include <drm/drmP.h>
-+#include <drm/drm_print.h>
- 
- #include "zx_drm_drv.h"
- #include "zx_tvenc_regs.h"
-diff --git a/drivers/gpu/drm/zte/zx_vga.c b/drivers/gpu/drm/zte/zx_vga.c
-index 3e7e33c..9d18e8a 100644
---- a/drivers/gpu/drm/zte/zx_vga.c
-+++ b/drivers/gpu/drm/zte/zx_vga.c
-@@ -14,7 +14,7 @@
- 
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_crtc_helper.h>
--#include <drm/drmP.h>
-+#include <drm/drm_print.h>
- 
- #include "zx_drm_drv.h"
- #include "zx_vga_regs.h"
-diff --git a/drivers/gpu/drm/zte/zx_vou.c b/drivers/gpu/drm/zte/zx_vou.c
-index 7491813..7f49c1f 100644
---- a/drivers/gpu/drm/zte/zx_vou.c
-+++ b/drivers/gpu/drm/zte/zx_vou.c
-@@ -21,7 +21,7 @@
- #include <drm/drm_gem_cma_helper.h>
- #include <drm/drm_of.h>
- #include <drm/drm_plane_helper.h>
--#include <drm/drmP.h>
-+#include <drm/drm_print.h>
- 
- #include "zx_common_regs.h"
- #include "zx_drm_drv.h"
+This change and the following two on rtl8723bs look good to me, but I
+think you should re-submit them as a series, as they are very clearly
+related (you also prepared and posted them one after the other...).
+
 -- 
-2.7.4
+Stefano
 
 
