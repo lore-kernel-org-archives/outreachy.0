@@ -1,306 +1,146 @@
 X-GM-THRID: 6808898651661795328
-X-Received: by 2002:a17:906:6444:: with SMTP id l4mr9757755ejn.313.1585562115923;
-        Mon, 30 Mar 2020 02:55:15 -0700 (PDT)
+X-Received: by 2002:a02:cb4b:: with SMTP id k11mr8827091jap.115.1585559588010;
+        Mon, 30 Mar 2020 02:13:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:f682:: with SMTP id d2ls13038279edn.11.gmail; Mon, 30
- Mar 2020 02:55:14 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsj7lQe8JtpInE0drXLhaEUh1arKZUBw5DYUBfY2/1PdJ7RxIrnnR9Dhbv9JoqedkftFzy8
-X-Received: by 2002:aa7:c544:: with SMTP id s4mr10714157edr.271.1585562114903;
-        Mon, 30 Mar 2020 02:55:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585562114; cv=none;
+Received: by 2002:a05:6638:e87:: with SMTP id p7ls2229578jas.6.gmail; Mon, 30
+ Mar 2020 02:13:06 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtHlil8xjAekB+3JWVsSIn2+rPpNyF3mi7Ukx1CsXyO2zi9ACrOgxXSoU+A+1VIkvoxvgxu
+X-Received: by 2002:a05:6638:506:: with SMTP id i6mr1925431jar.59.1585559586665;
+        Mon, 30 Mar 2020 02:13:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585559586; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVZNsRHlMj7fjLS7mOHGNmbbZdwLm33eqdNIRa3yPYYJlcGgIMBwpAzzblzUNyTVdy
-         mj65CUhsoIiA3snU/WGpLUm9jimWNWd0RM78qXfQeYswuhCEpe1Fe2ek5cD25cEgbyka
-         trknu3f850OaEBGaO8MO78/pPyINEu8RpkmVk80eLgbS3lRL8M9YEsDVIwoJWJTEEbvU
-         k45TIl3qdAGFCTRngb1vXcT+9hyLuhw/VhTEEn/Co+5Ad1eY5K8bxEmdUTDC+AEF6bbn
-         QKZw+OrCBAxapah4igQMUG5uN+xRdGm6RH1wpatY3t6onMQ+iJ8A/RvnoAKKO+VuBi+Z
-         DTpw==
+        b=MftJIL1/YZfiM+UShaqNp7+kZ6tYBRfqnw1KPnOxw0vCB3vOGVb1wGTd3u6XPoC3Af
+         pTRQ2fKDSXYxSwwTAdqKcoNvDpcab4iW2aHBe7AYae3958Q2M9Yny+3lQJ47Xnphkm0E
+         rXeIvKneQeqdjKgACXIWnPBVU9xRlBQIK4lif0jjIAPmmXHcHyo9olZIQMmPOpo4vUc9
+         ZYYdn5kmKOiJEyKM7iW3JDfoDQtoURf4loF0a4FZKHAJiRz2wCxHEKO+RSTFJVcklZb2
+         2s4awhI1pslEymuuvnmolqA6LSAp41ME36tfiJgRUgnOiAglsI3grno3nD2iEAwhl1hz
+         ZWZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=1mZmWTXAimdkHsdqGuwOZFTZCllozTCP/U/hylGaJ7A=;
-        b=Zf/M8DJL2wDpN9LVvB6lOOLRevxr6lZiuNODXwW003RFusEZe3VhqAQmRC4Z45gdcW
-         yUKle7/yCZY06eQBxHISFpJQi07afYG2toLwdkc57vfNsVcdg5aJYtBiG+nNxovlAk4L
-         xiXLmHGz48xGfVSdS5i4pW5QQNIFM4kxR9Qh/9tqxKk/AEv2NCNs2tYdktzTOkb9RujB
-         lyJQZp7H77L6vVv95bUe3pnMTXjK5THTfIwu0Eo8Aasrn/w+iKndiAKbRdQYGfmW0Wpr
-         F/iPItTlFnqu6FIMf/utFQlT5FCMnQbJ90rIr7YHHxtKxog7EIGW7mLW0jPbnwet08aV
-         Bh+g==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=3fm/RyRA4eEG+XzycPhu7fTF5Eof5F2/DGa4vJMbMU0=;
+        b=TT2l8ItkCAYPBTnnwMyvNquEO/nd+jS69Wk/UOjurHEyO27mJd9JqaDqJBZP1LAdgS
+         Py5F3YrOOpnVok2YyDF0vj1OUVQ6vy2DNus8/e+z0kvLcarKhssj8SpYIfDegBvjpTFO
+         Dx02+ofijlsmULlr9a/R5aunK2p/wrJLuYxQUe5Dq9QSNHC3NzlNF7AAtJyXWWmQFfIS
+         vfwAumh1v4DjnCatcMqkLsbXvarqNgqHzS0QBvE7ueTCHF9dwJFVNLnp7lSGjr5N4raq
+         FQEJTt/88KjSBerksvJjjozFpxoXTFVY/jVQvJ8SQtya8ucNjnNreBgwXt26T69VlmH8
+         lSPQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XHQHRbuX;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-lj1-x243.google.com (mail-lj1-x243.google.com. [2a00:1450:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id a10si331695edq.5.2020.03.30.02.55.14
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="W/EFtvna";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [216.205.24.74])
+        by gmr-mx.google.com with ESMTPS id m8si975521ili.2.2020.03.30.02.13.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 30 Mar 2020 02:55:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) client-ip=2a00:1450:4864:20::243;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Mar 2020 02:13:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) client-ip=216.205.24.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XHQHRbuX;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::243 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x243.google.com with SMTP id r7so9686704ljg.13
-        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2020 02:55:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=1mZmWTXAimdkHsdqGuwOZFTZCllozTCP/U/hylGaJ7A=;
-        b=XHQHRbuX6CoChSqmIRNlsltmO1l0cdSB89iptZX+ODVCWoT9A+ZgOZvP46RRUA/vhZ
-         woZvtF7Mtr0Q1epao/9WEyTWVtC087+2lxtQ2mK+3tXQlIDszYgdXARL4zS41wJwMbkN
-         P4XkseWY/OhK15UcnPQ3NvzPYHCuH41Yq9J+MukDE4p7lkG3c8CC0OjX4HF9wT2YrI3p
-         a0dgD70/GAa1DSofjfoE5JgGg5DxUl5/LvPaAh2h8PEhgxe0Hvh8b9MTU88qn/8IU/6A
-         Ggb+7KtO1IZn6RIX/LlVXPQkVBpiqnXZcIWWq1eHm68X0UNU/KbRztoHdKPevQ2vRsgU
-         EAuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=1mZmWTXAimdkHsdqGuwOZFTZCllozTCP/U/hylGaJ7A=;
-        b=MNEwBGVan8eM52/f5pa/p9vArRr/elpADWhxwMuxF3rpQBE3vDr0MlU2q+wLu1hfIw
-         n5CeftFh04CeJWqnuJ1YaXjeLc4Y4g1VfXXkbwr0+SkZoryAXi4993Tis/ONi2xEj0F0
-         hSf3V3gOAfyaaoPuEoIGd0hJVgqB9bY7WDwQK8TD1jtaThgVLeC1f6loc3ChkHs9NPBM
-         E4lHFYlF9OpvDaCFNZM0oRub993k7lJCBEF862zDf11eCyW8Js2Ozbo1DDVnFLZTdegi
-         HsOnFZRt6l1Tl/sE2aKuDhfN/D+Mn2utVp2fukHrOoG7RK193EmHsFFyt+4A0rW8YE6b
-         rqxg==
-X-Gm-Message-State: AGi0PuYeRysl1q8cznuL3eiHLZlQa/3Uj3AWLytnsPKVjqoTM4MVz6uH
-	A7aCz8lR8gfXhoYuVggfE3c/p/kq38G7uN4DOAY=
-X-Received: by 2002:a2e:81cf:: with SMTP id s15mr6780776ljg.87.1585562114279;
- Mon, 30 Mar 2020 02:55:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200327144229.19738-1-debsoumyajit100@gmail.com>
- <20200327144229.19738-2-debsoumyajit100@gmail.com> <20200330111251.1d2e6db6@elisabeth>
-In-Reply-To: <20200330111251.1d2e6db6@elisabeth>
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-Date: Mon, 30 Mar 2020 15:25:03 +0530
-Message-ID: <CAMS7mKA7g8Ea2RpkZOZ0R5mkJM+zwawB86CtBiY=D-VZhW6q0A@mail.gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="W/EFtvna";
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 216.205.24.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585559586;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=3fm/RyRA4eEG+XzycPhu7fTF5Eof5F2/DGa4vJMbMU0=;
+	b=W/EFtvnaNzAkofYXOsNFgU5ZhkRVJiXiRauq3b3jzLSoxqqdD9GwYgewaUM5AfRDEHw43W
+	B5QMhEW7FmBmmtZozJaeEWij0PZuXtRpioud3VFJ/ptZ0GmtrCRl7xeguM6yv/Kb2wl9NG
+	wgou759IAjYFc7c2OljTzvol8T/0j00=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-179-fnZOeJDsNha61jA-xNivcQ-1; Mon, 30 Mar 2020 05:13:01 -0400
+X-MC-Unique: fnZOeJDsNha61jA-xNivcQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33FC218A8C80;
+	Mon, 30 Mar 2020 09:13:00 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.47])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 28EE75DA76;
+	Mon, 30 Mar 2020 09:12:57 +0000 (UTC)
+Date: Mon, 30 Mar 2020 11:12:51 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Soumyajit Deb <debsoumyajit100@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
 Subject: Re: [Outreachy kernel] [Outreachy Kernel][PATCH 1/2] staging:
  wlang-ng: Properly align the lines of function call
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: outreachy-kernel@googlegroups.com, Greg KH <gregkh@linuxfoundation.org>
-Content-Type: multipart/alternative; boundary="000000000000974bc705a20f7298"
-
---000000000000974bc705a20f7298
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <20200330111251.1d2e6db6@elisabeth>
+In-Reply-To: <20200327144229.19738-2-debsoumyajit100@gmail.com>
+References: <20200327144229.19738-1-debsoumyajit100@gmail.com>
+	<20200327144229.19738-2-debsoumyajit100@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
-Sorry  for the inconvenience.
-Now I am also confused a bit too
-But as much as I understand,
-this patch is somewhat different from the change I wanted by casting to i32=
-.
+On Fri, 27 Mar 2020 20:12:28 +0530
+Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
 
-This patch just addresses the warning of properly aligning the lines as
-reported by checkpatch.pl.
-While, the change of casting to i32 was for line over 80 characters
-warning, which is a different warning altogether, so that change must be
-addressed in some other patch.
-I wanted to cast to i32 so that I can shorten the line and resolve the
-warning of line over 80 character as reported by checkpatch.pl
+> Align the lines of function call to improve code readability and to
+> adhere to the uniform Linux Kernel coding style.
+> Reported by checkpatch.pl
+>=20
+> Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+> ---
+>  drivers/staging/wlan-ng/cfg80211.c | 27 +++++++++++++--------------
+>  1 file changed, 13 insertions(+), 14 deletions(-)
+>=20
+> diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng=
+/cfg80211.c
+> index fac38c842ac5..3d17037f954e 100644
+> --- a/drivers/staging/wlan-ng/cfg80211.c
+> +++ b/drivers/staging/wlan-ng/cfg80211.c
+> @@ -359,16 +359,15 @@ static int prism2_scan(struct wiphy *wiphy,
+>  =09=09freq =3D ieee80211_channel_to_frequency(msg2.dschannel.data,
+>  =09=09=09=09=09=09      NL80211_BAND_2GHZ);
+>  =09=09bss =3D cfg80211_inform_bss(wiphy,
+> -=09=09=09ieee80211_get_channel(wiphy, freq),
+> -=09=09=09CFG80211_BSS_FTYPE_UNKNOWN,
+> -=09=09=09(const u8 *)&msg2.bssid.data.data,
+> -=09=09=09msg2.timestamp.data, msg2.capinfo.data,
+> -=09=09=09msg2.beaconperiod.data,
+> -=09=09=09ie_buf,
+> -=09=09=09ie_len,
+> -=09=09=09(msg2.signal.data - 65536) * 100, /* Conversion to signed type =
+*/
+> -=09=09=09GFP_KERNEL
+> -=09=09);
+> +=09=09=09=09=09  ieee80211_get_channel(wiphy, freq),
+> +=09=09=09=09=09  CFG80211_BSS_FTYPE_UNKNOWN,
+> +=09=09=09=09=09  (const u8 *)&msg2.bssid.data.data,
+> +=09=09=09=09=09  msg2.timestamp.data, msg2.capinfo.data,
+> +=09=09=09=09=09  msg2.beaconperiod.data,
+> +=09=09=09=09=09  ie_buf,
+> +=09=09=09=09=09  ie_len,
+> +=09=09=09=09=09  (msg2.signal.data - 65536) * 100, /* Conversion to sign=
+ed type */
 
-Sorry, for any misunderstanding. I am very new to kernel development and
-was confused a bit about the process then.
-Sorry for any mistake on my part.
+So... wait a moment:
 
+- March 21, 17:30 UTC: you ask me on IRC how to fix the checkpatch
+  warning you're introducing now. You propose to move the comment on a
+  line by itself. I suggest that you write a test program and find out
+  if this conversion can be done in another way. You say you will do
+  that
 
-On Mon, 30 Mar 2020 at 14:43, Stefano Brivio <sbrivio@redhat.com> wrote:
+- March 27, 10:58 UTC: you ask me on IRC if you can use a cast to "i32".
+  I have a d=C3=A9j=C3=A0 vu, can't really remember who asked me this, and
+  suggest that you write a test program. You say you will do that
 
-> On Fri, 27 Mar 2020 20:12:28 +0530
-> Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
->
-> > Align the lines of function call to improve code readability and to
-> > adhere to the uniform Linux Kernel coding style.
-> > Reported by checkpatch.pl
-> >
-> > Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
-> > ---
-> >  drivers/staging/wlan-ng/cfg80211.c | 27 +++++++++++++--------------
-> >  1 file changed, 13 insertions(+), 14 deletions(-)
-> >
-> > diff --git a/drivers/staging/wlan-ng/cfg80211.c
-> b/drivers/staging/wlan-ng/cfg80211.c
-> > index fac38c842ac5..3d17037f954e 100644
-> > --- a/drivers/staging/wlan-ng/cfg80211.c
-> > +++ b/drivers/staging/wlan-ng/cfg80211.c
-> > @@ -359,16 +359,15 @@ static int prism2_scan(struct wiphy *wiphy,
-> >               freq =3D ieee80211_channel_to_frequency(msg2.dschannel.da=
-ta,
-> >                                                     NL80211_BAND_2GHZ);
-> >               bss =3D cfg80211_inform_bss(wiphy,
-> > -                     ieee80211_get_channel(wiphy, freq),
-> > -                     CFG80211_BSS_FTYPE_UNKNOWN,
-> > -                     (const u8 *)&msg2.bssid.data.data,
-> > -                     msg2.timestamp.data, msg2.capinfo.data,
-> > -                     msg2.beaconperiod.data,
-> > -                     ie_buf,
-> > -                     ie_len,
-> > -                     (msg2.signal.data - 65536) * 100, /* Conversion t=
-o
-> signed type */
-> > -                     GFP_KERNEL
-> > -             );
-> > +                                       ieee80211_get_channel(wiphy,
-> freq),
-> > +                                       CFG80211_BSS_FTYPE_UNKNOWN,
-> > +                                       (const u8
-> *)&msg2.bssid.data.data,
-> > +                                       msg2.timestamp.data,
-> msg2.capinfo.data,
-> > +                                       msg2.beaconperiod.data,
-> > +                                       ie_buf,
-> > +                                       ie_len,
-> > +                                       (msg2.signal.data - 65536) *
-> 100, /* Conversion to signed type */
->
-> So... wait a moment:
->
-> - March 21, 17:30 UTC: you ask me on IRC how to fix the checkpatch
->   warning you're introducing now. You propose to move the comment on a
->   line by itself. I suggest that you write a test program and find out
->   if this conversion can be done in another way. You say you will do
->   that
->
-> - March 27, 10:58 UTC: you ask me on IRC if you can use a cast to "i32".
->   I have a d=C3=A9j=C3=A0 vu, can't really remember who asked me this, an=
-d
->   suggest that you write a test program. You say you will do that
->
-> - March 27, 12:12 UTC: you send the same question to this list
->
-> - March 27, 14:45 UTC: you send this patch
->
-> ...why, exactly?
->
-> --
-> Stefano
->
->
+- March 27, 12:12 UTC: you send the same question to this list
 
---000000000000974bc705a20f7298
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+- March 27, 14:45 UTC: you send this patch
 
-<div dir=3D"ltr"><div>Sorry=C2=A0 for the inconvenience.<br></div><div>Now =
-I am also confused a bit too</div><div>But as much as I understand,<br></di=
-v><div>this patch is somewhat different from the change I wanted by casting=
- to i32.</div><div><br></div><div>This patch just addresses the warning of =
-properly aligning the lines as reported by <a href=3D"http://checkpatch.pl"=
->checkpatch.pl</a>.</div><div>While, the change of casting to i32 was for l=
-ine over 80 characters warning, which is a different warning altogether, so=
- that change must be</div><div>addressed in some other patch. <br></div><di=
-v>I wanted to cast to i32 so that I can shorten the line and resolve the wa=
-rning of line over 80 character as reported by <a href=3D"http://checkpatch=
-.pl">checkpatch.pl</a></div><div><br></div><div>Sorry, for any misunderstan=
-ding. I am very new to kernel development and was confused a bit about the =
-process then. <br></div><div>Sorry for any mistake on my part.<br></div><di=
-v><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
-gmail_attr">On Mon, 30 Mar 2020 at 14:43, Stefano Brivio &lt;<a href=3D"mai=
-lto:sbrivio@redhat.com">sbrivio@redhat.com</a>&gt; wrote:<br></div><blockqu=
-ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
- solid rgb(204,204,204);padding-left:1ex">On Fri, 27 Mar 2020 20:12:28 +053=
-0<br>
-Soumyajit Deb &lt;<a href=3D"mailto:debsoumyajit100@gmail.com" target=3D"_b=
-lank">debsoumyajit100@gmail.com</a>&gt; wrote:<br>
-<br>
-&gt; Align the lines of function call to improve code readability and to<br=
->
-&gt; adhere to the uniform Linux Kernel coding style.<br>
-&gt; Reported by <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=
-=3D"_blank">checkpatch.pl</a><br>
-&gt; <br>
-&gt; Signed-off-by: Soumyajit Deb &lt;<a href=3D"mailto:debsoumyajit100@gma=
-il.com" target=3D"_blank">debsoumyajit100@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/staging/wlan-ng/cfg80211.c | 27 +++++++++++++-----------=
----<br>
-&gt;=C2=A0 1 file changed, 13 insertions(+), 14 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan=
--ng/cfg80211.c<br>
-&gt; index fac38c842ac5..3d17037f954e 100644<br>
-&gt; --- a/drivers/staging/wlan-ng/cfg80211.c<br>
-&gt; +++ b/drivers/staging/wlan-ng/cfg80211.c<br>
-&gt; @@ -359,16 +359,15 @@ static int prism2_scan(struct wiphy *wiphy,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0freq =3D ieee802=
-11_channel_to_frequency(msg2.dschannel.data,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NL80211_BAND_2GHZ);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bss =3D cfg80211=
-_inform_bss(wiphy,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0ieee80211_get_channel(wiphy, freq),<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0CFG80211_BSS_FTYPE_UNKNOWN,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0(const u8 *)&amp;msg2.bssid.data.data,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0msg2.timestamp.data, msg2.capinfo.data,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0msg2.beaconperiod.data,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0ie_buf,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0ie_len,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0(msg2.signal.data - 65536) * 100, /* Conversion to signed type */<br=
->
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0GFP_KERNEL<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ieee8=
-0211_get_channel(wiphy, freq),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CFG80=
-211_BSS_FTYPE_UNKNOWN,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(cons=
-t u8 *)&amp;msg2.bssid.data.data,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0msg2.=
-timestamp.data, msg2.capinfo.data,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0msg2.=
-beaconperiod.data,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ie_bu=
-f,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ie_le=
-n,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(msg2=
-.signal.data - 65536) * 100, /* Conversion to signed type */<br>
-<br>
-So... wait a moment:<br>
-<br>
-- March 21, 17:30 UTC: you ask me on IRC how to fix the checkpatch<br>
-=C2=A0 warning you&#39;re introducing now. You propose to move the comment =
-on a<br>
-=C2=A0 line by itself. I suggest that you write a test program and find out=
-<br>
-=C2=A0 if this conversion can be done in another way. You say you will do<b=
-r>
-=C2=A0 that<br>
-<br>
-- March 27, 10:58 UTC: you ask me on IRC if you can use a cast to &quot;i32=
-&quot;.<br>
-=C2=A0 I have a d=C3=A9j=C3=A0 vu, can&#39;t really remember who asked me t=
-his, and<br>
-=C2=A0 suggest that you write a test program. You say you will do that<br>
-<br>
-- March 27, 12:12 UTC: you send the same question to this list<br>
-<br>
-- March 27, 14:45 UTC: you send this patch<br>
-<br>
-...why, exactly?<br>
-<br>
--- <br>
-Stefano<br>
-<br>
-</blockquote></div>
+...why, exactly?
 
---000000000000974bc705a20f7298--
+--=20
+Stefano
+
 
