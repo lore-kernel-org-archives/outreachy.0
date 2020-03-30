@@ -1,108 +1,103 @@
-X-GM-THRID: 6670157635256320000
-X-Received: by 2002:a9d:7dd6:: with SMTP id k22mr1089023otn.56.1553017095084;
-        Tue, 19 Mar 2019 10:38:15 -0700 (PDT)
+X-GM-THRID: 6808597928719941632
+X-Received: by 2002:a6b:3b50:: with SMTP id i77mr9979878ioa.145.1585562250553;
+        Mon, 30 Mar 2020 02:57:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4541:: with SMTP id s62ls1073018oia.7.gmail; Tue, 19 Mar
- 2019 10:38:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz9Cy2Xm2+4UZWtopH1UtRRoNv261vWCovtWCjhJP5pCIjyl/Qq02xQriJ83MbKdt6eTlSU
-X-Received: by 2002:aca:cf05:: with SMTP id f5mr1214004oig.46.1553017094124;
-        Tue, 19 Mar 2019 10:38:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553017094; cv=none;
+Received: by 2002:a92:3d8d:: with SMTP id k13ls5115635ilf.5.gmail; Mon, 30 Mar
+ 2020 02:57:29 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsVttE7wbWPKpCaWlmIgYHEk6nR2GvctKRJjBhaojlIjXmI8qAE3ZmraFMMr1iIRnfZKAog
+X-Received: by 2002:a92:c60d:: with SMTP id p13mr8511189ilm.241.1585562249215;
+        Mon, 30 Mar 2020 02:57:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585562249; cv=none;
         d=google.com; s=arc-20160816;
-        b=N3YXO/EOTBr+BL1VKiJgjsJJHWoBzG6bnENVdmYurWaFfet8kYNulrcX8zl1kSdIrF
-         Qfj/Cy0daCZnYE6vSevWopPZN3pbAs4TFe2P1k6Lj5knQJL+Z0GWAJbin2UHfx7Zbxm8
-         u2Rmf9pZkHlR1Yk8gvBV6oCikD87uWKXRGyIlKNFXtrdhU2xDuQ0KHK5JcHpP5nHlJKq
-         mjfJ20FqNDF8C/ud1G7CbVZ8kj7Z+cKwA4x57buNSlZi+BRdk18eVVb8L2aSKJLAR7AH
-         CvLSl5tSVaW6fyMNt9DV3jVbQ2qMtL6kVUWrgJe+e1c8vnTVYTt1osWkOW3t+yJ8S+pc
-         zAHg==
+        b=KHaml3D5ozqw2BpRIhCiGfKODlLDXj4FuTmWVeChKXfgaFkaCtBqxwR+uFA32kq+Dy
+         rLD4WyHptejtizUfTE+by33iCHnEaX2/4GBs64q4GFzu0bRDNy5FceoCH4pUXFdEtbcE
+         j5y26Gm8L1T6NsXXkNTX1RqH9FfcBn6+ypmANAqn+7qWEBOUNIQOMwZSHSPABxBvmbbK
+         rqiYOcnZQbjOBjoyCtP792qjNpe7XxODDu0IUBWDkEh0znJu9XokAM0Xvr84dALNPoKh
+         VRNMt5uC6fwFWj32K+a4fOdv7Jc+av+NOrxPKUO/X2NJrEA3N25IwRBx1lCP4b5CAbLK
+         4P9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JY8b0XGmYapl2xjeROHOrorApuUao2COxz3gnKI9wCY=;
-        b=X7VxbB6topFVZdJLv6fPUbpXy07ZMjON9pYzJU+0+I4dTcCF3vGj41G0/DNCZpgL+a
-         4oF3IpurYvrR43wqP736S2LR7sfbT3gtqqW0tpYx3x1kelA8st66JUHGi3Ve9fm/JMJq
-         nyODwWn/CB8tjO3obGXfurQCBLLcvgs8qsjY4Ncvl01d1y10StEIB1CzRuGIOpbeFAOP
-         K9/E6lJiUsFD5FGCWoAEJj/o9vQbPWoMJvp5uG8aKd0ZuX0nUd66LUxK66hMAQowEWZ1
-         D1TjeAA5jFnmH/DkaIgUpeUb5EFM7lA6XVID18cPCVN4LtAzJFM2TGAkR9H3gMCIUkRL
-         6TuQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=t/z3/CCZMGU38TydekqVfeMg4pC09pZB0am9gOPpAMI=;
+        b=TcDxMxV1ORO/9bI4uHBr61KvtdiDaxAwK3DU+b4rdQWGvuG6PCRrDqtZUOrmi8YDY/
+         v5XBoJRjgXgY0lB7k4xjghEu0JqaRTEhMxd0fQQKLMC5nbBkZg31lW9HGUWehkKZZyuV
+         nOnmWZLW4I42aUq11B8nnhNCDKBpIgTy4MHoRywklvYjVFtyVzpWt557+7oSEQ7tr1zu
+         Ih1nsiGjE1CiOE9foWBfkQHREUU+FcDOEM+ty6ykWzDPuohhF8q7u9ncnduplNwS7r27
+         dUjuaMAVxNDnKA5Py/pZsLzP8MnDkqC4HNiCnxTicW34+HI04wXGJt58dcxhrvEKDv0w
+         kDtA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kqdSAuEh;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id x4si673809otg.2.2019.03.19.10.38.14
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CS2e4cbq;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-74.mimecast.com (us-smtp-delivery-74.mimecast.com. [63.128.21.74])
+        by gmr-mx.google.com with ESMTPS id t125si1007767iof.4.2020.03.30.02.57.29
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 10:38:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Mon, 30 Mar 2020 02:57:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) client-ip=63.128.21.74;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kqdSAuEh;
-       spf=pass (google.com: domain of sanjana99reddy99@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=sanjana99reddy99@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id i2so845149pgj.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 19 Mar 2019 10:38:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=JY8b0XGmYapl2xjeROHOrorApuUao2COxz3gnKI9wCY=;
-        b=kqdSAuEh04tyMS91dGbFveAg8XMsi22fLDmumaChRXvmFxumOKgFrlI3fmEKC0b7a8
-         uqREDr7lFkICncBq+UehjQ0+iEh7SNuFdfOcsz2ZKGRq3VC0GTjftvxsuejOQXQ6HNvy
-         HeUvSklFZ+yudhbq7JO2uDymUAylF1QE5fSXqEFNKjshKDPhSsMbnVUzkWsWKffYoyb/
-         70eMWCj9JGAi840PDFf82iJzaMLDVjo84EsFzFpZXq+aHYwRMXFsBjxF906mradlZcOj
-         OX12gyHhsr+lQRoOxM8xXhPo71PvGKlrrQSXHQC5/g8CEfZ38vXbS7ZNu5Wu2oPH4oIq
-         Ni2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=JY8b0XGmYapl2xjeROHOrorApuUao2COxz3gnKI9wCY=;
-        b=N1pzacusv60UMUNhJGsjZ7VM0q7ccilFbfcmcz4ODQ0zd4RdloBY5GQFSmGk6YQwXE
-         5H7ytdC84MT/331ou9w8DeYyAJbtv11WaikqJLE13LsjHOW9mp9WvPUCVM/H3CQzJzMU
-         NRiLXdJmlrQ3AjPar4v/6Sxyd5cJRvhn1MtocwWL0GCnoS5n7Ug6q5HYLTMh4QcjomrY
-         o7RTkFY58to89ipA67Q+63JTsRrm41IBP0FG8yuSnIrJsCdpbMc7XDoNHF062TsizD3A
-         4nKO5W/JKeY2a3JkPFxqC7PP6Ifr2R/l1cwvUllcYsczs7f8kSv8rsnNv7FCeLUlmd4h
-         SeJQ==
-X-Gm-Message-State: APjAAAXmhUdE4eDSyMJKIsAmZHrb1tqfnkWjI1E0P0xzcEFS0YZoipDj
-	ZYB7rTL+CewvlJDitKSDFwTjzAo7O2w=
-X-Received: by 2002:a62:4754:: with SMTP id u81mr3144319pfa.66.1553017092829;
-        Tue, 19 Mar 2019 10:38:12 -0700 (PDT)
-Return-Path: <sanjana99reddy99@gmail.com>
-Received: from sanjana-Inspiron-5570.domain.name ([123.201.165.64])
-        by smtp.googlemail.com with ESMTPSA id x19sm18543060pfm.108.2019.03.19.10.38.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Mar 2019 10:38:11 -0700 (PDT)
-From: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 17/17] staging: rtl8192u: ieee80211: ieee80211_tx.c: Adjust space around else.
-Date: Tue, 19 Mar 2019 23:07:59 +0530
-Message-Id: <20190319173759.4853-1-sanjana99reddy99@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CS2e4cbq;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 63.128.21.74 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585562248;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t/z3/CCZMGU38TydekqVfeMg4pC09pZB0am9gOPpAMI=;
+	b=CS2e4cbqKQZLtJ69P9Cj5aglcVBd11sBf5TecxzFM+6OKcG9vTvbS5Id2XoWMxBSniR9DX
+	sX2fhAUanYEBK+KWJfJzhppxiTpvQVWqXVxrNKBefWnCGm/T/22Q1wmB399BrB2O0av1RD
+	UBkZmvRN5kgJMmWcLAWSori8zgPY7lg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-8-KJ95FzYTM-qUDcbnKeGnZw-1; Mon, 30 Mar 2020 05:57:26 -0400
+X-MC-Unique: KJ95FzYTM-qUDcbnKeGnZw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92BF91005509;
+	Mon, 30 Mar 2020 09:57:25 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 193AC97B12;
+	Mon, 30 Mar 2020 09:57:23 +0000 (UTC)
+Date: Mon, 30 Mar 2020 11:57:18 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Gokce Kuler <gokcekuler@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
+Subject: Re: [Outreachy kernel] [PATCH v5] staging: qlge: Adjust end of
+ block comment
+Message-ID: <20200330115718.502d2c65@elisabeth>
+In-Reply-To: <20200327174401.GA7763@siyah2>
+References: <20200327174401.GA7763@siyah2>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Fix the spacce around else.
-Issue found by checkpatch.pl
+Hi G=C3=B6k=C3=A7e,
 
-ERROR: spaces required before that open brace '{'
-ERROR: spaces required before that close brace '}'
+On Fri, 27 Mar 2020 20:44:01 +0300
+Gokce Kuler <gokcekuler@gmail.com> wrote:
 
-Signed-off-by: Sanjana Sanikommu <sanjana99reddy99@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Drop an unnecessary * on the last line of a block comment to follow the L=
+inux kernel coding conventions.
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-index 024fa2702546..19e5b4fdd524 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-@@ -851,7 +851,7 @@ int ieee80211_xmit(struct sk_buff *skb, struct net_device *dev)
- 		  else
- 			ieee->seq_ctrl[0]++;
- 		}
--	}else{
-+	} else {
- 		if (unlikely(skb->len < sizeof(struct rtl_80211_hdr_3addr))) {
- 			printk(KERN_WARNING "%s: skb too small (%d).\n",
- 			ieee->dev->name, skb->len);
--- 
-2.17.1
+Thanks for sticking with this, I understand this might be frustrating
+but it's important that you get familiar with it.
+
+So... Greg suggested that you should fix the strange line wrapping in
+the commit message -- not that you avoid it altogether. Messages should
+still be wrapped (to 70, 72, or 76 columns, you choose) characters.
+
+A message like the one above, 104 columns, won't really be practical
+for usage with git.
+
+--=20
+Stefano
 
 
