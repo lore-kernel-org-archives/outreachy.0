@@ -1,329 +1,199 @@
-X-GM-THRID: 6748590079853199360
-X-Received: by 2002:a67:ea82:: with SMTP id f2mr601809vso.70.1571278572425;
-        Wed, 16 Oct 2019 19:16:12 -0700 (PDT)
+X-GM-THRID: 6809434547497730048
+X-Received: by 2002:a5b:58f:: with SMTP id l15mr4360680ybp.84.1585627347301;
+        Mon, 30 Mar 2020 21:02:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:ee8f:: with SMTP id m137ls40765vkh.6.gmail; Wed, 16 Oct
- 2019 19:16:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxBFe6EDkVljpiv4ys06IzuXR361szpeOYH1v/g2AxEDul0/l6PXYpTAkN+tzKxbk0EZlFu
-X-Received: by 2002:a1f:5846:: with SMTP id m67mr691825vkb.13.1571278569395;
-        Wed, 16 Oct 2019 19:16:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571278569; cv=none;
+Received: by 2002:a25:1d85:: with SMTP id d127ls6710456ybd.0.gmail; Mon, 30
+ Mar 2020 21:02:26 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vuce1PZiBf5HbswS9z3dBnAAaycs5zxb3VdxSQQDnNFRPoYOo2bjvXH6er9T8RRQX9AQpf/
+X-Received: by 2002:a5b:c4a:: with SMTP id d10mr6205956ybr.59.1585627346066;
+        Mon, 30 Mar 2020 21:02:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585627346; cv=none;
         d=google.com; s=arc-20160816;
-        b=o3myWRSHCCKBptJTcubTkHIZCIUKlM0wnBiLDyGFofMAfugvfZ6ttF6C23SuXY+Znl
-         S50NmG+C75GDxs/WCFFndsvymd7HH2j4xaU3XQwjq/PLkdi6zD4xuMHTdlEhghAfKR3u
-         +/CJk2Y4c7/r/Ly/SODb54mK0azZ5cEzJWiviZi88xBlrfCSV+7bcXnuDXN7THpD5ulm
-         VHxI66coB5vRqrfeXnJXt7/P0Lb40/4otEAbCt0d1sukAAvW27VSVcLN1HAJG2u+k5mg
-         UnahDjEtMV5Tk9/g3hJfcyBwPcqrk1mwB/5X405Njnv+CuReYp0+cNrTh5K7CjG6jW/7
-         sKBg==
+        b=xQORrX6VERkPKQFSOFRzvsufBYZTHbHtf8O1tkCfsmxMOHvO5rzSS56VboNlr5mTfI
+         c2v6TMSrLNFf7/Ax0nd7facQM9lSe0UEcq9/vEGyS9cs23ovh/YBYxdkSnzaR3TI9qIx
+         fAasNRBomz8au6SA1zs0XVRbU2EwShiMD8DpQW+LSLkpPIlCUnt8D13H/6cBUVXjiWh/
+         85yEsV64L8UcWqFqCdaoL/kUSUjxhkdeqIgAANVLle/0hA72HXitjYZMyu6LTvfTRq2t
+         688IMaCALIpxG6RGt/U/K4cYGh7VAZeRzCs+ApQBtjEzU5nIMHx03hd2hlrzBLWaHGVg
+         WnQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=toZSFk0HczoOiv3P+T3cDHjriDoDDElhCHg3nHUg2cs=;
-        b=vcxvpIheUWgzCpEOcFLnS4P2fMdIaEu6bBR5rXvvFAD2oCrZqqBx4f24Q/4pZ45HCu
-         XqbUaTzH2W0ZNQIZxKTNX5dDa6Rj8a/951n2raEcCSMkodtvqWHmupHzpsS9fSIB6FX/
-         ifhsftwxeXDjGSsh+5oIWFh6hPC/6t05IIURgOWokZtfTWftYBSaHa95+XC7we3hAm6q
-         3TxKjxNMwORX23N2VRfAlTyiW7hY+e2DdZnlXx6gfeSnlYRCwHL5QNn/c3ld2AAu5/25
-         tZjmH/fyNPKggmB76jCMEtg1mcspygBVX7Ux1DmNjehiVceuZTWMIXE76EZ/3aAlk6TX
-         3kcg==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=A2LJJaupzp2aMGkmk87FcXXmkb49shKJ8fqP4LYjhBk=;
+        b=QkijdH/e4G8mGbMMrzKn3olwSHXyIjfnStmJv+1eByS9uY3O6YdNXm6HXGLQYhIfnv
+         ZAVQ/xZNOvd+W8k6BWEqYXDnDLH/oR8bEDyHteTnSMm5PYx3OCee0Pn4RVWyXm/H3JBr
+         UeKqUfMy9HzPf5XD+FEwU3IYH+zMNrTrGPYBd9VjjBjqsdTFndvxsozU5/qc2NqXZyd8
+         28pxNYS3G9kuR7pjm2OtT5H53Z/O2GLPJ6sQEfbUOR9NRnZW8bEjq24UeHLnd5wwEsGc
+         R2isYh6Mj9Fxm2V9YaN2TAK6HrdV9GjhTEHRZ3h8OtgAooIpKH8X2Y/xop89P+gyRntz
+         MigA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="JueV0/De";
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NjA29DnW;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id u65si17625vsb.0.2019.10.16.19.16.09
+Return-Path: <briana.oursler@gmail.com>
+Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
+        by gmr-mx.google.com with ESMTPS id d72si687262ybh.5.2020.03.30.21.02.26
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Oct 2019 19:16:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        Mon, 30 Mar 2020 21:02:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="JueV0/De";
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NjA29DnW;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id c3so352215plo.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 16 Oct 2019 19:16:09 -0700 (PDT)
+Received: by mail-pj1-x1041.google.com with SMTP id v13so529195pjb.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 30 Mar 2020 21:02:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=toZSFk0HczoOiv3P+T3cDHjriDoDDElhCHg3nHUg2cs=;
-        b=JueV0/DeoxB9+7vkHMgUCYgOK77plQXiyGMYIH8OVpsrnJplBKHxpfJzVUuaDIkete
-         B2YQYR5j6DGrU/66S0Of7ayoX4eNCezhXjGFgfRKLR/0cVIO7j08+hOgV6P5hsF+6rLy
-         7Dyj/yHc9UIkBAW1vz8nrMcqmjooPnfk69emELSsv6zKzjrH7UpVYp8yKf/49vAkb6PH
-         ApXZt7XGTdpVOdGVQmg0f7a74BxiWvTpzu0MABw+NTYzBkwoZjvekgVWw4Efz7PQDjsF
-         kOxlFec0B1sx4tRCX6+54xZlZoVIIxgLf2UZwZRe3qlqcOd3jpPu3ib+oMfgarbCEQNK
-         YyWg==
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=A2LJJaupzp2aMGkmk87FcXXmkb49shKJ8fqP4LYjhBk=;
+        b=NjA29DnWs2ZbfSxTtfEMLdJ23vHdM8ZB4q9sMcZq+m4RrlirIwVteprffzWlQxZKj4
+         dYjFBafDU8VvfKIZtAkvHQiuZGh0wFeoZ1uZqyvRmqro/VVrlI8WkTTMbh9J2ZF3XBf/
+         ukQJu8S4YGXiK6aX61z/neVk5x+HBlBvz7JehCpmr2uRjWTERRjDrRwXwJhZeusvp2tz
+         GBqHYZs4o0Sh1qmnhp5uDt76nZtc5bG5vuIUehKEOrjVQUnMR4veBI0B21d3EHpCYD+D
+         hJwTmRbHXZwWcx8+87Ey7XlV7t92atG83hqsW0DqhAHtFJ99lo2GNcqSBh+uUIbpFe5S
+         nQqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=toZSFk0HczoOiv3P+T3cDHjriDoDDElhCHg3nHUg2cs=;
-        b=V0U260hmwB8v3FKAdrRcNG5pI9AoVObIaB3VifaGSdq+aYCXvTdOqCIqHG9U6KAwr2
-         157aMh+QoHdCm6SUlMMXtcheHJLmFRCkaAFP2GkidKZ1wtwBwhaZSmPqO7hQtmN3k2ob
-         cNQPJuQKXaOTAbofXmqsDe9KVMRlQ9OhvNiC20/i4oAE0qNs/x2X/qaq6hdtnFdQZX2Z
-         HfN/oNmDXZxBCoflFzbKkYyr068DhOGjUGWYBWLE1eiy+dVUY0U1wx0GAt0QZjeTub2g
-         WOkX6opPg+yWizp7txygVtJ6U30pyNeLzdMUDRUc83KP4hg9XqJx01JTRPS31XU1Mkkp
-         126Q==
-X-Gm-Message-State: APjAAAWiFXGPdYuja/91695Wtxurfb1PRXM8uaxNioqa67h7c+z/VQ4i
-	woaw45EyNbM/9zkV/InILgE=
-X-Received: by 2002:a17:902:bf08:: with SMTP id bi8mr1341366plb.249.1571278568367;
-        Wed, 16 Oct 2019 19:16:08 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id l184sm428663pfl.76.2019.10.16.19.16.07
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=A2LJJaupzp2aMGkmk87FcXXmkb49shKJ8fqP4LYjhBk=;
+        b=LYPWJRTuW8zmz2RrNzWM8lH5Sjxq4J4QrsB2rmfJj7pFBoJFVpuWDT5wgEKIMklPPB
+         x+AGzbD+ui35+JgXa/3MhjrdSBVMzJgDaZYrw14nqRxSiPxaMWCpVph2+1ivumYvoJGG
+         cmfPi/d5I/A/HKnlQl0NOYDtbPKLFBLqZXK1EZXH8JWVPHDMxKv71Yzd2sL6ZPy/7mCb
+         HurVy3vbAlgfRsMRlb74DH6lfJNTq3JhDHyhGhTDhM9IGLBdcam2XjZgHk5iGD5hiaxW
+         ZkSmNnFk3lKbNd48fsxvFoosvgkb6cD+LqVmpCiGHzMfbI0R8MZLnoCrVQjt7qsgWdYT
+         rUVQ==
+X-Gm-Message-State: AGi0PubaFul47p4nY1tNTJMucuQI7JnkEEjs1cE4fGMIiKM3nQAWSkjI
+	/UtLtgN8zOTP+nZId24SyVwsFdRxO/1EVA==
+X-Received: by 2002:a17:90a:1d4:: with SMTP id 20mr1501615pjd.95.1585627344990;
+        Mon, 30 Mar 2020 21:02:24 -0700 (PDT)
+Return-Path: <briana.oursler@gmail.com>
+Received: from ?IPv6:2601:1c0:5400:122:2697:be21:1d90:fb7a? ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
+        by smtp.gmail.com with ESMTPSA id d26sm11306174pfo.37.2020.03.30.21.02.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2019 19:16:07 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Jamal Shareef <jamal.k.shareef@gmail.com>,
-	sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: sm750fb: Edit CamelCase in ddk750_mode files
-Date: Wed, 16 Oct 2019 19:15:51 -0700
-Message-Id: <20191017021551.2951-1-jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Mon, 30 Mar 2020 21:02:24 -0700 (PDT)
+Message-ID: <2284c3244be70e2b18d760883e679476b5b13861.camel@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/3] Staging: vt6655: Remove
+ CARDbSoftwareReset definition.
+From: Briana Oursler <briana.oursler@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>, Stefano Brivio <sbrivio@redhat.com>
+Cc: gregkh@linuxfoundation.org, forest@alittletooquiet.net, 
+	outreachy-kernel@googlegroups.com
+Date: Mon, 30 Mar 2020 21:02:23 -0700
+In-Reply-To: <alpine.DEB.2.21.2003301654140.2432@hadrien>
+References: <cover.1585442480.git.briana.oursler@gmail.com>
+	 <99a02f7f8fe001b30d3e4839c7793922c37027e4.1585442480.git.briana.oursler@gmail.com>
+	 <20200330164514.7f0c2272@elisabeth>
+	 <alpine.DEB.2.21.2003301654140.2432@hadrien>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.32.5 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-Edit CamelCase naming in ddk750 files and
-in dependent file sm750_hw.c.
+On Mon, 2020-03-30 at 16:55 +0200, Julia Lawall wrote:
+> 
+> On Mon, 30 Mar 2020, Stefano Brivio wrote:
+> 
+> > On Sat, 28 Mar 2020 18:23:40 -0700
+> > Briana Oursler <briana.oursler@gmail.com> wrote:
+> > 
+> > > Remove uncalled function CARDbSoftwareReset and comments related
+> > > to it.
+> > 
+> > I'm not a native English speaker, so I'm not entirely sure about
+> > this:
+> > would you really *call* a function "uncalled"?
+> > 
+> > To me, an "uncalled" function sounds like an undesired function.
+> > Which
+> > is true, but that's not, strictly speaking, the reason why you're
+> > removing it. You're removing it because it's not called. Not
+> > because
+> > it's uncalled.
+> > 
+> > Or... is it exactly the same?
+> 
+> Actually, it seems minimally ok to me.  But "Remove the function XXX
+> that
+> is never called" would indeed be more clear.
+> 
+> julia
+> 
+Okay, that makes sense, I will go ahead and make the change. I'll
+update the phrase as it appears throughout the series shortly. Thanks,
+Julia, clear commit descriptions are definitely tough for me at this
+stage.
 
-Issue found by checkpatch.
+> > > Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+> > > ---
+> > >  drivers/staging/vt6655/card.c | 20 --------------------
+> > >  drivers/staging/vt6655/card.h |  1 -
+> > >  2 files changed, 21 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/vt6655/card.c
+> > > b/drivers/staging/vt6655/card.c
+> > > index e65c9825ea5a..135010d2c7d3 100644
+> > > --- a/drivers/staging/vt6655/card.c
+> > > +++ b/drivers/staging/vt6655/card.c
+> > > @@ -12,7 +12,6 @@
+> > >   *      CARDbAddBasicRate - Add to BasicRateSet
+> > >   *      CARDbIsOFDMinBasicRate - Check if any OFDM rate is in
+> > > BasicRateSet
+> > >   *      CARDvSetLoopbackMode - Set Loopback mode
+> > > - *      CARDbSoftwareReset - Sortware reset NIC
+> > >   *      CARDqGetTSFOffset - Calculate TSFOffset
+> > >   *      CARDbGetCurrentTSF - Read Current NIC TSF counter
+> > >   *      CARDqGetNextTBTT - Calculate Next Beacon TSF counter
+> > > @@ -843,25 +842,6 @@ void CARDvSetLoopbackMode(struct vnt_private
+> > > *priv,
+> > >  	/* set Baseband loopback */
+> > >  }
+> > > 
+> > > -/*
+> > > - * Description: Software Reset NIC
+> > > - *
+> > > - * Parameters:
+> > > - *  In:
+> > > - *      priv         - The adapter to be reset
+> > > - *  Out:
+> > > - *      none
+> > > - *
+> > > - * Return Value: none
+> > > - */
+> > > -bool CARDbSoftwareReset(struct vnt_private *priv)
+> > > -{
+> > > -	/* reset MAC */
+> > > -	if (!MACbSafeSoftwareReset(priv))
+> > > -		return false;
+> > > -
+> > > -	return true;
+> > > -}
+> > > 
+> > 
+> > This newline should be removed for consistency. I mean, either this
+> > one, or the one after CARDvSetLoopbackMode() -- nobody will be able
+> > to tell which one you chose. :)
+> > 
+Will do! 
 
-Signed-off-by: Jamal Shareef <jamal.k.shareef@gmail.com>
----
- drivers/staging/sm750fb/ddk750_mode.c | 86 +++++++++++++--------------
- drivers/staging/sm750fb/ddk750_mode.h |  2 +-
- drivers/staging/sm750fb/sm750_hw.c    |  2 +-
- 3 files changed, 45 insertions(+), 45 deletions(-)
+Thanks for reviewing, 
 
-diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-index e00a6cb31947..f08dcab29172 100644
---- a/drivers/staging/sm750fb/ddk750_mode.c
-+++ b/drivers/staging/sm750fb/ddk750_mode.c
-@@ -14,13 +14,13 @@
-  * in bit 29:27 of Display Control register.
-  */
- static unsigned long
--displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
--			     unsigned long dispControl)
-+display_control_adjust_SM750LE(struct mode_parameter *p_mode_param,
-+			       unsigned long disp_control)
- {
- 	unsigned long x, y;
- 
--	x = pModeParam->horizontal_display_end;
--	y = pModeParam->vertical_display_end;
-+	x = p_mode_param->horizontal_display_end;
-+	y = p_mode_param->vertical_display_end;
- 
- 	/*
- 	 * SM750LE has to set up the top-left and bottom-right
-@@ -42,41 +42,41 @@ displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
- 	 */
- 
- 	/* Clear bit 29:27 of display control register */
--	dispControl &= ~CRT_DISPLAY_CTRL_CLK_MASK;
-+	disp_control &= ~CRT_DISPLAY_CTRL_CLK_MASK;
- 
- 	/* Set bit 29:27 of display control register for the right clock */
- 	/* Note that SM750LE only need to supported 7 resolutions. */
- 	if (x == 800 && y == 600)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL41;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL41;
- 	else if (x == 1024 && y == 768)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL65;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL65;
- 	else if (x == 1152 && y == 864)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL80;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL80;
- 	else if (x == 1280 && y == 768)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL80;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL80;
- 	else if (x == 1280 && y == 720)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL74;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL74;
- 	else if (x == 1280 && y == 960)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL108;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL108;
- 	else if (x == 1280 && y == 1024)
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL108;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL108;
- 	else /* default to VGA clock */
--		dispControl |= CRT_DISPLAY_CTRL_CLK_PLL25;
-+		disp_control |= CRT_DISPLAY_CTRL_CLK_PLL25;
- 
- 	/* Set bit 25:24 of display controller */
--	dispControl |= (CRT_DISPLAY_CTRL_CRTSELECT | CRT_DISPLAY_CTRL_RGBBIT);
-+	disp_control |= (CRT_DISPLAY_CTRL_CRTSELECT | CRT_DISPLAY_CTRL_RGBBIT);
- 
- 	/* Set bit 14 of display controller */
--	dispControl |= DISPLAY_CTRL_CLOCK_PHASE;
-+	disp_control |= DISPLAY_CTRL_CLOCK_PHASE;
- 
--	poke32(CRT_DISPLAY_CTRL, dispControl);
-+	poke32(CRT_DISPLAY_CTRL, disp_control);
- 
--	return dispControl;
-+	return disp_control;
- }
- 
- /* only timing related registers will be  programed */
--static int programModeRegisters(struct mode_parameter *pModeParam,
--				struct pll_value *pll)
-+static int program_mode_registers(struct mode_parameter *p_mode_param,
-+				  struct pll_value *pll)
- {
- 	int ret = 0;
- 	int cnt = 0;
-@@ -86,46 +86,46 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
- 		/* programe secondary pixel clock */
- 		poke32(CRT_PLL_CTRL, sm750_format_pll_reg(pll));
- 
--		tmp = ((pModeParam->horizontal_total - 1) <<
-+		tmp = ((p_mode_param->horizontal_total - 1) <<
- 		       CRT_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
- 		     CRT_HORIZONTAL_TOTAL_TOTAL_MASK;
--		tmp |= (pModeParam->horizontal_display_end - 1) &
-+		tmp |= (p_mode_param->horizontal_display_end - 1) &
- 		      CRT_HORIZONTAL_TOTAL_DISPLAY_END_MASK;
- 
- 		poke32(CRT_HORIZONTAL_TOTAL, tmp);
- 
--		tmp = (pModeParam->horizontal_sync_width <<
-+		tmp = (p_mode_param->horizontal_sync_width <<
- 		       CRT_HORIZONTAL_SYNC_WIDTH_SHIFT) &
- 		     CRT_HORIZONTAL_SYNC_WIDTH_MASK;
--		tmp |= (pModeParam->horizontal_sync_start - 1) &
-+		tmp |= (p_mode_param->horizontal_sync_start - 1) &
- 		      CRT_HORIZONTAL_SYNC_START_MASK;
- 
- 		poke32(CRT_HORIZONTAL_SYNC, tmp);
- 
--		tmp = ((pModeParam->vertical_total - 1) <<
-+		tmp = ((p_mode_param->vertical_total - 1) <<
- 		       CRT_VERTICAL_TOTAL_TOTAL_SHIFT) &
- 		     CRT_VERTICAL_TOTAL_TOTAL_MASK;
--		tmp |= (pModeParam->vertical_display_end - 1) &
-+		tmp |= (p_mode_param->vertical_display_end - 1) &
- 		      CRT_VERTICAL_TOTAL_DISPLAY_END_MASK;
- 
- 		poke32(CRT_VERTICAL_TOTAL, tmp);
- 
--		tmp = ((pModeParam->vertical_sync_height <<
-+		tmp = ((p_mode_param->vertical_sync_height <<
- 		       CRT_VERTICAL_SYNC_HEIGHT_SHIFT)) &
- 		     CRT_VERTICAL_SYNC_HEIGHT_MASK;
--		tmp |= (pModeParam->vertical_sync_start - 1) &
-+		tmp |= (p_mode_param->vertical_sync_start - 1) &
- 		      CRT_VERTICAL_SYNC_START_MASK;
- 
- 		poke32(CRT_VERTICAL_SYNC, tmp);
- 
- 		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
--		if (pModeParam->vertical_sync_polarity)
-+		if (p_mode_param->vertical_sync_polarity)
- 			tmp |= DISPLAY_CTRL_VSYNC_PHASE;
--		if (pModeParam->horizontal_sync_polarity)
-+		if (p_mode_param->horizontal_sync_polarity)
- 			tmp |= DISPLAY_CTRL_HSYNC_PHASE;
- 
- 		if (sm750_get_chip_type() == SM750LE) {
--			displayControlAdjust_SM750LE(pModeParam, tmp);
-+			display_control_adjust_SM750LE(p_mode_param, tmp);
- 		} else {
- 			reg = peek32(CRT_DISPLAY_CTRL) &
- 				~(DISPLAY_CTRL_VSYNC_PHASE |
-@@ -140,40 +140,40 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
- 
- 		poke32(PANEL_PLL_CTRL, sm750_format_pll_reg(pll));
- 
--		reg = ((pModeParam->horizontal_total - 1) <<
-+		reg = ((p_mode_param->horizontal_total - 1) <<
- 			PANEL_HORIZONTAL_TOTAL_TOTAL_SHIFT) &
- 			PANEL_HORIZONTAL_TOTAL_TOTAL_MASK;
--		reg |= ((pModeParam->horizontal_display_end - 1) &
-+		reg |= ((p_mode_param->horizontal_display_end - 1) &
- 			PANEL_HORIZONTAL_TOTAL_DISPLAY_END_MASK);
- 		poke32(PANEL_HORIZONTAL_TOTAL, reg);
- 
- 		poke32(PANEL_HORIZONTAL_SYNC,
--		       ((pModeParam->horizontal_sync_width <<
-+		       ((p_mode_param->horizontal_sync_width <<
- 			 PANEL_HORIZONTAL_SYNC_WIDTH_SHIFT) &
- 			PANEL_HORIZONTAL_SYNC_WIDTH_MASK) |
--		       ((pModeParam->horizontal_sync_start - 1) &
-+		       ((p_mode_param->horizontal_sync_start - 1) &
- 			PANEL_HORIZONTAL_SYNC_START_MASK));
- 
- 		poke32(PANEL_VERTICAL_TOTAL,
--		       (((pModeParam->vertical_total - 1) <<
-+		       (((p_mode_param->vertical_total - 1) <<
- 			 PANEL_VERTICAL_TOTAL_TOTAL_SHIFT) &
- 			PANEL_VERTICAL_TOTAL_TOTAL_MASK) |
--		       ((pModeParam->vertical_display_end - 1) &
-+		       ((p_mode_param->vertical_display_end - 1) &
- 			PANEL_VERTICAL_TOTAL_DISPLAY_END_MASK));
- 
- 		poke32(PANEL_VERTICAL_SYNC,
--		       ((pModeParam->vertical_sync_height <<
-+		       ((p_mode_param->vertical_sync_height <<
- 			 PANEL_VERTICAL_SYNC_HEIGHT_SHIFT) &
- 			PANEL_VERTICAL_SYNC_HEIGHT_MASK) |
--		       ((pModeParam->vertical_sync_start - 1) &
-+		       ((p_mode_param->vertical_sync_start - 1) &
- 			PANEL_VERTICAL_SYNC_START_MASK));
- 
- 		tmp = DISPLAY_CTRL_TIMING | DISPLAY_CTRL_PLANE;
--		if (pModeParam->vertical_sync_polarity)
-+		if (p_mode_param->vertical_sync_polarity)
- 			tmp |= DISPLAY_CTRL_VSYNC_PHASE;
--		if (pModeParam->horizontal_sync_polarity)
-+		if (p_mode_param->horizontal_sync_polarity)
- 			tmp |= DISPLAY_CTRL_HSYNC_PHASE;
--		if (pModeParam->clock_phase_polarity)
-+		if (p_mode_param->clock_phase_polarity)
- 			tmp |= DISPLAY_CTRL_CLOCK_PHASE;
- 
- 		reserved = PANEL_DISPLAY_CTRL_RESERVED_MASK |
-@@ -207,7 +207,7 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
- 	return ret;
- }
- 
--int ddk750_setModeTiming(struct mode_parameter *parm, enum clock_type clock)
-+int ddk750_set_mode_timing(struct mode_parameter *parm, enum clock_type clock)
- {
- 	struct pll_value pll;
- 
-@@ -220,6 +220,6 @@ int ddk750_setModeTiming(struct mode_parameter *parm, enum clock_type clock)
- 		outb_p(0x88, 0x3d4);
- 		outb_p(0x06, 0x3d5);
- 	}
--	programModeRegisters(parm, &pll);
-+	program_mode_registers(parm, &pll);
- 	return 0;
- }
-diff --git a/drivers/staging/sm750fb/ddk750_mode.h b/drivers/staging/sm750fb/ddk750_mode.h
-index 2df78a0937b2..1b70885f85e5 100644
---- a/drivers/staging/sm750fb/ddk750_mode.h
-+++ b/drivers/staging/sm750fb/ddk750_mode.h
-@@ -33,5 +33,5 @@ struct mode_parameter {
- 	enum spolarity clock_phase_polarity;
- };
- 
--int ddk750_setModeTiming(struct mode_parameter *parm, enum clock_type clock);
-+int ddk750_set_mode_timing(struct mode_parameter *parm, enum clock_type clock);
- #endif
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index ea1d3d4efbc2..15ac73821ab5 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -305,7 +305,7 @@ int hw_sm750_crtc_setMode(struct lynxfb_crtc *crtc,
- 		clock = SECONDARY_PLL;
- 
- 	pr_debug("Request pixel clock = %lu\n", modparm.pixel_clock);
--	ret = ddk750_setModeTiming(&modparm, clock);
-+	ret = ddk750_set_mode_timing(&modparm, clock);
- 	if (ret) {
- 		pr_err("Set mode timing failed\n");
- 		goto exit;
--- 
-2.17.1
+Briana
+> > >  /*
+> > >   * Description: Calculate TSF offset of two TSF input
+> > 
+> > --
+> > Stefano
+> > 
+> > --
+> > You received this message because you are subscribed to the Google
+> > Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> > send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit 
+> > https://groups.google.com/d/msgid/outreachy-kernel/20200330164514.7f0c2272%40elisabeth
+> > .
+> > 
 
 
