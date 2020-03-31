@@ -1,100 +1,184 @@
 X-GM-THRID: 6810515093003960320
-X-Received: by 2002:a9d:6341:: with SMTP id y1mr5585855otk.40.1585710364942;
-        Tue, 31 Mar 2020 20:06:04 -0700 (PDT)
+X-Received: by 2002:aca:c608:: with SMTP id w8mr945025oif.163.1585696617374;
+        Tue, 31 Mar 2020 16:16:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:b98a:: with SMTP id j132ls9415390oif.3.gmail; Tue, 31
- Mar 2020 20:06:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ9pdvNZFluJx+hziO3uofWhhXqsvSznMr5+Wk9iOHghR2teGewB+TyKDiS1LfxGsqoXUAQ
-X-Received: by 2002:aca:1b14:: with SMTP id b20mr1431520oib.18.1585710363788;
-        Tue, 31 Mar 2020 20:06:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585710363; cv=none;
+Received: by 2002:aca:508d:: with SMTP id e135ls9295275oib.5.gmail; Tue, 31
+ Mar 2020 16:16:55 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIs62vpt6v/pFZ7quLWJW5iS4Cf/QPPNBnrThqhokJBsfjKpE+xdlMdE07gr8f1nLSUFT2D
+X-Received: by 2002:aca:c7c5:: with SMTP id x188mr963365oif.130.1585696615689;
+        Tue, 31 Mar 2020 16:16:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585696615; cv=none;
         d=google.com; s=arc-20160816;
-        b=gLKJvFFZRbzP1IoEQKrTNYCSeAYmwwmV9cEZ73W7MsLBSnQ41xn3F0uF9ZmE132qho
-         jZmg8QZd+iWRVAchwQXIsO0woD50kia7JXzsrU7PK+SsAMb9HYi3j/6lnVF/aFlui5jI
-         RtlMtS4xZubkmmN34Svz+QKXwVl4h+dIRoIhBJLXuC/IasK14yJNAzWZJpEPk+mbrTmq
-         ZAPmN5NqG2yDWwXET++IF/9BhWfmD5UGxHyM9qYVpUBYwQmTgIAaLCyU//pHpKlhl+8O
-         We7t8dvW/reZKw355niCMkFprz8z9ealoimNkz+/XSu3nXOliKEb8ytw0+33iI9IT5O4
-         1a/Q==
+        b=HOhBZNM4MNFgCa8H9sKo7U5hUJOEXGRqaPkvDTyAlxoavjPpkmEIUOzD38aXuEJvFL
+         imTMQSp3yq7xmvWIKW8ay5xpXR3pPc4ee/ciHq6ZSFHsyiZQ2nBbYijrSKlW4O+OsNqz
+         vlK9NHZAmc1xY28BDFlEVkoxb9SKWpmmhrB1z/LOkDhqriqlu6SzF+A2aVtUiKlbYBAR
+         tJ32eJvh1sIzoSQXAKvnc1qyzAASkSkathF4YWPHgX6txmTLzHV6Mt2XKZ5+gT+6G3GW
+         I9qWTXXiZxuOgnxRQmG7rTgsTm47+rkYShoPHuRtyniFDDKKhP+GNL/eU2ycis4G//2x
+         wZNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=h47WfR0HobNFm6KO4E3seyHoN8wfRq+Djb/T69FfIiQ=;
-        b=qrwQBay3Ecx1J2NstXEIr3su3HjKvbGnlZN5c1E7w5CeTVzHABxOSRjHDPV5GbQP4a
-         9/tAaDrrurz+E5PhTUAikXj93MQRzIAKEfyTJFVE/f7FGg73Mg7b2GMGHmjXEpxA0RNh
-         IbEsgvkr2QpHAjxgJtLsSdhfX9ibEULZVMXFiL3/6DMS0xjkFZ6FF4wFbaXiPkAfIm0G
-         7Zq5MmGVwRcrZoDQhFM88znD/rRKeJL2AaYbPtL1GhRmOwoT+qaIWC5w9oEyTVJnJuEd
-         hVOrP6HpB4ACuhcDUgCfX6yd7FXEX5Jca4bG+uQX4uQ4cDOJhJDKcHRqXXIWier6aDo6
-         tRbA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=h7deIcdclpRVvNuVGYN2WRt+o+QSDqccuF1him2vUgs=;
+        b=iYCKRmtP1aztgpatbmVzhY7fESO98jqDRfKAtj0Keqe7nE65QPBKJDWUYOLEJFgs6G
+         PAktHgllkv4gWXQQGcfK8bpUBgf1gT8s8R7ZMQoq1UHRTw6xSkyqizKQY0WpOT+hL1Og
+         PE7T14FVmchTDyXYzojk6wLBF6BvF4v+s/0hUtv4mfmcqWLTb3PAN3thK42tBHPhUe/N
+         Ux34czC8AhfoiRLL22HclNmEvKyhqfI6PvmIH6MXlHZzJMPsDWsy8IdJrgTwmGoh0JIw
+         g19WPlaMVmPIfOXqO+Iuemf63PAriZn+hRORZn+b+e2hfjoeCu5N/vsQjEuqS2Y+bdNK
+         DiLQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aIXqwZiQ;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by gmr-mx.google.com with ESMTPS id m19si85753otn.4.2020.03.31.20.06.03
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gU0GVl12;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <briana.oursler@gmail.com>
+Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id d11si25026otk.5.2020.03.31.16.16.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2020 20:06:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 Mar 2020 16:16:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aIXqwZiQ;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585710363;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=h47WfR0HobNFm6KO4E3seyHoN8wfRq+Djb/T69FfIiQ=;
-	b=aIXqwZiQLT8wktM8i/iwxxeUr3QqtMyYwuKHb/+LXXEbRT1WNUooXtN63wGuRv0gpUkSqF
-	+fyuezMBrR3pQzAPZ7OPldYtpiafhirkmYPrCDs9g/kFQre14HQIkSGpoo3nPmJZpFi/zm
-	xFV1CbBAI6qeL4T6BKrJ8IkbJNM/180=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-367-msfs1RlVMrGNVCdcu8BuNw-1; Tue, 31 Mar 2020 23:06:01 -0400
-X-MC-Unique: msfs1RlVMrGNVCdcu8BuNw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD85E106F8AD;
-	Wed,  1 Apr 2020 03:05:59 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E29B460C99;
-	Wed,  1 Apr 2020 03:05:57 +0000 (UTC)
-Date: Wed, 1 Apr 2020 05:05:53 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Briana Oursler <briana.oursler@gmail.com>
-Cc: julia.lawall@inria.fr, gregkh@linuxfoundation.org,
- forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [Patch v2 1/4] Staging: vt6655: Limit return
- statements.
-Message-ID: <20200401050534.728a5c89@elisabeth>
-In-Reply-To: <fe417533b66d29ef6ea19128b38b8c8de7757ae2.1585694821.git.briana.oursler@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gU0GVl12;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x52a.google.com with SMTP id b1so11116893pgm.8
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2020 16:16:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=h7deIcdclpRVvNuVGYN2WRt+o+QSDqccuF1him2vUgs=;
+        b=gU0GVl12xK+9NYR7FYno7NfirvNAS/fxsrDwV+8ElIUycgKLIuHISUgZgj2oYS8zKe
+         5Ey8kvv5TUkZnnT1U/6/QnzrX/TCzUsxzmDkQF5/CJ31T3viT115ib10/yZj+qZmU4Bu
+         MXl+jLJB4y1zaHN5Rk42HjMxN5/wIlGngtNzRUUQ4LPyN+0FTTVK4v2GuLpIidghxvxp
+         bjqLsfQ1joMosjzCrvN6txvtjneSgkZ0RiQYYyfH+ZXYAfRjqjAc6x7wCYSeedWju7vn
+         x+vOHwSG9+xKhWAE5ZGJGs5x7YzfB2MitU1vzyZwbCfO+TTya3kx3yWnKnB119FR0g7J
+         kE2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=h7deIcdclpRVvNuVGYN2WRt+o+QSDqccuF1him2vUgs=;
+        b=idQU7AUkygoacqMVdch+FNh4MLK8mPxamedlHcqcbZ7bCCycjKrMIX/5Gxtw48ethI
+         0ofnVRTYiXgWmjTDfQXg7LXHt5UHfbNY+Oq/k0aAQGLnxzrexa4ds3ldSF0GTM2Fkzqh
+         /3bLgnYU5NcvB88W1O8l5cvX7IvnD7izu7nHwCo2cGK6cwfzdOO9Mya/Hc73kySivUha
+         MwfXaQhj/XoKyPVYw6BZjjYtn19fke/6R81jLVPANpuCWPlfaNs74qWTqcsn4wmr25c+
+         dMxgTD6wdnSMIqt/5aWUVwrqX+LN+xjt4vne2wElukeKFZdOPrR4vEOTkOlJ7MeoyetF
+         247A==
+X-Gm-Message-State: ANhLgQ1ylNv9aG+HUZ2eojHITUnGjfDJZyRekp4vCnvjWUOv/JLXsZPk
+	dmmpL2NVn7qHRf4oCnOkWEs=
+X-Received: by 2002:a62:687:: with SMTP id 129mr21546902pfg.209.1585696615209;
+        Tue, 31 Mar 2020 16:16:55 -0700 (PDT)
+Return-Path: <briana.oursler@gmail.com>
+Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
+        by smtp.gmail.com with ESMTPSA id b17sm180529pff.81.2020.03.31.16.16.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 Mar 2020 16:16:54 -0700 (PDT)
+From: Briana Oursler <briana.oursler@gmail.com>
+To: julia.lawall@inria.fr,
+	sbrivio@redhat.com,
+	gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com
+Cc: Briana Oursler <briana.oursler@gmail.com>
+Subject: [Patch v2 4/4] Staging: vt6655: Format long lines.
+Date: Tue, 31 Mar 2020 16:16:46 -0700
+Message-Id: <75ceb6161a835d51bf9da1ba4f7b04173fa9fe7c.1585694821.git.briana.oursler@gmail.com>
+X-Mailer: git-send-email 2.24.1
+In-Reply-To: <cover.1585694821.git.briana.oursler@gmail.com>
 References: <cover.1585694821.git.briana.oursler@gmail.com>
-	<fe417533b66d29ef6ea19128b38b8c8de7757ae2.1585694821.git.briana.oursler@gmail.com>
-Organization: Red Hat
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Tue, 31 Mar 2020 16:16:43 -0700
-Briana Oursler <briana.oursler@gmail.com> wrote:
+Add whitespace around '-' operator and wrap long lines. Issue found by
+checkpatch.pl.
 
-> Limit return statements within context of switch case to improve
-> readability.
-> 
-> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+---
+ drivers/staging/vt6655/rxtx.c | 39 +++++++++++++++++++++++++++--------
+ 1 file changed, 30 insertions(+), 9 deletions(-)
 
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-
-[you can carry this tag if you re-post this patch in another version of
-this series without further changes]
-
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index 27f4b710baea..2ca7acac88d6 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -262,7 +262,9 @@ s_uGetDataDuration(
+ 			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wRate, bNeedAck);
+ 
+ 			if (bNeedAck)
+-				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
++				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
++							   byPktType, 14,
++							   pDevice->byTopCCKBasicRate);
+ 			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
+@@ -276,10 +278,13 @@ s_uGetDataDuration(
+ 				return 0;
+ 			}
+ 		} else {/* First Frag or Mid Frag */
+-			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wRate, bNeedAck);
++			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len,
++						       wRate, bNeedAck);
+ 
+ 			if (bNeedAck)
+-				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
++				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
++							   byPktType, 14,
++							   pDevice->byTopOFDMBasicRate);
+ 			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
+@@ -299,13 +304,21 @@ s_uGetDataDuration(
+ 				wRate = RATE_54M;
+ 
+ 			if (byFBOption == AUTO_FB_0) {
+-				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
++				uNextPktTime = s_uGetTxRsvTime(pDevice,
++							       byPktType, len,
++							       wFB_Opt0[FB_RATE0][wRate - RATE_18M],
++							       bNeedAck);
+ 			} else {
+-				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
++				uNextPktTime = s_uGetTxRsvTime(pDevice,
++							       byPktType, len,
++							       wFB_Opt1[FB_RATE0][wRate - RATE_18M],
++							       bNeedAck);
+ 			}
+ 
+ 			if (bNeedAck)
+-				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
++				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
++							   byPktType, 14,
++							   pDevice->byTopOFDMBasicRate);
+ 			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
+@@ -325,13 +338,21 @@ s_uGetDataDuration(
+ 				wRate = RATE_54M;
+ 
+ 			if (byFBOption == AUTO_FB_0) {
+-				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
++				uNextPktTime = s_uGetTxRsvTime(pDevice,
++							       byPktType, len,
++							       wFB_Opt0[FB_RATE0][wRate - RATE_18M],
++							       bNeedAck);
+ 			} else {
+-				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
++				uNextPktTime = s_uGetTxRsvTime(pDevice,
++							       byPktType, len,
++							       wFB_Opt1[FB_RATE0][wRate - RATE_18M],
++							       bNeedAck);
+ 			}
+ 
+ 			if (bNeedAck)
+-				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
++				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
++							   byPktType, 14,
++							   pDevice->byTopOFDMBasicRate);
+ 			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
 -- 
-Stefano
+2.24.1
 
 
