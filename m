@@ -1,139 +1,118 @@
 X-GM-THRID: 6809913191851622400
-X-Received: by 2002:a25:cc82:: with SMTP id l124mr30982544ybf.522.1585709333713;
-        Tue, 31 Mar 2020 19:48:53 -0700 (PDT)
+X-Received: by 2002:a63:c149:: with SMTP id p9mr3664721pgi.389.1585709290989;
+        Tue, 31 Mar 2020 19:48:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:ac26:: with SMTP id w38ls8005150ybi.11.gmail; Tue, 31
- Mar 2020 19:48:52 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsKkbV62TQCIF2Bw/B2D+zTE9axsWM2N2jxAc8zKCGwfnnvrYrwxnQ3Gji/HCqKrSE7ui34
-X-Received: by 2002:a25:cf13:: with SMTP id f19mr32710539ybg.190.1585709332127;
-        Tue, 31 Mar 2020 19:48:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585709332; cv=none;
+Received: by 2002:a65:6455:: with SMTP id s21ls14716305pgv.9.gmail; Tue, 31
+ Mar 2020 19:48:09 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJOFNQoIyMjsmtQiZKWyhUAcVgODh7hj8e043cX6sMBqpAb/UTslC15Em+xJSHB+j3X5GZw
+X-Received: by 2002:a62:1c08:: with SMTP id c8mr7982247pfc.80.1585709289577;
+        Tue, 31 Mar 2020 19:48:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585709289; cv=none;
         d=google.com; s=arc-20160816;
-        b=sBgRFqMQkEQ6ifFEiNn97l6irn9AJ6YnnL91rtDxwMHmtmRFi69O3qgxXIO11iUrN8
-         yz6r0huKEZg1613Qya7UVRkrmaUpBLyPSMfWYkx+hyL76oQ7UZn3oh4aGOjuXoSXUEVe
-         34NC77YbKBvhugh2Q3jNgEkqHhmwPYWYrWr/2FGiHX+tobWl2OVdbFsHVuky4P+/dlb2
-         xWQ7t+B/500eLitzieXqjN9qqE8x/Pln2kRZW9t1BROloW3kZXAkjYqFmkcKh7xZ2UM6
-         Ksphl4QmDx1+218OejFTMsHxu5gbz56yIc7fjb6nghpaXQAU9zlNIJJULiGvkO/sLSKS
-         J4pg==
+        b=jGp2hCjr9GOEljSWbsZvWzKooB/F0LZdAtvrOWVEV4+nLaZRJ+lmGlQLcaZdpdB0gG
+         3zWo07IftkAaWhFzyn6Wnb1RhIHdDI0jMlNvSZ+aT8tBJ5KfjxpXzfA9t97bpzZAINbL
+         YK+VZEGNUAh2HSyb1HLJH0O8PjtSy/xacdklpzZE23qXbFz6nt8s/EYPuyOm7wCtCFLl
+         2wUiv1FnSvLh/SpmbSJQ2DKVlC+ixFCSMDb+Q3miFONx4AfWSlFOzawD6C2OUp1d692Q
+         vaEM4mTvP12+kEuetcszJLwSvsYgI/8jqE4Rg5v51ACjGqVBPvviMKw2NRMwRrREP18n
+         pJSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=87ICS6yiVzihu/jIJgghKTw9d5132rGInr/dO5BRnDk=;
-        b=zeZne1Lh3WTAURRO+pPDMlPzvqigJWbCp+77nd/Mwa6Ik/qZG+kFw0Z7CnxMsffGtv
-         GwNWla9x6VSHw0f/PTz9DJUwMbwGS3alMPpUI0cUYsX3syeiIO9gP3ufWJehFWWSdhnv
-         TsMKj1L/kk13Kpgjses90OgiHhYNn65iyx9u4tXDlcU4wNEy4vewUaK88pAV8kXCnz7Y
-         nIBerD2taVLuil1OrW4nSulvYy3jNFJoC/ENMtrK81RtxUEdhPAJNwS7r5A1BtBnjRT6
-         hdwga6YLvKvrREikEZshL+/g5WZXLgCmObUyliQVWQoO+1Qf2PwzuiYGDUcCyCAGbxu/
-         UnRQ==
+        bh=RPamC+cFyMo0Bf4X0SaJMC532Wt4ZubsnAcybzS5v40=;
+        b=yMuNEneOFQomv3FsOsvl0SjmZb9x12+5aKZKfbCaQAwO+gpSIxfC5dZI6Z3SIsIxlP
+         Q9zXeLYiAgMzZmNCoAykMZMjdSF2VrHGcOSP78xpVQI8vFOT2OmnwiE3QEnYT0Yh5jFE
+         rxydtf+wBfSw66tWuHuIs782q1ATQhbri2eqrvrvTc+aKLmNyc1NZZrkh5ccSotlFJ3S
+         NjCeH62KJlUymVObSPoRJ4lwYGOHAKLtoOymvwHV2p610os6EAQkID6Vp56a1Gio26F5
+         aR0tEsVPcSODcAT+dflQXyHeLkBv+LwUywf/ZwbytYx8ioOQwMLyraaDTNF4xoDKHthr
+         P5cQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FVtotvKe;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yb1CCGV4;
        spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by gmr-mx.google.com with ESMTPS id l141si55133ybl.3.2020.03.31.19.48.51
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by gmr-mx.google.com with ESMTPS id 62si47854pgf.0.2020.03.31.19.48.09
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2020 19:48:52 -0700 (PDT)
+        Tue, 31 Mar 2020 19:48:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FVtotvKe;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yb1CCGV4;
        spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585709331;
+	s=mimecast20190719; t=1585709288;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=87ICS6yiVzihu/jIJgghKTw9d5132rGInr/dO5BRnDk=;
-	b=FVtotvKeaBeJuDI+wJ9jISVpdUbvwQgEAVT8Hbq64Cz3arLUCSLhPTsWRY0fLjCxU+FvVl
-	32nICEfLQetOXviVNlImu4faMhrV3Dq+nIN+PkXKWVc/n7gHmN0iRrtflyxyiLu832uOke
-	BSem+YJ3FgcKYI3Wqp7bjIueyi4hG0E=
+	bh=RPamC+cFyMo0Bf4X0SaJMC532Wt4ZubsnAcybzS5v40=;
+	b=Yb1CCGV4L7mo/7wesZCKmfmt76XFWlowGoaLD7Wjq9tF3gM+L/p+ExwVWa3fUPHLVZTmOl
+	JCAV7GHTWk+3sIKzJzBETK8Ix170Y3H3rll7z/1AKxaFO5tgxloEa5/1tsdR0nTI5ghHWn
+	QIOdJh7/JuUPjLK/CSumaZpKbMFYptM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-27-94xlqjuaMtmXqFwgA3JrDg-1; Tue, 31 Mar 2020 22:48:47 -0400
-X-MC-Unique: 94xlqjuaMtmXqFwgA3JrDg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+ us-mta-377-h65ljsH2NHyqmTwn11j0WQ-1; Tue, 31 Mar 2020 22:48:04 -0400
+X-MC-Unique: h65ljsH2NHyqmTwn11j0WQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 739B619067E0;
-	Wed,  1 Apr 2020 02:48:46 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EA3DE19067E1;
+	Wed,  1 Apr 2020 02:48:02 +0000 (UTC)
 Received: from elisabeth (unknown [10.36.110.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 573D897B19;
-	Wed,  1 Apr 2020 02:48:44 +0000 (UTC)
-Date: Wed, 1 Apr 2020 04:48:38 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 46D085E002;
+	Wed,  1 Apr 2020 02:48:00 +0000 (UTC)
+Date: Wed, 1 Apr 2020 04:47:54 +0200
 From: Stefano Brivio <sbrivio@redhat.com>
 To: Soumyajit Deb <debsoumyajit100@gmail.com>
 Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
  Larry.Finger@lwfinger.net
-Subject: Re: [Outreachy kernel] [Outreachy] [PATCH v2 2/3] staging:
- rtl8188eu: Line over 80 characters
-Message-ID: <20200401044838.4f8a0ba9@elisabeth>
-In-Reply-To: <20200331183201.18386-3-debsoumyajit100@gmail.com>
+Subject: Re: [Outreachy kernel] [Outreachy] [PATCH v2 0/3] staging:
+ rtl8188eu: Resolve various warnings reported by checkpatch.pl
+Message-ID: <20200401044754.3a12aeed@elisabeth>
+In-Reply-To: <20200331183201.18386-1-debsoumyajit100@gmail.com>
 References: <20200331183201.18386-1-debsoumyajit100@gmail.com>
-	<20200331183201.18386-3-debsoumyajit100@gmail.com>
 Organization: Red Hat
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 
-On Wed,  1 Apr 2020 00:02:00 +0530
+On Wed,  1 Apr 2020 00:01:58 +0530
 Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
 
-> @@ -445,7 +455,8 @@ static void update_bmc_sta(struct adapter *padapter)
->  		tx_ra_bitmap = 0xf;
->  
->  		raid = networktype_to_raid(network_type);
-> -		init_rate = get_highest_rate_idx(tx_ra_bitmap & 0x0fffffff) & 0x3f;
-> +		init_rate = get_highest_rate_idx(tx_ra_bitmap & 0x0fffffff) &
-> +							      0x3f;
+> Changes in v2:	
+>   -PATCH 1/3: No change
+>   -PATCH 2/3: Add curly brackets in conditional statements to improve
+> 	      code readability and properly align the lines of a
+> 	      function call as suggested by Stefano Brivio.
+>   -PATCH 3/3: Remove extra unnecessary parentheses to improve code
+> 	      readability as suggested by Stefano Brivio
+> 	      <sbrivio@redhat.com>
 
-Hmm, no, wait, what is 0x3f bit-wise intersected with?
+On Mon, 30 Mar 2020 20:17:01 +0200
+Stefano Brivio <sbrivio@redhat.com> wrote:
 
-a = lol;
+> This looks correct, but still it's horrible, all those excess
+> parentheses make it quite hard to read. If you plan to remove them,
+> perhaps it's easier to have a change doing that first, in the same
+> series, so that this change can be checked more easily.
 
-a = lol *
-    2;
+I really meant: remove them first. See also:
 
-a = (lol + foo) *
-    2;
+On Tue, 31 Mar 2020 16:49:47 +0200
+Stefano Brivio <sbrivio@redhat.com> wrote:
 
-a = lol + foo *
-          2;
+> - the new patchset (v2) will have:
+> 	- patch 1/3 v2 (no changes)
+> 	- patch 2/3 v2 (for example, if you remove () here)
+> 	- patch 3/3 v2 (this current patch with the changes I suggested)
 
-but not:
-
-a = (lol + foo) *
-         2;
-
-...right?
-
->  
->  		/* ap mode */
->  		rtw_hal_set_odm_var(padapter, HAL_ODM_STA_INFO, psta, true);
-> @@ -456,7 +467,8 @@ static void update_bmc_sta(struct adapter *padapter)
->  			arg = psta->mac_id & 0x1f;
->  			arg |= BIT(7);
->  			tx_ra_bitmap |= ((raid << 28) & 0xf0000000);
-> -			DBG_88E("%s, mask = 0x%x, arg = 0x%x\n", __func__, tx_ra_bitmap, arg);
-> +			DBG_88E("%s, mask = 0x%x, arg = 0x%x\n", __func__,
-> +				tx_ra_bitmap, arg);
->  
->  			/* bitmap[0:27] = tx_rate_bitmap */
->  			/* bitmap[28:31]= Rate Adaptive id */
-> @@ -647,7 +659,8 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
->  	rtw_hal_set_hwreg(padapter, HW_VAR_SEC_CFG, (u8 *)(&val8));
->  
->  	/* Beacon Control related register */
-> -	rtw_hal_set_hwreg(padapter, HW_VAR_BEACON_INTERVAL, (u8 *)(&bcn_interval));
-> +	rtw_hal_set_hwreg(padapter, HW_VAR_BEACON_INTERVAL,
-> +			  (u8 *)(&bcn_interval));
-
-This is another pair of parentheses that you could remove: &a == (&a).
+This way, I could review 3/3 much quicker. Note that your patches are
+also (almost) correct as they are, so this is not really a requirement
+-- it would just help my eyes a bit.
 
 -- 
 Stefano
