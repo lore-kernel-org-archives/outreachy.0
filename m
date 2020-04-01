@@ -1,77 +1,77 @@
 X-GM-THRID: 6810632543470092288
-X-Received: by 2002:a63:2d6:: with SMTP id 205mr22089343pgc.257.1585723997158;
-        Tue, 31 Mar 2020 23:53:17 -0700 (PDT)
+X-Received: by 2002:a17:90a:24c5:: with SMTP id i63mr3026169pje.177.1585723978075;
+        Tue, 31 Mar 2020 23:52:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:3087:: with SMTP id w129ls15202794pfw.1.gmail; Tue, 31
- Mar 2020 23:53:15 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtQC/hSPMvD3Bjg0LFjPHIfAz8De0P+s2AIecaWyl07j4mmHs7J/huwZErC+GX4ynzbrUJ1
-X-Received: by 2002:a63:6f45:: with SMTP id k66mr21918141pgc.246.1585723995855;
-        Tue, 31 Mar 2020 23:53:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585723995; cv=none;
+Received: by 2002:a17:902:bb93:: with SMTP id m19ls16025933pls.6.gmail; Tue,
+ 31 Mar 2020 23:52:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJDBUcL1+3SogGY1Cn32z02RjHTjX4tG8ry8r0PJ3PiUn8e7wvWsIpZAZJNPujhCUdUmmtl
+X-Received: by 2002:a17:90b:3796:: with SMTP id mz22mr3181737pjb.15.1585723976776;
+        Tue, 31 Mar 2020 23:52:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585723976; cv=none;
         d=google.com; s=arc-20160816;
-        b=a7G1qZTsjx+khEfokchKExjh7GjgOHGe29R2u6vbidssy9UkcF1HmaM8V13Kn/rTY2
-         bxyi7zO/k7kZHiiPOuTGoaRH3TYHjNCkZLG8xwVZvAl48Uar0skAri8hLITfHAfIOdyz
-         GD5a3mBzO0NhJQSLqEINZU0lL/eL+hdzd3RlRg3Ehp07S14Of8OHkwwxtHG3IQl9QJON
-         giQMat4V9n960myFxwrMOlLtOTxByc3Gi/Nix3Yd7l0Rac9k//myO1raUWdyKXWyciEf
-         jZzRTWg106edDPGtm8hQmpZ3AnawJYdM7JElEDb2pwMCop6T9NvYoBQT312Fpc89bayB
-         9+XQ==
+        b=Zz2wwKAtz0hk/998MbTtevVgPOi60OrAejYrnHCEGbr26kY6GRyLoYfFrb2DTpsbTG
+         PTlC0pEnwHfaV8XvLRJWBcyJltflnBAosBsrRB2fp1ZPoYDd8tbsm82pggWUlQJnseif
+         opj5kIBV8ecZMdbeVXtbpFfwqpOD6Gx1/88qUL2l/3oRjRCOeuweBGSJnxDoyxkEHDqc
+         DlWtjyS8fx/tmPcByhHU6XLMuGD3xzuztBwucIgnEbT73TNg8wIa0mdEg68vOmkVHf+Z
+         x4Ze6tBFKa/4W6qfBE71CKYhfhthmhKsZuoTTH+5ZQDnt1mdb8yKFjcMK6DZ5nF9Rd8y
+         iIAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=SxFia+jeQWOrLWUdeVFbHAFhDijAdCNEkSPN9sIB+Bs=;
-        b=NOL41C4766gWnTB1CcOhsXqOb4uPkWIgZQfcyjWKyyTGl1ofxo1u4/nb5SoMY0feUp
-         r/D2Lm3PUmwnXQcVVPYfeM/dd/8+BDarjpnNmE0rouj4T6LvdGwSBBVVioRyl2xQkIUQ
-         tlV+3up4lIt07mOF5C3MZ23hVOta7gsE8EgHJEFKxwybMurceY29PWd3YcdwU49lGwV2
-         I90d6JnJ6E70ijftfrwUkK1nuAPIKVfudXqH8KYFuI3Rty2dL9GUFxi6n8w42FWtVBEb
-         cw/j+483I6BlGDWY8tbBTBCcOO4VzoQcvKPZfIgtwTRvQFNZTkYfY8h9fnzzOwZiZeLT
-         yWGA==
+        bh=Dh1fOQ+1sbSzPKBCHzNugL9amcLF99YyjosDlJHY5pY=;
+        b=e+Q4XLATe/RtK+0L0UWlqmfSgAY7yyUXJk6d8M+29mgRzhS/L6ZmlIIZmeSD7Yx6yb
+         IhT/HE/xVIcRWlOed5KrngjpkSKOJeOgM1OKdcnP66zBAt0nsee4GoiFAWE6XnG1TSJ4
+         hmwf1/Otj1l52EES1/Cl9tlGWTSf9u6GdPWcmBG1IEYoZDGiW6ATE2NowDYcIaknY2AQ
+         Aid9Zkx0ghw70mNCnJHVFC9ZKIx6hij5+8Wmvx5VMK3WhTYoH0VsNo4lYDVPuc+TLE5G
+         FgQFziBAIwk5LH04UrHpG5wZuxWue7bcovbo39YAmfoYyTzLZGCW7Ztz2IHo/X2nmGUR
+         QqRQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K4IhxMRS;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D9ZoCs45;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id u14si449478pjn.2.2020.03.31.23.53.15
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id j44si342042pje.0.2020.03.31.23.52.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Mar 2020 23:53:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        Tue, 31 Mar 2020 23:52:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K4IhxMRS;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D9ZoCs45;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id k15so6519227pfh.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2020 23:53:15 -0700 (PDT)
+Received: by mail-pl1-x644.google.com with SMTP id x1so9233611plm.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2020 23:52:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=SxFia+jeQWOrLWUdeVFbHAFhDijAdCNEkSPN9sIB+Bs=;
-        b=K4IhxMRSEkToWjyic4VftLaXLpC8U5F6GkoE2tc/E5Ai772XXN0IfW3R2CaVMyOAR3
-         /XISnibsz3r58B7qazzTICJX3/Fvgv4kkrrBDwoLwHA6ULeRKfclQ0QPnSYYV/Me54lt
-         si0FS+EPnmv4dqBU1zvFV1poWY2PpMNjtmetyIOd0e5iKeLNhg2OeVIc6sBJZrs3XIac
-         nOb15ih2OdZK/4l+ESI0koo4PasIP/Fa3ThfWuz96p+1spCUen57AyDysj0C1A7Pq+lV
-         VvQswlYo/k7hJxToXXiDJltCYKzc9o5xgRc5ciQnU6LCjHc16ltSQ9wYG+vayJF6cJWk
-         eKnw==
+        bh=Dh1fOQ+1sbSzPKBCHzNugL9amcLF99YyjosDlJHY5pY=;
+        b=D9ZoCs45jGH8fRiymfI3LOLEH5FcR7sG8jp7RtjbCpt2QbLMzLsWwQKw/JD8XToSPk
+         cZ2aWXVacflRlRenpnFQP9fj0gk17Mno/sGLsjCQaZCKAaXDOMn1ayKfhRT3ozTnnaWz
+         sF1OwIMgmua3/kJW7YRkL7RUvPKfiwNxRPde7G9pfoxJQsx9yzX9V7sKtnGIe6NKQgO4
+         dWzrEa9R4Hjy/b+6mkhZPq7K8rki27J8lelGbGvxepozF1seEowMdciJ+eaRsQ1SCk2s
+         MmP+PRUbLr7eyotZ0MgP4YqtoStp4fyoX76Z/pQmdc0bgbCmXDE1cejhXonP4ZUbUdcm
+         3WYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=SxFia+jeQWOrLWUdeVFbHAFhDijAdCNEkSPN9sIB+Bs=;
-        b=uPXZu0XysecNBpbCh6YVwUH9ua/8lj8kvhaITd+EpDyy6K+G1Hviacj343ZpHyVIPE
-         DsjnG9Uy2U+JVeR/2/GsUzDsUegRO8O4tVBtEtExFZG2Gz/6uhocb9Drq2oQKbFWKbZ5
-         ErQakPdR5yu3r5jz/TCoc9tf1ALLtpFM1kgE8K19yTF5YrZZ4a5XJCCUKaYEp0kwUZc2
-         DX3xSmEYhaDz3HwdAW7W6mkcZ7qFBGv98g2ewPbQflzeQrGYTbJ3MFynXB0sOPvrXwTT
-         qRdVKf7u5p4Muv6ZuXiFwSRtVjJhWLLsG1yKYlwSZYY8Av1NEdWEy/HuNthZgNPmCs/N
-         mhoA==
-X-Gm-Message-State: ANhLgQ0uvqPwQjYZpagIW/QIJ1Txs7EC2nCiQubzYqzGriV7GXytC0dm
-	7AFreVvTqN2O1uAUNo80bk0=
-X-Received: by 2002:a63:e74b:: with SMTP id j11mr21971529pgk.145.1585723995447;
-        Tue, 31 Mar 2020 23:53:15 -0700 (PDT)
+        bh=Dh1fOQ+1sbSzPKBCHzNugL9amcLF99YyjosDlJHY5pY=;
+        b=OSUtxIh9EXomj6pu4qpIknF6VRPEnMCoikjtIC4yzHg8V72RuLiqSr4YndfjKZsIeu
+         aFOXIhmbe6Kj87CRr29A4kNBOjTH8KHMgF+3BtknQgX83uOB0skbuHCkwB4pO4h4OiYd
+         0Xpsksvo63Yhv1agZV/IA3RYqT40KiOT4V7gDVZ7d+/EAjTdYg5xZNonGwAlKOJFO1fX
+         IAr0upqT60gt8POz0kcEKScqfUPntUkR3g/Kiwf42OEL8htTPeX2IRO/j3VZNjQAywaK
+         Wk30PNF/vRRD3pP+wNTXNp+OjJ5kjpXHPcWlRW1tZ2TULwXj9zxBNi8LOKEMoZeFm5+s
+         O/Tg==
+X-Gm-Message-State: AGi0PuZMoYYlPsfsUdiRHVPgIYQGYR/pzfrPL1BNUolPN0knYM1LOYL7
+	UnVeTRNEA/ubHXuxfmtgCUY=
+X-Received: by 2002:a17:90a:bf03:: with SMTP id c3mr3251377pjs.12.1585723976403;
+        Tue, 31 Mar 2020 23:52:56 -0700 (PDT)
 Return-Path: <debsoumyajit100@gmail.com>
 Received: from localhost.localdomain ([157.42.224.231])
-        by smtp.googlemail.com with ESMTPSA id m68sm4635849pjb.0.2020.03.31.23.53.11
+        by smtp.googlemail.com with ESMTPSA id m68sm4635849pjb.0.2020.03.31.23.52.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Mar 2020 23:53:14 -0700 (PDT)
+        Tue, 31 Mar 2020 23:52:55 -0700 (PDT)
 From: Soumyajit Deb <debsoumyajit100@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
@@ -79,64 +79,50 @@ Cc: outreachy-kernel@googlegroups.com,
 	sbrivio@redhat.com,
 	GR-Linux-NIC-Dev@marvell.com,
 	Soumyajit Deb <debsoumyajit100@gmail.com>
-Subject: [Outreachy] [PATCH 2/2] staging: qlge: Properly indent the multiline comments
-Date: Wed,  1 Apr 2020 12:21:20 +0530
-Message-Id: <20200401065120.17459-3-debsoumyajit100@gmail.com>
+Subject: [Outreachy] [PATCH 1/2] staging: qlge: Remove extra blank lines
+Date: Wed,  1 Apr 2020 12:21:19 +0530
+Message-Id: <20200401065120.17459-2-debsoumyajit100@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200401065120.17459-1-debsoumyajit100@gmail.com>
 References: <20200401065120.17459-1-debsoumyajit100@gmail.com>
 
-Shift the end of multiline comments "*/" to the next line to improve
-code readability and to adhere to a uniform coding style.
+Remove unnecessary extra blank lines to improve code readability and to
+adhere to the Linux Kernel coding style.
 Reported by checkpatch.pl
 
 Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
 ---
- drivers/staging/qlge/qlge_mpi.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/staging/qlge/qlge_mpi.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
-index b30992825612..43e8e3cae60c 100644
+index 60c08d9cc034..b30992825612 100644
 --- a/drivers/staging/qlge/qlge_mpi.c
 +++ b/drivers/staging/qlge/qlge_mpi.c
-@@ -387,7 +387,8 @@ static void ql_init_fw_done(struct ql_adapter *qdev, struct mbox_params *mbcp)
-  *  This can get called iteratively from the mpi_work thread
-  *  when events arrive via an interrupt.
-  *  It also gets called when a mailbox command is polling for
-- *  it's completion. */
-+ *  it's completion.
-+ */
- static int ql_mpi_handler(struct ql_adapter *qdev, struct mbox_params *mbcp)
- {
- 	int status;
-@@ -517,7 +518,7 @@ static int ql_mpi_handler(struct ql_adapter *qdev, struct mbox_params *mbcp)
- 	 * changed when a mailbox command is waiting
- 	 * for a response and an AEN arrives and
- 	 * is handled.
--	 * */
-+	 */
- 	mbcp->out_count = orig_count;
- 	return status;
+@@ -119,7 +119,6 @@ int ql_own_firmware(struct ql_adapter *qdev)
+ 		return 1;
+ 
+ 	return 0;
+-
  }
-@@ -552,7 +553,8 @@ static int ql_mailbox_command(struct ql_adapter *qdev, struct mbox_params *mbcp)
- 	 * here because some AEN might arrive while
- 	 * we're waiting for the mailbox command to
- 	 * complete. If more than 5 seconds expire we can
--	 * assume something is wrong. */
-+	 * assume something is wrong.
-+	 */
- 	count = jiffies + HZ * MAILBOX_TIMEOUT;
- 	do {
- 		/* Wait for the interrupt to come in. */
-@@ -1175,7 +1177,7 @@ void ql_mpi_idc_work(struct work_struct *work)
- 		/* Signal the resulting link up AEN
- 		 * that the frame routing and mac addr
- 		 * needs to be set.
--		 * */
-+		 */
- 		set_bit(QL_CAM_RT_SET, &qdev->flags);
- 		/* Do ACK if required */
- 		if (timeout) {
+ 
+ static int ql_get_mb_sts(struct ql_adapter *qdev, struct mbox_params *mbcp)
+@@ -358,7 +357,6 @@ static int ql_aen_lost(struct ql_adapter *qdev, struct mbox_params *mbcp)
+ 		for (i = 0; i < mbcp->out_count; i++)
+ 			netif_err(qdev, drv, qdev->ndev, "mbox_out[%d] = 0x%.08x.\n",
+ 				  i, mbcp->mbox_out[i]);
+-
+ 	}
+ 
+ 	return status;
+@@ -406,7 +404,6 @@ static int ql_mpi_handler(struct ql_adapter *qdev, struct mbox_params *mbcp)
+ 	}
+ 
+ 	switch (mbcp->mbox_out[0]) {
+-
+ 	/* This case is only active when we arrive here
+ 	 * as a result of issuing a mailbox command to
+ 	 * the firmware.
 -- 
 2.17.1
 
