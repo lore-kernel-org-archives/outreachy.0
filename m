@@ -1,128 +1,112 @@
 X-GM-THRID: 6809167002234519552
-X-Received: by 2002:a25:c7c4:: with SMTP id w187mr34574213ybe.326.1585721938726;
-        Tue, 31 Mar 2020 23:18:58 -0700 (PDT)
+X-Received: by 2002:aa7:9097:: with SMTP id i23mr20769478pfa.170.1585709401299;
+        Tue, 31 Mar 2020 19:50:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5b:5cd:: with SMTP id w13ls8190580ybp.10.gmail; Tue, 31 Mar
- 2020 23:18:57 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs2m4ZE8b86YW0lk7oEMw0Go2/9nLfRCxCE11IG7v8qa13LQYcsE1+zDq0Z5j9o2wk+rooo
-X-Received: by 2002:a25:814a:: with SMTP id j10mr36642268ybm.262.1585721937324;
-        Tue, 31 Mar 2020 23:18:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585721937; cv=none;
+Received: by 2002:aa7:9708:: with SMTP id a8ls14946584pfg.9.gmail; Tue, 31 Mar
+ 2020 19:50:00 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vtmuvfhPz2KaLOd0E6PToiimFwN6oi/DtSAPw8Z66iSPoxejsnz3hE1ns/mp8SEpu7tGVJ1
+X-Received: by 2002:a62:5f06:: with SMTP id t6mr21964023pfb.192.1585709399933;
+        Tue, 31 Mar 2020 19:49:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585709399; cv=none;
         d=google.com; s=arc-20160816;
-        b=YWVawWIDmDPR5hwYxbQ6AOeX2c/3X05J+77LIjD6wks93DkS4gHzSi2sPEonMlQKa7
-         PBkD1tl+hysECniYyvio9mSsRdELabnDYBqM7+uB4vuIXcphRy4ZCT+aGz73Oka7YS+z
-         HEwoam68oZo4QtntdHa7Sa+4EZeSkZYr5Bs2dR6juIvME+kww4jFb1FBJV9B+QHfsxOP
-         z+mLKUzp9E6vQv0m8DXzeZqbbDp1ZeAhTXmunrHgeostqBRkIEAYoiYpUkwrNVAf1mcw
-         IoYZp42+7qxgLG0D+pqqYfg6AX4Q8CX5z66b/iAY/qynT9B/mB1OwBezIj1Vos2wC+8Q
-         RJGg==
+        b=DIStv9p6bqu0QRiEQQrIIVncvjs5XFLnak57UYTdP4uFcidqOTViYKdV7ZhOBN/PEb
+         LqAu8jzMN7HCHbgUz5Ms7YcZKRcz7OftDLJMtdct1TbOYxChFuAIVrvF8rhhML0DLBZ+
+         Nd/bdkFhssEL2G2l2hcht9VcDPzq2I4hHnamAC4Sinm4p+2aXJZ2R1pp68uhJ1BPSgsn
+         FXEzx6Et0wrLRYwxbNnFeSs+2uEvoMF6I7bUO1vlqw3ixbSdT+ENCUztn53MPDEqtMI/
+         shSKSudSQiZw4Tww58XhjykO0X7+nENFiJSZaXdHwqnDca47BoP9X6V9u4KhnjXw0Sjp
+         DVug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=npPrbBnFOZ2MKSG+1Gn1lPDRWtT3MAIz8NNZ9URv5JY=;
-        b=Q8IANYa2pQgTmEg9xIp9re5Fbo6hObeGmK2mAsWwmh3zUhhnaczSjX3M5jTpH1MgYp
-         1ydc5T40cyy0dlRD2VEoNsNeiyNkDLi9875uORzee4LpXFTiL8VViT7TfRecRcHPDKDB
-         vzeSKoCpKFiFdH4YIkC6nvzjOlDlPpDejLo7Mn7lZEG/S9+G/kFZ/2qawI+lnpX4zqAn
-         xeKUqmrzYoNt81Ovn/D61Ae7iPooLqmkgsjfniSUBEr8de3Fw6FsNSpI8WTUKQ98D6qB
-         livjpYVGdvl5Wqfg4eIsuqEKLzlXaHZy82xVM/0RP+TpxixF6waykop3W/wl6rELHsNq
-         HScg==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=87CPdQaFZwGpjPHcgFcJRZhm5Z8ACavSkWeMcra+hCA=;
+        b=jJUtCKpzdKoN6fAlVykSstiP8RnKbIDbvig4YLGFVWrqJZgS/vpjUrimLnSVdjRYsT
+         zGepRJvOnMZEINQ1pzLdpf1xR0/pcxvDLDGF5ClKq0tw4s54cfCIYnEEgNQ7tWNbxA9M
+         dEYu+9uq1XnpC1/kogG/9SHlF7wLv/avrOrKQ3C67y2qxpunJ7B+6daiP28aJaxYpJUr
+         dnK/OSWSv3waQd3sYZHXEESGAc8ca2uJoSHLKHZ4w8+Icq1O+QNFY5jwXJAs7z4FlcIT
+         Z/PhdLl+EewVAySZegVNoRCg/Ma8RJ+mdtyW38+2w8n94DOlPXIccgA/+Ok+ZuT2SquQ
+         AQdw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YbGksNjr;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
-        by gmr-mx.google.com with ESMTPS id d72si81607ybh.5.2020.03.31.23.18.57
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Co4sUg0j;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by gmr-mx.google.com with ESMTPS id j14si43421pgg.1.2020.03.31.19.49.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Mar 2020 23:18:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Mar 2020 19:49:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YbGksNjr;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x444.google.com with SMTP id 23so11635601pfj.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2020 23:18:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=npPrbBnFOZ2MKSG+1Gn1lPDRWtT3MAIz8NNZ9URv5JY=;
-        b=YbGksNjrLVbLKhE6beOtxSROgoNHN3EgAawg1ySAHBZGBwuH1VdnYXF+v656Cgvk7V
-         id1QkMwS/GykKNSsuiLMeBQTVvttibCWhlKqFyTTJj1U2wFToCPCn+C2HId9eH/DdmzI
-         dYxifpbF/I+6RuZ0K/LAeTC4xyuZWVRsoNH9J0hbcz4SZVui39LtXo7Z4xB4GJLw4Hgm
-         VS5P8jeI6TYBaOXV7zIcwHA6iGCakCKFVXvB8BOMA2U5uDrimUe/MnJ9yfvHeSebEW2X
-         frzE0UtBe0LvYyAa4J8gS5gWOhXWF/TEWEhqIlQCyk8Ddit8Z6EuZM3YXZU2lTExhVDc
-         8xwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=npPrbBnFOZ2MKSG+1Gn1lPDRWtT3MAIz8NNZ9URv5JY=;
-        b=hdyzvf/vfTe/eJYEuh9SKd4EGJgQAbeKTuqC+sZIIBmh0zxy5+xz5Cah9eNilPeuUg
-         ngkJwJmECpKk1YUBNj6aDUIsJZK8/jGbEsFQ+Faippl4lwIAmF5A0NFqVHgHnIOqKOvV
-         BMZed04P82rv83lgytDVmk1JpuxbTzvyUoQXYMU8xptPl+0UnxSC46qlOIIsx9ONR549
-         5RAI4i7Z2uNFoVjNcHFrdRBfXmVecd1sIeMJr09QobxtwIXBM7M7rAcTcHbV3GCKP6ne
-         6+tlUFQSQ+j6veuGj89NeQutEnUf7x0Qkbv2/ef4On0pi3lmWXXliR32goBLzZm2Bxcn
-         xItQ==
-X-Gm-Message-State: ANhLgQ3K0I21JpI7Ac+hxZPxN+/Tblk9VvG+ILy4vDLdgCF/Iv6HtA+x
-	F/X+4yw3XkcdxX6FKyZDpICWlLAPK7NX1Q==
-X-Received: by 2002:a62:2a8d:: with SMTP id q135mr22932992pfq.220.1585721936400;
-        Tue, 31 Mar 2020 23:18:56 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from ubuntu ([157.42.224.231])
-        by smtp.gmail.com with ESMTPSA id v38sm758952pjb.1.2020.03.31.23.18.54
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 31 Mar 2020 23:18:55 -0700 (PDT)
-Date: Wed, 1 Apr 2020 11:48:49 +0530
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Co4sUg0j;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585709398;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=87CPdQaFZwGpjPHcgFcJRZhm5Z8ACavSkWeMcra+hCA=;
+	b=Co4sUg0juf/ZaoNd9aLZvyqv9MYUO8VuwmLryVJDQiBLk0r77Auxs1U+gI2hhK6SqSSO7i
+	nT1HNExzCLMz1gnpVs17ojjP4Ata9TV6vsDM0Qq/IxwNeFyTKbnBWxUUKhP1WQTJpuzVj8
+	3QAgWhrhyM25L3hhrFWXnVrk1bmXnWA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-316-dGsWV7V1NbCLRRC_hna5eg-1; Tue, 31 Mar 2020 22:49:57 -0400
+X-MC-Unique: dGsWV7V1NbCLRRC_hna5eg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F823107ACC9;
+	Wed,  1 Apr 2020 02:49:56 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.13])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1344D5D9C5;
+	Wed,  1 Apr 2020 02:49:54 +0000 (UTC)
+Date: Wed, 1 Apr 2020 04:49:48 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Soumyajit Deb <debsoumyajit100@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [Outreachy] [PATCH] staging: qlge: Remove
  extra blank lines
-Message-ID: <20200401061846.GA16412@ubuntu>
+Message-ID: <20200401044948.345a7327@elisabeth>
+In-Reply-To: <20200331190721.GA19185@ubuntu>
 References: <20200330051343.7841-1-debsoumyajit100@gmail.com>
- <20200330200724.1ad30b76@elisabeth>
- <20200331190721.GA19185@ubuntu>
- <20200401044948.345a7327@elisabeth>
+	<20200330200724.1ad30b76@elisabeth>
+	<20200331190721.GA19185@ubuntu>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200401044948.345a7327@elisabeth>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Wed, Apr 01, 2020 at 04:49:48AM +0200, Stefano Brivio wrote:
-> On Wed, 1 Apr 2020 00:37:28 +0530
-> Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
-> 
-> > On Mon, Mar 30, 2020 at 08:07:24PM +0200, Stefano Brivio wrote:
-> > > On Mon, 30 Mar 2020 10:43:43 +0530
-> > > Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
-> > >   
-> > > > Remove unnecessary extra blank lines to improve code readability and to
-> > > > adhere to the Linux Kernel coding style.
-> > > > Reported by checkpatch.pl
-> > > > 
-> > > > Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>  
+On Wed, 1 Apr 2020 00:37:28 +0530
+Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+
+> On Mon, Mar 30, 2020 at 08:07:24PM +0200, Stefano Brivio wrote:
+> > On Mon, 30 Mar 2020 10:43:43 +0530
+> > Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+> >   
+> > > Remove unnecessary extra blank lines to improve code readability and to
+> > > adhere to the Linux Kernel coding style.
+> > > Reported by checkpatch.pl
 > > > 
-> > > This looks good to me, but why isn't it in a series with the next patch
-> > > you sent? They touch the same driver with similar purposes...
-> > > 
-> > > -- 
-> > > Stefano  
+> > > Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>  
 > > 
-> > Should I resend this patch along with the other patches concerning the same
-> > driver as a patch series?
+> > This looks good to me, but why isn't it in a series with the next patch
+> > you sent? They touch the same driver with similar purposes...
+> > 
+> > -- 
+> > Stefano  
 > 
-> Yes, exactly -- it's just another invocation of git format-patch, you're
-> almost there.
-> 
-> -- 
-> Stefano
+> Should I resend this patch along with the other patches concerning the same
+> driver as a patch series?
 
-Okay, I will send this patch and the patch after that as a patch series.
-Thank you.
+Yes, exactly -- it's just another invocation of git format-patch, you're
+almost there.
 
---
-Soumyajit
+-- 
+Stefano
 
-> 
 
