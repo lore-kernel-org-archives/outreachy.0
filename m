@@ -1,138 +1,119 @@
 X-GM-THRID: 6810515093003960320
-X-Received: by 2002:a25:84cd:: with SMTP id x13mr14216431ybm.476.1585764228959;
-        Wed, 01 Apr 2020 11:03:48 -0700 (PDT)
+X-Received: by 2002:a92:8384:: with SMTP id p4mr20275201ilk.16.1585710572449;
+        Tue, 31 Mar 2020 20:09:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:d6c8:: with SMTP id n191ls106167ybg.4.gmail; Wed, 01 Apr
- 2020 11:03:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJYlht5ACes9xVsuTE4cf3s89McBhB/3q6erafj9LNUV3CqzbKB6giWI7MCR8IfU4rCuMhN
-X-Received: by 2002:a25:d095:: with SMTP id h143mr2254423ybg.472.1585764227534;
-        Wed, 01 Apr 2020 11:03:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585764227; cv=none;
+Received: by 2002:a92:d391:: with SMTP id o17ls5848627ilo.10.gmail; Tue, 31
+ Mar 2020 20:09:31 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vv6zlmAVQKWJUx1C2ah6x6DgqVSO1b7pFHYXpxGlKv+qJlDT9MqKYc4NBlBvCptKBcbFuBE
+X-Received: by 2002:a05:6e02:d0a:: with SMTP id g10mr20444565ilj.228.1585710571325;
+        Tue, 31 Mar 2020 20:09:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585710571; cv=none;
         d=google.com; s=arc-20160816;
-        b=pv2obe8R11nzYSRCnhuOwhLW9lnKb9/CPF8ndzZq2QKtm9kUIhIjhlMOHt2mpDK2DY
-         2iMG9uAyWD378jXL+G03YC9ttqh8Bt0A/vcTJhFHBx2LB3awPQj2dA9bM6t2bMLVnw7n
-         J7QL71gk85vKIOaD8GEqXCCc6876FDf+laGUNEPEAdyDsGgAl1wMYGp6DOY3V5f/q8/e
-         N9Ep+Z+QgP6lIY/1EyUhqd2adu3+7jsbIH+l2DoXqNYqomQ5T8YebLpEHtDPbya9IReA
-         z9cV55L95Z4HJLKdgVnONbxSUClmlBohQ+bdEPhRhR4P1CMKpWXH377gvLYFKJiijSQE
-         Hn7A==
+        b=RBSs57yDTjUzXr/C2EbTWONJSF+zAJNYjmJN/9Kpw4nqYqogxkN1P6s+uWXkwRm8pd
+         +NmgxuchY4de4f49k3Aeq6O7wbT/Wr5sI5ozx2vZ5Y7MHxi0Y9JJNgjjl5E0/+5q73SV
+         dXmo0FEOMeyXjkTQUi5hNycHjFrwKGFBzRxA1t39qKeKOjgUptnl/yLLfY/pNJCycgbo
+         /O2BpnF237i5iIGlr+qlvN504g+xbVSOIbpzPau9pMoT0dNNJXA0/zCppEM9Z9cxAIUa
+         2XadJJAsDCh9uJFUg1EyyZ8C4qdBDwx0I8lP5Q/pA04OZ8bfVjtZfFS9SI//nmLG1JEO
+         QEbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=JGh/bT8fuUxPj8HHIvOnKyr1Thwk/bnSK9+Z9/vkCPQ=;
-        b=PXMxzcpKcEPCvAs07A+b2nqoAsEtB46fZQfyveOdvzuEgtnEaJq7OmkaSJk/D8Sh7/
-         i1fNYzBuwD/sjhzjoY3SOg6wUtu93xV8iwuwuS0xgl4tDp+BHLtjJ//Ri6xnhqakylEc
-         ZDUFd2PHOfJhjuLTLMwUDi6gBvTnImb6a6RvdeNkJk2KyNVEghwji4Hm01zBR7+2E8t9
-         QZIz14cr8d1eyH/1MzCA9wt0MDh6tXuuB6BqnUUlRKjPI7Ug2z+RG1HAkD3VBCBkKpmH
-         w2WsJwk23JXr4lnrbDeRS9EQRCmjtVSryMNXmD5G6mnKo33DsclmB54Agl14bwnjCmL0
-         pRsQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=tt3SN77Ls5pppEgcTBYG5BbeAfBQ96PuWDO7T7ti7Qc=;
+        b=jnignjS+hgwul5ZQiC86pXVFu0lale8NwsdZGTjbOym30BTlaOy6/+Xwfw6jUMrfRj
+         A+AznYmP7O7CF6lmFc1VbeF95+GpXcm+WgjgzrbWhwF5evd+TatOBFJip7ATCVnTxFdM
+         175wAcxAKMFX6WHYxWFrOt6uUeJ3xv0mt3LDnno1Jh5l4TqHinh/+LC/e895h0v/R8sc
+         wdDV/Frydwo/2p5ITkb91VNKBKe96uOCE7DUMtIcrUc4JjXPSI0zDUY1QBbkwOuDfVI4
+         vLLb0ca68LKFFodsZCC0VYDgHUvge/GtxiU34mrO5+gzHRkYM/h/2r/3qYZlBYq8VDRA
+         3O7w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MsU90FPf;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1033 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <briana.oursler@gmail.com>
-Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com. [2607:f8b0:4864:20::1033])
-        by gmr-mx.google.com with ESMTPS id l1si239488ybt.2.2020.04.01.11.03.47
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsX7dU3H;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by gmr-mx.google.com with ESMTPS id k88si32362ilg.1.2020.03.31.20.09.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Apr 2020 11:03:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1033 as permitted sender) client-ip=2607:f8b0:4864:20::1033;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Mar 2020 20:09:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MsU90FPf;
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1033 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1033.google.com with SMTP id z3so366434pjr.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 11:03:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=JGh/bT8fuUxPj8HHIvOnKyr1Thwk/bnSK9+Z9/vkCPQ=;
-        b=MsU90FPfPpcxoPz6FN4nqogR/Lr/X1garj5DTFekku7TRYJXNCPiE3CNAJhuV1cby/
-         kXQ0RpkmuR7DnZhdUpm9TwkrnsEOfLlq/+HTA9Hp4GkwzjMG6J9hhyYCa2fMB12oqHyJ
-         KUoULyztquQf6NOHbV6cNGRMIC2Z3pC5XH2HVu0u9DFAT2zcudPI3F03XfSknQZwrH99
-         0bcbk82It+KodCfdYXz56GNddzqF0cADZeEbOPkA3eZKVANR4Lin8QGcuB5KqZAfVGL7
-         +suFgwA6/gIMSzvss528VGQLVIfdbRmtAdWuDN243UyRG8t5aUis5MSl1pflQCIAzUqF
-         bMQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=JGh/bT8fuUxPj8HHIvOnKyr1Thwk/bnSK9+Z9/vkCPQ=;
-        b=V6XPHh7teNWComUya+isrtgDHTX7887RzaKyGo3uIAtgfAexcpAOEUYz4KbXpM9HUp
-         v9kBhTJX+MMcxzmohamk2CZEq9K4fvPbFR0nnPTuloxFLk2Zw8JRE21mq88wI9ICXW0t
-         LRqDf2FRYvSSijfIv6Gmmq++YAYLBwgM769oKG/+WkfAv88y2PNDYdavnU6Yjoo+3fwu
-         5Is2/1qOxiQ5WQJhMqcMZHbT26P3qgQ9orwy9k8X9h9Gxl7Uc274AptHHpKI0b7iEjr5
-         asMyOK//vwjRvqzF2p7wlkJjpxnKr3jSsqCE5MGOGOsiWdYV9xfAWQHVKYBVU/d1Zm1j
-         8HQA==
-X-Gm-Message-State: AGi0PuYDztsMGrb3A5wTh+63gj0dTRxKCaR0EH/E+OXW71reQK8zG9TM
-	c8HlyDhNg+DNDhIh1gcFAYU=
-X-Received: by 2002:a17:902:ba08:: with SMTP id j8mr10223649pls.70.1585764226639;
-        Wed, 01 Apr 2020 11:03:46 -0700 (PDT)
-Return-Path: <briana.oursler@gmail.com>
-Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
-        by smtp.gmail.com with ESMTPSA id ci18sm2131896pjb.23.2020.04.01.11.03.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Apr 2020 11:03:44 -0700 (PDT)
-From: Briana Oursler <briana.oursler@gmail.com>
-To: sbrivio@redhat.com,
-	julia.lawall@inria.fr,
-	gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	outreachy-kernel@googlegroups.com
-Cc: Briana Oursler <briana.oursler@gmail.com>
-Subject: [Patch v3 0/4] Staging: vt6655: Simplify statement logic.
-Date: Wed,  1 Apr 2020 11:03:38 -0700
-Message-Id: <cover.1585763457.git.briana.oursler@gmail.com>
-X-Mailer: git-send-email 2.24.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsX7dU3H;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1585710570;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tt3SN77Ls5pppEgcTBYG5BbeAfBQ96PuWDO7T7ti7Qc=;
+	b=BsX7dU3HoFUjBtxeFD3O8F1da4GaaxAJ3E+T+3r5vlePzVzd+bOjlvHNM2oqVNBZxf17LC
+	2dFdeorrNSDpHgqsAI5rENhvTrVLChoeEAUsRZk5CnVrMfaUIbFowdQ9iAWWX7y3XcvaWN
+	ZuXaX1dwJQBH8qDJ76Cky4wYEKByID4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-493-2EjQPzj3NiaMShPAf-pi7w-1; Tue, 31 Mar 2020 23:09:29 -0400
+X-MC-Unique: 2EjQPzj3NiaMShPAf-pi7w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 00B4A66F;
+	Wed,  1 Apr 2020 03:09:28 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.13])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 198BA5D9CA;
+	Wed,  1 Apr 2020 03:09:25 +0000 (UTC)
+Date: Wed, 1 Apr 2020 05:09:21 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Briana Oursler <briana.oursler@gmail.com>
+Cc: julia.lawall@inria.fr, gregkh@linuxfoundation.org,
+ forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [Patch v2 4/4] Staging: vt6655: Format long
+ lines.
+Message-ID: <20200401050921.07062b9d@elisabeth>
+In-Reply-To: <75ceb6161a835d51bf9da1ba4f7b04173fa9fe7c.1585694821.git.briana.oursler@gmail.com>
+References: <cover.1585694821.git.briana.oursler@gmail.com>
+	<75ceb6161a835d51bf9da1ba4f7b04173fa9fe7c.1585694821.git.briana.oursler@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Reduce code duplication and complexity within switch case statement. The
-goal is to improve the readability of the statement so that the outcome
-of the statement is more clear. Checkpatch identified long lines and
-other formatting issues within some nested logic. The last commit in this
-patch series addresses checkpatch warnings that were not fixed by other
-means within the series. Some long lines were left under the rationale
-that removing them rendered the output more confusing.
+On Tue, 31 Mar 2020 16:16:46 -0700
+Briana Oursler <briana.oursler@gmail.com> wrote:
 
-Briana Oursler (4):
-  Staging: vt6655: Limit return statements.
-  Staging: vt6655: Move rate determination logic.
-  Staging: vt6655: Eliminate nested if else
-  Staging: vt6655: Format long lines.
+> Add whitespace around '-' operator and wrap long lines. Issue found by
+> checkpatch.pl.
+> 
+> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+> ---
+>  drivers/staging/vt6655/rxtx.c | 39 +++++++++++++++++++++++++++--------
+>  1 file changed, 30 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> index 27f4b710baea..2ca7acac88d6 100644
+> --- a/drivers/staging/vt6655/rxtx.c
+> +++ b/drivers/staging/vt6655/rxtx.c
+> @@ -262,7 +262,9 @@ s_uGetDataDuration(
+>  			uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, len, wRate, bNeedAck);
+>  
+>  			if (bNeedAck)
+> -				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
+> +				uAckTime = BBuGetFrameTime(pDevice->byPreambleType,
+> +							   byPktType, 14,
+> +							   pDevice->byTopCCKBasicRate);
 
-Changes in v3:
-	- Patch 1/4 - 3/4:
-		- Substance unchanged, add Reviewed-by tag from Stefano
-		  Brivio.
-	- Patch 4/4:
-		- Add curly brackets per recommendation of Stefano
-		  Brivio.
+Here, and below, as you're now spreading this over multiple lines, the
+if clause needs curly brackets. Not because of any standard or because
+of the compiler, because of coding style.
 
-Changes in v2:
-        - Patch 1/4:
-                - Per Stefano Brivio's recommendation, remove curly
-                  braces and unnecessary else clause.
-                - Remove unrelated newline.
-        - Patch 2/4:
-                - Remove unrelated newline.
-                - Change to a clearer patch subject and description per
-                  Stefano Brivio.
-        - Patch 3/4:
-                - Avoid beginning commit description with solution, per
-                  Stefano Brivio's advice.
-                - Move declaration of len to the same line as other
-                  unsigned ints declared in the same scope, change
-                  recommended by Stefano Brivio.
-                - Remove unrelated newlines.
-        - Patch 4/4:
-                - Change patch subject and description to better
-                  describe change, per Stefano Brivio.
-
- drivers/staging/vt6655/rxtx.c | 119 +++++++++++++++-------------------
- 1 file changed, 54 insertions(+), 65 deletions(-)
+Rationale: it might be "too easy" otherwise to add a second statement
+and forget about the curly brackets, because multiple lines might
+already look like multiple statements.
 
 -- 
-2.24.1
+Stefano
 
 
