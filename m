@@ -1,78 +1,78 @@
 X-GM-THRID: 6810515093003960320
-X-Received: by 2002:a25:b94f:: with SMTP id s15mr22003756ybm.206.1585764235221;
-        Wed, 01 Apr 2020 11:03:55 -0700 (PDT)
+X-Received: by 2002:a9d:69ca:: with SMTP id v10mr7659373oto.64.1585764231128;
+        Wed, 01 Apr 2020 11:03:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:1d85:: with SMTP id d127ls116458ybd.0.gmail; Wed, 01 Apr
- 2020 11:03:54 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vs7od2CWV9thfJKBW9ArR5N9l+eiqtdeZRGyfaosGDpN0SMQuLHsyleRkatZ3FGR31u3ruO
-X-Received: by 2002:a25:a4c5:: with SMTP id g63mr39894620ybi.318.1585764234004;
-        Wed, 01 Apr 2020 11:03:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585764234; cv=none;
+Received: by 2002:aca:c441:: with SMTP id u62ls237503oif.9.gmail; Wed, 01 Apr
+ 2020 11:03:50 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLjconX9nIlj9kaChDWval72AklZs/UVEFK7z1QwtXxGHGD2IJS/7VxWR4bLyXcyIqQU8Yy
+X-Received: by 2002:aca:56c7:: with SMTP id k190mr3802010oib.127.1585764229996;
+        Wed, 01 Apr 2020 11:03:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585764229; cv=none;
         d=google.com; s=arc-20160816;
-        b=HzNRMlBiiw/D4bu0z5P5R7aQ/jOkmI0V1JJSTrAN04dj29gEtsHAUsuTvZ0BNrQXX7
-         35W7Tfw/RWBn0o5F8h5fADkfV7bw+Uz5fQp8hHUj489BPcnJfKESVPJ53NsVbU5oWSOt
-         D3rqVsZ+q1k+5UzFsJAZl9dRls2ndLArcTFKefYM5axZR/xkJQDupEANzBS6ao6WEbS6
-         GXSki1+MKKiH5U7vhNasx2uAGXdem7ky89TPGeBZRZIOm3O29VbbgZ8Nb7gpymTKjuBL
-         i5nJqS+CO0GJe4SE21lukXuJZaz2yQU+RY1D3d/DvDm3HXpaYoaIZbGO/Z2RZ6MIqmf4
-         qvbw==
+        b=jmKShHzPK+UpAO2NzD4gjM3tZ9F8G8sLo3QSqkxJ/C+GAHow/5vtdG55ecCi1/PvGk
+         mu22ePKEwhGAzCs7ZSqRofmYeKpgu3VCaDCOxE1ToFWXcnOggTiSjLdd5Xo4MAunXv+g
+         Lo5nmyGkcdtLOAETm0EBEz6WN5iJyy8KyeoaTiFRLINIbrjjSsrQKnSNaY8cOKvp8atx
+         vvACI7uHvCDVL7m4jhWs1lUQRu9MFGpgmiS5DEy9MrGp4EP1OCAWvNUZsOfi8t/XQLCP
+         K+SEwiCYB3kpoANZrJ0x4qEonmh1YYcmIva09qPJZcnkObIW+Z/gwNxRHrqEUMWXY9fn
+         BdKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0ytszynu+netDHk2GPmkuesoIlzhs8OdWs+7Onp8BW4=;
-        b=MxhDAh2YjAidtoCnkRH98Vic3+g8Xjy607P0kKol7cbagDsgzDzGeD/vJESlPLFRfk
-         EfIBE0KpwVLQABH2lbA8gEjnv6LHxaenKMyF0Cg4DdgqZRbQ4xZegpf+x9/WhVebnN55
-         BeXns36Ql8iSDMbvIGxpkV0Th8wa4uBYzJg+nDTvAPo2o3+nV7L/W/XpOazOecv/USl8
-         Ip6tfzbds5Vj21Lo6oISmUi+ylBuZBURa7HR3f7pzzhtH8kOMofhoOhBisHONGF9MCHP
-         35XWss5yUHYjanEMHINqHoPMzikFkyPZZbi6XDuH5j1Tb2YQO3RxG5DLjs4w8qUjqOnc
-         k17Q==
+        bh=W6Hdruz7sym3+5vSHpUoLt0hCv6yeITdNvYHdX6YAKY=;
+        b=z2+bAQJeM3xzves239zqRWKPpO73Qsq6DKg3NOIxAXbZFVXmPakQB6y1kQceDwR9J9
+         Xr47fnIfXpgrdnTbM5vAgnGYvfB01euQrhcODQ7fnOcEflbKvIiM3UVJ/OPO6IcxJYNm
+         1dsSjpVCt2NSbt2wcD36zKUiO3IsIYfifSlMfgxXOXREcwpSVydedM/EfEa+uFgMp9k5
+         B4yp9ImEtB1YYQX3zPvZ9EGieqV/ErH30Yuxnsey1t621gP1pBovlGxiLUTIcK7JaMPW
+         mgV07HgQgUEU6r9WpLeBhLEkF834EUawbQECYWgoAdyNet5OAM0ChU95KG/57XwfGyZ+
+         BaFQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MM/AhceG";
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1036 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Fjg7/jOq";
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1030 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <briana.oursler@gmail.com>
-Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com. [2607:f8b0:4864:20::1036])
-        by gmr-mx.google.com with ESMTPS id l1si239530ybt.2.2020.04.01.11.03.53
+Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com. [2607:f8b0:4864:20::1030])
+        by gmr-mx.google.com with ESMTPS id t81si201791oie.5.2020.04.01.11.03.49
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Apr 2020 11:03:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1036 as permitted sender) client-ip=2607:f8b0:4864:20::1036;
+        Wed, 01 Apr 2020 11:03:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1030 as permitted sender) client-ip=2607:f8b0:4864:20::1030;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MM/AhceG";
-       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1036 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Fjg7/jOq";
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::1030 as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1036.google.com with SMTP id np9so372019pjb.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 11:03:53 -0700 (PDT)
+Received: by mail-pj1-x1030.google.com with SMTP id m15so370930pje.3
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 11:03:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=0ytszynu+netDHk2GPmkuesoIlzhs8OdWs+7Onp8BW4=;
-        b=MM/AhceGhc/kPusALxaGFkbohA86PPt2RbPdPLJ+PKGdFbj4U0OYjywFVfl0onwJpc
-         7N/4Rlo+Ogt2jOyVCKr+w0V/EpQ51KvjsLZfE0jlftLzIyxKj0Wx1xsnJX2fzkGdUQXM
-         EfKjWWdThZ0/Jstf6JLfCs81/tRIlcCKp2uIfU+xVkKFNF15v9G1jfbbLE6wVbve4dwb
-         yCHMWNTZBK32nGewIphRZM/PGImdf4jX7Ft+dbu4J6zwSPyI/yimKO5NifMlyInLnyFU
-         iBq9qPZd6pQUco6ivLuMGXq9qtNQXEdV7bSKSvWhmtO/GxpgkB7BpIFg9KQSOuf5Kbqk
-         70vA==
+        bh=W6Hdruz7sym3+5vSHpUoLt0hCv6yeITdNvYHdX6YAKY=;
+        b=Fjg7/jOqMyLvPq8BzxAyXqtketwx1RnwHiVCZw/Ea6fIEMn5HtNQ//3MJp63iQzFQu
+         TWJPxJvu+KervK9F+pU/yMgEKLOta38iS+Gkvu0EyorPZ5VKlYLzODEN4th/ZqqrFaCl
+         mPDYhSLTWstW8B/W71vBztgFC8cGEHmTXYy0+eHRQMqfhyv4VbtbDB3Ibgbnhr2Pr31S
+         rjnY8jd8l59RIm5XSkdwmaoF117daKa0wK6K0Kvucqj/5ktUyZvAvg3lU5pocT9A6pKe
+         J78oumh5GaB0t2+vQZMvj7sjag5DFKhltRHCWwK5Lmy9ErRZZI6rmswY5o0yHWgI/T/+
+         Ra+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=0ytszynu+netDHk2GPmkuesoIlzhs8OdWs+7Onp8BW4=;
-        b=WDK9QE+c5l2+FYy5uO0RTOR4XV4xEU8QN/Y4g70YYnkm2LPsfETxFKy6ZxiCYOn17t
-         8g/JfFAuC2NtUAF78LuC2j4LCBd+B0R533RHnpYautJx/PI1DEJK2gwqkSsRmRzrzR8V
-         xBBv7MzM8grqKbbVy/aO0ax8R5VIN7NsXFVpTJJ/DaVUxe5rKusXRa3zwO1eD+zdL6cu
-         siZ1SgHeHAjaHbEtEnZELpMqaCtsp8O6ZWS4JOsQMTyyUAfmdPvrcaUrNF3EBeOWMyzo
-         nEUbfxDM9TUtIwQlI4enO8wFmwMzvfUZlG5jBbdiYbwrONE23SjgmMFZw8kYjHjdK13F
-         Dg2w==
-X-Gm-Message-State: AGi0PuZwFHVF18xYVRAnzNBEz1kNRZGcFXBbeiDc7ucWE/CgQHBw9goS
-	J7S0NlDncNODtU8fdH3bs5o=
-X-Received: by 2002:a17:902:744b:: with SMTP id e11mr5831144plt.292.1585764233121;
-        Wed, 01 Apr 2020 11:03:53 -0700 (PDT)
+        bh=W6Hdruz7sym3+5vSHpUoLt0hCv6yeITdNvYHdX6YAKY=;
+        b=NXxLJnQ1BCl+fnjQMPhFPgp34XsmBOd1E6jQm17ViN5NXOJ5K2x6P1kPcC74lV2jk8
+         AWyUS+xFIUFZoRUruAPGnVLDbLqeZLL8DsGTASr39oGO2cbGkUBZ9m2aAl62cBINHuCO
+         h+zvlirbEsUinyNZTZllW/RXTOWyGYp6JCLelgEEPOAyIIfItkN0PNn+d+I+UWPUvCJK
+         zAvXyM0J/soO4t+Bh8z0W2iSpHxe6gUCi5JGR66xDJhk/FvgwCWHeN6JbQLyVyJ6/lSK
+         cjIaU8NO+/UfzY7lGw3IzEt1pqQYmCva2Al3QAnC/MlTnRxgg0+GnHzFkycsK1cUsWDG
+         avRA==
+X-Gm-Message-State: AGi0PuYSJ/FPlhOM/dDW73XixdNmezjS2SKUJaLVly9rkfD314p0AQTg
+	75LfysqtFzqQ0M2/n2PYaGA=
+X-Received: by 2002:a17:90a:e398:: with SMTP id b24mr6133180pjz.113.1585764229550;
+        Wed, 01 Apr 2020 11:03:49 -0700 (PDT)
 Return-Path: <briana.oursler@gmail.com>
 Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
-        by smtp.gmail.com with ESMTPSA id ci18sm2131896pjb.23.2020.04.01.11.03.49
+        by smtp.gmail.com with ESMTPSA id ci18sm2131896pjb.23.2020.04.01.11.03.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Apr 2020 11:03:51 -0700 (PDT)
+        Wed, 01 Apr 2020 11:03:47 -0700 (PDT)
 From: Briana Oursler <briana.oursler@gmail.com>
 To: sbrivio@redhat.com,
 	julia.lawall@inria.fr,
@@ -80,87 +80,90 @@ To: sbrivio@redhat.com,
 	forest@alittletooquiet.net,
 	outreachy-kernel@googlegroups.com
 Cc: Briana Oursler <briana.oursler@gmail.com>
-Subject: [Patch v3 2/4] Staging: vt6655: Move rate determination logic.
-Date: Wed,  1 Apr 2020 11:03:40 -0700
-Message-Id: <ba87af8a2d28d5737c6d8888bbda143aad723d2c.1585763457.git.briana.oursler@gmail.com>
+Subject: [Patch v3 1/4] Staging: vt6655: Limit return statements.
+Date: Wed,  1 Apr 2020 11:03:39 -0700
+Message-Id: <fe417533b66d29ef6ea19128b38b8c8de7757ae2.1585763457.git.briana.oursler@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <cover.1585763457.git.briana.oursler@gmail.com>
 References: <cover.1585763457.git.briana.oursler@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Factor rate setting logic out of nested if-else statement to prevent
-code duplication.
+Limit return statements within context of switch case to improve
+readability.
 
 Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
 Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
 
 ---
- drivers/staging/vt6655/rxtx.c | 30 ++++++++++--------------------
- 1 file changed, 10 insertions(+), 20 deletions(-)
+ drivers/staging/vt6655/rxtx.c | 29 +++++++++--------------------
+ 1 file changed, 9 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 443d04c4c62f..0fbbe81bc2ca 100644
+index 37fcc42ed000..443d04c4c62f 100644
 --- a/drivers/staging/vt6655/rxtx.c
 +++ b/drivers/staging/vt6655/rxtx.c
-@@ -294,23 +294,18 @@ s_uGetDataDuration(
- 				return 0;
+@@ -259,12 +259,9 @@ s_uGetDataDuration(
+ 			else
+ 				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 
+-			if (bNeedAck) {
++			if (bNeedAck)
+ 				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
+-				return pDevice->uSIFS + uAckTime + uNextPktTime;
+-			} else {
+-				return pDevice->uSIFS + uNextPktTime;
+-			}
++			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
+ 
+@@ -282,12 +279,9 @@ s_uGetDataDuration(
+ 			else
+ 				uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 
+-			if (bNeedAck) {
++			if (bNeedAck)
+ 				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+-				return pDevice->uSIFS + uAckTime + uNextPktTime;
+-			} else {
+-				return pDevice->uSIFS + uNextPktTime;
+-			}
++			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
+ 
+@@ -323,12 +317,9 @@ s_uGetDataDuration(
+ 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
  			}
- 		} else { /* First Frag or Mid Frag */
--			if (byFBOption == AUTO_FB_0) {
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
-+			if (wRate < RATE_18M)
-+				wRate = RATE_18M;
-+			else if (wRate > RATE_54M)
-+				wRate = RATE_54M;
  
-+			if (byFBOption == AUTO_FB_0) {
- 				if (uFragIdx == (uMACfragNum - 2))
- 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
- 				else
- 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate-RATE_18M], bNeedAck);
+-			if (bNeedAck) {
++			if (bNeedAck)
+ 				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+-				return pDevice->uSIFS + uAckTime + uNextPktTime;
+-			} else {
+-				return pDevice->uSIFS + uNextPktTime;
+-			}
++			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
  
- 			} else { /* (byFBOption == AUTO_FB_1) */
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
--
- 				if (uFragIdx == (uMACfragNum - 2))
- 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt1[FB_RATE0][wRate-RATE_18M], bNeedAck);
+@@ -363,12 +354,10 @@ s_uGetDataDuration(
  				else
-@@ -332,23 +327,18 @@ s_uGetDataDuration(
- 				return 0;
+ 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
  			}
- 		} else { /* First Frag or Mid Frag */
--			if (byFBOption == AUTO_FB_0) {
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
-+			if (wRate < RATE_18M)
-+				wRate = RATE_18M;
-+			else if (wRate > RATE_54M)
-+				wRate = RATE_54M;
+-			if (bNeedAck) {
++
++			if (bNeedAck)
+ 				uAckTime = BBuGetFrameTime(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
+-				return pDevice->uSIFS + uAckTime + uNextPktTime;
+-			} else {
+-				return pDevice->uSIFS + uNextPktTime;
+-			}
++			return pDevice->uSIFS + uAckTime + uNextPktTime;
+ 		}
+ 		break;
  
-+			if (byFBOption == AUTO_FB_0) {
- 				if (uFragIdx == (uMACfragNum - 2))
- 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
- 				else
- 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate-RATE_18M], bNeedAck);
- 
- 			} else { /* (byFBOption == AUTO_FB_1) */
--				if (wRate < RATE_18M)
--					wRate = RATE_18M;
--				else if (wRate > RATE_54M)
--					wRate = RATE_54M;
--
- 				if (uFragIdx == (uMACfragNum - 2))
- 					uNextPktTime = s_uGetTxRsvTime(pDevice, byPktType, cbLastFragmentSize, wFB_Opt1[FB_RATE1][wRate-RATE_18M], bNeedAck);
- 				else
 -- 
 2.24.1
 
