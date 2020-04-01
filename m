@@ -1,120 +1,128 @@
 X-GM-THRID: 6809167002234519552
-X-Received: by 2002:a63:1862:: with SMTP id 34mr22169856pgy.191.1585731502702;
-        Wed, 01 Apr 2020 01:58:22 -0700 (PDT)
+X-Received: by 2002:a25:c7c4:: with SMTP id w187mr34574213ybe.326.1585721938726;
+        Tue, 31 Mar 2020 23:18:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:a507:: with SMTP id s7ls10235612plq.1.gmail; Wed, 01
- Apr 2020 01:58:21 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIdQN6AvYQgwcYFeChrkXXOQvJwCYqBfjK+4mQizrbCVQVI6FBHWh+K+aRJYG1vj2jFoU/R
-X-Received: by 2002:a17:90a:b395:: with SMTP id e21mr3676091pjr.33.1585731501426;
-        Wed, 01 Apr 2020 01:58:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585731501; cv=none;
+Received: by 2002:a5b:5cd:: with SMTP id w13ls8190580ybp.10.gmail; Tue, 31 Mar
+ 2020 23:18:57 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vs2m4ZE8b86YW0lk7oEMw0Go2/9nLfRCxCE11IG7v8qa13LQYcsE1+zDq0Z5j9o2wk+rooo
+X-Received: by 2002:a25:814a:: with SMTP id j10mr36642268ybm.262.1585721937324;
+        Tue, 31 Mar 2020 23:18:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585721937; cv=none;
         d=google.com; s=arc-20160816;
-        b=Po04jfVKetzSYXJ4YIe1sKAqZnPDx7mc+GlYyWvvm02L6uHWFD3eEDw7XDao43U9xp
-         nBxc46ViuLpKVKW+Vu9/t6NEBHHEbRImgDVl9T4yLniT0Feqvy7HhKIG6nJpYgL8WiLc
-         ouPAvvcY4bbD0a/gEr0yWoJRi1baPBt5iSf01uwgwv3KVlskTNffzcJm8lsXI/No7L0o
-         33LG4D2XM69DHX/eAvy9b8eRM0nI1CXHbKbeC6slAQG/S0h+y6YPgZgJ3LTm0FLGdif3
-         1uZPo4JLeEK2nOPrB/ws2VOKC5ECfqhyj2lqVlP2/vl0Q89364LAdf4pgCLUvmKR6O0/
-         THZg==
+        b=YWVawWIDmDPR5hwYxbQ6AOeX2c/3X05J+77LIjD6wks93DkS4gHzSi2sPEonMlQKa7
+         PBkD1tl+hysECniYyvio9mSsRdELabnDYBqM7+uB4vuIXcphRy4ZCT+aGz73Oka7YS+z
+         HEwoam68oZo4QtntdHa7Sa+4EZeSkZYr5Bs2dR6juIvME+kww4jFb1FBJV9B+QHfsxOP
+         z+mLKUzp9E6vQv0m8DXzeZqbbDp1ZeAhTXmunrHgeostqBRkIEAYoiYpUkwrNVAf1mcw
+         IoYZp42+7qxgLG0D+pqqYfg6AX4Q8CX5z66b/iAY/qynT9B/mB1OwBezIj1Vos2wC+8Q
+         RJGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=riGPrE9HSjH0MRHt3M2cQFhFMlEgoyaOzczIL7BBZJo=;
-        b=Akud7CRRZAh4XzfRocm1EOwQa8ruO7nmwqnM/CHeEaAT2lWnkbr8cjAXpffD6HaWsn
-         merNwAwo7xB+NvJ5Lkj9ub35o/C9o98mzdtH21EQOPUQDlsdYeNnMqBOutuNvOwQmupL
-         5yDi5aZ2Q2xvc/9o9b1CC/ItAOWJzqvBUZwQVhQroi4fF9VZUBCd4f6vrql1HVu+jsKZ
-         eu07KuoeU7BKCPiJjRaUZStrkDTlsliXpb7J5m/Ii/fU5h3Tclv/YMuYWD+FtnTVBnY1
-         HtBMx12D0RCiRNZjE5WyOPfQSNeHLN+XZ1WABfNqGnVwHQ4gA/0XU2CUHO7jefLkNpxk
-         6s6w==
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=npPrbBnFOZ2MKSG+1Gn1lPDRWtT3MAIz8NNZ9URv5JY=;
+        b=Q8IANYa2pQgTmEg9xIp9re5Fbo6hObeGmK2mAsWwmh3zUhhnaczSjX3M5jTpH1MgYp
+         1ydc5T40cyy0dlRD2VEoNsNeiyNkDLi9875uORzee4LpXFTiL8VViT7TfRecRcHPDKDB
+         vzeSKoCpKFiFdH4YIkC6nvzjOlDlPpDejLo7Mn7lZEG/S9+G/kFZ/2qawI+lnpX4zqAn
+         xeKUqmrzYoNt81Ovn/D61Ae7iPooLqmkgsjfniSUBEr8de3Fw6FsNSpI8WTUKQ98D6qB
+         livjpYVGdvl5Wqfg4eIsuqEKLzlXaHZy82xVM/0RP+TpxixF6waykop3W/wl6rELHsNq
+         HScg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lgURygTR;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YbGksNjr;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id u14si478382pjn.2.2020.04.01.01.58.21
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id d72si81607ybh.5.2020.03.31.23.18.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Apr 2020 01:58:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Tue, 31 Mar 2020 23:18:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lgURygTR;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YbGksNjr;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id x7so11805082pgh.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 01:58:21 -0700 (PDT)
+Received: by mail-pf1-x444.google.com with SMTP id 23so11635601pfj.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2020 23:18:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
+        h=date:from:to:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=riGPrE9HSjH0MRHt3M2cQFhFMlEgoyaOzczIL7BBZJo=;
-        b=lgURygTRVNW35rZAzrEMwxljJoVbQ3jkhhtqYIJu7XnGcXgdrqahcEEd6vWqU5nchJ
-         w5uHdkMv1SuvatRHigyVnwf6u8ohMiTod823xrxBzT4ZslPgVKab0RL6TEMN7YNKViRw
-         m4Owb7+4z+UVIRpoAl9/dGwMTmWB5yhOl0QBOI1/z6JSExr243jSOsqo+f99Ezlt0K1h
-         ZWV//j5wLFHVlRnXsjV84HhXvGYxci5RPfPst2M4BBA1shv95r0H/GRCqCc7aKTQxOHj
-         Sl0s4NQdrNiY+qB52tezfvLg6ek2XJc5MDunJOgn9LbnCvI1n5Iv+denNIlYCJ+fjMi0
-         zZfQ==
+        bh=npPrbBnFOZ2MKSG+1Gn1lPDRWtT3MAIz8NNZ9URv5JY=;
+        b=YbGksNjrLVbLKhE6beOtxSROgoNHN3EgAawg1ySAHBZGBwuH1VdnYXF+v656Cgvk7V
+         id1QkMwS/GykKNSsuiLMeBQTVvttibCWhlKqFyTTJj1U2wFToCPCn+C2HId9eH/DdmzI
+         dYxifpbF/I+6RuZ0K/LAeTC4xyuZWVRsoNH9J0hbcz4SZVui39LtXo7Z4xB4GJLw4Hgm
+         VS5P8jeI6TYBaOXV7zIcwHA6iGCakCKFVXvB8BOMA2U5uDrimUe/MnJ9yfvHeSebEW2X
+         frzE0UtBe0LvYyAa4J8gS5gWOhXWF/TEWEhqIlQCyk8Ddit8Z6EuZM3YXZU2lTExhVDc
+         8xwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+        h=x-gm-message-state:date:from:to:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=riGPrE9HSjH0MRHt3M2cQFhFMlEgoyaOzczIL7BBZJo=;
-        b=IXya78hqFRMkQ48GZDzms/tJMm5Zqy7hFAALjs6BLPrk/56Zv6WQcGxH4v6wSTXXqj
-         DyLjN+34q3C9pMzK4hsAfF+0gM7IUq3aJWnRaU/it07Vjv6RvEHVebW/nkiPHNuXdn59
-         96HYesnOaQe+nGKcrxcRBr5xwoOt/+05DICNuVmRYt45fVlSZFFRxXpHNcvql1Eqrzo5
-         Mjg3jW3SuaS2eVq1g4lGpliMS4myFy/onXhx0vweETk1XrChc9wF0U9j8JI6Y7qstsHx
-         MYmn/Q5TjyRR+qpFl5hwaPJM1DqwNtZ/lKZlx7Ply2qcVULQaHG417FT4wwd0mtYgEM0
-         xaTg==
-X-Gm-Message-State: ANhLgQ0qbHGeOms6G9I4G9yzTTeDTZhSFaVTJv95czFIp9cljawuOau7
-	xFwhLZJL92oOTGMn/4mAcuqN5lvuJ4HxkA==
-X-Received: by 2002:a62:2a8d:: with SMTP id q135mr23438903pfq.220.1585731500791;
-        Wed, 01 Apr 2020 01:58:20 -0700 (PDT)
+        bh=npPrbBnFOZ2MKSG+1Gn1lPDRWtT3MAIz8NNZ9URv5JY=;
+        b=hdyzvf/vfTe/eJYEuh9SKd4EGJgQAbeKTuqC+sZIIBmh0zxy5+xz5Cah9eNilPeuUg
+         ngkJwJmECpKk1YUBNj6aDUIsJZK8/jGbEsFQ+Faippl4lwIAmF5A0NFqVHgHnIOqKOvV
+         BMZed04P82rv83lgytDVmk1JpuxbTzvyUoQXYMU8xptPl+0UnxSC46qlOIIsx9ONR549
+         5RAI4i7Z2uNFoVjNcHFrdRBfXmVecd1sIeMJr09QobxtwIXBM7M7rAcTcHbV3GCKP6ne
+         6+tlUFQSQ+j6veuGj89NeQutEnUf7x0Qkbv2/ef4On0pi3lmWXXliR32goBLzZm2Bxcn
+         xItQ==
+X-Gm-Message-State: ANhLgQ3K0I21JpI7Ac+hxZPxN+/Tblk9VvG+ILy4vDLdgCF/Iv6HtA+x
+	F/X+4yw3XkcdxX6FKyZDpICWlLAPK7NX1Q==
+X-Received: by 2002:a62:2a8d:: with SMTP id q135mr22932992pfq.220.1585721936400;
+        Tue, 31 Mar 2020 23:18:56 -0700 (PDT)
 Return-Path: <debsoumyajit100@gmail.com>
 Received: from ubuntu ([157.42.224.231])
-        by smtp.gmail.com with ESMTPSA id i124sm1106379pfg.14.2020.04.01.01.58.17
+        by smtp.gmail.com with ESMTPSA id v38sm758952pjb.1.2020.03.31.23.18.54
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Apr 2020 01:58:20 -0700 (PDT)
-Date: Wed, 1 Apr 2020 14:28:12 +0530
+        Tue, 31 Mar 2020 23:18:55 -0700 (PDT)
+Date: Wed, 1 Apr 2020 11:48:49 +0530
 From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, manishc@marvell.com,
-	GR-Linux-NIC-Dev@marvell.com
-Subject: Re: [Outreachy] [PATCH 0/3] staging: qlge: Resolve various warnings
- issued by checkpatch.pl
-Message-ID: <20200401085810.GA19697@ubuntu>
-References: <20200328080254.6692-1-debsoumyajit100@gmail.com>
+To: Stefano Brivio <sbrivio@redhat.com>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [Outreachy] [PATCH] staging: qlge: Remove
+ extra blank lines
+Message-ID: <20200401061846.GA16412@ubuntu>
+References: <20200330051343.7841-1-debsoumyajit100@gmail.com>
+ <20200330200724.1ad30b76@elisabeth>
+ <20200331190721.GA19185@ubuntu>
+ <20200401044948.345a7327@elisabeth>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200328080254.6692-1-debsoumyajit100@gmail.com>
+In-Reply-To: <20200401044948.345a7327@elisabeth>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Sat, Mar 28, 2020 at 01:32:51PM +0530, Soumyajit Deb wrote:
-> This patchset resolve coding style and indentation issues reported by
-> checkpatch.pl
-> This patchset add space around various binary operators, remove extra
-> unnecessary blank lines and properly indent a multiline comment for the
-> same file qlge_main.c present under drivers/staging/qlge directory.
+On Wed, Apr 01, 2020 at 04:49:48AM +0200, Stefano Brivio wrote:
+> On Wed, 1 Apr 2020 00:37:28 +0530
+> Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
 > 
-> Soumyajit Deb (3):
->   staging: qlge: Add space around operators
->   staging: qlge: Remove extra blank lines
->   staging: qlge: Properly indent a multiline comment
+> > On Mon, Mar 30, 2020 at 08:07:24PM +0200, Stefano Brivio wrote:
+> > > On Mon, 30 Mar 2020 10:43:43 +0530
+> > > Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+> > >   
+> > > > Remove unnecessary extra blank lines to improve code readability and to
+> > > > adhere to the Linux Kernel coding style.
+> > > > Reported by checkpatch.pl
+> > > > 
+> > > > Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>  
+> > > 
+> > > This looks good to me, but why isn't it in a series with the next patch
+> > > you sent? They touch the same driver with similar purposes...
+> > > 
+> > > -- 
+> > > Stefano  
+> > 
+> > Should I resend this patch along with the other patches concerning the same
+> > driver as a patch series?
 > 
->  drivers/staging/qlge/qlge_main.c | 30 +++++++++++-------------------
->  1 file changed, 11 insertions(+), 19 deletions(-)
+> Yes, exactly -- it's just another invocation of git format-patch, you're
+> almost there.
 > 
 > -- 
-> 2.17.1
+> Stefano
 
-I have submitted this patcset on 28 March but I haven't recieved any
-review on this.
-Is there anything wrong with this patchset?
+Okay, I will send this patch and the patch after that as a patch series.
+Thank you.
 
-Please let me know, so I can correct them and resend the patches if
-needed.
-
-Thank you
-
+--
+Soumyajit
 
 > 
 
