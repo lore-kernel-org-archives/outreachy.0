@@ -1,133 +1,101 @@
 X-GM-THRID: 6809167002234519552
-X-Received: by 2002:a05:6e02:6cd:: with SMTP id p13mr617658ils.150.1585737197927;
-        Wed, 01 Apr 2020 03:33:17 -0700 (PDT)
+X-Received: by 2002:a05:6830:11d7:: with SMTP id v23mr16691854otq.216.1585733624515;
+        Wed, 01 Apr 2020 02:33:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6e02:4d1:: with SMTP id f17ls7455272ils.0.gmail; Wed, 01
- Apr 2020 03:33:16 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vusI97moEz+Gv8LUjTBVBl8Hg/lPrDmBk71f94AaAYc0DHDFdkXqXLxQ7nCuUV1f/cdvE99
-X-Received: by 2002:a92:8548:: with SMTP id f69mr20803763ilh.20.1585737196549;
-        Wed, 01 Apr 2020 03:33:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585737196; cv=none;
+Received: by 2002:a9d:6750:: with SMTP id w16ls8844892otm.4.gmail; Wed, 01 Apr
+ 2020 02:33:43 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vveSUYeeP2PBAm9VqyZWfadTXzLMVm5BpSz4BxpbXHQJ4WXsjLJihRS814MPk62E+pCjytm
+X-Received: by 2002:a9d:2aca:: with SMTP id e68mr16517074otb.324.1585733623522;
+        Wed, 01 Apr 2020 02:33:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585733623; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xsiqxt6XjBTqPj+PxrUSK42/DOSzigKywadw1Pfe9gX54e/rXhr2Pi8zaiJAhLBzMM
-         kdy0gGWOvEP95nt5l4aImzWz3txpGsy/He1R9P/ytuPVRyYF/NUo2upIBN6F6nQHtAPI
-         FTkYO03bEqDoPnmPEZ0lX6atxHJZnXck+1vZEBJMUTmaO5TDCRLzsha80+uyFIrz8HcS
-         FvdznzXsS9jH3xHua41gzNcS73YIkCKrRM/2zSSzmMWteY4r2syivnKmlot0BTddGy36
-         rFJJPOXDm/Sr1VgUzjJtqfx+xojqn18hnUtyYoOC8k82Yg3QwyP4kXUTU7WWIPj/ubaB
-         5B9w==
+        b=xhKp1aTGrThjJmRO1zD/mMqFcaHeA/Ri6HjQIxI/V53t+sjDVTyFruAl8S18LJHnoy
+         VGVXD9B4ARcWMzJkayjqxQZvZGXgGQllOhFPVuiyFDhP50pz5BZik+KM+Z6CmJvMVFYq
+         Yd9Ma/G8gH26e6neVcv8uvVWKLJvCDT+GewmiEIYwUu1/BiwB6VmAUdXtv1t/YnPDisn
+         9atqz74DTJiWFtaCi1323LkAO5TavgLByzsaqgtKxyXfrltrAb8A7b5AUiBFyXNueb5L
+         ah4RfIO6+RbOsXM2Nb8p0YzSK6Q2yx0U8gjn2McdozCzHgpwBEWvgd1/5OQBKmrUPhcO
+         pYrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=u2n+nzqbF9NoRJjQ8X5Ak/8X01FxuVTlkkOoHFgJN1E=;
-        b=CqI5woAXcejMe2G5ATbF3wNGYzS48oTuDQcXALtXEuYJtvHq76f3yr9sjGMmqgWm1V
-         TRTL9BHnzduCGZfWj2rMyBbNNXzAD5p6w0aK5xaqqnOnGXO4ZdrHtHCv6DzILS4iKyOv
-         hnyxK8FYyeyymmvA6kwG6CJ4RBAVH+hMV9B4LIFV3l2GpB2aCz5LHZoUy3/45JweSQav
-         Tw5IgHp48B6p423NWreEVjsVVVDQPOsQwmco0VR9Fk2UrPqKf9vZoOq1WIq7/bOn0dGu
-         N3NQeIY4NBkKYAzy/PVBKedJ3yt9mMmdNXCRSg94PwWaF9dIBuT0Sg6j3/B1PEfi+knp
-         ibmQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=b4e4w9qTN8qoig8YjlPlfpIn0843B9X2LMMCrkl2v2I=;
+        b=juanRGThgm0iGmE8w78OggxK0ZcJ+MJz2wx1a1E36hNigeHZMGiHtuVg5f6+B3ofii
+         V3JXJ/0W4numyqLaQ82Jyf5w64FuXKMpgYzlFCxZsv+95d2msYzNzU49yygSROHcFYaf
+         tVPDYawMK+3c5320rQPnfeLx9EHYAbljmzFC2W759Pi7gA/GYtv1+3mGrG3ulp4ibFhA
+         GZaTdk+0Vk43j7vkcKg0FiS1sggo1YiShS6Q4Vi5wCC5BNkY+3xY4zBkizx4xwSI8R7b
+         Wd/AWJQc86odApJACabvbo8f54hNHK8JhFmyN2VU3oCoApbBuuM65N23vnsNaHTg2veg
+         cC9g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VxLRuswd;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id m8si88746ili.2.2020.04.01.03.33.16
+       dkim=pass header.i=@kernel.org header.s=default header.b=FauALmFC;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id m19si150406otn.4.2020.04.01.02.33.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Apr 2020 03:33:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 01 Apr 2020 02:33:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VxLRuswd;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id w3so9447663plz.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 03:33:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=u2n+nzqbF9NoRJjQ8X5Ak/8X01FxuVTlkkOoHFgJN1E=;
-        b=VxLRuswdd2BTnRRqshmqYs8plQeOkWI+bPRFx2lBXLsJmo7uJuZ28+ImQurbKHAvRG
-         rDGRkN19lLNWeqlsQq4mwZlLSDlv8gjOmpTTAaBnkFuBcWxviY6Xw3SUh8E1Cbxlna4X
-         chGROtHvwKJoYiGhfcs/nJ/70uDVk0mc9I4322VYesTkdYw7Fvj8HSiA0izcAM5HvKWO
-         rbMtK36UwyVNBB09lLs2FFl8CoktVkb95PYg1Kd4KUNckz/a7hPPpaPq9kumTQYConti
-         YTjpgZv2UJoeA40sJXXRkXksFlEvytPQywkBmv33+eM/MTUd2gztBr4vCq4UFCy/vgbE
-         sltQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=u2n+nzqbF9NoRJjQ8X5Ak/8X01FxuVTlkkOoHFgJN1E=;
-        b=tFbPsXs2aM89Iy7Kg+fg9r521rnJ40xI84vPB+LfLSYIA4jakWV25xgECcLeaVqBwr
-         u/Ud1CupF8Ot9fcbyzGef9jiPJjlOETQhv/ubf2iLwMZH0Yvzyb80LKs/DNDeFay8xjo
-         bOfEivX5/FDKBhVwrevAmuVzmsSbxkEru76S69pWpLxqyYnsqHQcpe6Y7uugId7uyx9N
-         nx1481cNuBXRtE8sAw+4aXRGiKH9hrrAl7VJWSYiU0OOqsqatFS/veOpfHk7n4v+PBz+
-         boQHeiZN+svKM/OvupMAbDEoNbwAWzRxIKnm8OO7fRdY/uyhH0qkfUzSZvWDS8Am9I2o
-         gNJw==
-X-Gm-Message-State: AGi0PuanLHZnCsf/CF+hbkqp2C4VrYbg71H5wl8mCzlMbcWN4mfkoxQd
-	Gcm71QHnplHmlL0qYf31IFA=
-X-Received: by 2002:a17:902:bd06:: with SMTP id p6mr5319997pls.228.1585737195755;
-        Wed, 01 Apr 2020 03:33:15 -0700 (PDT)
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from ubuntu ([157.42.224.231])
-        by smtp.gmail.com with ESMTPSA id bo12sm1318126pjb.16.2020.04.01.03.33.12
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Apr 2020 03:33:15 -0700 (PDT)
-Date: Wed, 1 Apr 2020 16:03:07 +0530
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@kernel.org header.s=default header.b=FauALmFC;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 12AF52077D;
+	Wed,  1 Apr 2020 09:33:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1585733622;
+	bh=1GaeltaGzdmJiaT4wz3bwdofuxbvAjTsXknmB7MduDA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FauALmFCYGEeqoUM74N9xfQ1W1XVXkU2Y8kQxpRWRy47EzjLzsHZotD6gpbdd4Ztx
+	 7c09+qUM9puFWcWxi2XTs+KRbq6WHP2V4p0BlDDSO84THDAgKTgYdKgtazG1AWrItk
+	 51ZOCeGMdR+fyaiA+e9Su8vC36DoH+jEQOWzDa5w=
+Date: Wed, 1 Apr 2020 11:33:39 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Soumyajit Deb <debsoumyajit100@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, manishc@marvell.com,
+	GR-Linux-NIC-Dev@marvell.com
 Subject: Re: [Outreachy] [PATCH 0/3] staging: qlge: Resolve various warnings
  issued by checkpatch.pl
-Message-ID: <20200401103305.GA21297@ubuntu>
+Message-ID: <20200401093339.GC2055942@kroah.com>
 References: <20200328080254.6692-1-debsoumyajit100@gmail.com>
  <20200401085810.GA19697@ubuntu>
- <20200401093339.GC2055942@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200401093339.GC2055942@kroah.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200401085810.GA19697@ubuntu>
 
-On Wed, Apr 01, 2020 at 11:33:39AM +0200, Greg KH wrote:
-> On Wed, Apr 01, 2020 at 02:28:12PM +0530, Soumyajit Deb wrote:
-> > On Sat, Mar 28, 2020 at 01:32:51PM +0530, Soumyajit Deb wrote:
-> > > This patchset resolve coding style and indentation issues reported by
-> > > checkpatch.pl
-> > > This patchset add space around various binary operators, remove extra
-> > > unnecessary blank lines and properly indent a multiline comment for the
-> > > same file qlge_main.c present under drivers/staging/qlge directory.
-> > > 
-> > > Soumyajit Deb (3):
-> > >   staging: qlge: Add space around operators
-> > >   staging: qlge: Remove extra blank lines
-> > >   staging: qlge: Properly indent a multiline comment
-> > > 
-> > >  drivers/staging/qlge/qlge_main.c | 30 +++++++++++-------------------
-> > >  1 file changed, 11 insertions(+), 19 deletions(-)
-> > > 
-> > > -- 
-> > > 2.17.1
+On Wed, Apr 01, 2020 at 02:28:12PM +0530, Soumyajit Deb wrote:
+> On Sat, Mar 28, 2020 at 01:32:51PM +0530, Soumyajit Deb wrote:
+> > This patchset resolve coding style and indentation issues reported by
+> > checkpatch.pl
+> > This patchset add space around various binary operators, remove extra
+> > unnecessary blank lines and properly indent a multiline comment for the
+> > same file qlge_main.c present under drivers/staging/qlge directory.
 > > 
-> > I have submitted this patcset on 28 March but I haven't recieved any
-> > review on this.
-> > Is there anything wrong with this patchset?
+> > Soumyajit Deb (3):
+> >   staging: qlge: Add space around operators
+> >   staging: qlge: Remove extra blank lines
+> >   staging: qlge: Properly indent a multiline comment
 > > 
-> > Please let me know, so I can correct them and resend the patches if
-> > needed.
+> >  drivers/staging/qlge/qlge_main.c | 30 +++++++++++-------------------
+> >  1 file changed, 11 insertions(+), 19 deletions(-)
+> > 
+> > -- 
+> > 2.17.1
 > 
-> 2 days response time is _very_ fast for patches.  Please note that this
-> is the middle of the merge window upstream, so my response time will be
-> longer...
+> I have submitted this patcset on 28 March but I haven't recieved any
+> review on this.
+> Is there anything wrong with this patchset?
 > 
-> thanks,
-> 
-> greg k-h
+> Please let me know, so I can correct them and resend the patches if
+> needed.
 
-Okay, no problem.
+2 days response time is _very_ fast for patches.  Please note that this
+is the middle of the merge window upstream, so my response time will be
+longer...
 
-Thank you.
+thanks,
 
---
-Soumyajit
+greg k-h
 
