@@ -1,143 +1,121 @@
 X-GM-THRID: 6810983981857636352
-X-Received: by 2002:a25:bb0c:: with SMTP id z12mr2950876ybg.253.1585806976197;
-        Wed, 01 Apr 2020 22:56:16 -0700 (PDT)
+X-Received: by 2002:a37:b185:: with SMTP id a127mr1944579qkf.224.1585805789939;
+        Wed, 01 Apr 2020 22:36:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:25d4:: with SMTP id l203ls840896ybl.3.gmail; Wed, 01 Apr
- 2020 22:56:14 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJY2LCoEH1CD2820RelUOZWYwZNq95PbLXphriOcyaemUb9b/twxeZ//LrR+PWm4Zu3hjk/
-X-Received: by 2002:a25:c64b:: with SMTP id k72mr2966565ybf.177.1585806974825;
-        Wed, 01 Apr 2020 22:56:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585806974; cv=none;
+Received: by 2002:a0c:ab1c:: with SMTP id h28ls844132qvb.2.gmail; Wed, 01 Apr
+ 2020 22:36:29 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ8r5zq9Zop8rApYfxKQoRKw+dT1d8+6bRrOoKHJgFzkkVQAAjuibvPKDb9Y9fVQ3SL+J6H
+X-Received: by 2002:ad4:54d4:: with SMTP id j20mr1559712qvx.75.1585805789044;
+        Wed, 01 Apr 2020 22:36:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585805789; cv=none;
         d=google.com; s=arc-20160816;
-        b=yXpXGiFnpwiJK6iaGVd0g0vQgejyK35vBsHiAv5J47auEYF55rZcgGblK4O6JbEmIy
-         uYlwx2UrDmCWcwDOdmdvboWh3gWBnrPeojipcy5XKBV/WSrw5xjKYCPJS9XAy5kFZvd2
-         adVCYSBMb0+pdSTE1hFerQ0aJ53lGca4vEQTER9Z0YPbvrVOqvAWwJNaAEltp0sSFvsr
-         69TF1wJQfL2ZpzwGGk/9nWtGnQ+OcOtDXfqtaMGG6K844UVxtrsHUmUkAHqzBa8p71hN
-         LorOMtx3wAHpnOgi6RPVe62YbKweRTtVRq6/sKommSiwBbAVReCeKDZDPusW+4/iE0D4
-         iDlw==
+        b=FTy63RZKlRW3aid5Nx0BtcSV2+yI4uqsiXKj7OoI0Qd5NbUKP0RPaG7kb/eY/n8+W2
+         DXH86Qor9DHZs+xpfo48Nnww4JV3t9ICFshtysJckEr+Z5uRHAi+3gj2qQh0MeirIIX6
+         5YpBvx+0Rb7vd7SnosT2RIDLUbD2u+XJL/g2IEMT6sG6c95UdszjgTzY0/FB7aILFmyl
+         JRSoT/lVwKaoxHENaNZQOZec0ZStaElVlHXOOThPcsdGJjjirj6+Z6Y5UuYiTmK39Y9n
+         9kN0KNwdDrV6Zx2/YuZTy52SRZtRTboKerveumQTL5OneBD8CdzDsXj7y/R8WGxcbSly
+         VVJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:to:from:subject:message-id;
-        bh=NOVyi7QnTCiULK090eFIqdauO8tTXuj3BRgY3GODhEM=;
-        b=V3y2N5gYUDvJPmQYaMYmWp22SF4CoEhJ8E33jwYudRPQPQ+IRGMuTSoeigMr5RJ9U7
-         PULgcnoYmTnG41THMWGeRbfTfEx8N8MSjn6ge7o1xhqDjfmsITEcMivOe42g9zdzdkZu
-         dQKTR7a1zzmiHNRA1p/tdj7KDPtEVNmfz4m57qwLVbOzhXn3327iXDrvaJ927iDEwIY+
-         jQbo9MV01KpMxkyjkuU0WdA9XKPEpeIrkokWqgTrxKExgkat9ezeeSDnqDTph9EqOWlK
-         /ch3pJFlDSaNP1R62fqzhWFwyPScgCtcKQn4Pmm7VxH9VDHC/+G/zbRYA1yrRfmKze5f
-         j2Mw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qRIzo5o5vpllI++B3nY//4/moCStw1oArBNgpNNZWE0=;
+        b=pxmlKCTYV/EsnCaprquJ6yqV6sSBzhbd3ox2/d7djCxLRjhCiooAlEcjtF+BU44R8q
+         alz3qyRzJoGnARuBth11g1USzEO+Tx4jFvpUdkzz2vRUGDBhKoGYAOBW0DzRvY3hdb4U
+         xvDjqE0/sewZAVfeIG8n37VIEHNGGeA0g1/2JXWhSnJHN089IPB0kH+ezhANtv/bIzIC
+         AJi+V0nL1uUoI+WNLv04S+Hq+COZtwVA6mT6kz+zKzfde791rVw8cCQ5R6Sl8DgAnuuJ
+         vf3U8m+IHCMpL9fJLj7ee3RGkiPIiWuHPANDFqeOHUVQehwSQ+t8bS/DO68F21nxGvjU
+         QX+A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.80 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Return-Path: <joe@perches.com>
-Received: from smtprelay.hostedemail.com (smtprelay0080.hostedemail.com. [216.40.44.80])
-        by gmr-mx.google.com with ESMTPS id l141si339478ybl.3.2020.04.01.22.56.14
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="YX4kK4/l";
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbwyatt4@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id m6si316501qtk.2.2020.04.01.22.36.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Apr 2020 22:56:14 -0700 (PDT)
-Received-SPF: neutral (google.com: 216.40.44.80 is neither permitted nor denied by best guess record for domain of joe@perches.com) client-ip=216.40.44.80;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Apr 2020 22:36:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 216.40.44.80 is neither permitted nor denied by best guess record for domain of joe@perches.com) smtp.mailfrom=joe@perches.com
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
-	by smtprelay02.hostedemail.com (Postfix) with ESMTP id 38DD15010;
-	Thu,  2 Apr 2020 05:56:14 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2,0,0,,d41d8cd98f00b204,joe@perches.com,,RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2692:2828:3138:3139:3140:3141:3142:3354:3622:3865:3867:3868:4250:4321:4605:5007:6119:7514:7875:7903:10004:10400:10848:11026:11232:11473:11658:11914:12043:12048:12296:12297:12438:12555:12740:12760:12895:13439:13972:14096:14097:14181:14659:14721:21080:21627:21990:30012:30045:30046:30054:30070:30091,0,RBL:none,CacheIP:none,Bayesian:0.5,0.5,0.5,Netcheck:none,DomainCache:0,MSF:not bulk,SPF:,MSBL:0,DNSBL:none,Custom_rules:0:0:0,LFtime:1,LUA_SUMMARY:none
-X-HE-Tag: judge59_8d939426bb842
-X-Filterd-Recvd-Size: 3915
-Received: from XPS-9350.home (unknown [47.151.136.130])
-	(Authenticated sender: joe@perches.com)
-	by omf20.hostedemail.com (Postfix) with ESMTPA;
-	Thu,  2 Apr 2020 05:56:12 +0000 (UTC)
-Message-ID: <5d35084fcc0476fc2f43e3cf371f5078c0fbeeab.camel@perches.com>
-Subject: Re: [PATCH 1/2] staging: gasket: Fix 4 over 80 char warnings
-From: Joe Perches <joe@perches.com>
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>, 
- outreachy-kernel@googlegroups.com, Rob Springer <rspringer@google.com>,
- Todd Poynor <toddpoynor@google.com>, Ben Chan <benchan@chromium.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
- linux-kernel@vger.kernel.org
-Date: Wed, 01 Apr 2020 22:54:17 -0700
-In-Reply-To: <20200402053617.826678-2-jbwyatt4@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="YX4kK4/l";
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x444.google.com with SMTP id c20so1229861pfi.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 22:36:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=qRIzo5o5vpllI++B3nY//4/moCStw1oArBNgpNNZWE0=;
+        b=YX4kK4/l4v2Dc+sIlNifTF+eu7cc0Xwqmrkw6+903BF5W9hYTPcWEQ1O8+LgEOjeXJ
+         QXFfirICEm2ToMk+K+f0BAw2q3aM4+7i/mtghVUotn2aFVQr/rkHHVy4LVTDEhrRC3q5
+         bG9OMYPBR3q3H/nLiX2GyaPOIqz5tskvc9Oyg/MuabGNsxkYzFRjlQCzUafRlE5XYHAq
+         lXfnvpaasLeK+GEb7tU+b2Xxu9ZrwbqDiVUXeweP+wX9flK1mvhJRUyrWxmL/Prxknt4
+         lE9I+3V7sQZxFcL0CdBjr6rIg+ML2jv5LdLcdtU2QhmAsVwdSUHcvQAgE6VYtTngmeYK
+         qj2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=qRIzo5o5vpllI++B3nY//4/moCStw1oArBNgpNNZWE0=;
+        b=pzVncbMXJ6Xb9i0fxOUg7hsFoTm+KhRn3pfTF/g9u94XLGcKely5xbc40sFaUDBqBc
+         YAlyVhL//9JINLlh6WkA6BglqPsj3HMKCTUiDs6RBozE5ZHjDGtgJIlO3mi07nFb4RGX
+         urjwIe2ZTEoeqAX8pTyRSNlVVLii6gqPw7IkvOYBHG0LLzOpb/NVq2N2j6ur+7TKWoDE
+         KkXYcqS7qbXR6ifzzJ6VTj3WVvmipisjx1Z6tMVNCscQgf8boAcDygiRi7GdHBdMiMDZ
+         M7SYtO8exKunPhGcK8w8hAO9iEXYDmUZZ1vceVVFr4o73gVfRKOEVTFSSj6TFWOy5iAU
+         1W4Q==
+X-Gm-Message-State: AGi0PuazLntJwbMd5WWJw+t+lbpJVf802bXH/0G0b3NxyZYkB/7syebJ
+	ucTLhy2dWq5gE1x2+jwnz6QFwTwXG/KFEQ==
+X-Received: by 2002:a62:7950:: with SMTP id u77mr1573409pfc.34.1585805788026;
+        Wed, 01 Apr 2020 22:36:28 -0700 (PDT)
+Return-Path: <jbwyatt4@gmail.com>
+Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
+        by smtp.gmail.com with ESMTPSA id y28sm2863136pfp.128.2020.04.01.22.36.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Apr 2020 22:36:27 -0700 (PDT)
+From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Rob Springer <rspringer@google.com>,
+	Todd Poynor <toddpoynor@google.com>,
+	Ben Chan <benchan@chromium.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Subject: [PATCH 2/2] staging: gasket: Fix comment 75 character limit warning
+Date: Wed,  1 Apr 2020 22:36:17 -0700
+Message-Id: <20200402053617.826678-3-jbwyatt4@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200402053617.826678-1-jbwyatt4@gmail.com>
 References: <20200402053617.826678-1-jbwyatt4@gmail.com>
-	 <20200402053617.826678-2-jbwyatt4@gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Wed, 2020-04-01 at 22:36 -0700, John B. Wyatt IV wrote:
-> Fix 4 over 80 char warnings by caching long enum values into local
-> variables.
-> 
-> All enums are only used once inside each function (and once inside
-> the entire file).
-> 
-> Reported by checkpatch.
-> 
-> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> ---
->  drivers/staging/gasket/apex_driver.c | 13 +++++++++----
->  1 file changed, 9 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> index 46199c8ca441..f48209ec7d24 100644
-> --- a/drivers/staging/gasket/apex_driver.c
-> +++ b/drivers/staging/gasket/apex_driver.c
-> @@ -253,6 +253,8 @@ static int apex_get_status(struct gasket_dev *gasket_dev)
->  /* Enter GCB reset state. */
->  static int apex_enter_reset(struct gasket_dev *gasket_dev)
->  {
-> +	int idle_gen_reg = APEX_BAR2_REG_IDLEGENERATOR_IDLEGEN_IDLEREGISTER;
-> +
+Fix 75 character limit warning in comment reported by checkpatch.
 
-This indirection only makes the code more difficult to understand.
+Reported by checkpatch.
 
->  	if (bypass_top_level)
->  		return 0;
->  
-> @@ -263,7 +265,7 @@ static int apex_enter_reset(struct gasket_dev *gasket_dev)
->  	 *    - Enable GCB idle
->  	 */
->  	gasket_read_modify_write_64(gasket_dev, APEX_BAR_INDEX,
-> -				    APEX_BAR2_REG_IDLEGENERATOR_IDLEGEN_IDLEREGISTER,
-> +				    idle_gen_reg,
->  				    0x0, 1, 32);
->  
->  	/*    - Initiate DMA pause */
-> @@ -395,11 +397,12 @@ static int apex_device_cleanup(struct gasket_dev *gasket_dev)
->  	u64 scalar_error;
->  	u64 hib_error;
->  	int ret = 0;
-> +	int status = APEX_BAR2_REG_SCALAR_CORE_ERROR_STATUS;
->  
->  	hib_error = gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
->  				       APEX_BAR2_REG_USER_HIB_ERROR_STATUS);
->  	scalar_error = gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
-> -					  APEX_BAR2_REG_SCALAR_CORE_ERROR_STATUS);
-> +					  status);
->  
->  	dev_dbg(gasket_dev->dev,
->  		"%s 0x%p hib_error 0x%llx scalar_error 0x%llx\n",
-> @@ -584,6 +587,8 @@ static int apex_pci_probe(struct pci_dev *pci_dev,
->  	ulong page_table_ready, msix_table_ready;
->  	int retries = 0;
->  	struct gasket_dev *gasket_dev;
-> +	int page_table_init = APEX_BAR2_REG_KERNEL_HIB_PAGE_TABLE_INIT;
-> +	int msix_table_init = APEX_BAR2_REG_KERNEL_HIB_MSIX_TABLE_INIT;
->  
->  	ret = pci_enable_device(pci_dev);
->  	if (ret) {
-> @@ -606,10 +611,10 @@ static int apex_pci_probe(struct pci_dev *pci_dev,
->  	while (retries < APEX_RESET_RETRY) {
->  		page_table_ready =
->  			gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
-> -					   APEX_BAR2_REG_KERNEL_HIB_PAGE_TABLE_INIT);
-> +					   page_table_init);
->  		msix_table_ready =
->  			gasket_dev_read_64(gasket_dev, APEX_BAR_INDEX,
-> -					   APEX_BAR2_REG_KERNEL_HIB_MSIX_TABLE_INIT);
-> +					   msix_table_init);
->  		if (page_table_ready && msix_table_ready)
->  			break;
->  		schedule_timeout(msecs_to_jiffies(APEX_RESET_DELAY));
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+ drivers/staging/gasket/apex_driver.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
+index f48209ec7d24..5ad15f398893 100644
+--- a/drivers/staging/gasket/apex_driver.c
++++ b/drivers/staging/gasket/apex_driver.c
+@@ -50,8 +50,8 @@
+ #define NUM_NODES 1
+ 
+ /*
+- * The total number of entries in the page table. Should match the value read
+- * from the register APEX_BAR2_REG_KERNEL_HIB_PAGE_TABLE_SIZE.
++ * The total number of entries in the page table. Should match the
++ * value read from the register APEX_BAR2_REG_KERNEL_HIB_PAGE_TABLE_SIZE.
+  */
+ #define APEX_PAGE_TABLE_TOTAL_ENTRIES 8192
+ 
+-- 
+2.25.1
 
 
