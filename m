@@ -1,117 +1,189 @@
 X-GM-THRID: 6810978384400613376
-X-Received: by 2002:aca:aa0a:: with SMTP id t10mr1147455oie.38.1585872232783;
-        Thu, 02 Apr 2020 17:03:52 -0700 (PDT)
+X-Received: by 2002:ab0:18a8:: with SMTP id t40mr1353565uag.115.1585804485153;
+        Wed, 01 Apr 2020 22:14:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:3bc8:: with SMTP id k66ls2405201otc.10.gmail; Thu, 02
- Apr 2020 17:03:51 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLnGzqz6X6VdHtF4qfhjVRnKKnuPfrQHrgCFWTt5g5joUsP3MggdrYOTkjl3V1EFrJofCBA
-X-Received: by 2002:a9d:6e8f:: with SMTP id a15mr4648382otr.188.1585872231741;
-        Thu, 02 Apr 2020 17:03:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585872231; cv=none;
+Received: by 2002:a1f:ae95:: with SMTP id x143ls160643vke.3.gmail; Wed, 01 Apr
+ 2020 22:14:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLGS6SQtCROJOyAlNDfSEEQao3RoEURPxprCv/7+/Bvpkd/7Z6F4sGVdKXTr7om+pl/8elZ
+X-Received: by 2002:a1f:60d5:: with SMTP id u204mr878813vkb.55.1585804484067;
+        Wed, 01 Apr 2020 22:14:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585804484; cv=none;
         d=google.com; s=arc-20160816;
-        b=uMgBxfHkfFCbYaDcMcclyuI1AqxvdzQDnWvfSY8tDDS4iOK51V1ya6NIrcTS11Qeog
-         GY+7myb8Td2CKEaFk7mLA6KrLjCP/UWut+9+gSoEFx3LE7GlXqM7gAKr7yqdOh/KQ4fe
-         tAjcnniB/Xqr6GdYfKvbgfcIYxHhiPipwXu5Ffxdjt61uvQbe+uugct5rZvyzBHFnoBj
-         dP4BF1Xzz2BGS48vaUtOur7dAo2wlFULh/9Ip8wkxrbcYPbsAWYzkVAN4PC80VUg8jm4
-         Op50NoSyyNTTsCd70/3E5/4kJSWpedd67Oj7GdzDFlpDZ3zE0m6Tm+SzpxoywjQD/Jyk
-         YElg==
+        b=dY77aqZEVqd6/Qnm0bvEvGSH+Tg8bcu4ur7aCYZkIMRhvyt5RqYGRF2ODU06KH0GWL
+         Bp+i/LVp+MLkREPM8LZHsBWE1yOQfYKyFrk7hVV4Mts/K/AEfi2OlqjtjOWaRR7iVm+6
+         8bQJusDF37XpWY1Wpuz9xsocQGx2YcHVkLmZFtwswrffOz23Mr9XrMRFIPgZ5qy2eH+k
+         fSTmduoWxe33ZMKCwha8kUKcSw/2VhbcNsej0RhMR91Eb6htcUe/Q/omaxNSajunaptc
+         dXJbtlM6IHFIcSWfdI2v4dcAyAv47+azhKewdIbfMAGk6LS1FF+kMVh62BZzViWwla2U
+         K7fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=CxDM6GjieM3b/3iKDPc4gptUgiBDmZ2XgNpkNYHkMOc=;
-        b=mrh/QgsD8kb4JdyAwsWi8+/YArKU6pwMRw88AcgukbFT5BD9zVFC0/k5VmWTGAhmLj
-         9/iUclx2+Hn5X4yla19He7Kn3W28Dg6uKhDr9XlCaPB1hgvhHL6bcRJytO1oYdzrL0jC
-         osEU4R4Lqt4/w3sg/DhSahPUK9KRtVtHYg11uQj+bnhIpXYJgfqLp1PYClOo7WiM2UJu
-         NWYKVoulBxKybZtUNAbklSW4rB0irKKMFSg4kqOXNZx88q9FVnE5sg4VHal1jIqb9sbd
-         SodNV4D/pwXOx63E4shrKNZgZ0jy17OgxoSLVRqnY8qjFb63dMNpqXFzRx/+U4R/ER0b
-         WHVg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7PZ0ZpP4Sngrsj5xcVGjvO5rL4+T5Vcl4somhkfq7Uc=;
+        b=i9QwUKcVOMz7TVCevnUHWnEyjfO9Bhx1FpAOGsx5MXGy6zL3/wgXObDg1b14WHXrP9
+         wALaSLT+mZ88A48T1r9KsUUdlYIes5/ZRjW4AHkPFkxW8s4PiIt5zoGxTk6TWEh5JV1A
+         QCIekYmu+hPcXzbWBzmKmCohxJPEySeKUuMhO06x5zNSMjPXELMNd11RxcyqYxajP9G2
+         L4xB7VhYo0gsDXaSa0HIX1Cr4hbozD9RzVR1JuRh8wZaI6OYcx8/Kmh+zjP0cuOy4clt
+         /waeW4XU3OhFmpHCzIP5TH3NCj+9K/g6pvA9F+IBcyzPsryXF7vnMU5V8CUcgyDapGa/
+         oEdg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BQ6PFjZq;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <sbrivio@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by gmr-mx.google.com with ESMTPS id m132si498251oig.3.2020.04.02.17.03.51
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vU4FEc3u;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::62b as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <briana.oursler@gmail.com>
+Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com. [2607:f8b0:4864:20::62b])
+        by gmr-mx.google.com with ESMTPS id t191si322025vkt.0.2020.04.01.22.14.44
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Apr 2020 17:03:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Apr 2020 22:14:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::62b as permitted sender) client-ip=2607:f8b0:4864:20::62b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BQ6PFjZq;
-       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1585872231;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CxDM6GjieM3b/3iKDPc4gptUgiBDmZ2XgNpkNYHkMOc=;
-	b=BQ6PFjZqqWCfuq3H6P3WDASlPWVi8/RxOb0C6tGIR4zpX0CbAoIB+2DF8IehchBf6xmUe5
-	J5kpHa4JqXqa/oX5EztG1JJRSjN3yOAYrkegLSEq7X51Ek7VsFa9zG18UhRit7Ahojzj5n
-	lUI25dmT+/tg+yyrDNTOnxVygsHoWk8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-379-87aJvDrLM3y1vyrFjEMu8Q-1; Thu, 02 Apr 2020 20:03:47 -0400
-X-MC-Unique: 87aJvDrLM3y1vyrFjEMu8Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 795718017F3;
-	Fri,  3 Apr 2020 00:03:46 +0000 (UTC)
-Received: from elisabeth (unknown [10.36.110.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B23465E037;
-	Fri,  3 Apr 2020 00:03:42 +0000 (UTC)
-Date: Fri, 3 Apr 2020 02:03:35 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Briana Oursler <briana.oursler@gmail.com>
-Cc: gregkh@linuxfoundation.org, julia.lawall@inria.fr,
- forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [Patch v4 0/4] Staging: vt6655: Remove
- unused functions.
-Message-ID: <20200403020335.0bc916ab@elisabeth>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vU4FEc3u;
+       spf=pass (google.com: domain of briana.oursler@gmail.com designates 2607:f8b0:4864:20::62b as permitted sender) smtp.mailfrom=briana.oursler@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x62b.google.com with SMTP id h11so889615plr.11
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 22:14:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=7PZ0ZpP4Sngrsj5xcVGjvO5rL4+T5Vcl4somhkfq7Uc=;
+        b=vU4FEc3ulEcjRpNhogXjncAkceqwO+LSWkg1XI/Q7oOFTL0f1snE/0gPW3Ha+C+iWc
+         gzq/gCZQ6RcrSASueBKu2UePLMuCCO1f4EUg3Doodq92F/fmEsxcEKTXjC0OTogE2kXU
+         Wj9J9pd0mko76BKiXfmZreDtrE+j5WEEowbWIbGkza33uxLoYEZJPdraPzCsJ3j+/mUG
+         cis3bvgbCL3RVzo9G21ZIxf1QVqD+OQTfcAr5exHPOu1NZdwppl0VUgyhlB8aoiu+C2z
+         Q7YyWAeGknr8dSvuHat/iHxWsKBQBd3DuQN6Uq67z9UWqzgYpebAuuwsUmi1cvniDYdk
+         +NKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=7PZ0ZpP4Sngrsj5xcVGjvO5rL4+T5Vcl4somhkfq7Uc=;
+        b=dBjPRf501Dg6zLsZ8rb0g6GMoK9AlgXCHT/jIqZhHtumasKXolqPbk1tVxPOAVRDbx
+         j3Ip9xq436t0tZbbh1/7+SwXtbp/o4uX9bKcIqObHMwKm0qLqtOT+G26Ov0H4vIq6qMF
+         GLiZ9HWuJ6Y6qENK3J6bpPmGoVPv7RGwAsID79WA5WbNyWbUUGm/7TRiyS/nXWcCzNxW
+         i41VUzI8TJtcOwfPLANHkVNq02o2zCrKk/12egvNGANLdDzDJ6CuCU9yOwNfBy5LBr6t
+         pevBmvmksnjgiZLl8w0Qu724xqwxaD7CynR1LvsMErOyhkWN/1vhBe3yX8BgOy1NUSn5
+         MzzQ==
+X-Gm-Message-State: AGi0PuZ42zwMMko1JmmWTsbUCWcEv5MzyOwlljhKMHliVCfnwuNL2off
+	V5IajPDDwjx0TsUniOpc+YQ=
+X-Received: by 2002:a17:902:9a45:: with SMTP id x5mr1234988plv.296.1585804483071;
+        Wed, 01 Apr 2020 22:14:43 -0700 (PDT)
+Return-Path: <briana.oursler@gmail.com>
+Received: from nebula.hsd1.or.comcast.net ([2601:1c0:5400:122:2697:be21:1d90:fb7a])
+        by smtp.gmail.com with ESMTPSA id l1sm2846485pje.9.2020.04.01.22.14.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Apr 2020 22:14:42 -0700 (PDT)
+From: Briana Oursler <briana.oursler@gmail.com>
+To: sbrivio@redhat.com,
+	gregkh@linuxfoundation.org,
+	julia.lawall@inria.fr,
+	forest@alittletooquiet.net,
+	outreachy-kernel@googlegroups.com
+Cc: Briana Oursler <briana.oursler@gmail.com>
+Subject: [Patch v4 3/4] Staging: vt6655: Remove CARDbRadioPowerOn definition.
+Date: Wed,  1 Apr 2020 22:14:35 -0700
+Message-Id: <e64c02aadd0b846604c755989b39f374161a87e0.1585802818.git.briana.oursler@gmail.com>
+X-Mailer: git-send-email 2.24.1
 In-Reply-To: <cover.1585802818.git.briana.oursler@gmail.com>
 References: <cover.1585802818.git.briana.oursler@gmail.com>
-Organization: Red Hat
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Wed,  1 Apr 2020 22:14:32 -0700
-Briana Oursler <briana.oursler@gmail.com> wrote:
+Remove function CARDbRadioPowerOn that is never called, along with
+comments related to it.
 
-> This patchset removes functions that are not called in the driver but
-> are prototyped in card.h. Each commit limits its scope to one function
-> definition and related documentation in code.
-> 
-> Functions were checked for calls using the Elixir Cross Referencer and
-> git grep.
-> 
-> Per Stefano Brivio's recommendation, output of bloatometer script after
-> changes:
-> 
-> add/remove: 0/4 grow/shrink: 0/0 up/down: 0/-572 (-572)
-> Function                                     old     new   delta
-> CARDbSoftwareReset                            10       -     -10
-> CARDvSetLoopbackMode                          14       -     -14
-> BBvExitDeepSleep                              40       -     -40
-> CARDbRadioPowerOn                            508       -    -508
-> Total: Before=36131, After=35559, chg -1.58%
-> 
-> Briana Oursler (4):
->   Staging: vt6655: Remove CARDbSoftwareReset definition.
->   Staging: vt6655: Remove CARDvSetLoopbackMode definition.
->   Staging: vt6655: Remove CARDbRadioPowerOn definition.
->   Staging: vt6655: Remove BBvExitDeepSleep definition.
+Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+---
+ drivers/staging/vt6655/card.c | 55 -----------------------------------
+ drivers/staging/vt6655/card.h |  1 -
+ 2 files changed, 56 deletions(-)
 
-For the series,
-
-Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
-
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index 222b6ef61d9c..67b23ab0b0d1 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -17,7 +17,6 @@
+  *      CARDvSetFirstNextTBTT - Set NIC Beacon time
+  *      CARDvUpdateNextTBTT - Sync. NIC Beacon time
+  *      CARDbRadioPowerOff - Turn Off NIC Radio Power
+- *      CARDbRadioPowerOn - Turn On NIC Radio Power
+  *
+  * Revision History:
+  *      06-10-2003 Bryan YC Fan:  Re-write codes to support VT3253 spec.
+@@ -437,60 +436,6 @@ void CARDbRadioPowerOff(struct vnt_private *priv)
+ 		      LED_ACTSET);  /* LED issue */
+ }
+ 
+-/*
+- * Description: Turn on Radio power
+- *
+- * Parameters:
+- *  In:
+- *      priv         - The adapter to be turned on
+- *  Out:
+- *      none
+- *
+- * Return Value: true if success; otherwise false
+- */
+-bool CARDbRadioPowerOn(struct vnt_private *priv)
+-{
+-	bool bResult = true;
+-
+-	pr_debug("chester power on\n");
+-	if (priv->bRadioControlOff) {
+-		if (priv->bHWRadioOff)
+-			pr_debug("chester bHWRadioOff\n");
+-		if (priv->bRadioControlOff)
+-			pr_debug("chester bRadioControlOff\n");
+-		return false; }
+-
+-	if (!priv->bRadioOff) {
+-		pr_debug("chester pbRadioOff\n");
+-		return true; }
+-
+-	BBvExitDeepSleep(priv, priv->byLocalID);
+-
+-	MACvRegBitsOn(priv->PortOffset, MAC_REG_HOSTCR, HOSTCR_RXON);
+-
+-	switch (priv->byRFType) {
+-	case RF_RFMD2959:
+-		MACvWordRegBitsOn(priv->PortOffset, MAC_REG_SOFTPWRCTL,
+-				  SOFTPWRCTL_TXPEINV);
+-		MACvWordRegBitsOff(priv->PortOffset, MAC_REG_SOFTPWRCTL,
+-				   SOFTPWRCTL_SWPE1);
+-		break;
+-
+-	case RF_AIROHA:
+-	case RF_AL2230S:
+-	case RF_AIROHA7230:
+-		MACvWordRegBitsOn(priv->PortOffset, MAC_REG_SOFTPWRCTL,
+-				  (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
+-		break;
+-	}
+-
+-	priv->bRadioOff = false;
+-	pr_debug("chester power on\n");
+-	MACvRegBitsOff(priv->PortOffset, MAC_REG_GPIOCTL0,
+-		       LED_ACTSET); /* LED issue */
+-	return bResult;
+-}
+-
+ void CARDvSafeResetTx(struct vnt_private *priv)
+ {
+ 	unsigned int uu;
+diff --git a/drivers/staging/vt6655/card.h b/drivers/staging/vt6655/card.h
+index 32405027e269..568a2ddd6588 100644
+--- a/drivers/staging/vt6655/card.h
++++ b/drivers/staging/vt6655/card.h
+@@ -55,7 +55,6 @@ unsigned char CARDbyGetPktType(struct vnt_private *priv);
+ void CARDvSafeResetTx(struct vnt_private *priv);
+ void CARDvSafeResetRx(struct vnt_private *priv);
+ void CARDbRadioPowerOff(struct vnt_private *priv);
+-bool CARDbRadioPowerOn(struct vnt_private *priv);
+ bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type);
+ bool CARDbUpdateTSF(struct vnt_private *priv, unsigned char byRxRate,
+ 		    u64 qwBSSTimestamp);
 -- 
-Stefano
+2.24.1
 
 
