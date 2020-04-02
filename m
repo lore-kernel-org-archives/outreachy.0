@@ -1,128 +1,127 @@
 X-GM-THRID: 6810936843956125696
-X-Received: by 2002:a05:6102:3232:: with SMTP id x18mr5587806vsf.184.1585902658421;
-        Fri, 03 Apr 2020 01:30:58 -0700 (PDT)
+X-Received: by 2002:a05:6830:18e:: with SMTP id q14mr710307ota.136.1585794809048;
+        Wed, 01 Apr 2020 19:33:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:8797:: with SMTP id j145ls1120421vsd.3.gmail; Fri, 03
- Apr 2020 01:30:57 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIrWALhYNsLjI5B+T3jIoIDCMhMv5HWuXHOTfJ8Y+LI9tl7cL8bvZFqzjd89j2rJS0NGd9n
-X-Received: by 2002:a67:e096:: with SMTP id f22mr5922191vsl.218.1585902657306;
-        Fri, 03 Apr 2020 01:30:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585902657; cv=none;
+Received: by 2002:aca:cd45:: with SMTP id d66ls1026906oig.7.gmail; Wed, 01 Apr
+ 2020 19:33:21 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLzWdjiogXgQi6fApmKK4vEQc8RAktvT8f8zLarB989LhepG8aB/Pwe8RABhS937m+Xty5g
+X-Received: by 2002:aca:ad93:: with SMTP id w141mr766178oie.54.1585794801769;
+        Wed, 01 Apr 2020 19:33:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585794801; cv=none;
         d=google.com; s=arc-20160816;
-        b=h6wH5zKH2e66VVWV97jg41LdlDjGWsY6QFuuPOPFroQsmu3Gu/CS91n3nuydJf3AJU
-         khlfHZWZK5LfBKQkBnIyHTTADDd6st2nI7nkdl/ccboivEkZFofyv+W9+RALs2UcwREz
-         smOfxG+/hTOW6MCwvYipNZAu+dUtfiHQzFbUzyFO1UigDbMdtV4C3NYXGzvBUdVag6+t
-         H/5yjKXO2mOPyr0WWbUCizn6S4gN+G7RSoJXO2+oKd2sNWTw3PgAvXHmrasGMSXjvGxK
-         nr15DPp9SNd0ppAw6giUJLUacI83AoxQcmFOtElISB2EdLusWVtnn3mXnQntX1KbBwXE
-         fdmw==
+        b=ZZ91MTtbkR+n2+mL3160E2QFdcHBub+SZCmXkVEGOpowGfm/iz9jWJeBGDR+yGn/W4
+         tjLUKYd8SccJx+r+F8s8BEl0CUyxYEbmL04iOVP6cSKhkEcV993n3Q08u7rGnY4WJVZ3
+         uN1TBwuD6ew0tjYU2xnAnTGWdLhhh3xReYIxZsvfI3yk4jjcQDugDu+CpkJMKrhOyqZY
+         TB5oQ4kdJDX9b4UecmQC/O0yflOex/G8+Ok+UKl0lK9L1t8V3/vZdrfatP+tEG9+318/
+         ar7H/e6qIh8wiaYhiEMcUBe0bpwrhQK0tdyQrhC12n+a6Nf43yKAmSQ7lEkFhgFabPoy
+         7CJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=oNePCKvCxUpIIS0f2ZbYU7jLe+9Z1XA0+v4YImT1gPc=;
-        b=UHI+hB8Q49/qOLxMWnXZbYdeebYCoZknTkplbaZSx322WnGhslkkj4+kRElRBysfik
-         eGfnAukMk6Pewxauc7P8ngyQLa8vcRyU+1krqdLdYArz8AVGtM+YqLT9UYUZefEFAL4Z
-         oszgT5uG9YMg9jGayR+/0UuXKaExhKgjX/kTkgm+IRHM5uLZXiunS85zimPhQKtx7Wnb
-         47dHHxXVtRC6qa92ZG/ezRgSZe12M+xPpConoVrEzn9UfTXrS5tCJtVpPm37ZjYtoSpx
-         CaYmpAqJ4A0HZOC/Ab9kRKn/BVXIMNeLfYJKRcaJCUASn4dXAF7lJZNB2LGVW9cQz4pe
-         Ef6Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=ATIn1oIMiOwI325i99rfncSx0LFzAXo2FxSFZi+2kaM=;
+        b=Y0PD3b2wZf0FSfHm6+oW77sCQjAvTwI9tEZgVua+bZuhmiBflfw3LiynKiQLYdN104
+         a7muzypnMc9vE6RovX10+4K3h+fNXHdnLdwuz6JvlYEfFti8J43PRH74nYlphtDwabDV
+         ujs3UZkof6ORyEBB7So2VOBPv+z+u8f0Qx5IdaIbTH+KSDVvcpC4e9KKyxNLjFwPSt/E
+         AX/dH6YQN3po+TPP9x4yyqH7q6VEZkocip3OaaHnLN+H5YOq9OJAy2hXhTkseNXIVmC0
+         xVkeVTIH8hvApf3UR9tmam9ezBY5FbwpG9MTHKZrIhEyxe6dlsu5QMUzUJcpcTwQNm8a
+         sqog==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Fh3XWJDc;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
-        by gmr-mx.google.com with ESMTPS id p7si285646vsf.1.2020.04.03.01.30.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n3LBbVdV;
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <jbwyatt4@gmail.com>
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
+        by gmr-mx.google.com with ESMTPS id t81si279497oie.5.2020.04.01.19.33.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Apr 2020 01:30:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Apr 2020 19:33:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Fh3XWJDc;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
-	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0338OeTf056043;
-	Fri, 3 Apr 2020 08:30:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=oNePCKvCxUpIIS0f2ZbYU7jLe+9Z1XA0+v4YImT1gPc=;
- b=Fh3XWJDcRKgJNcBua9lUzc/+L3/EUI5I3ScY7oaxgqSABO88x+BFmuxWhz5N6yTR0mSD
- DvR+e2jxZIHvG0KZpcYMfvJYsS4zSoBYMyJSJBxYRqfypzqqybSb69Jij3MC9hpdcXn6
- embcvUUulZtut1h5nqM4NDh95T6lByt/tR/BL7DDM5OIN6ZdOJQVQ7L4NVFyZmgDE6h6
- T+8RWGz9ULvEyLjORP2MFGrpn3djtT5tIwVkgtVrS/9630RgMClTClr6S4TSNpEOpBii
- 8Iw7dKRRDnWZf9aLhn9iOSgqr85gkvTOhxv29pRJxAAz51r0isxSYa+wAw+y/OyH5uhk dA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
-	by aserp2120.oracle.com with ESMTP id 303yunj9ku-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 03 Apr 2020 08:30:53 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
-	by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0338NA8X010005;
-	Fri, 3 Apr 2020 08:30:53 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by aserp3020.oracle.com with ESMTP id 304sjs422x-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 03 Apr 2020 08:30:53 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0338Upce019918;
-	Fri, 3 Apr 2020 08:30:51 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Fri, 03 Apr 2020 01:30:51 -0700
-Date: Fri, 3 Apr 2020 11:30:43 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-        Ioana Radulescu <ruxandra.radulescu@nxp.com>,
-        Ioana Ciornei <ioana.ciornei@nxp.com>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org
-Subject: Re: [PATCH] staging: fsl-dpaa2: ethsw: Fix parenthesis alignment
-Message-ID: <20200403083043.GW2001@kadam>
-References: <20200402023310.816245-1-jbwyatt4@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n3LBbVdV;
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x642.google.com with SMTP id h11so769816plk.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 19:33:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ATIn1oIMiOwI325i99rfncSx0LFzAXo2FxSFZi+2kaM=;
+        b=n3LBbVdVMR9xztTWPZj9E4NAFROVpVuh4KUeELtpWMpWqKKx5lGsHyovhlSlocwRJf
+         nN/pb2bi91NTXpSJ1uY00zkUiaPE1bGQ1OESWp5M3dZfU5PDgILsOCat+syRefKVKUQd
+         NXAWZZRUUUWiZoDrpVBNkYiOUY3YwQbs4YN+1WLDGx4SIvMQHLOiGDrtnEZBewl7LeBk
+         bV7tfeAbWFkoGaMruVpc4b5Cmt71VHuO8gVt3bKcqOtUZ3+4XYu4x4S6yOMwfntDxKEi
+         Fn+YCM7DNZJ8NmjPzIxP8e2qLMH2U7SpRydjD4pitF5Y5D0juJOw5QqzRa2deSIgGTFi
+         RmVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ATIn1oIMiOwI325i99rfncSx0LFzAXo2FxSFZi+2kaM=;
+        b=Vvd50G23TJ2vl3BP2hpUIFeFmOI/gwRm96ZXBbNQhZGcfNHf5mUZzW8XI5vsw998gJ
+         wxx/qW/JK5CcheCPzbJ8oGtprVE7PSoA4jJYx3OjWclkoJAFUh9ORDcuzV9jpBKvCzUz
+         IrMXbdJOsNceQgKi9LWidJRiutg1ojJXkH/XBE0rRWwRZeFvxTl4T7Zc9iFkPhnZYD1V
+         x18TFZVj0E8BVN8ZGQGFrAPttT39iOA/lZMcNpqfpE0Ks62hASCy5f4ZHto5bpwhde0U
+         fkV4mYGrzWIus5PauWVJdZGbS3OHhYEuoPbGUuC7DS6NVr6GzRQlsWbIIVJgGSQv6INd
+         4Pvg==
+X-Gm-Message-State: AGi0PuYF8dkQt58ScMbvuaJyvY6MuoYuJIEZWrBJizcb0d5du4jDmq6U
+	V+5XMIvWpT3vYbFyj4J2mrKCeEjev2KZdA==
+X-Received: by 2002:a17:90a:24c5:: with SMTP id i63mr1182990pje.177.1585794800765;
+        Wed, 01 Apr 2020 19:33:20 -0700 (PDT)
+Return-Path: <jbwyatt4@gmail.com>
+Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
+        by smtp.gmail.com with ESMTPSA id b2sm2609402pjc.6.2020.04.01.19.33.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Apr 2020 19:33:20 -0700 (PDT)
+From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Ioana Radulescu <ruxandra.radulescu@nxp.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-kernel@vger.kernel.org,
+	devel@driverdev.osuosl.org
+Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Subject: [PATCH] staging: fsl-dpaa2: ethsw: Fix parenthesis alignment
+Date: Wed,  1 Apr 2020 19:33:10 -0700
+Message-Id: <20200402023310.816245-1-jbwyatt4@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200402023310.816245-1-jbwyatt4@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 adultscore=0 mlxscore=0
- malwarescore=0 phishscore=0 suspectscore=0 mlxlogscore=999 spamscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004030071
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 lowpriorityscore=0
- malwarescore=0 adultscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
- suspectscore=0 mlxscore=0 spamscore=0 impostorscore=0 clxscore=1011
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004030071
+Content-Transfer-Encoding: 8bit
 
-On Wed, Apr 01, 2020 at 07:33:10PM -0700, John B. Wyatt IV wrote:
-> Fix 2 parenthesis alignment issues.
-> 
-> Reported by checkpatch.
-> 
-> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> ---
->  drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-> index 676d1ad1b50d..546ad376df99 100644
-> --- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-> +++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
-> @@ -1094,7 +1094,8 @@ static int swdev_port_obj_del(struct net_device *netdev,
->  
->  static int
->  ethsw_switchdev_port_attr_set_event(struct net_device *netdev,
-> -		struct switchdev_notifier_port_attr_info *port_attr_info)
-> +				    struct switchdev_notifier_port_attr_info
-> +				    *port_attr_info)
+Fix 2 parenthesis alignment issues.
 
-I feel like the end result is worse than the original code because of
-how the type and the parameter name are on different lines.  Sorry.  :/
+Reported by checkpatch.
 
-regards,
-dan carpenter
+Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+---
+ drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+index 676d1ad1b50d..546ad376df99 100644
+--- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
++++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+@@ -1094,7 +1094,8 @@ static int swdev_port_obj_del(struct net_device *netdev,
+ 
+ static int
+ ethsw_switchdev_port_attr_set_event(struct net_device *netdev,
+-		struct switchdev_notifier_port_attr_info *port_attr_info)
++				    struct switchdev_notifier_port_attr_info
++				    *port_attr_info)
+ {
+ 	int err;
+ 
+@@ -1277,7 +1278,8 @@ static int port_switchdev_event(struct notifier_block *unused,
+ 
+ static int
+ ethsw_switchdev_port_obj_event(unsigned long event, struct net_device *netdev,
+-			struct switchdev_notifier_port_obj_info *port_obj_info)
++			       struct switchdev_notifier_port_obj_info
++			       *port_obj_info)
+ {
+ 	int err = -EOPNOTSUPP;
+ 
+-- 
+2.25.1
 
 
