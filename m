@@ -1,77 +1,77 @@
 X-GM-THRID: 6809913191851622400
-X-Received: by 2002:a1f:abcc:: with SMTP id u195mr3339873vke.11.1585852077443;
-        Thu, 02 Apr 2020 11:27:57 -0700 (PDT)
+X-Received: by 2002:a37:4ed5:: with SMTP id c204mr4488458qkb.328.1585852054909;
+        Thu, 02 Apr 2020 11:27:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:c01d:: with SMTP id v29ls701156vsi.6.gmail; Thu, 02 Apr
- 2020 11:27:56 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJKJe0e9Roi5PA10m2+5Lifus7OnVwJuJagyI7W2yJHDElO7NduEMEvAE5nIHnCFLB/ZTKb
-X-Received: by 2002:a67:1587:: with SMTP id 129mr3951477vsv.146.1585852076009;
-        Thu, 02 Apr 2020 11:27:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585852076; cv=none;
+Received: by 2002:a05:6214:5b1:: with SMTP id by17ls145006qvb.7.gmail; Thu, 02
+ Apr 2020 11:27:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIzWZb+fwyvB5NDeLZtZCs5WAFLYIjstsHDucP6SyKXqMb8PwTe9reRrdNFi3i6i2qW+sm3
+X-Received: by 2002:a05:6214:183:: with SMTP id q3mr4773242qvr.234.1585852053731;
+        Thu, 02 Apr 2020 11:27:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585852053; cv=none;
         d=google.com; s=arc-20160816;
-        b=ApuinImKnb9cI+hT9ALdPEGShqBdBi1eLQ+1W4Fju0nsY7wc39kOO1aVJPbUddcOSx
-         ZjhsQOTBdGEvMCE430EuvFwtZKDfjLu73jedGNJAL8p0OZVFxUd9qGciiSApnnuF1pcZ
-         K1O8G2qBdGnKefwzzDB0gdhaLgwxlmOaIHlZzeI9fRrk+01Wyh2btxVnE1v3HIx6AoLm
-         FP3Qmrm6qf86b+Q3q8p6qOBbCKmya5MBh10u73ggTKAImYMNgBY08SKCvFQIqM3Ez4Jm
-         zEnvmjuVuv9/k86VIu1i9HpIMLcAH2i3Gzp6WIPVlIw1FnRLcg9GD2pmbK/WKzrLpPjU
-         OIdA==
+        b=QeF6N9UNeP1sXLJUcZgx04tVH6yMwq+ZwO5GFbz6RJAFVpOGMgiU4EqrW+vWqC3I+q
+         i8ScJ2wgapgNp3RUUFRgH18fB1x33UAVTyHcpjwHFl/jmDYf0Ze/D1VpfgILQ0WxC9N4
+         lcRN3mK1KsNBqVeUE6O6vQtJ1FfHY+ZhkaFjueom5PMqTG3Lve/mVhZNiLFNL+v1hrGo
+         DEsQakAC4G/VvJW4bzDZDT/g915FHTxGpW5l4Xiug+pbDqU6OReyjz2dyrhv0aDbx3f7
+         DNe72N2rYJsOvMRipbboMDKnjtadJNDMALi5SHrmmro7jPGqi+KbF7cYAdiB1M7cKNb/
+         JKIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=BcNiPLnK5Z82396G+c/Mu8zPP9oNVyN0ZTAwy8usQFU=;
-        b=nEJNlvZg2sWHyjhz8g/epOUNZ6+Qxs1OT5mxQMGJPQlDJ3xi2GK4mWKNMkMI47/pqP
-         3+wyKNuL0YFgGJArox7jkh9dw08s4DEaaUGBmDoiXysUZD32ZhGzDYQvQw8vq6FFmqMZ
-         NyDC4YbHd5hMRocp+K65mHAOsy9iHRIHUGrrA0KWiy/HNjpwoUyT8vcj3d08Q0NTVhcE
-         E4BrB0XxmeZLmZ77RiY5wKc70eOUljgJ0GvfPWQesqiCDbvryLYTCswyDOGhj4a9wmlF
-         1ELhHEOcsFnAof1ovT44uowv9CVXBJb6r/mx5LDWgnoiryk4Y/em5KaTlwLeDBGD2FTh
-         wPPg==
+        bh=lzxvV/x1O3A5r2XKIj51TkQd8UzHL6H56EMPmFkEgjw=;
+        b=w666LhWQ41OTO6yQBEipg8skBJdVI67rl/+9drFLXSZ3vVqQMQEwdk0842wDxLs1dU
+         BXMS1pNOB14COXNFgMvMigstHOLIqG2fSurBLMrIF6Yo9dKa3gal1N3ZK2yJelF3g4wJ
+         AJn2Fbs2yox4QUYbMhYVrylFAgAXoDM8w0gmT74i5Pn32CVtFIYGcSt9vHTXZjofSCfM
+         mmr9LjnbHjsrd0PDV0+eNY87Jtaavg448NE+KVLjWwN2luHGqdJBJkk2tSexPM0+CpKQ
+         vkTy9OEkHnZ6e1vSGEgq24aK2VtMhipHfHZZK/mcIOaIeg+1LoZSa7mTIaGvB7CqDFBH
+         qXDg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CyDLNr6n;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XBjO1HER;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id g6si418877uab.1.2020.04.02.11.27.55
+Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
+        by gmr-mx.google.com with ESMTPS id 198si355244qkh.7.2020.04.02.11.27.33
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Apr 2020 11:27:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Thu, 02 Apr 2020 11:27:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CyDLNr6n;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XBjO1HER;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id k15so2150186pfh.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 02 Apr 2020 11:27:55 -0700 (PDT)
+Received: by mail-pj1-x1041.google.com with SMTP id m15so1835868pje.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 02 Apr 2020 11:27:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=BcNiPLnK5Z82396G+c/Mu8zPP9oNVyN0ZTAwy8usQFU=;
-        b=CyDLNr6nDzCpFPFg/UxcwGIxNiIdBOYLpB95OeZgGdDG+0nTO0jFisSIM/1HR8uzNk
-         5xrdOnplLnYrhS4VjPyNZWU/tGxVaCh2neD344ZyStbHl2v90SoHw/DlUzFIP0rmQ5LG
-         7Sr/u3e4qn27FtFeJkAQ5SCu9nIPufl3c5zXIsIrV61STEg3xsq24O2SF8b3+eW0jQ52
-         DUvRLgxmhZ3+W7JH3vmZBMEJVo4SXT1EEQYehrwXZc44f2L7bKv9aGKxtrRblqWnaGJM
-         +JvXCZR90ywzxPD2QYZG47E1vmCRbOOF87KEHzJxWqNFw9Fy3NuI9cbVLmq/cb7rwqdn
-         zqlA==
+        bh=lzxvV/x1O3A5r2XKIj51TkQd8UzHL6H56EMPmFkEgjw=;
+        b=XBjO1HERYjktlReBl2zThr1TSq/2WLGMJkMiueI1aLc4YRu3dZeEThqAhEfgiQcEG4
+         mfPSBrebzb/XatONmtSS1ehtdmzSQnl3WLqsn0KXwqKjWeAMtpx5GnPyvQsW4V0w9ObH
+         lCEo6r//b/mIWBIYJKHC1Qtx265XmUwkWhOwnRjOM95mdSCFB1TB/HG3R1YxoHEQ0Bbn
+         HCX9dRuUJzYiXcwqin9E+BbBx8jfIZ/O2XHKyr0TuK6WVgVBGDAF8DTeTTqQGdp+eI4a
+         n0wepzUFHmR8Iykm41JSPAyY7LcHhq0nFE9RcCSuunicqKMchViHDV+QxSXKjP4wV3zV
+         sFDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=BcNiPLnK5Z82396G+c/Mu8zPP9oNVyN0ZTAwy8usQFU=;
-        b=IeMBlsTplHPWUaQx7C6IO9c1hMgwaAGfpTLjmeidY17s75XT5/4QDKLyf0NK5MtvW5
-         IGS3ByORQddVqqTL1cuOHLQWWHf+ffQIMr2AOH7P1pVetIQF9sDZNGAvEjum/oB6Dylw
-         pVj0LwNzbpuykgpdZdZPVh6KHv114xSANpX68Tk56v30IPt4vf/lGwA8/Gn/xJ/fqPOg
-         LUCSKVoY4MJVSspMQpNZdnqnHxKDf3VuQtz73Nx2g1qd7ZNQ9VO1ddCUiPqwqU9xS8vm
-         j40hg11Fo0slp6qV21oEbBq03cQTXxzw8ZNphleKyGHXXxZ8n9XcG6lY09tk+6Mej1I+
-         lZmA==
-X-Gm-Message-State: AGi0PualUSoPs1yrMZys36JjuarfTp8m0o7hl85bXlodUIFaRX/cNc21
-	UnbwZ/CS5zZjkA+q5dQG4rBsN7Dscx5lNQ==
-X-Received: by 2002:a62:2ad0:: with SMTP id q199mr4632275pfq.48.1585852074986;
-        Thu, 02 Apr 2020 11:27:54 -0700 (PDT)
+        bh=lzxvV/x1O3A5r2XKIj51TkQd8UzHL6H56EMPmFkEgjw=;
+        b=r7zch3VtKUr0Nl+k9ZCkFco2tmfgO7ZjH8nI5/WXAlwnbjjawTZ/5JRbpDFnYl9Q3R
+         XSIb9FUE64jQb69mJxU2tmICIsS17lPodfxmEDLdhsMO5ksLcXDQrnM4TnBU3Qx4OGIZ
+         NZuPcbSPKJgQwOoU3KuG3EpCpuvBfwa9BoZ2BIlEmJcUmAI/jgs7wdIiw1YFsojxLtbu
+         Qhj6Z2lq1mSPGEKk21iRlK7C9WrZgIvh1Fy7J4C3UNYoe9Q/Y+WwYTlTR5IO+ion26PE
+         T4NsLS1KlVxNhkt2vshPJPxWotvVZLjBsxQ2a/sBJ1IiPHw0iR17nY1hbXLuKtAEBE7R
+         CRRQ==
+X-Gm-Message-State: AGi0PuaXbZ6E5YoQ5mhnL4dNF6XlZrUBmsNgXEfc+vWmeviicYVQKXod
+	zXLBJH1zLjLRwIK+wjohK7ygfAmmiQ7RtA==
+X-Received: by 2002:a17:902:b40e:: with SMTP id x14mr1882843plr.154.1585852052742;
+        Thu, 02 Apr 2020 11:27:32 -0700 (PDT)
 Return-Path: <debsoumyajit100@gmail.com>
 Received: from localhost.localdomain ([2409:4065:11f:6885:4516:34fe:f4bf:419b])
-        by smtp.googlemail.com with ESMTPSA id x189sm4195398pfb.1.2020.04.02.11.27.51
+        by smtp.googlemail.com with ESMTPSA id x189sm4195398pfb.1.2020.04.02.11.27.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Apr 2020 11:27:54 -0700 (PDT)
+        Thu, 02 Apr 2020 11:27:32 -0700 (PDT)
 From: Soumyajit Deb <debsoumyajit100@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: outreachy-kernel@googlegroups.com,
@@ -79,91 +79,55 @@ Cc: outreachy-kernel@googlegroups.com,
 	julia.lawall@inria.fr,
 	Larry.Finger@lwfinger.net,
 	Soumyajit Deb <debsoumyajit100@gmail.com>
-Subject: [Outreachy] [PATCH v3 2/3] staging: rtl8188eu: Remove unnecessary extra parentheses
-Date: Thu,  2 Apr 2020 23:56:20 +0530
-Message-Id: <20200402182621.61694-3-debsoumyajit100@gmail.com>
+Subject: [Outreachy] [PATCH v3 1/3] staging: rtl8188eu: Properly structure the multiline comment
+Date: Thu,  2 Apr 2020 23:56:19 +0530
+Message-Id: <20200402182621.61694-2-debsoumyajit100@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200402182621.61694-1-debsoumyajit100@gmail.com>
 References: <20200402182621.61694-1-debsoumyajit100@gmail.com>
 
-Remove unnecessary extra parentheses to improve code readability.
+Add "*" at the start of each line of the multiline comment to improve
+code readability and to adhere to the uniform Kernel coding style.
+Reported by checkpatch.pl
 
 Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
 ---
- drivers/staging/rtl8188eu/core/rtw_ap.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_ap.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-index 5b2b4d1d56f6..bd9a59dd3dd9 100644
+index 93283c7deec4..5b2b4d1d56f6 100644
 --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
 +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-@@ -315,7 +315,7 @@ void expire_timeout_chk(struct adapter *padapter)
+@@ -1226,17 +1226,17 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
+ }
  
- 			psta->keep_alive_trycnt = 0;
- 
--			DBG_88E("asoc expire %pM, state = 0x%x\n", (psta->hwaddr), psta->state);
-+			DBG_88E("asoc expire %pM, state = 0x%x\n", psta->hwaddr, psta->state);
- 			spin_lock_bh(&pstapriv->asoc_list_lock);
- 			list_del_init(&psta->asoc_list);
- 			pstapriv->asoc_list_cnt--;
-@@ -657,7 +657,7 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
- 		Switch_DM_Func(padapter, DYNAMIC_ALL_FUNC_ENABLE, true);
- 	}
- 	/* set channel, bwmode */
--	p = rtw_get_ie((pnetwork->ies + sizeof(struct ndis_802_11_fixed_ie)), _HT_ADD_INFO_IE_, &ie_len, (pnetwork->ie_length - sizeof(struct ndis_802_11_fixed_ie)));
-+	p = rtw_get_ie(pnetwork->ies + sizeof(struct ndis_802_11_fixed_ie), _HT_ADD_INFO_IE_, &ie_len, pnetwork->ie_length - sizeof(struct ndis_802_11_fixed_ie));
- 	if (p && ie_len) {
- 		pht_info = (struct HT_info_element *)(p + 2);
- 
-@@ -771,10 +771,10 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 	cap = get_unaligned_le16(ie);
- 
- 	/* SSID */
--	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SSID_IE_, &ie_len, (pbss_network->ie_length - _BEACON_IE_OFFSET_));
-+	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SSID_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
- 	if (p && ie_len > 0) {
- 		memset(&pbss_network->ssid, 0, sizeof(struct ndis_802_11_ssid));
--		memcpy(pbss_network->ssid.ssid, (p + 2), ie_len);
-+		memcpy(pbss_network->ssid.ssid, p + 2, ie_len);
- 		pbss_network->ssid.ssid_length = ie_len;
- 	}
- 
-@@ -789,7 +789,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 
- 	memset(supportRate, 0, NDIS_802_11_LENGTH_RATES_EX);
- 	/*  get supported rates */
--	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_, &ie_len, (pbss_network->ie_length - _BEACON_IE_OFFSET_));
-+	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
- 	if (p) {
- 		memcpy(supportRate, p + 2, ie_len);
- 		supportRateNum = ie_len;
-@@ -807,7 +807,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 	rtw_set_supported_rate(pbss_network->SupportedRates, network_type);
- 
- 	/* parsing ERP_IE */
--	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _ERPINFO_IE_, &ie_len, (pbss_network->ie_length - _BEACON_IE_OFFSET_));
-+	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _ERPINFO_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
- 	if (p && ie_len > 0)
- 		ERP_IE_handler(padapter, (struct ndis_802_11_var_ie *)p);
- 
-@@ -824,7 +824,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 	pairwise_cipher = 0;
- 	psecuritypriv->wpa2_group_cipher = _NO_PRIVACY_;
- 	psecuritypriv->wpa2_pairwise_cipher = _NO_PRIVACY_;
--	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _RSN_IE_2_, &ie_len, (pbss_network->ie_length - _BEACON_IE_OFFSET_));
-+	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _RSN_IE_2_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
- 	if (p && ie_len > 0) {
- 		if (rtw_parse_wpa2_ie(p, ie_len + 2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS) {
- 			psecuritypriv->dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
-@@ -844,7 +844,7 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
- 	psecuritypriv->wpa_pairwise_cipher = _NO_PRIVACY_;
- 	for (p = ie + _BEACON_IE_OFFSET_;; p += (ie_len + 2)) {
- 		p = rtw_get_ie(p, _SSN_IE_1_, &ie_len,
--			       (pbss_network->ie_length - _BEACON_IE_OFFSET_ - (ie_len + 2)));
-+			       pbss_network->ie_length - _BEACON_IE_OFFSET_ - (ie_len + 2));
- 		if ((p) && (!memcmp(p + 2, OUI1, 4))) {
- 			if (rtw_parse_wpa_ie(p, ie_len + 2, &group_cipher,
- 					     &pairwise_cipher, NULL) == _SUCCESS) {
+ /*
+-op_mode
+-Set to 0 (HT pure) under the following conditions
+-	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
+-	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
+-Set to 1 (HT non-member protection) if there may be non-HT STAs
+-	in both the primary and the secondary channel
+-Set to 2 if only HT STAs are associated in BSS,
+-	however and at least one 20 MHz HT STA is associated
+-Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
+-	(currently non-GF HT station is considered as non-HT STA also)
+-*/
++ *op_mode
++ *Set to 0 (HT pure) under the following conditions
++ *	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
++ *	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
++ *Set to 1 (HT non-member protection) if there may be non-HT STAs
++ *	in both the primary and the secondary channel
++ *Set to 2 if only HT STAs are associated in BSS,
++ *	however and at least one 20 MHz HT STA is associated
++ *Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
++ *	(currently non-GF HT station is considered as non-HT STA also)
++ */
+ static int rtw_ht_operation_update(struct adapter *padapter)
+ {
+ 	u16 cur_op_mode, new_op_mode;
 -- 
 2.17.1
 
