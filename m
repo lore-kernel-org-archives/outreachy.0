@@ -1,95 +1,128 @@
-X-GM-THRID: 6259411533129842688
-X-Received: by 10.182.246.73 with SMTP id xu9mr9968230obc.4.1457382816600;
-        Mon, 07 Mar 2016 12:33:36 -0800 (PST)
+X-GM-THRID: 6810936843956125696
+X-Received: by 2002:a05:6102:3232:: with SMTP id x18mr5587806vsf.184.1585902658421;
+        Fri, 03 Apr 2020 01:30:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.62.46 with SMTP id v14ls9084igr.4.gmail; Mon, 07 Mar 2016
- 12:33:36 -0800 (PST)
-X-Received: by 10.50.112.232 with SMTP id it8mr11561697igb.9.1457382816064;
-        Mon, 07 Mar 2016 12:33:36 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x242.google.com (mail-pa0-x242.google.com. [2607:f8b0:400e:c03::242])
-        by gmr-mx.google.com with ESMTPS id y20si3347283pfa.2.2016.03.07.12.33.36
+Received: by 2002:a67:8797:: with SMTP id j145ls1120421vsd.3.gmail; Fri, 03
+ Apr 2020 01:30:57 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIrWALhYNsLjI5B+T3jIoIDCMhMv5HWuXHOTfJ8Y+LI9tl7cL8bvZFqzjd89j2rJS0NGd9n
+X-Received: by 2002:a67:e096:: with SMTP id f22mr5922191vsl.218.1585902657306;
+        Fri, 03 Apr 2020 01:30:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585902657; cv=none;
+        d=google.com; s=arc-20160816;
+        b=h6wH5zKH2e66VVWV97jg41LdlDjGWsY6QFuuPOPFroQsmu3Gu/CS91n3nuydJf3AJU
+         khlfHZWZK5LfBKQkBnIyHTTADDd6st2nI7nkdl/ccboivEkZFofyv+W9+RALs2UcwREz
+         smOfxG+/hTOW6MCwvYipNZAu+dUtfiHQzFbUzyFO1UigDbMdtV4C3NYXGzvBUdVag6+t
+         H/5yjKXO2mOPyr0WWbUCizn6S4gN+G7RSoJXO2+oKd2sNWTw3PgAvXHmrasGMSXjvGxK
+         nr15DPp9SNd0ppAw6giUJLUacI83AoxQcmFOtElISB2EdLusWVtnn3mXnQntX1KbBwXE
+         fdmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=oNePCKvCxUpIIS0f2ZbYU7jLe+9Z1XA0+v4YImT1gPc=;
+        b=UHI+hB8Q49/qOLxMWnXZbYdeebYCoZknTkplbaZSx322WnGhslkkj4+kRElRBysfik
+         eGfnAukMk6Pewxauc7P8ngyQLa8vcRyU+1krqdLdYArz8AVGtM+YqLT9UYUZefEFAL4Z
+         oszgT5uG9YMg9jGayR+/0UuXKaExhKgjX/kTkgm+IRHM5uLZXiunS85zimPhQKtx7Wnb
+         47dHHxXVtRC6qa92ZG/ezRgSZe12M+xPpConoVrEzn9UfTXrS5tCJtVpPm37ZjYtoSpx
+         CaYmpAqJ4A0HZOC/Ab9kRKn/BVXIMNeLfYJKRcaJCUASn4dXAF7lJZNB2LGVW9cQz4pe
+         Ef6Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Fh3XWJDc;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id p7si285646vsf.1.2020.04.03.01.30.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 07 Mar 2016 12:33:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) client-ip=2607:f8b0:400e:c03::242;
+        Fri, 03 Apr 2020 01:30:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::242 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x242.google.com with SMTP id fl4so8292442pad.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 07 Mar 2016 12:33:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Yw9B1zjUbN9+4z0VogsuB0HxiScBTtnynsjcGrsPeHk=;
-        b=wewi1kUJoRZ+4d3gWd9Z9sgQyQ2JKE6erwKtlnLLmY3QFrcXSfrSHSmO4SWngVBVx3
-         TOOcMr7QNLJcGM+tJBWyee6S5cOp+qO3WkMszznO86GOI7/K/qIe5ISK9Cw21cvqB0Zb
-         DJdkQ6tAC/J9QljUGET5/XS10PCECPItnpBic9gjFQ5agEDWRsLsAQi1T57qj5belotK
-         WKDSNRFOU9oVk18EFwGB0oEvyfdRczK1J4G2Yau+mAEnEG7wk//EiANDY8SsuxO36FRq
-         BS0vPin7RjacR3vKXsyGuUYU6QL9CZo1BjgvzYmYcx9roa38fqrBDnZLJXpDGTi1qjqi
-         bZpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Yw9B1zjUbN9+4z0VogsuB0HxiScBTtnynsjcGrsPeHk=;
-        b=hSN7YUpZdZH7CXufvEaTPYNHq7PZj0EFaNf4xEyy+lMn2X6ddHPpYQETiOSPGUwhd1
-         iQDIQ2gjA7poz4iSvLn1EWMh00a12uzbT4H0imB45el6EBvfQ+5Coc5/sBnxLGAs4ZdO
-         EutqFhSpqbTQjCdMrBDH4/AwgR1FhesY9J3TBFCtvwJCJgQKJ2AQ7OlONc02a+hV9mgz
-         obmtwiMJrxPuqigVjgxfsn0D+uZsWjvAv7KVqyim/jqepVrNms1KAj1ewjd+7rZRbBlo
-         9e6xV3Rvi0IcJc9MAvSHzoh35S96tqwnKqgotwZVQUQdNbqekjxf2UsEJxYm9rvH/8kv
-         Ka2g==
-X-Gm-Message-State: AD7BkJKQT0uNZF+7WVF/whdy32xtMV58XDoXLARsHq9qgbx07QOpV6e8s1N3eVE0oCgzvw==
-X-Received: by 10.66.218.225 with SMTP id pj1mr35766482pac.83.1457382815878;
-        Mon, 07 Mar 2016 12:33:35 -0800 (PST)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([59.161.35.136])
-        by smtp.gmail.com with ESMTPSA id x64sm25966739pfa.72.2016.03.07.12.33.31
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Mar 2016 12:33:35 -0800 (PST)
-Date: Mon, 7 Mar 2016 18:03:58 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: rtl8188eu: Use !x instead of x==NULL.
-Message-ID: <20160307123358.GA7644@sandhya>
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Fh3XWJDc;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0338OeTf056043;
+	Fri, 3 Apr 2020 08:30:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=oNePCKvCxUpIIS0f2ZbYU7jLe+9Z1XA0+v4YImT1gPc=;
+ b=Fh3XWJDcRKgJNcBua9lUzc/+L3/EUI5I3ScY7oaxgqSABO88x+BFmuxWhz5N6yTR0mSD
+ DvR+e2jxZIHvG0KZpcYMfvJYsS4zSoBYMyJSJBxYRqfypzqqybSb69Jij3MC9hpdcXn6
+ embcvUUulZtut1h5nqM4NDh95T6lByt/tR/BL7DDM5OIN6ZdOJQVQ7L4NVFyZmgDE6h6
+ T+8RWGz9ULvEyLjORP2MFGrpn3djtT5tIwVkgtVrS/9630RgMClTClr6S4TSNpEOpBii
+ 8Iw7dKRRDnWZf9aLhn9iOSgqr85gkvTOhxv29pRJxAAz51r0isxSYa+wAw+y/OyH5uhk dA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+	by aserp2120.oracle.com with ESMTP id 303yunj9ku-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 03 Apr 2020 08:30:53 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+	by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0338NA8X010005;
+	Fri, 3 Apr 2020 08:30:53 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by aserp3020.oracle.com with ESMTP id 304sjs422x-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 03 Apr 2020 08:30:53 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0338Upce019918;
+	Fri, 3 Apr 2020 08:30:51 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Fri, 03 Apr 2020 01:30:51 -0700
+Date: Fri, 3 Apr 2020 11:30:43 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
+Cc: outreachy-kernel@googlegroups.com,
+        Ioana Radulescu <ruxandra.radulescu@nxp.com>,
+        Ioana Ciornei <ioana.ciornei@nxp.com>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org
+Subject: Re: [PATCH] staging: fsl-dpaa2: ethsw: Fix parenthesis alignment
+Message-ID: <20200403083043.GW2001@kadam>
+References: <20200402023310.816245-1-jbwyatt4@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
+In-Reply-To: <20200402023310.816245-1-jbwyatt4@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 adultscore=0 mlxscore=0
+ malwarescore=0 phishscore=0 suspectscore=0 mlxlogscore=999 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004030071
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 lowpriorityscore=0
+ malwarescore=0 adultscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
+ suspectscore=0 mlxscore=0 spamscore=0 impostorscore=0 clxscore=1011
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004030071
 
-Use !x instead of x==NULL.
+On Wed, Apr 01, 2020 at 07:33:10PM -0700, John B. Wyatt IV wrote:
+> Fix 2 parenthesis alignment issues.
+> 
+> Reported by checkpatch.
+> 
+> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
+> ---
+>  drivers/staging/fsl-dpaa2/ethsw/ethsw.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+> index 676d1ad1b50d..546ad376df99 100644
+> --- a/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+> +++ b/drivers/staging/fsl-dpaa2/ethsw/ethsw.c
+> @@ -1094,7 +1094,8 @@ static int swdev_port_obj_del(struct net_device *netdev,
+>  
+>  static int
+>  ethsw_switchdev_port_attr_set_event(struct net_device *netdev,
+> -		struct switchdev_notifier_port_attr_info *port_attr_info)
+> +				    struct switchdev_notifier_port_attr_info
+> +				    *port_attr_info)
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
----
- drivers/staging/rtl8188eu/core/rtw_efuse.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I feel like the end result is worse than the original code because of
+how the type and the parameter name are on different lines.  Sorry.  :/
 
-diff --git a/drivers/staging/rtl8188eu/core/rtw_efuse.c b/drivers/staging/rtl8188eu/core/rtw_efuse.c
-index cca42e5..19f11d0 100644
---- a/drivers/staging/rtl8188eu/core/rtw_efuse.c
-+++ b/drivers/staging/rtl8188eu/core/rtw_efuse.c
-@@ -108,7 +108,7 @@ efuse_phymap_to_logical(u8 *phymap, u16 _offset, u16 _size_byte, u8  *pbuf)
- 		return;
- 
- 	eFuseWord = (u16 **)rtw_malloc2d(EFUSE_MAX_SECTION_88E, EFUSE_MAX_WORD_UNIT, sizeof(u16));
--	if (eFuseWord == NULL) {
-+	if (!eFuseWord) {
- 		DBG_88E("%s: alloc eFuseWord fail!\n", __func__);
- 		goto eFuseWord_failed;
- 	}
-@@ -493,7 +493,7 @@ int Efuse_PgPacketRead(struct adapter *pAdapter, u8 offset, u8 *data)
- 
- 	EFUSE_GetEfuseDefinition(pAdapter, EFUSE_WIFI, TYPE_EFUSE_MAX_SECTION, (void *)&max_section);
- 
--	if (data == NULL)
-+	if (!data)
- 		return false;
- 	if (offset > max_section)
- 		return false;
--- 
-1.8.3.4
+regards,
+dan carpenter
 
 
