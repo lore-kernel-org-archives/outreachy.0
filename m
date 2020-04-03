@@ -1,132 +1,81 @@
 X-GM-THRID: 6810983981857636352
-X-Received: by 2002:a63:b52:: with SMTP id a18mr7243222pgl.130.1585902763319;
-        Fri, 03 Apr 2020 01:32:43 -0700 (PDT)
+X-Received: by 2002:a0c:f207:: with SMTP id h7mr6795302qvk.20.1585898712509;
+        Fri, 03 Apr 2020 00:25:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:bb93:: with SMTP id m19ls4825678pls.6.gmail; Fri, 03
- Apr 2020 01:32:41 -0700 (PDT)
-X-Google-Smtp-Source: APiQypICRKoYcQj957Rtj+2GXGUb9M/g7v86jItQcPYCAVlZSc785GObpOnqf1MOgYDJIiKUcmBl
-X-Received: by 2002:a17:90a:3ea6:: with SMTP id k35mr2223164pjc.184.1585902761733;
-        Fri, 03 Apr 2020 01:32:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585902761; cv=none;
+Received: by 2002:aed:34c6:: with SMTP id x64ls3545158qtd.5.gmail; Fri, 03 Apr
+ 2020 00:25:11 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKSI4U9cTr0ceLmKoiF1UURnxZdkLV14lRw9AQ0Gnzq8MzspW5AcqFcYeCSm7E4doVctF9m
+X-Received: by 2002:ac8:1b2f:: with SMTP id y44mr6992363qtj.25.1585898711115;
+        Fri, 03 Apr 2020 00:25:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585898711; cv=none;
         d=google.com; s=arc-20160816;
-        b=rW87J4eMofMuOBB6jjQ4Xjms9pamqdEJsCreA1COfQkW8uOtTk87EfdVcfn+nOGTAp
-         ogx0oIiB0ANYS4d6Bmh1AzkjW/f4XajKjdFYpniVMCf5uGPh6EYfeJ65jm6hDHxJ8Qnx
-         WxhNb85ttaFHuQsKJhyLhB3Lyz3P8OAkMcb+5XvliLD+rqXn3eK3zbBXj01YDS5ReaGB
-         D4YIizNM3xOuViImhbNbb36wHB9sadKu0/e9kz2PCL73Tx8lKtB+olMW8SACWG0rnkyE
-         g2DeoBB+bOtH/fA/hCJoUiiTVw1eysybN4M+hCeAdR3L+ZAPUesoiBwZISc0zxeMlNqx
-         TVlg==
+        b=X07JYvmddPzifIL2Pbq/RwWNjFyTd5ZejsVtd0vcHltzJT5EnyjSEA3umeiEPib6Z1
+         tYEHB9WNyJ3co6Hch+vk8LwhrGBvS+hMFpa+f8+KfJs785tuQGmwHNoLbeXnP9TxayXV
+         UYgMWRS6/NbrJAFJrJdLNWGyJwj++gGNZydl6W5jlwWsQPzrTbcxi6vASXUETYa2Ee63
+         qvX1cf9zsG6BtkhXLuZg3iKlLcu/AypfyBn+UXOQ/Th/lzqx75XVLjl4EKy6voaOcndS
+         lKqF0MpoZF06ZacFAGbh4UEeyl6ddHgjkwIOGGpUj9plprQGtMe7KjW5JtGPRn4iWonH
+         qU8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ss086libaRnicgxivCFTmSK24emVikB4VIk29pxOOEY=;
-        b=IS7pIs+NNQapvEXI4cgI2nWwO/Nbvbw/87I8PuBKEi9OJ67PQKGgjeSkHzfP/jcb9U
-         g5q0h6+UFHQ3yZ4pAjyom4e2cuZtYzzWtqqUib5/xWuhy2dFid7DwPAb9aft7NRdu5fz
-         f7do0LWgXgQjO62Wuv0Zj+eKh70wUDIn4zZosbLoczLj7oboqjhWoWxm80Humcn7vUM2
-         yt15a45U0OZOOjprXEKZkly2joWGMK/6/CUXguMLYiwOD+AqVIN6XaDeR26eArK7f8UE
-         Rcralodg5CbCcywJ6G35JOLuazQUhHxVGT/BQ2uaFDeAOHQfUG1+WS0etnZraCYF556p
-         QyJw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=g3/Fc957Z7NC/ooLjlDEdU4lNYlmrkyPlpFNoziR7PQ=;
+        b=0JFV39Y/qXyWLnY7G5/LVUjOPmOd+0/bjolFP/2YdF4zWbAxGgaysGcalvFHGjbFvq
+         QYRIzJVJfIUVceac6Eo1ySlMEPfOr1hUA2MSCxEu4TVJbuTu6RiywS1hQE8KkOebyx1F
+         rX7T0tU8mfCL5tdRN60rmQJ7m/be+UicAhMbKkBfNWASkr79v28XNDIxiHe2nr3NzITu
+         gJY3VcjGnQnRwR9z7o7DMh1c7AcKOO5yTgPzeRNHBInjrSpyYwdxz+jixFtASI6eGBnj
+         WZKo8dTT1hGFoCykWFMZZOzL6E6rraybtZKjdALm9Br1vEb7QaTAXAqICeWU32Km8nQm
+         VgKQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=vZd1D3Y7;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
-        by gmr-mx.google.com with ESMTPS id u15si479124pjm.1.2020.04.03.01.32.41
+       dkim=pass header.i=@kernel.org header.s=default header.b=OPaopi7J;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id j56si653241qta.0.2020.04.03.00.25.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Apr 2020 01:32:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
+        Fri, 03 Apr 2020 00:25:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=vZd1D3Y7;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
-	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0338OFmP055609;
-	Fri, 3 Apr 2020 08:32:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=ss086libaRnicgxivCFTmSK24emVikB4VIk29pxOOEY=;
- b=vZd1D3Y7F64qs8Q8Cy649TJgKeHskxw5L8yLqRWz7J6FaoQOUJ9ODdwVZ2wK6Y24L2Aj
- OsLkQIcY+rYGXDB27HMp0FCNqP9zb+OUfqMk3lvoP+03eywzxU0+7qDzWYYJQhF2iwWs
- eBbuBJuiG/P7z6wUwX0ftzg+L4YKOSgGaw4Cq7ox8FAEo0zi1edAAqyNN4HNN3ww1UMS
- ceSRdPmgcn4pMcuOv8uFTAR02+SJ+xk/IAtmzhVHVmisEeL0wtd0E6W+cNO/cnvp57zl
- 9IJMlVvVJOc382Vrqiqa7cCf8HgvQIK5mZQERaCjaBP6y6g5CicrLgXkAecISe8jdknu tw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
-	by aserp2120.oracle.com with ESMTP id 303yunj9wt-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 03 Apr 2020 08:32:35 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
-	by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0338WNeM052226;
-	Fri, 3 Apr 2020 08:32:35 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by aserp3030.oracle.com with ESMTP id 302g4x20dw-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 03 Apr 2020 08:32:35 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0338WXuW020986;
-	Fri, 3 Apr 2020 08:32:33 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Fri, 03 Apr 2020 01:32:33 -0700
-Date: Fri, 3 Apr 2020 11:32:25 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=OPaopi7J;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 93E96206F8;
+	Fri,  3 Apr 2020 07:25:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1585898710;
+	bh=UrW0qh9b86HOoFRZ6/gp1zp7+bI3Pc9plhScThk4b/4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OPaopi7JNVueL99fqC5I2IPOvDiw5PKfVqx9nnXQdh4jBpwLu6GA5N+MIjudjKghG
+	 2rDOnIj44L9SSeMWA/kfFvQngwKidFl6YHO0Xhakwt8GUBA2/TjpIPM5idzX/gvI56
+	 ZegQxlDn6+iLUFYFEI8XXnz2kAs3z0qtrFjZMGYQ=
+Date: Fri, 3 Apr 2020 09:25:02 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: "John B. Wyatt IV" <jbwyatt4@gmail.com>
 Cc: outreachy-kernel@googlegroups.com, Rob Springer <rspringer@google.com>,
-        Todd Poynor <toddpoynor@google.com>, Ben Chan <benchan@chromium.org>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] staging: gasket: Fix 4 over 80 char warnings
-Message-ID: <20200403083225.GX2001@kadam>
+	Todd Poynor <toddpoynor@google.com>,
+	Ben Chan <benchan@chromium.org>, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] staging: gasket: Fix comment 75 character limit
+ warning
+Message-ID: <20200403072502.GD3405737@kroah.com>
 References: <20200402053617.826678-1-jbwyatt4@gmail.com>
- <20200402053617.826678-2-jbwyatt4@gmail.com>
+ <20200402053617.826678-3-jbwyatt4@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200402053617.826678-2-jbwyatt4@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 bulkscore=0 suspectscore=0
- mlxscore=0 spamscore=0 malwarescore=0 mlxlogscore=999 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004030072
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9579 signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 lowpriorityscore=0
- malwarescore=0 adultscore=0 priorityscore=1501 mlxlogscore=999 bulkscore=0
- suspectscore=0 mlxscore=0 spamscore=0 impostorscore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004030071
+In-Reply-To: <20200402053617.826678-3-jbwyatt4@gmail.com>
 
-On Wed, Apr 01, 2020 at 10:36:16PM -0700, John B. Wyatt IV wrote:
-> Fix 4 over 80 char warnings by caching long enum values into local
-> variables.
-> 
-> All enums are only used once inside each function (and once inside
-> the entire file).
-> 
-> Reported by checkpatch.
-> 
-> Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
-> ---
->  drivers/staging/gasket/apex_driver.c | 13 +++++++++----
->  1 file changed, 9 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/gasket/apex_driver.c b/drivers/staging/gasket/apex_driver.c
-> index 46199c8ca441..f48209ec7d24 100644
-> --- a/drivers/staging/gasket/apex_driver.c
-> +++ b/drivers/staging/gasket/apex_driver.c
-> @@ -253,6 +253,8 @@ static int apex_get_status(struct gasket_dev *gasket_dev)
->  /* Enter GCB reset state. */
->  static int apex_enter_reset(struct gasket_dev *gasket_dev)
->  {
-> +	int idle_gen_reg = APEX_BAR2_REG_IDLEGENERATOR_IDLEGEN_IDLEREGISTER;
-> +
+On Wed, Apr 01, 2020 at 10:36:17PM -0700, John B. Wyatt IV wrote:
+> Fix 75 character limit warning in comment reported by checkpatch.
 
-Sorry, but I also hate these where we have a one time use temporary
-variable to get around the 80 character rule.  Generally, avoid pointless
-indirection.  The original code is better.
+comments are not allowed to go beyond 75 columns now?  Is that something
+new?
 
-regards,
-dan carpenter
+The code is fine as-is, sorry.
 
+thanks,
+
+greg k-h
 
