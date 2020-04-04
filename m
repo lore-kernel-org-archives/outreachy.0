@@ -1,114 +1,96 @@
-X-GM-THRID: 6264893373939712000
-X-Received: by 10.25.18.101 with SMTP id h98mr3568012lfi.0.1458659156001;
-        Tue, 22 Mar 2016 08:05:56 -0700 (PDT)
+X-GM-THRID: 6810213860225581056
+X-Received: by 2002:a67:28c5:: with SMTP id o188mr11250025vso.227.1586042918725;
+        Sat, 04 Apr 2020 16:28:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.28.18.133 with SMTP id 127ls869804wms.18.gmail; Tue, 22 Mar
- 2016 08:05:55 -0700 (PDT)
-X-Received: by 10.28.15.82 with SMTP id 79mr2247536wmp.3.1458659155409;
-        Tue, 22 Mar 2016 08:05:55 -0700 (PDT)
-Return-Path: <sveta.orlik.code@gmail.com>
-Received: from mail-lb0-x243.google.com (mail-lb0-x243.google.com. [2a00:1450:4010:c04::243])
-        by gmr-mx.google.com with ESMTPS id k2si1552774lbs.3.2016.03.22.08.05.55
+Received: by 2002:a67:328a:: with SMTP id y132ls1814303vsy.0.gmail; Sat, 04
+ Apr 2020 16:28:37 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJNiSavlmtAlrW+ycJqzBjWLZS+kI0k/C+IJ2CnVPVhZCrnJwS72rvL1cBLYrXCzAMbrciD
+X-Received: by 2002:a05:6102:10dd:: with SMTP id t29mr11720420vsr.229.1586042917532;
+        Sat, 04 Apr 2020 16:28:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586042917; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jlEh6y+bKvYkabM/GYWd2csKkfIZE4JuRz8jI+SSLhtPgpJQx//G2KMxTiJluCQ8H8
+         B2rJ/nZwHbi164HXPyTEs5AVPMp5pHN/OlaRHOsc04yrFBkJ+I+mJcHBcP/lulAOjtKF
+         gtA3ISE0zxSp7lriknuK/3B1ZvgM8PWspCfXWro30RfPA1ht5diz9njQu0iS5DJlJU8b
+         GmSmin7z7WvXrgZ4Lm1YqpButcdCB/G+kfnoJ9k2IqgIcPcy8t2UR+NmH/5tbOIY+Ttd
+         g2t5ZNCBVtAo+aBMjiHU37KH6QbG201ejOFps3WQwjPKpnS/6PmPcpTQEwWIf8W7AVqd
+         f5rw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=k1F+4LgrA0f1mlqwix3T+1aJ4f2ekeZTbaVDqIamTkE=;
+        b=pp9Rv9FKv1pFmWvv0l2Cl+GgxOijjd6G2eLj9siVNSp7nZKOMYhdHBWDaufPYWu8Df
+         zkZ5tI988vpJzhcMQ/GDA8M8estA1yOhE5Qu7Nrot6KnNOpF4IuOq4slLsavEvC+i4nZ
+         8ZWCD7zqo8M5WaiVLd0qxX1pzhrKa0QcPxcdAUHa1pczgjE7YwNRr/AYuaa1a8NKkJVc
+         EaWxR9MHCIWfBYcKS711MEx5OIz3frbQZLHQ0SDLGeaK0Afp5/5bHSRf7mg1bRMlsoz+
+         627rIFRdLiI0IllKP+jhLhhHHV/8HseSI1et3dXWWZZ7pMpE+gilm+AEYk9Gfyq9+7y7
+         RDQQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTfJuj8W;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by gmr-mx.google.com with ESMTPS id u6si1256376uae.0.2020.04.04.16.28.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Mar 2016 08:05:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c04::243 as permitted sender) client-ip=2a00:1450:4010:c04::243;
+        Sat, 04 Apr 2020 16:28:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of sveta.orlik.code@gmail.com designates 2a00:1450:4010:c04::243 as permitted sender) smtp.mailfrom=sveta.orlik.code@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lb0-x243.google.com with SMTP id oa3so631217lbb.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 22 Mar 2016 08:05:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=/qO+xUTXOsvqm4/1CdTagR0xXrIU7QTO9JTC62Bk8Yk=;
-        b=hG7tpKZ7LgeOQye4FJp7rOW6ahtEGYKxeFcLfFAOT8V0dVqFXjhI+9wtgnSC3T04lR
-         e+FeEsUh62ZtrpAcXYSK0RnrawUDGQBpPzKojNbrws70797Xc40Hzq3Ni19lGoftt1dK
-         Q7O/POqdK06Vxj13Fw0ZpG2O+uX+gLCxBK6eipo2TRMgTB0ZieGP39+IvpZV8/Srrp9m
-         mOhauEUYiNgiQ6ySmtdHi5tVf/8HPESvoFHGXrqCkjGv/7M5Pq3DJRfdlDy/M9sN5r0A
-         MUl23bw/KqDBzccrWOmKdRhz6xUs826/J5vyDh5nMybcHQsJR7yO47+G81ZWyWQurNdc
-         Namw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=/qO+xUTXOsvqm4/1CdTagR0xXrIU7QTO9JTC62Bk8Yk=;
-        b=UsHKrJWtb/bXNnsYpVUtmhg2+BSYBvEjJogce04WWOBj7JZEC55/qT0OlDAdH8ur7V
-         lNz3qrW/DZ5AQTZ7f6ShcQo7zwoGSi1GloTE/L+AjmKWCAfN1O3I8e4rOEpmivnjzp7g
-         S0UYTaHH67RDpz3mdWC2Ljl2FVzmW18B4UXW5NiMUlOb5DmEfWm2dWhuQjlNBZu1ONVb
-         atj3XXJrs4ig6orzXtw829S224LNwksS8dkPOWqQko4YyfuZ8G/kVzB8dGktO8A2RmaO
-         yZrjoFMqxgzK9jsYK4Rw/0Q6PFtxL6dDlR5sgH0Ftlah52zf6h8WbjeHnYOaYoa3GQaB
-         jNew==
-X-Gm-Message-State: AD7BkJJBA0dSlsPgdQzOtYQk7wTt5QcykL2jdfo98xJOUP3WQjiEQvtg+5g986IGrZRFUQ==
-X-Received: by 10.112.14.102 with SMTP id o6mr12972550lbc.87.1458659155267;
-        Tue, 22 Mar 2016 08:05:55 -0700 (PDT)
-Return-Path: <sveta.orlik.code@gmail.com>
-Received: from pal-comp (broadband-46-242-29-57.nationalcablenetworks.ru. [46.242.29.57])
-        by smtp.gmail.com with ESMTPSA id k137sm4119381lfg.16.2016.03.22.08.05.54
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 22 Mar 2016 08:05:54 -0700 (PDT)
-Date: Tue, 22 Mar 2016 18:05:53 +0300
-From: Svetlana Orlik <sveta.orlik.code@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/6] staging: iio: accel: Fix checkpatch warnings, unify
- style, improve readability
-Message-ID: <cover.1458656755.git.sveta.orlik.code@gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTfJuj8W;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1586042917;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=k1F+4LgrA0f1mlqwix3T+1aJ4f2ekeZTbaVDqIamTkE=;
+	b=gTfJuj8WopC+/xF3O5q2H49ZDuRF/XH7DYy+Nd3Pqg1E/QAa6+YcwYK7blFAptFFE/eZMA
+	Lq/PO4DjE4k7HewiHR28p7K2uaD/wIrBPaIHNXE6b70Er8Nqw5fE+Fav1A4gXgmvQZN2oh
+	GnMvmHQ9KOFNIevM6xRrj8gIPp4MUeY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-330-LLRR6Pe5MTGbgzbGsT5XKg-1; Sat, 04 Apr 2020 19:28:33 -0400
+X-MC-Unique: LLRR6Pe5MTGbgzbGsT5XKg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19C2C8017CE;
+	Sat,  4 Apr 2020 23:28:32 +0000 (UTC)
+Received: from elisabeth (unknown [10.36.110.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D586E26E68;
+	Sat,  4 Apr 2020 23:28:29 +0000 (UTC)
+Date: Sun, 5 Apr 2020 01:28:24 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Briana Oursler <briana.oursler@gmail.com>
+Cc: gregkh@linuxfoundation.org, julia.lawall@inria.fr,
+ forest@alittletooquiet.net, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v6] Staging: vt6655: Replace camel
+ case variable names.
+Message-ID: <20200405012824.4139bb83@elisabeth>
+In-Reply-To: <20200403171805.466600-1-briana.oursler@gmail.com>
+References: <20200403171805.466600-1-briana.oursler@gmail.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Some of the .h files got many 'line over 80 characters' checkpatch warnings
-because of this commenting style:
+On Fri,  3 Apr 2020 10:18:05 -0700
+Briana Oursler <briana.oursler@gmail.com> wrote:
 
-#define ADIS16201_DIAG_STAT_ALARM2        BIT(9) /* Alarm 2 status: 1 = alarm active, 0 = alarm inactive */
-#define ADIS16201_DIAG_STAT_ALARM1        BIT(8) /* Alarm 1 status: 1 = alarm active, 0 = alarm inactive */
+> Replace camel case variable names with snake case in baseband.h and its
+> dependencies.
+> 
+> Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
 
-Some other .h files have obviously been already corrected
-by moving comment into line before #define, but interlacing
-of comment and #defile lines with no space between them made
-hard to read code like this:
-
-/* Output, temperature */
-#define ADIS16209_TEMP_OUT       0x0A
-/* Output, x-axis inclination */
-#define ADIS16209_XINCL_OUT      0x0C
-/* Output, y-axis inclination */
-#define ADIS16209_YINCL_OUT      0x0E
-/* Output, +/-180 vertical rotational position */
-#define ADIS16209_ROT_OUT        0x10
-/* Calibration, x-axis acceleration offset null */
-#define ADIS16209_XACCL_NULL     0x12
-
-
-This patches move comments to line before #define where it is not done yet
-(and where it is appropriate).
-It helps to get rid of 'line over 80 characters' warnings and to unify code style.
-
-Also, blank line is added after each #define-comment group and each
-section title comment to improve readability of code.
-
-
-Svetlana Orlik (6):
-  staging: iio: accel: adis16204: Fix 'line over 80 characters' warning
-  staging: iio: accel: adis16203: Fix 'line over 80 characters' warning
-  staging: iio: accel: adis16201: Fix 'line over 80 characters' warning
-  staging: iio: accel: adis16209: Improve readability
-  staging: iio: accel: adis16220: Improve readability
-  staging: iio: accel: adis16240: Improve readability
-
- drivers/staging/iio/accel/adis16201.h | 156 ++++++++++++++++++++++++---------
- drivers/staging/iio/accel/adis16203.h | 132 +++++++++++++++++++++-------
- drivers/staging/iio/accel/adis16204.h | 159 +++++++++++++++++++++++++---------
- drivers/staging/iio/accel/adis16209.h |  39 +++++++++
- drivers/staging/iio/accel/adis16220.h |  48 ++++++++++
- drivers/staging/iio/accel/adis16240.h |  50 +++++++++++
- 6 files changed, 471 insertions(+), 113 deletions(-)
+Reviewed-by: Stefano Brivio <sbrivio@redhat.com>
 
 -- 
-2.5.0
+Stefano
 
 
