@@ -1,90 +1,90 @@
 X-GM-THRID: 6811040563999014912
-X-Received: by 2002:a7b:c205:: with SMTP id x5mr20605910wmi.189.1586128559175;
-        Sun, 05 Apr 2020 16:15:59 -0700 (PDT)
+X-Received: by 2002:a17:90b:1256:: with SMTP id gx22mr3976741pjb.160.1586039952175;
+        Sat, 04 Apr 2020 15:39:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:56d2:: with SMTP id m18ls3961182wrw.3.gmail; Sun, 05 Apr
- 2020 16:15:58 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL+v4AUsMbWdvuNjpPpzEoQRb9qQbUkT9dpWGwWIhYpmaWenH7CtbVo/TD6stqlerpR2YPP
-X-Received: by 2002:adf:f2c5:: with SMTP id d5mr19275717wrp.409.1586128557908;
-        Sun, 05 Apr 2020 16:15:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586128557; cv=none;
+Received: by 2002:a17:90a:332a:: with SMTP id m39ls10044834pjb.2.gmail; Sat,
+ 04 Apr 2020 15:39:11 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLlIFKlu2LawlN4pg1nC1OatZc5PZ6pnlJH/QEL+a7P4hCrTR+Ja2hF2Iv09GsQKSIb+jCE
+X-Received: by 2002:a17:90a:9742:: with SMTP id i2mr18470189pjw.194.1586039951046;
+        Sat, 04 Apr 2020 15:39:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586039951; cv=none;
         d=google.com; s=arc-20160816;
-        b=zYsWsA09VFUFupmuGPZzrgymiXYUIv5Kohc2MmwnT5JjFQca2aLiJqlRDq9xxif1w5
-         mqJINRTaYGzEqihVbpHl8458eoKLEoUSathPSwCwwkOzPsnkFr2KzaYov9jdjhKpB46o
-         8wGddVwbm0c4aTlq7x+8TtkxaIW0XVDNOiHTayWWSSK6j6js+U90Ud17EHSDcn9QcOWY
-         JxzyCpS7WX30mQdkBwKi7tTbr9t4hF4LFvzVTce5R6WdxGn2vnqSI449mv5ixNfGlL8y
-         7eNH6x8Tvb6yCxBO07t08tcs+8zA0OSx4WpEUAJGvzWmKUIfC28NH5qfiDPzWSVMzrwB
-         E2CA==
+        b=1Er5zT3De9pTyWEYKiFUzoJXL/l1IoywYhMO64RqUpF5U6g1RvZDVXplWR+ojacQ5L
+         S/HFKPuEH4VNC6ziX53cg5sc2R33R4vM93ESnsHmGnkAOru7T65fR3fypdw2nr+DCHuM
+         ZM0I3+XdwZ8wSiasntG/3oltxd9FPQItMETKhOI7wXzfK1P0OTcB++KsiDZa7hw+k3Yb
+         SRtFf6Ikq86PHDaA1c+6skj1FryghuBrr8vbJu4swNKTrIet0+T7GiymY8CL0Rn1PDtk
+         rLqrbCeDIipcn27YwcgJbOe4GrLRrPuuHPErcbrs6NfGuF9hps/8lqN1h1CvsnAhZcN2
+         gQJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:date:to:from:subject:message-id:dkim-signature;
-        bh=7GjJCOpnxvPXzRNqKmXTINBsyp1hDI+sdnXUNUgw15E=;
-        b=SjTEXjnwjLo8Qup8unvMFgHOpa08Cf+MuBx3N8q6FZxg1oaEU3kyECQcy4R4u8eskA
-         qtPs2Kcu69EufKax1ZH2TjiNWZah4a0Ro+ggN1c+PJc2UxkEiOKfLx4ri0f495yQsMKL
-         c26O+F+Zq/ygi4S9ATTTHCEmkhemZkfJxBkVKyea+kYkCUMNjlbyV2ihsjmW8bqehHY7
-         c2eop753CtCjWu6j20NdeGQb+HnmwmD4Ajhx0ATNnZPIWJv0fuQE1J73UMUxvhoEs7hk
-         450TNozWqDyg5jr0XBIHuMDiBx0IzgGjWBO4UGwU3hZjQmRRJrzFsLsb3qGcxTC6iWew
-         jx2w==
+        bh=UvbFK3wfRAPguRK4RSKCOBqhbfBDCakMzWWu1HZkigg=;
+        b=QQLjpbK82Cls22YCWFSsS31WZLG48iKvsbptA5kjKYuPjLsnApY5Uph0bdHcPDltmR
+         ERo7GgADDP/B95SPC1hsXe1TZAiarYEHM6+PIE6RjQbwYHnJ94OgLKk9FjU5gvok9fy6
+         QIwADUVSuuPjT1wEEb4gsHml8jB6RbmyYgUfwnL9OrHz4a9+HJYdyjgKb3IjuQUv7Vvs
+         2phi7zJ6/mVd9A07K8cKIX7wxmGDS2qmyrA2PADcwjsAd8n/dhb272EY8iAF8PLn+Q/1
+         IFoM1sgkqqJ8hKl/VGULjpWMhiIP0CMI13Qx7hHyD4uFXSujembXIszhZ07htlmXxhuW
+         pqzQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tJm5g1z+;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OI3zbugd;
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com. [2a00:1450:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id v11si431593wrq.4.2020.04.05.16.15.57
+Return-Path: <jbwyatt4@gmail.com>
+Received: from mail-pf1-x436.google.com (mail-pf1-x436.google.com. [2607:f8b0:4864:20::436])
+        by gmr-mx.google.com with ESMTPS id f8si991221pjw.3.2020.04.04.15.39.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 05 Apr 2020 16:15:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) client-ip=2a00:1450:4864:20::42d;
+        Sat, 04 Apr 2020 15:39:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) client-ip=2607:f8b0:4864:20::436;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tJm5g1z+;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OI3zbugd;
+       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::436 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42d.google.com with SMTP id s8so13111478wrt.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Apr 2020 16:15:57 -0700 (PDT)
+Received: by mail-pf1-x436.google.com with SMTP id c20so5556854pfi.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 04 Apr 2020 15:39:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=message-id:subject:from:to:date:in-reply-to:references:user-agent
          :mime-version:content-transfer-encoding;
-        bh=7GjJCOpnxvPXzRNqKmXTINBsyp1hDI+sdnXUNUgw15E=;
-        b=tJm5g1z+tu+BYQPqvomyXOdZDiO0HLvA76rZkmExtSBuH99X/pJhyOVHu00iUpDNb4
-         M5EiXr23LT4H/kwxz+4BBG27v/gVWaMIt21XU251V/LbVS+yysZi6oG8u5/KCxbTHhaE
-         VG7ib+5Ih8P65TEyJVL9K9FrexnczTCWqD6Ibjf+x3/8D+1Vw48frT003SSKjFbF53Eo
-         9oEcvT9EoaspJtOXuf0lq+HDVncRpaUOcOhC9vUN1D9wR6SBP9WmaYEh5uL9Mzvt0N4y
-         t8duiPoeCsCzSeLtBm/Wpm2Iw+YqWZQ1bHGMJRZifeUxz9+re2ufIZIHykRhrXJbbtkt
-         KlFw==
+        bh=UvbFK3wfRAPguRK4RSKCOBqhbfBDCakMzWWu1HZkigg=;
+        b=OI3zbugdNGK8EojVYaZ5TXtpSgAXmnz9hCX+C37DgYycZQGu1PuETcHyfFYXDGth3B
+         7B5vhzUfjkk/116E9T5d8cErT688HTg2UKkign3YvBylUu7n1kWfrltSsdAA9Quz6Dyd
+         C2A3k5+SdKwYFAgKWVUrAAkI+YQIgH6N5VRYzkJI8dNmjW0KFSorDUvs7hkcPKLkks/H
+         aZeS8QK+pMzkxQOPeBSvuMz5JdJ8CiLelV43Hmv7tuPLkR4rj/tlaO/V7wsCY0biBo0v
+         QhQB7TVFKf3EEkQ4Sz2Eqv6d3RrwvpOWP+PwqawAB9gqEk2xM5bNnz79yMK9et/TXn+7
+         GMsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
          :references:user-agent:mime-version:content-transfer-encoding;
-        bh=7GjJCOpnxvPXzRNqKmXTINBsyp1hDI+sdnXUNUgw15E=;
-        b=d+exz6auqpa8HzQMMd34RTmCTMj8J0TvDS4x/RQLT51asx6W7Fgqmv0OJ31nuJjmzJ
-         ayXGu/gEho8BVNhZPBwX97wgn9hGkzWEcWua1KhqtTQ3J37pN2mn3soy1Yhpw0+TTAVc
-         AYQ2wsUiWt/Xdb2vO69x1OwOAZpyzj2HdeOm1UNuJn9IQbo0aIcAs8wIAgy8ay7ONabg
-         8O5/gdjqowJ4+06lmanjuBrEOGd1G63L4venc+WGSyWQQNpZ2eqKYXJyAvyTgmP6d+1K
-         C5lvP/Xw0nP3PNYuIcjpp/BRLZTXe2v3UzzM7x/vsLnxOIKWz21UYcYyxl6UnsM4rwwu
-         wpLw==
-X-Gm-Message-State: AGi0PuZvCESbP6OPU73W4rsBqctOB9a6nlDmEvMv3fTBNm3oHDzEDaSa
-	rlEAVmmpkWbFTHDzTShEqU1nGy0LCFM=
-X-Received: by 2002:adf:e288:: with SMTP id v8mr18752369wri.141.1586128557567;
-        Sun, 05 Apr 2020 16:15:57 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from debian ([197.34.214.63])
-        by smtp.gmail.com with ESMTPSA id r3sm23919662wrm.35.2020.04.05.16.15.56
+        bh=UvbFK3wfRAPguRK4RSKCOBqhbfBDCakMzWWu1HZkigg=;
+        b=IQvogCOGfuzCl2DRQuQy3hxn8fdp1ezkU9msDTiAl4wub4tKNAh+A2QrELPuku+2Zr
+         6YyhhzVjfv1/lgJWUQAPLuqIsj+esPbuTp6v+BM7oCIHPPgRU09Gr3hz8nDFTCmVFmN8
+         Qj5kD3u0UtSYWQsyNSHOdEYSw4hC+6D3Lc/P+oBz4aqGRY3VOizH3UkxQ5vc4s0f4Ot8
+         tB8Sz1OIJBP1GojqdjWA8UhBS2sjQWw01nrQypppAqsxf0Si61dY4r+WZGXPKRIqP0zD
+         AQOhnhSx9Vlsk3vYCNQblJ5TRy44Ac75HnEPzXq0fy7+cFSppIXWWjhEKk11BFjRMmRv
+         TmBg==
+X-Gm-Message-State: AGi0PuZ0lj3qRvmTNDHvlTo4fkdBD5mjVYVDtKS+Yvg4MWjlKbLqV+u8
+	+mMMNn4ITyfG5qVlLH7SzjgUzD/Mvd8=
+X-Received: by 2002:a63:6482:: with SMTP id y124mr15137994pgb.239.1586039950727;
+        Sat, 04 Apr 2020 15:39:10 -0700 (PDT)
+Return-Path: <jbwyatt4@gmail.com>
+Received: from ManjaroKDE ([47.144.161.84])
+        by smtp.gmail.com with ESMTPSA id q80sm8443237pfc.17.2020.04.04.15.39.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 05 Apr 2020 16:15:57 -0700 (PDT)
-Message-ID: <9c10e8c19d4df6ee5a4b04e21829a7010f218ff9.camel@gmail.com>
+        Sat, 04 Apr 2020 15:39:10 -0700 (PDT)
+Message-ID: <f5f8cd8590fd75e4514b91ced8078127df0bc9bd.camel@gmail.com>
 Subject: Re: [Outreachy kernel] Outreachy reminder - final application
  deadline
-From: Sam Muhammed <jane.pnx9@gmail.com>
+From: John Wyatt <jbwyatt4@gmail.com>
 To: Vaishali Thakkar <vthakkar@vaishalithakkar.in>, Outreachy
 	 <outreachy-kernel@googlegroups.com>
-Date: Sun, 05 Apr 2020 19:15:55 -0400
+Date: Sat, 04 Apr 2020 15:39:04 -0700
 In-Reply-To: <CAK-LDb+6_rhwHUWRKL5FkiHZqRRz7vhMRJVsiP=r+sL5i1OG_g@mail.gmail.com>
 References: 
 	<CAK-LDb+6_rhwHUWRKL5FkiHZqRRz7vhMRJVsiP=r+sL5i1OG_g@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.30.5-1.1 
+User-Agent: Evolution 3.36.1 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 
@@ -101,20 +101,27 @@ On Thu, 2020-04-02 at 14:45 +0530, Vaishali Thakkar wrote:
 > day of a deadline. You can always add more contributions until the
 > deadline. Don't forget to add links to your patches while recording
 > contributions on the website.
+
+Hi Vaishali,
+
+This is my first time as an Outreachy intern.
+
+The website says I have created a final application for one of the
+Linux projects.
+
+Just to be sure: do I have to click a 'submit' button somewhere, or
+when the deadline hits my application will be sent to the mentors?
+
 > 
-> If you have any query, feel free to contact me and project mentors. We
+> If you have any query, feel free to contact me and project mentors.
+> We
 > wish you all the best for your applications.
 > 
 > Have a nice day!
 > 
-
-Hi!
-Are we allowed to send patches to the linux kernel after April 7, 2020?
-
 > 
 > Helen Koike and Vaishali Thakkar
 > Outreachy Linux Kernel Co-coordinator
 > 
-
 
 
