@@ -1,376 +1,91 @@
 X-GM-THRID: 6810510356795883520
-X-Received: by 2002:ac2:50ce:: with SMTP id h14mr8864121lfm.76.1586028753844;
-        Sat, 04 Apr 2020 12:32:33 -0700 (PDT)
+X-Received: by 2002:a7b:c002:: with SMTP id c2mr13374128wmb.123.1586004904373;
+        Sat, 04 Apr 2020 05:55:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:8e69:: with SMTP id t9ls1719216ljk.4.gmail; Sat, 04 Apr
- 2020 12:32:32 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLFUc2lbto+6hv6yiAjrRTe0Rh7NvNLS/SQWrj7tH9pXSNdqwJhgSLad1ONJR6Xdvys9s6n
-X-Received: by 2002:a2e:a362:: with SMTP id i2mr8081999ljn.52.1586028752098;
-        Sat, 04 Apr 2020 12:32:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586028752; cv=none;
+Received: by 2002:a5d:6302:: with SMTP id i2ls2576023wru.4.gmail; Sat, 04 Apr
+ 2020 05:55:03 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI0C6FKk9KZiugckgZ5w8V1eFw/7NrmJrFTEjqgl5D5c/I5La7OPRROjeW839R1FNZn8RM0
+X-Received: by 2002:adf:ed42:: with SMTP id u2mr15067016wro.175.1586004902977;
+        Sat, 04 Apr 2020 05:55:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586004902; cv=none;
         d=google.com; s=arc-20160816;
-        b=WR/ANzITc9BspQO4UutzOsize5fJYhawx0UmKQXZgSlboj47RCkXCI+ILK+lGXaxgE
-         4IGj0Fk8HeOZQrjhKwC3nAbHMxxvZH0vTzUSGMaeWUySE8phk1kxmKO3aMRmjqqcJISA
-         z2+lq2ZRumuH71G86an/UVAmX73PKfQPZAtm/QEjDGhrC2XM/wCg3OvBVakZobA6uc/Z
-         SDARZW06KqjpQsv/0Y3Rcbm6g3BOH8ia73W85ov+VbqsU/hCBwJu4jfvh8stZpUzKrzd
-         SjDr5Ebz5PSSYKqWxqRE0Epibx6853AMH9u271AqqMgnGCNV4sz5hnGJNvpNjxpApXKk
-         3JQA==
+        b=EmJjaldCKhDUa7iTSIgRUCQ1084e/O7rjRJvDR5xdZTyTztaLZD98dML8aczb6ICbQ
+         fB/ucamWzpblURjUeZvD+8D2GGb78baUd3/LPfBNXn0bZLgZshgPGbRiqet1KmeYZOxu
+         86/Swrovxeef529biO5mSdzrHgMx7GnLxsYhS7637+prDjogx1EXLlxE4kGVqBfSJ7+N
+         gyRgIOku8H4k942KkeIjUdtMnoQnDwaSdQD87WSJzqRqPxFd5c0f8LajUz6NNoJZzeY2
+         rufrL7nMtV62LdgueJFYJrm5BbCMYdWRUM+qi95CF1etYt1blizmINL4rVU7CeQJVfoY
+         EhDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=kBhwuHxM58agM6qFRT0L6iYATRzK4JLE7myNN/8YPdQ=;
-        b=siTQRXFIWprV48DUcozf32fZOipmp3rEq2x6OdcC/0qi/OeBs2lO1OukqfOcxw2FdH
-         iZri0WvIuColwetW3Kbh20ZuihmV1pwtCbHYBsZVlEmKyujGAVTBzn+Bc4PUygfkyj+5
-         mxaawS10xOQy162P8L61crB5ExsiaiUuwHsqXIemnCH1s3TBL7GFZh8Vaz5cxnd9UxN1
-         djbgtNIQgGA0MFiFx+n/0BDrBraFSbTuEzyoJNvWhcVNXX2YQCwoilY7xX0n141ROKyH
-         /WyLnUleCH0ClAkHNdziRpBA30sSoto5tpYdsLgQDDlRLjS5KMbjQTdIJ0jb/iM1gmMm
-         elBg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=7tiB+M+6MnfM39ReqpQEgMQYIcAkzNwTMDpPm0fcPSo=;
+        b=NHUTDC4UJllcSChkXbz5QzssagjpN0TJBWQXWw6G+kiKJapCLFvlTfas4E+yo+GYs0
+         fEzPRTT9PVJa6BsaZibYWo4wGJ9dphKwpYK1nMIY+5M1Ss7FJvfxJ9gWZWwZ6PSvrtH6
+         itQ2fYSPvY0xXLCAsAPARzAJ62ohf0LYWFMhf5+qpge/iGS/X1y0uj1z3VIcEPQnKPMm
+         UTC0FLzC4pDRDTKZeNPcsCOObAA1BN5GwxzjgTwE1NuEweXUgCZRO/SYhRcPazgRQKiP
+         NtHO1817Hy4eneP/vvkziCrd/Oi9CPo6vfBB3MA28HVh9xGcGIqRvJ1mC4at5dk9GNSW
+         aq0Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RgnOyv7w;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jane.pnx9@gmail.com>
-Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com. [2a00:1450:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id s22si686852ljp.0.2020.04.04.12.32.32
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y83si512520wmb.1.2020.04.04.05.55.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 04 Apr 2020 12:32:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) client-ip=2a00:1450:4864:20::441;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 04 Apr 2020 05:55:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RgnOyv7w;
-       spf=pass (google.com: domain of jane.pnx9@gmail.com designates 2a00:1450:4864:20::441 as permitted sender) smtp.mailfrom=jane.pnx9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x441.google.com with SMTP id v5so1694554wrp.12
-        for <outreachy-kernel@googlegroups.com>; Sat, 04 Apr 2020 12:32:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=kBhwuHxM58agM6qFRT0L6iYATRzK4JLE7myNN/8YPdQ=;
-        b=RgnOyv7wmVGF6P5s/nPd8qzXQetskAPlhJxwazshFXGKujWPtT+aNkjlq9oYlzzwUV
-         wI+/vImPWwCNGpym55/7IeOMvECk444qMw3LLj6Soc4ICPc7NqXu65xnLXLVy22ICuYt
-         JRKukg0s0RND4c5NPMOTjGXNCtr4CrTFqELro183PXXowiLdgKAy8AK71Nn9gWt6a/2P
-         l2+594GjRtaeRyBrHqOI+EmG/rK5Lz4MSyjL3sRnEJrVH3Hz46D3Ny9dXZ9/5eLF6QpS
-         fW/EzHv31aw62RISii7ihZ6Qhi6n3ufV//RQEw8v6vRO7biOyajpMKGUDlsoMU11msaR
-         gU9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=kBhwuHxM58agM6qFRT0L6iYATRzK4JLE7myNN/8YPdQ=;
-        b=ud3VMbbKJdc5rkAHOq/nrjr9d64FquKdSHj4NMEA78bfedov5tx+s6stjOaBexuOJ9
-         1fel7T76+UppIydqm8QRxBZ/mm0RquqldjH7Nh+/IbcQt5x//iFicYqdlMIez0izUFyg
-         eS/hrxhrrCFu9pZBbupslE0qQ2CGCK1t/+JDI+Xaht3DTHPlrCsIVWP6A+pwOU7cvfz0
-         FQl+9kfQcjM+94oyeeShbtTz/v7nmdOTZEDeFeKcTc22qStP+9iKWQZ9lZMoIzii9leD
-         YoECKz8SKl7N8kGsTNBnzMytpVn9fqPIoFunuRvp44VodqGswsM4HWjyCwFmFGaAZ/SL
-         2kag==
-X-Gm-Message-State: AGi0PublEgXXjPdKw8gB3h4GMksX019jAHwWPAEc88cngna8Fg3M1Vss
-	RzLQGxA4yCCWGMfhDNQLfykei5lOHnU=
-X-Received: by 2002:adf:b1c1:: with SMTP id r1mr14588098wra.337.1586028751422;
-        Sat, 04 Apr 2020 12:32:31 -0700 (PDT)
-Return-Path: <jane.pnx9@gmail.com>
-Received: from debian ([197.34.214.63])
-        by smtp.gmail.com with ESMTPSA id d28sm6202735wrb.31.2020.04.04.12.32.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Apr 2020 12:32:30 -0700 (PDT)
-Message-ID: <c08ea89dc21822df8d9af45f2d8b891ac6c29c78.camel@gmail.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.72,343,1580770800"; 
+   d="scan'208";a="443808710"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Apr 2020 14:55:02 +0200
+Date: Sat, 4 Apr 2020 14:55:02 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Sam Muhammed <jane.pnx9@gmail.com>
+cc: Stefano Brivio <sbrivio@redhat.com>, 
+    Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+    Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] Staging: media: omap4iss: Use
  BIT() macro
-From: Sam Muhammed <jane.pnx9@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho
- Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>,  outreachy-kernel@googlegroups.com
-Date: Sat, 04 Apr 2020 15:32:23 -0400
-In-Reply-To: <20200404141125.3b04dd96@elisabeth>
-References: <20200331225817.14834-1-jane.pnx9@gmail.com>
-	 <20200401045531.5de93729@elisabeth>
-	 <bace205763db970618b1d1541133826a874b1e21.camel@gmail.com>
-	 <20200404141125.3b04dd96@elisabeth>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.30.5-1.1 
+In-Reply-To: <bace205763db970618b1d1541133826a874b1e21.camel@gmail.com>
+Message-ID: <alpine.DEB.2.21.2004041451060.2354@hadrien>
+References: <20200331225817.14834-1-jane.pnx9@gmail.com>  <20200401045531.5de93729@elisabeth> <bace205763db970618b1d1541133826a874b1e21.camel@gmail.com>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
-On Sat, 2020-04-04 at 14:11 +0200, Stefano Brivio wrote:
-> Hi Sam,
-> 
-> On Sat, 04 Apr 2020 01:33:09 -0400
-> Sam Muhammed <jane.pnx9@gmail.com> wrote:
-> 
-> > On Wed, 2020-04-01 at 04:55 +0200, Stefano Brivio wrote:
-> > > On Tue, 31 Mar 2020 18:58:17 -0400
-> > > Sam Muhammed <jane.pnx9@gmail.com> wrote:
+> > >  #define CSI2_SYSCONFIG_MSTANDBY_MODE_MASK		(3 << 12)
+> > >  #define CSI2_SYSCONFIG_MSTANDBY_MODE_FORCE		(0 << 12)
+> > > -#define CSI2_SYSCONFIG_MSTANDBY_MODE_NO			(1 << 12)
+> > > +#define CSI2_SYSCONFIG_MSTANDBY_MODE_NO			BIT(12)
+> > >  #define CSI2_SYSCONFIG_MSTANDBY_MODE_SMART		(2 << 12)
 > >
-> > [...]
-> >
-> > > > diff --git a/drivers/staging/media/omap4iss/iss_regs.h b/drivers/staging/media/omap4iss/iss_regs.h
-> > > > index 09a7375c89ac..85c6fefeb13a 100644
-> > > > --- a/drivers/staging/media/omap4iss/iss_regs.h
-> > > > +++ b/drivers/staging/media/omap4iss/iss_regs.h
-> > > > @@ -93,10 +93,10 @@
-> > > >  #define CSI2_SYSCONFIG					0x10
-> > > >  #define CSI2_SYSCONFIG_MSTANDBY_MODE_MASK		(3 << 12)
-> > > >  #define CSI2_SYSCONFIG_MSTANDBY_MODE_FORCE		(0 << 12)
-> > > > -#define CSI2_SYSCONFIG_MSTANDBY_MODE_NO			(1 << 12)
-> > > > +#define CSI2_SYSCONFIG_MSTANDBY_MODE_NO			BIT(12)
-> > > >  #define CSI2_SYSCONFIG_MSTANDBY_MODE_SMART		(2 << 12)  
-> > >   
-> > 
-> > Hi Stefano,
-> > honestly i'am confused about how is there a difference between BIT(x)
-> > and (1 << x)
-> > 
-> >  So i'am just going to interpret this hunk as i understand it and
-> > please correct me.
-> > 
-> > #define CSI2_SYSCONFIG_MSTANDBY_MODE_MASK		(3 << 12)
-> > 	shift binary 3 by 12: "write 3 starting at bit 12"
-> > 		0011 ---- ---- ----		
-> >
-> > #define CSI2_SYSCONFIG_MSTANDBY_MODE_FORCE		(0 << 12)
-> > 	"write 0 at bit 12"
-> > 		0000 ---- ---- ----
-> > 
-> > #define CSI2_SYSCONFIG_MSTANDBY_MODE_NO			(1 << 12)
-> > 	"shift binary 1 by 12": "write 1 at bit 12"
-> > 		0001 ---- ---- ----
-> > #define CSI2_SYSCONFIG_MSTANDBY_MODE_NO			BIT(12)
-> > 	"shift binary 1 by 12": _isn't this what BIT() does?_
-> > 		0001 ---- ---- ----
-> 
-> This is the key perhaps: it is what BIT() does. And it's not what you
-> should be... thinking of doing. Even though the result is clearly the
-> same.
-> 
-> BIT() is used to set a single bit. You need to write *some* bits, here.
-> That "some" is 2: you can write 0, 1, 2, 3, to this region. It's not 1.
-> 
-> Now, if you _write_ 1, you need to _set_ one bit, so coincidentally
-> BIT() works too.
-> 
-> Suppose you have a tray to make ice cubes. You use one, and put the
-> whole thing back in the freezer. Before you do that, it is your duty
-> towards the society to fill it completely with water.
-> 
-> After you use one ice cube, it might look like this:
-> 
->   1    2    3    4
->  .----.----.----.----.
->  |xxxx|xxxx|xxxx|xxxx|
->  |----|----|----|----|
->  |xxxx|xxxx|    |xxxx|
->  '----'----'----'----'
->   5    6    7    8
-> 
-> so we have two ways to express what you have to do:
-> 
->   a. fill hole number 7
->   b. refill the whole thing
-> 
-> a. will do the job just like b., but b. is how you would most naturally
-> describe the operation. Especially because sometimes you take two ice
-> cubes, sometimes three.
-> 
-> > now i dont understand what you meant by "That doesn't make bit 12 any
-> > special", does that assume that iam wrong with what BIT() is defined
-> > for? 
-> 
-> Yes, in some sense. BIT() is used to operate on a single bit: the
-> difference is between:
-> 
->   a. set bit 12
->   b. write a number to bit region from 12 to 13
-> 
-> if the number from b. is 1, then a. is equivalent.
-> 
-> But right above and below this #define you have defines for 0 << 12,
-> 2 << 12, 3 << 12. And 1 << 12 is not a special case.
-> 
-> > #define CSI2_SYSCONFIG_MSTANDBY_MODE_SMART		(2 << 12)
-> > 	"shift binary 2 by 12": write 2 at bit 12
-> > 		0010 ---- ---- ----
-> >  
-> > +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-> > 
-> > for your previous explanation: _quoting_ :
-> > 
-> > 1. #define ISS_CTRL                                        0x80
-> >         "we have a register at 0x80"
-> >         https://en.wikipedia.org/wiki/Hardware_register
-> > 
-> > 2. how big is it? Datasheet tells you, but before you even look for it:
-> >    #define ISS_CTRL_CLK_DIV_MASK                          (3 << 4)
-> >         "at least 7 bits"
-> > 
-> >    #define ISS_CLKCTRL                                     0x84
-> >    #define ISS_CLKCTRL_VPORT2_CLK                          BIT(30)
-> >         "probably they are all the same size, might be 32 bits"
-> > 
-> > 3. picture it:
-> >         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_ b2 _|_ b1 _|_ b0 _|
-> >    (might be bigger, not too important)
-> > 
-> > 4. #define ISS_CTRL_INPUT_SEL_MASK                      (3 << 2)
-> >         "these bits define the input selection [whatever it is]":
-> > 
-> >         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_ b2 _|_ b1 _|_ b0 _|
-> >                                        ^^     ^^  | << shift by 2
-> >                                        2^1 + 2^0 = 3
-> >                                                    ^----(3 << 2)
-> > 
-> > 
-> > 5. #define ISS_CTRL_INPUT_SEL_CSI2A                     (0 << 2)
-> >         "to select input CSI2A [whatever it is]", we need:
-> >         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_  0 _|_  0 _|_ b1 _|_ b0 _|
-> >                                        ^^     ^^  | << shift by 2
-> >                                         0  +  0   = 0
-> >                                                     ^----(0 << 2)
-> > 
-> > 
-> >    #define ISS_CTRL_INPUT_SEL_CSI2B                     (1 << 2)
-> >         "to select input CSI2B [whatever it is]", we need:
-> >         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_  0 _|_  1 _|_ b1 _|_ b0 _|
-> >                                        ^^     ^^  | << shift by 2
-> >                                         0  + 2^0  = 1
-> >                                                     ^----(1 << 2)
-> > 
-> > 
-> > Now, that's how the current #defines work. I think they are
-> > actually intuitive (you could use the GENMASK() macro, but I think
-> > the difference is not that big).
-> > 
-> > With your change:
-> > 
-> > 5. #define ISS_CTRL_INPUT_SEL_CSI2A                     (0 << 2)
-> >         "to select input CSI2A [whatever it is]", we need:
-> >         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_  0 _|_  0 _|_ b1 _|_ b0 _|
-> >                                        ^^     ^^  | << shift by 2
-> >                                         0  +  0  =  0
-> >                                                     ^----(0 << 2)
-> > 
-> > 
-> >    #define ISS_CTRL_INPUT_SEL_CSI2B                     BIT(2)
-> >         "to select input CSI2B [whatever it is]", we need:
-> >         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_  1 _|_ b1 _|_ b0 _|
-> >                                                ^
-> >                                                ' this bit set.
-> >                 What, why? How is this related with the rest?
-> > ++++
-> > now right at this point i got an overlapped definition of BIT()
-> > this expansion/explanation of BIT(2) in my mind got translated to:
-> > 
-> >      SetBit(register,bit) => (register|=(1<<bit))
-> > NOT
-> >      shift binary 1 by 2
-> > ++++
-> 
-> Yes, it's also about this. But from your example above:
->       SetBit(register,bit) => (register|=(1<<bit))
-> 
-> you need to distinguish when you're operating on a bit *array* or a
-> generic group of bit regions. That is, it's:
->       SetBit(register,bit) => (register|=(n<<bit))
-> 
-> where 'n' happens to be 1, sometimes. It's not always '1' by design.
-> 
-> Let's take a driver operating a lamp that has three LEDs inside: it
-> might work like this:
-> 
-> #define CTRL_REGISTER	0x5	/* a generic 8-bit register */
-> #define RED_ON		BIT(0)
-> #define GREEN_ON	BIT(1)
-> #define BLUE_ON		BIT(2)
-> 
-> those are single bits, and consistently so, so using BIT() is fine.
-> 
-> Now, the lamp can be on, off, blink slow or fast. In the same register,
-> you have 2 bits (starting from bit 4) controlling that: 0 means "off", 1
-> means "blink slow", 2 means "blink fast", 3 means "on":
-> 
-> #define MODE_OFF	(0 << 4)
-> #define MODE_SLOW	(1 << 4)
-> #define MODE_FAST	(2 << 4)
-> #define MODE_ON		(3 << 4)
-> 
-> this is a natural way of describing things. Suppose you do, instead:
-> 
-> #define MODE_OFF	(0 << 4)
-> #define MODE_SLOW	BIT(4)
-> #define MODE_FAST	(2 << 4)
-> #define MODE_ON		(3 << 4)
-> 
+>
+> Hi Stefano,
+> honestly i'am confused about how is there a difference between BIT(x)
+> and (1 << x)
 
-I guess that is a great example:
-So if the operations are on a single bit being toggled on, BIT() is
-welcome to be used.
+In the original code you have a bunch of things shifted to the left by 12
+bits.  3 0 1 and 2.  They all look the same, and one can think about a
+little region of bits some of which can be on and some of which can be off.
+If you put BIT(12) in one case you don't see that.
 
-But when the operations involve a region of bits being toggled on/off i
-should stick to the typical way of bit manipulation even if there
-happens to be an operation that requires only one bit to be set.
+For example, if you had
 
-++++
-My thoughts were: _quoting your example_
- #define RED_ON		BIT(0)
- #define GREEN_ON	BIT(1) => 0001			
-		
- #define BLUE_ON	BIT(2) => 0010
-			  This does set bit 2, but affected the rest
-"so it was a _lame_ way of saying that there is a region of bits being
-manipulated though only one of them is set" :D
+1 + 100
+2 + 100
+3 + 100
+104
+5 + 100
 
-++++
-so when it came to:
-    #define ISS_CTRL_INPUT_SEL_CSI2B                     (1 << 2)
-         "to select input CSI2B [whatever it is]", we need:
-         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ 0 _|_ 1 _|_ b1 _|_ b0 _|
-                                        ^^     ^^  | << shift by 2
-                                         0  + 2^0  = 1
-                                                     ^----(1 << 2)
-*my brain*                        --> yes, makes sense
+How easy is it to check that you have a sequence of 5 numbers?  It's really
+easy to add a single digit integer to 100, but probably you had to think
+just a little extra bit when you came to 104, because it's not following
+the same pattern.
 
-    #define ISS_CTRL_INPUT_SEL_CSI2B                     BIT(2)
-         "to select input CSI2B [whatever it is]", we need:
-         |_ b7 _|_ b6 _|_ b5 _|_ b4 _|_ b3 _|_ 1 _|_ b1 _|_ b0 _|
-                                               ^
-                                               ' this bit set.
-                 What, why? How is this related with the rest?
-
-"my brain"		         --> why b3 is not 0 now?
-
-		shouldn't BIT(2) == 1*2^2 == 4 == 0100 ??
-				So i saw it like:
-			lets mask b2 to be set regardless of the rest
-			so if b3 was set, it will still be set next to 			setting b2.
-			so the meaning of BIT(2) got twisted up.
-
-That why i got lost between these two:
-      SetBit(register,bit) => (register|=(1<<bit))
-AND
-      shift binary 1 by 2
-
-I guess that was a twisted thought?? but now i can say it like _after
-going through this conversation_, that:
-
-we are operating on a region of n bits starting from bit x, don't act
-like we're operating on a single bit by choosing BIT(y) over (1 << y).
-++++
-
-> the compiler won't judge you, but I will. Why is the "slow" mode
-> special? This makes the "slow" mode look like it's a binary option, but
-> it's not.
-> 
-> > Basically i forgot about this patch and i'am more into clearing this
-> > confusion because i'am definitely missing something thats very basic
-> > and probably have a wrong understanding of something.
-> 
-> Thanks for sticking with this, I appreciate that you're trying to
-> figure out what I'm saying. Is it a bit clearer now?
-> 
-
-Thank You,
-I guess i got it right this time? have i??
-
-Sam
-
+julia
 
