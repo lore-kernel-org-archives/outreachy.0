@@ -1,126 +1,100 @@
-X-GM-THRID: 6949308630417014784
-X-Received: by 2002:ab0:20a3:: with SMTP id y3mr847795ual.49.1618012001487;
-        Fri, 09 Apr 2021 16:46:41 -0700 (PDT)
+X-GM-THRID: 6812284492301991936
+X-Received: by 2002:a1c:b144:: with SMTP id a65mr19792239wmf.54.1586108583928;
+        Sun, 05 Apr 2020 10:43:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:6f05:: with SMTP id r5ls1061703uah.9.gmail; Fri, 09 Apr
- 2021 16:46:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2Gykj+1JvDKi31Pa1vZfOFcfPmKVfLS1g1BXit4GGUI1v7cOFwm/FPo8LozaCn8aalxSh
-X-Received: by 2002:ab0:458e:: with SMTP id u14mr5594010uau.40.1618012000661;
-        Fri, 09 Apr 2021 16:46:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618012000; cv=none;
+Received: by 2002:a1c:4e07:: with SMTP id g7ls4530374wmh.0.canary-gmail; Sun,
+ 05 Apr 2020 10:43:02 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLVxDcEtv7qVg1IqVkU8/dFuvnx2WvhEkgM4hrmZ492/64XrxK0l+i5SCMUTnCD3SdufVqX
+X-Received: by 2002:a7b:c7c7:: with SMTP id z7mr19151264wmk.142.1586108582890;
+        Sun, 05 Apr 2020 10:43:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586108582; cv=none;
         d=google.com; s=arc-20160816;
-        b=nk3txN0jidm2M6p/PvThLozzlg5QBlE0HmZrKq38pjXoaHD6oYQWiVf4tbUnHx3FHo
-         wYxbGCLSGMHmDj7N9tYwxhIanXihG2ZDj3FhYZDKFbOO8FAZpELvqACjiAFI3TdUMrx0
-         DdvOZNBv4qJDosvWcQ1kj5t/jxrHsBp/QfrKCNyoD8fM2nCiGujZsNwcQi3eqU8N3Sdp
-         PHZsIxfbGBljLwcxL17w/4rwUZ1MIUMwCumMZYCxV8oCNtostLR/AN1LWEjaCoBCf/og
-         +/L+CPJp36RJm8nc62/VdAWyH28PuOd2YwuP3YoOP5newYteZqiplwnFaOk1JZWL7rDr
-         2qZA==
+        b=MmxzUGYHgApCeNwAN4LLJw7unGV7VkRHXwmz8YVl/TzVcsJ0AWD5V+oSAWRaXxuYZu
+         lEBIzbu6Z4T2EZVcfHu8eRljIYgVHu+YM6QXQlIrHfaPOBl0Kmj+u5ePREEq+jXDWjnL
+         nX6QwYAnomdAmgb32KyGSgYvEfGc43sVekjWJBXZn8DvATaEeS5SYHeqCDsy+tqz9oe+
+         LtTNqPhA8tyXjtuuuf46TNSRSCXQx7cb+XZslxiDbWUYaCvGpnRsvKQvqJX3Y1uq0G6R
+         rOCrqITUEuo3XK4PUaEgelPZLcUNkrGi13mnhXv6Ky33DYH5nqFO4VjjoPaeRxSTi0Dj
+         0+DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=SVHlr9PFsAmGK4+X1iTgg6ZdMx+ehnrMFUWQE+qDW68=;
-        b=hJ/+e9DMw6vAfCghHe51xXYO0JRyzcPqYjAIlsGMXNkWR3NgmvR36Nko8NN2VjqUAE
-         YB154jjkf14ZbT4WGfZqkwhGJ36kHJFO4habMjQKq0AYbvoW7kXdyfkE2znYmH0QunqB
-         SWIHf/3yraiGFpw/9D8ETMBrH37JhuSMHFGfR4EUdT8AkNdSiFEFRwMlGIqVwfNtE4C/
-         GwC/Cr4qJ9au0iNqo/TyiA0ntet3+sMjNcHEn78FjK8aYmaFqBmsQRGkhrTSDAY0bTTq
-         PrIjq5MBRSDiOfZ4u0YkvRHlf9XzpUi03QGy0RCoXd9vMn4EQnZ1WpbLpqXSVMJep8Ql
-         e0ag==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=HumUKykeK/hIiYezVULrUdg0IaUSDx3EJQyBjlDsDkk=;
+        b=xQhh0PDhL3lbxTh1lhNOZ+vZNKy88W5zdVr/Jlitc8nHcTGGoezkHz0O/WW4RNCJ8F
+         5mbj6b2oxqlSOviMMqbNKpoCHjAul8o1QQA2DsD4+nfxX62skD4SBa4mudTgfFAp01u3
+         KagoKU6Wuut4/546NHdDaqfjzMU62QM8fLxTV8kQnNSiTIzR4UCZ5OwndvkX1Ce9hI6o
+         MBBb6/2UzLxY9rfKox6DcubLxtVnINYdb1hEsx5/QHFGlYCn5+MQM4l1rCycntMAuOOK
+         pQbZh1GGJqSjswIS2Ml5ZrDwUU9hO0NIYJeyqsLVKG7E5/2oI93NAv+vo68mXgn4pim5
+         exJQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eqpKB3Kj;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com. [2607:f8b0:4864:20::102b])
-        by gmr-mx.google.com with ESMTPS id r8si399974uat.1.2021.04.09.16.46.40
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Apr 2021 16:46:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) client-ip=2607:f8b0:4864:20::102b;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id y15si209816wrh.1.2020.04.05.10.43.02
+        for <outreachy-kernel@googlegroups.com>;
+        Sun, 05 Apr 2020 10:43:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eqpKB3Kj;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x102b.google.com with SMTP id b8-20020a17090a5508b029014d0fbe9b64so5722117pji.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 16:46:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=SVHlr9PFsAmGK4+X1iTgg6ZdMx+ehnrMFUWQE+qDW68=;
-        b=eqpKB3KjqIKg8bCrXpgqDgvGD6OtrVps761SKfnm3LqgzUVpBis2S1dNnDiQG1WXjs
-         QSsSf787BjZNH+sHBNG4u7GHcflzhqNLZiEiBAnC0wUUUW0WcBBoivNP2M1AwrEi0qXr
-         n9/dIHILE0SSUHkvbu3x0JHoqTj3oF8N01sT3b+Iy/ZEzG9lD0TS0qhENJ8wvhZeiKmx
-         LEpDhiNsBOSPt9qPYSvSCXbIdHsYEg/NpS5OOBDCeKqLc1im4n31ykjY000SrW6sZR8+
-         l2wTkiguiny2s/zc+5Ttub+CVSe9Mko8CQYLR7fZRKX3sCm6cZfJ0J2fHSdbgdHGnGIS
-         +7UA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=SVHlr9PFsAmGK4+X1iTgg6ZdMx+ehnrMFUWQE+qDW68=;
-        b=qFDriYObUH9xXmVr/6giCbsMRo9EjgClex3ylL4DOM3JrTw5OxOhJJ2fT2gYei2K6J
-         7n9BbH9YKjfS3dbgKE+eCNTgofNM+R5BfmFE8zEIYu4d16nLhAY6UxQ7FvAZdOJSfD+G
-         fQblJLzsXdxurgHi8qdXJxH8Cnmg+OHz4L2+as8Zf6M/gbVP2mzomru+UYUPZAc+D1K/
-         6n8DoZVIHASQwogvfkYIwa+YCYZQHz4hLy026pjZu8Za4+1EgF8jMFjL9J5iNtKy+nHu
-         9ySZHoGuRXLEWanMLGF4I+VCw4iVXRFk/B0ScO5M6wQCKBGjtv48rTLGgaRpff/0Ey69
-         yDCA==
-X-Gm-Message-State: AOAM5305LMkQNCuvfqFYOENsd1sZlscrYMV2kFNZUTspue9G2bvoD2Pi
-	wzwRpoyQAwwVyDETyNtQlEQ=
-X-Received: by 2002:a17:90a:516:: with SMTP id h22mr15503466pjh.222.1618012000197;
-        Fri, 09 Apr 2021 16:46:40 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id w191sm3570429pfd.25.2021.04.09.16.46.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Apr 2021 16:46:39 -0700 (PDT)
-Date: Sat, 10 Apr 2021 05:16:34 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH] staging: rtl8192e: replace comparison to NULL by bool
-Message-ID: <YHDnWpWztxeZospi@kali>
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 18266 invoked from network); 5 Apr 2020 17:43:01 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.249.220.21)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 5 Apr 2020 17:43:01 -0000
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: R Veera Kumar <vkor@vkten.in>,
+	wlanfae <wlanfae@realtek.com>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH] staging: rtl8192e: rtl8192e: Correct misspelt variable name
+Date: Sun,  5 Apr 2020 23:12:47 +0530
+Message-Id: <20200405174247.7868-1-vkor@vkten.in>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Fixed Comparison to NULL can be written as '!...' by replacing it with
-simpler form i.e boolean expression. This makes code more readable alternative.
-Reported by checkpatch.
+Correct misspelt variable name.
+Misspelling found using checkpatch.pl.
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
 ---
- drivers/staging/rtl8192e/rtl819x_TSProc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8192e/rtl8192e/rtl_dm.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-index 65eac33aaa5b..476875125e87 100644
---- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
-@@ -269,12 +269,12 @@ static void MakeTSEntry(struct ts_common_info *pTsCommonInfo, u8 *Addr,
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
+index 20e494186c9e..43494a2b6f05 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_dm.c
+@@ -2444,7 +2444,7 @@ static void _rtl92e_dm_init_dynamic_tx_power(struct net_device *dev)
+ static void _rtl92e_dm_dynamic_tx_power(struct net_device *dev)
  {
- 	u8	count;
+ 	struct r8192_priv *priv = rtllib_priv(dev);
+-	unsigned int txhipower_threshhold = 0;
++	unsigned int txhipower_threshold = 0;
+ 	unsigned int txlowpower_threshold = 0;
  
--	if (pTsCommonInfo == NULL)
-+	if (!pTsCommonInfo)
- 		return;
- 
- 	memcpy(pTsCommonInfo->Addr, Addr, 6);
- 
--	if (pTSPEC != NULL)
-+	if (pTSPEC)
- 		memcpy((u8 *)(&(pTsCommonInfo->TSpec)), (u8 *)pTSPEC,
- 		       sizeof(union tspec_body));
- 
-@@ -328,7 +328,7 @@ bool GetTs(struct rtllib_device *ieee, struct ts_common_info **ppTS,
+ 	if (priv->rtllib->bdynamic_txpower_enable != true) {
+@@ -2454,10 +2454,10 @@ static void _rtl92e_dm_dynamic_tx_power(struct net_device *dev)
+ 	}
+ 	if ((priv->rtllib->pHTInfo->IOTPeer == HT_IOT_PEER_ATHEROS) &&
+ 	    (priv->rtllib->mode == IEEE_G)) {
+-		txhipower_threshhold = TX_POWER_ATHEROAP_THRESH_HIGH;
++		txhipower_threshold = TX_POWER_ATHEROAP_THRESH_HIGH;
+ 		txlowpower_threshold = TX_POWER_ATHEROAP_THRESH_LOW;
+ 	} else {
+-		txhipower_threshhold = TX_POWER_NEAR_FIELD_THRESH_HIGH;
++		txhipower_threshold = TX_POWER_NEAR_FIELD_THRESH_HIGH;
+ 		txlowpower_threshold = TX_POWER_NEAR_FIELD_THRESH_LOW;
  	}
  
- 	*ppTS = SearchAdmitTRStream(ieee, Addr, UP, TxRxSelect);
--	if (*ppTS != NULL)
-+	if (ppTS)
- 		return true;
+@@ -2465,7 +2465,7 @@ static void _rtl92e_dm_dynamic_tx_power(struct net_device *dev)
+ 		 priv->undecorated_smoothed_pwdb);
  
- 	if (!bAddNewTs) {
+ 	if (priv->rtllib->state == RTLLIB_LINKED) {
+-		if (priv->undecorated_smoothed_pwdb >= txhipower_threshhold) {
++		if (priv->undecorated_smoothed_pwdb >= txhipower_threshold) {
+ 			priv->bDynamicTxHighPower = true;
+ 			priv->bDynamicTxLowPower = false;
+ 		} else {
 -- 
-2.30.2
+2.20.1
 
 
