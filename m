@@ -1,51 +1,83 @@
-X-GM-THRID: 6528652482510323712
-X-Received: by 10.129.242.3 with SMTP id i3mr3820780ywm.19.1520070359089;
-        Sat, 03 Mar 2018 01:45:59 -0800 (PST)
+X-GM-THRID: 6812465234894127104
+X-Received: by 2002:ac2:4191:: with SMTP id z17mr13410975lfh.73.1586187750255;
+        Mon, 06 Apr 2020 08:42:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.115.193 with SMTP id o184ls648887ywc.33.gmail; Sat, 03 Mar
- 2018 01:45:57 -0800 (PST)
-X-Received: by 10.129.81.129 with SMTP id f123mr3699001ywb.166.1520070357842;
-        Sat, 03 Mar 2018 01:45:57 -0800 (PST)
-Received: by 10.129.98.8 with SMTP id w8msywb;
-        Sat, 3 Mar 2018 01:23:00 -0800 (PST)
-X-Google-Smtp-Source: AG47ELsT8egrefcJ8+jrB94I535qKfbILjjRiPg4E/0IkSXbFuRZk9xq6nTe+eNSW+jdtBtt/14cyqhdpA==
-X-Received: by 10.31.149.199 with SMTP id x190mr875657vkd.11.1520068979521;
-        Sat, 03 Mar 2018 01:22:59 -0800 (PST)
-X-Google-Web-Client: true
-Date: Sat, 3 Mar 2018 01:22:59 -0800 (PST)
-From: Amisha Rawat <amisharawat2103@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <410a9069-6240-44df-9b7f-d57dad8f17de@googlegroups.com>
-Subject: Confused!!
+Received: by 2002:ac2:5456:: with SMTP id d22ls391923lfn.6.gmail; Mon, 06 Apr
+ 2020 08:42:28 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKHjJuga8Oswkr9IJVpkr8po6b7GZFPbg6ysWSxCFLc8nkwnxL6Z0d112cWuw7QX+xHyJFD
+X-Received: by 2002:ac2:4143:: with SMTP id c3mr6966013lfi.131.1586187748916;
+        Mon, 06 Apr 2020 08:42:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586187748; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CJ4KVAxxFasywCcWWnpslpuObLqQaiMaMScB3ghVqLchwngp+PNLUSKWT9lvtVgUeH
+         iCTfkGlig4T+o6pSqBqfa2ABRahf4g14BAfvbahSFpTMKbZ4kIqv58T70muc9qD5nNlG
+         kI2RYrjUckZ4mz2461CSpsqWPw0xYgLBwhj8twUPOGIFmsnweAPZTcRqERIYNru3osBn
+         JXYVFKWbSpF0BWA42lfXTYjQ9FQW3r78kh5eZrVZQYGDl54eGBkMS5U4qGn1BXvne4zY
+         uaSLcs+52hgJOF6RsLKAXK/v0frcm1P3Qhjry/MUJX3pSOsLfEOqEBhTIvoETsKRq0l/
+         9gVw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=3K8gMiM36SipYWEdlD64ct9CixQlJ38O0AGLqASDY28=;
+        b=0TCPm9VHf1m2A36jxpRqfkqfURjpy/gU5bSKq4FgVOOQn0STZ1FTT9dSkyP1+kM7mo
+         DBAid3JJBfBWH15B8ewGQxVAECQtHmWOxVAmWMpPFbKFSW/KxLWplWymBt5+7VKvw/tQ
+         X6tBbsafLoTeEh8fe+X5IZD+n4PwoJnxmApZTdYabgvCqOJl8YqP/xeA3QqGmlTNLqVe
+         bEFQRmnzAIQc8x5Cz550q3nkJbo3Uiz/EAscc9Ed47eta8LV2kY0r+KJxeUm49kg6ar8
+         E3fRSYX2oBUAVVNUlKzujv39GspVn5s/e6T1sYM++rqXY2NdFd9gXnk2xPKp7hVKFZLZ
+         ojPQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id h8si2457lfm.5.2020.04.06.08.42.28
+        for <outreachy-kernel@googlegroups.com>;
+        Mon, 06 Apr 2020 08:42:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 889 invoked from network); 6 Apr 2020 15:42:25 -0000
+Received: from unknown (HELO localhost) (vkor@vkten.in@117.219.218.209)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 6 Apr 2020 15:42:25 -0000
+From: R Veera Kumar <vkor@vkten.in>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: R Veera Kumar <vkor@vkten.in>,
+	Hans de Goede <hdegoede@redhat.com>,
+	Larry Finger <Larry.Finger@lwfinger.net>,
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: [PATCH v2 3/3] staging: rtl8723bs: hal: Correct misspelled symbolic name
+Date: Mon,  6 Apr 2020 21:11:26 +0530
+Message-Id: <b893adc31b71722df63d0756f0d360e27f896e51.1586187304.git.vkor@vkten.in>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1586187304.git.vkor@vkten.in>
+References: <cover.1586187304.git.vkor@vkten.in>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_10209_1900042192.1520068979288"
-X-Google-Token: EPPS6dQFfg1HKUaz9Sk0
-X-Google-IP: 2405:204:3185:c0eb:4f3:542a:4001:b0d4
+Content-Transfer-Encoding: 8bit
 
-------=_Part_10209_1900042192.1520068979288
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_10210_593275654.1520068979288"
+Correct misspelled symbolic name.
+Misspelling found using checkpatch.pl.
 
-------=_Part_10210_593275654.1520068979288
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Signed-off-by: R Veera Kumar <vkor@vkten.in>
+---
+ drivers/staging/rtl8723bs/hal/odm_RegDefine11N.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Hi 
-I am very much interested to study linux kernel . I am versed with C and 
-python .How should i begin  when i am unable to understand linux kernel 
-basic newbies tutorial?
+diff --git a/drivers/staging/rtl8723bs/hal/odm_RegDefine11N.h b/drivers/staging/rtl8723bs/hal/odm_RegDefine11N.h
+index f2c0707aad4c..1c6c08000e27 100644
+--- a/drivers/staging/rtl8723bs/hal/odm_RegDefine11N.h
++++ b/drivers/staging/rtl8723bs/hal/odm_RegDefine11N.h
+@@ -31,8 +31,8 @@
+ #define	ODM_REG_TX_ANT_CTRL_11N			0x80C
+ #define	ODM_REG_BB_PWR_SAV5_11N		0x818
+ #define	ODM_REG_CCK_RPT_FORMAT_11N		0x824
+-#define	ODM_REG_RX_DEFUALT_A_11N		0x858
+-#define	ODM_REG_RX_DEFUALT_B_11N		0x85A
++#define	ODM_REG_RX_DEFAULT_A_11N		0x858
++#define	ODM_REG_RX_DEFAULT_B_11N		0x85A
+ #define	ODM_REG_BB_PWR_SAV3_11N		0x85C
+ #define	ODM_REG_ANTSEL_CTRL_11N			0x860
+ #define	ODM_REG_RX_ANT_CTRL_11N			0x864
+-- 
+2.20.1
 
-Regards
-
-------=_Part_10210_593275654.1520068979288
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi <br>I am very much interested to study linux kernel . I=
- am versed with C and python .How should i begin=C2=A0 when i am unable to =
-understand linux kernel basic newbies tutorial?<br><br>Regards<br></div>
-------=_Part_10210_593275654.1520068979288--
-
-------=_Part_10209_1900042192.1520068979288--
 
