@@ -1,107 +1,114 @@
-X-GM-THRID: 6751036778892754944
-X-Received: by 2002:a05:6638:1f1:: with SMTP id t17mr10047177jaq.130.1571848238785;
-        Wed, 23 Oct 2019 09:30:38 -0700 (PDT)
+X-GM-THRID: 6811652718511259648
+X-Received: by 2002:a5d:6441:: with SMTP id d1mr24963531wrw.301.1586168157811;
+        Mon, 06 Apr 2020 03:15:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:7f45:: with SMTP id m5ls451302ioq.14.gmail; Wed, 23 Oct
- 2019 09:30:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVaBn5tC1E2Jumt7H9VfRCuGC6C2qvrt0rDeFQlmJDj9ku+i44rjmu3/0Nwg18K9hrhDbr
-X-Received: by 2002:a5d:93c7:: with SMTP id j7mr4342174ioo.167.1571848237622;
-        Wed, 23 Oct 2019 09:30:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571848237; cv=none;
+Received: by 2002:a05:600c:4101:: with SMTP id j1ls3013270wmi.2.canary-gmail;
+ Mon, 06 Apr 2020 03:15:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJVihAwhws8epDbR5RnrJKXZ3/P87yxImtpzr6yk3X2inXfZ9+gp79IsdkjyZQ+HaTLunw0
+X-Received: by 2002:a7b:c343:: with SMTP id l3mr22674503wmj.38.1586168156339;
+        Mon, 06 Apr 2020 03:15:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586168156; cv=none;
         d=google.com; s=arc-20160816;
-        b=X/lJ+fnLgOyaN/KJziHK+famzLU7YenALH+EvsXe++4lKJ1f39OF54Oyn9DjIzfxXn
-         k/sLCSdeFbiqPpI76cb01hgVTltdWPGi9I8OTnW/GrnnRzRr9jw8aLTGLjpTisMUuEEv
-         LQmvUkVWta9oFwSq7tcgMVbaOjRybiCzVyedHDqlFY2jnT8B16gI7/fLxh0Ikh+Y+7ar
-         PfFnOAUZOemhlgAwQUYEWpjVKOv1ZDDqvJCJnfIj9QD8QPJGYaQ/Bgct1Yusj/hw8TbV
-         sbRwXP+RcqoQBxiWR6a/ayNDEdG/DZkOXrXTcNeT4hUrUbRjTvqVuiHl1MhSHfvilB/7
-         5xkw==
+        b=ygJQyWKa6buaKpc+FCDToZnSeIflXKp/lTnqzAm2Xfje+M+qmnqIl9IbQ0lKUnBwH1
+         m32eJ+ABhTwHdZ49QuZWce5Md95HwUO9iLiQ/E1XrdVYRtdXnstOKg8dUFikC67K2ckq
+         CQUyM1psXMpkjAC1doDpifsLzVdTYwmo2s1CWjVF7lwptwd4IhUZLKZkNpoaIVlGC0L4
+         4vfGHqNGJtp7GalczBRJdLiuR3tkgWNZSB/9WrAobqzd0633ohxy/YoMD+StcPi14DI3
+         IC82gX09h4A/x0EDYkjTP4LlRWHGS5+Ku0vb4DXDSjn4OgdFkDa0gV8ELGtR3roG8L1S
+         izGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=NYgftd2K8E8go6dCNMYIgx6K/W9Ge4PxegoF3wHYU3E=;
-        b=a0vya+TWPa2VSAkOaVRsILn3FKtNN/89L+R50YqQlMp8q0mSbCJTi9kafWP0SPjGif
-         IHhIVk+ihuaJQv8ZigSKI2hdJLK+Hpw4quZ8NfCIM9/0a7Hd0C7vCE9ELkfbM52g4tF5
-         qUAmfnXI1Gyjlnr72ZtnVE3xF7uLFumnMANvWTwoEg96QTY6FsdNeUvyPQ775cPwc11A
-         aOzO7wsqcU9NciEJphxghW29wHZWLIqgrMnLmeA/jVrQupcm3kojVMj7yzzXhOrVMpzg
-         BpAx8QkAh/L2UwOrsT/i8ORgp9FK0+CcNTJyIjpPcDf1fjUH3FAbzxT4KMjdrYLEal60
-         2NNg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=LHCts7qKkym8J74bg6cu1dOATt9lkl7FM9/Bg+uYjm8=;
+        b=lGFCA83/ltnc/uHNrhxYNX/YTjnidCBdKA0hfHutN60B1RXRYGvJUp/M4wdioQqrOo
+         CT9GRIX0O+AERgoSlcjBicPJLBpJvg7CyAErJXYdmv0OzLCWquSymtpwytFM4hiHehYH
+         MoLj5qbU9/cYX6BVL79u4Z2i0kN9h1F6Wdq4qz6VSkwzScEsh6eCOJZEyfHDGK73wD8V
+         ycf1xB/K8nmRy5vM6ZW8vGUJf3v58C/jmo0eFDEVAjn/TzgKPLMT0obbIDD9fDbdJcI0
+         jPWHGn28dHhUC10MhlCrWEWqhpYQDzXRglCyKUhNTOuOW6AcWm7Vsw7Py50Yyu5rLnLY
+         6HAw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dCy1E55h;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qk1-x741.google.com (mail-qk1-x741.google.com. [2607:f8b0:4864:20::741])
-        by gmr-mx.google.com with ESMTPS id s5si912973iol.1.2019.10.23.09.30.37
+       spf=pass (google.com: domain of jhovold@gmail.com designates 209.85.167.66 as permitted sender) smtp.mailfrom=jhovold@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <jhovold@gmail.com>
+Received: from mail-lf1-f66.google.com (mail-lf1-f66.google.com. [209.85.167.66])
+        by gmr-mx.google.com with ESMTPS id i18si1324100wml.1.2020.04.06.03.15.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2019 09:30:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) client-ip=2607:f8b0:4864:20::741;
+        Mon, 06 Apr 2020 03:15:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jhovold@gmail.com designates 209.85.167.66 as permitted sender) client-ip=209.85.167.66;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dCy1E55h;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::741 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x741.google.com with SMTP id y81so16438320qkb.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 09:30:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=NYgftd2K8E8go6dCNMYIgx6K/W9Ge4PxegoF3wHYU3E=;
-        b=dCy1E55hDsAjxQkiX5GhMpmqTL9uI76H1e5PNjFchBvecUy2B+e1tODI0wXOMWN1sn
-         0MCyWyrDehNtD9FvKAe6ROFsAo9oRz3xtsCeQBFrbu69fkuYDCE9gLLYwMj+TC+zT0By
-         AIV784ejMABZAch9RDozoOmtn54UBvrQsmyfJMpfM8JWfgePgY6lQ1uxe43iHTZW8hq6
-         FpNllPsdx2qsAz8l8YVIB1sGiJ+QiPVDMMjAMoOYWrUyV59KDXNyc3nnwXeORn8FP45w
-         xaQloBDs7mplIsGlL6bSSDbjxJHGlnonUW/0S6Q472CUqR4zMzxhAC+pob2XJrG24iLk
-         /foQ==
+       spf=pass (google.com: domain of jhovold@gmail.com designates 209.85.167.66 as permitted sender) smtp.mailfrom=jhovold@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: by mail-lf1-f66.google.com with SMTP id s13so11312586lfb.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 03:15:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=NYgftd2K8E8go6dCNMYIgx6K/W9Ge4PxegoF3wHYU3E=;
-        b=sMMx3QHXNpjprTbiOQESIpUppblGMN4jEONN/qt1Vv2ff/pcO3aOW5hiADqykRvK/1
-         tvLEG3czYARj5+7UsYD6ZeJbNT6wbQgkEcVrj3/EWgkwVjev6bSiPzOh2TrapJc/u5ps
-         bXgOvBz9RXxMFlNlE0w+SqjrgOSvv2c/8WyJwKZu6uXOx6u1CO8T35wYkxGvI+a7I3Mw
-         rncyxRTY1LQMSBjBolyDct893wxF4BX0GaFyx+XVC5PR5cOMYyTdSN01woJpCddj5j1c
-         SpKznMF4UQzXuTEx98Lkj05GddkKwSXHNl40Q+7TDgU0yJuZ3vH3GKg9/tIpyUd6/9JR
-         a/jQ==
-X-Gm-Message-State: APjAAAV0SS4KfxR1QO3dVFQkblUMTWeajx1c3CAGltRM61HEeeujbZvs
-	rZ3uf4r+7cllt6y+z9eOgN6fM9E8VeM=
-X-Received: by 2002:a37:7b44:: with SMTP id w65mr9301660qkc.409.1571848236668;
-        Wed, 23 Oct 2019 09:30:36 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain ([201.53.210.37])
-        by smtp.gmail.com with ESMTPSA id t13sm8349067qtn.18.2019.10.23.09.30.33
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=LHCts7qKkym8J74bg6cu1dOATt9lkl7FM9/Bg+uYjm8=;
+        b=HSMQ9S8t9c1+pm8tZ3QdGDh71Ufq2fctJ2KLF2yeyJn/io9kIr1D8VUvXXJlVdSM08
+         MlokOk4GinAMLxy/qXgCHEe4rJs5pfJKnzELdht8bE1r7T0KXTdv/08s7xadcRXcxGsD
+         SYEkm1NBkw5iYjb5HOnb7XX/QRzP84KoRkkokYUOsEzXWXkbyRCp7EkB+msrlkzilJnO
+         SLTG6wnjnK2yeV8H87HLRzu9V1Y9Ab65AkfoR2WCKKi6b4mLEUOLJBPYgICYNoDlTQjq
+         zktVsKcYUvppnlu9kfcWHeRMLy0pDFfDoLbnd6Q2TNgHjvL2SLJyxrAVpOFgXXJwSpiT
+         Kv0A==
+X-Gm-Message-State: AGi0Pub1b1+qpswBUvT2Oh+2RMYtpGyc9sLR9bo6jBHFuB/JgovWfV1f
+	S+qxGAXBWuX6+PGd3KCUAZA=
+X-Received: by 2002:ac2:46e7:: with SMTP id q7mr3653079lfo.95.1586168155813;
+        Mon, 06 Apr 2020 03:15:55 -0700 (PDT)
+Return-Path: <jhovold@gmail.com>
+Received: from xi.terra (c-12aae455.07-184-6d6c6d4.bbcust.telenor.se. [85.228.170.18])
+        by smtp.gmail.com with ESMTPSA id y20sm9814070ljy.100.2020.04.06.03.15.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2019 09:30:36 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	linux-fbdev@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH v3 0/2] staging: sm750fb: format description of parameters to the kernel-doc format
-Date: Wed, 23 Oct 2019 13:30:12 -0300
-Message-Id: <20191023163016.30217-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        Mon, 06 Apr 2020 03:15:54 -0700 (PDT)
+Received: from johan by xi.terra with local (Exim 4.92.3)
+	(envelope-from <johan@kernel.org>)
+	id 1jLOnF-0001Cg-K8; Mon, 06 Apr 2020 12:15:49 +0200
+Date: Mon, 6 Apr 2020 12:15:49 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Gokce Kuler <gokcekuler@gmail.com>, outreachy-kernel@googlegroups.com,
+	elder@kernel.org, johan@kernel.org, mgreer@animalcreek.com,
+	vaibhav.sr@gmail.com
+Subject: Re: [PATCH] staging: greybus: quoted string split across lines
+Message-ID: <20200406101549.GA16292@localhost>
+References: <20200404005122.GA6315@siyah2>
+ <20200405071517.GA1547921@kroah.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200405071517.GA1547921@kroah.com>
 
-Cluster comments that describes parameters of functions and create one
-single comment before the function in kernel doc format.
+On Sun, Apr 05, 2020 at 09:15:17AM +0200, Greg Kroah-Hartman wrote:
+> On Sat, Apr 04, 2020 at 03:51:22AM +0300, Gokce Kuler wrote:
+> > Quoted string merge to upper line.
+> > 
+> > Signed-off-by: Gokce Kuler <gokcekuler@gmail.com>
+> > ---
+> >  drivers/staging/greybus/audio_manager_sysfs.c | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/greybus/audio_manager_sysfs.c b/drivers/staging/greybus/audio_manager_sysfs.c
+> > index ab882cc..d7216e9 100644
+> > --- a/drivers/staging/greybus/audio_manager_sysfs.c
+> > +++ b/drivers/staging/greybus/audio_manager_sysfs.c
+> > @@ -18,8 +18,7 @@ static ssize_t manager_sysfs_add_store(struct kobject *kobj,
+> >  	struct gb_audio_manager_module_descriptor desc = { {0} };
+> >  
+> >  	int num = sscanf(buf,
+> > -			"name=%" GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF "s "
+> > -			"vid=%d pid=%d intf_id=%d i/p devices=0x%X o/p devices=0x%X",
+> > +			"name=%" GB_AUDIO_MANAGER_MODULE_NAME_LEN_SSCANF "s vid=%d pid=%d intf_id=%d i/p devices=0x%X o/p devices=0x%X",
+> 
+> No, try breaking this line by putting the "s " on the next line, so
+> there is only quoted string there.
 
-Gabriela Bittencourt (2):
-  staging: sm750fb: format description of parameters in accel.c
-  staging: sm750fb: format description of parameters in accel.h
+Not sure that would improve things; I'd say that "s " really does belong on the
+same line as the "name=%" and field width define.
 
- drivers/staging/sm750fb/sm750_accel.c | 72 +++++++++++++++----------
- drivers/staging/sm750fb/sm750_accel.h | 75 ++++++++++++++++-----------
- 2 files changed, 90 insertions(+), 57 deletions(-)
+As Stefano pointed out, splitting a string like this isn't really an issue with
+sscanf either.
 
--- 
-2.20.1
+I suggest we just leave this one as is.
 
+Johan
 
