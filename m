@@ -1,113 +1,191 @@
-X-GM-THRID: 6751409971660849152
-X-Received: by 2002:a81:1d4:: with SMTP id 203mr7400061ywb.173.1571935129211;
-        Thu, 24 Oct 2019 09:38:49 -0700 (PDT)
+X-GM-THRID: 6809167002234519552
+X-Received: by 2002:a1f:45d8:: with SMTP id s207mr14467433vka.33.1586179186307;
+        Mon, 06 Apr 2020 06:19:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:cf05:: with SMTP id f5ls1028150ybg.5.gmail; Thu, 24 Oct
- 2019 09:38:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxoU3QSXB8cXSxVrOdnP36jktchsYdB6l4sODHfilR6o/OHq9jhGVokv772GDbOAD9W2b0R
-X-Received: by 2002:a25:5d4:: with SMTP id 203mr11515969ybf.181.1571935127663;
-        Thu, 24 Oct 2019 09:38:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571935127; cv=none;
+Received: by 2002:a1f:24c2:: with SMTP id k185ls949518vkk.1.gmail; Mon, 06 Apr
+ 2020 06:19:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLlleoJwHawIx7oVApZum/YZjIpt43RKTNe8qb9rtQYJJz/bjJqd7rGE4PriuOBpj68Gxgh
+X-Received: by 2002:a1f:9148:: with SMTP id t69mr14024612vkd.83.1586179185086;
+        Mon, 06 Apr 2020 06:19:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586179185; cv=none;
         d=google.com; s=arc-20160816;
-        b=wBUpoUcSJscewDJTin0X8dD/Kf0YR1COaWOZa3jWHlqvqClaLj9wpTrEsh7kCJUYlU
-         QZsntb2cAifpFYj9nUhHRkk+Wfk9VEriSTvqfSpW6Flsa/RjhIZRPK4BwN8P2mNBJFs8
-         EkEpnQeMTNdyEHf/udQKThniLDKGlOoYy6wowIo+AC4+wOrrAk/dEInBigW3QMPaQPE7
-         q04c5ohlgY06FatN5UfOR9k+d4xv4OLjh6gNdDt2zV70NgKPLitmo92B8mi7CvBD+OLm
-         W0vmxdavH+xS2g00kc+LK3Op24LHg0t1lKkEabbs4yueyflygyttoPrpzD0aTGO/i56q
-         VKvg==
+        b=Q4nPQ+/mw6mXgXQyJIUXOMmbTTSW44KGmX4NM8vL4I9euq0EsypOg/n/8vfLOi7WsT
+         CLrNC+SvAEcrZRIzu7rosIdZ3xVA3kA4q9DQbYmp86PMqf0QM1umgLCIsjNF1WA4DoWi
+         0DuN9FMsoXPIcoGCE8k1rrDUoYCJeGLfttqzjZPiygNCMTmNHkVYfVnz92Xgm5UoxdvP
+         eQYEBQvB24XcXzdLJyTpDERfIHDc7/jJZPruTkud8W5yhGfC0tmiekxBICn3xq0/3Ore
+         iZkxX9kMOa+FPJN8e6dQYZGkOBAHuG9ewW/NjIyXZnU7j0Y/gwJQelcq4M0Y6OwWmL/Q
+         gQ4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=l2yusJk1T2eAi0Mq1ot9gMKxrwCuHF+Xt6FpV+s1S4E=;
-        b=Z7gTu+jJ9+rBqNAE8h6R0nQlcFn67DnPPIeBrPVGaK68o76rU8pD2bAQS/B0jr/RQY
-         mDvf7I65gmBrMBq9ORlmQTNYgcvx5k5LHILXHp1FqUur2D0Udddh3LccouoTOGsrIliQ
-         MtRYQs5TazN0hKzzt/mlr8TFAySM/QKIC9pA9prNX9VrEfXJWnLzSvDnXC23DJpvU5J3
-         w3cN+vI+6MqBrWpaBI1/+KF9XRkF4IyN1xw15tF8EdV+89vJpRmgKq8YeojAte74DcRQ
-         ws6QScyNRFzEaoA2HhILgWXeU1BgieV12eC8OW+mJSNpPsaMiN/mVO2ix6NmNseWS4ay
-         Aq/A==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=fn9bHqv0i/7qZj6L+zxcl3YWo2yHDIiUOIifLzv7aHQ=;
+        b=xdSb++FICQOIYMnrT22mshFLa/GBdbixZh6lyXa9cwnshW24fsaj0vCceJvm3M52BU
+         VQLfO4uGK7FxEdZ712gNf0cgv2A9lzO0kMMNiIJ7iE8ch2455G36UCfVBT4NgrfbGAio
+         kO594RMINcRazqEno4TcGND284u7FIvNxjGbN46LbqFnqIrjvrhR4jxeFvd86fG6ArpR
+         phuatE9BoY2tSH3GABd5IKvCIsJkLSqUdslDRgJz8oa4bbejafq8ED0e57eDIPiXyKXt
+         f8ICUDXfAFi6vC+4QmF08GeDNybHeR1g/Vjzr0Qq96tWJq3sFwy6iugb/dFBndY/TQx6
+         CxMA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=adQ5Otol;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SvQoyXsq;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id a1si1412170ywh.3.2019.10.24.09.38.47
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id 205si1083384vkw.2.2020.04.06.06.19.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 24 Oct 2019 09:38:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) client-ip=2607:f8b0:4864:20::841;
+        Mon, 06 Apr 2020 06:19:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=adQ5Otol;
-       spf=pass (google.com: domain of gabrielabittencourt00@gmail.com designates 2607:f8b0:4864:20::841 as permitted sender) smtp.mailfrom=gabrielabittencourt00@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SvQoyXsq;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x841.google.com with SMTP id c17so35781259qtn.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 24 Oct 2019 09:38:47 -0700 (PDT)
+Received: by mail-pg1-x541.google.com with SMTP id k5so7556835pga.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 06:19:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=l2yusJk1T2eAi0Mq1ot9gMKxrwCuHF+Xt6FpV+s1S4E=;
-        b=adQ5Otolw+zTWgesd6OwBpQcFllS/xFs0LJdZLldoprFN9NEqkJSjKteCzmP/uH1mL
-         ZZwMZ8844zT4GyV8jjYBoHDKWXUrrnnbdUwdyy/+Gavs9Y8mAiO1jE4tNy+tIfchX5BA
-         mVZgWcQRSKvmJVIedrdoLUgQhXccIPBMQYV/A57ds6OSNCYfeNMkSGyuFj7fgqUDEQW/
-         m4//xCZIo9igPHVDuUVBP33XJK6C/B350WGqzj7Ki2KupN5cbWfCLZ1kp7ftYLY7+paX
-         o4dhuRaNHGqtyP6nGwGgwJQLIcWx6CNF4diBPAjJtvkRqRVOkeznmah7k/mhTsYgLjSi
-         U/JQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=fn9bHqv0i/7qZj6L+zxcl3YWo2yHDIiUOIifLzv7aHQ=;
+        b=SvQoyXsqnuKfPc0WG6biq07otWb11ds4tHt8+mBlQNnSDKKDDpKYyLYMcmpBTbJhNr
+         UHfz5N0/A+NDaZzkIJVk1dQ3IEuJzJ4+8mka96F6AB2Rybxpw4uaHm1ia7IVxz6kgCoI
+         FrrBHvgrWRExr85pk3ZUm5RBT35GGWoHlI0yuTlQx9d8x4ueHFehxRUZtBI17K5bqYgI
+         xE/nnQ7/8wd4E9THFSB7EidRfLfZWnLNAv4ijBbTNcRDnFWeGt+g8wOBk55P3ryXLJol
+         blRtnbja5DP2pUyBbU5mi+J58JwY5ohV4OXm/6gMWixZTBcdzUyB7pO9fi/t+u0EYtFy
+         ZCnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=l2yusJk1T2eAi0Mq1ot9gMKxrwCuHF+Xt6FpV+s1S4E=;
-        b=ftQMjBw7IaEbEKiQHJ7tjYxFc+cLWjZ5uRrb8g+9LvAeEUUJmBrMT6kaO5qbX+QgMh
-         xPc4WW8wktjXFz84ZddI+UHaWhu+jvCMZ3GRPjHvmCcI8jk+4CCMJNvPHzqvR0gyNu7v
-         LqMWSHECh92q4k5+NZkvG5Poi+Jgp3ClI/X8qzA6NdHDPjpZiCbZ5g6VsCd84COnLTvS
-         hRLSOtdYm1LkFGFDf3dMxcMOrCSoOauVpf9SFpCjn2FRXg2P8KyduTfM/aELHeRhTZMF
-         vpeZsScuTAdNfhAL+YpFf1K+uJKZvOxopEalNmXMHkGnvGxC2cJoP2RL5jTMCdM58HIK
-         3GMw==
-X-Gm-Message-State: APjAAAWSiPb+OnOAEX6cSF+vOJmSpBWE+LOt6SU+Zl2YEU4OWOpX8cng
-	VEpPq9Brrr/qN3SZ5jqdmPiFpPHHpok=
-X-Received: by 2002:aed:21c4:: with SMTP id m4mr3562060qtc.342.1571935126820;
-        Thu, 24 Oct 2019 09:38:46 -0700 (PDT)
-Return-Path: <gabrielabittencourt00@gmail.com>
-Received: from localhost.localdomain ([201.53.210.37])
-        by smtp.gmail.com with ESMTPSA id l15sm14660121qkj.16.2019.10.24.09.38.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Oct 2019 09:38:46 -0700 (PDT)
-From: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	linux-fbdev@vger.kernel.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	lkcamp@lists.libreplanetbr.org,
-	trivial@kernel.org
-Cc: Gabriela Bittencourt <gabrielabittencourt00@gmail.com>
-Subject: [PATCH 0/3] staging: sm750fb: align arguments with open parenthesis
-Date: Thu, 24 Oct 2019 13:38:19 -0300
-Message-Id: <20191024163822.7157-1-gabrielabittencourt00@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=fn9bHqv0i/7qZj6L+zxcl3YWo2yHDIiUOIifLzv7aHQ=;
+        b=qhuwoKumpQlFiGrBbqzW5hxnEPfdOLGZnZwqu4pm/Ot7a68jGtktKTG7HIb1irGqVS
+         gpXQfvlBw4nZJMj6t6m+MGJb+OnrDDlsUM8B6aea1BbMdagEpxADareriJx91gbOj+VJ
+         EhsPrFgY9pvDDQBENnYyIwIsoZ1ECieSD44Hz2lGA90J37+7gz3MEo2Nevhxl7QplS1u
+         QJUnsF0XtXrX/skOX9vVyubFpuot1c0e5Q2UNpEub/bPJIPMhUnPdYOdXglsz5GZ11Km
+         QiBlVqVbws3Pf93osTqVENHmypYMuEVFCXjSSv8/j1YPTaATb01SCgQIQ+J1iGKZhCoM
+         vJjQ==
+X-Gm-Message-State: AGi0Pub1wPsUKiouhEiRz/1cvfsO5z+/rsP4Wk+inEKRIT72bInYvIJ0
+	ThUIFfeI0o7DyD5IOL7zS8E=
+X-Received: by 2002:aa7:970a:: with SMTP id a10mr21125983pfg.139.1586179183807;
+        Mon, 06 Apr 2020 06:19:43 -0700 (PDT)
+Return-Path: <debsoumyajit100@gmail.com>
+Received: from ubuntu ([2409:4065:11f:6885:99b6:8ae:3f27:d6e4])
+        by smtp.gmail.com with ESMTPSA id f5sm11506382pfq.63.2020.04.06.06.19.40
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 06 Apr 2020 06:19:43 -0700 (PDT)
+Date: Mon, 6 Apr 2020 18:49:35 +0530
+From: Soumyajit Deb <debsoumyajit100@gmail.com>
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [Outreachy] [PATCH 0/3] staging: qlge:
+ Resolve various warnings issued by checkpatch.pl
+Message-ID: <20200406131933.GA59911@ubuntu>
+References: <20200328080254.6692-1-debsoumyajit100@gmail.com>
+ <20200401085810.GA19697@ubuntu>
+ <20200401225830.4660f152@elisabeth>
+ <20200402124309.GA9037@ubuntu>
+ <20200403014321.6fbf3291@elisabeth>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200403014321.6fbf3291@elisabeth>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Cleans up checks of "Alignment should match open parenthesis"
-in tree sm750fb
+On Fri, Apr 03, 2020 at 01:43:21AM +0200, Stefano Brivio wrote:
+> On Thu, 2 Apr 2020 18:13:12 +0530
+> Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+> 
+> > On Wed, Apr 01, 2020 at 10:58:30PM +0200, Stefano Brivio wrote:
+> > > Hi Soumyajit,
+> > > 
+> > > On Wed, 1 Apr 2020 14:28:12 +0530
+> > > Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
+> > >   
+> > > > On Sat, Mar 28, 2020 at 01:32:51PM +0530, Soumyajit Deb wrote:  
+> > > > > This patchset resolve coding style and indentation issues reported by
+> > > > > checkpatch.pl
+> > > > > This patchset add space around various binary operators, remove extra
+> > > > > unnecessary blank lines and properly indent a multiline comment for the
+> > > > > same file qlge_main.c present under drivers/staging/qlge directory.
+> > > > > 
+> > > > > Soumyajit Deb (3):
+> > > > >   staging: qlge: Add space around operators
+> > > > >   staging: qlge: Remove extra blank lines
+> > > > >   staging: qlge: Properly indent a multiline comment
+> > > > > 
+> > > > >  drivers/staging/qlge/qlge_main.c | 30 +++++++++++-------------------
+> > > > >  1 file changed, 11 insertions(+), 19 deletions(-)
+> > > > > 
+> > > > > -- 
+> > > > > 2.17.1    
+> > > > 
+> > > > I have submitted this patcset on 28 March but I haven't recieved any
+> > > > review on this.
+> > > > Is there anything wrong with this patchset?
+> > > > 
+> > > > Please let me know, so I can correct them and resend the patches if
+> > > > needed.  
+> > > 
+> > > I haven't reviewed this series because I'm confused. You later sent a
+> > > series:
+> > > 
+> > > Subject: [Outreachy kernel] [Outreachy] [PATCH 0/2] staging: qlge: Resolve  various warnings reported by checkpatch.pl
+> > > Date: Wed,  1 Apr 2020 12:21:18 +0530
+> > > Message-Id: <20200401065120.17459-1-debsoumyajit100@gmail.com>
+> > > 
+> > > ...how are those different? Which one should I review?
+> > > 
+> > > -- 
+> > > Stefano
+> > >  
+> > Hii Stefano,
+> > 
+> > Both patch series are different. The patch series which was sent on 28th March was for the file qlge_main.c
+> > in the qlge driver. While the patch series sent on 1st April is the
+> > patch series which was formed by clustering previous individual patches
+> > for the file qlge_mpi.c in the same qlge driver as suggested by you
+> > eariler.
+> >
+> > So, both the patch series are different and they effect different files
+> > in the same driver.
+> 
+> Okay, but in general, that's not a good reason to have separate
+> patchsets. The difference should be in the topic of the series.
+> 
+> At this point there are three "active" patchsets for qlge from you:
+> 
+> [PATCH 0/3] staging: qlge: Resolve  various warnings issued by checkpatch.pl
+> [PATCH] staging: qlge: Properly indent  the multiline comments
+> [PATCH 0/2] staging: qlge: Resolve  various warnings reported by checkpatch.pl
+> 
+> "issued" and "reported" are synonyms, which would seem to indicate
+> those are conceptually the same type of changes.
+> 
+> I think the second patchset (with one single patch) was then
+> incorporated into the third one, but the third one doesn't mention it
+> in the changelog, and you didn't explicitly say it should be discarded.
+> 
+> Mind that reviewers are people and, while we can use some
+> interpretation, things need to be sufficiently clear. Given the
+> subjects of the active series, I'm really lost. I could decide to
+> review first and third patchsets, but still I don't understand why they
+> are separated.
+> 
+> -- 
+> Stefano
 
-Gabriela Bittencourt (3):
-  staging: sm750fb: align arguments with open parenthesis in
-    ddk750_sii164.c
-  staging: sm750fb: align arguments with open parenthesis in file
-    sm750_accel.h
-  staging: sm750fb: align arguments with open parenthesis in file
-    sm750_cursor.h
+Hi Stefano,
 
- drivers/staging/sm750fb/ddk750_sii164.c |  2 +-
- drivers/staging/sm750fb/sm750_accel.h   |  6 +++---
- drivers/staging/sm750fb/sm750_cursor.h  | 17 +++++++----------
- 3 files changed, 11 insertions(+), 14 deletions(-)
+Right now, I am also having trouble keeping track of all the patches and
+recieving multiple feedbacks from different reviewers for the same set of patchsets is confusing
+me too. I guess this patchset has created confusion for everybody.
 
--- 
-2.20.1
+Please discard these patchsets.
 
+I will resend these patchsets in a more organised and sensible manner.
+
+Thank you
+--
+Soumyajit
+> 
 
