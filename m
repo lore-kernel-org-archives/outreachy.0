@@ -1,142 +1,328 @@
 X-GM-THRID: 6809913191851622400
-X-Received: by 2002:a5b:2d0:: with SMTP id h16mr11887351ybp.182.1586163806498;
-        Mon, 06 Apr 2020 02:03:26 -0700 (PDT)
+X-Received: by 2002:aca:eb4e:: with SMTP id j75mr12284373oih.18.1586163318682;
+        Mon, 06 Apr 2020 01:55:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:dcf:: with SMTP id 198ls5328024ybn.8.gmail; Mon, 06 Apr
- 2020 02:03:25 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK4kc4Eu0a0htUpk2TEfZLXQ7PqelYEGOmH5nkCoyHcUBKdfu5CGHS1mj43Y6Bo05x39I/p
-X-Received: by 2002:a25:c0c4:: with SMTP id c187mr36335338ybf.293.1586163805128;
-        Mon, 06 Apr 2020 02:03:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586163805; cv=none;
+Received: by 2002:aca:508d:: with SMTP id e135ls7374289oib.5.gmail; Mon, 06
+ Apr 2020 01:55:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIbnq64QtQmOpsRMz0pGVCvDpqrmFXvB6qX976gsF0+pW00Xwy8mw5JIXVXh2Z1OFeplk+n
+X-Received: by 2002:a05:6808:2c7:: with SMTP id a7mr12262274oid.149.1586163317455;
+        Mon, 06 Apr 2020 01:55:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586163317; cv=none;
         d=google.com; s=arc-20160816;
-        b=dcqOvvE6tvENQdaNZAEvg/TXm4TLsRsofjgCjFURr4rNmI54isKcM0NOxiH3ubD+nu
-         Q1AmrvK1hMjW+IXpMSVibsGT071lzzdyMEaqgI2qN+y0xC/NI2n/xCKBecn/MOL0D5QH
-         Lr2ZSDJwnc70psC4Sc3I7P4rf6d8Tssq6e0EcRFPb3WqkCk1pM5EfQMqZEBRWtY6hgub
-         J4PaFt5Y+K3yPPWlndNhmpfoA5UIA6MjdG3LUGd9nGODZSRJDO+maBeFO1u3f/QczwpL
-         AIM51JAQNeg5S597lxG/ffdyuS9ax636RyPno1nZjOKSnP5SuJAeSl99SH4Jdyb0jxCW
-         Ikcw==
+        b=VvoJ4/t3jj9PXYVpjS3UcMXkm3vDeTXuBj0PzvEkSR093FNP5yIMABqunL3DCq/zZd
+         zYE8o1dGBWGELj7QqyC5KokZ+eBp6SqEXo+W25Ei7Sb9EAcxVrb3eZXzqa2/cv42aqK/
+         CtTLdssvTev9ckA1sv7Zx5kCc/GyfsefK5R38J5rZEcHUEuGHpRRgNYKLeeCIO5M2I0x
+         S1jbdDKhesfZfSNW3wDGN3mTq0EU0uK03WVgDnj8mbdce70qbTCVfVAoqylE9FRb9liM
+         j0qjiER6Eo92GwYSp/TGSB9mci6qG+UrOovWY/98ETvJOhAcFHN10+qo9SQeKsXJNJx+
+         BQBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=O2vZSa4+LvWF8hCkLxV/GZo17iN/rNhWaN7UypB6U3o=;
-        b=GBDkTmVhiyRnL5b/3xp16EzU3rLSxWeDqAqKG1sMIdAayO2+mQz2NtAmxu4GfIXjaC
-         nPqEpd4jTcprrZDcaCPoc7ZtAkhMmaW/L6twOUtGgcVvgTvHJZTcfSHWI13WctOp9jbv
-         ODJ+Jggg8oi5NzT9uHTbuOaYZFUPa5tXGGnOaWz8L9bI4GN1FdlI1ZK0sdpuNoFSF62n
-         uUnRJPGGPoFMHSt4NCVjyKL/t7JXRb9osiy2E+TE51wb90tx6NXwFcSxFaF8eBLNwCre
-         XrgSYMd+bRUqretEPIsqm5Ea23MjFolg1rj1pPWbkDWapYJQU2f8kdYbYSpdzJbpbTKO
-         6Gow==
+        bh=do9c6eZkiez97MWpiBJ0uBxAZMzNWznwJJADXe6y5nA=;
+        b=N/rnnOKxThz1wx9sBI29PpsneUiG/OD3so/k7g4dx1PiRUA2ckXzWrgyLpEm5zeZYS
+         M9XcFHFZI6UbyNmJkBuClSe+m5loOhjgqnUDL+MzfCxZ/dGBIWKYjPvSr1eoRVKvnYck
+         aGjL6fOg3JYYprCavWvoFT6oXXOH1J6+/Ch/Yl5ihqUZY0ww/1R2xb0Ax0iPMWa90Rvo
+         mz4RxnN5yRsaHcvclb0ujN+/G0r8+PiFuHoSV+ADYR5HxM7ODfIf4jTC8t5gRkd80CWk
+         2S+pQeuS9xFd4ARhut8u+kmpfWpL2sWLynkKUy0tO1vW1bVJV8I03qimzL88q2yy+/do
+         U9+w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f1LgIdJ0;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sp2JPRCs;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id l141si1129379ybl.3.2020.04.06.02.03.25
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id d16si900124otp.0.2020.04.06.01.55.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 Apr 2020 02:03:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+        Mon, 06 Apr 2020 01:55:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f1LgIdJ0;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sp2JPRCs;
+       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1044.google.com with SMTP id kx8so6169757pjb.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 02:03:25 -0700 (PDT)
+Received: by mail-pg1-x542.google.com with SMTP id c5so1392150pgi.7
+        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 01:55:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=O2vZSa4+LvWF8hCkLxV/GZo17iN/rNhWaN7UypB6U3o=;
-        b=f1LgIdJ0fxfHIPZGHSqW8Xuxnl7gV2SqzLOG79tw+jD15yHvApIRZUOJikcIzoJzhB
-         mH0zr7z87yBUKFogBEBRy04MlKd1OKffymoc17MJVXFaLkcu1l335C6joFG4nQ3tgE5V
-         Q3I66tB+RMtb+RGRPmBzxI7EFvyp0tnhm8sMfYT8Qz+k6jKvmxN77Dq22Os51Ia2mRfN
-         NWSgpczpoP5GL4/QAK63872kCz+DypKqLqUILEFmxmshGk0ZZYKcOPXvvVCi843mB825
-         FoqrWF5/Ze+kF9JmoEaSRKd9Qi9VjmKyfm9nf8LafqdDsqaZ7KdEwRfW4xO5O3fycXCQ
-         xKow==
+        bh=do9c6eZkiez97MWpiBJ0uBxAZMzNWznwJJADXe6y5nA=;
+        b=Sp2JPRCsDUp4l0lGGegitLE7Q4HR0HrUFwrGklEGszef4jSBfS0hUsy4qEyQ517eel
+         cMdxg/6PEgfvUPFUB6zxbmDDZX8Fu3r/3p+1/N3b8nWgW28SpY7cboiDxtXZia0hCHq/
+         HMEAqRkMeLRaEUrvBXQULSzoVPGRUZhwnJnDwF01s1wX8pX9x+tWi+9Y8eArx/r4gtgz
+         +nvIR+xjmJyCDv0G6x8FsGnqL27Av6vhoKvuQZL1lnrYYymgpTnYEUzwgcQDE4hjhjp8
+         o6bNqnmZ0ENKV0jqTUHmqXmCnLxWw028qbc7Th+FbnO7RDJU2q/N5p9OCKkbb/m5j01W
+         rJYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=O2vZSa4+LvWF8hCkLxV/GZo17iN/rNhWaN7UypB6U3o=;
-        b=pu7WyKDB7Q/8wR5Y+w1VmfUCdcnRJtvEYnb7i0ZTMsdJZW0PwedFJkI84epCSU1r81
-         Nb7YuXTvD+L/Wa6Azjc5QkcDmdntRR2L1pZQD90KnAL8ddRXohued+oqfsoA9XBpdw94
-         AXnUdWFa8aiOELQdQ27q+WuJzQuAyw98uExn1wM2oxPIGliTLydN5nx8igbrcah1gw3h
-         zNHtOxGiJV1htCg8ml2krt/78J01TILH/l3aQ+Zz+XxZm4puj9EcIUeyWgeqF1swnSOc
-         eFG+zEeRhTl99IBZUEqLd3WBw5EtYY7QF02Y+2ODzfG+WMAO1gNw1ovyoVZXIOvaedPJ
-         zXIA==
-X-Gm-Message-State: AGi0PuaMXK4Yoey8ijStl+9YiozpRCY6rfZLLASv+ExfzU1glHrJ3JuT
-	i4XMywfKOA0L55MmbhrOpBP4Ec2JJI/WVA==
-X-Received: by 2002:a17:90a:c090:: with SMTP id o16mr11009830pjs.15.1586163804159;
-        Mon, 06 Apr 2020 02:03:24 -0700 (PDT)
+        bh=do9c6eZkiez97MWpiBJ0uBxAZMzNWznwJJADXe6y5nA=;
+        b=WtZOI+44avUqslvOp7kLXmgzJbE8nGhW3gyBOCxDlxF8zo6I9+qeZHolqK74i/tDzx
+         XCzosUWeQ/gfTu3AFKwXXQEA+xrS/8X8v03Vlcg0GHGBBuM6SNoHkYLLxTycSN+9pvxa
+         03blHoYOKvKHmwavFG2LX9E/jR56GTSeYnQsfrywqx2GEm+mTJJHmTRCsfDvCxGojh3t
+         Ds348Fh9m5ILDw1IOO3bHWKmOmTCzZgv9ETNrQIOfNr9y7zglBULL03CotbDaDDDI9AG
+         gv1O3cwKxux3r5r6w7gzMjcvDhvmrv2ZGW8Ed4qmu33ky84d1dpfl9gYEam3WoU4azpc
+         eUTQ==
+X-Gm-Message-State: AGi0PubiWpBCRjSTCYFAet3kxgDXolVvP2V8Yc/rLsVegIsw7ubWwgMa
+	CQ8QccBzOzmGyaj2fzemYu8=
+X-Received: by 2002:a63:54e:: with SMTP id 75mr18745294pgf.398.1586163316331;
+        Mon, 06 Apr 2020 01:55:16 -0700 (PDT)
 Return-Path: <debsoumyajit100@gmail.com>
 Received: from ubuntu ([2409:4065:11f:6885:99b6:8ae:3f27:d6e4])
-        by smtp.gmail.com with ESMTPSA id k4sm11415075pfh.0.2020.04.06.02.03.20
+        by smtp.gmail.com with ESMTPSA id i3sm10389900pgj.13.2020.04.06.01.55.13
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 02:03:23 -0700 (PDT)
-Date: Mon, 6 Apr 2020 14:33:15 +0530
+        Mon, 06 Apr 2020 01:55:15 -0700 (PDT)
+Date: Mon, 6 Apr 2020 14:25:08 +0530
 From: Soumyajit Deb <debsoumyajit100@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com, sbrivio@redhat.com,
-	julia.lawall@inria.fr
-Subject: Re: [Outreachy] [PATCH v3 1/3] staging: rtl8188eu: Properly
- structure the multiline comment
-Message-ID: <20200406090314.GB20842@ubuntu>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy-kernel@googlegroups.com, sbrivio@redhat.com
+Subject: Re: [Outreachy] [PATCH v3 3/3] staging: rtl8188eu: Line over 80
+ characters
+Message-ID: <20200406085506.GA20842@ubuntu>
 References: <20200402182621.61694-1-debsoumyajit100@gmail.com>
- <20200402182621.61694-2-debsoumyajit100@gmail.com>
- <20200403073956.GA3466197@kroah.com>
+ <20200402182621.61694-4-debsoumyajit100@gmail.com>
+ <alpine.DEB.2.21.2004022117590.3014@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200403073956.GA3466197@kroah.com>
+In-Reply-To: <alpine.DEB.2.21.2004022117590.3014@hadrien>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Fri, Apr 03, 2020 at 09:39:56AM +0200, Greg KH wrote:
-> On Thu, Apr 02, 2020 at 11:56:19PM +0530, Soumyajit Deb wrote:
-> > Add "*" at the start of each line of the multiline comment to improve
-> > code readability and to adhere to the uniform Kernel coding style.
+On Thu, Apr 02, 2020 at 09:20:18PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Thu, 2 Apr 2020, Soumyajit Deb wrote:
+> 
+> > Break various lines into multiple lines to respect 80 character width
+> > limit.
 > > Reported by checkpatch.pl
-> > 
+> >
 > > Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
 > > ---
-> >  drivers/staging/rtl8188eu/core/rtw_ap.c | 22 +++++++++++-----------
-> >  1 file changed, 11 insertions(+), 11 deletions(-)
-> > 
+> >  drivers/staging/rtl8188eu/core/rtw_ap.c | 67 +++++++++++++++++--------
+> >  1 file changed, 45 insertions(+), 22 deletions(-)
+> >
 > > diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
-> > index 93283c7deec4..5b2b4d1d56f6 100644
+> > index bd9a59dd3dd9..c88557c07211 100644
 > > --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
 > > +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
-> > @@ -1226,17 +1226,17 @@ void update_beacon(struct adapter *padapter, u8 ie_id, u8 *oui, u8 tx)
-> >  }
-> >  
-> >  /*
-> > -op_mode
-> > -Set to 0 (HT pure) under the following conditions
-> > -	- all STAs in the BSS are 20/40 MHz HT in 20/40 MHz BSS or
-> > -	- all STAs in the BSS are 20 MHz HT in 20 MHz BSS
-> > -Set to 1 (HT non-member protection) if there may be non-HT STAs
-> > -	in both the primary and the secondary channel
-> > -Set to 2 if only HT STAs are associated in BSS,
-> > -	however and at least one 20 MHz HT STA is associated
-> > -Set to 3 (HT mixed mode) when one or more non-HT STAs are associated
-> > -	(currently non-GF HT station is considered as non-HT STA also)
-> > -*/
-> > + *op_mode
-> > + *Set to 0 (HT pure) under the following conditions
+> > @@ -264,8 +264,10 @@ void expire_timeout_chk(struct adapter *padapter)
+> >  			list_del_init(&psta->asoc_list);
+> >  			pstapriv->asoc_list_cnt--;
+> >
+> > -			DBG_88E("asoc expire %pM, state = 0x%x\n", (psta->hwaddr), psta->state);
+> > -			updated = ap_free_sta(padapter, psta, true, WLAN_REASON_DEAUTH_LEAVING);
+> > +			DBG_88E("asoc expire %pM, state = 0x%x\n",
+> > +				psta->hwaddr, psta->state);
 > 
-> Please add a ' ' character right after the '*' character, to match up
-> with the proper way to show comment blocks.
-> 
-> thanks,
-> 
-> greg k-h
+> You did something else here, which is to drop some unnecessary
+> parentheses.
 
-Okay, Understood. 
+Okay,understood.
+This change shouldn't be in this patch.
 
-I will add ' ' character right after '*' character in the comment block
-and resend the patch.
+I will remove this change and resend the patch.
+
+Thank you
+
+--
+Soumyajit 
+
+> 
+> > +			updated = ap_free_sta(padapter, psta, true,
+> > +					      WLAN_REASON_DEAUTH_LEAVING);
+> >  		} else {
+> >  			/* TODO: Aging mechanism to digest frames in sleep_q to avoid running out of xmitframe */
+> >  			if (psta->sleepq_len > (NR_XMITFRAME / pstapriv->asoc_list_cnt) &&
+> > @@ -294,16 +296,21 @@ void expire_timeout_chk(struct adapter *padapter)
+> >  		for (i = 0; i < chk_alive_num; i++) {
+> >  			int ret = _FAIL;
+> >
+> > -			psta = rtw_get_stainfo_by_offset(pstapriv, chk_alive_list[i]);
+> > +			psta = rtw_get_stainfo_by_offset(pstapriv,
+> > +							 chk_alive_list[i]);
+> >
+> > -			if (psta->state & WIFI_SLEEP_STATE)
+> > -				ret = issue_nulldata(padapter, psta->hwaddr, 0, 1, 50);
+> > -			else
+> > -				ret = issue_nulldata(padapter, psta->hwaddr, 0, 3, 50);
+> > +			if (psta->state & WIFI_SLEEP_STATE) {
+> > +				ret = issue_nulldata(padapter, psta->hwaddr, 0,
+> > +						     1, 50);
+> > +			} else {
+> > +				ret = issue_nulldata(padapter, psta->hwaddr, 0,
+> > +						     3, 50);
+> 
+> It might look nicer to put all the integers on the same line.
+> 
+
+Okay, then I will put all the integers in the same line.
+
+> > +			}
+> >
+> >  			psta->keep_alive_trycnt++;
+> >  			if (ret == _SUCCESS) {
+> > -				DBG_88E("asoc check, sta(%pM) is alive\n", (psta->hwaddr));
+> > +				DBG_88E("asoc check, sta(%pM) is alive\n",
+> > +					psta->hwaddr);
+> 
+> Again, parentheses dropped here as well.
+> 
+> julia
+> 
+
+Sorry, This change shouldn't be in this patch.
+I will remove the unrelated changes from this patch and resend the
+patch.
 
 Thank you.
 
 --
 Soumyajit
+
+> >  				psta->expire_to = pstapriv->expire_to;
+> >  				psta->keep_alive_trycnt = 0;
+> >  				continue;
+> > @@ -315,11 +322,13 @@ void expire_timeout_chk(struct adapter *padapter)
+> >
+> >  			psta->keep_alive_trycnt = 0;
+> >
+> > -			DBG_88E("asoc expire %pM, state = 0x%x\n", psta->hwaddr, psta->state);
+> > +			DBG_88E("asoc expire %pM, state = 0x%x\n",
+> > +				psta->hwaddr, psta->state);
+> >  			spin_lock_bh(&pstapriv->asoc_list_lock);
+> >  			list_del_init(&psta->asoc_list);
+> >  			pstapriv->asoc_list_cnt--;
+> > -			updated = ap_free_sta(padapter, psta, true, WLAN_REASON_DEAUTH_LEAVING);
+> > +			updated = ap_free_sta(padapter, psta, true,
+> > +					      WLAN_REASON_DEAUTH_LEAVING);
+> >  			spin_unlock_bh(&pstapriv->asoc_list_lock);
+> >  		}
+> >
+> > @@ -431,7 +440,8 @@ static void update_bmc_sta(struct adapter *padapter)
+> >  		supportRateNum = rtw_get_rateset_len((u8 *)&pcur_network->SupportedRates);
+> >  		network_type = rtw_check_network_type((u8 *)&pcur_network->SupportedRates);
+> >
+> > -		memcpy(psta->bssrateset, &pcur_network->SupportedRates, supportRateNum);
+> > +		memcpy(psta->bssrateset, &pcur_network->SupportedRates,
+> > +		       supportRateNum);
+> >  		psta->bssratelen = supportRateNum;
+> >
+> >  		/* b/g mode ra_bitmap */
+> > @@ -445,7 +455,8 @@ static void update_bmc_sta(struct adapter *padapter)
+> >  		tx_ra_bitmap = 0xf;
+> >
+> >  		raid = networktype_to_raid(network_type);
+> > -		init_rate = get_highest_rate_idx(tx_ra_bitmap & 0x0fffffff) & 0x3f;
+> > +		init_rate = get_highest_rate_idx(tx_ra_bitmap & 0x0fffffff) &
+> > +			    0x3f;
+> >
+> >  		/* ap mode */
+> >  		rtw_hal_set_odm_var(padapter, HAL_ODM_STA_INFO, psta, true);
+> > @@ -456,7 +467,8 @@ static void update_bmc_sta(struct adapter *padapter)
+> >  			arg = psta->mac_id & 0x1f;
+> >  			arg |= BIT(7);
+> >  			tx_ra_bitmap |= ((raid << 28) & 0xf0000000);
+> > -			DBG_88E("%s, mask = 0x%x, arg = 0x%x\n", __func__, tx_ra_bitmap, arg);
+> > +			DBG_88E("%s, mask = 0x%x, arg = 0x%x\n", __func__,
+> > +				tx_ra_bitmap, arg);
+> >
+> >  			/* bitmap[0:27] = tx_rate_bitmap */
+> >  			/* bitmap[28:31]= Rate Adaptive id */
+> > @@ -647,7 +659,8 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
+> >  	rtw_hal_set_hwreg(padapter, HW_VAR_SEC_CFG, (u8 *)(&val8));
+> >
+> >  	/* Beacon Control related register */
+> > -	rtw_hal_set_hwreg(padapter, HW_VAR_BEACON_INTERVAL, (u8 *)(&bcn_interval));
+> > +	rtw_hal_set_hwreg(padapter, HW_VAR_BEACON_INTERVAL,
+> > +			  (u8 *)(&bcn_interval));
+> >
+> >  	UpdateBrateTbl(padapter, pnetwork->SupportedRates);
+> >  	rtw_hal_set_hwreg(padapter, HW_VAR_BASIC_RATE, pnetwork->SupportedRates);
+> > @@ -657,7 +670,10 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
+> >  		Switch_DM_Func(padapter, DYNAMIC_ALL_FUNC_ENABLE, true);
+> >  	}
+> >  	/* set channel, bwmode */
+> > -	p = rtw_get_ie(pnetwork->ies + sizeof(struct ndis_802_11_fixed_ie), _HT_ADD_INFO_IE_, &ie_len, pnetwork->ie_length - sizeof(struct ndis_802_11_fixed_ie));
+> > +	p = rtw_get_ie(pnetwork->ies + sizeof(struct ndis_802_11_fixed_ie),
+> > +		       _HT_ADD_INFO_IE_, &ie_len,
+> > +		       pnetwork->ie_length -
+> > +		       sizeof(struct ndis_802_11_fixed_ie));
+> >  	if (p && ie_len) {
+> >  		pht_info = (struct HT_info_element *)(p + 2);
+> >
+> > @@ -682,7 +698,8 @@ static void start_bss_network(struct adapter *padapter, u8 *pbuf)
+> >  	 */
+> >  	set_channel_bwmode(padapter, cur_channel, cur_ch_offset, cur_bwmode);
+> >
+> > -	DBG_88E("CH =%d, BW =%d, offset =%d\n", cur_channel, cur_bwmode, cur_ch_offset);
+> > +	DBG_88E("CH =%d, BW =%d, offset =%d\n", cur_channel, cur_bwmode,
+> > +		cur_ch_offset);
+> >
+> >  	/*  */
+> >  	pmlmeext->cur_channel = cur_channel;
+> > @@ -771,7 +788,8 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+> >  	cap = get_unaligned_le16(ie);
+> >
+> >  	/* SSID */
+> > -	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SSID_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> > +	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SSID_IE_, &ie_len,
+> > +		       pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> >  	if (p && ie_len > 0) {
+> >  		memset(&pbss_network->ssid, 0, sizeof(struct ndis_802_11_ssid));
+> >  		memcpy(pbss_network->ssid.ssid, p + 2, ie_len);
+> > @@ -781,7 +799,8 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+> >  	/* channel */
+> >  	channel = 0;
+> >  	pbss_network->Configuration.Length = 0;
+> > -	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _DSSET_IE_, &ie_len, (pbss_network->ie_length - _BEACON_IE_OFFSET_));
+> > +	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _DSSET_IE_, &ie_len,
+> > +		       pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> >  	if (p && ie_len > 0)
+> >  		channel = *(p + 2);
+> >
+> > @@ -789,14 +808,16 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+> >
+> >  	memset(supportRate, 0, NDIS_802_11_LENGTH_RATES_EX);
+> >  	/*  get supported rates */
+> > -	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> > +	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _SUPPORTEDRATES_IE_, &ie_len,
+> > +		       pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> >  	if (p) {
+> >  		memcpy(supportRate, p + 2, ie_len);
+> >  		supportRateNum = ie_len;
+> >  	}
+> >
+> >  	/* get ext_supported rates */
+> > -	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _EXT_SUPPORTEDRATES_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> > +	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _EXT_SUPPORTEDRATES_IE_,
+> > +		       &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> >  	if (p) {
+> >  		memcpy(supportRate + supportRateNum, p + 2, ie_len);
+> >  		supportRateNum += ie_len;
+> > @@ -807,7 +828,8 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+> >  	rtw_set_supported_rate(pbss_network->SupportedRates, network_type);
+> >
+> >  	/* parsing ERP_IE */
+> > -	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _ERPINFO_IE_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> > +	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _ERPINFO_IE_, &ie_len,
+> > +		       pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> >  	if (p && ie_len > 0)
+> >  		ERP_IE_handler(padapter, (struct ndis_802_11_var_ie *)p);
+> >
+> > @@ -824,7 +846,8 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+> >  	pairwise_cipher = 0;
+> >  	psecuritypriv->wpa2_group_cipher = _NO_PRIVACY_;
+> >  	psecuritypriv->wpa2_pairwise_cipher = _NO_PRIVACY_;
+> > -	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _RSN_IE_2_, &ie_len, pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> > +	p = rtw_get_ie(ie + _BEACON_IE_OFFSET_, _RSN_IE_2_, &ie_len,
+> > +		       pbss_network->ie_length - _BEACON_IE_OFFSET_);
+> >  	if (p && ie_len > 0) {
+> >  		if (rtw_parse_wpa2_ie(p, ie_len + 2, &group_cipher, &pairwise_cipher, NULL) == _SUCCESS) {
+> >  			psecuritypriv->dot11AuthAlgrthm = dot11AuthAlgrthm_8021X;
+> > --
+> > 2.17.1
+> >
+> >
 
