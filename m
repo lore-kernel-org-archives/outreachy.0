@@ -1,98 +1,75 @@
 X-GM-THRID: 6811040563999014912
-X-Received: by 2002:a63:705e:: with SMTP id a30mr21298965pgn.128.1586169039643;
-        Mon, 06 Apr 2020 03:30:39 -0700 (PDT)
+X-Received: by 2002:a05:6638:f0f:: with SMTP id h15mr10720805jas.142.1586157359490;
+        Mon, 06 Apr 2020 00:15:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:834c:: with SMTP id z12ls11012653pln.5.gmail; Mon,
- 06 Apr 2020 03:30:38 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLcCuBwl4LFbQ83bjMoFJUGDDRTWBZkmHPmq4ksKI/Ef2hVgb/OWNEsWtPjyhz0elH7Av84
-X-Received: by 2002:a17:902:6b07:: with SMTP id o7mr19107410plk.141.1586169038244;
-        Mon, 06 Apr 2020 03:30:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586169038; cv=none;
+Received: by 2002:a6b:3e83:: with SMTP id l125ls5329117ioa.9.gmail; Mon, 06
+ Apr 2020 00:15:58 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK4TmPuDDer8YwZXoIUKfc4neiUYcGyyZsgnLjlQF8SfymUXMO5eYBC4sfwjbzaQRug738R
+X-Received: by 2002:a5e:de45:: with SMTP id e5mr8398168ioq.37.1586157358162;
+        Mon, 06 Apr 2020 00:15:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586157358; cv=none;
         d=google.com; s=arc-20160816;
-        b=rZQx1clFM1stXxRsmRvOS6yUweEdUAJidoxc0QudEd3zRPajXIBdy70hv3S8TplO0/
-         5VCy/+5pAeIV4TUf23vjBT0dWeli0qFYoghN2556ZZvLzuL015dKGdwDXzNXdDB/ZGWb
-         j2jNOFVtJoiGdvbGOD4tp4NafD2P6xYyVl8RWkb7N5FK3gxYrUKcSXTK9TBxbTKqpReZ
-         WEOYOwbOuN4o6XHpr7RoVUgqiED34wifArJFBzexpCOckd2M1ZlwdhjpfRD91+wNS+B+
-         +gncHS+na5HnXb8P1rDUWdoYpo2+VjKS5YfUMLI0nVt/L3AMjzr0CUsQ2+Kh+KUpU8O2
-         2crw==
+        b=Z/jsncFFubyTT6KHlANQ33b8oZ4jYMRosM+WOKDhJ1r5cZxTqogVUz8aKCxkDqkVNu
+         t7RB91DoI448VV96Agu59C8l4BX/yOc1wqilxLPp6lWKOs7EEj0+78wGPQ6ilaL/slqF
+         zHMdveFdzSPUcjTSmh3kSc9oeGSbEE/uQeimkTrQNIdnCDkZKhseBilwi7RbEoola9nm
+         Ynr44OidL8WEaVjTjuEdkeufGp9wTy5bKk5mNEj/XtUQpM99ZTB8if45MReW7nocuD2P
+         kvUXRa+NZlUiDf5WxbsYYAnK96PY4ZZbcvRRMEOi8dkGOl/8s1vfPModc4C6APbObPnZ
+         CINg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:date:from:dkim-signature;
-        bh=VUuU2DyMbreadYFpvl0dfFPlp5yMOZt9qmE7eH4vzhM=;
-        b=c5ML+bZgqb66A3alwyfOVJMgfg4znhgrAF29x6s0y9SRHXglQJ0p/gUYq3JJX/kr2+
-         IzsQDVB58a8o7FXxBuMgBHdDeq+0ZYaK+988IXCCB5H492dWuVbx9vWrgkZuUzEah8o8
-         3J+OTCx2zdGS8B17vQsdAlOfqrJlT1d9olZ37mzHpgqquO1mR2MqWfFiJWWgJIfiZeHw
-         qnaXMF+owqO20QDxKP7SYow5kpzGrr/1PiZDO6yg4lLU8EBXtnOfVSFENfOtogRzUTjP
-         dsydYGdDPbeHSsSGyqRH0IwN4LqGs2GGXlGmvpUeJGKL/r1+67yy3dxxsDpQdu4XM/hO
-         ETEA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version;
+        bh=zZXKcSny5AfKXZ4aFRnF4oupt+riduqCunOo/OwfO00=;
+        b=NfFtvvMCe7L/02pSYvZ00oLABwSNIGLDmPu2zDEjZcpb9KgYn+Uv/1i5PTr/+M+V4n
+         yJIcqV4ERlEq1jOvxx0lcuOA+m3uMO5zcOnEXgCZqhvWhyA9SHAHDMjITbcQY0odLkeL
+         AAYRQNVS/xummvVIyFwVyuVq4j0heXZkfQRsD80YoW8eOZ0r6lr5xKkcGXtv//pDH+q5
+         BypD0xPn/y8NKjg94glCcHLLZA229jqTq5pak3ZedQdAFjoCYaOF99dL1KSwx8h/ZidB
+         q5OD4Lsph1OKg/+bmVbobcPycfhiXe+1OcdvvxavJJOFBmXhDEsFlNHYft4TKHfjVpmW
+         TfuQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=XeiDB2ft;
-       spf=neutral (google.com: 2607:f8b0:4864:20::42d is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
-       dmarc=fail (p=QUARANTINE sp=NONE dis=NONE) header.from=iitr.ac.in
-Return-Path: <kgupta@es.iitr.ac.in>
-Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id ne6si1568692pjb.1.2020.04.06.03.30.37
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.109 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa11-08.prod.phx3.secureserver.net (p3plsmtpa11-08.prod.phx3.secureserver.net. [68.178.252.109])
+        by gmr-mx.google.com with ESMTPS id s201si1097478ilc.0.2020.04.06.00.15.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 Apr 2020 03:30:37 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::42d is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) client-ip=2607:f8b0:4864:20::42d;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 06 Apr 2020 00:15:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.109 as permitted sender) client-ip=68.178.252.109;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@es-iitr-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=XeiDB2ft;
-       spf=neutral (google.com: 2607:f8b0:4864:20::42d is neither permitted nor denied by best guess record for domain of kgupta@es.iitr.ac.in) smtp.mailfrom=kgupta@es.iitr.ac.in;
-       dmarc=fail (p=QUARANTINE sp=NONE dis=NONE) header.from=iitr.ac.in
-Received: by mail-pf1-x42d.google.com with SMTP id n10so7328300pff.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 03:30:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=es-iitr-ac-in.20150623.gappssmtp.com; s=20150623;
-        h=from:date:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=VUuU2DyMbreadYFpvl0dfFPlp5yMOZt9qmE7eH4vzhM=;
-        b=XeiDB2ft5J/a6c5v71MCQjGY5TVlswZPSRcpAL6wVw+59/sWGJ8tPSXDdXmYJVFxAQ
-         yUlnRyk2gjNO6+LdP7i2iFZHYtAK0XZNLYFn2b1cpI1WJXWSZN4UVEnNvrplcUnA5DXp
-         FWi9GNOeAfPP8GRY2Tcutv0OftgaJ2SAWuWYWghuo8tmg6dtPAmFGjgrKJAtpvI88K6W
-         qgWYngRG6bb0DQxSH4fe0IoU0k6SnfNL3nxcLfBjEvjCYzyfhEBRIi7JVU2cwCUuKpOo
-         CeqFiO0iMQAu91kNRUPpEX4f0y6rxqxDJYxBGBe2D7kKx1OARonpLeqmFzjHSPNYUQCX
-         JGUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:date:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=VUuU2DyMbreadYFpvl0dfFPlp5yMOZt9qmE7eH4vzhM=;
-        b=GqMUHuF0CfcfNVaxmsGb5/BfiJiOG5nlU4QttFZGkBNydPs/EYWB/DRrZSC5J4pKxN
-         kVun8PP8sirmjMEYkXOZY1cVmi3wbtftvIz0KiU2vU3ZH5N084EqneTRKb1pA2tBjbHi
-         CW73bInfnypiOYlIN5MLrl2O6+lwSaUvAVd3YBbNxj8B5esgWAMjcCDuCy9vsarQ1rMt
-         TowslQkAkbVqjbK+GabwGV5yYkYFfPoPouiOSWycNkI/B/kbb4zgmwUIMYLlJ+oeT68X
-         FS3kXsoQXBSabA47XeZwg3asINzdwk4oHXJnHgyAyqxEaOSBkTby1mzpkRD4VNZgtWsl
-         jC+g==
-X-Gm-Message-State: AGi0PuZCcmAGGXwLyvwK6iD3EpVrD9WCX7jqYMp4C4KOkjb3ZFM4F9TQ
-	9O0iAISxuXcp55bKHmufAMuq1ziPXa5Cvw==
-X-Received: by 2002:a62:501:: with SMTP id 1mr21022280pff.309.1586169036622;
-        Mon, 06 Apr 2020 03:30:36 -0700 (PDT)
-Return-Path: <kgupta@es.iitr.ac.in>
-Received: from kaaira-HP-Pavilion-Notebook ([103.113.213.154])
-        by smtp.gmail.com with ESMTPSA id d71sm11398029pfd.46.2020.04.06.03.30.34
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Apr 2020 03:30:36 -0700 (PDT)
-From: Kaaira Gupta <kgupta@es.iitr.ac.in>
-X-Google-Original-From: Kaaira Gupta <Kaairakgupta@es.iitr.ac.in>
-Date: Mon, 6 Apr 2020 16:00:30 +0530
-To: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] Re: Outreachy reminder - final application
- deadline
-Message-ID: <20200406103030.GA6571@kaaira-HP-Pavilion-Notebook>
-References: <CAK-LDb+6_rhwHUWRKL5FkiHZqRRz7vhMRJVsiP=r+sL5i1OG_g@mail.gmail.com>
- <CAK-LDbKyOLzU6YDbT0TcxxOsdKEQHVwm1NzTiirnrEF6zHaEqA@mail.gmail.com>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.109 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-lf1-f44.google.com ([209.85.167.44])
+	by :SMTPAUTH: with ESMTPSA
+	id LLzAjWSXnXQ8FLLzBjRyra; Mon, 06 Apr 2020 00:15:57 -0700
+X-CMAE-Analysis: v=2.3 cv=ArmQI91P c=1 sm=1 tr=0
+ a=CHzBpAoX7KV5uG9H1SVGrA==:117 a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19
+ a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10 a=cl8xLZFz6L8A:10 a=pFd2Zl5z2vwA:10
+ a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8 a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8
+ a=VDxRAwm8vqx6A6xO54EA:9 a=QEXdDO2ut3YA:10 a=cDyXFGGuxjcA:10
+ a=_sbA2Q-Kp09kWB8D3iXc:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-lf1-f44.google.com with SMTP id h6so6406978lfc.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 06 Apr 2020 00:15:56 -0700 (PDT)
+X-Gm-Message-State: AGi0Pub5bLVd+OhZL852/yki8Fb5sJPaZwgT8ct489QvcHCdarbEdMh2
+	zPeofJZdtSKzx9vPD+Foc1HpKCyKFdjBlOzy9oQ=
+X-Received: by 2002:a05:6512:79:: with SMTP id i25mr12513463lfo.87.1586157355949;
+ Mon, 06 Apr 2020 00:15:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAK-LDbKyOLzU6YDbT0TcxxOsdKEQHVwm1NzTiirnrEF6zHaEqA@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <CAK-LDb+6_rhwHUWRKL5FkiHZqRRz7vhMRJVsiP=r+sL5i1OG_g@mail.gmail.com>
+ <9c10e8c19d4df6ee5a4b04e21829a7010f218ff9.camel@gmail.com>
+In-Reply-To: <9c10e8c19d4df6ee5a4b04e21829a7010f218ff9.camel@gmail.com>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Mon, 6 Apr 2020 12:45:44 +0530
+X-Gmail-Original-Message-ID: <CAK-LDb+Yzx4Z0H2MyD92bwa-=8eUkiB-jdbdGrcEW0ws9vOHYw@mail.gmail.com>
+Message-ID: <CAK-LDb+Yzx4Z0H2MyD92bwa-=8eUkiB-jdbdGrcEW0ws9vOHYw@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Outreachy reminder - final application deadline
+To: Sam Muhammed <jane.pnx9@gmail.com>
+Cc: Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfH8P2G4Phcg1jnb7XvS8Px5yOQoJmPmdB60iRMzrPAOKLeTXMkmJppnN2fI/s2DKCF8+/9FyLzozGFEXQuZdrmFJe+WcD7jbP2BKWnqZNOsj8aTIt/+R
+ PEO94F3548pQmur8+0/A8U4dRmAMd7mPHAtjvb0ZK2+bWXfyj+mPustOyo/BNBXvLgvmVNBYC+gYSdreN/M+cB6HFBFNQ9VlK4A=
 
-On Fri, Apr 03, 2020 at 06:17:52AM +0530, Vaishali Thakkar wrote:
-> On Thu, Apr 2, 2020 at 2:45 PM Vaishali Thakkar
-> <vthakkar@vaishalithakkar.in> wrote:
-> >
+On Mon, Apr 6, 2020 at 4:45 AM Sam Muhammed <jane.pnx9@gmail.com> wrote:
+>
+> On Thu, 2020-04-02 at 14:45 +0530, Vaishali Thakkar wrote:
 > > Greeting Outreachy applicants,
 > >
 > > Thank you for all your contributions in the Linux Kernel. This is a
@@ -105,35 +82,34 @@ On Fri, Apr 03, 2020 at 06:17:52AM +0530, Vaishali Thakkar wrote:
 > > day of a deadline. You can always add more contributions until the
 > > deadline. Don't forget to add links to your patches while recording
 > > contributions on the website.
-> 
-> Also, I forgot to add it here but as it says in the welcome message
-> please do not forget to add your project preferences in the
-> 'community-specific questions' section of the application, if you have
-> applied for more than one project.
-> 
-> Thanks!
-> 
+> >
 > > If you have any query, feel free to contact me and project mentors. We
 > > wish you all the best for your applications.
-
-
-Hii!
-
-I wanted to confirm if all the 5 projects of Linux will finally be a part of
-outreachy, or is it just a maximum number?
-
-Thankyou so much!
-
-
 > >
 > > Have a nice day!
 > >
+>
+> Hi!
+> Are we allowed to send patches to the linux kernel after April 7, 2020?
+
+Hi,
+
+You all are more than welcome to continue contributing to the Linux kernel.
+Although we won't be moderating this mailing list after the deadline has
+passed. But you can use get_maintainer.pl [as mentioned in the tutorial]
+to send patches in the appropriate mailing lists.
+
+Also, to keep it fair for all applicants we don't count the patches you submit
+after April 7, 2020 as part of your contribution for the Outreachy application.
+
 > >
 > > Helen Koike and Vaishali Thakkar
 > > Outreachy Linux Kernel Co-coordinator
-> 
-> -- 
+> >
+>
+>
+> --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAK-LDbKyOLzU6YDbT0TcxxOsdKEQHVwm1NzTiirnrEF6zHaEqA%40mail.gmail.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/9c10e8c19d4df6ee5a4b04e21829a7010f218ff9.camel%40gmail.com.
 
