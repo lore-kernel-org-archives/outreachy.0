@@ -1,95 +1,118 @@
-X-GM-THRID: 6468588291165782016
-X-Received: by 10.28.136.12 with SMTP id k12mr185049wmd.10.1506085575648;
-        Fri, 22 Sep 2017 06:06:15 -0700 (PDT)
+X-GM-THRID: 6809913191851622400
+X-Received: by 2002:a9d:1921:: with SMTP id j33mr20691553ota.309.1586231344001;
+        Mon, 06 Apr 2020 20:49:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.223.163.207 with SMTP id m15ls1361622wrb.13.gmail; Fri, 22 Sep
- 2017 06:06:14 -0700 (PDT)
-X-Received: by 10.28.138.195 with SMTP id m186mr183582wmd.9.1506085574521;
-        Fri, 22 Sep 2017 06:06:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506085574; cv=none;
+Received: by 2002:aca:508d:: with SMTP id e135ls937243oib.5.gmail; Mon, 06 Apr
+ 2020 20:49:02 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKg0mbQmY+f4oPE1uOXMEINjPDQkbXd2lEoUJJq9hr7l9mAZdPF+x2bk8qfGYH4hTIJ+mW8
+X-Received: by 2002:aca:50d0:: with SMTP id e199mr253519oib.133.1586231342681;
+        Mon, 06 Apr 2020 20:49:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586231342; cv=none;
         d=google.com; s=arc-20160816;
-        b=EFR77X1CIBgyuVVrAgHzDWrJityd0Jz4qfA0sBu9sCeQBcxWLZFKf/poppk8x5YIL4
-         IKuOoJSqTItPzAt2UKbqeCvMZQ//r72S0iHGKkDMd3hPoPu9eXUlUp5mFczxjlgUHW78
-         JpRXKbl0UoBwDC0ox9RcRJCZej2/ePXW+1DlqMrGGMY8VAA498sZo5uGadIxklm2fT6k
-         sno13RkElH2uRN+KHVU1qge32j7znn5kcb+jvUsA0olek6/RBIGhrZaMKuGZr3Fw9+xv
-         OT2kAEAJBgoaiqPeiVAQUtv+JuyUw1bTNSj/di3ID2PwDPGq/We0Gx0TEUOS7spzjU8B
-         lGaQ==
+        b=hHy6chKDL95fURl8Rwv9IM7J2jsBppKl5EjwvNsq5AZFHayQOt0I4S2LIt84wnu6xE
+         5YM25aNeI0+GlvcjEpl6RGF0B6w0zu07X9y/RfmXKDFWf+09buQPNtRoA8TG8B3bxIQy
+         DgirJTuivo2+yT/f8RR0gih5LFb+nZjKpgBHC8nT+XH3ELbhvDvi6uhiKgo1W3k9wCVL
+         0cZMv9WRm6/csYo03ukHailcFKK+oEol29WzIYO+cyw6Jba2oWRFvdCxw4Z2zvKpcv+X
+         GJxnDGndd3ryNiagZuvWrB0eVCCr1W+mBH7Idg/6dEY2CrdkfHygXMDdyYy3J4R3HvPD
+         /40w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=VnqXZuyA/B6ymv/raTw1UJxfhX+VqNzKc5U30kQ3T/M=;
-        b=asmhVFhQT5I0xiwFk/yCbXaaf6iqbERGGoMpQgS0iyazsmTgSED/BzESeCx/e9ewvn
-         V0l4nR2iq8Dp/1qH2hdOFBvpYNYF6pIqfjy4vgsWi0VaCAFZ2avAW+dIgGjnphHEl3k2
-         SSON1M8LIBcSJxb6pphUna6xY9s0KwSkwt/3feREhCd+xKuSoKfXx7p61uTaR+OrkoJ7
-         M1aUvib+yBy7eidCX20PxuzF7JpnkkiP7IG063oFW2+hyGPuQLI6ILvgTsvvLFzIL0VG
-         A6lb7TPZOYgo5DTMWRYpqTqM7vh7A//DnNru5Jfd8inbsIiIpUiXbjXTt0WKqh5Fe7tS
-         ZMWA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=v/1C9iO16QXtnoETKT/gZegKNySFnZAG8Qo8ndVDK90=;
+        b=N+T5VLKMZVYwy/N4cDUHeeI8LuNDO3cEp0BsVfMZ6/rAOEstcwo0QCfKQImCxCC5mS
+         vVtXclTMSdqHg8kA5ui2hPIkbG8dwtG6RXUrEp9E6Z/8vU1RSzaCoilKnwYmbngHtNBI
+         t3FVbGmrJPJAcaJ2KdsK/3HN6HXCAAz0KB2MQkqssY/ZZwqlNF14ZNIgwhT4mgjzteL7
+         SOnx8RVPrIaiAhNUHiZJi6FXFAL3JgZCiyWOvSbln/3/SfcWfXiGB2kvz1kR3i97qMYe
+         BQQsyctpqYh8K21U0TjO40AD++SsW0GnvJ9DX8tyHwL37qEwx7aAXBukcxUF00rCOLal
+         xaHQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=brBbrICs;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by gmr-mx.google.com with ESMTPS id k18si142002wmd.1.2017.09.22.06.06.14
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DFtLV3I+;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by gmr-mx.google.com with ESMTPS id d188si177358oig.0.2020.04.06.20.49.02
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Sep 2017 06:06:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Mon, 06 Apr 2020 20:49:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=brBbrICs;
-       spf=pass (google.com: domain of georgiana.chelu93@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=georgiana.chelu93@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id x17so1237804wmd.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Sep 2017 06:06:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=VnqXZuyA/B6ymv/raTw1UJxfhX+VqNzKc5U30kQ3T/M=;
-        b=brBbrICsRpvzpQTjbmJnYTdbZAxtSYrmoiaxEpY2Q9DS0pSJ1pWd/lkCC0f8P9LlaZ
-         W6a/DONz/KGKsFnRyZ5fAdqewjQH2j02uYWuNTZwhwTUgwDbyyaqbrkcHXOgRV+Nj2FT
-         8muMl5KaciGhnGDxTJZgUDqXPLkFDyDiB4fd9/UjzwGWTIs8xkbVxi772yTrh/0cOQgU
-         7lPKzTa6PadM22nmHRzdRn2W8+KqVcdExRwf7dSl5jjgcmUjd+JiAplCxLmjX+YBJLsA
-         XqLKlD17aVGm6nA4z2SFsnr0wAe/CnXGVJbP5rBDmR8bACTxjT8llwO+ezxfeJwR+kpz
-         gX1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=VnqXZuyA/B6ymv/raTw1UJxfhX+VqNzKc5U30kQ3T/M=;
-        b=fKavEREKLOWNY8TkuAzEPHQhpYSQvD/cfY/P5CBNmqAWl6FOXTHjWHROhRtWUu5rae
-         zElaT3O6zwjh7uCfAsxy8vpvbLDlfGCP/wklgpfeO/9z747Zxa1Pesk3fhg4KLg6364O
-         O9uZbJ5Gf333NSVjq/phey1Wlrxih8HmewuehkEWwd3pCcaQDJyuh4NV6piP/WeACHSZ
-         o3fFgDunLd+iYYY4vO9DuvZ/UkbHtWCpaKnG2mGb1MSEsCx8b7aLwDTFqu0DzDrDsggW
-         A5i5TNBiioV3snehYslHVGvtDtFozXjWQs6ZSN6XhdP+i9Av+XWGucRxCCWzNx0jxcC8
-         X/WQ==
-X-Gm-Message-State: AHPjjUhAGu/eVmWFfcK0U/IUErCzDwJgjRCVpqISjSe6AVMXYg1ksZiY
-	6TSHo7oPMKJdn20nmTim2qRESHBW
-X-Google-Smtp-Source: AOwi7QDWmbagcZwzpg3KRUKQa8kxIEBWZQwt09zfHNrekUO+8muIGL0IBTn1yBi4ufzp402LSwS8SQ==
-X-Received: by 10.28.9.130 with SMTP id 124mr3403125wmj.65.1506085574123;
-        Fri, 22 Sep 2017 06:06:14 -0700 (PDT)
-Return-Path: <georgiana.chelu93@gmail.com>
-Received: from ubuntu (fw-ext-11.romania.luxoft.com. [195.90.110.113])
-        by smtp.gmail.com with ESMTPSA id a39sm5936814wrc.48.2017.09.22.06.06.13
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 22 Sep 2017 06:06:13 -0700 (PDT)
-From: Georgiana Chelu <georgiana.chelu93@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/2] Staging: rtl8723bs: core: Fix coccinelle warning
-Date: Fri, 22 Sep 2017 06:05:16 -0700
-Message-Id: <cover.1506084848.git.georgiana.chelu93@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DFtLV3I+;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1586231342;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v/1C9iO16QXtnoETKT/gZegKNySFnZAG8Qo8ndVDK90=;
+	b=DFtLV3I+I1Tfq8vL6JrT9y5gV17AH2LTQbZ/HCCeeoE6u1OZG/P+ImRAx8rRkfzGOjIUHQ
+	LN6fPDyiPGsTjNQgrE4BbHRK7rGAL3MrDxoIqDQx1hrDBLGpTGInBbkrIX1Teq/y9K7jbj
+	RA/CwXaPpA0Ka/1sOsfA/XtfNLrXhmI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-183-tqHn01fwN4S25CM9xMH3-g-1; Mon, 06 Apr 2020 23:48:57 -0400
+X-MC-Unique: tqHn01fwN4S25CM9xMH3-g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7EB713F7;
+	Tue,  7 Apr 2020 03:48:55 +0000 (UTC)
+Received: from localhost (unknown [10.36.110.14])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0262C272A5;
+	Tue,  7 Apr 2020 03:48:53 +0000 (UTC)
+Date: Tue, 7 Apr 2020 05:48:49 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Soumyajit Deb <debsoumyajit100@gmail.com>
+Cc: gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+ julia.lawall@inria.fr, Larry.Finger@lwfinger.net
+Subject: Re: [Outreachy kernel] [Outreachy] [PATCH v4 2/3] staging:
+ rtl8188eu: Remove unnecessary extra parentheses
+Message-ID: <20200407054849.461747bc@redhat.com>
+In-Reply-To: <20200406111706.25957-3-debsoumyajit100@gmail.com>
+References: <20200406111706.25957-1-debsoumyajit100@gmail.com>
+	<20200406111706.25957-3-debsoumyajit100@gmail.com>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Fix coccinelle "WARNING: Comparison to bool" and other minor
-issues reported by checkpatch.pl.
+On Mon,  6 Apr 2020 16:47:05 +0530
+Soumyajit Deb <debsoumyajit100@gmail.com> wrote:
 
-Georgiana Chelu (2):
-  Staging: rtl8723bs: core: Remove boolean comparison
-  Staging: rtl8723bs: core: Code clean up
+> Remove unnecessary extra parentheses to improve code readability.
+> 
+> Signed-off-by: Soumyajit Deb <debsoumyajit100@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_ap.c | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_ap.c b/drivers/staging/rtl8188eu/core/rtw_ap.c
+> index eb48095b9de2..2dd775fbcc4b 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_ap.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_ap.c
+> @@ -315,7 +315,7 @@ void expire_timeout_chk(struct adapter *padapter)
+>  
+>  			psta->keep_alive_trycnt = 0;
+>  
+> -			DBG_88E("asoc expire %pM, state = 0x%x\n", (psta->hwaddr), psta->state);
+> +			DBG_88E("asoc expire %pM, state = 0x%x\n", psta->hwaddr, psta->state);
 
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 76 +++++++++++++++------------
- 1 file changed, 41 insertions(+), 35 deletions(-)
+49 lines above this you have another:
+
+                        list_del_init(&psta->asoc_list);
+                        pstapriv->asoc_list_cnt--;
+ 
+                        DBG_88E("asoc expire %pM, state = 0x%x\n", (psta->hwaddr), psta->state);
+
+which you're then touching in 3/3, but keeping it as (psta->hwaddr). I
+think this should at least be consistent.
 
 -- 
-2.7.4
+Stefano
 
 
