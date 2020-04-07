@@ -1,103 +1,111 @@
-X-GM-THRID: 6804291594898898944
-X-Received: by 2002:a17:906:2894:: with SMTP id o20mr18529843ejd.341.1584247591835;
-        Sat, 14 Mar 2020 21:46:31 -0700 (PDT)
+X-GM-THRID: 6812856909283983360
+X-Received: by 2002:aa7:998e:: with SMTP id k14mr3392268pfh.313.1586279360340;
+        Tue, 07 Apr 2020 10:09:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:1e42:: with SMTP id i2ls8244900ejj.1.gmail; Sat, 14
- Mar 2020 21:46:30 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvWubJBZNpbFlfXYdInVBk6d1705VJ0x3X6Dr6mOc25mXwgFf7uiyFS31yjovgp5yNakmOL
-X-Received: by 2002:a17:906:1cc2:: with SMTP id i2mr18757882ejh.283.1584247590686;
-        Sat, 14 Mar 2020 21:46:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584247590; cv=none;
+Received: by 2002:a17:902:a701:: with SMTP id w1ls2402451plq.7.gmail; Tue, 07
+ Apr 2020 10:09:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJzG52qbN+RSX04d1lMf5w6eeiLWuDVpeDeCDeyCVJJ7eArVbnGPpl7U8AajzxYAlmCsMKS
+X-Received: by 2002:a17:90a:30cf:: with SMTP id h73mr313595pjb.189.1586279358502;
+        Tue, 07 Apr 2020 10:09:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586279358; cv=none;
         d=google.com; s=arc-20160816;
-        b=EDJKsz05zAiLtj+yhfW67LVKTCk1fw6Appby+++wZU2LFz7T/bZsLd/nMRXATUMFKH
-         D613YoFtGa71OXI3Rih06edQ1L0VfVx+5e8MTEt2WvOpSNETDyBAJ9zvys82Rc2+PNGk
-         g4ASqsqgdiTy3r+RBrZOPmXVq2qN14oPAPm1DlHM0UBu3CfxWxt9jLjFCw+H3bqqveSo
-         MDfSDyU+JQxbtNYDuDVf0QCnXQszQ/lJ3VpH6A71xF74QLQa/8oybJSKkRI8CkxyN6Hz
-         nGaUyxF4dHm8jHG/9WhF48h+2MLLJgAMauYDtXYUIdoCusumMgcRtjL3n/uBHCVFmdDI
-         /tTQ==
+        b=KcIpliDJmVu0X3SzaC/hMlsC5zFHxFcxGm/E8Qe63/50PLyUebPsvFIOZ/0orQUlPR
+         hNaV/1IwDKf6LuDpNdUh7qrglR9bf+EJHxlDjLslC7aDL+wBAHEApxJfaDkahnCq0+fZ
+         SCHVfJf2zLPiFFMFSLvtdzLVoylUiJm2iW9rLEdL6l8vQkwuDMqhccqn7weUleJMRJv2
+         GPWb2TMjyJczBTnRGYd9VhebdOGQNp0O0v78gfJBKMhp/IaEBrA2wHApmXr91M7bV92u
+         6i1J8LOcKJWV5mbNGZOK3cMRcxkjoYBw9IKsxJA7GQs49WLUyNQuQlgdX3Qmp7y9QuW1
+         m58g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=uGOr7sAnaOBe9Hso/RjKQGsiJxtreaPjs9A4yn5GCrg=;
-        b=Uco+8r7oLECjGPpXYMMd18Odgzpvm1/JCXD4+2H1bAsTOMY5NAd+6rPE+BmLfVqa6t
-         hrBnb2uirtf0oQZVDgyp1ocy10TBtAPX8kv2421hib0VQZhrBFv8fM/v6+bj6iwYXPly
-         zHX/0TFIpKAzCAdYiQF+luPuxDuESDPBaWD2KfN4HZiD1EKR7cwwU4taKODtbDv8pxiR
-         dDIQA4FMfIwcoXyR4D1pF0M+vTmN9MVze1ylBHyBZdDhkFXp3S+XnVBF8LynLOWR7ZBI
-         TJHmcqR3NqbO0cC6pBBpKQNGCibI8lKDiyl9IU4LWeDpX1reofWPZkOAW+wsozsH/aSM
-         rdfA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=/MDxyK5XQqOD1f5pu+vLTQRmeHm8k4BMvzC7OiwDOKg=;
+        b=xJyH3m+NJllgU2GyQPvaKfD1zcqRQQ0/S4LY07eUfQv42A0VcIN2JAfgnmzWWfj+6j
+         56dtPCkRgI7agO5qqHUE/5pRWxflwCCyoWaPJ3daGE1KvDk1ZpS/OSm6iyfyX2sp1okc
+         DNz8HEXXfvlE1MTXNm5GyY2PG7Bd6L39IU91L7abfcl9/0SNEiAyd5+uz1IQJ0fELE79
+         qKlaKDCKpjA4ynqG5AEOgb+cyZQcpf6HfiGj+DHcKpOFqd2132+utAU/licMSIExkRmF
+         cEurgl3lWfCYCnhHIqZWrmRmDF6/JbU6D9Iwy4U8k9BD6Lwye9eFdlnNr/Nm9yLj+sxP
+         p97Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=bZwStloW;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Return-Path: <lu@pplo.net>
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com. [2a00:1450:4864:20::342])
-        by gmr-mx.google.com with ESMTPS id h10si741352edn.1.2020.03.14.21.46.30
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=craKSdKO;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by gmr-mx.google.com with ESMTPS id t15si116794pgb.1.2020.04.07.10.09.18
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 14 Mar 2020 21:46:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) client-ip=2a00:1450:4864:20::342;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 07 Apr 2020 10:09:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@pplo.net header.s=google header.b=bZwStloW;
-       spf=pass (google.com: domain of lu@pplo.net designates 2a00:1450:4864:20::342 as permitted sender) smtp.mailfrom=lu@pplo.net
-Received: by mail-wm1-x342.google.com with SMTP id n8so14054260wmc.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 14 Mar 2020 21:46:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pplo.net; s=google;
-        h=from:to:subject:date:message-id;
-        bh=uGOr7sAnaOBe9Hso/RjKQGsiJxtreaPjs9A4yn5GCrg=;
-        b=bZwStloW7eFNTKg2IzlZVbrjA5zPd3zoHeBmqsHLGS7s5tD8JOWGmnZnrGSRoGHgOP
-         TfEB2MUVTntkln6JAdgO4MlHrG1ect/39nremMdefCmeTYKSiUMxVMf1VoHX3lmMk2JC
-         zGEIvNa/np74Ls6Ul9byw9LwI5F91v0kIO3I8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=uGOr7sAnaOBe9Hso/RjKQGsiJxtreaPjs9A4yn5GCrg=;
-        b=k88ToG9qLp1mCJl93c5ox4thS1c16SDw/HUbQdopL3PFZA4SoAPDbQhQOFONNk6rWN
-         lYnHjtT2/xOOQg08XF9RlPX5+qyrOC5N6e46NOUqHIqUDYPYJkrBsYghocHfpp2XOIE5
-         ZOhfSv3egUx1KwamdBElR66XuICM5UwoiirWYbvjpI/5GWfG5NHEACKJmyo7nmYm/vAa
-         4ai/Pry3wyjM9woV5Z94IVxw12aZYAf6A9xMq8+DIjrvvXQ9XTfBqwXkG34r0ICpmDPj
-         6saxBM7Utjgiz6+MQkuHHfAikIpFD6t8kmvrb4nSs7wdaeOWZOWGd35dJApfjAuZ/3N/
-         RYhQ==
-X-Gm-Message-State: ANhLgQ2Ir4/mGvbk6BALQwlv/QG3utGHr8Vej9jP+FY5Bt8w10CfOuJ8
-	sqp/pXFe0WdM78en5UMrGF5zaISMst5UHw==
-X-Received: by 2002:a1c:9d41:: with SMTP id g62mr20717420wme.131.1584247590241;
-        Sat, 14 Mar 2020 21:46:30 -0700 (PDT)
-Return-Path: <lu@pplo.net>
-Received: from localhost.localdomain (85.251.42.187.dyn.user.ono.com. [85.251.42.187])
-        by smtp.gmail.com with ESMTPSA id u1sm68508529wrt.78.2020.03.14.21.46.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 14 Mar 2020 21:46:29 -0700 (PDT)
-From: Lourdes Pedrajas <lu@pplo.net>
-To: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net
-Subject: [PATCH] staging: vt6655: device_main: switch multiple assignment for one assignment per line
-Date: Sun, 15 Mar 2020 05:46:20 +0100
-Message-Id: <20200315044620.14104-1-lu@pplo.net>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=craKSdKO;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1586279357;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/MDxyK5XQqOD1f5pu+vLTQRmeHm8k4BMvzC7OiwDOKg=;
+	b=craKSdKOos1yvZ27ViNBn7ik6f7qekOiw1/QUK+z6i6u/dbBWTfVRLj/jDDM6WsJVAK5Fq
+	Nv00sM1LjhNu6eMkcUsODs02ynjCtLtbxNnMZcQZb143cOMQeva4GciZCo3o5+P0qPJRnG
+	rXRmxqdTqf7vBDnl+MsGb/szGz3c73k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-255-KWMkyqJTPgCnF1o2fsq-MA-1; Tue, 07 Apr 2020 13:09:15 -0400
+X-MC-Unique: KWMkyqJTPgCnF1o2fsq-MA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E75B718FE862;
+	Tue,  7 Apr 2020 17:09:14 +0000 (UTC)
+Received: from localhost (unknown [10.36.110.58])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 66B318F34F;
+	Tue,  7 Apr 2020 17:09:13 +0000 (UTC)
+Date: Tue, 7 Apr 2020 19:09:07 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Briana Oursler <briana.oursler@gmail.com>,
+ outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [NOMERGE] net: selftests: Add xfrm
+ encryption for vxlan
+Message-ID: <20200407190907.54ae4db3@redhat.com>
+In-Reply-To: <alpine.DEB.2.21.2004071902410.2982@hadrien>
+References: <20200407064413.15480-1-briana.oursler@gmail.com>
+	<06a59883fde977deb7fbc056a5381832e9356754.camel@gmail.com>
+	<alpine.DEB.2.21.2004071902410.2982@hadrien>
+Organization: Red Hat
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-One assignment per line is preferred, instead of multiple assignments.
-To prevent possible undefined behavior.
-Issue found with checkpath.
+On Tue, 7 Apr 2020 19:02:56 +0200 (CEST)
+Julia Lawall <julia.lawall@inria.fr> wrote:
 
-Signed-off-by: Lourdes Pedrajas <lu@pplo.net>
----
- drivers/staging/vt6655/device_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+> On Tue, 7 Apr 2020, Briana Oursler wrote:
+> 
+> > On Mon, 2020-04-06 at 23:44 -0700, Briana Oursler wrote:  
+> > > Extend existing test by adding xfrm encryption on vxlan tunnel in
+> > > namespaces a and b.
+> > >
+> > > Signed-off-by: Briana Oursler <briana.oursler@gmail.com>
+> > > ---  
+> >
+> > I additionally wanted to give credit that this change was made based on
+> > starter code provided by Stefano Brivio but not sure if that goes in
+> > the patch description or not. I will resend if recommended.  
+> 
+> Maybe Suggested-by?
 
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index 0442f71494b2..c271e3937125 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -708,7 +708,8 @@ static int device_init_td1_ring(struct vnt_private *priv)
- 
- 	if (i > 0)
- 		priv->apTD1Rings[i - 1].next_desc = cpu_to_le32(priv->td1_pool_dma);
--	priv->apTailTD[1] = priv->apCurrTD[1] = &priv->apTD1Rings[0];
-+	priv->apCurrTD[1] = &priv->apTD1Rings[0];
-+	priv->apTailTD[1] = &priv->apTD1Rings[0];
- 
- 	return 0;
- 
+Yes, thanks for the suggestion :)
+
+Anyway, the patch is not functionally complete yet -- we can figure out
+the details once it is.
+
 -- 
-2.17.1
+Stefano
 
 
