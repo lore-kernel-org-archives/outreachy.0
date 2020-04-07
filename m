@@ -1,103 +1,72 @@
-X-GM-THRID: 6258684423306215424
-X-Received: by 10.67.30.161 with SMTP id kf1mr11086284pad.21.1457213522877;
-        Sat, 05 Mar 2016 13:32:02 -0800 (PST)
+X-GM-THRID: 6813025056847822848
+X-Received: by 2002:a25:aa69:: with SMTP id s96mr5402331ybi.85.1586281009562;
+        Tue, 07 Apr 2020 10:36:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.208 with SMTP id h16ls606116igt.36.canary; Sat, 05 Mar
- 2016 13:32:02 -0800 (PST)
-X-Received: by 10.66.171.167 with SMTP id av7mr10822499pac.17.1457213522113;
-        Sat, 05 Mar 2016 13:32:02 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from mail-pa0-x231.google.com (mail-pa0-x231.google.com. [2607:f8b0:400e:c03::231])
-        by gmr-mx.google.com with ESMTPS id ff2si2265878pad.2.2016.03.05.13.32.02
+Received: by 2002:a05:6902:6c6:: with SMTP id m6ls1494328ybt.9.gmail; Tue, 07
+ Apr 2020 10:36:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIi7ENsH8YpufPRY2EU1TYGlPpEfRbcOD+SUWkGbwpemF7cF/dKEnXsSlRY2GI6rcWXTip1
+X-Received: by 2002:a25:664d:: with SMTP id z13mr5533535ybm.34.1586281008278;
+        Tue, 07 Apr 2020 10:36:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586281008; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KhcQpuoxlCKCyIP2beU1qVoTA90Nk27bkJGv0DCNVDwNA05H8MTQCF6hRWJDAYrkcR
+         MR2OGmLnbqmD4yCwc6v3xpcyCJL93LEsmgdw9IoKtmI5akHQP3W/WA9duL1srJQoIu/O
+         6MSUZkPQSlyDRoogvkNSjcFNXEUnbQN9nD7x1UlRd5XsnU63AE/ihF45RXo7Dh0kIBdG
+         arbEAbVpCBCsOfKSfByloh2O+HW881ui00rpxXwFUo5axzQjMUq0EilKHXv2X6HyFmn2
+         6lc45ERfdAN2H3cUkXPLaZYm+EAY++gI5J5PZJCcjKUVxO0H+fY60/s47HXQ8ifRgeCc
+         jtRA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=JI2tLQLSRf04l5NDsYrR0RPsbo4MULBFnRGcuwM3C0I=;
+        b=cUtxIhtYWheQtIJ9jDUtBUM1ygdzknVWBpCTMFhMvC1dY/cr3O9qydlUtUu7QktiPm
+         /Y5MVItA5yIP2Pvf9hY6T7aTxuNsjOL19XExzt/EdczaLUuM/x1h7GERKY4Je4od9ClM
+         X814U7O1YK0mGEfc96Fnf0rIPflh7i1AYmJeEgIJxmdu1x2RbYUdLRnDPhzbm3gI8xa3
+         t9NZ+LGKoDaR6YmZcIfDv2d8lFvL5ctKGGE4Bb29G+qfUu/MLiBNI6Sscq3ia6bUVoZ4
+         FTbaCDasMNv6LV8nf69xwhdveOLyvIfFUoLPELq+t8WHFcxTSVbj9q5HCF6EPm03wnqC
+         Lxjg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=N8ZR+ClY;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id f195si206529ybg.4.2020.04.07.10.36.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 05 Mar 2016 13:32:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) client-ip=2607:f8b0:400e:c03::231;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 07 Apr 2020 10:36:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhaktipriya96@gmail.com designates 2607:f8b0:400e:c03::231 as permitted sender) smtp.mailfrom=bhaktipriya96@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x231.google.com with SMTP id fl4so55011096pad.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 05 Mar 2016 13:32:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Oz/PhhosSwh26MjApt6UED/pHpQl6a6aaj7JMdG0veQ=;
-        b=ZvWNIkXvAhwZPhJ5I4opD5ArpMoEWR+OBLiEjBXIZcj9BCHnNI5keFd+doqjJxc0fx
-         6a3CgU3MxPQDpvEmTHsRkL3/FAdkwKO7Ql+cs9/JatEWoFEKFmR8sPIirh82LWG4Sdds
-         wuoUbgEsAjWN/rPfrKrJlVxMlS/ZF3PNaaW/RDmettA4kCIZcny0sAcFcXhG7DtuzrgM
-         7iTqKeZ8743uCPlZTMxb1wtf2ZJPHZjyc3kuXZerZu6orpvYt7MrcZ7+9A1nHP1o7Rhy
-         xv3cSryeGfdlivqf3E5Ulc1va/B6FJT0kvtmADs+scRIRQI/AIJK4TXR+EZje7usXRoG
-         CjmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Oz/PhhosSwh26MjApt6UED/pHpQl6a6aaj7JMdG0veQ=;
-        b=R/vvQb8i2Y1A4au2lV4RxWlq1XKxxhiYhglBI//PhOE0Nevi1GeDSLtckUOfbjQ55R
-         Crf15G55rHL51HmUxPZebYY5oiXY1sIEblDGbXyvmTkyG9H7BCzXcablBDdDuWoa+RUt
-         jiku58n1/xFpUpeXnCoWRlyF3ZXPiTvNGlGB3ZlKHkQmG0MRn9HSnV/4bBQsX0dx8g7r
-         mvO0mtX0/Z4xmcODw4TvNhoNdt3OGwlRVdyfIb/lJwKpmkreHbbyMO0kXj/b2mqMwrUJ
-         rxng32OiisMSEVOuM9sdgOVzV0bh3PH4L6awq1ry4loJAf70HqVST7rIHQNiK9YETSpb
-         9Xxw==
-X-Gm-Message-State: AD7BkJICkfoRgsuduj1mhiI1iKrgJitQl2kPQp2wy4+JLMuskTGIGhL/5CvT8+SydOj5Vg==
-X-Received: by 10.66.147.74 with SMTP id ti10mr22762730pab.128.1457213521994;
-        Sat, 05 Mar 2016 13:32:01 -0800 (PST)
-Return-Path: <bhaktipriya96@gmail.com>
-Received: from Karyakshetra ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id o66sm14365863pfi.14.2016.03.05.13.32.01
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 05 Mar 2016 13:32:01 -0800 (PST)
-Date: Sun, 6 Mar 2016 02:49:46 +0530
-From: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=N8ZR+ClY;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl [83.86.89.107])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id B36D82078C;
+	Tue,  7 Apr 2020 17:36:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1586281007;
+	bh=JI2tLQLSRf04l5NDsYrR0RPsbo4MULBFnRGcuwM3C0I=;
+	h=Date:From:To:Subject:From;
+	b=N8ZR+ClYTAX8mnR085gg6VBx0r6Vt0IsthNTIH9+r23EdHIujf5+VoCz/4G/GSZmd
+	 Q4QoJ2bnL9agLQqndN0ydqDV5yCQxtLyFIivmwpy3UC9bdiECVCh76FaPRm76B3Ayt
+	 dvfUdKQoS0aemXKjF3JwsCWP3O1Y7/T3RDcXmaz4=
+Date: Tue, 7 Apr 2020 19:36:45 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723au: core: rtw_security: Change form of NULL
- comparisons
-Message-ID: <20160305211946.GA25879@Karyakshetra>
+Subject: Outreachy patches caught up on, again.
+Message-ID: <20200407173645.GA989360@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
 
-Change null comparisons of the form x == NULL to !x.
-This was done using Coccinelle.
+Hi all,
 
-@@
-expression e;
-@@
-- e == NULL
-+ !e
+I'm now caught up on all submitted outreachy patches that I can apply.
 
-Signed-off-by: Bhaktipriya Shridhar <bhaktipriya96@gmail.com>
----
- drivers/staging/rtl8723au/core/rtw_security.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+If you have not gotten an email from my patch system saying that your
+patch was applied, consider it lost, and please rebase and resend it.
 
-diff --git a/drivers/staging/rtl8723au/core/rtw_security.c b/drivers/staging/rtl8723au/core/rtw_security.c
-index 038b57b..f2c9a9a 100644
---- a/drivers/staging/rtl8723au/core/rtw_security.c
-+++ b/drivers/staging/rtl8723au/core/rtw_security.c
-@@ -634,7 +634,7 @@ int rtw_tkip_encrypt23a(struct rtw_adapter *padapter,
- 					     &pattrib->ra[0]);
- 	}
+thanks,
 
--	if (stainfo == NULL) {
-+	if (!stainfo) {
- 		RT_TRACE(_module_rtl871x_security_c_, _drv_err_,
- 			 "%s: stainfo == NULL!!!\n", __func__);
- 		DBG_8723A("%s, psta == NUL\n", __func__);
-@@ -731,7 +731,7 @@ int rtw_tkip_decrypt23a(struct rtw_adapter *padapter,
-
- 	stainfo = rtw_get_stainfo23a(&padapter->stapriv,
- 				     &prxattrib->ta[0]);
--	if (stainfo == NULL) {
-+	if (!stainfo) {
- 		RT_TRACE(_module_rtl871x_security_c_, _drv_err_,
- 			 "%s: stainfo == NULL!!!\n", __func__);
- 		return _FAIL;
---
-2.1.4
-
+greg k-h
 
