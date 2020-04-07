@@ -1,82 +1,69 @@
 X-GM-THRID: 6813022730075504640
-X-Received: by 2002:adf:f588:: with SMTP id f8mr2080573wro.386.1586282772213;
-        Tue, 07 Apr 2020 11:06:12 -0700 (PDT)
+X-Received: by 2002:a17:906:848d:: with SMTP id m13mr3151532ejx.348.1586280467173;
+        Tue, 07 Apr 2020 10:27:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:67c2:: with SMTP id b185ls4463895wmc.1.gmail; Tue, 07
- Apr 2020 11:06:10 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIIC1Lo32JeTmOcUzrtCWRPZjpqHMGkLBwre+WL1aGik4BoKxsllggBQSf+XCnrDaFQqhlF
-X-Received: by 2002:a1c:f302:: with SMTP id q2mr488408wmq.185.1586282770886;
-        Tue, 07 Apr 2020 11:06:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586282770; cv=none;
+Received: by 2002:a50:bb02:: with SMTP id y2ls3156235ede.1.gmail; Tue, 07 Apr
+ 2020 10:27:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLlRp7A4WzuD/fGv80qUt9BEwFKgBHI2uXSgb0Hijg73T8XvyoDAK2Y68rX/14UpfZ+D/gI
+X-Received: by 2002:a05:6402:17d9:: with SMTP id s25mr1821032edy.123.1586280465939;
+        Tue, 07 Apr 2020 10:27:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586280465; cv=none;
         d=google.com; s=arc-20160816;
-        b=nPq+z/Q9Gmsws3hE3hCTlG4mO2nfnwTXPnryeREn65zV4iBQX076BVN3chuW3mkPY+
-         z4JOfUtCXGkVrL9KDWHQRqWmM8dQd6Yv1sWfdbbUUO2a0rIfX2IBt4PhOBECm98b1A2f
-         iKqi9YReD10lR03+2DIvvA/tpR5gXT2r5UXuS8wHiIqSDi/iFQ7TyI7bus6z43aCBRXS
-         CYYP1ogOC2m6046OVKzRPzAZxAmVL/M2D9eECZHJTnr/V4fSqP+f3QB8fHNE7Qg7ukmf
-         MT0aoWIL5t+H+yMPnErPYjA19eKzlZbqP5x3YsfgZUJtg3WsLEuwJe30kidD3WZYJMLE
-         Mm5w==
+        b=WAowpxJyQIZBgTIz2LEXX+9rENi0YMF1Ra0qkAR5/iZ5DIOd5lcEquFPhtn6deD/2H
+         Xm+5i4HLpJB7dmZatdg+GwBkCR2Jok65nYH8tIBKxtqnxDpIiV217aoj15tMoN6b9qNX
+         Vv9bU0BKlIl1NC6LUHn2EY78v6+bEiNYEYXjtd+C3L88M06Jy0tHYsk0knAkFru2h7W2
+         PCPTB47uNriaRi94jPGlN82Fda8OCPxl7ddHAQ86VyECdVBwALsMKWaUAFH7xye60+hh
+         yHGjEmFvOG4POoweYhhm/9Gz+Q6bzpT0D4eZ9+lNZBwiyzbwj/vZU8Hj+CJqWcUdmIVU
+         YcJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=qvlHLqqm4i1d6SrwoNk3WYluyJc2xLDrKgwkyO4gcdQ=;
-        b=QKT2C3XZtbvKMsjG9LJL7j8/gpNYO0dEm1IhXePsAmyQKD7/WSHrlS5aZn2n25l1v8
-         9NQF4BhMmfm6IKBos7jImnzTbthnyilD1TqfyhQzK4XQBcBsFBsRrBQykac5XBWsfEvo
-         na9PWZuRES1npoNjdQzE+pFMIQWujHec38Eu+HS+a2UkO+9Qu4Xe3J2U1xciPBQZbFmu
-         UqPyb3cRTPqXk7snjy15DQdc4ofHJbat9hf+5kpbW62Va2LA7sUX1G+kHr44+n7/o0mD
-         fE5sUnJg370MdMnnj33ndX93LoaxpQ1vheoZJfjp6eihNu44KUj6g5Fc2A3ksq4CbUL0
-         r8tA==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date;
+        bh=WKCNG5J5hoW87AgkvRVatJPQPpS0abOLDq4Ce9IbMoM=;
+        b=DzznajBKf7r7ekdMxGIvo5BNd9c+e7/MgMbHHAJBQDpUYXaenp2ZadAgj5BWZjX41z
+         LaevCKTrs95B0XYViIjTmKoefgPg4uLP2rBHBS7uv+QfHxxW1W/YpDc2LqIDjTsnN9nU
+         ErlvLDxLCqcXB+G1KKUiFAoVGhfeAsqG4uM24eldNxmVFc/65zQq0OXUTyEbvTSK81Ya
+         B3VPkcx+Z5/uZqOHTnRFvZ+EpALIXAofAjy1CmpuBMFLhXcriMxEPdbE3GObUR8E5KQ5
+         anSYbuOLtCCB393q70LuukR4ojRSQaoaOTAUVWnSMdwhaEXtARLo7JKsF+1XQVx15q1V
+         q+ZA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l20si291965wrc.0.2020.04.07.11.06.10
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Apr 2020 11:06:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Return-Path: <vkor@vkten.in>
+Received: from vkten.in (vkten.in. [104.244.73.96])
+        by gmr-mx.google.com with ESMTP id f2si169856edm.1.2020.04.07.10.27.45
+        for <outreachy-kernel@googlegroups.com>;
+        Tue, 07 Apr 2020 10:27:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.72,356,1580770800"; 
-   d="scan'208";a="444274542"
-Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 07 Apr 2020 20:06:10 +0200
-Date: Tue, 7 Apr 2020 20:06:10 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: R Veera Kumar <vkor@vkten.in>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-    Stefano Brivio <sbrivio@redhat.com>
-Subject: Re: Query about Outreachy Kernel Mailing List
-In-Reply-To: <20200407172735.GA13609@tulip.local>
-Message-ID: <alpine.DEB.2.21.2004072005420.2982@hadrien>
-References: <20200407172735.GA13609@tulip.local>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
+Received: (qmail 26559 invoked from network); 7 Apr 2020 17:27:44 -0000
+Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.209.216.117)
+  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
+  by vkten with ESMTPSA; 7 Apr 2020 17:27:44 -0000
+Date: Tue, 7 Apr 2020 22:57:37 +0530
+From: R Veera Kumar <vkor@vkten.in>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Stefano Brivio <sbrivio@redhat.com>,
+	Julia Lawall <julia.lawall@inria.fr>
+Subject: Query about Outreachy Kernel Mailing List
+Message-ID: <20200407172735.GA13609@tulip.local>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
+Hi,
 
+Vaishali informed that after today this list won't be moderated. She
+told to send contributions directly to maintainers(upstream).
 
-On Tue, 7 Apr 2020, R Veera Kumar wrote:
+So does it means Julia and Stefano won't review and comment on the
+posts done here.
 
-> Hi,
->
-> Vaishali informed that after today this list won't be moderated. She
-> told to send contributions directly to maintainers(upstream).
->
-> So does it means Julia and Stefano won't review and comment on the
-> posts done here.
->
-> Shall I not post anything here anymore?
+Shall I not post anything here anymore?
 
-No, you shouldn't post here any more.  Good luck with your application :)
+Please clarify!
 
-julia
+Thanks,
 
->
-> Please clarify!
->
-> Thanks,
->
-> R Veera Kumar
->
+R Veera Kumar
 
