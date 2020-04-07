@@ -1,76 +1,94 @@
 X-GM-THRID: 6801392738100051968
-X-Received: by 2002:adf:e691:: with SMTP id r17mr492923wrm.421.1586235076970;
-        Mon, 06 Apr 2020 21:51:16 -0700 (PDT)
+X-Received: by 2002:a25:cec8:: with SMTP id x191mr360059ybe.39.1586226851063;
+        Mon, 06 Apr 2020 19:34:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:f5cc:: with SMTP id k12ls1385188wrp.6.gmail; Mon, 06 Apr
- 2020 21:51:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKTypbvsZQa6q+ti/nNAHLWLXHGy7XxsEDjbqqDHuNE2RM3hus/8oHImVZWBq8s+QjrnkKt
-X-Received: by 2002:adf:ee8d:: with SMTP id b13mr521139wro.251.1586235075889;
-        Mon, 06 Apr 2020 21:51:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586235075; cv=none;
+Received: by 2002:a25:aab3:: with SMTP id t48ls656438ybi.2.gmail; Mon, 06 Apr
+ 2020 19:34:09 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKV5R+jc3EE/b6gE7O16xqEtWFPOMHw2/Ov+adpS4HigxokJRiqGRlTjrSGjv9UK3sYS0LJ
+X-Received: by 2002:a25:4144:: with SMTP id o65mr420215yba.178.1586226849844;
+        Mon, 06 Apr 2020 19:34:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586226849; cv=none;
         d=google.com; s=arc-20160816;
-        b=V5OLf16c1098pTdOQdghyTZ0XDekZ5BgGQHaD1dhtJ5xgo4AR85m9Zr+otdX85mrus
-         eSKHIp7nMC/Iejgjn3ksQU0nV8GxgHAGiT8RyzsrgkvF6nmoK05WdF/4ccI6aaoWWKNj
-         FsvOT15Y4+2vC8q2k8+5BEB8+a5YtSr0FLeQgirN8sP3qagAh/AQG3rskWV4kq/LZIig
-         UaEeGscNepm82PXva8U41O2lag6VGCWGdL9ljjLmlGVUt9CVE91FODSozSpfLI6aM6Go
-         LCjgLUxNujB56K1Br47RnFy+aG77QiMFU8XdEcq0U7gFJOw6b1YrM3ePVrTdbWT7kA/8
-         3OcQ==
+        b=jbEvijf5j9r+ozzNb1bGUcM4erVc9Pj/kq0qGKkkdNlQtf58SmAGPJ5qTz1NwOK1oS
+         yppkxHgiXCLERqWK9QnS2lDT2caHdnC87eBtGsA7OKSSw3LGqTqjbnSwI0EvkeU+2bIs
+         r0xqlrILVTP5mk/wFE1qDWmzHcoud5KX4b1iTrr9eb3zzPcRFhB03L1cvYWPLrRwJDmd
+         rQ28kpttvewiR9AkRNJ53KxwRqc+StSKrWnC/gQyS5bOnSfO1r4W73hfanNAuEW+QvO1
+         yxiEzpoPpxiqsA6xSKfzRSJ3jroSqbpHYZ4JLn/GT8eERJ0ABPeG/L0xEPFNTn+Bji3h
+         Z40w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=wfq64dSmx5fXYAAYv3ZZyTSrFouU3F3VUeTXeDvZ8es=;
-        b=H36Qss4/IY492/yQH7QUVkpQf3N1YeYyjGq1YLKqbmbK48z9mPbnmxQnuOuH1vdhla
-         xD+xLSKuVusfDcCr9RUdolfhe2ReLGhakAcrXRBIMOaaccwb2skI82I0Ia3toQGpCeQi
-         Y2clcxr4Rngy/3V6ednbX7ys3aMisDNECT9o1FbajMVtIRyWam4scf+ehSukpU32mf7O
-         AVym82LDikgnpI3wPewgXRvE/1S67uNo3jpam1VBR5tVsk7TeDUQvzdBdnXfptAr6Lcr
-         pfB5qZcUMvh6kRT+YepjSdVgi4o4afM4ktBUURcor6V3y+Sidvsefs+Aau9g0VcZhJIk
-         +dxQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=OZffhbjjuSZuNxWUQ+znpcIW5FdJLESdoID0ALU/J34=;
+        b=r/+dsKuRmdeOlQuXb5ShWz48dcuSiGLhwnhunyflRXhxMRL/mCpeq4RQCshhce+i/3
+         QvMmEpzQbvA3qpSwvI/Ss3/7IsVcKoyEHCJcL8Ks6yvcmq22Ul7SO5kiho/ypNuEWf2t
+         F7mEG/0gJ4X0TgrgPnWFc4R3ZYe1BTPP7DjJzIX1EOKY4w7jLMI10P3Ehx6kX8fEm+75
+         oV2MICUSE+rlLVgroYJenBZLCfASEf/JDlOS6vdqSnnKikZxLzTpZQCZc8NKPBlNfOxL
+         fG1xDQtMvQDVH9m+ogkvl0qDUEkq9ESfZK9hXDR1GypmmzVirv2ON03LkgrMWhZy1GN6
+         Vozg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id z84si20420wmc.2.2020.04.06.21.51.15
-        for <outreachy-kernel@googlegroups.com>;
-        Mon, 06 Apr 2020 21:51:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mz3o6jXy;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <sbrivio@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by gmr-mx.google.com with ESMTPS id m18si107210ybf.2.2020.04.06.19.34.09
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 06 Apr 2020 19:34:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 12954 invoked from network); 7 Apr 2020 04:51:14 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.209.216.117)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 7 Apr 2020 04:51:14 -0000
-Date: Tue, 7 Apr 2020 10:21:02 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mz3o6jXy;
+       spf=pass (google.com: domain of sbrivio@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=sbrivio@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1586226849;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=OZffhbjjuSZuNxWUQ+znpcIW5FdJLESdoID0ALU/J34=;
+	b=Mz3o6jXyjTF9EkqQeogzC2C6WqscYc+uXwZEhbmGRBthAlia+P1kIn65q4/dv6JrUxJSPo
+	Fatxe0+FZG5kGkeQgpYdPxFhmnr717BxLyWvnXqcgRsglRuvj5+5hiuzojfcYOTUGL7SVv
+	8agvZWG8UGPysq1s9IJ8+5tE2iLtbgE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-465-MZyA774PMR6d2vk-bVySRA-1; Mon, 06 Apr 2020 22:34:05 -0400
+X-MC-Unique: MZyA774PMR6d2vk-bVySRA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4087B800D4E;
+	Tue,  7 Apr 2020 02:34:04 +0000 (UTC)
+Received: from localhost (unknown [10.36.110.15])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CC59B5C28E;
+	Tue,  7 Apr 2020 02:34:02 +0000 (UTC)
+Date: Tue, 7 Apr 2020 04:33:58 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: R Veera Kumar <vkor@vkten.in>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel
+ <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Re: Need help using coccinelle
-Message-ID: <20200407045059.GA2848@tulip.local>
+Message-ID: <20200407043358.14d2784f@redhat.com>
+In-Reply-To: <20200407022453.GA1720@tulip.local>
 References: <284f12c6-c1ab-4f1f-a325-569a7b8bfc1c@googlegroups.com>
- <alpine.DEB.2.21.2003071102220.2483@hadrien>
- <20200407022453.GA1720@tulip.local>
- <20200407043358.14d2784f@redhat.com>
+	<alpine.DEB.2.21.2003071102220.2483@hadrien>
+	<20200407022453.GA1720@tulip.local>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200407043358.14d2784f@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Tue, Apr 07, 2020 at 04:33:58AM +0200, Stefano Brivio wrote:
-> On Tue, 7 Apr 2020 07:54:53 +0530
-> R Veera Kumar <vkor@vkten.in> wrote:
-> 
-> > Am attaching the log files as well.
-> 
-> Missing attachment, I guess?
-> 
+On Tue, 7 Apr 2020 07:54:53 +0530
+R Veera Kumar <vkor@vkten.in> wrote:
 
-I sent second mail with the attachments.
-Please ignore this msg if received.
+> Am attaching the log files as well.
 
-Veera
+Missing attachment, I guess?
 
-> -- 
-> Stefano
-> 
+-- 
+Stefano
+
 
