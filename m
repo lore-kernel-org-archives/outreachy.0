@@ -1,57 +1,64 @@
 X-GM-THRID: 6883028084998537216
-X-Received: by 2002:a5d:4c85:: with SMTP id z5mr4043601wrs.9.1602762369079;
-        Thu, 15 Oct 2020 04:46:09 -0700 (PDT)
+X-Received: by 2002:a63:380d:: with SMTP id f13mr614345pga.105.1602612077445;
+        Tue, 13 Oct 2020 11:01:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:a544:: with SMTP id j4ls1180977wrb.3.gmail; Thu, 15 Oct
- 2020 04:46:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0nh/M1E1eiuiAY85ZW41h62yNASQfdx16bBW9bpqb9zDxq3FRcQsaZTm9NHRvmXJw9AyR
-X-Received: by 2002:a5d:6a0a:: with SMTP id m10mr3979835wru.189.1602762367286;
-        Thu, 15 Oct 2020 04:46:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602762367; cv=none;
+Received: by 2002:a62:483:: with SMTP id 125ls202323pfe.6.gmail; Tue, 13 Oct
+ 2020 11:01:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7TKa/X8HbOwJ7sVwQZ2bRYWoC2qOcbAeE6korLEKID4Q83X5oqxDPRNIEIWzaJvbQBCEs
+X-Received: by 2002:a62:2e47:0:b029:155:853a:80d5 with SMTP id u68-20020a622e470000b0290155853a80d5mr621753pfu.29.1602612075490;
+        Tue, 13 Oct 2020 11:01:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602612075; cv=none;
         d=google.com; s=arc-20160816;
-        b=EktITwAQeykRDBfee2NBRXE7f4zJhKDl4gVwjrYX2C6BAYFZWenqn8IZ8oXEKEXsLE
-         qxy+WsmTsOpitEFYUNfWy6ufJNgyBk4mdJ5Jst99Y/4YpKGUuwMXEFPRnd8dMxBbFX+I
-         pQIMvxiZrG3bh6JzSBSj77p9ZPdSSe78SrJzA/AlcRlVcoDV2kINvhqJVNlbPCvoSodj
-         +zfEY2duOrqh+hyyFIYQczBRUd6y+t5RejcQRQGuUkn3ya/fDkksOTzwXe2reASpBAbl
-         /TSz6P2vV0QomErnYhY3F0wkhpBsuKwCOSrJLiCr/sGmOiZltZuAN0XYexRYC2ycmsqG
-         igEw==
+        b=Fj80sTTREFaNuSXz7pDwKOyW4yXh7M8idOof+DLhzHlYSEoBL0+cR4G4DRnU9ohFt8
+         bxPxHjMzm8T6FO0isOpM7QZZSmkDTEJjbTfqbZbHcW+Rb+/5a+I17uv8sUqGw0ixKHwi
+         aoOr1nOMV6pTa5ddc/ZMNal9lNVMOSGPE8hCIky/Zt2HRghvtyZOlVFZm+0O7ywhSAU/
+         QQZBtm3gYNd2iq5VDameXOcNb4T9FuzCJTv3FdyWsC4W5ThYscCjbUakmBam+eDtmH4k
+         e/p2/+VjcQ3Xbj5FhE+hpb37b7Ni2cVciMEy6zGsVDooMzQ2nOFKMsDVxdue49jhRwae
+         41xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject
-         :dkim-signature;
-        bh=7ejXxJdGVpnbCV6rNQNo8KShQnHNU/ck5UUtqyEmEvg=;
-        b=g9Pc7EWRDk4fE2JoRtmlln+a0Ro+fTiHdu2S55xyheJxXjn2RUNHo8gLnfhe/QPzZr
-         +Vz10Zn85U5Z/YHxeW6NZZwLqeOin45U6DpsuDDwxZbcWvQKtZDKXVJ5hrHnUZhrroMc
-         gN6AORTse8pxGaGWcxnXRpr1UOa8v0TJSp5UbxvH+dicdq9ioTroUgD4ueIj7H5f1fLZ
-         yZiIXtix+6CoxfWxALe8PcNT21DX0RkP4be6LGuVgGs7RIRfWILgx9d/gPKkg35YmWrB
-         78rezrU8B962pl9hKhSNQzFzgiy2XWBfbTzW25V+OYo6hbVGhR2UHUPHA635R0rjKokL
-         y76w==
+         :user-agent:date:message-id:from:references:to:subject;
+        bh=W+rb5ahuC5cMZNxSBrSCRHIKS9+WM0Z0wsbXX/yNdiE=;
+        b=dbq6hCIJDMtghinoky8jlbIeiYZHT+qh5yYbpItitoyCLoPY+Fpv18LCk9LHzp2vp/
+         qU2vw95WMQRx0B3TWNpv/y/GbaZtTIglEsHvOpmRA5WSNKf4MlJ06HCyesT32hNz5ODy
+         /ilpHtsLT0Yt1xc6LmoZNSk0irGTR/DRnw43AQTAx8A1M7otByhjMb2dy46emDo5jlzJ
+         r4GPwsVd3hIVMVUrkzQ6Yb9/a0sIWzYCg6DwNElKJP3WDKyzVuNgjqjbKXc+iMCMoLwe
+         pZpVt0dbz8sMIJZrmRqBAWSR7MCdn8VWoy0J3zK6yCK9lu9/Ks2i9dUfvxeVxuilaSH+
+         zxtQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s1 header.b=qvBvylW3;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.28 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb2-smtp-cloud7.xs4all.net (lb2-smtp-cloud7.xs4all.net. [194.109.24.28])
-        by gmr-mx.google.com with ESMTPS id e5si93567wrj.3.2020.10.15.04.46.07
+       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.222.194 as permitted sender) smtp.mailfrom=helen.fornazier@gmail.com
+Return-Path: <helen.fornazier@gmail.com>
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com. [209.85.222.194])
+        by gmr-mx.google.com with ESMTPS id a5si34952pfd.5.2020.10.13.11.01.15
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Oct 2020 04:46:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.28 as permitted sender) client-ip=194.109.24.28;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Oct 2020 11:01:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.222.194 as permitted sender) client-ip=209.85.222.194;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s1 header.b=qvBvylW3;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.28 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud7.xs4all.net with ESMTPA
-	id T1hqkBDDrdl9TT1hukFSQH; Thu, 15 Oct 2020 13:46:07 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
-	t=1602762367; bh=7ejXxJdGVpnbCV6rNQNo8KShQnHNU/ck5UUtqyEmEvg=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=qvBvylW3wqnXQPoRSxVrttLCzEEOJysmpTf45ldYRf5JGFa7Imqdg6WZqhC+7smX6
-	 IC4CpXoArylGNIfRMjI07+FQz8Ie8NQ6NV0316iB5TdlTWR4HmArY/PiYXpL6exVTR
-	 hamXEA1h3xnaT5kPy3FXJmv2ikxTx1J+fuYtEcctjYGsxGTEkUhjdjUNCiu2dtxtN+
-	 VBj7NxaOUxtkLtlV1OZXrDR9yVqFxQ5sgNgZWHDWZhmJvkgUjCSD2B324AMA49/Y5n
-	 yiG3obvfWgDhba8dMYN0jXQ/pgUHPM0/RmXO0Ck8F8jgzGHoWU6/47gAe9/bFOg4w+
-	 E2WiGHUXmSTtQ==
+       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.222.194 as permitted sender) smtp.mailfrom=helen.fornazier@gmail.com
+Received: by mail-qk1-f194.google.com with SMTP id s7so544097qkh.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2020 11:01:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=W+rb5ahuC5cMZNxSBrSCRHIKS9+WM0Z0wsbXX/yNdiE=;
+        b=PlB+Ctw4gZ7YB7tGB+Ve/Rtnoo5QdpHv4Cs7qd4jF8zMSdUQOJOJYHLj54JNIuoiLV
+         b/5k+g/JaZ8y8nNDwavAANxcBo/3ziWslgHziQBg3oSTIBDB29ZOIXrIueTtCYR0+XSO
+         tRhzbDFiF3Shlb2W6AZAyPmIDQdEHGtBBsXTYD9mhmrmz+orBTT0bRjw0jPfHjmFR8dt
+         IkFPqEblv2ebHR/lxAX1e2brOZmFGm+xVhaKm//edMw0HNZ6tYlUF19ZC1IWbODkTU/Q
+         7Nza2s1STRuh52tvXHkA5gXWCHJOnjiAs/6iHo2arsUTWu+A3baigM7ohpEnf9rVYlog
+         dRfQ==
+X-Gm-Message-State: AOAM533wV7a7cge2bVzmDvyaDouINPleXPesw8bvAcfcVi/P7t5+eckL
+	vKVuoL3iJkaIRxUXT6sVR9Y8vLOQLkv5ZCwAjIo=
+X-Received: by 2002:a37:a751:: with SMTP id q78mr1147936qke.337.1602612074448;
+        Tue, 13 Oct 2020 11:01:14 -0700 (PDT)
+Return-Path: <helen.fornazier@gmail.com>
+Received: from ?IPv6:2804:14c:483:7f66::1004? ([2804:14c:483:7f66::1004])
+        by smtp.gmail.com with ESMTPSA id f64sm232545qkj.124.2020.10.13.11.01.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Oct 2020 11:01:13 -0700 (PDT)
 Subject: Re: [Outreachy kernel] [PATCH v4 1/2] staging: media: imx: remove
  commented code
 To: Deepak R Varma <mh12gx2825@gmail.com>, outreachy-kernel@googlegroups.com,
@@ -63,35 +70,29 @@ To: Deepak R Varma <mh12gx2825@gmail.com>, outreachy-kernel@googlegroups.com,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>
 References: <8dfbe49fbc7dbd9100f69b80b43f67504338ed73.1602606535.git.mh12gx2825@gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <dab9aea1-0cdc-4cf3-0a60-a45505c937d5@xs4all.nl>
-Date: Thu, 15 Oct 2020 13:46:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+From: Helen Koike <helen@koikeco.de>
+Message-ID: <ad664fbb-1eac-b123-b1ce-07cb18d82911@koikeco.de>
+Date: Tue, 13 Oct 2020 15:01:08 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.2
 MIME-Version: 1.0
 In-Reply-To: <8dfbe49fbc7dbd9100f69b80b43f67504338ed73.1602606535.git.mh12gx2825@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfBjNnp3zlq1PH3vOggRTCgfEZAbf+dfKuKw41apJZ+qKAD9mccdbck94Cn+IhM/Av3XJ8kQxCdOC5kTS0Y/EycNlltmm81XmXfrMPb5MTcCzfsymW/iy
- zOD8BUFfpNdAnslOEEHb85TnZwNOcvRnGcPeecOgUl6NH7s83GRf+eIKpTjeRcyIwKN/swsUiVvA/6XFHimvcd8n9ZKn8v82TQsoqRZ806KWeDggyKLfg5u+
- qHdefIjNAunS2D6Sl0KBMwNrPUy+rUbo8RXMNzEoiCLlfiqBsWLibwF06n1osUfIM3TdbpAaInNVJqh+YoDv1zFl31hd/qZKa4wttkP4TzG2+YSrnqh1jYAB
- hHY9XmK5UBpZRzkVunB1xrMZm3r3xkhQOlELNv9U4OkBuMyV0a0fxDake1iKGYqzcB3ZZ4t5siaJblJtTmLnrkFbqj9D3zyWndwtaVmJh5l0Fh+rQ2G29AKs
- Ko4QbWbNOxzPKdmTNLZycgJZcIuuZ91YZ4q60B4KNPiUco0PDW8j7ib6qTY=
 
-Hi Deepak,
+Hello,
 
-You're missing the linux-media mailinglist in your 'To' list. The MAINTAINERS file
-mentions that, and adding that mailinglist will ensure that the media subsystem
-maintainers will see this patch.
-
-Regards,
-
-	Hans
-
-
-On 13/10/2020 18:32, Deepak R Varma wrote:
+On 10/13/20 1:32 PM, Deepak R Varma wrote:
 > Commented code in the "#if 0" block does not appear to be useful anymore.
+
+As Julia mentioned, "appears to be" implies some doubt, I saw you updated patch 2/2,
+but not this one.
+
+Sorry for the nip picking, it happens xD
+I advice that, instead of sending the next version as quick as possible, you slow down a bit,
+proofread, make sure you took previous feedbacks into account :)
+
 > The virtual channel is always treated as 0 once the stream enters CSI's.
 > This issue is reported by checkpatch script.
 > 
@@ -106,6 +107,15 @@ On 13/10/2020 18:32, Deepak R Varma wrote:
 >    - None
 > Changes since v1:
 >    - Implement feedback from Julia to be exact with the patch description
+
+Also, looking at your commit messages, when you sent v2 of patch 1/2, you mentioned
+there was no changes.
+Unless I saw it wrong, but it doesn't seem you changed the patch description
+in this version.
+
+Regards,
+Helen
+
 > 
 >  drivers/staging/media/imx/imx-media-csi.c | 7 -------
 >  1 file changed, 7 deletions(-)
@@ -129,5 +139,4 @@ On 13/10/2020 18:32, Deepak R Varma wrote:
 >  					  &priv->format_mbus[CSI_SINK_PAD]);
 >  	}
 > 
-
 
