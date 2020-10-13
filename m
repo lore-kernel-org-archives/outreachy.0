@@ -1,142 +1,137 @@
 X-GM-THRID: 6883028084998537216
-X-Received: by 2002:a63:380d:: with SMTP id f13mr614345pga.105.1602612077445;
-        Tue, 13 Oct 2020 11:01:17 -0700 (PDT)
+X-Received: by 2002:a17:902:7290:b029:d2:ac30:1690 with SMTP id d16-20020a1709027290b02900d2ac301690mr342968pll.62.1602606883091;
+        Tue, 13 Oct 2020 09:34:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:483:: with SMTP id 125ls202323pfe.6.gmail; Tue, 13 Oct
- 2020 11:01:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7TKa/X8HbOwJ7sVwQZ2bRYWoC2qOcbAeE6korLEKID4Q83X5oqxDPRNIEIWzaJvbQBCEs
-X-Received: by 2002:a62:2e47:0:b029:155:853a:80d5 with SMTP id u68-20020a622e470000b0290155853a80d5mr621753pfu.29.1602612075490;
-        Tue, 13 Oct 2020 11:01:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602612075; cv=none;
+Received: by 2002:a63:c70f:: with SMTP id n15ls17172pgg.3.gmail; Tue, 13 Oct
+ 2020 09:34:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxPoS6DJYNCTTa2JtHuCgI3O9RbArqYtNQNLXeDKpY2lZ2CRWwg1yoXEol52kozpZYmFVq
+X-Received: by 2002:a63:e503:: with SMTP id r3mr271217pgh.345.1602606881170;
+        Tue, 13 Oct 2020 09:34:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602606881; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fj80sTTREFaNuSXz7pDwKOyW4yXh7M8idOof+DLhzHlYSEoBL0+cR4G4DRnU9ohFt8
-         bxPxHjMzm8T6FO0isOpM7QZZSmkDTEJjbTfqbZbHcW+Rb+/5a+I17uv8sUqGw0ixKHwi
-         aoOr1nOMV6pTa5ddc/ZMNal9lNVMOSGPE8hCIky/Zt2HRghvtyZOlVFZm+0O7ywhSAU/
-         QQZBtm3gYNd2iq5VDameXOcNb4T9FuzCJTv3FdyWsC4W5ThYscCjbUakmBam+eDtmH4k
-         e/p2/+VjcQ3Xbj5FhE+hpb37b7Ni2cVciMEy6zGsVDooMzQ2nOFKMsDVxdue49jhRwae
-         41xA==
+        b=Ul2Yu6RXS6jErMx+OIWeaWCA6gbnbs6pTmIOadXD9Et5zqvErmyKfcOvc1c1rt5CRf
+         ByGN78qhjixtuT7Vduf9Lb0/50FfCsNwRl14QK7TnRY+rJxeSx0asF2TuEg/enRv8jNg
+         CUvK5XDy/zNEF7mwxfoWpaI1g5kS/0Ax/VyrvnvSSLMXyYVdgm5g1xZF0fz/rQKVxCDA
+         F4qv1zItKEPdLGKlHBtQ54hi28VnspL8oG7G1OSsMzAqxkLNyOGXZZFMEApFzyCYljQc
+         nCrerItNt41K8MDDB6OMriIbVeLCdvAKIwFGiaMW4LRyCzMkNPw03BGA67AnZLZk9PZU
+         nolA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject;
-        bh=W+rb5ahuC5cMZNxSBrSCRHIKS9+WM0Z0wsbXX/yNdiE=;
-        b=dbq6hCIJDMtghinoky8jlbIeiYZHT+qh5yYbpItitoyCLoPY+Fpv18LCk9LHzp2vp/
-         qU2vw95WMQRx0B3TWNpv/y/GbaZtTIglEsHvOpmRA5WSNKf4MlJ06HCyesT32hNz5ODy
-         /ilpHtsLT0Yt1xc6LmoZNSk0irGTR/DRnw43AQTAx8A1M7otByhjMb2dy46emDo5jlzJ
-         r4GPwsVd3hIVMVUrkzQ6Yb9/a0sIWzYCg6DwNElKJP3WDKyzVuNgjqjbKXc+iMCMoLwe
-         pZpVt0dbz8sMIJZrmRqBAWSR7MCdn8VWoy0J3zK6yCK9lu9/Ks2i9dUfvxeVxuilaSH+
-         zxtQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=K8YZ4MgF+5M62OV2MWLNX4R7GlAT4BRvFl/m3MAW3Xc=;
+        b=rRVc8OsB7h2AIZZb2g/vPTvZFLZwDRa8I8Tvb4Vamfh5XtxI+BdQJ7yXhpY/DkG5U3
+         QDVhmucXLK/EySsLkWKyfOtKh36XOgnvgl3WpKPpKR40pDYs7jL7VcvAc5auh85MOB7g
+         5O1j7XYsr00evQtY8UxnmVbTVW75uLuvkwybIE5bJ5IL0/poa/3DLEHWFuHWWA1juKMk
+         nYL41hVsnU43AYa1kVIvAJ/gLZ22/C64yQdF3xWokCqcF0nCsLHy36HOEjHeGDhq7EVK
+         lK6aTGwX0xlnyboh1oxp9iezGM3q4bCHormj85L8NCWH9jpimbfqp5EZoLx0H+ZXeuu8
+         Q2Hw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.222.194 as permitted sender) smtp.mailfrom=helen.fornazier@gmail.com
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com. [209.85.222.194])
-        by gmr-mx.google.com with ESMTPS id a5si34952pfd.5.2020.10.13.11.01.15
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i3QDqItW;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id z15si29574plo.4.2020.10.13.09.34.41
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Oct 2020 11:01:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.222.194 as permitted sender) client-ip=209.85.222.194;
+        Tue, 13 Oct 2020 09:34:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.222.194 as permitted sender) smtp.mailfrom=helen.fornazier@gmail.com
-Received: by mail-qk1-f194.google.com with SMTP id s7so544097qkh.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2020 11:01:15 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=i3QDqItW;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x443.google.com with SMTP id j18so113633pfa.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2020 09:34:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=K8YZ4MgF+5M62OV2MWLNX4R7GlAT4BRvFl/m3MAW3Xc=;
+        b=i3QDqItWrkKOCprcLp9TJDZpyaE7BLC4OGyElvBu2laiUvn4CWv0xlCfsFq1h8rL77
+         Y1P30P5Adm2yKV2FKIAkw3168y4zPBmL2Zmn1snSxdEFaFDc8FuSjDAnTC0G/uIx70CK
+         gqr1WvEn24kzASbhWNoFbFtEFkbx0SHiv4lI+bcMZdFwlb73TUJ3SD6pR6ECAnEAr5XQ
+         vLlMACT8oGi9kfIZBln1U2OeSsdleBNWq7kaLTK24GrucEfRnLFayGGwQYjl8MBd/Y4p
+         a9KIyL4QlasXzMZbWOkD3Ima+GCz2FRvCQGUMvVWBMXbPQ9HbhtDkc80vr2kK8TOeHFs
+         mY0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=W+rb5ahuC5cMZNxSBrSCRHIKS9+WM0Z0wsbXX/yNdiE=;
-        b=PlB+Ctw4gZ7YB7tGB+Ve/Rtnoo5QdpHv4Cs7qd4jF8zMSdUQOJOJYHLj54JNIuoiLV
-         b/5k+g/JaZ8y8nNDwavAANxcBo/3ziWslgHziQBg3oSTIBDB29ZOIXrIueTtCYR0+XSO
-         tRhzbDFiF3Shlb2W6AZAyPmIDQdEHGtBBsXTYD9mhmrmz+orBTT0bRjw0jPfHjmFR8dt
-         IkFPqEblv2ebHR/lxAX1e2brOZmFGm+xVhaKm//edMw0HNZ6tYlUF19ZC1IWbODkTU/Q
-         7Nza2s1STRuh52tvXHkA5gXWCHJOnjiAs/6iHo2arsUTWu+A3baigM7ohpEnf9rVYlog
-         dRfQ==
-X-Gm-Message-State: AOAM533wV7a7cge2bVzmDvyaDouINPleXPesw8bvAcfcVi/P7t5+eckL
-	vKVuoL3iJkaIRxUXT6sVR9Y8vLOQLkv5ZCwAjIo=
-X-Received: by 2002:a37:a751:: with SMTP id q78mr1147936qke.337.1602612074448;
-        Tue, 13 Oct 2020 11:01:14 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from ?IPv6:2804:14c:483:7f66::1004? ([2804:14c:483:7f66::1004])
-        by smtp.gmail.com with ESMTPSA id f64sm232545qkj.124.2020.10.13.11.01.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Oct 2020 11:01:13 -0700 (PDT)
-Subject: Re: [Outreachy kernel] [PATCH v4 1/2] staging: media: imx: remove
- commented code
-To: Deepak R Varma <mh12gx2825@gmail.com>, outreachy-kernel@googlegroups.com,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>
+        h=x-gm-message-state:date:from:to:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=K8YZ4MgF+5M62OV2MWLNX4R7GlAT4BRvFl/m3MAW3Xc=;
+        b=IHLN0LoigYAfdKlGMeyXTekXXVDjiEalTekG4UZUyG0MxMLwaxpN8BHw0nkQD3CpfZ
+         Iyq27DRAQ6AgCsKbuGUjL6AOB+qUj5B2Wt4MKuIFWcGAdQKkM3b/MNuaE1PjMf3YCZV1
+         TvBPU8v1k/qXB5EXsNP7EgfMnL7lBZ6fVRXGnMqSoyC9bTg68Jjs21pQ3y3anSxKWnJx
+         hlbwj/Lfz/4FNkhCPF70p2NcHNDm2p3mjDBqIPcYJP5lNeudYW7ZQyeD+MKkmAq/IePI
+         PwqpLIeR7QlcBqlp07pJgJP5Yg+LdOoWR5tzwm7hyPZDamjR4WlATKZe9i+PLrdElhPV
+         aVoA==
+X-Gm-Message-State: AOAM530vZTdnp3qKC/rbAUAFlxAj6GrAeaOi0v6qCamKxvTh8s7D9YjV
+	RwLkK1cznm+Ms+DKY4zQxKSXidYHPTSoMQ==
+X-Received: by 2002:a63:df42:: with SMTP id h2mr292441pgj.239.1602606880731;
+        Tue, 13 Oct 2020 09:34:40 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from ubuntu204 ([103.108.75.206])
+        by smtp.gmail.com with ESMTPSA id g14sm150971pfo.17.2020.10.13.09.34.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Oct 2020 09:34:40 -0700 (PDT)
+Date: Tue, 13 Oct 2020 22:04:34 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Steve Longerbeam <slongerbeam@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>
+Subject: [PATCH v4 2/2] staging: media: imx: remove unnecessary variable use
+Message-ID: <bdb7103094c6b83705d2bd87190d8c6e5a1d08d1.1602606535.git.mh12gx2825@gmail.com>
 References: <8dfbe49fbc7dbd9100f69b80b43f67504338ed73.1602606535.git.mh12gx2825@gmail.com>
-From: Helen Koike <helen@koikeco.de>
-Message-ID: <ad664fbb-1eac-b123-b1ce-07cb18d82911@koikeco.de>
-Date: Tue, 13 Oct 2020 15:01:08 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <8dfbe49fbc7dbd9100f69b80b43f67504338ed73.1602606535.git.mh12gx2825@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
 
-Hello,
+Use of variable vc_num is unnecessary here as it is used only once.
+Instead, the value can directly be used in place of the variable.
 
-On 10/13/20 1:32 PM, Deepak R Varma wrote:
-> Commented code in the "#if 0" block does not appear to be useful anymore.
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 
-As Julia mentioned, "appears to be" implies some doubt, I saw you updated patch 2/2,
-but not this one.
+---
 
-Sorry for the nip picking, it happens xD
-I advice that, instead of sending the next version as quick as possible, you slow down a bit,
-proofread, make sure you took previous feedbacks into account :)
+Changes since v3:
+   - None.
+Changes since v2:
+   - Implement feedback from Vaishali to simplify patch log message.
+Changes since v1:
+   - None.
 
-> The virtual channel is always treated as 0 once the stream enters CSI's.
-> This issue is reported by checkpatch script.
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> 
-> ---
-> Changes since v3:
->    - Rephrase Patch description
->    - Implement feedback from Vaishali & Helen to mention checkpatch in
->      the patch description.
-> Changes since v2:
->    - None
-> Changes since v1:
->    - Implement feedback from Julia to be exact with the patch description
+ drivers/staging/media/imx/imx-media-csi.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Also, looking at your commit messages, when you sent v2 of patch 1/2, you mentioned
-there was no changes.
-Unless I saw it wrong, but it doesn't seem you changed the patch description
-in this version.
+diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
+index 9320e3974d86..db77fef07654 100644
+--- a/drivers/staging/media/imx/imx-media-csi.c
++++ b/drivers/staging/media/imx/imx-media-csi.c
+@@ -1123,7 +1123,6 @@ static int csi_link_validate(struct v4l2_subdev *sd,
+ 	priv->upstream_ep = upstream_ep;
+ 	is_csi2 = !is_parallel_bus(&upstream_ep);
+ 	if (is_csi2) {
+-		int vc_num = 0;
+ 		/*
+ 		 * NOTE! It seems the virtual channels from the mipi csi-2
+ 		 * receiver are used only for routing by the video mux's,
+@@ -1131,7 +1130,7 @@ static int csi_link_validate(struct v4l2_subdev *sd,
+ 		 * enters the CSI's however, they are treated internally
+ 		 * in the IPU as virtual channel 0.
+ 		 */
+-		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
++		ipu_csi_set_mipi_datatype(priv->csi, 0,
+ 					  &priv->format_mbus[CSI_SINK_PAD]);
+ 	}
+ 
+-- 
+2.25.1
 
-Regards,
-Helen
-
-> 
->  drivers/staging/media/imx/imx-media-csi.c | 7 -------
->  1 file changed, 7 deletions(-)
-> 
-> diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-> index 21ebf7769696..9320e3974d86 100644
-> --- a/drivers/staging/media/imx/imx-media-csi.c
-> +++ b/drivers/staging/media/imx/imx-media-csi.c
-> @@ -1131,13 +1131,6 @@ static int csi_link_validate(struct v4l2_subdev *sd,
->  		 * enters the CSI's however, they are treated internally
->  		 * in the IPU as virtual channel 0.
->  		 */
-> -#if 0
-> -		mutex_unlock(&priv->lock);
-> -		vc_num = imx_media_find_mipi_csi2_channel(&priv->sd.entity);
-> -		if (vc_num < 0)
-> -			return vc_num;
-> -		mutex_lock(&priv->lock);
-> -#endif
->  		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
->  					  &priv->format_mbus[CSI_SINK_PAD]);
->  	}
-> 
 
