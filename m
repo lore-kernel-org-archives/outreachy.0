@@ -1,127 +1,115 @@
 X-GM-THRID: 6883028084998537216
-X-Received: by 2002:aca:40f:: with SMTP id 15mr13194143oie.44.1602594396184;
-        Tue, 13 Oct 2020 06:06:36 -0700 (PDT)
+X-Received: by 2002:a2e:8545:: with SMTP id u5mr10147945ljj.224.1602581667733;
+        Tue, 13 Oct 2020 02:34:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:4bc1:: with SMTP id y184ls189680oia.8.gmail; Tue, 13 Oct
- 2020 06:06:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsMF1NvYkfJjrCqNyYoxviyVoAnrxhHYTgGUBGi8qkYzeUUpLecn6q+6wsLIAEIj5CG7l7
-X-Received: by 2002:aca:d856:: with SMTP id p83mr14469960oig.57.1602594395008;
-        Tue, 13 Oct 2020 06:06:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602594395; cv=none;
+Received: by 2002:a19:c7c8:: with SMTP id x191ls781294lff.0.gmail; Tue, 13 Oct
+ 2020 02:34:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUDbD6l/93YeOQJIiqCSXua5kh71gQcaefqzlwJiSO9xe/wNz/rtvscZTJv1A1u7BaK+AQ
+X-Received: by 2002:a05:6512:1083:: with SMTP id j3mr10276337lfg.587.1602581665184;
+        Tue, 13 Oct 2020 02:34:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602581665; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jow2Bkxbj/9sPdi5XafDmkq6tl7goRsreuO1zop9Jloai9tDFnioPvW1QX0p25Mt0f
-         a7ru7V5Stxj+TlTDYaS85II6gqKlzlo7xPjUnleo3sYEzkZQUp/e6kzU63bdDx6DoZTT
-         M6ZgIVltq5+cUVudy6VgjNn8sOrLkyjJd8w82NvmyWvScSwWloskNYpTvopwpHaRwnXw
-         kHQ3Jmv8eR/MU+S82vfX/Na7lFD53UuMfFJFJxP6HxgDRN5GVPx2ocOlPOZK9ErFwVdi
-         9AgQ4hVS+XmgHNyxDegwXADAH8uZW75N52jIWmMFpO13So5cOjVlKi++ef1DSLwxEgid
-         40Rg==
+        b=VQy12TnR+LHvr5lI6lWIGxnRupQA+N3uQ677CV46d/YhVhGlwplrm2YoeUD0gKpr04
+         1jBgEhv8AxTPVbmu+La8+m0+MSxLYsoliwaWwQy617Pt98Mu83bi8yUovM6JnTXGuImI
+         ooY5tS1DzleexrDq+nNJTBjadun1tY8Dq8BxX5j95jEyMuIUB02PxYISGwwBaIQliBM/
+         2IhAQKqToNy64ID5Y7yTjn3kbd0Em7dZtQKUmpJXGo/KdngxtdYIFh2DK8UeUPohuVaD
+         IwuZY1p/U5pu+thZzXhC82yQ5ruNHhF7QDkrjJuKtcW6NzGL178c2YenbGhwvNGUH+OH
+         OltQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ctTiKMcCkNi1aFqzK/hgWVlapALxUUMPiyFiXKqw2xo=;
-        b=y0ecE+Qy6VenfKX2uHulT0Lb0ekHG/omMaVbIP+5uwwzTSz8hQWedL23pVCDNrMmNi
-         IGu/HjaeVyzCUGSmdPcZEmQGXxVnPzPz1luvV+kCUcPM+bPzemWqg+CoFVgYnQFZTwzR
-         SH2EUCAXOlBFsq+XlPQYfAXtsu0y5Dvl3p+jFT3qHeKDLFL7yvkX8q8EHD6MAuucYkBo
-         tEwO3fjzusEIpVEyEx41q00z55b5OEFAOGGcDifJ3bqholEUJhpnM7x8bLV3TO0/nbRu
-         mwf5zbEHIHbkAr0Oh0b7YyM6ov2wtma7A4BJ++YfW2NTlRRKcifhLZZLtcP9sgy30R9Z
-         mFTA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=i3jK67/3AMQRAz/m4ZvcxRqm9OlssNGTEwgRPsXDObs=;
+        b=wI77fvEZLiVEfFZ6XTW7yTJzoJ63+Nrc3gngeUflli16i3F0UFt+fAdYFmLm4qjis/
+         8Gp+xQA5KoViZRduW1Oc9ItWEXAGJ8DCDaAIRk07rAwOKHDBJqrbrYhDRuBwWIJg9ozK
+         LxTj/uFKJJMvMrCs3sPRCrMlhMSKjOvasK5p3E+FG+C1x90MI3hxR4pcgHDJoe0z9jC9
+         1k9EaAlbPoPKY3SH4AedFHhID4LEgS18T3C4FOYFIC+4raKRttAglfj/e3qhmc+zrf+6
+         1opbBf/4U4c0GzBZ8zJ58j31qJ8Icm25jp8cMdhJYTTzXFPVVDJtfGQjcp9sZHZvI1gs
+         sEjg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kT0fIgRN;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id b15si897470otj.3.2020.10.13.06.06.35
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a16si63192lfr.5.2020.10.13.02.34.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Oct 2020 06:06:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2020 02:34:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kT0fIgRN;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id t18so10670726plo.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Oct 2020 06:06:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=ctTiKMcCkNi1aFqzK/hgWVlapALxUUMPiyFiXKqw2xo=;
-        b=kT0fIgRN0m9nDD3ooLwR9PpmAThD+OoTOgjGnmazmtBF/ZzBNPl/vqxc1MI1Fo1Q/e
-         BqF2s27rRRqFRvRStHykZl++uf+/BarbRGLNv7nq0XcgCbMZAC3gbhkwCvTDgCPF8GmD
-         S+5rAzrVY6RpknW7aJpdG0abBiq+bCDsBRzMbVJKyP5vI2rUW9WfCQynfiVEhngFUyIj
-         YNcVd/iCSYYZF+mqBpGRtI+aOPfzkHXX3EaLJRytFNCNpfLNdz56XXqu6ZxkJnR6ICL5
-         pjvGkNXwuT2nlDZGC0hz5xJPJZeJejkOYdU6mbdOoq6FV7eyHwbf9qiklLkLf+CSk5rL
-         /U2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=ctTiKMcCkNi1aFqzK/hgWVlapALxUUMPiyFiXKqw2xo=;
-        b=PvTu0H+MD5uBLXdChp5D+/wd+gWLSAxnEyO7uFO1E5repDV6AgXBw4y7Z4BHcT3kWE
-         iMc/zNh138GM7XvqLTiMIiAZ0fjN3oVOWZG/YJkwpwxWQHpmWr2VgkTSE7znYu3hbo2s
-         aX4CDWULYiiMQ/rT2ScEvdBzkRj5FwOx12HTmLg/dtMRuwtzQQTBLuDf69AjtgXwXZxi
-         ZajuMGzLdMPJ0COaH8G59yISYvLwsutEzwNX8qq0a8OszzmfjdcNzIxolsQ/34nLFZ23
-         QiSvKBduAzdYyIz/NRc4sAz7SB19JHcvO4EpC1U8ojJ4b0rhAdfHSBvXN2TAtONxShPk
-         2sIA==
-X-Gm-Message-State: AOAM531DNePuaVCsVetm/YCj5/WZCqMZ6IeltydzJ1Q8I5PHzgaLSKZh
-	Qv/VA6Hp+V6JXzh4PyVqKosyylaHIMxBlw==
-X-Received: by 2002:a17:90a:fa8c:: with SMTP id cu12mr23234311pjb.140.1602594394433;
-        Tue, 13 Oct 2020 06:06:34 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id e11sm23341150pfl.58.2020.10.13.06.06.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Oct 2020 06:06:33 -0700 (PDT)
-Date: Tue, 13 Oct 2020 18:36:27 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Steve Longerbeam <slongerbeam@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>
-Subject: [PATCH v2 1/2] staging: media: imx: remove commented code
-Message-ID: <f484d024b14104cff4f54bad3da52151847a0b28.1602593826.git.mh12gx2825@gmail.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.77,369,1596492000"; 
+   d="scan'208";a="472326373"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Oct 2020 11:34:24 +0200
+Date: Tue, 13 Oct 2020 11:34:24 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deepak R Varma <mh12gx2825@gmail.com>
+cc: outreachy-kernel@googlegroups.com, 
+    Steve Longerbeam <slongerbeam@gmail.com>, 
+    Philipp Zabel <p.zabel@pengutronix.de>, 
+    Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+    Pengutronix Kernel Team <kernel@pengutronix.de>, 
+    Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: media: imx: remove
+ unnecessary variable use
+In-Reply-To: <fe845478640c3b498fe2fd9a815e65dbb720701e.1602579668.git.mh12gx2825@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2010131133080.2674@hadrien>
+References: <f484d024b14104cff4f54bad3da52151847a0b28.1602579668.git.mh12gx2825@gmail.com> <fe845478640c3b498fe2fd9a815e65dbb720701e.1602579668.git.mh12gx2825@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Commented code in the "#if 0" block does not appear to be useful anymore
-since the virtual channel is always treated as 0 once the stream enters
-CSI's.
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 
----
-Changes since v1:
-   - No change.
+On Tue, 13 Oct 2020, Deepak R Varma wrote:
 
- drivers/staging/media/imx/imx-media-csi.c | 7 -------
- 1 file changed, 7 deletions(-)
+> Variable vc_num usage is unnecessary as it appears to be used as a
+> constant and least used. Assigned value can directly be used in place of
+> the variable.
 
-diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
-index 21ebf7769696..9320e3974d86 100644
---- a/drivers/staging/media/imx/imx-media-csi.c
-+++ b/drivers/staging/media/imx/imx-media-csi.c
-@@ -1131,13 +1131,6 @@ static int csi_link_validate(struct v4l2_subdev *sd,
- 		 * enters the CSI's however, they are treated internally
- 		 * in the IPU as virtual channel 0.
- 		 */
--#if 0
--		mutex_unlock(&priv->lock);
--		vc_num = imx_media_find_mipi_csi2_channel(&priv->sd.entity);
--		if (vc_num < 0)
--			return vc_num;
--		mutex_lock(&priv->lock);
--#endif
- 		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
- 					  &priv->format_mbus[CSI_SINK_PAD]);
- 	}
--- 
-2.25.1
+In the log message, I don't understand "least used".  "appears to be used"
+is also not very convincing.  If you are proposaing a patch for something
+you should know that it is correct, and "appears to be" implies some
+doubt.
 
+julia
+
+
+>
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> ---
+>  drivers/staging/media/imx/imx-media-csi.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/staging/media/imx/imx-media-csi.c b/drivers/staging/media/imx/imx-media-csi.c
+> index 9320e3974d86..db77fef07654 100644
+> --- a/drivers/staging/media/imx/imx-media-csi.c
+> +++ b/drivers/staging/media/imx/imx-media-csi.c
+> @@ -1123,7 +1123,6 @@ static int csi_link_validate(struct v4l2_subdev *sd,
+>  	priv->upstream_ep = upstream_ep;
+>  	is_csi2 = !is_parallel_bus(&upstream_ep);
+>  	if (is_csi2) {
+> -		int vc_num = 0;
+>  		/*
+>  		 * NOTE! It seems the virtual channels from the mipi csi-2
+>  		 * receiver are used only for routing by the video mux's,
+> @@ -1131,7 +1130,7 @@ static int csi_link_validate(struct v4l2_subdev *sd,
+>  		 * enters the CSI's however, they are treated internally
+>  		 * in the IPU as virtual channel 0.
+>  		 */
+> -		ipu_csi_set_mipi_datatype(priv->csi, vc_num,
+> +		ipu_csi_set_mipi_datatype(priv->csi, 0,
+>  					  &priv->format_mbus[CSI_SINK_PAD]);
+>  	}
+>
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/fe845478640c3b498fe2fd9a815e65dbb720701e.1602579668.git.mh12gx2825%40gmail.com.
+>
 
