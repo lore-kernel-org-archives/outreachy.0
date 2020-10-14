@@ -1,124 +1,94 @@
 X-GM-THRID: 6883182191980838912
-X-Received: by 2002:a9d:7453:: with SMTP id p19mr3694753otk.158.1602684223631;
-        Wed, 14 Oct 2020 07:03:43 -0700 (PDT)
+X-Received: by 2002:a05:6638:d49:: with SMTP id d9mr1806281jak.85.1602651294083;
+        Tue, 13 Oct 2020 21:54:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:cd96:: with SMTP id d144ls107664oig.5.gmail; Wed, 14 Oct
- 2020 07:03:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz5fKfGvn0U1FTLT+N4LhskRRfI9NrC+To8xBx/H2J5x1cbEPqkbwsr/h7+NgvBtxTJ2TK4
-X-Received: by 2002:aca:1110:: with SMTP id 16mr2389767oir.12.1602684222345;
-        Wed, 14 Oct 2020 07:03:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602684222; cv=none;
+Received: by 2002:a5d:8897:: with SMTP id d23ls265326ioo.10.gmail; Tue, 13 Oct
+ 2020 21:54:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy58Qo4OnwSTKbYLBIbGn4dugzS1DoSAY8PM1O7KRcd9xDVZkK6AUEHbnZT388lBNwQOymA
+X-Received: by 2002:a6b:9243:: with SMTP id u64mr1543755iod.197.1602651292795;
+        Tue, 13 Oct 2020 21:54:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602651292; cv=none;
         d=google.com; s=arc-20160816;
-        b=NyyGL9mUPbgQPMehM3Em43QcpdknkaKy0j4KhsJ0MIvb9RXkLur7HAP61taa9JHivZ
-         j17O3bxv+qg65vkEw8hahlT8kfP5c2iJTjRFyF53LsOfDmYCkZjZZ8CiP7RqoPEyo5eG
-         T3hsW33u8xMricktNSwqkzekuYJ9KtosREWHLAK+gZ0I56u0XvuWo1klqdspQGqKIwC2
-         JKUSB2XYIEM/oJ0QUL6H4Umkl5wpY6dslEA1zj+mUAlbrJtsZIraOQv3zXQcke34n9vO
-         qpbw9DM8HAIyltc8d0IGdS0VjhroaC5uEgcB15bACaKAo6DH4lZ3F43mLRPcgWSOKPY3
-         FKGA==
+        b=CnbMgqrW0SyAAC9d74dxBt63YF+02onMXYSP9ZpD/xZFgFOGFNWD6aLssK2/IpN+5N
+         nGFccdbQjA0XJRVrhIuHB2Rx03mUMYU3EUVb4d2uNDWdRPVzDupt8yM3WtrSfeBrdGFf
+         NuG2Eranb05CNNIHMqXCGS1eBvrqHNKHOTvuspcXPqjeX6U8N5ZA0LoYuoiO/kLk5S4i
+         nYopfXR0oAeLVB0K2tI51ZMwj2oNNyBp7Uk3E5+bhml//6jVeBoGfWF1vuB0m2VCuAit
+         i/XHBjG1S4z19mkUJQjOaNjz2igHEfyJVC9xFXrHSxVz/KmKUyzyJmuAvHDyf6LhBLq5
+         q0ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=ajg+UZ2K1P+ptq0WRygO5nz6ExvFd0AChLe9NP0k0lo=;
-        b=eP1dw13Zrt6Ia8KwccGF7Z38CcxUpg+VrWODUVCObzdov1fdFOsesd6+5MVMmN9zYJ
-         RzO+2pcsNfC6nWAusueW34fzIlwPXL0WwJ/c078cSMK+1H4wpt5kPIwxckPfhBhS362L
-         Hav+pyhShYVgWesW3MUzZkPK4AxUd3MqwMx2yqUEir/JFDkIq8h23Ws11snAJZuZjW1o
-         /0WcV6vs79P9brbcwuMT2mVnFE75yB4/3Oj7/p2rW5X2QC8DklDhfKnZM3i+iBYtYqLs
-         6joubRcrY4byWbvDFHFxNl5QM2jJgHt+smwJ17F/zYhT7z0lE3rhC6cwq+eZ0cXXsi/5
-         Md+Q==
+        bh=dzTAMEAd0v6kyNlfes+fu5NsQv5ql/na/psFvk3q7ao=;
+        b=q9fJOJLdurijtOhOU9y+YwYrhuQibjLBAI+f69ad0y5TSrXIEIMlLG6vVCWMHTyMUH
+         QCmXSMVooOuKsxfMtvF19107hIoihPjzjg6FTr4XAvha0GexDaQH31aANs/jk82ntvre
+         w5kEDnA6e49qtQgC5tAScCcnfaoNtl2zuu0u13aRR8AirdQxpPuWcgFnIHuS3ErNrWG3
+         ldvXwaA0xIYD/FTAgwUD3ieBh4/d+eEhD4I2lOgXFg8qa9Fsm5f/UL87pMkyo4XcnXhw
+         PmRIrwXcmE5ljuzLSs9tBjVux47YX9BltjQ3Vk1khs92Ynj0+F2QnSkrvTNXyN92/MsU
+         jGyQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f5VUtOyP;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id w26si185096oih.1.2020.10.14.07.03.42
+       dkim=pass header.i=@kernel.org header.s=default header.b=NauBoTjT;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id e19si161593ill.2.2020.10.13.21.54.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Oct 2020 07:03:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Oct 2020 21:54:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=f5VUtOyP;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id v12so1799646ply.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Oct 2020 07:03:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=ajg+UZ2K1P+ptq0WRygO5nz6ExvFd0AChLe9NP0k0lo=;
-        b=f5VUtOyPooRocMUmRfiwtH7QlMJH2A+tmeHNUBxGT9sAlCDnzNFwlZZDa5BIKHMIIQ
-         xa6Wn+/nk8NvnLngqVrF2AzyFu/E6DUFqgsPHej6wHlR9OgXHOjkseB+t91R3JB5psuN
-         7nU+WUIqyOLqryj5lAIDMFE/Go1kUKVx/W3Guf1V/JOygaSduVcpvPpoEhyrzHW5oWI9
-         nRllRXyYp+vw7l/RR0kgG5abLiL61zexyUMgU71DJxriqJ6Wq/1ixN4FWB2Er5XDHArk
-         OkdeR58B+j1zlBXIo7kyhy4za6iESvT/e48c1lLaBQcs8I/VeHEgS0fsnzSnFLiPyjGi
-         Kjyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=ajg+UZ2K1P+ptq0WRygO5nz6ExvFd0AChLe9NP0k0lo=;
-        b=SS4TWEyS6b9vRyoRSQFm66lM+Pbkcy7neicEZ/oEfULUto/kbTCDdfDYO0KQ7a1i7U
-         PySg25PdpXLnuD0eHYBIn1JoldzNpbvIRHBm4F3Pz+ihVC9omkfB/3K/x+axuDJdluOp
-         S2rRIao7GTBlSTkf78s1NGEWObUf1tObFkXHHa79GbtKrZX491jxYcgEUT3SAU5W1AN1
-         iTHH2GJ7ZbVVG6ewLGHzc7QKkS0Agf8hnqAb2vW38cRdgpZK8elYdjlwtqrLfENvQQKK
-         zGnsZQuNMi5FxIcVQ363z53Ha4Lv+FTeceGqGRTLP4k9U7Hph5O8uMPaP9xLRmqpYcwo
-         aKyQ==
-X-Gm-Message-State: AOAM533nCv1vJfPK5ZJh3nZQcnQUUd/8xHpxIHBFPvnEZO3t5T6ytLEY
-	78oP/TmacBA7F7BXHYViF6Q=
-X-Received: by 2002:a17:90a:1596:: with SMTP id m22mr3741476pja.189.1602684221638;
-        Wed, 14 Oct 2020 07:03:41 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id t20sm3540763pfe.61.2020.10.14.07.03.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2020 07:03:41 -0700 (PDT)
-Date: Wed, 14 Oct 2020 19:33:36 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@kernel.org header.s=default header.b=NauBoTjT;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4B4D520BED;
+	Wed, 14 Oct 2020 04:54:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1602651291;
+	bh=/PpP/I6y7YTr/UF4bmfoVzb5tCadMi5efMN7RJol32I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NauBoTjTj2k0E8Htf1Ii3Dg/WZAfvTim0ulIxvKHSJlovNAe17oMglLGM3fSfaXJ+
+	 LAL2e8XXNg+FDdw9lYrN43XWdPxkVTqd+m+ptgUOKXbwsMADs8tTgYivu3cGRvu34M
+	 /Mwd2lhK53yNKUwSsuzyoAqBKcaV1Fs3SO96xdTI=
+Date: Wed, 14 Oct 2020 06:54:49 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Deepak R Varma <mh12gx2825@gmail.com>
 Cc: outreachy-kernel@googlegroups.com,
 	William Breathitt Gray <vilhelm.gray@gmail.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
 	Bartosz Golaszewski <bgolaszewski@baylibre.com>
 Subject: Re: [PATCH v2] gpio: 104-idi-48: improve code indentation
-Message-ID: <20201014140336.GA3328@ubuntu204>
+Message-ID: <20201014045449.GA347654@kroah.com>
 References: <20201013190212.GA85788@ubuntu204>
- <20201014045449.GA347654@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20201014045449.GA347654@kroah.com>
+In-Reply-To: <20201013190212.GA85788@ubuntu204>
 
-On Wed, Oct 14, 2020 at 06:54:49AM +0200, Greg KH wrote:
-> On Wed, Oct 14, 2020 at 12:32:12AM +0530, Deepak R Varma wrote:
-> > Address code indentation warning messages by checkpatch script. Combine
-> > split function parameters on one line. This also resolves the "use tabs
-> > instead of space" warning by checkpatch script.
-> > 
-> > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > 
-> > ---
-> > Changes since v1:
-> >    - Correct subject line per feedback from Greg KH.
-> > 
-> >  drivers/gpio/gpio-104-idi-48.c | 6 ++----
+On Wed, Oct 14, 2020 at 12:32:12AM +0530, Deepak R Varma wrote:
+> Address code indentation warning messages by checkpatch script. Combine
+> split function parameters on one line. This also resolves the "use tabs
+> instead of space" warning by checkpatch script.
 > 
-> For the outreachy project application, they do not accept patches
-> outside of drivers/staging, as per the documentation.  So I do not know
-> why you are sending a patch for this to the outreachy list and not to
-> the "correct" list for gpio patches.
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 > 
-> Please do not work outside of drivers/staging/ for the outreachy process
-> at this point in time.
+> ---
+> Changes since v1:
+>    - Correct subject line per feedback from Greg KH.
+> 
+>  drivers/gpio/gpio-104-idi-48.c | 6 ++----
 
-My apologies. I definitely missed the directory track. Will look into the
-drivers/staging only for now.
+For the outreachy project application, they do not accept patches
+outside of drivers/staging, as per the documentation.  So I do not know
+why you are sending a patch for this to the outreachy list and not to
+the "correct" list for gpio patches.
 
-Thank you,
-Deepak.
+Please do not work outside of drivers/staging/ for the outreachy process
+at this point in time.
 
-> 
-> thanks,
-> 
-> greg k-h
+thanks,
+
+greg k-h
 
