@@ -1,97 +1,147 @@
-X-GM-THRID: 6666346191524986880
-X-Received: by 2002:a24:6f15:: with SMTP id x21mr15338664itb.2.1552129674837;
-        Sat, 09 Mar 2019 03:07:54 -0800 (PST)
+X-GM-THRID: 6884255134893735936
+X-Received: by 2002:aa7:9358:0:b029:152:b349:8af8 with SMTP id 24-20020aa793580000b0290152b3498af8mr4842346pfn.9.1602865554939;
+        Fri, 16 Oct 2020 09:25:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:5a55:: with SMTP id v82ls3587824ita.0.canary-gmail; Sat,
- 09 Mar 2019 03:07:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxglZv2SyRZWd56TC9DYmyHn369koGDLJ2uQtYIAd4LnBZ5/RuFkEU1/A4mnjhXwX1KZj/6
-X-Received: by 2002:a24:1452:: with SMTP id 79mr15305592itg.17.1552129674017;
-        Sat, 09 Mar 2019 03:07:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552129674; cv=none;
+Received: by 2002:a17:90b:709:: with SMTP id s9ls1605903pjz.1.canary-gmail;
+ Fri, 16 Oct 2020 09:25:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzSA1Ph7YhOdZr5QifAJW2b/k8jX4DhV5WbQgnOGTIq0kwJeX/f4C7wQQlRo1QDo42rtFD8
+X-Received: by 2002:a17:90a:3486:: with SMTP id p6mr4973340pjb.23.1602865553229;
+        Fri, 16 Oct 2020 09:25:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602865553; cv=none;
         d=google.com; s=arc-20160816;
-        b=qKr9C9o1L3e5oKr//lsC+EhHl4fzmD9TEnu72cVQRdFaIDg/PS0h0lCBKgLGDKs09Z
-         Q+VKYYjsAflUdjuhrqi0reukPHbNUxPEvVQN5R4tUfw03akw0H1bMWHTgbNUGgkbkZXP
-         crK2Zd4x8X0ppGbi8PFnAoXcuIjScwncQlDoG3fs5AnWq7Qwauu6n22SknnUDL40L8g5
-         UIWGuXHyEDFsMJnQXFE2BWfrV80PncB95kiAOVzjIi5UzrSpsqe2KNlvrL9BGJHJX28O
-         0wd1AbrFrzgDG5YPOxVUYLo0uvyQFlx/LSbSdL6LNe+Y3p0qnGQXw2RonlS82F53bOkB
-         9j2A==
+        b=N8Qml3fPqKEpS8fSkRJQfrf3KSG+21sZlfErLdJVTXDeMM/a2JSjpyNc4boJ+unzv2
+         xAGQhlpMIe2dopeMZgsv4Aqe7PlZvr3sK8AgmZXRIfmgd6gCr7/D2qn80z0HcboQHBpU
+         fQNQntWcpD2Z/85mVqLYYm6xyJz71yWXKdQ30Vlz2vvgVNbA0vizSMN9Inhqr2mSRWAS
+         jQk8R4gYg46mxx3DYALDBpjNxqIiXV0R5La5QiTmlOkxAs9hPSm+ihPJZkKq2WhSfU9v
+         go6xkVqnsHZDEUNcwUtnhOgqwD67Ju8pe27PFzKUBh4r3iPV4HbxlmsNppBYmbUj8c83
+         YsaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=P8W7lh7oXLFiW1/79kC5gAcXrsxZ258lIqpBQ1Fpa60=;
-        b=GnSroqXmh+UZj0HEK4JNo0k67tce6bG2J86gQX+28z/vmyMIFnekbAnAU1LFWp6orz
-         qlxh5+3c1afq2izz7za/JiwHmKs3F+8+yMJ//SmqjIwOqv5lLC4ck7z5q81bViPplzPJ
-         B+N5CYQKBvgtZH98DL9WrRC6eUmtwWWo+O8CxoPjY9RosDFp+uX5jmkRAz1PRPCeVExD
-         MBTW3pc+c9mYJPiB+97Xpg/WFVxPaKy97OALWooCY+Fm9k2rdK1nsEp5dnl6lyZqXHSw
-         dbQV8QGe+T5jDJGdB+Gh1xXvmM+8DrCqb6kmUmGqCSVsLW0utjv2Uwx4QpZZT2aCVhl1
-         wEjg==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=jAVHaOM5Zzgb2taEOEKK33Jp1Nn1KMWuW0ONRsCJAfM=;
+        b=upiFAPK7sXTdB5IH71wnd7V9FeB3LivG3eA5uwo/C7zBn5qCJz/Bt6X7QTbAxj7p9a
+         vsdBO9jYR3keCoGgGq9oI+GntwRWxe7Kd4Vwaxt2Yd9jup82USuHtW8UBKBXNKdi+CIx
+         rXaGNka2kVJ0hHprUxsKDy6+Y35lubg5KAR6soAAm/pGLaOjpru4rPfeAt0yraT7vl16
+         AdtTkHbk4HHiHM/y9xdiGl1Qs58xkroXDxTiIJrMcarShp6YlBRd4M711QMcB/MND679
+         KN3rt/sCUeTC80+tU/FWDhSTJOjLbpWGsAVLp9oQb+VnGSU4WeikEMkxXWfY/zczze8Y
+         jmQw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I6dtbfgI;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lGyh7t8K;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id l23si9563ioc.2.2019.03.09.03.07.54
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id q2si202129pfc.0.2020.10.16.09.25.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 03:07:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 16 Oct 2020 09:25:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I6dtbfgI;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lGyh7t8K;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id u65so229546pgc.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 09 Mar 2019 03:07:53 -0800 (PST)
+Received: by mail-pl1-x643.google.com with SMTP id 1so1565351ple.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 16 Oct 2020 09:25:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=P8W7lh7oXLFiW1/79kC5gAcXrsxZ258lIqpBQ1Fpa60=;
-        b=I6dtbfgI8Vbbw3gTdjsNz3MlQznK4vCDf1TWqvVb9DUWp/+uZbT6L9TXZstG6to4t/
-         ELU0sHO/l5Se5hdFu0IM2R2clQyt4mbNG3flz/NeEc6VtLS8Mo9C0InGXCrrmKSeXQn/
-         ML6ew9aHwltt3KQmy6uckojDUNda7cWKlXEMkDvIh64yGq8xILgnQpQgchzw8Qk1Me6n
-         mrGbScqsL8oJYoN29uDYad/d8x+Rm8GJ65PWqO1g6I3mYQnbScCWfDgZO/qJCzSjysJM
-         yftepBcbFv7iAVMl/ZMo0CWMrclmzQDTJwn1sJD1lCKpjeEdXZyjJk9oaHxh8vO1CiXj
-         F9JA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=jAVHaOM5Zzgb2taEOEKK33Jp1Nn1KMWuW0ONRsCJAfM=;
+        b=lGyh7t8KgjNul0zO9Eglwqn/uAUdj1R3+unGPyD9ZY+1in//bkSnkDeufOoINKdhhe
+         T7jIy8teSKUWE5uR9zP021JriVvmYzSKQlAppIWEJfFZ98HnoPP4fzyt3sJx7e7BsGGs
+         E7ulH+dJTTIES3ZNcmt/zA6hkCOzChMox99u20YyyVmnrdM7l33li52++EWbcaHMi+RO
+         EQ5B4bzOXFFWBr+Dfj+Mg/US+Zr4S7PYs7AQq5nI+tBKAot16aP0nQvbnTqRPXvl7Zom
+         ywtjlguZtK+HhIsw9xgN6qKrr/Mf6JvlrOPzb/GzHo5vLKE5/K88VZOcz29lDBpIGYbM
+         FHsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=P8W7lh7oXLFiW1/79kC5gAcXrsxZ258lIqpBQ1Fpa60=;
-        b=JiYI01tB6VAgPL0rDDVBE306pXjPs0ZKZBD4J9+uZ4TQyzYhFpWvHVWuZISjG2mvi7
-         az9DL6Spw+2DnYfw1L8sZHBCLvGW16DFO0QCIjgz3d+/D7hN+E1zt7m3hOhkTY2FFmVh
-         5VYTQ9YdXG8ejMM9voqvP5Cx7wGi2Iqb+pqSyA+U2xxsKONEhLJ1/KGnD26K8aHv8OQE
-         gt87DzTdnVnn0u6UictfdUiA/54pvf4PhlMf9taVhd3B9uoZc0wNr1m+7CYtAhOKlaZ4
-         oq6Zxs/G7gJZyrKdAGw3MUDXyNHYpUgkbjaU7xtU9y6XMLqCkLl/r4pznOn3I1jwpwTQ
-         Aoaw==
-X-Gm-Message-State: APjAAAVk4/60CaU+t8aqi0y8RQD0hrA+M0BVFugRzmjN+TseqsekZCXN
-	XHRzAd2XBuNwLmrAlKzjWrg=
-X-Received: by 2002:aa7:8b0b:: with SMTP id f11mr16368537pfd.123.1552129672827;
-        Sat, 09 Mar 2019 03:07:52 -0800 (PST)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([157.32.145.236])
-        by smtp.gmail.com with ESMTPSA id y37sm1860732pgk.78.2019.03.09.03.07.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 09 Mar 2019 03:07:52 -0800 (PST)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: adham.abozaeid@microchip.com,
-	ajay.kathat@microchip.com,
-	gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH 0/2] remove unnecessary local variables
-Date: Sat,  9 Mar 2019 16:37:41 +0530
-Message-Id: <20190309110743.41443-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=jAVHaOM5Zzgb2taEOEKK33Jp1Nn1KMWuW0ONRsCJAfM=;
+        b=XemeesDGDMvO5A8Pj0swc+z5vTt5hMfM3caUbZ0LarRIdDBJ24eZ0YXEnpP1DnNj71
+         zI9uGp+EfV4v2ufh+MOkWkFlblvPH7pj7FlUnE5BgHtWxoKIo05dlPmjaUlyZM6eQ3N9
+         JrueVxJfyxPCQdW8xBeF9jknY4d86xqBMGgcHimKNmRMOJvV7hMeT9aylOyUL6q+JdBg
+         P56ck0Tr/wlAgIKsWuV8FsJHhKgkADikSCThEFKKch5ytviPHXu1Rj+0yu/Jw2CPhbO1
+         T01wCdAOSvIGXqe/BGvZoZ1lIWsGPiRzZUT7EnkInuFJiO9jKkPDRUo13mX1793krrdd
+         +7Gg==
+X-Gm-Message-State: AOAM533gDiR/cvIvBZFcU/VMB074vmr27fvL8rSYDFzYJCc1IVgtc2ID
+	u3ZGwAv197lPtm0cGiVMSEhUv4SpfXSgjw==
+X-Received: by 2002:a17:90a:f187:: with SMTP id bv7mr4958528pjb.198.1602865552755;
+        Fri, 16 Oct 2020 09:25:52 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from ubuntu204 ([103.108.75.206])
+        by smtp.gmail.com with ESMTPSA id b3sm3311804pfd.66.2020.10.16.09.25.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Oct 2020 09:25:52 -0700 (PDT)
+Date: Fri, 16 Oct 2020 21:55:47 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Larry Finger <Larry.Finger@lwfinger.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: mh12gx2825@gmail.com
+Subject: [PATCH] staging: rtl8188eu: rearrange lines exceeding 100 columns
+Message-ID: <20201016162547.GA18073@ubuntu204>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-This patchset removes unnecessary local variables from functions
-wilc_set_tx_power and wilc_get_tx_power.
+Rearrange lines that are more than 100 columns in width to make them
+more readable. Issue reported by checkpatch script.
 
-Himadri Pandya (2):
-  staging: wilc1000: remove unnecessary variable ret
-  staging: wilc1000: remove unnecessary local variable
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+ drivers/staging/rtl8188eu/core/rtw_debug.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
- drivers/staging/wilc1000/host_interface.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
-
+diff --git a/drivers/staging/rtl8188eu/core/rtw_debug.c b/drivers/staging/rtl8188eu/core/rtw_debug.c
+index 3c0d20cb9c6a..11198d43a371 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_debug.c
++++ b/drivers/staging/rtl8188eu/core/rtw_debug.c
+@@ -86,16 +86,20 @@ int proc_get_read_reg(char *page, char **start,
+ 
+ 	switch (proc_get_read_len) {
+ 	case 1:
+-		len += scnprintf(page + len, count - len, "usb_read8(0x%x)=0x%x\n", proc_get_read_addr, usb_read8(padapter, proc_get_read_addr));
++		len += scnprintf(page + len, count - len, "usb_read8(0x%x)=0x%x\n",
++				 proc_get_read_addr, usb_read8(padapter, proc_get_read_addr));
+ 		break;
+ 	case 2:
+-		len += scnprintf(page + len, count - len, "usb_read16(0x%x)=0x%x\n", proc_get_read_addr, usb_read16(padapter, proc_get_read_addr));
++		len += scnprintf(page + len, count - len, "usb_read16(0x%x)=0x%x\n",
++				 proc_get_read_addr, usb_read16(padapter, proc_get_read_addr));
+ 		break;
+ 	case 4:
+-		len += scnprintf(page + len, count - len, "usb_read32(0x%x)=0x%x\n", proc_get_read_addr, usb_read32(padapter, proc_get_read_addr));
++		len += scnprintf(page + len, count - len, "usb_read32(0x%x)=0x%x\n",
++				 proc_get_read_addr, usb_read32(padapter, proc_get_read_addr));
+ 		break;
+ 	default:
+-		len += scnprintf(page + len, count - len, "error read length=%d\n", proc_get_read_len);
++		len += scnprintf(page + len, count - len, "error read length=%d\n",
++				 proc_get_read_len);
+ 		break;
+ 	}
+ 
+@@ -139,7 +143,8 @@ int proc_get_adapter_state(char *page, char **start,
+ 	int len = 0;
+ 
+ 	len += scnprintf(page + len, count - len, "bSurpriseRemoved=%d, bDriverStopped=%d\n",
+-						padapter->bSurpriseRemoved, padapter->bDriverStopped);
++			 padapter->bSurpriseRemoved,
++			 padapter->bDriverStopped);
+ 
+ 	*eof = 1;
+ 	return len;
+@@ -171,7 +176,8 @@ int proc_get_best_channel(char *page, char **start,
+ 
+ 		/*  debug */
+ 		len += scnprintf(page + len, count - len, "The rx cnt of channel %3d = %d\n",
+-					pmlmeext->channel_set[i].ChannelNum, pmlmeext->channel_set[i].rx_count);
++				 pmlmeext->channel_set[i].ChannelNum,
++				 pmlmeext->channel_set[i].rx_count);
+ 	}
+ 
+ 	len += scnprintf(page + len, count - len, "best_channel_24G = %d\n", best_channel_24G);
 -- 
-2.17.1
+2.25.1
 
 
