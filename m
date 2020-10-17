@@ -1,148 +1,187 @@
 X-GM-THRID: 6884588339702267904
-X-Received: by 2002:a9d:67cc:: with SMTP id c12mr6110588otn.359.1602946795736;
-        Sat, 17 Oct 2020 07:59:55 -0700 (PDT)
+X-Received: by 2002:a5d:69ce:: with SMTP id s14mr11156000wrw.39.1602946178622;
+        Sat, 17 Oct 2020 07:49:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:6319:: with SMTP id q25ls1310774otk.11.gmail; Sat, 17
- Oct 2020 07:59:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOlyK7YlHnc0p3ljuhgrS86cpi1Qk5XKsHwL0FmW8L6UFLxNLHiuBtwkQTi1EkmGW2Nt01
-X-Received: by 2002:a05:6830:19ce:: with SMTP id p14mr6564801otp.315.1602946794514;
-        Sat, 17 Oct 2020 07:59:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602946794; cv=none;
+Received: by 2002:adf:82ab:: with SMTP id 40ls2582026wrc.1.gmail; Sat, 17 Oct
+ 2020 07:49:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgLNju8BvrWgfe9lkzqt03yBirfHGIyWywuVbm6/w2bsOm9reO70rL8a3Bsk6l+9pf9c8u
+X-Received: by 2002:adf:e54b:: with SMTP id z11mr11024103wrm.128.1602946176728;
+        Sat, 17 Oct 2020 07:49:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602946176; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pvn+ZXXVu1I2f8FSCEnnGTwvC9BFhNw53eou2NUH259N1/Dm+8OS+sHQGDaisqXlOu
-         3AgBRabfn4xi1Tln42Gjycucc2any2avZbpLNsLm7U3+OggYuxhob126TpXuRWo/98Fg
-         9b8h5kg1NvDMyBMmbTV+oF5KeL5zIKf/KtTo0GqUU6SfhGzV0rlbMQupjPaHe8uEHlps
-         Ni4V2gjqqvDDZZ3XWiChVVj5lL1inKWjwsqGYIfIxeZEyyh3hjvDLuzUWNCm6PcnXV6E
-         LKRM4qZguNpysEyNBomJWBuPJTM0wRS9GJx0gLf6unaI0xnS3lGt4Ht6pXrS0BXephxB
-         fG2Q==
+        b=gMev65U9rKskGOBSYVT4J+Qo4HiNjn9q/FHyt1s7JSvAFx13XgccBFku81xDldvMQV
+         THl8R9lySpNLny7z7N3O4HJ4ygyqZqqDmP3mIX55Zr3aCEBT1yo+3LSUGesox4cxCWdf
+         pc0FBhCoozamwB9m5Srmpz6K0bmSiEybGLqE0DYBc1mZruMbptIYxbJYwpkJt++Njsp6
+         BZ5Bzqr/gHCsOHU+TztKbkJ9cMdhipLhyuMR9LYd9NZ0oblMTQOzkk2OoEvwki6qlF+t
+         grqgn+xboLAZkOEoyDeWF4U+vfeYLHMksmQkUovwcj3LTrj+5f/H1qEkTGWKw4+S4kcW
+         mgvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=/yuwmHvCETyKPzkhZ6ZGjV+2hICew3FWKkRp//N2BIg=;
-        b=bNQg86Iih1dvdhTYwwu9h21TyILmiCSWRciVrU7Tt9h/MidJCRkXGUBYZ4eX3t7rUc
-         K/L4qXHCendCnDU88f4x/5mYKDf56JK2Uytq6Ryh+2ierYwMBeACYaxogia1lgQukboO
-         xmQLanULWhuX/rlaxv6CkJxUc0IjEO8OZ+Mmq/VzON1d+yFKY5ODavc8v/JLY6rxfeci
-         GcKutJ3iICiVzqPkA+ixi9pWtt5f5iwoeW3WUSMElNo61U6QVWtkozzqnQ/Ug4udMlIu
-         TFmBShdOdJE4LPwhEwCzoGE2XDSoSbh0MMrHTO0Qfflvbz3F05Lj5mARRIyva4JQnNQL
-         j8hA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=/s4CSXwwcC72C5AwSv41KrlfE30I0mj8ro8DTf4VO20=;
+        b=o6OQepPQ/IB6j/CUSW9e40AMk/37E+jEkRY1922eBTPBYHTgNJLzDaxL/6Fylk6Rux
+         olM5jce9/95n+wtEwPZr+3LXEcufRooifVIDAf1Py4mHNWIekxpzdEkpYO8t+J1zYZzM
+         oug2rVJD23sB36g9xpa7GxUsKQyc1BOh5M94HXjCpLLeLXqlaAjA+gEnPTG/1L7UB2zu
+         4smS3t1EZdPgxQb7xW1gHcpTCubjmCedj4PXYN7twIwKFcgjXo50dQif+nH9wBn03cMJ
+         Li1rkTszfuZjfjZbd0KpDuKuhXlFBXnSkjlI21uuSsVNEOqnel8uL6voOCC0B3dDxwL2
+         bEAw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.231 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Return-Path: <vthakkar@vaishalithakkar.in>
-Received: from p3plsmtpa12-02.prod.phx3.secureserver.net (p3plsmtpa12-02.prod.phx3.secureserver.net. [68.178.252.231])
-        by gmr-mx.google.com with ESMTPS id p17si430746oot.0.2020.10.17.07.59.54
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mO9OYqJL;
+       spf=pass (google.com: domain of leonf008@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=leonf008@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <leonf008@gmail.com>
+Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
+        by gmr-mx.google.com with ESMTPS id f198si140303wme.2.2020.10.17.07.49.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Oct 2020 07:59:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.231 as permitted sender) client-ip=68.178.252.231;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 17 Oct 2020 07:49:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of leonf008@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.231 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
-	by :SMTPAUTH: with ESMTPSA
-	id TngXkuEKAFgdSTngXkznga; Sat, 17 Oct 2020 07:59:53 -0700
-X-CMAE-Analysis: v=2.3 cv=AZDP4EfG c=1 sm=1 tr=0
- a=62Vrlwq93dyS4LaSTMevfw==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
- a=afefHYAZSVUA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8
- a=ag1SF4gXAAAA:8 a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=Wm2QblFjYE37K_-gV7gA:9
- a=QEXdDO2ut3YA:10 a=cDyXFGGuxjcA:10 a=Yupwre4RP9_Eg_Bd0iYG:22
- a=_sbA2Q-Kp09kWB8D3iXc:22
-X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
-Received: by mail-ot1-f54.google.com with SMTP id m11so5516860otk.13
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2020 07:59:53 -0700 (PDT)
-X-Gm-Message-State: AOAM533Hw4Dvkjq+H25q38oAb9li2YWeWmvb4OFGTh5uTZjrbyf1lnkd
-	xPxwBwATAQMnNuAMtzZyGBWGv/bFKS243rZdCU0=
-X-Received: by 2002:a9d:3f44:: with SMTP id m62mr6532964otc.364.1602946793126;
- Sat, 17 Oct 2020 07:59:53 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mO9OYqJL;
+       spf=pass (google.com: domain of leonf008@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=leonf008@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x244.google.com with SMTP id p15so5849994ljj.8
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Oct 2020 07:49:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=/s4CSXwwcC72C5AwSv41KrlfE30I0mj8ro8DTf4VO20=;
+        b=mO9OYqJL9xjW0e1k10Yauv3RSKhV40RKvDz8t4hycalwpPzha3Y48FUubonS2q8rkD
+         5p/6wr0IvrptXznbzUt12BeV8xpbSdsUfQaW7XVMm7yvJf+6UVRGcTADeZLybR/DDrST
+         i8xzTIEPto6qJDlfB+51gSpGMmbrc4tnYvRhnEw8bOHXdHFZxmV+tvW/SBEvNRSPHKxY
+         eFvx7zQVVjaxlr2cTs0acQwPVyucH2PFWXrDX4KJVcZcLiqva5GGLPSbo/TeBrZxxDaT
+         OROnqi6nnM2Djo+7kZv1aTSCEhKbVQ7m5/+l4R7GQsizuFTBhpFbz49JqCHfTIxv6D+7
+         D6KA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=/s4CSXwwcC72C5AwSv41KrlfE30I0mj8ro8DTf4VO20=;
+        b=B2IpD6disXm/xGbVZPETup5Il0hf8B6vJ9oeJ72y0xjnpGNSHWQ8BdtNtyA7S5p0bf
+         RM1Dm7Cd9tswR0FeyeQvcUUm3R2RS3Nxltk++7M6EO11SgrGjVm+gXjBan41yWcGWc11
+         hQyDd8cHyZ0Tbom4VDqtTI2YNXcMsZFSFhtCi343XdBxm5rK30P7ddl3MejSn+u3FXGo
+         XQR9OfBsTseNw9udkH3x2Xo/X2unuvxPenAkdUzNeDmJg4X4C+W/VbrheQs1PNJ++tpf
+         WuSCMFJYtvBkFUElvkFTZKkpfALhw1R5X/U4syrsr3oZJ7G41UlKucEN7uMV9WDMszzQ
+         eqtw==
+X-Gm-Message-State: AOAM530/E6U+GMYS1twwuQF4JfRNyFdUStmPNonVz9PTY3wfMhiyEIX3
+	oKi9iTpJQURoz8GBmvz583djm0CUbprbXyPvpqs=
+X-Received: by 2002:a2e:9689:: with SMTP id q9mr3256061lji.434.1602946176464;
+ Sat, 17 Oct 2020 07:49:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201006202903.GA8346@linux> <CAN+ihrq_v6OFbOrZUhHZPRTjsUO5nrnr7Kj3AHQJYSD7+oXe5g@mail.gmail.com>
- <20201017140508.GA3003212@kroah.com> <CAN+ihrpqYw_29OHpQHAxAadOFt8h3dovo-ZKMQN_OcbtEx4HcQ@mail.gmail.com>
-In-Reply-To: <CAN+ihrpqYw_29OHpQHAxAadOFt8h3dovo-ZKMQN_OcbtEx4HcQ@mail.gmail.com>
-From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Date: Sat, 17 Oct 2020 20:29:41 +0530
-X-Gmail-Original-Message-ID: <CAK-LDbLau+vAhJEmHWv0g6ncf_WKBAhiy54W8cciZ3r38YOnZg@mail.gmail.com>
-Message-ID: <CAK-LDbLau+vAhJEmHWv0g6ncf_WKBAhiy54W8cciZ3r38YOnZg@mail.gmail.com>
+ <20201017140508.GA3003212@kroah.com>
+In-Reply-To: <20201017140508.GA3003212@kroah.com>
+From: leonf08 <leonf008@gmail.com>
+Date: Sat, 17 Oct 2020 16:49:25 +0200
+Message-ID: <CAN+ihrpqYw_29OHpQHAxAadOFt8h3dovo-ZKMQN_OcbtEx4HcQ@mail.gmail.com>
 Subject: Re: [Outreachy kernel] Re: [PATCH 3/3] media: staging: atomisp:
  Corrected error handling in function
-To: leonf08 <leonf008@gmail.com>
-Cc: Greg KH <gregkh@linuxfoundation.org>, 
-	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="000000000000713a9905b1defd4e"
+
+--000000000000713a9905b1defd4e
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-CMAE-Envelope: MS4wfDD5vW9ZyZ6bJtf5oZ6TCo61BPPX4C88sYtLss2GSs+Am9SbuImj3DSsOy5Gc9Zuq1XyZe3B+PkAvbvvxjLVISUTzF6EfEYw0rMSN8S8ybsOGRGwJy1i
- kUWWVIq05THQVE13TdoHGU+qq+/KBg3VWujri02yPYiWqDf8zCvYT/efXUzuZSObP//NaQYgS5sFRraXhl8KJZ01Xj+O/B6ti+M=
 
-On Sat, Oct 17, 2020 at 8:19 PM leonf08 <leonf008@gmail.com> wrote:
->
-> Thanks a lot. I must haven=E2=80=99t noticed that.
+Thanks a lot. I must haven=E2=80=99t noticed that.
 
-Please avoid top-posting while replying to emails of
-others. [Checkout 'Responding to emails' part of the
-tutorial on kernelnewbies]
+=D1=81=D0=B1, 17 =D0=BE=D0=BA=D1=82. 2020 =D0=B3. =D0=B2 16:04, Greg KH <gr=
+egkh@linuxfoundation.org>:
 
-> =D1=81=D0=B1, 17 =D0=BE=D0=BA=D1=82. 2020 =D0=B3. =D0=B2 16:04, Greg KH <=
-gregkh@linuxfoundation.org>:
->>
->> On Sat, Oct 17, 2020 at 03:58:41PM +0200, leonf08 wrote:
->> > Hello. I=E2=80=98ve sent recently my first two patches and haven=E2=80=
+> On Sat, Oct 17, 2020 at 03:58:41PM +0200, leonf08 wrote:
+> > Hello. I=E2=80=98ve sent recently my first two patches and haven=E2=80=
 =99t received any
->> > feedback. Can I expect it. I=E2=80=99m a newbie in kernel contribution=
- process, so
->> > don=E2=80=99t know all the details.
-
-I don't see any patches from you in the pending emails or
-otherwise on the web interface of the list.
-
-Anyway, I would suggest that you send new patches for some
-other issues as it seems that your previous patches were fixing
-things in staging/media. You can verify if they landed in the list
-by checking on the web interface.
-
->> > Thanks.
->> >
->> > =D0=B2=D1=82, 6 =D0=BE=D0=BA=D1=82. 2020 =D0=B3. =D0=B2 22:29, Leonid =
-Kushnir <leonf008@gmail.com>:
->> >
->> > > This patch fixes check of a result of 'power_up()' function call in
->> > > function 'gc0310_s_power()' to do "error handling" instead of "succe=
-ss
->> > > handling" as Dan Carpenter noted in his comment on the previous patc=
-h.
->> > > Lines 'return gc0310_init(sd)' and 'return ret' are swapped, and dir=
-ect
->> > > value of 'ret' is checked in IF statement now.
->> > >
->> > > Signed-off-by: Leonid Kushnir <leonf008@gmail.com>
->> > > ---
->> > >  drivers/staging/media/atomisp/i2c/atomisp-gc0310.c | 7 ++++---
->>
->> As the instructions say, for patches in drivers/staging/media/*, there
->> is no guaranteed response time, and so it is not good to do work in
->> there for the outreachy application process.
->>
->> Please pick some other directory under drivers/staging/ that is not the
->> media/ subdir.
->>
->> Again, the instructions should already say that, I recommend reading it
->> again fully.
->>
->> thanks,
->>
->> greg k-h
+> > feedback. Can I expect it. I=E2=80=99m a newbie in kernel contribution =
+process,
+> so
+> > don=E2=80=99t know all the details.
+> > Thanks.
+> >
+> > =D0=B2=D1=82, 6 =D0=BE=D0=BA=D1=82. 2020 =D0=B3. =D0=B2 22:29, Leonid K=
+ushnir <leonf008@gmail.com>:
+> >
+> > > This patch fixes check of a result of 'power_up()' function call in
+> > > function 'gc0310_s_power()' to do "error handling" instead of "succes=
+s
+> > > handling" as Dan Carpenter noted in his comment on the previous patch=
+.
+> > > Lines 'return gc0310_init(sd)' and 'return ret' are swapped, and dire=
+ct
+> > > value of 'ret' is checked in IF statement now.
+> > >
+> > > Signed-off-by: Leonid Kushnir <leonf008@gmail.com>
+> > > ---
+> > >  drivers/staging/media/atomisp/i2c/atomisp-gc0310.c | 7 ++++---
 >
-> --
-> You received this message because you are subscribed to the Google Groups=
- "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an=
- email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgi=
-d/outreachy-kernel/CAN%2BihrpqYw_29OHpQHAxAadOFt8h3dovo-ZKMQN_OcbtEx4HcQ%40=
-mail.gmail.com.
+> As the instructions say, for patches in drivers/staging/media/*, there
+> is no guaranteed response time, and so it is not good to do work in
+> there for the outreachy application process.
+>
+> Please pick some other directory under drivers/staging/ that is not the
+> media/ subdir.
+>
+> Again, the instructions should already say that, I recommend reading it
+> again fully.
+>
+> thanks,
+>
+> greg k-h
+>
 
+--000000000000713a9905b1defd4e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"auto">Thanks a lot. I must haven=E2=80=99t noticed that.</div><=
+div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+=D1=81=D0=B1, 17 =D0=BE=D0=BA=D1=82. 2020 =D0=B3. =D0=B2 16:04, Greg KH &lt=
+;<a href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation.org</=
+a>&gt;:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex">On Sat, Oct 17, 2020 at 03:=
+58:41PM +0200, leonf08 wrote:<br>
+&gt; Hello. I=E2=80=98ve sent recently my first two patches and haven=E2=80=
+=99t received any<br>
+&gt; feedback. Can I expect it. I=E2=80=99m a newbie in kernel contribution=
+ process, so<br>
+&gt; don=E2=80=99t know all the details.<br>
+&gt; Thanks.<br>
+&gt; <br>
+&gt; =D0=B2=D1=82, 6 =D0=BE=D0=BA=D1=82. 2020 =D0=B3. =D0=B2 22:29, Leonid =
+Kushnir &lt;<a href=3D"mailto:leonf008@gmail.com" target=3D"_blank">leonf00=
+8@gmail.com</a>&gt;:<br>
+&gt; <br>
+&gt; &gt; This patch fixes check of a result of &#39;power_up()&#39; functi=
+on call in<br>
+&gt; &gt; function &#39;gc0310_s_power()&#39; to do &quot;error handling&qu=
+ot; instead of &quot;success<br>
+&gt; &gt; handling&quot; as Dan Carpenter noted in his comment on the previ=
+ous patch.<br>
+&gt; &gt; Lines &#39;return gc0310_init(sd)&#39; and &#39;return ret&#39; a=
+re swapped, and direct<br>
+&gt; &gt; value of &#39;ret&#39; is checked in IF statement now.<br>
+&gt; &gt;<br>
+&gt; &gt; Signed-off-by: Leonid Kushnir &lt;<a href=3D"mailto:leonf008@gmai=
+l.com" target=3D"_blank">leonf008@gmail.com</a>&gt;<br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 drivers/staging/media/atomisp/i2c/atomisp-gc0310.c | 7 ++++=
+---<br>
+<br>
+As the instructions say, for patches in drivers/staging/media/*, there<br>
+is no guaranteed response time, and so it is not good to do work in<br>
+there for the outreachy application process.<br>
+<br>
+Please pick some other directory under drivers/staging/ that is not the<br>
+media/ subdir.<br>
+<br>
+Again, the instructions should already say that, I recommend reading it<br>
+again fully.<br>
+<br>
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div></div>
 
---=20
-Vaishali
-
-
---=20
-Vaishali
+--000000000000713a9905b1defd4e--
 
