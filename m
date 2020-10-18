@@ -1,117 +1,120 @@
 X-GM-THRID: 6883926801253400576
-X-Received: by 2002:ad4:472c:: with SMTP id l12mr15639680qvz.42.1603087367272;
-        Sun, 18 Oct 2020 23:02:47 -0700 (PDT)
+X-Received: by 2002:a19:a0b:: with SMTP id 11mr5164593lfk.110.1603056711190;
+        Sun, 18 Oct 2020 14:31:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:7347:: with SMTP id q7ls3315138qtp.8.gmail; Sun, 18 Oct
- 2020 23:02:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJySUHi5LVCPL7jY029m659iovs/4OuVzDZa2ifOH4rBv7cF7gz5RsfSgx2bU4mmCumgFe5o
-X-Received: by 2002:ac8:5d09:: with SMTP id f9mr13793704qtx.33.1603087365892;
-        Sun, 18 Oct 2020 23:02:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603087365; cv=none;
+Received: by 2002:a19:c111:: with SMTP id r17ls2763263lff.0.gmail; Sun, 18 Oct
+ 2020 14:31:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw1TxbEa9x1h2sqC9LW3ajNaus33InUzver/EdaApoD99FIuIvRtQVbEKNpHxue1C0Mjzen
+X-Received: by 2002:a19:a12:: with SMTP id 18mr5114347lfk.345.1603056708829;
+        Sun, 18 Oct 2020 14:31:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603056708; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mb9C567csbVxI1tXt2evZ09uQrZmCxfV7KoyhrsPKIcYNIBV7vd3d/CE07f3mf9I0e
-         eJp+5XCwmVLOr9oJ4JjcszlrdsqpIkV3sQ4XF5iZAQCtbayxx+ukeU4hWg2H3+fw0ltB
-         xIyoWBz5MLMTHyrWl5Tre/DvHec0PpvwzhYHA2qQwbnC8TB+5MHHI/eF8n31wTiNjF52
-         zNpJF5I5+RH/2AmEcU1lf275hGm2kPCW2QsrSYY3lypa31bV654OPUa7tTqZYJnUxWs5
-         UJFXVaJVwAP1oT0uL0HmEpe+4lzNyTfeB7B5/2hLVpk0Dxel9QEwcz5W80k13ZS+UFvx
-         T/BQ==
+        b=tRiip8h/v0pKd9XZaUioangEpQdNspKaVh/pwQ6S0S3aGOnkwazY5qj9XnJvD4XMpv
+         IbCnO3BGl8u2ReMM4B2WDU+/o0cZ3Iq7GoH54uLyOKhuTojHJW+KF4cI9cYKPGuSK6MA
+         ypBY8eNLfLc7MMcBmiE06k1Bpq3J6YGKNR+afwU+zlB3lUG+wIFFLC+14On35ryk2DNM
+         MFosctXckHzYfCll5J6YFx/oiFfEIl8qkKKC0lhYJecXqn7Qean/PLdk+PUTaw8Tuy3o
+         46aoDoA6oCwz23f8XTI9qYqXhJL3v++9J9nDipJ5osHwk7yuQwocGZIvHW7UN3Le5kFr
+         +NMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=tPqCUQwRcj/TUsJOtF1A4cm//Q7lWtcgPzmMg/L46Uk=;
-        b=EASoptgMg5rYfl5eTFmWCCEyyWDdp9jUsFRLvEeARlUOo29wIQhItMaATGidZCPax7
-         fm+nL79OlIj9wbwcwn6/1+kRNdsfW8x3aaSJasJXOT7DlIgdAP3LujLjrpAHZABCOPmc
-         CstWAqSNt8BxZ82Fp/nJuUoRCEyYQ5Yg5POMVIcZ7tBYlYUlx7OMskk4vPcsSSbdtvMH
-         gvUYjkreo1E/ueRgsmkl0CSOzPKp+T/YCFYDfBP8fBcn0t4FAZHk/dQ5Jc9UZShUwQox
-         h7SE1RH3qvGSRFIp1QOJxlAT9Oe2QNaKw8AjFxdW3I3ZfX5/p8j6VSPXyjH/ryKzQdl9
-         MkAA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=pompj6RMQTgj86FfDJvjjpV7mlx7wSdhvAo9pRiO1Pg=;
+        b=RFLdkLpTDNA55i0co864YIvxsTDd3eQMcUErlYrRhc/xEZap1WbpbqdTSoLLe7sS6V
+         VP9VbIm48C8h4rUvmNIklBL6x5cwY2jWi6LFNmCyLDoYtb1ZlRJ5Cs9XO5EGh5MAZMss
+         Fo2fIHAJY9rTm7S0bpjtS2UHjIP8l9cOwIEbnniMkE9MWtXAEKXV2jl5r9jknLd/ZZ8L
+         G8hNrL4mP49eRoJfWIDO6/vgUQQaeyXsKDyiJPyGfEpxoTN+LX6o4T+ObSfUl2HoCQ8B
+         TstYZyNkYvIjB0vHZFsqwHjJPpcTjJ7C2WARTt3tGmivxG07xp/Rpv1tFLOn0XSsbiUa
+         Kx6A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s5yTadnA;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id x11si578051qkn.0.2020.10.18.23.02.45
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id o142si176103lff.6.2020.10.18.14.31.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 18 Oct 2020 23:02:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 18 Oct 2020 14:31:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s5yTadnA;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id q21so5369534pgi.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Oct 2020 23:02:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=tPqCUQwRcj/TUsJOtF1A4cm//Q7lWtcgPzmMg/L46Uk=;
-        b=s5yTadnADoMg3t7g5Ub96C9MjbaWe/YK8TmMVFqG9oYps0PileWb2T8uTXWbvXXhc6
-         QHGm9yH01E7RwUMVRojAxgdGYT5n2LGHTtxVdXbDSO4Vyn/ZaGtKtY4nCi+BIzpVLB5r
-         0G/U6kbRtLLgU44sSj/a+WjioMWuo5GvA0kV0x1065If+UAXBk+8K2dE+dP8vmentBTr
-         HOPdIsIf/gD81p2lvv+zUcD8IF1I2bk14E026KqWOYjxtJHXt6z1gmUNdzrhaZLtzhAf
-         2Jnx0WfodcvV4pcyUL8EYevqhNyUlQFWQlt0t/jDmbVCxWkj8Q1DmpdokldEq431n8dm
-         AuVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=tPqCUQwRcj/TUsJOtF1A4cm//Q7lWtcgPzmMg/L46Uk=;
-        b=IcMDV/UccePKmt6bPW1J7eupTzjImBNKMF3cYleFfqvWxd95NELdJf7VL54djUJR2R
-         XpQBJ41PluqKcD5OvrMe0oU9UffOBCafaA3Kj1rrebxI1GciQ69GCnrZOtMlLJAYR5+H
-         R5f+AHXmEMLgSr2CJklCOYFsWO4qKlWzYCMGe4skQyWuZhfHl38FxuqkpbodPppWLZR9
-         EfVJQInCMFAl192vSgazKJ8pS8fFHz0eRDcVCakzuSIFdq5/iPXSVWOHcQ4HYm0Y3f0C
-         SLRXvVoghhnFOc/jLQJ1OH52sri0HH1SIHyikqAuddgnY6ayDFLhyWs7tcgHVJY0G6qN
-         9yDQ==
-X-Gm-Message-State: AOAM532g/8AiNmbmNB4aWOdnlDcONtdisaNIAYP3UILrkqikQsz2xKsj
-	R/N5uGNYRF9YoOee0xK9ERgBvYn4lSabLA==
-X-Received: by 2002:a62:1806:0:b029:152:4311:a19d with SMTP id 6-20020a6218060000b02901524311a19dmr15884625pfy.20.1603087365077;
-        Sun, 18 Oct 2020 23:02:45 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id q2sm9960858pfu.193.2020.10.18.23.02.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2020 23:02:44 -0700 (PDT)
-Date: Mon, 19 Oct 2020 11:32:40 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Matthew Wilcox <willy@infradead.org>,
-	Sumera Priyadarsini <sylphrenadin@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [Outreachy][PATCH 0/3] staging: Replace
- snprintf() with scnprintf()
-Message-ID: <20201019060240.GA6306@ubuntu204>
-References: <cover.1602767114.git.sylphrenadin@gmail.com>
- <20201015192157.GC20115@casper.infradead.org>
- <20201018053243.GA98400@ubuntu204>
- <20201018053857.GA591645@kroah.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.77,392,1596492000"; 
+   d="scan'208";a="473183726"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Oct 2020 23:31:47 +0200
+Date: Sun, 18 Oct 2020 23:31:47 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Helen Koike <helen@koikeco.de>
+cc: Deepak R Varma <mh12gx2825@gmail.com>, Ian Abbott <abbotti@mev.co.uk>, 
+    Sumera Priyadarsini <sylphrenadin@gmail.com>, 
+    outreachy-kernel@googlegroups.com, Greg KH <gregkh@linuxfoundation.org>, 
+    hsweeten@visionengravers.com
+Subject: Re: [Outreachy kernel] Re: [Outreachy][PATCH 3/3] staging: comedi:
+ Replace snprintf() with scnprintf()
+In-Reply-To: <CAPW4XYZzXN27YCjRZDZwSdbnwSoNjuN60B8qZNDUXWZnV_9ixg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2010182328190.2759@hadrien>
+References: <cover.1602767114.git.sylphrenadin@gmail.com> <233169195737b5f3afd429d8b6572f3b531168cb.1602767114.git.sylphrenadin@gmail.com> <825f5868-49f4-509d-638d-5fcab59c8f1a@mev.co.uk> <20201018195136.GA73063@ubuntu204>
+ <CAPW4XYZzXN27YCjRZDZwSdbnwSoNjuN60B8qZNDUXWZnV_9ixg@mail.gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20201018053857.GA591645@kroah.com>
+Content-Type: text/plain; charset=US-ASCII
 
-On Sun, Oct 18, 2020 at 07:38:57AM +0200, Greg KH wrote:
-> On Sun, Oct 18, 2020 at 11:02:43AM +0530, Deepak R Varma wrote:
-> > On Thu, Oct 15, 2020 at 08:21:57PM +0100, Matthew Wilcox wrote:
-> > > On Fri, Oct 16, 2020 at 12:41:42AM +0530, Sumera Priyadarsini wrote:
-> > > > The show() methods in device attributes should return the number of
-> > > > bytes printed into the buffer which is the return value of scnprintf(). 
-> > > > snprintf() returns the potential number of bytes that could be written
-> > > > which may be greater than the actual length to be written.
-> > > 
-> > > There's a big patchset just gone into 5.10 yesterday which adds a new
-> > > sysfs_emit() for show methods.  You probably want to use that instead
-> > > of scnprintf().
-> > > 
-> > Hello Matthew,
-> > I am able to build my staging branch into 5.9.0-rc8 release. Can you
-> > please suggest how can I get 5.10?
-> 
-> Pull from Linus's tree right now, or pull from linux-next.
 
-Thank you Greg. I assume you are fine with patches sent from that tree
-base.
 
-Deepak.
+On Sun, 18 Oct 2020, Helen Koike wrote:
+
+> Hi Deepak and Ian,
+>
+> On Sun, Oct 18, 2020 at 4:51 PM Deepak R Varma <mh12gx2825@gmail.com> wrote:
+> >
+> > On Fri, Oct 16, 2020 at 10:14:46AM +0100, Ian Abbott wrote:
+> > > On 15/10/2020 20:18, Sumera Priyadarsini wrote:
+> > > > The show() methods should return the number of bytes printed into the
+> > > > buffer which is the return value of scnprintf(). snprintf() returns the
+> > > > potential number of bytes that could be written which may be greater
+> > > > than the actual length to be written.
+> > > >
+> > > > Replace snprintf() with the safer scnprintf() in comedi_fops.c.
+> > > >
+> > > > Issue found with Coccinelle.
+> > > >
+> > > > Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
+> > >
+> > > The patch is fine, but there are a couple of problems.
+> > >
+> > > 1) Patches for "staging" should be Cc'ed to devel@driverdev.osuosl.org .
+> >
+> > Hi Ian,
+> > Does this apply to ALL drivers under "staging" or only the comedi series
+> > drivers?
+>
+> You can find this answer in the MAINTAINERS file :)
+> Check here:
+>     https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS#n16640
+>
+> get_maintainer.pl basically reads the content of MAINTAINERS file to inform you
+> who you should send the patch.
+>
+> But the tutorial[1] uses "--nol" option in get_maintainer.pl script (which
+> removes mailing lists from the output).
+>
+> [1] https://kernelnewbies.org/FirstKernelPatch#Submit_a_patch
+>
+> Which I suppose is because "the maintainers of staging/vc04_services would
+> prefer not to be CCd on Outreachy patches", but I guess this only applies to
+> staging/vc04_services.
+>
+> I would like to confirm that only staging/vc04_services should use --nol,
+> so we can improve the tutorial.
+
+In the beginning, no maintainers got CCd, but some were not happy to have
+things happening to their code without their knowledge.
+
+So as a compromise we decided that patches could go to the people listed
+in the maintainers file, without spamming everyone who might be on the
+mailing list.
+
+The volume of patches seems to be down, and the quality perhaps a bit up,
+so it would probably be reasonable to add the mailing lists back in.
+
+julia
 
