@@ -1,78 +1,134 @@
-X-GM-THRID: 6332156650242179072
-X-Received: by 10.66.19.167 with SMTP id g7mr15120107pae.46.1474320108679;
-        Mon, 19 Sep 2016 14:21:48 -0700 (PDT)
+X-GM-THRID: 6885380935154401280
+X-Received: by 2002:a17:902:968a:b029:d5:a3a0:3c43 with SMTP id n10-20020a170902968ab02900d5a3a03c43mr820389plp.70.1603127674431;
+        Mon, 19 Oct 2020 10:14:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.36.117 with SMTP id p108ls503907ota.42.gmail; Mon, 19 Sep
- 2016 14:21:48 -0700 (PDT)
-X-Received: by 10.200.52.202 with SMTP id x10mr4744196qtb.67.1474320108374;
-        Mon, 19 Sep 2016 14:21:48 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id z4si5306022pam.0.2016.09.19.14.21.48
+Received: by 2002:a17:90a:8046:: with SMTP id e6ls100662pjw.3.canary-gmail;
+ Mon, 19 Oct 2020 10:14:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHiV2V5Vgkm+GrwgvU4xX5VLjWi/FB23riAmIJeeZ2LhNU1Em68kVXKrazZagpXvsY33/8
+X-Received: by 2002:a17:90a:9a1:: with SMTP id 30mr392527pjo.85.1603127672648;
+        Mon, 19 Oct 2020 10:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603127672; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Sqal9uicrZFSZY/lD+kAYiLDpdZ7nN/p33z/O1n91Nea7ZuoLcxd/21O0l0mSl/E65
+         //1W8xaBqaCETx7/+qKDkLqEFU92xplDsr/yXYRBzjHzRMghyM+beprGJJGkZ/4Bt9v6
+         rGDxkTSkuLJKAZ5V6I0gUR/i5Po/gIpoWh9x5s/QcV/1lQ0ACj+sryeMSWX3UA74eZql
+         jGr+nzL2l6a7t7ilK+jS/wTdbnvdLcTJ1ule94xlRUmPYTHkwmUKDjM6apu7dhnmnuNy
+         NeebLXysRC3n+51Cx53M4ZtQexXOTgfWOZxCgCD6YCXyuttoTAtZR6sApVlYbdI6WVEe
+         04JA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=bkANpEs/C8LOFqToZsES5TWve3UPNPt07x+5xHrgifg=;
+        b=lFIkIyibXbufh1q4KLzyzfKQ+E5QHiFD1qBnp5/HVVmxWHjDWNo5RtGkUsfbVG+ayJ
+         9qqAE0KjVpauQn78XThrlntIeeG4BJLpZyZdOv38jo9CWW5VYb5y2kpjaSWfe1t4pXjt
+         bJvk5OFJSvMoLLgd36ASEvHgJ6Sscbk0ska0tuZjYv2ISOwMARcIdO1YRHNFsciSPBAF
+         hA70Y7q8JqkzoUmuz9BdeUEFhFSjDcA0Eh5QF/V5I+dLj7zN82UQolwSQmc5i3BTtaqx
+         nYrwnnO4erbM+9S++Aadik9jS3W7+r1q6Ya9pyQbxt7PndP6CoClkB7NNAlXbRD9T5/T
+         miXw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iuZJmL8f;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id z15si42693plo.4.2020.10.19.10.14.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 14:21:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Oct 2020 10:14:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aquannie@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aquannie@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id 21so6316349pfy.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Sep 2016 14:21:48 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iuZJmL8f;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x643.google.com with SMTP id w11so85837pll.8
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2020 10:14:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=mp9+OtOXyqoKMeatfSKBvgy2w72VIQFQRd1DtH17+q4=;
-        b=ihBRPUvNV+1Rx4rx2ZfKydaBbG1pV2tXm8kCyj/7Bxm9dXmlZ3GzCR6gsBoXlQ5Rmo
-         hK60jC4+AC2aqDvs5hmZ9TgOKLAljFxfmhYNSybWoXwfRcMIzPyrGODh8JEIRoZN5xeU
-         jetUIIUBMR/6AQIbm4AXlHDJ4zj9r4zTqjOoaLZkpeI29chCyJm2bwcnLJ1QBJVVW/dc
-         TY6cx+bfI1rRnvhvNlyAuQ9hciQzS/MKFsA2IWd8H9xYiq/EsUIOkAqbg+yTLO8itsn4
-         07qZFOWIOln5SrxE51HENN+8N73Nf5gQNhCANoR7+YVv0CWjtAAFPszM0ykecHgT/ytN
-         sEdA==
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=bkANpEs/C8LOFqToZsES5TWve3UPNPt07x+5xHrgifg=;
+        b=iuZJmL8f12rTpKYisLUo36CQVPiHEJaw+af0yaGzAspSM1llm15Jc4h1mTRIU0wT4e
+         TlyaXIGFshqnvqpL+9I2D/Tef/SKzCs9gcoSouq5oiNiX303KxczfThIFdK7gAgv7+YE
+         J/P1jFcxVluz0ikW/b/WFbH/uaOcZ02uiCuMuOiYq+SfXC/XF6YJKQ6NDwR5jvTAU73S
+         Mk6R/dgLC1+NbNMJKUs86jRbDzdeTGAz32pT7eSUuiHhBYI5uOyq1qQWKIGK2Apx/eTN
+         upDG9wq0YLndnw52jGqsFW5cEGNxT9FR4ZLSwl4DwYhm19dCWVG0l24WfMtD3T9LOTkk
+         6ouA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
+        d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=mp9+OtOXyqoKMeatfSKBvgy2w72VIQFQRd1DtH17+q4=;
-        b=So16MfQzoLSdkbZyOjyQ+JI2lEls81yR7NH9E8P2jcIoR9SguTs2AMhWcI/5w1mFYt
-         o6RaOynUevRZZJbb7UgB2GSOTyXEa9fkLdBWxe6a0FoymhnLcnAI82WVPzi41E8j3toM
-         M8b/iCGIMoBXoQ1KAcLsoAnFjZ8Nu+3+M+gSUHCsyflYdE+OKRy6qJtKhcEw6ufspgCt
-         u8W1oHJq+PFzZFKBE5E4OhxH5oGq2v0861Ol4UoGn6or2pnLEmExo/D0cvC1ApMvCK09
-         wk90jY5klGwo3eRb6CzHyo1YRzOW7SRx9C8S9YfBhyMg3VDpiCqufcZYgNMReosgekin
-         8zxQ==
-X-Gm-Message-State: AE9vXwPx9E83h6lNlKZli14/TzmGy/XEY6FL2KgGw2aL33bfAgOuCywBl/AG9j56e+vEkA==
-X-Received: by 10.98.107.198 with SMTP id g189mr50125390pfc.14.1474320108158;
-        Mon, 19 Sep 2016 14:21:48 -0700 (PDT)
-Return-Path: <aquannie@gmail.com>
-Received: from toblerone ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id c28sm6535681pfj.6.2016.09.19.14.21.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 19 Sep 2016 14:21:47 -0700 (PDT)
-Date: Tue, 20 Sep 2016 02:51:37 +0530
-From: Rehas Sachdeva <aquannie@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 0/2] Remove redundant return captures in media drivers
-Message-ID: <cover.1474319701.git.aquannie@gmail.com>
+         :content-disposition;
+        bh=bkANpEs/C8LOFqToZsES5TWve3UPNPt07x+5xHrgifg=;
+        b=Dj05cg3dzHEtE9FB8fZNCbGhhZceR2UCbuYGwStxMuDTwhWNgf85a0y+mQDLl3c+/u
+         uhC6EeHl50eFJuPKia9wl2YkbAXSQ4YFPWcuBt+xCjL4RATzhsvBVFBD34NZoeYswYix
+         Tusx8OG1DfE+hC5R9vyNQplfTC83fJekiYZmzxVzn3oAdkZovw0teouEqQDxSW/Fygs+
+         I4dQUdwZ+xF31wIIPxfA4qBgHA1UHv/yZXFjibFEefE3X/MnOTWAp8ZzizZhpQrpJEs+
+         DkjWI3E6ksYqXLcole08VNC6Ns8QdfHMpzhFn9y8wLPAa89J7uFoQN0EKM+ZkMDttieo
+         FSSw==
+X-Gm-Message-State: AOAM533yEU4CWYwEpWDxh3tBXaSTENtu1IHmritstIpUWifeDYCcpZ/g
+	sANx9O6ovgEYvR/dVOeqVz4ZJctKUMxqsA==
+X-Received: by 2002:a17:90a:1704:: with SMTP id z4mr378252pjd.7.1603127671346;
+        Mon, 19 Oct 2020 10:14:31 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from ubuntu204 ([103.108.75.206])
+        by smtp.gmail.com with ESMTPSA id j37sm226990pgi.20.2020.10.19.10.14.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Oct 2020 10:14:30 -0700 (PDT)
+Date: Mon, 19 Oct 2020 22:44:26 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	H Hartley Sweeten <hsweeten@visionengravers.com>,
+	devel@driverdev.osuosl.org
+Cc: mh12gx2825@gmail.com
+Subject: [PATCH v3] staging: comedi: tests: Simplify conditional evaluation
+Message-ID: <20201019171426.GA72818@ubuntu204>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
+Boolean comparison of the condition inside unittest function is
+unnecessary and can be simplified by directly using the condition
+outcome for evaluation. Issue reported by :
+scripts/coccinelle/misc/boolinit.cocci
 
-Removes redundant return captures in media drivers bcm2048 and davinci_vpfe.
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+Changes since v2:
+   - Update patch subject to include tests tag as well to be more
+     informative of the scope of change. Suggested by Ian Abbott.
+Changes since v1:
+   - Corrected wrongly inverted tests. Feedback from Ian Abbott.
+   - Note:
+       This patch was sent earlier as part of a patch set containing 2
+       patches. The second patch of the patch set is dropped. Hence
+       sending this standalone patch as v2 version. This is based on the
+       feedback from Ian Abbott and Julia L.
 
-Rehas Sachdeva (2):
-  staging: media: bcm2048: Remove unnecessary return capture
-  staging: media: davinci_vpfe: Remove unnecessary return capture
+ drivers/staging/comedi/drivers/tests/ni_routes_test.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
- drivers/staging/media/bcm2048/radio-bcm2048.c   | 14 ++++----------
- drivers/staging/media/davinci_vpfe/dm365_isif.c |  8 +++-----
- 2 files changed, 7 insertions(+), 15 deletions(-)
-
+diff --git a/drivers/staging/comedi/drivers/tests/ni_routes_test.c b/drivers/staging/comedi/drivers/tests/ni_routes_test.c
+index eaefaf596a37..4061b3b5f8e9 100644
+--- a/drivers/staging/comedi/drivers/tests/ni_routes_test.c
++++ b/drivers/staging/comedi/drivers/tests/ni_routes_test.c
+@@ -499,13 +499,13 @@ void test_route_register_is_valid(void)
+ 	const struct ni_route_tables *T = &private.routing_tables;
+ 
+ 	init_pci_fake();
+-	unittest(route_register_is_valid(4, O(4), T) == false,
++	unittest(!route_register_is_valid(4, O(4), T),
+ 		 "check for bad source 4-->4\n");
+-	unittest(route_register_is_valid(0, O(1), T) == true,
++	unittest(route_register_is_valid(0, O(1), T),
+ 		 "find first source\n");
+-	unittest(route_register_is_valid(4, O(6), T) == true,
++	unittest(route_register_is_valid(4, O(6), T),
+ 		 "find middle source\n");
+-	unittest(route_register_is_valid(9, O(8), T) == true,
++	unittest(route_register_is_valid(9, O(8), T),
+ 		 "find last source");
+ }
+ 
 -- 
-2.7.4
+2.25.1
 
 
