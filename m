@@ -1,62 +1,84 @@
 X-GM-THRID: 6885367021918224384
-X-Received: by 2002:a2e:9d91:: with SMTP id c17mr645512ljj.263.1603135091214;
-        Mon, 19 Oct 2020 12:18:11 -0700 (PDT)
+X-Received: by 2002:a9d:5547:: with SMTP id h7mr765012oti.248.1603127876326;
+        Mon, 19 Oct 2020 10:17:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:c111:: with SMTP id r17ls305303lff.0.gmail; Mon, 19 Oct
- 2020 12:18:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxRRMY/ZEJZNdX/+QBjzXmSpGx7ov77FKmK761kZiQR4paSZAVDw64SMBS0K/OkbIuAiHIK
-X-Received: by 2002:ac2:5c5d:: with SMTP id s29mr408680lfp.584.1603135088924;
-        Mon, 19 Oct 2020 12:18:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603135088; cv=none;
+Received: by 2002:a9d:5c0b:: with SMTP id o11ls59630otk.2.gmail; Mon, 19 Oct
+ 2020 10:17:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAqjOP6GdYp8B2+t/mO5vENCOBNIHITKSTelKwQguoIXu9X8YVG/ybZLRsgYdguU0VS2ie
+X-Received: by 2002:a05:6830:12c4:: with SMTP id a4mr730287otq.356.1603127875121;
+        Mon, 19 Oct 2020 10:17:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603127875; cv=none;
         d=google.com; s=arc-20160816;
-        b=YjAW19fuB/kSo1G9W6U1dIh8qDDZATUOV0tN+qU3DfFDpgKyR2NUPh/Kmjta9i5E8f
-         4EqpSNPhW/C5Q8MT2ctlBCd0nmuNYUAZOaiDGnd/ZLhD78A5zNoqIwyYLxtm77Mm1c0+
-         vkx+vclRPMrxVAQQYJSO1VdfFQn55AieS7HsDY1HWMdbel+5xBgCnv1wOVSOzkoFSllw
-         UZq2gHIWW8uW/Rpik1o0JjlEM4MQA8dFliSETdfuE2mgC2/8N+vcXz6CU8SHx22Be1ri
-         idE2sZ/AXyTNrl8rvIDpLlMvUmk1A0xrRrw2qab+W+mhsUoe5Es+xb2G37LgaLLzL2B9
-         4ZVA==
+        b=HrpotJ13+hCuooTec5EJRlspTXYnkGxbr4+FrQKJXbiqdp5xiHeCgBElye1iRWqpXo
+         sMY//yzVj+1CIcV6dWLQg/jAflY902ydHbaqO4HCYi52pYAHkGmVyEqE/heuZLysKg3Q
+         +4WQME6MoijfkqMnlj2LWZVjujDyJZjSZ4e41dqGQ2BYNUXlTcAaldGXhcOF035Ic6Z+
+         rTJ8Fv03Yq7h58278kcLyijvx0WoBIq3rSSqpkYT6slTQGEguJ+Khh29WFONQadnXdDT
+         oRIXxmd3uOZTBfq+tp7uLfUV5ZNOT7QKmJFO9xeAJXVZMd4SjOPJTEUHMEQFDL2qppR0
+         OeWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=2rWXJyPdj33dP1IID+wF0hce412mmCPa3GO4lcMqbB0=;
-        b=lf8UQ8mKNyjVIVM6Gvo3WsA8jH0E8NLqRlhyXZdAUWfYY2SJ1CVJQ4kFJcLS1476fi
-         0j/lSzTKaOoedtibyEcmTpFzBFWZTIcuS8sf/sul0yU/bwOWaMWKP2ilPKa2H8RX+AqH
-         zZsbLXk6N7e9LixVb7YOVAlyjV1Agqtu7CgwonkyXrmNTvCmODVm4yDfBUSRkx/cqL1z
-         TDKyZTr6QBWuwltVQKqgfAK92voansN58ieQ8nXzwA8H/NlFoIkCDegaSD8VhmBTqKdl
-         86TUO92lXEPluFSRGyQJKrcb0so1CL1YQT39InhWMPIC10TYf83v59kiHpr5VDHneAro
-         8h1w==
+        bh=9HHETOzpYnd2zGvO3sUiK6B9IHgkO8hmsUBqCNgTwbU=;
+        b=Aa+ulDJGytTdrRq3j9KXq/TsqHXx4zWzeqICxOOuEKLOfg97upWOH55WeuqPI68GnL
+         QJGCOwPTkZhq0H3Hrrvd3lTLsQemLvazYSdd0Lj94kpzwNtHFn1EhEt5gbe2nT+1ApKV
+         WR2LNECjIQ7c5HXxmKsrt7Q9zxrMWfSDSSMbgO2Iqpzy/OmD+wFG514wI/SebpdX0L8R
+         854UshEDxfeyi0ErDl2SJYq1LZIj7yV99lAdonjNWWMOgZ3cgDlGOVVqbHjiWRH6J4TN
+         WWFWj1XYDFEWd4tYNXpkOVRvbb75BCDu78t+wCrBYnyMmaYmjWhjqOPfjTjJm2kQXgK1
+         XsTg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=WbyBoTKA;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-Return-Path: <willy@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id n5si15716lji.5.2020.10.19.12.18.08
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RnEWjGjk;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com. [2607:f8b0:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id d20si58964oti.1.2020.10.19.10.17.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2020 12:18:08 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Oct 2020 10:17:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) client-ip=2607:f8b0:4864:20::442;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=WbyBoTKA;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=2rWXJyPdj33dP1IID+wF0hce412mmCPa3GO4lcMqbB0=; b=WbyBoTKApN4DqV7C9XNW1pgjg3
-	hRcfCLs06aQTgkrkU314K6KNFuJYjoKUFJ8R7BhQkd4w4Y7TwDbVtfm9tvooK6FnsTn9buXBh30nr
-	AullZdAWuw3ipiPS/7C9c+gKoSb+pig7eUsrOAfpoMalBYp5HoJ+/+3kJdks1LyDN+TwCkZdC3FHq
-	wZCJrXYlqpzViEB9Mu3ptmp4KKNJC2KrV+cVbd6Dj+vDUQzBhEDirmdELUXrzagEWakXJnTTdkUYl
-	uYXTYNNsMAAH8KdvpigesG8XfYdx1hMurF3rSa7Psf0jj0ivMkSjuIhMeKPvh8eMlvlLvYE2FtyGX
-	V1HtRBvg==;
-Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUafT-0006RA-Vl; Mon, 19 Oct 2020 19:18:04 +0000
-Date: Mon, 19 Oct 2020 20:18:03 +0100
-From: Matthew Wilcox <willy@infradead.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RnEWjGjk;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::442 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x442.google.com with SMTP id e7so303482pfn.12
+        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2020 10:17:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=9HHETOzpYnd2zGvO3sUiK6B9IHgkO8hmsUBqCNgTwbU=;
+        b=RnEWjGjkYMfCzjuKF2vLkkQo1i3KP93LxiVSAl+xxoR90SkgHf/n8x7+8XZ5ZB4FOM
+         Xdf+GKZbBK0sDarX6Rawt9o3DpQZ3nmmgkjBUMY8ABwXJJg3NZaDlNCaK7uRUNbM0sOc
+         sqlTeZ8eVa1q0/6u5bvuowXQE/XMNsS8z5AoVWt9CH+mRSD7MgBg3895unFSbmhCssXm
+         JgBf+HxHHqHFoGzCm2dmzChH/spV98HWH5MkZw04Ev8Owe0PDcOikH1QksQBagP/NgYR
+         qSWvZLmccclUtnpV5+vqOh34vWqxkukKgP9wvevxGQvbrMo94o4R1xVGz0g71CJ84MyF
+         GZxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=9HHETOzpYnd2zGvO3sUiK6B9IHgkO8hmsUBqCNgTwbU=;
+        b=Sj1CbcQuyogsjmLvbpvEi3LKZnRUkOH1iaf5u+pFJz7+wcf9PsWuQ2MZ2rH6JLDVAS
+         mAwrM+YYXS1aGh4WM376PqK8GDsiqNyfwvqRUnXUyrzmv9niakDpEoZ/3kzueGN693EL
+         X984Kei/KwmUoQy4X6/wFRlXRmECChzY018jnAgwnXL5p9EKvNs9Rx3ikHR95Ww/nBpj
+         DxLqYnB+AN7asI4AiYz6qZkpaXZnnDfVlPoODw0D0+7JLtSToypXuYoaQ9HTIDaD6npI
+         iMoDb4TRI2ZtIGU2+0oj9sKn2N58eZ9+1Irh3T+cH6aiHmKLISqhIxCzt7ysUeYiy3HQ
+         ZohQ==
+X-Gm-Message-State: AOAM532Ah2r6jjB5Zz5UTYisL7QH7hfCtURJWF8UvN5ncYGWN2oP19AQ
+	LhfW+UKHnGBMTJrIF7YtJ7hPoWmLfUqhjA==
+X-Received: by 2002:aa7:82ce:0:b029:142:2501:35cb with SMTP id f14-20020aa782ce0000b0290142250135cbmr564655pfn.43.1603127874481;
+        Mon, 19 Oct 2020 10:17:54 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from ubuntu204 ([103.108.75.206])
+        by smtp.gmail.com with ESMTPSA id f21sm362689pfn.173.2020.10.19.10.17.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Oct 2020 10:17:54 -0700 (PDT)
+Date: Mon, 19 Oct 2020 22:47:50 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
 To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Deepak R Varma <mh12gx2825@gmail.com>,
-	outreachy-kernel@googlegroups.com
+Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] Need help building a driver: mt7621-pci
-Message-ID: <20201019191803.GV20115@casper.infradead.org>
+Message-ID: <20201019171750.GA72584@ubuntu204>
 References: <20201019162028.GA68635@ubuntu204>
  <alpine.DEB.2.22.394.2010191858240.2781@hadrien>
 MIME-Version: 1.0
@@ -65,7 +87,10 @@ Content-Disposition: inline
 In-Reply-To: <alpine.DEB.2.22.394.2010191858240.2781@hadrien>
 
 On Mon, Oct 19, 2020 at 07:01:50PM +0200, Julia Lawall wrote:
+> 
+> 
 > On Mon, 19 Oct 2020, Deepak R Varma wrote:
+> 
 > > Hello,
 > > I have made a change to drivers/staging/mt7621-pci/pci-mt7621.c file and
 > > now trying to build to ensure the driver builds fine. However, this file
@@ -80,10 +105,24 @@ On Mon, Oct 19, 2020 at 07:01:50PM +0200, Julia Lawall wrote:
 > figures out how to compile Linux kernel files.  It suggests:
 > 
 > make.cross ARCH=mips olddefconfig; make.cross ARCH=mips clean drivers/staging/mt7621-pci/pci-mt7621.o
+> 
+> You can look at this blog about cross compilation:
+> 
+> https://nishkadg.github.io/2019/07/25/make-cross.html
+> 
+> If you want to try klocalizer yourself, the code is here:
+> 
+> https://github.com/paulgazz/kmax
+> 
+> julia
+> 
 
-It's useful for drivers to build on all architectures by depending
-on COMPILE_TEST.  You will probably have to provide a lot of dummy
-interfaces; the only requirement is that the code build, not work,
-since it almost certainly needs to access hardware that only exists on
-the Mediatek platform.
+Thank you very much. I will review these and let you know.
+
+Deepak.
+
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/alpine.DEB.2.22.394.2010191858240.2781%40hadrien.
 
