@@ -1,127 +1,138 @@
 X-GM-THRID: 6885724042283712512
-X-Received: by 2002:ab0:5e95:: with SMTP id y21mr764360uag.21.1603798633318;
-        Tue, 27 Oct 2020 04:37:13 -0700 (PDT)
+X-Received: by 2002:a05:620a:12a6:: with SMTP id x6mr1403198qki.189.1603207560466;
+        Tue, 20 Oct 2020 08:26:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:2dd0:: with SMTP id t199ls119909vst.10.gmail; Tue, 27
- Oct 2020 04:37:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyB3cvQ1+LeOzcXUuQnge6KDEK21asXyZABGaLvIaifdkBr8dLEfPz/n6AD05ifUKlLbs7L
-X-Received: by 2002:a05:6102:30a8:: with SMTP id y8mr945201vsd.21.1603798631945;
-        Tue, 27 Oct 2020 04:37:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603798631; cv=none;
+Received: by 2002:ad4:4721:: with SMTP id l1ls637763qvz.2.gmail; Tue, 20 Oct
+ 2020 08:25:59 -0700 (PDT)
+X-Received: by 2002:ad4:59cf:: with SMTP id el15mr4074491qvb.17.1603207559401;
+        Tue, 20 Oct 2020 08:25:59 -0700 (PDT)
+Received: by 2002:a37:9bd8:0:b029:114:f417:e038 with SMTP id d207-20020a379bd80000b0290114f417e038msqke;
+        Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmFaG6WnJFDtnkQUnDJV/Hobn16UBROOlTcjGRXsh5kTRM7disDIGbVATe4B7eGEUB0yNu
+X-Received: by 2002:a7b:c418:: with SMTP id k24mr3646045wmi.118.1603206755257;
+        Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603206755; cv=none;
         d=google.com; s=arc-20160816;
-        b=pxjJJUox6e1QtTTJQWwsyzLm2eMVaPZishD0cnZfZpwis85DOA2+dn1CIYQlKjgMxb
-         AmL5mVEiTNfqNfv+WqXJQ35omN4LGVyBacFMCAyoANAwtbTlVafvd5ScfzeQZN4i+f7x
-         FxCuOwWhS1rymgP4EtDDz0/PaevReqJzcb+8dKp1FNPqQZ7pPjJM7ej5LtaAeRiz3mya
-         nw5DhFO+dGw9uvApIm5PtDRugsClnvg6DnW4T2YghIwZvqAGyZlM/JCRpDy0wZa1MKMY
-         7OP5BQikgVA3OcX3t6+/b1g3PmtOcCQNO3LOapfKG4YRK5LBuH6UnNEeG6ApVCzSZM/l
-         hkXw==
+        b=1BKZoxkojMLMoUtyMY2yhhgCfRTnhABnRmPLfTcSX4Q6Qs0wm3fu+27qx+3MDlIlhA
+         scZ6N/FO5Ucr1UIrNkU8LpbhE6+TaDavea2y4ASP2K/JFYQ7LLF7RDkxIT/sfwyftCMu
+         JZIDHMDNKS44sPeUZGotHJqk6+k8H7r5hdfTh/7KW3tlQy8yofwU9Hv97vz8sxRKujPh
+         kLzeiigoNAgXsgnPt7ktXddyTfr6BE3HWP29m0VCtby8LMz6TN4zKZjqddE3DKLQGUew
+         U1/OXe9nrvoZy5u/ivUTj6sJl+U/Y01KG705sVI1/MlYVEabSl4j0NRoXrqAFerRJCyY
+         C/1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=aouPZYz7RHmgR1uBUCoJ/MlA+M3+3yydiD3bS8FR5Us=;
-        b=Up6keIPlKM3kVVKjC9TPNKQmx3HIX0aa7rhRqPQEeiLwC76gu8Fk532Eu3ZL7u28IK
-         GpxKc0xai8dD59FhPontTHvgbfXKFf4ct9wQyYjNvNekVMQDc+Esql0Ivi2naYm3JPyu
-         LKgBlqoov/pw75SlL5aR/Ie4KsfLQncx9gOSZeMskxu9zCOIzUG/nxuZnJwZ2cG+/J/m
-         4AuXZ92M7/DWB/wUGIDuLPrds9DTdcZNj8BfPVkUQXI2y8nqYdR2GmFYAmtybYSL18Om
-         PP4NZ+Sdn43X7DVMJDWA12NerZ7P3zmO4XzfieDqvQVVTd5Jn1bCj0fzwFy7HH08Ef1j
-         cZGg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=EK3gcsHybVhWPEw7Y/gst/5psrELnXvW2wuD9XeQ/Ek=;
+        b=xdbZPqnDxHlEKZDH/VyQKGpqKCLr3BhpsEiyg0EE3BoGgBGb2NgYt3KZw24CrCZMiL
+         jAhjyc7aC80gCCAidg9BGnGizNfMxJKF6tRlq6LARu8seXfJ/32RNBtO9OZzDWhZMamp
+         wRNTjkLBl6hJLLjozTMK3Cvu8VV1JGLkfTDOJZvtlkNgvZGiaOym3Va96uopvJW+sjhv
+         ouy7Tt1c7jPQ9+U72vCiI5ccdfyy0odLCZ239vXZZnXw3UTBKxhayzhBUUq+l7znOqOV
+         rHJn1lqIy3f6ZJu6PFK+ewIgSR8Lwor2dNFJQBIMq1W7WBCSO5Od2K5wcXUUgijnhKua
+         8nzw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=rEVHArto;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
-        by gmr-mx.google.com with ESMTPS id h2si77223vsr.1.2020.10.27.04.37.11
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RU4GYeA1;
+       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <eafanasova@gmail.com>
+Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
+        by gmr-mx.google.com with ESMTPS id j5si56960wro.2.2020.10.20.08.12.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2020 04:37:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=rEVHArto;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RBTYfE107093;
-	Tue, 27 Oct 2020 11:37:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=aouPZYz7RHmgR1uBUCoJ/MlA+M3+3yydiD3bS8FR5Us=;
- b=rEVHArto74ziLYsECKdwjKOPZYyjz2vjtnFyN3cmBTYiWMjkriqJfwiHZQ5ydoDq+GNt
- eLfSGw6dcwFNiEoi+s56Kw9G3Ws+iXiDbl4Vyy7inhNYVmkGPiwc4GFjmT+Blks9h+9S
- qgpsuBs3Mev3n0ZDzTbZ/QjU8llDXh35e9YD+CdT8g6I5OnEsw5qhm8KXg4AgMRca6+x
- fPatnE4xKmCg4Fl1wYmWc9T3joGUlSpc1N+2cpmWEECeG7gWGecGi6IWEtkASWlGOAQ2
- JnB3tzMHwUVxr+QCOvF+76qDxkNqFBtSPcL3uzN6kFpSThIdHxf+EmyzFRFZA7ACzwPK tQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
-	by aserp2130.oracle.com with ESMTP id 34c9sashwq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 27 Oct 2020 11:37:09 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
-	by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RBUV61047945;
-	Tue, 27 Oct 2020 11:37:09 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
-	by aserp3030.oracle.com with ESMTP id 34cwum97p2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 27 Oct 2020 11:37:09 +0000
-Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
-	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09RBb80h029465;
-	Tue, 27 Oct 2020 11:37:08 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 27 Oct 2020 04:37:07 -0700
-Date: Tue, 27 Oct 2020 14:37:02 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Elena Afanasova <eafanasova@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-        outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging/rtl8192u/ieee80211: fix line length exceeds 100
- columns
-Message-ID: <20201027113702.GU1042@kadam>
-References: <20201020151111.35848-1-eafanasova@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RU4GYeA1;
+       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x244.google.com with SMTP id i2so2416213ljg.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 08:12:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=EK3gcsHybVhWPEw7Y/gst/5psrELnXvW2wuD9XeQ/Ek=;
+        b=RU4GYeA19RJeCXJb5rcbmbVwScuNz4WWR3dTxNC6LiEuIx8PKNNz2LsW/pVcELfX0k
+         VP6gmY3gscsKdj527RPWGzU45TBNbLUqcWvM3wdLdIyh/XwqZGNDmm0puq0He2+qrph7
+         NsPnjVL0N6ItTnc5mTvdSG2N6aTkqOXzB7xeiKmCe80Xbb/oz3xzE+9+CyJ/+NGsLQ1V
+         qUevZV4WKyYWRAey5SjF0Ceyou5ZeBZ3W1s4biNj261pWI9hEZGRWtKQSBDl9nQ+SfUm
+         aiIRGCixoyL5epRhLAdhkZ21tsUhNf9UYqRDdV0n5LJrslzR+mx4LOD71b8vnjB4Ibcl
+         gdXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=EK3gcsHybVhWPEw7Y/gst/5psrELnXvW2wuD9XeQ/Ek=;
+        b=GO10xT6ngazs+ut7HYT98sP/kqb5P6eSPoLOIa210GVOIG+0s/OC2M61npjME3Rnz0
+         1UP26pr3JpaP5+1xm06EJ2yjDaj/LaZf7QE6HdDKpRwUmZsqgJYhGyu22qqy1IoGBtRM
+         LyIunPhMjeaXA/B2I9FudcczjPko7CX/PyfEXunLdWiiNzMKxC5eFoY+uVMr/SY1LMoR
+         riXX5dieEUfDURSZHRCKVV7uN9kV7nVEIsr/Ie8uQfqqWBbtw43xmMCr+qad//ZDpSVz
+         5MennJcmymf34yrL6HzVerMap3jxXDym+FuQvRuTqPnQL8mB1usuw0g4QpZOBNmUJAeh
+         gsRA==
+X-Gm-Message-State: AOAM531K106EMI/SHILWLTnvThVNGe87PDIajjqOR/lWEAyTt42+kOAu
+	XviHIP2t+Hzhc1VufdrS9x8=
+X-Received: by 2002:a2e:94e:: with SMTP id 75mr1281460ljj.95.1603206754952;
+        Tue, 20 Oct 2020 08:12:34 -0700 (PDT)
+Return-Path: <eafanasova@gmail.com>
+Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
+        by smtp.gmail.com with ESMTPSA id 73sm345864lff.125.2020.10.20.08.12.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Oct 2020 08:12:34 -0700 (PDT)
+From: Elena Afanasova <eafanasova@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	outreachy-kernel@googlegroups.com,
+	Elena Afanasova <eafanasova@gmail.com>
+Subject: [PATCH] staging/rtl8192u/ieee80211: fix line length exceeds 100 columns
+Date: Tue, 20 Oct 2020 08:11:11 -0700
+Message-Id: <20201020151111.35848-1-eafanasova@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20201020151111.35848-1-eafanasova@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 mlxscore=0 bulkscore=0
- spamscore=0 adultscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010270076
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 spamscore=0 phishscore=0 clxscore=1015 suspectscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010270076
+Content-Transfer-Encoding: 8bit
 
-On Tue, Oct 20, 2020 at 08:11:11AM -0700, Elena Afanasova wrote:
-> Reported by checkpatch.pl.
+Reported by checkpatch.pl.
 
-The commit message should be considered like an separate thing from the
-subject.  On my email client, I normally read either just the subject or
-just the commit message.  It looks something like this:
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/dot11d.h | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-https://lore.kernel.org/driverdev-devel/20201020151748.35937-1-eafanasova@gmail.com/T/#t
-
-Do you see the subject?  It's far away from the commit message.
-
-Here is how I would write this commit message:
-
-Subject: [PATCH] Staging: rtl8192u: split up long lines
-
-Checkpatch complains that these lines are over 100 characters so let's
-split them up.
-
-Some people care about verb tenses or whatever but most maintainers
-don't.  I don't.  I only care about if I can basically see what you
-are changing and why.  This patch doesn't affect runtime, but if it
-did, then I would like some comments about what the bug looks like to
-the user.  Basically if I can understand the commit message then it's
-fine, and obviously "Reported by checkpatch.pl" is not sufficient to
-understand what's going on.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8192u/ieee80211/dot11d.h b/drivers/staging/rtl8192u/ieee80211/dot11d.h
+index 8b485fa18089..e1d794d8ac69 100644
+--- a/drivers/staging/rtl8192u/ieee80211/dot11d.h
++++ b/drivers/staging/rtl8192u/ieee80211/dot11d.h
+@@ -17,14 +17,16 @@ enum dot11d_state {
+ };
+ 
+ struct rt_dot11d_info {
+-	u16 country_ie_len; /* > 0 if country_ie_buf[] contains valid country information element. */
++	/* > 0 if country_ie_buf[] contains valid country information element. */
++	u16 country_ie_len;
+ 
+ 	/*  country_ie_src_addr u16 aligned for comparison and copy */
+ 	u8  country_ie_src_addr[ETH_ALEN]; /* Source AP of the country IE. */
+ 	u8  country_ie_buf[MAX_IE_LEN];
+ 	u8  country_ie_watchdog;
+ 
+-	u8  channel_map[MAX_CHANNEL_NUMBER + 1];  /* !Value 0: Invalid, 1: Valid (active scan), 2: Valid (passive scan) */
++	/* !Value 0: Invalid, 1: Valid (active scan), 2: Valid (passive scan) */
++	u8  channel_map[MAX_CHANNEL_NUMBER + 1];
+ 	u8  max_tx_pwr_dbm_list[MAX_CHANNEL_NUMBER + 1];
+ 
+ 	enum dot11d_state state;
+@@ -36,8 +38,10 @@ struct rt_dot11d_info {
+ #define IS_DOT11D_ENABLE(ieee_dev) (GET_DOT11D_INFO(ieee_dev)->dot11d_enabled)
+ #define IS_COUNTRY_IE_VALID(ieee_dev) (GET_DOT11D_INFO(ieee_dev)->country_ie_len > 0)
+ 
+-#define IS_EQUAL_CIE_SRC(ieee_dev, addr) ether_addr_equal(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
+-#define UPDATE_CIE_SRC(ieee_dev, addr) ether_addr_copy(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
++#define IS_EQUAL_CIE_SRC(ieee_dev, addr) \
++	ether_addr_equal(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
++#define UPDATE_CIE_SRC(ieee_dev, addr) \
++	ether_addr_copy(GET_DOT11D_INFO(ieee_dev)->country_ie_src_addr, addr)
+ 
+ #define GET_CIE_WATCHDOG(ieee_dev) (GET_DOT11D_INFO(ieee_dev)->country_ie_watchdog)
+ #define RESET_CIE_WATCHDOG(ieee_dev) (GET_CIE_WATCHDOG(ieee_dev) = 0)
+-- 
+2.25.1
 
 
