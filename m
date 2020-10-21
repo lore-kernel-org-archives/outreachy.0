@@ -1,293 +1,143 @@
 X-GM-THRID: 6885936091088551936
-X-Received: by 2002:a63:1c4e:: with SMTP id c14mr2115328pgm.98.1603265474617;
-        Wed, 21 Oct 2020 00:31:14 -0700 (PDT)
+X-Received: by 2002:a05:6830:19ce:: with SMTP id p14mr1484535otp.315.1603261237483;
+        Tue, 20 Oct 2020 23:20:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:e416:: with SMTP id r22ls1754938pfh.4.gmail; Wed, 21 Oct
- 2020 00:31:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzT8IKCpYL8vXFKgAcQiD6W3bfq5mubxFLyt8mtTXWJpSYGxSy4d63KEFHDcQs/Jb7dziXL
-X-Received: by 2002:a63:1e5a:: with SMTP id p26mr2217897pgm.85.1603265472929;
-        Wed, 21 Oct 2020 00:31:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603265472; cv=none;
+Received: by 2002:a05:6830:60a:: with SMTP id w10ls1093091oti.0.gmail; Tue, 20
+ Oct 2020 23:20:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyds7Wh3oLzU6vNFsgqN5Dhx18dsQ6vyL7uhZwCSxRuRcl3vbCq0p1KWceW4+HgxTiRv8o8
+X-Received: by 2002:a9d:6c8a:: with SMTP id c10mr1448100otr.293.1603261236359;
+        Tue, 20 Oct 2020 23:20:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603261236; cv=none;
         d=google.com; s=arc-20160816;
-        b=EvdDOg+a/Pk7pMtpbo88dTYau6Wwc1N20qq0PyWxMYfHNVIP8ZyLD1xKdPpWLWno6F
-         hkk+1f08PGQcFin1jPwrj2eCtuNvMHjcTm06eYMEq0RzghBm7U53Xe5pTh6wohdS7ltK
-         D866b+RMLGkFCLr5x2hUi5pBt0AVIRc/svYSRob1MCDDdPmpfxGqplr1YBPIF8Go9Cmf
-         4+K4GDzrAvDGTKiL/C/38A3liMgt7UtkhmytLqdxy+oOIxaqKi4wFDPr7VkNT7GjR8Yf
-         lrUcAFe5heHotdqiIOlHvVUEeYPsSdJ41zVWPWchscRU+Ilfb3xvLjQfVvpyds6V6Qbf
-         AZlw==
+        b=lGbcDrNgLE6w9ul12rOyFdeXxcYuv/pamygSMgUjNLqKaKT1qy23SZJGOcsqRZ4obm
+         YdEbGZgOF3S5CWURB4YPmZLs4WrSd3nUt6UBO1OH5BXAKiP1nrqJTBlwHctF7+GnXSra
+         SdWY91x/BVVf1IvGujcRldR5Ph/bJ7kTM9CUGu0vneoK9rHcq93shKpQvFcrcjmkydeB
+         dyI6dIdBoNoGzzywfXR2t39VN4wC4psH0GIcsdzsLp0JP0If7iZMoP+BDYeTXmotMRHU
+         MuF3C/8l/RJ/0wzJTWCE//jeSIbQvUnoc+vDSbZp4nlG3GyVp45eRa48Vk/m8RR1l8AJ
+         3IFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=JP7lnBWo4brGHQWiDoGO/kDXnyiW8oaHvnK0mIcbp8Y=;
-        b=oySOjIytEFva6/JJNTWjFak5G2Z2CWW8axczIXY8nvxdmqfAo/CctLmHpfTMB8GUjp
-         dRu1NLGM6jiUgjVO2nbc5kauptZwR/b3q0I+1JS3S9I/6OjQpgIFFiLmTu+EC7HKNXnH
-         DAvGn5rU1AibUmb2xcfLfHWEs7+ukFra/mrvgG927WBAbiza0WyKiSgLj8YaPhV4EQju
-         zt72E8g99sSoa64jKfWcGx1xRbmszbgnphL4CAFSJxuGA19fsUXDjFNym/mLMeqfqRSo
-         ojLQ0Xi8vKQjNlDhPv39EOBh0/YXeFDr7SebR7+g203TyDSE3FcE/bjUnXvLW5AHGIVZ
-         8frw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
+        b=GHVB9WG+eQH0oHvwP6bmjZuBl/iXQO7H4jSQeBG9T1e+xiQJSTF/yVrxbkZZUQOSi1
+         aLJVmRPhlBJt9+WNFBdjIaKAzUPc9mP2stTHAV5SURPw/GthYCVuwiW0Idmm6J2O9YPG
+         My0+6uYqQsIRVQk2PUqxhzxQB05khz4mhUJOInVZmn2BqAfcKdF7XI3zOwykdW1bfbxC
+         6QB0LenXFSeO17+DB/T4ppUlaiD2grlM5auD3FP5dC4Thiz2KC9MqiqKeurH+40sPfRT
+         9viz2V9/CYsBCR9LiJPqU9BT0sHxXEDvRdk/xOQHDCShdRA+DvdxygqWMKLJcs9BQ6/d
+         UjUw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="YYuHQs/c";
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NsvwSMzd;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id q2si69173pfc.0.2020.10.21.00.31.12
+Received: from mail-pj1-x1042.google.com (mail-pj1-x1042.google.com. [2607:f8b0:4864:20::1042])
+        by gmr-mx.google.com with ESMTPS id a7si67651oie.4.2020.10.20.23.20.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Oct 2020 00:31:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
+        Tue, 20 Oct 2020 23:20:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) client-ip=2607:f8b0:4864:20::1042;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="YYuHQs/c";
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NsvwSMzd;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x644.google.com with SMTP id b19so789361pld.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2020 00:31:12 -0700 (PDT)
+Received: by mail-pj1-x1042.google.com with SMTP id gv6so603796pjb.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 23:20:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=JP7lnBWo4brGHQWiDoGO/kDXnyiW8oaHvnK0mIcbp8Y=;
-        b=YYuHQs/cdU8PBY9vZnvj7GJNs/D8YFeFGdX1gHmuSRkVjMdUgmsj0R5DPik/PtKHx8
-         XKvwMdd2GvFwzvRfX30y9g0az1kejenXOqOKQrtZfUg+iFIx4p5cw6egIUKprIpH+VQL
-         akyhyjcPzfVGHwyQBs6GHeisPPV2NFlqHzq57PdT0Vi/JMoLogcBPfYRDGwweU9FhfGF
-         xFMDMhum853EIJt8vSvZvbdwxltw389OgZ6AX2GgSWZHwk8Rgq6lDxq3g1c+pLRgtTTi
-         sownjl2Y4zTLuib1AK+cbjy4AzF/mJqnpzHdgV7RoG4fOxoO9AHY6MnKo3JwoEC+U/y2
-         X2Bw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
+        b=NsvwSMzdZ7wU0dy9p74HVApYFLpZOlJAd1yl0CtEI5TS037ra9cJgnpw/rXsFiH7Ig
+         LcW2eMYDEHaXRmzRwivePCm05kXIigsdEJaCEtIhG9i6lWdBhb2Pvrm7aggNod8WFFNY
+         PeOtMPUm6pZcUKjc9Ql1y3E1/9qoA2mwL4pOHNjDzjhJ/9ZmU0KCVKkqz0uab6HxwPvg
+         IUGxIbD4wxC8Tq9utaF51hou4Ozhy4dWQMVKJZfE3a7S86+Uo7vK0SErFuVddv6Zyrlx
+         TiCxGCPNf9zZkk1kq2VV52+JqzAWDvFjWMKu9alsneKCSKMqaBBBOSMDqXPWtGY7gFQ5
+         9pXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=JP7lnBWo4brGHQWiDoGO/kDXnyiW8oaHvnK0mIcbp8Y=;
-        b=EMfaBE/zKPwgKKbIKaKdlrjruyZ4XB4d4Nrifgiq7qmA7K+p12r/N9ryZSlR8kQ7bz
-         UJ5KphTGspc4aTKKuAOj91Q1+mtEOgRLysJyS1q2YcLruvGLtHTUolLtp0Iqyu603PRj
-         2Eqv6M3Nk1YQxYhcCKRbFwgKqsR1igNB4eUdBfC3tOQs18UCaXpJJz8mmontQoMlse/O
-         HXjJOGe3LoH3MRB8lizTdATlaaehivVJf8SrleE3B0lu73vkB96z3nukCBPBjs1y50TU
-         mr4A+3U4NObX9Yc381zlI8hTG1QVcJs8V9HGjM5mMInf8dDy632TIURaWnA9BAhcvXON
-         nDgA==
-X-Gm-Message-State: AOAM5316iLf15n5v398Oe28/fGvw10rtwLldeOxGWtHLiuyTcyOOZK5n
-	chF5PIIDHltN78zNkkTlACv5BD7DJsc=
-X-Received: by 2002:a17:90b:3393:: with SMTP id ke19mr2110399pjb.3.1603265472699;
-        Wed, 21 Oct 2020 00:31:12 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=oDdHTOY3M9RLd73jSuuTiDnRcpNwd0jVh5REM3abuOc=;
+        b=o+/bAtfs7UPBR0H2AqUHretQkXWav4Kn4QDrECWhQ8CsPzjISn0mRYXYWEtuF7TqmZ
+         Js0uY6W4137YDagVXknwIHF1IAlTkxXi7XA3isUPF7fvUhIuNPjvhaFuGRtY773aszwB
+         wWkLGkaJTqTrDApgXEeYTCx0TRGMmZEDQWSO8t+BT2S4R3SGs1DavksFF++BsVVAfL3j
+         IWyaBb0HR6xMMvv51EnHykLVpeavQUxSL+G0n3c0Su3k16gEjt++ISzRQAp9f8OFeUcD
+         GINioJytWQl3oJzpslwk1KH5yad6DTQm8hTotx7Bl0ZHfc5xntd2CyheHLsmpz4sSbQD
+         fY9g==
+X-Gm-Message-State: AOAM531Nm0XXjTwGqIxnFy/pJlcSlqxzvzRHep7Jx7EXCAo2MZExyOOn
+	c+oM5JQ5bpXJ0jsKFqdj1CQ=
+X-Received: by 2002:a17:90a:d341:: with SMTP id i1mr1846296pjx.18.1603261235703;
+        Tue, 20 Oct 2020 23:20:35 -0700 (PDT)
 Return-Path: <mh12gx2825@gmail.com>
 Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id y4sm1427040pgs.0.2020.10.21.00.31.10
+        by smtp.gmail.com with ESMTPSA id d2sm915229pjx.4.2020.10.20.23.20.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Oct 2020 00:31:12 -0700 (PDT)
-Date: Wed, 21 Oct 2020 13:01:07 +0530
+        Tue, 20 Oct 2020 23:20:35 -0700 (PDT)
+Date: Wed, 21 Oct 2020 11:50:30 +0530
 From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
-Cc: mh12gx2825@gmail.com
-Subject: [PATCH v2 1/2] staging: kpc2000: kpc_dma: rearrange lines exceeding
- 100 columns
-Message-ID: <c61a3c244bea516528e9ca4e909c30f16959c3aa.1603264617.git.mh12gx2825@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devel@driverdev.osuosl.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 2/2] staging: kpc2000: kpc_dma: rename show function per
+ convention
+Message-ID: <20201021062030.GB763329@ubuntu204>
+References: <273abf291f47286a702d2a53445e7a6efcf9972b.1603256795.git.mh12gx2825@gmail.com>
+ <5d757cf6f97533b48aa471db6efc100acfb8f517.1603256795.git.mh12gx2825@gmail.com>
+ <20201021055031.GA975815@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20201021055031.GA975815@kroah.com>
 
-Reformat lines that exceed 100 column in length. Issue reported by
-checkpatch script.
+On Wed, Oct 21, 2020 at 07:50:31AM +0200, Greg Kroah-Hartman wrote:
+> On Wed, Oct 21, 2020 at 10:40:21AM +0530, Deepak R Varma wrote:
+> > Rename show_engine_regs to engine_regs_show as per the convention
+> > followed. Issue reported by checkpatch script.
+> > 
+> > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> > ---
+> >  drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> > index 7698e5ef2a7c..b6d1afbd452d 100644
+> > --- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> > +++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
+> > @@ -50,7 +50,7 @@ static void kpc_dma_del_device(struct kpc_dma_device *ldev)
+> >  }
+> >  
+> >  /**********  SysFS Attributes **********/
+> > -static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *attr, char *buf)
+> > +static ssize_t  engine_regs_show(struct device *dev, struct device_attribute *attr, char *buf)
+> >  {
+> >  	struct kpc_dma_device *ldev;
+> >  	struct platform_device *pldev = to_platform_device(dev);
+> > @@ -80,7 +80,7 @@ static ssize_t  show_engine_regs(struct device *dev, struct device_attribute *at
+> >  		ldev->desc_completed
+> >  	);
+> >  }
+> > -static DEVICE_ATTR(engine_regs, 0444, show_engine_regs, NULL);
+> > +static DEVICE_ATTR(engine_regs, 0444, engine_regs_show, NULL);
+> 
+> Shouldn't this just be using a DEVICE_ATTR_RO() macro instead?  Make
+> that change and the name will be fixed up at the same time.
+> 
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
-Changes since v1:
-   - No change in this patch.
-   - Patch 2/2 has a change.
+Thank you for the feedback. I will review what the mentioned macro does
+and how it can be implemented. Will send a revised patch with the change
+suggested.
 
- drivers/staging/kpc2000/kpc_dma/dma.c         | 27 +++++++++---
- drivers/staging/kpc2000/kpc_dma/fileops.c     | 44 +++++++++++++++----
- .../staging/kpc2000/kpc_dma/kpc_dma_driver.c  |  9 ++--
- 3 files changed, 63 insertions(+), 17 deletions(-)
+> And did checkpatch really complain about this?  What was the actual
+> message it produced?
 
-diff --git a/drivers/staging/kpc2000/kpc_dma/dma.c b/drivers/staging/kpc2000/kpc_dma/dma.c
-index 452a3f7c835d..b8d8294aa4c3 100644
---- a/drivers/staging/kpc2000/kpc_dma/dma.c
-+++ b/drivers/staging/kpc2000/kpc_dma/dma.c
-@@ -16,7 +16,8 @@ irqreturn_t  ndd_irq_handler(int irq, void *dev_id)
- {
- 	struct kpc_dma_device *ldev = (struct kpc_dma_device *)dev_id;
- 
--	if ((GetEngineControl(ldev) & ENG_CTL_IRQ_ACTIVE) || (ldev->desc_completed->MyDMAAddr != GetEngineCompletePtr(ldev)))
-+	if ((GetEngineControl(ldev) & ENG_CTL_IRQ_ACTIVE) ||
-+	    (ldev->desc_completed->MyDMAAddr != GetEngineCompletePtr(ldev)))
- 		schedule_work(&ldev->irq_work);
- 
- 	return IRQ_HANDLED;
-@@ -39,7 +40,9 @@ void  ndd_irq_worker(struct work_struct *ws)
- 	cur = eng->desc_completed;
- 	do {
- 		cur = cur->Next;
--		dev_dbg(&eng->pldev->dev, "Handling completed descriptor %p (acd = %p)\n", cur, cur->acd);
-+		dev_dbg(&eng->pldev->dev, "Handling completed descriptor %p (acd = %p)\n",
-+			cur,
-+			cur->acd);
- 		BUG_ON(cur == eng->desc_next); // Ordering failure.
- 
- 		if (cur->DescControlFlags & DMA_DESC_CTL_SOP) {
-@@ -56,7 +59,9 @@ void  ndd_irq_worker(struct work_struct *ws)
- 
- 		if (cur->DescControlFlags & DMA_DESC_CTL_EOP) {
- 			if (cur->acd)
--				transfer_complete_cb(cur->acd, eng->accumulated_bytes, eng->accumulated_flags | ACD_FLAG_DONE);
-+				transfer_complete_cb(cur->acd,
-+						     eng->accumulated_bytes,
-+						     eng->accumulated_flags | ACD_FLAG_DONE);
- 		}
- 
- 		eng->desc_completed = cur;
-@@ -103,7 +108,10 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
- 		eng->dir = DMA_TO_DEVICE;
- 
- 	eng->desc_pool_cnt = desc_cnt;
--	eng->desc_pool = dma_pool_create("KPC DMA Descriptors", &eng->pldev->dev, sizeof(struct kpc_dma_descriptor), DMA_DESC_ALIGNMENT, 4096);
-+	eng->desc_pool = dma_pool_create("KPC DMA Descriptors",
-+					 &eng->pldev->dev,
-+					 sizeof(struct kpc_dma_descriptor),
-+					 DMA_DESC_ALIGNMENT, 4096);
- 
- 	eng->desc_pool_first = dma_pool_alloc(eng->desc_pool, GFP_KERNEL | GFP_DMA, &head_handle);
- 	if (!eng->desc_pool_first) {
-@@ -141,7 +149,11 @@ int  setup_dma_engine(struct kpc_dma_device *eng, u32 desc_cnt)
- 	INIT_WORK(&eng->irq_work, ndd_irq_worker);
- 
- 	// Grab IRQ line
--	rv = request_irq(eng->irq, ndd_irq_handler, IRQF_SHARED, KP_DRIVER_NAME_DMA_CONTROLLER, eng);
-+	rv = request_irq(eng->irq,
-+			 ndd_irq_handler,
-+			 IRQF_SHARED,
-+			 KP_DRIVER_NAME_DMA_CONTROLLER,
-+			 eng);
- 	if (rv) {
- 		dev_err(&eng->pldev->dev, "%s: failed to request_irq: %d\n", __func__, rv);
- 		return rv;
-@@ -195,7 +207,10 @@ void  stop_dma_engine(struct kpc_dma_device *eng)
- 	}
- 
- 	// Clear any persistent bits just to make sure there is no residue from the reset
--	SetClearEngineControl(eng, (ENG_CTL_IRQ_ACTIVE | ENG_CTL_DESC_COMPLETE | ENG_CTL_DESC_ALIGN_ERR | ENG_CTL_DESC_FETCH_ERR | ENG_CTL_SW_ABORT_ERR | ENG_CTL_DESC_CHAIN_END | ENG_CTL_DMA_WAITING_PERSIST), 0);
-+	SetClearEngineControl(eng, (ENG_CTL_IRQ_ACTIVE | ENG_CTL_DESC_COMPLETE |
-+				    ENG_CTL_DESC_ALIGN_ERR | ENG_CTL_DESC_FETCH_ERR |
-+				    ENG_CTL_SW_ABORT_ERR | ENG_CTL_DESC_CHAIN_END |
-+				    ENG_CTL_DMA_WAITING_PERSIST), 0);
- 
- 	// Reset performance counters
- 
-diff --git a/drivers/staging/kpc2000/kpc_dma/fileops.c b/drivers/staging/kpc2000/kpc_dma/fileops.c
-index e1c7c04f16fe..b929987844ff 100644
---- a/drivers/staging/kpc2000/kpc_dma/fileops.c
-+++ b/drivers/staging/kpc2000/kpc_dma/fileops.c
-@@ -76,7 +76,11 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 
- 	// Lock the user buffer pages in memory, and hold on to the page pointers (for the sglist)
- 	mmap_read_lock(current->mm);      /*  get memory map semaphore */
--	rv = pin_user_pages(iov_base, acd->page_count, FOLL_TOUCH | FOLL_WRITE, acd->user_pages, NULL);
-+	rv = pin_user_pages(iov_base,
-+			    acd->page_count,
-+			    FOLL_TOUCH | FOLL_WRITE,
-+			    acd->user_pages,
-+			    NULL);
- 	mmap_read_unlock(current->mm);        /*  release the semaphore */
- 	if (rv != acd->page_count) {
- 		nr_pages = rv;
-@@ -89,16 +93,25 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 	nr_pages = acd->page_count;
- 
- 	// Allocate and setup the sg_table (scatterlist entries)
--	rv = sg_alloc_table_from_pages(&acd->sgt, acd->user_pages, acd->page_count, iov_base & (PAGE_SIZE - 1), iov_len, GFP_KERNEL);
-+	rv = sg_alloc_table_from_pages(&acd->sgt,
-+				       acd->user_pages,
-+				       acd->page_count,
-+				       iov_base & (PAGE_SIZE - 1),
-+				       iov_len, GFP_KERNEL);
- 	if (rv) {
- 		dev_err(&priv->ldev->pldev->dev, "Couldn't alloc sg_table (%d)\n", rv);
- 		goto unpin_pages;
- 	}
- 
- 	// Setup the DMA mapping for all the sg entries
--	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev, acd->sgt.sgl, acd->sgt.nents, ldev->dir);
-+	acd->mapped_entry_count = dma_map_sg(&ldev->pldev->dev,
-+					     acd->sgt.sgl,
-+					     acd->sgt.nents,
-+					     ldev->dir);
- 	if (acd->mapped_entry_count <= 0) {
--		dev_err(&priv->ldev->pldev->dev, "Couldn't dma_map_sg (%d)\n", acd->mapped_entry_count);
-+		dev_err(&priv->ldev->pldev->dev,
-+			"Couldn't dma_map_sg (%d)\n",
-+			acd->mapped_entry_count);
- 		goto free_table;
- 	}
- 
-@@ -111,14 +124,26 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 
- 	// Figoure out how many descriptors are available and return an error if there aren't enough
- 	num_descrs_avail = count_descriptors_available(ldev);
--	dev_dbg(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
-+	dev_dbg(&priv->ldev->pldev->dev,
-+		"    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d\n",
-+		acd->mapped_entry_count,
-+		desc_needed,
-+		num_descrs_avail);
- 	if (desc_needed >= ldev->desc_pool_cnt) {
--		dev_warn(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    TOO MANY to ever complete!\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
-+		dev_warn(&priv->ldev->pldev->dev,
-+			 "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    TOO MANY to ever complete!\n",
-+			 acd->mapped_entry_count,
-+			 desc_needed,
-+			 num_descrs_avail);
- 		rv = -EAGAIN;
- 		goto err_descr_too_many;
- 	}
- 	if (desc_needed > num_descrs_avail) {
--		dev_warn(&priv->ldev->pldev->dev, "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    Too many to complete right now.\n", acd->mapped_entry_count, desc_needed, num_descrs_avail);
-+		dev_warn(&priv->ldev->pldev->dev,
-+			 "    mapped_entry_count = %d    num_descrs_needed = %d    num_descrs_avail = %d    Too many to complete right now.\n",
-+			 acd->mapped_entry_count,
-+			 desc_needed,
-+			 num_descrs_avail);
- 		rv = -EMSGSIZE;
- 		goto err_descr_too_many;
- 	}
-@@ -163,7 +188,10 @@ static int kpc_dma_transfer(struct dev_private_data *priv,
- 			if (i == acd->mapped_entry_count - 1 && p == pcnt - 1)
- 				desc->acd = acd;
- 
--			dev_dbg(&priv->ldev->pldev->dev, "  Filled descriptor %p (acd = %p)\n", desc, desc->acd);
-+			dev_dbg(&priv->ldev->pldev->dev,
-+				"  Filled descriptor %p (acd = %p)\n",
-+				desc,
-+				desc->acd);
- 
- 			ldev->desc_next = desc->Next;
- 			desc = desc->Next;
-diff --git a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-index 624d47bae4d1..7698e5ef2a7c 100644
---- a/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-+++ b/drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c
-@@ -138,7 +138,8 @@ int  kpc_dma_probe(struct platform_device *pldev)
- 
- 	// Setup miscdev struct
- 	dev = MKDEV(assigned_major_num, pldev->id);
--	ldev->kpc_dma_dev = device_create(kpc_dma_class, &pldev->dev, dev, ldev, "kpc_dma%d", pldev->id);
-+	ldev->kpc_dma_dev = device_create(kpc_dma_class, &pldev->dev,
-+					  dev, ldev, "kpc_dma%d", pldev->id);
- 	if (IS_ERR(ldev->kpc_dma_dev)) {
- 		rv = PTR_ERR(ldev->kpc_dma_dev);
- 		dev_err(&ldev->pldev->dev, "%s: device_create failed: %d\n", __func__, rv);
-@@ -205,9 +206,11 @@ int __init kpc_dma_driver_init(void)
- {
- 	int err;
- 
--	err = __register_chrdev(KPC_DMA_CHAR_MAJOR, 0, KPC_DMA_NUM_MINORS, "kpc_dma", &kpc_dma_fops);
-+	err = __register_chrdev(KPC_DMA_CHAR_MAJOR, 0,
-+				KPC_DMA_NUM_MINORS, "kpc_dma", &kpc_dma_fops);
- 	if (err < 0) {
--		pr_err("Can't allocate a major number (%d) for kpc_dma (err = %d)\n", KPC_DMA_CHAR_MAJOR, err);
-+		pr_err("Can't allocate a major number (%d) for kpc_dma (err = %d)\n",
-+		       KPC_DMA_CHAR_MAJOR, err);
- 		goto fail_chrdev_register;
- 	}
- 	assigned_major_num = err;
--- 
-2.25.1
+Yes, the WARNING message from checkpatch was:
 
+WARNING: Consider renaming function(s) 'show_engine_regs' to 'engine_regs_show'                     
++#82: FILE: drivers/staging/kpc2000/kpc_dma/kpc_dma_driver.c:82:                                     
++}    
+
+
+> 
+> thanks,
+> 
+> greg k-h
 
