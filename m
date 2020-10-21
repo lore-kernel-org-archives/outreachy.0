@@ -1,127 +1,129 @@
 X-GM-THRID: 6885771919120924672
-X-Received: by 2002:a63:eb09:: with SMTP id t9mr1728679pgh.279.1603802670567;
-        Tue, 27 Oct 2020 05:44:30 -0700 (PDT)
+X-Received: by 2002:a0c:f393:: with SMTP id i19mr1054684qvk.61.1603254545350;
+        Tue, 20 Oct 2020 21:29:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:941a:: with SMTP id m26ls607173pge.10.gmail; Tue, 27 Oct
- 2020 05:44:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRsQHZDPBzuYW//f3+NGEsuoxt8wO+JBZc6HMLFIvTDQysz+wtbBEly/66rykVQhBhmJ9l
-X-Received: by 2002:a62:30c2:0:b029:152:83fd:5615 with SMTP id w185-20020a6230c20000b029015283fd5615mr2174267pfw.22.1603802668698;
-        Tue, 27 Oct 2020 05:44:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603802668; cv=none;
+Received: by 2002:ac8:5956:: with SMTP id 22ls1531014qtz.4.gmail; Tue, 20 Oct
+ 2020 21:29:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzp8dSonRBXb4QPlDFUxMXIq/YugV5fyxfcHWSzUt4qYrUarkKO7autXBs5pO6uFFefSL04
+X-Received: by 2002:ac8:6cf:: with SMTP id j15mr1463378qth.219.1603254544002;
+        Tue, 20 Oct 2020 21:29:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603254543; cv=none;
         d=google.com; s=arc-20160816;
-        b=ghsGfUFGRcmpAo3Zrn0epC0wiSVp5VXsSZOnanb3D1I6TWPKraQ0FLIoD/Radu893v
-         m/hYKYXJUv3HvSY4RSYotjGo5jId/ESdhR4uYA1SCzzbzcHszaX+SQhj9IHZiQVRBbkm
-         sYlT7ohi82dhHT7GW/wwQXJkKHhU7w4yNvRkzGaARB5puQ1S01sCCXL3Wt/Jx5ZNvPj1
-         2u91yDiyMM8hSW7+sRKZQBgdEDfio0+z6aRc/zmRm67ZirSYcdkhW+OoziherkBBvq63
-         oCCNjfWwU3BcYlOMw/TZdBi9fSZE5NRkGz6qjbsvqdDA0R9Qe1hUjAYSJa0AG62bYb+3
-         vU6w==
+        b=IEYD9eQPrely8swrybXJTKyBO3ABpgC42RBcA0BsWb7C2Nj+y0Mfy21ech36J4X23m
+         ZmSTA1NguN/wsRCfAmZCtx8f/FOELd0ZK6479AIq3vrtNhc1mcC6hQ9sxcCXaWTpdnXK
+         4dGj8gxBajootkgLm0DlBzMXAYMImv/0SsnGD1nC04I589Uxs+uJjHcgb+ABYU8DQxsf
+         hO/IozN8xCpdgbrjtsDUtPsJe75i26TTe09kC8lQm9lj6LBidCDw6fv1L53vSbi0OIqO
+         toMwaiJd94USLsquOSOvqKUPN4p9/YDpepNd9sxqItls68Y9nFbpctTL3aU4Wqpydxsj
+         k66g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=W0kU8jHRcwyBRlgrd+WwhgxOmD0kqKKZKBvEtmKWzr0=;
-        b=OSlZ0mGqN0i06x7bBEEoPBwJtBYgzpq/bzA+c1sPIa+kAhBL/7aTZxqEgvYy4aRzRH
-         5tCs7aVVAdFZjzyQ7CZcDOe1hcgNUnkT3YEBvE9fO70Dv2GoV7w6waZd/nQjfAHn60+0
-         fVpcJUW2FW+ZG7xKLcW6PQ0Ju1WT7bOIvEXjqGLGpD+K6FZ1IWdAPltkaFhKm6MnwocG
-         eAWkCz9RfpSDI0Dl7d18ZBDSGObuN2ARyLSXFQJ5vhQgkHRIAV7Se2k7ONvkxm+c3zOE
-         WA2Z/B9u2zENWwFApR69Waw7xjy/oFamRyI3b2S3Db1nTesSObnrepK1P7eu1Pl97nvQ
-         79uw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version;
+        bh=kHNTDnEmbMsgkShjK28jcig/bkwUGss1t972T6HZfOw=;
+        b=ks0dMSeneJ56cdOMQiKjq8613Pm1UgJlIwbo25THYAhrwY5T0Ia6UJ9hb09Vs2baLO
+         dsxlH+hsagmGfmLfsZannC40gwAN32aBVpJZB+VtP3x7ODSrjxlQZp43SGCICaHcPawV
+         WMuxfwWRRARpLWP5ghqU+w1AsNiwfqqYhYFkF04cVvuuCJXFjQYQqt4mdsxICs5AIA9Y
+         9dxIrk4i1P/RyCv03t1NCD619h6MJGICYZ/71nJEe8dOfi6qYNZbwUQeA788gSUaiQ0e
+         5sqTWLweP8bn87PHOHD7iTPRFgPymN+FNJslzsFVvLmXeqyys0ohCvvX3B9vsB74sQaW
+         IUzg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Wxk4MFZK;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
-        by gmr-mx.google.com with ESMTPS id 191si91873pfu.3.2020.10.27.05.44.28
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.235 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa09-06.prod.phx3.secureserver.net (p3plsmtpa09-06.prod.phx3.secureserver.net. [173.201.193.235])
+        by gmr-mx.google.com with ESMTPS id s76si38793qka.5.2020.10.20.21.29.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2020 05:44:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 20 Oct 2020 21:29:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.235 as permitted sender) client-ip=173.201.193.235;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Wxk4MFZK;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RCTPMN025052;
-	Tue, 27 Oct 2020 12:44:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=W0kU8jHRcwyBRlgrd+WwhgxOmD0kqKKZKBvEtmKWzr0=;
- b=Wxk4MFZKtap2wRdhiuOxvc0S9ohlfpc8OYlMM9/MO2RYzExGl6yZq71ZUV8KDLKHxev4
- PtC4gsB+Ko6rrOnvg6aAm2fMK/OcJjnf7wF3kv2VSeYQ/IOkGv8jX07GX5W/M4Z0cGUP
- SUUwupvgd15U0+e4w7FTwDAMuyrPG5NuYGKpCofeGjhYmyiGRhWMtZwI90wWHJBp4dwx
- gzTLKxc9pr7Kyag/dlxqSLU0yjYH56m0IvnEZzfrJsFB3T5Owmd5JEX2s2Q8gNqnIx3w
- M6D2I1sYy7qiOHfe/0rw5ozYGoiccIpjmvmzt3yNUg0tsS4JJLytAMPKRFRTB9tBsVYT mw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by aserp2130.oracle.com with ESMTP id 34c9sasteq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 27 Oct 2020 12:44:25 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RCVXDi142242;
-	Tue, 27 Oct 2020 12:44:24 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by userp3030.oracle.com with ESMTP id 34cx6vwmwg-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 27 Oct 2020 12:44:24 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09RCiNEK028658;
-	Tue, 27 Oct 2020 12:44:23 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 27 Oct 2020 05:44:23 -0700
-Date: Tue, 27 Oct 2020 15:44:17 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Matthew Wilcox <willy@infradead.org>
-Cc: Elena Afanasova <eafanasova@gmail.com>, devel@driverdev.osuosl.org,
-        gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 3/3] staging/rtl8712: use BIT macro
-Message-ID: <20201027124417.GW1042@kadam>
-References: <20201020182439.43314-1-eafanasova@gmail.com>
- <20201020182439.43314-3-eafanasova@gmail.com>
- <20201020184404.GC20115@casper.infradead.org>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.235 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
+	by :SMTPAUTH: with ESMTPSA
+	id V5kEkUncVz5JkV5kEktuwC; Tue, 20 Oct 2020 21:29:03 -0700
+X-CMAE-Analysis: v=2.3 cv=aPSOVo1m c=1 sm=1 tr=0
+ a=PnbjpSU/03CrHefOPWZnMg==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
+ a=afefHYAZSVUA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8
+ a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=Wm2QblFjYE37K_-gV7gA:9 a=QEXdDO2ut3YA:10
+ a=cDyXFGGuxjcA:10 a=_sbA2Q-Kp09kWB8D3iXc:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-ot1-f44.google.com with SMTP id f37so680205otf.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 21:29:02 -0700 (PDT)
+X-Gm-Message-State: AOAM532goTSsYdU4CY1Oo69x9kLsk1aRSFy9DBT0zV7p1lEm6f1X38MI
+	kuYx1Fbia1L+yzl9vT4bvOaj4vhzsWvmZUuZYaU=
+X-Received: by 2002:a9d:1ec2:: with SMTP id n60mr1227974otn.63.1603254542550;
+ Tue, 20 Oct 2020 21:29:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20201020184404.GC20115@casper.infradead.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phishscore=0 spamscore=0
- bulkscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010270081
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 spamscore=0 phishscore=0 clxscore=1031 suspectscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010270081
+References: <20201020182439.43314-1-eafanasova@gmail.com>
+In-Reply-To: <20201020182439.43314-1-eafanasova@gmail.com>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Wed, 21 Oct 2020 09:58:50 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbKv0-E9w-LdbwNr8vszm_6cwkwF9ic5eDysC7xETnotNg@mail.gmail.com>
+Message-ID: <CAK-LDbKv0-E9w-LdbwNr8vszm_6cwkwF9ic5eDysC7xETnotNg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 1/3] staging/rtl8712: remove extra
+ blank lines; fix code alignment
+To: Elena Afanasova <eafanasova@gmail.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
+	Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfKrAktcKD17XwNyJ+oMhliX6y0GugPBOARo1LKZC0cUEkpBd3h6YrgGO5UKsx/ds/YFgdwU5c+U0NSVPDA3zaAxgamH03/ZhGKyWdLNtHC1OWhXYWHN8
+ 4Mpxa5Fd0IXIojfRycmwZaq7iMDqWgo778Uw4CbvS2ksEKIOCxJ0mqzEmrIz9g2ZylqAn2FpjDJ/dUSzOUJi92d1SuMHik2eQTo=
 
-On Tue, Oct 20, 2020 at 07:44:04PM +0100, Matthew Wilcox wrote:
-> On Tue, Oct 20, 2020 at 11:24:39AM -0700, Elena Afanasova wrote:
-> > Reported by checkpatch.pl
-> 
-> Checkpatch is wrong.
-> 
-> > +++ b/drivers/staging/rtl8712/rtl871x_recv.h
-> > @@ -8,7 +8,7 @@
-> >  #define NR_RECVFRAME 256
-> >  
-> >  #define RXFRAME_ALIGN	8
-> > -#define RXFRAME_ALIGN_SZ	(1 << RXFRAME_ALIGN)
-> > +#define RXFRAME_ALIGN_SZ	BIT(RXFRAME_ALIGN)
+On Wed, Oct 21, 2020 at 12:01 AM Elena Afanasova <eafanasova@gmail.com> wrote:
+>
+> Reported by checkpatch.pl
+>
+> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 
-Yeah.  It's weird to talk about size as a BIT() flag.  The RXFRAME_ALIGN
-is not needed.  Just say:
+This patch is fixing 2 different checkpatch warnings. They
+should be sent as separate patches. One for removing extra
+blank lines, another one for fixing the code alignment.
 
--#define RXFRAME_ALIGN      8
--#define RXFRAME_ALIGN_SZ   (1 << RXFRAME_ALIGN)
-+#define RXFRAME_ALIGN_SZ 256
+> ---
+>  drivers/staging/rtl8712/rtl871x_recv.h | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
+> index e83c256e1474..57a965b9839b 100644
+> --- a/drivers/staging/rtl8712/rtl871x_recv.h
+> +++ b/drivers/staging/rtl8712/rtl871x_recv.h
+> @@ -29,7 +29,6 @@ struct        stainfo_rxcache {
+>  #define                PHY_RSSI_SLID_WIN_MAX                   100
+>  #define                PHY_LINKQUALITY_SLID_WIN_MAX            20
+>
+> -
+>  struct smooth_rssi_data {
+>         u32     elements[100];  /* array to store values */
+>         u32     index;          /* index to current array to store */
+> @@ -38,7 +37,6 @@ struct smooth_rssi_data {
+>  };
+>
+>  struct rx_pkt_attrib {
+> -
+>         u8      amsdu;
+>         u8      order;
+>         u8      qos;
+> @@ -129,7 +127,7 @@ union recv_frame *r8712_alloc_recvframe(struct  __queue *pfree_recv_queue);
+>  void r8712_free_recvframe(union recv_frame *precvframe,
+>                           struct  __queue *pfree_recv_queue);
+>  void r8712_free_recvframe_queue(struct  __queue *pframequeue,
+> -                                struct  __queue *pfree_recv_queue);
+> +                               struct  __queue *pfree_recv_queue);
+>  int r8712_wlanhdr_to_ethhdr(union recv_frame *precvframe);
+>  int recv_func(struct _adapter *padapter, void *pcontext);
+>
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201020182439.43314-1-eafanasova%40gmail.com.
 
-This is literally used for aligning the RX frame.  It seems like a crazy
-thing to me that to aligned at 256 bytes.  I would have expected 64 bit
-alignment or page alignment but not 256 byte alignment...  Weird.
 
-regards,
-dan carpenter
 
+-- 
+Vaishali
+
+
+-- 
+Vaishali
 
