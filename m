@@ -1,235 +1,437 @@
 X-GM-THRID: 6885724039139033088
-X-Received: by 2002:a9d:635a:: with SMTP id y26mr1277891otk.66.1603801687237;
-        Tue, 27 Oct 2020 05:28:07 -0700 (PDT)
+X-Received: by 2002:a67:fc4c:: with SMTP id p12mr47564vsq.30.1603254394829;
+        Tue, 20 Oct 2020 21:26:34 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:6949:: with SMTP id p9ls299988oto.6.gmail; Tue, 27 Oct
- 2020 05:28:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw8AkcvUT0oNuSL+AVW31lY1BGz//q+iYfqyizNW/xxnt9Jhb6PFz/bNxGUnm6XAsbkL7bQ
-X-Received: by 2002:a9d:68da:: with SMTP id i26mr1276881oto.200.1603801685995;
-        Tue, 27 Oct 2020 05:28:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603801685; cv=none;
+Received: by 2002:ab0:36c9:: with SMTP id v9ls305933uau.1.gmail; Tue, 20 Oct
+ 2020 21:26:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQRagnoWW3ALrH5f6xSJTn9U6Ob0L3Aud6BeeYC3RPoyHaoppdaDzjL/c6mhLuFoGyTIM9
+X-Received: by 2002:a9f:37a8:: with SMTP id q37mr707500uaq.102.1603254393238;
+        Tue, 20 Oct 2020 21:26:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603254393; cv=none;
         d=google.com; s=arc-20160816;
-        b=WbXO/T4Xja3oj8Uo8JSOAl+7/PSbxoomYPMAt3rG0PCnmkvyTGZvHaUx00Z7EWSbXA
-         WcOTAbyNNEHWNR2w23LBpPitZnLJect8faWaRTp+yZwuyHnFYFT+KAdjbKsgokuoqjTc
-         FgUrxF6YO3LOvCOFo6B/IXDNPzRgwnXqv6GIP17V723HekC+ZkqhKAwEjQYjaFVnHwdI
-         MOAnAnwxxVYx2lQXJB+isvoOmAAy3rZbkOkAB6vytTcE9xwLGlJQZb8D1PAncGghm99A
-         g9jA+9sVRUgdMNASMb7gQ3KhTNKOLyHvwCyp+55LJDmYGZ0+RPKfJhjZbCRhxPGwpgFi
-         aoCw==
+        b=l5zmrXSLXmAsVEWwmrgGtpeH7/9aTqRbEC8x2T+PHYiEfX7Tomw9j8/hyUY7hZfHT0
+         bUpZu720N3sr2ZmB9TaHn4GphRTLrO5UAn5fW4jtuW0Q7ao3BtIgTvTCVP6CCTO1SWl9
+         7mjJj25tZB5kCkK9yGBeQ6aLqcJRqlIOF/snLZQV08toLRJ+m4vv+/w0QzKPV50KxwDn
+         +CJsa8amG+rf+tDPrJqkNDt9Ex38XJzYGjasBbayDpNX+jh8myxou2MWPjsbbinAHbtz
+         A9Xt+sbzM8UT/Le66dHiS7gVq5yizaFcS2xHFBW2eKmN8wPOAFyiLGgOB8K67XgBytal
+         bmpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=tylquuXZ9kgW4LglgpQUMilOJDrTzJpwmjaJvQfNwJQ=;
-        b=uootdmewHIkP8ihyh0FyZykryqWkzGddCHJwiQT3AoVtlxcLveBx9lM/YHbyiy9Og9
-         7MosPsZiGWULbgpLPelFvJgp30DpqX94WWl2kmuSrDwpytLppTv9nLhFs1fvMvqznSko
-         e0KlgIwTIlTM4ZL/t6BPknvALWyOKzr/GEc1djLAdWmTdB3DHyDUB4FTrvM587kpUeda
-         F00e4YeezQVmDbatC6e328wXXhig0OhL7hPvlM9ZJNjSNXVvp+IVNx6SoGrJNQH61Oof
-         zJ8sdqMcXyaP/aqYdcXfJQtzSx2Tu2wQnV04g2G0MQcjxQpQZq+9LSWYyehXfq5kyE+T
-         Mu/Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version;
+        bh=MrpGiAyCYnC/Xad8jaLCatwpvrzam2QbpVyYHeUtXUc=;
+        b=S/rQjLAtByMdB7EtlTvG/HUIWOyYckhzWju935PY5RAOyrDxjz1o9xgiTPSCBUgMoX
+         Hc1/fYcPDOSGIOASc+Mi2e4nU/AMkMMFuWVXGlopyQBzhUwf81bXZZI5QzI/zcVpaw0R
+         R2ANVQU3E5oTpwKX0GxkCkq2f48PCZHYzx44fMCHm0vTIt62N134xSkIeCBbx3IB2Zhf
+         Xyfe5MVDYGFmB75ufr5umANO73PuHnvvx53Mq0vm3OAxqjWDY+xhmmjQwd2sPI7gdc66
+         VlZkWvCW6NNNvFOEKUS3CpTjsjmn+bTfB2lW2ZjDw8xqERWWdYe+edJTBE3/xO5rk1th
+         kWiQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=N89Lidkg;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
-        by gmr-mx.google.com with ESMTPS id r6si171091oth.4.2020.10.27.05.28.05
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.102 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa08-01.prod.phx3.secureserver.net (p3plsmtpa08-01.prod.phx3.secureserver.net. [173.201.193.102])
+        by gmr-mx.google.com with ESMTPS id r131si51112vkd.0.2020.10.20.21.26.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2020 05:28:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 20 Oct 2020 21:26:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.102 as permitted sender) client-ip=173.201.193.102;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=N89Lidkg;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RCMwvq003337;
-	Tue, 27 Oct 2020 12:28:03 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=tylquuXZ9kgW4LglgpQUMilOJDrTzJpwmjaJvQfNwJQ=;
- b=N89LidkggFVrn9nQGeh9fyLnF4CT/OmAvZCTKWo6z8lB6rLZOFwQbDnFzp8S2o5/i0O7
- 1an7WrohUANfkYVEoHTJciRutBWSVeIgxFtldRvVeEnS8xqcRRRAOFl9Y+hXOigBCwYT
- REOHNv7kLQLu/juRS+DDFosy0YySHfuGaD4uIaGYIfgrHckC/ulT3A5G/t3hyuBSww5h
- OTF4U/6ZGE16dJK9k1v4DrogccSRDkTb6X/ipaH+MwMqbNU5gpSiNRXgej4V0BH2fRmd
- CyCjxATGYYPymyVa9/+3+fl+70tDWVBDz3WaNDhHUB6IwovFHyPTWb9kcvca5ofEGsJW /A== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
-	by aserp2130.oracle.com with ESMTP id 34c9sasr76-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 27 Oct 2020 12:28:02 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
-	by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RC6HGV154627;
-	Tue, 27 Oct 2020 12:28:02 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by userp3020.oracle.com with ESMTP id 34cx1qnga5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 27 Oct 2020 12:28:01 +0000
-Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09RCS0w9019856;
-	Tue, 27 Oct 2020 12:28:00 GMT
-Received: from kadam (/41.57.98.10)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 27 Oct 2020 05:28:00 -0700
-Date: Tue, 27 Oct 2020 15:27:54 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Elena Afanasova <eafanasova@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-        outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging/rtl8188eu: fix line length exceeds 100 columns
-Message-ID: <20201027122754.GV1042@kadam>
-References: <20201020151748.35937-1-eafanasova@gmail.com>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.193.102 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
+	by :SMTPAUTH: with ESMTPSA
+	id V5hnkkAamiiCvV5hnkIQRu; Tue, 20 Oct 2020 21:26:32 -0700
+X-CMAE-Analysis: v=2.3 cv=J5PUEzvS c=1 sm=1 tr=0
+ a=VAYHCr8hrj86dj0+EyP22Q==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
+ a=afefHYAZSVUA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8
+ a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=4vmkics7GopiFC_8QScA:9
+ a=SMkLWvbea_adbkjV:21 a=kX2yLtDaiJZaFquU:21 a=QEXdDO2ut3YA:10
+ a=cDyXFGGuxjcA:10 a=_sbA2Q-Kp09kWB8D3iXc:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-oi1-f178.google.com with SMTP id j7so706892oie.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Oct 2020 21:26:31 -0700 (PDT)
+X-Gm-Message-State: AOAM5332fJpMUbZf0omWdRVf/GIu/51qchkmktu7VoJdJjvTmyJDoT7b
+	ruh6R3rGgL4h6hFO/11JQC+0HA2ENbefdAk7UnQ=
+X-Received: by 2002:aca:750c:: with SMTP id q12mr934419oic.174.1603254391344;
+ Tue, 20 Oct 2020 21:26:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20201020151748.35937-1-eafanasova@gmail.com>
 In-Reply-To: <20201020151748.35937-1-eafanasova@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 phishscore=0 bulkscore=0
- suspectscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010270080
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 spamscore=0 phishscore=0 clxscore=1015 suspectscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010270080
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Wed, 21 Oct 2020 09:56:18 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbJiYwkZbpHrYVjBqdcipMQ4HC18TV43fVrEY7FiGpq8Yg@mail.gmail.com>
+Message-ID: <CAK-LDbJiYwkZbpHrYVjBqdcipMQ4HC18TV43fVrEY7FiGpq8Yg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging/rtl8188eu: fix line length
+ exceeds 100 columns
+To: Elena Afanasova <eafanasova@gmail.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org, 
+	Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfDpIE/tC2BOShygPginZRCHVg3/0ZpQuAzolvw75WYZor6LvrTEntD9VMqNeex2zmii/zwCQS6lyrEd8ewDny2exQ/98yyisv5HkGyQraAm24qsrV/yZ
+ s1JesfKkgkd5IjYIzI43kjgh8HaxuNNgYIq7uaMKFEF4i82lSsvC36QMpMH9RdN16vDc4kE0C8gQ0RyLGxpTQo4Y+FNgwyNs0Cc=
 
-On Tue, Oct 20, 2020 at 08:17:48AM -0700, Elena Afanasova wrote:
+On Tue, Oct 20, 2020 at 8:56 PM Elena Afanasova <eafanasova@gmail.com> wrote:
+>
 > Reported by checkpatch.pl
-> 
 
-If I were trying to clean up this driver I would probably take a
-different approach.
+Hi Elena,
 
-Just send a patch that introduces line breaks for RT_TRACE() printks.
-The RT_TRACE() printks are super ugly, and if you add newlines to them,
-it can't make it worse than it already is.  Do not change the RT_TRACE()
-output.
+Thanks for your patches. Your commit log should mention
+why are you doing certain changes. Above commit log
+doesn't give reviewer/maintainer an idea about what are
+you fixing and why that change is necessary.
 
--                                        ("=== curfragnum=%d, pframe = 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x,!!!\n",
-+                                        ("curfrnum=%d: %.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x\n",
+Also, avoid using the word 'fix' in the subject lines. Rather
+write about the change you're doing in this patch. For
+example, you can write something like 'rearrange
+lines exceeding 100 columns' for this patch.
 
-Your change here is an improvement but it requires thinking and
-reviewers don't want to look at RT_TRACE().  Make your patches as
-uncontroversial as possible.
-
-Then for the other things there are some changes which are good, but in
-other places the correct thing is to introduce new functions.  So what
-I would want instead is a series of patches which do small clean ups
-which make the code obviously better, and are not just to make checkpatch
-happy.
+Above review applies for all the patches you've sent so far. :)
 
 > Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 > ---
 >  drivers/staging/rtl8188eu/core/rtw_xmit.c | 118 +++++++++++++++-------
 >  1 file changed, 81 insertions(+), 37 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
 > index 317355f830cb..51769f2ca910 100644
 > --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
 > +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
 > @@ -44,7 +44,9 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
->  	u32 max_xmit_extbuf_size = MAX_XMIT_EXTBUF_SZ;
->  	u32 num_xmit_extbuf = NR_XMIT_EXTBUFF;
->  
-> -	/*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
-> +	/*  We don't need to memset padapter->XXX to zero,
-> +	 *  because adapter is allocated by vzalloc().
-> +	 */
-
-This comment is totally pointless.  Kernel devs are expected to
-understand what the "z" in vzalloc() means.  Just delete it.
-
->  
->  	spin_lock_init(&pxmitpriv->lock);
->  
+>         u32 max_xmit_extbuf_size = MAX_XMIT_EXTBUF_SZ;
+>         u32 num_xmit_extbuf = NR_XMIT_EXTBUFF;
+>
+> -       /*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
+> +       /*  We don't need to memset padapter->XXX to zero,
+> +        *  because adapter is allocated by vzalloc().
+> +        */
+>
+>         spin_lock_init(&pxmitpriv->lock);
+>
 > @@ -127,7 +129,8 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
->  		res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
->  		if (res == _FAIL) {
->  			msleep(10);
-> -			res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
-> +			res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ +
-> +									XMITBUF_ALIGN_SZ));
-
-Align it like this:
-
-			res = rtw_os_xmit_resource_alloc(pxmitbuf,
-							 MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ);
-
-The rtw_os_xmit_resource_alloc() function is poorly named.
-
-
->  			if (res == _FAIL)
->  				goto exit;
->  		}
+>                 res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+>                 if (res == _FAIL) {
+>                         msleep(10);
+> -                       res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+> +                       res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ +
+> +                                                                       XMITBUF_ALIGN_SZ));
+>                         if (res == _FAIL)
+>                                 goto exit;
+>                 }
 > @@ -441,7 +444,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
->  				    ((tmp[21] == 67) && (tmp[23] == 68))) {
->  					/*  68 : UDP BOOTP client */
->  					/*  67 : UDP BOOTP server */
-> -					RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("====================== %s: get DHCP Packet\n", __func__));
-> +					RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
-> +						 ("====================== %s: get DHCP Packet\n",
-> +						 __func__));
-
-What does this message really mean?  The "===" characters don't add
-anything.  It's probably better to just delete this printk.
-
->  					/*  Use low rate to send DHCP packet. */
->  					pattrib->dhcp_pkt = 1;
->  				}
+>                                     ((tmp[21] == 67) && (tmp[23] == 68))) {
+>                                         /*  68 : UDP BOOTP client */
+>                                         /*  67 : UDP BOOTP server */
+> -                                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("====================== %s: get DHCP Packet\n", __func__));
+> +                                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                                ("====================== %s: get DHCP Packet\n",
+> +                                                __func__));
+>                                         /*  Use low rate to send DHCP packet. */
+>                                         pattrib->dhcp_pkt = 1;
+>                                 }
 > @@ -455,7 +460,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
->  		rtw_set_scan_deny(padapter, 3000);
->  
->  	/*  If EAPOL , ARP , OR DHCP packet, driver must be in active mode. */
-> -	if ((pattrib->ether_type == ETH_P_ARP) || (pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
-> +	if ((pattrib->ether_type == ETH_P_ARP) ||
-> +	    (pattrib->ether_type == ETH_P_PAE) ||
-> +	    (pattrib->dhcp_pkt == 1))
-
-This change is good.
-
->  		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SPECIAL_PACKET, 1);
->  
->  	mcast = is_multicast_ether_addr(pattrib->ra);
+>                 rtw_set_scan_deny(padapter, 3000);
+>
+>         /*  If EAPOL , ARP , OR DHCP packet, driver must be in active mode. */
+> -       if ((pattrib->ether_type == ETH_P_ARP) || (pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
+> +       if ((pattrib->ether_type == ETH_P_ARP) ||
+> +           (pattrib->ether_type == ETH_P_PAE) ||
+> +           (pattrib->dhcp_pkt == 1))
+>                 rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SPECIAL_PACKET, 1);
+>
+>         mcast = is_multicast_ether_addr(pattrib->ra);
 > @@ -466,7 +473,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
->  	} else {
->  		psta = rtw_get_stainfo(pstapriv, pattrib->ra);
->  		if (!psta) { /*  if we cannot get psta => drrp the pkt */
-> -			RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("\nupdate_attrib => get sta_info fail, ra: %pM\n", (pattrib->ra)));
-> +			RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_,
-> +				 ("\nupdate_attrib => get sta_info fail, ra: %pM\n",
-> +				 (pattrib->ra)));
-
-I guess this is fine.  All the RT_TRACE output just looks so terrible...
-Why does it sometimes have a newline at the start and sometimes not?
-In one place you improved the RT_TRACE() output which is good but
-probably should be done in a separate patch...
-
-Anyway, I'm done thinking about RT_TRACE() because it makes me want to
-poke out my own eyeballs like the really gruesome scene from Game of
-Throwns where the guys head explodes.
-
-[ snip ]
-
+>         } else {
+>                 psta = rtw_get_stainfo(pstapriv, pattrib->ra);
+>                 if (!psta) { /*  if we cannot get psta => drrp the pkt */
+> -                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("\nupdate_attrib => get sta_info fail, ra: %pM\n", (pattrib->ra)));
+> +                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_,
+> +                                ("\nupdate_attrib => get sta_info fail, ra: %pM\n",
+> +                                (pattrib->ra)));
+>                         res = _FAIL;
+>                         goto exit;
+>                 } else if (check_fwstate(pmlmepriv, WIFI_AP_STATE) &&
+> @@ -482,7 +491,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>                 pattrib->psta = psta;
+>         } else {
+>                 /*  if we cannot get psta => drop the pkt */
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("\nupdate_attrib => get sta_info fail, ra:%pM\n", (pattrib->ra)));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_,
+> +                        ("\nupdate_attrib => get sta_info fail, ra:%pM\n",
+> +                        (pattrib->ra)));
+>                 res = _FAIL;
+>                 goto exit;
+>         }
+> @@ -507,7 +518,8 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>         }
+>
+>         if (psta->ieee8021x_blocked) {
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("\n psta->ieee8021x_blocked == true\n"));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                        ("\n psta->ieee8021x_blocked == true\n"));
+>
+>                 pattrib->encrypt = 0;
+>
+> @@ -556,7 +568,8 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>                 }
+>                 break;
+>         case _AES_:
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_info_, ("pattrib->encrypt=%d (_AES_)\n", pattrib->encrypt));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_info_,
+> +                        ("pattrib->encrypt=%d (_AES_)\n", pattrib->encrypt));
+>                 pattrib->iv_len = 8;
+>                 pattrib->icv_len = 8;
+>                 break;
+> @@ -647,7 +660,7 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+>                         for (curfragnum = 0; curfragnum < pattrib->nr_frags; curfragnum++) {
+>                                 payload = (u8 *)round_up((size_t)(payload), 4);
+>                                 RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> -                                        ("=== curfragnum=%d, pframe = 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x,!!!\n",
+> +                                        ("curfrnum=%d: %.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x\n",
+>                                          curfragnum, *payload, *(payload + 1),
+>                                          *(payload + 2), *(payload + 3),
+>                                          *(payload + 4), *(payload + 5),
+> @@ -673,21 +686,28 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+>                                                   pattrib->icv_len : 0);
+>                                         rtw_secmicappend(&micdata, payload, length);
+>                                         payload += length + pattrib->icv_len;
+> -                                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("curfragnum=%d length=%d pattrib->icv_len=%d", curfragnum, length, pattrib->icv_len));
+> +                                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                                ("curfragnum=%d length=%d pattrib->icv_len=%d",
+> +                                                curfragnum, length, pattrib->icv_len));
+>                                 }
+>                         }
+>                         rtw_secgetmic(&micdata, &mic[0]);
+> -                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("%s: before add mic code!!!\n", __func__));
+> -                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("%s: pattrib->last_txcmdsz=%d!!!\n", __func__, pattrib->last_txcmdsz));
+> -                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("%s: mic[0]=0x%.2x , mic[1]=0x%.2x , mic[2]= 0x%.2x, mic[3]=0x%.2x\n\
+> -  mic[4]= 0x%.2x , mic[5]= 0x%.2x , mic[6]= 0x%.2x , mic[7]= 0x%.2x !!!!\n",
+> -                               __func__, mic[0], mic[1], mic[2], mic[3], mic[4], mic[5], mic[6], mic[7]));
+> +                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                ("%s: before add mic code!!!\n", __func__));
+> +                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                ("%s: pattrib->last_txcmdsz=%d!!!\n",
+> +                                __func__, pattrib->last_txcmdsz));
+> +                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                ("%s: mic: %.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x !!!!\n",
+> +                                __func__, mic[0], mic[1], mic[2], mic[3], mic[4], mic[5],
+> +                                mic[6], mic[7]));
+>                         /* add mic code  and add the mic code length in last_txcmdsz */
+>
+>                         memcpy(payload, &mic[0], 8);
+>                         pattrib->last_txcmdsz += 8;
+>
+> -                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_info_, ("\n ======== last pkt ========\n"));
+> +                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_info_,
+> +                                ("\n ======== last pkt ========\n"));
+>                         payload -= pattrib->last_txcmdsz + 8;
+>                         for (curfragnum = 0; curfragnum < pattrib->last_txcmdsz; curfragnum += 8)
+>                                 RT_TRACE(_module_rtl871x_xmit_c_, _drv_info_,
+> @@ -697,7 +717,8 @@ static s32 xmitframe_addmic(struct adapter *padapter, struct xmit_frame *pxmitfr
+>                                          *(payload + curfragnum + 4), *(payload + curfragnum + 5),
+>                                          *(payload + curfragnum + 6), *(payload + curfragnum + 7)));
+>                         } else {
+> -                               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("%s: rtw_get_stainfo==NULL!!!\n", __func__));
+> +                               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                        ("%s: rtw_get_stainfo==NULL!!!\n", __func__));
+>                         }
+>         }
+>
+> @@ -787,7 +808,9 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+>                         if (psta && psta->qos_option)
+>                                 qos_option = true;
+>                 } else {
+> -                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("fw_state:%x is not allowed to xmit frame\n", get_fwstate(pmlmepriv)));
+> +                       RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                                ("fw_state:%x is not allowed to xmit frame\n",
+> +                                get_fwstate(pmlmepriv)));
+>                         res = _FAIL;
+>                         goto exit;
+>                 }
 > @@ -836,11 +859,13 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
->  				if (SN_LESS(pattrib->seqnum, tx_seq)) {
->  					pattrib->ampdu_en = false;/* AGG BK */
->  				} else if (SN_EQUAL(pattrib->seqnum, tx_seq)) {
-> -					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq + 1) & 0xfff;
-> +					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
-> +									(tx_seq + 1) & 0xfff;
->  
->  					pattrib->ampdu_en = true;/* AGG EN */
->  				} else {
-> -					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (pattrib->seqnum + 1) & 0xfff;
-> +					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
-> +								(pattrib->seqnum + 1) & 0xfff;
->  					pattrib->ampdu_en = true;/* AGG EN */
+>                                 if (SN_LESS(pattrib->seqnum, tx_seq)) {
+>                                         pattrib->ampdu_en = false;/* AGG BK */
+>                                 } else if (SN_EQUAL(pattrib->seqnum, tx_seq)) {
+> -                                       psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq + 1) & 0xfff;
+> +                                       psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
+> +                                                                       (tx_seq + 1) & 0xfff;
+>
+>                                         pattrib->ampdu_en = true;/* AGG EN */
+>                                 } else {
+> -                                       psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (pattrib->seqnum + 1) & 0xfff;
+> +                                       psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
+> +                                                               (pattrib->seqnum + 1) & 0xfff;
+>                                         pattrib->ampdu_en = true;/* AGG EN */
+>                                 }
+>                         }
+> @@ -904,7 +929,8 @@ s32 rtw_txframes_sta_ac_pending(struct adapter *padapter, struct pkt_attrib *pat
+>   * 6. apply sw-encrypt, if necessary.
+>   *
+>   */
+> -s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct xmit_frame *pxmitframe)
+> +s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt,
+> +                          struct xmit_frame *pxmitframe)
+>  {
+>         s32 frg_inx, frg_len, mpdu_len, llc_sz, mem_sz;
+>         size_t addr;
+> @@ -935,7 +961,8 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct
+>         mem_start = pbuf_start +        hw_hdr_offset;
+>
+>         if (rtw_make_wlanhdr(padapter, mem_start, pattrib) == _FAIL) {
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("%s: rtw_make_wlanhdr fail; drop pkt\n", __func__));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                        ("%s: rtw_make_wlanhdr fail; drop pkt\n", __func__));
+>                 DBG_88E("%s: rtw_make_wlanhdr fail; drop pkt\n", __func__);
+>                 res = _FAIL;
+>                 goto exit;
+> @@ -1016,15 +1043,18 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct
+>                 if (mcast || remainder == 0) {
+>                         pattrib->nr_frags = frg_inx;
+>
+> -                       pattrib->last_txcmdsz = pattrib->hdrlen + pattrib->iv_len + ((pattrib->nr_frags == 1) ? llc_sz : 0) +
+> -                                               ((pattrib->bswenc) ? pattrib->icv_len : 0) + mem_sz;
+> +                       pattrib->last_txcmdsz = pattrib->hdrlen + pattrib->iv_len +
+> +                                               ((pattrib->nr_frags == 1) ? llc_sz : 0) +
+> +                                               ((pattrib->bswenc) ? pattrib->icv_len : 0) +
+> +                                               mem_sz;
+>
+>                         ClearMFrag(mem_start);
+>
+>                         break;
+>                 }
+>
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("%s: There're still something in packet!\n", __func__));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                        ("%s: There're still something in packet!\n", __func__));
+>
+>                 addr = (size_t)(pframe);
+>
+> @@ -1036,7 +1066,8 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct
+>         rtl88eu_mon_xmit_hook(padapter->pmondev, pxmitframe, frg_len);
+>
+>         if (xmitframe_addmic(padapter, pxmitframe) == _FAIL) {
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("xmitframe_addmic(padapter, pxmitframe) == _FAIL\n"));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                        ("xmitframe_addmic(padapter, pxmitframe) == _FAIL\n"));
+>                 DBG_88E("xmitframe_addmic(padapter, pxmitframe) == _FAIL\n");
+>                 res = _FAIL;
+>                 goto exit;
+> @@ -1297,7 +1328,8 @@ s32 rtw_free_xmitframe(struct xmit_priv *pxmitpriv, struct xmit_frame *pxmitfram
+>         struct sk_buff *pndis_pkt = NULL;
+>
+>         if (!pxmitframe) {
+> -               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("====== %s:pxmitframe == NULL!!!!!!!!!!\n", __func__));
+> +               RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +                        ("====== %s:pxmitframe == NULL!!!!!!!!!!\n", __func__));
+>                 goto exit;
+>         }
+>
+> @@ -1313,7 +1345,8 @@ s32 rtw_free_xmitframe(struct xmit_priv *pxmitpriv, struct xmit_frame *pxmitfram
+>         list_add_tail(&pxmitframe->list, get_list_head(pfree_xmit_queue));
+>
+>         pxmitpriv->free_xmitframe_cnt++;
+> -       RT_TRACE(_module_rtl871x_xmit_c_, _drv_debug_, ("%s:free_xmitframe_cnt=%d\n", __func__, pxmitpriv->free_xmitframe_cnt));
+> +       RT_TRACE(_module_rtl871x_xmit_c_, _drv_debug_,
+> +                ("%s:free_xmitframe_cnt=%d\n", __func__, pxmitpriv->free_xmitframe_cnt));
+>
+>         spin_unlock_bh(&pfree_xmit_queue->lock);
+>
+> @@ -1355,7 +1388,9 @@ s32 rtw_xmitframe_enqueue(struct adapter *padapter, struct xmit_frame *pxmitfram
+>         return _SUCCESS;
+>  }
+>
+> -static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv, struct hw_xmit *phwxmit, struct tx_servq *ptxservq, struct __queue *pframe_queue)
+> +static struct xmit_frame *
+> +dequeue_one_xmitframe(struct xmit_priv *pxmitpriv, struct hw_xmit *phwxmit,
+> +                     struct tx_servq *ptxservq, struct __queue *pframe_queue)
 
-I would argue that this is less readable (worse) than before.  The
-way to fix this is to introduce new functions.
+For the checkpatch suggestions like lines exceeding certain
+characters, it might be a good idea to not send a patch with
+so many changes all over the places. Rather you can batch
+them into a patch(s) where you're improving the readability
+of the similar kind of patterns/lines. For example, in the above
+case, you can have a patch where you're just handling those
+RT_TRACE lines.
 
-regards,
-dan carpenter
+>  {
+>         struct list_head *xmitframe_plist, *xmitframe_phead;
+>         struct  xmit_frame      *pxmitframe = NULL;
+> @@ -1375,7 +1410,8 @@ static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv, str
+>         return pxmitframe;
+>  }
+>
+> -struct xmit_frame *rtw_dequeue_xframe(struct xmit_priv *pxmitpriv, struct hw_xmit *phwxmit_i, int entry)
+> +struct xmit_frame *
+> +rtw_dequeue_xframe(struct xmit_priv *pxmitpriv, struct hw_xmit *phwxmit_i, int entry)
+>  {
+>         struct list_head *sta_plist, *sta_phead;
+>         struct hw_xmit *phwxmit;
+> @@ -1408,13 +1444,18 @@ struct xmit_frame *rtw_dequeue_xframe(struct xmit_priv *pxmitpriv, struct hw_xmi
+>
+>                         pframe_queue = &ptxservq->sta_pending;
+>
+> -                       pxmitframe = dequeue_one_xmitframe(pxmitpriv, phwxmit, ptxservq, pframe_queue);
+> +                       pxmitframe = dequeue_one_xmitframe(pxmitpriv,
+> +                                                          phwxmit,
+> +                                                          ptxservq,
+> +                                                          pframe_queue);
+>
+>                         if (pxmitframe) {
+>                                 phwxmit->accnt--;
+>
+> -                               /* Remove sta node when there are no pending packets. */
+> -                               if (list_empty(&pframe_queue->queue)) /* must be done after get_next and before break */
+> +                               /* Remove sta node when there are no pending packets.
+> +                                * must be done after get_next and before break
+> +                                */
+> +                               if (list_empty(&pframe_queue->queue))
+>                                         list_del_init(&ptxservq->tx_pending);
+>                                 goto exit;
+>                         }
+> @@ -1670,8 +1711,8 @@ int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fra
+>                         pstapriv->tim_bitmap |= BIT(0);/*  */
+>                         pstapriv->sta_dz_bitmap |= BIT(0);
+>
+> -                       update_beacon(padapter, WLAN_EID_TIM, NULL, false);/* tx bc/mc packets after update bcn */
+> -
+> +                       /* tx bc/mc packets after update bcn */
+> +                       update_beacon(padapter, WLAN_EID_TIM, NULL, false);
+>                         ret = true;
+>                 }
+>
+> @@ -1733,7 +1774,9 @@ int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fra
+>         return ret;
+>  }
+>
+> -static void dequeue_xmitframes_to_sleeping_queue(struct adapter *padapter, struct sta_info *psta, struct __queue *pframequeue)
+> +static void dequeue_xmitframes_to_sleeping_queue(struct adapter *padapter,
+> +                                                struct sta_info *psta,
+> +                                                struct __queue *pframequeue)
+>  {
+>         struct list_head *plist, *phead;
+>         u8      ac_index;
+> @@ -1754,7 +1797,8 @@ static void dequeue_xmitframes_to_sleeping_queue(struct adapter *padapter, struc
+>
+>                 pattrib = &pxmitframe->attrib;
+>
+> -               ptxservq = rtw_get_sta_pending(padapter, psta, pattrib->priority, (u8 *)(&ac_index));
+> +               ptxservq = rtw_get_sta_pending(padapter, psta, pattrib->priority,
+> +                                              (u8 *)(&ac_index));
+>
+>                 ptxservq->qcnt--;
+>                 phwxmits[ac_index].accnt--;
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201020151748.35937-1-eafanasova%40gmail.com.
 
+
+
+-- 
+Vaishali
+
+
+-- 
+Vaishali
 
