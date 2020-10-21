@@ -1,141 +1,246 @@
 X-GM-THRID: 6885970595942498304
-X-Received: by 2002:aca:5256:: with SMTP id g83mr1346520oib.71.1603265197401;
-        Wed, 21 Oct 2020 00:26:37 -0700 (PDT)
+X-Received: by 2002:a9d:3a09:: with SMTP id j9mr1667170otc.312.1603264966229;
+        Wed, 21 Oct 2020 00:22:46 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:fd17:: with SMTP id b23ls1213251oii.2.gmail; Wed, 21 Oct
- 2020 00:26:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFYXUPsCnEuRnIV2bPdQUIN0w2P41WRGBegzmud6SORtqx9o3I4ZLCyhNDy6i5lD3zq3u+
-X-Received: by 2002:aca:6702:: with SMTP id z2mr1349879oix.140.1603265196157;
-        Wed, 21 Oct 2020 00:26:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603265196; cv=none;
+Received: by 2002:a05:6830:1f59:: with SMTP id u25ls1128129oth.1.gmail; Wed,
+ 21 Oct 2020 00:22:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwQPuRUKeRdrs1A7eIhhIDrKIXBH5AUpU4gyaV7uPNp5e87hYcci2GUmf33qLYcwxIguJGp
+X-Received: by 2002:a05:6830:2436:: with SMTP id k22mr1639475ots.185.1603264964979;
+        Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603264964; cv=none;
         d=google.com; s=arc-20160816;
-        b=x9MitPZ7MFNxfOmv8VgPbl2pWeYb8x3se2N0V9uiLbLi+XWuKyfe++4tL1rgtsaXmf
-         VIfR6qpQGNUIpK3gZ3ZB31wQhsyAIxsfUiBjAqlyD3eTnZT5aMMIqbipyfESezVjRVEH
-         TUi1/0VVAtYEyBrX27zZDrVWTr3fQi3rO/31piZvlgJnLvNj3bn7Ge2YgHstRXZRsRvz
-         KOMWaY+BH4HThWwETgZpfR/jf/FFldA44em1TCwJRRxMa9l+1WhCeqFqn8FUTFaqjtwQ
-         Sziylra1cpI6lAceRWOIDLDqdVLIIzSFeDz5+uyW/haOBihTwlu4/7pU5DN3PipPCyj3
-         f88g==
+        b=CszeFwBdwzrNlB6bEiObASmtWdJEJY3AkA1Q17VnKl9gTEn1Hlbrir7QFd8NrFIqaF
+         EuKK/5fHv8zIcSDtfYBtrxfz0TW+Nq40e27HbbdpCFwVJp7hhSldEXjki0CoofGTSvyP
+         Wa0efVzl8GUQkYbfNxU9WbJaVJZm6b+GAMtztpRQfn+U1ZmLaPBdHOW1bpp25OFCzgFO
+         E9ZohbTiFLGhiaUml8ZOsRw0hM48SshQiW7YpwPCeax2hhU2fkzN+odnGDcPqUAi4Utq
+         TC7/qSiJ0HY+WlbiPBqKvLYCeItQFt7RoduP2E2i/g37pj897b3JbPQxcnYa3GOIRzEi
+         uDCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
-        b=FGNKkCelOzOPnqJPU8uLXgj+KRaRmUGODmoCKmFZVtY/Hdkt/2FQSa66Ht+DcCTz8h
-         QASHkxAsHeVo/YpRwX70IfdoHhxaInNRq9E7bBhOJ4/pfrgy3OF1Hmvg3APyLn2VztAo
-         HQDnvNM68eAso9Znq7kY8wT2ngZPHhCDM6YAy0c4VK9aY24nhh29eox5O3V7y7YW3QhX
-         f2rkZUJisOAqP31Nmu6aCBI7o9ZwUo4YEm+2MCW0t7/uhz8Q1HY1NM66FyH/k+SsSHTE
-         1aDaVHgT9+M1g89SKw0KaZdof6f7X28wQCXaB6irOuImparIY0rnMMPplTCTAdqKEwpg
-         nJPg==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=TDUK2ueSGjIe6K+YFlkySvwrKftZbl2/og1v3K5Fvho=;
+        b=s1acqxDowZ1PwbBWjCUaJXC81WLAdCyRfTz+w7F54+WdGmGTUYrNg6Z+jFc0ELl/to
+         JT+Gjzl5zmyCrBEVBqRrhweSx1D4VJ5jLWUb1fflJM8opLvtDGb+sERet1D7ZsR0DHTD
+         nOk3w6yKHX7SIdNQ/kBgIa+NXn5E2+D2DFWCzTOVjodyDaIB1eBqGA1YcQnNfSqiGYSz
+         lpuFtP4OwJjUijvkSjwwsYZPdRcO/eXEE+TgoNkbD0B+3/CakeNOW5hJJQwCUG3y1Std
+         TWvbs5C7sEYnQmpfxJn0JyGBeB4CY2J0u4ziRS3EJMAWIUAh9NOogc8vF/xo4BgepWQ+
+         vXiQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ImpEFdgL;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OBi+Qzvj;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1043.google.com (mail-pj1-x1043.google.com. [2607:f8b0:4864:20::1043])
-        by gmr-mx.google.com with ESMTPS id j78si89019oib.5.2020.10.21.00.26.36
+Received: from mail-pl1-x642.google.com (mail-pl1-x642.google.com. [2607:f8b0:4864:20::642])
+        by gmr-mx.google.com with ESMTPS id d22si139077ooj.1.2020.10.21.00.22.44
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Oct 2020 00:26:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) client-ip=2607:f8b0:4864:20::1043;
+        Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) client-ip=2607:f8b0:4864:20::642;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ImpEFdgL;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OBi+Qzvj;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::642 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1043.google.com with SMTP id b6so1778575pju.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2020 00:26:36 -0700 (PDT)
+Received: by mail-pl1-x642.google.com with SMTP id t18so776547plo.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
-        b=ImpEFdgLXixlLzLml4OFWi3tiD4b5etcYjKTXQ9/BEsiMZDfj3TwF2jiAUuBKXamJy
-         HTKyfXoiTzxXExZ1twGMTOEbkFxBARe3en9j39am2r369vbftwh8sbLRWOboxtLr/KGB
-         VqiWp9mh+9Vdwf1h0LT32Zrcttgo+9E9hqdI0NTVx49vVDF7zjEJvLf6dbHC3FLDZt8W
-         RxqlE51ZotTRieDPtagOkw1FscKQJmZFO8Da2maiBr3QZvWHj88Rofqs0KI84/a7GVBB
-         1gMYGVHudKRV82/h4D2vedmmcUvx3ECdcTcI0Yxnt2V3JG/hWpyhcsyQzaYLpJpLpVaf
-         AFWw==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=TDUK2ueSGjIe6K+YFlkySvwrKftZbl2/og1v3K5Fvho=;
+        b=OBi+Qzvjm6zbf2H3I+dHK8W52+iXxbsUBCrWB7Zlimu44wRJAJhF2YTtl2aAPzw45P
+         yLi+lnLZvwNXC9ssHHPzQ9ho00HeZ0q4Fu4qskKQ8qG6a+UbARJTZFoUgIDKhmM+a3Mn
+         NPNJqEJMoguATa3u9ciA5yf7TxCVyR5BopVFeNNG5GmCE4BFyhy63kVLqHTT79pc/95w
+         7bVhb8avF1O7sfV3RNZ9Aqbm1YAODwAFSFhIYelH4CqxlzKHcsZkGDbyYSz4opL5juzb
+         Cnx4W6JT5P+d1Cx9kzmL2Vug4V0Mq/afk7Wiu88UT+Y5mfvYDBxYShY4RABPSoyqDujS
+         8E7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=COkh0ZLnqFaA8xDcB21IFSBxo1VaxBiO/fKhA0Lh574=;
-        b=HLc50CwiZjVPEfkoi+zCZiM7JGBDX7hJT3YHcmqmekHUUzpi2+p1nEWn1i9AAi4hJS
-         JrCr6bcBjjFr3R3EgN2GFEzeVsuHY5BPYIgWwj2EQIKGKRBhgcaLsd5G/++sbdO+5ByD
-         Q/Xhf26gjuY9Dhu9QGjS1uVNYnrQPVEwYMToApQx90Z+r+FmowonXVEKqcpv123/+xYL
-         KKnRilL2IwVi2GnuuUIg+Lr6IgziRviCHZvzvSupWCsWXqn0TavYoO+UgjUy0xvJSNHT
-         kNeWvaCtGoSMv3B7wvuoLqn2/iNGxPBqONO8kw//4ozi/e+ij4YmcvUalujtRhVAIbDN
-         DI7Q==
-X-Gm-Message-State: AOAM531SCUyMyTvZ6G4sxsq70fk0vDk+fWDE5m3xC5RFv2BM2Y7VmQDa
-	e+JyP++QArMCaKkpWC81QVo=
-X-Received: by 2002:a17:90a:fa03:: with SMTP id cm3mr2066210pjb.56.1603265195615;
-        Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=TDUK2ueSGjIe6K+YFlkySvwrKftZbl2/og1v3K5Fvho=;
+        b=tuIMPCj3dwscfoBt9flxnctrSlgK8y/UD5/DToo00XiNJu2Aqzjg3u8d1jyKNjnuJF
+         lQM4DMfWsx3BPCOwxFuuKbgQnO+ujSA3EIkeiiiJeQ2wrf6p5ccyKU1dLsyovEOcjGih
+         WsnwqWv/psamHdpONKavhNT1LjdJLeKUuzmDCYOTdDbZmje2LV2fPu6rULISWHA0q4Xr
+         zN8ZaNLxmz1OIjqFiPvzP3sjD7xQLmhCWJDJNIJP4KQfvOyyoP1QUt7z1PmiGM+iKFQl
+         fRefvMjTXFvXJCmyb8E8qC54EnF7TJlPhvmI3+r0R2ziMB6vXSj2FnRYprolS4WSZByI
+         Ai5g==
+X-Gm-Message-State: AOAM530A7TzlPccvSJYRArVh9OyTqZhj7pYQLP9zieBvb2YkmbyKwSWD
+	1JZse1olyLdYi2IoOvHxHlQ=
+X-Received: by 2002:a17:902:d355:b029:d4:d88c:ded9 with SMTP id l21-20020a170902d355b02900d4d88cded9mr2226257plk.13.1603264964258;
+        Wed, 21 Oct 2020 00:22:44 -0700 (PDT)
 Return-Path: <mh12gx2825@gmail.com>
 Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id e5sm1304006pfj.99.2020.10.21.00.26.33
+        by smtp.gmail.com with ESMTPSA id k127sm1419005pgk.10.2020.10.21.00.22.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Oct 2020 00:26:35 -0700 (PDT)
-Date: Wed, 21 Oct 2020 12:56:30 +0530
+        Wed, 21 Oct 2020 00:22:43 -0700 (PDT)
+Date: Wed, 21 Oct 2020 12:52:39 +0530
 From: Deepak R Varma <mh12gx2825@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	outreachy-kernel@googlegroups.com, devel@driverdev.osuosl.org
-Subject: [PATCH v2 2/3] staging: kpc2000: re-indent code for better
- readability
-Message-ID: <29cf604e69435c1f0ef46397d0d8a1b62f32fa9b.1603264610.git.mh12gx2825@gmail.com>
-References: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
+Cc: mh12gx2825@gmail.com
+Subject: [PATCH v2 1/3] staging: kpc2000: rearrange lines exceeding 100
+ columns
+Message-ID: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <809d142d109b4f0acfcb4fa204bdd03381fc051f.1603264610.git.mh12gx2825@gmail.com>
 
-Re-indent code as per the coding style guidelines. The changes improve
-code readability. Issue reported by checkpatch script.
+Reformat lines that exceed 100 column in length. Issue reported by
+checkpatch script.
 
 Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 ---
 Changes since v1:
-  - Separate specific checkpatch issues into individual patches.
-  - Update patch subject and description to specific issue being fixed.
-  - Introduced patch 3/3.
-  - Suggested by Vaishali T.
+   - Separate specific checkpatch issues into individual patches.
+   - Updated patch subject and description to be specific to the issue
+     being fixed.
+   - Introduced patch 3/3.
+   - Suggested by Vaishali T.
 
- drivers/staging/kpc2000/kpc2000/core.c            | 3 ++-
- drivers/staging/kpc2000/kpc2000/dma_common_defs.h | 3 +--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/staging/kpc2000/kpc2000/cell_probe.c | 71 +++++++++++++++-----
+ 1 file changed, 55 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/staging/kpc2000/kpc2000/core.c b/drivers/staging/kpc2000/kpc2000/core.c
-index 358d7b2f4ad1..6462a3059fb0 100644
---- a/drivers/staging/kpc2000/kpc2000/core.c
-+++ b/drivers/staging/kpc2000/kpc2000/core.c
-@@ -124,6 +124,7 @@ static ssize_t cpld_reconfigure(struct device *dev,
- 	writeq(wr_val, pcard->sysinfo_regs_base + REG_CPLD_CONFIG);
- 	return count;
- }
+diff --git a/drivers/staging/kpc2000/kpc2000/cell_probe.c b/drivers/staging/kpc2000/kpc2000/cell_probe.c
+index 738122afc2ae..e7e963d62699 100644
+--- a/drivers/staging/kpc2000/kpc2000/cell_probe.c
++++ b/drivers/staging/kpc2000/kpc2000/cell_probe.c
+@@ -30,9 +30,12 @@
+  *
+  */
+ 
+-#define KPC_OLD_DMA_CH_NUM(present, channel)   ((present) ? (0x8 | ((channel) & 0x7)) : 0)
+-#define KPC_OLD_S2C_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
+-#define KPC_OLD_C2S_DMA_CH_NUM(cte)   KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
++#define KPC_OLD_DMA_CH_NUM(present, channel)   \
++		((present) ? (0x8 | ((channel) & 0x7)) : 0)
++#define KPC_OLD_S2C_DMA_CH_NUM(cte)   \
++		KPC_OLD_DMA_CH_NUM(cte.s2c_dma_present, cte.s2c_dma_channel_num)
++#define KPC_OLD_C2S_DMA_CH_NUM(cte)   \
++		KPC_OLD_DMA_CH_NUM(cte.c2s_dma_present, cte.c2s_dma_channel_num)
+ 
+ #define KP_CORE_ID_INVALID      0
+ #define KP_CORE_ID_I2C          3
+@@ -67,7 +70,8 @@ void  parse_core_table_entry_v0(struct core_table_entry *cte, const u64 read_val
+ static
+ void dbg_cte(struct kp2000_device *pcard, struct core_table_entry *cte)
+ {
+-	dev_dbg(&pcard->pdev->dev, "CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
++	dev_dbg(&pcard->pdev->dev,
++		"CTE: type:%3d  offset:%3d (%3d)  length:%3d (%3d)  s2c:%d  c2s:%d  irq_count:%d  base_irq:%d\n",
+ 		cte->type,
+ 		cte->offset,
+ 		cte->offset / 4096,
+@@ -107,7 +111,14 @@ static int probe_core_basic(unsigned int core_num, struct kp2000_device *pcard,
+ 		.ddna              = pcard->ddna,
+ 	};
+ 
+-	dev_dbg(&pcard->pdev->dev, "Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
++	dev_dbg(&pcard->pdev->dev,
++		"Found Basic core: type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
++		cte.type,
++		KPC_OLD_S2C_DMA_CH_NUM(cte),
++		KPC_OLD_C2S_DMA_CH_NUM(cte),
++		cte.offset,
++		cte.length,
++		cte.length / 8);
+ 
+ 	cell.platform_data = &core_pdata;
+ 	cell.pdata_size = sizeof(struct kpc_core_device_platdata);
+@@ -290,7 +301,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
+ 	struct kpc_uio_device *kudev;
+ 	int rv;
+ 
+-	dev_dbg(&pcard->pdev->dev, "Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n", cte.type, KPC_OLD_S2C_DMA_CH_NUM(cte), KPC_OLD_C2S_DMA_CH_NUM(cte), cte.offset, cte.length, cte.length / 8);
++	dev_dbg(&pcard->pdev->dev,
++		"Found UIO core:   type = %02d  dma = %02x / %02x  offset = 0x%x  length = 0x%x (%d regs)\n",
++		cte.type,
++		KPC_OLD_S2C_DMA_CH_NUM(cte),
++		KPC_OLD_C2S_DMA_CH_NUM(cte),
++		cte.offset,
++		cte.length,
++		cte.length / 8);
+ 
+ 	kudev = kzalloc(sizeof(*kudev), GFP_KERNEL);
+ 	if (!kudev)
+@@ -315,10 +333,14 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
+ 
+ 	kudev->uioinfo.mem[0].name = "uiomap";
+ 	kudev->uioinfo.mem[0].addr = pci_resource_start(pcard->pdev, REG_BAR) + cte.offset;
+-	kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1); // Round up to nearest PAGE_SIZE boundary
 +
- static DEVICE_ATTR(cpld_reconfigure, 0220, NULL, cpld_reconfigure);
++	// Round up to nearest PAGE_SIZE boundary
++	kudev->uioinfo.mem[0].size = (cte.length + PAGE_SIZE - 1) & ~(PAGE_SIZE - 1);
+ 	kudev->uioinfo.mem[0].memtype = UIO_MEM_PHYS;
  
- static ssize_t irq_mask_reg_show(struct device *dev,
-@@ -367,7 +368,7 @@ static int kp2000_pcie_probe(struct pci_dev *pdev,
- 	dma_bar_phys_len = pci_resource_len(pcard->pdev, DMA_BAR);
+-	kudev->dev = device_create(kpc_uio_class, &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d", kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
++	kudev->dev = device_create(kpc_uio_class,
++				   &pcard->pdev->dev, MKDEV(0, 0), kudev, "%s.%d.%d.%d",
++				   kudev->uioinfo.name, pcard->card_num, cte.type, kudev->core_num);
+ 	if (IS_ERR(kudev->dev)) {
+ 		dev_err(&pcard->pdev->dev, "%s: device_create failed!\n",
+ 			__func__);
+@@ -341,7 +363,9 @@ static int probe_core_uio(unsigned int core_num, struct kp2000_device *pcard,
+ 	return 0;
+ }
  
- 	pcard->dma_bar_base = ioremap(dma_bar_phys_addr,
--					      dma_bar_phys_len);
-+				      dma_bar_phys_len);
- 	if (!pcard->dma_bar_base) {
- 		dev_err(&pcard->pdev->dev,
- 			"probe: DMA_BAR could not remap memory to virtual space\n");
-diff --git a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-index 21450e3d408f..8bc78be3c259 100644
---- a/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-+++ b/drivers/staging/kpc2000/kpc2000/dma_common_defs.h
-@@ -6,8 +6,7 @@
- #define KPC_DMA_S2C_BASE_OFFSET     0x0000
- #define KPC_DMA_C2S_BASE_OFFSET     0x2000
- #define KPC_DMA_ENGINE_SIZE         0x0100
--#define  ENGINE_CAP_PRESENT_MASK            0x1
--
-+#define ENGINE_CAP_PRESENT_MASK     0x1
+-static int  create_dma_engine_core(struct kp2000_device *pcard, size_t engine_regs_offset, int engine_num, int irq_num)
++static int  create_dma_engine_core(struct kp2000_device *pcard,
++				   size_t engine_regs_offset,
++				   int engine_num, int irq_num)
+ {
+ 	struct mfd_cell  cell = { .id = engine_num };
+ 	struct resource  resources[2];
+@@ -380,18 +404,28 @@ static int  kp2000_setup_dma_controller(struct kp2000_device *pcard)
  
- #define KPC_DMA_CARD_IRQ_ENABLE                 (1 << 0)
- #define KPC_DMA_CARD_IRQ_ACTIVE                 (1 << 1)
+ 	// S2C Engines
+ 	for (i = 0 ; i < 32 ; i++) {
+-		capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
++		capabilities_reg = readq(pcard->dma_bar_base +
++					 KPC_DMA_S2C_BASE_OFFSET +
++					 (KPC_DMA_ENGINE_SIZE * i));
++
+ 		if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
+-			err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), i,  pcard->pdev->irq);
++			err = create_dma_engine_core(pcard, (KPC_DMA_S2C_BASE_OFFSET +
++							    (KPC_DMA_ENGINE_SIZE * i)),
++						     i, pcard->pdev->irq);
+ 			if (err)
+ 				goto err_out;
+ 		}
+ 	}
+ 	// C2S Engines
+ 	for (i = 0 ; i < 32 ; i++) {
+-		capabilities_reg = readq(pcard->dma_bar_base + KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i));
++		capabilities_reg = readq(pcard->dma_bar_base +
++					 KPC_DMA_C2S_BASE_OFFSET +
++					 (KPC_DMA_ENGINE_SIZE * i));
++
+ 		if (capabilities_reg & ENGINE_CAP_PRESENT_MASK) {
+-			err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET + (KPC_DMA_ENGINE_SIZE * i)), 32 + i,  pcard->pdev->irq);
++			err = create_dma_engine_core(pcard, (KPC_DMA_C2S_BASE_OFFSET +
++							    (KPC_DMA_ENGINE_SIZE * i)),
++						     32 + i,  pcard->pdev->irq);
+ 			if (err)
+ 				goto err_out;
+ 		}
+@@ -433,10 +467,15 @@ int  kp2000_probe_cores(struct kp2000_device *pcard)
+ 	// Then, iterate over the possible core types.
+ 	for (current_type_id = 1 ; current_type_id <= highest_core_id ; current_type_id++) {
+ 		unsigned int core_num = 0;
+-		// Foreach core type, iterate the whole table and instantiate subdevices for each core.
+-		// Yes, this is O(n*m) but the actual runtime is small enough that it's an acceptable tradeoff.
++		/*
++		 * Foreach core type, iterate the whole table and instantiate
++		 * subdevices for each core.
++		 * Yes, this is O(n*m) but the actual runtime is small enough
++		 * that it's an acceptable tradeoff.
++		 */
+ 		for (i = 0 ; i < pcard->core_table_length ; i++) {
+-			read_val = readq(pcard->sysinfo_regs_base + ((pcard->core_table_offset + i) * 8));
++			read_val = readq(pcard->sysinfo_regs_base +
++					 ((pcard->core_table_offset + i) * 8));
+ 			parse_core_table_entry(&cte, read_val, pcard->core_table_rev);
+ 
+ 			if (cte.type != current_type_id)
 -- 
 2.25.1
 
