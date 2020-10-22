@@ -1,121 +1,97 @@
 X-GM-THRID: 6886436790360604672
-X-Received: by 2002:a1f:3d03:: with SMTP id k3mr1533116vka.5.1603374055256;
-        Thu, 22 Oct 2020 06:40:55 -0700 (PDT)
+X-Received: by 2002:aca:b5c6:: with SMTP id e189mr1658890oif.47.1603373807421;
+        Thu, 22 Oct 2020 06:36:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:e29a:: with SMTP id g26ls199065vsf.6.gmail; Thu, 22 Oct
- 2020 06:40:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxffRv10jYOeYl2WiSYqcJakSnatxCbsK8wU6LsaTjAJEEyuHbN5WBvIM9oM+CUDPOlPfZN
-X-Received: by 2002:a67:ec54:: with SMTP id z20mr1678409vso.4.1603374053819;
-        Thu, 22 Oct 2020 06:40:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603374053; cv=none;
+Received: by 2002:aca:390b:: with SMTP id g11ls391509oia.1.gmail; Thu, 22 Oct
+ 2020 06:36:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyAcecVOOS6keKw0vnpnmv5vcTG2EL2EffhQFOI9wECw0uobgF2qzzjuPUqqhLFkCKa0TPT
+X-Received: by 2002:aca:f0c:: with SMTP id 12mr891960oip.9.1603373806041;
+        Thu, 22 Oct 2020 06:36:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603373806; cv=none;
         d=google.com; s=arc-20160816;
-        b=bKFs2r24Ct9Fu5ZL7KlpHqLnXbUBstm86KBMvdzX9BV6q48aTED+y+bdScK/ZJ2QcE
-         /JmmBtPSffj5dXCAGlMyYNojju/eoYCQpb1E0EcjFH7tJ1kKhXjHJOhxLZI4LEEcdVfQ
-         QocFEEm4dajeKDlZeNpQ/VhhMxu9CG51o9huk5UVsI0llyD1DsFWBYFS2OPnseUWJono
-         IWfsswvIlaImUaIKaufrM1ffdYqI5j5hGsDYpsWCiDbicTbYzmfY8h1SqnGXEqD+1okq
-         qnGRp2zmsPDfiWaZxEMzEclhmZtfnraIHJ5VdE8zcMfhZ/lBbvE7+MBO9E6e61VYa7+p
-         CkQQ==
+        b=tvcyE+7EzLKgS9j3xMI//h8SM4xd4IVr1g7mA8UsEYuqzmwHBJdoYutEzZhFEj+E97
+         xsvATgAsjYwDcrLHyHa2MXnOQXF8GzxufdMz+asbl97wH27ExqdQ3szjADFeXhULEe/6
+         lU+IUSIemAqOv4nuDML1U3zOrBgbm7WZMJNgfcbTTQmJCWjGzIUg9x/i4Wmj/n82tps5
+         xiSb09nW5iiW2nx/5Ry3l0MqvSM6GLEEiuvxnXgzv8iRCsoMfW8VO9YBpt6Em+fBWnh7
+         bqn+mpmofUX8Qz5SiYmFNtUQCNw+de26moI+6ifco6SL+4bY0b9RLvCLvjSHSMd7OGFN
+         iKyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=6ARfb7CCtAyGQWozbpcu69TiW9MOgZYC7V52jr9EMdI=;
-        b=HgM6sSrI3oNCxSqTYf/KfIWRC31ADExfJhqPrYyqM8gcR0W7JeX+Vs4SR1JBMSgvJN
-         yJPzhRDf5tPWD5TMnCJRAsQ0UHQsaINoCshnZVmtHBWOlHct4Qnkr7Hiu+akC18V4rkj
-         OaYjky+/mHvpEMnSCKheY1siVXedKrujzffRhKXLW0Bx2pdxL9D8FKLnwDUZINdmdd2Q
-         fByxa+zypxYYceB3+szrJZzNHxu4BdmNJhWQR9VgMleMvpW3e6IFwuJSYDxifAX0EafD
-         zqHwlFm4muKbJEhJ1GzsAD6zAi59f54mw9ZiBdvWOFP9iglGZVXNtAl0jVFnlOdeYBjk
-         iWPA==
+        bh=wPLJPmsbxVrItxDETA28ew4bzr0N2SHhAs9VgLtWzc0=;
+        b=jJ5IzMmJ2Qt7TctW4M0FrRN/TecTrDLpDUVmRcaAHNY+iyF9Lu+jVZmKmBn4dJwiuT
+         7KS6FkI3XacHyLo9QKbCtU/vtr0t3fr6rIktJmhDcYP0DV75tHASGW3Bbj8qItk5MkJY
+         8A6u1L/gOo9EZp8xr0TNaxHyMy/5DhQQqhFDCfzxM4BAIVgsA6MHDmfl95VhnbT5Y51K
+         onNE9TJewDxP2SpTSifVcE7ZSQINnt50wVWqEOqy/7iJbBtyNzRiuJSZkWGqg5uIZ/6T
+         ld2zljYF3EswuBmHn7XzxIkS0qhSg3Pxak1Ag8OaVpzfEpHtArNJu4+5PQxYcwnQEmQt
+         udFg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cPArrMKj;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sylphrenadin@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id e7si106969vko.4.2020.10.22.06.40.53
+       dkim=pass header.i=@kernel.org header.s=default header.b=W+wPY2NS;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id n185si82003oih.3.2020.10.22.06.36.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 06:40:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2020 06:36:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cPArrMKj;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id t22so962543plr.9
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 06:40:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=6ARfb7CCtAyGQWozbpcu69TiW9MOgZYC7V52jr9EMdI=;
-        b=cPArrMKj7xSwULJAYitN0m6vC7G/wTwv5trn8fq+nwf0A+2hp5LU49pAbuMhjjeNRv
-         fccwBKY40gL96fMEFCrheOhs7geOIGvy7bVVSiZb4TMh4d4+F5geRTxSuZJZ70PQlJbl
-         jsiGe1Txe6jSe3uD8rQo5YbSLjz9pGZZWV6R8BiMnBJXhF7UUdTOm46R+31AxuvTjs8f
-         4vG70Oj+1gjW8V8CgysBCTnZOVSLzF1KzDbUBCBO/FFxF/jhtqBUeM7IYE1nzUP+YPj1
-         KYWxc2DLWI7L4c9F3cvB8q3/pRjebyP3rk0NZq4DzfnO71JrJupHUchu1cnsxLwnxa3y
-         INBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=6ARfb7CCtAyGQWozbpcu69TiW9MOgZYC7V52jr9EMdI=;
-        b=aYAo9YDmGfj1qVrhz89IcE4FdK+xpWRm098JoKMfWwyOeUomqoIXrzZ6Kt7Lhvw6oP
-         eha9EGyIUS/OmkJD+LMIlVyfciNDT4eE4I1jLOANvaBEvW6r0pOiUuf9brAPKEGLdIXC
-         Cm7DWRUaYE7a7fDrZMk3n9U//UhUub6x32ONBq5qRycxlk7YOwNxoJXg2DjBdMbG9xzZ
-         xnZGEPDS+Cj40AmgupnRin2R3iEM3S6fO42Q7L9J45K+lHY8piYx6HyHo7DYWHAh2+IL
-         kWiHUy8fX+TdjL3Oq6jtLGsR+xIhq9w0jMtprxAj5JhO3R7vmLygZ+5jA+bBug0Krq9l
-         guWg==
-X-Gm-Message-State: AOAM532X67myLT7EynbTxQxznF5/g4b8fN3oiAeGyFLidjoAEKH3SkxP
-	ETOHTZ28RyxjW/wt0YLHMSg=
-X-Received: by 2002:a17:90a:7d12:: with SMTP id g18mr2448814pjl.89.1603374053035;
-        Thu, 22 Oct 2020 06:40:53 -0700 (PDT)
-Return-Path: <sylphrenadin@gmail.com>
-Received: from adolin ([49.207.204.75])
-        by smtp.gmail.com with ESMTPSA id j20sm2384100pgl.40.2020.10.22.06.40.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 06:40:52 -0700 (PDT)
-Date: Thu, 22 Oct 2020 19:10:47 +0530
-From: Sumera Priyadarsini <sylphrenadin@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Cc: outreachy-kernel@googlegroups.com, alexander.deucher@amd.com,
-	christian.koenig@amd.com, airlied@linux.ie, daniel@ffwll.ch,
-	melissa.srw@gmail.com, linux-media@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/5] gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-Message-ID: <c9fbe2e2c31fae2fea867940a888c68becc993bd.1603371258.git.sylphrenadin@gmail.com>
+       dkim=pass header.i=@kernel.org header.s=default header.b=W+wPY2NS;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 60D82222E9;
+	Thu, 22 Oct 2020 13:36:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1603373805;
+	bh=87vqJzQ9pXI0oOLMwIbEk3kLfcuJt9ZN8IiRhSh9nJs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W+wPY2NSoVcRCV75Bmdb7cjeGYE9ij9LM2Os9rsTmzUPF3i+fK/X5DQM6DOL/e5ds
+	 np4to4d85zEylX/qnz8bU33geU70zgyurAVNxqzEys/q4N4Hewf5NWgvzatmcWuPj5
+	 /ihU/8VfPJnurklr0OF4R/D/2kPLpfmLNkPQajWY=
+Date: Thu, 22 Oct 2020 15:37:22 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sumera Priyadarsini <sylphrenadin@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel][PATCH 0/5] drm/amdgpu: Replace snprintf()
+ with sysfs_emit
+Message-ID: <20201022133722.GA1784385@kroah.com>
 References: <cover.1603371258.git.sylphrenadin@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1603371258.git.sylphrenadin@gmail.com>
 
-Using snprintf() for show() methods holds the risk of buffer overrun
-as snprintf() does not know the PAGE_SIZE maximum of the temporary
-buffer used to output sysfs content.
+On Thu, Oct 22, 2020 at 07:01:44PM +0530, Sumera Priyadarsini wrote:
+> Using snprintf() for show() methods holds the risk of buffer overrun
+> as snprintf() does not know the PAGE_SIZE maximum of the temporary
+> buffer used to output sysfs content.
+> 
+> This patchset is a series of Coccinelle cleanups across the staging
+> directory to convert snprintf with scnprintf in the relevant files.
+> 
+> Sumera Priyadarsini (5):
+>   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+> 
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c | 2 +-
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_device.c   | 8 ++++----
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c  | 4 ++--
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c      | 2 +-
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c      | 4 ++--
 
-Modify amdgpu_atombios.c to use sysfs_emit() instead which knows the
-size of the temporary buffer.
+These files are ot "in the staging directory" as your text above states :(
 
-Issue found with Coccinelle.
+Also, you have 5 patches that do different things, yet have the same
+exact subject line, which isn't acceptable either.
 
-Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
----
- drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+thanks,
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c
-index 469352e2d6ec..3c19862c94c7 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c
-@@ -1947,7 +1947,7 @@ static ssize_t amdgpu_atombios_get_vbios_version(struct device *dev,
- 	struct amdgpu_device *adev = drm_to_adev(ddev);
- 	struct atom_context *ctx = adev->mode_info.atom_context;
- 
--	return snprintf(buf, PAGE_SIZE, "%s\n", ctx->vbios_version);
-+	return sysfs_emit(buf, PAGE_SIZE, "%s\n", ctx->vbios_version);
- }
- 
- static DEVICE_ATTR(vbios_version, 0444, amdgpu_atombios_get_vbios_version,
--- 
-2.25.1
-
+greg k-h
 
