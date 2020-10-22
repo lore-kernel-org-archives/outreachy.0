@@ -1,135 +1,111 @@
-X-GM-THRID: 6464969864933015552
-X-Received: by 10.176.21.242 with SMTP id j47mr8965552uae.77.1505243094357;
-        Tue, 12 Sep 2017 12:04:54 -0700 (PDT)
+X-GM-THRID: 6886552701255024640
+X-Received: by 2002:a05:6512:2101:: with SMTP id q1mr1572400lfr.187.1603400497091;
+        Thu, 22 Oct 2020 14:01:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.25.78 with SMTP id b75ls1734448itb.4.canary-gmail; Tue, 12
- Sep 2017 12:04:53 -0700 (PDT)
-X-Received: by 10.13.241.198 with SMTP id a189mr10212923ywf.128.1505243093440;
-        Tue, 12 Sep 2017 12:04:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505243093; cv=none;
+Received: by 2002:a2e:b016:: with SMTP id y22ls572698ljk.3.gmail; Thu, 22 Oct
+ 2020 14:01:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbMejoEW+vFsWs6baZ/Ef+cW+zQIntXhhAfDNHKeoDu50T9x3kg2f/i9Pi3dXkAHY4on7O
+X-Received: by 2002:a2e:3806:: with SMTP id f6mr1628373lja.93.1603400494907;
+        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603400494; cv=none;
         d=google.com; s=arc-20160816;
-        b=NIuaep4eiS6E9vgwxZoWZ81S6Jz2pIp2XusBrENNqaoOYrKCxbMSTj/aMKL9DjrQJH
-         ZvYc0Qbic40WoqDsQKUi4r7iblxRww03W0SZO/iIE2MtUDQWgH5gPeArAR2b0bHpHanL
-         M5sQp49NcYiyvZS2F6YOl4bPjjPUBt3H8noGAn/0TPvH6Zq1jtpWjkphxivLum6jKi9c
-         eHAbOwFjUe0HjzBvBWz7sAPHSzMvI4OrQ8AxAzRIAz6hp+d9d2Dj0KGlM39/r/qzJc+X
-         cWmeRYO2DP3x96NjpEF2bnhaYCmHWZ2UUKHSi7CYMqomfhvBlg4rPWE3WBOA/8B8QUyj
-         kCMg==
+        b=umAZM6jHNSwEbLvWy1V80XG4XeqazHNwgHWavfgWMUZcxc74HyHkKgEVOGnSU6+N/y
+         cAn7TycY63dQYOfpJPjZZZ6UulOms2uSRrKpybFOhDVqjhj3snTWCTujipQeK0UehCsw
+         iXzRdK6dYKu0ypWgNqA2ekenYMvfLfRYOK25qliqTPdL+Hr2mNOI0YoSSOgQZ+NG+WM5
+         7xgwHVRxatxsqbOapyN5TR9gPNbzrL4aSJOIn7MI/lOTh57ENgbFiKV/Rd7pb4Ue1Snc
+         GN73jiE8Xc4QugrW6VvhtR8gQ0u6RtIGnhjEn7lmz2VtzsPqnDHlThgA8vUuWhZbruci
+         8mmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=IOHcIeUUskaO/Q5PaN1ym2PYoDBxBpq2BgiOdPZlOk0=;
-        b=uwyqXcwdgKvnU3FkIHMswK+VcM57fsuata9Gx+krWjjpFdRpSRRYcfyyFK9vAlFhbh
-         1L7oZ23xkDqB6f6Cy2Z5+Jm7v3Np2j22hHsQW1Aawb9uLR8R322rrGrIqB5NCs0Wfqpc
-         LpdJ4hneA/PIO/PYAZHHAMpJ0cizSQbmyQWl+pJzdP3PWSCGgCHH9gkw3TNe2yU4h5lK
-         W8avEm8Pt810gkY/TGxcsPr0QYhLD7zlwYGQ1+e17kO91Xl4AW4bn/u6462UKEXw5NeR
-         e4+MalMngtupw+c2Ggr1GJEfTKAsROW1yfOke86r+cip/JmHEguO71wgD0tbLdl9wcXP
-         zuSA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=ueUcicZX0W9BPo8IflVS8PDGH3YYY6yZw3nBt9xZHSI=;
+        b=gDTtWdhTYtOrR9US06DgbUc62Dc3Ddo6E6DTp2WCzybzw5XlVqYpQBrGHyXC3b+f+N
+         EiTlbhAr/Efcfec/YWWoN/2znbGuw3dffF5SouhR08yY/cFSqhgA64V7wLYptKWoHQKN
+         arHU3gCFbqjKp0OnRcRN5K1KEKn790Cm2+YNWeFsVdNZfPM7Uufwex1/oi8+fJkoQcXD
+         cZTVi4wvymbgsY4UQGAYL3J6NhfxbEWh6rywNzeJvFOYlpLdviEJLChurbCAMqzwjBqo
+         SJjvYAUHGdFGcg3HPGZwEkAzG0hTz3yBqsJkroTP8iZjewVoQR4dUeqdd8GXUgsiI66b
+         /Dng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXrvbffN;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id u15si439447ite.2.2017.09.12.12.04.53
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CgCkqIUO;
+       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <eafanasova@gmail.com>
+Received: from mail-lj1-x242.google.com (mail-lj1-x242.google.com. [2a00:1450:4864:20::242])
+        by gmr-mx.google.com with ESMTPS id t9si54180lfe.13.2020.10.22.14.01.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Sep 2017 12:04:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) client-ip=2a00:1450:4864:20::242;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JXrvbffN;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id m30so1617049pgn.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 12 Sep 2017 12:04:53 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CgCkqIUO;
+       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x242.google.com with SMTP id 23so3448909ljv.7
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=IOHcIeUUskaO/Q5PaN1ym2PYoDBxBpq2BgiOdPZlOk0=;
-        b=JXrvbffNy/9Cy/XZIdRXjWx+Kvne0xgQPaE+5sNWtmJxFcBvBoyiOiGHnLHgxcDl6I
-         YG9fCybGc5GC71A0SLrdUtmb+Pxqz9YbkDj8W1u4KN6eNiHQj9CJPEAmfbfNvlheluzV
-         iWkk6fCSpMxwgh2awhCYcd46KoCawaUNHtgvurptD5xmQUXK5UkMHv5f7MJRGh7MuSHK
-         wz45loAzNpAsFM+eGlfK/G0ouFRVb5fFuTGVs3GF/Zcpg3/jwCrxtTnGX5WQkAZMrCeE
-         sFqiyo5z5OkRE79odIa3oSfmN4T2j4Rv2j7S1b610q7WXfGyltH31yhqV8+/0e6aBLP3
-         +WOA==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ueUcicZX0W9BPo8IflVS8PDGH3YYY6yZw3nBt9xZHSI=;
+        b=CgCkqIUOD2ZpGLs+LDZ0iL8N8mPE0hVO3NMMO8xIFA/+Felno+5PBJvmEgCKaEiRVi
+         KYBn7yymRq7QC3pyIq25Oi6xwiaGcjlStKTtB/F34esHxbMxqn7SjaeNyYy/ZwgGMMSC
+         5GL6p/jzdIxmqcvsUH37dPm5V+8pzEWy2HWiW/U8uxT5PpjJbSqSU9zd1SyFAwoFVIoI
+         BJeElK0LoVWyZq8ohsJHcY+jVWijcCdMlufpFriFXs63suVna7R7UCtnV67fDSOyY63z
+         0tv0xLDvaP9CTkLaFG+PnCwu2zC8uUVe9bBRBTi3zBcgehbFKp8j3zfZesVmp5Ehn1q0
+         a8Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=IOHcIeUUskaO/Q5PaN1ym2PYoDBxBpq2BgiOdPZlOk0=;
-        b=ENyhUYJM0mb8JAQQQ8/BkJJ6a8ZwM/0Pb0UwmXg46hXnOqrRphNoHfcgBbHhd6xEKc
-         RM/Zx3oehkeVTOyOg1D55dPcpRKJyLw8Q5BIfKRp4R9y/H/ynrMPEPePWy5K5ZsDA3Ob
-         kfRWWfBH7XHLFWC0ESYfLoVpXRnxqzTKSw79eaupeuoSWP7fB1/6oJNtNr02apVF+zAr
-         +22BRUwUl4zB9W5UYOC/IYgYHD2tHUCRpzdkY+tAlHCWnohv9pnS4a0H8GgMbttw3kBc
-         La+G63QxygbFO0geeg8d08GKQIEX2tE0AR0Bdlh5RwYDYzJJE/ZgXH9cIhhfPSN0TOyK
-         TFRw==
-X-Gm-Message-State: AHPjjUiZo9ByD5Mmk+lAvvnqLrdsjdVLUIn3/hlmZS14r361NQ8FnRuJ
-	e+3zOxhyL/bQ9GGX
-X-Google-Smtp-Source: ADKCNb7oawV0xBIHJiNr75FWmP3ogvpXFvvM+cSEzA3ZjAWR1Vf/bdCAmhSHzgyqyl34UJrEusin0A==
-X-Received: by 10.84.131.109 with SMTP id 100mr18097352pld.122.1505243092730;
-        Tue, 12 Sep 2017 12:04:52 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from Haneen ([64.77.242.50])
-        by smtp.gmail.com with ESMTPSA id t65sm20998188pfk.59.2017.09.12.12.04.51
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Sep 2017 12:04:52 -0700 (PDT)
-Date: Tue, 12 Sep 2017 13:04:50 -0600
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: pi433: Replace printk() with dev_dbg()
-Message-ID: <20170912190450.GA14202@Haneen>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ueUcicZX0W9BPo8IflVS8PDGH3YYY6yZw3nBt9xZHSI=;
+        b=uFcmDTEP0UzSrBylzjMgPY12pcN73J0adAqW7NzBVSEGawRPBF/pMBrO93TkqDVNjL
+         W5eh6Tw2b7gpSX4ZFK7E8LCAr/sTThH4v53qgPl5W9DzSYS8CeDGwblpNx1y67KlJwFU
+         5rn2SVQs6UM5nkGOPMUrCwxyIl/0t1yRnAVeAq+q+ldIbQ2GQCaIFvqCc9HNfhgtq0HY
+         VGwbluysdBo4t+a11+mCH4WxjQXwGJPkSLNyd+KDasG3JX8iq5JVbzP2jXMDu+IlDpT5
+         lm5qyahz2wbEvf2ZKjLebbS7tXQ6bf9OdzUK9fB6STI3Xo9VEUo1mqwEhCkvHdZLrvY+
+         rurA==
+X-Gm-Message-State: AOAM532rx9uykM5ErqynXjUCzXx7/OBxMah1LI8wBni4woXJH+D+3Xtl
+	OCNeyMnXoz+sg2HGkfGPOAiVROkMpON3pdN1
+X-Received: by 2002:a2e:9f4d:: with SMTP id v13mr1787115ljk.379.1603400494611;
+        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
+Return-Path: <eafanasova@gmail.com>
+Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
+        by smtp.gmail.com with ESMTPSA id r14sm374869lfn.298.2020.10.22.14.01.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
+From: Elena Afanasova <eafanasova@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	outreachy-kernel@googlegroups.com,
+	Elena Afanasova <eafanasova@gmail.com>
+Subject: [PATCH] staging/rtl8723bs: replace "foo * bar" with "foo *bar"
+Date: Thu, 22 Oct 2020 13:58:57 -0700
+Message-Id: <20201022205857.6144-1-eafanasova@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 8bit
 
-This patch convert printk() to the preferred variant dev_dbg() and
-remove unnecessary comment line.
-Issue detected with checkpatch.pl.
+Correct the coding style error reported by checkpatch.pl.
 
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
 ---
- drivers/staging/pi433/pi433_if.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/staging/rtl8723bs/include/rtw_mlme.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/pi433/pi433_if.c b/drivers/staging/pi433/pi433_if.c
-index 73aa469..d82c74d 100644
---- a/drivers/staging/pi433/pi433_if.c
-+++ b/drivers/staging/pi433/pi433_if.c
-@@ -136,17 +136,17 @@ static irqreturn_t DIO0_irq_handler(int irq, void *dev_id)
- 	if      (device->irq_state[DIO0] == DIO_PacketSent)
- 	{
- 		device->free_in_fifo = FIFO_SIZE;
--		printk("DIO0 irq: Packet sent\n"); // TODO: printk() should include KERN_ facility level
-+		dev_dbg(device->dev, "DIO0 irq: Packet sent\n");
- 		wake_up_interruptible(&device->fifo_wait_queue);
- 	}
- 	else if (device->irq_state[DIO0] == DIO_Rssi_DIO0)
- 	{
--		printk("DIO0 irq: RSSI level over threshold\n");
-+		dev_dbg(device->dev, "DIO0 irq: RSSI level over threshold\n");
- 		wake_up_interruptible(&device->rx_wait_queue);
- 	}
- 	else if (device->irq_state[DIO0] == DIO_PayloadReady)
- 	{
--		printk("DIO0 irq: PayloadReady\n");
-+		dev_dbg(device->dev, "DIO0 irq: PayloadReady\n");
- 		device->free_in_fifo = 0;
- 		wake_up_interruptible(&device->fifo_wait_queue);
- 	}
-@@ -167,7 +167,8 @@ static irqreturn_t DIO1_irq_handler(int irq, void *dev_id)
- 		if (device->rx_active)	device->free_in_fifo = FIFO_THRESHOLD - 1;
- 		else			device->free_in_fifo = FIFO_SIZE - FIFO_THRESHOLD - 1;
- 	}
--	printk("DIO1 irq: %d bytes free in fifo\n", device->free_in_fifo); // TODO: printk() should include KERN_ facility level
-+	dev_dbg(device->dev,
-+		"DIO1 irq: %d bytes free in fifo\n", device->free_in_fifo);
- 	wake_up_interruptible(&device->fifo_wait_queue);
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+index cd98efccb321..07efb74831eb 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+@@ -213,7 +213,7 @@ struct cfg80211_wifidirect_info {
+ };
  
- 	return IRQ_HANDLED;
+ struct wifidirect_info {
+-	struct adapter *			padapter;
++	struct adapter				*padapter;
+ 	_timer					find_phase_timer;
+ 	_timer					restore_p2p_state_timer;
+ 
 -- 
-2.7.4
+2.25.1
 
 
