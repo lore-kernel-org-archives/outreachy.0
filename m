@@ -1,196 +1,154 @@
 X-GM-THRID: 6886436790360604672
-X-Received: by 2002:aa7:c458:: with SMTP id n24mr4175601edr.189.1603402817273;
-        Thu, 22 Oct 2020 14:40:17 -0700 (PDT)
+X-Received: by 2002:a05:6102:d1:: with SMTP id u17mr1608645vsp.8.1603376290114;
+        Thu, 22 Oct 2020 07:18:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:907:43c6:: with SMTP id i6ls204417ejs.6.gmail; Thu, 22
- Oct 2020 14:40:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwczA34bnq89jDrvZvTAqJ9WTbYAsQMWWbo7zOi9t4FjkcIRO/jmWwtxQUW1ADptYeZy8jf
-X-Received: by 2002:a17:906:fa84:: with SMTP id lt4mr4377563ejb.61.1603402815016;
-        Thu, 22 Oct 2020 14:40:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603402815; cv=none;
+Received: by 2002:a05:6102:3037:: with SMTP id v23ls217756vsa.11.gmail; Thu,
+ 22 Oct 2020 07:18:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyY4A1bC4tFa1b/i8G6QhypvNikyreJ8ytFZgZLxY2sQbV9tae8l+xQ6u/P4YMn26jd42WL
+X-Received: by 2002:a67:8c44:: with SMTP id o65mr1811407vsd.45.1603376288544;
+        Thu, 22 Oct 2020 07:18:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603376288; cv=none;
         d=google.com; s=arc-20160816;
-        b=sK+mM91RBbS4R7KcEmeQYLA6SqIJ0h2V8r5lTJ44bkqFpbGM1cLYw0kOzMuT5jr/Ob
-         KvmztWd67Tc0xL+zTkG5hgB4jIoDpFdo54u/EbYd/OBgCr+x03CzGpSmO9+Je7+zrLTb
-         7Rc3/EKHtOhXpJtlJyrcIstV9DgQJky+PW8AylsEC9HZpdkVCIbqRE82Px9MRd/ua8e5
-         ZoVYW/PNNkx2t1HzFXB297EU6oKHCoH6jv//ouhE5MHZ2W6niA3GPxBzQ/bpmkZvggqg
-         DpkiiBX5jCEhSCR9hS8WD0se8d8IUm2CIxpP7nvglSQo3Sn+TbDOFs+hydeHcF84uY1o
-         m0Rw==
+        b=g+PngMuTlRdm3wzA4ICO/x5iKoJG0q6TpAvuBdZbKqDjwMRNNZ01uN9Yl3vQsmMlpp
+         rfcL7NiWdS/DUpeK+dvR72y6kxlnS7O3MMu+TEsQuNHMTlzKJiQ3jNe1PtzDSwZ/5DhG
+         rYTVmi4wCQuvw2mUxEL/SFwB04VvtMU+kX5q+OD9F+PAJmW6kHO60NR6GS/uBRcBReWP
+         3ay7THFfVJTQTu1FVio+oLzdlaXV9gV4DfKy9YwVtFHNxCxiHwjxiajPR5Yx0TP83Zvn
+         50yh531mJnSlRJlItBewQ1A6ryJJzpb3fGrCsTV7zoMU45QdF+pRZAER4mxGhrPrtNuk
+         LNMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ye8Oo0//hYvczhAGt6KHG9OzkSrSCdlWjnUP+NDCwEE=;
-        b=QmhvkuVUWRivOfKkjAauX1/JsU2MK/pFgg6oQp8tBa9dfwicwOHU6gFTY0/WxI+E+4
-         3ttolv7sRVpbfI+ORnEsO/gU9Hy6KMq5evoW9LEMo0Ngq1L1qON5ifxQTaUocH9qsRhJ
-         QNmXwHtdRH0/NC9rAwHjp6HzmcprUwEDFu20KP3KaWcLSPny2/pOpw7wWSciUytarenx
-         9u/vMrjnW+mr+xGBFgxapU6XfXHBMuFEf8AJwuj2kc0Wn5kxU/suP7+AP82egZQp3ubA
-         rg4T/N2O5MW7uFnXDW5ykO3AU5xbk5JXY+N5Yjyqpq3XHkWP8Hc5Zbp59LUF8bH0u/wY
-         +9Qg==
+         :mime-version;
+        bh=OcUVjtDf83lHDWtGvMlsvVwF9eBYutRKI0B+TgLaDZs=;
+        b=dH55TXPTOGJ764F6SYW/I9WqCwd33wUQg3UBrYs6HjWwauRVj1w3Gi+eY3fLmC+toK
+         SQKJ39qIMIVadjJI5g8R0Bgw8BS6XdEqeT8GxsccKq46XxPzWKt80zYpcB2ICu7FYirx
+         ndogjripttkPblM6/uqfOGzEXfzGxbj5TXrao21M6jg/j5FjYRS2QmQh+aiYPrpEhX4j
+         X8kRmJeqtRDDB60rvS0MYsbvFT9l5Uq9Rih0S6BGQzK4391YYTJRv9QALT3Xgr2Dlvqn
+         3emk+4OPzFvaT6vdTYFF19VmWF4lPUDdONyShX6a8keYHpVcGwJbjUsEPcXPJrMsh0GW
+         nNYQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r4ZSa7IG;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <sylphrenadin@gmail.com>
-Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com. [2a00:1450:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id lf25si108758ejb.0.2020.10.22.14.40.15
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.231 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa07-02.prod.phx3.secureserver.net (p3plsmtpa07-02.prod.phx3.secureserver.net. [173.201.192.231])
+        by gmr-mx.google.com with ESMTPS id v18si99387uat.1.2020.10.22.07.18.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 14:40:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sylphrenadin@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) client-ip=2a00:1450:4864:20::544;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Oct 2020 07:18:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.231 as permitted sender) client-ip=173.201.192.231;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=r4ZSa7IG;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2a00:1450:4864:20::544 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x544.google.com with SMTP id t20so3241552edr.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 14:40:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ye8Oo0//hYvczhAGt6KHG9OzkSrSCdlWjnUP+NDCwEE=;
-        b=r4ZSa7IGg+H9TNC4t7vxsFpbVF4K4dAQ2e9Rmp+xCVpml5fAlLufoVlNprevyUwEiA
-         xpjsc2ESKkyRXWY4AgsEQpEO8u5dPEvMiZhw8MKRBmjE4mksbZ+03B7z9CgMMLnw6cDL
-         Utt4veTsHmOHtBkr1P5RPWBfzcDk+68Xe75BzAjPQU6iVv0CWUsjWmQ/g9nbOYbOQvxW
-         3mOBHWLSrSKDQ+22gOwn6tPQPTIp1gliq8IXfIqUlb9oMzUiFWkRS9Bd025zr0rrn6Y4
-         wN98WqMiKP3cpf5e2HmberlrxHeMgvN0ObayE5YYKOo0O+Izt46T9RQKcDZauirPeHBx
-         LfDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ye8Oo0//hYvczhAGt6KHG9OzkSrSCdlWjnUP+NDCwEE=;
-        b=AGrIWtylwTgzueUlZD7nqUfDlmj6Ywswvoj59ffs+teE5StwpQLqjj6Ll0KV3HfKUT
-         Yo9aH/BytaAmp70qPUZVsnb+yr8sR+SAjj0eH3rBsYIrvvuCq9/dHgJ9S+XnGgKPsjPs
-         MI90ULRhWGXXCehwSRZCFliFox7gGCfKv6xKf3YFan95JmUhZkZ3mrIWH8u8UCOJE8wD
-         mxkUGVvZYp2mC6TNLORjCI9hCNdPMmv6UssWlofv/yg6tk1pZ1KeC6H4O9Fq8Jd4nZHZ
-         SHEFo03lwkL9xVlFWF2D+5iebHg4zMaWBQ0bbmzgyj/noFmk/y/Ga7+trA0nrwUsKbSa
-         6DQQ==
-X-Gm-Message-State: AOAM530+I8S9sKVbXOzCOzNlb5J/xfHscxTIaKiYrTIqknx/euqvNKtl
-	P3boX8z9OJiTmagVSga4CYVlCVk38V+BlhEgArA=
-X-Received: by 2002:a05:6402:151a:: with SMTP id f26mr4316057edw.386.1603402814831;
- Thu, 22 Oct 2020 14:40:14 -0700 (PDT)
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.231 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	by :SMTPAUTH: with ESMTPSA
+	id VbPrk662H51hoVbPrkmPX7; Thu, 22 Oct 2020 07:18:07 -0700
+X-CMAE-Analysis: v=2.3 cv=YNfhNiOx c=1 sm=1 tr=0
+ a=k4kWCTE4q0BK4tC0BUdQgw==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
+ a=afefHYAZSVUA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8
+ a=ag1SF4gXAAAA:8 a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=2C6YHBdLAAAA:8
+ a=AFfvQUj85srtwFEc7eAA:9 a=QEXdDO2ut3YA:10 a=cDyXFGGuxjcA:10
+ a=Yupwre4RP9_Eg_Bd0iYG:22 a=_sbA2Q-Kp09kWB8D3iXc:22 a=yxGMNg53M24zlVSZdvMH:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-oi1-f169.google.com with SMTP id w141so1882581oia.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 07:18:07 -0700 (PDT)
+X-Gm-Message-State: AOAM530ukI7ncHDBep7gsRlvKTWgOp2H/X4bzq+3D9CIZAXzFsV0yZHC
+	j6ibzb/1u+UhZFJQwqV+EsWU+daGQiTz893oRqA=
+X-Received: by 2002:aca:33c2:: with SMTP id z185mr1842189oiz.174.1603376287124;
+ Thu, 22 Oct 2020 07:18:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1603371258.git.sylphrenadin@gmail.com> <f6107f3e467f1906abdcc33d35f13cf54f7e5a96.1603371258.git.sylphrenadin@gmail.com>
- <20201022135455.GA1788090@kroah.com>
-In-Reply-To: <20201022135455.GA1788090@kroah.com>
-From: Sumera Priyadarsini <sylphrenadin@gmail.com>
-Date: Fri, 23 Oct 2020 03:10:03 +0530
-Message-ID: <CACAkLuoR=w-=t-tQWH1-3i_nVZggbLjY8eQVzb412Br4ctqBmQ@mail.gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH 4/5] gpu: drm: amdgpu: Replace
- snprintf() with sysfs_emit()
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: dri-devel@lists.freedesktop.org, 
-	Outreachy <outreachy-kernel@googlegroups.com>, alexander.deucher@amd.com, 
-	christian.koenig@amd.com, airlied@linux.ie, Daniel Vetter <daniel@ffwll.ch>, 
-	Melissa Wen <melissa.srw@gmail.com>, linux-media@vger.kernel.org, 
-	amd-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Content-Type: multipart/alternative; boundary="00000000000035becb05b2494fda"
-
---00000000000035becb05b2494fda
+References: <cover.1603371258.git.sylphrenadin@gmail.com> <20201022133722.GA1784385@kroah.com>
+ <CAK-LDbJQM_Xq1w5Nc4NVtEmqtjYdezr_w--b-d7cbHYiM98mvQ@mail.gmail.com> <CACAkLuoubwnXBEHGry9kLy_YStwXu9bR=dGndt0Dx6JdJM+8LQ@mail.gmail.com>
+In-Reply-To: <CACAkLuoubwnXBEHGry9kLy_YStwXu9bR=dGndt0Dx6JdJM+8LQ@mail.gmail.com>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Thu, 22 Oct 2020 19:47:54 +0530
+X-Gmail-Original-Message-ID: <CAK-LDbLsT78acU-K2aB=j_mcCFG9YB2+kyiz-vU93ppKx0vD6w@mail.gmail.com>
+Message-ID: <CAK-LDbLsT78acU-K2aB=j_mcCFG9YB2+kyiz-vU93ppKx0vD6w@mail.gmail.com>
+Subject: Re: [Outreachy kernel][PATCH 0/5] drm/amdgpu: Replace snprintf() with sysfs_emit
+To: Sumera Priyadarsini <sylphrenadin@gmail.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, 
+	Outreachy <outreachy-kernel@googlegroups.com>
 Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4wfK4do2KrlHVe3gff8lGiPrzUYtcYeupda5qd2xehrbrhzQeki422AFCuAy7Vo0rjTPBRiOq9J6AQVgeKbfMuwQlDubxrG1L4cYAKPELqMe8xc0Vo2cbk
+ ljbmwklf7tunj57PedNv4Nxdnu7uJQjH3qZn138sJil/kwXximZeBb7vglfZ8GaVObeGbhfErhTqy460bjEpttfh9uwyASRYKWk=
 
-On Thu, Oct 22, 2020 at 7:24 PM Greg KH <gregkh@linuxfoundation.org> wrote:
-
-> On Thu, Oct 22, 2020 at 07:17:56PM +0530, Sumera Priyadarsini wrote:
-> > Using snprintf() for show() methods holds the risk of buffer overrun
-> > as snprintf() does not know the PAGE_SIZE maximum of the temporary
-> > buffer used to output sysfs content.
-> >
-> > Modify amdgpu_psp.c to use sysfs_emit() instead which knows the
-> > size of the temporary buffer.
-> >
-> > Issue found with Coccinelle.
-> >
-> > Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
-> > ---
-> >  drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
-> b/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
-> > index d6c38e24f130..4d1d1e1b005d 100644
-> > --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
-> > +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
-> > @@ -2621,7 +2621,7 @@ static ssize_t psp_usbc_pd_fw_sysfs_read(struct
-> device *dev,
-> >               return ret;
-> >       }
-> >
-> > -     return snprintf(buf, PAGE_SIZE, "%x\n", fw_ver);
-> > +     return sysfs_emit(buf, PAGE_SIZE, "%x\n", fw_ver);
+On Thu, Oct 22, 2020 at 7:43 PM Sumera Priyadarsini
+<sylphrenadin@gmail.com> wrote:
 >
-> Did you build this code?  I don't think it is correct...
 >
-
-Yes, you are right. I compiled all of them again separately. I had based
-them off the usual drm tree
-but that is wrong because sysfs_emit has been added only in the 5.10. I
-will send a v2 with the proper
-corrections.
-
-regards,
-sumera
-
-
-> thanks,
 >
-> greg k-h
+> On Thu, 22 Oct, 2020, 7:19 PM Vaishali Thakkar, <vthakkar@vaishalithakkar.in> wrote:
+>>
+>> On Thu, Oct 22, 2020 at 7:06 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+>> >
+>> > On Thu, Oct 22, 2020 at 07:01:44PM +0530, Sumera Priyadarsini wrote:
+>> > > Using snprintf() for show() methods holds the risk of buffer overrun
+>> > > as snprintf() does not know the PAGE_SIZE maximum of the temporary
+>> > > buffer used to output sysfs content.
+>> > >
+>> > > This patchset is a series of Coccinelle cleanups across the staging
+>> > > directory to convert snprintf with scnprintf in the relevant files.
+>> > >
+>> > > Sumera Priyadarsini (5):
+>> > >   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>> > >   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>> > >   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>> > >   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>> > >   gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+>> > >
+>> > >  drivers/gpu/drm/amd/amdgpu/amdgpu_atombios.c | 2 +-
+>> > >  drivers/gpu/drm/amd/amdgpu/amdgpu_device.c   | 8 ++++----
+>> > >  drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c  | 4 ++--
+>> > >  drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c      | 2 +-
+>> > >  drivers/gpu/drm/amd/amdgpu/amdgpu_ras.c      | 4 ++--
+>> >
+>> > These files are ot "in the staging directory" as your text above states :(
+>>
+>> I think Sumera has sent it as part of the DRM project
+>> related task(s).
 >
-
---00000000000035becb05b2494fda
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Oct 22, 2020 at 7:24 PM Greg =
-KH &lt;<a href=3D"mailto:gregkh@linuxfoundation.org">gregkh@linuxfoundation=
-.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">On Thu, Oct 22, 2020 at 07:17:56PM +0530, Sumera Priyadarsini wrote:<br=
 >
-&gt; Using snprintf() for show() methods holds the risk of buffer overrun<b=
-r>
-&gt; as snprintf() does not know the PAGE_SIZE maximum of the temporary<br>
-&gt; buffer used to output sysfs content.<br>
-&gt; <br>
-&gt; Modify amdgpu_psp.c to use sysfs_emit() instead which knows the<br>
-&gt; size of the temporary buffer.<br>
-&gt; <br>
-&gt; Issue found with Coccinelle.<br>
-&gt; <br>
-&gt; Signed-off-by: Sumera Priyadarsini &lt;<a href=3D"mailto:sylphrenadin@=
-gmail.com" target=3D"_blank">sylphrenadin@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c | 2 +-<br>
-&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c b/drivers/gpu/drm=
-/amd/amdgpu/amdgpu_psp.c<br>
-&gt; index d6c38e24f130..4d1d1e1b005d 100644<br>
-&gt; --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c<br>
-&gt; +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c<br>
-&gt; @@ -2621,7 +2621,7 @@ static ssize_t psp_usbc_pd_fw_sysfs_read(struct =
-device *dev,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return ret;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 <br>
-&gt; -=C2=A0 =C2=A0 =C2=A0return snprintf(buf, PAGE_SIZE, &quot;%x\n&quot;,=
- fw_ver);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0return sysfs_emit(buf, PAGE_SIZE, &quot;%x\n&quot=
-;, fw_ver);<br>
-<br>
-Did you build this code?=C2=A0 I don&#39;t think it is correct...<br></bloc=
-kquote><div><br></div><div>Yes, you are right. I compiled all of them again=
- separately. I had based them off the usual drm tree<br></div><div>but that=
- is wrong because sysfs_emit has been added only in the 5.10. I will send a=
- v2 with the proper</div><div>corrections.<br><br></div><div>regards,<br></=
-div><div>sumera</div><div><br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-<br>
-thanks,<br>
-<br>
-greg k-h<br>
-</blockquote></div></div>
+> Yes, although I think Greg is referring to the cover letter text here- I will change that.
 
---00000000000035becb05b2494fda--
+Ouch, that's right! Missed that. :(
+
+>> So CC'ing outreachy-kernel mailing list
+>> is fine. Although I see 2 cover letters being sent - one
+>> with all mailing lists and maintainers being CC'ed and
+>> other one without most of them which is confusing.
+>>
+>> Sumera: You may want to fix that.
+>
+>
+> I will send a v2 fixing the patchset.
+>
+> regards,
+> Sumera
+>
+>> > Also, you have 5 patches that do different things, yet have the same
+>> > exact subject line, which isn't acceptable either.
+>> >
+>> > thanks,
+>> >
+>> > greg k-h
+>> >
+>> > --
+>> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201022133722.GA1784385%40kroah.com.
+>>
+>>
+>>
+>> --
+>> Vaishali
+>>
+>>
+>> --
+>> Vaishali
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CACAkLuoubwnXBEHGry9kLy_YStwXu9bR%3DdGndt0Dx6JdJM%2B8LQ%40mail.gmail.com.
+
+
+
+-- 
+Vaishali
 
