@@ -1,87 +1,87 @@
 X-GM-THRID: 6886436790360604672
-X-Received: by 2002:ab0:658e:: with SMTP id v14mr1306581uam.97.1603374432450;
-        Thu, 22 Oct 2020 06:47:12 -0700 (PDT)
+X-Received: by 2002:a17:902:aa4c:b029:d5:e527:654c with SMTP id c12-20020a170902aa4cb02900d5e527654cmr2445067plr.24.1603374199906;
+        Thu, 22 Oct 2020 06:43:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:eb42:: with SMTP id x2ls201962vso.3.gmail; Thu, 22 Oct
- 2020 06:47:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw928O9O72xiRr8k51gIJsuUjSVQra1cDEVfCDpxQhFFQxSK8BA1XVF5FCQ4bBPLdYOjmyb
-X-Received: by 2002:a67:fd64:: with SMTP id h4mr1797414vsa.38.1603374431038;
-        Thu, 22 Oct 2020 06:47:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603374431; cv=none;
+Received: by 2002:a62:1884:: with SMTP id 126ls765720pfy.8.gmail; Thu, 22 Oct
+ 2020 06:43:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9lQ/nTduntDl0998jt3U5YvLAnVT0DyoAk+aTaMIxVNRAIb4XDsc+3eArblePsxAUxovX
+X-Received: by 2002:a63:f908:: with SMTP id h8mr2357501pgi.203.1603374198163;
+        Thu, 22 Oct 2020 06:43:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603374198; cv=none;
         d=google.com; s=arc-20160816;
-        b=wQkbxmYBaxbJjBQt689Acu5C0GCKk+qlqLcz90lXj6mNfvH6z/VvTg9LEKaGHWUNkF
-         zgIeHRGKC5bs32LSxXjTjYstuGou3Gh+w0kZCj52Xa25oyQ2nqLg3auDsp6emizPemY9
-         nzuV2LR+0CAnbsHmI8JKlec+4qKSA8ch6cOqyI1dxDL20a+vyqarbVomahB2MS5LMvwE
-         pn5CBhO6/FLm6x9dLwjw4PsqRWqCcMN3nZuzgUDTrqDwuPrafuwBRptvxcRuInVQGaxy
-         ZbQ6eq6cvrRJONmuicPNxe/3Bu8zx99CKe7WBEAnSpe/6wxvyB3dB/ReHbKcykBbap6l
-         u7mw==
+        b=uzM/gd9CLYh2Nu54FcNJ9ArDJBFTQr1xE/ciWMdxu0CbaN+ZctlXnKDk5Wa4DxxyEa
+         SfVhbkisiIqpwK5eapWAM85KLbTWQQK6oBFKwmRcVtZG3DwKJMoX2POx9qKd9Pa/OI1W
+         CM7t6GTbIKb/jW3/bL4tsg1f2FX9ak5V/r4/Dj75B18cycD/jNWRg31GbjvgKvHL220z
+         mldz0HhI/QkVpmMF4CoPrCYh3xjn/SlEcRdPcXkuCzwkFxFejdJZEtKAFO5p+p9z0Oin
+         DDZC+kbacKiCCweBxE6AvvXGk3enOHEEXXNAZ0qNEAUNR+ffB/1SyolU1j/4v8x6+vRq
+         bkUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=1gypUtIc864PbkDDcPxNQEUh8zBoJi60ZtKxJZr3rhk=;
-        b=SX0b9pR86ivl1mfAhihwLV90thbBwiRzuRGW7Fl906o1P2jrds6p1RcLZJXsWGLldN
-         DxdhvRdW/xWkkxOHpbZY5EOAFEKhcwHs1yyI21BVhy3d+8TISM+HhSE/so5xhoLVke2S
-         zwcOavpSSTClKTRIqQ72Gj2Jia0Gv0R2dU6aq91i0Up9j/b63hCxGr45leRX0dq7XgGA
-         jvKTYawC9TxLfodEDp+4mQXLGygdYwI45xwxWcofY3Y8iqCLX/ybe7IPPZHH1uDjIPPf
-         meHAnjLvNTRC2bCqkRgkup/YQMD9txv9qlxu1Z4FArc6qfKl2oDMiWSafaPfI41Y3knE
-         uo+Q==
+        bh=TGoYs6NX+Ndx+a6z9ojq9tBbYhFNYgIJY1nftO258C4=;
+        b=oG/TKYFNInNaKJaBc/ycOZ2vM1UftErG2hbHA/Xq5SlLXy9Z5GZJNF+WrcSImhVoTD
+         +E6aOvh1a+RKjDAYSQMnBPYc/Va/AxHNEr8CFZA9Wo2waNSqZUKGVPZ7kn4VrxpG/VrS
+         cELf5TVN03qVCgzE0wKSFAVY4BdCM0wtYwVKMn8mK4pVEw6FZXLh8QlOUMvefdbPalIY
+         COz7mnb7dhGmqm6FkA1YPELYXXrcjpXKSJ13+sNRBgoLlhLP2xbR+8XgmNe3OodC0hgc
+         K03cSt7/b0MqZ1Nau6gKf80TB7Erm6I8OdUeC8JxWBaaLNt66eoYDiXLxgT0EQ+dVa9Q
+         qMzg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BhFPvqZ2;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBR9uUxU;
+       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <sylphrenadin@gmail.com>
-Received: from mail-pj1-x1043.google.com (mail-pj1-x1043.google.com. [2607:f8b0:4864:20::1043])
-        by gmr-mx.google.com with ESMTPS id e21si183166vsj.2.2020.10.22.06.47.11
+Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
+        by gmr-mx.google.com with ESMTPS id v24si115627plo.1.2020.10.22.06.43.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 06:47:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) client-ip=2607:f8b0:4864:20::1043;
+        Thu, 22 Oct 2020 06:43:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BhFPvqZ2;
-       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::1043 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBR9uUxU;
+       spf=pass (google.com: domain of sylphrenadin@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=sylphrenadin@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1043.google.com with SMTP id p21so1065186pju.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 06:47:10 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id bh6so975722plb.5
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 06:43:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to;
-        bh=1gypUtIc864PbkDDcPxNQEUh8zBoJi60ZtKxJZr3rhk=;
-        b=BhFPvqZ2fI2InSAjrYY0zeX18fhNHww1+FQ/xSM5zKcowMhycbuWkOnfxAIq4PB4Er
-         UOJF2GZM0pLpbcswZLc3aeYilTgEEmxUEGT0/k2CEEdmC3m5ftiWv8BJm10VuGQirQFT
-         tk+IS1SS/s1WxJ+zcwFm5SZX4KFb/kcYL5onqjBP80vdQAiVFHIBwyJXNgb6uVUwdkfy
-         EtQgkvNjRxzy5e109mcft/9UN0MFO0q3Sq8D2mLc65jjek86iE1AkevB8kdyhRlWYhsQ
-         h7X8b8kWeuL8yLHrj6mOZa86q+dowjDyuKh3VA6Uv3YSEaEnUt2vXSiZa/M+UVXLUoGQ
-         AeZg==
+        bh=TGoYs6NX+Ndx+a6z9ojq9tBbYhFNYgIJY1nftO258C4=;
+        b=qBR9uUxUlHyzRD3U5yeOPNh2DDGVG9brz1blZmpia4NszHbmZ+F9wNVuaJbexA1L3Q
+         /eGsZj1/Hj54rAPm6L5LilmL59AZk5K6sjXGE8XLjUje8GMErvT7f0RzBBIzt4bwDR7y
+         CP+A1Is9IT0EVEitSCNGlmmmWZ1WHvAnd9ZTIrd0lM1wHSdXPkBVZXAwsdEj9CGOq1+W
+         NYw767H1SD7DlQEa3Anp0F9TqIkNbjTargZkMcF5AbXQTTIJzXX/4ocvGZ8e6tajgd05
+         OjcAKZCIrST80Fh562Wu+2NAvSfyTI7JHowQpGGjfI3hDZXxM6o91V6d4cuWtjIsgJxz
+         Im2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=1gypUtIc864PbkDDcPxNQEUh8zBoJi60ZtKxJZr3rhk=;
-        b=N10es8+n3q++KV5Kr1e77NupvaDLohuBE1TGHx5e4nIk/bKEhdkyhMGS+4i9KWbwuF
-         +bmiNhLyt5yFyARxJ6QrRP/tWU7HrkK2tpOo+HwdRxzdop/coRMD7tlXYiKiHG7zJTQb
-         QQmeMgDVlAsLjrmjVCy9zjDe/AF9zFHVblNbikMsh5GFkQAUm47F40O3uzpS13vhqv+Q
-         OaLc6IOeNNXg0B46zQF98ovp4NkuO8O1CnkKkRsHHdDdIRZ7+ofKKWAbSXNv8xq3caNI
-         EoyoMoUVS7MplHD4p9oMaoY1UxAs3452Ox8ibiD16pAhofVYpT+ykWZQq8cBFTXy+fx1
-         WPqQ==
-X-Gm-Message-State: AOAM533IA5+F0BNIfoRAUAUBQRLmHFHKntmzHtRbga0UQ+ETC74Nu7rt
-	5uLmhyE+xqYTIGgiglHiyrc=
-X-Received: by 2002:a17:902:a50f:b029:d6:da2:aaa7 with SMTP id s15-20020a170902a50fb02900d60da2aaa7mr2614665plq.42.1603374430254;
-        Thu, 22 Oct 2020 06:47:10 -0700 (PDT)
+        bh=TGoYs6NX+Ndx+a6z9ojq9tBbYhFNYgIJY1nftO258C4=;
+        b=MNrMr3ZiJm0sFiTajgmF2cvnWcuGFXTkHDG5OAcoEuzco/QQelnvId6ayREFzzP54t
+         jT8CGgis8YIqGT2KdWhHpdWsZX4/LiI6XXpPBJRKRq9GT3ovx8ZKNa1sHEdQHyKsxSrL
+         lEmTLGui1XD3IJqHTmSfhXf7iT/dxFctomHMYIdA4VRaswJP9D/0Y3SqcE00aCOcbntI
+         dyA2KkxPA8cpa6+QitXJ2bAc6PAOQPZLAymeK0QqEUOZX1GF1lXx12wlg628thbGuxHk
+         1RJGTAXs3O7xHtja3O2P3NK0xiQQAOOHfJhyswPV4+GZbWHviMWMeNaUACkBd0fAL6tk
+         FEvg==
+X-Gm-Message-State: AOAM5314+IHvNqnqdUlxpKi9Sn+daHjz0NuNW+Zs3+cCECGR9FHD65xg
+	dUYEXUpn325XNDu0Qi2SHrXI5rH/CHZwRA==
+X-Received: by 2002:a17:902:a3c9:b029:d5:df0c:f217 with SMTP id q9-20020a170902a3c9b02900d5df0cf217mr2465001plb.59.1603374197886;
+        Thu, 22 Oct 2020 06:43:17 -0700 (PDT)
 Return-Path: <sylphrenadin@gmail.com>
 Received: from adolin ([49.207.204.75])
-        by smtp.gmail.com with ESMTPSA id b128sm2233467pga.80.2020.10.22.06.47.06
+        by smtp.gmail.com with ESMTPSA id l18sm2404726pfd.210.2020.10.22.06.43.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 06:47:09 -0700 (PDT)
-Date: Thu, 22 Oct 2020 19:17:04 +0530
+        Thu, 22 Oct 2020 06:43:17 -0700 (PDT)
+Date: Thu, 22 Oct 2020 19:13:11 +0530
 From: Sumera Priyadarsini <sylphrenadin@gmail.com>
 To: dri-devel@lists.freedesktop.org
 Cc: outreachy-kernel@googlegroups.com, alexander.deucher@amd.com,
 	christian.koenig@amd.com, airlied@linux.ie, daniel@ffwll.ch,
 	melissa.srw@gmail.com, linux-media@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.or
-Subject: [PATCH 3/5] gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
-Message-ID: <864a0c5d7bc85d9eeaf1ca7b3db38b58e042471b.1603371258.git.sylphrenadin@gmail.com>
+	amd-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 2/5] gpu: drm: amdgpu: Replace snprintf() with sysfs_emit()
+Message-ID: <78546ad9343ddf1b0f8bc300a3c8ae9a0dcb0ef9.1603371258.git.sylphrenadin@gmail.com>
 References: <cover.1603371258.git.sylphrenadin@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -92,38 +92,56 @@ Using snprintf() for show() methods holds the risk of buffer overrun
 as snprintf() does not know the PAGE_SIZE maximum of the temporary
 buffer used to output sysfs content.
 
-Modify amdgpu_gtt_mgr.c to use sysfs_emit() instead which knows the
+Modify amdgpu_device.c to use sysfs_emit() instead which knows the
 size of the temporary buffer.
 
 Issue found with Coccinelle.
 
 Signed-off-by: Sumera Priyadarsini <sylphrenadin@gmail.com>
 ---
- drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c
-index 1721739def84..441e07ee1967 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gtt_mgr.c
-@@ -49,7 +49,7 @@ static ssize_t amdgpu_mem_info_gtt_total_show(struct device *dev,
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+index f7307af76452..7eef6b20578f 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+@@ -135,7 +135,7 @@ static ssize_t amdgpu_device_get_pcie_replay_count(struct device *dev,
  	struct amdgpu_device *adev = drm_to_adev(ddev);
- 	struct ttm_resource_manager *man = ttm_manager_type(&adev->mman.bdev, TTM_PL_TT);
+ 	uint64_t cnt = amdgpu_asic_get_pcie_replay_count(adev);
  
--	return snprintf(buf, PAGE_SIZE, "%llu\n",
-+	return sysfs_emit(buf, PAGE_SIZE, "%llu\n",
- 			man->size * PAGE_SIZE);
+-	return snprintf(buf, PAGE_SIZE, "%llu\n", cnt);
++	return sysfs_emit(buf, PAGE_SIZE, "%llu\n", cnt);
  }
  
-@@ -68,7 +68,7 @@ static ssize_t amdgpu_mem_info_gtt_used_show(struct device *dev,
+ static DEVICE_ATTR(pcie_replay_count, S_IRUGO,
+@@ -159,7 +159,7 @@ static ssize_t amdgpu_device_get_product_name(struct device *dev,
+ 	struct drm_device *ddev = dev_get_drvdata(dev);
  	struct amdgpu_device *adev = drm_to_adev(ddev);
- 	struct ttm_resource_manager *man = ttm_manager_type(&adev->mman.bdev, TTM_PL_TT);
  
--	return snprintf(buf, PAGE_SIZE, "%llu\n",
-+	return sysfs_emit(buf, PAGE_SIZE, "%llu\n",
- 			amdgpu_gtt_mgr_usage(man));
+-	return snprintf(buf, PAGE_SIZE, "%s\n", adev->product_name);
++	return sysfs_emit(buf, PAGE_SIZE, "%s\n", adev->product_name);
  }
  
+ static DEVICE_ATTR(product_name, S_IRUGO,
+@@ -181,7 +181,7 @@ static ssize_t amdgpu_device_get_product_number(struct device *dev,
+ 	struct drm_device *ddev = dev_get_drvdata(dev);
+ 	struct amdgpu_device *adev = drm_to_adev(ddev);
+ 
+-	return snprintf(buf, PAGE_SIZE, "%s\n", adev->product_number);
++	return sysfs_emit(buf, PAGE_SIZE, "%s\n", adev->product_number);
+ }
+ 
+ static DEVICE_ATTR(product_number, S_IRUGO,
+@@ -203,7 +203,7 @@ static ssize_t amdgpu_device_get_serial_number(struct device *dev,
+ 	struct drm_device *ddev = dev_get_drvdata(dev);
+ 	struct amdgpu_device *adev = drm_to_adev(ddev);
+ 
+-	return snprintf(buf, PAGE_SIZE, "%s\n", adev->serial);
++	return sysfs_emit(buf, PAGE_SIZE, "%s\n", adev->serial);
+ }
+ 
+ static DEVICE_ATTR(serial_number, S_IRUGO,
 -- 
 2.25.1
 
