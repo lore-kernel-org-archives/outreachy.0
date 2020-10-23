@@ -1,74 +1,101 @@
 X-GM-THRID: 6886754504094515200
-X-Received: by 2002:a2e:8515:: with SMTP id j21mr740399lji.419.1603454318165;
-        Fri, 23 Oct 2020 04:58:38 -0700 (PDT)
+X-Received: by 2002:a19:6816:: with SMTP id d22mr593325lfc.132.1603449063217;
+        Fri, 23 Oct 2020 03:31:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:c111:: with SMTP id r17ls416114lff.0.gmail; Fri, 23 Oct
- 2020 04:58:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwY/T42GJn5jR45r96mW6GpVD5yNZNV4e+lR4UdIbXQWeTcFqIaqDocccBKhv3pOzm8g+Q/
-X-Received: by 2002:a05:6512:3b1:: with SMTP id v17mr603369lfp.262.1603454316025;
-        Fri, 23 Oct 2020 04:58:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603454316; cv=none;
+Received: by 2002:a19:84c1:: with SMTP id g184ls278137lfd.3.gmail; Fri, 23 Oct
+ 2020 03:31:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyphE7xQHCNDoJmbHigVCjCsXrcTagjWI7wd8lpvJUg1TzTQDX8xwY9E1CM37m3T52PVC8n
+X-Received: by 2002:a19:9d3:: with SMTP id 202mr582115lfj.329.1603449060828;
+        Fri, 23 Oct 2020 03:31:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603449060; cv=none;
         d=google.com; s=arc-20160816;
-        b=JN5UIUVF0Dos5pOaQDzZG7M19K4R79LovXqK5GfeS99BnFilBg36jNQMEPfSDzNY8n
-         GD1TjOwy1Mbvz2mP8nJixaotM2ZQwvgnnjbjY1xctZc5kMCe/3ALRTBXPcqR0sQIJpF7
-         l/chmDWnpSq3WuqcTGuiZ4tcnlXEwUxvlydzRF+Jcy+Fgr7/FYC1e7kDivh1HBP1mCQD
-         N9+o9PY0BXyl/INP/SEfDvLQyZESelig61zP9aBVFmDcpnNc/ITRq7uZeUACtjHBz0B9
-         WK83Z1K8Hqb630gAR7DaY/9XJOeJUJCidSbcUlAUpg5fQ7VBi0DcskbQSeCyesDWQl3K
-         s6nw==
+        b=QmsHkOCIJM+uVCjXr+sInY5uPo/MieJOlIkcdx6IC9vpRnC0gWWDI9eCBymBNMNv0U
+         qeKens+eCv9rKApHM1hbaM5QkjyYbcv9EJ91fhDJIuiMa7Ny6JBxswankEyx66xVRQyt
+         caXln764r/pqBUdFKY6C/w99S6NJHZUD4/mhe1XFH+Z1mzQyZmMVY28o+xBxGMpweBYI
+         Hr4WuzKxiB2FVFokyPH4+9Z6p5h9RkMo9SIk0w/i+4v0ukTWpEAy+sGqhwccfw2kVHv9
+         tGm3INwl7k4HEiNr8zvx/dJ8OTFhhp+7TBTzgLxAW9TZ2LJrwNmJyRftY7lYLxMm4Wxt
+         pIfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=a43uQivSqcpgtBeNtkCDgWJNs/iVWYVhNy3CrkGeFSQ=;
-        b=GzvDUXP2t72aNQx8jxpZ5cvIv4EG3GMUwmG5FWW60AFyK9nUOT4tJ9/zs3nbP2Ez4l
-         H7ha4yffaObMRr/44SQvZeJMEEzkxEfu8ofb2kkVMCp2gSlxDnOx+SVBVjyTi5m99gy/
-         3LKdJaWXT6vREeROMyVVQ4XVTGCXdYvBCUHsd3imnFUm9sctSOUeHV/co0Oqc1kDGgad
-         hTbSC+FVlP+BtTexsNq6QIkPNqJDH0I6xPtp8+rFUpab5gsFfzFntdv7L/PpRRWXyHjh
-         xTZxx7QzYBinRG01gGjIZAiMb3b6/5BbfP+7rv63w+OFYv+jd/UsewrDqoRvQc7rW6Ey
-         dTHA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=HogFMsSlD4uqYCSt+ZmLs+NgUy2bUCK2H3Vju3vCmIo=;
+        b=uATGx2DZQ6Y3qddoClO64bmf0soq5ipd+b0OgN1EcOnZPUsiSd7SJ6dYg0+tgegNDI
+         jXcGzYbB/mBWBLi+39WsqMgVdwcAs5U6KqeCYlHbS53I0AeZ88R8bDpz6OuUCTH3JG1S
+         47nTuSbo11fo9v1eRuXBriukQpekJHYB1qMUWyKuu7sqAejWIulWLbWdkSTyAiyYUKku
+         EMZc2Fyj/WKQ0t5mdl/Bearuz/3r0OnD3UH6Fsj42FKQfoGUDNTQT/DahyBygsTdQsIr
+         ZX3W+zZyT+eVDEh6dj9T1ZXn6+KmXOuA+pvXMa67ZrJOPED6Am0Ae9TBewn6JbyLpWc8
+         5pjA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=GKvx4ShS;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-Return-Path: <willy@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id t20si44025lfk.10.2020.10.23.04.58.33
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id a16si44708lfr.5.2020.10.23.03.31.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Oct 2020 04:58:33 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 23 Oct 2020 03:31:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=GKvx4ShS;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=a43uQivSqcpgtBeNtkCDgWJNs/iVWYVhNy3CrkGeFSQ=; b=GKvx4ShSPC/2wFxB6AcKPueFi3
-	lkzngVb6jyR4s7900S2bZt7bi5e3F1jIVLIP38fI5j446QCOwZtG6c+93yGj8Nq8V3e5+cf00K80T
-	5uIpn+Iky0HoSN89QlGes0CZjm1Z5MY9TReQdbjq2zrErYJd8Jupa7wipQa9TCFFweDTXACPIsyQp
-	SejhuoxGLUm6Z/FK9dEcPXnssu7Uxj/7B27ZuIjoXNbCrYD0hBpsg9fRnzt5JnvQlVXX2hKLDBK9/
-	2BDvcC2jjoBASqH6sfp+G1Pp1V0ZCQo37QVy8/bJg1qPUCcPVWjg3QjVbq2y6jiks1ShyRuyc/t64
-	PWsATsLA==;
-Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kVviG-0008OK-Dj; Fri, 23 Oct 2020 11:58:28 +0000
-Date: Fri, 23 Oct 2020 12:58:28 +0100
-From: Matthew Wilcox <willy@infradead.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.77,407,1596492000"; 
+   d="scan'208";a="474018331"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Oct 2020 12:30:59 +0200
+Date: Fri, 23 Oct 2020 12:30:59 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: Elena Afanasova <eafanasova@gmail.com>
-Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
-	outreachy-kernel@googlegroups.com
+cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
+    outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH] staging/rtl8192e: replace kmalloc
  with kzalloc
-Message-ID: <20201023115828.GZ20115@casper.infradead.org>
-References: <20201023100317.4473-1-eafanasova@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20201023100317.4473-1-eafanasova@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2010231230340.2707@hadrien>
+References: <20201023100317.4473-1-eafanasova@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Oct 23, 2020 at 03:03:17AM -0700, Elena Afanasova wrote:
+
+
+On Fri, 23 Oct 2020, Elena Afanasova wrote:
+
+> kmalloc() and memset() calls can be replaced with kzalloc().
+
+It would be nice to say why the change is correct.
+
+julia
+
+> Found with Coccinelle.
+>
+> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+> ---
+>  drivers/staging/rtl8192e/rtllib_tx.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8192e/rtllib_tx.c b/drivers/staging/rtl8192e/rtllib_tx.c
+> index e0d79daca24a..c9959bb4ab63 100644
+> --- a/drivers/staging/rtl8192e/rtllib_tx.c
+> +++ b/drivers/staging/rtl8192e/rtllib_tx.c
+> @@ -205,12 +205,10 @@ static struct rtllib_txb *rtllib_alloc_txb(int nr_frags, int txb_size,
+>  	struct rtllib_txb *txb;
+>  	int i;
+>
 > -	txb = kmalloc(sizeof(struct rtllib_txb) + (sizeof(u8 *) * nr_frags),
 > -		      gfp_mask);
 > +	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags), gfp_mask);
-
-This would be a good opportunity to use struct_size().
-
+>  	if (!txb)
+>  		return NULL;
+>
+> -	memset(txb, 0, sizeof(struct rtllib_txb));
+>  	txb->nr_frags = nr_frags;
+>  	txb->frag_size = cpu_to_le16(txb_size);
+>
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201023100317.4473-1-eafanasova%40gmail.com.
+>
 
