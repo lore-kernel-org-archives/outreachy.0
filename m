@@ -1,101 +1,118 @@
 X-GM-THRID: 6886754983149043712
-X-Received: by 2002:a2e:9951:: with SMTP id r17mr626592ljj.37.1603449161860;
-        Fri, 23 Oct 2020 03:32:41 -0700 (PDT)
+X-Received: by 2002:a50:aa84:: with SMTP id q4mr1412102edc.331.1603447595365;
+        Fri, 23 Oct 2020 03:06:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:554:: with SMTP id 81ls660454lff.1.gmail; Fri, 23 Oct
- 2020 03:32:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+5UqrB8Fy2TDWILgkx9zKpvhgWQwassW8SgXWcR3xejvPIzr+NMAWt25Pl1HZFTdUTJoA
-X-Received: by 2002:ac2:5ecc:: with SMTP id d12mr556373lfq.487.1603449159717;
-        Fri, 23 Oct 2020 03:32:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603449159; cv=none;
+Received: by 2002:a17:907:43c6:: with SMTP id i6ls581406ejs.6.gmail; Fri, 23
+ Oct 2020 03:06:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHEUhW25kkFOOwrK/6k8pIWFEnm4dIUKfpdvtdS3ceHWOoyjI63vN0dgwdZuu+xPl70c/j
+X-Received: by 2002:a17:906:7157:: with SMTP id z23mr1231328ejj.474.1603447593374;
+        Fri, 23 Oct 2020 03:06:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603447593; cv=none;
         d=google.com; s=arc-20160816;
-        b=oVQa6X6uwHAmAVPgNAD8cYFCti2YPWbFEJY3/Dh9fLZIzkqhnV/9JOB2S6oghtCi3m
-         txndmrBQe7yq29DW8pagy6uFe4q2dwJStdPN5hMxzMX7l3dVjJrNGzMuFmANyS433oXN
-         wznZ2iOwWOL1p16SGRmj9A+YpRjq3uM0ztj0F6VStS/eaOUI8LNJs0Prt3tgAe/rkN8S
-         ERP7/IrZoYCzelpd/TEdmrYeraovFu4RIgLt8EoXo/bNNYNZYy+AydnsuXryZ4yPumQp
-         usa7fCr4d6So7DdLss1XMB+WV/Rr4mGqcfkyTnKaGYbt4oBQ0C3XeHfXOKxeS+OKULpK
-         Sq7g==
+        b=03jAIRrfltKl7AWJ0NdNFtQgcqEfixjtZm30z55qLU8CIeW/EJzUPadTwfELRqVOQt
+         oTpqjxyczv2wmfEkrrauhZU5gCAh+IAfETODRw8bE7oAoMDnNnt9I0o72bpW0C/fkcPe
+         07jVem+Wx2LLNo5YxAPJ3QoL4husOC4Lov1ci80801gNOavLXs8ZnVq64XyXA3tGqUlT
+         djKDfVCceRBECS04rAAiHNqlP04YsYf57Q4EzgAx99nZ7V7UScI6dCQxQpQUyRbwEriX
+         +3EAUeSQP0Xy/m0s2Vt2xvalHRFscGUPFXXlvxNzgsQ3IJipj7eIwH8UOrRpdiry9tQL
+         StAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date;
-        bh=7GbqIHRkwO+7KyulorKljsfx4hYSrMc4gdla03QB0Fg=;
-        b=P+zEvAKClxrk1UImU8XQFpPhTJ+eItaWVQjkBFeE/l9dmI0vGVRTYF9Rfpm0vEaq3L
-         pc8Y+tU6OfvxtG7rXRoSaV67i+Xv4ga3CteWHqjvrW/F3ifACBsb7Lg2iYfd0s+iKQv/
-         y6PZhQfomezwFAKxRE3wOsdS9BWCcAkfdRQGrYbkG6wZfs6QPih24n3JEJnlt7JicSHT
-         NzOKdrYpx++CIE5szYlejRLZdlR4Ud+G+aaANOAfdg/Tc2CYCPQeyQtakSUzbKxoPMKv
-         dv/pw+vKzORDQGJ2e76jgA3hB420CHdER8SITKZxy1BCQ/7FmDvxQ9Ibbjp6XXMavNns
-         Ekew==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=a7qotuzDXU7tRMHMYUcGj25j4MwPZ2+w83VIsxxur88=;
+        b=oJ0dGcz32IPU3elpbdXpitwGn6dZ5RnIi3qTPO3qW169xGf1Pt2LASWq+EfxkX/8Cq
+         Un0RzLirN3O/I6Z64kLPTtgCnwRlY1rrmXEo6Sbxc1O5/A2ySebEV08xKr7rmHE6y9Za
+         /DKRB/4WMdZX+HlHkoY64HTfiOLtLrhkVMWiRNm0u7X8zYIm22rW0v5bnD2CXXi0ZhzN
+         jD756MX+QVWkOcqSqfS5l1vThAmJLPiTsnTdPhL10BnqN5A93Fuf3SmTjNf+otI/PB1J
+         gcFZ+9jb7R2evfRXwM2mJJAQX71/CByJm4Hc2vXuxyUEFQoS80pol2AD8TZSeXhARyXT
+         DOkA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id e15si26552lfq.1.2020.10.23.03.32.39
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jj2Wz9MZ;
+       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <eafanasova@gmail.com>
+Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id ba3si38524edb.2.2020.10.23.03.06.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Oct 2020 03:32:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Oct 2020 03:06:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-X-IronPort-AV: E=Sophos;i="5.77,407,1596492000"; 
-   d="scan'208";a="474018530"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 23 Oct 2020 12:32:31 +0200
-Date: Fri, 23 Oct 2020 12:32:30 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Elena Afanasova <eafanasova@gmail.com>
-cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org, 
-    outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging/rtl8192u/ieee80211: replace
- kmalloc with kzalloc
-In-Reply-To: <20201023100507.4569-1-eafanasova@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2010231231440.2707@hadrien>
-References: <20201023100507.4569-1-eafanasova@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jj2Wz9MZ;
+       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lj1-x241.google.com with SMTP id h20so936562lji.9
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2020 03:06:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=a7qotuzDXU7tRMHMYUcGj25j4MwPZ2+w83VIsxxur88=;
+        b=jj2Wz9MZCN35uW7UEHokTpH8YggAOHwjxRm0AgjDpJpizpzVWlkqOATU4xTOU28fW2
+         FQwHaj2638uSdGqelsBISZB3p/wmUGdvDC5WQ1OBO2i2aiCL3+ZsQ40n8ZnY41uY/k3y
+         NFUTF59QrMoxtgNfWAmCyh+G8dls98oD6AbdTWmbVa6qfwEohrP4r5iLZ1TgU5kGeqdx
+         2R9fV0jwbWPSMAsKGFW7Mju9JAjcxmF15swUtCQdGd6lsAcksOxnGMT7UiqOTXbYkRpY
+         M/RLaeMLpC4+dTG7hC6bbcryp01RSHGg8+RKlMY2HOgGG9Ne2cOTQZpcaRQjTZhFUK+3
+         VbxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=a7qotuzDXU7tRMHMYUcGj25j4MwPZ2+w83VIsxxur88=;
+        b=mzlYHfnBt1E5kUGN+8FCFXzCLqhSqooV4qXptAq2vJIN7DrcniJNAFPAF+5bfk0gF+
+         St0oFwQM7uJTt/6a8QmQxtV9XhO9Wo/np6Id/D1tFEj7icZXoXtST/x2DnlrqNWiq4IL
+         v6Q828X46EzLUaHZull5lOJH9aK4tJW8adwKtKlAAIADuzlOt0QIwRZ7jRUpPVftYsmS
+         3vIgWmr684j5N4HKYQzC5exbuat043GD43lnhCFIuMvgDsqSiL6H2LvtVqGnVPt9/ZBr
+         jqtsshw+kby3pP6ITfJpkiT4TGlLX6m7eETKlCFGuBvMMI95tbcOQbJ29qcomY+nQFMJ
+         juiw==
+X-Gm-Message-State: AOAM531Hid7Rr6FGgqCk5/VfEIMyhdQ1GhbDTHVZ+z/C9kH5ocnZyhQR
+	bXVRJ2lPtB/n9vtJno+GwYE=
+X-Received: by 2002:a2e:8799:: with SMTP id n25mr593384lji.348.1603447592851;
+        Fri, 23 Oct 2020 03:06:32 -0700 (PDT)
+Return-Path: <eafanasova@gmail.com>
+Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
+        by smtp.gmail.com with ESMTPSA id w18sm93381lfc.5.2020.10.23.03.06.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Oct 2020 03:06:32 -0700 (PDT)
+From: Elena Afanasova <eafanasova@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org,
+	outreachy-kernel@googlegroups.com,
+	Elena Afanasova <eafanasova@gmail.com>
+Subject: [PATCH] staging/rtl8192u/ieee80211: replace kmalloc with kzalloc
+Date: Fri, 23 Oct 2020 03:05:07 -0700
+Message-Id: <20201023100507.4569-1-eafanasova@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
-The above is not the right subject line for this file (ie the part to the
-left of the colon).  You should use git log --oneline on this file to see
-what others have done.
+kmalloc() and memset() calls can be replaced with kzalloc().
+Found with Coccinelle.
 
-julia
+Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+---
+ drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-On Fri, 23 Oct 2020, Elena Afanasova wrote:
+diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+index 63a561ab4a76..fb8483c499b3 100644
+--- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
++++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
+@@ -227,13 +227,10 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
+ {
+ 	struct ieee80211_txb *txb;
+ 	int i;
+-	txb = kmalloc(
+-		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
+-		gfp_mask);
++	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags), gfp_mask);
+ 	if (!txb)
+ 		return NULL;
+ 
+-	memset(txb, 0, sizeof(struct ieee80211_txb));
+ 	txb->nr_frags = nr_frags;
+ 	txb->frag_size = __cpu_to_le16(txb_size);
+ 
+-- 
+2.25.1
 
-> kmalloc() and memset() calls can be replaced with kzalloc().
-> Found with Coccinelle.
->
-> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
-> ---
->  drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> index 63a561ab4a76..fb8483c499b3 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_tx.c
-> @@ -227,13 +227,10 @@ static struct ieee80211_txb *ieee80211_alloc_txb(int nr_frags, int txb_size,
->  {
->  	struct ieee80211_txb *txb;
->  	int i;
-> -	txb = kmalloc(
-> -		sizeof(struct ieee80211_txb) + (sizeof(u8 *) * nr_frags),
-> -		gfp_mask);
-> +	txb = kzalloc(sizeof(*txb) + (sizeof(u8 *) * nr_frags), gfp_mask);
->  	if (!txb)
->  		return NULL;
->
-> -	memset(txb, 0, sizeof(struct ieee80211_txb));
->  	txb->nr_frags = nr_frags;
->  	txb->frag_size = __cpu_to_le16(txb_size);
->
-> --
-> 2.25.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201023100507.4569-1-eafanasova%40gmail.com.
->
 
