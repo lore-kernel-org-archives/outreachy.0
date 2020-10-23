@@ -1,139 +1,123 @@
 X-GM-THRID: 6885028425195585536
-X-Received: by 2002:a17:90b:1881:: with SMTP id mn1mr12273174pjb.225.1604348892400;
-        Mon, 02 Nov 2020 12:28:12 -0800 (PST)
+X-Received: by 2002:a9d:2f09:: with SMTP id h9mr6083609otb.186.1603763465115;
+        Mon, 26 Oct 2020 18:51:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:bd82:: with SMTP id z2ls291920pjr.3.canary-gmail;
- Mon, 02 Nov 2020 12:28:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwMlAe9XMJmIw4Db0ses7z6qLjHZuRZ9x1y0er1wrgRl7FIGcCQ2ndg4Sayz/jCz3p+/205
-X-Received: by 2002:a17:902:ab89:b029:d5:b297:2cc1 with SMTP id f9-20020a170902ab89b02900d5b2972cc1mr23684827plr.7.1604348890904;
-        Mon, 02 Nov 2020 12:28:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604348890; cv=none;
+Received: by 2002:a05:6830:3108:: with SMTP id b8ls435726ots.5.gmail; Mon, 26
+ Oct 2020 18:51:04 -0700 (PDT)
+X-Received: by 2002:a9d:6c94:: with SMTP id c20mr6728937otr.151.1603763464086;
+        Mon, 26 Oct 2020 18:51:04 -0700 (PDT)
+Received: by 2002:aca:1002:0:b029:c2:846:c263 with SMTP id 2-20020aca10020000b02900c20846c263msoiq;
+        Fri, 23 Oct 2020 06:40:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwC/NBMAKvjGityPlhgpQw8PoSQ1r94lbE1HFFw+Gwb5ACIXRTZtx1m3+zlA8aqycuB5glm
+X-Received: by 2002:a92:aad5:: with SMTP id p82mr1668963ill.150.1603460437398;
+        Fri, 23 Oct 2020 06:40:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603460437; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mv1ZuBmWzmbMuMYBF94q6WE34QWoUmxp9Z2jKhJwiWvOnmupkQOkbkgSsYNqkLNULA
-         hUORpWEpDbNf1VNStTQZPHx5ySCk4DTOlM1Dx8HX5dZCwW+OtsD8ZXHDx9PrXQj2+o8A
-         sLqOYhJYkjdEYzxKgCK8K0Crf1AxBcH7lovvNMyRRo7BxHGZuhyW7kSbGW0vnloPWDc+
-         Cy+DG2KLWUq7LXA/3Y1uCxOgmEv9H9ZP1xKRTiMM0cg6LE6gaVcXNNKsxFoA9pZAtT59
-         EGHiPxLgqE4kdpp09Xkz4B9Tx02kZjxr/LiftNyNvJEbWfETCFMuqbShY9DBadSqGvmB
-         E+7w==
+        b=Ca6wksm44g2APdkg2KabZ2Atc1N0MgfdZOj7xC7WhmyIpluVaIYAM7L4qb+JBLpFjT
+         uh2u44bQRg6Kh92C9U3lmCG6aVxDUJ5TCLUyDfipSanM+Xy+HdmqqqNCbZ+S4AmAZ7J0
+         e2hjhPfl+D6p0i6v5ZqlBxnRZBYkULrtwpG2SOLvSxr9syiO50IW1JBnOOW1vS5DyILL
+         WOeLybZSpWVIKWcybsDR+X6W8opsTxEtG2ngREpuMsazh2+6RxAyDyv6RyWeq1Xi+qWh
+         8i3wQu//ckYn7Q2PnIeQW+Ow0d4deYuimGL3iggHL31bvj+r1FGP1u4lCC/dxmWK6DCg
+         wg/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=shSOapaXWmk+VRyRY+sBIgSLLrhqQvLB3xvEhIH968Y=;
-        b=FeZY2LGYVtslTmNMLTgdwd8/YT3LqYJRdXtljsxIu1h88C713/kHUcUvUsi3Li1mJR
-         2nC77XyNWMoyhzAyHlQequofJvlBPHTLE8nCGuzDajJAUomnapR5PIy7dnZzGpBgLGwa
-         V7kqEUsQ5GWC2THgn0ENZVKbk0e7Wgpy/6ydma4icEbLk7tSSxdf5dzzyLIMfdzcGvmT
-         Co8Oz1XN9cVLVqLhmwSBBH0SC+YK7QCG+WFUDbw2qm3XFTDWRwQrs3lLQbCcR+Ga4iz+
-         on4vN19xtgZ8eAPRnkXHKv9AAfG3ks+whS2erpctRP1vLmxSca37uSDHjBzXfXb6yaZ+
-         kZMg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=EE6QLq3H9vg8P7f+BmZLoNP2p9Lky1XXmxkG6HdEm3I=;
+        b=C1IE4AYFne7xvGwkftm7mf202Ttgd3LdZRspm9e7qgJCONf64e3rnXWEyKNjWor+yS
+         6sR5Xrok4EC737xObv/RUY187f5r9edmcKQBgl17tQA55oBTIo5V846UzVGN71YSbkIl
+         OPUhuVtpesB8l9yAzqOqRgVSWx8psZNUF28z8efY2TS3x6jsXMLGI49TbUO0dpmljcw4
+         B96cl888b/8H5UjSEkMtH4SURLvaXP5dpNWd8GkiNSm41A4fWFdZ3Cgca3XU6eFzZ+Gj
+         +5g3j/y7+vWufDNXQps9CPqnl6n93yL65tkYnDexjVA2reOGDqYiDjGN7saH/TTBh0AW
+         2Xow==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WuVFifbC;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JiU1TMwT;
+       spf=pass (google.com: domain of thesven73@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=thesven73@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id t126si1215611pgc.0.2020.11.02.12.28.10
+Return-Path: <thesven73@gmail.com>
+Received: from mail-vs1-xe43.google.com (mail-vs1-xe43.google.com. [2607:f8b0:4864:20::e43])
+        by gmr-mx.google.com with ESMTPS id e1si98818ilm.0.2020.10.23.06.40.37
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Nov 2020 12:28:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Fri, 23 Oct 2020 06:40:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thesven73@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) client-ip=2607:f8b0:4864:20::e43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WuVFifbC;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JiU1TMwT;
+       spf=pass (google.com: domain of thesven73@gmail.com designates 2607:f8b0:4864:20::e43 as permitted sender) smtp.mailfrom=thesven73@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id x13so12140085pfa.9
-        for <outreachy-kernel@googlegroups.com>; Mon, 02 Nov 2020 12:28:10 -0800 (PST)
+Received: by mail-vs1-xe43.google.com with SMTP id b3so873535vsc.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2020 06:40:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=shSOapaXWmk+VRyRY+sBIgSLLrhqQvLB3xvEhIH968Y=;
-        b=WuVFifbC9sMe3BPpt4cdgvotcFeHA0JtoU3tkzgT1r68jHlOi6q/3v8Iwd6YHxvZsR
-         5zxoBa9NfkmbTHpKzRYdUba7oAwIELOm6aT1GWuJ4HmUgCscj/tAVJq2+DxxlQRggI3W
-         9MHET3qTkSP09MK/yB4Pbdf4c7klgq6UwbchaV6L+2el3zgvIqd0QfaQzKey+sBKZZpM
-         9CLWqiuUeK6FYhxgSlFZCR3FXZSs/bOWvsI04mKj/PTi/hr8njY2bZ2lUzHe3w7z477o
-         5zcJEU6dtHmo+chrVtQh4k0gE7iOhOv+kC8uOVqvXT/f48GPCu96vrVGwLR4NkFgVzeH
-         wuzA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=EE6QLq3H9vg8P7f+BmZLoNP2p9Lky1XXmxkG6HdEm3I=;
+        b=JiU1TMwTOZyr549hsHq4nj275ztqDnBjn5qT92PKyxZ/RiQQICIEtw0Gj+P3gBteOz
+         j/UYsxINernPiTX3cK4bm1s/51ZnUU9Y37TBRnXB+VQizd8GRstD22Fpf4g1VKmH10zQ
+         8wk/s+9SOUaj7SGZflmObeZOWT7bqflpmdxjP9MQ1TjbYLPpRDCHBNgwtyD6f1biE7OL
+         pWKuu2fXMjmWkKFnds5WngwsgSnc85Q7/3xjgoxrAJ+SFga7EYlG1X3dqPDW6SWUyqBx
+         6b3u8sL4ZXz55JueBzresUlj2KLA6VuO87CgVRuwxGq9DOip8NibayeJIngO1U1aOdDN
+         1FLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=shSOapaXWmk+VRyRY+sBIgSLLrhqQvLB3xvEhIH968Y=;
-        b=i3eFXvRNAIIV9co4bJ0FeVNAH+SNdokruJpojSXaCYRQxvjhaXofl0wXvCPQO8tMyg
-         XzIwlFDD6H87ZAtFPEA1e+FIRU1IhLcQgph7FvSlA2fgRNOUnxfsAgPq1J+7Kro+nkaQ
-         YvvzdgQkfFzFMO+16qDGm2ee9NlXS7K0qN7a4jNlc8M3nI1cizR9jNgbCxrqn37YpOwh
-         tx2IX6ohzRNwNMqvkVVxpQO4UFZz6n4gJcGR1OLTC3jHgPH5Kx1TXdDxGAjfXkTNVt+k
-         8+nz/kGVPFHiwqhcc4zVeW+sGRdjHCRXZ3refZdahMTdqGnHYe8yzKV+NJ6Za1oyZlu8
-         b+9Q==
-X-Gm-Message-State: AOAM53127603GUX2KxAl11S6PvsjA6js2s1qUl7OIDLgnOQ4ydDWQQX3
-	+zSpmIwq1H8TPGbo/rr8UXc=
-X-Received: by 2002:a17:90a:1b21:: with SMTP id q30mr19277672pjq.58.1604348890674;
-        Mon, 02 Nov 2020 12:28:10 -0800 (PST)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from localhost ([160.202.157.3])
-        by smtp.gmail.com with ESMTPSA id e6sm14042140pgn.9.2020.11.02.12.28.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2020 12:28:10 -0800 (PST)
-Date: Tue, 3 Nov 2020 01:58:05 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Sven Van Asbroeck <thesven73@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] staging: fieldbus: Use sysfs_emit for show(device *...)
- functions
-Message-ID: <20201102202805.GA63429@localhost>
-References: <20201018182633.GA46761@ubuntu204>
- <CAGngYiVKiRxDHi_7Hbfy6FViFkS_5dV66nkV-apRsEoZ1OmHzg@mail.gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=EE6QLq3H9vg8P7f+BmZLoNP2p9Lky1XXmxkG6HdEm3I=;
+        b=lTfW75dIBhSWVZW4Lyr+d6kiM+oV5zK5dMK0MSOXQUvik7ruh+V1JfyrpHSCyWIiWX
+         ruGMh+OIrxWGjp0xm2K93iL4lqd5WvumLn3kDZmJDmgM3FmGVMmWDe6GxLCdsLkMvh5z
+         cYOMkONrQsuGpLH2qpLWcoqQ9dgG+OsKMSqEotxF+mntlP0XFkcVaYQH5SHY2BAbjRWa
+         bqHn6tuQpOcgWyGbUB17Utnw5X400c43FEHDQ3Q3PHYeTKwOCes47gP39qqphtPsNcka
+         cA+qoTa3EsiW49J6ngMH6kNeIa2eGfa4fPbSRbvWHgC3/mDMPKuMO5CjCiEWJkftbZe1
+         g9hw==
+X-Gm-Message-State: AOAM531+T3lrV0ibkgMu2wkL/veigK2L4q3P+NHuw/WVxT8AfMWSghr3
+	lGfdmuxawt0iIQ/x5a/Aos05QGrX+HS5IcailCXM7sFo
+X-Received: by 2002:a67:cc2:: with SMTP id 185mr1437733vsm.42.1603460436985;
+ Fri, 23 Oct 2020 06:40:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAGngYiVKiRxDHi_7Hbfy6FViFkS_5dV66nkV-apRsEoZ1OmHzg@mail.gmail.com>
+References: <20201018182633.GA46761@ubuntu204>
+In-Reply-To: <20201018182633.GA46761@ubuntu204>
+From: Sven Van Asbroeck <thesven73@gmail.com>
+Date: Fri, 23 Oct 2020 09:40:25 -0400
+Message-ID: <CAGngYiVKiRxDHi_7Hbfy6FViFkS_5dV66nkV-apRsEoZ1OmHzg@mail.gmail.com>
+Subject: Re: [PATCH] staging: fieldbus: Use sysfs_emit for show(device *...) functions
+To: Deepak R Varma <mh12gx2825@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="UTF-8"
 
-On Fri, Oct 23, 2020 at 09:40:25AM -0400, Sven Van Asbroeck wrote:
-> Hi Deepak, thank you for the patch.
-> 
-> There are many other sysfs show functions in this driver that can be converted
-> to use sysfs_emit().
+Hi Deepak, thank you for the patch.
 
-Hello Sven & Greg,
-Is it okay for me to now change other show functions as suggested for 
-this driver and send another patch?
-Just want to confirm since I will be sending the patches from the linux
-next tree and for the staging driver.
+There are many other sysfs show functions in this driver that can be converted
+to use sysfs_emit().
 
-Thank you.
-./drv
+But, the perfect musn't be the enemy of the good:
 
+Reviewed-by: Sven Van Asbroeck <TheSven73@gmail.com>
 
-> 
-> But, the perfect musn't be the enemy of the good:
-> 
-> Reviewed-by: Sven Van Asbroeck <TheSven73@gmail.com>
-> 
-> On Sun, Oct 18, 2020 at 2:26 PM Deepak R Varma <mh12gx2825@gmail.com> wrote:
-> >
-> > Convert snprintf calls in device show functions to sysfs_emit for
-> > PAGE_SIZE buffer safety.
-> > Warning generated by: scripts/coccinelle/api/device_attr_show.cocci
-> >
-> > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > ---
-> >  drivers/staging/fieldbus/dev_core.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/fieldbus/dev_core.c b/drivers/staging/fieldbus/dev_core.c
-> > index 1ba0234cc60d..698d7b479270 100644
-> > --- a/drivers/staging/fieldbus/dev_core.c
-> > +++ b/drivers/staging/fieldbus/dev_core.c
-> > @@ -70,7 +70,7 @@ static ssize_t card_name_show(struct device *dev, struct device_attribute *attr,
-> >          * card_name was provided by child driver, could potentially be long.
-> >          * protect against buffer overrun.
-> >          */
-> > -       return snprintf(buf, PAGE_SIZE, "%s\n", fb->card_name);
-> > +       return sysfs_emit(buf, "%s\n", fb->card_name);
-> >  }
-> >  static DEVICE_ATTR_RO(card_name);
-> >
-> > --
-> > 2.25.1
-> >
+On Sun, Oct 18, 2020 at 2:26 PM Deepak R Varma <mh12gx2825@gmail.com> wrote:
+>
+> Convert snprintf calls in device show functions to sysfs_emit for
+> PAGE_SIZE buffer safety.
+> Warning generated by: scripts/coccinelle/api/device_attr_show.cocci
+>
+> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+> ---
+>  drivers/staging/fieldbus/dev_core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/fieldbus/dev_core.c b/drivers/staging/fieldbus/dev_core.c
+> index 1ba0234cc60d..698d7b479270 100644
+> --- a/drivers/staging/fieldbus/dev_core.c
+> +++ b/drivers/staging/fieldbus/dev_core.c
+> @@ -70,7 +70,7 @@ static ssize_t card_name_show(struct device *dev, struct device_attribute *attr,
+>          * card_name was provided by child driver, could potentially be long.
+>          * protect against buffer overrun.
+>          */
+> -       return snprintf(buf, PAGE_SIZE, "%s\n", fb->card_name);
+> +       return sysfs_emit(buf, "%s\n", fb->card_name);
+>  }
+>  static DEVICE_ATTR_RO(card_name);
+>
+> --
+> 2.25.1
+>
 
