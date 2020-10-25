@@ -1,117 +1,96 @@
 X-GM-THRID: 6887485179824177152
-X-Received: by 2002:a05:620a:22c9:: with SMTP id o9mr4295868qki.286.1603763465148;
-        Mon, 26 Oct 2020 18:51:05 -0700 (PDT)
+X-Received: by 2002:a63:3543:: with SMTP id c64mr10849455pga.380.1603617607525;
+        Sun, 25 Oct 2020 02:20:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:68d8:: with SMTP id d207ls5479084qkc.7.gmail; Mon, 26
- Oct 2020 18:51:04 -0700 (PDT)
-X-Received: by 2002:a37:4c13:: with SMTP id z19mr17668385qka.23.1603763463960;
-        Mon, 26 Oct 2020 18:51:03 -0700 (PDT)
-Received: by 2002:ae9:c006:0:b029:102:b6b:b400 with SMTP id u6-20020ae9c0060000b02901020b6bb400msqkk;
-        Sat, 24 Oct 2020 20:23:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXHXc3V2QIyxqyPv6yJ9U/2sr+8YcvdljBK2gvPS9SdP5yaOZ33HIi1jlougsOPoDgfua7
-X-Received: by 2002:a25:e710:: with SMTP id e16mr14318760ybh.429.1603596214614;
-        Sat, 24 Oct 2020 20:23:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603596214; cv=none;
+Received: by 2002:a17:902:b114:: with SMTP id q20ls2962790plr.5.gmail; Sun, 25
+ Oct 2020 02:20:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTuokLcV+3Xo1WC6MjgJBuvnMnGM9PMxkPpW2hUfsvau5maB8ewVFY4pjq8iWMHbjO6Pll
+X-Received: by 2002:a17:902:a609:b029:d5:dde6:f135 with SMTP id u9-20020a170902a609b02900d5dde6f135mr11709438plq.75.1603617605912;
+        Sun, 25 Oct 2020 02:20:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603617605; cv=none;
         d=google.com; s=arc-20160816;
-        b=za8q3LeMqJdOIGPz1AwPbicU8mVnOV/wtpy8lIynuGTogKOdpBZEAnQXmKxSxXmoUJ
-         uvmrJzeIiYSYrd/yBz8t66Hln1hC6IPl1tBNCYV0fgskkmTW+ptwcb7AF7MNDEI2szGW
-         WRJaGarTJ+kiZjBIpyHyF9N+b81BsmnxqO5CjxxZpo3V0u2Sl13ZLTXMwxkDgmiWhTKh
-         ZWQjSb5DhMmzX/6xS8tFjwoqzqDWxAvRBvGvrPuowmkK/cO9Wri2LpKW+BLIqQPJtBbg
-         jza670w9dQNaTsy6E/Ps4HHmqiiOKUqgNfhP80IZq0Yk0cAOtumBqXnKa4glWxzoyZWw
-         n+9g==
+        b=ekOc/uBiVYTF/CdXiP7vOVtlWhwJXXM5ViIgiQxcjNs9XNymdTz4KS/ts2GvGDVStl
+         cHUnQykXGOd1P8k+eoFHsTAu71hlbeMM6KJyjbV4pSN0jfNwcL6YPJyATD90c5zkNhmk
+         IjnyRkg/ziXofzSZ4G3qRer/qHU96AuTbldzssyFCoa0g4gDRuhiX4sNHtt/9MEbAjov
+         Gj9p8At7tMUtr2z4FR8PXfvo/z85BiZq9jeo7d1uJXd8jYmGyDrGEvXg8VpZniV21nQu
+         p463Szl8ZLdwnSHpCJ1l1ddk4SCx2PaVe+M3d+AN9KTHlm6TnJ3rTQM0OwEw5UON/JWs
+         Bmcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=NxWdiYhpqirlzaecasBm03ut7b9qF+Viawacdy1irig=;
-        b=Q8xPYEYxx1u53G3y93tKi52+qXwv5G62BAWNuDB4M9bpQMSAUfwoBFXApfa4016La7
-         po8i1M0HY+x7sePtL3MGtQFplB259x01G9pnQM4dof0Bo1URoFJ+zxnqPCjYUwVPAENT
-         fz445wAV64vkLbcxd/6S40lu2Nl03G0xLx7lcRYJGFsZ5kALgWIJSuWVhLBBjrUz/RkZ
-         HgHhwq0I4zxmQPcLb1YHh4D2I7YNREEWHhIXS6pWdESUhtnsBroBIO9lix3WB6llUcIn
-         YxWXLe/dtABHufrKrAcTR+ALacHcdNN9FfU5Xyo32ca8xUlKpE5A5E7P2PkUNgrjmALy
-         21zA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=s7P5H+naZR99jPpdN8jGkFYdSTrZSsYrh1ziSvtsPug=;
+        b=IegF7Db5hTSqVaexAQWl6DubF9bFflkbc+NNNghQNgdI+xdJTHKVxCgFdbweH1ND++
+         cxt92921WtrQNfp19Cxs5P7bo4tVgcNON3EGj4jX3+B56mOhy+x8HjBfWxNGCZkRA8eh
+         bj1gcy7BqJDqbfdzgb3Q10JEKYE8Mz0SDFA8zQ0wLFYJb25/FBvMJTz2It087l7VXrEi
+         7Pg8Vo3NT7UM8tPUErNMrChIvqrrM9ck+6U+PXe2vQpROUZIYY45D9BqF7s4T+GC9E/I
+         hWtjnoEFPVcoeBw/nA+hapXiTuxlG6xc2JDvwQCqZUSMaF2joIsOAROtE9sMTP72IMZx
+         ZeQw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lVR4OSHx;
-       spf=pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=mdejesusfilho@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mdejesusfilho@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id i188si310887yba.4.2020.10.24.20.23.34
+       dkim=pass header.i=@kernel.org header.s=default header.b=S0jEql4u;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id ce12si121434pjb.1.2020.10.25.02.20.05
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 24 Oct 2020 20:23:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 25 Oct 2020 02:20:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lVR4OSHx;
-       spf=pass (google.com: domain of mdejesusfilho@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=mdejesusfilho@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id h2so2986881pll.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Oct 2020 20:23:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=NxWdiYhpqirlzaecasBm03ut7b9qF+Viawacdy1irig=;
-        b=lVR4OSHxRatv56xYRzROBOZoRhLFvcN9KWehZKrWtFpDrxgAhYSEqTVCo3+nzbFsOQ
-         myUhT7TxiIZaTA2GLuH3NxFqgqkTReLbmEisJr1FrWRkq3v7yZLwdyz3HN110a492K7J
-         NvH5WA5fhK4KiWZ3p1sGlDNGa3TOFsEh8tyNceIP2hrLlYjrTCdyZ7dai/kjKMMM8/gi
-         jd/2EZewM/tZFnUHLr8DpjXUSuXyZhmE+TO7O22FAkRjR2IHOX15bOrywjr8oadzKJn1
-         9+6bN/njjF8ZkAwXp9ulM1kb/O8wXukIUu6IoWdWEbXLKJE7uvxPijiVERmYjFbUzsyE
-         Aq3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=NxWdiYhpqirlzaecasBm03ut7b9qF+Viawacdy1irig=;
-        b=Pb0u5wWxf67OPR5qLViEGj8QYsh/FqwlvLE07cZJdd8yi1IOxi1QQsxkxcdt+6jFeA
-         nuos5oy6yEK5HiEW2ABMkOp9/bSIsWavRoipw0CPNkUMFHrH4auXWr19JqjP2E3W4FCu
-         zwEi69OhFwbN6hpsifmUVedqQJZ+97zIn/o76ksRETJr/uWNHKC9aiNE3AybWP2cuq9C
-         GsOgDK5J5zHDNK6IKaBbTaGxBGfvt84r1AIxG1tyR5I0nq/HE4Rkhip/AaNZYVTLdI0X
-         BTQ0fEIossI8TJy6tRQxXXZLd2hd0vMNHIDn4UaFrdv3MgaO3RtcYaZXAaMFgS7x5LCP
-         cLUQ==
-X-Gm-Message-State: AOAM533l/+tdC3vMsXqrfO8WDK2HPL6M1gtkG8z9dov9Du9z9WHuGdLI
-	trsVArryqUZPrPQU2Hs5qtAWsdkO7lFzI060
-X-Received: by 2002:a17:90b:118a:: with SMTP id gk10mr9665519pjb.218.1603596213998;
-        Sat, 24 Oct 2020 20:23:33 -0700 (PDT)
-Return-Path: <mdejesusfilho@gmail.com>
-Received: from localhost ([2601:643:282:4810:aed1:b8ff:fe8c:bd73])
-        by smtp.gmail.com with ESMTPSA id x10sm7515198pfc.88.2020.10.24.20.23.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Oct 2020 20:23:32 -0700 (PDT)
-Date: Sat, 24 Oct 2020 20:23:31 -0700
-From: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+       dkim=pass header.i=@kernel.org header.s=default header.b=S0jEql4u;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id 1D80A22259;
+	Sun, 25 Oct 2020 09:20:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=default; t=1603617605;
+	bh=/u2THIbzCziZYJskxYNAH6OqRMyajJIdkPeZ6itsEvA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S0jEql4up5zE3gDlUWriHtul6IlBjNIigDjohajesVqCgJW7SwKikr/G9uAcb5+R7
+	 Im163IeOQCWOke26kug3Ia5PiFC3FRe5uvbdsnMy7vWkw79F54f8uiA/x9/UsudM48
+	 tWC1i518+weeqRhaeL7jDyIp6TN7dZIF8jfZaios=
+Date: Sun, 25 Oct 2020 10:20:02 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
+Cc: Forest Bond <forest@alittletooquiet.net>,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: vt6655: Break multiple assignments in one line
-Message-ID: <20201025032331.GA9095@Zangetsu>
+Subject: Re: [PATCH] staging: vt6655: Break multiple assignments in one line
+Message-ID: <20201025092002.GA107423@kroah.com>
+References: <20201025032331.GA9095@Zangetsu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20201025032331.GA9095@Zangetsu>
 
-The kernel coding style disencourage multiple assignments in one
-line. Split this multiple assignments in one line into single assignments
-in multiple lines following this recommendation. Issue found by
-checkpatch.
+On Sat, Oct 24, 2020 at 08:23:31PM -0700, Marcos Antonio de Jesus Filho wrote:
+> The kernel coding style disencourage multiple assignments in one
+> line. Split this multiple assignments in one line into single assignments
+> in multiple lines following this recommendation. Issue found by
+> checkpatch.
+> 
+> Signed-off-by: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
+> ---
+>  drivers/staging/vt6655/device_main.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+> index 09ab6d6f2429..ec73b4ac82e6 100644
+> --- a/drivers/staging/vt6655/device_main.c
+> +++ b/drivers/staging/vt6655/device_main.c
+> @@ -670,7 +670,8 @@ static int device_init_td0_ring(struct vnt_private *priv)
+>  
+>  	if (i > 0)
+>  		priv->apTD0Rings[i - 1].next_desc = cpu_to_le32(priv->td0_pool_dma);
+> -	priv->apTailTD[0] = priv->apCurrTD[0] = &priv->apTD0Rings[0];
+> +	priv->apCurrTD[0] = &priv->apTD0Rings[0];
+> +	priv->apTailTD[0] = priv->apCurrTD[0];
 
-Signed-off-by: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
----
- drivers/staging/vt6655/device_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+The original here is fine, you can ignore this checkpatch warning here.
 
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index 09ab6d6f2429..ec73b4ac82e6 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -670,7 +670,8 @@ static int device_init_td0_ring(struct vnt_private *priv)
- 
- 	if (i > 0)
- 		priv->apTD0Rings[i - 1].next_desc = cpu_to_le32(priv->td0_pool_dma);
--	priv->apTailTD[0] = priv->apCurrTD[0] = &priv->apTD0Rings[0];
-+	priv->apCurrTD[0] = &priv->apTD0Rings[0];
-+	priv->apTailTD[0] = priv->apCurrTD[0];
- 
- 	return 0;
- 
--- 
-2.28.0
+thanks,
 
+greg k-h
 
