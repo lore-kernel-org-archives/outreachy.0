@@ -1,94 +1,111 @@
 X-GM-THRID: 6883028084998537216
-X-Received: by 2002:aa7:cb8f:: with SMTP id r15mr1315865edt.356.1603791823119;
-        Tue, 27 Oct 2020 02:43:43 -0700 (PDT)
+X-Received: by 2002:a0c:a046:: with SMTP id b64mr15356957qva.55.1603735423127;
+        Mon, 26 Oct 2020 11:03:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:c04e:: with SMTP id k14ls924620edo.1.gmail; Tue, 27 Oct
- 2020 02:43:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxywiqLCitqd3mRSsZ9u9zk/mOkGkb11ZfhPPv153H63DDxYOJWPMtfAGINWxKAGzDHBxF+
-X-Received: by 2002:aa7:cf99:: with SMTP id z25mr1297586edx.139.1603791820851;
-        Tue, 27 Oct 2020 02:43:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603791820; cv=none;
+Received: by 2002:ac8:2c09:: with SMTP id d9ls1760548qta.1.gmail; Mon, 26 Oct
+ 2020 11:03:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCZL7KQc99DBGUEaej3EbekVdi0mNLkuwp0tcAyAo0Z80/1slNq2BgwAgegFjLPd7pdizP
+X-Received: by 2002:ac8:46c1:: with SMTP id h1mr18600070qto.361.1603735421464;
+        Mon, 26 Oct 2020 11:03:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603735421; cv=none;
         d=google.com; s=arc-20160816;
-        b=yYg/ExE2JPWvnTLbWFhT86vZUwwLwWT9THJZASSsCKDM3/fI5CmJeqlo89Uc/WBoHo
-         1xvR4OzU1sny5eapC07w3j+pc5xWC3RizGKniI1KW2R0yxTYQW6wzJ8C41l9JsH1y+mP
-         mX8NY41gQ4IIg4SZZudv3xhtGtCdG8QCXkbtobsz9p53qH++M8njZBFLyGW06YbkubDr
-         mk2WaFVACrxxK3e+nucINo7FuCSeY/39mBwN3gcNlnMpm/I0zvJgFQKFSJ31KopZs1At
-         uNhR/JwpavHLwSkO/w/DCbZlA0KVgoSRezBOqmUiaxE6fiTnGfXs7NQPpv4+8o2ZPtcP
-         aRCg==
+        b=ruDylEyTOHSDn3BCRsHocz5oNXqADRpAztAKzvpUmVsBJXkGnZzHJ9rzl6EMqccfX3
+         6b0BBBjkepRP/YV0bo5zLbJFI9WD1mcVh1j8GO4uaeABCiTjyqhcwuippw5AAY+Pm8Dd
+         xPggsXiL6Kt2ALZMwTRxAP8ZDNE0urVx142dF3eDP3G8lvJFVUpQB6tCFhhaKjFHSVoO
+         3fROLZmVpTylZbhMXJ+mAlNVfn7J9OHctzyNuBv84HoQ7a6xd7FzmNZh5bCkdzPltds1
+         wO8SO17y6JextBloG8P7rO4G2EymV9jyoqzFOzEaL0mxiGWjS/PmRVlYybFOKUywTBd9
+         pZOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=7OvPOOfouHzaQwZRc3tsjxhY1NbEiPztHNA6LhXeztg=;
-        b=nylX0AE3Gk1LCM/Fnl6zRHEZvXbgLb0FQLPcGh8kDK5YY/EE6zf8KDTMh+irZIaoZ2
-         pl/UtwLVZV1BEjFFx5biDVZrLS3QPTwZQ8E4cwfJxMrMS7pT+ZVQANTiRwBtadUh39bC
-         hITFO8GSOOn5EpTBnGK8S651FB5H0S4QqhYCEZB2YQS2P9/AOwJegsjYHpOuxjCtkA2J
-         5JS3ABLLgaJF9QW9m11u+CxtGNrSZFaHAE16Wp81Hka3afsTBZiyziLxEDA4gNa1eCQO
-         XUjo6XMb42BWsofQuchYSFWwvRpxASd7TpMd1m/g9IaMfLslwAEZJa5kA5JoSsrEEmYP
-         wK+Q==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=n2uQ0vigAEM39YlPyZqi5YNmE49gfR0uIARRUvCUItM=;
+        b=0trpgVLiNDTFQnHus0gLJQMAcdKqE2nXfyRksjgCZkK0sQmtxRdcw5o04dvMkCQWoi
+         JngCLwlzCpi57Cqoe9ct0Podyk/7PqMKjDGuuYkxpUlWUV5ZI6O8OK9hG5Uo0ld9+VLO
+         XK0Tk0i+lo8V5hwl1YfJzauJHxsIZ5NmVZJgRy7+22MxIwC6rlasN0Mj0O3nvtHIk3DH
+         i3YSDQZYJl1cP0GJjoHuXuIjAjsqZFNsrt6v1PWE3Rby+/ImGEmg5N8/IGNdOts4cKNm
+         WSVG+WHxyN97cw8ApKVekqqjG2ckfetyGEEy4ZbEiJbasCsdlBKWPK82ubJqvIr/zmS5
+         VSFg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s1 header.b=Ce5c3gri;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net. [194.109.24.25])
-        by gmr-mx.google.com with ESMTPS id u2si33564edp.5.2020.10.27.02.43.40
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gL7ODUbR;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
+        by gmr-mx.google.com with ESMTPS id b4si124916qtx.0.2020.10.26.11.03.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Oct 2020 02:43:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) client-ip=194.109.24.25;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 Oct 2020 11:03:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s1 header.b=Ce5c3gri;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud8.xs4all.net with ESMTPA
-	id XLVwk5zHLTPdiXLVzksttd; Tue, 27 Oct 2020 10:43:40 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
-	t=1603791820; bh=7OvPOOfouHzaQwZRc3tsjxhY1NbEiPztHNA6LhXeztg=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=Ce5c3griuE3rq7Hm1ZJXguo3ZHYTQFgMf+ACLjGIanmZSAghtnMgveq0Tj/ydvKBu
-	 75K33Le8aM52XKP+gplF5hHMIksLNgvCgDJTA69pfBGGydphXGzd/tdhcNM9m9sAFD
-	 umlEgP2Vsxckoi82cafPuZ+R0XVXhXYexywSLrtvnIceCOijEHikktoYaCMIxbwgj0
-	 MpnfIlKteD9Q7v1FB+IquSPFs2mDizWMkLhUL4IoGjGpQZjbQwDuudM512+mMzT8iI
-	 2jVgV+pzEkUwvGvyY4enISeiZGS0VdSmcsHEvgWcZmmXWOO/FJYlScrc2/yrKi4Oak
-	 /VNTQnI1WwFbg==
-Subject: Re: [PATCH v5 1/2] staging: media: imx: remove commented code
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Deepak R Varma <mh12gx2825@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gL7ODUbR;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x641.google.com with SMTP id t22so5099148plr.9
+        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2020 11:03:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=n2uQ0vigAEM39YlPyZqi5YNmE49gfR0uIARRUvCUItM=;
+        b=gL7ODUbRzRw3GJNYGC6DcW0HY4M5gv36vX/gGdbfZmihFiwJYrL1ku0C6alsCKG5Ts
+         ZSGL/Zajh0DhacTCeILzg9490yqkUEoxULKwzt6q69hapPOiLUZZ36efq9am9GtpXyyK
+         Q7OdrcMk9UrnmpkYNjS0wDRa3jOP7kV6TY0QxMwXSlB5lz3YKeWETIlUJnAeXh0z7zZK
+         C+14SQrRCr3oUT/isIlN8S6BPbh4DinOA3nRyd9NTJSZK/pvbtuNRxMBcinG9pLjA/OH
+         2uzisgqLcvkcalay6+eeCqelNbCW69L1mgwNWQ5+5/8QwkG7KQEDueDh63m8D0mlF/wQ
+         I8pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=n2uQ0vigAEM39YlPyZqi5YNmE49gfR0uIARRUvCUItM=;
+        b=fe0jTU9KwDF/gKspWooUHj6EOBNQeuOBZ3Yavd+kzklR1qsfpWa9m6LcaL7u1ZvruH
+         KYQCuZ3JnWgDpdzq6JI+6ugdPVgm2isDPcer6OVPPrB8LXf0HGaOG5za6HuLE4NcMo5p
+         t/P5orhRVTbmEnPDEVqHgRUBSxbp5Vt71dz4JhcLBvTXSyLn0FW/cOmECpWzlcHZEUsn
+         izNZ3JxKRv+IrJS7DfhUSBj+UoQKGCCR3T+L9q1naYBYcOvN5lnIarZdzzvCzioSmKjI
+         4xiOrSVKO9A1eBWqbTcnCVeqpbRvESCaUn8f/PoyV1opa7EAbpXPCpOXGcOVzk5S4n+N
+         JNag==
+X-Gm-Message-State: AOAM531Hm7oqYgyRHWdPiz5nkV+qRqOscCM04MQyrYsvKtYH2w4IlR5B
+	G2ULq7qL8M5kNkXdCaH/NBc=
+X-Received: by 2002:a17:902:143:b029:d2:564a:5de8 with SMTP id 61-20020a1709020143b02900d2564a5de8mr15223245plb.74.1603735420723;
+        Mon, 26 Oct 2020 11:03:40 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from my--box ([103.108.75.206])
+        by smtp.gmail.com with ESMTPSA id e20sm12101465pfi.30.2020.10.26.11.03.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Oct 2020 11:03:40 -0700 (PDT)
+Date: Mon, 26 Oct 2020 23:33:34 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: outreachy-kernel@googlegroups.com,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- linux-media@vger.kernel.org
+	Steve Longerbeam <slongerbeam@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>, linux-media@vger.kernel.org
+Subject: Re: [PATCH v5 1/2] staging: media: imx: remove commented code
+Message-ID: <20201026180334.GB6047@my--box>
 References: <9fd1e7dd9e8f944b520f2a789e66e458aeb7b555.1602869338.git.mh12gx2825@gmail.com>
- <20201026040017.GA5074@my--box> <20201026055631.GA779791@kroah.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <81449e51-957e-9478-5146-9c467248ccd3@xs4all.nl>
-Date: Tue, 27 Oct 2020 10:43:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ <20201026040017.GA5074@my--box>
+ <20201026055631.GA779791@kroah.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <20201026055631.GA779791@kroah.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfBckpXBuqDk++qNrP/DL2fhtT53LWzR/R0H3WH/Yh68JaQqDu0rrcpYSVqhFm37W2WbSMRXIBPZK1MYD+6zcIdIVEaR157OHYDnN4BndhFYlUsEB5N4R
- FdbldL2NBZ3CKC9SgECWB2fw0TstvvWEI03+QAI51tf/pAYVI9tP1l+esggEoR27MidNLJUQj8ZtWiBLIkG0vahKZHjDAELnBs16KgUMQiKOiHwc9mHlkv7j
- GfWCF0al32i9gSOxY5S5MeOjFa2+STT7znfn8TQZQQumSauGldGNAq8hSwKtSmr4MhvmOa1rXWlr5lt84zHPM+ZO914QKt3eLZKkGlffJHz+QWzw+Dq16WET
- axiHwZQfJf2NtDUFkGyfFLEO9U2kWSNr8oemLkCVdPvstE+4JdGIAC01QIqNw5pxbkzOkm3aj7hfkmcrk96qjU06S85sCdQ3zMuBmwm5aPnoeeAUeoReV6ji
- Wh/6GDQYbEw+i6teGfbti5YCJDTsmuVKb8q8WglH6mxLRxlBd8bXfU5D54mnQP+ur5IqPWorzlyrV1wnh21zCpiw6xti7Aj8ha6cRw==
 
-On 26/10/2020 06:56, Greg Kroah-Hartman wrote:
+On Mon, Oct 26, 2020 at 06:56:31AM +0100, Greg Kroah-Hartman wrote:
 > On Mon, Oct 26, 2020 at 09:30:17AM +0530, Deepak R Varma wrote:
->> On Fri, Oct 16, 2020 at 11:10:33PM +0530, Deepak R Varma wrote:
->>
->> Hello All,
->> Request for review / ack of this patch.
+> > On Fri, Oct 16, 2020 at 11:10:33PM +0530, Deepak R Varma wrote:
+> > 
+> > Hello All,
+> > Request for review / ack of this patch.
 > 
 > Please never top-post :(
+
+Apologies. Will keep this in mind going forward.
+
 > 
 > The merge window only opened up a few hours ago, give maintainers time
 > to get to patches (like 2 weeks now).  Also remember, for the outreachy
@@ -96,10 +113,17 @@ On 26/10/2020 06:56, Greg Kroah-Hartman wrote:
 > longer to get reviewed and accepted, as the outreachy documentation
 > states.
 
-As media reviewer I've been very, very busy with other things for the past 3 weeks.
-I plan to use most (all?) of next week to catch up on things.
+We had both the patches review acked by Steve L. However, they did not
+make it to your list of accepted patches. Hence was checking if there is
+anything more needed from me to have the patches get onto your acceptance.
 
-Regards,
+No problem. I will wait for the normal course be followed.
 
-	Hans
+Thank you as always :)
+Deepak.
+
+> 
+> good luck!
+> 
+> greg k-h
 
