@@ -1,107 +1,123 @@
-X-GM-THRID: 6666118349921976320
-X-Received: by 2002:a17:906:14c2:: with SMTP id y2mr2464287ejc.11.1552076626012;
-        Fri, 08 Mar 2019 12:23:46 -0800 (PST)
+X-GM-THRID: 6887256226213658624
+X-Received: by 2002:ad4:5901:: with SMTP id ez1mr11308312qvb.56.1603680750054;
+        Sun, 25 Oct 2020 19:52:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a50:97e2:: with SMTP id f31ls2630508edb.0.gmail; Fri, 08 Mar
- 2019 12:23:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxECKkYljg0SUpUDIXUhwVMO90WX7C7BkeeH3xn+vPApK6SxpfCXI/nfsuOUzxIw1aGJ4uG
-X-Received: by 2002:aa7:c758:: with SMTP id c24mr5897750eds.2.1552076625065;
-        Fri, 08 Mar 2019 12:23:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552076625; cv=none;
+Received: by 2002:a05:620a:1352:: with SMTP id c18ls3845049qkl.5.gmail; Sun,
+ 25 Oct 2020 19:52:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxanlInxuvhamMmv3Vlpc/uXIcKR4bO2Y5i2ppws6MTbvz5+a6doO0o7/FTd8Jw+B2b1Gvk
+X-Received: by 2002:a05:620a:99d:: with SMTP id x29mr15715131qkx.415.1603680748781;
+        Sun, 25 Oct 2020 19:52:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603680748; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lsrd4h5B2Z9JBVoKy0h5IIlgVDU46qlRGBHuhPJy7AIayZgZ53rt7IWR/b5wOql4dB
-         rTr8Oe6Rsu81uKlTVI4l6KA4J1rZoouM9a33ap8RQa0Wh/9CO/IwxDZ+mviNQUxizH1m
-         Z/o8Q3gB9YtVZUvVCiQ0YvgGzf1C+NM+Fu+SZ/ccPfwG9P8p/ThxvXmqOOoE6NtHDaJZ
-         fQqD+gWyM5iPuU187hneJA3nQjl8dq3C0XlmWtzLsSlKQtXn3JUu+mjydJ220EdDuZZz
-         fUVlzLuEfsOrqs2A5x6sa7BHBGxIFTY2wj1jTGAZnaQ5Kaa0WQrYfWg2M5jdsKVl0bpn
-         NdMg==
+        b=JEhqs5F8psyxoRCVvCLK6V+JyaFNGxuF1SsKVfidNWl5gHESZd+g/O/CFG7nqb1aDx
+         4K+Sp89eqI2wO6Tw4OSgZ04nQf42p9HmLU0fbyHBr/0V630dDkWoEdWhuyBYgSNN53KG
+         MiE591qN2uBPUFEfnnmgtiBu0+Y5FsZBTEejEDTH3XHXdu9BZFTSU6clXctc4LbYkNTD
+         a/6dMETcsCktZyxvse/IpNbpoCrICdMeKMZIKgVIhpcNTQZ9WsPH2KE4hevMeizJDnP5
+         1alr+faTdyG3ySBoaELxFBZ5EvL0IWMm5kuCAppSFooHszJqdg9alzfWxR4g3yBMXPBu
+         nh0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=dADrW7m3DTKneFXkTDGSa9t7sweAxj9qEUUQ8LdpZJk=;
-        b=LZmq63quh9ccsBENoYooAcPZkyTrKfS5IoDucBhZw+vfINwf6l0dK0tkLlfEIpmEuG
-         Amw6BfzhTNswDdE0RQsr+9onH5uhnXbPrZLEUIWV1kxFUBhOPVUpetpVbha2cFMQREpj
-         UV9WcPMIMrp8V/MD6UOh9yiaeHzgrmsP0QDu9fGnN122igc7c/ZDMB2qmYT830MI6Ufa
-         751Pmi7FPm+thPHiUz9E8lObBjSOhkVZPkOGOe7h9USX+MK+kHWHdrWo8gp+0MSkRQG6
-         RyeTpoGj80SklPQQjHw+i675IOTMkJ5lHh9T1gSy7gYVCWB1Qm+zzSvjqlWSwrrsw4d7
-         AP3Q==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:to:from:subject:message-id:dkim-signature;
+        bh=OpRLJwKSpNEB0/I8kf7g8GZ3BpP19j+sJjPqsrex6y0=;
+        b=A14JDOpyqJf5zsGqcgaJgxs3EPPcRG5c614SVtxa6HnFwfJZoXPLBWtqX+bcaSFi2X
+         uKGG6iIh2jbcTRAhrf6+3b3/zQrKOLbAT3mFiYGMMAxx8rugAUSPArZHFiq5woopcNqy
+         VtOjHp9CiCM2Xcaah7ZgSWgMpNfo+hyq4ox/Xrm2uT3H/fJV7ItF9UF9kDK30WYi8gRj
+         cqHfz1AO9kimRBfCH0UypifJdNsS+3z+c0lPaSFSJ2AyX2l3qNru4A7xzTgN5G1VHQ3C
+         5xunTxt1EwGcbawBXnl0aOEVvXj3R6RJKbwaBEZD+AE9ejY909y36g5RY58fxZ89a2dP
+         sFpg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KGhrYGSn;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="NG/oBL8z";
+       spf=pass (google.com: domain of amarjargal16@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=amarjargal16@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com. [2a00:1450:4864:20::341])
-        by gmr-mx.google.com with ESMTPS id r37si455479edd.2.2019.03.08.12.23.45
+Return-Path: <amarjargal16@gmail.com>
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id g19si614971qtm.2.2020.10.25.19.52.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Mar 2019 12:23:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) client-ip=2a00:1450:4864:20::341;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 25 Oct 2020 19:52:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of amarjargal16@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KGhrYGSn;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::341 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="NG/oBL8z";
+       spf=pass (google.com: domain of amarjargal16@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=amarjargal16@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x341.google.com with SMTP id o10so9687065wmc.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 08 Mar 2019 12:23:45 -0800 (PST)
+Received: by mail-pg1-x543.google.com with SMTP id i26so4935418pgl.5
+        for <outreachy-kernel@googlegroups.com>; Sun, 25 Oct 2020 19:52:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=dADrW7m3DTKneFXkTDGSa9t7sweAxj9qEUUQ8LdpZJk=;
-        b=KGhrYGSn1EAf/bhUaSsoraZ148EwG3WLWGqLJKVd9tUFO9Yfpg4RB2UhVudHL6DRjU
-         O99sFkrGDHcnrwe4EnEiS1Qv0eMBA7QzxUqYpNPqvQzrhQxaX3LT5QgYVzZ8apctNYuS
-         M/VTaiIG5NOoxz7yhMyazhUdJ+fyVLLsk7TXXNmvVdRZkKlHUVz0mMsFoPMsaYjAtkMV
-         N0HeUGcxMb7iF+d5HsMHg1ZNTgvx+zaZi/D9szC1l7VhoNCZgD3l9mXlfSUfFBx9COfm
-         4Fw/pCLsKJIARJHDwyZpI+8/94+4duHrTx/pSCqxYDTT4olPkF3DMq/tVJesFZhfNkH9
-         Su/A==
+        h=message-id:subject:from:to:date:in-reply-to:references:user-agent
+         :mime-version:content-transfer-encoding;
+        bh=OpRLJwKSpNEB0/I8kf7g8GZ3BpP19j+sJjPqsrex6y0=;
+        b=NG/oBL8zPknIEsf7yl6D6/TyPVB/bGzuLwZ9o8oC++CSSk7LsciYD3JWmnd29N6VPw
+         wH05PDw6orJeak0gUFks2QI1c+3ZxvF2Uy/472lj+T5/l8DOxiF3PAsM0JXOTrBw5OUN
+         w4OoL4utol59VE2M/JU2bQ/k5MREpuwx3zIpeXZMRUA0EO81d5aaKOcVkx1fai7COhv5
+         d63YAYfwG8ufdI8I46MltmrWAXJ41DMI9+NX7FOyYaUAketnf2P2vx/Mv/KQ3rkQRjh0
+         /DFYPGFTWrKvs3UNSspMQEPzhc80QQleo9vNZvrYtbYNxIiYZG4pvqUOkt3cYa6XPPkj
+         WfXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=dADrW7m3DTKneFXkTDGSa9t7sweAxj9qEUUQ8LdpZJk=;
-        b=XdLmff0jzdY9k3c8XqtlXJU2V+0uAOixbdoF4xS3KeZOaTcx9zVs1qiGrFE+OPK/I4
-         grKYnV8JxeCh3bX7rwxe2ybrCOHYSkr+1IKXH1grozAO8Ug743oVomF1XCGRath3lJFl
-         5ByeBQWpq2kurwQgffxhTr68/Mg9JVhbJC2EXbxVEVx6Mq4AUGA9FY0zu+lQfg4bQbvW
-         KZlOL3ZBmaFDdYaG4+ktU9HJ/oOG8pp6tM2j7446xS74nMdxMRm2yJgG5eI0TEc53cG9
-         b8WRuG9FwMJ0A6ydcwStTOMwUhcEDbBVxGcjwQwVGySnLey4BWYYppwdueBaUQqmK9iC
-         w26w==
-X-Gm-Message-State: APjAAAXWpJoGRA5JrwRhIuiQ861fhgxQa4oZ3evZWhhkccs4ypd2CjZd
-	fxw8mEGlNsefkLh4YdpNnyUARJs=
-X-Received: by 2002:a05:600c:2210:: with SMTP id z16mr10099961wml.57.1552076624550;
-        Fri, 08 Mar 2019 12:23:44 -0800 (PST)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain ([176.12.107.132])
-        by smtp.gmail.com with ESMTPSA id d24sm21381733wrb.47.2019.03.08.12.23.43
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Mar 2019 12:23:44 -0800 (PST)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: aacraid: add SPDX GPL-2.0+ license identifier
-Date: Fri,  8 Mar 2019 20:23:27 +0000
-Message-Id: <20190308202328.14042-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=OpRLJwKSpNEB0/I8kf7g8GZ3BpP19j+sJjPqsrex6y0=;
+        b=nz/KN74Koihln/dkzc4+9ThtHd88SgYWv6nQjWWp5/qrXtUD8AOtqzcaW4RNMVPKN8
+         ekyP+k+GskTL76+OE+qOg+/+ZaMPZ5FcEPLGNMAyAkzrVDL10j581qgcXql39EZICadm
+         VDxYJZwM5M1NUMw0JTUoBLWOyDl31JIgMCt9NzPahHJYfKiBMGbgWu5wWRpqi1tg554u
+         f48FQAZlF8eHodbLiNoxGbA6yKIC4VTI5g6x6jG4M7cl7OGH3Olz8FKFVkbD+YCsxb+F
+         2kOMt8a2ygkC3GVC92pGhirtQHVkXFwBGC2knh5zTjbhlHREFDQsbbLzfhGDSNkHzPzA
+         vCIA==
+X-Gm-Message-State: AOAM533ICxiZf1/h4pq0ZVKNHVnljdT8zCuiOb6WxEWRm60DJVJ/r2qm
+	RUxT9vuF1k5M+6iv8wplCphlHqXCqwuvkg==
+X-Received: by 2002:a63:6fca:: with SMTP id k193mr11581091pgc.360.1603680748030;
+        Sun, 25 Oct 2020 19:52:28 -0700 (PDT)
+Return-Path: <amarjargal16@gmail.com>
+Received: from AJ-T14 ([122.201.22.243])
+        by smtp.gmail.com with ESMTPSA id i2sm10808665pjk.12.2020.10.25.19.52.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 25 Oct 2020 19:52:27 -0700 (PDT)
+Message-ID: <657064e0ea25646043e9350254895865c8bbebba.camel@gmail.com>
+Subject: Re: [PATCH] staging: most: fix empty /* line in block comments
+From: Amarjargal Gundjalam <amarjargal16@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>,
+ "outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>
+Date: Mon, 26 Oct 2020 10:52:18 +0800
+In-Reply-To: <20201025090924.GA99582@kroah.com>
+References: <20201024183134.GA15771@AJ-T14>
+	 <20201025090924.GA99582@kroah.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 
-Add the SPDX GPL-2.0+ license identifier to fix checkpatch.pl warning
-Issue found by checkpatch.pl warning:
-"WARNING: Missing or malformed SPDX-License-Identifier tag in line 1"
+On Sun, 2020-10-25 at 10:09 +0100, Greg KH wrote:
+> On Sun, Oct 25, 2020 at 02:31:34AM +0800, Amarjargal Gundjalam wrote:
+> > fix the following warning generated by checkpatch:
+> > networking block comments don't use an empty /* line, use /*
+> > Comment.
+> > 
+> > Signed-off-by: Amarjargal Gundjalam <amarjargal16@gmail.com>
+> > ---
+> >  drivers/staging/most/net/net.c | 6 ++----
+> >  1 file changed, 2 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/staging/most/net/net.c
+> > b/drivers/staging/most/net/net.c
+> > index b6fecb06a0e6..bc0aefe804b6 100644
+> > --- a/drivers/staging/most/net/net.c
+> > +++ b/drivers/staging/most/net/net.c
+> > @@ -171,8 +171,7 @@ static int most_nd_set_mac_address(struct
+> > net_device *dev, void *p)
+> >  		(dev->dev_addr[0] == 0 && dev->dev_addr[1] == 0 &&
+> >  		 dev->dev_addr[2] == 0 && dev->dev_addr[3] == 0);
+> >  
+> > -	/*
+> > -	 * Set default MTU for the given packet type.
+> > +	/* Set default MTU for the given packet type.
+> 
+> This is a networking driver, so no, the comment style is correct,
+> sorry
+> for the confusion.
+> 
+> greg k-h
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/scsi/aacraid/aachba.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/scsi/aacraid/aachba.c b/drivers/scsi/aacraid/aachba.c
-index 75ab5ff6b78c..955ddb32aa40 100644
---- a/drivers/scsi/aacraid/aachba.c
-+++ b/drivers/scsi/aacraid/aachba.c
-@@ -1,3 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0+
- /*
-  *	Adaptec AAC series RAID controller driver
-  *	(c) Copyright 2001 Red Hat Inc.
--- 
-2.20.1
+Oh ok. Got it.
 
 
