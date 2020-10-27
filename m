@@ -1,146 +1,127 @@
-X-GM-THRID: 6254552091181711360
-X-Received: by 10.140.41.69 with SMTP id y63mr5458935qgy.26.1456251389397;
-        Tue, 23 Feb 2016 10:16:29 -0800 (PST)
+X-GM-THRID: 6885771919120924672
+X-Received: by 2002:a63:eb09:: with SMTP id t9mr1728679pgh.279.1603802670567;
+        Tue, 27 Oct 2020 05:44:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.79.196 with SMTP id l4ls955723igx.43.canary; Tue, 23 Feb
- 2016 10:16:28 -0800 (PST)
-X-Received: by 10.107.8.216 with SMTP id h85mr35499085ioi.0.1456251388932;
-        Tue, 23 Feb 2016 10:16:28 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pf0-x234.google.com (mail-pf0-x234.google.com. [2607:f8b0:400e:c00::234])
-        by gmr-mx.google.com with ESMTPS id ui7si4082909pab.0.2016.02.23.10.16.28
+Received: by 2002:a63:941a:: with SMTP id m26ls607173pge.10.gmail; Tue, 27 Oct
+ 2020 05:44:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRsQHZDPBzuYW//f3+NGEsuoxt8wO+JBZc6HMLFIvTDQysz+wtbBEly/66rykVQhBhmJ9l
+X-Received: by 2002:a62:30c2:0:b029:152:83fd:5615 with SMTP id w185-20020a6230c20000b029015283fd5615mr2174267pfw.22.1603802668698;
+        Tue, 27 Oct 2020 05:44:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603802668; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ghsGfUFGRcmpAo3Zrn0epC0wiSVp5VXsSZOnanb3D1I6TWPKraQ0FLIoD/Radu893v
+         m/hYKYXJUv3HvSY4RSYotjGo5jId/ESdhR4uYA1SCzzbzcHszaX+SQhj9IHZiQVRBbkm
+         sYlT7ohi82dhHT7GW/wwQXJkKHhU7w4yNvRkzGaARB5puQ1S01sCCXL3Wt/Jx5ZNvPj1
+         2u91yDiyMM8hSW7+sRKZQBgdEDfio0+z6aRc/zmRm67ZirSYcdkhW+OoziherkBBvq63
+         oCCNjfWwU3BcYlOMw/TZdBi9fSZE5NRkGz6qjbsvqdDA0R9Qe1hUjAYSJa0AG62bYb+3
+         vU6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=W0kU8jHRcwyBRlgrd+WwhgxOmD0kqKKZKBvEtmKWzr0=;
+        b=OSlZ0mGqN0i06x7bBEEoPBwJtBYgzpq/bzA+c1sPIa+kAhBL/7aTZxqEgvYy4aRzRH
+         5tCs7aVVAdFZjzyQ7CZcDOe1hcgNUnkT3YEBvE9fO70Dv2GoV7w6waZd/nQjfAHn60+0
+         fVpcJUW2FW+ZG7xKLcW6PQ0Ju1WT7bOIvEXjqGLGpD+K6FZ1IWdAPltkaFhKm6MnwocG
+         eAWkCz9RfpSDI0Dl7d18ZBDSGObuN2ARyLSXFQJ5vhQgkHRIAV7Se2k7ONvkxm+c3zOE
+         WA2Z/B9u2zENWwFApR69Waw7xjy/oFamRyI3b2S3Db1nTesSObnrepK1P7eu1Pl97nvQ
+         79uw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Wxk4MFZK;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
+        by gmr-mx.google.com with ESMTPS id 191si91873pfu.3.2020.10.27.05.44.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 23 Feb 2016 10:16:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) client-ip=2607:f8b0:400e:c00::234;
+        Tue, 27 Oct 2020 05:44:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c00::234 as permitted sender) smtp.mailfrom=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x234.google.com with SMTP id c10so120082712pfc.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 23 Feb 2016 10:16:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=KwYsdr9hsAjd96QoZdCTRedMLO7OkgaSoMae/K2LV1M=;
-        b=EHZBcbyjqLFNrAgcclDKUqMIuK/mZMvdbr47NpEY/vyDmt/cCd9fEK8pPaP7qNAJRf
-         OXl5g5qX8ln5flNqS408pZ8wXFCOVnzIHGYQp3gIWV8UGc93gOMdM/gRbPnVPwmCX7P4
-         Yz4I6QCTecvGy4jvEm+Vh76I4tBrusdeXVwn9WRg4+6SAoBtQT4gSKrRu61fNgovR4Li
-         eMD8bpGyg0XsO+UffbvBJ+rEQS5EgJnMoT9VrqUECZIf9RoIdtFz78+IRBum2O2XNyph
-         cq3Ss3wYQ54gSdPD0zIjLtDx3GEPUtibt4HDPYJ8bDxQW67LGtVLx9T1uRU21BRbdo9v
-         L1Vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=KwYsdr9hsAjd96QoZdCTRedMLO7OkgaSoMae/K2LV1M=;
-        b=KAToxRWw/55ONAQLfsT91be4rjQ6ZjL3S2xGs0gj93yt6OVPeDTIULdIiJ0E+6651C
-         6P+Z1HUiEeBy+8nhf+iuh+wAvqkNDzJrns6CNk9/B+n1pdSJv3NkWrCqvieOKtXmb3Hu
-         um80d7zIheMJYNFsIM/UQ8wFWY+jJsUzW4CaRVTirJmyPeQQ4YBTmM50Ox5FfIho1GbM
-         H2gffvLnF8kIsWE0QnngwEYRXIiPTf/QrJhVBU8HTuT7yK9FY9ebnbw0IFJ4vdJigtwB
-         ZG4K8zSac9oN8xDngfmqaRInydZSlQEa21TwNHXNn9FsIJSEGClnH+m0SKYIa6qfZ4Gg
-         Wlaw==
-X-Gm-Message-State: AG10YOSdp8vbThiUBid8qEHgJVKyZxUlMLsfKfWv7zEyr1DqNYddvGLN9S0IxH2lcUiNGw==
-X-Received: by 10.98.43.149 with SMTP id r143mr47734223pfr.7.1456251388702;
-        Tue, 23 Feb 2016 10:16:28 -0800 (PST)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([122.176.170.221])
-        by smtp.gmail.com with ESMTPSA id vy6sm45902642pac.38.2016.02.23.10.16.27
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 10:16:28 -0800 (PST)
-Date: Tue, 23 Feb 2016 23:46:23 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: adc: Use devm_ioremap_resource() instead of
- of_iomap()
-Message-ID: <20160223181623.GA20782@amitoj-Inspiron-3542>
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Wxk4MFZK;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+	by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RCTPMN025052;
+	Tue, 27 Oct 2020 12:44:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=W0kU8jHRcwyBRlgrd+WwhgxOmD0kqKKZKBvEtmKWzr0=;
+ b=Wxk4MFZKtap2wRdhiuOxvc0S9ohlfpc8OYlMM9/MO2RYzExGl6yZq71ZUV8KDLKHxev4
+ PtC4gsB+Ko6rrOnvg6aAm2fMK/OcJjnf7wF3kv2VSeYQ/IOkGv8jX07GX5W/M4Z0cGUP
+ SUUwupvgd15U0+e4w7FTwDAMuyrPG5NuYGKpCofeGjhYmyiGRhWMtZwI90wWHJBp4dwx
+ gzTLKxc9pr7Kyag/dlxqSLU0yjYH56m0IvnEZzfrJsFB3T5Owmd5JEX2s2Q8gNqnIx3w
+ M6D2I1sYy7qiOHfe/0rw5ozYGoiccIpjmvmzt3yNUg0tsS4JJLytAMPKRFRTB9tBsVYT mw== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by aserp2130.oracle.com with ESMTP id 34c9sasteq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 27 Oct 2020 12:44:25 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RCVXDi142242;
+	Tue, 27 Oct 2020 12:44:24 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by userp3030.oracle.com with ESMTP id 34cx6vwmwg-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 27 Oct 2020 12:44:24 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09RCiNEK028658;
+	Tue, 27 Oct 2020 12:44:23 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 27 Oct 2020 05:44:23 -0700
+Date: Tue, 27 Oct 2020 15:44:17 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Elena Afanasova <eafanasova@gmail.com>, devel@driverdev.osuosl.org,
+        gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 3/3] staging/rtl8712: use BIT macro
+Message-ID: <20201027124417.GW1042@kadam>
+References: <20201020182439.43314-1-eafanasova@gmail.com>
+ <20201020182439.43314-3-eafanasova@gmail.com>
+ <20201020184404.GC20115@casper.infradead.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20201020184404.GC20115@casper.infradead.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phishscore=0 spamscore=0
+ bulkscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2010270081
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
+ priorityscore=1501 spamscore=0 phishscore=0 clxscore=1031 suspectscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010270081
 
-The adc driver uses of_iomap() which doesn't request the resource and
-isn't device managed so error handling is needed. of_iomap() is mainly
-used in cases where there is no driver or struct device so a switch to
-devm_ functions is required.
+On Tue, Oct 20, 2020 at 07:44:04PM +0100, Matthew Wilcox wrote:
+> On Tue, Oct 20, 2020 at 11:24:39AM -0700, Elena Afanasova wrote:
+> > Reported by checkpatch.pl
+> 
+> Checkpatch is wrong.
+> 
+> > +++ b/drivers/staging/rtl8712/rtl871x_recv.h
+> > @@ -8,7 +8,7 @@
+> >  #define NR_RECVFRAME 256
+> >  
+> >  #define RXFRAME_ALIGN	8
+> > -#define RXFRAME_ALIGN_SZ	(1 << RXFRAME_ALIGN)
+> > +#define RXFRAME_ALIGN_SZ	BIT(RXFRAME_ALIGN)
 
-This patch switches to use devm_ioremap_resource() instead which
-automatically requests the resource and is freed when the driver
-detaches. 
+Yeah.  It's weird to talk about size as a BIT() flag.  The RXFRAME_ALIGN
+is not needed.  Just say:
 
-Removed the error handling to unmap I/O registers i.e. 
-iounmap() in probe and remove functions of this driver and 
-consequently removed an unnecessary label.
+-#define RXFRAME_ALIGN      8
+-#define RXFRAME_ALIGN_SZ   (1 << RXFRAME_ALIGN)
++#define RXFRAME_ALIGN_SZ 256
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/iio/adc/spear_adc.c | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+This is literally used for aligning the RX frame.  It seems like a crazy
+thing to me that to aligned at 256 bytes.  I would have expected 64 bit
+alignment or page alignment but not 256 byte alignment...  Weird.
 
-diff --git a/drivers/staging/iio/adc/spear_adc.c b/drivers/staging/iio/adc/spear_adc.c
-index 0a6d0d7..8dc80b3 100644
---- a/drivers/staging/iio/adc/spear_adc.c
-+++ b/drivers/staging/iio/adc/spear_adc.c
-@@ -262,6 +262,7 @@ static int spear_adc_probe(struct platform_device *pdev)
- 	struct device_node *np = pdev->dev.of_node;
- 	struct device *dev = &pdev->dev;
- 	struct spear_adc_state *st;
-+	struct resource *res;
- 	struct iio_dev *indio_dev = NULL;
- 	int ret = -ENODEV;
- 	int irq;
-@@ -280,24 +281,24 @@ static int spear_adc_probe(struct platform_device *pdev)
- 	 * (e.g. SPEAr3xx). Let's provide two register base addresses
- 	 * to support multi-arch kernels.
- 	 */
--	st->adc_base_spear6xx = of_iomap(np, 0);
--	if (!st->adc_base_spear6xx) {
--		dev_err(dev, "failed mapping memory\n");
--		return -ENOMEM;
--	}
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	st->adc_base_spear6xx = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(st->adc_base_spear6xx))
-+		return PTR_ERR(st->adc_base_spear6xx);
-+
- 	st->adc_base_spear3xx =
- 		(struct adc_regs_spear3xx __iomem *)st->adc_base_spear6xx;
- 
- 	st->clk = devm_clk_get(dev, NULL);
- 	if (IS_ERR(st->clk)) {
- 		dev_err(dev, "failed getting clock\n");
--		goto errout1;
-+		return ret;
- 	}
- 
- 	ret = clk_prepare_enable(st->clk);
- 	if (ret) {
- 		dev_err(dev, "failed enabling clock\n");
--		goto errout1;
-+		return ret;
- 	}
- 
- 	irq = platform_get_irq(pdev, 0);
-@@ -356,8 +357,6 @@ static int spear_adc_probe(struct platform_device *pdev)
- 
- errout2:
- 	clk_disable_unprepare(st->clk);
--errout1:
--	iounmap(st->adc_base_spear6xx);
- 	return ret;
- }
- 
-@@ -367,7 +366,6 @@ static int spear_adc_remove(struct platform_device *pdev)
- 	struct spear_adc_state *st = iio_priv(indio_dev);
- 
- 	clk_disable_unprepare(st->clk);
--	iounmap(st->adc_base_spear6xx);
- 
- 	return 0;
- }
--- 
-1.9.1
+regards,
+dan carpenter
 
 
