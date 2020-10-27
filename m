@@ -1,177 +1,235 @@
-X-GM-THRID: 6399206725724930048
-X-Received: by 10.129.56.136 with SMTP id f130mr13025778ywa.150.1489931420955;
-        Sun, 19 Mar 2017 06:50:20 -0700 (PDT)
+X-GM-THRID: 6885724039139033088
+X-Received: by 2002:a9d:635a:: with SMTP id y26mr1277891otk.66.1603801687237;
+        Tue, 27 Oct 2020 05:28:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.5.194 with SMTP id 185ls3234885iof.19.gmail; Sun, 19 Mar
- 2017 06:50:19 -0700 (PDT)
-X-Received: by 10.99.124.27 with SMTP id x27mr3077311pgc.50.1489931419931;
-        Sun, 19 Mar 2017 06:50:19 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id y203si2227019pfb.0.2017.03.19.06.50.19
+Received: by 2002:a9d:6949:: with SMTP id p9ls299988oto.6.gmail; Tue, 27 Oct
+ 2020 05:28:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8AkcvUT0oNuSL+AVW31lY1BGz//q+iYfqyizNW/xxnt9Jhb6PFz/bNxGUnm6XAsbkL7bQ
+X-Received: by 2002:a9d:68da:: with SMTP id i26mr1276881oto.200.1603801685995;
+        Tue, 27 Oct 2020 05:28:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603801685; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WbXO/T4Xja3oj8Uo8JSOAl+7/PSbxoomYPMAt3rG0PCnmkvyTGZvHaUx00Z7EWSbXA
+         WcOTAbyNNEHWNR2w23LBpPitZnLJect8faWaRTp+yZwuyHnFYFT+KAdjbKsgokuoqjTc
+         FgUrxF6YO3LOvCOFo6B/IXDNPzRgwnXqv6GIP17V723HekC+ZkqhKAwEjQYjaFVnHwdI
+         MOAnAnwxxVYx2lQXJB+isvoOmAAy3rZbkOkAB6vytTcE9xwLGlJQZb8D1PAncGghm99A
+         g9jA+9sVRUgdMNASMb7gQ3KhTNKOLyHvwCyp+55LJDmYGZ0+RPKfJhjZbCRhxPGwpgFi
+         aoCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=tylquuXZ9kgW4LglgpQUMilOJDrTzJpwmjaJvQfNwJQ=;
+        b=uootdmewHIkP8ihyh0FyZykryqWkzGddCHJwiQT3AoVtlxcLveBx9lM/YHbyiy9Og9
+         7MosPsZiGWULbgpLPelFvJgp30DpqX94WWl2kmuSrDwpytLppTv9nLhFs1fvMvqznSko
+         e0KlgIwTIlTM4ZL/t6BPknvALWyOKzr/GEc1djLAdWmTdB3DHyDUB4FTrvM587kpUeda
+         F00e4YeezQVmDbatC6e328wXXhig0OhL7hPvlM9ZJNjSNXVvp+IVNx6SoGrJNQH61Oof
+         zJ8sdqMcXyaP/aqYdcXfJQtzSx2Tu2wQnV04g2G0MQcjxQpQZq+9LSWYyehXfq5kyE+T
+         Mu/Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=N89Lidkg;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
+        by gmr-mx.google.com with ESMTPS id r6si171091oth.4.2020.10.27.05.28.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 19 Mar 2017 06:50:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Tue, 27 Oct 2020 05:28:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id p189so8358486pfp.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 19 Mar 2017 06:50:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=+E7+07m6HGbsj3bvo58U+Z/NwXBug81zMx9uWx8DDKI=;
-        b=TCg8/xWcCauCTN7ctOtkV6fcMzqmxTUOcoWPcKEeNh/uIdoWlmiCcyuQDhuNu2XApj
-         CqrHlB6s1Z5FVh+9TJJpKNuvL4Y+ggoEF9HvatZlfXpBn9S4MHCdDI1aI0roOs+MWV5b
-         GtF3Ps3V3AkAdC2t5R/+B8iU8kTvY7hlxpsV2tyWQoTsDggsg9ocl9Z8ESGa6QqaxOMv
-         HcQJabZaYUvJpYJjuliBqvff5tDlPnzDDN7E5t5Zmzgu2F21cJ6N4HA1Ot5ewJMEwRfD
-         ovLS+z+ccTuVRRFIwGGr5WW6Trd6x/1tdl5YHEgDWUeVwoOiSDg9aUeHwm4LPUSnFHMN
-         eHKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=+E7+07m6HGbsj3bvo58U+Z/NwXBug81zMx9uWx8DDKI=;
-        b=pm0G3A9P4Hp1qpeeFHTBMHeBYjk3lxAc4QgXMqShWQYUqNveUl2KlwabRwbvFdlGDe
-         bw2m1dDeoR+5Tt7x5vJVf4JYiaapdKfDBvAwktrMaT4MMvB//MPy/x/NFP0XIWqfq3bv
-         acjN7/RqE+E452FncmEh9by1VHuvdFje1B8eOBuoWCNx9Px0481QxzPV4Ky4CJAcPOGI
-         GfGsj6540wp8FmMigP8I5UUlpIdQ7Bal/i02niZO8Vh5GFfGtWawOV/j+KoF+EK8fzDi
-         h/3KKLFClwtTHr7N1hqrlMCnl29xGt6mUZR7c87xCjvtHBuv3Lun3z29uQh/Ohbx4OOJ
-         5p2w==
-X-Gm-Message-State: AFeK/H2mb1cOBSkNEVVJkIfRD6pR2fELscQj+jB4Vo1Tjf0LunBIwfIbCxMDSggmt4k5kQ==
-X-Received: by 10.98.34.211 with SMTP id p80mr28077056pfj.174.1489931419279;
-        Sun, 19 Mar 2017 06:50:19 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id m6sm27416510pfm.22.2017.03.19.06.50.17
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 19 Mar 2017 06:50:18 -0700 (PDT)
-Date: Sun, 19 Mar 2017 19:20:13 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: sudipm.mukherjee@gmail.com
-Cc: Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH v5] staging: sm750fb: Remove typedefs from structures and enum
-Message-ID: <20170319135013.GA1349@arushi-HP-Pavilion-Notebook>
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=N89Lidkg;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+	by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RCMwvq003337;
+	Tue, 27 Oct 2020 12:28:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=tylquuXZ9kgW4LglgpQUMilOJDrTzJpwmjaJvQfNwJQ=;
+ b=N89LidkggFVrn9nQGeh9fyLnF4CT/OmAvZCTKWo6z8lB6rLZOFwQbDnFzp8S2o5/i0O7
+ 1an7WrohUANfkYVEoHTJciRutBWSVeIgxFtldRvVeEnS8xqcRRRAOFl9Y+hXOigBCwYT
+ REOHNv7kLQLu/juRS+DDFosy0YySHfuGaD4uIaGYIfgrHckC/ulT3A5G/t3hyuBSww5h
+ OTF4U/6ZGE16dJK9k1v4DrogccSRDkTb6X/ipaH+MwMqbNU5gpSiNRXgej4V0BH2fRmd
+ CyCjxATGYYPymyVa9/+3+fl+70tDWVBDz3WaNDhHUB6IwovFHyPTWb9kcvca5ofEGsJW /A== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+	by aserp2130.oracle.com with ESMTP id 34c9sasr76-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 27 Oct 2020 12:28:02 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+	by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09RC6HGV154627;
+	Tue, 27 Oct 2020 12:28:02 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by userp3020.oracle.com with ESMTP id 34cx1qnga5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 27 Oct 2020 12:28:01 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09RCS0w9019856;
+	Tue, 27 Oct 2020 12:28:00 GMT
+Received: from kadam (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 27 Oct 2020 05:28:00 -0700
+Date: Tue, 27 Oct 2020 15:27:54 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Elena Afanasova <eafanasova@gmail.com>
+Cc: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
+        outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging/rtl8188eu: fix line length exceeds 100 columns
+Message-ID: <20201027122754.GV1042@kadam>
+References: <20201020151748.35937-1-eafanasova@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20201020151748.35937-1-eafanasova@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 phishscore=0 bulkscore=0
+ suspectscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2010270080
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9786 signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 malwarescore=0 lowpriorityscore=0 bulkscore=0
+ priorityscore=1501 spamscore=0 phishscore=0 clxscore=1015 suspectscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010270080
 
-This patch removes typedefs from structure and enum and renames them as per
-kernel coding standards.
+On Tue, Oct 20, 2020 at 08:17:48AM -0700, Elena Afanasova wrote:
+> Reported by checkpatch.pl
+> 
 
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
----
- changes in v5
- - make the commit message more relevant.
- - remove prefix and suffix underscore.
+If I were trying to clean up this driver I would probably take a
+different approach.
 
- drivers/staging/sm750fb/ddk750_mode.c |  6 +++---
- drivers/staging/sm750fb/ddk750_mode.h | 18 ++++++++----------
- drivers/staging/sm750fb/sm750_hw.c    |  2 +-
- 3 files changed, 12 insertions(+), 14 deletions(-)
+Just send a patch that introduces line breaks for RT_TRACE() printks.
+The RT_TRACE() printks are super ugly, and if you add newlines to them,
+it can't make it worse than it already is.  Do not change the RT_TRACE()
+output.
 
-diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-index 5f18ce4d10de..61d339437764 100644
---- a/drivers/staging/sm750fb/ddk750_mode.c
-+++ b/drivers/staging/sm750fb/ddk750_mode.c
-@@ -12,7 +12,7 @@
-  * HW only supports 7 predefined pixel clocks, and clock select is
-  * in bit 29:27 of Display Control register.
-  */
--static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam, unsigned long dispControl)
-+static unsigned long displayControlAdjust_SM750LE(struct mode_parameter *pModeParam, unsigned long dispControl)
- {
- 	unsigned long x, y;
- 
-@@ -72,7 +72,7 @@ static unsigned long displayControlAdjust_SM750LE(mode_parameter_t *pModeParam,
- }
- 
- /* only timing related registers will be  programed */
--static int programModeRegisters(mode_parameter_t *pModeParam, struct pll_value *pll)
-+static int programModeRegisters(struct mode_parameter *pModeParam, struct pll_value *pll)
- {
- 	int ret = 0;
- 	int cnt = 0;
-@@ -207,7 +207,7 @@ static int programModeRegisters(mode_parameter_t *pModeParam, struct pll_value *
- 	return ret;
- }
- 
--int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock)
-+int ddk750_setModeTiming(struct mode_parameter *parm, clock_type_t clock)
- {
- 	struct pll_value pll;
- 	unsigned int uiActualPixelClk;
-diff --git a/drivers/staging/sm750fb/ddk750_mode.h b/drivers/staging/sm750fb/ddk750_mode.h
-index 6d204b8b4a01..07cb3f14d1ce 100644
---- a/drivers/staging/sm750fb/ddk750_mode.h
-+++ b/drivers/staging/sm750fb/ddk750_mode.h
-@@ -3,26 +3,25 @@
- 
- #include "ddk750_chip.h"
- 
--typedef enum _spolarity_t {
-+enum spolarity {
- 	POS = 0, /* positive */
- 	NEG, /* negative */
--}
--spolarity_t;
-+};
- 
--typedef struct _mode_parameter_t {
-+struct mode_parameter {
- 	/* Horizontal timing. */
- 	unsigned long horizontal_total;
- 	unsigned long horizontal_display_end;
- 	unsigned long horizontal_sync_start;
- 	unsigned long horizontal_sync_width;
--	spolarity_t horizontal_sync_polarity;
-+	enum spolarity horizontal_sync_polarity;
- 
- 	/* Vertical timing. */
- 	unsigned long vertical_total;
- 	unsigned long vertical_display_end;
- 	unsigned long vertical_sync_start;
- 	unsigned long vertical_sync_height;
--	spolarity_t vertical_sync_polarity;
-+	enum spolarity vertical_sync_polarity;
- 
- 	/* Refresh timing. */
- 	unsigned long pixel_clock;
-@@ -30,10 +29,9 @@ typedef struct _mode_parameter_t {
- 	unsigned long vertical_frequency;
- 
- 	/* Clock Phase. This clock phase only applies to Panel. */
--	spolarity_t clock_phase_polarity;
--}
--mode_parameter_t;
-+	enum spolarity clock_phase_polarity;
-+};
- 
--int ddk750_setModeTiming(mode_parameter_t *parm, clock_type_t clock);
-+int ddk750_setModeTiming(struct mode_parameter *parm, clock_type_t clock);
- 
- #endif
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index fab3fc9c8330..baf1bbdc92ff 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -252,7 +252,7 @@ int hw_sm750_crtc_setMode(struct lynxfb_crtc *crtc,
- {
- 	int ret, fmt;
- 	u32 reg;
--	mode_parameter_t modparm;
-+	struct mode_parameter modparm;
- 	clock_type_t clock;
- 	struct sm750_dev *sm750_dev;
- 	struct lynxfb_par *par;
--- 
-2.11.0
+-                                        ("=== curfragnum=%d, pframe = 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x, 0x%.2x,!!!\n",
++                                        ("curfrnum=%d: %.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x-%.2x\n",
+
+Your change here is an improvement but it requires thinking and
+reviewers don't want to look at RT_TRACE().  Make your patches as
+uncontroversial as possible.
+
+Then for the other things there are some changes which are good, but in
+other places the correct thing is to introduce new functions.  So what
+I would want instead is a series of patches which do small clean ups
+which make the code obviously better, and are not just to make checkpatch
+happy.
+
+> Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
+> ---
+>  drivers/staging/rtl8188eu/core/rtw_xmit.c | 118 +++++++++++++++-------
+>  1 file changed, 81 insertions(+), 37 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> index 317355f830cb..51769f2ca910 100644
+> --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> @@ -44,7 +44,9 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+>  	u32 max_xmit_extbuf_size = MAX_XMIT_EXTBUF_SZ;
+>  	u32 num_xmit_extbuf = NR_XMIT_EXTBUFF;
+>  
+> -	/*  We don't need to memset padapter->XXX to zero, because adapter is allocated by vzalloc(). */
+> +	/*  We don't need to memset padapter->XXX to zero,
+> +	 *  because adapter is allocated by vzalloc().
+> +	 */
+
+This comment is totally pointless.  Kernel devs are expected to
+understand what the "z" in vzalloc() means.  Just delete it.
+
+>  
+>  	spin_lock_init(&pxmitpriv->lock);
+>  
+> @@ -127,7 +129,8 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
+>  		res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+>  		if (res == _FAIL) {
+>  			msleep(10);
+> -			res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ));
+> +			res = rtw_os_xmit_resource_alloc(pxmitbuf, (MAX_XMITBUF_SZ +
+> +									XMITBUF_ALIGN_SZ));
+
+Align it like this:
+
+			res = rtw_os_xmit_resource_alloc(pxmitbuf,
+							 MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ);
+
+The rtw_os_xmit_resource_alloc() function is poorly named.
+
+
+>  			if (res == _FAIL)
+>  				goto exit;
+>  		}
+> @@ -441,7 +444,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>  				    ((tmp[21] == 67) && (tmp[23] == 68))) {
+>  					/*  68 : UDP BOOTP client */
+>  					/*  67 : UDP BOOTP server */
+> -					RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_, ("====================== %s: get DHCP Packet\n", __func__));
+> +					RT_TRACE(_module_rtl871x_xmit_c_, _drv_err_,
+> +						 ("====================== %s: get DHCP Packet\n",
+> +						 __func__));
+
+What does this message really mean?  The "===" characters don't add
+anything.  It's probably better to just delete this printk.
+
+>  					/*  Use low rate to send DHCP packet. */
+>  					pattrib->dhcp_pkt = 1;
+>  				}
+> @@ -455,7 +460,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>  		rtw_set_scan_deny(padapter, 3000);
+>  
+>  	/*  If EAPOL , ARP , OR DHCP packet, driver must be in active mode. */
+> -	if ((pattrib->ether_type == ETH_P_ARP) || (pattrib->ether_type == ETH_P_PAE) || (pattrib->dhcp_pkt == 1))
+> +	if ((pattrib->ether_type == ETH_P_ARP) ||
+> +	    (pattrib->ether_type == ETH_P_PAE) ||
+> +	    (pattrib->dhcp_pkt == 1))
+
+This change is good.
+
+>  		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SPECIAL_PACKET, 1);
+>  
+>  	mcast = is_multicast_ether_addr(pattrib->ra);
+> @@ -466,7 +473,9 @@ static s32 update_attrib(struct adapter *padapter, struct sk_buff *pkt, struct p
+>  	} else {
+>  		psta = rtw_get_stainfo(pstapriv, pattrib->ra);
+>  		if (!psta) { /*  if we cannot get psta => drrp the pkt */
+> -			RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_, ("\nupdate_attrib => get sta_info fail, ra: %pM\n", (pattrib->ra)));
+> +			RT_TRACE(_module_rtl871x_xmit_c_, _drv_alert_,
+> +				 ("\nupdate_attrib => get sta_info fail, ra: %pM\n",
+> +				 (pattrib->ra)));
+
+I guess this is fine.  All the RT_TRACE output just looks so terrible...
+Why does it sometimes have a newline at the start and sometimes not?
+In one place you improved the RT_TRACE() output which is good but
+probably should be done in a separate patch...
+
+Anyway, I'm done thinking about RT_TRACE() because it makes me want to
+poke out my own eyeballs like the really gruesome scene from Game of
+Throwns where the guys head explodes.
+
+[ snip ]
+
+> @@ -836,11 +859,13 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+>  				if (SN_LESS(pattrib->seqnum, tx_seq)) {
+>  					pattrib->ampdu_en = false;/* AGG BK */
+>  				} else if (SN_EQUAL(pattrib->seqnum, tx_seq)) {
+> -					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq + 1) & 0xfff;
+> +					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
+> +									(tx_seq + 1) & 0xfff;
+>  
+>  					pattrib->ampdu_en = true;/* AGG EN */
+>  				} else {
+> -					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (pattrib->seqnum + 1) & 0xfff;
+> +					psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
+> +								(pattrib->seqnum + 1) & 0xfff;
+>  					pattrib->ampdu_en = true;/* AGG EN */
+
+I would argue that this is less readable (worse) than before.  The
+way to fix this is to introduce new functions.
+
+regards,
+dan carpenter
 
 
