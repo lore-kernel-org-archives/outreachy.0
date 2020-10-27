@@ -1,95 +1,104 @@
-X-GM-THRID: 10514231984128
-X-Received: by 10.50.43.229 with SMTP id z5mr4483183igl.3.1427822345455;
-        Tue, 31 Mar 2015 10:19:05 -0700 (PDT)
+X-GM-THRID: 6887485179824177152
+X-Received: by 2002:a7b:c350:: with SMTP id l16mr1836889wmj.135.1603792748771;
+        Tue, 27 Oct 2020 02:59:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.27.138 with SMTP id 10ls2861227qgx.47.gmail; Tue, 31 Mar
- 2015 10:19:05 -0700 (PDT)
-X-Received: by 10.236.20.234 with SMTP id p70mr36746341yhp.46.1427822345200;
-        Tue, 31 Mar 2015 10:19:05 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from mail-pd0-x233.google.com (mail-pd0-x233.google.com. [2607:f8b0:400e:c02::233])
-        by gmr-mx.google.com with ESMTPS id pc4si1603165pac.0.2015.03.31.10.19.05
+Received: by 2002:a5d:4ac3:: with SMTP id y3ls1358218wrs.2.gmail; Tue, 27 Oct
+ 2020 02:59:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWFuflSkNBwNwHPiGERVBa9uedX7pUSagzWJNfVt1kGo3A0wOPR+uu1gQ5JZDNwBtdmlnP
+X-Received: by 2002:adf:fa01:: with SMTP id m1mr1946952wrr.220.1603792746521;
+        Tue, 27 Oct 2020 02:59:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603792746; cv=none;
+        d=google.com; s=arc-20160816;
+        b=F5jW4A67wzJKioNXjYmXfSJgXim61dmd8SNLUYjy9ikY1+WNouFf6cTnnmC64tdaOk
+         rYz2Ezy4wV9+oRNkGdyTXgUBMXSS5JPRdC7cX4BWYzm5rPet33m1f5ssKdf7m7XL6u5Q
+         KkXbc5r2rhAhwcgXQ87flXsfIliGX3TQ24K99+3HFCMCQEKdAxqaoW0C4krg2PtZi+2w
+         KXltlyRepZ7kbcISaNUgWcl9yOCjkOz++zqxyLiUJ8vzM2kirnDk08UKq1n66+S6ALRS
+         6EJW9DLmweJfW4uprn3GbeCk15gFGg+YsRyKSLBRsqG3QkL5y1wUrRRYVhDwPmWNLmHJ
+         MR8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=T4rgsiIPKAr+K09oa4KEN8esO3/QDBJYGfmSdcTAJ6M=;
+        b=J1gTOb8USJH7aLvWoTnm67f21ZUeFONceffequHMMgpGOSl24M7sBhEsZ6utCJC9zE
+         5YSb2XEdfkcBdhfmlYAt3gsEsp/civiGhin8dD3l+W39eFVK0yP5KT2d18ijGR2Lf0Uq
+         nU4XF7bzTm2vN4nELb5EIpUaaYutYKwQJ76IYdM86puQ79lmZNVDrEPKY6AQUdgSM7GA
+         vMSarNDK94rCUjJVCCaD4VUO845KGsMeQeeW8dwQz6SCuId3KFZbX7zC2uylbWXsTd7m
+         j/kWHfF3liOIXG0Ojqbw1XQzV7xP/6qj0nRuQGgJJebaXf7trgeLzpHmtBVJCyMEYvGS
+         rBOQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 91si18239wrs.2.2020.10.27.02.59.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2015 10:19:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) client-ip=2607:f8b0:400e:c02::233;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Oct 2020 02:59:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of amitoj1606@gmail.com designates 2607:f8b0:400e:c02::233 as permitted sender) smtp.mail=amitoj1606@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pd0-x233.google.com with SMTP id ni2so26958278pdb.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 31 Mar 2015 10:19:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-type
-         :content-disposition:user-agent;
-        bh=lxhr20F+wSO3MpRMBSno/hrv7QdiCGhyvmyp7as5EQY=;
-        b=MlW4XbeBRh5u7fRnexmfHR9J2iPI4scYk7X0TZ39QJFHYOcg6u69RxwMBaca5D/gKN
-         14nIHKNg5MXCV7CnPt/+0h/ubg6YuUEBJ/m6V32QFPI2QKMbA42/au1WxJ6rlHZbFquQ
-         fLhbW6u41d9EeST66gTMst4ys+r/j4D3IhdS0Fyp/LFGU0kBMbUiK9KbiGNo4kqSz4DZ
-         GGvh7Z93iPKiLVc0kpkie22kU/0z1VMbMraUGPnhKRWtdM/M0k/PrYiA36LyQmvKCg9F
-         +S63mKGbSM5QQIFKSUGTle3zlhaq2G31UNCE2N6IqOUE2ttKUtBaWIpxkKLKcEE/8uKo
-         +oNw==
-X-Received: by 10.68.251.226 with SMTP id zn2mr69671950pbc.100.1427822345025;
-        Tue, 31 Mar 2015 10:19:05 -0700 (PDT)
-Return-Path: <amitoj1606@gmail.com>
-Received: from localhost ([182.68.106.46])
-        by mx.google.com with ESMTPSA id ey10sm13929854pab.47.2015.03.31.10.19.03
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 31 Mar 2015 10:19:04 -0700 (PDT)
-Date: Tue, 31 Mar 2015 22:49:00 +0530
-From: Amitoj Kaur Chawla <amitoj1606@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] Staging: sm750fb: Fix switch-case
-Message-ID: <20150331171900.GA28850@amitoj-Inspiron-3542>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.77,423,1596492000"; 
+   d="scan'208";a="474481058"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 27 Oct 2020 10:59:06 +0100
+Date: Tue, 27 Oct 2020 10:59:05 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
+cc: Forest Bond <forest@alittletooquiet.net>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Break multiple
+ assignments in one line
+In-Reply-To: <20201025032331.GA9095@Zangetsu>
+Message-ID: <alpine.DEB.2.22.394.2010271057530.2847@hadrien>
+References: <20201025032331.GA9095@Zangetsu>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Fixed indentation of switch-case statements. Problem found using checkpatch.pl
-ERROR: trailing statements should be on next line
 
-Signed-off-by: Amitoj Kaur Chawla <amitoj1606@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index c506b5c..d963b6a 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -236,12 +236,22 @@ unsigned int ddk750_getVMSize(void)
- 
- 	/* get frame buffer size from GPIO */
- 	reg = FIELD_GET(PEEK32(MISC_CTRL),MISC_CTRL,LOCALMEM_SIZE);
--	switch(reg){
--	case MISC_CTRL_LOCALMEM_SIZE_8M:  data = MB(8);  break; /* 8  Mega byte */
--	case MISC_CTRL_LOCALMEM_SIZE_16M: data = MB(16); break; /* 16 Mega byte */
--	case MISC_CTRL_LOCALMEM_SIZE_32M: data = MB(32); break; /* 32 Mega byte */
--	case MISC_CTRL_LOCALMEM_SIZE_64M: data = MB(64); break; /* 64 Mega byte */
--	default: data = 0;break;
-+	switch (reg) {
-+	case MISC_CTRL_LOCALMEM_SIZE_8M:
-+		data = MB(8);
-+		break; /* 8  Mega byte */
-+	case MISC_CTRL_LOCALMEM_SIZE_16M:
-+		data = MB(16);
-+		break; /* 16 Mega byte */
-+	case MISC_CTRL_LOCALMEM_SIZE_32M:
-+		data = MB(32);
-+		break; /* 32 Mega byte */
-+	case MISC_CTRL_LOCALMEM_SIZE_64M:
-+		data = MB(64);
-+		break; /* 64 Mega byte */
-+	default:
-+		data = 0;
-+		break;
- 	}
- 	return data;
- 
--- 
-1.9.1
+On Sat, 24 Oct 2020, Marcos Antonio de Jesus Filho wrote:
 
+> The kernel coding style disencourage multiple assignments in one
+> line. Split this multiple assignments in one line into single assignments
+> in multiple lines following this recommendation. Issue found by
+> checkpatch.
+>
+> Signed-off-by: Marcos Antonio de Jesus Filho <mdejesusfilho@gmail.com>
+> ---
+>  drivers/staging/vt6655/device_main.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+> index 09ab6d6f2429..ec73b4ac82e6 100644
+> --- a/drivers/staging/vt6655/device_main.c
+> +++ b/drivers/staging/vt6655/device_main.c
+> @@ -670,7 +670,8 @@ static int device_init_td0_ring(struct vnt_private *priv)
+>
+>  	if (i > 0)
+>  		priv->apTD0Rings[i - 1].next_desc = cpu_to_le32(priv->td0_pool_dma);
+> -	priv->apTailTD[0] = priv->apCurrTD[0] = &priv->apTD0Rings[0];
+> +	priv->apCurrTD[0] = &priv->apTD0Rings[0];
+> +	priv->apTailTD[0] = priv->apCurrTD[0];
+
+I think this was already tried and Greg already expressed the opinion that
+in this case the code is ok as it.
+
+It might have something to do with the fact that all of the elements have
+about the same size, which makes it a bit easier to see what is going on.
+
+julia
+
+>
+>  	return 0;
+>
+> --
+> 2.28.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20201025032331.GA9095%40Zangetsu.
+>
 
