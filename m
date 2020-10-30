@@ -1,123 +1,134 @@
 X-GM-THRID: 6889250886437044224
-X-Received: by 2002:ac8:2c21:: with SMTP id d30mr10725930qta.156.1604247284948;
-        Sun, 01 Nov 2020 08:14:44 -0800 (PST)
+X-Received: by 2002:a17:90a:aa15:: with SMTP id k21mr319740pjq.169.1604028718556;
+        Thu, 29 Oct 2020 20:31:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:aad6:: with SMTP id g22ls2889005qvb.10.gmail; Sun, 01
- Nov 2020 08:14:43 -0800 (PST)
-X-Received: by 2002:a0c:db89:: with SMTP id m9mr12467075qvk.26.1604247283778;
-        Sun, 01 Nov 2020 08:14:43 -0800 (PST)
-Received: by 2002:a37:4685:0:b029:15e:d70c:89db with SMTP id t127-20020a3746850000b029015ed70c89dbmsqka;
-        Sun, 1 Nov 2020 08:02:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwTal2rFldaM3Oytjn3hS1ucx3/pKhmAVunrGshA2QEERAQhem5LDRLEQIwmvFjmDktEgWZ
-X-Received: by 2002:a17:906:14d1:: with SMTP id y17mr11866767ejc.15.1604246570085;
-        Sun, 01 Nov 2020 08:02:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604246570; cv=none;
+Received: by 2002:a17:902:b093:: with SMTP id p19ls2219506plr.2.gmail; Thu, 29
+ Oct 2020 20:31:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGWb78NCDp5mvyS+x9yw2MdhCDdS06z9cON85ZKiQdt4gh5iYYGAsoXiE+qT83sb66yaDU
+X-Received: by 2002:a17:902:8a8a:b029:d5:ab9e:1d5d with SMTP id p10-20020a1709028a8ab02900d5ab9e1d5dmr7057246plo.32.1604028716979;
+        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604028716; cv=none;
         d=google.com; s=arc-20160816;
-        b=zIw0HcKViw3yA1Lqgv9BrptGbfqggoPxoIw31AjIvLU9GZyh0VH8LGh1mUMofRkdlK
-         mt6uoPB5t5lqZOe1ToBuWgp4Y+zvy5x/fbM9Fo8CdoWGGsdfCKZ3sQhzLFp0Wek2Q+VZ
-         RilYRIKV3Oh1wKVs1vwHSnXFNk+CNol+v9ajHQyv/Bdt2ds5XnXUsgpcWoTKkCs0HX3A
-         gIKrePq/SN0Dbi8S/shcE1LAoZCBi+Q8e6/ZPxGf6MWuvbvhUDo/oAJkEWHxDktYDOUe
-         wVfBJ3zrSdA2SXKYY85GTMSJP2blUZZvzZI620UpV94WonOsZJHQtA9dGDP4x2JQQSM9
-         znRQ==
+        b=U6ipDaU9c5PMX+GoB8KoLJ5YpwGKM18dWLdDh3wLudhX7s9ChXyzs54XogldxR6cTW
+         McEWQpANESA3qm3uHqC7P7VK2PcS/ul1g0hfRSVOWoNekiqe1+NXev5KaKrRza5hPWNd
+         MTM+4WppK6UZLcAETPBSvuXXx5FQLu3fjqvS4s3Z1/mnWsW0ZrD2fyvO9Sr7JTEJBSqm
+         /Ko1+qn0lqNCNfkw4+GWOBrK/6fmPZA2diOfzur1W2Wos7ESUEV2iMuSVE5oP0YBj4Sk
+         ynBdS5XXuugMk1c1EDIpuqn3DjOoR2Pw2RRVXEQH5d1jLNFOdY0W7jimIC8PMzB8YJ0A
+         UTzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date;
-        bh=//f8AvNNc6uYFJLxeQTbxX7On6S99bmBSIKExbGJtX0=;
-        b=o7QY8W5SCrjYXIaKLfRAPKKefIMLopfPCj7QxB+XKL7+T6UJN4pN3VLxTnRBwgRKTJ
-         1kz91LksNRATyzL8rA6MkZNPbJ5dW2YQxCTFN1mKJaa/dFf0EVCQzAwhyQN6H+A6uwW9
-         Rwt/QADlFgcfCLq9R8mSBy28sro9N5ZRrPd3JtnFy1caLegKB5Zjp/Z1XxdjB3RJFCHN
-         Ny49iSiEGOO2OAjnCgIzhQXC1+2Ep1Nwga5qv8OiAUrzTgcNo8oPwISogxv2G5Ai8cSF
-         6nwMBQ0TbUsgAKe1xY8sPAFwIOoZgY80a/F1aE9hc1hno1NMoedevcHluFR1XRLXZZ0f
-         vpVA==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=/T4zGmBDffm929p//CkvLaNebm6nyFAD9zUf2m9Khc4=;
+        b=nilWPi3bWMQNDEHrfhtm4W1ZMvJRgK8hTT5IYy70EshvXIju5rz2WzJ06lWhvXcWIV
+         i4pTSGu+rYkDbkuMV9aDltF0KeAm+H15CmFSzNWcIBGYy+sIA1JzzeHjIRMy+Hk4GgUQ
+         Gx1mbFEGKHCgPSRIfZcatbrSd1CpnEed+cimc9AngWrTvib1xdRxU6Ux+KYU8rzT1ECh
+         RrjHdgnYT8tWOT5QaTlYQq0UDgveHI72oKAMrB/29qUP1CoiagPvnuzHJV7fMEn76rPp
+         xPULASgPk1RhEUCJr7EiTiSf3jydqspdihEhBspvtfYVviY7sIm4PUk220oJzSxe7J5k
+         j1bA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of agx@sigxcpu.org designates 24.134.29.49 as permitted sender) smtp.mailfrom=agx@sigxcpu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=puri.sm
-Return-Path: <agx@sigxcpu.org>
-Received: from honk.sigxcpu.org (honk.sigxcpu.org. [24.134.29.49])
-        by gmr-mx.google.com with ESMTPS id u2si414314edp.5.2020.11.01.08.02.50
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X1UWJ4sP;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
+        by gmr-mx.google.com with ESMTPS id t13si305927ply.2.2020.10.29.20.31.56
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Nov 2020 08:02:50 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of agx@sigxcpu.org designates 24.134.29.49 as permitted sender) client-ip=24.134.29.49;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of agx@sigxcpu.org designates 24.134.29.49 as permitted sender) smtp.mailfrom=agx@sigxcpu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=puri.sm
-Received: from localhost (localhost [127.0.0.1])
-	by honk.sigxcpu.org (Postfix) with ESMTP id 06A7BFB03;
-	Sun,  1 Nov 2020 17:02:49 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at honk.sigxcpu.org
-Received: from honk.sigxcpu.org ([127.0.0.1])
-	by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sz3em8frl4Bd; Sun,  1 Nov 2020 17:02:47 +0100 (CET)
-Received: by bogon.sigxcpu.org (Postfix, from userid 1000)
-	id 22DD74463D; Sun,  1 Nov 2020 17:02:47 +0100 (CET)
-Date: Sun, 1 Nov 2020 17:02:47 +0100
-From: Guido =?iso-8859-1?Q?G=FCnther?= <guido.gunther@puri.sm>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, Purism Kernel Team <kernel@puri.sm>,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X1UWJ4sP;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x544.google.com with SMTP id r10so4029983pgb.10
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=/T4zGmBDffm929p//CkvLaNebm6nyFAD9zUf2m9Khc4=;
+        b=X1UWJ4sPXdTWBIvP+F+d5R4n1cI/VqlbKPsD5DFU8zgNOzIuU0AC9ZGBu9xoK1nvc9
+         nLQpLTzbDXu6GLCZo8rs9F21QC1I/ouTPmpeh9aZRrsPJmQsdSz1mmWiVUDlJ2pxCFBQ
+         HsUC+ecXEg0DEsWwh1r1i7yZZrhGSZ3sVXc+21L8sIz1N0MiX+FBnYm9qRkgAol30CU9
+         gRgT+nzRfWjSCo4tfKtNOWkwE+WpXvnFmyjFz6L8aXVDOX+8DriE1vxyPtxNOs1NbTPq
+         K6vUU6cObxxoRI09vmq3cdOPXcYnXPouUZzw9wcZwy++N2E4Sx1IY1REOHmCj4ER+4Yt
+         K3Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=/T4zGmBDffm929p//CkvLaNebm6nyFAD9zUf2m9Khc4=;
+        b=WJhzpUIgmeNjawOx58bwrsY+ifr+KvEl6p4f1k4ld3C6QQAJ1d3muM7OJIrCIR/Cfl
+         HDG9KmkNnZcE7UUDWr+qBhP8+CWZ57dme/GmAhJJA+GSEn1JnlbJmA4l9ZKiyr8daevE
+         ZFTVijeGZ+uC5zoCBU+q1Il8Sw+n3xxBghyy9fAYkqfhCHBsvgoJrAmBHy0hcA+oGQG1
+         d8iV7xePFMstybxMeoj8V1u2q319Ep74uqLTgpeYJncIcnxNt93BfnwVkojQHFMY0BUV
+         aFPC7IrNMzyC91os97gf2p91yPP7KdZfjggncRm2GczmFfnPjFfvhPx/LiSUXcXeo0H1
+         gHoQ==
+X-Gm-Message-State: AOAM533vlpICFXpZWoOgAHx6U9/HVikiXaJDesnWVy4aZfaZb9p4usF4
+	MjKvowbyirxV2ignEZ82HVbopgJKMN4=
+X-Received: by 2002:a17:90a:ba8d:: with SMTP id t13mr376040pjr.38.1604028716631;
+        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from my--box ([103.98.79.70])
+        by smtp.gmail.com with ESMTPSA id b17sm3932152pgb.94.2020.10.29.20.31.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Oct 2020 20:31:56 -0700 (PDT)
+Date: Fri, 30 Oct 2020 09:01:50 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>,
+	Purism Kernel Team <kernel@puri.sm>,
 	Ondrej Jirman <megous@megous.com>,
 	Thierry Reding <thierry.reding@gmail.com>,
 	Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>,
 	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, melissa.srw@gmail.com,
-	daniel.vetter@ffwll.ch
-Subject: Re: [PATCH] drm/panel: st7703: use DEFINE_DEBUGFS_ATTRIBUTE with
+	linux-kernel@vger.kernel.org
+Cc: mh12gx2825@gmail.com, melissa.srw@gmail.com, daniel.vetter@ffwll.ch
+Subject: [PATCH] drm/panel: st7703: use DEFINE_DEBUGFS_ATTRIBUTE with
  debugfs_create_file_unsafe()
-Message-ID: <20201101160247.GA3193@bogon.m.sigxcpu.org>
-References: <20201030033150.GA275009@my--box>
+Message-ID: <20201030033150.GA275009@my--box>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20201030033150.GA275009@my--box>
 
-Hi,
-On Fri, Oct 30, 2020 at 09:01:50AM +0530, Deepak R Varma wrote:
-> Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
-> function in place of the debugfs_create_file() function will make the
-> file operation struct "reset" aware of the file's lifetime. Additional
-> details here: https://lists.archive.carbon60.com/linux/kernel/2369498
-> 
-> Issue reported by Coccinelle script:
-> scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
-> 
-> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
+function in place of the debugfs_create_file() function will make the
+file operation struct "reset" aware of the file's lifetime. Additional
+details here: https://lists.archive.carbon60.com/linux/kernel/2369498
 
-Reviewed-by: Guido G�nther <agx@sigxcpu.org>
+Issue reported by Coccinelle script:
+scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
 
-Cheers,
- -- Guido
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+Please Note: This is a Outreachy project task patch.
 
-> ---
-> Please Note: This is a Outreachy project task patch.
-> 
->  drivers/gpu/drm/panel/panel-sitronix-st7703.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7703.c b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-> index c22e7c49e077..89b71d4f810d 100644
-> --- a/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-> +++ b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
-> @@ -502,15 +502,14 @@ static int allpixelson_set(void *data, u64 val)
->  	return 0;
->  }
->  
-> -DEFINE_SIMPLE_ATTRIBUTE(allpixelson_fops, NULL,
-> -			allpixelson_set, "%llu\n");
-> +DEFINE_DEBUGFS_ATTRIBUTE(allpixelson_fops, NULL, allpixelson_set, "%llu\n");
->  
->  static void st7703_debugfs_init(struct st7703 *ctx)
->  {
->  	ctx->debugfs = debugfs_create_dir(DRV_NAME, NULL);
->  
-> -	debugfs_create_file("allpixelson", 0600, ctx->debugfs, ctx,
-> -			    &allpixelson_fops);
-> +	debugfs_create_file_unsafe("allpixelson", 0600, ctx->debugfs, ctx,
-> +				   &allpixelson_fops);
->  }
->  
->  static void st7703_debugfs_remove(struct st7703 *ctx)
-> -- 
-> 2.25.1
-> 
+ drivers/gpu/drm/panel/panel-sitronix-st7703.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-sitronix-st7703.c b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
+index c22e7c49e077..89b71d4f810d 100644
+--- a/drivers/gpu/drm/panel/panel-sitronix-st7703.c
++++ b/drivers/gpu/drm/panel/panel-sitronix-st7703.c
+@@ -502,15 +502,14 @@ static int allpixelson_set(void *data, u64 val)
+ 	return 0;
+ }
+ 
+-DEFINE_SIMPLE_ATTRIBUTE(allpixelson_fops, NULL,
+-			allpixelson_set, "%llu\n");
++DEFINE_DEBUGFS_ATTRIBUTE(allpixelson_fops, NULL, allpixelson_set, "%llu\n");
+ 
+ static void st7703_debugfs_init(struct st7703 *ctx)
+ {
+ 	ctx->debugfs = debugfs_create_dir(DRV_NAME, NULL);
+ 
+-	debugfs_create_file("allpixelson", 0600, ctx->debugfs, ctx,
+-			    &allpixelson_fops);
++	debugfs_create_file_unsafe("allpixelson", 0600, ctx->debugfs, ctx,
++				   &allpixelson_fops);
+ }
+ 
+ static void st7703_debugfs_remove(struct st7703 *ctx)
+-- 
+2.25.1
+
 
