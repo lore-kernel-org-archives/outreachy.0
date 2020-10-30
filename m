@@ -1,87 +1,126 @@
-X-GM-THRID: 6331740910266613760
-X-Received: by 10.129.99.87 with SMTP id x84mr3145609ywb.87.1474223311258;
-        Sun, 18 Sep 2016 11:28:31 -0700 (PDT)
+X-GM-THRID: 6889259171604070400
+X-Received: by 2002:aa7:9dd1:0:b029:15d:d9c2:f8b0 with SMTP id g17-20020aa79dd10000b029015dd9c2f8b0mr7232788pfq.47.1604030647947;
+        Thu, 29 Oct 2020 21:04:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.16.68 with SMTP id y65ls2884261ioi.28.gmail; Sun, 18 Sep
- 2016 11:28:29 -0700 (PDT)
-X-Received: by 10.66.145.72 with SMTP id ss8mr3443059pab.56.1474223309177;
-        Sun, 18 Sep 2016 11:28:29 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
-        by gmr-mx.google.com with ESMTPS id z4si4085432pam.0.2016.09.18.11.28.29
+Received: by 2002:a17:902:7809:: with SMTP id p9ls2246169pll.7.gmail; Thu, 29
+ Oct 2020 21:04:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmY7X3FSsYDuKRxF8lPLWsSwOWMo/yLK5GpkQaYss4dqYQtpywdBSnVH5aSxmQTe/9PpSU
+X-Received: by 2002:a17:902:8d86:b029:d1:9237:6dfd with SMTP id v6-20020a1709028d86b02900d192376dfdmr7444409plo.22.1604030646249;
+        Thu, 29 Oct 2020 21:04:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604030646; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SXnRRwAMv16CvOZKbGQt+usX4/qcuJbcuU80EI1dIDqhm7Nsov105D6CcC0rB43Pfb
+         OASwIKpWdce68JDMdlFAr4sSLiBCTQHT2RHMbwZm7KbaDRaViRSMoK+5dKEl9NwZWlMt
+         xAGOjrt+OLbC41SlBGV2z3vhyApoIRQ+/Vxdg0Nb8tMnkyBkLjHvR1Y+KDCzaMAKO5RG
+         G7t2IINnYQh041aiWIUJ+Q+n1Nlm4ZcVY07beMSjd5EN+6l0Ql7h1iJSgT2VpYFIHC/h
+         jvyO56t2HS/pXWnKyYOFH5CaRIoHXKxNsCO3E04fese2px15gcEH2YXinVyIKJM+P5Ly
+         BWOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=omeX/7USjZZ0bCTBjHGOVLTjZl1oqWJzp7gUz7b6h8o=;
+        b=VnVo162214jIYT8ErVuM4n+kEZhQ1ymLlDF2VXYP0ixQz+ovx5cZGWDBnBum+RRqR6
+         Z7HaJtZhCpjVHRhj2wiM33NytxWCfDCfh5Ch5Fp6LE1y2MNK2mQBY0pChwa9T6CxsDvO
+         f/mc7ExJ+4Otr7K1w4QFmm7Laztli4LUAFFgL6fm1A65c+nFBssKZuO815lySNtBGQbD
+         UgSfm1MDmgR51y884mSrvc8lN+goYNsGk1SnHi/nzaKZRGlo7IP9somwN3jMzeLAn5JC
+         r4dOASIHT2Unomb79BfyvwO/1fyapJhlOlkDy/i4WnVQDBD7JjyWtE0ziJyTNrpMXiem
+         mVuQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nDvPvTn9;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pf1-x444.google.com (mail-pf1-x444.google.com. [2607:f8b0:4864:20::444])
+        by gmr-mx.google.com with ESMTPS id l192si355020pfd.6.2020.10.29.21.04.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 18 Sep 2016 11:28:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Oct 2020 21:04:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) client-ip=2607:f8b0:4864:20::444;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bankarsandhya512@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=bankarsandhya512@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x241.google.com with SMTP id my20so2887890pab.3
-        for <outreachy-kernel@googlegroups.com>; Sun, 18 Sep 2016 11:28:29 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nDvPvTn9;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::444 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x444.google.com with SMTP id b3so4158268pfo.2
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 21:04:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=M+9+HQlzpncVHefmAOw1I5im+r9XjQsZ5Vx2XUVgB68=;
-        b=T2tBZSNumvJfIHChp69JieEFKwkMbUHtjRt+etUkmO4uqbrfUurvCpokZU+YfC9eJt
-         82DcJK/qh4Q+98YsUdx8erS2INyrh/ZYvZlrYlncRkxjwffz1XabWrSC6ySBSOYcpYWd
-         NxjCFJOjOfVAgyRiG/6tuvTGyqQ+/tflyPwENIrgKBgwYxSwapR/FTdzktMoI1HISf1l
-         4T48EM0YO1OsiQxCTBzonVKnGRhGdQPPXo8KdnlcaDpR3HO0pNTxWAjqbxPdJy0ttMwY
-         rAA6ENPzdXVfKduMF+djN/0VH/MB9AEUw2xM1V8ewd8uf3ImgIbay8HJjnSF+CBOBXyM
-         9Opg==
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=omeX/7USjZZ0bCTBjHGOVLTjZl1oqWJzp7gUz7b6h8o=;
+        b=nDvPvTn9phgjic1rYziuxJbM/OAHLhdXJG7ZM3/oaHXZLLEojGVPRr0/dOJEMOX2ZV
+         0y48gTkP0J6wfHakJaZv98m/RyzH64FNDGl4ALrV2KM0/WaO9GWXgd60CUeWwwTgZd9x
+         OwQYnx4Jv+QedwVrqKomnqgBSkiMcVlKi+DDXHX4aEeYmacKedUyw4sfEn2NK2gooOAW
+         UUng2XwfDd6pkqZjUw9pOpsV8BXzcYBMYGqGFu+80jE1qe25+6V+wsPRSdQkpdAXnQQN
+         9ksbWoIOgpNjOQYJQIpN/EEZBgTd8eMZ5xqHhYPSPdH0UiU2VOZ5eOZ6WszqRidIbY3A
+         /BOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
+        d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=M+9+HQlzpncVHefmAOw1I5im+r9XjQsZ5Vx2XUVgB68=;
-        b=Q5feXJWMzjmmxYdjh5MVgAk9X2Gz+3mYOl2EBB7MsYz6/ABsxafr5IybkrAi3mm4c0
-         tvS6LjuvPK4sVqqxAphcppO2dsqjwxc9IKofybpTFE+nIFdlPoK47RLmJytG0PjmTkl+
-         /8nYasRru7bH1EHRhuo2MX8CHM8Bu5hrUu4N1AZemmFKFU8b00iAxYeqPFlNt7jT7y/Z
-         RKDCa+pux20CGrrOnPyQoLLVa7wCFuvZRMdyxnHJWJ/dXbyRAczXjeC5oPud4i5gJ5R7
-         RMkJT8SW5JVhMnIzH2NlwIg+yHilyxnZt9H7YgiZa9o8rVwEL+H5Kncaw3D4i2iNobKo
-         GVvg==
-X-Gm-Message-State: AE9vXwNS1/7grjlduuYeEQl5J80FVCJD3ulccUbV5q21fKaLk8+grbRf2snWWK+FzRrZ3Q==
-X-Received: by 10.66.222.202 with SMTP id qo10mr40142481pac.76.1474223309008;
-        Sun, 18 Sep 2016 11:28:29 -0700 (PDT)
-Return-Path: <bankarsandhya512@gmail.com>
-Received: from sandhya ([182.77.93.227])
-        by smtp.gmail.com with ESMTPSA id x126sm65801035pfx.61.2016.09.18.11.28.25
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 18 Sep 2016 11:28:28 -0700 (PDT)
-Date: Sun, 18 Sep 2016 23:58:21 +0530
-From: Sandhya Bankar <bankarsandhya512@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: oleg.drokin@intel.com, andreas.dilger@intel.com, jsimmons@infradead.org,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: lustre: Use x instead of x != NULL.
-Message-ID: <20160918182821.GA4646@sandhya>
+         :content-disposition;
+        bh=omeX/7USjZZ0bCTBjHGOVLTjZl1oqWJzp7gUz7b6h8o=;
+        b=fKMTEaOCfJNbfU2swJUSxLcwQV2LXldv06BGkeO88evDMRfl3mPwNZrwtnP7e6Jg2o
+         ix+cllCMryKliSR/0Xphe1o/iBBWTH4+bzkMQWkyi/slt7iUQ6toYAJ3g8+aXI6HLMwR
+         +6UuYa8Z9zHf2wcaITdg4HtzrUPnBsjZtmPvQqQ2hJpLIn+eqN7OCWTh/37ivWZecH4A
+         1RYkQFA01knu1kfFzdgJku3FG51E0MEpEY5GAMRzqjPUMOHuH/dUjzYSU+qUf2anYvSS
+         13L3ZgcJowjfhvZQS0ErGCP6RGP+HBCJu/lBRUKNLzxJodDUkhteuoPao+5V1lUhLDF1
+         77iA==
+X-Gm-Message-State: AOAM532OkFzPssZeK42YvSpNONgjCOTmTtfo5E550/VPIXRaVZq7vPMS
+	LiLmWMDlQImciowAhJ6eDmWaryZlva0=
+X-Received: by 2002:a63:5152:: with SMTP id r18mr458807pgl.381.1604030645846;
+        Thu, 29 Oct 2020 21:04:05 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from my--box ([103.98.79.70])
+        by smtp.gmail.com with ESMTPSA id j2sm4048182pgi.48.2020.10.29.21.04.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Oct 2020 21:04:05 -0700 (PDT)
+Date: Fri, 30 Oct 2020 09:33:59 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Alex Deucher <alexander.deucher@amd.com>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org
+Cc: mh12gx2825@gmail.com, melissa.srw@gmail.com, daniel.vetter@ffwll.ch
+Subject: [PATCH v2] drm/amd/pm: replace kmalloc+memcpy by kmemdup
+Message-ID: <20201030040359.GA276414@my--box>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.20 (2009-12-10)
 
-This patch was found by checkpatch.
+Use kmemdup() for instructions using kmalloc() + memcpy(). More
+information here: https://lwn.net/Articles/198928/
+Issue reported by coccinelle script: scripts/coccinelle/api/memdup.cocci
 
-Signed-off-by: Sandhya Bankar <bankarsandhya512@gmail.com>
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 ---
- drivers/staging/lustre/lustre/llite/llite_lib.c |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+Changes since v1:
+   - Update patch subject and log message to match proposed change.
+   
+Please Note: This is a Outreachy project task patch.
 
-diff --git a/drivers/staging/lustre/lustre/llite/llite_lib.c b/drivers/staging/lustre/lustre/llite/llite_lib.c
-index 1ff788e..b078959 100644
---- a/drivers/staging/lustre/lustre/llite/llite_lib.c
-+++ b/drivers/staging/lustre/lustre/llite/llite_lib.c
-@@ -1701,7 +1701,7 @@ int ll_update_inode(struct inode *inode, struct lustre_md *md)
- 	struct lov_stripe_md *lsm = md->lsm;
- 	struct ll_sb_info *sbi = ll_i2sbi(inode);
+ .../gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c  | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
+index 740e2fc7a034..1e79baab753e 100644
+--- a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
++++ b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
+@@ -252,12 +252,11 @@ static int init_powerplay_table_information(
+ 	phm_copy_clock_limits_array(hwmgr, &pptable_information->power_saving_clock_max, powerplay_table->PowerSavingClockMax, ATOM_VEGA12_PPCLOCK_COUNT);
+ 	phm_copy_clock_limits_array(hwmgr, &pptable_information->power_saving_clock_min, powerplay_table->PowerSavingClockMin, ATOM_VEGA12_PPCLOCK_COUNT);
  
--	LASSERT((lsm != NULL) == ((body->mbo_valid & OBD_MD_FLEASIZE) != 0));
-+	LASSERT(lsm == ((body->mbo_valid & OBD_MD_FLEASIZE) != 0));
- 	if (lsm) {
- 		if (!lli->lli_has_smd &&
- 		    !(sbi->ll_flags & LL_SBI_LAYOUT_LOCK))
+-	pptable_information->smc_pptable = kmalloc(sizeof(PPTable_t), GFP_KERNEL);
++	pptable_information->smc_pptable = kmemdup(&(powerplay_table->smcPPTable),
++						   sizeof(PPTable_t), GFP_KERNEL);
+ 	if (pptable_information->smc_pptable == NULL)
+ 		return -ENOMEM;
+ 
+-	memcpy(pptable_information->smc_pptable, &(powerplay_table->smcPPTable), sizeof(PPTable_t));
+-
+ 	result = append_vbios_pptable(hwmgr, (pptable_information->smc_pptable));
+ 
+ 	return result;
 -- 
-1.7.1
+2.25.1
 
 
