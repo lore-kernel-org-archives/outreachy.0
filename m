@@ -1,93 +1,113 @@
-X-GM-THRID: 6802121494929342464
-X-Received: by 2002:a05:620a:1362:: with SMTP id d2mr14357559qkl.120.1583742325011;
-        Mon, 09 Mar 2020 01:25:25 -0700 (PDT)
+X-GM-THRID: 6889129421220872192
+X-Received: by 2002:a2e:7a11:: with SMTP id v17mr892084ljc.291.1604061888515;
+        Fri, 30 Oct 2020 05:44:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:6542:: with SMTP id z63ls1265531qkb.3.gmail; Mon, 09 Mar
- 2020 01:25:23 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt/1AlJ8F1NqrXqPorCcnOTcA5gGmX5htzyniZ8Kvt4d/SpAI3LalQMCkABCQhjEDj00B/m
-X-Received: by 2002:a37:5d86:: with SMTP id r128mr8889757qkb.177.1583742323843;
-        Mon, 09 Mar 2020 01:25:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583742323; cv=none;
+Received: by 2002:a2e:7c15:: with SMTP id x21ls450944ljc.8.gmail; Fri, 30 Oct
+ 2020 05:44:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzbtowKFe90njvFou3fCI5poXg/spr+h7VdrCjeVAAi4gaDjtXYHGXwnHVblq8lsDPjTT1a
+X-Received: by 2002:a2e:b179:: with SMTP id a25mr995892ljm.277.1604061886144;
+        Fri, 30 Oct 2020 05:44:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604061886; cv=none;
         d=google.com; s=arc-20160816;
-        b=ilf7YBJmERc57NABWX7CXAR+Jxsjn1eDDnikF0WH8lZ7iPlX8P2WzeJL1JgQMRLMT9
-         i84slMVIPzjobuTB6NODDEdBKMAXApCGjncA9qqpDqmULPFUcFFKnwBdeXFqc3cC2iDq
-         F48PKYyRDlA/I4VtavMiv0ANNLryeDCxD7NTNBfq7/CiEC2L92Mr4urL4799z+92z44W
-         boPbgoKMFLkfmsTxvOtTX+Ou+88SloT543gWEAmaPWS4cclrBrhCTXFtul2uNXETMtHv
-         5hXWnMYlfo60Gp3cyHJByv1nHNwK/WQIea3YZhM9P1GiIsyRmnep7O8mAGa7JPFhHPgx
-         qyoA==
+        b=TgCRBiUMGLysVZWThbMclm2FITIE4zLHzF9GDrBmGZxjcNn1Da7qFnqIk2mAS2wMzg
+         P2/8qxzc+SOCCZi7cWnesheXlUVWxBHZH7yx7gONIE2Ys4VCGBuAtaKLUoq11V+AJaFP
+         m+sMtFQrWFKCOO5SunlKpDBsYFvKceUbxQbc7lilakw2/xYRHYgb8iYxT1BD3FfxTfmh
+         +tntUjl7TDbVeGgHscIE+wcfYCyrZfr/VHhIxFDrG8/DTzrf7YHw6J3yum4Sg3BH5dpV
+         QHbCSOr/TaO5dwA10MCz/7ahrn6YQd/26fBvffrjcbVF8/fDUSo0IvxLXHx9jet2oIm8
+         gZ1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=kufLnaX5Sr/Okc7wxmV2dAp5Tq330VfQfBrsobfMChQ=;
-        b=wlF9YRXfW0vUjh5ZMpYKijI6BZfVLkyHoSfPdTtfeun7aJ5iy25mfYWxC5j4Kd65IO
-         pBWUyTVpiXZHHkBGqysG0CWpzirXKTS3clrH6ozTxWsfjSKBXNlhzXSYiH6EcfqhFk76
-         QEGNDmz52/by7rON/ZbXTOz0B1sz0uj2/+pMQYRnlx7SgC0rtywgMxZ597F3y3s0MRR+
-         wacsLrySBJCz46CrIM6Q2SqFHU1jG/vGdHWzTXQchs9tuVwuhAhhskJWtamz/HFj1rt0
-         7MgwPeIRkshGv46W/zN7hFiBMjKR3z8IUHZ+2vIQRJAvyOwuTWWJ9EUuA78GcwMqEYwj
-         2hXA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=OgLXSyIVX276ZslJN/c9fSNfxodLXP9LNRDeGwp5Sv4=;
+        b=aYCYw05t3whiH2rr6pK5guhG8VCm+r5MljpCYseKYu9hFBZSgyI4Ag9tQBz8cmpFdL
+         njN3x3FadaAHqLK+U6gSzqdA+Tabm+W4nMa8wEvFa9OZ1W1bsW3pFIIKJdpPBZFTiWLC
+         99CEkdn7/4fTuefDxC/bC4HDnlNkrLOKBZ+akgOVwTUSXny/Ln/fzdFo6ixszgqFWSHG
+         lYiWUxRXnAyDsDeV0rfwyT7LiIOPZQSVQWgOtmE0qGKmFUK+BURJMCPfD3pqy/qngzQA
+         aZP7DbeipnyupI8AW9IVdxykT3eyxLhsvqMgAyz2O6vveGyn1My668h8OU5Mk6oCWsC9
+         SUrw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XUXKlHUw;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1034 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pj1-x1034.google.com (mail-pj1-x1034.google.com. [2607:f8b0:4864:20::1034])
-        by gmr-mx.google.com with ESMTPS id c2si56889qtn.0.2020.03.09.01.25.23
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p1si146008ljc.0.2020.10.30.05.44.45
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Mar 2020 01:25:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1034 as permitted sender) client-ip=2607:f8b0:4864:20::1034;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Oct 2020 05:44:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XUXKlHUw;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::1034 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1034.google.com with SMTP id mq3so460040pjb.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 09 Mar 2020 01:25:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=kufLnaX5Sr/Okc7wxmV2dAp5Tq330VfQfBrsobfMChQ=;
-        b=XUXKlHUw7voGVSvX1byCt9TVUVD8r9WubDk4VLSltiWvNmnan3MMWBaIxgDR+1DRk3
-         oTQl8MdKQUReMEzofw5hbb9wMH6uF4ZIs0Os7iyEiRjE+bYYV1sc4OgZ8oUQcdBCt+C6
-         gjCbthaKs6BjT6chHEm3v1zacrg1j/LLwgJX4SmuCMWoFCyypjnys8iLTt6EH7grW8Ng
-         wpFho/LGuECrcl1bP47mdETYtXHNsk/UFIvUiHMlknPaRBaGdcE5eJs892tmHnr9GJAt
-         0CIFGAO7bDNEOE9QufxcBOXTvXKT06q6EntY2Ng0FGublZ8nmZuG6dcGSAFrohBFDo2X
-         nupg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=kufLnaX5Sr/Okc7wxmV2dAp5Tq330VfQfBrsobfMChQ=;
-        b=H/Jy5fTQl9EFxVYJ89NcSwv63PbFUIiu92j7pSo8509GNNq9zKwWGqP0jqsMeqA3yd
-         donAfQ8e2uqQZUysiSM/4fQwFAaDFcEKqY5g4Uoxs+3RrCN+oiek8KinMraBaQXuVlgb
-         PoA7wppQctIpQ+biAifNx/0h7VMz+jXL3L+uLR/+SAZfns0UJrgqZlIWLwGV79/bMUC7
-         Wg/u05W3zxHhgzW7z3hCBJeZ29yGo5wgn2cd9U/L1Ewuwjmbwh30Plmvbb4unxXw544L
-         CW+RifkS6dS6aUUgw1VdHKXnFK7JGZECrwzBU4WVhV/4WJvxpnZaKF/tBrjgnaN/SVWX
-         umuQ==
-X-Gm-Message-State: ANhLgQ2DFVmSEc8xqUXekiN7W3xGUHst8lNEUFs3CyY8gpbUW1Wt+FEV
-	9C4Qu9VpiT6B5IfRWDmrlPR7BS7HXXQ=
-X-Received: by 2002:a17:902:ba8a:: with SMTP id k10mr14929208pls.333.1583742322842;
-        Mon, 09 Mar 2020 01:25:22 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from deeUbuntu ([103.241.226.246])
-        by smtp.gmail.com with ESMTPSA id u11sm17825853pjn.2.2020.03.09.01.25.21
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Mar 2020 01:25:22 -0700 (PDT)
-Date: Mon, 9 Mar 2020 13:55:19 +0530
-From: DEEPAK VARMA <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: Hello - Introducing myself
-Message-ID: <20200309082518.GA3888@deeUbuntu>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.77,433,1596492000"; 
+   d="scan'208";a="363169957"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 30 Oct 2020 13:44:45 +0100
+Date: Fri, 30 Oct 2020 13:44:45 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Amarjargal Gundjalam <amarjargal16@gmail.com>
+cc: Matthew Wilcox <willy@infradead.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: rtl8723bs: hal: fix
+ position of constant in comparison
+In-Reply-To: <687cd3942fcefbd153d318bf0d7014ff01f0bce3.camel@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2010301343230.2733@hadrien>
+References: <20201029194029.141165-1-amarjargal16@gmail.com>  <20201029194029.141165-2-amarjargal16@gmail.com>  <20201029194643.GD27442@casper.infradead.org>  <22b1470078eb13300e7afdcede8aaff27a95b75c.camel@gmail.com>
+ <687cd3942fcefbd153d318bf0d7014ff01f0bce3.camel@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-Hello All,
-My name is Deepak and very happt to be shortlisted as an applicant. This would be the first time I will be getting to work with such a big team.
-I have started following the Kernel tutorial guidelines and setting up tools. I look forward to learning from you all and being able to contribute with my patches soon.
 
-Thank you,
-Deepak..
+
+On Fri, 30 Oct 2020, Amarjargal Gundjalam wrote:
+
+> On Fri, 2020-10-30 at 20:29 +0800, Amarjargal Gundjalam wrote:
+> > On Thu, 2020-10-29 at 19:46 +0000, Matthew Wilcox wrote:
+> > > On Fri, Oct 30, 2020 at 03:40:26AM +0800, Amarjargal Gundjalam
+> > > wrote:
+> > > > @@ -1670,7 +1670,7 @@ static bool
+> > > > halbtc8723b1ant_IsCommonAction(PBTC_COEXIST pBtCoexist)
+> > > >
+> > > >  	if (
+> > > >  		!bWifiConnected &&
+> > > > -		BT_8723B_1ANT_BT_STATUS_NON_CONNECTED_IDLE == pCoexDm-
+> > > > > btStatus
+> > > > +		pCoexDm->btStatus ==
+> > > > BT_8723B_1ANT_BT_STATUS_NON_CONNECTED_IDLE
+> > > >  	) {
+> > >
+> > > While you're touching this, please reformat as:
+> > >
+> > > 	if (!bWifiConnected &&
+> > > 	    pCoexDm->btStatus ==
+> > > BT_8723B_1ANT_BT_STATUS_NON_CONNECTED_IDLE) {
+> > >
+> > > ... fixing the name of that stupid constant is probably out of
+> > > scope.
+> > >
+> >
+> > Sure, I can work on it. Can I do this in a separate patch? This
+> > driver
+> > has lots of namings like this and I'd like to do single type of
+> > changes
+> > in each patch. And do you also have any suggestions on what could be
+> > the best way to shorten these constants?
+> >
+>
+> Oops, it was not about shortening the name but reformatting it. Got it.
+> Should I do this in a separate patch or modify this one?
+
+In general, each patch should do only one thing.  But adjusting
+whitespace on the lines that you are already changing should be ok for
+just one patch.  If there are lots of occurrences of this strange spacing
+in the whole file and you want to fix all of them, that would be a
+separate patch.
+
+julia
+
+
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/687cd3942fcefbd153d318bf0d7014ff01f0bce3.camel%40gmail.com.
+>
 
