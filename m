@@ -1,131 +1,189 @@
 X-GM-THRID: 6889248551394607104
-X-Received: by 2002:a1f:a8d6:: with SMTP id r205mr6296335vke.0.1604044951214;
-        Fri, 30 Oct 2020 01:02:31 -0700 (PDT)
+X-Received: by 2002:a9d:744e:: with SMTP id p14mr764531otk.135.1604044818018;
+        Fri, 30 Oct 2020 01:00:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:5adb:: with SMTP id x27ls418414uae.1.gmail; Fri, 30 Oct
- 2020 01:02:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyGuq/KhX2q3XgbmARX/e7omHlzU+weyd/pQeh5tHAHl72h26rja7P5h2t6mI54aMvIELe
-X-Received: by 2002:ab0:244f:: with SMTP id g15mr513304uan.78.1604044949721;
-        Fri, 30 Oct 2020 01:02:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604044949; cv=none;
+Received: by 2002:aca:390b:: with SMTP id g11ls1356966oia.1.gmail; Fri, 30 Oct
+ 2020 01:00:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQEvve+pySwa3BeM8+dDLHcW1BHcRr4ZgPzgf7qq187mX5zbvmHFBlzvzCieWYEQtFJg9d
+X-Received: by 2002:aca:5b85:: with SMTP id p127mr834571oib.34.1604044816926;
+        Fri, 30 Oct 2020 01:00:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1604044816; cv=pass;
         d=google.com; s=arc-20160816;
-        b=VxHvhBJrsP2Tm9FtESbpdMHeyMUPc7EsMA+aH63We/WRmpBlvE6H85hchEwhx0jYHG
-         NVfaQ6ZuYA7Ba4bex/DVJIiqje8noN6cjWXTzOjOQpgdykyfLCft8Qg63xdFME0ekIJn
-         9wDxhkZas/Ct4vnM1xbZ/1Bj2WtW8LfdeFl13xzIJ+qBcZ9lRJqKKOe8Pl5w6LVWqvxo
-         4HaHfbveBIlFObXvsqJdIA4z58ymwM2lnohTEk0Iiy4QUxGe/FpdxVvT9kYldBKw/Igx
-         PDCgmusF1tDiziHPlYdxlNy3tvFfvViq7xUaJRRUOa/D/eVhOcFHzJEEC/vPwMNUdPfo
-         HDoQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=iDfc8gB5Ud+LcOZETBnYPqUNNLsj4PyiWV/93kwTrxw=;
-        b=aLYP20uhbWObtidR1zUA04EgKn926uQ0DTJaS6ZLPXXDwtzKKoG92lgHYXJZS3ksj3
-         R8aqkxu51ZjXYjco1cB0wB0xrT6G8OptPLcUyHSA7jbSWHSTXEviT9yn5S70BIpx5UaT
-         O9xtG3sH64jSFjdwvZTRuv68O4eB7Tp6WBrQ8omuYkt5ScuwsN31qal151s3QaTNUIZT
-         Po47HXVbkOkN8xMfgiyK8/svB6izhAy0V4eolT7H0LjzBxg+9Ya+Zls3rJ3I8377cbXL
-         F3xsb5z72i60Od0RfWipZzeZa9Iv1o5RP2hYbN0eTjih+5vMPEo44ikt+E/j/eSee2r6
-         SSZw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=VbONgRrL;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id v18si294335uat.1.2020.10.30.01.02.29
+        b=l1pFsb4c+MiOVCo2pdm0/S2RP3ColBF+MwZa/SaKreXVIobt1P6FK96Hp+fGsRRQTA
+         p9+cT6yrcuu3J0Z5bRoZ86ufUnBbk/JcEPBFubser4KlUGbTo/F2f8oi8O4EqF4Cfjf8
+         rCEzDFQXF682Xn+5umoZPxHl0xNnls473KtV2b9IYw5ep5tUX2gfCgRV5QH1i7q64LAF
+         4hviVKPJxfkry1lfTY9Q+Z7zOlv5VBVvjQOYQYl3/E5CSPbJx+y4iFIU60DJjE/WWIL9
+         TJog/2zL9Op9bQyIn2LeqdV8o9eVKFveuE/9+0iK9fNXmNVcEoJ8XwXOlUJZoIA1fW0E
+         1Kfg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-language:content-transfer-encoding:in-reply-to
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=R50FfW+0YisEFwHW7BnxV3bANK9rDM+i+0z2VN/b5xU=;
+        b=zka3o9ndQPPIG0dez+TDTI+lly9Izy/Y/CQCZ9wngejPRBiVVsYBAIBf9s7J4HWc+J
+         7aJF3IFxNcDWsYe6PsNvXMgTEt2vpqL4gRyxAIRifgSECTL3mJfczOhRMohE0u4/vv5k
+         GDZCcwlE9HhveOuYFPlT8c9ib4zVi2f4ISMSfQJ9dt1KYzyJsRnTF4gvl5eRXahCP9IR
+         tVrciywVBd2GZWpZ2WzHRtIUGJeal9fSEwXBP1gKTN2+4TPdBCu7bFU94Ls0ANyXA17v
+         gTFBHS7C05cmLKGefhBRjwNe48184A1bwXm5q33XIpSHvmMA8Uiw79Fjgr9wbAwjcnv/
+         9EOg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b="ZN0/lyWr";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=neutral (google.com: 40.107.223.46 is neither permitted nor denied by best guess record for domain of christian.koenig@amd.com) smtp.mailfrom=Christian.Koenig@amd.com
+Return-Path: <Christian.Koenig@amd.com>
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (mail-dm6nam11on2046.outbound.protection.outlook.com. [40.107.223.46])
+        by gmr-mx.google.com with ESMTPS id e13si342025oth.3.2020.10.30.01.00.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Oct 2020 01:02:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Fri, 30 Oct 2020 01:00:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 40.107.223.46 is neither permitted nor denied by best guess record for domain of christian.koenig@amd.com) client-ip=40.107.223.46;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=VbONgRrL;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id B7F6F206DD;
-	Fri, 30 Oct 2020 08:02:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=default; t=1604044948;
-	bh=sjpPspkLsWiWbFSLHAjaeQlueI6WT5/q7Z9EziIU0wQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VbONgRrLC42ZQFZhvxtyCZWX4k4LA6yxZEzKU7qVlAJvFRe1crGjYUjeJGfeEVdOf
-	 lVayfrDrNhKZq358K3LswRdStjL7Gwo1L8DNtWjDUn2MPqzmRuEjmiM2BBUb/dBOHH
-	 Orh7h2x797L4hI4r7sZjjgnytACUICBpQ7aGblkk=
-Date: Fri, 30 Oct 2020 09:03:16 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, melissa.srw@gmail.com,
-	daniel.vetter@ffwll.ch
+       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b="ZN0/lyWr";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=neutral (google.com: 40.107.223.46 is neither permitted nor denied by best guess record for domain of christian.koenig@amd.com) smtp.mailfrom=Christian.Koenig@amd.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gpRoeGHBrLn4ObkrXe2tMuy5uNJ9tuUasLB5YXLy2Uoz6v1J0lYSzGFPtGDlvmg/MWkiKNW+Kb99gZ9lo0jCd0SMOZfBLGtSAooXBqbu6V0Q3LAb36MoNdK9iz0exDQJhntSpo5Z/ycbcpzauJgYmKiRfOI/ybW5fAXCFGV/nv1oH7pjYAFp/6m+rF3z3mMyGnPOAeB1GIFaE8J5Ro1X10lC68U9MwUQlkoqdTL/+YYSsC3dgqIeGPt+U/Oj6Wtq8ffob0WUVb9gK2jEPzy7E4rtVMMmBJtPFL+9CTOdNaOHfBDuu3dMwQiSs8z/EPtL/DXqyo4xx6HHRgbcbxNjmg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R50FfW+0YisEFwHW7BnxV3bANK9rDM+i+0z2VN/b5xU=;
+ b=BxeiB13zTVsT0pTsUbkz13NCua8y2FlcaS2SsACC8RdSobePoDyfSewb2BiNX5lk2aI5hwkVLaCHpaeNdF/+I6nWKjIXXqUOlBQEkNEEgyQ2v4j9QXK7+FUM+AZTDOyxj7leTvxxENQU1YG3ZKiBUf0mid/6UfIAKceRZtF2eONvH+0IKpgK+NhUvVhr/DeX+C+mXJxHMBTTTkVjDkabyY3MxoTDJcIOM5WqD22AI7/dY1a/B3Ub4/6XOBWrrmO8NGIO1Q3AuGIfbe2lpU6xJVyIj+0ccFKQJMhTCxLcYm8NaE7VKzHqkgDtVKNCRwmU22HCimT1WRNFDOUnPO3ziA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amdcloud.onmicrosoft.com; s=selector2-amdcloud-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R50FfW+0YisEFwHW7BnxV3bANK9rDM+i+0z2VN/b5xU=;
+ b=ZN0/lyWrJR81Iv3ydGoyk8UQ68khAGtwy57Wgzhe7kMa6sRfQAFhtQi63uhlrv7IS16Vh3tUiY/wPfjwMAV743QrApFyznd0FnVu6d+gEDVO5U1RYlFWaSSsoLW1u/FySHCk9GraqaKDlzPLRrd8YloSqEoHyyMKETS6HmKNWKw=
+Authentication-Results: ffwll.ch; dkim=none (message not signed)
+ header.d=none;ffwll.ch; dmarc=none action=none header.from=amd.com;
+Received: from BY5PR12MB3764.namprd12.prod.outlook.com (2603:10b6:a03:1ac::17)
+ by BYAPR12MB3431.namprd12.prod.outlook.com (2603:10b6:a03:da::26) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.28; Fri, 30 Oct
+ 2020 08:00:14 +0000
+Received: from BY5PR12MB3764.namprd12.prod.outlook.com
+ ([fe80::21a4:4ed1:c6bb:5437]) by BY5PR12MB3764.namprd12.prod.outlook.com
+ ([fe80::21a4:4ed1:c6bb:5437%5]) with mapi id 15.20.3499.027; Fri, 30 Oct 2020
+ 08:00:13 +0000
 Subject: Re: [Outreachy kernel] [PATCH] drm/amdgpu: use
  DEFINE_DEBUGFS_ATTRIBUTE with debugfs_create_file_unsafe()
-Message-ID: <20201030080316.GA1612206@kroah.com>
+To: Deepak R Varma <mh12gx2825@gmail.com>,
+ Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com,
+ Alex Deucher <alexander.deucher@amd.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ melissa.srw@gmail.com, daniel.vetter@ffwll.ch
 References: <20201030032245.GA274478@my--box>
- <20201030071120.GA1493629@kroah.com>
- <20201030075716.GA6976@my--box>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+ <20201030071120.GA1493629@kroah.com> <20201030075716.GA6976@my--box>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
+Message-ID: <5a7d8e8d-8db5-ff56-6448-3f1cefc11ef8@amd.com>
+Date: Fri, 30 Oct 2020 09:00:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 In-Reply-To: <20201030075716.GA6976@my--box>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Originating-IP: [2a02:908:1252:fb60:be8a:bd56:1f94:86e7]
+X-ClientProxiedBy: FR2P281CA0022.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:14::9) To BY5PR12MB3764.namprd12.prod.outlook.com
+ (2603:10b6:a03:1ac::17)
+Return-Path: christian.koenig@amd.com
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [IPv6:2a02:908:1252:fb60:be8a:bd56:1f94:86e7] (2a02:908:1252:fb60:be8a:bd56:1f94:86e7) by FR2P281CA0022.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10:14::9) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.8 via Frontend Transport; Fri, 30 Oct 2020 08:00:11 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: bb609e36-384c-486a-68d8-08d87ca9d4af
+X-MS-TrafficTypeDiagnostic: BYAPR12MB3431:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS:
+	<BYAPR12MB34317CCE5EA4818C074F924B83150@BYAPR12MB3431.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	NItOQ8x5uK3f/ZiYgkh8vccMDDR2KOp9V9iVscHV8SC+6hgKvIQu2WuKhhEMuKqNyCm84wwsQuM/5p4BF11UjR3xv19MsxhRN0+NXwPLytLHqD7CSGBnhH70rrqyZ+hIyamREmFM2goXI58tA63Yc1zuolG9SK8c1fq9Iz/9KGiPMXmMHKmN21LDD3SFWKyviSkOsAZ+1soGnFAQUv1N8cKtIu4uwCCF4EEQaHqMwpCs9Nm2CtTRbo+MJs9QeBllJg2/2+tJ8+I1tLuYwnByn59VtvIOeMM85hQQ1JMdD+u/N8v/3YVfKChU2X78FJDUUIVH1KFKB4q72MdnGnWBxSMB6IuANNhxq8W0v/sjdZrsNoM4dalrNr3v8LV2wayI2pezvywFS1swpXp3O/1H35dkRiKV1L6LidV6XmgQZvUrxLIz3ZMVZPxqnK6wpKV1kMEKASUURi7d8NpVrTLD0A==
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR12MB3764.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(376002)(346002)(39860400002)(136003)(366004)(396003)(66946007)(66556008)(966005)(5660300002)(36756003)(52116002)(4326008)(316002)(86362001)(83380400001)(7416002)(54906003)(110136005)(66476007)(6486002)(8676002)(16526019)(2616005)(6666004)(478600001)(31686004)(31696002)(186003)(45080400002)(8936002)(2906002)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData:
+	Ty/hQ5oBKxL5iR5EiOmjONC8IrrPFer9HDkRBgAmeaxI+mWAk5gpGzd33tA+xvSyzTZeyH+1dhaU0VYidtiY9yIGuXCwz5wFDfKyP3svo4W3OaybKOwDAmsvXn4bQGtahoTKI7cIZ+J8BnMy23It4l88vnHd/sAzj2GS97WEEE9lQBTfOU4uSSUZuEB97/e9W2nKYNdjiXVNdW75tpUavQYbwm+aCIDJAABUQ4KpVXDKxHaVHIUBC9ypV+vIrHCYUutqordXKoKeVcEAW6+g8c9zvHlfK09dwsMaiJtmra9gYDJFGzbbMz+bfu28zXYGtx4NYayBO3RjxRSU3I3KB8TbWvOHXx2BpAXDoP5bgexgwwpEaY48JBY02qMppX+cSzzCZjkWpvQW1FPxiYipQOOiwYSXOXPIPkVfMDSLhHDEJ6/lSbLjV3Pac7pFvCU9QpGDhcnThtymh4jKLnDc33dr6UA6vGO0CQG4wLj32I6nMi4dUAd/XLOEay1u5gs5NFHLVOzJDwXrQBAHwuR0Tfs+peApzsfx66l4VZpd7sa6CSWPyvFDqorjM+GDOBFlPCeStjHRRdvBcStIS2ONhudRFyn5IVnZ5iOakiEW7Tc9ETpATGpzikRWZ+PWfkzHmWUhXrE6X/At2mM0NiXGq90o9oGfQjUu4Vwlu1rdB5QLtEce1FNqQjwUQNBUUK3pkX2SwrCpqB9yyBAEG5I+ew==
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bb609e36-384c-486a-68d8-08d87ca9d4af
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3764.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Oct 2020 08:00:13.6055
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VOHYJ1KCxZDCQNpaVYWZ+qQtCUUjQ88s9/KTk7gKxqCA8zvGJ/ybu/4h65F6OWSF
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR12MB3431
 
-On Fri, Oct 30, 2020 at 01:27:16PM +0530, Deepak R Varma wrote:
+Am 30.10.20 um 08:57 schrieb Deepak R Varma:
 > On Fri, Oct 30, 2020 at 08:11:20AM +0100, Greg KH wrote:
-> > On Fri, Oct 30, 2020 at 08:52:45AM +0530, Deepak R Varma wrote:
-> > > Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
-> > > function in place of the debugfs_create_file() function will make the
-> > > file operation struct "reset" aware of the file's lifetime. Additional
-> > > details here: https://lists.archive.carbon60.com/linux/kernel/2369498
-> > > 
-> > > Issue reported by Coccinelle script:
-> > > scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
-> > > 
-> > > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
-> > > ---
-> > > Please Note: This is a Outreachy project task patch.
-> > > 
-> > >  drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c | 20 ++++++++++----------
-> > >  1 file changed, 10 insertions(+), 10 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c
-> > > index 2d125b8b15ee..f076b1ba7319 100644
-> > > --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c
-> > > +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c
-> > > @@ -1551,29 +1551,29 @@ static int amdgpu_debugfs_sclk_set(void *data, u64 val)
-> > >  	return 0;
-> > >  }
-> > >  
-> > > -DEFINE_SIMPLE_ATTRIBUTE(fops_ib_preempt, NULL,
-> > > -			amdgpu_debugfs_ib_preempt, "%llu\n");
-> > > +DEFINE_DEBUGFS_ATTRIBUTE(fops_ib_preempt, NULL,
-> > > +			 amdgpu_debugfs_ib_preempt, "%llu\n");
-> > 
-> > Are you sure this is ok?  Do these devices need this additional
-> > "protection"?  Do they have the problem that these macros were written
-> > for?
-> > 
-> > Same for the other patches you just submitted here, I think you need to
-> > somehow "prove" that these changes are necessary, checkpatch isn't able
-> > to determine this all the time.
-> 
+>> On Fri, Oct 30, 2020 at 08:52:45AM +0530, Deepak R Varma wrote:
+>>> Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
+>>> function in place of the debugfs_create_file() function will make the
+>>> file operation struct "reset" aware of the file's lifetime. Additional
+>>> details here: https://nam11.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.archive.carbon60.com%2Flinux%2Fkernel%2F2369498&amp;data=04%7C01%7Cchristian.koenig%40amd.com%7Cddd7a6ac8164415a639708d87ca97004%7C3dd8961fe4884e608e11a82d994e183d%7C0%7C0%7C637396414464384011%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=o6GOHvMxNMuOPlC4nhDyURCHBLqfQZhYQq%2BiIMt3D3s%3D&amp;reserved=0
+>>>
+>>> Issue reported by Coccinelle script:
+>>> scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+>>>
+>>> Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+>>> ---
+>>> Please Note: This is a Outreachy project task patch.
+>>>
+>>>   drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c | 20 ++++++++++----------
+>>>   1 file changed, 10 insertions(+), 10 deletions(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c
+>>> index 2d125b8b15ee..f076b1ba7319 100644
+>>> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c
+>>> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_debugfs.c
+>>> @@ -1551,29 +1551,29 @@ static int amdgpu_debugfs_sclk_set(void *data, u64 val)
+>>>   	return 0;
+>>>   }
+>>>   
+>>> -DEFINE_SIMPLE_ATTRIBUTE(fops_ib_preempt, NULL,
+>>> -			amdgpu_debugfs_ib_preempt, "%llu\n");
+>>> +DEFINE_DEBUGFS_ATTRIBUTE(fops_ib_preempt, NULL,
+>>> +			 amdgpu_debugfs_ib_preempt, "%llu\n");
+>> Are you sure this is ok?  Do these devices need this additional
+>> "protection"?  Do they have the problem that these macros were written
+>> for?
+>>
+>> Same for the other patches you just submitted here, I think you need to
+>> somehow "prove" that these changes are necessary, checkpatch isn't able
+>> to determine this all the time.
 > Hi Greg,
 > Based on my understanding, the current function debugfs_create_file()
 > adds an overhead of lifetime managing proxy for such fop structs. This
 > should be applicable to these set of drivers as well. Hence I think this
 > change will be useful.
 
-Why do these drivers need these changes?  Are these files dynamically
-removed from the system at random times?
+Well since this is only created once per device instance I don't really 
+care about this little overhead.
 
-There is a reason we didn't just do a global search/replace for this in
-the kernel when the new functions were added, so I don't know why
-checkpatch is now saying it must be done.
+But what exactly is debugfs doing or not doing here?
 
-thanks,
+Regards,
+Christian.
 
-greg k-h
+>
+> I will wait for comments from other experts for driver specific
+> consideration / behavior.
+>
+> Thanks,
+> drv
+>
+>
+>> thanks,
+>>
+>> greg k-h
+
 
