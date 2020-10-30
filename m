@@ -1,108 +1,128 @@
-X-GM-THRID: 6673959669244887040
-X-Received: by 2002:a24:2f03:: with SMTP id j3mr2575838itj.2.1553902325475;
-        Fri, 29 Mar 2019 16:32:05 -0700 (PDT)
+X-GM-THRID: 6889249751270686720
+X-Received: by 2002:a17:90a:fa93:: with SMTP id cu19mr336787pjb.117.1604028453148;
+        Thu, 29 Oct 2020 20:27:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:3553:: with SMTP id k80ls1175086ita.4.gmail; Fri, 29 Mar
- 2019 16:32:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyYdr5UpD0AYD+FqrBm9Ug9sQkvL+N8bh+2qOeuJ3X5zboU25w1TVhQMIF0n+n6tJ7VetYo
-X-Received: by 2002:a24:754c:: with SMTP id y73mr2414948itc.31.1553902324414;
-        Fri, 29 Mar 2019 16:32:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553902324; cv=none;
+Received: by 2002:a17:90a:bd82:: with SMTP id z2ls1040491pjr.3.canary-gmail;
+ Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwdL8Oyt+hwCnfRjT712etpZxfEiJGMDeQUV0gfO/jlJMeU9o1a6dqMnwj/rY7Be+FRqDvU
+X-Received: by 2002:a17:90a:d584:: with SMTP id v4mr358961pju.194.1604028451560;
+        Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604028451; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yzh0QV54c7Oe0hjGwMQviTwXhAxOAC5u/2HH3iDgyLVTiVsLsUYOanUXga3mhkqt/7
-         618dDe9tT3Cva17PGKv6dMd8k8tBUWsaEqM9Bn3L5hDIdzn4yjBuyiD09H06N78ASsT2
-         uQiKTwqzH80vR+r6WBQ5Edo8k7+NjXb+S9oQdV6/zEj2YGvLFuZpH1EZD0xsAbzCBYjQ
-         u3Kz7PYXOqqHwvG4xncJXWPYh+3sw3NxDj5s455pfMU8UYChGcYQada0w5QgYTJyVf0L
-         xiU3fi5HxKGDReQyw6nzMylDaMe1MNOTbJX16ikveMIFPt/bWghlkae0QOAYEPuGZl8Y
-         Hz3A==
+        b=pmNeDTOF0an4LlrkmxLSVumlGXeLnWUPNqJr3byHNdQcOyWDehhGEuejorqc4W00bq
+         bzt7WjaN6TXhpEgZd7yKg6pjhW8dAxzg6LWPfkJI2dM6cFlZn+4nDXS96aVl2jJbLRQV
+         vlHqMW5J1bmBFCz64QNLJVR7nGfo2TQbarTNGtdAZY5Q8NGvDh1H2F12d1Di88qda+Lc
+         76b6da9wdll9VuchRNVvvO+tGDUdViiN3A3GlfW6hWFou2Eq780u37QbNzeub/l9NAEw
+         uK2vwZoEb6RHeYrTGp3/hXFoRlDcvEzs3ccPUhjNtClp5TzuJWM4KfWEQV6h4QklXaAw
+         lalA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=VoN9HtBuVVBdpV7nQNSgY/g95zMPuKDLxFWiqNueGcU=;
-        b=FoqFBbrkx/H4kggDnIuwWWhSIAtxOTwEakqYBdii4Z6U5qPu6pa93/t3v7Ug7uj8hw
-         90qq1lCC5CsBu4PAwgJq66bV5ExiL1X6dq3JEWEYHYn5Y7V/ZUlydq/v56Dm2z0HlhIp
-         LGvyCRKB/S8znMDTrFnaFNTsbCL7nTjLYjlRsPhMnjn2ozUr7aHjURr3K4kDpykAcSvJ
-         D5ys1W2bgjKr01l32wCol0IyG6Ygo+sY8uh6RWrobAJ80ERNfHf3gCQr4AYiW+kX5XHR
-         mTRIgFiq7+nNWNFrGQ7iPxGeeg2d3HHyoscWRK58syPjS6wD5dIPHC6+k6J0b/ciuriT
-         hisw==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=bnHvCuE87pUUeamFRrdRkC3/PfrKdLRFG6Yr9LjsnHU=;
+        b=cW87ILKrYKKjo7Am4gE4CasO9bY8IvK9JlUCAl9gH5tBu5P+rNBjnIbTTYnGdO/T6l
+         b6N/9O7xLzC5Z2DhI326iJJglSck0Gfp9o+7K9X0NI4ovI+M44LE46VIbEs1EoH0bSp8
+         uwOGTS1McNeeeVqwt/qGqOWZSo1mhOU0qebZNK3nu8/Ui/IAIMKHxTlvolRcjqNoE2H3
+         e9R0NeX3HZTduqhkD7IhK/DvtS3hRJ5AqilsodN5I1SJfMo48mu0LnU1xP6ln9vAdTvG
+         tj0d3eUDIhIUu00HXWuUZ1nN/5l0RigOmOxGSf8wC1b6pwb/Nlipvqbnz/IEjUqJ/+Fw
+         jBrA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ch+HG9Xs;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::42f as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nRD8AmlO;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com. [2607:f8b0:4864:20::42f])
-        by gmr-mx.google.com with ESMTPS id e74si159448ite.1.2019.03.29.16.32.04
+Return-Path: <mh12gx2825@gmail.com>
+Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
+        by gmr-mx.google.com with ESMTPS id a6si299025pjw.3.2020.10.29.20.27.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 16:32:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::42f as permitted sender) client-ip=2607:f8b0:4864:20::42f;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ch+HG9Xs;
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::42f as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nRD8AmlO;
+       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x42f.google.com with SMTP id y13so1732889pfm.11
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 16:32:04 -0700 (PDT)
+Received: by mail-pg1-x542.google.com with SMTP id i7so2102320pgh.6
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=VoN9HtBuVVBdpV7nQNSgY/g95zMPuKDLxFWiqNueGcU=;
-        b=Ch+HG9Xs8VvPdzsu0UaHurrd9X6kVhv80MUE/EUB/mhodrUxCkeK56CD+RWAZB8Riv
-         Ms6LbeYO44P34ROwf/64IyjWAsIxHd2zdip2FYU4FdVmkbTiy9kS0iKlzuwDiJIbSVPh
-         cJfYuh7OVEAOdpvFBa1Wh0PpiEbOMuBXDdIjNfYUtlbceolwCZKC2WIu+Es4RNBKZT+4
-         BSD3DW1l2xJMetZ2sQCqdHXKUo1ORVb7ihyoKJi5S8+5cxijJaE1IML4FYqY1uidle7S
-         bbHLHQfQeCTrQAPA0PrLEpCTqGWp6+1RqV7tMT4f7R43zHdOQzktMbMIrqJqGUugB/M9
-         R24Q==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=bnHvCuE87pUUeamFRrdRkC3/PfrKdLRFG6Yr9LjsnHU=;
+        b=nRD8AmlOqJ8JayRjEopJ5gsIvdMeLsA6FdS+XJv2WFxcMo/+k7r9F5ErGu6fOFW8AQ
+         RTdDljKeM5HQDBummdsxSpQUh3IjjRVzi87ByrvD2MkiJrhTmGRT35F+7aLPWD7+sidl
+         Kv9plJtGdW2FL9gT2gv5Ri69CUQrpxWgieYZM2uZXZmUt431/qypzu54jCsKUAFsG7nQ
+         f07ABRL0UayrZZsHvk1NfDvTzhRtiL4uBs/K5SGIIB+6Q6gbcI+mcfKw7kTPV7Owsq+X
+         3bI33+X8zHRUpqf0Ehk6Q9xJQkjcVMbWirQ45OILc08QA7/bdbhZjg8RTuOpUyERvQDE
+         7dWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=VoN9HtBuVVBdpV7nQNSgY/g95zMPuKDLxFWiqNueGcU=;
-        b=qlK3akFuXiUa4oK/mkONA0ANvX4ameJZtQLDJelCbyyjGDyIJ5N9+OZPWnFD7/Nr1K
-         4Mu4haHiIlQO9UthM9X2feQ3wmXSLNEb50Qb37LifD9cpFDc1HJrg4GC991ua6XOpn8b
-         u1EhvYgcZooroOryVa7rW+qyJao1QGO2ZE9TjkaIHhvYOzU6CxaJtRNG0U+JvTSbv0/S
-         jXnOK6VY+UUod+6n4Kq3VxPYpOvyLhhMjVZR+xETzXpVBoAFeRhuvucj3O0gy+Tf4ZdO
-         wyHCrvUO5aon1xcfTFTkw1a2VhWH+vtz0d7qSSm58VCb+AovaMAqdBlyz7lrZ1LRpeJM
-         8yzw==
-X-Gm-Message-State: APjAAAW+oErAFinkw7yX198PtRBoeMA/7M9HZ3sllb39UT3BhRckHCiE
-	O39BSm0LVgMdgyWeXOOcijQrTy3q6T0=
-X-Received: by 2002:a63:3185:: with SMTP id x127mr48067622pgx.299.1553902323953;
-        Fri, 29 Mar 2019 16:32:03 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.82])
-        by smtp.gmail.com with ESMTPSA id a3sm4408711pfn.182.2019.03.29.16.32.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 16:32:03 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH v6 1/3] staging: vt6655: line over 80 characters.
-Date: Sat, 30 Mar 2019 05:01:47 +0530
-Message-Id: <20190329233147.27039-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=bnHvCuE87pUUeamFRrdRkC3/PfrKdLRFG6Yr9LjsnHU=;
+        b=FpqHxR5146H5K4bPThbQB4w1jXG94gYFdYrrRCtvcbxew1MIFf3JeR1cgH1htY4qrC
+         C/X1yEnfFi9XxwJ9xS+Ozex0BOdoLX0iheboV5lNZIfirnd6SiOQOe5qTjQ63dmCerWQ
+         /47oYgXzD3nm+Gt2UJoHo7yvbJyqvJOufT3PAWF3Fw6iX1Inz1kyMVhxR3n+FiBJ0vFM
+         HdTqZd5TgS5ft9s4rIE+9KzIqxSl8b5VrEiqc2ZS4vcXZCgwmcLGQa95STZcgyL7WMSr
+         KrbZWfTccD6zcGC3Y4s30TiN47duV7HUJEjIAyEOb6VY9j3QUKBwr1zIk6rnIGaaoMq4
+         uz5Q==
+X-Gm-Message-State: AOAM530I/XZzC/wNQzQ9fP3dsmnKfUp2On0crTu9DHZN1u72MaCqcvh3
+	7BxKVXTXdvO2T6u+QZofzW7YOEKOz1w=
+X-Received: by 2002:a17:90b:3658:: with SMTP id nh24mr310667pjb.177.1604028451119;
+        Thu, 29 Oct 2020 20:27:31 -0700 (PDT)
+Return-Path: <mh12gx2825@gmail.com>
+Received: from my--box ([103.98.79.70])
+        by smtp.gmail.com with ESMTPSA id z66sm4274336pfb.109.2020.10.29.20.27.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Oct 2020 20:27:30 -0700 (PDT)
+Date: Fri, 30 Oct 2020 08:57:25 +0530
+From: Deepak R Varma <mh12gx2825@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Alex Deucher <alexander.deucher@amd.com>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org
+Cc: mh12gx2825@gmail.com, melissa.srw@gmail.com, daniel.vetter@ffwll.ch
+Subject: [PATCH] drm/amd/pm: use DEFINE_DEBUGFS_ATTRIBUTE with
+ debugfs_create_file_unsafe()
+Message-ID: <20201030032725.GA274689@my--box>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Move function arguments that go over 80 characters a line to get rid of
-checkpatch warning.
+Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
+function in place of the debugfs_create_file() function will make the
+file operation struct "reset" aware of the file's lifetime. Additional
+details here: https://lists.archive.carbon60.com/linux/kernel/2369498
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
---- 
-Changes in v6: 
- -fixed patch 1 and resent it
- drivers/staging/vt6655/rf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Issue reported by Coccinelle script:
+scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
 
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 72475586a5ee..ad3970333390 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -748,7 +748,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
- 	}
+Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
+---
+Please Note: This is a Outreachy project task patch.
+
+ .../gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c  | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
+index 740e2fc7a034..1e79baab753e 100644
+--- a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
++++ b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/vega12_processpptables.c
+@@ -252,12 +252,11 @@ static int init_powerplay_table_information(
+ 	phm_copy_clock_limits_array(hwmgr, &pptable_information->power_saving_clock_max, powerplay_table->PowerSavingClockMax, ATOM_VEGA12_PPCLOCK_COUNT);
+ 	phm_copy_clock_limits_array(hwmgr, &pptable_information->power_saving_clock_min, powerplay_table->PowerSavingClockMin, ATOM_VEGA12_PPCLOCK_COUNT);
  
- 	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX,
--			(unsigned long)MAKEWORD(bySleepCount, byInitCount));
-+		       	(unsigned long)MAKEWORD(bySleepCount, byInitCount));
+-	pptable_information->smc_pptable = kmalloc(sizeof(PPTable_t), GFP_KERNEL);
++	pptable_information->smc_pptable = kmemdup(&(powerplay_table->smcPPTable),
++						   sizeof(PPTable_t), GFP_KERNEL);
+ 	if (pptable_information->smc_pptable == NULL)
+ 		return -ENOMEM;
  
- 	return true;
- }
+-	memcpy(pptable_information->smc_pptable, &(powerplay_table->smcPPTable), sizeof(PPTable_t));
+-
+ 	result = append_vbios_pptable(hwmgr, (pptable_information->smc_pptable));
+ 
+ 	return result;
 -- 
-2.17.1
+2.25.1
 
 
