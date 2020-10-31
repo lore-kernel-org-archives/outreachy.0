@@ -1,95 +1,96 @@
-X-GM-THRID: 6261406772094828544
-X-Received: by 10.140.179.210 with SMTP id z201mr13404320qhz.26.1457847368239;
-        Sat, 12 Mar 2016 21:36:08 -0800 (PST)
+X-GM-THRID: 6889248551394607104
+X-Received: by 2002:adf:9b8e:: with SMTP id d14mr9546239wrc.360.1604145671188;
+        Sat, 31 Oct 2020 05:01:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.20.214 with SMTP id 80ls3497952qgj.83.gmail; Sat, 12 Mar
- 2016 21:36:07 -0800 (PST)
-X-Received: by 10.140.181.198 with SMTP id c189mr13411033qha.24.1457847367664;
-        Sat, 12 Mar 2016 21:36:07 -0800 (PST)
-Return-Path: <juliana.orod@gmail.com>
-Received: from mail-qk0-x233.google.com (mail-qk0-x233.google.com. [2607:f8b0:400d:c09::233])
-        by gmr-mx.google.com with ESMTPS id w126si1019598ywe.6.2016.03.12.21.36.07
+Received: by 2002:adf:f00f:: with SMTP id j15ls1128866wro.2.gmail; Sat, 31 Oct
+ 2020 05:01:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTfl7myy3XkySkWRlHzrUwFEwyMKrQJdhAubYRHd9JVxtiBeUvp62+ogLU2f7K8zNfUwlv
+X-Received: by 2002:a5d:5449:: with SMTP id w9mr9507476wrv.182.1604145669268;
+        Sat, 31 Oct 2020 05:01:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604145669; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CD8MNaiTEMAmqNAPgLYkaD5M6ULDYyXr4OL+R+QifIWwCDuRSA0BNpXsliwEiEQLsz
+         6iGPjGhQjwoXp6EO80lAxeG12zGLsbscMadmuUVl7EoVhSrsMsBxlwugMQqqgr4YKm9P
+         f9vdtake2U+jK3eNZ4HhsEhgsnsYSooI8dPdZxWeXo2gAplRwuIGt+BU9AHbRP7GFllB
+         lOzBkyIkikVBTsdVtlSeF0ZcmxKJcWkCUupOB4aJR5g3nMVQ5dgLEY3BFTVk/EJ6WOEl
+         zckU+8CUJReaI7Orw80AFZM+iyiyFW4H8zUF5GGo7DX1FhpQ1Sg5rc9TDpQzxP9vUYWg
+         I6ZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=k2LNVl50+Cax3Vmx3XYcuhvPekXEJ9Q0IDuEYpXhQjk=;
+        b=eRvYGl0F2F9cY1JbSi6PaZhrvxnJLG9XpnhM+T8yBwoa1LPFKM/Gi0rAL/XJd0u5Bt
+         DKvScBVyflDo0GEWFu9rmbBdZsY8OdX1ZO0OeJQUHL1PGWZ3B1OtPdCFrHuii8Xhl1iU
+         tRIixwNfck0+22i5YB2rg29rGDlol7D8TUaIVN4gr826fBTqFDcTeErYZnBBW3/lvCjU
+         ARZbPKaCPNQjSc2whBXEIqFQqq7dSA+L8JGOdc8CI+5EQwFvS0DGsA1O7kxCWINytrVl
+         UCN+wtNLu6DNFPeFhLD249LlxOaaCwGCO4vuhXoN2RuXMEKyQJJoXKXOsuHLliKuuSua
+         a+yg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id y14si318671wrq.0.2020.10.31.05.01.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 12 Mar 2016 21:36:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::233 as permitted sender) client-ip=2607:f8b0:400d:c09::233;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 31 Oct 2020 05:01:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of juliana.orod@gmail.com designates 2607:f8b0:400d:c09::233 as permitted sender) smtp.mailfrom=juliana.orod@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-qk0-x233.google.com with SMTP id x1so63649899qkc.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 12 Mar 2016 21:36:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=OwI3AdNRusWDZ1gPTlDBPIULKdkidpMrx0rJr/QmuD8=;
-        b=J/7dQuCbpXlCrNyqUP85IErU7Mup2JqzhTPQAplI6M09upB1c5UOi7P7cRi8w0s9Oa
-         9LvHkas+yVcF7YebqRupVFY2vqnMMketplVmN5DtqvN98ESAwiBbpO7OWUTEawiv2RwF
-         tIX7F9EZ4Fxf82e7vSHy3b0aF9mcazu7HdStlsVZrz4KTptUMoX03LZJMUIbXV+NmpBe
-         w9GJ43P2J7lX+hnrjs5cr5sW6ziVtakt1yOSWxUwiGUdRdUS4gxbHK/eeoKOturfMTeP
-         QcLAyG5+h/SKFiGnNYOFntP/Vj8YbG8jujB+FlMibzfTUUbYM7kONhpIZYpw8tNmWl4B
-         u3/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=OwI3AdNRusWDZ1gPTlDBPIULKdkidpMrx0rJr/QmuD8=;
-        b=gKRR21822OK3Pf94K+nfSRBtejcZoe+ayYMZtc3kug45jkEsUI9tDKnJbdHt8UU1ar
-         Im3j8R2TZG8OOGMZPOpkF1XHd2zj7Hj/qzLgi27wFrgLcAlVkmJHDSgy81rBMcklktrk
-         l1B2oxoMZARB0hsVf7BkPOzXvxBgaiWxeQ+TvYLTkNTR7htuVkahbY4B5yIxTPqnBVWV
-         nsSuRs47xcyicQ23/9CmiAUzNEnE4aySVuTjp5bD3IzgHDzus93NEXh6sJHSBMTRn/Nl
-         Pxr0KXQmux/OiDnFO28ShEAo80ytG0k7I1DYkON57UdL1cJ2O001Gal0HSWqcITjCQtd
-         ZjlA==
-X-Gm-Message-State: AD7BkJJgy8PUkl9wt8CpBewaOtCAqKvlYMWEZV3ChOO7BVs6C7itBm7T1D/I6WejVvU8PA==
-X-Received: by 10.55.72.12 with SMTP id v12mr11696928qka.100.1457847367324;
-        Sat, 12 Mar 2016 21:36:07 -0800 (PST)
-Return-Path: <juliana.orod@gmail.com>
-Received: from spock ([191.191.241.196])
-        by smtp.gmail.com with ESMTPSA id 188sm7514030qhi.1.2016.03.12.21.36.05
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 12 Mar 2016 21:36:06 -0800 (PST)
-Date: Sun, 13 Mar 2016 02:36:02 -0300
-From: Juliana Rodrigues <juliana.orod@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] staging: dgnc: added spaces before and after "|"
-Message-ID: <20160313053602.GA19464@spock>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.77,437,1596492000"; 
+   d="scan'208";a="475164141"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 31 Oct 2020 13:01:08 +0100
+Date: Sat, 31 Oct 2020 13:01:08 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Joe Perches <joe@perches.com>
+cc: Greg KH <gregkh@linuxfoundation.org>, 
+    Deepak R Varma <mh12gx2825@gmail.com>, outreachy-kernel@googlegroups.com, 
+    Alex Deucher <alexander.deucher@amd.com>, 
+    =?ISO-8859-15?Q?Christian_K=F6nig?= <christian.koenig@amd.com>, 
+    David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+    amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+    linux-kernel@vger.kernel.org, melissa.srw@gmail.com, 
+    daniel.vetter@ffwll.ch
+Subject: Re: [Outreachy kernel] [PATCH] drm/amdgpu: use DEFINE_DEBUGFS_ATTRIBUTE
+ with debugfs_create_file_unsafe()
+In-Reply-To: <0b818156537f354904938f437cbb9dd02e765653.camel@perches.com>
+Message-ID: <alpine.DEB.2.22.394.2010311300530.2733@hadrien>
+References: <20201030032245.GA274478@my--box>  <20201030071120.GA1493629@kroah.com> <20201030075716.GA6976@my--box>  <20201030080316.GA1612206@kroah.com> <0b818156537f354904938f437cbb9dd02e765653.camel@perches.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-This patch fixes formatting issues while mantains
-80 character per line limit by removing
-unnecessary parenthesis.
 
-Signed-off-by: Juliana Rodrigues <juliana.orod@gmail.com>
----
-Changes in v2:
-   - Removed file name from subject line
----
- drivers/staging/dgnc/dgnc_cls.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/dgnc/dgnc_cls.c b/drivers/staging/dgnc/dgnc_cls.c
-index 6e1e475..34fbdd8 100644
---- a/drivers/staging/dgnc/dgnc_cls.c
-+++ b/drivers/staging/dgnc/dgnc_cls.c
-@@ -1168,10 +1168,8 @@ static void cls_uart_init(struct channel_t *ch)
- 	/* Clear out UART and FIFO */
- 	readb(&ch->ch_cls_uart->txrx);
- 
--	writeb((UART_FCR_ENABLE_FIFO |
--		UART_FCR_CLEAR_RCVR  |
--		UART_FCR_CLEAR_XMIT),
--		&ch->ch_cls_uart->isr_fcr);
-+	writeb(UART_FCR_ENABLE_FIFO | UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
-+	       &ch->ch_cls_uart->isr_fcr);
- 	udelay(10);
- 
- 	ch->ch_flags |= (CH_FIFO_ENABLED | CH_TX_FIFO_EMPTY | CH_TX_FIFO_LWM);
--- 
-2.7.2
+On Sat, 31 Oct 2020, Joe Perches wrote:
 
+> On Fri, 2020-10-30 at 09:03 +0100, Greg KH wrote:
+> > On Fri, Oct 30, 2020 at 01:27:16PM +0530, Deepak R Varma wrote:
+> > > On Fri, Oct 30, 2020 at 08:11:20AM +0100, Greg KH wrote:
+> > > > On Fri, Oct 30, 2020 at 08:52:45AM +0530, Deepak R Varma wrote:
+> > > > > Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
+> > > > > function in place of the debugfs_create_file() function will make the
+> > > > > file operation struct "reset" aware of the file's lifetime. Additional
+> > > > > details here: https://lists.archive.carbon60.com/linux/kernel/2369498
+> > > > >
+> > > > > Issue reported by Coccinelle script:
+> > > > > scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+> []
+> > There is a reason we didn't just do a global search/replace for this in
+> > the kernel when the new functions were added, so I don't know why
+> > checkpatch is now saying it must be done.
+>
+> I think it's not a checkpatch warning here.
+
+That is correct, it's a coccinelle script.
+
+julia
+
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/0b818156537f354904938f437cbb9dd02e765653.camel%40perches.com.
+>
 
