@@ -1,78 +1,77 @@
 X-GM-THRID: 6889250886437044224
-X-Received: by 2002:a37:e213:: with SMTP id g19mr11301556qki.147.1604247285120;
-        Sun, 01 Nov 2020 08:14:45 -0800 (PST)
+X-Received: by 2002:ac8:2c21:: with SMTP id d30mr10725930qta.156.1604247284948;
+        Sun, 01 Nov 2020 08:14:44 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:8744:: with SMTP id j65ls5759727qkd.1.gmail; Sun, 01 Nov
- 2020 08:14:43 -0800 (PST)
-X-Received: by 2002:a37:4f51:: with SMTP id d78mr11029292qkb.445.1604247283794;
+Received: by 2002:a0c:aad6:: with SMTP id g22ls2889005qvb.10.gmail; Sun, 01
+ Nov 2020 08:14:43 -0800 (PST)
+X-Received: by 2002:a0c:db89:: with SMTP id m9mr12467075qvk.26.1604247283778;
         Sun, 01 Nov 2020 08:14:43 -0800 (PST)
-Received: by 2002:a05:620a:2495:b029:142:7499:cf3a with SMTP id i21-20020a05620a2495b02901427499cf3amsqkn;
-        Sun, 1 Nov 2020 01:22:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxY+KZWqC7kQBNOOX1xs34pHj6UcngmD7HxdqSuMbvustVMIz63KytzYC4S3ld/XWiEZCeL
-X-Received: by 2002:adf:fd49:: with SMTP id h9mr14250689wrs.115.1604222540160;
-        Sun, 01 Nov 2020 01:22:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604222540; cv=none;
+Received: by 2002:a37:4685:0:b029:15e:d70c:89db with SMTP id t127-20020a3746850000b029015ed70c89dbmsqka;
+        Sun, 1 Nov 2020 08:02:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwTal2rFldaM3Oytjn3hS1ucx3/pKhmAVunrGshA2QEERAQhem5LDRLEQIwmvFjmDktEgWZ
+X-Received: by 2002:a17:906:14d1:: with SMTP id y17mr11866767ejc.15.1604246570085;
+        Sun, 01 Nov 2020 08:02:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604246570; cv=none;
         d=google.com; s=arc-20160816;
-        b=XOA9y2wDQkxUKzVcSMTcLxi/Hjv97t5/DDjJVQbw6vlwbK0t+ZZiPSvSzw9dYvzxSg
-         oA8t18fdLNPCPtiHfXCbygWiXjpvSyDgZzm94YxgD1FhV1ZpCOodlQ+DiFsegp/91Rs4
-         9z6WtOfiCgPcXbkpTF/iJNa4loDDlqbSC3rYzf/ogrrGuaszIyy1zbla0zX5PNorB294
-         e2n0XLeY1owGSVWOM+yVSAuwJDG3gCwmj1w5vMzS2m3unuY1rRxRzqMMS//JCQ2waL8w
-         C7IcM+ujTwXlGjQgrv5Ydu3eTLJ7Lvjdc/jfjVQP2xMqA1pGNpslF1WfITmh/ysT2Kl5
-         UtAw==
+        b=zIw0HcKViw3yA1Lqgv9BrptGbfqggoPxoIw31AjIvLU9GZyh0VH8LGh1mUMofRkdlK
+         mt6uoPB5t5lqZOe1ToBuWgp4Y+zvy5x/fbM9Fo8CdoWGGsdfCKZ3sQhzLFp0Wek2Q+VZ
+         RilYRIKV3Oh1wKVs1vwHSnXFNk+CNol+v9ajHQyv/Bdt2ds5XnXUsgpcWoTKkCs0HX3A
+         gIKrePq/SN0Dbi8S/shcE1LAoZCBi+Q8e6/ZPxGf6MWuvbvhUDo/oAJkEWHxDktYDOUe
+         wVfBJ3zrSdA2SXKYY85GTMSJP2blUZZvzZI620UpV94WonOsZJHQtA9dGDP4x2JQQSM9
+         znRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date;
-        bh=DIePVJLm7jFmE7mVjhd4h6se4wOo+ayfAVqJ3ZjVSt8=;
-        b=CBLawZ+1zUilgc80cIrGGadUCdCbf+Ha0W4I5jDimnlskEyCh/jVRw360k7PEoMmmB
-         cWXb2MytlIvt/tKAY6D8mrZ9+kGCMrQkDsnRT6AGaa+l1T4s4itW5YCx3qN3mUFYpRY9
-         ucKIqtV8gi1ualQnZWM/Clleqb5ILCMeobMula/EFefyFjZ7FHi8Q7AxwQWWY+mFzfzw
-         DOyhiAKCkz7WkQO49gW/WJJDdAkXNJLJfcwLIIFYO73ogMheqKfq0rkqIS291/dXvLfy
-         9gjpoeAiz2GhOS828INPmr7wMaI8SacC/PHaZwL5vr/Fl9JEA5M5zV20a6Z5p+Xint/M
-         QF3g==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date;
+        bh=//f8AvNNc6uYFJLxeQTbxX7On6S99bmBSIKExbGJtX0=;
+        b=o7QY8W5SCrjYXIaKLfRAPKKefIMLopfPCj7QxB+XKL7+T6UJN4pN3VLxTnRBwgRKTJ
+         1kz91LksNRATyzL8rA6MkZNPbJ5dW2YQxCTFN1mKJaa/dFf0EVCQzAwhyQN6H+A6uwW9
+         Rwt/QADlFgcfCLq9R8mSBy28sro9N5ZRrPd3JtnFy1caLegKB5Zjp/Z1XxdjB3RJFCHN
+         Ny49iSiEGOO2OAjnCgIzhQXC1+2Ep1Nwga5qv8OiAUrzTgcNo8oPwISogxv2G5Ai8cSF
+         6nwMBQ0TbUsgAKe1xY8sPAFwIOoZgY80a/F1aE9hc1hno1NMoedevcHluFR1XRLXZZ0f
+         vpVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=neutral (google.com: 109.247.116.15 is neither permitted nor denied by best guess record for domain of sam@ravnborg.org) smtp.mailfrom=sam@ravnborg.org
-Return-Path: <sam@ravnborg.org>
-Received: from asavdk4.altibox.net (asavdk4.altibox.net. [109.247.116.15])
-        by gmr-mx.google.com with ESMTPS id n19si270757wmk.1.2020.11.01.01.22.20
+       spf=pass (google.com: best guess record for domain of agx@sigxcpu.org designates 24.134.29.49 as permitted sender) smtp.mailfrom=agx@sigxcpu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=puri.sm
+Return-Path: <agx@sigxcpu.org>
+Received: from honk.sigxcpu.org (honk.sigxcpu.org. [24.134.29.49])
+        by gmr-mx.google.com with ESMTPS id u2si414314edp.5.2020.11.01.08.02.50
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 01 Nov 2020 01:22:20 -0800 (PST)
-Received-SPF: neutral (google.com: 109.247.116.15 is neither permitted nor denied by best guess record for domain of sam@ravnborg.org) client-ip=109.247.116.15;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Nov 2020 08:02:50 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of agx@sigxcpu.org designates 24.134.29.49 as permitted sender) client-ip=24.134.29.49;
 Authentication-Results: gmr-mx.google.com;
-       spf=neutral (google.com: 109.247.116.15 is neither permitted nor denied by best guess record for domain of sam@ravnborg.org) smtp.mailfrom=sam@ravnborg.org
-Received: from ravnborg.org (unknown [188.228.123.71])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by asavdk4.altibox.net (Postfix) with ESMTPS id AAF35804F6;
-	Sun,  1 Nov 2020 10:22:17 +0100 (CET)
-Date: Sun, 1 Nov 2020 10:22:16 +0100
-From: Sam Ravnborg <sam@ravnborg.org>
+       spf=pass (google.com: best guess record for domain of agx@sigxcpu.org designates 24.134.29.49 as permitted sender) smtp.mailfrom=agx@sigxcpu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=puri.sm
+Received: from localhost (localhost [127.0.0.1])
+	by honk.sigxcpu.org (Postfix) with ESMTP id 06A7BFB03;
+	Sun,  1 Nov 2020 17:02:49 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at honk.sigxcpu.org
+Received: from honk.sigxcpu.org ([127.0.0.1])
+	by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Sz3em8frl4Bd; Sun,  1 Nov 2020 17:02:47 +0100 (CET)
+Received: by bogon.sigxcpu.org (Postfix, from userid 1000)
+	id 22DD74463D; Sun,  1 Nov 2020 17:02:47 +0100 (CET)
+Date: Sun, 1 Nov 2020 17:02:47 +0100
+From: Guido =?iso-8859-1?Q?G=FCnther?= <guido.gunther@puri.sm>
 To: Deepak R Varma <mh12gx2825@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>,
-	Purism Kernel Team <kernel@puri.sm>,
+Cc: outreachy-kernel@googlegroups.com, Purism Kernel Team <kernel@puri.sm>,
 	Ondrej Jirman <megous@megous.com>,
 	Thierry Reding <thierry.reding@gmail.com>,
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	melissa.srw@gmail.com, daniel.vetter@ffwll.ch
+	Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, melissa.srw@gmail.com,
+	daniel.vetter@ffwll.ch
 Subject: Re: [PATCH] drm/panel: st7703: use DEFINE_DEBUGFS_ATTRIBUTE with
  debugfs_create_file_unsafe()
-Message-ID: <20201101092216.GB1166694@ravnborg.org>
+Message-ID: <20201101160247.GA3193@bogon.m.sigxcpu.org>
 References: <20201030033150.GA275009@my--box>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 In-Reply-To: <20201030033150.GA275009@my--box>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=VafZwmh9 c=1 sm=1 tr=0
-	a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
-	a=kj9zAlcOel0A:10 a=S4BYaaioAAAA:8 a=pGLkceISAAAA:8 a=e5mUnYsNAAAA:8
-	a=P2jyfWBKOuCc-NuxQl4A:9 a=CjuIK1q_8ugA:10 a=NWVoK91CQyQA:10
-	a=gP6mnyLQ4wGU0PyH625T:22 a=Vxmtnl_E_bksehYqCbjh:22
 
-Hi Deepak
-
+Hi,
 On Fri, Oct 30, 2020 at 09:01:50AM +0530, Deepak R Varma wrote:
 > Using DEFINE_DEBUGFS_ATTRIBUTE macro with debugfs_create_file_unsafe()
 > function in place of the debugfs_create_file() function will make the
@@ -84,13 +83,10 @@ On Fri, Oct 30, 2020 at 09:01:50AM +0530, Deepak R Varma wrote:
 > 
 > Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
 
-Based on discussions triggered by other patches doing the same
-replacement I will ignore this patch for now.
-If the conclusions are that this is indeed the right thing to do then
-please let us know so we can apply this patch.
+Reviewed-by: Guido G�nther <agx@sigxcpu.org>
 
-Thanks,
-	Sam
+Cheers,
+ -- Guido
 
 > ---
 > Please Note: This is a Outreachy project task patch.
@@ -124,8 +120,4 @@ Thanks,
 > -- 
 > 2.25.1
 > 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
