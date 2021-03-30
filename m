@@ -1,162 +1,139 @@
 X-GM-THRID: 6945343933741268992
-X-Received: by 2002:ac2:5b9b:: with SMTP id o27mr21463918lfn.143.1617716749260;
-        Tue, 06 Apr 2021 06:45:49 -0700 (PDT)
+X-Received: by 2002:a65:5bca:: with SMTP id o10mr28318557pgr.248.1617088898157;
+        Tue, 30 Mar 2021 00:21:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:6c2:: with SMTP id u2ls431539lff.3.gmail; Tue, 06
- Apr 2021 06:45:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzV1jyqHOsLXLRh61JtRp+tJXTC+c9V5vuWue4S7FhFeQDVBQdI+y89wAefvfAHDregr4rL
-X-Received: by 2002:a19:7602:: with SMTP id c2mr3139306lff.66.1617716747424;
-        Tue, 06 Apr 2021 06:45:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617716747; cv=none;
+Received: by 2002:a17:902:f547:: with SMTP id h7ls6342152plf.1.gmail; Tue, 30
+ Mar 2021 00:21:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFFn9rV8jFBJlETdSbTNTVmHAbbbDj2TJtZIX67zzOlU+413ylywOi7f79KEEM4vRFcruf
+X-Received: by 2002:a17:90a:d801:: with SMTP id a1mr2998739pjv.84.1617088896998;
+        Tue, 30 Mar 2021 00:21:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617088896; cv=none;
         d=google.com; s=arc-20160816;
-        b=TbMZoxgWl/RQ17Ttpz3Pj6oufvKUghflGt3X0BlvzUcaSjB+HDpU+NtWkeD2RhNYMn
-         b2OYB++t90g4MFPKuvoYPsMEbD7GXfRc8e05veKuw8vMCDc6QDtzICNg566m/eX51MYN
-         kVRsMVU2agmjnJpRwfYrokisEzmLO/AxFhinRfRZZksXxZcdl8PX1NZmblpDQnH6xV0v
-         J9mdsKVuxJdiHTeRs55fSj/w8fxU1mPk7vqR0bAQ5mkhLLUqpMO+TnaUav1aF/tmoXX7
-         Yr4AtWlGRIqAfDsup0Q1kDOpVyt03bmghjKMoEaxF5OauNPTdT79muGA1lCdLDad6imr
-         0BBw==
+        b=u9n6NF4YYTXDBI5PdIVG4AWDrP9jzrN/A+ohsth3A61Ogfx7XMCt3BRsJ05iBohduU
+         7DH0kZauFc2lYzh+0KivXiOSO7m4XnB0+lyVwUIsNkOp+CcnBD3Sg1FKN4mqGjDutFV5
+         HwECnd46i/jYf2XbD89T++mMDlDQihRcgccjiaKAlNnoKwEQmUxs8iip4eZYHFQbtBFn
+         6Uasxy6x+KiAeV23oKQyYIZuTfWZnPLqk/CsI8tSkmDcyghLOzD6H5dm/7BidCiEQvnM
+         LMIf5Sq+1AXu/uLxIavWtjjkeYrI14XVInRjI7IihCU2+pLleF6bwvn2lcTQ0+dzjZMl
+         xamA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:cc:references:to:subject
-         :dkim-signature;
-        bh=driY7KRhwzOZzpfXySspmK6SWNIpxX3jWI7v/MvVp80=;
-        b=Hybff8h6yJYzxC0NZVv0qSCHGGXkWUpZlVoRCSYUuyCnT7NZnWkW2TMkPBACJnlcRw
-         vDcTTW+mJqXxPF5B4R1WuqLkFQGsniIpDdK7RJ/TqwVQoaNnMVKU+aI1Zc3I35eutHVM
-         pjXrZYMMCWpx5JdJIc5EAsQ8/ld2pSHBeCOxZ2tX6qNo5aHey5BRrvdwJgWu8kdENK+Q
-         6FKOPvq3eJ5OfmBmWyONahHPDqE8TpPE9eY6dm/ouoLvFcsROVEFxJEfxgk9Uco+Ce57
-         mdSkits+GkWWRX5m/K/jRBLmF7xc1Vi96uEEmwjjTSLPQSOh+97gdvd8Tgv549RkcmCD
-         pk3A==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :mime-version;
+        bh=cpa1lKDq6hLveXQC5mQ+DgBaM6z3QghrSDvQ+830EHw=;
+        b=bpa4DNx8ehkidh7ZOwAgjQlBJLPXXIzvgOK+RpKRQfxmXIj0VAUClYhkQqvjvYquy/
+         rCnlX2Gw6TBCfZgWYQP9ZwB7B5IfgLeGRIu8IWwA8xo1ndfpTWyGaEVnHPyuc4u2BJsd
+         6rIfzYeoO+FfW52y3rZcAeezxYOTnZAeZKyYRnd2BmMvqMByJ0JUV3pVlTOlPkl8Au+Z
+         lzCKlGNomijM5Xf0NpyiHBkcXLjvo7vCcSkYEivuNHul8CdpKbzFEbg7WL/CC9H94pgR
+         u05LomxcrDmYp3C4sHBWELAbhBBNinF0gCPKX4P+TIQeiSADy9UU1Hs7y0ws2aQId4qN
+         CWYg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=vMi8kT6p;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb1-smtp-cloud9.xs4all.net (lb1-smtp-cloud9.xs4all.net. [194.109.24.22])
-        by gmr-mx.google.com with ESMTPS id f21si1632440ljg.6.2021.04.06.06.45.47
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.102 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa06-01.prod.phx3.secureserver.net (p3plsmtpa06-01.prod.phx3.secureserver.net. [173.201.192.102])
+        by gmr-mx.google.com with ESMTPS id nv12si71535pjb.3.2021.03.30.00.21.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Apr 2021 06:45:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as permitted sender) client-ip=194.109.24.22;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 Mar 2021 00:21:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.102 as permitted sender) client-ip=173.201.192.102;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=vMi8kT6p;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud9.xs4all.net with ESMTPA
-	id Tm1Xl5ZNn43ycTm1alO6BZ; Tue, 06 Apr 2021 15:45:46 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1617716746; bh=driY7KRhwzOZzpfXySspmK6SWNIpxX3jWI7v/MvVp80=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=vMi8kT6p1lnUO8CIpweOHp3Fv0UfwPrI7Lj7SrmtDRDmDGUbzP5rxf+Sj/R8Mde7Y
-	 KmFQ1NvTf43pERLr5BcWSYGNyMHtxWw//kpGUeeWufTQ1aktnGbxJc+AijLooS91Rg
-	 Kjlf1Gvehb/LxAf/45RB/BnYHx0mPspkgsevY+k7kDL9oKLJeOqf3h5ySe9J2mMNnT
-	 v1QcEnCdyrJCvkEOZewRNRbwv66WoKzl+JRTbvuHpM+iMuq9AoakhPifcnrrYEyA26
-	 Ht7UuwQN+HbfxohdKyJWwAkDooo9lWUu+4r/XP2S22qtXURN1TiOpnOJCk/OJ1QtDJ
-	 LUebXKBAfbUxQ==
-Subject: Re: [Outreachy kernel] Outreachy contribution period is open -
- Welcome applicants
-To: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-References: <CAK-LDb+xT==9wMXR8VOFpVygqfZ+o_v1NZsRpT1k0vtmQMAkKw@mail.gmail.com>
-Cc: Helen Koike <helen@koikeco.de>, Greg KH <greg@kroah.com>,
- Outreachy <outreachy-kernel@googlegroups.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <0c23560d-f05f-008c-5cc1-48b06af8d0c0@xs4all.nl>
-Date: Tue, 6 Apr 2021 15:45:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.102 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-vs1-f44.google.com ([209.85.217.44])
+	by :SMTPAUTH: with ESMTPSA
+	id R8gxl9d4O5NJSR8gylipVN; Tue, 30 Mar 2021 00:21:36 -0700
+X-CMAE-Analysis: v=2.4 cv=bPLTnNyZ c=1 sm=1 tr=0 ts=6062d180
+ a=mkXaO6UkrcTOUokUjSM1cw==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
+ a=dESyimp9J3IA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=SiqW3_QkAAAA:8
+ a=VUbTt-mzAAAA:8 a=aiIX5UjjAAAA:8 a=YL6Xjd1eAAAA:8 a=uDnhSBqIwgfiM85XMO0A:9
+ a=7Zwj6sZBwVKJAoWSPKxL6X1jA+E=:19 a=QEXdDO2ut3YA:10 a=0-oVHmElw7bdUHZZ8WX8:22
+ a=rjIgbRELtaHJaNsedFhQ:22 a=K4UmP72BP_XnEf30ZnvK:22 a=yLS1KB8ZbIgHeRWbGdJx:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-vs1-f44.google.com with SMTP id u29so4523768vsi.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 30 Mar 2021 00:21:36 -0700 (PDT)
+X-Gm-Message-State: AOAM5318oP0bkQCGFci5HgnUhdkTwO1OvGZh64+kQStUq9JRq4IZ54Zj
+	bgAFSOEZa0owKCgXa06TM/QGQFchKMt1dgCkeEg=
+X-Received: by 2002:a67:688e:: with SMTP id d136mr16524746vsc.58.1617088895659;
+ Tue, 30 Mar 2021 00:21:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAK-LDb+xT==9wMXR8VOFpVygqfZ+o_v1NZsRpT1k0vtmQMAkKw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-CMAE-Envelope: MS4xfEig/SIzgyMGj3E77e7fSUg8C0RgSDJeEMM1R3mZ0tpXNk906kEc9T6cO57CFT0WZXiPpYPxpG8bs8MWlAuzblKEjIVODBMEI/rjosN8rgLD12+hA32n
- mML5b826cmsSGX6PrUgP8+mCLgRFQZCLdvPrbN2MPgGOrAYmQkepjNPb/mTDhfgCUjk9ljBkuy9l5BhSWF6C0tDq9QmfShDZixiwQD0ciExAzs7rNU0upswP
- thdszZANdrgqb3WxaUtv4ljDHGIy2wVDnylWrgfNgkPag4vUbM7YO9/xQfFkJAjq
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Tue, 30 Mar 2021 09:21:22 +0200
+X-Gmail-Original-Message-ID: <CAK-LDb+xT==9wMXR8VOFpVygqfZ+o_v1NZsRpT1k0vtmQMAkKw@mail.gmail.com>
+Message-ID: <CAK-LDb+xT==9wMXR8VOFpVygqfZ+o_v1NZsRpT1k0vtmQMAkKw@mail.gmail.com>
+Subject: Outreachy contribution period is open - Welcome applicants
+To: Outreachy <outreachy-kernel@googlegroups.com>
+Cc: Helen Koike <helen@koikeco.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CMAE-Envelope: MS4xfFLBkT8wxee44QglCtQS6pj3BKhleISsbnmDOV1dc7UD0A67Qoo99tvnT1/2mg7B5SDL/KTjHO4dAdqsncllIeOHnCfrQDoGGjU/hx8fCKrBRsFstS1F
+ s+jXiEZwRMs6R75a5PpAspST8hqoXy4vKXqI4hb79fvysjcyy8yQ5kA9Gvl2Cf2jbJVgzC7jz5PXErrP013KmsTtI/hzTF20deLmda2Kp7E+gpsPfSR3htiW
 
-Hi Vaishali, Helen, Greg,
+Greetings potential Linux kernel Outreachy interns!
 
-On 30/03/2021 09:21, Vaishali Thakkar wrote:
-> Greetings potential Linux kernel Outreachy interns!
-> 
-> Please read this *entire* email, even if you have applied in the past.
-> 
-> 1. Our contribution period process works entirely via this mailing
-> list. So, make sure that you read the emails I/Helen send over here in
-> the next few weeks. To help you with Linux kernel's patch submission
-> process we have a tutorial here:
-> 
->     http://kernelnewbies.org/Outreachyfirstpatch
-> 
-> It is not necessary to contact any individual mentor before starting
-> the tutorial. Feel free to ask your questions in this mailing list.
-> That way you'll be able get quick answers with the issues you're
-> facing.
-> 
-> 3. Please avoid sending patches for the *drivers/staging/media*
-> directory as Greg can't pick them in his tree during the contribution
-> period. Also, while you're required to submit patches in this mailing
-> list, please make sure to use *get_maintainer.pl* as well. So that you
-> can cc respective mailing list(s) and maintainers.
+Please read this *entire* email, even if you have applied in the past.
 
-I missed this point. I am perfectly willing to be reviewer for
-drivers/staging/media* patches. I noticed a bunch of otherwise perfectly
-fine and useful patches for staging/media drivers, so it would be a shame
-if they are skipped just because staging/media is maintained by the media
-subsystem and not by Greg.
+1. Our contribution period process works entirely via this mailing
+list. So, make sure that you read the emails I/Helen send over here in
+the next few weeks. To help you with Linux kernel's patch submission
+process we have a tutorial here:
 
-Is there any objection to that?
+    http://kernelnewbies.org/Outreachyfirstpatch
 
-Regards,
+It is not necessary to contact any individual mentor before starting
+the tutorial. Feel free to ask your questions in this mailing list.
+That way you'll be able get quick answers with the issues you're
+facing.
 
-	Hans
+3. Please avoid sending patches for the *drivers/staging/media*
+directory as Greg can't pick them in his tree during the contribution
+period. Also, while you're required to submit patches in this mailing
+list, please make sure to use *get_maintainer.pl* as well. So that you
+can cc respective mailing list(s) and maintainers.
 
-> 
-> As specified in our tutorial, we require Outreachy applicants to first
-> send a significant number of cleanup patches in drivers/staging before
-> you can move on to the project specific tasks. This is to help you get
-> some experience with the kernel community's patch practices.
-> 
-> 5. Once you have completed working on a good number of cleanup patches
-> and they have been accepted by Greg, we encourage applicants to move
-> on to complete some small tasks outlined by the mentors. It’s
-> preferable to CC the mentor when you are working on the task so that
-> they don’t miss it. Small tasks for the projects can be found in the
-> project detail here:
-> 
->    https://www.outreachy.org/apply/project-selection/#linux-kernel
-> 
-> Note that you'll be able to see the detailed information about
-> projects on Outreachy's website only if you have been informed by the
-> organizers about passing an initial eligibility round. Community
-> coordinators and mentors do not have any role to play in the initial
-> application process of Outreachy. So, please email Outreachy
-> organizers if you have any doubt related to eligibility or the initial
-> application process.
-> 
-> 6. Please record recording your contributions on Outreachy's website
-> for the each project you are planning to submit an application. Keep
-> editing your 'project contribution' on Outreachy's website based on
-> your accepted patches links and project-specific completion of tasks.
-> 
-> 7. Make sure to add your project preferences under the question
-> 'Community-specific Questions' in the application.
-> 
-> Applicants should also join the #outreachy IRC channel on
-> irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.  If
-> you're having trouble with IRC, please ask for help in this mailing
-> list.
-> 
-> If you’ve applied in the Outreachy before, you’re still required to
-> send a few staging driver cleanup patches to re-familiarize yourself
-> with the process before you start to work on tasks.
-> 
-> There is a tips section at the end of the tutorial to outline what
-> behaviors we look for in potential Outreachy interns. I hope this will
-> give more insight into our selection process.
-> 
-> All the best!
->  ---
-> Vaishali Thakkar and Helen Koike
-> Outreachy Linux Kernel Co-coordinator
-> 
+As specified in our tutorial, we require Outreachy applicants to first
+send a significant number of cleanup patches in drivers/staging before
+you can move on to the project specific tasks. This is to help you get
+some experience with the kernel community's patch practices.
 
+5. Once you have completed working on a good number of cleanup patches
+and they have been accepted by Greg, we encourage applicants to move
+on to complete some small tasks outlined by the mentors. It=E2=80=99s
+preferable to CC the mentor when you are working on the task so that
+they don=E2=80=99t miss it. Small tasks for the projects can be found in th=
+e
+project detail here:
+
+   https://www.outreachy.org/apply/project-selection/#linux-kernel
+
+Note that you'll be able to see the detailed information about
+projects on Outreachy's website only if you have been informed by the
+organizers about passing an initial eligibility round. Community
+coordinators and mentors do not have any role to play in the initial
+application process of Outreachy. So, please email Outreachy
+organizers if you have any doubt related to eligibility or the initial
+application process.
+
+6. Please record recording your contributions on Outreachy's website
+for the each project you are planning to submit an application. Keep
+editing your 'project contribution' on Outreachy's website based on
+your accepted patches links and project-specific completion of tasks.
+
+7. Make sure to add your project preferences under the question
+'Community-specific Questions' in the application.
+
+Applicants should also join the #outreachy IRC channel on
+irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.  If
+you're having trouble with IRC, please ask for help in this mailing
+list.
+
+If you=E2=80=99ve applied in the Outreachy before, you=E2=80=99re still req=
+uired to
+send a few staging driver cleanup patches to re-familiarize yourself
+with the process before you start to work on tasks.
+
+There is a tips section at the end of the tutorial to outline what
+behaviors we look for in potential Outreachy interns. I hope this will
+give more insight into our selection process.
+
+All the best!
+ ---
+Vaishali Thakkar and Helen Koike
+Outreachy Linux Kernel Co-coordinator
 
