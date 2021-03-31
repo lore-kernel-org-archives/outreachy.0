@@ -1,96 +1,123 @@
-X-GM-THRID: 6250348913456316416
-X-Received: by 10.182.254.35 with SMTP id af3mr571647obd.37.1455272760445;
-        Fri, 12 Feb 2016 02:26:00 -0800 (PST)
+X-GM-THRID: 6945917032908980224
+X-Received: by 2002:a2e:91c2:: with SMTP id u2mr3209042ljg.301.1617222984246;
+        Wed, 31 Mar 2021 13:36:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.46.73 with SMTP id j67ls1270835qga.13.gmail; Fri, 12 Feb
- 2016 02:25:59 -0800 (PST)
-X-Received: by 10.129.109.197 with SMTP id i188mr606058ywc.8.1455272759514;
-        Fri, 12 Feb 2016 02:25:59 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by gmr-mx.google.com with ESMTPS id u66si1524442pfa.2.2016.02.12.02.25.59
+Received: by 2002:a19:e86:: with SMTP id 128ls2886191lfo.0.gmail; Wed, 31 Mar
+ 2021 13:36:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyvVoxOOIpK/VjRvRzfZg8TMvvCabgOLbxEC54ymclY+dfHfZCXtE+WccoLMkX5V2/G3GBx
+X-Received: by 2002:ac2:5973:: with SMTP id h19mr3149031lfp.120.1617222982211;
+        Wed, 31 Mar 2021 13:36:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617222982; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ud5/3x1JIJD6f1M++y0CASxCQ/s8Wu90qyP+yR84i0otDA0OTHjB2Z5p5yfzAm8oJT
+         87PXBnAGv9iTwUukiueegtzd7dqrw/cxpzt/+odq/gnYZX+/VYDoQ4m6XSbHK9MJjY/J
+         BrNWRmgQn6nGOglFUX4fA5C5yKjma8+ETR+eUL+slmxq7ebkXgHHvWQ1wqhkYZHBer+i
+         YKtpBTd5kCZUg24SmgxkL15HuAEIQYcXZO4ybHQwodptl5eNT9nQSIBedAlP//7it+Ft
+         CbitrBeFosX7SdfFWLdxoeMjZGRZ4eRQKuGi7ZWiDxeHD28gskszv41KNKKvqDaNBGAP
+         9v1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=WcYsy3kXoDCePvIhmLlwLtZLzQMPTt5v0u+Cf7jdRZ0=;
+        b=XQu0oRuPgkaLQu1b4Wcd3Gf3xOcW6Qunlq+GaJaV9KY9L86jAgZlR5ohFtMT9XTHGY
+         9PP5hbqQgkm7VmrKtpsEIEfBGAZnAi01rxB1PGupGbX/bibghg4ACVzXFEVAH5FHedAv
+         YHbRLFdKj/PMIer3PZg735OwvSroTUN99JJduvCzDbsivsnJMKIDpHT6QWOWqLP4wo4a
+         XZFH/x4MaFExzCppeCo2Uymm/LLGERNA5q6DedpmdcMBidZxHUdJPRaieRX8p8EbElo4
+         yNPg3Erb3W0TZPQc9Qvv0lRw4iFIsTg9gGRnmup94Hr8jB1+muWqSosFwzKdgKc9Ksif
+         AkhQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id q3si371939lji.2.2021.03.31.13.36.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 02:25:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Mar 2021 13:36:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of bhumirks@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=bhumirks@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x22e.google.com with SMTP id yy13so44773157pab.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 12 Feb 2016 02:25:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=TgcpEITp6ggCPcVXlg6gShQIjHJrzjtZgAq6JjgdJfE=;
-        b=YjuTI5E/8ZNX5ev2ZwwZb+iXsBOoDmqFZxcueyYn3FqJwjTUewlwfq5g+MbkZTb8QW
-         XG5GaWY1QCEMumh6i06VDp6T79zeJ7mBbqL3W3kSI1HLTZJXSeYwrJv9l4x4Pd8H1AYI
-         KjzVOu/pm23jOyOGHpUtzPabkxdVVWtkYbsxR8UFIrfAtPF7N0lsvVGpmtet955TcHaU
-         ktOeLcbB33dOFSagP/Mw8sNyEv7uMh9KORSlr2f9Af3Vv0bh4FDdRbvuhfxOnUVluwll
-         McgZsaV9GoA2GNUpZv8iMxmvN1vLFzZMAq+pl6USkMJqWieNJ/yt0hPC4w9oOAJSIKW4
-         Zcqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TgcpEITp6ggCPcVXlg6gShQIjHJrzjtZgAq6JjgdJfE=;
-        b=d7a29I4oFnwa/S390kPfp5BDsNGe5563fB52CL9UEWgcAs9C9oblj20yYhck0vk58f
-         mYyd+eidCFTVdGShWogbS7NUsRkwaIjodMKFG//VuF2XovP8LxFoIkasG+9q1AXHx7q5
-         8sMvOiXADiQF93Q8No0460bpF3Or6Rwql8ldi8HRjEvXcJ3kmrDuM1yGicVoLcmhewMv
-         D+ED+oPWKYbc8yWx1uDWV4+YleFbhVDMoHZxHLqp3MZEHyKqgMOHPKEjlpELKzBbEA5/
-         CJcTw3gbMvE6h2Z97BpaV2+jJr8lXFwLFjAeYAwNyQ6RLHGTWWgP8lG4sT/Bexv8DPxP
-         h5Og==
-X-Gm-Message-State: AG10YORa/XcDvvgy/BcSkkRW1EejLbWjadfGalpf8sGiAIBXjK9H23Zp6Ff9b37T2DMABA==
-X-Received: by 10.66.190.131 with SMTP id gq3mr990189pac.42.1455272759376;
-        Fri, 12 Feb 2016 02:25:59 -0800 (PST)
-Return-Path: <bhumirks@gmail.com>
-Received: from bhumirks@gmail.com ([106.215.159.20])
-        by smtp.gmail.com with ESMTPSA id x12sm18318334pfi.88.2016.02.12.02.25.55
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 02:25:58 -0800 (PST)
-Received: by bhumirks@gmail.com (sSMTP sendmail emulation); Fri, 12 Feb 2016 15:55:49 +0530
-From: Bhumika Goyal <bhumirks@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] Staging: lustre: llite: Remove NULL check before kfree
-Date: Fri, 12 Feb 2016 15:55:48 +0530
-Message-Id: <1455272748-14400-1-git-send-email-bhumirks@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3A0e7n4K3lt3cyUy4jZdcelwqjBepyeYIsi2QD?=
+ =?us-ascii?q?101hICF9WsaTm9my2NES0hHpgDgcMUtQ+uyoEq+GXH/a6NpR6Y4eIb+tUGDdyQ?=
+ =?us-ascii?q?mVBatl6pbvxCClJj3m+odmpMFdWoV3FdGYNzlHpOng5g3QKbsd6f2m1IztuuvE?=
+ =?us-ascii?q?1XdqSmhRGthdxiN0EBySHEEzZCQuP/oEPaGR7MZGuDasEE5/Bq/QOlA+Q+PBq9?=
+ =?us-ascii?q?fX/aiLXTc6BgUq4ATLrTSk5K+SKXal9yoeSD9GzPMe93HEmWXCiZmLgrWe8Fv8?=
+ =?us-ascii?q?33WWx4lKkNHho+EzYfCku4wwEHHQrSqGIK5mQKaPuTgppvrH0idPrPDc5xE6P8?=
+ =?us-ascii?q?py7HvNfma65Rv1sjOQtwoT1w=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.81,293,1610406000"; 
+   d="scan'208";a="500983645"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 31 Mar 2021 22:36:21 +0200
+Date: Wed, 31 Mar 2021 22:36:21 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+cc: hvaibhav.linux@gmail.com, johan@kernel.org, elder@kernel.org, 
+    gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: greybus: arche-platform:
+ Fix ending '(' warnings
+In-Reply-To: <20210331202445.108678-1-martinsdecarvalhobeatriz@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2103312235040.3008@hadrien>
+References: <20210331202445.108678-1-martinsdecarvalhobeatriz@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-NULL check before kfree is unnecessary so remove it.
-Semantic patch used:
-// <smpl>
-@@ expression E; @@
-- if (E != NULL) { kfree(E); }
-+ kfree(E);
-@@ expression E; @@
-- if (E != NULL) { kfree(E); E = NULL; }
-+ kfree(E);
-+ E = NULL;
-// </smpl>
 
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/staging/lustre/lustre/llite/xattr.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/drivers/staging/lustre/lustre/llite/xattr.c b/drivers/staging/lustre/lustre/llite/xattr.c
-index 8eb43f1..310e381 100644
---- a/drivers/staging/lustre/lustre/llite/xattr.c
-+++ b/drivers/staging/lustre/lustre/llite/xattr.c
-@@ -192,11 +192,7 @@ int ll_setxattr_common(struct inode *inode, const char *name,
- 			 valid, name, pv, size, 0, flags,
- 			 ll_i2suppgid(inode), &req);
- #ifdef CONFIG_FS_POSIX_ACL
--	if (new_value != NULL)
--		/*
--		 * Release the posix ACL space.
--		 */
--		kfree(new_value);
-+	kfree(new_value);
- 	if (acl != NULL)
- 		lustre_ext_acl_xattr_free(acl);
- #endif
--- 
-1.9.1
+On Wed, 31 Mar 2021, Beatriz Martins de Carvalho wrote:
 
+> Fix checkpatch check "CHECK: Lines should not end with a '('"
+> in arche-platform.c:80 and arche-platform.c:184.
+
+Please try to express what you have done and why, without using the word
+Fix.  "Fix" doesn't explain what you have done.  It just says that you
+have done something that you consider has made the code better.  But the
+person receiving the message may have something else in mind.
+
+julia
+
+>
+> Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+> ---
+>  drivers/staging/greybus/arche-platform.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> index eebf0deb39f5..e374dfc0c92f 100644
+> --- a/drivers/staging/greybus/arche-platform.c
+> +++ b/drivers/staging/greybus/arche-platform.c
+> @@ -77,9 +77,8 @@ static void arche_platform_set_state(struct arche_platform_drvdata *arche_pdata,
+>  }
+>
+>  /* Requires arche_pdata->wake_lock is held by calling context */
+> -static void arche_platform_set_wake_detect_state(
+> -				struct arche_platform_drvdata *arche_pdata,
+> -				enum svc_wakedetect_state state)
+> +static void arche_platform_set_wake_detect_state(struct arche_platform_drvdata *arche_pdata,
+> +						 enum svc_wakedetect_state state)
+>  {
+>  	arche_pdata->wake_detect_state = state;
+>  }
+> @@ -181,9 +180,8 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+>  						WD_STATE_COLDBOOT_START) {
+>  					arche_platform_set_wake_detect_state(arche_pdata,
+>  									     WD_STATE_COLDBOOT_TRIG);
+> -					spin_unlock_irqrestore(
+> -						&arche_pdata->wake_lock,
+> -						flags);
+> +					spin_unlock_irqrestore(&arche_pdata->wake_lock,
+> +							       flags);
+>  					return IRQ_WAKE_THREAD;
+>  				}
+>  			}
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210331202445.108678-1-martinsdecarvalhobeatriz%40gmail.com.
+>
 
