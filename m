@@ -1,78 +1,78 @@
 X-GM-THRID: 6945912104921595904
-X-Received: by 2002:ae9:e513:: with SMTP id w19mr5220421qkf.231.1617221200882;
-        Wed, 31 Mar 2021 13:06:40 -0700 (PDT)
+X-Received: by 2002:a63:181c:: with SMTP id y28mr4821052pgl.175.1617221192010;
+        Wed, 31 Mar 2021 13:06:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:620a:3db:: with SMTP id r27ls1978869qkm.5.gmail; Wed, 31
- Mar 2021 13:06:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyDDaYaG36AwLNvijhiLRCsPB5EK4Dn8NwFaPYY+aJ9dRC6FukBxFaPj8usP7GFZPsTRpEp
-X-Received: by 2002:a37:9a0b:: with SMTP id c11mr4904805qke.190.1617221200054;
-        Wed, 31 Mar 2021 13:06:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617221200; cv=none;
+Received: by 2002:a17:903:31cc:: with SMTP id v12ls1595223ple.9.gmail; Wed, 31
+ Mar 2021 13:06:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykNJmjqJ0aMhXJ4fKfOpsAkwEy8bGE06dxz02jXNee+sWP8pgvwk70FzYA8bAjpMt8iskJ
+X-Received: by 2002:a17:902:8218:b029:e6:190e:48e with SMTP id x24-20020a1709028218b02900e6190e048emr4594966pln.33.1617221190807;
+        Wed, 31 Mar 2021 13:06:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617221190; cv=none;
         d=google.com; s=arc-20160816;
-        b=pvgLnznfmjxTIpeoNnZw2XjqeKAndLHZZ3USN9kF9A18ILxDudWAGaoXWSEiSexdt0
-         vGjJMHLXXBfwITID7TLESPo7qqRw30Vp+QaYGVdLgeBffJ33TDxnwX7fT6AGkD9UqAOv
-         bbaCQ39y6qq/9+clNHLNuFHEvqbH6nNXGldpUNfgrMK4tLUKqmB90X6Qk/GTCv7DlNYm
-         CNeuVdg2w5KD6iJofkQJd6VXDDVhSXGYNTuph7dMwBvhmS3dUJTJHNdoaHjCHJKxEym3
-         wyjfVjPlOYlbUsEygPjOs8OA353QfTnoySr38vgjvKRUcDjfeC+m7xTmnWM02aUKTVEO
-         Nf+w==
+        b=VlinyuZ1hs73RlxIIHXCkaZEn/xg9Sr2bVu4IBNNhBELVOMvdUTUjcO2tFrBAQp4iB
+         XR1/8HyiqdRoH1rafaOo0hVKfp+FLPyKskpfxR0W9xayDo6h3ARAbHxkQ+dQ43+Zerp/
+         nDu2tJB73r9OnT9HdUHV0gUxCbQchxsCTV/k2OX7y4fMDBF33NaSIMTiNyHJc/g7E9/k
+         C+IB/zRXsM8tror3G/IcjGQHTmJb7jIx9pNQvQ9N/xpBtRf5NqNFqLLUm2G0gzdJ82Cy
+         zPr63pnuJhDphyhQXkJY7v/e12lY2UBbdKfgKJUqtcScir6SkVxIDo+7wb8O/ZyFl5Y0
+         pw+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=k3BtLfKmoPsibyUgIOZU62iLipoHU12iPAWHYT8Z37Y=;
-        b=P57IOTsg835NDNE3C40fyfaFsHyMfoLqi2kNOsOk3Ei4FVHjbpBsP7ze5Ogb9zt/di
-         CPwCx+JRgYCnkOjs87+KzcPKxx/ap0BLC4q8ssNBLkxcrOciobFnXH9DVIHbS/MUhAee
-         sTVXCmxZjNY9hNe4FSzMtk8f2BPWaHKXvVQzfjVdD1sYOM7AnrPS0s5aItv74PZQGN1b
-         CP0a6SNZiu4W/Wy5b64mLjbuGRpwznhKnhiFc6KgzLaiIhk+Q1rFDiqlHLx6DfhcHqDC
-         1mhM6X5PPmtmCM8GauF+91Lmv3vAJK0yvA00iDSY6TwqCUClS3A/GIWRCCp/TGJoLmcW
-         H6fQ==
+        bh=ys5Gh541Ca1Dy5AHML2SDPDdvxPboGDXHtvxkAdx0CY=;
+        b=OFqPag0PI2GLTrPWs7W8ThT0fFZEQSRPsF4T8+4BoESxCOUo5qHcOdbr8Ea9cdEWab
+         XYHFcYgc8euIlMps558IwUKbvazFXcaxy0nWCTmzFnAjuQcUpovR16cJxQMLkfvSNPdZ
+         DBuMyR7a4Xwrf3qKeyZvAq/ZiamT8NMEqe6ufQTZPNeFlXnFuPMjlnXI82WKAYuJlzpg
+         QxAITs2zTZgt64Al88cH3hsAlhzcx1ZPPIl7yXzUGXQDe2vri3toIF/WMY756Q97Go+k
+         bQ2Ja21actZOPTRYoK7NNRqp3RUIJJP57I56vOFfAdQ9GFp81y01g5ALWtXx0UH+qPS6
+         07Cg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bvjYxHv/";
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=h62FU0J+;
+       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id b2si492416qtq.5.2021.03.31.13.06.40
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id e8si286026pgl.0.2021.03.31.13.06.30
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Mar 2021 13:06:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Wed, 31 Mar 2021 13:06:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bvjYxHv/";
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=h62FU0J+;
+       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id c204so15359566pfc.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 31 Mar 2021 13:06:40 -0700 (PDT)
+Received: by mail-pj1-x1044.google.com with SMTP id ot17-20020a17090b3b51b0290109c9ac3c34so1767101pjb.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 31 Mar 2021 13:06:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=k3BtLfKmoPsibyUgIOZU62iLipoHU12iPAWHYT8Z37Y=;
-        b=bvjYxHv/6etzeVjArSNWSn51LE0kU0Oga8xIzt22Z+CI8dMAmAgMgQqAFCn+S6O8D7
-         dDGK20Nh/p5PCB9y3KVqn9t3TAzSviabgAEfg85I316bEXjBcpVAhLZmcGS33Ujnbwpa
-         H6sZArdCEG7MDaA2c5zk4kBmFOQspr1r/52vCiBN+S7t2rYTXr7m/1GkVM7NyupBnCEp
-         orOOkndb9Gz1cWJt1kVPKCrWsHmLc3kbOwJ4pdz7Ocd86ALfH0iXAa0PT0fcV3vKVibp
-         s/C749x9MvF6s60cOxC4trWt4hRZFhS7cHtT5DWHRXT1DZ45IBeibDbSpq6csLPOYWGQ
-         0OSA==
+        bh=ys5Gh541Ca1Dy5AHML2SDPDdvxPboGDXHtvxkAdx0CY=;
+        b=h62FU0J+qTb2wc2qPCi0mkO2oQ++3iRTgKjWRo/cHbSz2uNh7WugNdr71JNhINeH/9
+         xCwID1Cd2/qnn1Lz7fJ0dxebb6xrZVaiLO2jm+xFZMy1uuVqDb/AIFSLallUIM3MB8mq
+         oqJSBXgI1+RJvGM2U3d1TV8F8BbnV7P2sq+Hh/ylTV+bNPE44kkC6Uml6+YC9xF9Rxi7
+         8BVbYj61hmtF1Z3EHdG4ppZs7RoDvuPuUcpysnpHLxDRD6I7zj7neuxd3SzxzkU/hx8m
+         I0uZuUr3lVh7AnvKM5Hfc0t5YgTYa2IQO6yDzuUyF4FwNGQE/0AfC566ZCtWwwE3/uVg
+         nWQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=k3BtLfKmoPsibyUgIOZU62iLipoHU12iPAWHYT8Z37Y=;
-        b=CU7Kgg7m1oJUXRN5E0ynJklvqmlb3PCtrfs/xa5s3jtofGOMx0K/uDPhUzi174zt9Q
-         BvamU9Ihhd7RCrUjyWpDjAJfmvdGy6oGxNB55BDOYUXA7mtC5eXyPhZDYTeOp6Hg2eYV
-         blFP6gt9PXB4O3Z2csVprI6Ap+zlW94MhP58Ku1PBo2Vm14Cgzy5Us6GTNB/L6uO0qEj
-         AxtJna6ouhrGri22XLDfdLZZd6Q7cx81kKaVOjLr6VzHpeqPyUSmNIOw2eCAbzRx4gnE
-         mnZlCbX6Y/c5iKnL2k6kH5wOMVcGlIJQhrgOXsqrwn6KOEWQwyYTqm05yXJXqdvJ2ebG
-         EF1A==
-X-Gm-Message-State: AOAM531++3pyRXEtxMBhMqCDe5/AIHdIoWyw/W33Y9jDyEfaLcnyF2KB
-	TGVh4bqdxyjI+WA9dqVcYG0=
-X-Received: by 2002:aa7:9f90:0:b029:204:99fa:3374 with SMTP id z16-20020aa79f900000b029020499fa3374mr4470948pfr.11.1617221199294;
-        Wed, 31 Mar 2021 13:06:39 -0700 (PDT)
+        bh=ys5Gh541Ca1Dy5AHML2SDPDdvxPboGDXHtvxkAdx0CY=;
+        b=CUxteX9wWFvXzzPQbeE9qoeqEVLNObCpjnNbvFTCemqmtFSQa7TPwA+9D7HEsUtZpg
+         op174tHLVDe44QR9YGxN2V4Djjf8JAunMLmNLKB/N3/MWXoDkDu+q+oH/YgeGgVSbgjT
+         eDcyXvG3qFw5+UirLcY/aXAeCSGrkmHVBQcy52vWnAlLGjWPc9MCnWEnOrbW3KjJvlrB
+         GJOQ8T/LbGu+A3NiA9656FvRix4YQDOeTUe/14Si10B3tgVJpONQRLyCOUoBkSDNzbrH
+         FSXODyZ/2mTtoJ3uiPCyRUEfdL/DlTHr9mePvoxyYxLk3QDf7zsBi8OFiD/LAjeWgbcG
+         m9pg==
+X-Gm-Message-State: AOAM531ABQqszHEr8nS+YetbSjRzy1l2UhcbDUXfkiTyJirS0Gbq6gMC
+	t+7CG2FoMggPkiu8PdIvcHCBBsUNaIfcaQ==
+X-Received: by 2002:a17:902:dacb:b029:e5:b538:9ce6 with SMTP id q11-20020a170902dacbb02900e5b5389ce6mr4636548plx.8.1617221190547;
+        Wed, 31 Mar 2021 13:06:30 -0700 (PDT)
 Return-Path: <deborahbrouwer3563@gmail.com>
 Received: from djbComp.hitronhub.home (S0106ac202ecb0523.gv.shawcable.net. [70.67.120.89])
-        by smtp.gmail.com with ESMTPSA id d22sm2985668pjx.24.2021.03.31.13.06.38
+        by smtp.gmail.com with ESMTPSA id d22sm2985668pjx.24.2021.03.31.13.06.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Mar 2021 13:06:39 -0700 (PDT)
+        Wed, 31 Mar 2021 13:06:30 -0700 (PDT)
 From: Deborah Brouwer <deborahbrouwer3563@gmail.com>
 To: gregkh@linuxfoundation.org,
 	ross.schm.dev@gmail.com,
@@ -85,9 +85,9 @@ Cc: linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com,
 	Deborah Brouwer <deborahbrouwer3563@gmail.com>
-Subject: [PATCH 2/3] staging: rtl8723bs: core: fix block comment warning
-Date: Wed, 31 Mar 2021 13:05:36 -0700
-Message-Id: <5ff15315036be9bdf2059bab2ddd00f7dce0d20a.1617221075.git.deborahbrouwer3563@gmail.com>
+Subject: [PATCH 1/3] staging: rtl8723bs: core: fix repeated word warning
+Date: Wed, 31 Mar 2021 13:05:35 -0700
+Message-Id: <14c1a1f1f0a34fb821d47ddab6e7e63800ec2736.1617221075.git.deborahbrouwer3563@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1617221075.git.deborahbrouwer3563@gmail.com>
 References: <cover.1617221075.git.deborahbrouwer3563@gmail.com>
@@ -95,107 +95,26 @@ In-Reply-To: <cover.1617221075.git.deborahbrouwer3563@gmail.com>
 References: <cover.1617221075.git.deborahbrouwer3563@gmail.com>
 
 Fix checkpatch warning:
-WARNING: Block comments use * on subsequent lines
+WARNING: Possible repeated word: 'very'
 
 Signed-off-by: Deborah Brouwer <deborahbrouwer3563@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 59 +++++++++++------------
- 1 file changed, 28 insertions(+), 31 deletions(-)
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 3878caf0b56c..428c71ce0334 100644
+index 2daf5c461a4d..3878caf0b56c 100644
 --- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
 +++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -46,8 +46,8 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
- 	init_completion(&pxmitpriv->terminate_xmitthread_comp);
+@@ -1700,7 +1700,7 @@ Calling context:
+ If we turn on USE_RXTHREAD, then, no need for critical section.
+ Otherwise, we must use _enter/_exit critical to protect free_xmit_queue...
  
- 	/*
--	Please insert all the queue initializaiton using _rtw_init_queue below
--	*/
-+	 * Please insert all the queue initializaiton using _rtw_init_queue below
-+	 */
+-Must be very very cautious...
++Must be very, very cautious...
  
- 	pxmitpriv->adapter = padapter;
- 
-@@ -60,10 +60,10 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, struct adapter *padapter)
- 	_rtw_init_queue(&pxmitpriv->free_xmit_queue);
- 
- 	/*
--	Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
--	and initialize free_xmit_frame below.
--	Please also apply  free_txobj to link_up all the xmit_frames...
--	*/
-+	 * Please allocate memory with the sz = (struct xmit_frame) * NR_XMITFRAME,
-+	 * and initialize free_xmit_frame below.
-+	 * Please also apply  free_txobj to link_up all the xmit_frames...
-+	 */
- 
- 	pxmitpriv->pallocated_frame_buf = vzalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4);
- 
-@@ -1069,17 +1069,15 @@ u32 rtw_calculate_wlan_pkt_size_by_attribue(struct pkt_attrib *pattrib)
- }
- 
- /*
--
--This sub-routine will perform all the following:
--
--1. remove 802.3 header.
--2. create wlan_header, based on the info in pxmitframe
--3. append sta's iv/ext-iv
--4. append LLC
--5. move frag chunk from pframe to pxmitframe->mem
--6. apply sw-encrypt, if necessary.
--
--*/
-+ * This sub-routine will perform all the following:
-+ *
-+ * 1. remove 802.3 header.
-+ * 2. create wlan_header, based on the info in pxmitframe
-+ * 3. append sta's iv/ext-iv
-+ * 4. append LLC
-+ * 5. move frag chunk from pframe to pxmitframe->mem
-+ * 6. apply sw-encrypt, if necessary.
-+ */
- s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct xmit_frame *pxmitframe)
- {
- 	struct pkt_file pktfile;
-@@ -1693,23 +1691,22 @@ static void rtw_init_xmitframe(struct xmit_frame *pxframe)
- }
- 
- /*
--Calling context:
--1. OS_TXENTRY
--2. RXENTRY (rx_thread or RX_ISR/RX_CallBack)
--
--If we turn on USE_RXTHREAD, then, no need for critical section.
--Otherwise, we must use _enter/_exit critical to protect free_xmit_queue...
--
--Must be very, very cautious...
--
--*/
-+ * Calling context:
-+ * 1. OS_TXENTRY
-+ * 2. RXENTRY (rx_thread or RX_ISR/RX_CallBack)
-+ *
-+ * If we turn on USE_RXTHREAD, then, no need for critical section.
-+ * Otherwise, we must use _enter/_exit critical to protect free_xmit_queue...
-+ *
-+ * Must be very, very cautious...
-+ */
+ */
  struct xmit_frame *rtw_alloc_xmitframe(struct xmit_priv *pxmitpriv)/* _queue *pfree_xmit_queue) */
- {
- 	/*
--		Please remember to use all the osdep_service api,
--		and lock/unlock or _enter/_exit critical to protect
--		pfree_xmit_queue
--	*/
-+	 *	Please remember to use all the osdep_service api,
-+	 *	and lock/unlock or _enter/_exit critical to protect
-+	 *	pfree_xmit_queue
-+	 */
- 
- 	struct xmit_frame *pxframe = NULL;
- 	struct list_head *plist, *phead;
 -- 
 2.17.1
 
