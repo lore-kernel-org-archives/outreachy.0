@@ -1,122 +1,77 @@
 X-GM-THRID: 6946206210186018816
-X-Received: by 2002:a05:6000:1acb:: with SMTP id i11mr3384785wry.68.1617789630431;
-        Wed, 07 Apr 2021 03:00:30 -0700 (PDT)
+X-Received: by 2002:a1c:5f54:: with SMTP id t81mr8678924wmb.84.1617291018160;
+        Thu, 01 Apr 2021 08:30:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:d1c8:: with SMTP id b8ls2152198wrd.3.gmail; Wed, 07 Apr
- 2021 03:00:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJBZEUPzT+baGnjI+BhbCn/OtK/2hT9DF9oBqi4bIY3Ph4JFfQNR1//nigh4cTKDEs3Dus
-X-Received: by 2002:a5d:6907:: with SMTP id t7mr3408081wru.380.1617789629045;
-        Wed, 07 Apr 2021 03:00:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617789629; cv=none;
+Received: by 2002:a5d:58f0:: with SMTP id f16ls1601063wrd.0.gmail; Thu, 01 Apr
+ 2021 08:30:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/JGZiLHY66YPh8Yv8woMoX7Z3BAbP5svcouY3Fomxo93DRxrYK8U5/pEgOD9IPcFQszNQ
+X-Received: by 2002:adf:f48d:: with SMTP id l13mr10594143wro.311.1617291016796;
+        Thu, 01 Apr 2021 08:30:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617291016; cv=none;
         d=google.com; s=arc-20160816;
-        b=b+pkgRZiHQkDjiu9sCsSAKrkxmXnajCTusjnxEOGV1YsEK9nETVmB1XvN/g48jjSBW
-         MSfCwLtdzQVV4ku9B+80iElZchzktGcz9BMOi+PdLhusYGn4oz3HWqetreJ2Q7eOT5lA
-         ZlZIsore/ygpk4ukrVeYECkz5Z5YNW9QK5lrrfM3LYb2y0eqlSwhPmxqXJtKy5GyoZao
-         ATH8NycI6coKCoIn3p82WaBd/21Iv1HLxfD9SRhr5/hYWPwWY5cUEEGq5hM8bl8EYRd3
-         z/P8Rz7ul1CWCGtXhlH4XR+ac00UQyTvCP4mZhNjzmBUpgGWFUJJASyVKBw9NL8M+X5K
-         JNxA==
+        b=a5iTd58J6la9Zk0fnR6osz+4RoYxkz7DuzeMuo2s1tHTwkI7G18BQ0S/MBOHWrJlDT
+         7gTT1B1ehf31q9MXKc0wRPBlFmO9sa6GQHQpuyV2zFyNGaFZZjGFdRn7DDzj9yznWXVD
+         YKFyo70D9tkm08s5NqIOiXDC6ObZaBQvXJlB1E/rw1pXHUMrW2Fr9988HLK3sF1ySdTH
+         X8aVAdmCx4NdTogLBeF2+/DbLlbZyBtNnI7ZTfWYGOJTo1U3aH38XApAs7/7ITSMUaK9
+         1wQZxzoS/hipLROc4TzThME4D3dqviwM4Mh6kByZAm9tv1VzRkliUrVlkGI+S1EYuJJu
+         CoOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=waneLiTPyr93n33EgplSceqj/1lZ2OvepBeYFzO1CDY=;
-        b=Dhz5SUxafGXrOg8eCU2/gEhaBJxEUZZYasYLiuBF2yjhs4dtOEzkyie2kHOL2/g43f
-         7O+LQnS0+6gDt/s7zYQFnU7pG1ny+lmyXjvyKmk3Y2Zoruid3lz6YHx2Nr1G0ahj/1Oa
-         JqAOBWUbXqOIYRY7UuWeXTR/T20lEAOjyY94P1KWMTghMmvj4ALAohJqkrOi+O3p2WYY
-         U5gXuyYiKUYLEzxHMFLDVHVSD0q5ejRPk/51LkT/2/tLG7iWcnIRDr6xfvWAk7HEKKxl
-         QvsKYDkFWbfyufsuxomWlZ7M2eY1etVSrUgliTIYsJ7TkCMjar6UQBStvnWrYBfUz/vY
-         z1Uw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=miloN6DGw1sq8TwRfQqBfE3nU1vq3X8oB+icH0CHsp8=;
+        b=bkc+vel0+Zot8IT+7oJEij3sybmn1n0oPQtHbxTxM/aQ6noWYXmjINHgDMvyc2jkTR
+         9NcvKZ18Y8Wmao0zqccfyud4vbtJjGdn/StGq+Wygkn8KJme7qmWimFi7vGbD8cRHpzr
+         X2X/jmu5u4I5c2YD5VP1yepvQCw1ZiJhFmtTezuSndvS99K0kIiGbSXgkSvOZDkOGDYn
+         ssbHAlIQptwOw34Q1Be+ganEMnOTXLzDrxKQRx+q4glBMxDLfvj5nCYdfNUxnYw9CrDS
+         CMnUK8gfkcfRbvaGrZxGSoet0k95irixIiya+egjDVebggIahPxCJUqXxBIdGwuBXgJY
+         X2bg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l9gXrPML;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::32f as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com. [2a00:1450:4864:20::32f])
-        by gmr-mx.google.com with ESMTPS id z202si419080wmc.0.2021.04.07.03.00.29
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ih5mRSpb;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+Return-Path: <willy@infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by gmr-mx.google.com with ESMTPS id k83si556482wma.0.2021.04.01.08.30.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Apr 2021 03:00:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::32f as permitted sender) client-ip=2a00:1450:4864:20::32f;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Apr 2021 08:30:16 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l9gXrPML;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::32f as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x32f.google.com with SMTP id j199-20020a1c23d00000b0290123bb155f6aso794777wmj.2
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Apr 2021 03:00:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding:content-language;
-        bh=waneLiTPyr93n33EgplSceqj/1lZ2OvepBeYFzO1CDY=;
-        b=l9gXrPML27gIv5NpFap6oZbVP4Tv4ly4vNEAMCuZsyngDUV4qQvsQd90iJ8zznCYqV
-         tbWny/27otQejhIzIbuxilv2zl1drdUW98+8msECUFcbybKNxlTJVDZ7MAh7CenAUj3Q
-         wFqnBFL5nwSRXWlyrMScKPcUXabEFFrq/bHMJDrYgNTlj93evTTG8E2aPVppw3TIr9cl
-         LNBKVNm6Jbp114DZCw0AayTSL34ugn1IVwGRhv7f74yT6+IrzBNOhFMi0dUfG6IAl+RC
-         IH3C0asFWlUDKBjpcE/BezhKulBZBb7tEDv+FuaIwdroAHGip+ctCZrq6Qiw9twauy/8
-         Z1CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding
-         :content-language;
-        bh=waneLiTPyr93n33EgplSceqj/1lZ2OvepBeYFzO1CDY=;
-        b=hQPuQZcSkBuW8LQeYPG5cVvGi/sdxgy+Hcpeqb87No+dGimws2P3uET+jiOe+v2odv
-         6+zu0DUZCrswPTmuPRz4XGM9Pu6A1DqzQWniB/v/L9+Nt5zkx8RqmYgLhkqzkpHnmBP+
-         NT4ZiYO4g4VcrQsvPNknZoluMWrKFy+3l2jNOif/n7sZbwEglFq6qBv05sgn/SnhRj3I
-         Src9MqhyhYqdPBAi6JDPDOWk5I0e4RXLktNswljzWrP46kpVs1rnkOPKOZI7CVTcIDFq
-         u+vuucTFPiEOmgUUH9jaavv1BhA8yhK1aJ1Fkrk/ctWiNN8y/C3Jv6klLU7umByHQr+y
-         vGQQ==
-X-Gm-Message-State: AOAM53240reZjm2BAGjONICbjnciLYMO6xJLETbk+n+zSBzepCSmURRX
-	r8sb5xy2NnYBNCB0HiUGSDBZgIjbNYpT5Ryz
-X-Received: by 2002:a1c:bc8b:: with SMTP id m133mr2276492wmf.103.1617789628543;
-        Wed, 07 Apr 2021 03:00:28 -0700 (PDT)
-Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from ?IPv6:2001:818:de85:7e00:ef5c:3f2a:a646:d6ec? ([2001:818:de85:7e00:ef5c:3f2a:a646:d6ec])
-        by smtp.gmail.com with ESMTPSA id k131sm5635210wmf.39.2021.04.07.03.00.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Apr 2021 03:00:28 -0700 (PDT)
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: media: omap4iss: Ending
- line with argument
-To: Matthew Wilcox <willy@infradead.org>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=ih5mRSpb;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=miloN6DGw1sq8TwRfQqBfE3nU1vq3X8oB+icH0CHsp8=; b=ih5mRSpb3Oj6LJUx+Ph6Z6FA+B
+	VMfYDwEsuVumiZWxiEz7wgQAlhLEGqEsDVz7leYoL9HqW94qxnvzAi8pzK3zNxCZ27faXCsIAE4Io
+	lCI6eiYrHkkWanKTjaNUbEuXRE14U4i+KLJLX1RtUnbBtHARwh0fMmDCFOfm/GJ+7FTaZCOdw/a2h
+	C24cvu70+OFvDA3OiGBgV/apvynx3MdNmBLMNkK3w7womxDmjxwwUlRlLYUHMbL3FixGSAdvhuTF3
+	+8DJSuphaZHfc5zUktTD8SJM8AV9/GfPSt3epB7J9HlhZBy9CYU4acRqL+YRdhD+MJSxOxbGpokm2
+	8mCmwhvA==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
+	id 1lRzGX-006IJe-F0; Thu, 01 Apr 2021 15:29:51 +0000
+Date: Thu, 1 Apr 2021 16:29:49 +0100
+From: Matthew Wilcox <willy@infradead.org>
+To: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
 Cc: laurent.pinchart@ideasonboard.com, mchehab@kernel.org,
- gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: media: omap4iss: align
+ arguments with open parenthesis
+Message-ID: <20210401152949.GG351017@casper.infradead.org>
 References: <cover.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
- <441d27060ff6477d0ad418f41e194b96373c1f7f.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
- <20210401152844.GF351017@casper.infradead.org>
-From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-Message-ID: <e175859f-4f68-0408-415f-a3e19f7e4874@gmail.com>
-Date: Wed, 7 Apr 2021 11:00:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ <475dbbe5774cbfed2d924807d8a3cfeb84b3d845.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210401152844.GF351017@casper.infradead.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <475dbbe5774cbfed2d924807d8a3cfeb84b3d845.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
 
+On Thu, Apr 01, 2021 at 04:07:39PM +0100, Beatriz Martins de Carvalho wrote:
+>  		subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev, adapter,
+> -				board_info->board_info, NULL);
+> +						   board_info->board_info, NULL);
 
-Em 01/04/21 16:28, Matthew Wilcox escreveu:
-> On Thu, Apr 01, 2021 at 04:07:38PM +0100, Beatriz Martins de Carvalho wrote:
->> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
->> index dae9073e7d3c..e8f724dbf810 100644
->> --- a/drivers/staging/media/omap4iss/iss.c
->> +++ b/drivers/staging/media/omap4iss/iss.c
->> @@ -559,9 +559,10 @@ static int iss_reset(struct iss_device *iss)
->>   	iss_reg_set(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG,
->>   		    ISS_HL_SYSCONFIG_SOFTRESET);
->>   
->> -	timeout = iss_poll_condition_timeout(
->> -		!(iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG) &
->> -		ISS_HL_SYSCONFIG_SOFTRESET), 1000, 10, 100);
->> +	timeout = iss_poll_condition_timeout(!(iss_reg_read(iss,
->> +							    OMAP4_ISS_MEM_TOP, ISS_HL_SYSCONFIG)
->> +							    & ISS_HL_SYSCONFIG_SOFTRESET),
->> +							    1000, 10, 100);
-> This is not a readability improvment.  I would factor it out into its
-> own function.
-
-Thanks for the review. How can I do this? I don't know how to do this.
-Beatriz Martins de Carvalho
+Also not a readability improvement.  This checkpatch warning should
+be disregarded.
 
