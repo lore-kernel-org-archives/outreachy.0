@@ -1,429 +1,150 @@
-X-GM-THRID: 6888073534620303360
-X-Received: by 2002:a5d:4843:: with SMTP id n3mr20836352wrs.416.1603754594983;
-        Mon, 26 Oct 2020 16:23:14 -0700 (PDT)
+X-GM-THRID: 6945672657015668736
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a2e:bc0a:: with SMTP id b10mr4556280ljf.231.1617262495420;
+        Thu, 01 Apr 2021 00:34:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:a544:: with SMTP id j4ls555190wrb.3.gmail; Mon, 26 Oct
- 2020 16:23:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSWS543bUzoPCftVhcCFWwP1upyeJnaRxYYhe/hojwLNN1KHM1qfauymGLi4ETrk8Ar1wP
-X-Received: by 2002:adf:fd49:: with SMTP id h9mr21308101wrs.115.1603754593036;
-        Mon, 26 Oct 2020 16:23:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603754593; cv=none;
+Received: by 2002:a2e:a409:: with SMTP id p9ls1098513ljn.0.gmail; Thu, 01 Apr
+ 2021 00:34:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzLmYMunt3GZwX48qzEFy7fC3oIb9RWGubkjGrp+lhgX2I4a8LZEIPYPuNwGlBDWmRtBxak
+X-Received: by 2002:a2e:300d:: with SMTP id w13mr4720555ljw.199.1617262493522;
+        Thu, 01 Apr 2021 00:34:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617262493; cv=none;
         d=google.com; s=arc-20160816;
-        b=xQ9f8wWihLbcPbv/J0+2EP4pEGy9l9C3mTZm8lLiR344E2WE5p9GkvVBZL0pcL8gCi
-         nPlCJ/AuE5Fg0KIAJtutixCvfI/0bihiJk9XTykzTmtbu33H9NoD5REFawMr3lrmmyVN
-         JFgqh+HdFVx7zAiwVMCa4JnahlyVytfCPr0px7LwTb96GzWS7Lp5B3ynpUqY3udfwOZl
-         TrSiDy1PO0ZUFUU7jXBdV/cKqYdgQMxgF/qIA7JjPv+Cv5YwTvULju2jWmg+Qq2Qn1io
-         UXOKV9UL/hiY7S3ATLzslqMdgVOq+9N5PUY6hyAVXYcjvDFbelPgoYLWeUes6EgvtU5Z
-         1LaA==
+        b=cmvJXMaKj0AH+l2JsN9SuN3c+mMSHVthNz6GVNb+zf3eYDb1XHiJuAzOGglG3EqDsa
+         jrFA9sHohYCLi++WGT9I/BfdheqpnjOz+3FOKy/AaffZQc47s0n0a+4CYMoLos4Ff0LZ
+         AXubvXnu5bdOc5OvPlJ/xypBeIVBkmW+u4AHT406DRWZnS8R9f6Q8xru1CndjX7yh3hX
+         YD4k8MxDR/gCM1K5nZYeY6+kXKrZQ7UEnWshCFx4yWS4DgAOEjG6eF7sisH17gYLXOI2
+         F/WpO9uf1kNv0bf/z79rOJ2p+tHT+srDK1cOV7yDSTax/m/5+DzaobcMVqW/YKZE/yGL
+         GXYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9GD/bXJuIxH37AnBfaQvF080XeGnVyQmKD9JQwiil+4=;
-        b=n9a+6FWldBti9gJSP8MVVwrKaLS8h9e7D3THnutmhbKVWq6Ry+9vplb3QkLdsGB6DE
-         /BX5PyqklqTDYFMClV40Y928vWLwpy/zS/ii2tAVxM3e9eH4Q2HSRQmQhBmUk8qJLis5
-         nC7kDywYmbl1Pmq4pAHmz8MudRUVgRNnAfrx6RKN0m4hP7OTkfFMsFBbCAGwzMYytrFW
-         cP0DKNfQdK6Z6ArotRa9dEz5RMjLWHSzg0M/CkfbBOfdOtmc8KPql+OLqLp+f/+5ni8S
-         SiomljBliBaku8/f+4rpr21t+06yTb12yjgSoEAySH72XrEh7FO7iSrPwsnYjmBzeJO7
-         N2/w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=6sqOv+Z310f8xNe9iluraYLoQqY/BVAV43aQIpV7v08=;
+        b=oo6JgQtcR8C5ie2NWbJPj6ZysUYV9xW0coZGnFbWC18RtZBByqS0M5jQiWm97yShhR
+         y8SEVG1tLrjfGO3lSUIpuP+btRgT60mtMXIvtQu/ijFPW8l/6zox9LFFrQTqBgcgtXA9
+         GwgZvzovEc8D5QMLhJeBGBcqlrPXkpdrHSrjo4OGTUflhqSaKWKrjg7IwQ2MAiR9WXFB
+         TL8jVxMZa19igErD0Q8wlYappTYhJ/CVaGUBhePkUz4byWAwbdPvs5KsuLiPSvHhicdD
+         8ieAwA7c4+vz4vD/JexVTduclJReWKSK8YMy3I1JuKHqf1PABpDVnAIzr0ZGanAmD+eB
+         7g5w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=geN59Q2q;
-       spf=pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::644 as permitted sender) smtp.mailfrom=izabela.bakollari@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <izabela.bakollari@gmail.com>
-Received: from mail-ej1-x644.google.com (mail-ej1-x644.google.com. [2a00:1450:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id w62si307899wma.1.2020.10.26.16.23.13
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v26si323488lfo.2.2021.04.01.00.34.53
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Oct 2020 16:23:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::644 as permitted sender) client-ip=2a00:1450:4864:20::644;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Apr 2021 00:34:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=geN59Q2q;
-       spf=pass (google.com: domain of izabela.bakollari@gmail.com designates 2a00:1450:4864:20::644 as permitted sender) smtp.mailfrom=izabela.bakollari@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x644.google.com with SMTP id p9so16461689eji.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Oct 2020 16:23:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=9GD/bXJuIxH37AnBfaQvF080XeGnVyQmKD9JQwiil+4=;
-        b=geN59Q2qlllwarGkLdQwFYaD3zzd+Alj36VObvG3ThsM+MT/QO2tmWBQCYa6Xtup1b
-         PKEDdJZ2FJuk6/CqRe+4YlAevx1XwB/J2k2bQfglOp2Indzz20Ydemhu5tDU0saqHdtn
-         Fbdn/8cLZxl+qXjm6Bjf01GSSZMksqwMvjvQ6ABcQFcaDHWFr1j4G5hdoWX3jxqtnoYH
-         QIX+o6B0A4T1OUk+i74sstzzMJWxW2Y74mFSfbfuH8B5OVLozPe4ihzlMPTHpKWACWg7
-         WgUVr3rLa+Rn2ReOg5C6pu6k8Ht9dqFYEw/fUcC7xSgZ2yYOe3ixIX5szRD9/r5uXnTU
-         Nc1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=9GD/bXJuIxH37AnBfaQvF080XeGnVyQmKD9JQwiil+4=;
-        b=HXAyE14ygwwsMwV8rHYEluUGcVx4aQgmjyCfyumLvvFO63WPrg6Z4t5/hHBCmWVM3v
-         2Ovu2zMMG/8IM7bMXkjyJGKzhaUKS7AKwCEGbIcdyPKNBhbJyr/SuGeb42Q+VgI6zLe9
-         9d959ZnNR2Gw1JsrZu3FIL8YBATYI8mWDQABoqhaWtk056osRggsAcRCm9xxohgcyWW2
-         3v9J6mvsHHO6iUK1/8S/w9qlwoZvYkPV7ib5ad22IOnxvwYjWJOfYHtd72ZrqPeEWNwd
-         HsVGBCw626cmhaI2NWv2fwqF8zYr2QJ4z9hAjTDq13xMS0lMHq3D/59oh46qG84zy0bQ
-         lEJg==
-X-Gm-Message-State: AOAM5314XT/jLy7XVsS4tBt/4WlyJb/DWrfBFhWAOgBrYFcrDPUR42Ab
-	wjC+jzFv2SCCwsXeWa/lVHY=
-X-Received: by 2002:a17:907:2110:: with SMTP id qn16mr18946757ejb.133.1603754592632;
-        Mon, 26 Oct 2020 16:23:12 -0700 (PDT)
-Return-Path: <izabela.bakollari@gmail.com>
-Received: from localhost.localdomain ([185.200.214.168])
-        by smtp.gmail.com with ESMTPSA id fx11sm6570993ejb.77.2020.10.26.16.23.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Oct 2020 16:23:11 -0700 (PDT)
-From: izabela.bakollari@gmail.com
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Izabela Bakollari <izabela.bakollari@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: Rewrite comparison to NULL
-Date: Tue, 27 Oct 2020 00:23:10 +0100
-Message-Id: <20201026232310.48128-1-izabela.bakollari@gmail.com>
-X-Mailer: git-send-email 2.18.4
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3ASN73Aav0fWZ1C1Cbk0HzlW9K7skDl9V00zAX?=
+ =?us-ascii?q?/kB9WHVpW+afkN2jm+le6A/shF8qKRUdsP2JJaXoexjh3LFv5415B92fdSng/F?=
+ =?us-ascii?q?ClNYRzqbblqgeAJwTb1spwkZhtaLJ/DtqYNykese/f7BOjG9gthPmrmZrJuc7k?=
+ =?us-ascii?q?w31gTR5nZshbhm9EIz2WHUFsSA5NCYBRLuv+2uN8uzGidX4LB/7UOlA5WYH4y+?=
+ =?us-ascii?q?HjqIjrelovCRIh9WC1/FGVwY+/Ilyj0hASXygn+9of2GLO+jaX2pme?=
+X-IronPort-AV: E=Sophos;i="5.81,296,1610406000"; 
+   d="scan'208";a="377468720"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Apr 2021 09:34:23 +0200
+Date: Thu, 1 Apr 2021 09:34:22 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Edith Puclla <edithpuclla20@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Modifying a driver on native Linux - which
+ file should I modify?
+In-Reply-To: <6f63edb0-7bf7-442e-8027-04df9e7d6e58n@googlegroups.com>
+Message-ID: <alpine.DEB.2.22.394.2104010933400.2908@hadrien>
+References: <7735e765-8b0e-415b-9630-ffa2b4f74a91n@googlegroups.com> <20210331044853.GU351017@casper.infradead.org> <6f63edb0-7bf7-442e-8027-04df9e7d6e58n@googlegroups.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-304171139-1617262463=:2908"
 
-From: Izabela Bakollari <izabela.bakollari@gmail.com>
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Rewrite comparison to NULL by modifying (p != NULL) to (p).
-Issue reported by checkpatch.
+--8323329-304171139-1617262463=:2908
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Izabela Bakollari <izabela.bakollari@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_ap.c       |  6 ++---
- drivers/staging/rtl8723bs/core/rtw_cmd.c      |  8 +++----
- drivers/staging/rtl8723bs/core/rtw_mlme.c     |  2 +-
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 24 +++++++++----------
- drivers/staging/rtl8723bs/core/rtw_pwrctrl.c  |  6 ++---
- drivers/staging/rtl8723bs/core/rtw_security.c |  4 ++--
- drivers/staging/rtl8723bs/hal/hal_intf.c      |  4 ++--
- .../staging/rtl8723bs/os_dep/ioctl_cfg80211.c |  6 ++---
- drivers/staging/rtl8723bs/os_dep/os_intfs.c   |  4 ++--
- drivers/staging/rtl8723bs/os_dep/recv_linux.c |  2 +-
- 10 files changed, 33 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index 125ecf0eea81..07d4bef12bf4 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -80,7 +80,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 			&tim_ielen,
- 			pnetwork_mlmeext->IELength - _FIXED_IE_LENGTH_
- 		);
--		if (p != NULL && tim_ielen > 0) {
-+		if (p && tim_ielen > 0) {
- 			tim_ielen += 2;
- 
- 			premainder_ie = p + tim_ielen;
-@@ -104,7 +104,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 				&tmp_len,
- 				(pnetwork_mlmeext->IELength - _BEACON_IE_OFFSET_)
- 			);
--			if (p != NULL)
-+			if (p)
- 				offset += tmp_len + 2;
- 
- 			/*  get supported rates len */
-@@ -113,7 +113,7 @@ static void update_BCNTIM(struct adapter *padapter)
- 				_SUPPORTEDRATES_IE_, &tmp_len,
- 				(pnetwork_mlmeext->IELength - _BEACON_IE_OFFSET_)
- 			);
--			if (p !=  NULL)
-+			if (p)
- 				offset += tmp_len + 2;
- 
- 			/* DS Parameter Set IE, len =3 */
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 5427afa2d641..b4d88c978945 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -229,7 +229,7 @@ void _rtw_free_evt_priv(struct	evt_priv *pevtpriv)
- 
- 	while (!rtw_cbuf_empty(pevtpriv->c2h_queue)) {
- 		void *c2h = rtw_cbuf_pop(pevtpriv->c2h_queue);
--		if (c2h != NULL && c2h != (void *)pevtpriv) {
-+		if (c2h && c2h != (void *)pevtpriv) {
- 			kfree(c2h);
- 		}
- 	}
-@@ -373,7 +373,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
- 		kfree(pcmd->parmbuf);
- 	}
- 
--	if (pcmd->rsp != NULL) {
-+	if (pcmd->rsp) {
- 		if (pcmd->rspsz != 0) {
- 			/* free rsp in cmd_obj */
- 			kfree(pcmd->rsp);
-@@ -1893,12 +1893,12 @@ static void c2h_wk_callback(_workitem *work)
- 
- 	while (!rtw_cbuf_empty(evtpriv->c2h_queue)) {
- 		c2h_evt = (u8 *)rtw_cbuf_pop(evtpriv->c2h_queue);
--		if (c2h_evt != NULL) {
-+		if (c2h_evt) {
- 			/* This C2H event is read, clear it */
- 			c2h_evt_clear(adapter);
- 		} else {
- 			c2h_evt = rtw_malloc(16);
--			if (c2h_evt != NULL) {
-+			if (c2h_evt) {
- 				/* This C2H event is not read, read & clear now */
- 				if (c2h_evt_read_88xx(adapter, c2h_evt) != _SUCCESS) {
- 					kfree(c2h_evt);
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 4f1577f3b9c6..47e8c19ee043 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -1912,7 +1912,7 @@ static int rtw_check_roaming_candidate(struct mlme_priv *mlme
- 	if (competitor->network.Rssi - mlme->cur_network_scanned->network.Rssi < mlme->roam_rssi_diff_th)
- 		goto exit;
- 
--	if (*candidate != NULL && (*candidate)->network.Rssi >= competitor->network.Rssi)
-+	if (*candidate && (*candidate)->network.Rssi >= competitor->network.Rssi)
- 		goto exit;
- 
- update:
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index a3c91244aef7..78c3e66d44e7 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -551,7 +551,7 @@ void mgt_dispatcher(struct adapter *padapter, union recv_frame *precv_frame)
- 	}
- 	ptable += index;
- 
--	if (psta != NULL) {
-+	if (psta) {
- 		if (GetRetry(pframe)) {
- 			if (precv_frame->u.hdr.attrib.seq_num == psta->RxMgmtFrameSeqNum) {
- 				/* drop the duplicate management frame */
-@@ -733,7 +733,7 @@ unsigned int OnProbeReq(struct adapter *padapter, union recv_frame *precv_frame)
- 
- 
- 	/* check (wildcard) SSID */
--	if (p != NULL) {
-+	if (p) {
- 		if (is_valid_p2p_probereq)
- 			goto _issue_probersp;
- 
-@@ -784,7 +784,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
- 	u32 ielen = 0;
- 
- 	p = rtw_get_ie(pframe + sizeof(struct ieee80211_hdr_3addr) + _BEACON_IE_OFFSET_, _EXT_SUPPORTEDRATES_IE_, &ielen, precv_frame->u.hdr.len - sizeof(struct ieee80211_hdr_3addr) - _BEACON_IE_OFFSET_);
--	if ((p != NULL) && (ielen > 0)) {
-+	if (p && ielen > 0) {
- 		if ((*(p + 1 + ielen) == 0x2D) && (*(p + 2 + ielen) != 0x2D)) {
- 			/* Invalid value 0x2D is detected in Extended Supported Rates (ESR) IE. Try to fix the IE length to avoid failed Beacon parsing. */
- 			DBG_871X("[WIFIDBG] Error in ESR IE is detected in Beacon of BSSID:"MAC_FMT". Fix the length of ESR IE to avoid failed Beacon parsing.\n", MAC_ARG(GetAddr3Ptr(pframe)));
-@@ -831,7 +831,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
- 
- 		if (((pmlmeinfo->state&0x03) == WIFI_FW_STATION_STATE) && (pmlmeinfo->state & WIFI_FW_ASSOC_SUCCESS)) {
- 			psta = rtw_get_stainfo(pstapriv, GetAddr2Ptr(pframe));
--			if (psta != NULL) {
-+			if (psta) {
- 				ret = rtw_check_bcn_info(padapter, pframe, len);
- 				if (!ret) {
- 						DBG_871X_LEVEL(_drv_always_, "ap has changed, disconnect now\n ");
-@@ -848,7 +848,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
- 			}
- 		} else if ((pmlmeinfo->state&0x03) == WIFI_FW_ADHOC_STATE) {
- 			psta = rtw_get_stainfo(pstapriv, GetAddr2Ptr(pframe));
--			if (psta != NULL) {
-+			if (psta) {
- 				/* update WMM, ERP in the beacon */
- 				/* todo: the timer is used instead of the number of the beacon received */
- 				if ((sta_rx_pkts(psta) & 0xf) == 0) {
-@@ -1446,7 +1446,7 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
- 		p = pframe + WLAN_HDR_A3_LEN + ie_offset; ie_len = 0;
- 		for (;;) {
- 			p = rtw_get_ie(p, _VENDOR_SPECIFIC_IE_, &ie_len, pkt_len - WLAN_HDR_A3_LEN - ie_offset);
--			if (p != NULL) {
-+			if (p) {
- 				if (!memcmp(p+2, WMM_IE, 6)) {
- 
- 					pstat->flags |= WLAN_STA_WME;
-@@ -2654,7 +2654,7 @@ void issue_probersp(struct adapter *padapter, unsigned char *da, u8 is_valid_p2p
- 		pwps_ie = rtw_get_wps_ie(cur_network->IEs+_FIXED_IE_LENGTH_, cur_network->IELength-_FIXED_IE_LENGTH_, NULL, &wps_ielen);
- 
- 		/* inerset & update wps_probe_resp_ie */
--		if ((pmlmepriv->wps_probe_resp_ie != NULL) && pwps_ie && (wps_ielen > 0)) {
-+		if (pmlmepriv->wps_probe_resp_ie && pwps_ie && wps_ielen > 0) {
- 			uint wps_offset, remainder_ielen;
- 			u8 *premainder_ie;
- 
-@@ -3958,7 +3958,7 @@ void issue_action_BA(struct adapter *padapter, unsigned char *raddr, unsigned ch
- 
- 			/* if ((psta = rtw_get_stainfo(pstapriv, pmlmeinfo->network.MacAddress)) != NULL) */
- 			psta = rtw_get_stainfo(pstapriv, raddr);
--			if (psta != NULL) {
-+			if (psta) {
- 				start_seq = (psta->sta_xmitpriv.txseq_tid[status & 0x07]&0xfff) + 1;
- 
- 				DBG_871X("BA_starting_seqctrl = %d for TID =%d\n", start_seq, status & 0x07);
-@@ -4487,7 +4487,7 @@ u8 collect_bss_info(struct adapter *padapter, union recv_frame *precv_frame, str
- 	/* checking rate info... */
- 	i = 0;
- 	p = rtw_get_ie(bssid->IEs + ie_offset, _SUPPORTEDRATES_IE_, &len, bssid->IELength - ie_offset);
--	if (p != NULL) {
-+	if (p) {
- 		if (len > NDIS_802_11_LENGTH_RATES_EX) {
- 			DBG_871X("%s()-%d: IE too long (%d) for survey event\n", __func__, __LINE__, len);
- 			return _FAIL;
-@@ -4497,7 +4497,7 @@ u8 collect_bss_info(struct adapter *padapter, union recv_frame *precv_frame, str
- 	}
- 
- 	p = rtw_get_ie(bssid->IEs + ie_offset, _EXT_SUPPORTEDRATES_IE_, &len, bssid->IELength - ie_offset);
--	if (p != NULL) {
-+	if (p) {
- 		if (len > (NDIS_802_11_LENGTH_RATES_EX-i)) {
- 			DBG_871X("%s()-%d: IE too long (%d) for survey event\n", __func__, __LINE__, len);
- 			return _FAIL;
-@@ -5694,7 +5694,7 @@ void linked_status_chk(struct adapter *padapter)
- 		/*  For WiDi 3.5 and latered on, they don't ask WiDi sink to do roaming, so we could not check rx limit that strictly. */
- 		/*  todo: To check why we under miracast session, rx_chk would be false */
- 		psta = rtw_get_stainfo(pstapriv, pmlmeinfo->network.MacAddress);
--		if (psta != NULL) {
-+		if (psta) {
- 			if (chk_ap_is_alive(padapter, psta) == false)
- 				rx_chk = _FAIL;
- 
-@@ -6820,7 +6820,7 @@ u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf)
- 	pmlmeext->max_chan_nums = init_channel_set(padapter, setChannelPlan_param->channel_plan, pmlmeext->channel_set);
- 	init_channel_list(padapter, pmlmeext->channel_set, pmlmeext->max_chan_nums, &pmlmeext->channel_list);
- 
--	if ((padapter->rtw_wdev != NULL) && (padapter->rtw_wdev->wiphy)) {
-+	if (padapter->rtw_wdev && padapter->rtw_wdev->wiphy) {
- 		struct regulatory_request request;
- 
- 		request.initiator = NL80211_REGDOM_SET_BY_DRIVER;
-diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-index 6ac9184d59a6..0d8aa7a2469e 100644
---- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-@@ -1173,13 +1173,13 @@ void rtw_init_pwrctrl_priv(struct adapter *padapter)
- void rtw_free_pwrctrl_priv(struct adapter *adapter)
- {
- #ifdef CONFIG_PNO_SUPPORT
--	if (pwrctrlpriv->pnlo_info != NULL)
-+	if (pwrctrlpriv->pnlo_info)
- 		printk("****** pnlo_info memory leak********\n");
- 
--	if (pwrctrlpriv->pscan_info != NULL)
-+	if (pwrctrlpriv->pscan_info)
- 		printk("****** pscan_info memory leak********\n");
- 
--	if (pwrctrlpriv->pno_ssid_list != NULL)
-+	if (pwrctrlpriv->pno_ssid_list)
- 		printk("****** pno_ssid_list memory leak********\n");
- #endif
- }
-diff --git a/drivers/staging/rtl8723bs/core/rtw_security.c b/drivers/staging/rtl8723bs/core/rtw_security.c
-index 7afa3c79cf68..f60217219554 100644
---- a/drivers/staging/rtl8723bs/core/rtw_security.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_security.c
-@@ -750,7 +750,7 @@ u32 rtw_tkip_decrypt(struct adapter *padapter, u8 *precvframe)
- 	/* 4 start to decrypt recvframe */
- 	if (prxattrib->encrypt == _TKIP_) {
- 		stainfo = rtw_get_stainfo(&padapter->stapriv, &prxattrib->ta[0]);
--		if (stainfo != NULL) {
-+		if (stainfo) {
- 			if (IS_MCAST(prxattrib->ra)) {
- 				static unsigned long start;
- 				static u32 no_gkey_bc_cnt;
-@@ -1827,7 +1827,7 @@ u32 rtw_aes_decrypt(struct adapter *padapter, u8 *precvframe)
- 	/* 4 start to encrypt each fragment */
- 	if (prxattrib->encrypt == _AES_) {
- 		stainfo = rtw_get_stainfo(&padapter->stapriv, &prxattrib->ta[0]);
--		if (stainfo != NULL) {
-+		if (stainfo) {
- 			RT_TRACE(_module_rtl871x_security_c_,
- 				 _drv_err_,
- 				 ("%s: stainfo!= NULL!!!\n", __func__));
-diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c b/drivers/staging/rtl8723bs/hal/hal_intf.c
-index 23df729acb7b..ac3066a91c84 100644
---- a/drivers/staging/rtl8723bs/hal/hal_intf.c
-+++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
-@@ -248,14 +248,14 @@ s32	rtw_hal_mgnt_xmit(struct adapter *padapter, struct xmit_frame *pmgntframe)
- 
- s32	rtw_hal_init_xmit_priv(struct adapter *padapter)
- {
--	if (padapter->HalFunc.init_xmit_priv != NULL)
-+	if (padapter->HalFunc.init_xmit_priv)
- 		return padapter->HalFunc.init_xmit_priv(padapter);
- 	return _FAIL;
- }
- 
- void rtw_hal_free_xmit_priv(struct adapter *padapter)
- {
--	if (padapter->HalFunc.free_xmit_priv != NULL)
-+	if (padapter->HalFunc.free_xmit_priv)
- 		padapter->HalFunc.free_xmit_priv(padapter);
- }
- 
-diff --git a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-index 11a787bfd07d..b4a0169c90ed 100644
---- a/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
-@@ -259,7 +259,7 @@ struct cfg80211_bss *rtw_cfg80211_inform_bss(struct adapter *padapter, struct wl
- 
- 	/* To reduce PBC Overlap rate */
- 	/* spin_lock_bh(&pwdev_priv->scan_req_lock); */
--	if (adapter_wdev_data(padapter)->scan_request != NULL)
-+	if (adapter_wdev_data(padapter)->scan_request)
- 	{
- 		u8 *psr = NULL, sr = 0;
- 		struct ndis_802_11_ssid *pssid = &pnetwork->network.Ssid;
-@@ -288,7 +288,7 @@ struct cfg80211_bss *rtw_cfg80211_inform_bss(struct adapter *padapter, struct wl
- 				}
- 				else
- 				{
--					if (psr != NULL)
-+					if (psr)
- 						*psr = 0; /* clear sr */
- 				}
- 			}
-@@ -1353,7 +1353,7 @@ void rtw_cfg80211_indicate_scan_done(struct adapter *adapter, bool aborted)
- 	};
- 
- 	spin_lock_bh(&pwdev_priv->scan_req_lock);
--	if (pwdev_priv->scan_request != NULL) {
-+	if (pwdev_priv->scan_request) {
- 		#ifdef DEBUG_CFG80211
- 		DBG_871X("%s with scan req\n", __func__);
- 		#endif
-diff --git a/drivers/staging/rtl8723bs/os_dep/os_intfs.c b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-index e61928360927..17783c44e2be 100644
---- a/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-+++ b/drivers/staging/rtl8723bs/os_dep/os_intfs.c
-@@ -491,7 +491,7 @@ struct net_device *rtw_init_netdev(struct adapter *old_padapter)
- 
- 	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("+init_net_dev\n"));
- 
--	if (old_padapter != NULL)
-+	if (old_padapter)
- 		pnetdev = rtw_alloc_etherdev_with_old_priv(sizeof(struct adapter), (void *)old_padapter);
- 	else
- 		pnetdev = rtw_alloc_etherdev(sizeof(struct adapter));
-@@ -838,7 +838,7 @@ u8 rtw_free_drv_sw(struct adapter *padapter)
- 	}
- 
- 	/*  clear pbuddystruct adapter to avoid access wrong pointer. */
--	if (padapter->pbuddy_adapter != NULL)
-+	if (padapter->pbuddy_adapter)
- 		padapter->pbuddy_adapter->pbuddy_adapter = NULL;
- 
- 	RT_TRACE(_module_os_intfs_c_, _drv_info_, ("-rtw_free_drv_sw\n"));
-diff --git a/drivers/staging/rtl8723bs/os_dep/recv_linux.c b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-index 48635b7a1eb2..e9cd247085b8 100644
---- a/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-+++ b/drivers/staging/rtl8723bs/os_dep/recv_linux.c
-@@ -124,7 +124,7 @@ void rtw_os_recv_indicate_pkt(struct adapter *padapter, _pkt *pkt, struct rx_pkt
- 
- 					_rtw_xmit_entry(pkt, pnetdev);
- 
--					if (bmcast && (pskb2 != NULL)) {
-+					if (bmcast && pskb2) {
- 						pkt = pskb2;
- 						DBG_COUNTER(padapter->rx_logs.os_indicate_ap_mcast);
- 					} else {
--- 
-2.18.4
 
+On Wed, 31 Mar 2021, Edith Puclla wrote:
+
+> Thank you, what I understand is that I could modify xhci.c for example,
+> adding a  printk, the idea is to add a change, compile the kernel and then
+> reset the changes. Is what I understand form the tutorial, let me know if I
+> am wrong.
+
+Please do not top post.  Put your comment under the comment you are
+replying to, so that the person looking at the message can understand the
+context.
+
+julia
+
+> El martes, 30 de marzo de 2021 a las 23:49:03 UTC-5, Matthew Wilcox
+> escribió:
+>       On Tue, Mar 30, 2021 at 09:37:15PM -0700, Edith Puclla wrote:
+>       > Hello Everyone, I am Edith from Peru, and I started to compile
+>       the Linux
+>       > kernel.
+>       >
+>       > I am following this
+>       > guide:https://kernelnewbies.org/Outreachyfirstpatch?action=show&redirect=OPWfirst
+>       patch#kernel-setup-done
+>       > *Section*: Modifying a driver on native Linux
+>       >
+>       > I chose to modify this driver: *xhci-hcd* but I can't find the
+>       file to add
+>       > a print printk(KERN_DEBUG "I can modify the Linux kernel!\n").
+>       >
+>       > I look at all the files located in the same path of the
+>       Makefile after
+>       > executing: git grep xhci-hcd -- '*Makefile'
+>       >
+>       > Could you please tell me which file could I modify for that
+>       driver?
+>
+>       The Linux Makefiles are written in a rather terse way that isn't
+>       necessarily the easiest to understand for someone who's not
+>       familiar
+>       with them.
+>
+>       $ git grep xhci-hcd -- '*Makefile'
+>       drivers/usb/host/Makefile:xhci-hcd-y := xhci.o xhci-mem.o
+>       xhci-ext-caps.o
+>       drivers/usb/host/Makefile:xhci-hcd-y += xhci-ring.o xhci-hub.o
+>       xhci-dbg.o
+>       drivers/usb/host/Makefile:xhci-hcd-y += xhci-trace.o
+>       drivers/usb/host/Makefile: xhci-hcd-y += xhci-dbgcap.o
+>       xhci-dbgtty.o
+>       drivers/usb/host/Makefile: xhci-hcd-y += xhci-debugfs.o
+>       drivers/usb/host/Makefile:obj-$(CONFIG_USB_XHCI_HCD) +=
+>       xhci-hcd.o
+>
+>       'xhci-hcd-y' is the list of .o files which make up the final
+>       link step
+>       to make xhci-hcd.o. Is that enough information for you to figure
+>       out
+>       which file to modify?
+>
+>       (I'm trying to get you past the immediate problem you're
+>       hitting, which
+>       isn't terribly important, without just giving you the answer)
+>
+>       The other thing you can do is build the kernel with 'make V=1',
+>       which tells
+>       you what the build system is doing instead of the shortened
+>       output.
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/6f63edb0-7bf7-442e-8027-
+> 04df9e7d6e58n%40googlegroups.com.
+>
+>
+--8323329-304171139-1617262463=:2908--
 
