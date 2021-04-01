@@ -1,82 +1,117 @@
 X-GM-THRID: 6946206210186018816
-X-Received: by 2002:a25:d942:: with SMTP id q63mr3361764ybg.261.1617290752769;
-        Thu, 01 Apr 2021 08:25:52 -0700 (PDT)
+X-Received: by 2002:a5d:6dcc:: with SMTP id d12mr9994567wrz.136.1617289664628;
+        Thu, 01 Apr 2021 08:07:44 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:e0cd:: with SMTP id x196ls677516ybg.10.gmail; Thu, 01
- Apr 2021 08:25:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztDQP4vbF6TpsWiXWA90RRnO3f7lC3HE2KfZB6Oj7/AuCboXVcJnM0kRcrkA5oVy8Puvh3
-X-Received: by 2002:a25:686:: with SMTP id 128mr12082934ybg.258.1617290751836;
-        Thu, 01 Apr 2021 08:25:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617290751; cv=none;
+Received: by 2002:a7b:cc94:: with SMTP id p20ls3114468wma.0.gmail; Thu, 01 Apr
+ 2021 08:07:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzNfeYC8d9N6maArv7bXZA2oxmym3b9D/I6b6698a50P7NwSR/qj1BEkcCOS7MU46DY7y2q
+X-Received: by 2002:a1c:97:: with SMTP id 145mr8449270wma.142.1617289663351;
+        Thu, 01 Apr 2021 08:07:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617289663; cv=none;
         d=google.com; s=arc-20160816;
-        b=RxSPY4egkF7WmrXf0SkiKS3ZkqyZyzKim2vNiciGi5gnn/K1jYrC8AzRfo16bKqq0N
-         8Wy3G85TwJvHRog04pl8S4AGwGCq2XP1ht0bTV3mzvh9EAxhqFewGVOTJRhHBaKGebC8
-         yCmX97q972567kZFolaDkuUeb5ZkS0MOQw5Oyt4JDvME/cruujYZ1L+64yRiVZ8uVdY2
-         o7bzu9vJOjDWVgOXmvDT6WDpLjv0ByISNFUcESN8YrYJUqk5BY3bGyZXau5TelC4uGR2
-         VaDvbQ2M80WZkIHl4evmziiNxg3PM1I40VciErSRmZMmPfW15Bo/nklVEave29KOdJO+
-         SFDA==
+        b=TczLzt+pcLBrwy5wdFlogc0FRQdNRNPA6h+ObMModxlm/tNEAlgiK+/vvrWyGAv9W0
+         yNKmK9kcSzRcV0E+k5ATmlM0v1xxiRGyn+1ev3ZdytTeakBnHV8adABM2JrBfQkB29X6
+         2XaociScRsq+QA1LyjJFGKeVxxnIMjxHZ9Nwkxx9GJACNDMw4ApEEnYXQlNZmjPoxAuZ
+         BweezlJLl8TJJOV8N7l9FEqyFjrRbBxP3gLRC7F5+chTNPRQLlUQox8IfkcO/XAKPqOl
+         RTV6SvIamwN9K79aI3L7F4BD8DbhlcMckzafOlkhh/NPvaxx3svSOW1O7uAgaHXJvd/r
+         YFtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=MiOgkDCQPQIqPRIEM0BOdk+FQPnFJSRgGSnPFWi4j9Y=;
-        b=fQt1dmC6QE4DMZaGdU+k662bC4yMnI1Ncxy4//HuWLI2OlZDqI6NJt2sqsGlayvtIz
-         XOgKC/x1gRHZh+fdp3iIyxLglYL5czM0Lf1qC/VN9CYoVW/b4V3jaWTwZdIcpWFppY5N
-         OBTSpT9Qk5y4lLFmKHDwt3wJPxqxBy2d7BS3OaGKuz2fxNPUfVJnpI/HqasBp1ClYEQM
-         aYIQfb+xeji6Kf6C1Zp/E/RxlBCOnWF34PY4Gdbu9QQUP/srA79AzTMSE9POlNRt0rPA
-         x4uFoNkrbHBUOtmhsLKmsE8sb08rhdCbyT5qrkHzMwJS8ESkzCj7nFNnxzhvN+pSzedB
-         RS/Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=MbKLAGz4OO4bkaK2mn5gJbhDW+pmNyk19HFcUZTJdJg=;
+        b=ngbFIblxjVXWzFOj/Wb6fEDmDN3/ivrRMNSXfU1LTeeLVg8IOBhDCWcx+lmGr9cEMJ
+         /IXyMzpNYq4wXCPxj9pfs1VZhchiCCZuWLcl/UZdNp9m25xl2NdwcsVhjqlQt1ZRtVcm
+         Ha/Qupxy144lHjplLP0qUil2+u1mwUY+AScJVG/92FhLoQfULwwWDUaqN/oRo9rZpp7X
+         7KpOJ75XnYWinlJcOFqvDnS8RkjDvejt8h1i/K0Sf7vgWOXxMB8X5mHM5yrrWAA+8J/9
+         eOJxAV/uH5ncbex2s+OiCG69Gl0WDdMFB6VDifk9ytNkFTvImqQP7Y22RfIpcwC4DQKD
+         O/6g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=zO7z16H+;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id l14si384412ybp.4.2021.04.01.08.25.51
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GRr7eS+a;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com. [2a00:1450:4864:20::431])
+        by gmr-mx.google.com with ESMTPS id h16si705523wrx.2.2021.04.01.08.07.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Apr 2021 08:25:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Apr 2021 08:07:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) client-ip=2a00:1450:4864:20::431;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=zO7z16H+;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 01DD06136E;
-	Thu,  1 Apr 2021 15:25:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1617290750;
-	bh=hSu9uPH/Hw+DB94jZx4GKfdEPdzNMr1RIWzL7XlHirQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=zO7z16H+9N64eLC2bU+ASReX0/QjnbtEVOy2Yo8uvuMCmm7Kax84+fHsbRPt1enXB
-	 Cye2XqDtzeiCzAn5MVf5cpDYxQoV7ayTe4WZzBwpIlBn5Y9Vtb8asIea9xpQ+Ekboa
-	 DiLbSwN41mcAozYQpeezOnVy2dtRM7abhcg/L8dc=
-Date: Thu, 1 Apr 2021 17:25:47 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-Cc: laurent.pinchart@ideasonboard.com, mchehab@kernel.org,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 0/2] staging: media: omap4iss: Patchsets cleans up in
- iss.c
-Message-ID: <YGXl+0iLgnVL2jkt@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GRr7eS+a;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x431.google.com with SMTP id c8so2150115wrq.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Apr 2021 08:07:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+         :content-transfer-encoding;
+        bh=MbKLAGz4OO4bkaK2mn5gJbhDW+pmNyk19HFcUZTJdJg=;
+        b=GRr7eS+aFYlubvf1mPOYcVQQgMHnfQ0NegZX00k4kHoMYsIKZ4BVrmlZlAzofy5DWv
+         R95KUIOcwiQhJZXStFdhS6EGKVRwm0AYzLWs8C89sMpKtNfHNgts2zl68Mq3jekWTY21
+         3eORmfMoCBoLlha/R4Hcec0dxt6jUWvkHMFiKgMM5i/TJcGZP73R1SrM6m9Cu9Ahfgj4
+         J/qgd94AonllohzFWegDtH3E4+6geuEY7eZgVNSwvUsvdrwXTMUB9ZqcMMAbLYxGinnG
+         tVof+nifxAlS28roJ6tKUY1BQi+5nhjDaLWeqtpmo6oNgYTsV6WsRsRibSXCxOINXm6Y
+         Jl7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=MbKLAGz4OO4bkaK2mn5gJbhDW+pmNyk19HFcUZTJdJg=;
+        b=jaxU5WP/F7MbTQ18wDf2/NGeX2RCIX119UQj3w16O3nWkpzXEkWNoeIVe1l/E9zNUC
+         AgHOdkNtM0nO5QHmrl764DqDrLxBDW+aObzm/qMJNK5ASxF67DhuMGFMgNI56l2MCeEA
+         +7Gb7fIRUQZAB4M1InQArXgpMlsnGE3hrckngzDrCiB8sjVEVzdbDTDolpkb7o8E8rec
+         BDVBeVIH6/flgkfefqxLaW8AdDUOXqPn9w9oSV/SLqQRK7QDWb28xOhnguSIQRU7+Um/
+         /JaY655llbKM4nTWkzFuETXBUZBaH08xFg2QoA16ZmwN5/z8KRPdluf9gx6rf0ndRjip
+         xaNg==
+X-Gm-Message-State: AOAM530mu7Flk7GEJCkR3BVmuYWRS899zpksFvNw5QOotbQCKoUiMwWq
+	sb79S9a8Ntqkj29jXKCDk6w=
+X-Received: by 2002:a5d:5492:: with SMTP id h18mr10435295wrv.340.1617289663089;
+        Thu, 01 Apr 2021 08:07:43 -0700 (PDT)
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:a182:b5f0:9f7c:c891])
+        by smtp.gmail.com with ESMTPSA id n8sm9710108wrm.70.2021.04.01.08.07.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Apr 2021 08:07:42 -0700 (PDT)
+From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+To: laurent.pinchart@ideasonboard.com,
+	mchehab@kernel.org,
+	gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 2/2] staging: media: omap4iss: align arguments with open parenthesis
+Date: Thu,  1 Apr 2021 16:07:39 +0100
+Message-Id: <475dbbe5774cbfed2d924807d8a3cfeb84b3d845.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
 References: <cover.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1617287509.git.martinsdecarvalhobeatriz@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Thu, Apr 01, 2021 at 04:07:37PM +0100, Beatriz Martins de Carvalho wrote:
-> Clean up checks of "Alignment should match open parenthesis" and 
-> "CHECK: Lines should not end with a '('" in iss.c
-> 
-> Beatriz Martins de Carvalho (2):
->   staging: media: omap4iss: Ending line with argument
->   staging: media: omap4iss: align arguments with open parenthesis
-> 
->  drivers/staging/media/omap4iss/iss.c | 48 +++++++++++++---------------
+Cleans up checks of "Alignment should match open parenthesis"
+in iss.c:96.
 
-Please read the outreachy introduction email again :(
+Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+---
+ drivers/staging/media/omap4iss/iss.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks,
+diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+index e8f724dbf810..472f1837632e 100644
+--- a/drivers/staging/media/omap4iss/iss.c
++++ b/drivers/staging/media/omap4iss/iss.c
+@@ -963,7 +963,7 @@ iss_register_subdev_group(struct iss_device *iss,
+ 		}
+ 
+ 		subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev, adapter,
+-				board_info->board_info, NULL);
++						   board_info->board_info, NULL);
+ 		if (!subdev) {
+ 			dev_err(iss->dev, "Unable to register subdev %s\n",
+ 				board_info->board_info->type);
+-- 
+2.25.1
 
-greg k-h
 
