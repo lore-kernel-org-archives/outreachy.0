@@ -1,150 +1,135 @@
 X-GM-THRID: 6946280249577439232
-X-Received: by 2002:a05:600c:2282:: with SMTP id 2mr9776513wmf.93.1617311765860;
-        Thu, 01 Apr 2021 14:16:05 -0700 (PDT)
+X-Received: by 2002:a1c:28a:: with SMTP id 132mr9920271wmc.2.1617306901599;
+        Thu, 01 Apr 2021 12:55:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:6a89:: with SMTP id s9ls2573756wru.2.gmail; Thu, 01 Apr
- 2021 14:16:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyA1OKECkWZBzhdljVhxCVDgpLXBlq+WgmbFBA1sxmzpOXCRI8kRabt/OgzpaRYyEDD0WI3
-X-Received: by 2002:adf:f2c3:: with SMTP id d3mr11997958wrp.380.1617311764304;
-        Thu, 01 Apr 2021 14:16:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617311764; cv=none;
+Received: by 2002:a5d:6a89:: with SMTP id s9ls2384988wru.2.gmail; Thu, 01 Apr
+ 2021 12:55:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9y30D3LLTVkSdV3/KOdTn1CW0u5s68C45syCHB+PnElvhOzDW8WZF5en4mzqCwtqZbtpq
+X-Received: by 2002:adf:f908:: with SMTP id b8mr11292658wrr.184.1617306900220;
+        Thu, 01 Apr 2021 12:55:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617306900; cv=none;
         d=google.com; s=arc-20160816;
-        b=W9Sbz8dKWN+Mq5/qcod2/X1EB7+amAkGJQJaRZicDx+rB5gsyO0W0fiTYLibpf+Pm9
-         uUts0sTiKqpCYLau99Fi//sE9gB/KsaD7klotnsL187vNxZHuBd+8FxAMLRf6LtOJksZ
-         v2gFuxwdQzrrMTJExH+xhPbtjESI732hnDzuYM4cdoGq7B82LbPimo6on9wojkpmnuR2
-         xKNE3FlnGj8H+BoJKFqO3Hu8Rw1mKEH3fBo+ZWL4MjHowzjUJYk6P56zpfi8KZaefCXk
-         bJwroTHwuifkGKNk5H9OgMtvNBRftN6vZuVZlCibyN1oMEEjPyNmFAS3s1OfDtl5sIQk
-         Eivg==
+        b=sniuRHHTEPDqA2hVYtJrR8k37P825nP9et8fPBnz6MHzBM7hYkKSjW2rzv2MdHycIl
+         7uirom1aerHQZUpbFftDMMpq9UHllELgcm2WK+IAgyj7Bk5/hlcIaljbltDszqh5n6/u
+         YwRWFNriJ2c8eo0JCnfPGdYN6wvVi8g23yyAKbzhCMzUmZiYLMsuPKNDfSXGiP3y2Bsn
+         e+hGnjVUan3GLVpKQC1GRC7PtSiR3ECHaYWpY4eABsDXSw3ySE7ETMf0OY+m7I4P3rrE
+         QbP8n6NCwG6IbPx3gJW5u6wJLTddJ+yWedBF1MgSxkleIF0vQqvifsP0dpU/MN7kVbL7
+         XsTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=LmvFq9LAxtMoJLXbx3mCO2zPhk+lTGbYjyACbAnya+M=;
-        b=Y3VvhqBjpCqeIf+VlU3l95+U2T/AtqkMsHRFXlwORqEYFKmzOGyb96rSU6oypqwWeE
-         P00e9VvX4iw0o/IJvKwF0rnUXZ3KCnvWbmkBZ6Vb/RWEwWrH+PVSe/3d2Z2iaoppinAz
-         e0Go5yp00gTO90JeCqz3cxZkMVidT9/XlqAPKCl5SpWOZ7wZESlVsiiFAfwniW67hPH9
-         KotDrVJbfAl4D+1nxPW2FQiw233GkXN3ikCiivbEB5R3JBzs/jSMfprfrGFFHMkZklkC
-         +Zs2nR3c1NzoZOjYjwZ+ZFkRsJzxIm+3ROX2GbAJmsCAYsG/H4WhE1MpHLPMOZg8zJGK
-         dqIg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=8S3Uh23H+gQhsf7YASK94vXEdzHi8M0NhOcwtIIfD7A=;
+        b=nFY7emSB3G5HY1Sh4m6SMY5CZqEHSiOgFeuLwNLjSf8+r0Mm5TIREKInMAypDy5mXs
+         U7HWcBCDzaJ/lOys6/CYor/rVPNMDQS8abpX0fIR6gogsct08UsghwhQwWYpGAZ66Bur
+         BP8vTxS7jZzQ86Y+TQVVfDc5JQLYsfazW15uVIOXFf06lq3ABmURtNFjigRzLBhqsB6O
+         ZWgfJsW2cBwP0B707h2bDd4URfv1jGl9zmRcqVU6gOGH5xsyTiSWwO3Aj/ndMMvWg+49
+         ExHB7smBKY+TtdLp8XLWHTUPruEyyRNZHpmpagcEvbv+N5id0LxRc8gQkJWc+yge0ekG
+         IBCA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id y12si904058wrs.0.2021.04.01.14.16.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FhBhCegf;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com. [2a00:1450:4864:20::430])
+        by gmr-mx.google.com with ESMTPS id h16si856803wrx.2.2021.04.01.12.55.00
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Apr 2021 14:16:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Apr 2021 12:55:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) client-ip=2a00:1450:4864:20::430;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AhvtUpagYSEDpkH6znjKDNKNDPHBQX4lx3DAb?=
- =?us-ascii?q?vn1ZSRFFG/Gwv9yynfgdyB//gCsQXnZlotybJKycWxrnmKJdy48XILukQU3ao2?=
- =?us-ascii?q?OuNo5v9s/PxDfnFi34+IdmpMBdWoJ5D8D9CkU/sNbi7GCDYrId6fSO7azAv5a9?=
- =?us-ascii?q?815DVgdvApsB0y5cKiK2VnJ7XxNHA51RLvuhz+5KvSCpd3hSTunTPAh9Y8H5q9?=
- =?us-ascii?q?fGlI3rbHc9bnZNgmbhsRqS5LT3EweV01Mlahwn+9sf2FPIjhDj4eGbu+y7oyWs?=
- =?us-ascii?q?sVP71Yhcm9fq17J4damxo/USQw+c6TqAVcBMfYSroS0voOqy9VomtNXXuR8vM6?=
- =?us-ascii?q?1ImgjsV1Dwjh331wb61jEyr1fk1F+DmHPm5ff0XTQgFqN69PJkWyqcz3BlkMB3?=
- =?us-ascii?q?0apN0W7cnYFQFwn4hyj458LFTVVDkVe1u2MrlaoohXRZe40YdbNBsOUkjQ1oOa?=
- =?us-ascii?q?ZFOBi/xJEsEeFoAs2Zzu1Ra0midHzcvnNi2piFQmkzNg3ueDlMhuWllxxt2Fxp?=
- =?us-ascii?q?xUoRw8IS2l0a8ogmcoJJ4+TfPr4tvK1ST/URcbl2CI46MIeKI12IZSiJHHOZIF?=
- =?us-ascii?q?zhGq1CEWnKsYTP+7kw5PunYtgv15s9mJPIVXlctWI0ZmLWIcCCx5FQ6Hn2MS+A?=
- =?us-ascii?q?dAWo7vsby4lyu7X6SrauGzaEUkoWiMelo+8SGInjQPC4NIhND/KmBnurOoBUxA?=
- =?us-ascii?q?r3XplUJxAlIY0ok+d+f2jLjtPAK4XsuOCeWu3UPqDVCjohWnnyGD84dh2bHrQA?=
- =?us-ascii?q?0mmbHlvDxDTBUXLkfULyubhqFrLBxvMezIgWOpcJjxMcjk6h4NqXFCZLvaM3dn?=
- =?us-ascii?q?ZvOb+PqNL3mUCGuULzq0l5MBtUCUhYpJ/6VWlRmAMMO0ToNZ4eptS2YwlprTK6?=
- =?us-ascii?q?Dy46a/mTPB9Uplxx967yBYeX3zoeB9WuNX/fp2cPpUiNU4wXlsS4lLHYU6J9Kq?=
- =?us-ascii?q?xjdL16FA3NGRAwsx1tsn1/ZAgNQVKaOSjpjYmjkZwIFMDSf9Rxm26QUIZpgEOa?=
- =?us-ascii?q?kX/ZidAkR3MdUTLre9WQmxwSSz1dgUA006J3usv1pR+fbU8ExMgoOlxFb2qaRJ?=
- =?us-ascii?q?hcCh6eWYlSkrf3PCZ9UHmNnj7frx0oYGLl+wEziwXaXFipUMCOJmAYlmFT067s?=
- =?us-ascii?q?/l8xXH6aZVhMZndztpA4M3/HtHZ12eqifbGyzGOVV1sHzogmQUP4SApXBjkr68?=
- =?us-ascii?q?G81RaTljrHP24h3I8SMuvUC6lmVarS1HOrIIihiLwcH/RJ4ZppCdzouugXe+SZ?=
- =?us-ascii?q?fAOeMTP+BcMxsjbl0UoNCW1Rkj0JgPno0Brq4CyEx3Y5G+PVO0kjbaocOcug42?=
- =?us-ascii?q?/tQOuo3J11gckuh/a5Nnz8Z7e9uOrqRg8GDimWh2G4T+sl888J+Y0zsaZ+BJnd?=
- =?us-ascii?q?X3/j0mpd0BA3Mcfzkwc/Tc1Akc38E74qW/ZXXSRTumcNvpCoCmAAtwTtGO8wfV?=
- =?us-ascii?q?03lRbgTqy0youNjYBqO1GLoQv7BEKW/CJc9crURifr789hN4sAZUBtLHUm4Hts?=
- =?us-ascii?q?/Om+Z5TdJQWjeeZE5ke7OBaGAcNgYZnAPbUbtRBh5d6U28eRairjwQjV1AELXJ?=
- =?us-ascii?q?5mwiKCQcmoBhiLFvMN29umOU6Uiq/vxMKolj/4RX+abEsf7Lc1BHA4X4BkkTcr?=
- =?us-ascii?q?i40l2jWzTKvXrkopn0BF2CpqjFL3xYSqiV2rXn1uAEn+mZVZXT5aN1CSlsTb+e?=
- =?us-ascii?q?2k1HDwiQI1oaXrJQN3ZdFBG98ZU47tCTxhQPJgz4KVww=3D=3D?=
-X-IronPort-AV: E=Sophos;i="5.81,296,1610406000"; 
-   d="scan'208";a="501210527"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Apr 2021 23:16:04 +0200
-Date: Thu, 1 Apr 2021 23:16:03 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH] staging: emxx_udc: Ending line with
- argument
-In-Reply-To: <20210401195457.24512-1-martinsdecarvalhobeatriz@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2104012314480.2908@hadrien>
-References: <20210401195457.24512-1-martinsdecarvalhobeatriz@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FhBhCegf;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::430 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wr1-x430.google.com with SMTP id j7so2938876wrd.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Apr 2021 12:55:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=8S3Uh23H+gQhsf7YASK94vXEdzHi8M0NhOcwtIIfD7A=;
+        b=FhBhCegfx9/JsWqLF1NrB74XyOFOPKGNuaiYUD+JF/Zj93OlXZR4UpVjGkZMDsBgPD
+         E5ePdeCeKbf5jfa72arvobZIwCXXaklwXo+i8gVdj/7TgseX6xjTXMtlYJmyXdnEW9mE
+         R6RLUZlv3qnOhLaoeTeRfSXiibcxF6/3YvT0v/xv/Fm7tS4kx6jNy+GyjPbuXeDoIFgO
+         254MlEJ6mPlN16Sfya+TpS+K/4k6zISSYVkeut7cdZ0CGB+6piNc7+rQwPgQNDZBXoB0
+         47Pb5zIq4aMpWr7iFOBeBFeYmbMq82piF6TwdPSN9Z9eqTCh+7JLQy+K0IwGBr7751Bm
+         dwAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=8S3Uh23H+gQhsf7YASK94vXEdzHi8M0NhOcwtIIfD7A=;
+        b=hsr3wuTZhKr3uMR8/HNQzm7xg2dL7ome0doQiq1koQL2T3cdv96QyYQZsCWVB7fHaL
+         Athq/B9ITe9ORlrD7uhBctmZtSl5ixBSWenTELpxVC3c+YNPYmpyy2oIbveCu8ySd8Bn
+         +xYcRlcuDnxqnfi7LvXnxQ3+cBQEDtvSCHDcao/qUmzjLtHl3Lukt2HTKUUuTpk7vGoH
+         CYKLybUxt+MyIum7xA7DiD/8OyoZSqzCVlyPkhC5iSaJEc9HBAoHrIgIkZD2IxcLbpX3
+         InwfTdgA0NKWPuziUQwfnh9E7Z5CcspuoYqxIjjF0aqM8OWrx11gRTBxoGJ8PXsDhZMD
+         1Iyg==
+X-Gm-Message-State: AOAM531TMfV4XdbJ7/ggd7CCIShvi2YYxwKllpcwysos9Sgcpgk3m8aR
+	9tu3TDjf2762gcF3P5yezaay9oglRgblZWW1
+X-Received: by 2002:adf:fbc8:: with SMTP id d8mr11730071wrs.94.1617306900074;
+        Thu, 01 Apr 2021 12:55:00 -0700 (PDT)
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:a182:b5f0:9f7c:c891])
+        by smtp.gmail.com with ESMTPSA id s8sm11097662wrn.97.2021.04.01.12.54.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Apr 2021 12:54:59 -0700 (PDT)
+From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+To: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: emxx_udc: Ending line with argument
+Date: Thu,  1 Apr 2021 20:54:57 +0100
+Message-Id: <20210401195457.24512-1-martinsdecarvalhobeatriz@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+Cleans up check of "Lines should not end with a '('"
+with argument present in next line in file emxx_udc.c
 
+Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+---
+ drivers/staging/emxx_udc/emxx_udc.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-On Thu, 1 Apr 2021, Beatriz Martins de Carvalho wrote:
+diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
+index 741147a4f0fe..20f53cf6e20f 100644
+--- a/drivers/staging/emxx_udc/emxx_udc.c
++++ b/drivers/staging/emxx_udc/emxx_udc.c
+@@ -1073,9 +1073,8 @@ static int _nbu2ss_epn_in_pio(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep,
+ 		i_word_length = length / sizeof(u32);
+ 		if (i_word_length > 0) {
+ 			for (i = 0; i < i_word_length; i++) {
+-				_nbu2ss_writel(
+-					&preg->EP_REGS[ep->epnum - 1].EP_WRITE,
+-					p_buf_32->dw);
++				_nbu2ss_writel(&preg->EP_REGS[ep->epnum - 1].EP_WRITE,
++					       p_buf_32->dw);
+ 
+ 				p_buf_32++;
+ 			}
+@@ -1225,8 +1224,7 @@ static void _nbu2ss_restert_transfer(struct nbu2ss_ep *ep)
+ 		return;
+ 
+ 	if (ep->epnum > 0) {
+-		length = _nbu2ss_readl(
+-			&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
++		length = _nbu2ss_readl(&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
+ 
+ 		length &= EPN_LDATA;
+ 		if (length < ep->ep.maxpacket)
+@@ -1462,8 +1460,7 @@ static void _nbu2ss_epn_set_stall(struct nbu2ss_udc *udc,
+ 		for (limit_cnt = 0
+ 			; limit_cnt < IN_DATA_EMPTY_COUNT
+ 			; limit_cnt++) {
+-			regdata = _nbu2ss_readl(
+-				&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
++			regdata = _nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
+ 
+ 			if ((regdata & EPN_IN_DATA) == 0)
+ 				break;
+-- 
+2.25.1
 
-> Cleans up check of "Lines should not end with a '('"
-> with argument present in next line in file emxx_udc.c
-
-The coding style documentation encourages remaining within 80 characters.
-I'm not sure that the ( warning is worth increading the excess beyond 80
-characters (or introducing it in the last case).
-
-julia
-
->
-> Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-> ---
->  drivers/staging/emxx_udc/emxx_udc.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/staging/emxx_udc/emxx_udc.c b/drivers/staging/emxx_udc/emxx_udc.c
-> index 741147a4f0fe..20f53cf6e20f 100644
-> --- a/drivers/staging/emxx_udc/emxx_udc.c
-> +++ b/drivers/staging/emxx_udc/emxx_udc.c
-> @@ -1073,9 +1073,8 @@ static int _nbu2ss_epn_in_pio(struct nbu2ss_udc *udc, struct nbu2ss_ep *ep,
->  		i_word_length = length / sizeof(u32);
->  		if (i_word_length > 0) {
->  			for (i = 0; i < i_word_length; i++) {
-> -				_nbu2ss_writel(
-> -					&preg->EP_REGS[ep->epnum - 1].EP_WRITE,
-> -					p_buf_32->dw);
-> +				_nbu2ss_writel(&preg->EP_REGS[ep->epnum - 1].EP_WRITE,
-> +					       p_buf_32->dw);
->
->  				p_buf_32++;
->  			}
-> @@ -1225,8 +1224,7 @@ static void _nbu2ss_restert_transfer(struct nbu2ss_ep *ep)
->  		return;
->
->  	if (ep->epnum > 0) {
-> -		length = _nbu2ss_readl(
-> -			&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
-> +		length = _nbu2ss_readl(&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
->
->  		length &= EPN_LDATA;
->  		if (length < ep->ep.maxpacket)
-> @@ -1462,8 +1460,7 @@ static void _nbu2ss_epn_set_stall(struct nbu2ss_udc *udc,
->  		for (limit_cnt = 0
->  			; limit_cnt < IN_DATA_EMPTY_COUNT
->  			; limit_cnt++) {
-> -			regdata = _nbu2ss_readl(
-> -				&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
-> +			regdata = _nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
->
->  			if ((regdata & EPN_IN_DATA) == 0)
->  				break;
-> --
-> 2.25.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210401195457.24512-1-martinsdecarvalhobeatriz%40gmail.com.
->
 
