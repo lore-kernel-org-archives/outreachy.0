@@ -1,105 +1,134 @@
-X-GM-THRID: 6810983981857636352
-X-Received: by 2002:ad4:55cd:: with SMTP id bt13mr1522192qvb.111.1585805784092;
-        Wed, 01 Apr 2020 22:36:24 -0700 (PDT)
+X-GM-THRID: 6946113650427953152
+X-Received: by 2002:a1c:4b0a:: with SMTP id y10mr6876255wma.141.1617268112932;
+        Thu, 01 Apr 2021 02:08:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:5084:: with SMTP id e126ls1679982qkb.7.gmail; Wed, 01
- Apr 2020 22:36:23 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJIKFWI1mqXMl4nyCsPOpziMYVflfPBdX0gC/hyJWi63byNo+omI531lwnvvI9Gcc4d9hB1
-X-Received: by 2002:a05:620a:718:: with SMTP id 24mr1852976qkc.280.1585805782843;
-        Wed, 01 Apr 2020 22:36:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585805782; cv=none;
+Received: by 2002:a1c:9ac6:: with SMTP id c189ls2594888wme.3.canary-gmail;
+ Thu, 01 Apr 2021 02:08:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyA5beOWzT+so7nfjPPaUjX/JjIanA9SxboZQjYF2cnns+yrw3OOR37byfQ9NSe9L+Oebro
+X-Received: by 2002:a1c:7515:: with SMTP id o21mr7080675wmc.90.1617268111538;
+        Thu, 01 Apr 2021 02:08:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617268111; cv=none;
         d=google.com; s=arc-20160816;
-        b=MGG/tmfthNRYrgqsgQiSJn3bDya9lJSqiWpWGF7fV7QBUSGDksLRoD17xgWQnlS6Y6
-         PljmrZBfdbWXCObVuTBr+rjQXUzBh2/h0yOWgVqqxpuw2+6G8hCgPybIUd8bS2IX8sTm
-         mzu1QiG/VN2W/iQoovGxAsO/E+k+Nh1Q+kvlgHAIC/2lDUGPT5n1O3iBZeT4czaTtmhh
-         L37095S+722lf2U8yUkbN+9t4ZlQoL/52AOx/V3PnnbyzdKShEFG7VyaOy9Il0oj/BCH
-         WlxXMxQVgHT9Xt2c+Yv9nmhEfQReufM7VRAKVFRwYivcbMjUs163/ADS2I5Bs3BSjYaZ
-         s62g==
+        b=vpFdKX6wNvRvBuiVJ8+RpEnfcHXsoiZ+zhVFxxgP4MuxBSd+q41S5pSG0dl67MTB6w
+         6P9x/t94QzqtK9tzggxOdztxHSa/n1DKt0X64w0dYVUKkaznYNR6FaoxQ2J5r8VvoUD8
+         QU5vCvSH34R8U/Slzdy1Jd4ne3MRfKmjNXh6F3/30W0oyvlSXAjxt1z6SJJScIrP9fjw
+         1wDn05J1sh0EyG7g5yEIrI/IdyweAg0RuNF3n+GHC94LWgeiWlj251TVilEDHxJl576E
+         mSRVi5JOaHTqP8BInbTxG0FjjK8kZqGwIulNkZO36G+KckD9lFwTe0QLvoETwOfl/xMd
+         vw2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Do+aDibkJ+9Nk2xPpC10tUF5bA+dXnOz/2cqO1MNak8=;
-        b=wHu5vdQtOwyjppeu9rsgCrZpNSdL0kwTwPjQk02o4mfK0UcyRQBB0tqhqNK6mr38vY
-         3Jk+17hw42A6ggftWFfXcf/M9AbTb8gYMON9djlUDWnTYvhcVnTw51GFRcFUX6bfzRTJ
-         DmbSte/bxe8RjngGlgOf7xhbh9Nmy7N2cedErBXkBowov9zuelAblXN+4IPmOmlgrvgK
-         v4spoGD/1z01SJThpZIsL3Tg/2vwFUg/RGoh8uaeBeO+d3w7/AtT/aed96/gHqzWm8En
-         HfzFI2F0MFGpEzlan1zSrXXeBfnoateVQqCsfjbdfKCJtH6738Vauu48SiNePUej1bfg
-         rpFA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:dkim-signature;
+        bh=wUJdzQc6vGqaF/tH9fjrVo5h9ptifyriz2mlBFMVazk=;
+        b=XaOnBB6LJk98PxqgwKdsiQV+xMuwU6ZwgYvZKFO+OSs5oBDZKu5SoFhDneMxsed+OY
+         z7hPk9ZVvQELuS+d5T6U+TAyJhkK9LWtTBFI5XbT6A29X9hgoaCMALKckhd9XPFjdCFl
+         uGv0BBkb49fqeIe0AlK076RjF3TGgcEtMQw5PX0f3uuZrUNVWQ+wYnJbDVu+qjZkXKBE
+         Dw/jla6eil0bZyJnbED1zcrwHtJQRBF80Kg0zsgmigAN0hbl0GazoERsXobYUzLzb3EC
+         ZxLuxBJ7NPihTtpDnHPZ494Pk5cg2bcQIbHlScDUcrCXh9P/LZHYop2y47xfs5RhbD6K
+         H1HA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=knbC2o+p;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MRR4QO5A;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbwyatt4@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id e89si309059qtd.3.2020.04.01.22.36.22
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com. [2a00:1450:4864:20::42d])
+        by gmr-mx.google.com with ESMTPS id z202si479873wmc.0.2021.04.01.02.08.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Apr 2020 22:36:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        Thu, 01 Apr 2021 02:08:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) client-ip=2a00:1450:4864:20::42d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=knbC2o+p;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MRR4QO5A;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id u65so1239213pfb.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 01 Apr 2020 22:36:22 -0700 (PDT)
+Received: by mail-wr1-x42d.google.com with SMTP id c8so1026344wrq.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 01 Apr 2021 02:08:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
+        h=from:to:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=Do+aDibkJ+9Nk2xPpC10tUF5bA+dXnOz/2cqO1MNak8=;
-        b=knbC2o+pyAfJPn10/x4p+jSPwqEdUM5vaqMNWU9Le4dYwA55h3tFjJus5wlFnZGXoZ
-         iGGn+aIDrle8DsEd44/Qdz4R386IugeGaclIfFzf2HFdt+Y6thv2a2X4/Jfx5eiga5QP
-         0UbSPz0O/CuSiDzcPtGx+OWOkQFOq3AgKX3CGZqnrYwDRJYt2KjJNqFkKOcTFUwmxXCt
-         7roz2uoNXTY7WGYf7DXRHsW7TIUMgljMou2mWXCbl6lmu9uMIwnkJaC7mSa6qKqo8wWz
-         E8zCOCMXjx+vPaKhSL8kfPtiu7pYDIFMQOwdGG5CshQD5A8QqNoFRIUFmnxgBHgbHmNg
-         aQ8Q==
+        bh=wUJdzQc6vGqaF/tH9fjrVo5h9ptifyriz2mlBFMVazk=;
+        b=MRR4QO5AiRIwwXG4y8t9iiQv4w64a7HkwnanCJD7qbLzg9B388whJgj8We6h0L6J0J
+         yV7oEcEd23/V6iu9M5EA3bMUuydsVIYord96BohBOFT/u90NgQhFVLBiO81I5QbYLBtb
+         WYftikXIomG3z5w16KyreWl5XZGTzt4lt7sgCbHlsrlpPouiFzGUgAp0gEQiK8mmtHB7
+         TZdg/FHHHfGlOqnQ/yVGnilWnXwb47xhilA5FUehQS4v0c237hGgJQlwhIzAEZN18tOX
+         sEyxPPm7b0TJ6p29EIWC28y55Lt0wyTr4tBXPaS989eRa8ycmJMykgPefijW1SQkApSR
+         cH4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=Do+aDibkJ+9Nk2xPpC10tUF5bA+dXnOz/2cqO1MNak8=;
-        b=ug6H5IBBPaRv0NrkxykAPirfxxxMr8aZwXkPfogl0ETqpNB9XhUA4IN4KKy2i4mAJ4
-         x4rxUGcrRJI1jBHE6BKwSHDguGSPv0MWHLhz+ovveQZb0/8H/LD6XyKCQ38sa3YdcKEN
-         4cqkQHBZj4jSqG8iw3ZLbZjMo51Eymr4i9MeUfJoaCMXKtlLtBvgJS/HOKQ2t8urX3fK
-         fS3seG3+eYREV+WnU4ljtNkBZp9FJNRYFm4YRZqEHpx+fmzuUZxfdZ5BxdB1lorlPP+N
-         cRlIlgtCsH1+9TKNXG0ywrFsTfYMcQ0AnU13HPu5VqgXMMc+ZXuB58UiFlHIu3k8eHNS
-         lhCw==
-X-Gm-Message-State: AGi0PuYJW+37foaukl0QA20u/CwlrV7hpD6G54h9kscEgxzz/RFr7bLk
-	DIcWqnjoTqswqR3CPUUg13cBH87gje9iSQ==
-X-Received: by 2002:a63:e210:: with SMTP id q16mr1785491pgh.26.1585805781730;
-        Wed, 01 Apr 2020 22:36:21 -0700 (PDT)
-Return-Path: <jbwyatt4@gmail.com>
-Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
-        by smtp.gmail.com with ESMTPSA id y28sm2863136pfp.128.2020.04.01.22.36.20
+        bh=wUJdzQc6vGqaF/tH9fjrVo5h9ptifyriz2mlBFMVazk=;
+        b=JfF1ypW8WYpoluJY7yHq5MVmT5/qJ46aip0IfdS4xXlpvjfsBZlZr6YmHUmvOdtjzh
+         Fm594/Yv+2GYqd3lqIBOoK98obgSQ1lRCvAZEr56m/Fc/97d0I76vEwTkpjjxFdWJRtr
+         Q3igB9B9xVYqgQpz8fwc+4drfCdEBNdPjKWMFRE6LZqyrSF2wf1V2NJ+vSNVY0F2cPgj
+         80pg5uz5r3BK7ZnpHUtaHBviPg7n0lKhiuWw23EhRgYC/5kQjXML7b2C9JNkhfzLw23n
+         hGKKv6XvM4CxenVVap9Ez7rhx4OROKcMIBHCq0DN8iUsBrC5aZsfjKrC4Ozwo+cZCpfx
+         0X9A==
+X-Gm-Message-State: AOAM530ebTz3N8Cjt0JrgZ6rrJ0okK2rzXf1aJt5DraTaQKfMVU+5puy
+	GnolXiMTLCgIFaBZTo1xAspoW16Yd1D5MTvt
+X-Received: by 2002:adf:d1cd:: with SMTP id b13mr8370069wrd.47.1617268111249;
+        Thu, 01 Apr 2021 02:08:31 -0700 (PDT)
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:87e9:fdd6:2b7a:c720])
+        by smtp.gmail.com with ESMTPSA id 135sm8193856wma.44.2021.04.01.02.08.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Apr 2020 22:36:21 -0700 (PDT)
-From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Rob Springer <rspringer@google.com>,
-	Todd Poynor <toddpoynor@google.com>,
-	Ben Chan <benchan@chromium.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Subject: [PATCH 0/2] staging: gasket: Fix style issues in apex_driver.c
-Date: Wed,  1 Apr 2020 22:36:15 -0700
-Message-Id: <20200402053617.826678-1-jbwyatt4@gmail.com>
+        Thu, 01 Apr 2021 02:08:30 -0700 (PDT)
+From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+To: hvaibhav.linux@gmail.com,
+	johan@kernel.org,
+	elder@kernel.org,
+	gregkh@linuxfoundation.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: greybus: arche-platform: Ending line with argument
+Date: Thu,  1 Apr 2021 10:07:54 +0100
+Message-Id: <20210401090754.116522-1-martinsdecarvalhobeatriz@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Cache long enums as local variables to fit under 80 characters. Fix a
-comment character limit warning. The goal is to comply with the kernel
-style guide. All style issues were identified by checkpatch.
+Remove checkpatch check "CHECK: Lines should not end with a '('"
+with argument present in next line.
 
-John B. Wyatt IV (2):
-  staging: gasket: Fix 4 over 80 char warnings
-  staging: gasket: Fix comment 75 character limit warning
+Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+---
+Changes in v2:
+	- correction commit title
+	- correction commit message
+---
+ drivers/staging/greybus/arche-platform.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
- drivers/staging/gasket/apex_driver.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
-
+diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+index eebf0deb39f5..e374dfc0c92f 100644
+--- a/drivers/staging/greybus/arche-platform.c
++++ b/drivers/staging/greybus/arche-platform.c
+@@ -77,9 +77,8 @@ static void arche_platform_set_state(struct arche_platform_drvdata *arche_pdata,
+ }
+ 
+ /* Requires arche_pdata->wake_lock is held by calling context */
+-static void arche_platform_set_wake_detect_state(
+-				struct arche_platform_drvdata *arche_pdata,
+-				enum svc_wakedetect_state state)
++static void arche_platform_set_wake_detect_state(struct arche_platform_drvdata *arche_pdata,
++						 enum svc_wakedetect_state state)
+ {
+ 	arche_pdata->wake_detect_state = state;
+ }
+@@ -181,9 +180,8 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+ 						WD_STATE_COLDBOOT_START) {
+ 					arche_platform_set_wake_detect_state(arche_pdata,
+ 									     WD_STATE_COLDBOOT_TRIG);
+-					spin_unlock_irqrestore(
+-						&arche_pdata->wake_lock,
+-						flags);
++					spin_unlock_irqrestore(&arche_pdata->wake_lock,
++							       flags);
+ 					return IRQ_WAKE_THREAD;
+ 				}
+ 			}
 -- 
 2.25.1
 
