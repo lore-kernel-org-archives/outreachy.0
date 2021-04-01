@@ -1,135 +1,134 @@
-X-GM-THRID: 6668261535001870336
-X-Received: by 2002:a25:2351:: with SMTP id j78mr17273941ybj.36.1552575625019;
-        Thu, 14 Mar 2019 08:00:25 -0700 (PDT)
+X-GM-THRID: 6946094101193293824
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a2e:b4a5:: with SMTP id q5mr4585067ljm.7.1617264307048;
+        Thu, 01 Apr 2021 01:05:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:50cb:: with SMTP id e194ls446553ybb.12.gmail; Thu, 14
- Mar 2019 08:00:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxycVfaK+0FHjXri+XhplEih4Rg/PVsIfbrzxf069CuoIBSFkdPVrOCY8t22QbJEptSvZvP
-X-Received: by 2002:a25:50c7:: with SMTP id e190mr22681545ybb.37.1552575623935;
-        Thu, 14 Mar 2019 08:00:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552575623; cv=none;
+Received: by 2002:a05:6512:3d16:: with SMTP id d22ls4225478lfv.1.gmail; Thu,
+ 01 Apr 2021 01:05:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrCNaY3tpS3BLPH7egkhLNLiPs+ioHO+jKtw4TOmLl/OC1+Ws5O7hjTWPhxy60XxhmRaZV
+X-Received: by 2002:ac2:5937:: with SMTP id v23mr4771741lfi.82.1617264305218;
+        Thu, 01 Apr 2021 01:05:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617264305; cv=none;
         d=google.com; s=arc-20160816;
-        b=h+J0bOa7rqXpOdQRV6vGo5RrZD/EzAov9MGVpbjmxyCV3eOYTrWlYC1HHqWn1uD08O
-         ow/7u9N0UtARStnlaSbsixyv9l2RQ9Kij919Dvug4xiz9LSXsuKRHTrTcObTbgVQNABm
-         AzdYvGQVHhqtA1Y6jx4RWuj6WlfAZNQsPlMLihnOSG/SZHSQZgHKnUOLvn/6XrKZ3tIz
-         ZHdvEqOjATA+sU1YKR4PwKb7P+DZVFKcl/BqEJuDpcmSRxqt8QIX3yB/LWMz1/32CaP+
-         b4bt8cspSW8IlgrLDbcyTUuw/79nr9xLQIPFt4fJPaaxx3crEHAFJayUGjDPyA+mXoYz
-         /j4A==
+        b=z2UYeHv6afeqmgwSreorq1Nv2cXbBtl9Lz3ZjyX4YJLGK5n9Hai4OJiKG525miO1vm
+         JQRXwXku8MLSRktnOYww7OR7VrN4A+E0spNBC0Wu9YTs/R775CjFcZE5YSuEg0paDE44
+         wfYbkzLLd06fZ7JphdkEcaezNaVaZ4dJbxXvJznhJq5gzPQRsq4kqLHwCozkFS3ABBlF
+         t6wrsNyoWAPewPj/BSZKshmIaV24F8jbLTxehVjSBbPGLeok9UmcPb6uGHe4YPBA3QMo
+         aqoukZ9aaeqI7g0TLRfAGwVFPOs8XEMfh/H5DpgLgocn1++uduCweq02YYEMcWP8hNJ/
+         8hgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gJWPoygKO9NvSvDqt1AG+BmWcWQcWkS4cY4IlDdd4I4=;
-        b=d1yNgMtW4BEkCTmL0l5e17FheYsKC6Vaeq4KURNniFEK2afYbPkXImIOpxgiUGCJyq
-         kTCU2YIm+zepTJaOyhTfdsrLypRaPtZmXM7WDqJ4CA1R9sZU2byyufbsBc7/D0Hlf7qo
-         mnFu/8FAUY3alOOnLln0WuZhGVhNSlt9VDUXaUUhGV2L/06OHV42bJ/REXAUFrLLTp33
-         q2jvDGDpiPrOW9pk6eUd7hPPH3e/eJjTJ8T0yuuVVIbu+p/+lV2gbrwFLUOTbbiIQhcq
-         OpxWDegYPn9X1c6JR6OEOp6dBiNil8AD8nvqFT8TaaJkKnJwfazhKcmoJ041KwwyNXyS
-         yHHQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=rV8XRQsERlOQ5qc4wcGXRPg92lqIDx0q7BdRgJmfH/U=;
+        b=WlmJNSrIVsuNvFEGtLgO5Qn9Nb8/vhjKIYjFTZJIQp1Ft005skmBRxc4w13w736ZAb
+         yrT4/+0vPzTk4qxVrm7yZRIkOTutZWEfYPg3VjBfWZoiJEwIZs41qgcrkuNJw0pkne15
+         8fjVt1jNQnhKvNbcZGa5ycDt0cfbHQ9CWrY9O5dUYGiAHbgPiN8Q516LTTgkg7IVsDaQ
+         c0yslYqgYOnJ/BT67BaTrZv4L3cOaEB4rsM3KdqmT+44biBg3fxIauL4LovjmzYS2620
+         DleaVeK7qqOZGwwo95z8Ws3SkPPh/0G/QvJlz0yZVbqh5w2jac3QcFd24FDswy7Y7pKu
+         b1oQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VHNy15lH;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d44 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-io1-xd44.google.com (mail-io1-xd44.google.com. [2607:f8b0:4864:20::d44])
-        by gmr-mx.google.com with ESMTPS id i204si45673yba.5.2019.03.14.08.00.23
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id z2si548704ljm.0.2021.04.01.01.05.04
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Mar 2019 08:00:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d44 as permitted sender) client-ip=2607:f8b0:4864:20::d44;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Apr 2021 01:05:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VHNy15lH;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::d44 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-io1-xd44.google.com with SMTP id x9so5315125iog.12
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Mar 2019 08:00:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=gJWPoygKO9NvSvDqt1AG+BmWcWQcWkS4cY4IlDdd4I4=;
-        b=VHNy15lHoBupTfuqNNePGihGpdPW/P4kbvEk9K1FZhItT1DY/aYKZvdsX2HYkH/1UW
-         mDEc6vhzvzk4ls34VKGzhirdqZbt4X1qD4QxLcMXzY5ZE2mc310JxJ4HaT5JaGmB6a9L
-         fnfZve0sjInK0wthJqhNYk7uCHFJDLyECKGlzHiJzz2nAJnqCDv3H6Gzxn1YBFh7ZLQ3
-         CI0NB1hVBIBZOoG3Q3XPdAe8EptItc6qyUEQ85JwZltXPl8c7aeLQcPCMKN0+y19+iN5
-         +Z/1yhVHa3gM9bhkevl6QFu4jgWcsjtuox2iALfo3GKvstdte+GRsjn1xXfqYO9E0Cny
-         zhxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=gJWPoygKO9NvSvDqt1AG+BmWcWQcWkS4cY4IlDdd4I4=;
-        b=lvDJ+S4v9gpAWZQPVoxLuws6l/W8luY3RrVlvLQqFCJeZnJl7nbYzPNDW3TDmMYmMP
-         XxkpoAQClsSpcpLJCAgLbPLyfoS35lLDigU97IQ75i9mG5cJjCVI1diuwiR3U7IDFUzQ
-         I1h2b0+3hAZ6R7KGD5/6GOMSX11VfifRwz0p4WZ3/XwEn19T+juEdIvbyulqJbS5vE7E
-         feh7guiKPACYiCRzTBoYaKl4tWyGMe5Utob1E0ZHraxdDC1CMMPXBpe0HjZPeUOidHSh
-         +AXNVjAsibfPrxFV6jOoGKj5/ozkHTGPWoWSflZZm9sfW2AvkLctJ7oo/wWEvBjVmjCq
-         Dt0g==
-X-Gm-Message-State: APjAAAXVpW3fZdISKjclHS/4uUpq8gwxsRPWY6da3tESEkSwww4oeQNf
-	/JiaNnrGdjGh6OvIRsnBYehMQBzwg4wC
-X-Received: by 2002:a5d:8597:: with SMTP id f23mr6194666ioj.148.1552575623203;
-        Thu, 14 Mar 2019 08:00:23 -0700 (PDT)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:6d23:9f8:4c46:2f5f])
-        by smtp.gmail.com with ESMTPSA id q8sm5503063ioi.33.2019.03.14.08.00.22
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Mar 2019 08:00:22 -0700 (PDT)
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: Branden Bonaby <brandonbonaby94@gmail.com>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rts5208: Lines should not end with a '('
-Date: Thu, 14 Mar 2019 11:00:17 -0400
-Message-Id: <20190314150017.25470-1-brandonbonaby94@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3A/Zycy6xe7iBhYv5x0frQKrPwzb1zdoIgy1kn?=
+ =?us-ascii?q?xilNYDZSddGVkN3roeQD2XbP+VIscVwphNzoAsK9aFzG85od2+MsFJekGDLroW?=
+ =?us-ascii?q?65aLxlhLGC/xTFOwnTstFQzr1hda8WMqyUMXFfgdzh6Ae1V/YMqePmzImSie3T?=
+ =?us-ascii?q?z2hgQGhRAsldxjx0BQqBHkp9SBMuP+tbKLOn+sFFqzC8EE54Uu2HABA+M9Trm8?=
+ =?us-ascii?q?fGj9bPbxIAGnccmWuzpALt2frBHx+U0gx2aV5y6L0pmFKrrzDE?=
+X-IronPort-AV: E=Sophos;i="5.81,296,1610406000"; 
+   d="scan'208";a="377472288"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Apr 2021 10:04:52 +0200
+Date: Thu, 1 Apr 2021 10:04:52 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Issues regarding fixing error generated during
+ compiling changes.
+In-Reply-To: <bfc3ac12-e9c3-4b16-b53a-fdf1aeee5e97n@googlegroups.com>
+Message-ID: <alpine.DEB.2.22.394.2104011002060.2908@hadrien>
+References: <bfc3ac12-e9c3-4b16-b53a-fdf1aeee5e97n@googlegroups.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-1865368028-1617264292=:2908"
 
-Start function arguments after initial bracket so that the
-line does not end with a opening bracket.
-CHECK: Lines should not end with a '('
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
----
- drivers/staging/rts5208/rtsx_transport.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+--8323329-1865368028-1617264292=:2908
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 8277d7895608..d2c1dfcb95e4 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -257,8 +257,9 @@ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
- 	spin_unlock_irq(&rtsx->reg_lock);
- 
- 	/* Wait for TRANS_OK_INT */
--	timeleft = wait_for_completion_interruptible_timeout(
--		&trans_done, msecs_to_jiffies(timeout));
-+	timeleft =
-+	   wait_for_completion_interruptible_timeout(&trans_done,
-+						     msecs_to_jiffies(timeout));
- 	if (timeleft <= 0) {
- 		dev_dbg(rtsx_dev(chip), "chip->int_reg = 0x%x\n",
- 			chip->int_reg);
-@@ -284,8 +285,10 @@ int rtsx_send_cmd(struct rtsx_chip *chip, u8 card, int timeout)
- 	return err;
- }
- 
--static inline void rtsx_add_sg_tbl(
--	struct rtsx_chip *chip, u32 addr, u32 len, u8 option)
-+static inline void rtsx_add_sg_tbl(struct rtsx_chip *chip,
-+				   u32 addr,
-+				   u32 len,
-+				   u8 option)
- {
- 	__le64 *sgb = (__le64 *)(chip->host_sg_tbl_ptr);
- 	u64 val = 0;
-@@ -420,8 +423,9 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
- 
- 	spin_unlock_irq(&rtsx->reg_lock);
- 
--	timeleft = wait_for_completion_interruptible_timeout(
--		&trans_done, msecs_to_jiffies(timeout));
-+	timeleft =
-+	   wait_for_completion_interruptible_timeout(&trans_done,
-+						     msecs_to_jiffies(timeout));
- 	if (timeleft <= 0) {
- 		dev_dbg(rtsx_dev(chip), "Timeout (%s %d)\n",
- 			__func__, __LINE__);
--- 
-2.17.1
 
+
+On Thu, 1 Apr 2021, Mitali Borkar wrote:
+
+> Hello, I am Mitali from India. I am newbie. I am using Linux 2021.1 in
+
+What is Linux 2021.1?
+
+> VirtualBox. In first patch tutorial under "Compile your changes section"
+> after running "make -j2" command,
+
+In my experience, until you have good confidence that your code is
+correct, it can be helpful not to use -j when you are first compiling the
+files that you have just changed.
+
+I don't see anything obviously wrong in your code below.  Perhaps also
+send the change that you have made (git diff), in case there is actually
+some problem in the context.
+
+julia
+
+> I am getting these errors:In file included
+> from ./include/linux/printk.h:7,
+>                  from ./include/linux/kernel.h:16,
+>                  from ./include/linux/list.h:9,
+>                  from ./include/linux/module.h:12,
+>                  from drivers/net/ethernet/intel/e1000/e1000.h:10,
+>                  from drivers/net/ethernet/intel/e1000/e1000_main.c:4:
+> ./include/linux/kern_levels.h:5:18: error: expected declaration specifiers
+> or ‘...’ before string constant
+>     5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
+>       |                  ^~~~~~
+> ./include/linux/kern_levels.h:15:20: note: in expansion of macro ‘KERN_SOH’
+>    15 | #define KERN_DEBUG KERN_SOH "7" /* debug-level messages */
+>       |                   ^~~~~~~~
+> drivers/net/ethernet/intel/e1000/e1000_main.c:90:10: note: in expansion of
+> macro ‘KERN_DEBUG’
+>    90 |   printk(KERN_DEBUG "I can modify the Linux kernel!\n");
+>       |                  ^~~~~~~~~~
+> make[5]: *** [scripts/Makefile.build:271:
+> drivers/net/ethernet/intel/e1000/e1000_main.o] Error 1
+> make[4]: *** [scripts/Makefile.build:514: drivers/net/ethernet/intel/e1000]
+> Error 2
+> make[3]: *** [scripts/Makefile.build:514: drivers/net/ethernet/intel] Error
+> 2
+> make[2]: *** [scripts/Makefile.build:514: drivers/net/ethernet] Error 2
+> make[1]: *** [scripts/Makefile.build:514: drivers/net] Error 2
+> make: *** [Makefile:1851: drivers] Error 2
+> make: *** Waiting for unfinished jobs....
+>
+> I am not sure how to fix this error. Please help me out.
+>
+> Thanks
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/bfc3ac12-e9c3-4b16-b53a-
+> fdf1aeee5e97n%40googlegroups.com.
+>
+>
+--8323329-1865368028-1617264292=:2908--
 
