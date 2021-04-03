@@ -1,127 +1,103 @@
 X-GM-THRID: 6946995103705595904
-X-Received: by 2002:a2e:8159:: with SMTP id t25mr11753698ljg.437.1617473342439;
-        Sat, 03 Apr 2021 11:09:02 -0700 (PDT)
+X-Received: by 2002:ac2:5e8b:: with SMTP id b11mr12100216lfq.99.1617473341583;
+        Sat, 03 Apr 2021 11:09:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:58f8:: with SMTP id v24ls2781857lfo.2.gmail; Sat, 03 Apr
- 2021 11:09:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjkOC+3peiHrZGBOuQ+9jokEXemttgDGKpARu2yXgrclFm2qAYInIZLkoYIvTV8YqPH6Mn
-X-Received: by 2002:ac2:5c0a:: with SMTP id r10mr11770509lfp.47.1617473340891;
-        Sat, 03 Apr 2021 11:09:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617473340; cv=none;
+Received: by 2002:a19:e86:: with SMTP id 128ls2781632lfo.0.gmail; Sat, 03 Apr
+ 2021 11:08:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwtQ6pN5Fos7H4CS+rW9iF0B+oVwgKSs+pxOd5F4+izMc3vV7VQaeGw20JCI2JH4v9D7fRJ
+X-Received: by 2002:a19:68b:: with SMTP id 133mr12370391lfg.151.1617473339859;
+        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617473339; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IYYX6Gg4KLG+i+/2J00Pi10qfb2c8ln3kDo6Gywhir9b0MjG9Y+D18cjLaMpuK/bp
-         UYrOyFVUwtk8MklX1T6GO20KUGHswpr496i44X07Fd0iQmnWYu1HRvLyo68T/GY4I9I7
-         hoB+oOeNz30ouDTSW1mscEB5+/u+L/HwZv/9PRw9sHI0Dvl7YyUn56znn5KKmH1HjHgT
-         YmI33JmBRXMAizhM9V9YhrSu7aiS/cz+4KeG+M9/6i5UxYfE+3BR/yeGK4/3cVsCI2CF
-         kEQXimwFgHqYUSeqSkzdajx5mbTwotqky2NGWfjVijTUKfBHa6OF+216x/Xvp5kLIULy
-         /YFA==
+        b=HXCepKA8X5Py9C8jsgqVAr8/8+Eswr1rq9AYIFbDhd1pfGEXJ8CJG5duIAw5RIt8Ab
+         uOoeQGuH2TfCFVO7kzit0/BVZMNLYque8Ochtsk8pZ/+qs7x05cTCxPKfAPxDA4+vbL5
+         TBLTuRMlGEczo86pbzu0Wv6yIDwRd11SNRwHEq6nuk+iFzYWyJt2F6kUvVmAJZIwHAwO
+         MPYN1LRinAbJqXQCVcjI2AJE3Ij1FB9IoqYl1k5fzsj1TtEEszIgTZ3jqbJI6UvGvost
+         W5d4B5/4UZZWWwpMU0aG53LTPM6qLR1SkafiFDXRIyUgtpkFKaPKL+NrMVX8z2kGL7cT
+         QFtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=P4L7V3F+4F2OsutYm9zIXnd8ryH/kFEzVMXabtRtrgk=;
-        b=EN5TdAxlcPS7ANCIHj25Ifw4YE2HZGTDHKSsFBrI3xfB8Gr4zOzqPcE8Xk2/mwb42z
-         Xzor7w7oDkxfLm2YGcFqA/uqlbJravwZs3vwysNEYVu/MwpdUltSbtkXNkT+NBZ+vopo
-         cDNqrswrJd29WSpvcDUIUwEtA/Bl0rETtcSy+9I5O1crn8kWImju56P6GF8aAEJbINKa
-         EExmbjULLUOrfq+6evPoBBNdBbOSMX8vn2ViwiwujKFvGFbLdIrf4Dvzgy3K4ylevMwp
-         xaSEz1h0ywnJQ/bDMpyWZfcoJFwmr4bF8QUjVm+uUlJYxjmQHm+88njR4GWdxGzVJAxk
-         Yg7w==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=/DHc77qHzF47tIzabn/XC2E6zkbwQgwze0m6zhIGO0g=;
+        b=du8KG5sK6XGJozjbObWmLBBZqlxnjMmWYvaHIwBn7V2RT6mRd25qRt5tgpWjwS0kGa
+         Gz3tc+LV8jtDNxcCehUyz52N1c+EPtrWigfLUKHeMM1TyBbmGHcfuyKC5DHCBN+W+SGc
+         0vNgz/vuH2TAg1cAXGHqjJfze599XNvYiz+DtQKSu5pHdeay9ISvSq3ReHLvt+20SHwo
+         CstmxAb3P7QicbTzq96Cnd3sgSbfG1bt5b34uiaUQtc+W9yQ6YkKVv+g8ZwYNknQ/H/0
+         iwXFhSQAQ/zqZMoYEGo5PMUhpk9hp7MDnk8nKQUxQkRGKkMEUzHZ5/pRhf7qolxnIAW2
+         Yl3g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lRBp5XWB;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::235 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TgArWY+L;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <zhansayabagdaulet@gmail.com>
-Received: from mail-lj1-x235.google.com (mail-lj1-x235.google.com. [2a00:1450:4864:20::235])
-        by gmr-mx.google.com with ESMTPS id h2si1047048lja.3.2021.04.03.11.09.00
+Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com. [2a00:1450:4864:20::135])
+        by gmr-mx.google.com with ESMTPS id v26si1033025lfo.2.2021.04.03.11.08.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Apr 2021 11:09:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::235 as permitted sender) client-ip=2a00:1450:4864:20::235;
+        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) client-ip=2a00:1450:4864:20::135;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lRBp5XWB;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::235 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TgArWY+L;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x235.google.com with SMTP id u9so8647169ljd.11
-        for <outreachy-kernel@googlegroups.com>; Sat, 03 Apr 2021 11:09:00 -0700 (PDT)
+Received: by mail-lf1-x135.google.com with SMTP id o10so11722280lfb.9
+        for <outreachy-kernel@googlegroups.com>; Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=P4L7V3F+4F2OsutYm9zIXnd8ryH/kFEzVMXabtRtrgk=;
-        b=lRBp5XWB67XwzXmrSb70V7fo3Wxrzm8PBa/F8TImBkan1WX/LKrH0IHmQUagWTQ2n4
-         6IAHtIds6+/RBi1DIeffQPYParjg8zPeoYhgQPGQNBfNt74WeICCS3p6ImxgErGl2ECO
-         r/BeRFErk4YYNZE0QEsYAwOwNDRpzfJjvK8+6jZZE7vHCT4xKjOiBxKssl+6IoKMfBPq
-         Y8GxsEMwNl590e+yOfVfwWoza3EyWX3HO+vCoavfhyK60lbvfWCcleUkvVqx0JwNczxp
-         1oFqXD8N3Se7pSgvGNmQ4YSyXZZIXtHqvdwf8c16XeEyiWRKaC54cbqyAtUFpeVwPv1g
-         d15A==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=/DHc77qHzF47tIzabn/XC2E6zkbwQgwze0m6zhIGO0g=;
+        b=TgArWY+LrUkDahwrOlfzPf1xYluBXZ9jZjo29rEJU2zde5ZhPVsCYLwv0sUuVy83B9
+         2Lu0jZfrS1qKM/crA5xu8y4bBDvyxPxhRWqPRn0U8+RllfBK1zSXL0k/DS2t4s7UeFFL
+         FYtCR0hG6s/UYqVrXsOK1myctGSnCCiXrozP0H32bIS4MgLmx5QETtnFr9J+hpTuAVjR
+         O1cBXn/gr8lgFxIY1bATqyVTva/kVFfzctLeddRBaAZHpTOE+YJ2EDAAYB0QmF8SmCoa
+         wztynjZOaJqRdOHAqce4Oh4IOp3qJtfz25PGwPwYqknvO5TEzoxU9XdQinKE8Zab722m
+         ceLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=P4L7V3F+4F2OsutYm9zIXnd8ryH/kFEzVMXabtRtrgk=;
-        b=ZeKK9iSFrI3L2VqYauauGYOB8aUBeSPRfeBoQ5PdaEl6N0ClMJb6BNagG9QCQXT7v6
-         cv2jf9+PIGeoWJgTwmvfZeU3x1Sf4tljEo9B3h4cQDbanGN4YZThhUKCmewkX4CNnCMZ
-         VTrpCOe4M82zF4zCDfJHqSdhyR6Nk3aiZ8kVW/i2xJSjZj1dKR8pspQmRcLqt+yRyAaI
-         vDKAXl6RQ8NqmYfXHEi7X7dlTLU+54fPbsh38MPqPQxa4mDqLmBaw6sCP5VNyesNZV2c
-         CeNQvoxN6zgAaDmBK1gVrpA+ZpNEmxECayF/RrCT8hlX95jV97ex/a0ZVTfL+VhkKnQF
-         67Vw==
-X-Gm-Message-State: AOAM530yT7mga11L/MIg1Bb6juGwaYUC24TdaMwGxD1pXc1SEsks0g0T
-	4b34bacPeRKNqDGKxi7wDupvQ7lJR1eJMqNr
-X-Received: by 2002:a2e:a415:: with SMTP id p21mr11798268ljn.108.1617473340519;
-        Sat, 03 Apr 2021 11:09:00 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=/DHc77qHzF47tIzabn/XC2E6zkbwQgwze0m6zhIGO0g=;
+        b=VXgcizxD++ZXH/EbGSSQp4fgw6m5WfshEIg6032ptyfhIqWUeIZdMkfyaZ8Bsfnl+N
+         73VlfzNs5XX7ga1s96IwPSzrwDMmVNPsAnUPyoqFqkWZryoVtLSMNW7KTPOOKRu3JHqa
+         rZb2ab/eEh2nqwqs7KIh9kL6H1LYV9qkZQffOXL9ImDtAljmWz3k7c5GQZiB3VoXUomw
+         cwGcXNFi76PbVVd7zTWetYKsd9uYGURyR7DMP9dPtchIr3kxMd6CdlM0JCzOSSUpyw2v
+         eXstAiwCYn26MGFbfedDeAdrjTZZCguQdUO0XJeRoU7JhXjaq0/JGUJdLToaE52xzcDO
+         bkVQ==
+X-Gm-Message-State: AOAM532qfoSIoFZKnamtpceAnwDzjT00obWBOhBBYjpXvO4EMiYc5w3Z
+	lO6OB8E0wQEgZ8aGhcSOisD4KXO9V1E8ZAZ2
+X-Received: by 2002:ac2:5312:: with SMTP id c18mr12411768lfh.618.1617473339502;
+        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
 Return-Path: <zhansayabagdaulet@gmail.com>
 Received: from zhans ([37.151.32.231])
-        by smtp.gmail.com with ESMTPSA id r4sm1204044lfn.135.2021.04.03.11.09.00
+        by smtp.gmail.com with ESMTPSA id v10sm1202850lfb.238.2021.04.03.11.08.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 03 Apr 2021 11:09:00 -0700 (PDT)
-Date: Sun, 4 Apr 2021 00:08:59 +0600
+        Sat, 03 Apr 2021 11:08:59 -0700 (PDT)
+Date: Sun, 4 Apr 2021 00:08:57 +0600
 From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
 To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
 Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/7] staging: media: zoran: Rename 'HEnd' to 'h_end'
-Message-ID: <b5713f89cb4c52f50cfb3db6ac1e1e9dc2665f2d.1617472411.git.zhansayabagdaulet@gmail.com>
-References: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
+Subject: [PATCH 0/7] staging: media: zoran: Eliminate camelcase
+Message-ID: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
 
-Rename variable 'HEnd' to 'h_end' to eliminate camelcase
-Reported by checkpatch.pl.
+This patchset fixes 'avoid camelcase' warning by converting local variables to lowercase and separating words using '_'.
+Renaming of each variable is implemented in separate patches.
 
-Signed-off-by: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
----
- drivers/staging/media/zoran/zoran_device.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Zhansaya Bagdauletkyzy (7):
+  Rename 'HEnd' to 'h_end'
+  Rename 'VEnd' to 'v_end'
+  Rename 'DispMode' to 'disp_mode'
+  Rename 'VidWinWid' to 'vid_win_wid'
+  Rename 'VidWinHt' to 'vid_win_ht'
+  Rename 'We' to 'we'
+  Rename 'He' to 'he'
 
-diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
-index e569a1341d01..415b3cf4826e 100644
---- a/drivers/staging/media/zoran/zoran_device.c
-+++ b/drivers/staging/media/zoran/zoran_device.c
-@@ -291,7 +291,7 @@ static void zr36057_set_vfe(struct zoran *zr, int video_width, int video_height,
- 			    const struct zoran_format *format)
- {
- 	const struct tvnorm *tvn;
--	unsigned int h_start, HEnd, v_start, VEnd;
-+	unsigned int h_start, h_end, v_start, VEnd;
- 	unsigned int DispMode;
- 	unsigned int VidWinWid, VidWinHt;
- 	unsigned int hcrop1, hcrop2, vcrop1, vcrop2;
-@@ -331,11 +331,11 @@ static void zr36057_set_vfe(struct zoran *zr, int video_width, int video_height,
- 	 * However, the DC10 has '0' as h_start, but does need |1, so we
- 	 * use a dirty check...
- 	 */
--	HEnd = h_start + tvn->wa - 1;
-+	h_end = h_start + tvn->wa - 1;
- 	h_start += hcrop1;
--	HEnd -= hcrop2;
-+	h_end -= hcrop2;
- 	reg = ((h_start & ZR36057_VFEHCR_HMASK) << ZR36057_VFEHCR_H_START)
--	    | ((HEnd & ZR36057_VFEHCR_HMASK) << ZR36057_VFEHCR_H_END);
-+	    | ((h_end & ZR36057_VFEHCR_HMASK) << ZR36057_VFEHCR_H_END);
- 	if (zr->card.vfe_pol.hsync_pol)
- 		reg |= ZR36057_VFEHCR_HS_POL;
- 	btwrite(reg, ZR36057_VFEHCR);
+ drivers/staging/media/zoran/zoran_device.c | 48 +++++++++++-----------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
+
 -- 
 2.25.1
 
