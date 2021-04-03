@@ -1,88 +1,127 @@
 X-GM-THRID: 6946995103705595904
-X-Received: by 2002:a05:6e02:80a:: with SMTP id u10mr16323714ilm.221.1617530132552;
-        Sun, 04 Apr 2021 02:55:32 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f8e:: with SMTP id n14mr18336491wmq.34.1617473350594;
+        Sat, 03 Apr 2021 11:09:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:ce88:: with SMTP id r8ls905852ilo.6.gmail; Sun, 04 Apr
- 2021 02:55:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLctRfwvZSfT0KSE6JdB7wPJI6r2s/Xovuv7qu/wrC/xd2zyCqKZvduaQZjNEl2BJZtW5L
-X-Received: by 2002:a92:8752:: with SMTP id d18mr15681510ilm.283.1617530131857;
-        Sun, 04 Apr 2021 02:55:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617530131; cv=none;
+Received: by 2002:a5d:6a89:: with SMTP id s9ls3201681wru.2.gmail; Sat, 03 Apr
+ 2021 11:09:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFsfkSq87koLT7dnsY45JGcI4GH1YkGC/KSV8HPyDRXmb8duo8dF54PDm3kbCVSof/fwLy
+X-Received: by 2002:a5d:64af:: with SMTP id m15mr20828685wrp.231.1617473349285;
+        Sat, 03 Apr 2021 11:09:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617473349; cv=none;
         d=google.com; s=arc-20160816;
-        b=HtTPwhPQ49+2qQjkLtj4VQJ0m0ZR3oqN1qESgUMLKi2lbCsU48YH9aSep3OnIhfTTP
-         sRCL3aoRDA5npHyf+/UqFdTkcvZHx2Pj/Gt30k5SYjF6XxxkbuR5XSQrcR0Y5AvNFIW8
-         ZdkRzUOzhwJA8i5E0FGpuSRdo1y4sJj8Arbr4mA6hjDTsTiLmLc0Nkt7X9yHJfT7e+S6
-         GhwOnQvdyDfs+/sXheh5VFp2wLkeJcCVr4Xsd8TeityztQ3yT3pXJVfpjKYvog58MFfM
-         sKoHDf1F3i43sSC3/ckhkvbNnETvs5tR3KKUXoyux5kGV6xsRV4ODc173l4W/aMQnq4F
-         TJjA==
+        b=MRmbLLzxKhM9dH8hQnegha1Ofi0aRd8mnE0wf047N2WFniX3R+bdBe7JszeiFMgs6p
+         XMbLSvUJID3hexg1BFItDfJ7g0sPMPOx9lfoH8JjOj0oz63jbi7M5rjkhBA5I2lTS5oo
+         j2DzgFniXvL+LnNFDP6TgIhBRb/fmt4tbLK8bNgMxNjX4ktkro89L/54q3ObQUMnwGPo
+         7fomSVHtH77juJYT8eC8Jwpj7Q9gqz4KtqMQuGxVTEGZQyNeJQF0aHKdDiotSuIDcm60
+         mLBmQSHRaHqlXNBWu2qlMxSJVd6t6nacYNFTIgF4QUQcjTyBKkRtdQu2fIGejl5Ky84B
+         mwzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=LXu2dHyRT4I2u4EDJ6vyskAgcPBPpTPXNGLNXB+bkqQ=;
-        b=eiWBsEjmCeO20vArase3cjk2OpOWVVzy4MfuYJfacBdqTYOaLYhkQv5Cye3+UbHQik
-         +L1IsmDR1PIc6ZO6C6SlODOm0OEmdt6Pv0Ztsgfwxb5gmrEXYEZs1setV9bLAK+29tAe
-         YfQikHreSLGhNoUuKfXYFF6c+7WSiBqWwCYQap5mYkWw9TeKUFhv/lI3oVFN6LoG1u7q
-         rkoLYzxe0w7QLtV2xpXZoiaAIDJUm+4aEUARA3gNP3ucg290a1Mpvudd+k4ptV0WUNXW
-         99RXHhFDn9y5H6MIgKWjfSCqv9PoE0D7isTZxd+d4WYEU9X/Z3Py+rLRL1YMrW2Nfl6e
-         BI2A==
+        bh=iakHsUyxM+lHRQnNUqoKM3RMjlnWm90jWJwLczQ8GBc=;
+        b=DMllZX7W7Fhf6o7IWaPfTJzqFm8RplZLQiykwRsKwekuSsKj6KSFvQnR7TTqymra/S
+         Ty83tFgNBgVdIeXLbmJ2xgOxfwgMA6rEIG7IjwCEH9Jm08CGtY0OqwxO5/8uyvyZp28e
+         x5Euo1vhcVGXECxYCFPM6D3LD70Ycj4YJqh+TgvO+iCnJZ4qYkxGTwwPD8KdDadi36rk
+         v8x//y9J1hw6WIhcnZG/m0MXbid3evwqgmIekXFH+I9Awjgw8Puj8ixFGNTSt02tLOPi
+         V8M1TOeOnLnAvw8Fzhu1rrRF2CCq2OxdDDHogJXb6XH5SAcrWENc4E0v+jqEOad7u8ib
+         Qh/w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dWIkycwo;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id y8si935913iom.1.2021.04.04.02.55.31
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=REKzfIMS;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::136 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <zhansayabagdaulet@gmail.com>
+Received: from mail-lf1-x136.google.com (mail-lf1-x136.google.com. [2a00:1450:4864:20::136])
+        by gmr-mx.google.com with ESMTPS id q145si1285085wme.1.2021.04.03.11.09.09
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Apr 2021 02:55:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 03 Apr 2021 11:09:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::136 as permitted sender) client-ip=2a00:1450:4864:20::136;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dWIkycwo;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B34CB61380;
-	Sun,  4 Apr 2021 09:55:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1617530131;
-	bh=FhEaW2cmEgSgSaC3SbBCxav57AyEtDTZ4e+3qBA+FkE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dWIkycwoXooVgqIedtlP6WI6HZ7u663QH3KqsMpIVBzKrAQQiC065kvQWoMRntHBJ
-	 GSvAQPhs/tedheWCzJJrNctXHnoisBp4Nb3hTzTKyfMUeSpLOBm1lxoi02ag59gviR
-	 iJGj3rRJMf53nfmHeAsjK7kIDtgvdxUzSXC0FMUo=
-Date: Sun, 4 Apr 2021 11:55:26 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
-Cc: clabbe@baylibre.com, mchehab@kernel.org, linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH 0/7] staging: media: zoran: Eliminate camelcase
-Message-ID: <YGmNDmT/aqU/+ygn@kroah.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=REKzfIMS;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::136 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x136.google.com with SMTP id g8so11704612lfv.12
+        for <outreachy-kernel@googlegroups.com>; Sat, 03 Apr 2021 11:09:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=iakHsUyxM+lHRQnNUqoKM3RMjlnWm90jWJwLczQ8GBc=;
+        b=REKzfIMSxu75FMS0vPW083LBOEofNy1L0DSWLf2a5noReX7W/17BBYn2NrTC0THspE
+         uVRT++z4G1WbGhksXMAYh9pfZRKgkXifeWLYrNGgCE79MSjchNSejsM95AizztVWTWlO
+         cq8TvFGubvdRS8uwy/ZfOjIMGk0u4KINn/b9ilOX7wLYNkcqXPRXuGoWtGjJtndZWhzr
+         xUlsavfgmE6Aa2gQZkmmk3/w/bXXtZ+fVwp4L6nV68jXlyTuvVpwV1OyHX38P7jX/OOe
+         XFJNrg6USY2ytR5P84BXIP2W+sOqdPKXqKATR9CizWC6jWP1aLdcbOwQB9nrLpbt14p3
+         gbsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=iakHsUyxM+lHRQnNUqoKM3RMjlnWm90jWJwLczQ8GBc=;
+        b=iE2OdKqGStIgurayDu036x7ZMoh1fpmavnb3yhL5EWX9cwZtK7T8rWbwHrOYWwSZqr
+         wWBATYFoExAzDPSB66JbLtXC8uE+f8axF1Dp60tcEJ2g8Qhj0hPrKmdAXGHmr9Qu4Mhx
+         HfKVC8VoCv5Z0m2ZxVBvPZlTL9Rs+FH1Hdd/iJfmx+JzgaAQEQSonrFTJVzfAoL/gJ6I
+         XMpkhmuxGQ19mJeihbB4xikr4+IbEsty1kphG87WS2DHxVmXAb9ezqB5HQaIosFzstXV
+         2y4XhKlbmTSY9rWHyaCI5t4gie6HuVJ26C67tamWIHqSfSrrAAUIg0orVp1XjP9bt1ik
+         HJMQ==
+X-Gm-Message-State: AOAM533LM5mdBXEPeTMNAbTD08nQjTrmj1sfj4sma/x/d6Pl+BZ3P68J
+	r56ctRIAehbpb9qyv+zgzymPhnyNjf4r81ct
+X-Received: by 2002:a19:501b:: with SMTP id e27mr12726473lfb.584.1617473348592;
+        Sat, 03 Apr 2021 11:09:08 -0700 (PDT)
+Return-Path: <zhansayabagdaulet@gmail.com>
+Received: from zhans ([37.151.32.231])
+        by smtp.gmail.com with ESMTPSA id b28sm1204452lfo.219.2021.04.03.11.09.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 03 Apr 2021 11:09:08 -0700 (PDT)
+Date: Sun, 4 Apr 2021 00:09:07 +0600
+From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
+To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH 7/7] staging: media: zoran: Rename 'He' to 'he'
+Message-ID: <9982cf0d54cb0677519aa7f14d931fba65e023d3.1617472411.git.zhansayabagdaulet@gmail.com>
 References: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
 
-On Sun, Apr 04, 2021 at 12:08:57AM +0600, Zhansaya Bagdauletkyzy wrote:
-> This patchset fixes 'avoid camelcase' warning by converting local variables to lowercase and separating words using '_'.
-> Renaming of each variable is implemented in separate patches.
-> 
-> Zhansaya Bagdauletkyzy (7):
->   Rename 'HEnd' to 'h_end'
->   Rename 'VEnd' to 'v_end'
->   Rename 'DispMode' to 'disp_mode'
->   Rename 'VidWinWid' to 'vid_win_wid'
->   Rename 'VidWinHt' to 'vid_win_ht'
->   Rename 'We' to 'we'
->   Rename 'He' to 'he'
-> 
->  drivers/staging/media/zoran/zoran_device.c | 48 +++++++++++-----------
->  1 file changed, 24 insertions(+), 24 deletions(-)
+Rename variable 'He' to 'he' to eliminate camelcase.
+Reported by checkpatch.pl.
 
-You did not read the instructions for the outreachy work, sorry, but I
-can not take these.
+Signed-off-by: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
+---
+ drivers/staging/media/zoran/zoran_device.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-good luck!
+diff --git a/drivers/staging/media/zoran/zoran_device.c b/drivers/staging/media/zoran/zoran_device.c
+index 007d8855178e..cf788d9cd1df 100644
+--- a/drivers/staging/media/zoran/zoran_device.c
++++ b/drivers/staging/media/zoran/zoran_device.c
+@@ -295,7 +295,7 @@ static void zr36057_set_vfe(struct zoran *zr, int video_width, int video_height,
+ 	unsigned int disp_mode;
+ 	unsigned int vid_win_wid, vid_win_ht;
+ 	unsigned int hcrop1, hcrop2, vcrop1, vcrop2;
+-	unsigned int wa, we, ha, He;
++	unsigned int wa, we, ha, he;
+ 	unsigned int X, Y, hor_dcm, ver_dcm;
+ 	u32 reg;
+ 
+@@ -344,10 +344,10 @@ static void zr36057_set_vfe(struct zoran *zr, int video_width, int video_height,
+ 	disp_mode = !(video_height > BUZ_MAX_HEIGHT / 2);
+ 	vid_win_ht = disp_mode ? video_height : video_height / 2;
+ 	Y = DIV_ROUND_UP(vid_win_ht * 64 * 2, tvn->ha);
+-	He = (vid_win_ht * 64) / Y;
++	he = (vid_win_ht * 64) / Y;
+ 	ver_dcm = 64 - Y;
+-	vcrop1 = (tvn->ha / 2 - He) / 2;
+-	vcrop2 = tvn->ha / 2 - He - vcrop1;
++	vcrop1 = (tvn->ha / 2 - he) / 2;
++	vcrop2 = tvn->ha / 2 - he - vcrop1;
+ 	v_start = tvn->v_start;
+ 	v_end = v_start + tvn->ha / 2;	// - 1; FIXME SnapShot times out with -1 in 768*576 on the DC10 - LP
+ 	v_start += vcrop1;
+-- 
+2.25.1
 
-greg k-h
 
