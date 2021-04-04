@@ -1,116 +1,111 @@
-X-GM-THRID: 6670790947725377536
-X-Received: by 2002:a02:6614:: with SMTP id k20mr956219jac.24.1553164550830;
-        Thu, 21 Mar 2019 03:35:50 -0700 (PDT)
+X-GM-THRID: 6947258462125424640
+X-Received: by 2002:ac2:5ec2:: with SMTP id d2mr14797944lfq.214.1617534659236;
+        Sun, 04 Apr 2021 04:10:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:80c6:: with SMTP id h6ls2169949ior.2.gmail; Thu, 21 Mar
- 2019 03:35:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw26ZPe/PI+WXzszSkpLYVlQHVkmXcLbnWUY+FrrdhYR9oXSa7C5d0gOBCQLDipyYhsxyU3
-X-Received: by 2002:a5d:9506:: with SMTP id d6mr1171923iom.22.1553164549967;
-        Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553164549; cv=none;
+Received: by 2002:a05:651c:2050:: with SMTP id t16ls2553931ljo.4.gmail; Sun,
+ 04 Apr 2021 04:10:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDkBs9p3NNxDHjQw5sG4Hmx3oPeUfErKYZs6XHkw5GNktakpnPcrspkdLnYCMgZ4jhwhFq
+X-Received: by 2002:a2e:a543:: with SMTP id e3mr13175815ljn.433.1617534657541;
+        Sun, 04 Apr 2021 04:10:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617534657; cv=none;
         d=google.com; s=arc-20160816;
-        b=DlrNRgw1Ai5XGDLUbIrRJ+MhKfomSTiSb/FwY8uI7/wYR94Z7y+T8kB985zhKCx7N7
-         qXOWcPL0Yao3z1sFL7XV0toZZlzOqnp89po2uteDHHNV16ER77DuBlxJ1f6d6Z5uDYBt
-         hg1tyKIrQ7VPXaitSsrh3yVzNEkfy1ZcY9LI10X0GlC1kQzQu8Z4NzmUqMeEkgdhRIe7
-         gjlgvfP+N1GbM9fS34bXqYm0NJKJi2kmRVLHf1gyPYAgQ/AzQkOCli77zLoKIbonPnq6
-         TzJ/kpKwSO3xF6i3kntkvhUAj0VmC8KZQ13Emy1bWvFHX0xIY4KioQUJcjOPtOgPbzt1
-         NIrQ==
+        b=dkI0uR8vkIi+7NRgzJIwkWrVVPW/M//V1OFdoxJ4O4IRPt9zA/glQ1Pzr4Advp+V7+
+         yTVvsh/MUw/po+1igW8YBEJ9BouSo/SCivR1XiCxIysbx6DTW3f3+xQBypog28apDQpL
+         fN0rYTjBZ9BZ0wO0mZLS53SWmyRY2917jrfBxgdgbKHYzgaF9gcPzQewQkPUfC1RXTRo
+         OYC+fFfMYFknXBAYmryzCAG866XPX72QDA14pHZr1EyhEu33f2yYU13CioNT2OVLESOk
+         fNrAErkLhSeGVeE09FjEQSY9xH1w3ryYwKhF3LZWeQtS4p/NbsmvK5xFZ9rt4wzQ8r6d
+         sloQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=xg6Fa73rFau5DRgU73/rlvxeA5WnfyJ42cdeh6S/JDk=;
-        b=DPrIjydi2zqdVEOd7WchNZMYQbkaKOZN/Tp2pGXE7rPHPdAj4rXUTbVISlYU851mRP
-         2qpeptToFNLULk6059xFNkWEgeHpCCoRwFRPyWwF8ys65WJr9gdSlHr7/CXgcWkrpKJP
-         LvesY3jJzie27l1XNfXAgTJctzfkKl9xRzs/Rbk4+ymWMA3eIRPIrC0AcWSLJrquv231
-         MZQsC2j9+pOft2Y79b5abQMNLly1OXjlsqimigrELTW2wjv0dMe+DPBQVAdaKc1kOAMZ
-         ydF0nYTSgnN3ekM1VxD+WIOsb/ZHfFM/rXQiVAGGYypLbhw7w5cCjzK8w+m1n/C/mAew
-         jrmg==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=RWPDQxxgV2nTCNL1FAYclu9roEAzSAdEQg2xga59ELs=;
+        b=rCaQQjIkLqjWf00bej759P41yLPbNiv0J6upJyCoyEu9XmP0QIEwdxn5462yKdy781
+         cJL3GL5mM1kP2svt9gQHMWf21rIEmveJwYw1x8QnwCyL7ocsh+yHnH+6D/EEpjItFjgw
+         W0QrkA02DYzXhhY6yOCivdYqFrh1NF3WqDhnyZ6OJn9FasDRcz/RV6U87pZx+KwOAy5H
+         vDDmz8sGMXIjyFHU68LyI0p9l0PILWRRpQqxO6LQRFMaP/zTuRUBqVnQOxwMZjfCBwvC
+         wK/fMRZ0mQii2ISv91GUO9WdfCLRAKUPtBWpJpeKYWz4f6erkx9N8GuemfVluhGaJPDQ
+         Kw6g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OB36hzXz;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z0Z5Y+0D;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::134 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id n194si677115itb.2.2019.03.21.03.35.49
+Return-Path: <zhansayabagdaulet@gmail.com>
+Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com. [2a00:1450:4864:20::134])
+        by gmr-mx.google.com with ESMTPS id v26si1203834lfo.2.2021.04.04.04.10.57
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 04 Apr 2021 04:10:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::134 as permitted sender) client-ip=2a00:1450:4864:20::134;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OB36hzXz;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z0Z5Y+0D;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::134 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id v12so3941292pgq.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
+Received: by mail-lf1-x134.google.com with SMTP id g8so13580739lfv.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Apr 2021 04:10:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=xg6Fa73rFau5DRgU73/rlvxeA5WnfyJ42cdeh6S/JDk=;
-        b=OB36hzXzAKv97dyBTiFcp52Oc3Mw1lA2AqeARi+hAgJF0Wp2ZUAFfJ9MaE6iOlilTX
-         y6TTQqv33ah7w1Cxz53Yge9ioECuOm9Uhi8tOpLUGix5hGJecmAwCKSDHmOn+jGbUk+7
-         9Sz2x4WuR3PBGbmPaf5CzRPDRaQRP2T1xuo2YXyWn4pd/w8CBiFsVm3t61ODFICdmVce
-         kKL1vi/Y7ADrugE3N1tldYOoROH2QbxAgjBLLyFvXBHwJVgvYaqV4uNPWFVqkCWUzmI/
-         iFh7jWb9dBV32pd2O4BmOUikHB2+fqpH+3W76/VQDFdtaQZ6PJxMHIiul5gA3N5bTygP
-         5idg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=RWPDQxxgV2nTCNL1FAYclu9roEAzSAdEQg2xga59ELs=;
+        b=Z0Z5Y+0DJmoXupHa9zQfPZT3kCZ4shfboOOlC58PCdOUhtjmsJDx/nI3uHa99/n1Nz
+         ZkKBDPyQZl1ZmIehGFxtGs6b38Ktn/TttjCGlt36dNBvEuZydjuX4OwjGtUV1b64wfl+
+         YXVWjiw57CPZ85SoX1pHp9JxDKoBqQ/aN45bvoKqFT224liyy2Nbu3jLP60l2RURwRvn
+         kp2vjF+9HekaHBqsdFz5oQVrh9jr4dz7ApPD9VO52VfR2IPhWllfsmQfOn8dCB8L4IEb
+         VWuOTvZQdfKUcLe9XPgpbc9GRLmzkdiXxyR6LsLv78D3aAzN5MSSIU+MSrC6IR3YAOrc
+         VYYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=xg6Fa73rFau5DRgU73/rlvxeA5WnfyJ42cdeh6S/JDk=;
-        b=CE/OqKEOf0zAG/oM1tXBxzwfshbsQKyjvfPs1iTf7fUyRsBCa7OaLrJr7YVF8L5MYR
-         KNV+PpjvDkpah2T4ARvvVCxzYBEJsu98NgjR4mc8NxOPvqT9wYYVJ77HI8F6Fs1pAyu7
-         sHIRjJXJKuv0WSjcEYm41aBP3jlexWWWT4DAIwHJ8R7CMn6lQDx823Yn4dF6woLRBoRk
-         yz5zOCoZebOfD1HdGMXXOCu9Zu0B8vLL8hf15jU1W9q2ABGMEtEKS1lXO+oJNhjgJV+8
-         zVavEWOQPp/aRUQYPXumJvsZo2mFrxsUrmJagVhFEMyuJI6Fi2xXQK/q2KVg9M375Qyq
-         Uxmg==
-X-Gm-Message-State: APjAAAX+h0wE8UXEfrPGAWITgJO9x9PNrOiNzwK/8cETYmXGWxKEwlKP
-	UICsEbe2HryqXVAll6pRlxuHJjJd
-X-Received: by 2002:a17:902:2c01:: with SMTP id m1mr2822564plb.186.1553164549392;
-        Thu, 21 Mar 2019 03:35:49 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.215.204])
-        by smtp.gmail.com with ESMTPSA id m7sm3780022pgg.62.2019.03.21.03.35.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 03:35:48 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: vt6655: lines should not end with a parenthesis
-Date: Thu, 21 Mar 2019 16:05:36 +0530
-Message-Id: <1553164536-11317-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=RWPDQxxgV2nTCNL1FAYclu9roEAzSAdEQg2xga59ELs=;
+        b=ZJmstBryopMVcn2rm8b21qzJ5gZwkY5WdGhtZFOKYQAHghkTHqMYCqsao1mmEByVEx
+         3gnBoVYqGA3g5AOvKeJ2q7Y/rMMNaeSG78MyU4WYOGlbYqB/Tn6g15shV2Q7X2EbUE7O
+         40eV6QpkgRLGHdzxwiLKHv0fecJmsslOurFG/pKbwt9sDvXuNI1eYRmo4Ni9vypOHzxX
+         UwSqVaDJLWc7g6cOmkAbpj8tUPb0xW8i0vG8qGGBitEzDEAmtk+y0rU8j6EXazHhnhcj
+         N1YKaydoOfnmI3QJo+jrup5YkGnZ16tbbwueRpaelkx4mjAbWZUW9Hm4w7HXrYBH8TWQ
+         TxBA==
+X-Gm-Message-State: AOAM531j2SMKosSHWG2RM808X09fGYYyojxymKY5HJHhvhIiS69/2a6D
+	pAEvzczRRunhINFO5yQWsrEaQ07rVG8jbCw3
+X-Received: by 2002:ac2:5a5b:: with SMTP id r27mr13957725lfn.255.1617534657168;
+        Sun, 04 Apr 2021 04:10:57 -0700 (PDT)
+Return-Path: <zhansayabagdaulet@gmail.com>
+Received: from zhans ([37.151.32.231])
+        by smtp.gmail.com with ESMTPSA id i184sm1412263lfd.205.2021.04.04.04.10.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Apr 2021 04:10:56 -0700 (PDT)
+Date: Sun, 4 Apr 2021 17:10:55 +0600
+From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
+To: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org
+Cc: linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [Outreachy kernel][PATCH] staging: sm750fb: Remove unnecessary blank
+ line
+Message-ID: <20210404111055.GA22626@zhans>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Adjust code to fix the style issue – lines should not end with a
-parenthesis.
+Remove unnecessary extra blank line to improve readability.
+Reported by checkpatch.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Signed-off-by: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
 ---
- drivers/staging/vt6655/rf.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/staging/sm750fb/sm750.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 600c920..60686aa4 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -834,11 +834,8 @@ bool RFbSetPower(struct vnt_private *priv, unsigned int rate, u16 uCH)
-  *
-  */
+diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+index 1b3f5f649c52..23eefd019ec9 100644
+--- a/drivers/staging/sm750fb/sm750.h
++++ b/drivers/staging/sm750fb/sm750.h
+@@ -64,7 +64,6 @@ struct lynx_accel {
+ 			   u32 x, u32 y, u32 width, u32 height,
+ 			   u32 color, u32 rop);
  
--bool RFbRawSetPower(
--	struct vnt_private *priv,
--	unsigned char byPwr,
--	unsigned int rate
--)
-+bool RFbRawSetPower(struct vnt_private *priv, unsigned char byPwr,
-+		    unsigned int rate)
- {
- 	bool ret = true;
- 	unsigned long dwMax7230Pwr = 0;
+-
+ 	int (*de_copyarea)(struct lynx_accel *accel,
+ 			   u32 s_base, u32 s_pitch,
+ 			   u32 sx, u32 sy,
 -- 
-2.7.4
+2.25.1
 
 
