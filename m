@@ -1,86 +1,111 @@
 X-GM-THRID: 6947438561526284288
-X-Received: by 2002:a17:90a:d256:: with SMTP id o22mr12819066pjw.22.1617617406554;
-        Mon, 05 Apr 2021 03:10:06 -0700 (PDT)
+X-Received: by 2002:a25:bacb:: with SMTP id a11mr33756139ybk.128.1617576592764;
+        Sun, 04 Apr 2021 15:49:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:ab81:: with SMTP id n1ls9190470pjq.3.gmail; Mon, 05
- Apr 2021 03:10:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzXDUu1FKUm/V1wa6GVyskb1eri7hf/RUgEh49J5PYhI8RNL2xg29nK39Fev8kNsSgA8iAp
-X-Received: by 2002:a17:90a:d311:: with SMTP id p17mr25971281pju.43.1617617405476;
-        Mon, 05 Apr 2021 03:10:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617617405; cv=none;
+Received: by 2002:a05:6902:6ad:: with SMTP id j13ls557794ybt.5.gmail; Sun, 04
+ Apr 2021 15:49:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzhHjv4LfFNLI2GAqjf4F2iNlpFKJUJ9SFsxhZwBgSy0YrqiwB6e87lxTbjebjwm6cpZAnf
+X-Received: by 2002:a25:b282:: with SMTP id k2mr33090354ybj.21.1617576591346;
+        Sun, 04 Apr 2021 15:49:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617576591; cv=none;
         d=google.com; s=arc-20160816;
-        b=wPiz5hnhL6LBJCbYY94Fbr/Csjg5f5gnrtKDSJdUxyP0eslpDc0QdmM5WdYEkps/xh
-         LIJnXWIUuDqz4nhPtI80NY+/3jm96gzI2p5G80RWPgAB0dwHPNa1qXnEwiImTrQ4A+3t
-         UEnBBMruCEpWUn+Xd1uQpCZNRL9of9KNu/SiQeBRWCfWM8LoqSCG7jc9zFna4OeyB2Nq
-         lcsbcyN9+9iEJvIXUO+KB92B2oRwi+QqS4LZJnyZHLE7UNcswFjhXp9vstdA8vEH1I/N
-         40/TSNPLu4k2kfiD458TyaKdQiPxKqgKoIUp+xqB5BQrC0WTHV4M0xZgiYjHlcgrq8L1
-         GmHg==
+        b=rbPcpmeSt/tycecMN5JLBPs7nR0FM0BqXgnhbzXT6A/nKD7VeyIKkoTH2CHlx7x4UO
+         838yrm+O3wiu69l0PBvxgsk1eGrhdueO8gF+3uTBb538NtA4m8FCqmpYHvMvEg6wfrtZ
+         UP3RmvfWRn8fgHd2jwEsXDYqNWcXVTM7cBU4Wryjo/cvJ5vSQzEBfyTCt3kbAfTApUoC
+         ja3HuzAAuuJFpQHiRen69dAsxCEhmvRcWeOBIOgh6YL4fUFqxPxYTIS/tOvoImv2wScM
+         I70/2GcPKMNJztaPBvlUyzfJF5wfUmvFHbLLcihyzPOlxr55fo6fhwQsvNdpOpLHkv/P
+         bbhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=gkSV1/u6IoyLhAg1zUEDgoUIjQxAUgAVGfNnla6UniY=;
-        b=sjI7aL5vyt8PCEhIaA4397Cm3GSlAOiZBanA1djTuIt7VyiiIsBxWmDkKsIFpR6CxV
-         gmG7x2DfZYt7hn6OX5FuV4X7kBnHNLXIhqjr47MwmfZ0vvTdsvj3Qnc15TTS9ho3V8pI
-         l3RHgFzommhvvRF9HtgAsnie/RYTQ90XihmNaXEFD3EakbwZa0Syv9XeN6JfmEJn4U+R
-         5qNo6yXctX3QW+uahICfT+77pgMLNOQG3l96ZYQefnGodClOPTUGf5/B67ISBftbjNyq
-         rFDV+1bF+wjnmX2MVgLCehyN1TCqJPE8bZlSQj+zzXg9L3GoGmyPmzVs14jnIRuU5fkD
-         n6mw==
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=nOcn0vPLVXxEmV92y9dqyHeBVs9VlV3r+13+jQMCYTI=;
+        b=GFiEnehWoH59Vm9m+THobUfjC5COt8KoYD27fkkeO2a2droS07PiWcSbQKrYQVeexY
+         EFp8hm73bXIERnJ+ePLnWibkfh5T67ZjCBw24fvb/zHkfgktQGO8cUZmUFT3BG0piLQ9
+         L+tsKHk984TWkL99Dcq9NxWTwkQ9yO/oqu5L3xOYB/Y/I8WW9NE15lTmSxdx3gOHQ4UW
+         yUnqMH1ydOE7k07w7snarChMv3s/Ias62aiJU/ZKo3C4pWC9ZQtv8lD6doKrT7FDQNtv
+         NMAY/QVAifD+VriM2wc0kddg2+1vZnUxlYl9dfdU7vP4KL42iTpeluZwfTqx7B4BAfHd
+         G2ww==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=F9FTALqj;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id bj7si358631plb.5.2021.04.05.03.10.05
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nvvSZz75;
+       spf=pass (google.com: domain of davidvillasana14@gmail.com designates 2607:f8b0:4864:20::333 as permitted sender) smtp.mailfrom=davidvillasana14@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <davidvillasana14@gmail.com>
+Received: from mail-ot1-x333.google.com (mail-ot1-x333.google.com. [2607:f8b0:4864:20::333])
+        by gmr-mx.google.com with ESMTPS id w15si188143ybt.3.2021.04.04.15.49.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Apr 2021 03:10:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 04 Apr 2021 15:49:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of davidvillasana14@gmail.com designates 2607:f8b0:4864:20::333 as permitted sender) client-ip=2607:f8b0:4864:20::333;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=F9FTALqj;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 91E1E61278;
-	Mon,  5 Apr 2021 10:10:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1617617405;
-	bh=Je/iwEPKGmWwfpx6j9nU8e8Cx0cbV02FGR+9cImDvtU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=F9FTALqjBFbtV7oQpMRcYa2WpyX4RL+k+DoVQsoXjFO+qSHpnXlFc1YIro5ohuikj
-	 0EgGr4bYUBdrCigV1+t4BXBLDRKiBrY75DTptvrBqSlGKT6w8ShM4LqfsDUeKwbW7k
-	 mhk/Kbnxf4/G29RZajcgxDFBdqZnDRpJOA8alYWo=
-Date: Mon, 5 Apr 2021 12:10:02 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: David Villasana =?iso-8859-1?Q?Jim=E9nez?= <davidvillasana14@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nvvSZz75;
+       spf=pass (google.com: domain of davidvillasana14@gmail.com designates 2607:f8b0:4864:20::333 as permitted sender) smtp.mailfrom=davidvillasana14@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ot1-x333.google.com with SMTP id 91-20020a9d08640000b0290237d9c40382so9829967oty.12
+        for <outreachy-kernel@googlegroups.com>; Sun, 04 Apr 2021 15:49:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :content-transfer-encoding;
+        bh=nOcn0vPLVXxEmV92y9dqyHeBVs9VlV3r+13+jQMCYTI=;
+        b=nvvSZz75tIKCp29BJjqqS0GAGb9LZ/ElLCex9zGhJwb5c6BZl56Yt58akOSRSh4uFy
+         bcbX7EuZpKWklE8y0NFfuXw5CNuUk+HTr0E8IJjY3milB6peJeh3ys70IVYbGcBmgVSu
+         Wp6wjk0DollRYQUjotAUh7LWz5/kWyvJouiEqeCK7kUHxJqolCpWmn2IDsaLBJbEdZc6
+         iILGI8i/O6KYSNZXErfzNF3gQKAgY3VP2013eSEYUs0QKl1Q2UqXXttDZb+ziAR6iHo+
+         Dt/wVZDPohOiOIUhbY2+dAlivaGiRY6U4+hvREHMp3/9PHWPNiUiQkGE09ZuqOe/kZjJ
+         K8Fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:content-transfer-encoding;
+        bh=nOcn0vPLVXxEmV92y9dqyHeBVs9VlV3r+13+jQMCYTI=;
+        b=bMOmEDjEtgjQysvESII4y5M6/cuEQcS5N6CHb4Iwn7o28OBjjCHY1i8Crscw1sySfA
+         UVhQ8k+9Ow5vKlqPiX7KS34yjceKJ7yFcRe198x5EGOoKyCPey6OZIvLh8WBve0oO4mC
+         LILGQiwDX0CovzUA0D+wU6QcsZD7gQ1+v3hd035x/BezgDElPm630wbbCuq7+QD7TJOI
+         w7olFhCL+Qk5ulCUtmdUbuIleO9IUiANASfm7SrdMh75TB6G5ZD9BL6c1A/wVfE4rKjw
+         GaPqyoU37xIOeEVVhr+cucpHapGahpg30mvUDkcxSJztshd8Biy0WY0fB0n6tJe0wjpv
+         YGLQ==
+X-Gm-Message-State: AOAM53035AEib66fotr2uemyR4ec86I4JgT+RN0uPxpPVb+lz88yPnmk
+	OKJ5kIKCD+CDjnaCPrOikiq2Gq6hippzsQ==
+X-Received: by 2002:a9d:5a5:: with SMTP id 34mr20853977otd.353.1617576590968;
+        Sun, 04 Apr 2021 15:49:50 -0700 (PDT)
+Return-Path: <davidvillasana14@gmail.com>
+Received: from fedora ([2806:2f0:7000:86b1:c1bc:6875:f962:d652])
+        by smtp.gmail.com with ESMTPSA id d1sm3466977oth.13.2021.04.04.15.49.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Apr 2021 15:49:50 -0700 (PDT)
+Date: Sun, 4 Apr 2021 17:49:46 -0500
+From: David Villasana =?iso-8859-1?Q?Jim=E9nez?= <davidvillasana14@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] kpc2000: kpc2000: Removed extra blank line
-Message-ID: <YGrh+jxGDczfqoeB@kroah.com>
-References: <YGpCij8SVkJwO9AN@fedora>
+Subject: [PATCH] kpc2000: kpc2000: Removed extra blank line
+Message-ID: <YGpCij8SVkJwO9AN@fedora>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <YGpCij8SVkJwO9AN@fedora>
 
-On Sun, Apr 04, 2021 at 05:49:46PM -0500, David Villasana Jim�nez wrote:
-> Fix checkpatch warning:
-> CHECK: Please don't use multiple blank lines
-> 
-> Signed-off-by: David Villasana Jim�nez <davidvillasana14@gmail.com>
-> ---
->  drivers/staging/kpc2000/kpc2000/pcie.h | 1 -
->  1 file changed, 1 deletion(-)
+Fix checkpatch warning:
+CHECK: Please don't use multiple blank lines
 
-Shouldn't the subject line something like:
-	[PATCH] staging: kpc2000: pcie.h: Remove extra blank line
+Signed-off-by: David Villasana Jim�nez <davidvillasana14@gmail.com>
+---
+ drivers/staging/kpc2000/kpc2000/pcie.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-?
+diff --git a/drivers/staging/kpc2000/kpc2000/pcie.h b/drivers/staging/kpc2000/kpc2000/pcie.h
+index cb815c30faa4..f1fc91b4c704 100644
+--- a/drivers/staging/kpc2000/kpc2000/pcie.h
++++ b/drivers/staging/kpc2000/kpc2000/pcie.h
+@@ -6,7 +6,6 @@
+ #include "../kpc.h"
+ #include "dma_common_defs.h"
+ 
+-
+ /*      System Register Map (BAR 1, Start Addr 0)
+  *
+  *  BAR Size:
+-- 
+2.30.2
 
-Please fix up and try again.
-
-thanks,
-
-greg k-h
 
