@@ -1,180 +1,279 @@
 X-GM-THRID: 6947408169247178752
-X-Received: by 2002:a17:906:6882:: with SMTP id n2mr25025814ejr.50.1617569517476;
-        Sun, 04 Apr 2021 13:51:57 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:c653:: with SMTP id z19ls5350818edr.2.gmail; Sun, 04 Apr
- 2021 13:51:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBONID9HwpnhaaBfWjfhMYUnmsYJTgPLH11HEaj6AakGhsMb75h+R92J4GTLtbypLou0th
-X-Received: by 2002:aa7:da46:: with SMTP id w6mr28314787eds.40.1617569516015;
+X-Received: by 2002:a5d:4105:: with SMTP id l5mr26999962wrp.105.1617569516384;
         Sun, 04 Apr 2021 13:51:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617569516; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a05:6000:162d:: with SMTP id v13ls5683829wrb.1.gmail; Sun,
+ 04 Apr 2021 13:51:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwqU60iLqyoKrHavAOA3Aej2LqGZuDE0fGCBUva9CBC/kD/mshd3+beiOyvS6QSSix2dLlm
+X-Received: by 2002:a5d:5541:: with SMTP id g1mr2656551wrw.419.1617569515098;
+        Sun, 04 Apr 2021 13:51:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617569515; cv=none;
         d=google.com; s=arc-20160816;
-        b=wIeNXjUfXjbBk4fX3HM+tD269tMhr3tJPEGUmwFSxQ6uXdVF/8+BTb4TsyDjkLj9+S
-         5wuOILu1+sz+ZEzbehQVOpoaIcr8J4ecx1BW7SjsyKgO+gjzoSjTzO6m+trUirGfOG4W
-         OioEWYhW/yCbEfsYR7oOOEDQG87cA6JAgC0gUY0uEMJRy8J8/yk1+kgV80kfYi0z05/I
-         ZMCBMdDUzvdxaIXVgwArlP/TJMdH6Ic8Qvk40IeEblKHZXbouWzd1QvaK7CHcx16/Cgt
-         NhEFg+tGXV0pz4a2zfUjLTLztCzceMGLX6CpwkIuK4TUn7pO6EwemgmllV1ZJSBBkQNO
-         +Hnw==
+        b=RE/MCf6sg6FSuT/7+lcvud4apspxkBUsbaxQN4O7e4HsQNDZpXzWZIOqyv+hpwhHXo
+         gmLZl7kM40gc36+sdSRMZjIfwStQLprMCmHbL1qvRMmVCdV4f1b7u0YGP9mkA/cUDXVp
+         TXMQ9Ia27cnmOCU6Qfkyo/fZ+5URaPuYSQ94haINrNFvTHkFBiGarZLVikDCUzALWWBZ
+         T4x3pQ0a7rJUAwkIrWI4rBoQb7w1BcHt3H1F8/tH3547hSwHZ/by8LMa4Fkf2IrQDGo7
+         W0WtGtaASDLlxX4xqtrICfHZeosMB7/43NZ6ILKWNrU7Uo0CDelm3YufQ5zlu51Idkp7
+         7GPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=QzV++jhT27uc2t1qnJFUNLJDodKEuAS8LLzpt9xx8wo=;
-        b=b2CTUpdBW+V0+jJjeBY2JFDbcy/1oHVSr5qAK6f8dVlxP/XhkqjJABZi7CwupwjViH
-         11hByu+Ri/XrCul/FG1/b3s7L6ShKaMK7lJu3FRCSjPvNyhQKkx3kpV2w3mgn8uVX+dy
-         ZNLvKh/G273DCbYwDY0HrOOV4NrA9Kf0B5qB2HU9oljd6po0jW85U4KJCA4q5RLZLzvF
-         vqwL2Osp7o5bCJWNxB4acYfsizxEDyiDBDXBL9OFy4/UDc93Y0a5LKc94vV3mJtA2JiX
-         mvHgPai6Wg43p5L2AkXNudNok9+3JRC4tf6FI0bJ3x6fyn+6YCjGEQ4d/Ncsurjg4oKW
-         CG7A==
+        bh=cXiMXcPJYT2gF1ZyHKZXBRz8MdSstrc2FkV2CzET4+Q=;
+        b=MSbjgkGzVX7X46eV15QF/m4aQ7dQoVzkt+g1FkiaMzILeQx+5laoENTFoVHB7dLD7O
+         SQ49IkSCCIGWCmoFR9EAVGmHIWDDw8uxGfnCfW4se+DYnTmc1gdx9VWOPsqdKdhkgqLS
+         bs+Y+x9PfpbhYesZQa/xmJD1HWVtrwLGE/fWZJTuWjuVFUmnlGHwzA/INh3kg3Z45L6Q
+         DD6PrVybCg4gdl3XA9nTnAELcgzW/4ncp1MK+vsOAItx2mgvn5w+4ES++HxT3Kxt3iH8
+         p2O3Oylkw8r/RbmehGMEJw4ArvkEFqC6m5vZbfmE5ZkaWpr3v+7wUduofl4egpX9IYli
+         LVuQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K6VyeHCo;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::131 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pNbplSVM;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <zhansayabagdaulet@gmail.com>
-Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com. [2a00:1450:4864:20::131])
-        by gmr-mx.google.com with ESMTPS id f25si2025221edx.4.2021.04.04.13.51.56
+Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com. [2a00:1450:4864:20::135])
+        by gmr-mx.google.com with ESMTPS id a187si1031892wmc.1.2021.04.04.13.51.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 04 Apr 2021 13:51:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::131 as permitted sender) client-ip=2a00:1450:4864:20::131;
+        Sun, 04 Apr 2021 13:51:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) client-ip=2a00:1450:4864:20::135;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K6VyeHCo;
-       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::131 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pNbplSVM;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::135 as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x131.google.com with SMTP id i26so14756081lfl.1
+Received: by mail-lf1-x135.google.com with SMTP id q29so14746847lfb.4
         for <outreachy-kernel@googlegroups.com>; Sun, 04 Apr 2021 13:51:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to;
-        bh=QzV++jhT27uc2t1qnJFUNLJDodKEuAS8LLzpt9xx8wo=;
-        b=K6VyeHCogGvRhUaBohFgBjE1xxM8DQJuwnJ23Z2pijJO/xgS37x+tTOGtC3Z9xV7T/
-         cOpn9Ov3F7KQG5/+OCGXCn2DZrOJ0EReKDuF3JSaB31CwGDT+sLhVy21/wvK202leU8m
-         qOdQNWyNi1GaCb3Otgmy2a48vcKqBdmaJ2iCX0gygSx2LC6qpwD1YPVrR2FQym0+WLz2
-         uTkkEcJU+wdTHu4xs65+dG/dNIbujWo/sVUzEpcr/9YuL9Qze+2N9CkMk3BfdkvDncxS
-         am1C8UEXo+/6X1+lWYSVqfXTEeOvYDXsxYG9pg3lncbRTdJZyEiF/+4uFRnyIKCLbc/g
-         ZJPg==
+        bh=cXiMXcPJYT2gF1ZyHKZXBRz8MdSstrc2FkV2CzET4+Q=;
+        b=pNbplSVMj3El5qfqP6wnDvwFawYNC56Bv0mYtHpCQQooiUJUG6PdYrJ302oF7b21P6
+         5fCo6C2xqTxnSGK6eIeRtdXnp8MGkJzbVrCrDbovEVCJalXgoGq9MkUewJy+xBjgxbsO
+         LisAWAELom/Dp7zf7I92+42H24kdIJCQY2rwm5o+3aRUUq/OyOIRLo24b5URczcFjJOf
+         vh9B7XFZctsc9fXXJ9Rbou0riqr9+4dy8oAgfu7E4q/8U5C7jW83sOXIU9u82uKFxxwB
+         kXs8lV1SaOV9yrhZjRpvuCp4/T+P2NHNVqY5oeAuuzM2jtbfJwbJ1t6qO4a9FXwp1veD
+         Fi3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=QzV++jhT27uc2t1qnJFUNLJDodKEuAS8LLzpt9xx8wo=;
-        b=Cm89tGI9ji12+ZapKmW8745nqz+5bBI2+0uLIHjez+6MzHNgZnx97QnmrrYpv/tzkF
-         HO+Bk1zZcYeeEdezRbFyaIicS5lv6RqUZpetiyJNCd3VDfayf6g2DiUwGYGLabyelxFp
-         Av39HxhZ6fjaxYH3yK1S6Fi4S7skdXIGS+vd6KrkQwpSTaZIzWjROx/8V8MJP4KFr36e
-         WpdboUxTY8/5R+gta+RffteqfTf11HuycUZIiatXXApYrqXXYi2BAPqQTNwHhhMRbwFk
-         0Wx1WMcD9cjB0XV1Vmv2R6XYqnq6jljgYJ7I6kvH/wAK5D7E3hkb8+cjBNubNp5ktTBI
-         XpkA==
-X-Gm-Message-State: AOAM5331vSyzuICsm0CGX95uctGdjuW3+uS3LnUN9Xsc2aGQd8v8UdN4
-	qMqSHGQPd/PGudfph4HhijkXISckQDXhLVM/
-X-Received: by 2002:ac2:53a7:: with SMTP id j7mr16793134lfh.305.1617569515361;
-        Sun, 04 Apr 2021 13:51:55 -0700 (PDT)
+        bh=cXiMXcPJYT2gF1ZyHKZXBRz8MdSstrc2FkV2CzET4+Q=;
+        b=OTtnQ4KPKrLKt989QHiNXPKLc7mZ7qK/3AsuvQCNP4+eFiV3lmPu9OzpCGDtsrSfiS
+         PGC7ZRNZL5BvyAi//DFD8r6qbynCLctUFx57P+RfKynWa5Ml+wKzSt6hp1kLjM1chFEN
+         JCFlKXnMjPMF0Kj0JG+MPPUPPJ4sbsCGDl5khD523ImHHgsB5kTc0Eq7U+4NW//7z6XW
+         agRdPuQ1N6681ddKClGdAp0kLvauVK1USqB9S6VikzVP3DKvAPxdDizqscqjHi4jGGrD
+         ITKFJxAC7FJZX8ZDnM8We7LWXxi43BP8nIevwlrd81TDnO3ro6mFpjKWXvVq9wSUyKxI
+         YwNw==
+X-Gm-Message-State: AOAM530p0vPHG4ZPECjeDxxUNJSWA7ryrN0LOtGasFdtG/CX0UmQ0lx8
+	K0Yg22ejhofbJTgNRoNwUZHUcbyav0YFlKVF
+X-Received: by 2002:ac2:5a11:: with SMTP id q17mr15758434lfn.354.1617569514393;
+        Sun, 04 Apr 2021 13:51:54 -0700 (PDT)
 Return-Path: <zhansayabagdaulet@gmail.com>
 Received: from zhans ([37.151.32.231])
-        by smtp.gmail.com with ESMTPSA id y23sm1657365ljm.53.2021.04.04.13.51.54
+        by smtp.gmail.com with ESMTPSA id e15sm1552272lfs.83.2021.04.04.13.51.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Apr 2021 13:51:55 -0700 (PDT)
-Date: Mon, 5 Apr 2021 02:51:54 +0600
+        Sun, 04 Apr 2021 13:51:54 -0700 (PDT)
+Date: Mon, 5 Apr 2021 02:51:52 +0600
 From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
 To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
 	gregkh@linuxfoundation.org
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 2/2] staging: rtl8712: remove extra blank lines
-Message-ID: <d56183614a04590bdf3a6280b7f23664a5bb394c.1617568354.git.zhansayabagdaulet@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8712: add blank lines after declarations
+Message-ID: <ffe2ab70ef3cb73d3d6dd19d88804af7ecb568a2.1617568354.git.zhansayabagdaulet@gmail.com>
 References: <cover.1617568354.git.zhansayabagdaulet@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1617568354.git.zhansayabagdaulet@gmail.com>
 
-Remove extra blank lines to adhere to Linux kernel coding style.
+Add blank lines after function/struct/union/enum declarations to adhere to
+Linux kernel coding style.
 Reported by checkpatch.
 
 Signed-off-by: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.h    | 1 -
- drivers/staging/rtl8712/rtl871x_mlme.c    | 3 ---
- drivers/staging/rtl8712/rtl871x_pwrctrl.h | 3 ---
- drivers/staging/rtl8712/rtl871x_recv.h    | 1 -
- 4 files changed, 8 deletions(-)
+ drivers/staging/rtl8712/rtl8712_recv.h     |  1 +
+ drivers/staging/rtl8712/rtl871x_cmd.h      | 10 ++++++++++
+ drivers/staging/rtl8712/rtl871x_event.h    |  1 +
+ drivers/staging/rtl8712/rtl871x_mp.c       |  1 +
+ drivers/staging/rtl8712/rtl871x_mp.h       |  1 +
+ drivers/staging/rtl8712/rtl871x_mp_ioctl.c |  3 +++
+ drivers/staging/rtl8712/rtl871x_recv.c     |  1 +
+ 7 files changed, 18 insertions(+)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_recv.h b/drivers/staging/rtl8712/rtl8712_recv.h
-index c70b37ff554e..f4d20b0efd4e 100644
+index 3e385b2242d8..c70b37ff554e 100644
 --- a/drivers/staging/rtl8712/rtl8712_recv.h
 +++ b/drivers/staging/rtl8712/rtl8712_recv.h
-@@ -85,7 +85,6 @@ union recvstat {
- 	unsigned int value[RXDESC_SIZE>>2];
+@@ -66,6 +66,7 @@ struct phy_stat {
+ 	__le32 phydw6;
+ 	__le32 phydw7;
  };
++
+ #define PHY_STAT_GAIN_TRSW_SHT 0
+ #define PHY_STAT_PWDB_ALL_SHT 4
+ #define PHY_STAT_CFOSHO_SHT 5
+diff --git a/drivers/staging/rtl8712/rtl871x_cmd.h b/drivers/staging/rtl8712/rtl871x_cmd.h
+index 254182a6ce8e..bf6f0c6a86e5 100644
+--- a/drivers/staging/rtl8712/rtl871x_cmd.h
++++ b/drivers/staging/rtl8712/rtl871x_cmd.h
+@@ -333,6 +333,7 @@ struct getdatarate_parm {
+ 	u32 rsvd;
  
--
- struct recv_buf {
- 	struct list_head list;
- 	spinlock_t recvbuf_lock;
-diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
-index f5886b39b3b5..8a97307fbbd6 100644
---- a/drivers/staging/rtl8712/rtl871x_mlme.c
-+++ b/drivers/staging/rtl8712/rtl871x_mlme.c
-@@ -124,7 +124,6 @@ static void free_network_nolock(struct mlme_priv *pmlmepriv,
- 	pmlmepriv->num_of_scanned--;
- }
+ };
++
+ struct getdatarate_rsp {
+ 	u8 datarates[NumRates];
+ };
+@@ -377,6 +378,7 @@ struct	getphy_rsp {
+ struct readBB_parm {
+ 	u8	offset;
+ };
++
+ struct readBB_rsp {
+ 	u8	value;
+ };
+@@ -384,6 +386,7 @@ struct readBB_rsp {
+ struct readTSSI_parm {
+ 	u8	offset;
+ };
++
+ struct readTSSI_rsp {
+ 	u8	value;
+ };
+@@ -400,6 +403,7 @@ struct writePTM_parm {
+ struct readRF_parm {
+ 	u8	offset;
+ };
++
+ struct readRF_rsp {
+ 	u32	value;
+ };
+@@ -498,6 +502,7 @@ struct settxagctbl_parm {
+ struct gettxagctbl_parm {
+ 	u32 rsvd;
+ };
++
+ struct gettxagctbl_rsp {
+ 	u32	txagc[MAX_RATES_LENGTH];
+ };
+@@ -513,6 +518,7 @@ struct setssup_parm	{
+ struct getssup_parm	{
+ 	u32 rsvd;
+ };
++
+ struct getssup_rsp	{
+ 	u8	ss_ForceUp[MAX_RATES_LENGTH];
+ };
+@@ -524,6 +530,7 @@ struct setssdlevel_parm	{
+ struct getssdlevel_parm	{
+ 	u32 rsvd;
+ };
++
+ struct getssdlevel_rsp	{
+ 	u8	ss_DLevel[MAX_RATES_LENGTH];
+ };
+@@ -535,6 +542,7 @@ struct setssulevel_parm	{
+ struct getssulevel_parm	{
+ 	u32 rsvd;
+ };
++
+ struct getssulevel_rsp	{
+ 	u8	ss_ULevel[MAX_RATES_LENGTH];
+ };
+@@ -585,6 +593,7 @@ struct setratable_parm {
+ struct getratable_parm {
+ 	uint rsvd;
+ };
++
+ struct getratable_rsp {
+ 	u8 ss_ForceUp[NumRates];
+ 	u8 ss_ULevel[NumRates];
+@@ -621,6 +630,7 @@ struct getbcnokcnt_rsp {
+ struct getbcnerrcnt_parm {
+ 	unsigned int rsvd;
+ };
++
+ struct getbcnerrcnt_rsp {
+ 	unsigned long bcnerrcnt;
+ };
+diff --git a/drivers/staging/rtl8712/rtl871x_event.h b/drivers/staging/rtl8712/rtl871x_event.h
+index d9a5476d2426..759a2d27d8f2 100644
+--- a/drivers/staging/rtl8712/rtl871x_event.h
++++ b/drivers/staging/rtl8712/rtl871x_event.h
+@@ -102,6 +102,7 @@ struct ADDBA_Req_Report_parm {
+ 	unsigned short StartSeqNum;
+ 	unsigned char tid;
+ };
++
+ #include "rtl8712_event.h"
  
--
- /* return the wlan_network with the matching addr
-  * Shall be called under atomic context...
-  * to avoid possible racing condition...
-@@ -358,7 +357,6 @@ static void update_scanned_network(struct _adapter *adapter,
- 		plist = plist->next;
+ #endif /* _WLANEVENT_H_ */
+diff --git a/drivers/staging/rtl8712/rtl871x_mp.c b/drivers/staging/rtl8712/rtl871x_mp.c
+index 24020257bc58..099c512c8519 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp.c
++++ b/drivers/staging/rtl8712/rtl871x_mp.c
+@@ -387,6 +387,7 @@ void r8712_SwitchBandwidth(struct _adapter *pAdapter)
+ 		break;
  	}
- 
--
- 	/* If we didn't find a match, then get a new network slot to initialize
- 	 * with this beacon's information
- 	 */
-@@ -621,7 +619,6 @@ void r8712_indicate_connect(struct _adapter *padapter)
- 			  jiffies + msecs_to_jiffies(60000));
  }
++
+ /*------------------------------Define structure----------------------------*/
+ struct R_ANTENNA_SELECT_OFDM {
+ 	u32	r_tx_antenna:4;
+diff --git a/drivers/staging/rtl8712/rtl871x_mp.h b/drivers/staging/rtl8712/rtl871x_mp.h
+index e79a67676469..0a60b1e6ccaf 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp.h
++++ b/drivers/staging/rtl8712/rtl871x_mp.h
+@@ -121,6 +121,7 @@ struct bb_reg_param {
+ 	u32 offset;
+ 	u32 value;
+ };
++
+ /* ======================================================================= */
  
--
- /*
-  * r8712_ind_disconnect: the caller has to lock pmlmepriv->lock
-  */
-diff --git a/drivers/staging/rtl8712/rtl871x_pwrctrl.h b/drivers/staging/rtl8712/rtl871x_pwrctrl.h
-index dd5a79f90b1a..bf6623cfaf27 100644
---- a/drivers/staging/rtl8712/rtl871x_pwrctrl.h
-+++ b/drivers/staging/rtl8712/rtl871x_pwrctrl.h
-@@ -17,7 +17,6 @@
- #include "osdep_service.h"
- #include "drv_types.h"
+ #define LOWER	true
+diff --git a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
+index f906d3fbe179..31414a960c9e 100644
+--- a/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
++++ b/drivers/staging/rtl8712/rtl871x_mp_ioctl.c
+@@ -681,6 +681,7 @@ uint oid_rt_pro_read_efuse_hdl(struct oid_par_priv *poid_par_priv)
+ 	*poid_par_priv->bytes_rw = poid_par_priv->information_buf_len;
+ 	return status;
+ }
++
+ /*------------------------------------------------------------------------*/
+ uint oid_rt_pro_write_efuse_hdl(struct oid_par_priv *poid_par_priv)
+ {
+@@ -708,6 +709,7 @@ uint oid_rt_pro_write_efuse_hdl(struct oid_par_priv *poid_par_priv)
+ 		status = RNDIS_STATUS_FAILURE;
+ 	return status;
+ }
++
+ /*----------------------------------------------------------------------*/
  
--
- #define CMD_ALIVE	BIT(2)
- 
- enum Power_Mgnt {
-@@ -63,12 +62,10 @@ enum Power_Mgnt {
- #define		PS_STATE_S3		(PS_ALL_ON)
- #define	PS_STATE_S4		((PS_ST_ACTIVE) | (PS_ALL_ON))
- 
--
- #define		PS_IS_RF_ON(x)		((x) & (PS_ALL_ON))
- #define		PS_IS_ACTIVE(x)		((x) & (PS_ST_ACTIVE))
- #define		CLR_PS_STATE(x)	((x) = ((x) & (0xF0)))
- 
--
- struct reportpwrstate_parm {
- 	unsigned char mode;
- 	unsigned char state; /* the CPWM value */
-diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
-index e83c256e1474..7c9995060a6f 100644
---- a/drivers/staging/rtl8712/rtl871x_recv.h
-+++ b/drivers/staging/rtl8712/rtl871x_recv.h
-@@ -29,7 +29,6 @@ struct	stainfo_rxcache	{
- #define		PHY_RSSI_SLID_WIN_MAX			100
- #define		PHY_LINKQUALITY_SLID_WIN_MAX		20
- 
--
- struct smooth_rssi_data {
- 	u32	elements[100];	/* array to store values */
- 	u32	index;		/* index to current array to store */
+ uint oid_rt_get_efuse_current_size_hdl(struct oid_par_priv *poid_par_priv)
+@@ -849,6 +851,7 @@ unsigned int mp_ioctl_xmit_packet_hdl(struct oid_par_priv *poid_par_priv)
+ {
+ 	return _SUCCESS;
+ }
++
+ /*-------------------------------------------------------------------------*/
+ uint oid_rt_set_power_down_hdl(struct oid_par_priv *poid_par_priv)
+ {
+diff --git a/drivers/staging/rtl8712/rtl871x_recv.c b/drivers/staging/rtl8712/rtl871x_recv.c
+index efd783e7ccbc..17d4a261dea0 100644
+--- a/drivers/staging/rtl8712/rtl871x_recv.c
++++ b/drivers/staging/rtl8712/rtl871x_recv.c
+@@ -219,6 +219,7 @@ union recv_frame *r8712_decryptor(struct _adapter *padapter,
+ 	}
+ 	return return_packet;
+ }
++
+ /*###set the security information in the recv_frame */
+ union recv_frame *r8712_portctrl(struct _adapter *adapter,
+ 				 union recv_frame *precv_frame)
 -- 
 2.25.1
 
