@@ -1,170 +1,124 @@
-X-GM-THRID: 6608144919941873664
-X-Received: by 2002:a24:9dc9:: with SMTP id f192-v6mr1529829itd.31.1538578635003;
-        Wed, 03 Oct 2018 07:57:15 -0700 (PDT)
+X-GM-THRID: 6947041729185841152
+X-Received: by 2002:a05:6402:447:: with SMTP id p7mr25180390edw.89.1617529819594;
+        Sun, 04 Apr 2021 02:50:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5e:8618:: with SMTP id z24-v6ls523863ioj.0.gmail; Wed, 03
- Oct 2018 07:57:14 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63zMQvr/Gb0V0hDzP+riETn2xRVrMClTaY/kfQ7Di/JkF8xZvJek79sLqLelC9Q2S/PFlX/
-X-Received: by 2002:a6b:a052:: with SMTP id j79-v6mr1251453ioe.39.1538578634180;
-        Wed, 03 Oct 2018 07:57:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538578634; cv=none;
+Received: by 2002:a17:906:41a:: with SMTP id d26ls6606161eja.3.gmail; Sun, 04
+ Apr 2021 02:50:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMXa2HKnb7iTCPbVqqZZNORsd6Lcb0IJDfUan/rU212tTfDBSFoiwwiOKfBSPm35Ah7fZo
+X-Received: by 2002:a17:906:7150:: with SMTP id z16mr22543004ejj.103.1617529817894;
+        Sun, 04 Apr 2021 02:50:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617529817; cv=none;
         d=google.com; s=arc-20160816;
-        b=xRd0SSsBtnpNEn+YQcjJGTjsjAzE2pJBc1V5l7MdJlma+oTDgQ5atCLXXBIo1vxWaX
-         0B3G3pH45I7+lyGc5wMwv9jvhjNQT6mtiWP6etLhxseShyITtYqMjHspTKCrDjJHH2Ni
-         Q3+/gl9f+ZxsfHvnNaVWg5DR5VvTotaE/NSr9HXlfB5qrlLalgqlRQC96unF3vlrxYMV
-         9+LqaWC3YQ2cTuITGbPwVQ5MJKR5HsOZWOU8hF+le/mPMZ1D6o1hg2cF6AP8lW02lJmZ
-         q5GlvBAqAIsQgkmBKNd1nCxfy8ibUv6A2QUH5d5Tqx0LX9rtY8vSRwKX1hFEUKAVZJgw
-         26YQ==
+        b=EZnSzhBj/UjYBTKASjvYb8IzgokxsRuSnAyYUnxYBHheX07nIJnyn1Ket3JUFytY3d
+         lK2QWQEuBa/HQf8CeQIIHbIA+Qee+fuPxFRt1IQxLqoFKQHCViUVCfS89zt+tJ7lUvHc
+         X767nb2P7xjLnYBCDuuc7TCx+okAAtxsRhtnn52WhFCpMgUl0TJ3syr1x1vBQzwx20mY
+         /CjJ6YhYzRlqoaThiYjvbJpb2hW7cL5JslvzAu1a3T9BVVudXx2ijK3ewetBWD9Pg6oa
+         n/eVuPwgoLrv7YmpKyWiUFk7rVK+LKNljA09yPBRfU3r8gs37QIla/WgPh9EsxSihOOS
+         msLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=mMOOYdXxF2ZXFMRoHARxIeXnLFEfr85tud6rO+uB70w=;
-        b=xU9Q7lJWEYCEDiFTD2XN7Je0mk9wzPTb6BwtHNGkY77vYsLCm/liSoK5JZZ8Ju+aEO
-         iTyMi5I3tImuWLmIwKVwgE8cEzw2pdWS+Zdobt/L+7GJ+wZAsC7QN9390hRHRNq8PCo2
-         rgkuKgDaWITCV8r6L26e0gLc71G8th1BYgOCdXF51jHwfh1bieaz6/TCDBhNj07T1hE/
-         lqnZx6GA8Ox1Bw7Ji5I6W4VA5yU83d2G3ER18rJw+LhOZHWSA5IrWXY427BOJbMaqjck
-         c1M69pLIcLd0NAKm7OBGCzj2CPKBUBmFoMcKeu4zx8IfOMgcj89wR+WtS0uFQ56l4/ha
-         rSqA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=+YxmJB1P6MsBVe3zBnQweUXqzLkXE1/JcVKmkfcRG2g=;
+        b=KFM+Y+gGkzbE5TTOd6KLPCRvgfeE+UCuv7EgVzYwSGzQIyLQDBrkWiEA7zuUb1TPIL
+         Z3G3wR9DiiIie7LG6UY4kDSstLHl+FYDFkOGSaYbvKVE2Q4nvZO7JelgqApTAF4B4gR6
+         bGpDC7L683p2P6WvWwkINUAVJwLYzsuVxlC+HdQlP8IXfSuTiRVXqHOlAP3/LwBa116l
+         asPq1Y7O1o/zlCmxeABzXiz/g79lWw2t5THtQEUl2Q/dq875bAw1BtsEHFBIdUrpLs/u
+         lVnL04JabhHmuG9jw+RMNjD/PgYrAV0hfyOpDZxK/cAHjnsMpz9P/vhh4iH+HSetUddD
+         mDgw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KiKjQqfk;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com. [2607:f8b0:4864:20::430])
-        by gmr-mx.google.com with ESMTPS id n3-v6si45616ioh.4.2018.10.03.07.57.14
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id c2si1867663edr.2.2021.04.04.02.50.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 03 Oct 2018 07:57:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) client-ip=2607:f8b0:4864:20::430;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 04 Apr 2021 02:50:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KiKjQqfk;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::430 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x430.google.com with SMTP id r64-v6so1796334pfb.13
-        for <outreachy-kernel@googlegroups.com>; Wed, 03 Oct 2018 07:57:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=mMOOYdXxF2ZXFMRoHARxIeXnLFEfr85tud6rO+uB70w=;
-        b=KiKjQqfkraXMDTNU7dInvbeTXJx/yjyhrfVTNC5aNZmib+LRS9zOuFwYpXevuYTy24
-         YUBxVjwWiBfLv/LDiOrnFg7whcv1yAl11GTCO2tRMu1rEJ6/ehoU5D4rDk+2OyYBwfjg
-         DM356agyVECRMuYrp2fhshbfXUerKDSudJHePrzLyyAeISIJ3IoQUVZesToC/d7VZq77
-         YS+8DpmsngUwvM9JylYkZb80xdt70dt8BjEtKH9ZuWgFlVKK5VlKek1XQ0muM8NN5MGm
-         kKj2iqHagnga1iEfPbbqq87Z7yxU8wEKgW97HlDYQAmhDmxw1WBWFS6pHY29DN5QtQju
-         yQ6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=mMOOYdXxF2ZXFMRoHARxIeXnLFEfr85tud6rO+uB70w=;
-        b=kZvGI1iltUTqEB454OHUmPAUz/+EwJrbCR1eGn9vtQ3ZNttuzNVWrcsQrKw1o4V/sG
-         2a5NxE2cLG5m6/ZESPnwl3l22uJiIFwRh/2tgBG20rQtGPfI1SIqNXuHdSt8eNduTt7N
-         C/Gk/sTVtY2qZg5SBo0kjYYjNt5RfBv5BvLyvPGvM05bFZ2ePieTC/5O0LCgJPJTPK7Q
-         TwCbc4AgNcDa+A6ZDzgMoecl32eHeCrIqHCMXQDrbEk1gBtx9ke5pEkE7Gt3G5S72rC7
-         Ej/p0MNMsv80mz1VGpZxS7eOHoOAPR3PGEJ/kz2u2vMpC0tmfaupKgasPS3zkKBHHrbb
-         /feA==
-X-Gm-Message-State: ABuFfojkkSzbq2L0cjceHncYuF9CAL8HzbIlxtxeFcVbbtq1Sg2fDIyZ
-	QlDtR0OFUmc/IzjXaytemlc=
-X-Received: by 2002:a62:1a16:: with SMTP id a22-v6mr1976611pfa.237.1538578633752;
-        Wed, 03 Oct 2018 07:57:13 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([59.97.9.91])
-        by smtp.gmail.com with ESMTPSA id n22-v6sm2830206pfi.185.2018.10.03.07.57.12
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 03 Oct 2018 07:57:13 -0700 (PDT)
-Date: Wed, 3 Oct 2018 20:10:15 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, mamtashukla555@gmail.com
-Subject: [PATCH] staging: fbtft: Prefer using the BIT macro
-Message-ID: <20181003144015.GA31815@armorer>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Adcou7qj++GYHqnciWfCshfVeGHBQXjsji2hD?=
+ =?us-ascii?q?6mlwRA09T+WzkceykPMHkSLlkTp5YgBFpfmsMLSNKEm2ybdb+o8UVI3JYCDHvy?=
+ =?us-ascii?q?+SIJhm/c/exVTbehHW0s54+eNef7NlCNv2ZGIK6PrSxAWjCd4vzJ2m3cmT5dv2?=
+ =?us-ascii?q?9HtmQQF0Z6wI1W4QNi+hHkJ7XwVAD5YifaDshfZvnSaqengcc62AaEUtYu6rnb?=
+ =?us-ascii?q?H2va79bQVDLxAq7xTmt0LL1JfKVynd5BsYXj9VqI1OzUHOmWXCiZmejw=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.81,304,1610406000"; 
+   d="scan'208";a="501509830"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 04 Apr 2021 11:50:17 +0200
+Date: Sun, 4 Apr 2021 11:50:17 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deborah Brouwer <deborahbrouwer3563@gmail.com>
+cc: Larry.Finger@lwfinger.net, gregkh@linuxfoundation.org, insafonov@gmail.com, 
+    martin@kaiser.cx, simon.fodin@gmail.com, straube.linux@gmail.com, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8188eu: core: add comma
+ within a comment
+In-Reply-To: <20210403213724.GA18745@djbComp>
+Message-ID: <alpine.DEB.2.22.394.2104041149510.2958@hadrien>
+References: <20210403210930.17781-1-deborahbrouwer3563@gmail.com> <alpine.DEB.2.22.394.2104032315200.7875@hadrien> <20210403213724.GA18745@djbComp>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Type: text/plain; charset=US-ASCII
 
-Replacing all occurrences of (1<<x) with BIT(x) to fix checkpatch issue.
-CHECK:Prefer using the BIT macro
 
-Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
----
- drivers/staging/fbtft/fbtft.h | 56 +++++++++++++++++++++----------------------
- 1 file changed, 28 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 25302ff..ac427ba 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -355,39 +355,39 @@ static void __exit fbtft_driver_module_exit(void)                          \
- #define DEBUG_LEVEL_6	(DEBUG_LEVEL_4 | DEBUG_LEVEL_5)
- #define DEBUG_LEVEL_7	0xFFFFFFFF
- 
--#define DEBUG_DRIVER_INIT_FUNCTIONS (1<<3)
--#define DEBUG_TIME_FIRST_UPDATE     (1<<4)
--#define DEBUG_TIME_EACH_UPDATE      (1<<5)
--#define DEBUG_DEFERRED_IO           (1<<6)
--#define DEBUG_FBTFT_INIT_FUNCTIONS  (1<<7)
-+#define DEBUG_DRIVER_INIT_FUNCTIONS BIT(3)
-+#define DEBUG_TIME_FIRST_UPDATE     BIT(4)
-+#define DEBUG_TIME_EACH_UPDATE      BIT(5)
-+#define DEBUG_DEFERRED_IO           BIT(6)
-+#define DEBUG_FBTFT_INIT_FUNCTIONS  BIT(7)
- 
- /* fbops */
--#define DEBUG_FB_READ               (1<<8)
--#define DEBUG_FB_WRITE              (1<<9)
--#define DEBUG_FB_FILLRECT           (1<<10)
--#define DEBUG_FB_COPYAREA           (1<<11)
--#define DEBUG_FB_IMAGEBLIT          (1<<12)
--#define DEBUG_FB_SETCOLREG          (1<<13)
--#define DEBUG_FB_BLANK              (1<<14)
-+#define DEBUG_FB_READ               BIT(8)
-+#define DEBUG_FB_WRITE              BIT(9)
-+#define DEBUG_FB_FILLRECT           BIT(10)
-+#define DEBUG_FB_COPYAREA           BIT(11)
-+#define DEBUG_FB_IMAGEBLIT          BIT(12)
-+#define DEBUG_FB_SETCOLREG          BIT(13)
-+#define DEBUG_FB_BLANK              BIT(14)
- 
--#define DEBUG_SYSFS                 (1<<16)
-+#define DEBUG_SYSFS                 BIT(16)
- 
- /* fbtftops */
--#define DEBUG_BACKLIGHT             (1<<17)
--#define DEBUG_READ                  (1<<18)
--#define DEBUG_WRITE                 (1<<19)
--#define DEBUG_WRITE_VMEM            (1<<20)
--#define DEBUG_WRITE_REGISTER        (1<<21)
--#define DEBUG_SET_ADDR_WIN          (1<<22)
--#define DEBUG_RESET                 (1<<23)
--#define DEBUG_MKDIRTY               (1<<24)
--#define DEBUG_UPDATE_DISPLAY        (1<<25)
--#define DEBUG_INIT_DISPLAY          (1<<26)
--#define DEBUG_BLANK                 (1<<27)
--#define DEBUG_REQUEST_GPIOS         (1<<28)
--#define DEBUG_FREE_GPIOS            (1<<29)
--#define DEBUG_REQUEST_GPIOS_MATCH   (1<<30)
--#define DEBUG_VERIFY_GPIOS          (1<<31)
-+#define DEBUG_BACKLIGHT             BIT(17)
-+#define DEBUG_READ                  BIT(18)
-+#define DEBUG_WRITE                 BIT(19)
-+#define DEBUG_WRITE_VMEM            BIT(20)
-+#define DEBUG_WRITE_REGISTER        BIT(21)
-+#define DEBUG_SET_ADDR_WIN          BIT(22)
-+#define DEBUG_RESET                 BIT(23)
-+#define DEBUG_MKDIRTY               BIT(24)
-+#define DEBUG_UPDATE_DISPLAY        BIT(25)
-+#define DEBUG_INIT_DISPLAY          BIT(26)
-+#define DEBUG_BLANK                 BIT(27)
-+#define DEBUG_REQUEST_GPIOS         BIT(28)
-+#define DEBUG_FREE_GPIOS            BIT(29)
-+#define DEBUG_REQUEST_GPIOS_MATCH   BIT(30)
-+#define DEBUG_VERIFY_GPIOS          BIT(31)
- 
- #define fbtft_init_dbg(dev, format, arg...)                  \
- do {                                                         \
--- 
-1.9.1
+On Sat, 3 Apr 2021, Deborah Brouwer wrote:
 
+> On Sat, Apr 03, 2021 at 11:16:16PM +0200, Julia Lawall wrote:
+> >
+> >
+> > On Sat, 3 Apr 2021, Deborah Brouwer wrote:
+> >
+> > > Add a comma to separate repeated words in a comment. The comma preserves
+> > > the meaning of the comment while also stopping the checkpatch warning:
+> > > WARNING: Possible repeated word: 'very'.
+> >
+> > Thanks.  That is more understandable.  Isn't this a v2?  If so, there
+> > should be v2 after PATCH and an explanation of the change under the ---
+> >
+> > julia
+> Hi Julia, no this is not a v2.  I found the same comment, generating the same
+> error, in a different file.  Since I changed it in
+> rtl8723bs/core/rtw_xmit.c [1], I thought I should be consistent and change
+> it here as well.
+
+OK, thanks for the explanation :)
+
+julia
+
+>
+> [1] https://lore.kernel.org/r/2944d1a0e8769edb489bb336423625a61d314d05.1617229359.git.deborahbrouwer3563@gmail.com
+>
+> >
+> >
+> > >
+> > > Signed-off-by: Deborah Brouwer <deborahbrouwer3563@gmail.com>
+> > > ---
+> > >  drivers/staging/rtl8188eu/core/rtw_xmit.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/staging/rtl8188eu/core/rtw_xmit.c b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> > > index ed81cbc5e191..99e44b2c6f36 100644
+> > > --- a/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> > > +++ b/drivers/staging/rtl8188eu/core/rtw_xmit.c
+> > > @@ -1243,7 +1243,7 @@ s32 rtw_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
+> > >   * If we turn on USE_RXTHREAD, then, no need for critical section.
+> > >   * Otherwise, we must use _enter/_exit critical to protect free_xmit_queue...
+> > >   *
+> > > - * Must be very very cautious...
+> > > + * Must be very, very cautious...
+> > >   *
+> > >   */
+> > >
+> > > --
+> > > 2.17.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210403210930.17781-1-deborahbrouwer3563%40gmail.com.
+> > >
+>
 
