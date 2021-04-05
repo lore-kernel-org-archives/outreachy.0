@@ -1,107 +1,75 @@
-X-GM-THRID: 6388328536690655232
-X-Received: by 10.159.48.150 with SMTP id j22mr2988163uab.40.1487398645195;
-        Fri, 17 Feb 2017 22:17:25 -0800 (PST)
+X-GM-THRID: 6947683342319878144
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:a05:622a:84:: with SMTP id o4mr22823089qtw.382.1617637985055;
+        Mon, 05 Apr 2021 08:53:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.107.141.19 with SMTP id p19ls1804009iod.9.gmail; Fri, 17 Feb
- 2017 22:17:24 -0800 (PST)
-X-Received: by 10.107.128.160 with SMTP id k32mr3559082ioi.52.1487398644464;
-        Fri, 17 Feb 2017 22:17:24 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from mail-pf0-x243.google.com (mail-pf0-x243.google.com. [2607:f8b0:400e:c00::243])
-        by gmr-mx.google.com with ESMTPS id z73si1187786pfa.2.2017.02.17.22.17.24
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Feb 2017 22:17:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) client-ip=2607:f8b0:400e:c00::243;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of karniksayli1995@gmail.com designates 2607:f8b0:400e:c00::243 as permitted sender) smtp.mailfrom=karniksayli1995@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x243.google.com with SMTP id 68so5575387pfx.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 17 Feb 2017 22:17:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=bJDwpMQcLIIHIAou+Z95KKhpmios8tIcMqgG+YAHCWQ=;
-        b=X5fBbkLbD9Ae1OoTtocpaFZXmi8x3tH8C3rboybKh/NbVTgnUk8SUK7kQEWiWyIisS
-         9SKLUp+gB7D/XNe72biHuJEwFQjqODUs6p1CBkGYtOdDLeXe5ZPMqbFRiU1CSGmE19op
-         49ub9t6KW73GhbXHOSqHASBi0bjcmO8Zi+hAWgn6TUgi657PHXOfJuOQr+r+g5fE67Hl
-         RhN8Bsd7dNYjkT63sAVO4uKVz1tYiUbgBDOIQ81u8XK7GHgCTBBap3g9ikpn9mpc7P0P
-         rTDJthnQjEwAAVAIm4I3uNrzWChxAiU/EFymEIvWR/swBLETQgxWy3Cp7X1JM7ZsWo28
-         9oQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=bJDwpMQcLIIHIAou+Z95KKhpmios8tIcMqgG+YAHCWQ=;
-        b=Sqejfd4MPdh0UvwmRK2HfBhBYriXrSpEryjszqM70nDTFnT/8f5Q0WrSXMXMPQY5hg
-         8iVjQAetJR4hJZ2xx6yMchdVCy4ACzF2xUaM2pfvx7bAv0FPgsqeQEuGjMZH4eIgkA/j
-         h167Sj4cl5i901w9fCRe8R52eDtgGXivxB+eCfE1/H4Knrs2GxMnECfK3YMTswMpAyVe
-         msDEsRdUu+L3yUsjiDj1LwBCYmazyna6+d+dy8BDQ86cg+trGbQUmkp9KFoxIzZuJEOo
-         OpU1TW23p/uSkiGhdDoWT9nUEYH3WFX+scSbM6/Uy40nNeE69Vz3BmEmi5er/JbOv8Gn
-         6+Rw==
-X-Gm-Message-State: AMke39meNm4PusVIHJmOus/zukaoc7Hf4F/IcU7qja7jMCVJ5HaOzmdQV9jARo83OcoC8Q==
-X-Received: by 10.99.134.198 with SMTP id x189mr14057203pgd.171.1487398644069;
-        Fri, 17 Feb 2017 22:17:24 -0800 (PST)
-Return-Path: <karniksayli1995@gmail.com>
-Received: from sayli-HP-15-Notebook-PC ([182.58.167.219])
-        by smtp.gmail.com with ESMTPSA id w89sm22699786pfk.133.2017.02.17.22.17.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Feb 2017 22:17:23 -0800 (PST)
-Date: Sat, 18 Feb 2017 11:47:10 +0530
-From: sayli karnik <karniksayli1995@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] staging: rtl8192u: ieee80211: Remove typedef to structure
- _bandwidth_autoswitch
-Message-ID: <20170218061710.GA24477@sayli-HP-15-Notebook-PC>
+Received: by 2002:a37:a050:: with SMTP id j77ls8862092qke.10.gmail; Mon, 05
+ Apr 2021 08:53:04 -0700 (PDT)
+X-Received: by 2002:a37:a147:: with SMTP id k68mr25260365qke.66.1617637984258;
+        Mon, 05 Apr 2021 08:53:04 -0700 (PDT)
+Received: by 2002:a05:620a:859:b029:270:850a:c07d with SMTP id u25-20020a05620a0859b0290270850ac07dmsqku;
+        Mon, 5 Apr 2021 08:33:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvEJeN9z+qEeNmu77Y9qjz96YIHw9fmBIbxmNKKPQjDdXLgUNv8HoT+dVqUaNJx0IF3yuseYyhIQ==
+X-Received: by 2002:a25:6ed6:: with SMTP id j205mr37294678ybc.206.1617636780527;
+        Mon, 05 Apr 2021 08:33:00 -0700 (PDT)
+X-Google-Thread-Subscription: Yes
+X-Google-Web-Client: true
+Date: Mon, 5 Apr 2021 08:33:00 -0700 (PDT)
+From: Pavel Tatashin <pasha.tatashin@soleen.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <8f23029a-852b-4200-a21d-3fa68f89ece4n@googlegroups.com>
+In-Reply-To: <fba8a2d3-a780-4e4a-8687-136e595dd359n@googlegroups.com>
+References: <fba8a2d3-a780-4e4a-8687-136e595dd359n@googlegroups.com>
+Subject: Re: [IRC] Issue connecting to the IRC channels
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_14447_1011851018.1617636780285"
 
-Using typedef for a structure type is not suggested in Linux kernel coding
-style guidelines. So remove typedef from the _bandwidth_autoswitch structure.
-The typedef pointer pbandwidth_autoswitch is not used anywhere, so omit
-it.
+------=_Part_14447_1011851018.1617636780285
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_14448_1250154650.1617636780285"
 
-Signed-off-by: sayli karnik <karniksayli1995@gmail.com>
----
- drivers/staging/rtl8192u/ieee80211/ieee80211.h | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+------=_Part_14448_1250154650.1617636780285
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index 176083e..0df9812 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -1461,13 +1461,12 @@ struct tx_pending {
- 	struct ieee80211_txb *txb;
- };
- 
--typedef struct _bandwidth_autoswitch {
-+struct _bandwidth_autoswitch {
- 	long threshold_20Mhzto40Mhz;
--	long	threshold_40Mhzto20Mhz;
-+	long threshold_40Mhzto20Mhz;
- 	bool bforced_tx20Mhz;
- 	bool bautoswitch_enable;
--} bandwidth_autoswitch, *pbandwidth_autoswitch;
--
-+};
- 
- //added by amy for order
- 
-@@ -1873,7 +1872,7 @@ struct ieee80211_device {
- 	Fsync_State			fsync_state;
- 	bool		bis_any_nonbepkts;
- 	//20Mhz 40Mhz AutoSwitch Threshold
--	bandwidth_autoswitch bandwidth_auto_switch;
-+	struct _bandwidth_autoswitch bandwidth_auto_switch;
- 	//for txpower tracking
- 	bool FwRWRF;
- 
--- 
-2.7.4
+Trying going to https://webchat.oftc.net/ pick a nickanme and 
+use #kernel-outreachy for channel name.
 
+On Monday, April 5, 2021 at 10:39:44 AM UTC-4 siddmo...@gmail.com wrote:
+
+> Hi,
+>
+> I am unable to join the IRC channels since the links are not working for 
+> me. I have tried both *irc.oftc.net <http://irc.oftc.net>* as well as *irc.gnome.org 
+> <http://irc.gnome.org> *
+>
+> Thanks in adv.
+>
+> - Mohd Ali Jauhar
+>
+
+------=_Part_14448_1250154650.1617636780285
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Trying going to https://webchat.oftc.net/ pick a nickanme and use&nbsp;#ker=
+nel-outreachy for channel name.<br><br><div class=3D"gmail_quote"><div dir=
+=3D"auto" class=3D"gmail_attr">On Monday, April 5, 2021 at 10:39:44 AM UTC-=
+4 siddmo...@gmail.com wrote:<br/></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin: 0 0 0 0.8ex; border-left: 1px solid rgb(204, 204, 204); padd=
+ing-left: 1ex;">Hi,<div><br></div><div>I am unable to join the IRC channels=
+ since the links are not working for me. I have tried both <u><a href=3D"ht=
+tp://irc.oftc.net" target=3D"_blank" rel=3D"nofollow" data-saferedirecturl=
+=3D"https://www.google.com/url?hl=3Den&amp;q=3Dhttp://irc.oftc.net&amp;sour=
+ce=3Dgmail&amp;ust=3D1617723050507000&amp;usg=3DAFQjCNGgi0A_Ch5Cp0LxCrsnS5l=
+bcosplg">irc.oftc.net</a></u> as well as <u><a href=3D"http://irc.gnome.org=
+" target=3D"_blank" rel=3D"nofollow" data-saferedirecturl=3D"https://www.go=
+ogle.com/url?hl=3Den&amp;q=3Dhttp://irc.gnome.org&amp;source=3Dgmail&amp;us=
+t=3D1617723050507000&amp;usg=3DAFQjCNFXPYCU5ZKLRvcqZWBvqOY-YkddAQ">irc.gnom=
+e.org</a>=C2=A0</u></div><div><u><br></u></div><div>Thanks in adv.</div><di=
+v><br></div><div>- Mohd Ali Jauhar</div></blockquote></div>
+------=_Part_14448_1250154650.1617636780285--
+
+------=_Part_14447_1011851018.1617636780285--
 
