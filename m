@@ -1,62 +1,63 @@
 X-GM-THRID: 6947467648210829312
-X-Received: by 2002:a17:902:dac4:b029:e6:b39f:7ee2 with SMTP id q4-20020a170902dac4b02900e6b39f7ee2mr22930224plx.85.1617603693110;
-        Sun, 04 Apr 2021 23:21:33 -0700 (PDT)
+X-Received: by 2002:adf:dd0c:: with SMTP id a12mr6693353wrm.274.1617585223070;
+        Sun, 04 Apr 2021 18:13:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:1d50:: with SMTP id d77ls6038092pfd.4.gmail; Sun, 04 Apr
- 2021 23:21:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwwhLNRFKgrWossJBSzW7xFqaJMSxRohoYcGJt+3JG23Fbe2RV2dMVfApSztBU70vx3HDK8
-X-Received: by 2002:a05:6a00:1741:b029:222:b711:30a0 with SMTP id j1-20020a056a001741b0290222b71130a0mr21640802pfc.27.1617603692055;
-        Sun, 04 Apr 2021 23:21:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617603692; cv=none;
+Received: by 2002:a7b:cc94:: with SMTP id p20ls6816687wma.0.gmail; Sun, 04 Apr
+ 2021 18:13:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw73DCkoHfURXDR8rqAzi+mnc0gcwC+vbsW3iDFa8ajnIhQJsaahDPR/yfjgQhMS7wkx41y
+X-Received: by 2002:a7b:ca44:: with SMTP id m4mr22929490wml.103.1617585221701;
+        Sun, 04 Apr 2021 18:13:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617585221; cv=none;
         d=google.com; s=arc-20160816;
-        b=YD3yJUvY+HSW4VhQJx3+BpBU6zbXSn/qgJM1lCW/l/NoDZj3lKZ5NFU5+10cEnWX/X
-         eWAETCmF9E7/KNX2laRSVHSMD2rgcaeceyaCc9b5O6k3beXRjMplgVh3CjuAO88pf1qU
-         pYr775zfJW/C8yoKyUS667BbH0zNDcRsV0rzXQiPLU4DAbWIPHFh/vY0hrt8n/niGyhW
-         ZHrkjLUOtuLdBetstq29scSv94AGUYR0dLtwj2jar+v14EIfxFwftae6B3n+Les5QV+2
-         EalIT/UkP9kYy/+Jmh7y7ajWT3jFTl3tn5x8jlRnxTGQSKyhbiR7RAvfzW/LHSV9FQMs
-         fi6Q==
+        b=jLNCQsk3Idyz3kJNUCfvADeMg5FbL3xhyXt4YMqdDCK60f8pt6EIuuqiXW1FgIgEtV
+         wHDABOcUp3zgcNnKq/2/iEJgLg0XcNBu5S8/6Xc69w9O7xU3sgb3HuzrXSaBm/zOoU0M
+         oJ8rsLy3UVi3CGvLLUbetxEC7uWCDnLQ0Km5eMui2MoiAu7ZyykwH8om6+kpS3D7pXoJ
+         1I/KuAUtsuxGG9CJEFD0LSZZzsESi+/VyZD/mdbrbpa9tJFXNxDLBe0jUAmD5wU7o4uH
+         iDufueTqFDTLdHVkEblEN8ARTQxRdqIjEX8vE6t684B/NPtzbyMAhg7jxZK++Z/mC6hr
+         VTfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=bf16soJ+eMkfRUqI23J2imbMf9TWABVwSpR8MKU7vC0=;
-        b=FxaS39DdPro/0+HzOzjptOhzZwyKGt4TiY2+U/zxwPkArWaifEoaSFEHto6aAh3p9U
-         iioV5XnBy1ASouyPTfD/+pHyDjE8fb2rCAUlQVVNoJz2oCIAbc3AgKaB4Z5dp47P3aiQ
-         qEcOfzSiQWTcFZqFGwa9orh74k74S+us7kenfLWzKIz8CmIV55UTXxJlYdj8gRXnfZM1
-         O8i7rjhTP9VT1pIInl0Qwwept6UWl1/KNabmv2BIDAhUlSoBlB6yxqyRbfrywNN93GQQ
-         j3oG+lY/qptNmNAb8T2LwV+rG0J9WfkEiT4dA37FBvA3PVYCrKKJi8f4iITWu9F2HevX
-         /Q5w==
+        bh=WFTs1r/K720X27EVNRCFyCxYPcB0o1qMFJEeae/Czms=;
+        b=fewzVTltsGnuWf66uA7rgfaWrCTrhZKdT/gxBxz/0Cgbk6oss6SKVB37kfENv5SEOx
+         QYrLzvLt9nwR24vQwbD7xzcuNaTxIsC069j5HFVKimtVX98uoZHwhEei6Eard9bbV+QZ
+         SgzDcIhPlqz2YFjpM7DO8Nyb27M24MYGRV1qhWwUDFebGhlw8x1Q3mWCguPkqZV5Lkob
+         VDM6GexmrXOfdbJxLXPj9NzjILUSVNEBj0lRT82Y8GjA7wFE923Uxz6gVrackusbNVaj
+         AcIWNAOkk1mO+JNjYbUisc70n5CrK6WVcgS1BKn4REEefab+sQE200opDaTMQi7M5VYl
+         gGtg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=ma0jUVRB;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id a8si830292plp.2.2021.04.04.23.21.31
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=oQKzIc0H;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+Return-Path: <willy@infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by gmr-mx.google.com with ESMTPS id b5si2227494wmc.2.2021.04.04.18.13.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Apr 2021 23:21:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Apr 2021 18:13:41 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=ma0jUVRB;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 259D961399;
-	Mon,  5 Apr 2021 06:21:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1617603691;
-	bh=xKdGZ44ZwQ3VybqwUhF7c0iuUupdhhUePbVF00lo1Hc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ma0jUVRBxeTvA5MX/MKMkCXamBJofQ9SmH38mKpEloZsRapwwGGEh64zmQUbU6R4B
-	 fjCJ4UCRnJo9NY+4kvgpsozrM+4NCX9vgFGuqpOJ02MLap8g7ze+c57EwxmoulzJ+1
-	 l0iBGaQzjeaUgimkJtbxkw1sZQTo5zluoRkBBH0A=
-Date: Mon, 5 Apr 2021 08:21:28 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=oQKzIc0H;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=WFTs1r/K720X27EVNRCFyCxYPcB0o1qMFJEeae/Czms=; b=oQKzIc0H4wFKK2RV4RRnFv/bGo
+	8WYhmyiEBFjwrefylJzoDrmSUPJGB9BzJxfxUtBisr8L/yH1ISZt8Imu2RoIGwqBiWXglnlagYpnx
+	Y3X9wjAv6mF0nAX6mjFWXt8zV225snVe0WuGIEZe1OXTK6yZfLtxGOKEXabdHfH2znvW4Wc2joFVF
+	5wySigb+UaF1XCzFaTi8t+6qsBxmtVFZ4hOx4V6sfh4EtlJXnIjo5nv+pxsRQoogiyy7qDGCkBT/F
+	C0ZrzxlCLkx9O7pqqcEYYtH4lz6rUmfzGxUGx4OSXM5Wp4efNzvp5OmvU9XjLc74PSLO7KU11yk80
+	l2m2nG2Q==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
+	id 1lTDnv-00Aliq-KS; Mon, 05 Apr 2021 01:13:26 +0000
+Date: Mon, 5 Apr 2021 02:13:23 +0100
+From: Matthew Wilcox <willy@infradead.org>
 To: Mitali Borkar <mitaliborkar810@gmail.com>
 Cc: manish@marvell.com, GR-Linux-NIC-Dev@marvell.com,
-	outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: qlge: remove else after break
-Message-ID: <YGqsaKVJM8pn1BYU@kroah.com>
+	gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: qlge: remove else after break
+Message-ID: <20210405011323.GB2531743@casper.infradead.org>
 References: <YGpcx9MZuZJFy0Z/@kali>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -64,45 +65,26 @@ Content-Disposition: inline
 In-Reply-To: <YGpcx9MZuZJFy0Z/@kali>
 
 On Mon, Apr 05, 2021 at 06:11:43AM +0530, Mitali Borkar wrote:
-> linux-staging@lists,linux-kernel@vger.kernel.org
-> Bcc: 
-> Subject: [PATCH] staging: qlge:remove else after break
-> Reply-To: 
-
-Very odd, why is this in the body of the email?
-
-
-
-> 
-> Fixed Warning:- else is not needed after break
-> break terminates the loop if encountered. else is unnecessary and
-> increases indenatation
-> 
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
->  drivers/staging/qlge/qlge_mpi.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/qlge/qlge_mpi.c b/drivers/staging/qlge/qlge_mpi.c
-> index 2630ebf50341..3a49f187203b 100644
-> --- a/drivers/staging/qlge/qlge_mpi.c
-> +++ b/drivers/staging/qlge/qlge_mpi.c
-> @@ -935,13 +935,11 @@ static int qlge_idc_wait(struct qlge_adapter *qdev)
->  			netif_err(qdev, drv, qdev->ndev, "IDC Success.\n");
->  			status = 0;
->  			break;
 > -		} else {
 > -			netif_err(qdev, drv, qdev->ndev,
 > +		}	netif_err(qdev, drv, qdev->ndev,
+
+That's not the normal indentation style ... does checkpatch really not
+complain about that?
+
 >  				  "IDC: Invalid State 0x%.04x.\n",
 >  				  mbcp->mbox_out[0]);
 >  			status = -EIO;
 >  			break;
 > -		}
-
-Indentation is now no longer correct :(
-
-thanks,
-
-greg k-h
+>  	}
+>  
+>  	return status;
+> -- 
+> 2.30.2
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YGpcx9MZuZJFy0Z/%40kali.
 
