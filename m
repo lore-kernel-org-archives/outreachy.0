@@ -1,112 +1,104 @@
 X-GM-THRID: 6947727064751407104
-X-Received: by 2002:a5d:564b:: with SMTP id j11mr30551572wrw.326.1617643765088;
-        Mon, 05 Apr 2021 10:29:25 -0700 (PDT)
+X-Received: by 2002:adf:e4c7:: with SMTP id v7mr30425618wrm.245.1617643764363;
+        Mon, 05 Apr 2021 10:29:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:d1c8:: with SMTP id b8ls8614066wrd.3.gmail; Mon, 05 Apr
- 2021 10:29:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/Fci2WGkb3lewHGbFh4TYOZ0gWWppUyXwo8ymzo5Qz0JBVglHixj7jLWhMwS31TCYS7B5
-X-Received: by 2002:a5d:424c:: with SMTP id s12mr3712778wrr.174.1617643763741;
-        Mon, 05 Apr 2021 10:29:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617643763; cv=none;
+Received: by 2002:a5d:5348:: with SMTP id t8ls2955837wrv.2.gmail; Mon, 05 Apr
+ 2021 10:29:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrEaJs8V7YBW8d+bi/h1TVWfDEu0kRZx2WLCDW1n/YnabCuvAnP6GzYuHCRCQiKNZIrkTb
+X-Received: by 2002:a5d:4d89:: with SMTP id b9mr13688769wru.356.1617643762901;
+        Mon, 05 Apr 2021 10:29:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617643762; cv=none;
         d=google.com; s=arc-20160816;
-        b=O72lVNzy5m6DuMvwQb8OZCbBcI8zwhhE0tgddOqOX5aj4PepL1sLtKGNfeEaK11v+7
-         bSwy0oR1/Bf+zJtmm2zMCFPhkjtu57UuqtDO7YJuo7ZsWDMFRbxnkl4ASpcznxkNLTSB
-         HwEjy0O9v/55pR7wRW9J/OY+YRffO1yxaTrGrNh8AvRwYEAyme3QL4Au3CZBAqx97INm
-         QaXUn+0txBh62e4r+PzqZa806EtjKHYkQLV6JTiykPvC8QY16rBI7+G8Z/Id2iAt/vwZ
-         DYDMgwuH3EyPJz9HfY3SkL5iQAcLePON6Aq5RqshuR07k1GIAj+ePE1k/b4hAEE85Mnp
-         Jydg==
+        b=I4CwEqUdmALClWZl4ShkM1R8Db7jYf8x8rRGY6iYMj6rIMnGja9MyLaD+2rIFNHWE4
+         8pFchThBhY/LSkFdwr8xT2dGmfAEwR8+sJj1zlXmZpq8GbtVIrv6Tsq4euavaBJy0r63
+         ca8ehH2Vwd016f+2rrclg5H4vEHbvvWSgplIwKefHI9XXCvaqbIvEqRKRIdzv/juyCuG
+         +xNL7hskY0BtizkQMsM5f+GYUJbocmJRV24qbAO2crGkk+fnigLU4ulGFGkU4K6ix15F
+         +W74KYW8zzIttrHMQwVbTY5RR+KNKYerFJ9xNddYdwqJDKLn5TVH01jhvoUIsnoj+SeZ
+         JPgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=IbHMPTLRe24Pd8+2GD6131LEb5Zqf3YCRdiVTSad8Sw=;
-        b=EWRdNMxd0sPMRHpw/wqA/D1EjWjytitywMDkQYpS/Sbr/2kfoz7B1mF+astparT9PW
-         4zeqlsGoGoRDVYDzwHj8SVEfDCj0l58YrPTDf0RXVzlgXQLuyFjw8YFIo/l3UzMnwfxm
-         X44Rcpg6lVr0T1m7BoasvW96sOzEOVe1fTKmRxShK6Dggyuckrln6MEPRl8ElRdBYTcq
-         rqARZoO3/7JUVFrrEin1rlWfWTAV8FLVyjHVdJ5OtsNRPih8uIKxoR2/LoeRD+mxg/za
-         XKTNRNfopDNvcBekMlJ3PRTIodF7fX1zoAsDWOAuJARQ33ccw0YXqUWTEbzxo9Aw0r2I
-         VYzw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:dkim-signature;
+        bh=islgxB5cX7ryyAEWQujyZ6yBo7lGXTDZIsEo+AqSaLI=;
+        b=gYCDeg8Xd7qKO/9nxsJJ7gar2d9RP2Ye2U/Q+gfSVq7plJOaURFKmcW+6M7M8ZG5aO
+         BUrVp+gs/jiaQkc4wszdDjkpt0QxVhsJpSz/WhJ4YaofyWlF+Zr6m/SjEh1Rr++DG1fz
+         G70xorxfGNYfoS6lsxSrRgpBvFQkL2A1be8fItskKfSGdzlXHEqSjaBdbz+sIa2LDntQ
+         8NRcQWjSCcQzGdoyPL3G8vDfUKSwz1GIjI+V+7U8ipkSiGTPE+QNwyadBjPXpYAeJ3sM
+         ywnM312+cl+6D5DElkScyxYxS1dUPJqunlWWdCyyu3m2QaH8YaPEU+qUukL+PAd5P/vn
+         RkLg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aXAtIKMk;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o32v2vqh;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <martinsdecarvalhobeatriz@gmail.com>
-Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com. [2a00:1450:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id y12si2208094wrw.3.2021.04.05.10.29.23
+Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com. [2a00:1450:4864:20::42a])
+        by gmr-mx.google.com with ESMTPS id k4si532956wrc.0.2021.04.05.10.29.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Apr 2021 10:29:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) client-ip=2a00:1450:4864:20::42d;
+        Mon, 05 Apr 2021 10:29:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) client-ip=2a00:1450:4864:20::42a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aXAtIKMk;
-       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o32v2vqh;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::42a as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42d.google.com with SMTP id e18so11532725wrt.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Apr 2021 10:29:23 -0700 (PDT)
+Received: by mail-wr1-x42a.google.com with SMTP id x16so11519480wrn.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Apr 2021 10:29:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+        h=from:to:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=IbHMPTLRe24Pd8+2GD6131LEb5Zqf3YCRdiVTSad8Sw=;
-        b=aXAtIKMkdOIlTW0pk1jTMcs3R5NHHI/lXeyz5J78WNSh+wZeZeAv/Xlo+p8LdsOOV2
-         KsMMe4Apk4g1YpUkEqWya8nOb8HMBkzJcXMK8WvFJeAwq3kRWPpk1wr3TxR5GppLcnr0
-         +LwEF9yzSWv8T0O+qlX7mwqaWYYObJsU1T83m5Nm1vueaUTU5vnMF/5vOEo7Irgsl0dv
-         dYB+9WLxVpaLHshwE9izHFfVLJjdAYLzQETjnnUJbVo/L0F41Fffqw5qNVoCkjALYUcQ
-         M1PXiYKFiLh3mHYC7JqxI+HLPKPFoXukmuAswOkT6wJoa0GYY3A1uP4Ddhp26pOXQhPx
-         9N9g==
+        bh=islgxB5cX7ryyAEWQujyZ6yBo7lGXTDZIsEo+AqSaLI=;
+        b=o32v2vqh2JB2QYn2BWTwMD4LCIFxgyvadEJXKeNx02aw3z9umZ+J0PvTgWXVCnevv1
+         wVg5BT6WxgPwfuZdlwkwD/5vUrCpfKz2stpoKVd7Y6LdUdAV9rjZuFSYRynZqQekY2QR
+         +DB9+P8k8fappSrY4B2GwUzEKWkE4hDUwCLg9hk0mzsDo/90i7RcknEbzggN3ltgm1vQ
+         iDZtN2mGoP0NE99xwCiSX1ygPfdGrf6EDDEU8l9/H4u6bUC2u4kiBWctJNJK9L70W7hF
+         9m7guE2sI9tRZIDvzovoouvvjBfGlFR8//NdroUCBZjA5iVGEMdNsl0hw+F+tIYt83db
+         7FGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=IbHMPTLRe24Pd8+2GD6131LEb5Zqf3YCRdiVTSad8Sw=;
-        b=lNdzU+xcxej1mET+NQHxc8AFantg7jlzbOd6tWjKn3lNWNiLzsTWgmfcbGan08uw4X
-         DmN6/0bVbDiLl0Cw/fclvBrhz0UL4vacl1e258LgnBaRGxJYqu49ZPbyRePHqCc8QDUC
-         smafkzam5grtO+HNbi4ebM/HE0T2lpoavjS+UBnR3MD8ILmV7Fj2IbyldcKHu/VvJfKz
-         LvxoAimyYVRz42WGCN/wAQpLcN7VoCCPn3zCAjIlwQ1C7v4ejFIV+eyqYZ7n+0OkiPeb
-         sq2GBOE8HfapwsQ0T97u2LzAx7jqhZAe5e0IMqtagPhXt3WnAVLTrS4+vUQjA0CGJJA9
-         3A/g==
-X-Gm-Message-State: AOAM531WdYfT2uHTpG0olVTYwkUUP2u5103JbozYw8y62LZ6U5jmuv9+
-	rv3NfjgMqeg2lFDqATcLzI5s/rhTFBTJnQ==
-X-Received: by 2002:adf:9243:: with SMTP id 61mr17346672wrj.11.1617643763484;
-        Mon, 05 Apr 2021 10:29:23 -0700 (PDT)
+        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=islgxB5cX7ryyAEWQujyZ6yBo7lGXTDZIsEo+AqSaLI=;
+        b=gQ5mntUoXQzE271czV3UDdYcatxpuzp/DkdAaqNvbaPkGVu1HwnDsNuUEf2N86t4rR
+         pIifZkDChb/pLFHENimwdKx4/oWazLSgX7NCs0CTlk3Pk8x6bOCZdgBj7HFza4Y7khYK
+         9VMsrIBvxINE3MBRT1YnURZh81U7dAtR4cVKm5SBikK/JJpxdg2/mUTBN9Uvw2ooDDDV
+         Ap5WPnWBxJMLaM6E291dXPlInvFVgBIxYxG4SL8czhwjJy9cSDtGB9z/P9gNEvHQJGND
+         A8O3JfvC6xORHqJffKfVvwKNRZ+3XkQtjH09457mIXhUDyey+6v6D7EeXkIp3+uyjYDA
+         UAEg==
+X-Gm-Message-State: AOAM530WhDnUaeNZrpzQpFDoQKnDnPM3mNwTzsNJw4tyAaYzdOyqAMaW
+	gTZ6ZbShRWbL0+maYV652rs7pF2Sos759w==
+X-Received: by 2002:a5d:5256:: with SMTP id k22mr30836945wrc.162.1617643762740;
+        Mon, 05 Apr 2021 10:29:22 -0700 (PDT)
 Return-Path: <martinsdecarvalhobeatriz@gmail.com>
 Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:9a5b:98e6:2174:bf29])
-        by smtp.gmail.com with ESMTPSA id x1sm17858699wro.66.2021.04.05.10.29.22
+        by smtp.gmail.com with ESMTPSA id x1sm17858699wro.66.2021.04.05.10.29.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Apr 2021 10:29:23 -0700 (PDT)
+        Mon, 05 Apr 2021 10:29:22 -0700 (PDT)
 From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
 To: gregkh@linuxfoundation.org,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/4] staging: rtl8723bs: core: Removed extra blank line
-Date: Mon,  5 Apr 2021 18:29:17 +0100
-Message-Id: <b2961b2d354722d063e05f92bef5df431b8e7898.1617641790.git.martinsdecarvalhobeatriz@gmail.com>
+Subject: [PATCH 0/4] staging: rtl8723bs: core: Patchsets cleans up in rtw_ap.c
+Date: Mon,  5 Apr 2021 18:29:16 +0100
+Message-Id: <cover.1617641790.git.martinsdecarvalhobeatriz@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1617641790.git.martinsdecarvalhobeatriz@gmail.com>
-References: <cover.1617641790.git.martinsdecarvalhobeatriz@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Clean up check of "Blank lines aren't necessary before a close brace '}'"
-in rtw_ap.c
+Patchset of cleans up checks of "Blank lines aren't necessary before a close
+brace '}'", "Lines should not end with a '('", "line over 100 characters", 
+and "Alignment should match open parenthesis" in file rtw_ap.c.
 
-Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_ap.c | 1 -
- 1 file changed, 1 deletion(-)
+Beatriz Martins de Carvalho (4):
+  staging: rtl8723bs: core: Removed extra blank line
+  staging: rtl8723bs: core: Ending line with argument
+  staging: rtl8723bs: core: reorganize characters so the lines are under
+    100 ch
+  staging: rtl8723bs: core: align arguments with open parenthesis
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index dc56477eb084..81acc6bcb092 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -910,7 +910,6 @@ void start_bss_network(struct adapter *padapter, u8 *pbuf)
- 		/* issue beacon frame */
- 		if (send_beacon(padapter) == _FAIL)
- 			DBG_871X("issue_beacon, fail!\n");
--
- 	}
- 
- 	/* update bc/mc sta_info */
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 137 +++++++++++-------------
+ 1 file changed, 62 insertions(+), 75 deletions(-)
+
 -- 
 2.25.1
 
