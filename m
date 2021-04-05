@@ -1,114 +1,102 @@
-X-GM-THRID: 6754496283091664896
-X-Received: by 2002:a05:600c:2046:: with SMTP id p6mr9115426wmg.165.1572653717198;
-        Fri, 01 Nov 2019 17:15:17 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:6085:: with SMTP id u127ls10424717wmb.5.gmail; Fri, 01
- Nov 2019 17:15:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxWTpby+qGAOP8Dfi8Rb7r0G/VvVuY5hthnYt3JVqSkKXSeJ/XA661LrZ5RDBM4entHAZ3E
-X-Received: by 2002:a1c:113:: with SMTP id 19mr10962774wmb.42.1572653716190;
-        Fri, 01 Nov 2019 17:15:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572653716; cv=none;
-        d=google.com; s=arc-20160816;
-        b=QVSN/M1MqRvQo9ZrrwMc2wCvuqJqKEf51sFGmp1cHAGUcFy8TvW/VSLP4xSF2xbcD1
-         OyKmnv+sj+8q2+cTTfpZxCtayzrp+B/rx1m8DJDUjBGDlr3XvQ/gN77tRqHk2/DMoCvV
-         B3V3HTQgp50CAkaGF12OKWKz0ZMGSwc0vI+r809nr/stl9FsUwhi0iIp/T90EIY5ikMS
-         sve23tveJdgJtQPp4xTaE0+lu+3ol+4z0Hwd5zYNC0WNCFWt5lcH1tw3kDledzsitUhg
-         qWWDF3Wz8fwHBWn7bWHEe41bK80w6/OTRvtGA5WQ3OPhu6OdgLZwFeLyAzZPgL36ZSwU
-         zvNw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=73xsCJrCBga/qtyHqXYQW2cwHZFXOa/8X2wvDsMm9aY=;
-        b=eHleqhmx6jyRvHvrXI6mCLDHB0qw9S0xfqxvxG9txMq9/v0csmTjWLX95tTDJQDqUK
-         0EeGjXmPTzg8bnERqEm2uzRqxlzhsD9wopTf3rjwykJhQlgVgXBf4JjxM5cNCLB3G8T9
-         CNdOCbXugYm7fSrnkt4kUfJqaTQP8N/8zcbU8xv7ZR1cxrw3L/lnt7u0tjHoQ6+b/ou4
-         aFrxntA/gKriuW3E475lynjf/srxFcxIaP7gRjBSxlGZomngaWKXGM8RtUy3PRj391a2
-         1T6rWnJnRUqQsm8ANOqyfm/EPaIa85/pDTUCqD/mTlGUOXYsmWM1rbAnc6rt2Mxhwn8D
-         b39g==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nmxNSfpY;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id y140si590472wmd.0.2019.11.01.17.15.16
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Nov 2019 17:15:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nmxNSfpY;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x343.google.com with SMTP id t26so6417183wmi.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 01 Nov 2019 17:15:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=73xsCJrCBga/qtyHqXYQW2cwHZFXOa/8X2wvDsMm9aY=;
-        b=nmxNSfpYIyq0ljP6nZQiSmeN7bkfFARpnsHy4alURYjZMgCQ6gRjKQPVEFeEd7doT+
-         hTRH0KZv+n6Te4JiwqlkIOzXZOrUcIlX50TrIh6L4X5ur2saRHLoK5YP3BTCk1eeim7G
-         Sg4tRY+4+qSjEzel7fygvZy6TN6MPYjHLjo9cKsvchmSXJfXgmJ2oAP/9wo7v6kJs6EK
-         lDtNbNsc94yKm6EXwRNZIABZWSglGoinVqhdgiTw+QjVPQoIRPpl44pWLE/hXgUIf5F7
-         trQ6/CNL6SdiCtN4JRanSjlBL/ZhRlGjqQV0mZJ7w1CIbiyrzCwg/Izx8FG0KCeOXW0F
-         hS4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=73xsCJrCBga/qtyHqXYQW2cwHZFXOa/8X2wvDsMm9aY=;
-        b=Bm6ct9rkMBIDpRJPoqT15U7RWdA02KlpyD+PLfgVN4flKdya5Wr4v6ozKqiFuUrUyW
-         7QYRRSLwYhsjiOaMayPNt5cRXwCuPePktNNhCGFndsX3ZuAfrHln5bHskHWacB02AqUK
-         sRxDKgK+MiFIhyT93gJogYqJvxvgMCVViD8199xGba6kPROWO6bvbVdx6Gervn45krK6
-         8qSMO2iG+Kgh6sRoXSrvIGdwxGhV+aFSL6oTmR1+Tr57vVrxmZeKld1cIHgBlrDpNwmC
-         n4W+2LMosQ6h8mZZEQHDGdtLb1ETeRO5jLhPGxbGJJE5g8ke3WlOC55cKNwezykuUILu
-         o9Iw==
-X-Gm-Message-State: APjAAAUJVhKAH6A/rVVz7Dt6Vfv1VnQV1eOcsc2GHq2md/FD1O0VjypR
-	2sq8tFKzOvj73rvCs9k0378HZ4mmj6Ok
-X-Received: by 2002:a1c:7d47:: with SMTP id y68mr12274820wmc.157.1572653715528;
-        Fri, 01 Nov 2019 17:15:15 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from ninjahub.lan (79-73-36-243.dynamic.dsl.as9105.com. [79.73.36.243])
-        by smtp.googlemail.com with ESMTPSA id s21sm12885934wrb.31.2019.11.01.17.15.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2019 17:15:15 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: jerome.pouiller@silabs.com,
-	gregkh@linuxfoundation.com,
-	Boqun.Feng@microsoft.com,
-	linux-kernel@vger.kernel.org,
-	Jules Irenge <jbi.octave@gmail.com>
-Subject: [PATCH] staging: wfx: fix warning of using plain integer
-Date: Sat,  2 Nov 2019 00:14:57 +0000
-Message-Id: <20191102001457.23369-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.21.0
+X-GM-THRID: 6933876231124287488
+X-Gmail-Labels: Topic type: DISCUSSION
+Date: Mon, 5 Apr 2021 07:41:44 -0700 (PDT)
+From: Mo Jauhar <siddmohamed19@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Message-Id: <d3571675-2353-4bfd-8d1b-a5c33dc1d12en@googlegroups.com>
+In-Reply-To: <CAK-LDbLWKurtKDV7QDH1PY3w1b2pofYQmAaFKLMmSoEBHXMOcg@mail.gmail.com>
+References: <313f5f12-4bce-4f6d-ae23-d76cf0ff60e2n@googlegroups.com>
+ <CAK-LDbLWKurtKDV7QDH1PY3w1b2pofYQmAaFKLMmSoEBHXMOcg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Need help with compiling kernel
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_10537_624551571.1617633704849"
 
-Fix warning of using plain integer as NULL pointer.
-Issue reported by sparse tool.
+------=_Part_10537_624551571.1617633704849
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_10538_1090806237.1617633704849"
 
-Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
----
- drivers/staging/wfx/queue.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+------=_Part_10538_1090806237.1617633704849
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
-index ef3ee55cf621..5d29bce65f71 100644
---- a/drivers/staging/wfx/queue.c
-+++ b/drivers/staging/wfx/queue.c
-@@ -565,7 +565,7 @@ struct hif_msg *wfx_tx_queues_get(struct wfx_dev *wdev)
- 		}
- 
- 		if (ret)
--			return 0;
-+			return NULL;
- 
- 		queue_num = queue - wdev->tx_queue;
- 
--- 
-2.21.0
+Hi,
 
+I am having the same issue. Can you help me out on this, Ankita? I am 
+having troubles joining the IRC rn.
+
+Thanks in adv.
+
+Regards,
+- Ali
+
+On Saturday, February 27, 2021 at 3:33:23 PM UTC+5:30 Vaishali Thakkar 
+wrote:
+
+> On Sat, Feb 27, 2021 at 10:41 AM Ankita Pareek
+> <ankitapa...@gmail.com> wrote:
+> >
+> > Hello everyone!
+> > I'm Ankita Pareek from India. I'm applying for Outreachy this year and I 
+> would love to contribute to Linux Kernel.
+> > I'm a newbie and thus started off with compiling my own kernel following 
+> this tutorial --> 
+> https://kernelnewbies.org/OutreachyfirstpatchSetup?action=show&redirect=OPWfirstpatchSetup
+> > I'm able to successfully build and install the kernel on my native 
+> Ubuntu 20.04 and it also gets updated in the grub boot menu. But when I try 
+> to boot into that newly compiled kernel it gets stuck at "Loading initial 
+> ramdisk ..." and I'm not able to boot into it. Here are some things that I 
+> tried to fix this problems -
+> >
+> > I waited for almost 2-3 hours after that to boot into the new kernel but 
+> it still showed the same message.
+> > Then I tried changing the 'GRUB_CMDLINE_LINUX' parameter to 'debug' for 
+> checking the log messages but couldn't find any logs.
+> > Some answers on Google about this said that it was possibly because 
+> Secure boot was enabled so I tried compiling and booting by disabling 
+> Secure boot but still same problem exists.
+> > Then I tried compiling the kernel on a VM and it was successful and I 
+> could boot into it. But the VM makes the system very slow and thus I wish 
+> to compile and run the kernel on my native Linux machine.
+> >
+> > What could be the possible reason and fix for this problem? Can someone 
+> please help me with this? I've been stuck on this for almost a week now so 
+> any help would be really great!
+>
+> Hi Ankita,
+>
+> It's strange that you have been able to boot itto same kernel[I assume] in 
+> VM
+> but not on your machine. Probably something went wrong while installing
+> the modules on your machine. Which rc version did you try to install?
+>
+> I'm free for few hours right now. If you can come on IRC, we can try to
+> debug the problem. I'm 'vaishali' on both freenode and OFTC. Just ping
+> me there.
+>
+> > Thanks
+> >
+> > --
+> > You received this message because you are subscribed to the Google 
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send 
+> an email to outreachy-kern...@googlegroups.com.
+> > To view this discussion on the web visit 
+> https://groups.google.com/d/msgid/outreachy-kernel/313f5f12-4bce-4f6d-ae23-d76cf0ff60e2n%40googlegroups.com
+> .
+>
+>
+>
+> -- 
+> Vaishali
+>
+
+------=_Part_10538_1090806237.1617633704849
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hi,<div><br></div><div>I am having the same issue. Can you help me out on this, Ankita? I am having troubles joining the IRC rn.</div><div><br></div><div>Thanks in adv.</div><div><br></div><div>Regards,</div><div>- Ali</div><div><br></div><div class="gmail_quote"><div dir="auto" class="gmail_attr">On Saturday, February 27, 2021 at 3:33:23 PM UTC+5:30 Vaishali Thakkar wrote:<br/></div><blockquote class="gmail_quote" style="margin: 0 0 0 0.8ex; border-left: 1px solid rgb(204, 204, 204); padding-left: 1ex;">On Sat, Feb 27, 2021 at 10:41 AM Ankita Pareek<br>&lt;<a href data-email-masked rel="nofollow">ankitapa...@gmail.com</a>&gt; wrote:<br>&gt;<br>&gt; Hello everyone!<br>&gt; I&#39;m Ankita Pareek from India. I&#39;m applying for Outreachy this year and I would love to contribute to Linux Kernel.<br>&gt; I&#39;m a newbie and thus started off with compiling my own kernel following this tutorial --&gt; <a href="https://kernelnewbies.org/OutreachyfirstpatchSetup?action=show&amp;redirect=OPWfirstpatchSetup" target="_blank" rel="nofollow" data-saferedirecturl="https://www.google.com/url?hl=en&amp;q=https://kernelnewbies.org/OutreachyfirstpatchSetup?action%3Dshow%26redirect%3DOPWfirstpatchSetup&amp;source=gmail&amp;ust=1617718925871000&amp;usg=AFQjCNFxHBWiCOzJ4kLllfea8Y56ZzHjwA">https://kernelnewbies.org/OutreachyfirstpatchSetup?action=show&amp;redirect=OPWfirstpatchSetup</a><br>&gt; I&#39;m able to successfully build and install the kernel on my native Ubuntu 20.04 and it also gets updated in the grub boot menu. But when I try to boot into that newly compiled kernel it gets stuck at &quot;Loading initial ramdisk ...&quot; and I&#39;m not able to boot into it. Here are some things that I tried to fix this problems -<br>&gt;<br>&gt; I waited for almost 2-3 hours after that to boot into the new kernel but it still showed the same message.<br>&gt; Then I tried changing the &#39;GRUB_CMDLINE_LINUX&#39; parameter to &#39;debug&#39; for checking the log messages but couldn&#39;t find any logs.<br>&gt;  Some answers on Google about this said that it was possibly because Secure boot was enabled so I tried compiling and booting by disabling Secure boot but still same problem exists.<br>&gt; Then I tried compiling the kernel on a VM and it was successful and I could boot into it. But the VM makes the system very slow and thus I wish to compile and run the kernel on my native Linux machine.<br>&gt;<br>&gt; What could be the possible reason and fix for this problem? Can someone please help me with this? I&#39;ve been stuck on this for almost a week now so any help would be really great!<br><br>Hi Ankita,<br><br>It&#39;s strange that you have been able to boot itto same kernel[I assume] in VM<br>but not on your machine. Probably something went wrong while installing<br>the modules on your machine. Which rc version did you try to install?<br><br>I&#39;m free for few hours right now. If you can come on IRC, we can try to<br>debug the problem. I&#39;m &#39;vaishali&#39; on both freenode and OFTC. Just ping<br>me there.<br><br>&gt; Thanks<br>&gt;<br>&gt; --<br>&gt; You received this message because you are subscribed to the Google Groups &quot;outreachy-kernel&quot; group.<br>&gt; To unsubscribe from this group and stop receiving emails from it, send an email to <a href data-email-masked rel="nofollow">outreachy-kern...@googlegroups.com</a>.<br>&gt; To view this discussion on the web visit <a href="https://groups.google.com/d/msgid/outreachy-kernel/313f5f12-4bce-4f6d-ae23-d76cf0ff60e2n%40googlegroups.com" target="_blank" rel="nofollow" data-saferedirecturl="https://www.google.com/url?hl=en&amp;q=https://groups.google.com/d/msgid/outreachy-kernel/313f5f12-4bce-4f6d-ae23-d76cf0ff60e2n%2540googlegroups.com&amp;source=gmail&amp;ust=1617718925871000&amp;usg=AFQjCNHcubWkPTeYlgHIMO83MU-ZM46h1Q">https://groups.google.com/d/msgid/outreachy-kernel/313f5f12-4bce-4f6d-ae23-d76cf0ff60e2n%40googlegroups.com</a>.<br><br><br><br>-- <br>Vaishali<br></blockquote></div>
+------=_Part_10538_1090806237.1617633704849--
+
+------=_Part_10537_624551571.1617633704849--
 
