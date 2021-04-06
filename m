@@ -1,102 +1,149 @@
-X-GM-THRID: 6802769340290564096
-X-Received: by 2002:a2e:b4b1:: with SMTP id q17mr587219ljm.22.1583893164142;
-        Tue, 10 Mar 2020 19:19:24 -0700 (PDT)
+X-GM-THRID: 6947727064751407104
+X-Received: by 2002:a17:906:24c7:: with SMTP id f7mr34181782ejb.473.1617724699182;
+        Tue, 06 Apr 2021 08:58:19 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:3e04:: with SMTP id l4ls55805lja.8.gmail; Tue, 10 Mar
- 2020 19:19:22 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vt6CIq0LEDg8StuiRNcmRSTDLaAPmBb3dQOoDwf0LuDStdeROW3buDdsLbImAwaQdNe4hQf
-X-Received: by 2002:a2e:8e6e:: with SMTP id t14mr610903ljk.279.1583893162562;
-        Tue, 10 Mar 2020 19:19:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583893162; cv=none;
+Received: by 2002:a17:906:1488:: with SMTP id x8ls1815039ejc.3.gmail; Tue, 06
+ Apr 2021 08:58:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdVVwSDZj5HnHZ7aap+5FLC2EGZd3LXyc91UxfoNIaM/KOhoIDKYYt8nxgMLQYKZuanD+I
+X-Received: by 2002:a17:906:1408:: with SMTP id p8mr34162325ejc.89.1617724697693;
+        Tue, 06 Apr 2021 08:58:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617724697; cv=none;
         d=google.com; s=arc-20160816;
-        b=oMZq9l+usaHzFl6bZJjo2CaM54DLIS8kC8baRQt4+z17goQsoJVzjP6h0NuONN5eW6
-         o0q/wEfXJxcdI/XAJMpJhayLXd8CDKohYT0Dn5WUnxHvoLxormrNyW7+asFyxE672+Yz
-         VJmkpTB1sPheTzE5lkCBp/j/2/9eiAR2QNK6JZQx1jwqiv8jSPId/T+7KDhB29y8+erP
-         tSbsS9a4QBb03W3ARo6D3ii174zP/Ikt1AWQ51uRYTgJXvMdBWHgc9rnhJ0KCmwPAbBq
-         Ga0zhr+k6L+EQCRnFi2XYa8d5vnsNeFE/popsIsu1IWPFbJJMqbENBPhsvwebJXOfonD
-         G4RA==
+        b=HmdqCGAgCE3g42ct6ZHbTfZG6iw1KAl+CqM5sIgvkRNKy8qOt51mwQqKelbSUIvbNu
+         mwgNqtlA2kBcPyXSiTqVrKiUsgiahjsEefGD+6mAdREpPpjOStfU58dQtO1mp2y+Bucg
+         U3Y5w+1pfpxtHe33vjoWGZJHwt5eCk1BxYYuCxha6NJg6C0f0FCMR71eQhqpawKCkRP3
+         HGU1/HgD2shqCGr00vcUS42YEI1Flg5tgB3Hn/bn6RW7B33KaFgp7tbimMQygdOju/Tj
+         ULl5v6tFbnghY8qt8e0S9q9/1yDC5xNLXCQM7EBYTEaoD80Et0qWccPgKveto4MHIpBZ
+         z54Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=oYJVpn2kKjTFlj2uMEbN8zjjnWkDguHgkOsAKoIi5q4=;
-        b=QjxCT9RbLl4Dgry53Og7ARIkGHKg6p5OAyjPXBT9KiPes/0FnbZKzQgRTXzOAistLr
-         hWk1v9Wa8ujmGiCrK4FhUJE025Q1Vi47VdoXyyl3fHssTrrhAIdwaFTPN97Y1LmgM1Nk
-         Oe34Iw/h2SUjuWFUO+l3liESMbjb2ev/xOUvZ8V0WcgL9m/mgAEdesdm+fr18mf+OKvf
-         ATtZJlLO+lo90xr5ytwqEgZwwQ8B9cE2vmnWIV4DChOwoSoZjBr5lDqNN53HcvuirWBD
-         bWgflpMotmoKsu/XwMxMTSI+aMASa6WwdZum0S9F/iVcvneeS/dZJblH58RZWPx6xNGw
-         FjYw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:dkim-signature;
+        bh=rJVOsPOpPhvCUvR1+VHBhDpILBtur99NXP6x6WnJpx0=;
+        b=jF+Z8/1odc8AG6MLU9EvVS//RjYL67EPX9TPwLrcMSz2/ZIP/uRHD876p78ur/A9MR
+         0MrzojiHNQLrMLYaHU40qN7T3m7UzAR5nyhzzVW+FS3xGMvxdDbprhkbt4fTGb/kMFzK
+         wfzSr13zTHl2thgdl9aICgcqyG74D+iRY6ooI0xwTqXBMHM6u1j2srEbIs/bEMFnYPIY
+         G3ZQGedBpt301gW/gontV65d1ywyNS1yAo4HySEswjxyyDwXE8QGWqA1Mtl5mm8atFmv
+         +4fo8av4slNzW4acoolJ5CAeh3/KnmbIiCj0lVw76m5y3ZpTnMxFT2VHs7/JhrmFjTxo
+         LaJQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QHb50Qnw;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::232 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tZVerhjv;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <debsoumyajit100@gmail.com>
-Received: from mail-lj1-x232.google.com (mail-lj1-x232.google.com. [2a00:1450:4864:20::232])
-        by gmr-mx.google.com with ESMTPS id j11si20168lfe.4.2020.03.10.19.19.22
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from mail-wr1-x433.google.com (mail-wr1-x433.google.com. [2a00:1450:4864:20::433])
+        by gmr-mx.google.com with ESMTPS id ck26si3006653edb.1.2021.04.06.08.58.17
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Mar 2020 19:19:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::232 as permitted sender) client-ip=2a00:1450:4864:20::232;
+        Tue, 06 Apr 2021 08:58:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) client-ip=2a00:1450:4864:20::433;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QHb50Qnw;
-       spf=pass (google.com: domain of debsoumyajit100@gmail.com designates 2a00:1450:4864:20::232 as permitted sender) smtp.mailfrom=debsoumyajit100@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tZVerhjv;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x232.google.com with SMTP id r24so532570ljd.4
-        for <outreachy-kernel@googlegroups.com>; Tue, 10 Mar 2020 19:19:22 -0700 (PDT)
+Received: by mail-wr1-x433.google.com with SMTP id i18so11334537wrm.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Apr 2021 08:58:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=oYJVpn2kKjTFlj2uMEbN8zjjnWkDguHgkOsAKoIi5q4=;
-        b=QHb50QnwNaJfqH8Y/CaAmN0+rsXNujpzqIoU//5Ii2y12XYKsoiqCJTV1VncqVxAZ4
-         C1gfBdduYoUD7UeFPWltxPaBpuOY83b0Au0U1k6Q02hQnXV7nMFCL8PX+eO01PnLZ+fO
-         cYrSgovD+ufiFbuLIQlZO1jKsT/o5XI2aVbg0xqA+AJKeeL+G3QZxDUAwiQvmUjoWEm0
-         pt8lyPZclDwRrOOM67nk2zWtKSu5YlpUy28VH1JmO/RFDTBzlQ8Kwn6GHaT0EljWLOeT
-         2qmKeMdlPL+LPZ6gK0zdzfXM7w8gqHAcm1+iD2jF9177d31GWC5rFuPs8C0Us7FK+yQB
-         Q7iA==
+        h=from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=rJVOsPOpPhvCUvR1+VHBhDpILBtur99NXP6x6WnJpx0=;
+        b=tZVerhjvml6oRiaS0NFeGshg/9K5fZet4K8K6R2oIVFt21ysMu4++4OtjxKrLlagqs
+         OUgC54isLnwPHxX/omg6M+hrXW1ZMZtOLOeknH6nW7mMo8e8VHnfwUJnPpLB9+mCLOzr
+         9tUL36yQdYijp5cKfO0EcqZVznYDo7AHcQEuTC5G9OFtjxi3YQJTxBrQaLloYTCNnfBc
+         jhsKHI2/tGBw/fM/yD5cuJphuaER+AyZBh+eJG9+mLj6JwiD/5uzsIGAj6V1TuP1qrfE
+         wEg6iiUPHRsOIlPknMonrD8jD8lRCytIwZdnNPHLwFahJQbKbTckmzWSj3TLnf9IgugO
+         Hd1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=oYJVpn2kKjTFlj2uMEbN8zjjnWkDguHgkOsAKoIi5q4=;
-        b=KwLGFHtD60nBivUs2kJ1fi/NawguZf3t+kZl1/uaKm9h1hP8QwRISQC5tDjo1gqKPl
-         c/8HIT2PHcdI7+c3owMi9OxWM8Q503xPe+OQPrrb7bUDxVnWJxITtLExWJaUtBK2bwxa
-         RHAKFgos+5YEZ2+jqjBxkAYS8LKYEdR9DflDdtet88aLYOWJ41xN2AyzQXkHDZLKfBv1
-         gLvOvpfS2MvnLVFM3kgPn1vj8FFc9Pct+MI4doZBOK0tpc8IdwTVxUb0evHvA4NnjroX
-         5HXKDQOCM4r/DwpG79a/suy0UXgMWmp3tlcXjuO0t/ucr16swb0yfY3eimo4vxCWriBq
-         pOVg==
-X-Gm-Message-State: ANhLgQ1TaoNPOrtFse+73gFZ5HfriJ7aC4SPi4bRBNe3hgG5bRelhz/A
-	DVzwg54870/kVu0Nn6/kaCr4fyl27FMLd1GJQhslIPU5
-X-Received: by 2002:a2e:b0c9:: with SMTP id g9mr600804ljl.120.1583893162103;
- Tue, 10 Mar 2020 19:19:22 -0700 (PDT)
+        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=rJVOsPOpPhvCUvR1+VHBhDpILBtur99NXP6x6WnJpx0=;
+        b=lqNBDOWpH8RrLtd4z1oPRIdE+3X9/Fyq73tva2xj2IuV5AunwKrRi744n/xM1m3MIk
+         SEnwTovF7gEVRKryVjFQ2Qd5APprrkHvQ3//gJaXsOzyhv75u8ZG0DE9xlzefrqqNn45
+         S57VgyXUPURt4O0cvPqsEfJt1ff18ao1ifG3HOv7XNSYXXV71K/uXfCOlsy7f1XNVBwT
+         iHb556KGK6lKSYslDIJavmgEsiq24JfOcqRHStQKjTISsh02JgSukmiYgP/ATlGOgYeC
+         BkFLNnJi3RODDyVipIY9VI8HoADr8v80VcpP2fHNkH3gA4oP1UflS0QX+kfhsNe1TK/F
+         Mzww==
+X-Gm-Message-State: AOAM533Zw5gTighZpGDJzu0zXsZTmA6lseZ0G0mYOPcuw9AgaJwxtmky
+	mJnDtLRynTQoFPgVooBLo+s=
+X-Received: by 2002:a5d:6852:: with SMTP id o18mr35818377wrw.173.1617724697503;
+        Tue, 06 Apr 2021 08:58:17 -0700 (PDT)
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from bcarvalho-Ubuntu.lan ([2001:818:de85:7e00:ad13:af9b:f63b:bc4b])
+        by smtp.gmail.com with ESMTPSA id k7sm23219508wrd.24.2021.04.06.08.58.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Apr 2021 08:58:16 -0700 (PDT)
+From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+To: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: rtl8723bs: core: reorganize characters so the lines are under 100 ch
+Date: Tue,  6 Apr 2021 16:58:15 +0100
+Message-Id: <20210406155815.90271-1-martinsdecarvalhobeatriz@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-From: Soumyajit Deb <debsoumyajit100@gmail.com>
-Date: Wed, 11 Mar 2020 07:49:11 +0530
-Message-ID: <CAMS7mKA1m5JEVhNB+fwytLF3JgFYb-8C9xD9DjOmXm52omC4NQ@mail.gmail.com>
-Subject: Question regarding installation of kernel
-To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="0000000000004a16ef05a08adddf"
+Content-Transfer-Encoding: 8bit
 
---0000000000004a16ef05a08adddf
-Content-Type: text/plain; charset="UTF-8"
+Cleans up warnings of "line over 100 characters" but avoiding
+more than 90 characters in file rtw_ap.c
 
-Hii
+Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+---
+Changes in v2:
+	- revert some cleans up warning previously applied wrong
 
-This is my first mail to the outreachy-kernel list. I am Soumyajit Deb.
-I am currently following the first patch tutorial and accordingly I have
-downloaded the Kernel source tree.
- I have doubt whether I have to build the kernel source code I have
-downloaded as I am using ubuntu already?
+This patch came from patch series that could find in:
+https://lore.kernel.org/linux-staging/cover.1617641790.git.martinsdecarvalhobeatriz@gmail.com
+---
+ drivers/staging/rtl8723bs/core/rtw_ap.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-Thank you
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
+index bee4f83a6db7..d65832b06444 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ap.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
+@@ -278,7 +278,8 @@ void expire_timeout_chk(struct adapter *padapter)
+ 
+ 			if (psta->state & WIFI_SLEEP_STATE) {
+ 				if (!(psta->state & WIFI_STA_ALIVE_CHK_STATE)) {
+-					/* to check if alive by another methods if station is at ps mode. */
++					/* to check if alive by another methods */
++					/* if station is at ps mode. */
+ 					psta->expire_to = pstapriv->expire_to;
+ 					psta->state |= WIFI_STA_ALIVE_CHK_STATE;
+ 
+@@ -309,7 +310,8 @@ void expire_timeout_chk(struct adapter *padapter)
+ 			);
+ 			updated = ap_free_sta(padapter, psta, false, WLAN_REASON_DEAUTH_LEAVING);
+ 		} else {
+-			/* TODO: Aging mechanism to digest frames in sleep_q to avoid running out of xmitframe */
++			/* TODO: Aging mechanism to digest frames in sleep_q to */
++			/* avoid running out of xmitframe */
+ 			if (psta->sleepq_len > (NR_XMITFRAME / pstapriv->asoc_list_cnt)
+ 				&& padapter->xmitpriv.free_xmitframe_cnt < ((
+ 					NR_XMITFRAME / pstapriv->asoc_list_cnt
+@@ -375,7 +377,8 @@ void expire_timeout_chk(struct adapter *padapter)
+ 			if (list_empty(&psta->asoc_list) == false) {
+ 				list_del_init(&psta->asoc_list);
+ 				pstapriv->asoc_list_cnt--;
+-				updated = ap_free_sta(padapter, psta, false, WLAN_REASON_DEAUTH_LEAVING);
++				updated = ap_free_sta(padapter, psta, false,
++						      WLAN_REASON_DEAUTH_LEAVING);
+ 			}
+ 			spin_unlock_bh(&pstapriv->asoc_list_lock);
+ 		}
+@@ -1117,7 +1120,8 @@ int rtw_check_beacon_data(struct adapter *padapter, u8 *pbuf,  int len)
+ 
+ 				*(p + 8) |= BIT(7);/* QoS Info, support U-APSD */
+ 
+-				/* disable all ACM bits since the WMM admission control is not supported */
++				/* disable all ACM bits since the WMM admission */
++				/* control is not supported */
+ 				*(p + 10) &= ~BIT(4); /* BE */
+ 				*(p + 14) &= ~BIT(4); /* BK */
+ 				*(p + 18) &= ~BIT(4); /* VI */
+-- 
+2.25.1
 
---0000000000004a16ef05a08adddf
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Hii<div dir=3D"auto"><br></div><div dir=3D"auto">This is =
-my first mail to the outreachy-kernel list. I am Soumyajit Deb.</div><div d=
-ir=3D"auto">I am currently following the first patch tutorial and according=
-ly I have downloaded the Kernel source tree.</div><div dir=3D"auto">=C2=A0I=
- have doubt whether I have to build the kernel source code I have downloade=
-d as I am using ubuntu already?</div><div dir=3D"auto"><br></div><div dir=
-=3D"auto">Thank you</div></div>
-
---0000000000004a16ef05a08adddf--
 
