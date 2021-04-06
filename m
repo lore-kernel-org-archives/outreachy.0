@@ -1,140 +1,80 @@
 X-GM-THRID: 6947860813701971968
-X-Received: by 2002:a1c:5fd4:: with SMTP id t203mr2351662wmb.142.1617688376272;
-        Mon, 05 Apr 2021 22:52:56 -0700 (PDT)
+X-Received: by 2002:a17:902:6546:b029:e9:1e31:3351 with SMTP id d6-20020a1709026546b02900e91e313351mr6126374pln.26.1617685945371;
+        Mon, 05 Apr 2021 22:12:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a7b:c763:: with SMTP id x3ls658452wmk.1.canary-gmail; Mon,
- 05 Apr 2021 22:52:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzY82iHdEP8oqE295JTwM5hIPA2xYmhGVeTzkSeLMl0iJN9jhx2OfQ0ABWLZMjtOzMp0FrE
-X-Received: by 2002:a05:600c:3506:: with SMTP id h6mr2414200wmq.168.1617688374884;
-        Mon, 05 Apr 2021 22:52:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617688374; cv=none;
+Received: by 2002:aa7:9acd:: with SMTP id x13ls7155473pfp.1.gmail; Mon, 05 Apr
+ 2021 22:12:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxnHJgkj21btSXBfxkPXqWq5giJf12ww2+ZoW0bp5+unPUsl+LwJJ2hWw+aP7RKP4hJHPaJ
+X-Received: by 2002:a65:4382:: with SMTP id m2mr4657606pgp.354.1617685944029;
+        Mon, 05 Apr 2021 22:12:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617685944; cv=none;
         d=google.com; s=arc-20160816;
-        b=qXYjriG+5XJkQxHMlvgkP9hWqrAd8W06+qNklvYFNYBFcLka8OjdyAqi6bso8l4VNp
-         z7sfczwCsLdEsct0vl1ywT2Q+QUqsoy2Vz7UzjeiYZdFFxZtVec4MVXFi0pJGDwW40UJ
-         XW+xmYUcUSMHB1zIV6tbiKLtGVZezLjS9GxL9FcAoOooZ8aws/6Wx1lind31db4xTCcs
-         NoFk1JF82t5jNR437bGAfsSSHMauOLZjEG9k+EsydsEg90gNF5iw5a6BoL7y99k/v555
-         MjGkOjo4oxJRqSyA93ZS9JY5ZklJI1pYl99I0osI1H+ZJb5TslJkohXLZf8nB3Uu7TQh
-         +EkA==
+        b=gcEeHO+bTyeKMXVlopiXN2WTEU+izPojrhthaC+7edEwhap56I/1dINcI36/hNjWAK
+         lCWNwoaQN4TiJlH/jcIqlibaZhI7+rPd1ksi+6B2yLJBtngUrxVkrnlZw4uoRMe0STF7
+         D+4KQ1fh/T/K/WnNnOQO/nHlPiX7jwwC7/FtBufRgMzfs4yWdBkYG5QNeYFiDsXjc7dJ
+         LiwvVuOYSs8ZpFWZvrXXq5Q5AID9ykXHjQw96f56hyYTlcERRsNFogSwTFtcghHRWciI
+         G8tmC61S+rvm7O0wK98/RTfQ8Ib512LvfA1VjGhz1HeKskLi/eO+2+fS+sq1LFNP9oHY
+         KuXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CccFDUWIMkUpmpjuW4hfyidrbW8HOgtTU4OMVCqZT6k=;
-        b=vW68rl7fpORZrvoV3JaPRwHJj16EDHQk9i13hA8Csncig+KB1Km0IQmT9l3dQuf/14
-         9/YMCXKPV2MIWkqFsCowHSqMxRvBN63D9ocTLJOtyCai7/oNoYT7Lnr/pOEAEAh4CRRo
-         /QEECMwm+NTngJFoN/pdwwJ5Zb72CaLUeFRWhZVzjj4N/ndXo44/bM0Hg6rft4bHtcpM
-         rEENSOqos1FFvT4tndGn/J7iUaSg6jGeULgsIssscduzFJHX4GjgcFtDd3WbQlbSgCdB
-         50aYQ9HAf2BHYq6YZxNJ6RcwPmXqLPEEmXgISD9C/KOnIqlB1iz+J1f88oD3rFn8YoOq
-         l5Fg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=H1vFmWW805TdlnA3iuILZMq1+Y3KbxQiiUpSbn+yMJ4=;
+        b=KQlCNVm4VqlrlkJ4n/a+RSmtDk/nsHr5M+dMA6RhIoZMLa1F0lBehu7Ja5h3KVqvwJ
+         iLYQ3cXKMZGux84wLZiakZBZRTz+28pq3KEB+5Vkagcqa6iJjGbMyZsoPXXJjWzOrUSS
+         oaKW3PemJsjmD1T3ghzB0kLiKNTHEM6Ie/6K7+4WwME6mGSjLAkU+CJ0ZgOOiv6EwgRZ
+         ZB9rYupfbICvwqjIk8q0S4FDnnDIEp8yAzp3cM64LE6PNh28UFP8GZObKJOkuUfphrEv
+         B7qP/0M/yV2GSK7uSnkFE17OCzmYyl2O8KKPl9wSJQTqQFrmaNJVAyDHq2kGBQNrFd7x
+         nlWw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="J/RAlUa5";
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-wr1-x433.google.com (mail-wr1-x433.google.com. [2a00:1450:4864:20::433])
-        by gmr-mx.google.com with ESMTPS id b5si157393wmc.2.2021.04.05.22.52.54
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=S7Ak5xOy;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 145si1425931pfb.0.2021.04.05.22.12.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Apr 2021 22:52:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) client-ip=2a00:1450:4864:20::433;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Apr 2021 22:12:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="J/RAlUa5";
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::433 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x433.google.com with SMTP id x15so3593332wrq.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Apr 2021 22:52:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=CccFDUWIMkUpmpjuW4hfyidrbW8HOgtTU4OMVCqZT6k=;
-        b=J/RAlUa5Zu5nQUEpePwTWZPUeBfg1ieY2FqQZDOfCdW8ljG5iPTd8uq0ahetlqjhTR
-         e9Pgn48nuHef14xNrqlvliQyQjaAwQMAmpBvpXoUNXORk+Ds5FSTI68zPphaxcoiQ/WZ
-         fEdsw+C2j1+8BbnX6ZyLBFFLdNSOxiRgOV5yT8+X9R2i0yEpsWjP9p+9pGo9ch/zfxeL
-         JCbi8V4ins9tydYoCI+Vn4msVd+Jajgpfx+o1+VJvGPU2Ga6fim7BiA20bBJT+WVCLj0
-         bp+VhN0hxYrfZBG3aY7GAQWEAeoMB32tATeT7gRTxcz6HuC12uTGQtxNDA+wDvWz7UZH
-         5DEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=CccFDUWIMkUpmpjuW4hfyidrbW8HOgtTU4OMVCqZT6k=;
-        b=tXDkNX08p2Rz3jfNg//dgHTKECVfrVB+h01Pz8MkhCxqUDDkxhP+I+wNy0VJsi49qi
-         Gf+8ze9+DhjfqNazmm5vq+C3v2tMeQBmD3++w994is7dZDjwrWaxTCBSd0aeMMYd476f
-         UN5yGNuXVUVG43+9OwZWQXRqv7JsXDTj8yDFe2CCvakFz1lrRtUgmsMJHrxi+lwVOyVG
-         Qrqq89eaTzqUs6W1uxt94qZ3Cie7Oyaqv/dorT5fTip7RsfpZ9rK5NkFJ1XTr2LdqG7o
-         Wafg4CeYVsUkJuTOT9obiVsuBLGB+wgy10Y1QLvvYpQiwcH2NorKRJ+WFbq6+ap4prgF
-         7GoQ==
-X-Gm-Message-State: AOAM5316iQQr88OpMacyujbARJeV3CaF38l/Q+xpeTvik3pDG3lU35mq
-	FhswKttFdM37q4ANptYCa06SqkCfprzAd1GD
-X-Received: by 2002:a5d:6104:: with SMTP id v4mr31950170wrt.275.1617688374668;
-        Mon, 05 Apr 2021 22:52:54 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-79-42-91-147.retail.telecomitalia.it. [79.42.91.147])
-        by smtp.gmail.com with ESMTPSA id f8sm7790561wro.29.2021.04.05.22.52.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Apr 2021 22:52:54 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=S7Ak5xOy;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 25DED6139B;
+	Tue,  6 Apr 2021 05:12:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1617685943;
+	bh=DVdnzSlpk96fgifywt6Ea0ccohmhyTvFVqPDosNka4Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S7Ak5xOylfao7LhoMZ5yw8t0Z/iP3rdspp5wygiJSR+Mu6AeEBh7gikm2xt4Twha/
+	 KQiQQc8BpYcyRPZPhbofy2Jcj04L7IqWVaFmDYHQNoPomBHS/KHT1HsXLja/UbYRhm
+	 q1uil0HCVEduhbEdzMuJjuHU/v56GxcGbWEnbk74=
+Date: Tue, 6 Apr 2021 07:12:20 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 Cc: outreachy-kernel@googlegroups.com
 Subject: Re: [PATCH] Correct indentation in Hal8723BReg.h
-Date: Tue, 06 Apr 2021 07:52:52 +0200
-Message-ID: <2303372.zkNegYAOfQ@localhost.localdomain>
-In-Reply-To: <YGvttKG+RNhKAmO/@kroah.com>
-References: <20210406020815.22995-1-fmdefrancesco@gmail.com> <YGvttKG+RNhKAmO/@kroah.com>
+Message-ID: <YGvttKG+RNhKAmO/@kroah.com>
+References: <20210406020815.22995-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210406020815.22995-1-fmdefrancesco@gmail.com>
 
-On Tuesday, April 6, 2021 7:12:20 AM CEST Greg KH wrote:
-> On Tue, Apr 06, 2021 at 04:08:15AM +0200, Fabio M. De Francesco wrote:
-> > Correct indentation issues of many #define and comments in Hal8723BReg.h
-> > 
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 604 ++++++++++----------
-> >  1 file changed, 302 insertions(+), 302 deletions(-)
+On Tue, Apr 06, 2021 at 04:08:15AM +0200, Fabio M. De Francesco wrote:
+> Correct indentation issues of many #define and comments in Hal8723BReg.h
 > 
-> You forgot to cc: all of the needed mailing lists.  And your subject
-> line needs some work.  But the biggest issue is that I do not understand
-> what this patch does at all.  What is wrong with the original code here
-> that required you to "correct" it?
-> 
-> confused,
-> 
-> greg k-h
-> 
-I'm sorry that I forgot to cc linux-staging and linux-kernel mailing lists 
-and for the subject I had already sent a v2 patch that had 
-all the required tags (staging: rtl8723: hal:).
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 604 ++++++++++----------
+>  1 file changed, 302 insertions(+), 302 deletions(-)
 
-I think that what was wrong with the original code was that 
-the #define values were far from the symbols with random indentation.
+You forgot to cc: all of the needed mailing lists.  And your subject
+line needs some work.  But the biggest issue is that I do not understand
+what this patch does at all.  What is wrong with the original code here
+that required you to "correct" it?
 
-For example, I changed something like:
-#define SYMB1 		0123
-#define SYMB2 5678
-#define SYMB3            9ABC
+confused,
 
-to:
-#define SYMB1 	0123
-#define SYMB2 	5678
-#define SYMB3            	9ABC
-
-Notwithstanding checkpatch does not comply about that, I suppose that
-my correction improves readibility. Isn't it?
-
-Unfortunately, English is not my native language. I hope I have been able
-to explain my point of view to you. If you agree, I'd prepare a v3 of the patch
-for the purpose of explaining with higher detail what I've done and why.
-
-I'm looking forward to reading from you.
-
-Thanks for your time,
-
-Fabio
-
- 
-
-
-
+greg k-h
 
