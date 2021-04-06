@@ -1,117 +1,106 @@
-X-GM-THRID: 6256350272839221248
-X-Received: by 10.140.102.69 with SMTP id v63mr26399905qge.14.1456670060427;
-        Sun, 28 Feb 2016 06:34:20 -0800 (PST)
+X-GM-THRID: 6947865110016688128
+X-Received: by 2002:a17:902:c94e:b029:e8:d589:b33 with SMTP id i14-20020a170902c94eb02900e8d5890b33mr13412415pla.53.1617686000785;
+        Mon, 05 Apr 2021 22:13:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.140.16.40 with SMTP id 37ls1714944qga.14.gmail; Sun, 28 Feb
- 2016 06:34:19 -0800 (PST)
-X-Received: by 10.140.29.183 with SMTP id b52mr25317852qgb.8.1456670059759;
-        Sun, 28 Feb 2016 06:34:19 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x22e.google.com (mail-io0-x22e.google.com. [2607:f8b0:4001:c06::22e])
-        by gmr-mx.google.com with ESMTPS id c15si768508igm.1.2016.02.28.06.34.19
+Received: by 2002:a17:90a:9106:: with SMTP id k6ls966126pjo.0.canary-gmail;
+ Mon, 05 Apr 2021 22:13:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwoGAjb343yLcz68pNMEhVgjRJYfqg/E4dcdjJbcKCBpc7HSm6nuvohaevRTrAqUnXEsz7b
+X-Received: by 2002:a17:90b:3613:: with SMTP id ml19mr29133pjb.38.1617685999823;
+        Mon, 05 Apr 2021 22:13:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617685999; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EpgW0apTAUlQZGT38xX5zK/CFlr9pJq6XJigT/lX7bV23J/B4xLrvBa5EJ6uWHqCwW
+         11/S8viu52oz/VZ49WM/10J6ln/wSOXPXDPl7NlUMimRUuYmV2ViElPobV1UxPb1pH75
+         Pk8IbCtnZ/QMdtYi4TH4r4hVV5qmw++OGzoHvH9ckiM2TmBvT59uEt7cTwGb1NtuWBfA
+         CQknx2PePJBnIltn9ElbgE3ENztx49N4pddT56FQjcR3Hj4YwcQGbUCI5iUmhQo/vzZI
+         EMImyI/aY3WPA3L2v1LfMN1dZ08B6Kxhr02A2g2b3lcTln8b+lhNurCGlBpMEY61nIuX
+         wuIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=O3CjngASSClCaoIpQZXmLDjSwfqzENKq1+HbR5pMNXo=;
+        b=HO6r3yhrGWWfN3ZlwYCxz/jF2rcnWXFyFeUNriAXHM7MlP3k93MzIYtPv5Gzo9NVxE
+         LnGqaNKAaM8ihSVIFQkntBARwDH8FNMf4jAFmbPkuBQy7two0MOBy9w3cCPicG8mX/8W
+         V0QHqUt6p27mzicwF7ayryytapwlM6WwLnKvXulOjpeigHyGO50assmdJePc6uNsMEM5
+         5bGKKWXDkCuaZdgTkkJf99xoTj7DkmcsFU/viEW/xlMRoA7zjutVdwzZnsOFDQlTt14C
+         SHWmjRsrA7/saAYs1z2DrhLkJeEAV9LVb4gqLowvBIY+5YpbNu8xa4KPjnHXR2E5W1al
+         Va4A==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=Esu869F2;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id ft8si167757pjb.0.2021.04.05.22.13.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 06:34:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22e as permitted sender) client-ip=2607:f8b0:4001:c06::22e;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Apr 2021 22:13:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::22e as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x22e.google.com with SMTP id 9so159535052iom.1
-        for <outreachy-kernel@googlegroups.com>; Sun, 28 Feb 2016 06:34:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=nq5y2jjAg0ynfh6ger7stmOqFIr1eS32UKA4HxzPnWY=;
-        b=ejCb3pmd+memZpc58s3xUtLQg1Svm2Y1TreaLsm+FbJNAgMasRPpALv7JCNG+dzMyh
-         zIrzNIrVgBXZpq3nTMv9jz0GywTXxCC1iCan8KOTot0KTC+0EwqgwVPbJGLfNOORELUF
-         aliWzUfXGM+89qdD0NNrFh91/odOKJvd3iSeLqJDZuwXIpj2QGzYHbQYkCZ6VEDm/fbA
-         llqUSqPV5IJaXDkZHvZ/PpNIJPPciSjZSWxT09ebSBhQYtn7X1bcypcHS3OI6Ad3EGGV
-         DN8/Q6QfFCs5cZ0H7eZOu9YGmfnUc6XVSt55LHljA3WD/jhNt4m3RUyRD62Tf8Q5PAdu
-         pRAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=nq5y2jjAg0ynfh6ger7stmOqFIr1eS32UKA4HxzPnWY=;
-        b=LtluZR5Z1edF4eugEmSjIZsH36SdU7S/q+VztV7zLGTbqRHivdiUwKxnVyO3gmEX1+
-         o6IwiZMSXzyG440DHULhaOfv5QMkQ2L3FbZDBNum4DtifoC1ufm+5D0peoS+LXx7yBho
-         /IsDw0Ng6uJO4IsIiqYj/oalE1s3mhH397ocg5JDlU+5iphp324Q3LeXNfGKrOWaoPrc
-         hIgLVd6uJDpJAHhWs96c6Ow1iH9ovrDicq7/CPs+slRzqPNUunH/XEUq/XZncZu8wLm7
-         kQF8Y2xMMwArLmludqRsHDVQEkf9QY31qW1p/L9t2eS5D0W8zyVYB1Z3xpCr5qOAFDgo
-         9y6w==
-X-Gm-Message-State: AG10YOQ3bJKkdM9iOkpu97O7SUJQox6U/Pq9Y1hVAIaSWMBzVuoz4kBud+sGupuFKXlAGw==
-X-Received: by 10.107.152.142 with SMTP id a136mr16232452ioe.84.1456670059554;
-        Sun, 28 Feb 2016 06:34:19 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id n75sm9173657ioe.28.2016.02.28.06.34.18
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Feb 2016 06:34:19 -0800 (PST)
-Date: Sun, 28 Feb 2016 14:33:29 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: rtl8723au: os_dep: Use list_for_each_entry_safe()
-Message-ID: <20160228193329.GA6063@janani-Inspiron-3521>
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=Esu869F2;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id F2B2261158;
+	Tue,  6 Apr 2021 05:13:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1617685999;
+	bh=JgqC+ZBtao1mK7X9TANu+Pk4zpJh5jZWMk/4IQuaiBA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Esu869F2eHdnyv/FFm+9GooWdLMdigIqPKVzXTeOmQ9wv/lQH9xlbF2B0M3TS6EFf
+	 nJRUs6tS8v/0HLy9cNkN02w94Bky9HvYhk+rLS92D6QdvMNktKhetP0y66fM5eReCq
+	 sCbKdHXO3uhm0c24uBmwZBHEhic03s56EH4zYEZw=
+Date: Tue, 6 Apr 2021 07:13:16 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8723bs: hal: Correct
+ indentation in Hal8723BReg.h
+Message-ID: <YGvt7PqvfKny2WBk@kroah.com>
+References: <20210406022459.29824-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20210406022459.29824-1-fmdefrancesco@gmail.com>
 
-Use list_for_each_entry_safe() instead of a combination of
-list_for_each_safe() and container_of().
+On Tue, Apr 06, 2021 at 04:24:59AM +0200, Fabio M. De Francesco wrote:
+> Correct indentation issues of many #define and comments in Hal8723BReg.h
+> 
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 605 ++++++++++----------
+>  1 file changed, 300 insertions(+), 305 deletions(-)
 
-Semantic patch used:
+Hi,
 
-@a@
-expression pos, n, head, tmp;
-expression mem;
-type t;
-identifier var;
-iterator name list_for_each_entry, list_for_each_entry_safe;
-iterator name list_for_each, list_for_each_safe;
-@@  
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
-(   
-- list_for_each(pos, head)
-+ list_for_each_entry(var, head, mem)
-  {
-   ... when != var
--  var = \(list_entry \| container_of\)(pos, t, mem);
-   ... when any
-  }
-|
-- list_for_each_safe(pos, n, head)
-+ list_for_each_entry_safe(var, n, head, mem)
-  {
-   ... when != var
-- var = \(list_entry \| container_of\)(pos, t, mem);
- ... when any
-  }
-)
+You are receiving this message because of the following common error(s)
+as indicated below:
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
 
-diff --git a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-index 908b84c..c79d623 100644
---- a/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-+++ b/drivers/staging/rtl8723au/os_dep/ioctl_cfg80211.c
-@@ -1994,8 +1994,7 @@ static int cfg80211_rtw_connect(struct wiphy *wiphy, struct net_device *ndev,
- 
- 	phead = get_list_head(queue);
- 
--	list_for_each_safe(plist, ptmp, phead) {
--		pnetwork = container_of(plist, struct wlan_network, list);
-+	list_for_each_entry_safe(pnetwork, ptmp, phead, list) {
- 
- 		if (sme->bssid) {
- 			if (!ether_addr_equal(pnetwork->network.MacAddress,
--- 
-2.5.0
+- This looks like a new version of a previously submitted patch, but you
+  did not list below the --- line any changes from the previous version.
+  Please read the section entitled "The canonical patch format" in the
+  kernel file, Documentation/SubmittingPatches for what needs to be done
+  here to properly describe this.
 
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 
