@@ -1,137 +1,149 @@
 X-GM-THRID: 6947895612953067520
-X-Received: by 2002:a1c:7d54:: with SMTP id y81mr1209833wmc.94.1617724844507;
-        Tue, 06 Apr 2021 09:00:44 -0700 (PDT)
+X-Received: by 2002:a1f:3250:: with SMTP id y77mr13595722vky.10.1617721528994;
+        Tue, 06 Apr 2021 08:05:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:24d4:: with SMTP id k203ls1585784wmk.0.canary-gmail;
- Tue, 06 Apr 2021 09:00:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyg9tdVr6IYG1U5VY+THZ7/rf0zVaty1et43/vG/MRBoCMWBurnc6MjPhSw2eHha8KqjaST
-X-Received: by 2002:a05:600c:1548:: with SMTP id f8mr4833408wmg.81.1617724842859;
-        Tue, 06 Apr 2021 09:00:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617724842; cv=none;
+Received: by 2002:a67:e8cc:: with SMTP id y12ls2326676vsn.8.gmail; Tue, 06 Apr
+ 2021 08:05:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPqGBMdwkX424KYlcMtxXU0KNpRVrQEaO8cm/kB0agjxLUKAg8nYA9u0GAMcaj0wBb0OGS
+X-Received: by 2002:a67:f595:: with SMTP id i21mr3955965vso.16.1617721527950;
+        Tue, 06 Apr 2021 08:05:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617721527; cv=none;
         d=google.com; s=arc-20160816;
-        b=mNlCN3VCcRtqQUeTczVbrKPky3V0VjeQ9JhY6ClLwnkvvXK8AfHkv9ACuWnvxMJRRi
-         7TmzaCn/WWYXvaoWDr3xrY4VWEBu7tBdhJlPv0V5uxxU6V6wRO46oe4fzy3chDza4Qie
-         Ph9mESDI1zr8xinZY/25McS9VuyHE5UdHetWnNXqu7KRddtdSuBOam6e/TmoBC0AooNU
-         SqqAGXgZUEeUC12xKO0D+iBBMsdFXK5PjY1xo2fQXxQNxNtgxX93yFS/4Ukf5M0d9WKn
-         5p5jufDDk7JuA85CC6ocPHQzJAJYoKhbenj3uMeWBE6Hv7zv3kOvQIaXeRwqf2e69rcQ
-         7fVw==
+        b=wWITD7yq6klc3SjysKhXMgsVsynazj9rc/T6ARneomkLZXZHJlahG5yB44UwzYgdM/
+         xkJzgXATIKh0ovd8xie62uoGS6fDmSvn9iA+e8WDtejSAdkOmrOMNlLLTfx1IaLxiAYQ
+         /3nRo16cFzXKoTk/QD+GFTZialARylHMeG7oSwTHBoOnCyrLNiA2htfMKZjgHwp8Rbc2
+         xrSD+aPCVvPwis4Czum8zIsnibz6rn2SDwnI2LHGSEbv105Fi8FGkXqZi6Auv2+LEQ6U
+         i+Fl4GPNrKroR53Fdwyb1L/OZPUs6VrgscSumLOrw0ucjd/XZ7DZpUgvtDoOSMUjkX9T
+         ORyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=k5EpuzuQJTKW4iCexb4wYn9pAT56gYbwWP/iQi0chJE=;
-        b=PhCw0WafozSzp0dUI3Myq7sVzuZ9hiz27CsP1SUDjSUtvmyyDND4LXrHBKGf0BDpOC
-         h889U2MTNjoex6C5TcupHUArkLNnwuXUQnPOoggC0Gc/u6B/D1R1HFB7zs817MjEHWo7
-         aMaI3UtmqhpJe2+cXuQXjtiMgOTqeTJJ1GmqNr+7kqAZat223SbiyZW30usMDp6Uci3u
-         19zdkxFwQK0DB4GL4r+HaKTNUpJqSSbqCPfs2p0it7sJCOIIJt+r9zIMPxPsDiO2f9YW
-         ZfMfnu6tP8JWx8DAkoSZhzY6D/jDJe2T8jG4/Chc+SNwjCUcQVb51xDU+ikcIkU7l0u/
-         8WuA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=DN+Pv7shK2P5BW650iRpB29dWVvYcWcUHF2JuKWInlk=;
+        b=SRgReiZTmXD8XFQjY9yYZT/FSSf96NLy1tF9YikIE10auiUpm5Z+hexOrQqAyDfbvy
+         GAIXWcG7PN1mOno/gkIOQrnDVTYFPKQSKP2invMbwjtEutmcDlYvagHBfFwivw7CiTvx
+         OO8BcOnqDp0hf02Nt+5lRotHhb70u6j6enbNAA9gpkR5L0vY/kM1TcZdqYOoOKjmoptO
+         xpNX4giddqVvkkpz5WGsMLqScT4ezB7+zO0L1ZUWo/4lHWkiDNirHeWKMpEMrgbM72ev
+         d1RXzaDeEPJR570+KOsCnraNDOf998xix06IoGJAKbMGGn9DbY/zK2KgplDMM6vALvhW
+         JT0A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="d3pyj6/e";
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::530 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ku1nVe5i;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com. [2a00:1450:4864:20::530])
-        by gmr-mx.google.com with ESMTPS id w2si240148wmb.4.2021.04.06.09.00.42
+Received: from mail-ot1-x32b.google.com (mail-ot1-x32b.google.com. [2607:f8b0:4864:20::32b])
+        by gmr-mx.google.com with ESMTPS id u142si177975vkb.3.2021.04.06.08.05.27
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Apr 2021 09:00:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::530 as permitted sender) client-ip=2a00:1450:4864:20::530;
+        Tue, 06 Apr 2021 08:05:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) client-ip=2607:f8b0:4864:20::32b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="d3pyj6/e";
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::530 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ku1nVe5i;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2607:f8b0:4864:20::32b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x530.google.com with SMTP id f8so13193936edd.11
-        for <outreachy-kernel@googlegroups.com>; Tue, 06 Apr 2021 09:00:42 -0700 (PDT)
+Received: by mail-ot1-x32b.google.com with SMTP id s11-20020a056830124bb029021bb3524ebeso14975644otp.0
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Apr 2021 08:05:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=k5EpuzuQJTKW4iCexb4wYn9pAT56gYbwWP/iQi0chJE=;
-        b=d3pyj6/e3e/fxYUdpu90XqhYram4OhWvReN9Bo7SKbbY5tXgcKg6Vcxejn4Y2FhZyY
-         qyiBX4wUVVubcDYf2hojBzSFiQ1OBf0pbQPDW73tmv7WVEWUhEY8jOVD+BKsZ10Jdqwd
-         /2oux4dbZA3nijNfEqi8esoiYDSC3ATU7r8uvgYpGWL98OiIxFeCGEfXusZthiweq8o1
-         WTDtlCm5EyWqWgsRYxn5q6yoGQ/Cnk+hf55Hixxp9NJ1LEJCfGlw1QYuE7QoREwmbc6u
-         SOzXsZSpeKnIVaVe/m1y9R9NAzXQ1ReBCGLT+f1AUWBLTFZOqC/Iu2LzQQNqZreuML16
-         Jwqg==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=DN+Pv7shK2P5BW650iRpB29dWVvYcWcUHF2JuKWInlk=;
+        b=Ku1nVe5iO8Xtqeg8NkdHqrYdN21nd8yNnCo+E/U016S9pQabMx3O8P+3jQ0YAykN+Z
+         yKuil8NO5EmGUWi+vPhbdxWBxGZC/HiGdyD6tgX2nK1hvA8HEnO8/mgbyl3fxXVfO96i
+         edZs8cxghO6icquJGY3+z9X7XlK8q+XJjH2b8hjrLv+yDS2vYOtZmAALPmiUfbFwqLDN
+         f0UVl3T8AcfL0fiHd6lnIXFeWc5PaFLiCoQ7bXuhN0sKUskgF1YxYo2Yvy/oAQC2B5Rd
+         LGqsZbaR2Aw4xXqPrdAMjv4hZQTcWUpnjiNQ38C6FrlhLNAHdHvxI39s1hsKY8N37ffB
+         yHaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=k5EpuzuQJTKW4iCexb4wYn9pAT56gYbwWP/iQi0chJE=;
-        b=oChXph1tPGz5yK7sf5KA8Y1BAoPiUTZXECNEcitT87okYRY4RqgpUOvEDmpMlo7bRQ
-         lE+lFCJaQz20JcQEqe/SG2mOuj+QsTNZPJDmZfgvgkuRsKXzfPi8MEKmuMNFAAffoaU/
-         xU6MKPaczKVlQZK6rQGIpZXGbJJ8uHhrTDgncbj/Eat6jAfOhR4S1miIRl8RW/GZ+/XA
-         itopg7i/TECwiI2MvAtuOOS719FGifFAytEVKzafZ4hrPh6c/i7GBs81JEAMtm3Gebnw
-         R7wT+l8xzyqgrbG0AeDfCaXknOMVBL8wLE1/KuGOSDyMELS7+/j8two430ZDK+m4Y9Ha
-         Lhog==
-X-Gm-Message-State: AOAM533ExZk+wqq+hTt3AJuEjlqbpX2DZLRjPTVn5sL7tu2+8JFnz9Y+
-	0JymvI3xiYtr2CmdzebTWh0=
-X-Received: by 2002:a05:6402:344e:: with SMTP id l14mr8680125edc.184.1617724842572;
-        Tue, 06 Apr 2021 09:00:42 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-79-42-91-147.retail.telecomitalia.it. [79.42.91.147])
-        by smtp.gmail.com with ESMTPSA id n16sm14317737edr.42.2021.04.06.09.00.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Apr 2021 09:00:42 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH v3] staging: rtl8723bs: hal: Remove camelcase in Hal8723BReg.h
-Date: Tue,  6 Apr 2021 18:00:37 +0200
-Message-Id: <20210406160037.27225-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.30.2
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=DN+Pv7shK2P5BW650iRpB29dWVvYcWcUHF2JuKWInlk=;
+        b=uMuVazHbUmYVqmioNahqSH0QXtpvFcdFy/t6Hsuu875lJ+4IhUM2yHqSShxmBRu96r
+         9SqUpbHgBFPIOqu2bjl9yMWanhv3CX3T347STDTomxxnvPIsu8Ws6Mg7pFez2WiVR2wO
+         kFrwkYCTYmh8hqrMUrfzGBv+GYdRXLvU+VWrJg9sMCmF29fHjU4GHiqXQnLYo3rU09NQ
+         XxXM0g0m0BX/GA+rRl/zRoZFsiGocO/rTG/RKUXkLRK7GtWkVptiM7YDuAMASNIX7vgz
+         NI4Ex1cdHoWBCJXlS2trPO7Y4hGdQ8q6qdIShxJCtZJ6GPexRMlvgMRsbaKH1zlNSyLz
+         a1iQ==
+X-Gm-Message-State: AOAM531V3htLIpb2Y8K/iGj9aalpgcfaYhkTrJvPwQVQ2bwzzUxLvnYZ
+	BANQqTkEvkbxdhVWf/QynVWuCrHbgLqek+V760cEcFX9TxLFzQ==
+X-Received: by 2002:a9d:7f8a:: with SMTP id t10mr26302185otp.239.1617721525118;
+ Tue, 06 Apr 2021 08:05:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20210406130556.1417-1-fmdefrancesco@gmail.com>
+ <YGxsExq2fcQvrN99@kroah.com> <CAPj211u9MHgtjeZGUPsLxU3HkbJ8cr2EUL0v9HA7LE9-b1uUoA@mail.gmail.com>
+ <alpine.DEB.2.22.394.2104061652590.2882@hadrien>
+In-Reply-To: <alpine.DEB.2.22.394.2104061652590.2882@hadrien>
+From: FMDF <fmdefrancesco@gmail.com>
+Date: Tue, 6 Apr 2021 17:05:09 +0200
+Message-ID: <CAPj211uct7K7e2Kcz7drmWGcfuTRQYTWHFRvrA9ah-JmBTotsg@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8723bs: hal: Remove
+ camelcase in Hal8723BReg.h
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 
-Remove camelcase in some symbols defined in Hal8723BReg.h. These symbols
-are not used anywhere else, therefore this patch does not break the driver.
+On Tue, Apr 6, 2021 at 4:55 PM Julia Lawall <julia.lawall@inria.fr> wrote:
+>
+>
+>
+> On Tue, 6 Apr 2021, FMDF wrote:
+>
+> > On Tue, Apr 6, 2021 at 4:11 PM Greg KH <gregkh@linuxfoundation.org> wrote:
+> > >
+> > > On Tue, Apr 06, 2021 at 03:05:56PM +0200, Fabio M. De Francesco wrote:
+> > > > Remove camelcase in some symbols defined in Hal8723BReg.h. These symbols
+> > > > are not used anywhere else, therefore this patch does not break the driver.
+> > > >
+> > > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > > > ---
+> > > >  drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 16 ++++++++--------
+> > > >  1 file changed, 8 insertions(+), 8 deletions(-)
+> > >
+> > > If this is "v2", you need to put below the --- line what changed from
+> > > v1.
+> >
+> > It is a v2 only because you made me notice that I forgot to cc
+> > linux-staging and linux-kernel.
+> > So I sent it again, but probably I shouldn't have changed the version
+> > number because nothing else had changed.
+> >
+> > > Please fix up and send a v3.
+> > >
+> >
+> > No problem at all. I can explain in the patch v3 what I wrote above.
+> > May you please confirm that a patch v3 is the correct solution even
+> > when nothing changes in the code?
+>
+> When Greg acknowledges your patch, everyone who is concerned with the
+> patch should see it.  So he needs to pick up the right version of the
+> patch that has everyone in CC.  He can use the version number to choose
+> the most recent one.
+>
+> The version numbers don't appear anywhere once the code is committed.  So
+> it's not a problem to move up to the next version for any reason.  On the
+> other hand, if you skip a version, it can be a problem, because someone
+> may wonder if they missed some useful information.
+>
+> julia
+>
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
+Thanks for your clear explanation of these details of the workflow,
 
-Patch v3 changes nothing with respect to v2 and v1. It exists only to cc some recipients that were missing in the header of the previous email.
+Fabio
 
- drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
-index cc249e15b4bd..60c1f966c5de 100644
---- a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
-+++ b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
-@@ -110,7 +110,7 @@
- #define REG_RSVD3_8723B				0x0168
- #define REG_C2HEVT_MSG_NORMAL_8723B		0x01A0
- #define REG_C2HEVT_CMD_SEQ_88XX			0x01A1
--#define REG_C2hEVT_CMD_CONTENT_88XX		0x01A2
-+#define REG_C2HEVT_CMD_CONTENT_88XX		0x01A2
- #define REG_C2HEVT_CMD_LEN_88XX			0x01AE
- #define REG_C2HEVT_CLEAR_8723B			0x01AF
- #define REG_MCUTST_1_8723B			0x01C0
-@@ -424,13 +424,13 @@
- #define	IMR_RXFOVW_8723B		BIT8	/* Receive FIFO Overflow */
- 
- /* 2 ACMHWCTRL 0x05C0 */
--#define	AcmHw_HwEn_8723B		BIT(0)
--#define	AcmHw_VoqEn_8723B		BIT(1)
--#define	AcmHw_ViqEn_8723B		BIT(2)
--#define	AcmHw_BeqEn_8723B		BIT(3)
--#define	AcmHw_VoqStatus_8723B		BIT(5)
--#define	AcmHw_ViqStatus_8723B		BIT(6)
--#define	AcmHw_BeqStatus_8723B		BIT(7)
-+#define	ACMHW_HWEN_8723B		BIT(0)
-+#define	ACMHW_VOQEN_8723B		BIT(1)
-+#define	ACMHW_VIQEN_8723B		BIT(2)
-+#define	ACMHW_BEQEN_8723B		BIT(3)
-+#define	ACMHW_VOQSTATUS_8723B		BIT(5)
-+#define	ACMHW_VIQSTATUS_8723B		BIT(6)
-+#define	ACMHW_BEQSTATUS_8723B		BIT(7)
- 
- /* 8195 (RCR) Receive Configuration Register	(Offset 0x608, 32 bits) */
- #define	RCR_TCPOFLD_EN			BIT25	/* Enable TCP checksum offload */
--- 
-2.30.2
-
+> >
+> > Thanks for your help,
+> >
+> > Fabio
+> >
+> > > thanks,
+> > >
+> > > greg k-h
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAPj211u9MHgtjeZGUPsLxU3HkbJ8cr2EUL0v9HA7LE9-b1uUoA%40mail.gmail.com.
+> >
 
