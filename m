@@ -1,107 +1,137 @@
-X-GM-THRID: 6471467521247543296
-X-Received: by 10.98.200.83 with SMTP id z80mr847008pff.50.1506755948748;
-        Sat, 30 Sep 2017 00:19:08 -0700 (PDT)
+X-GM-THRID: 6947963118205009920
+X-Received: by 2002:a1c:7fcd:: with SMTP id a196mr3086008wmd.180.1617698730993;
+        Tue, 06 Apr 2021 01:45:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.101.85.142 with SMTP id j14ls167346pgs.3.gmail; Sat, 30 Sep
- 2017 00:19:07 -0700 (PDT)
-X-Received: by 10.99.182.79 with SMTP id v15mr260242pgt.163.1506755947687;
-        Sat, 30 Sep 2017 00:19:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506755947; cv=none;
+Received: by 2002:a1c:24d4:: with SMTP id k203ls910365wmk.0.canary-gmail; Tue,
+ 06 Apr 2021 01:45:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzbCVDtSIz6gdl7aWJXjRj/SD/fxz3wL8hpD2lNg7li4oCi9E2Yh/QF56UAF/K9lQc0SeLn
+X-Received: by 2002:a1c:3581:: with SMTP id c123mr3078516wma.118.1617698729286;
+        Tue, 06 Apr 2021 01:45:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617698729; cv=none;
         d=google.com; s=arc-20160816;
-        b=HHQN94JKNTjuHqcpbkwBnpjgQ4QZKWfYrBOGUkjVu/VJiNiX/OS4aTVtpfdzJILeFc
-         1VcKekIboYo2NKi3B5FzBXXMlEYXrARanpP2OkHIGvooh3pIp+fh8jHzQ98AnmoABZxE
-         Dl3nh/7tzA1b3IZ4cpAtsY8v5lCmSIb4bZHiCaJz1OvTF2awDlVRWDTsIZNqIMc/6tHd
-         XBVq5Nghp3aVNL2WwQTr2un+Wxht3HHWTRFVIWIHasuljay5kQqol1e71E8eyflFZ7mI
-         cZB1lj7yzA6mV+PiRMGtOQXmCPmvgA13TMkQhp2aCx8R8UaIDGw014m6FG7LF38Iruwg
-         9aHQ==
+        b=c0FZGj3jQOt6nDyDx4t2j31xJ76gLG/pduY7M1U5qBTxEo9yYXPDZtjARRtocAU4jG
+         bbLw1vcaWveWoVn8rLpXOaZADZwxD+Z3R5wWkOvbjl0ca+Z364Myi/JkB+/U4tCGZR3W
+         L6lyAtFHyjHvGHXdg3pQJWx/SnSrNtr/KJlnyCRbxSNCm4JPRrNyZ5oR/SQq6vz6NK+/
+         wF7v8ZTUCE/AY2pja52CV6+L7RHAuNLAPD0z87nGCv6VdZ9EJDHdVXtUD5jFKDPyzbzQ
+         Ys2CZq6z9IZIPmotPTG3pBc6I+PfpVYJh9GehFmCg8es1Iikq0QVF730npiDEoJfptKK
+         u6Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Vm6wG0M3eWMFlaGa+/+Wx0ULv9Q2iwOqlHEu9cyO3Gk=;
-        b=NMnMIKszvndOxLXnWQGZP059MVPfRm6+UT4uczGVhrCvkzJ6S9HwZnTZFiUTvTg8X9
-         B5vD0CBG4nWzC+7S+XPbg8FGvf5bghN5yEEp4a0GeiutcntVsTWH5v0dXpsDFX9itpt5
-         N65mAvoEkHqRe/bFuQlOD6B7BEpDZRSy3Vh3ALsg9Aghmxxb7xgmEBUyo9+W5dsfnEzR
-         tuOoeK60f1yZ+oRINoOvNxgbjqO3DWtCtI13Ai2W6Qfhvl7XVJLE9xKWWitOHZVWtK+m
-         LYZRlKuF26WP5fTBrbR2aXd/JsIiRsFZWYTxxQLgTOuOSW0zqFdEmjNq9CCX+X+5qfh+
-         63YQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=eG9N6vd8YdDNhKc5wiTz2FLA+NZ0laeofe06nyKfMT4=;
+        b=Pi8tPaKTVlRmj96BZjE6PBu3Wmt6hvfzGUFZFwKEuOIceX7rSeKt3+WA/tklxOLufX
+         q6LkpPtyCUpQ2QK9XKrBmuvNu+BjPXmTEOHdu6aC8HHtYY9xso1ch3sO4818BL98yANc
+         pMxsGKahw00763+dqa8eS4V+VNYlrH47WUCXstW7ojb/rxfdn1j5yn6YdtP85Vz+wuR8
+         U4Jp9cZHA1RGneO4lZLL315VQB5vay29hsHirFxczv9d7dOrFfI3K2EwXMbet5e+VFeq
+         DRBZMf7hNQGtNwg3sPXCXwsw7Cg4gn7NnWjY6jr0bZaD4oDMUnWYmlp+NLAJdgCRFzEP
+         cBVw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aw8Bxc7T;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id f189si628841pfa.1.2017.09.30.00.19.07
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P1ZUq+7r;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::12b as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <zhansayabagdaulet@gmail.com>
+Received: from mail-lf1-x12b.google.com (mail-lf1-x12b.google.com. [2a00:1450:4864:20::12b])
+        by gmr-mx.google.com with ESMTPS id l8si1248909wrz.4.2021.04.06.01.45.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Sep 2017 00:19:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Apr 2021 01:45:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::12b as permitted sender) client-ip=2a00:1450:4864:20::12b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aw8Bxc7T;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id m28so991074pfi.0
-        for <outreachy-kernel@googlegroups.com>; Sat, 30 Sep 2017 00:19:07 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=P1ZUq+7r;
+       spf=pass (google.com: domain of zhansayabagdaulet@gmail.com designates 2a00:1450:4864:20::12b as permitted sender) smtp.mailfrom=zhansayabagdaulet@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-lf1-x12b.google.com with SMTP id n8so2701646lfh.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Apr 2021 01:45:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Vm6wG0M3eWMFlaGa+/+Wx0ULv9Q2iwOqlHEu9cyO3Gk=;
-        b=aw8Bxc7TzS+ik0YNPvH11NQU8g1e196amoQcoz50clVQHrItxfbQQ5s89vf75ZK4qx
-         s05dza38iFVKwdEqzKRBpmOu24LG2f1viofwpB+xk2o9VZcr6lpvFryNzbbq4f5y4L6y
-         OlURrDTxUb0My0t2cvBzsvU0A/ZP3B5qBmDSO1Fl/XU/fq9YP9DXI8kJYyonhid43gHH
-         5hLsZebSR9LbcH/uSF0EtV4J0qC+v4KOD88MzveuTtTnWdMjVlpeCZF9guDPlJrqyg3W
-         Ibp+iRKEVbW5BxQ7tsfDrSMLM2ij+DcVsdHxABtQit0a+wfpprAW36Nu0FJWMeEOw4Vr
-         f1sA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=eG9N6vd8YdDNhKc5wiTz2FLA+NZ0laeofe06nyKfMT4=;
+        b=P1ZUq+7rme2Dwp/A+Ir77qzfzAFu6XaEThogNqcuRwmo4v29fGtj2qeWUd77BSSncO
+         6QMLaOcuw71L2VmIpzIG7JM9TcNQYHNZ6wdvR7KYWpOs4LEBsSyRDnr+4dqsUdc3FVpH
+         9sSZsBUzRl0y3HVvpZFaWei/ubPo2d6Y4R8+CmeAYBXu8ZPY6Jdk4UbrbvgpAgIXByZ4
+         exFDLwHaTsQhNT8fFcyE7ZZ5FFrmA+Z7Pdak+6BOX7PCAs0boKFFUGeQP7RUYvZLXCy8
+         TCrqV/zaobEwEAbuGBRIjfGAYiwuWhafb8zu10mr+kDiT8hPxejTy+BlhETQvCXDyW3R
+         pszw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Vm6wG0M3eWMFlaGa+/+Wx0ULv9Q2iwOqlHEu9cyO3Gk=;
-        b=jLoi5M5tdC7x6g1Ay16cvKkynuzXuE4HET8tuyMS5VkyVRVM3EbUYXpqyNv28nmyHC
-         MsqZ44hQqRASRA1O4ZwimgFBe1mKTID1ynAxu8yq355uLR81MxXGhGxL/B2GegdvdrGr
-         oUGImIttHGBAZzthceHOfp5qo25xHx6eD/D+ngvI61fIh42G/IH+BFnhmiqzGcZRI/wk
-         FXyfAVAeiq/J5WWP3HvPi4aOBb4dTeEoiMJt8lId/sUnxLOs/s7g9BDYdkB2I4gYMYHv
-         rBDiLIJMMDrBG8cy7aW/GHA9vO/hc7q+ipIMPx+9XyhkIppYa0mrttgNJGJxguQL4smx
-         mfjg==
-X-Gm-Message-State: AHPjjUgn7HqZqmssUh1PEa9z3jKeOCEK0I2NY5qRwiR+KLuFUTjLgja9
-	36YVnIUZR4JLse/bNgTBcL6ZFA==
-X-Google-Smtp-Source: AOwi7QAm8nb+IZQOfbRwvk/ff+wvRLQ5G/TnIq3sFCK+wAfbdvLak1AsLL8WXIUEmgPLyaS5djlx7w==
-X-Received: by 10.99.148.17 with SMTP id m17mr4517118pge.114.1506755947435;
-        Sat, 30 Sep 2017 00:19:07 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.168.6.85])
-        by smtp.gmail.com with ESMTPSA id p85sm10295563pfj.47.2017.09.30.00.19.05
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 30 Sep 2017 00:19:06 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH 0/6] Replace container_of with list_entry
-Date: Sat, 30 Sep 2017 12:49:00 +0530
-Message-Id: <cover.1506755265.git.srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=eG9N6vd8YdDNhKc5wiTz2FLA+NZ0laeofe06nyKfMT4=;
+        b=qbiNKPwoWMythB5vV/yRwDstkC/CneL1U+l5lfmu13CcwJwQFxf6qZ7G70cNYbEtyi
+         JEw7ByTVOquxEfehKdVyuiUPYOrwH/IJdK+zfQPUEyiSXSoLtAcOTCKy8EKoLF174/Gl
+         04Bt9TnBWFqMbNtYUA3UteBbuxzb5YzTYZHFOFoo6SiA5F8fOik+abiw/qiuS5netvx7
+         DKXMbUik9980BNWwZhFNoeQY/4T6HuMYD1+J+BuhHEt/6ShAWPvqfj+4MaB4cAMcKLwX
+         43ubpR3oyDSTW0Iume/xzF5hDCvaj/pu3JNHw23xhKgT8Bd1qOa1ItdVosSmdA0Gpn5A
+         kutw==
+X-Gm-Message-State: AOAM532zZPQ/jmCa4entcWC3I6V6U3R/vboUKVXg/p3PamCvZBmyVQMh
+	7MTlkixz9ccTHw7P0NwgpmVZdjtYts+9lw==
+X-Received: by 2002:a19:ae07:: with SMTP id f7mr20754373lfc.551.1617698728861;
+        Tue, 06 Apr 2021 01:45:28 -0700 (PDT)
+Return-Path: <zhansayabagdaulet@gmail.com>
+Received: from zhans ([37.151.32.231])
+        by smtp.gmail.com with ESMTPSA id p25sm2081605ljn.61.2021.04.06.01.45.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Apr 2021 01:45:28 -0700 (PDT)
+Date: Tue, 6 Apr 2021 14:45:27 +0600
+From: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
+To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com
+Subject: [PATCH 4/4] staging: rtl8712: Remove spaces after a cast
+Message-ID: <f8932bfa35eb7480b69a9c8296bb10fac5a28540.1617697237.git.zhansayabagdaulet@gmail.com>
+References: <cover.1617697237.git.zhansayabagdaulet@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1617697237.git.zhansayabagdaulet@gmail.com>
 
-Replaces instances of container_of with list_entry to 
-access current list element.
+Remove extra spaces after a cast to conform with Linux kernel coding
+style. 
+Reported by checkpatch.
 
-Srishti Sharma (6):
-  Staging: rtl8188eu: core: Use list_entry instead of container_of
-  Staging: rtl8188eu: core: Use list_entry instead of container_of
-  Staging: rtl8188eu: core: Use list_entry instead of container_of
-  Staging: rtl8188eu: core: Use list_entry instead of container_of
-  Staging: rtl8188eu: core: Use list_entry instead of container_of
-  Staging: rtl8188eu: core: Use list_entry instead of container_of
+Signed-off-by: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>
+---
+ drivers/staging/rtl8712/rtl871x_security.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
- drivers/staging/rtl8188eu/core/rtw_ap.c       | 14 +++++++-------
- drivers/staging/rtl8188eu/core/rtw_mlme.c     |  8 ++++----
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c |  4 ++--
- drivers/staging/rtl8188eu/core/rtw_recv.c     | 14 +++++++-------
- drivers/staging/rtl8188eu/core/rtw_sta_mgt.c  | 12 ++++++------
- drivers/staging/rtl8188eu/core/rtw_xmit.c     | 14 +++++++-------
- 6 files changed, 33 insertions(+), 33 deletions(-)
-
+diff --git a/drivers/staging/rtl8712/rtl871x_security.c b/drivers/staging/rtl8712/rtl871x_security.c
+index 5000c87752d3..b0cc3c922842 100644
+--- a/drivers/staging/rtl8712/rtl871x_security.c
++++ b/drivers/staging/rtl8712/rtl871x_security.c
+@@ -259,7 +259,7 @@ static void secmicputuint32(u8 *p, u32 val)
+ 	long i;
+ 
+ 	for (i = 0; i < 4; i++) {
+-		*p++ = (u8) (val & 0xff);
++		*p++ = (u8)(val & 0xff);
+ 		val >>= 8;
+ 	}
+ }
+@@ -907,8 +907,8 @@ static void construct_mic_iv(u8 *mic_iv, sint qc_exists, sint a4_exists,
+ 		mic_iv[i] = mpdu[i + 8];
+ 	for (i = 8; i < 14; i++)
+ 		mic_iv[i] = pn_vector[13 - i]; /* mic_iv[8:13] = PN[5:0] */
+-	mic_iv[14] = (unsigned char) (payload_length / 256);
+-	mic_iv[15] = (unsigned char) (payload_length % 256);
++	mic_iv[14] = (unsigned char)(payload_length / 256);
++	mic_iv[15] = (unsigned char)(payload_length % 256);
+ }
+ 
+ /************************************************/
+@@ -995,8 +995,8 @@ static void construct_ctr_preload(u8 *ctr_preload,
+ 		ctr_preload[i] = mpdu[i + 8];
+ 	for (i = 8; i < 14; i++)
+ 		ctr_preload[i] = pn_vector[13 - i];
+-	ctr_preload[14] = (unsigned char) (c / 256); /* Ctr */
+-	ctr_preload[15] = (unsigned char) (c % 256);
++	ctr_preload[14] = (unsigned char)(c / 256); /* Ctr */
++	ctr_preload[15] = (unsigned char)(c % 256);
+ }
+ 
+ /************************************/
 -- 
-2.7.4
+2.25.1
 
 
