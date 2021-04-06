@@ -1,63 +1,61 @@
 X-GM-THRID: 6946280249577439232
-X-Received: by 2002:a05:600c:4998:: with SMTP id h24mr5761798wmp.174.1617739011000;
-        Tue, 06 Apr 2021 12:56:51 -0700 (PDT)
+X-Received: by 2002:a05:6602:722:: with SMTP id g2mr24933071iox.1.1617737778074;
+        Tue, 06 Apr 2021 12:36:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:58f0:: with SMTP id f16ls607418wrd.0.gmail; Tue, 06 Apr
- 2021 12:56:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOwQ+3djE1AVwn19lEuqyZyXpWS4TFg6DRY2CdIaplyoNoFav/97Xs2VVo3UpMXWpqrlQt
-X-Received: by 2002:adf:a15e:: with SMTP id r30mr18744088wrr.101.1617739009630;
-        Tue, 06 Apr 2021 12:56:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617739009; cv=none;
+Received: by 2002:a92:2811:: with SMTP id l17ls1813582ilf.2.gmail; Tue, 06 Apr
+ 2021 12:36:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxv/yYB+S16Ch+Sf1i4BgH81BbyTRLOc4zYqBAPV/WmeZON9SqU0zM9oxRHHqkuHzqtBOHW
+X-Received: by 2002:a92:c241:: with SMTP id k1mr21835071ilo.119.1617737777200;
+        Tue, 06 Apr 2021 12:36:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617737777; cv=none;
         d=google.com; s=arc-20160816;
-        b=CVBXgCDVv1wyxYes3MSNHgmkpukICL1iWeC81q9jbYo/5lZY1fAY8+wfke6dpA9n5l
-         bjIY9HTmCzkZt5SVxzzA6jqJvKp/HEY+oy4fnyyuYkBOhSnqWD99sQlXyURwXU6YWMYT
-         UpY9LY6imzP+aZZ4waOKcafrXl2ismSnvw9/Fv3PnZIoo6I0w8T81Uo+ymhhmK5qktSt
-         4/KNLEnz7TCsAoxUaeP46xgqJ6n1gK4H71irxZLWCibeMzlE64dGYs5LI5c5w+kInjhj
-         uGFwA30eCkNUpQElEGTCFirCyFo/24omYfftwzKsgd4vugiPmmSALCyy2SVe2fPXOyKp
-         dSoQ==
+        b=wfT9VqIZdCL/a/KKOCdLDMbhot188w9N9CgtPGe4iWoBh++kxjyvXq68I5soPjfac/
+         BmXG4QVUs6Xqht5+dF10INdvLcCX5zZ1fu5kzOJQZ8umqi1nKszTjJZWcKmUz5qQ/d3m
+         sC8yu9tO806E+Zp+DtH9YhUcfTwb+jVlInwwi+Msn2MY3GAUdd0ANSwP9pYClZuuY2Rr
+         1rBWzWFyZVJx5Ug6bneslsQhDHKKIcrtnxzQV2Mc4KkKIpFx75xqEI5aFj31CKz1803u
+         CafEmp5PTxp4VrGK7+zpwN1B0LpsU4lcV+TQ7QL+MdlFSLyVKYJhJK0XNcn1t0sat/Wo
+         WHbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=SmuAICY7BfV2FQ+TWZqN5rr6C144dVwfzZ62LXjDgDI=;
-        b=Fs79dPt71EyI0Ociw6tv+Qbh7/PsyBWeGha0Hm5smjUbHXELHS/n0jemLPFcw7mGd8
-         XIM8InF18o2Yp5X6ic97jYIhGELU3Qh9vXD2tKwMqeLN4aTAop0/5OmiplHbzo1FkZ8a
-         BbeRSdX9zqL3SD6rZdlWkliphEdsWi8QO3jeQZo/Utq08pqOmYoXwDTSxs5OkuLW3VG+
-         3MGFpqIjQI77dLLFqC8bmzmU0xndk4czG88oXoIglWWVlMEt34GJrYzcU5CRS1DBOQkk
-         hjQfDjX0Fj9qTsWCEZ74I8kxwdWVKpFqhvA1XNWszqegaia6i10FyWHaJFKOrmFpqnZ1
-         xtVQ==
+        bh=8YImkJ5UUfAsWVSWQff3Ob98hWvLX+hpgde094pf5sE=;
+        b=HhLhHqbZ9ht7YwcNKq7K2b2VsPHWxnk0r8lgi23y9hQwIPcfZ6gK+l+DmfjfRdvYEy
+         nx0ZTar7P3pcYa5F74gxlykfj7kP++syjGgyzcSihijo7LrDrv3OOevBFGvncCtxct5r
+         L8zI59ID+zeURYULUMOAxMrtzvATMojtEIN3Lhjhf4Y7uq11lfqsROuHgEiBtqC78aJ/
+         YbbcEyGD9hXczKj8vhBPq8wAdA/6C+p8g8X9VRxe8lRnU5ICUJ759Md0QXBXd5Ipus3K
+         mmnq3tYm8tIUtY75fgAQ61nug5rXPcI7ug340WmYiYY6l/FAX+xTNjcpnH6faw7iZQ/q
+         TD0w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=EhawNeEX;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-Return-Path: <willy@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id p189si274171wmp.1.2021.04.06.12.56.49
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=qQs+DIBu;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id w1si1238327ilh.2.2021.04.06.12.36.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Apr 2021 12:56:49 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Apr 2021 12:36:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=EhawNeEX;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=SmuAICY7BfV2FQ+TWZqN5rr6C144dVwfzZ62LXjDgDI=; b=EhawNeEXpMRPlr1ZhJ3QQHx5Zf
-	+LoaIUlKOpitU0CxrCHiXJT68Dr645j4vuu6J0PZIqVtqW+RSRoyPzocyN6tBo86mm169kTIUAJtW
-	mOvce3s1KJ2x+9bIgfqJvCInxD1dYguBlOwvsXwYLNrYsw2sQwdODQCAeXh/5Uk5YWT2hnYX+XISl
-	jS62mWkspKvymAoUOuSRrTnQl85OXp9zr4dygdB0YHq7xCDExbcMdAGsxkascDc7hUSWDVFiYVg+F
-	o8KUXoNpkgVQcglfei6ujXuv5GOLqI99o4p2Gy25H/aLjM9VvyDckYLORCgvK7qj29C1PuVGB2CJE
-	Nm3geIqQ==;
-Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTroD-00DLMI-Tr; Tue, 06 Apr 2021 19:56:27 +0000
-Date: Tue, 6 Apr 2021 20:56:21 +0100
-From: Matthew Wilcox <willy@infradead.org>
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=qQs+DIBu;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A6777613A9;
+	Tue,  6 Apr 2021 19:36:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1617737776;
+	bh=MJKZMQKHJHY6Vc9TMSOIgqmLg1at+USHkUd5zXJWp4M=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qQs+DIBu7bc3HH4i/wM6Vq+v8ecI711FauSPxZYFbEyoIyieRBKlyQdgfdDaKRM41
+	 IH83oRKcpoNg2QSYNHPuukF9fc+R+G5W6JMzk+NDoXtCaKDEi3WFV9XAOAyuAmcDSp
+	 ALvjCkvqdRVKKi/wHvvxSPbOj/owZqQVZYhE7GJA=
+Date: Tue, 6 Apr 2021 21:36:13 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: Re: [Outreachy kernel] [RESEND PATCH] staging: emxx_udc: Ending line
- with argument
-Message-ID: <20210406195621.GU2531743@casper.infradead.org>
+	outreachy-kernel@googlegroups.com
+Subject: Re: [RESEND PATCH] staging: emxx_udc: Ending line with argument
+Message-ID: <YGy4LXHBrBb/r3dk@kroah.com>
 References: <20210406193409.96428-1-martinsdecarvalhobeatriz@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -67,39 +65,20 @@ In-Reply-To: <20210406193409.96428-1-martinsdecarvalhobeatriz@gmail.com>
 On Tue, Apr 06, 2021 at 08:34:09PM +0100, Beatriz Martins de Carvalho wrote:
 > Cleans up check of "Lines should not end with a '('"
 > with argument present in next line in file emxx_udc.c
+> 
+> Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+> ---
+>  drivers/staging/emxx_udc/emxx_udc.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
 
-I appreciate that you've removed the checkpatch warning, but this is
-still harder to read than the original used to be.
+Why is this a [RESEND] ?
 
-> -				_nbu2ss_writel(
-> -					&preg->EP_REGS[ep->epnum - 1].EP_WRITE,
-> -					p_buf_32->dw);
-> +				_nbu2ss_writel(&preg->EP_REGS[ep->epnum - 1].EP_WRITE,
-> +					       p_buf_32->dw);
+What happened to the first version?
 
-> -		length = _nbu2ss_readl(
-> -			&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
-> +		length = _nbu2ss_readl(&ep->udc->p_regs->EP_REGS[ep->epnum - 1].EP_LEN_DCNT);
+Also, your subject is odd, please look at the documentation for how to
+write good subject lines for patches.
 
-> -			regdata = _nbu2ss_readl(
-> -				&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
-> +			regdata = _nbu2ss_readl(&preg->EP_REGS[ep->epnum - 1].EP_STATUS);
+thanks,
 
-The real problem with this driver is that their abstraction layer is
-wrong.  For example:
-
-        /* Interrupt Status */
-        status = _nbu2ss_readl(&udc->p_regs->EP_REGS[num].EP_STATUS);
-
-        /* Interrupt Clear */
-        _nbu2ss_writel(&udc->p_regs->EP_REGS[num].EP_STATUS, ~status);
-
-If instead this were:
-
-	status = nbu2ss_read_ep_status(udc, num);
-	nbu2ss_write_ep_status(udc, num, ~status);
-
-that would be a lot shorter and clearer.  Cleanups along these lines
-would be a lot more useful, and would fix the 80 column warning.
-
+greg k-h
 
