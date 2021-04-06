@@ -1,112 +1,245 @@
 X-GM-THRID: 6947860813701971968
-X-Received: by 2002:ac2:58fc:: with SMTP id v28mr19528558lfo.201.1617698679839;
-        Tue, 06 Apr 2021 01:44:39 -0700 (PDT)
+X-Received: by 2002:aa7:da06:: with SMTP id r6mr36791387eds.86.1617698300925;
+        Tue, 06 Apr 2021 01:38:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:a409:: with SMTP id p9ls3442185ljn.0.gmail; Tue, 06 Apr
- 2021 01:44:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1T4PEFcpcqTKKYjXqUJxlht5/NtWjwfFHOuAITlbdjdmPAckKRkqOYJBa1VPebiJyPzL7
-X-Received: by 2002:a2e:a494:: with SMTP id h20mr18455786lji.292.1617698677864;
-        Tue, 06 Apr 2021 01:44:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617698677; cv=none;
+Received: by 2002:a05:6402:3592:: with SMTP id y18ls11141254edc.0.gmail; Tue,
+ 06 Apr 2021 01:38:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzW9SzDXovywG8iWKvvG1ex8SirHpNXB4cM1aj48Guczt31eSEce+Z0m0wyHde6yIFcsWUT
+X-Received: by 2002:a05:6402:3487:: with SMTP id v7mr36318284edc.302.1617698299534;
+        Tue, 06 Apr 2021 01:38:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617698299; cv=none;
         d=google.com; s=arc-20160816;
-        b=K3w3geQNAUvzOoMcFT6Q7UpA24u5YvJObOHAXqLmulF1kvhMQDi0qi2pktnRLlImib
-         2GskwbS5pvFIO3WME5YdtSIsoloR+oLTtiVXHxPmTHRLY5ZJqkvHoHSW+sM0T7qhQem3
-         MY0RTet+T5cSA4raHD7T4t7MuSoyXUqz0s3wMV7VY9lizRpuNX37fCVNhLKfugjMk5yz
-         uhVvZ464jQJqGoKG2ps/bXxiKvNimimuXXDTpX9SynGVMQfotTpjOko4jb/FDuFDWAZg
-         TmYHMpcb2uRJoFLdvYfKW9lKyw063oVY/9Yjrwqtned9CM4MDFjhZ0YmVvsvSlYUcxjN
-         +CBQ==
+        b=HufNzqaZTmP9yKzKrBkur6M7FWK4FloGfN6Vnqt11IUA0J+wA/7H9gnKghQvGHr+Qz
+         v1hg0+eIzpZNHLCi4lQKZDUEjg96Vsd2iDQOn5V2tpIMTXqtifOazuo8Zp99d+bOk3A0
+         mqXKiVLJSQYqFA3qverEmwieOJhR/oXscEKRC4HUSgWg9UZQPsTKjXs3ePZjiwFDhHLn
+         I5X2qb8++CYCo8MuMRJGuWfRHlmfNMcb8tGyY6oYFPT29dz+sVVffepDwM7TC5UXOF6I
+         U30wYLrc2d9RiIDW/WIbKLUYDN8lb3nx0X3JJAA6cNBRGijIbAv+/wHh4TZdLCr3MLlv
+         bK8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=GcK8tzId1wigYF+ePqJW7G/0e+LAxpGDsY2frU7iY8A=;
-        b=q//zCYZHnQCl+y/YIkETZn0F6raWDat0mnHZDcmBHuUBExCO/r2GY9oeNF/t1ULcNJ
-         i6hxCXte2QoPyL8sLsAhDBZlEaCiZGXLIBYjfzsMSEFfne5lgasJx50Bm4v2qbXy/PMM
-         S6eRKZ7dm8A4JCccPMKAIDWwxdXHW8QaG6N/xzTgKOHeD4ibqskHQBfHXxUNXhkqSkTY
-         va3cyi6MFliURuAQcjzCIRnOSL/vt+1k++xdPzt2/mhuuY0etvWUHiZEI87lo+/km8aJ
-         8/8yrBVpAnBHaQYRg1AY2rOxsK8S0KAQZdLnTtiYyUL3CS2jaOiDWne/2mFMS3p5F/kR
-         mDww==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=+qAVfPsEqxXkOp1V0LLskniIbyAGOgAdLuDthxAAEJ0=;
+        b=qrj2eee5OE+lTU1nKcDs1WLWhIN7iPf27MFLIT/nFPvvSBDSjjwqhWYwh+KledZbAA
+         gExPRDoP2hp+5ZY/R/XtLvRI9zQ2Gl8cb/I7tX2v2GvT5zvzmpXsIMXFAp2C/VqY92i3
+         TErRyf1ddGXLVd35lZjfYEXqd1VDVr/gnY13a2ZXBrzKZ7gQoWQmBD0OQcBxfWtid6ca
+         6Boa9fgsH60nGrKqyPO7O/5Krh5F7XFw+Wa+UxTZZrO7cOQOZPI/nazvxrcZPBaX8/Yd
+         IFofHZPb+le/b5BztnU7s0eGcloYnqnlVJ/9YGxH58sIMqfkrGXxdib+jbQegJxeBkQ9
+         QKiA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id p5si117325lfd.4.2021.04.06.01.44.37
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ey5GkVRk;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::535 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ed1-x535.google.com (mail-ed1-x535.google.com. [2a00:1450:4864:20::535])
+        by gmr-mx.google.com with ESMTPS id ck26si2773674edb.1.2021.04.06.01.38.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Apr 2021 01:44:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Apr 2021 01:38:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::535 as permitted sender) client-ip=2a00:1450:4864:20::535;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Ak6OtjKGg+A5N+bFtpLqF45bXdLJzesId70hD?=
- =?us-ascii?q?6mlYQxZYa9HdssiokugS2xOcskdyZFgLn9ecNK6cBVbV8pBo6YccVI3SOTXOkm?=
- =?us-ascii?q?2uMY1k8M/e0yTtcheOhNJ1+K98f8FFaOHYIkN9ia/BjTWQN/YF7J25/LuzheHY?=
- =?us-ascii?q?pk0dOD1CT6179Q92BkK6PyRNNWp7LKE0Hpad+cZLzgDIER98Uu2AGnIHU+Lfzu?=
- =?us-ascii?q?elqLvaYAULDxNiyA6CgSLA0t/HOiWYxRsXXndzx64j+wH+/TDR26PLiZ2G4y6Z?=
- =?us-ascii?q?81WWw4VdmdPnxNcGLteLkNItMTnpihylfsBIR6CClCpdmpDg1H8a1P335zswNc?=
- =?us-ascii?q?V67H3cOkuvpwH24hLt1DY152Wn4UOEgF/uq83wQzIhD6N69MNkWyqcz3BlkMB3?=
- =?us-ascii?q?0apN0W7cnYFQFwn4hyj458LFTVVDile0m3w/iuQe5kYvEbc2Wft0l8gy7UlVGJ?=
- =?us-ascii?q?APEGbR84Y8CtB0AMXd/vpNNXixRRnizy1S6e3pek52MgaNQ0AEtMDQ+SNRhmpB?=
- =?us-ascii?q?1EcdxNYShDM73rdVcegH2830doBT0J1eRM4faqxwQM0bR9GsM3fARRLXPHjXHE?=
- =?us-ascii?q?/uE7sfPWnRloX+77o07ty7YZBg9upwpL3xFHdj8UIicUPnDsODmLdR9ArWeX6w?=
- =?us-ascii?q?WTT2xtsb759luqfkTL6uKyeKT1oplNatsuh3OLyDZ9+DfLZtR9PzJ2rnHohEmy?=
- =?us-ascii?q?fkXYNJEGITVM0Otsx+X16VuMrEJpftqvfQfJ/oVf/QOAdhflm6LmoIXTD1KskF?=
- =?us-ascii?q?xFusQGXAmxTUW2ngYAj45pJ/EK/T+uIXyIQLK41UugUZklii/KiwWHp/m51zWH?=
- =?us-ascii?q?E7DKLsk6u9q2Xz133P9X9RIRZYDlxY+vH4SHVBqRURP06xeqZGuNOCYmdb2XuB?=
- =?us-ascii?q?KHZEPpvrOT8ag24y1bO8LpSWyyxnIcmgKHiilHcWpGiHVdMAgaWF/97iYY4kFZ?=
- =?us-ascii?q?4oV6x6CBXTG3VO6EBXgVYGTDVBal7UFzvoh6ngpocTHvvje951hxruCdJIqFrE?=
- =?us-ascii?q?3H/s0v0Hdz8+ZXqDQMSXiQEhS35/nVtq6ZISh7KGhHKGNXY/uuIlK1dBAV7ndo?=
- =?us-ascii?q?5uPUCgXsF5i7rrcAZ/QSOhnjqBkSw+fWLs6gE0inH+KzaXPdXGGEBUtHwd8quC?=
- =?us-ascii?q?yiI8SkytO2ZLLlxqu4x0EmrL/lxp1/WQW6a122yNLlQYxOUQNyzEfCsSLgtiy8?=
- =?us-ascii?q?vf7m/fpB+yUVEdgrk+NO3UC7ouN5vJ3Gm2FYGOnaYaW/9YlawVfuzGg6sua6ay?=
- =?us-ascii?q?agWVJDT3B6cCwAqOvEsoPyFytT0hmfPs0xv18Xig0BcEcLfvCWUjY4teD8CX7m?=
- =?us-ascii?q?DiSfrN+o5+l8gJsey5NXi0bMWHx6HRZztKMQjSvmayUuEtpflvzOoPnYo2O6Oe?=
- =?us-ascii?q?fSrD1XlB0hl7BtzzjlkiTKNy562EJpViZNUIeyVS/kMgkdOGKEdDiH27PsYOOX?=
- =?us-ascii?q?UWy1PLNdKA5LTF7Yc1CkqavQ3qJB206CtG5crIWCOFyJ8XA689On5tdUA58Xhu?=
- =?us-ascii?q?ldnyOLH4OUGPTaVj9ED/GmKheLVdIZL1fYk4n1Jf2ZW0uMO5MwD/wxvduDNnJL?=
- =?us-ascii?q?kmyRfBfeqCRCSWF+ZO88+zJFSLhYqn6MO+ly3PUjegZ18GiYAtTz1KUu1zzh84?=
- =?us-ascii?q?jIM21SCuTLfQuUxNqSor3RhuikPt1o+64G3SAEFBNknDjo9LWCRIW0L46/jt4K?=
- =?us-ascii?q?yW0m/w7yNC3oSGHEBMfstWE9xVVYTvKTxyQPJgzYKA7u4rj2BbexElA3QnhD2V?=
- =?us-ascii?q?5ZIa4Z6pnPHTUfblE3HmJBYI/iNEHJd9mkUQ2B59Wtn76ZK2eQMMEOEUR/M5+4?=
- =?us-ascii?q?BNiTps7lz+9UcVYRkotgsm0Oj2XyLaFmU5EbKrkZr9gRAeqqTH41pypG9Iklfi?=
- =?us-ascii?q?jF2HoVD6k8u8pnJclRyskiZ37aGGADchiidQsQBqhbF7On2WSGj2XDeLNkj0wK?=
- =?us-ascii?q?ZAAwwXNUk/j+EwyBzNIKkAmsrgky5qrTEnDjMxxL/uHGDFUjmWHcDxKjfvFNnd?=
- =?us-ascii?q?Oq8IX99Bfm4Ya3ixP1DYn551SBTCctJozA+tlXcDHrLmANLbXCuNSJ0WuLUNMK?=
- =?us-ascii?q?ntSZOEjcjA1gJF52gfxriL8UCtjbZv94eHPQZyvtI2brhxNgqr9Cl+1MGPXQin?=
- =?us-ascii?q?Bfls3AjF62r76SpZI9cKwwMahUkCzB1gYR+VOw=3D=3D?=
-X-IronPort-AV: E=Sophos;i="5.81,308,1610406000"; 
-   d="scan'208";a="501708919"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 06 Apr 2021 10:44:36 +0200
-Date: Tue, 6 Apr 2021 10:44:36 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Re: [PATCH] Correct indentation in
- Hal8723BReg.h
-In-Reply-To: <3119203.byjyqSS6Yo@localhost.localdomain>
-Message-ID: <alpine.DEB.2.22.394.2104061041270.2882@hadrien>
-References: <20210406020815.22995-1-fmdefrancesco@gmail.com> <CAPj211vtzZDmwYomg9BBcZwPWxiiwD55=yEpcAXL2WgzGyvUDQ@mail.gmail.com> <alpine.DEB.2.22.394.2104060956180.2882@hadrien> <3119203.byjyqSS6Yo@localhost.localdomain>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ey5GkVRk;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::535 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ed1-x535.google.com with SMTP id dd20so8300917edb.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 06 Apr 2021 01:38:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=+qAVfPsEqxXkOp1V0LLskniIbyAGOgAdLuDthxAAEJ0=;
+        b=Ey5GkVRkGGVEvW1J5ezamb9jfO28e6HkeP9pqmIoZoNbkeChO+7gKiJDX+WkEcMKyb
+         hPcckAp356UG/L7RjdqZxmvYpXUEhXp6LedE0HyTcF68Vl0UX2Sb6QaAsJA/et+C4lUs
+         V5GlJaXtwO8IuN+OfcMJC+tdCuiqvyVAk1HNfq6cLKKRxJ+loSyTRiugCz07gwXP8SlM
+         KHpu0fAV66GTpfxkcwmCeRcFfuOW5W28piOSSt/vDUxwI+susV5Q2zhJXFm97n4lTw/d
+         HFEMpSfLnCs6vmA551IU7CuXIUcuEnNNuO9vCQOuEyTvA4OxG3gO34AitYpYnvV9yZQx
+         m+hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=+qAVfPsEqxXkOp1V0LLskniIbyAGOgAdLuDthxAAEJ0=;
+        b=chxai+od8Prpz//XWM7SAov1g/+xVtQ0N4YhPxASwGs5yYgK44cUb7OPL5UQKX8cbl
+         4MeInFbfgRl5SutB3m6Er1H02iFfqSCmVLVqODrhlpQXBlMSBFP6zX0JjeZLU12fHcbN
+         OJZyaPhHErrCCEJCbIEuojH0rivD+j54gjFUr4CI4XGmRV1pNuWbmPbYOEN/R3UrDgD6
+         8L1qOXZy+kHUvqQPNFECZKVkhSgfZp9CWiyqChXvg3gbT0xzdDhf1j5HM5s9+qZWmRWe
+         9W7Jd1/RuJFIAocSY78zFTYUXxDFOMaWWYTtWiVAO0awhuMQzjbZUS8XdBhWp05z4Kta
+         nnRA==
+X-Gm-Message-State: AOAM532U9Y5lBQLV30FUbXR+T34sSkZQJ+pLMseK2X1sYOrEzgQxS30o
+	DOAD5vYBEorOtL6v0uWnonI=
+X-Received: by 2002:a05:6402:3125:: with SMTP id dd5mr7572811edb.9.1617698299198;
+        Tue, 06 Apr 2021 01:38:19 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from localhost.localdomain (host-79-42-91-147.retail.telecomitalia.it. [79.42.91.147])
+        by smtp.gmail.com with ESMTPSA id p24sm13414421edt.5.2021.04.06.01.38.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Apr 2021 01:38:18 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH] Correct indentation in Hal8723BReg.h
+Date: Tue, 06 Apr 2021 10:38:17 +0200
+Message-ID: <3119203.byjyqSS6Yo@localhost.localdomain>
+In-Reply-To: <alpine.DEB.2.22.394.2104060956180.2882@hadrien>
+References: <20210406020815.22995-1-fmdefrancesco@gmail.com> <CAPj211vtzZDmwYomg9BBcZwPWxiiwD55=yEpcAXL2WgzGyvUDQ@mail.gmail.com> <alpine.DEB.2.22.394.2104060956180.2882@hadrien>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="US-ASCII"
 
-> Ok, I understand that I have to be very careful when working with spaces and tabs because
-> they have different side effects on formatting patches, but...
-> How can developers check that the patches they are going to send with git are
-> properly indented? I mean, that the patches exactly represent what one sees in vim or in less?
->
-> Apart the patch we are talking about in this thread, there is more: checkpatch.pl emits
-> warnings when certain lines are not aligned with an open parenthesis of a previous
-> line. How to do proper alignment? Using +/- spaces to align can lead to strange results
-> (if I have understood what you wrote). How to make a good alignment without incurring
-> in undesired side effects that propagate in the resulting patch?
+On Tuesday, April 6, 2021 10:01:55 AM CEST Julia Lawall wrote:
+> 
+> On Tue, 6 Apr 2021, FMDF wrote:
+> 
+> > On Tue, Apr 6, 2021 at 9:27 AM Julia Lawall <julia.lawall@inria.fr> wrote:
+> > >
+> > >
+> > >
+> > > On Tue, 6 Apr 2021, Fabio M. De Francesco wrote:
+> > >
+> > > > On Tuesday, April 6, 2021 8:40:37 AM CEST Julia Lawall wrote:
+> > > > >
+> > > > > On Tue, 6 Apr 2021, Fabio M. De Francesco wrote:
+> > > > >
+> > > > > > On Tuesday, April 6, 2021 7:52:52 AM CEST Fabio M. De Francesco wrote:
+> > > > > > > On Tuesday, April 6, 2021 7:12:20 AM CEST Greg KH wrote:
+> > > > > > > > On Tue, Apr 06, 2021 at 04:08:15AM +0200, Fabio M. De Francesco wrote:
+> > > > > > > > > Correct indentation issues of many #define and comments in Hal8723BReg.h
+> > > > > > > > >
+> > > > > > > > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > > > > > > > > ---
+> > > > > > > > >  drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 604 ++++++++++----------
+> > > > > > > > >  1 file changed, 302 insertions(+), 302 deletions(-)
+> > > > > > > >
+> > > > > > > > You forgot to cc: all of the needed mailing lists.  And your subject
+> > > > > > > > line needs some work.  But the biggest issue is that I do not understand
+> > > > > > > > what this patch does at all.  What is wrong with the original code here
+> > > > > > > > that required you to "correct" it?
+> > > > > > > >
+> > > > > > > > confused,
+> > > > > > > >
+> > > > > > > > greg k-h
+> > > > > > > >
+> > > > > > > I'm sorry that I forgot to cc linux-staging and linux-kernel mailing lists
+> > > > > > > and for the subject I had already sent a v2 patch that had
+> > > > > > > all the required tags (staging: rtl8723: hal:).
+> > > > > > >
+> > > > > > > I think that what was wrong with the original code was that
+> > > > > > > the #define values were far from the symbols with random indentation.
+> > > > > > >
+> > > > > > > For example, I changed something like:
+> > > > > > > #define SYMB1           0123
+> > > > > > > #define SYMB2 5678
+> > > > > > > #define SYMB3            9ABC
+> > > > > > >
+> > > > > > > to:
+> > > > > > > #define SYMB1   0123
+> > > > > > > #define SYMB2   5678
+> > > > > > > #define SYMB3                   9ABC
+> > > > > >
+> > > > > > the preceding defined values are in a single column. I don't understand why KMail show them in different levels of indentation. However, I hope that my argument in support of the patch was still clear.
+> > > > >
+> > > > > There is surely a difference with the use of spaces and tabs.  If you
+> > > > > change something about the defines and this problem shows up, you can make
+> > > > > another patch in the series to make the spacing more uniform.
+> > > > >
+> > > > > julia
+> > > > >
+> > >
+> > > > I have not this problem in the file in my git/kernels/staging directory,
+> > >
+> > > Are you just looking at the file in your editor, or have you actually
+> > > counted the spaces and tabs?
+> > >
+> > > julia
+> >
+> > I'm just looking at the file using Vim and all seems perfectly aligned,
+> > but now
+> 
+> Some code may be
+> 
+> #define NAMEXXXXXXXX27
+> #define NAMET27
+> 
+> These may look the same in vim.  That is 8 spaces = 1 tab (I realize that
+> this is a massive oversimplification :).  If you start on the left and
+> move one space over at a time you will see the difference, because it will
+> move over the entire tab in one step.
+> 
+> When you turn the code into a patch, one space (or - or +) gets added to
+> the front of every line.  If a tab is used in the middle of the line, this
+> will often have no effect on most of the line.  If spaces are used, the
+> whole line will move over by one.  Thus the code can look more unevenly
+> indented in the patch than in the original file.
 
-The patch doesn't really matter.  What matters is the actual code.  But
-what matters is the actual characters in that code, not what you see on
-the screen.  Generally, if everything is done consistently, then
-everything will be consistent after it has been pushed over by one space
-to create the patch, even though it may look different than the original.
-But what matters is the consistency.
+Ok, I understand that I have to be very careful when working with spaces and tabs because 
+they have different side effects on formatting patches, but...
+How can developers check that the patches they are going to send with git are 
+properly indented? I mean, that the patches exactly represent what one sees in vim or in less? 
 
-julia
+Apart the patch we are talking about in this thread, there is more: checkpatch.pl emits 
+warnings when certain lines are not aligned with an open parenthesis of a previous 
+line. How to do proper alignment? Using +/- spaces to align can lead to strange results 
+(if I have understood what you wrote). How to make a good alignment without incurring
+in undesired side effects that propagate in the resulting patch?
+
+Thanks,
+
+Fabio  
+
+> 
+> But working with code is not about just looking at it, but also moving
+> from place to place in it to change things.  One can move across tabs more
+> efficiently, so it could be nice that if the developer already started
+> using tabs sometime, then to use them all the time,.
+> 
+> julia
+> 
+> >
+> > I am not sure to understand what you mean about "counting the spaces and tabs".
+> >
+> > However, what I did when I found lines with random indentation was:
+> > 1) to delete all the spaces and all the tabs that were placed between
+> > the #define
+> > directive and the defined value;
+> > 2) add a single space in order to separate
+> > the value from the directive and two (8 character standard) tabs for align the
+> > current value under the one of the previous line;
+> >
+> > I'm preparing a v3 patch to explain what is wrong with the existing code
+> > and why [I think] my change makes it better. Probably you've already seen
+> > that Greg has responded asking just this.
+> >
+> > Thanks a lot,
+> >
+> > Fabio
+> >
+> > >
+> > > > it just happen when I see that patch in KMail. When I open it with Vim,
+> > > > all the defines are correctly aligned in a single column (that is, the
+> > > > correction I made to the indentation levels of the defines is there). As
+> > > > a consequense, I suppose that the patch itself is correctly formatted.
+> > > > Doesn't it?
+> > > >
+> > > > However, what is really important is what Greg K-H thinks of the patch. I'm not sure I was able to explain to him what I've made and why it improves the readibility of the whole file (may you please take a look at the original in Greg's tree? You would see that random levels of indentation I'm talking about). As you can read above, I asked him if I should make a v3 of that with a clearer explanation about the work I've made on those random levels of indentation but I haven't yet had his response.
+> > > >
+> > > > What do you personally think about producing a v3 patch with a better explanation of the work I've made?
+> > > >
+> > > > Thanks for your time and patience,
+> > > >
+> > > > Fabio
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/CAPj211vtzZDmwYomg9BBcZwPWxiiwD55%3DyEpcAXL2WgzGyvUDQ%40mail.gmail.com.
+> >
+> 
+
+
+
+
 
