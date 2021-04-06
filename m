@@ -1,78 +1,78 @@
 X-GM-THRID: 6947867046648479744
-X-Received: by 2002:a63:1109:: with SMTP id g9mr3969669pgl.88.1617676372464;
-        Mon, 05 Apr 2021 19:32:52 -0700 (PDT)
+X-Received: by 2002:ab0:3c4a:: with SMTP id u10mr15150244uaw.11.1617676369779;
+        Mon, 05 Apr 2021 19:32:49 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:7f10:: with SMTP id a16ls7025518pfd.7.gmail; Mon, 05 Apr
- 2021 19:32:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxqymmKUxYQ77nF/yXukf8L36G8rDY0iZntM20qxyRuUshsxVELWc5g2bPCGaupWZpqRX2K
-X-Received: by 2002:aa7:91d1:0:b029:1fe:2a02:73b9 with SMTP id z17-20020aa791d10000b02901fe2a0273b9mr25918206pfa.2.1617676371323;
-        Mon, 05 Apr 2021 19:32:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617676371; cv=none;
+Received: by 2002:ac5:c2ca:: with SMTP id i10ls895179vkk.5.gmail; Mon, 05 Apr
+ 2021 19:32:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwoZPz3anVL6HdQ9sAsitbTJtaqO7+aGoB1m31kIN4XAcn9qP23OMmR4PczQJGPwZXjgnLa
+X-Received: by 2002:a1f:9345:: with SMTP id v66mr15824834vkd.22.1617676368753;
+        Mon, 05 Apr 2021 19:32:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617676368; cv=none;
         d=google.com; s=arc-20160816;
-        b=1BJBNYR7R5Wf5OACw/uLDN1Tb/yR6pK0v2Vj6C3mEFzLa9f0XZ4/0c0txYgL7UPniV
-         TnO6WFbveNBqF8xuN6/d/1K2DnjAc67w46TQNgof98d770UhwOhZwLpSZyD4PQaXt/SI
-         k2ctMlIvQ7L5SS6DhbGGgjLlEAH4aY0t5mKKAT8fMNGCeQuq+w4dIu3W7PKK3CxnT5cg
-         o7H1gIbR/99WsbUaA5f1yJLeIZDeCCE4o4bdLoVClXsG2MeQd//tKKrwTiGULSGyP4PC
-         RH6jWAHfdf0O8xJ3ZJHlMT9tG6JLHJkHLAf/0uId2jiuL3UZW9dPnJGkBhlt3wsTxj2D
-         PIZg==
+        b=aRFOB4e8rDi6PkrTWXK9lKlCbn7RHIBqh3qYKdWAcrxIr1E8T7SWeMWroPkZrYeqTp
+         ZXpOKikFVn4FWLTG5t1SSRESsfk8YzcU8aG0DNyVSTNLw87CQTn+kaY2eZ2e80HlNB1C
+         Y8yi40duvmWqDoGkUvEQQ5OAvZIOZh9karcvV8VnvXhlqE4rhtZ/abgTasXDEZZcmxtv
+         GHAEu9XcbrZi66upsBBDXymGtEWLvfzbRh5VqhMtPs4k9a9KrvLbYZFPgXQgVXqP8JLa
+         nF28BSHwBq8y696zx8QwIHe4jBBrBEPpEztoFzzoCxPlh+NNzv2TQpR2zJ+2+izapy/H
+         buRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=kc3RPHxu+J++goCeHYiszuO53o7w5S9ayyCjfILd0lM=;
-        b=f6SgWqz7YK+968Zs2LmVCUrdT9myc70Z+b8PoYLV8a5ouG1YPMzHd9Gf7CE4VnussW
-         QCxMx0rXonw4yIA5uKXXbECQCqZ6mqggQESW0kmL1xhtj0caxp/5Dzw0ZwDXcWbNaaBW
-         nWSwyS2HKXVytdMrOdhQ0W8YczjFjNNAyNjiuBTDg3UFOIoPbuhTb+V1mvV/UprgXHxh
-         dAKpW6Vp8jQ7Qi2bdIePyqjk3sGnc0ebdd6FyHqbJQvnC95DC4rB5TLPADeV9t8H4+Gd
-         d00kTnZEKbJ71F2Lx9k55HmFoo4sbkjbesN2FyHW0rONFq6f1M07CLv4CRpBXXrsi5CU
-         xAKg==
+        bh=3K8MDaPlGRbY3ftET9m0Ij8E3KZKZRukEowLKCuMZ8g=;
+        b=LNYGDFE4To/t8jolSnGeAkWe1iLtnk7bM+isP1DHYbePerB+ARODvjsj6crPR8ZT+T
+         NlQoEf8fgCBnHQXG7ZRL9xNtQGNR92UaSqh5Z6qOe7hoV/mi4GnYDObjoYlX7b0W4MfX
+         Dtb50GHkrDDGuTN8FauytH66rVtEE5NwAjEsWNxmsmjAhfitN1XxF39MHnQXm8q3HW4s
+         19OqJzMFrdLw4XSm5Ka8krd3fMacS0vKgc7evbP6XBdkBEF/L6BFMwBmEWpcm1nt39bK
+         rDwD+PEyJGEEGbjIVoiwEBVgeCuWdlBimR8+FIzayG4N1TNUbwcWsZB6ZUW46fl6A5oe
+         DsQg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JRYHITpo;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nEImKKfq;
+       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id f7si104768pjs.1.2021.04.05.19.32.51
+Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
+        by gmr-mx.google.com with ESMTPS id r17si1064599vsf.2.2021.04.05.19.32.48
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Apr 2021 19:32:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        Mon, 05 Apr 2021 19:32:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JRYHITpo;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nEImKKfq;
+       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id t23so3855068pjy.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 05 Apr 2021 19:32:51 -0700 (PDT)
+Received: by mail-pl1-x644.google.com with SMTP id y2so6660465plg.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 05 Apr 2021 19:32:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :in-reply-to:references;
-        bh=kc3RPHxu+J++goCeHYiszuO53o7w5S9ayyCjfILd0lM=;
-        b=JRYHITpo6w4w07x9yRv9Y9YpxqOUkRdrcY7yhtNdP5rDzdROEP2WMn26aq0pTDHK1T
-         ybmQVLS7toVRvKURVxYTDZc0ApGeOYbGJVoeq1vcSbp9gEffzjUTWmlDLjqTLv+SraPk
-         GmZetivej+25TtENIpyBrjUBHl/Siq/9Bv68wmhqD9PKiNMmmi0GD6x3Fb1kB/wvJYGa
-         wbuEn1uafdMLoIT29uETd8/6IvNGUig3tRIMgqb1up2jvShYxR8kZaOiZP4TdXacYVpL
-         TCCcrjuanWl/IFfwJMwuzchhVBu3eZWAWygQ8oUy7FMLz/g9WhdUyF02omrB+T/byJGv
-         aIvg==
+        bh=3K8MDaPlGRbY3ftET9m0Ij8E3KZKZRukEowLKCuMZ8g=;
+        b=nEImKKfqFD+OW8rN4yJUDbXbw0X90WNZZuYPkrqxC3Owy2H7h2Hd56p6DL8eNiypJl
+         vPQZdCY63aQUMfIFzLAJJrg+jzc/AogX3MBoNWjB51ibpWbezLNNHxSEsIL02HKKIGWx
+         wde80EQDRXdKBVV3VNsj33XHH3q8Locyd1XkiYIDnA7VszrHm+VXjIlwIzuknYDzcNsA
+         1a0hhVTEOSP4fWC1dTaIY8ilYjyLO0bN1qLBvXdq+jtLYg5eluZsKhdx9EV4O/RUoUzN
+         4wlqbnICJ/TTFnVpQP5S2793FkBEGkgINBX/X5tNO6lLrvREZN+i6FUuWze2WWRCo6LR
+         8jQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references;
-        bh=kc3RPHxu+J++goCeHYiszuO53o7w5S9ayyCjfILd0lM=;
-        b=liQdHcu7nHX0CtcRosDRpQ+uWNNBhA0XnPqvMq+CYp8iJ09z56aNIBLVawOsVqP018
-         PTa+hGbFU44sxlzDbMa6NmMksst5T+d1uGt+nfaKytXWQMP9PR21ig8D53iqzEZAGJjT
-         VgpfEXf2N8csVHmirJEEFfikRyr1N+WUyHFB2sendk88/1W2CPmO7iY83D0PI2UPfsql
-         TGv+firR9rO8V/QZ9PLluUjGxDyVOR9kSodAxaQZQXqPXx+uSaUz/Y7qaK5ib0sW7eix
-         qe+41ICa24HuzzVI24T9CD1NKkjc9bSWzQzpDOaK+G9xNrVQWGjhdCpT655GvMDMrHIm
-         ocuA==
-X-Gm-Message-State: AOAM533RDGvmZlg3aCXy/kXGqicqe4E1U2vFuw8sxD98RiVhbpaq/Wzp
-	TXsEFRzOIE74kFAC/IbPjzY=
-X-Received: by 2002:a17:90a:4a8e:: with SMTP id f14mr2128684pjh.84.1617676371091;
-        Mon, 05 Apr 2021 19:32:51 -0700 (PDT)
+        bh=3K8MDaPlGRbY3ftET9m0Ij8E3KZKZRukEowLKCuMZ8g=;
+        b=a+GZg0045+iUtcuXc7gNZKy5s+tW7/i1WCZ0CT1MD7G2hiHrJDsr/kyZOsM4l9zDaz
+         Btk9AAiIt97VrsLL70LkkgcaitZ+M4TSxIDH5oVuw73aDds49gtt+sqBqsvIDDvSSy8+
+         ctV1EiQuC79tfFOi65wdoCP3vvcoAsHn0dOa5ZQ/6Nnn+5R1X2zjAXGGUDMZ2BGvJDYp
+         HowxB5X9nj4yTootLUoLUM5rg0KKzJd+b3Pbji+8Mqd0AWv6NYs4489OP8BPki/rW176
+         9mDzHCEPh0To1y8Hhg4WrfOzRBNtMOtwRq67SqgSAFl+YbTslY2razM6P+6CtDlmQCuJ
+         jTKA==
+X-Gm-Message-State: AOAM530ETZZVpAPsXVh9lz0xi5YPbFsuLST1BGp35Xyvht1n6PG0IX8G
+	ZJukL9gZkT5tpwZrEPyU7TY=
+X-Received: by 2002:a17:902:dcc9:b029:e9:3900:1c9a with SMTP id t9-20020a170902dcc9b02900e939001c9amr2176382pll.9.1617676368264;
+        Mon, 05 Apr 2021 19:32:48 -0700 (PDT)
 Return-Path: <deborahbrouwer3563@gmail.com>
 Received: from djbComp.hitronhub.home (S0106ac202ecb0523.gv.shawcable.net. [70.67.120.89])
-        by smtp.gmail.com with ESMTPSA id e7sm281196pfv.107.2021.04.05.19.32.50
+        by smtp.gmail.com with ESMTPSA id e7sm281196pfv.107.2021.04.05.19.32.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Apr 2021 19:32:50 -0700 (PDT)
+        Mon, 05 Apr 2021 19:32:47 -0700 (PDT)
 From: Deborah Brouwer <deborahbrouwer3563@gmail.com>
 To: Larry.Finger@lwfinger.net,
 	florian.c.schilhabel@googlemail.com,
@@ -81,36 +81,48 @@ Cc: linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com,
 	Deborah Brouwer <deborahbrouwer3563@gmail.com>
-Subject: [PATCH 4/4] staging: rtl8712: add space before binary operator
-Date: Mon,  5 Apr 2021 19:32:20 -0700
-Message-Id: <6db3ca92022376d162289174e201c79017b366db.1617674639.git.deborahbrouwer3563@gmail.com>
+Subject: [PATCH 3/4] staging: rtl8712: remove space after cast
+Date: Mon,  5 Apr 2021 19:32:19 -0700
+Message-Id: <b1ba94644f5204505623ffc64614671aac30bbd8.1617674639.git.deborahbrouwer3563@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1617674639.git.deborahbrouwer3563@gmail.com>
 References: <cover.1617674639.git.deborahbrouwer3563@gmail.com>
 In-Reply-To: <cover.1617674639.git.deborahbrouwer3563@gmail.com>
 References: <cover.1617674639.git.deborahbrouwer3563@gmail.com>
 
-Add a space before the binary operator "|" to comply with kernel coding
-style.  Identified by checkpatch.
+Remove the unnecessary space immediately after a cast. Identified by
+checkpatch: CHECK: No space is necessary after a cast.
 
 Signed-off-by: Deborah Brouwer <deborahbrouwer3563@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_xmit.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8712/rtl8712_xmit.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-index ad9ea05504db..116cb812dcb9 100644
+index 4be81c2546fe..ad9ea05504db 100644
 --- a/drivers/staging/rtl8712/rtl8712_xmit.c
 +++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-@@ -368,7 +368,7 @@ void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
- 							0xffff0000));
+@@ -228,9 +228,9 @@ void r8712_do_queue_select(struct _adapter *padapter,
+ 	struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
  
- 	/* urb length in cmd_dw1 */
--	pcmd_hdr->cmd_dw1 = cpu_to_le32((pxmitbuf->aggr_nr & 0xff)|
-+	pcmd_hdr->cmd_dw1 = cpu_to_le32((pxmitbuf->aggr_nr & 0xff) |
- 					((total_length + TXDESC_SIZE) << 16));
- 	pxmitframe->last[0] = 1;
- 	pxmitframe->bpending[0] = false;
+ 	if (pdvobj->nr_endpoint == 6) {
+-		qsel = (unsigned int) pattrib->priority;
++		qsel = (unsigned int)pattrib->priority;
+ 	} else if (pdvobj->nr_endpoint == 4) {
+-		qsel = (unsigned int) pattrib->priority;
++		qsel = (unsigned int)pattrib->priority;
+ 		if (qsel == 0 || qsel == 3)
+ 			qsel = 3;
+ 		else if (qsel == 1 || qsel == 2)
+@@ -359,7 +359,7 @@ void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
+ 	struct tx_desc *ptxdesc = pxmitbuf->pbuf;
+ 	struct cmd_hdr *pcmd_hdr = (struct cmd_hdr *)
+ 		(pxmitbuf->pbuf + TXDESC_SIZE);
+-	u16 total_length = (u16) (ptxdesc->txdw0 & 0xffff);
++	u16 total_length = (u16)(ptxdesc->txdw0 & 0xffff);
+ 
+ 	/* use 1st xmitframe as media */
+ 	xmitframe_xmitbuf_attach(pxmitframe, pxmitbuf);
 -- 
 2.17.1
 
