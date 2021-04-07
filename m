@@ -1,147 +1,111 @@
-X-GM-THRID: 6394250573317668864
-X-Received: by 10.36.124.71 with SMTP id a68mr3288302itd.13.1488777476384;
-        Sun, 05 Mar 2017 21:17:56 -0800 (PST)
+X-GM-THRID: 6946995103705595904
+X-Received: by 2002:a1c:c341:: with SMTP id t62mr3648849wmf.27.1617809248229;
+        Wed, 07 Apr 2021 08:27:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.11.3 with SMTP id a3ls11558567ota.23.gmail; Sun, 05 Mar
- 2017 21:17:56 -0800 (PST)
-X-Received: by 10.157.55.198 with SMTP id x64mr6057231otb.110.1488777476033;
-        Sun, 05 Mar 2017 21:17:56 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by gmr-mx.google.com with ESMTPS id u12si1177637pfd.3.2017.03.05.21.17.55
+Received: by 2002:a7b:cc94:: with SMTP id p20ls1254569wma.0.gmail; Wed, 07 Apr
+ 2021 08:27:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkN3BaX53LfskqqTkqVa5GbF1aqpu+gE/4pyx0kuSojuVwD8ZT/kmBExF3lpFpxTclkinw
+X-Received: by 2002:a05:600c:21a:: with SMTP id 26mr3702272wmi.84.1617809246467;
+        Wed, 07 Apr 2021 08:27:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617809246; cv=none;
+        d=google.com; s=arc-20160816;
+        b=O3f/dzrh5SoJQD03iYWM0XIQ3HnSYZsIp3R82ccCXFdnM4tldraaYKFxoeqHvIZcDH
+         4z7J+RsA4ZWN7hHY7aQANvsBQpfbCtDJTdVNNdzbq2yPoR1bieg2YoPwSbNcB/nxHJJC
+         V50LwMItD0IM2HsDPDXjLSAJZ5VSSZuqmuLjjkEjoUiElQ5bJ4UYrByJIKnDt5Wna1mL
+         Ii6nOEB22AOnO5UkcAXXGZ3SrYMgFWogBctqF5+BC5IXuaBEs40yI4Dg+CNKlLSJMoaO
+         KpTPFB8WUFyiT3egBy58M1yeRk3hmBP7AC/nMVDUvSb+3aT46o3qf7/GV7Y5/Z6JBEDv
+         1b8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=/yvspusDwD2Yz4H8lHTCCe0s/3szVQ04FM7RR51J0KU=;
+        b=DU6JPhObOi+wGCB+FtmVLRBBKOLXdkAwsqXLrMZTTpLVaoavPQBspk0n+9J3+t0Kzx
+         k6lnuSA93azBw0DKFeS1U+HDnx5gJAlmujXrKqtCoBUgaXJ8tD7aI2qsrwbRo1kMKYl1
+         5vgL4cAHJcnDlEztamuJi/yeNueuXHXrnQoBBBy7PahvLzSE+oo/rGOAOdjJKmeaZfHf
+         hfBHzf9HrvQQ4IQX+5rioteRX5ZOanaJvuqxubiqJvbod29kRrAFi/x7chBWtTvtv5zj
+         NUfkDw/8y4x2hAyNVX7YKMIQIMBmgHxRQwMPVnlAFM9Qcpew++i9cSAb7UWdh2WmgbmA
+         Gw3A==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=NowVl4K+;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.28 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb2-smtp-cloud7.xs4all.net (lb2-smtp-cloud7.xs4all.net. [194.109.24.28])
+        by gmr-mx.google.com with ESMTPS id y12si3013061wrw.3.2021.04.07.08.27.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 21:17:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Apr 2021 08:27:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.28 as permitted sender) client-ip=194.109.24.28;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of aishpant@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=aishpant@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id v190so5514042pfb.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 05 Mar 2017 21:17:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HpMaQiZzt7ad7PvYl91fZy9JjkqLoFVV73zDsIrOTo8=;
-        b=aKwl1+ld4epqxaSGmDA+fMfatXJfOLN0RF/gtA0pTFSMsul61Wtwi+tiVmvNErZWG2
-         ca69ybWS5fAXaXk620ae0T6Ynpj+j5fNOwfJjVPfxbTnYyU1Ddn2N1T4N2SyDJDtDN5g
-         KfUa4mv5eu1y59BoGutmYWUw4FqL58WtEQEMDBFwJOFBJB5XMcQvtWHxTFn5+ahsnTYH
-         3WLq3uqXDDN+EnEtiZ9LswXfJSESRWxKTHQ0j0GgGnfFiQ2S14/XjHCfrrN7Biobv6D4
-         C1g9jtp6M3Wt2eKy/Feo6nkFWZs+bMzFTXTMwxBy+CO0l6WNNahr8Gn1Fbt7t07APo+G
-         8u1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HpMaQiZzt7ad7PvYl91fZy9JjkqLoFVV73zDsIrOTo8=;
-        b=q4YLIojGPaK1aBpcHu7akJ3uW4Jlu5IOSjtSR/10X41TGMQGcj1ID4XayrfUk19Cbe
-         DzKpYzAQWfMfhjTpPCoPEReYIGRRI20n35vaq8IkTQCxwBtQBLKJ8Wlvxlcc2zp0tsNf
-         vUDJaPdaSuFG5GKeDT9DN4k3BMf+sBT84grXqtyn3t9sLJDQ7/U4DJ6pV621exsTwgtU
-         nGI4gtAhdCuhjotb9WsBvjG8GamA2Y8/1PtgbhMUZ54QKCKOk7xtXBgpkA/KuEQ0INE3
-         dKRdwnmWDEdD+LezkzN7+ypolRAO9jMWKHqxjqCUI35zEsjKDGpgf96CVYMGial88LWa
-         jx/Q==
-X-Gm-Message-State: AMke39kFHnh+iTLCTvjXXAWcDM6w1nZ6pCbo9SYJ9SspVz25UcJ5xXl4KnsC2CUU8VhYHw==
-X-Received: by 10.98.95.70 with SMTP id t67mr18499452pfb.37.1488777475766;
-        Sun, 05 Mar 2017 21:17:55 -0800 (PST)
-Return-Path: <aishpant@gmail.com>
-Received: from aishwarya ([106.51.134.163])
-        by smtp.gmail.com with ESMTPSA id x15sm36602125pgo.56.2017.03.05.21.17.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 05 Mar 2017 21:17:55 -0800 (PST)
-Date: Mon, 6 Mar 2017 10:47:42 +0530
-From: Aishwarya Pant <aishpant@gmail.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>,
-	Eric Anholt <eric@anholt.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	bcm-kernel-feedback-list@broadcom.com
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: bcm2835-audio: refactor code
-Message-ID: <20170306051742.GA21192@aishwarya>
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=NowVl4K+;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.28 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+	by smtp-cloud7.xs4all.net with ESMTPA
+	id UA5SlSuMKMxedUA5VlJ54J; Wed, 07 Apr 2021 17:27:26 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1617809246; bh=/yvspusDwD2Yz4H8lHTCCe0s/3szVQ04FM7RR51J0KU=;
+	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=NowVl4K+7YSSXJ+KhuUz+0dm51y00wjWrMox7iWtaRZK8hnCi9DLNHR+CZxTZM+h8
+	 43P6o2B/kPX01skLA9c7P3BEgfVD1cT7+yxUcXs87xg+9fZnCmolC064U4DpJ395gU
+	 qAU75bCqyZzXijU6n3mWfjYxUTZxxrm0eAzRHQosZ1HDvR8id6PiKw2iWscyU41HUV
+	 AXm99t7LBi6TFVaxgSDS4KAMoOTU8Kx6p9DreysqXRcH8GE1VUQXO+AL3Bp/n/B1La
+	 4SWtDT7KAPNDUXXaP/nB/ODmmkGeetVKWjPwL+cDSQJwUvy/ziDSZT+DT6NR95BWz5
+	 whDq2P1QURP1Q==
+Subject: Re: [PATCH 0/7] staging: media: zoran: Eliminate camelcase
+To: Zhansaya Bagdauletkyzy <zhansayabagdaulet@gmail.com>,
+ clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+References: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <0bbd7601-f97c-96c3-bce3-223738536a91@xs4all.nl>
+Date: Wed, 7 Apr 2021 17:27:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <cover.1617472411.git.zhansayabagdaulet@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfDBZlQ2oNVN1KeNZG4iM0INfUP94bL1ZV3hwc81k2YtvUuDQ1DZsVyWcVizGh7XVnRQL8u9rbsx6/82vUnyqPNw5uOFG6tR7snA2MBRfj/OTyMjRdTlM
+ eHijmC1DhLzrjIwZ6IO4D1D77gb6vPgMWnx2eNEUcTrVyL21WTITU16t2P7Wi92eEdKTwtzNCaqXpMwC6TT7gh0rB9Hk3DeQcxmI+gdym3K6SkR1wqH9dsP8
+ obYeSm+QaNwXhY8FoLihcqynFFBSXMrgvWdqIxD6wW5gJRJEPwxbHP/GkQDXvsGecTDgqUS9QLBLnlT1ypA2YJJW9EfGQ8d+5VO609dTB6kvthUHsNCvhT8A
+ YWc/HKOnqEfhoyZUOmOFDR7xQtx9LlirjLYObrUdphhP9jm1BhdIKSF7yxOSyEvmwHfyfZT61ENxlYmC/SGvquxNvsQaOwuLIF/15MeZ6xHIeSJFD///5fWc
+ yG5rpPIchquKGN3J
 
-This patch contains the following fixes:
--Merge two if conditions into one
--Remove initialization of unused semaphores
-alsa_stream->buffers_update_sem and alsa_stream->control_sem
--Modify goto label err_free_mem to kfree vchi_instance if vchi_connect
-fails; add label err_init to add debug log and return error value
-(pre-existing functionality)
+Hi Zhansaya,
 
-Signed-off-by: Aishwarya Pant <aishpant@gmail.com>
----
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c   | 8 ++------
- drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c | 9 ++++++---
- 2 files changed, 8 insertions(+), 9 deletions(-)
+On 03/04/2021 20:08, Zhansaya Bagdauletkyzy wrote:
+> This patchset fixes 'avoid camelcase' warning by converting local variables to lowercase and separating words using '_'.
+> Renaming of each variable is implemented in separate patches.
+> 
+> Zhansaya Bagdauletkyzy (7):
+>   Rename 'HEnd' to 'h_end'
+>   Rename 'VEnd' to 'v_end'
+>   Rename 'DispMode' to 'disp_mode'
+>   Rename 'VidWinWid' to 'vid_win_wid'
+>   Rename 'VidWinHt' to 'vid_win_ht'
+>   Rename 'We' to 'we'
+>   Rename 'He' to 'he'
+> 
+>  drivers/staging/media/zoran/zoran_device.c | 48 +++++++++++-----------
+>  1 file changed, 24 insertions(+), 24 deletions(-)
+> 
 
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-index d60d702..32b3793 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-pcm.c
-@@ -122,10 +122,8 @@ static int snd_bcm2835_playback_open_generic(
- 	audio_info("Alsa open (%d)\n", substream->number);
- 	idx = substream->number;
- 
--	if (spdif && chip->opened) {
--		err = -EBUSY;
--		goto out;
--	} else if (!spdif && (chip->opened & (1 << idx))) {
-+	if ((spdif && chip->opened) ||
-+	    (!spdif && (chip->opened & (1 << idx))))	{
- 		err = -EBUSY;
- 		goto out;
- 	}
-@@ -156,8 +154,6 @@ static int snd_bcm2835_playback_open_generic(
- 	alsa_stream->substream = substream;
- 	alsa_stream->idx = idx;
- 
--	sema_init(&alsa_stream->buffers_update_sem, 0);
--	sema_init(&alsa_stream->control_sem, 0);
- 	spin_lock_init(&alsa_stream->lock);
- 
- 	err = bcm2835_audio_open(alsa_stream);
-diff --git a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-index df1f3dd..557ba8e 100644
---- a/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-+++ b/drivers/staging/vc04_services/bcm2835-audio/bcm2835-vchiq.c
-@@ -402,7 +402,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 		instance->alsa_stream = alsa_stream;
- 		alsa_stream->instance = instance;
- 		ret = 0; // xxx todo -1;
--		goto err_free_mem;
-+		goto err_init;
- 	}
- 
- 	/* Initialize and create a VCHI connection */
-@@ -413,7 +413,7 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 				__func__, ret);
- 
- 			ret = -EIO;
--			goto err_free_mem;
-+			goto err_init;
- 		}
- 		ret = vchi_connect(NULL, 0, vchi_instance);
- 		if (ret) {
-@@ -441,9 +441,12 @@ static int bcm2835_audio_open_connection(struct bcm2835_alsa_stream *alsa_stream
- 
- 	LOG_DBG(" success !\n");
- 	ret = 0;
-+err_init:
-+	LOG_DBG(" .. OUT\n");
-+	return ret;
- err_free_mem:
- 	LOG_DBG(" .. OUT\n");
--
-+	kfree(vchi_instance);
- 	return ret;
- }
- 
--- 
-2.7.4
+Looks good. I'll take these patches.
+
+You can use this reference to record your contributions:
+
+https://patchwork.linuxtv.org/project/linux-media/list/?series=5052
+
+The patch states will change to Accepted once it is merged in our media tree
+here: https://git.linuxtv.org/media_tree.git/log/
+
+I hate CamelCase, so this is a nice cleanup :-)
+
+Regards,
+
+	Hans
 
 
