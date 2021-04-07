@@ -1,65 +1,65 @@
 X-GM-THRID: 6948321878027010048
-X-Received: by 2002:a0c:a9c5:: with SMTP id c5mr4249866qvb.6.1617812767990;
-        Wed, 07 Apr 2021 09:26:07 -0700 (PDT)
+X-Received: by 2002:aca:5e55:: with SMTP id s82mr2852581oib.9.1617812763317;
+        Wed, 07 Apr 2021 09:26:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ae9:f20e:: with SMTP id m14ls1531786qkg.8.gmail; Wed, 07 Apr
- 2021 09:26:07 -0700 (PDT)
-X-Received: by 2002:a37:a785:: with SMTP id q127mr3849026qke.425.1617812767209;
-        Wed, 07 Apr 2021 09:26:07 -0700 (PDT)
-Received: by 2002:a37:a456:0:b029:271:6c16:8ab7 with SMTP id n83-20020a37a4560000b02902716c168ab7msqke;
-        Wed, 7 Apr 2021 09:22:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMoUqvH4xHG54exjM+TMtOWiJHEFbM4EdAO9qD/P9B5mCy4ejezR1ORY2AmZYMAt18tq7y
-X-Received: by 2002:ab0:a86:: with SMTP id d6mr2618854uak.94.1617812524818;
-        Wed, 07 Apr 2021 09:22:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617812524; cv=none;
+Received: by 2002:a4a:9732:: with SMTP id u47ls178394ooi.5.gmail; Wed, 07 Apr
+ 2021 09:26:02 -0700 (PDT)
+X-Received: by 2002:a05:6820:60e:: with SMTP id e14mr3653013oow.67.1617812762487;
+        Wed, 07 Apr 2021 09:26:02 -0700 (PDT)
+Received: by 2002:aca:300f:0:b029:102:9567:6eda with SMTP id w15-20020aca300f0000b029010295676edamsoiw;
+        Wed, 7 Apr 2021 03:45:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzEFq31TMxEF1aTC62nWprEbqk0xX5drSvv7r5gY5iXghT+K9550GpS9cfzn/axCVQgKoM
+X-Received: by 2002:a63:c60a:: with SMTP id w10mr2646576pgg.421.1617792328675;
+        Wed, 07 Apr 2021 03:45:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617792328; cv=none;
         d=google.com; s=arc-20160816;
-        b=p8n4R1PXyStYJN2xCqLdBkjMVc2vx3ZUm/Xr3BnaJBeyFxIv8XJk7GN5mTwVq3BiNT
-         789mfTlja/MSxd1Vcqtrq+mfWDPMWhPQ5iuyAnNlGkJD3xwHqdr55oSH3bzogU5F1hD4
-         83IsrPHYothkUdQ1ChiORhCKFOZI5zgAGePXmfLG3mMzXzzpzmUCerTonw59AIJvniSc
-         q2RmS/24xfQ47PFxr/tFwqNeZxm9Q3aG2auM8Bj05VfiymqcmcH9wWRTRZXm0xRtirWx
-         xUaQ32ykteQFPR8WAeaq3WlCUOQIGaPKv78rRA3vhhk3NmWmXqqYJ+msImlBweIUWFwe
-         fDLQ==
+        b=XAXfgwZjdZGHWsugnOXUsgh2TP91SWS7dtRFWzio/qvJHNU2yHYG4ZnWQwHXea1T5P
+         JbZnZKFhC4k/jtz3iJ7zr3Svfwz7lRHHrR3ITQYuKOsihqnm4Fw2cKqkWoPq5ORNYseu
+         timOktjNzLzpBM+qw3LYNJ4E38HK+4OawXdQKqRxIY0mMGeyi1P1kL9vBvTzCz35X+Of
+         PrIZS0qjqEXHn5kBmHY2U05hUlOzE7zmiGLo9Q1usZdi/iLs1lwy+5Y0CSkJDcN0+Hh0
+         SZA243s11M9N21U4jtShiZsVpcitkCPcv9yGGnvB0do0DhltFXy/KG0c+3NZLxx5lDpl
+         Pi/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
-        bh=J24bDQv31wspN+5TKIBQ9hDxVyAfQHYp+l1sLbrGesA=;
-        b=lGMScY/Mjoyud5SoCSR9l0cw6IhGEupEKnHq3bw5DinK3whYbB9ooA15yjh83iE2d9
-         f56tJ8c7mLZ9LQt/3mt2ZHw63R9j11DUeLjUAvhiME0sye7J85NFtXajVRsd67haE/c1
-         d/zIPQdL+IPVERIyTgDcOPjvPSwsnI+JkXFeTThVMj8xEUsQ3Y5rwEdj4ACFQZlLnqDV
-         i0CrMN1H+DwBzRdMyTCFvak4XPvQBl0B6BmBeXQMpmnh6Vko74GNfN7qB9IlDhqeVwSl
-         qVLOX+E4O73syHult+34q9J8WEU+tdDEiwinVDSBYLQNujGbjLip2n6AW1AXZ9dqzNDW
-         1FsQ==
+        bh=yffqmdsa/ZXNLbgvUcxXSZXJBjB5K7rT2hy+Exvt95k=;
+        b=WdYNUHrOtpaK3KcrDsUWjSkqUVr9eZswP7XIilZytiKmC8gpB2W3hK/yR2p5XqwMmn
+         GWXE6VaOtu5QMCLVvfNmWbl0zTis6oPNmBnXQK+t0TL5TsDSSZ6WFvoiW6KIzSA7ZpoS
+         64cFZWKrcTJHBlpFtL1416MSekkxRiE09guLG1zDq7QUIxAFQwkB35kaJ8NzkXBcv48W
+         SIxCYB2PyaMjHj6WauRzGoPHbpLNQsJXEa+oTvxSkc0Uh6paXj0BgOlYJL/IrEJygvsu
+         EdaJPJvDJxJmSRBCc18nxEbQHYUn6wIAAckrgX7DW18eZDsu1uWzM2nA4kFF9EV6F31h
+         T6HQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of lkp@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=lkp@intel.com;
+       spf=pass (google.com: domain of lkp@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=lkp@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <lkp@intel.com>
-Received: from mga12.intel.com (mga12.intel.com. [192.55.52.136])
-        by gmr-mx.google.com with ESMTPS id v23si1364881uak.0.2021.04.07.09.22.04
+Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
+        by gmr-mx.google.com with ESMTPS id w16si451557pjq.3.2021.04.07.03.45.28
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 07 Apr 2021 09:22:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lkp@intel.com designates 192.55.52.136 as permitted sender) client-ip=192.55.52.136;
+        Wed, 07 Apr 2021 03:45:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lkp@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of lkp@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=lkp@intel.com;
+       spf=pass (google.com: domain of lkp@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=lkp@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-IronPort-SDR: NVwjUzoC0UUgTzYHVIW3zxd/3kSNFThd5qfpLDPns3vkdEqHejTyCPSzQZTb1My3MpktV1w/33
- TG6IgKGxZQCQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9947"; a="172820405"
+IronPort-SDR: kPZ6IUvlk7SaAdo7a0KiJyDVhulUuh0bojTRQYxRyMqorstuHpGEytWSf+zJlImh7VYHZMgNC2
+ DcQ4yCeApY8A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9946"; a="193321659"
 X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; 
-   d="gz'50?scan'50,208,50";a="172820405"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2021 09:22:02 -0700
-IronPort-SDR: VJbs1fu+cj1t+jLAvvIamwijA4sg1SKf+CmQ+gQk4lZWM57uKewCq5iX3n8Ufeq9GAnJB1JpVl
- vIa+Ig1c2wfQ==
+   d="gz'50?scan'50,208,50";a="193321659"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2021 03:45:27 -0700
+IronPort-SDR: KuYi5Ov3X5g7DGbSgwHupam1ZALuu4HoLHLrfaqH+bVxNtbpWdnOMOPDOoDJ1e7uoOrFzaFaLh
+ pdMDzh3oeq3A==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; 
-   d="gz'50?scan'50,208,50";a="458433572"
+   d="gz'50?scan'50,208,50";a="441291195"
 Received: from lkp-server01.sh.intel.com (HELO 69d8fcc516b7) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 07 Apr 2021 09:21:59 -0700
+  by fmsmga004.fm.intel.com with ESMTP; 07 Apr 2021 03:45:24 -0700
 Received: from kbuild by 69d8fcc516b7 with local (Exim 4.92)
 	(envelope-from <lkp@intel.com>)
-	id 1lUAwI-000DT4-MV; Wed, 07 Apr 2021 16:21:58 +0000
-Date: Thu, 8 Apr 2021 00:21:09 +0800
+	id 1lU5gZ-000DB1-NF; Wed, 07 Apr 2021 10:45:23 +0000
+Date: Wed, 7 Apr 2021 18:45:06 +0800
 From: kernel test robot <lkp@intel.com>
 To: Mitali Borkar <mitaliborkar810@gmail.com>, Larry.Finger@lwfinger.net,
 	florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org
@@ -67,24 +67,24 @@ Cc: kbuild-all@lists.01.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
 	mitali_s@me.iitr.ac.in
 Subject: Re: [PATCH] staging: rtl8712: fix avoid CamelCase in xmit_osdep.h
-Message-ID: <202104080039.aAb22Dxj-lkp@intel.com>
+Message-ID: <202104071800.I1nuAGV7-lkp@intel.com>
 References: <YG1l6QIKRMjqgPiD@kali>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="W/nzBZO5zC0uMSeA"
+Content-Type: multipart/mixed; boundary="TB36FDmn/VVEgNH/"
 Content-Disposition: inline
 In-Reply-To: <YG1l6QIKRMjqgPiD@kali>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 
 
---W/nzBZO5zC0uMSeA
+--TB36FDmn/VVEgNH/
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Mitali,
 
-Thank you for the patch! Yet something to improve:
+Thank you for the patch! Perhaps something to improve:
 
-[auto build test ERROR on staging/staging-testing]
+[auto build test WARNING on staging/staging-testing]
 
 url:    https://github.com/0day-ci/linux/commits/Mitali-Borkar/staging-rtl8712-fix-avoid-CamelCase-in-xmit_osdep-h/20210407-155925
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git e91cafdf3c18b927e61eb4ee18e4865b8485f24f
@@ -101,178 +101,47 @@ reproduce (this is a W=1 build):
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
-All errors (new ones prefixed by >>):
+All warnings (new ones prefixed by >>):
 
-   In file included from include/linux/interrupt.h:15,
-                    from drivers/staging/rtl8712/osdep_service.h:22,
-                    from drivers/staging/rtl8712/rtl871x_xmit.c:19:
-   drivers/staging/rtl8712/rtl871x_xmit.c: In function '_r8712_init_xmit_priv':
->> drivers/staging/rtl8712/rtl871x_xmit.c:144:41: error: 'r8712_SetFilter' undeclared (first use in this function); did you mean 'r8712_set_filter'?
-     144 |  INIT_WORK(&padapter->wk_filter_rx_ff0, r8712_SetFilter);
-         |                                         ^~~~~~~~~~~~~~~
-   include/linux/workqueue.h:237:20: note: in definition of macro '__INIT_WORK'
-     237 |   (_work)->func = (_func);    \
-         |                    ^~~~~
-   drivers/staging/rtl8712/rtl871x_xmit.c:144:2: note: in expansion of macro 'INIT_WORK'
-     144 |  INIT_WORK(&padapter->wk_filter_rx_ff0, r8712_SetFilter);
-         |  ^~~~~~~~~
-   drivers/staging/rtl8712/rtl871x_xmit.c:144:41: note: each undeclared identifier is reported only once for each function it appears in
-     144 |  INIT_WORK(&padapter->wk_filter_rx_ff0, r8712_SetFilter);
-         |                                         ^~~~~~~~~~~~~~~
-   include/linux/workqueue.h:237:20: note: in definition of macro '__INIT_WORK'
-     237 |   (_work)->func = (_func);    \
-         |                    ^~~~~
-   drivers/staging/rtl8712/rtl871x_xmit.c:144:2: note: in expansion of macro 'INIT_WORK'
-     144 |  INIT_WORK(&padapter->wk_filter_rx_ff0, r8712_SetFilter);
-         |  ^~~~~~~~~
+>> drivers/staging/rtl8712/xmit_linux.c:94:6: warning: no previous prototype for 'r8712_SetFilter' [-Wmissing-prototypes]
+      94 | void r8712_SetFilter(struct work_struct *work)
+         |      ^~~~~~~~~~~~~~~
 
 
-vim +144 drivers/staging/rtl8712/rtl871x_xmit.c
+vim +/r8712_SetFilter +94 drivers/staging/rtl8712/xmit_linux.c
 
-2865d42c78a912 Larry Finger        2010-08-20   18  
-2865d42c78a912 Larry Finger        2010-08-20  @19  #include "osdep_service.h"
-2865d42c78a912 Larry Finger        2010-08-20   20  #include "drv_types.h"
-2865d42c78a912 Larry Finger        2010-08-20   21  #include "wifi.h"
-2865d42c78a912 Larry Finger        2010-08-20   22  #include "osdep_intf.h"
-2865d42c78a912 Larry Finger        2010-08-20   23  #include "usb_ops.h"
-2865d42c78a912 Larry Finger        2010-08-20   24  
-2865d42c78a912 Larry Finger        2010-08-20   25  
-2865d42c78a912 Larry Finger        2010-08-20   26  static const u8 P802_1H_OUI[P80211_OUI_LEN] = {0x00, 0x00, 0xf8};
-2865d42c78a912 Larry Finger        2010-08-20   27  static const u8 RFC1042_OUI[P80211_OUI_LEN] = {0x00, 0x00, 0x00};
-2865d42c78a912 Larry Finger        2010-08-20   28  static void init_hwxmits(struct hw_xmit *phwxmit, sint entry);
-2865d42c78a912 Larry Finger        2010-08-20   29  static void alloc_hwxmits(struct _adapter *padapter);
-2865d42c78a912 Larry Finger        2010-08-20   30  static void free_hwxmits(struct _adapter *padapter);
-2865d42c78a912 Larry Finger        2010-08-20   31  
-2865d42c78a912 Larry Finger        2010-08-20   32  static void _init_txservq(struct tx_servq *ptxservq)
-2865d42c78a912 Larry Finger        2010-08-20   33  {
-534c4acd1d4594 James A Shackleford 2014-06-24   34  	INIT_LIST_HEAD(&ptxservq->tx_pending);
-2865d42c78a912 Larry Finger        2010-08-20   35  	_init_queue(&ptxservq->sta_pending);
-2865d42c78a912 Larry Finger        2010-08-20   36  	ptxservq->qcnt = 0;
-2865d42c78a912 Larry Finger        2010-08-20   37  }
-2865d42c78a912 Larry Finger        2010-08-20   38  
-2865d42c78a912 Larry Finger        2010-08-20   39  void _r8712_init_sta_xmit_priv(struct sta_xmit_priv *psta_xmitpriv)
-2865d42c78a912 Larry Finger        2010-08-20   40  {
-2865d42c78a912 Larry Finger        2010-08-20   41  	memset((unsigned char *)psta_xmitpriv, 0,
-2865d42c78a912 Larry Finger        2010-08-20   42  		 sizeof(struct sta_xmit_priv));
-2865d42c78a912 Larry Finger        2010-08-20   43  	spin_lock_init(&psta_xmitpriv->lock);
-2865d42c78a912 Larry Finger        2010-08-20   44  	_init_txservq(&psta_xmitpriv->be_q);
-2865d42c78a912 Larry Finger        2010-08-20   45  	_init_txservq(&psta_xmitpriv->bk_q);
-2865d42c78a912 Larry Finger        2010-08-20   46  	_init_txservq(&psta_xmitpriv->vi_q);
-2865d42c78a912 Larry Finger        2010-08-20   47  	_init_txservq(&psta_xmitpriv->vo_q);
-534c4acd1d4594 James A Shackleford 2014-06-24   48  	INIT_LIST_HEAD(&psta_xmitpriv->legacy_dz);
-534c4acd1d4594 James A Shackleford 2014-06-24   49  	INIT_LIST_HEAD(&psta_xmitpriv->apsd);
-2865d42c78a912 Larry Finger        2010-08-20   50  }
-2865d42c78a912 Larry Finger        2010-08-20   51  
-ed5d2eaf5f5d59 Nishka Dasgupta     2019-08-09   52  int _r8712_init_xmit_priv(struct xmit_priv *pxmitpriv,
-2865d42c78a912 Larry Finger        2010-08-20   53  			  struct _adapter *padapter)
-2865d42c78a912 Larry Finger        2010-08-20   54  {
-2865d42c78a912 Larry Finger        2010-08-20   55  	sint i;
-2865d42c78a912 Larry Finger        2010-08-20   56  	struct xmit_buf *pxmitbuf;
-2865d42c78a912 Larry Finger        2010-08-20   57  	struct xmit_frame *pxframe;
-2865d42c78a912 Larry Finger        2010-08-20   58  
-2865d42c78a912 Larry Finger        2010-08-20   59  	memset((unsigned char *)pxmitpriv, 0, sizeof(struct xmit_priv));
-2865d42c78a912 Larry Finger        2010-08-20   60  	spin_lock_init(&pxmitpriv->lock);
-2865d42c78a912 Larry Finger        2010-08-20   61  	/*
-09b080f73a4191 Vijai Kumar K       2016-11-20   62  	 *Please insert all the queue initialization using _init_queue below
-2865d42c78a912 Larry Finger        2010-08-20   63  	 */
-2865d42c78a912 Larry Finger        2010-08-20   64  	pxmitpriv->adapter = padapter;
-2865d42c78a912 Larry Finger        2010-08-20   65  	_init_queue(&pxmitpriv->be_pending);
-2865d42c78a912 Larry Finger        2010-08-20   66  	_init_queue(&pxmitpriv->bk_pending);
-2865d42c78a912 Larry Finger        2010-08-20   67  	_init_queue(&pxmitpriv->vi_pending);
-2865d42c78a912 Larry Finger        2010-08-20   68  	_init_queue(&pxmitpriv->vo_pending);
-2865d42c78a912 Larry Finger        2010-08-20   69  	_init_queue(&pxmitpriv->bm_pending);
-2865d42c78a912 Larry Finger        2010-08-20   70  	_init_queue(&pxmitpriv->legacy_dz_queue);
-2865d42c78a912 Larry Finger        2010-08-20   71  	_init_queue(&pxmitpriv->apsd_queue);
-2865d42c78a912 Larry Finger        2010-08-20   72  	_init_queue(&pxmitpriv->free_xmit_queue);
-2865d42c78a912 Larry Finger        2010-08-20   73  	/*
-d7e6ede6acd4fb Aiman Najjar        2020-03-29   74  	 * Please allocate memory with sz = (struct xmit_frame) * NR_XMITFRAME,
-09b080f73a4191 Vijai Kumar K       2016-11-20   75  	 * and initialize free_xmit_frame below.
-09b080f73a4191 Vijai Kumar K       2016-11-20   76  	 * Please also apply  free_txobj to link_up all the xmit_frames...
-2865d42c78a912 Larry Finger        2010-08-20   77  	 */
-a77a40cf8b42b3 Bhagyashri Dighole  2019-03-12   78  	pxmitpriv->pallocated_frame_buf =
-d7e6ede6acd4fb Aiman Najjar        2020-03-29   79  		kmalloc(NR_XMITFRAME * sizeof(struct xmit_frame) + 4,
-d7e6ede6acd4fb Aiman Najjar        2020-03-29   80  			GFP_ATOMIC);
-9155c92463ecbb Bhumika Goyal       2016-02-24   81  	if (!pxmitpriv->pallocated_frame_buf) {
-2865d42c78a912 Larry Finger        2010-08-20   82  		pxmitpriv->pxmit_frame_buf = NULL;
-ed5d2eaf5f5d59 Nishka Dasgupta     2019-08-09   83  		return -ENOMEM;
-2865d42c78a912 Larry Finger        2010-08-20   84  	}
-2865d42c78a912 Larry Finger        2010-08-20   85  	pxmitpriv->pxmit_frame_buf = pxmitpriv->pallocated_frame_buf + 4 -
-2865d42c78a912 Larry Finger        2010-08-20   86  			((addr_t) (pxmitpriv->pallocated_frame_buf) & 3);
-2865d42c78a912 Larry Finger        2010-08-20   87  	pxframe = (struct xmit_frame *) pxmitpriv->pxmit_frame_buf;
-2865d42c78a912 Larry Finger        2010-08-20   88  	for (i = 0; i < NR_XMITFRAME; i++) {
-534c4acd1d4594 James A Shackleford 2014-06-24   89  		INIT_LIST_HEAD(&(pxframe->list));
-2865d42c78a912 Larry Finger        2010-08-20   90  		pxframe->padapter = padapter;
-2865d42c78a912 Larry Finger        2010-08-20   91  		pxframe->frame_tag = DATA_FRAMETAG;
-2865d42c78a912 Larry Finger        2010-08-20   92  		pxframe->pkt = NULL;
-2865d42c78a912 Larry Finger        2010-08-20   93  		pxframe->buf_addr = NULL;
-2865d42c78a912 Larry Finger        2010-08-20   94  		pxframe->pxmitbuf = NULL;
-fdfbf7890dcac9 James A Shackleford 2014-06-24   95  		list_add_tail(&(pxframe->list),
-2865d42c78a912 Larry Finger        2010-08-20   96  				 &(pxmitpriv->free_xmit_queue.queue));
-2865d42c78a912 Larry Finger        2010-08-20   97  		pxframe++;
-2865d42c78a912 Larry Finger        2010-08-20   98  	}
-2865d42c78a912 Larry Finger        2010-08-20   99  	pxmitpriv->free_xmitframe_cnt = NR_XMITFRAME;
-2865d42c78a912 Larry Finger        2010-08-20  100  	/*
-09b080f73a4191 Vijai Kumar K       2016-11-20  101  	 * init xmit hw_txqueue
-2865d42c78a912 Larry Finger        2010-08-20  102  	 */
-2865d42c78a912 Larry Finger        2010-08-20  103  	_r8712_init_hw_txqueue(&pxmitpriv->be_txqueue, BE_QUEUE_INX);
-2865d42c78a912 Larry Finger        2010-08-20  104  	_r8712_init_hw_txqueue(&pxmitpriv->bk_txqueue, BK_QUEUE_INX);
-2865d42c78a912 Larry Finger        2010-08-20  105  	_r8712_init_hw_txqueue(&pxmitpriv->vi_txqueue, VI_QUEUE_INX);
-2865d42c78a912 Larry Finger        2010-08-20  106  	_r8712_init_hw_txqueue(&pxmitpriv->vo_txqueue, VO_QUEUE_INX);
-2865d42c78a912 Larry Finger        2010-08-20  107  	_r8712_init_hw_txqueue(&pxmitpriv->bmc_txqueue, BMC_QUEUE_INX);
-2865d42c78a912 Larry Finger        2010-08-20  108  	pxmitpriv->frag_len = MAX_FRAG_THRESHOLD;
-2865d42c78a912 Larry Finger        2010-08-20  109  	pxmitpriv->txirp_cnt = 1;
-2865d42c78a912 Larry Finger        2010-08-20  110  	/*per AC pending irp*/
-2865d42c78a912 Larry Finger        2010-08-20  111  	pxmitpriv->beq_cnt = 0;
-2865d42c78a912 Larry Finger        2010-08-20  112  	pxmitpriv->bkq_cnt = 0;
-2865d42c78a912 Larry Finger        2010-08-20  113  	pxmitpriv->viq_cnt = 0;
-2865d42c78a912 Larry Finger        2010-08-20  114  	pxmitpriv->voq_cnt = 0;
-2865d42c78a912 Larry Finger        2010-08-20  115  	/*init xmit_buf*/
-2865d42c78a912 Larry Finger        2010-08-20  116  	_init_queue(&pxmitpriv->free_xmitbuf_queue);
-2865d42c78a912 Larry Finger        2010-08-20  117  	_init_queue(&pxmitpriv->pending_xmitbuf_queue);
-a77a40cf8b42b3 Bhagyashri Dighole  2019-03-12  118  	pxmitpriv->pallocated_xmitbuf =
-a77a40cf8b42b3 Bhagyashri Dighole  2019-03-12  119  		kmalloc(NR_XMITBUFF * sizeof(struct xmit_buf) + 4, GFP_ATOMIC);
-bd4fcdaddc8d8d Souptick Joarder    2016-10-31  120  	if (!pxmitpriv->pallocated_xmitbuf) {
-bd4fcdaddc8d8d Souptick Joarder    2016-10-31  121  		kfree(pxmitpriv->pallocated_frame_buf);
-bd4fcdaddc8d8d Souptick Joarder    2016-10-31  122  		pxmitpriv->pallocated_frame_buf = NULL;
-ed5d2eaf5f5d59 Nishka Dasgupta     2019-08-09  123  		return -ENOMEM;
-bd4fcdaddc8d8d Souptick Joarder    2016-10-31  124  	}
-2865d42c78a912 Larry Finger        2010-08-20  125  	pxmitpriv->pxmitbuf = pxmitpriv->pallocated_xmitbuf + 4 -
-2865d42c78a912 Larry Finger        2010-08-20  126  			      ((addr_t)(pxmitpriv->pallocated_xmitbuf) & 3);
-2865d42c78a912 Larry Finger        2010-08-20  127  	pxmitbuf = (struct xmit_buf *)pxmitpriv->pxmitbuf;
-2865d42c78a912 Larry Finger        2010-08-20  128  	for (i = 0; i < NR_XMITBUFF; i++) {
-534c4acd1d4594 James A Shackleford 2014-06-24  129  		INIT_LIST_HEAD(&pxmitbuf->list);
-45afa5637b85d7 Aiman Najjar        2020-03-29  130  		pxmitbuf->pallocated_buf =
-45afa5637b85d7 Aiman Najjar        2020-03-29  131  			kmalloc(MAX_XMITBUF_SZ + XMITBUF_ALIGN_SZ, GFP_ATOMIC);
-9155c92463ecbb Bhumika Goyal       2016-02-24  132  		if (!pxmitbuf->pallocated_buf)
-ed5d2eaf5f5d59 Nishka Dasgupta     2019-08-09  133  			return -ENOMEM;
-2865d42c78a912 Larry Finger        2010-08-20  134  		pxmitbuf->pbuf = pxmitbuf->pallocated_buf + XMITBUF_ALIGN_SZ -
-2865d42c78a912 Larry Finger        2010-08-20  135  				 ((addr_t) (pxmitbuf->pallocated_buf) &
-2865d42c78a912 Larry Finger        2010-08-20  136  				 (XMITBUF_ALIGN_SZ - 1));
-a4898e78c368fb Nishka Dasgupta     2019-06-26  137  		if (r8712_xmit_resource_alloc(padapter, pxmitbuf))
-ed5d2eaf5f5d59 Nishka Dasgupta     2019-08-09  138  			return -ENOMEM;
-fdfbf7890dcac9 James A Shackleford 2014-06-24  139  		list_add_tail(&pxmitbuf->list,
-2865d42c78a912 Larry Finger        2010-08-20  140  				 &(pxmitpriv->free_xmitbuf_queue.queue));
-2865d42c78a912 Larry Finger        2010-08-20  141  		pxmitbuf++;
-2865d42c78a912 Larry Finger        2010-08-20  142  	}
-2865d42c78a912 Larry Finger        2010-08-20  143  	pxmitpriv->free_xmitbuf_cnt = NR_XMITBUFF;
-8810493fc54e75 Deepak Mishra       2019-06-12 @144  	INIT_WORK(&padapter->wk_filter_rx_ff0, r8712_SetFilter);
-2865d42c78a912 Larry Finger        2010-08-20  145  	alloc_hwxmits(padapter);
-2865d42c78a912 Larry Finger        2010-08-20  146  	init_hwxmits(pxmitpriv->hwxmits, pxmitpriv->hwxmit_entry);
-1062aa9e99e6d9 Allen Pais          2020-09-16  147  	tasklet_setup(&pxmitpriv->xmit_tasklet, r8712_xmit_bh);
-ed5d2eaf5f5d59 Nishka Dasgupta     2019-08-09  148  	return 0;
-2865d42c78a912 Larry Finger        2010-08-20  149  }
-2865d42c78a912 Larry Finger        2010-08-20  150  
+2865d42c78a912 Larry Finger    2010-08-20   93  
+f95302eed91061 Ali Bahar       2011-09-04  @94  void r8712_SetFilter(struct work_struct *work)
+f95302eed91061 Ali Bahar       2011-09-04   95  {
+3f35d9022761e4 Nishka Dasgupta 2019-06-07   96  	struct _adapter *adapter = container_of(work, struct _adapter,
+8810493fc54e75 Deepak Mishra   2019-06-12   97  						wk_filter_rx_ff0);
+f95302eed91061 Ali Bahar       2011-09-04   98  	u8  oldvalue = 0x00, newvalue = 0x00;
+f95302eed91061 Ali Bahar       2011-09-04   99  	unsigned long irqL;
+f95302eed91061 Ali Bahar       2011-09-04  100  
+3f35d9022761e4 Nishka Dasgupta 2019-06-07  101  	oldvalue = r8712_read8(adapter, 0x117);
+f95302eed91061 Ali Bahar       2011-09-04  102  	newvalue = oldvalue & 0xfe;
+3f35d9022761e4 Nishka Dasgupta 2019-06-07  103  	r8712_write8(adapter, 0x117, newvalue);
+f95302eed91061 Ali Bahar       2011-09-04  104  
+6cc6677aee4346 Deepak Mishra   2019-06-12  105  	spin_lock_irqsave(&adapter->lock_rx_ff0_filter, irqL);
+3f35d9022761e4 Nishka Dasgupta 2019-06-07  106  	adapter->blnEnableRxFF0Filter = 1;
+6cc6677aee4346 Deepak Mishra   2019-06-12  107  	spin_unlock_irqrestore(&adapter->lock_rx_ff0_filter, irqL);
+f95302eed91061 Ali Bahar       2011-09-04  108  	do {
+f95302eed91061 Ali Bahar       2011-09-04  109  		msleep(100);
+3f35d9022761e4 Nishka Dasgupta 2019-06-07  110  	} while (adapter->blnEnableRxFF0Filter == 1);
+3f35d9022761e4 Nishka Dasgupta 2019-06-07  111  	r8712_write8(adapter, 0x117, oldvalue);
+f95302eed91061 Ali Bahar       2011-09-04  112  }
+f95302eed91061 Ali Bahar       2011-09-04  113  
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---W/nzBZO5zC0uMSeA
+--TB36FDmn/VVEgNH/
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICPbBbWAAAy5jb25maWcAjFxLd+Q2rt7nV9TpbJJFMn50ezrnHi8oiSpxShIVUqqHNzyO
+H4sICBeGbWAAAy5jb25maWcAjFxLd+Q2rt7nV9TpbJJFMn50ezrnHi8oiSpxShIVUqqHNzyO
 u7rHJ24748ck/e8vQOpBUlBlZpHpAsA3CHwAIX//3fcr9vb69PX29f7u9uHh2+rL8fH4fPt6
 /LT6fP9w/L9VJle1bFc8E+3PIFzeP7799Y/7y49Xqw8/n1/8fPbT893VanN8fjw+rNKnx8/3
 X96g+f3T43fff5fKOhdrk6Zmy5UWsjYt37fX777c3f30y+qH7Pjb/e3j6pefL6Gbi4sf3b/e
@@ -1053,5 +922,5 @@ qF9sNrvXA6pgaGcIMdPk9l6LEkyBvaaKVJwvJ5stF/5LweSa9ldnK4kKS2KZrX6ONIM6g/eG
 RdVzcZ6nqWuTkULjoiJJ69S8JUeYMqE7dnq+OPadLZUSoxbMNt4uYrg98dsGazhugTOrDVMa
 52EFxySJZ8rGQY7ibK3Ag7wq99H5dl6gqtvu/wKa5Qo0+ZwCAA==
 
---W/nzBZO5zC0uMSeA--
+--TB36FDmn/VVEgNH/--
 
