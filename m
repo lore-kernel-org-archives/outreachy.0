@@ -1,153 +1,134 @@
-X-GM-THRID: 6809468497850007552
-X-Received: by 2002:aed:3c42:: with SMTP id u2mr6341930qte.162.1585452933900;
-        Sat, 28 Mar 2020 20:35:33 -0700 (PDT)
+X-GM-THRID: 6948397950015897600
+X-Received: by 2002:a17:906:3952:: with SMTP id g18mr3897184eje.104.1617803557763;
+        Wed, 07 Apr 2021 06:52:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:9e41:: with SMTP id h62ls6433498qke.8.gmail; Sat, 28 Mar
- 2020 20:35:32 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtQzSMLqiQ0+ekVb4Ops8BeyJpZZXFfz/X0wd7NQs3QJROcjZ8R3VtNA35FFQb0VQhGicX3
-X-Received: by 2002:a37:a915:: with SMTP id s21mr6349028qke.436.1585452932682;
-        Sat, 28 Mar 2020 20:35:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585452932; cv=none;
+Received: by 2002:a17:906:22c9:: with SMTP id q9ls1244184eja.11.gmail; Wed, 07
+ Apr 2021 06:52:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzXv8IOA1NA27f+PFi04OHtCu4EEl4/cifKzJhJFrR8ONgRtnTr6KN0kOXlWu1HT6MDEb3
+X-Received: by 2002:a17:906:3949:: with SMTP id g9mr3865908eje.7.1617803556309;
+        Wed, 07 Apr 2021 06:52:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617803556; cv=none;
         d=google.com; s=arc-20160816;
-        b=0P1w5ZJeMui2kjpWF30KD/I5PNk2yzvybQaB+XP0zg7o9ggqbtn9fxFTVlWooMneVs
-         G1BccdRkimpDtVYCRBiEYloHbzsDH30XldEMBOY39cKkeuhQXHnjpbWo2RoaSgm7Sly8
-         +qTRrBdWO3gfUkAWdrMjX0XEXZuAwk6P9igwKlSSR+OsluuafnK1UZSQ1ebv2UjxBFhm
-         0d4e6rJmOL6HcvWOGWlBRzfyaxFfX2SFLtqDMdgYKNPZydmdlpydklqVjgGbwwwYyHTE
-         fsZe6Cd4UB3ZMtPs5B4ajs98maPRVBmMKQs50cNsjyEHm3TJN8tc/I+C+AlkqD0+TKdw
-         gRzw==
+        b=EginxyfyZK3djoAOwb3ebo0hsQQkXnnIgyHzEDfJhV2pBOrbGdMSAfHXpYOO1dKr0E
+         +ngYX0mFyijbvEGvOQLls2Lx90bfk9IbRmuukVmnC+ipeLuiA+lRDbR99LzNcy9cFPon
+         ZgUX4j/RoS9+3rj05vqIHuOhpqOfpP6Lgiqz8tz5pnt+771fJSYK8UI3L3VWn0Vy8Mct
+         vDnAxEKSht70KICJQaepGXXAcPzxjA20Gq3tUmPw5XySdjQvb55RgmCbCF50alCC7u2J
+         YCezAHmgwlR/OaQ62yJpbbmS8hbjTb2kE0ucP1XmuYEvK3V3C/h1BZafV3K7W9ty2yL5
+         UNIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=cF2fdmFT4y8poKQgykSEvBARpVMuKdcuHdJc6rFcq9w=;
-        b=Z7fjzy8FkpeUN6bngUcVOwOuQdX90UUL57Djc8I5PO/o+V8cAcSo1ojbCutndmo3Jo
-         MurkdV0+KqFMSBPiGhe7y7Zw9u62e0+BD0SyUg0s6msNeSJlhytqawDhXICX73eLNyLx
-         ktM6xX2cfEdpSvnFhm2vwyO5hItQmsZHYaCTlhKMQAaEMJ36ilGsiWazZS5poxcsx+gI
-         gc8dE4zXboKtCN8y+GVNCc9kWuXs4XbBtCCz1SJ/CXkBQdqOPTG126U2lUQLpwefj7b4
-         oywoASGKYNsLh3/g9Nwn/38bl31Dirr6JiwDKOJi8vN4Kp8mWsF3w6cZvyfbxmm7Wdok
-         O8lA==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=hleXkTKcgUpCpqeqjCsgOXfKBA/Z3759zwNtLp84shw=;
+        b=dKKqGQr2AUWIu+V4P5CTfCD+03GhC2A0lrWj6uu6hLATW46I4q+CRU8dUbTuw57mby
+         dJaFkJKsMzlui1YgMu4QiiqdNLsROIdGb5/wQ3YYeyvjisoOIwAAxB7zpipuDc29d5gd
+         FcqjOOk/oLzlnU54heHAuBJPr3/WbpNxwddodxe0ojm1beuecHkOCeysm8KuX5zNekUo
+         /zTy2UcAxzqoNOQZMN9kcPYqIvCnTNmdGXaGO9LV8xCBnQ+WCM34VaTEMoCuppVG6vRG
+         G2dJqjETTCk8vgRFlFpy13aN35jzRH2oFe6JQQW6QVb4fpgj0k6P6CO6CyH2WqUadqgn
+         UB7g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N7zLTeCI;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N+2Oj9Mz;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::436 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbwyatt4@gmail.com>
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com. [2607:f8b0:4864:20::544])
-        by gmr-mx.google.com with ESMTPS id t24si752816qtt.1.2020.03.28.20.35.32
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com. [2a00:1450:4864:20::436])
+        by gmr-mx.google.com with ESMTPS id ck26si3471351edb.1.2021.04.07.06.52.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 Mar 2020 20:35:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) client-ip=2607:f8b0:4864:20::544;
+        Wed, 07 Apr 2021 06:52:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::436 as permitted sender) client-ip=2a00:1450:4864:20::436;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N7zLTeCI;
-       spf=pass (google.com: domain of jbwyatt4@gmail.com designates 2607:f8b0:4864:20::544 as permitted sender) smtp.mailfrom=jbwyatt4@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N+2Oj9Mz;
+       spf=pass (google.com: domain of martinsdecarvalhobeatriz@gmail.com designates 2a00:1450:4864:20::436 as permitted sender) smtp.mailfrom=martinsdecarvalhobeatriz@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x544.google.com with SMTP id h8so6883051pgs.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 28 Mar 2020 20:35:32 -0700 (PDT)
+Received: by mail-wr1-x436.google.com with SMTP id b9so10199766wrs.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Apr 2021 06:52:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=cF2fdmFT4y8poKQgykSEvBARpVMuKdcuHdJc6rFcq9w=;
-        b=N7zLTeCISvKUnj4MGL6o9owyLBSCH99tXRh/ASuxP9IDLdm5DiaD+EBAdeWvWh+PIa
-         kaX/PMghFGM2V1z/GCEOEQBmO6CajtTQ010SFPYgl2z07B9LR9qQALKhAc4Jbvm7V7Mn
-         4aKin703vIMgt9GleCK58cqWP2ZSwyIE/0hztDW9Cq25NzTy8Zf7q/md1G1CMsCscWn3
-         l0vw7dLx9299kn17N1wEYQs+6g1AyqwegMhgAv/m6jLE31MiZNe/hVDNJzajW6A3m0Gp
-         0miOyoyxk8h58/w/6GXPetEbamfqAhTn4wZ/oTCXfP7RrxtVpDCC0sjkHhVrMFZ49v6E
-         izig==
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding:content-language;
+        bh=hleXkTKcgUpCpqeqjCsgOXfKBA/Z3759zwNtLp84shw=;
+        b=N+2Oj9Mz/S0stKobQuSd7JJY8Fty6Y3SJ+/KYg9WwT2lPZBenB+5HlxX15bWxUpcoS
+         XS/tUojhc35Y8j4R8pGxnxo7+bcPFdlfdJJRRRBvlbCFBXUEp3P1Aiu4JT3YlXpTeidn
+         5deQtywSztYhXzmmC0AV/B1silgbEHVlgow5wDXPr9fq8c6XAPFgb8IgVd71thK3THgW
+         IIg8EfiH4G4DfoFasVWq59RSoGyQJIqL9fsn+YEItTBt2QlA/MPMMwNU0zU1fpxltgnJ
+         DaFqnuFZsK27d7/NxtGFWKSJwHFI14Vx2I39DmkmmgRG4nR6XQ52G3o8s24AjaHFFxcl
+         j6Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=cF2fdmFT4y8poKQgykSEvBARpVMuKdcuHdJc6rFcq9w=;
-        b=lmtaHZOH4yqhjO2uwYsXh7fGQ2y/z186J3/Ayr9+7jQ5duLsGbRYT8JGghDFKk9Xc1
-         jkJ5V5Hir61yv9sup83l1y6sSE1FXJSamAZ01n7XTNFoHyOMz+0dHqO2R1Q1e+ok19m1
-         KlOAWKfMoIEYV0auz4fxSEheLH9g291EqFvhBTX9atMo27GVnYy7l9kLtIHxQgzimPO+
-         k3AUKjHBBdCj/QLq0hGD43AZLBqPp5tacijq9o1gVEnbezE80KuQFxKqe6w1r2Ssr9oY
-         VYxVltEqHs7UKV9jZWkwRrd/ZOq8Mwps9Yecyhjh6kQYq3G1AKSWa7+JK97iSSWT3UUH
-         nImw==
-X-Gm-Message-State: ANhLgQ1F2GjFn4hLH4ktFPICNJW3Y9kVnnFjjGg6DKsSv7USWZ36x+0V
-	hndjQ2HSbPWKPyTPLd/gmS55aF5ujw1dqg==
-X-Received: by 2002:aa7:9471:: with SMTP id t17mr6780192pfq.272.1585452931595;
-        Sat, 28 Mar 2020 20:35:31 -0700 (PDT)
-Return-Path: <jbwyatt4@gmail.com>
-Received: from OptiPlexFedora.fios-router.home ([47.144.161.84])
-        by smtp.gmail.com with ESMTPSA id i24sm4943223pgb.57.2020.03.28.20.35.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Mar 2020 20:35:31 -0700 (PDT)
-From: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Julia Lawall <julia.lawall@inria.fr>,
-	Stefano Brivio <sbrivio@redhat.com>,
-	Forest Bond <forest@alittletooquiet.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Quentin Deslandes <quentin.deslandes@itdev.co.uk>,
-	Colin Ian King <colin.king@canonical.com>,
-	Malcolm Priestley <tvboxspy@gmail.com>,
-	Oscar Carter <oscar.carter@gmx.com>,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org
-Cc: "John B. Wyatt IV" <jbwyatt4@gmail.com>
-Subject: [PATCH] staging: vt6656: add error code handling to unused variable
-Date: Sat, 28 Mar 2020 20:34:35 -0700
-Message-Id: <20200329033435.498485-1-jbwyatt4@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-transfer-encoding
+         :content-language;
+        bh=hleXkTKcgUpCpqeqjCsgOXfKBA/Z3759zwNtLp84shw=;
+        b=ZaRCNH6RCYR4greHgZVbyxRyglrU3UrsqNFnHexOLZYyYGlyxMCPeY6shY/YQFGy/p
+         hsggqTDasZFfVxyxICu8f/4o+/IUW7h6N9BgX3gwP4Rr7Ajh/Lio8xbdnf/X7qQ73AZT
+         jvK8Tae6k/UnX01Y36NIiolfJFE7rG8RuD5IcaKsIKTFKNXgn/CTsceFJXZe+m4uE+QM
+         jfQOmTkLhmQRXSK5hxj0s9Oxf5oAtGD+TwslLKyHMwHYuzripRESty79W4r1PyXSKKqP
+         4rrldYdr9cuc6i2+5U7a9/Sn9/2ikCYVUgtXVTq5AoYfrqsjOmT1ltv3sWPTGI1wHRdb
+         lLNQ==
+X-Gm-Message-State: AOAM533ThEmOQ9TMZZ7I/M9x6PGFDuNsC2TXgSYvj2w7WYmVcwHepQlp
+	t6W5Y1bAoqm+xuBdWb2jDdQl4C5FmeuzhQ==
+X-Received: by 2002:adf:cf11:: with SMTP id o17mr4717283wrj.404.1617803555896;
+        Wed, 07 Apr 2021 06:52:35 -0700 (PDT)
+Return-Path: <martinsdecarvalhobeatriz@gmail.com>
+Received: from ?IPv6:2001:818:de85:7e00:ef5c:3f2a:a646:d6ec? ([2001:818:de85:7e00:ef5c:3f2a:a646:d6ec])
+        by smtp.gmail.com with ESMTPSA id d7sm9437459wrw.63.2021.04.07.06.52.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Apr 2021 06:52:35 -0700 (PDT)
+Subject: Re: [Outreachy kernel] Help with record contributions
+To: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Cc: Outreachy <outreachy-kernel@googlegroups.com>
+References: <ecc237fa-f349-4d5a-9894-e81a525f0257@gmail.com>
+ <CAK-LDb+TymbYEUPfiadOtvijUpG_Witq0B1Zg_6XLE+7A0C6Pg@mail.gmail.com>
+From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+Message-ID: <408359bf-2638-d4ce-7a14-7c6a17e453c8@gmail.com>
+Date: Wed, 7 Apr 2021 14:52:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAK-LDb+TymbYEUPfiadOtvijUpG_Witq0B1Zg_6XLE+7A0C6Pg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
 
-Add error code handling to unused 'ret' variable that was never used.
-Return an error code from functions called within vnt_radio_power_on.
 
-Issue reported by coccinelle (coccicheck).
 
-Suggested-by: Quentin Deslandes <quentin.deslandes@itdev.co.uk>
-Suggested-by: Stefano Brivio <sbrivio@redhat.com>
-Signed-off-by: John B. Wyatt IV <jbwyatt4@gmail.com>
----
- drivers/staging/vt6656/card.c | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/vt6656/card.c b/drivers/staging/vt6656/card.c
-index dc3ab10eb630..9d23c3ec1e60 100644
---- a/drivers/staging/vt6656/card.c
-+++ b/drivers/staging/vt6656/card.c
-@@ -723,9 +723,13 @@ int vnt_radio_power_on(struct vnt_private *priv)
- {
- 	int ret = 0;
- 
--	vnt_exit_deep_sleep(priv);
-+	ret = vnt_exit_deep_sleep(priv);
-+	if (ret)
-+		goto end;
- 
--	vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
-+	ret = vnt_mac_reg_bits_on(priv, MAC_REG_HOSTCR, HOSTCR_RXON);
-+	if (ret)
-+		goto end;
- 
- 	switch (priv->rf_type) {
- 	case RF_AL2230:
-@@ -734,13 +738,18 @@ int vnt_radio_power_on(struct vnt_private *priv)
- 	case RF_VT3226:
- 	case RF_VT3226D0:
- 	case RF_VT3342A0:
--		vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
--				    (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
-+		ret = vnt_mac_reg_bits_on(priv, MAC_REG_SOFTPWRCTL,
-+					 (SOFTPWRCTL_SWPE2 | SOFTPWRCTL_SWPE3));
- 		break;
- 	}
-+	if (ret)
-+		goto end;
- 
--	vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
-+	ret = vnt_mac_reg_bits_off(priv, MAC_REG_GPIOCTL1, GPIO3_INTMD);
-+	if (ret)
-+		goto end;
- 
-+end:
- 	return ret;
- }
- 
--- 
-2.25.1
+Em 07/04/21 14:14, Vaishali Thakkar escreveu:
+> On Wed, Apr 7, 2021 at 2:52 PM Beatriz Martins de Carvalho
+> <martinsdecarvalhobeatriz@gmail.com> wrote:
+>> Hello!
+>> How I record a patchset? I use the link to cover letter and describe
+>> each patch or I use the link to each patch?
+> Has it been added to staging-testing by Greg? You can then just put
+> the web link of that git tree. Please don't record contributions with the
+> mailing list links at this point because it'll then be difficult for us to
+> review your contributions if you put links to every patch you've ever
+> submitted.
+Yes! It has been added!
+> For example, you can just record one contribution as cleanup patches
+> with following link for each project you're applying and you're done:
+>
+> https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing&qt=grep&q=Beatriz+Martins+de+Carvalho
+ah! I was thinking that that was necessary to record each cleanup 
+patches! I will do this that you presented to me.
+> Make sure to record solutions of project specific tasks as separate
+> contributions. :)
+>
+Understood, I just send a message to the projects' mentors that I would 
+like work, to know what I need to do for the next steps.
+>> Thanks in advance,
+>>
+>> Beatriz Martins de Carvalho
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/ecc237fa-f349-4d5a-9894-e81a525f0257%40gmail.com.
+>
+>
+> --
+> Vaishali
+Thanks
+Beatriz Carvalho
 
 
