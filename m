@@ -1,284 +1,140 @@
 X-GM-THRID: 6948342597010063360
-X-Received: by 2002:a7b:cf0f:: with SMTP id l15mr3216335wmg.0.1617813006896;
-        Wed, 07 Apr 2021 09:30:06 -0700 (PDT)
+X-Received: by 2002:a2e:809a:: with SMTP id i26mr1638914ljg.357.1617789856800;
+        Wed, 07 Apr 2021 03:04:16 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:d1c8:: with SMTP id b8ls1219794wrd.3.gmail; Wed, 07 Apr
- 2021 09:30:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwF71G9KsaabHtzJlGEKwfJFNf4ZF29DMIXEUnovJOXdQvZVxJi3y0pT3rq273dRhkf8eao
-X-Received: by 2002:adf:db42:: with SMTP id f2mr5426431wrj.359.1617813005490;
-        Wed, 07 Apr 2021 09:30:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617813005; cv=none;
+Received: by 2002:a2e:589:: with SMTP id 131ls367171ljf.9.gmail; Wed, 07 Apr
+ 2021 03:04:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+PzJhM6jizZQFM5/OZlRLx5T4E3THjDqQC3W2B29x4Ct5X8iKUIpSZmpp4Cp+OztYsmgI
+X-Received: by 2002:a2e:964e:: with SMTP id z14mr1692987ljh.333.1617789855070;
+        Wed, 07 Apr 2021 03:04:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617789855; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pi/5BYSibCjjvHJaX7q6dN8oGwHAUdPWiBfG3tWl9HfBSh2mnptaXRsUagt1H7FRbz
-         1arfpzNQIrOBGboD8VYYZg1uKNfCIA8v564Qohb5OjM5qKLHSaPPLXDopwR04c3kQEbH
-         vEwCXsDWX+OlBZ1EBZmyVdIrzr/tO+KfkWkiL94SQr+ooWvC5UqfQ28SRDcGbr09FIgD
-         v8Lm0JQKD/bMzBm5gIBIzyFZEfGDN7BFAJJA/ZnLmzZRBbh7UJkjXoKK65uEX3rLGxqw
-         gxgM3L3WSS1m2tYzwM4L9cytChq49qQykTk/WdsZpk7Uk38u1JBdmSjYtnRe/CFbIn70
-         sD2g==
+        b=iJK26H5LDGPZBA6yKUUg0ovkjjgYq7zfPPCGyQqPOv8G94PDzPDBFQSHn5YIcKXe71
+         fMx1iocDF7iUenTu6dnCKeUnhTTWRBOyp33pRoZOPtYWVR+w46bC6mGgZip8IpRLwBKI
+         E3BSe8leXLNLcDgYtmVw7YAh4C9fw7DM3yXjHWVV1oOWUfBUvM+vkZC1LtiyaDNuAZHH
+         s7xyqPVmH8yioQw3CH+eJq4h2QwSWdRgOrwhBROwbUrtjwo6SiTItxb5N9AlLTsiIKrO
+         1je28j8OKUQ7ccI/qxD6HgTZ/P9jOxBkbzh1tGs243E4M6NfBYSxb27i4Fdi1TXeUIDz
+         FIdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:dkim-signature;
-        bh=aMiiVAqMb8E6MZJ5yfX6PQMS5g3j/F7PH4tzUHj6kyY=;
-        b=fqkBhVpD1hnVt1renaXEmUB1SjNc7snpuRb8aBcddVnaqt81juWIO1fRi+uMo6fZdA
-         fvcxvFOg7gKReDRT51IpeNKpaFXOXM+huNTXvnq5IFHhovq+fXtzZvd8Rs/x49jjfVd6
-         MzSWwkSz4YHVkgT8NRrSrzMCezA93XgUfvT+eY/uu/qja8i26txnoo54MKwCFyR/4Ots
-         FzVXx86NnT7YawU8aXjX4aVGvKfoq4nKEXDa8kzsZqsffi8ReXHNefxXhHQTKFCaG8EG
-         LgRgYrbZaCZTQD9QG/zjLhjA2lAu6fFUij1ZUn0+utry2wxECZhT6BwuLays0INA9Pv2
-         xPZQ==
+        bh=44ZqeD5EPkyiyFJAkLWDYZXBNtCAIXuuyBZhNmXgs0M=;
+        b=M0QGVo/eeKTdD5quFu9qdxxFQTVt53okLIsAPh9xcK8BWbOXnvGDPPA2FPOcfJdkLa
+         EOsudk31G1F4HinrrbTcyhgliAYJ+DUri8+Psu4sQOhEqafeN6qL8zSjbAEYPpNlsDAP
+         RZvVpNpEedR95ajZVChMrHFjpXF/GKLOzQD/JjO/NMKrG5SB6MtuR3AtWsY9uRYzXs08
+         o4/rVF8zYZQwoAwTT+AmvmQLgVBHEu/2oSlUh+j3N0BXI4Q1aggLF67wTQ0kgl0BYyMW
+         76wBM91fKHoYSGmzs+u0ZHOhXBjZL7ZXZ5SSjJxNPJGTdElB7lnt3TbcKhKHrhLBd+7M
+         bCkA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VyrlWrvS;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="u/qSxrao";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com. [2a00:1450:4864:20::635])
-        by gmr-mx.google.com with ESMTPS id o12si123915wrw.1.2021.04.07.09.30.05
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com. [2a00:1450:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id q26si1754442ljj.4.2021.04.07.03.04.15
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Apr 2021 09:30:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) client-ip=2a00:1450:4864:20::635;
+        Wed, 07 Apr 2021 03:04:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) client-ip=2a00:1450:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VyrlWrvS;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="u/qSxrao";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x635.google.com with SMTP id a7so197250eju.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Apr 2021 09:30:05 -0700 (PDT)
+Received: by mail-ed1-x52a.google.com with SMTP id w18so20188401edc.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Apr 2021 03:04:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=aMiiVAqMb8E6MZJ5yfX6PQMS5g3j/F7PH4tzUHj6kyY=;
-        b=VyrlWrvSV7yKbQGcsN3yeWJIkIXF+75yi8EBzYTWB0Fs0NnPRqNB1cDqA3Z0qLmGYK
-         CE144G/9Faw7pP6e///DBiGIGSaqQSM6p8cCH7K/Kvna+HDCwAhCu8aKrs9G2TjqGJrd
-         B96KnzH2H5ZJ4nya06wkRjC+mBjZA3Ju81wkOLYcZdPe+4/AZaqlR6p8F1mG/WonOpM6
-         UFbxlRU8NSPvSlaK7I2e9PNdMZHna2yoFhqSWyqRevQpZeiNEDPIioN07jsU/naZ99Qd
-         O3DHwy/QPO8y/Vdvs8JlBV4cxeJd2fj5kXkHsSxaCa6KI0pgSWu11Vck91DzL1AENKUM
-         1A8A==
+        bh=44ZqeD5EPkyiyFJAkLWDYZXBNtCAIXuuyBZhNmXgs0M=;
+        b=u/qSxrao7mOSvvfEmGSW2fzH0XEfHO8maFw5c9HCl34YysuTze6lqPLTjRnRTvJ3me
+         RfeTYTn0WukHHg9JeTEtw6cCmzAfr+l2qh9Q5siNCsPO5I5r0GHTPXtZvqLNQmU6L1d1
+         wKJV/ADf9TZ28i+Y8tdjLy68CMO3m3/WgOK/kh0MtfBUwbHAjHC94ZtH325G3FzYiMO5
+         cXRJ+UeqwkTirPwow9jl4Jp8tiM45Ow24x3s+5tsur1cXD+1HXlnsayU50aAWNDX0+OV
+         LsYOYcQzPL0//hgaTNPNA4xDXIr9OXhDzqwMppSwnLF8SByTteK6Kq1UWvHjSLtyMuOr
+         b3+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=aMiiVAqMb8E6MZJ5yfX6PQMS5g3j/F7PH4tzUHj6kyY=;
-        b=PNvbQy5mjx+uFh3N3AHrPCXjAE8lxrnxK9BgTLteTCdhDMpI5uC124TQQUzpaWWjFL
-         OQV1BC9284A+PZaBVNXgGXfMw6w3HZ8YGGgwc24Ohkk+HCbqbXXqvBJqFw6opwVbfxA9
-         wK8e9IuIt5XTGtAizjes8C+BX2ezsxsq27mrq+T/hqbcUX7kXyFEFYHDpg5AEX/h8t+1
-         KahMEqMdj+tdC39P0P3SeHu3EUhGd0vR5kkiZ0qOCzfswRED06+JxsoqMiVVTvtiPq/I
-         oqfGfcuVWirigYphG+pTGWf6ZDSn8GsDvlG8mz9j13ttQwFR0P36CsKXC27H5d6RMdmj
-         y9iQ==
-X-Gm-Message-State: AOAM530FW1a0qIjJ9iVYJ+gFjJsH92eavDPq9uHurvsoz4pNXa3n38n5
-	eAIYHR6pXA//G+CuM7aID2d6eS9QP+zE0jSY
-X-Received: by 2002:a17:906:704a:: with SMTP id r10mr4740382ejj.312.1617813005132;
-        Wed, 07 Apr 2021 09:30:05 -0700 (PDT)
+        bh=44ZqeD5EPkyiyFJAkLWDYZXBNtCAIXuuyBZhNmXgs0M=;
+        b=RS1CZKA7pzrICdmLAIehwV7ou9Wsftz4BpUjQMryTQVBPEyVuy9qNzapUlZi/MUycx
+         0/raVAR72lCGuPzZiIu+awDh/3gBixKjWgOU/FG4c0+FRCuMaxgrLApn0F00kI8j87Np
+         a77Xc+G98xnfZlBWzDP0xtct2mmdPhQ39zgqq/6kjhEJ0KX/eAaJYXB9JrZvwxB4WG54
+         ZUBluIRyjU/m5kgv4p+OKtnM2YsoD8Hv4XY5PuXTjkOwLEhznc2rmJQlOa6Taa04LthQ
+         zM3MubyUAihgYp7dDX+fkysTp1L/3yEQiyEXi07stj3ov3h9HXGH9bLVQGhYOKyprP43
+         DHNw==
+X-Gm-Message-State: AOAM532dEowmtGyDiUDqAHpWzBkrhjcqfAD0NelfB5VRJAHdV5eOPJn7
+	Te+DYblonuyTKnmL3KU481CykPowIpIn3mps
+X-Received: by 2002:a05:6402:b26:: with SMTP id bo6mr3559011edb.162.1617789854662;
+        Wed, 07 Apr 2021 03:04:14 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from localhost.localdomain (host-79-42-91-147.retail.telecomitalia.it. [79.42.91.147])
-        by smtp.gmail.com with ESMTPSA id c16sm2097703ejx.81.2021.04.07.09.30.03
+        by smtp.gmail.com with ESMTPSA id g22sm12427533ejm.69.2021.04.07.03.04.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Apr 2021 09:30:04 -0700 (PDT)
+        Wed, 07 Apr 2021 03:04:14 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: gregkh@linuxfoundation.org,
 	outreachy-kernel@googlegroups.com,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
 Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: rtl8723bs: hal: Remove camelcase
-Date: Wed,  7 Apr 2021 18:30:00 +0200
-Message-Id: <20210407163000.27611-1-fmdefrancesco@gmail.com>
+Subject: [Outreachy kernel] [PATCH v4] staging: rtl8723bs: hal: Remove camelcase
+Date: Wed,  7 Apr 2021 12:04:10 +0200
+Message-Id: <20210407100410.8058-1-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Remove camelcase. Issue detected by checkpatch.pl. For now, change only
-names of static functions in order to not break the driver's code.
+Remove camelcase. Issue detected by checkpatch.pl. The symbols aren't
+used in other files, so this change doesn't break the driver's code.
 
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/staging/rtl8723bs/hal/sdio_ops.c | 44 ++++++++++++------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index b1f02bb9f0a9..5e28818e58e0 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -19,7 +19,7 @@
- /*  */
- /*  Creadted by Roger, 2011.01.31. */
- /*  */
--static void HalSdioGetCmdAddr8723BSdio(
-+static void hal_sdio_get_cmd_addr_8723b_sdio(
- 	struct adapter *adapter,
- 	u8 device_id,
- 	u32 addr,
-@@ -97,7 +97,7 @@ static u8 get_deviceid(u32 addr)
+Changes since v3: the previous patch cannot anymore be applied to the current
+staging-testing.
+Changes since v2: forgot to cc some recipients (again); no changes to
+the code.
+Changes since v1: forgot to cc some recipients; no changes to the code.
+
+ drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
+index b9aca99478db..616d20106392 100644
+--- a/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
++++ b/drivers/staging/rtl8723bs/hal/Hal8723BReg.h
+@@ -112,7 +112,7 @@
+ #define REG_RSVD3_8723B					0x0168
+ #define REG_C2HEVT_MSG_NORMAL_8723B	0x01A0
+ #define REG_C2HEVT_CMD_SEQ_88XX		0x01A1
+-#define REG_C2hEVT_CMD_CONTENT_88XX	0x01A2
++#define REG_C2HEVT_CMD_CONTENT_88XX	0x01A2
+ #define REG_C2HEVT_CMD_LEN_88XX		0x01AE
+ #define REG_C2HEVT_CLEAR_8723B			0x01AF
+ #define REG_MCUTST_1_8723B				0x01C0
+@@ -429,13 +429,13 @@
+ #define	IMR_RXFOVW_8723B		BIT8	/*  Receive FIFO Overflow */
  
- /*
-  * Ref:
-- *HalSdioGetCmdAddr8723BSdio()
-+ *hal_sdio_get_cmd_addr_8723b_sdio()
-  */
- static u32 _cvrt2ftaddr(const u32 addr, u8 *pdevice_id, u16 *poffset)
- {
-@@ -426,7 +426,7 @@ static u32 sdio_read_port(
- 	psdio = &adapter_to_dvobj(adapter)->intf_data;
- 	hal = GET_HAL_DATA(adapter);
+ /* 2 ACMHWCTRL 0x05C0 */
+-#define	AcmHw_HwEn_8723B		BIT(0)
+-#define	AcmHw_VoqEn_8723B		BIT(1)
+-#define	AcmHw_ViqEn_8723B		BIT(2)
+-#define	AcmHw_BeqEn_8723B		BIT(3)
+-#define	AcmHw_VoqStatus_8723B		BIT(5)
+-#define	AcmHw_ViqStatus_8723B		BIT(6)
+-#define	AcmHw_BeqStatus_8723B		BIT(7)
++#define	ACMHW_HWEN_8723B		BIT(0)
++#define	ACMHW_VOQEN_8723B		BIT(1)
++#define	ACMHW_VIQEN_8723B		BIT(2)
++#define	ACMHW_BEQEN_8723B		BIT(3)
++#define	ACMHW_VOQSTATUS_8723B		BIT(5)
++#define	ACMHW_VIQSTATUS_8723B		BIT(6)
++#define	ACMHW_BEQSTATUS_8723B		BIT(7)
  
--	HalSdioGetCmdAddr8723BSdio(adapter, addr, hal->SdioRxFIFOCnt++, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, addr, hal->SdioRxFIFOCnt++, &addr);
- 
- 	if (cnt > psdio->block_transfer_len)
- 		cnt = _RND(cnt, psdio->block_transfer_len);
-@@ -475,7 +475,7 @@ static u32 sdio_write_port(
- 	}
- 
- 	cnt = round_up(cnt, 4);
--	HalSdioGetCmdAddr8723BSdio(adapter, addr, cnt >> 2, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, addr, cnt >> 2, &addr);
- 
- 	if (cnt > psdio->block_transfer_len)
- 		cnt = _RND(cnt, psdio->block_transfer_len);
-@@ -528,7 +528,7 @@ static s32 _sdio_local_read(
- 
- 	intfhdl = &adapter->iopriv.intf;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 
- 	rtw_hal_get_hwreg(adapter, HW_VAR_APFM_ON_MAC, &mac_pwr_ctrl_on);
- 	if (!mac_pwr_ctrl_on)
-@@ -566,7 +566,7 @@ s32 sdio_local_read(
- 
- 	intfhdl = &adapter->iopriv.intf;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 
- 	rtw_hal_get_hwreg(adapter, HW_VAR_APFM_ON_MAC, &mac_pwr_ctrl_on);
- 	if (
-@@ -612,7 +612,7 @@ s32 sdio_local_write(
- 
- 	intfhdl = &adapter->iopriv.intf;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 
- 	rtw_hal_get_hwreg(adapter, HW_VAR_APFM_ON_MAC, &mac_pwr_ctrl_on);
- 	if (
-@@ -639,24 +639,24 @@ u8 SdioLocalCmd52Read1Byte(struct adapter *adapter, u32 addr)
- 	u8 val = 0;
- 	struct intf_hdl *intfhdl = &adapter->iopriv.intf;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 	sd_cmd52_read(intfhdl, addr, 1, &val);
- 
- 	return val;
- }
- 
--static u16 SdioLocalCmd52Read2Byte(struct adapter *adapter, u32 addr)
-+static u16 sdio_local_cmd52_read2byte(struct adapter *adapter, u32 addr)
- {
- 	__le16 val = 0;
- 	struct intf_hdl *intfhdl = &adapter->iopriv.intf;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 	sd_cmd52_read(intfhdl, addr, 2, (u8 *)&val);
- 
- 	return le16_to_cpu(val);
- }
- 
--static u32 SdioLocalCmd53Read4Byte(struct adapter *adapter, u32 addr)
-+static u32 sdio_local_cmd53_read4byte(struct adapter *adapter, u32 addr)
- {
- 
- 	u8 mac_pwr_ctrl_on;
-@@ -664,7 +664,7 @@ static u32 SdioLocalCmd53Read4Byte(struct adapter *adapter, u32 addr)
- 	struct intf_hdl *intfhdl = &adapter->iopriv.intf;
- 	__le32 le_tmp;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 	rtw_hal_get_hwreg(adapter, HW_VAR_APFM_ON_MAC, &mac_pwr_ctrl_on);
- 	if (!mac_pwr_ctrl_on || adapter_to_pwrctl(adapter)->bFwCurrentInPSMode) {
- 		sd_cmd52_read(intfhdl, addr, 4, (u8 *)&le_tmp);
-@@ -679,21 +679,21 @@ void SdioLocalCmd52Write1Byte(struct adapter *adapter, u32 addr, u8 v)
- {
- 	struct intf_hdl *intfhdl = &adapter->iopriv.intf;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 	sd_cmd52_write(intfhdl, addr, 1, &v);
- }
- 
--static void SdioLocalCmd52Write4Byte(struct adapter *adapter, u32 addr, u32 v)
-+static void sdio_local_cmd52_write4byte(struct adapter *adapter, u32 addr, u32 v)
- {
- 	struct intf_hdl *intfhdl = &adapter->iopriv.intf;
- 	__le32 le_tmp;
- 
--	HalSdioGetCmdAddr8723BSdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
-+	hal_sdio_get_cmd_addr_8723b_sdio(adapter, SDIO_LOCAL_DEVICE_ID, addr, &addr);
- 	le_tmp = cpu_to_le32(v);
- 	sd_cmd52_write(intfhdl, addr, 4, (u8 *)&le_tmp);
- }
- 
--static s32 ReadInterrupt8723BSdio(struct adapter *adapter, u32 *phisr)
-+static s32 read_interrupt_8723b_sdio(struct adapter *adapter, u32 *phisr)
- {
- 	u32 hisr, himr;
- 	u8 val8, hisr_len;
-@@ -935,7 +935,7 @@ void sd_int_dpc(struct adapter *adapter)
- 		status = rtw_malloc(4);
- 		if (status) {
- 			addr = REG_TXDMA_STATUS;
--			HalSdioGetCmdAddr8723BSdio(adapter, WLAN_IOREG_DEVICE_ID, addr, &addr);
-+			hal_sdio_get_cmd_addr_8723b_sdio(adapter, WLAN_IOREG_DEVICE_ID, addr, &addr);
- 			_sd_read(intfhdl, addr, 4, status);
- 			_sd_write(intfhdl, addr, 4, status);
- 			DBG_8192C("%s: SDIO_HISR_TXERR (0x%08x)\n", __func__, le32_to_cpu(*(u32 *)status));
-@@ -986,7 +986,7 @@ void sd_int_dpc(struct adapter *adapter)
- 
- 		hal->sdio_hisr ^= SDIO_HISR_RX_REQUEST;
- 		do {
--			hal->SdioRxFIFOSize = SdioLocalCmd52Read2Byte(adapter, SDIO_REG_RX0_REQ_LEN);
-+			hal->SdioRxFIFOSize = sdio_local_cmd52_read2byte(adapter, SDIO_REG_RX0_REQ_LEN);
- 			if (hal->SdioRxFIFOSize != 0) {
- 				recvbuf = sd_recv_rxfifo(adapter, hal->SdioRxFIFOSize);
- 				if (recvbuf)
-@@ -1002,7 +1002,7 @@ void sd_int_dpc(struct adapter *adapter)
- 				break;
- 
- 			hisr = 0;
--			ReadInterrupt8723BSdio(adapter, &hisr);
-+			read_interrupt_8723b_sdio(adapter, &hisr);
- 			hisr &= SDIO_HISR_RX_REQUEST;
- 			if (!hisr)
- 				break;
-@@ -1026,7 +1026,7 @@ void sd_int_hdl(struct adapter *adapter)
- 	hal = GET_HAL_DATA(adapter);
- 
- 	hal->sdio_hisr = 0;
--	ReadInterrupt8723BSdio(adapter, &hal->sdio_hisr);
-+	read_interrupt_8723b_sdio(adapter, &hal->sdio_hisr);
- 
- 	if (hal->sdio_hisr & hal->sdio_himr) {
- 		u32 v32;
-@@ -1036,7 +1036,7 @@ void sd_int_hdl(struct adapter *adapter)
- 		/*  clear HISR */
- 		v32 = hal->sdio_hisr & MASK_SDIO_HISR_CLEAR;
- 		if (v32)
--			SdioLocalCmd52Write4Byte(adapter, SDIO_REG_HISR, v32);
-+			sdio_local_cmd52_write4byte(adapter, SDIO_REG_HISR, v32);
- 
- 		sd_int_dpc(adapter);
- 	}
-@@ -1059,7 +1059,7 @@ u8 HalQueryTxBufferStatus8723BSdio(struct adapter *adapter)
- 
- 	hal = GET_HAL_DATA(adapter);
- 
--	numof_free_page = SdioLocalCmd53Read4Byte(adapter, SDIO_REG_FREE_TXPG);
-+	numof_free_page = sdio_local_cmd53_read4byte(adapter, SDIO_REG_FREE_TXPG);
- 
- 	memcpy(hal->SdioTxFIFOFreePage, &numof_free_page, 4);
- 
+ /*        8195 (RCR) Receive Configuration Register	(Offset 0x608, 32 bits) */
+ #define	RCR_TCPOFLD_EN			BIT25	/*  Enable TCP checksum offload */
 -- 
 2.30.2
 
