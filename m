@@ -1,111 +1,76 @@
-X-GM-THRID: 6886552701255024640
-X-Received: by 2002:a05:6512:2101:: with SMTP id q1mr1572400lfr.187.1603400497091;
-        Thu, 22 Oct 2020 14:01:37 -0700 (PDT)
+X-GM-THRID: 6948187802890665984
+X-Gmail-Labels: Topic type: DISCUSSION
+X-Received: by 2002:ac2:43a3:: with SMTP id t3mr513824lfl.340.1617754335453;
+        Tue, 06 Apr 2021 17:12:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:b016:: with SMTP id y22ls572698ljk.3.gmail; Thu, 22 Oct
- 2020 14:01:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxbMejoEW+vFsWs6baZ/Ef+cW+zQIntXhhAfDNHKeoDu50T9x3kg2f/i9Pi3dXkAHY4on7O
-X-Received: by 2002:a2e:3806:: with SMTP id f6mr1628373lja.93.1603400494907;
-        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603400494; cv=none;
+Received: by 2002:a05:6512:3d16:: with SMTP id d22ls216304lfv.1.gmail; Tue, 06
+ Apr 2021 17:12:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxLHr+dNhCHBTmAsUw+annFzNVpf+IxWf3KXheS2X/Q9zBY7zxF4oXs0BVJ6CRwNwdjdHx
+X-Received: by 2002:ac2:546b:: with SMTP id e11mr495925lfn.48.1617754331677;
+        Tue, 06 Apr 2021 17:12:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617754331; cv=none;
         d=google.com; s=arc-20160816;
-        b=umAZM6jHNSwEbLvWy1V80XG4XeqazHNwgHWavfgWMUZcxc74HyHkKgEVOGnSU6+N/y
-         cAn7TycY63dQYOfpJPjZZZ6UulOms2uSRrKpybFOhDVqjhj3snTWCTujipQeK0UehCsw
-         iXzRdK6dYKu0ypWgNqA2ekenYMvfLfRYOK25qliqTPdL+Hr2mNOI0YoSSOgQZ+NG+WM5
-         7xgwHVRxatxsqbOapyN5TR9gPNbzrL4aSJOIn7MI/lOTh57ENgbFiKV/Rd7pb4Ue1Snc
-         GN73jiE8Xc4QugrW6VvhtR8gQ0u6RtIGnhjEn7lmz2VtzsPqnDHlThgA8vUuWhZbruci
-         8mmQ==
+        b=KJsJl6tJe+h/LPVT0raaklLhqOKR2al20WGY30aG59vGVozaa9wva+JTbtTf3/SLLG
+         NgQ9K2XjFlON9j0W6GpPOY8iVzdP47z0D98YbA049aDb08XeUkOXgyqHcLppm9bgv20I
+         oOuXJ+if102DfbV385XKHicE+2LkKz1QveOmKGCiMn444FRPt8Akmx5p2LiHePjbIwdw
+         JQ1dCberxvPYmBwpAhaJT4wrVeHjAAmTkLIzYHie4YIfks9BotSRl/Ks+jRhS+Nyewil
+         JeKteVC/TJBymER/oYdlMKvxDvdKFbO98Huw3AUgVBllW0L4vK3EOtCnKHPQBxdoqOdN
+         tsgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ueUcicZX0W9BPo8IflVS8PDGH3YYY6yZw3nBt9xZHSI=;
-        b=gDTtWdhTYtOrR9US06DgbUc62Dc3Ddo6E6DTp2WCzybzw5XlVqYpQBrGHyXC3b+f+N
-         EiTlbhAr/Efcfec/YWWoN/2znbGuw3dffF5SouhR08yY/cFSqhgA64V7wLYptKWoHQKN
-         arHU3gCFbqjKp0OnRcRN5K1KEKn790Cm2+YNWeFsVdNZfPM7Uufwex1/oi8+fJkoQcXD
-         cZTVi4wvymbgsY4UQGAYL3J6NhfxbEWh6rywNzeJvFOYlpLdviEJLChurbCAMqzwjBqo
-         SJjvYAUHGdFGcg3HPGZwEkAzG0hTz3yBqsJkroTP8iZjewVoQR4dUeqdd8GXUgsiI66b
-         /Dng==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=uMHhjh9mzGNNjIsBnKqqpdnfx67GUITX4xpvtYKhuNk=;
+        b=LjcjxaW+PmBOqNuHxU2CinjVf2GI8IXWAWKip2FOKUzpcg/5SPNPodVX7vUkXTZaoE
+         eTTIuW+xLCnNK7qq3QWtFoR+2SdAPZaMq3rK0Lof3Eho+CSfQoPhkDY+WOulrXF9kSxs
+         cIMxKc9WQAUsgjOGgbKqCnQo3UMt5o6FoknRyOO+EovAuQPi1fzd7oENYzIjfKnDc+Yf
+         pxBYbsGNGlvLPEnFajhgKONr71gbnSwKGOGfs7j6FpJeSLiK+MR5L6ODeWzh68bqB8NW
+         u2r+8BOf1Bf6Z6JtMFU+gpV9XkVhlCl7Xjo+5G/VMgj8qGx7DOgKv97tL/ru1Cxy00Gs
+         ovJA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CgCkqIUO;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <eafanasova@gmail.com>
-Received: from mail-lj1-x242.google.com (mail-lj1-x242.google.com. [2a00:1450:4864:20::242])
-        by gmr-mx.google.com with ESMTPS id t9si54180lfe.13.2020.10.22.14.01.34
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=hFvn9jvt;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+Return-Path: <willy@infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by gmr-mx.google.com with ESMTPS id a10si1719482lfs.11.2021.04.06.17.12.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) client-ip=2a00:1450:4864:20::242;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CgCkqIUO;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lj1-x242.google.com with SMTP id 23so3448909ljv.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ueUcicZX0W9BPo8IflVS8PDGH3YYY6yZw3nBt9xZHSI=;
-        b=CgCkqIUOD2ZpGLs+LDZ0iL8N8mPE0hVO3NMMO8xIFA/+Felno+5PBJvmEgCKaEiRVi
-         KYBn7yymRq7QC3pyIq25Oi6xwiaGcjlStKTtB/F34esHxbMxqn7SjaeNyYy/ZwgGMMSC
-         5GL6p/jzdIxmqcvsUH37dPm5V+8pzEWy2HWiW/U8uxT5PpjJbSqSU9zd1SyFAwoFVIoI
-         BJeElK0LoVWyZq8ohsJHcY+jVWijcCdMlufpFriFXs63suVna7R7UCtnV67fDSOyY63z
-         0tv0xLDvaP9CTkLaFG+PnCwu2zC8uUVe9bBRBTi3zBcgehbFKp8j3zfZesVmp5Ehn1q0
-         a8Nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ueUcicZX0W9BPo8IflVS8PDGH3YYY6yZw3nBt9xZHSI=;
-        b=uFcmDTEP0UzSrBylzjMgPY12pcN73J0adAqW7NzBVSEGawRPBF/pMBrO93TkqDVNjL
-         W5eh6Tw2b7gpSX4ZFK7E8LCAr/sTThH4v53qgPl5W9DzSYS8CeDGwblpNx1y67KlJwFU
-         5rn2SVQs6UM5nkGOPMUrCwxyIl/0t1yRnAVeAq+q+ldIbQ2GQCaIFvqCc9HNfhgtq0HY
-         VGwbluysdBo4t+a11+mCH4WxjQXwGJPkSLNyd+KDasG3JX8iq5JVbzP2jXMDu+IlDpT5
-         lm5qyahz2wbEvf2ZKjLebbS7tXQ6bf9OdzUK9fB6STI3Xo9VEUo1mqwEhCkvHdZLrvY+
-         rurA==
-X-Gm-Message-State: AOAM532rx9uykM5ErqynXjUCzXx7/OBxMah1LI8wBni4woXJH+D+3Xtl
-	OCNeyMnXoz+sg2HGkfGPOAiVROkMpON3pdN1
-X-Received: by 2002:a2e:9f4d:: with SMTP id v13mr1787115ljk.379.1603400494611;
-        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
-Return-Path: <eafanasova@gmail.com>
-Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
-        by smtp.gmail.com with ESMTPSA id r14sm374869lfn.298.2020.10.22.14.01.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2020 14:01:34 -0700 (PDT)
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	outreachy-kernel@googlegroups.com,
-	Elena Afanasova <eafanasova@gmail.com>
-Subject: [PATCH] staging/rtl8723bs: replace "foo * bar" with "foo *bar"
-Date: Thu, 22 Oct 2020 13:58:57 -0700
-Message-Id: <20201022205857.6144-1-eafanasova@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        Tue, 06 Apr 2021 17:12:11 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=hFvn9jvt;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=uMHhjh9mzGNNjIsBnKqqpdnfx67GUITX4xpvtYKhuNk=; b=hFvn9jvtSJ07lRnkG+jEOTF4uC
+	UWtiN4rFbNIuGtz7dAU+G/144MJERPJ8dfwxXZp3CqDZ/wdxC5Ma0LSxKkVUzC/NadJtfUaLijmQS
+	vx/sJmJohL1TuyDch6pNIsotM7PPOkzyG+sfT2wQEfAc8YCZLgRXGpcBs459lobdsMViWPida65lM
+	iyEYL5UoOI8LS38Ni2+7h6cNPXq+1Ab+qSk6t8RKnJkCwstjiQ5QMgCWvIu3zAGsuCYR8HsjOEh15
+	L3JhXvj21VKCuh1otBAzfDR1L02onhRfHfFyuXBip0GR/aWlKCLlSKxgNsS8gApK7D57zaabJ72bY
+	JOuaLxLA==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
+	id 1lTvne-00Dcda-E0; Wed, 07 Apr 2021 00:12:06 +0000
+Date: Wed, 7 Apr 2021 01:12:02 +0100
+From: Matthew Wilcox <willy@infradead.org>
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Issues regarding 'git push'
+Message-ID: <20210407001202.GW2531743@casper.infradead.org>
+References: <346d0168-53d2-4dff-8fff-005ea3bf10aen@googlegroups.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <346d0168-53d2-4dff-8fff-005ea3bf10aen@googlegroups.com>
 
-Correct the coding style error reported by checkpatch.pl.
+On Tue, Apr 06, 2021 at 04:17:18PM -0700, Mitali Borkar wrote:
+> Every time I run git push' , following is the output:
+> fatal: remote error: access denied or repository not exported: 
+> /pub/scm/linux/kernel/git/gregkh/staging.git
+> Can anyone please help me fix this?
 
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
----
- drivers/staging/rtl8723bs/include/rtw_mlme.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Well, that's the right error.  You can't push to gregkh's repo.
 
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-index cd98efccb321..07efb74831eb 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
-@@ -213,7 +213,7 @@ struct cfg80211_wifidirect_info {
- };
- 
- struct wifidirect_info {
--	struct adapter *			padapter;
-+	struct adapter				*padapter;
- 	_timer					find_phase_timer;
- 	_timer					restore_p2p_state_timer;
- 
--- 
-2.25.1
+What do you want to do, that you think 'git push' will accomplish?
 
 
