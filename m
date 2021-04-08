@@ -1,89 +1,129 @@
 X-GM-THRID: 6948745075073482752
-X-Received: by 2002:a17:902:b210:b029:e6:5f:62e with SMTP id t16-20020a170902b210b02900e6005f062emr12916400plr.48.1617977561899;
-        Fri, 09 Apr 2021 07:12:41 -0700 (PDT)
+X-Received: by 2002:a05:6512:320a:: with SMTP id d10mr5873366lfe.587.1617880788814;
+        Thu, 08 Apr 2021 04:19:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:88d4:: with SMTP id l203ls500901pfd.11.gmail; Fri, 09
- Apr 2021 07:12:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2d08q50/sLc1JZTMpa+7GnwJ8tg7hth0XxnDrgNYC/+mSSc+5zlq1KGNDoNL797tDsjw6
-X-Received: by 2002:a62:8485:0:b029:1fc:823d:2a70 with SMTP id k127-20020a6284850000b02901fc823d2a70mr12810989pfd.18.1617977560827;
-        Fri, 09 Apr 2021 07:12:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617977560; cv=none;
+Received: by 2002:a05:6512:3d16:: with SMTP id d22ls4628430lfv.1.gmail; Thu,
+ 08 Apr 2021 04:19:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwVv2vuRI8TegwtsVF02zzmsPQ4iYs3ABBt6DEVTBnznEq6AqASG1bfVuLWLz35kApOIjf5
+X-Received: by 2002:a19:8085:: with SMTP id b127mr2239275lfd.147.1617880787116;
+        Thu, 08 Apr 2021 04:19:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617880787; cv=none;
         d=google.com; s=arc-20160816;
-        b=BUpjLmxlMNEeDpGgOmI8cdqKVNu1O2NStuHrc1S9Vm4bbbQ6Y/Dy+iDAufP2Kn18Qe
-         lhgzJdv253npqAvwUmhYAFdlopWdAPQiG7Hvlxh8zL952Hj2EQLE67ojHmUFA2A4CaSw
-         9RS/Ykk+RRe0qXN/lG5L4f/Z93rxeqWfw5rvvADD1vn+NO0YY9gF9W6VhBrn6tHmynsM
-         UxtXHx4sBEdlmiHB8QgtNlXiYT5Ytnyknv1XtaliS1SUXcb1+IPjvss79qWS0A5qw5Y2
-         XMkttCxRGji0Gw1+Fwqe7iwbCk8lzjqLkX8NEwLgeUcjCaUSCPnulQ+I4d+Cd441nDzF
-         I0LA==
+        b=BD0o+bMdQfwAxMHkC1rtnkA+637xEO5jN15OAjMMqvE/Vyo0nPqtu2nJyoIIPUcQue
+         wfT4499QklgT1hLHC4FOzi0UuZ9BpKBxTctMeL204MU3gGb41tOXbpZCxjiVKt54FP7F
+         D+bgSRanRZ2aQQxvLrUzcrxiPmH9xcYIvpVQMNEp3vuW/aF897NUazJdN9iwBD4f6PhR
+         zSBMCmIqqVIrm1IKQkIvkczZZAeoaXudTXy4AapwKYrCfQ3A0R3DvtMPnt1ta5H4GSai
+         kWvS5S1DZT2DkynGqSqZiBHNYBQT5ZGqu96tB8WX3gWgbpk2NPdeGZiubd+mA9k5iJ5I
+         3zvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=g8dGIMpCqfRnzx9w2NIunAdbc6qmhCqnA2/qPawkvG4=;
-        b=Wd4JEyFNXBtyomv5UoVLQzYkt8IEWdpHJdUWECIYqXUNh8TixlS4p2GqGJ+DQXdScN
-         N1sV6l72NpUdrQpaNeWfHTdibx/xF161Vw9gCO+FXIb9z0wBx0FcfmPqz+Yro53pFexG
-         SUmbnzcuYb8Ha6tCWO772yP3wtRqdPhbWaRz1ka0MLxwJrXa2WFmhIuHAtVGM/0cSYW5
-         +YeKKSRdNvmOPoYj7WrbIcLTm6zdXcdVyQrc76qWN+7zzRCqWMzjwBzqj968eabuDYKM
-         b593HDEDd6qYF3UIwfc5Cj4iBgdMxOc286LbGifPozYO5MV854QQzlO39Ct6p9QSM2kq
-         WseA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=hkn4MUpfGU3cF0CCSTZFoBdiPCp83n9PcmuKuUkPS9E=;
+        b=sb0pWAX9uVlFjyAx3A38aahajQWIrMSZzeWz9RVjhHHubyqZhp/JonTZV0geDl8lAL
+         1ruqezo2nZeUd3jMpokU/u8kqn6nUMR1zUOVhlmj4BE9CrNVLfUxgxzHYtoWofmrPGBl
+         mDX3lSD5IF5arsx9Xlw3Vv0WZLee6mqI92jthwCNfmtNmpo62082X2Pkqft4uBJH5VOK
+         D8FeoCqUQCwwfja0wAA/X1L8qjd3gYQtOd1G++FtY9M19LnUVCi+4AQeGiWmReZnvEdh
+         2WprB+9eJaQuHuWQxzayfG1fA5tkfkZJwOott9OmFSW5kUav8i4cXmcKvld97mjUI770
+         fFVQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=eQwpOMyi;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id g23si326127pfu.3.2021.04.09.07.12.40
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N2M6nv2w;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com. [2a00:1450:4864:20::635])
+        by gmr-mx.google.com with ESMTPS id v26si2244687lfo.2.2021.04.08.04.19.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Apr 2021 07:12:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Apr 2021 04:19:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) client-ip=2a00:1450:4864:20::635;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=eQwpOMyi;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E41B961007;
-	Fri,  9 Apr 2021 14:12:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1617977560;
-	bh=H+p7sz3QwAUi4pf0kx+inkj6rVgLwICxUqcknon1Udg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eQwpOMyilhqv0pZzlwG6vkrbIBcneuoQGW6GHVmTPyK+InAaaOF8GX37rjd//lQf2
-	 FXhWFn90m3mddKPRoWe70Zjdqv18KlRMFX7c5LX7cwo7+zuF5vCDWCpMrnb0YFeSBA
-	 OXPYfKYlH6YCV9OjCDMh8eLSP0ez43bGmDn51L9A=
-Date: Fri, 9 Apr 2021 16:12:37 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N2M6nv2w;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::635 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ej1-x635.google.com with SMTP id r9so2392693ejj.3
+        for <outreachy-kernel@googlegroups.com>; Thu, 08 Apr 2021 04:19:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=hkn4MUpfGU3cF0CCSTZFoBdiPCp83n9PcmuKuUkPS9E=;
+        b=N2M6nv2wl/Zxo7trE9VjGl86Q5S1Qz0c65tLoTF9ngg7tstK8l4dfxeMrWZHuKMDIi
+         RBCb4ygKaWK58WwNLqmIkt7HuzYgL4jRKSk6FTN1vO/9hcsH3NX64bq/jIjJXa1CuU+L
+         DxnFTfD1WYpo1KuFYYcM4aLjfwtd750YkhdEOyw99iR/w8tGzECVGiCru88ahAhyoefv
+         9FbJkwpvk34XG44I8L+N117ffcLzMSpbEMh7CGYybP2LIy5NkuqIuCLUAxTsWZx8fuJW
+         z5w/Ic5+y+4UtaOcimag2O/1iQU7uSLTRjjJIiiPTb1Q7oWa0Z+c71wWxTOoeciW533w
+         4vzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=hkn4MUpfGU3cF0CCSTZFoBdiPCp83n9PcmuKuUkPS9E=;
+        b=QCahJOj3Hipjnhsxj2HH5ow2Ba3Kh9jhTmmCI+UK7k8DZ+qDRnmhI96z7jPEiI/iLX
+         EVchBD42A+IW5jn4myGeiOvViUH/xCkfxbEB+KLaQJvBcXPd8qyE3erNtVL5nScLqpzL
+         VeQMDveKQaWbiscYOR2kWKK3AQ5ACnBOr9KFRUWDQRQTyIU424hFxpZ5EYgOhNgey8KS
+         WoSXHgbwqCxmTrtqOTAI5eLz2q6noHVehQQ4phQy58okL0GorUmwcefS62hRmSya83bi
+         nUxhqGBdxCjT3Pa4ZWefBneY9KjOimBwSo4k8RyscCsYpawhqYjc8LTvduxaiCAVU+0J
+         J67Q==
+X-Gm-Message-State: AOAM531N/2VABdPaDFsXQWZHGoSPGRo2S4OAK+Wc26Q74ZyHGbAnotWb
+	afI9Mfg2jr6WUTeOx1MC3zA=
+X-Received: by 2002:a17:906:7194:: with SMTP id h20mr8808463ejk.432.1617880786798;
+        Thu, 08 Apr 2021 04:19:46 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from localhost.localdomain (host-79-42-91-147.retail.telecomitalia.it. [79.42.91.147])
+        by smtp.gmail.com with ESMTPSA id bf14sm8678588edb.67.2021.04.08.04.19.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Apr 2021 04:19:46 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com,
+	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Change the type
- and use of a variable
-Message-ID: <YHBg1Sy2509vBtrA@kroah.com>
-References: <20210408111942.19411-1-fmdefrancesco@gmail.com>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [Outreachy kernel] [PATCH] staging: rtl8723bs: Change the type and use of a variable
+Date: Thu,  8 Apr 2021 13:19:42 +0200
+Message-Id: <20210408111942.19411-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210408111942.19411-1-fmdefrancesco@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Thu, Apr 08, 2021 at 01:19:42PM +0200, Fabio M. De Francesco wrote:
-> Change the type of fw_current_in_ps_mode from u8 to bool, because
-> it is used everywhere as a bool and, accordingly, it should be
-> declared as a bool. Shorten the controlling
-> expression of an 'if' statement.
-> 
-> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
->  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+Change the type of fw_current_in_ps_mode from u8 to bool, because
+it is used everywhere as a bool and, accordingly, it should be
+declared as a bool. Shorten the controlling
+expression of an 'if' statement.
 
-I now have 3 patches, I think, for this same driver, from you, and I
-have no idea what order they should be applied in.
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+---
+ drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
+ drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-So I'm going to drop them all.  Can you please resend me a patch series,
-with all of the outstanding patches sent to me from you that I have not
-applied yet, so that I know which ones to look at and what order to
-apply them in?
+diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c b/drivers/staging/rtl8723bs/hal/hal_intf.c
+index 96fe172ced8d..8dc4dd8c6d4c 100644
+--- a/drivers/staging/rtl8723bs/hal/hal_intf.c
++++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
+@@ -348,7 +348,7 @@ void rtw_hal_dm_watchdog(struct adapter *padapter)
+ 
+ void rtw_hal_dm_watchdog_in_lps(struct adapter *padapter)
+ {
+-	if (adapter_to_pwrctl(padapter)->fw_current_in_ps_mode == true) {
++	if (adapter_to_pwrctl(padapter)->fw_current_in_ps_mode) {
+ 		if (padapter->HalFunc.hal_dm_watchdog_in_lps)
+ 			padapter->HalFunc.hal_dm_watchdog_in_lps(padapter); /* this function caller is in interrupt context */
+ 	}
+diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+index 5450d20b44a6..c03ae33b0aa6 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+@@ -203,7 +203,7 @@ struct pwrctrl_priv {
+ 	u8 LpsIdleCount;
+ 	u8 power_mgnt;
+ 	u8 org_power_mgnt;
+-	u8 fw_current_in_ps_mode;
++	bool fw_current_in_ps_mode;
+ 	unsigned long	DelayLPSLastTimeStamp;
+ 	s32		pnp_current_pwr_state;
+ 	u8 pnp_bstop_trx;
+-- 
+2.30.2
 
-thanks,
-
-greg k-h
 
