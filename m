@@ -1,106 +1,97 @@
-X-GM-THRID: 6334764587884216320
-X-Received: by 10.157.20.155 with SMTP id d27mr206958ote.13.1474927316314;
-        Mon, 26 Sep 2016 15:01:56 -0700 (PDT)
+X-GM-THRID: 6948700002249080832
+X-Received: by 2002:a17:90a:a395:: with SMTP id x21mr7810622pjp.95.1617881682710;
+        Thu, 08 Apr 2021 04:34:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.38.213 with SMTP id i21ls1229258otd.8.gmail; Mon, 26 Sep
- 2016 15:01:55 -0700 (PDT)
-X-Received: by 10.13.200.69 with SMTP id k66mr5928307ywd.116.1474927315964;
-        Mon, 26 Sep 2016 15:01:55 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id 7si5005444pfw.1.2016.09.26.15.01.55
+Received: by 2002:a17:90a:7102:: with SMTP id h2ls2507923pjk.0.canary-gmail;
+ Thu, 08 Apr 2021 04:34:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9K7vebH8cogRbaQxhWLF+qldCymbH+LYkMtDmBi1ZnuDQo2jLSl4Gdc+1gv0TsK+u8zRB
+X-Received: by 2002:a17:903:31cc:b029:e4:bd48:c8e3 with SMTP id v12-20020a17090331ccb02900e4bd48c8e3mr7166754ple.40.1617881681592;
+        Thu, 08 Apr 2021 04:34:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617881681; cv=none;
+        d=google.com; s=arc-20160816;
+        b=A5O7avATDMJRzI6fj3yhEPig0bjn+6kCfMgDcdo9if44MBx1k55f+OXLpV5akravN9
+         YLk/LMBTf5xH4WgzCPeQi9qb95xV0eJYown4B30ahYEHPUpJ+vbIkNf3ZVaZPpCdhtzN
+         LcmcZRBWUc86gVHgK5VUo+/mnwyqvYjHUyjw+jCXqyTJwlwtzbh/+IaNwyl6+97QQ7If
+         sx7eIu+4Ot246a6CQONXNnrIPL5iIEqb2/n9DYm4H87d2W7AaeZunQvvVMP3gDzoky8h
+         jm61u0PkavwoTcMgcJbr8+tu+YSofb9XyMUROWeX2ZrPqkxRC63KWyLriNOomnOL/pc1
+         S/mw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=g2gYBTGg0cykUHA72pXpH8qBqdT2fUALFG+aHqYMivg=;
+        b=bEzCxggOWzxMsWAcz0um+IeHVYJbubtk4LN+hIIo2y+69z0VvIX6SaFWVVcMPhbuVE
+         jUlf07FjNhaEYxI+DGIJuZAZY7lFAKICpC6xmcY/hQwA+ciVKUq0M0ucqI73IRyxpEpZ
+         LR0ygXCK1cNkTqnSeAers6lQ9BZ0cprG605KKamkFGxpqfn9oQWnBkUF1PJN6Z3VGCix
+         eOkz7z2EaKNhBiXhwMzp59dZklrCiDBrqv11E6nJXByw2qutLyjDOILYfJM6JBhgFJEN
+         wFQSoRVdrJQbzQ1lItgqwOdSOdWEUHM+OeFIyA/6Bg6DlOn2S7zztQqR/H23HA7ixg+A
+         BNLQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=eV0F5TSU;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id g23si3028083pfu.3.2021.04.08.04.34.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 15:01:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Apr 2021 04:34:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of gnudevliz@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=gnudevliz@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 21so9684412pfy.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Sep 2016 15:01:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FkL4EblysrJAR7bV+gIhqFdHDUqzzAvilIRcaS7aZRQ=;
-        b=RNDdkslNWI+v5VSarxmi5aJwrwv7rM5i5ol/AlWwF1F/p+416J60mVYAsnRmSUSA9q
-         IJoWz5obrcQ7zNtRGaAJOJe1BeY0S7LIx+vcazkosIwZbkkkAykwyeVE8wPU4yLXcJ2p
-         +4fPechVkMKgC44fJA8GFi90cehfS95vqRfyt3B1YMCsX7879/Tp1DHPbWjMng5WM1Ti
-         irXbWIPNHfBgObjJqtv5WfZMO7yIM1XCyic8qDghKgAEOul43+WNqFfcjYwR+CUelpOc
-         pbpFT1ZQZOU5BUYbFIIkp0IsDN+w/fU8Fj4MPtBiaW0dg59ydfV4bBhBfgtaKF4Keb3h
-         ZOaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FkL4EblysrJAR7bV+gIhqFdHDUqzzAvilIRcaS7aZRQ=;
-        b=SCMVrZipbbkjbqScEr5SGOC1I54DiiBHKkA1pMbdfWOjJpEkd6iw6xUpp9HD6nwH0P
-         pEaMj0FsB7fh3Ktq7DHcV/qQPuzp7NTxLmDZZhhG//buqehGGx6pgbujmhoqoRcuPajt
-         joCNJxL0vMPQQfNTaWkX9jcnLD6PacIBeRn3ADIILml8QVcIYhhJYgl8wPLNmfNYNp0Z
-         iekK/5iZPzk3difrKAk+TcuvHVzy9pQaL/KMPOiFru9orcMj0LquJRArQNqqZRLXswtA
-         WGGDIc/Ep9cILQY1ybC6fOzD9yYSKNxk/dXquz4vREtj8O++WNjbxGdC4aafljjFw7+p
-         cU+g==
-X-Gm-Message-State: AE9vXwOAAohO7vtpXw8r/iypAAxV6AEWXqiRwetPXsLO3vLWcwXsV8aqJLizm+BtpixoaQ==
-X-Received: by 10.98.93.204 with SMTP id n73mr41661314pfj.87.1474927315607;
-        Mon, 26 Sep 2016 15:01:55 -0700 (PDT)
-Return-Path: <gnudevliz@gmail.com>
-Received: from localhost ([2601:644:300:fd6b:4e0f:6eff:fe69:e9ea])
-        by smtp.gmail.com with ESMTPSA id y190sm27101623pfg.39.2016.09.26.15.01.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 26 Sep 2016 15:01:55 -0700 (PDT)
-Date: Mon, 26 Sep 2016 15:01:53 -0700
-From: Elizabeth Ferdman <gnudevliz@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: amsfield22@gmail.com, daniel.baluta@intel.com,
-	sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: sm750fb: Refactor camelCase macro
-Message-ID: <20160926220150.GA2273@localhost>
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=eV0F5TSU;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B1C3661107;
+	Thu,  8 Apr 2021 11:34:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1617881681;
+	bh=jyaO0qglGyFdhPEM06gVFnPGc0e+8xQPP2hnY0QpVqE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=eV0F5TSU2bp/hGiIrSd+oZHtY2de7+gdwSpPzqLCSWbVqhFazCZrzW0mcBwdtJOzT
+	 rzZIHeDfuWFKff0fyM6vxueM7Q4kp47WjxOhQxPPd6UKleNDoAk58NEAtLySsj92b5
+	 3+6CoL3sMCPAtDIZ4jRS7LhrDGicbvF9FjRBo7d0=
+Date: Thu, 8 Apr 2021 13:34:38 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, Larry.Finger@lwfinger.net,
+	florian.c.schilhabel@googlemail.com, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8712: added spaces around
+ '+'
+Message-ID: <YG7qTib76wKhQeoU@kroah.com>
+References: <YG690ZIRdCEcjoM6@kali>
+ <alpine.DEB.2.22.394.2104081027100.3155@hadrien>
+ <YG7oOezBpYsi3Fr8@kali>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <YG7oOezBpYsi3Fr8@kali>
 
-This patch refactors a camelcase macro roundedDiv to rounded_div. Error found by checkpatch.
+On Thu, Apr 08, 2021 at 04:55:45PM +0530, Mitali Borkar wrote:
+> On Thu, Apr 08, 2021 at 10:30:09AM +0200, Julia Lawall wrote:
+> > The subject line should be in the imperative, so "add" instead of "added".
+> > 
+> Ok Ma'am
+> > On Thu, 8 Apr 2021, Mitali Borkar wrote:
+> > 
+> > > Clean up Check:spaces preferred around that '+' (ctx:VxV)
+> > > Reported by checkpatch
+> > 
+> > Please try to rephrase to explain what you did and why.  "Clean up" kind
+> > of states what the goal is, but your opinion about what is a clean up
+> > might be different than someone else's.  It's also not necessary to cite
+> > the checkpatch warning exactly.
+> > 
+> OKay Ma'am, will rewrite the appopriate commit message. May I know while
+> resending this patch, what should I write in subject description, 
+> RESEND PATCH or PATCH v2
 
-Signed-off-by: Elizabeth Ferdman <gnudevliz@gmail.com>
----
- drivers/staging/sm750fb/ddk750_chip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+"RESEND" is only ok if the patch and changelog text is identical to the
+previous version and something got lost so it needed to be resent.
 
-diff --git a/drivers/staging/sm750fb/ddk750_chip.c b/drivers/staging/sm750fb/ddk750_chip.c
-index f557b6d..81df4c4 100644
---- a/drivers/staging/sm750fb/ddk750_chip.c
-+++ b/drivers/staging/sm750fb/ddk750_chip.c
-@@ -7,7 +7,7 @@
- #include "ddk750_power.h"
- 
- /* n / d + 1 / 2 = (2n + d) / 2d */
--#define roundedDiv(num, denom)	((2 * (num) + (denom)) / (2 * (denom)))
-+#define rounded_div(num, denom)	((2 * (num) + (denom)) / (2 * (denom)))
- #define MHz(x) ((x) * 1000000)
- 
- logical_chip_type_t getChipType(void)
-@@ -102,7 +102,7 @@ static void setMemoryClock(unsigned int frequency)
- 			frequency = MHz(336);
- 
- 		/* Calculate the divisor */
--		divisor = roundedDiv(get_mxclk_freq(), frequency);
-+		divisor = rounded_div(get_mxclk_freq(), frequency);
- 
- 		/* Set the corresponding divisor in the register. */
- 		reg = PEEK32(CURRENT_GATE) & ~CURRENT_GATE_M2XCLK_MASK;
-@@ -152,7 +152,7 @@ static void setMasterClock(unsigned int frequency)
- 			frequency = MHz(190);
- 
- 		/* Calculate the divisor */
--		divisor = roundedDiv(get_mxclk_freq(), frequency);
-+		divisor = rounded_div(get_mxclk_freq(), frequency);
- 
- 		/* Set the corresponding divisor in the register. */
- 		reg = PEEK32(CURRENT_GATE) & ~CURRENT_GATE_MCLK_MASK;
--- 
-2.1.4
+I do not think that is the case here.
 
+thanks,
+
+greg k-h
 
