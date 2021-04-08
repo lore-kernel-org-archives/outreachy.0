@@ -1,129 +1,124 @@
-X-GM-THRID: 6477856577977057280
-X-Received: by 10.99.63.201 with SMTP id m192mr2889001pga.97.1508243516374;
-        Tue, 17 Oct 2017 05:31:56 -0700 (PDT)
+X-GM-THRID: 6948615918410792960
+X-Received: by 2002:a05:6638:3884:: with SMTP id b4mr6608265jav.18.1617850716754;
+        Wed, 07 Apr 2021 19:58:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.98.49.4 with SMTP id x4ls351709pfx.10.gmail; Tue, 17 Oct 2017
- 05:31:55 -0700 (PDT)
-X-Received: by 10.99.140.73 with SMTP id q9mr2858488pgn.140.1508243515223;
-        Tue, 17 Oct 2017 05:31:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508243515; cv=none;
+Received: by 2002:a05:6e02:b4b:: with SMTP id f11ls900766ilu.7.gmail; Wed, 07
+ Apr 2021 19:58:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxi/IEoWf6Z8n57TvNWEcBk/FXbDNkwSD3hMf9WzXRTHIHgsswHtK3loqvm7MUO8V+qXUG
+X-Received: by 2002:a05:6e02:1c48:: with SMTP id d8mr3234287ilg.160.1617850715907;
+        Wed, 07 Apr 2021 19:58:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617850715; cv=none;
         d=google.com; s=arc-20160816;
-        b=mPUQHfIidob6VGzE5sei7ub4jWJa5VkQ2QjKZlm6Le1gSsrefFQTsAEqU0JVExUU++
-         FksKJbf8SWqEuaJJmuwMYArVjTWPN71jsslZ6aMXyCDGzzFm8EWgyFI/k9xIzCVlaynj
-         X83kg6x6UTmZRE0578ggw2m0tIkKpynx4pveoc8pZdtrTNlu1l0iasWM5afNRmL8CYue
-         aZtBV2MNs0Gf1qNAB4RUuDiLByQ5jyS8/MxUwDK6FC5/cQo/pytFk9Ipr4llgKThqsR9
-         RNZrwtGoCfrkvHTlYBqRVCs/nAU24IUx9KEo/5nnmK3rFtbjPn0LRBNVItsKxkK/8vxG
-         rtSw==
+        b=c4xTykkzcFHWlLSFc/u4Fy5F3bdWmx2Qxc8EWJT3b62y2ywb7hHGeE8itpFcjGYj0f
+         MqIDh+D5Uqhfv8/MoqV99wVf+ayaSkac5i2P9QIPFGpdfrnaqD+33mj8BIgU+i7e5jdF
+         OfdbuJ9aaDR0iLIKyP7ugfezXHzycNaVDCx9KGiHtCe1TlxHVxERHEPGXe21rc4FFQZS
+         NwsouP1cxLAEwlkjSrQ+C8wdY7pF9RFdlPuxQzung6RNae8qnhCCjtt1+mPBABaGyNCf
+         vT5e7TfmEUiQitSPinUx7Hske744rzajc0XkUBmxfjs4pKpcmMZ0pjVM2hLJkMkaForW
+         ketw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Phdwp2p0ou2V0xIEtkr5eqmw9rm7GKS7FDtgqBnKS50=;
-        b=ld4chJwLenzUnQZuMyPDzBwt6blqcXxR/ozqDw8dpom0Kf3S+K/odLws7HxhuYR8IE
-         +//2pCkk8B1EO6t9KqfMNwkLxfZ6WVdlNaDu/5ST4QMi548vnJhLFGc6ZR5mqpR8VJVK
-         fT5rrK2Zz4Mfjud/zdcMi/EPgXSJPRbDZQnCeK72sXDmEuCXfPe6F39wslO9InG7roTj
-         M/Q+RRvhDAhmNdyBjyxQ9WWwoNoJGDBDpVtRknnt93ep/6tI15e97IYhLRFEDurCjbGR
-         1hDqJFF6VlqV1q2bQMF0PBxjhrPWz5hOeGA7b80/4jy+/bZMDeIfWFrVJ5l8Gi4IDy8t
-         QkIQ==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=uj9M9j69MmEK6kxoKurva3J2kTnrLS58UJHTZwQEUnA=;
+        b=so0c7325Cnct7G4wTyKy2540GjUezkxCgQKejfhWzlCVx+Dvge0sC2SE4tumcn8Wwe
+         efWYWKQVnt0LYQJdX6KDTSgjoQuiGCIhsCqX2vKv5CrHoGIgS9I8UZkgACFzD/jIWwwk
+         ldQMQacvmB/cODxn/eZaLSUyIUJR9djAGl3UAE/jdWsxAEfHzn90kn7RmAAXhL3Q8s4a
+         9iXgIkH4b6Y8gUPyuCD3Jj1iV7h3VPWUywL7nTXJsWT9wlXDmB2CQkwaq2Hsj89VL3hC
+         yxM73lOFfh3uMv/UtaTf09MLevKf5cWGTHeNjXzGUQMxplyybsGoubY78u9iyQKJjuLx
+         Z44A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eFdf+yAh;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::232 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x232.google.com (mail-pg0-x232.google.com. [2607:f8b0:400e:c05::232])
-        by gmr-mx.google.com with ESMTPS id w4si906596plp.5.2017.10.17.05.31.55
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Bx6bE9HU;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com. [2607:f8b0:4864:20::1031])
+        by gmr-mx.google.com with ESMTPS id h18si780575ilh.5.2021.04.07.19.58.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 05:31:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::232 as permitted sender) client-ip=2607:f8b0:400e:c05::232;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Apr 2021 19:58:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) client-ip=2607:f8b0:4864:20::1031;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eFdf+yAh;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::232 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x232.google.com with SMTP id j3so1310630pga.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 05:31:55 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Bx6bE9HU;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x1031.google.com with SMTP id q6-20020a17090a4306b02900c42a012202so529345pjg.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 07 Apr 2021 19:58:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Phdwp2p0ou2V0xIEtkr5eqmw9rm7GKS7FDtgqBnKS50=;
-        b=eFdf+yAhKXAmPhyUgJPBSCAYQW1H5fL5t3urhAvE2D9GVLv9yCrs6h6kxTDq7Ld31y
-         /XAFWxFvAur5Iv8W9t9Ooqpo3JfNz5v1CS6oui0MWOuehXmQDOL1ekACLp9SxS/xBLxr
-         tgH3csohgexB2BDjDkhbRMonFus7tMz6pRwo5bACKBU5VOuGXWBBuVIaeXxVl64dt9BW
-         QDfOxuTgkeyebwIk6J1VjLaGbNM5kWazXJByZtMOnIwY9Mr5jiacHkTmWN9/vuWPv+dm
-         uQO17b3C6WRiHIu/ZUuNND67KT9gQ9P4LqICOt3y6CDTspHn0Y1Um6v6iR3pCERVuuUn
-         ppjQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=uj9M9j69MmEK6kxoKurva3J2kTnrLS58UJHTZwQEUnA=;
+        b=Bx6bE9HUW6Kdju/XBIi8ukVkfQPBPAs+KrxrFXSP7TqqqntvXMuNNj6ey3fyvwVS+z
+         wE5V65H7X8fKXwSEJwWpJ78XncP3VREp9WQUzqzg6uFOECvRQpq3WXNbn5c6klOGgHpE
+         rWAGCku9Ag9BQ/0kMYzQPCqg80kT0sil+Uz/1gFWOv9/KsrK3EUBbjayXWikU1PcO28/
+         wPbRvIGXFXmGvMvUD9jIki9XbzxWdwua06DhoyP646fipK24d9lCxhFXcWP0oLri2VSj
+         CTqi0CMar8RxnVDUL0Ix4XPyvi7UdBw3TtVhbDWWNNila/WXa6srTZZb+8ZDch+au9VD
+         qoww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Phdwp2p0ou2V0xIEtkr5eqmw9rm7GKS7FDtgqBnKS50=;
-        b=pakdg5rclKiaaDhUAaOepxRW6L6/K+wCd/ZJrHHGWUYbUQrZcMi9ukZjGRSKhuHO3z
-         oWGUEYCnf4ASuC/1X1GpxxL06St9diLYGp8klSwz/nIHmbf2KSFKHMgS8YmmILriY3Wd
-         hBmhzfVaaSZXBUUNYEiTGuyi1hg+ifaT66mnB6aF7Oi1YsXOJ3ozRYFR6r8bV/v1jXyu
-         RkXXeDgombc+aeVI/SU2LyPw35bNCBCEov9YaCiOinh46mlZc0D6EFmPhbYB2dHcdRF0
-         Cmecvi323Lhcu0k0FLPlfEOOesJnAugmoK6xw1ARDgKhqs4u/7uTz7fFyw9DCHYIv/4K
-         m29g==
-X-Gm-Message-State: AMCzsaUlNuH/gxrK5BoKmP5NqTa+lU0DKRI2L1o0M22fclj0yw/b/9vJ
-	kpUxocjy9EzKyNip9sv7Pok=
-X-Google-Smtp-Source: AOwi7QBuKdc9R4R+D6zwWqHffaZ4qWTABpJS2LWEZ+EHcUHLTjMJPGoiz4iPY60EY7wWrWwHrYg+wQ==
-X-Received: by 10.98.41.193 with SMTP id p184mr11401036pfp.112.1508243515030;
-        Tue, 17 Oct 2017 05:31:55 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id z6sm19525739pfe.114.2017.10.17.05.31.52
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 05:31:54 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH v2] libxt_TOS: add tests for translation infrastructure
-Date: Tue, 17 Oct 2017 17:59:37 +0530
-Message-Id: <20171017122937.20617-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=uj9M9j69MmEK6kxoKurva3J2kTnrLS58UJHTZwQEUnA=;
+        b=lAvJKIEuuSAiPt1jtvm8d8AQ7kD9DMurS/aZurzliv9cGxtd/FjaLu0uJzlui+Mpbc
+         P53QtnxdWTjAguFhNaJ5+J3zn9GEFfw6FyUWkjpCEbjwMJ7Wc4GUwhde+7DIZREXZdOH
+         t1YaNBHj8rcyjUBgXlVxhB9oBS2zYDa1cT3bPRcwT3HqQz8isMlg+8fGelffylibTLCV
+         uft/BuTl4YsAYiKtAbTG7ctgnDQugVJurnPTHVLyjoCceAXTF/ysKjH7XXsEo8uviOa2
+         LZ1S9JZFw2rExd7//o3YI23kB+6BgRqaqjQyljr6+HGOtJJqW+E/IS9OUIoUTdc1Ur4q
+         Guqg==
+X-Gm-Message-State: AOAM532XoImr47ZhmItmLtIipA+LL2YSeB/owM3vCLpYe0R9mUULS/Eb
+	nl2tLXCspNDqygc2sI5JpK0=
+X-Received: by 2002:a17:90b:e18:: with SMTP id ge24mr6297133pjb.199.1617850715204;
+        Wed, 07 Apr 2021 19:58:35 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([152.57.40.190])
+        by smtp.gmail.com with ESMTPSA id b24sm22454613pgj.58.2021.04.07.19.58.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Apr 2021 19:58:34 -0700 (PDT)
+Date: Thu, 8 Apr 2021 08:28:31 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kenel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH] staging: rtl8712: matched alignment with open parenthesis
+Message-ID: <YG5xV5q7ODTUTVK/@kali>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-This patch checks that the iptables TOS to nftables translation works fine.
+Aligned arguments with open parenthesis to meet linux kernel coding
+style
+Reported by checkpatch
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
-Changes in v2:
- -Change subject and log message
+ drivers/staging/rtl8712/usb_ops.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
- extensions/libxt_TOS.txlate | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
- create mode 100644 extensions/libxt_TOS.txlate
-
-diff --git a/extensions/libxt_TOS.txlate b/extensions/libxt_TOS.txlate
-new file mode 100644
-index 00000000..6d55eb24
---- /dev/null
-+++ b/extensions/libxt_TOS.txlate
-@@ -0,0 +1,25 @@
-+ip6tables-translate -A INPUT -j TOS --set-tos 0x1f
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x07
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos 0xff
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x3f
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos Minimize-Delay
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x04
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos Minimize-Cost
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x00
-+
-+ip6tables-translate -A INPUT -j TOS --set-tos Normal-Service
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x00
-+
-+ip6tables-translate -A INPUT -j TOS --and-tos 0x12
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x00
-+
-+ip6tables-translate -A INPUT -j TOS --or-tos 0x12
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x04
-+
-+ip6tables-translate -A INPUT -j TOS --xor-tos 0x12
-+nft add rule ip6 filter INPUT counter ip6 dscp set 0x04
-+
-+
+diff --git a/drivers/staging/rtl8712/usb_ops.h b/drivers/staging/rtl8712/usb_ops.h
+index d62975447d29..7a6b619b73fa 100644
+--- a/drivers/staging/rtl8712/usb_ops.h
++++ b/drivers/staging/rtl8712/usb_ops.h
+@@ -21,9 +21,9 @@
+ void r8712_usb_write_mem(struct intf_hdl *pintfhdl, u32 addr,
+ 			 u32 cnt, u8 *wmem);
+ u32 r8712_usb_write_port(struct intf_hdl *pintfhdl, u32 addr,
+-			  u32 cnt, u8 *wmem);
++			 u32 cnt, u8 *wmem);
+ u32 r8712_usb_read_port(struct intf_hdl *pintfhdl, u32 addr,
+-			 u32 cnt, u8 *rmem);
++			u32 cnt, u8 *rmem);
+ void r8712_usb_set_intf_option(u32 *poption);
+ void r8712_usb_set_intf_funs(struct intf_hdl *pintf_hdl);
+ uint r8712_usb_init_intf_priv(struct intf_priv *pintfpriv);
+@@ -32,7 +32,7 @@ void r8712_usb_set_intf_ops(struct _io_ops *pops);
+ void r8712_usb_read_port_cancel(struct _adapter *padapter);
+ void r8712_usb_write_port_cancel(struct _adapter *padapter);
+ int r8712_usbctrl_vendorreq(struct intf_priv *pintfpriv, u8 request, u16 value,
+-		      u16 index, void *pdata, u16 len, u8 requesttype);
++			    u16 index, void *pdata, u16 len, u8 requesttype);
+ 
+ #endif
+ 
 -- 
-2.11.0
+2.30.2
 
 
