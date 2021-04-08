@@ -1,181 +1,94 @@
-X-GM-THRID: 10831186100224
-X-Gmail-Labels: Topic type: DISCUSSION
-Date: Fri, 17 Apr 2015 21:19:51 -0700 (PDT)
-From: Supraba murugan <msupraba@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Message-Id: <1ecfa08e-16d7-4f98-8138-f101e346d0d7@googlegroups.com>
-Subject: Query: First Patch
+X-GM-THRID: 6948690474275176448
+X-Received: by 2002:ac8:1093:: with SMTP id a19mr6417910qtj.365.1617871043922;
+        Thu, 08 Apr 2021 01:37:23 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a05:620a:4455:: with SMTP id w21ls2802279qkp.7.gmail; Thu,
+ 08 Apr 2021 01:37:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRL5oYMSEto7Kc5/LyUBTfc8Q92Tee/nfVFqIADJXP6Ef70ys3JJmM3LjhvemJFRIB2axJ
+X-Received: by 2002:a05:620a:1133:: with SMTP id p19mr7530872qkk.340.1617871043132;
+        Thu, 08 Apr 2021 01:37:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617871043; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gCyWH4AyRma5o5Z4T5IGPMipo5Ud3wUhIBg6B//UpwbevkbYySD9APippIpHB3yXhM
+         LxP2/xzQfy3Gw2OnvSwqrXWqtP+frE+EnEadTqCsCK8loHKNwhUUxwSCu3JcfGPHzmF+
+         /o3WfSYzWFoZiqVLlo22Y4GNhFP5AktotO6F8s1u69En/Kz5yTGVGWt++Paqt8PGG5Qf
+         e9ARk8fiffn5vWE+b4KyaHCW+0o4Sh3hBGHbJjYrWYeNYpC9iWxgQH72CEoM7ugRfNcX
+         nXJGsNy7QXbfyOd5IcD4I5QK8NlE1FlfcILNBOkW1Ymp/bGQ25w1zkx/1CbJ94Td48yF
+         GRhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=gTRJUY1qblXJejgz2sywV+BWhoT7K1wnHBT96srPwq8=;
+        b=CxM133tbqL3uUej5y7AOvLdhZ9w5ufq0vuSgOhLFQv2A6IUsns2zAl5Jy3Fy9jQ3n6
+         yap7eOzhn7kuyeYqGvlqkVHmgEaV/sreyWZgyj0a+8xggxQ0+xPHky5nqx0Sd8N9uSvn
+         AapeOf1Ama9t7G2HgiqMQ+5VMoSAivezBK//lJrK1yemBUrDUjbmDXV10oC8VoODXnQl
+         jT6man+iLOUvgsTznw5dg9FmVtPn2JwVT+1qVZ18yA9ZJGHRKm6c8rgm92w7JAmgCbS8
+         aVMGxG/TurY8Z842Vg70qeDHEjJW2K6ndg+d9a+EA2llFd3OsX+ZgnDHIhHXNevo5Qn6
+         uW9Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=V6GxBF5j;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id k1si4178984qtg.2.2021.04.08.01.37.23
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Apr 2021 01:37:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=V6GxBF5j;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C681A61004;
+	Thu,  8 Apr 2021 08:37:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1617871042;
+	bh=gTRJUY1qblXJejgz2sywV+BWhoT7K1wnHBT96srPwq8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=V6GxBF5jSNseCmswWdYSFXiLQuH+aG/A37oCuSEAh7CmY2C6N1PC84DplxdY3O1ui
+	 NStz0KauMpzYzjj+qboizZE4QjEjFtgeKAg2sQTmsaEDPk4JoebI/ogPE/QYCw5vov
+	 OUZS4GRsv3lRdgaukMhB/Mf4Up4YrjfZyukaYt/w=
+Date: Thu, 8 Apr 2021 10:37:19 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH] staging: rtl8712: removed unnecessary blank line
+Message-ID: <YG7Avz5/iaSynCwX@kroah.com>
+References: <YG61JYTdl1HQKcGj@kali>
+ <YG64Kvun5Xxy4lOL@kroah.com>
+ <CAHWmKdgm0bjRBasEjcWdtDPX1DPON6RSmNXMTp+NQfYrYHmcXg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_1598_1327108902.1429330791061"
-X-Google-Token: EOe2x6kFR95tGCILX0U0
-X-Google-IP: 122.174.96.199
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHWmKdgm0bjRBasEjcWdtDPX1DPON6RSmNXMTp+NQfYrYHmcXg@mail.gmail.com>
 
-------=_Part_1598_1327108902.1429330791061
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_1599_954158172.1429330791062"
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-------=_Part_1599_954158172.1429330791062
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+A: No.
+Q: Should I include quotations after my reply?
 
-The selftest.c file did not contain the probe function nor did any other c 
-file in net/bluetooth directory.I even tried other drivers and still 
-couldn't find any c file with the probe function in it.Under which function 
-should I include the printk statement in these c files.
-Also,I want to know how to identify the wireless driver?
+http://daringfireball.net/2007/07/on_top
 
+On Thu, Apr 08, 2021 at 01:36:07PM +0530, Mitali Borkar wrote:
+> Okay, should I rename the patch?
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-On Fri, 17 Apr 2015, Supraba murugan wrote: 
+I can't take it as-is, so you need to change something :)
 
-> I was following the steps 
-in http://kernelnewbies.org/Outreachyfirstpatch#head-816e6eef0008340eab7d542c3f6923a1f896478d 
-to 
-> submit my first patch.When going through the section 'MODIFYING A DRIVER 
-ON 
-> NATIVE LINUX', 
-> I used lsmod command and I did not find either e1000 or e1000e drivers.It 
-> was asked to identify my wireless driver, but I didn't know how to find 
-it 
-> out.So I just chose the bluetooth driver from that list and ran the 
-command 
-> git grep bluetooth -- '*Makefile'. 
-> The output of that command is shown below 
-> 
-> arch/arm/mach-s3c24xx/Makefile:obj-$(CONFIG_H1940BT)                     
-> drivers/Makefile:obj-$(CONFIG_BT)               += bluetooth/ 
-> drivers/platform/x86/Makefile:obj-$(CONFIG_TOSHIBA_BT_RFKILL)   += toshi 
-> net/Makefile:obj-$(CONFIG_BT)           += bluetooth/ 
-> net/bluetooth/Makefile:obj-$(CONFIG_BT) += bluetooth.o 
-> net/bluetooth/Makefile:obj-$(CONFIG_BT_6LOWPAN) += bluetooth_6lowpan.o 
-> net/bluetooth/Makefile:bluetooth_6lowpan-y := 6lowpan.o 
-> net/bluetooth/Makefile:bluetooth-y := af_bluetooth.o hci_core.o hci_conn 
-> net/bluetooth/Makefile:bluetooth-$(CONFIG_BT_SELFTEST) += selftest.o 
-> 
-> I don't know how to find out what C files are compiled into the driver 
-> binary using the above information. Please help. 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-I'm sorry but this mailing list is not active anymore, and you should use 
-the outreachy-kernel one.  Also, the application period for this round is 
-over, and the application period for the next round will start in the 
-fall. 
+> I removed a line and matched alignment, so should I rename this
+> appropriately?
 
-With respect to your question, if the configuration variable is set, eg 
-CONFIG_BT_SELFTEST, then the corresponding .o file, eg selftest.o, will be 
-generated.  The .c file that goes with it is normally found by looking at 
-the directory that contains the makefile and replacing the .o by .c in the 
-file name. 
+Only do one logical thing per patch, so if this is 2 logical things,
+then you need 2 patches, right?
 
-julia 
+thanks,
 
-
-> ................... 
-> with regards, 
-> supraba 
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups 
-> "opw-kernel" group. 
-> To unsubscribe from this group and stop receiving emails from it, send an 
-> email to opw-kernel+...@googlegroups.com. 
-> For more options, visit https://groups.google.com/d/optout. 
-> 
->
-
-------=_Part_1599_954158172.1429330791062
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div tabindex=3D"0" class=3D"G3J0AAD-nb-W G3J0AAD-mb-n G3J=
-0AAD-nb-Y G3J0AAD-b-Ub G3J0AAD-nb-X" style=3D"padding-top: 4px; padding-bot=
-tom: 4px; border-top-width: 1px; border-bottom-width: 1px; border-left-widt=
-h: 1px; border-top-style: solid; border-bottom-style: solid; border-left-st=
-yle: solid; border-top-color: rgb(221, 221, 221); border-bottom-color: tran=
-sparent; border-left-color: rgb(77, 144, 240); position: relative;"><div cl=
-ass=3D"G3J0AAD-nb-W" style=3D"border-top-width: 1px; border-bottom-width: 1=
-px; border-left-width: 1px; border-top-style: solid; border-bottom-style: s=
-olid; border-left-style: solid; border-top-color: transparent; border-botto=
-m-color: transparent; border-left-color: transparent; position: relative;">=
-<div class=3D"G3J0AAD-nb-F"><div class=3D"G3J0AAD-nb-x"><div class=3D"G3J0A=
-AD-gd-a" style=3D"margin-left: 44px; padding-left: 5px;"><div tabindex=3D"0=
-" class=3D"G3J0AAD-nb-P"><div style=3D"overflow: auto;"><div class=3D"G3J0A=
-AD-xb-b"><font color=3D"#000000">The selftest.c file did not contain the pr=
-obe function nor did any other c file in net/bluetooth directory.I even tri=
-ed other drivers and still couldn't find any c file with the probe function=
- in it.Under which function should I include the printk statement in these =
-c files.<br>Also,I want to know how to identify the wireless driver?</font>=
-</div><div class=3D"G3J0AAD-xb-b" style=3D"color: rgb(136, 136, 136);"><br>=
-</div><div class=3D"G3J0AAD-xb-b" style=3D"color: rgb(136, 136, 136);"><br>=
-</div><div class=3D"G3J0AAD-xb-b"><font color=3D"#cccccc">-----------------=
----------------------------------------------------------------------------=
----------------------------------------------------------------------------=
----------------------------------------------</font></div><div class=3D"G3J=
-0AAD-xb-b" style=3D"color: rgb(136, 136, 136);">On Fri, 17 Apr 2015, Suprab=
-a murugan wrote:&nbsp;<br><br>&gt; I was following the steps in&nbsp;http:/=
-/kernelnewbies.org/Outreachyfirstpatch#head-816e6eef0008340eab7d542c3f6923a=
-1f896478d to&nbsp;<br></div><font color=3D"#999999">&gt; submit my first pa=
-tch.When going through the section 'MODIFYING A DRIVER ON</font><font color=
-=3D"#cccccc">&nbsp;</font><br><div class=3D"G3J0AAD-xb-b" style=3D"color: r=
-gb(136, 136, 136);">&gt; NATIVE LINUX',&nbsp;<br>&gt; I used lsmod command =
-and I did not find either e1000 or e1000e drivers.It&nbsp;<br>&gt; was aske=
-d to identify my wireless driver, but I didn't know how to find it&nbsp;<br=
->&gt; out.So I just chose the bluetooth driver from that list and ran the c=
-ommand&nbsp;<br>&gt; git grep bluetooth -- '*Makefile'.&nbsp;<br>&gt; The o=
-utput of that command is shown below&nbsp;<br>&gt;&nbsp;<br>&gt; arch/arm/m=
-ach-s3c24xx/<wbr>Makefile:obj-$(CONFIG_H1940BT) &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>&gt; drivers/Makefile:o=
-bj-$(CONFIG_<wbr>BT) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +=3D =
-bluetooth/&nbsp;<br>&gt; drivers/platform/x86/Makefile:<wbr>obj-$(CONFIG_TO=
-SHIBA_BT_<wbr>RFKILL) &nbsp; +=3D toshi&nbsp;<br>&gt; net/Makefile:obj-$(CO=
-NFIG_BT) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +=3D bluetooth/&nbsp;<br>&gt; n=
-et/bluetooth/Makefile:obj-$(<wbr>CONFIG_BT) +=3D bluetooth.o&nbsp;<br>&gt; =
-net/bluetooth/Makefile:obj-$(<wbr>CONFIG_BT_6LOWPAN) +=3D bluetooth_6lowpan=
-.o&nbsp;<br>&gt; net/bluetooth/Makefile:<wbr>bluetooth_6lowpan-y :=3D 6lowp=
-an.o&nbsp;<br>&gt; net/bluetooth/Makefile:<wbr>bluetooth-y :=3D af_bluetoot=
-h.o hci_core.o hci_conn&nbsp;<br>&gt; net/bluetooth/Makefile:<wbr>bluetooth=
--$(CONFIG_BT_<wbr>SELFTEST) +=3D selftest.o&nbsp;<br>&gt;&nbsp;<br>&gt; I d=
-on't know how to find out what C files are compiled into the driver&nbsp;<b=
-r>&gt; binary using the above information.&nbsp;Please help.&nbsp;<br>-----=
----------------------------------------------------------------------------=
----------------------------------------------------------------------------=
---------------------------------------------------------</div><span style=
-=3D"background-color: rgb(255, 255, 255);"><font color=3D"#999999">I'm sorr=
-y but this mailing list is not active anymore, and you should use&nbsp;<br>=
-the outreachy-kernel one. &nbsp;Also, the application period for this round=
- is&nbsp;<br>over, and the application period for the next round will start=
- in the&nbsp;<br>fall.&nbsp;<br><br>With respect to your question, if the c=
-onfiguration variable is set, eg&nbsp;<br>CONFIG_BT_SELFTEST, then the corr=
-esponding .o file, eg selftest.o, will be&nbsp;<br>generated. &nbsp;The .c =
-file that goes with it is normally found by looking at&nbsp;<br>the directo=
-ry that contains the makefile and replacing the .o by .c in the&nbsp;<br>fi=
-le name.&nbsp;<br><br>julia&nbsp;<br><br><br>&gt; ...................&nbsp;=
-<br>&gt; with regards,&nbsp;<br>&gt; supraba&nbsp;<br>&gt;&nbsp;<br>&gt; --=
-&nbsp;<br>&gt; You received this message because you are subscribed to the =
-Google Groups&nbsp;<br>&gt; "opw-kernel" group.&nbsp;<br>&gt; To unsubscrib=
-e from this group and stop receiving emails from it, send an&nbsp;<br>&gt; =
-email to&nbsp;<a target=3D"_blank" gdf-obfuscated-mailto=3D"pWPptWelhXYJ" r=
-el=3D"nofollow" style=3D"cursor: pointer;">opw-kernel+...@<wbr>googlegroups=
-.com</a>.&nbsp;<br>&gt; For more options, visit&nbsp;<a href=3D"https://gro=
-ups.google.com/d/optout" target=3D"_blank" rel=3D"nofollow" style=3D"cursor=
-: pointer;">https://groups.google.com/d/<wbr>optout</a>.&nbsp;<br>&gt;&nbsp=
-;<br>&gt;</font></span></div></div><div></div><div></div></div><div><div cl=
-ass=3D"G3J0AAD-gd-a" style=3D"margin-left: 44px; padding-left: 5px;"></div>=
-</div><div class=3D"G3J0AAD-nb-b" style=3D"margin-left: 39px; padding-left:=
- 5px;"><div class=3D"G3J0AAD-nb-a G3J0AAD-nb-cb" style=3D"padding-top: 4px;=
- padding-bottom: 4px; position: relative;"><span style=3D"background-color:=
- rgb(204, 204, 204);"><font color=3D"#999999"><div style=3D"display: inline=
--block;"></div></font></span></div></div></div></div></div></div><div tabin=
-dex=3D"0" class=3D"G3J0AAD-nb-W G3J0AAD-mb-n G3J0AAD-mb-k G3J0AAD-nb-V" sty=
-le=3D"padding-top: 4px; padding-bottom: 4px; border-top-width: 1px; border-=
-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-=
-bottom-style: solid; border-left-style: solid; border-top-color: rgb(221, 2=
-21, 221); border-bottom-color: rgb(221, 221, 221); border-left-color: trans=
-parent; position: relative; background-position: 0px 9px;"><input type=3D"t=
-ext" tabindex=3D"-1" role=3D"presentation" style=3D"height: 1px; opacity: 0=
-; width: 1px; z-index: -1; overflow: hidden; position: absolute;"></div></d=
-iv>
-------=_Part_1599_954158172.1429330791062--
-
-------=_Part_1598_1327108902.1429330791061--
+greg k-h
 
