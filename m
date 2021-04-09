@@ -1,97 +1,127 @@
-X-GM-THRID: 6885367021918224384
-X-Received: by 2002:a05:6602:148a:: with SMTP id a10mr189884iow.76.1603124435355;
-        Mon, 19 Oct 2020 09:20:35 -0700 (PDT)
+X-GM-THRID: 6949235064632770560
+X-Received: by 2002:a37:db11:: with SMTP id e17mr3639900qki.421.1617994873054;
+        Fri, 09 Apr 2021 12:01:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:5b47:: with SMTP id p68ls125186ilb.5.gmail; Mon, 19 Oct
- 2020 09:20:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRrxYZrwNO6Rjl83VVIF/8wZQQDZFYwOG2+WyXBDdnBvdmuEl7tdTflP0zASurJ6wep1dk
-X-Received: by 2002:a92:b712:: with SMTP id k18mr589987ili.291.1603124433897;
-        Mon, 19 Oct 2020 09:20:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603124433; cv=none;
+Received: by 2002:a05:622a:606:: with SMTP id z6ls998200qta.0.gmail; Fri, 09
+ Apr 2021 12:01:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPvuWAOGggRutItGfeYkFYBnoX/HowKhSha6k3crumlNx9D6IqCxWprprKxHxDaJUFczm9
+X-Received: by 2002:a05:622a:149:: with SMTP id v9mr13501211qtw.172.1617994872005;
+        Fri, 09 Apr 2021 12:01:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617994872; cv=none;
         d=google.com; s=arc-20160816;
-        b=qWweMYXPtZNoqAZCb3yLKNQrPxnNrWu7apd8jnT0Z+Hrn1KsGSIWoq9I6YD3QBTVMg
-         gU1sL8VWuVciVopbos8no6oAYCN2sZbuMc+9y2cUpdsHh7B8inVV1QcYPddOvz0d+ZZE
-         T2SfpIyPkYZ1OmK0LfkO+KtEzM3rKElzMKBj7OwPpaZYybjDBw35KTiyu7rbyDMvZkak
-         ue38anRMoCbH6QxC4rP94r958lCMTRxc8HhOHADKMtZT6wY4mdXaz11R9/nSF1bcJx0L
-         OKDopLyPpo28lFqtyNzXA4rp98vcKRuCYMT4PQhM68bie06/HuOXlsNOOm7ikHxLhsQL
-         z6SQ==
+        b=MVxLVfZu1empz4X2BA1aN5fM2GLmPUobAoyNxRjKfBWrVEjDgLs11xhkZv6J8KPkZ/
+         d2W0mXgPo63fTlVy10j+fgPb+RhrIqP2DVG4zVyeNdbNMViAgkyghpkWVrUHK6QOcAax
+         dOt1xwTH7JEvLacAD9u2pbuUUdfSRAD2rEkI0Y8a1Su955DwOwOraGR4CtE7YvB0R1Ae
+         ngtwOqBSjU+fQHMBH52dosWglPP7oIjH00T0If+AVJn39i9AzJ1vcM2tRIcrkarBiIEj
+         T2VqHQA8DBlWkr/IbdheiPd0f+vEIZdOl/iBrqwoH4X522O8I6UpDXYRyLtm4hJh/7lY
+         YM0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=w4uMij9CTvrGIx+NRO71amGqgWLT5y/95zkd1EdWHXM=;
-        b=JbNAVZsNpOk+TklJ+oXPCxb5zOKu42kfmNSMgxgUb71AmCeVFZDYU2lxpZvoo81g44
-         ji5anF4onYnIFXJPIy1Hqw+tB0cbmP+qzLmLdLVh3zdVr4p/5DJiL/+Jw7sUmXtXIRY9
-         m1YsQz9uQhoO0q2ocqz9+2oJ9nugmXETji47hx/gN6iTDOdMH4Z0g8s22vkYs5IH9S8J
-         eLALvDRttnqI8mdcXvwMObHgcbXRFbHo6Yp0FnLajOcNRHlSM/XpE2teUx7/27A6Lvs+
-         cMmawMFO5l4nQynVNztku5F1h4tlVXu/k0v3X7CdnXml3c7ZlPvaEdJLXoNtASvavUN4
-         q6rw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=dggCkVFWKXm7BbwuV1M/eeJV+LFnVGWYUCSH1BrxITE=;
+        b=GDIENMAg6w1DvHkkcuZJYHVkrIIjQPG7suFg+6X1VWLLi4wJ76NK7JRogzNKLp8nGF
+         xV//vX+kNmiJxMafMFqul8BbzND5Km+Z1u8GpUAqdqhAY/9O2KdeShKWhpJ9LkhNw2mn
+         vSFuH5yWsS4dusL4DgGb/uamsICBPcxryu8wUOloTaYTf/TsX7u5u6sRUMOjQxzzut3n
+         +2u1F0UE3jUlpc0MKAfHmqHlx5WRSBHu0OcZUTdK5HJ7Jz38DPP8iAkmpFwFLUuThCzV
+         2ecHdQ8Ivq4J14Ekxa409UlHIIJVBAGuv5rbms3maTJc6/LFjyIL3sZCY+GVn8wJMTXH
+         hLKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JiTpI78M;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="eoD/75Lr";
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::734 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com. [2607:f8b0:4864:20::631])
-        by gmr-mx.google.com with ESMTPS id i18si54353ils.5.2020.10.19.09.20.33
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qk1-x734.google.com (mail-qk1-x734.google.com. [2607:f8b0:4864:20::734])
+        by gmr-mx.google.com with ESMTPS id d3si126117qki.3.2021.04.09.12.01.11
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Oct 2020 09:20:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) client-ip=2607:f8b0:4864:20::631;
+        Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::734 as permitted sender) client-ip=2607:f8b0:4864:20::734;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JiTpI78M;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="eoD/75Lr";
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::734 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x631.google.com with SMTP id p11so16175pld.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 19 Oct 2020 09:20:33 -0700 (PDT)
+Received: by mail-qk1-x734.google.com with SMTP id c3so6894456qkc.5
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=w4uMij9CTvrGIx+NRO71amGqgWLT5y/95zkd1EdWHXM=;
-        b=JiTpI78MvujZmeINGD01jnEs8Qtq+UjjXihOk9C17vUBv/VMLWqJ9gQAuu6kkXNWNc
-         vOAdoVODoI/9SAXQ7qlkT20a4XhnEiKYqb5S8t+Nh2gpXuqf/769KHBB9RbXdyzEzc6v
-         5vRXbj5W8L8G4zkPtznUFRLcNeBGRCGeWBUSBzk4m0w7Q9hcbxtk6UvlkqJAlIuD5Ptd
-         Wpy4Lbk+P0bCdUDjiREBcWasS7NFDsHmmu5E4FS8u4+k2rIAlwFqYDPuPLfP7ZcWu6S2
-         3It6L46Dk3smoLPEIJOPQllXMGmsVuJhzTKxD+lErqN0z4pi9t4t0a7g5nilLFfrm10a
-         sMkA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=dggCkVFWKXm7BbwuV1M/eeJV+LFnVGWYUCSH1BrxITE=;
+        b=eoD/75Lry9hYJW+NtaMx1kuHbs6Y9pTzAWqGmRHkW2kF6YA2vILYwTZkysqyIKsT8+
+         TnZeYAmb0U9yvdQvjX09FuGZA0Lz2YEO34j8q5Ikks1lrkPX89+lo8w6ifWmcJo7x7Fj
+         AJDqq5W98PpPeuXUds4KKh7guTwZPgA28JaFWCsCIH9XSeuI3bMLgZB0fRAjqgmXWGR8
+         TdalXAUNp71Ck+dq6p9xpCorY1yXqMs1OfRx88gRqTPUGvopovi0czH2Y3tiRSSlhGhd
+         zjEhQfdyOvasgd6MmcNrPR84DxyYufy25Z1I8aN3qNisWuZdK1oke4VNVNMzAdcpDXKC
+         Vyag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=w4uMij9CTvrGIx+NRO71amGqgWLT5y/95zkd1EdWHXM=;
-        b=AfZCwNnWftkM4PO8p6hFGlowfOpmB4A1ejI4llmkuRaeuIU6BFuI4pIQxxIh1vcU2n
-         bbqo7+DBNxOk4sVHnrqlpxKld4MhUF1kG+l1sdGxeL2fq9UzIk+Se/vk/steElENq/2p
-         RFPM4aCsTDsONeWQyzjMTqYb4mSFJxECkfrnrO/Q7bAgA1q1NoAz2h6RVG7Hb1ph2DJu
-         O9myGa4UsvQscQpgXE5xPPJyRxjafC8/OpEtzV0Vg0aqIT/31fL3IvlFI2PYkJetrErm
-         geaxiEvATUfmtbwMJhHqqXVfsnXCpaGhc4HJQBqCAHJikjs943x7K7e/kXMXdiVw1sh6
-         BpSg==
-X-Gm-Message-State: AOAM533ne45V9Nq4gZaQTg/DnC+q2xfv7hP3FvXmIoa97hqKTGdL5M1t
-	iE+4BPqXWMWa448Ns9tt2OUZwbHctMTkJg==
-X-Received: by 2002:a17:90b:23c5:: with SMTP id md5mr165172pjb.182.1603124433303;
-        Mon, 19 Oct 2020 09:20:33 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id 70sm289730pfu.203.2020.10.19.09.20.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2020 09:20:33 -0700 (PDT)
-Date: Mon, 19 Oct 2020 21:50:28 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: mh12gx2825@gmail.com
-Subject: Need help building a driver: mt7621-pci
-Message-ID: <20201019162028.GA68635@ubuntu204>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=dggCkVFWKXm7BbwuV1M/eeJV+LFnVGWYUCSH1BrxITE=;
+        b=YubQlTQuBvTOWqV3vQ2oRXkQIzYWw/aS46AKthgFsLtHS3pXevsEC7A6QQNfPJYe55
+         jrmB07G2T7LxMT1PhR3JEOuYdlStoXmUM8vCtovw5My/jTJk8NRKZcEvphBAxKfrQBqj
+         s5RH5fvTYlRoC7InWr9FAU/ZktFqwZ3RfTlTSY+lgdtZx39MnFCCt45s/ASyVVepwahS
+         jv8U90JBVL43iAS9fdK1WTz41OTbh9kFm42zl7MqyScQcqBrve3ms0ztJ3vg+6EMuNKP
+         Y7lS0c4OAZXduEgY6rwhPzYyfri5rARGurnoXDFGlG2n8FPsxXdOzA8pp+i0vG+jTVXf
+         53dg==
+X-Gm-Message-State: AOAM531JEx7oHjEmwPCVtTEF/4z3LvIA9AcsH7vlVR3Jp+KFoVQBW/Pn
+	hoeOxjghaEgJXuwspN+rYiE=
+X-Received: by 2002:a05:620a:244f:: with SMTP id h15mr8950992qkn.235.1617994871845;
+        Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from focaruja ([177.220.174.147])
+        by smtp.gmail.com with ESMTPSA id w78sm2409960qkb.11.2021.04.09.12.01.10
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Fri, 09 Apr 2021 12:01:11 -0700 (PDT)
+Date: Fri, 9 Apr 2021 16:01:08 -0300
+From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	alinesantanacordeiro@gmail.com
+Subject: [Outreachy kernel][PATCH 2/2] staging: media: omap4iss: Align line
+ break to the open parenthesis in file iss_video.c
+Message-ID: <30cadc4bf072dc592cc82fba96a40685e25787dd.1617994571.git.alinesantanacordeiro@gmail.com>
+References: <cover.1617994571.git.alinesantanacordeiro@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1617994571.git.alinesantanacordeiro@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hello,
-I have made a change to drivers/staging/mt7621-pci/pci-mt7621.c file and
-now trying to build to ensure the driver builds fine. However, this file
-doesn't get included in the build process.
+Aligns line break with the remaining function arguments
+to the open parenthesis. Issue found by checkpatch.
 
-I tried looking for driver dependencies and am not able to locate RALINK
-in my driver tree [in menuconfig] to enable it.
+Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+---
+ drivers/staging/media/omap4iss/iss_video.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Can you please suggest what may be wrong here?
+diff --git a/drivers/staging/media/omap4iss/iss_video.c b/drivers/staging/media/omap4iss/iss_video.c
+index 66975a3..a2cef7c 100644
+--- a/drivers/staging/media/omap4iss/iss_video.c
++++ b/drivers/staging/media/omap4iss/iss_video.c
+@@ -399,7 +399,7 @@ static void iss_video_buf_queue(struct vb2_buffer *vb)
+ 
+ 		if (start)
+ 			omap4iss_pipeline_set_stream(pipe,
+-						ISS_PIPELINE_STREAM_SINGLESHOT);
++						     ISS_PIPELINE_STREAM_SINGLESHOT);
+ 	}
+ }
+ 
+@@ -957,7 +957,7 @@ iss_video_streamon(struct file *file, void *fh, enum v4l2_buf_type type)
+ 		unsigned long flags;
+ 
+ 		ret = omap4iss_pipeline_set_stream(pipe,
+-					      ISS_PIPELINE_STREAM_CONTINUOUS);
++						   ISS_PIPELINE_STREAM_CONTINUOUS);
+ 		if (ret < 0)
+ 			goto err_omap4iss_set_stream;
+ 		spin_lock_irqsave(&video->qlock, flags);
+-- 
+2.7.4
 
-Thank you,
-Deepak.
 
