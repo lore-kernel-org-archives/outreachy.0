@@ -1,112 +1,102 @@
-X-GM-THRID: 6465677729933033472
-X-Received: by 10.36.53.149 with SMTP id k143mr358485ita.21.1505407907149;
-        Thu, 14 Sep 2017 09:51:47 -0700 (PDT)
+X-GM-THRID: 6949230794774675456
+X-Received: by 2002:a67:f40c:: with SMTP id p12mr12156663vsn.56.1617993878715;
+        Fri, 09 Apr 2021 11:44:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.190.79 with SMTP id i76ls5547658itf.17.gmail; Thu, 14 Sep
- 2017 09:51:41 -0700 (PDT)
-X-Received: by 10.55.187.7 with SMTP id l7mr11589156qkf.48.1505407901151;
-        Thu, 14 Sep 2017 09:51:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505407901; cv=none;
+Received: by 2002:ab0:3158:: with SMTP id e24ls952654uam.11.gmail; Fri, 09 Apr
+ 2021 11:44:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwtjkRWWJhFQQfRKe7r9/AvunVzFyQkYXokKlC1cPjxe4mbJS4e1TitbkdjshtLzGMyZmdf
+X-Received: by 2002:ab0:385a:: with SMTP id h26mr12023247uaw.75.1617993877757;
+        Fri, 09 Apr 2021 11:44:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617993877; cv=none;
         d=google.com; s=arc-20160816;
-        b=T5zojaJrxXxui+KxnQf//rCq46vWXMsz3cGPXLbsmjx9Ih92hZymaHzGUh20ItoyAE
-         hp2jAvU46hp4bCInVGbJ5Nys4nWn6AeecSh/6yDbHFntayDNRQoGud/IcuKr3ggs7F2c
-         D4tZHO2NYB4+p+nH2IuLKQPNHdXz/0/hpVyV95PViT2qUVQdxZzNzlMZ1Tyf9B3oAVvw
-         VRcjIyBcEPdunhAgjWSz30iaceasGgc2WSgpdou7SLu1N4pkhU5IXg0wnKPr4scdENNl
-         Hj/lTgQSBKEe83cx6PgZtkGMjID/yiq9oxF0dpURsOM6FcVbPJe8Oz1f/NsjFc9/lsNa
-         WntA==
+        b=tQ5tvsrHuQNjciB+jJy14a2bWs7TCyY30WDGr8Xn7RUppID9PPz4lZriLhq8P7WiWN
+         kahQbIE+DRcjW55OqMggSgcmF+J54AIxeHTkQQgoDqyZ4ewiKa8w5W9Eaaamqpa1Wy23
+         HCKh5dCpGhDRD1+6cFXoQVllCM7QXazOoR4+Enhb8pkBPfzE4BUbPq1d6FsuDi3J6Ho8
+         vXxtt176ZTCNVhNF8gFvLIU+DWkSXYqKZafRTilBoDSbVgxwQ2bcZ3CMTpNSmi/afova
+         FkfueM3WS96Rj0CUFgo1aHMsvk+v0R5rjiGjGbhUpxqgemAhcObgPb5gKsgUcRtyjCCj
+         Lccg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature:arc-authentication-results;
-        bh=dldf/RvTrDL2C5CNcBaqyjgRXVs+I9O+I911LodaJaY=;
-        b=VPen2lsS3W5htfVz2oCReGsN5getf49HKZHgXkRLoSzTgyZjgQ2vF5vA9/sZpKINIg
-         ABXLGQZmAi6mzD6EYo6w26okThN1yC/mxV9cD4cp6AAMKGvB5H7h+jq1AL2poKBmnGuV
-         pXJWj/ZRtV8eHUNn81Jrg9gdjtwZWQifLkH2K9wa10awkEBhUDN//+0d+E1XogPuuaQ5
-         +ueXpRQe6Oul/BXUTTzoyiy52Iw+j2eb31Q5y5mGyGD5rbxjcKgNvY1hhyfI4B6R4sAD
-         cwmrQ24yvoa7RgF6NgsPS7yOv/IOnQmVZAWlrjCKej/6s0NB3JL3SpDG0T6aS1dOpupv
-         RmWA==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=/jVQn4FxU4fxpi2T0y4eI85ApJK3DaVIVyJkZkXHH7M=;
+        b=hArHDzSwDquecdtCwAmhbbGrSKeJfT57T4JuIA6yUELp/RSLdPmvsL4L+AcqB6REh2
+         RxWhwLXpHm2lmTcNiCvLlWOs20nGHf+3YwxCZFFN5by/oyqeBDndrgjsYMqFrBoLQE+X
+         sxfuYAlu9hUFp/I8A0l06PoiQJmL4jkEXyCxWdNum5YW3tyA1VkXZXRpQrxZBTdKhyXn
+         zkuBWBZmAT24m4/jN9u6QdAW5LwfQWsQEnmu0oNH2OYTeVd5mTiV1jRQGGTYFeQbkGi+
+         9oYGsNeshlhBDzSuRtK6IeIlZZWlskYFfVYpf/rHsjWzZbgsVSH3RSjo37qE63mTG4hh
+         7J5A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uruGh5GW;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id k76si159578pfa.10.2017.09.14.09.51.41
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kWyeTpw9;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com. [2607:f8b0:4864:20::432])
+        by gmr-mx.google.com with ESMTPS id i8si244387vko.4.2021.04.09.11.44.37
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 09:51:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 11:44:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) client-ip=2607:f8b0:4864:20::432;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uruGh5GW;
-       spf=pass (google.com: domain of meghana.madhyastha@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=meghana.madhyastha@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id i130so1985020pgc.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 09:51:41 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kWyeTpw9;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x432.google.com with SMTP id n38so4828832pfv.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 11:44:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=dldf/RvTrDL2C5CNcBaqyjgRXVs+I9O+I911LodaJaY=;
-        b=uruGh5GWZElBFxjMtIXr0JDy+ckgkeMooDy9bRSfEx1kwpfCJuHSeg7ZS0MOwtfzi9
-         PIImHt1mFhks/5CB8eQDbk+VKdSZQfAQ4ako1cchWfIib/6XinxIEDvpSEuOT0mUNNLb
-         U9B3OnGml55VrW/ulutmQRxG/2Eq9T8ymEs05Ly5MSSMo53lpaXGOhiKLGUtF7xvEiJq
-         roTLSHqjJmduBeVDu1h6OKRpmWmY0BtKwDePgW5CFD3bBgehntF8KkS5tbiI3zrxCLUR
-         NrGbb2JU9W2tPSJMeEQzhvoEgKbW0FaQ61rOVBXIQ9G8qSF7iLxlUJ4iwOppYQhp/LOO
-         iTIQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=/jVQn4FxU4fxpi2T0y4eI85ApJK3DaVIVyJkZkXHH7M=;
+        b=kWyeTpw99ycAvjxWhma3rw6GSVDwt9hQ+v7XDhhFgtY8JOeS/Mn/Mewk4QfQMhMNnI
+         5dPlWaCOurOQ6J0ZhFlDB0uDF2goJ8f83VJEgUCEVy9xe3BiqVYYqAVIcTUyzBGOIfzX
+         bf6c/V/SruMtrp4ARjZp6Ecd0CXQF6FZG6C6SuxYPtdYHnjVvri60Px+A42g2EfQp8pN
+         G2Cc8H6CalMg9XOB2mEwr29jHtwlFJqXRi5rH7xduu6f6g9jnMlvx462AR//KfwRCqXq
+         lb7XvuktdHfGtMBoF18mEwVPw2ezvKx1E2qrvkmV1b45HgDD8zKTl+5p08l5T+z/i7Ns
+         hGRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=dldf/RvTrDL2C5CNcBaqyjgRXVs+I9O+I911LodaJaY=;
-        b=T0slu6Cb3+rtdgX4TnoOAO+XZ6vWPWUfqH8kVC6hKVV8rRYR49UKHJvh+cxHysnWe/
-         cTO6BIc3bkms1rz3BfYqtdHPzVMdy3ZvxeviOWqE2kenPOnXkVD65by0nIdXtkNg1v6F
-         zN+FVZii8uYrwhZFaftkIaRB6tZQZbDtSk25iy4wL00JWjmwkYS5tkq7scxWLp4wbQc8
-         6XefOO73Xu7WMcyK/U01530uglb2FaWYWP7NpBdH0lBjHlYKyeR8v8Cj24o/WeyP4R9g
-         /lhKIVa5evkMzUOlhWH2B3AlN3kXiLpys8OstUS6DCu7r0aaBj5RdZOY4rliVifFL68o
-         Ix8g==
-X-Gm-Message-State: AHPjjUjYofq8FUdPDcx2r6wT8GyEBZ4LIrettuZLee5TZ/BkseV2zr46
-	4ydDZKfvRjJB91Jt60A=
-X-Google-Smtp-Source: AOwi7QCZ5w0BjSScaUPDUzLCp9T56AVe3v9gceSbIvy4th/FuW5m+FQRwwjqdEo3zvxcJP95kx0Zhw==
-X-Received: by 10.159.244.24 with SMTP id x24mr3077293plr.434.1505407900327;
-        Thu, 14 Sep 2017 09:51:40 -0700 (PDT)
-Return-Path: <meghana.madhyastha@gmail.com>
-Received: from meghana-HP-Pavilion-Notebook ([122.172.87.17])
-        by smtp.gmail.com with ESMTPSA id r11sm31023480pfg.180.2017.09.14.09.51.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 09:51:39 -0700 (PDT)
-Date: Thu, 14 Sep 2017 22:21:34 +0530
-From: Meghana Madhyastha <meghana.madhyastha@gmail.com>
-To: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org
-Subject: [PATCH] Staging: octeon: Remove unnecessary parentheses
-Message-ID: <20170914165129.GA19272@meghana-HP-Pavilion-Notebook>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=/jVQn4FxU4fxpi2T0y4eI85ApJK3DaVIVyJkZkXHH7M=;
+        b=P2Fyjp+hEitVN+YWzdu1JehfZQ20Y7sbGDpwahH0k7SWc8CLxwHcC+LGROSfdscghb
+         Dl1UdDGmLvNe5AGWgm2q/wZeALKUQmHmpkx9qiH7ESk2KagZn9nClYW1PFGIPv1Tx7Xa
+         d+eZ0cHAA+IbhNRBt1zNsGQMxEyTjXh341hHW+28TdzFYlyI4FA30wyMBSvPPmCXu3+7
+         F4IWO+TTw+dQvCu6ZKwmQrclPxWCVptqbdcuPO9FzBBkbMNljOycp5Nd+D5Rou2fiF/u
+         vN1GNiNnAwKsTJTiWEErPfnOadnST71WMRK0cB+Ec5nJ/op7mhXE2FYUgdm1UA7oSZjV
+         3JOg==
+X-Gm-Message-State: AOAM531GVD26o/rjvfkdCzPErsA12CHRWz8Tp8j9tezwsrqwSKxuaymg
+	Wk33pdvkF5G/7lQqfrrybqA=
+X-Received: by 2002:a63:cf55:: with SMTP id b21mr15395836pgj.126.1617993877325;
+        Fri, 09 Apr 2021 11:44:37 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id t205sm3263243pgb.37.2021.04.09.11.44.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 11:44:36 -0700 (PDT)
+Date: Sat, 10 Apr 2021 00:14:28 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: [PATCH v2 0/2] staging: media: zoran: aligned the code and block
+ comment changes
+Message-ID: <YHCgjJ1rSxlVxGGh@kali>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Removes unnecessary parentheses inside the conditional
-statement.
+This patch fixes the cleanup style issues.
 
-Found by checkpath.pl
+Changes from v1:- 
+In [PATCH v2 1/2]:- No changes made/required.
+In [PATCH v2 2/2]:- Aligned the code using tabs and spaces and
+readjusted comment line.
 
-Signed-off-by: Meghana Madhyastha <meghana.madhyastha@gmail.com>
----
- drivers/staging/octeon/ethernet-spi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Mitali Borkar (2):
+media: zoran: add spaces around '<<'
+staging: media: zoran: remove and add comments; align code
 
-diff --git a/drivers/staging/octeon/ethernet-spi.c b/drivers/staging/octeon/ethernet-spi.c
-index 063dcd0..8c6bb93 100644
---- a/drivers/staging/octeon/ethernet-spi.c
-+++ b/drivers/staging/octeon/ethernet-spi.c
-@@ -213,7 +213,7 @@ int cvm_oct_spi_init(struct net_device *dev)
- 	}
- 	number_spi_ports++;
- 
--	if ((priv->port == 0) || (priv->port == 16)) {
-+	if (priv->port == 0 || priv->port == 16) {
- 		cvm_oct_spi_enable_error_reporting(INTERFACE(priv->port));
- 		priv->poll = cvm_oct_spi_poll;
- 	}
--- 
-2.7.4
+drivers/staging/media/zoran/zr36057.h | 293 ++++++++++++++------------
+ 1 file changed, 162 insertions(+), 131 deletions(-)
 
 
