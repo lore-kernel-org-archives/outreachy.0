@@ -1,156 +1,124 @@
 X-GM-THRID: 6948889025177452544
-X-Received: by 2002:aa7:990a:0:b029:244:f35f:2b8e with SMTP id z10-20020aa7990a0000b0290244f35f2b8emr8624619pff.73.1618005793221;
-        Fri, 09 Apr 2021 15:03:13 -0700 (PDT)
+X-Received: by 2002:ac2:5446:: with SMTP id d6mr11016618lfn.527.1618000842802;
+        Fri, 09 Apr 2021 13:40:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:c595:: with SMTP id p21ls4636388plx.6.gmail; Fri, 09
- Apr 2021 15:03:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXyMeZDEuD/LelIZucrrvRgl08pdCpJsD/cUuAq6qpEyv2KiKT8zg5iIb9lumr2ziuMWWy
-X-Received: by 2002:a17:903:31c7:b029:e9:2aaa:b2d9 with SMTP id v7-20020a17090331c7b02900e92aaab2d9mr14726612ple.12.1618005792026;
-        Fri, 09 Apr 2021 15:03:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618005792; cv=none;
+Received: by 2002:a2e:b54d:: with SMTP id a13ls23711ljn.3.gmail; Fri, 09 Apr
+ 2021 13:40:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzKKb8lmmspu1SVg0ft+6xPvdxMM1PZirMmXF1waymqq72o7dDrIr48L01/txng1//JiLxc
+X-Received: by 2002:a2e:b8d6:: with SMTP id s22mr10341807ljp.252.1618000840908;
+        Fri, 09 Apr 2021 13:40:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618000840; cv=none;
         d=google.com; s=arc-20160816;
-        b=W1K0/SetlTg2Z3nHsTn3FH1ETDBhPo15NzGghAfe7trrUMuRWKEI0NwX6SYS/Le3yn
-         tC7JaC8QcMNPdsshAn0MbDoWgs/zd0NQeRKptteLOo4RxuDw9RQ0EtWvS/DpdpKzyT1T
-         gnldfE+DEeX9JevOHcwPbRiaaBwPhlQaEorysRSo3aPLgeD3EvIJOIC7ADxarCmWM5nc
-         rtBvkRPS6d5+EZxEm7ewxqFniCt6D1rk0UJlPQrVHDIIsDl7snhHCozUjhjTgZKCcHVK
-         FfVmob4aGJu2vu28LatkNz/Bh67bl8jOMgtItVOi1SmGwNJtODU9EVRx0zL0mrjBgWYt
-         AKGw==
+        b=FEg8X6/1u8noko9hgwWw11mb/xz52GIA8qJktaVx1MLA9rQVm8U40vga/EJbee0xZy
+         URmhQ/kl5JYT3P6OiSNvUri44Z6Y+6kojg3aGb5+ceR/VfxgEaCR/PwgJ3mSqDg3VJ2h
+         1EAtNisHoZw3VRte16wYXX4stAKXVldwXHzfvmycVXfG/BBetTAyncohz3z1ROFHrzgj
+         WfEy3X5vCQ0ACFnb+YW2XKem9VM+dTS44txwweHQTYXt/NuxcmVx9SVdFPW5qAUJmB+l
+         FBuUlbeUqfoHmXy9bKB8bPc1qX+84s9tmgQ3iiJpiyzSqwnx22V0pPmYJXiLVKYKsDoz
+         ItpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=R+gAfsPgzIf+Vl+2Q04sIKqvI+NoEh91IwRV5HMRlM0=;
-        b=A/l/62PjRyAGXSK8yMmCNBDeF6RgANSW25EgF/qUvBntCsj6BUjEIJjTjePwhguxd0
-         E4MvUMM9UwvPHXpvPXDLT8FgUJYVeK8DC3FDHTmFW0eikuqkAVkzAd6ivAhOAUDxY8E0
-         UtDPhx3RrtceX15vdAhdJoDx3QrsOyEcH0UQas5USNLFIzPNx1hLwV7JUOkNOeoVbJi+
-         WhEwSBPZCsiUE0grUrtA6HmAmwcXB87t3eniLJDDgl4mS6GLARPhmGJnbpH85WxnO8FF
-         zPE31i7nXhnbu2Bf1iDqy4BHJCV8qyjidJ/EhuqKfM0ylfrVWEyJQJOjqtOvzVm7mRg8
-         LndA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=HxsKwwPYCYeWLFE+qA5jgRTm5aCFwzdEBAsCtTTYVss=;
+        b=cu93GdE4nRZt0pY08gdwwQ8oP31Fb2nQYw487GHvIXOUGXbulvE1KLh4t9CxP3LamT
+         pT/M/CpAy3lKq8Y3fI2KMp0KOw9lpjtm6JHN4mhBJHdJGgP8QEHHW3pIH1J5iURXBFJ+
+         ZRQkoYNc6RhLcVKzGl9X7z6wJAnZ4C7gvy8gadt70s1RTk7xNeUrVzqhE5mf3+9RDSV3
+         CkoweH6fvhN7u+FtPb97N83Qpu3QopErSY/xgg0cJvWBTwegvaSC7KxEoIG6pim1/wtw
+         4K6cKldv/qgp6Xkf9ejKV7zVK+0OC7zvjSjjCMHxzHGa/QXyNKpQoTI/5RzScfiTl/Ay
+         iH5g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g3RNUqs8;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
-        by gmr-mx.google.com with ESMTPS id g23si473904pfu.3.2021.04.09.15.03.12
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id b12si247592lfb.3.2021.04.09.13.40.40
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Apr 2021 15:03:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Apr 2021 13:40:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g3RNUqs8;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x435.google.com with SMTP id a12so5111692pfc.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 15:03:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=R+gAfsPgzIf+Vl+2Q04sIKqvI+NoEh91IwRV5HMRlM0=;
-        b=g3RNUqs8G26UV5PlGVkTztahx/7bKGHr+sYgfG4imRFlBMgoDJI9C7pwQ2CTn8wz5r
-         v0XuNcMwKtLD5c1BOZLiqTqt5g2r+Un4sRSoR0NfZVz4Ew7xk2HygOR/UWH7iI3yhSl/
-         maNigIJiklSniZqpDgmMrQZteFPltUPVXVAwKaAreYzW6lpEXo/4EuVOySxoYq8yPRAU
-         JU4CfadOdglrryEyoR9kxPF8vUy2XqUATEIxzjmotR7ZTPTzmJr+3yn3uSPlbk0SqX64
-         lTUQh0wrdC4GEUfIagzehhSwzO2jA+2TTZBpnv2rWu9UWCfPgkUkY+kvnaMM4GXNorC0
-         3YCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=R+gAfsPgzIf+Vl+2Q04sIKqvI+NoEh91IwRV5HMRlM0=;
-        b=BotccWMMyDi5pEsUuM2C0yW3gNZWFQeY13upBYZeyj5LeOD5lPkMDUybaFyBoHgxl4
-         B23f/OkT9y9P0JR5oLtwcGdu/aDeLOIDTaOrJtc54x08d3uWA/7BPvKS5E7Sh/xRVb7q
-         VoLQZ9ptTQmazYVZ3151TV4PlkDoTdJYPa1CQGKdoSCGdxRxU8RD5HbK9QpuUkYC9lcd
-         YFej5xf09thTMIaSvlurptimThdTLdCNUt6EAooMH8MSoxI/4GT856GrTJ4PIg9D8pnf
-         n9GtAgu/cCQMImJmfRtbaXjWpM20jY2+GN9PVEQg4PCsL+9SVqs6NDqYo6+wMrcmVxDK
-         Lx7w==
-X-Gm-Message-State: AOAM531Fm1dWRaXnuUFz0PcOg9h2CbajUIqeZ9Mw2JxSGyLbkdkD7r8H
-	G3Gp8jbVj5JdVopucYehRjY=
-X-Received: by 2002:aa7:818e:0:b029:215:2466:3994 with SMTP id g14-20020aa7818e0000b029021524663994mr14788264pfi.48.1618005791570;
-        Fri, 09 Apr 2021 15:03:11 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id e190sm3147248pfe.3.2021.04.09.15.03.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Apr 2021 15:03:11 -0700 (PDT)
-Date: Sat, 10 Apr 2021 03:33:05 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
-Subject: Re: [Outreachy kernel] [PATCH v2 1/2] media: zoran: add spaces
- around '<<'
-Message-ID: <YHDPGVo1mTYtPigo@kali>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3ARjyMx62CzRTl5vtAkckU6wqjBFMkLtp033Aq?=
+ =?us-ascii?q?2lEZdDV+dMuEm8ey2MkKzBOcskd0ZFgMkc2NUZPqfVry7phwiLN6AZ6DW03ctH?=
+ =?us-ascii?q?KsPMVe6+LZogHIPw3b2qpj2bx7c654YeeAaGRSqcrh+gG3H5IB7bC8kJyAvuvV?=
+ =?us-ascii?q?w3dzQQwCUcgJ0y5DBgmWCUFwTgVdbKBJd6a03NZNpDarZB0sAPiTO39tZYT+ju?=
+ =?us-ascii?q?HQmImjSRALAANP0njtsRqYrI+/KRSe0xsEOgkj/Z4p+wH+/DDE2g=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.82,210,1613430000"; 
+   d="scan'208";a="378250268"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Apr 2021 22:40:25 +0200
+Date: Fri, 9 Apr 2021 22:40:25 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org, 
+    linux-media@vger.kernel.org, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com, 
+    mitali_s@me.iitr.ac.in
+Subject: Re: [Outreachy kernel] [PATCH v2 1/2] media: zoran: add spaces around
+ '<<'
+In-Reply-To: <YHCgksbiLv0pFF2F@kali>
+Message-ID: <alpine.DEB.2.22.394.2104092239170.23056@hadrien>
 References: <YHCgksbiLv0pFF2F@kali>
- <alpine.DEB.2.22.394.2104092239170.23056@hadrien>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2104092239170.23056@hadrien>
+Content-Type: text/plain; charset=US-ASCII
 
-On Fri, Apr 09, 2021 at 10:40:25PM +0200, Julia Lawall wrote:
-> 
-> 
-> On Sat, 10 Apr 2021, Mitali Borkar wrote:
-> 
-> > No changes required in this patch.
-> > In v1:- Added spaces around '<<' operator to improve readability and meet linux kernel coding
-> > style
-> 
-> The text above would go in the git history.  "No changes required in this
-> patch." doesn't make sense in that context.  If you want to say something
-> that relates to the history of the submitted patches, then that should be
-> under the ---.  The text there will disappear when the patch is applied.
+
+
+On Sat, 10 Apr 2021, Mitali Borkar wrote:
+
+> No changes required in this patch.
+> In v1:- Added spaces around '<<' operator to improve readability and meet linux kernel coding
+> style
+
+The text above would go in the git history.  "No changes required in this
+patch." doesn't make sense in that context.  If you want to say something
+that relates to the history of the submitted patches, then that should be
+under the ---.  The text there will disappear when the patch is applied.
+
+julia
+
+
 >
-Ok Ma'am, I will rectify this mistake and send patch v3 with correct
-patch body.
-
-> julia
-> 
-> 
-> >
-> > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> > ---
-> >
-> > Changes from v1:- No changes required in this patch. Below is the git
-> > diff of v1.
-> >
-> >  drivers/staging/media/zoran/zr36057.h | 14 +++++++-------
-> >  1 file changed, 7 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
-> > index 71b651add35a..a2a75fd9f535 100644
-> > --- a/drivers/staging/media/zoran/zr36057.h
-> > +++ b/drivers/staging/media/zoran/zr36057.h
-> > @@ -30,13 +30,13 @@
-> >  #define ZR36057_VFESPFR_HOR_DCM          14
-> >  #define ZR36057_VFESPFR_VER_DCM          8
-> >  #define ZR36057_VFESPFR_DISP_MODE        6
-> > -#define ZR36057_VFESPFR_YUV422          (0<<3)
-> > -#define ZR36057_VFESPFR_RGB888          (1<<3)
-> > -#define ZR36057_VFESPFR_RGB565          (2<<3)
-> > -#define ZR36057_VFESPFR_RGB555          (3<<3)
-> > -#define ZR36057_VFESPFR_ERR_DIF          (1<<2)
-> > -#define ZR36057_VFESPFR_PACK24          (1<<1)
-> > -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1<<0)
-> > +#define ZR36057_VFESPFR_YUV422          (0 << 3)
-> > +#define ZR36057_VFESPFR_RGB888          (1 << 3)
-> > +#define ZR36057_VFESPFR_RGB565          (2 << 3)
-> > +#define ZR36057_VFESPFR_RGB555          (3 << 3)
-> > +#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
-> > +#define ZR36057_VFESPFR_PACK24          (1 << 1)
-> > +#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
-> >
-> >  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
-> >
-> > --
-> > 2.30.2
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHCgksbiLv0pFF2F%40kali.
-> >
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+>
+> Changes from v1:- No changes required in this patch. Below is the git
+> diff of v1.
+>
+>  drivers/staging/media/zoran/zr36057.h | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
+> index 71b651add35a..a2a75fd9f535 100644
+> --- a/drivers/staging/media/zoran/zr36057.h
+> +++ b/drivers/staging/media/zoran/zr36057.h
+> @@ -30,13 +30,13 @@
+>  #define ZR36057_VFESPFR_HOR_DCM          14
+>  #define ZR36057_VFESPFR_VER_DCM          8
+>  #define ZR36057_VFESPFR_DISP_MODE        6
+> -#define ZR36057_VFESPFR_YUV422          (0<<3)
+> -#define ZR36057_VFESPFR_RGB888          (1<<3)
+> -#define ZR36057_VFESPFR_RGB565          (2<<3)
+> -#define ZR36057_VFESPFR_RGB555          (3<<3)
+> -#define ZR36057_VFESPFR_ERR_DIF          (1<<2)
+> -#define ZR36057_VFESPFR_PACK24          (1<<1)
+> -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1<<0)
+> +#define ZR36057_VFESPFR_YUV422          (0 << 3)
+> +#define ZR36057_VFESPFR_RGB888          (1 << 3)
+> +#define ZR36057_VFESPFR_RGB565          (2 << 3)
+> +#define ZR36057_VFESPFR_RGB555          (3 << 3)
+> +#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
+> +#define ZR36057_VFESPFR_PACK24          (1 << 1)
+> +#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
+>
+>  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
+>
+> --
+> 2.30.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHCgksbiLv0pFF2F%40kali.
+>
 
