@@ -1,96 +1,124 @@
 X-GM-THRID: 6948745075073482752
-X-Received: by 2002:ac2:4472:: with SMTP id y18mr10528693lfl.332.1617989043900;
-        Fri, 09 Apr 2021 10:24:03 -0700 (PDT)
+X-Received: by 2002:a50:ec8c:: with SMTP id e12mr18638240edr.249.1617988443444;
+        Fri, 09 Apr 2021 10:14:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:9212:: with SMTP id k18ls2212973ljg.8.gmail; Fri, 09 Apr
- 2021 10:24:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzb1v9zMTqrBzAi8kl3K0OeAfb6U7EiBCXkygOf4L5lLZnaJC3kUCe60TXV9EV1Hgo9f3RY
-X-Received: by 2002:a05:651c:211a:: with SMTP id a26mr9690990ljq.373.1617989042019;
-        Fri, 09 Apr 2021 10:24:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617989042; cv=none;
+Received: by 2002:a05:6402:4c2:: with SMTP id n2ls4482914edw.2.gmail; Fri, 09
+ Apr 2021 10:14:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwufm2InDAiJVbuT7NCyw/mIM3UNNacYFuNCl8oIeAPhSRlWM7hN5T5R1ftW0CbJwLSyyai
+X-Received: by 2002:a05:6402:6ca:: with SMTP id n10mr18601699edy.312.1617988442071;
+        Fri, 09 Apr 2021 10:14:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617988442; cv=none;
         d=google.com; s=arc-20160816;
-        b=fHfu++RIrujBBmZ2coYiuC5p7PoQzWEDwDicNn2BS0d3vunmrAgSRYL9lbsPyZD+Mb
-         TBIpXizEf5Booaw2SLnqhTR9AkzSZYcFUGbPbTy0DLDTwo190QOrmuR2SBqoC+lIhpBD
-         6XU9f1NzKQdNCpQ5RVHdpfWTI5/sENWnr3k/Av1A7G7udsjBRiIg36WAGNJP6JJQfxJZ
-         BapaMbaeHk+l3ITJ9ay8EbMnOYgrorOZZSR/Dmn1drZBim6qJOmLrICwfkt87eoak6fR
-         E73HMU3XHbhtIJ/Cw5/h94J1ThQSVWvoWDwJgqn0Q1iZJMwqpKuU3k5cnUUAy803shWX
-         3anA==
+        b=DFFj64zVXf2+lQrdR1mkS8JYKutR5qniULSDd54dXuiUonVv3R7lPeDphPx/vUetqt
+         PyabnIidpGeZ0IIuqEjzjoXWyQaR5wv7WFiJ/AvpDh7TJ1kWL2IyfuYu+2JemHbq0bsL
+         STSfiNw8V35PTmwZ+dtj+JL1eHhg/dRCGWQTfILUDbm9qh2y7ZjhcRfCaiG3OQvMGMUD
+         xQLdv1rhc1niVuX26DDwTvyFr6UYaPHy3t4mjffEsK4mCou6O+esYnPlXvRze4DhLiYj
+         ug3FU5e24v0eOgsH56rtP5AtNBwVFMl7SXd+XseSwHfPwKg4w5Z92VALk10INKDZeW4m
+         vMEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=Ah8wmpiQPxAeYwTdTEW8MoB6jSopvkco788yN88bZbg=;
-        b=0fI48eusbL9CQbebTz/vfCqo+iiXXY0iDf367FYqNE7U2PZNb/BbU1m5dV96QBHJGQ
-         gOeLm3jlf6F/+kiaXpUlI0TSoYFtxx4jZj0xONdKdLamreaGTTcxZiAFCkUrIzKPUDxf
-         O98jWWnohmlaPjIA63GDcyshPKra4nF1lSSHDiKUtz37d4d7m6Z8BlbR2ufSTb7yWMYG
-         keCiArS2AOQDcD7nxB8sps1ysDcJIs5Uz/9wanCPv+1zVlnA7hjluknx6GH6yYOS3WF/
-         b1H9mJ0DWLcqStMiAzPuvnbjxam7GFJAS7wnEUg0AV6gkNm2Za2dZvdwDT/C3mFGwzp4
-         qldA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9+KsrNGMheQyZi6tgUyj6QXCX6Kc00oXKAtfc1s77Sw=;
+        b=egtJiAqBQuM7oRunn7Xd/mdtbfFnxMtwUwUJsSOf6Vhm7Yref6Du/DdlMsYUSVhQ3L
+         Kv41kc3iscbfxhEUE2hbIMQct5NFQSINsMK80ChZJu1PDFRDb0IcVSCNjJABvapbFZ2j
+         LvTInr8RwdR6TBnS5H3cbXQZBhQkbkN5SE7mTpQyCG84pHT2rjPu/Qc2pJdfFPoq4l2e
+         cRW4M8sade0vOTqaZcrK5hp/339hsVLQKYmMd7kigf82jNqAfxP703TouKz+8vNCpfA3
+         +YEwQuRb2zaYu73XP54J0Kuz3gKdhJujDenTNWSRR5wqRtdeb5R7BFhHrozJf3m5zLUY
+         ga1w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id v203si257838lfa.10.2021.04.09.10.24.01
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sZYo2nvC;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::629 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com. [2a00:1450:4864:20::629])
+        by gmr-mx.google.com with ESMTPS id ck26si438543edb.1.2021.04.09.10.14.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Apr 2021 10:24:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 10:14:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::629 as permitted sender) client-ip=2a00:1450:4864:20::629;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3A0/2Gc6BBUteEyBzlHelN55DYdL4zR+YMi2QD?=
- =?us-ascii?q?/UZ3VBBTb4ikh9mj9c5rsSPcpT4NVBgb8uyoF7KHRRrnn6JdwY5UBru6WRmjhW?=
- =?us-ascii?q?3AFuBfxK/D5xGlJCHk7O5a0s5bAs1DIfn9F0Jzg8q/wCTQKbYd6eKK+qypmuvS?=
- =?us-ascii?q?pk0FJT1CUK1u4xx0DQyWCCRNNWp7LKAkH5mR7NcvnVSdUEkQB/7WOlA4ReTZ4/?=
- =?us-ascii?q?XEmJX6CCR2ZSIP2U2+yQml77P3CHGjsys2WTkn+9gfzVQ=3D?=
-X-IronPort-AV: E=Sophos;i="5.82,210,1613430000"; 
-   d="scan'208";a="378242715"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Apr 2021 19:24:00 +0200
-Date: Fri, 9 Apr 2021 19:24:00 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Change the type
- and use of a variable
-In-Reply-To: <2106328.ujm4fZfeqs@localhost.localdomain>
-Message-ID: <alpine.DEB.2.22.394.2104091923280.17316@hadrien>
-References: <20210408111942.19411-1-fmdefrancesco@gmail.com> <YHBg1Sy2509vBtrA@kroah.com> <2106328.ujm4fZfeqs@localhost.localdomain>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sZYo2nvC;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::629 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ej1-x629.google.com with SMTP id l4so9769382ejc.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 10:14:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=9+KsrNGMheQyZi6tgUyj6QXCX6Kc00oXKAtfc1s77Sw=;
+        b=sZYo2nvCM4l6vMu3KfhEwMtWHpcMwuW5poG9qPZXIF8hkF5nQHvd4rkz1M+zDN5UJ1
+         LPrQWgwKrZ10cd8jr7TgD6B0foDoB+RqcrdFMXEdaH2dupWyUbAoNlLgyI2nwxHuVTSN
+         /2EwZj8DpaBBz/9RWWW8C7iQ4AKoXByFXlTKAvwiWoQqAIUkvR3/AEttkTVsQ1F8qi9d
+         /A+5nwNZHEO7atzA7NNfY9eWYuqTDdEISW1Y9fhU9dMwRn8YivdgmCDf3F/bVbRxwfnj
+         qv3FKpAI1wkzq5au8CFMJpm43Ju7nz8rGRKZGjOgShKBTbLfqRsqwBnv5BvYCxeP48Hv
+         UuKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=9+KsrNGMheQyZi6tgUyj6QXCX6Kc00oXKAtfc1s77Sw=;
+        b=s/umNXEDi1ipGReKfZWQOfdiWISGDYa/SQMpf3GlxNH61B3AgJ8W8t6ZrLjFB3TNjf
+         e7+vrfnqDPGqFpz5TYrcKvdNzrKtQyaCYj71w87Pn4ZAG61yWxndB6Z6LZiIcgd6K6pu
+         wvIrn5fO7EsKD36AIoi1nSSBTLMwC/iYz5gXUFUB2jd6k9Yb6AyqE+7g88pCxEQ00Sj8
+         Qv5CNVcjG3BZnBsEt6nc+HXhsNpEFug4FtJOAbCnirOW9FAqgGYwJ5ISRHqK8cMCbE+7
+         EPoiZS07+pb6oAhc2LxY6YZcLKLYEoZuw8PWUOHm7LdzGqUqojdtHrZcSP4cipoTDXWy
+         f07Q==
+X-Gm-Message-State: AOAM531yuCKjZeb/ROfhsGrzfhFbnj9Yxl7oAyvYUzQRD2PR/sBn3LHn
+	Qyfk3A3Xf+WnCkqlKMkf2FA=
+X-Received: by 2002:a17:906:4f15:: with SMTP id t21mr6385260eju.338.1617988441921;
+        Fri, 09 Apr 2021 10:14:01 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from localhost.localdomain (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id m29sm1512592ejl.61.2021.04.09.10.14.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 10:14:01 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Change the type and use of a variable
+Date: Fri, 09 Apr 2021 19:14:00 +0200
+Message-ID: <2106328.ujm4fZfeqs@localhost.localdomain>
+In-Reply-To: <YHBg1Sy2509vBtrA@kroah.com>
+References: <20210408111942.19411-1-fmdefrancesco@gmail.com> <YHBg1Sy2509vBtrA@kroah.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+
+On Friday, April 9, 2021 4:12:37 PM CEST Greg KH wrote:
+> On Thu, Apr 08, 2021 at 01:19:42PM +0200, Fabio M. De Francesco wrote:
+> > Change the type of fw_current_in_ps_mode from u8 to bool, because
+> > it is used everywhere as a bool and, accordingly, it should be
+> > declared as a bool. Shorten the controlling
+> > expression of an 'if' statement.
+> > 
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > ---
+> > 
+> >  drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
+> >  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
+> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> I now have 3 patches, I think, for this same driver, from you, and I
+> have no idea what order they should be applied in.
+> 
+> So I'm going to drop them all.  Can you please resend me a patch series,
+> with all of the outstanding patches sent to me from you that I have not
+> applied yet, so that I know which ones to look at and what order to
+> apply them in?
+>
+I just sent in the series of patches you requested. Hope the work is as you 
+expected. 
+
+Thanks,
+
+Fabio
+> 
+> thanks,
+> 
+> greg k-h
 
 
 
-On Fri, 9 Apr 2021, Fabio M. De Francesco wrote:
 
-> On Friday, April 9, 2021 4:12:37 PM CEST Greg KH wrote:
-> > On Thu, Apr 08, 2021 at 01:19:42PM +0200, Fabio M. De Francesco wrote:
-> > > Change the type of fw_current_in_ps_mode from u8 to bool, because
-> > > it is used everywhere as a bool and, accordingly, it should be
-> > > declared as a bool. Shorten the controlling
-> > > expression of an 'if' statement.
-> > >
-> > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> > > ---
-> > >
-> > >  drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
-> > >  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
-> > >  2 files changed, 2 insertions(+), 2 deletions(-)
-> >
-> > I now have 3 patches, I think, for this same driver, from you, and I
-> > have no idea what order they should be applied in.
-> >
-> > So I'm going to drop them all.  Can you please resend me a patch series,
-> > with all of the outstanding patches sent to me from you that I have not
-> > applied yet, so that I know which ones to look at and what order to
-> > apply them in?
-> >
-> I just sent in the series of patches you requested. Hope the work is as you
-> expected.
-
-If you make multiple patches that touch the same files they have to be in
-a series.
-
-julia
 
