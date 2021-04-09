@@ -1,282 +1,262 @@
-X-GM-THRID: 6470825285154504704
-X-Received: by 10.101.81.196 with SMTP id i4mr133873pgq.174.1506606416308;
-        Thu, 28 Sep 2017 06:46:56 -0700 (PDT)
+X-GM-THRID: 6948926928626647040
+X-Received: by 2002:a5d:6c62:: with SMTP id r2mr16983533wrz.62.1617953810045;
+        Fri, 09 Apr 2021 00:36:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.209.206 with SMTP id y72ls1268671plh.7.gmail; Thu, 28 Sep
- 2017 06:46:55 -0700 (PDT)
-X-Received: by 10.98.163.197 with SMTP id q66mr467276pfl.14.1506606415198;
-        Thu, 28 Sep 2017 06:46:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506606415; cv=none;
+Received: by 2002:a05:600c:285:: with SMTP id 5ls3694329wmk.3.gmail; Fri, 09
+ Apr 2021 00:36:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4hgWbc0FuVTp8yNk/AONXO1g+1DcMkwkHQhveWzoTDpeugpro2sS/ZWk9Tkdbz92iEVxc
+X-Received: by 2002:a05:600c:3553:: with SMTP id i19mr12381231wmq.1.1617953808328;
+        Fri, 09 Apr 2021 00:36:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617953808; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wh2DrZWjXVOMU/IQigXcgEaUh0AT65wSMR1wjD/0okcgRzVM2jQiBsq02zTTIQITMl
-         q/Y7Ctgg/sYJS8rDT034uDg98QbjiFMT5U7ek9BIuxJ2LFnpCCnQIohE41vWcst69r0N
-         cbfeO5+o8waC4wYheTV0Zg83AKgGY+wwtQ/nctJyxtXJTrbtkl7UNIqutVJ9hbczF2ox
-         /dxNHXak+G695+6w4495nMhZ1uU6IBwccHhXrAvERJvbNLCZpPQzk7cflDVpxYbFpQ82
-         VsBlcdNlWqtGM7YyelxI0xsMnzqw/tfcONFhU4kcy9CWPrrKeTZktH6W10neFsdDkQMW
-         2XQQ==
+        b=dLgdiBcfAYfsNBFyc2P3K8L4loUOiRnTAD83DyPUVx2WuDiE0c0tn4noGNOERdS82/
+         1uwXUW63TtZIDZYz+4yTC12o39BL7LjBTnwvJ1nhwJcI09Xb3gTbJghhe0QzQHtdIWbE
+         u0LPHENGSzPufPYL0mhstPJxXQk3sSDa5f0ShDmxt2yS3m7tViIfJhlZ0kDzuV+F69d3
+         266nnCWcjgsFgbWi2kh8WT5Iguo0s2WeAMcywk6OiIZ4u0mvSE90IcWgn8mgtAcynJo+
+         C6CD21f2k65Uv0fwSfoJhexSA59WyNb2w5dW/mGEd5/zNJGdmhqxEMh1EwQAuRM2z25L
+         /fFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=k7PMrGl3U5pkfupbbl2Oon1JNk8mO1LqET71Yj/A8tg=;
-        b=Snwl4Z7tp6g2Aba2ERHdwDGtLFXEtcCLsOcq9FFmOINi8i2RkwY/co/gNaa1V7K+JM
-         ZeVUEmT8ST0h1X70qDsabb6KIBrJmGmJAfxrjeEK5Tns+mQOfxPIRL0gpjrC0rJupPMI
-         qC/D0WY23tg94nnfh49denuBRblAFtm4fszgFnE8kyv884nK1apiC7asskD//DikPyy7
-         EBGvIrDcCOU+FcAmmv1SFnjvGsS4Ii09yuTB5XxhPtoCxhWr1hrgJ8ivr4f1nM0c/yNj
-         QnSB59JYwxUbDRfmKZJUgt0Gq/A17OE/kX0Yra13x+gd+RS5sLbcdpNpKQMLzA+ELOlx
-         oElA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=FZKnp+i6ej8wW7s6zhRNv75eOBlfohmpZyzny6z/wZs=;
+        b=nWpfQr1R2Q0vI8gaXU4RNfjtIsgfcEIMzslzOsXg2fMAvTmZrU5qoJFsLEomyqFQeX
+         Cs7pLb9IOwmYWuWpl5pdMMceYwqvvXVR9gtgNyCSMYbSvrdqTjNgcXp/CnkLdOlUSey4
+         3XHoaUwPujYxCHp210Eu1ClMsoijJpwjIZzUiroKGNron4VxFvcTaznouPvPDlIh3r66
+         JDFYT1hzC+E6EgDkFDZUcw+W8nHlpS/Ucl25lcd8HT7+iY5TsSlngtd6RaOUl3wdNy91
+         wiArAgKc97ICIvdDHRPHZhWLqdiMWXBj8hLBgCN9PHn92COrY3kZT+yTPa7pd/eFDAqx
+         5/MQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gQnauLMl;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x244.google.com (mail-pg0-x244.google.com. [2607:f8b0:400e:c05::244])
-        by gmr-mx.google.com with ESMTPS id x71si225780pfe.0.2017.09.28.06.46.55
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=r1MdFud8;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb1-smtp-cloud8.xs4all.net (lb1-smtp-cloud8.xs4all.net. [194.109.24.21])
+        by gmr-mx.google.com with ESMTPS id h19si157114wmm.0.2021.04.09.00.36.48
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Sep 2017 06:46:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) client-ip=2607:f8b0:400e:c05::244;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 00:36:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) client-ip=194.109.24.21;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gQnauLMl;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::244 as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x244.google.com with SMTP id u136so2116807pgc.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Sep 2017 06:46:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=k7PMrGl3U5pkfupbbl2Oon1JNk8mO1LqET71Yj/A8tg=;
-        b=gQnauLMlkECnGC0Yi2q8sd+MklHU3YIwi25Qu7VwYGOEmkH4ZWkUyTpMXeKKity2US
-         V+33qhUdw7mkRG0L1x10a8AMRswRM83mKbTxWXEIMOPySJ+AJB2GMxrp3uulzLKISRvX
-         Nj6hs1L5tDOMkqNNSE8mvp/cm2+h/c0Q83OLH2i9klSuMPAW/WqW5UO5SjeSBvWz1Zeu
-         TwXiIANvo6wcsnQfEgjiozbNl7VJZSwZGno4YVwtZafoTclqhfL6k1qmuojpWLYsHWJo
-         LFsGT79tPRk/nKT808DZ1ztjAEeWx9j2hnHB6klq+Jc8nDKc1fkz3ncZoYMb7tJY2Boj
-         BFaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=k7PMrGl3U5pkfupbbl2Oon1JNk8mO1LqET71Yj/A8tg=;
-        b=aNr/P3L3gjl0JoEB6byUdbqKdRzb1t8C3cVg0yU2HJJGQ8zMmWbxaaM7mp+tfFvCd+
-         dKn4aGUvmGspeqWYOzYA8Npa7ke4p5y6/FU+7HBE+xi2lOnThZCEn9g1p3PG2Kvlcl9M
-         4uMmCAG1MZ7UXiYmzljHrk306Q6Nh6B4xGznsX2IdhcGCebe3PmQsbqAnKshRptpVyPj
-         D16MCMPDK1jZURcKW9k25h8EPcPZuXFl9+WqippRoDVEYJGkoYUy0Z4mhy3ue4nHYSPj
-         DNzHoXZ11IdPc4aDaWT8op2egyU/emSpyels+yJS/oBOZ0iQX1WlG0Uz1JiY+l3Ai5N3
-         T8hQ==
-X-Gm-Message-State: AHPjjUiFW1DTpGVAXMmhfR1a6d3PLdRiTJi9ES1x5UfkiaTjOGA49rq9
-	pX1twZVv7us64tVam2TDhwU=
-X-Google-Smtp-Source: AOwi7QDelW3zugRmIKosmNhYdpy5pLH2VOx+pl/JnjBONmnUBj5bNMqZ34HHkz/7V12u4ejRL5JTJg==
-X-Received: by 10.84.211.144 with SMTP id c16mr4188126pli.233.1506606414775;
-        Thu, 28 Sep 2017 06:46:54 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from harryPotter.iitr.ernet.in ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id q7sm3398234pgn.56.2017.09.28.06.46.51
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Sep 2017 06:46:54 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: daniel.vetter@ffwll.ch,
-	seanpaul@chromium.org
-Cc: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] drm/i915: Replace *_reference/unreference() or *_ref/unref with _get/put()
-Date: Thu, 28 Sep 2017 19:14:42 +0530
-Message-Id: <1506606282-628-1-git-send-email-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 1.9.1
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=r1MdFud8;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+	by smtp-cloud8.xs4all.net with ESMTPA
+	id Ulh6lYoysgIC3Ulh9lBNug; Fri, 09 Apr 2021 09:36:48 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1617953808; bh=FZKnp+i6ej8wW7s6zhRNv75eOBlfohmpZyzny6z/wZs=;
+	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=r1MdFud83e9uP/mY+oNtSG8IU3pVYxydTc8ZwKmjnLVdC4zyjhvyQlkU8p5uQTNAC
+	 f4XcjEyMt7gVi0rWkO+umyH8ITqO4Uz0rggKUABSEeP880tDY8/7Lu+KG8qwLcJM2U
+	 8C3AfVoYQSjB9Ffm+v1rL/nUM+SBbCsHetmrwN6eE2cesaD83eIxDo6NdIFz6dXxXp
+	 +JipX0X1XLOxsQnmaMhO+W73+g9H/0JCrSLcmlqy93TWK86FYt/QTWhMNxDyuiiRrf
+	 jNYf/JTV2JQrKuRY5Q7Zmo751oFcH1/tAIS/bf9m04Za0h3jZFH2Lrv1djVRrRHoWO
+	 w6Ka4jYbpVjfQ==
+Subject: Re: [PATCH] staging: media: zoran: add '*' in subsequent line
+To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ mitali_s@me.iitr.ac.in
+References: <YG+MKk9C/fTd7vj4@kali>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <2e57ea09-ce08-496a-09ec-4b8f72eface5@xs4all.nl>
+Date: Fri, 9 Apr 2021 09:36:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
+MIME-Version: 1.0
+In-Reply-To: <YG+MKk9C/fTd7vj4@kali>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfCpCFGd6+94vAGTwesF9ortrOUnAW+aeGlfnIndyxlRwSGGBo3B1xTGI4V3r5nmXnPxxJ5qQpMpbqSvTryr54T4pU1gFRzAsXJ++CTN3ZvyY041Scmtr
+ yybtl6ABkV0Q/dqVeh+Q15nHUETxRAxDnYHXguh0pFuBxtqtXT4KEqSqWudtXXrJxc5Syu31xiLIXaishfJxtB1OguCTy+1EImWTu7chvz7RcjJnB4X9jFOG
+ OEieqA+MdbPR1lDSuCsWL8nYnRTmwP4g9Qs/QvQhXvLMTt/ptGJCuOvL0CXLIggrycnWLN2GiXBYakHdiM3fzpFAJLzpFDpAL9jrKHIlj79wfPElwY6ocvvi
+ OALG3rk2WuAlL0UfqrBtcLTnPZazrbEmPoFEY4wVXPDeBgy1O4UaMslgN3gBSBuHQWLomqdNXJubcyt5oDS9XtUD18PIyw8E9YiVbEY5AmxSy/i7ydZm0IG9
+ BFxfUuUul1lB/aYgiKgxE9EBpwBYlVD7c6zflQ==
 
-Replace instances of drm_framebuffer_reference/unreference() with
-*_get/put() suffixes and drm_dev_unref with *_put() suffix
-because get/put is shorter and consistent with the
-kernel use of *_get/put suffixes .
+Hi Mitali,
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- drivers/gpu/drm/i915/i915_pci.c                    |  2 +-
- drivers/gpu/drm/i915/intel_display.c               | 10 +++++-----
- drivers/gpu/drm/i915/intel_fbdev.c                 |  4 ++--
- drivers/gpu/drm/i915/selftests/i915_gem_dmabuf.c   |  2 +-
- drivers/gpu/drm/i915/selftests/i915_gem_evict.c    |  2 +-
- drivers/gpu/drm/i915/selftests/i915_gem_gtt.c      |  2 +-
- drivers/gpu/drm/i915/selftests/i915_gem_object.c   |  2 +-
- drivers/gpu/drm/i915/selftests/i915_gem_request.c  |  2 +-
- drivers/gpu/drm/i915/selftests/i915_vma.c          |  2 +-
- drivers/gpu/drm/i915/selftests/intel_breadcrumbs.c |  2 +-
- 10 files changed, 15 insertions(+), 15 deletions(-)
+On 09/04/2021 01:05, Mitali Borkar wrote:
+> Added '*' in susbsequent lines for block comments to meet linux kernel
+> coding style.
+> 
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+>  drivers/staging/media/zoran/zr36050.c | 34 +++++++++++++--------------
+>  1 file changed, 17 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/staging/media/zoran/zr36050.c b/drivers/staging/media/zoran/zr36050.c
+> index 2826f4e5d37b..663ac2b3434e 100644
+> --- a/drivers/staging/media/zoran/zr36050.c
+> +++ b/drivers/staging/media/zoran/zr36050.c
+> @@ -25,7 +25,7 @@
+>  #include "videocodec.h"
+>  
+>  /* it doesn't make sense to have more than 20 or so,
+> -  just to prevent some unwanted loops */
+> + * just to prevent some unwanted loops */
 
-diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i915_pci.c
-index 09d97e0..2f106cc 100644
---- a/drivers/gpu/drm/i915/i915_pci.c
-+++ b/drivers/gpu/drm/i915/i915_pci.c
-@@ -510,7 +510,7 @@ static void i915_pci_remove(struct pci_dev *pdev)
- 	struct drm_device *dev = pci_get_drvdata(pdev);
- 
- 	i915_driver_unload(dev);
--	drm_dev_unref(dev);
-+	drm_dev_put(dev);
- }
- 
- static int i915_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
-diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
-index f172755..92f8304 100644
---- a/drivers/gpu/drm/i915/intel_display.c
-+++ b/drivers/gpu/drm/i915/intel_display.c
-@@ -2856,7 +2856,7 @@ static int skl_format_to_fourcc(int format, bool rgb_order, bool alpha)
- 
- 		if (intel_plane_ggtt_offset(state) == plane_config->base) {
- 			fb = c->primary->fb;
--			drm_framebuffer_reference(fb);
-+			drm_framebuffer_get(fb);
- 			goto valid_fb;
- 		}
- 	}
-@@ -2887,7 +2887,7 @@ static int skl_format_to_fourcc(int format, bool rgb_order, bool alpha)
- 			  intel_crtc->pipe, PTR_ERR(intel_state->vma));
- 
- 		intel_state->vma = NULL;
--		drm_framebuffer_unreference(fb);
-+		drm_framebuffer_put(fb);
- 		return;
- 	}
- 
-@@ -2908,7 +2908,7 @@ static int skl_format_to_fourcc(int format, bool rgb_order, bool alpha)
- 	if (i915_gem_object_is_tiled(obj))
- 		dev_priv->preserve_bios_swizzle = true;
- 
--	drm_framebuffer_reference(fb);
-+	drm_framebuffer_get(fb);
- 	primary->fb = primary->state->fb = fb;
- 	primary->crtc = primary->state->crtc = &intel_crtc->base;
- 
-@@ -9847,7 +9847,7 @@ struct drm_framebuffer *
- 	if (obj->base.size < mode->vdisplay * fb->pitches[0])
- 		return NULL;
- 
--	drm_framebuffer_reference(fb);
-+	drm_framebuffer_get(fb);
- 	return fb;
- #else
- 	return NULL;
-@@ -10028,7 +10028,7 @@ int intel_get_load_detect_pipe(struct drm_connector *connector,
- 	if (ret)
- 		goto fail;
- 
--	drm_framebuffer_unreference(fb);
-+	drm_framebuffer_put(fb);
- 
- 	ret = drm_atomic_set_mode_for_crtc(&crtc_state->base, mode);
- 	if (ret)
-diff --git a/drivers/gpu/drm/i915/intel_fbdev.c b/drivers/gpu/drm/i915/intel_fbdev.c
-index 262e75c..1ff7149 100644
---- a/drivers/gpu/drm/i915/intel_fbdev.c
-+++ b/drivers/gpu/drm/i915/intel_fbdev.c
-@@ -189,7 +189,7 @@ static int intelfb_create(struct drm_fb_helper *helper,
- 			      " releasing it\n",
- 			      intel_fb->base.width, intel_fb->base.height,
- 			      sizes->fb_width, sizes->fb_height);
--		drm_framebuffer_unreference(&intel_fb->base);
-+		drm_framebuffer_put(&intel_fb->base);
- 		intel_fb = ifbdev->fb = NULL;
- 	}
- 	if (!intel_fb || WARN_ON(!intel_fb->obj)) {
-@@ -624,7 +624,7 @@ static bool intel_fbdev_init_bios(struct drm_device *dev,
- 	ifbdev->preferred_bpp = fb->base.format->cpp[0] * 8;
- 	ifbdev->fb = fb;
- 
--	drm_framebuffer_reference(&ifbdev->fb->base);
-+	drm_framebuffer_put(&ifbdev->fb->base);
- 
- 	/* Final pass to check if any active pipes don't have fbs */
- 	for_each_crtc(dev, crtc) {
-diff --git a/drivers/gpu/drm/i915/selftests/i915_gem_dmabuf.c b/drivers/gpu/drm/i915/selftests/i915_gem_dmabuf.c
-index 89dc25a..a7055b1 100644
---- a/drivers/gpu/drm/i915/selftests/i915_gem_dmabuf.c
-+++ b/drivers/gpu/drm/i915/selftests/i915_gem_dmabuf.c
-@@ -389,7 +389,7 @@ int i915_gem_dmabuf_mock_selftests(void)
- 
- 	err = i915_subtests(tests, i915);
- 
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 	return err;
- }
- 
-diff --git a/drivers/gpu/drm/i915/selftests/i915_gem_evict.c b/drivers/gpu/drm/i915/selftests/i915_gem_evict.c
-index 5ea3732..75764fd 100644
---- a/drivers/gpu/drm/i915/selftests/i915_gem_evict.c
-+++ b/drivers/gpu/drm/i915/selftests/i915_gem_evict.c
-@@ -345,6 +345,6 @@ int i915_gem_evict_mock_selftests(void)
- 	err = i915_subtests(tests, i915);
- 	mutex_unlock(&i915->drm.struct_mutex);
- 
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 	return err;
- }
-diff --git a/drivers/gpu/drm/i915/selftests/i915_gem_gtt.c b/drivers/gpu/drm/i915/selftests/i915_gem_gtt.c
-index 6b132ca..bc3c4a5 100644
---- a/drivers/gpu/drm/i915/selftests/i915_gem_gtt.c
-+++ b/drivers/gpu/drm/i915/selftests/i915_gem_gtt.c
-@@ -1540,7 +1540,7 @@ int i915_gem_gtt_mock_selftests(void)
- 	err = i915_subtests(tests, i915);
- 	mutex_unlock(&i915->drm.struct_mutex);
- 
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 	return err;
- }
- 
-diff --git a/drivers/gpu/drm/i915/selftests/i915_gem_object.c b/drivers/gpu/drm/i915/selftests/i915_gem_object.c
-index 8f011c4..7bfd990 100644
---- a/drivers/gpu/drm/i915/selftests/i915_gem_object.c
-+++ b/drivers/gpu/drm/i915/selftests/i915_gem_object.c
-@@ -586,7 +586,7 @@ int i915_gem_object_mock_selftests(void)
- 
- 	err = i915_subtests(tests, i915);
- 
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 	return err;
- }
- 
-diff --git a/drivers/gpu/drm/i915/selftests/i915_gem_request.c b/drivers/gpu/drm/i915/selftests/i915_gem_request.c
-index 6664cb2..8985578 100644
---- a/drivers/gpu/drm/i915/selftests/i915_gem_request.c
-+++ b/drivers/gpu/drm/i915/selftests/i915_gem_request.c
-@@ -260,7 +260,7 @@ int i915_gem_request_mock_selftests(void)
- 		return -ENOMEM;
- 
- 	err = i915_subtests(tests, i915);
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 
- 	return err;
- }
-diff --git a/drivers/gpu/drm/i915/selftests/i915_vma.c b/drivers/gpu/drm/i915/selftests/i915_vma.c
-index 2e86ec1..d8cc0a6 100644
---- a/drivers/gpu/drm/i915/selftests/i915_vma.c
-+++ b/drivers/gpu/drm/i915/selftests/i915_vma.c
-@@ -734,7 +734,7 @@ int i915_vma_mock_selftests(void)
- 	err = i915_subtests(tests, i915);
- 	mutex_unlock(&i915->drm.struct_mutex);
- 
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 	return err;
- }
- 
-diff --git a/drivers/gpu/drm/i915/selftests/intel_breadcrumbs.c b/drivers/gpu/drm/i915/selftests/intel_breadcrumbs.c
-index 828904b..3c8bf44 100644
---- a/drivers/gpu/drm/i915/selftests/intel_breadcrumbs.c
-+++ b/drivers/gpu/drm/i915/selftests/intel_breadcrumbs.c
-@@ -475,7 +475,7 @@ int intel_breadcrumbs_mock_selftests(void)
- 		return -ENOMEM;
- 
- 	err = i915_subtests(tests, i915->engine[RCS]);
--	drm_dev_unref(&i915->drm);
-+	drm_dev_put(&i915->drm);
- 
- 	return err;
- }
--- 
-1.9.1
+Use proper coding style for long comments:
+
+/*
+ * text
+ * text
+ */
+
+checkpatch.pl warns about that, so did you run checkpatch.pl after your modifications
+were made? After fixing checkpatch issues, always run it again to make sure the issue
+is really fixed and not just replaced by another issue.
+
+Regards,
+
+	Hans
+
+>  #define MAX_CODECS 20
+>  
+>  /* amount of chips attached via this driver */
+> @@ -43,7 +43,7 @@ MODULE_PARM_DESC(debug, "Debug level (0-4)");
+>  	} while (0)
+>  
+>  /* =========================================================================
+> -   Local hardware I/O functions:
+> + *  Local hardware I/O functions:
+>  
+>     read/write via codec layer (registers are located in the master device)
+>     ========================================================================= */
+> @@ -80,7 +80,7 @@ static void zr36050_write(struct zr36050 *ptr, u16 reg, u8 value)
+>  }
+>  
+>  /* =========================================================================
+> -   Local helper function:
+> + *  Local helper function:
+>  
+>     status read
+>     ========================================================================= */
+> @@ -95,7 +95,7 @@ static u8 zr36050_read_status1(struct zr36050 *ptr)
+>  }
+>  
+>  /* =========================================================================
+> -   Local helper function:
+> + *  Local helper function:
+>  
+>     scale factor read
+>     ========================================================================= */
+> @@ -112,7 +112,7 @@ static u16 zr36050_read_scalefactor(struct zr36050 *ptr)
+>  }
+>  
+>  /* =========================================================================
+> -   Local helper function:
+> + *  Local helper function:
+>  
+>     wait if codec is ready to proceed (end of processing) or time is over
+>     ========================================================================= */
+> @@ -133,7 +133,7 @@ static void zr36050_wait_end(struct zr36050 *ptr)
+>  }
+>  
+>  /* =========================================================================
+> -   Local helper function:
+> + *  Local helper function:
+>  
+>     basic test of "connectivity", writes/reads to/from memory the SOF marker
+>     ========================================================================= */
+> @@ -174,7 +174,7 @@ static int zr36050_basic_test(struct zr36050 *ptr)
+>  }
+>  
+>  /* =========================================================================
+> -   Local helper function:
+> + *  Local helper function:
+>  
+>     simple loop for pushing the init datasets
+>     ========================================================================= */
+> @@ -192,7 +192,7 @@ static int zr36050_pushit(struct zr36050 *ptr, u16 startreg, u16 len, const char
+>  }
+>  
+>  /* =========================================================================
+> -   Basic datasets:
+> + *  Basic datasets:
+>  
+>     jpeg baseline setup data (you find it on lots places in internet, or just
+>     extract it from any regular .jpg image...)
+> @@ -294,7 +294,7 @@ static const char zr36050_decimation_h[8] = { 2, 1, 1, 0, 0, 0, 0, 0 };
+>  static const char zr36050_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
+>  
+>  /* =========================================================================
+> -   Local helper functions:
+> + *  Local helper functions:
+>  
+>     calculation and setup of parameter-dependent JPEG baseline segments
+>     (needed for compression only)
+> @@ -303,7 +303,7 @@ static const char zr36050_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
+>  /* ------------------------------------------------------------------------- */
+>  
+>  /* SOF (start of frame) segment depends on width, height and sampling ratio
+> -			 of each color component */
+> + *			 of each color component */
+>  
+>  static int zr36050_set_sof(struct zr36050 *ptr)
+>  {
+> @@ -334,7 +334,7 @@ static int zr36050_set_sof(struct zr36050 *ptr)
+>  /* ------------------------------------------------------------------------- */
+>  
+>  /* SOS (start of scan) segment depends on the used scan components
+> -			of each color component */
+> + *			of each color component */
+>  
+>  static int zr36050_set_sos(struct zr36050 *ptr)
+>  {
+> @@ -378,7 +378,7 @@ static int zr36050_set_dri(struct zr36050 *ptr)
+>  }
+>  
+>  /* =========================================================================
+> -   Setup function:
+> + *  Setup function:
+>  
+>     Setup compression/decompression of Zoran's JPEG processor
+>     ( see also zoran 36050 manual )
+> @@ -531,13 +531,13 @@ static void zr36050_init(struct zr36050 *ptr)
+>  }
+>  
+>  /* =========================================================================
+> -   CODEC API FUNCTIONS
+> + *  CODEC API FUNCTIONS
+>  
+>     this functions are accessed by the master via the API structure
+>     ========================================================================= */
+>  
+>  /* set compression/expansion mode and launches codec -
+> -   this should be the last call from the master before starting processing */
+> + *  this should be the last call from the master before starting processing */
+>  static int zr36050_set_mode(struct videocodec *codec, int mode)
+>  {
+>  	struct zr36050 *ptr = (struct zr36050 *)codec->data;
+> @@ -707,7 +707,7 @@ static int zr36050_control(struct videocodec *codec, int type, int size, void *d
+>  }
+>  
+>  /* =========================================================================
+> -   Exit and unregister function:
+> + *  Exit and unregister function:
+>  
+>     Deinitializes Zoran's JPEG processor
+>     ========================================================================= */
+> @@ -732,7 +732,7 @@ static int zr36050_unset(struct videocodec *codec)
+>  }
+>  
+>  /* =========================================================================
+> -   Setup and registry function:
+> + *  Setup and registry function:
+>  
+>     Initializes Zoran's JPEG processor
+>  
+> @@ -813,7 +813,7 @@ static const struct videocodec zr36050_codec = {
+>  };
+>  
+>  /* =========================================================================
+> -   HOOK IN DRIVER AS KERNEL MODULE
+> + *  HOOK IN DRIVER AS KERNEL MODULE
+>     ========================================================================= */
+>  
+>  static int __init zr36050_init_module(void)
+> 
 
 
