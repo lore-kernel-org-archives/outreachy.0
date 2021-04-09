@@ -1,358 +1,465 @@
-X-GM-THRID: 6658866228863434752
-X-Received: by 2002:a5e:c60c:: with SMTP id f12mr13551197iok.17.1550388110743;
-        Sat, 16 Feb 2019 23:21:50 -0800 (PST)
+X-GM-THRID: 6949162514104975360
+X-Received: by 2002:a7b:cc89:: with SMTP id p9mr2600513wma.146.1617987264464;
+        Fri, 09 Apr 2021 09:54:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:911:: with SMTP id 17ls1309537itm.5.gmail; Sat, 16 Feb
- 2019 23:21:49 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Iba95qDiZEfKMD4iaBrM1GTrPOBS5M8a3ddf+lTU4yjaI/mm4DdMN376slpUMuWYzpMmO2U
-X-Received: by 2002:a24:1311:: with SMTP id 17mr10563122itz.20.1550388109648;
-        Sat, 16 Feb 2019 23:21:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550388109; cv=none;
+Received: by 2002:a1c:67c1:: with SMTP id b184ls1566006wmc.1.canary-gmail;
+ Fri, 09 Apr 2021 09:54:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7qOXS1nxf/IutU87bklxN+Dq+OzITeLbHY4hAUPsWssyVCh9BMOlMPeNstZ/FJKUqapdT
+X-Received: by 2002:a7b:c417:: with SMTP id k23mr7807684wmi.186.1617987263014;
+        Fri, 09 Apr 2021 09:54:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617987263; cv=none;
         d=google.com; s=arc-20160816;
-        b=gD+NDQpGP2OGrMTdKdaCrDRq9tjN+GOQi8wPBwCUvBDVVxQSBst4AfRHiLeakPDdtB
-         hQn+B93Hdky876R4s11JfJURgCVFI6PWpE3aBYl/fI8E9xARbCkZ+qzprJ/c+sK019yW
-         kyGZyorjBUqXwJpNIgGUaq2mzJUgFs+5ch0WUGmOSNOrRxnZn09nTVvCNwPYhFhxlyTS
-         dhuUfuFZKbgm+ozXN/rbizjzzUtL83nfCiC+caSBzo3VsIH9y0s2GyaSPZq8lFCebKW0
-         RMwVnIWXaysrJOnC5t9jc5SCxBtMnICcaPKLwnaEHSeuFbSQH+xYQPxX9kOYD5JiNJ40
-         nvbA==
+        b=lsnqwOeOqbNA/IMF1++i5SmTvTFd0YK5WwZYQEVK0k7noMcxVtaZNzD5xbtLatLJdD
+         1a0OzGVWKLUdaAVenYiAHyfDZF+EmGfQcpT7d+mRPvdSQLy4NKD7FSboPqnO6V5bgg6p
+         ITIi6gbjQjwSHQ4gloiE7g5mTeYdeIZ5jmc+0p5Diryu+N4222isxw4D4Q7dgqTqZSUx
+         TbykNotux8EFTPzwOZRk/7dCSQFVxnxbmUeY5cwcc5k53SwOjDvSDLhYFnn+ztxBGUWK
+         8/uOfa/NAnJbsmomKi+kjpkKBmv5WNgrfmTR1Qb0JUbSBEErMt8oJFk6iLQLXIfiXgZQ
+         goRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=Hy3XRqNnIz5iqGmASJWTIgcR3IEIiW5TkN093nzSQvY=;
-        b=p2Djc57zOykVz1u4uW0Gcj5zLNkjhuNAWqazPHI/wPCgs+OIamCFQPPQIX6BJNx331
-         FhNUhS1yl/M1xPsLxhYhJ9Q0TG/E1MbsakXGnziO32W5LNle5A3eSRSe1drIbtn1rlxB
-         SEp8Im9Ts+4hUquljMyLFEtAChO9wgJHYxhehhMhRfXw3nLel/SfauvhDbVYQ1ZK4tzo
-         zeZMrp4QRd4Lg61owaYSm80QUvdv8bCGBg9/E54eBAxQjt4Mt7Bk8mDwd3x70+6jPGQ6
-         Kk7auVdcK1UqJ/uGchG0rk+dPInweAVWD6sgBSoQMt2Z2AiGPArVV7kp4EAR50xP/TNU
-         KrAg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=sQ8rXI9TrXHTgjxSUl5opu0YOzw4WtHHmR3fyGwFgVk=;
+        b=cTAuM7xngCJibmjTMnXKo3AV4jWcFL91P2Stl2j/JjKGdBhJ6HJjmV2FhwktArhE9H
+         gyN7WpTX2Zh5nUqcG3kKf+c+v2q/nv6zrqO/C4fKBG3o/i/sws5o7z+pjWuoIMEY27cT
+         RlmLZ/Cqnzmdm+xxsAeZbg/r7ir9K6AB0hZW6jIcGS2jukyyrbIh4hODEoKDD8oxdDgb
+         aF9eJS8RNqSkG3QGmozuI4HXEwyjLITMS8tiCJ4VOoKMLVrbN/CNuhzFShtBDmzswOJH
+         17saB//lfGi1yhIVS2z/7KFKuOd4WRb2XNP+EtOUHRoWKIVAniqXW1iWcAslsEwiuZz3
+         85Ew==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fToD1X88;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hporpBrO;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::633 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shraddha.6596@gmail.com>
-Received: from mail-qt1-x832.google.com (mail-qt1-x832.google.com. [2607:f8b0:4864:20::832])
-        by gmr-mx.google.com with ESMTPS id f19si699657iol.4.2019.02.16.23.21.49
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com. [2a00:1450:4864:20::633])
+        by gmr-mx.google.com with ESMTPS id p65si947187wmp.0.2021.04.09.09.54.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Feb 2019 23:21:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) client-ip=2607:f8b0:4864:20::832;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 09:54:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::633 as permitted sender) client-ip=2a00:1450:4864:20::633;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fToD1X88;
-       spf=pass (google.com: domain of shraddha.6596@gmail.com designates 2607:f8b0:4864:20::832 as permitted sender) smtp.mailfrom=shraddha.6596@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hporpBrO;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::633 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x832.google.com with SMTP id p25so15714354qtb.3
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Feb 2019 23:21:49 -0800 (PST)
+Received: by mail-ej1-x633.google.com with SMTP id g17so6946726ejp.8
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 09:54:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:cc;
-        bh=Hy3XRqNnIz5iqGmASJWTIgcR3IEIiW5TkN093nzSQvY=;
-        b=fToD1X88wIC/PTBjj2cSV4EX70HN4yPD4Io1wBjEp9akGRP23Sy3yHOqLjG+HnMIdV
-         pF1b28hFpwg88Lo3sPBqJ/N/qtasDhuMfczO28vXPHo2+p4U++w8GjcohFFxZhgmqRmg
-         Zb7KzaXFDPWTZ6Lj139j0//114JIUGLMStoM3Y6D+IcN75ZV/VI3qw4faW9ZIFXnKfvb
-         lPwV4+o4ZMVcKlohxVpBDEkINncma52PCd7s6H6AlGe+lXw/PlbllEdd+zt0QP9V+gO0
-         Fm5lcC0rwKeYuDFj4Sdqf2o9T606o+Cr958JoXzi2nkhfUHV+DSVkFvcil1vZBaLvZ8w
-         LmIg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=sQ8rXI9TrXHTgjxSUl5opu0YOzw4WtHHmR3fyGwFgVk=;
+        b=hporpBrOpfp0DuajhDzX+Uz0nHIERN7PP2AOmUURNy70KiSEFveXRjpBnOhytId0EY
+         i8qgA+X3jt9fN0z3PhAr3Cyux6Yz9II6J2Nd1h/gGGM1NBnSeWJ1CoAxV16ouqITw9xA
+         F2tpyl++07NvvTdWB2484IGhtfZmULNvE1HDj4ZgGQ15dhO5+K9CotfE6U6jML8ismVI
+         K21hO5oQeUVUw+BUj1bDEeK8v6AnRe8nsgBY2q5GcMdWKTn6yrweiHws5Gox4IkKXR3w
+         crBcrvEpP2H/iq7kMOBkjcSKON4r4ntG08QaJs2E/PxdnvVbrLwI0cV6jZg86ciRswZ1
+         0/gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
-        bh=Hy3XRqNnIz5iqGmASJWTIgcR3IEIiW5TkN093nzSQvY=;
-        b=DBFctCOa9eCye84ftdZNepv4JliUXKIftpPOLO8YwGi1rHg92Q11F8NsgcWbB7OXeq
-         zRe0yEpqx9iBkC/Bsek1sxyVGhYFsLE3sHGpz4H3nfemWIKwh0u7czorMlUxLjs5Jz4S
-         hu7MXE89jop+p6TPuvRlu0f9Unol3DmIqhJ5d9wWHmuFI2MTHsrQhDtzTAktBEicITWl
-         LHkHzVFqG+XMBNrIbDrLkM37R8v1qmbW+5dwphK+cefXqz82kAIyVnCiRjE3FS0NAHmj
-         4MOAKWyEFF0jX7I3eZWdVYJeK5Y7ncOdy1OJWzR+0oDYGcVuOSgGTjVn0ZmS+f/uBNX6
-         ZL1A==
-X-Gm-Message-State: AHQUAuasIXQjEmYr676OPd6g+ag33q7u1zArNI+wLbAXwgAhoQbSkWro
-	Az5qY3IjKDYUO23qer64Wm9YggbwzvaXUqW5+eyhK/rX
-X-Received: by 2002:ac8:8ca:: with SMTP id y10mr14162581qth.153.1550388108741;
- Sat, 16 Feb 2019 23:21:48 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=sQ8rXI9TrXHTgjxSUl5opu0YOzw4WtHHmR3fyGwFgVk=;
+        b=Sh2Wa759CnqHqxUYxbsQ8brUgvPKGrHeSsbSTaswz7vXo80tkjpmw3AAIdWnRVrZbF
+         3lhutp2pd/FyUxD6CTsa+TtSJqBolTx4k1OF2EoDsJkN6g5Gmmp8SEOTKk3ulzv6o/jT
+         +JLhh63o2gYofGnw3IJc9ZO/B3gDRtULICiVs5FaqOk13ij7yVp91q3+Kt9b0jBgmt6z
+         IdjGMaPLYEAK86M80Mcjy0JdtNoi7SeX/e/mE3xpjUa0sYYKoWSH0j1yS8yhx4DUw1c2
+         gHI5CaiM14dieVvSJXAeOqnwpa8GiyrenEMIyAdpu9S+F8zat5LUZmQFDrIbQngcDTLW
+         nZSA==
+X-Gm-Message-State: AOAM5327KS57LjlSzfeuQuUP/MMy2gYYJGaYFuN7hNEvGqdzi9DJVsnG
+	kURbSru6m3PDm0O5UWbXID8=
+X-Received: by 2002:a17:906:32d1:: with SMTP id k17mr16925785ejk.94.1617987262584;
+        Fri, 09 Apr 2021 09:54:22 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from localhost.localdomain (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id u13sm1501781ejj.16.2021.04.09.09.54.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 09:54:22 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>,
+	outreachy-kernel@googlegroups.com,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [Outreachy kernel] [PATCH v2 3/3] staging: rtl8723bs: include: Fix misspelled words in comments
+Date: Fri,  9 Apr 2021 18:54:18 +0200
+Message-Id: <20210409165418.1072-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-From: Shraddha Barke <shraddha.6596@gmail.com>
-Date: Sat, 16 Feb 2019 23:21:37 -0800
-Message-ID: <CAO393ACCw-cvQ_RmAUmT=DeQryQ6BYunONxNgEX1+NtdiwJ2vQ@mail.gmail.com>
-Subject: [Announcement] Outreachy Next Round [May-August] Application period starts!
-To: outreachy-kernel@googlegroups.com
-Cc: Vaishali Thakkar <vthakkar1994@gmail.com>
-Content-Type: multipart/alternative; boundary="0000000000007c4e59058211dc9e"
+Content-Transfer-Encoding: 8bit
 
---0000000000007c4e59058211dc9e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Correct misspelled words in comments of several files. Issue (largely)
+detected by checkpatch.pl.
 
-Greetings potential Linux kernel Outreachy interns!
-
-Please read this *entire* email, even if you have applied in the past.
-
-*What is Outreachy?*
----------------------------
-
-The next application round for Outreachy internships starts February 18,
-2019 and ends March 26, 2019.  Outreachy interns will be paid $5,500 to
-work on a full-time internship with an open source mentor from May 20, 2019
-to August 20, 2019. Interns will also be granted a $500 travel stipend to
-go to any conference approved by their mentor that relates to their project=
-.
-
-*Who can apply?*
------------------------
-
-To qualify to apply for Outreachy, you MUST complete eligibility criteria
-here: https://www.outreachy.org/apply/eligibility/ and contact the
-Outreachy organizers (https://www.outreachy.org/contact/organizers/) if you
-will be in school between May 20, 2019 to August 20, 2019 or have any quest=
-ions
-about your eligibility.
-
-*What Outreachy projects can you apply to?*
--------------------------------------------------------------
-
-There will be several different open source projects participating in this
-round of Outreachy. The full list can be found here:
-
-https://www.outreachy.org/communities/cfp/
-
-The Linux kernel expects to offer eight projects, which are already listed
-on on Linux kernel community page on Outreachy website and will be visible
-to applicants only after they complete the eligibility check.
-
-*How do I apply to the Linux kernel project via Outreachy's website?*
-------------------------------
-------------------------------------------------------------------
-
-1. Fill out the eligibility check form on the Outreachy website
-
-2. Work on Linux kernel tutorial
-
-    Basically, applicants will need to walk through our tutorial for
-creating their first Linux kernel patch:
-http://kernelnewbies.org/Outreachyfirstpatch
-
-    It is not necessary to contact a mentor before starting the tutorial.
-
-3. Work on cleanup patches
-
-     As specified in our tutorial we require Outreachy applicants to first
-get accepted at least 10 Staging driver cleanup patches.
-
-4. Once your first patch is accepted, add that as a contribution for the
-project(s)you're interested in applying for. This will then allow you to
-submit an application. *Note that you'll need to apply for each project
-separately.*
-
-5. Once applicants have completed working on 10 cleanup patches, we encoura=
-ge
-applicants to move on to complete some small tasks outlined by the mentors.
-It=E2=80=99s preferable to CC the mentor when you are  working on the task =
-so that
-they don=E2=80=99t miss it. Small tasks for the projects can be found in th=
-e
-project detail here:
-
-    https://www.outreachy.org/2018-may-august/communities/linux-kernel/
-
-    *Note that you'll be able to see the detailed information about
-projects on Outreachy's website only after completing eligibility form
-check.*
-
-6. Keep editing your *'project contribution'* on Outreachy's website based
-on your accepted patches links and project specific completion of tasks
-
-7. Make sure to add your project preferences under the question
-*'Community-specific
-Questions'* in the application
-
-Applicants should also join the #outreachy IRC channel on irc.gnome.org, an=
-d
-the #kernel-outreachy channel on irc.oftc.net.  If you're having trouble wi=
-th
-IRC, please ask for help on this mailing list.
-
-If you=E2=80=99ve applied in the Outreachy before, you=E2=80=99re still req=
-uired to send
-few staging driver cleanup patches to re-familiarize yourself with the
-process before you start to work on tasks.
-
-There is a tips section at the end of the tutorial to outline what behavior=
-s
-we look for in potential Outreachy interns. I hope this will give more
-insight into our selection process.
-
-All the best!
-
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
-Shraddha Barke & Vaishali Thakkar
-Outreachy Linux Kernel Cooordinators
 
+Changes from v1: Substitute "mispelled" with "misspelled" in Subject.
 
---=20
-Shraddha
+ .../rtl8723bs/include/Hal8192CPhyReg.h        |  8 ++---
+ .../staging/rtl8723bs/include/basic_types.h   |  2 +-
+ drivers/staging/rtl8723bs/include/drv_types.h |  2 +-
+ drivers/staging/rtl8723bs/include/hal_com.h   |  2 +-
+ .../staging/rtl8723bs/include/hal_com_reg.h   | 34 +++++++++----------
+ drivers/staging/rtl8723bs/include/hal_data.h  |  2 +-
+ .../staging/rtl8723bs/include/hal_pwr_seq.h   |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_cmd.h   |  6 ++--
+ drivers/staging/rtl8723bs/include/rtw_mlme.h  | 18 +++++-----
+ .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_mp.h    |  2 +-
+ .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_recv.h  |  4 +--
+ drivers/staging/rtl8723bs/include/rtw_xmit.h  |  2 +-
+ drivers/staging/rtl8723bs/include/sta_info.h  |  2 +-
+ drivers/staging/rtl8723bs/include/wifi.h      |  2 +-
+ 16 files changed, 46 insertions(+), 46 deletions(-)
 
---0000000000007c4e59058211dc9e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h b/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h
+index fb80901f0788..4b3a7c051630 100644
+--- a/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h
++++ b/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h
+@@ -34,7 +34,7 @@
+ /*--------------------------Define Parameters-------------------------------*/
+ 
+ /*  */
+-/*        8192S Regsiter offset definition */
++/*        8192S Register offset definition */
+ /*  */
+ 
+ /*  */
+@@ -43,7 +43,7 @@
+ /*  2. 0x800/0x900/0xA00/0xC00/0xD00/0xE00 */
+ /*  3. RF register 0x00-2E */
+ /*  4. Bit Mask for BB/RF register */
+-/*  5. Other defintion for BB/RF R/W */
++/*  5. Other definition for BB/RF R/W */
+ /*  */
+ 
+ 
+@@ -137,7 +137,7 @@
+ #define		rFPGA0_AnalogParameter3		0x888	/*  Useless now */
+ #define		rFPGA0_AnalogParameter4		0x88c
+ 
+-#define		rFPGA0_XA_LSSIReadBack		0x8a0	/*  Tranceiver LSSI Readback */
++#define		rFPGA0_XA_LSSIReadBack		0x8a0	/*  Transceiver LSSI Readback */
+ #define		rFPGA0_XB_LSSIReadBack		0x8a4
+ #define		rFPGA0_XC_LSSIReadBack		0x8a8
+ #define		rFPGA0_XD_LSSIReadBack		0x8ac
+@@ -206,7 +206,7 @@
+ #define		rOFDM0_TRSWIsolation		0xc0c
+ 
+ #define		rOFDM0_XARxAFE			0xc10  /* RxIQ DC offset, Rx digital filter, DC notch filter */
+-#define		rOFDM0_XARxIQImbalance		0xc14  /* RxIQ imblance matrix */
++#define		rOFDM0_XARxIQImbalance		0xc14  /* RxIQ imbalance matrix */
+ #define		rOFDM0_XBRxAFE				0xc18
+ #define		rOFDM0_XBRxIQImbalance		0xc1c
+ #define		rOFDM0_XCRxAFE				0xc20
+diff --git a/drivers/staging/rtl8723bs/include/basic_types.h b/drivers/staging/rtl8723bs/include/basic_types.h
+index 76304086107a..57bb717327ce 100644
+--- a/drivers/staging/rtl8723bs/include/basic_types.h
++++ b/drivers/staging/rtl8723bs/include/basic_types.h
+@@ -187,7 +187,7 @@
+ 		); \
+ }
+ 
+-/*  Get the N-bytes aligment offset from the current length */
++/*  Get the N-bytes alignent offset from the current length */
+ #define N_BYTE_ALIGMENT(__Value, __Aligment) ((__Aligment == 1) ? (__Value) : (((__Value + __Aligment - 1) / __Aligment) * __Aligment))
+ 
+ #define TEST_FLAG(__Flag, __testFlag)		(((__Flag) & (__testFlag)) != 0)
+diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
+index cec8d5ac0e2e..c97e6421a0db 100644
+--- a/drivers/staging/rtl8723bs/include/drv_types.h
++++ b/drivers/staging/rtl8723bs/include/drv_types.h
+@@ -425,7 +425,7 @@ struct adapter {
+ 	/* 	The driver will show up the desired channel number when this flag is 1. */
+ 	u8 bNotifyChannelChange;
+ 
+-	/* pbuddystruct adapter is used only in  two inteface case, (iface_nums =2 in struct dvobj_priv) */
++	/* pbuddystruct adapter is used only in two interface case, (iface_nums =2 in struct dvobj_priv) */
+ 	/* PRIMARY ADAPTER's buddy is SECONDARY_ADAPTER */
+ 	/* SECONDARY_ADAPTER's buddy is PRIMARY_ADAPTER */
+ 	/* for iface_id > SECONDARY_ADAPTER(IFACE_ID1), refer to padapters[iface_id]  in struct dvobj_priv */
+diff --git a/drivers/staging/rtl8723bs/include/hal_com.h b/drivers/staging/rtl8723bs/include/hal_com.h
+index a1e1b76b5d8a..6bcc443d59fb 100644
+--- a/drivers/staging/rtl8723bs/include/hal_com.h
++++ b/drivers/staging/rtl8723bs/include/hal_com.h
+@@ -158,7 +158,7 @@
+ (rate == DESC_RATEVHTSS2MCS6) ? "VHTSS2MCS6" : \
+ (rate == DESC_RATEVHTSS2MCS7) ? "VHTSS2MCS7" : \
+ (rate == DESC_RATEVHTSS2MCS8) ? "VHTSS2MCS8" : \
+-(rate == DESC_RATEVHTSS2MCS9) ? "VHTSS2MCS9" : "UNKNOW"
++(rate == DESC_RATEVHTSS2MCS9) ? "VHTSS2MCS9" : "UNKNOWN"
+ 
+ 
+ enum{
+diff --git a/drivers/staging/rtl8723bs/include/hal_com_reg.h b/drivers/staging/rtl8723bs/include/hal_com_reg.h
+index 2cd18eb57244..b14585cb0233 100644
+--- a/drivers/staging/rtl8723bs/include/hal_com_reg.h
++++ b/drivers/staging/rtl8723bs/include/hal_com_reg.h
+@@ -768,14 +768,14 @@ Default: 00b.
+ #define IMR_BCNDMAINT3			BIT28		/*  Beacon DMA Interrupt 3 */
+ #define IMR_BCNDMAINT2			BIT27		/*  Beacon DMA Interrupt 2 */
+ #define IMR_BCNDMAINT1			BIT26		/*  Beacon DMA Interrupt 1 */
+-#define IMR_BCNDOK8				BIT25		/*  Beacon Queue DMA OK Interrup 8 */
+-#define IMR_BCNDOK7				BIT24		/*  Beacon Queue DMA OK Interrup 7 */
+-#define IMR_BCNDOK6				BIT23		/*  Beacon Queue DMA OK Interrup 6 */
+-#define IMR_BCNDOK5				BIT22		/*  Beacon Queue DMA OK Interrup 5 */
+-#define IMR_BCNDOK4				BIT21		/*  Beacon Queue DMA OK Interrup 4 */
+-#define IMR_BCNDOK3				BIT20		/*  Beacon Queue DMA OK Interrup 3 */
+-#define IMR_BCNDOK2				BIT19		/*  Beacon Queue DMA OK Interrup 2 */
+-#define IMR_BCNDOK1				BIT18		/*  Beacon Queue DMA OK Interrup 1 */
++#define IMR_BCNDOK8				BIT25		/*  Beacon Queue DMA OK Interrupt 8 */
++#define IMR_BCNDOK7				BIT24		/*  Beacon Queue DMA OK Interrupt 7 */
++#define IMR_BCNDOK6				BIT23		/*  Beacon Queue DMA OK Interrupt 6 */
++#define IMR_BCNDOK5				BIT22		/*  Beacon Queue DMA OK Interrupt 5 */
++#define IMR_BCNDOK4				BIT21		/*  Beacon Queue DMA OK Interrupt 4 */
++#define IMR_BCNDOK3				BIT20		/*  Beacon Queue DMA OK Interrupt 3 */
++#define IMR_BCNDOK2				BIT19		/*  Beacon Queue DMA OK Interrupt 2 */
++#define IMR_BCNDOK1				BIT18		/*  Beacon Queue DMA OK Interrupt 1 */
+ #define IMR_TIMEOUT2			BIT17		/*  Timeout interrupt 2 */
+ #define IMR_TIMEOUT1			BIT16		/*  Timeout interrupt 1 */
+ #define IMR_TXFOVW				BIT15		/*  Transmit FIFO Overflow */
+@@ -784,9 +784,9 @@ Default: 00b.
+ #define IMR_RXFOVW				BIT12		/*  Receive FIFO Overflow */
+ #define IMR_RDU					BIT11		/*  Receive Descriptor Unavailable */
+ #define IMR_ATIMEND				BIT10		/*  For 92C, ATIM Window End Interrupt. For 8723 and later ICs, it also means P2P CTWin End interrupt. */
+-#define IMR_BDOK				BIT9		/*  Beacon Queue DMA OK Interrup */
++#define IMR_BDOK				BIT9		/*  Beacon Queue DMA OK Interrupt */
+ #define IMR_HIGHDOK				BIT8		/*  High Queue DMA OK Interrupt */
+-#define IMR_TBDOK				BIT7		/*  Transmit Beacon OK interrup */
++#define IMR_TBDOK				BIT7		/*  Transmit Beacon OK interrupt */
+ #define IMR_MGNTDOK			BIT6		/*  Management Queue DMA OK Interrupt */
+ #define IMR_TBDER				BIT5		/*  For 92C, Transmit Beacon Error Interrupt */
+ #define IMR_BKDOK				BIT4		/*  AC_BK DMA OK Interrupt */
+@@ -956,13 +956,13 @@ Default: 00b.
+ #define IMR_BCNDMAINT3_88E		BIT23		/*  Beacon DMA Interrupt 3 */
+ #define IMR_BCNDMAINT2_88E		BIT22		/*  Beacon DMA Interrupt 2 */
+ #define IMR_BCNDMAINT1_88E		BIT21		/*  Beacon DMA Interrupt 1 */
+-#define IMR_BCNDOK7_88E			BIT20		/*  Beacon Queue DMA OK Interrup 7 */
+-#define IMR_BCNDOK6_88E			BIT19		/*  Beacon Queue DMA OK Interrup 6 */
+-#define IMR_BCNDOK5_88E			BIT18		/*  Beacon Queue DMA OK Interrup 5 */
+-#define IMR_BCNDOK4_88E			BIT17		/*  Beacon Queue DMA OK Interrup 4 */
+-#define IMR_BCNDOK3_88E			BIT16		/*  Beacon Queue DMA OK Interrup 3 */
+-#define IMR_BCNDOK2_88E			BIT15		/*  Beacon Queue DMA OK Interrup 2 */
+-#define IMR_BCNDOK1_88E			BIT14		/*  Beacon Queue DMA OK Interrup 1 */
++#define IMR_BCNDOK7_88E			BIT20		/*  Beacon Queue DMA OK Interrupt 7 */
++#define IMR_BCNDOK6_88E			BIT19		/*  Beacon Queue DMA OK Interrupt 6 */
++#define IMR_BCNDOK5_88E			BIT18		/*  Beacon Queue DMA OK Interrupt 5 */
++#define IMR_BCNDOK4_88E			BIT17		/*  Beacon Queue DMA OK Interrupt 4 */
++#define IMR_BCNDOK3_88E			BIT16		/*  Beacon Queue DMA OK Interrupt 3 */
++#define IMR_BCNDOK2_88E			BIT15		/*  Beacon Queue DMA OK Interrupt 2 */
++#define IMR_BCNDOK1_88E			BIT14		/*  Beacon Queue DMA OK Interrupt 1 */
+ #define IMR_ATIMEND_E_88E			BIT13		/*  ATIM Window End Extension for Win7 */
+ #define IMR_TXERR_88E				BIT11		/*  Tx Error Flag Interrupt Status, write 1 clear. */
+ #define IMR_RXERR_88E				BIT10		/*  Rx Error Flag INT Status, Write 1 clear */
+diff --git a/drivers/staging/rtl8723bs/include/hal_data.h b/drivers/staging/rtl8723bs/include/hal_data.h
+index df5c7b747498..babcb03a7c23 100644
+--- a/drivers/staging/rtl8723bs/include/hal_data.h
++++ b/drivers/staging/rtl8723bs/include/hal_data.h
+@@ -389,7 +389,7 @@ struct hal_com_data {
+ 	u8 OutEpQueueSel;
+ 	u8 OutEpNumber;
+ 
+-	/*  2010/12/10 MH Add for USB aggreation mode dynamic shceme. */
++	/*  2010/12/10 MH Add for USB aggregation mode dynamic scheme. */
+ 	bool		UsbRxHighSpeedMode;
+ 
+ 	/*  2010/11/22 MH Add for slim combo debug mode selective. */
+diff --git a/drivers/staging/rtl8723bs/include/hal_pwr_seq.h b/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
+index 0837506b6be8..0a2e60770668 100644
+--- a/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
++++ b/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
+@@ -14,7 +14,7 @@
+ 	4: LPS--Low Power State
+ 	5: SUS--Suspend
+ 
+-	The transision from different states are defined below
++	The transition from different states are defined below
+ 	TRANS_CARDEMU_TO_ACT
+ 	TRANS_ACT_TO_CARDEMU
+ 	TRANS_CARDEMU_TO_SUS
+diff --git a/drivers/staging/rtl8723bs/include/rtw_cmd.h b/drivers/staging/rtl8723bs/include/rtw_cmd.h
+index 87cbad525393..517ae3b51386 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_cmd.h
++++ b/drivers/staging/rtl8723bs/include/rtw_cmd.h
+@@ -136,7 +136,7 @@ enum {
+ 	RESET_SECURITYPRIV, /*  add for CONFIG_IEEE80211W, none 11w also can use */
+ 	FREE_ASSOC_RESOURCES, /*  add for CONFIG_IEEE80211W, none 11w also can use */
+ 	DM_IN_LPS_WK_CID,
+-	DM_RA_MSK_WK_CID, /* add for STA update RAMask when bandwith change. */
++	DM_RA_MSK_WK_CID, /* add for STA update RAMask when bandwidth change. */
+ 	BEAMFORMING_WK_CID,
+ 	LPS_CHANGE_DTIM_CID,
+ 	BTINFO_WK_CID,
+@@ -514,7 +514,7 @@ struct drvextra_cmd_parm {
+ 	unsigned char *pbuf;
+ };
+ 
+-/*------------------- Below are used for RF/BB tunning ---------------------*/
++/*------------------- Below are used for RF/BB tuning ---------------------*/
+ 
+ struct	getcountjudge_rsp {
+ 	u8 count_judge[MAX_RATES_LENGTH];
+@@ -567,7 +567,7 @@ struct RunInThread_param {
+ 
+ Result:
+ 0x00: success
+-0x01: sucess, and check Response.
++0x01: success, and check Response.
+ 0x02: cmd ignored due to duplicated sequcne number
+ 0x03: cmd dropped due to invalid cmd code
+ 0x04: reserved.
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+index 87a1fa8f347e..5deb73fe3885 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+@@ -57,11 +57,11 @@
+ 
+ /* ifdef UNDER_MPTEST */
+ #define	WIFI_MP_STATE							0x00010000
+-#define	WIFI_MP_CTX_BACKGROUND				0x00020000	/*  in continous tx background */
+-#define	WIFI_MP_CTX_ST						0x00040000	/*  in continous tx with single-tone */
+-#define	WIFI_MP_CTX_BACKGROUND_PENDING	0x00080000	/*  pending in continous tx background due to out of skb */
+-#define	WIFI_MP_CTX_CCK_HW					0x00100000	/*  in continous tx */
+-#define	WIFI_MP_CTX_CCK_CS					0x00200000	/*  in continous tx with carrier suppression */
++#define	WIFI_MP_CTX_BACKGROUND				0x00020000	/*  in continuous tx background */
++#define	WIFI_MP_CTX_ST						0x00040000	/*  in continuous tx with single-tone */
++#define	WIFI_MP_CTX_BACKGROUND_PENDING	0x00080000	/*  pending in continuous tx background due to out of skb */
++#define	WIFI_MP_CTX_CCK_HW					0x00100000	/*  in continuous tx */
++#define	WIFI_MP_CTX_CCK_CS					0x00200000	/*  in continuous tx with carrier suppression */
+ #define   WIFI_MP_LPBK_STATE					0x00400000
+ /* endif */
+ 
+@@ -168,7 +168,7 @@ struct tx_provdisc_req_info {
+ 	u8 			benable;					/* 	This provision discovery request frame is trigger to send or not */
+ };
+ 
+-struct rx_provdisc_req_info {	/* When peer device issue prov_disc_req first, we should store the following informations */
++struct rx_provdisc_req_info {	/* When peer device issue prov_disc_req first, we should store the following information */
+ 	u8			peerDevAddr[ETH_ALEN];		/*	Peer device address */
+ 	u8 			strconfig_method_desc_of_prov_disc_req[4];	/* 	description for the config method located in the provisioning discovery request frame. */
+ 																	/* 	The UI must know this information to know which config method the remote p2p device is requiring. */
+@@ -177,7 +177,7 @@ struct rx_provdisc_req_info {	/* When peer device issue prov_disc_req first, we
+ struct tx_nego_req_info {
+ 	u16 				peer_channel_num[2];		/* 	The channel number which the receiver stands. */
+ 	u8			peerDevAddr[ETH_ALEN];		/*	Peer device address */
+-	u8 			benable;					/* 	This negoitation request frame is trigger to send or not */
++	u8 			benable;					/* 	This negotiation request frame is trigger to send or not */
+ };
+ 
+ struct group_id_info {
+@@ -228,9 +228,9 @@ struct wifidirect_info {
+ 	u8 				profileindex;	/* 	Used to point to the index of profileinfo array */
+ 	u8 				peer_operating_ch;
+ 	u8 				find_phase_state_exchange_cnt;
+-	u16 					device_password_id_for_nego;	/* 	The device password ID for group negotation */
++	u16 					device_password_id_for_nego;	/* 	The device password ID for group negotiation */
+ 	u8 				negotiation_dialog_token;
+-	u8				nego_ssid[WLAN_SSID_MAXLEN];	/*	SSID information for group negotitation */
++	u8				nego_ssid[WLAN_SSID_MAXLEN];	/*	SSID information for group negotiation */
+ 	u8 				nego_ssidlen;
+ 	u8 				p2p_group_ssid[WLAN_SSID_MAXLEN];
+ 	u8 				p2p_group_ssid_len;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+index 393eeecaf3a0..5e6cf63956b8 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+@@ -112,7 +112,7 @@ extern unsigned char WMM_PARA_OUI[];
+ /*  Note: */
+ /* 	We just add new channel plan when the new channel plan is different from any of the following */
+ /* 	channel plan. */
+-/* 	If you just wnat to customize the acitions(scan period or join actions) about one of the channel plan, */
++/* 	If you just want to customize the actions(scan period or join actions) about one of the channel plan, */
+ /* 	customize them in rt_channel_info in the RT_CHANNEL_LIST. */
+ /*  */
+ enum {
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mp.h b/drivers/staging/rtl8723bs/include/rtw_mp.h
+index 26dec21bf0f1..2788ad80b114 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mp.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mp.h
+@@ -101,7 +101,7 @@ struct mpt_context {
+ 	/*  For MP Tx Power index */
+ 	u8 	TxPwrLevel[2];	/*  rf-A, rf-B */
+ 	u32 		RegTxPwrLimit;
+-	/*  Content of RCR Regsiter for Mass Production Test. */
++	/*  Content of RCR Register for Mass Production Test. */
+ 	u32 		MptRCR;
+ 	/*  true if we only receive packets with specific pattern. */
+ 	bool			bMptFilterPattern;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+index 5450d20b44a6..0a48f1653be5 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
++++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+@@ -112,7 +112,7 @@ enum rt_rf_power_state {
+ #define	RT_RF_OFF_LEVL_FREE_FW		BIT(4)	/*  FW free, re-download the FW */
+ #define	RT_RF_OFF_LEVL_FW_32K		BIT(5)	/*  FW in 32k */
+ #define	RT_RF_PS_LEVEL_ALWAYS_ASPM	BIT(6)	/*  Always enable ASPM and Clock Req in initialization. */
+-#define	RT_RF_LPS_DISALBE_2R			BIT(30)	/*  When LPS is on, disable 2R if no packet is received or transmittd. */
++#define	RT_RF_LPS_DISALBE_2R			BIT(30)	/*  When LPS is on, disable 2R if no packet is received or transmitted. */
+ #define	RT_RF_LPS_LEVEL_ASPM			BIT(31)	/*  LPS with ASPM */
+ 
+ #define	RT_IN_PS_LEVEL(ppsc, _PS_FLAG)		((ppsc->cur_ps_level & _PS_FLAG) ? true : false)
+diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
+index d007f90d02c3..9c3cdcc990fa 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_recv.h
++++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
+@@ -132,7 +132,7 @@ struct rx_pkt_attrib	{
+ 	u8 order;
+ 	u8 privacy; /* in frame_ctrl field */
+ 	u8 bdecrypted;
+-	u8 encrypt; /* when 0 indicate no encrypt. when non-zero, indicate the encrypt algorith */
++	u8 encrypt; /* when 0 indicates no encryption; when non-zero, indicates the encryption algorithm */
+ 	u8 iv_len;
+ 	u8 icv_len;
+ 	u8 crc_err;
+@@ -227,7 +227,7 @@ struct recv_priv {
+ 
+ 	struct __queue	recv_buf_pending_queue;
+ 
+-	/* For display the phy informatiom */
++	/* For display the phy information */
+ 	u8 is_signal_dbg;	/*  for debug */
+ 	u8 signal_strength_dbg;	/*  for debug */
+ 
+diff --git a/drivers/staging/rtl8723bs/include/rtw_xmit.h b/drivers/staging/rtl8723bs/include/rtw_xmit.h
+index 73d020cfd0d1..e45753d17313 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_xmit.h
++++ b/drivers/staging/rtl8723bs/include/rtw_xmit.h
+@@ -142,7 +142,7 @@ struct pkt_attrib {
+ 	u32 pktlen;		/* the original 802.3 pkt raw_data len (not include ether_hdr data) */
+ 	u32 last_txcmdsz;
+ 	u8 nr_frags;
+-	u8 encrypt;	/* when 0 indicate no encrypt. when non-zero, indicate the encrypt algorith */
++	u8 encrypt;	/* when 0 indicates no encryption; when non-zero, indicates the encryption algorithm */
+ 	u8 iv_len;
+ 	u8 icv_len;
+ 	u8 iv[18];
+diff --git a/drivers/staging/rtl8723bs/include/sta_info.h b/drivers/staging/rtl8723bs/include/sta_info.h
+index abde3e3df988..69c377eeeaf0 100644
+--- a/drivers/staging/rtl8723bs/include/sta_info.h
++++ b/drivers/staging/rtl8723bs/include/sta_info.h
+@@ -329,7 +329,7 @@ struct	sta_priv {
+ 	 */
+ 	struct sta_info *sta_aid[NUM_STA];
+ 
+-	u16 sta_dz_bitmap;/* only support 15 stations, staion aid bitmap for sleeping sta. */
++	u16 sta_dz_bitmap;/* only support for 15 stations, aid bitmap for sleeping stations. */
+ 	u16 tim_bitmap;/* only support 15 stations, aid = 0~15 mapping bit0~bit15 */
+ 
+ 	u16 max_num_sta;
+diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
+index 69e714a6d87c..036cf57c65a9 100644
+--- a/drivers/staging/rtl8723bs/include/wifi.h
++++ b/drivers/staging/rtl8723bs/include/wifi.h
+@@ -678,7 +678,7 @@ struct ADDBA_request {
+ 
+ #define	P2P_PROVISION_TIMEOUT				5000	/* 	5 seconds timeout for sending the provision discovery request */
+ #define	P2P_CONCURRENT_PROVISION_TIMEOUT	3000	/* 	3 seconds timeout for sending the provision discovery request under concurrent mode */
+-#define	P2P_GO_NEGO_TIMEOUT					5000	/* 	5 seconds timeout for receiving the group negotation response */
++#define	P2P_GO_NEGO_TIMEOUT					5000	/* 	5 seconds timeout for receiving the group negotiation response */
+ #define	P2P_CONCURRENT_GO_NEGO_TIMEOUT		3000	/* 	3 seconds timeout for sending the negotiation request under concurrent mode */
+ #define	P2P_TX_PRESCAN_TIMEOUT				100		/* 	100ms */
+ #define	P2P_INVITE_TIMEOUT					5000	/* 	5 seconds timeout for sending the invitation request */
+-- 
+2.31.1
 
-<div dir=3D"ltr"><div class=3D"gmail-F0XO1GC-xb-b"><span style=3D"font-fami=
-ly:arial,sans-serif;font-size:12.8px">Greetings potential Linux kernel Outr=
-eachy interns!</span><br style=3D"font-family:arial,sans-serif;font-size:12=
-.8px"><br style=3D"font-family:arial,sans-serif;font-size:12.8px"><span sty=
-le=3D"font-family:arial,sans-serif;font-size:12.8px">Please read this *enti=
-re* email, even if you have applied in the past.</span><br style=3D"font-fa=
-mily:arial,sans-serif;font-size:12.8px"><br style=3D"font-family:arial,sans=
--serif;font-size:12.8px"><span style=3D"font-family:arial,sans-serif;font-s=
-ize:12.8px"><b>What is Outreachy?</b></span><br style=3D"font-family:arial,=
-sans-serif;font-size:12.8px"><span style=3D"font-family:arial,sans-serif;fo=
-nt-size:12.8px">---------------------------</span><br style=3D"font-family:=
-arial,sans-serif;font-size:12.8px"><br style=3D"font-family:arial,sans-seri=
-f;font-size:12.8px"><span style=3D"font-family:arial,sans-serif;font-size:1=
-2.8px">The next application round for Outreachy internships starts February=
- 18</span><span style=3D"font-family:arial,sans-serif;font-size:12.8px">, 2=
-019 and ends March 26, 2019.</span><span style=3D"font-family:arial,sans-se=
-rif;font-size:12.8px">=C2=A0 Outreachy interns will be=C2=A0</span><span st=
-yle=3D"font-family:arial,sans-serif;font-size:12.8px">paid $5,500=C2=A0</sp=
-an><span style=3D"font-family:arial,sans-serif;font-size:12.8px">to work on=
- a full-time internship with an open source=C2=A0</span><span style=3D"font=
--family:arial,sans-serif;font-size:12.8px">mentor from May 20</span><span s=
-tyle=3D"font-family:arial,sans-serif;font-size:12.8px">, 2019 to August 20,=
- 2019. Interns will also be granted a=C2=A0</span><span style=3D"font-famil=
-y:arial,sans-serif;font-size:12.8px">$500 travel=C2=A0</span><span style=3D=
-"font-family:arial,sans-serif;font-size:12.8px">stipend to go to any confer=
-ence approved by their mentor=C2=A0</span><span style=3D"font-family:arial,=
-sans-serif;font-size:12.8px">that relates=C2=A0</span><span style=3D"font-f=
-amily:arial,sans-serif;font-size:12.8px">to their project.</span><div><br s=
-tyle=3D"font-family:arial,sans-serif;font-size:12.8px"><span style=3D"font-=
-family:arial,sans-serif;font-size:12.8px"><b>Who can apply?</b></span><br s=
-tyle=3D"font-family:arial,sans-serif;font-size:12.8px"><span style=3D"font-=
-family:arial,sans-serif;font-size:12.8px">-----------------------</span><br=
- style=3D"font-family:arial,sans-serif;font-size:12.8px"><br style=3D"font-=
-family:arial,sans-serif;font-size:12.8px"><span style=3D"font-family:arial,=
-sans-serif;font-size:12.8px">To qualify to apply for Outreachy, you MUST=C2=
-=A0</span><span style=3D"font-family:arial,sans-serif;font-size:12.8px">com=
-plete eligibility criteria here:=C2=A0</span><a href=3D"https://www.outreac=
-hy.org/apply/eligibility/" rel=3D"nofollow" style=3D"color:rgb(17,85,204);f=
-ont-family:arial,sans-serif;font-size:12.8px">https://www.outreachy.org/app=
-ly/eligibility/</a><span style=3D"font-family:arial,sans-serif;font-size:12=
-.8px">=C2=A0and contact the Outreachy=C2=A0</span><span style=3D"font-famil=
-y:arial,sans-serif;font-size:12.8px">organizers (</span><a href=3D"https://=
-www.outreachy.org/contact/organizers/" rel=3D"nofollow" style=3D"color:rgb(=
-17,85,204);font-family:arial,sans-serif;font-size:12.8px">https://www.outre=
-achy.org/contact/organizers/</a><span style=3D"font-family:arial,sans-serif=
-;font-size:12.8px">) if you will be in=C2=A0</span><span style=3D"font-fami=
-ly:arial,sans-serif;font-size:12.8px">school between </span><span style=3D"=
-font-family:arial,sans-serif;font-size:12.8px">May 20</span><span style=3D"=
-font-family:arial,sans-serif;font-size:12.8px">, 2019 to August 20, 2019</s=
-pan><span style=3D"font-family:arial,sans-serif;font-size:12.8px"></span><s=
-pan style=3D"font-family:arial,sans-serif;font-size:12.8px"> or</span><span=
- style=3D"font-family:arial,sans-serif;font-size:12.8px">=C2=A0have any=C2=
-=A0</span><span style=3D"font-family:arial,sans-serif;font-size:12.8px">que=
-stions about your eligibility.</span></div><div><br style=3D"font-family:ar=
-ial,sans-serif;font-size:12.8px"><span style=3D"font-family:arial,sans-seri=
-f;font-size:12.8px"><b>What Outreachy projects can you apply to?</b></span>=
-<br style=3D"font-family:arial,sans-serif;font-size:12.8px"><span style=3D"=
-font-family:arial,sans-serif;font-size:12.8px">----------------------------=
---</span><span style=3D"font-family:arial,sans-serif;font-size:12.8px">----=
----------------------------</span><br style=3D"font-family:arial,sans-serif=
-;font-size:12.8px"><br style=3D"font-family:arial,sans-serif;font-size:12.8=
-px"><span style=3D"font-family:arial,sans-serif;font-size:12.8px">There wil=
-l be several different open source projects participating=C2=A0</span><span=
- style=3D"font-family:arial,sans-serif;font-size:12.8px">in this round of O=
-utreachy. The full list can be found here:</span><br style=3D"font-family:a=
-rial,sans-serif;font-size:12.8px"><br style=3D"font-family:arial,sans-serif=
-;font-size:12.8px"><a href=3D"https://www.outreachy.org/communities/cfp/" r=
-el=3D"nofollow" style=3D"color:rgb(17,85,204);font-family:arial,sans-serif;=
-font-size:12.8px">https://www.outreachy.org/communities/cfp/</a><br style=
-=3D"font-family:arial,sans-serif;font-size:12.8px"><br style=3D"font-family=
-:arial,sans-serif;font-size:12.8px"><span style=3D"font-family:arial,sans-s=
-erif;font-size:12.8px">The Linux kernel expects to offer eight projects, wh=
-ich are already listed=C2=A0</span><span style=3D"font-family:arial,sans-se=
-rif;font-size:12.8px">on</span><span style=3D"font-family:arial,sans-serif;=
-font-size:12.8px">=C2=A0on Linux kernel=C2=A0</span><span style=3D"font-fam=
-ily:arial,sans-serif;font-size:12.8px">community page on Outreachy website =
-and will be visible to applicants only after they complete the eligibility =
-check.</span><br style=3D"font-family:arial,sans-serif;font-size:12.8px"><b=
-r style=3D"font-family:arial,sans-serif;font-size:12.8px"><span style=3D"fo=
-nt-family:arial,sans-serif;font-size:12.8px"><b>How do I apply to the Linux=
- kernel project via Outreachy&#39;s website?</b></span><br style=3D"font-fa=
-mily:arial,sans-serif;font-size:12.8px"><span style=3D"font-family:arial,sa=
-ns-serif;font-size:12.8px">------------------------------</span><span style=
-=3D"font-family:arial,sans-serif;font-size:12.8px">------------------------=
-------------------------------------------</span><br style=3D"font-family:a=
-rial,sans-serif;font-size:12.8px"><br><div>1. Fill out the eligibility chec=
-k form on the Outreachy website</div><div><br></div><div>2. Work on Linux k=
-ernel tutorial</div><div><br></div><div><span style=3D"font-family:arial,sa=
-ns-serif;font-size:12.8px">=C2=A0 =C2=A0 Basically, applicants will need to=
- walk through our tutorial for creating=C2=A0</span><span style=3D"font-fam=
-ily:arial,sans-serif;font-size:12.8px">their first Linux kernel patch:=C2=
-=A0</span><a href=3D"http://kernelnewbies.org/Outreachyfirstpatch" rel=3D"n=
-ofollow" style=3D"color:rgb(17,85,204);font-family:arial,sans-serif;font-si=
-ze:12.8px">http://kernelnewbies.org/Outreachyfirstpatch</a><br></div><div><=
-br></div><div><span style=3D"font-family:arial,sans-serif;font-size:12.8px"=
->=C2=A0 =C2=A0 It is not necessary to contact a mentor before starting the =
-tutorial.</span><br style=3D"font-family:arial,sans-serif;font-size:12.8px"=
-></div><div><br></div><div>3. Work on cleanup patches</div><div><br></div><=
-div><span style=3D"font-family:arial,sans-serif;font-size:12.8px">=C2=A0 =
-=C2=A0 =C2=A0As specified in our tutorial we require Outreachy applicants t=
-o first get=C2=A0</span><span style=3D"font-family:arial,sans-serif;font-si=
-ze:12.8px">accepted at least 10 Staging driver cleanup patches.=C2=A0</span=
-><br></div><div><br></div><div>4.
- Once your first patch is accepted, add that as a contribution for the=20
-project(s)you&#39;re interested in applying for. This will then allow you t=
-o
- submit an application. <b>Note that you&#39;ll need to apply for each proj=
-ect separately.</b></div><div><b><br></b></div><div>5. Once applicants have=
- completed working on 10 cleanup patches,=C2=A0<span style=3D"font-family:a=
-rial,sans-serif;font-size:12.8px">we=C2=A0</span><span style=3D"font-family=
-:arial,sans-serif;font-size:12.8px">encourage applicants to move on to comp=
-lete some small tasks outlined by the=C2=A0</span><span style=3D"font-famil=
-y:arial,sans-serif;font-size:12.8px">mentors. It=E2=80=99s preferable to CC=
- the mentor when you are=C2=A0 working on the=C2=A0</span><span style=3D"fo=
-nt-family:arial,sans-serif;font-size:12.8px">task so that they don=E2=80=99=
-t miss it. Small tasks for the projects can be found in the project detail =
-here:</span></div><div><span style=3D"font-family:arial,sans-serif;font-siz=
-e:12.8px"><br></span></div><div><font face=3D"arial, sans-serif"><span styl=
-e=3D"font-size:12.8px">=C2=A0 =C2=A0 <a href=3D"https://www.outreachy.org/2=
-018-may-august/communities/linux-kernel/">https://www.outreachy.org/2018-ma=
-y-august/communities/linux-kernel/</a></span></font></div><div><font face=
-=3D"arial, sans-serif"><span style=3D"font-size:12.8px">=C2=A0 =C2=A0=C2=A0=
-</span></font></div><div>=C2=A0 =C2=A0 <b>Note
- that you&#39;ll be able to see the detailed information about projects on=
-=20
-Outreachy&#39;s website only after completing eligibility form check.</b></=
-div><div><br></div><div>6. Keep editing your <b>&#39;project contribution&#=
-39;</b> on Outreachy&#39;s website based on your accepted patches links and=
- project specific completion of tasks</div><div><br></div><div>7. Make sure=
- to add your project preferences under the question <b>&#39;Community-speci=
-fic Questions&#39;</b> in the application</div><br style=3D"font-family:ari=
-al,sans-serif;font-size:12.8px"><span style=3D"font-family:arial,sans-serif=
-;font-size:12.8px">Applicants should also join the #outreachy IRC channel o=
-n=C2=A0</span><a href=3D"http://irc.gnome.org/" rel=3D"nofollow" style=3D"c=
-olor:rgb(17,85,204);font-family:arial,sans-serif;font-size:12.8px">irc.gnom=
-e.org</a><span style=3D"font-family:arial,sans-serif;font-size:12.8px">,=C2=
-=A0</span><span style=3D"font-family:arial,sans-serif;font-size:12.8px">and=
- the #kernel-outreachy channel on=C2=A0</span><a href=3D"http://irc.oftc.ne=
-t/" rel=3D"nofollow" style=3D"color:rgb(17,85,204);font-family:arial,sans-s=
-erif;font-size:12.8px">irc.oftc.net</a><span style=3D"font-family:arial,san=
-s-serif;font-size:12.8px">.=C2=A0 If you&#39;re having trouble=C2=A0</span>=
-<span style=3D"font-family:arial,sans-serif;font-size:12.8px">with IRC, ple=
-ase ask for help on this mailing list.</span><br style=3D"font-family:arial=
-,sans-serif;font-size:12.8px"><br style=3D"font-family:arial,sans-serif;fon=
-t-size:12.8px"><span style=3D"font-family:arial,sans-serif;font-size:12.8px=
-">If you=E2=80=99ve applied in the Outreachy before, you=E2=80=99re still r=
-equired to send few=C2=A0</span><span style=3D"font-family:arial,sans-serif=
-;font-size:12.8px">staging driver cleanup patches to re-familiarize yoursel=
-f with the process=C2=A0</span><span style=3D"font-family:arial,sans-serif;=
-font-size:12.8px">before you start to work on tasks.</span><br style=3D"fon=
-t-family:arial,sans-serif;font-size:12.8px"><br style=3D"font-family:arial,=
-sans-serif;font-size:12.8px"><span style=3D"font-family:arial,sans-serif;fo=
-nt-size:12.8px">There is a tips section at the end of the tutorial to outli=
-ne what=C2=A0</span><span style=3D"font-family:arial,sans-serif;font-size:1=
-2.8px">behaviors we look for in potential Outreachy interns. I hope this wi=
-ll=C2=A0</span><span style=3D"font-family:arial,sans-serif;font-size:12.8px=
-">give more insight into our selection process.</span><br style=3D"font-fam=
-ily:arial,sans-serif;font-size:12.8px"><br style=3D"font-family:arial,sans-=
-serif;font-size:12.8px"><span style=3D"font-family:arial,sans-serif;font-si=
-ze:12.8px">All the best!<br></span><br>---<div>Shraddha Barke &amp; Vaishal=
-i Thakkar <br>Outreachy Linux Kernel Cooordinators</div></div></div><br cle=
-ar=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-smart=
-mail=3D"gmail_signature"><div dir=3D"ltr">Shraddha<br></div></div></div>
-
---0000000000007c4e59058211dc9e--
 
