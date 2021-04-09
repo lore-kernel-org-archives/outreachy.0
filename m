@@ -1,121 +1,125 @@
-X-GM-THRID: 6670798321118871552
-X-Received: by 2002:a0c:9acf:: with SMTP id k15mr764226qvf.22.1553166266630;
-        Thu, 21 Mar 2019 04:04:26 -0700 (PDT)
+X-GM-THRID: 6948788378746748928
+X-Received: by 2002:a17:90b:4a07:: with SMTP id kk7mr13533073pjb.165.1617971069266;
+        Fri, 09 Apr 2021 05:24:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:444:: with SMTP id 65ls2294543qke.1.gmail; Thu, 21 Mar
- 2019 04:04:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzQO79A3BYjYndCKe3M9f4IpKB/eGrEIYkXD1OTHqTBfeLqbUXwd21P6ivqB1E9Ig6X9yD8
-X-Received: by 2002:a37:b685:: with SMTP id g127mr754303qkf.28.1553166265943;
-        Thu, 21 Mar 2019 04:04:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553166265; cv=none;
+Received: by 2002:a17:902:c595:: with SMTP id p21ls4042616plx.6.gmail; Fri, 09
+ Apr 2021 05:24:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxawRTqAsP/YgXMVVrKm3ymffWLIKm3/hfKVcZOEDf+Jnhlhwp6Cj5Oy1aD6Z291VfCRWsR
+X-Received: by 2002:a17:902:d718:b029:e6:77c9:faeb with SMTP id w24-20020a170902d718b02900e677c9faebmr13274177ply.30.1617971068230;
+        Fri, 09 Apr 2021 05:24:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617971068; cv=none;
         d=google.com; s=arc-20160816;
-        b=ktiAu3o8thwqG03Uica5FcKAXWG6fgrFJwb0QZNvCDEP4f/wMo+d60zEGsT9h4SGHd
-         Z6GBCCVSLgBvPIIVPO85H74vxPfM1OgyE3Xsj4PDCGcYymgEM86H6qwrYTGp3YWyhta1
-         djIG3xpGW5HSIq1NzGlDupCuenW7A2IrUdl4lAgLRLy2yEyNTgvkSo2jMxdLe1JFItSk
-         ZiGShuEzy3ucLWV1Y0QJA3W2YVpPOp4hiIG0QGWvCUx5bkW1vYsXrM/BmFsfU900qjX4
-         GxbZAKr0qiZCrJF0Yz53JB0D+AG3LWFN3ey9TxMEUTnEln6YaVTxLHKAiG2zbjczY+iz
-         5xvA==
+        b=uvQ7nBpJf3Ay06+exMNBejrWqYSM/sGY5ssOKPpic3EP2ARWQNhqqHKelwWYPEU1f2
+         Svdg7RrjMCKeMuQJGekV7rolj2apFNp8Sxs0qt++WEUHI7/OJf3l29X5x3x6J5hWqM6W
+         Pqw4DfMHaAlxr0Ih3ZPmWQTeM8f5kLCFR5h5QD1BNCIuGl2eZYELj/EelCCGEFKKdORT
+         +RYTc/y5z3rxpRGn1YrBQZJIlRwNaG+oG9DUOZPyLqdEJJ6N5UtKiDnnJQqrRmCHWjfn
+         THNG2LpurHnw9Zp8DUVcSK2DGk/5OymNKSZL3HkrL7GKqt4H7ob8PcJHFi7ExWFhWtjR
+         ANYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=jYAQ+mxmp8Tc2CqL+7nzZ2DAk42tcrakJmk3rAMtz8g=;
-        b=sd+a4uZM/cjcuZuAwvheTeI0xLzkDtPXdHfZBFmN9PUY2i0HRF4ov1Mi9EFTtyBb1g
-         poNMudtt9sxfoeduLzzVOgDtcpLwqUUFlZA/CSnTO16skuwh6xP7xhLWePvtg5CLht1X
-         04scQ+tQp6WTz2QjKewGvhQPsEKiR31ij5hGS4+1xbtXBIlMbcFzfRWjgQgJeGAmGYh6
-         y6NYH5IaTTQWskcO8VnZIgFyFEgRP0gWRyTUWHbQOGKhYqDz5S3AGMQE68cSNQT5XtE2
-         HqMx9WPiSkeiddpq9zBMShtJ/P199PGsaGi9Ot/MRFfIxm9cHx6HyKhjJBAjUJFa/++v
-         Ecfg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=FFyKVQiiCs5puSz3WES2iYZgay4qT5NEj+d2mqioyWY=;
+        b=Ano+fal8VjmBA4koZlLZVVfceX2GmL9Ls/KolUQTfaoSSzAzMHbYOlrtouI4EJ41Jm
+         ZT+8K6jhwDvdkZzpTTMQ8Tp4TvwHK+aDhVVV/rIxWWYAyI8doB6nvQjzcxaH6P6uRW//
+         +3bUjdyumlGA9+huV8IANi+bTQlJZKP6+U8A3Y+bWWVbHX4vqjyIEICDzMeDocQGc2/W
+         SFqeWGhmVQY3Jg+kduMY7g82oRV3e2OnnEHvqtQd5u+NVND3n6f4pUpYY+kRY5Ze8GF+
+         2coxHAxBFCLZZfZx2+GJCSb3+IOVNsiwPyNiSM1Y03RqSWj73lHGPsxfEqBv8xXBac5s
+         2Hfw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fc1pC4Sw;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z3neBw2Y;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id o59si295444qte.3.2019.03.21.04.04.25
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qk1-x72f.google.com (mail-qk1-x72f.google.com. [2607:f8b0:4864:20::72f])
+        by gmr-mx.google.com with ESMTPS id r2si169916pjd.1.2021.04.09.05.24.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 04:04:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 05:24:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) client-ip=2607:f8b0:4864:20::72f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fc1pC4Sw;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z3neBw2Y;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x541.google.com with SMTP id v12so3984001pgq.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 04:04:25 -0700 (PDT)
+Received: by mail-qk1-x72f.google.com with SMTP id b139so166109qkc.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 05:24:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=jYAQ+mxmp8Tc2CqL+7nzZ2DAk42tcrakJmk3rAMtz8g=;
-        b=fc1pC4Sw+EhG4uMIWBj5ARxIHUPRJi6YO0teAajAV8NJvgEkC6hesLHIs5ByiO+uRy
-         2pu9wMcFDaXdma6e6/YE1UqcWLS0zrZSeVNpLVtV68ZxBt7uBN30fPwEk3Jtu3jfmTKE
-         LfSqHk68F8ogqSglMh6t9Al/2ZXXXxXE5ouGf2dMSc577P7qL+ysoePAnOBIHKG8TKWE
-         bEtYuZJG1yHzCmv+q75NVQZjiP8DYZTat0KVbai/53/Mf2W5s5JtnGRoN7e9tVLC2/qF
-         liFEwmodUmXpYLJzf0X8LYb8jJHjJzX22uDsMS6MIeea4w+MB9Uj9se21fSZhuL5HUls
-         SvMA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=FFyKVQiiCs5puSz3WES2iYZgay4qT5NEj+d2mqioyWY=;
+        b=Z3neBw2YL7iaEMhoqCq7Li4M/YjKFuEfckanqHotLbExe4Q2djjXb2dGWlQqaW+c8r
+         CWvZOzcCZy/G/+pXQwODwqD88jKLpOvotARANlWv4dzd4AI4RaW2K5cTrui/rm3MoQ7z
+         KO1kHhuWblajOaR/KW1xCeGbAA6mk9OIdWNIfXBzm0q1R4t/16OJSUmA/fGdO+Bn9OqS
+         kXkRLc1nxXJOgBllIlegiWn3VYcwu71Bam+eRczRJEB9Epojo0a4z+I+GAvAW7zzz9Nq
+         jj1K/ZDHyp5OxRXgolrvGk+QuOI2m451xzAiaQ65vYZHzZo7D5yBbhbxqTgIj3EbyB04
+         o1rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=jYAQ+mxmp8Tc2CqL+7nzZ2DAk42tcrakJmk3rAMtz8g=;
-        b=qcOpnfl1zZW7VoYjvVdLQBDssZWgO/0eqfOnU21Qrv35eAQkUfhpdlIjrgnDuu4B9V
-         R3AAvD6wA/bb1Bm74CNJhlHqATM71jTx8z+2u7Z2nxBH/i5695l9GT5HD9cHUZGqqpuz
-         rg3N/1gcM4BBT6yr5g9B4yZfvRN4Pn9viEbJUxaENYibl7T2mDjREAxPPZt3tPxJQ3/H
-         NMTP0ThUoERniYxtLp9EC9N6mlcT2CGNaXRZCNegt2LWie9kLNz7QdSSgJHUFjImx2LE
-         bAI55EwEoHZP/xjwkk8YTqNK/T67amiK4Piw7/+LVeFEMBptRf8ggEZZ8WPcM+K12UBF
-         CFMg==
-X-Gm-Message-State: APjAAAVcPkc/06bMWSbNpyWJR8DSgnpLvFUVLC/r82Vgne/NBMmfZwKi
-	H4cSvTRv44ZheVUoKJrtO+rSres1
-X-Received: by 2002:a17:902:142:: with SMTP id 60mr2881027plb.191.1553166264812;
-        Thu, 21 Mar 2019 04:04:24 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([157.33.215.204])
-        by smtp.gmail.com with ESMTPSA id 8sm13698728pfs.50.2019.03.21.04.04.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 04:04:23 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH 1/3] [Outreachy kernel] staging: sm750fb: avoid camelcase function names
-Date: Thu, 21 Mar 2019 16:34:09 +0530
-Message-Id: <1553166249-12004-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=FFyKVQiiCs5puSz3WES2iYZgay4qT5NEj+d2mqioyWY=;
+        b=iO/ZBFSKsXheGs+xaUFScYveLieA+A7xJ57dlljv7hSBA6lXAMqXc4XOajddRgoLfO
+         AZQupKtbc6NC/Tcv6hCVWO6vzbCEA2JeXVbgK9gd7LRc2tvt6HSWvdq5Z87UzX+vcYnL
+         bLzTttRtSiO8orPwcdsHxMH1ukfbpte2GszPfkLf6dYD1Ch4rSl1os6bALDlxyOF/EOm
+         i1Z/VDW6f3bU6qbUW8g4DpZuLpT5oKJpwhbI7XaNEGdSVic0LBpy3uQiRsM8l3PXL+IK
+         h/ftyynOouVclCFhDrMXAElkO0V+v9EaDtXLkfo3KVtZdNGSwANQiKe9hw+RlM38wStK
+         Rirw==
+X-Gm-Message-State: AOAM533VJQJq+LN3iWzSlwWRQv2dEp2jhlIgcGC0RLxGBS5LwoiJVeAn
+	FArOzZVzEZMqEa+8rvqf/k4=
+X-Received: by 2002:a37:93c2:: with SMTP id v185mr5189190qkd.179.1617971067966;
+        Fri, 09 Apr 2021 05:24:27 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from focaruja ([2001:1284:f013:b099:8056:1dc0:5a27:acd7])
+        by smtp.gmail.com with ESMTPSA id k4sm1610193qke.13.2021.04.09.05.24.27
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Fri, 09 Apr 2021 05:24:27 -0700 (PDT)
+Date: Fri, 9 Apr 2021 09:24:25 -0300
+From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+To: Ezequiel Garcia <ezequiel@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	alinesantanacordeiro@gmail.com
+Subject: [Outreachy kernel][PATCH 2/2 v3] staging: media: hantro: Align line
+ break to the open parenthesis in file hantro_mpeg2.c
+Message-ID: <790e0b3def9e7bc747122c9b6f336b857cd05d11.1617970550.git.alinesantanacordeiro@gmail.com>
+References: <cover.1617970550.git.alinesantanacordeiro@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1617970550.git.alinesantanacordeiro@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Eliminate camelcase function names to fix the style issue – 'avoid
-camelcase'.
+Aligns line break with the remaining function arguments
+to the open parenthesis. Issue found by checkpatch.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
 ---
- drivers/staging/sm750fb/ddk750_mode.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes since v2:
+ - Rename the commit messages properly
+ 
+ Changes since v1:
+  - Send patchset without the cover-letter
+   - Rename the commit messages wrongly in the email subject only
+   
+ drivers/staging/media/hantro/hantro_mpeg2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-index 1256b13..5e35fec 100644
---- a/drivers/staging/sm750fb/ddk750_mode.c
-+++ b/drivers/staging/sm750fb/ddk750_mode.c
-@@ -13,8 +13,8 @@
-  * HW only supports 7 predefined pixel clocks, and clock select is
-  * in bit 29:27 of Display Control register.
-  */
--static unsigned long displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
--						  unsigned long dispcontrol)
-+static unsigned long display_control_adjust_SM750LE(struct mode_parameter *pModeParam,
-+						    unsigned long dispcontrol)
+diff --git a/drivers/staging/media/hantro/hantro_mpeg2.c b/drivers/staging/media/hantro/hantro_mpeg2.c
+index 1d334e6..53a99a9 100644
+--- a/drivers/staging/media/hantro/hantro_mpeg2.c
++++ b/drivers/staging/media/hantro/hantro_mpeg2.c
+@@ -19,7 +19,7 @@ static const u8 zigzag[64] = {
+ };
+ 
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+-	const struct v4l2_ctrl_mpeg2_quantization *ctrl)
++				  const struct v4l2_ctrl_mpeg2_quantization *ctrl)
  {
- 	unsigned long x, y;
+ 	int i, n;
  
-@@ -124,7 +124,7 @@ static int program_mode_registers(struct mode_parameter *pModeParam,
- 			tmp |= DISPLAY_CTRL_HSYNC_PHASE;
- 
- 		if (sm750_get_chip_type() == SM750LE) {
--			displayControlAdjust_SM750LE(pModeParam, tmp);
-+			display_control_adjust_SM750LE(pModeParam, tmp);
- 		} else {
- 			reg = peek32(CRT_DISPLAY_CTRL) &
- 				~(DISPLAY_CTRL_VSYNC_PHASE |
 -- 
 2.7.4
 
