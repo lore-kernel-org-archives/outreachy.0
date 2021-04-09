@@ -1,147 +1,154 @@
 X-GM-THRID: 6948889025177452544
-X-Received: by 2002:a05:6402:8:: with SMTP id d8mr15879426edu.368.1617953019999;
-        Fri, 09 Apr 2021 00:23:39 -0700 (PDT)
+X-Received: by 2002:a05:6512:110d:: with SMTP id l13mr683558lfg.612.1617951651272;
+        Fri, 09 Apr 2021 00:00:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:86c9:: with SMTP id j9ls4149172ejy.10.gmail; Fri, 09
- Apr 2021 00:23:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSEZyKNvMqzUhgtqug0GxEYCcEDNw3ORX/CO1mcYgDeWx1vaif/PERLnpqsVKqyKeAc9Xc
-X-Received: by 2002:a17:907:3f20:: with SMTP id hq32mr7634595ejc.226.1617953018504;
-        Fri, 09 Apr 2021 00:23:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617953018; cv=none;
+Received: by 2002:a2e:a409:: with SMTP id p9ls1893471ljn.0.gmail; Fri, 09 Apr
+ 2021 00:00:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2ODR8kX73MV2eOCx0Nv46FqDCcbtf4tHeToxsiXBYFCHS1J2bwc5P+AV7+dSPIJm+iPw0
+X-Received: by 2002:a2e:978b:: with SMTP id y11mr8267116lji.452.1617951649354;
+        Fri, 09 Apr 2021 00:00:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617951649; cv=none;
         d=google.com; s=arc-20160816;
-        b=nVUpr4qes7RjAsw7ubTc4544ES2zh/A4h9MDjoa13pbV6MelyOCNmmON1mTJYmGUM2
-         Pb7G7N2d/qSbRCis6pwN+gX8d83Edn9DeAXWwfZdQbq+4o+WVichwSYoPPs8H9UKGLWU
-         wrQqHdUf7S1dxTbpPvpLdV2y9RCmtxKr5zUe57bwdgcHzf+W/GSRXB7HS29WQv1j8Ffq
-         /x7yw0B5rHwEk2EsEch863munAoA0CNPgxTkJIhTLQx3ZkP7WC5qXJ5QwdzPMip72vNU
-         FjvjI++mh54+X1FW2atriG6NqNBEj+wvLKv0Eva7TZRHZ6bNElFKOzQ2PPiFRGr4iaTC
-         D3/w==
+        b=F5cXzmGDP6FU8TxPEavbP5HY0vZkrYboyLR5Oz8n+qdbI1DLIGaxVHPRPvTftoKkoG
+         J7SP9WQVEFb5RD4Ya6wQv654HowD3JM82WyyaS3u1DevAYrBCRl2L+zbhzd1bEbpub8h
+         cZF4sA+ExRfoc2xJn2GrHDN4EOhcdeGJ4aoKNJghZarvUscph7eXkMbJ3RsHCfYAi0Su
+         mNPsVjVJMz/3GVWr1do6GgLu1BcM6at0X+jTQenSMxst4VVhsSJpuEmXPPY3VwfDNDIa
+         41cLiJypU3soOeK8T0+lpjN93jlfzAZRFaxGWrpoT+zvSuk1imBy8AXdN8AD4MCyZTsc
+         wIng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=APMETB3zEpAOU0Fhyt/OJ+787Q+BXlzWzrvJwZIggc4=;
-        b=z3cVdL+wv8qeY7U3iZ1v2T6bTH+Je8JhopQg013ak7E37smEOMFDc08c0GX6r1VRrs
-         hHCF+M3RAinZU4s+YzBcUH6U3xA7CfqjeJ+LGj76juwar3aSPr4z1OE5ONoturA3gecN
-         bBiUIkzDQZCsKW+F5L1j93A5+RK5OiFvgm1F8+uR5cx5dFSlvh50hAznsukLRfbyeVYr
-         JapqlbyfqgvR66reshd1uYCW1ICC+b8mw504ggYl1PJPUk/jsVISgWYmUix0IUC0k0eJ
-         8HdR45S3d8yxt8wB1ZqnMg2BHLZp9Y+5YozEohZe+ad/6d1721hSswVU4/ITM7T53gu0
-         XjYg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=86RgmL+k2f+oAmuXlaMKH0v99LxbS7lgmtJweUgAkF0=;
+        b=uWQMkCtQrUEeOSPt3uQpUux8+SnEhdFxGbIJeDVYUsikY3/z8swtgFZLrFEA+Qiq+p
+         Ql9HNvwxUsyuSk0v5VE3Ypg4VIwlfuibhcSVDUFNWmCPYM3TiP5nVm0SEyFFPHyh9xvP
+         k44dHiYs8u7gyWKIl1yfOMklD4DFovo0atOvqnqvHKcx/iyphlzLF4h7h9tL6Fs99tIb
+         5ZEWwTI15lWXHrp3gwRF7rdSXpR81P77QbKiirqVetWCgvkma/UEvd809XX012NgyorF
+         lDG4kE37SxGzoka5F0PA4JMJy/rnoBZlHTvh/IFA4uTftgAROMhasf4d9XETMa1KD25b
+         8euQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=N5ap1onb;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb3-smtp-cloud8.xs4all.net (lb3-smtp-cloud8.xs4all.net. [194.109.24.29])
-        by gmr-mx.google.com with ESMTPS id f23si109237ejc.1.2021.04.09.00.23.38
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z2si118153ljm.0.2021.04.09.00.00.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Apr 2021 00:23:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) client-ip=194.109.24.29;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Apr 2021 00:00:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=N5ap1onb;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.29 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud8.xs4all.net with ESMTPA
-	id UlUBlYkTxgIC3UlUFlBLws; Fri, 09 Apr 2021 09:23:38 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1617953018; bh=APMETB3zEpAOU0Fhyt/OJ+787Q+BXlzWzrvJwZIggc4=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=N5ap1onb6j7+Tx4jnvefbPQ4XZO6dcDfKA6Kg3aiUFMbmUlU2XJCkUVxI7fG5tuz7
-	 MjAjKLL65r0ZN0B+Mak7LFOGTExr7X4jjBtWTt2dUH78W8dslnG8cj3uC26Qc7VYDz
-	 GDodWjMGFW3bwUaKQByvTw+3ITI5zY8EqJxubjt8a+8IvPVYhC7lE5GddyhmoS4qzU
-	 /NrJyLrt0xDftUF2zVYym3QgG4KSUAhyRQXvcDE89cNYtWocCacZb7HmwrbBcEMqu6
-	 q+ykCImDfWJywMRmofDN/dYV1VJxQK+nqvXSDhq3IdEB7Jc9KBGyGrvSFw08t5IsgE
-	 +L3cIngH8UolQ==
-Subject: Re: [PATCH 1/2] media: zoran: add spaces around '<<'
-To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
- mchehab@kernel.org, gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
- mitali_s@me.iitr.ac.in
-References: <cover.1617912177.git.mitaliborkar810@gmail.com>
- <8e8ac690d97478f7cbb9b91d46ef7a95e4444e5f.1617912177.git.mitaliborkar810@gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <f196d8ff-e8bf-360e-ee7b-cd2dcafd9742@xs4all.nl>
-Date: Fri, 9 Apr 2021 09:23:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AaZky869hf89ZhSeqzB1uk+A3I+orLtY04lQ7?=
+ =?us-ascii?q?vn1ZYxpTb8CeioSKlPMUyRf7hF8qKRQdsPqHP7SNRm6ZyI5t7eAqTNWfdSTvpW?=
+ =?us-ascii?q?fAFu9fxKT4xTmIIUHD385bkZxtaq1vTOD3ZGIK7vrSxCmdP5IezMKc8Kau7N2/?=
+ =?us-ascii?q?815IQRtxY69tqydVYzz1LmRMSANLBYU0GfOnj6J6jgGtdngNYsOwCmNtZYX+ju?=
+ =?us-ascii?q?fWn5HrawNuPXUawTSJ5AnD1JfHCRSCmj8RXzRTqI1CzVT4?=
+X-IronPort-AV: E=Sophos;i="5.82,208,1613430000"; 
+   d="scan'208";a="502341671"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Apr 2021 09:00:48 +0200
+Date: Fri, 9 Apr 2021 09:00:48 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [Outreachy kernel] [PATCH 2/2] media: zoran: replace bit shifts
+ by BIT() macro
+In-Reply-To: <YG+OibRNRmILe8nQ@kali>
+Message-ID: <alpine.DEB.2.22.394.2104090900350.2852@hadrien>
+References: <cover.1617912177.git.mitaliborkar810@gmail.com> <ac8ec2b70ac2cc7c541c05a1d9a8db1fe79df793.1617912177.git.mitaliborkar810@gmail.com> <alpine.DEB.2.22.394.2104082314090.21785@hadrien> <YG95l9b++d+RFrDa@kali> <alpine.DEB.2.22.394.2104090009220.21785@hadrien>
+ <YG+OibRNRmILe8nQ@kali>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-In-Reply-To: <8e8ac690d97478f7cbb9b91d46ef7a95e4444e5f.1617912177.git.mitaliborkar810@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfFSut/hMT23athPR8Gw35GGx/7yXe9fJ57927job9mtszK0c4rZKiinzjFbtd3e44QBA4nA09Oqpr1SAofOFrNl4o1NKVo4d+FgCAMkv5hY4BZO8Pkkz
- epx9AWKyNxlz0P/GzrQx5c5roQHyX8uHpC2D3x2C+UiSELaiP26oprS2JTs4qKKLmiAlieX/A5XELkDe8tIXflQvKj8c/zJZnAMja4qRkVo1EZs4jEuHsg6r
- OW4abAbqpNqN9Yg5Yjw+BzhX7p3ZV3eGxRG+e18+zqAsGK+t0CdJONWL0em9CVMOPSiZCNx3zfto1Kn+/gYzaWNnrq7o/Vm8TVdq1mEtXd4kVVdKAVcXEX6M
- T9Liy9eCfmp2QB3s3FTzYGUbiquD/4wFhMpSIdCevvEm13DgXndvgbghO4lpFAz1jEyoJqQb62UUpamtKhL+qM/Vy+V4Jeb99pNhsBf70uBVp9fDyXs4CYpM
- Dt+v5t40l6tIuvVDgOiVv2E7/r87EaRZg+bn6g==
+Content-Type: text/plain; charset=US-ASCII
 
-Hi Mitali,
 
-On 08/04/2021 22:38, Mitali Borkar wrote:
-> Added spaces around '<<' operator to improve readability and meet linux
-> kernel coding style.
-> Reported by checkpatch
-> 
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
->  drivers/staging/media/zoran/zr36057.h | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
-> index 71b651add35a..a2a75fd9f535 100644
-> --- a/drivers/staging/media/zoran/zr36057.h
-> +++ b/drivers/staging/media/zoran/zr36057.h
-> @@ -30,13 +30,13 @@
->  #define ZR36057_VFESPFR_HOR_DCM          14
->  #define ZR36057_VFESPFR_VER_DCM          8
->  #define ZR36057_VFESPFR_DISP_MODE        6
-> -#define ZR36057_VFESPFR_YUV422          (0<<3)
-> -#define ZR36057_VFESPFR_RGB888          (1<<3)
-> -#define ZR36057_VFESPFR_RGB565          (2<<3)
-> -#define ZR36057_VFESPFR_RGB555          (3<<3)
-> -#define ZR36057_VFESPFR_ERR_DIF          (1<<2)
-> -#define ZR36057_VFESPFR_PACK24          (1<<1)
-> -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1<<0)
-> +#define ZR36057_VFESPFR_YUV422          (0 << 3)
-> +#define ZR36057_VFESPFR_RGB888          (1 << 3)
-> +#define ZR36057_VFESPFR_RGB565          (2 << 3)
-> +#define ZR36057_VFESPFR_RGB555          (3 << 3)
-> +#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
-> +#define ZR36057_VFESPFR_PACK24          (1 << 1)
-> +#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
->  
->  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
->  
-> 
 
-I looked at that header and it is very messy.
+On Fri, 9 Apr 2021, Mitali Borkar wrote:
 
-Can you make two new patches? The first aligns every nicely, e.g. this:
+> On Fri, Apr 09, 2021 at 12:10:06AM +0200, Julia Lawall wrote:
+> >
+> >
+> > On Fri, 9 Apr 2021, Mitali Borkar wrote:
+> >
+> > > On Thu, Apr 08, 2021 at 11:15:07PM +0200, Julia Lawall wrote:
+> > > >
+> > > >
+> > > > On Fri, 9 Apr 2021, Mitali Borkar wrote:
+> > > >
+> > > > > Added #include <linux/bitops.h> and replaced bit shifts by BIT() macro.
+> > > > > This BIT() macro from linux/bitops.h is used to define ZR36057_VFESPFR_* bitmasks.
+> > > > > Use of macro is better and neater. It maintains consistency.
+> > > > > Reported by checkpatch.
+> > > > >
+> > > > > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > > > > ---
+> > > > >  drivers/staging/media/zoran/zr36057.h | 10 ++++++----
+> > > > >  1 file changed, 6 insertions(+), 4 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
+> > > > > index a2a75fd9f535..93075459f910 100644
+> > > > > --- a/drivers/staging/media/zoran/zr36057.h
+> > > > > +++ b/drivers/staging/media/zoran/zr36057.h
+> > > > > @@ -8,6 +8,8 @@
+> > > > >  #ifndef _ZR36057_H_
+> > > > >  #define _ZR36057_H_
+> > > > >
+> > > > > +#include <linux/bitops.h>
+> > > > > +
+> > > > >  /* Zoran ZR36057 registers */
+> > > > >
+> > > > >  #define ZR36057_VFEHCR          0x000	/* Video Front End, Horizontal Configuration Register */
+> > > > > @@ -31,12 +33,12 @@
+> > > > >  #define ZR36057_VFESPFR_VER_DCM          8
+> > > > >  #define ZR36057_VFESPFR_DISP_MODE        6
+> > > > >  #define ZR36057_VFESPFR_YUV422          (0 << 3)
+> > > > > -#define ZR36057_VFESPFR_RGB888          (1 << 3)
+> > > > > +#define ZR36057_VFESPFR_RGB888          BIT(3)
+> > > >
+> > > > Uniformity is generally considered to be more important than using BIT.
+> > > > Having only a few constants defined using BIT is a bit strange.
+> > > >
+> > > Okay Ma'am. Can you please tell me on how to proceed now? I am not sure
+> > > how to proceed.
+> >
+> > I think that this code should just be left as is.
+> >
+> > Checkpatch makes suggestions.  Its suggestions are not always appropriate
+> > for the context.
+> >
+> Okay Ma'am. This means I should not do any changes now. Do I need to do
+> something in this patch now? Or move onto next one?
 
-#define ZR36057_VFEHCR          0x000   /* Video Front End, Horizontal Configuration Register */
-#define ZR36057_VFEHCR_HS_POL             BIT(30)
-#define ZR36057_VFEHCR_H_START           10
-#define ZR36057_VFEHCR_H_END            0
-#define ZR36057_VFEHCR_HMASK            0x3ff
+You can move on.
 
-should become:
+julia
 
-/* Video Front End, Horizontal Configuration Register */
-#define ZR36057_VFEHCR			0x000
-#define ZR36057_VFEHCR_HS_POL		BIT(30)
-#define ZR36057_VFEHCR_H_START		10
-#define ZR36057_VFEHCR_H_END		0
-#define ZR36057_VFEHCR_HMASK		0x3ff
-
-Same for all the other register blocks. Use tabs to do the alignment
-instead of spaces, as is currently the case.
-
-The second patch can replace the (0<<3) etc. to BIT(0).
-
-That would be a nice cleanup of this rather messy header.
-
-Thanks!
-
-	Hans
+>
+> > julia
+> >
+> > >
+> > > > julia
+> > > >
+> > > > >  #define ZR36057_VFESPFR_RGB565          (2 << 3)
+> > > > >  #define ZR36057_VFESPFR_RGB555          (3 << 3)
+> > > > > -#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
+> > > > > -#define ZR36057_VFESPFR_PACK24          (1 << 1)
+> > > > > -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
+> > > > > +#define ZR36057_VFESPFR_ERR_DIF          BIT(2)
+> > > > > +#define ZR36057_VFESPFR_PACK24          BIT(1)
+> > > > > +#define ZR36057_VFESPFR_LITTLE_ENDIAN    BIT(0)
+> > > > >
+> > > > >  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
+> > > > >
+> > > > > --
+> > > > > 2.30.2
+> > > > >
+> > > > > --
+> > > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/ac8ec2b70ac2cc7c541c05a1d9a8db1fe79df793.1617912177.git.mitaliborkar810%40gmail.com.
+> > > > >
+> > >
+>
 
