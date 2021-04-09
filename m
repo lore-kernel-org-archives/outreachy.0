@@ -1,102 +1,156 @@
-X-GM-THRID: 6751912583325810688
-X-Received: by 2002:a92:6a04:: with SMTP id f4mr7860725ilc.9.1572052152022;
-        Fri, 25 Oct 2019 18:09:12 -0700 (PDT)
+X-GM-THRID: 6948889025177452544
+X-Received: by 2002:aa7:990a:0:b029:244:f35f:2b8e with SMTP id z10-20020aa7990a0000b0290244f35f2b8emr8624619pff.73.1618005793221;
+        Fri, 09 Apr 2021 15:03:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:385a:: with SMTP id f87ls2040888ila.14.gmail; Fri, 25
- Oct 2019 18:09:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzaCn9Bdg/GPPjkwrWNU0E5hHjQkL3mYP7YJsKIPfHNBweirLGKCR+TijIcOIQe3kCIbABV
-X-Received: by 2002:a92:9f5d:: with SMTP id u90mr8025614ili.13.1572052150764;
-        Fri, 25 Oct 2019 18:09:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1572052150; cv=none;
+Received: by 2002:a17:902:c595:: with SMTP id p21ls4636388plx.6.gmail; Fri, 09
+ Apr 2021 15:03:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXyMeZDEuD/LelIZucrrvRgl08pdCpJsD/cUuAq6qpEyv2KiKT8zg5iIb9lumr2ziuMWWy
+X-Received: by 2002:a17:903:31c7:b029:e9:2aaa:b2d9 with SMTP id v7-20020a17090331c7b02900e92aaab2d9mr14726612ple.12.1618005792026;
+        Fri, 09 Apr 2021 15:03:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618005792; cv=none;
         d=google.com; s=arc-20160816;
-        b=VrQIcPpZp4xHxVgS8pBUUUt87Mb6jiCGWKazqPcUa1djv9apM0kYTROtHdjU8u2vPE
-         aBPd15/7a7SrmiWJAUsDwiDGUGivy94tt2cAdQK0jlWgUWGha8xmFaWoL2ptzwCJAnLe
-         lZBXpDlSSVqDHWkJ9psr/URREmxob8Tu2iw5UPdYA5Lc7DmJwIFZKAOoyx36DTbpe2eC
-         i/lFFjt/cJXSJ+nOFVP3dUYqLJQ+Gm7aO24zgXeq3vgofqI0c1hCCuF9LquiPqZPX/o8
-         V3XPqQB/h81ntU99Z1ZPYpUraH3uEEqo/s7PK1dMUIyz4NYymvRlRyM/SpTrK0xGnkoa
-         L1GQ==
+        b=W1K0/SetlTg2Z3nHsTn3FH1ETDBhPo15NzGghAfe7trrUMuRWKEI0NwX6SYS/Le3yn
+         tC7JaC8QcMNPdsshAn0MbDoWgs/zd0NQeRKptteLOo4RxuDw9RQ0EtWvS/DpdpKzyT1T
+         gnldfE+DEeX9JevOHcwPbRiaaBwPhlQaEorysRSo3aPLgeD3EvIJOIC7ADxarCmWM5nc
+         rtBvkRPS6d5+EZxEm7ewxqFniCt6D1rk0UJlPQrVHDIIsDl7snhHCozUjhjTgZKCcHVK
+         FfVmob4aGJu2vu28LatkNz/Bh67bl8jOMgtItVOi1SmGwNJtODU9EVRx0zL0mrjBgWYt
+         AKGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=SVVhqSZ+WUIIVID3TK3wMJn2IF/IhlQmlPLvMcYQ4Ik=;
-        b=sSCPrlv86BRNpvoYFlglSNL6T2e8t4rNtoN3+s/1JkUmMnFficdBIjZwa4evKSSn0p
-         hRa9vlpghsVs7ZJqZdrZttgxoxqn34fedBiAnQjjXxeY99gajt5D9bW3/rIiWSppoHr9
-         BIADmfWNiEv9q8Cc3U++BmNxtvN0LMBNDHQwNgUUaOuvs9MEODWvbwNeegugoq5A9JQg
-         A+BHBEYaofZcEUSA0fHF7f5xuzaKonq1siA19BEDSO5efLYjA/ECldlh9STzC/xtk28F
-         zM1y51vXX/MQ3WaEecQcGCVoS+NaWReoI1u/wACzIeMrrMx5Z3g/7xI5TcoNApOqu5CU
-         8eEg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=R+gAfsPgzIf+Vl+2Q04sIKqvI+NoEh91IwRV5HMRlM0=;
+        b=A/l/62PjRyAGXSK8yMmCNBDeF6RgANSW25EgF/qUvBntCsj6BUjEIJjTjePwhguxd0
+         E4MvUMM9UwvPHXpvPXDLT8FgUJYVeK8DC3FDHTmFW0eikuqkAVkzAd6ivAhOAUDxY8E0
+         UtDPhx3RrtceX15vdAhdJoDx3QrsOyEcH0UQas5USNLFIzPNx1hLwV7JUOkNOeoVbJi+
+         WhEwSBPZCsiUE0grUrtA6HmAmwcXB87t3eniLJDDgl4mS6GLARPhmGJnbpH85WxnO8FF
+         zPE31i7nXhnbu2Bf1iDqy4BHJCV8qyjidJ/EhuqKfM0ylfrVWEyJQJOjqtOvzVm7mRg8
+         LndA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o11PcGm+;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g3RNUqs8;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qk1-x743.google.com (mail-qk1-x743.google.com. [2607:f8b0:4864:20::743])
-        by gmr-mx.google.com with ESMTPS id y205si299307iof.2.2019.10.25.18.09.10
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
+        by gmr-mx.google.com with ESMTPS id g23si473904pfu.3.2021.04.09.15.03.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2019 18:09:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) client-ip=2607:f8b0:4864:20::743;
+        Fri, 09 Apr 2021 15:03:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o11PcGm+;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::743 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g3RNUqs8;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x743.google.com with SMTP id e66so3463273qkf.13
-        for <outreachy-kernel@googlegroups.com>; Fri, 25 Oct 2019 18:09:10 -0700 (PDT)
+Received: by mail-pf1-x435.google.com with SMTP id a12so5111692pfc.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 15:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=SVVhqSZ+WUIIVID3TK3wMJn2IF/IhlQmlPLvMcYQ4Ik=;
-        b=o11PcGm++xdhOJeo2IK9sFzGF7n9ywWXbuKSI39nD9RPFjlq90E240GgzjJSkrGYpE
-         9Ka4GK/WywwswEA0J3auRvZglTDfv53rMPpys8LmvEZ3t0yTRQsICftSkxYyVfs5TNiV
-         gFX3Yo6pxm5r/h5KP72nMj0YfchbtsBWKgHq+57nkjbzkMw+ZGl/nHNsPlg13CFlphB0
-         tusRYdAH0HxptzGIOf7ANNPJJtfQ+BgZ47ca5QL0Jk8vj5SxbQ8lpnYTgTeeJNMsHcY8
-         rp8BAafrE8txpVvWFxXbyVFBU0O4Q8ikOECBb4XbO3952tkfv/mHiqeyTUJzVIkQC1Tz
-         EOKQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=R+gAfsPgzIf+Vl+2Q04sIKqvI+NoEh91IwRV5HMRlM0=;
+        b=g3RNUqs8G26UV5PlGVkTztahx/7bKGHr+sYgfG4imRFlBMgoDJI9C7pwQ2CTn8wz5r
+         v0XuNcMwKtLD5c1BOZLiqTqt5g2r+Un4sRSoR0NfZVz4Ew7xk2HygOR/UWH7iI3yhSl/
+         maNigIJiklSniZqpDgmMrQZteFPltUPVXVAwKaAreYzW6lpEXo/4EuVOySxoYq8yPRAU
+         JU4CfadOdglrryEyoR9kxPF8vUy2XqUATEIxzjmotR7ZTPTzmJr+3yn3uSPlbk0SqX64
+         lTUQh0wrdC4GEUfIagzehhSwzO2jA+2TTZBpnv2rWu9UWCfPgkUkY+kvnaMM4GXNorC0
+         3YCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=SVVhqSZ+WUIIVID3TK3wMJn2IF/IhlQmlPLvMcYQ4Ik=;
-        b=Nfop2HOtGQmBhig5oz++AaGaBPzp8F605kSziNlUGEgDhCZj6hO+ARO1j1X+CGATZ0
-         0Ty4t/jdQgDw+Glgju7U/OCRAXsY2cRn99jRU2kqZ3FnTaeVouUjGJBXuRW9l3O+Pn/V
-         MsPS4cASQUfCSJKZsBj/TSp+dBA9zC55ghqGwIa6CZ9jQOQB9w7qHks6V5s81gCc8D+y
-         +dBcVLIPImOYd7HE3lDjslbW6raYAaTxr/o6UiGSM81H7f+XgPLxHMQQ8GAjwhYTm83Q
-         UgHRPbcPfL9G+A7r7/USouB7TO5de7v4yuKgwXcAATuGY2tuKnhJ8rQEK3PXh7JB7MTv
-         7iiQ==
-X-Gm-Message-State: APjAAAUcsRMWKsrImrcvtVvTAs22o+k85n7S6Sff9HK+tMZsOCeoCkTp
-	ajq2lJW3oYo+/3UEY9iTXP8RMVtBECZ8Cw==
-X-Received: by 2002:ae9:e8c3:: with SMTP id a186mr5484714qkg.97.1572052150047;
-        Fri, 25 Oct 2019 18:09:10 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id y10sm2555234qkb.55.2019.10.25.18.09.07
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 25 Oct 2019 18:09:09 -0700 (PDT)
-Date: Fri, 25 Oct 2019 22:09:05 -0300
-From: Cristiane Naves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Larry Finger <Larry.Finger@lwfinger.net>,
-	Florian Schilhabel <florian.c.schilhabel@googlemail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
-Subject: [RESEND PATCH 0/2] Cleanup in rtl8712
-Message-ID: <cover.1572051351.git.cristianenavescardoso09@gmail.com>
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=R+gAfsPgzIf+Vl+2Q04sIKqvI+NoEh91IwRV5HMRlM0=;
+        b=BotccWMMyDi5pEsUuM2C0yW3gNZWFQeY13upBYZeyj5LeOD5lPkMDUybaFyBoHgxl4
+         B23f/OkT9y9P0JR5oLtwcGdu/aDeLOIDTaOrJtc54x08d3uWA/7BPvKS5E7Sh/xRVb7q
+         VoLQZ9ptTQmazYVZ3151TV4PlkDoTdJYPa1CQGKdoSCGdxRxU8RD5HbK9QpuUkYC9lcd
+         YFej5xf09thTMIaSvlurptimThdTLdCNUt6EAooMH8MSoxI/4GT856GrTJ4PIg9D8pnf
+         n9GtAgu/cCQMImJmfRtbaXjWpM20jY2+GN9PVEQg4PCsL+9SVqs6NDqYo6+wMrcmVxDK
+         Lx7w==
+X-Gm-Message-State: AOAM531Fm1dWRaXnuUFz0PcOg9h2CbajUIqeZ9Mw2JxSGyLbkdkD7r8H
+	G3Gp8jbVj5JdVopucYehRjY=
+X-Received: by 2002:aa7:818e:0:b029:215:2466:3994 with SMTP id g14-20020aa7818e0000b029021524663994mr14788264pfi.48.1618005791570;
+        Fri, 09 Apr 2021 15:03:11 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id e190sm3147248pfe.3.2021.04.09.15.03.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 15:03:11 -0700 (PDT)
+Date: Sat, 10 Apr 2021 03:33:05 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: Re: [Outreachy kernel] [PATCH v2 1/2] media: zoran: add spaces
+ around '<<'
+Message-ID: <YHDPGVo1mTYtPigo@kali>
+References: <YHCgksbiLv0pFF2F@kali>
+ <alpine.DEB.2.22.394.2104092239170.23056@hadrien>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <alpine.DEB.2.22.394.2104092239170.23056@hadrien>
 
-Cleanup in rtl8712
+On Fri, Apr 09, 2021 at 10:40:25PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Sat, 10 Apr 2021, Mitali Borkar wrote:
+> 
+> > No changes required in this patch.
+> > In v1:- Added spaces around '<<' operator to improve readability and meet linux kernel coding
+> > style
+> 
+> The text above would go in the git history.  "No changes required in this
+> patch." doesn't make sense in that context.  If you want to say something
+> that relates to the history of the submitted patches, then that should be
+> under the ---.  The text there will disappear when the patch is applied.
+>
+Ok Ma'am, I will rectify this mistake and send patch v3 with correct
+patch body.
 
-Cristiane Naves (2):
-  staging: rtl8712: Fix Alignment of open parenthesis
-  staging: rtl8712: Remove lines before a close brace
-
- drivers/staging/rtl8712/rtl8712_recv.c | 32 +++++++++++++++-----------------
- 1 file changed, 15 insertions(+), 17 deletions(-)
-
--- 
-2.7.4
-
+> julia
+> 
+> 
+> >
+> > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > ---
+> >
+> > Changes from v1:- No changes required in this patch. Below is the git
+> > diff of v1.
+> >
+> >  drivers/staging/media/zoran/zr36057.h | 14 +++++++-------
+> >  1 file changed, 7 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
+> > index 71b651add35a..a2a75fd9f535 100644
+> > --- a/drivers/staging/media/zoran/zr36057.h
+> > +++ b/drivers/staging/media/zoran/zr36057.h
+> > @@ -30,13 +30,13 @@
+> >  #define ZR36057_VFESPFR_HOR_DCM          14
+> >  #define ZR36057_VFESPFR_VER_DCM          8
+> >  #define ZR36057_VFESPFR_DISP_MODE        6
+> > -#define ZR36057_VFESPFR_YUV422          (0<<3)
+> > -#define ZR36057_VFESPFR_RGB888          (1<<3)
+> > -#define ZR36057_VFESPFR_RGB565          (2<<3)
+> > -#define ZR36057_VFESPFR_RGB555          (3<<3)
+> > -#define ZR36057_VFESPFR_ERR_DIF          (1<<2)
+> > -#define ZR36057_VFESPFR_PACK24          (1<<1)
+> > -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1<<0)
+> > +#define ZR36057_VFESPFR_YUV422          (0 << 3)
+> > +#define ZR36057_VFESPFR_RGB888          (1 << 3)
+> > +#define ZR36057_VFESPFR_RGB565          (2 << 3)
+> > +#define ZR36057_VFESPFR_RGB555          (3 << 3)
+> > +#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
+> > +#define ZR36057_VFESPFR_PACK24          (1 << 1)
+> > +#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
+> >
+> >  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
+> >
+> > --
+> > 2.30.2
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHCgksbiLv0pFF2F%40kali.
+> >
 
