@@ -1,86 +1,107 @@
 X-GM-THRID: 6949252648486830080
-X-Received: by 2002:a05:651c:212a:: with SMTP id a42mr10214020ljq.505.1617999252657;
-        Fri, 09 Apr 2021 13:14:12 -0700 (PDT)
+X-Received: by 2002:a05:6512:3189:: with SMTP id i9mr7890901lfe.613.1617998967146;
+        Fri, 09 Apr 2021 13:09:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:48c6:: with SMTP id v189ls72422lfa.0.gmail; Fri, 09 Apr
- 2021 13:14:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznJyv82VoP6vHfRnp3LwXXt+YwjpnWpVXPdw7+LamfwxT2IwF6DcWIS1RAXhsxZVk5CArk
-X-Received: by 2002:ac2:54a1:: with SMTP id w1mr6538622lfk.48.1617999250820;
-        Fri, 09 Apr 2021 13:14:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617999250; cv=none;
+Received: by 2002:ac2:5081:: with SMTP id f1ls1987481lfm.2.gmail; Fri, 09 Apr
+ 2021 13:09:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwpwbpXaZE26RSBP7nnITMWOIQyvPErumvJeXQJfs7EepaFkMC8hfcV7K1Y2D2Lw8eok8nK
+X-Received: by 2002:a19:c302:: with SMTP id t2mr11168464lff.150.1617998965408;
+        Fri, 09 Apr 2021 13:09:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617998965; cv=none;
         d=google.com; s=arc-20160816;
-        b=M9JCHRiKr4GVJGHifjPKqbTs9pGZYtRDQn75kOGE/Uv7XCFx6aaxYvYlo1q7ByF2z1
-         xbDkpE9rhdcIliZU/YNkWl18G1KBYE6yHUKE962HGtWjYczhFFymtnG1JAHvg4zZDWvF
-         2T7EZp7vkwU2M04BoxjNaeWa8asKRcPjjqxYnEizaCLviPq5qG4ckdDL7QSWSL6npORb
-         PpFNFtZoU6p8VxdrB2BwPEVO9CpeSWyDjf1T9rFAS/B0Pl7noi/cnNGNWTV2uN6gQ/XV
-         HZ4hL71AbWd10gH00ICbb1USoEkG8Kut1X+j66zoqPzmS4toNzGGrF21Bd/DAwNSq9LH
-         7qQg==
+        b=n+/RWVpsKeOiO5v3qHhCChYhZCNtCLMOHYKE6/jQ5LtZSj3dSMy8nLfiBbouI4tbYx
+         qXEGay4Nz/Ax3WUnPPw9z2496SKnModA3ggjcLKkctJ2rbEy76CG72F67qXJuyC15RIC
+         uUhdJ+nN1yYhDadLADTQHkY8X9bIurkHopdAKu9WGHEcdrkBnpARo35tYw2Gc5k7bQbn
+         hVLHigQijjxbKpb58TgfEwSuCzn0tl0rQnK+OLhP7JjLFn/pTNONRIARicJdf59qVdhn
+         GpiU8lcGsm88GeRe5yo58aX7V8N61ga7puRCkEoZxnNXNgmrvHNLcln1Irgnr3qkhz6q
+         XWQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=1lHxT+ESS5rlW75BIoBIC+BtBlU74zkQhjPf2sK92gk=;
-        b=T94vjEivCyMEgFGarnBEuNgzEyhyEy2wUh4A3TtqIUPP0V2mYh9h3BCHAk/EFCY8+P
-         zdSK1tao5RuE2kgcJjz+SK2UEKhXxIH58l/zBDMPo9DHvs5kZnpdxmBLsrvErnSyOcyG
-         Iwf2D7WU4fSTW+0Ex8Z3qSAAq9cHmTZTU2WpGlklZIPKrrwtcMOn7s1GtHqhRU3kn2++
-         p3Vaw0vfH53RAHwyd5cVsrUVj0l292qhif+jzHfZyPUgNZdise8DmYCQByjMgtvxsclP
-         /aup7cOVsr0VxAMpt3ZBtlB3zOiNCAZNCToGisKaKusKLFtiaC329Zqn7y84tYP4dCjf
-         mhog==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=DrPYlq0T8x/+YvUiqECyFqjmdyaOnMya5E9ZbkxogSk=;
+        b=M21r9oZ50Bnr5OIEO4Q7UxTk0z+IUVD6sNoQGs7nb6p/hvTweFQMcKwbzfI2iIj+k2
+         9kp9wrhk7q2WBO6GSulV7D7thWa3omT7QvKpk1Fq3tRdcQqxvkeCUYEQC8hL9nojQznl
+         UI1oCffe/t2QvkMRx1b5WYNSiC9TUBkUHJUaqLGjmjLaYU/k0q+JVy//Sqb/Eo8H2lcP
+         t53KHwkbMjHmf7+pzlxtcgBAYS8X6lP5+Xv+4Kpk8ZtaVZtuYzlMqdEhy7SL1T0UxYux
+         SmEn81HbRztKTytmCfnRC1VgTbGDVaGJlXIIknB0xkisucJR2Zrp5rbriHVE8sAocxvF
+         npjw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id a10si279203lfs.11.2021.04.09.13.14.10
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DWGME8yV;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com. [2a00:1450:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id p18si237690lji.8.2021.04.09.13.09.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Apr 2021 13:14:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 13:09:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) client-ip=2a00:1450:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3ABoZJmKBBLyqvPdLlHela55DYdL4zR+YMi2QD?=
- =?us-ascii?q?/UZ3VBBTb4ikh9mj9c5rtyPcpT4NVBgb6LS9EYaaR3e0z/9IyK0wGZvnYwX8om?=
- =?us-ascii?q?uvK+hZnOjf6hntATf3+OIY9aoISdkaNPTKAVJ3jdn37WCDer5KquWvy6ywgPeb?=
- =?us-ascii?q?8nEFd2FXQpt95AR0ABvzKCFLbTRBbKBVKLOsou5Opz+tYh0sAPiTNz09ftGGgc?=
- =?us-ascii?q?bKmpLgaQMHABBi0gOUjSq0gYSULySl?=
-X-IronPort-AV: E=Sophos;i="5.82,210,1613430000"; 
-   d="scan'208";a="502493028"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 09 Apr 2021 22:14:10 +0200
-Date: Fri, 9 Apr 2021 22:14:09 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, 
-    gregkh@linuxfoundation.org
-Subject: Re: Variables defined, (sometimes) assigned, and never used
-In-Reply-To: <3125862.SBIft5tIRe@localhost.localdomain>
-Message-ID: <alpine.DEB.2.22.394.2104092213000.23056@hadrien>
-References: <3125862.SBIft5tIRe@localhost.localdomain>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DWGME8yV;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ed1-x52a.google.com with SMTP id f8so7930469edd.11
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 13:09:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=DrPYlq0T8x/+YvUiqECyFqjmdyaOnMya5E9ZbkxogSk=;
+        b=DWGME8yVyyvBQN+U0FP3Lybq9se5bTvcnvvbvGEVdKibW9KYoQQaSlJeS0QPwCBENm
+         1V2/5UoAhpsJu0tmXgbC3lQV/i25F2C/q4T80y5XMhsF7h9OZZFPI9Oa3OG8Te1HzVvm
+         wpqS8AYWPAW1JkauFtBaaO6jKCcuTCRWCsSltDm92q7ze8NyiZMV/KQ8aVJnOEP4j+Yg
+         WBtu68sUuvgh+uLADtG0VFS6A+wwUtRxfCtKlbhT3mqlBO5w1YaYnb872sqG/y7yXQON
+         F56DB+nUgW7n/pNItmgpcUeeX0iRBQ7JvOBswUwlJrajxUyKc0kGfOzg6KvlEjIIVLn9
+         2rHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=DrPYlq0T8x/+YvUiqECyFqjmdyaOnMya5E9ZbkxogSk=;
+        b=EWxBr4ZIO32C04hRBxr10ix2HgW48+q/KNncqvkaTdHyM3AjDLu1xtscI5IZ+qubAO
+         mu4xcPB82b1+TCCxH/XonDxQzKhYXHGkzc33yziUXXTXxxeS8tabdHEERPB6e/eSZVuR
+         1ewZYCDTEhMH4NtABFsdttLPxNA9QHMUdWjYSRRyckOkF07ATAf1MdtVywdMCHxi/0C8
+         59YaQ3N4cCHkm6hPcCJ8WMgepPm4by1Q22AWuixeIYXILUPJZCgJb2a2pLvv/LYJOYhq
+         GQOPVCPaXh9T85HjZ7KVJTqq+zN4DpKHJ8sGyU5e09zuAF+N6EWyZ6r2uusKmohT+6an
+         tqyA==
+X-Gm-Message-State: AOAM532fn2BQdxdUr7aaoimLSBvF63dF9WTJJk5QvyW5NyaiPPy2S/OR
+	Pg+AHngut4f9WHnhpoma5F/EqttOmg2doFMC
+X-Received: by 2002:a05:6402:8c2:: with SMTP id d2mr19444228edz.4.1617998964945;
+        Fri, 09 Apr 2021 13:09:24 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from localhost.localdomain (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id m14sm1995018edd.63.2021.04.09.13.09.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 13:09:24 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: gregkh@linuxfoundation.org, julia.lawall@inria.fr
+Subject: Variables defined, (sometimes) assigned, and never used
+Date: Fri, 09 Apr 2021 22:09:23 +0200
+Message-ID: <3125862.SBIft5tIRe@localhost.localdomain>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
+
+When compiling with flag W=1 a lot of warnings about variables defined but 
+never used show up. If one read the source sometimes it's clear that the 
+original author placed them there because she/he wants to use the variable 
+for doing something in a future release of the driver. I've also seen a 
+comment like /* TODO */ near some unused variables. 
+
+I thought to delete a couple of variables that are declared, may be also 
+assigned as a result of some expression, but neither  used within a 
+function or returned to the caller.
+
+What to do with those (currently) unnecessary variables? Should we remove 
+them or let everything as is?
+
+Thanks,
+
+Fabio
+ 
+
+  
 
 
-
-On Fri, 9 Apr 2021, Fabio M. De Francesco wrote:
-
-> When compiling with flag W=1 a lot of warnings about variables defined but
-> never used show up. If one read the source sometimes it's clear that the
-> original author placed them there because she/he wants to use the variable
-> for doing something in a future release of the driver. I've also seen a
-> comment like /* TODO */ near some unused variables.
->
-> I thought to delete a couple of variables that are declared, may be also
-> assigned as a result of some expression, but neither  used within a
-> function or returned to the caller.
->
-> What to do with those (currently) unnecessary variables? Should we remove
-> them or let everything as is?
-
-Generally, code that is not used is not wanted.  But use some common
-sense.
-
-Be sure to compile the code.  It can happen that the variable is only used
-by a macro.  Not very nice, but it can happen.
-
-julia
 
