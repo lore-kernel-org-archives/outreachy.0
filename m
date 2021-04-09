@@ -1,139 +1,121 @@
 X-GM-THRID: 6948900055812145152
-X-Received: by 2002:a17:90a:3b4c:: with SMTP id t12mr7199872pjf.142.1618142095210;
-        Sun, 11 Apr 2021 04:54:55 -0700 (PDT)
+X-Received: by 2002:adf:fdcd:: with SMTP id i13mr1629713wrs.185.1617953214310;
+        Fri, 09 Apr 2021 00:26:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:c70c:: with SMTP id o12ls1835544pjt.3.canary-gmail;
- Sun, 11 Apr 2021 04:54:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmizHi9fdZwAR6th10qGNsTXVIBwFeIqBx/zsgHln/xQkGIW9+rOOXCmglVa7ZN2dNIsQ4
-X-Received: by 2002:a17:902:8f8d:b029:ea:e059:84a6 with SMTP id z13-20020a1709028f8db02900eae05984a6mr2987254plo.35.1618142094131;
-        Sun, 11 Apr 2021 04:54:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618142094; cv=none;
+Received: by 2002:adf:d1c8:: with SMTP id b8ls6277442wrd.3.gmail; Fri, 09 Apr
+ 2021 00:26:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaDtikoLdeZK00/Rs4NfJd2BprKNbs7tFCCiX9GpaBKWe14N4jwaC7N7mEvLVs6a/neRnv
+X-Received: by 2002:a05:6000:10c3:: with SMTP id b3mr15981393wrx.96.1617953212841;
+        Fri, 09 Apr 2021 00:26:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617953212; cv=none;
         d=google.com; s=arc-20160816;
-        b=LOtCM0g7kZhu1E6Ks9GtVT6tlD6ZyP5t5KtVCJijxQccM9ukja/pvem538zhSjW64z
-         u1R58V9w1SYltvlochLMkNGVptwcgRWjrV6RrZLq9fBuilMTHLta9o1w6VrYSm/GwJf+
-         qUw7NzT5ikXVP93bEUm4v83cuGjdwWTh6a0mqmHDjsOHtXBbl8o9TPiV7Z4EHIO+Foi6
-         4SzVXilYxCcY+gtqhoHFa5WqVbxe0QW3bAltHLYRl93adDbyWxFG5FqKsabaCPpZ46lw
-         9DSUO5sqUtsMMhY6thRfhW7amwXItt7Ey9eNH8KxVtywGRXK6D7tppOswk+OmifSX7Rn
-         LUeQ==
+        b=xT8vKyXHa/yS4h4fpMIleDKKskZE/GZIqHDzsyKC9P/gZwfbZpAxpXcYCMeN2c5nKu
+         vdYujZxvpKuQsloOgD6/aSi+ZWfhgAbkCxKAGYSrH8NxXuc00GjbHaZ5N8dgX6uNjrJ+
+         /OFSfElro3HmlmWcwgwIhlW/QWiVwH0FcVNHTFCzDAZTBUvkU1jt4yBcRRDSgaCrdTq3
+         3JHieJxOKXrdgVWP4YOT8Fv9j/cszfceu3AXsl4dJ7iJjXYBR8kwJlTOLUQl+R7xtZJ9
+         xYWNxDdwB8yIUQ0lLjp4wZKZG4ZpI+6Eef6ddVO0Rn/hQ29LPiMLwYJr/q1jla8reE+t
+         8qbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=jj39pWnpe68QjHt1F0v3GC/JaiqRPmwqsSayHN84pLc=;
-        b=L299id2JmtiCN8pWjyQOibEKXGEAGoIdFHft3sWugciuxkwkUFyo15fYpr54xcft1y
-         od8nt8ZHtHCfMjmc7L68XBRDPoht6kFmAK929ifhGo41R8fwQDqbubRRRArqLPB+Lbck
-         pZB1Rlav7WVwU1DwpZlI7oRs977zEnivgVrPH0RRYuM8cdamoypCEREI9g4GLvccP61o
-         Ptr+yyo75bc4Tat2dxoyzloMuzF2nj5fEhH3uE5gGCitwGFBJPL6yr7Z7nnSTPyyJF/n
-         a4GnNdiDWa8/fyzfta+3V8kxdhSFTXQ4lD9wU9bMsopm3xJA1teQGahVloLwwV59DHxC
-         4tIw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=CAEIwKj3X76oz7KxEQomi77buHSBZk7Ze/1D90Ei9e8=;
+        b=ufqgIYnrcta3r4gje3uHdfBcSlKj8cvwFMUPN+kcmbguZxfSeLChjgPNvOGvwgqku8
+         +fSVW/Y2GsQ5+hLuPSfZJaRW91exGvO+bIFjZcriaJkwt8HAhugQmfpsWqx7PlKnp3tg
+         qO8yy/L/yHyC/2Deevp0C2loNCV+oeDxJdvIJ9VWZRSYIJfVFMFUPlo2jvlkmL3D1Ncn
+         OLPcKKlRD3nT9gNfblddLRSa6vuK9LIZJ4KmyvUiSbayUNB593iUQge+VajRJa7DN+Ei
+         83AAG25AzxMl6frvCoOaGhy67u+QCCidmX54GnssJJCAk5a1OWeuh2CqhWHQfOfH1+Bk
+         f7hw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dTU5duck;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pg1-x533.google.com (mail-pg1-x533.google.com. [2607:f8b0:4864:20::533])
-        by gmr-mx.google.com with ESMTPS id t5si768615pgv.4.2021.04.11.04.54.54
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="n/a/t+7B";
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net. [194.109.24.25])
+        by gmr-mx.google.com with ESMTPS id o12si150336wrw.1.2021.04.09.00.26.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 04:54:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) client-ip=2607:f8b0:4864:20::533;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dTU5duck;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::533 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x533.google.com with SMTP id p12so7210759pgj.10
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 04:54:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=jj39pWnpe68QjHt1F0v3GC/JaiqRPmwqsSayHN84pLc=;
-        b=dTU5duck9yoxb9EsoiJ3eUPCeP+4rusRpUsqcIvaLGglYmC7TOwycIg5NiX3fdQRU4
-         wV0zKmdK1fvnvu6cFOv71E7ireN9om7saabEZQf1TnTdX2B5K29ExP73/N2S/lSfzA7H
-         QZJ4/UUQoyWQT9K6sCZeazNAu55qrU+Vz2vbhYu0kn02K54tqOXxGH7QsyFzMYis19kW
-         C/mqJcjCHw1nyL4GcwD4+fWnyDYveiFVxTH7n6hnOXHai685o7izne6kpOhD+k9hllaA
-         tn4AaWT8SGCbeA7JMTI7MqWMr6p76PaBdZ0OhuyjKkOIXEBJRCygtaZMQ3HawW4P0Acq
-         JjTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=jj39pWnpe68QjHt1F0v3GC/JaiqRPmwqsSayHN84pLc=;
-        b=UuhUgaKeNv/uzWtpaek99pDBvMo47+q4DNVBxthKB8uk82gva1b2FhJ6wUj/QYuKCL
-         98VHsYIdArmQ4zOJcqpNekNgU0cZD0OAGzq/Y3mRwMtFu/tATx3eZNY4/SHsM/F8MrH5
-         7fd3aiMz6bOEg841AuY9oiPGf9RLkAGpbi7VNpLD8Nn39bgYr03kIbasn5Kea0OueQV+
-         EETCt2u4QpqyYLk49lsjnxpJFOE64mNPcy+1v7UXs5KaW0Q67tPbfJPEH4GPBpsbCz84
-         mmMaI1Rn9MMzgQN+IrLRyg07BNSmAJTIVhKE/xWhJk9/JV/P4veT//ul/OpAHC9UzvX0
-         7oaw==
-X-Gm-Message-State: AOAM532gSrZI/Jv87LC8rKEWCTIwPTx2kuGw/aTnbHIxS+RFcN2kywPP
-	trPxarVQ4hIPV4jGsxFHs6s=
-X-Received: by 2002:a62:7992:0:b029:249:9dfb:426d with SMTP id u140-20020a6279920000b02902499dfb426dmr6089863pfc.68.1618142093744;
-        Sun, 11 Apr 2021 04:54:53 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id y194sm7230272pfb.90.2021.04.11.04.54.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Apr 2021 04:54:53 -0700 (PDT)
-Date: Sun, 11 Apr 2021 17:24:43 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
+        Fri, 09 Apr 2021 00:26:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) client-ip=194.109.24.25;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="n/a/t+7B";
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.25 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+	by smtp-cloud8.xs4all.net with ESMTPA
+	id UlXUlYlbJgIC3UlXYlBMSQ; Fri, 09 Apr 2021 09:26:52 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1617953212; bh=CAEIwKj3X76oz7KxEQomi77buHSBZk7Ze/1D90Ei9e8=;
+	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=n/a/t+7B5rmX7paTuiC16pUydqp1HEhmpUQRg2gG/3yZz/jKlf5eIur6ZME4hYVdG
+	 xk7M6vxSahTZm56g3KTavl1sgIpGJ7CpPbQr1m+XoXNHy5vx/sY/dFygidfX/cHfAv
+	 KKtD0ehym1BN5BvrkrjbvJSl486lb7Q9r8/5Fh/Loa/mBlzHJdgZjUlJqQGF++aWTa
+	 /Xyfrzot9+7Xwz0Tx+3ZIceb3Bhxd7g/Dm/ciL3yGazLnX0MIdSFKHTULuJ4uKhmZ4
+	 uKvtaIYWVlmjCGnvAp894DlT4gjgOuVAVBN+JHfKZYeU2gO0nrUPq3w+MjZY8gt3a5
+	 +lKIvyqkeVPgA==
 Subject: Re: [PATCH] staging: media: zoran: reduce length of a line
-Message-ID: <YHLjg3U1M358bBxh@kali>
+To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ mitali_s@me.iitr.ac.in
 References: <YG9zvMnYlZVbJhQn@kali>
- <003b2d17-2fe4-c3f3-6b1e-60d0301a1413@xs4all.nl>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <003b2d17-2fe4-c3f3-6b1e-60d0301a1413@xs4all.nl>
+Date: Fri, 9 Apr 2021 09:26:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <003b2d17-2fe4-c3f3-6b1e-60d0301a1413@xs4all.nl>
+In-Reply-To: <YG9zvMnYlZVbJhQn@kali>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfFJJJBK955hvzlpccXP9vNThirZiryIss2Ro6C/Jnh15Fz9TQVqW45+Le3jHQFhuV2ph0EZwwhhVlvEDAkehFBJ7WcHYzetIPV/E2JMgh5PDMxefQBxK
+ PB1bQae+4seIWsEbB1QHg9qnTHGJnjx6Rki8XVoUD8ICtAh29P2AGe25RJkPcW5eRU9U1GjhQN9YNujxstMAp84N82ntXyoJbofV89iLnu5x8mqPInTKIe5s
+ dhJm3TxD40CK9dR6zGMKtxq2xgmnEh6hgHJbPm7gCasQqP3NtHvPEm4F/LUSWu4HZRWf+T5JO4FJSJv3J3UMPyI5pfQCzGMMnF9l8iDPft7YfKA44MdMMoOD
+ ngD6uX/kQeuokaHt1T5s94F6agR57Yz9aaQ6l3mFYy5CpL3vc2koXy87GpTr9P/pw7/qHzYClX7LwDdy3Aq5Ep8Xd2FV1LXid5IXtcxtjsNyBwhcZ1BzBKPZ
+ k/i2AcVIpuohFBqaynIhfE2uXdxVyxErgCo4lQ==
 
-On Fri, Apr 09, 2021 at 09:26:48AM +0200, Hans Verkuil wrote:
-> Hi Mitali,
-> 
-> Something to improve:
-> 
-> On 08/04/2021 23:21, Mitali Borkar wrote:
-> > Reduced length of a line which exceed the 100 columns limit by splitting
-> > the line into two statements and commenting it with '*'
-> > Reported by checkpatch.
-> > 
-> > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> > ---
-> >  drivers/staging/media/zoran/zr36060.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/media/zoran/zr36060.c b/drivers/staging/media/zoran/zr36060.c
-> > index 4f9eb9ff2c42..035634fc1c6d 100644
-> > --- a/drivers/staging/media/zoran/zr36060.c
-> > +++ b/drivers/staging/media/zoran/zr36060.c
-> > @@ -249,7 +249,9 @@ static const char zr36060_ta[8] = { 0, 1, 1, 0, 0, 0, 0, 0 };	//table idx's AC
-> >  static const char zr36060_decimation_h[8] = { 2, 1, 1, 0, 0, 0, 0, 0 };
-> >  static const char zr36060_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
-> >  
-> > -/* SOF (start of frame) segment depends on width, height and sampling ratio of each color component */
-> > +/* SOF (start of frame) segment depends on width,
-> > + * height and sampling ratio of each color component
-> > + */
-> 
-> See the coding style guidelines: the preferred style for long comments is:
-> 
-> /*
->  * text
->  * text
->  */
->
-I have sent v2 patch two days ago and I have not got reply till now,
-Should I resend this?
+Hi Mitali,
 
-> Regards,
+Something to improve:
+
+On 08/04/2021 23:21, Mitali Borkar wrote:
+> Reduced length of a line which exceed the 100 columns limit by splitting
+> the line into two statements and commenting it with '*'
+> Reported by checkpatch.
 > 
-> 	Hans
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+>  drivers/staging/media/zoran/zr36060.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> >  static int zr36060_set_sof(struct zr36060 *ptr)
-> >  {
-> >  	char sof_data[34];	// max. size of register set
-> > 
+> diff --git a/drivers/staging/media/zoran/zr36060.c b/drivers/staging/media/zoran/zr36060.c
+> index 4f9eb9ff2c42..035634fc1c6d 100644
+> --- a/drivers/staging/media/zoran/zr36060.c
+> +++ b/drivers/staging/media/zoran/zr36060.c
+> @@ -249,7 +249,9 @@ static const char zr36060_ta[8] = { 0, 1, 1, 0, 0, 0, 0, 0 };	//table idx's AC
+>  static const char zr36060_decimation_h[8] = { 2, 1, 1, 0, 0, 0, 0, 0 };
+>  static const char zr36060_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
+>  
+> -/* SOF (start of frame) segment depends on width, height and sampling ratio of each color component */
+> +/* SOF (start of frame) segment depends on width,
+> + * height and sampling ratio of each color component
+> + */
+
+See the coding style guidelines: the preferred style for long comments is:
+
+/*
+ * text
+ * text
+ */
+
+Regards,
+
+	Hans
+
+>  static int zr36060_set_sof(struct zr36060 *ptr)
+>  {
+>  	char sof_data[34];	// max. size of register set
 > 
+
 
