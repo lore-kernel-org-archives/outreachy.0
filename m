@@ -1,188 +1,189 @@
 X-GM-THRID: 6949121475424026624
-X-Received: by 2002:a5d:65ca:: with SMTP id e10mr36855676wrw.331.1618324101749;
-        Tue, 13 Apr 2021 07:28:21 -0700 (PDT)
+X-Received: by 2002:a63:2165:: with SMTP id s37mr12951576pgm.145.1617968425819;
+        Fri, 09 Apr 2021 04:40:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:600c:9a6:: with SMTP id w38ls1483411wmp.2.gmail; Tue, 13
- Apr 2021 07:28:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwZU8wRyYJHpAG7w+5+tKLIxMLaFr96g9KcJX4LYYdMjoIEBfbMjt2Xj02Cnouc+j0bFxBK
-X-Received: by 2002:a7b:cd95:: with SMTP id y21mr275225wmj.85.1618324100202;
-        Tue, 13 Apr 2021 07:28:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618324100; cv=none;
+Received: by 2002:a17:902:da91:: with SMTP id j17ls4007441plx.1.gmail; Fri, 09
+ Apr 2021 04:40:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUTDvDCBUYgcUv3RoGi/fycJKtv8nm1XR6JmDDXwgjjhgT7WriXqIY1oYdCfVxF3A56P2n
+X-Received: by 2002:a17:90b:368b:: with SMTP id mj11mr7056022pjb.217.1617968424699;
+        Fri, 09 Apr 2021 04:40:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1617968424; cv=none;
         d=google.com; s=arc-20160816;
-        b=OFhspZfOWkfNR8j300ucIDHniTwW6gXnPy9etQ7fae/WXAQMPqDNT20JoFCXxfvQaW
-         842l+EgwuvwONTA8XyLpu+9EbPTUNf+jagNdVWfZHUiTN7GdmxCc6NCc8QZ8taAeMOkZ
-         Z7ivaLhX4DDfl27FG09ZIVhg28J7609VL7BHhJe286bVENk8PHSqEDONT1m+dbZy8z1v
-         5zje/i0Aw3DHd01WHCD2lnlVApZl+y/IDoyuzx4kvs8c3787J/CCezTHTauUtTchuUAe
-         pMR4JGGtcb9IsSNhNarOYRlXpPjRMl2nGImuhYdoO5fOkpYe2gJech7n+lIN2Lysc4ZD
-         iKjQ==
+        b=WsxZNnoVKLK8S6HdCJGmzIbgVAe1onx9QOembj0IdONqCUoC59bvjT+e2QWTaOH0UV
+         2tpH0hO95FUTG+bKWvNn+1U/7+TD5oqCW3LbBP8h4N9EXOLNkI9RiDMBi6pSZE3zZVRe
+         uT5t8ggEZ/pmw+9gaSDHqg+jayownkblf+Th/4sIyB4Hah3FkNg7FfiqNAgyG4iQRb2w
+         rGspmFXCsQTPVJttYpjZT0ygHLEYSpCWckm1np/FTYhFsq+kVpv+3H65rFhSHPOlHEhu
+         kWN87dXd5BqsujxFzvuNxcqaEpYVk+Mso/4eWxh665JDz4ZNe5Xj3C7z6jklZGMgseZy
+         V21g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=1OYRzaPYX+MdL2oJs4PbhIJNrmnwYHeYtpLOazWRad4=;
-        b=zgVgRLRDjVLiQtIhsQH94oYnuIbN+brHupTjaYbZG7kGpILE0wn1xTQTHYdQ8iS5vy
-         Ly3bljbkqm+O7uFLAdL32kD11XxEQCKBIYHsJWGIDqa7LYC4NOsnAp1YleeCSGLQUXAj
-         fW0OdNy9Tn6Ly9IruvsWN3Dhsn5+8vmzOApbq1bw0jU/GHIQZpir4r3Hw5xbR/r//E8D
-         uhTQX/4oY1Yr7ugZgSXYMmmLO+epCifWoiSoizrLrowCurpUBrISAyj24H2o/YXbbZPr
-         M7UuViHsv0jtRnNm1+clVgY+TCjro4+UmnC0m8LhyG3CZfuZSYNozoSqdcYVpdrYp6nC
-         Pa+A==
+        bh=M4xX2WWfEqm7PGNI70AcSFeFug982FHKb8Dt0b/QqpQ=;
+        b=XPj4ofHtuDmMOanH1h5BRP1bODNkd9d87TE+yBBz1EdmiP6hDyRovSf1H1JFoEkHu7
+         cFlNBC46e0ktG0XisKm8wFcZUcmagALHQHDN7YlawUYzGKcX18RvTp+FvxXY6J6AUeny
+         Tb+hHgNFWdyl6k7u33RNXXbY5ihopOWrjBaRKEbzDbNGkA72pETyj16sl9K65NQ2BoWt
+         IFsclMZPjaw/ErvoCm+BQZE1uWfGkXKgQxLNdkH0Cai9Dcl8J1YT/6EvRYW3qMYIzXrB
+         ZM4tyzCVwfuXEisUNy4ZrI6zGK9X/xhM7fC8W94c2BrCzcpPjpDbvogW2PGpOio21oyx
+         843w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="LE5q+1/G";
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb1-smtp-cloud7.xs4all.net (lb1-smtp-cloud7.xs4all.net. [194.109.24.24])
-        by gmr-mx.google.com with ESMTPS id n35si172468wmp.0.2021.04.13.07.28.20
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vSPUmZpm;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::634 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com. [2607:f8b0:4864:20::634])
+        by gmr-mx.google.com with ESMTPS id mp9si80534pjb.1.2021.04.09.04.40.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Apr 2021 07:28:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) client-ip=194.109.24.24;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 04:40:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::634 as permitted sender) client-ip=2607:f8b0:4864:20::634;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="LE5q+1/G";
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud7.xs4all.net with ESMTPA
-	id WK1YlFUF2MxedWK1bliyIA; Tue, 13 Apr 2021 16:28:20 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1618324100; bh=1OYRzaPYX+MdL2oJs4PbhIJNrmnwYHeYtpLOazWRad4=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=LE5q+1/GxEP74ilj90iQBYAqaWO6EocuzMs6EXfE+urj8TyS9sLw1jrCYErXh3HuM
-	 4Qqf1RZgCF3vX8igimzeC8drgtbs55bHgkIgHpXGjSwuudDzS1bTSbVedXduO0lYyj
-	 ZI9fjWnt8JANheRv/w/tjMyNyVKTgbmmVEi9nE5X67As8aleo2SCslNwwmoCfACKek
-	 Zt183z/DdY9hif5nPeH03e4WgCxTPQ4HwgTppRuq6WV55OgoiaxPUF8kQXkUbkKtiS
-	 dJFOwxw/h1JUcZDSa52x4DDPO1gS54fEsUsRxCOkjqPsU1jy+uT76xtF6L2iA6r/dO
-	 UCzh9lcqabkTQ==
-Subject: Re: [PATCH v3] staging: media: zoran: remove and move statement in
- next line with '*'
-To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
- mchehab@kernel.org, gregkh@linuxfoundation.org
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vSPUmZpm;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::634 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x634.google.com with SMTP id 7so2613590plb.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 04:40:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=M4xX2WWfEqm7PGNI70AcSFeFug982FHKb8Dt0b/QqpQ=;
+        b=vSPUmZpmgYYgSkQNzGePiVkKAonQ6CSFAsAIqewjEWD2/5cYOPYSu/TYwYBaiys5N4
+         1O9MgUNs11EfINvx5nlt2nODwsba9ow5TPW0At8E+pmJvg/VqagcB5X6DXFdQe7Fi0/N
+         T3EGOWO3SnShUixUDlgLU65CEwka8aDhSmooz812PueEg9EMd9nUhkzYnAMLhDcwkBV+
+         m4gzV+zTSZzWB1zk8VRvrMnIXFy440Ccbg0XLxSwj3CEq6HFP1Kp0WGVCKVdrQ0BBZj+
+         hcNz4OucUSws3F/aGP3hrPcwShgGhsGgAnxeEaqAFB9Cil1ZIQRLY1uKyQPzoK79A2ph
+         pWJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=M4xX2WWfEqm7PGNI70AcSFeFug982FHKb8Dt0b/QqpQ=;
+        b=RF+7ppBXSpXyrpsAuLeynVKkh4RgR6EdJGL0BEhJibJDeyaI9ucZt+Xj7tdxU8fGgx
+         I1w4FdDmXOpXyKBll6fkHuGXh3ghkHVznA5fl6F2Gqr+Iu4g/e5FapWPX0nnAeVA4pFM
+         Ns8LpY6qaJPCZwMfwahOgZSOppXb98gaUdYlYVW7iAqVNeukc8npidMEQKtlODZxDbhJ
+         9/BN4m9Xwvhr/Q4eGazJsxkCWQBbR+nOmPSGGDs0GCBExIS7dxs7HoEU4rQrLYWtMKP1
+         8FP4/LKbAQnBYA7qttTuLBSvippJXIX0KfPQjyh1ZUZGt7hgZB2sJIcI6392ZQDKNG3S
+         PkGA==
+X-Gm-Message-State: AOAM53384g7tdQZrGCYe7z42y7snqhbbfhQ5kYpWWkOEURKmcRC5MCJJ
+	HnN1la4rg5/+JylvptxYorQ=
+X-Received: by 2002:a17:902:db05:b029:e9:ab78:51fd with SMTP id m5-20020a170902db05b02900e9ab7851fdmr3319055plx.22.1617968424384;
+        Fri, 09 Apr 2021 04:40:24 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id x22sm2108568pfa.24.2021.04.09.04.40.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 04:40:24 -0700 (PDT)
+Date: Fri, 9 Apr 2021 17:10:17 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org
 Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
- mitali_s@me.iitr.ac.in
-References: <YHA9IdZVRr4kbVJ0@kali>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <74a4e59b-48b5-d054-8cb1-6cba038279ba@xs4all.nl>
-Date: Tue, 13 Apr 2021 16:28:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: [PATCH v3] staging: media: zoran: remove and move statement in next
+ line with '*'
+Message-ID: <YHA9IdZVRr4kbVJ0@kali>
 MIME-Version: 1.0
-In-Reply-To: <YHA9IdZVRr4kbVJ0@kali>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfFp9rS0rBtd8Y3HBIpiwaBaDWe58n9PZvJ5V1pfIHcnldOzfc+HLqJUBR60spsxLINEUol/VpmJjl0DjK3H8r9ilXcfW1NZF3IBaBlQ/91KDzVM88G8K
- AhYqaOZLtHR3YJGCMo9oo3ftuNa4VsvtvFXq4eJCJ0xK4knTYmJPoueFDUf34ztoVbcQCl1X0va3MEAEYxu0N8p/WcjnqZeV74aOuCY4+sk0Zub5mihzKuHh
- 9q3Cf+2KxovQX7RgL+xLhurYOWz0P83ey/SS8IaOQwd0++ckH54q0JOC6FjsPkKwJy3LkMsF+3xxC1FCMEIj3UneX82xUTs8oJhyTcWzVVZJyWUOnWv74h3R
- aokQ2Dxo2mwYAC0yWoPgp+zgi4sYhMsL5dZQguPeoOPWswPy3URXW1p4+ORzv0nZSNkVSeK5VaxmlVoi53+nhj22zbNZKj8W7Qbt3vJeixl9CbDUqSU8AXv/
- 11XS8vVgYrW+Q4zxBN6r5VCb/t1St9+nkWiJmg==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 09/04/2021 13:40, Mitali Borkar wrote:
-> Removed and moved statement in line in long(multi-line) comments and
-> added '*' before it to meet linux kernel coding style for long (multi-line) comments
-> 
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
-> 
-> Changes from v2:- made style changes in code according to linux kernel
-> coding style for long comments.
-> 
-> drivers/staging/media/zoran/zr36050.c | 26 +++++++++++++++++---------
->  1 file changed, 17 insertions(+), 9 deletions(-)
+Removed and moved statement in line in long(multi-line) comments and
+added '*' before it to meet linux kernel coding style for long (multi-line) comments
 
-This too sits on top of other commits from your own private branch, so
-it won't apply against the mainline code.
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+---
 
-Regards,
+Changes from v2:- made style changes in code according to linux kernel
+coding style for long comments.
 
-	Hans
+drivers/staging/media/zoran/zr36050.c | 26 +++++++++++++++++---------
+ 1 file changed, 17 insertions(+), 9 deletions(-)
 
-> 
-> diff --git a/drivers/staging/media/zoran/zr36050.c b/drivers/staging/media/zoran/zr36050.c
-> index 703064009c6b..b89afa239b0c 100644
-> --- a/drivers/staging/media/zoran/zr36050.c
-> +++ b/drivers/staging/media/zoran/zr36050.c
-> @@ -24,7 +24,8 @@
->  /* codec io API */
->  #include "videocodec.h"
->  
-> -/* it doesn't make sense to have more than 20 or so,
-> +/*
-> + * it doesn't make sense to have more than 20 or so,
->   * just to prevent some unwanted loops
->   */
->  #define MAX_CODECS 20
-> @@ -311,7 +312,8 @@ static const char zr36050_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
->  
->  /* ------------------------------------------------------------------------- */
->  
-> -/* SOF (start of frame) segment depends on width, height and sampling ratio
-> +/*
-> + * SOF (start of frame) segment depends on width, height and sampling ratio
->   *			 of each color component
->   */
->  
-> @@ -343,7 +345,8 @@ static int zr36050_set_sof(struct zr36050 *ptr)
->  
->  /* ------------------------------------------------------------------------- */
->  
-> -/* SOS (start of scan) segment depends on the used scan components
-> +/*
-> + * SOS (start of scan) segment depends on the used scan components
->   *			of each color component
->   */
->  
-> @@ -432,7 +435,8 @@ static void zr36050_init(struct zr36050 *ptr)
->  		sum += zr36050_set_sos(ptr);
->  		sum += zr36050_set_dri(ptr);
->  
-> -		/* setup the fixed jpeg tables - maybe variable, though -
-> +		/*
-> +		 * setup the fixed jpeg tables - maybe variable, though -
->  		 * (see table init section above)
->  		 */
->  		dprintk(3, "%s: write DQT, DHT, APP\n", ptr->name);
-> @@ -551,8 +555,9 @@ static void zr36050_init(struct zr36050 *ptr)
->   * =========================================================================
->   */
->  
-> -/* set compression/expansion mode and launches codec -
-> - *  this should be the last call from the master before starting processing
-> +/*
-> + * set compression/expansion mode and launches codec -
-> + * this should be the last call from the master before starting processing
->   */
->  
->  static int zr36050_set_mode(struct videocodec *codec, int mode)
-> @@ -581,7 +586,8 @@ static int zr36050_set_video(struct videocodec *codec, const struct tvnorm *norm
->  		ptr->name, norm->h_start, norm->v_start,
->  		cap->x, cap->y, cap->width, cap->height,
->  		cap->decimation, cap->quality);
-> -	/* if () return -EINVAL;
-> +	/*
-> +	 * if () return -EINVAL;
->  	 * trust the master driver that it knows what it does - so
->  	 * we allow invalid startx/y and norm for now ...
->  	 */
-> @@ -603,7 +609,8 @@ static int zr36050_set_video(struct videocodec *codec, const struct tvnorm *norm
->  
->  	ptr->real_code_vol = size >> 3; /* in bytes */
->  
-> -	/* Set max_block_vol here (previously in zr36050_init, moved
-> +	/*
-> +	 * Set max_block_vol here (previously in zr36050_init, moved
->  	 * here for consistency with zr36060 code
->  	 */
->  	zr36050_write(ptr, ZR050_MBCV, ptr->max_block_vol);
-> @@ -661,7 +668,8 @@ static int zr36050_control(struct videocodec *codec, int type, int size, void *d
->  		if (size != sizeof(int))
->  			return -EFAULT;
->  		ptr->total_code_vol = *ival;
-> -		/* (Kieran Morrissey)
-> +		/*
-> +		 * (Kieran Morrissey)
->  		 * code copied from zr36060.c to ensure proper bitrate
->  		 */
->  		ptr->real_code_vol = (ptr->total_code_vol * 6) >> 3;
-> 
+diff --git a/drivers/staging/media/zoran/zr36050.c b/drivers/staging/media/zoran/zr36050.c
+index 703064009c6b..b89afa239b0c 100644
+--- a/drivers/staging/media/zoran/zr36050.c
++++ b/drivers/staging/media/zoran/zr36050.c
+@@ -24,7 +24,8 @@
+ /* codec io API */
+ #include "videocodec.h"
+ 
+-/* it doesn't make sense to have more than 20 or so,
++/*
++ * it doesn't make sense to have more than 20 or so,
+  * just to prevent some unwanted loops
+  */
+ #define MAX_CODECS 20
+@@ -311,7 +312,8 @@ static const char zr36050_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
+ 
+ /* ------------------------------------------------------------------------- */
+ 
+-/* SOF (start of frame) segment depends on width, height and sampling ratio
++/*
++ * SOF (start of frame) segment depends on width, height and sampling ratio
+  *			 of each color component
+  */
+ 
+@@ -343,7 +345,8 @@ static int zr36050_set_sof(struct zr36050 *ptr)
+ 
+ /* ------------------------------------------------------------------------- */
+ 
+-/* SOS (start of scan) segment depends on the used scan components
++/*
++ * SOS (start of scan) segment depends on the used scan components
+  *			of each color component
+  */
+ 
+@@ -432,7 +435,8 @@ static void zr36050_init(struct zr36050 *ptr)
+ 		sum += zr36050_set_sos(ptr);
+ 		sum += zr36050_set_dri(ptr);
+ 
+-		/* setup the fixed jpeg tables - maybe variable, though -
++		/*
++		 * setup the fixed jpeg tables - maybe variable, though -
+ 		 * (see table init section above)
+ 		 */
+ 		dprintk(3, "%s: write DQT, DHT, APP\n", ptr->name);
+@@ -551,8 +555,9 @@ static void zr36050_init(struct zr36050 *ptr)
+  * =========================================================================
+  */
+ 
+-/* set compression/expansion mode and launches codec -
+- *  this should be the last call from the master before starting processing
++/*
++ * set compression/expansion mode and launches codec -
++ * this should be the last call from the master before starting processing
+  */
+ 
+ static int zr36050_set_mode(struct videocodec *codec, int mode)
+@@ -581,7 +586,8 @@ static int zr36050_set_video(struct videocodec *codec, const struct tvnorm *norm
+ 		ptr->name, norm->h_start, norm->v_start,
+ 		cap->x, cap->y, cap->width, cap->height,
+ 		cap->decimation, cap->quality);
+-	/* if () return -EINVAL;
++	/*
++	 * if () return -EINVAL;
+ 	 * trust the master driver that it knows what it does - so
+ 	 * we allow invalid startx/y and norm for now ...
+ 	 */
+@@ -603,7 +609,8 @@ static int zr36050_set_video(struct videocodec *codec, const struct tvnorm *norm
+ 
+ 	ptr->real_code_vol = size >> 3; /* in bytes */
+ 
+-	/* Set max_block_vol here (previously in zr36050_init, moved
++	/*
++	 * Set max_block_vol here (previously in zr36050_init, moved
+ 	 * here for consistency with zr36060 code
+ 	 */
+ 	zr36050_write(ptr, ZR050_MBCV, ptr->max_block_vol);
+@@ -661,7 +668,8 @@ static int zr36050_control(struct videocodec *codec, int type, int size, void *d
+ 		if (size != sizeof(int))
+ 			return -EFAULT;
+ 		ptr->total_code_vol = *ival;
+-		/* (Kieran Morrissey)
++		/*
++		 * (Kieran Morrissey)
+ 		 * code copied from zr36060.c to ensure proper bitrate
+ 		 */
+ 		ptr->real_code_vol = (ptr->total_code_vol * 6) >> 3;
+-- 
+2.30.2
 
 
