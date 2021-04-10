@@ -1,120 +1,81 @@
-X-GM-THRID: 6660888898978185216
-X-Received: by 2002:a9d:5a09:: with SMTP id v9mr3055080oth.17.1550859049953;
-        Fri, 22 Feb 2019 10:10:49 -0800 (PST)
+X-GM-THRID: 6949198562719694848
+X-Received: by 2002:a17:90a:ff07:: with SMTP id ce7mr17170621pjb.0.1618039833953;
+        Sat, 10 Apr 2021 00:30:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:590f:: with SMTP id t15ls2856579oth.10.gmail; Fri, 22
- Feb 2019 10:10:49 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbXhbAObjz5KMOts9imQ05wKulj7CC8BCZsBqlM7VoreEqe5LcF7BQplrF/XZrwrrYwet94
-X-Received: by 2002:a9d:5f17:: with SMTP id f23mr3091615oti.31.1550859049166;
-        Fri, 22 Feb 2019 10:10:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550859049; cv=none;
+Received: by 2002:a17:90a:2f88:: with SMTP id t8ls4220828pjd.1.gmail; Sat, 10
+ Apr 2021 00:30:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzUc1Pdo26iqivgVZRaQ3qYciK8YrIiOIJaPOwjZN+osiwmOIKfiEUFqwllp1Oh1VdjUlBR
+X-Received: by 2002:a17:902:ee4d:b029:ea:ce1c:690f with SMTP id 13-20020a170902ee4db02900eace1c690fmr434066plo.35.1618039832853;
+        Sat, 10 Apr 2021 00:30:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618039832; cv=none;
         d=google.com; s=arc-20160816;
-        b=UBBpSLZopN3R7zWzaPHNhAXvJBPy1o2oDAb4PP0b0cDoeRpMKaF/x46yJi9logZhP2
-         xxASEHuDJM9mdwxJuqsoA9474U+oVycDxjPnzjOUOQ0TAAKiNDmcMX3DIH0/J2DjBaKQ
-         vmuw9i0J/vJegBtDync7FbocDX4jS6UjNIrPQSNqLBLTH0lF3yUPGqbOLa/1uCijKWPg
-         45U0ElfFnku4W2f/gXnN9RTsEyGegdclKobNPQlhENRaGPn9QngYvOjpl3q9OMGUhmjx
-         s3VRjy6e0j2je3eK5x5YQxgIuGIBuyQ4fTd/2cHmkXlOgoMJPhCRuAcIWNukn/QvUxsz
-         ucgg==
+        b=mplMsUksoXsDcED3IQs329rTnPKPVlZsUkeBbKdu+fN8GwEHHb7N8v7K+mtYwBlKov
+         dCQLdkjdoIvOjwlrMkM26Y7diJDQ3VFdFEaZsR/sFCK/PNuMG+EI0ByNgb3Fo89ryF3I
+         jrXAQ6d9HSORKUJVZqM7VgBzSlNl0SROLDgFC5DLpSl5o6Jx6zNIqzwrabTFYgW5xKtT
+         HJCukLYRmJNs7wYIBdYHHKcl9cVI644bA2i72xUEAe4o1sbpEyHq81rDEp0X7xNBPpV4
+         3wgZhPL7X3He8y9LQSjpf5x0XIjGUpm9A7OdccNA0+av4sH4qgSh2yUwfGJPCskvIhvu
+         WOLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WSWPh1oLymg3IPeRP/XIYN0Pe+dXFhVGJKkyJBejSDA=;
-        b=lqEqjV8Mm+88vA4YN4vqPHdcoVzQWnlAs9ih2In1Slw6IWphyGHbKKvJpxxE+Mehd6
-         Kb1WZi21lkjeU9HJdVR6bpTwxV1FQOjetK60JEyro0NrDGaGUyKBkD8lJ6P5YK7S3lz8
-         4TfErqiE2R5eG7ogNjUxahJwi9nwBD8QmRjkE4RlJlxCYGqdK+c3XmnWb5svc3NGGJif
-         7SaVZb28vcZfEoN9IXSm6WyBV8TuPXYKkTl/7m5x63o12sAz0IPkefH0UsiB10DlcxlJ
-         T5zwyrdnQ/foemsq52QXd3s+yAoISpdFH6uqwqwCuWg1qRS/hD2gXxFfEXbyhtbV8LuI
-         8ccA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=ps1S9+b3PlF+U+Lx8KZ+80tUKleCOjZYZJF/7h6Cuqo=;
+        b=YkSgtxw7gLtr9AsJX0S8+OPJSjvM709mRyKvi0M497NtIRTygoebmX74EId2KGbS8v
+         QVmX8Rr+1FTTBUrKF+/NNDwan94v6S+uCIckk6xvHR58lUWZ7p6QYTQFirMGhgl5wuca
+         dArBcf7sK6whMcE9PPl8M0fbxcHWF8yZ0mGZokTnLhf9M5aNN52ajcmRsSkUlhY4UYAU
+         CDuBxSnPG3NDTq0tD+sIuM7paJzwbzXm07LJulbD9m7ERk3UGnD+h9nmTrrsy4soGwQD
+         fn6Nk6tSl0eZTAwCI1r1NYPQ5pYYuq5ynf4aZbg5fhfatbTWeDVa1YywYrhgOtFlPwh3
+         hcVw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DtGPgFzo;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id l6si140718otn.5.2019.02.22.10.10.49
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=DzO7xqgS;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id mz7si23173pjb.0.2021.04.10.00.30.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 10:10:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 10 Apr 2021 00:30:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DtGPgFzo;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x644.google.com with SMTP id e5so1441255plb.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Feb 2019 10:10:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=WSWPh1oLymg3IPeRP/XIYN0Pe+dXFhVGJKkyJBejSDA=;
-        b=DtGPgFzo2EgFOgoEKKBuXMnx+Ky4hOfbMrbghm1r3OzH/2yyR7l+Uw9b69m6hIGtdx
-         ENQcnexybWZKLzLoY560Md7bOGcNeAZDMvn8gGDfv5r1GBUv6/+7ydpHUGMn+yXAyKsH
-         CAHRKCY1KxJVcHaJaVvTusBse4iAjA8DNR8ZVeph2qFSC/KGQt9lUix3Ka4HRevyzOgZ
-         auEiEH3zVDV2n925ZADFZncmeB542/QxjrTkjEZl8oGwbcfgdTCreDszzyvVSGCydZNB
-         9FlCuoUYouHuki9ZfS3Jzl/wPo8DdqIz53v16OiRTYg7/Hanx25BG5dttZ1p4IXLSRqW
-         XJmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WSWPh1oLymg3IPeRP/XIYN0Pe+dXFhVGJKkyJBejSDA=;
-        b=N0H2fEuDgvTsfESohwMSOuAAy3EwfJ8Bwmrlkm0lnWhz1PB+HPoKS3RhO6G+b7lcMj
-         QmnxYbYcY+fAr68K6tz8GjRs66nf81MFRHrtjqF7N8O7MbUfikty9FdgHyZnU9m0AIV7
-         9djS8WoBPPwhhVFnvrK+kk8yHUQYwXU4JA0fga9XI+BzGcxqi2tfyBo0S/wYYwe9tvzX
-         cZPyAZ8TSEi/PX804W73omx10Z8k4goxzNN3VZ30eRWAzTMMqaftYlFseBNhamMmk84B
-         F1eJq2msKvhrivefW1vfDb0CwZPQnAnNbEoKW80atzy8+sLoHeyOBERqoCl0AIlLSpp/
-         jliA==
-X-Gm-Message-State: AHQUAuYpPk2hnXOLYE/eBmpi1BUYa5kvn6c1ESJYJKExTYSmkDAFx0H0
-	FG+O/sXzRH2RqiYWDAOV6zVWWI9ePxA=
-X-Received: by 2002:a17:902:8e82:: with SMTP id bg2mr5433146plb.217.1550859048122;
-        Fri, 22 Feb 2019 10:10:48 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id t24sm2988968pfh.21.2019.02.22.10.10.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Feb 2019 10:10:47 -0800 (PST)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Bhanusree Pola <bhanusreemahesh@gmail.com>
-Subject: [PATCH] Staging: fbtft: Alignment Should match Open Paranthesis
-Date: Fri, 22 Feb 2019 23:39:05 +0530
-Message-Id: <20190222180905.10618-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=DzO7xqgS;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CA7E761165;
+	Sat, 10 Apr 2021 07:30:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1618039832;
+	bh=V2ahhYFun9G88NQxi3nZmo9sLQY6hlpOSG6Jx+hmFsY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DzO7xqgS1NfRhZiRS1IbnQLcjhMcw7kw4xrwa3qJbrSGXRrkFMqY6W7lRo35IFML/
+	 py4srfSdjkBPjl9euQbrFv6wzMNg7wJIB3cZ7BNXpNnNiuJh+tiSLf35HD6gSQKUPT
+	 tYQg5nIXBLvoW1vAOup968WyrrFcRTK+joWQaXZY=
+Date: Sat, 10 Apr 2021 09:30:28 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [Resend Patch 0/3] staging: rtl8723bs:
+ Patchset for rtl8723bs
+Message-ID: <YHFUFJ9S1ezqwPe9@kroah.com>
+References: <3311077.CXPNp9SFPB@localhost.localdomain>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3311077.CXPNp9SFPB@localhost.localdomain>
 
-Clears the warning found by checkpatch.pl from various files
-WARNING:Alignment should match open paranthesis
+On Fri, Apr 09, 2021 at 06:39:31PM +0200, Fabio M. De Francesco wrote:
+> This patch series removes camelcase, changes the type and use of a 
+> variable, and correct misspelled words.
+> 
+> Patch 1/3: staging: rtl8723bs: Remove camelcase in several files
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
----
- drivers/staging/fbtft/fb_ssd1351.c | 2 +-
- drivers/staging/fbtft/fb_tinylcd.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+<snip>
 
-diff --git a/drivers/staging/fbtft/fb_ssd1351.c b/drivers/staging/fbtft/fb_ssd1351.c
-index a8980d9f7557..9ac78ce30619 100644
---- a/drivers/staging/fbtft/fb_ssd1351.c
-+++ b/drivers/staging/fbtft/fb_ssd1351.c
-@@ -164,7 +164,7 @@ static int set_gamma(struct fbtft_par *par, u32 *curves)
- static int blank(struct fbtft_par *par, bool on)
- {
- 	fbtft_par_dbg(DEBUG_BLANK, par, "(%s=%s)\n",
--		__func__, on ? "true" : "false");
-+		      __func__, on ? "true" : "false");
- 	if (on)
- 		write_reg(par, 0xAE);
- 	else
-diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-index e463b0ddf16d..60cda57bcb33 100644
---- a/drivers/staging/fbtft/fb_tinylcd.c
-+++ b/drivers/staging/fbtft/fb_tinylcd.c
-@@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
- 	write_reg(par, 0xE5, 0x00);
- 	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
- 	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
--			     0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-+		  0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
- 	udelay(250);
--- 
-2.17.1
+I've again, dropped all patches from you from my queue.  Please resend
+everything in the proper format so that I can know what to review and
+what order to apply them in.
 
+thanks,
+
+greg k-h
 
