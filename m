@@ -1,106 +1,110 @@
-X-GM-THRID: 6667942778398310400
-X-Received: by 2002:a62:11d6:: with SMTP id 83mr16910298pfr.144.1552501408849;
-        Wed, 13 Mar 2019 11:23:28 -0700 (PDT)
+X-GM-THRID: 6949315230484660224
+X-Received: by 2002:a05:622a:1c5:: with SMTP id t5mr14626024qtw.49.1618013538613;
+        Fri, 09 Apr 2021 17:12:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:8216:: with SMTP id x22ls1562801pln.3.gmail; Wed, 13
- Mar 2019 11:23:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzzh0dpyCXeL+WiUtc577rR7K83AmHXzy1ImZtxCUEtXvu1hjkc4qUK0nw0mF2milWErQ9
-X-Received: by 2002:a17:902:868d:: with SMTP id g13mr3863403plo.4.1552501408053;
-        Wed, 13 Mar 2019 11:23:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552501408; cv=none;
+Received: by 2002:a05:6214:224c:: with SMTP id c12ls1825619qvc.1.gmail; Fri,
+ 09 Apr 2021 17:12:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxw7haoJxsmHU9DjGYyb0K6xvFyWpYRcDx38RUuXP2Gy2JVtavhyJ0oWyJpuDrPQYwKPUdX
+X-Received: by 2002:a05:6214:a6b:: with SMTP id ef11mr16530928qvb.43.1618013537886;
+        Fri, 09 Apr 2021 17:12:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618013537; cv=none;
         d=google.com; s=arc-20160816;
-        b=oAwfgmDRdJxMMuAyeGdgYcBbEHpTVVmqqvbBtqf4qBEFVkgkU9zWFyFViiiZnGlGzc
-         HZk4rySdlMUNbT91Ax4m1AWa1cLzWXDE0nmJUhiq+byBWP1GzbXRKEPJAvyEymYSU+NU
-         7sNPEP+aNphjNS6UKR/9BbJDXDsGVmopQulHlvk9UW8fhkPqpdmsWQA82CI8OOzL4+ZK
-         kLW8g7pbApZAMe2GKsEp9rXY0mMGG6qKZBW8iGSIfx/EGOoF36ab3mz6jhxtqLNCHyS/
-         tP3FooXJ0ipYHgMXRM//ry6CpsmZYFo5Y8oFbXW6VpXrhdthO0bc1BBRVwCjxXRAId+H
-         TbyA==
+        b=Sw9DUgjh09KWSHE735o0dhVK2IrReF93bPX6gdMzVAbudCNTp6o3bzRqez/Fgg4MbH
+         Us7nhtB3oASwRbUIj8KABHmVIg2lz2reIBGwzkiDTyw3NaOtbdA7eoRX8PDAnxoik/O5
+         w11Ty9OzR9V/f4D6nrRnA0XAj9QdSn8JkDBtntkdl8nHuFar5z/K7/BOSsyTdxEARAgI
+         JPNW0HzEpDLf76QqZoBHKpSZlWQvJqEHsxJVn1q7WnFjX2Y9QQotq+OxukX3onuQA4Ob
+         QYyX/s+koYViFm7yrSa6OAy8gV2TTHqQFVoBsaAtYy2C9Q9PJslxIh/JiZLP+P/NGrl/
+         jpUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Y0SX8IGP1l8+ReG3Ogqv8y5ylDb2SBsJc27oSNIw2Bk=;
-        b=Fhqia6nWxmxpnO8ZmYti9NMflLNmOkUWcknksrqHY2zrKiRdSIua7LDO3EAR/bi01F
-         X7ZLhO0QtyXjFQMIR1/imoqS7cRvgZdGlBMS6w+Okxk/4QftCZWt0izohd5otiZ9BEVL
-         TsBXmKrVaKMu0tUwCHuRPdUKWWACgTA1jjzr5I+dw29Bx8hM3jmvJH7lF84cbDDMG3bT
-         PG2DimMFxDhrUWZnxYtr/YqTTZvabCFD2OkJWvRq2kqaFE5plB1QRrKPSDoE2MZSWtkb
-         P6WUzbe/Uxk8coUL7f8iWujBV3o+6tBOfo3EhJMbDUW59q/pBhiw4hhBxYmcOc4cEjyN
-         sJEg==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=2lxfN5ByZEbEMKEjmWp1Q7WunCY5qRG4cae/+TcjBiw=;
+        b=LYm+4EGDy3qIzES1vCk/ffqqB1n7b+QQkUq8zz8mnQ5k9A+IhCA2g3urqy1cUCAY/k
+         lEUtXgzeO5jgFsSl6D79COjcM2UBuJwU7NK/UqIhFBSZdqjY8phC6Fa0OZ9r+L6abw2P
+         fXw0a/Oc4iDPbwJjJ+BhWOJiNL+9cvZvDG7YNxC8+BInde22M19N0GfLg8bx6wHlQJZ+
+         TYtxDodcYMp0Yw8tn92/ioQhFQBMSMjndBi3L8kai9XTUe0YtXIuyMln7RjPOF47osho
+         GphlWTqlXnTcgOHap2afiV5RbRr0YXF4/Yu34iJBECxPh3r2o5zy5ELcVzjSxENurJ8O
+         tQ2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mvd6hVFS;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nNLrhJg0;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id z184si673573pgd.0.2019.03.13.11.23.28
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com. [2607:f8b0:4864:20::1031])
+        by gmr-mx.google.com with ESMTPS id w1si215063qkp.4.2021.04.09.17.12.17
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Mar 2019 11:23:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 17:12:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) client-ip=2607:f8b0:4864:20::1031;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mvd6hVFS;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nNLrhJg0;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1031 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id h34so2084616pgh.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Mar 2019 11:23:28 -0700 (PDT)
+Received: by mail-pj1-x1031.google.com with SMTP id kk2-20020a17090b4a02b02900c777aa746fso3984387pjb.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 17:12:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Y0SX8IGP1l8+ReG3Ogqv8y5ylDb2SBsJc27oSNIw2Bk=;
-        b=mvd6hVFSjreh8nvzg8lQObP09vrM3Nnx632PQSQFQwSVlhytH+4M8rlPU2fP5lm6fU
-         eVAF9BWhgHbUC3Bauc/M8lxpDbS/29ilKih7fAcihdK0t1FxsPxCDFBtaEIUUonO5g7l
-         OsKurUgXWzW3qKOm363dVTAEKIK5naMdNINR+nJSTY/fjVqti4wgr86QZaR4gICU3+/V
-         sm5e9zqdG316Jvx2mDmf7jWiyrRr4lrvXlj7JO4RdSrbY4zBRMYqNDVfH4QQGdxBda51
-         xFRHAxI/h99eK9PJELO3eYKIXOhqcsTID54bl/Mm0GRi35J/P7Mj9qu+roZVY70Ruen9
-         ZyOA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=2lxfN5ByZEbEMKEjmWp1Q7WunCY5qRG4cae/+TcjBiw=;
+        b=nNLrhJg01t54nH/nElkvEhcvw2owYft633IxmHULTyL9BdkUnROR8QFoRypeZfkKRa
+         etaDJ1PEK3ghpeEaXfO1legoCBaVQ55m9elz9GtyRAmCBd7hD2+jsvZZG16od8vZSaOp
+         fcgc85nlx9VDpTU0rudcm/NrKKvTVpBZ+tZbsAFLbN6do8LQlndorth2PBAssBTrH0+o
+         IR4LXu56UUnTb4W5dqCF4cc2PHfq4eP+ENoIMaa9BaZ6WQJZTgK30qXW98ydovS+xffZ
+         pGoeIIpXDxzVuErKvFY1ebqZIcEUp/eY+S29dW7kQaTVz1fUVYVvGdus9WhMMpSrPxtU
+         GdVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Y0SX8IGP1l8+ReG3Ogqv8y5ylDb2SBsJc27oSNIw2Bk=;
-        b=ZNP6KPN4OghZ7uPdgXPgqJGEuqBzxdA7Yt1wfu9w8aI4Ob2gEOh+rj0d9fygpG3HaH
-         QqCKs2vdtddeLtuEB7RAquf/cW8oRwHOyPxU1yFkzXvpxuNAr51NUey1jDQd4Mm9DLr+
-         CKygTeyJUblbYgNpHbTW+UQHlLOeCpS+QUK6LgmlqeetMCl6ZwxnVbENKKvjKM+4X3KM
-         0rBZ1k/+2y8gNvUVycjxQI3w/syJb58CvROUVjJmsVkO2FG8grFwndX+6i6Iq726JiQP
-         L7sG0/geyr4zoIITvRe4IstzXnX/b52sVLGvOZwa472u3gs6eu92u8se9O7a26YZZTQ/
-         wl5A==
-X-Gm-Message-State: APjAAAUeoNzhvJZT/aYgdaysv7xJgl6gLlCC2bRhME2lCmytWdyz5bDm
-	a62bXVgs+18jYOYIlXXS34s=
-X-Received: by 2002:a17:902:8d97:: with SMTP id v23mr45500801plo.274.1552501407591;
-        Wed, 13 Mar 2019 11:23:27 -0700 (PDT)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from localhost.localdomain ([2409:4042:2e96:de47:a16b:5134:be60:2635])
-        by smtp.googlemail.com with ESMTPSA id 20sm31166693pfs.182.2019.03.13.11.23.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 13 Mar 2019 11:23:26 -0700 (PDT)
-From: Bhagyashri Dighole <digholebhagyashri@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>
-Subject: [PATCH] staging: speakup: Remove unused variable.
-Date: Wed, 13 Mar 2019 23:53:15 +0530
-Message-Id: <1552501395-12308-1-git-send-email-digholebhagyashri@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=2lxfN5ByZEbEMKEjmWp1Q7WunCY5qRG4cae/+TcjBiw=;
+        b=NshiYW/OaHtt6MjeRPV1MrzbYh1vJpWIyS28QqZTsTCeyVLzkU4IhPXpdHMzemzmpt
+         LXoDoYK7hndFPvfE0NjyyvZR/m6nfvNb8+ysZvrVvPgkppDvu+TrnBhYmaGbAG0ZQHTf
+         0oqfHTgpmR8eY7EU9MtZpcNyELJCoqNxyFvq/E8Hek6Tx3UYhtOEpeF++rEI3xm1Z3rV
+         rO/A4RKuGMOTP+VT1k17xXB9YuvmvDM1lhqTyk54VhfBWEgJyEWGoFqF5RQXqf4++thT
+         J2Os4e/ss5Cc2YFqNOeMu/4AWF5Sfgq8oUCgfiOcauKBftzv8swqhbUmDwCQSduw2r6/
+         9p0A==
+X-Gm-Message-State: AOAM532+45L5QwSpBGx2jYt0osv0i/m9kL8zm+q4QMeLyCkwBFMa6jlh
+	uwzexTHf3UyHH3243NxB+5NQ8t2JIsZR7w==
+X-Received: by 2002:a17:90a:2bc4:: with SMTP id n4mr5147236pje.52.1618013536891;
+        Fri, 09 Apr 2021 17:12:16 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id s19sm3203011pfh.168.2021.04.09.17.12.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 17:12:16 -0700 (PDT)
+Date: Sat, 10 Apr 2021 05:42:10 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH] staging: rtl8192e: remove unnecesasry f-trace like logging
+Message-ID: <YHDtWizzh5EVLL4/@kali>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Remove unused variable which is used to store return value,
-Detected by Coccinelle semantic patch ret.cocci.
+Fixed Check: Remove unnecessary f-trace like logging by simply deleting
+that statement as we have other modes of logging like ftrace.
+Reported by checkpatch.
 
-Signed-off-by: Bhagyashri Dighole <digholebhagyashri@gmail.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/speakup/i18n.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/rtl8192e/rtl819x_TSProc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/speakup/i18n.c b/drivers/staging/speakup/i18n.c
-index ee240d3..a748eb8 100644
---- a/drivers/staging/speakup/i18n.c
-+++ b/drivers/staging/speakup/i18n.c
-@@ -470,8 +470,7 @@ static char *find_specifier_end(char *input)
- 	input++;		/* Advance over %. */
- 	input = skip_flags(input);
- 	input = skip_width(input);
--	input = skip_conversion(input);
--	return input;
-+	return skip_conversion(input);
- }
+diff --git a/drivers/staging/rtl8192e/rtl819x_TSProc.c b/drivers/staging/rtl8192e/rtl819x_TSProc.c
+index 476875125e87..4457c1acfbf6 100644
+--- a/drivers/staging/rtl8192e/rtl819x_TSProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_TSProc.c
+@@ -136,7 +136,6 @@ void TSInitialize(struct rtllib_device *ieee)
+ 	struct rx_reorder_entry *pRxReorderEntry = ieee->RxReorderEntry;
+ 	u8				count = 0;
  
- /*
+-	netdev_vdbg(ieee->dev, "%s()\n", __func__);
+ 	INIT_LIST_HEAD(&ieee->Tx_TS_Admit_List);
+ 	INIT_LIST_HEAD(&ieee->Tx_TS_Pending_List);
+ 	INIT_LIST_HEAD(&ieee->Tx_TS_Unused_List);
 -- 
-2.7.4
+2.30.2
 
 
