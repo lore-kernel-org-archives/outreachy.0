@@ -1,118 +1,119 @@
-X-GM-THRID: 6669200248940789760
-X-Received: by 2002:a2e:80c7:: with SMTP id r7mr598276ljg.10.1552794186465;
-        Sat, 16 Mar 2019 20:43:06 -0700 (PDT)
+X-GM-THRID: 6949336607040208896
+X-Received: by 2002:ac8:7ef6:: with SMTP id r22mr5981695qtc.150.1618018515076;
+        Fri, 09 Apr 2021 18:35:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:558f:: with SMTP id v15ls1206531lfg.5.gmail; Sat, 16 Mar
- 2019 20:43:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz6CR/UbtC+VJ2TI04yooS/DB7+GGqOraxrPSjN86AqiNmZOXOKBf4X4x3c0dCVO7U49ZXq
-X-Received: by 2002:a19:3809:: with SMTP id f9mr537212lfa.1.1552794185521;
-        Sat, 16 Mar 2019 20:43:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552794185; cv=none;
+Received: by 2002:ac8:5781:: with SMTP id v1ls4569672qta.3.gmail; Fri, 09 Apr
+ 2021 18:35:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz61BtvflmBanM8hj3yUFwB6Z7rj2znOiIDsPsqHRTnkoceLF3xutFzJrrUzRuZk6U/tJ2N
+X-Received: by 2002:ac8:6f74:: with SMTP id u20mr4505845qtv.136.1618018514286;
+        Fri, 09 Apr 2021 18:35:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618018514; cv=none;
         d=google.com; s=arc-20160816;
-        b=hubSJ4MyfkJleG5e4kwC8IOUawk16WYvFsDVXOsaqek2Ba52LbLTsbqbLBq2y7OpF2
-         AsLcX5in1U/cimsZ8jCxE0oQWKz2Fq0f8ZvrZr9SE6d4wqoGT3wQcvewzs9pEX1p5P4D
-         TyetRGb8bdrsL+HSfvQDlg8zLItDrbNe9JL9Ss8ngdJUhj6ePbl9xWhiStVxUsiqxUg6
-         BNwRRvSo8AlvXNi5QkDLf2viPWErHyYENvdkLxOT3QGe0MpZTwvvenkdFqn/436h7kvM
-         qDNr+DlHvpTnAXb12IxUM3J0Iunbh/Nja8hFxRlbLlvuJG36h/1afI1zzWVwsQkolJog
-         0P1w==
+        b=F3Qub7Px4sptV93oWEfELsGnaFxD8rt/VW2ZU0ynjUsfS924/YsAb29hguHLN7ZfsM
+         etn3lwLe/xb+BAXu/pbSNvtk9JubwWRe4oagL/yzypqiN/C+fAIJQmv6hRpE7GVrfaUo
+         qU6xto7r1YH1viSnPeW73+yi22RUhHXX2wgw//tw5s2qF2Z79F51dp5yKLyROFNLJHHR
+         sAVGNu+jmEN0BwM6QRYbUmOaM89pRrubLmCHDhApsKlK27jlswjGdWmukIf5ReOlzKX6
+         woS66wmCwGxx2p3S8NBXDZrTThDq1h/wmn4HtH1cQCaPuq/eOFhjerIKbqZWi2rED9fc
+         35Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=zCFeCo9jfyzbFu9on12SSuPHmbccO4YKVoxxZUjoebM=;
-        b=duk9MkTvuMQqDMvZBWSRkSgexpg4ivXQGxfVV+WcFL8Z+0Bs1DExZTH78pfj8ANczp
-         CCBPLLV65N614MBc+1WOKDBv5FTnaZlv3M52g0hn1roHmEMVimcNINxnTY/HnGI5EJnG
-         H1SiAbyW64azIQi3su4lLOpGlclzJ8Gt2THZkrILKTM9BknNv5LwRvOTOckF8Kt1Nbru
-         GJb+TIKDjMG9zo9PRVTl/GcJeqhGghuegnHiRyADFNTWkWVQf+9JYLdzlkLOOa36qT7a
-         KAAEt0UIDxCl+cfbYJqTtF0Xe7kOLeVybaIbzxIgAEyA66m6lH+cXyDzTm7LfT+2QmT3
-         kTIg==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=AmH+UMyc1cUAc4hzdn/oSiz/QnBV7R1v32Iys4DOp0s=;
+        b=Q1TvpbwqI8yvq/O0mZtpRqducRFl8bxUguuz0unxda/6TyEKaHwNfE5+5a7Ce+R8n1
+         XbuLQ/HmQTxDrk9Kl36hsqjVLU/MLLqrRs1bTvPf+0OtewwuEUHrX9+1JxmR+FbUmagc
+         2+4LwsJ906bIM20WkIbU4t/TxXJfD6S3w46HQIDinVhiO8GfSagNHIlP0+GEfyVxogpr
+         CgrSRvtGF0eDeZfKtudrksf1QsDGOLDhq9OzPpsoyBNnCslbi/AvVGyH9Va0CddmRJsW
+         63LF5yfOB81c1qEqdNaj0ZWEdnNPl+ODdHF9bUi/rQy+SL8g93FvhlQxf8DS4QKcUaKw
+         92kA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e4Q+ivyF;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::329 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M8B463ky;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jbi.octave@gmail.com>
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com. [2a00:1450:4864:20::329])
-        by gmr-mx.google.com with ESMTPS id i21si273447ljj.0.2019.03.16.20.43.05
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com. [2607:f8b0:4864:20::102b])
+        by gmr-mx.google.com with ESMTPS id r26si500822qtf.3.2021.04.09.18.35.14
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 20:43:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::329 as permitted sender) client-ip=2a00:1450:4864:20::329;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 18:35:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) client-ip=2607:f8b0:4864:20::102b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=e4Q+ivyF;
-       spf=pass (google.com: domain of jbi.octave@gmail.com designates 2a00:1450:4864:20::329 as permitted sender) smtp.mailfrom=jbi.octave@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M8B463ky;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x329.google.com with SMTP id f3so9953640wmj.4
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 20:43:05 -0700 (PDT)
+Received: by mail-pj1-x102b.google.com with SMTP id x21-20020a17090a5315b029012c4a622e4aso4058826pjh.2
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 18:35:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=zCFeCo9jfyzbFu9on12SSuPHmbccO4YKVoxxZUjoebM=;
-        b=e4Q+ivyFEjJYWH3r0ODhhHSb/tzXyMdCrNlayCevlkr7VFUK0vvc1hoctdhpIKDJDs
-         XDqC3ImI5sMlLVpLoPAzGnqaJd4QXzw0uXc/e5VgXz3McyKE0t/PWZ1oGMJfsSXjP1nb
-         iR5aWvWPbzFJcFwf4SD2m+vFw11DdjKkm7lDgPjFAUqGBrVuvEKnrzY64xJoc90jg4wR
-         EiWJ5XtSpp2z4azepzL69EzcIJE9rwhkS7ZQ7gMq0BXl7iRmr8fxf1TYGXNNjPPGT0eQ
-         mV0h9nAlTYogk1M1yK3yNWRzPDAvSMUNJ6JRmyuiHNbqrIk9eAHNpzzXlVDIWjYHDkBv
-         J5CA==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=AmH+UMyc1cUAc4hzdn/oSiz/QnBV7R1v32Iys4DOp0s=;
+        b=M8B463kyH+a1W5utxKfyOtivuPkCqs7onqXldRTgrHV18AjrJ2/Uyfu6dgIxjuyvul
+         SnyfibvyXDqFSEcHjxvHdirLL7j91yqJ1yb1QIRaXmkzODWdpgbuV+4A6pxuABqIQ4KV
+         8zBEbNGx89je4ikUkD6ot1pmV6y4SVL6LZxvw18cZEwn6/iKWbKtS57Aq3nEmVXqMVAy
+         l8kRS8ytZG63jSXQJcWdAT5EeseNwwIEvtx8YKq/y7A/BhbKiVNkr4SMTe4KqY+GAJVW
+         3Eu+IHozQueMbFfIt+koiJZBc8C8j333DaiTKiuIpXkkd8PmECvH3+n72ZDIor3K6oG1
+         FoEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=zCFeCo9jfyzbFu9on12SSuPHmbccO4YKVoxxZUjoebM=;
-        b=iBQDybbBpiPqwNJdVAqsAsNSjkhBsS6KEKRlzS7sOt1xSyg/i3iiyjfpCN9HmuSATW
-         ZtR/QD9LeHgb94FHS8WJADuw/83n5C99Ybt8XHmabsF2/xyKEbAZYbnlWxRHEQTW88sp
-         NUr2ARtL8DECPi8Est4m0FSMoSAu9QmcaI7KBrAv7pJnUHE7SyH8Vu4pW8GMwwjZvWeM
-         mZSEP+FiQ+pDHWNZuqR53ZkLHXEHp/UFqpmZL5OUj0khWFYQOT4jySQI6pD1Vg/b2Mua
-         zbSNXcyPSCrGGwfwef/Z2tuMlm22CXqnqtCLH8aBwM59umoDC9BQ8w3R3YI0ieUFGDOn
-         0fPA==
-X-Gm-Message-State: APjAAAXFM7Lc6fKxtenJuO1HygvZ8sCKrvyneTs12vXXHBNOH2tu1Tyw
-	+JzvZfR45KsGrwhtOaj6rQ==
-X-Received: by 2002:a7b:cd82:: with SMTP id y2mr6363962wmj.121.1552794184839;
-        Sat, 16 Mar 2019 20:43:04 -0700 (PDT)
-Return-Path: <jbi.octave@gmail.com>
-Received: from localhost.localdomain (cpc102034-bagu16-2-0-cust471.1-3.cable.virginm.net. [81.97.71.216])
-        by smtp.gmail.com with ESMTPSA id w10sm6398386wrn.32.2019.03.16.20.43.04
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Mar 2019 20:43:04 -0700 (PDT)
-From: Jules Irenge <jbi.octave@gmail.com>
-To: linux-kernel@vger.kernel.org
-Cc: outreachy-kernel@googlegroups.com,
-	gregkh@linuxfoundation.org
-Subject: [PATCH] staging: speakup: fix line over 80 characters.
-Date: Sun, 17 Mar 2019 03:39:46 +0000
-Message-Id: <20190317033946.12585-1-jbi.octave@gmail.com>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=AmH+UMyc1cUAc4hzdn/oSiz/QnBV7R1v32Iys4DOp0s=;
+        b=Gbxj9jRkZzESnEOldK5/o9HxoE8PB1k06Ku48Joe4f60DGd75McMLlwcNZ3pyqSz7e
+         6wJz0bOaL4WxYtaGKSA+mUNyoUDBwd6T+dVe17RFvcy1aF0qv8Cb0+N3wPEvF5AXHwoi
+         7ubrie6ca9aBfpVS2lu8CHEZRzUNDHOG2OwyXOyuwrgfvD7WLvqWNbLutNpWlmqhnMH8
+         YECrK/Xv1utzand40OXzHzBT7+XnvUFuArlnkvUOY4tKqjR+d4X/Khqzc6YkOJ6IJBJZ
+         fkGK6GlG2xjjN5HFjD52ysuOCbpOFA1M0Km+9FSRvSCaf23YiHTAPMs4DsKwyNtzPNzw
+         gCvQ==
+X-Gm-Message-State: AOAM531MgUub1diQPF/q9PZKJ+lYyAVnVSaffPPeBzO1Xk1XLsnQ/1y/
+	FXRutOwtP9W0tZuCovS9Y7w=
+X-Received: by 2002:a17:90a:20c:: with SMTP id c12mr16288412pjc.224.1618018513395;
+        Fri, 09 Apr 2021 18:35:13 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id j188sm3352388pfd.64.2021.04.09.18.35.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 18:35:13 -0700 (PDT)
+Date: Sat, 10 Apr 2021 07:05:07 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH 3/6] staging: rtl8192e: remove unncessary blank line after
+ brace
+Message-ID: <YHEAy+SVBJQk0HDB@kali>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Fix coding style issues, which solves checkpatch.pl warning:
-    "WARNING: line over 80 characters".
+Removed an exra blank line after close brace '{' as it was not
+necessary.
+Reported by checkpatch
+
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/speakup/kobjects.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8192e/rtl819x_HTProc.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 2eb5af3debb3..abeab64899db 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -154,7 +154,7 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 			continue;
- 		}
+diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+index e188e9e6b11e..0ded86da1562 100644
+--- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+@@ -492,7 +492,6 @@ u8 HTGetHighestMCSRate(struct rtllib_device *ieee, u8 *pMCSRateSet,
+ static u8 HTFilterMCSRate(struct rtllib_device *ieee, u8 *pSupportMCS,
+ 			  u8 *pOperateMCS)
+ {
+-
+ 	u8 i;
  
--		/* Do not replace with kstrtoul: here we need temp to be updated */
-+/* Do not replace with kstrtoul: here we need temp to be updated */
- 		index = simple_strtoul(cp, &temp, 10);
- 		if (index > 255) {
- 			rejected++;
-@@ -788,7 +788,7 @@ static ssize_t message_store_helper(const char *buf, size_t count,
- 			continue;
- 		}
+ 	for (i = 0; i <= 15; i++)
+@@ -686,7 +685,6 @@ void HTInitializeHTInfo(struct rtllib_device *ieee)
  
--		/* Do not replace with kstrtoul: here we need temp to be updated */
-+/* Do not replace with kstrtoul: here we need temp to be updated */
- 		index = simple_strtoul(cp, &temp, 10);
- 
- 		while ((temp < linefeed) && (*temp == ' ' || *temp == '\t'))
+ void HTInitializeBssDesc(struct bss_ht *pBssHT)
+ {
+-
+ 	pBssHT->bd_support_ht = false;
+ 	memset(pBssHT->bd_ht_cap_buf, 0, sizeof(pBssHT->bd_ht_cap_buf));
+ 	pBssHT->bd_ht_cap_len = 0;
 -- 
-2.20.1
+2.30.2
 
 
