@@ -1,103 +1,99 @@
 X-GM-THRID: 6949336424403435520
-X-Received: by 2002:a92:ce4c:: with SMTP id a12mr6588768ilr.242.1618043504902;
-        Sat, 10 Apr 2021 01:31:44 -0700 (PDT)
+X-Received: by 2002:a17:90b:b03:: with SMTP id bf3mr16422495pjb.100.1618020762438;
+        Fri, 09 Apr 2021 19:12:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:2811:: with SMTP id l17ls2575942ilf.2.gmail; Sat, 10 Apr
- 2021 01:31:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzDSjl4hlArggo8qeNpLjTyEk6D4vLD871IUTbAobhkdbqfImyons0GyYtbi4mdHMmD3oj/
-X-Received: by 2002:a05:6e02:160a:: with SMTP id t10mr4280880ilu.261.1618043504186;
-        Sat, 10 Apr 2021 01:31:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618043504; cv=none;
+Received: by 2002:a17:902:c595:: with SMTP id p21ls4834376plx.6.gmail; Fri, 09
+ Apr 2021 19:12:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJx4hmem2DjGi5IkqVluAcwHbeeXUtDJkR+K8aJTIiGV5G7IktLCq5K+Hm0vr4hHXEPDxr
+X-Received: by 2002:a17:902:e544:b029:e9:7af0:9c78 with SMTP id n4-20020a170902e544b02900e97af09c78mr13613486plf.25.1618020761379;
+        Fri, 09 Apr 2021 19:12:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618020761; cv=none;
         d=google.com; s=arc-20160816;
-        b=q7LlYBMsaPc37nTQs4uNhQEBOnNkdh9/PFDqx+7mshBcDhzEapm2VAITEvW+nTaErO
-         g3cbyXWXavaEB2Rzus35sJ3XQiFjcM38kDZczWklxdRR3ZKLtH4HVO1gLAlGW6XoNrbH
-         Sl2+/a5dinaBASAE3PzP2ZV8WNkSDFKtdX61zghe9WSVjCe0q5m/WkkAgBEw5rxTqPbA
-         fvbMBuaJHV50lJUzPOMpcIZd29IjpoX7FjD8a57VgS/drEkcMrPaaEpd7MfJbmTccZUa
-         j94LSDU2VtfcUCSsdDOjvLOLXGwiH289RhdAD2zJU3cZWrRvexzC9JndErMzh3FlnRqn
-         V67Q==
+        b=BOhvib+GBWMzBmLQB6SBLUW8PFBHtwHhfQ1txTz4Ekx6gjUhxho9AQp3aaWm5Tvgf6
+         uk508tlqjodfmzpJKTj/1BkBBvJYgDpF88PYtK+tSLAYt6FnfN1VNcBM6Iun4mn2NYJa
+         1kPC0in5acGntrAXA90szXCa4tjUntWTrgKv5kQ245mefGSBecX6DxqGNEbOCWk5L6hr
+         RGYqDYYLTFm59vY5oPuC7eB26xQvGOYEuxbEFT6AkhOy1AqJsOzuWcx+114Xq9Y0g1dd
+         7B+kdN6hX0Bi6znP+vU6uNroFEcDX/IUlrJk/p/AjS0v4lnu+8gfEpfHhukRhz5nCPvz
+         YAOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=PubiMCJ/JcSvbHYsL6pJjo35Om7dnNselwNu5MbXugw=;
-        b=thNLBMAacY+HMuvAsT0cPhNxGGY2eCd7t03OpcndBkFnrSuVWqAtU96KEF19JPU6x/
-         bLxC5aKbaRkOkbn5hB81HVZnNfAWc4j8y8hCr6q1w7R6owDtTfVl5Qg/1t+3aAXC+9VR
-         m3A0XBEtKG+86mfmouDMNv/TlEH4kxSeeTd5ABClhfh37Xaxvy8gxJkhpg1REx3IKetG
-         6/O6RBNGkRJNEQFl9MV1NTxYMGJiGWCpRhipO5TDDeDZe5kUNLaRu9kATMIS2cGzqXJN
-         f3BxPCCscPdIAA+k2WfuBKVyJJzo/RDvrrCjyKtl0d4uTFgHJkprmEXZU91tHRUPzGZ4
-         yAbQ==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=hbVf4wVfNxnKZxFZJSlPx/JJraXw3lheZgCYNdZrqqk=;
+        b=MBkTPEcpegMg1cNJEZ9UbEFsOGM8GQOYrz5Fhx8LI7QqXM+nZqra4Tx4iveGsY/ae/
+         qHvv6jOReLzIaU3VqJOhmY9isWEAPp9O5B+uqAEdKBAwsIaMWbTNofENysZRpNHLh7yp
+         hsOskLMU9Uft43a8u4Oq/rRNi5aBwoAnL0N4naaI295DrSkaFmgkXoJNoxoQfMpUhzau
+         H9IgPrykYW9GkeAuakVRbBo+soPfTWVy7pJUuxo/CyGvAhnIb5+aKcxpjZtiiV7y2lOi
+         khSNAdhcPqnXVPLUwgfLT6zXQRNdQExlMJpxutaN440HHvVkSFBfo7Y0iaMoz1cbLKGn
+         coUg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=XOWTgARk;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id c1si347374iot.4.2021.04.10.01.31.44
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lOYTBpnh;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com. [2607:f8b0:4864:20::62f])
+        by gmr-mx.google.com with ESMTPS id t5si523935pgv.4.2021.04.09.19.12.41
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Apr 2021 01:31:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 19:12:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) client-ip=2607:f8b0:4864:20::62f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=XOWTgARk;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D7CCB610C8;
-	Sat, 10 Apr 2021 08:31:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1618043503;
-	bh=TLe3b6eYl5WXk+SrGIqyCYCg/bSYEiSQG3SxWxQ8LvE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XOWTgARkjElBB5yfl2YiPxa34rMrEFaaSfFy4aj8LQhv51SAGx8kkJnE8Zsw5OIMQ
-	 GtjRRgNIG6KKlmq6Xw56aJN5xl+ZAKr1CHYAP1/AqawFIMr+nwsXnozcD5oHroHaEU
-	 4FBOy9Ackv95/ZB573PW3fxr9HnEq++B1TyNRpGY=
-Date: Sat, 10 Apr 2021 10:31:40 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Mitali Borkar <mitaliborkar810@gmail.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lOYTBpnh;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x62f.google.com with SMTP id 7so3604959plb.7
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 19:12:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=hbVf4wVfNxnKZxFZJSlPx/JJraXw3lheZgCYNdZrqqk=;
+        b=lOYTBpnhtHMJ+6GMN0ThIPlxCD/e4HCWnsMR4Dcd1BxZ0UNCjmAZu4EUCDAVPOfcI0
+         0QV8/GiuXZ+nGbLOxRUptkSwDmwb3iKzNuS15pDZtp8HKIJNGsGt5E3kibZtMDMtEu0P
+         5s713UzUcpIN7JYQnm+eOHdv6EzeACJBi7I1ET0YeKkfn1oP4wPOQBU/oLc8udgC8aSQ
+         u0d9LIv/jJeh57b897fxDpm22+CNFUMv02TuKYayNqqgY/7IrxYHFxKduijD5V7YAnOE
+         e47ImFrcn2JUfsld0N7m0B4CuT9FvX2J3qsw7D1IJrJA4RyTrlr2kTmZPfXByK41iRi3
+         GEmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=hbVf4wVfNxnKZxFZJSlPx/JJraXw3lheZgCYNdZrqqk=;
+        b=F79YA6FyYICsjg8XsNvkkLR1/Eekxvp1RY3jUvFPvE8b8yq9zCdJE5NdbQa9Ua1K5M
+         qeYJ+6GYuh2sf7QWsT0Sz/ZqleZbG7WN46m2bVU40h2WcYbJAczmKaznk9QUPKfkyRPr
+         IzL41xFfswFRuZ5GHug1xlenAmM3W1IKN4WHdXde5qNGSky5FcUMxWQ9M4WvoVsDFM1c
+         2HWBH2Kli2CmyLPt5CRHcaALFJZSakRV7YhZooLXRBAwzcRPcrMGzAp7zH2VuGeBXLkW
+         QYEnBr0ERFrdqPQ1/ul0DrFEeBPVHB6tb6qXEIr3RLJ34T8Csgg5wplXPeEtRX7p63jo
+         262w==
+X-Gm-Message-State: AOAM532zrMhPYQiHp1EPOs6ElssNJvxUHtPVVAxXXN0g/Tk61oe8Gzdc
+	Bvulo+HzZTyabtCFFLfFbF8N2X5YlRPSMQ==
+X-Received: by 2002:a17:90a:a616:: with SMTP id c22mr16336354pjq.94.1618020761057;
+        Fri, 09 Apr 2021 19:12:41 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id x13sm3523524pgf.13.2021.04.09.19.12.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 19:12:40 -0700 (PDT)
+Date: Sat, 10 Apr 2021 07:42:34 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: Re: [PATCH 0/6] staging: rtl8192e: cleanup patchset for style issues
-Message-ID: <YHFibAvRrun6Jk6T@kroah.com>
-References: <YHEAnyO11wgp5PNZ@kali>
+Subject: [PATCH 0/3] staging: rtl8192e: cleanup patchset for style issues
+Message-ID: <YHEJkknTdEwID9X+@kali>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <YHEAnyO11wgp5PNZ@kali>
 
-On Sat, Apr 10, 2021 at 07:04:23AM +0530, Mitali Borkar wrote:
-> This patches fix the cleanup style issues.
-> 
-> Mitali Borkar (6):
->   staging: rtl8192e: add spaces around binary operators
->   staging: rtl8192e: remove unnecessary blank line before brace
->   staging: rtl8192e: remove unncessary blank line after brace
->   staging: rtl8192e: matched alignment with open parenthesis
->   staging: rtl8192e: removed multiple blank lines
->   staging: rtl8192e: align statements properly
-> 
->  drivers/staging/rtl8192e/rtl819x_HTProc.c | 43 +++++++++--------------
->  drivers/staging/rtl8192e/rtl819x_TSProc.c | 28 +++++++--------
->  2 files changed, 29 insertions(+), 42 deletions(-)
+These patches fix the cleanup style issues identified by checkpatch
 
-You emails are not threaded properly at all :(
+Mitali Borkar (3):
+  staging: rtl8192e: replace comparison to NULL by boolean expression
+  staging: rtl8192e: remove unnecessary ftrace-like logging
+  staging: rtl8192e: remove unncessary parentheses
 
-Look at how this showed up on lore.kernel.org:
-	https://lore.kernel.org/linux-staging/YHEAnyO11wgp5PNZ@kali/
+ drivers/staging/rtl8192e/rtl819x_HTProc.c | 26 ++++++++++-------------
+ 1 file changed, 11 insertions(+), 15 deletions(-)
 
-See, only the first email shows there.
+-- 
+2.30.2
 
-But here is a properly threaded series of patches:
-	https://lore.kernel.org/r/161793058309.10062.17056551235139961080.stgit@mickey.themaw.net
-
-Look down at the bottom of the page to see all patches, and the
-responses, linked together.
-
-Please use 'git send-email' to send your patches out as it will
-correctly thread things if you do not know how to do this "by hand".
-And note, "by hand" is hard to do...
-
-I have now dropped all pending patches from you from my queue, please
-fix up your two patch series and resend.
-
-thanks,
-
-greg k-h
 
