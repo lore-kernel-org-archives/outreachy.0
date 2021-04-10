@@ -1,107 +1,138 @@
-X-GM-THRID: 6668997090845130752
-X-Received: by 2002:a5d:83c4:: with SMTP id u4mr5779618ior.34.1552746885521;
-        Sat, 16 Mar 2019 07:34:45 -0700 (PDT)
+X-GM-THRID: 6949346409404432384
+X-Received: by 2002:ac8:4ccc:: with SMTP id l12mr9176184qtv.157.1618020797640;
+        Fri, 09 Apr 2021 19:13:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:7644:: with SMTP id z65ls2292348itb.4.gmail; Sat, 16 Mar
- 2019 07:34:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyx9eUCB2DtNiO09CXRCaMxSL3GzLs7h4YtOaVxqMHrmwb0tMjzzX2c5p1I2Df0YbHbC9t4
-X-Received: by 2002:a24:2741:: with SMTP id g62mr724911ita.30.1552746884642;
-        Sat, 16 Mar 2019 07:34:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552746884; cv=none;
+Received: by 2002:a37:c207:: with SMTP id i7ls6140975qkm.9.gmail; Fri, 09 Apr
+ 2021 19:13:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwaReJ0AIWKPbmWhgKOgdAmR5BSToi+oZoyx4PCk14tUBCWM0tFlCL1yFt2WyYCGjEhTKe8
+X-Received: by 2002:a05:620a:244f:: with SMTP id h15mr10416757qkn.235.1618020796840;
+        Fri, 09 Apr 2021 19:13:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618020796; cv=none;
         d=google.com; s=arc-20160816;
-        b=quXWAGXJh1g6G5bIFMSYP3ZPo58hWHEGa48OknJ3Xw9jo+XtCOI5RHQgJi7c+k/V8e
-         hEjksedZizV91Wrc23j2WoF3i9A/3MbZzFmqFwuKC52+1af5D9bGOibOT+XPsTXs3NjY
-         OGC5F0lc/HkcXMgwPtNA6GbQvp/gBlkGhwV5+I1xhx6EUsAYzOAHLtLbww+8o5GuGkIq
-         gD2/1GZo/3ixoD3eekKeOfOqiAq0So1tjJXvOZLK1flVo/oCGZcB+2uk2VW6TK6VUMal
-         uohFgE2H9LDB7yPfcxT1N5WfUugrpHQzKb12EMsW92QLHP1VMgkQp5WGXFTAku/vfk6v
-         CPcQ==
+        b=JeUbna0WV890bMsg/8pwTkJZj0W9lai1FsdCJ53N/dXpI8N1VH1RzvC+bguhXsGn4H
+         bzf+lMd1jsqKeECGykSWoWal4fv1qz9+GmK5Huc4r/lduGpKvn3p4N/SDCprHD0w6yy7
+         YhiKQX8E1dqbm1XKG4MoqPH16z3GBFhs8zz8gEBlxXL4If9tRzaw53q3WaG4fYbiBArf
+         fiXg1XfBWP/rHwePwLheU/kF2cDQR8izY2CtJ2/AMzVGiWvADWrMt6Sdbu5O8DUcjih5
+         JhSlQo5XkwHDl9iWxwEH6I0zdRSQFiBwwRp5AISCu2sEnbO5JI/ghInGB0esrK0RkbHJ
+         8F0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PMoQ6wTGAc5aO6w4gHr6jWXnBrffZmW474f6dHkQtM4=;
-        b=QYsBMTv/wAQ7T3INExUW9dJyCsOFiUtPbsoaq7x9WyKkuvqk8VGplAKcMqyqJPubni
-         iIoMO9QVEgosFU09WaPsY0juc0CUFUPio6guAAMMW9aJPNbwy1ytCMhFXcppDEQzpc1t
-         QH9fmt5jSW9p7XXg6HP6X6JNlGada74jFVpgS8Mw4Grs060shgyBfgC7eoDXZXqdiHcF
-         WD0zPcPG79RdEJbTII594M6zpk/W/2LYc6E97I1V2Ued2x18tFdBJn5r+5xxMG4lB/uS
-         BVdFUbktSGG0UqEcZQGmTFZs3q2OJtYHcihydilw/qWiuYejIyDB8K7L107109qob1tW
-         PT+Q==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=nPOFyIIlua33yWGhXrEphFLgIKlagAmifofs3UcXjLU=;
+        b=hO7HWshKjreAWrczzjtDekMMBMZaFaEvSXB80AUPfoAUYf047jVkgTZWekxR3W76HJ
+         IB++HbbvFdnakC6VXebRui1JNnuAvTPwpMKwhLsm25l1K7dlKmZjp6eQI+retqcBzK/8
+         lxvOLXtM+SdCnkNScCoWFVAwpHlM+Q8Ki6sgxuo2IBgUVzhwdo6437ihzMJ9fBtw2E3o
+         I2nQ4zuQSkX0BTuYvyCvsZMzkB/8TWtdzcIglaWJT8e9B52XC2ppaNPRkz/2wvHW3SB9
+         Sksez/E7dndi6ZJjiXffpOMtBRvv6h7Ov34Vr0njL7COJTyF81wwNQ0zdgIY0EYf27kP
+         73Yg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="HRs/jqLt";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pou+hH1r;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id n185si625313itn.3.2019.03.16.07.34.44
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com. [2607:f8b0:4864:20::432])
+        by gmr-mx.google.com with ESMTPS id b201si360327qkg.6.2021.04.09.19.13.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Mar 2019 07:34:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Apr 2021 19:13:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) client-ip=2607:f8b0:4864:20::432;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="HRs/jqLt";
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pou+hH1r;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id e17so8414008pgd.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Mar 2019 07:34:44 -0700 (PDT)
+Received: by mail-pf1-x432.google.com with SMTP id p67so463774pfp.10
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 19:13:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=PMoQ6wTGAc5aO6w4gHr6jWXnBrffZmW474f6dHkQtM4=;
-        b=HRs/jqLtWFl7w0yvW9RuBWtp7nKtMT+6bZsR0MQFrvpN1Zxz741ZS+H09NvfLuF9CX
-         Yb8dX2KbkvFRTzyaqs4hq3HmmHzS1/i2UT/WV6kOJYUK9lJCKdrEVSlGymFmvGgjH7qB
-         1F2SE1FNqxsL1Fhuw4qj6aoMmBB5UBWaQxhwE0ZJnK6lM+ueXQgeQEq4zn5uP5Mpdi6q
-         95zEM0DxDbgaMwoz3KLLHksJz82llxENWfXKYIUIoApueHinFmm802gXh6l0g/aiG2h6
-         20f3DqLRK6ldLv6Dmk5C+CdJKVlPOM1RV+Q+uHuVznqk9Yr+LrnQ9WYY4k+/lo8/gvTL
-         2XqQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=nPOFyIIlua33yWGhXrEphFLgIKlagAmifofs3UcXjLU=;
+        b=pou+hH1r5XCVI4nwllZpV2muFqU45ynq/ro4ciJaA15IfBIAgZuzBR19o4diZVKePh
+         36c4fWXFHl+jr+z+s1t5UsmCJ/RfLoAoVBoh6kvWbGZSjRzfdpIdGeqU/1iQwa1dJEY1
+         Lxr1ZC2/d1vESMsWWKJfGfAAHEO4T4FLBOHi29ePiItf25XvdKD4yPLdaUcs9Pu8XAgc
+         H0akB4IjgvYEODSOGouQIi8/1LFEqD4CNfByXfiHRIm4d/VBSvaLysXI5EUsIsAiCbyG
+         NEaIoIYff9bryGVI9wye4Mk3FIn1TbRJuA1sFhY+FT3wLspysiXjh0k9+rOxLI7PE5uP
+         AXtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=PMoQ6wTGAc5aO6w4gHr6jWXnBrffZmW474f6dHkQtM4=;
-        b=IUqHwUmKQEeUlY2gh5DXZwV+ks2I7a5gdPq8HbTT0SVZVxPdV3yWlcDD5nbRGjg1O0
-         sL+VyMR9w8PgzZUteFZXlRJg9nVaNA4Te8ZI8sc/fXucCBzq5ZMFXq5R/getqCn82vq+
-         0Xk2gmrGChzlRHypo2Wxy220OakV+q/cWHPQkc6G+YncP4DUF6XptpP7aKmEcj6FRJFr
-         J87tpBlI3qhAR5Pp9Z8rJEoabfRh4OwqQyG3c9rH+otwhiBNpaI1H7rLVdM/QQqf/5Ef
-         EsMW/6HhGCTQ749GV3OVJsX1IEkE1QjpCmqMQjjmq7apGkFImTpHIZ2aJxlli/w2Tdg6
-         N4QQ==
-X-Gm-Message-State: APjAAAVeye74Ap1JT6c/1fXVX/KZpfoK6jnubTUJQW8jqj3PqbNxhdd1
-	D66xY2vo5adiSo53ZSiIJazmaTl6
-X-Received: by 2002:a63:4343:: with SMTP id q64mr8515213pga.105.1552746883835;
-        Sat, 16 Mar 2019 07:34:43 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.92.32])
-        by smtp.gmail.com with ESMTPSA id x7sm7472698pgc.7.2019.03.16.07.34.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 16 Mar 2019 07:34:42 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [PATCH] staging: greybus: definitions with comments
-Date: Sat, 16 Mar 2019 20:04:26 +0530
-Message-Id: <1552746866-11000-1-git-send-email-payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=nPOFyIIlua33yWGhXrEphFLgIKlagAmifofs3UcXjLU=;
+        b=CfzmwRhZM1xFpcQ8PrzH4uRtUJD3lxJGxHzpuWwdNd1Cq6y27yhst6W4aG9plp/wZ4
+         rqtmg3ex15P+ZM55eCP0fiwDaHIrYYgzF97/kqulGVn9VjG1dym+tKMtSS/Xi1caqJEP
+         lUKZpuh7IPnaiQrg9HJhB8Ty0ho6bu+d4wN9Saqac3mP/C0bdBSGuhXzwxJiM2yVF4ZD
+         1yEy1Tbdbh6SgzcUazo5XZj97bOEkQHKdssPzQ2Ki7TJ/NSyBnh1yetzhM0R+ZPsDo5E
+         nPbb/Bj+HCrIGTjTdzLYRWipIN/NZKPt3mlkQx9w/L0OPnV6VtRfpoi+QgJIDSOkE2qE
+         k+Bg==
+X-Gm-Message-State: AOAM533I+vLTeRyHbIpRn+V8zPYmB17S/HXomq5gmCT2r3WqRi5WWGin
+	UcDqMKhQvBLHGtReJ3ZNe+w=
+X-Received: by 2002:a63:544e:: with SMTP id e14mr16749833pgm.288.1618020795974;
+        Fri, 09 Apr 2021 19:13:15 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id q14sm4174933pgt.54.2021.04.09.19.13.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 19:13:15 -0700 (PDT)
+Date: Sat, 10 Apr 2021 07:43:10 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH 3/3] staging: rtl8192e: remove unncessary parentheses
+Message-ID: <YHEJtkbGtHmajJIt@kali>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Code can be better understand by comments. Comments given to definition
-of mutex and spinlock_t
+Removed unnecessary parentheses because they must be used only when it
+is necessary or they improve readability.
+Reported by checkpatch.
 
-Signed-off-by: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/greybus/connection.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/rtl8192e/rtl819x_HTProc.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/greybus/connection.h b/drivers/staging/greybus/connection.h
-index 5ca3bef..aaee172 100644
---- a/drivers/staging/greybus/connection.h
-+++ b/drivers/staging/greybus/connection.h
-@@ -46,8 +46,8 @@ struct gb_connection {
- 	gb_request_handler_t		handler;
- 	unsigned long			flags;
+diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+index 89d0e9ec188d..b1fa8e9a4f28 100644
+--- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+@@ -287,7 +287,7 @@ void HTConstructCapabilityElement(struct rtllib_device *ieee, u8 *posHTCap,
+ 		u8	EWC11NHTCap[] = {0x00, 0x90, 0x4c, 0x33};
  
--	struct mutex			mutex;
--	spinlock_t			lock;
-+	struct mutex			mutex; /* a mutex object */
-+	spinlock_t			lock;  /* lock to perform a busy wait */
- 	enum gb_connection_state	state;
- 	struct list_head		operations;
+ 		memcpy(posHTCap, EWC11NHTCap, sizeof(EWC11NHTCap));
+-		pCapELE = (struct ht_capab_ele *)&(posHTCap[4]);
++		pCapELE = (struct ht_capab_ele *)&posHTCap[4];
+ 		*len = 30 + 2;
+ 	} else {
+ 		pCapELE = (struct ht_capab_ele *)posHTCap;
+@@ -646,13 +646,13 @@ void HTInitializeHTInfo(struct rtllib_device *ieee)
+ 	pHTInfo->CurrentMPDUDensity = pHTInfo->MPDU_Density;
+ 	pHTInfo->CurrentAMPDUFactor = pHTInfo->AMPDU_Factor;
  
+-	memset((void *)(&(pHTInfo->SelfHTCap)), 0,
++	memset((void *)(&pHTInfo->SelfHTCap), 0,
+ 	       sizeof(pHTInfo->SelfHTCap));
+-	memset((void *)(&(pHTInfo->SelfHTInfo)), 0,
++	memset((void *)(&pHTInfo->SelfHTInfo), 0,
+ 	       sizeof(pHTInfo->SelfHTInfo));
+-	memset((void *)(&(pHTInfo->PeerHTCapBuf)), 0,
++	memset((void *)(&pHTInfo->PeerHTCapBuf), 0,
+ 	       sizeof(pHTInfo->PeerHTCapBuf));
+-	memset((void *)(&(pHTInfo->PeerHTInfoBuf)), 0,
++	memset((void *)(&pHTInfo->PeerHTInfoBuf), 0,
+ 	       sizeof(pHTInfo->PeerHTInfoBuf));
+ 
+ 	pHTInfo->bSwBwInProgress = false;
+@@ -668,7 +668,7 @@ void HTInitializeHTInfo(struct rtllib_device *ieee)
+ 	pHTInfo->IOTRaFunc = 0;
+ 
+ 	{
+-		u8 *RegHTSuppRateSets = &(ieee->RegHTSuppRateSet[0]);
++		u8 *RegHTSuppRateSets = &ieee->RegHTSuppRateSet[0];
+ 
+ 		RegHTSuppRateSets[0] = 0xFF;
+ 		RegHTSuppRateSets[1] = 0xFF;
 -- 
-2.7.4
+2.30.2
 
 
