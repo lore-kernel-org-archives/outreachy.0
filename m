@@ -1,331 +1,483 @@
 X-GM-THRID: 6949230853681577984
-X-Received: by 2002:a05:6512:922:: with SMTP id f2mr2093107lft.171.1618061251995;
-        Sat, 10 Apr 2021 06:27:31 -0700 (PDT)
+X-Received: by 2002:ac8:4718:: with SMTP id f24mr17507562qtp.270.1618060511812;
+        Sat, 10 Apr 2021 06:15:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5081:: with SMTP id f1ls936276lfm.2.gmail; Sat, 10 Apr
- 2021 06:27:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzx6dIAiSa/0HfWmY79AdZpYVC47RA+lyPiPK+14q3HwOfda5CDqFFQOcO671JE9kVloYk9
-X-Received: by 2002:a05:6512:692:: with SMTP id t18mr11422226lfe.203.1618061250321;
-        Sat, 10 Apr 2021 06:27:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618061250; cv=none;
+Received: by 2002:a0c:e752:: with SMTP id g18ls3416709qvn.6.gmail; Sat, 10 Apr
+ 2021 06:15:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwu1xIdAEu7xx30S8ZVZHqQjdGKaDpoG3wMwJnsxsUKDOUBkGPoh9mc1z7gsriNMsAORX4
+X-Received: by 2002:a05:6214:1906:: with SMTP id er6mr8628137qvb.38.1618060511005;
+        Sat, 10 Apr 2021 06:15:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618060511; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHxJQym73n2hvFckpD26nyx/vGlgFTSKM9LRbh2g61KxWylD+y6V64kbin8iStPc/h
-         jj9UjIWAzlwaHy2kJs3gEzk0AwnNKURcqdKJAZbJSerSHl9EzjuV89W6OF6CIcXiiBQQ
-         W3NzryRE16J51FJiJs1z9mkqZcU8wHSpfsjsVQ7V2osZ2YS651PwKkuNUGPNYmkxAg+0
-         u0s0pl2lEMkmQUefU7TsQYIIwA5jMqPK6qOXNWNNFfeQ9dgUDhx55NEguhb2N5FxKKQ8
-         W3EYN24+omtA3ijtx/1VzG5KdVXPOQvPoy2D5t/HP1bSI0tkdpo4Z1haKPzr8PKHj7BY
-         Kq4w==
+        b=cjXjpPtAtcjzlEeyAxDmEQ517zHNJ/UeDbvE7hfoaLGqYktZvMl6IWgJFAAPuNROFF
+         fDxB2aZj5c93R715wwMC1s/V3ZoVDlbxSDu1SWJvvZXFpygF5AUnCo9BmiQreoqPeGBY
+         vMu60bLCVsOsf1364k02ItbR4lJmRVQS7edywgg6YMigccESxivwIBYD/8B/rK3z6P/2
+         ZVagR2POqRdSR7cB5rSwgscMB8rqebc2uZ0cB0vETEAkVGY+pwMTHXQwyfVpqsW1hx2e
+         mTCW22pQ4y7l+v6pmfi1Td04FpDbErg/GOdqnGbzR2uxbCT8oyxtW/pDkq8ueTkYz2EI
+         l4fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=MSyxEw89uTLRbEspm8NVchmQIUHCiJFl5jl1hvo486c=;
-        b=LAk95eps3zFzChsrrFFB5bsEbnN5Mk1Ff/Td3lR10Ng8i9Xw8Sk3CbT2/0eRTh3DQg
-         Cj084g+LFVxtgOqi/8xve6PRmjw9XGQg/wTthjGWvy+QCbNQmksdwTeKgJgl3ElVj8hV
-         8LCdWVo0k/hOVl9B4RxOXuTRzLU4B6mTXu2aB4WnIDOLn31+jxgiiVgPTdB+6riNKDve
-         9ds6nMjecQqtGj1ou0BeJ62p0H3iEA+jxUXjsVDaadik6YruTfuz4tJYaA5DlCyCKpFx
-         NDsqt39QIDmdSA7v1FV8IBdw9SWIv7IThle2AzhbQvgdv7iBz5KM1Q8e4rkLGn1ZJ1+w
-         GJgA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=QpIbiNVMq3dfEaOyd8G4kAX24XpczwvMO/4p2DUsJGY=;
+        b=oNQPSSBzvDtpuQbPViaRGVZdh+raU8n8NTz0GN4vwvKukFz6Vy3QXuil0vjZ3eRjhB
+         Y6UkafTpmkmBYP2V4AtjXFV5dPJpgwcBYHm23y1ONqTsPx9iBUlxfCwIB1T8bVXzFQLX
+         A0x2vcoqQBpKEN6S9hEql+sawNdRi6R/HWtmW/0aqkvSKxUlw6pMDt/zcYZEDOjsl5GT
+         HIKpAxqrnQ31075tvZRCgkZ1jE3/yHKl5pSK58m52yu73hb8nD/8yQT/LWl4chEwdpzU
+         xFRdTPGMMY837LKMoZhaRR9hOHC1HlvPqn7HrxHa1u2titIgZz0acez9igNpfFk74EiY
+         wY2g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id q18si398745ljg.2.2021.04.10.06.27.30
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=j5oe0oBY;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::536 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com. [2607:f8b0:4864:20::536])
+        by gmr-mx.google.com with ESMTPS id t7si295419qkp.7.2021.04.10.06.15.10
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Apr 2021 06:27:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 10 Apr 2021 06:15:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::536 as permitted sender) client-ip=2607:f8b0:4864:20::536;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3A6v1nJa5wq/cPKY0EBwPXwCnXdLJzesId70hD?=
- =?us-ascii?q?6mlaTxtJfsuE0/2/hfhz726RtB89UGwt8OrqBICuWnXZnKQe3aAwOvOYUBDiqC?=
- =?us-ascii?q?+UKuhZjLfK5x3FN2nA+vVG1aFmGpIObeHYKVRhl8717E2ZPr8boOWvy6yjiefA?=
- =?us-ascii?q?w3oFd2gDV4ha4wh0EQqdGEFtLTM2ZqYRLoaW5cZMulObF0g/U8LTPBU4dtTYq8?=
- =?us-ascii?q?aOvJzrZgNuPW9E1CC+yQLt0rL8HhSCty1ybxpEy94ZnlT4rw=3D=3D?=
-X-IronPort-AV: E=Sophos;i="5.82,210,1613430000"; 
-   d="scan'208";a="378287059"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Apr 2021 15:27:29 +0200
-Date: Sat, 10 Apr 2021 15:27:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Mitali Borkar <mitaliborkar810@gmail.com>
-cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org, 
-    linux-media@vger.kernel.org, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com, 
-    mitali_s@me.iitr.ac.in
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=j5oe0oBY;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::536 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x536.google.com with SMTP id t140so5869708pgb.13
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Apr 2021 06:15:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=QpIbiNVMq3dfEaOyd8G4kAX24XpczwvMO/4p2DUsJGY=;
+        b=j5oe0oBYhswpHxcSJXW5VzanH/hlbrFgOSQFj7x4NwFjaArxExk4JRqc1IiwwSAOCm
+         OvGeZ+GjRj1gQf1fBAu9ZJ/x9Lo18MiaFgMr7C4QCBvfCsoN7Q3/6lw9EW8Tx3Ug7e/4
+         PttK34x1kjWMSVYNsTN0r49dkoq/up093CgPK+ITbyEZmBDbO+MeVcNCJkRaXFDdjsah
+         ++FSKZZtwl/eR8J+CSrm0cMLIzF7V7jOjtVYrYnj62mvtsaKd+noUpg0bQoJXScRo8E+
+         UWBufccQUobuAbN/TSwwbP075CYe7H35TYzSRYQucWEwmoHs4BhPolmKZP6sRrx4y4DA
+         xHLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=QpIbiNVMq3dfEaOyd8G4kAX24XpczwvMO/4p2DUsJGY=;
+        b=bX0nnehaie0MVX0rFzDMx8YGfxpw1iSzccPK6VLQG7mF2cQsFKx+JxVwrBQDlQJndx
+         eZzhjx5uroi+facXpcS4RhDaJ0XkIW85HJHSu8c1nWRApw3mrOW7jPkVcQm13512Usdh
+         jEZVXUlmm2V3Y1F/iv/bnlhKCF273zb2PalzDkDg5VbVajfEfJpX/zJdhHqFBUHFczVN
+         zUhrweYxG7fktUzCVhpjfSU58a33tjqefdtTM1HroeD/U0dBV0Lt7gsKCNXv9CA69FCN
+         ync0Xs4SIpzf78q570OMn1ghBvBkIOuyXadVxT0ufwH3V8qlr6xnq2XmjFwI1LU/eYCG
+         fg5g==
+X-Gm-Message-State: AOAM531X9JAtohNZFdkC6F9RIMufHJxtd09Fm8frjvAnTqP/1V2QezvT
+	6GeULR/06tU2i0lYYDxQ3po=
+X-Received: by 2002:aa7:91d1:0:b029:1fe:2a02:73b9 with SMTP id z17-20020aa791d10000b02901fe2a0273b9mr16582510pfa.2.1618060510358;
+        Sat, 10 Apr 2021 06:15:10 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([106.195.15.71])
+        by smtp.gmail.com with ESMTPSA id r11sm4915188pjp.46.2021.04.10.06.14.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 10 Apr 2021 06:15:10 -0700 (PDT)
+Date: Sat, 10 Apr 2021 18:44:45 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: clabbe@baylibre.com, mchehab@kernel.org, gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
 Subject: Re: [Outreachy kernel] [PATCH v2 2/2] staging: media: zoran: remove
  and add comments; align code
-In-Reply-To: <YHGkxRJ8S22/ZqDZ@kali>
-Message-ID: <alpine.DEB.2.22.394.2104101525250.2975@hadrien>
-References: <YHCgnP6Jr6TbjwUy@kali> <alpine.DEB.2.22.394.2104092209200.23056@hadrien> <YHDR7VxighihfZd5@kali> <alpine.DEB.2.22.394.2104101354180.2975@hadrien> <YHGkxRJ8S22/ZqDZ@kali>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Message-ID: <YHGkxRJ8S22/ZqDZ@kali>
+References: <YHCgnP6Jr6TbjwUy@kali>
+ <alpine.DEB.2.22.394.2104092209200.23056@hadrien>
+ <YHDR7VxighihfZd5@kali>
+ <alpine.DEB.2.22.394.2104101354180.2975@hadrien>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2104101354180.2975@hadrien>
 
-> Mam, my new patch is ready but I am not sure how to send, the v1/2 is
-> not on top, I have not made changes in it because it was not required. Now,  how to
-> send these two mails as a patchset, since in between these two git
-> commits, I have another commits too.
-
-Suppose you have
-
-relevant patch1
-patch on some other file
-relevant patch2
-
-Then you can use git rebase -i HEAD~3 to reorder them, ie to put relevant
-patch2 before patch on some other file.  When you do the git rebase, just
-move the lines for the different patches around and save the changes.
-
-julia
-
->
-> > julia
+On Sat, Apr 10, 2021 at 01:56:24PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Sat, 10 Apr 2021, Mitali Borkar wrote:
+> 
+> > On Fri, Apr 09, 2021 at 10:12:12PM +0200, Julia Lawall wrote:
+> > >
+> > >
+> > > On Sat, 10 Apr 2021, Mitali Borkar wrote:
+> > >
+> > > > Removed comments from the same line and added them to new line above the
+> > > > blocks, aligned everything properly by using tabs to make code neater
+> > > > and improve readability.
+> > > >
+> > > > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > > > ---
+> > > >  drivers/staging/media/zoran/zr36057.h | 293 ++++++++++++++------------
+> > > >  1 file changed, 162 insertions(+), 131 deletions(-)
+> > > >
+> > > > diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
+> > > > index 93075459f910..198d344a8879 100644
+> > > > --- a/drivers/staging/media/zoran/zr36057.h
+> > > > +++ b/drivers/staging/media/zoran/zr36057.h
+> > > > @@ -12,145 +12,176 @@
+> > > >
+> > > >  /* Zoran ZR36057 registers */
+> > > >
+> > > > -#define ZR36057_VFEHCR          0x000	/* Video Front End, Horizontal Configuration Register */
+> > > > -#define ZR36057_VFEHCR_HS_POL             BIT(30)
+> > > > -#define ZR36057_VFEHCR_H_START           10
+> > > > +/* Video Front End, Horizontal Configuration Register */
+> > > > +#define ZR36057_VFEHCR			0x000
+> > > > +#define ZR36057_VFEHCR_HS_POL			BIT(30)
+> > >
+> > > It looks like the alignment didn't work out here?  Check that the use of
+> > > tabs is the same as on the nearby lines.
+> > >
+> > Do I need to align BIT(30), 10, 0x000 and rest in same column or should I
+> > align them separately?
+> 
+> If there are a bunch of #defines with no blank line between them and
+> similar names (these all start with ZR36057_VFEHCR), then it can be nice
+> to line them all up.
+> 
 > >
-> > > > > +#define ZR36057_VFESPFR_RGB565			(2 << 3)
-> > > > > +#define ZR36057_VFESPFR_RGB555			(3 << 3)
-> > > > > +#define ZR36057_VFESPFR_ERR_DIF			BIT(2)
-> > > > > +#define ZR36057_VFESPFR_PACK24			BIT(1)
-> > > > > +#define ZR36057_VFESPFR_LITTLE_ENDIAN		BIT(0)
-> > > > > +
-> > > > > +/* Video Display "Top" Register */
-> > > > > +#define ZR36057_VDTR			0x00c
-> > > > > +
-> > > > > +/* Video Display "Bottom" Register */
-> > > > > +#define ZR36057_VDBR			0x010
-> > > > > +
-> > > > > +/* Video Stride, Status, and Frame Grab Register */
-> > > > > +#define ZR36057_VSSFGR			0x014
-> > > > > +#define ZR36057_VSSFGR_DISP_STRIDE	16
-> > > > > +#define ZR36057_VSSFGR_VID_OVF			BIT(8)
-> > > > > +#define ZR36057_VSSFGR_SNAP_SHOT		BIT(1)
-> > > > > +#define ZR36057_VSSFGR_FRAME_GRAB		BIT(0)
-> > > > > +
-> > > > > +/* Video Display Configuration Register */
-> > > > > +#define ZR36057_VDCR			0x018
-> > > > > +#define ZR36057_VDCR_VID_EN			BIT(31)
-> > > > > +#define ZR36057_VDCR_MIN_PIX		24
-> > > > > +#define ZR36057_VDCR_TRITON			BIT(24)
-> > > > > +#define ZR36057_VDCR_VID_WIN_HT		12
+> > > > +#define ZR36057_VFEHCR_H_START		10
+> > > >  #define ZR36057_VFEHCR_H_END		0
+> > > >  #define ZR36057_VFEHCR_HMASK		0x3ff
 > > > >
-> > > > These don't look well aligned either.
+> > > > -#define ZR36057_VFEVCR          0x004	/* Video Front End, Vertical Configuration Register */
+> > > > -#define ZR36057_VFEVCR_VS_POL             BIT(30)
+> > > > -#define ZR36057_VFEVCR_V_START           10
+> > > > +/* Video Front End, Vertical Configuration Register */
+> > > > +#define ZR36057_VFEVCR			0x004
+> > > > +#define ZR36057_VFEVCR_VS_POL			BIT(30)
+> > > > +#define ZR36057_VFEVCR_V_START		10
+> > > >  #define ZR36057_VFEVCR_V_END		0
+> > > >  #define ZR36057_VFEVCR_VMASK		0x3ff
 > > > >
-> > > > Please check on the rest.
-> > > >
-> > > Yes Ma'am, I am rechecking this.
+> > > > -#define ZR36057_VFESPFR         0x008	/* Video Front End, Scaler and Pixel Format Register */
+> > > > -#define ZR36057_VFESPFR_EXT_FL            BIT(26)
+> > > > -#define ZR36057_VFESPFR_TOP_FIELD         BIT(25)
+> > > > -#define ZR36057_VFESPFR_VCLK_POL          BIT(24)
+> > > > -#define ZR36057_VFESPFR_H_FILTER         21
+> > > > -#define ZR36057_VFESPFR_HOR_DCM          14
+> > > > -#define ZR36057_VFESPFR_VER_DCM          8
+> > > > -#define ZR36057_VFESPFR_DISP_MODE        6
+> > > > -#define ZR36057_VFESPFR_YUV422          (0 << 3)
+> > > > -#define ZR36057_VFESPFR_RGB888          BIT(3)
+> > > > -#define ZR36057_VFESPFR_RGB565          (2 << 3)
+> > > > -#define ZR36057_VFESPFR_RGB555          (3 << 3)
+> > > > -#define ZR36057_VFESPFR_ERR_DIF          BIT(2)
+> > > > -#define ZR36057_VFESPFR_PACK24          BIT(1)
+> > > > -#define ZR36057_VFESPFR_LITTLE_ENDIAN    BIT(0)
+> > > > -
+> > > > -#define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
+> > > > -
+> > > > -#define ZR36057_VDBR            0x010	/* Video Display "Bottom" Register */
+> > > > -
+> > > > -#define ZR36057_VSSFGR          0x014	/* Video Stride, Status, and Frame Grab Register */
+> > > > -#define ZR36057_VSSFGR_DISP_STRIDE       16
+> > > > -#define ZR36057_VSSFGR_VID_OVF            BIT(8)
+> > > > -#define ZR36057_VSSFGR_SNAP_SHOT          BIT(1)
+> > > > -#define ZR36057_VSSFGR_FRAME_GRAB         BIT(0)
+> > > > -
+> > > > -#define ZR36057_VDCR            0x018	/* Video Display Configuration Register */
+> > > > -#define ZR36057_VDCR_VID_EN               BIT(31)
+> > > > -#define ZR36057_VDCR_MIN_PIX             24
+> > > > -#define ZR36057_VDCR_TRITON              BIT(24)
+> > > > -#define ZR36057_VDCR_VID_WIN_HT           12
+> > > > -#define ZR36057_VDCR_VID_WIN_WID          0
+> > > > -
+> > > > -#define ZR36057_MMTR            0x01c	/* Masking Map "Top" Register */
+> > > > -
+> > > > -#define ZR36057_MMBR            0x020	/* Masking Map "Bottom" Register */
+> > > > -
+> > > > -#define ZR36057_OCR             0x024	/* Overlay Control Register */
+> > > > -#define ZR36057_OCR_OVL_ENABLE            BIT(15)
+> > > > -#define ZR36057_OCR_MASK_STRIDE          0
+> > > > -
+> > > > -#define ZR36057_SPGPPCR         0x028	/* System, PCI, and General Purpose Pins Control Register */
+> > > > -#define ZR36057_SPGPPCR_SOFT_RESET	 BIT(24)
+> > > > -
+> > > > -#define ZR36057_GPPGCR1         0x02c	/* General Purpose Pins and GuestBus Control Register (1) */
+> > > > -
+> > > > -#define ZR36057_MCSAR           0x030	/* MPEG Code Source Address Register */
+> > > > -
+> > > > -#define ZR36057_MCTCR           0x034	/* MPEG Code Transfer Control Register */
+> > > > -#define ZR36057_MCTCR_COD_TIME            BIT(30)
+> > > > -#define ZR36057_MCTCR_C_EMPTY             BIT(29)
+> > > > -#define ZR36057_MCTCR_C_FLUSH             BIT(28)
+> > > > +/* Video Front End, Scaler and Pixel Format Register */
+> > > > +#define ZR36057_VFESPFR			0x008
+> > > > +#define ZR36057_VFESPFR_EXT_FL			BIT(26)
+> > > > +#define ZR36057_VFESPFR_TOP_FIELD		BIT(25)
+> > > > +#define ZR36057_VFESPFR_VCLK_POL		BIT(24)
+> > > > +#define ZR36057_VFESPFR_H_FILTER	21
+> > > > +#define ZR36057_VFESPFR_HOR_DCM		14
+> > > > +#define ZR36057_VFESPFR_VER_DCM		8
+> > > > +#define ZR36057_VFESPFR_DISP_MODE	6
 > > >
-> > > > julia
-> > > >
-> > > >
-> > > > > +#define ZR36057_VDCR_VID_WIN_WID	0
-> > > > > +
-> > > > > +/* Masking Map "Top" Register */
-> > > > > +#define ZR36057_MMTR			0x01c
-> > > > > +
-> > > > > +/* Masking Map "Bottom" Register */
-> > > > > +#define ZR36057_MMBR			0x020
-> > > > > +
-> > > > > +/* Overlay Control Register */
-> > > > > +#define ZR36057_OCR			0x024
-> > > > > +#define ZR36057_OCR_OVL_ENABLE			BIT(15)
-> > > > > +#define ZR36057_OCR_MASK_STRIDE		0
-> > > > > +
-> > > > > +/* System, PCI, and General Purpose Pins Control Register */
-> > > > > +#define ZR36057_SPGPPCR			0x028
-> > > > > +#define ZR36057_SPGPPCR_SOFT_RESET		BIT(24)
-> > > > > +
-> > > > > +/* General Purpose Pins and GuestBus Control Register (1) */
-> > > > > +#define ZR36057_GPPGCR1			0x02c
-> > > > > +
-> > > > > +/* MPEG Code Source Address Register */
-> > > > > +#define ZR36057_MCSAR			0x030
-> > > > > +
-> > > > > +/* MPEG Code Transfer Control Register */
-> > > > > +#define ZR36057_MCTCR			0x034
-> > > > > +#define ZR36057_MCTCR_COD_TIME			BIT(30)
-> > > > > +#define ZR36057_MCTCR_C_EMPTY			BIT(29)
-> > > > > +#define ZR36057_MCTCR_C_FLUSH			BIT(28)
-> > > > >  #define ZR36057_MCTCR_COD_GUEST_ID	20
-> > > > >  #define ZR36057_MCTCR_COD_GUEST_REG	16
-> > > > >
-> > > > > -#define ZR36057_MCMPR           0x038	/* MPEG Code Memory Pointer Register */
-> > > > > -
-> > > > > -#define ZR36057_ISR             0x03c	/* Interrupt Status Register */
-> > > > > -#define ZR36057_ISR_GIRQ1                BIT(30)
-> > > > > -#define ZR36057_ISR_GIRQ0                BIT(29)
-> > > > > -#define ZR36057_ISR_COD_REP_IRQ            BIT(28)
-> > > > > -#define ZR36057_ISR_JPEG_REP_IRQ           BIT(27)
-> > > > > -
-> > > > > -#define ZR36057_ICR             0x040	/* Interrupt Control Register */
-> > > > > -#define ZR36057_ICR_GIRQ1                BIT(30)
-> > > > > -#define ZR36057_ICR_GIRQ0                BIT(29)
-> > > > > -#define ZR36057_ICR_COD_REP_IRQ            BIT(28)
-> > > > > -#define ZR36057_ICR_JPEG_REP_IRQ           BIT(27)
-> > > > > -#define ZR36057_ICR_INT_PIN_EN             BIT(24)
-> > > > > -
-> > > > > -#define ZR36057_I2CBR           0x044	/* I2C Bus Register */
-> > > > > -#define ZR36057_I2CBR_SDA		 BIT(1)
-> > > > > -#define ZR36057_I2CBR_SCL		 BIT(0)
-> > > > > -
-> > > > > -#define ZR36057_JMC             0x100	/* JPEG Mode and Control */
-> > > > > -#define ZR36057_JMC_JPG                  BIT(31)
-> > > > > -#define ZR36057_JMC_JPG_EXP_MODE          (0 << 29)
-> > > > > -#define ZR36057_JMC_JPG_CMP_MODE           BIT(29)
-> > > > > -#define ZR36057_JMC_MJPG_EXP_MODE         (2 << 29)
-> > > > > -#define ZR36057_JMC_MJPG_CMP_MODE         (3 << 29)
-> > > > > -#define ZR36057_JMC_RTBUSY_FB            BIT(6)
-> > > > > -#define ZR36057_JMC_GO_EN                BIT(5)
-> > > > > -#define ZR36057_JMC_SYNC_MSTR             BIT(4)
-> > > > > -#define ZR36057_JMC_FLD_PER_BUFF         BIT(3)
-> > > > > -#define ZR36057_JMC_VFIFO_FB             BIT(2)
-> > > > > -#define ZR36057_JMC_CFIFO_FB             BIT(1)
-> > > > > -#define ZR36057_JMC_STLL_LIT_ENDIAN       BIT(0)
-> > > > > -
-> > > > > -#define ZR36057_JPC             0x104	/* JPEG Process Control */
-> > > > > -#define ZR36057_JPC_P_RESET              BIT(7)
-> > > > > -#define ZR36057_JPC_COD_TRNS_EN            BIT(5)
-> > > > > -#define ZR36057_JPC_ACTIVE               BIT(0)
-> > > > > -
-> > > > > -#define ZR36057_VSP             0x108	/* Vertical Sync Parameters */
-> > > > > -#define ZR36057_VSP_VSYNC_SIZE           16
-> > > > > -#define ZR36057_VSP_FRM_TOT              0
-> > > > > -
-> > > > > -#define ZR36057_HSP             0x10c	/* Horizontal Sync Parameters */
-> > > > > -#define ZR36057_HSP_HSYNC_START          16
-> > > > > -#define ZR36057_HSP_LINE_TOT             0
-> > > > > -
-> > > > > -#define ZR36057_FHAP            0x110	/* Field Horizontal Active Portion */
-> > > > > -#define ZR36057_FHAP_NAX                16
-> > > > > -#define ZR36057_FHAP_PAX                0
-> > > > > -
-> > > > > -#define ZR36057_FVAP            0x114	/* Field Vertical Active Portion */
-> > > > > -#define ZR36057_FVAP_NAY                16
-> > > > > -#define ZR36057_FVAP_PAY                0
-> > > > > -
-> > > > > -#define ZR36057_FPP             0x118	/* Field Process Parameters */
-> > > > > -#define ZR36057_FPP_ODD_EVEN             BIT(0)
-> > > > > -
-> > > > > -#define ZR36057_JCBA            0x11c	/* JPEG Code Base Address */
-> > > > > -
-> > > > > -#define ZR36057_JCFT            0x120	/* JPEG Code FIFO Threshold */
-> > > > > -
-> > > > > -#define ZR36057_JCGI            0x124	/* JPEG Codec Guest ID */
-> > > > > -#define ZR36057_JCGI_JPE_GUEST_ID         4
-> > > > > -#define ZR36057_JCGI_JPE_GUEST_REG        0
-> > > > > -
-> > > > > -#define ZR36057_GCR2            0x12c	/* GuestBus Control Register (2) */
-> > > > > -
-> > > > > -#define ZR36057_POR             0x200	/* Post Office Register */
-> > > > > -#define ZR36057_POR_PO_PEN                BIT(25)
-> > > > > -#define ZR36057_POR_PO_TIME               BIT(24)
-> > > > > -#define ZR36057_POR_PO_DIR                BIT(23)
-> > > > > -
-> > > > > -#define ZR36057_STR             0x300	/* "Still" Transfer Register */
-> > > > > +/* MPEG Code Memory Pointer Register */
-> > > > > +#define ZR36057_MCMPR			0x038
-> > > > > +
-> > > > > +/* Interrupt Status Register */
-> > > > > +#define ZR36057_ISR			0x03c
-> > > > > +#define ZR36057_ISR_GIRQ1			BIT(30)
-> > > > > +#define ZR36057_ISR_GIRQ0			BIT(29)
-> > > > > +#define ZR36057_ISR_COD_REP_IRQ			BIT(28)
-> > > > > +#define ZR36057_ISR_JPEG_REP_IRQ		BIT(27)
-> > > > > +
-> > > > > +/* Interrupt Control Register */
-> > > > > +#define ZR36057_ICR			0x040
-> > > > > +#define ZR36057_ICR_GIRQ1			BIT(30)
-> > > > > +#define ZR36057_ICR_GIRQ0			BIT(29)
-> > > > > +#define ZR36057_ICR_COD_REP_IRQ			BIT(28)
-> > > > > +#define ZR36057_ICR_JPEG_REP_IRQ		BIT(27)
-> > > > > +#define ZR36057_ICR_INT_PIN_EN			BIT(24)
-> > > > > +
-> > > > > +/* I2C Bus Register */
-> > > > > +#define ZR36057_I2CBR			0x044
-> > > > > +#define ZR36057_I2CBR_SDA			BIT(1)
-> > > > > +#define ZR36057_I2CBR_SCL			BIT(0)
-> > > > > +
-> > > > > +/* JPEG Mode and Control */
-> > > > > +#define ZR36057_JMC			0x100
-> > > > > +#define ZR36057_JMC_JPG				BIT(31)
-> > > > > +#define ZR36057_JMC_JPG_EXP_MODE		(0 << 29)
-> > > > > +#define ZR36057_JMC_JPG_CMP_MODE		BIT(29)
-> > > > > +#define ZR36057_JMC_MJPG_EXP_MODE		(2 << 29)
-> > > > > +#define ZR36057_JMC_MJPG_CMP_MODE		(3 << 29)
-> > > > > +#define ZR36057_JMC_RTBUSY_FB			BIT(6)
-> > > > > +#define ZR36057_JMC_GO_EN			BIT(5)
-> > > > > +#define ZR36057_JMC_SYNC_MSTR			BIT(4)
-> > > > > +#define ZR36057_JMC_FLD_PER_BUFF		BIT(3)
-> > > > > +#define ZR36057_JMC_VFIFO_FB			BIT(2)
-> > > > > +#define ZR36057_JMC_CFIFO_FB			BIT(1)
-> > > > > +#define ZR36057_JMC_STLL_LIT_ENDIAN		BIT(0)
-> > > > > +
-> > > > > +/* JPEG Process Control */
-> > > > > +#define ZR36057_JPC			0x104
-> > > > > +#define ZR36057_JPC_P_RESET			BIT(7)
-> > > > > +#define ZR36057_JPC_COD_TRNS_EN			BIT(5)
-> > > > > +#define ZR36057_JPC_ACTIVE			BIT(0)
-> > > > > +
-> > > > > +/* Vertical Sync Parameters */
-> > > > > +#define ZR36057_VSP			0x108
-> > > > > +#define ZR36057_VSP_VSYNC_SIZE		16
-> > > > > +#define ZR36057_VSP_FRM_TOT		0
-> > > > > +
-> > > > > +/* Horizontal Sync Parameters */
-> > > > > +#define ZR36057_HSP			0x10c
-> > > > > +#define ZR36057_HSP_HSYNC_START		16
-> > > > > +#define ZR36057_HSP_LINE_TOT		0
-> > > > > +
-> > > > > +/* Field Horizontal Active Portion */
-> > > > > +#define ZR36057_FHAP			0x110
-> > > > > +#define ZR36057_FHAP_NAX		16
-> > > > > +#define ZR36057_FHAP_PAX		0
-> > > > > +
-> > > > > +/* Field Vertical Active Portion */
-> > > > > +#define ZR36057_FVAP			0x114
-> > > > > +#define ZR36057_FVAP_NAY		16
-> > > > > +#define ZR36057_FVAP_PAY		0
-> > > > > +
-> > > > > +/* Field Process Parameters */
-> > > > > +#define ZR36057_FPP			0x118
-> > > > > +#define ZR36057_FPP_ODD_EVEN			BIT(0)
-> > > > > +
-> > > > > +/* JPEG Code Base Address */
-> > > > > +#define ZR36057_JCBA			0x11c
-> > > > > +
-> > > > > +/* JPEG Code FIFO Threshold */
-> > > > > +#define ZR36057_JCFT			0x120
-> > > > > +
-> > > > > +/* JPEG Codec Guest ID */
-> > > > > +#define ZR36057_JCGI			0x124
-> > > > > +#define ZR36057_JCGI_JPE_GUEST_ID	4
-> > > > > +#define ZR36057_JCGI_JPE_GUEST_REG	0
-> > > > > +
-> > > > > +/* GuestBus Control Register (2) */
-> > > > > +#define ZR36057_GCR2			0x12c
-> > > > > +
-> > > > > +/* Post Office Register */
-> > > > > +#define ZR36057_POR			0x200
-> > > > > +#define ZR36057_POR_PO_PEN			BIT(25)
-> > > > > +#define ZR36057_POR_PO_TIME			BIT(24)
-> > > > > +#define ZR36057_POR_PO_DIR			BIT(23)
-> > > > > +
-> > > > > +/* "Still" Transfer Register */
-> > > > > +#define ZR36057_STR			0x300
-> > > > >
-> > > > >  #endif
-> > > > > --
-> > > > > 2.30.2
-> > > > >
-> > > > > --
-> > > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHCgnP6Jr6TbjwUy%40kali.
-> > > > >
+> > > The above four lines also look odd.
 > > >
-> > > --
-> > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHDR7VxighihfZd5%40kali.
+> > > > +#define ZR36057_VFESPFR_YUV422			(0 << 3)
+> > > > +#define ZR36057_VFESPFR_RGB888			BIT(3)
 > > >
+> > > Was there really a BIT in the original code, or is this a patch against
+> > > your previous patch?
+> > >
+> > No, I added BIT(3), originally it was (1<<3).
+> 
+> OK, I don't think it is good to have just one BIT when there is a clear
+> pattern for the others that the BIT is hiding.  So you should do the
+> alignment patch against the original code, and not the code with this
+> change.
 >
+Mam, my new patch is ready but I am not sure how to send, the v1/2 is
+not on top, I have not made changes in it because it was not required. Now,  how to
+send these two mails as a patchset, since in between these two git
+commits, I have another commits too.
+
+> julia
+> 
+> > > > +#define ZR36057_VFESPFR_RGB565			(2 << 3)
+> > > > +#define ZR36057_VFESPFR_RGB555			(3 << 3)
+> > > > +#define ZR36057_VFESPFR_ERR_DIF			BIT(2)
+> > > > +#define ZR36057_VFESPFR_PACK24			BIT(1)
+> > > > +#define ZR36057_VFESPFR_LITTLE_ENDIAN		BIT(0)
+> > > > +
+> > > > +/* Video Display "Top" Register */
+> > > > +#define ZR36057_VDTR			0x00c
+> > > > +
+> > > > +/* Video Display "Bottom" Register */
+> > > > +#define ZR36057_VDBR			0x010
+> > > > +
+> > > > +/* Video Stride, Status, and Frame Grab Register */
+> > > > +#define ZR36057_VSSFGR			0x014
+> > > > +#define ZR36057_VSSFGR_DISP_STRIDE	16
+> > > > +#define ZR36057_VSSFGR_VID_OVF			BIT(8)
+> > > > +#define ZR36057_VSSFGR_SNAP_SHOT		BIT(1)
+> > > > +#define ZR36057_VSSFGR_FRAME_GRAB		BIT(0)
+> > > > +
+> > > > +/* Video Display Configuration Register */
+> > > > +#define ZR36057_VDCR			0x018
+> > > > +#define ZR36057_VDCR_VID_EN			BIT(31)
+> > > > +#define ZR36057_VDCR_MIN_PIX		24
+> > > > +#define ZR36057_VDCR_TRITON			BIT(24)
+> > > > +#define ZR36057_VDCR_VID_WIN_HT		12
+> > >
+> > > These don't look well aligned either.
+> > >
+> > > Please check on the rest.
+> > >
+> > Yes Ma'am, I am rechecking this.
+> >
+> > > julia
+> > >
+> > >
+> > > > +#define ZR36057_VDCR_VID_WIN_WID	0
+> > > > +
+> > > > +/* Masking Map "Top" Register */
+> > > > +#define ZR36057_MMTR			0x01c
+> > > > +
+> > > > +/* Masking Map "Bottom" Register */
+> > > > +#define ZR36057_MMBR			0x020
+> > > > +
+> > > > +/* Overlay Control Register */
+> > > > +#define ZR36057_OCR			0x024
+> > > > +#define ZR36057_OCR_OVL_ENABLE			BIT(15)
+> > > > +#define ZR36057_OCR_MASK_STRIDE		0
+> > > > +
+> > > > +/* System, PCI, and General Purpose Pins Control Register */
+> > > > +#define ZR36057_SPGPPCR			0x028
+> > > > +#define ZR36057_SPGPPCR_SOFT_RESET		BIT(24)
+> > > > +
+> > > > +/* General Purpose Pins and GuestBus Control Register (1) */
+> > > > +#define ZR36057_GPPGCR1			0x02c
+> > > > +
+> > > > +/* MPEG Code Source Address Register */
+> > > > +#define ZR36057_MCSAR			0x030
+> > > > +
+> > > > +/* MPEG Code Transfer Control Register */
+> > > > +#define ZR36057_MCTCR			0x034
+> > > > +#define ZR36057_MCTCR_COD_TIME			BIT(30)
+> > > > +#define ZR36057_MCTCR_C_EMPTY			BIT(29)
+> > > > +#define ZR36057_MCTCR_C_FLUSH			BIT(28)
+> > > >  #define ZR36057_MCTCR_COD_GUEST_ID	20
+> > > >  #define ZR36057_MCTCR_COD_GUEST_REG	16
+> > > >
+> > > > -#define ZR36057_MCMPR           0x038	/* MPEG Code Memory Pointer Register */
+> > > > -
+> > > > -#define ZR36057_ISR             0x03c	/* Interrupt Status Register */
+> > > > -#define ZR36057_ISR_GIRQ1                BIT(30)
+> > > > -#define ZR36057_ISR_GIRQ0                BIT(29)
+> > > > -#define ZR36057_ISR_COD_REP_IRQ            BIT(28)
+> > > > -#define ZR36057_ISR_JPEG_REP_IRQ           BIT(27)
+> > > > -
+> > > > -#define ZR36057_ICR             0x040	/* Interrupt Control Register */
+> > > > -#define ZR36057_ICR_GIRQ1                BIT(30)
+> > > > -#define ZR36057_ICR_GIRQ0                BIT(29)
+> > > > -#define ZR36057_ICR_COD_REP_IRQ            BIT(28)
+> > > > -#define ZR36057_ICR_JPEG_REP_IRQ           BIT(27)
+> > > > -#define ZR36057_ICR_INT_PIN_EN             BIT(24)
+> > > > -
+> > > > -#define ZR36057_I2CBR           0x044	/* I2C Bus Register */
+> > > > -#define ZR36057_I2CBR_SDA		 BIT(1)
+> > > > -#define ZR36057_I2CBR_SCL		 BIT(0)
+> > > > -
+> > > > -#define ZR36057_JMC             0x100	/* JPEG Mode and Control */
+> > > > -#define ZR36057_JMC_JPG                  BIT(31)
+> > > > -#define ZR36057_JMC_JPG_EXP_MODE          (0 << 29)
+> > > > -#define ZR36057_JMC_JPG_CMP_MODE           BIT(29)
+> > > > -#define ZR36057_JMC_MJPG_EXP_MODE         (2 << 29)
+> > > > -#define ZR36057_JMC_MJPG_CMP_MODE         (3 << 29)
+> > > > -#define ZR36057_JMC_RTBUSY_FB            BIT(6)
+> > > > -#define ZR36057_JMC_GO_EN                BIT(5)
+> > > > -#define ZR36057_JMC_SYNC_MSTR             BIT(4)
+> > > > -#define ZR36057_JMC_FLD_PER_BUFF         BIT(3)
+> > > > -#define ZR36057_JMC_VFIFO_FB             BIT(2)
+> > > > -#define ZR36057_JMC_CFIFO_FB             BIT(1)
+> > > > -#define ZR36057_JMC_STLL_LIT_ENDIAN       BIT(0)
+> > > > -
+> > > > -#define ZR36057_JPC             0x104	/* JPEG Process Control */
+> > > > -#define ZR36057_JPC_P_RESET              BIT(7)
+> > > > -#define ZR36057_JPC_COD_TRNS_EN            BIT(5)
+> > > > -#define ZR36057_JPC_ACTIVE               BIT(0)
+> > > > -
+> > > > -#define ZR36057_VSP             0x108	/* Vertical Sync Parameters */
+> > > > -#define ZR36057_VSP_VSYNC_SIZE           16
+> > > > -#define ZR36057_VSP_FRM_TOT              0
+> > > > -
+> > > > -#define ZR36057_HSP             0x10c	/* Horizontal Sync Parameters */
+> > > > -#define ZR36057_HSP_HSYNC_START          16
+> > > > -#define ZR36057_HSP_LINE_TOT             0
+> > > > -
+> > > > -#define ZR36057_FHAP            0x110	/* Field Horizontal Active Portion */
+> > > > -#define ZR36057_FHAP_NAX                16
+> > > > -#define ZR36057_FHAP_PAX                0
+> > > > -
+> > > > -#define ZR36057_FVAP            0x114	/* Field Vertical Active Portion */
+> > > > -#define ZR36057_FVAP_NAY                16
+> > > > -#define ZR36057_FVAP_PAY                0
+> > > > -
+> > > > -#define ZR36057_FPP             0x118	/* Field Process Parameters */
+> > > > -#define ZR36057_FPP_ODD_EVEN             BIT(0)
+> > > > -
+> > > > -#define ZR36057_JCBA            0x11c	/* JPEG Code Base Address */
+> > > > -
+> > > > -#define ZR36057_JCFT            0x120	/* JPEG Code FIFO Threshold */
+> > > > -
+> > > > -#define ZR36057_JCGI            0x124	/* JPEG Codec Guest ID */
+> > > > -#define ZR36057_JCGI_JPE_GUEST_ID         4
+> > > > -#define ZR36057_JCGI_JPE_GUEST_REG        0
+> > > > -
+> > > > -#define ZR36057_GCR2            0x12c	/* GuestBus Control Register (2) */
+> > > > -
+> > > > -#define ZR36057_POR             0x200	/* Post Office Register */
+> > > > -#define ZR36057_POR_PO_PEN                BIT(25)
+> > > > -#define ZR36057_POR_PO_TIME               BIT(24)
+> > > > -#define ZR36057_POR_PO_DIR                BIT(23)
+> > > > -
+> > > > -#define ZR36057_STR             0x300	/* "Still" Transfer Register */
+> > > > +/* MPEG Code Memory Pointer Register */
+> > > > +#define ZR36057_MCMPR			0x038
+> > > > +
+> > > > +/* Interrupt Status Register */
+> > > > +#define ZR36057_ISR			0x03c
+> > > > +#define ZR36057_ISR_GIRQ1			BIT(30)
+> > > > +#define ZR36057_ISR_GIRQ0			BIT(29)
+> > > > +#define ZR36057_ISR_COD_REP_IRQ			BIT(28)
+> > > > +#define ZR36057_ISR_JPEG_REP_IRQ		BIT(27)
+> > > > +
+> > > > +/* Interrupt Control Register */
+> > > > +#define ZR36057_ICR			0x040
+> > > > +#define ZR36057_ICR_GIRQ1			BIT(30)
+> > > > +#define ZR36057_ICR_GIRQ0			BIT(29)
+> > > > +#define ZR36057_ICR_COD_REP_IRQ			BIT(28)
+> > > > +#define ZR36057_ICR_JPEG_REP_IRQ		BIT(27)
+> > > > +#define ZR36057_ICR_INT_PIN_EN			BIT(24)
+> > > > +
+> > > > +/* I2C Bus Register */
+> > > > +#define ZR36057_I2CBR			0x044
+> > > > +#define ZR36057_I2CBR_SDA			BIT(1)
+> > > > +#define ZR36057_I2CBR_SCL			BIT(0)
+> > > > +
+> > > > +/* JPEG Mode and Control */
+> > > > +#define ZR36057_JMC			0x100
+> > > > +#define ZR36057_JMC_JPG				BIT(31)
+> > > > +#define ZR36057_JMC_JPG_EXP_MODE		(0 << 29)
+> > > > +#define ZR36057_JMC_JPG_CMP_MODE		BIT(29)
+> > > > +#define ZR36057_JMC_MJPG_EXP_MODE		(2 << 29)
+> > > > +#define ZR36057_JMC_MJPG_CMP_MODE		(3 << 29)
+> > > > +#define ZR36057_JMC_RTBUSY_FB			BIT(6)
+> > > > +#define ZR36057_JMC_GO_EN			BIT(5)
+> > > > +#define ZR36057_JMC_SYNC_MSTR			BIT(4)
+> > > > +#define ZR36057_JMC_FLD_PER_BUFF		BIT(3)
+> > > > +#define ZR36057_JMC_VFIFO_FB			BIT(2)
+> > > > +#define ZR36057_JMC_CFIFO_FB			BIT(1)
+> > > > +#define ZR36057_JMC_STLL_LIT_ENDIAN		BIT(0)
+> > > > +
+> > > > +/* JPEG Process Control */
+> > > > +#define ZR36057_JPC			0x104
+> > > > +#define ZR36057_JPC_P_RESET			BIT(7)
+> > > > +#define ZR36057_JPC_COD_TRNS_EN			BIT(5)
+> > > > +#define ZR36057_JPC_ACTIVE			BIT(0)
+> > > > +
+> > > > +/* Vertical Sync Parameters */
+> > > > +#define ZR36057_VSP			0x108
+> > > > +#define ZR36057_VSP_VSYNC_SIZE		16
+> > > > +#define ZR36057_VSP_FRM_TOT		0
+> > > > +
+> > > > +/* Horizontal Sync Parameters */
+> > > > +#define ZR36057_HSP			0x10c
+> > > > +#define ZR36057_HSP_HSYNC_START		16
+> > > > +#define ZR36057_HSP_LINE_TOT		0
+> > > > +
+> > > > +/* Field Horizontal Active Portion */
+> > > > +#define ZR36057_FHAP			0x110
+> > > > +#define ZR36057_FHAP_NAX		16
+> > > > +#define ZR36057_FHAP_PAX		0
+> > > > +
+> > > > +/* Field Vertical Active Portion */
+> > > > +#define ZR36057_FVAP			0x114
+> > > > +#define ZR36057_FVAP_NAY		16
+> > > > +#define ZR36057_FVAP_PAY		0
+> > > > +
+> > > > +/* Field Process Parameters */
+> > > > +#define ZR36057_FPP			0x118
+> > > > +#define ZR36057_FPP_ODD_EVEN			BIT(0)
+> > > > +
+> > > > +/* JPEG Code Base Address */
+> > > > +#define ZR36057_JCBA			0x11c
+> > > > +
+> > > > +/* JPEG Code FIFO Threshold */
+> > > > +#define ZR36057_JCFT			0x120
+> > > > +
+> > > > +/* JPEG Codec Guest ID */
+> > > > +#define ZR36057_JCGI			0x124
+> > > > +#define ZR36057_JCGI_JPE_GUEST_ID	4
+> > > > +#define ZR36057_JCGI_JPE_GUEST_REG	0
+> > > > +
+> > > > +/* GuestBus Control Register (2) */
+> > > > +#define ZR36057_GCR2			0x12c
+> > > > +
+> > > > +/* Post Office Register */
+> > > > +#define ZR36057_POR			0x200
+> > > > +#define ZR36057_POR_PO_PEN			BIT(25)
+> > > > +#define ZR36057_POR_PO_TIME			BIT(24)
+> > > > +#define ZR36057_POR_PO_DIR			BIT(23)
+> > > > +
+> > > > +/* "Still" Transfer Register */
+> > > > +#define ZR36057_STR			0x300
+> > > >
+> > > >  #endif
+> > > > --
+> > > > 2.30.2
+> > > >
+> > > > --
+> > > > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > > > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > > > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHCgnP6Jr6TbjwUy%40kali.
+> > > >
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHDR7VxighihfZd5%40kali.
+> >
 
