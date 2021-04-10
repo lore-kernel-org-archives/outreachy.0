@@ -1,89 +1,204 @@
 X-GM-THRID: 6949457058068430848
-X-Received: by 2002:a1c:4c0c:: with SMTP id z12mr17676037wmf.38.1618054652680;
-        Sat, 10 Apr 2021 04:37:32 -0700 (PDT)
+X-Received: by 2002:aca:37c1:: with SMTP id e184mr7684547oia.136.1618054417721;
+        Sat, 10 Apr 2021 04:33:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:5348:: with SMTP id t8ls243909wrv.2.gmail; Sat, 10 Apr
- 2021 04:37:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwezhQ3LvNQJWjbghHbyeh8Zq1/F5h/lrILgFZbuvaAQUo7hP/r9/J2wpUVfuYb1gaDK+tk
-X-Received: by 2002:a5d:4707:: with SMTP id y7mr474444wrq.396.1618054651156;
-        Sat, 10 Apr 2021 04:37:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618054651; cv=none;
+Received: by 2002:aca:ab09:: with SMTP id u9ls1562824oie.2.gmail; Sat, 10 Apr
+ 2021 04:33:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZNGMpT7chTXm/EHeibafWquaxiNTC9bV9eO9TngLszCy6NWF0O6/YUY/IJ9j4iPcjKOSo
+X-Received: by 2002:aca:b387:: with SMTP id c129mr12671908oif.30.1618054416660;
+        Sat, 10 Apr 2021 04:33:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618054416; cv=none;
         d=google.com; s=arc-20160816;
-        b=P4LE/S7KVsM7kOPTwDrIGKSpcbQPsqkRliZ9OdPqaPfuLtxJ3RT6LWVQNswolRrWYz
-         GxltY0kHMKMXkaPP9+PjEAnA2h66cG7lbzcqqiilNGgmcLTpa5vjdDgcEbDwRYcoRwu4
-         2kk9BiDShxr0Mh/qR1VPsyGpYm53XsorpEwQTo518Vvb23ViTJaEnWPRrFIdgm0aif3Z
-         x1y+zF3dadfrhbjRHeSCBWhxgjLH1ngf5qw/ecu4zEZii1C2EnTVHmUSi5N4k28XdYMz
-         jf8Knd2ZiVpXyp4jrK7ntYuFA+j7xiMZjmdLj5QFy+Zw8H+qFGI0nmjVsyGMfQFGE3O8
-         nMqA==
+        b=gZvDSmxD3ffRiJPK+iLXgIGhzKLYlakuluyy4nE4xHF5iMTTMRNz83dum+4sPtIMxO
+         ONehu2B2+SpDZMwH8IhKRlllENJXCcpqyX1Z909EuByawcWHr88F8tUxZNXQG/pHd9Za
+         52YK2RNpFTh8kCoaNIoyGdcFG2AxajBDOZxiMoNapAL3q6wHyhsk2qxcI/nQ0uN5x5Bk
+         u6FBHBsAVdRdRcKbSy+kGCMRwGrlIF5Se/1Zt6HDOuU8hmES6FkVPUBUaib/HbbC1qfT
+         FovivJlTgnzU9Gdw7/KsdJlxMDq4CTCxXOH8Pz3aLPn3T7FI/S4LeA1/SFEdludN5ejQ
+         MI3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=omJB6a9sO56RyDd0Gh00e8kroWnuy5LWC3L7u9Yb78Y=;
-        b=fI00OEZo9JQRX2rsPbtfIiuEEfhfH9mGGhSS+PCh0zGjCiqdlCp77/0w/HE+McRRgl
-         HFWT+Du2mie8+2WcMV5skJjmleZFXf5OOkWOf3u0Xj7lm/26sLBjKzdEs5QtbXe9gmix
-         ilSY62afCvd/thG9lhfVyKGQ9sD2QrCp6D69WTz2TK/zEMSi20P9MaNdISc//ncfzLHS
-         7Yw9O9QorIvBlJd9TaOiSbYxhV/jjl5Knuu+cEZGppoHhIuzUY11dI0VSadKT7EbkIWK
-         x5yJWAeCpxwygrjTspIztwPFxJxWLwHwnd1pokBriz8zcfCabS8ly9S1kBNlDwjx15A+
-         3emQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=42il+es7ci/UWI8zqqRQZmITy5J0rwhMcwRixsFQA8E=;
+        b=uzfGKyih5nAR8Vuta/eix3sY/pp1ge4v5IU+sv9Ng2GCPfkaOZaGnidW6RUtk9g1Cp
+         wWVCMzUehlUAwvYHZ08mFpo6J3/PRufEWEnhSZRRt5jELK8dArtpt0eSdW5mFFpABzBn
+         tOiadEVbYGVGC0PGg7LJQcy3doSUncgbTejVbRX/TgkKy/ezMr7XCUx+Fw+hdDCihJ7+
+         yzKIXK21rHsjgBoeYWwfkca7Rs1q5WorUKvLWNHCnqzvE1s7AsniXoAIbQ7VWg3oiaEz
+         54WtgNV0JbooH2xHQfybgC6dha9qPWhaB+jTE7SxKTRB/4rpud8XVYSSXUe2Jra71Veo
+         bWlQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id l4si627770wru.4.2021.04.10.04.37.31
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=XY7udFxQ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id v31si314601ott.5.2021.04.10.04.33.36
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Apr 2021 04:37:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        Sat, 10 Apr 2021 04:33:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3A8EyCK6A21whjpfXlHegZsceALOonbusQ8zAX?=
- =?us-ascii?q?/mp2TgFYddHdusC1hfIA1QL1jjF5YgBQpfmrPq6cTXTAsaNv6Y4KMru4GCXgsm?=
- =?us-ascii?q?2kLIZthLGSigHIMSv46+JbyONcY7FzYeeARWRSoOTbxE2DE9gmyMSa66zAv5a7?=
- =?us-ascii?q?815BRRxnApsQlTtRJwqfElJ7XwVKQac+faDw2uNqvCGnYm5SU8LTPAhPY8HtvN?=
- =?us-ascii?q?vO/aiWFiIuIz4CxE2wgSiz6Lj8eiLooCs2dz9U278t/SzkvmXCl9iemsihxhXR?=
- =?us-ascii?q?2mPV5Zg+oqqU9vJ5CMaBitcYJ1zX427CCOsROczmzVdFxpDXmS5a6+XkmBsrM8?=
- =?us-ascii?q?Rt536URFibyCGduDXI6zo27m+n9FnwuwqUneXCSDU2B9Epv/MSTjLi90EisNtg?=
- =?us-ascii?q?uZg7rF6xipw/N2K9oA3A/dTSEzllmk2oyEBS7tI7vjh1XYcYVb5ctoB3xjImLL?=
- =?us-ascii?q?4wWAbz6IUiGO4rJNjE//BIfV7fR22xhBge/PWcGlA6HhKDSk9HhcCPyThRmxlC?=
- =?us-ascii?q?vj4l7f1auGwB+pI7Q5wB2uKsCM5VvYALceMsUIJWLMJEYfLyMnDEWhrKLWKULR?=
- =?us-ascii?q?DGOcg8VU7lmtrJzI4JxMuDXdgp9d8Jsrznd3903FRSR2veTfKj56Bq2DjpBEWF?=
- =?us-ascii?q?GQ71wsUb3ZJ+obGUftrWDRE=3D?=
-X-IronPort-AV: E=Sophos;i="5.82,210,1613430000"; 
-   d="scan'208";a="502547776"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Apr 2021 13:37:30 +0200
-Date: Sat, 10 Apr 2021 13:37:30 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=XY7udFxQ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2CF54610CD;
+	Sat, 10 Apr 2021 11:33:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1618054415;
+	bh=PuEewjDW4FzdjB+FsG31MbGgERKfTa+r9b7m7c8iqdk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XY7udFxQg9sjt67lRQ2/4DzUrWDqPKvXe8LMDjm+IOK5zDmB/8M5ivy4fCJcwU57h
+	 wY/Ny3Ntqf1Itl2XFzTSEisQUY0fb0uFWZIJjH5XCFb/x+ob76cU49HZtFwB8UHBwD
+	 lnViyoNIsh9zELL5uxTBO1643MR4f99PsJfBbhnI=
+Date: Sat, 10 Apr 2021 13:33:33 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: Greg KH <gregkh@linuxfoundation.org>, outreachy-kernel@googlegroups.com, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, julia.lawall@inria.fr
 Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: rtl8723bs: Change the
  type and use of a variable
-In-Reply-To: <10115279.QsZogQpAqX@localhost.localdomain>
-Message-ID: <alpine.DEB.2.22.394.2104101334190.2975@hadrien>
-References: <20210410092232.15155-1-fmdefrancesco@gmail.com> <4547533.LBOHeWh67L@localhost.localdomain> <YHGGBpSLj+W8ikXz@kroah.com> <10115279.QsZogQpAqX@localhost.localdomain>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Message-ID: <YHGNDejY/TfzeLzh@kroah.com>
+References: <20210410092232.15155-1-fmdefrancesco@gmail.com>
+ <4547533.LBOHeWh67L@localhost.localdomain>
+ <YHGGBpSLj+W8ikXz@kroah.com>
+ <10115279.QsZogQpAqX@localhost.localdomain>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <10115279.QsZogQpAqX@localhost.localdomain>
 
+On Sat, Apr 10, 2021 at 01:23:21PM +0200, Fabio M. De Francesco wrote:
+> On Saturday, April 10, 2021 1:03:34 PM CEST Greg KH wrote:
+> > On Sat, Apr 10, 2021 at 12:58:06PM +0200, Fabio M. De Francesco wrote:
+> > > On Saturday, April 10, 2021 12:31:27 PM CEST Greg KH wrote:
+> > > > On Sat, Apr 10, 2021 at 11:56:48AM +0200, Fabio M. De Francesco 
+> wrote:
+> > > > > On Saturday, April 10, 2021 11:31:16 AM CEST Greg KH wrote:
+> > > > > > On Sat, Apr 10, 2021 at 11:22:32AM +0200, Fabio M. De Francesco
+> > > 
+> > > wrote:
+> > > > > > > Change the type of fw_current_in_ps_mode from u8 to bool,
+> > > > > > > because
+> > > > > > > it is used everywhere as a bool and, accordingly, it should be
+> > > > > > > declared as a bool. Shorten the controlling
+> > > > > > > expression of an 'if' statement.
+> > > > > > > 
+> > > > > > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > > > > > > ---
+> > > > > > > 
+> > > > > > >  drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
+> > > > > > >  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
+> > > > > > >  2 files changed, 2 insertions(+), 2 deletions(-)
+> > > > > > > 
+> > > > > > > diff --git a/drivers/staging/rtl8723bs/hal/hal_intf.c
+> > > > > > > b/drivers/staging/rtl8723bs/hal/hal_intf.c index
+> > > > > > > 96fe172ced8d..8dc4dd8c6d4c 100644
+> > > > > > > --- a/drivers/staging/rtl8723bs/hal/hal_intf.c
+> > > > > > > +++ b/drivers/staging/rtl8723bs/hal/hal_intf.c
+> > > > > > > @@ -348,7 +348,7 @@ void rtw_hal_dm_watchdog(struct adapter
+> > > > > > > *padapter)
+> > > > > > > 
+> > > > > > >  void rtw_hal_dm_watchdog_in_lps(struct adapter *padapter)
+> > > > > > >  {
+> > > > > > > 
+> > > > > > > -	if (adapter_to_pwrctl(padapter)->fw_current_in_ps_mode ==
+> > > 
+> > > true)
+> > > 
+> > > > > {
+> > > > > 
+> > > > > > > +	if (adapter_to_pwrctl(padapter)->fw_current_in_ps_mode) {
+> > > > > > > 
+> > > > > > >  		if (padapter->HalFunc.hal_dm_watchdog_in_lps)
+> > > > > > >  		
+> > > > > > >  			padapter-
+> > > > > >
+> > > > > >HalFunc.hal_dm_watchdog_in_lps(padapter); /* this
+> > > > > >
+> > > > > > >  			function caller is in interrupt 
+> context
+> > > > > 
+> > > > > */>
+> > > > > 
+> > > > > > >  	}
+> > > > > > > 
+> > > > > > > diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+> > > > > > > b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h index
+> > > > > > > 0a48f1653be5..0767dbb84199 100644
+> > > > > > > --- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+> > > > > > > +++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
+> > > > > > > @@ -203,7 +203,7 @@ struct pwrctrl_priv {
+> > > > > > > 
+> > > > > > >  	u8 LpsIdleCount;
+> > > > > > >  	u8 power_mgnt;
+> > > > > > >  	u8 org_power_mgnt;
+> > > > > > > 
+> > > > > > > -	u8 fw_current_in_ps_mode;
+> > > > > > > +	bool fw_current_in_ps_mode;
+> > > > > > > 
+> > > > > > >  	unsigned long	DelayLPSLastTimeStamp;
+> > > > > > >  	s32		pnp_current_pwr_state;
+> > > > > > >  	u8 pnp_bstop_trx;
+> > > > > > 
+> > > > > > If this is only checked, how can it ever be true?  Who ever sets
+> > > > > > this
+> > > > > > value?
+> > > > > 
+> > > > > You're right. It is not set, therefore the "if" control expression
+> > > > > cannot ever be "true".
+> > > > > 
+> > > > > Can I delete this statement in a new patch? Or you prefer I send
+> > > > > the
+> > > > > whole series again with this change in patch 4/4?
+> > > > 
+> > > > Just delete the variable from the structure entirely and when it is
+> > > > used.
+> > > 
+> > > I've read the code of the function whom that 'if' statement belongs to.
+> > > This function takes a pointer whose name is 'padapter' and this is has
+> > > global scope. I think that since fw_current_in_ps_mode is dereferenced
+> > > by the function adapter_to_pwrctl(padapter) it can and is indeed
+> > > initialized and modified in some other files of the driver.
+> > 
+> > Where does that happen, and why did the build not break when you changed
+> > the variable name?  
+> >
+> The build didn't break because I changed the name of that variable 
+> everywhere it is used in the driver. This patch is against all the affected 
+> files of each subdirectory of staging/rtl8723bs.
+
+Right, and as you only had to change it in one place, that tested if
+that variable was set to a specific value, and there is no code that
+actually sets the variable, it seems like that variable is not ever used
+and can be removed.
+
+> > Is the whole variable assigned to a specific
+> > location in memory in the device?  Where is it initialized?
+> >
 > That variable has global scope and is assigned at least in:
-
-What do you mean by global scope?  None of the following look like
-references to global variables.
-
-julia
-
->
-> drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:368:
+> 
+> drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:368:                       
 > pwrpriv->fw_current_in_ps_mode = false;
->
-> drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:380:
+> 
+> drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:380:                       
 > pwrpriv->fw_current_in_ps_mode = true;
->
-> drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:433:
+> 
+> drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:433:  
 > adapter_to_pwrctl(padapter)->fw_current_in_ps_mode = false;
->
-> drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:981:
+> 
+> drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:981:       
 > pwrctrlpriv->fw_current_in_ps_mode = false;
+
+But you are only changing 2 files in this patch:
+
+> > > > > > >  drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
+> > > > > > >  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
+
+Ah, you are only changing the type, not the name.  That's the confusion
+on my part.
+
+Was the code setting a u8 to "true/false"?  Ugh, what a mess...
+
+thanks,
+
+greg k-h
 
