@@ -1,115 +1,150 @@
-X-GM-THRID: 6807025252399316992
-X-Received: by 2002:a63:b34d:: with SMTP id x13mr17649282pgt.317.1584884070504;
-        Sun, 22 Mar 2020 06:34:30 -0700 (PDT)
+X-GM-THRID: 6949196106394763264
+X-Received: by 2002:a05:651c:124b:: with SMTP id h11mr11733998ljh.401.1618042983757;
+        Sat, 10 Apr 2021 01:23:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:3103:: with SMTP id x3ls6196188pfx.2.gmail; Sun, 22 Mar
- 2020 06:34:29 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvg0ogo5nJ41qYYJNlbwnlKfNT51gqUuKrJX+z7lgldILx/agcJNR59iypkYtxd503OCJgB
-X-Received: by 2002:a63:a35a:: with SMTP id v26mr18385647pgn.40.1584884069134;
-        Sun, 22 Mar 2020 06:34:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584884069; cv=none;
+Received: by 2002:a2e:bc23:: with SMTP id b35ls190195ljf.7.gmail; Sat, 10 Apr
+ 2021 01:23:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzh0lB+jLm+G2yMArXQgsb//lB+po6mZ7YsOvBYGQ29Ge3LVO3JsTgJNX6nDOJKq+2H54SL
+X-Received: by 2002:a2e:5159:: with SMTP id b25mr11717961lje.1.1618042981937;
+        Sat, 10 Apr 2021 01:23:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618042981; cv=none;
         d=google.com; s=arc-20160816;
-        b=PZpFp9HpbEjH98DausBaK22QH/iGLtSA1qy62GeMi72M23a8K5AU1Zyg4Fbub53OWZ
-         0U9U87EHBXh+YDE5PqZSqD/b2BKVKuobh0UqHkVV1BF0mlXqOQrvQBe8ZoW8eXYnIA86
-         9EtVI71C/6B2AQD2dJb6Q2/AphvxgSO/k4ADYSVEXQ7STRhJdHW+Jbvuadp5G44g1igy
-         dK0E0sBOR9RRK0bfcQgQTSkRkb/AzC4g2Yss3jaRyarsmv89tRjelb8brA5hFmleQLsF
-         qwH5tfusG/FRX4fAhar+4UEz3z6XpAk5nDPG9KWoCc6FPFiYOU9q7uGzwqlsfckN47X8
-         xqGw==
+        b=kdiQPu9vU9UPTcMQ7SsMpYHQ5k/4HhVn6mN1O/N4WcFQ4tsK9uyQf/kPEWqJlglibZ
+         t3QUNms9M72tripCy49FrXIs86OUR2ys42spTYniK67WBzRa8udhKBe0BXpJjFTEjvZ9
+         ccjQw//KZTMVgsvJUAQEUDh4MBlE93yeN9SAL5qn9BRmmLtBYfLu2p5SzFBSuIzmmeef
+         wzLAfHPHS0WM7vK36ytH/MCFYRg04hKe+OOnkI0wRm/1AY+sfJyETMDm1Km63zOy9NUk
+         WTxVYsDX16iC2kGywT8n8NXUAlc+tl+QbSvuO5ydhh3xV97EHocyCQarvkMPl50S4D+n
+         SQZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=nb6Tdh2SNHJS0ljWZ4iRAOfPuvZHmFIQ+GlpW5dSCt4=;
-        b=cLpxzPf7K91i96f4CwCxY8/VNionjt+YvW7K1XU3gTSFz6E2I8FSVOe9IAAJqIIUvM
-         e4txx+mJUfoFDmsVwd+BEJDT/30eOx5Fr+gPH7Ey+1crsVyDw8cYQCPzfOSKcaMFtzz0
-         rdgU3B/FfM+xQK0KZWUHR8wsIBZJe3mlXWkTr5gHInLgbcpiBFRoX4Ayr+OEVhNPUzrh
-         HxUO2L53XfmTNYNCbwdzOJ0wxJHobC4xaH3vhAaa6uj1QhJptWbeEe6Vh6znrjTCJqvH
-         VCawPn+Cm4mM3jyastz7SIAyAuL775o76TOHQ0+lai5rk4KqHXcl4saYtcOXBt4R3g9A
-         dUgw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=LqL+khzz07OMXMWMerTVHGKRIcKcQYPRZbqW4L/h1Gk=;
+        b=PM7jpmpvQuAFinbX7R/1EerVN+9vmLY3PDswv3mmLICv7e+i5DEx7RZqCJi3mBvklb
+         qTMv9q6RYIwF6nEf4vmfJXYRUAsAad2+D9UYKxBJzHzS8n/8A2EWjC+XTQ0XXXPun/xD
+         V9iXQqBcyFe/z5mSgTg/kxGk35yEU14EcD3GVtdQMpo4SjHZQxUkoatZJTbjJdxjbutO
+         XCzFVihUqxexZL8OZEji70EkKSwEwplDcb9zBfsGRqrKf/ZBYfdsAYgqFQE0IYyO/9/k
+         RHQyvoh8DQEGdEbICDtcFrHNDeQUcuTo2SwPSRO699w72uZN8GKR3zbKHUokPVLxuw4D
+         AveA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oFmqHSrp;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <singhalsimran0@gmail.com>
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id x12si722563plv.3.2020.03.22.06.34.29
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id z5si341267ljj.5.2021.04.10.01.23.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 22 Mar 2020 06:34:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 10 Apr 2021 01:23:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oFmqHSrp;
-       spf=pass (google.com: domain of singhalsimran0@gmail.com designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=singhalsimran0@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x641.google.com with SMTP id t16so4688147plr.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 22 Mar 2020 06:34:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=nb6Tdh2SNHJS0ljWZ4iRAOfPuvZHmFIQ+GlpW5dSCt4=;
-        b=oFmqHSrptMIrDizGQAfC7mVqZv2kJ0s/tkfh240bFPmcdf2Ja6t3d/XOi/cmKijjXs
-         TIjFEjOg/1jZDvtqi73L7jKfCDBdxL88nLA2hXJFmAR0Tpmo16Caq48bfwEyTAQpjbT7
-         ZJL+OlrFtVVwU+pIkAy3TSewwS39YMkvwq2JW+ANe1gFPGil62lwTLtu7etCbS4mIxh+
-         gd4pEXY0NSm7AIS91fq77BchEn6zlzmqQW8Z6P7PHwY8J11vnGYOMxqpWr8GKA9mQNzr
-         1PpITL6hOyudJ1Bqk59Ap69HYuOEZ2x32v9xGa2UtBvtmFvfL8knhcPICSrFK/4H0zLi
-         ngCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=nb6Tdh2SNHJS0ljWZ4iRAOfPuvZHmFIQ+GlpW5dSCt4=;
-        b=S1FFBfF6bqL1UwgD0i17VvqT6sj6slXx9X14RZuzghNgc29yJBDeqIBgl9+CJArpT9
-         PUy0lZEupHRhY6TCn/crt0GS31QhNLxuSQmy/DAeRxdlR1rBnuSwoqL3CZ6u5Ux2iV++
-         b/t9EKTlADL7EJKdvMGlLXgOlcH2Fa2798LU5KXyp2cJLJKKqWhI8+YHHXJ59JFFR0F2
-         8Gdme5BP4lD4PL/P0tmYOvQvTPPiXfp8S09An2h1JLShq/ItJvlcFFUr/+rsfEf7SeLW
-         hLv67fAbyXnQDOENN1TOPp33G9VyUDZ2ycHwkeoYgTiWe082JN0y1vHPritaRF1MSuYz
-         Mfxg==
-X-Gm-Message-State: ANhLgQ1yroW5dzwkfmkOMlA98PdmgEejr7UIkUFANLySXsiaBwNVD2Bv
-	nB/dyNcnCprhsm6p0GLSOTeATLLPQr8=
-X-Received: by 2002:a17:902:aa98:: with SMTP id d24mr16995410plr.74.1584884068266;
-        Sun, 22 Mar 2020 06:34:28 -0700 (PDT)
-Return-Path: <singhalsimran0@gmail.com>
-Received: from simran-Inspiron-5558 ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id e80sm10998595pfh.117.2020.03.22.06.34.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Mar 2020 06:34:27 -0700 (PDT)
-Date: Sun, 22 Mar 2020 19:04:23 +0530
-From: Simran Singhal <singhalsimran0@gmail.com>
-To: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: greybus: tools: Fix RETURN_VOID warnings
-Message-ID: <20200322133423.GA27425@simran-Inspiron-5558>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AZK5RiaEzgjE4cwejpLqECceALOonbusQ8zAX?=
+ =?us-ascii?q?/mp2TgFYddHdqtC2kJ0gpHvJoRsYRX1Io7u9EYaaR3e0z/RIyKkXeYyvRQz3/F?=
+ =?us-ascii?q?avRbsC0aLH4xnNXxLz7fRc06AISdkaNPTVAUJhhcj3pCmUeuxB/PC9/KqlhfjT?=
+ =?us-ascii?q?wh5WJGlXQppt4AtjBgGQHlcefngkObMCCJGe6sBbzgDPRV0raK2AakUtY/LOvJ?=
+ =?us-ascii?q?nimp7gfHc9dnwawTjLvHeT5Ln2HwPw5HojejlEqI1MzVT4?=
+X-IronPort-AV: E=Sophos;i="5.82,210,1613430000"; 
+   d="scan'208";a="502532788"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Apr 2021 10:22:45 +0200
+Date: Sat, 10 Apr 2021 10:22:45 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>, 
+    outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [Patch 0/3]
+In-Reply-To: <YHFcI104K+ih3UDG@kroah.com>
+Message-ID: <alpine.DEB.2.22.394.2104101021190.2975@hadrien>
+References: <6552860.D8CPca6BT0@localhost.localdomain> <YHFT2S31kFy72DMv@kroah.com> <2101069.1PIH1tPmJ7@localhost.localdomain> <YHFcI104K+ih3UDG@kroah.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Type: text/plain; charset=US-ASCII
 
-Fix 'void function return statements are not generally useful'
-checkpatch.pl warnings.
 
-Signed-off-by: Simran Singhal <singhalsimran0@gmail.com>
----
- drivers/staging/greybus/tools/loopback_test.c | 3 ---
- 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
-index ba6f905f26fa..78333fb45b70 100644
---- a/drivers/staging/greybus/tools/loopback_test.c
-+++ b/drivers/staging/greybus/tools/loopback_test.c
-@@ -855,11 +855,8 @@ void loopback_run(struct loopback_test *t)
- 
- 	log_results(t);
- 
--	return;
--
- err:
- 	printf("Error running test\n");
--	return;
- }
- 
- static int sanity_check(struct loopback_test *t)
--- 
-2.17.1
+On Sat, 10 Apr 2021, Greg KH wrote:
 
+> On Sat, Apr 10, 2021 at 09:57:00AM +0200, Fabio M. De Francesco wrote:
+> > On Saturday, April 10, 2021 9:29:29 AM CEST Greg KH wrote:
+> > > On Fri, Apr 09, 2021 at 06:29:59PM +0200, Fabio M. De Francesco wrote:
+> > > > This patch series removes camelcases, changes the type and use of a
+> > > > variable, and correct misspelled words.
+> > > >
+> > > > Patch 1/3: staging: rtl8723bs: Remove camelcase in several files
+> > > >
+> > > > drivers/staging/rtl8723bs/core/rtw_cmd.c       |  2 +-
+> > > > drivers/staging/rtl8723bs/core/rtw_mlme.c      |  2 +-
+> > > > drivers/staging/rtl8723bs/core/rtw_pwrctrl.c   | 18 +++++++++---------
+> > > > drivers/staging/rtl8723bs/hal/hal_intf.c       |  2 +-
+> > > > drivers/staging/rtl8723bs/hal/rtl8723b_dm.c    |  6 +++---
+> > > > .../staging/rtl8723bs/hal/rtl8723b_hal_init.c  |  2 +-
+> > > > drivers/staging/rtl8723bs/hal/sdio_ops.c       | 14 +++++++-------
+> > > > .../staging/rtl8723bs/include/rtw_pwrctrl.h    |  2 +-
+> > > > 8 files changed, 24 insertions(+), 24 deletions(-)
+> > > >
+> > > > Patch 2/3: staging: rtl8723bs: Change the type and use of a variable
+> > > >
+> > > > drivers/staging/rtl8723bs/hal/hal_intf.c        | 2 +-
+> > > >
+> > > >  drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
+> > > >  2 files changed, 2 insertions(+), 2 deletions(-)
+> > > >
+> > > > Patch 3/3: staging: rtl8723bs: include: Fix misspelled words in
+> > > > comments
+> > > >
+> > > > .../rtl8723bs/include/Hal8192CPhyReg.h        |  8 ++---
+> > > >
+> > > >  .../staging/rtl8723bs/include/basic_types.h   |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/drv_types.h |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/hal_com.h   |  2 +-
+> > > >  .../staging/rtl8723bs/include/hal_com_reg.h   | 34 +++++++++----------
+> > > >  drivers/staging/rtl8723bs/include/hal_data.h  |  2 +-
+> > > >  .../staging/rtl8723bs/include/hal_pwr_seq.h   |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/rtw_cmd.h   |  6 ++--
+> > > >  drivers/staging/rtl8723bs/include/rtw_mlme.h  | 18 +++++-----
+> > > >  .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/rtw_mp.h    |  2 +-
+> > > >  .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/rtw_recv.h  |  4 +--
+> > > >  drivers/staging/rtl8723bs/include/rtw_xmit.h  |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/sta_info.h  |  2 +-
+> > > >  drivers/staging/rtl8723bs/include/wifi.h      |  2 +-
+> > > >  16 files changed, 46 insertions(+), 46 deletions(-)
+> > > >
+> > > > Fabio M. De Francesco
+> > >
+> > > I have no idea how you created this patch series, but I do not think it
+> > > worked well :(
+> > >
+> > > Please use our standard tools, that do this all for you automatically,
+> > >
+> > Apart from the fact that I forgot to save the subject, I didn't know that
+> > there are standard tools for doing Patch 0/N. Therefore I thought to make
+> > an email message that contained the information about the patch series.
+> >
+> > I was wrong, sorry. I have to research this topic in the git manual or
+> > somewhere else.
+>
+> 'git format-patch --cover-letter main..HEAD' will to the trick, if you
+> are on a different branch from 'main'.  Then edit the 0000-* file and
+> then send them all off with 'git send-email'.
+
+Fabio,
+
+The --cover-letter option is discussed in the "Versioning patchsets"
+section of the tutorial.  Perhaps that is not the best place for it, since
+the need for a cover letter is not specific to versioning...
+
+julia
+
+>
+> thanks,
+>
+> greg k-h
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHFcI104K%2Bih3UDG%40kroah.com.
+>
 
