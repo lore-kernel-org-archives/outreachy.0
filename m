@@ -1,70 +1,72 @@
 X-GM-THRID: 6949457058068430848
-X-Received: by 2002:a2e:5347:: with SMTP id t7mr12001213ljd.263.1618063313985;
-        Sat, 10 Apr 2021 07:01:53 -0700 (PDT)
+X-Received: by 2002:a1f:bf02:: with SMTP id p2mr6548579vkf.20.1618062954073;
+        Sat, 10 Apr 2021 06:55:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5081:: with SMTP id f1ls963173lfm.2.gmail; Sat, 10 Apr
- 2021 07:01:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxueFgB3nF4IBvoOiMtmm4RgcosoCoTjGsrJD1328WZFMHjmNB6hpQRiY3g0AraUgv2+gBT
-X-Received: by 2002:ac2:4e44:: with SMTP id f4mr13410039lfr.380.1618063312342;
-        Sat, 10 Apr 2021 07:01:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618063312; cv=none;
+Received: by 2002:ac5:c2ca:: with SMTP id i10ls866791vkk.5.gmail; Sat, 10 Apr
+ 2021 06:55:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzhk1GNpr2hEDzFikZdrVxRdvKYuz4uavZRpKvG39XlKdkWceM7MjhEcSQfYhRsszUHWiF
+X-Received: by 2002:a1f:3d57:: with SMTP id k84mr9942923vka.12.1618062953157;
+        Sat, 10 Apr 2021 06:55:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618062953; cv=none;
         d=google.com; s=arc-20160816;
-        b=ls6RhPzGK4uwsOYRIpRdFE/nBUyzDGI0rxa8BtkTEueB33lD4bYbvwRXxAFjlphsfe
-         BNBEUuh0zCzrrQzfdVsP77P/2iB4GVtZT7JksNAx7L+WoOwP+fmimTLOob9j126zo9Vv
-         misbUJY3deoewrZpSg0CGDQHmccqLp9U8TRUV68dveuB0lVCCq0ebB7eoVvgdaM0tsJh
-         AZtwZUM9kvS4ndu5fMTVb5ZoHZDn/MePiBLtxtddc8zrzB6URnIii2dssm5HsQ5/GguV
-         J8MEoCuna0nHn92I6llVbQszFeUFuryZZiOMfCOlk6/BFBykeFvdCwGsnoUQD7zZjnUa
-         JR5w==
+        b=QxVzOsHRgTgIGG9xs02aJug36OH1WyU2/W9mWlsjZ1039T2zna/DHoTmj9AaaHWr/w
+         63aWfDsYUoOs/m0xbcuhn0ZjfmoZTLcBnFDLAtMlIjIB9zx8qvk52henoogYOYwhV89+
+         N6Fu9aqAqxCzwwgFmzH7kMsgZrrrkDUQdQQkZw4MSWHaZxpiCWS75XIFUAOHxUVaibrK
+         gKiX6Y/ExKn1pgubCxaBM8r0nV4jbdmIgk5U211bXGgFKRmVSxgjis8arY465cdfBAWc
+         bvWEXPQTvxVAf1J2XUSIETvkXPAzjomMpA7LAK8QhVhKvYK7ji5CBIpeGcCtrhYfq75g
+         S50A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=xNNORxJrR3dNFe9UfPa0fjHBuTOmFee/pSUiokRa6Qo=;
-        b=etKNqwZJtA3DttR5FKKp2s8E8ADLlDYyfGxU6r+7TYWTsOwCtqIf52Np8+zbdcQFff
-         z8Prxi0k7VbtDt78Ihf3KzT98RZCA8cN+eC7jz0jG/WVRS3LNG12lx01vcNKCc3QChbs
-         qgT3kJeuiR6oJ79s0+SeNvahodjTOB01dgTiOEu6oU9h5/lOvStddy0xQE+8p57nfkgZ
-         0GWxD1KImOdNp07BXXkzDNQqTeX4/OiQzq5UK4tp7D32EoSSlVM+e6HhLjLit2lRjGHM
-         y1wFEhUltSawiOfMOZfloAp+uDEcP7myaoaDYUM3tbJ9+GMdTTOtJM1otiyvSJ8A6Jhy
-         GEbQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=YaPmc+6BKod+TSxHGfVMyU0vXSBXIdSkJ+hQBaHxPko=;
+        b=EpSLPPswQMxH+daap7e/LZTW51STFVdh/KxNKQ6500CRLzvSnLvQzuElcZ66FzSZup
+         hH07GjQ4LZnw37InBeGoy6S75pmDs/Y1wOMAz3VqI0MmRGAzRZ/BjgvS48yUScK8wPE2
+         Wja1+9X6ZNxyrmNm69NmnPotQf2U8OMc2eyweKDomYI7gbY2FtvQF7cEvqJSO4cepS2X
+         VWc0PRWw3LEr2eNzzw0jKXszIk3DAnMSp1X6HEI/ljHtbl57U5T3aD7ADD343PU1UtHt
+         +rDiEutucpKeFprfCIJ23ifWpY8Tx0Xfk7pAZPOROlQuuDRVpK8usb3AvvXYuuSTZQxs
+         9Rcw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
-        by gmr-mx.google.com with ESMTPS id q18si403793ljg.2.2021.04.10.07.01.52
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=SuO8zKbv;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id p23si427502vkm.1.2021.04.10.06.55.53
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 10 Apr 2021 07:01:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
+        Sat, 10 Apr 2021 06:55:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Ar6mAq67lpGrAOLVITwPXwCnXdLJzesId70hD?=
- =?us-ascii?q?6mlaTxtJfsuE0/2/hfhz726RtB89UGwt8OrqBICuWnXZnKQe3aAwOvOYUBDiqC?=
- =?us-ascii?q?+UKuhZjLfK5x3FN2nA+vVG1aFmGpIObeHYKVRhl8717E2ZPr8boOWvy6yjiefA?=
- =?us-ascii?q?w3oFd2gDV4ha4wh0EQqdGEFtLTM2ZqYRLoaW5cZMulObF0g/U8LTPBU4dtTYq8?=
- =?us-ascii?q?aOvJzrZgNuPW9E1CC+yQLt0rL8HhSCty1ybxpEy94ZnlT4rw=3D=3D?=
-X-IronPort-AV: E=Sophos;i="5.82,212,1613430000"; 
-   d="scan'208";a="378288243"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 10 Apr 2021 16:01:51 +0200
-Date: Sat, 10 Apr 2021 16:01:51 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=SuO8zKbv;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B0E986115A;
+	Sat, 10 Apr 2021 13:55:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1618062952;
+	bh=+2oaVVdSbdeETRDIulQvK38BCijkBUmD2tjAHcVSdsw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SuO8zKbvO6RmTwaHb0OVkUNRTEQSLajmyzw7ginW5ncqdCFJnCduejDHqprdlDtoC
+	 HGDMmSwWpnWrrHi8QZIa2lqxCvXGF/DX4b1YtyuABQJIaTfpQZHqqfb8VZ190JwQDs
+	 TK+6OJP6gPcLizksUywX05PLggLetJaCeIe1zXAM=
+Date: Sat, 10 Apr 2021 15:55:49 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: Julia Lawall <julia.lawall@inria.fr>, Greg KH <gregkh@linuxfoundation.org>, 
-    outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy-kernel@googlegroups.com,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
 Subject: Re: [Outreachy kernel] [PATCH 4/4] staging: rtl8723bs: Change the
  type and use of a variable
-In-Reply-To: <3114102.qbl0ZuBMXl@localhost.localdomain>
-Message-ID: <alpine.DEB.2.22.394.2104101601100.2975@hadrien>
-References: <20210410092232.15155-1-fmdefrancesco@gmail.com> <2186059.xkuF2sVEJi@localhost.localdomain> <alpine.DEB.2.22.394.2104101524260.2975@hadrien> <3114102.qbl0ZuBMXl@localhost.localdomain>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Message-ID: <YHGuZc2G/DVB8ZvE@kroah.com>
+References: <20210410092232.15155-1-fmdefrancesco@gmail.com>
+ <2186059.xkuF2sVEJi@localhost.localdomain>
+ <alpine.DEB.2.22.394.2104101524260.2975@hadrien>
+ <3114102.qbl0ZuBMXl@localhost.localdomain>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3114102.qbl0ZuBMXl@localhost.localdomain>
 
-
-
-On Sat, 10 Apr 2021, Fabio M. De Francesco wrote:
-
+On Sat, Apr 10, 2021 at 03:53:38PM +0200, Fabio M. De Francesco wrote:
 > On Saturday, April 10, 2021 3:24:43 PM CEST Julia Lawall wrote:
 > > On Sat, 10 Apr 2021, Fabio M. De Francesco wrote:
 > > > On Saturday, April 10, 2021 2:12:28 PM CEST Julia Lawall wrote:
@@ -74,111 +76,75 @@ On Sat, 10 Apr 2021, Fabio M. De Francesco wrote:
 > > > > > > What do you mean by global scope?  None of the following look
 > > > > > > like
 > > > > > > references to global variables.
-> > > > > >
+> > > > > > 
 > > > > > > julia
-> > > > >
+> > > > > 
 > > > > > I just mean that fw_current_in_ps_mode is a field of a struct in a
 > > > > > .h
 > > > > > file included everywhere in this driver and that the functions whom
 > > > > > the following assignments belong to have not the "static" type
 > > > > > modifier.
-> > > >
+> > > > 
 > > > > OK, but a field in a structure is not a variable, and this is not
 > > > > what
 > > > > scope means.
-> > >
+> > > 
 > > > You're right, a field in a structure is not a variable.
-> > >
+> > > 
 > > > > int x;
-> > > >
+> > > > 
 > > > > outside of anything is a global variable (global scope).
-> > > >
+> > > > 
 > > > > int foo() {
-> > > >
+> > > > 
 > > > >   int x;
 > > > >   ...
-> > > >
+> > > > 
 > > > > }
-> > > >
+> > > > 
 > > > > Here x is a local variable.  Its scope is the body of the function.
-> > > >
+> > > > 
 > > > > int foo() {
-> > > >
+> > > > 
 > > > >   if (abc) {
-> > > >
+> > > >   
 > > > >     int x;
 > > > >     ...
-> > > >
+> > > >   
 > > > >   }
-> > > >
+> > > > 
 > > > > }
-> > > >
+> > > > 
 > > > > Here x is a local variable, but its scope is only in the if branch.
-> > >
+> > > 
 > > > And you're right again: I needed a little refresh of my knowledge of C.
-> > >
+> > > 
 > > > I've searched again in the code for the purpose of finding out if that
 > > > struct is initialized with global scope but I didn't find anything. I
 > > > didn't even find any dynamic allocation within functions that returns
 > > > pointers to that struct.
-> > >
+> > > 
 > > > Therefore, according to Greg's request, I'll delete that stupid 'if'
 > > > statement in the patch series v2 that I'm about to submit.
-> >
+> > 
 > > I'm really not clear on why the if should be deleted.
-> >
+> > 
 > > julia
 > >
-> I'm supposed to delete it because of the review made by Greg. In a couple
+> I'm supposed to delete it because of the review made by Greg. In a couple 
 > of previous messages he wrote:
->
-> "If this is only checked, how can it ever be true?  Who ever sets this
+> 
+> "If this is only checked, how can it ever be true?  Who ever sets this 
 > value?"
->
+> 
 > and then:
->
+> 
 > "Just delete the variable from the structure entirely and when it is
 > used.".
->
+> 
 > However, like you, I'm not sure yet.
 
-Be sure.  Greg already said that he misinterpreted the patch, because he
-thought that the name also changed.
+I don't think any of us are, try fixing up what you think is right and
+resend and we can go from there :)
 
-julia
-
-
->
-> Thanks,
->
-> Fabio
-> >
-> > > I've really appreciated your help.
-> > >
-> > > Thanks,
-> > >
-> > > Fabio
-> > >
-> > > > julia
-> > > >
-> > > > > Thanks,
-> > > > >
-> > > > > Fabio
-> > > > >
-> > > > > > > drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:368:
-> > > > > > > pwrpriv->fw_current_in_ps_mode = false;
-> > > > > > >
-> > > > > > > drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:380:
-> > > > > > > pwrpriv->fw_current_in_ps_mode = true;
-> > > > > > >
-> > > > > > > drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c:433:
-> > > > > > > adapter_to_pwrctl(padapter)->fw_current_in_ps_mode = false;
-> > > > > > >
-> > > > > > > drivers/staging/rtl8723bs/core/rtw_pwrctrl.c:981:
-> > > > > > > pwrctrlpriv->fw_current_in_ps_mode = false;
->
->
->
->
->
 
