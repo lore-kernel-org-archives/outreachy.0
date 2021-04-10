@@ -1,189 +1,121 @@
-X-GM-THRID: 6880935540883980288
-X-Received: by 2002:a9d:4cd:: with SMTP id 71mr2389995otm.276.1602092650884;
-        Wed, 07 Oct 2020 10:44:10 -0700 (PDT)
+X-GM-THRID: 6949336762884816896
+X-Received: by 2002:a37:c08:: with SMTP id 8mr16606582qkm.423.1618018551637;
+        Fri, 09 Apr 2021 18:35:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a4a:c694:: with SMTP id m20ls180341ooq.8.gmail; Wed, 07 Oct
- 2020 10:44:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz/yGdP39EtdnbvVST8A+DsOH/wANx93SKpcw076vB6gcWL7LcNkCAAR277hzwKd1nFGOQk
-X-Received: by 2002:a4a:ea81:: with SMTP id r1mr1345666ooh.16.1602092649525;
-        Wed, 07 Oct 2020 10:44:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602092649; cv=none;
+Received: by 2002:a05:620a:991:: with SMTP id x17ls6128168qkx.2.gmail; Fri, 09
+ Apr 2021 18:35:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQf5mq16uCHGBILK6Te/CgMuvCghlsfrc1vufnUZQ+6eFrvX9Ew5fXmeP+vvXPMPr4O9XF
+X-Received: by 2002:a05:620a:16d3:: with SMTP id a19mr16307904qkn.88.1618018550890;
+        Fri, 09 Apr 2021 18:35:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618018550; cv=none;
         d=google.com; s=arc-20160816;
-        b=SmOrZlBG36V7NDAKE1SzBAPBkojvdVF6M8Rgvs+zg0ePbzl2iBEH4bNIGVmT7Ba/PM
-         A9TmbYAmv9hB02rxwy8iOLoWyDkhj8uXBZ/zYJTIizsz07hb1aTi9KKesQrjyNHIEMyb
-         ZqFe/XnroCkqreF6HQuNKiKavxGWY4JEadhU2jxbMWakO1msyR8viUVkS477t4UOShpO
-         0xQz/qFcuANugiebDqdpCVaZpd4YdVZVlRuxMjKi9UaaYRIQ12hbAnQZ88cmYVgtDamI
-         Qn9a/T3eAZNmYyVI7EPgHyjpbwL+HPuiYuuKD/l32gK6IGjVbQPwkHvACztLL+gpZAVq
-         CU6Q==
+        b=WLkVhMhozmx3O52mqhUq+ZGRWw6qrh7TvzucUtXaW6T4W3QW0NZCCn0bgfsd1/kOoP
+         ScM9sqWckzG9WNgJT9IwU4brlh0HVO6+JLQzRY4tYqfoSrXzwNjv/jSlHdshneEXLDwK
+         ddVRkHwr8UUn863CrGSqa4zKrmf3JqUN2F0RRam2RRXlRqD9mpBVdd3UkBtHl2fiikFH
+         Zn8LFFE9ZG//ARU5LbmjQzPSMlDb5t+s8dfr02ohFczEIc1oOMTGnmrH+X6B0CYL03YG
+         2pVdI91GuXdKLdDuYSrjarTDafM1sORf4TXOt1EjNcuxVKl0azJ4gqfUJt9Ccz72XBbe
+         RvZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :mime-version;
-        bh=6neuB8tbzPknZf7u4atnHvV6f7WRli7eMhlf8cDVuGY=;
-        b=qrDkHQuuZG6vrD/A96Wgc3OrxvEfL7SFfq4PSxz0KHIE7trZwl7Xn0WS2s/0T1h0DM
-         tU9R6YwTwM34Bo1u+Q4oYIisLYO51Oqy6DVHDAfjvqid9ZextCl95hlh/g1+AxfVo5Z7
-         wB/aS8D0ckHNfhfFpmR/o69q9ICu4w8s1pQMlg15SGyK9nX12UwFG2UZczcixzixYZUS
-         HE58Y5RDJKdQqC9zie/oB9/SwvwkqmBj+t0qkFm8dpLrGOgRIePYBuvLxbV8PWglfMBy
-         G3+O4c4py53XV5HW6obqtIrgd+3e8Blfem6kXa8SJ1kxMV2edcTtjUGDBPlI5Y9dintQ
-         gLPA==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=vd8lMgu3zkr2z6g7xcisDVvdvTxxf93W5Kur6M5AgCE=;
+        b=lvYgfhXfjme/7fyQLKlJLUvhAUzV2Z0UxI7uzkCrQAMJU1X7OjETphijskCqW2wkyo
+         TlZXq3GTgROxbX336iAHbkmSeinAFd4KbU6QXHK9++3t7eVVfsmvO+dCqyUeUAIjjv+5
+         pIcIdMAj7Sckeq4tHuCUlf2hf8XfWwQ6YlikllW8fB6jepkQD7JCfl8TgCucQweq+DvI
+         fEQp14VEZqtTci3K3QNgkhjNOjQ7E/6z37CRmmEMgLgVFAq/cJhdYoysE1ScpyPHnUtP
+         p7MhxNTrQVc3yoY5Sc900rVV9wcnKDo/f+aFMZE2jD/I2xXhCI/6DwaxFI7GfAdy32CH
+         GJnw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.166.42 as permitted sender) smtp.mailfrom=helen.fornazier@gmail.com
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-io1-f42.google.com (mail-io1-f42.google.com. [209.85.166.42])
-        by gmr-mx.google.com with ESMTPS id u15si390038oth.1.2020.10.07.10.44.09
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pjWwg+1y;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com. [2607:f8b0:4864:20::631])
+        by gmr-mx.google.com with ESMTPS id w22si592148qtt.0.2021.04.09.18.35.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Oct 2020 10:44:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.166.42 as permitted sender) client-ip=209.85.166.42;
+        Fri, 09 Apr 2021 18:35:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) client-ip=2607:f8b0:4864:20::631;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of helen.fornazier@gmail.com designates 209.85.166.42 as permitted sender) smtp.mailfrom=helen.fornazier@gmail.com
-Received: by mail-io1-f42.google.com with SMTP id 67so3250091iob.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2020 10:44:09 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pjWwg+1y;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x631.google.com with SMTP id m18so1369349plc.13
+        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 18:35:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=vd8lMgu3zkr2z6g7xcisDVvdvTxxf93W5Kur6M5AgCE=;
+        b=pjWwg+1y5IL9DISwRYtHV5mqgLMoNyUUSI8L2ZaCDgnAhgNKtgmpczwGAoAaM/YHNO
+         piGExD3Hsl+9zazWBVqpupyQCmTNh79HGaoxKii5uU0HJ7/t+w58yg55KeyaRgiQtRbV
+         D0H+xf7lDtYr2nX4QDJ64y/26kijC+/9PvAFnyJZUJhhiasMVmfZdSpFo4D4CpFc/27Q
+         0qg2OvRUI1z81wiG+wgKYpyif+j8kvZ8ehtbCas7oNcRUqLIeArCQZjPYzo3utaeA2l6
+         tY8TRx1h4i16MQjOl7Paa2tzI97k/jWcJHZo2G6ENcJp3ODzygwviwRjQ4e49dRk0TrW
+         vlbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
-         :content-transfer-encoding;
-        bh=6neuB8tbzPknZf7u4atnHvV6f7WRli7eMhlf8cDVuGY=;
-        b=uZDjv61yoSId2dLSOEJr1a8pnPKQjIWuA/qo8slksKcQozkOBD2egVPbP7rLGuN3hA
-         fizWbDOXlft7Nt88QV7UWjo86RqMVsMtnDerOgQ0ie2wQte91vNeeNJm4SV/Fz9QMlHY
-         UjRw1pLoYtElRrHfdScn+ow+WQj6ymv8GhrVq8gtpaDqfHC5zc4GT2VS0nxTKfdjdD0v
-         mQ+hPiF1eitJBHl/Uf8zHktBwAgNa82IR6NAYtH+00KcZ++k2U1qLH7n3ha/1g8joP0Q
-         3gixnhSIKCI0zauGmGjomqGUg4nqfMmsSfQ++KDLg3/t8XQEuDzRDCSrykN+KFwipvxB
-         cu3w==
-X-Gm-Message-State: AOAM533IFvg3+tyksC89xSyL3nWALsEvx3QFeIGgHbfGb/5dA511eIW2
-	fm4FycxB90bvWU28nioQVnsyXQAOjHhmoQ==
-X-Received: by 2002:a5d:9d15:: with SMTP id j21mr3141243ioj.100.1602092648729;
-        Wed, 07 Oct 2020 10:44:08 -0700 (PDT)
-Return-Path: <helen.fornazier@gmail.com>
-Received: from mail-io1-f41.google.com (mail-io1-f41.google.com. [209.85.166.41])
-        by smtp.gmail.com with ESMTPSA id m10sm1323119ilg.74.2020.10.07.10.44.08
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Oct 2020 10:44:08 -0700 (PDT)
-Received: by mail-io1-f41.google.com with SMTP id d20so3236051iop.10
-        for <outreachy-kernel@googlegroups.com>; Wed, 07 Oct 2020 10:44:08 -0700 (PDT)
-X-Received: by 2002:a02:6d4b:: with SMTP id e11mr3970733jaf.142.1602092648193;
- Wed, 07 Oct 2020 10:44:08 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=vd8lMgu3zkr2z6g7xcisDVvdvTxxf93W5Kur6M5AgCE=;
+        b=YKoOWVm9xSSBoH4dB0IdnwBu/R7uxR7zRSIceW34nt9zbkxNZwcdievB7f25/rOosB
+         za0V3YSIg4J095/9Tnko7yxHAqWkUL8V0NcbZchHv0yJ7EVVQnlw+N7tFqSadjPtHM71
+         XFeT9U9un8BMZku0vI7b3MRHeJRQvoq1k8G3m1D0aqX6Egjwdnn9l1b6/gakUHqZFGQN
+         cs1Ad0gPs4PoEHfUMsdJtOE5Z1OoYJ1JiNjI4E2EiZSzKWbjtW6b5+TWWSd0ENXkVSxm
+         roJxN3q7o0TQjgZQFOczOdsY6v1gCgHxQ1GImCeu0nkk/4ku4FWnV5GSxcQS0GvhhN5f
+         PHyA==
+X-Gm-Message-State: AOAM532Uzma5LfBCdItdxzKfLcteKZzmlwvNRPgq1zNHv7iUU230F+Kv
+	8DqpJ7pacBOQpG9kNKI2kwI=
+X-Received: by 2002:a17:903:2306:b029:e7:1c8d:63fc with SMTP id d6-20020a1709032306b02900e71c8d63fcmr15769758plh.35.1618018550053;
+        Fri, 09 Apr 2021 18:35:50 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id e68sm3126832pfa.78.2021.04.09.18.35.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Apr 2021 18:35:49 -0700 (PDT)
+Date: Sat, 10 Apr 2021 07:05:44 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH 6/6] staging: rtl8192e: align statements properly
+Message-ID: <YHEA8CgeJAXI8z93@kali>
 MIME-Version: 1.0
-From: Helen Koike <helen@koikeco.de>
-Date: Wed, 7 Oct 2020 14:43:57 -0300
-X-Gmail-Original-Message-ID: <CAPW4XYYpXX21rxPTLm1oH7DGGpO5igHm=Zjh-nvWAyjZTybGOg@mail.gmail.com>
-Message-ID: <CAPW4XYYpXX21rxPTLm1oH7DGGpO5igHm=Zjh-nvWAyjZTybGOg@mail.gmail.com>
-Subject: Outreachy contribution period - Welcome!
-To: outreachy-kernel@googlegroups.com
-Cc: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Greetings potential Linux kernel Outreachy interns!
+Aligned the statements properly in one line to make code neater and to
+improve readability.
 
-Please read this *entire* email, even if you have applied in the past.
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+---
+ drivers/staging/rtl8192e/rtl819x_HTProc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-What is Outreachy?
--------------------------
+diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+index 2b9e275f42bb..65202dd53447 100644
+--- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+@@ -155,8 +155,8 @@ bool IsHTHalfNmodeAPs(struct rtllib_device *ieee)
+ 		retValue = true;
+ 	else if (!memcmp(net->bssid, UNKNOWN_BORADCOM, 3) ||
+ 		 !memcmp(net->bssid, LINKSYSWRT330_LINKSYSWRT300_BROADCOM, 3) ||
+-		!memcmp(net->bssid, LINKSYSWRT350_LINKSYSWRT150_BROADCOM, 3) ||
+-		(net->broadcom_cap_exist))
++		 !memcmp(net->bssid, LINKSYSWRT350_LINKSYSWRT150_BROADCOM, 3) ||
++		 (net->broadcom_cap_exist))
+ 		retValue = true;
+ 	else if (net->bssht.bd_rt2rt_aggregation)
+ 		retValue = true;
+@@ -809,7 +809,7 @@ void HTUseDefaultSetting(struct rtllib_device *ieee)
+ 				ieee->dot11HTOperationalRateSet);
+ 		ieee->HTHighestOperaRate = HTGetHighestMCSRate(ieee,
+ 							       ieee->dot11HTOperationalRateSet,
+-					   MCS_FILTER_ALL);
++							       MCS_FILTER_ALL);
+ 		ieee->HTCurrentOperaRate = ieee->HTHighestOperaRate;
+ 
+ 	} else {
+-- 
+2.30.2
 
-The next application round for Outreachy internships starts today,
-October 7, 2020 and ends October 31, 2020.  Outreachy interns are paid
-$5,500 to work on a full-time internship with an open-source mentor
-from December 2020 to March 2021. Interns are also granted a $500
-travel stipend to go to any conference approved by their mentor that
-relates to their project.
-
-Who can apply?
----------------------
-
-You should have successfully completed the initial application process
-to determine whether you meet the eligibility criteria given below and
-be able to participate in the application period:
-
-    https://www.outreachy.org/docs/applicant/#initial-application.
-
-The initial application period for the December 2020 to March 2021
-round is closed. If your initial application is not approved, you are
-not eligible to apply for Outreachy.
-
-What Outreachy projects can you apply to?
----------------------------------------------------------
-
-There will be several different open source projects participating in
-this round of Outreachy. The full list can be found here:
-
-    https://www.outreachy.org/communities/cfp/
-
-The Linux kernel expects to offer five projects, which are already
-listed on the Linux kernel community page on Outreachy website:
-
-    https://www.outreachy.org/apply/project-selection/#linux-kernel
-
-How do I apply to the Linux kernel project via Outreachy's website?
----------------------------------------------------------------------------=
----------------------
-
-1. Successfully complete the initial application [Deadline passed]
-
-2. Work on Linux kernel tutorial
-
-Basically, applicants will need to walk through our tutorial for
-creating their first Linux kernel patch:
-
-    http://kernelnewbies.org/Outreachyfirstpatch
-
-It is not necessary to contact a mentor before starting the tutorial.
-Feel free to ask your questions in this mailing list.
-
-3. Work on cleanup patches. Please avoid sending patches for the
-drivers/staging/media directory as Greg can't pick them in his tree
-during the contribution period.
-
-As specified in our tutorial, we require Outreachy applicants to first
-get accepted at least 10 Staging driver cleanup patches.
-
-4. Once your first patch is accepted, add that as a contribution for
-the project(s)you're interested in applying for. This will then allow
-you to submit an application. Note that you'll need to apply for each
-project separately.
-
-5. Once applicants have completed working on 10 cleanup patches, we
-encourage applicants to move on to complete some small tasks outlined
-by the mentors. It=E2=80=99s preferable to CC the mentor when you are  work=
-ing
-on the task so that they don=E2=80=99t miss it. Small tasks for the project=
-s
-can be found in the project detail here:
-
-   https://www.outreachy.org/apply/project-selection/#linux-kernel
-
-Note that you'll be able to see the detailed information about
-projects on Outreachy's website only if you have been informed by
-Outreachy organizers that you=E2=80=99re eligible to take part in the progr=
-am.
-Outreachy coordinators and mentors do not have any role to play in the
-initial application process. So, please email Outreachy organizers if
-you have any doubt related to eligibility or the initial application
-process.
-
-6. Keep editing your 'project contribution' on Outreachy's website
-based on your accepted patches links and project-specific completion
-of tasks
-
-7. Make sure to add your project preferences under the question
-'Community-specific Questions' in the application.
-
-Applicants should also join the #outreachy IRC channel on
-irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.  If
-you're having trouble with IRC, please ask for help on this mailing
-list.
-
-If you=E2=80=99ve applied in the Outreachy before, you=E2=80=99re still req=
-uired to
-send a few staging driver cleanup patches to re-familiarize yourself
-with the process before you start to work on tasks.
-
-There is a tips section at the end of the tutorial to outline what
-behaviors we look for in potential Outreachy interns. I hope this will
-give more insight into our selection process.
-
-All the best!
- ---
-Helen Koike and Vaishali Thakkar
-Outreachy Linux Kernel Co-coordinator
 
