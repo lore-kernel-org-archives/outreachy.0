@@ -1,107 +1,118 @@
 X-GM-THRID: 6950041383671431168
-X-Received: by 2002:ab0:6989:: with SMTP id t9mr18831352uaq.60.1618220988731;
-        Mon, 12 Apr 2021 02:49:48 -0700 (PDT)
+X-Received: by 2002:ab0:6710:: with SMTP id q16mr1661382uam.73.1618182608875;
+        Sun, 11 Apr 2021 16:10:08 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:ee13:: with SMTP id f19ls832465vsp.1.gmail; Mon, 12 Apr
- 2021 02:49:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/coSKQ/w0M2HHf5UURF/drrJxE4GAG8Jc+0mPFTHD/u421qF98VLzwjjEr/R3pxGEuUYa
-X-Received: by 2002:a05:6102:b0f:: with SMTP id b15mr15839206vst.40.1618220987780;
-        Mon, 12 Apr 2021 02:49:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618220987; cv=none;
+Received: by 2002:a67:f251:: with SMTP id y17ls157554vsm.0.gmail; Sun, 11 Apr
+ 2021 16:10:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5bAdO1otxY3rtHhKH4iwlsjS9HZreBEbCABqBiGEtUeNzAXkP7x9jcMhcBLDCXqz6Xd+c
+X-Received: by 2002:a67:e258:: with SMTP id w24mr17649796vse.41.1618182607995;
+        Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618182607; cv=none;
         d=google.com; s=arc-20160816;
-        b=0BXmbXULJ+9o7b5TLNrgwTPc5Ac6WHnFSZdcHiZiC+Q8gjheqoxb6IpN53u3PJ3S76
-         s+VNrgAr4M1z1U2vh+XCifPIz/LWjoQM3r6iwKCgRaBBG6wkL8tJF+oePAyRSE737gCg
-         ye6z+mnraMui7bF6khxa3PiQYVtgzYTT8mYHq3o6Ti8xOZeVrsLUuPfWsVH716oBtDhA
-         mL69PTNAHj2WZY2HokkGc+aN03t+nAr4+vIjNHNIoWHkLC3xZ9QVgMfTKFIRpjzydjZW
-         /NMtDv0BZUOX4+mGPnw2pQig7kXL4w6UAdajZsI+xqvyOPRnY+wbGETpjbz/7qocH0r5
-         w+2w==
+        b=0QAJZZhBEQkOoQ9wTk/k9F5TWPDyBm4+czQWTi99y3SMLD+SOMHnBiFHSuPv7oKHbw
+         9ZVE/sL/VVxBPJM8+9eQScNqP1SHyy2LkKMZF3uFVSOL1Zuy7OQWSz/CXqTVrQMfBGXG
+         HFknLt0PJMEqoBSG3fsJMVcsuyMot37OidDOR4SRhXMX9vi1aphv0QH4l5WbZk+XtAOY
+         z0eLyiEc2HGWh7fjF0DNtY5zgZgwNxxPkBQrFq3eXHt6ZLEOE7IuG135qc2ScKBLPIcF
+         p7i1zQDJ8wTO3YVrI7YP0wAnBQyPctIS5zD/q5oksDlh+ouYlmnz9kFHvNFjSJ4dldu+
+         P5dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
-        bh=a0WyjGt3m8EIbKZlxBX50/WNS47HH1WchgQYzX2ZHFg=;
-        b=nFzOAduvm6Q0Tba/2npqpbkPpSDR7BP4WkSY8HQW5S33wifW/d4tWk/iq83jGBgeX5
-         6jFkDS/03yitUyORyHh0irsuTNLVbNkGTPjDKLY8NtuQFa7T/kw5wcmW9ENnk2Y2FM9E
-         d0sNSRpF09umckSxDXIdU98XxmiUpnWY1XSBU/c2l9pkm9ka+vkm2VOuBkHRGmBVK6M8
-         Rqzv45acuRVXrwJfU+4doFmkLwValTmUkcQL5HgfBAIocj6rRtlhyKR1j08nSjNaJZLu
-         sdgJMCpGh4O18Ytw1R81Uq9exOMlProUTejiL1qNQ2RXOt/c+2qZVa6Jqxtlv7WVGrlI
-         k8xQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=uNZYWgEVoAuUntavroH02XS3fbZ6zaZUx6Qay4mZmPA=;
+        b=a/AYnlogExC4mpmlnKxMcGHokPampFj12z1ziC8sJE/7Lv0lRDCDzKq4c5vJx5LQ+Q
+         skRt04kdHZT4u8WbrZ+MNoSqYjuS9QR0mPMuaJ0K97v8OTYggtyaWanlbbhRRPjTJ79U
+         XTxv6Ccn1TKtht5cyXKtY54OVRpduPeEfXa0bHyWlN+Pzz/qx69dWuw3yNuzhKKe3JMj
+         7OvLXWMTUhCiLGhoFvSOZfC+fw0ua7iv5U8w4rgqxoUwg1jPR2A9O5ndDpjuv8EltE+3
+         JKJHr5GGOMBAvwEDFJ6MpGon3exo02kV9anc3GeHwzO+9H1+MJH/r1oy9iDm7iVVDjnm
+         zFPQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <sakari.ailus@linux.intel.com>
-Received: from mga05.intel.com (mga05.intel.com. [192.55.52.43])
-        by gmr-mx.google.com with ESMTPS id r17si646880vsf.2.2021.04.12.02.49.47
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bm075u2/";
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
+        by gmr-mx.google.com with ESMTPS id r8si822308uat.1.2021.04.11.16.10.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Apr 2021 02:49:47 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) client-ip=192.55.52.43;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-IronPort-SDR: cHIKw0e2jqLbBu7BjhRwByrj+5vVfbCdCeR5MGBHNWcUQ5VMsZHRhlvcCO3Vai6KkbeW8wVQSy
- Ks6/kR+onKkA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9951"; a="279453194"
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
-   d="scan'208";a="279453194"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 02:49:45 -0700
-IronPort-SDR: /uH/qozKRs83kwg3Fusf37qVxeq+FBgDrIn9DfqqIgVcbBOWGdhg6qm/fx4UFMkTlQhm0ysKKu
- /kfDSS/Il+Bw==
-X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
-   d="scan'208";a="442996816"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
-  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 02:49:43 -0700
-Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
-	by paasikivi.fi.intel.com (Postfix) with SMTP id 6B95C205AA;
-	Mon, 12 Apr 2021 12:49:41 +0300 (EEST)
-Date: Mon, 12 Apr 2021 12:49:41 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Mitali Borkar <mitaliborkar810@gmail.com>
-Cc: bingbu.cao@intel.com, tian.shu.qiu@intel.com, mchehab@kernel.org,
-	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: Re: [PATCH 5/6] staging: media: intel-ipu3: line should not end with
- '['
-Message-ID: <20210412094941.GK3@paasikivi.fi.intel.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="bm075u2/";
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x435.google.com with SMTP id b26so2850376pfr.3
+        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=uNZYWgEVoAuUntavroH02XS3fbZ6zaZUx6Qay4mZmPA=;
+        b=bm075u2/6bp5bVTyE82skZrkF1AOKjM+JqwEDKDedP5L33qOMv0ZLYxIGzTQoBjblx
+         pF2Ps7cEWAsuWuambPeMut8Ntx8AoPeqMNLZB57bTQibajGanlXSchky9OuZOecRHFv+
+         bWRl/aT5qhXk72bOVNoPvO421tr/Nxo+4qRkTInOZEUQX4tTceaNXnrmMJdKruFBTEVv
+         mUjeIoN7zFBLDgKNq7danLE0aD1rRSONXNieWzjTh4bzyeLrpQCD14YOKQC4jwN1q43F
+         4/Z8zy15zokhw+SSrgIIbO3wh7LS2XKkP2p4Fqf/lm7d007K7CBmrVT88GxSlNfQcV+x
+         wfAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=uNZYWgEVoAuUntavroH02XS3fbZ6zaZUx6Qay4mZmPA=;
+        b=GytvQx4lDFO9tp8ut5Xgnd9skJGhrqJaL1b/ES8ZAn9JYBn72LxP8SS+7DYkdeEVzm
+         VIv98W8NROg2nmF4bA7yDkc4IHG5GN2aPInhwWz7bUXKhVwi0/otH/Li34HKYbpEGG8I
+         t+ydSf2Rvia5A8nJu0UrmG520WBgqPGVE2L9+CjXDoHQx7dDLhzSyhKGDfLRWjVWQY3r
+         DDC6enwCJLcMiYArL1a6HY6tskFpV0ZmvMEYbpNDQ6xP7GSQ0EtjWZa+AQO+b6EYT/Ya
+         BF5f4k2QM8KFktYkHuskQT3ySA8rBBb+bdbqIRO13SWEXLi5ZwbWGtrce1NDwPnqEf4A
+         2iAA==
+X-Gm-Message-State: AOAM531gVIg/6kTni0ACNUf/VJgNwHfzsZM4KwmwT0iWC+oPiEQ1Z8i4
+	CoAdLwHHYS1/ErQm8Y5Nacc=
+X-Received: by 2002:a63:5004:: with SMTP id e4mr23507889pgb.61.1618182607156;
+        Sun, 11 Apr 2021 16:10:07 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id q5sm7696619pfj.131.2021.04.11.16.10.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Apr 2021 16:10:06 -0700 (PDT)
+Date: Mon, 12 Apr 2021 04:39:58 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
+	tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: [PATCH 5/6] staging: media: intel-ipu3: line should not end with '['
+Message-ID: <7514b0a9f6b0ce736de3c9d13ae2629d9e67f04c.1618180660.git.mitaliborkar810@gmail.com>
 References: <cover.1618180659.git.mitaliborkar810@gmail.com>
- <7514b0a9f6b0ce736de3c9d13ae2629d9e67f04c.1618180660.git.mitaliborkar810@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7514b0a9f6b0ce736de3c9d13ae2629d9e67f04c.1618180660.git.mitaliborkar810@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <cover.1618180659.git.mitaliborkar810@gmail.com>
 
-Hi Mitali,
+Fixed the issue of line should not end with '[' by moving arguments
+from next line to line ending with '['
+Reported by checkpatch.
 
-On Mon, Apr 12, 2021 at 04:39:58AM +0530, Mitali Borkar wrote:
-> Fixed the issue of line should not end with '[' by moving arguments
-> from next line to line ending with '['
-> Reported by checkpatch.
-> 
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
->  drivers/staging/media/ipu3/include/intel-ipu3.h | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> index 53f8e5dec8f5..0451f8b7ba4f 100644
-> --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
-> +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> @@ -246,8 +246,7 @@ struct ipu3_uapi_ae_ccm {
->   */
->  struct ipu3_uapi_ae_config {
->  	struct ipu3_uapi_ae_grid_config grid_cfg __aligned(32);
-> -	struct ipu3_uapi_ae_weight_elem weights[
-> -			IPU3_UAPI_AE_WEIGHTS] __aligned(32);
-> +	struct ipu3_uapi_ae_weight_elem weights[IPU3_UAPI_AE_WEIGHTS] __aligned(32);
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+---
+ drivers/staging/media/ipu3/include/intel-ipu3.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Could you still wrap it to stay under 80?
-
->  	struct ipu3_uapi_ae_ccm ae_ccm __aligned(32);
->  } __packed;
->  
-
+diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
+index 53f8e5dec8f5..0451f8b7ba4f 100644
+--- a/drivers/staging/media/ipu3/include/intel-ipu3.h
++++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+@@ -246,8 +246,7 @@ struct ipu3_uapi_ae_ccm {
+  */
+ struct ipu3_uapi_ae_config {
+ 	struct ipu3_uapi_ae_grid_config grid_cfg __aligned(32);
+-	struct ipu3_uapi_ae_weight_elem weights[
+-			IPU3_UAPI_AE_WEIGHTS] __aligned(32);
++	struct ipu3_uapi_ae_weight_elem weights[IPU3_UAPI_AE_WEIGHTS] __aligned(32);
+ 	struct ipu3_uapi_ae_ccm ae_ccm __aligned(32);
+ } __packed;
+ 
 -- 
-Sakari Ailus
+2.30.2
+
 
