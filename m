@@ -1,147 +1,117 @@
-X-GM-THRID: 6675208982241476608
-X-Received: by 2002:a02:4f4a:: with SMTP id c71mr11021467jab.17.1554193203695;
-        Tue, 02 Apr 2019 01:20:03 -0700 (PDT)
+X-GM-THRID: 6950041499931246592
+X-Received: by 2002:a37:5b84:: with SMTP id p126mr24883300qkb.142.1618182635132;
+        Sun, 11 Apr 2021 16:10:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:282:: with SMTP id 124ls1928827jau.0.gmail; Tue, 02 Apr
- 2019 01:20:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzw3savlpryLicyUcGlT61SlXxQ4eL2LODro0qDD2PFWVYO+SLNmyB4rZb8pAHZW9j2GBAA
-X-Received: by 2002:a02:b909:: with SMTP id v9mr605793jan.3.1554193202752;
-        Tue, 02 Apr 2019 01:20:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554193202; cv=none;
+Received: by 2002:ac8:4e82:: with SMTP id 2ls6244731qtp.2.gmail; Sun, 11 Apr
+ 2021 16:10:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJXNDR/SidDEBDYqKBbJfJb+v3hc6wdfDNlgilx0xqiFA4aGCbMXKFkAQl6sdwrbVBAyMU
+X-Received: by 2002:ac8:5803:: with SMTP id g3mr22919921qtg.17.1618182634443;
+        Sun, 11 Apr 2021 16:10:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618182634; cv=none;
         d=google.com; s=arc-20160816;
-        b=wRjBXx9oKCt7MxWuuiJPML+lrvvfFmhu6CDCvblejQDYcDlSkTI+DMldpuo/PtPbBe
-         L1q3XtZojX+bESJ8p0Pmkhk7N7J36wZbtjQ/1DZ6uPM3vYGlnNP8/xLCX7ienkxiDc7f
-         1NxuRcQB1s+J0pAcnqBjRDMLOVuCU0KaYUJqxADT2u6Ab059N8A/dopYc4j6KhSMlpLa
-         /rM5OIpAdYo+jahr7DKJOIRjJrqI3SPEH0hEfs6rdkyYLocr0PBjGzIGFMG0Y6WNM9wb
-         /9l8fDD+liy9YatqQkKpXa9XiNOneHbJ6x4UWgMuc4DbJ+70+8ux73uKxOFqBgSUUZYK
-         vQ9g==
+        b=Dxej6hn/GIuRmcQo4VCGX9bOMp1YA9R3aIy3xaOxzXMxgPTO7TPYjbQLk/sSnbypqw
+         Lo0p7Uab4OiN/k98SHjr4OdGVwb6tvLA9p6opYgLM4uWiNYb77PZxUNfmBFp1vB29Vx8
+         XmCly4mlcDreQOU1hVG2Qhj2tQgbjLVHqheNyevRrnpSZgJ+eELajXQBL8p7jZY2NSDM
+         xe8P2TXylhxVhE3k40Hw743BE5jmZ0ceHP1iyVibtjAFZCn2M0FwO2+H43lf2PTdKA2g
+         5L90tduJUhccybX+oloUBfhJ5F9JtTXarzTTgLiqxmU3xGKtVSXTktAgW+0Hf/AVyNHR
+         4Y9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=OiRBSN/DdKBwDfGG59Q+9ndnxs2iXJTjIH5tXq8YLqQ=;
-        b=lkBi5cmygoOM9ENk7riKMcsfZ/e9VWQC3DNQb5RlSJcaRJnQyhxYEpUbNssMlA930Z
-         EdRTYfmsL7Nz5PIrMg5HGkbu9HUPCwQUnmWAJplewPBVhlFA0TdHR7Mkl+u67IR9cbUh
-         WEQZwAv/kFlGS+0mg/2feeQ3ftuNwaJMM6QOY4oUg6UKNEswPqHuYkmjhw7sNY+ifGYq
-         5n9PkV0lsjD6LOzdZ6Fyhopwrd9ae9+Xpkezlez4X7exVgfcwsEMaRhfhMssQI8p0Wv/
-         6KQEZV3KQ1n/gSwB+oAgIbHMkA8z/sKoK72f5aHvdpN4kYlrVs0EgAm1USJokaZolwIj
-         XTZw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Xs83SoRxjxMZm2G5yOIIqfQY+EA3Ry1y9P9uXPT9iCU=;
+        b=BnUoGlRO0pMX//YQtb1DT+lcf2DeW6oNA5LhYyn74beK6+LQYXPeoZ7A6y8BycfmHw
+         9gF0WmJczoKavXLAOarZiS1b+lZXtsm1kXlFeM5MHrLJfILSfT7NrFoJuwb1sRjRj3Bo
+         uZaO1XCUs8Cab5nG/Ux5UI5SH41wDhlnRh7URlV/+2vGR3Ss8p7LogeX3BrUlBUU9pbE
+         JsSbwyzgn6LM34lJ465yqP1fLq6wnv0Xlo/Sm/rrRLgbJpp2Y0olZ4Q3ugIzPITgSdOP
+         qbacf/Jxg14cubn/QnNH8MfyBisYMQ+rPAO3aj3juZAQxlBw1k3nJU2vHNr9uOhb6z1V
+         mddw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=RGiis0Rb;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.145 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic314-21.consmr.mail.sg3.yahoo.com (sonic314-21.consmr.mail.sg3.yahoo.com. [106.10.240.145])
-        by gmr-mx.google.com with ESMTPS id e74si670890ite.1.2019.04.02.01.20.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z1uoqAlA;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::629 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pl1-x629.google.com (mail-pl1-x629.google.com. [2607:f8b0:4864:20::629])
+        by gmr-mx.google.com with ESMTPS id g22si487211qtx.4.2021.04.11.16.10.34
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 01:20:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.145 as permitted sender) client-ip=106.10.240.145;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 11 Apr 2021 16:10:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::629 as permitted sender) client-ip=2607:f8b0:4864:20::629;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=RGiis0Rb;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.240.145 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1554193200; bh=OiRBSN/DdKBwDfGG59Q+9ndnxs2iXJTjIH5tXq8YLqQ=; h=From:To:Cc:Subject:Date:From:Subject; b=RGiis0RbRtapMWONOnBDGoXVz3Ark4ZCCv0xydd9uNlmquSiuzFbw9rvF2LmxeFjFa6w/OvSviqS0RnotofWB+qLg5WnDK+VOKJoHNvR9XJzqLKK15icXJZfPq6bn7bIv/AbK8gfiv0O19KQXlgVRiSnxmozoxpScAeD0byb78Vw0Iwo7zAc/Yl9vSawTKWaX1W1ioh4Hd8NunUr/ztz43CD390QYAjkY7rK+d4E99bk0viufd2hnG5+ydlDGFbjzQYrO2ELZKQCCNYfcZw/h2TDccT2vdl4OYJD6yePjwqmK3eXAhIu7ZCupTDucf/SIGI7LRPDaL8mzXr40JettA==
-X-YMail-OSG: Czbcp6AVM1kLW3WeQRoYvEPky31YHn9.sp1fiY1LJPdXp1HEP3Eq2DoMGbioFqr
- 0hPcyLPmDdtFYP2MvWJHs2TNT1bqebjmEyyQ4DRtaZC3ycslRg_n7y4VAJBDBZhfGYp_.fAKTYfR
- e42poJjReQr8tRGwrFhILdhqZbsfqbFbmsYlW58Ts_dMuMAI_bcsdL.CtKNkbHOSNAvGOQ5..pBE
- UzPlAPWL8JZApt37ki7NCQoXiu.JMQ6qlVVBJq.O8DSRfHHwcJVfqvwIwviV7LzVw1yYlAiUv_2I
- c_bkj1Pe43ItrjvYrvlVeaNzQZSNDOenFqJsAcew4j2h6cfr4dUE5ZXTKeRzKpTDvzXKqBLJcx6G
- cxMRBC9pwnNa9RRs0PJU67e1y.O5X1YnQOtPeZ7dY_1Dhq4r6jZA89YkT3kuCBzVE3hOotGoiBIi
- rOcJ7rOXBHMGpqpvK89zh1t0GMoMX0lzf.mYQCbCruC10NFZ88iQL5Wm6L8R.YBs2K3Gqv3PEjIT
- OXVXlN3jQq60bp4HCFWwaAeZgyCgPkdR6Xpax7ze_zg_9jQR40OKJRqrdIqbR_EHLq6rfnsq9BCw
- u2oLs87kjqxaOCvFMAYAWGDNk3gJYNJIt1JJR_YgHgNCrjRpwGqbf90GmloCNqpEnnNMJhx10fsU
- jJTtMbMrQMqMJ2CsA41mHMz6of9bernr8AxnCSctwjOZqL0qiAP2Z_Ax6UG.lBKlD6Jf9jiQsT1V
- njmw_tynn4mvof15IHsRgB4v0yArjMiFQFm0XYaxNR0lDIDhy0KATxMXuFciNt.A6He7KYlE.GJK
- Nc6MAMqNBoUoMuymb_DslVjMYj0VmPLLbDYv0RFd7KL0L5I66uecpzfLPAMsYf7dSTDwx0nrztSd
- NsN9BIvoet.BfcpqYL6whf3mezbN4uLNT.JAGpTjtktEA16XvB3Wpl0YwpAKh29dy8TJseDmnqMQ
- BkaOfyvqkj46cZrhMjaOmnR.Y5tIUvOiQYyT_SWzQe2y4qNEHfXDUuJq9qF_Onl1BoVnEAJSJvMA
- jkjEjVEIJKBA8.7n1encd7uioiiVYA6bQtxG8xeGEASfmNTSao3pCTClquJezMjueAk0CP2ARa6a
- AUejSFo7kGYm_PUff2zYF_aoza0Fv6Ac-
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic314.consmr.mail.sg3.yahoo.com with HTTP; Tue, 2 Apr 2019 08:20:00 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp403.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID 679b26ad6879254837b609cc4fb3e57c;
-          Tue, 02 Apr 2019 08:19:56 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: rtlwifi: rtl8822be: hw.c: Remove parentheses
-Date: Tue,  2 Apr 2019 13:49:46 +0530
-Message-Id: <20190402081946.22590-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z1uoqAlA;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::629 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x629.google.com with SMTP id t22so5045081ply.1
+        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 16:10:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=Xs83SoRxjxMZm2G5yOIIqfQY+EA3Ry1y9P9uXPT9iCU=;
+        b=Z1uoqAlAInnYANBvRJ7X4808QkpHyM0B5anJf58ZmtqH6aoWhE8zuRtTQDQ+q4vmXh
+         0hAst2YxF5Iueydg+08EqNS+zpqcrzDXB/K1G7tZtJ2jOCIxf0k2XnvWVOmDz0dWnOlJ
+         bUH/65y9LAIoYurGny56wvzmM0ZQ5OHvtB9EJz9vH9F3qh7veZBU/jIQVsFrjtKA2neI
+         jnW6c7cnsuwvrueopXHC6ybIGEVPlUMuJt0E3dINR0PVEO3Zarz9xu6/j+oFq4MWK34z
+         +itQEYhFKDOYJ6EfhKC4ijSM/9avhE3ZUFtAERvdRQ2xLyEjqJu9W1mxuHt/fMS7LN0P
+         Kr/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=Xs83SoRxjxMZm2G5yOIIqfQY+EA3Ry1y9P9uXPT9iCU=;
+        b=hLcT+8AuQ0ghLLJsq4p1bNBSKcj+T71U08fhj80oJuMMk11FhEiE0sZ+s46FqNVizm
+         4Io6Os1OtTZQaOEkHRFJPE6veXWFv7mEaB5sGgTSfi8RIpdNaFoCaypvUmVP4KSsgRzv
+         R8XVIOgVtDssabPFjJ9cmoeuFe6GjyH7Rb8JamGFVlP/Kw9ISInkJx0CB4JTNT7O/8RW
+         9Ny5IC+xdWyXDtsjP0mg9NorVIQ+KtPikMIgORDLA6qBAoILZmdmFASPPs7ilX149AqJ
+         Pf1RlC4NxKYeJgZhsUUKKzBpWZSC23cLokyzvTCl1EezhnBN5OO1HusRUqFA8UX8vm4L
+         nm/Q==
+X-Gm-Message-State: AOAM533m7oJy8qTF8Q1mkmt3Z8ScdLABLW5DBktYJQmEVF4Z/h9GAUaS
+	LbpvV25tyNfflfu9+s/u00s=
+X-Received: by 2002:a17:90a:d3c8:: with SMTP id d8mr25032069pjw.144.1618182634040;
+        Sun, 11 Apr 2021 16:10:34 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id 92sm8713357pjz.7.2021.04.11.16.10.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Apr 2021 16:10:33 -0700 (PDT)
+Date: Mon, 12 Apr 2021 04:40:25 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
+	tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: [PATCH 6/6] staging: media: intel-ipu3: remove space before tabs
+Message-ID: <a01ff63a3b2fb14704f32e83bd12c4cf36410275.1618180660.git.mitaliborkar810@gmail.com>
+References: <cover.1618180659.git.mitaliborkar810@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1618180659.git.mitaliborkar810@gmail.com>
 
-Remove unnecessary parentheses around right hand side of expression.
-Issue found with Coccinelle script:
-@@expression e1, e2, e3;@@
-(if(e1)
-e2;
-else
-e3;
-|
-e1 =
--(
-e2
--)
-;
-)
+Removed unnecessary space before tabs to adhere to  linux kernel coding
+style.
+Reported by checkpatch.
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/rtlwifi/rtl8822be/hw.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/media/ipu3/include/intel-ipu3.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtlwifi/rtl8822be/hw.c b/drivers/staging/rtlwifi/rtl8822be/hw.c
-index 88ba5b2fea6a..847bd3bcd1d6 100644
---- a/drivers/staging/rtlwifi/rtl8822be/hw.c
-+++ b/drivers/staging/rtlwifi/rtl8822be/hw.c
-@@ -243,7 +243,7 @@ static void _rtl8822be_fwlps_leave(struct ieee80211_hw *hw)
- 	u8 rpwm_val = 0, fw_pwrmode = FW_PS_ACTIVE_MODE;
- 
- 	if (ppsc->low_power_enable) {
--		rpwm_val = (FW_PS_STATE_ALL_ON_8822B | FW_PS_ACK); /* RF on */
-+		rpwm_val = FW_PS_STATE_ALL_ON_8822B | FW_PS_ACK; /* RF on */
- 		_rtl8822be_set_fw_clock_on(hw, rpwm_val, false);
- 		rtlhal->allow_sw_to_change_hwclc = false;
- 		rtlpriv->cfg->ops->set_hw_reg(hw, HW_VAR_H2C_FW_PWRMODE,
-@@ -474,7 +474,7 @@ void rtl8822be_set_hw_reg(struct ieee80211_hw *hw, u8 variable, u8 *val)
- 		rtl_write_byte(rtlpriv, REG_SECCFG_8822B, *((u8 *)val));
- 		break;
- 	case HW_VAR_AMPDU_FACTOR: {
--		u32 ampdu_len = (*((u8 *)val));
-+		u32 ampdu_len = *((u8 *)val);
- 
- 		ampdu_len = (0x2000 << ampdu_len) - 1;
- 		rtl_write_dword(rtlpriv, REG_AMPDU_MAX_LENGTH_8822B, ampdu_len);
-@@ -583,7 +583,7 @@ void rtl8822be_set_hw_reg(struct ieee80211_hw *hw, u8 variable, u8 *val)
- 			_rtl8822be_fwlps_leave(hw);
- 	} break;
- 	case HW_VAR_H2C_FW_JOINBSSRPT: {
--		u8 mstatus = (*(u8 *)val);
-+		u8 mstatus = *(u8 *)val;
- 
- 		if (mstatus == RT_MEDIA_CONNECT) {
- 			rtlpriv->cfg->ops->set_hw_reg(hw, HW_VAR_AID, NULL);
-@@ -1912,7 +1912,7 @@ static void _rtl8822be_read_adapter_info(struct ieee80211_hw *hw)
- 
- 	/*board type*/
- 	rtlefuse->board_type =
--		(((*(u8 *)&hwinfo[EEPROM_RF_BOARD_OPTION_8822B]) & 0xE0) >> 5);
-+		((*(u8 *)&hwinfo[EEPROM_RF_BOARD_OPTION_8822B]) & 0xE0) >> 5;
- 	if ((*(u8 *)&hwinfo[EEPROM_RF_BOARD_OPTION_8822B]) == 0xFF)
- 		rtlefuse->board_type = 0;
- 
-@@ -2406,7 +2406,7 @@ void rtl8822be_read_bt_coexist_info_from_hwpg(struct ieee80211_hw *hw,
- 
- 		rtlpriv->btcoexist.btc_info.bt_type = BT_RTL8822B;
- 		rtlpriv->btcoexist.btc_info.ant_num =
--			(value & BIT(0) ? ANT_TOTAL_X1 : ANT_TOTAL_X2);
-+			value & BIT(0) ? ANT_TOTAL_X1 : ANT_TOTAL_X2;
- 	} else {
- 		rtlpriv->btcoexist.btc_info.bt_type = BT_RTL8822B;
- 		rtlpriv->btcoexist.btc_info.ant_num = ANT_TOTAL_X2;
+diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
+index 0451f8b7ba4f..340d97160bbb 100644
+--- a/drivers/staging/media/ipu3/include/intel-ipu3.h
++++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+@@ -631,7 +631,7 @@ struct ipu3_uapi_bnr_static_config_wb_gains_thr_config {
+  * @cg:	Gain coefficient for threshold calculation, [0, 31], default 8.
+  * @ci:	Intensity coefficient for threshold calculation. range [0, 0x1f]
+  *	default 6.
+- * 	format: u3.2 (3 most significant bits represent whole number,
++ *	format: u3.2 (3 most significant bits represent whole number,
+  *	2 least significant bits represent the fractional part
+  *	with each count representing 0.25)
+  *	e.g. 6 in binary format is 00110, that translates to 1.5
 -- 
-2.19.1
+2.30.2
 
 
