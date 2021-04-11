@@ -1,113 +1,204 @@
-X-GM-THRID: 6882312665802211328
-X-Received: by 2002:a67:cb02:: with SMTP id b2mr11211182vsl.41.1602413287759;
-        Sun, 11 Oct 2020 03:48:07 -0700 (PDT)
+X-GM-THRID: 6949661210955481088
+X-Received: by 2002:a05:6512:1d1:: with SMTP id f17mr15052128lfp.620.1618123839982;
+        Sat, 10 Apr 2021 23:50:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a67:874b:: with SMTP id j72ls1587683vsd.9.gmail; Sun, 11 Oct
- 2020 03:48:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmfdIK7AYBUgd2tXUaT5Y62VnpgfFpSd9DeDN2Mp9gP7zGJJP/bSDRUkau99AK3gDrKYgt
-X-Received: by 2002:a67:2645:: with SMTP id m66mr11873014vsm.16.1602413286374;
-        Sun, 11 Oct 2020 03:48:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602413286; cv=none;
+Received: by 2002:a2e:7408:: with SMTP id p8ls143221ljc.1.gmail; Sat, 10 Apr
+ 2021 23:50:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyyHdKk0tJO+BoB6+FubcuJGZCvb6xVdGjOl7kjruKqoC7RJRnNxV1FTa7MDI9kk61/06Tx
+X-Received: by 2002:a2e:921a:: with SMTP id k26mr6265470ljg.149.1618123838241;
+        Sat, 10 Apr 2021 23:50:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618123838; cv=none;
         d=google.com; s=arc-20160816;
-        b=onUlcCx/desA4YdHsOBgTYUfq/PWVBldnide2hqYt0IbnTGA4FxYXt2/yohvOjavxF
-         wrX0BsnkPgqN9k0Q7QEyOuC/8fsFupV+PyYxRDvR4t1mipi5tw6vVRaj1Ogygl1u0M6R
-         GlpbzdioMYLh4zOxVzvr9N4w2ww3TKKDj5UosP7wNfW3rL+7b+ylIRAsBm2bK3jLj6hX
-         Lz08U7GTdBnXgNNtJ5LKRL3cCUAvb/al+lWC64l07IRyQ9/WbvXzYJDkI//WsrpW7Llk
-         kXHlBdUHMHRyo4aAiT5XIzmw48ljePRbR4JsIACYm50+FlMtf8R+rq3LyZgILDeXVfi3
-         IrmQ==
+        b=rtAxD2O7nPg0hWyht2YRrRTtvD891w2IBlLZZZ+SA6PZ3pmPnr4+OXT9WgRW3YZwUi
+         tR42+X679NMa1ofYMs85UJZt6T5F2do0fm/WBZP+PrhttMAMANN5Qu6Prh9ekyZ9a08F
+         Glf+1+pChDlbbO5fRJnbVWk2c0FsjTtMouXhh6Mk2NqY4e/vruvm4R89yyJS0wRqGFW5
+         pHj1WExF2lQbrNCcGwcXfPB7/XIHmb7CMZj2Gc154DzA4Ogc0EZUYNoiF563TfN5oKG/
+         g7/qBPNy5f/CR7Cb5qXYrQQ0ZJ50o3fxdRhLu+zEMkv0NBnqX83dAlv5sLu0YROtweAk
+         yEfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=deTcVWZjgqYO/HLfkfRk5fdNNDOh0Ncp8EdEY6lKOFw=;
-        b=RkgllsKqphzjt/KimDcm04PNjUHiFt6qx4cL6U1v6zrO4otMwZI8TVQzyfUbhaJNft
-         DbDlj8AEs0XLPqDjijQO3mvEG6SjS/vMPQig975hmmPuVyCJs3Tev06OAlsqOUdk+uGK
-         nyESF0wupB1QL/vwa7RgcyVBHCVcVwYvkzoYvgnNKh3ABZUNg/AIS0OSioaNcBOxUBln
-         NpnvS3Ck+5pFxoGJ1Ddv4XvyMFeUnY+wed4hrVcIeE67T1N3QhNA5xMEFTELc9A6tw4v
-         k3e4MuxTLgXWV4yvlrtm5yKt118s6ouMJ/tFROt/7WHlNH0QGDTb0K3Guu6CMEAB77EV
-         luNA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=oBI47bU2S3REhJHh8NSK3kxTPCznmxFmMKKl9cgoeSs=;
+        b=fY1reNFtxaE/ldiSkLBxkdRKfn3KAdDLSHuSOctkBDK5w7vKcIUoP0hMKQvLbUQLB+
+         7xpOaGwOgSyWdUNMm/VzMM1giti0iUWLOYqVX5vihltcJ/XGCdonuiZ8gQFQxA02V/7J
+         cIPasaBfrpnFyyg5TLz9ob/ZDc22K1IPZGh61UkPErYT1B0baEIsd+mnuC3oXOrFRJjx
+         ug8eRVNIu6HzIcGz24fnP3t3XCR/c09U+7iogXeDZ95oho069FC3VY5xyQjDR5InxMyC
+         BU5YUjJRjgvNQaZREKPIFjdLf0+wkua+rE7oUMKbSIGwEldOJhHaUH10oxBpT9lBBe7T
+         IanA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F3y03Mst;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aMach5Vx;
+       spf=pass (google.com: domain of siddmohamed19@gmail.com designates 2a00:1450:4864:20::22d as permitted sender) smtp.mailfrom=siddmohamed19@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mh12gx2825@gmail.com>
-Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
-        by gmr-mx.google.com with ESMTPS id g23si667158vsa.0.2020.10.11.03.48.06
+Return-Path: <siddmohamed19@gmail.com>
+Received: from mail-lj1-x22d.google.com (mail-lj1-x22d.google.com. [2a00:1450:4864:20::22d])
+        by gmr-mx.google.com with ESMTPS id j7si123790ljc.6.2021.04.10.23.50.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Oct 2020 03:48:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+        Sat, 10 Apr 2021 23:50:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of siddmohamed19@gmail.com designates 2a00:1450:4864:20::22d as permitted sender) client-ip=2a00:1450:4864:20::22d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=F3y03Mst;
-       spf=pass (google.com: domain of mh12gx2825@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=mh12gx2825@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aMach5Vx;
+       spf=pass (google.com: domain of siddmohamed19@gmail.com designates 2a00:1450:4864:20::22d as permitted sender) smtp.mailfrom=siddmohamed19@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x543.google.com with SMTP id g9so11261081pgh.8
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Oct 2020 03:48:06 -0700 (PDT)
+Received: by mail-lj1-x22d.google.com with SMTP id a36so536332ljq.8
+        for <outreachy-kernel@googlegroups.com>; Sat, 10 Apr 2021 23:50:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=deTcVWZjgqYO/HLfkfRk5fdNNDOh0Ncp8EdEY6lKOFw=;
-        b=F3y03MstqCtOnJNCSDX1Zb7+EGV+MRYU/fh+rlts6ArMyKQo9C7ZbmClsYK2wlmiJP
-         +S0wf1JjLNejeNexAGgz6gpHjBR92TbU8uUaUlDG3+Q7zFHs/GoO2MwlNbAQDKvq1v9B
-         Xlgb92TdVpSm8U7tKeTkGKWLOyrcTfSYs2HOlyQzVFIHlxaVRxkijfwTVgPsdvE1xcWQ
-         nQEdK0eQm1iGrjkVbcTWQab6L25lwxBQyaeIXf7iSdjsN7O1kk1ZUYDU4HcZfMoSx/qQ
-         MBn17MjCpZ2gsJaLRVSAHZxVa+uPY5VU3++UQG/VSQvWdLRlrN64FW6qPgWHpPrpbGnP
-         h8gA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=oBI47bU2S3REhJHh8NSK3kxTPCznmxFmMKKl9cgoeSs=;
+        b=aMach5VxrEsc0l3pQcYOvvrtx5X7vekx55ZwGacmMzXaekPoa0w0+GOl+ngTR4v+wA
+         S2IZop7OLq8JBWLaWFOQxQIo/OuyUASy4Qjdh+88DUn1/FPQdDVPPVTSUChYZERzoZ3u
+         9tMhUcLNOJ3pVNZPu1B9tHnNwZvr7t4crY79GMgKTA7pHZquW6reRNqkiFEducJs6psG
+         GjZc+dm9j7VJUQxdgbt9MWVY7bflzWFxurQHdyZFaDApVA0j4CR8oES7h7Cp4e9xfNqe
+         kE1GNLEXo3NKmtTuH9/xngrKfOE61etUKJfu06QQ/AClhu0wl7kx6it5IaQuiF42sHKT
+         ZlSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=deTcVWZjgqYO/HLfkfRk5fdNNDOh0Ncp8EdEY6lKOFw=;
-        b=Ub+MsUQ17CUoFuX0BncQIkg32/z1/Nauodi+SwoK/2UDUuunf+UAb3whqpaGuZs20G
-         YYwdjSWjr2vwsrX5Rnkzl2pMn9eymi8wrMks45IpkkyAZrJFiKhL1otNxi00h5GzjwLM
-         mii/OxW1Zy6AUGaOviWc4Qc3YYt4IIGWqeL/UWXrTBwbHSE4MFSz5RCFYv0QRBQtej0G
-         4p3/DkTuFbsd26Qr70ny0gGkyPhRLJTuJr1+qdO/GtbGNYgGVtE2xXmTsnzElUeN3z0N
-         4eWiLklwvDpmWcGLOihpodghykUadJH2UVRr9/DATrWVtRdtCw2RAFVy5otu3GyfQC8J
-         AmUQ==
-X-Gm-Message-State: AOAM530zQzDybqNU3QDvxtzpPJ8kpkTXr9BEQkEBbqD3kCSbyuf0UpTA
-	pQJbrVXYE8PhrQle10a/ziM=
-X-Received: by 2002:aa7:8e54:0:b029:142:2501:34d2 with SMTP id d20-20020aa78e540000b0290142250134d2mr19031913pfr.43.1602413285617;
-        Sun, 11 Oct 2020 03:48:05 -0700 (PDT)
-Return-Path: <mh12gx2825@gmail.com>
-Received: from ubuntu204 ([103.108.75.206])
-        by smtp.gmail.com with ESMTPSA id z8sm16872683pfk.49.2020.10.11.03.48.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Oct 2020 03:48:05 -0700 (PDT)
-Date: Sun, 11 Oct 2020 16:18:00 +0530
-From: Deepak R Varma <mh12gx2825@gmail.com>
-To: Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-iio@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: iio: adis16240: add blank line before struct
- definition
-Message-ID: <20201011104800.GA29412@ubuntu204>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=oBI47bU2S3REhJHh8NSK3kxTPCznmxFmMKKl9cgoeSs=;
+        b=mvD3LoXbY54lutkzM5XwVleXg/42n72cB5PQOAKKbC3iVETwo8uFtMGqIMFNQENfyB
+         TZNQAo+2yBqEx45e9sVE6+YM4i0Dd2AWh3TjwyzIH8ZtJXfdjhvNuqpmKXvtq1I6UmSG
+         OeB1S7m1PyYaf7TN9SLPY0WxsdnagfTi3xF8Ooivi4OXFw8424ze3NXJjXWP+YeL0iJj
+         DcYt5DhA2dRLSxC2MKxBKgowUFDlDwrewm3Anw7mBahL/9ZWgf1EKkejKfdbt7KABZn9
+         69yrRWctVArcZlG6J0x67MuJwh+pSM3EwAW1WpN4c4bV9Ax9BS7EsFpvcB6t8i/4npTk
+         sKNw==
+X-Gm-Message-State: AOAM530EVx3HP7I101nIGFyYAOnHRkXeipMRfmSFbbek52EIsiNsW2T4
+	5d7ZBoAgDhiPG5alNYgjSWeDaobbkerjzBK2uEaUsHgjE5PVFw==
+X-Received: by 2002:a2e:b7c1:: with SMTP id p1mr14078024ljo.198.1618123837907;
+ Sat, 10 Apr 2021 23:50:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20210410223444.GA110316@Ali-Ubuntu> <20210411004755.GB2531743@casper.infradead.org>
+In-Reply-To: <20210411004755.GB2531743@casper.infradead.org>
+From: Mo Jauhar <siddmohamed19@gmail.com>
+Date: Sun, 11 Apr 2021 12:20:26 +0530
+Message-ID: <CAHLYjjX1-H+Mdh+SVXZibPRZ9bS=WBR29Hzbs2spd9M_w5KrdA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 0] Staging(VT6656): Modified camelCase Variables
+To: Matthew Wilcox <willy@infradead.org>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>, gregkh@linuxfoundation.org
+Content-Type: multipart/alternative; boundary="0000000000008fa4a205bfacd03f"
 
-Add a blank line before starting structure definition as per coding
-style guidelines. Issue reported by checkpatch script.
+--0000000000008fa4a205bfacd03f
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Deepak R Varma <mh12gx2825@gmail.com>
----
- drivers/staging/iio/accel/adis16240.c | 1 +
- 1 file changed, 1 insertion(+)
+Hi Matt,
 
-diff --git a/drivers/staging/iio/accel/adis16240.c b/drivers/staging/iio/accel/adis16240.c
-index 5064adce5f58..8d3afc6dc755 100644
---- a/drivers/staging/iio/accel/adis16240.c
-+++ b/drivers/staging/iio/accel/adis16240.c
-@@ -426,6 +426,7 @@ static int adis16240_probe(struct spi_device *spi)
- 
- 	return devm_iio_device_register(&spi->dev, indio_dev);
- }
-+
- static const struct of_device_id adis16240_of_match[] = {
- 	{ .compatible = "adi,adis16240" },
- 	{ },
--- 
-2.25.1
+Thanks for the feedback. Since this was my first patch, I was kinda only
+looking for checkpatch warnings. But this is a good lesson for me.
 
+I will now rename the variables to 'var' and 'modulo' and generate the
+changelog without the *''' *marks. Please let me know if I should instead
+remove the macro and make it inline, since then I will also have to look
+into files that import 'device.h' and use the macro.
+
+On Sun, Apr 11, 2021 at 6:18 AM Matthew Wilcox <willy@infradead.org> wrote:
+
+> On Sun, Apr 11, 2021 at 04:04:44AM +0530, majauhar wrote:
+> > '''
+>
+> Please generate your changelog without these quote marks.
+>
+> > Variables 'uVar' and 'uModulo' were generating camelCase style issue.
+> > Modified them as 'u_var' and 'u_modulo' and the issue disappeared.
+>
+> The 'uVar' naming is an indication of the bad kind of Hungarian notation.
+> https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look-wrong/
+>
+> > -#define ADD_ONE_WITH_WRAP_AROUND(uVar, uModulo) {    \
+> > -     if ((uVar) >= ((uModulo) - 1))                  \
+> > -             (uVar) = 0;                             \
+> > +#define ADD_ONE_WITH_WRAP_AROUND(u_var, u_modulo) {  \
+> > +     if ((u_var) >= ((u_modulo) - 1))                \
+> > +             (u_var) = 0;                            \
+> >       else                                            \
+> > -             (uVar)++;                               \
+> > +             (u_var)++;                              \
+> >  }
+>
+> it would be better to rename these to 'var' and 'modulo'.
+>
+> But then we start to question the entire premise of this macro.  It should
+> probably be written as 'var = (var + 1) % modulo' (because arithmetic
+> is generally cheaper than branches).  And when you write it like that,
+> you wonder why it's a macro at all instead of just written out.  Not to
+> mention that 'ADD_ONE' is generally spelled as 'INC'.
+>
+> So ... the checkpatch warnings are good, but often they raise more
+> questions than the obvious one.
+>
+
+--0000000000008fa4a205bfacd03f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Matt,<div><br></div><div>Thanks for the feedback. Since=
+ this was my first patch, I was kinda only looking for checkpatch warnings.=
+ But this is a good lesson for me.=C2=A0</div><div><br></div><div>I will no=
+w rename the variables to &#39;var&#39; and &#39;modulo&#39; and generate t=
+he changelog without the <b>&#39;&#39;&#39; </b>marks. Please let me know i=
+f I should instead remove the macro and make it inline, since then I will a=
+lso have to look into files that import &#39;device.h&#39; and use the macr=
+o.</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmai=
+l_attr">On Sun, Apr 11, 2021 at 6:18 AM Matthew Wilcox &lt;<a href=3D"mailt=
+o:willy@infradead.org">willy@infradead.org</a>&gt; wrote:<br></div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex">On Sun, Apr 11, 2021 at 04:04:44A=
+M +0530, majauhar wrote:<br>
+&gt; &#39;&#39;&#39;<br>
+<br>
+Please generate your changelog without these quote marks.<br>
+<br>
+&gt; Variables &#39;uVar&#39; and &#39;uModulo&#39; were generating camelCa=
+se style issue.<br>
+&gt; Modified them as &#39;u_var&#39; and &#39;u_modulo&#39; and the issue =
+disappeared.<br>
+<br>
+The &#39;uVar&#39; naming is an indication of the bad kind of Hungarian not=
+ation.<br>
+<a href=3D"https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look=
+-wrong/" rel=3D"noreferrer" target=3D"_blank">https://www.joelonsoftware.co=
+m/2005/05/11/making-wrong-code-look-wrong/</a><br>
+<br>
+&gt; -#define ADD_ONE_WITH_WRAP_AROUND(uVar, uModulo) {=C2=A0 =C2=A0 \<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0if ((uVar) &gt;=3D ((uModulo) - 1))=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(uVar) =3D 0;=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+&gt; +#define ADD_ONE_WITH_WRAP_AROUND(u_var, u_modulo) {=C2=A0 \<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0if ((u_var) &gt;=3D ((u_modulo) - 1))=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(u_var) =3D 0;=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0else=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(uVar)++;=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(u_var)++;=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 \<br>
+&gt;=C2=A0 }<br>
+<br>
+it would be better to rename these to &#39;var&#39; and &#39;modulo&#39;.<b=
+r>
+<br>
+But then we start to question the entire premise of this macro.=C2=A0 It sh=
+ould<br>
+probably be written as &#39;var =3D (var + 1) % modulo&#39; (because arithm=
+etic<br>
+is generally cheaper than branches).=C2=A0 And when you write it like that,=
+<br>
+you wonder why it&#39;s a macro at all instead of just written out.=C2=A0 N=
+ot to<br>
+mention that &#39;ADD_ONE&#39; is generally spelled as &#39;INC&#39;.<br>
+<br>
+So ... the checkpatch warnings are good, but often they raise more<br>
+questions than the obvious one.<br>
+</blockquote></div>
+
+--0000000000008fa4a205bfacd03f--
 
