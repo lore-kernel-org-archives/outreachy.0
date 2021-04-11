@@ -1,121 +1,118 @@
-X-GM-THRID: 6802949681377705984
-X-Received: by 2002:a05:6638:2b6:: with SMTP id d22mr3180343jaq.59.1583935153265;
-        Wed, 11 Mar 2020 06:59:13 -0700 (PDT)
+X-GM-THRID: 6949954642104025088
+X-Received: by 2002:a25:eb02:: with SMTP id d2mr30128244ybs.225.1618162412461;
+        Sun, 11 Apr 2021 10:33:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:ab47:: with SMTP id u68ls449724ioe.2.gmail; Wed, 11 Mar
- 2020 06:59:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvIFZTtZQdy85oVVMdaFqEQU2s4G+2CvHaKr/0HJI+CbivicLECJrmeA4ht2cb9bnkTlCdg
-X-Received: by 2002:a5d:9bc1:: with SMTP id d1mr3043196ion.6.1583935151452;
-        Wed, 11 Mar 2020 06:59:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583935151; cv=none;
+Received: by 2002:a25:b9cc:: with SMTP id y12ls6387465ybj.0.gmail; Sun, 11 Apr
+ 2021 10:33:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzwKtSSKCmOGTHC7KZVQ6pPrW5fBoSGZ5DffrzSLn4ECc6lUC0pG93hfqkuwO7ahxDuKaHD
+X-Received: by 2002:a25:d113:: with SMTP id i19mr14215258ybg.39.1618162411375;
+        Sun, 11 Apr 2021 10:33:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618162411; cv=none;
         d=google.com; s=arc-20160816;
-        b=D8L3t4vqB6rixWfJyF9Gow2Rvj3R68c4REq1OtLaM3zHiS0SH6KTwvG9RyHOgpd+AF
-         J2KHlN4t272Ew7JC09DxHYPbI7MTEJJxYctav85f8sTBfplwsQO3MGWVbrQj8JN2B3X5
-         J6BkNiLqUlgliSD1IMl1IDADfUeoF2a54GAASWrkDaKWcAoMW3Zj/OvDWevcgI4L4L86
-         l0DLwBWIJkKTiCGfXvWPcvjv/ATB3t/p0fcWD30Gww3I4LUL3MU7XjTA8PvnkU+UEg0C
-         GXDiaTKySpvlz3gtvQi1Iml5il8pwi623A6A/cLmBUkNDNajFvktyi44buLi3W9dq++m
-         kVIg==
+        b=jS2Uk/1WistOPds+IQx25iVMDog0gmy/idtICHB34MUd1l1saKSjjfbFaY0i02Go7T
+         ZygWpkV3m2ScVBWwWu8MAkM4tfFyuL4kQmM2309oEVeSZwud/fWN++F+nN3krYAmlEK4
+         8feoSPgSAS0kwY22Qc/Ey7f0/+ovEvE1+yX4/5e3jxCIFpgZggkS7l+hdByRJ+oMTveS
+         7f+BjHsZ4/ygrb9Rqy3fHtbtVi/v5yZZiXri/evDVbSdMJSqtp3Y33mSjNlb+Z0K1I56
+         ANkdDFihgUi8heMwopXKUu7kKV0+D2pos2ox9ju280wiHHtOPjgXVKLhaUd65Z4VlKl1
+         aZOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=Rsh1wp6Fd0Yl2sa4e9abEs0k+S0Of//VtbBDH+QzLew=;
-        b=m2cSGSmQ0vepfAJWo9zwPzHT61LftXfd584yF2IcTQ3H7lcU/YDNzwdVoi1JJ+wChp
-         xwusrIMDFbYGKVNcKRFfjHu9LHGdOKnFLx39QlAic/cltUDBwr6aSkcz3hgURtgN7VOZ
-         rLxF8E8Ior65D6SdSC/R6Aqd8nivbgcgZKCB/GsO+tDzitPovPL6/GjjNjcmZ6/74/6e
-         YjtM6OjjxTJ9xCOo3bI7X/Sw91RaEmXkmUq9ybq17qsqlK/ZNVfU3Dujg+xMHeanvHXF
-         Gg8Wvl20miyCyQz5zxoyWPrp7zmkXRW01Z8TMPmLWNmpxqSsJwz0ZjF06Y4v0Z5V/zKh
-         SmJQ==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=4iE0QwYtOYUIJkBsUJWv+G7D+vD/AGIYmK25klck3y0=;
+        b=aA84V4ZsYXZSl/YZJ0R6X+sGq69qUzfYgB7W+H2rfiGP0kjcmVVmNEm4zqRNmR6yXf
+         pwvsnM9iRLhS+izmcmvuDxeTqe/TVbuGSys9iSvj4J584Lhrhe1FHUq5xzydaIsH+GFM
+         ts2b+Z+3cFPJVpUBFztKCPqmQpS6KjHJDGN4Vj8hmWqkUIsRrKnReVELjsBKlVkhSQgc
+         5Erbmks+L1Gpe1ltQCsWnZYImJauccW4pkYjeIwAoInGB0XWW7xftpD60Q28SsYATbVG
+         YeOMpDzX3RUA4G/jDJ0rdk2/AYPTW1ZtMSdizrC9i0Oaco3iudIqVQJmL3JQvVDinIGg
+         fPQw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ZMg/4Ose";
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sZSz+Xmu;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id v13si49235ilg.4.2020.03.11.06.59.11
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com. [2607:f8b0:4864:20::52c])
+        by gmr-mx.google.com with ESMTPS id i1si599738ybe.2.2021.04.11.10.33.31
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Mar 2020 06:59:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Sun, 11 Apr 2021 10:33:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) client-ip=2607:f8b0:4864:20::52c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ZMg/4Ose";
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sZSz+Xmu;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id b72so1378190pfb.11
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 06:59:11 -0700 (PDT)
+Received: by mail-pg1-x52c.google.com with SMTP id p12so7563342pgj.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 10:33:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id;
-        bh=Rsh1wp6Fd0Yl2sa4e9abEs0k+S0Of//VtbBDH+QzLew=;
-        b=ZMg/4OseM+M79oricWCYBpDoxsS2CVvN4cPMGCEe8P3CGHaPQ0w7BTSAkx274h4QJy
-         +8yaIiFu0l5ahpzCUGJsrPJIIbm4POb1T75sMToETl85JplEDp0glnC61nH58DoykVZy
-         +Tn5OCaCkGz4aqcAGCmadxrFeFBIf/k98brvePZLxpqZZyKO1e9bHE0CEsvcHcK8lnDX
-         nUoKoHQGFQmF4aYwItlXO2UWvcaqVTwAJR2Bg1nq7npwmiEl3RA0SnjMwavfQjK1Mpxj
-         D6khngidz4Q8aTQnmZm1XshHCvhTzf+44UJsjQx2MwnHDxHqcDZs/44mxarwMROEjBle
-         vcBg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=4iE0QwYtOYUIJkBsUJWv+G7D+vD/AGIYmK25klck3y0=;
+        b=sZSz+Xmu+nEJccFoszRmGiVuedsK1gEd7UgKgIuGaB1/lmB7k2UHKL1yZEuiYlr66a
+         emCDhVLbn4qNOY1+KJcDYc2y6hxNp+bgaI1BIjX8JXc5vBZQLeDQPgBjzQBi9qMzoFv6
+         dNmEW9wpzykAqm/iw509q7eIr2a67kZMgP8my8c7ZO6QGKXPRNQ1xhsGP+ThVASp7MS8
+         mYlkgWko5uc81VJP3S4gbz/XEs35MMv9MuyD4QsD+OpXt07VyyDHxvpCIwgiXFp7RTCn
+         hv6Qyeatfhuvb39sdYhYN64LfbYN80XPmVYOaYecCdfzvFchBycuxOW4S1hm7wUF7ihc
+         xeLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=Rsh1wp6Fd0Yl2sa4e9abEs0k+S0Of//VtbBDH+QzLew=;
-        b=kn1t/hG/hQbG8twGRGQFO5QfGjEHCFwXeeoPM2SntyS0pb2SnWS3VZj9KArZSY36i9
-         H35PfVpREyNi6oDZinqtOoCJXSb6WEf7sYihcapmWvL8I+V4kOXsFjJt6yWv3Y+t9H+T
-         ctfeuI/5AUGZjJJx4Ef7gozHhzEpx9B9jyfzjhoNIYyZthTgNRZByUmgXM0EUYKPy/Dk
-         L+yluVV+zoDxrJk0hLqb6rPjWfbPWq8pd3myONYH3dbguJfXPCkGxyFviSqsyny2KvY6
-         rTe/B875DkuYJC+s5QErjnSkH0HSDDBv2NRBjwZ5v81UNlnvv3IS6UdAP9Pz9PWhAjs/
-         IW6Q==
-X-Gm-Message-State: ANhLgQ32yC5JkcIvVTp1MywgmnH+i8Uu65kcz/aNR2JafLlc4XT2ji9q
-	oJl6bhDDzLg3fyCnO1ayDCI=
-X-Received: by 2002:aa7:914b:: with SMTP id 11mr3101406pfi.69.1583935150671;
-        Wed, 11 Mar 2020 06:59:10 -0700 (PDT)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from localhost.localdomain ([2405:204:287:fb4d:18bc:a849:c699:3914])
-        by smtp.gmail.com with ESMTPSA id b11sm5799287pjc.27.2020.03.11.06.59.05
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=4iE0QwYtOYUIJkBsUJWv+G7D+vD/AGIYmK25klck3y0=;
+        b=e76nN+hKXKM+lfAJrHoIT9cUjTgxJhtfKeMWGRs1mirGImyFdoVALt7TIehfDQkyJQ
+         ycmwUhlO5PTyGnZSbqj1HdZoJpGxnu5WI6cRCJESZG6LOGNaT7FL1LhlxkJvyb0bSwqn
+         YBFi96sxJHffr3LXJCJYVA/joXAV14DTz4hql2yf3HglBgL0qpsHA4frK7SdSpjQ9+K0
+         oHub3hl/NT9FYs2tDQ5+pBLDkj6vl/6eUo1zAEduLTdWcNF5CQV8yMkMfZbS6mrrEqfD
+         UKJQELvk8z2Fuq4AQpleWiRn8Z/oKLmaHnYAaswcDWcGvzOKI5ryOkQm8uHgFC2yFJje
+         JOVw==
+X-Gm-Message-State: AOAM530JrrSP9KZDzpfvPz+v5J9G8Rsn8KHzAOsB64Jr29IH3/DYCW47
+	yJYcodfAjYFgcEmrkS4PXZg=
+X-Received: by 2002:a63:181c:: with SMTP id y28mr23783254pgl.175.1618162410938;
+        Sun, 11 Apr 2021 10:33:30 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id t10sm8403802pjy.16.2021.04.11.10.33.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 06:59:10 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	sbrivio@redhat.com,
-	daniel.baluta@gmail.com,
-	nramas@linux.microsoft.com,
-	hverkuil@xs4all.nl,
-	shreeya.patel23498@gmail.com,
-	Larry.Finger@lwfinger.net
-Subject: [Outreachy kernel] [PATCH] Staging: rtl8723bs: rtw_mlme: Remove unnecessary conditions
-Date: Wed, 11 Mar 2020 19:28:59 +0530
-Message-Id: <20200311135859.5626-1-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Sun, 11 Apr 2021 10:33:30 -0700 (PDT)
+Date: Sun, 11 Apr 2021 23:03:23 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH] staging: rts5208: remove unnecessary ftrace-like logging
+Message-ID: <YHMy457UGosfeaC0@kali>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Remove unnecessary if and else conditions since both are leading to the
-initialization of "phtpriv->ampdu_enable" with the same value.
+Removed unnecessary ftrace-like logging by simply deleting that statement
+as we have other modes of logging like ftrace.
+Reported by checkpatch.
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ drivers/staging/rts5208/xd.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 71fcb466019a..48e9faf27321 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2772,13 +2772,9 @@ void rtw_update_ht_cap(struct adapter *padapter, u8 *pie, uint ie_len, u8 channe
+diff --git a/drivers/staging/rts5208/xd.c b/drivers/staging/rts5208/xd.c
+index 0f369935fb6c..a305e15dfb9c 100644
+--- a/drivers/staging/rts5208/xd.c
++++ b/drivers/staging/rts5208/xd.c
+@@ -1628,7 +1628,6 @@ static int xd_finish_write(struct rtsx_chip *chip,
+ 	int retval, zone_no;
+ 	u16 log_off;
  
- 	/* maybe needs check if ap supports rx ampdu. */
- 	if (!(phtpriv->ampdu_enable) && pregistrypriv->ampdu_enable == 1) {
--		if (pregistrypriv->wifi_spec == 1) {
--			/* remove this part because testbed AP should disable RX AMPDU */
--			/* phtpriv->ampdu_enable = false; */
--			phtpriv->ampdu_enable = true;
--		} else {
--			phtpriv->ampdu_enable = true;
--		}
-+		/* remove this part because testbed AP should disable RX AMPDU */
-+		/* phtpriv->ampdu_enable = false; */
-+		phtpriv->ampdu_enable = true;
- 	} else if (pregistrypriv->ampdu_enable == 2) {
- 		/* remove this part because testbed AP should disable RX AMPDU */
- 		/* phtpriv->ampdu_enable = true; */
+-	dev_dbg(rtsx_dev(chip), "%s ", __func__);
+ 	dev_dbg(rtsx_dev(chip), "old_blk = 0x%x, ", old_blk);
+ 	dev_dbg(rtsx_dev(chip),	"new_blk = 0x%x, ", new_blk);
+ 	dev_dbg(rtsx_dev(chip), "log_blk = 0x%x\n", log_blk);
+@@ -1806,7 +1805,6 @@ int xd_delay_write(struct rtsx_chip *chip)
+ 	int retval;
+ 
+ 	if (delay_write->delay_write_flag) {
+-		dev_dbg(rtsx_dev(chip), "%s\n", __func__);
+ 		retval = xd_switch_clock(chip);
+ 		if (retval != STATUS_SUCCESS)
+ 			return STATUS_FAIL;
 -- 
-2.17.1
+2.30.2
 
 
