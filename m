@@ -1,108 +1,104 @@
-X-GM-THRID: 6526221446486687744
-X-Received: by 10.55.27.229 with SMTP id m98mr4320177qkh.58.1519504340016;
-        Sat, 24 Feb 2018 12:32:20 -0800 (PST)
+X-GM-THRID: 6949544081527668736
+X-Received: by 2002:a05:6830:2248:: with SMTP id t8mr18904141otd.211.1618125427563;
+        Sun, 11 Apr 2021 00:17:07 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.200.25.69 with SMTP id g5ls5646590qtk.5.gmail; Sat, 24 Feb
- 2018 12:32:18 -0800 (PST)
-X-Google-Smtp-Source: AG47ELtoFJ56rMiG1525Ne9TcFxrUBlvnOUemHT01EbXWI+X4v/jOWlz7CwnZJP80O83cRv5fT+A
-X-Received: by 10.200.27.237 with SMTP id m42mr4596640qtk.14.1519504338359;
-        Sat, 24 Feb 2018 12:32:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519504338; cv=none;
+Received: by 2002:a9d:7456:: with SMTP id p22ls3250845otk.11.gmail; Sun, 11
+ Apr 2021 00:17:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMGfzzs36DsLDNFGyyukZulDtpvi+rZJtZugzztF2ex/j8e4XuZ4NF+Xq1QcokhbbY4b1Q
+X-Received: by 2002:a05:6830:308d:: with SMTP id f13mr11083997ots.60.1618125426968;
+        Sun, 11 Apr 2021 00:17:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618125426; cv=none;
         d=google.com; s=arc-20160816;
-        b=pIuq6MpUukXAqd3iFtWszMRaENR34lRBlmk6UJ+xF/J+4ijyOWujqLYChIPGa4PaSG
-         +tPyUYN3r1uTVqDu0dg7FE9xbEqiUOQ6fyi6lcgSzT8SUbMvepwwZ7pHisxF+Do0VEqf
-         6GIivSKBIQ9zo4mE5aVztnS8e3MvTDT8VUGOe58qpxYVVEXdqsdBt3x+ga23dGLWCOEP
-         UNIxdnIEAg9ZNm7x56CsXeZAZda8N5VPzRl4bDYwrTs4kriKcErLRD0ZmOQpGjxoufMQ
-         amlhCt7pMtKiKxssjXKQOfO65knoaiRQjlPMqXo/6I7zobIgB9wUy5RFAqoVloAMgxBL
-         V0tw==
+        b=ZXrHhOrkegdvnZ9FogRjXST2Dahq0AUMvfwnl2qU+wuHelpCLsFCtiH27llhtrLPZ1
+         niuJ7xTiu+/0I4WWyGWZzNSxa52KP9EJOQzZjj22NBXsTyeyPhXQOEBH8muznM1iLcAL
+         cJOqKCVEMdeVgRVr/p8t8OMNwtc6bJqEiwpftMWZ7CExIry2mhDxWSwIxs70QJ6zAnlU
+         RWYZ32fhX1pw0Wc7LVhB5bJWTnQX7mWMDMxemkbLpVoHdI1F6ODMcD2SoADZc+rTyO9k
+         2DnS+GU4F5QBRoS78/D3xZZhQaD8XHEN3zf292WfCa0H66KleWYRIfLpLzZquLd34+uA
+         Lusw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=bo6PFBzpA5EjZ8l5N1FNSUxXQftlG/XFBrn2aXjBcAw=;
-        b=Y4wxruUByIPNc4rbB5gdOAQxRlNivHmSE1+de9LnP8mycSasCPzbWkAltV7aMy7s+F
-         fyhnf6qMN8vJgBX9v8GnWrLuFL3z8Xl6aAqWgRle9Qd5hmV5dnJ5JZGjPvzgx9tGTtJ1
-         s8X/ZnSvZNMkAsZ2HoaJ5fRjzHGX2tEKPtFCdLz8oYlmAV/OJ56/kgf9V2IeKqIrkJY3
-         UV/gHeirgBzRFnY2+ayOThgIOCuLUEmz/6+0C8MxmcVex1uX6YjF3viTvD4J+fI1JzOG
-         Ib0Bb4CF7sdhIq+wHdpafCJYwK84177eWyMwg70nrgrqKF6DyPlJ4AEQEmLE7prX6ubI
-         r8/Q==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=ySDM845DKdMK4OChvc3GytyKvc15Gd2akWR/uz3xBRw=;
+        b=ClxG9j/4viNoEjbdeYP5BRVkJaocl/uOiZDHpR63FrcLo6OaKlvfTYrz0r602Ih0Dv
+         jgqz7wMi8FiNcaB6RG+qe7iQ8sVWg+5jasp5LOz+rSTvwGXmOWJmO7xW3+KLjpaE6YlA
+         75A/p52t7WYomDHqo/vy9RfkIbpAqRi+XdXJLlvPWstbdNytJz0W7V27DX5xLzQhcCoh
+         LoRxvIxHLqsiW/536fgRvgwprF7drroUZZTh81sqQVUdkx/hSySTDoj+CrcjLCL2pqkk
+         lh3WIUX4w3AAgmkLR/ESM7I0pCTmCDf5ZB8evms6fhkswtNIEtRYEVxeShiSp/Rjilk/
+         it0A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D84yZos3;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <santhameena13@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id h55si260330qtc.4.2018.02.24.12.32.18
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=NjDkBM97;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id x38si587366otr.3.2021.04.11.00.17.06
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 24 Feb 2018 12:32:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 11 Apr 2021 00:17:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D84yZos3;
-       spf=pass (google.com: domain of santhameena13@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=santhameena13@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id y8so4684407pgr.9
-        for <outreachy-kernel@googlegroups.com>; Sat, 24 Feb 2018 12:32:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=bo6PFBzpA5EjZ8l5N1FNSUxXQftlG/XFBrn2aXjBcAw=;
-        b=D84yZos3nCr3TODzCznql8wYtMBXLjcQGLwvefsTpaOigKUX9XYeH2bqUH/iSDixgz
-         op17pNIkogwr/vE555XAJb2IdzQ18bcPi4IqAmHSiCYUle+tMR1yhdc4b5FzvefOuqDr
-         GsVBsPYN5YWKQWMtLNnRWlY8PH0fSUsgXvtsEq0fPRPMwCLgoMoErwni7vI2JtHM2E9R
-         I48OF887RPzN8P7QBb6cncDjtUqOHnv6oR1Ym6erUiDvy492XUoSf01Yahf1k8Z+zC+x
-         mb5k1+evb9O1IOT9c1vsRxKZpR0zPAW/MwWfddBOmSLm/PWrm/cuHKOy2ev7JZLXeqW8
-         wvVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bo6PFBzpA5EjZ8l5N1FNSUxXQftlG/XFBrn2aXjBcAw=;
-        b=KkPkyygxkrP9AcUZ+x9na4qZCRPdVOTFdAHrJdC0sU8ZPMNsOjQxLkwcMTHDVpm9Q8
-         rN2acAdJoJcTW4fazz5gpOLPeHFXgr8GMXaq+aRUjh0zICMscHrL8mPsjd9y7JZEyQ5I
-         QuOvhO1VC68HDCnPex5C2zkggcWSFdtcu9o8yXrUum4vWaLUqbguK1ZTEdzcbRwkSSip
-         VfKyU2Qyekg6zeJ2V/RnldPX05PcQA6D+4i/5Co3v4HaMNFWGGi+/9Q3g4O++pS+oTHU
-         PTNe4/DMNNYsbDi9ZLCUCMlErw3gPxoRGT+EFubTU2Zs54ZYIeO/CD8rjCMh643Schln
-         wwWg==
-X-Gm-Message-State: APf1xPCgnuG+hzYc0TmpwziZDqPY71g+MMKSlktUeWdUyL8d9cTFKD0r
-	jcJRMcG5TmnaiqsXuARHLSo=
-X-Received: by 10.99.113.85 with SMTP id b21mr4784340pgn.305.1519504337518;
-        Sat, 24 Feb 2018 12:32:17 -0800 (PST)
-Return-Path: <santhameena13@gmail.com>
-Received: from localhost.localdomain (ResNet-23-0.resnet.ucsb.edu. [169.231.23.0])
-        by smtp.gmail.com with ESMTPSA id d75sm8173188pga.63.2018.02.24.12.32.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 24 Feb 2018 12:32:16 -0800 (PST)
-From: Santha Meena Ramamoorthy <santhameena13@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: garsilva@embeddedor.com,
-	outreachy-kernel@googlegroups.com,
-	Santha Meena Ramamoorthy <santhameena13@gmail.com>
-Subject: [PATCH] staging: rtl8192e: use structure pointer to get the size of the structure
-Date: Sat, 24 Feb 2018 12:32:10 -0800
-Message-Id: <1519504330-9936-1-git-send-email-santhameena13@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=NjDkBM97;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 84C53600D3;
+	Sun, 11 Apr 2021 07:17:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1618125426;
+	bh=p/UdKtXkSKul+gDd7EMlk5C+albZFshfM4t0+YC5LEY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NjDkBM97UXnMXoxVuluVyo0vn8G6qIxIPAcfOcof3mnlYaMttr0Sa1H4Y1xY00MGN
+	 e69OpoBma3eUgkz5Hg/XFQ6bL8LK5enMGpWgekmF2egnvD8W+UgZZfjvQujrLz+NaN
+	 CPH5z7u1PIo0iXQyvaWbrl2IXm8/OaUG4AjUHgE0=
+Date: Sun, 11 Apr 2021 09:17:03 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH v2 0/5] staging: rtl8723bs: Change
+Message-ID: <YHKib/h08kR/hsQV@kroah.com>
+References: <20210410150008.5460-1-fmdefrancesco@gmail.com>
+ <YHKZlqFy15QC9Mzz@kroah.com>
+ <3154849.IkRRYng9eG@localhost.localdomain>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3154849.IkRRYng9eG@localhost.localdomain>
 
-Use pointer to the structure to get the size of the structure. Issue
-found using checkpatch.
+On Sun, Apr 11, 2021 at 09:11:43AM +0200, Fabio M. De Francesco wrote:
+> On Sunday, April 11, 2021 8:39:18 AM CEST Greg KH wrote:
+> > On Sat, Apr 10, 2021 at 05:00:03PM +0200, Fabio M. De Francesco wrote:
+> > > Remove camelcase, correct misspelled words in comments, remove an
+> > > unused
+> > > variable, change the type of a variable and its use, change comparisons
+> > > with 'true' in controlling expressions.
+> > > 
+> > > Changes from v1: Fix a typo in subject of patch 1/5, add patch 5/5.
+> > 
+> > The subject line above is very odd :(
+> >
+> True. I've just read the output of git format in /tmp and noticed that the 
+> line with the "subject" was broken in two different one. I think I had 
+> pressed return while editing.
+> 
+> I'm about to send that series again with v3.
+> 
+> In the while I noticed you sent a note to let me know that the you have  
+> added the patch titled "staging: rtl8723bs: core: Remove an unused 
+> variable" to your staging git tree. 
+> 
+> I think this could be a potential issue because the same patch is in the 
+> series that I have to send anew. I put that patch in the series because 
+> yesterday you wrote that the message with subject "Outreachy patches caught 
+> up on.", asking to rebase and resend.
+> 
+> However, I'm about to send v3 of this patchset. I have no idea whether or 
+> not you will have problems in applying that. If you have problems with it, 
+> please let me know.
 
-Signed-off-by: Santha Meena Ramamoorthy <santhameena13@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_wx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I will, please rebase your tree against mine, which should remove the
+one patch that I did apply already as you do not need to send it again.
 
-diff --git a/drivers/staging/rtl8192e/rtllib_wx.c b/drivers/staging/rtl8192e/rtllib_wx.c
-index 03fbff0..bd06bec 100644
---- a/drivers/staging/rtl8192e/rtllib_wx.c
-+++ b/drivers/staging/rtl8192e/rtllib_wx.c
-@@ -371,7 +371,7 @@ int rtllib_wx_set_encode(struct rtllib_device *ieee,
- 		struct lib80211_crypt_data *new_crypt;
- 
- 		/* take WEP into use */
--		new_crypt = kzalloc(sizeof(struct lib80211_crypt_data),
-+		new_crypt = kzalloc(sizeof(*new_crypt),
- 				    GFP_KERNEL);
- 		if (new_crypt == NULL)
- 			return -ENOMEM;
--- 
-2.7.4
+thanks,
 
+greg k-h
 
