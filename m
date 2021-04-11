@@ -1,189 +1,115 @@
-X-GM-THRID: 6674748196483235840
-X-Received: by 2002:ab0:6042:: with SMTP id o2mr5961135ual.26.1554085918990;
-        Sun, 31 Mar 2019 19:31:58 -0700 (PDT)
+X-GM-THRID: 6950041214498373632
+X-Received: by 2002:a63:da04:: with SMTP id c4mr23514987pgh.144.1618182569554;
+        Sun, 11 Apr 2021 16:09:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:254b:: with SMTP id l11ls1293617uan.1.gmail; Sun, 31 Mar
- 2019 19:31:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzoccslr8RYsDr3EMBSQh0ZhFRRd2gLPfDRSQCOuLrggZ9yVg/dgMtnX34gQ9wycQAVrZzx
-X-Received: by 2002:ab0:2983:: with SMTP id u3mr6953206uap.8.1554085918327;
-        Sun, 31 Mar 2019 19:31:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554085918; cv=none;
+Received: by 2002:a63:b48:: with SMTP id a8ls6213452pgl.10.gmail; Sun, 11 Apr
+ 2021 16:09:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyNngFEqJ8XuCF0Lkwz2jMRTmbqbkYnXRgri0TcwKQujWtBfPUomS3AeDHmANGO/aYpfoip
+X-Received: by 2002:a62:1a12:0:b029:248:9023:6aca with SMTP id a18-20020a621a120000b029024890236acamr10153024pfa.5.1618182568551;
+        Sun, 11 Apr 2021 16:09:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618182568; cv=none;
         d=google.com; s=arc-20160816;
-        b=qGIezLzVLPFgeLWjA/qs1L9IqLkmnkzqhQxXZBJGPZwYZ1JfxBmRn1uI6nf5YlSDOK
-         Nh1aQRfoxuz9T1xMU2+jHKu2012DByIanP/6yE3GmhIP0GBD68+MXBuelaF/25YUvWyr
-         auxNzIT7hKfgljHK0W9+YXsVta6tjrCHw1VbJBvOUOcA1ccMuvH0HAy7LIXkdwP8rgFs
-         Q64+bMiqlSDXAs4ebrStjMwgGXTjRR/6ix841SvU3BfUzwTcXlZPqazpbeSg5QHF+bwu
-         b8ADslGxRafaZCkwSjduNehIHMJivxZL+3OhDqVr3oAj9/YYC1XmXPV/eg/wsPU9kjNr
-         /XEQ==
+        b=m3otY0hjhNJxQproMNuzEvxOxHruKV+J5p3419h3D5IeguCaa8NhkuuhmEmm1LR7ux
+         XQGhCTJkz5DaTHS/G8mOzBIv/RXFMUsWyR5wVgWE0qtEZHPhKFbieQoaqhpHpc5a/z4M
+         ndpLmsaLnwdtDR9MyWydAwFaLAtq9DrwNBISKvvSnqT5vCSsHtewSLzC+wFKhqSLK1er
+         KyZ2NPLxhAMzo6FZ0lzupCKvxrc4qJLIOT++C7aHuihMMJDaUsucKiLyr7brEZdF3bJJ
+         5I+8TGWJGrEpOQClPWQiwzxqSiCUnq7deWSJczt72ubdboW+BgH0dxHESbOJ8fV7dMjX
+         4M2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YcHEU+g3GK4i1OCnR++jxY9OitFvBtQktK56LxSDwTE=;
-        b=Xsemc26vebPgDe4ZGlXfW5uE8vbIQY4NufPAUgPciHAQ5a0RbBHhCfh3z8trMd5zGG
-         GR3OLwzm+HXowrQhyHWJV3QaAku4MoohyFS61CRiubUCp/Cd32WxsVp3EVBC3IjHEi4S
-         kamUEdLtPr84000RYyL59e0BL81nuQ5DYIevprde2onkYLyG22vuV2RAYNUl4h2OY0+l
-         epd/c8BRF0u1rw5W6g+fq/kHn46GhvELY0E5LZS/yZn+mVcfgNJ3p475xyK0ryRZAz3j
-         FZkLPTBIqUJJRSFu9UdkeXNQ6zjVbZjB5F1SqNMRUnipmyQXvpecpgUaNBFa/N8qGYd4
-         mgCA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=TMplUBdDdPxuSIZsBm3m2+MMOTC46FBVLik1YxyG7nI=;
+        b=OY6D+aAXykaX5S0z0A7wjozKWalvevIFaWbaM0clcaXNu3WHKg7ZUZOuNeZE+GmUvV
+         Pv5WtAnJ34hyzra9LoLJOK+QjDHM14vOpHpkOFYoyo0kunGIEvg+clnGxtk76ebTzm7Q
+         tKVsCdY8OpKgd9xUT/gbu70sF2K1UxVEFLXPF5LE/2mUO2QT2UIyqvtdKzeQVVH1yTF6
+         zg0iiODsTPGOHjF7mKsLtrRxZXh3gfkQb8Lrz36Innnt9KPZuHaIy228tA3T6T9SHiaL
+         UlUjRr59yadhp1TbypCdKp7VXxNTvF5DKmwAbk6xc7Imy5o/CwvUrTZNnsEeuXh3zsQD
+         afYw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=flV7Qh5J;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NMmNEDda;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::531 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id n74si658007vke.2.2019.03.31.19.31.58
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pg1-x531.google.com (mail-pg1-x531.google.com. [2607:f8b0:4864:20::531])
+        by gmr-mx.google.com with ESMTPS id t5si846396pgv.4.2021.04.11.16.09.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Mar 2019 19:31:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 11 Apr 2021 16:09:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::531 as permitted sender) client-ip=2607:f8b0:4864:20::531;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=flV7Qh5J;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NMmNEDda;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::531 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x343.google.com with SMTP id f10so7125765otb.6
-        for <outreachy-kernel@googlegroups.com>; Sun, 31 Mar 2019 19:31:58 -0700 (PDT)
+Received: by mail-pg1-x531.google.com with SMTP id p12so7933624pgj.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 16:09:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=YcHEU+g3GK4i1OCnR++jxY9OitFvBtQktK56LxSDwTE=;
-        b=flV7Qh5JgUVgr+mEvEOu3WHWlbi3AkREXqr1dY6ToxvsKSAORYJWF+b0uEXFtBk4HF
-         G6vX2WFAMTtsYE44nG8gcjbWyuB0ZPPfxW3+iIAvhZYZ0VtjqggTVUIjt30Q2qCMNH9N
-         lfHb/sx3b4GxOCPsSZWKw6HVWkHqb+MJFTHhsGo1RY95QQ8WcNem6zehm1qmGR7D4EH4
-         YZBoOgfiHVXWA2QPB8gFO7HBV5u8Nit3JDNBPK3I1pT3RdVGuOGpvXjmrml00IKzWLtQ
-         T/jFyvqVnwNut6YxH2dco5l8kyFlxgKek+pwFqsGv/OyF2AaccXTlwUHSKY9YeChye8J
-         SZgw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=TMplUBdDdPxuSIZsBm3m2+MMOTC46FBVLik1YxyG7nI=;
+        b=NMmNEDdajLxowNhnm8F753vA1wuuG2UM8b2mp/9Bv/VxwQ/wkw4by+7wcSJtQJyXfA
+         eak4V3YQrbFquPuJd8wKblNdpy2mWEPTF5++Rtvlq7CQiMUMiYTY4cNt0mh5O+Di7zYX
+         O/rMn0Z4VpBG4Q/lMKLz20PglnyXsMZj8v+hG1WQwMC2WAPRfj8MzHE/QzPLP2zyuEFY
+         ua7L3I5607LQilgMgRYkkVEoynsI3fHKNWjMCgbSMRQYUAqVY3S2PV0lN38PcxpozTpd
+         aLzaRo9pYkiPvwDI8QQ7DmO7th6Dr/Ynu6NJcE7+N8Cc2/dpG6El5TYbus6EzL3GOhOU
+         7sUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=YcHEU+g3GK4i1OCnR++jxY9OitFvBtQktK56LxSDwTE=;
-        b=ebGNLGcyS47BNd2Zi0w3gKxfI8j4FT3JcrZCeRxtIHB1qNa6GLqUx0yTNLO27gXGW3
-         IXAW+9sr0xfbsyi63t+ZxeFHtXApvs0w2HCwNjqVEiDYW8H6DLX7CifefoqkOiJWC62e
-         KPKHfdbNslWmmnj2J+VWmPMhNvxh9d19yvuEw4GsBSuD3ghpAsYva1apwcheEtBNAubI
-         VZlTzZNP9wPfelmGgLk4RNufoOmUbGyTgRkshPcSTNfcGw5Ml9qI0AA8BZapU2ASB1ox
-         6xsq8KdFabHVtZRe544FKgNjMt2aRuRcw7KwJZlQDVxhK+EOVVdetzQL4CIdiSInsbsW
-         RjRQ==
-X-Gm-Message-State: APjAAAVS50kGpAqanmrLGcnJ69483O9bS8cBoh0moVOFaax3kwuCRccS
-	ERvab6GReGjVAq7QPpi9W8theu0i
-X-Received: by 2002:a9d:648f:: with SMTP id g15mr22454377otl.160.1554085917649;
-        Sun, 31 Mar 2019 19:31:57 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:35a4:8fe3:3a02:b8fd])
-        by smtp.gmail.com with ESMTPSA id u22sm3642493otk.49.2019.03.31.19.31.56
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Mar 2019 19:31:56 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: rtl8723bs: core: rtw_mlme_ext.c: Remove typecast in kfree
-Date: Sun, 31 Mar 2019 21:31:54 -0500
-Message-Id: <20190401023154.3644-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=TMplUBdDdPxuSIZsBm3m2+MMOTC46FBVLik1YxyG7nI=;
+        b=PEwk4EpS3k5rmJXrPoMhChhL92WHpqbN6VXTdjGF6BMjaqAh7sPPrIr/bShdheS6+d
+         8igOtM1o/w1CS36Gv3BaiVGGi1eOPH0j6Afb0CdZFQf27y/S97LfZkd7GnSJ69DJzd0I
+         DxwkcNes8lgbFLYWjx3ugoyRfXUGeN/ZI6Qx0OH6BpapMV+KGsGHokmzum9fsArufq0W
+         v1mqdAWDBBiObHoAuzg79UcpYsi09975LJmRes2Fn13V2Oo1Ec0dDj26m5kcMe7xlCAu
+         RoZQequ9bV7H8BGmjfNkgK9YipCQ4ufm6nn/bK5Iq3boocngalscPRp3bQ9zSa6I4dAP
+         ux7Q==
+X-Gm-Message-State: AOAM532vf8RWRi3UFr/gtNNQ1cgUSX9bQ9yfSNraMk1NlcKEDfek+Ro6
+	BdFs4CYZdTXtJl1F34I4ksM=
+X-Received: by 2002:a62:8c13:0:b029:241:db2a:11b6 with SMTP id m19-20020a628c130000b0290241db2a11b6mr22533133pfd.74.1618182568196;
+        Sun, 11 Apr 2021 16:09:28 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id a13sm9339796pgm.43.2021.04.11.16.09.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Apr 2021 16:09:27 -0700 (PDT)
+Date: Mon, 12 Apr 2021 04:39:19 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
+	tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: [PATCH 3/6] staging: media: intel-ipu3: remove unnecessary blank line
+Message-ID: <79b543d96fa0bd613090984b98c5665344b4dddf.1618180660.git.mitaliborkar810@gmail.com>
+References: <cover.1618180659.git.mitaliborkar810@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1618180659.git.mitaliborkar810@gmail.com>
 
-Remove typecast in kfree, as the function will free any memory
-that is allocated with kmalloc.
+Removed an unnecessary blank line to meet linux kernel coding style.
+Reported by checkpatch.pl
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ drivers/staging/media/ipu3/include/intel-ipu3.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index d97c1e6d5c01..430758f298af 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -816,7 +816,7 @@ unsigned int OnBeacon(struct adapter *padapter, union recv_frame *precv_frame)
- 					update_network(&(pmlmepriv->cur_network.network), pbss, padapter, true);
- 					rtw_get_bcn_info(&(pmlmepriv->cur_network));
- 				}
--				kfree((u8 *)pbss);
-+				kfree(pbss);
- 			}
+diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
+index d95ca9ebfafb..335522e7fc08 100644
+--- a/drivers/staging/media/ipu3/include/intel-ipu3.h
++++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+@@ -75,7 +75,6 @@ struct ipu3_uapi_grid_config {
+ 	(IPU3_UAPI_AWB_MAX_SETS * \
+ 	 (IPU3_UAPI_AWB_SET_SIZE + IPU3_UAPI_AWB_SPARE_FOR_BUBBLES))
  
- 			/* check the vendor of the assoc AP */
-@@ -5043,7 +5043,7 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
- 	cmdsz = (sizeof(struct survey_event) + sizeof(struct C2HEvent_Header));
- 	pevtcmd = rtw_zmalloc(cmdsz);
- 	if (pevtcmd == NULL) {
--		kfree((u8 *)pcmd_obj);
-+		kfree(pcmd_obj);
- 		return;
- 	}
- 
-@@ -5064,8 +5064,8 @@ void report_survey_event(struct adapter *padapter, union recv_frame *precv_frame
- 	psurvey_evt = (struct survey_event *)(pevtcmd + sizeof(struct C2HEvent_Header));
- 
- 	if (collect_bss_info(padapter, precv_frame, (struct wlan_bssid_ex *)&psurvey_evt->bss) == _FAIL) {
--		kfree((u8 *)pcmd_obj);
--		kfree((u8 *)pevtcmd);
-+		kfree(pcmd_obj);
-+		kfree(pevtcmd);
- 		return;
- 	}
- 
-@@ -5096,7 +5096,7 @@ void report_surveydone_event(struct adapter *padapter)
- 	cmdsz = (sizeof(struct surveydone_event) + sizeof(struct C2HEvent_Header));
- 	pevtcmd = rtw_zmalloc(cmdsz);
- 	if (pevtcmd == NULL) {
--		kfree((u8 *)pcmd_obj);
-+		kfree(pcmd_obj);
- 		return;
- 	}
- 
-@@ -5143,7 +5143,7 @@ void report_join_res(struct adapter *padapter, int res)
- 	cmdsz = (sizeof(struct joinbss_event) + sizeof(struct C2HEvent_Header));
- 	pevtcmd = rtw_zmalloc(cmdsz);
- 	if (pevtcmd == NULL) {
--		kfree((u8 *)pcmd_obj);
-+		kfree(pcmd_obj);
- 		return;
- 	}
- 
-@@ -5194,7 +5194,7 @@ void report_wmm_edca_update(struct adapter *padapter)
- 	cmdsz = (sizeof(struct wmm_event) + sizeof(struct C2HEvent_Header));
- 	pevtcmd = rtw_zmalloc(cmdsz);
- 	if (pevtcmd == NULL) {
--		kfree((u8 *)pcmd_obj);
-+		kfree((pcmd_obj);
- 		return;
- 	}
- 
-@@ -5241,7 +5241,7 @@ void report_del_sta_event(struct adapter *padapter, unsigned char *MacAddr, unsi
- 	cmdsz = (sizeof(struct stadel_event) + sizeof(struct C2HEvent_Header));
- 	pevtcmd = rtw_zmalloc(cmdsz);
- 	if (pevtcmd == NULL) {
--		kfree((u8 *)pcmd_obj);
-+		kfree(pcmd_obj);
- 		return;
- 	}
- 
-@@ -5296,7 +5296,7 @@ void report_add_sta_event(struct adapter *padapter, unsigned char *MacAddr, int
- 	cmdsz = (sizeof(struct stassoc_event) + sizeof(struct C2HEvent_Header));
- 	pevtcmd = rtw_zmalloc(cmdsz);
- 	if (pevtcmd == NULL) {
--		kfree((u8 *)pcmd_obj);
-+		kfree(pcmd_obj);
- 		return;
- 	}
- 
-@@ -5822,7 +5822,7 @@ void survey_timer_hdl(struct timer_list *t)
- 
- 		psurveyPara = rtw_zmalloc(sizeof(struct sitesurvey_parm));
- 		if (psurveyPara == NULL) {
--			kfree((unsigned char *)ph2c);
-+			kfree(ph2c);
- 			goto exit_survey_timer_hdl;
- 		}
- 
-@@ -6589,7 +6589,7 @@ u8 set_tx_beacon_cmd(struct adapter *padapter)
- 
- 	ptxBeacon_parm = rtw_zmalloc(sizeof(struct Tx_Beacon_param));
- 	if (ptxBeacon_parm == NULL) {
--		kfree((unsigned char *)ph2c);
-+		kfree(ph2c);
- 		res = _FAIL;
- 		goto exit;
- 	}
+-
+ /**
+  * struct ipu3_uapi_awb_raw_buffer - AWB raw buffer
+  *
 -- 
-2.17.1
+2.30.2
 
 
