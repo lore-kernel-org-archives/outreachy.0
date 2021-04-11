@@ -1,96 +1,95 @@
 X-GM-THRID: 6949457058068430848
-X-Received: by 2002:a2e:a58c:: with SMTP id m12mr3860076ljp.363.1618138582236;
-        Sun, 11 Apr 2021 03:56:22 -0700 (PDT)
-X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:bc23:: with SMTP id b35ls561736ljf.7.gmail; Sun, 11 Apr
- 2021 03:56:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzIWLnsOkWcK3txAEvREvgGEeYXe8MODD3mKZgKvaw+cRtG5dCcOqjFZX+a18wIIuXUtHZS
-X-Received: by 2002:a2e:b042:: with SMTP id d2mr7244784ljl.305.1618138580796;
+X-Received: by 2002:a19:30c:: with SMTP id 12mr16024442lfd.235.1618138580253;
         Sun, 11 Apr 2021 03:56:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618138580; cv=none;
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a2e:3c10:: with SMTP id j16ls188784lja.2.gmail; Sun, 11 Apr
+ 2021 03:56:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyx72xFUKVcH1COBnCewhCOv2OKLTvC75KPfidISLdjMxwJIQwL7ctCHyUz8uzLoFeM10i8
+X-Received: by 2002:a2e:8e34:: with SMTP id r20mr15320336ljk.114.1618138578584;
+        Sun, 11 Apr 2021 03:56:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618138578; cv=none;
         d=google.com; s=arc-20160816;
-        b=RcgOJBFEzOGbE6n2Bz0YlPj8Whpy4h6/CWfHSL4rZ+FolmkOqXi8rOHzHGwr9hYIhU
-         V2m++LPQ379YTgI2qXRJ/7wRLmME+Dt46w54K30oWpQR2BpSFnVOCjRdlQdSWhUzyTP/
-         uJdO/W/5sTCWOtyIoJeS1WAbO5foHWMNGNfUHpKZwS5RpZX6yrw6ri/ro5PvS7s6iyoT
-         yinONj4naocGTbIT9DMGB0c2wbWwo3ZsqHJY249Cf3H46nJjLwzg43IhAgUu7Hbs/H8C
-         c0NsGS2SVF0b+xhcvdJP5uWBUZXSqn6lx6+bJuD43zibg4UTCSzWg2vwfOd8So5ZWgId
-         C10g==
+        b=nt2O1NCrro/CjSoIFr0zNCc6y5TlJzwLiQ8yyUi2OsfvcyYhLFsC2e3wSpz1ZL+ZIg
+         O+3a8NhFBMtMBgjgRvA6gAfD2owbW8b+ogU0My3BAl3RHXBPDEyuCzVhPG56DKAF98ao
+         9BleVW6NQVJbwd40L+SQjFxvMDhe4TI4b3Vrj+U11eYqFCyzpW1BWRCvTQf3T3D/nbZw
+         7DSAOwZ/Vtxm7T+6k9VuQtJWjI+ApidpGJVmo5zKBDtQe+KDx2sOZ1fXRFQ34PPHVVPt
+         /LNl5lee3LK9zAp/trLwnyVp3tO63VYdv0dYdAM0B2xnV3c8Xm9XmCgEQMxqiUy+bVEq
+         Amqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=qc4L7mpVhXQBQoYV5Tcy9Lej5AGDlHmGHEiah52/mIw=;
-        b=oYSEvqKCyv7xnvhUW1LbEPeGs2VJFSKlkNGwdI5lTshemvN/KpQTYqX+ln+NQs6crL
-         PupAd+X5jYDEDN6eKoyqD3CDSrSYFTQ0PaQY7+EHGeNArUlGuSvvEBDHoN8+CC9rIsUU
-         SCgkVVB+rA+1OJb5MUYvjMCOcSmYEZI7wWVdrsagQWKC8TJQGSiYpcnTtu0WJYo97vHs
-         Y9apVCCwbdc8yWVrsB+bsycuWSH2IzhRhFEWvI2Rb1zwTfBCDj0PseC+tdXIOcbXWMn3
-         33L+J7zDEKRv96kadvVbXYuvEtbghvlJ4exgrhUbWTbUUgxR7BBHEX29kXrMHmnGksB9
-         cPtw==
+        bh=B3lNEkRWCQlFE4823y02WM8JSwY+DtafqTRIoBwU7tA=;
+        b=YNqVAButCqvzeLwb1ro6rDsFR89fU9aRo3xAsU3URwm9mLsvZ6bekyYHZoxc/iLN5n
+         NyO6GnxkFGmLqI447jYZ6A3hoYrK2wBzn4R4AViP8BS3nTTkEHwlyqWuzsxCCys5Wwsb
+         ErE3OWwFWAkzbGtGA3UKeXKJXHsN2Of4SlWp4JQR2PBA0zmRB+jL16VNZb586k2oiDOg
+         tep7aB8vSB/nbQnYxinGztQdSdqHcNsd9L3Ks+uYTD5+tfoGg/8tRcwrHMrolqwWyCdf
+         MVFl6pHyxDF9guMbMlnCvD5Jfa5525ihS9JE7JAQXweDB7D65dUx9cKVNHf2PnPyDZyE
+         sMHQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mBsMRDor;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dCVb3Svl;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com. [2a00:1450:4864:20::52b])
-        by gmr-mx.google.com with ESMTPS id p18si483687lji.8.2021.04.11.03.56.20
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com. [2a00:1450:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id z2si465657ljm.0.2021.04.11.03.56.18
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 03:56:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52b as permitted sender) client-ip=2a00:1450:4864:20::52b;
+        Sun, 11 Apr 2021 03:56:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) client-ip=2a00:1450:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mBsMRDor;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dCVb3Svl;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52b.google.com with SMTP id h10so11538702edt.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 03:56:20 -0700 (PDT)
+Received: by mail-ed1-x52a.google.com with SMTP id e7so11552778edu.10
+        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 03:56:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=qc4L7mpVhXQBQoYV5Tcy9Lej5AGDlHmGHEiah52/mIw=;
-        b=mBsMRDorAk089raaOhTUTUiHHHCe9k1DiZ3++uqwkN3GgtnEUhp88W2JSd2oZiXmin
-         0RdtZ2cGEsrjoUBNAmf+AIQvC0EOLDs3bUY5DZuJduXTlNgfKcb7oIw5llBTKADMK+sG
-         N9/1xbtHihljNMwZVB8lyCgZ4bqCyYLngCPZjN6MagvwRjIO6D0xBW8GNQJlgVumBc6O
-         gXdE1l5vrZ+kL1QZ1cnjuh+5eUDDomrVls/cr24ratQC4Rty7a4YaDpu+qxsxs3BJ9iY
-         XVci0CKIgjLmoZymtRGVbnt5Ojy45DhiY89h9GAyeWO6uQGMTdeBaM8uzMSooCe/0VYH
-         Eo6w==
+        bh=B3lNEkRWCQlFE4823y02WM8JSwY+DtafqTRIoBwU7tA=;
+        b=dCVb3SvlFN7vmlcP2Sz92rVMQHjy8vr3lYb4FyRevB/K0QeXgKlm2dzI8KPEMbPg1f
+         jWa+g0izkcRlQgevnv/P4b97bXXgRKfQGILIvQtEd3vMXRxLcyAc4d4DiMxn2rq4fy5f
+         KwNlORgcVnf8jJJPOH7hbFRkaz0zhwqjgdvFC5FevDFBgRYDfBTEZmdG8iUd5XeKm3fR
+         q+suvVC3N1m7KLAyzfR08HT859xD+rSu55M9qmunKO0tiLy1H0JnQYa+fRoGW7obS20W
+         I9+lJLv/54du4PBUp6Hlra1e05Y5kagAyp32zHMingrX6t0f2MZSw6UMFweGRoR5+lRu
+         42uA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=qc4L7mpVhXQBQoYV5Tcy9Lej5AGDlHmGHEiah52/mIw=;
-        b=dS9fQ9HNLW8GrbS6xuLrmo5DWo2o/0mvoNj+kLzSEhkqo3NNvbhGbohFdgDwvnXXhT
-         jRi3OFQy0vjF0+MiIR3DaRdHn4pm4Ci4SDECqB6qryifbZ61M+4eZnTwsrFmlFZaswns
-         uIojVAAxeZYj5njcsgu2/RYm6+RUiwLgSmaSR6hsSgTmBEyHYx8MJOD0y0HcZeHsV21g
-         /8zFJpDrjquIiWWFUCsbt2rzj5eC8zyycZkV5LB3xByvTD5UP0BlayjY0DNziKK6m8fF
-         5zBu9jkWNz56aKZbU+WzuGORGzpwyimYFmYoviPIPWEh80HTau4Mm2SbduYDZIguD3pM
-         ic5g==
-X-Gm-Message-State: AOAM530sHvs1Y6apPCsXBWJmD2NLUjZfkoi9ynlPRuiUdb7hPq2SLCJs
-	czGXyICkxU7H7j6im2RQ3QQ=
-X-Received: by 2002:aa7:d54c:: with SMTP id u12mr25795830edr.234.1618138580394;
-        Sun, 11 Apr 2021 03:56:20 -0700 (PDT)
+        bh=B3lNEkRWCQlFE4823y02WM8JSwY+DtafqTRIoBwU7tA=;
+        b=LsZbFUxBz2/TTjY1pW28xOhI5ss23yDzbeUzabHTtjIbvg7egFE8+FKV2rb0CZ1sXy
+         D3kbVyZfERugQ9VUQuIkp9NvY8PIQfg357l75vcyY0E+gPMMP83OdQkFCUIfATlQVAvQ
+         wu0g0JCgQRHtD0TnnoFSEF6aNfQg9ovnpQ5Ylzrc+rZ1DRbCuHL4enUMrv1pp2jCfrOt
+         wtv8oVbaJHaaRAWvNEwZhQ1wesUf8p8AZDQISDE3Oas/m7q/4VJW3jLT7AruhvQOCxQN
+         X04iWCssy4WSo8f5+jyeTTvkbXUT8BbrnzlmCopettlFF+5MDY0lYwebr0DKb9/UHgPF
+         29jQ==
+X-Gm-Message-State: AOAM532w984vYsxoDlerFxdTCFQQiJLUTHObGRfrfnJvudtouQfAv53f
+	YABqQzR9vUcMC3uv0m9Vl6k=
+X-Received: by 2002:a05:6402:5244:: with SMTP id t4mr25382970edd.87.1618138578239;
+        Sun, 11 Apr 2021 03:56:18 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from localhost.localdomain (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id f10sm4369100edd.29.2021.04.11.03.56.19
+        by smtp.gmail.com with ESMTPSA id f10sm4369100edd.29.2021.04.11.03.56.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Apr 2021 03:56:19 -0700 (PDT)
+        Sun, 11 Apr 2021 03:56:17 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Greg KH <gregkh@linuxfoundation.org>,
 	outreachy-kernel@googlegroups.com,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
 Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH v4 3/4] staging: rtl8723bs: include: Change the type of a variable
-Date: Sun, 11 Apr 2021 12:56:07 +0200
-Message-Id: <20210411105608.12900-4-fmdefrancesco@gmail.com>
+Subject: [Outreachy kernel] [PATCH 2/4] staging: rtl8723bs: include: Fix misspelled words in comments
+Date: Sun, 11 Apr 2021 12:56:06 +0200
+Message-Id: <20210411105608.12900-3-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210411105608.12900-1-fmdefrancesco@gmail.com>
 References: <20210411105608.12900-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Change the type of fw_current_in_ps_mode from u8 to bool, because
-it is used everywhere as a bool and, accordingly, it should be
-declared as a bool.
+Correct misspelled words in comments of several files. Issue (largely)
+detected by checkpatch.pl.
 
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
@@ -100,22 +99,371 @@ Changes from v2: Rewrite subject in patch 0/4; remove a patch from the
 series because it had alreay been applied (rtl8723bs: core: Remove an unused variable).
 Changes from v1: Fix a typo in subject of patch 1/5, add patch 5/5.
 
- drivers/staging/rtl8723bs/include/rtw_pwrctrl.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../rtl8723bs/include/Hal8192CPhyReg.h        |  8 ++---
+ .../staging/rtl8723bs/include/basic_types.h   |  2 +-
+ drivers/staging/rtl8723bs/include/drv_types.h |  2 +-
+ drivers/staging/rtl8723bs/include/hal_com.h   |  2 +-
+ .../staging/rtl8723bs/include/hal_com_reg.h   | 34 +++++++++----------
+ drivers/staging/rtl8723bs/include/hal_data.h  |  2 +-
+ .../staging/rtl8723bs/include/hal_pwr_seq.h   |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_cmd.h   |  6 ++--
+ drivers/staging/rtl8723bs/include/rtw_mlme.h  | 18 +++++-----
+ .../staging/rtl8723bs/include/rtw_mlme_ext.h  |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_mp.h    |  2 +-
+ .../staging/rtl8723bs/include/rtw_pwrctrl.h   |  2 +-
+ drivers/staging/rtl8723bs/include/rtw_recv.h  |  4 +--
+ drivers/staging/rtl8723bs/include/rtw_xmit.h  |  2 +-
+ drivers/staging/rtl8723bs/include/sta_info.h  |  2 +-
+ drivers/staging/rtl8723bs/include/wifi.h      |  2 +-
+ 16 files changed, 46 insertions(+), 46 deletions(-)
 
+diff --git a/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h b/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h
+index fb80901f0788..4b3a7c051630 100644
+--- a/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h
++++ b/drivers/staging/rtl8723bs/include/Hal8192CPhyReg.h
+@@ -34,7 +34,7 @@
+ /*--------------------------Define Parameters-------------------------------*/
+ 
+ /*  */
+-/*        8192S Regsiter offset definition */
++/*        8192S Register offset definition */
+ /*  */
+ 
+ /*  */
+@@ -43,7 +43,7 @@
+ /*  2. 0x800/0x900/0xA00/0xC00/0xD00/0xE00 */
+ /*  3. RF register 0x00-2E */
+ /*  4. Bit Mask for BB/RF register */
+-/*  5. Other defintion for BB/RF R/W */
++/*  5. Other definition for BB/RF R/W */
+ /*  */
+ 
+ 
+@@ -137,7 +137,7 @@
+ #define		rFPGA0_AnalogParameter3		0x888	/*  Useless now */
+ #define		rFPGA0_AnalogParameter4		0x88c
+ 
+-#define		rFPGA0_XA_LSSIReadBack		0x8a0	/*  Tranceiver LSSI Readback */
++#define		rFPGA0_XA_LSSIReadBack		0x8a0	/*  Transceiver LSSI Readback */
+ #define		rFPGA0_XB_LSSIReadBack		0x8a4
+ #define		rFPGA0_XC_LSSIReadBack		0x8a8
+ #define		rFPGA0_XD_LSSIReadBack		0x8ac
+@@ -206,7 +206,7 @@
+ #define		rOFDM0_TRSWIsolation		0xc0c
+ 
+ #define		rOFDM0_XARxAFE			0xc10  /* RxIQ DC offset, Rx digital filter, DC notch filter */
+-#define		rOFDM0_XARxIQImbalance		0xc14  /* RxIQ imblance matrix */
++#define		rOFDM0_XARxIQImbalance		0xc14  /* RxIQ imbalance matrix */
+ #define		rOFDM0_XBRxAFE				0xc18
+ #define		rOFDM0_XBRxIQImbalance		0xc1c
+ #define		rOFDM0_XCRxAFE				0xc20
+diff --git a/drivers/staging/rtl8723bs/include/basic_types.h b/drivers/staging/rtl8723bs/include/basic_types.h
+index 76304086107a..57bb717327ce 100644
+--- a/drivers/staging/rtl8723bs/include/basic_types.h
++++ b/drivers/staging/rtl8723bs/include/basic_types.h
+@@ -187,7 +187,7 @@
+ 		); \
+ }
+ 
+-/*  Get the N-bytes aligment offset from the current length */
++/*  Get the N-bytes alignent offset from the current length */
+ #define N_BYTE_ALIGMENT(__Value, __Aligment) ((__Aligment == 1) ? (__Value) : (((__Value + __Aligment - 1) / __Aligment) * __Aligment))
+ 
+ #define TEST_FLAG(__Flag, __testFlag)		(((__Flag) & (__testFlag)) != 0)
+diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
+index 19da27fb5ddf..f1f588d38a60 100644
+--- a/drivers/staging/rtl8723bs/include/drv_types.h
++++ b/drivers/staging/rtl8723bs/include/drv_types.h
+@@ -424,7 +424,7 @@ struct adapter {
+ 	/* 	The driver will show up the desired channel number when this flag is 1. */
+ 	u8 bNotifyChannelChange;
+ 
+-	/* pbuddystruct adapter is used only in  two inteface case, (iface_nums =2 in struct dvobj_priv) */
++	/* pbuddystruct adapter is used only in two interface case, (iface_nums =2 in struct dvobj_priv) */
+ 	/* PRIMARY ADAPTER's buddy is SECONDARY_ADAPTER */
+ 	/* SECONDARY_ADAPTER's buddy is PRIMARY_ADAPTER */
+ 	/* for iface_id > SECONDARY_ADAPTER(IFACE_ID1), refer to padapters[iface_id]  in struct dvobj_priv */
+diff --git a/drivers/staging/rtl8723bs/include/hal_com.h b/drivers/staging/rtl8723bs/include/hal_com.h
+index a1e1b76b5d8a..6bcc443d59fb 100644
+--- a/drivers/staging/rtl8723bs/include/hal_com.h
++++ b/drivers/staging/rtl8723bs/include/hal_com.h
+@@ -158,7 +158,7 @@
+ (rate == DESC_RATEVHTSS2MCS6) ? "VHTSS2MCS6" : \
+ (rate == DESC_RATEVHTSS2MCS7) ? "VHTSS2MCS7" : \
+ (rate == DESC_RATEVHTSS2MCS8) ? "VHTSS2MCS8" : \
+-(rate == DESC_RATEVHTSS2MCS9) ? "VHTSS2MCS9" : "UNKNOW"
++(rate == DESC_RATEVHTSS2MCS9) ? "VHTSS2MCS9" : "UNKNOWN"
+ 
+ 
+ enum{
+diff --git a/drivers/staging/rtl8723bs/include/hal_com_reg.h b/drivers/staging/rtl8723bs/include/hal_com_reg.h
+index 2cd18eb57244..b14585cb0233 100644
+--- a/drivers/staging/rtl8723bs/include/hal_com_reg.h
++++ b/drivers/staging/rtl8723bs/include/hal_com_reg.h
+@@ -768,14 +768,14 @@ Default: 00b.
+ #define IMR_BCNDMAINT3			BIT28		/*  Beacon DMA Interrupt 3 */
+ #define IMR_BCNDMAINT2			BIT27		/*  Beacon DMA Interrupt 2 */
+ #define IMR_BCNDMAINT1			BIT26		/*  Beacon DMA Interrupt 1 */
+-#define IMR_BCNDOK8				BIT25		/*  Beacon Queue DMA OK Interrup 8 */
+-#define IMR_BCNDOK7				BIT24		/*  Beacon Queue DMA OK Interrup 7 */
+-#define IMR_BCNDOK6				BIT23		/*  Beacon Queue DMA OK Interrup 6 */
+-#define IMR_BCNDOK5				BIT22		/*  Beacon Queue DMA OK Interrup 5 */
+-#define IMR_BCNDOK4				BIT21		/*  Beacon Queue DMA OK Interrup 4 */
+-#define IMR_BCNDOK3				BIT20		/*  Beacon Queue DMA OK Interrup 3 */
+-#define IMR_BCNDOK2				BIT19		/*  Beacon Queue DMA OK Interrup 2 */
+-#define IMR_BCNDOK1				BIT18		/*  Beacon Queue DMA OK Interrup 1 */
++#define IMR_BCNDOK8				BIT25		/*  Beacon Queue DMA OK Interrupt 8 */
++#define IMR_BCNDOK7				BIT24		/*  Beacon Queue DMA OK Interrupt 7 */
++#define IMR_BCNDOK6				BIT23		/*  Beacon Queue DMA OK Interrupt 6 */
++#define IMR_BCNDOK5				BIT22		/*  Beacon Queue DMA OK Interrupt 5 */
++#define IMR_BCNDOK4				BIT21		/*  Beacon Queue DMA OK Interrupt 4 */
++#define IMR_BCNDOK3				BIT20		/*  Beacon Queue DMA OK Interrupt 3 */
++#define IMR_BCNDOK2				BIT19		/*  Beacon Queue DMA OK Interrupt 2 */
++#define IMR_BCNDOK1				BIT18		/*  Beacon Queue DMA OK Interrupt 1 */
+ #define IMR_TIMEOUT2			BIT17		/*  Timeout interrupt 2 */
+ #define IMR_TIMEOUT1			BIT16		/*  Timeout interrupt 1 */
+ #define IMR_TXFOVW				BIT15		/*  Transmit FIFO Overflow */
+@@ -784,9 +784,9 @@ Default: 00b.
+ #define IMR_RXFOVW				BIT12		/*  Receive FIFO Overflow */
+ #define IMR_RDU					BIT11		/*  Receive Descriptor Unavailable */
+ #define IMR_ATIMEND				BIT10		/*  For 92C, ATIM Window End Interrupt. For 8723 and later ICs, it also means P2P CTWin End interrupt. */
+-#define IMR_BDOK				BIT9		/*  Beacon Queue DMA OK Interrup */
++#define IMR_BDOK				BIT9		/*  Beacon Queue DMA OK Interrupt */
+ #define IMR_HIGHDOK				BIT8		/*  High Queue DMA OK Interrupt */
+-#define IMR_TBDOK				BIT7		/*  Transmit Beacon OK interrup */
++#define IMR_TBDOK				BIT7		/*  Transmit Beacon OK interrupt */
+ #define IMR_MGNTDOK			BIT6		/*  Management Queue DMA OK Interrupt */
+ #define IMR_TBDER				BIT5		/*  For 92C, Transmit Beacon Error Interrupt */
+ #define IMR_BKDOK				BIT4		/*  AC_BK DMA OK Interrupt */
+@@ -956,13 +956,13 @@ Default: 00b.
+ #define IMR_BCNDMAINT3_88E		BIT23		/*  Beacon DMA Interrupt 3 */
+ #define IMR_BCNDMAINT2_88E		BIT22		/*  Beacon DMA Interrupt 2 */
+ #define IMR_BCNDMAINT1_88E		BIT21		/*  Beacon DMA Interrupt 1 */
+-#define IMR_BCNDOK7_88E			BIT20		/*  Beacon Queue DMA OK Interrup 7 */
+-#define IMR_BCNDOK6_88E			BIT19		/*  Beacon Queue DMA OK Interrup 6 */
+-#define IMR_BCNDOK5_88E			BIT18		/*  Beacon Queue DMA OK Interrup 5 */
+-#define IMR_BCNDOK4_88E			BIT17		/*  Beacon Queue DMA OK Interrup 4 */
+-#define IMR_BCNDOK3_88E			BIT16		/*  Beacon Queue DMA OK Interrup 3 */
+-#define IMR_BCNDOK2_88E			BIT15		/*  Beacon Queue DMA OK Interrup 2 */
+-#define IMR_BCNDOK1_88E			BIT14		/*  Beacon Queue DMA OK Interrup 1 */
++#define IMR_BCNDOK7_88E			BIT20		/*  Beacon Queue DMA OK Interrupt 7 */
++#define IMR_BCNDOK6_88E			BIT19		/*  Beacon Queue DMA OK Interrupt 6 */
++#define IMR_BCNDOK5_88E			BIT18		/*  Beacon Queue DMA OK Interrupt 5 */
++#define IMR_BCNDOK4_88E			BIT17		/*  Beacon Queue DMA OK Interrupt 4 */
++#define IMR_BCNDOK3_88E			BIT16		/*  Beacon Queue DMA OK Interrupt 3 */
++#define IMR_BCNDOK2_88E			BIT15		/*  Beacon Queue DMA OK Interrupt 2 */
++#define IMR_BCNDOK1_88E			BIT14		/*  Beacon Queue DMA OK Interrupt 1 */
+ #define IMR_ATIMEND_E_88E			BIT13		/*  ATIM Window End Extension for Win7 */
+ #define IMR_TXERR_88E				BIT11		/*  Tx Error Flag Interrupt Status, write 1 clear. */
+ #define IMR_RXERR_88E				BIT10		/*  Rx Error Flag INT Status, Write 1 clear */
+diff --git a/drivers/staging/rtl8723bs/include/hal_data.h b/drivers/staging/rtl8723bs/include/hal_data.h
+index df5c7b747498..babcb03a7c23 100644
+--- a/drivers/staging/rtl8723bs/include/hal_data.h
++++ b/drivers/staging/rtl8723bs/include/hal_data.h
+@@ -389,7 +389,7 @@ struct hal_com_data {
+ 	u8 OutEpQueueSel;
+ 	u8 OutEpNumber;
+ 
+-	/*  2010/12/10 MH Add for USB aggreation mode dynamic shceme. */
++	/*  2010/12/10 MH Add for USB aggregation mode dynamic scheme. */
+ 	bool		UsbRxHighSpeedMode;
+ 
+ 	/*  2010/11/22 MH Add for slim combo debug mode selective. */
+diff --git a/drivers/staging/rtl8723bs/include/hal_pwr_seq.h b/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
+index 0837506b6be8..0a2e60770668 100644
+--- a/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
++++ b/drivers/staging/rtl8723bs/include/hal_pwr_seq.h
+@@ -14,7 +14,7 @@
+ 	4: LPS--Low Power State
+ 	5: SUS--Suspend
+ 
+-	The transision from different states are defined below
++	The transition from different states are defined below
+ 	TRANS_CARDEMU_TO_ACT
+ 	TRANS_ACT_TO_CARDEMU
+ 	TRANS_CARDEMU_TO_SUS
+diff --git a/drivers/staging/rtl8723bs/include/rtw_cmd.h b/drivers/staging/rtl8723bs/include/rtw_cmd.h
+index 87cbad525393..517ae3b51386 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_cmd.h
++++ b/drivers/staging/rtl8723bs/include/rtw_cmd.h
+@@ -136,7 +136,7 @@ enum {
+ 	RESET_SECURITYPRIV, /*  add for CONFIG_IEEE80211W, none 11w also can use */
+ 	FREE_ASSOC_RESOURCES, /*  add for CONFIG_IEEE80211W, none 11w also can use */
+ 	DM_IN_LPS_WK_CID,
+-	DM_RA_MSK_WK_CID, /* add for STA update RAMask when bandwith change. */
++	DM_RA_MSK_WK_CID, /* add for STA update RAMask when bandwidth change. */
+ 	BEAMFORMING_WK_CID,
+ 	LPS_CHANGE_DTIM_CID,
+ 	BTINFO_WK_CID,
+@@ -514,7 +514,7 @@ struct drvextra_cmd_parm {
+ 	unsigned char *pbuf;
+ };
+ 
+-/*------------------- Below are used for RF/BB tunning ---------------------*/
++/*------------------- Below are used for RF/BB tuning ---------------------*/
+ 
+ struct	getcountjudge_rsp {
+ 	u8 count_judge[MAX_RATES_LENGTH];
+@@ -567,7 +567,7 @@ struct RunInThread_param {
+ 
+ Result:
+ 0x00: success
+-0x01: sucess, and check Response.
++0x01: success, and check Response.
+ 0x02: cmd ignored due to duplicated sequcne number
+ 0x03: cmd dropped due to invalid cmd code
+ 0x04: reserved.
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme.h b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+index 87a1fa8f347e..5deb73fe3885 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme.h
+@@ -57,11 +57,11 @@
+ 
+ /* ifdef UNDER_MPTEST */
+ #define	WIFI_MP_STATE							0x00010000
+-#define	WIFI_MP_CTX_BACKGROUND				0x00020000	/*  in continous tx background */
+-#define	WIFI_MP_CTX_ST						0x00040000	/*  in continous tx with single-tone */
+-#define	WIFI_MP_CTX_BACKGROUND_PENDING	0x00080000	/*  pending in continous tx background due to out of skb */
+-#define	WIFI_MP_CTX_CCK_HW					0x00100000	/*  in continous tx */
+-#define	WIFI_MP_CTX_CCK_CS					0x00200000	/*  in continous tx with carrier suppression */
++#define	WIFI_MP_CTX_BACKGROUND				0x00020000	/*  in continuous tx background */
++#define	WIFI_MP_CTX_ST						0x00040000	/*  in continuous tx with single-tone */
++#define	WIFI_MP_CTX_BACKGROUND_PENDING	0x00080000	/*  pending in continuous tx background due to out of skb */
++#define	WIFI_MP_CTX_CCK_HW					0x00100000	/*  in continuous tx */
++#define	WIFI_MP_CTX_CCK_CS					0x00200000	/*  in continuous tx with carrier suppression */
+ #define   WIFI_MP_LPBK_STATE					0x00400000
+ /* endif */
+ 
+@@ -168,7 +168,7 @@ struct tx_provdisc_req_info {
+ 	u8 			benable;					/* 	This provision discovery request frame is trigger to send or not */
+ };
+ 
+-struct rx_provdisc_req_info {	/* When peer device issue prov_disc_req first, we should store the following informations */
++struct rx_provdisc_req_info {	/* When peer device issue prov_disc_req first, we should store the following information */
+ 	u8			peerDevAddr[ETH_ALEN];		/*	Peer device address */
+ 	u8 			strconfig_method_desc_of_prov_disc_req[4];	/* 	description for the config method located in the provisioning discovery request frame. */
+ 																	/* 	The UI must know this information to know which config method the remote p2p device is requiring. */
+@@ -177,7 +177,7 @@ struct rx_provdisc_req_info {	/* When peer device issue prov_disc_req first, we
+ struct tx_nego_req_info {
+ 	u16 				peer_channel_num[2];		/* 	The channel number which the receiver stands. */
+ 	u8			peerDevAddr[ETH_ALEN];		/*	Peer device address */
+-	u8 			benable;					/* 	This negoitation request frame is trigger to send or not */
++	u8 			benable;					/* 	This negotiation request frame is trigger to send or not */
+ };
+ 
+ struct group_id_info {
+@@ -228,9 +228,9 @@ struct wifidirect_info {
+ 	u8 				profileindex;	/* 	Used to point to the index of profileinfo array */
+ 	u8 				peer_operating_ch;
+ 	u8 				find_phase_state_exchange_cnt;
+-	u16 					device_password_id_for_nego;	/* 	The device password ID for group negotation */
++	u16 					device_password_id_for_nego;	/* 	The device password ID for group negotiation */
+ 	u8 				negotiation_dialog_token;
+-	u8				nego_ssid[WLAN_SSID_MAXLEN];	/*	SSID information for group negotitation */
++	u8				nego_ssid[WLAN_SSID_MAXLEN];	/*	SSID information for group negotiation */
+ 	u8 				nego_ssidlen;
+ 	u8 				p2p_group_ssid[WLAN_SSID_MAXLEN];
+ 	u8 				p2p_group_ssid_len;
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+index 393eeecaf3a0..5e6cf63956b8 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
+@@ -112,7 +112,7 @@ extern unsigned char WMM_PARA_OUI[];
+ /*  Note: */
+ /* 	We just add new channel plan when the new channel plan is different from any of the following */
+ /* 	channel plan. */
+-/* 	If you just wnat to customize the acitions(scan period or join actions) about one of the channel plan, */
++/* 	If you just want to customize the actions(scan period or join actions) about one of the channel plan, */
+ /* 	customize them in rt_channel_info in the RT_CHANNEL_LIST. */
+ /*  */
+ enum {
+diff --git a/drivers/staging/rtl8723bs/include/rtw_mp.h b/drivers/staging/rtl8723bs/include/rtw_mp.h
+index 26dec21bf0f1..2788ad80b114 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_mp.h
++++ b/drivers/staging/rtl8723bs/include/rtw_mp.h
+@@ -101,7 +101,7 @@ struct mpt_context {
+ 	/*  For MP Tx Power index */
+ 	u8 	TxPwrLevel[2];	/*  rf-A, rf-B */
+ 	u32 		RegTxPwrLimit;
+-	/*  Content of RCR Regsiter for Mass Production Test. */
++	/*  Content of RCR Register for Mass Production Test. */
+ 	u32 		MptRCR;
+ 	/*  true if we only receive packets with specific pattern. */
+ 	bool			bMptFilterPattern;
 diff --git a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-index 0a48f1653be5..0767dbb84199 100644
+index 5450d20b44a6..0a48f1653be5 100644
 --- a/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
 +++ b/drivers/staging/rtl8723bs/include/rtw_pwrctrl.h
-@@ -203,7 +203,7 @@ struct pwrctrl_priv {
- 	u8 LpsIdleCount;
- 	u8 power_mgnt;
- 	u8 org_power_mgnt;
--	u8 fw_current_in_ps_mode;
-+	bool fw_current_in_ps_mode;
- 	unsigned long	DelayLPSLastTimeStamp;
- 	s32		pnp_current_pwr_state;
- 	u8 pnp_bstop_trx;
+@@ -112,7 +112,7 @@ enum rt_rf_power_state {
+ #define	RT_RF_OFF_LEVL_FREE_FW		BIT(4)	/*  FW free, re-download the FW */
+ #define	RT_RF_OFF_LEVL_FW_32K		BIT(5)	/*  FW in 32k */
+ #define	RT_RF_PS_LEVEL_ALWAYS_ASPM	BIT(6)	/*  Always enable ASPM and Clock Req in initialization. */
+-#define	RT_RF_LPS_DISALBE_2R			BIT(30)	/*  When LPS is on, disable 2R if no packet is received or transmittd. */
++#define	RT_RF_LPS_DISALBE_2R			BIT(30)	/*  When LPS is on, disable 2R if no packet is received or transmitted. */
+ #define	RT_RF_LPS_LEVEL_ASPM			BIT(31)	/*  LPS with ASPM */
+ 
+ #define	RT_IN_PS_LEVEL(ppsc, _PS_FLAG)		((ppsc->cur_ps_level & _PS_FLAG) ? true : false)
+diff --git a/drivers/staging/rtl8723bs/include/rtw_recv.h b/drivers/staging/rtl8723bs/include/rtw_recv.h
+index d007f90d02c3..9c3cdcc990fa 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_recv.h
++++ b/drivers/staging/rtl8723bs/include/rtw_recv.h
+@@ -132,7 +132,7 @@ struct rx_pkt_attrib	{
+ 	u8 order;
+ 	u8 privacy; /* in frame_ctrl field */
+ 	u8 bdecrypted;
+-	u8 encrypt; /* when 0 indicate no encrypt. when non-zero, indicate the encrypt algorith */
++	u8 encrypt; /* when 0 indicates no encryption; when non-zero, indicates the encryption algorithm */
+ 	u8 iv_len;
+ 	u8 icv_len;
+ 	u8 crc_err;
+@@ -227,7 +227,7 @@ struct recv_priv {
+ 
+ 	struct __queue	recv_buf_pending_queue;
+ 
+-	/* For display the phy informatiom */
++	/* For display the phy information */
+ 	u8 is_signal_dbg;	/*  for debug */
+ 	u8 signal_strength_dbg;	/*  for debug */
+ 
+diff --git a/drivers/staging/rtl8723bs/include/rtw_xmit.h b/drivers/staging/rtl8723bs/include/rtw_xmit.h
+index 73d020cfd0d1..e45753d17313 100644
+--- a/drivers/staging/rtl8723bs/include/rtw_xmit.h
++++ b/drivers/staging/rtl8723bs/include/rtw_xmit.h
+@@ -142,7 +142,7 @@ struct pkt_attrib {
+ 	u32 pktlen;		/* the original 802.3 pkt raw_data len (not include ether_hdr data) */
+ 	u32 last_txcmdsz;
+ 	u8 nr_frags;
+-	u8 encrypt;	/* when 0 indicate no encrypt. when non-zero, indicate the encrypt algorith */
++	u8 encrypt;	/* when 0 indicates no encryption; when non-zero, indicates the encryption algorithm */
+ 	u8 iv_len;
+ 	u8 icv_len;
+ 	u8 iv[18];
+diff --git a/drivers/staging/rtl8723bs/include/sta_info.h b/drivers/staging/rtl8723bs/include/sta_info.h
+index abde3e3df988..69c377eeeaf0 100644
+--- a/drivers/staging/rtl8723bs/include/sta_info.h
++++ b/drivers/staging/rtl8723bs/include/sta_info.h
+@@ -329,7 +329,7 @@ struct	sta_priv {
+ 	 */
+ 	struct sta_info *sta_aid[NUM_STA];
+ 
+-	u16 sta_dz_bitmap;/* only support 15 stations, staion aid bitmap for sleeping sta. */
++	u16 sta_dz_bitmap;/* only support for 15 stations, aid bitmap for sleeping stations. */
+ 	u16 tim_bitmap;/* only support 15 stations, aid = 0~15 mapping bit0~bit15 */
+ 
+ 	u16 max_num_sta;
+diff --git a/drivers/staging/rtl8723bs/include/wifi.h b/drivers/staging/rtl8723bs/include/wifi.h
+index 69e714a6d87c..036cf57c65a9 100644
+--- a/drivers/staging/rtl8723bs/include/wifi.h
++++ b/drivers/staging/rtl8723bs/include/wifi.h
+@@ -678,7 +678,7 @@ struct ADDBA_request {
+ 
+ #define	P2P_PROVISION_TIMEOUT				5000	/* 	5 seconds timeout for sending the provision discovery request */
+ #define	P2P_CONCURRENT_PROVISION_TIMEOUT	3000	/* 	3 seconds timeout for sending the provision discovery request under concurrent mode */
+-#define	P2P_GO_NEGO_TIMEOUT					5000	/* 	5 seconds timeout for receiving the group negotation response */
++#define	P2P_GO_NEGO_TIMEOUT					5000	/* 	5 seconds timeout for receiving the group negotiation response */
+ #define	P2P_CONCURRENT_GO_NEGO_TIMEOUT		3000	/* 	3 seconds timeout for sending the negotiation request under concurrent mode */
+ #define	P2P_TX_PRESCAN_TIMEOUT				100		/* 	100ms */
+ #define	P2P_INVITE_TIMEOUT					5000	/* 	5 seconds timeout for sending the invitation request */
 -- 
 2.31.1
 
