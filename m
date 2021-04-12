@@ -1,91 +1,109 @@
 X-GM-THRID: 6950254518663643136
-X-Received: by 2002:a05:6402:4395:: with SMTP id o21mr29207799edc.22.1618240369745;
-        Mon, 12 Apr 2021 08:12:49 -0700 (PDT)
+X-Received: by 2002:a4a:9843:: with SMTP id z3mr22698794ooi.51.1618235930218;
+        Mon, 12 Apr 2021 06:58:50 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:515:: with SMTP id m21ls699431edv.1.gmail; Mon, 12
- Apr 2021 08:12:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLuwN3LypK8IJmr3O/eyz/Py8YTS8Flx3ZSyy2khD9jqsU3VX1vTQDbS8V4MDI2Px5truu
-X-Received: by 2002:aa7:c549:: with SMTP id s9mr24118831edr.326.1618240368227;
-        Mon, 12 Apr 2021 08:12:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618240368; cv=none;
+Received: by 2002:a05:6808:f0d:: with SMTP id m13ls3608726oiw.4.gmail; Mon, 12
+ Apr 2021 06:58:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUUznLnAfhl34kyVW4oUJ3g7oyPqyuiY3FvpLxGO66JbDaI2hgEQQ/cdu8/+0AtlvUm7yd
+X-Received: by 2002:a05:6808:4c4:: with SMTP id a4mr1843062oie.170.1618235929406;
+        Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618235929; cv=none;
         d=google.com; s=arc-20160816;
-        b=eS+W6lOh+b5hSY4lnB3MEGwOgGScea7bh7Lne1iUKqkXT/VoEIlwyyvVj+n0SXVyym
-         ONgCzs31I+mlz/EiGKVX+WCMYnHmv+5EMnnGvuPTDzAgtS7nRB+2yaA+8+Vk/VMecOl2
-         L5UanFm91KIEbggudqUZ1yJJyHZtz+KKHMyqi26cUw19N0nKgFq/jzq+yE3gmVUHw6ve
-         rmKTjeSdESANh3NCOlvJNxHD/tROEeYGjUDAwNtjB2fOt3YljcL8UhSrh5W71ThPgCkH
-         zMjuEE6v1XQp9HztklUjT73iatxinxxPy1joEi4i8IAnHeGzUhv4lV4PmM2/3u5AekA9
-         J5Gg==
+        b=X+MFjOLWAde4stlKbDdnHvzeLrL5d7wJXD+4a+V7zb9yg276HUAuoAVUXUoT5gcm8J
+         aPDdmq39Jau6V5iZUYl48bNDg90UwDSisra/wZpxE7DJwMPClBD6RORsbDEnubdque92
+         VFTopL/IMQ2yy6rJrd/4hV7PKYSFx2CijsbmabfGCWR4pfo90zPGadL1EcvgjjG1FU08
+         xOnpBIke621e5t/y7codAW6PYMEWeQKS0yRjwk2/BObT5DZbnSr5HNgqOVPUgZ6WJQ1t
+         kJToqO5mItzHgKOBf0Ot7W+oAps3A1cmqr9KEFJT/oJbjPoUvjCMztX4gTVqSvlijUfM
+         0oYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ghtUNvP6W4rUDXB8GC3MxVGM3FS9B5+TJ3i4rt5aKc8=;
-        b=AHJTPDQX4Vu/jvnPxMwy4IxUGtRAgPPVF5Iz4mJTN7MAlkp3p80fobCFfSfDbYg4rG
-         x0ao3bdxaTFx8Z6li0RaVcYiPhVpF9ONidGHVpiKy9We9D52xfRdZvDcbIOFNlzuPrS6
-         I7qX7hpcQBvEwLI31f/ACPRuFrnNDx/jVueUv4Cjb712GeXhxU4deMFNVFD4sgOZ+oOF
-         rmFUpU/Ak0MJT1kEBvPQDd4Xs8dzTpe5K9LAQHVZu08MX28GT42VsefHt6Z9YSyvwIA4
-         iJPVwZy9dxbp/ASfJC3kYpKHcl1B7RhzFDCoZ+rs6cmBEqPmoSl79tevd/a+diXYDyPy
-         /VMA==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=SJw/FCmBKIoHaZdn5FSsuIC5fqSzcrzjPH5C6swmKnU=;
+        b=KFx6SOU8up5I5d1lPke+q1yY9QR7vx/g2FyPc9xKFdW87DHy872r9DYWjpiooO1HGZ
+         wbTP305ipwz9zFE3FRIoh8kPFmG4IntSX/aeTOGE5jIkG01hte6TVVMkFach9H4FPkf0
+         oneq9y2L87LN8QNZpSpGZrj0OPs6P0NKtfUKsTuVr/4pkXzSebqiC10eab/X+neXMe6D
+         pJCVgOQwzT2A+Nh3g6g53pc9udPacixy7dtOu+6AtybWxt8IhYpZuMu5E6yK0CzokgKs
+         +yFD0R+Tt34hEtzSEggAO6zDFQMcx8ntRh2tLACu14tres1N2hZx1FBiFY3OQV3gN98h
+         UKwQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b=JYBZ+xuO;
-       spf=pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=laurent.pinchart@ideasonboard.com
-Return-Path: <laurent.pinchart@ideasonboard.com>
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com. [213.167.242.64])
-        by gmr-mx.google.com with ESMTPS id r21si914615ejo.0.2021.04.12.08.12.48
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C5aRJDDn;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qt1-x82f.google.com (mail-qt1-x82f.google.com. [2607:f8b0:4864:20::82f])
+        by gmr-mx.google.com with ESMTPS id p9si696002oib.2.2021.04.12.06.58.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 08:12:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) client-ip=213.167.242.64;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) client-ip=2607:f8b0:4864:20::82f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b=JYBZ+xuO;
-       spf=pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=laurent.pinchart@ideasonboard.com
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 67B923F0;
-	Mon, 12 Apr 2021 17:12:47 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1618240367;
-	bh=Vz+OMcuaVIUWh/1V5VDfgCmz0MaadcYAni8v3UeFzEc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JYBZ+xuOtRSZiVxFnDNer1U5JH1VoI2j3hrHgR3tSGsE8T2LCGLtA/ItGDhhig7/6
-	 IV3PuSJuBTmY7hOqGK3pTsOYaJitbvRoB+W7Z9JQvYsd3vh84rltHc0yOEhyKWboIQ
-	 iR/lYBOkwE8QUuvDHDznHxbLb2j9e95K/syDs0sw=
-Date: Mon, 12 Apr 2021 18:11:58 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: ascordeiro <alinesantanacordeiro@gmail.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C5aRJDDn;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x82f.google.com with SMTP id f12so9953000qtf.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=SJw/FCmBKIoHaZdn5FSsuIC5fqSzcrzjPH5C6swmKnU=;
+        b=C5aRJDDnSepZQj02FKN5Pt1KjVS4QcitMncok9+1+VXGcl4U+zNMyE/CDSRFpGnNsg
+         o8dtkR1O04Y64hBWrt5sW/Nxa5Off34WPhS5p461086smlNV/vwnJsOUx4J7pQtBGQOd
+         NkMgtFWEdPC0F8wB6kggZFshNy1S6HsSGEFnTPbS7DSq5T3BsF6icZi+xK30DjKjl7zQ
+         eo2QFX6aBpyvkf3kceseTWQn+6j1S5NtJjIVGYP/0e6fcDPDcpWTWyYZbjFGFjmIMTz2
+         7N4nAj2qT2Cexa0gIpNzQ1RRo2lWRaw+BzDHCjmIzA2lq0mlUCuWqH9cfs/9YtWEPP7/
+         6OUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=SJw/FCmBKIoHaZdn5FSsuIC5fqSzcrzjPH5C6swmKnU=;
+        b=N6fCRtJVmZgqwNlSOGm5SRUpCVp0LBxbP2wGZyfsAtQ97IwmTnahxQVZCDWSfZOLnM
+         1zB4tfYs9lzZo3Xc36TJRJZbeDGz3mA7DPaclCzByGhk3gdjlZwazwl4SdZfNa/8ucDW
+         Cse2FgtfCAnaC3F9qx2Cd7bg8o4ROFOv7pxR/Vtm55BR8m+Hbu680q/gyw3gAwg2jztF
+         elC71WOmp0UEuDmrIshP46bxT4mOdHlkmBCc4OEZQhNC/tGTRnqLnQkCJJ0Ox11W09el
+         vyZVdQc+4ho9D35O2U2fXBfDb4ygBDmZr3ISvouVvOdtlG7ywA7a7m/eATTxrbOpZ/26
+         3B9Q==
+X-Gm-Message-State: AOAM531XrkXSClqXH+SZd97WMl5wyz4c/QgJF+3ERA3usgoOF7DgkmL6
+	vL1R6Ei4ftLhVnjXa85GTZ4=
+X-Received: by 2002:a05:622a:486:: with SMTP id p6mr26013241qtx.98.1618235929094;
+        Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from ?IPv6:2001:1284:f016:a037:476a:dfcd:f18f:9ad5? ([2001:1284:f016:a037:476a:dfcd:f18f:9ad5])
+        by smtp.gmail.com with ESMTPSA id q125sm8018087qkf.68.2021.04.12.06.58.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Apr 2021 06:58:48 -0700 (PDT)
+Message-ID: <7457fd4eb5afbf66b3a6f2fed4dd1e440e6ed422.camel@gmail.com>
 Subject: Re: [Outreachy kernel][PATCH 1/4 v2] staging: media: omap4iss:
  Replace macro function by static inline function in file iss.c
-Message-ID: <YHRjPpMVVrhTF7Tc@pendragon.ideasonboard.com>
+From: ascordeiro <alinesantanacordeiro@gmail.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
+	 <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	outreachy-kernel@googlegroups.com
+Date: Mon, 12 Apr 2021 10:58:45 -0300
+In-Reply-To: <YHRNzq3h3LEp3Dgc@pendragon.ideasonboard.com>
 References: <cover.1618231618.git.alinesantanacordeiro@gmail.com>
- <e302566a3d9e5180ab27eb2c2824fd1b678a6d99.1618231618.git.alinesantanacordeiro@gmail.com>
- <YHRNzq3h3LEp3Dgc@pendragon.ideasonboard.com>
- <7457fd4eb5afbf66b3a6f2fed4dd1e440e6ed422.camel@gmail.com>
+	 <e302566a3d9e5180ab27eb2c2824fd1b678a6d99.1618231618.git.alinesantanacordeiro@gmail.com>
+	 <YHRNzq3h3LEp3Dgc@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.40.0 (by Flathub.org) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <7457fd4eb5afbf66b3a6f2fed4dd1e440e6ed422.camel@gmail.com>
 
-Hi Aline,
+Em seg, 2021-04-12 às 16:40 +0300, Laurent Pinchart escreveu:
+> While testing on a device isn't a requirement as you can't be
+> expected
+> to have the necessary hardware, changes are expected to be at least
+> compile-tested before being submitted.
 
-On Mon, Apr 12, 2021 at 10:58:45AM -0300, ascordeiro wrote:
-> Em seg, 2021-04-12 às 16:40 +0300, Laurent Pinchart escreveu:
-> > While testing on a device isn't a requirement as you can't be expected
-> > to have the necessary hardware, changes are expected to be at least
-> > compile-tested before being submitted.
-> 
-> Hi Laurent,
-> 
-> I thought recompiling the kernel would be enough in this case.
-> I recompiled it in native Ubuntu 16.04 without errors.
+Hi Laurent,
 
-Did it compile the driver you modified ?
+I thought recompiling the kernel would be enough in this case.
+I recompiled it in native Ubuntu 16.04 without errors.
 
--- 
-Regards,
+Thank you for the feedback.
+Aline
 
-Laurent Pinchart
 
