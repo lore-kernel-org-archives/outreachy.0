@@ -1,109 +1,132 @@
 X-GM-THRID: 6950254518663643136
-X-Received: by 2002:a4a:9843:: with SMTP id z3mr22698794ooi.51.1618235930218;
-        Mon, 12 Apr 2021 06:58:50 -0700 (PDT)
+X-Received: by 2002:adf:f944:: with SMTP id q4mr28004924wrr.281.1618234881526;
+        Mon, 12 Apr 2021 06:41:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6808:f0d:: with SMTP id m13ls3608726oiw.4.gmail; Mon, 12
- Apr 2021 06:58:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUUznLnAfhl34kyVW4oUJ3g7oyPqyuiY3FvpLxGO66JbDaI2hgEQQ/cdu8/+0AtlvUm7yd
-X-Received: by 2002:a05:6808:4c4:: with SMTP id a4mr1843062oie.170.1618235929406;
-        Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618235929; cv=none;
+Received: by 2002:a05:600c:4a04:: with SMTP id c4ls747967wmp.1.gmail; Mon, 12
+ Apr 2021 06:41:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyVvL2gFT8KYSJnT9EkYbilA14hxGNxU+9N12mifVNAGO+tGJBWElZl7TCXUXSqLzz26NOw
+X-Received: by 2002:a05:600c:3515:: with SMTP id h21mr27065588wmq.9.1618234880116;
+        Mon, 12 Apr 2021 06:41:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618234880; cv=none;
         d=google.com; s=arc-20160816;
-        b=X+MFjOLWAde4stlKbDdnHvzeLrL5d7wJXD+4a+V7zb9yg276HUAuoAVUXUoT5gcm8J
-         aPDdmq39Jau6V5iZUYl48bNDg90UwDSisra/wZpxE7DJwMPClBD6RORsbDEnubdque92
-         VFTopL/IMQ2yy6rJrd/4hV7PKYSFx2CijsbmabfGCWR4pfo90zPGadL1EcvgjjG1FU08
-         xOnpBIke621e5t/y7codAW6PYMEWeQKS0yRjwk2/BObT5DZbnSr5HNgqOVPUgZ6WJQ1t
-         kJToqO5mItzHgKOBf0Ot7W+oAps3A1cmqr9KEFJT/oJbjPoUvjCMztX4gTVqSvlijUfM
-         0oYA==
+        b=zwP0ykhV1JKo0VD9d6TEHp/dmux50x5s6SSoKSdEboQlRVd1LWP1v03DiEHVC9pefL
+         WdQEWTVHkJgk9H5OpYW6TNovk1tOvAwFlVtNoT6exU8tuGXm06vBjSVSCUInnpdo/3sz
+         cUHMtgEjCG7/nXX+CMOIDUnxqe4dAXkGmFHuhVPpXHeejVmo6IuiZ1Wj2m2o8js+R00R
+         SOhgV6gAS214iluyXP3JUr5FZNgaWoNQxsyh43DT6+gS/6B6B09AugpEBpQGy2bR4eop
+         f9pDAyw0hbqvmBdE9bGV/CWFIg/vdmHy2NH/aq0BQPpHn69rpo9sBYMyUOr9rfE+lMv3
+         rUWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=SJw/FCmBKIoHaZdn5FSsuIC5fqSzcrzjPH5C6swmKnU=;
-        b=KFx6SOU8up5I5d1lPke+q1yY9QR7vx/g2FyPc9xKFdW87DHy872r9DYWjpiooO1HGZ
-         wbTP305ipwz9zFE3FRIoh8kPFmG4IntSX/aeTOGE5jIkG01hte6TVVMkFach9H4FPkf0
-         oneq9y2L87LN8QNZpSpGZrj0OPs6P0NKtfUKsTuVr/4pkXzSebqiC10eab/X+neXMe6D
-         pJCVgOQwzT2A+Nh3g6g53pc9udPacixy7dtOu+6AtybWxt8IhYpZuMu5E6yK0CzokgKs
-         +yFD0R+Tt34hEtzSEggAO6zDFQMcx8ntRh2tLACu14tres1N2hZx1FBiFY3OQV3gN98h
-         UKwQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=rQ1W0gpm3aPiAQvjm5pUIn1af2hALbGQL0vPuy1RHsM=;
+        b=nWY05EunzXSEgAKm8rkzxykIfI9S+C7XB4hV7uGE5RCYBzythgrAZEFTUqdlCxfFTu
+         Nl7lrrlg8peTutFHT2I/eMBlL9ZdNeT/JOTME8d4kEPlHbLzQGs4ghWLrrtQIMBHyF5O
+         vlwNJAs0bs8YW9072GQ7l1bC3oaAXWrvbqywt3J+c1ygLPRsBagh4GTuYT0YOq+swvoa
+         7TSuwX2+xqL+R3dO8I8g9gdu08EXCTo0hvRMM+tZcxJeo6BWtA024hCz6wBzQ4oli8Wj
+         HNw4fkRRRzzOMXep5WDNat/7Gtq8BBYYtrgb1jmOYL+sTJcpVBK6kHV6qdscGGENGFZ1
+         /7gg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C5aRJDDn;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qt1-x82f.google.com (mail-qt1-x82f.google.com. [2607:f8b0:4864:20::82f])
-        by gmr-mx.google.com with ESMTPS id p9si696002oib.2.2021.04.12.06.58.49
+       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b=Pj+KdwAX;
+       spf=pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=laurent.pinchart@ideasonboard.com
+Return-Path: <laurent.pinchart@ideasonboard.com>
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com. [213.167.242.64])
+        by gmr-mx.google.com with ESMTPS id p65si2805wmp.0.2021.04.12.06.41.20
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) client-ip=2607:f8b0:4864:20::82f;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C5aRJDDn;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82f as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x82f.google.com with SMTP id f12so9953000qtf.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=SJw/FCmBKIoHaZdn5FSsuIC5fqSzcrzjPH5C6swmKnU=;
-        b=C5aRJDDnSepZQj02FKN5Pt1KjVS4QcitMncok9+1+VXGcl4U+zNMyE/CDSRFpGnNsg
-         o8dtkR1O04Y64hBWrt5sW/Nxa5Off34WPhS5p461086smlNV/vwnJsOUx4J7pQtBGQOd
-         NkMgtFWEdPC0F8wB6kggZFshNy1S6HsSGEFnTPbS7DSq5T3BsF6icZi+xK30DjKjl7zQ
-         eo2QFX6aBpyvkf3kceseTWQn+6j1S5NtJjIVGYP/0e6fcDPDcpWTWyYZbjFGFjmIMTz2
-         7N4nAj2qT2Cexa0gIpNzQ1RRo2lWRaw+BzDHCjmIzA2lq0mlUCuWqH9cfs/9YtWEPP7/
-         6OUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=SJw/FCmBKIoHaZdn5FSsuIC5fqSzcrzjPH5C6swmKnU=;
-        b=N6fCRtJVmZgqwNlSOGm5SRUpCVp0LBxbP2wGZyfsAtQ97IwmTnahxQVZCDWSfZOLnM
-         1zB4tfYs9lzZo3Xc36TJRJZbeDGz3mA7DPaclCzByGhk3gdjlZwazwl4SdZfNa/8ucDW
-         Cse2FgtfCAnaC3F9qx2Cd7bg8o4ROFOv7pxR/Vtm55BR8m+Hbu680q/gyw3gAwg2jztF
-         elC71WOmp0UEuDmrIshP46bxT4mOdHlkmBCc4OEZQhNC/tGTRnqLnQkCJJ0Ox11W09el
-         vyZVdQc+4ho9D35O2U2fXBfDb4ygBDmZr3ISvouVvOdtlG7ywA7a7m/eATTxrbOpZ/26
-         3B9Q==
-X-Gm-Message-State: AOAM531XrkXSClqXH+SZd97WMl5wyz4c/QgJF+3ERA3usgoOF7DgkmL6
-	vL1R6Ei4ftLhVnjXa85GTZ4=
-X-Received: by 2002:a05:622a:486:: with SMTP id p6mr26013241qtx.98.1618235929094;
-        Mon, 12 Apr 2021 06:58:49 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from ?IPv6:2001:1284:f016:a037:476a:dfcd:f18f:9ad5? ([2001:1284:f016:a037:476a:dfcd:f18f:9ad5])
-        by smtp.gmail.com with ESMTPSA id q125sm8018087qkf.68.2021.04.12.06.58.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 06:58:48 -0700 (PDT)
-Message-ID: <7457fd4eb5afbf66b3a6f2fed4dd1e440e6ed422.camel@gmail.com>
+        Mon, 12 Apr 2021 06:41:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) client-ip=213.167.242.64;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b=Pj+KdwAX;
+       spf=pass (google.com: domain of laurent.pinchart@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=laurent.pinchart@ideasonboard.com
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 61F3E3F0;
+	Mon, 12 Apr 2021 15:41:19 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1618234879;
+	bh=Yw/wZQVEH1BcaYF1r7FYIcCDtqB03Gdz7x1hGwb4OBc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Pj+KdwAXg+afY5joKq2F6Q++4UJPoOO1d3uSkNTq/hIQb6tt0ZWWimHUlfGLQ8Bms
+	 TE4w5kqakddjtmc9wgLPmV3PDAMqb2cGf/TW6rbRf58UUW3LzNJOqWVle5GyTyV1SI
+	 dKAAPb31/3clW70FJNi6SSOt3h6+8qWHUjV2Wx7c=
+Date: Mon, 12 Apr 2021 16:40:30 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel][PATCH 1/4 v2] staging: media: omap4iss:
  Replace macro function by static inline function in file iss.c
-From: ascordeiro <alinesantanacordeiro@gmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
-	 <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	outreachy-kernel@googlegroups.com
-Date: Mon, 12 Apr 2021 10:58:45 -0300
-In-Reply-To: <YHRNzq3h3LEp3Dgc@pendragon.ideasonboard.com>
+Message-ID: <YHRNzq3h3LEp3Dgc@pendragon.ideasonboard.com>
 References: <cover.1618231618.git.alinesantanacordeiro@gmail.com>
-	 <e302566a3d9e5180ab27eb2c2824fd1b678a6d99.1618231618.git.alinesantanacordeiro@gmail.com>
-	 <YHRNzq3h3LEp3Dgc@pendragon.ideasonboard.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.40.0 (by Flathub.org) 
+ <e302566a3d9e5180ab27eb2c2824fd1b678a6d99.1618231618.git.alinesantanacordeiro@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <e302566a3d9e5180ab27eb2c2824fd1b678a6d99.1618231618.git.alinesantanacordeiro@gmail.com>
 
-Em seg, 2021-04-12 às 16:40 +0300, Laurent Pinchart escreveu:
-> While testing on a device isn't a requirement as you can't be
-> expected
-> to have the necessary hardware, changes are expected to be at least
-> compile-tested before being submitted.
+Hi Aline,
 
-Hi Laurent,
+While testing on a device isn't a requirement as you can't be expected
+to have the necessary hardware, changes are expected to be at least
+compile-tested before being submitted.
 
-I thought recompiling the kernel would be enough in this case.
-I recompiled it in native Ubuntu 16.04 without errors.
+On Mon, Apr 12, 2021 at 09:57:09AM -0300, Aline Santana Cordeiro wrote:
+> Replace macro function by static inline function.
+> Issue suggested by Julia.
+> 
+> Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+> ---
+> 
+> Changes since v1:
+>  - Insert file path in commit message
+> 
+>  drivers/staging/media/omap4iss/iss.c | 24 +++++++++++++-----------
+>  1 file changed, 13 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/staging/media/omap4iss/iss.c b/drivers/staging/media/omap4iss/iss.c
+> index c89f268a..3bbc39e 100644
+> --- a/drivers/staging/media/omap4iss/iss.c
+> +++ b/drivers/staging/media/omap4iss/iss.c
+> @@ -27,22 +27,24 @@
+>  #include "iss.h"
+>  #include "iss_regs.h"
+>  
+> -#define ISS_PRINT_REGISTER(iss, name)\
+> -	dev_dbg(iss->dev, "###ISS " #name "=0x%08x\n", \
+> -		iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_##name))
+> +static inline iss_print_register(iss, name)
+> +{
+> +	dev_dbg(iss->dev, "###ISS " #name "=0x%08x\n",
+> +		iss_reg_read(iss, OMAP4_ISS_MEM_TOP, ISS_##name));
+> +}
+>  
+>  static void iss_print_status(struct iss_device *iss)
+>  {
+>  	dev_dbg(iss->dev, "-------------ISS HL Register dump-------------\n");
+>  
+> -	ISS_PRINT_REGISTER(iss, HL_REVISION);
+> -	ISS_PRINT_REGISTER(iss, HL_SYSCONFIG);
+> -	ISS_PRINT_REGISTER(iss, HL_IRQSTATUS(5));
+> -	ISS_PRINT_REGISTER(iss, HL_IRQENABLE_SET(5));
+> -	ISS_PRINT_REGISTER(iss, HL_IRQENABLE_CLR(5));
+> -	ISS_PRINT_REGISTER(iss, CTRL);
+> -	ISS_PRINT_REGISTER(iss, CLKCTRL);
+> -	ISS_PRINT_REGISTER(iss, CLKSTAT);
+> +	iss_print_register(iss, HL_REVISION);
+> +	iss_print_register(iss, HL_SYSCONFIG);
+> +	iss_print_register(iss, HL_IRQSTATUS(5));
+> +	iss_print_register(iss, HL_IRQENABLE_SET(5));
+> +	iss_print_register(iss, HL_IRQENABLE_CLR(5));
+> +	iss_print_register(iss, CTRL);
+> +	iss_print_register(iss, CLKCTRL);
+> +	iss_print_register(iss, CLKSTAT);
+>  
+>  	dev_dbg(iss->dev, "-----------------------------------------------\n");
+>  }
 
-Thank you for the feedback.
-Aline
+-- 
+Regards,
 
+Laurent Pinchart
 
