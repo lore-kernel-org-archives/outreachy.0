@@ -1,98 +1,88 @@
 X-GM-THRID: 6950274232690409472
-X-Received: by 2002:adf:9d48:: with SMTP id o8mr31813250wre.183.1618237353315;
-        Mon, 12 Apr 2021 07:22:33 -0700 (PDT)
+X-Received: by 2002:a5d:4bcb:: with SMTP id l11mr32864905wrt.390.1618237222736;
+        Mon, 12 Apr 2021 07:20:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:600c:3544:: with SMTP id i4ls8084101wmq.2.canary-gmail;
- Mon, 12 Apr 2021 07:22:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzfAOf03Mj0JwXGGCeLnkooX4efZg+vvqNI6fzfp4lMW26NWhUi3u0kS1uq0mhJDOOSjTJF
-X-Received: by 2002:a1c:f701:: with SMTP id v1mr27034522wmh.69.1618237351955;
-        Mon, 12 Apr 2021 07:22:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618237351; cv=none;
+Received: by 2002:a1c:c205:: with SMTP id s5ls1976706wmf.3.canary-gmail; Mon,
+ 12 Apr 2021 07:20:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJynfBmzNf8Toe4q7w5WCHU7lOhkdQ5lvMipC+71khHhbgQGNBuDjOFElAU5aCcNg2qCK/br
+X-Received: by 2002:a05:600c:410c:: with SMTP id j12mr1953372wmi.112.1618237221178;
+        Mon, 12 Apr 2021 07:20:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618237221; cv=none;
         d=google.com; s=arc-20160816;
-        b=riBiz8Yr05OpJ+8Z5S2CQqvzICGru7KcCCB91WpjKqTRKBRH942ViqPhv38C6IgxRn
-         u/oYGeCaTOZ+ALCbo4UmRr4crrkbCbfjTSd7P5XvwfOBl7TU+1nfcqXMVxF51f0cWKaM
-         5dqMvJswEWN5aSzbmurCML6qSK754N7VxgrLqrG93N7LjkuA6f8MnuSAZUSzDluIWxvY
-         WCh1PAq+HKA2lEz+rKPXHt6qRLbfu3Rt13KAilJwrJV2useXtJ2NJhdP3RSrJqtQdc4d
-         qClCEsUIJqBAVyttCSc6pnZKQiw+ZqxSGBzTaIWdGg9IqOjcQ10swJfjg31CIwVgXD62
-         rynQ==
+        b=VcjzfxdtYXRVNfabzhbp7QgrR/SZqXUfCs2EBP8mBUtRWyhwIoxM87OwrflOWrDcBI
+         pxscAc+TrO9wCbLvtHvNKo4ag/iQWWDlXMTxUUQM7suKOj9Gv87HKgf7NN1hfKj5VCX7
+         PPygMPQmQK78e3KphG4qYvg9u1jEp/Da573uPJIAi+4HDYPbglqfEhLt13YnlU2MKDjZ
+         rr0kb1qpW1btx1OpMOYLg358el7eUyI1u5GQt0g1F73K0xH4TdivgAO4QVGa4X2K9dlo
+         CCvZ8vJ5/Xq+2rN3y5D9CBwPUVIkQ6ltJpaPAT8Y4j96bKIVXLAE4G5ci+ylmIcma2DL
+         hPag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=w0U1xV/cg69zWo3yTJkxbqx/0/RtmRyRm+Ao5QR+xT4=;
-        b=s/UIbkqLxilC/H+VFzRy0MYv5cVDT5LtkkYyHlawljgQIwiftwAptjPdiF87Uoy2qk
-         CJ62oUo2BVVE51Bs5EvOQYBiHXzE9jNRHFkMqsf0mHzNtChTfmY/V01/2fLTA3M4ubQ7
-         CpmdgIgqIpY3B1YT0fYWAhK9XG4H0vH1logZdRPv6KKDtHbJAiV5J/RcnLD1T7FB1n06
-         yKfuXXKxHfkPJksAnp7pNjSm9h+Uskb44A/YPNisoceDCwfVYW0m+f8BOus+qS9eHvRZ
-         a7FsL/zow6Xx8R8szUAcMVQS39wSgMGtuISah5rchtDErjCF/RjPMRWPJoCOFjRY8wZA
-         CiYg==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=+AZ1TGgfaf1KoLXYI0HvGDkJ6xQIfrNYNBJFQJO/CgQ=;
+        b=ipnEjKwS1QBFTxm+kUB2u2BOwY4gcNGHeanHHa3ZQMa6pV79WDg6Iy/u6UCeH2cdS1
+         Y+nNtB8RXhY1wiEyr4/uwDDqIpR4VL4Keb+c8RIYR7UIpT3lq5L7gWRFtMa4qdn2BlUl
+         9+zxVv6GKwiYf2i4MXef8gDKcNKqNJnX4iJGgjh4ozQ5TbK0Dm5DWQP6Tc4kN6Sh590j
+         QSRAUJfqT44+TBovGL2x1CJq8SwDbWRoMQrvnLPVEzWbkEB85Ct4h1dBOFy/9jmlKNjZ
+         JakHZ6qtYVsH2PiEcHdjhTq85abhbOhRTAw+T7Da5d0NhKXwpiO0mfOxeoV2nYbPs7ys
+         bCwQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=lHiXspLI;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-Return-Path: <willy@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id p65si7881wmp.0.2021.04.12.07.22.31
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id i16si507670wmq.2.2021.04.12.07.20.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 07:22:31 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Apr 2021 07:20:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=lHiXspLI;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=w0U1xV/cg69zWo3yTJkxbqx/0/RtmRyRm+Ao5QR+xT4=; b=lHiXspLIT5lh6yOcnX0EmpTJJ4
-	2Mn0tSvcEMXvTDEIS0tIq6HDXSq5QlydXKh+Jw7HcWj4I5Cygf/gX6UySVk8wQJD/ZMabsY44Zap2
-	hxWUThZJ+/LKt3JmS1Auis7CtAXXazAkHJGXqVBR1yOFz9itRDbHGyF9MAY4xz/rhDSgvng/fiSgy
-	hRM2FCiB9gzFbBtCf5/FWX8lc5LI7FgZvjRmnEMhbrI683ONoO0GewcXlYYwnQwzF6SNW459T1vOH
-	OXmo9HotIZk0/u4XD24Nt0XwtdieMhdYo3RiWsdwwBncAXqIVAfIKJ5p3c2hVc9P4giUqYC5T89uE
-	fmwLk+qw==;
-Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVxS2-004Ru2-85; Mon, 12 Apr 2021 14:22:10 +0000
-Date: Mon, 12 Apr 2021 15:22:06 +0100
-From: Matthew Wilcox <willy@infradead.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Ar+bIfqNf7CK/pMBcTlajsMiAIKoaSvp033AA?=
+ =?us-ascii?q?3SlKJCB9WMqeisyogbA/3Rj7lD4eVBgb6Le9EYOHRm7R8oMw3JkJMd6ZLWvbkU?=
+ =?us-ascii?q?ahMY0K1+rf6hL6HSmWzIVg/IdmN5NzEdjhSWV95PyU3CCdM/INhOaK67qpg+C2?=
+ =?us-ascii?q?9QYPcShPZ7t75wl0Tia3e3cXeCB8CZA0FIWR66N8zlKdUE8aYcihCn4OU/Krnb?=
+ =?us-ascii?q?H2vaj7ah0LDQNP0mezpA6o87LzHly52RoTQlp0sNMf2FXC+jaS2oyT99WyyhrR?=
+ =?us-ascii?q?zAbonvFrpOc=3D?=
+X-IronPort-AV: E=Sophos;i="5.82,216,1613430000"; 
+   d="scan'208";a="378429570"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 16:20:09 +0200
+Date: Mon, 12 Apr 2021 16:20:09 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: PEGGY TAWAH <tawahpeggy98@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
-	Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+cc: outreachy-kernel@googlegroups.com, 
+    Vaibhav Hiremath <hvaibhav.linux@gmail.com>, 
+    Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: Re: [Outreachy kernel] [PATCH] Staging: greybus: Remove a space
  because line is too long
-Message-ID: <20210412142206.GL2531743@casper.infradead.org>
-References: <20210412141329.GA31738@peggy-Lenovo-V130-15IKB>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20210412141329.GA31738@peggy-Lenovo-V130-15IKB>
+Message-ID: <alpine.DEB.2.22.394.2104121618260.11044@hadrien>
+References: <20210412141329.GA31738@peggy-Lenovo-V130-15IKB>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, Apr 12, 2021 at 10:13:34AM -0400, PEGGY TAWAH wrote:
+
+
+On Mon, 12 Apr 2021, PEGGY TAWAH wrote:
+
 > checkpatch complained of line 182 too long in greybus driver,so i removed some spaces. CHECK: line length of 101 exceeds 100 colums
 
-... next, we're going to have people complaining that the argument
-doesn't line up with the opening '('.
+It would be good for the lines of the log message to stay within around 70
+characters.  The message will be slightly indented by git.
 
-The underlying problem is that the indentation is too deep.  Something
-should probably be factored out into its own function, allowing the
-indentation to start again at a single tab.
-
-I'd suggest this probably looks like:
-
-	if (gpiod_get_value(arche_pdata->wake_detect)) {
-		if (!arche_platform_wake_boot_init(arche_pdata)) {
-			spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
-			return IRQ_WAKE_THREAD;
-		}
-	}
-
-... and let you write arche_platform_wake_boot_init().
-
+>
 > Signed-off-by:  PEGGY TAWAH <tawahpeggy98@gmail.com>
-> 
+
+Only one space after the Signed-off-by:
+
+julia
+
 > ---
 >  drivers/staging/greybus/arche-platform.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>
 > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
 > index e374dfc0c92f..1bfec5fae849 100644
 > --- a/drivers/staging/greybus/arche-platform.c
@@ -108,10 +98,11 @@ I'd suggest this probably looks like:
 >                                         return IRQ_WAKE_THREAD;
 > --
 > 2.17.1
-> 
-> 
-> -- 
+>
+>
+> --
 > You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
 > To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
 > To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210412141329.GA31738%40peggy-Lenovo-V130-15IKB.
+>
 
