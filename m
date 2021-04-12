@@ -1,62 +1,64 @@
 X-GM-THRID: 6948342597010063360
-X-Received: by 2002:a65:644f:: with SMTP id s15mr14667332pgv.323.1618299588785;
-        Tue, 13 Apr 2021 00:39:48 -0700 (PDT)
+X-Received: by 2002:a2e:b043:: with SMTP id d3mr19286673ljl.280.1618261990516;
+        Mon, 12 Apr 2021 14:13:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:90a:c70c:: with SMTP id o12ls1226385pjt.3.canary-gmail;
- Tue, 13 Apr 2021 00:39:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpdWSl3ghdrL8X24cpTGfbc3kLkO86YhQC8IuZ0LB1iyH+znjs/d2O9/TRdYbZ7GkLZAFa
-X-Received: by 2002:a17:902:9b8b:b029:e6:b027:2f96 with SMTP id y11-20020a1709029b8bb02900e6b0272f96mr31488951plp.28.1618299587682;
-        Tue, 13 Apr 2021 00:39:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618299587; cv=none;
+Received: by 2002:a19:48c6:: with SMTP id v189ls670657lfa.0.gmail; Mon, 12 Apr
+ 2021 14:13:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLrYFOeThuKm4do9J74cybB71AD9En3Dw8sj7NBIUWCuJHPG4jZ80oS5sa346qdzLc0Z0z
+X-Received: by 2002:a19:c1c5:: with SMTP id r188mr20743573lff.179.1618261988895;
+        Mon, 12 Apr 2021 14:13:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618261988; cv=none;
         d=google.com; s=arc-20160816;
-        b=b+Hjxgk5ZVo2eA1ha0XwwcVIn214MAvUG/7ajJhwinDMAaXyI9QmgUvwxbQ41kwrH0
-         x8vrECPgfFBLWiWc9mxrRZ4Ebed7YYLKN3r8eJZ7qoiDBZuiW1JS1SsDL8zGrK34HoZK
-         55uixpntelvDwz2XOmimPbnSsam/BhRBO287GEhoyrx/LNCAGLa7Qz4YjTniy0lKaqa5
-         MN23GVTJnSJJ8SgnVHCmMDL0Qig4CALR7YpREdnZI0K1elbkWTnE2VrhYUmDHcnK3lVN
-         tgF5ZaZD9cPYA/Yjrx3B+b46VjUoTAirHe9q+x1KnGOUyzMufgrfNOT+OvKi6cD4I6AM
-         frlg==
+        b=y+lrUb3NUFGwrLGsN5lImNLfQhe+QhZHSDfS7jlj3yrJb7B8sXqFcmrAj+EgdjL6Wa
+         6LCBifWZjmFl/XXZDGdJ8toB6gJE8NGHrtz0pAuHD7B27cJOjegIpHhoHdkTnlk6roMy
+         epjwOOaYDv7C7mOlQGrscQm6dCgmIeEvK3p4SZZv8j4QaAxY8Gu2DcE/SlF3j+DgOPfw
+         xq2oB5REeIjDM05owCLKE7b1Chb1D9+mqnzJmpMjl+0J7y4KfNbzaY2W+yOjZWabB9OL
+         c03NTgP4ZRFSRkMDwW1mq6CgpFVjeRQdEl4Yr0Ce06VW9TcVGv2BbCCJw68TZwhDcD0F
+         qx3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=Bz9sUy37qcCKO1bJyubXOKEGjQmV6VMgDCJMh0dZkSM=;
-        b=dG1BkmJtnFkbmpcYVPeP/uadeOhzO1MdNNir/eblkEadXOCz8B4gKEc01rhXIokPy0
-         aL0RXVITWm5eH6UMO/3RzPwi/OBvTgLgX4U1vnSawLc+qMPi1eV1JY58/CbE7syj4QcK
-         ar3Gtd50gCIwLXhqBt1OTHtkIP2NUXrA89S/ta5TLNueaOz0oRqU2C6/TAFFIR5s1svp
-         wv289nwgwrn4mvdibJ5xmfSQulAgtykMiLXQupIf0qhvtFfd8b35KAr2N2p1qHRNUyMB
-         MfpysSQksGr/QpLPpGKut5SlhmZNh4wGCingcGbM+rKDAyYHA2O7YHfGoJQ/JuwfTEYj
-         7RQA==
+        bh=Qxt5hGUGCIOriu3kYww5GhknJDLjCA6JPdqgUUXGgoM=;
+        b=xQhTWDXtUCOQcDYeRSNmRSRgDi7lxxNg/xGVz/SPk3m/Kvy85kLCIwdEUS9KYXtkvd
+         96/76LFcGabzK2qXVKrAzybS9Orc+4LqYn+UusFyiYb4o/nR0OeedhHRgEwxcmwLFYDj
+         F1WK+AO/ZsTAYoSUl3Z2kvaYxI2sICQwIULi13lgh6O1Rp7doKJAMt4aplbTZNQrfEmu
+         jzVZgU3JnL3hNhn75DzRL/gtiUdU/RSV608+7yC0SY4aSHSz3hG1wtDWRx97ON/EJA14
+         7jv5PuD1fNXt3fYbiypTnrCwOFA5Ink5WhWSKn6WO+v+TJ6ZpToQEQoSGo17Y+xI381R
+         ePNQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=jQNwowkn;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id p18si470484pgi.3.2021.04.13.00.39.47
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=VLET7wPt;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+Return-Path: <willy@infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by gmr-mx.google.com with ESMTPS id p18si657837lji.8.2021.04.12.14.13.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Apr 2021 00:39:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Apr 2021 14:13:07 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=jQNwowkn;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C8B54613B8;
-	Tue, 13 Apr 2021 07:39:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1618299587;
-	bh=UKLi8N7PpyoP0aTw1Rc06CM25uT52l0anJPWfPBcGOA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jQNwowknv7OnO5LeSWNcWfwmUf3l+pPLdAutNHoLNXy2Zf6aIBOSWhPi7kW15lYXd
-	 olyoch2ThrKxUlw853xBL6h+Z06xtJCNPfQzi2ZSQ/zjqae1CyYIIU/x3AqlpcvliM
-	 MlLtGG0VH6MoPms7iKfJAKl/frNSs1GcMU0sS5sw=
-Date: Tue, 13 Apr 2021 09:39:44 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=VLET7wPt;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Qxt5hGUGCIOriu3kYww5GhknJDLjCA6JPdqgUUXGgoM=; b=VLET7wPtaKrRRfzF3FNJlosHRs
+	53TLpy3ZIicI9BERoQtjnoFJlwpUzX8HnbaYJsoxLg5uBj+SKIZj6qAi3eWpDydUCJP9/HpJmwFAr
+	Z56xeKGBAEub2TWsJq5FtlCH/A3wCmS4v0aEtWXrQcdSlDjaq42QuTNBbdJOukIrhyAa7UaePgnpe
+	nKBsKF11XQGNYYBamyaHJHf+M1c3TOmzwEO7LD2xhMwJ53WoamQYVhMGwUIUj3iK5WfW7S7vmoiu9
+	zXvWat8+TfVWJl3owoRTgnQMog6i6FUooBAO/LmAoGM2KcrdqVp310Y1NyVR4jSOCQzhil7G26Cpc
+	ZRTeIWhg==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
+	id 1lW3rh-004tEt-Qe; Mon, 12 Apr 2021 21:13:04 +0000
+Date: Mon, 12 Apr 2021 22:13:01 +0100
+From: Matthew Wilcox <willy@infradead.org>
 To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
+Cc: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
 Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: hal: Remove
  camelcase
-Message-ID: <YHVKwEX8CvV7brRg@kroah.com>
+Message-ID: <20210412211301.GO2531743@casper.infradead.org>
 References: <20210412210258.8061-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -66,13 +68,8 @@ In-Reply-To: <20210412210258.8061-1-fmdefrancesco@gmail.com>
 On Mon, Apr 12, 2021 at 11:02:58PM +0200, Fabio M. De Francesco wrote:
 > Removed camelcase in (some) symbols. Further work is needed.
 
-What symbols did you do this for?  What did you change them from and to?
-
-Be specific, and try to do only one structure at a time at the most,
-trying to review 1000 lines of changes at once is hard, would you want
-to do that?  :)
-
-thanks,
-
-greg k-h
+What would be more useful for this driver is making it use
+drivers/net/wireless/realtek/rtlwifi/btcoexist/ which has already
+graduated out of staging.  I haven't checked how closely it matches,
+but this is surely a better use of time than "cleaning up" this version.
 
