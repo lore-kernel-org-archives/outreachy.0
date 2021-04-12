@@ -1,129 +1,106 @@
 X-GM-THRID: 6950041128990146560
-X-Received: by 2002:a05:6512:1052:: with SMTP id c18mr12040836lfb.384.1618299618323;
-        Tue, 13 Apr 2021 00:40:18 -0700 (PDT)
+X-Received: by 2002:a25:2cd8:: with SMTP id s207mr34828966ybs.87.1618262575688;
+        Mon, 12 Apr 2021 14:22:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5081:: with SMTP id f1ls2153795lfm.2.gmail; Tue, 13 Apr
- 2021 00:40:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwArwXxyfUiWCPaaVleqDJ04XfNAMM9ykTt3Y3eMZcNF4vgwtc5SRCk6JtjwXU4oRmuKaOP
-X-Received: by 2002:a05:6512:34cc:: with SMTP id w12mr23158081lfr.430.1618299616630;
-        Tue, 13 Apr 2021 00:40:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618299616; cv=none;
+Received: by 2002:a25:a045:: with SMTP id x63ls8111916ybh.1.gmail; Mon, 12 Apr
+ 2021 14:22:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxE/iEhIgJrcJSoFmfrgKmjjRMahL3ElmIL9EEt7GvIZ8CZEUXtwWlzX19gf9vl0U26xrFp
+X-Received: by 2002:a25:d086:: with SMTP id h128mr22066694ybg.89.1618262574600;
+        Mon, 12 Apr 2021 14:22:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618262574; cv=none;
         d=google.com; s=arc-20160816;
-        b=kogPTO6GSGL1q8ixpFO1EbaqDV4ghtFP2uQMrIgil/oINFwjVtu49Y+1pk8Zjy5oR5
-         fFLULNj+INHZHhrOjQaXmdFENAEkfSv0rEuNja2pCjTGjK/8D1G9TjCIHS+Z7uG5yTD7
-         NPrQSAf1uCFZaqRQUdyPIv8snPSAfSMBTYhrgVm+OrWhkCwft3DtNik3iYN5KQM/ytwB
-         NBnP927/mzj66/wZW/neNFrxSzK0ecbRrg9moXDUnwgHU/PUHiejgy6+/Au0C9mBcYNx
-         LzddJwfZ96IxsaJVwDha26LEUr8B63X/KB/dqZFbAdrkONRyMlxp2DlqHRIIENvoDTZo
-         USHQ==
+        b=b3aFWHitYyHP4L6R+KuGRfJk93PEifb9+OkFLg/9NeV37Lhe8xw5FVimrp+vn3rWAi
+         hP6lDbOO5ogMw4q6H5zbr1L8Gph9XR5Tcyv91J1XSPosaEYeI0L9nyf0WOWmgCyupuPa
+         eHnZOPXH9dAPwLuy44wEnU6Qo1Ywrr94T9LyimdBk6339+wGCxDoOnaXchCYrHW2mEbO
+         I73p3Shh6kBOIXbrONlXUjwJ43Y1FEe5jaSX8bam7zODg07IvjvIiVeYYhACxuMQiQ/n
+         h1ADhIh3s0pN9F2/C4OAOuUOWYCoAXYlrvaGOo6/5GwnduaCyWn5r30Mf2qWPxkH6Aa4
+         sGJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:mime-version
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=sELJZQY0YFNC1uCZNwX+4i26od38JWz4si43OLQ5uiw=;
-        b=a6e7eVlv3h+63Uqjggu9U6MXloQZTpzE7m16cRPyb2pb9DaVXF1m3ESImyB+YeaSNX
-         S9pnjRIYoFvJd7gI6i2MWmC3GqN49Se4azhVR28wg49634uu36V32uQs9OtN+vFBdQ1H
-         oDnmf21O3NyEgPyaJO1uxeWeMnMKWtKF/sKCsZoB9wyIW4QNS15MQwxumyuiTMPXKqZ6
-         ymSEfOEHz+eIL5HTbwkfu9yQnEHdAVQ0+5O1C20jK60ALUApXxcIo4VphMBWSiiCDLS3
-         kTvD3i2ZmgW+Pn2vnhJeKYWzL3ndzR+AO4ogyxmcJednWXV6I0kubRC0NsnzO1wmNXtm
-         XZ3A==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=zxvAPMXPUnca16w2oKLx4uw4qfwzmPKHrS/bXfWFeo8=;
+        b=ckqYkFXUJbqNQtb7lnKGJA1odgcDPLCrAOyQuGFLJbswvJ4UDVLQx3IqmtLhM4qmFy
+         byP/BDEP5YSXr4YOClWb5K9fayAxjfx2JqlFjxylVat8BfyiWDdxUWK/eWCCquaEszWr
+         CC0SCffULAIuUVxdbdx1CBDmqdMFX3eiYP2vDk8SyyKvuMcoekeqQ7fELdMM696fctgL
+         lWGkJIy85BiF+oL/JKVaZxRT+FDLHQpwUc8Bje5ZKTaQrqfSJ29u0SHLPhziYwBORDh3
+         TFByAZc3WJRaKOrh3YQpUnmJR8SOKtFwSCr8NrM8oBKzAbQH/z2SBH5o2Ry82X2urUDF
+         yDLw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of david.laight@aculab.com designates 185.58.86.151 as permitted sender) smtp.mailfrom=david.laight@aculab.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=aculab.com
-Return-Path: <david.laight@aculab.com>
-Received: from eu-smtp-delivery-151.mimecast.com (eu-smtp-delivery-151.mimecast.com. [185.58.86.151])
-        by gmr-mx.google.com with ESMTPS id z2si660020ljm.0.2021.04.13.00.40.16
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
+        by gmr-mx.google.com with ESMTPS id q185si821275ybc.1.2021.04.12.14.22.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Apr 2021 00:40:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of david.laight@aculab.com designates 185.58.86.151 as permitted sender) client-ip=185.58.86.151;
+        Mon, 12 Apr 2021 14:22:54 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of david.laight@aculab.com designates 185.58.86.151 as permitted sender) smtp.mailfrom=david.laight@aculab.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=aculab.com
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- uk-mta-221-ecZ__soQOzqGJyvfJqYHXQ-1; Tue, 13 Apr 2021 08:40:13 +0100
-X-MC-Unique: ecZ__soQOzqGJyvfJqYHXQ-1
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) with Microsoft SMTP
- Server (TLS) id 15.0.1497.2; Tue, 13 Apr 2021 08:40:12 +0100
-Received: from AcuMS.Aculab.com ([fe80::994c:f5c2:35d6:9b65]) by
- AcuMS.aculab.com ([fe80::994c:f5c2:35d6:9b65%12]) with mapi id
- 15.00.1497.012; Tue, 13 Apr 2021 08:40:12 +0100
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Mitali Borkar' <mitaliborkar810@gmail.com>,
-	"sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>,
-	"bingbu.cao@intel.com" <bingbu.cao@intel.com>, "tian.shu.qiu@intel.com"
-	<tian.shu.qiu@intel.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
-CC: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"outreachy-kernel@googlegroups.com" <outreachy-kernel@googlegroups.com>,
-	"mitali_s@me.iitr.ac.in" <mitali_s@me.iitr.ac.in>
-Subject: RE: [PATCH 2/6] staging: media: intel-ipu3: preferred __aligned(size)
- over __attribute__aligned(size)
-Thread-Topic: [PATCH 2/6] staging: media: intel-ipu3: preferred
- __aligned(size) over __attribute__aligned(size)
-Thread-Index: AQHXLyewN18t7A08NkSuo10kWluH2aqyET/A
-Date: Tue, 13 Apr 2021 07:40:12 +0000
-Message-ID: <277be5f4da82449aaf0a635b60ad0728@AcuMS.aculab.com>
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: e4QEx8cb6VNw1c4FoefS0nVYfEjPFcobEZNbXt7K8zkzeUZBnyqSu5bBCVROs7xzgD5D/c//uF
+ /BkyUIEvkiSw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="174380568"
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="174380568"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 14:22:53 -0700
+IronPort-SDR: w20xRPbCNHbZFV4m4XNmVa95UmIEMCg5aIdaO7+IhGBpJS5OGhALVd7CkDtoYszRuLy2sWGJpr
+ Pclup8EAGWSg==
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="521337381"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 14:22:50 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with SMTP id B5855200E8;
+	Tue, 13 Apr 2021 00:22:48 +0300 (EEST)
+Date: Tue, 13 Apr 2021 00:22:48 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+Cc: bingbu.cao@intel.com, tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [Outreachy kernel] Re: [PATCH 2/6] staging: media: intel-ipu3:
+ preferred __aligned(size) over __attribute__aligned(size)
+Message-ID: <20210412212248.GN3@paasikivi.fi.intel.com>
 References: <cover.1618180659.git.mitaliborkar810@gmail.com>
  <f618f1fe2d13417ebed185da392fb48811593a9f.1618180660.git.mitaliborkar810@gmail.com>
-In-Reply-To: <f618f1fe2d13417ebed185da392fb48811593a9f.1618180660.git.mitaliborkar810@gmail.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+ <20210412094315.GJ3@paasikivi.fi.intel.com>
+ <YHRZSYmHfXTh/S39@kali>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YHRZSYmHfXTh/S39@kali>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-From: Mitali Borkar
-> Sent: 12 April 2021 00:09
->=20
-> This patch fixes the warning identified by checkpatch.pl by replacing
-> __attribute__aligned(size) with __aligned(size)
->=20
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
->  .../staging/media/ipu3/include/intel-ipu3.h   | 74 +++++++++----------
->  1 file changed, 37 insertions(+), 37 deletions(-)
->=20
-> diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h
-> b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> index 589d5ccee3a7..d95ca9ebfafb 100644
-> --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
-> +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> @@ -84,7 +84,7 @@ struct ipu3_uapi_grid_config {
->   */
->  struct ipu3_uapi_awb_raw_buffer {
->  =09__u8 meta_data[IPU3_UAPI_AWB_MAX_BUFFER_SIZE]
-> -=09=09__attribute__((aligned(32)));
-> +=09=09__aligned(32);
->  } __packed;
+Hi Mitali,
 
-WTF?
+On Mon, Apr 12, 2021 at 07:59:29PM +0530, Mitali Borkar wrote:
+> On Mon, Apr 12, 2021 at 12:43:15PM +0300, Sakari Ailus wrote:
+> > Hi Mitali,
+> > 
+> > On Mon, Apr 12, 2021 at 04:38:59AM +0530, Mitali Borkar wrote:
+> > > This patch fixes the warning identified by checkpatch.pl by replacing
+> > > __attribute__aligned(size) with __aligned(size)
+> > 
+> > Same comments on this than the 1st patch.
+> > 
+> > It's a staging driver so even if this is a user space header, it's not
+> > under include/uapi/linux.
+> >
+> Sir, I am not able to understandd what you are trying to say in this. As you
+> mentioned in patch 1/6, I removed and added header where BIT() macro under 
+> apprpriate userpace, but what should I modify in this patch?
 
-It either has 1-byte alignment because it is just __u8,
-32-byte because of the aligned(32),
-or 1 byte because of the outer packed.
+The comment on the 1st patch and above was a weird way of saying "please
+drop patches 1 and 2".
 
-What alignment does this (and all the other) structures
-actually need?
+BIT(), __aligned() and __packed are macros in kernel headers that generally
+are not available in headers exported for user space consumption.
 
-Specifying 'packed' isn't free.
+-- 
+Kind regards,
 
-=09David
-
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1=
-PT, UK
-Registration No: 1397386 (Wales)
-
+Sakari Ailus
 
