@@ -1,62 +1,65 @@
 X-GM-THRID: 6950274232690409472
-X-Received: by 2002:a37:68c1:: with SMTP id d184mr26224722qkc.395.1618237422935;
-        Mon, 12 Apr 2021 07:23:42 -0700 (PDT)
+X-Received: by 2002:adf:9d48:: with SMTP id o8mr31813250wre.183.1618237353315;
+        Mon, 12 Apr 2021 07:22:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:7147:: with SMTP id m68ls2444715qkc.7.gmail; Mon, 12 Apr
- 2021 07:23:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQrWE/odsJg/SEk88f9XJaEQUPoKqp497p+Zq3S5ch1SRDcY6LUeprF4dj+SiRioydzs0B
-X-Received: by 2002:a37:ac18:: with SMTP id e24mr27892388qkm.30.1618237422076;
-        Mon, 12 Apr 2021 07:23:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618237422; cv=none;
+Received: by 2002:a05:600c:3544:: with SMTP id i4ls8084101wmq.2.canary-gmail;
+ Mon, 12 Apr 2021 07:22:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfAOf03Mj0JwXGGCeLnkooX4efZg+vvqNI6fzfp4lMW26NWhUi3u0kS1uq0mhJDOOSjTJF
+X-Received: by 2002:a1c:f701:: with SMTP id v1mr27034522wmh.69.1618237351955;
+        Mon, 12 Apr 2021 07:22:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618237351; cv=none;
         d=google.com; s=arc-20160816;
-        b=mODsFq8ZapOliAjZ2UznRLuAQTfXrfFguiFdpLW2UWJeEAmhCK6P8Ue6tCg+rnUbxa
-         UYdw4hAVy83BWrrMeTU9Yim1ZtQDDiTlEDmPP0iCLoQCNyEh8UpAKrGHrTKciQ7gEnNz
-         zzq24VamAxwK8Figk5Dy8x/44ulUftjcQVJemL1pPqa8/EJN017EL2ociUmbQh+sjogM
-         R6jrYJ17T6m+Dw6OaRB5Z6a8crbpcA926EVRich5fvtVVUsx1kc1EF1r3jf0HTcgtduC
-         mgUk68FLbBAHMnih1BwJz0HWXOxh/OjHIE2V9WiqKIh6gnJjjnfEqnhU+dE0B9BCdfps
-         tdCw==
+        b=riBiz8Yr05OpJ+8Z5S2CQqvzICGru7KcCCB91WpjKqTRKBRH942ViqPhv38C6IgxRn
+         u/oYGeCaTOZ+ALCbo4UmRr4crrkbCbfjTSd7P5XvwfOBl7TU+1nfcqXMVxF51f0cWKaM
+         5dqMvJswEWN5aSzbmurCML6qSK754N7VxgrLqrG93N7LjkuA6f8MnuSAZUSzDluIWxvY
+         WCh1PAq+HKA2lEz+rKPXHt6qRLbfu3Rt13KAilJwrJV2useXtJ2NJhdP3RSrJqtQdc4d
+         qClCEsUIJqBAVyttCSc6pnZKQiw+ZqxSGBzTaIWdGg9IqOjcQ10swJfjg31CIwVgXD62
+         rynQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=I/7Ef32TQmOZA9RvVXHgkj3GT9u6ehYjhtvJE+ZSJBs=;
-        b=lh4287inBq8lZM4HHNM0iJwM97LF173Ua1FoKQ3PuVpuF8CI7YDby87KCkDAktcVuu
-         1CWUl6USpdS86FyAzbafISUxOWl3Ty+bL03scJ5fmqSXbeUaU7HXjh9NaOv0qzAX1EZg
-         07Z9EI8ITKwbhtYd5vsOhUs1tjO3Yz/yyO5MciJo6WvfgdsTEPDIkLMRukHjuYv9ARs+
-         luWU4aqmyomkSrmXY7A5lvARclJrpAj8EmlAJbW41es2wQBGZEHwRHxFdu18Isd9tB8d
-         zP+KCXoogtQBfDOmXloQYHdtiGRsmKtp3OSp/QQP9JV0Ftnbtchr+hgFdZcymp4RvWlE
-         KfPw==
+        bh=w0U1xV/cg69zWo3yTJkxbqx/0/RtmRyRm+Ao5QR+xT4=;
+        b=s/UIbkqLxilC/H+VFzRy0MYv5cVDT5LtkkYyHlawljgQIwiftwAptjPdiF87Uoy2qk
+         CJ62oUo2BVVE51Bs5EvOQYBiHXzE9jNRHFkMqsf0mHzNtChTfmY/V01/2fLTA3M4ubQ7
+         CpmdgIgqIpY3B1YT0fYWAhK9XG4H0vH1logZdRPv6KKDtHbJAiV5J/RcnLD1T7FB1n06
+         yKfuXXKxHfkPJksAnp7pNjSm9h+Uskb44A/YPNisoceDCwfVYW0m+f8BOus+qS9eHvRZ
+         a7FsL/zow6Xx8R8szUAcMVQS39wSgMGtuISah5rchtDErjCF/RjPMRWPJoCOFjRY8wZA
+         CiYg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=iNDfLahr;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id h62si411028qkc.3.2021.04.12.07.23.41
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=lHiXspLI;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+Return-Path: <willy@infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by gmr-mx.google.com with ESMTPS id p65si7881wmp.0.2021.04.12.07.22.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 12 Apr 2021 07:23:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Apr 2021 07:22:31 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=iNDfLahr;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6DFC261287;
-	Mon, 12 Apr 2021 14:23:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1618237421;
-	bh=pLVsYqwcQBqVqZ3nJfAAwHdJS9dMLgzrZvUMnMXeDdY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iNDfLahrBRNFxHsSJIlPBfxk7/ff+a7s+vkKaRCdY9ubcIaaTl2t8x/8jUCIdWWku
-	 mmN7jUI4pwDQi6WyqQkLmR+IM8cgMl8DJrHuFGTNR0zY3fvI6P2Vnn1y5MqUS+5IJT
-	 NXvd84xtGrAZsYA5eBUjJQ0sUgoB2WHdPePd77eU=
-Date: Mon, 12 Apr 2021 16:23:38 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=lHiXspLI;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=w0U1xV/cg69zWo3yTJkxbqx/0/RtmRyRm+Ao5QR+xT4=; b=lHiXspLIT5lh6yOcnX0EmpTJJ4
+	2Mn0tSvcEMXvTDEIS0tIq6HDXSq5QlydXKh+Jw7HcWj4I5Cygf/gX6UySVk8wQJD/ZMabsY44Zap2
+	hxWUThZJ+/LKt3JmS1Auis7CtAXXazAkHJGXqVBR1yOFz9itRDbHGyF9MAY4xz/rhDSgvng/fiSgy
+	hRM2FCiB9gzFbBtCf5/FWX8lc5LI7FgZvjRmnEMhbrI683ONoO0GewcXlYYwnQwzF6SNW459T1vOH
+	OXmo9HotIZk0/u4XD24Nt0XwtdieMhdYo3RiWsdwwBncAXqIVAfIKJ5p3c2hVc9P4giUqYC5T89uE
+	fmwLk+qw==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
+	id 1lVxS2-004Ru2-85; Mon, 12 Apr 2021 14:22:10 +0000
+Date: Mon, 12 Apr 2021 15:22:06 +0100
+From: Matthew Wilcox <willy@infradead.org>
 To: PEGGY TAWAH <tawahpeggy98@gmail.com>
 Cc: outreachy-kernel@googlegroups.com,
 	Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>
-Subject: Re: [PATCH] Staging: greybus: Remove a space because line is too long
-Message-ID: <YHRX6glqzA95kKpy@kroah.com>
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [Outreachy kernel] [PATCH] Staging: greybus: Remove a space
+ because line is too long
+Message-ID: <20210412142206.GL2531743@casper.infradead.org>
 References: <20210412141329.GA31738@peggy-Lenovo-V130-15IKB>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -66,17 +69,25 @@ In-Reply-To: <20210412141329.GA31738@peggy-Lenovo-V130-15IKB>
 On Mon, Apr 12, 2021 at 10:13:34AM -0400, PEGGY TAWAH wrote:
 > checkpatch complained of line 182 too long in greybus driver,so i removed some spaces. CHECK: line length of 101 exceeds 100 colums
 
-Please line-wrap your changelog text.
+... next, we're going to have people complaining that the argument
+doesn't line up with the opening '('.
 
-> 
+The underlying problem is that the indentation is too deep.  Something
+should probably be factored out into its own function, allowing the
+indentation to start again at a single tab.
+
+I'd suggest this probably looks like:
+
+	if (gpiod_get_value(arche_pdata->wake_detect)) {
+		if (!arche_platform_wake_boot_init(arche_pdata)) {
+			spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
+			return IRQ_WAKE_THREAD;
+		}
+	}
+
+... and let you write arche_platform_wake_boot_init().
+
 > Signed-off-by:  PEGGY TAWAH <tawahpeggy98@gmail.com>
-
-Please use lower case letters where needed.
-
-Also you did not cc: the proper mailing lists, please read the
-instructions again.
-
-
 > 
 > ---
 >  drivers/staging/greybus/arche-platform.c | 2 +-
@@ -99,6 +110,8 @@ instructions again.
 > 2.17.1
 > 
 > 
-
-Your patch is whitespace damaged and can not be applied at all :(
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210412141329.GA31738%40peggy-Lenovo-V130-15IKB.
 
