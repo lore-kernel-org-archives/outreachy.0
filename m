@@ -1,144 +1,97 @@
 X-GM-THRID: 6950201228210995200
-X-Received: by 2002:ac8:5e8d:: with SMTP id r13mr25583819qtx.138.1618221707346;
-        Mon, 12 Apr 2021 03:01:47 -0700 (PDT)
+X-Received: by 2002:a63:3244:: with SMTP id y65mr26952212pgy.197.1618220465631;
+        Mon, 12 Apr 2021 02:41:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:620a:3db:: with SMTP id r27ls8983589qkm.5.gmail; Mon, 12
- Apr 2021 03:01:46 -0700 (PDT)
-X-Received: by 2002:a37:2cc3:: with SMTP id s186mr25616957qkh.270.1618221706656;
-        Mon, 12 Apr 2021 03:01:46 -0700 (PDT)
-Received: by 2002:a05:620a:4442:b029:2df:fe2e:8653 with SMTP id w2-20020a05620a4442b02902dffe2e8653msqkp;
-        Sun, 11 Apr 2021 13:49:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzQ46A72bUO6G8iuCOub4t33suVH9+cEOANLE6bq87HXEwUE9r7zRp68BM01Hwxyk3ENKqt
-X-Received: by 2002:a17:906:5fce:: with SMTP id k14mr9544359ejv.9.1618174187505;
-        Sun, 11 Apr 2021 13:49:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618174187; cv=none;
+Received: by 2002:a17:90a:c70c:: with SMTP id o12ls3389777pjt.3.canary-gmail;
+ Mon, 12 Apr 2021 02:41:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfq0NcWlfTOJ27fz651Pd77l9AJRLRSklLDLbzRwDUpZP7ijl7mgDgEZb2cSO1j/IC3yfw
+X-Received: by 2002:a17:902:d2ce:b029:eb:364:a2a0 with SMTP id n14-20020a170902d2ceb02900eb0364a2a0mr3102093plc.0.1618220464253;
+        Mon, 12 Apr 2021 02:41:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618220464; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q7IhT5nLPvg1VAYrQ4NvLJ26dHc7SwzHzvKuIqb6GfZMpk3zkeraZSA6hfiDxlHlgE
-         ZAfEbfVzcQKmZIjNgJzsjCVvTLHU3SMGLnLu6w2ZW6mjkxy4sKQBx04hNbAatXaSPDMX
-         tVslYAR0I5GeqAfPqRdEiLcxZuFoSpk+bvumo8IoXDhibe9EBcaYawgilGlQsesz5QPD
-         npsSqXgbcbmohusFds+NIbdLXkVRmkXfTB82QqSXKeD/XBnK/Mv3fa2bMQuQaqyg0J0D
-         i3uBwxzFOYIAAwaKKrSfRxstxA4Zq+B0I7ASkmuqFO8tWqCssAfK1MtMOuLa03CGS/p4
-         zRRg==
+        b=JQbCXCOL4odSgNxG3BrhYfORCk8O6h+39RErLBWp/MqJldfQgSHevKzZB1aswl0bs0
+         53HilWA9nD/4b5x/9dFUwfd2VVpRpqoU2rMl0Tl81o1/bgCEJDOA0VUwOXPd2owK+oFa
+         eYtuO+dTQi0fmT5GyZtN9eunClNn5uUCHzQYOnc8nx1NBxH+gAkkVTKyoTnfd38zswf/
+         DJjhAPamkBVuDIRpmjtmxKDKH5SS05Fo3HFcHFO8e6fOn52EyDbFiTWmFQG6XsRxRJn8
+         o2jwYw+Hb+nB84T/saTs5LjOOO84fEl4EEiyOPytP0Id3CYpute/qcu0aSStW4I43UC7
+         XjZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=y8zmAuB0V1uZek5By6kezUe2gvROS9UhWxNto8Rl44U=;
-        b=OL5vt1LiP0YeHQmnSKltyDJ6z0IkTsiCc0AeSBNtMJrNrH6gukHSrU7Fpq1qoHVrKI
-         KggDBppwWc8pTJh/Kct0r/1NaixXNI32HbxZy3GqopqJuOX80JFlhO85KyBq3S8ii4Ax
-         7V0/TizgZbW93EgetXpEX46SFydbmH+QgDgJ+3mbC4sYtjG1pIxIefBr9UA3et81LL7r
-         icxgABJAyuCmb84pJ6tEYl+BnsTKp3hiZcEx7aPlsboePW4D48TF7YtxovYheAQarbDx
-         Bd6KQmNfgDbDdEWxl22SpDuOs+H7ekeIf3zXprGzYvBWWQr1eBPCAp9Z6ONj1VMBc5VO
-         l0NA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:from:references:cc:to
+         :subject:dkim-signature;
+        bh=wPQyNvybnIkp4uiNXfNMELmxDgQV5qQb8uzwF7DMhCU=;
+        b=egsLe9L8GD014Y5CbRbRMPUCccB64ZSp7Ic2O/5AAk4hsXlH70LKsbgybaLsQRwoF9
+         sqwFIjPFF2VMAl3YjcTIssnlpPDc882xDdMET6S2X9/yx2FEdZwEAYYvEwhKij1lyetH
+         Rm/OAKDqZMDPS39787p6uPe0By91Gc4AmlJ4AmhWTvR43A2YUzHj/YqH9eqmXk6ql64w
+         6bRmfzNkMyAqAA+kO5VPtQ6HPXdSexEFgHLGcgBAbs1sNpmCs53ybBhLC2cVYKbAn/di
+         LkB+T/ENk/zoQZtEP5+g1bzM5hO+vWJqpP+5JIKuxNY/6MFgCRlsAPC+DdcgTUGp4hQT
+         e2zQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M4gznb84;
-       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::335 as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <tawahpeggy98@gmail.com>
-Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com. [2a00:1450:4864:20::335])
-        by gmr-mx.google.com with ESMTPS id b26si796318edy.4.2021.04.11.13.49.47
+       dkim=pass header.i=@mev.co.uk header.s=20190130-41we5z8j header.b=EwyKCaMQ;
+       spf=pass (google.com: domain of abbotti@mev.co.uk designates 173.203.187.85 as permitted sender) smtp.mailfrom=abbotti@mev.co.uk
+Return-Path: <abbotti@mev.co.uk>
+Received: from smtp85.iad3a.emailsrvr.com (smtp85.iad3a.emailsrvr.com. [173.203.187.85])
+        by gmr-mx.google.com with ESMTPS id u21si728973pfc.0.2021.04.12.02.41.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 13:49:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::335 as permitted sender) client-ip=2a00:1450:4864:20::335;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Apr 2021 02:41:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of abbotti@mev.co.uk designates 173.203.187.85 as permitted sender) client-ip=173.203.187.85;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M4gznb84;
-       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::335 as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x335.google.com with SMTP id t5-20020a1c77050000b029010e62cea9deso5758390wmi.0
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 13:49:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=y8zmAuB0V1uZek5By6kezUe2gvROS9UhWxNto8Rl44U=;
-        b=M4gznb84QcKSBB549xNmVxUrXXVflXsDoyhxXQNId/1d7wQU1E2DR0+iSsEhduWIUX
-         Bmz04jOkQX/ViVBUtOnIUVFLhoW87y8dismExesc0+Yk8Z955x/t3naySYReAsa4a8eA
-         bNfyuSD8kLrbi+9TGce7F8YeZ0knW1Bf6ustTvdUjw//DlrlK2INVFynblezbWTD6Fde
-         kk30rty8ShSs3VzwQCKIBP75fQ8oN8F3yLeMGZUgIApzQZgvsWfeJD9NOxxufZGkYLsB
-         6pe1w+wsvLzmXLQyRXnfxFPQ33GXmvcYh41UQAIOCfUUvgSipq2Dk9Yge952jUkgKFEZ
-         ARuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=y8zmAuB0V1uZek5By6kezUe2gvROS9UhWxNto8Rl44U=;
-        b=TQAIv4ovd345Ox6quYpHOxWUG1RDt+YJCIQFH1v9C5VW1no/YZyhMhLa9Qmu3TH2WS
-         WqLEYYdlbAG+h9LqZ5H+4Glq9bJN9eJronIz4MFe02YUaa3zFVCjqt4L14HC5PmhxouA
-         vd9ifTApFJgTSsh/TuzugIf9BQqIcTvwMfqMtrewKVF5n2Yo1JZXtQsnIDgYfZwmQD7i
-         nuMgKmGHFoUxCJy8FmYT/Bvtj0Xk/cAu3ZNjGNrgNrLzdzUBOllXyrd1sO4J/E0tqA7l
-         cJMsH2ryJ3bK66H/JoQfQDKd2FOqT2sLKOfXzEq7lpodry6kPzawTP2t9GFBCN9jNAMS
-         Nabw==
-X-Gm-Message-State: AOAM530RDlqT2yrO9NThlM2+hyOrqWoZGfZpUt9t+2yQnRl45cyl5FHm
-	41lWRFY7DdTu+z15wNegJiE=
-X-Received: by 2002:a1c:3:: with SMTP id 3mr22651982wma.32.1618174187234;
-        Sun, 11 Apr 2021 13:49:47 -0700 (PDT)
-Return-Path: <tawahpeggy98@gmail.com>
-Received: from peggy-Lenovo-V130-15IKB ([154.72.153.206])
-        by smtp.gmail.com with ESMTPSA id o18sm6953940wmp.26.2021.04.11.13.49.42
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Apr 2021 13:49:46 -0700 (PDT)
-Date: Sun, 11 Apr 2021 16:49:38 -0400
-From: tawahpeggy <tawahpeggy98@gmail.com>
-To: Ian Abbott <abbotti@mev.co.uk>,
-	H Hartley Sweeten <hsweeten@visionengravers.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com,
-	tawahpeggy <tawahpeggy98@gmail.com>
+       dkim=pass header.i=@mev.co.uk header.s=20190130-41we5z8j header.b=EwyKCaMQ;
+       spf=pass (google.com: domain of abbotti@mev.co.uk designates 173.203.187.85 as permitted sender) smtp.mailfrom=abbotti@mev.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mev.co.uk;
+	s=20190130-41we5z8j; t=1618220463;
+	bh=Ua6N2tbUCxSpcHBTulhre/77HwGvuvWxXpGJ7l1JK0s=;
+	h=Subject:To:From:Date:From;
+	b=EwyKCaMQ7nsqi8IM6thFgUadq0MOtx5aR/cGtnz7gy5EGf5znd6l8ELBoiI+hJS2g
+	 kIEPeOMbFi9fKpMQdxgb+NAYtcmszCNrntXmZOqmoeJ7z1ljpFrN7V/LNwpCf3c+xL
+	 CdbZkByEMLbgJ7420cnfFn3J356X/TynaqRM6RgU=
+X-Auth-ID: abbotti@mev.co.uk
+Received: by smtp19.relay.iad3a.emailsrvr.com (Authenticated sender: abbotti-AT-mev.co.uk) with ESMTPSA id 6CEDE4FB0;
+	Mon, 12 Apr 2021 05:41:02 -0400 (EDT)
+Subject: Re: [PATCH] Staging: Remove line to fix checkpatch error
+To: tawahpeggy <tawahpeggy98@gmail.com>,
+ H Hartley Sweeten <hsweeten@visionengravers.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ outreachy-kernel@googlegroups.com
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH] Staging: Remove line to fix checkpatch error
-Message-ID: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
+References: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
+From: Ian Abbott <abbotti@mev.co.uk>
+Organization: MEV Ltd.
+Message-ID: <25a33398-483e-931c-f023-61bac56c72ef@mev.co.uk>
+Date: Mon, 12 Apr 2021 10:41:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
+X-Classification-ID: 508ff95b-300f-4d57-ad4a-8069f2518623-1-1
 
-remove one empty line.CHECK: Please don't use multiple blank lines
+On 11/04/2021 21:49, tawahpeggy wrote:
+> remove one empty line.CHECK: Please don't use multiple blank lines
+> 
+> Signed-off-by: tawahpeggy <tawahpeggy98@gmail.com>
+> 
+> ---
+>   drivers/staging/comedi/comedi_pcmcia.mod.c | 1 -
+>   1 file changed, 0 insertion(+), 1 deletion(-)
+>   create mode 100644 drivers/staging/comedi/comedi_pcmcia.mod.c
+> 
+> diff --git a/drivers/staging/comedi/comedi_pcmcia.mod.c b/drivers/staging/comedi/comedi_pcmcia.mod.c
+> index 0904b8765afs96..3984db1a39c8
+> --- /dev/null
+> +++ b/drivers/staging/comedi/comedi_pcmcia.mod.c
 
-Signed-off-by: tawahpeggy <tawahpeggy98@gmail.com>
+The .mod.c files are not really part of the Linux kernel source code. 
+They are generated during the kernel build process.  There is no point 
+checking them with checkpatch.pl.  If you are adding them to your git 
+repository, then you are doing something wrong.
 
----
- drivers/staging/comedi/comedi_pcmcia.mod.c | 1 -
- 1 file changed, 0 insertion(+), 1 deletion(-)
- create mode 100644 drivers/staging/comedi/comedi_pcmcia.mod.c
-
-diff --git a/drivers/staging/comedi/comedi_pcmcia.mod.c b/drivers/staging/comedi/comedi_pcmcia.mod.c
-index 0904b8765afs96..3984db1a39c8
---- /dev/null
-+++ b/drivers/staging/comedi/comedi_pcmcia.mod.c
-@@ -0,0 +1,31 @@
-#include <linux/module.h>
-#define INCLUDE_VERMAGIC
-#include <linux/build-salt.h>
-#include <linux/vermagic.h>
-#include <linux/compiler.h>
-
-BUILD_SALT;
-
-MODULE_INFO(vermagic, VERMAGIC_STRING);
-MODULE_INFO(name, KBUILD_MODNAME);
-
-__visible struct module __this_module
-__section(".gnu.linkonce.this_module") = {
-	.name = KBUILD_MODNAME,
-	.init = init_module,
-#ifdef CONFIG_MODULE_UNLOAD
-	.exit = cleanup_module,
-#endif
-	.arch = MODULE_ARCH_INIT,
-};
-
-#ifdef CONFIG_RETPOLINE
-MODULE_INFO(retpoline, "Y");
-#endif
-
-MODULE_INFO(staging, "Y");
-
-MODULE_INFO(depends, "pcmcia,comedi");
-
--  
-MODULE_INFO(srcversion, "ED971F2E01020DFA2B04486");
 -- 
-2.17.1
-h-Hartman <gregkh@linuxfoundation.org>
-
+-=( Ian Abbott <abbotti@mev.co.uk> || MEV Ltd. is a company  )=-
+-=( registered in England & Wales.  Regd. number: 02862268.  )=-
+-=( Regd. addr.: S11 & 12 Building 67, Europa Business Park, )=-
+-=( Bird Hall Lane, STOCKPORT, SK3 0XA, UK. || www.mev.co.uk )=-
 
