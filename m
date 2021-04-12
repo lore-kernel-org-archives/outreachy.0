@@ -1,113 +1,88 @@
-X-GM-THRID: 6801839515695579136
-X-Received: by 2002:ac8:5484:: with SMTP id h4mr10786651qtq.209.1583676672179;
-        Sun, 08 Mar 2020 07:11:12 -0700 (PDT)
+X-GM-THRID: 6950266407606026240
+X-Received: by 2002:a17:90b:228a:: with SMTP id kx10mr1296816pjb.33.1618263060690;
+        Mon, 12 Apr 2021 14:31:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:e2c7:: with SMTP id t7ls1715185qvl.1.gmail; Sun, 08 Mar
- 2020 07:11:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vuJ/frn6D19x3MkdGK56sE0aFQdpexn5WGM3oZoYEtqSmiN8PGqxYlJ0Or20g8rQGRwnCUB
-X-Received: by 2002:a05:6214:20c:: with SMTP id i12mr11127353qvt.48.1583676671018;
-        Sun, 08 Mar 2020 07:11:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583676671; cv=none;
+Received: by 2002:a17:902:da91:: with SMTP id j17ls8319870plx.1.gmail; Mon, 12
+ Apr 2021 14:30:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxucpdOYgk2mi+drdRRVX7Eef5W2VSsLxIAesSh5G8QYPJ5kgB4gZQefmVJ0EDU9VIf9mka
+X-Received: by 2002:a17:90a:588b:: with SMTP id j11mr1224826pji.170.1618263059426;
+        Mon, 12 Apr 2021 14:30:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618263059; cv=none;
         d=google.com; s=arc-20160816;
-        b=di6unfgTZga1awPPiQWRhUos0k8voIWjZf2HtaCXD7ppZ6ERoB32AAREjBnbKRPO2Z
-         7/yiDo+U/dTsDpabis0mtcfz/sGo7TmRgeuYl//mDeaIax1jNoAXr6YFih4uQPd1olmD
-         KnE2CgLwqvrDg9SRZCgLEnHsyTNWtE1qkz3LeDL7Re0iFQ5mappz2LcVptzQ/fb6MOND
-         Mof45jB4vMLWyG/OBMNgRb4UODXfRomrROS6dIjruXdQbzRsUtwuACfXYQjPnHGSyrUf
-         7qmuo8BPp1tPvwSngpkE/kBT3sUZ9ip9K/EfTWdHTO1AKM5H6kjc5JxZwRa8gyknXQzQ
-         6i0g==
+        b=aXXdsFu9WRH+iG2tC3AN1h0Kt1ZYTWow8sbSY6+TqWS+S1sQaMjW0Fh61VT7Gf8CMg
+         m47+C2/5h8i/V5mw8nE98su/9/WNnyvzZYArihqeL12iu8ysIhLyKZ4QfRbxYyzEgUEY
+         8/YKgDPkyAXNAaKZdobkVCi74tEkDp6APoRnpmvNgh3xE7lePcS/nLcs6z61k8U6f+gr
+         3hDGeFcYSsEEs7NQNeM/RJHhJTHCj8K5NSzRv9/sawpukTVfdoY4N7iWnjs4pyUViPS8
+         FamyR1bIuJIWem/tHVGDkvaoZXofCnZ3pA+yDtuCGz5wAV9zWcb9WjbelujeX1Wnpfm7
+         NvZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jjJ9y1QSomsNK3eqzc/rhlTs1lNvN1tKCakRmDWd88E=;
-        b=YkAa2NMX16y5cegjLUOtL0Kn/nYz+n+r1oRMaIprvEfa37mZ3iW+dYqP5Kd6tBqtx3
-         0FkQpV7TePf4WKqZ4GaCPA431eEiFL+TmPzyQ2fSVJoKIkauVFLXRfEB/3iARYn+x4cQ
-         6ZIZm99brM3vMSAcsD+uB5ZjWHRKjXXupnuUNrzikw182xy+vHES6M8g2p5Me3TKPj/m
-         Ru8xNc6v7PQLLe5cGJJ0hrKTjEwwAR2n2B4ZewIH2YYaBbFxguZZfdkuAp5a6bHlv8GU
-         k02mWoiC3JACsVLAqAmSENbzOuTo1ZH5HAVdEByfXZzEl+vP7CBjxw57H/Er6GoouzpB
-         h1Dg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=ONnzioe4ftdtIL5MgqZJ51h5+p0ill5h7fTgIY9zBZE=;
+        b=a/Gg4LM0kDKuUTWb7+HEndThfuGaylDFanOxZM28NTc7EQR25CsjEVLSnYdiyefVPf
+         RtWRIWRLLJRu2z/T/FwUpDlEA4d2F36enOYTbtQWPmp2ZLwIG90Sdg9wSIc4Ew9+Y/Ih
+         OJtQJCIftVYmc+LFTVbZoysWC37dm4uvwd1ukpgZ0rwPy2gswmVXC39CdhUElCTzxt/I
+         /FkPnzlYWIBYYjGvDFgMIofHkSkEjBN/f4Mwqq6FYPKJ8PRlab+YR80r/akqUpMSludE
+         sWlen3sL/hNNrJ1zOwPLLTORHpxjlGec+s+IHmBASVDC1gWfbygFgXRZXrC01g2sdnKB
+         M7hQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Kzx4YaW9;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id g23si363854qki.4.2020.03.08.07.11.11
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
+        by gmr-mx.google.com with ESMTPS id u21si875203pfc.0.2021.04.12.14.30.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 08 Mar 2020 07:11:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Apr 2021 14:30:59 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Kzx4YaW9;
-       spf=pass (google.com: domain of payalskshirsagar1234@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=payalskshirsagar1234@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id w12so2910243pll.13
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 07:11:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=jjJ9y1QSomsNK3eqzc/rhlTs1lNvN1tKCakRmDWd88E=;
-        b=Kzx4YaW9696pVI4pYtzExJTGIzPpZJnEvJq57NM9D5vz5QbENo+5eGgj6z8Mw5+oGV
-         6hSqCgcS7Im2FBjN/BDfTP6qBDHMb3I++mz178Y9OG2UG2et9T5zybowuhUqGxRe22AB
-         kY15MmJy+vnzVMSiHP0sQ4hUGYk9mf6Xa1wPIoNSiIbnmrG7YkvCjodM2kSWH2QLWwUX
-         4CvEQ5YtKDVOjWVz/v+mVdpQAz5KXYdRUMJa3znOei7HsMe2sNXvfkVLrQLoEvTWALzA
-         GKqvpAg/Zz55gxtgo3IdwbNyJ9ccxt/OY7fV4Ugh6aDicGA9sMXejzJW6f+oeyOMbXTO
-         I8fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jjJ9y1QSomsNK3eqzc/rhlTs1lNvN1tKCakRmDWd88E=;
-        b=F/tya5n2ewOS0shmkm/Ln2tpoeChvZYszlMnrHcNsBaEoPU6mENUGHnz1cYPhuJbNQ
-         UzFi+xABLG7Tjo7KuiMxRLCS9SnxCFkIXN2snQTzMpAAFRooHSjjHoUWP6mLEe65thjd
-         Ekpsfh3G7os7aAn0YfTD27ed49zw3rKFQmUXC+3Wkc7XaKcrqGqFRHRrKAD//H0GoO8n
-         CSwdkmXdyJr83/KCLccd1vTwbuOOU3UDHiD2zxAw0XGGQir8eWqVqimmv/w405wPeIzS
-         ABpnetPfUK4BCnmb5qzGDX8PPRIPJin6NXVewbZewIh1ZETrk3orrXhGj8E4jfx+Rvol
-         kLrA==
-X-Gm-Message-State: ANhLgQ3otqJcpeyo59I+AlLQUzwbqJwqfw4YAt8qYlX9uhUli7kgyXPf
-	nRVTX9FgtObQTVgLDXBK6k0=
-X-Received: by 2002:a17:902:82cc:: with SMTP id u12mr11894194plz.237.1583676670027;
-        Sun, 08 Mar 2020 07:11:10 -0700 (PDT)
-Return-Path: <payalskshirsagar1234@gmail.com>
-Received: from payal-desktop ([157.33.184.119])
-        by smtp.gmail.com with ESMTPSA id u24sm40770392pgo.83.2020.03.08.07.11.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 08 Mar 2020 07:11:09 -0700 (PDT)
-From: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
-Subject: [PATCH] [Outreachy kernel] staging: rts5208: Replace bit shifting with BIT macro
-Date: Sun,  8 Mar 2020 19:40:57 +0530
-Message-Id: <20200308141057.5857-1-payalskshirsagar1234@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: yvxx/fd+N12F47qKBlDOxC/IVfTIwvvjsZBX7ld2ehCDgxinzgtoqgUpgNlDwDTocEWu4POKAq
+ 2uiuPKmN1ocg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9952"; a="174381562"
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="174381562"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 14:30:47 -0700
+IronPort-SDR: K63XHryXXzqS080UzD9jLi5X/KJ+TvajITlty1evV0jVGd5CoC+5/xXQVpdeeqYZPoTLS37FlO
+ gKxxb+o9az6g==
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="600125623"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 14:30:45 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with SMTP id 8F1E0200E8;
+	Tue, 13 Apr 2021 00:30:43 +0300 (EEST)
+Date: Tue, 13 Apr 2021 00:30:43 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+Cc: hverkuil@xs4all.nl, mchehab@kernel.org, gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: media: atomisp: i2c: align line break to match
+ with open parenthesis
+Message-ID: <20210412213043.GP3@paasikivi.fi.intel.com>
+References: <20210412134301.11587-1-martinsdecarvalhobeatriz@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210412134301.11587-1-martinsdecarvalhobeatriz@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Prefer using BIT macro and replace bit shifting with the BIT(x) macro.
+Hi Beatriz,
 
-Signed-off-by: Payal Kshirsagar <payalskshirsagar1234@gmail.com>
----
- drivers/staging/rts5208/rtsx_card.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks for the patch.
 
-diff --git a/drivers/staging/rts5208/rtsx_card.h b/drivers/staging/rts5208/rtsx_card.h
-index 39727371cd7a..9d2504fddb13 100644
---- a/drivers/staging/rts5208/rtsx_card.h
-+++ b/drivers/staging/rts5208/rtsx_card.h
-@@ -338,7 +338,7 @@
- #define DMA_DIR_FROM_CARD		0x02
- #define DMA_EN				0x01
- #define DMA_128				(0 << 4)
--#define DMA_256				(1 << 4)
-+#define DMA_256				BIT(4)
- #define DMA_512				(2 << 4)
- #define DMA_1024			(3 << 4)
- #define DMA_PACK_SIZE_MASK		0x30
-@@ -542,7 +542,7 @@
- 
- #define BLINK_EN			0x08
- #define LED_GPIO0			(0 << 4)
--#define LED_GPIO1			(1 << 4)
-+#define LED_GPIO1			BIT(4)
- #define LED_GPIO2			(2 << 4)
- 
- #define SDIO_BUS_CTRL		0x01
+On Mon, Apr 12, 2021 at 02:43:01PM +0100, Beatriz Martins de Carvalho wrote:
+> Aligns line break with the remaining function arguments
+> to the open parenthesis.
+> Issue found by checkpatch in file atomisp-gc2235.c
+> 
+> Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
+
+Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+
 -- 
-2.17.1
-
+Sakari Ailus
 
