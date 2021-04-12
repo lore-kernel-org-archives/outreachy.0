@@ -1,113 +1,144 @@
-X-GM-THRID: 6620096919809032192
-X-Received: by 2002:a9d:2caa:: with SMTP id p39mr4492811otb.36.1541361426929;
-        Sun, 04 Nov 2018 11:57:06 -0800 (PST)
+X-GM-THRID: 6950041041271521280
+X-Received: by 2002:a05:6a00:d41:b029:241:6449:e96 with SMTP id n1-20020a056a000d41b029024164490e96mr23671901pfv.75.1618225226525;
+        Mon, 12 Apr 2021 04:00:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:2cd5:: with SMTP id e21ls2949692otd.0.gmail; Sun, 04 Nov
- 2018 11:57:06 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ceU7FvMN2NQ+F/o4gOKQ9c7Sy5jX8Ih/Ur+XAsBGM5IXgyw/GI701wI8XoC0G/6hIsSW6Q
-X-Received: by 2002:a9d:da8:: with SMTP id 37mr6424096ots.13.1541361426343;
-        Sun, 04 Nov 2018 11:57:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541361426; cv=none;
+Received: by 2002:a63:3fc1:: with SMTP id m184ls7049457pga.5.gmail; Mon, 12
+ Apr 2021 04:00:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxq0TzVioTCn1aYNwnolE7LZYV0ymhQWd9cblaE/0qJVcxa5Als/svMAQIwwEY2vi7o/tz
+X-Received: by 2002:a63:4281:: with SMTP id p123mr24150461pga.420.1618225224798;
+        Mon, 12 Apr 2021 04:00:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618225224; cv=none;
         d=google.com; s=arc-20160816;
-        b=C7atovBLzSYryuwD12rk6J2EhBH9aoNR+YiJAW3Q9pA9y7fffvGCWhA5VLvEWKIz5e
-         L7Q/p+7Tbn18f2832ikLhq1LyoicnE3AlmxGzLrGJI+xpAG0WWMyKK9f8xWPtuht7erS
-         /KBKhXcU6ZC/QYacrUzBRw5SGqbzA9XDGvb+8Ib3/xhIpeo7AmqHaF24l/GuAg1eydCW
-         Sa6bkuXM4pIaVccZktFbQPP00Q2aeAkyTJvBOtjNEu1LYr8Uuygt076RUgUsGd1wR06p
-         rR9O6y6q7bRO/PD7gYw2z/gyYWJjuDrNbAeSyG6HAv8OgNWE7eZyssvZZ7sv8yij7zZQ
-         0LpA==
+        b=0mnrEDY52E/4gwRF56K8qVSO38rdIOqwSB2+P8GD2FVVUW3Rwr/IDrejapS3WWsbWZ
+         JnedMLwiUUZTK70csIJJhM1O7+cCDMadXys7FLf+K/0Moi7eGJMjC2aC8hx+egvXT9vD
+         D012Htx5LKM0PWI0Gbawfc5G+NhA6d9Rnq6ElQV3IgS+Y0of0oUmZzMC5mpzcJqRRSOL
+         xtvZ1QJuJ8eosCAUyaTX9Mr0x9D3CyxVH4z++cVdZ0Yy5VHOJU8XBkvwqq4TQ8U+1jwe
+         PKaMxwBFocApFgGSnEm1OM94J1G2ahpBci2wZpS9By+Axu16FhkAj3wahVTMLkjkH+/y
+         reyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=O8aqkaZZ9TslldfL8CmLeHvfXkUzBAmgoNNPKLJppRY=;
-        b=c24j1sqy49FiiRQOtjhcxYDlETgyhxZ+RkVtr/LkjOzv2q3uzYK4V6Awf6IlB83UMs
-         IwfSRwpAf45dM685XjWLMRpuOx1B4LyXxAOCXAXJQBJfBJ2y8ubtfHaQ/SdaNnkw7U4q
-         X9MHvo4Jm6L9vChhN1eLTrKDkKn0afOP0/xbfH/5z2RXW6OijSZUTzONg1e//AwCvRxJ
-         5kI0aNkLXv7gtI+ZvKGHnTu7I1ApI191NHP3EWUfKnJZm569M2LNKQ3OZbRDbdr3cWW4
-         xeOq6TdnMW4HAmIQdn8ruMwxFoi1ZJ3e03IKRPOyPelM15Joppzog/KlK6JfMi+axf5U
-         RUig==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=x84qivqkx9yJUwDBi9ohICIsuO+ry4JkvYV6+o0C+Zk=;
+        b=GSKrPSWuTy1IkA2qh6j//LopP7tML0mfUT6jGMmJDVLQVbj10iHE3EbankJ224ExE3
+         hvQ5290EG3T9PdtbAiudimktHg/9Aw6yFcNlkAmq5Xb+1D4O0bflE4sB6r8GGmmIgRN4
+         lPNZ4h8WhgYdbUU0vwajTvfT5+oUZaq91IN2/nA2nZa1i4af4h9Cki4YmexpxLWtaHHe
+         DiX/5sxqPGqKryqm+4BpMRhaXs7GCt7mqZeDxeUSdSRyN/8zLYFe5sWm2rQHYFNJMBeC
+         K+OQzrYYsaKwH0pbWESLlUWPRJw4LJ9A286+D1OY0JeAjDs/CqeAmQpty10/4X/xcZST
+         ffVA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hBvFrryM;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::632 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from mail-pl1-x632.google.com (mail-pl1-x632.google.com. [2607:f8b0:4864:20::632])
-        by gmr-mx.google.com with ESMTPS id d1si78080otb.3.2018.11.04.11.57.06
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
+        by gmr-mx.google.com with ESMTPS id r2si706024pjd.1.2021.04.12.04.00.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 04 Nov 2018 11:57:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::632 as permitted sender) client-ip=2607:f8b0:4864:20::632;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Apr 2021 04:00:24 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hBvFrryM;
-       spf=pass (google.com: domain of digholebhagyashri@gmail.com designates 2607:f8b0:4864:20::632 as permitted sender) smtp.mailfrom=digholebhagyashri@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x632.google.com with SMTP id b5-v6so3360522pla.6
-        for <outreachy-kernel@googlegroups.com>; Sun, 04 Nov 2018 11:57:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=O8aqkaZZ9TslldfL8CmLeHvfXkUzBAmgoNNPKLJppRY=;
-        b=hBvFrryMo+cvjJjw8dvoo0uHzTVPJ+KMxeQxd34r7K8nLgjEKvlGA+gR0p3nTz0Sa3
-         OzXV8xKoxbbpzZyUOKk78Cy50gA9jZZ4sYdh5PAjovExAMx07cNBijnClotMG298JBQ5
-         vwu0Pr3ZTB+OY1Tr7q+cEroKj2aUj7D25FxV9pkFQTakcakhaNJN5yxLgcblCitRCyRc
-         scwdId8K7qyRlLrphiySXzC624bWTsTiewcPTg4PIhCNJzpw8ZBSc59kgpcV35YvBlUm
-         mOFXPyARGRyrE/dwyN5ixiKuEpxpz43DQ23HQF7UcI2o4QYtGClFuBjWzv0G6XwTZhlJ
-         NIFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=O8aqkaZZ9TslldfL8CmLeHvfXkUzBAmgoNNPKLJppRY=;
-        b=hEshzpTSKtHHnWG1YkVKvHmwFohJ4Aa2BTsV3q2326aFjQkpH1fKZtrS3aKLZj9MvE
-         YdsnukM1X8aHdw8t68KaGfMxgbQ/ff21fVMNAnio7XeY/w0pOPaqaW6Q09jNsX78T1ah
-         22vwGoL+MaFc7qyMDH/tk2Hx/3RigIQiopNWVvKr6Omh4WGNyybqxWGEtAeniaw1U2LS
-         aQcKpsPi7T9l8kxF411JQjYNWx1MR6ID1dcu7IpxEojHMP/8tF+78KmuS+1y9jMtQflj
-         E8Nc8CTJSkq5H6hLqoXCUoIGJPxcFeKYx+FZtQZKGLsdM2U8AOJBZK2GEY2JZMBMBf7e
-         kcrw==
-X-Gm-Message-State: AGRZ1gLSUF9xAchRKuNce+24n61kTwqZxkyCwQ/Fu1xhulQqetR7WQPv
-	29NhYJ99iB4cP+gMp9/9gl65Ng3vBGk=
-X-Received: by 2002:a17:902:708b:: with SMTP id z11-v6mr20038036plk.151.1541361425753;
-        Sun, 04 Nov 2018 11:57:05 -0800 (PST)
-Return-Path: <digholebhagyashri@gmail.com>
-Received: from bhagyashri-Lenovo-G570 ([49.35.118.235])
-        by smtp.gmail.com with ESMTPSA id o70-v6sm4409177pfo.86.2018.11.04.11.57.04
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sun, 04 Nov 2018 11:57:05 -0800 (PST)
-Date: Mon, 5 Nov 2018 01:27:01 +0530
-From: "Bhagyashri P. Dighole" <digholebhagyashri@gmail.com>
-To: Gao Xiang <gaoxiang25@huawei.com>, Chao Yu <yuchao0@huawei.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sasha Levin <sashal@kernel.org>
-Cc: Outreachy <outreachy-kernel@googlegroups.com>,
-	linux-erofs@lists.ozlabs.org
-Subject: [PATCH] staging: erofs: Modify conditional check.
-Message-ID: <20181104195701.GA18201@bhagyashri-Lenovo-G570>
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: eVHboXAjGDLZUWeepBGFJBEYYlCP85xTKR1+GmwMqwglNZcUHKyoqMFbJzl8VwlynwimZA1ABG
+ PPV2R9Myxg5g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9951"; a="174260531"
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="174260531"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 04:00:23 -0700
+IronPort-SDR: +S8E8BV1Dc2BzlBF8/6WPnhbTKYz9r1ME7efkhsT8jHc1YwtQorbKlYV2MeEezTE1fmx7imL74
+ OF5Ro7iqytCA==
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="599933660"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 04:00:19 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with SMTP id 6EF60203D0;
+	Mon, 12 Apr 2021 14:00:17 +0300 (EEST)
+Date: Mon, 12 Apr 2021 14:00:17 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Mitali Borkar <mitaliborkar810@gmail.com>, bingbu.cao@intel.com,
+	tian.shu.qiu@intel.com, mchehab@kernel.org,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in, laurent.pinchart@ideasonboard.com
+Subject: Re: [PATCH 1/6] staging: media: intel-ipu3: replace bit shifts with
+ BIT() macro
+Message-ID: <20210412110017.GM3@paasikivi.fi.intel.com>
+References: <cover.1618180659.git.mitaliborkar810@gmail.com>
+ <cc7b827a3264f08cedb76adddd16a34df48f935f.1618180659.git.mitaliborkar810@gmail.com>
+ <20210412094230.GI3@paasikivi.fi.intel.com>
+ <YHQXty07oAP1L0W9@kroah.com>
+ <20210412104435.GL3@paasikivi.fi.intel.com>
+ <YHQnOJ2t0+q65La2@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <YHQnOJ2t0+q65La2@kroah.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-This patch includes modified condition to check for bio struct.
+On Mon, Apr 12, 2021 at 12:55:52PM +0200, Greg KH wrote:
+> On Mon, Apr 12, 2021 at 01:44:35PM +0300, Sakari Ailus wrote:
+> > Hi Greg,
+> > 
+> > On Mon, Apr 12, 2021 at 11:49:43AM +0200, Greg KH wrote:
+> > > On Mon, Apr 12, 2021 at 12:42:30PM +0300, Sakari Ailus wrote:
+> > > > Hi Mitali,
+> > > > 
+> > > > On Mon, Apr 12, 2021 at 04:38:39AM +0530, Mitali Borkar wrote:
+> > > > > Added #include <linux/bitops.h> and replaced bit shifts by BIT() macro.
+> > > > > This BIT() macro from linux/bitops.h is used to define IPU3_UAPI_GRID_Y_START_EN
+> > > > > and IPU3_UAPI_AWB_RGBS_THR_B_* bitmask.
+> > > > > Use of macro is better and neater. It maintains consistency.
+> > > > > Reported by checkpatch.
+> > > > > 
+> > > > > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > > > > ---
+> > > > >  drivers/staging/media/ipu3/include/intel-ipu3.h | 7 ++++---
+> > > > >  1 file changed, 4 insertions(+), 3 deletions(-)
+> > > > > 
+> > > > > diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > > > > index edd8edda0647..589d5ccee3a7 100644
+> > > > > --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > > > > +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > > > > @@ -5,6 +5,7 @@
+> > > > >  #define __IPU3_UAPI_H
+> > > > >  
+> > > > >  #include <linux/types.h>
+> > > > > +#include <linux/bitops.h>
+> > > > >  
+> > > > >  /* from /drivers/staging/media/ipu3/include/videodev2.h */
+> > > > >  
+> > > > > @@ -22,11 +23,11 @@
+> > > > >  #define IPU3_UAPI_MAX_BUBBLE_SIZE			10
+> > > > >  
+> > > > >  #define IPU3_UAPI_GRID_START_MASK			((1 << 12) - 1)
+> > > > > -#define IPU3_UAPI_GRID_Y_START_EN			(1 << 15)
+> > > > > +#define IPU3_UAPI_GRID_Y_START_EN			BIT(15)
+> > > > 
+> > > > This header is used in user space where you don't have the BIT() macro.
+> > > 
+> > > If that is true, why is it not in a "uapi" subdir within this driver?
+> > > 
+> > > Otherwise it is not obvious at all that this is the case :(
+> > 
+> > It defines an interface towards the user space and the argument has been a
+> > staging driver shouldn't be doing that (for the lack of ABI stability),
+> > hence leaving it where it is currently.
+> 
+> I think we are talking past each other here...
+> 
+> If you have a userspace api, then put that in a .h file that has a
+> "uapi" in the path.  Just because you have this in a staging driver does
+> not mean you should not have such a thing, otherwise you are going to
+> constantly fight against people sending you patches like this as there
+> is no obvious way to determine this.
+> 
+> So how about moving this file to:
+> 	drivers/staging/media/ipu3/include/uapi/intel-ipu3.h
 
-Signed-off-by: Bhagyashri P. Dighole <digholebhagyashri@gmail.com>
----
- drivers/staging/erofs/data.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Ah, sure! I'll send a patch.
 
-diff --git a/drivers/staging/erofs/data.c b/drivers/staging/erofs/data.c
-index 6384f73..a671ad4 100644
---- a/drivers/staging/erofs/data.c
-+++ b/drivers/staging/erofs/data.c
-@@ -240,7 +240,7 @@ static inline struct bio *erofs_read_raw_page(
- 		bio = NULL;
- 	}
- 
--	if (bio == NULL) {
-+	if (!bio) {
- 		struct erofs_map_blocks map = {
- 			.m_la = blknr_to_addr(current_block),
- 		};
 -- 
-2.7.4
-
+Sakari Ailus
 
