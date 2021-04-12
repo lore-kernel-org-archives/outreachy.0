@@ -1,118 +1,140 @@
 X-GM-THRID: 6950201228210995200
-Date: Mon, 12 Apr 2021 04:25:19 -0700 (PDT)
-From: PEGGY TAWAH <tawahpeggy98@gmail.com>
-To: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Message-Id: <3c032481-f359-45c7-947b-54b39e989822n@googlegroups.com>
-In-Reply-To: <alpine.DEB.2.22.394.2104121208530.6734@hadrien>
+X-Received: by 2002:a50:d1d5:: with SMTP id i21mr28359568edg.15.1618222256808;
+        Mon, 12 Apr 2021 03:10:56 -0700 (PDT)
+X-BeenThere: outreachy-kernel@googlegroups.com
+Received: by 2002:a05:6402:515:: with SMTP id m21ls561678edv.1.gmail; Mon, 12
+ Apr 2021 03:10:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyIIVQ5kpsPQ5DAJPTgBb24Xpc2Yw8JKACfoV0TKfZ4pOBRGFIwq5q7lJGBtHV4jwgdaVUf
+X-Received: by 2002:aa7:df99:: with SMTP id b25mr26220320edy.190.1618222255223;
+        Mon, 12 Apr 2021 03:10:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618222255; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZDpJWrWVN0YusBrolbsYqHoN9AEWbcJq1EDnv6rRjl5BsPfLkpqBzuL/AEh1y2sO+0
+         7fQx/9+fEKukPRWsbtNFrHfHwkpSbzfa/uzBbMEQszvD44Hx0xtRsm/YBADYDn79zxZW
+         CNs4NSQG9IqdiVjv+kpTDMPZPGd9jIE78Xi38mAKksZSJlA89XTrosgZUtRcyfyWkuFx
+         SAqdYbPupbqVnPgnLy2TR/Yt+t4jtKqntL9DerqHAzLQq22i2sAVAtDXA5y9Csz+KTXm
+         Y8JhEx5/uZgTrwK1wE7np2KNapJ5Idxy9frYQJChIMJVHERtxtIa32xX6ldBmUt4j5px
+         2j2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=bfLFMKHhTg0Q1maDZf8MUYpZtVgvT18JYUwONSeo5RI=;
+        b=swrtb6IYQMzbCWtRn4S010q29LGxpRdKzE2uHTzM2KD8S1Qe7PhhJYni3fFEbANHt+
+         4/I8nJ1HYJGoXdB77sMFj+mU1HhLpKaWOwsHx3oRCl1AIBQ0k/fW9IpfwPnZ5ZxPyHnK
+         x28vLQ42TgIVOwpJFnxK8dgHZIQJcFFEvf6tTXDhL6wJn7GtTVEGm4+76N0suboJfAly
+         8skJJuuadYEWVWLrHgEQBDC0F2tKfdpLap8vFzj+zK+gt6kfiKSbGjlhwdAxz/L6TLYU
+         DcfduIGNGT0SrlmpEtV4XXCwZPSaG3CXgGUa6nQevxYokvaydkK9uR6pWb7W4tfBdkzP
+         NJlw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id ck26si926074edb.1.2021.04.12.03.10.55
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Apr 2021 03:10:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+Authentication-Results: gmr-mx.google.com;
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AKVLbDq5jqzvyzHwlgwPXwZCBI+orLtY04lQ7?=
+ =?us-ascii?q?vn1ZYxY9SKClvuqpm+kW0gKxtS0YX2sulcvFFK6LR37d8pAd2/h1AZ6JWg76tG?=
+ =?us-ascii?q?y0aLxz9IeK+UyDJwTS/vNQvJ0KT4FQE9v1ZGIRse/b502CH88k0J279smT69v2?=
+ =?us-ascii?q?61dIYUVUZ7p77wF/YzzrcXFeYAVdH5I2GN69y6N8yAaIQngcYsSlCnRtZYGqm/?=
+ =?us-ascii?q?TxmJ3rehIADRI8gTPusRqT9LX4HxKEty1/bxpzwKwv+WWAswv16rTLiYDD9jbg?=
+ =?us-ascii?q?1nTe55kTpd35ytErPr3rtuEpLFzX5zqAVcBEU72GsCtdmpDJ1H8a1P/WoxkhOM?=
+ =?us-ascii?q?xv63TeOkGNyCGdvzXd7A=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.82,216,1613430000"; 
+   d="scan'208";a="502749185"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 12:10:54 +0200
+Date: Mon, 12 Apr 2021 12:10:54 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: tawahpeggy <tawahpeggy98@gmail.com>
+cc: Ian Abbott <abbotti@mev.co.uk>, 
+    H Hartley Sweeten <hsweeten@visionengravers.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] Staging: Remove line to fix checkpatch
+ error
+In-Reply-To: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
+Message-ID: <alpine.DEB.2.22.394.2104121208530.6734@hadrien>
 References: <20210411204933.GA3524@peggy-Lenovo-V130-15IKB>
- <alpine.DEB.2.22.394.2104121208530.6734@hadrien>
-Subject: Re: [Outreachy kernel] [PATCH] Staging: Remove line to fix
- checkpatch error
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_3238_1734175816.1618226719437"
+Content-Type: text/plain; charset=US-ASCII
 
-------=_Part_3238_1734175816.1618226719437
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_3239_2032391266.1618226719437"
 
-------=_Part_3239_2032391266.1618226719437
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 
-Thank you Julia for your timely feedback and intervention. i think the 
-patch got mixed up after i did git add <name of file modified> now i 
-understand it was a wrong move.  will fix that right away and submit.
-Thanks again.
-Tawah Peggy
+On Sun, 11 Apr 2021, tawahpeggy wrote:
 
-On Monday, April 12, 2021 at 6:10:56 AM UTC-4 Julia....@inria.fr wrote:
+> remove one empty line.CHECK: Please don't use multiple blank lines
+
+Did something go wrong with the patch generation?  You say that you are
+removing one line, but the diff information looks like you are adding a
+file.  Normally a patch has only the changed lines and a few lines before
+and after.
+
+> Signed-off-by: tawahpeggy <tawahpeggy98@gmail.com>
+
+You need to put your real name when contributing to the Linux kernel.
+
+For example, I would put:
+
+Julia Lawall <julia.lawall@inria.fr>
+
+julia
 
 >
+> ---
+>  drivers/staging/comedi/comedi_pcmcia.mod.c | 1 -
+>  1 file changed, 0 insertion(+), 1 deletion(-)
+>  create mode 100644 drivers/staging/comedi/comedi_pcmcia.mod.c
 >
-> On Sun, 11 Apr 2021, tawahpeggy wrote:
+> diff --git a/drivers/staging/comedi/comedi_pcmcia.mod.c b/drivers/staging/comedi/comedi_pcmcia.mod.c
+> index 0904b8765afs96..3984db1a39c8
+> --- /dev/null
+> +++ b/drivers/staging/comedi/comedi_pcmcia.mod.c
+> @@ -0,0 +1,31 @@
+> #include <linux/module.h>
+> #define INCLUDE_VERMAGIC
+> #include <linux/build-salt.h>
+> #include <linux/vermagic.h>
+> #include <linux/compiler.h>
 >
-> > remove one empty line.CHECK: Please don't use multiple blank lines
+> BUILD_SALT;
 >
-> Did something go wrong with the patch generation? You say that you are
-> removing one line, but the diff information looks like you are adding a
-> file. Normally a patch has only the changed lines and a few lines before
-> and after.
+> MODULE_INFO(vermagic, VERMAGIC_STRING);
+> MODULE_INFO(name, KBUILD_MODNAME);
 >
-> > Signed-off-by: tawahpeggy <tawahp...@gmail.com>
+> __visible struct module __this_module
+> __section(".gnu.linkonce.this_module") = {
+> 	.name = KBUILD_MODNAME,
+> 	.init = init_module,
+> #ifdef CONFIG_MODULE_UNLOAD
+> 	.exit = cleanup_module,
+> #endif
+> 	.arch = MODULE_ARCH_INIT,
+> };
 >
-> You need to put your real name when contributing to the Linux kernel.
+> #ifdef CONFIG_RETPOLINE
+> MODULE_INFO(retpoline, "Y");
+> #endif
 >
-> For example, I would put:
+> MODULE_INFO(staging, "Y");
 >
-> Julia Lawall <julia....@inria.fr>
+> MODULE_INFO(depends, "pcmcia,comedi");
 >
-> julia
+> -
+> MODULE_INFO(srcversion, "ED971F2E01020DFA2B04486");
+> --
+> 2.17.1
+> h-Hartman <gregkh@linuxfoundation.org>
 >
-> >
-> > ---
-> > drivers/staging/comedi/comedi_pcmcia.mod.c | 1 -
-> > 1 file changed, 0 insertion(+), 1 deletion(-)
-> > create mode 100644 drivers/staging/comedi/comedi_pcmcia.mod.c
-> >
-> > diff --git a/drivers/staging/comedi/comedi_pcmcia.mod.c 
-> b/drivers/staging/comedi/comedi_pcmcia.mod.c
-> > index 0904b8765afs96..3984db1a39c8
-> > --- /dev/null
-> > +++ b/drivers/staging/comedi/comedi_pcmcia.mod.c
-> > @@ -0,0 +1,31 @@
-> > #include <linux/module.h>
-> > #define INCLUDE_VERMAGIC
-> > #include <linux/build-salt.h>
-> > #include <linux/vermagic.h>
-> > #include <linux/compiler.h>
-> >
-> > BUILD_SALT;
-> >
-> > MODULE_INFO(vermagic, VERMAGIC_STRING);
-> > MODULE_INFO(name, KBUILD_MODNAME);
-> >
-> > __visible struct module __this_module
-> > __section(".gnu.linkonce.this_module") = {
-> > .name = KBUILD_MODNAME,
-> > .init = init_module,
-> > #ifdef CONFIG_MODULE_UNLOAD
-> > .exit = cleanup_module,
-> > #endif
-> > .arch = MODULE_ARCH_INIT,
-> > };
-> >
-> > #ifdef CONFIG_RETPOLINE
-> > MODULE_INFO(retpoline, "Y");
-> > #endif
-> >
-> > MODULE_INFO(staging, "Y");
-> >
-> > MODULE_INFO(depends, "pcmcia,comedi");
-> >
-> > -
-> > MODULE_INFO(srcversion, "ED971F2E01020DFA2B04486");
-> > --
-> > 2.17.1
-> > h-Hartman <gre...@linuxfoundation.org>
-> >
-> > --
-> > You received this message because you are subscribed to the Google 
-> Groups "outreachy-kernel" group.
-> > To unsubscribe from this group and stop receiving emails from it, send 
-> an email to outreachy-kern...@googlegroups.com.
-> > To view this discussion on the web visit 
-> https://groups.google.com/d/msgid/outreachy-kernel/20210411204933.GA3524%40peggy-Lenovo-V130-15IKB
-> .
-> >
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210411204933.GA3524%40peggy-Lenovo-V130-15IKB.
 >
-
-------=_Part_3239_2032391266.1618226719437
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-Thank you Julia for your timely feedback and intervention. i think the patch got mixed up after i did git add &lt;name of file modified&gt; now i understand it was a wrong move.&nbsp; will fix that right away and submit.<div>Thanks again.</div><div>Tawah Peggy<br><br></div><div class="gmail_quote"><div dir="auto" class="gmail_attr">On Monday, April 12, 2021 at 6:10:56 AM UTC-4 Julia....@inria.fr wrote:<br/></div><blockquote class="gmail_quote" style="margin: 0 0 0 0.8ex; border-left: 1px solid rgb(204, 204, 204); padding-left: 1ex;"><br><br>On Sun, 11 Apr 2021, tawahpeggy wrote:<br><br>&gt; remove one empty line.CHECK: Please don&#39;t use multiple blank lines<br><br>Did something go wrong with the patch generation?  You say that you are<br>removing one line, but the diff information looks like you are adding a<br>file.  Normally a patch has only the changed lines and a few lines before<br>and after.<br><br>&gt; Signed-off-by: tawahpeggy &lt;<a href data-email-masked rel="nofollow">tawahp...@gmail.com</a>&gt;<br><br>You need to put your real name when contributing to the Linux kernel.<br><br>For example, I would put:<br><br>Julia Lawall &lt;<a href data-email-masked rel="nofollow">julia....@inria.fr</a>&gt;<br><br>julia<br><br>&gt;<br>&gt; ---<br>&gt;  drivers/staging/comedi/comedi_pcmcia.mod.c | 1 -<br>&gt;  1 file changed, 0 insertion(+), 1 deletion(-)<br>&gt;  create mode 100644 drivers/staging/comedi/comedi_pcmcia.mod.c<br>&gt;<br>&gt; diff --git a/drivers/staging/comedi/comedi_pcmcia.mod.c b/drivers/staging/comedi/comedi_pcmcia.mod.c<br>&gt; index 0904b8765afs96..3984db1a39c8<br>&gt; --- /dev/null<br>&gt; +++ b/drivers/staging/comedi/comedi_pcmcia.mod.c<br>&gt; @@ -0,0 +1,31 @@<br>&gt; #include &lt;linux/module.h&gt;<br>&gt; #define INCLUDE_VERMAGIC<br>&gt; #include &lt;linux/build-salt.h&gt;<br>&gt; #include &lt;linux/vermagic.h&gt;<br>&gt; #include &lt;linux/compiler.h&gt;<br>&gt;<br>&gt; BUILD_SALT;<br>&gt;<br>&gt; MODULE_INFO(vermagic, VERMAGIC_STRING);<br>&gt; MODULE_INFO(name, KBUILD_MODNAME);<br>&gt;<br>&gt; __visible struct module __this_module<br>&gt; __section(&quot;.gnu.linkonce.this_module&quot;) = {<br>&gt; 	.name = KBUILD_MODNAME,<br>&gt; 	.init = init_module,<br>&gt; #ifdef CONFIG_MODULE_UNLOAD<br>&gt; 	.exit = cleanup_module,<br>&gt; #endif<br>&gt; 	.arch = MODULE_ARCH_INIT,<br>&gt; };<br>&gt;<br>&gt; #ifdef CONFIG_RETPOLINE<br>&gt; MODULE_INFO(retpoline, &quot;Y&quot;);<br>&gt; #endif<br>&gt;<br>&gt; MODULE_INFO(staging, &quot;Y&quot;);<br>&gt;<br>&gt; MODULE_INFO(depends, &quot;pcmcia,comedi&quot;);<br>&gt;<br>&gt; -<br>&gt; MODULE_INFO(srcversion, &quot;ED971F2E01020DFA2B04486&quot;);<br>&gt; --<br>&gt; 2.17.1<br>&gt; h-Hartman &lt;<a href data-email-masked rel="nofollow">gre...@linuxfoundation.org</a>&gt;<br>&gt;<br>&gt; --<br>&gt; You received this message because you are subscribed to the Google Groups &quot;outreachy-kernel&quot; group.<br>&gt; To unsubscribe from this group and stop receiving emails from it, send an email to <a href data-email-masked rel="nofollow">outreachy-kern...@googlegroups.com</a>.<br>&gt; To view this discussion on the web visit <a href="https://groups.google.com/d/msgid/outreachy-kernel/20210411204933.GA3524%40peggy-Lenovo-V130-15IKB" target="_blank" rel="nofollow" data-saferedirecturl="https://www.google.com/url?hl=en&amp;q=https://groups.google.com/d/msgid/outreachy-kernel/20210411204933.GA3524%2540peggy-Lenovo-V130-15IKB&amp;source=gmail&amp;ust=1618311889402000&amp;usg=AFQjCNFQWpQKaoRsA_iZq-YhhLLGnDWLsw">https://groups.google.com/d/msgid/outreachy-kernel/20210411204933.GA3524%40peggy-Lenovo-V130-15IKB</a>.<br>&gt;<br></blockquote></div>
-------=_Part_3239_2032391266.1618226719437--
-
-------=_Part_3238_1734175816.1618226719437--
 
