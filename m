@@ -1,78 +1,78 @@
 X-GM-THRID: 6950250971878391808
-X-Received: by 2002:a05:6512:1086:: with SMTP id j6mr15505340lfg.462.1618231441483;
-        Mon, 12 Apr 2021 05:44:01 -0700 (PDT)
+X-Received: by 2002:a05:6000:181b:: with SMTP id m27mr8329463wrh.11.1618231427095;
+        Mon, 12 Apr 2021 05:43:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:507:: with SMTP id o7ls537177ljp.6.gmail; Mon, 12
- Apr 2021 05:43:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXeTFmtAYHRliiruLn0FLJAywENOSM9vel6Qx1+of4wtsXOmZiU6Lx0h5romGpp+Ca2n4c
-X-Received: by 2002:a2e:7505:: with SMTP id q5mr18002347ljc.322.1618231439881;
-        Mon, 12 Apr 2021 05:43:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618231439; cv=none;
+Received: by 2002:a1c:c205:: with SMTP id s5ls1815254wmf.3.canary-gmail; Mon,
+ 12 Apr 2021 05:43:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyriPxEbcmFR6GHCUz8obzHEM+bsG08x65qYJ3m4ajuhtDwS45Shh4f6JDjZyyTUOEBL0d4
+X-Received: by 2002:a7b:c14a:: with SMTP id z10mr3721786wmi.75.1618231425805;
+        Mon, 12 Apr 2021 05:43:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618231425; cv=none;
         d=google.com; s=arc-20160816;
-        b=qi6OUMJ0QUT/tmrB2OkRqzbVH1nJ6QBI0Jyp3Naxt3W2HY7v+3NjctCujKPTMsYZzv
-         0TCm3WA/yWN5rZrOLitP6cGMTzL5erJkyHuc6Ya2qMFqF142L81HgGxXUc7g6CL81+DY
-         TRmurMPoNL2rL7e66+oxaJTOB6NZhClF26FWTz6xAD3t8hvMzc7cVftsCXaCu3g0jLUz
-         XhJ9ezkGaslW+tfo3EM2e3zLmFL5n8g2we9fLEWhvtElnKG2uhVUSO6oR30oqGSbEK0j
-         fXbANbqR3+mt3LX6I4nHk96dxBbHgnvnoFtG0hmJp6Ofta/uMZ8nbaOyYDTSxz/nbEiS
-         AUVw==
+        b=FCdB2FG7j9ViKs1WDivg9c0y/BR2QOPvigxfre5L0rShMWbHf8TjHwerRCDD68LS+G
+         eiCIjm6ve0S9v6k4y7UV2cpRiq77qthd4qZzo3IxivfJIBu5IVVa8u144g0HMhkjIo5T
+         3UZMDgc6YxmkiK0QDOGoRQ0qG5SsgSANZrPI8uzbgkEH4RfGOY0Zxz/KIRqof5fUYLqc
+         LUbJSG3CU9lPz/HTKtRT0/Tcg78zEpr1qxAR+HLT8/wPadqrjY4T8RM93LAoOlwFNgSf
+         fWkYuheF7EFZ6HD1xaQ4w2NqIu8lIzGqVFb1yQYmrGUwKJhPS/5xUQiyJTa45FcKFK9c
+         RB8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xrbT3X+z27jY5oY3DhIJgQi+dRZPPf+4KdDWNNrxL+Y=;
-        b=BsNx/AwSKzuqW5dCQ9lHWRy9CCTag8w3TlYCA6jyVcO/FZMHRg0+Y0e1Z1/B9lmMZr
-         +YtrOZAxWQtPBZLHuEwaJEYh0kKrkRAeZbusrESxy9DobtKN7S1RDIZN1eDqaLMPFM8z
-         Wp7d2d6nK7PsBd6inArBr1ZFEBG2JWnVh0vT1BN2AOhnIZ0Xwfc+qy4qkFgqDxOicsUp
-         I4sgIlqHO4CubUU2sTenOQt25Gxqq4SoMNpTU6w6ME3HBFljxU5No3qnQoSnrQNUnO9p
-         uZRmmMGuA6CJ81QhQJ4jGmWjAwrH9f3D+xnwV7cq4erNq0+QSj1FIIkbX0wHJsTozjUR
-         /mkw==
+        bh=eRH1ZfbEvRBoK5SPSjf6X7NL13GHB5xpKAzHGHnUqz0=;
+        b=ytcY9d8xKMxwzvoxbAXIKygGqowdtHxgwNfCy0H/2Ss+8nQWaceasyHvc2RluZXufR
+         RdA24znidfUWdFYuLUVOZagq+S0YdUYVkNZf9XjuzcDBACJp0b3985hhC2IeTt+Pd3lk
+         kZymlEK9OQ+dZ2ITABuZ5v804KHK9pws/GmB53LQHBjLa2mKvDPqCYKoQbelgRhH4QTT
+         YogZdicDa+XS6JZC6OA29L0HlXkEgs+Cj8Fc98EIkkX9qM2fF0E8RwfgCzM6y3ohWBlJ
+         Fs1LooPm78DNdDoiZjMJ5zrYM8W0YbeD4kGR3PuqGQY8BkLfnsE7EjhLySKxu/UI9rnH
+         nzSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kYloPyOa;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rXB8ZnyZ;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52d as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
-        by gmr-mx.google.com with ESMTPS id l11si659486lfg.13.2021.04.12.05.43.59
+Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com. [2a00:1450:4864:20::52d])
+        by gmr-mx.google.com with ESMTPS id c6si264995wmr.2.2021.04.12.05.43.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 05:43:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
+        Mon, 12 Apr 2021 05:43:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52d as permitted sender) client-ip=2a00:1450:4864:20::52d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kYloPyOa;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rXB8ZnyZ;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52d as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62b.google.com with SMTP id l4so19977408ejc.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:43:59 -0700 (PDT)
+Received: by mail-ed1-x52d.google.com with SMTP id 18so14904714edx.3
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:43:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=xrbT3X+z27jY5oY3DhIJgQi+dRZPPf+4KdDWNNrxL+Y=;
-        b=kYloPyOadd4AgvV4UDeYTxu6q2VH26mX1mvW54hkc5IEIXeHfvBUJwKYUVDPieAB47
-         EZ2jDrFPfDGuV6Jp8irVyW9cryWoYjWFDWlof5t4n5SENDHQ+7ihMbugs3KYOt4kpz1g
-         OFLjOUuFcsUrpKz5g1eNhZD2v7Hl6GS4rLOHbc4XPdPrybh9K/+dhb/lCYpw7SHn7kHS
-         dt5g+Cu0QLwVONYzdURiOCJUwZ8tnlRbfyOkaCEOZeVgD4sGUyDN/hDA3JeswPeJwqUY
-         1OUto8+/v4ijlAiSodPVEW3DxXLKqVIW2TEBCLnAkMLdP6suu/szXQor5Y4H0O0W17lz
-         Jqyw==
+        bh=eRH1ZfbEvRBoK5SPSjf6X7NL13GHB5xpKAzHGHnUqz0=;
+        b=rXB8ZnyZviGJam15eHpyZf5Oo2gGqeAckKc/sjZsjj9YpoPrHWGSHJnXcu5h8EwIxQ
+         YD4FYqVuhlf7Z9ywbyn4+bSi385XYKJxGpqNkK18uyBvWAL6wL2CfpbaFANsmXRi4H/x
+         Ctvw6mOgn0+FpJbhlMzzCVYwNDPItuFiemKV41J0VEgZnGir0yZfMk11qcEZt/OVYP89
+         f8qKfYF6uQjb3VoMAEUuC1OcHg0tOiFoCa+zs2dtLmAzXukIiMACPsdelLnLbknM06Ht
+         rdQf9hNGaVCsQo99lIU6sqX3LQea6Q9sPM74JtTjA3UhFIuDW+nhrtds7duw08zcJNws
+         t/QQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=xrbT3X+z27jY5oY3DhIJgQi+dRZPPf+4KdDWNNrxL+Y=;
-        b=t3Ut/qoBvPBcLTODO9JfIHXUOzYnYYc1aaUO+TLzYQ1tYLqrFLJWjiHCRZDjHY9pKR
-         4KA+/JOK2UEtM/+nFcpFKdLMIlnWSUHYtf+/Nqk4tlh2ZkkQCaTPrrfwlGlUC6GM2YL8
-         r54vqLKC5Aw5YrMAxpW+dXBNvs3nS4xMcKMgyGqnENwKBZSKbTp/H12I0Vw07nHF2cL0
-         okgXc/S0rnYdwgeBiNbfxm0fTzs7uAPxZMiXknXbQhAvlUdoDRpn/Uv2RB5czE5wUw+/
-         3nVD3znD+BbablchmnI4xGA7p59+pxgmb+KDDAWQsBQkBh9HS07VtXIifxLebwAEBcgT
-         3sYQ==
-X-Gm-Message-State: AOAM532TjAzct/0ZvCSyPxRWvZXGrZnguf/JTl6L5fCYT7adOAmbTOm+
-	h3iICBjtCz11OTBNSuV/PkE=
-X-Received: by 2002:a17:906:944c:: with SMTP id z12mr11537616ejx.398.1618231439672;
-        Mon, 12 Apr 2021 05:43:59 -0700 (PDT)
+        bh=eRH1ZfbEvRBoK5SPSjf6X7NL13GHB5xpKAzHGHnUqz0=;
+        b=eo3QxixPrDNGTEa5n0lAzKCCaUCshYIsMDUsVeJHxMjEyrsfIzqQj5k1hRN3kWC4kv
+         634VXHoigp9vSa8XzIt6JdJhSmmS2OwpqtPtHW0GBPAEqGgomAWDC5Zad/YYYxLwsfU6
+         I/aGFhTwmvAutQgXPI/N/DM/7fkFjLPPIZHPqGyaC5I+hmHfss2PWwlkKmffFkn985ER
+         /aZTB2VdrOqg4KH5U0m7OPouR/qwMDF0ju1nBSk1N59miJA6rvYfEWK4uIA5E+laET5T
+         DW86dGrWbBGhDcEiNB9WSf1sENwNNlTblmzQzTxtMWyEShXS1QHwpZMwW5Q8X3Jt8Ci6
+         mkQA==
+X-Gm-Message-State: AOAM53199Ana7MovFkbZC//5m59/29vnn3ASk7a1ao9IdOo49OBlDl5W
+	ZXYrJg0frA3xrV6/MDVm03E5eStd5AWkSQ+2
+X-Received: by 2002:a05:6402:1109:: with SMTP id u9mr29593383edv.174.1618231425565;
+        Mon, 12 Apr 2021 05:43:45 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id m6sm5939452eds.49.2021.04.12.05.43.58
+        by smtp.gmail.com with ESMTPSA id m6sm5939452eds.49.2021.04.12.05.43.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 05:43:59 -0700 (PDT)
+        Mon, 12 Apr 2021 05:43:45 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: dri-devel@lists.freedesktop.org,
 	outreachy-kernel@googlegroups.com,
@@ -83,104 +83,65 @@ To: dri-devel@lists.freedesktop.org,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@linux.ie>
 Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH v2 2/2] drm: drm_atomic_helper.c: Correct comments format
-Date: Mon, 12 Apr 2021 14:42:16 +0200
-Message-Id: <20210412124213.4628-3-fmdefrancesco@gmail.com>
+Subject: [PATCH v2 1/2] drm: drm_atomic_helper.c: Replace "unsigned" with "unsigned int"
+Date: Mon, 12 Apr 2021 14:42:14 +0200
+Message-Id: <20210412124213.4628-2-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210412124213.4628-1-fmdefrancesco@gmail.com>
 References: <20210412124213.4628-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Corrected comments format in accordance to the Linux style guides.
+Replaced "unsigned with "unsigned int" since the latter is preferred.
 
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
 
 Changes from v1: Rewrote the "Subject" of the patches in the series
 
- drivers/gpu/drm/drm_atomic_helper.c | 32 +++++++++++++++++++----------
- 1 file changed, 21 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/drm_atomic_helper.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
-index cd748ff61162..bc3487964fb5 100644
+index f2b3e28d938b..cd748ff61162 100644
 --- a/drivers/gpu/drm/drm_atomic_helper.c
 +++ b/drivers/gpu/drm/drm_atomic_helper.c
-@@ -1018,8 +1018,10 @@ disable_outputs(struct drm_device *dev, struct drm_atomic_state *old_state)
- 		struct drm_encoder *encoder;
- 		struct drm_bridge *bridge;
+@@ -106,7 +106,7 @@ static int handle_conflicting_encoders(struct drm_atomic_state *state,
+ 	struct drm_connector *connector;
+ 	struct drm_connector_list_iter conn_iter;
+ 	struct drm_encoder *encoder;
+-	unsigned encoder_mask = 0;
++	unsigned int encoder_mask = 0;
+ 	int i, ret = 0;
  
--		/* Shut down everything that's in the changeset and currently
--		 * still on. So need to check the old, saved state. */
-+		/*
-+		 * Shut down everything that's in the changeset and currently
-+		 * still on. So need to check the old, saved state.
-+		 */
- 		if (!old_conn_state->crtc)
- 			continue;
+ 	/*
+@@ -609,7 +609,7 @@ drm_atomic_helper_check_modeset(struct drm_device *dev,
+ 	struct drm_connector *connector;
+ 	struct drm_connector_state *old_connector_state, *new_connector_state;
+ 	int i, ret;
+-	unsigned connectors_mask = 0;
++	unsigned int connectors_mask = 0;
  
-@@ -1409,7 +1411,7 @@ EXPORT_SYMBOL(drm_atomic_helper_commit_modeset_enables);
-  * @dev: DRM device
-  * @state: atomic state object with old state structures
-  * @pre_swap: If true, do an interruptible wait, and @state is the new state.
-- * 	Otherwise @state is the old state.
-+ *	Otherwise @state is the old state.
-  *
-  * For implicit sync, driver should fish the exclusive fence out from the
-  * incoming fb's and stash it in the drm_plane_state.  This is called after
-@@ -1953,8 +1955,10 @@ static int stall_checks(struct drm_crtc *crtc, bool nonblock)
- 	list_for_each_entry(commit, &crtc->commit_list, commit_entry) {
- 		if (i == 0) {
- 			completed = try_wait_for_completion(&commit->flip_done);
--			/* Userspace is not allowed to get ahead of the previous
--			 * commit with nonblocking ones. */
-+			/*
-+			 * Userspace is not allowed to get ahead of the previous
-+			 * commit with nonblocking ones.
-+			 */
- 			if (!completed && nonblock) {
- 				spin_unlock(&crtc->commit_lock);
- 				DRM_DEBUG_ATOMIC("[CRTC:%d:%s] busy with a previous commit\n",
-@@ -2103,9 +2107,11 @@ int drm_atomic_helper_setup_commit(struct drm_atomic_state *state,
- 		if (ret)
- 			return ret;
+ 	for_each_oldnew_crtc_in_state(state, crtc, old_crtc_state, new_crtc_state, i) {
+ 		bool has_connectors =
+@@ -1478,7 +1478,7 @@ drm_atomic_helper_wait_for_vblanks(struct drm_device *dev,
+ 	struct drm_crtc *crtc;
+ 	struct drm_crtc_state *old_crtc_state, *new_crtc_state;
+ 	int i, ret;
+-	unsigned crtc_mask = 0;
++	unsigned int crtc_mask = 0;
  
--		/* Drivers only send out events when at least either current or
-+		/*
-+		 * Drivers only send out events when at least either current or
- 		 * new CRTC state is active. Complete right away if everything
--		 * stays off. */
-+		 * stays off.
-+		 */
- 		if (!old_crtc_state->active && !new_crtc_state->active) {
- 			complete_all(&commit->flip_done);
- 			continue;
-@@ -2137,8 +2143,10 @@ int drm_atomic_helper_setup_commit(struct drm_atomic_state *state,
- 	}
+ 	 /*
+ 	  * Legacy cursor ioctls are completely unsynced, and userspace
+@@ -2575,7 +2575,7 @@ drm_atomic_helper_commit_planes_on_crtc(struct drm_crtc_state *old_crtc_state)
+ 	struct drm_crtc_state *new_crtc_state =
+ 		drm_atomic_get_new_crtc_state(old_state, crtc);
+ 	struct drm_plane *plane;
+-	unsigned plane_mask;
++	unsigned int plane_mask;
  
- 	for_each_oldnew_connector_in_state(state, conn, old_conn_state, new_conn_state, i) {
--		/* Userspace is not allowed to get ahead of the previous
--		 * commit with nonblocking ones. */
-+		/*
-+		 * Userspace is not allowed to get ahead of the previous
-+		 * commit with nonblocking ones.
-+		 */
- 		if (nonblock && old_conn_state->commit &&
- 		    !try_wait_for_completion(&old_conn_state->commit->flip_done)) {
- 			DRM_DEBUG_ATOMIC("[CONNECTOR:%d:%s] busy with a previous commit\n",
-@@ -2156,8 +2164,10 @@ int drm_atomic_helper_setup_commit(struct drm_atomic_state *state,
- 	}
- 
- 	for_each_oldnew_plane_in_state(state, plane, old_plane_state, new_plane_state, i) {
--		/* Userspace is not allowed to get ahead of the previous
--		 * commit with nonblocking ones. */
-+		/*
-+		 * Userspace is not allowed to get ahead of the previous
-+		 * commit with nonblocking ones.
-+		 */
- 		if (nonblock && old_plane_state->commit &&
- 		    !try_wait_for_completion(&old_plane_state->commit->flip_done)) {
- 			DRM_DEBUG_ATOMIC("[PLANE:%d:%s] busy with a previous commit\n",
+ 	plane_mask = old_crtc_state->plane_mask;
+ 	plane_mask |= new_crtc_state->plane_mask;
 -- 
 2.31.1
 
