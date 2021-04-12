@@ -1,107 +1,107 @@
-X-GM-THRID: 6389989213457088512
-X-Received: by 10.157.17.39 with SMTP id g36mr8583695ote.86.1487785301004;
-        Wed, 22 Feb 2017 09:41:41 -0800 (PST)
+X-GM-THRID: 6950041383671431168
+X-Received: by 2002:ab0:6989:: with SMTP id t9mr18831352uaq.60.1618220988731;
+        Mon, 12 Apr 2021 02:49:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.30.168 with SMTP id n37ls1640816otn.25.gmail; Wed, 22 Feb
- 2017 09:41:40 -0800 (PST)
-X-Received: by 10.13.253.6 with SMTP id n6mr11520300ywf.84.1487785300594;
-        Wed, 22 Feb 2017 09:41:40 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x241.google.com (mail-pg0-x241.google.com. [2607:f8b0:400e:c05::241])
-        by gmr-mx.google.com with ESMTPS id g205si458629ita.2.2017.02.22.09.41.40
+Received: by 2002:a67:ee13:: with SMTP id f19ls832465vsp.1.gmail; Mon, 12 Apr
+ 2021 02:49:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy/coSKQ/w0M2HHf5UURF/drrJxE4GAG8Jc+0mPFTHD/u421qF98VLzwjjEr/R3pxGEuUYa
+X-Received: by 2002:a05:6102:b0f:: with SMTP id b15mr15839206vst.40.1618220987780;
+        Mon, 12 Apr 2021 02:49:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618220987; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0BXmbXULJ+9o7b5TLNrgwTPc5Ac6WHnFSZdcHiZiC+Q8gjheqoxb6IpN53u3PJ3S76
+         s+VNrgAr4M1z1U2vh+XCifPIz/LWjoQM3r6iwKCgRaBBG6wkL8tJF+oePAyRSE737gCg
+         ye6z+mnraMui7bF6khxa3PiQYVtgzYTT8mYHq3o6Ti8xOZeVrsLUuPfWsVH716oBtDhA
+         mL69PTNAHj2WZY2HokkGc+aN03t+nAr4+vIjNHNIoWHkLC3xZ9QVgMfTKFIRpjzydjZW
+         /NMtDv0BZUOX4+mGPnw2pQig7kXL4w6UAdajZsI+xqvyOPRnY+wbGETpjbz/7qocH0r5
+         w+2w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=a0WyjGt3m8EIbKZlxBX50/WNS47HH1WchgQYzX2ZHFg=;
+        b=nFzOAduvm6Q0Tba/2npqpbkPpSDR7BP4WkSY8HQW5S33wifW/d4tWk/iq83jGBgeX5
+         6jFkDS/03yitUyORyHh0irsuTNLVbNkGTPjDKLY8NtuQFa7T/kw5wcmW9ENnk2Y2FM9E
+         d0sNSRpF09umckSxDXIdU98XxmiUpnWY1XSBU/c2l9pkm9ka+vkm2VOuBkHRGmBVK6M8
+         Rqzv45acuRVXrwJfU+4doFmkLwValTmUkcQL5HgfBAIocj6rRtlhyKR1j08nSjNaJZLu
+         sdgJMCpGh4O18Ytw1R81Uq9exOMlProUTejiL1qNQ2RXOt/c+2qZVa6Jqxtlv7WVGrlI
+         k8xQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga05.intel.com (mga05.intel.com. [192.55.52.43])
+        by gmr-mx.google.com with ESMTPS id r17si646880vsf.2.2021.04.12.02.49.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 Feb 2017 09:41:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) client-ip=2607:f8b0:400e:c05::241;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Apr 2021 02:49:47 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) client-ip=192.55.52.43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::241 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x241.google.com with SMTP id z128so1343624pgb.3
-        for <outreachy-kernel@googlegroups.com>; Wed, 22 Feb 2017 09:41:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=nDnNuc0tjGXN3NAb+vTsXqabLrnY/iMbZ7VHOgf7UmA=;
-        b=HNhlbMjxFh3/jlQfwIDhMfnBMsDmUhyQJn0VBb+kNs4k6nsx/UqPGP63rRBjquj0wA
-         uq2EQLCIRR/1RduerelOyDaSFNg6k5Cy5sOF2G+FdhcjSIPMkbjyuh0CfWDJ4FSFQk9p
-         43LXup3O6VDz+RL/P+qrc0fx30dAWBbaVgroqjlEfZwaczwdG7KefKOmWbvI5FFQXouI
-         H8SD1bm6LCWpO//lh9+nEBAG06TFli0KXG8cXga9IGcMztL+4SvupjBWLKw1gTJMsoF/
-         WKcglNVMCXwd+73XPYNwRldBzPpRJN73uo4Dzk5HU2HpR8zvpvi2hlZCb9JoJoNlwYoD
-         ScNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=nDnNuc0tjGXN3NAb+vTsXqabLrnY/iMbZ7VHOgf7UmA=;
-        b=lb59CRCI1RndwgDJL582TwAsSVr3iFPSGfkz3tosnM0fTVM+yG+ACDk/JUoLudAMFP
-         cC0Od6gky3UIfj+/K0ElgUcCd2eNY2BAmLuKhsPPvx6uZNdWVLrruaoFYps+gY7B8IBN
-         Afpdaia4IwHzbkPkN6KPcmDMMMZZI0m00CYmk8Ot2PdQ3M6t8mOTowHrVIB/bz+fzr2Q
-         Le1F5SztZt4lBJ17jijWy3IFikv7ie7l9y4OOAJcaUTKXOfrfw8thKwC8xsd2kWvfEMN
-         ITqSYGeSOOwRgGqkp8J1ZStSgK1uqnFfrtszYJy7Em7l2yhiVNyN0UgfDV5ejmPjhzOj
-         QKKQ==
-X-Gm-Message-State: AMke39lXIO2mMgnKDlf+OGsslL5aXZmmq4nx28Yuimml//x+Bs1b49ktHTvEPU0dDWIbmQ==
-X-Received: by 10.99.104.199 with SMTP id d190mr33994978pgc.59.1487785300151;
-        Wed, 22 Feb 2017 09:41:40 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([2405:204:5189:4d06:6cf8:d067:30d5:ddb2])
-        by smtp.gmail.com with ESMTPSA id x10sm4850670pfi.117.2017.02.22.09.41.38
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 22 Feb 2017 09:41:39 -0800 (PST)
-Message-ID: <58adcd53.0a0f620a.21b74.7937@mx.google.com>
-X-Google-Original-Message-ID: <20170222174133.GA16650@<rvarsha016@gmail.com>>
-Date: Wed, 22 Feb 2017 23:11:33 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: William Hubbs <w.d.hubbs@gmail.com>,
-	Chris Brannon <chris@the-brannons.com>,
-	Kirk Reiser <kirk@reisers.ca>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 1/2] staging: speakup: Removed blank line after open braces.
-References: <cover.1487784838.git.varshar186@gmail.com>
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: cHIKw0e2jqLbBu7BjhRwByrj+5vVfbCdCeR5MGBHNWcUQ5VMsZHRhlvcCO3Vai6KkbeW8wVQSy
+ Ks6/kR+onKkA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9951"; a="279453194"
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="279453194"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 02:49:45 -0700
+IronPort-SDR: /uH/qozKRs83kwg3Fusf37qVxeq+FBgDrIn9DfqqIgVcbBOWGdhg6qm/fx4UFMkTlQhm0ysKKu
+ /kfDSS/Il+Bw==
+X-IronPort-AV: E=Sophos;i="5.82,216,1613462400"; 
+   d="scan'208";a="442996816"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2021 02:49:43 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with SMTP id 6B95C205AA;
+	Mon, 12 Apr 2021 12:49:41 +0300 (EEST)
+Date: Mon, 12 Apr 2021 12:49:41 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Mitali Borkar <mitaliborkar810@gmail.com>
+Cc: bingbu.cao@intel.com, tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH 5/6] staging: media: intel-ipu3: line should not end with
+ '['
+Message-ID: <20210412094941.GK3@paasikivi.fi.intel.com>
+References: <cover.1618180659.git.mitaliborkar810@gmail.com>
+ <7514b0a9f6b0ce736de3c9d13ae2629d9e67f04c.1618180660.git.mitaliborkar810@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1487784838.git.varshar186@gmail.com>
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <7514b0a9f6b0ce736de3c9d13ae2629d9e67f04c.1618180660.git.mitaliborkar810@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Remove blank line after open braces, to fix the following checkpatch issue:
+Hi Mitali,
 
-CHECK: Blank lines aren't necessary after an open brace '{'
+On Mon, Apr 12, 2021 at 04:39:58AM +0530, Mitali Borkar wrote:
+> Fixed the issue of line should not end with '[' by moving arguments
+> from next line to line ending with '['
+> Reported by checkpatch.
+> 
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+>  drivers/staging/media/ipu3/include/intel-ipu3.h | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> index 53f8e5dec8f5..0451f8b7ba4f 100644
+> --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
+> +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> @@ -246,8 +246,7 @@ struct ipu3_uapi_ae_ccm {
+>   */
+>  struct ipu3_uapi_ae_config {
+>  	struct ipu3_uapi_ae_grid_config grid_cfg __aligned(32);
+> -	struct ipu3_uapi_ae_weight_elem weights[
+> -			IPU3_UAPI_AE_WEIGHTS] __aligned(32);
+> +	struct ipu3_uapi_ae_weight_elem weights[IPU3_UAPI_AE_WEIGHTS] __aligned(32);
 
-Signed-off-by: Varsha Rao <rvarsha016@gmail.com>
----
- drivers/staging/speakup/kobjects.c | 1 -
- drivers/staging/speakup/serialio.c | 1 -
- 2 files changed, 2 deletions(-)
+Could you still wrap it to stay under 80?
 
-diff --git a/drivers/staging/speakup/kobjects.c b/drivers/staging/speakup/kobjects.c
-index 4e7ebc3..77e6dee 100644
---- a/drivers/staging/speakup/kobjects.c
-+++ b/drivers/staging/speakup/kobjects.c
-@@ -129,7 +129,6 @@ static ssize_t chars_chartab_store(struct kobject *kobj,
- 
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
- 	while (cp < end) {
--
- 		while ((cp < end) && (*cp == ' ' || *cp == '\t'))
- 			cp++;
- 
-diff --git a/drivers/staging/speakup/serialio.c b/drivers/staging/speakup/serialio.c
-index ef89dc1..87d3318 100644
---- a/drivers/staging/speakup/serialio.c
-+++ b/drivers/staging/speakup/serialio.c
-@@ -97,7 +97,6 @@ static irqreturn_t synth_readbuf_handler(int irq, void *dev_id)
- 
- 	spin_lock_irqsave(&speakup_info.spinlock, flags);
- 	while (inb_p(speakup_info.port_tts + UART_LSR) & UART_LSR_DR) {
--
- 		c = inb_p(speakup_info.port_tts+UART_RX);
- 		synth->read_buff_add((u_char)c);
- 	}
+>  	struct ipu3_uapi_ae_ccm ae_ccm __aligned(32);
+>  } __packed;
+>  
+
 -- 
-2.9.3
-
+Sakari Ailus
 
