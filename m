@@ -1,114 +1,149 @@
 X-GM-THRID: 6950506572644614144
-X-Received: by 2002:a02:850a:: with SMTP id g10mr34300762jai.140.1618327707978;
-        Tue, 13 Apr 2021 08:28:27 -0700 (PDT)
+X-Received: by 2002:a05:6512:234d:: with SMTP id p13mr21031557lfu.603.1618317836033;
+        Tue, 13 Apr 2021 05:43:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5e:c911:: with SMTP id z17ls3222107iol.8.gmail; Tue, 13 Apr
- 2021 08:28:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDE+6sH6i66YH6g50cSNM9pMSwDGXPRM+Kuduv0+uWW66AahnkKHoTBzROg/rCMav9xr2P
-X-Received: by 2002:a05:6602:2348:: with SMTP id r8mr27476651iot.77.1618327707302;
-        Tue, 13 Apr 2021 08:28:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618327707; cv=none;
+Received: by 2002:a05:6512:c22:: with SMTP id z34ls294966lfu.2.gmail; Tue, 13
+ Apr 2021 05:43:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZMD0l5DUnqvxw+7X63bCkBXzcgM52cD10uZ90Bfy7wwqT17bN8GMcyphbVpFbbMvP7mpU
+X-Received: by 2002:ac2:54a1:: with SMTP id w1mr17623617lfk.48.1618317834333;
+        Tue, 13 Apr 2021 05:43:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618317834; cv=none;
         d=google.com; s=arc-20160816;
-        b=tMP7JDwkmFKWDGmu7PH0lW9EpmIVb8tZaIykxp5VbDxZ4wwEWlFtv9h0oSG0Bm1NyF
-         yDzgj83SC/UIMLVCLHt6CFxKC4+v87sInK3LrJWii8F7QuOD/n9daXJHWrRa84bYrkaK
-         fVF/x7LqGpIkqsqLOzZFLkty3EW7nyMZ2QlgdJ+SgvPj6e44RySR3lr5bypPKvq6bQKI
-         Q6Ez7n3tlcHcotrGpzJTJlkk/6zFTnGMyZyMGMkoiBCV860KuXy9mTndv2AtwEO6HLQj
-         4f1oOVTRLwTV6+fLbcuWGAVAfSotvS7MhjVEAmjEppPlaQjYkLSxDugLsdszGge3PvqC
-         JpYQ==
+        b=iY/EvohoKA5HVqdGLmA3ce5lvig5d3DdqQf2tECqO+sr+R6ArlU8Jt97VNx8HIqPKc
+         gshieCRsUVMZ+30VSIsUUxo4KQcsWQDQ3K3irVTm5sQ1lSx/8datf3+WAGnwkZ7ciZP9
+         cYhPl/oYlhFnnU0c9smLyPCly2FJZL/4lWY9WOswV8K+F6s3285aD13op8+nztfDlz1i
+         oTdP1NUl+Gin8tmvnJs/sOmCdDhJvfQDQf60O99WHRDELCRPAHs9N/mWFdmhd/udG13M
+         YTQ5W8J/u7JGzewdlWxdAAlJmQ/o88WqmuUoCV2yXKEGNi8E9r3difcdXuMThXO6rRVQ
+         l6Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=txv1fgolWcizMYehBcvnnggRxVWanXigizl1Xf+Dky8=;
-        b=Hlu3UHNjRIZNE9/2e+wBba0YhwXZ7DyMGgKuCqGw0TAMJX+6Ita4Cbytb1iEkEURBq
-         MhVw1rHBGrxFvyhGPol61DUFI0BCoEiNC7VqDjpadAiBS1OnT1IM+qUrnMnD3XZBQrSs
-         ccLDAsPAKbLkNfLtR8aKxaLGU8cNYhXzdjrpWvqjR6otawSIw2a/NOWdWngJZJXgRX87
-         Hs+2qzPy2TFFibvciJj3gQJ56f8VwEUPuKMyEBF32T5mGPV/R2w67HDH5HYIYpHK19et
-         2Hztfc9MPvssg+QSUAFAeFXH/MMdLM1jOVL5q5LQUh42phmG/UOkqMloHiWeH3gtZ+sP
-         22RA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=EL1HmykK/vApgs7sw6AqzLD3lOW0gon0AditmCsSeb8=;
+        b=L7rr788iWV94IKkGf/AdZKO/ZCPr+L1/XHgSUd5w/9SCF5megLiM7Fs45AMeT7Itnb
+         JT6k7e3dAvpx7x81zL0pWqb/VHaKCA8uufGnWiJkC7Nnp/t5j/CH9Gxa+TlAXC43ozal
+         7ZdgMZ108SuxbNxj8NfDEtCrwHTXRln9v9/FOE0iw6H/p6tkT0ZIpUiRkq2Yq7fFTOir
+         spZFkD4M2HnWsXHJ87jzPhA3JN1cBxXSgA3ncYUkN41xZvlkjjjSu/TRRumM+6i4F2xe
+         ZfTnuPU/TKa62UvxlFB9VWeKTASXMzOxINmM7SvdMsC34zM1Jn87s/TSOG3C1cu6mC50
+         OH4g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MWezdm9a;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=u7lPyIPR;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com. [2607:f8b0:4864:20::429])
-        by gmr-mx.google.com with ESMTPS id x7si583588iow.2.2021.04.13.08.28.27
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com. [2a00:1450:4864:20::52b])
+        by gmr-mx.google.com with ESMTPS id a10si902073lfs.11.2021.04.13.05.43.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Apr 2021 08:28:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) client-ip=2607:f8b0:4864:20::429;
+        Tue, 13 Apr 2021 05:43:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52b as permitted sender) client-ip=2a00:1450:4864:20::52b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MWezdm9a;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::429 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=u7lPyIPR;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x429.google.com with SMTP id y16so11655988pfc.5
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 08:28:27 -0700 (PDT)
+Received: by mail-ed1-x52b.google.com with SMTP id m3so19223206edv.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 05:43:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=txv1fgolWcizMYehBcvnnggRxVWanXigizl1Xf+Dky8=;
-        b=MWezdm9avdfWuu/HZ27c6zuKllOS6Pl1/9SXUAcMD4YEPcyYZOPuEoJb5wsCLXOggi
-         EykZ1z/CAiQTJ9FtPqD/3I6yYyf1VGMGl7lZN9U2zR9S13tV2piPddKNQa5SmOCL3VJx
-         XppanDypKGNPDoZyommH1o2N6z32RC3GfWMkxA7cAsaAXw/z/S/xinlxDFDfhw977Cmm
-         P/9mdU4A2MhkBgmByF4DwiNfKF2LnVJiHPNynXwTUVxVuXK0Wr+rPg0bgLEdwA+kAJGK
-         NDAuXjtOfNNVyY6NP5rZ8TyXG5Uq2iVUk+jdL00LQvIfLzWQ4+fRyEws/Af2C5EXOp0l
-         /5Lg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=EL1HmykK/vApgs7sw6AqzLD3lOW0gon0AditmCsSeb8=;
+        b=u7lPyIPR87OkZrjxWaan08OGxcnEdPfv7JgN/iIt/d1QipKYtlYtKFVTrWwE1gl6jv
+         BRLvkh3jp+NA1pF29eWCEPAu6E464v0Zid25vkeEba5Re/uZbDRELo7VfZEHkRamfGDY
+         1wAEIYB6M7299J3fCyPfRcFhlL9MVmuV/pFfaZAucmFMkYAfmx2+k8rQJxEOPXS8A73q
+         dgtt9Ovq0ZR4phVDLv2RsiY48RafXX4x9/beldTslFqnSyyeNlw3tUN5rfZxJUI/ldMm
+         1xlMoh3XNQYKPQbaGrI5CkeqwYHe/qae1evznyy0zl3SikSt+A139eKKc1gHAVwI4hZz
+         onWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=txv1fgolWcizMYehBcvnnggRxVWanXigizl1Xf+Dky8=;
-        b=mCGDKHmUX9AXoKmc1EadQby21fzHKFvx1ulh86455B7AXfQ5Ra9Au9Q7zqHWeeKdxC
-         tEOrYEoeuClNkDwmiyZvY9verckCegP1QQNYd4kexFoHbRrWeJP8tv1fy3rcITTeDMTE
-         HozjxjwO3zR3Kc8drdGxr8U0/97SlCfKDR6iUAkvSZ8fHsHoeJ7LY1gyjWrUDmNKk5Na
-         4dMbvH63O9EuNioNqNraqLaMX7DxOL9RbQcq2kYekNeJ5F2c82pcCyP9Q6KjpPD5YpKf
-         edszzD81LzUGoMPx0aqXA8z4xqTISpav9ilFJl+GElbmolhsbeeD9IFY59na8u2+mmtT
-         bM/w==
-X-Gm-Message-State: AOAM533l4AD3EWnUGoWJEyTz6VxLbKA2KOzAWXwRCcmzi8/oTZMTQEu5
-	dsJxXWtRfvmtYMTRc+BYFPo=
-X-Received: by 2002:a63:d58:: with SMTP id 24mr32958444pgn.171.1618327706735;
-        Tue, 13 Apr 2021 08:28:26 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id w75sm13360149pfc.135.2021.04.13.08.28.21
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=EL1HmykK/vApgs7sw6AqzLD3lOW0gon0AditmCsSeb8=;
+        b=ATgogjCUy1wYTI2kaiz9RXP4ySYN515fjZiowNJSYpinX7D2rISk6R4Gd+TUrlnCJx
+         grv8QL96EvAp7PEWlQvhkKI/JWPHXTnQLSBIROT7WKR8dRN5fNxoqlaXsWfUV/NWYqKz
+         pM0iNaqw2N2wlIV4mwnIIK494rXebuL2L0d7poHk78N3/VOaghPRWcL3dcvVJTgrkVkL
+         UxKrbXN3cfQTOFG7YaxSnfviI+bG2agXlMKladSCBZn+DYjveh5wP84INCUKaMJL+NBc
+         LqIWza6YuFkQk/V/bq/TYRn5gUhES7cx1O0Zz9dtnIaLp2Akm14fg9k+CCjlzBcgKT24
+         KquA==
+X-Gm-Message-State: AOAM532ZdQ58lDA6f5ZA8GSehhM3o65Kd+BpIm3TF0ArMqF/6vwlKkzG
+	gurAJpFIPCPrlVNWSejKtss=
+X-Received: by 2002:aa7:d688:: with SMTP id d8mr28010154edr.294.1618317834072;
+        Tue, 13 Apr 2021 05:43:54 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id n3sm7764662ejj.113.2021.04.13.05.43.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Apr 2021 08:28:26 -0700 (PDT)
-Date: Tue, 13 Apr 2021 20:58:19 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
-	tian.shu.qiu@intel.com, mchehab@kernel.org,
-	gregkh@linuxfoundation.org
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mitali_s@me.iitr.ac.in
-Subject: [PATCH v3 0/4] staging: media: intel-ipu3: Cleanup patchset for
- style issues
-Message-ID: <cover.1618326535.git.mitaliborkar810@gmail.com>
+        Tue, 13 Apr 2021 05:43:53 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, outreachy-kernel@googlegroups.com
+Cc: bingbu.cao@intel.com, tian.shu.qiu@intel.com, mchehab@kernel.org, gregkh@linuxfoundation.org, linux-media@vger.kernel.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in, Mitali Borkar <mitaliborkar810@gmail.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH v2 3/4] staging: media: intel-ipu3: reduce length of line
+Date: Tue, 13 Apr 2021 14:43:52 +0200
+Message-ID: <2015378.6QP0OQ0Ode@linux.local>
+In-Reply-To: <YHV45I6ZDsXNwdiG@kali>
+References: <cover.1618289130.git.mitaliborkar810@gmail.com> <20210413104432.GU3@paasikivi.fi.intel.com> <YHV45I6ZDsXNwdiG@kali>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 
-Changes from v2:- Rebased these four patces and made changes against
-mailine code
+On Tuesday, April 13, 2021 12:56:36 PM CEST Mitali Borkar wrote:
+> On Tue, Apr 13, 2021 at 01:44:32PM +0300, Sakari Ailus wrote:
+> > On Tue, Apr 13, 2021 at 04:13:04PM +0530, Mitali Borkar wrote:
+> > > On Tue, Apr 13, 2021 at 01:01:34PM +0300, Sakari Ailus wrote:
+> > > > Hi Mitali,
+> > > > 
+> > > > Thanks for the update.
+> > > > 
+> > > > On Tue, Apr 13, 2021 at 10:46:06AM +0530, Mitali Borkar wrote:
+> > > > > Reduced length of the line under 80 characters to meet
+> > > > > linux-kernel
+> > > > > coding style.
+> > > > > 
+> > > > > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > > > > ---
+> > > > > 
+> > > > > Changes from v1:- Reduced length of the line under 80 characters
+> > > > > 
+> > > > >  drivers/staging/media/ipu3/include/intel-ipu3.h | 3 ++-
+> > > > >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > > > > b/drivers/staging/media/ipu3/include/intel-ipu3.h index
+> > > > > 6a72c81d2b67..52dcc6cdcffc 100644
+> > > > > --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > > > > +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > > > > @@ -247,7 +247,8 @@ struct ipu3_uapi_ae_ccm {
+> > > > > 
+> > > > >   */
+> > > > >  
+> > > > >  struct ipu3_uapi_ae_config {
+> > > > >  
+> > > > >  	struct ipu3_uapi_ae_grid_config grid_cfg __aligned(32);
+> > > > > 
+> > > > > -	struct ipu3_uapi_ae_weight_elem weights[IPU3_UAPI_AE_WEIGHTS]
+> > > > > __aligned(32); +	struct ipu3_uapi_ae_weight_elem
+> > > > > weights[IPU3_UAPI_AE_WEIGHTS] +				
+			__aligned(32);
+> > > > 
+> > > > Do you still have the other two patches in your tree? This doesn't
+> > > > apply
+> > > > here due to the different attribute syntax.
+> > > 
+> > > I have patch 1/6 and 2/6 in my tree which you asked me to drop.
+> > 
+> > Could you drop them and then submit v3?
+> 
+> I am extremely sorry Sir, but I am still learning to use git, drop them
+> means to delete those commits? Even if I delete those, this patch was
+> made after those, so the changes I made then will remain as it is, so
+> what to do now?
+> 
+> > Thanks.
+>
+I think that this document can help:
+https://kernelnewbies.org/GitTips
 
-Changes from v1:-
-Dropped patches 1/6 and 2/6 and compiled this as a patchset of 4
-patches.
-[PATCH 1/4]:- No changes.
-[PATCH 2/4]:- No changes.
-[PATCH 3/4]:- Reduced length of a line under 80 characters. This was
-patch 5/6 previously.
-[PATCH 4/4]:- No changes.
+Fabio
 
-Mitali Borkar (4):
-  staging: media: intel-ipu3: remove unnecessary blank line
-  staging: media: intel-ipu3: reduce length of line
-  staging: media: intel-ipu3: line should not end with '['
-  staging: media: intel-ipu3: remove space before tabs
 
- drivers/staging/media/ipu3/include/intel-ipu3.h | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
-
--- 
-2.30.2
 
 
