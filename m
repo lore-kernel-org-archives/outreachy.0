@@ -1,106 +1,77 @@
 X-GM-THRID: 6950478192224239616
-X-Received: by 2002:a17:902:aa0b:b029:ea:dd07:b7d9 with SMTP id be11-20020a170902aa0bb02900eadd07b7d9mr13339967plb.27.1618310711114;
-        Tue, 13 Apr 2021 03:45:11 -0700 (PDT)
+X-Received: by 2002:a0c:8bda:: with SMTP id a26mr24521264qvc.1.1618300372500;
+        Tue, 13 Apr 2021 00:52:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:d385:: with SMTP id e5ls2708981pld.10.gmail; Tue, 13
- Apr 2021 03:45:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwcKyMx/KzzyhZldEdLr7kn+/9T+I75nYWF+utaxM/BD4wJJL64sUIiFcssIh9N/eoHRwtG
-X-Received: by 2002:a17:902:d306:b029:ea:bb6c:3c99 with SMTP id b6-20020a170902d306b02900eabb6c3c99mr17431213plc.9.1618310709972;
-        Tue, 13 Apr 2021 03:45:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618310709; cv=none;
+Received: by 2002:ae9:f20e:: with SMTP id m14ls10675139qkg.8.gmail; Tue, 13
+ Apr 2021 00:52:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyo5HRxBI2kmr4fBpvUDnuYIOoSfAvy9CkvXKqpMUoANLkdngsTnmKrbHBgEf7hz/kl+cY1
+X-Received: by 2002:a05:620a:2491:: with SMTP id i17mr17742456qkn.128.1618300371740;
+        Tue, 13 Apr 2021 00:52:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618300371; cv=none;
         d=google.com; s=arc-20160816;
-        b=kRjofgZCKxp7tyg9EKSymRChzZk1/F5DArL7cC4yhcGMf5zT387ttCxMNhbuD23DQT
-         K+MwmD92Lln0ne+dTHG1ZZlSOOSbh478/rB3BWq2g2nKmdLqDM6PRM/3veQ0enwhLxGk
-         vEPXoxNJegnswyquUDIEZAd88D07mm3YqCiE71hOmkp41GUysTcfFFnjRMvLzlNelPOF
-         e293SnYT1zIq/c6oU49iJB3dTgMVTlDrPJfMUGUNSYp1y6lqZzwqjVgyuMhCLK/cnCvm
-         frOKyQsAhHeQi0CtSudYLdYKUhKET7C/qktfScnIHWDBC46a7LcSTfS4bMdMO3NRrkpi
-         i37w==
+        b=s16SLvGtac4rjt//RcF6omIJ41vSac6aHirDX/JlB8FR39TYlV7r5ap6uIlog/Opr6
+         4rz9S0RPy4L/h3gHc3q00hc5KAgyHGhAWnoWqD4rlTssd0IGrm+AykF2YjDs3aPI+ue+
+         CoAw1S0ApmUeJjJmWGjRgOeuLlM6HWZgnFPGF7Rem5DD4RlSq5+U1lARfU+7qeFvttG/
+         2mUEl6SwcQf1x2NM5/PnEzK7b42gx3pJR7w/g/ufXl7GlNeFDPaXxLMI3RL8gXoCcKl0
+         jZdJbnjHCVrRiEfjybNFfP/6fl8U3TFHFUe/r/Ilbf5er6A+EbIT0pSSyZpL5HJU0RD7
+         CfAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=NJEs0OVIbEPu0niN8aqEV6/oMkDrOYYQ8S6g+FDY+1A=;
-        b=QyJqTY8nCllSubvgEuNtjDBW/8bg7ilwTxdFny7lOo7PPiwabALNc5wZEAp+GKiw9A
-         yu46j+A3TpqJBXKrREewwKvSCwUfmKd10942ooSxZA9yTnTg/9dIgCI09ZvJX/y5QjWl
-         ygvBfz+ue4C/LkKxeULlCSAqSPdrD/IWMGt3GAWB2dLHa2uZiiFiNj7tvfakMUiwu9Gm
-         E7UK/y+yP+BO77HlQGH6rId/e2iKmjGKtt/cG3Xm2NpRXAZsU8glu28/QVS0Feud5Z4X
-         A8f0CWVFqRNDJ/r7TZ50bf0GAaFdelazbmV0EvufDbMDkz8/6v9xdPdBl5aVKsHTKp34
-         XVEA==
+        bh=wyy6FFxR0i9QhleHrzZ6gh7j23fKBFd0Cq5fJ5/HRAs=;
+        b=BLS2fxkO51WMj6YEh5LJc2woksn6i8qYcwIBPbZgn5rL0NHpMFOXjFQLH49kRtvVNi
+         J9UQ1W++P2SYyVd7pqvvTOvtPiJrEfKn6t4Rt/V3DxIZGQEmzOJzvgIQsDIDpCmkCAxV
+         stwmVR5vI+XqzSB95fOxjSzz8QwbYXWWgWPRxGloC++kDCQXQzZ41gmghOMTSEwEqoZb
+         p7O8U80/sprtXE3uk4hHKVB1VqT2GbGUUaDguD8JhclAcMTkj6ILW6A3AA47aJK/n2WW
+         83ErmCyu2lVbs7hSCv5R+baQyHB+4pVfNWX0sPZvXivdya+dBYROc3ZQ+4cyQWyEFYe7
+         CmfQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bt+SWsRR;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com. [2607:f8b0:4864:20::432])
-        by gmr-mx.google.com with ESMTPS id k8si208238pjq.1.2021.04.13.03.45.09
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=qupzavy3;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c22si1168380qtg.5.2021.04.13.00.52.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Apr 2021 03:45:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) client-ip=2607:f8b0:4864:20::432;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Apr 2021 00:52:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bt+SWsRR;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::432 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x432.google.com with SMTP id a85so10725619pfa.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 03:45:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=NJEs0OVIbEPu0niN8aqEV6/oMkDrOYYQ8S6g+FDY+1A=;
-        b=bt+SWsRREEyZ8aGF2En2o3+UBIqn/QCQ9DJpF7VyNlNflyKIJlByhGVzBdU7aTFr58
-         AD1b9sH/dahahuGyfLCJOT9VYjTjp+VZFv2Y11pMK1Zza7Pi19Pa6kHM3GSyc8i3f+um
-         UIsDTBPoTll6H+73jlKzEulll3kD+ywexevz8FFliFFFKSxpMB+84PxqRi6GIPICsuXc
-         rPIwHwS0xtdmOE7WDvvENu/nF0OMvVqvdeLmJbSojPjj3S6S5nQLocAVgtcSnH2WwOOj
-         tSpcz6jOh1Y2urrtg5NI8Ajl74RkQkRWfMh54BVhdQMP80+R7cI5Of2VFRGHfFS0ASuA
-         /H1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=NJEs0OVIbEPu0niN8aqEV6/oMkDrOYYQ8S6g+FDY+1A=;
-        b=pWTdOvkUCTFvh8huQKV9ZHpj1p4+YAQbROXdLYC3EMzJ66/rEv5nsiK/P5ge6gFaiD
-         Ogcz5YF8x3ERQc8I6PLBf7Ot7s12HBWikaZABrXaYbBh5M++LkvOL5pXncXS2+NPSECw
-         OwXLVA5B8VUMyx9r1rxjbG9TF/CTFHRZAcGLiMxyeAUj3LAx2SqO7q1VjVnk41DWdiVJ
-         0lx3jitG5XTw3l6vmw28P5eQ70uSIpE0drb0Pfw4rEazJngotpU+FkLdATH8qsox2Pqj
-         nT029iwB7rHltYt0i2DK3cr6eTVmv8Q2BCmMjw38FSGi15q3/1fv8EGZgTgy9sp087GJ
-         YvUg==
-X-Gm-Message-State: AOAM5317iS7JmPcjGrMsS9TahV3ZMOAF+4saJbO4tbwAXQG8nkB0pyfe
-	G8oaA15nDEK348lKhBvvNMs=
-X-Received: by 2002:a63:f95a:: with SMTP id q26mr31695929pgk.25.1618310709544;
-        Tue, 13 Apr 2021 03:45:09 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.253])
-        by smtp.gmail.com with ESMTPSA id f21sm1957426pjj.52.2021.04.13.03.45.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Apr 2021 03:45:09 -0700 (PDT)
-Date: Tue, 13 Apr 2021 16:15:03 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=qupzavy3;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 24AB661244;
+	Tue, 13 Apr 2021 07:52:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1618300370;
+	bh=wyy6FFxR0i9QhleHrzZ6gh7j23fKBFd0Cq5fJ5/HRAs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qupzavy3DlQyTnfQNp21YrR1XZr5M9igQeUPYC8w0+gnLHZ/hXE3ctl9dKsE4YViH
+	 luQveDNiFNYDV5ZT0q3AFZhPU/j25y2PvRf4odPM1FjBsKisC4+Nc8ksSIgI+yHTbE
+	 YKsvjlBXBSCM7Kiho876BJVG5vYovZaMSOB9GMgY=
+Date: Tue, 13 Apr 2021 09:52:48 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mitali Borkar <mitaliborkar810@gmail.com>
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
 Subject: Re: [PATCH v5 0/3] staging: rtl8192e: Cleanup patchset for style
  issues in rtl819x_HTProc.c
-Message-ID: <YHV2LyXrJjVnMsyT@kali>
+Message-ID: <YHVN0JRWqNDJYF3T@kroah.com>
 References: <cover.1618283232.git.mitaliborkar810@gmail.com>
- <YHVN0JRWqNDJYF3T@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <YHVN0JRWqNDJYF3T@kroah.com>
+In-Reply-To: <cover.1618283232.git.mitaliborkar810@gmail.com>
 
-On Tue, Apr 13, 2021 at 09:52:48AM +0200, Greg KH wrote:
-> On Tue, Apr 13, 2021 at 08:55:03AM +0530, Mitali Borkar wrote:
-> > Changes from v4:-
-> > [PATCH v4 1/3]:- No changes.
-> > [PATCH v4 2/3]:- No changes.
-> > [PATCH V4 3/3]:- Removed casts and parentheses.
-> 
-> This series does not apply cleanly, please rebase and resend.
->
-Resend as v6? Does not apply cleanly as in? Were mails not threaded
-properly?
+On Tue, Apr 13, 2021 at 08:55:03AM +0530, Mitali Borkar wrote:
+> Changes from v4:-
+> [PATCH v4 1/3]:- No changes.
+> [PATCH v4 2/3]:- No changes.
+> [PATCH V4 3/3]:- Removed casts and parentheses.
 
-> thanks,
-> 
-> greg k-h
+This series does not apply cleanly, please rebase and resend.
+
+thanks,
+
+greg k-h
 
