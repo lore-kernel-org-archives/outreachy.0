@@ -1,147 +1,127 @@
-X-GM-THRID: 6886767027078299648
-X-Received: by 2002:a17:907:382:: with SMTP id ss2mr1407069ejb.544.1603450399323;
-        Fri, 23 Oct 2020 03:53:19 -0700 (PDT)
+X-GM-THRID: 6949336667395194880
+X-Received: by 2002:aa7:850c:0:b029:24c:b470:cc79 with SMTP id v12-20020aa7850c0000b029024cb470cc79mr9411822pfn.69.1618311640969;
+        Tue, 13 Apr 2021 04:00:40 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aa7:c04e:: with SMTP id k14ls1248868edo.1.gmail; Fri, 23 Oct
- 2020 03:53:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzp7eEh8pCyW2noL55ZqQvzwYbF+ZA4G7tbtDpyF4YpTuow6XgHiDv2w0Q554hGIwzbbwCj
-X-Received: by 2002:a05:6402:7c8:: with SMTP id u8mr1566082edy.153.1603450397261;
-        Fri, 23 Oct 2020 03:53:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603450397; cv=none;
+Received: by 2002:a17:902:da91:: with SMTP id j17ls9424963plx.1.gmail; Tue, 13
+ Apr 2021 04:00:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPdOsrlfBBxSZeLy3sctgcCYzS0kmCwJ0uokPXRQF/riuLuwrAHO8XsdsTBNfMHpmOsNXP
+X-Received: by 2002:a17:90b:3656:: with SMTP id nh22mr3955969pjb.112.1618311639072;
+        Tue, 13 Apr 2021 04:00:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618311639; cv=none;
         d=google.com; s=arc-20160816;
-        b=hv3t4ESf7wD6o6FVIakhB2Fg+K5/+E3biQjRLcGOPIMUh3Uwp5xAJgEiYQSKzYODjd
-         C6CEWGxpELjQ2CmLbyBFe7iXfW+HCzbuJW7XBHejBa4cIiiYqMja5pXQmiLFei/2fbCd
-         OxUR/L64N5Gl6C0syJYglPv8wcO7qUxNHkmalQVZEmG2LR4hQjZfWk/TPtwtpJWjS2Og
-         WYVDprvVLH2Wn4iruAKkUMZ2seFcmt1kEzcj06K1edZRhAdehK7Ec3uavQGmz6Q6Ynlf
-         xiXTPdopjThnVzSvGNNFZgha5zznmlkvHIcbGj7mA4t3wKw+u3hBcIpHFK10R8NayfJK
-         wHlA==
+        b=hz+k3uaF46o3xoG6eNAOpTqEEZyTP/8UOLz8yDZSJxvwEgnSAY8k/CxnBiKDB/HFP2
+         /LhauMtZVIQ58sqhq/5xYY6JWgxEBAZN/xX+LRQe33OJbdb8UbV6P8v2Hn4XPRLOzmeO
+         QXW6e77T0ToupPvf6UtNmkQWori17I+TeZ5cbeLkIDh95cBc9YJngMRoilFJBFDBTJfv
+         SV7oZr4Lam7TlTFG4TYyyjYUNvDsTohEQ9XwqTHQfRCO1+s18FSsg58I3c8XUaWdbIbb
+         gIc0WtdfYciYOk2DvWuDP8zNh4+0rygK+kQG5ThLnnDx1Ppbdwu3ja95XEFhiVcJSiij
+         M48Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=DoY/1QDp8DLaQ+uV4dqJsjkJ0+4DB+nziz9sbkQeYL0=;
-        b=K+/XryvpNqhQkVJFQqjrQG25FRzPSAv0fX985hgsaSvO3yXDxUrA56z060B6Xwe6gA
-         VzB4eOc0Bta4+8IfviHoPtp656vsXJFRWHvO70SwmWU3JYt9SKxH76GFcOczScIIK//k
-         JK/Hf5I0laq46nr9DHDMIiGp3/YYWYQ03fsKwfRU6lAGd0hJ3EOyBKTSoUyWnAJkdMku
-         0N/66wxz7UY5453nhxhgDeXhYfsRgLgBg/mB+cIv5yYCGTY0PE6SGjPwUbXEUzcvyUXz
-         jTy+4nHgaxPzHE5Dh+dq5ADZePma77NC3kthlBJc2b3P2ejdT934cl9bJVRU2y8XFEoQ
-         0XOA==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=A2IPqO8My7+g2aQ2CPPds+GGz3tnCFkMYnx9rkmowbs=;
+        b=wfYDWy7G6G044lrddqdyTgMihLVf97JW1alNkpPUyYmPvlcyZctXnUeM7QvxKy3U54
+         /dOYk1oay9AQWNHRjaKK9SoJzhzURxaZ7/gJqoqKn8TaVTfQb0Q9BK4tkcLORnX7F7dm
+         zmWUD3RoSS6/GrOGSlkdldpEB7lb+dnk1i7cUHrnyHIZxcC67c5jODGp/wVHYtWM3ESz
+         pavt/3SNnDKGuamTgUflKFgK+o9TfPuQS+IYOVN/9BeLlrzAz++a5piS2oPSck24UwBS
+         MZ17SMH9N2mTiZ1PYEzlbFVYVI9iKTGPuyO1McBGHAM3yq9RB4MsMDXHFw3KFa+IvBUr
+         A5gA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GREEoH7W;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IWXJy/3e";
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <eafanasova@gmail.com>
-Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com. [2a00:1450:4864:20::144])
-        by gmr-mx.google.com with ESMTPS id v18si46157edx.4.2020.10.23.03.53.17
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com. [2607:f8b0:4864:20::62c])
+        by gmr-mx.google.com with ESMTPS id r141si952416pgr.5.2021.04.13.04.00.39
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Oct 2020 03:53:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) client-ip=2a00:1450:4864:20::144;
+        Tue, 13 Apr 2021 04:00:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) client-ip=2607:f8b0:4864:20::62c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GREEoH7W;
-       spf=pass (google.com: domain of eafanasova@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=eafanasova@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IWXJy/3e";
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62c as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-lf1-x144.google.com with SMTP id a7so1521513lfk.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 23 Oct 2020 03:53:17 -0700 (PDT)
+Received: by mail-pl1-x62c.google.com with SMTP id h20so8014503plr.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 04:00:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=DoY/1QDp8DLaQ+uV4dqJsjkJ0+4DB+nziz9sbkQeYL0=;
-        b=GREEoH7WDTtOzxU+zPJKEppE3GayWYCrQsI+y8TUv9wqfTuauMpkBqQx7tqJGnYvcv
-         HZePo9/ZKUtjnrwjR8HLIjc3dQR5Wfi9spx8s/zh6ICi+zffy80f7kBxc19qsTre+4iM
-         6DEbuyDlHqr2fhBnBbg4pbiZmsH4wp/uotTtaRNU0SxOh4HalYpxwQW5AN4ZdRSxUbXC
-         FD5RHuyvnHUYIfLjsiqNcUCbXqZ1AccXG+DPaXoG3hSxpB7LaK/XSqpTdM1kWZVl/YE5
-         oseCZhANTj1t/DGvcBrwwnDcw/N5LmogYcUwCZ7FHL8eoa5k6BjCELyfyhWkLHRxy0BT
-         s7JA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=A2IPqO8My7+g2aQ2CPPds+GGz3tnCFkMYnx9rkmowbs=;
+        b=IWXJy/3eCQ9wrYX4wDMDoBSXlvDioLUOwRwW7HXRuN1ud3h8dWb/emC2b40W9OXO3U
+         OtZHUHJKchtl7d9x69X8CUtmtTNXIODznLcANtFZ9je3MAUKDZUecBxinXaYZ+HZZNK7
+         PfOAcujMoMmuE4XK6v25mTbLBRgVmA/1xX50I62zyJzg08e3v6msgnCpzggX3slIdxA+
+         P4YUrtCwlke6iGZonP+5QT61/P/4yzResTBBqY+y60b56y5jl+KP5E6h+jKjl84xIk3W
+         fzAmRKwROABGsyR82AGOUKYengiTQSs4uChnIEasfpijnjhHI7P8u8OtYNtJkYNMI1eU
+         pgqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=DoY/1QDp8DLaQ+uV4dqJsjkJ0+4DB+nziz9sbkQeYL0=;
-        b=kP6OdilaUFJtJLlQ0d8IHHrEyd9tfkpS22q84xOF9J2qjiXUhxoXur9KiuQhHH49Jy
-         t1FYZYOLH43hsDwDsR6NmkioNjx3wvCyFjPLEF5S9up8EUzUCCeNJPpPmU8YH2LsvYt5
-         48p/bDrx8ivgYJAyB+wUxTm/nakWuzmpPa4hoUyQralpLYApn0KFBT9uVulf8Mztyi5p
-         HuKx+exusBDrsvC9Bv29LC74KTp6+gv8uXDcjgyNJyDV0vruxH5tApE5fvcEX16JJk6R
-         QVaD8aLlG/i8DPCohEXSCnNWjY24IMlGV5i7NNweN+wuZrVYKPmj2qIqQYgUPhrzeYn1
-         ZLEg==
-X-Gm-Message-State: AOAM530hGf4diDoEqM3C17SJcQHdLHgBg2Bkki9GocAlBxvN4udSZw9k
-	YGI1HsGCiO98sCCFL/Qn+3A=
-X-Received: by 2002:a19:2302:: with SMTP id j2mr511650lfj.78.1603450396732;
-        Fri, 23 Oct 2020 03:53:16 -0700 (PDT)
-Return-Path: <eafanasova@gmail.com>
-Received: from localhost.localdomain (37-145-186-126.broadband.corbina.ru. [37.145.186.126])
-        by smtp.gmail.com with ESMTPSA id f22sm102575lfm.172.2020.10.23.03.53.15
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=A2IPqO8My7+g2aQ2CPPds+GGz3tnCFkMYnx9rkmowbs=;
+        b=pNnA1/ZZ5petA00WMW4v3xbHF56vNL6shXnCnqNQtIcW7Ux9ZDkaS92Z+mBugcQdPt
+         ngy9fTbg/9lh7cvgC311Ak9tUj0a4ds7++ngayf6h/i/1ZhaMMtC16bGOxE7QN0lnkhL
+         iQLYrhLq4JJYPg3UOoPRclinOqO8tm/RThHz/1cxGDzvricNvczTr0L1yGlWYXElyIEP
+         uh2Ve2AVAAOkr1+R9crI+ji86UH/yonO0F7p71RDtd7uxd4UFQRpNfJenl12SQnySDw4
+         9TJeRj+nriip1Gdm1ffDXXfzkpomDqVE3aVoiU8hcEFwXQNdXElo4h069h9CSRr3s01R
+         e6ng==
+X-Gm-Message-State: AOAM530mMcOs9en2gbGxNaIeADiEgRKNLF4WLfn46hSfQ3HIhOOn1Vhg
+	VgexrKUHXyT2WCUZn50yQYg=
+X-Received: by 2002:a17:902:b40e:b029:e6:837f:711 with SMTP id x14-20020a170902b40eb02900e6837f0711mr31093234plr.2.1618311638686;
+        Tue, 13 Apr 2021 04:00:38 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id e1sm14299002pgl.25.2021.04.13.04.00.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Oct 2020 03:53:16 -0700 (PDT)
-From: Elena Afanasova <eafanasova@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: devel@driverdev.osuosl.org,
-	outreachy-kernel@googlegroups.com,
-	Elena Afanasova <eafanasova@gmail.com>
-Subject: [PATCH] staging/rtl8712: replace (precvframe == NULL) with (!precvframe)
-Date: Fri, 23 Oct 2020 03:51:09 -0700
-Message-Id: <20201023105109.5905-1-eafanasova@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        Tue, 13 Apr 2021 04:00:38 -0700 (PDT)
+Date: Tue, 13 Apr 2021 16:30:30 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: Joe Perches <joe@perches.com>
+Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+	mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH 4/6] staging: rtl8192e: matched alignment with open
+ parenthesis
+Message-ID: <YHV5zikK8CUheULV@kali>
+References: <YHEA2Te3Hik5J39t@kali>
+ <f5fe04d62b22eb5e09c299e769d9b9d8917f119c.camel@perches.com>
+ <YHEMrQdEFpXgmMh/@kali>
+ <04fcc5ac37f750e335447aee57da5aad072e321d.camel@perches.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <04fcc5ac37f750e335447aee57da5aad072e321d.camel@perches.com>
 
-Correct the code style for comparison to NULL. Reported by checkpatch.pl.
-
-Signed-off-by: Elena Afanasova <eafanasova@gmail.com>
----
- drivers/staging/rtl8712/rtl871x_recv.h | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl871x_recv.h b/drivers/staging/rtl8712/rtl871x_recv.h
-index e83c256e1474..ea1aad4a5561 100644
---- a/drivers/staging/rtl8712/rtl871x_recv.h
-+++ b/drivers/staging/rtl8712/rtl871x_recv.h
-@@ -136,7 +136,7 @@ int recv_func(struct _adapter *padapter, void *pcontext);
- static inline u8 *get_rxmem(union recv_frame *precvframe)
- {
- 	/* always return rx_head... */
--	if (precvframe == NULL)
-+	if (!precvframe)
- 		return NULL;
- 	return precvframe->u.hdr.rx_head;
- }
-@@ -144,7 +144,7 @@ static inline u8 *get_rxmem(union recv_frame *precvframe)
- static inline u8 *get_recvframe_data(union recv_frame *precvframe)
- {
- 	/* always return rx_data */
--	if (precvframe == NULL)
-+	if (!precvframe)
- 		return NULL;
- 	return precvframe->u.hdr.rx_data;
- }
-@@ -154,7 +154,7 @@ static inline u8 *recvframe_pull(union recv_frame *precvframe, sint sz)
- 	/* used for extract sz bytes from rx_data, update rx_data and return
- 	 * the updated rx_data to the caller
- 	 */
--	if (precvframe == NULL)
-+	if (!precvframe)
- 		return NULL;
- 	precvframe->u.hdr.rx_data += sz;
- 	if (precvframe->u.hdr.rx_data > precvframe->u.hdr.rx_tail) {
-@@ -171,7 +171,7 @@ static inline u8 *recvframe_put(union recv_frame *precvframe, sint sz)
- 	 * return the updated rx_tail to the caller
- 	 * after putting, rx_tail must be still larger than rx_end.
- 	 */
--	if (precvframe == NULL)
-+	if (!precvframe)
- 		return NULL;
- 	precvframe->u.hdr.rx_tail += sz;
- 	if (precvframe->u.hdr.rx_tail > precvframe->u.hdr.rx_end) {
-@@ -189,7 +189,7 @@ static inline u8 *recvframe_pull_tail(union recv_frame *precvframe, sint sz)
- 	 * updated rx_end to the caller
- 	 * after pulling, rx_end must be still larger than rx_data.
- 	 */
--	if (precvframe == NULL)
-+	if (!precvframe)
- 		return NULL;
- 	precvframe->u.hdr.rx_tail -= sz;
- 	if (precvframe->u.hdr.rx_tail < precvframe->u.hdr.rx_data) {
--- 
-2.25.1
-
+On Fri, Apr 09, 2021 at 07:31:53PM -0700, Joe Perches wrote:
+> On Sat, 2021-04-10 at 07:55 +0530, Mitali Borkar wrote:
+> > On Fri, Apr 09, 2021 at 07:07:09PM -0700, Joe Perches wrote:
+> > > On Sat, 2021-04-10 at 07:05 +0530, Mitali Borkar wrote:
+> > > > Matched the alignment with open parenthesis to meet linux kernel coding
+> > > > style.
+> > > > Reported by checkpatch.
+> > > []
+> > > > diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+> > > []
+> > > > @@ -154,7 +154,7 @@ bool IsHTHalfNmodeAPs(struct rtllib_device *ieee)
+> > > > �	    (net->ralink_cap_exist))
+> > > > �		retValue = true;
+> > > > �	else if (!memcmp(net->bssid, UNKNOWN_BORADCOM, 3) ||
+> > > > -		!memcmp(net->bssid, LINKSYSWRT330_LINKSYSWRT300_BROADCOM, 3) ||
+> > > > +		 !memcmp(net->bssid, LINKSYSWRT330_LINKSYSWRT300_BROADCOM, 3) ||
+> > > > �		!memcmp(net->bssid, LINKSYSWRT350_LINKSYSWRT150_BROADCOM, 3) ||
+> > > > �		(net->broadcom_cap_exist))
+> > > 
+> > > checkpatch is a stupid script.
+> > > Look further at the code not just at what checkpatch reports.
+> > > Align all the contination lines, not just the first one.
+> > > 
+> > Sir, I have aligned them in last patch of this patchset.
+> 
+> This sort of change should not require an additional patch.
+>
+So now should I compile this as a patchset of 5, removing the last patch
+of alignment?
+> 
 
