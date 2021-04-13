@@ -1,137 +1,153 @@
-X-GM-THRID: 6395948496496623616
-X-Received: by 10.46.5.136 with SMTP id 130mr3465848ljf.6.1489172805033;
-        Fri, 10 Mar 2017 11:06:45 -0800 (PST)
+X-GM-THRID: 6950352611043180544
+X-Received: by 2002:a17:902:a502:b029:eb:1c07:482e with SMTP id s2-20020a170902a502b02900eb1c07482emr6477892plq.10.1618325605249;
+        Tue, 13 Apr 2021 07:53:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.25.145.26 with SMTP id t26ls152209lfd.48.gmail; Fri, 10 Mar
- 2017 11:06:44 -0800 (PST)
-X-Received: by 10.25.156.74 with SMTP id f71mr3086916lfe.26.1489172804424;
-        Fri, 10 Mar 2017 11:06:44 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by gmr-mx.google.com with ESMTPS id p144si28734wme.2.2017.03.10.11.06.44
+Received: by 2002:a17:90a:2f88:: with SMTP id t8ls1816657pjd.1.gmail; Tue, 13
+ Apr 2021 07:53:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMPjvTkYH1S9gGtnK/F64mP8o0BMLaSnwnxnDk2iTW+0csjYfL/k3KFEdMvzpmwpX6yPq4
+X-Received: by 2002:a17:902:d4c2:b029:ea:deb1:dfd5 with SMTP id o2-20020a170902d4c2b02900eadeb1dfd5mr14356178plg.79.1618325604107;
+        Tue, 13 Apr 2021 07:53:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618325604; cv=none;
+        d=google.com; s=arc-20160816;
+        b=B2AhSa5+4E7osRcBEY0FSzi5S+jUi5J6vyuBDFURrTtTPk8Yh4NPVtP3hCThu4luW2
+         3BapowhhigPl+tFtFuzAmn+7FifJ6tKviRNdE8JNZrSX0cy94kIZ06ZAunDaQf1RLEk+
+         cNDCWzvgiZy5c4s0i7mzDjSxiyBFAR8OMxilxLKDX5Vs5YBs85ZiQgDZ8S3fKAA7rhnq
+         s97VBbzj1NwTbuuCVXmeRkLRvznQO3xmbaAccu9KKfM/ru85Vo1zzohRJSNN+btfCAWf
+         z0053VWmLVT+utT2Az8YmoW/8FtdGAdv105PTzqfj3jGGQVhdJi0NuR/czcrMB6WSCtr
+         NbBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:ironport-sdr:ironport-sdr;
+        bh=q5pquHIEc4U25RCRjRUEDRmK7Dh4a2oVXyK/990PndM=;
+        b=H2jlCg6A/IxE/X3r3CKqESRsuKj6/pwRIt+Tia20+gqTdSbrnFJNOuD9t5vyy/e84D
+         HtNfLGbnBH7JtPZMM+Qf4Ue+gonV4ACZvqbluEClYh9DgqvGg64B5JQ1BqJwHTWcXxDg
+         XiLGcSuDoPvB1G6LbJfdY7+rJHH6ZS09ztIWKEPU4x01xj82zwz/iBEuRYVOCBkCHmyk
+         24LOA7935GsdfAdF4s0HrRWBVhyWMNs5XuMzpGZpzPVrI44FH53/Qs8RQf5Tdp0Vfuyn
+         XxmaYqaq6TMof0yFGKEom7vovPxoIJT65gbUqqvJWlXnQMKx9NkWcQiADzxGWm7oNsE5
+         Lhng==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
+        by gmr-mx.google.com with ESMTPS id f16si1504plg.0.2021.04.13.07.53.23
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 10 Mar 2017 11:06:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Apr 2021 07:53:24 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of diaconitatamara@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=diaconitatamara@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id n11so489273wma.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 10 Mar 2017 11:06:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=bmxi6GT3zYPDtKA30B9sFaq9nNT5N1l5GgCTmcv35Ko=;
-        b=BZkQvoXdbsggltw7lKKRtU07JsxQHv7ZFbuw41dgARbVM2AT3+4qyO5PFMCPyppAYe
-         i32eIQDw92Ifx69GRyKky92QPbTOE+srbgvtVIBa1Aeq/s6NsERSiD2PY7C+Z0GQIy3x
-         JeK0nVMh5rlInjybBbCLOvqLX5v+PkIZze2tvVeJ7jt7wGVVGQR4apvK1Z5Y9fnAei0w
-         yBbVmcXtM7ZxsL2rcurJgU16nZIAsba4UqS5KbLiw4RwmTBrRfyUXX9FCRpkbLAcHr/A
-         UqqHSN6YeRgg904+R4KCLYYQ5+zaWszYwufRmypx21ihRSKOu6CfDbyYJeylRVwRQ7WK
-         ZwyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bmxi6GT3zYPDtKA30B9sFaq9nNT5N1l5GgCTmcv35Ko=;
-        b=GgqqsQhJciAD5t/hpd+txYGFUPuFbaSm3oT8McNLICMS28P/GJhAMJLIwpymqSWggu
-         e3bPC9ZUgJMF7jPPCm/snBm7vtp3zJiARSaFR3flvdbX6o3MPcsanPQxxTQXNbA52mF0
-         ezjjFZxq+R+ryKhfJmADPkVWvvg2ImzirSKF4e4fsWY797sBOzAS1OwoEwBDBDjaEFSP
-         ClU4TKAZ+RqBAehAeybLqGcgCwW2pd8HOtmxbVepg4idCF5fEXtQR3Cp1uOCGwYMFlAS
-         C7kA0AG4yBR+3KCeWgKx98TLvVPARz1IFxqshFM0SPMB2E2etUHeRkwjhUohOgALpxzn
-         DsvQ==
-X-Gm-Message-State: AFeK/H3gwBnebRCN3xlH3rMs2NV2a9nINbca8aYNHT7DNg3T679s9YoQegA/nWIJpzgylg==
-X-Received: by 10.28.153.196 with SMTP id b187mr403246wme.53.1489172804183;
-        Fri, 10 Mar 2017 11:06:44 -0800 (PST)
-Return-Path: <diaconitatamara@gmail.com>
-Received: from tamara ([2a02:2f0b:8130:11ea:9935:36c4:c373:a2cc])
-        by smtp.gmail.com with ESMTPSA id 5sm14030680wrd.58.2017.03.10.11.06.43
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 10 Mar 2017 11:06:43 -0800 (PST)
-From: Tamara Diaconita <diaconitatamara@gmail.com>
-X-Google-Original-From: Tamara Diaconita <diaconita.tamara@gmail.com>
-To: aditya.shankar@microchip.com,
-	ganesh.krishna@microchip.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Tamara Diaconita <diaconita.tamara@gmail.com>
-Subject: [PATCH 1/7] staging: wilc1000: Remove unnecessary brackets
-Date: Fri, 10 Mar 2017 21:06:41 +0200
-Message-Id: <20170310190641.19815-1-diaconita.tamara@gmail.com>
-X-Mailer: git-send-email 2.9.3
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: +/TA+Vl44XsBk05XNL3DzHjsNHatxeVgW2pHFHVoGqA+pb1wxI5nzs4dvavqLCTzFo++MvPBTO
+ 27UqXG0q2lWg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9953"; a="194456665"
+X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; 
+   d="scan'208";a="194456665"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2021 07:53:22 -0700
+IronPort-SDR: ThDZnDaLHvuc3kj4p9CLOj8eCMjDN7c9Gh2EuxNxgL6sIYP7mPiWT3hhP/eptiuAKNHHa6pZn0
+ geGfOVXQD4Gg==
+X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; 
+   d="scan'208";a="521623505"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2021 07:53:18 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with ESMTP id 5D7352082C;
+	Tue, 13 Apr 2021 17:53:15 +0300 (EEST)
+Date: Tue, 13 Apr 2021 17:53:15 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Greg KH <gregkh@linuxfoundation.org>,
+	Mitali Borkar <mitaliborkar810@gmail.com>, bingbu.cao@intel.com,
+	tian.shu.qiu@intel.com, mchehab@kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH 1/1] staging: ipu3-imgu: Move the UAPI header from
+ include under include/uapi
+Message-ID: <20210413145315.GW3@paasikivi.fi.intel.com>
+References: <20210412111120.31625-1-sakari.ailus@linux.intel.com>
+ <YHWgbZTDAWBX9EpR@pendragon.ideasonboard.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <YHWgbZTDAWBX9EpR@pendragon.ideasonboard.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Improved code readability by removing unnecessary brackets and deleting
-tabs to indent.
+Hi Laurent,
 
-Signed-off-by: Tamara Diaconita <diaconita.tamara@gmail.com>
----
- drivers/staging/wilc1000/wilc_spi.c | 44 +++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 24 deletions(-)
+On Tue, Apr 13, 2021 at 04:45:17PM +0300, Laurent Pinchart wrote:
+> Hi Sakari,
+> 
+> Thank you for the patch.
+> 
+> On Mon, Apr 12, 2021 at 02:11:20PM +0300, Sakari Ailus wrote:
+> > The header defines the user space interface but may be mistaken as
+> > kernel-only header due to its location. Add "uapi" directory under
+> > driver's include directory and move the header there.
+> > 
+> > Suggested-by: Greg KH <gregkh@linuxfoundation.org>
+> > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> > ---
+> >  Documentation/admin-guide/media/ipu3.rst      | 35 ++++++++++---------
+> >  .../media/v4l/pixfmt-meta-intel-ipu3.rst      |  2 +-
+> >  .../ipu3/include/{ => uapi}/intel-ipu3.h      |  0
+> >  drivers/staging/media/ipu3/ipu3-abi.h         |  2 +-
+> >  4 files changed, 20 insertions(+), 19 deletions(-)
+> >  rename drivers/staging/media/ipu3/include/{ => uapi}/intel-ipu3.h (100%)
+> > 
+> > diff --git a/Documentation/admin-guide/media/ipu3.rst b/Documentation/admin-guide/media/ipu3.rst
+> > index f59697c7b374..d6454f637ff4 100644
+> > --- a/Documentation/admin-guide/media/ipu3.rst
+> > +++ b/Documentation/admin-guide/media/ipu3.rst
+> > @@ -234,22 +234,23 @@ The IPU3 ImgU pipelines can be configured using the Media Controller, defined at
+> >  Running mode and firmware binary selection
+> >  ------------------------------------------
+> >  
+> > -ImgU works based on firmware, currently the ImgU firmware support run 2 pipes in
+> > -time-sharing with single input frame data. Each pipe can run at certain mode -
+> > -"VIDEO" or "STILL", "VIDEO" mode is commonly used for video frames capture, and
+> > -"STILL" is used for still frame capture. However, you can also select "VIDEO" to
+> > -capture still frames if you want to capture images with less system load and
+> > -power. For "STILL" mode, ImgU will try to use smaller BDS factor and output
+> > -larger bayer frame for further YUV processing than "VIDEO" mode to get high
+> > -quality images. Besides, "STILL" mode need XNR3 to do noise reduction, hence
+> > -"STILL" mode will need more power and memory bandwidth than "VIDEO" mode. TNR
+> > -will be enabled in "VIDEO" mode and bypassed by "STILL" mode. ImgU is running at
+> > -“VIDEO” mode by default, the user can use v4l2 control V4L2_CID_INTEL_IPU3_MODE
+> > -(currently defined in drivers/staging/media/ipu3/include/intel-ipu3.h) to query
+> > -and set the running mode. For user, there is no difference for buffer queueing
+> > -between the "VIDEO" and "STILL" mode, mandatory input and main output node
+> > -should be enabled and buffers need be queued, the statistics and the view-finder
+> > -queues are optional.
+> > +ImgU works based on firmware, currently the ImgU firmware support run 2 pipes
+> > +in time-sharing with single input frame data. Each pipe can run at certain mode
+> > +- "VIDEO" or "STILL", "VIDEO" mode is commonly used for video frames capture,
+> > +and "STILL" is used for still frame capture. However, you can also select
+> > +"VIDEO" to capture still frames if you want to capture images with less system
+> > +load and power. For "STILL" mode, ImgU will try to use smaller BDS factor and
+> > +output larger bayer frame for further YUV processing than "VIDEO" mode to get
+> > +high quality images. Besides, "STILL" mode need XNR3 to do noise reduction,
+> > +hence "STILL" mode will need more power and memory bandwidth than "VIDEO" mode.
+> > +TNR will be enabled in "VIDEO" mode and bypassed by "STILL" mode. ImgU is
+> > +running at “VIDEO” mode by default, the user can use v4l2 control
+> > +V4L2_CID_INTEL_IPU3_MODE (currently defined in
+> > +drivers/staging/media/ipu3/include/uapi/intel-ipu3.h) to query and set the
+> > +running mode. For user, there is no difference for buffer queueing between the
+> > +"VIDEO" and "STILL" mode, mandatory input and main output node should be
+> > +enabled and buffers need be queued, the statistics and the view-finder queues
+> > +are optional.
+> 
+> The reflow of the whole paragraph is a bit painful to review.
 
-diff --git a/drivers/staging/wilc1000/wilc_spi.c b/drivers/staging/wilc1000/wilc_spi.c
-index 5e28adc..b3c0594 100644
---- a/drivers/staging/wilc1000/wilc_spi.c
-+++ b/drivers/staging/wilc1000/wilc_spi.c
-@@ -946,39 +946,35 @@ static int wilc_spi_read_int(struct wilc *wilc, u32 *int_status)
- 		}
- 		tmp = (byte_cnt >> 2) & IRQ_DMA_WD_CNT_MASK;
- 
--		{
--			int happended, j;
-+		int happended, j;
- 
--			j = 0;
--			do {
--				u32 irq_flags;
-+		j = 0;
-+		do {
-+			u32 irq_flags;
- 
--				happended = 0;
-+			happended = 0;
- 
--				wilc_spi_read_reg(wilc, 0x1a90, &irq_flags);
--				tmp |= ((irq_flags >> 27) << IRG_FLAGS_OFFSET);
-+			wilc_spi_read_reg(wilc, 0x1a90, &irq_flags);
-+			tmp |= ((irq_flags >> 27) << IRG_FLAGS_OFFSET);
- 
--				if (g_spi.nint > 5) {
--					wilc_spi_read_reg(wilc, 0x1a94,
--							  &irq_flags);
--					tmp |= (((irq_flags >> 0) & 0x7) << (IRG_FLAGS_OFFSET + 5));
--				}
-+			if (g_spi.nint > 5) {
-+				wilc_spi_read_reg(wilc, 0x1a94,
-+						  &irq_flags);
-+				tmp |= (((irq_flags >> 0) & 0x7) << (IRG_FLAGS_OFFSET + 5));
-+			}
- 
--				{
--					u32 unkmown_mask;
-+				u32 unkmown_mask;
- 
--					unkmown_mask = ~((1ul << g_spi.nint) - 1);
-+				unkmown_mask = ~((1ul << g_spi.nint) - 1);
- 
--					if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
--						dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
--						happended = 1;
--					}
-+				if ((tmp >> IRG_FLAGS_OFFSET) & unkmown_mask) {
-+					dev_err(&spi->dev, "Unexpected interrupt (2): j=%d, tmp=%x, mask=%x\n", j, tmp, unkmown_mask);
-+					happended = 1;
- 				}
--				j++;
--			} while (happended);
--		}
-+			j++;
-+		} while (happended);
- 
--		*int_status = tmp;
-+	*int_status = tmp;
- 	}
- 
- _fail_:
+Yes. The only difference there is still the addition of "/uapi". :-)
+
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+Thank you!
+
 -- 
-2.9.3
-
+Sakari Ailus
 
