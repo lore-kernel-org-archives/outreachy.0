@@ -1,152 +1,108 @@
-X-GM-THRID: 6531834360584208384
-X-Received: by 10.107.200.68 with SMTP id y65mr3524197iof.6.1520811198680;
-        Sun, 11 Mar 2018 16:33:18 -0700 (PDT)
+X-GM-THRID: 6947867046648479744
+X-Received: by 2002:aa7:88d1:0:b029:250:855b:c250 with SMTP id k17-20020aa788d10000b0290250855bc250mr3052078pff.28.1618318619259;
+        Tue, 13 Apr 2021 05:56:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.125.79 with SMTP id b76ls1290030itc.9.gmail; Sun, 11 Mar
- 2018 16:33:17 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvf1m7oo2YfuKRh3YiKdOmOdQU6T+R0vgDQnzUZN6kKD6i8+tYEp+yH2YXrRfnVfGgPOfN3
-X-Received: by 10.36.37.18 with SMTP id g18mr3396948itg.37.1520811197598;
-        Sun, 11 Mar 2018 16:33:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520811197; cv=none;
+Received: by 2002:a17:90a:2f88:: with SMTP id t8ls1651863pjd.1.gmail; Tue, 13
+ Apr 2021 05:56:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmQun6ChcZm863U8+H5/Wvva1397efWvGU9OMyceHm5f8DZk63RJgL0FWHNvHHJ/3co/RX
+X-Received: by 2002:a17:90b:4005:: with SMTP id ie5mr4623899pjb.195.1618318618182;
+        Tue, 13 Apr 2021 05:56:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618318618; cv=none;
         d=google.com; s=arc-20160816;
-        b=N7aYlf4hWY8NkVhH23v7LyoVrB0PZ+GJcF60NTEHAp5liulZjI8LQzeBw7eE9Bq+7w
-         AyCJZmcHHBGleVGRuO34j0LAVuN/PXeEL7mobc7Y/QIMRpt2pdmajY/kNkOVyS5/QJHA
-         56hzBsvyPYv+w9pglbLDyE5rrX2ZSfcNj3cdxOV4yWNIYDaZbM8e16IGtOTUE7Q+Tsl5
-         6ArQRbyovxwiFIdCTx+j0tocWpkPhe6HlKF1TVoUYAviA341qfyjrvqr04FxIEMMMbZw
-         RY93d8EHk9ZpP8sIyOhNZFvAnkzTVfnCoQD/lWAaxdq86bMfIQym5fTQcMj81AwGTBiy
-         Asnw==
+        b=EkzG8DO0cNDd4+VP07wbIEdb8x/d1jr5Jj7TniAytwzSH2n6yT0036VkKELTC5ZAE2
+         06zhWQtTEiF4dgxd8+F9AMGmENGNJPdQqTXaKHIS9yi5Q42g40g/JBnty0GcIPKd5lSi
+         Sf0J7GA6iJRqLFg2LdiFQbamUAvl2efCxn3c3r+cIgjjrNG67L+CgmALqX3UAQBfhHIR
+         z+V9CRTa8bd1GYfGN6RmmfGkLPVDWVWSZt1LuwpkPAfjWX+YmXIzJhc0SEqE2sC+Puoj
+         6G0DQiDhKgj05GFIjoiqLayBdSdVyHo0q5fReVNuUYUcg0xt4fckM7AgRWo+2BMF/B9r
+         LK1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=8vcoXRMMACQJorcngg05+vXaEpqRDjofXjfpIFpiWU8=;
-        b=h9xGUN1BBoPtPKOv3pYz0vc3ElyGFEaxus/VVykhdDufmqa9QTOlCmTQn4iOTG1Mun
-         7ZgjDBAmZI2gcoJrdFHfvAA+b14tXlxThuYCp3sNB5GTMcdrFE/uxyCiouUywqZyKK7y
-         BnO4SpZ8Id4y3uqLM7ktZiiSaqQrMoj2Bzp+d4MAXXNWMv1SfanuHCDxoNa6XrM8ksr1
-         rLwVelfr2rV1IpBKDItj51mrqN7uHcZlYRwerPDXttncv4gJ7rQ1+S4LpH6fGUpUOIBw
-         cDYxwXqtdYptjyhfC+Gbos5V7ZYp6ly1q5/ORKSKCLJ56okgLYXDDIjn4S79zyBCcZ3P
-         NJlw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=kdLWZIMHb3SQudb0jxNMATYyODvy77jL7zBOLEtpNVw=;
+        b=TWWiESVeto9Lo0Hciit2qg89ghfeFcv8zYV5Jn1iI4B5K4yUvNxWmyPegv+ECxliWq
+         /E2DL8L5Rw7VxJmJZuWrMI8rupDe0D6AFODHer9Wc6mn9UtvJzeXYK6SYOVqUKGXLKj/
+         hRXfKGNnBUS0/T6L0rKMQG5LKsIWSxAYxNeNROPtuqo9a5O/wxO0vr/2B+E8/Q2rCxs6
+         y1KMSiP4Yz1e3islh5MW0n7tP7AjN/sVeGf5gmv6wt1IUKkb82V06pJeIjxLfwgQ4M65
+         oDMxzBQ3Sq40fUgbu6+odGsjG7Rj8O1+ggL1zgk4G4Cva/TcZpvmkFB40pARYXM1ihyG
+         HwVg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pD2LC5tx;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
-        by gmr-mx.google.com with ESMTPS id h79si251699iof.0.2018.03.11.16.33.17
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=z6+dZckm;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
+        by gmr-mx.google.com with ESMTPS id t5si1293509pgv.4.2021.04.13.05.56.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 11 Mar 2018 16:33:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
+        Tue, 13 Apr 2021 05:56:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pD2LC5tx;
-       spf=pass (google.com: domain of hamohammed.sa@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=hamohammed.sa@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt0-x242.google.com with SMTP id y6so17007042qtm.7
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Mar 2018 16:33:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=8vcoXRMMACQJorcngg05+vXaEpqRDjofXjfpIFpiWU8=;
-        b=pD2LC5txW+qBmjRLV3LexmnPR3S7NpIXcB6rPMyAlYPqBSlVSnaj7u0gDXc6Th10u+
-         EVlyQmfC+RufnmXAt5GbLriWF/PHwp/rhAYhnr65ClGjS/9wuMe3QCbahmjrerHXtOa8
-         YmRrm1gakc480zMS4783I1NbRC0FrW5K068G+GeTLPCLr2CJzPMFuxupj1LNwiRZ8rZt
-         xds9cAO/aGcDX5Pti4HNJGYigfd7ZHn4ED+BweJ3pwgvYZksMy0bnM9aOxsFZ5LaCEwk
-         QVaypMqXYhEATIN9e3C/2pQamGC2+CewCgWcItt5Nx1eGYYMMKENRSds7R7HKD3EV8gU
-         VTuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=8vcoXRMMACQJorcngg05+vXaEpqRDjofXjfpIFpiWU8=;
-        b=XU++DcwZvYRMkE1bAHUQygJN+Vw4g3pJR8VmFagVoK3eJIvkfSPYqcZNR5l4fLp/hA
-         B6B99Lti9rghlD/nR/Q5HYvPQbnX0NyDOcklEXCfJjmroE37khuVCdbZ+Aa4YKf4/5w7
-         DOUPV8Ch6u5rcYYVSUlYzmo0hFPIPb8mvTSnh+GSs26AazLpk9QzG+TF17swfJK9u/UJ
-         8hrU2Y0EU1qith+rPsbTgB9NYPpdATAPHmLFYrvI5tFbqX+l7p8GKKbKfCjeQpOEWqAi
-         C6gZ55NqOa8xS/44SJfL1PCjx1TjVegbBY8eBk9leEnt67uVjjk52BT4Yo/fyiG4qTny
-         0BjQ==
-X-Gm-Message-State: AElRT7GHuHBjROOVZFYA/sRJmXdkevcZ6QFAM3YXQnmY1Y9j9koN/wWl
-	alcMDoVypMOJCEXdFf8kh4THijFe
-X-Received: by 10.200.35.120 with SMTP id b53mr9231022qtb.262.1520811196821;
-        Sun, 11 Mar 2018 16:33:16 -0700 (PDT)
-Return-Path: <hamohammed.sa@gmail.com>
-Received: from Haneen (c-73-238-34-189.hsd1.ma.comcast.net. [73.238.34.189])
-        by smtp.gmail.com with ESMTPSA id d36sm4431892qtk.47.2018.03.11.16.33.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 11 Mar 2018 16:33:16 -0700 (PDT)
-Date: Sun, 11 Mar 2018 17:33:13 -0600
-From: Haneen Mohammed <hamohammed.sa@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: VMware Graphics <linux-graphics-maintainer@vmware.com>,
-	Sinclair Yeh <syeh@vmware.com>,
-	Thomas Hellstrom <thellstrom@vmware.com>,
-	David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch,
-	seanpaul@chromium.org, dri-devel@lists.freedesktop.org
-Subject: [PATCH DRM] drm/vmwgfx: replace drm_*_unreference with drm_*_put
-Message-ID: <20180311233313.GA19721@Haneen>
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=z6+dZckm;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+	by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13DCn8N7159369;
+	Tue, 13 Apr 2021 12:56:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=kdLWZIMHb3SQudb0jxNMATYyODvy77jL7zBOLEtpNVw=;
+ b=z6+dZckmzZhuYl2HFD91SDizhxB0Ag4v8uHgc/VNfz2EO9hiteFnxiJ5GWGu7doE5G/e
+ vciQDRMQU33q4JdqbfZQ/JjDW8Vm9A7uhKW36t/61e5yptpJGaAmcqAqRs0jOd9lBbkr
+ Y1YaFtQse8QRYCrfd5+m2WiOFRtKxprvIx8Ozrlz735iDyC/W+Yc4ViEav7PmJHTiiz/
+ HA8xLRRi3icKLSx4kBBlFcV962z/9cqOlbG3a/ibPRcAklWtng0zuRsqj0zvspWv5c3s
+ MKm+smub/NfZMfCwJZ7dPekRlztI3Aj67iLl12suN0lEpB50tzwKNveABNZZvk5yvp85 eA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by userp2120.oracle.com with ESMTP id 37u4nnewxb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 13 Apr 2021 12:56:55 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13DCuK55057461;
+	Tue, 13 Apr 2021 12:56:54 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+	by userp3030.oracle.com with ESMTP id 37unxwtcn2-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 13 Apr 2021 12:56:54 +0000
+Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
+	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13DCupl1032142;
+	Tue, 13 Apr 2021 12:56:51 GMT
+Received: from kadam (/102.36.221.92)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 13 Apr 2021 05:56:51 -0700
+Date: Tue, 13 Apr 2021 15:56:43 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Deborah Brouwer <deborahbrouwer3563@gmail.com>
+Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+        gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+        linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 3/4] staging: rtl8712: remove space after cast
+Message-ID: <20210413125643.GD6021@kadam>
+References: <cover.1617674639.git.deborahbrouwer3563@gmail.com>
+ <b1ba94644f5204505623ffc64614671aac30bbd8.1617674639.git.deborahbrouwer3563@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <b1ba94644f5204505623ffc64614671aac30bbd8.1617674639.git.deborahbrouwer3563@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9952 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 bulkscore=0 malwarescore=0
+ spamscore=0 adultscore=0 phishscore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104130090
+X-Proofpoint-ORIG-GUID: v4hqLfl9cFykEzjKPTu8wXtu5XpcM927
+X-Proofpoint-GUID: v4hqLfl9cFykEzjKPTu8wXtu5XpcM927
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9952 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 malwarescore=0
+ phishscore=0 suspectscore=0 mlxlogscore=999 priorityscore=1501
+ clxscore=1011 lowpriorityscore=0 spamscore=0 impostorscore=0 bulkscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104060000 definitions=main-2104130089
 
-This patch replace instances of drm_framebuffer_unreference with _put()
-suffix, because it is shorter and consistent with the kernel use of
-*_get/put() suffixes.
-This was done with the following Coccinelle script:
+This patch has already been applied, which is fine, but really all these
+casts are totally pointless and should be removed.
 
-@r@
-expression e;
-@@
-
-(
--drm_framebuffer_reference(e);
-+drm_framebuffer_get(e);
-|
--drm_framebuffer_unreference(e);
-+drm_framebuffer_put(e);
-)
-
-Signed-off-by: Haneen Mohammed <hamohammed.sa@gmail.com>
----
- drivers/gpu/drm/vmwgfx/vmwgfx_fb.c    | 2 +-
- drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/vmwgfx/vmwgfx_fb.c b/drivers/gpu/drm/vmwgfx/vmwgfx_fb.c
-index d23a18a..be7d7fb 100644
---- a/drivers/gpu/drm/vmwgfx/vmwgfx_fb.c
-+++ b/drivers/gpu/drm/vmwgfx/vmwgfx_fb.c
-@@ -500,7 +500,7 @@ static int vmw_fb_kms_detach(struct vmw_fb_par *par,
- 	}
- 
- 	if (cur_fb) {
--		drm_framebuffer_unreference(cur_fb);
-+		drm_framebuffer_put(cur_fb);
- 		par->set_fb = NULL;
- 	}
- 
-diff --git a/drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c b/drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c
-index 67f8446..c5e8eae 100644
---- a/drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c
-+++ b/drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c
-@@ -316,7 +316,7 @@ int vmw_present_ioctl(struct drm_device *dev, void *data,
- out_no_surface:
- 	ttm_read_unlock(&dev_priv->reservation_sem);
- out_no_ttm_lock:
--	drm_framebuffer_unreference(fb);
-+	drm_framebuffer_put(fb);
- out_no_fb:
- 	drm_modeset_unlock_all(dev);
- out_no_copy:
-@@ -393,7 +393,7 @@ int vmw_present_readback_ioctl(struct drm_device *dev, void *data,
- 
- 	ttm_read_unlock(&dev_priv->reservation_sem);
- out_no_ttm_lock:
--	drm_framebuffer_unreference(fb);
-+	drm_framebuffer_put(fb);
- out_no_fb:
- 	drm_modeset_unlock_all(dev);
- out_no_copy:
--- 
-2.7.4
+regards,
+dan carpenter
 
 
