@@ -1,121 +1,121 @@
 X-GM-THRID: 6950478192224239616
-X-Received: by 2002:a05:6638:ecf:: with SMTP id q15mr1604697jas.129.1618284328778;
-        Mon, 12 Apr 2021 20:25:28 -0700 (PDT)
+X-Received: by 2002:a37:9bcf:: with SMTP id d198mr8150430qke.401.1618284311123;
+        Mon, 12 Apr 2021 20:25:11 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:a38d:: with SMTP id y13ls2477671jak.1.gmail; Mon, 12 Apr
- 2021 20:25:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyuTwCe/1fj0WrNYRcePEfKm1WF/EsxgVEfl56pB5BHKHdccyhYUdjFgfm0yzQbJ4tgOnCN
-X-Received: by 2002:a05:6638:1496:: with SMTP id j22mr6999289jak.23.1618284328046;
-        Mon, 12 Apr 2021 20:25:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618284328; cv=none;
+Received: by 2002:a05:620a:12c4:: with SMTP id e4ls10391636qkl.4.gmail; Mon,
+ 12 Apr 2021 20:25:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgyeEVARxSWRhK6w+NyqYrtchE/OKtIDyYtmk4xAUbG8ZuRCSQdKlmMGSXtDp3L5nGjdyw
+X-Received: by 2002:a05:620a:1477:: with SMTP id j23mr28869201qkl.416.1618284310377;
+        Mon, 12 Apr 2021 20:25:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618284310; cv=none;
         d=google.com; s=arc-20160816;
-        b=NqhA6ZYyYRP7x/v4E0GncuJPwJ0XdM/XoSN56H5iGbuKORyG0OJbd85zwMRArdMhbi
-         XOZ8blApMWnJ2odFR/i6oQSzAtzWWPRJuKvlXW8hGNfERgI7mBF4a1Jio0+np6uEk3Ei
-         ii+XtkU8B57UkaztpSw435ytc7CIVYu0hxr8AuFNjPPIOHoL09+QKPmM3IIqnUcZAqGW
-         0+X3wBc7YNokr0CLABbUeORsvSlWKewmTH5pyLSt8DECyENOAZgd5JUsi8nNBDOMTQ6c
-         n2FzntMe4IC1H+8jOXG3OvgTysNOE/yufNVdm6BZNpL/vnWdpi0Pv6JdnS6gPoZv0aEp
-         Wqow==
+        b=SAj8WZcV7aG1f8gx/2qHZFKScELiSM4M8yF2UXdWaSpYNaEtObKQTM7iq06DK4BxiQ
+         6d7patxXHtzG4LgAYTbg/52ERK2fylCdHSR893XW5TRR05sxa/D/GXELlis7PVN3hZ1l
+         LAXKYEBeZO5R57ws0Zwf7gfGcRd0Pt9IL8SUL5EaOKAJwTkfI57LJ6SVwRaMw73GpFpH
+         8wWud9D/Ww4Du5klWuQFHA/EVjF4HlDdASdeEhLiL2Omt93uZ879RtNhRsKPRJ/UzTLm
+         2pAo7t05nm5ME7vXELNIvW0JQu0YpMdNRpx0zGh9GICfF7rqCqIwD5EVMVqn4AQ5vmvV
+         +OtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=Pb7k5gcwx2hPb9DsQiJub5fjyYCpgcCw0SGHu/Bvicc=;
-        b=TXYYkaaDGvURPgSA9STY8VV7gunHuMbdbz6wdlpPBO2z5OUzSE76ZU3KxuRgqoPhsQ
-         po4A/g5kI/iCjPqPTEYsKAKzhJa/8EJW7dwTilJvP+p9t7/mXNOj3KcuYS/R8VewUxX4
-         7IWlOdB/mjTAUHg0gCFsuQunnuteEECMYrMiPPmflRZQ1HOoLWnmnSPmVfX9/Yn2hJq3
-         ZFycDPxW0CMukIVnLsfKQVDpyY6OvXhpZpFNPdVx4jHWzcByS/c3Yh3QZzqg8Aw9u2cm
-         ZAmYTvp5eBnVJdr/lQmTcy5DzkhbQLANoOSbS4eyNCok3zlO0SNpBmjL8Z2S7Anwq2XC
-         Z9Vg==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=SRXvRUJitDAL3LVBcxgMSN2+Nyo+g/E1R/YUuhMK3zY=;
+        b=ZvSc5jzBdrojJgZs+8M/oLZbPOyWJPRutKCsNbfVIGraZ8Li1EXqgEdoBZDHetzDZo
+         Fly1x6ZIsFyRhLSg3RODFQQIjwTcXK9ytPGEkN9sh2XBwg0AGXHzkuaSSNzFIY0UryVd
+         VpqicZE9VQt/9KPMXHpe7PsW0krZ4hkCQS93MqGDtNG3Z9u8HkOqjfx1k6HIM4rzirys
+         TL/YEOESNCeArV+5QYDyN/e8ma8f95SUbaFubLHQjg2La6mWCBKiooD8UxZkjyTAXDIL
+         YxVGvjY4BKHUJMsvGnzHOR56Go2ROAbOVMrDSzdMhrYI0bNJ+HMc5BMD8u9WOdtTfLWH
+         xx0A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eyLGoPCX;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1032 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NT5wxcrM;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pj1-x1032.google.com (mail-pj1-x1032.google.com. [2607:f8b0:4864:20::1032])
-        by gmr-mx.google.com with ESMTPS id r15si790860ill.3.2021.04.12.20.25.28
+Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com. [2607:f8b0:4864:20::62e])
+        by gmr-mx.google.com with ESMTPS id z143si212291qkb.6.2021.04.12.20.25.10
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 20:25:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1032 as permitted sender) client-ip=2607:f8b0:4864:20::1032;
+        Mon, 12 Apr 2021 20:25:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) client-ip=2607:f8b0:4864:20::62e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eyLGoPCX;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1032 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NT5wxcrM;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1032.google.com with SMTP id u14-20020a17090a1f0eb029014e38011b09so3433331pja.5
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 20:25:28 -0700 (PDT)
+Received: by mail-pl1-x62e.google.com with SMTP id t22so7128688ply.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 20:25:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=Pb7k5gcwx2hPb9DsQiJub5fjyYCpgcCw0SGHu/Bvicc=;
-        b=eyLGoPCXFnG89ajHudvpOQd5GhZxWcC0Q9dKKfYJPAoqSep4Fe8iYcPs5vP/ZsRIKO
-         px/ioy62DAQ8QXrZmr5/2A/ctwuMjA11Nrzybl0vxaRtBGyKpFBInXY/U/MU4CZG4eJE
-         fsjAuu2HnocgIhyg89ojgybwY6qQHmB6x5wDZA5lGgsUjA7levkx2phhjns2LP28adyH
-         qSTTgQQnTwdADfFFcD/ukie1AWbNYyLT7mMHBwthoSG42Xyqg4Yzd06NajkkWgHU+XO/
-         0obGieEXj5aDPnMX+HwSv/lvBVIoENudyoI0+94GqlvF/+rcZaHxvsHZlVeIWHZu0vTA
-         BetQ==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=SRXvRUJitDAL3LVBcxgMSN2+Nyo+g/E1R/YUuhMK3zY=;
+        b=NT5wxcrMIElDPZAIwOHzPA+cCkYYmfN0PcrXjLMovuafkLeOokhyvZDn2+qKo1JRMw
+         yfifmdoDp0w2m5Lq8veWu5rKtEumpKNmqr5PHwjWEM9M+FvcakfBMLmH5HMQ5mVP+Y+m
+         Xc6qu+v5+bA4mn4ApziWUp4d9NSZ7y7kojwd/lKea4W7FW4qdJbG6GwkCemLFG241fRU
+         2LOd1mtDMhFJdW6M88KvI8PSK+ZpgeDOPmQ60KIxOUuea6gtP7WojxZbAjsV4dUTCPa9
+         WGSxnkmoixLKk4UHZqJul0iqUf0VQNm+Cuv3hxFjsj0qN9e8/NrkHF/Ve38cU4JU80PD
+         0Xmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=Pb7k5gcwx2hPb9DsQiJub5fjyYCpgcCw0SGHu/Bvicc=;
-        b=XwB0rRcB+qat/R3HRbXgIV+54Whwiuj79gKwUsRYg56+dQa60kVGk44OzlrKzPG/4i
-         +BW3eN6BAZK/fMGNwuLS7He5htIFNssFv+EF5dvpEwv4nVSn49zZ4Svz0jd6sFBko/Od
-         vUH3K7ozMsO2ck57x5tfH4GBetmDVNJPoDMMpXvzsK2R0iNsxhkVGexKGxlu7ekT3KKw
-         lKp5zXLA3qX9BwpmD4DegqQV+uViucQRgzKuxj/G9p7kIbf1vMOZOk/OGdart8dszLqN
-         J/BuLuVQsT0MoGxK9BXs9MI+wFRvRB4kWAqQqETOlmP7RBuWufLl8xTW5fecprr5lysP
-         RgSQ==
-X-Gm-Message-State: AOAM531EXwO7COXeHNL8kEJcbUiojWfC6w4+1VnpzIk6MfDihInz5m1r
-	CTxh5k39bsEgDg4BbL4sn0s=
-X-Received: by 2002:a17:90a:af87:: with SMTP id w7mr2496370pjq.187.1618284327677;
-        Mon, 12 Apr 2021 20:25:27 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=SRXvRUJitDAL3LVBcxgMSN2+Nyo+g/E1R/YUuhMK3zY=;
+        b=Ia53AijW3gHRQxXcY6qY03G4WrZJmVb+FA3BsvebxSI4S2eRJTjbty42skogoVjb7B
+         VgHphakjEHsxQ/J1qWuUYzNXGt6bvQhtFpAfpupy+9pY+qSrf1lHantGy/FJNjSLQxbj
+         IyjSUuAwOzZhCw9DOcPMsU6tyN6B7/aym1YGBL1eYXCZrIQuF2H1mlfSMGXQx0sG1vzs
+         FKNztTlolxZyuI2mNbG2j7m2b5E4FJW0HfGnqT6PQAZ3/NcryP1gCjeUc78zQgnYoisf
+         +Ahrne48mnLzT3fEWvNSMRMfIuCJ0j6wd7ww88EkzSnhAuGAY8ticbdYvnQmVsi6p3Gj
+         5XiQ==
+X-Gm-Message-State: AOAM530+Ar9fiz1PIB46tppaq3e1OsssaXV1F78vfZVq65PmLHnu1ggx
+	kxiSIGTgofugXlzGaUk193E=
+X-Received: by 2002:a17:902:aa8a:b029:e6:64bd:e29d with SMTP id d10-20020a170902aa8ab02900e664bde29dmr30083774plr.24.1618284309436;
+        Mon, 12 Apr 2021 20:25:09 -0700 (PDT)
 Return-Path: <mitaliborkar810@gmail.com>
 Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id e65sm11549793pfe.9.2021.04.12.20.25.24
+        by smtp.gmail.com with ESMTPSA id s20sm8993891pfh.144.2021.04.12.20.25.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 20:25:27 -0700 (PDT)
-Date: Tue, 13 Apr 2021 08:55:21 +0530
+        Mon, 12 Apr 2021 20:25:09 -0700 (PDT)
+Date: Tue, 13 Apr 2021 08:55:03 +0530
 From: Mitali Borkar <mitaliborkar810@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH v5 1/3] staging: rtl8192e: remove parentheses around boolean
- expression
-Message-ID: <596aa7e6d4e8ce80eaa98519001e17cf9d370f45.1618283232.git.mitaliborkar810@gmail.com>
-References: <cover.1618283232.git.mitaliborkar810@gmail.com>
+Subject: [PATCH v5 0/3] staging: rtl8192e: Cleanup patchset for style issues
+ in rtl819x_HTProc.c
+Message-ID: <cover.1618283232.git.mitaliborkar810@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1618283232.git.mitaliborkar810@gmail.com>
 
-Removed unnecessary parentheses around '!xyz' boolean expression as '!'
-has higher precedance than '||'
+Changes from v4:-
+[PATCH v4 1/3]:- No changes.
+[PATCH v4 2/3]:- No changes.
+[PATCH V4 3/3]:- Removed casts and parentheses.
 
-Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
----
+Changes from v3:- Changed subject line to match prefix on the patches.
+[PATCH v3 1/3]:- No changes.
+[PATCH v3 2/3]:- No changes.
+[PATCH V3 3/3]:- No changes.
 
-Changes from v4:- No changes.
-Changes from v3:- No changes.
-Changes from v2:- Modified subject description. Changes has been made in
+Changes from v2:-
+[PATCH v2 1/3]:- Modified subject description. Changes has been made in
 v3.
-Changes from v1:- Removed unnecessary parentheses around boolean
-expression. Changes has been made in v2.
- 
- drivers/staging/rtl8192e/rtl819x_HTProc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+[PATCH v2 2/3]:- No changes.
+[PATCH v2 3/3]:- Rectified spelling mistake in subject description.
+Changes has been made in v3.
 
-diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-index b1fa8e9a4f28..431202927036 100644
---- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-+++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-@@ -276,7 +276,7 @@ void HTConstructCapabilityElement(struct rtllib_device *ieee, u8 *posHTCap,
- 	struct rt_hi_throughput *pHT = ieee->pHTInfo;
- 	struct ht_capab_ele *pCapELE = NULL;
- 
--	if ((!posHTCap) || (!pHT)) {
-+	if (!posHTCap || !pHT) {
- 		netdev_warn(ieee->dev,
- 			    "%s(): posHTCap and pHTInfo are null\n", __func__);
- 		return;
+Changes from v1:-
+[PATCH 1/3]:- Removed unnecessary parentheses around boolean expression.
+Changes has been made in v2.
+[PATCH 2/3]:- No changes.
+[PATCH 3/3]:- No changes.
+
+Mitali Borkar (3):
+  staging: rtl8192e: remove parentheses around boolean expression
+  staging: rtl8192e: remove unnecessary ftrace-like logging
+  staging: rtl8192e: remove casts and parentheses
+
+ drivers/staging/rtl8192e/rtl819x_HTProc.c     |  18 ++--
+ 1 file changed, 5 insertions(+), 13 deletions(-)
+
+
 -- 
 2.30.2
 
