@@ -1,235 +1,142 @@
-X-GM-THRID: 6805857060632133632
-X-Received: by 2002:a1c:4342:: with SMTP id q63mr2917449wma.137.1584612080409;
-        Thu, 19 Mar 2020 03:01:20 -0700 (PDT)
+X-GM-THRID: 6949235058169348096
+X-Received: by 2002:a62:7ac8:0:b029:246:e38c:58ac with SMTP id v191-20020a627ac80000b0290246e38c58acmr21624907pfc.10.1618337815879;
+        Tue, 13 Apr 2021 11:16:55 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:660a:: with SMTP id a10ls867829wmc.0.gmail; Thu, 19 Mar
- 2020 03:01:19 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvCDrCpfQ+P1Z8RXKZvhzpWYFznDkt99GQWuueopRzO+tqFe3xg6NJXrEUWsoa0YYgl611T
-X-Received: by 2002:a1c:2043:: with SMTP id g64mr2868859wmg.129.1584612079101;
-        Thu, 19 Mar 2020 03:01:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584612079; cv=none;
+Received: by 2002:a63:5f88:: with SMTP id t130ls9123553pgb.7.gmail; Tue, 13
+ Apr 2021 11:16:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZi26kylTn+EiO0DORvCeLCPKXbInluuZtC4n5FN7PIFHYmenj13XiaEN6kU8zPCSUxwuF
+X-Received: by 2002:aa7:88c6:0:b029:250:bf78:a4a3 with SMTP id k6-20020aa788c60000b0290250bf78a4a3mr3863172pff.70.1618337814547;
+        Tue, 13 Apr 2021 11:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618337814; cv=none;
         d=google.com; s=arc-20160816;
-        b=qTd0+PlurgReQ0yvCQGtE4xeY+Fqw1lOIhqgy7ZXpDGwQcSZerkk9gaPAkCLhJtSCk
-         La6ds2juoWDrFtbcHBGyS1ReCF8DV4bkn4m/6giSBjm8zL/V7Ra/6o5ZFl3diHMoJ1uv
-         r/jvwBq1BF32NYhOPwXxRWRehhqmRkCf9EOtBfP/45sJ6u7zQW2e4nEq4jvQTdjA/eWw
-         SEIGXgnAZIZunEdMGWtpcW4DkE/GtI07yOya1Syd8tHu972xSJg6EXKVHEp9i+6KKbOJ
-         Fmt70KUjRtKwDdAA6jpyCx5sm2daGmp3G82go5az3cAVPnE/mzKoJD3FFsIuFdTS0E3F
-         I9RA==
+        b=RK1n23+1qIAgQUNhVEOdlbD+hfF65I7LbLgqSzU5IBkyT8DJSI8026O4NVtjreU0+U
+         4g5TCUgKHyPn+XaKkZLX0GnyK12hvP7F0nQC3ee6L1IVTIvliZGZJNgASLOkTDOuZW2W
+         CPuSM/ai32r8CKFJ4ZVbF2iPJ+s8CPwhbkwXT2Yrm37V1gVaX5ME0hnIG9DVu+cqIyPF
+         HZ2UGfXrL9P64SVLM84cOcM57lqbM0U/tQPFYVssDJUPf7/EVOL5LxKDW6CeBsVtYTgT
+         5bCsDxGxQLh2f4YfuwMdES/Jbv9EiGg57435J8jWIbPqYgKTZYVF5zBQIHG1nUole2Vz
+         Jjug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date;
-        bh=gxhB0OG2lo26KKS6ZtW5TAOZ2Jx9+y9wUjpNXkJpBZA=;
-        b=Xiar8g8r013n5SNVY8qSbz0SU6R73S4UVFuIiLfB8IG+i0gWSQjhqH6G8DVpG5ox9G
-         aSkriIrHnEYVHbyqvU+BJ8dPXwsSJGznS2HiF/1yB9yZHiXvbUjzgSImaqKLaVrPGjr0
-         qI7+yJmgdQlQxuU5gFwZZU9pifW9KAcRieLce31/r3LL889CL1pqF9aPqP3wvnvY6io4
-         wBX2uCWVZ43wiH0p9m/OEbcBKsmnYTn7Q6iUncBnaqtsq+nHYk0AEigMt5lkNuIKQn36
-         x4ZWeeDEzZtzNn9pKLkEVcRaC+nnbYaqUs5PLkPZhqt5GqabyFdUEFYdi72FHmi7WODP
-         oY1Q==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=SzVy8JflJE6VXT5JeDWyenyHzsFPZ9nxiTnDoe1PycE=;
+        b=ikF/yeKteE3apzSVm3tH3WdB+BnTBnS/AuK6uaQQ7Hb61fTM4Rip6Bq7ERLKRMaVoq
+         ZaB8OTlF+XV3v0Omv33NX2DqXJD2b4s/ISegzQESmbX+16Q148n1oyJV1RcQxB6NJXYs
+         1rcG86mrHjSqCwIDg17RfibOUquzvznQw78+2RAPhVYTGxfZdyIVFyfkcYhthTuW6nnR
+         LM06jZpTnVazjTYJ3pp3AsDqrC+64J4VJ4rshMi2ni3aXW+nptr998RbjMNrNmH4RZHe
+         8LqKI1Aby0N/gCid7f0E+vIok4meAjR6SFJphwzdAMSfHxuJhDyXk07STN4ws4uG75yg
+         K5Wg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Return-Path: <vkor@vkten.in>
-Received: from vkten.in (vkten.in. [104.244.73.96])
-        by gmr-mx.google.com with ESMTP id a18si62041wra.0.2020.03.19.03.01.19
-        for <outreachy-kernel@googlegroups.com>;
-        Thu, 19 Mar 2020 03:01:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) client-ip=104.244.73.96;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LqgS+qC2;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82d as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qt1-x82d.google.com (mail-qt1-x82d.google.com. [2607:f8b0:4864:20::82d])
+        by gmr-mx.google.com with ESMTPS id t19si222003pjq.3.2021.04.13.11.16.54
+        for <outreachy-kernel@googlegroups.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Apr 2021 11:16:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82d as permitted sender) client-ip=2607:f8b0:4864:20::82d;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of vkor@vkten.in designates 104.244.73.96 as permitted sender) smtp.mailfrom=vkor@vkten.in
-Received: (qmail 26765 invoked from network); 19 Mar 2020 10:01:17 -0000
-Received: from unknown (HELO tulip.local) (vkor@vkten.in@117.202.245.105)
-  de/crypted with TLSv1.3: TLS_AES_256_GCM_SHA384 [256/256] DN=none
-  by vkten with ESMTPSA; 19 Mar 2020 10:01:17 -0000
-Date: Thu, 19 Mar 2020 15:31:10 +0530
-From: R Veera Kumar <vkor@vkten.in>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH v2] staging: vc04_services: interface: vchi: Correct long
- lines and style of comments
-Message-ID: <20200319100059.GA3310@tulip.local>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LqgS+qC2;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::82d as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qt1-x82d.google.com with SMTP id y12so13456262qtx.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 11:16:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=SzVy8JflJE6VXT5JeDWyenyHzsFPZ9nxiTnDoe1PycE=;
+        b=LqgS+qC27bKzUmYEgRQ5yMm3F3XmxxNCDijrZCPNYEoEGyZXG+vzDb/Cp/Sbx3z+Lh
+         n3u1Obm/P/L0hfs8hxUUfWPM7t//qb1yjFZ4iUmtg8rW5lITwm8qfATgPIQFk5d3NoG0
+         3mak+heq+gIhbWDGuvFlNRr8/qB+EjkxiWXYF+zeyCyi7wkQeICw/5yo8btW6no9HcDq
+         HJ/SG5i7/iZZ8UTncNkM9wK/dLhvmbD6vSwC2rnC594lWUZEGPTYy4/BNiVW1ffN4OlJ
+         nwlpqF5Tw6Jc6ztvkIDTwjbB48XPFEBJ86hr5huFxdoHXjhpqE0JTOXqsvn5oKEqjGzi
+         utvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=SzVy8JflJE6VXT5JeDWyenyHzsFPZ9nxiTnDoe1PycE=;
+        b=OtqEevP4M6/Ky2Jkw359G+eR4FndHpPC6ZHHQTYTCeveieKc06MQW64ja+vMpB1CQ3
+         BgOikvkARHj6YdL3bu2syy0lQeEKXMXxhbj58qPQlsO2932Dy4BPHNRKkxTlAKf7d97L
+         wP/FdIcQ2wUyVGNs4ySZVn9Vatk9OkXWbwai+f0EGNQ6ls52iBCqn0/Y5EKYI2SP9l7A
+         qbxxpfSm3NbE2r0K8gyEBMY3nV6gDGsTQXfoB8ZKS8oIhKQ2vYgioSF9DCp1YnY8GWyn
+         1A8MZWetXNvsnyWTNxlSUPDlh7fvoPpv7PSIyXFm5EzY3vUyKfjZgeBo929UdZPQatGR
+         BPsw==
+X-Gm-Message-State: AOAM533TaToTm8oK3r+W75jBG8LT7+ahocTkLxhD/nRtrqRgzybvejK3
+	ipOs6y+qHynJixume1Q+BAw=
+X-Received: by 2002:ac8:1e0f:: with SMTP id n15mr17632906qtl.9.1618337814282;
+        Tue, 13 Apr 2021 11:16:54 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from ?IPv6:2001:1284:f016:a037:83a0:18ef:c76d:6086? ([2001:1284:f016:a037:83a0:18ef:c76d:6086])
+        by smtp.gmail.com with ESMTPSA id k18sm10697750qkg.53.2021.04.13.11.16.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Apr 2021 11:16:53 -0700 (PDT)
+Message-ID: <68c7a01df0d71708d63f66c7d40b64f7041faeee.camel@gmail.com>
+Subject: Re: [Outreachy kernel][PATCH 1/2] staging: media: omap4iss: Align
+ line break to the open parenthesis in file iss.c
+From: ascordeiro <alinesantanacordeiro@gmail.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Date: Tue, 13 Apr 2021 15:16:50 -0300
+In-Reply-To: <6823f86b-843f-1abf-e8b7-7be1044b7150@xs4all.nl>
+References: <cover.1617994571.git.alinesantanacordeiro@gmail.com>
+	 <aed4449f7f054eee329a808527c2a08d79076c78.1617994571.git.alinesantanacordeiro@gmail.com>
+	 <6823f86b-843f-1abf-e8b7-7be1044b7150@xs4all.nl>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.40.0 (by Flathub.org) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
 
-Correct long lines of comments to respect
-80 character line limit.
-Change the comments to C89 style.
-Found using checkpatch.pl.
+Em ter, 2021-04-13 às 16:32 +0200, Hans Verkuil escreveu:
+> On 09/04/2021 21:01, Aline Santana Cordeiro wrote:
+> > Aligns line break with the remaining function arguments
+> > to the open parenthesis. Issue found by checkpatch.
+> > 
+> > Signed-off-by: Aline Santana Cordeiro <  
+> > alinesantanacordeiro@gmail.com>
+> 
+> Obsolete, a similar patch from Beatriz Martins de Carvalho <  
+> martinsdecarvalhobeatriz@gmail.com>
+> has already been applied in the media subsystem tree.
+> 
+> Regards,
+> 
+>         Hans
+> 
 
-Signed-off-by: R Veera Kumar <vkor@vkten.in>
----
-Changes in v2:
- - Change the comments to C89 style
----
- .../interface/vchi/vchi_common.h              | 90 +++++++++++--------
- 1 file changed, 52 insertions(+), 38 deletions(-)
+Okay, thank you for letting me know.
 
-diff --git a/drivers/staging/vc04_services/interface/vchi/vchi_common.h b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-index 141af16ce031..29fbe4505223 100644
---- a/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-+++ b/drivers/staging/vc04_services/interface/vchi/vchi_common.h
-@@ -4,70 +4,80 @@
- #ifndef VCHI_COMMON_H_
- #define VCHI_COMMON_H_
- 
--//flags used when sending messages (must be bitmapped)
-+/* flags used when sending messages (must be bitmapped) */
- enum vchi_flags {
- 	VCHI_FLAGS_NONE                      = 0x0,
--	VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE   = 0x1,   // waits for message to be received, or sent (NB. not the same as being seen on other side)
--	VCHI_FLAGS_CALLBACK_WHEN_OP_COMPLETE = 0x2,   // run a callback when message sent
--	VCHI_FLAGS_BLOCK_UNTIL_QUEUED        = 0x4,   // return once the transfer is in a queue ready to go
-+	VCHI_FLAGS_BLOCK_UNTIL_OP_COMPLETE   = 0x1, /* waits for message to be
-+ received, or sent (NB. not the same as being seen on other side) */
-+	VCHI_FLAGS_CALLBACK_WHEN_OP_COMPLETE = 0x2, /* run a callback when
-+							message sent */
-+	VCHI_FLAGS_BLOCK_UNTIL_QUEUED        = 0x4, /* return once the transfer
-+						    is in a queue ready to go */
- 	VCHI_FLAGS_ALLOW_PARTIAL             = 0x8,
- 	VCHI_FLAGS_BLOCK_UNTIL_DATA_READ     = 0x10,
- 	VCHI_FLAGS_CALLBACK_WHEN_DATA_READ   = 0x20,
- 
--	VCHI_FLAGS_ALIGN_SLOT            = 0x000080,  // internal use only
--	VCHI_FLAGS_BULK_AUX_QUEUED       = 0x010000,  // internal use only
--	VCHI_FLAGS_BULK_AUX_COMPLETE     = 0x020000,  // internal use only
--	VCHI_FLAGS_BULK_DATA_QUEUED      = 0x040000,  // internal use only
--	VCHI_FLAGS_BULK_DATA_COMPLETE    = 0x080000,  // internal use only
-+	VCHI_FLAGS_ALIGN_SLOT            = 0x000080,  /* internal use only */
-+	VCHI_FLAGS_BULK_AUX_QUEUED       = 0x010000,  /* internal use only */
-+	VCHI_FLAGS_BULK_AUX_COMPLETE     = 0x020000,  /* internal use only */
-+	VCHI_FLAGS_BULK_DATA_QUEUED      = 0x040000,  /* internal use only */
-+	VCHI_FLAGS_BULK_DATA_COMPLETE    = 0x080000,  /* internal use only */
- 	VCHI_FLAGS_INTERNAL              = 0xFF0000
- };
- 
--// constants for vchi_crc_control()
-+/* constants for vchi_crc_control() */
- enum vchi_crc_control {
- 	VCHI_CRC_NOTHING = -1,
- 	VCHI_CRC_PER_SERVICE = 0,
- 	VCHI_CRC_EVERYTHING = 1,
- };
- 
--//callback reasons when an event occurs on a service
-+/* callback reasons when an event occurs on a service */
- enum vchi_callback_reason {
- 	VCHI_CALLBACK_REASON_MIN,
- 
--	//This indicates that there is data available
--	//handle is the msg id that was transmitted with the data
--	//    When a message is received and there was no FULL message available previously, send callback
--	//    Tasks get kicked by the callback, reset their event and try and read from the fifo until it fails
-+/*
-+ * This indicates that there is data available handle is the msg id that
-+ * was transmitted with the data
-+ * When a message is received and there was no FULL message available
-+ * previously, send callback
-+ * Tasks get kicked by the callback, reset their event and try and read from
-+ * the fifo until it fails
-+ */
- 	VCHI_CALLBACK_MSG_AVAILABLE,
- 	VCHI_CALLBACK_MSG_SENT,
--	VCHI_CALLBACK_MSG_SPACE_AVAILABLE, // XXX not yet implemented
-+	VCHI_CALLBACK_MSG_SPACE_AVAILABLE, /* XXX not yet implemented */
- 
--	// This indicates that a transfer from the other side has completed
-+	/* This indicates that a transfer from the other side has completed */
- 	VCHI_CALLBACK_BULK_RECEIVED,
--	//This indicates that data queued up to be sent has now gone
--	//handle is the msg id that was used when sending the data
-+	/* This indicates that data queued up to be sent has now gone handle
-+	   is the msg id that was used when sending the data */
- 	VCHI_CALLBACK_BULK_SENT,
--	VCHI_CALLBACK_BULK_RX_SPACE_AVAILABLE, // XXX not yet implemented
--	VCHI_CALLBACK_BULK_TX_SPACE_AVAILABLE, // XXX not yet implemented
-+	VCHI_CALLBACK_BULK_RX_SPACE_AVAILABLE, /* XXX not yet implemented */
-+	VCHI_CALLBACK_BULK_TX_SPACE_AVAILABLE, /* XXX not yet implemented */
- 
- 	VCHI_CALLBACK_SERVICE_CLOSED,
- 
--	// this side has sent XOFF to peer due to lack of data consumption by service
--	// (suggests the service may need to take some recovery action if it has
--	// been deliberately holding off consuming data)
-+	/*
-+	 * this side has sent XOFF to peer due to lack of data consumption by
-+	 * service (suggests the service may need to take some recovery action
-+	 * if it has been deliberately holding off consuming data)
-+	 */
- 	VCHI_CALLBACK_SENT_XOFF,
- 	VCHI_CALLBACK_SENT_XON,
- 
--	// indicates that a bulk transfer has finished reading the source buffer
-+	/* indicates that a bulk transfer has finished reading the source
-+	   buffer */
- 	VCHI_CALLBACK_BULK_DATA_READ,
- 
--	// power notification events (currently host side only)
-+	/* power notification events (currently host side only) */
- 	VCHI_CALLBACK_PEER_OFF,
- 	VCHI_CALLBACK_PEER_SUSPENDED,
- 	VCHI_CALLBACK_PEER_ON,
- 	VCHI_CALLBACK_PEER_RESUMED,
- 	VCHI_CALLBACK_FORCED_POWER_OFF,
- 
--	// some extra notifications provided by vchiq_arm
-+	/* some extra notifications provided by vchiq_arm */
- 	VCHI_CALLBACK_SERVICE_OPENED,
- 	VCHI_CALLBACK_BULK_RECEIVE_ABORTED,
- 	VCHI_CALLBACK_BULK_TRANSMIT_ABORTED,
-@@ -75,7 +85,7 @@ enum vchi_callback_reason {
- 	VCHI_CALLBACK_REASON_MAX
- };
- 
--// service control options
-+/* service control options */
- enum vchi_service_option {
- 	VCHI_SERVICE_OPTION_MIN,
- 
-@@ -85,10 +95,10 @@ enum vchi_service_option {
- 	VCHI_SERVICE_OPTION_MAX
- };
- 
--//Callback used by all services / bulk transfers
--typedef void (*vchi_callback)(void *callback_param, //my service local param
-+/* Callback used by all services / bulk transfers */
-+typedef void (*vchi_callback)(void *callback_param, /* my service local param */
- 			      enum vchi_callback_reason reason,
--			      void *handle); //for transmitting msg's only
-+			      void *handle); /* for transmitting msg's only */
- 
- /*
-  * Define vector struct for scatter-gather (vector) operations
-@@ -112,12 +122,16 @@ struct vchi_msg_vector {
- 	int32_t vec_len;
- };
- 
--// Iterator structure for reading ahead through received message queue. Allocated by client,
--// initialised by vchi_msg_look_ahead. Fields are for internal VCHI use only.
--// Iterates over messages in queue at the instant of the call to vchi_msg_lookahead -
--// will not proceed to messages received since. Behaviour is undefined if an iterator
--// is used again after messages for that service are removed/dequeued by any
--// means other than vchi_msg_iter_... calls on the iterator itself.
-+/*
-+ * Iterator structure for reading ahead through received message queue.
-+ * Allocated by client, initialised by vchi_msg_look_ahead. Fields are
-+ * for internal VCHI use only.
-+ * Iterates over messages in queue at the instant of the call to
-+ * vchi_msg_lookahead - will not proceed to messages received since.
-+ * Behaviour is undefined if an iterator is used again after messages for
-+ * that service are removed/dequeued by any means other than
-+ * vchi_msg_iter_... calls on the iterator itself.
-+ */
- struct vchi_msg_iter {
- 	struct opaque_vchi_service_t *service;
- 	void *last;
-@@ -125,4 +139,4 @@ struct vchi_msg_iter {
- 	void *remove;
- };
- 
--#endif // VCHI_COMMON_H_
-+#endif /* VCHI_COMMON_H_ */
--- 
-2.20.1
+Aline
+
+> > ---
+> >  drivers/staging/media/omap4iss/iss.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/media/omap4iss/iss.c
+> > b/drivers/staging/media/omap4iss/iss.c
+> > index dae9073..c89f268a 100644
+> > --- a/drivers/staging/media/omap4iss/iss.c
+> > +++ b/drivers/staging/media/omap4iss/iss.c
+> > @@ -960,7 +960,7 @@ iss_register_subdev_group(struct iss_device
+> > *iss,
+> >                 }
+> >  
+> >                 subdev = v4l2_i2c_new_subdev_board(&iss->v4l2_dev,
+> > adapter,
+> > -                               board_info->board_info, NULL);
+> > +                                                  board_info-
+> > >board_info, NULL);
+> >                 if (!subdev) {
+> >                         dev_err(iss->dev, "Unable to register
+> > subdev %s\n",
+> >                                 board_info->board_info->type);
+> > 
+> 
+
 
 
