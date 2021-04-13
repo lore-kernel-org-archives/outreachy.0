@@ -1,117 +1,142 @@
-X-GM-THRID: 6666274038276423680
-X-Received: by 2002:a37:5b05:: with SMTP id p5mr12725568qkb.11.1552112875235;
-        Fri, 08 Mar 2019 22:27:55 -0800 (PST)
+X-GM-THRID: 6950585257777168384
+X-Received: by 2002:a17:906:3509:: with SMTP id r9mr22817446eja.490.1618309239704;
+        Tue, 13 Apr 2021 03:20:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a0c:aa9d:: with SMTP id f29ls1766649qvb.4.gmail; Fri, 08 Mar
- 2019 22:27:54 -0800 (PST)
-X-Received: by 2002:a0c:ba1a:: with SMTP id w26mr12613566qvf.23.1552112874793;
-        Fri, 08 Mar 2019 22:27:54 -0800 (PST)
-Received: by 2002:a37:e30a:0:0:0:0:0 with SMTP id y10msqki;
-        Fri, 8 Mar 2019 19:17:20 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwta4iWrTrZON4drSfY/X16dQ5z9x1aVW64tWCfVbNpBQfSQi/nxzYfe5Q+iRuYaPhf8wxD
-X-Received: by 2002:a0c:b08f:: with SMTP id o15mr12634691qvc.36.1552101440799;
-        Fri, 08 Mar 2019 19:17:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552101440; cv=none;
+Received: by 2002:a05:6402:4c2:: with SMTP id n2ls3008372edw.2.gmail; Tue, 13
+ Apr 2021 03:20:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYHHy98pq4dH+e95WNKg9bf05Uvs0hDqsXhjXxPqfsYpFQniqFWUDXMemAtSgKOqvtOkJj
+X-Received: by 2002:a50:ed17:: with SMTP id j23mr32640885eds.260.1618309238238;
+        Tue, 13 Apr 2021 03:20:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618309238; cv=none;
         d=google.com; s=arc-20160816;
-        b=DG2Q9Ou9hKXvd8Yf/umsVW2wD1wGj2GI8mv4VPsp1ly8AAuPR/aIW5h98+yMNQiRny
-         zAcaszzYPgx5anaewIG4grt6fh8nlsRzRLs7+nEHJqxeh64qSbl3ooBzrgePtCAwihI9
-         mSJsNxttwlROJijuBpDA7NUYY6Yq25MF24NJK/wa6b4n42RvOaquHhUu1T/IE7620ECa
-         MXYeqGIwD8lsQLa4HKwuoXkbWCabwfv4QpPQBi6akiCcxUAqU4WQ43yrlchNwPPLkrFR
-         9r42UipjIY/pGHnY/hqlBTwDlinQsxJLZ3dzMjHxNe+TPptimAWp0kB6y5kSDOVwK7FQ
-         m8jw==
+        b=k3wgLhkrqXPVff9/y/Ouh1bu7ut3iRnR5Ud++bh6/Dx77v3yRcV8GjN97jMHP/3UYO
+         8Vj3qNhCiVlqP89fG0rZG2JT3DMilWKgstbfvJTwANzT3UdtXsNAopwqYf8Q/EScsWqi
+         FxlSsgatV7Ex+GS+47z6g7Eeo+BUzxCuGxJcc0OBU4W/4MROrDFBYRqvCgnafmq3oQkl
+         9I5xfcDowx1vjlq/5PIsmQT9gpJ6vX8pXVB3XIVCZwi0vJLxUA5cj127iEpRGQ0Ax82Q
+         WrLiGD3LbnwvFGF/IVroAlWL5idpXVkATNEJqKWiLohVQ4azshq/qijVUTo9a1wi97zL
+         QjLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=FNBCclCBXUHm5IhH+2Wz9lD/Xjt747rSaeOlD+C9ieE=;
-        b=g2/s10k5IWIS0G19xGaM/1Jzx2oUAHktW+SuETn3YbUZi1WUP1qg+Epsz5pkZw5z+x
-         QHqvEPAx1RT7HMOpwPd5jnyKULkAE02LhBbueGv3ArCDRSZlhfiSqH+mUj8P/QI1wj2B
-         gcIVFrVzeMgA7HT7Ln0ht2jsbHHFcq+P3J1A/uB+SrJbUolYKH0OH5Iv1F2x/qZjLlN6
-         lgY7P7YqjZBXTZqrm0OA7iogX9hDDtEALgexSXhr0W4UdznlcC3cauyCqt0HE+ioJuZf
-         zRCo8le7ipvhxwDcFLxpgS43Y82F8IIFw+SovJIADUHe6S04Douzyq+hi267GT8zLTsu
-         isvw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=dvmfAjhAD75vFCCwV7Fr+IU7OY4E5qiwJqveL+UcwEs=;
+        b=Xaepu3izRraowhF/Z17w8cn1tLbjmyQyJFrBRywHfmVbQZkhtD++W5z6nRs1tFo79Q
+         TY8Kw05Nd2zOhzNSc0Fo3Bdq7OF6e8abXdvppzNe7b1XcKu7rNWVPlkO05xcUeFLgE9S
+         sQimwRAT58Tf+YAmXGj1GGLuJyJUvt+1VmTqiHBJVQLwhTzPj5KxUmIPQAAneGgDqrzk
+         mS1kz1CzzACoV5lOz8fr/ZXSht9UuWf0r+xVJV/8WF7T6GE93l+Lj4tnoctTdGGvLFHd
+         0e7UXGTPyKQ45cC94pyeVCmhCDILNiXeiQDl3IpMkAmEf8Axa35fFSIBic47CFunmm5a
+         EP8g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HwxgOdXx;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::134 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uMlyqifq;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from mail-it1-x134.google.com (mail-it1-x134.google.com. [2607:f8b0:4864:20::134])
-        by gmr-mx.google.com with ESMTPS id y202si500060qka.2.2019.03.08.19.17.20
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
+        by gmr-mx.google.com with ESMTPS id c12si1083156eds.0.2021.04.13.03.20.38
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Mar 2019 19:17:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::134 as permitted sender) client-ip=2607:f8b0:4864:20::134;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Apr 2021 03:20:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HwxgOdXx;
-       spf=pass (google.com: domain of brandonbonaby94@gmail.com designates 2607:f8b0:4864:20::134 as permitted sender) smtp.mailfrom=brandonbonaby94@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uMlyqifq;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-it1-x134.google.com with SMTP id l139so24320574ita.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 08 Mar 2019 19:17:20 -0800 (PST)
+Received: by mail-ej1-x62b.google.com with SMTP id e14so25006396ejz.11
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 03:20:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=FNBCclCBXUHm5IhH+2Wz9lD/Xjt747rSaeOlD+C9ieE=;
-        b=HwxgOdXxbVcmpPNYjeEtF/A5EHeTuLjEX+S8ReAwEiNkaTcyTwvNbdAA7f2ii+OMbo
-         bbRQuezSNWO61mj2HmxJB5EO8affHVcVyJlIFAP6cac2A+fMfNQSda6LfI9q6kjbrWjU
-         ihGUz9bwvSL2Ink/2ix3+hH6WhYWZkHEABewR8i8tPaJ04z+lrU2E3NOSAz/tOQMlfcf
-         lxMkoAg+9QUD141sOGFyhUdv8q+KHv7G9cdBRh3dfttOACpiXT0+6FhX7gEMoHdgHeR9
-         7LE6bTLVx8NhEkEDylajgz8Z6fXWJPg6qhyCTazrakGAhNSyu4gnMsD7vr//KyYEjUxd
-         8tlQ==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=dvmfAjhAD75vFCCwV7Fr+IU7OY4E5qiwJqveL+UcwEs=;
+        b=uMlyqifqVFl76a2qS3JaTbUAuKVxnmP7ZjDUGoO5A0rDRibyZhWKK67CzIe1nABH4k
+         WdY7wMIRIJoJrGZ9Vw7QIYvlgEwJfba85e+uM1Ycqpf2ZOBN7d9iuCZ0QhpozpDeJnCb
+         /Qk2a1GYoH9/53XjiYhCfWhVz4WammPeG120HKy4wdPcoRl5vChyp3RSMykGxmSpzG5V
+         GD8RIvY6l61Wik3G2ZZ7C5Wcmd/CUjkwrKhr5KtjcvqHTfGYwPmSw0WFyJ53pvIMsh2g
+         LSmFprisskPRKpQ2qbQAEYXDiI190annCbYAaW0MUGCu+KHuOCpbfMu/YKTGx7t/qecm
+         IstA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=FNBCclCBXUHm5IhH+2Wz9lD/Xjt747rSaeOlD+C9ieE=;
-        b=DVfORoZJ4k9F1sjZaxDafJcl3LA8V7TJpgZzJHUVz+zsT74uFPCAwNUt2AgBa5RG8c
-         Arcp3zu9F4ft/EvohyGCDgrr2Z/lQvy+Os4NW3bugvCRFrMGEYypknd/IAk0/u+1SBIb
-         0TXn14v/gXd+DNxoVolBqZOxFbjD+qvwoT/FLtdFTWTUuzOSlRcp1zkuO/QOfcfeYwEk
-         C/9ztlLtZn4vgZLInfG2TWXVIJgXfdGyNlsCSoi5tLJ7AcNk426pt6TUsMjspf93Hvaj
-         eZ+SfgDrY2bQlbVQAiyhJXvP63QHAxxCRierN0IRjd86V87P0BsOlPF0n8aM3NmRPMtv
-         NAng==
-X-Gm-Message-State: APjAAAWncL0gZCP5fU2lBgiLdAncs2y6RjAZOUl3SpsVrjk3dA8VoCWy
-	vG9rTl2eFkzL1ylg3dI15fUezLHz4qSu
-X-Received: by 2002:a05:660c:485:: with SMTP id a5mr10527123itk.29.1552101440384;
-        Fri, 08 Mar 2019 19:17:20 -0800 (PST)
-Return-Path: <brandonbonaby94@gmail.com>
-Received: from branx011-Vostro-430 ([2607:fea8:29a0:ff5:ac12:25e5:5e18:5976])
-        by smtp.gmail.com with ESMTPSA id s26sm4096178iol.41.2019.03.08.19.17.19
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Mar 2019 19:17:19 -0800 (PST)
-Date: Fri, 8 Mar 2019 22:17:19 -0500
-From: Branden Bonaby <brandonbonaby94@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: wlan-ng: Fix assignment operator alignment
-Message-ID: <20190309031718.GA18429@branx011-Vostro-430>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=dvmfAjhAD75vFCCwV7Fr+IU7OY4E5qiwJqveL+UcwEs=;
+        b=hNin9/Z19K2bIoWINBhkfC5KfvI+Z+xtbl0XvkC6RXqc6mZGYqjAIAIeiIednRs4Nq
+         y/fxdyfhCjxy5vyYYdf5Jr5e42ZkdngAZg9EZy3VnYtTZLoAAiVg0e6WWMR6boywbIDn
+         NYUfeFvyQElV24j3BMDkGuY/R0Jk7zrUCa0Fj7k8gkGayTfUxDrqYW5X4+37Z5sCGdwB
+         8PnkvYuaNk5YsdDu/6gmNyBWEqERNLnVHlHRpZVBfkplO/+FUPxQ01Jef/7T8Gw0fWCN
+         uPTa/cMfEzBaPfo9sjZGfOt0wGDg8U0WWs6kJQg+sMBIjmuPywpAcCouXF2wkGzpXDcf
+         +BhA==
+X-Gm-Message-State: AOAM531tzF7zQOpK/utm7yl6UKhzc6HQCb5qOeWrMtyv89WuVsWAZQcB
+	UELuUkgP9f996X9JQ3rMRe7az77X33cdrKbj
+X-Received: by 2002:a17:906:524f:: with SMTP id y15mr31008850ejm.65.1618309237743;
+        Tue, 13 Apr 2021 03:20:37 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id y6sm7496565ejw.83.2021.04.13.03.20.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Apr 2021 03:20:37 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [Outreachy patch] [PATCH] staging: rtl8188eu: Move channel_table away from rtw_mlme_ext.h
+Date: Tue, 13 Apr 2021 12:20:33 +0200
+Message-Id: <20210413102033.24781-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Transfer-Encoding: 8bit
 
-Fixes confusing assignment operator alignment as highlighted by checkpath
+Moved "static const struct channel_table[]" from include/rtw_mlme_ext.h
+to core/rtw_ioctl_set.c because the latter is the only file that uses
+that array of struct(s) in the whole driver. "make rtl8188eu/ W=1" output
+several warnings about "'channel_table' defined but not used
+[-Wunused-const-variable=]".
 
-Signed-off-by: Branden Bonaby <brandonbonaby94@gmail.com>
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/staging/wlan-ng/cfg80211.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/staging/rtl8188eu/core/rtw_ioctl_set.c   | 8 ++++++++
+ drivers/staging/rtl8188eu/include/rtw_mlme_ext.h | 8 --------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/wlan-ng/cfg80211.c b/drivers/staging/wlan-ng/cfg80211.c
-index 8a862f718d5c..95105e597160 100644
---- a/drivers/staging/wlan-ng/cfg80211.c
-+++ b/drivers/staging/wlan-ng/cfg80211.c
-@@ -331,9 +331,8 @@ static int prism2_scan(struct wiphy *wiphy,
- 	for (i = 0;
- 		(i < request->n_channels) && i < ARRAY_SIZE(prism2_channels);
- 		i++)
--		msg1.channellist.data.data[i] =
--			ieee80211_frequency_to_channel(
--				request->channels[i]->center_freq);
-+		msg1.channellist.data.data[i] = ieee80211_frequency_to_channel(
-+						request->channels[i]->center_freq);
- 	msg1.channellist.data.len = request->n_channels;
+diff --git a/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c b/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
+index 1ef32ff900a9..17b999f45132 100644
+--- a/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
++++ b/drivers/staging/rtl8188eu/core/rtw_ioctl_set.c
+@@ -11,6 +11,14 @@
+ #include <rtw_ioctl_set.h>
+ #include <hal_intf.h>
  
- 	msg1.maxchanneltime.data = 250;
++static const struct {
++        int channel_plan;
++        char *name;
++} channel_table[] = { { RT_CHANNEL_DOMAIN_FCC, "US" },
++        { RT_CHANNEL_DOMAIN_ETSI, "EU" },
++        { RT_CHANNEL_DOMAIN_MKK, "JP" },
++        { RT_CHANNEL_DOMAIN_CHINA, "CN"} };
++
+ extern void indicate_wx_scan_complete_event(struct adapter *padapter);
+ 
+ u8 rtw_do_join(struct adapter *padapter)
+diff --git a/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h b/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
+index 77eb5e3ef172..03d55eb7dc16 100644
+--- a/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
++++ b/drivers/staging/rtl8188eu/include/rtw_mlme_ext.h
+@@ -171,14 +171,6 @@ struct rt_channel_plan_map {
+ 	unsigned char	Index2G;
+ };
+ 
+-static const struct {
+-	int channel_plan;
+-	char *name;
+-} channel_table[] = { { RT_CHANNEL_DOMAIN_FCC, "US" },
+-	{ RT_CHANNEL_DOMAIN_ETSI, "EU" },
+-	{ RT_CHANNEL_DOMAIN_MKK, "JP" },
+-	{ RT_CHANNEL_DOMAIN_CHINA, "CN"} };
+-
+ enum Associated_AP {
+ 	atherosAP	= 0,
+ 	broadcomAP	= 1,
 -- 
-2.17.1
+2.31.1
 
 
