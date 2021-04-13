@@ -1,123 +1,320 @@
 X-GM-THRID: 6949552680450654208
-X-Received: by 2002:a1c:6587:: with SMTP id z129mr441384wmb.106.1618326152742;
-        Tue, 13 Apr 2021 08:02:32 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e92:: with SMTP id f18mr351784wmq.115.1618325240974;
+        Tue, 13 Apr 2021 07:47:20 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:6804:: with SMTP id w4ls3208093wru.2.gmail; Tue, 13 Apr
- 2021 08:02:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwjIUwTCvkhYPtxdQxPtuPti9/13PGyU9iwGM39tP3mb07D9JhwjRXWseDdnb13X06cpMkX
-X-Received: by 2002:adf:f38e:: with SMTP id m14mr16569075wro.34.1618326150753;
-        Tue, 13 Apr 2021 08:02:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618326150; cv=none;
+Received: by 2002:a05:6000:162d:: with SMTP id v13ls3144210wrb.1.gmail; Tue,
+ 13 Apr 2021 07:47:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyUPKPrjypzbZplRWZSzTnj+3SJipGmMHvSMvR1twy13+QwTr3laImKTPCobS1G3gyYNtCI
+X-Received: by 2002:a5d:468b:: with SMTP id u11mr29419921wrq.293.1618325239257;
+        Tue, 13 Apr 2021 07:47:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618325239; cv=none;
         d=google.com; s=arc-20160816;
-        b=QMvYlK8R0xVBqPem219D3eLiGNQ2XM73ybmQPV+bMqRmH9g4ZktsMDU8ojVEgMAVKa
-         /fgNTzwCWW2lUMsOJ5OPfTrlNzR8a8KHQB04seK9qrZExg6wiJ2UJhsez8lt78ygQPnO
-         RcHa97zbzremsvc16BkhYI6BMVuksFaCmueG9GiBV+BF3n0Wj9MyywNJGCaCrnpDSwgt
-         HywMBfkbrZSMgWK/ITGt4WbFnIM0xWyF8n7xeeFkuXPjP0srMc1r15WRgBLBeRlsgM1o
-         a2NRd/ty9hu8/OMd/KA7BuBnr9kryph22K50LuW2k2A+99CrNvfJot5MqEX7pcyesjGo
-         P5lw==
+        b=M0yq/59i4aAkygnKPjNrNU6AjA5HwWts1EF9OrS5cPY2q2I3cdwpexuY0oOVexf+Ww
+         VvA03sA4LEC7yK6LmZB2ABREjK/KtVrGwKNKMxk7f35IYzjUtOUNTU4QELyIVgPDcXZk
+         9I40NwFKywd5vH48QzLym/BWhEoq7NBI9c9CrIlmRjw/ScZLbWgYjGrrxGi167L8OzM0
+         2xnuupE+BvsZXePsEnfh662SRjvfS0iI4dipAIU4SpX4EabxAj0NtGVILahqparSwnLM
+         aCO4PZYYsC9bvygYk61YIUCiD2iE2NYdqRD0ddvSTcIQJx5ZNJnyedn9SWXp3zkB61Ps
+         TS6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=IDKasFqgZQXyRzPPd8mvlQ7HH6pYthpdVRPFi2j8brk=;
-        b=VArOuxsL44xAqy+s+g7VI3OTUXK0Q66reNsDp1UQWnqTq1CEl8UqnEJ0kL6Ttlz9ab
-         Dj5D3ipUGwgU1Wn8qVnxz6WSYk6EXmJIGYle1GV0br9L2Gg4ySbPrYoLOQJDTQK28JA9
-         Fb3lH5OR/muIlsCCz+qMtYVS0lUZdqAQfAbPGm3KlTZcO2rZauI658CmJONhb9RhDswA
-         BIqmnLBA70OeIySmL87wJFnTzYrhDnAsqgoBRPd7Z0WkPNsjyHG/YgXtEvETMxJBM2mV
-         hwB3frMbgyy1zlRqIdeZLTEKED0EbXObuaeL66F1yfeMPcT1EyLO0jf5v6DJvEoDEMou
-         11Ug==
+        bh=anP9IqN9A8xsrahea21FJgK0DHxjvujnKAWwQt2DbNc=;
+        b=vbBU02UH6acMLplxXA/yYVn6f/PIQS0JbdlCA+jYrDKPdyzxqmWCMzXzu70pw2xcwi
+         1JR5cSfvMdY0yQZMedN3otm3ppqjqV7XLT0/1y27LrrGFNHj523MOQy8u996OqAKbZtG
+         Pm6jm+u5vOHh3R7EqVkpOqAv0vHvz5wfyiAju7EuixB4fS3UpdMYByfwdAbtd4dHYSIr
+         e9E9ibExb+AmNhQx0pEcrvoyFUaERi6WVrVQ7i8m3F1YdykJPe8ufetoVFsQyINbuwV6
+         tN7ejSwns+2VY/U4N3/FoBB1HbRG2oNIS31fHGmdiIMZV/P0qk/qE8uUrnpR+Y3uxSBJ
+         IICQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=m+9KtqUr;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=L5K9i8Z4;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
 Return-Path: <hverkuil@xs4all.nl>
-Received: from lb1-smtp-cloud7.xs4all.net (lb1-smtp-cloud7.xs4all.net. [194.109.24.24])
-        by gmr-mx.google.com with ESMTPS id 187si112452wmb.0.2021.04.13.08.02.30
+Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net. [194.109.24.31])
+        by gmr-mx.google.com with ESMTPS id 187si110488wmb.0.2021.04.13.07.47.19
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Apr 2021 08:02:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) client-ip=194.109.24.24;
+        Tue, 13 Apr 2021 07:47:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) client-ip=194.109.24.31;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=m+9KtqUr;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=L5K9i8Z4;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
 Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
 	by smtp-cloud7.xs4all.net with ESMTPA
-	id WKYclFiBNMxedWKYglj7fF; Tue, 13 Apr 2021 17:02:30 +0200
+	id WKJvlFbznMxedWKJylj3WG; Tue, 13 Apr 2021 16:47:19 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1618326150; bh=IDKasFqgZQXyRzPPd8mvlQ7HH6pYthpdVRPFi2j8brk=;
+	t=1618325239; bh=anP9IqN9A8xsrahea21FJgK0DHxjvujnKAWwQt2DbNc=;
 	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
 	 Subject;
-	b=m+9KtqUrym5RH2Ct0yC59jWTznQCxXhAcOOb4wusDJbrLjOZ3ROSjr0m16UgfxQgc
-	 uu/OoEvPY1oQFvtMM2Tgtco/Pzy/BNWT2YRIb07ZRmKL3itqS2XeZIFGe1zLJVLI0h
-	 1cs/BjKYTXitacN/xTf1Qpxse/P/TuaEX0wbHRz1el4JOjtcT3TtDqgOIkkr0jdeWV
-	 ibKJN5I49MfmSVf0PVERX4aBxKiB9vRkupEFW7THNRODh6QpQtHOwkz6eWjE+HdF/C
-	 m3w23zWzMOK/7iAC1RloSd1SxF9wyskULWJLhffkmshuz4MYLY1YGsCSWBLmkebZsH
-	 rraX0L+0fFuJA==
-Subject: Re: [PATCH v3 1/2] media: zoran: add spaces around '<<'
+	b=L5K9i8Z4RgVUfP0go+amsV0Hh5wuH5mkWq/WgZQ3kLQbKfB5EyDt3rrnVU0SLXNTR
+	 KphT7/o25amFe4kwd37Du0qozW181cmWiM4/LArFepeq85LiU3RnqfVazvUpgSP+7x
+	 yENrOe7hLQPjBdMIBIxWZrHqT+awNuLlp9YJDsxb0G9xawn7uASNGsoWC0QVPegm/1
+	 p3i2wiEUCGS6ivnXk8lT0CZMhBg1MDV6Sql8pS4vJFQuThHY8O6eFInrn6cx7UL0JH
+	 2A+0prU5p1XtBilkC5xVXtE+brvajRc8S4za6FH5A9oqYuB1Dis84bCuggYb3dLr4X
+	 HHNruGnsTZwzg==
+Subject: Re: [PATCH v3 2/2] staging: media: zoran: align code appropriately
 To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
  mchehab@kernel.org, gregkh@linuxfoundation.org
 Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
  mitali_s@me.iitr.ac.in
 References: <cover.1618066787.git.mitaliborkar810@gmail.com>
- <8e8ac690d97478f7cbb9b91d46ef7a95e4444e5f.1618066787.git.mitaliborkar810@gmail.com>
+ <bf18b0301f10dae2d2151839b02c3202093940b3.1618066787.git.mitaliborkar810@gmail.com>
 From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <1b70e00e-383f-17c2-231e-e7e8a11acf90@xs4all.nl>
-Date: Tue, 13 Apr 2021 17:02:26 +0200
+Message-ID: <9e563bdb-4f6a-485f-9108-0005277eae77@xs4all.nl>
+Date: Tue, 13 Apr 2021 16:47:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
-In-Reply-To: <8e8ac690d97478f7cbb9b91d46ef7a95e4444e5f.1618066787.git.mitaliborkar810@gmail.com>
+In-Reply-To: <bf18b0301f10dae2d2151839b02c3202093940b3.1618066787.git.mitaliborkar810@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfC4JMNIPm95Mxy3A/xjTotsLqMg61nIii6HL9k+S5EOSb+HzHtqjhne4NdDOE/a5W/DF6BC+VczczhAwfGqSSxkkWtJkHmaEXwjTFzOhEKJrwMBR4d8Q
- sLxQSIqPG04BrMLGhdne74i3Q1wpHj4JfVzESgMJs6pCFl2Rk1irChga1WsdyE7QcGTFii+x/f07IKl2Gp1QMkagoC75EmXdRiOsDyRk/kT8KaPvcQQ9YSYt
- jo6SPSBOUOYaiTxImTTmpDNkD/Q/2mKWEucQ7kuWpZM34un6e/lUTNw5s/949xvb2sWQ9W4ogyV2cI9pW/HvN7lZ3Vfl/521GtFVQ4BwFn95SXp/1wf4gLRG
- Dk/dK0+ukXb4TQ0dSOwEcWXE8tqizZslmeMDGSZejeWcKIbzzRlp365Z5nrzYmdq1spFloQPi16ENVgotCxb9ikWlE0dBb5cOtTieTXQPAX1HaSJwMJz+5sf
- iUe+ueM605rGxBDwWxnQhK5DScauorQmiYGbaw==
+X-CMAE-Envelope: MS4xfBoGu1JSDDziLmtbsOiHaiIepNiPB8LTK8LvNoVoiLkEQdg+aXiBXIeONdsbqgSrv7Bl2Jfu763VABeuqOZYfF4YGIKPC+9vFTXbWiAykne726OSxRrR
+ XMBQNeEqGQrciLgrdetXOtCmbtQep6PlEgaDtC5Q/NytUiS750J5myek/zoONqcbzGD+Aby4S86QLSSGciFH1Ds3hE1JHTSyKbGWpwVGvrjNpYFKhraPv1Nr
+ uIFRzHbAHExFEGRQzWUDl8yf/6q8n9uc7DY1P10fhnrUxiLRyaT2JyTLZeDpHcEcxa1VvOgUmVyf4XovCXQuYzCZQQykXmfkAXF4+nCQY1hA9h7rb7RL0/uw
+ KPreROu/JQ4YLkperyIB++DWkuh33UFg28Xy5/D74h4dKvnFXgqLoVvuYZvmk7MzD92eamIJYx3CWGabCOMllQEjOefWTEg5tWq3MpgM6euZ9xOw9ZJCzhWW
+ Asj6h2MdXJdm3h52nDaD67q6p2L97mbB0WcOzw==
 
-Missing commit message.
+On 10/04/2021 17:34, Mitali Borkar wrote:
+> Aligned the code properly by using tabs to make code neater and improve
+> readability.
+> 
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+>  drivers/staging/media/zoran/zr36057.h | 108 +++++++++++++-------------
+>  1 file changed, 54 insertions(+), 54 deletions(-)
+> 
+> diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
+> index 198d344a8879..db42f445248f 100644
+> --- a/drivers/staging/media/zoran/zr36057.h
+> +++ b/drivers/staging/media/zoran/zr36057.h
+> @@ -13,28 +13,28 @@
+>  /* Zoran ZR36057 registers */
+>  
+>  /* Video Front End, Horizontal Configuration Register */
+> -#define ZR36057_VFEHCR			0x000
+> +#define ZR36057_VFEHCR				0x000
+>  #define ZR36057_VFEHCR_HS_POL			BIT(30)
 
-You used to have one in v1 of this patch!
+Same issue as the other patches: this patch depends on other local changes
+so won't apply to mainline code...
 
 Regards,
 
 	Hans
 
-On 10/04/2021 17:33, Mitali Borkar wrote:
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
-> Changes from v2:- No changes. 
-> Changes from v1:- NO changes.
-> 
->  drivers/staging/media/zoran/zr36057.h | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
-> index 71b651add35a..a2a75fd9f535 100644
-> --- a/drivers/staging/media/zoran/zr36057.h
-> +++ b/drivers/staging/media/zoran/zr36057.h
-> @@ -30,13 +30,13 @@
->  #define ZR36057_VFESPFR_HOR_DCM          14
->  #define ZR36057_VFESPFR_VER_DCM          8
->  #define ZR36057_VFESPFR_DISP_MODE        6
-> -#define ZR36057_VFESPFR_YUV422          (0<<3)
-> -#define ZR36057_VFESPFR_RGB888          (1<<3)
-> -#define ZR36057_VFESPFR_RGB565          (2<<3)
-> -#define ZR36057_VFESPFR_RGB555          (3<<3)
-> -#define ZR36057_VFESPFR_ERR_DIF          (1<<2)
-> -#define ZR36057_VFESPFR_PACK24          (1<<1)
-> -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1<<0)
-> +#define ZR36057_VFESPFR_YUV422          (0 << 3)
-> +#define ZR36057_VFESPFR_RGB888          (1 << 3)
-> +#define ZR36057_VFESPFR_RGB565          (2 << 3)
-> +#define ZR36057_VFESPFR_RGB555          (3 << 3)
-> +#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
-> +#define ZR36057_VFESPFR_PACK24          (1 << 1)
-> +#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
+> -#define ZR36057_VFEHCR_H_START		10
+> -#define ZR36057_VFEHCR_H_END		0
+> -#define ZR36057_VFEHCR_HMASK		0x3ff
+> +#define ZR36057_VFEHCR_H_START			10
+> +#define ZR36057_VFEHCR_H_END			0
+> +#define ZR36057_VFEHCR_HMASK			0x3ff
 >  
->  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
+>  /* Video Front End, Vertical Configuration Register */
+> -#define ZR36057_VFEVCR			0x004
+> +#define ZR36057_VFEVCR				0x004
+>  #define ZR36057_VFEVCR_VS_POL			BIT(30)
+> -#define ZR36057_VFEVCR_V_START		10
+> -#define ZR36057_VFEVCR_V_END		0
+> -#define ZR36057_VFEVCR_VMASK		0x3ff
+> +#define ZR36057_VFEVCR_V_START			10
+> +#define ZR36057_VFEVCR_V_END			0
+> +#define ZR36057_VFEVCR_VMASK			0x3ff
 >  
+>  /* Video Front End, Scaler and Pixel Format Register */
+>  #define ZR36057_VFESPFR			0x008
+>  #define ZR36057_VFESPFR_EXT_FL			BIT(26)
+>  #define ZR36057_VFESPFR_TOP_FIELD		BIT(25)
+>  #define ZR36057_VFESPFR_VCLK_POL		BIT(24)
+> -#define ZR36057_VFESPFR_H_FILTER	21
+> +#define ZR36057_VFESPFR_H_FILTER		21
+>  #define ZR36057_VFESPFR_HOR_DCM		14
+>  #define ZR36057_VFESPFR_VER_DCM		8
+> -#define ZR36057_VFESPFR_DISP_MODE	6
+> +#define ZR36057_VFESPFR_DISP_MODE		6
+>  #define ZR36057_VFESPFR_YUV422			(0 << 3)
+>  #define ZR36057_VFESPFR_RGB888			BIT(3)
+>  #define ZR36057_VFESPFR_RGB565			(2 << 3)
+> @@ -44,34 +44,34 @@
+>  #define ZR36057_VFESPFR_LITTLE_ENDIAN		BIT(0)
+>  
+>  /* Video Display "Top" Register */
+> -#define ZR36057_VDTR			0x00c
+> +#define ZR36057_VDTR				0x00c
+>  
+>  /* Video Display "Bottom" Register */
+> -#define ZR36057_VDBR			0x010
+> +#define ZR36057_VDBR				0x010
+>  
+>  /* Video Stride, Status, and Frame Grab Register */
+> -#define ZR36057_VSSFGR			0x014
+> -#define ZR36057_VSSFGR_DISP_STRIDE	16
+> +#define ZR36057_VSSFGR				0x014
+> +#define ZR36057_VSSFGR_DISP_STRIDE		16
+>  #define ZR36057_VSSFGR_VID_OVF			BIT(8)
+>  #define ZR36057_VSSFGR_SNAP_SHOT		BIT(1)
+>  #define ZR36057_VSSFGR_FRAME_GRAB		BIT(0)
+>  
+>  /* Video Display Configuration Register */
+> -#define ZR36057_VDCR			0x018
+> +#define ZR36057_VDCR				0x018
+>  #define ZR36057_VDCR_VID_EN			BIT(31)
+> -#define ZR36057_VDCR_MIN_PIX		24
+> +#define ZR36057_VDCR_MIN_PIX			24
+>  #define ZR36057_VDCR_TRITON			BIT(24)
+>  #define ZR36057_VDCR_VID_WIN_HT		12
+> -#define ZR36057_VDCR_VID_WIN_WID	0
+> +#define ZR36057_VDCR_VID_WIN_WID		0
+>  
+>  /* Masking Map "Top" Register */
+> -#define ZR36057_MMTR			0x01c
+> +#define ZR36057_MMTR				0x01c
+>  
+>  /* Masking Map "Bottom" Register */
+> -#define ZR36057_MMBR			0x020
+> +#define ZR36057_MMBR				0x020
+>  
+>  /* Overlay Control Register */
+> -#define ZR36057_OCR			0x024
+> +#define ZR36057_OCR				0x024
+>  #define ZR36057_OCR_OVL_ENABLE			BIT(15)
+>  #define ZR36057_OCR_MASK_STRIDE		0
+>  
+> @@ -83,42 +83,42 @@
+>  #define ZR36057_GPPGCR1			0x02c
+>  
+>  /* MPEG Code Source Address Register */
+> -#define ZR36057_MCSAR			0x030
+> +#define ZR36057_MCSAR				0x030
+>  
+>  /* MPEG Code Transfer Control Register */
+> -#define ZR36057_MCTCR			0x034
+> +#define ZR36057_MCTCR				0x034
+>  #define ZR36057_MCTCR_COD_TIME			BIT(30)
+>  #define ZR36057_MCTCR_C_EMPTY			BIT(29)
+>  #define ZR36057_MCTCR_C_FLUSH			BIT(28)
+> -#define ZR36057_MCTCR_COD_GUEST_ID	20
+> -#define ZR36057_MCTCR_COD_GUEST_REG	16
+> +#define ZR36057_MCTCR_COD_GUEST_ID		20
+> +#define ZR36057_MCTCR_COD_GUEST_REG		16
+>  
+>  /* MPEG Code Memory Pointer Register */
+> -#define ZR36057_MCMPR			0x038
+> +#define ZR36057_MCMPR				0x038
+>  
+>  /* Interrupt Status Register */
+> -#define ZR36057_ISR			0x03c
+> +#define ZR36057_ISR				0x03c
+>  #define ZR36057_ISR_GIRQ1			BIT(30)
+>  #define ZR36057_ISR_GIRQ0			BIT(29)
+> -#define ZR36057_ISR_COD_REP_IRQ			BIT(28)
+> +#define ZR36057_ISR_COD_REP_IRQ		BIT(28)
+>  #define ZR36057_ISR_JPEG_REP_IRQ		BIT(27)
+>  
+>  /* Interrupt Control Register */
+> -#define ZR36057_ICR			0x040
+> +#define ZR36057_ICR				0x040
+>  #define ZR36057_ICR_GIRQ1			BIT(30)
+>  #define ZR36057_ICR_GIRQ0			BIT(29)
+> -#define ZR36057_ICR_COD_REP_IRQ			BIT(28)
+> +#define ZR36057_ICR_COD_REP_IRQ		BIT(28)
+>  #define ZR36057_ICR_JPEG_REP_IRQ		BIT(27)
+>  #define ZR36057_ICR_INT_PIN_EN			BIT(24)
+>  
+>  /* I2C Bus Register */
+> -#define ZR36057_I2CBR			0x044
+> +#define ZR36057_I2CBR				0x044
+>  #define ZR36057_I2CBR_SDA			BIT(1)
+>  #define ZR36057_I2CBR_SCL			BIT(0)
+>  
+>  /* JPEG Mode and Control */
+> -#define ZR36057_JMC			0x100
+> -#define ZR36057_JMC_JPG				BIT(31)
+> +#define ZR36057_JMC				0x100
+> +#define ZR36057_JMC_JPG			BIT(31)
+>  #define ZR36057_JMC_JPG_EXP_MODE		(0 << 29)
+>  #define ZR36057_JMC_JPG_CMP_MODE		BIT(29)
+>  #define ZR36057_JMC_MJPG_EXP_MODE		(2 << 29)
+> @@ -132,56 +132,56 @@
+>  #define ZR36057_JMC_STLL_LIT_ENDIAN		BIT(0)
+>  
+>  /* JPEG Process Control */
+> -#define ZR36057_JPC			0x104
+> +#define ZR36057_JPC				0x104
+>  #define ZR36057_JPC_P_RESET			BIT(7)
+> -#define ZR36057_JPC_COD_TRNS_EN			BIT(5)
+> +#define ZR36057_JPC_COD_TRNS_EN		BIT(5)
+>  #define ZR36057_JPC_ACTIVE			BIT(0)
+>  
+>  /* Vertical Sync Parameters */
+> -#define ZR36057_VSP			0x108
+> -#define ZR36057_VSP_VSYNC_SIZE		16
+> -#define ZR36057_VSP_FRM_TOT		0
+> +#define ZR36057_VSP				0x108
+> +#define ZR36057_VSP_VSYNC_SIZE			16
+> +#define ZR36057_VSP_FRM_TOT			0
+>  
+>  /* Horizontal Sync Parameters */
+> -#define ZR36057_HSP			0x10c
+> +#define ZR36057_HSP				0x10c
+>  #define ZR36057_HSP_HSYNC_START		16
+> -#define ZR36057_HSP_LINE_TOT		0
+> +#define ZR36057_HSP_LINE_TOT			0
+>  
+>  /* Field Horizontal Active Portion */
+> -#define ZR36057_FHAP			0x110
+> -#define ZR36057_FHAP_NAX		16
+> -#define ZR36057_FHAP_PAX		0
+> +#define ZR36057_FHAP				0x110
+> +#define ZR36057_FHAP_NAX			16
+> +#define ZR36057_FHAP_PAX			0
+>  
+>  /* Field Vertical Active Portion */
+> -#define ZR36057_FVAP			0x114
+> -#define ZR36057_FVAP_NAY		16
+> -#define ZR36057_FVAP_PAY		0
+> +#define ZR36057_FVAP				0x114
+> +#define ZR36057_FVAP_NAY			16
+> +#define ZR36057_FVAP_PAY			0
+>  
+>  /* Field Process Parameters */
+> -#define ZR36057_FPP			0x118
+> +#define ZR36057_FPP				0x118
+>  #define ZR36057_FPP_ODD_EVEN			BIT(0)
+>  
+>  /* JPEG Code Base Address */
+> -#define ZR36057_JCBA			0x11c
+> +#define ZR36057_JCBA				0x11c
+>  
+>  /* JPEG Code FIFO Threshold */
+> -#define ZR36057_JCFT			0x120
+> +#define ZR36057_JCFT				0x120
+>  
+>  /* JPEG Codec Guest ID */
+> -#define ZR36057_JCGI			0x124
+> -#define ZR36057_JCGI_JPE_GUEST_ID	4
+> -#define ZR36057_JCGI_JPE_GUEST_REG	0
+> +#define ZR36057_JCGI				0x124
+> +#define ZR36057_JCGI_JPE_GUEST_ID		4
+> +#define ZR36057_JCGI_JPE_GUEST_REG		0
+>  
+>  /* GuestBus Control Register (2) */
+> -#define ZR36057_GCR2			0x12c
+> +#define ZR36057_GCR2				0x12c
+>  
+>  /* Post Office Register */
+> -#define ZR36057_POR			0x200
+> +#define ZR36057_POR				0x200
+>  #define ZR36057_POR_PO_PEN			BIT(25)
+>  #define ZR36057_POR_PO_TIME			BIT(24)
+>  #define ZR36057_POR_PO_DIR			BIT(23)
+>  
+>  /* "Still" Transfer Register */
+> -#define ZR36057_STR			0x300
+> +#define ZR36057_STR				0x300
+>  
+>  #endif
 > 
 
 
