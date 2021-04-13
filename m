@@ -1,102 +1,123 @@
-X-GM-THRID: 6950220202165403648
-X-Received: by 2002:a63:34ca:: with SMTP id b193mr26666430pga.320.1618224243523;
-        Mon, 12 Apr 2021 03:44:03 -0700 (PDT)
+X-GM-THRID: 6949552680450654208
+X-Received: by 2002:a1c:6587:: with SMTP id z129mr441384wmb.106.1618326152742;
+        Tue, 13 Apr 2021 08:02:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:1656:: with SMTP id 22ls7036899pgw.1.gmail; Mon, 12 Apr
- 2021 03:44:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdw94Fmht4rdNZhoZZH/PDdi7bwupMIyreBlmZZUAjjrh19wmsF/t1sMwJBj9FyXj+UVcA
-X-Received: by 2002:a62:3086:0:b029:248:16e0:7c6 with SMTP id w128-20020a6230860000b029024816e007c6mr13349450pfw.19.1618224242312;
-        Mon, 12 Apr 2021 03:44:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618224242; cv=none;
+Received: by 2002:a5d:6804:: with SMTP id w4ls3208093wru.2.gmail; Tue, 13 Apr
+ 2021 08:02:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjIUwTCvkhYPtxdQxPtuPti9/13PGyU9iwGM39tP3mb07D9JhwjRXWseDdnb13X06cpMkX
+X-Received: by 2002:adf:f38e:: with SMTP id m14mr16569075wro.34.1618326150753;
+        Tue, 13 Apr 2021 08:02:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618326150; cv=none;
         d=google.com; s=arc-20160816;
-        b=LrkdwCeJL4C5624KgD2dyfx4ir/JffbTmHYlEtDsjTfAlXQg6d8EDukyZ1kLfHuzC6
-         bdpZlitr+p6nY2+F1tOajAxV+HdtGG/LUmESefJiELVS53T+EXg+skoUOtQuITiYSNo4
-         viZcVt4tltePadt2NzvrP9hGUNF2NNqc0E2bwDl1nYQxLwkqZ61e5gFGrR48CSeiQZ6i
-         9hHFMi+HrCTnO+RazyoqdwLiSzrn75vLKghsByL5bQeqN0ED0N199HlWP3N4YOpUgYLy
-         RSPYyaBVJMN8Ohr4oKcRY671FvEJmzXq2phZT1ap15RiM9iM1+H+i6GdKPCXTMkypb5g
-         M/oQ==
+        b=QMvYlK8R0xVBqPem219D3eLiGNQ2XM73ybmQPV+bMqRmH9g4ZktsMDU8ojVEgMAVKa
+         /fgNTzwCWW2lUMsOJ5OPfTrlNzR8a8KHQB04seK9qrZExg6wiJ2UJhsez8lt78ygQPnO
+         RcHa97zbzremsvc16BkhYI6BMVuksFaCmueG9GiBV+BF3n0Wj9MyywNJGCaCrnpDSwgt
+         HywMBfkbrZSMgWK/ITGt4WbFnIM0xWyF8n7xeeFkuXPjP0srMc1r15WRgBLBeRlsgM1o
+         a2NRd/ty9hu8/OMd/KA7BuBnr9kryph22K50LuW2k2A+99CrNvfJot5MqEX7pcyesjGo
+         P5lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=nfSnDyKH8eQyblcVTBktK3kbpdYMJZiJC2JxbskSzHw=;
-        b=Nm74r3Id0/uIkKwjQWajqpP2EozlgkFFzGjWP/ldB8G281n6q3f3GJeSHZCPzVh3gh
-         nYhnvF8rYnwwDbvANfMqqXlzKiy0cAz2oSn/oM8jACXGnp5jF9QvbsTc7kOTahVqmgfh
-         UvYmgTI3zLg1SttB+diaMwStjqCfKRNOmbrL6KZfpC6IEAMuNN00jVP55i4ONHBl8dhe
-         tXB4gqWnyF81+XGbkqo/JW9G+Wh6A+pO83pxwWPzoVPtszsepwyJLKEFtUFf0dprx/9h
-         0bi4TU9XXf/uVIrhzJcOxZoiEW4GLa1VasnSN5hEoBbu9npmX0uxT8JKjZBiMqW1bEjp
-         LkaA==
+        bh=IDKasFqgZQXyRzPPd8mvlQ7HH6pYthpdVRPFi2j8brk=;
+        b=VArOuxsL44xAqy+s+g7VI3OTUXK0Q66reNsDp1UQWnqTq1CEl8UqnEJ0kL6Ttlz9ab
+         Dj5D3ipUGwgU1Wn8qVnxz6WSYk6EXmJIGYle1GV0br9L2Gg4ySbPrYoLOQJDTQK28JA9
+         Fb3lH5OR/muIlsCCz+qMtYVS0lUZdqAQfAbPGm3KlTZcO2rZauI658CmJONhb9RhDswA
+         BIqmnLBA70OeIySmL87wJFnTzYrhDnAsqgoBRPd7Z0WkPNsjyHG/YgXtEvETMxJBM2mV
+         hwB3frMbgyy1zlRqIdeZLTEKED0EbXObuaeL66F1yfeMPcT1EyLO0jf5v6DJvEoDEMou
+         11Ug==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LjAUt+sq;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1033 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com. [2607:f8b0:4864:20::1033])
-        by gmr-mx.google.com with ESMTPS id k70si828110pga.2.2021.04.12.03.44.02
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=m+9KtqUr;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb1-smtp-cloud7.xs4all.net (lb1-smtp-cloud7.xs4all.net. [194.109.24.24])
+        by gmr-mx.google.com with ESMTPS id 187si112452wmb.0.2021.04.13.08.02.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 03:44:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1033 as permitted sender) client-ip=2607:f8b0:4864:20::1033;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LjAUt+sq;
-       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::1033 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1033.google.com with SMTP id z22-20020a17090a0156b029014d4056663fso6883112pje.0
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 03:44:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=nfSnDyKH8eQyblcVTBktK3kbpdYMJZiJC2JxbskSzHw=;
-        b=LjAUt+sq2bBQByg90jwnPgHNjJt8VwRb+Czau/fcSUfKl8MXfbn5XkBeny3hL8WoiN
-         GKzSiYFfVgDaNSWoReOQ3208Fhp4hTGe8Os6jga1nGNoLRx8AI8IDVwoX208TgY4aaN2
-         LnCpqOOwAQwl+Ir7PbP5+AUDXatcs4FAjPseeJFd6KUT4dHY4EZ1yq2yaUI5/LFQV1W9
-         u7EBHziZRtDxqK2fkLLu1/Vo/6jvHKBhETpHPDqHQ/+JmLtbFQCWFlVubEi+YJWx8S+T
-         bmmZ2mgEASbRqRNRcuCJ7OKvcFPoIvekXET/be31nslbmc2/euO47ht/C3Tk+MJwnd0M
-         rk1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=nfSnDyKH8eQyblcVTBktK3kbpdYMJZiJC2JxbskSzHw=;
-        b=RRNIZqcpdVNU2fhPS4O8Wyg4pBNoYLrLYUxC874SPWKOxQId8Ydx3Whenkw7EmCOHR
-         oQUVMOyC2kqEOE0zdiKFG0TugEINWmLewOzpaP0gMAMkjIuw66dHHZSiib1IuLfhajFT
-         3JWmNMA/GjqII8pGvOlX2blVJf+uVxBYMG3bt2BF7Xm1XQ8l6FWI5w/7MQ1w7mAeLmNn
-         6JGiWJMpt3rZ2mtpb7caCD7Eov9g+RNYznndfCii942OmArU+ioso1+rHAL27VFztxf0
-         ltSVlcrELJbXI1AqWi8jUDwAT2PbYifj90BLp5dx64dd6K6K6FxNsZxTynd6tYEWzTr+
-         oTkQ==
-X-Gm-Message-State: AOAM531JIB2MGZEDJ1kfmfqfc2lqYpbqHxgL2VFiVu9NQ4wjOBD7doOc
-	aOgtg0IuRm8UuJbMIdcCWQA=
-X-Received: by 2002:a17:90a:b292:: with SMTP id c18mr23074230pjr.179.1618224241916;
-        Mon, 12 Apr 2021 03:44:01 -0700 (PDT)
-Return-Path: <mitaliborkar810@gmail.com>
-Received: from kali ([103.141.87.254])
-        by smtp.gmail.com with ESMTPSA id 184sm9695577pfx.156.2021.04.12.03.43.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 03:44:01 -0700 (PDT)
-Date: Mon, 12 Apr 2021 16:13:54 +0530
-From: Mitali Borkar <mitaliborkar810@gmail.com>
-To: nsaenzjulienne@susu.de, gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: [PATCH v2 0/2] staging: vc04_services: cleanup patchset for style
- issues
-Message-ID: <cover.1618223171.git.mitaliborkar810@gmail.com>
+        Tue, 13 Apr 2021 08:02:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) client-ip=194.109.24.24;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=m+9KtqUr;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.24 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+	by smtp-cloud7.xs4all.net with ESMTPA
+	id WKYclFiBNMxedWKYglj7fF; Tue, 13 Apr 2021 17:02:30 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1618326150; bh=IDKasFqgZQXyRzPPd8mvlQ7HH6pYthpdVRPFi2j8brk=;
+	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=m+9KtqUrym5RH2Ct0yC59jWTznQCxXhAcOOb4wusDJbrLjOZ3ROSjr0m16UgfxQgc
+	 uu/OoEvPY1oQFvtMM2Tgtco/Pzy/BNWT2YRIb07ZRmKL3itqS2XeZIFGe1zLJVLI0h
+	 1cs/BjKYTXitacN/xTf1Qpxse/P/TuaEX0wbHRz1el4JOjtcT3TtDqgOIkkr0jdeWV
+	 ibKJN5I49MfmSVf0PVERX4aBxKiB9vRkupEFW7THNRODh6QpQtHOwkz6eWjE+HdF/C
+	 m3w23zWzMOK/7iAC1RloSd1SxF9wyskULWJLhffkmshuz4MYLY1YGsCSWBLmkebZsH
+	 rraX0L+0fFuJA==
+Subject: Re: [PATCH v3 1/2] media: zoran: add spaces around '<<'
+To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ mitali_s@me.iitr.ac.in
+References: <cover.1618066787.git.mitaliborkar810@gmail.com>
+ <8e8ac690d97478f7cbb9b91d46ef7a95e4444e5f.1618066787.git.mitaliborkar810@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <1b70e00e-383f-17c2-231e-e7e8a11acf90@xs4all.nl>
+Date: Tue, 13 Apr 2021 17:02:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+In-Reply-To: <8e8ac690d97478f7cbb9b91d46ef7a95e4444e5f.1618066787.git.mitaliborkar810@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfC4JMNIPm95Mxy3A/xjTotsLqMg61nIii6HL9k+S5EOSb+HzHtqjhne4NdDOE/a5W/DF6BC+VczczhAwfGqSSxkkWtJkHmaEXwjTFzOhEKJrwMBR4d8Q
+ sLxQSIqPG04BrMLGhdne74i3Q1wpHj4JfVzESgMJs6pCFl2Rk1irChga1WsdyE7QcGTFii+x/f07IKl2Gp1QMkagoC75EmXdRiOsDyRk/kT8KaPvcQQ9YSYt
+ jo6SPSBOUOYaiTxImTTmpDNkD/Q/2mKWEucQ7kuWpZM34un6e/lUTNw5s/949xvb2sWQ9W4ogyV2cI9pW/HvN7lZ3Vfl/521GtFVQ4BwFn95SXp/1wf4gLRG
+ Dk/dK0+ukXb4TQ0dSOwEcWXE8tqizZslmeMDGSZejeWcKIbzzRlp365Z5nrzYmdq1spFloQPi16ENVgotCxb9ikWlE0dBb5cOtTieTXQPAX1HaSJwMJz+5sf
+ iUe+ueM605rGxBDwWxnQhK5DScauorQmiYGbaw==
 
-Changes from v1:- Threaded mails properly and changed the subject line
-to match prefix on patches.
-[PATCH 1/2]:- No changes.
-[PATCH 2/2]:- No changes.
+Missing commit message.
 
-Mitali Borkar (2):
-  staging: vc04_services: remove trailing whitespace
-  staging: vc04_services: rectify spelling mistake
+You used to have one in v1 of this patch!
 
- drivers/staging/vc04_services/interface/TODO | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Regards,
 
--- 
-2.30.2
+	Hans
+
+On 10/04/2021 17:33, Mitali Borkar wrote:
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+> Changes from v2:- No changes. 
+> Changes from v1:- NO changes.
+> 
+>  drivers/staging/media/zoran/zr36057.h | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/staging/media/zoran/zr36057.h b/drivers/staging/media/zoran/zr36057.h
+> index 71b651add35a..a2a75fd9f535 100644
+> --- a/drivers/staging/media/zoran/zr36057.h
+> +++ b/drivers/staging/media/zoran/zr36057.h
+> @@ -30,13 +30,13 @@
+>  #define ZR36057_VFESPFR_HOR_DCM          14
+>  #define ZR36057_VFESPFR_VER_DCM          8
+>  #define ZR36057_VFESPFR_DISP_MODE        6
+> -#define ZR36057_VFESPFR_YUV422          (0<<3)
+> -#define ZR36057_VFESPFR_RGB888          (1<<3)
+> -#define ZR36057_VFESPFR_RGB565          (2<<3)
+> -#define ZR36057_VFESPFR_RGB555          (3<<3)
+> -#define ZR36057_VFESPFR_ERR_DIF          (1<<2)
+> -#define ZR36057_VFESPFR_PACK24          (1<<1)
+> -#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1<<0)
+> +#define ZR36057_VFESPFR_YUV422          (0 << 3)
+> +#define ZR36057_VFESPFR_RGB888          (1 << 3)
+> +#define ZR36057_VFESPFR_RGB565          (2 << 3)
+> +#define ZR36057_VFESPFR_RGB555          (3 << 3)
+> +#define ZR36057_VFESPFR_ERR_DIF          (1 << 2)
+> +#define ZR36057_VFESPFR_PACK24          (1 << 1)
+> +#define ZR36057_VFESPFR_LITTLE_ENDIAN    (1 << 0)
+>  
+>  #define ZR36057_VDTR            0x00c	/* Video Display "Top" Register */
+>  
+> 
 
 
