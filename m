@@ -1,127 +1,129 @@
 X-GM-THRID: 6950506572644614144
-X-Received: by 2002:ac2:4f84:: with SMTP id z4mr25187165lfs.608.1618351507533;
-        Tue, 13 Apr 2021 15:05:07 -0700 (PDT)
+X-Received: by 2002:a17:902:7682:b029:eb:2900:ed69 with SMTP id m2-20020a1709027682b02900eb2900ed69mr5505643pll.53.1618343824816;
+        Tue, 13 Apr 2021 12:57:04 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a19:48c6:: with SMTP id v189ls374343lfa.0.gmail; Tue, 13 Apr
- 2021 15:05:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwWcNdeW6Dz7sSxo9lXkQpyKDrXPl233ZUPgB8qVyrpcckYVMKtpLRhqNI12xwTAs+MpnhP
-X-Received: by 2002:a05:6512:3a91:: with SMTP id q17mr22513029lfu.364.1618351505335;
-        Tue, 13 Apr 2021 15:05:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618351505; cv=none;
+Received: by 2002:a17:90a:7102:: with SMTP id h2ls2216326pjk.0.canary-gmail;
+ Tue, 13 Apr 2021 12:57:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRwJ3LDwcj2gTt3Pt/nWDEz+V9EO3MwjxrY++ASnVzwiGOVic7aV1JesIgcp3cdlxz9Byo
+X-Received: by 2002:a17:90a:ca83:: with SMTP id y3mr1787352pjt.191.1618343823648;
+        Tue, 13 Apr 2021 12:57:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618343823; cv=none;
         d=google.com; s=arc-20160816;
-        b=oljba0SnsOFYBgYXFTDsQjsmMVh0gx4ftblQYPRl2y9c5V+Yy4GiYDhnpweWb9YNmY
-         r3jcb7G1oemtky5Zx2+inSsZT+snnnjBRoHm6kcnQ85huQmOF4gq2b8NMqzBWR0gW9uT
-         b3UedYiDCLTlHRc8ybR0o6ZqSHSxvg+EFQVs2w1h8QbxYaXrdOWhTst6CdCvx8tyU3Q8
-         B0lB8ByknR3wmGkSJcHLpJx1jz6V+fMDxVZvMxmoFmoqV0W/2aqjXvEfT5rMzd/XmVE2
-         Lr9IJmo2RM2/KC14y5QZFCtPdgYlIffY5Cudb9We1b/ibA39pxtvQtBOSzWAYiNrPKCh
-         EJHQ==
+        b=qgop4h50pkw2IKn2sjm2OHKNfVQ0R0wFZXFzEXq9I/bTe3RAFszlKf9ng5MTwVasDr
+         Q1mckK9lU/RLXrNJBCR6w9NZQSvLIk77RCSLlIic64D4+YMJ5voTIi6ARJmGWDQ26f2a
+         XCnmvidmRELT0cL0TWLJh4p6L6g/s82CWD7sgfsLCsvNibZr+PaCBtFDSn00/FJPLbgQ
+         RnBRIFGMhLSf4fsQr2WFlBwvUK2v6dtVEE5DJQ36LBrtwUgJnqmLZOjcIN+yclHnUX1D
+         ETN5O2nN9tMmjKdHluVwfZKugFT7uYcxbiqutTlSsAJQ4DukzZYapjuAGGHwGzEwR19c
+         AK0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=UaxGyIpq5Nucm8Y+7FobDCrrLXIYmPFrxAoaj2HK+RA=;
-        b=0EBXwMH6zlMsIxecnXQEb+t3OaDrlmFqED9CcyGqamN8POeriu29rWRjYUuO7lKOnS
-         rdZjv7ZdIYzO9h+Yy5yEq7GFq2/mej6yIIXo2xn8ekDz3cm8fwcd4RKiCRO1bP1klMtE
-         sRDQz91DUQB8ZvekUxKV8pFBt+bKKpdk7biI+SDdANqGU94/nrSZi7rU4cc7LcXlONjU
-         d0h6ZThgjqx4AZ431PuPpnTB9O/CUtBRXs+dn693pG/3pY2hoATUpt6gXit+Rx8G9+mi
-         sNkAKfB8atZSTToNFn+GkBfCyJTe2z+iof1aYg/JwTRVc8Cm4Gr0VJNy/Z5fuvq/Vfjp
-         6yPw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=pjmQnwxfPUybeCrE9NSnjQV62TPPi6ZBYSR55ZeQzdY=;
+        b=aOF4M/m2EalKJYlS1mJF3Hc+ZtMeXDFuj1iOJmzrd4YBnJSDAkSU1MIFNa98/GqsoS
+         1Odwu1PMXLjI22VB1gj48sGrPJycXOC2Vaq1k/suKjrI3GQQCcIihSN+lnEGZvE5I95g
+         dVSNTzGSIVl7DtT7+3dZ7rn2h6LtHy2XQTaHLx7pxVkc4oT9OAPzXn5VNgYgC8xxcb2d
+         SyJF5UKLD9+ld2uMJPByrQ/BsRg5g8dvkKGAO4f2chex6ps548CeUdTt89D+ys5IMNa6
+         Ft8nJDMiLvxdfwOQGI+HkmBRFCa81jmcPKWBfDWE5pSw+W3T47ngVdGdmE55t1ilP4zZ
+         xv5g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id 81si928285lfj.2.2021.04.13.15.05.05
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XDGIZELh;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com. [2607:f8b0:4864:20::102b])
+        by gmr-mx.google.com with ESMTPS id 131si939476pfa.2.2021.04.13.12.57.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Apr 2021 15:05:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Apr 2021 12:57:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) client-ip=2607:f8b0:4864:20::102b;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AY7xOsa++Egb+yZHqqOduk+FTdr1zdoIgy1kn?=
- =?us-ascii?q?xilNYDZSddGVkN3roeQD2XbP5go5dXk8lbm7VZWobmjb8fdOirU5GbenUE3YtH?=
- =?us-ascii?q?CzLIdkhLGM/xTaFyfz9vFQ2M5bGsBDIeftBlt3h9uS2mWFOusnqePszImYwcPX?=
- =?us-ascii?q?z3JgVmhRCp1I3kNfBhuSC1QzTBNbHN4wEpfZ5s1GujqpZHgbB/7Lc0Utbqzlq8?=
- =?us-ascii?q?DCjYujaQQbHlos7RWVkD+y5LOSKWno4j4uFxRC3L866CzMiRDhoq+ktP7+wB7R?=
- =?us-ascii?q?3W3I85A+oqqf9vJzQOuBl8ANM3HlkBqwII5mXLLHozwvuuGo7z8R4aXxiiZlGM?=
- =?us-ascii?q?hv42rJOmmuvQKo0Q/m3zYi53j+yVecgWbyyPaYeBsKT+1MmIpBa1/Q8VY4+Nt7?=
- =?us-ascii?q?179G2H/xjes0MTrw2APw+tDQTlVjjFas5XU4l+p7tQ0gbaIuLJhcsIQH5QdcCo?=
- =?us-ascii?q?sYWCz374w9GPRjAYXb459tACqnRkGcmWVzyMW0GnwoAg7DQ04Zp8uc1zQ+pgEe?=
- =?us-ascii?q?82IogOsSg38Y7dY0UYVco+DDP6hs0LZHSsN+V9MBOM4xBey6F2TVWFbFKn6KZV?=
- =?us-ascii?q?L8UL4KIGjMrZmf2sRT2MiaPLsF0ZMqgdDISk9A8Xc7YF/oBdbL3ZtQ7xfERGnV?=
- =?us-ascii?q?Z0WW9uhuo790p7XkXf7iKzGbDEkniNamr+5aGN3ARvq2fJJaasWTVlfGKMJv0x?=
- =?us-ascii?q?D3QoAXIWMDSYkNssY/XVqC5sjLJofprPDeGcyjV4bFIHICVn72G2JGVCLuPYFa?=
- =?us-ascii?q?4l2xUnjjhBjNMkmdCHDXzNZWHLXT5vFWwJIQL8lXvhAIhVOy6qiwWE1/m51zW0?=
- =?us-ascii?q?diKKr/1quguXDz52rS721tfh1ACi9ukc3dekIPggMWO1rsNb4Yp8zaY3xY33eM?=
- =?us-ascii?q?O3ZEPqbrOT8agFhr8buva5SL2TlnEcK8L26fy3sfzUj6K6s0q+ml6drsY4p9Bo?=
- =?us-ascii?q?w7QehvGR7QFxpz8Dway1t+VA=3D=3D?=
-X-IronPort-AV: E=Sophos;i="5.82,220,1613430000"; 
-   d="scan'208";a="503083602"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 00:05:04 +0200
-Date: Wed, 14 Apr 2021 00:05:04 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Mitali Borkar <mitaliborkar810@gmail.com>
-cc: Dan Carpenter <dan.carpenter@oracle.com>, sakari.ailus@linux.intel.com, 
-    bingbu.cao@intel.com, tian.shu.qiu@intel.com, mchehab@kernel.org, 
-    gregkh@linuxfoundation.org, linux-media@vger.kernel.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-    outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: Re: [Outreachy kernel] Re: [PATCH v3 4/4] staging: media: intel-ipu3:
- remove space before tabs
-In-Reply-To: <YHX3iVCNXJlOsmuQ@kali>
-Message-ID: <alpine.DEB.2.22.394.2104140004430.14108@hadrien>
-References: <cover.1618326535.git.mitaliborkar810@gmail.com> <01ad7ff353f805dfc48e7bcc26ed974e7bb5ef9f.1618326535.git.mitaliborkar810@gmail.com> <20210413181712.GI6021@kadam> <YHX3iVCNXJlOsmuQ@kali>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XDGIZELh;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::102b as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pj1-x102b.google.com with SMTP id u14-20020a17090a1f0eb029014e38011b09so4744172pja.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 12:57:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=pjmQnwxfPUybeCrE9NSnjQV62TPPi6ZBYSR55ZeQzdY=;
+        b=XDGIZELhZ+0EIloHFZPdtwERzwXtg6kPYHwQYxP7NsOZrrps0tGe3FBm6wNhbL4L4D
+         HeOF6C5yUjuBfnQgT2BlipmVf+iGqrPJQHhrHOdPEpX7FSr9cr8bWU4vbYXUpeid5kw/
+         5SemG54HMUwhn9tOyJjRrZA4Xj0Reie5USxLNVOEP4K60Rm5hNetn8uHyQyC5GwdpFlU
+         NTNJfCxCAgHNZ92OXtT/Bz++WzKFRhZFd3p+Mz4fPLlDXe60vep4zR8P0mmGyvqTgBk+
+         /18DlAWz7bFhgwHZJsMBVz1O0WDyLYv+CpvPh2m5SAagaM2GYf3Dihly431U7QroN0nl
+         72hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=pjmQnwxfPUybeCrE9NSnjQV62TPPi6ZBYSR55ZeQzdY=;
+        b=PlFcimBExsvibyZSS4wt8/S0rc0bSpwdss9hN08lSkvsSMtUztXCLsDe/CrjHYS9Lk
+         OhvAjodkRMthpAoqMyiy+mujLESNiIup1InpX3TdaAu98yRSydaxsPvFCt930sCugpXB
+         0ngRNWzA6MMyJJbaYDzYXDJFAndGy0vsb8mCnrkInkEUuCRDI82qETdyQZQWsXafoUpa
+         GO395DnmkjWRZLBTyPxqKGRQggW5dYcUJ+k2ON13opEmYn3lwyITGfdwDK3GcBLSKob5
+         wDqtQhQ2vKd5HqN+qsTASzVlATr7arAfFLwobZZfc47tJAz3aEjy/3ARGMnXV9za8C2A
+         IWwA==
+X-Gm-Message-State: AOAM5311JLJwfk/oH8bKHvtYALRXVkBvlxu6gqIDp5utDvXDbctT12DY
+	c7LaRFprSs3MYwkKUUvK9tc=
+X-Received: by 2002:a17:90a:c501:: with SMTP id k1mr1707108pjt.101.1618343823356;
+        Tue, 13 Apr 2021 12:57:03 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id x69sm13078153pfd.161.2021.04.13.12.56.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Apr 2021 12:57:03 -0700 (PDT)
+Date: Wed, 14 Apr 2021 01:26:57 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: sakari.ailus@linux.intel.com, bingbu.cao@intel.com,
+	tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH v3 4/4] staging: media: intel-ipu3: remove space before
+ tabs
+Message-ID: <YHX3iVCNXJlOsmuQ@kali>
+References: <cover.1618326535.git.mitaliborkar810@gmail.com>
+ <01ad7ff353f805dfc48e7bcc26ed974e7bb5ef9f.1618326535.git.mitaliborkar810@gmail.com>
+ <20210413181712.GI6021@kadam>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210413181712.GI6021@kadam>
 
-
-
-On Wed, 14 Apr 2021, Mitali Borkar wrote:
-
-> On Tue, Apr 13, 2021 at 09:17:12PM +0300, Dan Carpenter wrote:
-> > On Tue, Apr 13, 2021 at 08:59:34PM +0530, Mitali Borkar wrote:
-> > > Removed unnecessary space before tabs to adhere to linux kernel coding
-> > > style.
-> > > Reported by checkpatch.
-> > >
-> > > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> > > ---
-> > >
-> > > Changes from v2:- No changes.
-> > > Changes from v1:- No changes.
-> > >
-> > >  drivers/staging/media/ipu3/include/intel-ipu3.h | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> > > index 47e98979683c..42edac5ee4e4 100644
-> > > --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
-> > > +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> > > @@ -633,7 +633,7 @@ struct ipu3_uapi_bnr_static_config_wb_gains_thr_config {
-> > >   * @cg:	Gain coefficient for threshold calculation, [0, 31], default 8.
-> > >   * @ci:	Intensity coefficient for threshold calculation. range [0, 0x1f]
-> > >   *	default 6.
-> > > - * 	format: u3.2 (3 most significant bits represent whole number,
-> > > + *format: u3.2 (3 most significant bits represent whole number,
-> > >   *	2 least significant bits represent the fractional part
-> >
-> > Just remove the spaces, don't remove the tab.  It's looks silly now.
-> >
-> Okay Sir, do I have to send a v4 patch on this now?
-
-Yes.  If you get feedback on a patch, you should send a new version.
-
-julia
-
+On Tue, Apr 13, 2021 at 09:17:12PM +0300, Dan Carpenter wrote:
+> On Tue, Apr 13, 2021 at 08:59:34PM +0530, Mitali Borkar wrote:
+> > Removed unnecessary space before tabs to adhere to linux kernel coding
+> > style.
+> > Reported by checkpatch.
+> > 
+> > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > ---
+> >  
+> > Changes from v2:- No changes.
+> > Changes from v1:- No changes.
+> > 
+> >  drivers/staging/media/ipu3/include/intel-ipu3.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > index 47e98979683c..42edac5ee4e4 100644
+> > --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
+> > @@ -633,7 +633,7 @@ struct ipu3_uapi_bnr_static_config_wb_gains_thr_config {
+> >   * @cg:	Gain coefficient for threshold calculation, [0, 31], default 8.
+> >   * @ci:	Intensity coefficient for threshold calculation. range [0, 0x1f]
+> >   *	default 6.
+> > - * 	format: u3.2 (3 most significant bits represent whole number,
+> > + *format: u3.2 (3 most significant bits represent whole number,
+> >   *	2 least significant bits represent the fractional part
+> 
+> Just remove the spaces, don't remove the tab.  It's looks silly now.
 >
-> > regards,
-> > dan carpenter
-> >
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/YHX3iVCNXJlOsmuQ%40kali.
->
+Okay Sir, do I have to send a v4 patch on this now?
+
+> regards,
+> dan carpenter
+> 
 
