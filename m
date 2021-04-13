@@ -1,136 +1,86 @@
 X-GM-THRID: 6950506572644614144
-X-Received: by 2002:a05:620a:15f0:: with SMTP id p16mr7430662qkm.448.1618337851795;
-        Tue, 13 Apr 2021 11:17:31 -0700 (PDT)
+X-Received: by 2002:a6b:3bc7:: with SMTP id i190mr28130344ioa.163.1618331366626;
+        Tue, 13 Apr 2021 09:29:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6214:62b:: with SMTP id a11ls5838020qvx.10.gmail; Tue,
- 13 Apr 2021 11:17:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpGM2T343LgPHQuvshDxhJQxTNjKNn4kTB93E/bJiIirozfoaxZVQRz1EjK59iNAdr1yI4
-X-Received: by 2002:a0c:fd62:: with SMTP id k2mr34329742qvs.51.1618337850844;
-        Tue, 13 Apr 2021 11:17:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618337850; cv=none;
+Received: by 2002:a05:6638:ece:: with SMTP id q14ls2580925jas.9.gmail; Tue, 13
+ Apr 2021 09:29:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbcNRMhmKnuy3GTbkyFWfM+fTo7MQ6ci9HR+lxfioePQyYohEfkpnJGJcyhWngTAXnUkNB
+X-Received: by 2002:a02:ca56:: with SMTP id i22mr12193326jal.50.1618331365750;
+        Tue, 13 Apr 2021 09:29:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618331365; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wf/tu16CtaZA5vZ+95EnRnwyXirCI6lsZG036rNDhFUHQ2WDQ0NrJ6Q/8zriXMsaQh
-         s4QMQ1qSeGcauELC9Pk3fSFXJhiGTu7oIeGhv/lGjNb26Cdwuf0ie7WhPQM69y4+32tN
-         4xoQn6+/QNiJNzXTa9jmFqinHTtgvpA0BtgeB6EZFc+fG7PX3IpW1GNuYfPw3pdpWYsS
-         mI+CXSXBFKMAJV9Bgj1FENB6Gp+r8e5dQQeSQ8bH9LXOjIYaR6Q2Uq2yuuBLnyoxfVUq
-         fH1Rfou2d/L/m4Qxtmni1qpuO7DfVcEIzeZgStVtXUsIqNdPn4hRv+PD3nEQMCtzqCH3
-         Z7Dw==
+        b=sSoJ28IpYByvLstJtfDmPSa85CYt/2X3dw80UEnZGO14IpDejFeFo1OXYvxCczoL2d
+         ptf+Zo9ll5D3vtB+K/6JQsj21j9NPYZU9X6SWG12lJpmd9rFy3k7F8bynx+jsFchOOzi
+         s9GPsGdm8zTaVmQwa2Xqt9U1bRnJP9K2SIj5Tgyhs4cd4hB9QRMum45ZuWd3pgfB8ygo
+         i5alSYQ+ePiuu+KhQHowmUTyAfnlbcg9tue4S3e/Mz/RxZpJjADi9Ii5kcuZYXTrNJyb
+         GK5WLU6xcOcVrzu1+xtuYNBHMT++hYU7JJTMuDQLMj1BMhktvOjjg31HUSUAlbsrtdvN
+         hE3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=F+1v+yIScK3Z0cLFoMNXHBXlxp/8G6ap/elyXl4WIHg=;
-        b=MuU3LkcuW60QZjrFM78zGxUKLUC8KS3vTU+tGC5OA4MZZD+Z4j0edX7wOkhaWMcwsj
-         8r7ANsXVTxDvmSjvJxoQHXsPERSxMNvXi6d01BtFC3V0tzKjMs139UAMUH3W8smVrNd3
-         XXO1h75mcL2RKH5La72LsU1WAuan9HMNNWPeRyOAHLdO7B1XpQTGvXJo7PfU71zfXk68
-         Mch/sVvs0wmhFsSmactYYnQykVW1jE2pdqAJOdd4AInbKJm/D7QwZ3Gmy3OFW17ncNFB
-         gyXR5kSos7OdWPLiQd8E0KuQ5DUQEHffLrKImOaKdMewAlfVZwATlzGHcDO2BS/GOAik
-         3/Dw==
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=XOekCZt/Pvx8ps2aXyEE8NvPxlS1zrknalNnrrh0YFc=;
+        b=IEBjDqTNXGTtlMhMmCm2aKwkw/N+G9Zs6bKsCjOv5qzA1giCh5tdFyfxhOBkp9gkAc
+         q/CukExpTtBCDx3pDxmhaufkrovN7x8d+PfnS9cHNKELdkSU66kS4WkTqM3zBwfnbOT3
+         YY0U9gfjdBxSSrx7XngBNSNX6E+SzHw4fsq84mzdg+msEBR5sXKK3+AVOhtcd7nOdt/k
+         zDTNM99oYHVINxMsj78vVdB08PrBcbDnWJmp9hZP75G2Ez6mcLhBzvf2VhuaDJr73+JT
+         J+kRHioJRXtaIbvKKl1lcUHZ7AyyeYih72wB/s1DWytQGNz1TPGFkAm+YLBaxhKJyNer
+         3bow==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Ci7afjVX;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp2130.oracle.com (userp2130.oracle.com. [156.151.31.86])
-        by gmr-mx.google.com with ESMTPS id l15si395368qke.1.2021.04.13.11.17.30
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga02.intel.com (mga02.intel.com. [134.134.136.20])
+        by gmr-mx.google.com with ESMTPS id j1si372686ilq.0.2021.04.13.09.29.25
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Apr 2021 11:17:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) client-ip=156.151.31.86;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Apr 2021 09:29:25 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.20 as permitted sender) client-ip=134.134.136.20;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Ci7afjVX;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
-	by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13DI9xJ8196156;
-	Tue, 13 Apr 2021 18:17:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=F+1v+yIScK3Z0cLFoMNXHBXlxp/8G6ap/elyXl4WIHg=;
- b=Ci7afjVXTtJKTW/ZtERoTqO4RrHFdUKLlRW8gkzAQcNN4JINoN+s5aDEr/T7bTj9AChf
- ZHMBV8rNR/1LUx4M5URKbroB+KeSqnZDOJP5bUOLBU5JJWtgpmaN0duveYQvJLmqSZi6
- 09p4GUnBKIjsSZQ/6JZTlD9T2SoUrfjTjGYSvX2T/Uen2vlx3QZDBdBi86JMC1xaG77w
- VpMCdMxEYh+9E6HM99ms+DNVdoEA1k0ytWWr8jNMRURkID9YTI8iDmDt9aSNs6np6b5m
- NIrHzrWABmpLjM8gWy8xhGIHWqPK9dA5VbjnRgFnKEAeg8gpcGm10HI2nYpuwsoX/qng TQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
-	by userp2130.oracle.com with ESMTP id 37u3erg25t-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 13 Apr 2021 18:17:28 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
-	by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13DI9fIS022035;
-	Tue, 13 Apr 2021 18:17:27 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by aserp3020.oracle.com with ESMTP id 37unx04wnc-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 13 Apr 2021 18:17:27 +0000
-Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13DIHKIP031139;
-	Tue, 13 Apr 2021 18:17:20 GMT
-Received: from kadam (/102.36.221.92)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Tue, 13 Apr 2021 18:17:20 +0000
-Date: Tue, 13 Apr 2021 21:17:12 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: d25K9KzyNxBJs/PnbKRORjuZ8oTxNg7Yrucnk5oSOKMAxarqiZgFWpwqgXFII1+Gr8MdrXUuz5
+ VJhhUwMd6LTg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9953"; a="181574908"
+X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; 
+   d="scan'208";a="181574908"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2021 09:21:18 -0700
+IronPort-SDR: Q51ZUF7fUPgxel3O2ZVeJfjn/hFIrUOaCHA0a9nTOCojMvw50WfJKB6VLPSXbNQS/DgH8ZP5Ay
+ AmhW2FitOWsQ==
+X-IronPort-AV: E=Sophos;i="5.82,219,1613462400"; 
+   d="scan'208";a="382016739"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2021 09:21:14 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with SMTP id D28A62082C;
+	Tue, 13 Apr 2021 19:21:11 +0300 (EEST)
+Date: Tue, 13 Apr 2021 19:21:11 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
 To: Mitali Borkar <mitaliborkar810@gmail.com>
-Cc: sakari.ailus@linux.intel.com, bingbu.cao@intel.com, tian.shu.qiu@intel.com,
-        mchehab@kernel.org, gregkh@linuxfoundation.org,
-        linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-        linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-        mitali_s@me.iitr.ac.in
-Subject: Re: [PATCH v3 4/4] staging: media: intel-ipu3: remove space before
- tabs
-Message-ID: <20210413181712.GI6021@kadam>
+Cc: bingbu.cao@intel.com, tian.shu.qiu@intel.com, mchehab@kernel.org,
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH v3 0/4] staging: media: intel-ipu3: Cleanup patchset for
+ style issues
+Message-ID: <20210413162111.GX3@paasikivi.fi.intel.com>
 References: <cover.1618326535.git.mitaliborkar810@gmail.com>
- <01ad7ff353f805dfc48e7bcc26ed974e7bb5ef9f.1618326535.git.mitaliborkar810@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <01ad7ff353f805dfc48e7bcc26ed974e7bb5ef9f.1618326535.git.mitaliborkar810@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9953 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 suspectscore=0
- mlxscore=0 malwarescore=0 adultscore=0 bulkscore=0 spamscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104130123
-X-Proofpoint-ORIG-GUID: DWT0JG83Ahgw0Uf143jhZJqIDTuuAyuC
-X-Proofpoint-GUID: DWT0JG83Ahgw0Uf143jhZJqIDTuuAyuC
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9953 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 clxscore=1011
- adultscore=0 mlxlogscore=999 bulkscore=0 malwarescore=0 spamscore=0
- impostorscore=0 suspectscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
- definitions=main-2104130123
+In-Reply-To: <cover.1618326535.git.mitaliborkar810@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-On Tue, Apr 13, 2021 at 08:59:34PM +0530, Mitali Borkar wrote:
-> Removed unnecessary space before tabs to adhere to linux kernel coding
-> style.
-> Reported by checkpatch.
-> 
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
->  
-> Changes from v2:- No changes.
-> Changes from v1:- No changes.
-> 
->  drivers/staging/media/ipu3/include/intel-ipu3.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/ipu3/include/intel-ipu3.h b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> index 47e98979683c..42edac5ee4e4 100644
-> --- a/drivers/staging/media/ipu3/include/intel-ipu3.h
-> +++ b/drivers/staging/media/ipu3/include/intel-ipu3.h
-> @@ -633,7 +633,7 @@ struct ipu3_uapi_bnr_static_config_wb_gains_thr_config {
->   * @cg:	Gain coefficient for threshold calculation, [0, 31], default 8.
->   * @ci:	Intensity coefficient for threshold calculation. range [0, 0x1f]
->   *	default 6.
-> - * 	format: u3.2 (3 most significant bits represent whole number,
-> + *format: u3.2 (3 most significant bits represent whole number,
->   *	2 least significant bits represent the fractional part
+On Tue, Apr 13, 2021 at 08:58:19PM +0530, Mitali Borkar wrote:
+> Changes from v2:- Rebased these four patces and made changes against
+> mailine code
 
-Just remove the spaces, don't remove the tab.  It's looks silly now.
+Thanks for the update, Mitali.
 
-regards,
-dan carpenter
+For the set:
 
+Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+
+-- 
+Sakari Ailus
 
