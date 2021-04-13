@@ -1,114 +1,81 @@
-X-GM-THRID: 6671539899637694464
-X-Received: by 2002:a63:fc49:: with SMTP id r9mr13294302pgk.447.1553338928676;
-        Sat, 23 Mar 2019 04:02:08 -0700 (PDT)
+X-GM-THRID: 6950332332596264960
+X-Received: by 2002:ad4:4b2a:: with SMTP id s10mr31104631qvw.39.1618300319155;
+        Tue, 13 Apr 2021 00:51:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:2ad7:: with SMTP id q206ls4357746pgq.12.gmail; Sat, 23
- Mar 2019 04:02:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxsWknzR0Gl0WovSrTgl69ee776bhuE50gJD367mlpZasaE/vZJx4twwpFhIxSyJM7rs8V0
-X-Received: by 2002:a63:68c9:: with SMTP id d192mr13958955pgc.264.1553338927876;
-        Sat, 23 Mar 2019 04:02:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553338927; cv=none;
+Received: by 2002:a05:622a:1101:: with SMTP id e1ls358128qty.7.gmail; Tue, 13
+ Apr 2021 00:51:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHccCDveEZBpkFNbmXnObwM819SwR5alpmkItp2krWzQBBm6DD+T5XZgFqaOtSzzsjMYiu
+X-Received: by 2002:ac8:4a16:: with SMTP id x22mr9156425qtq.364.1618300318369;
+        Tue, 13 Apr 2021 00:51:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618300318; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dq1HpXeH/cFx1AysatfJeGPcNXms/5luNFCb6md0tX58CwE6GKzA9Gybw2K7N/ZuLa
-         BnGmZquKIsMItlWJxfT9IN/9RBerzV282xQGuT6NS/3sflvBcXs7Tsy9/ABupJfrdRsT
-         pP4batP4TY7rQf9e463kza4f9oILxUWz1USkXj7Km7HnhhmfS/ZCU/nACk+QQPFVYB2C
-         9Bi3kIaFlvtT0L3oBfqbNoqXFANAsCpfpXXmwdncR2GFAvLKcRv+7j8C5Hq6HzyaxfrM
-         0g/mfZCnVEhHqFSj0Q8ptgT+QbjdpdIGkdhr2oq9lQ4b0xwtAU5NhhrSC+jMG76dcl9Z
-         yeYQ==
+        b=iJfpQwb224twSIQtx21e4rjl7TRQKEULJdyEkhJXzP/QUpc17RlaLEEuLiEnI3+VQD
+         LKE7gV/7eDQXdYf0R7AJaXGf7MjKJjt4tTmwGoiYzzEt66WGeftd2G3NVEGlk8oCG6hz
+         BLowXAOMsSu89cmaV7rHbkXIxCnqDy81tN2cRMH6Ux3RD7UCQZ7dYNITJgUCqgd5tw/S
+         WXydDhQljyFFLcRFAcNbBOe9eghEQhz24MuZ+qsdjkN6gLlt8X8GIadtptsUFSWcTpRy
+         r4vJYhhxVV01FDqwWTK80yaXrULq7nM1rZ4+2S2bf83JOnQpEeAqnh4GnA7hGEetAtpC
+         XOXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=BS/lWcw8Q3/u56tFOWi6nrvp0b7BfWGI1vqc3g3OGbg=;
-        b=IYZYvbANhgfYVh0cMRsBYuFyaPUbL6PSBP4Xqcg6rt7Gwo/5veBSqYajibCPbThLCT
-         QIkERFrArrLizTW9ZrrSuVmssgIuk9raWZLBotrHuGOlFPxolk/cHp4t7GMsJR85qQAC
-         DW4qUix5YxU/7fwi1G1o4zesfoy2qjw+98ABpu9DRRMP2bIqxv9MKMqH6P5g8A9+yLux
-         She2mhhU24ogOuDn0o697h57MOXKqoGXEHTzI0k92202JBVc44P85Nv4lrQzqlSln86Q
-         bLT9cv8KTHz4fD3cwf1QHFoJPQ8HIQ6PYiyKApFoq4hOLNO7syR6e/2vjoxPMlCtMb2v
-         XHzg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=rqCtfOsQqPvkp6QI+sYLdYBAY4ao0uzRDt9DhQdsgYY=;
+        b=jAmgtsmyP8CJ2zKdMn27Z0IPnk4mXK3J4UvFC98gWVdZUh5/s1YM1GFAzQ110sJ6xl
+         7rKBUUvUHn2JLfO6Q3P3+xiuEgWJeRHS3fj2r6xAugVkso2rW9wg6/2ob51v7mb0eMvY
+         BQ+autoey1WwNjopLyAwI69JaGlEYY/HyBFmxlMr5h9Gn9HrrQPconkg7opMpSXIofHU
+         miTlT+2XkxiSeSb5UfRCdrqDcOqFXVDp3He3dtEzwvXIfFd5HaYbOrg0QIBPiE+TvtCO
+         C44cQFWx5aseZqhROQG8Ecw4GeZAy85v1cSvm9Q1VsItWfN9OPkbVThPi2VybzpgQy5X
+         f3oQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="t73Zc/rS";
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <anushkacharu9@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id 67si633858pga.1.2019.03.23.04.02.07
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=EfyifVtZ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id k1si1619602qtg.2.2021.04.13.00.51.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 04:02:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 13 Apr 2021 00:51:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="t73Zc/rS";
-       spf=pass (google.com: domain of anushkacharu9@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=anushkacharu9@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id c8so3214279pfd.10
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Mar 2019 04:02:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=BS/lWcw8Q3/u56tFOWi6nrvp0b7BfWGI1vqc3g3OGbg=;
-        b=t73Zc/rSVzwL1OPtqhwczauk6PyXdxCxOkTuf/XKA61QbxE4PY7kfm0FSEGgMpPqOv
-         wBFaRAK4Ry+rwKllE+4eyLgpHS9hNCGvFM1hSDtHlBumcMfy4ORMFBwe04B3CWIHFZ5J
-         wbqSYXg/ctW6YRK6Z4K+lPDApd8612D0ZuIPMnAXduu//nz5TG1H+/tUFz6funz7Lgyk
-         VtV8df4DJ6D4GQPg82aFB5W1MsS3RQZtkT8V5Yc+S5IIB5jZI2Wiv7sVMqc/GvElD8ow
-         QiXseqveYhMh0mrP+Xw/RoePvKzPXtCQwUYyX9IsW31fiA6inwpp0an7eEbG7CNKl+v/
-         HGmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=BS/lWcw8Q3/u56tFOWi6nrvp0b7BfWGI1vqc3g3OGbg=;
-        b=Le5lWdxGJ9xtcOw7WMXT6tkYpM3Ckve0YlqxJQXx4xUgoAWOmfLjYGFGSzUQQ8qBkQ
-         6OB9Az/J6mHT2MrbLwGuEKJv++zmCacl2qDSaxBqs7/alRipTzBm2m84h5He3p+jaOUt
-         b8nUtMunE8p5bKH3vFo7sF2pZvxEvEcgdBynQ3RFp1xa7MG+NW5017HwtOSpm6QS9bWY
-         N+I7tQqovJIHwqvkddnzigaf1YhAOaD3+3jRisUJc4BwLPhS9S0Mp3RI0sJ3OGc8Z5gv
-         0WgwUIcuf38MLmYDgkl7DEX+9Ez2mhpnCgQiSbLlx25V1daD9euYahhEnGsVZ6Ui7llY
-         Y3Rw==
-X-Gm-Message-State: APjAAAXlzIRdVvOIl3ddnZ6SiwvBvUA4p6q8tSJWW3/rNM9VWzD5nn/D
-	NogHu6VfpGY3FV02eQCHsl1Wrb+aroU=
-X-Received: by 2002:a63:464c:: with SMTP id v12mr13364198pgk.431.1553338927346;
-        Sat, 23 Mar 2019 04:02:07 -0700 (PDT)
-Return-Path: <anushkacharu9@gmail.com>
-Received: from localhost.localdomain ([42.110.231.40])
-        by smtp.gmail.com with ESMTPSA id p14sm20797710pgn.34.2019.03.23.04.02.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Mar 2019 04:02:06 -0700 (PDT)
-From: anushkacharu9@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Anushka Shukla <anushkacharu9@gmail.com>
-Subject: [PATCH] staging: greybus: arche-platform.c: fix line over 80 characters
-Date: Sat, 23 Mar 2019 16:31:55 +0530
-Message-Id: <20190323110155.6386-1-anushkacharu9@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <anushkacharu9@gmail.com>
-References: <anushkacharu9@gmail.com>
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=EfyifVtZ;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A9230613B1;
+	Tue, 13 Apr 2021 07:51:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1618300317;
+	bh=kH6tzlgbDeOX411elnJ/YrqiObxFCB2d+i2jEGP6EVM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EfyifVtZP+00T6KM/wUeCHuGZbvos4c60CfXdKSe1HM5C/MJOypnszg+TY/YTfQ3F
+	 G3MJKorJ8mYVYR51as0PxCb+sAk2sWrfhTCDjd5PZeAmRJYLTnGJq/OmlI7NWvToT7
+	 50flA6rU2+1jtClNXN3Bt8gbHqrnQfW5IRvA4Uv8=
+Date: Tue, 13 Apr 2021 09:51:54 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 0/2] Remove spaces and blank lines
+Message-ID: <YHVNmqagCRLbicR/@kroah.com>
+References: <20210412175903.17819-1-fmdefrancesco@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210412175903.17819-1-fmdefrancesco@gmail.com>
 
-From: Anushka Shukla <anushkacharu9@gmail.com>
+On Mon, Apr 12, 2021 at 07:59:01PM +0200, Fabio M. De Francesco wrote:
+> Removed spaces before tabs and multiple blank lines from Hal8723BReg.h
+> for readability improvement. Issues detected by checkpatch.pl.
+> 
+> Fabio M. De Francesco (2):
+>   staging: rtl8723bs: hal Remove spaces before tabs
+>   staging: rtl8723bs: hal: Remove multiple blank lines
+> 
+>  drivers/staging/rtl8723bs/hal/Hal8723BReg.h | 43 +++++++++------------
+>  1 file changed, 18 insertions(+), 25 deletions(-)
 
-Fix line over 80 characters according to Linux kernel coding style
+This series does not apply to my tree, please rebase and resend.
 
-Signed-off-by: Anushka Shukla <anushkacharu9@gmail.com>
----
- drivers/staging/greybus/arche-platform.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-index 1e8fd48bedf9..970a11ccf578 100644
---- a/drivers/staging/greybus/arche-platform.c
-+++ b/drivers/staging/greybus/arche-platform.c
-@@ -180,8 +180,9 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
- 				 */
- 				if (arche_pdata->wake_detect_state !=
- 						WD_STATE_COLDBOOT_START) {
--					arche_platform_set_wake_detect_state(arche_pdata,
--									     WD_STATE_COLDBOOT_TRIG);
-+					arche_platform_set_wake_detect_state(
-+						arche_pdata,
-+						WD_STATE_COLDBOOT_TRIG);
- 					spin_unlock_irqrestore(
- 						&arche_pdata->wake_lock,
- 						flags);
--- 
-2.17.1
-
+greg k-h
 
