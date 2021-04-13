@@ -1,107 +1,142 @@
-X-GM-THRID: 6255224416958939136
-X-Received: by 10.129.74.195 with SMTP id x186mr41193764ywa.36.1456407927574;
-        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
+X-GM-THRID: 6950525312871432192
+X-Received: by 2002:a05:6512:3b0e:: with SMTP id f14mr8209284lfv.173.1618313821869;
+        Tue, 13 Apr 2021 04:37:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.50.66.211 with SMTP id h19ls203105igt.9.gmail; Thu, 25 Feb
- 2016 05:45:27 -0800 (PST)
-X-Received: by 10.66.231.4 with SMTP id tc4mr42565007pac.14.1456407927214;
-        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from mail-io0-x234.google.com (mail-io0-x234.google.com. [2607:f8b0:4001:c06::234])
-        by gmr-mx.google.com with ESMTPS id c8si235937igv.2.2016.02.25.05.45.27
+Received: by 2002:a2e:9a48:: with SMTP id k8ls933913ljj.10.gmail; Tue, 13 Apr
+ 2021 04:37:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcPlhaOUju6rgzxL8WiOFaq5Wh1V6IhLGiJLPYOWNMiIveBCfEGRcA+pLrWR8YQJy3U4FJ
+X-Received: by 2002:a2e:b051:: with SMTP id d17mr20529472ljl.255.1618313819982;
+        Tue, 13 Apr 2021 04:36:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618313819; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ks3guzpKF2DcEOcb5B/xQPEMGYZHu3wR3ok8fJH4UpLvakulijFBQXqWFQnRryDbcL
+         u0jenq0r4yr/fPgCmlkKzVgyILEfGy9JNA6/AgLXyCNn0nTYmJUKgKfU23oRbaXNOYQK
+         gwiYkO2PYYsY4dD6w6sqPoDZJWgFz5RGD9xTANIBSzscaIE2jmpOFw/7mInU56Ze6+Oz
+         sobm60oazUnBjTyFzcg6+xJlboJw5irJVkVV9dsFRWzFHHi3vZOLlvFUAhBcl3ZNrpyU
+         KxvUpLUWPAwmb+F/+AD1/VkAZI8QGB5ZHDlTgHVouVPWPUF5hBe9CHY0TxXHde43ObCT
+         biWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=jEUsARIo0JqIZNXOI5Z7E9R8FXqpJXDcunTU6TakZCI=;
+        b=x1/zJQArIy8WoOLidTPohDiUFp2Bw/w+PzW0CKA9BwxXEkuTEXTEEoIjBDiujfvGQS
+         sSJGF09Vs5I/dwRLtsgWiAGWAleZJPyJaZsICHTGjtdFuZLUETkbiaX+c1mEPbnMVV6N
+         9S5eD/O+nG6EPHKhVLLrdL+AwsQ+TVymSU8hxKfi3AFLqlabs76oLw1yyhOtzgOYVdMC
+         10+k51tVaLRBsx2QRHaZCLSMv2YIRMsycfQCGnVNDiYXvG+yf1SOJ8o4is3r6mexLaHg
+         CrjEJAUiz2FyUB1dAzx9wZIQ+hapB+sVK5BXkZUtvLVqhL5oCNI8+qQjnDgXuC5X/2DN
+         Bmjw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=FJjeQgCc;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb1-smtp-cloud8.xs4all.net (lb1-smtp-cloud8.xs4all.net. [194.109.24.21])
+        by gmr-mx.google.com with ESMTPS id d19si781609ljo.1.2021.04.13.04.36.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::234 as permitted sender) client-ip=2607:f8b0:4001:c06::234;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Apr 2021 04:36:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) client-ip=194.109.24.21;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of janani.rvchndrn@gmail.com designates 2607:f8b0:4001:c06::234 as permitted sender) smtp.mailfrom=janani.rvchndrn@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x234.google.com with SMTP id l127so87958518iof.3
-        for <outreachy-kernel@googlegroups.com>; Thu, 25 Feb 2016 05:45:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=4n7Ow6cfKjdReK9kCUKg0j+SmIxrtg6f6dozMUqf0TQ=;
-        b=Q3nBmxLhAS9WXPqTG1G5je1fFu+jtvPCesOGoeNZf8KCPcFCm3de2PFKmYg7C/YcYA
-         apWoeACmrCy8yJoMqg1P6ed6f9eA8TCf/VKto9sx9Eh35NMtpu1opDGefK3yy3VYYmY7
-         t7Pprzpa8IWSAlN5R1nl9Er1gmx27VHm+xMlWnEfbi2ChjtVj7I4soq9Fn2L/71/cfw0
-         dsXMfwjedKVJu44c2ZRlGrjKfD9gm56JMgZ7ixEkrP5thgcr+vD7B66AZo5ZIPNdSa0Z
-         dSpV7rMHE+nt2XBJncJQXPHQi2A8dLIMzcmwksdtjvNgVP49zAhZlv+lyw+Iq9sFd2XQ
-         ynHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=4n7Ow6cfKjdReK9kCUKg0j+SmIxrtg6f6dozMUqf0TQ=;
-        b=TUo3LWVhDnCT8zVDjtNCX0Z4R9v3wVn5lX3uiZen5YyQ28sKVw2/hDRIzRZ0Aw/hsK
-         UAaVOXe1A/MOpU1CFRIve8ftgiEeO9YWf6lb0+pWmZoJlhD0P7GJNZNUKlHKlcpr3t5F
-         FydYyeM0UaRx/mmGDj5bSRSa2661ljeggiVa9gdHPOIc4dUbwUm2bzMnlFUdCRjbWk+K
-         8gWNr1Ilq6+yilDqwMZqQYhKqhOm8yCUNSgXcCWOlaeSbq6lKT4GApJSQQsjrURV9osp
-         p9P3zwzot3EkuI1zm+pSbWhYnjNZ5rgFElh2eCYakLVXRcC35XyPVT13GpDBVlMUKLNZ
-         6ZIg==
-X-Gm-Message-State: AG10YORAg57PvmOaGqv2CqPNE+LRUUKU3VwrKIfzsL7dl+l4uQ4tmbFAl3e6s+c2BAeEZw==
-X-Received: by 10.107.154.80 with SMTP id c77mr3095406ioe.162.1456407927049;
-        Thu, 25 Feb 2016 05:45:27 -0800 (PST)
-Return-Path: <janani.rvchndrn@gmail.com>
-Received: from janani-Inspiron-3521 (cpe-72-231-208-13.buffalo.res.rr.com. [72.231.208.13])
-        by smtp.gmail.com with ESMTPSA id 8sm3251580ioe.8.2016.02.25.05.45.26
-        for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Feb 2016 05:45:26 -0800 (PST)
-Date: Thu, 25 Feb 2016 13:44:39 -0500
-From: Janani Ravichandran <janani.rvchndrn@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: fbtft: fb_uc1611.c: Drop void pointer cast
-Message-ID: <20160225184439.GA6229@janani-Inspiron-3521>
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=FJjeQgCc;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+	by smtp-cloud8.xs4all.net with ESMTPA
+	id WHLZl2arGgIC3WHLdlK9yi; Tue, 13 Apr 2021 13:36:59 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1618313819; bh=jEUsARIo0JqIZNXOI5Z7E9R8FXqpJXDcunTU6TakZCI=;
+	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=FJjeQgCcrWefEKdYcTCPe0sXNHegTK5THWBZmsWQag211egilwQ1JWKk/5wbq54rJ
+	 2vBT/bL+WCyJuYI6pthfbMWFg0PrkjwVnpOdOhPrFMhFPNYNv0mWDfgEfhdBJCScWC
+	 z9U4ExtvcOdnZSc2WBbHbyEaVyTV/5NXL69lTArDwB8aesSRIx7weJsmaZ+k03XSKB
+	 0l8Q/gJVKnTqFjptYp3yX9goLXZX8nG+UzARnmuwaOJTHd1RPLV8dnp8zfDgyRuW5u
+	 7nCpAIftktP4Jf7KIWIAnNA+wMFGOVjyvKVtbd75jFR6nbhu1Pz/mwGFZORTbHtShp
+	 8wYUYyi6k7PLA==
+Subject: Re: Subject: [PATCH v2] staging: media: meson: vdec: declare u32 as
+ static const appropriately
+To: Mitali Borkar <mitaliborkar810@gmail.com>,
+ martin.blumenstingl@googlemail.com, narmstrong@baylibre.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org, khilman@baylibre.com
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ linux-amlogic@lists.infradead.org, mitali_s@me.iitr.ac.in
+References: <YHU56OM+C2zY34VP@kali>
+ <00c8a239-49d3-fedb-ec67-076e8b823efa@xs4all.nl> <YHV734NB4flpFjbF@kali>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <69ffded9-548f-7595-8333-aebedae38de3@xs4all.nl>
+Date: Tue, 13 Apr 2021 13:36:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <YHV734NB4flpFjbF@kali>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfBrAWRFULFyzrMwuXAr8Edg0IHLgsOAWxz9vm67BceqYT5KtpoJkstULGPzKJz439fksL/vvNLimI/2gGi8RO0WV+4keMKsPyVvdd63EHY0MeGKgutgC
+ pgjT3Z96R6s4I8htah7RLuo9P3apfswKmmLJxVu1nLWVfPcLvdU3lP9dD0kCwWpwjm4jp2aDY7KAZ6rf9joucnExbJFQ5gjUVz5rxpDiv9FASOqAWJaY0WpA
+ txDRMJeLKUFWhV9U/8pRAcuLpu7M5bvHyad7DgMVbDL3EiYk11z9bVU7EYvAfKUBE8LtNKK3PuIS+ntiXGUmrvhj4Y+BsIB2ONFTBM0y1GZu5UlKWAIqBVcv
+ roUWo/UKEvKCtpx4cDUkIjacc/q/uF2t2V8C9rvm3sCLxtWtV75JvJLPQPpJ5Ewa+3p7cX/P955+7zN12JPYXMDLH9I3mohrhdLNxtfAB1YWWdJ/R+H5Nih3
+ LE47ZSj9PTmuujS/kb8zbFvUtzXENpQ5T6nOwnI5lGhjwrnzAmg/bLuJPC0UpWlBhs2B6bQIajt8q06bS6LibM932mCYhzOyn2oFigUtik9bJM7n7OOdN2++
+ aj6QIEXKySeT2+66c6WSW1+pif3EBvOPcxWwpSVT71uwYfPLZIo9MPnEGDfXJljcSko=
 
-Void pointers need not be cast to other pointer types.
-Semantic patch used:
+On 13/04/2021 13:09, Mitali Borkar wrote:
+> On Tue, Apr 13, 2021 at 09:26:01AM +0200, Hans Verkuil wrote:
+>> On 13/04/2021 08:27, Mitali Borkar wrote:
+>>> Declared 32 bit unsigned int as static constant inside a function
+>>> appropriately.
+>>>
+>>> Reported-by: kernel test robot <lkp@intel.com>
+>>> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+>>> ---
+>>>
+>>> Changes from v1:- Rectified the mistake by declaring u32 as static const
+>>> properly.
+>>>
+>>>  drivers/staging/media/meson/vdec/codec_h264.c | 4 ++--
+>>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/staging/media/meson/vdec/codec_h264.c b/drivers/staging/media/meson/vdec/codec_h264.c
+>>> index ea86e9e1c447..80141b89a9f6 100644
+>>> --- a/drivers/staging/media/meson/vdec/codec_h264.c
+>>> +++ b/drivers/staging/media/meson/vdec/codec_h264.c
+>>> @@ -287,8 +287,8 @@ static void codec_h264_resume(struct amvdec_session *sess)
+>>>  	struct amvdec_core *core = sess->core;
+>>>  	struct codec_h264 *h264 = sess->priv;
+>>>  	u32 mb_width, mb_height, mb_total;
+>>> -	static const u32[] canvas3 = { ANCO_CANVAS_ADDR, 0 };
+>>> -	static const u32[] canvas4 = { 24, 0 };
+>>> +	static const u32 canvas3[] = { ANCO_CANVAS_ADDR, 0 };
+>>> +	static const u32 canvas4[] = { 24, 0 };
+>>
+>> This is a patch on top of your previous (v1) patch. That won't work
+>> since the v1 is not merged, you need to make a patch against the current
+>> mainline code.
+>>
+> But Sir, since I have made changes in the code, and committed them, now,
+> if I open that file, it will contain those changes. Then should I
+> rewrite the patch body more accurately? 
 
-@r@
-expression x;
-void* e;
-type T;
-identifier f;
-@@
+You only committed the v1 change in your own repository, it's not in the
+upstream repository. And the patches you post must be against the upstream
+repository, not your own.
 
-(
-  *((T *)e)
-| 
-  ((T *)x) [...]
-| 
-  ((T *)x)->f
-| 
-- (T *)
-  e
-)
+'git rebase -i' can be your friend here, it makes it easy to fold the
+second patch into the first, and then you only have to post the final
+version.
 
-Signed-off-by: Janani Ravichandran <janani.rvchndrn@gmail.com>
----
- drivers/staging/fbtft/fb_uc1611.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Regards,
 
-diff --git a/drivers/staging/fbtft/fb_uc1611.c b/drivers/staging/fbtft/fb_uc1611.c
-index 4e82814..e87401a 100644
---- a/drivers/staging/fbtft/fb_uc1611.c
-+++ b/drivers/staging/fbtft/fb_uc1611.c
-@@ -222,8 +222,8 @@ static int set_var(struct fbtft_par *par)
- static int write_vmem(struct fbtft_par *par, size_t offset, size_t len)
- {
- 	u8 *vmem8 = (u8 *)(par->info->screen_buffer);
--	u8 *buf8 = (u8 *)(par->txbuf.buf);
--	u16 *buf16 = (u16 *)(par->txbuf.buf);
-+	u8 *buf8 = par->txbuf.buf;
-+	u16 *buf16 = par->txbuf.buf;
- 	int line_length = par->info->fix.line_length;
- 	int y_start = (offset / line_length);
- 	int y_end = (offset + len - 1) / line_length;
--- 
-2.5.0
+	Hans
+
+> 
+>> Regards,
+>>
+>> 	Hans
+>>
+>>>  
+>>>  	amvdec_set_canvases(sess, canvas3, canvas4);
+>>>  
+>>>
+>>
 
 
